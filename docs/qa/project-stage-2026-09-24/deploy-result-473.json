@@ -1,0 +1,32 @@
+{
+  "released": "1.72.473",
+  "from": "1.72.472",
+  "live_before": {
+    "nadlan-config.php": "01d293edf370bc6226b1f4995894de26"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-20 21:20:46",
+  "files": {
+    "assets/walk/kochav/index.html": "108bab4a0fa6fa3fa9c09a8149cece29",
+    "assets/walk/kochav/thumb.jpg": "f52640182311c28be26f449fd55aade1",
+    "assets/walk/kochav/city.json": "6aa5ba5b63deace19534ee2eb7d1d53f",
+    "assets/walk/kochav/places.json": "3009107ef08114c2a46da967e04314ad",
+    "assets/walk/kochav/quarter.json": "e62f012499831737046174bc3b32b991",
+    "assets/walk/kochav/tex/asphalt.jpg": "23c9592df244072bb8263bf4508bd680",
+    "assets/walk/kochav/tex/bikelane.jpg": "22ab6716ee43e9adb35ff94cf6ec5efd",
+    "assets/walk/kochav/tex/deck.jpg": "aa6def73f5a93e96348408a6843c5738",
+    "assets/walk/kochav/tex/fac_retail.jpg": "7b28539b4cd705fcae8ffb031ca5e697",
+    "assets/walk/kochav/tex/fac_tower.jpg": "7a889c9fa171c93563a265ac866516b6",
+    "assets/walk/kochav/tex/fac_white.jpg": "cfb89f4037f58e248d6176593b396314",
+    "assets/walk/kochav/tex/grass.jpg": "1d63cf7fc203ff7673bb4a77c1a06d28",
+    "assets/walk/kochav/tex/lawn.jpg": "1bef5dfee7913f0fc2757f1683d9fb13",
+    "assets/walk/kochav/tex/pave.jpg": "f8ee831acf96be810ff72f90340a44d7",
+    "assets/walk/kochav/tex/tree_ficus.png": "ecb81c73035fbd01d5f679d46488bdb2",
+    "assets/walk/kochav/tex/tree_olive.png": "7f35902173659cb9b25fcfa791f13080",
+    "assets/walk/kochav/tex/tree_palm.png": "e5dad7bcec2fbea7f7a0b5d3b2d38af3",
+    "nadlan-config.php": "18698bc6ae18f5b39b39888655f7fb01"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.473, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

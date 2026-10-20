@@ -32,7 +32,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_EDIT_VERSION' ) ) { return; }
-define( 'NL_EDIT_VERSION', '1.0.0' );
+define( 'NL_EDIT_VERSION', '1.1.0' );
 
 /* =====================================================================================================
  * The private page: the editor's script and sheet are appended to what x-broker-drop prints.
@@ -327,6 +327,29 @@ function nl_edit_write_all( $f, $text, $b, $id, $keep_he = null ) {
 }
 
 /* ---------------- saving ---------------- */
+/**
+ * A dossier listing (meta nl_dossier = 1, 1.1.0, 20.10.2026): its page was built by hand (sections, research, a 3D walk) and is
+ * richer than the engine's template. A broker's save keeps every fact, text and photo in the listing's data, as always, but does
+ * not rewrite the page: the change waits in nl_dossier_pending and the office is told by email; we merge it into the page.
+ * Meital's first save on 7634 (20.10, 18:21) replaced the hand-built page with the template; this is the fix at the source.
+ */
+function nl_edit_is_dossier( $id ) {
+	return (string) get_post_meta( (int) $id, 'nl_dossier', true ) === '1';
+}
+
+function nl_edit_dossier_note( $id, $b, $what ) {
+	$q   = json_decode( (string) get_post_meta( $id, 'nl_dossier_pending', true ), true );
+	$q   = is_array( $q ) ? $q : array();
+	$q[] = array( 'at' => gmdate( 'c' ), 'what' => (string) $what );
+	update_post_meta( $id, 'nl_dossier_pending', wp_slash( wp_json_encode( array_slice( $q, -30 ), JSON_UNESCAPED_UNICODE ) ) );
+	$to = (string) get_option( 'admin_email' );
+	if ( $to ) {
+		wp_mail( $to, 'עדכון ממתווך לעמוד מעוצב: ' . get_the_title( $id ), ( $b['name_he'] ?? $b['name'] ?? 'המתווך' ) . ' עדכן/ה את הנכס (' . $what . ').' . "
+" . get_permalink( $id ) . "
+" . 'השינוי נשמר בנתוני המודעה וממתין לשילוב בעמוד (nl_dossier_pending).' );
+	}
+}
+
 function nl_edit_commit( $id, $b, $f, $c, $ph, $text = null ) {
 	$pub = $f;
 	update_post_meta( $id, 'nl_facts', wp_slash( wp_json_encode( $pub, JSON_UNESCAPED_UNICODE ) ) );
@@ -348,6 +371,10 @@ function nl_edit_commit( $id, $b, $f, $c, $ph, $text = null ) {
 	);
 	foreach ( $meta as $k => $v ) {
 		if ( $v === null || $v === '' ) { delete_post_meta( $id, $k ); } else { update_post_meta( $id, $k, is_bool( $v ) ? ( $v ? '1' : '0' ) : $v ); }
+	}
+	if ( nl_edit_is_dossier( $id ) ) { // the hand-built page stays; the change waits for us (see nl_edit_is_dossier)
+		update_post_meta( $id, 'nl_edit_last', gmdate( 'c' ) );
+		return true;
 	}
 	// every language page: title, cover; the page itself from the stored facts and copy
 	$ids = array( 'he' => (int) $id ) + nl_drop_twins( $id );
@@ -462,6 +489,10 @@ function nl_edit_rest_save( WP_REST_Request $req ) {
 		return new WP_Error( 'nl_edit_section', 'לא התקבל עדכון.', array( 'status' => 400 ) );
 	}
 	nl_edit_commit( $id, $b, $f, $c, $ph, $text );
+	if ( nl_edit_is_dossier( $id ) ) {
+		nl_edit_dossier_note( $id, $b, $sec );
+		$msg = 'נשמר. העמוד של הנכס הזה נבנה במיוחד, ולכן נשלב את השינוי בעמוד בעצמנו, בתוך יום עבודה.';
+	}
 	return array( 'ok' => true, 'msg' => $msg, 'listing' => nl_edit_view( $id, $b ) );
 }
 
@@ -534,7 +565,7 @@ function nl_edit_rest_profile_save( WP_REST_Request $req ) {
 	nl_drop_site_sync( $b );
 	// the broker card on every listing built by the engine: the same facts and copy, no model call
 	foreach ( nl_drop_broker_listings( $pid, 'he', false ) as $L ) {
-		if ( is_array( nl_edit_json( $L['id'], 'nl_facts' ) ) ) { nl_drop_render_all( $L['id'], $b ); nl_drop_purge( nl_drop_listing_ids( $L['id'] ) ); }
+		if ( is_array( nl_edit_json( $L['id'], 'nl_facts' ) ) && ! nl_edit_is_dossier( $L['id'] ) ) { nl_drop_render_all( $L['id'], $b ); nl_drop_purge( nl_drop_listing_ids( $L['id'] ) ); }
 	}
 	return array( 'ok' => true, 'msg' => 'הפרופיל נשמר, והאתר שלך עודכן.', 'profile' => nl_edit_profile_view( $b ) );
 }

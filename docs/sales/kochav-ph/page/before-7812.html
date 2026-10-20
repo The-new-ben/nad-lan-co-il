@@ -1,0 +1,547 @@
+<!-- wp:html -->
+<style>
+/* nad-lan.co.il · Prestige listing dossier (nlx) · v1.0 · 16.9.2026
+   Extends Skin A tokens (paper #F7F6F2, ink #14212B, sea #2F6F86, deep #1F4B5C, sand #EEE9DD, line #E3E1DA).
+   Scope: everything lives under .nlx so the block is safe inside .single-nadlan_property .entry-content.
+   No JavaScript required: tabs are radio inputs, FAQ uses <details>. */
+
+.nlx{
+  --nlx-paper:#F7F6F2; --nlx-surf:#FFFFFF; --nlx-ink:#14212B; --nlx-ink2:#3B4753; --nlx-mute:#6B7680;
+  --nlx-line:#E3E1DA; --nlx-sea:#2F6F86; --nlx-seah:#255C70; --nlx-deep:#1F4B5C; --nlx-sand:#EEE9DD; --nlx-mist:#CFE3EA;
+  --nlx-on-deep:#F7F6F2; --nlx-on-deep-2:rgba(247,246,242,.74); --nlx-on-deep-line:rgba(247,246,242,.18); --nlx-on-deep-fill:rgba(247,246,242,.08);
+  --nlx-serif:'Noto Serif Hebrew','Noto Serif','David Libre',Georgia,serif;
+  --nlx-sans:Assistant,'Segoe UI',Arial,sans-serif;
+  --nlx-r:8px; --nlx-r-lg:22px;
+  --nlx-shadow:0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04);
+  color:var(--nlx-ink); font-family:var(--nlx-sans); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+.nlx *,.nlx *::before,.nlx *::after{box-sizing:border-box}
+.nlx :where(h1,h2,h3,h4,p,ul,ol,dl,dd,figure,table){margin:0;padding:0}
+.nlx :where(ul,ol){list-style:none}
+.nlx img{max-width:100%;height:auto;display:block}
+.nlx a{color:var(--nlx-sea);text-decoration-thickness:1px;text-underline-offset:3px}
+.nlx a:hover{color:var(--nlx-seah)}
+.nlx :focus-visible{outline:2px solid var(--nlx-sea);outline-offset:3px;border-radius:4px}
+.nlx .nlx-num{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.nlx .nlx-wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px)}
+.nlx .nlx-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* type */
+.nlx.nlx .nlx-title,.nlx.nlx .nlx-h2,.nlx.nlx .nlx-h3,.nlx.nlx .nlx-serif{font-family:var(--nlx-serif)!important;font-weight:600!important;color:var(--nlx-ink)!important;letter-spacing:-.005em;text-wrap:balance}
+.nlx.nlx .nlx-title{font-size:clamp(34px,4.4vw,56px);line-height:1.12}
+.nlx.nlx .nlx-h2{font-size:clamp(26px,2.6vw,34px);line-height:1.2}
+.nlx.nlx .nlx-h3{font-size:21px;line-height:1.3}
+.nlx .nlx-kicker,.nlx .nlx-eyebrow{font-family:var(--nlx-sans)!important;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--nlx-sea);margin:0}
+.nlx[lang="en"] .nlx-kicker,.nlx[lang="en"] .nlx-eyebrow{text-transform:uppercase;letter-spacing:.09em;font-size:12px}
+.nlx.nlx .nlx-dek{font-family:var(--nlx-serif)!important;font-weight:500;font-size:clamp(19px,1.7vw,23px);line-height:1.55;color:var(--nlx-ink2);max-width:40ch}
+.nlx .nlx-muted{color:var(--nlx-mute)}
+.nlx .nlx-small{font-size:14px;line-height:1.55}
+
+/* chips, tags, buttons */
+.nlx .nlx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nlx .nlx-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--nlx-sand);border:1px solid var(--nlx-line);color:var(--nlx-deep);font-size:14px;font-weight:600;line-height:1.3}
+.nlx .nlx-chip--sea{background:var(--nlx-surf);border-color:var(--nlx-sea);color:var(--nlx-sea)}
+.nlx .nlx-tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11.5px;font-weight:700;line-height:1.6;letter-spacing:.02em;white-space:nowrap;vertical-align:middle;border:1px solid var(--nlx-line);color:var(--nlx-mute);background:var(--nlx-surf)}
+.nlx .nlx-tag--broker{color:#5C5347;background:#F4EFE6;border-color:#E2D8C6}
+.nlx .nlx-tag--calc{color:var(--nlx-ink2);background:var(--nlx-paper)}
+.nlx .nlx-tag--src{color:var(--nlx-sea);border-color:#BFD6DE;background:#F2F8FA}
+.nlx .nlx-tag--tx{color:#FFFFFF;background:var(--nlx-deep);border-color:var(--nlx-deep)}
+.nlx sup.nlx-fn{font-size:11px;font-weight:700;margin-inline-start:2px;vertical-align:super;line-height:0}
+.nlx sup.nlx-fn a{text-decoration:none}
+.nlx .nlx-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 20px;border-radius:999px;background:var(--nlx-sea);color:#fff!important;font-weight:700;font-size:16px;text-decoration:none!important;border:1px solid var(--nlx-sea);transition:background .15s ease}
+.nlx .nlx-btn:hover{background:var(--nlx-seah);border-color:var(--nlx-seah)}
+.nlx .nlx-btn--ghost{background:var(--nlx-surf);color:var(--nlx-deep)!important;border-color:var(--nlx-line)}
+.nlx .nlx-btn--ghost:hover{background:var(--nlx-sand);border-color:var(--nlx-line)}
+.nlx .nlx-btn svg{width:18px;height:18px;flex:none}
+
+/* masthead */
+.nlx .nlx-mast{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:end;padding-block:clamp(24px,4vw,48px) clamp(20px,3vw,36px)}
+.nlx .nlx-mast-copy{display:grid;gap:18px;align-content:end}
+.nlx .nlx-plate{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:var(--nlx-r);overflow:hidden;background:var(--nlx-sand);border:1px solid var(--nlx-line)}
+.nlx .nlx-plate--rent{background:#E4EEF1}
+.nlx .nlx-plate svg{position:absolute;inset:0;width:100%;height:100%}
+.nlx .nlx-plate figcaption{position:absolute;inset-inline:14px;bottom:12px;font-size:13px;color:var(--nlx-ink2);background:rgba(255,255,255,.82);padding:6px 10px;border-radius:6px;line-height:1.4;max-width:calc(100% - 28px)}
+.nlx .nlx-plate-name{position:absolute;inset-inline-start:22px;top:18px;font-family:var(--nlx-serif)!important;font-weight:600;font-size:clamp(22px,2.4vw,30px);color:var(--nlx-deep);line-height:1.2;max-width:70%}
+
+/* key facts */
+.nlx .nlx-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--nlx-line)}
+.nlx .nlx-fact{padding:18px 16px 16px;display:grid;gap:4px;align-content:start;border-inline-start:1px solid var(--nlx-line)}
+.nlx .nlx-fact:first-child{border-inline-start:0}
+.nlx .nlx-fact dt{font-size:13px;color:var(--nlx-mute);font-weight:600}
+.nlx .nlx-fact dd{font-size:23px;font-weight:700;line-height:1.25;color:var(--nlx-ink)}
+.nlx .nlx-fact dd .nlx-unit{font-size:15px;font-weight:600;color:var(--nlx-ink2);margin-inline-start:4px}
+.nlx .nlx-fact .nlx-tag{justify-self:start}
+
+.nlx .nlx-facts-note{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--nlx-mute);padding-top:10px}
+.nlx .nlx-money{white-space:nowrap}
+.nlx .nlx-item-title{font-weight:600}
+.nlx .nlx-spec-group h3 .nlx-tag{margin-inline-start:8px;letter-spacing:0}
+
+/* layout with rail */
+.nlx .nlx-layout{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:clamp(32px,4.5vw,64px);align-items:start;padding-block:clamp(28px,4vw,48px)}
+.nlx .nlx-main{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.nlx .nlx-main>*,.nlx .nlx-sec>*,.nlx .nlx-band>*,.nlx .nlx-band-grid>*,.nlx .nlx-two>*,.nlx .nlx-rail>*{min-width:0}
+.nlx .nlx-rail{position:sticky;top:calc(var(--nlx-header-offset,96px) + env(safe-area-inset-top,0px));display:grid;gap:16px}
+.nlx .nlx-card{background:var(--nlx-surf);border:1px solid var(--nlx-line);border-radius:var(--nlx-r);padding:22px}
+.nlx .nlx-price-card{box-shadow:var(--nlx-shadow);display:grid;gap:14px}
+.nlx .nlx-price-lbl{font-size:13px;font-weight:700;color:var(--nlx-mute);letter-spacing:.02em}
+.nlx .nlx-price{font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.1;color:var(--nlx-ink)}
+.nlx .nlx-price-sub{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--nlx-ink2)}
+.nlx .nlx-price-rows{display:grid;gap:8px;border-top:1px solid var(--nlx-line);padding-top:14px}
+.nlx .nlx-price-rows div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.nlx .nlx-price-rows dt{color:var(--nlx-mute)}
+.nlx .nlx-price-rows dd{font-weight:700;text-align:end}
+.nlx .nlx-cta{display:grid;gap:10px}
+.nlx .nlx-agent-mini{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;font-size:14px;line-height:1.45}
+.nlx .nlx-monogram{width:44px;height:44px;border-radius:50%;background:var(--nlx-deep);color:var(--nlx-on-deep);display:grid;place-items:center;font-family:var(--nlx-serif)!important;font-weight:600;font-size:18px}
+
+/* sections */
+.nlx .nlx-sec{padding-block:clamp(36px,4.5vw,56px);border-top:1px solid var(--nlx-line);display:grid;gap:22px;scroll-margin-top:96px}
+.nlx .nlx-sec:first-child{border-top:0;padding-top:0}
+.nlx .nlx-sec-head{display:grid;gap:8px;max-width:62ch}
+.nlx .nlx-lead{font-size:18px;color:var(--nlx-ink2);max-width:64ch}
+.nlx .nlx-prose{display:grid;gap:16px;max-width:66ch}
+.nlx .nlx-prose p{font-size:18px;line-height:1.8;color:var(--nlx-ink)}
+.nlx .nlx-toc{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px;font-weight:600;padding-block:14px;border-bottom:1px solid var(--nlx-line)}
+.nlx .nlx-toc a{color:var(--nlx-ink2);text-decoration:none}
+.nlx .nlx-toc a:hover{color:var(--nlx-sea)}
+
+/* signature features */
+.nlx .nlx-features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.nlx .nlx-features li{padding:14px 0;border-top:1px solid var(--nlx-line);display:grid;gap:2px}
+.nlx .nlx-features b{font-weight:700;color:var(--nlx-ink)}
+.nlx .nlx-features span{color:var(--nlx-ink2);font-size:16px}
+
+/* spec tables (dl) */
+.nlx .nlx-spec{display:grid;gap:28px}
+.nlx .nlx-spec-group{display:grid;gap:0}
+.nlx .nlx-spec-group h3{font-family:var(--nlx-sans)!important;font-size:14px!important;font-weight:700!important;color:var(--nlx-mute)!important;letter-spacing:.03em;padding-bottom:8px}
+.nlx .nlx-rows{display:grid}
+.nlx .nlx-row{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.6fr) auto;gap:6px 18px;padding:12px 0;border-top:1px solid var(--nlx-line);align-items:baseline}
+.nlx .nlx-row dt{color:var(--nlx-ink2);font-weight:600;font-size:15.5px}
+.nlx .nlx-row dd{color:var(--nlx-ink);font-size:16px}
+.nlx .nlx-row .nlx-row-tag{justify-self:end}
+
+/* distances */
+.nlx .nlx-dist{display:grid}
+.nlx .nlx-dist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:12px 0;border-top:1px solid var(--nlx-line);align-items:center}
+.nlx .nlx-dist .nlx-dist-name{font-weight:600}
+.nlx .nlx-dist .nlx-dist-val{font-weight:700;text-align:end}
+.nlx .nlx-dist .nlx-meter{grid-column:1/-1;height:4px;border-radius:4px;background:var(--nlx-sand);overflow:hidden}
+.nlx .nlx-dist .nlx-meter i{display:block;height:100%;background:var(--nlx-sea);border-radius:4px}
+.nlx .nlx-dist .nlx-dist-note{grid-column:1/-1;font-size:13.5px;color:var(--nlx-mute)}
+
+/* generic item lists (schools, transport, planning) */
+.nlx .nlx-items{display:grid}
+.nlx .nlx-item{padding:14px 0;border-top:1px solid var(--nlx-line);display:grid;gap:5px}
+.nlx .nlx-item-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px}
+.nlx .nlx-item-title{font-weight:700;color:var(--nlx-ink)}
+.nlx .nlx-item p{font-size:15.5px;color:var(--nlx-ink2)}
+.nlx .nlx-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px}
+.nlx .nlx-subhead{font-family:var(--nlx-sans)!important;font-size:15px!important;font-weight:700!important;color:var(--nlx-ink)!important;margin-bottom:4px}
+
+/* numbers band: the one dark moment */
+.nlx .nlx-band{background:var(--nlx-deep);color:var(--nlx-on-deep);border-radius:var(--nlx-r-lg);padding:clamp(24px,4vw,48px);display:grid;gap:28px;margin-block:clamp(8px,2vw,16px)}
+.nlx.nlx .nlx-band .nlx-h2,.nlx.nlx .nlx-band .nlx-h3,.nlx.nlx .nlx-band h2,.nlx.nlx .nlx-band h3{color:var(--nlx-on-deep)!important}
+.nlx .nlx-band .nlx-eyebrow{color:var(--nlx-mist)}
+.nlx .nlx-band p,.nlx .nlx-band li,.nlx .nlx-band dt,.nlx .nlx-band dd,.nlx .nlx-band span,.nlx .nlx-band td,.nlx .nlx-band th,.nlx .nlx-band small,.nlx .nlx-band label{color:var(--nlx-on-deep)}
+.nlx .nlx-band .nlx-muted,.nlx .nlx-band .nlx-small{color:var(--nlx-on-deep-2)!important}
+.nlx .nlx-band a{color:var(--nlx-mist)}
+.nlx .nlx-band .nlx-tag{background:transparent;border-color:var(--nlx-on-deep-line);color:var(--nlx-on-deep-2)}
+.nlx .nlx-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--nlx-on-deep-line);border:1px solid var(--nlx-on-deep-line);border-radius:var(--nlx-r);overflow:hidden}
+.nlx .nlx-kpi{background:var(--nlx-deep);padding:18px;display:grid;gap:6px;align-content:start}
+.nlx .nlx-kpi dt{font-size:13px;color:var(--nlx-on-deep-2)!important;font-weight:600}
+.nlx .nlx-kpi dd{font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.15}
+.nlx .nlx-kpi .nlx-small{font-size:13px}
+.nlx .nlx-ledger{display:grid}
+.nlx .nlx-ledger div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:11px 0;border-top:1px solid var(--nlx-on-deep-line);align-items:baseline}
+.nlx .nlx-ledger dt{font-size:15.5px}
+.nlx .nlx-ledger dd{font-weight:700;text-align:end;font-size:16.5px}
+.nlx .nlx-ledger .nlx-ledger-note{grid-column:1/-1;font-size:13px;color:var(--nlx-on-deep-2)!important}
+.nlx .nlx-band-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,48px)}
+
+/* segmented radio tabs */
+.nlx .nlx-seg{display:grid;gap:14px}
+.nlx .nlx-seg > input{position:absolute;opacity:0;pointer-events:none}
+.nlx .nlx-seg-labels{display:flex;flex-wrap:wrap;gap:8px}
+.nlx .nlx-seg-labels label{cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid var(--nlx-on-deep-line);font-size:14.5px;font-weight:700;color:var(--nlx-on-deep);background:transparent;line-height:1.3}
+.nlx .nlx-seg-panel{display:none}
+.nlx .nlx-seg > input:nth-of-type(1):checked ~ .nlx-seg-labels label:nth-of-type(1),
+.nlx .nlx-seg > input:nth-of-type(2):checked ~ .nlx-seg-labels label:nth-of-type(2),
+.nlx .nlx-seg > input:nth-of-type(3):checked ~ .nlx-seg-labels label:nth-of-type(3),
+.nlx .nlx-seg > input:nth-of-type(4):checked ~ .nlx-seg-labels label:nth-of-type(4){background:var(--nlx-on-deep);color:var(--nlx-deep);border-color:var(--nlx-on-deep)}
+.nlx .nlx-seg > input:nth-of-type(1):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(1),
+.nlx .nlx-seg > input:nth-of-type(2):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(2),
+.nlx .nlx-seg > input:nth-of-type(3):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(3),
+.nlx .nlx-seg > input:nth-of-type(4):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(4){display:grid}
+.nlx .nlx-seg > input:focus-visible ~ .nlx-seg-labels label{outline:1px dashed var(--nlx-on-deep-line)}
+
+/* comparison bars (drawn to one scale) */
+.nlx .nlx-bars{display:grid;gap:12px;align-content:start}
+.nlx .nlx-seg{align-content:start}
+.nlx .nlx-kpis--1{grid-template-columns:minmax(0,1fr)}
+.nlx .nlx-kpis--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nlx .nlx-kpis--3,.nlx .nlx-kpis--6{grid-template-columns:repeat(3,minmax(0,1fr))}
+.nlx .nlx-kpis--wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nlx .nlx-bar{display:grid;gap:6px}
+.nlx .nlx-bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14.5px}
+.nlx .nlx-bar-top>span:last-child{white-space:nowrap}
+.nlx .nlx-bar-track{height:10px;border-radius:6px;background:var(--nlx-on-deep-fill);overflow:hidden}
+.nlx .nlx-bar-track i{display:block;height:100%;border-radius:6px;background:var(--nlx-on-deep-2)}
+.nlx .nlx-bar--this .nlx-bar-track i{background:var(--nlx-mist)}
+.nlx .nlx-bar--this .nlx-bar-top{font-weight:700}
+
+/* comps table */
+.nlx .nlx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--nlx-line);border-radius:var(--nlx-r);background:var(--nlx-surf)}
+.nlx table.nlx-table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.nlx .nlx-table th{font-size:12.5px;font-weight:700;color:var(--nlx-mute);text-align:start;padding:11px 14px;background:var(--nlx-paper);border-bottom:1px solid var(--nlx-line);white-space:nowrap}
+.nlx .nlx-table td{padding:11px 14px;border-bottom:1px solid var(--nlx-line);vertical-align:top;color:var(--nlx-ink)}
+.nlx .nlx-table tr:last-child td{border-bottom:0}
+.nlx .nlx-table td.nlx-r{text-align:end;white-space:nowrap}
+.nlx .nlx-table caption{caption-side:bottom;text-align:start;padding:10px 14px;font-size:13px;color:var(--nlx-mute)}
+.nlx .nlx-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.nlx .nlx-stats div{padding:12px 0;border-top:1px solid var(--nlx-line);display:grid;gap:2px}
+.nlx .nlx-stats dt{font-size:14px;color:var(--nlx-mute)}
+.nlx .nlx-stats dd{font-weight:600;line-height:1.5}
+
+/* checks */
+.nlx .nlx-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;counter-reset:nlxq}
+.nlx .nlx-checks li{padding:12px 0;border-top:1px solid var(--nlx-line);display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:15.5px;color:var(--nlx-ink2)}
+.nlx .nlx-checks li::before{content:"";width:18px;height:18px;margin-top:3px;border:1.5px solid var(--nlx-sea);border-radius:4px}
+
+/* faq */
+.nlx .nlx-faq{display:grid}
+.nlx .nlx-faq details{border-top:1px solid var(--nlx-line)}
+.nlx .nlx-faq summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+.nlx .nlx-faq summary::-webkit-details-marker{display:none}
+.nlx .nlx-faq summary::after{content:"+";font-weight:400;color:var(--nlx-sea);font-size:22px;line-height:1}
+.nlx .nlx-faq details[open] summary::after{content:"\2212"}
+.nlx .nlx-faq .nlx-faq-a{padding:0 0 18px;color:var(--nlx-ink2);max-width:66ch}
+
+/* agent card */
+.nlx .nlx-agent{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px 24px;align-items:center;background:var(--nlx-sand);border:1px solid var(--nlx-line);border-radius:var(--nlx-r-lg);padding:clamp(20px,3vw,32px)}
+.nlx .nlx-agent .nlx-monogram{width:64px;height:64px;font-size:26px}
+.nlx .nlx-agent-name{font-family:var(--nlx-serif)!important;font-weight:600;font-size:24px;line-height:1.25}
+.nlx .nlx-agent .nlx-cta{grid-auto-flow:column}
+
+/* sources */
+.nlx .nlx-sources{display:grid;gap:10px;font-size:13.5px;color:var(--nlx-ink2)}
+.nlx .nlx-sources ol{list-style:decimal;padding-inline-start:22px;display:grid;gap:6px}
+.nlx .nlx-sources li{padding-inline-start:4px;overflow-wrap:anywhere}
+.nlx .nlx-legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13.5px;color:var(--nlx-mute)}
+.nlx .nlx-disclaimer{font-size:13.5px;line-height:1.65;color:var(--nlx-mute);max-width:90ch}
+
+/* mobile action bar */
+.nlx .nlx-mbar{display:none}
+
+/* responsive */
+@media (max-width:1080px){
+  .nlx .nlx-layout{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-rail{position:static;order:-1;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .nlx .nlx-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nlx .nlx-band-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .nlx{font-size:16.5px}
+  .nlx .nlx-mast{grid-template-columns:minmax(0,1fr);align-items:start}
+  .nlx .nlx-plate{aspect-ratio:4/3}
+  .nlx .nlx-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nlx .nlx-fact:nth-child(odd){border-inline-start:0}
+  .nlx .nlx-fact{border-top:1px solid var(--nlx-line)}
+  .nlx .nlx-fact:nth-child(-n+2){border-top:0}
+  .nlx .nlx-features,.nlx .nlx-two,.nlx .nlx-checks,.nlx .nlx-stats{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-row{grid-template-columns:minmax(0,1fr) auto}
+  .nlx .nlx-row dd{grid-column:1/-1;grid-row:2}
+  .nlx .nlx-row .nlx-row-tag{grid-column:2;grid-row:1}
+  .nlx .nlx-kpis{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-agent{grid-template-columns:auto minmax(0,1fr)}
+  .nlx .nlx-agent .nlx-cta{grid-column:1/-1;grid-auto-flow:row}
+  .nlx .nlx-prose p{font-size:17px}
+  .nlx .nlx-mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:0;z-index:20;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--nlx-paper) 72%,rgba(247,246,242,0))}
+}
+@media (prefers-reduced-motion:reduce){.nlx *{transition:none!important;scroll-behavior:auto!important}}
+@media print{.nlx .nlx-rail,.nlx .nlx-mbar,.nlx .nlx-cta{display:none!important}.nlx .nlx-band{background:#fff;color:#000;border:1px solid #999}}
+
+/* Catalog: listing cards for an index page or a "more from this broker" band. Root: <section class="nlx nlx-cat"> */
+.nlx.nlx-cat{padding-block:clamp(24px,4vw,48px)}
+.nlx .nlx-cat-head{display:grid;gap:8px;margin-block-end:clamp(20px,3vw,32px);max-width:62ch}
+.nlx.nlx .nlx-cat-title{font-family:var(--nlx-serif)!important;font-weight:600!important;font-size:clamp(28px,3.4vw,40px)!important;line-height:1.2!important;color:var(--nlx-ink)!important;margin:0!important;text-wrap:balance}
+.nlx .nlx-cat-lead{margin:0;color:var(--nlx-ink2)}
+.nlx .nlx-cat-group{margin-block:clamp(20px,3vw,32px) 12px;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--nlx-mute)}
+.nlx .nlx-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px}
+.nlx a.nlx-card-l{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;background:var(--nlx-surf);border:1px solid var(--nlx-line);border-radius:var(--nlx-r);padding:20px 22px 16px;text-decoration:none!important;color:inherit!important;transition:border-color .2s ease,box-shadow .2s ease}
+.nlx a.nlx-card-l:hover{border-color:var(--nlx-sea);box-shadow:var(--nlx-shadow)}
+.nlx a.nlx-card-l:focus-visible{outline:2px solid var(--nlx-sea);outline-offset:3px}
+.nlx .nlx-card-kicker{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--nlx-sea)}
+.nlx.nlx .nlx-card-title{font-family:var(--nlx-serif)!important;font-weight:600!important;font-size:20px!important;line-height:1.35!important;color:var(--nlx-ink)!important;margin:0!important;text-wrap:balance}
+.nlx .nlx-card-body{display:grid;gap:8px;align-content:start}
+.nlx .nlx-card-price{font-size:22px;font-weight:700;line-height:1.2}
+.nlx .nlx-card-price small{font-size:14px;font-weight:600;color:var(--nlx-mute)}
+.nlx .nlx-card-specs{display:flex;flex-wrap:wrap;gap:2px 14px;margin:0;padding:0;list-style:none;font-size:14.5px;color:var(--nlx-ink2)}
+.nlx .nlx-card-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--nlx-line);padding-top:10px;font-size:12.5px;color:var(--nlx-mute)}
+.nlx .nlx-card-foot b{color:var(--nlx-sea);font-weight:700;white-space:nowrap}
+
+/* Photo plate: replace the SVG placeholder once the broker's photos are uploaded.
+   <figure class="nlx-plate nlx-plate--photo"><img src="..." alt="..." width="2400" height="1600" loading="eager" decoding="async"><span class="nlx-plate-name">...</span></figure> */
+.nlx .nlx-plate--photo{background:var(--nlx-deep)}
+.nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.nlx .nlx-plate--photo .nlx-plate-name{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.nlx .nlx-sec{scroll-margin-top:calc(var(--nlx-header-offset,96px) + 16px)}
+
+/* 24.9.2026 (HAD-251): the portal's own layers (generic 3D, price box, facts, claim card, similar listings, booking band,
+   floating pills, Yoast breadcrumb, featured image) are no longer printed on an owner's listing at all: the rule lives in
+   plugins/nadlan-config/inc/property-owner.php, server side. Nothing here hides them any more. */
+.nlx .nlx-toc .nlx-home{font-weight:600;color:var(--nlx-sea,#2F6F86)}
+.single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+.nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
+.nlx .nlx-plate--photo{background:var(--nlx-deep);aspect-ratio:var(--nlx-cover-ar,1.5);height:auto;max-height:78vh;position:relative;overflow:hidden}
+.nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+.nlx .nlx-gallery{columns:3;column-gap:12px;margin:0}
+.nlx .nlx-gallery figure{break-inside:avoid;margin:0 0 12px;border-radius:var(--nlx-r,8px);overflow:hidden;background:var(--nlx-sand,#EEE9DD)}
+.nlx .nlx-gallery img{width:100%;height:auto;display:block}
+.nlx .nlx-toc .nlx-lang{margin-inline-start:auto;font-weight:600}
+@media (max-width:900px){.nlx .nlx-gallery{columns:2}}
+@media (max-width:520px){.nlx .nlx-gallery{columns:1}}
+
+body.page-id-7812 .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+body.page-id-7812 .wp-block-post-featured-image,body.page-id-7812 .yoast-breadcrumbs,body.page-id-7812 .nlcta-start,body.page-id-7812 .nlcta-wa{display:none!important}
+
+</style>
+
+<article class="nlx" lang="en" dir="ltr" id="nlx-L07-en" data-listing="L07">
+<div class="nlx-wrap">
+<header class="nlx-mast">
+<div class="nlx-mast-copy">
+<p class="nlx-kicker">For sale · Kochav HaTzafon, north Tel Aviv</p>
+<h1 class="nlx-title">New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon</h1>
+<p class="nlx-dek">One floor below the top, in a new boutique building in Kochav HaTzafon: five rooms on about 190 sqm, and beside them 80 sqm of terraces that open onto the Tel Aviv skyline. NIS 18,000,000.</p>
+<div class="nlx-chips"><span class="nlx-chip nlx-chip--sea">Exclusive: <a href="https://nad-lan.co.il/en/brokers/meital-katzir/">Meital Katzir, Real Estate by the Sea</a></span><span class="nlx-chip">New boutique building</span><span class="nlx-chip">Children&#39;s wing with a sea-view balcony</span></div>
+</div>
+<figure class="nlx-plate nlx-plate--photo" style="--nlx-cover-ar:1.523"><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="2048" height="1345" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-300x197.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-600x394.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-768x504.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-1024x673.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-1536x1009.jpg 1536w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg 2048w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 320px, 520px" loading="eager" decoding="async" fetchpriority="high"><span class="nlx-plate-name">Kochav HaTzafon, floor 11</span></figure>
+</header>
+
+<dl class="nlx-facts">
+<div class="nlx-fact"><dt>Rooms</dt><dd><span class="nlx-num">5</span></dd></div>
+<div class="nlx-fact"><dt>Built area</dt><dd>about <span class="nlx-num">190</span> sqm</dd></div>
+<div class="nlx-fact"><dt>Terraces</dt><dd><span class="nlx-num">76</span> to <span class="nlx-num">80</span> sqm</dd></div>
+<div class="nlx-fact"><dt>Floor</dt><dd><span class="nlx-num">11</span> of <span class="nlx-num">12</span></dd></div>
+<div class="nlx-fact"><dt>Exposures</dt><dd><span class="nlx-num">3</span> to <span class="nlx-num">4</span></dd></div>
+<div class="nlx-fact"><dt>Parking</dt><dd><span class="nlx-num">2</span></dd></div>
+<div class="nlx-fact"><dt>Storage</dt><dd>Yes</dd></div>
+<div class="nlx-fact"><dt>Safe room, lift</dt><dd>Yes</dd></div>
+</dl>
+<nav class="nlx-toc" aria-label="On this page"><a class="nlx-home" href="https://nad-lan.co.il/en/brokers/meital-katzir/">Meital Katzir’s site</a><a href="#home-L07-en">Residence</a><a href="#building-L07-en">Building</a><a href="#location-L07-en">Location</a><a href="#future-L07-en">Planning</a><a href="#numbers-L07-en">Numbers</a><a href="#market-L07-en">Market</a><a href="#checks-L07-en">Checks</a><a href="#faq-L07-en">FAQ</a><a class="nlx-lang" href="https://nad-lan.co.il/properties/kochav-hatzafon-new-mini-penthouse-for-sale/" hreflang="he" lang="he">עברית</a></nav>
+
+<div class="nlx-layout">
+<div class="nlx-main">
+
+<section class="nlx-sec" id="photos-L07-en"><div class="nlx-sec-head"><p class="nlx-eyebrow">Photographs</p><h2 class="nlx-h2">The home in pictures</h2></div><div class="nlx-gallery"><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="2048" height="1345" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-300x197.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-600x394.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-768x504.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-1024x673.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-1536x1009.jpg 1536w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg 2048w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המטבח והמקרר האינטגרלי" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המטבח והמקרר האינטגרלי" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, אגף הילדים והמרפסת לים" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, אגף הילדים והמרפסת לים" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, תמונה 8" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, תמונה 9" width="1440" height="1440" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg 1440w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure></div></section>
+<section class="nlx-sec" id="home-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">The residence</p><h2 class="nlx-h2">Floor 11, views both ways, and the scale of a house</h2></div>
+<div class="nlx-prose"><p>A new mini penthouse on floor <span class="nlx-num">11</span> of <span class="nlx-num">12,</span> in a boutique building in Kochav HaTzafon, the neighborhood between Yarkon Park and Ramat Aviv. Five rooms on about <span class="nlx-num">190</span> sqm built, with terraces totaling <span class="nlx-num">76</span> to <span class="nlx-num">80</span> sqm and open views across Tel Aviv. The price is NIS&nbsp;<span class="nlx-num">18,000,000.</span></p><p>The plan includes a generous master suite, a children&#x27;s wing with a sea-view balcony, a large living room and an equipped kitchen with a concealed integrated refrigerator. Custom joinery runs through the home, and the air conditioning is a VRF multi-split system. Two parking spaces, a storage room, a safe room and a lift come with the apartment.</p><p>The building has a residents&#x27; gym. At the edge of the neighborhood, a pedestrian and cycle bridge of about <span class="nlx-num">170</span> m from Levi Eshkol Street into Yarkon Park has been under construction since summer <span class="nlx-num">2026</span> and is expected to open in <span class="nlx-num">2027.</span></p></div>
+<ul class="nlx-features"><li><b>Floor <span class="nlx-num">11</span> of <span class="nlx-num">12</span></b><span>Open views across Tel Aviv</span></li><li><b>About <span class="nlx-num">190</span> sqm built</b><span>Five rooms and a generous master suite</span></li><li><b><span class="nlx-num">76</span> to <span class="nlx-num">80</span> sqm of terraces</b><span>Including a sea-view balcony off the children&#x27;s wing</span></li><li><b>VRF air conditioning</b><span>And a kitchen with a concealed integrated refrigerator</span></li><li><b>Two parking spaces and storage</b><span>A safe room and a lift</span></li><li><b>A bridge into Yarkon Park</b><span>About <span class="nlx-num">170</span> m, expected to open in <span class="nlx-num">2027</span></span></li></ul>
+<div class="nlx-spec">
+<div class="nlx-spec-group"><h3 class="nlx-h3">The residence </h3><dl class="nlx-rows">
+<div class="nlx-row"><dt>Type and rooms</dt><dd>Mini penthouse, <span class="nlx-num">5</span> rooms (Israeli count)</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Built area</dt><dd>About <span class="nlx-num">190</span> sqm built</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Terraces</dt><dd><span class="nlx-num">76</span> to <span class="nlx-num">80</span> sqm in total</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Floor</dt><dd><span class="nlx-num">11</span> of <span class="nlx-num">12</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Exposures</dt><dd><span class="nlx-num">3</span> or <span class="nlx-num">4</span> (the listings differ)</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Layout</dt><dd>Master suite, children&#x27;s wing with sea-view balcony, large living room</dd><span class="nlx-row-tag"></span></div>
+</dl></div>
+<div class="nlx-spec-group"><h3 class="nlx-h3">Specification and services </h3><dl class="nlx-rows">
+<div class="nlx-row"><dt>Kitchen</dt><dd>Equipped kitchen with appliances and a concealed integrated refrigerator</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Air conditioning</dt><dd>VRF multi-split system</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Joinery</dt><dd>Custom joinery</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Parking and storage</dt><dd><span class="nlx-num">2</span> parking spaces and a storage room (<span class="nlx-num">14</span> sqm in one listing)</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Safe room and lift</dt><dd>Marked on both listings</dd><span class="nlx-row-tag"></span></div>
+</dl></div>
+</div>
+</section>
+
+<section class="nlx-sec" id="building-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">The building</p><h2 class="nlx-h2">A new twelve-floor boutique building</h2><p class="nlx-lead">The building&#x27;s address, the developer and the management fee are given on direct request.</p></div>
+<dl class="nlx-rows">
+<div class="nlx-row"><dt>Location</dt><dd>Kochav HaTzafon, Tel Aviv-Yafo</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Floors</dt><dd><span class="nlx-num">12</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Year built</dt><dd><span class="nlx-num">2022</span> or <span class="nlx-num">2023</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Resident services</dt><dd>Gym</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>Price in US dollars</dt><dd>About USD <span class="nlx-num">5.9</span> million at the representative rate</dd><span class="nlx-row-tag"></span></div>
+</dl>
+</section>
+
+<section class="nlx-sec" id="location-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">The location</p><h2 class="nlx-h2">Kochav HaTzafon, the park to the south and Sde Dov to the north</h2></div>
+<div class="nlx-prose"><p>Kochav HaTzafon is bounded by Rokach Boulevard and Yarkon Park to the south, Namir Road to the east, Shai Agnon Street and the Sde Dov district to the north, and Ibn Gabirol to the west. It was built mostly in the 1990s and 2000s as <span class="nlx-num">8</span> to <span class="nlx-num">12</span>-floor blocks around a central park, alongside residential towers and boutique buildings. Data published by Mako put its median deal from <span class="nlx-num">2023</span> to October <span class="nlx-num">2025</span> at NIS&nbsp;<span class="nlx-num">6.1</span> million, the fourth highest in Israel.</p><p>Yarkon Park, about <span class="nlx-num">3,750</span> dunams including the Sportek, borders the neighborhood along Rokach Boulevard, and Tel Aviv Port is a <span class="nlx-num">220</span>-dunam leisure complex at the park&#x27;s end. At Rokach and Namir, the Seminar HaKibbutzim project plans three <span class="nlx-num">28</span>-floor residential towers with <span class="nlx-num">450</span> apartments.</p><p>The Green Line light rail is expected to open its southern section in <span class="nlx-num">2028</span> and the full line in <span class="nlx-num">2030,</span> with Reading station on the new bridge north of Rokach Boulevard. A new <span class="nlx-num">180</span> m pedestrian and cycle bridge over the Yarkon opened in May <span class="nlx-num">2026.</span></p></div>
+
+<div class="nlx-two">
+<div><h3 class="nlx-subhead">Schools</h3><ul class="nlx-items">
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">Kochav HaTzafon Elementary School</span></div><p>State school in the neighborhood, about <span class="nlx-num">82</span> pupils per grade; registration zone for the building to be confirmed</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">Ironi Kaf-Dalet (24), Amos Oz</span></div><p>Listed in the neighborhood, about <span class="nlx-num">47</span> pupils per grade; registration zone to be confirmed</p></li>
+</ul></div>
+<div><h3 class="nlx-subhead">Transport</h3><ul class="nlx-items">
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">Green Line light rail, Reading station</span></div><p>under construction; southern section expected <span class="nlx-num">2028</span> and full line <span class="nlx-num">2030</span>; Reading station to sit north of Rokach Blvd on the new Green Line bridge (covered station, <span class="nlx-num">12</span> m high)</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">Rokach - Levi Eshkol pedestrian and cycle bridge into Yarkon Park</span></div><p>under construction since summer <span class="nlx-num">2026,</span> opening expected <span class="nlx-num">2027</span>; about <span class="nlx-num">170</span> m long and <span class="nlx-num">6</span> m wide, accessible without elevators</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">Yarkon pedestrian and cycle bridge (Yarkon Park to Ibn Gabirol)</span></div><p>operating, opened May <span class="nlx-num">2026</span>; <span class="nlx-num">180</span> m by <span class="nlx-num">6</span> m</p></li>
+</ul></div>
+</div>
+</section>
+
+<section class="nlx-sec" id="future-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">Planning</p><h2 class="nlx-h2">What is planned nearby</h2><p class="nlx-lead">Published plans and works, and what they may mean for a buyer or tenant. Based on published reports; not a substitute for a check with the planning authority.</p></div>
+<ul class="nlx-items">
+<li class="nlx-item"><span class="nlx-item-title">The Rokach and Levi Eshkol bridge into Yarkon Park</span><p>A direct walking and cycling link from Levi Eshkol Street into the park from <span class="nlx-num">2027,</span> with works on Rokach Boulevard until then. The plan was approved in January <span class="nlx-num">2022</span> with NIS&nbsp;<span class="nlx-num">35</span> million allocated.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">Seminar HaKibbutzim project, Rokach Blvd corner Namir Rd</span><p>About <span class="nlx-num">55</span> dunams: three <span class="nlx-num">28</span>-floor towers with <span class="nlx-num">450</span> units and three <span class="nlx-num">6</span>-floor buildings along Maurizio Vitale St, up to <span class="nlx-num">1,550</span> sqm of commerce and <span class="nlx-num">4,600</span> sqm of public buildings. First phase (<span class="nlx-num">134</span> units and a new college building) about <span class="nlx-num">5</span> years; financing of about NIS&nbsp;<span class="nlx-num">1.7</span> billion. Years of works and new high-rise massing at the neighborhood&#x27;s south-east corner.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">Sde Dov district towers</span><p>The center plan, whose objections were rejected on <span class="nlx-num">3</span> February <span class="nlx-num">2025,</span> has <span class="nlx-num">7,128</span> homes in towers of <span class="nlx-num">20</span> and <span class="nlx-num">45</span> floors; most district apartments are expected within <span class="nlx-num">3</span> to <span class="nlx-num">6</span> years. Towers to the north may change the skyline and the view toward the sea.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">Green Line light rail</span><p>Better rail access from the Reading station north of Rokach Blvd once open (southern section <span class="nlx-num">2028,</span> full line <span class="nlx-num">2030</span>); construction around Rokach and the Yarkon until then.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">Reading power station site</span><p>Generation to end under the <span class="nlx-num">2024</span> decision, with part of the site going to civilian use and beach and the rest kept for storage and an undersea cable link; a conservation plan converts Reading A into a museum, visitor center and event space. Timing to be confirmed.</p></li>
+</ul>
+</section>
+
+<section class="nlx-sec" id="numbers-L07-en">
+<div class="nlx-band">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">The numbers</p><h2 class="nlx-h2">NIS 18,000,000, as a buyer does the math</h2><p class="nlx-small">The price of NIS&nbsp;<span class="nlx-num">18,000,000,</span> computed against the tax and lending rules published up to <span class="nlx-num">16</span> September <span class="nlx-num">2026.</span></p></div>
+<dl class="nlx-kpis nlx-kpis--4 nlx-kpis--wide">
+<div class="nlx-kpi"><dt>Asking price</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 18,000,000</span></span></dd><span class="nlx-small"><span class="nlx-num">≈ $5,903,575</span></span></div>
+<div class="nlx-kpi"><dt>Price per built sqm</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 94,737</span></span></dd><span class="nlx-small"></span></div>
+<div class="nlx-kpi"><dt>Average per sqm, Kochav HaTzafon</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 51,000</span></span></dd><span class="nlx-small">NIS 49,000 to 51,000, Bizportal, July 2026</span></div>
+<div class="nlx-kpi"><dt>Max mortgage, single home</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 13,500,000</span></span></dd><span class="nlx-small">75% loan-to-value, Bank of Israel</span></div>
+</dl>
+<div class="nlx-band-grid">
+<div class="nlx-seg">
+<h3 class="nlx-h3">What it costs, by buyer profile</h3>
+<input type="radio" name="nlx-buyer-L07-en" id="nlx-buyer-L07-en-1" checked>
+<input type="radio" name="nlx-buyer-L07-en" id="nlx-buyer-L07-en-2">
+<input type="radio" name="nlx-buyer-L07-en" id="nlx-buyer-L07-en-3">
+<div class="nlx-seg-labels" role="presentation"><label for="nlx-buyer-L07-en-1">Single home, Israeli resident</label><label for="nlx-buyer-L07-en-2">Additional home or foreign resident</label><label for="nlx-buyer-L07-en-3">New immigrant (oleh)</label></div>
+<div class="nlx-seg-panels"><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>Purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 1,153,886</span></span></dd><span class="nlx-ledger-note">Effective rate <span class="nlx-num">6.41%</span></span></div>
+<div><dt>Maximum loan</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 13,500,000</span></span></dd><span class="nlx-ledger-note">75% of value</span></div>
+<div><dt>Minimum equity</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 4,500,000</span></span></dd></div>
+<div><dt>Equity plus purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 5,653,886</span></span></dd><span class="nlx-ledger-note">Before legal, brokerage and appraisal fees</span></div>
+</dl><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>Purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 1,678,899</span></span></dd><span class="nlx-ledger-note">Effective rate <span class="nlx-num">9.33%</span></span></div>
+<div><dt>Maximum loan</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 9,000,000</span></span></dd><span class="nlx-ledger-note">50% for an investment home or a buyer who is not an Israeli citizen</span></div>
+<div><dt>Minimum equity</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 9,000,000</span></span></dd></div>
+<div><dt>Equity plus purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 10,678,899</span></span></dd><span class="nlx-ledger-note">Before legal, brokerage and appraisal fees</span></div>
+</dl><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>Purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 975,976</span></span></dd><span class="nlx-ledger-note">Effective rate <span class="nlx-num">5.42%</span>. Eligibility: from one year before to seven years after aliyah</span></div>
+<div><dt>Maximum loan</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 13,500,000</span></span></dd><span class="nlx-ledger-note">75% of value</span></div>
+<div><dt>Minimum equity</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 4,500,000</span></span></dd></div>
+<div><dt>Equity plus purchase tax</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 5,475,976</span></span></dd><span class="nlx-ledger-note">Before legal, brokerage and appraisal fees</span></div>
+</dl></div>
+<p class="nlx-small">Purchase tax brackets are frozen until 15 January 2028. The 8% and 10% rates for additional homes are a temporary order running to early 2027. Not tax advice.</p>
+</div>
+<div class="nlx-bars">
+<h3 class="nlx-h3">Price per sqm against the market</h3>
+<div class="nlx-bar nlx-bar--this"><div class="nlx-bar-top"><span>This home, on <span class="nlx-num">190</span> sqm built</span><span><span class="nlx-money"><span class="nlx-num">NIS 94,737</span></span></span></div><div class="nlx-bar-track"><i style="width:99.7%"></i></div></div>
+<div class="nlx-bar nlx-bar--this"><div class="nlx-bar-top"><span>This home, terraces at one third</span><span><span class="nlx-money"><span class="nlx-num">NIS 83,077</span></span></span></div><div class="nlx-bar-track"><i style="width:87.4%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>New projects in the neighborhood, up to</span><span>NIS&nbsp;<span class="nlx-num">90,000</span> to <span class="nlx-num">95,000</span></span></div><div class="nlx-bar-track"><i style="width:100.0%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>Sale: Seminar HaKibbutzim, <span class="nlx-num">4</span> rooms, July <span class="nlx-num">2026</span></span><span><span class="nlx-money"><span class="nlx-num">NIS 75,793</span></span></span></div><div class="nlx-bar-track"><i style="width:79.8%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>Sale: Shai Agnon <span class="nlx-num">40,</span> <span class="nlx-num">5</span> rooms, <span class="nlx-num">2026</span></span><span><span class="nlx-money"><span class="nlx-num">NIS 75,281</span></span></span></div><div class="nlx-bar-track"><i style="width:79.2%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>Neighborhood average</span><span>NIS&nbsp;<span class="nlx-num">49,000</span> to <span class="nlx-num">51,000</span></span></div><div class="nlx-bar-track"><i style="width:53.7%"></i></div></div>
+<p class="nlx-small">All bars share one scale. Weighting terraces at a third or a half of their area is a common convention in deal reports.</p>
+</div>
+</div>
+<div>
+<h3 class="nlx-h3">Running costs, yield and currency</h3>
+<dl class="nlx-ledger">
+<div><dt>Per weighted sqm, terraces at one third</dt><dd>NIS&nbsp;<span class="nlx-num">83,077</span></dd><span class="nlx-ledger-note"><span class="nlx-num">18,000,000</span> / (<span class="nlx-num">190</span> + <span class="nlx-num">80 / 3</span>)</span></div>
+<div><dt>Per weighted sqm, terraces at one half</dt><dd>NIS&nbsp;<span class="nlx-num">78,261</span></dd><span class="nlx-ledger-note"><span class="nlx-num">18,000,000</span> / (<span class="nlx-num">190</span> + <span class="nlx-num">80 / 2</span>)</span></div>
+<div><dt>Arnona, annual estimate</dt><dd>NIS&nbsp;<span class="nlx-num">20,706-37,692</span></dd><span class="nlx-ledger-note"><span class="nlx-num">190</span> sqm in zone <span class="nlx-num">2</span> up to <span class="nlx-num">270</span> sqm including terraces in zone <span class="nlx-num">1,</span> at the over-<span class="nlx-num">140</span> sqm rate. The zone and the way open terraces are charged are to be confirmed.</span></div>
+<div><dt>Management fee</dt><dd>Not published</dd></div>
+<div><dt>Deals of NIS&nbsp;<span class="nlx-num">10</span> million and more in <span class="nlx-num">2025</span></dt><dd><span class="nlx-num">635</span></dd><span class="nlx-ledger-note"><span class="nlx-num">60%</span> of them in Tel Aviv</span></div>
+<div><dt>Representative USD and EUR rates</dt><dd><span class="nlx-num">USD 1 = NIS 3.0490 · EUR 1 = NIS 3.5169</span></dd><span class="nlx-ledger-note">Bank of Israel, 15 Sep 2026</span></div>
+<div><dt>Bank of Israel rate and prime</dt><dd><span class="nlx-num">3.25% · 4.75%</span></dd><span class="nlx-ledger-note">Decision of 1 Sep 2026</span></div>
+</dl>
+</div>
+<p class="nlx-small">All figures in this section are computed illustrations, not a quote, an appraisal or advice.</p>
+</div>
+</section>
+
+<section class="nlx-sec" id="market-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">The market</p><h2 class="nlx-h2">The price against the market in Kochav HaTzafon</h2><p class="nlx-lead">Sales in <span class="nlx-num">2025</span> and <span class="nlx-num">2026</span> in and around Kochav HaTzafon, live penthouse and duplex listings, and Tel Aviv market data. Some sales are off-plan purchases in new projects.</p></div>
+<dl class="nlx-stats">
+<div><dt>Average price per sqm, Kochav HaTzafon <span class="nlx-muted">(<span class="nlx-num">Jul 2026</span>)</span></dt><dd>About NIS&nbsp;<span class="nlx-num">49,000-51,000</span>; new projects along and around Shai Agnon reach NIS&nbsp;<span class="nlx-num">90,000</span> and more</dd></div>
+<div><dt>Typical prices <span class="nlx-muted">(<span class="nlx-num">Jul 2026</span>)</span></dt><dd><span class="nlx-num">4</span>-room apartment about NIS&nbsp;<span class="nlx-num">4.9</span> million; new <span class="nlx-num">4-5</span> room units offered from about NIS&nbsp;<span class="nlx-num">5.39</span> million</dd></div>
+<div><dt>Average rent and gross yield <span class="nlx-muted">(<span class="nlx-num">Jul 2026</span>)</span></dt><dd>About NIS&nbsp;<span class="nlx-num">13,900</span> per month; gross yield about <span class="nlx-num">3%</span></dd></div>
+<div><dt>Median deal price, early <span class="nlx-num">2023</span> to October <span class="nlx-num">2025</span> <span class="nlx-muted">(<span class="nlx-num">Oct 2025</span>)</span></dt><dd>NIS&nbsp;<span class="nlx-num">6.1</span> million, 4th highest neighborhood in Israel (Eshkol, most likely the Sde Dov Eshkol compound, first at NIS&nbsp;<span class="nlx-num">7.2</span> million)</dd></div>
+<div><dt>Sde Dov new-build benchmark <span class="nlx-muted">(<span class="nlx-num">Feb 2026</span>)</span></dt><dd>Average NIS&nbsp;<span class="nlx-num">79,000-85,000</span> per sqm; a floor-<span class="nlx-num">15</span> penthouse above NIS&nbsp;<span class="nlx-num">103,000</span> per sqm; penthouses about <span class="nlx-num">30%</span> above standard units (collaboration content)</dd></div>
+<div><dt>This unit against the neighborhood average <span class="nlx-muted">(<span class="nlx-num">Sep 2026</span>)</span></dt><dd>NIS&nbsp;<span class="nlx-num">91,371-94,737</span> per built sqm is about <span class="nlx-num">1.8</span> to <span class="nlx-num">1.9</span> times the NIS&nbsp;<span class="nlx-num">49,000-51,000</span> average (computed: <span class="nlx-num">91,371 / 51,000</span> and <span class="nlx-num">94,737 / 49,000</span>)</dd></div>
+<div><dt>How terraces are weighted <span class="nlx-muted">(<span class="nlx-num">Jul 2025</span>)</span></dt><dd>Globes valued a <span class="nlx-num">2025</span> Levi Eshkol penthouse at NIS&nbsp;<span class="nlx-num">35,300</span> per sqm counting half the terrace area and NIS&nbsp;<span class="nlx-num">38,800</span> counting one third, which it said is done in other methods</dd></div>
+<div><dt>Deals of NIS&nbsp;<span class="nlx-num">10</span> million and more <span class="nlx-muted">(<span class="nlx-num">Sep 2026</span>)</span></dt><dd><span class="nlx-num">635</span> in Israel in <span class="nlx-num">2025,</span> <span class="nlx-num">60%</span> of them in Tel Aviv</dd></div>
+<div><dt>Unsold new apartments, Tel Aviv <span class="nlx-muted">(<span class="nlx-num">Sep 2026</span>)</span></dt><dd><span class="nlx-num">9,725</span></dd></div>
+<div><dt>CBS price index, Tel Aviv district <span class="nlx-muted">(<span class="nlx-num">Jul 2026</span>)</span></dt><dd><span class="nlx-num">+0.7%</span> in June-July <span class="nlx-num">2026</span>; <span class="nlx-num">-0.9%</span> year on year</dd></div>
+<div><dt>CBS resale price index, Tel Aviv <span class="nlx-muted">(<span class="nlx-num">Jun 2026</span>)</span></dt><dd><span class="nlx-num">-2.0%</span> in Q2 <span class="nlx-num">2026</span> against Q1</dd></div>
+</dl>
+<div><h3 class="nlx-subhead">Sales and asking prices for comparison</h3><div class="nlx-scroll" role="region" aria-label="Sales and asking prices for comparison" tabindex="0"><table class="nlx-table">
+<thead><tr><th scope="col">Date</th><th scope="col">Location</th><th scope="col">Rooms</th><th scope="col">sqm</th><th scope="col">Floor</th><th scope="col">Price</th><th scope="col">Per sqm</th><th scope="col">Type</th></tr></thead>
+<tbody><tr><td>Reported <span class="nlx-num">Jul 2025</span></td><td>Levi Eshkol Blvd, Plan Lamed: penthouse in a building about <span class="nlx-num">40</span> years old</td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">165</span></td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 7,950,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 48,182</span></span></td><td></td></tr>
+<tr><td>Reported <span class="nlx-num">Dec 2025</span></td><td>Hagag FIRST tower, Sde Dov</td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">260</span></td><td class="nlx-r"><span class="nlx-num">39</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 31,041,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 119,388</span></span></td><td></td></tr>
+<tr><td>Reported <span class="nlx-num">Jul 2026</span></td><td>Shai Agnon <span class="nlx-num">40,</span> Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">133.5</span></td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 10,050,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 75,281</span></span></td><td></td></tr>
+<tr><td>Reported <span class="nlx-num">Jul 2026</span></td><td>Levi Eshkol <span class="nlx-num">16,</span> Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-num">135</span></td><td class="nlx-r"><span class="nlx-num">16</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 10,000,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 74,074</span></span></td><td></td></tr>
+<tr><td>Reported <span class="nlx-num">Jul 2026</span></td><td>Maurizio Vitale <span class="nlx-num">3,</span> Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">121</span></td><td class="nlx-r"><span class="nlx-num">1</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 7,100,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 58,678</span></span></td><td></td></tr>
+<tr><td><span class="nlx-num">9 Jul 2026</span></td><td>Levi Eshkol St (house number unclear), listed under Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">4.5</span></td><td class="nlx-r"><span class="nlx-num">125</span></td><td class="nlx-r"><span class="nlx-num">13</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 10,000,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 80,000</span></span></td><td></td></tr>
+<tr><td><span class="nlx-num">12 Jul 2026</span></td><td>Seminar HaKibbutzim project, Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">126</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 9,550,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 75,793</span></span></td><td></td></tr>
+<tr><td><span class="nlx-num">14 Jul 2026</span></td><td>Isaac Stern <span class="nlx-num">18,</span> Lamed HaHadasha</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">123</span></td><td class="nlx-r"><span class="nlx-num">6</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 7,550,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 61,382</span></span></td><td></td></tr>
+<tr><td>Reported <span class="nlx-num">Apr 2025</span></td><td><span class="nlx-num">25</span>-floor tower, Kochav HaTzafon: full-floor penthouse</td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">180</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 37,000,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 205,556</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Sportek TLV towers (Hagag Group), Levi Eshkol St, Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">6</span></td><td class="nlx-r"><span class="nlx-num">192</span></td><td class="nlx-r"><span class="nlx-num">20</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 20,000,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 104,167</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Levi Eshkol St, Kochav HaTzafon: new duplex</td><td class="nlx-r"><span class="nlx-num">6.5</span></td><td class="nlx-r"><span class="nlx-num">200</span></td><td class="nlx-r"><span class="nlx-num">2</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 15,500,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 77,500</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Kochav HaTzafon: penthouse duplex (Boney HaIr St)</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">157</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 12,500,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 79,618</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Shai Agnon <span class="nlx-num">28,</span> Kochav HaTzafon (the Philharmonic project, from a rental listing at this address)</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">130</span></td><td class="nlx-r"><span class="nlx-num">3</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 11,900,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 91,538</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Meir Yaari St, Kochav HaTzafon: penthouse duplex</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">207</span></td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 10,450,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 50,483</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Savyonei Ramat Aviv, Kochav HaTzafon: mini penthouse</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">135</span></td><td class="nlx-r"><span class="nlx-num">11</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 10,500,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 77,778</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Sde Dov Eshkol: <span class="nlx-num">5</span>-room apartment</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">146</span></td><td class="nlx-r"><span class="nlx-num">10</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 9,200,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 63,014</span></span></td><td></td></tr>
+</tbody>
+<caption>Recorded sales are listed before asking prices. Price per sqm is computed on the published area. Verify sales on the Tax Authority real estate site. This is not an appraisal.</caption>
+</table></div></div>
+<div><h3 class="nlx-subhead">Rents for comparison</h3><div class="nlx-scroll" role="region" aria-label="Rents for comparison" tabindex="0"><table class="nlx-table">
+<thead><tr><th scope="col">Date</th><th scope="col">Location</th><th scope="col">Rooms</th><th scope="col">sqm</th><th scope="col">Rent / month</th><th scope="col">Per sqm</th><th scope="col">Type</th></tr></thead>
+<tbody><tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Savyonei Ramat Aviv, Kochav HaTzafon: mini penthouse</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">280</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 37,500</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 134</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Meir Yaari St, Kochav HaTzafon: penthouse</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">165</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 25,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 152</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Kochav HaTzafon: <span class="nlx-num">5.5</span>-room apartment</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">230</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 27,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 117</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Kochav HaTzafon: penthouse</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">130</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 18,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 138</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Abba Kovner <span class="nlx-num">13,</span> Kochav HaTzafon: penthouse</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">160</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 15,000</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 94</span></span></td><td></td></tr>
+<tr><td>Listing, <span class="nlx-num">16 Sep 2026</span></td><td>Philharmonic project, Shai Agnon <span class="nlx-num">28,</span> Kochav HaTzafon</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">103</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 21,300</span></span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">NIS 207</span></span></td><td></td></tr>
+</tbody>
+<caption>Asking rents from listings, not signed leases. Rent per sqm is computed on the published area.</caption>
+</table></div></div>
+
+</section>
+
+<section class="nlx-sec" id="checks-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">Before you decide</p><h2 class="nlx-h2">The checks worth making</h2><p class="nlx-lead">The questions a buyer at this price level asks, and the documents to obtain before negotiating.</p></div>
+<ul class="nlx-checks"><li><span>What is the exact address, block and parcel, and which developer built the building? Can we see the completion certificate (Form <span class="nlx-num">4</span>) and check condominium registration in the Land Registry?</span></li><li><span>What are the built area, terrace areas (open and covered) and exposures in the permit plans, the sale contract appendix and the arnona bill?</span></li><li><span>What is on floor <span class="nlx-num">12</span> above the unit, and does anyone hold remaining building rights on the roof?</span></li><li><span>What are the monthly management fee (including the gym) and the annual arnona, and in which arnona zone and building code is the property?</span></li><li><span>Are the <span class="nlx-num">2</span> parking spaces and the storage room registered or attached to the unit, and where are they?</span></li><li><span>Which Sale (Apartments) Law inspection and warranty periods are still open, and have defects been reported to the developer?</span></li><li><span>What can be built facing the children&#x27;s wing sea-view balcony and the living room views (Sde Dov towers, Seminar HaKibbutzim)? Can the seller provide a planning check?</span></li><li><span>How did the seller&#x27;s or buyer&#x27;s appraiser weight the terraces, and is there a recent appraisal?</span></li><li><span>Which elementary and secondary schools serve this address under the municipal registration zones?</span></li><li><span>The unit plan and building permit, including covered and open terrace areas</span></li><li><span>The occupancy certificate (Tofes <span class="nlx-num">4</span>) and condominium registration</span></li><li><span>A current appraisal and how it weights the terraces</span></li><li><span>A planning check of what could be built facing the views</span></li></ul>
+</section>
+
+<section class="nlx-sec" id="faq-L07-en">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">Questions and answers</p><h2 class="nlx-h2">Questions worth asking</h2></div>
+<div class="nlx-faq"><details><summary>What is the price per sqm?</summary><div class="nlx-faq-a">On <span class="nlx-num">190</span> sqm built, about NIS&nbsp;<span class="nlx-num">94,737</span> per sqm. Weighting the <span class="nlx-num">80</span> sqm of terraces at a third gives about NIS&nbsp;<span class="nlx-num">83,077,</span> and at a half about NIS&nbsp;<span class="nlx-num">78,261.</span> The neighborhood average is NIS&nbsp;<span class="nlx-num">49,000</span> to <span class="nlx-num">51,000</span> per sqm, and new projects there reach NIS&nbsp;<span class="nlx-num">90,000</span> to <span class="nlx-num">95,000.</span></div></details><details><summary>How much purchase tax would a buyer pay?</summary><div class="nlx-faq-a">Under the <span class="nlx-num">2026</span> brackets: about NIS&nbsp;<span class="nlx-num">1,153,886</span> for a single-home buyer (<span class="nlx-num">6.41%</span>), about NIS&nbsp;<span class="nlx-num">1,678,899</span> for an additional home or a foreign resident (<span class="nlx-num">9.33%</span>), and about NIS&nbsp;<span class="nlx-num">975,976</span> for an eligible new immigrant (<span class="nlx-num">5.42%</span>).</div></details><details><summary>How do you reach Yarkon Park on foot?</summary><div class="nlx-faq-a">A pedestrian and cycle bridge of about <span class="nlx-num">170</span> m from Levi Eshkol Street into the park has been under construction since summer <span class="nlx-num">2026</span> and is expected to open in <span class="nlx-num">2027.</span></div></details><details><summary>What could change in the view?</summary><div class="nlx-faq-a">The Sde Dov district is rising to the north, with towers of <span class="nlx-num">20</span> to <span class="nlx-num">45</span> floors in the center plan, and three <span class="nlx-num">28</span>-floor towers are planned at Rokach and Namir. Some open views in the neighborhood are expected to be blocked.</div></details><details><summary>What is it in dollars?</summary><div class="nlx-faq-a">At the <span class="nlx-num">15</span> September <span class="nlx-num">2026</span> representative rate, NIS&nbsp;<span class="nlx-num">18,000,000</span> is about USD <span class="nlx-num">5.9</span> million or EUR <span class="nlx-num">5.1</span> million.</div></details></div>
+</section>
+
+<section class="nlx-sec" id="broker-L07-en">
+<div class="nlx-agent">
+<span class="nlx-monogram" aria-hidden="true">M</span>
+<div><p class="nlx-eyebrow">The broker</p><p class="nlx-agent-name"><a href="https://nad-lan.co.il/en/brokers/meital-katzir/">Meital Katzir</a></p><p class="nlx-small">Real Estate by the Sea · licensed real estate broker, licence <span class="nlx-num">3131540</span> · +972 52-363-1582</p></div>
+<div class="nlx-cta"><a class="nlx-btn" href="https://wa.me/972523631582?text=Hello%20Meital%2C%20I%20would%20like%20details%20and%20a%20private%20viewing%3A%20New%20Mini%20Penthouse%20with%2080%20sqm%20of%20Terraces%2C%20Kochav%20HaTzafon%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Book a private viewing</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>Call +972 52-363-1582</span></a></div>
+</div>
+</section>
+
+</div>
+<aside class="nlx-rail" aria-label="Price and contact">
+<div class="nlx-card nlx-price-card">
+<span class="nlx-price-lbl">Asking price</span>
+<span class="nlx-price"><span class="nlx-money"><span class="nlx-num">NIS 18,000,000</span></span></span>
+<div class="nlx-price-sub"><span><span class="nlx-num">≈ $5,903,575</span></span><span><span class="nlx-num">≈ €5,118,144</span></span></div>
+<dl class="nlx-price-rows"><div><dt>Per built sqm</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 94,737</span></span></dd></div><div><dt>Per sqm incl. balcony</dt><dd><span class="nlx-money"><span class="nlx-num">NIS 66,667</span></span></dd></div><div><dt>Per weighted sqm, terraces at one third</dt><dd>NIS&nbsp;<span class="nlx-num">83,077</span></dd></div></dl>
+<div class="nlx-cta"><a class="nlx-btn" href="https://wa.me/972523631582?text=Hello%20Meital%2C%20I%20would%20like%20details%20and%20a%20private%20viewing%3A%20New%20Mini%20Penthouse%20with%2080%20sqm%20of%20Terraces%2C%20Kochav%20HaTzafon%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Book a private viewing</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>Call +972 52-363-1582</span></a></div>
+</div>
+<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">M</span><div><b><a href="https://nad-lan.co.il/en/brokers/meital-katzir/">Meital Katzir</a></b><br><span class="nlx-muted">Real Estate by the Sea · licensed real estate broker, licence <span class="nlx-num">3131540</span> · +972 52-363-1582</span></div></div>
+</aside>
+</div>
+<div class="nlx-mbar"><a class="nlx-btn" href="https://wa.me/972523631582?text=Hello%20Meital%2C%20I%20would%20like%20details%20and%20a%20private%20viewing%3A%20New%20Mini%20Penthouse%20with%2080%20sqm%20of%20Terraces%2C%20Kochav%20HaTzafon%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>WhatsApp</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>Call</span></a></div>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "RealEstateListing", "name": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon", "description": "Five rooms, about 190 sqm plus 76 to 80 sqm of terraces on floor 11 of 12 in a new boutique building. NIS 18,000,000 with price per sqm, taxes and comps.", "inLanguage": "en", "datePosted": "2026-09-16", "url": "https://nad-lan.co.il/en/properties/en-kochav-hatzafon-new-mini-penthouse-for-sale/", "about": {"@type": "Apartment", "name": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon", "address": {"@type": "PostalAddress", "addressLocality": "Tel Aviv-Yafo", "addressRegion": "Kochav HaTzafon", "addressCountry": "IL"}, "numberOfRooms": 5, "floorSize": {"@type": "QuantitativeValue", "value": 190, "unitCode": "MTK"}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "80 sqm terraces", "value": true}, {"@type": "LocationFeatureSpecification", "name": "VRF air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Safe room", "value": true}, {"@type": "LocationFeatureSpecification", "name": "2 parking spaces", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Storage", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true}], "image": ["https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg"]}, "offers": {"@type": "Offer", "priceCurrency": "ILS", "availability": "https://schema.org/InStock", "businessFunction": "http://purl.org/goodrelations/v1#Sell", "offeredBy": {"@type": "RealEstateAgent", "name": "Meital Katzir, Real Estate by the Sea", "telephone": "+972523631582"}, "price": 18000000}, "image": ["https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the price per sqm?", "acceptedAnswer": {"@type": "Answer", "text": "On 190 sqm built, about NIS 94,737 per sqm. Weighting the 80 sqm of terraces at a third gives about NIS 83,077, and at a half about NIS 78,261. The neighborhood average is NIS 49,000 to 51,000 per sqm, and new projects there reach NIS 90,000 to 95,000."}}, {"@type": "Question", "name": "How much purchase tax would a buyer pay?", "acceptedAnswer": {"@type": "Answer", "text": "Under the 2026 brackets: about NIS 1,153,886 for a single-home buyer (6.41%), about NIS 1,678,899 for an additional home or a foreign resident (9.33%), and about NIS 975,976 for an eligible new immigrant (5.42%)."}}, {"@type": "Question", "name": "How do you reach Yarkon Park on foot?", "acceptedAnswer": {"@type": "Answer", "text": "A pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into the park has been under construction since summer 2026 and is expected to open in 2027."}}, {"@type": "Question", "name": "What could change in the view?", "acceptedAnswer": {"@type": "Answer", "text": "The Sde Dov district is rising to the north, with towers of 20 to 45 floors in the center plan, and three 28-floor towers are planned at Rokach and Namir. Some open views in the neighborhood are expected to be blocked."}}, {"@type": "Question", "name": "What is it in dollars?", "acceptedAnswer": {"@type": "Answer", "text": "At the 15 September 2026 representative rate, NIS 18,000,000 is about USD 5.9 million or EUR 5.1 million."}}]}]}</script>
+</article>
+<!-- /wp:html -->

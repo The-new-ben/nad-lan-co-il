@@ -1,0 +1,544 @@
+<!-- wp:html -->
+<style>
+/* nad-lan.co.il · Prestige listing dossier (nlx) · v1.0 · 16.9.2026
+   Extends Skin A tokens (paper #F7F6F2, ink #14212B, sea #2F6F86, deep #1F4B5C, sand #EEE9DD, line #E3E1DA).
+   Scope: everything lives under .nlx so the block is safe inside .single-nadlan_property .entry-content.
+   No JavaScript required: tabs are radio inputs, FAQ uses <details>. */
+
+.nlx{
+  --nlx-paper:#F7F6F2; --nlx-surf:#FFFFFF; --nlx-ink:#14212B; --nlx-ink2:#3B4753; --nlx-mute:#6B7680;
+  --nlx-line:#E3E1DA; --nlx-sea:#2F6F86; --nlx-seah:#255C70; --nlx-deep:#1F4B5C; --nlx-sand:#EEE9DD; --nlx-mist:#CFE3EA;
+  --nlx-on-deep:#F7F6F2; --nlx-on-deep-2:rgba(247,246,242,.74); --nlx-on-deep-line:rgba(247,246,242,.18); --nlx-on-deep-fill:rgba(247,246,242,.08);
+  --nlx-serif:'Noto Serif Hebrew','Noto Serif','David Libre',Georgia,serif;
+  --nlx-sans:Assistant,'Segoe UI',Arial,sans-serif;
+  --nlx-r:8px; --nlx-r-lg:22px;
+  --nlx-shadow:0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04);
+  color:var(--nlx-ink); font-family:var(--nlx-sans); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+.nlx *,.nlx *::before,.nlx *::after{box-sizing:border-box}
+.nlx :where(h1,h2,h3,h4,p,ul,ol,dl,dd,figure,table){margin:0;padding:0}
+.nlx :where(ul,ol){list-style:none}
+.nlx img{max-width:100%;height:auto;display:block}
+.nlx a{color:var(--nlx-sea);text-decoration-thickness:1px;text-underline-offset:3px}
+.nlx a:hover{color:var(--nlx-seah)}
+.nlx :focus-visible{outline:2px solid var(--nlx-sea);outline-offset:3px;border-radius:4px}
+.nlx .nlx-num{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.nlx .nlx-wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px)}
+.nlx .nlx-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* type */
+.nlx.nlx .nlx-title,.nlx.nlx .nlx-h2,.nlx.nlx .nlx-h3,.nlx.nlx .nlx-serif{font-family:var(--nlx-serif)!important;font-weight:600!important;color:var(--nlx-ink)!important;letter-spacing:-.005em;text-wrap:balance}
+.nlx.nlx .nlx-title{font-size:clamp(34px,4.4vw,56px);line-height:1.12}
+.nlx.nlx .nlx-h2{font-size:clamp(26px,2.6vw,34px);line-height:1.2}
+.nlx.nlx .nlx-h3{font-size:21px;line-height:1.3}
+.nlx .nlx-kicker,.nlx .nlx-eyebrow{font-family:var(--nlx-sans)!important;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--nlx-sea);margin:0}
+.nlx[lang="en"] .nlx-kicker,.nlx[lang="en"] .nlx-eyebrow{text-transform:uppercase;letter-spacing:.09em;font-size:12px}
+.nlx.nlx .nlx-dek{font-family:var(--nlx-serif)!important;font-weight:500;font-size:clamp(19px,1.7vw,23px);line-height:1.55;color:var(--nlx-ink2);max-width:40ch}
+.nlx .nlx-muted{color:var(--nlx-mute)}
+.nlx .nlx-small{font-size:14px;line-height:1.55}
+
+/* chips, tags, buttons */
+.nlx .nlx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nlx .nlx-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--nlx-sand);border:1px solid var(--nlx-line);color:var(--nlx-deep);font-size:14px;font-weight:600;line-height:1.3}
+.nlx .nlx-chip--sea{background:var(--nlx-surf);border-color:var(--nlx-sea);color:var(--nlx-sea)}
+.nlx .nlx-tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11.5px;font-weight:700;line-height:1.6;letter-spacing:.02em;white-space:nowrap;vertical-align:middle;border:1px solid var(--nlx-line);color:var(--nlx-mute);background:var(--nlx-surf)}
+.nlx .nlx-tag--broker{color:#5C5347;background:#F4EFE6;border-color:#E2D8C6}
+.nlx .nlx-tag--calc{color:var(--nlx-ink2);background:var(--nlx-paper)}
+.nlx .nlx-tag--src{color:var(--nlx-sea);border-color:#BFD6DE;background:#F2F8FA}
+.nlx .nlx-tag--tx{color:#FFFFFF;background:var(--nlx-deep);border-color:var(--nlx-deep)}
+.nlx sup.nlx-fn{font-size:11px;font-weight:700;margin-inline-start:2px;vertical-align:super;line-height:0}
+.nlx sup.nlx-fn a{text-decoration:none}
+.nlx .nlx-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 20px;border-radius:999px;background:var(--nlx-sea);color:#fff!important;font-weight:700;font-size:16px;text-decoration:none!important;border:1px solid var(--nlx-sea);transition:background .15s ease}
+.nlx .nlx-btn:hover{background:var(--nlx-seah);border-color:var(--nlx-seah)}
+.nlx .nlx-btn--ghost{background:var(--nlx-surf);color:var(--nlx-deep)!important;border-color:var(--nlx-line)}
+.nlx .nlx-btn--ghost:hover{background:var(--nlx-sand);border-color:var(--nlx-line)}
+.nlx .nlx-btn svg{width:18px;height:18px;flex:none}
+
+/* masthead */
+.nlx .nlx-mast{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:end;padding-block:clamp(24px,4vw,48px) clamp(20px,3vw,36px)}
+.nlx .nlx-mast-copy{display:grid;gap:18px;align-content:end}
+.nlx .nlx-plate{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:var(--nlx-r);overflow:hidden;background:var(--nlx-sand);border:1px solid var(--nlx-line)}
+.nlx .nlx-plate--rent{background:#E4EEF1}
+.nlx .nlx-plate svg{position:absolute;inset:0;width:100%;height:100%}
+.nlx .nlx-plate figcaption{position:absolute;inset-inline:14px;bottom:12px;font-size:13px;color:var(--nlx-ink2);background:rgba(255,255,255,.82);padding:6px 10px;border-radius:6px;line-height:1.4;max-width:calc(100% - 28px)}
+.nlx .nlx-plate-name{position:absolute;inset-inline-start:22px;top:18px;font-family:var(--nlx-serif)!important;font-weight:600;font-size:clamp(22px,2.4vw,30px);color:var(--nlx-deep);line-height:1.2;max-width:70%}
+
+/* key facts */
+.nlx .nlx-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--nlx-line)}
+.nlx .nlx-fact{padding:18px 16px 16px;display:grid;gap:4px;align-content:start;border-inline-start:1px solid var(--nlx-line)}
+.nlx .nlx-fact:first-child{border-inline-start:0}
+.nlx .nlx-fact dt{font-size:13px;color:var(--nlx-mute);font-weight:600}
+.nlx .nlx-fact dd{font-size:23px;font-weight:700;line-height:1.25;color:var(--nlx-ink)}
+.nlx .nlx-fact dd .nlx-unit{font-size:15px;font-weight:600;color:var(--nlx-ink2);margin-inline-start:4px}
+.nlx .nlx-fact .nlx-tag{justify-self:start}
+
+.nlx .nlx-facts-note{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--nlx-mute);padding-top:10px}
+.nlx .nlx-money{white-space:nowrap}
+.nlx .nlx-item-title{font-weight:600}
+.nlx .nlx-spec-group h3 .nlx-tag{margin-inline-start:8px;letter-spacing:0}
+
+/* layout with rail */
+.nlx .nlx-layout{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:clamp(32px,4.5vw,64px);align-items:start;padding-block:clamp(28px,4vw,48px)}
+.nlx .nlx-main{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.nlx .nlx-main>*,.nlx .nlx-sec>*,.nlx .nlx-band>*,.nlx .nlx-band-grid>*,.nlx .nlx-two>*,.nlx .nlx-rail>*{min-width:0}
+.nlx .nlx-rail{position:sticky;top:calc(var(--nlx-header-offset,96px) + env(safe-area-inset-top,0px));display:grid;gap:16px}
+.nlx .nlx-card{background:var(--nlx-surf);border:1px solid var(--nlx-line);border-radius:var(--nlx-r);padding:22px}
+.nlx .nlx-price-card{box-shadow:var(--nlx-shadow);display:grid;gap:14px}
+.nlx .nlx-price-lbl{font-size:13px;font-weight:700;color:var(--nlx-mute);letter-spacing:.02em}
+.nlx .nlx-price{font-size:clamp(30px,3vw,38px);font-weight:700;line-height:1.1;color:var(--nlx-ink)}
+.nlx .nlx-price-sub{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--nlx-ink2)}
+.nlx .nlx-price-rows{display:grid;gap:8px;border-top:1px solid var(--nlx-line);padding-top:14px}
+.nlx .nlx-price-rows div{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.nlx .nlx-price-rows dt{color:var(--nlx-mute)}
+.nlx .nlx-price-rows dd{font-weight:700;text-align:end}
+.nlx .nlx-cta{display:grid;gap:10px}
+.nlx .nlx-agent-mini{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;font-size:14px;line-height:1.45}
+.nlx .nlx-monogram{width:44px;height:44px;border-radius:50%;background:var(--nlx-deep);color:var(--nlx-on-deep);display:grid;place-items:center;font-family:var(--nlx-serif)!important;font-weight:600;font-size:18px}
+
+/* sections */
+.nlx .nlx-sec{padding-block:clamp(36px,4.5vw,56px);border-top:1px solid var(--nlx-line);display:grid;gap:22px;scroll-margin-top:96px}
+.nlx .nlx-sec:first-child{border-top:0;padding-top:0}
+.nlx .nlx-sec-head{display:grid;gap:8px;max-width:62ch}
+.nlx .nlx-lead{font-size:18px;color:var(--nlx-ink2);max-width:64ch}
+.nlx .nlx-prose{display:grid;gap:16px;max-width:66ch}
+.nlx .nlx-prose p{font-size:18px;line-height:1.8;color:var(--nlx-ink)}
+.nlx .nlx-toc{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px;font-weight:600;padding-block:14px;border-bottom:1px solid var(--nlx-line)}
+.nlx .nlx-toc a{color:var(--nlx-ink2);text-decoration:none}
+.nlx .nlx-toc a:hover{color:var(--nlx-sea)}
+
+/* signature features */
+.nlx .nlx-features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.nlx .nlx-features li{padding:14px 0;border-top:1px solid var(--nlx-line);display:grid;gap:2px}
+.nlx .nlx-features b{font-weight:700;color:var(--nlx-ink)}
+.nlx .nlx-features span{color:var(--nlx-ink2);font-size:16px}
+
+/* spec tables (dl) */
+.nlx .nlx-spec{display:grid;gap:28px}
+.nlx .nlx-spec-group{display:grid;gap:0}
+.nlx .nlx-spec-group h3{font-family:var(--nlx-sans)!important;font-size:14px!important;font-weight:700!important;color:var(--nlx-mute)!important;letter-spacing:.03em;padding-bottom:8px}
+.nlx .nlx-rows{display:grid}
+.nlx .nlx-row{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.6fr) auto;gap:6px 18px;padding:12px 0;border-top:1px solid var(--nlx-line);align-items:baseline}
+.nlx .nlx-row dt{color:var(--nlx-ink2);font-weight:600;font-size:15.5px}
+.nlx .nlx-row dd{color:var(--nlx-ink);font-size:16px}
+.nlx .nlx-row .nlx-row-tag{justify-self:end}
+
+/* distances */
+.nlx .nlx-dist{display:grid}
+.nlx .nlx-dist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:12px 0;border-top:1px solid var(--nlx-line);align-items:center}
+.nlx .nlx-dist .nlx-dist-name{font-weight:600}
+.nlx .nlx-dist .nlx-dist-val{font-weight:700;text-align:end}
+.nlx .nlx-dist .nlx-meter{grid-column:1/-1;height:4px;border-radius:4px;background:var(--nlx-sand);overflow:hidden}
+.nlx .nlx-dist .nlx-meter i{display:block;height:100%;background:var(--nlx-sea);border-radius:4px}
+.nlx .nlx-dist .nlx-dist-note{grid-column:1/-1;font-size:13.5px;color:var(--nlx-mute)}
+
+/* generic item lists (schools, transport, planning) */
+.nlx .nlx-items{display:grid}
+.nlx .nlx-item{padding:14px 0;border-top:1px solid var(--nlx-line);display:grid;gap:5px}
+.nlx .nlx-item-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px}
+.nlx .nlx-item-title{font-weight:700;color:var(--nlx-ink)}
+.nlx .nlx-item p{font-size:15.5px;color:var(--nlx-ink2)}
+.nlx .nlx-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px}
+.nlx .nlx-subhead{font-family:var(--nlx-sans)!important;font-size:15px!important;font-weight:700!important;color:var(--nlx-ink)!important;margin-bottom:4px}
+
+/* numbers band: the one dark moment */
+.nlx .nlx-band{background:var(--nlx-deep);color:var(--nlx-on-deep);border-radius:var(--nlx-r-lg);padding:clamp(24px,4vw,48px);display:grid;gap:28px;margin-block:clamp(8px,2vw,16px)}
+.nlx.nlx .nlx-band .nlx-h2,.nlx.nlx .nlx-band .nlx-h3,.nlx.nlx .nlx-band h2,.nlx.nlx .nlx-band h3{color:var(--nlx-on-deep)!important}
+.nlx .nlx-band .nlx-eyebrow{color:var(--nlx-mist)}
+.nlx .nlx-band p,.nlx .nlx-band li,.nlx .nlx-band dt,.nlx .nlx-band dd,.nlx .nlx-band span,.nlx .nlx-band td,.nlx .nlx-band th,.nlx .nlx-band small,.nlx .nlx-band label{color:var(--nlx-on-deep)}
+.nlx .nlx-band .nlx-muted,.nlx .nlx-band .nlx-small{color:var(--nlx-on-deep-2)!important}
+.nlx .nlx-band a{color:var(--nlx-mist)}
+.nlx .nlx-band .nlx-tag{background:transparent;border-color:var(--nlx-on-deep-line);color:var(--nlx-on-deep-2)}
+.nlx .nlx-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--nlx-on-deep-line);border:1px solid var(--nlx-on-deep-line);border-radius:var(--nlx-r);overflow:hidden}
+.nlx .nlx-kpi{background:var(--nlx-deep);padding:18px;display:grid;gap:6px;align-content:start}
+.nlx .nlx-kpi dt{font-size:13px;color:var(--nlx-on-deep-2)!important;font-weight:600}
+.nlx .nlx-kpi dd{font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.15}
+.nlx .nlx-kpi .nlx-small{font-size:13px}
+.nlx .nlx-ledger{display:grid}
+.nlx .nlx-ledger div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:11px 0;border-top:1px solid var(--nlx-on-deep-line);align-items:baseline}
+.nlx .nlx-ledger dt{font-size:15.5px}
+.nlx .nlx-ledger dd{font-weight:700;text-align:end;font-size:16.5px}
+.nlx .nlx-ledger .nlx-ledger-note{grid-column:1/-1;font-size:13px;color:var(--nlx-on-deep-2)!important}
+.nlx .nlx-band-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,48px)}
+
+/* segmented radio tabs */
+.nlx .nlx-seg{display:grid;gap:14px}
+.nlx .nlx-seg > input{position:absolute;opacity:0;pointer-events:none}
+.nlx .nlx-seg-labels{display:flex;flex-wrap:wrap;gap:8px}
+.nlx .nlx-seg-labels label{cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid var(--nlx-on-deep-line);font-size:14.5px;font-weight:700;color:var(--nlx-on-deep);background:transparent;line-height:1.3}
+.nlx .nlx-seg-panel{display:none}
+.nlx .nlx-seg > input:nth-of-type(1):checked ~ .nlx-seg-labels label:nth-of-type(1),
+.nlx .nlx-seg > input:nth-of-type(2):checked ~ .nlx-seg-labels label:nth-of-type(2),
+.nlx .nlx-seg > input:nth-of-type(3):checked ~ .nlx-seg-labels label:nth-of-type(3),
+.nlx .nlx-seg > input:nth-of-type(4):checked ~ .nlx-seg-labels label:nth-of-type(4){background:var(--nlx-on-deep);color:var(--nlx-deep);border-color:var(--nlx-on-deep)}
+.nlx .nlx-seg > input:nth-of-type(1):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(1),
+.nlx .nlx-seg > input:nth-of-type(2):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(2),
+.nlx .nlx-seg > input:nth-of-type(3):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(3),
+.nlx .nlx-seg > input:nth-of-type(4):checked ~ .nlx-seg-panels .nlx-seg-panel:nth-of-type(4){display:grid}
+.nlx .nlx-seg > input:focus-visible ~ .nlx-seg-labels label{outline:1px dashed var(--nlx-on-deep-line)}
+
+/* comparison bars (drawn to one scale) */
+.nlx .nlx-bars{display:grid;gap:12px;align-content:start}
+.nlx .nlx-seg{align-content:start}
+.nlx .nlx-kpis--1{grid-template-columns:minmax(0,1fr)}
+.nlx .nlx-kpis--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nlx .nlx-kpis--3,.nlx .nlx-kpis--6{grid-template-columns:repeat(3,minmax(0,1fr))}
+.nlx .nlx-kpis--wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nlx .nlx-bar{display:grid;gap:6px}
+.nlx .nlx-bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14.5px}
+.nlx .nlx-bar-top>span:last-child{white-space:nowrap}
+.nlx .nlx-bar-track{height:10px;border-radius:6px;background:var(--nlx-on-deep-fill);overflow:hidden}
+.nlx .nlx-bar-track i{display:block;height:100%;border-radius:6px;background:var(--nlx-on-deep-2)}
+.nlx .nlx-bar--this .nlx-bar-track i{background:var(--nlx-mist)}
+.nlx .nlx-bar--this .nlx-bar-top{font-weight:700}
+
+/* comps table */
+.nlx .nlx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--nlx-line);border-radius:var(--nlx-r);background:var(--nlx-surf)}
+.nlx table.nlx-table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.nlx .nlx-table th{font-size:12.5px;font-weight:700;color:var(--nlx-mute);text-align:start;padding:11px 14px;background:var(--nlx-paper);border-bottom:1px solid var(--nlx-line);white-space:nowrap}
+.nlx .nlx-table td{padding:11px 14px;border-bottom:1px solid var(--nlx-line);vertical-align:top;color:var(--nlx-ink)}
+.nlx .nlx-table tr:last-child td{border-bottom:0}
+.nlx .nlx-table td.nlx-r{text-align:end;white-space:nowrap}
+.nlx .nlx-table caption{caption-side:bottom;text-align:start;padding:10px 14px;font-size:13px;color:var(--nlx-mute)}
+.nlx .nlx-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.nlx .nlx-stats div{padding:12px 0;border-top:1px solid var(--nlx-line);display:grid;gap:2px}
+.nlx .nlx-stats dt{font-size:14px;color:var(--nlx-mute)}
+.nlx .nlx-stats dd{font-weight:600;line-height:1.5}
+
+/* checks */
+.nlx .nlx-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;counter-reset:nlxq}
+.nlx .nlx-checks li{padding:12px 0;border-top:1px solid var(--nlx-line);display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:15.5px;color:var(--nlx-ink2)}
+.nlx .nlx-checks li::before{content:"";width:18px;height:18px;margin-top:3px;border:1.5px solid var(--nlx-sea);border-radius:4px}
+
+/* faq */
+.nlx .nlx-faq{display:grid}
+.nlx .nlx-faq details{border-top:1px solid var(--nlx-line)}
+.nlx .nlx-faq summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+.nlx .nlx-faq summary::-webkit-details-marker{display:none}
+.nlx .nlx-faq summary::after{content:"+";font-weight:400;color:var(--nlx-sea);font-size:22px;line-height:1}
+.nlx .nlx-faq details[open] summary::after{content:"\2212"}
+.nlx .nlx-faq .nlx-faq-a{padding:0 0 18px;color:var(--nlx-ink2);max-width:66ch}
+
+/* agent card */
+.nlx .nlx-agent{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px 24px;align-items:center;background:var(--nlx-sand);border:1px solid var(--nlx-line);border-radius:var(--nlx-r-lg);padding:clamp(20px,3vw,32px)}
+.nlx .nlx-agent .nlx-monogram{width:64px;height:64px;font-size:26px}
+.nlx .nlx-agent-name{font-family:var(--nlx-serif)!important;font-weight:600;font-size:24px;line-height:1.25}
+.nlx .nlx-agent .nlx-cta{grid-auto-flow:column}
+
+/* sources */
+.nlx .nlx-sources{display:grid;gap:10px;font-size:13.5px;color:var(--nlx-ink2)}
+.nlx .nlx-sources ol{list-style:decimal;padding-inline-start:22px;display:grid;gap:6px}
+.nlx .nlx-sources li{padding-inline-start:4px;overflow-wrap:anywhere}
+.nlx .nlx-legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13.5px;color:var(--nlx-mute)}
+.nlx .nlx-disclaimer{font-size:13.5px;line-height:1.65;color:var(--nlx-mute);max-width:90ch}
+
+/* mobile action bar */
+.nlx .nlx-mbar{display:none}
+
+/* responsive */
+@media (max-width:1080px){
+  .nlx .nlx-layout{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-rail{position:static;order:-1;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .nlx .nlx-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nlx .nlx-band-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .nlx{font-size:16.5px}
+  .nlx .nlx-mast{grid-template-columns:minmax(0,1fr);align-items:start}
+  .nlx .nlx-plate{aspect-ratio:4/3}
+  .nlx .nlx-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nlx .nlx-fact:nth-child(odd){border-inline-start:0}
+  .nlx .nlx-fact{border-top:1px solid var(--nlx-line)}
+  .nlx .nlx-fact:nth-child(-n+2){border-top:0}
+  .nlx .nlx-features,.nlx .nlx-two,.nlx .nlx-checks,.nlx .nlx-stats{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-row{grid-template-columns:minmax(0,1fr) auto}
+  .nlx .nlx-row dd{grid-column:1/-1;grid-row:2}
+  .nlx .nlx-row .nlx-row-tag{grid-column:2;grid-row:1}
+  .nlx .nlx-kpis{grid-template-columns:minmax(0,1fr)}
+  .nlx .nlx-agent{grid-template-columns:auto minmax(0,1fr)}
+  .nlx .nlx-agent .nlx-cta{grid-column:1/-1;grid-auto-flow:row}
+  .nlx .nlx-prose p{font-size:17px}
+  .nlx .nlx-mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:0;z-index:20;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--nlx-paper) 72%,rgba(247,246,242,0))}
+}
+@media (prefers-reduced-motion:reduce){.nlx *{transition:none!important;scroll-behavior:auto!important}}
+@media print{.nlx .nlx-rail,.nlx .nlx-mbar,.nlx .nlx-cta{display:none!important}.nlx .nlx-band{background:#fff;color:#000;border:1px solid #999}}
+
+/* Catalog: listing cards for an index page or a "more from this broker" band. Root: <section class="nlx nlx-cat"> */
+.nlx.nlx-cat{padding-block:clamp(24px,4vw,48px)}
+.nlx .nlx-cat-head{display:grid;gap:8px;margin-block-end:clamp(20px,3vw,32px);max-width:62ch}
+.nlx.nlx .nlx-cat-title{font-family:var(--nlx-serif)!important;font-weight:600!important;font-size:clamp(28px,3.4vw,40px)!important;line-height:1.2!important;color:var(--nlx-ink)!important;margin:0!important;text-wrap:balance}
+.nlx .nlx-cat-lead{margin:0;color:var(--nlx-ink2)}
+.nlx .nlx-cat-group{margin-block:clamp(20px,3vw,32px) 12px;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--nlx-mute)}
+.nlx .nlx-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px}
+.nlx a.nlx-card-l{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;background:var(--nlx-surf);border:1px solid var(--nlx-line);border-radius:var(--nlx-r);padding:20px 22px 16px;text-decoration:none!important;color:inherit!important;transition:border-color .2s ease,box-shadow .2s ease}
+.nlx a.nlx-card-l:hover{border-color:var(--nlx-sea);box-shadow:var(--nlx-shadow)}
+.nlx a.nlx-card-l:focus-visible{outline:2px solid var(--nlx-sea);outline-offset:3px}
+.nlx .nlx-card-kicker{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--nlx-sea)}
+.nlx.nlx .nlx-card-title{font-family:var(--nlx-serif)!important;font-weight:600!important;font-size:20px!important;line-height:1.35!important;color:var(--nlx-ink)!important;margin:0!important;text-wrap:balance}
+.nlx .nlx-card-body{display:grid;gap:8px;align-content:start}
+.nlx .nlx-card-price{font-size:22px;font-weight:700;line-height:1.2}
+.nlx .nlx-card-price small{font-size:14px;font-weight:600;color:var(--nlx-mute)}
+.nlx .nlx-card-specs{display:flex;flex-wrap:wrap;gap:2px 14px;margin:0;padding:0;list-style:none;font-size:14.5px;color:var(--nlx-ink2)}
+.nlx .nlx-card-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--nlx-line);padding-top:10px;font-size:12.5px;color:var(--nlx-mute)}
+.nlx .nlx-card-foot b{color:var(--nlx-sea);font-weight:700;white-space:nowrap}
+
+/* Photo plate: replace the SVG placeholder once the broker's photos are uploaded.
+   <figure class="nlx-plate nlx-plate--photo"><img src="..." alt="..." width="2400" height="1600" loading="eager" decoding="async"><span class="nlx-plate-name">...</span></figure> */
+.nlx .nlx-plate--photo{background:var(--nlx-deep)}
+.nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.nlx .nlx-plate--photo .nlx-plate-name{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.nlx .nlx-sec{scroll-margin-top:calc(var(--nlx-header-offset,96px) + 16px)}
+
+/* 24.9.2026 (HAD-251): the portal's own layers (generic 3D, price box, facts, claim card, similar listings, booking band,
+   floating pills, Yoast breadcrumb, featured image) are no longer printed on an owner's listing at all: the rule lives in
+   plugins/nadlan-config/inc/property-owner.php, server side. Nothing here hides them any more. */
+.nlx .nlx-toc .nlx-home{font-weight:600;color:var(--nlx-sea,#2F6F86)}
+.single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+.nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
+.nlx .nlx-plate--photo{background:var(--nlx-deep);aspect-ratio:var(--nlx-cover-ar,1.5);height:auto;max-height:78vh;position:relative;overflow:hidden}
+.nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+.nlx .nlx-gallery{columns:3;column-gap:12px;margin:0}
+.nlx .nlx-gallery figure{break-inside:avoid;margin:0 0 12px;border-radius:var(--nlx-r,8px);overflow:hidden;background:var(--nlx-sand,#EEE9DD)}
+.nlx .nlx-gallery img{width:100%;height:auto;display:block}
+.nlx .nlx-toc .nlx-lang{margin-inline-start:auto;font-weight:600}
+@media (max-width:900px){.nlx .nlx-gallery{columns:2}}
+@media (max-width:520px){.nlx .nlx-gallery{columns:1}}
+
+</style>
+
+<article class="nlx" lang="he" dir="rtl" id="nlx-L07-he" data-listing="L07">
+<div class="nlx-wrap">
+<header class="nlx-mast">
+<div class="nlx-mast-copy">
+<p class="nlx-kicker">למכירה · כוכב הצפון, צפון תל אביב</p>
+<h2 class="nlx-title">מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון</h2>
+<p class="nlx-dek">קומה אחת מתחת לאחרונה, בבניין בוטיק חדש בכוכב הצפון: חמישה חדרים על כ-190 מ״ר, ולצדם 80 מ״ר של מרפסות שנפתחות אל קו הרקיע של תל אביב. 18,000,000 ש״ח.</p>
+<div class="nlx-chips"><span class="nlx-chip nlx-chip--sea">בלעדיות · מיטל קציר</span><span class="nlx-chip">בניין בוטיק חדש</span><span class="nlx-chip">אגף ילדים עם מרפסת לים</span></div>
+</div>
+<figure class="nlx-plate nlx-plate--photo" style="--nlx-cover-ar:1.523"><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="2048" height="1345" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-300x197.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-600x394.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-768x504.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-1024x673.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02-1536x1009.jpg 1536w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg 2048w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 320px, 520px" loading="eager" decoding="async" fetchpriority="high"><span class="nlx-plate-name">כוכב הצפון, קומה 11</span></figure>
+</header>
+
+<dl class="nlx-facts">
+<div class="nlx-fact"><dt>חדרים</dt><dd><span class="nlx-num">5</span></dd></div>
+<div class="nlx-fact"><dt>שטח בנוי</dt><dd>כ-<span class="nlx-num">190</span> מ״ר</dd></div>
+<div class="nlx-fact"><dt>מרפסות</dt><dd><span class="nlx-num">76</span> עד <span class="nlx-num">80</span> מ״ר</dd></div>
+<div class="nlx-fact"><dt>קומה</dt><dd><span class="nlx-num">11</span> מתוך <span class="nlx-num">12</span></dd></div>
+<div class="nlx-fact"><dt>כיווני אוויר</dt><dd><span class="nlx-num">3</span> עד <span class="nlx-num">4</span></dd></div>
+<div class="nlx-fact"><dt>חניות</dt><dd><span class="nlx-num">2</span></dd></div>
+<div class="nlx-fact"><dt>מחסן</dt><dd>יש</dd></div>
+<div class="nlx-fact"><dt>ממ״ד ומעלית</dt><dd>יש</dd></div>
+</dl>
+<nav class="nlx-toc" aria-label="תוכן העמוד"><a class="nlx-home" href="https://nad-lan.co.il/brokers/meital-katzir/">האתר של מיטל קציר</a><a href="#home-L07-he">הבית</a><a href="#building-L07-he">הבניין</a><a href="#location-L07-he">הסביבה</a><a href="#future-L07-he">תכנון</a><a href="#numbers-L07-he">המספרים</a><a href="#market-L07-he">השוק</a><a href="#checks-L07-he">בדיקות</a><a href="#faq-L07-he">שאלות</a><a class="nlx-lang" href="https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/" hreflang="en" lang="en">English</a></nav>
+
+<div class="nlx-layout">
+<div class="nlx-main">
+
+<section class="nlx-sec" id="photos-L07-he"><div class="nlx-sec-head"><p class="nlx-eyebrow">תמונות</p><h2 class="nlx-h2">הנכס בתמונות</h2></div><div class="nlx-gallery"><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המרפסת הראשית והנוף לתל אביב" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="2048" height="1345" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-300x197.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-600x394.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-768x504.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-1024x673.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01-1536x1009.jpg 1536w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg 2048w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, הסלון עם יציאה למרפסת" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המטבח והמקרר האינטגרלי" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, המטבח והמקרר האינטגרלי" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, אגף הילדים והמרפסת לים" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, אגף הילדים והמרפסת לים" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, תמונה 8" width="1366" height="1366" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg 1366w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure><figure><img src="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg" alt="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון, תמונה 9" width="1440" height="1440" srcset="https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-100x100.jpg 100w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-150x150.jpg 150w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-300x300.jpg 300w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-600x600.jpg 600w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-768x768.jpg 768w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06-1024x1024.jpg 1024w, https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg 1440w" sizes="(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px" loading="lazy" decoding="async"></figure></div></section>
+<section class="nlx-sec" id="home-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">הבית</p><h2 class="nlx-h2">קומה 11, ושמונים מטר של מרפסות מעל העיר</h2></div>
+<div class="nlx-prose"><p>מיני פנטהאוז חדש בקומה <span class="nlx-num">11</span> מתוך <span class="nlx-num">12,</span> בבניין בוטיק בכוכב הצפון, השכונה שבין פארק הירקון לרמת אביב. חמישה חדרים על כ-<span class="nlx-num">190</span> מ״ר בנוי, ולצדם מרפסות בשטח כולל של <span class="nlx-num">76</span> עד <span class="nlx-num">80</span> מ״ר עם נוף פתוח לכל תל אביב. המחיר <span class="nlx-num">18,000,000</span> ש״ח.</p><p>התכנון כולל יחידת הורים מרווחת, אגף ילדים עם מרפסת הצופה לים, סלון גדול ומטבח מאובזר עם מקרר אינטגרלי מוסתר. נגרות בהתאמה אישית עוברת בכל הבית, והמיזוג במערכת רב-מפצלית (VRF). לדירה שתי חניות, מחסן, ממ״ד ומעלית.</p><p>בבניין חדר כושר לדיירים. מקצה השכונה נבנה מקיץ <span class="nlx-num">2026</span> גשר הולכי רגל ואופניים באורך של כ-<span class="nlx-num">170</span> מ׳ מרחוב לוי אשכול אל פארק הירקון, שצפוי להיפתח ב-<span class="nlx-num">2027.</span></p></div>
+<ul class="nlx-features"><li><b>קומה <span class="nlx-num">11</span> מתוך <span class="nlx-num">12</span></b><span>נוף פתוח לכל תל אביב</span></li><li><b>כ-<span class="nlx-num">190</span> מ״ר בנוי</b><span>חמישה חדרים ויחידת הורים מרווחת</span></li><li><b><span class="nlx-num">76</span> עד <span class="nlx-num">80</span> מ״ר מרפסות</b><span>כולל מרפסת לים באגף הילדים</span></li><li><b>מיזוג רב-מפצלי (VRF)</b><span>ומטבח עם מקרר אינטגרלי מוסתר</span></li><li><b><span class="nlx-num">2</span> חניות ומחסן</b><span>ממ״ד ומעלית</span></li><li><b>גשר לפארק הירקון</b><span>כ-<span class="nlx-num">170</span> מ׳, צפוי להיפתח ב-<span class="nlx-num">2027</span></span></li></ul>
+<div class="nlx-spec">
+<div class="nlx-spec-group"><h3 class="nlx-h3">הדירה </h3><dl class="nlx-rows">
+<div class="nlx-row"><dt>סוג וחדרים</dt><dd>מיני פנטהאוז, <span class="nlx-num">5</span> חדרים</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>שטח בנוי</dt><dd>כ-<span class="nlx-num">190</span> מ״ר בנוי</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>מרפסות</dt><dd><span class="nlx-num">76</span> עד <span class="nlx-num">80</span> מ״ר בסך הכול</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>קומה</dt><dd><span class="nlx-num">11</span> מתוך <span class="nlx-num">12</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>כיווני אוויר</dt><dd><span class="nlx-num">3</span> עד <span class="nlx-num">4</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>חלוקה</dt><dd>יחידת הורים, אגף ילדים עם מרפסת לים, סלון גדול</dd><span class="nlx-row-tag"></span></div>
+</dl></div>
+<div class="nlx-spec-group"><h3 class="nlx-h3">מפרט ושירותים </h3><dl class="nlx-rows">
+<div class="nlx-row"><dt>מטבח</dt><dd>מטבח מאובזר עם מוצרי חשמל ומקרר אינטגרלי מוסתר</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>מיזוג</dt><dd>מערכת רב-מפצלית (VRF)</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>נגרות</dt><dd>נגרות בהתאמה אישית</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>חניה ומחסן</dt><dd><span class="nlx-num">2</span> חניות ומחסן</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>ממ״ד ומעלית</dt><dd>בדירה</dd><span class="nlx-row-tag"></span></div>
+</dl></div>
+</div>
+</section>
+
+<section class="nlx-sec" id="building-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">הבניין</p><h2 class="nlx-h2">בניין בוטיק חדש בן 12 קומות</h2><p class="nlx-lead">כתובת הבניין, היזם ודמי הניהול נמסרים בפנייה ישירה.</p></div>
+<dl class="nlx-rows">
+<div class="nlx-row"><dt>מיקום</dt><dd>כוכב הצפון, תל אביב-יפו</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>קומות</dt><dd><span class="nlx-num">12</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>שנת בנייה</dt><dd><span class="nlx-num">2022</span> או <span class="nlx-num">2023</span></dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>שירותים לדיירים</dt><dd>חדר כושר</dd><span class="nlx-row-tag"></span></div>
+<div class="nlx-row"><dt>מחיר בדולרים</dt><dd>כ-<span class="nlx-num">5.9</span> מיליון דולר לפי השער היציג</dd><span class="nlx-row-tag"></span></div>
+</dl>
+</section>
+
+<section class="nlx-sec" id="location-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">הסביבה</p><h2 class="nlx-h2">כוכב הצפון: הפארק מדרום, שדה דב מצפון</h2></div>
+<div class="nlx-prose"><p>כוכב הצפון תחומה בשדרות רוקח ופארק הירקון מדרום, בדרך נמיר ממזרח, ברחוב ש״י עגנון ורובע שדה דב מצפון ובאבן גבירול ממערב. השכונה פותחה בעיקר בשנות ה-<span class="nlx-num">90</span> וה-<span class="nlx-num">2000</span> כבלוקים של <span class="nlx-num">8</span> עד <span class="nlx-num">12</span> קומות סביב פארק מרכזי, לצד מגדלי מגורים ובנייני בוטיק. לפי נתוני עסקאות שפורסמו במאקו, מחיר העסקה החציוני בה בין <span class="nlx-num">2023</span> לאוקטובר <span class="nlx-num">2025</span> היה <span class="nlx-num">6.1</span> מיליון ש״ח, הרביעי בגובהו בישראל.</p><p>פארק הירקון, כ-<span class="nlx-num">3,750</span> דונם כולל הספורטק, גובל בשכונה לאורך שדרות רוקח, ונמל תל אביב הוא מתחם פנאי של <span class="nlx-num">220</span> דונם בקצה הפארק. בפינת רוקח ונמיר מתוכנן פרויקט סמינר הקיבוצים, עם שלושה מגדלי מגורים בני <span class="nlx-num">28</span> קומות ו-<span class="nlx-num">450</span> דירות.</p><p>הקו הירוק של הרכבת הקלה צפוי לפעול בקטעו הדרומי ב-<span class="nlx-num">2028</span> ובמלואו ב-<span class="nlx-num">2030,</span> עם תחנת רדינג על הגשר החדש מצפון לשדרות רוקח. גשר הולכי רגל ואופניים חדש מעל הירקון, באורך <span class="nlx-num">180</span> מ׳, נפתח במאי <span class="nlx-num">2026.</span></p></div>
+
+<div class="nlx-two">
+<div><h3 class="nlx-subhead">חינוך</h3><ul class="nlx-items">
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">בית הספר היסודי כוכב הצפון</span></div><p>בית ספר ממלכתי בשכונה לפי מקורות ברשת, כ-<span class="nlx-num">82</span> תלמידים בשכבה; אזור הרישום של הבניין לאימות</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">עירוני כ״ד, עמוס עוז</span></div><p>מופיע בשכונה לפי מקורות ברשת, כ-<span class="nlx-num">47</span> תלמידים בשכבה; אזור הרישום לאימות מול העירייה</p></li>
+</ul></div>
+<div><h3 class="nlx-subhead">תחבורה</h3><ul class="nlx-items">
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">הקו הירוק של הרכבת הקלה, תחנת רדינג</span></div><p>בביצוע; הקטע הדרומי צפוי ב-<span class="nlx-num">2028</span> והקו המלא ב-<span class="nlx-num">2030</span>; תחנת רדינג תוקם מצפון לשדרות רוקח על גשר הקו הירוק (תחנה מקורה בגובה <span class="nlx-num">12</span> מ׳)</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">גשר הולכי רגל ואופניים רוקח - לוי אשכול לפארק הירקון</span></div><p>בביצוע מקיץ <span class="nlx-num">2026,</span> פתיחה צפויה ב-<span class="nlx-num">2027</span>; אורך כ-<span class="nlx-num">170</span> מ׳ ורוחב <span class="nlx-num">6</span> מ׳, נגיש ללא מעליות</p></li>
+<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">גשר הולכי רגל ואופניים מעל הירקון (פארק הירקון לאבן גבירול)</span></div><p>פעיל, נפתח במאי <span class="nlx-num">2026</span>; <span class="nlx-num">180</span> מ׳ על <span class="nlx-num">6</span> מ׳</p></li>
+</ul></div>
+</div>
+</section>
+
+<section class="nlx-sec" id="future-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">תכנון סביב</p><h2 class="nlx-h2">מה מתוכנן סביב הנכס</h2><p class="nlx-lead">תכניות ועבודות שפורסמו, והמשמעות האפשרית שלהן לרוכש או לשוכר. המידע מבוסס על פרסומים ואינו מחליף בדיקה במנהל התכנון.</p></div>
+<ul class="nlx-items">
+<li class="nlx-item"><span class="nlx-item-title">גשר רוקח ולוי אשכול לפארק הירקון</span><p>חיבור ישיר להולכי רגל ולרוכבי אופניים מרחוב לוי אשכול לפארק החל מ-<span class="nlx-num">2027,</span> עם עבודות בשדרות רוקח עד אז. התכנית אושרה בינואר <span class="nlx-num">2022</span> עם הקצאה של <span class="nlx-num">35</span> מיליון ש״ח.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">פרויקט סמינר הקיבוצים, פינת שדרות רוקח ודרך נמיר</span><p>כ-<span class="nlx-num">55</span> דונם: שלושה מגדלים בני <span class="nlx-num">28</span> קומות עם <span class="nlx-num">450</span> יחידות דיור ושלושה מבנים בני <span class="nlx-num">6</span> קומות לאורך רחוב מאוריציו ויטלה, עד <span class="nlx-num">1,550</span> מ״ר מסחר ו-<span class="nlx-num">4,600</span> מ״ר מבני ציבור. שלב ראשון (<span class="nlx-num">134</span> יחידות ובניין מכללה חדש) כ-<span class="nlx-num">5</span> שנים; מימון של כ-<span class="nlx-num">1.7</span> מיליארד ש״ח. צפויות שנים של עבודות ובינוי רב קומות בפינה הדרום מזרחית של השכונה.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">מגדלי רובע שדה דב</span><p>בתכנית המרכז, שההתנגדויות לה נדחו ב-<span class="nlx-num">3.2.2025,</span> <span class="nlx-num">7,128</span> יחידות דיור במגדלים של <span class="nlx-num">20</span> ו-<span class="nlx-num">45</span> קומות; רוב הדירות ברובע צפויות בתוך <span class="nlx-num">3</span> עד <span class="nlx-num">6</span> שנים. מגדלים מצפון עשויים לשנות את קו הרקיע ואת הנוף לכיוון הים.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">הקו הירוק</span><p>שיפור בנגישות לרכבת מתחנת רדינג שמצפון לשדרות רוקח לאחר הפתיחה (הקטע הדרומי <span class="nlx-num">2028,</span> הקו המלא <span class="nlx-num">2030</span>); עבודות באזור רוקח והירקון עד אז.</p></li>
+<li class="nlx-item"><span class="nlx-item-title">אתר תחנת הכוח רדינג</span><p>ייצור החשמל אמור להיפסק לפי החלטת <span class="nlx-num">2024,</span> חלק מהשטח יועבר לשימוש אזרחי ולחוף והיתר ישמש לאגירה ולחיבור כבל תת ימי; תכנית שימור מסבה את רדינג א׳ למוזיאון, מרכז מבקרים וחלל אירועים. לוחות הזמנים לאימות.</p></li>
+</ul>
+</section>
+
+<section class="nlx-sec" id="numbers-L07-he">
+<div class="nlx-band">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">המספרים</p><h2 class="nlx-h2">18,000,000 ש״ח, בחשבון של רוכש</h2><p class="nlx-small">המחיר <span class="nlx-num">18,000,000</span> ש״ח, מחושב לפי כללי המס והמימון שפורסמו עד <span class="nlx-num">16.9.2026.</span></p></div>
+<dl class="nlx-kpis nlx-kpis--4 nlx-kpis--wide">
+<div class="nlx-kpi"><dt>מחיר מבוקש</dt><dd><span class="nlx-money"><span class="nlx-num">18,000,000</span>&nbsp;₪</span></dd><span class="nlx-small"><span class="nlx-num">≈ $5,903,575</span></span></div>
+<div class="nlx-kpi"><dt>מחיר למ״ר בנוי</dt><dd><span class="nlx-money"><span class="nlx-num">94,737</span>&nbsp;₪</span></dd><span class="nlx-small"></span></div>
+<div class="nlx-kpi"><dt>ממוצע למ״ר, כוכב הצפון</dt><dd><span class="nlx-money"><span class="nlx-num">51,000</span>&nbsp;₪</span></dd><span class="nlx-small">49,000 עד 51,000 ₪, ביזפורטל, יולי 2026</span></div>
+<div class="nlx-kpi"><dt>משכנתא מרבית, דירה יחידה</dt><dd><span class="nlx-money"><span class="nlx-num">13,500,000</span>&nbsp;₪</span></dd><span class="nlx-small">75% מהשווי לפי בנק ישראל</span></div>
+</dl>
+<div class="nlx-band-grid">
+<div class="nlx-seg">
+<h3 class="nlx-h3">מה זה עולה לכם, לפי סוג הרוכש</h3>
+<input type="radio" name="nlx-buyer-L07-he" id="nlx-buyer-L07-he-1" checked>
+<input type="radio" name="nlx-buyer-L07-he" id="nlx-buyer-L07-he-2">
+<input type="radio" name="nlx-buyer-L07-he" id="nlx-buyer-L07-he-3">
+<div class="nlx-seg-labels" role="presentation"><label for="nlx-buyer-L07-he-1">דירה יחידה</label><label for="nlx-buyer-L07-he-2">דירה נוספת או תושב חוץ</label><label for="nlx-buyer-L07-he-3">עולה חדש</label></div>
+<div class="nlx-seg-panels"><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>מס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">1,153,886</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">שיעור אפקטיבי <span class="nlx-num">6.41%</span></span></div>
+<div><dt>הלוואה מרבית</dt><dd><span class="nlx-money"><span class="nlx-num">13,500,000</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">75% מהשווי</span></div>
+<div><dt>הון עצמי מינימלי</dt><dd><span class="nlx-money"><span class="nlx-num">4,500,000</span>&nbsp;₪</span></dd></div>
+<div><dt>הון עצמי ומס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">5,653,886</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">לפני שכר טרחת עורך דין, תיווך ושמאות</span></div>
+</dl><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>מס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">1,678,899</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">שיעור אפקטיבי <span class="nlx-num">9.33%</span></span></div>
+<div><dt>הלוואה מרבית</dt><dd><span class="nlx-money"><span class="nlx-num">9,000,000</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">50% מהשווי לדירה להשקעה או לרוכש שאינו אזרח ישראלי</span></div>
+<div><dt>הון עצמי מינימלי</dt><dd><span class="nlx-money"><span class="nlx-num">9,000,000</span>&nbsp;₪</span></dd></div>
+<div><dt>הון עצמי ומס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">10,678,899</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">לפני שכר טרחת עורך דין, תיווך ושמאות</span></div>
+</dl><dl class="nlx-seg-panel nlx-ledger">
+<div><dt>מס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">975,976</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">שיעור אפקטיבי <span class="nlx-num">5.42%</span>. הזכאות: משנה לפני העלייה ועד 7 שנים אחריה</span></div>
+<div><dt>הלוואה מרבית</dt><dd><span class="nlx-money"><span class="nlx-num">13,500,000</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">75% מהשווי</span></div>
+<div><dt>הון עצמי מינימלי</dt><dd><span class="nlx-money"><span class="nlx-num">4,500,000</span>&nbsp;₪</span></dd></div>
+<div><dt>הון עצמי ומס רכישה</dt><dd><span class="nlx-money"><span class="nlx-num">5,475,976</span>&nbsp;₪</span></dd><span class="nlx-ledger-note">לפני שכר טרחת עורך דין, תיווך ושמאות</span></div>
+</dl></div>
+<p class="nlx-small">מדרגות מס הרכישה מוקפאות עד 15.1.2028. שיעורי 8% ו-10% לדירה נוספת קבועים בהוראת שעה שתוקפה עד תחילת 2027. אין בכך ייעוץ מס.</p>
+</div>
+<div class="nlx-bars">
+<h3 class="nlx-h3">מחיר למ״ר: הדירה מול השוק</h3>
+<div class="nlx-bar nlx-bar--this"><div class="nlx-bar-top"><span>הדירה, על <span class="nlx-num">190</span> מ״ר בנוי</span><span><span class="nlx-money"><span class="nlx-num">94,737</span>&nbsp;₪</span></span></div><div class="nlx-bar-track"><i style="width:99.7%"></i></div></div>
+<div class="nlx-bar nlx-bar--this"><div class="nlx-bar-top"><span>הדירה, מרפסות בשליש משטחן</span><span><span class="nlx-money"><span class="nlx-num">83,077</span>&nbsp;₪</span></span></div><div class="nlx-bar-track"><i style="width:87.4%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>פרויקטים חדשים בשכונה, עד</span><span><span class="nlx-num">90,000</span> עד <span class="nlx-num">95,000</span>&nbsp;₪</span></div><div class="nlx-bar-track"><i style="width:100.0%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>עסקה: סמינר הקיבוצים, <span class="nlx-num">4</span> חדרים, יולי <span class="nlx-num">2026</span></span><span><span class="nlx-money"><span class="nlx-num">75,793</span>&nbsp;₪</span></span></div><div class="nlx-bar-track"><i style="width:79.8%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>עסקה: ש״י עגנון <span class="nlx-num">40,</span> <span class="nlx-num">5</span> חדרים, <span class="nlx-num">2026</span></span><span><span class="nlx-money"><span class="nlx-num">75,281</span>&nbsp;₪</span></span></div><div class="nlx-bar-track"><i style="width:79.2%"></i></div></div>
+<div class="nlx-bar"><div class="nlx-bar-top"><span>ממוצע השכונה</span><span><span class="nlx-num">49,000</span> עד <span class="nlx-num">51,000</span>&nbsp;₪</span></div><div class="nlx-bar-track"><i style="width:53.7%"></i></div></div>
+<p class="nlx-small">כל הפסים באותו קנה מידה. שקלול מרפסות בשליש או בחצי משטחן הוא שיטה מקובלת בדיווחי עסקאות.</p>
+</div>
+</div>
+<div>
+<h3 class="nlx-h3">עלויות שוטפות, תשואה ומטבע</h3>
+<dl class="nlx-ledger">
+<div><dt>למ״ר משוקלל, מרפסות בשליש</dt><dd><span class="nlx-num">83,077</span>&nbsp;₪</dd><span class="nlx-ledger-note"><span class="nlx-num">18,000,000</span> ÷ (<span class="nlx-num">190</span> + <span class="nlx-num">80 ÷ 3</span>)</span></div>
+<div><dt>למ״ר משוקלל, מרפסות בחצי</dt><dd><span class="nlx-num">78,261</span>&nbsp;₪</dd><span class="nlx-ledger-note"><span class="nlx-num">18,000,000</span> ÷ (<span class="nlx-num">190</span> + <span class="nlx-num">80 ÷ 2</span>)</span></div>
+<div><dt>ארנונה, הערכה שנתית</dt><dd><span class="nlx-num">20,706-37,692</span>&nbsp;₪</dd><span class="nlx-ledger-note"><span class="nlx-num">190</span> מ״ר באזור <span class="nlx-num">2</span> עד <span class="nlx-num">270</span> מ״ר כולל מרפסות באזור <span class="nlx-num">1,</span> בתעריף מעל <span class="nlx-num">140</span> מ״ר. האזור ואופן החיוב על מרפסות פתוחות לאימות.</span></div>
+<div><dt>דמי ניהול</dt><dd>יימסרו בפנייה</dd></div>
+<div><dt>עסקאות של <span class="nlx-num">10</span> מיליון ש״ח ומעלה ב-<span class="nlx-num">2025</span></dt><dd><span class="nlx-num">635</span></dd><span class="nlx-ledger-note"><span class="nlx-num">60%</span> מהן בתל אביב</span></div>
+<div><dt>שער דולר ויורו יציג</dt><dd><span class="nlx-num">$1 = 3.0490 ₪ · €1 = 3.5169 ₪</span></dd><span class="nlx-ledger-note">בנק ישראל, 15.9.2026</span></div>
+<div><dt>ריבית בנק ישראל ופריים</dt><dd><span class="nlx-num">3.25% · 4.75%</span></dd><span class="nlx-ledger-note">החלטה מ-1.9.2026</span></div>
+</dl>
+</div>
+<p class="nlx-small">כל המספרים בפרק זה הם המחשה מחושבת ואינם הצעת מחיר, שמאות או ייעוץ.</p>
+</div>
+</section>
+
+<section class="nlx-sec" id="market-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">השוק</p><h2 class="nlx-h2">המחיר מול השוק בכוכב הצפון</h2><p class="nlx-lead">עסקאות <span class="nlx-num">2025</span> ו-<span class="nlx-num">2026</span> בכוכב הצפון ובסביבתה, מודעות פנטהאוז ודופלקס פעילות, ונתוני השוק בתל אביב. חלק מהעסקאות הן רכישות על הנייר בפרויקטים חדשים.</p></div>
+<dl class="nlx-stats">
+<div><dt>מחיר ממוצע למ״ר, כוכב הצפון <span class="nlx-muted">(<span class="nlx-num">7.2026</span>)</span></dt><dd>כ-<span class="nlx-num">49,000</span> עד <span class="nlx-num">51,000</span> ש״ח; בפרויקטים חדשים לאורך ש״י עגנון ובסביבתו עד <span class="nlx-num">90,000</span> ש״ח ויותר</dd></div>
+<div><dt>מחירים אופייניים <span class="nlx-muted">(<span class="nlx-num">7.2026</span>)</span></dt><dd>דירת <span class="nlx-num">4</span> חדרים כ-<span class="nlx-num">4.9</span> מיליון ש״ח; דירות <span class="nlx-num">4</span> ו-<span class="nlx-num">5</span> חדרים חדשות מוצעות החל מכ-<span class="nlx-num">5.39</span> מיליון ש״ח</dd></div>
+<div><dt>שכר דירה ממוצע ותשואה <span class="nlx-muted">(<span class="nlx-num">7.2026</span>)</span></dt><dd>כ-<span class="nlx-num">13,900</span> ש״ח לחודש; תשואה ברוטו של כ-<span class="nlx-num">3%</span></dd></div>
+<div><dt>מחיר עסקה חציוני, תחילת <span class="nlx-num">2023</span> עד אוקטובר <span class="nlx-num">2025</span> <span class="nlx-muted">(<span class="nlx-num">10.2025</span>)</span></dt><dd><span class="nlx-num">6.1</span> מיליון ש״ח, המקום הרביעי בארץ (אשכול, ככל הנראה מתחם אשכול בשדה דב, ראשונה עם <span class="nlx-num">7.2</span> מיליון ש״ח)</dd></div>
+<div><dt>רף מחירים בבנייה חדשה בשדה דב <span class="nlx-muted">(<span class="nlx-num">2.2026</span>)</span></dt><dd>ממוצע <span class="nlx-num">79,000</span> עד <span class="nlx-num">85,000</span> ש״ח למ״ר; פנטהאוז בקומה <span class="nlx-num">15</span> מעל <span class="nlx-num">103,000</span> ש״ח למ״ר; פנטהאוזים יקרים בכ-<span class="nlx-num">30%</span> מדירות רגילות (תוכן בשיתוף מסחרי)</dd></div>
+<div><dt>הנכס ביחס לממוצע השכונתי <span class="nlx-muted">(<span class="nlx-num">9.2026</span>)</span></dt><dd><span class="nlx-num">91,371</span> עד <span class="nlx-num">94,737</span> ש״ח למ״ר בנוי, פי <span class="nlx-num">1.8</span> עד <span class="nlx-num">1.9</span> מהממוצע של <span class="nlx-num">49,000</span> עד <span class="nlx-num">51,000</span> ש״ח (חישוב)</dd></div>
+<div><dt>שקלול שטחי מרפסות <span class="nlx-muted">(<span class="nlx-num">7.2025</span>)</span></dt><dd>גלובס חישב לפנטהאוז בשדרות לוי אשכול (<span class="nlx-num">2025</span>) כ-<span class="nlx-num">35,300</span> ש״ח למ״ר בשקלול מחצית משטח המרפסות וכ-<span class="nlx-num">38,800</span> ש״ח בשקלול שליש, כפי שנעשה לדבריו בשיטות אחרות</dd></div>
+<div><dt>עסקאות של <span class="nlx-num">10</span> מיליון ש״ח ומעלה <span class="nlx-muted">(<span class="nlx-num">9.2026</span>)</span></dt><dd><span class="nlx-num">635</span> עסקאות בארץ ב-<span class="nlx-num">2025,</span> <span class="nlx-num">60%</span> מהן בתל אביב</dd></div>
+<div><dt>מלאי דירות חדשות לא מכורות, תל אביב <span class="nlx-muted">(<span class="nlx-num">9.2026</span>)</span></dt><dd><span class="nlx-num">9,725</span></dd></div>
+<div><dt>מדד מחירי הדירות של הלמ״ס, מחוז תל אביב <span class="nlx-muted">(<span class="nlx-num">7.2026</span>)</span></dt><dd>עלייה של <span class="nlx-num">0.7%</span> ביוני-יולי <span class="nlx-num">2026</span>; ירידה של <span class="nlx-num">0.9%</span> בשנה</dd></div>
+<div><dt>מדד מחירי דירות יד שנייה של הלמ״ס, תל אביב <span class="nlx-muted">(<span class="nlx-num">6.2026</span>)</span></dt><dd>ירידה של <span class="nlx-num">2.0%</span> ברבעון השני של <span class="nlx-num">2026</span> לעומת הרבעון הראשון</dd></div>
+</dl>
+<div><h3 class="nlx-subhead">עסקאות ומודעות מכירה להשוואה</h3><div class="nlx-scroll" role="region" aria-label="עסקאות ומודעות מכירה להשוואה" tabindex="0"><table class="nlx-table">
+<thead><tr><th scope="col">תאריך</th><th scope="col">מיקום</th><th scope="col">חדרים</th><th scope="col">מ״ר</th><th scope="col">קומה</th><th scope="col">מחיר</th><th scope="col">למ״ר</th><th scope="col">סוג</th></tr></thead>
+<tbody><tr><td>דווח <span class="nlx-num">7.2025</span></td><td>שדרות לוי אשכול, תכנית ל׳: פנטהאוז בבניין כבן <span class="nlx-num">40</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">165</span></td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">7,950,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">48,182</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>דווח <span class="nlx-num">12.2025</span></td><td>מגדל FIRST של חגג, שדה דב</td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">260</span></td><td class="nlx-r"><span class="nlx-num">39</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">31,041,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">119,388</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>דווח <span class="nlx-num">7.2026</span></td><td>ש״י עגנון <span class="nlx-num">40,</span> כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">133.5</span></td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">10,050,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">75,281</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>דווח <span class="nlx-num">7.2026</span></td><td>לוי אשכול <span class="nlx-num">16,</span> כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-num">135</span></td><td class="nlx-r"><span class="nlx-num">16</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">10,000,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">74,074</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>דווח <span class="nlx-num">7.2026</span></td><td>מאוריציו ויטלה <span class="nlx-num">3,</span> כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">121</span></td><td class="nlx-r"><span class="nlx-num">1</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">7,100,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">58,678</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td><span class="nlx-num">9.7.2026</span></td><td>רחוב לוי אשכול, תחת כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">4.5</span></td><td class="nlx-r"><span class="nlx-num">125</span></td><td class="nlx-r"><span class="nlx-num">13</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">10,000,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">80,000</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td><span class="nlx-num">12.7.2026</span></td><td>פרויקט סמינר הקיבוצים, כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">126</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">9,550,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">75,793</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td><span class="nlx-num">14.7.2026</span></td><td>יצחק שטרן <span class="nlx-num">18,</span> ל׳ החדשה</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">123</span></td><td class="nlx-r"><span class="nlx-num">6</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">7,550,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">61,382</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>דווח <span class="nlx-num">4.2025</span></td><td>מגדל בן <span class="nlx-num">25</span> קומות, כוכב הצפון: פנטהאוז בקומה שלמה</td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-num">180</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">37,000,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">205,556</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>מגדלי ספורטק TLV (קבוצת חגג), רחוב לוי אשכול, כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">6</span></td><td class="nlx-r"><span class="nlx-num">192</span></td><td class="nlx-r"><span class="nlx-num">20</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">20,000,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">104,167</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>רחוב לוי אשכול, כוכב הצפון: דופלקס חדש</td><td class="nlx-r"><span class="nlx-num">6.5</span></td><td class="nlx-r"><span class="nlx-num">200</span></td><td class="nlx-r"><span class="nlx-num">2</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">15,500,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">77,500</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>כוכב הצפון: פנטהאוז דופלקס (רחוב בוני העיר)</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">157</span></td><td class="nlx-r"></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">12,500,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">79,618</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>ש״י עגנון <span class="nlx-num">28,</span> כוכב הצפון (פרויקט הפילהרמונית)</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">130</span></td><td class="nlx-r"><span class="nlx-num">3</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">11,900,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">91,538</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>רחוב מאיר יערי, כוכב הצפון: פנטהאוז דופלקס</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">207</span></td><td class="nlx-r"><span class="nlx-num">7</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">10,450,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">50,483</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>סביוני רמת אביב, כוכב הצפון: מיני פנטהאוז</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">135</span></td><td class="nlx-r"><span class="nlx-num">11</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">10,500,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">77,778</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>שדה דב אשכול: דירת <span class="nlx-num">5</span> חדרים</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">146</span></td><td class="nlx-r"><span class="nlx-num">10</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">9,200,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">63,014</span>&nbsp;₪</span></td><td></td></tr>
+</tbody>
+<caption>עסקאות מוצגות לפני מודעות. מחיר למ״ר מחושב על השטח שפורסם. לאמת עסקאות באתר נדל״ן של רשות המסים. אין זו שמאות.</caption>
+</table></div></div>
+<div><h3 class="nlx-subhead">שכירות להשוואה</h3><div class="nlx-scroll" role="region" aria-label="שכירות להשוואה" tabindex="0"><table class="nlx-table">
+<thead><tr><th scope="col">תאריך</th><th scope="col">מיקום</th><th scope="col">חדרים</th><th scope="col">מ״ר</th><th scope="col">שכ״ד לחודש</th><th scope="col">למ״ר</th><th scope="col">סוג</th></tr></thead>
+<tbody><tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>סביוני רמת אביב, כוכב הצפון: מיני פנטהאוז</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">280</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">37,500</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">134</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>רחוב מאיר יערי, כוכב הצפון: פנטהאוז</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">165</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">25,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">152</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>כוכב הצפון: דירת <span class="nlx-num">5.5</span> חדרים</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">230</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">27,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">117</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>כוכב הצפון: פנטהאוז</td><td class="nlx-r"><span class="nlx-num">5</span></td><td class="nlx-r"><span class="nlx-num">130</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">18,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">138</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>אבא קובנר <span class="nlx-num">13,</span> כוכב הצפון: פנטהאוז</td><td class="nlx-r"><span class="nlx-num">5.5</span></td><td class="nlx-r"><span class="nlx-num">160</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">15,000</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">94</span>&nbsp;₪</span></td><td></td></tr>
+<tr><td>מודעה, <span class="nlx-num">16.9.2026</span></td><td>פרויקט הפילהרמונית, ש״י עגנון <span class="nlx-num">28,</span> כוכב הצפון</td><td class="nlx-r"><span class="nlx-num">4</span></td><td class="nlx-r"><span class="nlx-num">103</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">21,300</span>&nbsp;₪</span></td><td class="nlx-r"><span class="nlx-money"><span class="nlx-num">207</span>&nbsp;₪</span></td><td></td></tr>
+</tbody>
+<caption>מחירי שכירות מבוקשים ממודעות, לא חוזים חתומים. שכר דירה למ״ר מחושב על השטח שפורסם.</caption>
+</table></div></div>
+
+</section>
+
+<section class="nlx-sec" id="checks-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">לפני החלטה</p><h2 class="nlx-h2">הבדיקות שכדאי לעשות</h2><p class="nlx-lead">השאלות שרוכש ברמת מחיר כזו שואל, והמסמכים שכדאי לקבל לפני משא ומתן.</p></div>
+<ul class="nlx-checks"><li><span>מהי הכתובת המדויקת, הגוש והחלקה, ומי היזם שבנה את הבניין? האם ניתן לראות טופס <span class="nlx-num">4</span> ולבדוק את רישום הבית המשותף בטאבו?</span></li><li><span>מהו השטח הבנוי, מהם שטחי המרפסות (פתוחות ומקורות) ומהם כיווני האוויר לפי תכניות ההיתר, נספח חוזה המכר וחשבון הארנונה?</span></li><li><span>מה נמצא בקומה <span class="nlx-num">12</span> מעל הדירה, והאם למישהו יש זכויות בנייה נוספות על הגג?</span></li><li><span>מהם דמי הניהול החודשיים (כולל חדר הכושר) והארנונה השנתית, ובאיזה אזור ארנונה וסיווג מבנה נמצא הנכס?</span></li><li><span>האם <span class="nlx-num">2</span> החניות והמחסן רשומים או צמודים לדירה, והיכן הם ממוקמים?</span></li><li><span>אילו תקופות בדק ואחריות לפי חוק המכר (דירות) עדיין בתוקף, והאם דווחו ליזם ליקויים?</span></li><li><span>מה עשוי להיבנות מול המרפסת הצופה לים באגף הילדים ומול הנוף מהסלון (מגדלי שדה דב, סמינר הקיבוצים)? האם המוכר יכול להציג בדיקה תכנונית?</span></li><li><span>כיצד שקלל השמאי של המוכר או של הקונה את שטחי המרפסות, והאם קיימת שומה עדכנית?</span></li><li><span>לאילו בתי ספר יסודיים ועל יסודיים משויכת הכתובת לפי אזורי הרישום של העירייה?</span></li><li><span>תשריט הדירה והיתר הבנייה, כולל שטחי המרפסות המקורות והפתוחות</span></li><li><span>טופס <span class="nlx-num">4</span> ורישום הבית המשותף</span></li><li><span>הערכת שמאי עדכנית ושיטת שקלול המרפסות</span></li><li><span>בדיקה תכנונית של מה שיכול להיבנות מול כיווני הנוף</span></li></ul>
+</section>
+
+<section class="nlx-sec" id="faq-L07-he">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">שאלות ותשובות</p><h2 class="nlx-h2">שאלות שכדאי לשאול</h2></div>
+<div class="nlx-faq"><details><summary>כמה עולה המ״ר בדירה?</summary><div class="nlx-faq-a">על <span class="nlx-num">190</span> מ״ר בנוי כ-<span class="nlx-num">94,737</span> ש״ח למ״ר. בשקלול <span class="nlx-num">80</span> מ״ר המרפסות בשליש משטחן כ-<span class="nlx-num">83,077</span> ש״ח, ובחצי משטחן כ-<span class="nlx-num">78,261</span> ש״ח. הממוצע בשכונה <span class="nlx-num">49,000</span> עד <span class="nlx-num">51,000</span> ש״ח למ״ר, ופרויקטים חדשים בה מגיעים ל-<span class="nlx-num">90,000</span> עד <span class="nlx-num">95,000</span> ש״ח.</div></details><details><summary>כמה מס רכישה ישלם רוכש?</summary><div class="nlx-faq-a">לפי מדרגות <span class="nlx-num">2026</span>: כ-<span class="nlx-num">1,153,886</span> ש״ח לרוכש דירה יחידה (<span class="nlx-num">6.41%</span>), כ-<span class="nlx-num">1,678,899</span> ש״ח לדירה נוספת או לתושב חוץ (<span class="nlx-num">9.33%</span>), וכ-<span class="nlx-num">975,976</span> ש״ח לעולה חדש זכאי (<span class="nlx-num">5.42%</span>).</div></details><details><summary>איך מגיעים ברגל לפארק הירקון?</summary><div class="nlx-faq-a">גשר הולכי רגל ואופניים של כ-<span class="nlx-num">170</span> מ׳ מרחוב לוי אשכול אל הפארק נמצא בבנייה מקיץ <span class="nlx-num">2026</span> וצפוי להיפתח ב-<span class="nlx-num">2027.</span></div></details><details><summary>מה עשוי להשתנות בנוף?</summary><div class="nlx-faq-a">מצפון מתפתח רובע שדה דב, עם מגדלים של <span class="nlx-num">20</span> עד <span class="nlx-num">45</span> קומות בתכנית המרכז, ובפינת רוקח ונמיר מתוכננים שלושה מגדלים של <span class="nlx-num">28</span> קומות. לפי מקורות ברשת, נופים פתוחים בשכונה צפויים להיחסם בחלקם.</div></details><details><summary>כמה זה בדולרים?</summary><div class="nlx-faq-a">לפי השער היציג מ-<span class="nlx-num">15.9.2026,</span> <span class="nlx-num">18,000,000</span> ש״ח הם כ-<span class="nlx-num">5.9</span> מיליון דולר או כ-<span class="nlx-num">5.1</span> מיליון אירו.</div></details></div>
+</section>
+
+<section class="nlx-sec" id="broker-L07-he">
+<div class="nlx-agent">
+<span class="nlx-monogram" aria-hidden="true">מ</span>
+<div><p class="nlx-eyebrow">המתווכת</p><p class="nlx-agent-name"><a href="https://nad-lan.co.il/brokers/meital-katzir/">מיטל קציר</a></p><p class="nlx-small">נדל״ן על הים · מתווכת במקרקעין, רישיון <span class="nlx-num">3131540</span> · 052-3631582</p></div>
+<div class="nlx-cta"><a class="nlx-btn" href="https://wa.me/972523631582?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%AA%D7%99%D7%90%D7%95%D7%9D%20%D7%A1%D7%99%D7%95%D7%A8%3A%20%D7%9E%D7%99%D7%A0%D7%99%20%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%96%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%2080%20%D7%9E%D7%B4%D7%A8%20%D7%9E%D7%A8%D7%A4%D7%A1%D7%95%D7%AA%2C%20%D7%9B%D7%95%D7%9B%D7%91%20%D7%94%D7%A6%D7%A4%D7%95%D7%9F%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>תיאום סיור פרטי</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>חיוג 052-3631582</span></a></div>
+</div>
+</section>
+
+</div>
+<aside class="nlx-rail" aria-label="מחיר ויצירת קשר">
+<div class="nlx-card nlx-price-card">
+<span class="nlx-price-lbl">מחיר מבוקש</span>
+<span class="nlx-price"><span class="nlx-money"><span class="nlx-num">18,000,000</span>&nbsp;₪</span></span>
+<div class="nlx-price-sub"><span><span class="nlx-num">≈ $5,903,575</span></span><span><span class="nlx-num">≈ €5,118,144</span></span></div>
+<dl class="nlx-price-rows"><div><dt>למ״ר בנוי</dt><dd><span class="nlx-money"><span class="nlx-num">94,737</span>&nbsp;₪</span></dd></div><div><dt>למ״ר כולל מרפסת</dt><dd><span class="nlx-money"><span class="nlx-num">66,667</span>&nbsp;₪</span></dd></div><div><dt>למ״ר משוקלל, מרפסות בשליש</dt><dd><span class="nlx-num">83,077</span>&nbsp;₪</dd></div></dl>
+<div class="nlx-cta"><a class="nlx-btn" href="https://wa.me/972523631582?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%AA%D7%99%D7%90%D7%95%D7%9D%20%D7%A1%D7%99%D7%95%D7%A8%3A%20%D7%9E%D7%99%D7%A0%D7%99%20%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%96%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%2080%20%D7%9E%D7%B4%D7%A8%20%D7%9E%D7%A8%D7%A4%D7%A1%D7%95%D7%AA%2C%20%D7%9B%D7%95%D7%9B%D7%91%20%D7%94%D7%A6%D7%A4%D7%95%D7%9F%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>תיאום סיור פרטי</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>חיוג 052-3631582</span></a></div>
+</div>
+<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">מ</span><div><b><a href="https://nad-lan.co.il/brokers/meital-katzir/">מיטל קציר</a></b><br><span class="nlx-muted">נדל״ן על הים · מתווכת במקרקעין, רישיון <span class="nlx-num">3131540</span> · 052-3631582</span></div></div>
+</aside>
+</div>
+<div class="nlx-mbar"><a class="nlx-btn" href="https://wa.me/972523631582?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%AA%D7%99%D7%90%D7%95%D7%9D%20%D7%A1%D7%99%D7%95%D7%A8%3A%20%D7%9E%D7%99%D7%A0%D7%99%20%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%96%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%2080%20%D7%9E%D7%B4%D7%A8%20%D7%9E%D7%A8%D7%A4%D7%A1%D7%95%D7%AA%2C%20%D7%9B%D7%95%D7%9B%D7%91%20%D7%94%D7%A6%D7%A4%D7%95%D7%9F%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>וואטסאפ</span></a><a class="nlx-btn nlx-btn--ghost" href="tel:+972523631582"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg><span>חיוג</span></a></div>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "RealEstateListing", "name": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון", "description": "5 חדרים, כ-190 מ״ר ומרפסות של 76 עד 80 מ״ר בקומה 11 מתוך 12, בניין בוטיק חדש. 18,000,000 ש״ח, עם מחיר למ״ר, מס רכישה ועסקאות.", "inLanguage": "he-IL", "datePosted": "2026-09-16", "url": "https://nad-lan.co.il/properties/kochav-hatzafon-new-mini-penthouse-for-sale/", "about": {"@type": "Apartment", "name": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון", "address": {"@type": "PostalAddress", "addressLocality": "תל אביב-יפו", "addressRegion": "כוכב הצפון", "addressCountry": "IL"}, "numberOfRooms": 5, "floorSize": {"@type": "QuantitativeValue", "value": 190, "unitCode": "MTK"}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "מרפסות 80 מ״ר", "value": true}, {"@type": "LocationFeatureSpecification", "name": "מיזוג VRF", "value": true}, {"@type": "LocationFeatureSpecification", "name": "ממ״ד", "value": true}, {"@type": "LocationFeatureSpecification", "name": "2 חניות", "value": true}, {"@type": "LocationFeatureSpecification", "name": "מחסן", "value": true}, {"@type": "LocationFeatureSpecification", "name": "חדר כושר", "value": true}], "image": ["https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg"]}, "offers": {"@type": "Offer", "priceCurrency": "ILS", "availability": "https://schema.org/InStock", "businessFunction": "http://purl.org/goodrelations/v1#Sell", "offeredBy": {"@type": "RealEstateAgent", "name": "מיטל קציר, נדל״ן על הים", "telephone": "+972523631582"}, "price": 18000000}, "image": ["https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_07.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DV6aYANjLBm_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_02.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_04.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_10.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05.jpg", "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_06.jpg"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "כמה עולה המ״ר בדירה?", "acceptedAnswer": {"@type": "Answer", "text": "על 190 מ״ר בנוי כ-94,737 ש״ח למ״ר. בשקלול 80 מ״ר המרפסות בשליש משטחן כ-83,077 ש״ח, ובחצי משטחן כ-78,261 ש״ח. הממוצע בשכונה 49,000 עד 51,000 ש״ח למ״ר, ופרויקטים חדשים בה מגיעים ל-90,000 עד 95,000 ש״ח."}}, {"@type": "Question", "name": "כמה מס רכישה ישלם רוכש?", "acceptedAnswer": {"@type": "Answer", "text": "לפי מדרגות 2026: כ-1,153,886 ש״ח לרוכש דירה יחידה (6.41%), כ-1,678,899 ש״ח לדירה נוספת או לתושב חוץ (9.33%), וכ-975,976 ש״ח לעולה חדש זכאי (5.42%)."}}, {"@type": "Question", "name": "איך מגיעים ברגל לפארק הירקון?", "acceptedAnswer": {"@type": "Answer", "text": "גשר הולכי רגל ואופניים של כ-170 מ׳ מרחוב לוי אשכול אל הפארק נמצא בבנייה מקיץ 2026 וצפוי להיפתח ב-2027."}}, {"@type": "Question", "name": "מה עשוי להשתנות בנוף?", "acceptedAnswer": {"@type": "Answer", "text": "מצפון מתפתח רובע שדה דב, עם מגדלים של 20 עד 45 קומות בתכנית המרכז, ובפינת רוקח ונמיר מתוכננים שלושה מגדלים של 28 קומות. לפי מקורות ברשת, נופים פתוחים בשכונה צפויים להיחסם בחלקם."}}, {"@type": "Question", "name": "כמה זה בדולרים?", "acceptedAnswer": {"@type": "Answer", "text": "לפי השער היציג מ-15.9.2026, 18,000,000 ש״ח הם כ-5.9 מיליון דולר או כ-5.1 מיליון אירו."}}]}]}</script>
+</article>
+<!-- /wp:html -->

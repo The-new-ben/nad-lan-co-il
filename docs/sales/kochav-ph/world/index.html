@@ -80,6 +80,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--ink);color:var(-
 #load .keys{font:500 12px 'IBM Plex Mono',monospace;color:var(--mute)}
 @media (max-width:760px){#near{display:none}#map{width:128px;height:128px}#foot{padding:0 16px;bottom:calc(env(safe-area-inset-bottom,0px) + 186px)}#top .ttl small{display:none}#top .ttl{font-size:13px}#info{bottom:calc(env(safe-area-inset-bottom,0px) + 184px)}}
 @media (hover:hover) and (pointer:fine){#joy{display:none}}
+body.cine .hud,body.cine #go,body.cine #load{display:none!important}
 </style>
 </head><body>
 <canvas id="c"></canvas>
@@ -709,9 +710,11 @@ function step(dt) {
   $('compass').querySelector('i').style.transform = `rotate(${(-Math.atan2(NORTH[0], NORTH[1]) - P.yaw + Math.PI) / DEG}deg)`;
   mat.river.normalMap.offset.x += dt * 0.004; mat.river.normalMap.offset.y += dt * 0.0025;
 }
+let CINE = false;
 function frame() {
   requestAnimationFrame(frame);
   const dt = Math.min(0.05, clock.getDelta());
+  if (CINE) return;
   step(dt);
   acc += dt; if (acc > 0.5) { acc = 0; refreshLabels(P.x, P.z); updTarget(); }
   mapAcc += dt; if (mapAcc > 0.12) { mapAcc = 0; drawMap(); }
@@ -722,6 +725,18 @@ $('lbar').style.width = '100%';
 $('start').hidden = false;
 $('start').onclick = () => { $('load').remove(); };
 refreshLabels(P.x, P.z); drawMap(); frame();
-window.__walk = { P, BR, ready: true, setTarget, setTime, place(x, z, yaw, pitch) { P.on = null; P.x = x; P.z = z; if (yaw != null) P.yaw = yaw; if (pitch != null) P.pitch = pitch; bridges(x, z); }, fly(h) { P.fly = h; }, U, XC };
+// film camera: the page stops its own loop and renders one frame on each call (deterministic frames for a film)
+function cineOn() { CINE = true; document.body.classList.add('cine'); SHOW.clear(); refreshLabels(P.x, P.z); const L = document.getElementById('load'); if (L) L.remove(); }
+function cineFrame(px, py, pz, lx, ly, lz, fov, dt) {
+  camera.fov = fov || 55; camera.updateProjectionMatrix();
+  camera.position.set(px, py, pz); camera.lookAt(lx, ly, lz);
+  P.x = lx; P.z = lz; // the shadow box follows what we look at
+  sun.position.set(lx + SUN.x * 400, SUN.y * 400, lz + SUN.z * 400); sun.target.position.set(lx, 0, lz); sun.target.updateMatrixWorld();
+  sun.shadow.camera.left = sun.shadow.camera.bottom = -220; sun.shadow.camera.right = sun.shadow.camera.top = 220; sun.shadow.camera.far = 1200; sun.shadow.camera.updateProjectionMatrix();
+  mat.river.normalMap.offset.x += (dt || 1 / 30) * 0.004; mat.river.normalMap.offset.y += (dt || 1 / 30) * 0.0025;
+  if (bloom.strength > 0) composer.render(); else renderer.render(scene, camera);
+  return true;
+}
+window.__walk = { P, BR, ready: true, cineOn, cineFrame, LM, PL, setTarget, setTime, place(x, z, yaw, pitch) { P.on = null; P.x = x; P.z = z; if (yaw != null) P.yaw = yaw; if (pitch != null) P.pitch = pitch; bridges(x, z); }, fly(h) { P.fly = h; }, U, XC };
 </script>
 </body></html>

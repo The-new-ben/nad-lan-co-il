@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8">
+<title>כוכב הצפון והגשר</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* One deliberate look, taken from the subject's own world: a municipal survey sheet over the street (sheet white, survey ink,
+   plan blue for water and routes, park green for the layers, red-pencil marks for targets). Not the default AI look: no cream,
+   no gold, no gradient hero. IBM Plex Sans Hebrew for words, Plex Mono for numbers (metres, minutes). */
+:root{--sheet:#F5F7F8;--ink:#0F2233;--blue:#1F5FA8;--blue2:#D9E7F7;--park:#2E7D4F;--line:#C3CFD7;--mark:#B5302A;--mute:#46596A;--glass:rgba(245,247,248,.94);color-scheme:light}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--ink);color:var(--ink);font-family:'IBM Plex Sans Hebrew',Arial,sans-serif}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.hud{position:fixed;z-index:5;pointer-events:none}
+.hud *{pointer-events:auto}
+#top{top:env(safe-area-inset-top,0px);left:0;right:0;display:flex;align-items:center;gap:10px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));direction:rtl;flex-wrap:wrap}
+#top .ttl{background:var(--glass);border:1.5px solid var(--ink);padding:7px 12px;font-weight:700;font-size:15px;min-width:0}
+#top .ttl small{display:block;font-weight:400;font-size:12px;color:var(--mute)}
+#compass{width:46px;height:46px;border-radius:50%;background:var(--glass);border:1.5px solid var(--ink);position:relative;flex:none}
+#compass i{position:absolute;left:50%;top:50%;width:2px;height:18px;margin:-18px 0 0 -1px;background:var(--mark);transform-origin:50% 100%}
+#compass b{position:absolute;left:0;right:0;top:3px;text-align:center;font:500 10px 'IBM Plex Mono',monospace}
+#where{margin-inline-start:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:600 14px 'IBM Plex Sans Hebrew',Arial;background:var(--glass);color:var(--ink);border:1.5px solid var(--ink);min-height:44px;padding:8px 14px;cursor:pointer}
+.btn.pri{background:var(--ink);color:#fff}
+.btn.on{background:var(--blue);border-color:var(--blue);color:#fff}
+#tod{display:flex;border:1.5px solid var(--ink);background:var(--glass)}
+#tod button{font:600 13px 'IBM Plex Sans Hebrew',Arial;border:0;background:none;color:var(--ink);min-height:41px;padding:6px 12px;cursor:pointer}
+#tod button+button{border-inline-start:1px solid var(--line)}
+#tod button.on{background:var(--ink);color:#fff}
+#map{right:max(16px,env(safe-area-inset-right,0px));top:calc(env(safe-area-inset-top,0px) + 74px);width:200px;height:200px;background:var(--glass);border:1.5px solid var(--ink)}
+#map canvas{width:100%;height:100%;display:block}
+#near{left:max(16px,env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 74px);width:min(318px,calc(100vw - 250px));max-height:58vh;display:flex;flex-direction:column;background:var(--glass);border:1.5px solid var(--ink);direction:rtl;font-size:13px}
+#near h3{margin:0;padding:8px 10px;font-size:13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+#near h3 span:last-child{font:500 11px 'IBM Plex Mono',monospace;color:var(--mute);font-weight:500}
+#chips{display:flex;flex-wrap:wrap;gap:4px;padding:8px 10px;border-bottom:1px solid var(--line)}
+#chips button{font:500 12px 'IBM Plex Sans Hebrew',Arial;border:1px solid var(--line);background:#fff;padding:4px 8px;min-height:30px;cursor:pointer;display:flex;align-items:center;gap:5px}
+#chips button i{width:9px;height:9px;border-radius:50%}
+#chips button[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+#near ul{list-style:none;margin:0;padding:0;overflow:auto}
+#near li{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line);cursor:pointer}
+#near li:hover{background:var(--blue2)}
+#near li i{width:10px;height:10px;border-radius:50%}
+#near li span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#near li em{font:500 12px 'IBM Plex Mono',monospace;font-style:normal;color:var(--mute)}
+#target{left:50%;top:calc(env(safe-area-inset-top,0px) + 74px);transform:translateX(-50%);background:var(--ink);color:#fff;padding:8px 14px;direction:rtl;font-size:14px;display:flex;gap:10px;align-items:center;max-width:calc(100vw - 32px);flex-wrap:wrap;justify-content:center}
+#target .arr{display:inline-block;width:22px;height:22px;transform-origin:50% 50%}
+#target .x{background:none;border:0;color:#fff;font-size:18px;cursor:pointer;min-height:auto;padding:0 4px}
+#joy{left:max(24px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 40px);width:132px;height:132px;border-radius:50%;background:rgba(245,247,248,.55);border:1.5px solid var(--ink);touch-action:none}
+#joy b{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--ink)}
+#acts{right:max(16px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 40px);display:flex;flex-direction:column;gap:8px;align-items:flex-end;direction:rtl}
+#info{left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 34px);transform:translateX(-50%);width:min(560px,calc(100vw - 32px));background:var(--sheet);border:1.5px solid var(--ink);direction:rtl;z-index:6}
+#info header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1.5px solid var(--ink)}
+#info header b{font-size:16px}
+#info dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;padding:12px 14px;font-size:14px}
+#info dt{color:var(--mute)}
+#info dd{margin:0;font-weight:500}
+#info dd .n{font-family:'IBM Plex Mono',monospace}
+#info p{margin:0;padding:0 14px 12px;font-size:12px;color:var(--mute);line-height:1.55}
+#foot{left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 6px);text-align:center;font-size:11px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7);direction:rtl;pointer-events:none;padding:0 170px}
+#go{position:fixed;inset:0;z-index:20;display:none;background:rgba(15,34,51,.55);direction:rtl;align-items:center;justify-content:center;padding:16px}
+#go.open{display:flex}
+#go .card{background:var(--sheet);border:1.5px solid var(--ink);width:min(600px,100%);max-height:86vh;overflow:auto}
+#go h2{margin:0;padding:12px 14px;font-size:17px;border-bottom:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--sheet)}
+#go section{padding:8px 14px 14px}
+#go h4{margin:12px 0 6px;font-size:12px;color:var(--mute);letter-spacing:.3px}
+#go .row{display:flex;flex-wrap:wrap;gap:6px}
+#go .row button{font:500 13px 'IBM Plex Sans Hebrew',Arial;border:1px solid var(--line);background:#fff;padding:8px 10px;cursor:pointer;min-height:40px;text-align:start}
+#go .row button:hover{border-color:var(--blue);background:var(--blue2)}
+#go .row button em{font:500 11px 'IBM Plex Mono';font-style:normal;color:var(--mute);margin-inline-start:6px}
+#go .note{font-size:12px;color:var(--mute);margin:10px 0 0}
+#load{position:fixed;inset:0;z-index:30;background:var(--sheet);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;direction:rtl;padding:24px;text-align:center}
+#load h1{margin:0;font-size:clamp(24px,5vw,40px);text-wrap:balance}
+#load p{margin:0;max-width:58ch;color:var(--mute);line-height:1.6}
+#load .bar{width:min(360px,80vw);height:6px;background:var(--line)}
+#load .bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+#load .keys{font:500 12px 'IBM Plex Mono',monospace;color:var(--mute)}
+@media (max-width:760px){#near{display:none}#map{width:128px;height:128px}#foot{padding:0 16px;bottom:calc(env(safe-area-inset-bottom,0px) + 186px)}#top .ttl small{display:none}#top .ttl{font-size:13px}#info{bottom:calc(env(safe-area-inset-bottom,0px) + 184px)}}
+@media (hover:hover) and (pointer:fine){#joy{display:none}}
+body.cine .hud,body.cine #go,body.cine #load{display:none!important}
+</style>
+</head><body>
+<canvas id="c"></canvas>
+<div class="hud" id="top">
+  <div id="compass" aria-label="מצפן"><b>N</b><i></i></div>
+  <div class="ttl">כוכב הצפון · הליכה בשכונה ועל הגשר לפארק הירקון<small>תל אביב-יפו · מפת העירייה בתלת ממד · הגשר מתוכנן, הדמיה להמחשה</small></div>
+  <div id="where">
+    <div id="tod" role="group" aria-label="שעה ביום"><button type="button" data-t="day" class="on">יום</button><button type="button" data-t="dusk">שקיעה</button><button type="button" data-t="night">לילה</button></div>
+    <button class="btn" id="aboutBridge" type="button">על הגשר</button>
+    <button class="btn pri" id="openGo" type="button">לאן ללכת?</button>
+  </div>
+</div>
+<div class="hud" id="map" aria-label="מפה"><canvas id="mapc" width="400" height="400"></canvas></div>
+<div class="hud" id="near"><h3><span>מה יש כאן קרוב</span><span id="nearN"></span></h3><div id="chips"></div><ul id="nearL"></ul></div>
+<div class="hud" id="target" hidden></div>
+<div class="hud" id="joy"><b></b></div>
+<div class="hud" id="acts"><button class="btn" id="run" type="button" aria-pressed="false">הליכה מהירה</button></div>
+<div class="hud" id="info" hidden>
+  <header><b>הגשר מעל שדרות רוקח לפארק הירקון</b><button class="btn" id="infoX" type="button">סגירה</button></header>
+  <dl>
+    <dt>מצב</dt><dd>בבנייה מיוני 2026, הפתיחה מתוכננת ב־2027</dd>
+    <dt>אורך</dt><dd><span class="n">כ־170</span> מטר, כולל הרמפות</dd>
+    <dt>רוחב</dt><dd><span class="n">6</span> מ׳: <span class="n">3</span> מ׳ להולכי רגל ו־<span class="n">3</span> מ׳ לאופניים, עם רצועה ביניהם</dd>
+    <dt>מבנה</dt><dd>פלדה, משטח במבוק, תאורת לד במעקות, נגיש בלי מעליות</dd>
+    <dt>מחבר</dt><dd>את שדרות לוי אשכול וכוכב הצפון לגני יהושע ולנחל הירקון, בלי רמזור ובלי לחצות את רוקח</dd>
+    <dt>תכנון</dt><dd>ציונוב ויתקון אדריכלים · קו בנוף · רוקח אשכנזי מהנדסים</dd>
+  </dl>
+  <p>לפי פרסומי עיריית תל אביב-יפו (מעריב, וואלה, ביזפורטל, 3.8.2026). הגשר בציור הוא הדמיה להמחשה לפי התיאור שפורסם, לא תוכנית העבודה: הצורה, הגובה והמסלול המדויקים עשויים להיות שונים.</p>
+</div>
+<div class="hud" id="foot">המבנים, הרחובות, השטחים הירוקים, העצים והירקון: שכבות עיריית תל אביב-יפו (10.2026). המקומות: findplace ו-OpenStreetMap; זמני הליכה: Mapbox. הגשר, החזיתות ועצי הפארק להמחשה.</div>
+
+<div id="go" role="dialog" aria-modal="true" aria-labelledby="goT"><div class="card">
+  <h2 id="goT"><span>לאן ללכת?</span><button class="btn" id="goX" type="button">סגירה</button></h2>
+  <section id="goBody"></section>
+</div></div>
+
+<div id="load">
+  <h1>כוכב הצפון · הגשר לפארק הירקון</h1>
+  <p>הולכים ברחובות של כוכב הצפון כמו בביקור אמיתי, עולים על הגשר המתוכנן מעל שדרות רוקח ויורדים אל המדשאות של גני יהושע ואל נחל הירקון. בדרך: בתי הקפה, בתי הספר, הגנים והחנויות, עם זמני הליכה אמיתיים.</p>
+  <div class="bar"><i id="lbar"></i></div>
+  <div class="keys" id="lkeys">טוען את העיר…</div>
+  <button class="btn pri" id="start" type="button" hidden>להתחיל ללכת</button>
+</div>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { Sky } from 'three/addons/objects/Sky.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const $ = (id) => document.getElementById(id);
+const DEG = Math.PI / 180, GA = -11 * DEG, CG = Math.cos(GA), SG = Math.sin(GA);
+// places.json and quarter.json are true-north metres; city.json is in the Sde Dov lots' grid (turned 11 degrees)
+const toGrid = (X, Z) => [X * CG - Z * SG, X * SG + Z * CG];
+const NORTH = toGrid(0, -1);
+const PHONE = matchMedia('(hover: none)').matches || innerWidth < 760;
+const EYE = 1.65, WALK = 1.45, RUN = 4.2, R_PLAYER = 0.4, MIN_PER_M = 1 / 78;
+const GROUP = { outdoors: ['פארקים וספורט', '#2E7D4F'], food: ['קפה ומסעדות', '#B5302A'], education: ['חינוך', '#1F5FA8'], essentials: ['קניות ושירותים', '#0F2233'], transport: ['תחבורה', '#6A4C93'], health: ['בריאות', '#C2185B'], community: ['קהילה', '#5D6D7E'] };
+const SHOW = new Set(Object.keys(GROUP));
+
+/* ---------------- the planned bridge: Levi Eshkol over Rokach into Yarkon Park ----------------
+   Published (municipality, 8.2026): about 170 m with the ramps, steel, bamboo
+   deck, LED railings, accessible without lifts. Width: 6 m in total, a 3 m walkway and a 3 m bike lane with a strip between (Maariv). The route here follows the Levi Eshkol axis across Rokach and turns west down
+   into the park, like the architects' published renders. ILLUSTRATION: not the working drawings. */
+const XC = [150.6, 81.7]; // Levi Eshkol meets Rokach (city.json, this world's grid)
+const U = (() => { const a = [0.33, 0.944], l = Math.hypot(...a); return [a[0] / l, a[1] / l]; })(); // along the bridge, north to south
+const NW = [-U[1], U[0]]; // the side the ramp turns to (west)
+const DECK = 6.6, HALF = 3.35, IN = 3.15; // 6.3 m between the railings: 3 m walk, a 0.3 m strip, 3 m bike
+function bridgePath() {
+  const P = [], push = (x, z, y) => P.push({ x, z, y });
+  const at = (s) => [XC[0] + U[0] * s, XC[1] + U[1] * s];
+  const ease = (t) => t * t * (3 - 2 * t);
+  for (let s = -84; s < -22; s += 1) { const [x, z] = at(s); push(x, z, DECK * ease((s + 84) / 62)); }
+  for (let s = -22; s < 22; s += 1) { const [x, z] = at(s); push(x, z, DECK + 0.35 * (1 - (s / 22) ** 2)); }
+  for (let s = 22; s < 30; s += 1) { const [x, z] = at(s); push(x, z, DECK - 0.3 * (s - 22) / 8); }
+  const R = 26, TH = 100 * DEG, S0 = at(30), K = [S0[0] + NW[0] * R, S0[1] + NW[1] * R], L = R * TH;
+  for (let a = 0; a < L; a += 1) { const t = a / R, x = K[0] + R * (-NW[0] * Math.cos(t) + U[0] * Math.sin(t)), z = K[1] + R * (-NW[1] * Math.cos(t) + U[1] * Math.sin(t)); push(x, z, (DECK - 0.3) - (DECK - 0.3 - 1.6) * (a / L)); }
+  const H = [NW[0] * Math.sin(TH) + U[0] * Math.cos(TH), NW[1] * Math.sin(TH) + U[1] * Math.cos(TH)];
+  const E0 = [K[0] + R * (-NW[0] * Math.cos(TH) + U[0] * Math.sin(TH)), K[1] + R * (-NW[1] * Math.cos(TH) + U[1] * Math.sin(TH))];
+  for (let s = 0; s <= 22; s += 1) push(E0[0] + H[0] * s, E0[1] + H[1] * s, 1.6 * (1 - ease(s / 22)));
+  let acc = 0;
+  for (let i = 0; i < P.length; i++) {
+    const a = P[Math.max(0, i - 1)], b = P[Math.min(P.length - 1, i + 1)], l = Math.hypot(b.x - a.x, b.z - a.z) || 1;
+    P[i].tx = (b.x - a.x) / l; P[i].tz = (b.z - a.z) / l; P[i].nx = -P[i].tz; P[i].nz = P[i].tx; // n: the left-hand side
+    if (i) acc += Math.hypot(P[i].x - P[i - 1].x, P[i].z - P[i - 1].z); P[i].s = acc;
+  }
+  return P;
+}
+
+/* ---------------- geometry helpers ---------------- */
+const ptsOf = (a, k) => { const P = []; for (let i = k; i + 1 < a.length; i += 2) P.push([a[i], a[i + 1]]); return P; };
+const area = (P) => { let s = 0; for (let i = 0, j = P.length - 1; i < P.length; j = i++) s += (P[j][0] - P[i][0]) * (P[j][1] + P[i][1]); return s / 2; };
+const inPoly = (x, z, L) => { let c = false; for (let i = 0, j = L.length - 1; i < L.length; j = i++) { const [xi, zi] = L[i], [xj, zj] = L[j]; if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) c = !c; } return c; };
+class Acc { constructor() { this.p = []; this.n = []; this.u = []; this.i = []; } get v() { return this.p.length / 3; }
+  geo() { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(this.p, 3)); g.setAttribute('normal', new THREE.Float32BufferAttribute(this.n, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(this.u, 2)); g.setIndex(this.i); g.computeBoundingSphere(); return g; } }
+function walls(A, P, y0, y1, tw, th, v0 = 0) {
+  const ccw = area(P) > 0; let acc = 0;
+  for (let k = 0; k < P.length; k++) {
+    const a = P[k], b = P[(k + 1) % P.length], L = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (L < 0.05) continue;
+    let nx = (b[1] - a[1]) / L, nz = -(b[0] - a[0]) / L; if (!ccw) { nx = -nx; nz = -nz; }
+    const base = A.v, u0 = acc / tw, u1 = (acc + L) / tw, va = v0, vb = v0 + (y1 - y0) / th;
+    A.p.push(a[0], y0, a[1], b[0], y0, b[1], b[0], y1, b[1], a[0], y1, a[1]);
+    for (let q = 0; q < 4; q++) A.n.push(nx, 0, nz);
+    A.u.push(u0, va, u1, va, u1, vb, u0, vb);
+    if (ccw) A.i.push(base, base + 2, base + 1, base, base + 3, base + 2); else A.i.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    acc += L;
+  }
+}
+function cap(A, P, y, scale = 6) {
+  const c = P.map((p) => new THREE.Vector2(p[0], p[1]));
+  let tris; try { tris = THREE.ShapeUtils.triangulateShape(c, []); } catch (e) { return; }
+  const base = A.v;
+  for (const p of P) { A.p.push(p[0], y, p[1]); A.n.push(0, 1, 0); A.u.push(p[0] / scale, p[1] / scale); }
+  const up = area(P) > 0;
+  for (const t of tris) up ? A.i.push(base + t[0], base + t[2], base + t[1]) : A.i.push(base + t[0], base + t[1], base + t[2]);
+}
+function ribbon(A, P, w, y, scale = 8) {
+  let acc = 0;
+  for (let k = 0; k + 1 < P.length; k++) {
+    const a = P[k], b = P[k + 1], L = Math.hypot(b[0] - a[0], b[1] - a[1]); if (L < 0.05) continue;
+    const nx = -(b[1] - a[1]) / L * w / 2, nz = (b[0] - a[0]) / L * w / 2, base = A.v;
+    A.p.push(a[0] + nx, y, a[1] + nz, a[0] - nx, y, a[1] - nz, b[0] - nx, y, b[1] - nz, b[0] + nx, y, b[1] + nz);
+    for (let q = 0; q < 4; q++) A.n.push(0, 1, 0);
+    A.u.push(0, acc / scale, w / scale, acc / scale, w / scale, (acc + L) / scale, 0, (acc + L) / scale);
+    A.i.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    acc += L;
+  }
+}
+// a profile (lateral l, height h) swept along a path of {x, y, z, nx, nz, s}; each profile segment its own strip (crisp edges)
+function sweep(path, prof, uvAlong = 1, uvAcross = 1, closed = false) {
+  const A = new Acc();
+  const segs = closed ? prof.length : prof.length - 1;
+  for (let k = 0; k < segs; k++) {
+    const p0 = prof[k], p1 = prof[(k + 1) % prof.length];
+    const base = A.v, wAcc = k === 0 ? 0 : 0;
+    for (const q of path) {
+      for (const p of [p0, p1]) { A.p.push(q.x + q.nx * p[0], q.y + p[1], q.z + q.nz * p[0]); A.n.push(0, 1, 0); }
+      A.u.push(q.s / uvAlong, p0[0] / uvAcross + wAcc, q.s / uvAlong, p1[0] / uvAcross + (p1[1] - p0[1]) / uvAcross + wAcc);
+    }
+    for (let i = 0; i + 1 < path.length; i++) { const a = base + i * 2, b = a + 2; A.i.push(a, a + 1, b, a + 1, b + 1, b); } // a profile run toward +l faces up
+  }
+  const g = A.geo(); g.computeVertexNormals(); return g;
+}
+
+/* ---------------- renderer, scene, sky, light ---------------- */
+const canvas = $('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: !PHONE, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, PHONE ? 1.5 : 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.72;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0xcdd7de, PHONE ? 0.0019 : 0.0012);
+const camera = new THREE.PerspectiveCamera(PHONE ? 74 : 66, 1, 0.1, 6000);
+const sky = new Sky(); sky.scale.setScalar(20000); scene.add(sky);
+const su = sky.material.uniforms;
+const hemi = new THREE.HemisphereLight(0xdfe8f0, 0xb8ab95, 0.55); scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.6);
+sun.castShadow = true; sun.shadow.mapSize.set(PHONE ? 1024 : 2048, PHONE ? 1024 : 2048);
+Object.assign(sun.shadow.camera, { left: -110, right: 110, top: 110, bottom: -110, near: 1, far: 700 }); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.6;
+scene.add(sun, sun.target);
+const SUN = new THREE.Vector3();
+const pmrem = new THREE.PMREMGenerator(renderer);
+const envFor = (v, turb, ray) => { const ss = new THREE.Scene(); const s2 = new Sky(); s2.scale.setScalar(1000); s2.material.uniforms.sunPosition.value.copy(v); s2.material.uniforms.turbidity.value = turb; s2.material.uniforms.rayleigh.value = ray; ss.add(s2); return pmrem.fromScene(ss, 0.04).texture; };
+const sunDir = (bearing, elev) => { const sx = Math.sin(bearing * DEG) * Math.cos(elev * DEG), sz = -Math.cos(bearing * DEG) * Math.cos(elev * DEG); const [gx, gz] = toGrid(sx, sz); return new THREE.Vector3(gx, Math.sin(elev * DEG), gz).normalize(); };
+
+/* ---------------- textures and data ---------------- */
+const TL = new THREE.TextureLoader();
+const aniso = renderer.capabilities.getMaxAnisotropy();
+let loaded = 0; const TOTAL = 15;
+const tick = (what) => { loaded++; $('lbar').style.width = Math.round((loaded / TOTAL) * 100) + '%'; $('lkeys').textContent = what; };
+const tex = (f) => new Promise((ok) => TL.load(f, (t) => { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = aniso; t.colorSpace = THREE.SRGBColorSpace; tick('טוען חומרים…'); ok(t); }, undefined, () => { tick('…'); ok(null); }));
+const getJSON = (f) => fetch(f).then((r) => r.json()).then((j) => { tick('טוען את העיר…'); return j; });
+const [T, city, places, quarter] = await Promise.all([
+  Promise.all(['tex/fac_white.jpg', 'tex/fac_tower.jpg', 'tex/fac_retail.jpg', 'tex/pave.jpg', 'tex/asphalt.jpg', 'tex/lawn.jpg', 'tex/deck.jpg', 'tex/bikelane.jpg', 'tex/tree_olive.png', 'tex/tree_palm.png', 'tex/tree_ficus.png'].map((f) => tex(f)))
+    .then(([white, tower, retail, pave, asphalt, lawn, deck, bike, olive, palm, ficus]) => ({ white, tower, retail, pave, asphalt, lawn, deck, bike, olive, palm, ficus })),
+  getJSON('city.json'), getJSON('places.json'), getJSON('quarter.json'),
+]);
+// a water normal map drawn here (no outside images): soft ripples
+const waterNormal = (() => {
+  const S = 256, c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'); const img = x.createImageData(S, S);
+  const h = (i, j) => Math.sin(i * 0.098) * 0.6 + Math.sin(j * 0.147 + i * 0.05) * 0.5 + Math.sin((i + j) * 0.196) * 0.3 + Math.sin((i - 2 * j) * 0.073) * 0.4;
+  for (let j = 0; j < S; j++) for (let i = 0; i < S; i++) { const dx = h(i + 1, j) - h(i - 1, j), dz = h(i, j + 1) - h(i, j - 1), k = (j * S + i) * 4; img.data[k] = 128 + dx * 60; img.data[k + 1] = 128 + dz * 60; img.data[k + 2] = 255; img.data[k + 3] = 255; }
+  x.putImageData(img, 0, 0); const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, 1); return t;
+})();
+const M = (map, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ map, roughness: 0.8, metalness: 0 }, o));
+const mat = {
+  white: M(T.white, { roughness: 0.85 }), tower: M(T.tower, { roughness: 0.42, envMapIntensity: 0.9 }), retail: M(T.retail, { roughness: 0.5, envMapIntensity: 0.7 }),
+  roof: new THREE.MeshStandardMaterial({ color: 0xd9d6cf, roughness: 0.9 }),
+  pave: M(T.pave, { roughness: 0.9 }), asphalt: M(T.asphalt, { roughness: 0.95, color: 0xb0b0b0 }), lawn: M(T.lawn, { roughness: 1, color: 0xd9e0cc }), path: M(T.pave, { roughness: 0.9, color: 0xd8d2c6 }),
+  sand: new THREE.MeshStandardMaterial({ color: 0xdcccaa, roughness: 1 }), sea: new THREE.MeshStandardMaterial({ color: 0x1f6684, roughness: 0.12, metalness: 0.2, envMapIntensity: 1.2 }),
+  river: new THREE.MeshStandardMaterial({ color: 0x2f6a6a, roughness: 0.06, metalness: 0.15, envMapIntensity: 1.3, normalMap: waterNormal, normalScale: new THREE.Vector2(0.35, 0.35) }),
+  far: new THREE.MeshStandardMaterial({ color: 0xe4e0d8, roughness: 0.9 }), quarter: new THREE.MeshStandardMaterial({ color: 0xf4f3ef, roughness: 0.7, transparent: true, opacity: 0.8 }),
+  bridgeBody: new THREE.MeshStandardMaterial({ color: 0xf3f3f0, roughness: 0.5, metalness: 0.05, side: THREE.DoubleSide }),
+  deck: M(T.deck, { roughness: 0.75 }), bike: M(T.bike, { roughness: 0.85, color: 0x9a9fa3 }),
+  glass: new THREE.MeshStandardMaterial({ color: 0xd6e7ee, roughness: 0.04, metalness: 0.1, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }),
+  steel: new THREE.MeshStandardMaterial({ color: 0xb9c1c6, roughness: 0.3, metalness: 0.85, side: THREE.DoubleSide }),
+  led: new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff2d6, emissiveIntensity: 0.1, roughness: 0.4, side: THREE.DoubleSide }),
+  lamp: new THREE.MeshBasicMaterial({ color: 0xffd9a0 }),
+};
+mat.river.normalMap.repeat.set(1 / 9, 1 / 9);
+const add = (geoOrAcc, m, shadow = true) => { const g = geoOrAcc instanceof Acc ? (geoOrAcc.v ? geoOrAcc.geo() : null) : geoOrAcc; if (!g) return null; const me = new THREE.Mesh(g, m); me.castShadow = shadow; me.receiveShadow = true; scene.add(me); return me; };
+
+/* ---------------- ground, sea, river, streets, parks, paths ---------------- */
+const coast = city.coast || { x0: -1400, k: -0.12, line: [] };
+const shoreLine = (coast.line || []).map((p) => [Number(p[0]), Number(p[1])]).sort((a, b) => a[1] - b[1]);
+const shoreX = (z) => { const L = shoreLine; if (L.length < 2) return coast.x0 + coast.k * z; if (z <= L[0][1]) return L[0][0]; for (let i = 0; i + 1 < L.length; i++) if (z <= L[i + 1][1]) { const t = (z - L[i][1]) / (L[i + 1][1] - L[i][1]); return L[i][0] + t * (L[i + 1][0] - L[i][0]); } return L[L.length - 1][0]; };
+const WATER = (city.w || []).map((w) => ptsOf(w, 1)).filter((P) => P.length > 2);
+const GREENS = [];
+{
+  const g = new THREE.PlaneGeometry(9000, 9000); g.rotateX(-Math.PI / 2);
+  const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * 9000 / 4, uv.getY(i) * 9000 / 4);
+  const m = new THREE.Mesh(g, mat.pave); m.receiveShadow = true; scene.add(m);
+  const sea = new Acc(), sand = new Acc();
+  const Z = []; for (let z = -4000; z <= 4000; z += 40) Z.push(z);
+  const shore = Z.map((z) => [shoreX(z), z]);
+  cap(sea, [[-9000, -4000], ...shore.map(([x, z]) => [x - 2, z]), [-9000, 4000]], 0.06, 40);
+  cap(sand, [...shore.map(([x, z]) => [x - 2, z]), ...shore.map(([x, z]) => [x + 46, z]).reverse()], 0.05, 8);
+  add(sea, mat.sea, false); add(sand, mat.sand, false);
+  const roads = new Acc(), greens = new Acc(), paths = new Acc(), river = new Acc(), bank = new Acc();
+  for (const s of city.s || []) { const P = ptsOf(s, 2); if (P.length > 1) ribbon(roads, P, /רוקח/.test(s[1]) ? 34 : (Number(s[0]) || 10), 0.03); }
+  for (const l of city.lots || []) { const P = ptsOf(l, 2); if (P.length > 2 && l[0] === 'park') { cap(greens, P, 0.04, 11); GREENS.push(P); } }
+  for (const gg of city.g || []) { const P = ptsOf(gg, 1); if (P.length > 2) { cap(greens, P, 0.045, 11); GREENS.push(P); } }
+  for (const k of city.bk || []) { const P = ptsOf(k, 1); if (P.length > 1) ribbon(paths, P, 3.4, 0.06, 6); }
+  for (const P of WATER) { cap(river, P, 0.07, 1); walls(bank, P, -0.6, 0.07, 6, 2); }
+  add(roads, mat.asphalt, false); add(greens, mat.lawn, false); add(paths, mat.path, false); add(river, mat.river, false); add(bank, mat.path, false);
+}
+const inWater = (x, z) => WATER.some((P) => inPoly(x, z, P));
+
+/* ---------------- the city as it stands (municipal buildings layer) ---------------- */
+const COLL = [];
+{
+  const W = { white: new Acc(), tower: new Acc(), retail: new Acc(), roof: new Acc() };
+  for (const b of city.b || []) {
+    const P = ptsOf(b, 3), h = Number(b[0]) || 0;
+    if (P.length < 3 || h <= 0) continue;
+    COLL.push(P);
+    const tall = h > 34, hash = Math.abs(Math.sin(P[0][0] * 12.9898 + P[0][1] * 78.233)) % 1;
+    const shop = h >= 9 && hash < 0.45, g1 = shop ? Math.min(4.6, h) : 0;
+    if (shop) walls(W.retail, P, 0, g1, 9, 4.6);
+    if (h > g1) walls(tall ? W.tower : W.white, P, g1, h, tall ? 14 : 10, tall ? 13 : 9.6, (hash * 7) % 1);
+    cap(W.roof, P, h, 6);
+  }
+  add(W.white, mat.white); add(W.tower, mat.tower); add(W.retail, mat.retail); add(W.roof, mat.roof);
+  const f = city.f || [], cnt = Math.floor(f.length / 6);
+  const im = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0), mat.far, cnt);
+  const o = new THREE.Object3D();
+  for (let i = 0; i < cnt; i++) { const k = i * 6; o.position.set(f[k], 0, f[k + 1]); o.rotation.set(0, -f[k + 4] * DEG, 0); o.scale.set(Math.max(2, f[k + 2]), f[k + 5], Math.max(2, f[k + 3])); o.updateMatrix(); im.setMatrixAt(i, o.matrix); }
+  im.receiveShadow = true; scene.add(im);
+}
+// Sde Dov: our project pages around, schematic masses (quarter.json), planned or being built
+const QP = [];
+for (const p of quarter.projects || []) {
+  const [lx, lz] = toGrid(Number(p.x) || 0, Number(p.z) || 0); const fl = Number(p.floors) || 10, h = Math.max(12, fl * 3.3 + 4);
+  const A = new Acc(); const P = fl >= 20 ? 13 : 22, D = 13; const Q = [[lx - P, lz - D], [lx + P, lz - D], [lx + P, lz + D], [lx - P, lz + D]];
+  walls(A, Q, 0, h, 10, 10); cap(A, Q, h); COLL.push(Q); add(A, mat.quarter);
+  QP.push({ name: p.name, x: lx, z: lz, status: p.status || '' });
+}
+
+/* ---------------- bridges: the planned one, and the walk bridges over the Yarkon standing today ---------------- */
+const BR = [];
+const signTex = (lines, w = 1024, h = 300, bg = '#0F2233', fg = '#ffffff') => {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d');
+  x.fillStyle = bg; x.fillRect(0, 0, w, h); x.fillStyle = '#B5302A'; x.fillRect(w - 18, 0, 18, h); x.direction = 'rtl'; x.textAlign = 'right'; x.textBaseline = 'middle';
+  lines.forEach((ln, i) => { x.fillStyle = i ? '#C3CFD7' : fg; x.font = `${i ? 500 : 700} ${i ? 40 : 64}px "IBM Plex Sans Hebrew", Arial`; x.fillText(ln, w - 46, (h / (lines.length + 1)) * (i + 1)); });
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = aniso; return t;
+};
+{
+  const path = bridgePath();
+  const body = [[-IN, 0], [-IN, 0.16], [-HALF, 0.16], [-HALF, -0.48], [-3.1, -0.84], [-2.0, -1.0], [0, -1.08], [2.0, -1.0], [3.1, -0.84], [HALF, -0.48], [HALF, 0.16], [IN, 0.16], [IN, 0]];
+  add(sweep(path, body, 4, 4), mat.bridgeBody);
+  add(sweep(path, [[-IN, 0.012], [-0.15, 0.012]], 2.0, 2.0), mat.deck);            // the 3 m walkway (bamboo)
+  add(sweep(path, [[0.15, 0.012], [IN, 0.012]], 3, 3), mat.bike);                  // the 3 m bike lane
+  add(sweep(path, [[-0.15, 0.09], [0.15, 0.09]], 4, 4), mat.bridgeBody);           // the strip between them
+  add(sweep(path, [[-0.15, 0.012], [-0.15, 0.09]], 4, 4), mat.bridgeBody); add(sweep(path, [[0.15, 0.09], [0.15, 0.012]], 4, 4), mat.bridgeBody);
+  for (const sgn of [-1, 1]) {
+    const l = sgn * (IN + 0.1);
+    const gl = add(sweep(path, [[l, 0.16], [l, 1.2]], 4, 4), mat.glass, false); gl.renderOrder = 2;
+    add(sweep(path, [[l - 0.05, 1.2], [l - 0.05, 1.26], [l + 0.05, 1.26], [l + 0.05, 1.2]], 4, 4), mat.steel);
+    add(sweep(path, [[l - sgn * 0.07, 1.09], [l - sgn * 0.07, 1.18]], 4, 4), mat.led, false);   // the LED line under the handrail, facing the deck
+    add(sweep(path, [[l - sgn * 0.12, 0.17], [l - sgn * 0.12, 0.24]], 4, 4), mat.led, false);   // a low one along the kerb
+    add(sweep(path, [[sgn * (HALF + 0.012), -0.2], [sgn * (HALF + 0.012), -0.1]], 4, 4), mat.led, false); // and a line along the outer edge, seen from the park
+  }
+  // posts every 1.8 m, columns every ~13 m where the deck is up (none on Rokach's carriageway)
+  const posts = [], cols = [];
+  let nextP = 0, nextC = 6;
+  for (const q of path) {
+    if (q.s >= nextP) { nextP += 1.8; for (const sgn of [-1, 1]) posts.push([q.x + q.nx * sgn * (IN + 0.1), q.y + 0.16, q.z + q.nz * sgn * (IN + 0.1)]); }
+    const onRoad = Math.abs((q.x - XC[0]) * U[0] + (q.z - XC[1]) * U[1]) < 18 && q.y > DECK - 0.4;
+    if (q.s >= nextC && q.y > 2.2 && !onRoad) { nextC += 13; for (const sgn of [-1, 1]) cols.push([q.x + q.nx * sgn * 1.7, q.y - 1.0, q.z + q.nz * sgn * 1.7]); }
+  }
+  const pm = new THREE.InstancedMesh(new THREE.BoxGeometry(0.05, 1.04, 0.05).translate(0, 0.52, 0), mat.steel, posts.length);
+  const o = new THREE.Object3D(); posts.forEach((p, i) => { o.position.set(...p); o.updateMatrix(); pm.setMatrixAt(i, o.matrix); }); scene.add(pm);
+  const cm = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.36, 0.42, 1, 24).translate(0, 0.5, 0), mat.bridgeBody, cols.length);
+  cols.forEach((p, i) => { o.position.set(p[0], 0, p[2]); o.scale.set(1, p[1], 1); o.updateMatrix(); cm.setMatrixAt(i, o.matrix); const r = 0.45; COLL.push([[p[0] - r, p[2] - r], [p[0] + r, p[2] - r], [p[0] + r, p[2] + r], [p[0] - r, p[2] + r]]); });
+  cm.castShadow = true; cm.receiveShadow = true; scene.add(cm);
+  // bicycle marks on the bike lane, every 24 m
+  const bc = document.createElement('canvas'); bc.width = bc.height = 128; const bx = bc.getContext('2d'); bx.strokeStyle = '#f4f4f0'; bx.lineWidth = 7;
+  bx.beginPath(); bx.arc(32, 82, 22, 0, 7); bx.stroke(); bx.beginPath(); bx.arc(96, 82, 22, 0, 7); bx.stroke(); bx.beginPath(); bx.moveTo(32, 82); bx.lineTo(56, 44); bx.lineTo(88, 44); bx.lineTo(96, 82); bx.moveTo(56, 44); bx.lineTo(64, 82); bx.lineTo(88, 44); bx.stroke();
+  const bt = new THREE.CanvasTexture(bc); bt.colorSpace = THREE.SRGBColorSpace;
+  const bmat = new THREE.MeshBasicMaterial({ map: bt, transparent: true, depthWrite: false, opacity: 0.85 });
+  for (let i = 12; i < path.length - 6; i += 24) { const q = path[i]; const m = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 1.9), bmat); m.rotation.x = -Math.PI / 2; m.rotation.z = Math.atan2(q.tx, q.tz) + Math.PI; m.position.set(q.x + q.nx * 1.65, q.y + 0.03, q.z + q.nz * 1.65); m.rotation.order = 'YXZ'; m.rotation.set(-Math.PI / 2, 0, 0); m.rotateZ(-Math.atan2(q.tz, q.tx) - Math.PI / 2); scene.add(m); }
+  // a sign at each end: what it is, honestly
+  const st = signTex(['הגשר לפארק הירקון', 'מתוכנן · הפתיחה צפויה ב־2027 · הדמיה להמחשה']);
+  for (const q of [path[3], path[path.length - 4]]) {
+    const g = new THREE.Group(); g.position.set(q.x - q.nx * 5.2, 0, q.z - q.nz * 5.2); g.rotation.y = Math.atan2(-q.tx, -q.tz) + (q === path[3] ? 0 : Math.PI);
+    const pole = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.6, 0.12), mat.steel); pole.position.y = 1.3;
+    const board = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 1.0), new THREE.MeshBasicMaterial({ map: st, toneMapped: false, side: THREE.DoubleSide })); board.position.y = 2.9;
+    g.add(pole, board); scene.add(g);
+  }
+  BR.push({ name: 'הגשר לפארק הירקון (מתוכנן)', path, hw: IN - 0.35, planned: true });
+}
+for (const b of city.br || []) { // the walk bridges standing today over the river: a plain deck so the walker can cross
+  if (!/הולכי רגל/.test(b[1]) || !/(בבלי|ראש ציפור|מרכז יצחק רבין|החתירה|דניאל)/.test(b[0])) continue;
+  const P = ptsOf(b, 2); if (P.length < 2) continue;
+  const path = []; let acc = 0; const step = 1;
+  for (let k = 0; k + 1 < P.length; k++) { const a = P[k], c = P[k + 1], L = Math.hypot(c[0] - a[0], c[1] - a[1]); for (let d = 0; d < L; d += step) { const t = d / L; path.push({ x: a[0] + (c[0] - a[0]) * t, z: a[1] + (c[1] - a[1]) * t }); } }
+  path.push({ x: P[P.length - 1][0], z: P[P.length - 1][1] });
+  path.forEach((q, i) => { const a = path[Math.max(0, i - 1)], c = path[Math.min(path.length - 1, i + 1)], l = Math.hypot(c.x - a.x, c.z - a.z) || 1; q.tx = (c.x - a.x) / l; q.tz = (c.z - a.z) / l; q.nx = -q.tz; q.nz = q.tx; if (i) acc += Math.hypot(q.x - path[i - 1].x, q.z - path[i - 1].z); q.s = acc; const e = Math.min(q.s, 0) ; q.y = 0; });
+  const Ls = acc; path.forEach((q) => { q.y = 1.1 * Math.min(1, q.s / 4, (Ls - q.s) / 4); });
+  add(sweep(path, [[-1.8, 0], [-1.8, 0.1], [-1.9, 0.1], [-1.9, -0.5], [1.9, -0.5], [1.9, 0.1], [1.8, 0.1], [1.8, 0]], 4, 4), mat.bridgeBody);
+  add(sweep(path, [[-1.8, 0.01], [1.8, 0.01]], 2.0, 2.0), mat.deck);
+  for (const sgn of [-1, 1]) add(sweep(path, [[sgn * 1.85, 0.1], [sgn * 1.85, 1.1]], 4, 4), mat.steel, false);
+  BR.push({ name: b[0], path, hw: 1.5 });
+}
+
+/* ---------------- trees: the city's trees layer, and the park's lawns (illustration) ---------------- */
+{
+  const kinds = [[T.ficus, 7.5, 0.62], [T.olive, 6, 0.66], [T.palm, 11, 0.5]];
+  const pts = []; const t = city.t || []; for (let i = 0; i + 1 < t.length; i += 2) pts.push([t[i], t[i + 1]]);
+  // the park south of Rokach: a tree every ~26 m on the lawns, never on paths, water, the bridge or a street (illustration)
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const big = GREENS.filter((P) => Math.abs(area(P)) > 2500);
+  const nearLine = (x, z, list, w) => list.some((L) => { for (let k = 0; k + 1 < L.length; k++) { const [ax, az] = L[k], [bx, bz] = L[k + 1], vx = bx - ax, vz = bz - az, l2 = vx * vx + vz * vz || 1, tt = Math.max(0, Math.min(1, ((x - ax) * vx + (z - az) * vz) / l2)); if (Math.hypot(x - ax - tt * vx, z - az - tt * vz) < w) return true; } return false; });
+  const PATHS = (city.bk || []).map((k) => ptsOf(k, 1)), STREETS = (city.s || []).map((s) => ptsOf(s, 2)), BRP = BR.map((b) => b.path.map((q) => [q.x, q.z]));
+  for (const P of big) {
+    let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9; for (const [x, z] of P) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); z0 = Math.min(z0, z); z1 = Math.max(z1, z); }
+    if (Math.hypot((x0 + x1) / 2, (z0 + z1) / 2) > 1300) continue;
+    const n = Math.min(260, Math.floor(Math.abs(area(P)) / 680));
+    for (let i = 0; i < n; i++) { const x = x0 + rnd() * (x1 - x0), z = z0 + rnd() * (z1 - z0); if (!inPoly(x, z, P) || inWater(x, z) || nearLine(x, z, PATHS, 4) || nearLine(x, z, STREETS, 9) || nearLine(x, z, BRP, 8)) continue; pts.push([x, z, 0, rnd() < 0.5 ? 0 : 2]); }
+  }
+  kinds.forEach(([map, H, ar], k) => {
+    if (!map) return;
+    const mine = pts.filter((p, i) => (p[3] !== undefined ? p[3] : Math.floor(Math.abs(Math.sin(i * 3.7)) * 3)) === k);
+    if (!mine.length) return;
+    const geo = new THREE.BufferGeometry(); const w = H * ar, P = [], U2 = [], I = [], N = [];
+    for (let q = 0; q < 2; q++) { const a = q * Math.PI / 2, cx = Math.cos(a) * w / 2, cz = Math.sin(a) * w / 2, b = P.length / 3; P.push(-cx, 0, -cz, cx, 0, cz, cx, H, cz, -cx, H, -cz); U2.push(0, 0, 1, 0, 1, 1, 0, 1); for (let r = 0; r < 4; r++) N.push(-Math.sin(a), 0, Math.cos(a)); I.push(b, b + 1, b + 2, b, b + 2, b + 3); }
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); geo.setAttribute('uv', new THREE.Float32BufferAttribute(U2, 2)); geo.setAttribute('normal', new THREE.Float32BufferAttribute(N, 3)); geo.setIndex(I);
+    map.wrapS = map.wrapT = THREE.ClampToEdgeWrapping;
+    const m = new THREE.MeshStandardMaterial({ map, alphaTest: 0.45, side: THREE.DoubleSide, roughness: 0.9 });
+    const im = new THREE.InstancedMesh(geo, m, mine.length);
+    im.customDepthMaterial = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking, map, alphaTest: 0.45 });
+    const o = new THREE.Object3D();
+    mine.forEach((p, i) => { const s = 0.8 + Math.abs(Math.sin(p[0] * 1.3 + p[1])) * 0.5; o.position.set(p[0], 0, p[1]); o.rotation.y = (p[0] * 7 + p[1]) % Math.PI; o.scale.setScalar(s); o.updateMatrix(); im.setMatrixAt(i, o.matrix); });
+    im.castShadow = true; scene.add(im);
+  });
+}
+
+/* ---------------- street lamps (lit at dusk and night) ---------------- */
+const LAMPS = (() => {
+  const pts = [];
+  for (const s of city.s || []) { const P = ptsOf(s, 2); const w = /רוקח/.test(s[1]) ? 34 : (Number(s[0]) || 10); let acc = 0, next = 0;
+    for (let k = 0; k + 1 < P.length; k++) { const [ax, az] = P[k], [bx, bz] = P[k + 1], L = Math.hypot(bx - ax, bz - az); if (L < 0.1) continue; const nx = -(bz - az) / L, nz = (bx - ax) / L;
+      while (next <= acc + L) { const t = (next - acc) / L, x = ax + (bx - ax) * t, z = az + (bz - az) * t; if (Math.hypot(x, z) < 1100) pts.push([x + nx * (w / 2 + 0.6), z + nz * (w / 2 + 0.6)]); next += 32; } acc += L; } }
+  const im = new THREE.InstancedMesh(new THREE.SphereGeometry(0.28, 10, 8), mat.lamp, pts.length); const o = new THREE.Object3D();
+  pts.forEach((p, i) => { o.position.set(p[0], 7.2, p[1]); o.updateMatrix(); im.setMatrixAt(i, o.matrix); });
+  im.visible = false; scene.add(im);
+  const pole = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.07, 0.09, 7.2, 6).translate(0, 3.6, 0), mat.steel, pts.length);
+  pts.forEach((p, i) => { o.position.set(p[0], 0, p[1]); o.updateMatrix(); pole.setMatrixAt(i, o.matrix); }); scene.add(pole);
+  return im;
+})();
+
+/* ---------------- places: labels, the side list, filters ---------------- */
+const PL = (places.places || []).map((p) => { const [x, z] = toGrid(Number(p.x) || 0, Number(p.z) || 0); return { ...p, gx: x, gz: z }; });
+const LM = (quarter.places || []).map((p) => { const [x, z] = toGrid(Number(p.x) || 0, Number(p.z) || 0); return { ...p, gx: x, gz: z }; });
+const labelCache = new Map();
+function labelSprite(key, txt, sub, color) {
+  if (labelCache.has(key)) return labelCache.get(key);
+  const c = document.createElement('canvas'); c.width = 512; c.height = 128; const x = c.getContext('2d');
+  x.fillStyle = 'rgba(245,247,248,.95)'; x.fillRect(0, 8, 512, 92); x.fillStyle = color; x.fillRect(496, 8, 16, 92);
+  x.strokeStyle = '#0F2233'; x.lineWidth = 3; x.strokeRect(1.5, 9.5, 509, 89);
+  x.direction = 'rtl'; x.textAlign = 'right'; x.fillStyle = '#0F2233'; x.font = '700 34px "IBM Plex Sans Hebrew", Arial'; x.fillText(txt.slice(0, 26), 482, 50);
+  x.font = '500 24px "IBM Plex Sans Hebrew", Arial'; x.fillStyle = '#46596A'; x.fillText(sub, 482, 84);
+  x.fillStyle = '#0F2233'; x.beginPath(); x.moveTo(246, 100); x.lineTo(266, 100); x.lineTo(256, 124); x.fill();
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, depthTest: true, fog: false, toneMapped: false }));
+  s.scale.set(6.4, 1.6, 1); s.center.set(0.5, 0); labelCache.set(key, s); return s;
+}
+const mins = (d) => Math.max(1, Math.round(d * MIN_PER_M));
+// the chips: one per group, with the count around
+{
+  const C = $('chips');
+  for (const [g, [name, color]] of Object.entries(GROUP)) {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-pressed', 'true'); const i = document.createElement('i'); i.style.background = color; b.append(i, name);
+    b.onclick = () => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on ? 'true' : 'false'); on ? SHOW.add(g) : SHOW.delete(g); refreshLabels(P.x, P.z, true); };
+    C.append(b);
+  }
+}
+const shown = new Set();
+function refreshLabels(px, pz) {
+  const seenN = new Set();
+  const near = PL.filter((p) => SHOW.has(p.g) && !p.generic).map((p) => ({ p, d: Math.hypot(p.gx - px, p.gz - pz) })).filter((o) => o.d < 260).sort((a, b) => a.d - b.d)
+    .filter((o) => { const k = o.p.name.trim(); if (seenN.has(k)) return false; seenN.add(k); return true; }).slice(0, PHONE ? 14 : 28); // one line per name (a sports centre has many courts)
+  const keep = new Set(near.map((o) => o.p.id));
+  for (const id of shown) if (!keep.has(id)) { const s = labelCache.get(id); if (s) scene.remove(s); shown.delete(id); }
+  for (const { p, d } of near) {
+    const s = labelSprite(p.id, p.name, (GROUP[p.g] || ['', ''])[0] + ' · ' + mins(d) + ' דק׳ הליכה', (GROUP[p.g] || ['', '#0F2233'])[1]);
+    s.position.set(p.gx, groundY() + 3.2, p.gz); const k = Math.min(2.2, Math.max(0.7, d / 40)); s.scale.set(6.4 * k, 1.6 * k, 1);
+    if (!shown.has(p.id)) { scene.add(s); shown.add(p.id); }
+  }
+  const L = $('nearL'); L.textContent = '';
+  for (const { p, d } of near.slice(0, 16)) {
+    const li = document.createElement('li'); const i = document.createElement('i'); i.style.background = (GROUP[p.g] || ['', '#0F2233'])[1];
+    const s = document.createElement('span'); s.textContent = p.name; const e = document.createElement('em'); e.textContent = mins(d) + ' דק׳';
+    li.append(i, s, e); li.onclick = () => setTarget({ name: p.name, x: p.gx, z: p.gz }); L.append(li);
+  }
+  $('nearN').textContent = near.length + ' עד כ־3 דק׳';
+}
+// big landmark labels that stay up: the bridge, the park, the river and the quarter's anchors
+{
+  const mark = (txt, sub, x, z, y, col) => { const s = labelSprite('lm:' + txt, txt, sub, col); s.position.set(x, y, z); s.scale.set(19, 4.75, 1); scene.add(s); };
+  const mid = BR[0].path[Math.floor(BR[0].path.length * 0.4)];
+  mark('הגשר לפארק הירקון', 'מתוכנן · 2027 · הדמיה להמחשה', mid.x, mid.z, DECK + 9, '#B5302A');
+  mark('גני יהושע · פארק הירקון', 'מדשאות, שבילי הליכה ואופניים', XC[0] - 40, XC[1] + 150, 12, '#2E7D4F');
+  if (WATER[0]) { let best = null; for (const [x, z] of WATER[0]) { const d = Math.hypot(x - XC[0], z - XC[1]); if (!best || d < best.d) best = { x, z, d }; } mark('נחל הירקון', mins(best.d) + ' דק׳ מהגשר', best.x, best.z, 9, '#1F5FA8'); }
+  for (const l of LM) if (l.kind !== 'bridge') mark(l.pin || l.name, l.status || '', l.gx, l.gz, 16, l.kind === 'school' ? '#1F5FA8' : l.kind === 'rail' ? '#6A4C93' : '#2E7D4F');
+}
+
+/* ---------------- the destination beacon ---------------- */
+const beacon = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 160, 18, 1, true), new THREE.MeshBasicMaterial({ color: 0xb5302a, transparent: true, opacity: 0.42, depthWrite: false, fog: false, side: THREE.DoubleSide }));
+beacon.visible = false; scene.add(beacon);
+let TARGET = null, AUTO = null;
+function setTarget(t) { TARGET = t; beacon.position.set(t.x, 80, t.z); beacon.visible = true; $('go').classList.remove('open'); updTarget(); }
+function updTarget() {
+  const el = $('target');
+  if (!TARGET) { el.hidden = true; return; }
+  const d = Math.hypot(TARGET.x - P.x, TARGET.z - P.z);
+  const ang = Math.atan2(TARGET.x - P.x, -(TARGET.z - P.z)) - P.yaw;
+  el.hidden = false; el.innerHTML = '';
+  const a = document.createElement('span'); a.className = 'arr'; a.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2l7 18-7-4-7 4z" fill="#fff"/></svg>'; a.style.transform = `rotate(${(-ang) / DEG}deg)`;
+  const s = document.createElement('span'); s.textContent = `${TARGET.name} · ${d < 1000 ? Math.round(d) + ' מ׳' : (d / 1000).toFixed(1) + ' ק״מ'} · כ־${mins(d)} דק׳ הליכה`;
+  const go = document.createElement('button'); go.className = 'btn'; go.style.minHeight = '34px'; go.style.padding = '4px 10px'; go.textContent = AUTO ? 'עצירה' : 'ללכת לשם';
+  go.onclick = () => { AUTO = AUTO ? null : { x: TARGET.x, z: TARGET.z }; updTarget(); };
+  const jump = document.createElement('button'); jump.className = 'btn'; jump.style.minHeight = '34px'; jump.style.padding = '4px 10px'; jump.textContent = 'לקפוץ לשם';
+  jump.onclick = () => { const dd = Math.max(1, d); P.on = null; P.x = TARGET.x - (TARGET.x - P.x) / dd * 12; P.z = TARGET.z - (TARGET.z - P.z) / dd * 12; P.yaw = Math.atan2(-(TARGET.x - P.x), -(TARGET.z - P.z)); resolve(); if (TARGET.bridge != null) { P.on = TARGET.bridge; } };
+  const x = document.createElement('button'); x.className = 'x'; x.textContent = '×'; x.setAttribute('aria-label', 'ביטול היעד'); x.onclick = () => { TARGET = null; AUTO = null; beacon.visible = false; updTarget(); };
+  el.append(a, s, go, jump, x);
+}
+
+/* ---------------- the walker ---------------- */
+const B0 = BR[0].path;
+const P = { x: B0[0].x - U[0] * 16, z: B0[0].z - U[1] * 16, y: EYE, yaw: 0, pitch: 0.02, run: false, on: null };
+P.yaw = Math.atan2(-U[0], -U[1]);
+const CELL = 40, grid = new Map();
+const key = (i, j) => i + ',' + j;
+COLL.forEach((L, k) => { let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9; for (const [x, z] of L) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); z0 = Math.min(z0, z); z1 = Math.max(z1, z); }
+  for (let i = Math.floor(x0 / CELL); i <= Math.floor(x1 / CELL); i++) for (let j = Math.floor(z0 / CELL); j <= Math.floor(z1 / CELL); j++) { const kk = key(i, j); if (!grid.has(kk)) grid.set(kk, []); grid.get(kk).push(k); } });
+function resolve() {
+  if (P.on !== null) return;
+  for (let it = 0; it < 3; it++) {
+    const cand = grid.get(key(Math.floor(P.x / CELL), Math.floor(P.z / CELL))) || [];
+    for (const k of cand) {
+      const L = COLL[k]; let best = null; const inside = inPoly(P.x, P.z, L);
+      for (let i = 0, j = L.length - 1; i < L.length; j = i++) {
+        const [ax, az] = L[j], [bx, bz] = L[i], vx = bx - ax, vz = bz - az, l2 = vx * vx + vz * vz || 1;
+        const t = Math.max(0, Math.min(1, ((P.x - ax) * vx + (P.z - az) * vz) / l2)), cx = ax + t * vx, cz = az + t * vz, d = Math.hypot(P.x - cx, P.z - cz);
+        if (!best || d < best.d) best = { d, cx, cz };
+      }
+      if (!best) continue;
+      if (inside) { const dx = best.cx - P.x, dz = best.cz - P.z, dd = Math.hypot(dx, dz) || 1; P.x = best.cx + dx / dd * R_PLAYER; P.z = best.cz + dz / dd * R_PLAYER; }
+      else if (best.d < R_PLAYER) { const dx = P.x - best.cx, dz = P.z - best.cz, dd = best.d || 1; P.x = best.cx + dx / dd * R_PLAYER; P.z = best.cz + dz / dd * R_PLAYER; }
+    }
+  }
+  const sx = shoreX(P.z) + 4; if (P.x < sx) P.x = sx;
+}
+// the nearest point of a bridge's centre line: lateral offset, deck height, how far along
+function onPath(b, x, z) {
+  let best = null; const pth = b.path;
+  for (let i = 0; i + 1 < pth.length; i++) {
+    const a = pth[i], c = pth[i + 1], vx = c.x - a.x, vz = c.z - a.z, l2 = vx * vx + vz * vz || 1;
+    const tr = ((x - a.x) * vx + (z - a.z) * vz) / l2, t = Math.max(0, Math.min(1, tr)), px = a.x + vx * t, pz = a.z + vz * t, d = Math.hypot(x - px, z - pz);
+    if (!best || d < best.d) best = { d, i, t, tr, px, pz, y: a.y + (c.y - a.y) * t, lat: (x - px) * a.nx + (z - pz) * a.nz, nx: a.nx, nz: a.nz };
+  }
+  best.end = (best.i === 0 && best.tr < 0) ? 0 : (best.i === pth.length - 2 && best.tr > 1) ? 1 : -1; return best;
+}
+let lastBridgeInfo = 0;
+function bridges(prevX, prevZ) {
+  if (P.on !== null) {
+    const b = BR[P.on], r = onPath(b, P.x, P.z);
+    if (r.end >= 0 && r.y < 0.35) { P.on = null; return; }                      // stepped off at a ground end
+    if (r.end >= 0) { P.x = prevX; P.z = prevZ; return; }                       // an end up in the air: hold
+    if (Math.abs(r.lat) > b.hw) { const s = Math.sign(r.lat); P.x = r.px + r.nx * s * b.hw; P.z = r.pz + r.nz * s * b.hw; } // the railing
+    P.deck = r.y; return;
+  }
+  for (let k = 0; k < BR.length; k++) {
+    const r = onPath(BR[k], P.x, P.z);
+    if (r.end < 0 && Math.abs(r.lat) < BR[k].hw && r.y < 0.45) { P.on = k; P.deck = r.y; if (BR[k].planned && performance.now() - lastBridgeInfo > 60000) { lastBridgeInfo = performance.now(); $('info').hidden = false; } return; }
+  }
+  if (inWater(P.x, P.z)) { P.x = prevX; P.z = prevZ; }                         // the river's edge
+}
+const groundY = () => (P.on !== null ? P.deck || 0 : 0);
+
+/* ---------------- input ---------------- */
+const keys = new Set();
+addEventListener('keydown', (e) => { keys.add(e.code); if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') P.run = true; });
+addEventListener('keyup', (e) => { keys.delete(e.code); if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') P.run = $('run').getAttribute('aria-pressed') === 'true'; });
+const joy = { x: 0, y: 0, id: null };
+{
+  const el = $('joy'), knob = el.querySelector('b');
+  const set = (e) => { const r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2; let dx = e.clientX - cx, dy = e.clientY - cy; const m = Math.hypot(dx, dy), R = r.width / 2 - 14; if (m > R) { dx *= R / m; dy *= R / m; } joy.x = dx / R; joy.y = dy / R; knob.style.transform = `translate(${dx}px,${dy}px)`; };
+  el.addEventListener('pointerdown', (e) => { joy.id = e.pointerId; el.setPointerCapture(e.pointerId); set(e); AUTO = null; });
+  el.addEventListener('pointermove', (e) => { if (e.pointerId === joy.id) set(e); });
+  const end = (e) => { if (e.pointerId !== joy.id) return; joy.id = null; joy.x = joy.y = 0; knob.style.transform = ''; };
+  el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
+}
+let drag = null;
+const ray = new THREE.Raycaster(), groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+canvas.addEventListener('pointerdown', (e) => { drag = { id: e.pointerId, x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, t: performance.now() }; canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointermove', (e) => { if (!drag || e.pointerId !== drag.id) return; const k = PHONE ? 0.0055 : 0.0042; P.yaw += (e.clientX - drag.x) * k; P.pitch = Math.max(-1.1, Math.min(0.9, P.pitch + (e.clientY - drag.y) * k)); drag.x = e.clientX; drag.y = e.clientY; });
+canvas.addEventListener('pointerup', (e) => {
+  if (!drag) return; const moved = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy), quick = performance.now() - drag.t < 320; drag = null;
+  if (moved < 8 && quick) {
+    const r = canvas.getBoundingClientRect(); const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(v, camera); const hit = new THREE.Vector3(); groundPlane.constant = -groundY();
+    if (ray.ray.intersectPlane(groundPlane, hit) && hit.distanceTo(camera.position) < 260) AUTO = { x: hit.x, z: hit.z, tap: true };
+  }
+});
+$('run').onclick = () => { const on = $('run').getAttribute('aria-pressed') !== 'true'; $('run').setAttribute('aria-pressed', on ? 'true' : 'false'); $('run').classList.toggle('on', on); P.run = on; };
+$('aboutBridge').onclick = () => { $('info').hidden = !$('info').hidden; };
+$('infoX').onclick = () => { $('info').hidden = true; };
+
+/* ---------------- "where to?" ---------------- */
+function buildGo() {
+  const Bd = $('goBody'); Bd.textContent = '';
+  const sec = (title, items) => { if (!items.length) return; const h = document.createElement('h4'); h.textContent = title; const r = document.createElement('div'); r.className = 'row';
+    for (const it of items) { const b = document.createElement('button'); b.type = 'button'; b.textContent = it.name; if (it.sub) { const em = document.createElement('em'); em.textContent = it.sub; b.append(em); } b.onclick = () => setTarget(it); r.append(b); }
+    Bd.append(h, r); };
+  const pth = BR[0].path, at = (f) => pth[Math.min(pth.length - 1, Math.floor(pth.length * f))];
+  const mid = at(0.43), low = at(0.98);
+  sec('הגשר לפארק (מתוכנן)', [
+    { name: 'תחילת הרמפה בלוי אשכול', x: pth[0].x - U[0] * 6, z: pth[0].z - U[1] * 6 },
+    { name: 'על הגשר, מעל רוקח', x: mid.x, z: mid.z, bridge: 0 },
+    { name: 'הירידה אל המדשאות', x: low.x, z: low.z },
+  ]);
+  const D = (o) => Math.hypot(o.gx, o.gz), rd = (o) => (o.walk ? o.walk + ' דק׳' : mins(D(o)) + ' דק׳');
+  sec('בפארק ובשכונה', LM.filter((l) => l.kind !== 'bridge').map((l) => ({ name: l.pin || l.name, sub: l.walk ? l.walk + ' דק׳' : '', x: l.gx, z: l.gz })));
+  const pick = (f, n) => { const seen = new Set(); return PL.filter(f).sort((a, b) => D(a) - D(b)).filter((p) => !seen.has(p.name) && seen.add(p.name)).slice(0, n).map((p) => ({ name: p.name, sub: rd(p), x: p.gx, z: p.gz })); };
+  sec('בתי קפה', pick((p) => p.k === 'cafe' && !p.generic, 10));
+  sec('מסעדות', pick((p) => p.k === 'restaurant' && !p.generic, 8));
+  sec('בתי ספר וגני ילדים', pick((p) => (p.k === 'school' || p.k === 'kindergarten') && !p.generic, 10));
+  sec('סופרמרקטים', pick((p) => p.k === 'supermarket' && !p.generic, 6));
+  sec('ספורט וכושר', pick((p) => (p.k === 'sport' || p.k === 'gym' || p.k === 'sports_centre') && !p.generic, 8));
+  sec('תחבורה', pick((p) => (p.k === 'tram_stop' || p.k === 'station') && !p.generic, 6));
+  sec('שדה דב: פרויקטים בבנייה ובתכנון (מסה סכמטית)', QP.map((q) => ({ name: q.name, sub: q.status, x: q.x, z: q.z })));
+  const n = document.createElement('p'); n.className = 'note'; n.textContent = 'זמני ההליכה ברשימה: מסלול הליכה של Mapbox מהקצה הדרומי של השכונה, ליד הגשר. על הכיתובים בתוך העיר: לפי המרחק ממך. הבניין של הנכס יסומן אחרי אישור הכתובת.'; Bd.append(n);
+}
+$('openGo').onclick = () => { buildGo(); $('go').classList.add('open'); };
+$('goX').onclick = () => $('go').classList.remove('open');
+
+/* ---------------- day, dusk, night ---------------- */
+const composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.6, 0.3, 0.9); composer.addPass(bloom); composer.addPass(new OutputPass());
+let MODE = 'day';
+const TOD = {
+  day: { b: 205, e: 52, turb: 3, ray: 1, mie: 0.004, exp: 0.7, sunI: 2.6, sunC: 0xfff1dc, hemiI: 0.55, hemiS: 0xdfe8f0, hemiG: 0xb8ab95, fog: 0xcdd7de, led: 0.05, bloom: 0, env: 1, lamps: false, bg: null },
+  dusk: { b: 262, e: 3.5, turb: 7, ray: 2.6, mie: 0.007, exp: 0.62, sunI: 1.5, sunC: 0xffa060, hemiI: 0.38, hemiS: 0xf0c8a8, hemiG: 0x6a5a58, fog: 0xc9a796, led: 1.1, bloom: 0.3, env: 0.6, lamps: true, bg: null },
+  night: { b: 262, e: -14, turb: 2, ray: 0.6, mie: 0.003, exp: 1.1, sunI: 0.26, sunC: 0x9fb6e8, hemiI: 0.3, hemiS: 0x3a4f7a, hemiG: 0x14161c, fog: 0x0d1626, led: 1.8, bloom: 0.55, env: 0.12, lamps: true, bg: 0x0a1220 },
+};
+function setTime(m) {
+  MODE = m; const t = TOD[m];
+  SUN.copy(sunDir(t.b, Math.max(t.e, 2))); su.sunPosition.value.copy(sunDir(t.b, t.e)); su.turbidity.value = t.turb; su.rayleigh.value = t.ray; su.mieCoefficient.value = t.mie; su.mieDirectionalG.value = 0.82;
+  renderer.toneMappingExposure = t.exp; sun.intensity = t.sunI; sun.color.setHex(t.sunC); hemi.intensity = t.hemiI; hemi.color.setHex(t.hemiS); hemi.groundColor.setHex(t.hemiG);
+  scene.fog.color.setHex(t.fog); mat.led.emissiveIntensity = t.led; bloom.strength = t.bloom; LAMPS.visible = t.lamps;
+  sky.visible = !t.bg; scene.background = t.bg ? new THREE.Color(t.bg) : null;
+  if (scene.environment) scene.environment.dispose(); scene.environment = envFor(sunDir(t.b, Math.max(t.e, 1)), t.turb, t.ray); scene.environmentIntensity = t.env;
+  for (const k of ['white', 'tower', 'retail']) { mat[k].emissive.setHex(m === 'night' ? 0x2b2418 : 0x000000); mat[k].emissiveIntensity = m === 'night' ? 0.55 : 0; }
+  for (const b of $('tod').children) b.classList.toggle('on', b.dataset.t === m);
+}
+for (const b of $('tod').children) b.onclick = () => setTime(b.dataset.t);
+setTime('day');
+
+/* ---------------- the map ---------------- */
+const mapc = $('mapc'), mx = mapc.getContext('2d');
+function poly(L) { mx.beginPath(); L.forEach(([x, z], i) => (i ? mx.lineTo(x, z) : mx.moveTo(x, z))); mx.closePath(); }
+function drawMap() {
+  const W = mapc.width, H = mapc.height, S = W / 2 / 300;
+  mx.setTransform(1, 0, 0, 1, 0, 0); mx.fillStyle = '#F5F7F8'; mx.fillRect(0, 0, W, H);
+  const rot = -Math.atan2(NORTH[0], -NORTH[1]);
+  mx.translate(W / 2, H / 2); mx.rotate(rot); mx.scale(S, S); mx.translate(-P.x, -P.z);
+  mx.fillStyle = '#CFE5C9'; for (const G of GREENS) { poly(G); mx.fill(); }
+  mx.fillStyle = '#7FB2D6'; for (const Wt of WATER) { poly(Wt); mx.fill(); }
+  mx.strokeStyle = '#C3CFD7'; mx.lineCap = 'round';
+  for (const s of city.s || []) { const Pp = ptsOf(s, 2); if (Pp.length < 2) continue; mx.lineWidth = /רוקח/.test(s[1]) ? 34 : (Number(s[0]) || 10); mx.beginPath(); Pp.forEach(([x, z], i) => (i ? mx.lineTo(x, z) : mx.moveTo(x, z))); mx.stroke(); }
+  mx.fillStyle = '#AEB9C1';
+  for (const L of COLL) { const [x0, z0] = L[0]; if (Math.abs(x0 - P.x) > 460 || Math.abs(z0 - P.z) > 460) continue; poly(L); mx.fill(); }
+  mx.strokeStyle = '#B5302A'; mx.lineWidth = 9; mx.beginPath(); BR[0].path.forEach((q, i) => (i ? mx.lineTo(q.x, q.z) : mx.moveTo(q.x, q.z))); mx.stroke();
+  if (TARGET) { mx.fillStyle = '#B5302A'; mx.beginPath(); mx.arc(TARGET.x, TARGET.z, 10, 0, 7); mx.fill(); }
+  mx.save(); mx.translate(P.x, P.z); mx.rotate(-P.yaw); mx.fillStyle = '#0F2233'; mx.beginPath(); mx.moveTo(0, -16); mx.lineTo(10, 11); mx.lineTo(0, 6); mx.lineTo(-10, 11); mx.closePath(); mx.fill(); mx.restore();
+  mx.setTransform(1, 0, 0, 1, 0, 0); mx.fillStyle = '#0F2233'; mx.font = '600 22px "IBM Plex Mono", monospace'; mx.fillText('N', W / 2 - 7, 26);
+}
+
+/* ---------------- the loop ---------------- */
+function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+addEventListener('resize', resize); resize();
+const clock = new THREE.Clock(); let acc = 0, mapAcc = 0;
+function step(dt) {
+  let f = 0, s = 0;
+  if (keys.has('KeyW') || keys.has('ArrowUp')) f += 1; if (keys.has('KeyS') || keys.has('ArrowDown')) f -= 1;
+  if (keys.has('KeyA')) s -= 1; if (keys.has('KeyD')) s += 1;
+  if (keys.has('ArrowLeft')) P.yaw += 1.6 * dt; if (keys.has('ArrowRight')) P.yaw -= 1.6 * dt;
+  if (joy.id !== null) { f += -joy.y; s += joy.x; }
+  let sp = (P.run ? RUN : WALK);
+  if (AUTO && !f && !s) { const dx = AUTO.x - P.x, dz = AUTO.z - P.z, d = Math.hypot(dx, dz); if (d < 1.2) AUTO = null; else { const want = Math.atan2(-dx, -dz); let dy = want - P.yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); P.yaw += dy * Math.min(1, dt * 4); f = 1; sp = AUTO.tap ? WALK * 1.6 : RUN; } }
+  if (f || s) { const m = Math.min(1, Math.hypot(f, s)), a = Math.atan2(s, f); const dir = P.yaw - a; const px = P.x, pz = P.z;
+    P.x += -Math.sin(dir) * sp * m * dt; P.z += -Math.cos(dir) * sp * m * dt; resolve(); bridges(px, pz);
+    if (AUTO && Math.hypot(P.x - px, P.z - pz) < sp * dt * 0.15) { AUTO.stuck = (AUTO.stuck || 0) + dt; if (AUTO.stuck > 1.2) AUTO = null; } }
+  else if (P.on !== null) bridges(P.x, P.z);
+  const gy = groundY() + EYE + (P.fly || 0); P.y += (gy - P.y) * Math.min(1, dt * 8);
+  const bob = (f || s) ? Math.sin(performance.now() / 160) * 0.025 : 0;
+  camera.position.set(P.x, P.y + bob, P.z);
+  camera.rotation.set(0, 0, 0); camera.rotateY(P.yaw); camera.rotateX(-P.pitch);
+  sun.position.set(P.x + SUN.x * 300, SUN.y * 300, P.z + SUN.z * 300); sun.target.position.set(P.x, 0, P.z); sun.target.updateMatrixWorld();
+  $('compass').querySelector('i').style.transform = `rotate(${(-Math.atan2(NORTH[0], NORTH[1]) - P.yaw + Math.PI) / DEG}deg)`;
+  mat.river.normalMap.offset.x += dt * 0.004; mat.river.normalMap.offset.y += dt * 0.0025;
+}
+let CINE = false;
+function frame() {
+  requestAnimationFrame(frame);
+  const dt = Math.min(0.05, clock.getDelta());
+  if (CINE) return;
+  step(dt);
+  acc += dt; if (acc > 0.5) { acc = 0; refreshLabels(P.x, P.z); updTarget(); }
+  mapAcc += dt; if (mapAcc > 0.12) { mapAcc = 0; drawMap(); }
+  if (bloom.strength > 0) composer.render(); else renderer.render(scene, camera);
+}
+$('lkeys').textContent = PHONE ? 'אגודל שמאל: הליכה · גרירה: הסתכלות · הקשה על הרחוב: הולכים לשם' : 'W A S D או החצים: הליכה · גרירה עם העכבר: הסתכלות · Shift: מהר · הקשה על הרחוב: הולכים לשם';
+$('lbar').style.width = '100%';
+$('start').hidden = false;
+$('start').onclick = () => { $('load').remove(); };
+refreshLabels(P.x, P.z); drawMap(); frame();
+// film camera: the page stops its own loop and renders one frame on each call (deterministic frames for a film)
+function cineOn() { CINE = true; document.body.classList.add('cine'); SHOW.clear(); refreshLabels(P.x, P.z); const L = document.getElementById('load'); if (L) L.remove(); }
+function cineFrame(px, py, pz, lx, ly, lz, fov, dt) {
+  camera.fov = fov || 55; camera.updateProjectionMatrix();
+  camera.position.set(px, py, pz); camera.lookAt(lx, ly, lz);
+  P.x = lx; P.z = lz; // the shadow box follows what we look at
+  sun.position.set(lx + SUN.x * 400, SUN.y * 400, lz + SUN.z * 400); sun.target.position.set(lx, 0, lz); sun.target.updateMatrixWorld();
+  sun.shadow.camera.left = sun.shadow.camera.bottom = -220; sun.shadow.camera.right = sun.shadow.camera.top = 220; sun.shadow.camera.far = 1200; sun.shadow.camera.updateProjectionMatrix();
+  mat.river.normalMap.offset.x += (dt || 1 / 30) * 0.004; mat.river.normalMap.offset.y += (dt || 1 / 30) * 0.0025;
+  if (bloom.strength > 0) composer.render(); else renderer.render(scene, camera);
+  return true;
+}
+window.__walk = { P, BR, ready: true, cineOn, cineFrame, LM, PL, setTarget, setTime, place(x, z, yaw, pitch) { P.on = null; P.x = x; P.z = z; if (yaw != null) P.yaw = yaw; if (pitch != null) P.pitch = pitch; bridges(x, z); }, fly(h) { P.fly = h; }, U, XC };
+</script>
+</body></html>

@@ -4408,3 +4408,6 @@ RELEASE DONE x-broker-edit 1.0.0 (snippet 1274, Broker self-edit) by Claude [Ash
 
 RELEASE LOCK x-broker-brief 1.0.0 (material request page for Meital, new snippet, additive) by Claude [Ashira session] 20.10.2026.
 RELEASE DONE x-broker-brief 1.0.0 (snippet 1279) by Claude [Ashira session] 20.10.2026: installed, tested on phone (test file and answer removed). Lock released.
+
+RELEASE LOCK 1.72.473 (Kochav HaTzafon walk: assets/walk/kochav, new files only, no hunk; then the listing 7634/7812 content: Meital text, 3D card, value section) by Claude [Ashira session] 20.10.2026, Ben "put everything on the site".
+RELEASE DONE 1.72.473 (Kochav walk files) + listing 7634/7812 content (Meital text, 3D card, value section, 197 m2 refit) + x-broker-edit 1.1.0 (dossier guard: nl_dossier=1 on 7634) by Claude [Ashira session] 20.10.2026: released and verified on phone and desktop. Lock released.
