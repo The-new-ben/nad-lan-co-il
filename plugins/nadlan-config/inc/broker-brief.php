@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config · Material request for one property (x-broker-brief) · v1.0.0 · 20.10.2026
+ * nadlan-config · Material request for one property (x-broker-brief) · v1.1.0 · 20.10.2026
  *
  * Ben, 20.10.2026: "make Meital a special link where she uploads, in an orderly way, everything we need for the
  * Kochav HaTzafon property: photos, the apartment's plan, the view, a description, the answers to our questions."
@@ -10,12 +10,14 @@
  * then short questions, saved field by field as they are typed (she can stop and come back). Files are kept OUTSIDE the
  * web root (beside the WordPress folder, like the owner wizard's drafts): nothing is public until we choose it for the
  * page. Images lose their location data on arrival. Admins read and download through /wp-json/nadlan/v1/brief/<key>.
+ * v1.1.0 (Ben, 20.10): the property is an existing, rented home (not a new project): no build or entry questions; the
+ * questions cover the rent, the lease, visits with a tenant, upgrades, registration and nearby prices.
  * Needs x-broker-drop (the token). Installed as the Code Snippet "x-broker-brief" by scripts/broker-edit/deployedit.py.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_BRIEF_VERSION' ) ) { return; }
-define( 'NL_BRIEF_VERSION', '1.0.0' );
+define( 'NL_BRIEF_VERSION', '1.1.0' );
 define( 'NL_BRIEF_MAX', 62914560 ); // 60 MB a file
 
 /** The briefs: key => broker, listing, title. */
@@ -55,22 +57,25 @@ function nl_brief_auth( $token, $key ) {
 /** The questions: id, label, hint, type (text, area, yesno), group. Plain Hebrew, the broker's words. */
 function nl_brief_questions() {
 	return array(
-		array( 'g' => 'הבניין', 'id' => 'address', 'l' => 'כתובת הבניין', 'h' => 'לא תפורסם. צריך אותה כדי לבנות את המפה והנוף בדיוק.', 't' => 'text' ),
-		array( 'g' => 'הבניין', 'id' => 'project', 'l' => 'שם הפרויקט או הבניין, ומי היזם', 'h' => 'אם יש', 't' => 'text' ),
-		array( 'g' => 'הבניין', 'id' => 'built', 'l' => 'מתי הבניין נגמר (או מתי ייגמר)', 'h' => 'למשל: אוכלס ב-2025', 't' => 'text' ),
-		array( 'g' => 'הבניין', 'id' => 'floors', 'l' => 'כמה קומות בבניין, וכמה דירות בקומה של הנכס', 'h' => '', 't' => 'text' ),
-		array( 'g' => 'הבניין', 'id' => 'amenities', 'l' => 'מה יש בבניין', 'h' => 'לובי, שומר או לובי מאויש, חדר כושר, חדר דיירים, מעליות, חניון', 't' => 'area' ),
-		array( 'g' => 'הדירה', 'id' => 'sizes', 'l' => 'שטח הדירה ושטח המרפסת לפי התוכנית או החוזה', 'h' => 'למשל: 190 מ״ר בנוי, מרפסת 80 מ״ר. אם יש מרפסות נוספות, כל אחת לחוד', 't' => 'text' ),
+		array( 'g' => 'הבניין', 'id' => 'address', 'l' => 'כתובת הבניין', 'h' => 'לא תפורסם. צריך אותה כדי לבנות את המפה, הנוף והשמש בדיוק.', 't' => 'text' ),
+		array( 'g' => 'הבניין', 'id' => 'project', 'l' => 'שם הבניין או הפרויקט, ומי בנה אותו', 'h' => 'אם יש. יזם מוכר מוסיף לערך', 't' => 'text' ),
+		array( 'g' => 'הבניין', 'id' => 'floors', 'l' => 'כמה קומות ודירות בבניין, כמה דירות בקומה 11, ומה יש בקומה 12 מעל הדירה', 'h' => 'למשל: פנטהאוז אחד מעל, האם רואים ממנו את המרפסת', 't' => 'area' ),
+		array( 'g' => 'הבניין', 'id' => 'amenities', 'l' => 'מה יש בבניין', 'h' => 'לובי, שומר או לובי מאויש, חדר כושר, חדר דיירים, מספר מעליות, חניון, גנרטור', 't' => 'area' ),
+		array( 'g' => 'הדירה', 'id' => 'sizes', 'l' => 'שטח הדירה ושטח כל מרפסת לפי הנסח או החוזה', 'h' => 'במדלן כתוב 190 מ״ר, מרפסות 74 ו-4 מ״ר. לתקן אם צריך. האם המרפסת פתוחה לשמיים או מקורה בחלקה', 't' => 'text' ),
 		array( 'g' => 'הדירה', 'id' => 'rooms', 'l' => 'רשימת החדרים, כולל שירותים ומקלחות', 'h' => 'למשל: סלון ופינת אוכל, מטבח, סוויטת הורים עם חדר רחצה וחדר ארונות, 2 חדרי ילדים, ממ״ד, חדר רחצה, שירותי אורחים, מרפסת שירות', 't' => 'area' ),
-		array( 'g' => 'הדירה', 'id' => 'facing', 'l' => 'לאן פונים הסלון והמרפסת, ומה רואים מהם', 'h' => 'למשל: מערב ודרום, ים, פארק הירקון, מגדלי העיר', 't' => 'area' ),
+		array( 'g' => 'הדירה', 'id' => 'facing', 'l' => 'לאן פונים הסלון, החדרים והמרפסת, ומה רואים מכל כיוון', 'h' => 'למשל: מערב ודרום, ים, פארק הירקון, מגדלי העיר. האם יש משהו שעתיד להיבנות מול הנוף', 't' => 'area' ),
+		array( 'g' => 'הדירה', 'id' => 'upgrades', 'l' => 'מה שודרג בדירה מעבר למפרט הקבלן', 'h' => 'מטבח ומכשירים, נגרות, בית חכם, תאורה, מיזוג, ריצוף, הצללה במרפסת. ומה נשאר בדירה בעסקה', 't' => 'area' ),
 		array( 'g' => 'הדירה', 'id' => 'ceiling', 'l' => 'גובה התקרה', 'h' => 'אם ידוע', 't' => 'text' ),
-		array( 'g' => 'הדירה', 'id' => 'spec', 'l' => 'גימורים ומפרט', 'h' => 'ריצוף, מטבח ומכשירים, ארונות ונגרות, חלונות, מיזוג, בית חכם, תאורה, תריסים חשמליים', 't' => 'area' ),
-		array( 'g' => 'הדירה', 'id' => 'parking', 'l' => 'חניות ומחסן', 'h' => 'כמה, צמודות, מקורות, גודל המחסן', 't' => 'text' ),
+		array( 'g' => 'הדירה', 'id' => 'parking', 'l' => 'חניות ומחסן', 'h' => 'כמה, צמודות, מקורות, זו אחר זו או זו ליד זו, גודל המחסן', 't' => 'text' ),
+		array( 'g' => 'השכירות', 'id' => 'rent', 'l' => 'שכר הדירה היום, לחודש', 'h' => 'לפי מה שנמסר לנו: כ-35,000 ש״ח. לתקן אם צריך. לא יפורסם בלי אישור שלך', 't' => 'text' ),
+		array( 'g' => 'השכירות', 'id' => 'lease', 'l' => 'עד מתי החוזה, והאם הקונה יכול להמשיך עם השוכר', 'h' => 'חשוב למשקיעים: נכס מניב מהיום הראשון', 't' => 'text' ),
+		array( 'g' => 'השכירות', 'id' => 'visits', 'l' => 'איך מתאמים צילום וביקורים כשהשוכר בדירה', 'h' => 'כמה זמן מראש, באילו שעות', 't' => 'text' ),
 		array( 'g' => 'מכירה', 'id' => 'price', 'l' => 'המחיר המבוקש לפרסום', 'h' => 'כרגע באתר: 18,000,000 ש״ח. לעדכן אם צריך', 't' => 'text' ),
-		array( 'g' => 'מכירה', 'id' => 'entry', 'l' => 'מתי אפשר להיכנס', 'h' => '', 't' => 'text' ),
 		array( 'g' => 'מכירה', 'id' => 'costs', 'l' => 'ועד בית וארנונה בחודש', 'h' => 'אם ידוע', 't' => 'text' ),
+		array( 'g' => 'מכירה', 'id' => 'register', 'l' => 'רישום הדירה: טאבו או חברה משכנת, והאם כל השטחים והמרפסות כלולים בהיתר', 'h' => 'בשביל הקונה ועורך הדין שלו. לא יפורסם', 't' => 'text' ),
+		array( 'g' => 'מכירה', 'id' => 'comps', 'l' => 'עסקאות או מחירים שאת מכירה בבניין או ליד, במכירה או בשכירות', 'h' => 'כל מספר עוזר להראות לקונה את הערך', 't' => 'area' ),
 		array( 'g' => 'מכירה', 'id' => 'strengths', 'l' => 'מה הכי תופס את מי שבא לראות את הדירה', 'h' => 'במילים שלך', 't' => 'area' ),
-		array( 'g' => 'מכירה', 'id' => 'buyers', 'l' => 'מי לדעתך הקונה המתאים, ומי כבר התעניין', 'h' => 'למשל: משפחה משדרגת, תושבי חוץ, מי שעוזב וילה. בלי שמות', 't' => 'area' ),
+		array( 'g' => 'מכירה', 'id' => 'buyers', 'l' => 'מי לדעתך הקונה המתאים, ומי כבר התעניין', 'h' => 'למשל: משפחה משדרגת, תושבי חוץ, משקיע, מי שעוזב וילה. בלי שמות', 't' => 'area' ),
 		array( 'g' => 'מכירה', 'id' => 'elsewhere', 'l' => 'איפה הנכס מפורסם היום', 'h' => 'קישורים: יד2, מדלן, אינסטגרם, אתרים בחו״ל', 't' => 'area' ),
 		array( 'g' => 'מכירה', 'id' => 'desc', 'l' => 'תיאור חופשי', 'h' => 'כל מה שלא נשאל כאן ושכדאי שנדע', 't' => 'area' ),
 		array( 'g' => 'אישור', 'id' => 'ok_publish', 'l' => 'אני מאשרת לפרסם את התמונות והפרטים שהעליתי בעמוד הנכס באתר (הכתובת המדויקת לא תפורסם)', 'h' => '', 't' => 'yesno' ),

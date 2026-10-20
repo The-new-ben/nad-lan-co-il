@@ -52,6 +52,20 @@ PROJECTS = {
                "tower": (-15.7, 21.5),
                # the committee agenda (3.5.2023): Levi Eshkol on the east; road no. 14, a new street, on the west (no name yet)
                "edge_names": {4: "לוי אשכול", 5: "לוי אשכול", 6: "לוי אשכול"}},
+    # Kochav HaTzafon (20.10.2026, Meital's mini penthouse, private research world): no lot of ours, so no outline; the origin
+    # is the neighbourhood's south edge between Bilu'ya-Maoz and the Levi Eshkol crossing of Rokach (the planned bridge), so
+    # the 750 m detail circle holds the neighbourhood, the bridge and Yarkon Park. The building is marked only once Meital
+    # confirms the address (the brief); distances start at the origin until then. Writes to the research folder, not assets.
+    "kochav": {"id": 0, "dir": "kochav", "out": "docs/sales/kochav-ph/world", "origin": (32.100006, 34.788333), "lot": "",
+               "outline": [], "tower": (0.0, 0.0), "edge_names": {},
+               "places": [
+                   ("bridge", "הגשר מעל רוקח לפארק הירקון (מתוכנן, צפוי ב־2027)", 32.099021, 34.789735, "בבנייה, לפי עיריית תל אביב-יפו, 8.2026", "פרסומי העירייה, וואלה ומעריב, 3.8.2026"),
+                   ("rail", "תחנת רידינג, הרכבת הקלה", 32.0994035, 34.7822364, "מאושרת, עוד לא פועלת", "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"),
+                   ("school", "בית הספר כוכב הצפון", 32.101408, 34.786443, "קיים", "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"),
+                   ("park", "גן כוכב הצפון", 32.102028, 34.785529, "קיים", "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"),
+                   ("beach", "חוף רידינג", 32.10711, 34.77681, "קיים", "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"),
+                   ("nature", "שפך נחל הירקון", 32.098806, 34.778214, "קיים", "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"),
+               ]},
 }
 # our pages in and around the quarter (the same list as build_quarter_rainbow.py, with Rainbow itself); the short name a
 # buyer says. Rainbow's page meta holds no floor count: its own facts give the tower's 39 floors and 459 homes (the
@@ -98,7 +112,7 @@ def main():
     P = PROJECTS[key]
     O = P["origin"]
     LOT = P["outline"]
-    DIR = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", P["dir"])
+    DIR = os.path.join(REPO, *P["out"].split("/")) if P.get("out") else os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", P["dir"])
     os.makedirs(DIR, exist_ok=True)
 
     def envelope(radius):
@@ -451,7 +465,7 @@ def main():
         if o["year"] > 2000:
             item["occupancy"] = o["year"]
         q["projects"].append(item)
-    for kind, name, lat, lng, status, src in PLACES:
+    for kind, name, lat, lng, status, src in P.get("places", PLACES):
         x, z = local(lng, lat)
         dist, brg = from_tower(x, z)
         wx, wz = world(x, z)

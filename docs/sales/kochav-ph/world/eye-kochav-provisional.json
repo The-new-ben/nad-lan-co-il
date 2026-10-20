@@ -1,0 +1,8 @@
+{
+ "project": "kochav",
+ "measured": null,
+ "computed": "2026-10-20",
+ "provisional": true,
+ "source": "CALC, provisional: floor 11 of 12 (Madlan listing), (11 - 1) x 3.3 m + 1.6 m; replace once the broker confirms the building",
+ "eye": {"11": 34.6}
+}

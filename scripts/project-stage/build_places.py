@@ -29,10 +29,16 @@ PROJECTS = {
               "root": "docs/research/2026-09-30-kikar-hamedina/kikar-stage", "out": "docs/research/2026-09-30-kikar-hamedina/places.json",
               "token_page": "duo-tel-aviv", "eye": "docs/research/2026-09-30-kikar-hamedina/eye-kikar-provisional.json",
               "from": "the plot centre (provisional)"},
+    # Kochav HaTzafon (20.10.2026, Meital's mini penthouse): private research world; walking minutes from the neighbourhood's
+    # south edge (Bilu'ya-Maoz near the Levi Eshkol crossing of Rokach) until the broker confirms the building's address
+    "kochav": {"dir": "kochav", "page": "kochav-hatzafon", "name": "Kochav HaTzafon", "he": "כוכב הצפון",
+               "root": "docs/sales/kochav-ph/world", "out": "docs/sales/kochav-ph/world/places.json",
+               "token_page": "duo-tel-aviv", "eye": "docs/sales/kochav-ph/world/eye-kochav-provisional.json",
+               "from": "the neighbourhood's south edge (provisional, until the address is confirmed)"},
 }
 PK = next((a for a in sys.argv[1:] if not a.startswith("--")), "rainbow")
 if PK not in PROJECTS:
-    sys.exit("usage: build_places.py rainbow|dimri|ashira|duo|kikar [--no-walk]")
+    sys.exit("usage: build_places.py rainbow|dimri|ashira|duo|kikar|kochav [--no-walk]")
 PJ = PROJECTS[PK]
 RB = os.path.join(REPO, *PJ["root"].split("/")) if PJ.get("root") else os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", PJ["dir"])
 OUT = os.path.join(REPO, *PJ["out"].split("/")) if PJ.get("out") else os.path.join(RB, "places.json")
