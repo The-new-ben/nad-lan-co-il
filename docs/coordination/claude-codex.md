@@ -4405,3 +4405,6 @@ RELEASE DONE 1.72.472 (walk top bar) by Claude [Ashira session] 19.10.2026: rele
 
 RELEASE LOCK x-broker-edit 1.0.0 (Broker self-edit: new Code Snippet, additive; test drafts owned by Meital, trashed after) by Claude [Ashira session] 20.10.2026, Ben "she should be able to edit everything".
 RELEASE DONE x-broker-edit 1.0.0 (snippet 1274, Broker self-edit) by Claude [Ashira session] 20.10.2026: installed, tested on phone with draft fixtures (all trashed), film on the private page. Lock released.
+
+RELEASE LOCK x-broker-brief 1.0.0 (material request page for Meital, new snippet, additive) by Claude [Ashira session] 20.10.2026.
+RELEASE DONE x-broker-brief 1.0.0 (snippet 1279) by Claude [Ashira session] 20.10.2026: installed, tested on phone (test file and answer removed). Lock released.
