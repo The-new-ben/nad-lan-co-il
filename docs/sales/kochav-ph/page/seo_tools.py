@@ -163,7 +163,7 @@ def calc_section(lang):
           'function fm(x){return Math.round(x).toLocaleString(L)}'
           'function o(k,v){f.querySelector("[data-o="+k+"]").textContent=v}'
           'function run(){var p=+f.p.value||0,b=+f.b.value||0,t=+f.t.value||0,w=+f.w.value,k=f.k.value,l=(+f.l.value||0)/100;'
-          'f.wo.value=Math.abs(w-1/3)<0.006?TH:w.toFixed(2);var wa=b+t*w,ta=tx(p,k),la=p*l*1.18;'
+          'if(Math.abs(w-1/3)<0.006)w=1/3;f.wo.value=w===1/3?TH:w.toFixed(2);var wa=b+t*w,ta=tx(p,k),la=p*l*1.18;'
           'o("ppb",b?fm(p/b)+C:"-");o("wa",fm(wa)+U);o("ppw",wa?fm(p/wa)+C:"-");o("tax",fm(ta)+C);o("law",fm(la)+C);o("tot",fm(p+ta+la)+C)}'
           'f.addEventListener("input",run);f.addEventListener("change",run);f.addEventListener("submit",function(e){e.preventDefault()});run()})();</script>')
     return ('<section class="nlx-sec" id="calc' + sfx + '">' + nl + '<div class="nlx-sec-head"><p class="nlx-eyebrow">' + t["c_eyebrow"] + '</p><h2 class="nlx-h2">' + t["c_h2"] + '</h2><p class="nlx-lead">' + t["c_lead"] + "</p></div>" + nl

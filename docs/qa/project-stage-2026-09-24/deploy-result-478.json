@@ -1,0 +1,19 @@
+{
+  "released": "1.72.478",
+  "from": "1.72.477",
+  "live_before": {
+    "inc/instruments.php": "9e1be0ac1216822b501bbfe5b9151231",
+    "nadlan-config.php": "879557528a6143f168af98bac31efef7"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-21 20:27:42",
+  "files": {
+    "inc/instruments.php": "b5616f56478c0bdd4bb442e0617a7567",
+    "assets/instruments/tools/ptax.js": "b803f15d1144a722b8b94030fb593da5",
+    "assets/instruments/data/ptax.json": "9f6ff0a773178465189d67ce9acaf88f",
+    "nadlan-config.php": "5ece441a451cb69b456478b2f73a0e55"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.478, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

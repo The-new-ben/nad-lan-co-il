@@ -41,5 +41,15 @@ eq('pfas: 3,780,000 ng/kg PFOS = x598', win.NLPF.compute(3780000, 'ng', 'pfos', 
 eq('pfas: 3.78 mg/kg = the same', win.NLPF.compute(3.78, 'mg', 'pfos', soil.thresholds).x, 597.97, 0.01);
 eq('pfas: 1,896.4 ng/kg PFOA = x1', win.NLPF.compute(1896.4, 'ng', 'pfoa', soil.thresholds).x, 1, 0.0001);
 eq('soil: Tel Aviv 1 km check', win.NLSX.dist([34.78, 32.10], [34.78, 32.109]), 1000.8, 2);
+// ptax (21.10.2026): the Tax Authority brackets; 18M = the figures on the Kochav listing, checked against the simulator
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/ptax.js'), 'utf8'), ctx);
+const PT = JSON.parse(fs.readFileSync(path.join(A, 'data', 'ptax.json'), 'utf8')).tracks;
+eq('ptax: 18M only home', win.NLPT.tax(18e6, PT.single).tax, 1153886.3, 1);
+eq('ptax: 18M additional home', win.NLPT.tax(18e6, PT.extra).tax, 1678899.3, 1);
+eq('ptax: 18M new immigrant', win.NLPT.tax(18e6, PT.oleh).tax, 975975.9, 1);
+eq('ptax: 18M foreign resident = additional', win.NLPT.tax(18e6, PT.foreign).tax, 1678899.3, 1);
+eq('ptax: 3M only home', win.NLPT.tax(3e6, PT.single).tax, 45538.3, 1);
+eq('ptax: 1.9M only home is exempt', win.NLPT.tax(1.9e6, PT.single).tax, 0, 0.01);
+eq('ptax: 25M only home (10% above 20,183,565)', win.NLPT.tax(25e6, PT.single).tax, 1810214.9, 1);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);

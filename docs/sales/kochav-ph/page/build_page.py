@@ -204,6 +204,11 @@ def build(lang, raw):
         data["@graph"].append({"@type": "VideoObject", "name": "A day in Kochav HaTzafon: a mini penthouse between Tel Aviv and Yarkon Park",
             "description": FTXT[lang][2], "thumbnailUrl": pst["url"], "contentUrl": v["url"], "uploadDate": "2026-10-20", "duration": FILM_DUR, "inLanguage": "en"})
     out = out[:ld.start()] + ld.group(1) + json.dumps(data, ensure_ascii=False) + ld.group(3) + out[ld.end():]
+    # 21.10: the French and Russian pages (lang/publish_lang.py) join the language switch, after they are live
+    if os.path.exists(os.path.join(H, "lang", "LIVE")):
+        sw = re.search(r'<a class="nlx-lang"[^>]*>[^<]*</a>', out)
+        extra = "".join('<a class="nlx-lang" href="https://nad-lan.co.il/%s/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/" hreflang="%s" lang="%s">%s</a>' % (l, l, l, nm) for l, nm in (("fr", "Français"), ("ru", "Русский")))
+        out = out[:sw.end()] + extra + out[sw.end():]
     # the added styles, once, beside the dossier's own
     s = out.index("</style>") + len("</style>")
     out = out[:s] + "\n" + CSS.replace("</style>", ST.CSS + "</style>") + out[s:]
@@ -222,7 +227,12 @@ def refit(raw):
                  # one terrace figure everywhere: Meital's 80 m2 (the Madlan range 76-80 was left in two places)
                  ('<span class="nlx-num">76</span> עד <span class="nlx-num">80</span>', '<span class="nlx-num">80</span>'),
                  ('<span class="nlx-num">76</span> to <span class="nlx-num">80</span>', '<span class="nlx-num">80</span>'),
-                 ("ומרפסות של 76 עד 80 מ״ר", "ומרפסות של 80 מ״ר"), ("plus 76 to 80 sqm of terraces", "plus 80 sqm of terraces")):
+                 ("ומרפסות של 76 עד 80 מ״ר", "ומרפסות של 80 מ״ר"), ("plus 76 to 80 sqm of terraces", "plus 80 sqm of terraces"),
+                 # 21.10 (found by the FR/RU agent): the arnona note still said 270; the amounts were already for 277
+                 ('עד <span class="nlx-num">270</span> מ״ר כולל מרפסות', 'עד <span class="nlx-num">277</span> מ״ר כולל מרפסות'),
+                 ('up to <span class="nlx-num">270</span> sqm including terraces', 'up to <span class="nlx-num">277</span> sqm including terraces'),
+                 # no tenant word on this page (Ben 20.10)
+                 ("לרוכש או לשוכר", "לרוכש"), ("for a buyer or tenant", "for a buyer")):
         raw = raw.replace(a, b)
     return raw
 

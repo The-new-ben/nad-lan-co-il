@@ -79,6 +79,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'boi-rate.json' ),
 				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירון הדירות לפי עיר' ),
 			),
+			'ptax' => array(
+				'name' => 'מחשבון מס רכישה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · מס רכישה',
+				'desc' => 'מחשב את מס הרכישה על דירה לפי המדרגות של רשות המסים בכל ארבעת המסלולים: דירה יחידה, דירה נוספת, עולה חדש ותושב חוץ, כולל קנייה של חלק מדירה, השיעור האפקטיבי והמס בכל מדרגה.',
+				'data' => array( 'ptax.json' ),
+				'related' => array( '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/' => 'מחשבון משכנתא', '/real-estate-lawyer/' => 'עורך דין לקניית דירה', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
+			),
 		) );
 	}
 
@@ -182,6 +188,14 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'soilask' === $id ) {
 			return '<p>השאלות שכדאי לשאול את היזם על הקרקע במגרש בשדה דב: האם המגרש נדגם לפי ההנחיות של המשרד להגנת הסביבה מ־12.2.2026; את דו"ח סקר הקרקע המלא; האם המשרד אימץ את הממצאים בכתב; אם נמצאה חריגה, האם תכנית הטיפול אושרה; האם הטיפול עלול לדחות את מועד המסירה; מי נושא בעלות; ואילו תנאים יש בהיתר.</p>';
 		}
+		if ( 'ptax' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/ptax.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['tracks']['single'] ) ) { return ''; }
+			$fmt = function ( $br ) { $o = array(); $lo = 0; foreach ( $br as $b ) { $o[] = number_format( $b[1] * 100, $b[1] * 100 == (int) ( $b[1] * 100 ) ? 0 : 1 ) . '% ' . ( null === $b[0] ? 'מעל ' . number_format( $lo ) . ' ₪' : 'עד ' . number_format( $b[0] ) . ' ₪' ); $lo = $b[0]; } return implode( ', ', $o ); };
+			return '<p>מדרגות מס רכישה על דירת מגורים לפי רשות המסים, בתוקף מ־' . esc_html( date_i18n( 'j.n.Y', strtotime( $x['effective'] ) ) ) . ' ומוקפאות עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $x['frozen_until'] ) ) ) . '. דירה יחידה: ' . esc_html( $fmt( $x['tracks']['single'] ) )
+				. '. דירה נוספת ותושב חוץ: ' . esc_html( $fmt( $x['tracks']['extra'] ) ) . '. עולה חדש: ' . esc_html( $fmt( $x['tracks']['oleh'] ) ) . '. המס מחושב על שווי הדירה כולה, וקונה של חלק משלם לפי החלק שלו.</p>';
+		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
 		}
@@ -233,7 +247,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	/** FAQPage from the page's own "שאלות נפוצות" section (h3 question, then its paragraphs), for search engines and AI answers. */
 	function nadlan_nli_faq( $html ) {
 		$html = preg_replace( '/<!--.*?-->/s', '', (string) $html );
-		if ( ! preg_match( '/<h2[^>]*>\s*(?:שאלות נפוצות|Frequently asked questions)\s*<\/h2>(.*?)(?=<h2|$)/su', $html, $m ) ) { return array(); }
+		if ( ! preg_match( '/<h2[^>]*>\s*(?:שאלות נפוצות|Frequently asked questions)[^<]{0,60}<\/h2>(.*?)(?=<h2|$)/su', $html, $m ) ) { return array(); }
 		preg_match_all( '/<h3[^>]*>(.*?)<\/h3>\s*((?:<p[^>]*>.*?<\/p>\s*)+)/su', $m[1], $qa, PREG_SET_ORDER );
 		$out = array();
 		foreach ( $qa as $x ) { $q = trim( wp_strip_all_tags( $x[1] ) ); $a = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $x[2] ) ) ); if ( $q && $a ) { $out[] = array( '@type' => 'Question', 'name' => $q, 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $a ) ); } }

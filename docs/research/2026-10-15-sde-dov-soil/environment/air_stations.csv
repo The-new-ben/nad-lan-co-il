@@ -1,0 +1,11 @@
+﻿distance_km_from_mid_district,bearing_deg_from_mid_district,station_name,old_name,operator,station_type,year_established,address,itm_x,itm_y,coord_source,pollutants_measured,met_params,annual_values_found
+0.8,113,תל אביב יפו- שיכון ל',שיכון למד,חברת החשמל,Background,1992,רח' בורלא 25,180493,668562,IEC 2023 report table 1,PM10,,"PM10 annual 39.0 ug/m3 (data availability 78%), 5 daily exceedances (2023, IEC report p.21)"
+2.1,69,תל אביב יפו- אוניברסיטה,יד אבנר,המשרד להגנת הסביבה,Background,1999,רח' זליג 10,181757,669624,data.gov.il air-stations,SO2 NOx NO NO2 O3 CO PM10,WS WD RH TEMP PREC,"not found (Ministry annual summaries not reachable, see facts.json)"
+2.2,163,תל אביב יפו- רחוב יהודה מכבי,עירוני ד',המשרד להגנת הסביבה,Traffic,1998,יהודה מכבי 38,180414,666788,data.gov.il air-stations,NOx NO NO2 CO PM2.5 Benzene,,"not found (Ministry annual summaries not reachable, see facts.json)"
+3.0,181,תל אביב יפו- הצפון החדש,אנטוקולסקי,חברת החשמל,Background,1991,רח' אנטוקולסקי 4,179731,665876,IEC 2023 report table 1,SO2 O3 NOx NO NO2 PM2.5,,"NO2 annual 19.7 ug/m3 (94%), 0 hourly exceedances; PM2.5 annual 17.8 ug/m3 (98%), 8 daily exceedances; O3 annual 66.2 ug/m3, max 8-h 125.9, 0 exceedances of 140 (2023, IEC report p.19-21)"
+4.6,119,בני ברק- רחוב ז'בוטינסקי,רמז,המשרד להגנת הסביבה,Traffic,1997,ז'בוטינסקי 13,183806,666593,data.gov.il air-stations,NOx NO NO2 CO PM2.5,,"not found (Ministry annual summaries not reachable, see facts.json)"
+5.0,67,רמת השרון- תורן,תורן רמת השרון,חברת החשמל,Background,2000,רח' הטניס 2,184356,670774,data.gov.il air-stations,,PREC,
+5.1,66,תל אביב יפו- שכונת המשתלה,המשתלה,חברת החשמל,Background,2018,רח' הטניס 2,184444,670930,IEC 2023 report table 1,SO2 O3 NOx NO NO2,,"NO2 annual 18.0 ug/m3 (92%); O3 max 8-h 129.7, 0 exceedances (2023, IEC report p.19-20)"
+5.3,138,רמת גן- יד לבנים,יד לבנים,חברת החשמל,Background,1990,רח' מעלה הבנים 15,183295,664940,data.gov.il air-stations,PM2.5,,
+5.6,187,תל אביב יפו- לב תל אביב,דרך פתח תקווה,חברת החשמל,Background,1991,דרך מנחם בגין 13,179119,663292,IEC 2023 report table 1,SO2 O3 NOx NO NO2,WS WD,"NO2 annual 24.6 ug/m3 (89%); PM2.5 annual 18.0 ug/m3 (99%), 7 daily exceedances (2023, IEC report p.19, 21)"
+6.2,184,תל אביב יפו- רחוב לוינסקי,לוינסקי,תחנה מרכזית תל אביב,Traffic,2018,לוינסקי 108 תל אביב,179332,662689,data.gov.il air-stations,NOx NO NO2 CO PM2.5 PM10,,

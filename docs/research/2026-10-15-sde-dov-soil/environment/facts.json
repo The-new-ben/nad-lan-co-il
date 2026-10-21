@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "mission": "Mission B (environment) for https://nad-lan.co.il/sde-dov/contamination/",
+    "compiled": "2026-10-21",
+    "compiled_by": "research agent (Opus 5.5), read-only research, nothing published, nothing committed",
+    "rules": "every value carries source url + retrieval date; no project or developer names; 'not found' entries list where we looked",
+    "reference_point": {
+      "name": "mid-district reference point",
+      "lat": 32.1125,
+      "lon": 34.7841,
+      "itm_x": 179778,
+      "itm_y": 668867,
+      "note": "centre of plot 2255 taken from ../geo.md (municipal GIS layer 837); ITM derived by local linear conversion calibrated on two point pairs in ../geo.md (error under ~10 m). All distances and bearings below are from this point."
+    },
+    "time_note": "retrieval times are Israel time (IDT, UTC+3) on 2026-10-21, between about 19:20 and 20:00"
+  },
+  "facts": [
+    {
+      "id": "W1",
+      "topic": "wind",
+      "claim": "NOAA's station inventory lists an airport weather station at Sde Dov: SDE DOV, USAF 401762 / WBAN 99999, 32.117N 34.783E, elevation 13 m, records from 2004-05-10 to 2019-06-30.",
+      "value": {"usaf": "401762", "lat": 32.117, "lon": 34.783, "elev_m": 13, "begin": "2004-05-10", "end": "2019-06-30"},
+      "source": "NOAA NCEI, Integrated Surface Database station history (isd-history.csv)",
+      "url": "https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W2",
+      "topic": "wind",
+      "claim": "Hourly airport weather reports (METAR) for that station, 2009-2018, were downloaded from NOAA Global Hourly. 62,783 hourly reports used (FM-15 only, first report per UTC hour). The airport reported only during operating hours, about 05:00-22:00 local time, so this record describes daytime wind; night hours are almost absent.",
+      "value": {"years": "2009-2018", "hourly_reports": 62783, "coverage_local": "about 05:00-22:00"},
+      "source": "NOAA NCEI Global Hourly (ISD) annual CSV files, station 40176299999; NCEI's access URL now redirects to the NOAA open-data bucket",
+      "url": "https://noaa-global-hourly-pds.s3.amazonaws.com/2015/40176299999.csv (same pattern for 2009-2018); redirect origin https://www.ncei.noaa.gov/data/global-hourly/access/2015/40176299999.csv",
+      "retrieved": "2026-10-21",
+      "derived_files": ["windrose_sde_dov_metar.csv", "wind_diurnal_sde_dov_metar.csv", "raw/windrose_sde_dov_metar_summary.json", "raw/noaa_isd_401762_sde_dov_wind_2009_2018.csv"],
+      "method": "scripts/windrose_noaa_isd.py; 16 sectors of 22.5 deg (direction the wind blows FROM); calm = type C or speed < 0.5 m/s; VRB reports kept as 'variable'"
+    },
+    {
+      "id": "W3",
+      "topic": "wind",
+      "claim": "Sde Dov airport, daytime, all year 2009-2018: most frequent directions W 14.9%, WNW 9.1%, NW 8.5%, NNW 8.2%. Wind from the sea side (SSW through N) 61.2% of reports, from the land side (NE through SSE) 19.2%, variable 15.8%, calm 0.2%. Mean speed 3.84 m/s.",
+      "value": {"W_pct": 14.9, "WNW_pct": 9.1, "NW_pct": 8.5, "NNW_pct": 8.2, "sea_side_pct": 61.2, "land_side_pct": 19.2, "variable_pct": 15.8, "calm_pct": 0.2, "mean_speed_ms": 3.84},
+      "source": "computed from W2 data",
+      "url": "https://noaa-global-hourly-pds.s3.amazonaws.com/2015/40176299999.csv",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W4",
+      "topic": "wind",
+      "claim": "Sde Dov airport, daytime, by season 2009-2018. Summer (Jun-Aug): W 22.3%, WNW 13.5%, NW 10.4%, WSW 10.2%; sea side 74.7%; winds of 8 m/s or more 0.2%. Winter (Dec-Feb): E 14.4%, W 9.7%, SW 7.1%, ESE 6.6%; sea side 43.6%, land side 33.2%; winds of 8 m/s or more 8.6%. Spring: W 15.4%, NNW 11.3%, N 9.4%; sea side 68.5%. Autumn: W 11.9%, NW 10.9%, NNW 10.6%; sea side 57.1%.",
+      "value": {"summer_sea_side_pct": 74.7, "winter_sea_side_pct": 43.6, "winter_land_side_pct": 33.2, "winter_ge8ms_pct": 8.6, "summer_ge8ms_pct": 0.2},
+      "source": "computed from W2 data",
+      "url": "https://noaa-global-hourly-pds.s3.amazonaws.com/2015/40176299999.csv",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W5",
+      "topic": "wind",
+      "claim": "Sea-breeze cycle at Sde Dov airport in summer (local time, IDT): at 06:00 the vector-mean wind is from 149 deg (south-east, land breeze) at 2.3 m/s, 59.5% of reports from the land side; by 09:00 84.2% are from the sea side; the breeze peaks at 13:00-14:00 at 5.2-5.25 m/s from 273-281 deg (west); it veers to 303-315 deg (north-west) at 17:00-20:00 while easing to 2.9 m/s by 20:00.",
+      "value": {"06h_dir_deg": 149, "06h_speed_ms": 2.3, "09h_sea_side_pct": 84.2, "peak_speed_ms": 5.25, "peak_hour_local": 14, "peak_dir_deg": 281, "20h_dir_deg": 315, "20h_speed_ms": 2.9},
+      "source": "computed from W2 data (wind_diurnal_sde_dov_metar.csv); local hour = UTC+3 for Apr-Oct, UTC+2 for Nov-Mar (approximation of Israel daylight time)",
+      "url": "https://noaa-global-hourly-pds.s3.amazonaws.com/2015/40176299999.csv",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W6",
+      "topic": "wind",
+      "claim": "The nearest active Israel Meteorological Service (IMS) station with wind data is TEL AVIV COAST (Hebrew name: tel-aviv hof), station 2410 (IMS env id 178), automatic, 32.058N 34.7588E, 10 m, open since 2005-04-01, data on the portal up to 2026-08. It is 6.5 km SSW of the mid-district point (ITM 177380/662840). IMS also lists older Sde Dov stations 134940 and 134945 (1970-2004, closed).",
+      "value": {"stn_num": 2410, "env_id": 178, "lat": 32.058, "lon": 34.7588, "elev_m": 10, "opened": "2005-04-01", "distance_km": 6.5, "bearing_deg": 202},
+      "source": "IMS meteorological archive on data.gov.il, dataset 481, resource 'station information' (datastore API)",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=83841660-b9c4-4ecc-a403-d435b3e8c92f&limit=5000",
+      "dataset_page": "https://data.gov.il/dataset/481",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W7",
+      "topic": "wind",
+      "claim": "IMS Tel Aviv Coast, 2016-2025 (29,128 three-hourly observations, day and night), all year: most frequent directions ESE 13.0%, SE 10.7%, W 10.6%, N 10.4%. From the sea side (SSW through N) 60.7%, from the land side (NE through SSE) 33.8%, calm 0.6%. Mean speed 3.35 m/s. Winds of 8 m/s or more: 3.3%.",
+      "value": {"obs": 29128, "sea_side_pct": 60.7, "land_side_pct": 33.8, "calm_pct": 0.6, "mean_speed_ms": 3.35, "ge8ms_pct": 3.3},
+      "source": "IMS meteorological archive on data.gov.il, dataset 481, resource 'hourly data' (datastore API, filter stn_num=2410); computed by scripts/windrose_ims.py",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=c02e5c7d-0adb-4e04-a941-06e281180294&filters={\"stn_num\":2410}",
+      "retrieved": "2026-10-21",
+      "derived_files": ["windrose.csv", "windrose_sectors.csv", "wind_diurnal_ims.csv", "raw/windrose_ims_summary.json", "raw/ims_2410_tel_aviv_coast_2005_2026.csv"]
+    },
+    {
+      "id": "W8",
+      "topic": "wind",
+      "claim": "IMS Tel Aviv Coast 2016-2025 by season. Summer: W 16.0%, NW 12.8%, NNW 12.3%, WNW 12.0%; 80.0% from the sea side; mean 3.14 m/s; 8 m/s or more 0.3%. Winter: ESE 22.0%, SE 16.3%, WSW 7.0%, W 6.9%; 52.7% from the land side; mean 3.51 m/s; 8 m/s or more 6.9%. Spring: N 15.7%, W 12.0%; 67.0% from the sea side. Autumn: ESE 15.6%, SE 13.8%, N 11.7%; 53.9% from the sea side.",
+      "value": {"summer_sea_side_pct": 80.0, "winter_land_side_pct": 52.7, "winter_ge8ms_pct": 6.9, "spring_sea_side_pct": 67.0, "autumn_sea_side_pct": 53.9},
+      "source": "computed from W7 data",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=c02e5c7d-0adb-4e04-a941-06e281180294&filters={\"stn_num\":2410}",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W9",
+      "topic": "wind",
+      "claim": "Strong winter winds (8 m/s, about 29 km/h, or more) at IMS Tel Aviv Coast, Dec-Feb 2016-2025: 499 observations, 89.2% of them from SW, WSW, W or WNW (W 152, WSW 140, WNW 93, SW 60), i.e. storm winds come from the sea.",
+      "value": {"strong_obs": 499, "share_SW_to_WNW_pct": 89.2},
+      "source": "computed from W7 data",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=c02e5c7d-0adb-4e04-a941-06e281180294&filters={\"stn_num\":2410}",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "W10",
+      "topic": "wind",
+      "claim": "IMS Tel Aviv Coast, summer daily cycle 2016-2025: at 03 UTC (06:00 IDT) wind from 142 deg at 2.07 m/s, 77.6% from the land side; at 06 UTC (09:00 IDT) 92.6% from the sea side; at 12 UTC (15:00 IDT) from 301 deg at 4.81 m/s, 99.9% from the sea side; at 18 UTC (21:00 IDT) from 333 deg at 2.78 m/s. The same cycle in the Sde Dov airport record (W5) supports the time reading.",
+      "value": {"03utc_dir": 142, "03utc_ms": 2.07, "12utc_dir": 301, "12utc_ms": 4.81, "12utc_sea_pct": 99.9, "18utc_dir": 333, "18utc_ms": 2.78},
+      "source": "computed from W7 data (wind_diurnal_ims.csv)",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=c02e5c7d-0adb-4e04-a941-06e281180294&filters={\"stn_num\":2410}",
+      "retrieved": "2026-10-21",
+      "caveat": "IMS observation times are treated as UTC (WMO synoptic hours 00,03,...,21). The IMS file that explains the hourly data sits behind a sign-in on e.data.gov.il and was not opened. The match with the UTC-stamped airport record (W5) and the coolest hour at 03 in July support UTC."
+    },
+    {
+      "id": "W11",
+      "topic": "wind",
+      "claim": "Peer-reviewed description of the Mediterranean sea breeze in Israel: on the Mediterranean coast the sea breeze is westerly and veers clockwise to the north as it moves inland; in July-August it blows almost every day.",
+      "value": null,
+      "source": "Naor, Potchter, Shafir, Alpert (Tel Aviv University), 'An Observational Study of the Summer Mediterranean Sea-Breeze-Front Penetration into the Complex Topography of the Jordan-Rift-Valley', Theoretical and Applied Climatology (revised manuscript, July 2015), lines 82-86 and abstract",
+      "url": "https://www.tau.ac.il/~pinhas/papers/2017/Naor_et_al_TAC_2015-final.pdf",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "A1",
+      "topic": "air",
+      "claim": "Official list of air-quality monitoring stations (Ministry of Environmental Protection, data.gov.il dataset 'air-stations', metadata updated 2024-04-01). Nearest to the district: Tel Aviv-Yafo Shikun L (Burla 25, Israel Electric Corp., background, PM10 only) 0.8 km ESE; Tel Aviv-Yafo University (old name Yad Avner, Zelig 10, Ministry, background: SO2 NOx NO2 O3 CO PM10 + wind) 2.1 km ENE; Tel Aviv-Yafo Yehuda Maccabi St (old name Ironi D, Ministry, traffic: NOx NO2 CO PM2.5 benzene) 2.2 km SSE; Tel Aviv-Yafo HaTzafon HaHadash (Antokolsky 4, Israel Electric Corp., background: SO2 O3 NOx NO2 PM2.5) 3.0 km S.",
+      "value": "see air_stations.csv",
+      "source": "data.gov.il datastore, resource 782cfb94-ebbd-4f41-aba2-80c298457a58 (the CSV download itself returned HTTP 403 from the portal CDN; the datastore API answered)",
+      "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=782cfb94-ebbd-4f41-aba2-80c298457a58&limit=500",
+      "dataset_page": "https://data.gov.il/dataset/air-stations",
+      "retrieved": "2026-10-21",
+      "note": "For the four Israel Electric Corp. stations the coordinates from the IEC 2023 report table 1 (A2) were used; they differ from the portal list by 100-200 m."
+    },
+    {
+      "id": "A2",
+      "topic": "air",
+      "claim": "Israel Electric Corp. annual report RENV-197-2024 (June 2024), 'Annual summary of air-quality monitoring findings from the IEC monitoring stations for 2023'. Table 1 (p.9) gives station coordinates and measured pollutants; tables 7-10 (p.19-21) give the 2023 annual results.",
+      "value": null,
+      "source": "Israel Electric Corp., environmental monitoring department",
+      "url": "https://ieccontent.iec.co.il/media/3keeedrw/%D7%9E%D7%9E%D7%A6%D7%90%D7%99-%D7%A0%D7%99%D7%98%D7%95%D7%A8-%D7%90%D7%99%D7%9B%D7%95%D7%AA-%D7%90%D7%95%D7%95%D7%99%D7%A8-2023.pdf",
+      "published": "2024-06",
+      "retrieved": "2026-10-21",
+      "sha256": "d6931e9354eb2b99106d87d75ee94523b0dcb8171dde1265d20b74ff86e0c509"
+    },
+    {
+      "id": "A3",
+      "topic": "air",
+      "claim": "Israeli environmental values (Clean Air Regulations (Air Quality Values) (Temporary Provision) 2011, amended 2022), as tabled by the IEC report: NO2 annual 40 ug/m3, hourly 200 ug/m3 (may be exceeded 8 times a year); PM2.5 annual 25 ug/m3, daily 37.5 ug/m3; PM10 annual 50 ug/m3 (calculated without the 18 highest days), daily 130 ug/m3; from 1.1.2023 daily PM exceedances are allowed only on dust-storm days, up to 18 a year; O3 8-hour 140 ug/m3 (10 exceedances a year allowed); SO2 annual 20 ug/m3.",
+      "value": {"NO2_annual": 40, "NO2_hourly": 200, "PM25_annual": 25, "PM25_daily": 37.5, "PM10_annual": 50, "PM10_daily": 130, "O3_8h": 140, "SO2_annual": 20, "unit": "ug/m3"},
+      "source": "IEC report RENV-197-2024, table 2 (p.14), citing the Clean Air Regulations 2011 and the 2022 amendment",
+      "url": "https://ieccontent.iec.co.il/media/3keeedrw/%D7%9E%D7%9E%D7%A6%D7%90%D7%99-%D7%A0%D7%99%D7%98%D7%95%D7%A8-%D7%90%D7%99%D7%9B%D7%95%D7%AA-%D7%90%D7%95%D7%95%D7%99%D7%A8-2023.pdf",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "A4",
+      "topic": "air",
+      "claim": "2023 annual results, nearest IEC stations. HaTzafon HaHadash (3.0 km S): NO2 annual mean 19.7 ug/m3 (data availability 94%), no hourly exceedance; PM2.5 annual mean 17.8 ug/m3 (98%), 8 daily exceedances; O3 annual mean 66.2 ug/m3, highest 8-hour mean 125.9 ug/m3, no exceedance of 140 (99%). Shikun L (0.8 km ESE): PM10 annual mean 39.0 ug/m3 (data availability 78%), 5 daily exceedances. HaMishtala (5.1 km ENE): NO2 annual 18.0 ug/m3 (92%), highest 8-hour O3 129.7 ug/m3, no exceedance. Lev Tel Aviv (5.6 km S): NO2 annual 24.6 ug/m3, PM2.5 annual 18.0 ug/m3, 7 daily exceedances.",
+      "value": {"HaTzafonHaHadash_NO2": 19.7, "HaTzafonHaHadash_PM25": 17.8, "HaTzafonHaHadash_PM25_daily_exceed": 8, "HaTzafonHaHadash_O3_annual": 66.2, "HaTzafonHaHadash_O3_max8h": 125.9, "ShikunL_PM10": 39.0, "ShikunL_PM10_availability_pct": 78, "ShikunL_PM10_daily_exceed": 5, "HaMishtala_NO2": 18.0, "LevTA_NO2": 24.6, "LevTA_PM25": 18.0, "unit": "ug/m3", "year": 2023},
+      "source": "IEC report RENV-197-2024, tables 7, 8, 9, 10 (p.19-21)",
+      "url": "https://ieccontent.iec.co.il/media/3keeedrw/%D7%9E%D7%9E%D7%A6%D7%90%D7%99-%D7%A0%D7%99%D7%98%D7%95%D7%A8-%D7%90%D7%99%D7%9B%D7%95%D7%AA-%D7%90%D7%95%D7%95%D7%99%D7%A8-2023.pdf",
+      "retrieved": "2026-10-21",
+      "caveat": "2023 is the latest year found. PM10 at Shikun L had 78% data availability."
+    },
+    {
+      "id": "A5",
+      "topic": "air",
+      "claim": "WHO 2021 air quality guideline levels: PM2.5 annual 5 ug/m3; PM10 annual 15 ug/m3 and daily 45 ug/m3; NO2 annual 10 ug/m3; O3 peak season 60 ug/m3. In 2021, 97% of the EU urban population was exposed to PM2.5 above the WHO annual guideline.",
+      "value": {"PM25_annual": 5, "PM10_annual": 15, "PM10_daily": 45, "NO2_annual": 10, "O3_peak_season": 60, "EU_urban_above_PM25_guideline_2021_pct": 97, "unit": "ug/m3"},
+      "source": "European Environment Agency, 'Europe's air quality status 2023' (24 April 2023), quoting the 2021 WHO guidelines. WHO's own PDF (iris.who.int) and NCBI copy were not reachable (403 / reCAPTCHA page, not bypassed).",
+      "url": "https://www.eea.europa.eu/en/analysis/publications/europes-air-quality-status-2023",
+      "published": "2023-04-24",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "A6",
+      "topic": "air",
+      "claim": "Tel Aviv-Yafo municipality: the city is monitored by 15 stations. Daily PM2.5 exceedances across city stations: 8-22 in 2022, 7-19 in 2023, 3-15 in 2024, against 18 allowed a year (2024 attributed to weather such as dust storms). NO2: no exceedances except on railway platforms. Ozone 2024: 1 exceedance of the 8-hour value against 10 allowed. The Reading power station switched to gas in 2006 and stopped generating electricity completely in 2020.",
+      "value": {"stations": 15, "PM25_daily_exceed_2022": "8-22", "PM25_daily_exceed_2023": "7-19", "PM25_daily_exceed_2024": "3-15", "allowed_per_year": 18, "O3_8h_exceed_2024": 1, "reading_gas": 2006, "reading_generation_stopped": 2020},
+      "source": "Tel Aviv-Yafo municipality, 'Air quality' page (no update date shown)",
+      "url": "https://www.tel-aviv.gov.il/Residents/Environment/Pages/AirQuality.aspx",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "A7",
+      "topic": "air",
+      "claim": "The Reading power station site is about 0.95 km SSW (bearing 210 deg) of the mid-district point (OSM way 97714590, centre 32.10508N 34.77906E).",
+      "value": {"distance_km": 0.95, "bearing_deg": 210},
+      "source": "OpenStreetMap via Overpass API, power=plant query",
+      "url": "https://www.openstreetmap.org/way/97714590",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "S1",
+      "topic": "sun",
+      "claim": "Sunrise and sunset at the district, 2026 (Israel clock): 21 June 05:35 / 19:50, sunrise azimuth 61-62 deg, sunset 298-299 deg, day 14 h 15 min, noon sun 81.3 deg high. 21 December 06:37 / 16:40, sunrise 117-118 deg, sunset 242-243 deg, day 10 h 03 min, noon sun 34.4 deg high. Equinox (20 March) 05:45 / 17:52; 23 September 06:30 / 18:37 (daylight time). Full month-by-month table in sun_tel_aviv_2026.csv.",
+      "value": "see sun_tel_aviv_2026.csv",
+      "source": "computed with the NOAA solar-position equations for the mid-district point (scripts/sun_times.py); cross-checked against timeanddate.com for Tel Aviv: 21 Jun 2026 05:35 (61 deg) / 19:50 (299 deg), 14:15:07; 21 Dec 2026 06:37 (117 deg) / 16:40 (243 deg), 10:02:58; 21 Oct 2026 06:48 (102 deg) / 18:01 (258 deg). Differences of 1 minute and 1 degree at most.",
+      "url": "https://www.timeanddate.com/sun/israel/tel-aviv?month=6&year=2026 ; https://www.timeanddate.com/sun/israel/tel-aviv?month=12&year=2026 ; method: https://gml.noaa.gov/grad/solcalc/calcdetails.html",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "S2",
+      "topic": "sun",
+      "claim": "Israel daylight time: 2026 from Friday 27 March to Sunday 25 October; 2027 from Friday 26 March to Sunday 31 October.",
+      "value": {"2026": ["2026-03-27", "2026-10-25"], "2027": ["2027-03-26", "2027-10-31"]},
+      "source": "timeanddate.com, DST changes in Tel Aviv",
+      "url": "https://www.timeanddate.com/time/change/israel/tel-aviv?year=2027",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "S3",
+      "topic": "sea",
+      "claim": "Sea direction: the shoreline beside the district runs at about 17.6 deg (NNE-SSW), fitted to OpenStreetMap coastline points between 32.100N and 32.125N; a facade facing about 288 deg (WNW) faces the sea square-on. The nearest shoreline point is 437 m from the mid-district point, at bearing 293 deg.",
+      "value": {"coast_axis_deg": 17.6, "seaward_normal_deg": 288, "nearest_shore_m": 437, "nearest_shore_bearing_deg": 293},
+      "source": "OpenStreetMap natural=coastline via Overpass API (raw/osm_coastline_points.csv), computed",
+      "url": "https://overpass-api.de/api/interpreter?data=[out:json];way[\"natural\"=\"coastline\"](32.095,34.76,32.13,34.80);out geom;",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "S4",
+      "topic": "sun",
+      "claim": "Combining S1 and S3: across the year the sun sets between azimuth 242 deg and 299 deg, all on the sea side of a shoreline running 17.6/197.6 deg, so the sunset is over the sea in every season; sunrise (61-118 deg) is always over land.",
+      "value": {"sunset_azimuth_range_deg": [242, 299], "sunrise_azimuth_range_deg": [61, 118]},
+      "source": "derived from S1 + S3",
+      "url": "see S1, S3",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "S5",
+      "topic": "shade",
+      "claim": "General planning guidance on shade and wind around tall buildings (Ministry of Environmental Protection, 'Embedding environmental aspects in planning procedures: a guide to environmental planning', 2015, printed pages 71-72): plans with buildings above 8 floors are accompanied by a shade study (shadow footprint on roofs, facades, streets and open spaces; facades facing 135-225 deg; shade hours within the effective sun hours 09:00-15:00 in all seasons; approved vs proposed). Plans for tall buildings of 11 floors and more include a wind study (wind rose, pedestrian comfort, solutions against unwanted wind). The guide proposes that implementing the shade and wind document be a condition for the building permit.",
+      "value": {"shade_study_floors_above": 8, "wind_study_floors_from": 11, "effective_sun_hours": "09:00-15:00", "facades_deg": "135-225"},
+      "source": "Ministry of Environmental Protection guide (2015), copy hosted by the Israel Architects Association",
+      "url": "https://www.isra-arch.org.il/wp-content/uploads/2020/03/%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%AA%D7%9B%D7%A0%D7%95%D7%9F-%D7%A1%D7%91%D7%99%D7%91%D7%AA%D7%99.pdf",
+      "published": "2015-05",
+      "retrieved": "2026-10-21",
+      "sha256": "be6959193f87a7c1131bbeed08baab9cc8329df2781c7977aee99b233b36ad54"
+    },
+    {
+      "id": "G1",
+      "topic": "groundwater",
+      "claim": "The site lies above the coastal aquifer, next to the Mediterranean shore. Ground elevation on the site is 4-10 m; the water table is about +0.5 m (Water Authority level map, 2016), so the depth to groundwater is 3.5-9.5 m depending on topography.",
+      "value": {"ground_elevation_m": "4-10", "water_table_masl": 0.5, "depth_to_groundwater_m": "3.5-9.5", "level_map_year": 2016},
+      "source": "PFAS soil-contamination potential assessment, Sde Dov district, 27.01.2026, published by the Ministry of Environmental Protection on 05.02.2026, p.1",
+      "url": "https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_potential_assessment.pdf",
+      "retrieved": "2026-10-21",
+      "sha256": "5ec5a15be1015814313925125ced3e06cc882a02e0340dc959d7d3b1f4d78506"
+    },
+    {
+      "id": "G2",
+      "topic": "groundwater",
+      "claim": "The upper part of the sub-aquifer is alternating sand and sandy clay a few metres thick, with aquifer kurkar (calcareous sandstone) below. Because the area is close to the sea, no drinking water is pumped here and none is expected in the future (reference: Water Authority letter of 02.01.2023).",
+      "value": null,
+      "source": "same report as G1, p.1-2",
+      "url": "https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_potential_assessment.pdf",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "id": "G3",
+      "topic": "groundwater",
+      "claim": "Ministry guidelines (Feb 2026): even outside the suspected areas, digging below the groundwater level requires sampling and approval before soil removal.",
+      "value": null,
+      "source": "existing research ../facts.md row 1.7 (Ministry public announcement, 03.02.2026); not re-opened today",
+      "url": "https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf",
+      "retrieved": "2026-10-15 (by the earlier research session)"
+    }
+  ],
+  "not_found": [
+    {
+      "item": "Annual averages for the two nearest Ministry stations (Tel Aviv-Yafo University / Yad Avner, 2.1 km; Yehuda Maccabi / Ironi D, 2.2 km)",
+      "where_we_looked": "air.sviva.gov.il (interactive Envista report pages; the annual-reports page could not be opened from our browser session), gov.il annual report series 'air_quality_israel_annual_reports' (2018-2025 filenames by the 2017 pattern return 404; the gov.il pages and publication API answer with a Cloudflare challenge, not bypassed), Tel Aviv municipality Reports.aspx (list did not load), web searches in Hebrew and English",
+      "next_step": "open air.sviva.gov.il > reports > annual air-quality reports by hand, or ask the Ministry's air quality division"
+    },
+    {
+      "item": "IEC annual monitoring report for 2024 or 2025",
+      "where_we_looked": "web searches for the 2024 edition; iec.co.il environment pages render by script and list no PDF links to a plain request",
+      "next_step": "check iec.co.il > environment > air monitoring by hand"
+    },
+    {
+      "item": "A published shade or wind study for the district's towers (environmental appendix of the district plan)",
+      "where_we_looked": "web searches for the plan number with shade/wind terms; municipal plan documents were not opened",
+      "next_step": "the plan's environmental appendix on the Planning Administration site (mavat) if the owner wants it; general guidance in S5 is enough for the page"
+    },
+    {
+      "item": "Water Authority raster of 2023 coastal-aquifer levels and salinity at the district (would update the 2016 level in G1)",
+      "where_we_looked": "data.gov.il dataset dynamic_wl_cl (resources wl_tiff.zip, cl_tiff.zip) and aquifer_level_history; the file downloads returned HTTP 403 from the portal CDN, not bypassed",
+      "next_step": "download by hand from https://data.gov.il/dataset/dynamic_wl_cl and sample the raster at ITM 179778/668867"
+    },
+    {
+      "item": "Geological Survey of Israel note specific to north Tel Aviv / Sde Dov groundwater",
+      "where_we_looked": "web search (English); only academic kurkar-hamra stratigraphy papers found",
+      "next_step": "none needed for the page; G2 covers the local section"
+    },
+    {
+      "item": "IMS documentation of the time basis of archive observations",
+      "where_we_looked": "data.gov.il dataset 481 explanation PDFs; they redirect to a Google sign-in on e.data.gov.il (not used). The IMS live API needs a personal token (not used).",
+      "next_step": "treat as UTC (see W10 caveat)"
+    }
+  ]
+}

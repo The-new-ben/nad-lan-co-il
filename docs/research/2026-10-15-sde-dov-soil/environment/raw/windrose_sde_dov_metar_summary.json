@@ -1,0 +1,487 @@
+{
+ "year": {
+  "reports": 62783,
+  "top_sectors_pct": [
+   [
+    "W",
+    14.9
+   ],
+   [
+    "WNW",
+    9.1
+   ],
+   [
+    "NW",
+    8.5
+   ],
+   [
+    "NNW",
+    8.2
+   ]
+  ],
+  "all_sectors_pct": [
+   [
+    "N",
+    5.1
+   ],
+   [
+    "NNE",
+    2.4
+   ],
+   [
+    "NE",
+    0.9
+   ],
+   [
+    "ENE",
+    1.0
+   ],
+   [
+    "E",
+    7.1
+   ],
+   [
+    "ESE",
+    4.2
+   ],
+   [
+    "SE",
+    3.8
+   ],
+   [
+    "SSE",
+    2.2
+   ],
+   [
+    "S",
+    1.3
+   ],
+   [
+    "SSW",
+    2.6
+   ],
+   [
+    "SW",
+    5.7
+   ],
+   [
+    "WSW",
+    7.1
+   ],
+   [
+    "W",
+    14.9
+   ],
+   [
+    "WNW",
+    9.1
+   ],
+   [
+    "NW",
+    8.5
+   ],
+   [
+    "NNW",
+    8.2
+   ]
+  ],
+  "calm_pct": 0.2,
+  "variable_pct": 15.8,
+  "mean_speed_ms": 3.84,
+  "from_sea_side_SSW_to_N_pct": 61.2,
+  "from_land_side_NE_to_SSE_pct": 19.2,
+  "share_ge_8ms_pct": 3.8
+ },
+ "winter": {
+  "reports": 15362,
+  "top_sectors_pct": [
+   [
+    "E",
+    14.4
+   ],
+   [
+    "W",
+    9.7
+   ],
+   [
+    "SW",
+    7.1
+   ],
+   [
+    "ESE",
+    6.6
+   ]
+  ],
+  "all_sectors_pct": [
+   [
+    "N",
+    3.0
+   ],
+   [
+    "NNE",
+    2.6
+   ],
+   [
+    "NE",
+    1.5
+   ],
+   [
+    "ENE",
+    1.8
+   ],
+   [
+    "E",
+    14.4
+   ],
+   [
+    "ESE",
+    6.6
+   ],
+   [
+    "SE",
+    5.0
+   ],
+   [
+    "SSE",
+    3.9
+   ],
+   [
+    "S",
+    2.3
+   ],
+   [
+    "SSW",
+    5.0
+   ],
+   [
+    "SW",
+    7.1
+   ],
+   [
+    "WSW",
+    6.2
+   ],
+   [
+    "W",
+    9.7
+   ],
+   [
+    "WNW",
+    4.7
+   ],
+   [
+    "NW",
+    4.0
+   ],
+   [
+    "NNW",
+    3.9
+   ]
+  ],
+  "calm_pct": 0.4,
+  "variable_pct": 17.8,
+  "mean_speed_ms": 3.88,
+  "from_sea_side_SSW_to_N_pct": 43.6,
+  "from_land_side_NE_to_SSE_pct": 33.2,
+  "share_ge_8ms_pct": 8.6
+ },
+ "spring": {
+  "reports": 15814,
+  "top_sectors_pct": [
+   [
+    "W",
+    15.4
+   ],
+   [
+    "NNW",
+    11.3
+   ],
+   [
+    "N",
+    9.4
+   ],
+   [
+    "NW",
+    8.5
+   ]
+  ],
+  "all_sectors_pct": [
+   [
+    "N",
+    9.4
+   ],
+   [
+    "NNE",
+    2.9
+   ],
+   [
+    "NE",
+    0.6
+   ],
+   [
+    "ENE",
+    0.8
+   ],
+   [
+    "E",
+    4.8
+   ],
+   [
+    "ESE",
+    3.3
+   ],
+   [
+    "SE",
+    2.3
+   ],
+   [
+    "SSE",
+    1.4
+   ],
+   [
+    "S",
+    1.0
+   ],
+   [
+    "SSW",
+    2.4
+   ],
+   [
+    "SW",
+    5.4
+   ],
+   [
+    "WSW",
+    7.8
+   ],
+   [
+    "W",
+    15.4
+   ],
+   [
+    "WNW",
+    8.3
+   ],
+   [
+    "NW",
+    8.5
+   ],
+   [
+    "NNW",
+    11.3
+   ]
+  ],
+  "calm_pct": 0.2,
+  "variable_pct": 14.1,
+  "mean_speed_ms": 4.03,
+  "from_sea_side_SSW_to_N_pct": 68.5,
+  "from_land_side_NE_to_SSE_pct": 13.2,
+  "share_ge_8ms_pct": 4.4
+ },
+ "summer": {
+  "reports": 16100,
+  "top_sectors_pct": [
+   [
+    "W",
+    22.3
+   ],
+   [
+    "WNW",
+    13.5
+   ],
+   [
+    "NW",
+    10.4
+   ],
+   [
+    "WSW",
+    10.2
+   ]
+  ],
+  "all_sectors_pct": [
+   [
+    "N",
+    2.6
+   ],
+   [
+    "NNE",
+    0.7
+   ],
+   [
+    "NE",
+    0.1
+   ],
+   [
+    "ENE",
+    0.0
+   ],
+   [
+    "E",
+    0.9
+   ],
+   [
+    "ESE",
+    1.8
+   ],
+   [
+    "SE",
+    4.4
+   ],
+   [
+    "SSE",
+    2.2
+   ],
+   [
+    "S",
+    1.0
+   ],
+   [
+    "SSW",
+    1.8
+   ],
+   [
+    "SW",
+    7.0
+   ],
+   [
+    "WSW",
+    10.2
+   ],
+   [
+    "W",
+    22.3
+   ],
+   [
+    "WNW",
+    13.5
+   ],
+   [
+    "NW",
+    10.4
+   ],
+   [
+    "NNW",
+    6.9
+   ]
+  ],
+  "calm_pct": 0.1,
+  "variable_pct": 14.1,
+  "mean_speed_ms": 3.85,
+  "from_sea_side_SSW_to_N_pct": 74.7,
+  "from_land_side_NE_to_SSE_pct": 9.4,
+  "share_ge_8ms_pct": 0.2
+ },
+ "autumn": {
+  "reports": 15507,
+  "top_sectors_pct": [
+   [
+    "W",
+    11.9
+   ],
+   [
+    "NW",
+    10.9
+   ],
+   [
+    "NNW",
+    10.6
+   ],
+   [
+    "WNW",
+    9.6
+   ]
+  ],
+  "all_sectors_pct": [
+   [
+    "N",
+    5.6
+   ],
+   [
+    "NNE",
+    3.3
+   ],
+   [
+    "NE",
+    1.3
+   ],
+   [
+    "ENE",
+    1.2
+   ],
+   [
+    "E",
+    8.6
+   ],
+   [
+    "ESE",
+    5.4
+   ],
+   [
+    "SE",
+    3.4
+   ],
+   [
+    "SSE",
+    1.4
+   ],
+   [
+    "S",
+    0.8
+   ],
+   [
+    "SSW",
+    1.1
+   ],
+   [
+    "SW",
+    3.1
+   ],
+   [
+    "WSW",
+    4.3
+   ],
+   [
+    "W",
+    11.9
+   ],
+   [
+    "WNW",
+    9.6
+   ],
+   [
+    "NW",
+    10.9
+   ],
+   [
+    "NNW",
+    10.6
+   ]
+  ],
+  "calm_pct": 0.2,
+  "variable_pct": 17.2,
+  "mean_speed_ms": 3.58,
+  "from_sea_side_SSW_to_N_pct": 57.1,
+  "from_land_side_NE_to_SSE_pct": 21.3,
+  "share_ge_8ms_pct": 1.9
+ },
+ "_meta": {
+  "station": "NOAA ISD 401762-99999 SDE DOV, IS (ICAO LLSD), 32.117N 34.783E, elev 13 m",
+  "years": [
+   "2009",
+   "2010",
+   "2011",
+   "2012",
+   "2013",
+   "2014",
+   "2015",
+   "2016",
+   "2017",
+   "2018"
+  ],
+  "hourly_reports_used": 62783,
+  "report_type": "FM-15 METAR only, first report per UTC hour",
+  "coverage_note": "airport METARs cover roughly 05:00-22:00 local time; night hours are almost absent, so the rose describes daytime wind",
+  "local_time_rule": "UTC+3 Apr-Oct, UTC+2 Nov-Mar (approximation of Israel daylight time)",
+  "sectors": "16 x 22.5 deg, direction the wind blows FROM"
+ }
+}
