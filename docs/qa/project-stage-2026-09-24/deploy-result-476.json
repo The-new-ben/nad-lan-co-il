@@ -1,0 +1,21 @@
+{
+  "released": "1.72.476",
+  "from": "1.72.475",
+  "live_before": {
+    "assets/instruments/data/cbs-120010.json": "d72d8cae3061e64116872cd1c5c16d61",
+    "assets/instruments/data/cbs-200010.json": "dafb2d43d7f44c156ac88ff278e2073a",
+    "assets/instruments/data/boi-rate.json": "6db2672ebe53652b31de4a7f21f6399f",
+    "nadlan-config.php": "4248173eeb9ce73d164a46c01449eacd"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-21 19:34:23",
+  "files": {
+    "assets/instruments/data/cbs-120010.json": "74d95d5373d1014c3a471b0e18176154",
+    "assets/instruments/data/cbs-200010.json": "84ac4b700a378561d1512054b69acce2",
+    "assets/instruments/data/boi-rate.json": "5c4b40b407ae0e6d02dd177ca410d764",
+    "nadlan-config.php": "586e213971008f717a93e51c32ec3057"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.476, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
