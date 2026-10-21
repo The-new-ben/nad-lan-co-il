@@ -162,10 +162,13 @@ def section_for(tool, lang, rules, T):
     if tool == 'tax-map':
         import taxmap_section
         return taxmap_section.taxmap_section(lang, rules, T, run_engine, HERE)
+    if tool == 'title-risk':
+        import titlerisk_section
+        return titlerisk_section.titlerisk_section(lang, rules, T, run_engine, HERE)
     raise SystemExit('unknown tool ' + tool)
 
 
-ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map']}
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map'], 'title-risk': ['title-risk']}
 
 
 def inject_after_paragraph(page, section, n=2):

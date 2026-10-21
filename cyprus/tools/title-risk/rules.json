@@ -1,0 +1,159 @@
+{
+ "tool": "title-risk",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "research/title-deeds.json, read 21.10.2026: Sale of Land (Specific Performance) Law 81(I)/2011 as amended (deposit within 6 months, registered-owner condition, search certificate within 5 working days, Forms A/B/C after Law 132/2023), Cap. 96 Streets and Buildings (Certificate of Approval, unauthorised works), Cap. 109 (non-EU permit), DLS e-services and fees, trapped-buyers Law 110(I)/2025. The risk levels per answer are this tool's design, built on the red flags in the law; the lawyer-conflict flag is law-firm advice and is labelled so.",
+ "questions": [
+  {
+   "id": "title",
+   "answers": {
+    "yes": "low",
+    "new": "medium",
+    "resale": "high",
+    "dk": "medium"
+   },
+   "flags": {
+    "resale": "no_title_resale",
+    "dk": "unknown_title",
+    "new": "no_title_new"
+   }
+  },
+  {
+   "id": "owner",
+   "answers": {
+    "yes": "low",
+    "no": "high",
+    "dk": "medium"
+   },
+   "flags": {
+    "no": "not_owner",
+    "dk": "unknown_owner"
+   }
+  },
+  {
+   "id": "search",
+   "answers": {
+    "yes": "low",
+    "older": "medium",
+    "no": "high"
+   },
+   "flags": {
+    "older": "old_search",
+    "no": "no_search"
+   }
+  },
+  {
+   "id": "mortgage",
+   "answers": {
+    "no": "low",
+    "forma": "medium",
+    "noforma": "high",
+    "dk": "high"
+   },
+   "flags": {
+    "noforma": "mortgage_no_form_a",
+    "dk": "mortgage_unknown",
+    "forma": "mortgage_form_a"
+   }
+  },
+  {
+   "id": "court",
+   "answers": {
+    "no": "low",
+    "yes": "high",
+    "dk": "medium"
+   },
+   "flags": {
+    "yes": "court_order",
+    "dk": "court_unknown"
+   }
+  },
+  {
+   "id": "approval",
+   "answers": {
+    "yes": "low",
+    "applied": "medium",
+    "building": "medium",
+    "no": "high"
+   },
+   "flags": {
+    "no": "no_approval",
+    "applied": "approval_pending",
+    "building": "under_construction"
+   }
+  },
+  {
+   "id": "deposit",
+   "answers": {
+    "yes": "low",
+    "no": "high"
+   },
+   "flags": {
+    "no": "no_deposit"
+   }
+  },
+  {
+   "id": "assign",
+   "answers": {
+    "no": "low",
+    "yes": "medium"
+   },
+   "flags": {
+    "yes": "assignment"
+   }
+  },
+  {
+   "id": "lawyer",
+   "answers": {
+    "no": "low",
+    "yes": "high"
+   },
+   "flags": {
+    "yes": "lawyer_conflict"
+   }
+  }
+ ],
+ "lawyer_list": {
+  "always": [
+   "Copy of the title deed (Certificate of Registration) for the land or unit, pulled from the DLS.",
+   "Search Certificate WITH encumbrances and prohibitions, dated within 5 working days of signing, initialled on every page and attached to the contract.",
+   "Search certificate for personal prohibitions on each seller.",
+   "Confirmation that each seller is the registered owner (or a distribution agreement signed by all registered owners).",
+   "Copy of the official cadastral plan, compared with the plan signed with the contract.",
+   "Deposit of the contract at the District Lands Office within 6 months (Form D.E.314, EUR 50) and a copy of the stamped proof of deposit.",
+   "After deposit: search certificate for current contracts of the purchaser (EUR 5) to confirm the deposit."
+  ],
+  "mortgage": [
+   "Form A signed by the bank, the seller and me, with the 95% amount and the seller's IBAN; confirm no Form C is to be signed.",
+   "Confirm there is no MEMO, interim order or other encumbrance besides the mortgage.",
+   "Payment schedule tied to the Form A account only; Form B on payment of 95%."
+  ],
+  "no_title": [
+   "Planning permit, building permit and division permit with their terms and approved plans.",
+   "Certificate of Approval (or with notes / of unauthorised works) for the building and the division, or the date the developer applied.",
+   "Horizontal division application number at the DLO and its status."
+  ],
+  "assignment": [
+   "Original contract, its DLS proof of deposit, the assignment deposited within 6 months, and the capital gains tax clearance certificate.",
+   "Any pending trapped-buyer application on the unit and the bank's written consent."
+  ],
+  "final": [
+   "Form N313 tax clearance, municipal tax, sewerage and water certificates before the final payment.",
+   "Mortgage release / cancellation document and cancellation of any other encumbrance."
+  ],
+  "israeli": [
+   "Cap. 109 permit application (form COMM 145) to the District Administration (no fee, 2-3 weeks) and confirmation that the purchase fits the limits (two units, or one plot up to 4,000 m2)."
+  ]
+ },
+ "example": {
+  "title": "new",
+  "owner": "yes",
+  "search": "yes",
+  "mortgage": "forma",
+  "court": "no",
+  "approval": "building",
+  "deposit": "yes",
+  "assign": "no",
+  "lawyer": "no"
+ }
+}

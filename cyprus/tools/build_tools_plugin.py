@@ -30,6 +30,8 @@ REGISTRY = [
      'engines': ['residency']},
     {'id': 'tax-map', 'page_id': 59, 'path': '/guides/cyprus-property-accountant-selection/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['tax-map']},
+    {'id': 'title-risk', 'page_id': 58, 'path': '/guides/cyprus-title-deeds-ownership-checks/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['title-risk']},
 ]
 
 
