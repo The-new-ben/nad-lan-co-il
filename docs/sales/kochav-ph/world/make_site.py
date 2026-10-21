@@ -9,7 +9,7 @@ s = s.replace('<meta name="claude:viewport-fit-sides" content="cover">', '<meta 
 s = re.sub(r"</head>\s*<body>", "", s, count=1); s = re.sub(r"</body>\s*</html>\s*$", "", s)
 s = s.replace('<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n', "", 1)
 io.open(os.path.join(S, "index.html"), "w", encoding="utf-8", newline="\n").write(s)
-for f in ("city.json", "places.json", "quarter.json"): shutil.copy(os.path.join(H, f), os.path.join(S, f))
+for f in ("city.json", "places.json", "quarter.json", "building.json", "view-11.jpg"): shutil.copy(os.path.join(H, f), os.path.join(S, f))
 for f in os.listdir(os.path.join(H, "tex")):
     if f.endswith((".jpg", ".png")) and "_raw" not in f: shutil.copy(os.path.join(H, "tex", f), os.path.join(S, "tex", f))
 print(sorted(os.listdir(S)), sorted(os.listdir(os.path.join(S, "tex"))))
