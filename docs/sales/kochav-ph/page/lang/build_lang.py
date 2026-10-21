@@ -531,6 +531,9 @@ SVG_WA = cut(r'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><pa
 SVG_TEL = cut(r'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none".*?</svg>', ART)
 
 
+BCARD = {'fr': ("L'immeuble et l'étage en 3D", "Choisissez un étage et voyez l'appartement dans son immeuble : un mini-penthouse au 11e étage sur 12, avec la terrasse, la visite à 360° et la vraie vue depuis l'immeuble. L'image est une illustration.", "Voir l'immeuble en 3D", "L'immeuble en 3D : les étages et le mini-penthouse au 11e étage"), 'ru': ('Дом и этаж в 3D', 'Выберите этаж и посмотрите квартиру внутри дома: мини-пентхаус на 11-м этаже из 12, с террасой, туром 360° и реальным видом из дома. Изображение является иллюстрацией.', 'Открыть дом в 3D', 'Дом в 3D: этажи и мини-пентхаус на 11-м этаже')}  # 21.10: the building card (index.html?b=1)
+
+
 def build(lang):
     t = T[lang]
     s = "-L07-" + lang
@@ -561,8 +564,10 @@ def build(lang):
             '<span class="nlx-walk-b"><b>' + L(tb) + "</b><small>" + L(ts) + "</small><i>" + esc(ti) + "</i></span></a>", "</section>"]
     we, wh, wl, wb, ws, wi, wa, wn = t["world"]
     out += ['<section class="nlx-sec" id="world' + s + '">', sec_head(we, wh, wl, lang),
-            '<a class="nlx-walk" data-nlx-walk="' + esc(wb) + '" data-close="' + esc(tc) + '" href="' + WALK + 'index.html?ver=1.72.473"><img src="' + WALK + 'thumb.jpg?ver=1.72.473" alt="' + esc(wa) + '" width="1280" height="720" loading="lazy" decoding="async">'
+            '<a class="nlx-walk" data-nlx-walk="' + esc(wb) + '" data-close="' + esc(tc) + '" href="' + WALK + 'index.html?ver=1.72.486"><img src="' + WALK + 'thumb.jpg?ver=1.72.486" alt="' + esc(wa) + '" width="1280" height="720" loading="lazy" decoding="async">'
             '<span class="nlx-walk-b"><b>' + L(wb) + "</b><small>" + L(ws) + "</small><i>" + esc(wi) + "</i></span></a>",
+            '<a class="nlx-walk" data-nlx-walk="' + esc(BCARD[lang][0]) + '" data-close="' + esc(tc) + '" href="' + WALK + 'index.html?b=1&amp;ver=1.72.486"><img src="' + WALK + 'bldg.jpg?ver=1.72.486" alt="' + esc(BCARD[lang][3]) + '" width="1280" height="720" loading="lazy" decoding="async">'
+            '<span class="nlx-walk-b"><b>' + esc(BCARD[lang][0]) + "</b><small>" + L(BCARD[lang][1]) + "</small><i>" + esc(BCARD[lang][2]) + "</i></span></a>",
             '<p class="nlx-walk-note">' + L(wn) + "</p>", WALK_JS, "</section>"]
     # the residence
     feats = "".join("<li><b>" + L(a) + "</b><span>" + L(b) + "</span></li>" for a, b in t["features"])

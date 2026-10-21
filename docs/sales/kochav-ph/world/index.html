@@ -132,7 +132,7 @@ body.bm #foot,body.bm #acts{display:none}
 </div>
 <div class="hud" id="lift" hidden><b>קומה</b></div>
 <div class="hud" id="bpanel" hidden><header><b id="bT"></b><button class="btn" id="bX" type="button">חזרה להליכה</button></header><div class="body" id="bB"></div><div class="row" id="bR"></div><p class="note">קווי הבניין לפי שכבת המבנים של העירייה, והגובה (כ־46 מ׳) לפי מודל פני השטח. חלוקת הקומות, הנסיגות והמרפסת הן הדמיה עד לקבלת התוכנית.</p></div>
-<div id="bview" hidden><figure><img id="bvImg" alt="הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון, צילום אמיתי"><figcaption><span>הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון. צילום אמיתי.</span><button class="btn" id="bvX" type="button">סגירה</button></figcaption></figure></div>
+<div id="bview" hidden><figure><img id="bvImg" alt="הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון, צילום אמיתי"><figcaption><span id="bvCap">הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון. צילום אמיתי.</span><button class="btn" id="bvX" type="button">סגירה</button></figcaption></figure></div>
 <div class="hud" id="foot">המבנים, הרחובות, השטחים הירוקים, העצים והירקון: שכבות עיריית תל אביב-יפו (10.2026). המקומות: findplace ו-OpenStreetMap; זמני הליכה: Mapbox. הגשר, החזיתות ועצי הפארק להמחשה.</div>
 
 <div id="go" role="dialog" aria-modal="true" aria-labelledby="goT"><div class="card">
@@ -408,7 +408,9 @@ function pickFloor(n) {
   BM.ty = n === 0 ? 3 : BLDG.ground + (n - 0.5) * BLDG.story; BM.el = Math.max(0.12, Math.min(0.6, 0.18 + n * 0.012));
   const f = FLOOR_TXT(n); $('bT').textContent = f.t; $('bB').innerHTML = f.b; const Rw = $('bR'); Rw.textContent = '';
   if (f.home) {
-    const v = document.createElement('button'); v.className = 'btn pri'; v.type = 'button'; v.textContent = 'הנוף מהבניין (צילום אמיתי)'; v.onclick = () => { $('bvImg').src = 'view-11.jpg'; $('bview').hidden = false; }; Rw.append(v);
+    const h = document.createElement('a'); h.className = 'btn pri'; h.href = 'home.html'; h.textContent = 'סיור בבית ב־360'; Rw.append(h);
+    const v = document.createElement('button'); v.className = 'btn'; v.type = 'button'; v.textContent = 'הנוף מהבניין (צילום אמיתי)'; v.onclick = () => { $('bvImg').src = 'view-11.jpg'; $('bvImg').alt = 'הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון, צילום אמיתי'; $('bvCap').textContent = 'הנוף מהבניין: מגדלי תל אביב מעל פארק הירקון. צילום אמיתי.'; $('bview').hidden = false; }; Rw.append(v);
+    const r = document.createElement('button'); r.className = 'btn'; r.type = 'button'; r.textContent = 'הבניין בהדמיה'; r.onclick = () => { $('bvImg').src = 'bldg-real.jpg?v=2'; $('bvImg').alt = 'הבניין והמיני פנטהאוז בקומה 11, הדמיה'; $('bvCap').textContent = 'הבניין והמרפסת של המיני פנטהאוז בקומה 11 בשעת שקיעה. הדמיה להמחשה, לא צילום של הבניין.'; $('bview').hidden = false; }; Rw.append(r);
   }
   $('bpanel').hidden = false;
 }
@@ -422,6 +424,8 @@ function openBuilding(on = true) {
 }
 $('bldBtn').onclick = () => openBuilding(!BM.on);
 $('bX').onclick = () => openBuilding(false);
+// a direct link straight into the building (the listing's card: index.html?b=1, Ben 21.10.2026)
+if (/[?&]b=1(&|$)/.test(location.search) || location.hash === '#building') setTimeout(() => { const L = document.getElementById('load'); if (L) L.remove(); openBuilding(true); }, 400);
 $('bvX').onclick = () => { $('bview').hidden = true; };
 function renderBM() {
   if (BM.eye) { camera.position.set(BM.eye.x, BM.eye.y, BM.eye.z); camera.lookAt(BM.eye.x + 25 + Math.sin(BM.az) * 40, BM.eye.y - 9, BM.eye.z + 160); } // south: the park and the city's towers

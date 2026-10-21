@@ -11,7 +11,7 @@ import io, json, os, re
 import seo_tools as ST  # 21.10: the mini penthouse test, comparison and calculator
 H = os.path.dirname(os.path.abspath(__file__))
 WALK = "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/walk/kochav/"
-VER = "?ver=1.72.473"
+VER = "?ver=1.72.486"  # 21.10: the walk card image is now the photoreal bridge (thumb.jpg)
 
 
 def n(x):
@@ -139,6 +139,9 @@ def film_section(lang):
             + '<p class="nlx-walk-note">' + note + '</p>' + nl + '</section>' + nl)
 
 
+BCARD = {'he': ('הבניין והקומה בתלת ממד', 'בוחרים קומה ורואים את הדירה בתוך הבניין: מיני פנטהאוז בקומה 11 מתוך 12, עם המרפסת, סיור בבית ב־360 והנוף האמיתי מהבניין. התמונה היא הדמיה.', 'לבניין בתלת ממד', 'הבניין בתלת ממד: הקומות והמיני פנטהאוז בקומה 11'), 'en': ('The building and the floor in 3D', 'Pick a floor and see the home inside its building: a mini penthouse on floor 11 of 12, with the terrace, the 360 tour and the real view from the building. The picture is an illustration.', 'Open the building in 3D', 'The building in 3D: the floors and the mini penthouse on floor 11')}  # 21.10: the building card (index.html?b=1)
+
+
 HTXT = {"he": ("סיור בבית", "חדר אחרי חדר, ב־360", "הכניסה, הסלון, המטבח, פינת האוכל והמרפסת, ביום ובערב. הסיור נבנה מהצילומים האמיתיים של הדירה; חלקים שלא צולמו הושלמו, ולכן זו הדמיה.", "סיור בבית ב־360", "לגרור, להסתכל מסביב ולעבור בין החדרים", "להתחיל את הסיור", "home.html", "סגירה"),
         "en": ("Home tour", "Room by room, in 360", "The entrance, the living room, the kitchen, the dining area and the terrace, by day and at dusk. Built from the real footage of the home; parts the camera did not see were completed, so this is an illustration.", "The home in 360", "Drag to look around and move between rooms", "Start the tour", "home.html?lang=en", "Close")}
 
@@ -163,6 +166,8 @@ def build(lang, raw):
     world = ('<section class="nlx-sec" id="world' + sfx + '">\n<div class="nlx-sec-head"><p class="nlx-eyebrow">' + t["w_eyebrow"] + '</p><h2 class="nlx-h2">' + t["w_h2"] + '</h2><p class="nlx-lead">' + nums(t["w_lead"]) + '</p></div>\n'
              '<a class="nlx-walk" data-nlx-walk="' + t["w_b"] + '" data-close="' + t["w_close"] + '" href="' + WALK + "index.html" + VER + '"><img src="' + WALK + "thumb.jpg" + VER + '" alt="' + t["w_alt"] + '" width="1280" height="720" loading="lazy" decoding="async">'
              '<span class="nlx-walk-b"><b>' + t["w_b"] + '</b><small>' + nums(t["w_s"]) + '</small><i>' + t["w_i"] + '</i></span></a>\n'
+             + '<a class="nlx-walk" data-nlx-walk="' + BCARD[lang][0] + '" data-close="' + t["w_close"] + '" href="' + WALK + 'index.html?b=1&amp;ver=1.72.486"><img src="' + WALK + 'bldg.jpg?ver=1.72.486" alt="' + BCARD[lang][3] + '" width="1280" height="720" loading="lazy" decoding="async">'
+             '<span class="nlx-walk-b"><b>' + BCARD[lang][0] + '</b><small>' + nums(BCARD[lang][1]) + '</small><i>' + BCARD[lang][2] + '</i></span></a>\n'
              '<p class="nlx-walk-note">' + nums(t["w_note"]) + '</p>\n' + JS + '\n</section>\n')
     i = out.index('<section class="nlx-sec" id="home' + sfx + '">')
     out = out[:i] + world + out[i:]
