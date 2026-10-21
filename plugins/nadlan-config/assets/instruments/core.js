@@ -99,6 +99,7 @@
       }
       inp2.id = id;
       var show = function () { var x = st.v[f.id]; inp2.value = f.type === 'money' ? nf0.format(x) : (x == null ? '' : x); };
+      if (f.type !== 'select') st.redraw[f.id] = show;  // 21.10.2026: onField may set this field from another one (nrm: the track sets its rate)
       if (f.type !== 'select') show();
       inp2.addEventListener(f.type === 'select' ? 'change' : 'input', function () {
         st.v[f.id] = (f.type === 'money' || f.type === 'number' || f.type === 'percent') ? parseMoney(inp2.value) : inp2.value; onChange(f.id);

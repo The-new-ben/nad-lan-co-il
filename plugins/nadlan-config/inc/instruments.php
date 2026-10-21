@@ -103,6 +103,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'arnona-tlv.json' ),
 				'related' => array( '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/property-value-estimator/' => 'מחשבון שווי דירה', '/tel-aviv-apartment-prices/' => 'מחירי דירות בתל אביב', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
+			'nrm' => array(
+				'only' => 'en', 'name' => 'Israeli mortgage calculator for non-residents', 'cat' => 'FinanceApplication', 'kicker' => 'Calculator · Israeli mortgage',
+				'desc' => 'An Israeli mortgage for a buyer abroad: the 50% loan cap for non-residents, the monthly payment at the average rate by track, the purchase tax a foreign resident pays, the closing costs, and all of it in US dollars, euros or pounds at the Bank of Israel rate.',
+				'data' => array( 'ptax.json', 'nrm.json', 'boi-fx.json' ),
+				'related' => array( '/israel-purchase-tax-foreign-residents/' => 'Purchase tax for foreign residents', '/en/buy-property-in-israel/' => 'Buying a home in Israel from abroad', '/en/north-tel-aviv/' => 'North Tel Aviv', '/projects/hamedina-en/' => 'Kikar HaMedina towers' ),
+			),
 		) );
 	}
 
@@ -112,7 +118,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	/** HAD-534 (d): the page language, 'en' on /en/ pages (inc/page-lang.php: the top ancestor slug), else 'he'. */
 	function nadlan_nli_lang() { return function_exists( 'nadlan_pglang_lang' ) && 'en' === nadlan_pglang_lang() ? 'en' : 'he'; }
 	/** A tool speaks the page language only when it carries that language block; otherwise it stays Hebrew (and RTL). */
-	function nadlan_nli_tool_lang( $t ) { return 'en' === nadlan_nli_lang() && ! empty( $t['en'] ) ? 'en' : 'he'; }
+	function nadlan_nli_tool_lang( $t ) { if ( ! empty( $t['only'] ) ) { return $t['only']; } return 'en' === nadlan_nli_lang() && ! empty( $t['en'] ) ? 'en' : 'he'; }  // 'only' (21.10.2026): an English tool inside an English post that sits on a Hebrew root path
 	function nadlan_nli_t( $t, $lang ) { return 'en' === $lang && ! empty( $t['en'] ) ? array_merge( $t, $t['en'] ) : $t; }
 
 	/** The ids of the tools in a post's content. */
@@ -142,7 +148,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		$ids = nadlan_nli_page_ids();
 		if ( ! $ids ) { return; }
 		$v = nadlan_nli_ver();
-		$fonts = 'en' === nadlan_nli_lang()  // English pages: the Latin Plex faces (+ Plex Hebrew 400 for a Hebrew letter inside the page)
+		$tl = nadlan_nli_tools(); $en_tool = false; foreach ( $ids as $x ) { if ( isset( $tl[ $x ]['only'] ) && 'en' === $tl[ $x ]['only'] ) { $en_tool = true; } }
+		$fonts = ( 'en' === nadlan_nli_lang() || $en_tool )  // English pages: the Latin Plex faces (+ Plex Hebrew 400 for a Hebrew letter inside the page)
 			? 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans+Hebrew:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap'
 			: 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
 		wp_enqueue_style( 'nadlan-nli-fonts', $fonts, array(), null );
@@ -237,6 +244,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	/** HAD-534 (d): the same summaries in English, for the tools that carry an 'en' block. Dates with gmdate (English month
 	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
 	function nadlan_nli_summary_en( $id ) {
+		if ( 'nrm' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-fx.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			$fx = is_array( $x ) && ! empty( $x['fx']['USD'] ) ? ' Bank of Israel representative rates on ' . esc_html( $x['fx']['USD']['date'] ) . ': 1 USD = ' . esc_html( $x['fx']['USD']['rate'] ) . ' ILS, 1 EUR = ' . esc_html( $x['fx']['EUR']['rate'] ) . ' ILS, 1 GBP = ' . esc_html( $x['fx']['GBP']['rate'] ) . ' ILS.' : '';
+			return '<p>An Israeli bank can lend a non-resident up to 50% of the property value. A foreign resident pays purchase tax of 8% up to ILS 6,055,070 and 10% above. The average rate on new fixed, non-linked mortgages was 4.62% in August 2026.' . $fx . '</p>';
+		}
 		if ( 'soilmap' === $id || 'pfas' === $id ) {
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/sde-dov-soil.json';
 			$s = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;

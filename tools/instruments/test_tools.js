@@ -78,5 +78,13 @@ eq('arnona: 141 m2 (whole area at the higher rate)', win.NLAR.compute(Object.ass
 eq('arnona: half a m2 rounds down', win.NLAR.round(100.5), 100, 0);
 eq('arnona: new immigrant 50% on 100 of 150 m2', win.NLAR.compute(Object.assign({}, av, { area: 150, discount: 'new_immigrant' }), AR).net, 13960, 0.01);
 eq('arnona: zone 4, 1975-1983 plain building, 80 m2', win.NLAR.compute(Object.assign({}, av, { zone: 4, built: '1975-1983', featured: false, area: 80 }), AR).rate, 54.05, 0.001);
+// nrm (21.10.2026): non-resident mortgage; 4M, 50%, 25 years at 4.62%
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/nrm.js'), 'utf8'), ctx);
+const NR = JSON.parse(fs.readFileSync(path.join(A, 'data', 'nrm.json'), 'utf8'));
+const nv = { price: 4e6, cur: 'USD', ltv: 50, years: 25, rate: 4.62, lawyer: 0.5 };
+eq('nrm: monthly payment', win.NLNR.compute(nv, { tracks: PT }, NR).monthly, 11253.5, 2);
+eq('nrm: foreign purchase tax 8%', win.NLNR.compute(nv, { tracks: PT }, NR).tax, 320000, 0.01);
+eq('nrm: cash to close', win.NLNR.compute(nv, { tracks: PT }, NR).cash, 2344610, 0.5);
+eq('nrm: over the 50% cap flagged', win.NLNR.compute(Object.assign({}, nv, { ltv: 60 }), { tracks: PT }, NR).over ? 1 : 0, 1, 0);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);

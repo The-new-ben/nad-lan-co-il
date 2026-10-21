@@ -1,0 +1,16 @@
+{
+ "key": "nrm",
+ "checked": "2026-10-21",
+ "ltv_max": 0.5,
+ "ltv_source": { "label": "Bank of Israel, Proper Conduct of Banking Business directive 329: up to 50% of the property value for a non-resident", "url": "https://www.boi.org.il/" },
+ "rates": [
+  { "id": "fixed", "label": "Fixed, not linked (KALATZ)", "rate": 4.62 },
+  { "id": "linked", "label": "Fixed, CPI-linked", "rate": 3.29 },
+  { "id": "variable", "label": "Variable, not linked (approx.)", "rate": 4.42 }
+ ],
+ "rates_period": "average of new mortgages, August 2026",
+ "rates_source": { "label": "Bank of Israel data on new mortgages, August 2026 (via funder.co.il, 14.9.2026)", "url": "https://funder.co.il/article/209853" },
+ "vat": 0.18,
+ "mortgage_fee": { "rate": 0.0025, "max": 360 },
+ "appraiser": 650
+}
