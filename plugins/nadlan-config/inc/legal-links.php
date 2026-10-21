@@ -25,6 +25,28 @@ add_filter( 'render_block', function ( $html, $block ) {
 	return null === $new ? $html : $new;
 }, 10, 2 );
 
+/* The tools in the footer (Ben 21.10.2026: "link the tools from the footer"): a fourth column after the three of the theme part.
+   Hebrew pages get the Hebrew calculators; pages under /en/ /fr/ /ru/ /ar/ get the English tools only, so a reader abroad is never
+   sent to a Hebrew-only calculator. Plain links, no script; the theme part itself is not edited. */
+add_filter( 'render_block', function ( $html, $block ) {
+	if ( false === strpos( (string) $html, 'class="nlpc-footer-links"' ) || false !== strpos( (string) $html, 'class="nlpc-footer-tools"' ) ) { return $html; }
+	$lang = function_exists( 'nadlan_pglang_lang' ) ? (string) nadlan_pglang_lang() : '';
+	if ( in_array( $lang, array( 'en', 'fr', 'ru', 'ar' ), true ) ) {
+		$title = 'Tools';
+		$links = array( '/israel-mortgage-non-residents/' => 'Israeli mortgage from abroad', '/israel-purchase-tax-foreign-residents/' => 'Purchase tax for foreign residents', '/en/sde-dov/contamination/' => 'Sde Dov soil map' );
+	} else {
+		$title = 'מחשבונים וכלים';
+		$links = array( '/property-value-estimator/' => 'שווי דירה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת',
+			'/arnona/' => 'ארנונה בתל אביב', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית הפריים', '/cpi-calculator/' => 'הצמדה למדד', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה' );
+	}
+	$col = '<div class="nlpc-footer-tools"><strong>' . esc_html( $title ) . '</strong>';
+	foreach ( $links as $path => $label ) { $col .= '<a href="' . esc_url( home_url( $path ) ) . '">' . esc_html( $label ) . '</a>'; }
+	$col .= '</div>';
+	$new = preg_replace( '#</div>(\s*)</nav>#u', '</div>' . $col . '$1</nav>', (string) $html, 1 );
+	return null === $new ? $html : $new;
+}, 11, 2 );
+
 add_action( 'wp_head', function () {
-	echo "\n<style id=\"nadlan-legal-links\">.nlpc-footer-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}.nlpc-footer-legal a:hover{text-decoration-thickness:2px}</style>\n";
+	echo "\n<style id=\"nadlan-legal-links\">.nlpc-footer-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}.nlpc-footer-legal a:hover{text-decoration-thickness:2px}"
+		. ".nlpc-footer-links{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:760px){.nlpc-footer-links{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>\n";
 }, 40 );

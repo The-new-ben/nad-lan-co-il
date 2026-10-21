@@ -1,0 +1,17 @@
+{
+  "released": "1.72.487",
+  "from": "1.72.486",
+  "live_before": {
+    "inc/legal-links.php": "588f31f559dfbb8e33bfbffa5e43edb6",
+    "nadlan-config.php": "8c0fed9ce2621c2017ad84be1052bf0e"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-21 22:42:55",
+  "files": {
+    "inc/legal-links.php": "fbed879d5c680884e6ce93ac53f73bc9",
+    "nadlan-config.php": "688824df491521448ebe72d4845b0c85"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.487, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
