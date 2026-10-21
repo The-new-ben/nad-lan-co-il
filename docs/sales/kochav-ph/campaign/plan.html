@@ -1,0 +1,285 @@
+<title>Kochav HaTzafon Abroad</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: a departures board for one property. A strip of route codes, then the plan as numbered dockets; tables scroll inside their own frame. */
+:root{
+  --paper:#F5F7F8; --sheet:#FFFFFF; --ink:#0E1C2B; --mute:#4A5A69; --line:#D3DCE3;
+  --route:#1F5FA8; --route-soft:#DCE8F6; --free:#2E7D4F; --free-soft:#DDF0E4; --warn:#B5302A; --warn-soft:#F7E0DE;
+  --he:'IBM Plex Sans Hebrew',Arial,sans-serif; --lat:'IBM Plex Sans',Arial,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0B1622; --sheet:#112233; --ink:#E7EEF4; --mute:#9DB0C1; --line:#24384B;
+  --route:#7FB0EA; --route-soft:#16314F; --free:#6CC28F; --free-soft:#123526; --warn:#F08A80; --warn-soft:#3A1B1A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0B1622; --sheet:#112233; --ink:#E7EEF4; --mute:#9DB0C1; --line:#24384B;
+  --route:#7FB0EA; --route-soft:#16314F; --free:#6CC28F; --free-soft:#123526; --warn:#F08A80; --warn-soft:#3A1B1A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--he);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));direction:rtl}
+.board{background:var(--ink);color:var(--paper);border-radius:10px;padding:18px 20px;display:grid;gap:12px}
+.board .k{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75;direction:ltr;text-align:right}
+.board h1{margin:0;font-size:clamp(26px,4.2vw,40px);line-height:1.15;text-wrap:balance}
+.board p{margin:0;max-width:70ch;opacity:.9}
+.codes{display:flex;flex-wrap:wrap;gap:6px;direction:ltr;justify-content:flex-end}
+.codes span{font:500 13px var(--mono);border:1px solid color-mix(in srgb,var(--paper) 35%,transparent);padding:3px 8px;border-radius:4px}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.status div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.status b{display:block;font-size:13px;color:var(--mute);font-weight:500}
+.status span{font-size:15px;font-weight:700}
+section{margin-top:34px}
+h2{font-size:22px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline;text-wrap:balance}
+h2 .n{font:500 13px var(--mono);color:var(--route);direction:ltr}
+h3{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 10px;max-width:72ch}
+ul{margin:0 0 10px;padding-inline-start:20px}
+li{margin:4px 0}
+.note{font-size:13.5px;color:var(--mute)}
+.callout{border-inline-start:4px solid var(--warn);background:var(--warn-soft);padding:12px 14px;border-radius:6px;margin:12px 0}
+.callout.ok{border-color:var(--free);background:var(--free-soft)}
+.steps{display:grid;gap:10px;counter-reset:s;padding:0;list-style:none}
+.steps li{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px 12px 14px;display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0}
+.steps li::before{counter-increment:s;content:counter(s);font:500 14px var(--mono);color:var(--route);background:var(--route-soft);border-radius:50%;width:30px;height:30px;display:grid;place-items:center}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+th{font-size:12.5px;color:var(--mute);font-weight:500;background:color-mix(in srgb,var(--route-soft) 45%,var(--sheet))}
+td .l{font-family:var(--lat);direction:ltr;unicode-bidi:isolate}
+td a{color:var(--route);word-break:break-all}
+.num{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.tag.f{background:var(--free-soft);color:var(--free)}
+.tag.p{background:var(--route-soft);color:var(--route)}
+.tag.q{background:color-mix(in srgb,var(--line) 60%,var(--sheet));color:var(--mute)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tier{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.tier h3{margin:0 0 4px;display:flex;justify-content:space-between;gap:8px}
+.tier .sum{font:500 22px var(--mono);direction:ltr}
+.tier ul{font-size:14px}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.weeks div{background:var(--sheet);border:1px solid var(--line);border-top:3px solid var(--route);border-radius:8px;padding:12px 14px;font-size:14px}
+.weeks b{display:block;font:500 13px var(--mono);color:var(--route);margin-bottom:4px}
+.ads{display:grid;gap:12px}
+.ad{background:var(--sheet);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ad header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.ad header b{font-size:14px}
+.ad header .lang{font:500 12px var(--mono);color:var(--mute)}
+.ad pre{margin:0;padding:14px;white-space:pre-wrap;word-break:break-word;font-family:var(--lat);font-size:14.5px;line-height:1.6;direction:ltr;text-align:left}
+.ad pre[dir=rtl]{direction:rtl;text-align:right;font-family:var(--he)}
+button.copy{font:500 13px var(--he);background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:7px 12px;cursor:pointer;min-height:36px}
+button.copy:focus-visible{outline:2px solid var(--route);outline-offset:2px}
+.mine{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.mine div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14.5px}
+.mine b{display:block;margin-bottom:4px}
+footer{margin-top:40px;font-size:13px;color:var(--mute)}
+</style>
+
+<div class="wrap">
+  <header class="board">
+    <div class="k">NL-7634 · KOCHAV HATZAFON · TEL AVIV · 21.10.2026</div>
+    <h1>המיני פנטהאוז בכוכב הצפון: הקמפיין לקהילות היהודיות בעולם</h1>
+    <p>איך מביאים את הנכס לקונים יהודים אמידים בחו״ל, איפה הם קוראים, כמה זה עולה, ואיך מוכיחים שהקונה הגיע דרכך.</p>
+    <div class="codes"><span>NYC</span><span>MIA</span><span>LAX</span><span>YYZ</span><span>YUL</span><span>LON</span><span>MAN</span><span>PAR</span><span>MIL</span><span>ROM</span><span>GVA</span><span>ZRH</span><span>BRU</span><span>MEX</span><span>BUE</span><span>PTY</span><span>SAO</span><span>MEL</span><span>SYD</span><span>JNB</span><span>HKG</span><span>SIN</span></div>
+  </header>
+
+  <div class="status">
+    <div><b>העמוד</b><span>חי בעברית ובאנגלית, עם סרט ותלת ממד</span></div>
+    <div><b>הסרט</b><span>חי, עם חותמת nad-lan ומיטל</span></div>
+    <div><b>מחקר ערוצים</b><span>כ־115 ערוצים נבדקו ב־17 מדינות</span></div>
+    <div><b>מחקר מילות חיפוש</b><span>רץ עכשיו, ייכנס לעמוד הזה</span></div>
+  </div>
+
+  <section id="message">
+    <h2><span class="n">01</span>המסר</h2>
+    <p><strong>מיני פנטהאוז בצפון תל אביב, ליד פארק הירקון, עם מרפסת שמש של 74 מ״ר. גשר חדש להולכי רגל ולאופניים לפארק נפתח ב־2027.</strong> זה המסר בכל שפה. יוקרה בלי סיסמאות: מספרים, מקום, ומה משתנה סביב.</p>
+    <ul>
+      <li>5 חדרים, כ־197 מ״ר, קומה 11 מתוך 12, בניין בוטיק חדש, 3 כיווני אוויר, 2 חניות, מחסן, ממ״ד, מיזוג VRF.</li>
+      <li>הגשר: כ־170 מטר, 6 מטר רוחב, נפתח ב־2027, לפי עיריית תל אביב-יפו.</li>
+      <li>השבחה, תמיד כמידע ולא כהבטחה: מחקר הטכניון על פארק הירקון (+136 דולר למ״ר עד 100 מטר מהפארק); בעולם 5% עד 20% ויותר ליד חיבורים לפארקים (HR&amp;A, 2014); 16,000 דירות חדשות ברובע שדה דב.</li>
+      <li>המחירים באזור: ממוצע 49–51 אלף ש״ח למ״ר, 90 אלף ומעלה בבנייה חדשה (ביזפורטל, 7.2026).</li>
+    </ul>
+  </section>
+
+  <section id="rules">
+    <h2><span class="n">02</span>חמישה כללים שמחייבים כל מודעה</h2>
+    <div class="callout">
+      <p><strong>אסור לטרגט לפי דת.</strong> ב־Meta וב־Google, ובחוק הדיור ההוגן בארה״ב, אסור לכוון מודעת נדל״ן ל"יהודים", ואסור לכתוב "לקונים יהודים". מגיעים לקהילות דרך המקומות שבהם הן קוראות: העיתונות היהודית, הניוזלטרים, הלוחות והקבוצות. ב־Meta, מודעת נדל״ן לקהל בארה״ב, בקנדה ובאירופה עוברת לקטגוריית דיור, ובה אין גיל, מגדר או קהלים דומים.</p>
+    </div>
+    <ul>
+      <li><strong>השם והרישיון של מיטל בכל מודעה:</strong> מיטל קציר, נדל״ן על הים, רישיון 3131540, כפי שמחייבות תקנות האתיקה של המתווכים (בתוקף ממרץ 2025). nad-lan מופיע כפלטפורמת הפרסום, אף פעם לא כמתווך.</li>
+      <li><strong>המיקום במפורש:</strong> "צפון תל אביב, כוכב הצפון, ליד פארק הירקון". הרגולטור בבריטניה כבר פסל מודעה בעיתון יהודי שטשטשה מיקום, וירידי נדל״ן בפריז ובלונדון נתקלו בהפגנות.</li>
+      <li><strong>בלי הבטחות:</strong> "צפוי", "מתוכנן", "לפי העירייה". לא "השקעה בטוחה".</li>
+      <li><strong>טופס פנייה עם הודעת פרטיות:</strong> תיקון 13 לחוק הגנת הפרטיות בישראל, ו־GDPR כשפונים לאירופה ולבריטניה. בניוזלטר משלנו: הסכמה מראש (קנדה) והסרה מיידית (ארה״ב).</li>
+    </ul>
+  </section>
+
+  <section id="proof">
+    <h2><span class="n">03</span>איך מוכיחים שהקונה הגיע ממך</h2>
+    <p>ההוכחה החזקה היא רישום מתוארך בכתב, שנשלח למיטל באותו רגע שהקונה נרשם. ככה זה נבנה:</p>
+    <ol class="steps">
+      <li><div><strong>קישור ייחודי לכל ערוץ.</strong> כל מודעה מובילה לעמוד הנכס עם קוד מקור (למשל <span class="num">utm_source=jns</span>). בעיתון מודפס יש קוד QR עם אותו קישור. אין קישורים מקוצרים ואין הפניות.</div></li>
+      <li><div><strong>"בקשה לסיור פרטי" דרך nad-lan.</strong> בעמוד באנגלית יש טופס קצר: שם, אימייל, טלפון, מדינה ואיך שמעו עלינו. השרת שומר את הפנייה עם השעה והערוץ.</div></li>
+      <li><div><strong>אותו אימייל, באותו רגע, למיטל ולך:</strong> "הקונה X נרשם דרך nad-lan ב־21.10.2026 בשעה 14:32, ערוץ JNS". זה רישום הצגה בכתב ומתוארך, ומיטל מאשרת קבלה בלחיצה.</div></li>
+      <li><div><strong>וואטסאפ עם קוד.</strong> מעמודי הקמפיין, הוואטסאפ נפתח עם שורה כתובה מראש: <span class="num">Ref NL-7634-JNS</span>. מיטל רואה בכל שיחה מאיפה הגיעה.</div></li>
+      <li><div><strong>מספר בינלאומי משלך (לא חובה).</strong> מספר וירטואלי שמופיע רק במודעות בחו״ל ומעביר למיטל. כל שיחה אליו שלך בהגדרה, עם יומן שיחות. עולה כ־10 עד 30 דולר בחודש.</div></li>
+      <li><div><strong>חותמת בסרט ובעמוד:</strong> nad-lan.co.il ומיטל קציר, כבר חי.</div></li>
+    </ol>
+    <div class="callout ok"><p><strong>מה צריך ממך:</strong> אישור שפניות מהקמפיין יעברו דרך הטופס של nad-lan, עם עותק אליך ואל מיטל. ומיטל צריכה להסכים לפרוטוקול ההצגה הזה, בכתב. את ההסדר הכספי ביניכם כדאי לסגור בכתב עם עורך דין, כי חוק המתווכים מגביל שכר תיווך לבעלי רישיון.</p></div>
+  </section>
+
+  <section id="channels">
+    <h2><span class="n">04</span>הערוצים, לפי מדינה</h2>
+    <p class="note">נבדקו היום, 21.10.2026. "לפי הצעה" פירושו שהמחיר נמסר רק בפנייה.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>מדינה</th><th>ערוץ</th><th>קהל</th><th>עלות</th><th>מי מפרסם</th><th>עדיפות</th></tr></thead>
+      <tbody>
+        <tr><td>ישראל (אנגלית)</td><td><span class="l">Janglo</span> · <a href="https://www.janglo.net/real-estate-for-sale">janglo.net</a></td><td>50–70 אלף מנויים, דוברי אנגלית</td><td><span class="tag f">חינם</span></td><td>מיטל (מתווכת מורשית רשאית)</td><td>1</td></tr>
+        <tr><td>ישראל (אנגלית)</td><td><span class="l">Tel Aviv Apartments – Buy/Sell</span> (פייסבוק)</td><td class="num">35,991</td><td><span class="tag f">חינם</span></td><td>מיטל או אתה</td><td>1</td></tr>
+        <tr><td>ישראל (אנגלית)</td><td><span class="l">Apartments in TLV Old North</span> (פייסבוק)</td><td class="num">20,740</td><td><span class="tag f">חינם</span></td><td>מיטל או אתה</td><td>1</td></tr>
+        <tr><td>ישראל (אנגלית)</td><td><span class="l">Secret Tel Aviv</span> (פייסבוק)</td><td class="num">654,100</td><td><span class="tag f">חינם</span></td><td>לבדוק את כללי הקבוצה</td><td>2</td></tr>
+        <tr><td>עולמי</td><td><span class="l">Jerusalem Post Real Estate</span> · <a href="https://realestate.jpost.com/">realestate.jpost.com</a></td><td>אין היום אף נכס בתל אביב, כך שנבלוט</td><td><span class="tag q">לפי הצעה</span></td><td>מיטל (רישום סוכנות)</td><td>1</td></tr>
+        <tr><td>עולמי</td><td><span class="l">YouTube</span>: הסרט עם כותרות ותיאורים ב־6 שפות</td><td>חיפוש וגוגל</td><td><span class="tag f">חינם</span></td><td>אני מכין, ערוץ שלך או של מיטל</td><td>1</td></tr>
+        <tr><td>ארה״ב</td><td><span class="l">JNS</span> · <a href="https://facts.jns.org/advertise-with-jns/">jns.org</a></td><td>2 מיליון ביקורים בחודש, 125 אלף מנויים</td><td><span class="num">$500</span> לבאנר בניוזלטר · <span class="num">$2,500</span> כתבה ממומנת</td><td>טופס</td><td>1</td></tr>
+        <tr><td>ארה״ב</td><td><span class="l">JTA / NY Jewish Week</span> (70 Faces Media)</td><td>66 אלף ו־45 אלף מנויים</td><td><span class="num">$2,500–3,000</span> לשבוע בניוזלטר</td><td>אימייל</td><td>2</td></tr>
+        <tr><td>ארה״ב</td><td><span class="l">The Jewish Link</span> (ניו ג׳רזי וניו יורק)</td><td>100 אלף קוראים, הכנסה חציונית מעל 150 אלף דולר</td><td><span class="tag q">לפי הצעה</span></td><td>וואטסאפ / טופס</td><td>2</td></tr>
+        <tr><td>ארה״ב</td><td><span class="l">Jewish Press</span> (מודעות "Apts For Sale Israel")</td><td>השבועון היהודי העצמאי הגדול בארה״ב</td><td><span class="tag p">בתשלום</span></td><td>מכירות מודעות</td><td>2</td></tr>
+        <tr><td>עולמי</td><td><span class="l">Times of Israel</span>, באנגלית ובצרפתית</td><td>8 מיליון משתמשים, 230 אלף מנויים</td><td><span class="tag q">לפי הצעה</span></td><td>מחלקת פרסום</td><td>2</td></tr>
+        <tr><td>בריטניה</td><td><span class="l">Jewish News</span> (עמוד "Israel property")</td><td>26,700 עותקים בשבוע</td><td><span class="tag q">לפי הצעה</span></td><td>מכירות</td><td>2</td></tr>
+        <tr><td>בריטניה</td><td><span class="l">Jewish Chronicle</span></td><td>1.17 מיליון משתמשים בחודש</td><td><span class="tag q">לפי הצעה</span></td><td>מכירות</td><td>2</td></tr>
+        <tr><td>בריטניה</td><td><span class="l">Jewish Telegraph</span> (מנצ׳סטר)</td><td>4 מהדורות</td><td>רבע עמוד <span class="num">£350</span> · עמוד <span class="num">£1,350</span></td><td>מכירות</td><td>3</td></tr>
+        <tr><td>צרפת</td><td><span class="l">JForum</span></td><td>400 אלף קוראים, 130 אלף בניוזלטר</td><td><span class="tag q">לפי הצעה</span></td><td>טופס</td><td>1</td></tr>
+        <tr><td>צרפת / ישראל</td><td><span class="l">immobilier.co.il</span></td><td>פורטל לדוברי צרפתית, שולח ליותר מ־70 פורטלים</td><td><span class="tag q">לפי הצעה</span></td><td>מיטל</td><td>2</td></tr>
+        <tr><td>צרפת / ישראל</td><td><span class="l">Le Petit Journal Tel Aviv</span>, מודעות</td><td>צרפתים בתל אביב</td><td><span class="tag f">כנראה חינם</span></td><td>לבדוק</td><td>3</td></tr>
+        <tr><td>איטליה</td><td><span class="l">Bet Magazine / mosaico-cem</span> (מילאנו)</td><td>20 אלף קוראים, 5,000 בניוזלטר</td><td>ניוזלטר <span class="num">€300</span> · עמוד <span class="num">€860</span></td><td>אימייל</td><td>2</td></tr>
+        <tr><td>שווייץ</td><td><span class="l">Hayom</span> (ז׳נבה), נשלח גם לבנקים</td><td>3,000 עותקים, רבעוני</td><td>חצי עמוד <span class="num">CHF 1,750</span></td><td>אימייל</td><td>2</td></tr>
+        <tr><td>שווייץ</td><td><span class="l">Tachles</span> · <span class="l">Revue Juive</span></td><td>26 אלף ו־12 אלף קוראים</td><td>חצי עמוד <span class="num">CHF 2,990</span></td><td>אימייל</td><td>3</td></tr>
+        <tr><td>אמריקה הלטינית</td><td><span class="l">Aurora</span> (ספרדית, מישראל)</td><td>קוראי ספרדית, מפרסמים נדל״ן</td><td><span class="tag q">לפי הצעה</span></td><td>אימייל</td><td>2</td></tr>
+        <tr><td>מקסיקו</td><td><span class="l">Diario Judío</span> · <span class="l">Enlace Judío</span></td><td>ליוטיוב של אנלסה כ־530 אלף מנויים</td><td><span class="tag q">לפי הצעה</span></td><td>טופס</td><td>3</td></tr>
+        <tr><td>אוסטרליה</td><td><span class="l">Australian Jewish News</span></td><td>שבועון ארצי</td><td>ניוזלטר <span class="num">A$500</span> לשבוע · רבע עמוד <span class="num">A$1,012</span></td><td>נציג מכירות</td><td>2</td></tr>
+        <tr><td>דרום אפריקה</td><td><span class="l">SA Jewish Report</span></td><td>30 אלף קוראים, 36 אלף בניוזלטר</td><td><span class="tag q">לפי הצעה</span></td><td>אימייל</td><td>3</td></tr>
+        <tr><td>דוברי רוסית</td><td><span class="l">Vesty</span> · <span class="l">NEWSru</span></td><td>1.2 מיליון מבקרים בחודש</td><td><span class="tag q">לפי הצעה</span></td><td>אימייל</td><td>3</td></tr>
+        <tr><td>פורטלי יוקרה</td><td><span class="l">LuxuryEstate.com</span> · <span class="l">JamesEdition</span></td><td>מעל 2 מיליון גולשים, 75% מהחיפושים מעל 2 מיליון אירו</td><td><span class="tag q">לפי הצעה</span></td><td>רק מתווכים, כלומר מיטל</td><td>2</td></tr>
+        <tr><td>הונג קונג / סינגפור</td><td>הקהילות קטנות ואין להן מדיה פעילה</td><td>מגיעים אליהן דרך אנגלית: JNS, Times of Israel, יוטיוב</td><td>—</td><td>—</td><td>3</td></tr>
+        <tr><td>פנמה</td><td><span class="l">Kol Shearith Israel</span> (כ־225 משפחות), ו־Aurora בספרדית</td><td>קהילה קטנה ואמידה</td><td>עלון שנתי</td><td>אימייל</td><td>3</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">ירידי הנדל״ן בחו״ל (ניו יורק, פריז, לונדון) מוכרים בעיקר דירות חדשות מיזמים, ונתקלו בהפגנות. לנכס יד שנייה אחד הם פחות מתאימים.</p>
+  </section>
+
+  <section id="budget">
+    <h2><span class="n">05</span>שלוש רמות תקציב ל־30 יום</h2>
+    <div class="tiers">
+      <div class="tier"><h3><span>חינם</span><span class="sum">$0</span></h3>
+        <ul><li>Janglo, מיטל מפרסמת</li><li>שתי קבוצות פייסבוק של דירות בתל אביב (56 אלף)</li><li>Secret Tel Aviv, אם הכללים מתירים</li><li>יוטיוב: הסרט עם 6 שפות</li><li>Jerusalem Post Real Estate, אם הרישום חינם</li><li>פוסטים שלך ושל מיטל בלינקדאין ובאינסטגרם</li></ul></div>
+      <div class="tier"><h3><span>בדיקה</span><span class="sum">≈ $2,000</span></h3>
+        <ul><li>JNS, שני באנרים בניוזלטר: <span class="num">$1,000</span></li><li>Bet Magazine, באנר בניוזלטר (מילאנו): <span class="num">€300</span></li><li>Meta, קטגוריית דיור, ניו יורק, מיאמי, לונדון, פריז וטורונטו: <span class="num">$500</span></li><li>Buy It In Israel, מדריך מתווכים (חודש): <span class="num">₪150</span></li><li>מספר בינלאומי: <span class="num">$20</span></li></ul></div>
+      <div class="tier"><h3><span>מלא</span><span class="sum">≈ $10,000</span></h3>
+        <ul><li>כל רמת הבדיקה</li><li>JNS, כתבה ממומנת ל־3 ימים: <span class="num">$2,500</span></li><li>JTA או NY Jewish Week, שבוע בניוזלטר: <span class="num">$2,500–3,000</span></li><li>Hayom ז׳נבה, חצי עמוד: <span class="num">CHF 1,750</span></li><li>Meta ו־Google, עוד <span class="num">$1,000</span> בערים שענו</li><li>הצעות מחיר: Times of Israel, JForum, Jewish News</li></ul></div>
+    </div>
+  </section>
+
+  <section id="weeks">
+    <h2><span class="n">06</span>30 הימים</h2>
+    <div class="weeks">
+      <div><b>שבוע 1</b>מנגנון ההוכחה (אחרי האישור שלך) והקישורים לכל ערוץ. פרסומים חינמיים ויוטיוב. אני מכין טיוטות לפניות לבקשת מחירונים, ואתה מאשר כל שליחה.</div>
+      <div><b>שבוע 2</b>רמת הבדיקה: JNS, Bet, Meta בחמש ערים. עמודי הנכס בצרפתית, ספרדית ואיטלקית, אחרי בדיקת כתובות.</div>
+      <div><b>שבוע 3</b>מגדילים רק איפה שיש פניות: כתבה ממומנת, JTA, ז׳נבה. מחליפים את הקריינות לקול של מיטל.</div>
+      <div><b>שבוע 4</b>דוח: ביקורים, פניות ושעות לפי ערוץ. מחליטים על הגל השני.</div>
+    </div>
+  </section>
+
+  <section id="ads">
+    <h2><span class="n">07</span>המודעות, מוכנות להעתקה</h2>
+    <p class="note">בכל מודעה יש קישור עם קוד מקור. מחליפים את <span class="num">SOURCE</span> בשם הערוץ (למשל janglo, jns, bet). הקישור מוביל לעמוד באנגלית, עד שיעלו העמודים בשפות האחרות.</p>
+    <div class="ads" id="adlist"></div>
+  </section>
+
+  <section id="mine">
+    <h2><span class="n">08</span>מה רק אתם יכולים לעשות</h2>
+    <div class="mine">
+      <div><b>אתה</b>מאשר את מנגנון ההוכחה, ומאשר כל רכישת מודעה וכל שליחת פנייה למדיה. התשלומים עליך.</div>
+      <div><b>מיטל</b>פותחת חשבונות מתווכת (Janglo, פורטלי יוקרה, Jerusalem Post), מסכימה לפרוטוקול ההצגה בכתב, ושולחת הקלטת קול עם הסכמה לשיבוט.</div>
+      <div><b>חומרים</b>תמונות של המרכז המסחרי ושל הבניין מבחוץ, לליטוש הסרט.</div>
+    </div>
+  </section>
+
+  <footer>המקורות לכל מספר שמורים במאגר: docs/sales/kochav-ph/campaign. המחירים נבדקו ב־21.10.2026 ועשויים להשתנות. אין בעמוד ייעוץ משפטי.</footer>
+</div>
+
+<script>
+const LINK = "https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/?utm_source=SOURCE&utm_medium=listing&utm_campaign=kochav-ph";
+const SIG_EN = "Exclusive: Meital Katzir, Nadlan Al HaYam, licensed real-estate broker no. 3131540 · +972 52 363 1582";
+const ADS = [
+ {lang: "EN", name: "English", t: `Mini penthouse by Yarkon Park, north Tel Aviv · 74 m² sun terrace
+
+On the 11th of 12 floors of a new boutique building in Kochav HaTzafon: 5 rooms, about 197 m², bespoke joinery, a designer kitchen with integrated appliances, VRF climate, a safe room, 2 parking spaces and storage. The 74 m² sun terrace is open on three sides to the Tel Aviv skyline and the sea.
+
+A new walking and cycling bridge into Yarkon Park opens in 2027 (Tel Aviv-Yafo Municipality). Neighbourhood homes average NIS 49–51K per m²; new homes nearby reach NIS 90K and more.
+
+Asking NIS 18,000,000 (about USD 5.8M). Film and 3D walk: ${LINK}
+${SIG_EN}`},
+ {lang: "FR", name: "Français", t: `Mini-penthouse près du parc Yarkon, nord de Tel Aviv · terrasse de 74 m²
+
+Au 11e de 12 étages d'un immeuble boutique neuf à Kochav HaTzafon : 5 pièces, environ 197 m², menuiseries sur mesure, cuisine équipée avec électroménager intégré, climatisation VRF, pièce sécurisée, 2 parkings et une cave. La terrasse plein soleil de 74 m², ouverte sur trois côtés, donne sur la skyline de Tel Aviv et la mer.
+
+Une nouvelle passerelle piétonne et cyclable vers le parc Yarkon ouvrira en 2027 (mairie de Tel Aviv-Jaffa). Prix moyen du quartier : 49 000 à 51 000 ₪ le m² ; 90 000 ₪ et plus dans le neuf.
+
+Prix demandé : 18 000 000 ₪ (environ 5,2 M€). Film et visite 3D : ${LINK}
+Exclusivité : Meital Katzir, Nadlan Al HaYam, agent immobilier agréé n° 3131540 · +972 52 363 1582`},
+ {lang: "ES", name: "Español", t: `Mini penthouse junto al parque Yarkon, norte de Tel Aviv · terraza de 74 m²
+
+En el piso 11 de 12 de un edificio boutique nuevo en Kojav HaTzafon: 5 ambientes, unos 197 m², carpintería a medida, cocina de diseño con electrodomésticos integrados, climatización VRF, cuarto de seguridad, 2 cocheras y baulera. La terraza de 74 m², abierta a tres orientaciones, mira al skyline de Tel Aviv y al mar.
+
+Un nuevo puente peatonal y para bicicletas hacia el parque Yarkon abrirá en 2027 (Municipalidad de Tel Aviv-Yafo). Precio medio del barrio: 49.000 a 51.000 ₪ por m²; en obra nueva, 90.000 ₪ y más.
+
+Precio: 18.000.000 ₪ (aprox. USD 5,8 M). Video y recorrido 3D: ${LINK}
+Exclusiva: Meital Katzir, Nadlan Al HaYam, corredora inmobiliaria matriculada n.º 3131540 · +972 52 363 1582`},
+ {lang: "IT", name: "Italiano", t: `Mini attico vicino al parco Yarkon, nord di Tel Aviv · terrazza di 74 m²
+
+All'11° di 12 piani di un nuovo edificio boutique a Kochav HaTzafon: 5 locali, circa 197 m², falegnameria su misura, cucina di design con elettrodomestici a incasso, climatizzazione VRF, stanza di sicurezza, 2 posti auto e cantina. La terrazza al sole di 74 m², aperta su tre lati, guarda lo skyline di Tel Aviv e il mare.
+
+Un nuovo ponte pedonale e ciclabile verso il parco Yarkon aprirà nel 2027 (Comune di Tel Aviv-Giaffa). Prezzo medio del quartiere: 49.000–51.000 ₪ al m²; nel nuovo, 90.000 ₪ e oltre.
+
+Prezzo richiesto: 18.000.000 ₪ (circa 5,2 milioni di euro). Video e visita 3D: ${LINK}
+In esclusiva: Meital Katzir, Nadlan Al HaYam, agente immobiliare abilitata n. 3131540 · +972 52 363 1582`},
+ {lang: "RU", name: "Русский", t: `Мини-пентхаус у парка Яркон, север Тель-Авива · терраса 74 м²
+
+11-й этаж из 12 в новом бутик-доме в районе Кохав ха-Цафон: 5 комнат, около 197 м², мебель по индивидуальному заказу, дизайнерская кухня со встроенной техникой, система VRF, защищённая комната (мамад), 2 парковочных места и кладовая. Солнечная терраса 74 м² с трёх сторон открыта на панораму Тель-Авива и море.
+
+Новый пешеходно-велосипедный мост в парк Яркон откроется в 2027 году (муниципалитет Тель-Авива-Яффо). Средняя цена в районе — 49–51 тыс. ₪ за м², в новостройках — от 90 тыс. ₪.
+
+Цена: 18 000 000 ₪ (около 5,8 млн долларов). Фильм и 3D-прогулка: ${LINK}
+Эксклюзивно: Мейталь Кацир, Nadlan Al HaYam, лицензированный риелтор № 3131540 · +972 52 363 1582`},
+ {lang: "PT", name: "Português", t: `Mini cobertura junto ao parque Yarkon, norte de Tel Aviv · terraço de 74 m²
+
+No 11º de 12 andares de um prédio boutique novo em Kochav HaTzafon: 5 cômodos, cerca de 197 m², marcenaria sob medida, cozinha de design com eletrodomésticos embutidos, climatização VRF, quarto de segurança, 2 vagas e depósito. O terraço de 74 m², aberto para três lados, tem vista para o skyline de Tel Aviv e o mar.
+
+Uma nova passarela para pedestres e ciclistas até o parque Yarkon abre em 2027 (Prefeitura de Tel Aviv-Yafo). Preço médio do bairro: 49 a 51 mil ₪ por m²; nos lançamentos, 90 mil ₪ ou mais.
+
+Preço: ₪ 18.000.000 (cerca de US$ 5,8 milhões). Filme e passeio em 3D: ${LINK}
+Exclusividade: Meital Katzir, Nadlan Al HaYam, corretora de imóveis licenciada nº 3131540 · +972 52 363 1582`},
+ {lang: "HE", name: "עברית (לקבוצות של עולים)", rtl: true, t: `מיני פנטהאוז ליד פארק הירקון, צפון תל אביב · מרפסת שמש של 74 מ״ר
+
+קומה 11 מתוך 12 בבניין בוטיק חדש בכוכב הצפון: 5 חדרים, כ־197 מ״ר, נגרות בהתאמה אישית, מטבח מעוצב עם מוצרי חשמל אינטגרליים, מיזוג VRF, ממ״ד, 2 חניות ומחסן. מרפסת השמש של 74 מ״ר פתוחה ל־3 כיוונים, אל קו הרקיע של תל אביב והים.
+
+גשר חדש להולכי רגל ולאופניים לפארק הירקון נפתח ב־2027 (עיריית תל אביב-יפו).
+
+18,000,000 ש״ח. סרט והליכה בתלת ממד: ${LINK.replace("/en/brokers/meital-katzir/", "/properties/")}
+בבלעדיות: מיטל קציר, נדל״ן על הים, מתווכת מורשית מס׳ 3131540 · 052-3631582`},
+];
+const box = document.getElementById("adlist");
+for (const a of ADS) {
+  const art = document.createElement("article"); art.className = "ad";
+  const h = document.createElement("header"); const b = document.createElement("b"); b.textContent = a.name; const l = document.createElement("span"); l.className = "lang"; l.textContent = a.lang;
+  const t = document.createElement("div"); t.style.display = "flex"; t.style.gap = "10px"; t.style.alignItems = "center"; t.append(b, l);
+  const btn = document.createElement("button"); btn.className = "copy"; btn.type = "button"; btn.textContent = "העתקה";
+  const pre = document.createElement("pre"); pre.textContent = a.t; if (a.rtl) pre.setAttribute("dir", "rtl");
+  btn.addEventListener("click", () => {
+    navigator.clipboard.writeText(a.t).then(() => { btn.textContent = "הועתק"; setTimeout(() => (btn.textContent = "העתקה"), 1600); })
+      .catch(() => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "סומן, להעתיק ידנית"; });
+  });
+  h.append(t, btn); art.append(h, pre); box.append(art);
+}
+</script>

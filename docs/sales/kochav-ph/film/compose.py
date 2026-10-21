@@ -148,7 +148,7 @@ ass = ["[Script Info]", "ScriptType: v4.00+", "PlayResX: 1920", "PlayResY: 1080"
        "Style: Chap,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,9,0,1,0,2,7,110,110,92,1",
        "Style: Big,Bahnschrift,104,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,2,0,1,0,3,1,110,110,250,1",
        "Style: Sub,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,3,14,0,2,260,260,64,1",
-       "Style: Tag,Segoe UI,22,&H00E6E6E6,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,0,1,9,60,60,46,1",
+       "Style: Tag,Segoe UI,22,&H00E6E6E6,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,0,1,9,60,52,128,1",
        "Style: Num,Bahnschrift,118,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,0,0,1,0,3,1,110,110,330,1",
        "Style: Lab,Segoe UI Semilight,38,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,0,0,1,0,2,1,112,110,270,1",
        "Style: Src,Segoe UI,22,&H00D0D0D0,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,0,1,1,114,110,236,1",
@@ -207,8 +207,9 @@ af.append("".join("[n%d]" % i for i in range(len(S))) + "amix=inputs=%d:normaliz
 af.append("[1:a]atrim=0:%f,afade=t=in:d=2,afade=t=out:st=%f:d=4,volume=0.42[mb]" % (TOTAL, TOTAL - 4))
 af.append("[mb][nar]sidechaincompress=threshold=0.04:ratio=6:attack=40:release=600[duck]")
 af.append("[duck][nar2]amix=inputs=2:normalize=0,loudnorm=I=-15:TP=-1.2[aout]")
+ains += ["-loop", "1", "-i", os.path.join(H, "wm.png")]; WMI = len(S) + 2  # the watermark: nad-lan and Meital, bottom right, all through
 out = os.path.join(H, "kochav-film-en.mp4")
-ff(*ains, "-filter_complex", ";".join(["[0:v]drawbox=x=0:y=0:w=1920:h=1080:color=black@0.5:t=fill:enable='gte(t,%f)',subtitles=film.ass:fontsdir=C\\\\:/Windows/Fonts,fade=t=in:d=0.8,fade=t=out:st=%f:d=1.2[v]" % (TOTAL - 6.4, TOTAL - 1.2)] + af),
+ff(*ains, "-filter_complex", ";".join(["[0:v]drawbox=x=0:y=0:w=1920:h=1080:color=black@0.5:t=fill:enable='gte(t,%f)',subtitles=film.ass:fontsdir=C\\\\:/Windows/Fonts,fade=t=in:d=0.8,fade=t=out:st=%f:d=1.2[v0]" % (TOTAL - 6.4, TOTAL - 1.2), "[%d:v]format=rgba,colorchannelmixer=aa=0.82,scale=400:-1[wm]" % WMI, "[v0][wm]overlay=W-w-40:34:shortest=1[v]"] + af),
    "-map", "[v]", "-map", "[aout]", "-c:v", "libx264", "-preset", PRESET, "-crf", "18", "-pix_fmt", "yuv420p", "-r", "30",
    "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-t", "%f" % TOTAL, out)
 print("film:", out, round(TOTAL, 2), "s")
