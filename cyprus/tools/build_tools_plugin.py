@@ -36,6 +36,8 @@ REGISTRY = [
      'engines': ['transfer']},
     {'id': 'price-list', 'page_id': 57, 'path': '/guides/cyprus-property-prices-2026/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['price-list']},
+    {'id': 'offplan', 'page_id': 60, 'path': '/guides/why-not-invest-in-cyprus-risks/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['offplan']},
 ]
 
 

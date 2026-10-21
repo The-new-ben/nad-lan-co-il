@@ -171,10 +171,13 @@ def section_for(tool, lang, rules, T):
     if tool == 'price-list':
         import pricelist_section
         return pricelist_section.pricelist_section(lang, rules, T, run_engine, HERE)
+    if tool == 'offplan':
+        import offplan_section
+        return offplan_section.offplan_section(lang, rules, T, run_engine, HERE)
     raise SystemExit('unknown tool ' + tool)
 
 
-ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map'], 'title-risk': ['title-risk'], 'transfer': ['transfer'], 'price-list': ['price-list']}
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map'], 'title-risk': ['title-risk'], 'transfer': ['transfer'], 'price-list': ['price-list'], 'offplan': ['offplan']}
 
 
 def inject_after_paragraph(page, section, n=2):

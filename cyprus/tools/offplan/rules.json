@@ -1,0 +1,16 @@
+{
+ "tool": "offplan",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "Law facts from research/title-deeds.json and costs-rules.json (read 21.10.2026): contract deposit at the DLS within 6 months (EUR 50); Form A makes the bank release the unit once 95% of the price is paid into the Form A account, then Form B; no transfer fees when VAT is paid; VAT 19% or 5% (Law 42(I)/2023). Bank of Israel representative rate 20.10.2026. The stage plans are examples the visitor edits to match the contract; they are labelled as examples, not a market standard.",
+ "vat": {"standard": 0.19, "reduced": 0.05},
+ "release_share": 0.95,
+ "fx": {"eur_ils": 3.4822, "date": "20.10.2026"},
+ "shock": 0.10,
+ "plans": {
+  "stages": [10, 20, 30, 30, 10],
+  "two": [30, 0, 0, 0, 70],
+  "even": [20, 20, 20, 20, 20]
+ },
+ "example": {"price": 300000, "vat": "standard", "plan": "stages", "pcts": [10, 20, 30, 30, 10]}
+}

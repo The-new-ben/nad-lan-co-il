@@ -116,3 +116,5 @@
   .cyx-break--wide tr { display: table-row; padding: 0; border: 0; }
   .cyx-break--wide th, .cyx-break--wide td { display: table-cell; padding: 6px; border-bottom: 1px solid var(--cyx-hair); font-size: 13px; white-space: nowrap; }
 }
+
+.cyx-row--note td { color: var(--cyx-ink); font-weight: 600; background: var(--cyx-d1); white-space: normal; }
