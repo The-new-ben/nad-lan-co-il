@@ -34,6 +34,8 @@ REGISTRY = [
      'engines': ['title-risk']},
     {'id': 'transfer', 'page_id': 56, 'path': '/guides/fund-transfer-currency-israel-to-cyprus/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['transfer']},
+    {'id': 'price-list', 'page_id': 57, 'path': '/guides/cyprus-property-prices-2026/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['price-list']},
 ]
 
 

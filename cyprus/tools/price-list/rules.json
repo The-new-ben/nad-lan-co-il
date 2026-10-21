@@ -1,0 +1,190 @@
+{
+ "tool": "price-list",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "Built by script from research/prices-data.json, read 21.10.2026. Official: Central Bank of Cyprus RPPI 2026Q2 (yearly change by type and district), Department of Lands and Surveys contracts of sale Jan-Sep 2026. Market data, labelled as such: Landbank Analytics resale medians H1 2026 (EUR/m2 and median price) and new-build median unit prices H1 2026 (via Cyprus Mail), AXIA Valuers median asking prices Jul-Aug 2026. No official body publishes EUR/m2.",
+ "cities": {
+  "limassol": {
+   "resale": {
+    "apartment": {
+     "m2": 2686,
+     "median": 217000
+    },
+    "house": {
+     "m2": 2221,
+     "median": 325000
+    }
+   },
+   "new": {
+    "apartment": {
+     "median": 297600,
+     "n": 895
+    },
+    "house": {
+     "median": 390000,
+     "n": 155
+    }
+   },
+   "asking": {
+    "apartment": 4600,
+    "house": 4167
+   },
+   "yoy": {
+    "apartment": 7.8,
+    "house": 4.3
+   },
+   "contracts": {
+    "jan_sep_2026": 4860,
+    "change_pct": 17
+   }
+  },
+  "paphos": {
+   "resale": {
+    "apartment": {
+     "m2": 1748,
+     "median": 120000
+    },
+    "house": {
+     "m2": 1886,
+     "median": 230000
+    }
+   },
+   "new": {
+    "apartment": {
+     "median": 302500,
+     "n": 333
+    },
+    "house": {
+     "median": 570000,
+     "n": 164
+    }
+   },
+   "asking": {
+    "apartment": 3827,
+    "house": 4180
+   },
+   "yoy": {
+    "apartment": 18.5,
+    "house": 3.1
+   },
+   "contracts": {
+    "jan_sep_2026": 2999,
+    "change_pct": 18
+   }
+  },
+  "larnaca": {
+   "resale": {
+    "apartment": {
+     "m2": 1528,
+     "median": 111000
+    },
+    "house": {
+     "m2": 1425,
+     "median": 185000
+    }
+   },
+   "new": {
+    "apartment": {
+     "median": 184000,
+     "n": 795
+    },
+    "house": {
+     "median": 320000,
+     "n": 88
+    }
+   },
+   "asking": {
+    "apartment": 2784,
+    "house": 2738
+   },
+   "yoy": {
+    "apartment": 7.9,
+    "house": 8.9
+   },
+   "contracts": {
+    "jan_sep_2026": 3291,
+    "change_pct": 15
+   }
+  },
+  "nicosia": {
+   "resale": {
+    "apartment": {
+     "m2": 1582,
+     "median": 138000
+    },
+    "house": {
+     "m2": 1443,
+     "median": 215000
+    }
+   },
+   "new": {
+    "apartment": {
+     "median": 175000,
+     "n": 894
+    },
+    "house": {
+     "median": 285000,
+     "n": 169
+    }
+   },
+   "asking": {
+    "apartment": 2407,
+    "house": 2000
+   },
+   "yoy": {
+    "apartment": 4.6,
+    "house": 4.4
+   },
+   "contracts": {
+    "jan_sep_2026": 3163,
+    "change_pct": 6
+   }
+  },
+  "famagusta": {
+   "resale": {
+    "apartment": {
+     "m2": 1610,
+     "median": 101000
+    },
+    "house": {
+     "m2": 1760,
+     "median": 255000
+    }
+   },
+   "new": {
+    "apartment": {
+     "median": 200000,
+     "n": 60
+    },
+    "house": {
+     "median": 395000,
+     "n": 41
+    }
+   },
+   "asking": {
+    "apartment": 2591,
+    "house": 3667
+   },
+   "yoy": {
+    "apartment": 7.4,
+    "house": 10.5
+   },
+   "contracts": {
+    "jan_sep_2026": 656,
+    "change_pct": 5
+   }
+  }
+ },
+ "contracts_total_2026": 14969,
+ "contracts_change_total": 14,
+ "fx": {
+  "eur_ils": 3.4822,
+  "date": "20.10.2026"
+ },
+ "example": {
+  "city": "limassol",
+  "type": "apartment",
+  "deal": "resale",
+  "size": 90
+ }
+}
