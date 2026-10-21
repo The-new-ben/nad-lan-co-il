@@ -1,0 +1,40 @@
+{
+  "tool": "purchase-cost",
+  "version": "2026-10-21",
+  "verified": true,
+  "verified_note": "Every law item was checked on 21.10.2026 against official sources (cyprus-private/tools-20261021/research/costs-rules.json): DLS fees leaflet, VAT Law 42(I)/2023, Stamp Duty repeal Law 239(I)/2025, Bank of Israel representative rate. Market items are published practitioner ranges and are labelled as such on the page. The joint-buyer split is described by Cyprus law firms, not by the DLS leaflet, and the page says so.",
+  "vat": {
+    "standard": 0.19,
+    "reduced": 0.05,
+    "reduced_first_m2": 130,
+    "reduced_max_total_area_m2": 190,
+    "reduced_max_value": 475000,
+    "reduced_max_value_first_part": 350000,
+    "source": "VAT Law 95(I)/2000 as amended by Law 42(I)/2023; Cyprus Tax Department"
+  },
+  "transfer": {
+    "bands": [{"upto": 85000, "rate": 0.03}, {"upto": 170000, "rate": 0.05}, {"upto": null, "rate": 0.08}],
+    "reduction": 0.5,
+    "exempt_when_vat": true,
+    "per_buyer_share": true,
+    "source": "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf"
+  },
+  "stamp_duty": {
+    "active": false,
+    "note": "Abolished for contracts signed from 1 January 2026 (Law 239(I)/2025).",
+    "bands": [{"upto": 5000, "rate": 0}, {"upto": 170000, "rate": 0.0015}, {"upto": null, "rate": 0.002}],
+    "cap": 20000
+  },
+  "mortgage_registration": {"rate": 0.01, "source": "DLS fees leaflet: 1% on the amount advanced under the mortgage"},
+  "fixed_fees": [
+    {"key": "contract_deposit", "amount": 50, "source": "DLS fees leaflet: deposition of a contract of sale, EUR 50"}
+  ],
+  "market": [
+    {"key": "lawyer", "low_rate": 0.005, "high_rate": 0.015, "vat": 0.19, "source": "published Cyprus law-firm range, plus 19% VAT"},
+    {"key": "valuation", "low": 200, "high": 500, "only_with_mortgage": true, "source": "published range for a bank-approved valuer"},
+    {"key": "bank", "basis": "mortgage", "low_rate": 0, "high_rate": 0.005, "only_with_mortgage": true, "source": "arrangement fees from none to about 0.5% of the loan"}
+  ],
+  "fx": {"eur_ils": 3.4822, "date": "20.10.2026", "source": "Bank of Israel representative rate RER_EUR_ILS"},
+  "ui": {"price_min": 50000, "price_max": 3000000, "price_step": 5000},
+  "example": {"price": 350000, "isNew": true, "reducedVat": false, "area": 95, "buyers": 1, "mortgage": 0, "ltv": 0.6}
+}

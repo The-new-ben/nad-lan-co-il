@@ -1,0 +1,10 @@
+/* CY-PRUS Instruments: FAQ block under a tool's host page. */
+.cyx-faq { margin: 32px 0; font-family: "IBM Plex Sans Hebrew", "Arial Hebrew", Arial, sans-serif; color: #12293E; }
+.cyx-faq h2 { margin: 0 0 16px; font-size: 26px; line-height: 32px; font-weight: 600; }
+.cyx-faq__item { border-bottom: 1px solid #C6D5DF; padding: 8px 0; }
+.cyx-faq__item summary { cursor: pointer; font-size: 17px; line-height: 26px; font-weight: 600; list-style: none; padding: 8px 0; }
+.cyx-faq__item summary::-webkit-details-marker { display: none; }
+.cyx-faq__item summary::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-inline-end: 10px; border-radius: 50%; background: #1B7F74; vertical-align: middle; }
+.cyx-faq__item[open] summary::before { background: #A3156F; }
+.cyx-faq__item p { margin: 0 0 8px; font-size: 17px; line-height: 28px; }
+.cyx-faq__item summary:focus-visible { outline: 3px solid #1B7F74; outline-offset: 2px; }
