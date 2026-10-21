@@ -22,6 +22,8 @@ REGISTRY = [
      'engines': ['purchase-cost']},
     {'id': 'net-yield', 'page_id': 53, 'path': '/guides/real-estate-investments-in-cyprus/', 'lang': 'he', 'after_paragraph': 3,
      'engines': ['purchase-cost', 'net-yield']},
+    {'id': 'bank-docs', 'page_id': 51, 'path': '/guides/cyprus-bank-account-for-israelis/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['bank-docs']},
 ]
 
 

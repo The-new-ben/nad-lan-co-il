@@ -76,3 +76,13 @@
 
 .cyx-row--total th, .cyx-row--total td.cyx-num { font-weight: 700; border-top: 2px solid var(--cyx-ink); }
 .cyx-row--total td.cyx-num { color: var(--cyx-ink); }
+/* Checklists (wizards) */
+.cyx-listwrap { margin: 16px; }
+.cyx-list__title { margin: 24px 0 8px; font-size: 17px; line-height: 24px; font-weight: 600; color: var(--cyx-ink); font-family: var(--cyx-sans); }
+.cyx-listwrap > .cyx-list__title:first-child { margin-top: 0; }
+.cyx-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cyx-list__item { position: relative; padding-inline-start: 18px; font-size: 16px; line-height: 26px; }
+.cyx-list__item::before { content: ""; position: absolute; inset-inline-start: 2px; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--cyx-reef); }
+.cyx-list__who { display: block; font: 500 12px/18px var(--cyx-mono); color: var(--cyx-muted); }
+.cyx-list__note { margin: 8px 0 0; font-size: 14px; line-height: 22px; color: var(--cyx-muted); }
+.cyx-result__figure--text { font-family: var(--cyx-sans); font-size: 24px; line-height: 30px; font-weight: 600; direction: rtl; text-align: right; }

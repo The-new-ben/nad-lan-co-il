@@ -19,10 +19,14 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=
 
 
 def run_engine(tool_dir, inp, rules, fn='purchaseCost', extra=None):
-    args = [json.dumps(inp), json.dumps(rules)] + ([json.dumps(extra)] if extra is not None else [])
-    js = ("const E=require(%s);process.stdout.write(JSON.stringify(E.%s(%s)))"
-          % (json.dumps(str(tool_dir / 'engine.js')), fn, ','.join(args)))
-    return json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
+    """Runs engine.js in Node. Arguments go through stdin as UTF-8 JSON (Hebrew text never touches the command line)."""
+    args = [inp, rules] + ([extra] if extra is not None else [])
+    js = ("const E=require(%s);let s='';process.stdin.setEncoding('utf8');process.stdin.on('data',d=>s+=d);"
+          "process.stdin.on('end',()=>{const a=JSON.parse(s);process.stdout.write(JSON.stringify(E.%s(...a)))});"
+          % (json.dumps(str(tool_dir / 'engine.js')), fn))
+    res = subprocess.run(['node', '-e', js], input=json.dumps(args, ensure_ascii=False).encode('utf-8'),
+                         capture_output=True, check=True)
+    return json.loads(res.stdout.decode('utf-8'))
 
 
 def money(n):
@@ -146,10 +150,13 @@ def section_for(tool, lang, rules, T):
     if tool == 'net-yield':
         pc = json.loads((HERE / 'purchase-cost' / 'rules.json').read_text(encoding='utf-8'))
         return net_yield_section(lang, rules, T, pc)
+    if tool == 'bank-docs':
+        import bank_section
+        return bank_section.bank_docs_section(lang, rules, T, run_engine, HERE)
     raise SystemExit('unknown tool ' + tool)
 
 
-ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield']}
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs']}
 
 
 def inject_after_paragraph(page, section, n=2):
