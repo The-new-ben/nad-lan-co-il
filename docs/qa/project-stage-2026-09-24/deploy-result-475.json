@@ -1,0 +1,21 @@
+{
+  "released": "1.72.475",
+  "from": "1.72.474",
+  "live_before": {
+    "assets/walk/kochav/home.html": "7c1d0ac030d9b21a33e2a22472e5ebd0",
+    "nadlan-config.php": "8f3f0d756862b9d77e9f542fe8769566"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-21 14:20:24",
+  "files": {
+    "assets/walk/kochav/home.html": "76e9e996f99d1fa994f1be5195683806",
+    "assets/walk/kochav/pano/dining-empty-2k.jpg": "1e827b7fad450ba540809d979354f3db",
+    "assets/walk/kochav/pano/entrance-empty-2k.jpg": "5fd42a9be8070b6855f8ae9cdb21ef74",
+    "assets/walk/kochav/pano/living-empty-2k.jpg": "c9808c3f28d5de3f9048e6240c761340",
+    "assets/walk/kochav/pano/terrace-empty-2k.jpg": "4e7b505b0dcadaa093174d8ea9c4f05d",
+    "nadlan-config.php": "4248173eeb9ce73d164a46c01449eacd"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.475, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

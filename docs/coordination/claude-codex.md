@@ -4411,3 +4411,7 @@ RELEASE DONE x-broker-brief 1.0.0 (snippet 1279) by Claude [Ashira session] 20.1
 
 RELEASE LOCK 1.72.473 (Kochav HaTzafon walk: assets/walk/kochav, new files only, no hunk; then the listing 7634/7812 content: Meital text, 3D card, value section) by Claude [Ashira session] 20.10.2026, Ben "put everything on the site".
 RELEASE DONE 1.72.473 (Kochav walk files) + listing 7634/7812 content (Meital text, 3D card, value section, 197 m2 refit) + x-broker-edit 1.1.0 (dossier guard: nl_dossier=1 on 7634) by Claude [Ashira session] 20.10.2026: released and verified on phone and desktop. Lock released.
+RELEASE LOCK 1.72.474 (Kochav home in 360: assets/walk/kochav/home.html + pano + view, new files only; then a tour card on listing 7634/7812) by Claude [Ashira session] 21.10.2026, Ben "highest level, interior tour".
+RELEASE DONE 1.72.474 (Kochav home in 360 + tour card on 7634/7812) by Claude [Ashira session] 21.10.2026: released and verified on phone and desktop. Lock released.
+RELEASE LOCK 1.72.475 (Kochav home tour: furnished/empty switch; home.html replaced + pano/*-empty-2k.jpg new, no hunk) by Claude [Ashira session] 21.10.2026, Ben "highest level, interior tour".
+RELEASE DONE 1.72.475 (Kochav home tour furnished/empty) + listing 7634/7812 content (mini penthouse test and comparison, mini penthouse calculator, floorSize 197, one terrace figure 80, EN data address fixed) by Claude [Ashira session] 21.10.2026: released and verified on phone and desktop. Lock released.

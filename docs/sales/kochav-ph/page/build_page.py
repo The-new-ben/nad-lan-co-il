@@ -8,6 +8,7 @@ Additive edits on the live dossier (before-7634.html / before-7812.html, saved f
 No rent, no tenant, nowhere (Ben 20.10). Writes after-7634.html, after-7812.html and preview.html (for the design check).
   python docs/sales/kochav-ph/page/build_page.py"""
 import io, json, os, re
+import seo_tools as ST  # 21.10: the mini penthouse test, comparison and calculator
 H = os.path.dirname(os.path.abspath(__file__))
 WALK = "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/walk/kochav/"
 VER = "?ver=1.72.473"
@@ -138,6 +139,18 @@ def film_section(lang):
             + '<p class="nlx-walk-note">' + note + '</p>' + nl + '</section>' + nl)
 
 
+HTXT = {"he": ("סיור בבית", "חדר אחרי חדר, ב־360", "הכניסה, הסלון, המטבח, פינת האוכל והמרפסת, ביום ובערב. הסיור נבנה מהצילומים האמיתיים של הדירה; חלקים שלא צולמו הושלמו, ולכן זו הדמיה.", "סיור בבית ב־360", "לגרור, להסתכל מסביב ולעבור בין החדרים", "להתחיל את הסיור", "home.html", "סגירה"),
+        "en": ("Home tour", "Room by room, in 360", "The entrance, the living room, the kitchen, the dining area and the terrace, by day and at dusk. Built from the real footage of the home; parts the camera did not see were completed, so this is an illustration.", "The home in 360", "Drag to look around and move between rooms", "Start the tour", "home.html?lang=en", "Close")}
+
+
+def tour_section(lang):
+    e, h2, lead, b_, s_, i_, href, close = HTXT[lang]; sfx = "-L07-" + lang
+    nl = chr(10)
+    return ('<section class="nlx-sec" id="tour' + sfx + '">' + nl + '<div class="nlx-sec-head"><p class="nlx-eyebrow">' + e + '</p><h2 class="nlx-h2">' + h2 + '</h2><p class="nlx-lead">' + lead + '</p></div>' + nl
+            + '<a class="nlx-walk" data-nlx-walk="' + b_ + '" data-close="' + close + '" href="' + WALK + href + '"><img src="' + WALK + 'pano/living-card.jpg?ver=1.72.474" alt="' + b_ + '" width="640" height="360" loading="lazy" decoding="async">'
+            + '<span class="nlx-walk-b"><b>' + b_ + '</b><small>' + s_ + '</small><i>' + i_ + '</i></span></a>' + nl + '</section>' + nl)
+
+
 def build(lang, raw):
     t = T[lang]; sfx = "-L07-" + lang
     out = raw
@@ -156,6 +169,8 @@ def build(lang, raw):
     fs = film_section(lang)
     if fs:
         k0 = out.index('<section class="nlx-sec" id="world' + sfx + '">'); out = out[:k0] + fs + out[k0:]
+        k1 = out.index('<section class="nlx-sec" id="world' + sfx + '">'); out = out[:k1] + tour_section(lang) + out[k1:]
+        out = out.replace('<a href="#world' + sfx + '">', '<a href="#tour' + sfx + '">' + HTXT[lang][0] + '</a><a href="#world' + sfx + '">', 1)
         out = out.replace('<a href="#world' + sfx + '">', '<a href="#film' + sfx + '">' + FTXT[lang][4] + '</a><a href="#world' + sfx + '">', 1)
     # 3. the value section after "planning"
     rows = ""
@@ -168,15 +183,22 @@ def build(lang, raw):
              '<p class="nlx-tbl-note">' + nums(t["v_note"]) + '</p>\n</section>\n')
     j = out.index('<section class="nlx-sec" id="numbers' + sfx + '">')
     out = out[:j] + value + out[j:]
+    # 3b. 21.10 (Ben: first for every penthouse word): the mini penthouse test + comparison after the home, the calculator before the market
+    k2 = out.index('<section class="nlx-sec" id="building' + sfx + '">'); out = out[:k2] + ST.mini_section(lang) + out[k2:]
+    k3 = out.index('<section class="nlx-sec" id="market' + sfx + '">'); out = out[:k3] + ST.calc_section(lang) + out[k3:]
+    out = out.replace('<a href="#building' + sfx + '">', '<a href="#mini' + sfx + '">' + ST.TX[lang]["toc_m"] + '</a><a href="#building' + sfx + '">', 1)
+    out = out.replace('<a href="#market' + sfx + '">', '<a href="#calc' + sfx + '">' + ST.TX[lang]["toc_c"] + '</a><a href="#market' + sfx + '">', 1)
     # 4. the table of contents, the visible FAQ, the FAQPage data
     out = out.replace('<a href="#home' + sfx + '">', '<a href="#world' + sfx + '">' + t["toc_w"] + '</a><a href="#home' + sfx + '">', 1)
     out = out.replace('<a href="#numbers' + sfx + '">', '<a href="#value' + sfx + '">' + t["toc_v"] + '</a><a href="#numbers' + sfx + '">', 1)
     k = out.index('<div class="nlx-faq">', out.index('id="faq' + sfx + '"')) + len('<div class="nlx-faq">')
-    out = out[:k] + "".join("<details><summary>" + q + '</summary><div class="nlx-faq-a">' + nums(a) + "</div></details>" for q, a in t["faq"]) + out[k:]
+    out = out[:k] + "".join("<details><summary>" + q + '</summary><div class="nlx-faq-a">' + nums(a) + "</div></details>" for q, a in t["faq"] + ST.TX[lang]["faq"]) + out[k:]
     ld = re.search(r'(<script type="application/ld\+json">)(.*?)(</script>)', out, re.S)
     data = json.loads(ld.group(2))
     faq = next(g for g in data["@graph"] if g.get("@type") == "FAQPage")
-    faq["mainEntity"] = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"]] + faq["mainEntity"]
+    faq["mainEntity"] = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"] + ST.TX[lang]["faq"]] + faq["mainEntity"]
+    lst = next((g for g in data["@graph"] if g.get("@type") == "RealEstateListing"), {})
+    data["@graph"].append(ST.app_ld(lang, lst.get("url") or ("https://nad-lan.co.il/properties/kochav-hatzafon-new-mini-penthouse-for-sale/" if lang == "he" else "https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/")))
     v = FILM.get("kochav-film-en.mp4"); pst = FILM.get("kochav-film-en.jpg")
     if v and pst:
         data["@graph"].append({"@type": "VideoObject", "name": "A day in Kochav HaTzafon: a mini penthouse between Tel Aviv and Yarkon Park",
@@ -184,17 +206,23 @@ def build(lang, raw):
     out = out[:ld.start()] + ld.group(1) + json.dumps(data, ensure_ascii=False) + ld.group(3) + out[ld.end():]
     # the added styles, once, beside the dossier's own
     s = out.index("</style>") + len("</style>")
-    out = out[:s] + "\n" + CSS + out[s:]
+    out = out[:s] + "\n" + CSS.replace("</style>", ST.CSS + "</style>") + out[s:]
     for bad in ("שכיר", "שוכר", "tenant", "rent "):
         assert bad not in "".join(t["home"]) + json.dumps(t, ensure_ascii=False), bad
     return out
 
 
 def refit(raw):
+    raw = raw.replace("https://nad-lan.co.il/en/properties/en-kochav-hatzafon-new-mini-penthouse-for-sale/", "https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/")  # 21.10: the old EN address is a 404; the canonical
     """Meital's update (20.10, 18:21): 197 m2 built (was 190 from Madlan). Every area-derived figure, recomputed."""
     raw = re.sub(r"(?<![\d,.])190(?![\d,])", "197", raw)
+    raw = raw.replace('"value": 190, "unitCode": "MTK"', '"value": 197, "unitCode": "MTK"')  # the floorSize in the structured data
     for a, b in (("94,737", "91,371"), ("83,077", "80,477"), ("78,261", "75,949"), ("66,667", "64,982"), ("20,706-37,692", "21,469-38,669"),
-                 ("270 מ״ר", "277 מ״ר"), ("270 sqm", "277 sqm")):
+                 ("270 מ״ר", "277 מ״ר"), ("270 sqm", "277 sqm"),
+                 # one terrace figure everywhere: Meital's 80 m2 (the Madlan range 76-80 was left in two places)
+                 ('<span class="nlx-num">76</span> עד <span class="nlx-num">80</span>', '<span class="nlx-num">80</span>'),
+                 ('<span class="nlx-num">76</span> to <span class="nlx-num">80</span>', '<span class="nlx-num">80</span>'),
+                 ("ומרפסות של 76 עד 80 מ״ר", "ומרפסות של 80 מ״ר"), ("plus 76 to 80 sqm of terraces", "plus 80 sqm of terraces")):
         raw = raw.replace(a, b)
     return raw
 
