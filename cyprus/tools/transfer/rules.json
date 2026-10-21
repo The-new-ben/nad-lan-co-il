@@ -1,0 +1,394 @@
+{
+ "tool": "transfer",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "Built by script from research/transfer-costs.json (official bank tariffs read 21.10.2026; Bank of Israel representative rates of 20.10.2026). Exchange-rate margins and correspondent-bank costs are not published by the banks and are not included; the page says so.",
+ "fx": {
+  "eur_ils": 3.4822,
+  "usd_ils": 3.106,
+  "date": "20.10.2026"
+ },
+ "israel": [
+  {
+   "id": "hapoalim",
+   "name": "בנק הפועלים",
+   "tariff_date": "נכון ליום 05.10.26 (5 Oct 2026)",
+   "url": "https://www.bankhapoalim.co.il/sites/default/files/media/PDFS/Taarifon/single_small_51026.pdf",
+   "transfer": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 100,
+       "fixed_usd": 3.5
+      },
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 8.5
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.19,
+       "min_usd": 30.0,
+       "max_usd": 170.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 100,
+       "fixed_usd": 2.8
+      },
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 6.8
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.152,
+       "min_usd": 24,
+       "max_usd": 136
+      }
+     ]
+    }
+   },
+   "conversion": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 99,
+       "fixed_usd": 5.5
+      },
+      {
+       "above_usd": 99,
+       "rate_pct": 0.19,
+       "min_usd": 6.7,
+       "max_usd": 2700.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 99,
+       "fixed_usd": 3.3
+      },
+      {
+       "above_usd": 99,
+       "rate_pct": 0.17,
+       "min_usd": 5.7,
+       "max_usd": 2300
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "leumi",
+   "name": "בנק לאומי",
+   "tariff_date": "התעריפון מעודכן לתאריך: 01/10/2026",
+   "url": "https://www.bankleumi.co.il/static-files/Commissions_Leumi/AmlotYechidimL.xlsx",
+   "transfer": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 600,
+       "fixed_usd": 10
+      },
+      {
+       "above_usd": 600,
+       "rate_pct": 0.225,
+       "min_usd": 22.5,
+       "max_usd": 150
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 600,
+       "fixed_usd": 9
+      },
+      {
+       "from_usd": 600,
+       "rate_pct": 0.2025,
+       "min_usd": 20.25,
+       "max_usd": 135
+      }
+     ]
+    }
+   },
+   "conversion": {
+    "branch": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.2,
+       "min_usd": 7.2,
+       "max_usd": 3000
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.16,
+       "min_usd": 5.76,
+       "max_usd": 2400
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "discount",
+   "name": "בנק דיסקונט",
+   "tariff_date": "date not printed in Part 5; file names: part_5_25526 (25.5.2026), consolidated tarifon_single-united_11026 (1.10.2026), appendix E apendix_5_2926 (2.9.2026)",
+   "url": "https://www.discountbank.co.il/media/zzwpnsvs/part_5_25526.xlsx",
+   "transfer": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 8
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.35,
+       "min_usd": 26.5,
+       "max_usd": 250
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 7
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.22,
+       "min_usd": 22,
+       "max_usd": 245
+      }
+     ]
+    }
+   },
+   "conversion": {
+    "branch": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.19,
+       "min_usd": 6.8,
+       "max_usd": 1075
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.17,
+       "min_usd": 6,
+       "max_usd": 1055
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "mizrahi",
+   "name": "מזרחי טפחות",
+   "tariff_date": "Part 5: מעודכן לתאריך 11.7.2025; Part 11: 18/08/2026; appendix E: נכון לתאריך 12/08/2025",
+   "url": "https://www.mizrahi-tefahot.co.il/media/smallbusiness5.pdf",
+   "transfer": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 8.0
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.19,
+       "min_usd": 23.0,
+       "max_usd": 165.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 7.44
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.176,
+       "min_usd": 21.39,
+       "max_usd": 153.45
+      }
+     ]
+    }
+   },
+   "conversion": {
+    "branch": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.19,
+       "min_usd": 6.0,
+       "max_usd": 2500.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.133,
+       "min_usd": 5.4,
+       "max_usd": 2250.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "fibi",
+   "name": "הבינלאומי",
+   "tariff_date": "ספטמבר 2026 (file dated 16092026)",
+   "url": "https://www.fibi.co.il/media/dhneratu/תעריפון-בינלאומי-יחידים-16092026.pdf",
+   "transfer": {
+    "branch": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 12.0
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.175,
+       "min_usd": 25.0,
+       "max_usd": 175.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "up_to_usd": 200,
+       "fixed_usd": 9.0
+      },
+      {
+       "above_usd": 200,
+       "rate_pct": 0.1313,
+       "min_usd": 18.75,
+       "max_usd": 165
+      }
+     ]
+    }
+   },
+   "conversion": {
+    "branch": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.175,
+       "min_usd": 6.25,
+       "max_usd": 2750.0
+      }
+     ]
+    },
+    "internet": {
+     "tiers": [
+      {
+       "above_usd": 0,
+       "rate_pct": 0.0875,
+       "min_usd": 5.0,
+       "max_usd": 2475
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "cyprus": [
+  {
+   "id": "boc",
+   "name": "Bank of Cyprus",
+   "tariff_date": "June 2026 (index lists 30 Jun 2026)",
+   "incoming": {
+    "tiers": [
+     {
+      "up_to_eur": 10000,
+      "fixed_eur": 0
+     },
+     {
+      "from_eur": 10000,
+      "up_to_eur": 50000,
+      "fixed_eur": 4
+     },
+     {
+      "above_eur": 50000,
+      "fixed_eur": 30
+     }
+    ]
+   }
+  },
+  {
+   "id": "eurobank",
+   "name": "Eurobank",
+   "tariff_date": "Effective from 03.11.2025, includes later amendments; file last modified 07 Oct 2026",
+   "incoming": {
+    "tiers": [
+     {
+      "up_to_eur": 5000,
+      "fixed_eur": 0
+     },
+     {
+      "from_eur": 5001,
+      "up_to_eur": 10000,
+      "fixed_eur": 2
+     },
+     {
+      "from_eur": 10001,
+      "up_to_eur": 50000,
+      "fixed_eur": 10
+     },
+     {
+      "above_eur": 50000,
+      "fixed_eur": 30
+     }
+    ]
+   }
+  },
+  {
+   "id": "alpha",
+   "name": "Alpha Bank",
+   "tariff_date": "Valid from 6.4.2026",
+   "incoming": {
+    "tiers": [
+     {
+      "up_to_eur": 3000,
+      "fixed_eur": 0
+     },
+     {
+      "above_eur": 3000,
+      "rate_pct": 0.06,
+      "min_eur": 2,
+      "max_eur": 35
+     }
+    ]
+   }
+  }
+ ],
+ "example": {
+  "eur": 100000,
+  "channel": "internet",
+  "cy": "boc"
+ }
+}

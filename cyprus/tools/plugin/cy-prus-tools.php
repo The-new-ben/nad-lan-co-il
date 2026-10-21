@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: CY-PRUS Tools
- * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages: the full purchase-cost calculator, the net rental yield calculator the bank-account documents wizard the 5% VAT eligibility checker the residency-by-investment checker the Israel-Cyprus tax map and the title-deeds risk check. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
- * Version: 0.7.0
+ * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages: the full purchase-cost calculator, the net rental yield calculator the bank-account documents wizard the 5% VAT eligibility checker the residency-by-investment checker the Israel-Cyprus tax map the title-deeds risk check and the Israel-to-Cyprus transfer cost comparison. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
+ * Version: 0.8.0
  * Author: CY-PRUS
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CYPT_VERSION', '0.7.0' );
+define( 'CYPT_VERSION', '0.8.0' );
 define( 'CYPT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CYPT_URL', plugin_dir_url( __FILE__ ) );
 

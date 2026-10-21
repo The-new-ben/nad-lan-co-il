@@ -110,3 +110,9 @@
 .cyx-result[data-level="high"] { background: #6E0F4C; }
 .cyx-result[data-level="medium"] { background: #5A3A00; }
 .cyx-lawyer { margin: 8px 0 0; padding: 12px 32px 12px 16px; background: var(--cyx-d1); border-radius: 2px; font: 400 14px/22px "IBM Plex Sans Hebrew", Arial, sans-serif; text-align: left; display: grid; gap: 6px; }
+/* Wide comparison tables keep their columns on phones and scroll sideways inside their wrap */
+@media (max-width: 480px) {
+  .cyx-break--wide thead { display: table-header-group; }
+  .cyx-break--wide tr { display: table-row; padding: 0; border: 0; }
+  .cyx-break--wide th, .cyx-break--wide td { display: table-cell; padding: 6px; border-bottom: 1px solid var(--cyx-hair); font-size: 13px; white-space: nowrap; }
+}

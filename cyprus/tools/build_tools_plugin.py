@@ -32,6 +32,8 @@ REGISTRY = [
      'engines': ['tax-map']},
     {'id': 'title-risk', 'page_id': 58, 'path': '/guides/cyprus-title-deeds-ownership-checks/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['title-risk']},
+    {'id': 'transfer', 'page_id': 56, 'path': '/guides/fund-transfer-currency-israel-to-cyprus/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['transfer']},
 ]
 
 

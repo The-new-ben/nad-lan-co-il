@@ -165,10 +165,13 @@ def section_for(tool, lang, rules, T):
     if tool == 'title-risk':
         import titlerisk_section
         return titlerisk_section.titlerisk_section(lang, rules, T, run_engine, HERE)
+    if tool == 'transfer':
+        import transfer_section
+        return transfer_section.transfer_section(lang, rules, T, run_engine, HERE)
     raise SystemExit('unknown tool ' + tool)
 
 
-ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map'], 'title-risk': ['title-risk']}
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency'], 'tax-map': ['tax-map'], 'title-risk': ['title-risk'], 'transfer': ['transfer']}
 
 
 def inject_after_paragraph(page, section, n=2):
