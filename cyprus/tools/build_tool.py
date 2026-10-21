@@ -18,9 +18,10 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=
          '&family=IBM+Plex+Mono:wght@500&display=swap">')
 
 
-def run_engine(tool_dir, inp, rules):
-    js = ("const E=require(%s);process.stdout.write(JSON.stringify(E.purchaseCost(%s,%s)))"
-          % (json.dumps(str(tool_dir / 'engine.js')), json.dumps(inp), json.dumps(rules)))
+def run_engine(tool_dir, inp, rules, fn='purchaseCost', extra=None):
+    args = [json.dumps(inp), json.dumps(rules)] + ([json.dumps(extra)] if extra is not None else [])
+    js = ("const E=require(%s);process.stdout.write(JSON.stringify(E.%s(%s)))"
+          % (json.dumps(str(tool_dir / 'engine.js')), fn, ','.join(args)))
     return json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
 
 
@@ -80,6 +81,77 @@ def purchase_cost_section(lang, rules, T):
 </section>'''
 
 
+def pct(x):
+    return '%.1f%%' % (round(x * 1000) / 10)
+
+
+def neg(n):
+    return ('−' + money(n)) if n else money(0)
+
+
+def net_yield_section(lang, rules, T, pc_rules):
+    ex = dict(rules['example'])
+    r = run_engine(HERE / 'net-yield', ex, rules, 'netYield', pc_rules)
+    lo, hi = pct(r['netYieldLow']), pct(r['netYieldHigh'])
+    y = lo if lo == hi else lo + ' \u2013 ' + hi
+    rows = [('gross', money(r['gross']), False), ('ghs', neg(r['ghs']), False),
+            ('cy_tax', neg(r['cyTax']), False), ('expenses', neg(r['expenses']), False)]
+    if ex['israelTrack']:
+        rows.append(('il_tax', neg(r['ilTax']), False))
+    rows.append(('net', money(r['net']), True))
+    rows.append(('cost', rng(r['totalLow'], r['totalHigh']), False))
+    body = ''.join('<tr class="cyx-row%s"><th scope="row">%s</th><td class="cyx-num"><bdi>%s</bdi></td><td class="cyx-rule">%s</td></tr>'
+                   % (' cyx-row--total' if s else '', escape(T['rows'][k]), v, escape(T['rules_text'][k])) for k, v, s in rows)
+    wa = 'https://wa.me/972525101555?text=' + re.sub(r'\s', '%20', T['wa_text'])
+    city_chips = ''.join(chip('city', k, T['cities'][k], k == ex['city']) for k in rules['cities'])
+    ils = '\u2066\u20AA{:,}\u2069'.format(round(r['netMonthly'] * rules['fx']['eur_ils']))
+    monthly = T['net_monthly'].replace('{m}', '\u2066' + money(r['netMonthly']) + '\u2069').replace('{s}', ils)
+    parts = [
+        '<section class="cyx-tool" data-cyx-tool="net-yield" data-lang="%s" dir="rtl" data-rules="%s" data-pc-rules="%s" data-text="%s" data-example="%s">'
+        % (lang, escape(json.dumps(rules, ensure_ascii=False)), escape(json.dumps(pc_rules, ensure_ascii=False)),
+           escape(json.dumps(T, ensure_ascii=False)), escape(json.dumps(ex))),
+        '<div class="cyx-tool__head"><h2 class="cyx-tool__title">%s</h2><p class="cyx-tool__lead">%s</p></div>' % (escape(T['title']), escape(T['lead'])),
+        '<div class="cyx-panel">',
+        '<div class="cyx-field cyx-field--wide"><span class="cyx-label">%s</span><div class="cyx-chips" role="radiogroup">%s</div></div>' % (escape(T['f_city']), city_chips),
+        '<div class="cyx-field"><span class="cyx-label">%s</span><div class="cyx-chips" role="radiogroup">%s%s</div></div>'
+        % (escape(T['f_beds']), chip('beds', '1', T['c_beds_1'], ex['beds'] == '1'), chip('beds', '2', T['c_beds_2'], ex['beds'] == '2')),
+        '<div class="cyx-field"><span class="cyx-label">%s</span><div class="cyx-chips" role="radiogroup">%s%s</div></div>'
+        % (escape(T['f_deal']), chip('deal', 'resale', T['c_resale'], not ex['isNew']), chip('deal', 'new', T['c_new'], ex['isNew'])),
+        '<div class="cyx-field"><label class="cyx-label" for="cyx-ny-price">%s</label><div class="cyx-money"><span>\u20AC</span><input id="cyx-ny-price" type="text" inputmode="numeric" autocomplete="off" value="{:,}"></div></div>'.replace('{:,}', '{:,}'.format(ex['price'])) % escape(T['f_price']),
+        '<div class="cyx-field"><label class="cyx-label" for="cyx-ny-rent">%s</label><div class="cyx-money"><span>\u20AC</span><input id="cyx-ny-rent" type="text" inputmode="numeric" autocomplete="off" value="{:,}"></div></div>'.replace('{:,}', '{:,}'.format(ex['rent'])) % escape(T['f_rent']),
+        '<div class="cyx-field"><span class="cyx-label">%s</span><div class="cyx-chips" role="radiogroup">%s%s%s</div></div>'
+        % (escape(T['f_months']), chip('months', '12', '12', ex['months'] == 12), chip('months', '11', '11', ex['months'] == 11), chip('months', '10', '10', ex['months'] == 10)),
+        '<div class="cyx-field"><span class="cyx-label">%s</span><div class="cyx-chips" role="radiogroup">%s%s</div></div>'
+        % (escape(T['f_israel']), chip('israel', '15', T['c_israel_15'], ex['israelTrack']), chip('israel', 'none', T['c_israel_none'], not ex['israelTrack'])),
+        '<div class="cyx-field cyx-field--wide"><label class="cyx-label" for="cyx-ny-expenses">%s</label><div class="cyx-money"><span>\u20AC</span><input id="cyx-ny-expenses" type="text" inputmode="numeric" autocomplete="off" value="%d"></div></div>'
+        % (escape(T['f_expenses']), ex['expenses']),
+        '</div>',
+        '<div class="cyx-result" aria-live="polite"><div class="cyx-result__kicker">%s</div><bdi class="cyx-result__figure" data-out="yield">%s</bdi>'
+        '<p class="cyx-result__line" data-out="monthly">%s</p><p class="cyx-result__line" data-out="gross">%s</p></div>'
+        % (escape(T['kicker']), y, escape(monthly), escape(T['gross_line'].replace('{g}', pct(r['grossYield'])))),
+        '<p class="cyx-example">%s</p>' % escape(T['preset_note']),
+        '<div class="cyx-break-wrap"><table class="cyx-break"><thead><tr><th scope="col">%s</th><th scope="col">%s</th><th scope="col">%s</th></tr></thead><tbody>%s</tbody></table></div>'
+        % (escape(T['th_item']), escape(T['th_amount']), escape(T['th_rule']), body),
+        '<p class="cyx-source">%s</p>' % escape(T['source']),
+        '<div class="cyx-next"><a class="cyx-cta" href="%s" target="_blank" rel="noopener">%s</a><span class="cyx-next__note">%s</span></div>'
+        % (wa, escape(T['cta']), escape(T['cta_note'])),
+        '</section>',
+    ]
+    return '\n'.join(parts)
+
+
+def section_for(tool, lang, rules, T):
+    if tool == 'purchase-cost':
+        return purchase_cost_section(lang, rules, T)
+    if tool == 'net-yield':
+        pc = json.loads((HERE / 'purchase-cost' / 'rules.json').read_text(encoding='utf-8'))
+        return net_yield_section(lang, rules, T, pc)
+    raise SystemExit('unknown tool ' + tool)
+
+
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield']}
+
+
 def inject_after_paragraph(page, section, n=2):
     """Places the tool after the n-th paragraph of the post content (answer first, tool second). Fails open."""
     i = page.find('wp-block-post-content')
@@ -101,22 +173,26 @@ def main():
     ap.add_argument('--copy', required=True)
     ap.add_argument('--out', required=True)
     ap.add_argument('--ship', action='store_true')
+    ap.add_argument('--after', type=int, default=2)
     a = ap.parse_args()
     tool_dir = HERE / a.tool
     rules = json.loads((tool_dir / 'rules.json').read_text(encoding='utf-8'))
     if a.ship and not rules.get('verified'):
         raise SystemExit('rules.json is not verified: refusing to build a shippable package')
     T = json.loads((tool_dir / f'text.{a.lang}.json').read_text(encoding='utf-8'))
-    section = purchase_cost_section(a.lang, rules, T)
+    section = section_for(a.tool, a.lang, rules, T)
     out = Path(a.out)
     (out / 'cyx').mkdir(parents=True, exist_ok=True)
-    for f in ('engine.js', 'ui.js', 'style.css'):
-        shutil.copy(tool_dir / f, out / 'cyx' / f)
+    shutil.copy(HERE / 'common.css', out / 'cyx' / 'common.css')
+    for eng in ENGINES[a.tool]:
+        shutil.copy(HERE / eng / 'engine.js', out / 'cyx' / ('engine-%s.js' % eng))
+    shutil.copy(tool_dir / 'ui.js', out / 'cyx' / ('ui-%s.js' % a.tool))
     page = Path(a.copy).read_text(encoding='utf-8')
-    page = inject_after_paragraph(page, section)
-    head = FONTS + '<link rel="stylesheet" href="cyx/style.css">'
+    page = inject_after_paragraph(page, section, a.after)
+    head = FONTS + '<link rel="stylesheet" href="cyx/common.css">'
     page = page.replace('</head>', head + '</head>', 1)
-    page = page.replace('</body>', '<script src="cyx/engine.js"></script><script src="cyx/ui.js"></script></body>', 1)
+    scripts = ''.join('<script src="cyx/engine-%s.js"></script>' % e for e in ENGINES[a.tool]) + '<script src="cyx/ui-%s.js"></script>' % a.tool
+    page = page.replace('</body>', scripts + '</body>', 1)
     (out / f'{a.tool}.{a.lang}.html').write_text(page, encoding='utf-8')
     (out / f'{a.tool}.{a.lang}.section.html').write_text(section, encoding='utf-8')
     print('built', out / f'{a.tool}.{a.lang}.html')

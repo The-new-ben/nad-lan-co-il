@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: CY-PRUS Tools
- * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages, starting with the full purchase-cost calculator. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
- * Version: 0.1.0
+ * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages: the full purchase-cost calculator and the net rental yield calculator. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
+ * Version: 0.2.0
  * Author: CY-PRUS
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CYPT_VERSION', '0.1.0' );
+define( 'CYPT_VERSION', '0.2.0' );
 define( 'CYPT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CYPT_URL', plugin_dir_url( __FILE__ ) );
 
@@ -101,9 +101,14 @@ add_action(
 		wp_enqueue_style( 'cypt-fonts', CYPT_URL . 'assets/fonts.css', array(), CYPT_VERSION );
 		wp_enqueue_style( 'cypt-style', CYPT_URL . 'assets/style.css', array( 'cypt-fonts' ), CYPT_VERSION );
 		foreach ( cypt_tools_for( get_queried_object_id() ) as $t ) {
-			$engine = 'cypt-engine-' . $t['id'];
-			wp_enqueue_script( $engine, CYPT_URL . 'assets/engine-' . $t['id'] . '.js', array(), CYPT_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-			wp_enqueue_script( 'cypt-ui-' . $t['id'], CYPT_URL . 'assets/ui-' . $t['id'] . '.js', array( $engine ), CYPT_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+			$deps    = array();
+			$engines = ( isset( $t['engines'] ) && is_array( $t['engines'] ) ) ? $t['engines'] : array( $t['id'] );
+			foreach ( $engines as $e ) {
+				$h = 'cypt-engine-' . sanitize_key( $e );
+				wp_enqueue_script( $h, CYPT_URL . 'assets/engine-' . sanitize_key( $e ) . '.js', $deps, CYPT_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+				$deps[] = $h;
+			}
+			wp_enqueue_script( 'cypt-ui-' . $t['id'], CYPT_URL . 'assets/ui-' . $t['id'] . '.js', $deps, CYPT_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		}
 	}
 );

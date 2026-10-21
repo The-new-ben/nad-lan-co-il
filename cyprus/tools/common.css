@@ -73,3 +73,6 @@
   .cyx-rule { grid-column: 1 / -1; font-size: 13px; line-height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .cyx-tool * { transition: none !important; } }
+
+.cyx-row--total th, .cyx-row--total td.cyx-num { font-weight: 700; border-top: 2px solid var(--cyx-ink); }
+.cyx-row--total td.cyx-num { color: var(--cyx-ink); }

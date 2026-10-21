@@ -1,0 +1,25 @@
+{
+  "tool": "net-yield",
+  "version": "2026-10-21",
+  "verified": true,
+  "verified_note": "Checked 21.10.2026 (research/costs-rules.json, prices-data.json): Cyprus income tax bands 2026 and the 20% deemed deduction (Tax Department, PwC reviewed 04.08.2026); GHS 2.65% of gross rent (Bank of Cyprus); Special Defence Contribution on rent abolished from 1.1.2026; no Israel-Cyprus tax treaty; Israeli section 122A track 15% with depreciation only and no foreign credit. City presets: resale apartment medians H1 2026 (Landbank Analytics, private) and rents from the statement of the president of the Real Estate Agents Registration Council (23.07.2026). The page labels both as non-official.",
+  "ghs_rate": 0.0265,
+  "deemed_deduction": 0.2,
+  "income_tax_bands": [
+    {"upto": 22000, "rate": 0},
+    {"upto": 32000, "rate": 0.2},
+    {"upto": 42000, "rate": 0.25},
+    {"upto": 72000, "rate": 0.3},
+    {"upto": null, "rate": 0.35}
+  ],
+  "israel_flat_rate": 0.15,
+  "cities": {
+    "limassol": {"price": 217000, "rent": {"1": 1050, "2": 1450}},
+    "larnaca": {"price": 111000, "rent": {"1": 550, "2": 750}},
+    "paphos": {"price": 120000, "rent": {"1": 525, "2": 750}},
+    "nicosia": {"price": 138000, "rent": {"1": 625, "2": 850}}
+  },
+  "fx": {"eur_ils": 3.4822, "date": "20.10.2026"},
+  "ui": {"price_min": 50000, "price_max": 3000000, "rent_min": 200, "rent_max": 20000},
+  "example": {"city": "limassol", "beds": "2", "price": 217000, "rent": 1450, "months": 11, "isNew": false, "expenses": 0, "israelTrack": true}
+}

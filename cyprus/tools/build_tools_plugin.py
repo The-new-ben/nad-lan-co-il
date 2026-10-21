@@ -18,7 +18,10 @@ import build_tool
 HERE = Path(__file__).resolve().parent
 SITE = 'https://cy-prus.co.il'
 REGISTRY = [
-    {'id': 'purchase-cost', 'page_id': 114, 'path': '/guides/purchase-tax-cyprus-2026/', 'lang': 'he', 'after_paragraph': 2},
+    {'id': 'purchase-cost', 'page_id': 114, 'path': '/guides/purchase-tax-cyprus-2026/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['purchase-cost']},
+    {'id': 'net-yield', 'page_id': 53, 'path': '/guides/real-estate-investments-in-cyprus/', 'lang': 'he', 'after_paragraph': 3,
+     'engines': ['purchase-cost', 'net-yield']},
 ]
 
 
@@ -42,9 +45,10 @@ def ld_json(T, url):
          'description': T['lead'], 'applicationCategory': 'FinanceApplication', 'operatingSystem': 'Any',
          'inLanguage': 'he', 'isAccessibleForFree': True,
          'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'}},
-        {'@type': 'FAQPage', '@id': url + '#cyx-faq-' + T['slug'],
-         'mainEntity': [{'@type': 'Question', 'name': f['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': f['a']}} for f in T['faq']]},
     ]
+    if T.get('faq'):
+        graph.append({'@type': 'FAQPage', '@id': url + '#cyx-faq-' + T['slug'],
+                      'mainEntity': [{'@type': 'Question', 'name': f['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': f['a']}} for f in T['faq']]})
     out = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False)
     assert '</' not in out
     return out
@@ -75,13 +79,14 @@ def main():
         T.setdefault('slug', t['id'])
         out = stage / 'tools' / t['id']
         out.mkdir(parents=True)
-        (out / ('section.%s.html' % t['lang'])).write_text(build_tool.purchase_cost_section(t['lang'], rules, T), encoding='utf-8')
+        (out / ('section.%s.html' % t['lang'])).write_text(build_tool.section_for(t['id'], t['lang'], rules, T), encoding='utf-8')
         if T.get('faq'):
             (out / ('faq.%s.html' % t['lang'])).write_text(faq_html(T), encoding='utf-8')
-            (out / ('ld.%s.json' % t['lang'])).write_text(ld_json(T, SITE + t['path']), encoding='utf-8')
-        shutil.copy(tdir / 'engine.js', stage / 'assets' / ('engine-%s.js' % t['id']))
+        (out / ('ld.%s.json' % t['lang'])).write_text(ld_json(T, SITE + t['path']), encoding='utf-8')
+        for eng in t['engines']:
+            shutil.copy(HERE / eng / 'engine.js', stage / 'assets' / ('engine-%s.js' % eng))
         shutil.copy(tdir / 'ui.js', stage / 'assets' / ('ui-%s.js' % t['id']))
-        styles.append((tdir / 'style.css').read_text(encoding='utf-8'))
+    styles.append((HERE / 'common.css').read_text(encoding='utf-8'))
     styles.append((HERE / 'faq.css').read_text(encoding='utf-8'))
     (stage / 'assets' / 'style.css').write_text('\n'.join(styles), encoding='utf-8')
     (stage / 'registry.json').write_text(json.dumps([{k: v for k, v in t.items() if k != 'path'} for t in REGISTRY], ensure_ascii=False, indent=1), encoding='utf-8')
