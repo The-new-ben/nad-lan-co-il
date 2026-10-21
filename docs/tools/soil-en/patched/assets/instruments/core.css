@@ -1,0 +1,154 @@
+/* NadLan Instruments v1 (HAD-527, 14.10.2026): the visual system of every tool. Tokens from the design system
+   https://claude.ai/artifact/ATybPAavyDEkAzH7cdg1bB (survey-and-planning palette; Karantina, IBM Plex Sans Hebrew, IBM Plex
+   Mono). Scoped to .nli so the theme's !important heading colours cannot reach in (the CSS cascade hazard). */
+.nli{--nli-ground:#F6F8F9;--nli-surface:#FFFFFF;--nli-ink:#12202A;--nli-ink2:#3E4C58;--nli-mute:#5E6A75;--nli-line:#D3DCE2;
+  --nli-sea:#2F6F86;--nli-sea-deep:#1F4B5C;--nli-on-sea:#FFFFFF;--nli-survey:#C42550;--nli-housing:#F2D15A;--nli-open:#4F9A5C;
+  --nli-civic:#8E7CC3;--nli-focus:#2F6F86;--nli-r-s:2px;--nli-r-m:6px;
+  --nli-display:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--nli-sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;
+  --nli-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  direction:rtl;font-family:var(--nli-sans);color:var(--nli-ink2);margin:20px 0 28px;clear:both}
+.nli *{box-sizing:border-box}
+.nli [hidden]{display:none !important}
+html body .nli .nli__panel{background:var(--nli-surface);border:1px solid var(--nli-line);border-radius:var(--nli-r-m);padding:16px;position:relative}
+@media (min-width:860px){html body .nli .nli__panel{padding:32px}}
+html body .nli .nli__panel::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:var(--nli-r-m);
+  background-image:linear-gradient(var(--nli-line) 1px,transparent 1px),linear-gradient(90deg,var(--nli-line) 1px,transparent 1px);
+  background-size:16px 16px;opacity:.22;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 120px);mask-image:linear-gradient(180deg,#000 0,transparent 120px)}
+html body .nli .nli__kicker{font:500 13px/18px var(--nli-sans);letter-spacing:.06em;color:var(--nli-sea);margin:0 0 4px;position:relative}
+html body .nli h2.nli__title{font:700 44px/44px var(--nli-display) !important;color:var(--nli-ink) !important;margin:0 0 8px !important;text-wrap:balance;position:relative;letter-spacing:0}
+@media (max-width:520px){html body .nli h2.nli__title{font-size:38px !important;line-height:38px !important}}
+html body .nli .nli__lede{font:400 16px/26px var(--nli-sans);color:var(--nli-ink2);margin:0 0 16px;max-width:68ch;position:relative}
+.nli__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;position:relative}
+@media (min-width:860px){.nli__grid{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:32px}}
+.nli__form{display:grid;gap:16px;align-content:start;margin:0}
+.nli__f{display:grid;gap:8px;min-width:0}
+.nli__f>label,.nli__f>.nli__lab{font:500 13px/18px var(--nli-sans);color:var(--nli-ink);letter-spacing:.02em}
+.nli__help{font:400 13px/18px var(--nli-sans);color:var(--nli-mute)}
+.nli__in{display:flex;align-items:stretch;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);min-height:48px}
+.nli__in:focus-within{border-color:var(--nli-sea);box-shadow:0 0 0 1px var(--nli-sea)}
+html body .nli .nli__in input,html body .nli .nli__in select{flex:1;min-width:0;border:0 !important;outline:0;background:transparent !important;box-shadow:none !important;
+  font:500 17px/24px var(--nli-mono);color:var(--nli-ink);padding:11px 12px;margin:0;border-radius:0;height:auto;direction:ltr;text-align:right}
+html body .nli .nli__in select{font-family:var(--nli-sans);direction:rtl}
+.nli__unit{display:flex;align-items:center;padding:0 12px;font:400 14px/20px var(--nli-mono);color:var(--nli-mute);border-inline-start:1px solid var(--nli-line);background:var(--nli-ground)}
+.nli__seg{display:flex;flex-wrap:wrap;gap:8px}
+html body .nli .nli__seg button{font:500 14px/20px var(--nli-sans);min-height:44px;padding:10px 14px;border:1px solid var(--nli-line);border-radius:999px;background:var(--nli-surface);color:var(--nli-ink2);cursor:pointer;margin:0}
+html body .nli .nli__seg button[aria-pressed="true"]{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea)}
+.nli__err{font:500 13px/18px var(--nli-sans);color:var(--nli-survey);min-height:0}
+.nli__out{display:grid;gap:16px;align-content:start;min-width:0}
+.nli__answer{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:16px;background:var(--nli-ground)}
+.nli__alab{font:500 13px/18px var(--nli-sans);color:var(--nli-ink2);display:block}
+.nli__fig{display:block;font:500 40px/44px var(--nli-mono);color:var(--nli-ink);font-variant-numeric:tabular-nums;margin:4px 0;direction:ltr;unicode-bidi:plaintext;text-align:right}
+.nli__fig.is-survey{color:var(--nli-survey)}
+.nli__asub{font:400 14px/20px var(--nli-sans);color:var(--nli-mute);display:block}
+.nli__bar{display:flex;height:14px;border-radius:var(--nli-r-s);overflow:hidden;background:var(--nli-line)}
+.nli__bar i{display:block;height:100%;min-width:2px}
+.nli__k-housing{background:var(--nli-housing)}.nli__k-open{background:var(--nli-open)}.nli__k-civic{background:var(--nli-civic)}.nli__k-survey{background:var(--nli-survey)}.nli__k-sea{background:var(--nli-sea)}
+.nli__legend{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:8px 0 0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}
+.nli__legend li{display:flex;align-items:center;gap:6px;margin:0}
+.nli__legend b{display:inline-block;width:10px;height:10px;border-radius:2px}
+.nli__lines{margin:0;display:grid}
+.nli__lines div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--nli-line)}
+.nli__lines dt{font:400 14px/20px var(--nli-sans);color:var(--nli-ink2);margin:0}
+.nli__lines dd{font:500 14px/20px var(--nli-mono);color:var(--nli-ink);margin:0;direction:ltr;unicode-bidi:plaintext;text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nli__scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+html body .nli .nli__scen button{display:grid;gap:2px;text-align:right;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);padding:10px 12px;cursor:pointer;min-height:64px;margin:0;color:var(--nli-ink2)}
+html body .nli .nli__scen button[aria-pressed="true"]{border-color:var(--nli-sea);box-shadow:inset 0 0 0 1px var(--nli-sea)}
+.nli__scen span{font:500 12px/16px var(--nli-sans);color:var(--nli-ink2)}
+.nli__scen strong{font:500 17px/22px var(--nli-mono);color:var(--nli-ink);direction:ltr;unicode-bidi:plaintext;text-align:right;font-variant-numeric:tabular-nums}
+.nli__note{font:400 14px/22px var(--nli-sans);color:var(--nli-ink2);margin:0;padding:12px;border-inline-start:3px solid var(--nli-sea);background:var(--nli-ground)}
+.nli__table{margin-top:16px;position:relative}
+html body .nli .nli__table summary{font:500 15px/22px var(--nli-sans);color:var(--nli-sea);cursor:pointer;min-height:44px;display:flex;align-items:center}
+.nli__tw{overflow-x:auto}
+.nli__table table{width:100%;border-collapse:collapse;font:400 14px/20px var(--nli-sans);margin:8px 0 0}
+html body .nli .nli__table th{font-weight:500;color:var(--nli-mute);text-align:right;padding:8px;border-bottom:1px solid var(--nli-line);background:none !important}
+html body .nli .nli__table td{padding:8px;border-bottom:1px solid var(--nli-line);color:var(--nli-ink);background:none !important;white-space:normal;vertical-align:top}
+html body .nli .nli__table table{display:table !important}html body .nli .nli__table thead{display:table-header-group !important}html body .nli .nli__table tbody{display:table-row-group !important}html body .nli .nli__table tr{display:table-row !important}html body .nli .nli__table th,html body .nli .nli__table td{display:table-cell !important;white-space:normal;width:auto !important;padding:8px 6px !important;font-family:var(--nli-sans) !important;font-size:14px !important;line-height:20px !important;border-top:0 !important;border-left:0 !important;border-right:0 !important;border-bottom:1px solid var(--nli-line) !important}
+html body .nli .nli__table td.n{font-family:var(--nli-mono) !important;font-size:13px !important}
+@media (max-width:600px){html body .nli .nli__table th.ph,html body .nli .nli__table td.ph{display:none !important}}
+html body .nli .nli__table summary{border:0 !important;padding:0 !important;background:none !important}
+html body .nli .nli__table td.n{font-family:var(--nli-mono);direction:ltr;unicode-bidi:plaintext;text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nli__formula,.nli__src{font:400 13px/20px var(--nli-sans);color:var(--nli-mute);margin:12px 0 0;position:relative}
+html body .nli .nli__src a{color:var(--nli-sea) !important}
+.nli__share{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative}
+html body .nli .nli__share button,html body .nli .nli__share a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--nli-line);background:var(--nli-surface);
+  color:var(--nli-ink) !important;font:500 14px/20px var(--nli-sans);text-decoration:none !important;cursor:pointer;margin:0}
+html body .nli .nli__share .is-primary{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea) !important}
+.nli__share svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:square}
+.nli__eg{font:400 13px/18px var(--nli-sans);color:var(--nli-mute);margin:12px 0 0;position:relative}
+.nli__eg b{display:inline-block;font-weight:500;color:var(--nli-ink);border:1px solid var(--nli-line);border-radius:999px;padding:0 8px;margin-inline-end:6px}
+.nli__rows{display:grid;gap:8px}
+.nli__row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) 44px;gap:8px;align-items:center}
+html body .nli .nli__row button{min-height:44px;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-ink2);cursor:pointer;font:400 18px/1 var(--nli-sans);margin:0;padding:0}
+html body .nli button.nli__add{justify-self:start;min-height:44px;padding:8px 14px;border:1px dashed var(--nli-sea);border-radius:var(--nli-r-s);background:none;color:var(--nli-sea);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}
+.nli__strip{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0 0 16px;padding:12px 0;border-top:1px solid var(--nli-line);border-bottom:1px solid var(--nli-line);position:relative}
+.nli__strip div{display:grid;gap:2px}
+.nli__strip span{font:500 12px/16px var(--nli-sans);color:var(--nli-mute)}
+.nli__strip strong{font:500 18px/24px var(--nli-mono);color:var(--nli-ink);direction:ltr;unicode-bidi:plaintext;text-align:right}
+html body .nli .nli__rel{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:12px 0 0;font:400 14px/22px var(--nli-sans);color:var(--nli-mute)}
+html body .nli .nli__rel a{color:var(--nli-sea) !important;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}
+html body .nli :focus-visible{outline:2px solid var(--nli-focus);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.nli__fig{transition:color .18s}}
+@media print{body *{visibility:hidden}.nli,.nli *{visibility:visible}.nli{position:absolute;inset:0 auto auto 0;width:100%}.nli__share,.nli__form,.nli__scen{display:none !important}.nli__table{display:block}.nli__table[open] summary{display:none}}
+/* soil map (HAD-534): the Sde Dov plots, boreholes and plot card. Survey shades only for the exceedance scale. */
+.nls__strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 14px;position:relative}
+.nls__strip div{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:10px 12px;background:var(--nli-surface)}
+.nls__strip span{display:block;font:500 12px/16px var(--nli-sans);color:var(--nli-mute)}
+.nls__strip strong{display:block;font:500 20px/26px var(--nli-mono);color:var(--nli-ink);unicode-bidi:plaintext;font-variant-numeric:tabular-nums}
+.nls__strip .is-top strong{color:var(--nli-survey)}
+@media (max-width:520px){.nls__strip{grid-template-columns:1fr 1fr}.nls__strip .is-top{grid-column:1/-1}}
+.nls__find{display:grid;gap:10px;margin:0 0 12px;position:relative}
+.nls__q{display:grid;gap:6px}.nls__q span{font:500 13px/18px var(--nli-sans);color:var(--nli-ink)}
+html body .nli .nls__q input{font:500 17px/24px var(--nli-sans);padding:11px 12px;border:1px solid var(--nli-line) !important;border-radius:var(--nli-r-s);background:var(--nli-surface) !important;color:var(--nli-ink);width:100%;box-sizing:border-box;margin:0;box-shadow:none !important;height:auto}
+.nls__chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+html body .nli .nls__chips button{flex:0 0 auto;min-height:40px;padding:8px 12px;border:1px solid var(--nli-line);border-radius:999px;background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0;white-space:nowrap}
+html body .nli .nls__chips button.is-published{border-color:#8E1238;color:#8E1238}
+html body .nli .nls__chips button.is-findings{border:1px dashed #C42550;color:#A01D44}
+html body .nli .nls__chips button.is-developer{border-color:#2F6F86;color:#21566A}
+html body .nli .nls__chips button.is-under{border:1px dashed #7A8A94;color:#4E5E68}
+html body .nli .nls__chips button[aria-pressed="true"]{background:#12202A;border-color:#12202A;color:#FFFFFF}
+.nls__stage{display:grid;gap:12px;position:relative}
+@media (min-width:900px){.nls__stage{grid-template-columns:minmax(0,1fr) 340px}}
+.nls__map{height:440px;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);overflow:hidden;background:#E9EEF1;position:relative}
+@media (min-width:900px){.nls__map{height:560px}}
+.nls__wait{margin:0;padding:16px;font:400 14px/20px var(--nli-sans);color:var(--nli-mute)}
+.nls__card{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:16px;background:var(--nli-ground);display:grid;gap:10px;align-content:start;min-width:0}
+.nls__ct{margin:0;font:600 20px/26px var(--nli-sans);color:var(--nli-ink)}.nls__ct span{font-weight:400;color:var(--nli-ink2);font-size:15px}
+.nls__badge{justify-self:start;margin:0;padding:4px 10px;border-radius:999px;font:500 13px/18px var(--nli-sans);background:#E6ECEF;color:var(--nli-ink2)}
+.nls__badge.is-published{background:#F7DDE4;color:#8E1238}.nls__badge.is-findings{background:#FBEFF3;color:#A01D44;border:1px dashed #C42550}
+.nls__badge.is-developer{background:#DDEBF0;color:#21566A}.nls__badge.is-under{background:#E9EDEF;color:#4E5E68;border:1px dashed #7A8A94}
+.nls__txt{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink2)}
+.nls__plan{margin:0;font:400 12px/18px var(--nli-sans);color:var(--nli-mute)}
+.nls__links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0}html body .nli .nls__links a{color:var(--nli-sea) !important;font:500 14px/20px var(--nli-sans)}
+.nls__bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
+html body .nli button.nls__3d{min-height:40px;padding:8px 14px;border:1px solid #12202A;border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}
+html body .nli button.nls__3d[aria-pressed="true"]{background:#12202A;color:#FFFFFF}
+.nls__legend{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}
+.nls__legend b{display:inline-block;width:12px;height:12px;border-radius:50%;margin-inline-end:6px;vertical-align:-1px}
+.nls__legend b.is-list{border-radius:2px;border:1.5px dashed #C42550;background:#F3D3DC}.nls__legend b.is-dev{border-radius:2px;border:1.5px solid #2F6F86;background:#D3E5EC}
+html body .nli button.nls__row{border:0;background:none;padding:0;margin:0;font:600 14px/20px var(--nli-mono);color:var(--nli-sea);text-decoration:underline;cursor:pointer;min-height:32px}
+.nls-pop .maplibregl-popup-content{direction:rtl;text-align:right;font:400 13px/19px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A;padding:10px 12px}
+.nls-pop p{margin:0 0 4px}
+html body .nli pre.nli__doc{white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;font:400 15px/25px var(--nli-sans) !important;color:var(--nli-ink) !important;background:var(--nli-surface) !important;border:1px solid var(--nli-line);border-inline-start:3px solid var(--nli-sea);border-radius:var(--nli-r-s);padding:16px;margin:0;direction:rtl;text-align:right;max-height:none;overflow:visible}
+.nls__proj{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink);padding:10px 12px;background:#E5F0EA;border-inline-start:3px solid #4F9A5C;border-radius:var(--nli-r-s)}
+html body .nli a.nls__ask{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 14px;background:#12202A;color:#FFFFFF !important;border-radius:var(--nli-r-s);font:600 15px/20px var(--nli-sans);text-decoration:none !important}
+html body .nli a.nls__ask:hover{background:#2F6F86}
+.nls__legend b.is-green{border-radius:2px;background:#3E8E5A}.nls__badge.is-proj{background:#E5F0EA;color:#2E6B43}
+html body .nli .nls__chips button.is-proj{border-color:#3E8E5A;color:#2E6B43}
+/* English pages (HAD-534 d, 21.10.2026): the shortcode prints dir="ltr" lang="en" on the section. Same palette; Latin faces
+   IBM Plex Sans (text) + IBM Plex Sans Condensed (titles) + IBM Plex Mono (figures): the Plex family the Hebrew already uses,
+   so one survey-instrument voice in both scripts (not Inter, not Space Grotesk, no serif). Everything else mirrors to LTR. */
+.nli[dir="ltr"]{direction:ltr}
+.nli[lang="en"]{--nli-display:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;--nli-sans:"IBM Plex Sans",system-ui,sans-serif}
+html body .nli[lang="en"] h2.nli__title{font:600 36px/40px var(--nli-display) !important;letter-spacing:-.01em}
+@media (max-width:520px){html body .nli[lang="en"] h2.nli__title{font-size:30px !important;line-height:34px !important}}
+html body .nli[dir="ltr"] .nli__in input{text-align:left}
+html body .nli[dir="ltr"] .nli__in select{direction:ltr;text-align:left}
+.nli[dir="ltr"] .nli__fig{text-align:left}
+.nli[dir="ltr"] .nli__lines dd{text-align:right}
+html body .nli[dir="ltr"] .nli__scen button{text-align:left}
+.nli[dir="ltr"] .nli__scen strong,.nli[dir="ltr"] .nli__strip strong{text-align:left}
+html body .nli[dir="ltr"] .nli__table th{text-align:left}
+html body .nli[dir="ltr"] .nli__table td.n{text-align:right}
+html body .nli[dir="ltr"] pre.nli__doc{direction:ltr;text-align:left}
+html body .nli[dir="ltr"] pre.nli__doc[dir="rtl"]{direction:rtl;text-align:right;font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif !important}
+.nli[dir="ltr"] .nls-pop .maplibregl-popup-content{direction:ltr;text-align:left;font-family:"IBM Plex Sans",system-ui,sans-serif}

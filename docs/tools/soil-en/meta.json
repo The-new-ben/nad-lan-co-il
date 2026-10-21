@@ -1,0 +1,18 @@
+{
+ "title": "Sde Dov Soil Tests: Map of the Plots, Boreholes and Reports",
+ "slug": "contamination",
+ "parent": 8342,
+ "tools": [
+  "soilmap",
+  "pfas",
+  "soilask"
+ ],
+ "seo_title": "Sde Dov, Tel Aviv: Soil Tests (PFAS), Plot Map and Reports",
+ "seo_desc": "Every Sde Dov plot in Tel Aviv with a published soil test: PFOS values against the threshold, depth, plot stage, the report and what to ask a developer.",
+ "forbid": [
+  "contaminat", "Contaminat", "pollut", "Pollut", "toxic", "Toxic", "poison", "hazard", "danger", "alarming",
+  "Mivne", "Gindi", "Hagag", "Prashkovsky", "Dimri", "Shikun", "Utopia", "UTOPIA", "Vogue", "VOGUE", "Hadas", "Avisror",
+  "Ashira", "ASHIRA", "Rainbow", "Zohi", "ZOHI", "Migdalei", "Yama", "YAMA",
+  "מבנה נדל", "גינדי", "חג'ג'", "פרשקובסקי", "דמרי", "שיכון ובינוי", "אוטופיה", "ווג", "הדס קפיטל", "אביסרור", "זיהום", "מזוהמ"
+ ]
+}

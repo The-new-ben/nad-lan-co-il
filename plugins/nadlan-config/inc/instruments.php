@@ -45,18 +45,33 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'desc' => 'מפה תלת־ממדית של מגרשי רובע שדה דב: לכל מגרש שפורסם עליו סקר קרקע, פי כמה ריכוז ה־PFOS מעל ערך הסף, באיזה עומק, כמה קידוחים חרגו, והדו"ח עצמו. בדיקה לפי מספר מגרש או פרויקט.',
 				'data' => array( 'sde-dov-soil.json' ),
 				'related' => array( '/sde-dov/' => 'המדריך לשדה דב', '/sde-dov/prices/' => 'מחירי הדירות בשדה דב', '/real-estate-lawyer/construction-defects-lawsuit/' => 'שעון הבדק והאחריות', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה' ),
+				'en' => array(  // HAD-534 (d): the English page /en/sde-dov/contamination/
+					'name' => 'Sde Dov soil test map', 'kicker' => 'Map · Sde Dov',
+					'desc' => 'A 3D map of the Sde Dov district plots: for every plot with a published soil survey, how many times the PFOS value is above the threshold, at what depth, how many boreholes exceeded it, and the report itself. Check any plot by its number.',
+					'related' => array( '/en/sde-dov/' => 'The Sde Dov guide', '/en/sde-dov/prices/' => 'Sde Dov apartment prices', '/en/north-tel-aviv/' => 'North Tel Aviv real estate', '/en/buy-property-in-israel/' => 'Buying property in Israel from abroad' ),
+				),
 			),
 			'pfas' => array(
 				'name' => 'מחשבון PFAS: פי כמה מעל ערך הסף', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחשבון · קרקע',
 				'desc' => 'ממיר ריכוז של PFOS, PFOA או PFHxS מדו"ח סקר קרקע (ננוגרם, מיקרוגרם או מיליגרם לק"ג) לפי כמה הוא מעל ערך הסף למגע ישיר שמשמש בדו"חות של שדה דב, ומשווה לשיאים שפורסמו.',
 				'data' => array( 'sde-dov-soil.json' ),
 				'related' => array( '/sde-dov/' => 'המדריך לשדה דב', '/sde-dov/prices/' => 'מחירי הדירות בשדה דב' ),
+				'en' => array(
+					'name' => 'PFAS calculator: how many times the threshold', 'kicker' => 'Calculator · Soil',
+					'desc' => 'Converts a PFOS, PFOA or PFHxS concentration from a soil survey report (ng, µg or mg per kg) into how many times the direct-contact threshold used in the Sde Dov reports, and compares it with the published peaks.',
+					'related' => array( '/en/sde-dov/' => 'The Sde Dov guide', '/en/sde-dov/prices/' => 'Sde Dov apartment prices' ),
+				),
 			),
 			'soilask' => array(
 				'name' => 'מכתב שאלות ליזם על הקרקע במגרש', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחולל · שדה דב',
 				'desc' => 'מכתב מוכן ליזם על מצב הקרקע במגרש בשדה דב: נפתח במה שפורסם על המגרש ושואל על הדיגום לפי הנחיות 12.2.2026, הדו"ח המלא, אימוץ הממצאים, תכנית הטיפול, מועד המסירה, העלות והחוזה. מכתב מלא או הודעת וואטסאפ.',
 				'data' => array( 'sde-dov-soil.json' ),
 				'related' => array( '/real-estate-lawyer/' => 'עורך דין לקניית דירה', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/sde-dov/' => 'המדריך לשדה דב' ),
+				'en' => array(
+					'name' => 'A letter of soil questions for the developer', 'kicker' => 'Generator · Sde Dov',
+					'desc' => 'A ready letter to the developer about the soil on a Sde Dov plot: it opens with what was published about the plot and asks about sampling under the 12 Feb 2026 guidelines, the full report, the adoption of the findings, the treatment plan, the delivery date, the cost and the contract. A full letter or a WhatsApp message, in English or in Hebrew.',
+					'related' => array( '/en/buy-property-in-israel/' => 'Buying property in Israel from abroad', '/en/guides/new-apartment-sale-specification/' => 'The sale specification of a new apartment', '/en/sde-dov/' => 'The Sde Dov guide' ),
+				),
 			),
 			'prime' => array(
 				'name' => 'מחשבון ריבית הפריים וההחזר החודשי', 'cat' => 'FinanceApplication',
@@ -69,6 +84,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	function nadlan_nli_url( $rel ) { return plugins_url( 'assets/instruments/' . $rel, dirname( __DIR__ ) . '/nadlan-config.php' ); } // the plugin root, not inc/
 	function nadlan_nli_ver() { return defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1'; }
+
+	/** HAD-534 (d): the page language, 'en' on /en/ pages (inc/page-lang.php: the top ancestor slug), else 'he'. */
+	function nadlan_nli_lang() { return function_exists( 'nadlan_pglang_lang' ) && 'en' === nadlan_pglang_lang() ? 'en' : 'he'; }
+	/** A tool speaks the page language only when it carries that language block; otherwise it stays Hebrew (and RTL). */
+	function nadlan_nli_tool_lang( $t ) { return 'en' === nadlan_nli_lang() && ! empty( $t['en'] ) ? 'en' : 'he'; }
+	function nadlan_nli_t( $t, $lang ) { return 'en' === $lang && ! empty( $t['en'] ) ? array_merge( $t, $t['en'] ) : $t; }
 
 	/** The ids of the tools in a post's content. */
 	function nadlan_nli_ids_in( $content ) {
@@ -97,7 +118,10 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		$ids = nadlan_nli_page_ids();
 		if ( ! $ids ) { return; }
 		$v = nadlan_nli_ver();
-		wp_enqueue_style( 'nadlan-nli-fonts', 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap', array(), null );
+		$fonts = 'en' === nadlan_nli_lang()  // English pages: the Latin Plex faces (+ Plex Hebrew 400 for a Hebrew letter inside the page)
+			? 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans+Hebrew:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap'
+			: 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+		wp_enqueue_style( 'nadlan-nli-fonts', $fonts, array(), null );
 		wp_enqueue_style( 'nadlan-nli', nadlan_nli_url( 'core.css' ), array(), $v );
 		wp_enqueue_script( 'nadlan-nli', nadlan_nli_url( 'core.js' ), array(), $v, true );
 		foreach ( $ids as $id ) { wp_enqueue_script( 'nadlan-nli-' . $id, nadlan_nli_url( 'tools/' . $id . '.js' ), array( 'nadlan-nli' ), $v, true ); }
@@ -108,7 +132,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	}, 10, 2 );
 
 	/** The summary printed before the script runs: the real numbers, for readers without JS, search engines and AI. */
-	function nadlan_nli_summary( $id ) {
+	function nadlan_nli_summary( $id, $lang = 'he' ) {
+		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
 		if ( 'indexation' === $id ) {
 			$d = nadlan_nli_series( 'cbs-200010.json' );
 			if ( ! $d ) { return ''; }
@@ -163,17 +188,42 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		return '';
 	}
 
+	/** HAD-534 (d): the same summaries in English, for the tools that carry an 'en' block. Dates with gmdate (English month
+	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
+	function nadlan_nli_summary_en( $id ) {
+		if ( 'soilmap' === $id || 'pfas' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/sde-dov-soil.json';
+			$s = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $s ) || empty( $s['records'] ) ) { return ''; }
+			$rep = array_values( array_filter( $s['records'], function ( $r ) { return 'published_report' === $r['status'] && ! empty( $r['pfosMax'] ); } ) );
+			usort( $rep, function ( $a, $b ) { return $b['pfosX'] <=> $a['pfosX']; } );
+			$holes = 0; $over = 0; foreach ( $rep as $r ) { $holes += (int) $r['holes']; $over += (int) $r['pfosHoles']; }
+			$th = $s['thresholds'];
+			$p = '<p>According to the soil survey reports published in the Ministry of Environmental Protection database, as of ' . esc_html( gmdate( 'j M Y', strtotime( $s['built'] . ' UTC' ) ) ) . ': ' . count( $rep ) . ' plots in Sde Dov with a report, ' . $over . ' of ' . $holes
+				. ' boreholes with a PFOS value above the threshold. The highest value: plot ' . esc_html( $rep[0]['plot'] ) . ', ' . esc_html( number_format( $rep[0]['pfosX'] ) ) . ' times the direct-contact threshold (PFOS ' . esc_html( number_format( $th['pfos'], 1 ) ) . ' ng/kg).</p>';
+			if ( 'pfas' === $id ) { return $p; }
+			$p .= '<table><thead><tr><th>Plot</th><th>PFOS peak (ng/kg)</th><th>Times the threshold</th><th>Boreholes above the threshold</th></tr></thead><tbody>';
+			foreach ( $rep as $r ) { $p .= '<tr><td>' . esc_html( $r['plot'] ) . '</td><td>' . esc_html( number_format( $r['pfosMax'] ) ) . '</td><td>' . esc_html( number_format( $r['pfosX'], $r['pfosX'] < 10 ? 1 : 0 ) ) . '</td><td>' . (int) $r['pfosHoles'] . ' of ' . (int) $r['holes'] . '</td></tr>'; }
+			return $p . '</tbody></table>';
+		}
+		if ( 'soilask' === $id ) {
+			return '<p>The questions to ask the developer about the soil on a Sde Dov plot: whether the plot was sampled under the Ministry of Environmental Protection guidelines of 12 Feb 2026; the full soil survey report; whether the Ministry adopted the findings in writing; if an exceedance was found, whether the treatment plan was approved; whether the treatment could delay the delivery date; who bears the cost; and what conditions the permit sets.</p>';
+		}
+		return '';
+	}
+
 	add_shortcode( 'nadlan_tool', function ( $atts ) {
 		$a = shortcode_atts( array( 'id' => '' ), $atts );
 		$tools = nadlan_nli_tools();
 		$id = sanitize_key( $a['id'] );
 		if ( ! isset( $tools[ $id ] ) ) { return ''; }
-		$t = $tools[ $id ];
+		$lang = nadlan_nli_tool_lang( $tools[ $id ] ); $en = 'en' === $lang;  // HAD-534 (d): English + LTR on /en/ pages, for tools with an 'en' block
+		$t = nadlan_nli_t( $tools[ $id ], $lang );
 		$data = implode( ',', array_map( function ( $f ) { return esc_url( nadlan_nli_url( 'data/' . $f ) . '?ver=' . nadlan_nli_ver() ); }, $t['data'] ) );
-		$h = '<section class="nli" dir="rtl" lang="he" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . '>'
-			. '<div class="nli__panel"><p class="nli__kicker">' . esc_html( isset( $t['kicker'] ) ? $t['kicker'] : 'מחשבון' ) . '</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id ) . '</div></div>';
+		$h = '<section class="nli" dir="' . ( $en ? 'ltr' : 'rtl' ) . '" lang="' . $lang . '" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . '>'
+			. '<div class="nli__panel"><p class="nli__kicker">' . esc_html( isset( $t['kicker'] ) ? $t['kicker'] : ( $en ? 'Calculator' : 'מחשבון' ) ) . '</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id, $lang ) . '</div></div>';
 		if ( ! empty( $t['related'] ) ) {
-			$h .= '<nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span>';
+			$h .= $en ? '<nav class="nli__rel" aria-label="Related tools and guides"><span>Related:</span>' : '<nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span>';
 			foreach ( $t['related'] as $path => $label ) { $h .= ' <a href="' . esc_url( home_url( $path ) ) . '">' . esc_html( $label ) . '</a>'; }
 			$h .= '</nav>';
 		}
@@ -195,9 +245,9 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( ! $ids ) { return; }
 		$tools = nadlan_nli_tools(); $out = array();
 		foreach ( $ids as $id ) {
-			$t = $tools[ $id ];
+			$lang = nadlan_nli_tool_lang( $tools[ $id ] ); $t = nadlan_nli_t( $tools[ $id ], $lang );  // HAD-534 (d): name, description and inLanguage follow the page
 			$out[] = array( '@type' => 'SoftwareApplication', 'name' => $t['name'], 'description' => $t['desc'], 'applicationCategory' => $t['cat'], 'operatingSystem' => 'Any',
-				'inLanguage' => 'he', 'url' => get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
+				'inLanguage' => $lang, 'url' => get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
 				'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ) );
 		}
 		$p = get_post(); $faq = $p ? nadlan_nli_faq( $p->post_content ) : array();

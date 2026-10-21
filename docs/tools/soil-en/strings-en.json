@@ -1,0 +1,888 @@
+{
+ "_about": "HAD-534 (d), 21.10.2026. Every visible Hebrew string of the Instruments engine (core.js) and the three soil tools (soilmap, pfas, soilask), with its English. Keyed by stable ids; each entry is {he, en}; {name} marks a value filled at run time. The engine picks the language from <html lang> (en on /en/ pages, inc/page-lang.php) and each tool section follows its own lang attribute. The same tables are embedded in docs/tools/soil-en/patched/ (this file is generated from them: node build_strings.js). Hebrew output is unchanged, except soilask letter.openDate, now left out when the report date is partial.",
+ "_format": {
+  "numbers": "he-IL on Hebrew pages, en-US on English pages (same digits and separators)",
+  "dates": "he: 15.10.2026 · en: 15 Oct 2026",
+  "times": "he: פי 598 · en: 598×"
+ },
+ "core": {
+  "rowDel": {
+   "he": "הסרת שורה ",
+   "en": "Remove row "
+  },
+  "rowAdd": {
+   "he": "הוספת שורה",
+   "en": "Add row"
+  },
+  "eg": {
+   "he": "דוגמה",
+   "en": "Example"
+  },
+  "egNote": {
+   "he": "הערכים בפתיחה הם דוגמה. שנו אותם, והתוצאה מתעדכנת מיד.",
+   "en": "The opening values are an example. Change them and the result updates at once."
+  },
+  "calcErr": {
+   "he": "לא הצלחנו לחשב עם הערכים האלה.",
+   "en": "We could not calculate with these values."
+  },
+  "scen": {
+   "he": "תרחישים",
+   "en": "Scenarios"
+  },
+  "table": {
+   "he": "הפירוט המלא",
+   "en": "The full breakdown"
+  },
+  "src": {
+   "he": "מקורות: ",
+   "en": "Sources: "
+  },
+  "copy": {
+   "he": "העתקת התוצאה",
+   "en": "Copy the result"
+  },
+  "copied": {
+   "he": "הועתק",
+   "en": "Copied"
+  },
+  "copyPrompt": {
+   "he": "העתיקו את התוצאה",
+   "en": "Copy the result"
+  },
+  "wa": {
+   "he": "שליחה בוואטסאפ",
+   "en": "Send on WhatsApp"
+  },
+  "print": {
+   "he": "הדפסה או שמירה כקובץ",
+   "en": "Print or save as PDF"
+  },
+  "noData": {
+   "he": "הנתונים לא נטענו. רעננו את העמוד.",
+   "en": "The data did not load. Please refresh the page."
+  }
+ },
+ "soilmap": {
+  "bin100": {
+   "he": "פי 100 ומעלה",
+   "en": "100× and above"
+  },
+  "bin10": {
+   "he": "פי 10 עד 100",
+   "en": "10× to 100×"
+  },
+  "bin1": {
+   "he": "עד פי 10",
+   "en": "Up to 10×"
+  },
+  "bin0": {
+   "he": "מתחת לסף",
+   "en": "Below the threshold"
+  },
+  "stPublished": {
+   "he": "דו\"ח בדיקה פורסם",
+   "en": "Test report published"
+  },
+  "stFindings": {
+   "he": "ברשימת המגרשים עם ממצאים",
+   "en": "On the list of plots with findings"
+  },
+  "stDevClear": {
+   "he": "לפי היזם: בלי חריגות",
+   "en": "Per the developer: no exceedances"
+  },
+  "stDevTesting": {
+   "he": "לפי היזם: בבדיקה",
+   "en": "Per the developer: under review"
+  },
+  "times": {
+   "he": "פי {n}",
+   "en": "{n}×"
+  },
+  "range": {
+   "he": "{a} עד {b}",
+   "en": "{a} to {b}"
+  },
+  "ofN": {
+   "he": "{a} מתוך {b}",
+   "en": "{a} of {b}"
+  },
+  "kicker": {
+   "he": "מפה · שדה דב",
+   "en": "Map · Sde Dov"
+  },
+  "title": {
+   "he": "מפת בדיקות הקרקע בשדה דב",
+   "en": "Sde Dov soil test map"
+  },
+  "lede": {
+   "he": "כל מגרש שפורסם עליו דו\"ח בדיקת קרקע, וכל קידוח במקומו. נוגעים במגרש או מקלידים את מספרו, ורואים את הערכים מול ערך הסף, את שלב הפרויקט במגרש, ואת הדו\"ח עצמו.",
+   "en": "Every plot with a published soil test report, and every borehole in its place. Tap a plot or type its number to see the values against the threshold, the stage of the project on the plot, and the report itself."
+  },
+  "stripReports": {
+   "he": "דו\"חות בדיקה שפורסמו",
+   "en": "Published test reports"
+  },
+  "stripOver": {
+   "he": "קידוחים מעל ערך הסף",
+   "en": "Boreholes above the threshold"
+  },
+  "stripTop": {
+   "he": "הערך הגבוה (מגרש {plot})",
+   "en": "Highest value (plot {plot})"
+  },
+  "qLabel": {
+   "he": "מספר מגרש",
+   "en": "Plot number"
+  },
+  "qPh": {
+   "he": "למשל 303 או 2206",
+   "en": "e.g. 303 or 2206"
+  },
+  "chipMkt": {
+   "he": " · פרויקט בשיווק",
+   "en": " · project in marketing"
+  },
+  "mapAria": {
+   "he": "מפת המגרשים והקידוחים בשדה דב",
+   "en": "Map of the Sde Dov plots and boreholes"
+  },
+  "mapWait": {
+   "he": "טוען את המפה…",
+   "en": "Loading the map…"
+  },
+  "d3": {
+   "he": "תלת ממד",
+   "en": "3D"
+  },
+  "lgList": {
+   "he": "ברשימה, בלי דו\"ח",
+   "en": "On the list, no report"
+  },
+  "lgDev": {
+   "he": "לפי היזם: בלי חריגות",
+   "en": "Per the developer: no exceedances"
+  },
+  "lgGreen": {
+   "he": "פרויקט בשיווק (המחשה)",
+   "en": "Project in marketing (illustration)"
+  },
+  "mapNote": {
+   "he": "המפה מציגה רק מה שפורסם. מגרש בלי צבע הוא מגרש שלא פורסם עליו דו\"ח דיגום במאגר, וזה לא אומר דבר על מצב הקרקע בו. הערכים: הריכוז הגבוה ביותר של PFOS בכל קידוח, מול {label}: PFOS {pfos} ננוגרם לק\"ג, PFOA {pfoa}.",
+   "en": "The map shows only what has been published. A plot without colour has no sampling report in the database, and that says nothing about its soil. The values: the highest PFOS concentration in each borehole, against the {label}: PFOS {pfos} ng/kg, PFOA {pfoa}."
+  },
+  "tableSummary": {
+   "he": "כל המגרשים עם מידע שפורסם",
+   "en": "All plots with published information"
+  },
+  "thPlot": {
+   "he": "מגרש",
+   "en": "Plot"
+  },
+  "thStatus": {
+   "he": "המצב",
+   "en": "Status"
+  },
+  "thStage": {
+   "he": "השלב במגרש",
+   "en": "Stage on the plot"
+  },
+  "thPfos": {
+   "he": "PFOS מול הסף",
+   "en": "PFOS vs the threshold"
+  },
+  "srcLine": {
+   "he": "מקורות: {src}. המפה: © OpenStreetMap, OpenFreeMap. עודכן {date}.",
+   "en": "Sources: {src}. Map: © OpenStreetMap, OpenFreeMap. Updated {date}."
+  },
+  "askMsgProj": {
+   "he": "שלום, אשמח לפרטים על הפרויקט במגרש {n} ברובע שדה דב.",
+   "en": "Hello, I would like details on the project on plot {n} in the Sde Dov district."
+  },
+  "askMsgPlot": {
+   "he": "שלום, אשמח לפרטים על מגרש {n} ברובע שדה דב.",
+   "en": "Hello, I would like details on plot {n} in the Sde Dov district."
+  },
+  "askBtnProj": {
+   "he": "בקשת פרטים על הפרויקט במגרש {n}",
+   "en": "Ask for details on the project on plot {n}"
+  },
+  "askBtnPlot": {
+   "he": "בקשת פרטים על מגרש {n}",
+   "en": "Ask for details on plot {n}"
+  },
+  "plot": {
+   "he": "מגרש {n}",
+   "en": "Plot {n}"
+  },
+  "badgeProj": {
+   "he": "פרויקט בשיווק",
+   "en": "Project in marketing"
+  },
+  "greenNote": {
+   "he": "הבניין הירוק במפה הוא המחשה לפי מספר הקומות שפורסם, לא תכנון מדויק.",
+   "en": "The green building on the map is an illustration from the published number of floors, not the exact design."
+  },
+  "m2": {
+   "he": "{n} מ\"ר",
+   "en": "{n} m²"
+  },
+  "badgeNone": {
+   "he": "לא פורסם דו\"ח בדיקה",
+   "en": "No test report published"
+  },
+  "noneTxt": {
+   "he": "על המגרש הזה לא פורסם דו\"ח בדיקת קרקע במאגר המשרד להגנת הסביבה (נכון ל־{date}).",
+   "en": "No soil test report for this plot has been published in the Ministry of Environmental Protection database (as of {date})."
+  },
+  "plan": {
+   "he": "תכנית {p}",
+   "en": "Plan {p}"
+  },
+  "peakLab": {
+   "he": "הערך הגבוה של PFOS בדו\"ח, מול ערך הסף",
+   "en": "Highest PFOS value in the report, against the threshold"
+  },
+  "ng": {
+   "he": "{n} ננוגרם לק\"ג",
+   "en": "{n} ng/kg"
+  },
+  "depth": {
+   "he": ", בעומק {m} מ'",
+   "en": ", at a depth of {m} m"
+  },
+  "holesOver": {
+   "he": "קידוחים מעל ערך הסף (PFOS)",
+   "en": "Boreholes above the threshold (PFOS)"
+  },
+  "pfoaPeak": {
+   "he": "PFOA, הערך הגבוה",
+   "en": "PFOA, highest value"
+  },
+  "nHoles": {
+   "he": "{n} קידוחים",
+   "en": "{n} boreholes"
+  },
+  "below": {
+   "he": "מתחת לסף",
+   "en": "Below the threshold"
+  },
+  "sampled": {
+   "he": "הבדיקה",
+   "en": "Sampling"
+  },
+  "report": {
+   "he": "הדו\"ח",
+   "en": "Report"
+  },
+  "approx": {
+   "he": "מיקומי הקידוחים במגרש הזה שוחזרו מהתרשים שבדו\"ח, בדיוק של כ־2 מטרים.",
+   "en": "The borehole positions on this plot were reconstructed from the drawing in the report, to about 2 metres."
+  },
+  "phaseMkt": {
+   "he": "יש במגרש פרויקט בשיווק",
+   "en": "A project in marketing on this plot"
+  },
+  "phaseStage": {
+   "he": "השלב במגרש",
+   "en": "Stage on the plot"
+  },
+  "inMkt": {
+   "he": "בשיווק",
+   "en": "In marketing"
+  },
+  "mktPrefix": {
+   "he": "^פרויקט בשיווק( · )?",
+   "en": "^Project in marketing( · )?"
+  },
+  "reportLink": {
+   "he": "הדו\"ח במאגר המשרד להגנת הסביבה",
+   "en": "The report in the Ministry of Environmental Protection database (Hebrew PDF)"
+  },
+  "findHint": {
+   "he": "מקלידים מספר מגרש, למשל 303 או 2206.",
+   "en": "Type a plot number, e.g. 303 or 2206."
+  },
+  "findNone": {
+   "he": "לא מצאנו מגרש {q} בתכניות של רובע שדה דב (תמ\"ל 3001, 1/4444, 2/4444).",
+   "en": "We found no plot {q} in the Sde Dov district plans (TMAL 3001, 1/4444, 2/4444)."
+  },
+  "mapFail": {
+   "he": "המפה לא נטענה. הטבלה והכרטיס למטה עובדים גם בלעדיה.",
+   "en": "The map did not load. The table and the card below work without it."
+  },
+  "gMobile": {
+   "he": "מזיזים את המפה בשתי אצבעות",
+   "en": "Use two fingers to move the map"
+  },
+  "gWin": {
+   "he": "Ctrl וגלגלת כדי להגדיל",
+   "en": "Use Ctrl + scroll to zoom the map"
+  },
+  "gMac": {
+   "he": "⌘ וגלגלת כדי להגדיל",
+   "en": "Use ⌘ + scroll to zoom the map"
+  },
+  "popHole": {
+   "he": "קידוח {id} · מגרש {plot}",
+   "en": "Borehole {id} · plot {plot}"
+  },
+  "popOver": {
+   "he": "{x} מהסף · {ng} ננוגרם לק\"ג",
+   "en": "{x} the threshold · {ng} ng/kg"
+  },
+  "popBelowRL": {
+   "he": "מתחת לסף הדיווח",
+   "en": "below the reporting limit"
+  },
+  "popPfoaOver": {
+   "he": "{x} מהסף",
+   "en": "{x} the threshold"
+  },
+  "popApprox": {
+   "he": "מיקום משוחזר מהתרשים, כ־2 מ'.",
+   "en": "Position reconstructed from the drawing, about 2 m."
+  },
+  "_notePerPlot": {
+   "plot103": {
+    "he": "המגרש נכלל ברשימת המגרשים שבהם נמסר על ממצאים (יולי 2026). הדו\"ח לא פורסם במאגר.",
+    "en": "The plot is on the list of plots where findings were reported (July 2026). The report has not been published in the database."
+   },
+   "plot105": {
+    "he": "המגרש נכלל ברשימת המגרשים שבהם נמסר על ממצאים (יולי 2026). הדו\"ח לא פורסם במאגר.",
+    "en": "The plot is on the list of plots where findings were reported (July 2026). The report has not been published in the database."
+   },
+   "plot106": {
+    "he": "לפי היזם (מרץ 2026): בבדיקה לא נמצאו חריגות מערכי הסף, והמשרד להגנת הסביבה אימץ את הממצאים. הדו\"ח לא פורסם במאגר.",
+    "en": "Per the developer (March 2026): the testing found no exceedance of the threshold values, and the Ministry of Environmental Protection adopted the findings. The report has not been published in the database."
+   },
+   "plot107": {
+    "he": "לפי היזם (יולי 2026): יותר מ־98% מהדגימות תקינות, והקרקע שבה נמצאו חריגות פונתה במלואה. הדו\"ח לא פורסם במאגר.",
+    "en": "Per the developer (July 2026): more than 98% of the samples are within the values, and the soil where exceedances were found has been fully removed. The report has not been published in the database."
+   },
+   "plot2102": {
+    "he": "לפי היזם (יולי 2026): הבדיקות הושלמו בלי חריגות, והמשרד אישר. הדו\"ח לא פורסם במאגר.",
+    "en": "Per the developer (July 2026): the testing was completed with no exceedances, and the Ministry approved. The report has not been published in the database."
+   },
+   "plot2203": {
+    "he": "לפי היזם (יולי 2026): המגרש בבדיקה אחרי הדיגום.",
+    "en": "Per the developer (July 2026): the plot is under review after sampling."
+   },
+   "plot2207": {
+    "he": "לפי היזם (יולי 2026): המגרש בבדיקה אחרי הדיגום. הדו\"ח לא פורסם במאגר.",
+    "en": "Per the developer (July 2026): the plot is under review after sampling. The report has not been published in the database."
+   },
+   "plot2255": {
+    "he": "לפי שכבת המגרשים של העירייה, 9 מתוך 12 הקידוחים של הדו\"ח נמצאים בתחום מגרש 2227 הסמוך. הקידוחים מוצגים במקום שמופיע בדו\"ח.",
+    "en": "According to the municipal plot layer, 9 of the 12 boreholes in the report lie within the neighbouring plot 2227. The boreholes are shown where the report places them."
+   }
+  }
+ },
+ "pfas": {
+  "times": {
+   "he": "פי {n}",
+   "en": "{n}×"
+  },
+  "pctOf": {
+   "he": "{n}% מהסף",
+   "en": "{n}% of the threshold"
+  },
+  "kicker": {
+   "he": "מחשבון · קרקע",
+   "en": "Calculator · Soil"
+  },
+  "title": {
+   "he": "פי כמה מעל ערך הסף? תוצאת מעבדה של PFAS",
+   "en": "How many times the threshold? Reading a PFAS lab result"
+  },
+  "lede": {
+   "he": "מקלידים ריכוז מתוך דו\"ח סקר קרקע, בוחרים חומר ויחידה, ומקבלים פי כמה הוא מעל ערך הסף למגע ישיר שמשמש בדו\"חות של שדה דב, ואיך הוא עומד מול השיאים שפורסמו.",
+   "en": "Type a concentration from a soil survey report, choose the compound and the unit, and see how many times it is above the direct-contact threshold used in the Sde Dov reports, and how it compares with the published peaks."
+  },
+  "fSub": {
+   "he": "החומר",
+   "en": "Compound"
+  },
+  "fVal": {
+   "he": "הריכוז בדו\"ח",
+   "en": "Concentration in the report"
+  },
+  "fUnit": {
+   "he": "היחידה בדו\"ח",
+   "en": "Unit in the report"
+  },
+  "uNg": {
+   "he": "ננוגרם לק\"ג",
+   "en": "ng/kg"
+  },
+  "uUg": {
+   "he": "מיקרוגרם לק\"ג",
+   "en": "µg/kg"
+  },
+  "uMg": {
+   "he": "מיליגרם לק\"ג",
+   "en": "mg/kg"
+  },
+  "help": {
+   "he": "בדו\"חות מופיע ng/kg, µg/kg או mg/kg. אלף ננוגרם הם מיקרוגרם אחד, ומיליון ננוגרם הם מיליגרם אחד.",
+   "en": "Reports print ng/kg, µg/kg or mg/kg. A thousand nanograms make one microgram, and a million nanograms make one milligram."
+  },
+  "errVal": {
+   "he": "הקלידו ריכוז גדול מאפס.",
+   "en": "Enter a concentration greater than zero."
+  },
+  "ansLab": {
+   "he": "{name} מול ערך הסף למגע ישיר",
+   "en": "{name} against the direct-contact threshold"
+  },
+  "ansSub": {
+   "he": "{ng} ננוגרם לק\"ג · ערך הסף: {th}",
+   "en": "{ng} ng/kg · threshold: {th}"
+  },
+  "lNg": {
+   "he": "בננוגרם לק\"ג (ng/kg)",
+   "en": "In nanograms per kg (ng/kg)"
+  },
+  "lUg": {
+   "he": "במיקרוגרם לק\"ג (µg/kg)",
+   "en": "In micrograms per kg (µg/kg)"
+  },
+  "lMg": {
+   "he": "במיליגרם לק\"ג (mg/kg)",
+   "en": "In milligrams per kg (mg/kg)"
+  },
+  "lTh": {
+   "he": "ערך הסף ל־{name}",
+   "en": "Threshold for {name}"
+  },
+  "ngVal": {
+   "he": "{n} ננוגרם לק\"ג",
+   "en": "{n} ng/kg"
+  },
+  "over": {
+   "he": "הריכוז מעל ערך הסף. ",
+   "en": "The concentration is above the threshold. "
+  },
+  "under": {
+   "he": "הריכוז מתחת לערך הסף. ",
+   "en": "The concentration is below the threshold. "
+  },
+  "note": {
+   "he": "ערך הסף משמש בדו\"חות להשוואה: חריגה פירושה שלפי הנחיות המשרד להגנת הסביבה הקרקע דורשת בדיקה נוספת או טיפול לפני בנייה. המחשבון לא מחליף את קריאת הדו\"ח המלא ואת חוות הדעת של יועץ סביבתי.",
+   "en": "The reports use the threshold for comparison: an exceedance means that, under the Ministry of Environmental Protection guidelines, the soil needs further testing or treatment before construction. The calculator does not replace reading the full report or the opinion of an environmental consultant."
+  },
+  "formula": {
+   "he": "פי כמה = הריכוז בננוגרם לק\"ג ÷ ערך הסף. {label}: PFOS {pfos}, PFOA {pfoa}, PFHxS {pfhxs} ננוגרם לק\"ג.",
+   "en": "Times the threshold = the concentration in ng/kg ÷ the threshold. The {label}: PFOS {pfos}, PFOA {pfoa}, PFHxS {pfhxs} ng/kg."
+  },
+  "srcLabel": {
+   "he": "דו\"ח סקר הקרקע של מגרש 303, מאגר המשרד להגנת הסביבה",
+   "en": "Soil survey report of plot 303, Ministry of Environmental Protection database (Hebrew PDF)"
+  },
+  "share": {
+   "he": "תוצאת מעבדה: {name} {ng} ננוגרם לק\"ג = {x} מערך הסף למגע ישיר (שדה דב, יוני 2026).",
+   "en": "Lab result: {name} {ng} ng/kg = {x} the direct-contact threshold (Sde Dov threshold values, June 2026)."
+  },
+  "tTitle": {
+   "he": "מול השיאים שפורסמו בשדה דב (PFOS)",
+   "en": "Against the published Sde Dov peaks (PFOS)"
+  },
+  "tPlot": {
+   "he": "מגרש",
+   "en": "Plot"
+  },
+  "tPeak": {
+   "he": "השיא בדו\"ח",
+   "en": "Report peak"
+  },
+  "tVsTh": {
+   "he": "מול הסף",
+   "en": "Vs the threshold"
+  },
+  "tVsYou": {
+   "he": "מול הערך שלכם",
+   "en": "Vs your value"
+  },
+  "more": {
+   "he": "פי {n} יותר",
+   "en": "{n}× higher"
+  },
+  "less": {
+   "he": "פי {n} פחות",
+   "en": "{n}× lower"
+  }
+ },
+ "soilask": {
+  "times": {
+   "he": "פי {n}",
+   "en": "{n}×"
+  },
+  "kicker": {
+   "he": "מחולל · שדה דב",
+   "en": "Generator · Sde Dov"
+  },
+  "title": {
+   "he": "מכתב שאלות ליזם על הקרקע במגרש",
+   "en": "A letter of soil questions for the developer"
+  },
+  "lede": {
+   "he": "בוחרים את המגרש או הפרויקט, ומקבלים מכתב מוכן ליזם, שנפתח במה שפורסם על המגרש ושואל את השאלות שנובעות מזה. מעתיקים או שולחים בוואטסאפ.",
+   "en": "Choose the plot and get a ready letter for the developer. It opens with what has been published about the plot and asks the questions that follow from it. Copy it or send it on WhatsApp."
+  },
+  "fPlot": {
+   "he": "המגרש או הפרויקט",
+   "en": "The plot"
+  },
+  "optPlot": {
+   "he": "מגרש {p}",
+   "en": "Plot {p}"
+  },
+  "optOther": {
+   "he": "מגרש אחר ברובע",
+   "en": "Another plot in the district"
+  },
+  "fStage": {
+   "he": "איפה אתם עומדים",
+   "en": "Where you stand"
+  },
+  "before": {
+   "he": "לפני חתימה",
+   "en": "Before signing"
+  },
+  "after": {
+   "he": "כבר חתמתי",
+   "en": "Already signed"
+  },
+  "fForm": {
+   "he": "איך שולחים",
+   "en": "How you send it"
+  },
+  "mail": {
+   "he": "מכתב מלא",
+   "en": "Full letter"
+  },
+  "wa": {
+   "he": "הודעת וואטסאפ קצרה",
+   "en": "Short WhatsApp message"
+  },
+  "fLang": {
+   "he": "שפת המכתב",
+   "en": "Letter language"
+  },
+  "langEn": {
+   "he": "אנגלית",
+   "en": "English"
+  },
+  "langHe": {
+   "he": "עברית",
+   "en": "Hebrew (for the developer)"
+  },
+  "wNone": {
+   "he": "לא פורסם דו״ח על המגרש",
+   "en": "No report published on the plot"
+  },
+  "wReport": {
+   "he": "דו״ח שפורסם: {x} מעל הסף",
+   "en": "Published report: {x} the threshold"
+  },
+  "wFindings": {
+   "he": "ברשימת המגרשים עם ממצאים, בלי דו״ח",
+   "en": "On the list of plots with findings, no report"
+  },
+  "wDevClear": {
+   "he": "לפי היזם: בלי חריגות",
+   "en": "Per the developer: no exceedances"
+  },
+  "wDevTesting": {
+   "he": "לפי היזם: בבדיקה",
+   "en": "Per the developer: under review"
+  },
+  "ready": {
+   "he": "המכתב מוכן",
+   "en": "Your letter is ready"
+  },
+  "nQ": {
+   "he": "{n} שאלות",
+   "en": "{n} questions"
+  },
+  "note": {
+   "he": "המכתב לא מחליף ייעוץ משפטי. לפני חתימה, כדאי שעורך דין מקרקעין יעבור על החוזה ועל הסעיפים לגבי הקרקע: <a href=\"/real-estate-lawyer/\">עורך דין לקניית דירה</a>. מה פורסם על כל מגרש: במפה בראש העמוד.",
+   "en": "The letter is not legal advice. Before you sign, have an Israeli real estate lawyer review the contract and its clauses on the soil: <a href=\"/en/buy-property-in-israel/\">buying property in Israel from abroad</a>. What has been published on each plot: on the map at the top of the page."
+  },
+  "_letter": {
+   "openReport": {
+    "he": "לפי דו״ח סקר הקרקע של מגרש {p}, שפורסם במאגר המשרד להגנת הסביבה{date}, נמצאה במגרש חריגה של PFOS מעל ערך הסף למגע ישיר: השיא {x}{depth}{holes}.",
+    "en": "According to the soil survey report for plot {p}, published in the Ministry of Environmental Protection database{date}, PFOS was found on the plot above the direct-contact threshold: the peak was {x} the threshold{depth}{holes}."
+   },
+   "openDate": {
+    "he": " ב־{d}",
+    "en": " on {d}"
+   },
+   "openDepth": {
+    "he": ", בעומק {m} מ׳",
+    "en": ", at a depth of {m} m"
+   },
+   "openHoles": {
+    "he": ", ב־{a} מתוך {b} קידוחים",
+    "en": ", in {a} of {b} boreholes"
+   },
+   "openFindings": {
+    "he": "מגרש {p} מופיע ברשימת תשעת המגרשים ברובע שבהם נמסר על ממצאים, ודו״ח הסקר שלו לא פורסם במאגר המשרד להגנת הסביבה.",
+    "en": "Plot {p} is on the list of nine plots in the district where findings were reported, and its survey report has not been published in the Ministry of Environmental Protection database."
+   },
+   "openDevClear": {
+    "he": "לפי מה שמסרה החברה, בסקר הקרקע במגרש {p} לא נמצאו חריגות.",
+    "en": "According to the company, the soil survey on plot {p} found no exceedances."
+   },
+   "openDevTesting": {
+    "he": "לפי מה שמסרה החברה, מגרש {p} נמצא בבדיקה אחרי הדיגום.",
+    "en": "According to the company, plot {p} is under review after sampling."
+   },
+   "openNone": {
+    "he": "לאור בדיקות הקרקע לחומרי PFAS ברובע מאז פברואר 2026, אבקש מידע על מצב הקרקע במגרש{p}.",
+    "en": "In light of the PFAS soil testing in the district since February 2026, I would like information on the state of the soil on{p}."
+   },
+   "openNoneP": {
+    "he": " {p}",
+    "en": " plot {p}"
+   },
+   "openNoneAny": {
+    "he": " שבו נמצאת הדירה",
+    "en": " the plot where the apartment is located"
+   },
+   "q1": {
+    "he": "האם המגרש נדגם לפי ההנחיות של המשרד להגנת הסביבה מ־12.2.2026? באילו תאריכים, וכמה קידוחים נעשו?",
+    "en": "Was the plot sampled under the Ministry of Environmental Protection guidelines of 12 February 2026? On which dates, and how many boreholes were drilled?"
+   },
+   "q2Report": {
+    "he": "האם הוגשה תכנית לטיפול בקרקע, והאם המשרד אישר אותה? מתי הטיפול צפוי להסתיים?",
+    "en": "Has a soil treatment plan been submitted, and has the Ministry approved it? When is the treatment expected to be completed?"
+   },
+   "q2DevClear": {
+    "he": "אבקש לקבל את מכתב המשרד להגנת הסביבה שמאמץ את ממצאי הסקר, ואת הדו״ח עצמו.",
+    "en": "Please send me the Ministry of Environmental Protection letter adopting the survey findings, and the report itself."
+   },
+   "q2Other": {
+    "he": "אבקש לקבל את דו״ח סקר הקרקע המלא של המגרש.",
+    "en": "Please send me the full soil survey report for the plot."
+   },
+   "q3": {
+    "he": "האם המשרד להגנת הסביבה אימץ את ממצאי הסקר בכתב?",
+    "en": "Has the Ministry of Environmental Protection adopted the survey findings in writing?"
+   },
+   "q4": {
+    "he": "האם הבדיקה או הטיפול בקרקע עלולים להשפיע על לוח הזמנים של הבנייה ועל מועד המסירה שבחוזה?",
+    "en": "Could the testing or treatment of the soil affect the construction schedule and the delivery date in the contract?"
+   },
+   "q5": {
+    "he": "מי נושא בעלות הבדיקה והטיפול בקרקע, והאם יש תרחיש שבו העלות תועבר לרוכשים?",
+    "en": "Who bears the cost of testing and treating the soil, and is there any scenario in which the cost would be passed on to buyers?"
+   },
+   "q6": {
+    "he": "האם ניתן היתר לבנייה או לחפירה ודיפון, והאם יש בו תנאים לגבי הקרקע?",
+    "en": "Has a building permit, or an excavation and shoring permit, been issued, and does it set conditions on the soil?"
+   },
+   "q7After": {
+    "he": "אבקש שתעדכנו אותי בכתב בכל ממצא חדש או החלטה של המשרד לגבי המגרש.",
+    "en": "Please update me in writing on any new finding or any Ministry decision about the plot."
+   },
+   "q7Before": {
+    "he": "האם תסכימו להוסיף לחוזה הצהרה שהקרקע טופלה לפי דרישות המשרד להגנת הסביבה לפני מסירת הדירה, והתחייבות לעדכן אותי בכל ממצא חדש?",
+    "en": "Would you agree to add to the contract a declaration that the soil was treated to the Ministry of Environmental Protection requirements before the apartment is handed over, and an undertaking to update me on any new finding?"
+   },
+   "headTo": {
+    "he": "לכבוד החברה היזמית",
+    "en": "To the development company"
+   },
+   "headPlot": {
+    "he": ", מגרש {p} בשדה דב",
+    "en": ", plot {p}, Sde Dov"
+   },
+   "headArea": {
+    "he": ", רובע שדה דב",
+    "en": ", Sde Dov district"
+   },
+   "meAfter": {
+    "he": "אני רוכש/ת דירה ",
+    "en": "I have signed for an apartment "
+   },
+   "meBefore": {
+    "he": "אני שוקל/ת לקנות דירה ",
+    "en": "I am considering buying an apartment "
+   },
+   "inArea": {
+    "he": "ברובע שדה דב",
+    "en": "in the Sde Dov district"
+   },
+   "waPlot": {
+    "he": " (מגרש {p})",
+    "en": " (plot {p})"
+   },
+   "waHello": {
+    "he": "שלום, ",
+    "en": "Hello, "
+   },
+   "waThanks": {
+    "he": "\nתודה.",
+    "en": "\nThank you."
+   },
+   "mailHello": {
+    "he": "\n\nשלום רב,\n",
+    "en": "\n\nDear Sir or Madam,\n"
+   },
+   "mailAsk": {
+    "he": "\n\nאבקש תשובה בכתב לשאלות הבאות:\n",
+    "en": "\n\nI would be grateful for a written answer to the following questions:\n"
+   },
+   "mailEnd": {
+    "he": "\n\nאודה לתשובתכם בכתב.\nבברכה,\n[השם שלכם]\n[טלפון]",
+    "en": "\n\nThank you for your written reply.\nKind regards,\n[Your name]\n[Phone]"
+   }
+  }
+ },
+ "data": {
+  "_about": "Hebrew values inside data/sde-dov-soil.json (built by tools/instruments/build_soil_data.py), Hebrew value -> English. Used by soilmap (all) and pfas (label). A value missing here stays Hebrew on the English page.",
+  "use": {
+   "דרך מאושרת": "Approved road",
+   "מבנים ומוסדות ציבור": "Public buildings and institutions",
+   "שטח ציבורי פתוח": "Public open space",
+   "דרך מוצעת": "Proposed road",
+   "מגורים ותעסוקה": "Residential and employment",
+   "מגורים ומסחר": "Residential and retail",
+   "פארק / גן ציבורי": "Park / public garden",
+   "כיכר עירונית": "Urban plaza",
+   "דרך קיימת": "Existing road",
+   "מלונאות (אכסון מלונאי)": "Hotels (hotel accommodation)",
+   "מסחר, תעסוקה ותיירות": "Retail, employment and tourism",
+   "מגורים, מסחר ותיירות": "Residential, retail and tourism",
+   "מסחר ותעסוקה": "Retail and employment",
+   "תעסוקה": "Employment",
+   "דיור מיוחד": "Special housing",
+   "מרכז עסקים ראשי": "Central business district",
+   "מגרש מיוחד": "Special plot",
+   "עירוני מעורב": "Mixed urban use",
+   "שטחים פתוחים ומתקנים הנדסיים": "Open space and engineering facilities",
+   "פתוח חוף הים-מ א": "Open seashore area",
+   "בנייני ציבור": "Public buildings"
+  },
+  "stage": {
+   "נמכר במכרז רמ\"י (דצמבר 2024)": "Sold in an Israel Land Authority tender (December 2024)",
+   "פרויקט בשיווק": "Project in marketing",
+   "פרויקט בשיווק · הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)": "Project in marketing · an excavation and shoring permit application was filed (8 Oct 2026)"
+  },
+  "fact": {
+   "מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות · 459 דירות": "A 39-storey tower and 9-storey boutique buildings · 459 apartments",
+   "מגדל בן 40 קומות, מגדלון בן 16 ושני בניינים בני 9 · 458 דירות": "A 40-storey tower, a 16-storey mid-rise and two 9-storey buildings · 458 apartments",
+   "מגדל בן 35 קומות ועוד 3 בניינים · 406 דירות": "A 35-storey tower and 3 more buildings · 406 apartments",
+   "4 בניינים סביב חצר משותפת · 337 דירות": "4 buildings around a shared courtyard · 337 apartments",
+   "230 דירות": "230 apartments",
+   "324 דירות להשכרה ארוכת טווח · מגדל בן 38 קומות ושני בניינים בני 8": "324 long-term rental apartments · a 38-storey tower and two 8-storey buildings",
+   "מגדל בן 45 קומות ו-3 מגדלים בני 20 · 708 דירות": "A 45-storey tower and 3 towers of 20 storeys · 708 apartments",
+   "מגדל בן 45 קומות ו-3 בנייני בוטיק בני 9 · 350 דירות": "A 45-storey tower and 3 boutique buildings of 9 storeys · 350 apartments",
+   "דיור מוגן · עד 300 יחידות דיור": "Assisted living · up to 300 housing units"
+  },
+  "plan": {
+   "תמ\"ל3001": "TMAL 3001"
+  },
+  "label": {
+   "ערכי סף למגע ישיר עבור שדה דב, יוני 2026 (כפי שמצוטטים בדו\"חות)": "direct-contact threshold values for Sde Dov, June 2026 (as quoted in the reports)"
+  },
+  "sources": {
+   "דו\"חות סקרי הקרקע של פרויקט אבן דרך במאגר המשרד להגנת הסביבה; שכבת המגרשים 837 של עיריית תל אביב": "the soil survey reports of the Even Derech programme in the Ministry of Environmental Protection database; plot layer 837 of the Tel Aviv municipality"
+  }
+ },
+ "php": {
+  "_about": "inc/instruments.php: the registry (the no-JS summary title, kicker, related links and the SoftwareApplication JSON-LD name/description). Summaries in English: nadlan_nli_summary_en() in the patched copy.",
+  "relatedLabel": {
+   "he": "כלים קשורים:",
+   "en": "Related:"
+  },
+  "relatedAria": {
+   "he": "כלים קשורים",
+   "en": "Related tools and guides"
+  },
+  "kickerDefault": {
+   "he": "מחשבון",
+   "en": "Calculator"
+  },
+  "soilmap": {
+   "name": {
+    "he": "מפת בדיקות הקרקע בשדה דב",
+    "en": "Sde Dov soil test map"
+   },
+   "kicker": {
+    "he": "מפה · שדה דב",
+    "en": "Map · Sde Dov"
+   },
+   "desc": {
+    "he": "מפה תלת־ממדית של מגרשי רובע שדה דב: לכל מגרש שפורסם עליו סקר קרקע, פי כמה ריכוז ה־PFOS מעל ערך הסף, באיזה עומק, כמה קידוחים חרגו, והדו\"ח עצמו. בדיקה לפי מספר מגרש או פרויקט.",
+    "en": "A 3D map of the Sde Dov district plots: for every plot with a published soil survey, how many times the PFOS value is above the threshold, at what depth, how many boreholes exceeded it, and the report itself. Check any plot by its number."
+   },
+   "related": {
+    "he": {
+     "/sde-dov/": "המדריך לשדה דב",
+     "/sde-dov/prices/": "מחירי הדירות בשדה דב",
+     "/real-estate-lawyer/construction-defects-lawsuit/": "שעון הבדק והאחריות",
+     "/new-projects/construction-input-index/": "הצמדה למדד תשומות הבנייה"
+    },
+    "en": {
+     "/en/sde-dov/": "The Sde Dov guide",
+     "/en/sde-dov/prices/": "Sde Dov apartment prices",
+     "/en/north-tel-aviv/": "North Tel Aviv real estate",
+     "/en/buy-property-in-israel/": "Buying property in Israel from abroad"
+    }
+   }
+  },
+  "pfas": {
+   "name": {
+    "he": "מחשבון PFAS: פי כמה מעל ערך הסף",
+    "en": "PFAS calculator: how many times the threshold"
+   },
+   "kicker": {
+    "he": "מחשבון · קרקע",
+    "en": "Calculator · Soil"
+   },
+   "desc": {
+    "he": "ממיר ריכוז של PFOS, PFOA או PFHxS מדו\"ח סקר קרקע (ננוגרם, מיקרוגרם או מיליגרם לק\"ג) לפי כמה הוא מעל ערך הסף למגע ישיר שמשמש בדו\"חות של שדה דב, ומשווה לשיאים שפורסמו.",
+    "en": "Converts a PFOS, PFOA or PFHxS concentration from a soil survey report (ng, µg or mg per kg) into how many times the direct-contact threshold used in the Sde Dov reports, and compares it with the published peaks."
+   },
+   "related": {
+    "he": {
+     "/sde-dov/": "המדריך לשדה דב",
+     "/sde-dov/prices/": "מחירי הדירות בשדה דב"
+    },
+    "en": {
+     "/en/sde-dov/": "The Sde Dov guide",
+     "/en/sde-dov/prices/": "Sde Dov apartment prices"
+    }
+   }
+  },
+  "soilask": {
+   "name": {
+    "he": "מכתב שאלות ליזם על הקרקע במגרש",
+    "en": "A letter of soil questions for the developer"
+   },
+   "kicker": {
+    "he": "מחולל · שדה דב",
+    "en": "Generator · Sde Dov"
+   },
+   "desc": {
+    "he": "מכתב מוכן ליזם על מצב הקרקע במגרש בשדה דב: נפתח במה שפורסם על המגרש ושואל על הדיגום לפי הנחיות 12.2.2026, הדו\"ח המלא, אימוץ הממצאים, תכנית הטיפול, מועד המסירה, העלות והחוזה. מכתב מלא או הודעת וואטסאפ.",
+    "en": "A ready letter to the developer about the soil on a Sde Dov plot: it opens with what was published about the plot and asks about sampling under the 12 Feb 2026 guidelines, the full report, the adoption of the findings, the treatment plan, the delivery date, the cost and the contract. A full letter or a WhatsApp message, in English or in Hebrew."
+   },
+   "related": {
+    "he": {
+     "/real-estate-lawyer/": "עורך דין לקניית דירה",
+     "/new-projects/contractor-delay-compensation/": "פיצוי על איחור במסירה",
+     "/sde-dov/": "המדריך לשדה דב"
+    },
+    "en": {
+     "/en/buy-property-in-israel/": "Buying property in Israel from abroad",
+     "/en/guides/new-apartment-sale-specification/": "The sale specification of a new apartment",
+     "/en/sde-dov/": "The Sde Dov guide"
+    }
+   }
+  }
+ }
+}
