@@ -1,0 +1,17 @@
+{
+ "tool": "vat5",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "VAT Law 95(I)/2000 as amended by 42(I)/2023 and 55(I)/2024; Tax Department notice (Aug 2025) on foreign citizens; KPMG and PwC (reviewed 04.08.2026) on the 130 m2 / EUR 350,000 / 190 m2 / EUR 475,000 limits; the large-family addition is from a Cyprus law-firm publication and is labelled so. research/costs-rules.json. The split formula follows the law's wording; cross-check against the Tax Department calculator (taxtools.mof.gov.cy) is listed as a pre-upload item.",
+ "standard": 0.19,
+ "reduced": 0.05,
+ "first_m2": 130,
+ "first_m2_disability": 190,
+ "extra_m2_per_child_beyond_third": 15,
+ "max_total_area_m2": 190,
+ "max_total_value": 475000,
+ "max_first_part_value": 350000,
+ "years": 10,
+ "late_months": 12,
+ "example": {"buyer": "person", "home": "main", "price": 320000, "area": 120, "disability": false, "children": 0, "timing": "before"}
+}

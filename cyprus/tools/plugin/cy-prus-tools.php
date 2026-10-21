@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: CY-PRUS Tools
- * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages: the full purchase-cost calculator, the net rental yield calculator and the bank-account documents wizard. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
- * Version: 0.3.0
+ * Description: Interactive tools (CY-PRUS Instruments) on selected guide pages: the full purchase-cost calculator, the net rental yield calculator the bank-account documents wizard and the 5% VAT eligibility checker. Each tool is printed by the server with a worked example, uses dated official rules, and loads nothing from third parties.
+ * Version: 0.4.0
  * Author: CY-PRUS
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CYPT_VERSION', '0.3.0' );
+define( 'CYPT_VERSION', '0.4.0' );
 define( 'CYPT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CYPT_URL', plugin_dir_url( __FILE__ ) );
 

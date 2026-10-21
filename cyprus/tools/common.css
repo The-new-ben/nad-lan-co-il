@@ -86,3 +86,14 @@
 .cyx-list__who { display: block; font: 500 12px/18px var(--cyx-mono); color: var(--cyx-muted); }
 .cyx-list__note { margin: 8px 0 0; font-size: 14px; line-height: 22px; color: var(--cyx-muted); }
 .cyx-result__figure--text { font-family: var(--cyx-sans); font-size: 24px; line-height: 30px; font-weight: 600; direction: rtl; text-align: right; }
+/* Eligibility checks */
+.cyx-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cyx-check { display: grid; gap: 2px; padding: 8px 12px; border: 1px solid var(--cyx-hair); border-radius: 2px; border-inline-start-width: 4px; }
+.cyx-check--ok { border-inline-start-color: #1D6E43; }
+.cyx-check--no { border-inline-start-color: #A3156F; }
+.cyx-check--warn { border-inline-start-color: var(--cyx-warn); }
+.cyx-check__label { font-weight: 600; font-size: 16px; line-height: 24px; }
+.cyx-check--ok .cyx-check__label::before { content: "עומד: "; color: #1D6E43; }
+.cyx-check--no .cyx-check__label::before { content: "לא עומד: "; color: #A3156F; }
+.cyx-check--warn .cyx-check__label::before { content: "לבדוק: "; color: var(--cyx-warn); }
+.cyx-check__why { font-size: 14px; line-height: 22px; color: var(--cyx-muted); }
