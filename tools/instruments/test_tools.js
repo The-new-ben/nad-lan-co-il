@@ -51,5 +51,22 @@ eq('ptax: 18M foreign resident = additional', win.NLPT.tax(18e6, PT.foreign).tax
 eq('ptax: 3M only home', win.NLPT.tax(3e6, PT.single).tax, 45538.3, 1);
 eq('ptax: 1.9M only home is exempt', win.NLPT.tax(1.9e6, PT.single).tax, 0, 0.01);
 eq('ptax: 25M only home (10% above 20,183,565)', win.NLPT.tax(25e6, PT.single).tax, 1810214.9, 1);
+// pcost (21.10.2026): the equity a buyer needs; tax from the same ptax brackets
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/pcost.js'), 'utf8'), ctx);
+const PC = { tracks: PT }, CC = JSON.parse(fs.readFileSync(path.join(A, 'data', 'cost.json'), 'utf8'));
+const pv = { price: 3e6, kind: 'second', track: 'single', loan: 1.5e6, lawyer: 0.5, broker: 2, checks: 2650, moving: 12000, renovation: 80000, furniture: 40000, reserve: 50000 };
+eq('pcost: 3M second-hand, only home: deal costs', win.NLPC.compute(pv, PC, CC).deal, 137048.3, 1);
+eq('pcost: 3M second-hand, only home: equity', win.NLPC.compute(pv, PC, CC).equity, 1819048.3, 1);
+eq('pcost: new from a developer: no broker', win.NLPC.compute(Object.assign({}, pv, { kind: 'new' }), PC, CC).broker, 0, 0.01);
+eq('pcost: mortgage file fee capped at 360', win.NLPC.compute(pv, PC, CC).mfee, 360, 0.01);
+eq('pcost: foreign resident LTV cap 50%', win.NLPC.compute(Object.assign({}, pv, { track: 'foreign' }), PC, CC).cap, 0.5, 0.0001);
+// pval (21.10.2026): the official neighbourhood median by rooms, the city as a fallback, the old per-m2 way
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/pval.js'), 'utf8'), ctx);
+const VD = JSON.parse(fs.readFileSync(path.join(A, 'data', 'value.json'), 'utf8'));
+const vb = { method: 'deals', city: 'תל אביב יפו', hood: '65210023', rooms: 4, condition: 0, building: 0, range: 5, asking: 0, sqm: 100 };
+eq('pval: Bavli 4 rooms = the official median', win.NLPV.compute(vb, VD).value, 6549400, 1);
+eq('pval: Kochav HaTzafon (no median) falls back to the city', win.NLPV.compute(Object.assign({}, vb, { hood: '65210017' }), VD).value, 5229800, 1);
+eq('pval: +5% condition', win.NLPV.compute(Object.assign({}, vb, { condition: 5 }), VD).value, 6876870, 1);
+eq('pval: per-m2 way 100 x 50,000 + parking 150,000', win.NLPV.compute({ method: 'sqm', sqm: 100, ppsqm: 50000, parking: 150000, storage: 0, balcony: 0, balconyPrice: 0, condition: 0, building: 0, range: 5 }, VD).value, 5150000, 1);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);

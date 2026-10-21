@@ -87,7 +87,12 @@
       var box2 = el('div', 'nli__in');
       var inp2;
       if (f.type === 'select') {
-        inp2 = el('select'); f.options.forEach(function (o) { var op = el('option', '', esc(o.label)); op.value = o.value; if (st.v[f.id] === o.value) op.selected = true; inp2.appendChild(op); });
+        inp2 = el('select');
+        // optionsFrom (21.10.2026, the home value tool): the list depends on other fields (a city's neighbourhoods); refilled before every run
+        var fill = function (sel) { var opts = f.optionsFrom ? f.optionsFrom(st.v, st.data) : f.options; if (f.optionsFrom && !opts.some(function (o) { return o.value === st.v[f.id]; })) st.v[f.id] = opts.length ? opts[0].value : '';
+          var key = opts.map(function (o) { return o.value; }).join('|'); if (sel.__k === key) { sel.value = st.v[f.id]; return; } sel.__k = key; sel.innerHTML = '';
+          opts.forEach(function (o) { var op = el('option', '', esc(o.label)); op.value = o.value; if (st.v[f.id] === o.value) op.selected = true; sel.appendChild(op); }); };
+        fill(inp2); if (f.optionsFrom) { (function (sel) { st.show.push(function () { fill(sel); }); })(inp2); }
       } else {
         inp2 = el('input'); inp2.type = (f.type === 'date' || f.type === 'month') ? f.type : 'text';
         if (f.type === 'money' || f.type === 'number' || f.type === 'percent') inp2.inputMode = 'decimal';
@@ -111,7 +116,7 @@
 
   function mount(root, spec, data) {
     var lg = langOf(root), T = pick(TX, lg);
-    var st = { uid: Math.random().toString(36).slice(2, 7), v: JSON.parse(JSON.stringify(spec.defaults(data))), err: {}, redraw: {}, scen: null, show: [], t: T };
+    var st = { uid: Math.random().toString(36).slice(2, 7), v: JSON.parse(JSON.stringify(spec.defaults(data))), err: {}, redraw: {}, scen: null, show: [], t: T, data: data };
     root.innerHTML = ''; if (!root.parentNode || !root.parentNode.closest || !root.parentNode.closest('.nli')) root.classList.add('nli'); root.setAttribute('dir', lg === 'en' ? 'ltr' : 'rtl');
     var panel = el('div', 'nli__panel');
     if (spec.kicker) panel.appendChild(el('p', 'nli__kicker', esc(spec.kicker)));

@@ -1,0 +1,16 @@
+{
+ "key": "cost",
+ "checked": "2026-10-21",
+ "vat": 0.18,
+ "mortgage_fee": { "rate": 0.0025, "max": 360 },
+ "lawyer": { "from": 0.5, "to": 1 },
+ "broker": { "customary": 2 },
+ "appraiser": [350, 950],
+ "inspection": [1500, 2500],
+ "ltv": { "single": 0.75, "extra": 0.5, "oleh": 0.75, "foreign": 0.5 },
+ "sources": [
+  { "label": "מע״מ 18% מ־1.1.2025, רשות המסים", "url": "https://www.gov.il/he/pages/dec1270-2024" },
+  { "label": "טווחי שכר טרחה, שמאות ובדק בית: ביזפורטל, 6.8.2026", "url": "https://www.bizportal.co.il/realestates/news/article/20038031" },
+  { "label": "שיעור המימון המרבי: הוראת ניהול בנקאי תקין 329, בנק ישראל", "url": "https://www.boi.org.il/" }
+ ]
+}

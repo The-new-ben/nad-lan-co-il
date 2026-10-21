@@ -85,6 +85,18 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'ptax.json' ),
 				'related' => array( '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/' => 'מחשבון משכנתא', '/real-estate-lawyer/' => 'עורך דין לקניית דירה', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
+			'pcost' => array(
+				'name' => 'מחשבון עלות רכישה כוללת', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · קניית דירה',
+				'desc' => 'כמה כסף צריך באמת כדי לקנות דירה: מס רכישה לפי המסלול, עורך דין ותיווך עם מע״מ, שמאי, בדיקות ופתיחת תיק, מעבר ושיפוץ, וההון העצמי שנשאר אחרי המשכנתא, עם שיעור המימון המרבי של בנק ישראל.',
+				'data' => array( 'ptax.json', 'cost.json' ),
+				'related' => array( '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/buying-apartment/' => 'מדריך קניית דירה', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
+			),
+			'pval' => array(
+				'name' => 'מחשבון שווי דירה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · שווי דירה',
+				'desc' => 'כמה שווה דירה לפי העסקאות שנסגרו: המחיר החציוני לפי מספר החדרים בשכונה או בעיר (נתוני רשות המסים), עם התאמות למצב, לקומה ולבניין, טווח זהירות ובדיקת מחיר מבוקש, או חישוב לפי מחיר למ״ר.',
+				'data' => array( 'value.json' ),
+				'related' => array( '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
+			),
 		) );
 	}
 
@@ -187,6 +199,17 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		}
 		if ( 'soilask' === $id ) {
 			return '<p>השאלות שכדאי לשאול את היזם על הקרקע במגרש בשדה דב: האם המגרש נדגם לפי ההנחיות של המשרד להגנת הסביבה מ־12.2.2026; את דו"ח סקר הקרקע המלא; האם המשרד אימץ את הממצאים בכתב; אם נמצאה חריגה, האם תכנית הטיפול אושרה; האם הטיפול עלול לדחות את מועד המסירה; מי נושא בעלות; ואילו תנאים יש בהיתר.</p>';
+		}
+		if ( 'pval' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/value.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['cities'] ) ) { return ''; }
+			$rows = '';
+			foreach ( $x['cities'] as $name => $c ) { $rows .= '<tr><td>' . esc_html( $name ) . '</td><td>' . ( $c['r3'] ? esc_html( number_format( $c['r3'] ) ) : '-' ) . '</td><td>' . ( $c['r4'] ? esc_html( number_format( $c['r4'] ) ) : '-' ) . '</td><td>' . ( $c['r5'] ? esc_html( number_format( $c['r5'] ) ) : '-' ) . '</td></tr>'; }
+			return '<p>המחיר החציוני של דירות שנמכרו לפי מספר החדרים, ברבעון האחרון שפורסם לכל עיר (ברובן 1-3.2026), לפי נתוני רשות המסים (₪):</p><table><thead><tr><th>עיר</th><th>3 חדרים</th><th>4 חדרים</th><th>5 חדרים</th></tr></thead><tbody>' . $rows . '</tbody></table>';
+		}
+		if ( 'pcost' === $id ) {
+			return '<p>מה נכנס לעלות של קניית דירה מעבר למחיר: מס רכישה לפי המדרגות של רשות המסים (בדירה יחידה אין מס עד 1,978,745 ₪), עורך דין בדרך כלל 0.5% עד 1% מהמחיר ותיווך מקובל 2%, שניהם ועוד מע״מ 18%, שמאי לבנק 350 עד 950 ₪, בדק בית 1,500 עד 2,500 ₪, ופתיחת תיק משכנתא עד 360 ₪. בנק ישראל מאפשר משכנתא עד 75% משווי דירה יחידה ועד 50% בדירה נוספת או לתושב חוץ.</p>';
 		}
 		if ( 'ptax' === $id ) {
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/ptax.json';
