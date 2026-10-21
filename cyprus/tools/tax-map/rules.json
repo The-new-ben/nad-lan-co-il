@@ -1,0 +1,12 @@
+{
+ "tool": "tax-map",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "research/tax-map.json, read 21.10.2026: Cyprus CGT Law (20%; exemptions from 1.1.2026 by Law 242(I)/2025: EUR 30,000 general, EUR 150,000 main residence after 5 years, lifetime cap EUR 150,000), Tax Department (0.40% seller fee; T.D. 401 within one month), Israeli Income Tax Ordinance ss. 88-91, 170, 199-207B (capital gains up to 25%, unilateral foreign tax credit, report within 30 days), ITA CRS lists of 28.12.2025, ITA reporting triggers (ILS 500,000 transfers, ILS 2,086,000 foreign assets). The Israeli figure is an estimate in euro before Israeli CPI indexing and is labelled so.",
+ "cy_cgt_rate": 0.2,
+ "cy_exempt_general": 30000,
+ "cy_exempt_main": 150000,
+ "cy_seller_fee": 0.004,
+ "il_cgt_rate": 0.25,
+ "example": {"buy": 250000, "sell": 340000, "costs": 9000, "main": false, "used": false}
+}

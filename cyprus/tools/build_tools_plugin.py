@@ -28,6 +28,8 @@ REGISTRY = [
      'engines': ['vat5']},
     {'id': 'residency', 'page_id': 52, 'path': '/guides/relocation-cyprus-israelis/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['residency']},
+    {'id': 'tax-map', 'page_id': 59, 'path': '/guides/cyprus-property-accountant-selection/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['tax-map']},
 ]
 
 
