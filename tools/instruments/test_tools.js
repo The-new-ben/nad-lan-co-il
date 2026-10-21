@@ -68,5 +68,15 @@ eq('pval: Bavli 4 rooms = the official median', win.NLPV.compute(vb, VD).value, 
 eq('pval: Kochav HaTzafon (no median) falls back to the city', win.NLPV.compute(Object.assign({}, vb, { hood: '65210017' }), VD).value, 5229800, 1);
 eq('pval: +5% condition', win.NLPV.compute(Object.assign({}, vb, { condition: 5 }), VD).value, 6876870, 1);
 eq('pval: per-m2 way 100 x 50,000 + parking 150,000', win.NLPV.compute({ method: 'sqm', sqm: 100, ppsqm: 50000, parking: 150000, storage: 0, balcony: 0, balconyPrice: 0, condition: 0, building: 0, range: 5 }, VD).value, 5150000, 1);
+// arnona (21.10.2026): Tel Aviv 2026 order, figures from the research JSON's worked examples
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/arnona.js'), 'utf8'), ctx);
+const AR = JSON.parse(fs.readFileSync(path.join(A, 'data', 'arnona-tlv.json'), 'utf8'));
+const av = { zone: 1, built: '2022+', kind: 'apt', featured: true, area: 100, discount: '' };
+eq('arnona: zone 1, new, 100 m2', win.NLAR.compute(av, AR).annual, 11299, 0.01);
+eq('arnona: 140 m2 (up to 140 rate)', win.NLAR.compute(Object.assign({}, av, { area: 140 }), AR).annual, 15818.6, 0.01);
+eq('arnona: 141 m2 (whole area at the higher rate)', win.NLAR.compute(Object.assign({}, av, { area: 141 }), AR).annual, 19683.6, 0.01);
+eq('arnona: half a m2 rounds down', win.NLAR.round(100.5), 100, 0);
+eq('arnona: new immigrant 50% on 100 of 150 m2', win.NLAR.compute(Object.assign({}, av, { area: 150, discount: 'new_immigrant' }), AR).net, 13960, 0.01);
+eq('arnona: zone 4, 1975-1983 plain building, 80 m2', win.NLAR.compute(Object.assign({}, av, { zone: 4, built: '1975-1983', featured: false, area: 80 }), AR).rate, 54.05, 0.001);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);

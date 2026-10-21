@@ -1,0 +1,451 @@
+{
+ "layer": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589",
+ "layer_name": "אזורי ארנונה למגורים (residential arnona zones), city GIS",
+ "note": "Point coordinates are WGS84 lon/lat chosen by the researcher around the Kikar HaMedina ring (approximate, not building addresses). tr_zav_arnona is epoch ms (1735689600000 = 2025-01-01).",
+ "queries": [
+  {
+   "name": "square_centre",
+   "lon_lat": [
+    34.7897,
+    32.0869
+   ],
+   "retrieved_utc": "2026-10-21T18:08:32Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7897%2C32.0869&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42317,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "ring_north",
+   "lon_lat": [
+    34.7897,
+    32.0885
+   ],
+   "retrieved_utc": "2026-10-21T18:08:33Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7897%2C32.0885&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42206,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "ring_south",
+   "lon_lat": [
+    34.7897,
+    32.0852
+   ],
+   "retrieved_utc": "2026-10-21T18:08:34Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7897%2C32.0852&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42407,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "ring_east",
+   "lon_lat": [
+    34.7917,
+    32.0869
+   ],
+   "retrieved_utc": "2026-10-21T18:08:34Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7917%2C32.0869&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42314,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "ring_west",
+   "lon_lat": [
+    34.7877,
+    32.0869
+   ],
+   "retrieved_utc": "2026-10-21T18:08:35Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7877%2C32.0869&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42504,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "envelope_around_square",
+   "bbox_lon_lat": [
+    34.786,
+    32.084,
+    34.7935,
+    32.0895
+   ],
+   "retrieved_utc": "2026-10-21T18:08:35Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?geometry=34.7860%2C32.0840%2C34.7935%2C32.0895&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ms_mivnan%2Cshem_ezor%2Ck_ezor_meg%2Ck_ezor_asak%2Ctr_zav_arnona%2Cdate_import&returnGeometry=false&f=json",
+   "features": [
+    {
+     "ms_mivnan": 42301,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42204,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42201,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42205,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42103,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42307,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42306,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42203,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42202,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42308,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42309,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42107,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42206,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42315,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42310,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42207,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42314,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42317,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42316,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42606,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42313,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42501,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42504,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42318,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42312,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42319,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42502,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42503,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42401,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42402,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42505,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42407,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42506,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42406,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42405,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42404,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 43201,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    },
+    {
+     "ms_mivnan": 42408,
+     "shem_ezor": "אזור 1",
+     "k_ezor_meg": 1,
+     "k_ezor_asak": 1,
+     "tr_zav_arnona": 1735689600000,
+     "date_import": "15/10/2026 01:14:43"
+    }
+   ]
+  },
+  {
+   "name": "citywide_count_by_zone_and_order_date",
+   "retrieved_utc": "2026-10-21T18:08:35Z",
+   "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query?where=1%3D1&outStatistics=%5B%7B%22statisticType%22%3A+%22count%22%2C+%22onStatisticField%22%3A+%22oid_arnona%22%2C+%22outStatisticFieldName%22%3A+%22n%22%7D%5D&groupByFieldsForStatistics=k_ezor_meg%2Ctr_zav_arnona&f=json",
+   "features": [
+    {
+     "k_ezor_meg": 1,
+     "tr_zav_arnona": 1735689600000,
+     "n": 469
+    },
+    {
+     "k_ezor_meg": 2,
+     "tr_zav_arnona": 1735689600000,
+     "n": 429
+    },
+    {
+     "k_ezor_meg": 3,
+     "tr_zav_arnona": 1735689600000,
+     "n": 463
+    },
+    {
+     "k_ezor_meg": 4,
+     "tr_zav_arnona": 1735689600000,
+     "n": 1034
+    },
+    {
+     "k_ezor_meg": 5,
+     "tr_zav_arnona": 1735689600000,
+     "n": 21
+    }
+   ]
+  }
+ ]
+}
