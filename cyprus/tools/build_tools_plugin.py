@@ -26,6 +26,8 @@ REGISTRY = [
      'engines': ['bank-docs']},
     {'id': 'vat5', 'page_id': 54, 'path': '/guides/vat-5-percent-first-home-cyprus/', 'lang': 'he', 'after_paragraph': 2,
      'engines': ['vat5']},
+    {'id': 'residency', 'page_id': 52, 'path': '/guides/relocation-cyprus-israelis/', 'lang': 'he', 'after_paragraph': 2,
+     'engines': ['residency']},
 ]
 
 

@@ -1,0 +1,19 @@
+{
+ "tool": "residency",
+ "version": "2026-10-21",
+ "verified": true,
+ "verified_note": "Cyprus Civil Registry and Migration Department, criteria for an Immigration Permit under Regulation 6(2), expedited procedure, 4th revision in force from 02.05.2023; transitional route ended 03.03.2026. Read 21.10.2026 (research/costs-rules.json item permanent_residence_6_2). Press reports of a planned tightening (Sept 2026) are shown as a note only; no new rules were published by 21.10.2026.",
+ "min_investment": 300000,
+ "adult_child_multiplier": true,
+ "income_base": 50000,
+ "income_spouse": 15000,
+ "income_per_minor": 10000,
+ "fees": {"application": 500, "arc_per_person": 70},
+ "routes": {
+  "home": {"vat_on_top": true, "first_sale_only": true, "funds_from_abroad": true},
+  "other_property": {"vat_on_top": false, "first_sale_only": false, "funds_from_abroad": false},
+  "company": {"vat_on_top": false, "first_sale_only": false, "funds_from_abroad": false},
+  "fund": {"vat_on_top": false, "first_sale_only": false, "funds_from_abroad": false}
+ },
+ "example": {"route": "home", "amount": 320000, "firstSale": true, "spouse": true, "minors": 2, "adults": 0, "income": 90000, "abroad": true}
+}

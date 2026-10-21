@@ -156,10 +156,13 @@ def section_for(tool, lang, rules, T):
     if tool == 'vat5':
         import vat5_section
         return vat5_section.vat5_section(lang, rules, T, run_engine, HERE)
+    if tool == 'residency':
+        import residency_section
+        return residency_section.residency_section(lang, rules, T, run_engine, HERE)
     raise SystemExit('unknown tool ' + tool)
 
 
-ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5']}
+ENGINES = {'purchase-cost': ['purchase-cost'], 'net-yield': ['purchase-cost', 'net-yield'], 'bank-docs': ['bank-docs'], 'vat5': ['vat5'], 'residency': ['residency']}
 
 
 def inject_after_paragraph(page, section, n=2):
