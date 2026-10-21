@@ -73,6 +73,7 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 21.10 ~19:40: LIVE 1.72.476 = the September 2026 index data (CPI 105.3, construction input 104.0, Bank of Israel 3.25% / prime 4.75%, held today); no past value revised. Pressed /cpi-calculator/ and /new-projects/construction-input-index/ on phone + desktop: both show 9.2026, 0 errors. In parallel (Ben 21.10 "don't drop tasks"): agents preparing the English soil page (docs/tools/soil-en/), Mission B environment facts (docs/research/2026-10-15-sde-dov-soil/environment/), and the Kikar HaMedina tools plan (docs/research/2026-10-21-kikar-tools/).
 - 15.10 ~13:10: BUDGET STOP: weekly all-models usage 79% (the stop line is 80%). Building stopped; the 18:43 CPI one-shot
   was cancelled. Until the reset (19.10 01:00): leads and live faults only, the September CPI refresh only on Ben's word
   (best done in a FRESH small session: this one carries ~620k tokens of context, every turn is expensive). After the reset, in

@@ -4415,3 +4415,5 @@ RELEASE LOCK 1.72.474 (Kochav home in 360: assets/walk/kochav/home.html + pano +
 RELEASE DONE 1.72.474 (Kochav home in 360 + tour card on 7634/7812) by Claude [Ashira session] 21.10.2026: released and verified on phone and desktop. Lock released.
 RELEASE LOCK 1.72.475 (Kochav home tour: furnished/empty switch; home.html replaced + pano/*-empty-2k.jpg new, no hunk) by Claude [Ashira session] 21.10.2026, Ben "highest level, interior tour".
 RELEASE DONE 1.72.475 (Kochav home tour furnished/empty) + listing 7634/7812 content (mini penthouse test and comparison, mini penthouse calculator, floorSize 197, one terrace figure 80, EN data address fixed) by Claude [Ashira session] 21.10.2026: released and verified on phone and desktop. Lock released.
+RELEASE LOCK 1.72.476 (September 2026 index data: assets/instruments/data cbs-120010, cbs-200010, boi-rate replaced; no hunk) by Claude [Ashira session] 21.10.2026, Ben "continue every open task".
+RELEASE DONE 1.72.476 (September 2026 index data) by Claude [Ashira session] 21.10.2026: released and verified (both calculators show 9.2026 on phone and desktop, 0 errors). Lock released.
