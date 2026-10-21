@@ -1,0 +1,18 @@
+{
+  "released": "1.72.484",
+  "from": "1.72.483",
+  "live_before": {
+    "inc/instruments.php": "666c9dd2d6c33b3d66582376ec56bc65",
+    "nadlan-config.php": "444f61ea91f2c38ce107bee82e133cbb"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-21 21:47:44",
+  "files": {
+    "inc/instruments.php": "7c5df8a4008f2f8d36d8a035ece2ac3d",
+    "assets/instruments/tools/afford.js": "63921a29bf3c539cf91c0d325f00f678",
+    "nadlan-config.php": "41cc20a05a44815e92e792d648aebcd6"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.484, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

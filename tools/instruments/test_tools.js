@@ -86,5 +86,13 @@ eq('nrm: monthly payment', win.NLNR.compute(nv, { tracks: PT }, NR).monthly, 112
 eq('nrm: foreign purchase tax 8%', win.NLNR.compute(nv, { tracks: PT }, NR).tax, 320000, 0.01);
 eq('nrm: cash to close', win.NLNR.compute(nv, { tracks: PT }, NR).cash, 2344610, 0.5);
 eq('nrm: over the 50% cap flagged', win.NLNR.compute(Object.assign({}, nv, { ltv: 60 }), { tracks: PT }, NR).over ? 1 : 0, 1, 0);
+// afford (21.10.2026): 25,000 income, 35%, 4.62%, 25 years, 900,000 equity, only home -> the payment binds
+vm.runInContext(fs.readFileSync(path.join(A, 'tools/afford.js'), 'utf8'), ctx);
+const fv = { income: 25000, loans: 0, equity: 900000, track: 'single', ratio: 35, rate: 4.62, years: 25, lawyer: 0.5 };
+const fr = win.NLAF.compute(fv, { tracks: PT }, CC);
+eq('afford: max loan from the payment', fr.loanMax, 1555066, 40);
+eq('afford: max price (payment binds)', fr.price, 2424000, 1000);
+eq('afford: the limit is the payment', fr.limit === 'payment' ? 1 : 0, 1, 0);
+eq('afford: 300,000 equity -> the equity binds', win.NLAF.compute(Object.assign({}, fv, { equity: 300000 }), { tracks: PT }, CC).limit === 'equity' ? 1 : 0, 1, 0);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);
