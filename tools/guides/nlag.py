@@ -54,7 +54,7 @@ CSS = """<style id="nlag-css">
 .nlag .nlag-bill .tot{margin-top:12px;padding-top:10px;border-top:3px double var(--i);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .nlag .nlag-bill .tot span{font:600 15px/20px var(--sans);color:var(--i)}
 .nlag .nlag-bill .tot b{font:700 30px/30px var(--disp);color:var(--i)}
-@media (prefers-reduced-motion:no-preference){.nlag .nlag-bill.anim .bar i{transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}.nlag .nlag-bill.anim.on .bar i{transform:scaleX(var(--s,1))}}
+@media (prefers-reduced-motion:no-preference){.nlag .nlag-bill.anim .bar i{transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}.nlag .nlag-bill.anim.on .bar i{transform:scaleX(var(--s,1))}.nlag .nlag-hb.anim .br i{transform:scaleX(0);transition:transform .7s cubic-bezier(.2,.7,.2,1)}.nlag .nlag-hb.anim.on .br i{transform:scaleX(1)}}
 .nlag .nlag-chart{border:1px solid var(--ln);background:var(--w);border-radius:6px;padding:14px 14px 8px;margin:12px 0 8px}
 .nlag .nlag-chart h3{margin:0 0 6px;font:600 1.05rem/1.4 var(--sans);color:var(--i)}
 .nlag .nlag-chart svg{width:100%;height:auto;display:block;direction:ltr}
@@ -110,9 +110,16 @@ CSS = """<style id="nlag-css">
 .nlag .nlag-cluster a:hover{border-color:var(--sea)}
 .nlag .nlag-cluster a[aria-current]{background:var(--g);pointer-events:none}
 .nlag .ils{color:var(--mu)}
+.nlag .nlag-hb .r{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr) auto;gap:4px 10px;align-items:center;margin:5px 0}
+.nlag .nlag-hb .lb{font:500 13.5px/18px var(--sans);color:var(--i);overflow-wrap:anywhere}
+.nlag .nlag-hb .br{height:14px;display:block}
+.nlag .nlag-hb .br i{display:block;height:100%;width:calc(var(--s,1) * 100%);background:var(--sea);border-radius:2px;transform-origin:right}
+.nlag .nlag-hb .r.hi .br i{background:var(--red)}
+.nlag .nlag-hb b{font:500 12.5px/18px var(--mono);color:var(--i);direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+@media (max-width:600px){.nlag .nlag-hb .r{grid-template-columns:minmax(0,40%) minmax(0,1fr) auto;gap:2px 8px}.nlag .nlag-hb .lb{font-size:13px}}
 </style>"""
 
-ANIM = ("<script>(function(){var b=document.querySelectorAll('.nlag-bill:not(.anim)');if(!b.length||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;"
+ANIM = ("<script>(function(){var b=document.querySelectorAll('.nlag-bill:not(.anim),.nlag-hb:not(.anim)');if(!b.length||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;"
         "var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target);}})},{threshold:.2});"
         "[].forEach.call(b,function(x){x.classList.add('anim');o.observe(x)});setTimeout(function(){[].forEach.call(b,function(x){x.classList.add('on')})},5000);})();</script>")
 
@@ -217,19 +224,15 @@ def cluster(items, current=None):
 
 
 def bars(title, rows, unit="", note=None, hi=None):
-    """Horizontal bar infographic as inline SVG (right-aligned for RTL): rows = (label, value, sub). hi = index drawn in survey red."""
-    W, rowh, lab = 640, 34, 230
+    """Horizontal bar infographic as HTML rows (22.10.2026: the SVG version shrank its text to 6 px on a phone and ran Hebrew
+    names off the edge): rows = (label, value, sub). Label on the right, the bar grows from it, the figure after the bar.
+    hi = index drawn in survey red. Bars grow in when scrolled into view (the kit's 'anim' class), and are full without script."""
     mx = max(r[1] for r in rows) or 1
-    Hh = rowh * len(rows) + 10
-    g = '<svg viewBox="0 0 %d %d" role="img" aria-label="%s" style="direction:rtl">' % (W, Hh, E(title))
+    out = '<figure class="nlag-chart nlag-hb"><h3>%s</h3><div role="list">' % E(title)
     for i, r in enumerate(rows):
-        y = 6 + i * rowh; w = (W - lab - 90) * r[1] / mx
-        fill = "var(--red)" if hi is not None and i == hi else "var(--sea)"
-        g += '<text x="%d" y="%d" text-anchor="end" style="font:500 13px var(--sans);fill:var(--i)">%s</text>' % (W - 4, y + 17, E(r[0]))
-        g += '<rect x="%d" y="%d" width="%.1f" height="16" rx="2" style="fill:%s"/>' % (W - lab - w, y + 5, w, fill)
-        g += '<text x="%d" y="%d" text-anchor="end" style="font:500 12px var(--mono);fill:var(--i)">%s%s</text>' % (W - lab - w - 6, y + 17, E(r[2] if len(r) > 2 and r[2] else num(r[1])), E(unit))
-    g += '</svg>'
-    return '<figure class="nlag-chart"><h3>%s</h3>%s%s</figure>' % (E(title), g, ('<p class="key">%s</p>' % note) if note else '')
+        out += '<div role="listitem" class="r%s"><span class="lb">%s</span><span class="br"><i style="--s:%.3f"></i></span><b>%s%s</b></div>' % (
+            " hi" if hi is not None and i == hi else "", E(r[0]), max(0.01, r[1] / mx), E(r[2] if len(r) > 2 and r[2] else num(r[1])), E(unit))
+    return out + '</div>%s</figure>' % (('<p class="key">%s</p>' % note) if note else '') + ANIM
 
 
 def timeline(title, items):

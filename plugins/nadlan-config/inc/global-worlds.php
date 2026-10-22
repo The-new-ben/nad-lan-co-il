@@ -747,6 +747,7 @@ if ( ! function_exists( 'nadlan_gw_world_guides' ) ) {
 	function nadlan_gw_world_guides( $code ) {
 		$g = array(
 			'greece' => array(
+				'prices-greece'         => array( 'מחירון נדל״ן ביוון לפי אזור ואי', 'מחיר למ״ר ב־250 מקומות, על המפה' ),
 				'athens-apartments'     => array( 'דירה באתונה', 'שכונה אחרי שכונה: מחיר למ״ר, שכירות ומה בודקים' ),
 				'acquisition-greece'    => array( 'קניית דירה ביוון', 'השלבים, המסמכים וכל העלויות, עם מחשבון' ),
 				'golden-visa-greece'    => array( 'גולדן ויזה ביוון', 'הסכומים של 2026, התנאים ובדיקת זכאות' ),

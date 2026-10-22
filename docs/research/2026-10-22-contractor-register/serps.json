@@ -1,0 +1,471 @@
+{
+ "meta": {
+  "source": "DataForSEO /v3/serp/google/organic/live/advanced",
+  "location_code": 2376,
+  "language_code": "iw",
+  "device": "desktop",
+  "depth": 10,
+  "load_async_ai_overview": true,
+  "people_also_ask_click_depth": 1,
+  "retrieved": "2026-10-22 ~16:16 UTC (19:16 Israel)",
+  "note": "Organic positions = rank_group. AI overview present on all 5 SERPs. PAA shown only where Google showed it (else empty list)."
+ },
+ "serps": [
+  {
+   "keyword": "פנקס הקבלנים",
+   "volume": 6600,
+   "organic": [
+    [
+     1,
+     "www.michlal.com",
+     "https://www.michlal.com/רשם-הקבלנים-פנקס/",
+     "רשם הקבלנים פנקס - מכלל הכשרות מקוונות"
+    ],
+    [
+     2,
+     "my.acb.org.il",
+     "https://my.acb.org.il/Search.aspx",
+     "בוני הארץ (חיפוש קבלנים חברי התאחדות) - returns 404 'הדף לא נמצא' when opened 22.10.2026"
+    ],
+    [
+     3,
+     "www.gov.il",
+     "https://www.gov.il/apps/moch/rasham/details/35165",
+     "משרד הבינוי והשיכון - פנקס הקבלנים (single contractor record)"
+    ],
+    [
+     4,
+     "www.medicalmalpractice.co.il",
+     "https://www.medicalmalpractice.co.il/6150/איך-לבדוק-אם-קבלן-רשום-בפנקס-הקבלנים/",
+     "איך לבדוק אם קבלן רשום בפנקס הקבלנים? - עו\"ד מימון פאר"
+    ],
+    [
+     5,
+     "www.top-renovations.co.il",
+     "https://www.top-renovations.co.il/מאמרים/פנקס-הקבלנים",
+     "חיפוש בפנקס הקבלנים ואיך להיות קבלן רשום?"
+    ],
+    [
+     6,
+     "www.gov.il",
+     "https://www.gov.il/apps/moch/rasham/details/41089",
+     "משרד הבינוי והשיכון - פנקס הקבלנים (single contractor record)"
+    ],
+    [
+     7,
+     "www.facebook.com",
+     "https://www.facebook.com/binuy.gov.il/photos/904694041844590/",
+     "משרד הבינוי - הידעת? פנקס הקבלנים"
+    ],
+    [
+     8,
+     "hatikva.org.il",
+     "https://hatikva.org.il/איך-בודקים-קבלן-בפנקס-הקבלנים-לפני-שחו/",
+     "איך בודקים קבלן בפנקס הקבלנים לפני שחותמים על עבודה?"
+    ],
+    [
+     9,
+     "asset.mof.gov.il",
+     "https://asset.mof.gov.il/contractorRepository/s/",
+     "רשימת קבלנים מוכרים - משרד האוצר"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "cited": [
+     "https://www.gov.il/apps/moch/rasham/home",
+     "https://www.gov.il/he/departments/topics/contractors_registrar_subject",
+     "https://www.greeninvoice.co.il/magazine/פנקס-קבלנים/",
+     "https://govil.ai/datasets/פנקס-הקבלנים-הרשומים-a545d0ba/",
+     "https://www.gov.il/he/pages/general_information_for_registration_of_contractors",
+     "https://www.gov.il/he/pages/construction_registry"
+    ],
+    "claims": [
+     "search online in the ministry register",
+     "official register under the 1969 law",
+     "registered contractor required above 103,250 NIS (main branch) / 54,000 NIS (sub-branch)",
+     "statuses: active / frozen / excluded-suspended",
+     "search by name, licence number, city, branch or classification; printed certificate with QR"
+    ]
+   },
+   "paa": [],
+   "related": [
+    "בדיקת קבלן רשום רשם הקבלנים",
+    "חיפוש קבלן רשום לפי שם",
+    "בדיקת קבלן רשום לפי תעודת זהות",
+    "רשם הקבלנים קבלן רשום",
+    "העתק תעודת קבלן רשום",
+    "פנקס הקבלנים סיווגים",
+    "רשם הקבלנים טלפון",
+    "פנקס הקבלנים להורדה"
+   ]
+  },
+  {
+   "keyword": "רשם הקבלנים",
+   "volume": 2900,
+   "organic": [
+    [
+     1,
+     "www.gov.il",
+     "https://www.gov.il/he/departments/topics/contractors_registrar_subject",
+     "רשם הקבלנים"
+    ],
+    [
+     2,
+     "www.gov.il",
+     "https://www.gov.il/apps/moch/rasham/home",
+     "משרד הבינוי והשיכון - פנקס הקבלנים"
+    ],
+    [
+     3,
+     "he.wikipedia.org",
+     "https://he.wikipedia.org/wiki/רשם_הקבלנים",
+     "רשם הקבלנים - ויקיפדיה"
+    ],
+    [
+     4,
+     "www.greeninvoice.co.il",
+     "https://www.greeninvoice.co.il/magazine/קבלן-רשום/",
+     "קבלן רשום - המדריך המלא לרישום"
+    ],
+    [
+     5,
+     "gam.org.il",
+     "https://gam.org.il/",
+     "G.A.M גלאור: רישום קבלנים ברשם הקבלנים"
+    ],
+    [
+     6,
+     "www.gov.il",
+     "https://www.gov.il/he/departments/units/contractors_registrar_and_head_of_sales_laws_moch",
+     "אגף בכיר רשם הקבלנים | משרד הבינוי והשיכון"
+    ],
+    [
+     7,
+     "www.facebook.com",
+     "https://www.facebook.com/NationalHasbara/videos/1301312931784246/",
+     "לפני שמתחילים לבנות, בודקים! (video)"
+    ],
+    [
+     8,
+     "hatikva.org.il",
+     "https://hatikva.org.il/פנקס-הקבלנים/",
+     "פנקס הקבלנים 2026: איך מחפשים ובודקים קבלן רשום | התקווה"
+    ],
+    [
+     9,
+     "rkablanim.co.il",
+     "https://rkablanim.co.il/what-is-a-registered-contractor/",
+     "הוצאת רישיון קבלן רשום"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "cited": [
+     "https://www.gov.il/he/departments/units/contractors_registrar_and_head_of_sales_laws_moch",
+     "https://he.wikipedia.org/wiki/רשם_הקבלנים",
+     "https://www.gov.il/apps/moch/rasham/home",
+     "https://www.gov.il/he/service/contractors-registration-application",
+     "https://www.gov.il/he/service/contractors-enquiry-status",
+     "https://www.gov.il/he/service/change-of-registration-details",
+     "https://www.gov.il/he/service/updating-contractor-register",
+     "https://www.kolzchut.org.il/he/הגשת_תלונה_לרשם_הקבלנים_במשרד_הבינוי_והשיכון",
+     "https://www.gov.il/he/pages/general_information_for_registration_of_contractors"
+    ],
+    "claims": [
+     "registrar = senior division in the Housing ministry under the 1969 law",
+     "services: search, registration request, status enquiry, details update, complaints",
+     "thresholds 103,250 / 54,000 NIS before VAT",
+     "contact details as shown by Google (head Amit Graidy, Clermont-Ganneau 3 Jerusalem, 02-5847847, support-rk@moch.gov.il) - not verified by us"
+    ]
+   },
+   "paa": [
+    "מהי כתובת רשם הקבלנים?",
+    "מהי טבלת הסיווגים של רשם הקבלנים?",
+    "מי הוא רשם הקבלנים?",
+    "מהן ההחלטות האחרונות של רשם הקבלנים?",
+    "מהי אגרת רשם הקבלנים?",
+    "איך מגישים בקשה להחלפת עובד ברשם הקבלנים?"
+   ],
+   "related": [
+    "פנקס הקבלנים",
+    "בדיקת קבלן רשום רשם הקבלנים",
+    "רשם הקבלנים טלפון",
+    "רשם הקבלנים אזור אישי",
+    "רשם הקבלנים פניות הציבור",
+    "רשם הקבלנים טפסים",
+    "משרד הבינוי והשיכון רשם הקבלנים",
+    "רשם הקבלנים מייל"
+   ]
+  },
+  {
+   "keyword": "קבלן רשום",
+   "volume": 880,
+   "organic": [
+    [
+     1,
+     "www.nadlancenter.co.il",
+     "https://www.nadlancenter.co.il/article/6331",
+     "פנקס הקבלנים – המדריך השלם לשנת 2026"
+    ],
+    [
+     2,
+     "www.renovations.org.il",
+     "https://www.renovations.org.il/רישום-קבלנים/",
+     "איך לבדוק אם קבלן רשום בפנקס הקבלנים ומדוע זה חשוב?"
+    ],
+    [
+     3,
+     "yuvalsegal.co.il",
+     "https://yuvalsegal.co.il/קבלן-רשום/",
+     "המדריך המלא לקבלן רשום - יובל סגל"
+    ],
+    [
+     4,
+     "hatikva.org.il",
+     "https://hatikva.org.il/",
+     "רישיון קבלן רשום – ליווי מלא | התקווה"
+    ],
+    [
+     5,
+     "rkablanim.co.il",
+     "https://rkablanim.co.il/registrar-of-contractors-classification/",
+     "מיהו קבלן רשום ומהו סיווג קבלנים?"
+    ],
+    [
+     6,
+     "rishum-kablanim.co.il",
+     "https://rishum-kablanim.co.il/",
+     "קומות רישום קבלנים: עמוד הבית"
+    ],
+    [
+     7,
+     "rkablanim.co.il",
+     "https://rkablanim.co.il/registered-contractor-c1/",
+     "מהו קבלן רשום ג1?"
+    ],
+    [
+     8,
+     "keeperforms.co.il",
+     "https://keeperforms.co.il/blog/רישום-קבלנים/",
+     "רישום קבלנים: מי חייב להירשם"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "cited": [
+     "https://www.gov.il/apps/moch/rasham/home",
+     "https://www.gov.il/he/pages/general_information_for_registration_of_contractors",
+     "https://www.gov.il/he/pages/construction_registry",
+     "https://www.greeninvoice.co.il/magazine/קבלן-רשום/",
+     "https://www.cts.org.il/איך-להיות-קבלן-רשום/",
+     "https://hatikva.org.il/איך-להיות-קבלן/"
+    ],
+    "claims": [
+     "definition + thresholds 103,250 / 54,000",
+     "check status is not frozen/excluded",
+     "registration conditions: experience, clean record, exam"
+    ]
+   },
+   "paa": [
+    "איך אני יכול לבדוק אם קבלן רשום ברשם הקבלנים?",
+    "מה תפקידו של קבלן בניין?",
+    "מהם התנאים להעלאת סיווג רשם הקבלנים?",
+    "מה זה קבלן ג2?",
+    "איך מוציאים תעודת קבלן רשום?",
+    "מהי טבלת הסיווגים של רשם הקבלנים?"
+   ],
+   "serp_features": [
+    "video carousel (Facebook / YouTube, a registration lawyer)"
+   ],
+   "related": [
+    "חיפוש קבלן רשום לפי שם",
+    "בדיקת קבלן רשום לפי תעודת זהות",
+    "העתק תעודת קבלן רשום",
+    "רישיון קבלן רשום",
+    "בדיקת קבלן רשום לפי ח פ",
+    "חידוש רישיון קבלן רשום",
+    "הנדסאי בניין קבלן רשום",
+    "העתקת קבלן רשום לחברה"
+   ]
+  },
+  {
+   "keyword": "סיווג קבלנים",
+   "volume": 590,
+   "organic": [
+    [
+     1,
+     "thebuilder.co.il",
+     "https://thebuilder.co.il/סיווג-קבלנים",
+     "המדריך המלא לסיווג קבלנים - מרכז קבלני בניין"
+    ],
+    [
+     2,
+     "www.kablanist.co.il",
+     "https://www.kablanist.co.il/סיווג-קבלנים/",
+     "טבלת סיווג קבלנים 2019-2020 - עו\"ד טל בייצר"
+    ],
+    [
+     3,
+     "yuvalsegal.co.il",
+     "https://yuvalsegal.co.il/קבלן-רשום-ג1/",
+     "קבלן רשום ג1, מה זה סיווג ג1?"
+    ],
+    [
+     4,
+     "ramonltd.co.il",
+     "https://ramonltd.co.il/blog/סיווג-קבלנים-מה-אומר-כל-אחד-מהסיווגים/",
+     "סיווג קבלנים - מה אומר כל אחד מהסיווגים"
+    ],
+    [
+     5,
+     "asset.mof.gov.il",
+     "https://asset.mof.gov.il/contractorRepository/s/",
+     "רשימת קבלנים מוכרים - משרד האוצר"
+    ],
+    [
+     6,
+     "kbh.org.il",
+     "https://kbh.org.il/wp-content/uploads/2026/04/טבלת-סיווג-קבלני-אפריל-2026.pdf",
+     "טבלת סיווג אפריל 2026 (PDF)"
+    ],
+    [
+     7,
+     "rkablanim.co.il",
+     "https://rkablanim.co.il/contractor-classification/",
+     "העלאת סיווג לקבלנים"
+    ],
+    [
+     8,
+     "yuvalsegal.co.il",
+     "https://yuvalsegal.co.il/קבלן-רשום-100/",
+     "קבלן רשום 100 – המדריך המלא לסיווגים ג1–ג5"
+    ],
+    [
+     9,
+     "rishum-kablanim.co.il",
+     "https://rishum-kablanim.co.il/?page_id=579",
+     "סיווג קבלנים"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "cited": [
+     "https://www.gov.il/apps/moch/rasham/home",
+     "https://www.oron-group.co.il/קבלן-ג-5-מה-זה-אומר?/",
+     "https://thebuilder.co.il/סיווג-קבלנים",
+     "https://www.gov.il/he/pages/sivug_kablanim",
+     "https://www.nevo.co.il/law_html/law00/74263.htm",
+     "https://conwize.co.il/sivug-kablanim/",
+     "https://kbh.org.il/טבלת-סיווג-אפריל-2026/",
+     "https://www.gov.il/he/service/request-standard-classification-company",
+     "https://biz.midrag.co.il/content/Article/14755"
+    ],
+    "claims": [
+     "groups + 5 levels, per one site",
+     "amounts updated 1 April and 1 October by the residential construction input index",
+     "upgrade after 12 months with works of 70% (or two sites)"
+    ]
+   },
+   "paa": [],
+   "related": [
+    "טבלת סיווג קבלנים",
+    "היקף כספי סיווג קבלנים",
+    "טבלת סיווג קבלנים 2025",
+    "סיווג קבלנים ענפים",
+    "תקנות סיווג קבלנים",
+    "סיווג קבלנים ג1",
+    "קבלן רשום ג1 תנאי קבלה",
+    "סיווג קבלנים 131"
+   ]
+  },
+  {
+   "keyword": "בדיקת קבלן רשום",
+   "volume": 390,
+   "organic": [
+    [
+     1,
+     "biz.midrag.co.il",
+     "https://biz.midrag.co.il/content/Article/14754",
+     "רישום קבלנים | המדריך השלם לרישום קבלנים"
+    ],
+    [
+     2,
+     "gam.org.il",
+     "https://gam.org.il/",
+     "G.A.M גלאור: רישום קבלנים"
+    ],
+    [
+     3,
+     "rishumkablan.co.il",
+     "https://rishumkablan.co.il/בדיקת-קבלן-רשום-רשם-הקבלנים-הדרך-הפשוט/",
+     "בדיקת קבלן רשום ברשם הקבלנים"
+    ],
+    [
+     4,
+     "reporto.co.il",
+     "https://reporto.co.il/glossary/kablan-rashum",
+     "מה זה קבלן רשום? | מילון מונחים"
+    ],
+    [
+     5,
+     "www.facebook.com",
+     "https://www.facebook.com/groups/1552858994986548/posts/3915751245363966/",
+     "בונים בית - איך אני יודעת אם הקבלן רשום"
+    ],
+    [
+     6,
+     "www.broker-re.co.il",
+     "https://www.broker-re.co.il/פנקס-הקבלנים-הרשומים-איך-מוצאים-קבלן-ר/",
+     "פנקס הקבלנים הרשומים - איך מוצאים קבלן רשום בקלות?"
+    ],
+    [
+     7,
+     "rishumkablan.co.il",
+     "https://rishumkablan.co.il/",
+     "רישום קבלנים – רישיון קבלן תוך 60 יום"
+    ],
+    [
+     8,
+     "www.youtube.com",
+     "https://www.youtube.com/watch?v=j0p2Rc7KCGU",
+     "How to verify the details of a registered contractor"
+    ],
+    [
+     9,
+     "www.michlal.com",
+     "https://www.michlal.com/חיפוש-קבלן-רשום/",
+     "חיפוש קבלן רשום: איפה לקוחות ימצאו אתכם?"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "cited": [
+     "https://www.gov.il/apps/moch/rasham/home",
+     "https://rishumkablan.co.il/רשם-הקבלנים-כך-תבדקו-אם-הקבלן-שלכם-באמת/",
+     "https://www.gov.il/he/pages/construction_registry",
+     "https://my.acb.org.il/Search.aspx",
+     "https://oz-shiputsim.co.il/בדיקת-קבלן-רשום-2/",
+     "https://www.lawcase.co.il/1583/המדריך-המלא-לבדיקת-רישום-קבלן-איך-לווד/"
+    ],
+    "claims": [
+     "free online check in the ministry register",
+     "search by name, company number, contractor number, city, branch",
+     "verify: valid, branch+classification fit the job, status not frozen/excluded, name matches the quote/contract"
+    ]
+   },
+   "paa": [],
+   "related": [
+    "העתק תעודת קבלן רשום",
+    "בדיקת קבלן רשום לפי תעודת זהות",
+    "רישיון קבלן רשום",
+    "בדיקת קבלן רשום לפי ח פ",
+    "חיפוש קבלן רשום לפי שם",
+    "קבלן רשום שיפוצים",
+    "חוק רישום קבלנים",
+    "הוצאת רישיון קבלן רשום"
+   ]
+  }
+ ],
+ "nadlan_in_top10": "absent on all 5 SERPs; GSC 22.7-20.10.2026 shows zero impressions for these head terms"
+}

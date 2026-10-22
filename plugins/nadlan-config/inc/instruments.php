@@ -140,6 +140,38 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'greece.json', 'boi-fx.json' ),
 				'related' => array( '/taxation-greece-israel/' => 'מיסוי דירה ביוון', '/athens-apartments/' => 'דירה באתונה', '/short-term-rentals-abroad/short-term-rentals-greece/' => 'השכרה לטווח קצר ביוון', '/investment-property-cashflow-calculator/' => 'תזרים דירה להשקעה' ),
 			),
+			/* 1.72.501 (HAD-592, Ben's Greece price list): the price family, one file tools/grprice.js; greece-prices.json (263 places, sources in the research), greece-map.json (Natural Earth) */
+			'grmap' => array(
+				'file' => 'grprice', 'name' => 'מפת מחירי הנדל״ן ביוון', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · מחירון יוון',
+				'desc' => 'מפה של יוון עם המחיר המבוקש למ״ר ב־250 מקומות: אזורים, ערים, איים ושכונות באתונה ובסלוניקי. לחיצה על מקום מראה מחיר ביורו ובשקלים, דירה של 70 מ״ר, שכירות, תשואה, שינוי בשנה, סף הגולדן ויזה, אזור גבול והקפאת Airbnb, ואפשר להשוות שלושה מקומות.',
+				'data' => array( 'greece-prices.json', 'greece-map.json', 'boi-fx.json' ),
+				'related' => array( '/global/greece/' => 'נדל״ן ביוון', '/athens-apartments/' => 'מחירי אתונה לפי אזור', '/acquisition-greece/' => 'מחשבון עלות הקנייה', '/taxation-greece-israel/' => 'מיסוי דירה ביוון' ),
+			),
+			'grbudget' => array(
+				'file' => 'grprice', 'name' => 'כמה מטרים מקבלים ביוון בכל תקציב', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · מה מקבלים בתקציב',
+				'desc' => 'תקציב ביורו או בשקלים, אחרי עלויות הקנייה ביוון: כמה מ״ר הוא קונה בכל אחד מ־250 המקומות, מהגדול לקטן, עם סף הגולדן ויזה בכל מקום.',
+				'data' => array( 'greece-prices.json', 'boi-fx.json' ),
+				'related' => array( '/acquisition-greece/' => 'עלויות הקנייה ביוון', '/global/greece/' => 'נדל״ן ביוון' ),
+			),
+			'grisrael' => array(
+				'file' => 'grprice', 'name' => 'הדירה שלכם בישראל, ביוון', 'cat' => 'FinanceApplication', 'kicker' => 'השוואה · ישראל מול יוון',
+				'desc' => 'המחיר החציוני הרשמי של דירה בעיר בישראל לפי מספר החדרים, ביורו לפי שער בנק ישראל, וכמה מ״ר הוא קונה בכל מקום ביוון אחרי עלויות הקנייה.',
+				'data' => array( 'greece-prices.json', 'boi-fx.json', 'value.json' ),
+				'related' => array( '/apartment-prices/' => 'מחירי הדירות בישראל', '/property-value-estimator/' => 'מחשבון שווי דירה' ),
+			),
+			/* 1.72.504 (HAD-592): the registered-contractor check, one file tools/pinkas.js; the search runs on the server (inc/pinkas.php), pinkas-meta.json is the small public part */
+			'pinkas' => array(
+				'file' => 'pinkas', 'name' => 'בדיקת קבלן רשום בפנקס הקבלנים', 'cat' => 'UtilitiesApplication', 'kicker' => 'חיפוש · פנקס הקבלנים',
+				'desc' => 'חיפוש בכל 17,874 הקבלנים הרשומים בפנקס הקבלנים של משרד הבינוי והשיכון, לפי שם, מספר קבלן, ח״פ, עיר, ענף וסיווג. לכל קבלן: הענפים, הקבוצה והסיווג, הסכום שהסיווג מתיר באתר אחד לפי הטבלה שבתוקף, הגבלות, וקישור לרשומה הרשמית. בודק עבודה: האם החוק מחייב קבלן רשום ובאיזה סיווג.',
+				'data' => array( 'pinkas-meta.json' ),
+				'related' => array( '/professionals/' => 'מאגר בעלי המקצוע', '/renovation-contractor/' => 'קבלן שיפוצים', '/home-inspection/' => 'בדק בית', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה' ),
+			),
+			'sivug' => array(
+				'file' => 'pinkas', 'name' => 'טבלת סיווג קבלנים: כמה מותר לכל סיווג', 'cat' => 'ReferenceApplication', 'kicker' => 'טבלה · סיווג קבלנים',
+				'desc' => 'הסכום המרבי שקבלן רשום רשאי לבצע באתר אחד בכל קבוצה (א, ב, ג) ובכל סיווג (ק, 1 עד 5), לפי הטבלה הרשמית שבתוקף מ־1.10.2026 ועד 1.4.2027, ומה הסיווג שעבודה בסכום מסוים דורשת.',
+				'data' => array( 'pinkas-meta.json' ),
+				'related' => array( '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה', '/professionals/' => 'מאגר בעלי המקצוע' ),
+			),
 		) );
 	}
 
@@ -300,6 +332,48 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'gryield' === $id ) {
 			return '<p>מס על שכירות ביוון מ־2026, גם למי שלא גר ביוון, אחרי ניכוי קבוע של 5%: 15% עד 12,000 אירו בשנה, 25% עד 24,000, 35% עד 36,000 ו־45% מעל. ENFIA, מס הרכוש השנתי, לפי השטח ומחיר האזור: מ־2 עד 16.20 אירו למ״ר, כפול מקדמי הגיל והקומה, עם הנחה של 20% לדירה מבוטחת. בישראל: לפי הנוסח האנגלי של אמנת המס, השכירות חייבת במס רק ביוון; רשות המסים לא פרסמה עמדה. מי שמשלם בישראל בוחר בין מסלול 15% על השכירות (בלי הוצאות ובלי זיכוי) למסלול רגיל לפי המדרגות, עם זיכוי על המס ששולם ביוון.</p>';
 		}
+		if ( in_array( $id, array( 'grmap', 'grbudget', 'grisrael' ), true ) ) {  // 1.72.501: the whole Greece price list as plain text, for readers without scripts, search engines and AI answers
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/greece-prices.json';
+			$g = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $g ) || empty( $g['places'] ) ) { return ''; }
+			$pl = array_values( array_filter( $g['places'], function ( $p ) { return 'none' !== $p['z']; } ) );
+			usort( $pl, function ( $a, $b ) { return $b['m2'] <=> $a['m2']; } );
+			$n = $g['national'];
+			$p0 = '<p>המחיר המבוקש הממוצע לדירה ביוון: ' . number_format( $n['m2'] ) . ' אירו למ״ר (' . esc_html( $n['src'] . ', ' . $n['per'] ) . ', ' . ( $n['yoy'] >= 0 ? '+' : '' ) . esc_html( number_format( 100 * $n['yoy'], 1 ) ) . '% בשנה), ושכירות של ' . esc_html( number_format( $n['rent'], 2 ) ) . ' אירו למ״ר לחודש. מחירים מבוקשים במודעות; בעסקאות נסגר לרוב פחות.</p>';
+			$by = array(); foreach ( $pl as $p ) { $by[ $p['id'] ] = $p; }
+			$m2 = function ( $eur, $id ) use ( $by ) { return isset( $by[ $id ] ) ? number_format( $eur / 1.0826 / $by[ $id ]['m2'] ) : ''; };
+			if ( 'grbudget' === $id ) {
+				return '<p>מה מקבלים ביוון בתקציב של 150,000 אירו, אחרי עלויות קנייה של כ־8.3%: כ־' . $m2( 150000, 'ath-centre' ) . ' מ״ר במרכז אתונה, ' . $m2( 150000, 'thess-municipality' ) . ' מ״ר בסלוניקי, '
+					. $m2( 150000, 'chania' ) . ' מ״ר בחאניה ו־' . $m2( 150000, 'mykonos' ) . ' מ״ר במיקונוס, לפי המחיר המבוקש למ״ר בכל מקום.</p>';
+			}
+			if ( 'grisrael' === $id ) {
+				return '<p>הדירה שלכם בישראל, ביוון: המחשבון לוקח את המחיר החציוני הרשמי של דירה בעיר בישראל לפי מספר החדרים (רשות המסים), ממיר אותו ליורו לפי שער בנק ישראל, מוריד את עלויות הקנייה ביוון, ומראה כמה מ״ר הוא קונה בכל אחד מ־' . count( $pl ) . ' המקומות.</p>';
+			}
+			$gv = function ( $c ) { return 800 === $c ? '800,000 €' : ( 400 === $c ? '400,000 €' : ( 0 === $c ? 'לפי המקום' : 'לבדיקה' ) ); };
+			$rows = '';
+			foreach ( $pl as $p ) {
+				$rows .= '<tr><td>' . esc_html( $p['he'] ) . '</td><td>' . number_format( $p['m2'] ) . '</td><td>' . ( isset( $p['yoy'] ) && null !== $p['yoy'] ? esc_html( number_format( 100 * $p['yoy'], 1 ) ) . '%' : '' ) . '</td><td>' . ( isset( $p['rent'] ) ? esc_html( number_format( $p['rent'], 1 ) ) : '' ) . '</td><td>' . ( isset( $p['y'] ) ? esc_html( number_format( 100 * $p['y'], 1 ) ) . '%' : '' ) . '</td><td>' . esc_html( $gv( $p['gv'] ) ) . '</td><td>' . esc_html( $p['src'] . ', ' . $p['per'] ) . '</td></tr>';
+			}
+			return $p0 . '<table><caption>מחירון נדל״ן ביוון: ' . count( $pl ) . ' מקומות, מחיר מבוקש באירו למ״ר</caption><thead><tr><th>מקום</th><th>אירו למ״ר</th><th>שינוי בשנה</th><th>שכירות למ״ר לחודש</th><th>תשואה ברוטו</th><th>גולדן ויזה</th><th>מקור ותקופה</th></tr></thead><tbody>' . $rows . '</tbody></table>';
+		}
+		if ( 'pinkas' === $id || 'sivug' === $id ) {  // 1.72.504: the rules and the table in force as plain text (the search itself needs the script)
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/pinkas-meta.json';
+			$m = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $m ) || empty( $m['table'] ) ) { return ''; }
+			$t = $m['table']; $d = function ( $s ) { return date_i18n( 'j.n.Y', strtotime( $s ) ); };
+			$amt = function ( $v ) { return $v ? number_format( $v ) . ' אלף ₪' : 'ללא הגבלה'; };
+			$tab = '<table><caption>טבלת סיווג הקבלנים בתוקף מ־' . esc_html( $d( $t['from'] ) ) . ' עד ' . esc_html( $d( $t['to'] ) ) . ': הסכום המרבי באתר אחד, לפני מע״מ</caption><thead><tr><th>סיווג</th><th>קבוצה א</th><th>קבוצה ב</th><th>קבוצה ג</th><th>בנייה למגורים</th></tr></thead><tbody>';
+			foreach ( array( 'ק', '1', '2', '3', '4', '5' ) as $lv ) {
+				$tab .= '<tr><td>' . $lv . '</td><td>' . ( isset( $t['א'][ $lv ] ) ? $amt( $t['א'][ $lv ] ) : '' ) . '</td><td>' . ( isset( $t['ב'][ $lv ] ) ? $amt( $t['ב'][ $lv ] ) : '' ) . '</td><td>' . ( isset( $t['ג'][ $lv ] ) ? $amt( $t['ג'][ $lv ] ) : '' ) . '</td><td>'
+					. ( isset( $t['sqm'][ $lv ] ) ? ( $t['sqm'][ $lv ] ? number_format( $t['sqm'][ $lv ] ) . ' מ״ר' : 'ללא הגבלה' ) : '' ) . '</td></tr>';
+			}
+			$tab .= '</tbody></table>';
+			if ( 'sivug' === $id ) { return '<p>סיווג ק קיים רק בענף השיפוצים (131). הסכומים מתעדכנים ב־1 באפריל וב־1 באוקטובר לפי מדד תשומות הבנייה למגורים.</p>' . $tab; }
+			$s = $m['stats'];
+			return '<p>בפנקס הקבלנים של משרד הבינוי והשיכון רשומים ' . number_format( $s['contractors'] ) . ' קבלנים (' . number_format( $s['companies'] ) . ' חברות) ב־' . number_format( $s['cities'] ) . ' ערים ויישובים וב־' . (int) $s['branches']
+				. ' ענפים, לפי המאגר הפתוח ב־data.gov.il נכון ל־' . esc_html( $d( $m['asof'] ) ) . '. עבודה בענף ראשי בהיקף של יותר מ־' . number_format( $m['thr']['main'] ) . ' ₪, או בענף משנה, למשל שיפוצים, ביותר מ־' . number_format( $m['thr']['sub'] )
+				. ' ₪, מותרת רק לקבלן רשום. לפני חתימה בודקים ברשומה הרשמית של הקבלן ב־gov.il שהוא רשום בענף הנכון, שהסיווג שלו מכסה את העבודה, ושהוא לא מוקפא, מוחרג או מותלה.</p>' . $tab;
+		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
 		}
@@ -449,3 +523,6 @@ add_action( 'parse_request', function ( $wp ) {
 }, 0 );
 /* a page published or updated drops the cached list */
 add_action( 'save_post_page', function () { delete_transient( 'nadlan_llms_txt_v1' ); } );
+
+/* 1.72.504 (HAD-592): the registered-contractor check, its REST search route */
+require_once __DIR__ . '/pinkas.php';

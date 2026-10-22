@@ -1,0 +1,43 @@
+<!-- @dsCard group="Pages" height=1180 subtitle="מפת מחירים של מדינה: נקודה לכל מקום בצבע לפי מחיר למ״ר, שבבי סינון, זום לעיר, כרטיס מקום ומגש השוואה" -->
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreecePriceMap</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#F6F8F9;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A}
+.w{max-width:900px;margin:0 auto;padding:20px 16px}
+.n{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:22px 0 8px;border-top:1px solid #D3DCE2;padding-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.chips span{font:500 13px/18px "IBM Plex Sans Hebrew";padding:8px 12px;border:1px solid #D3DCE2;border-radius:999px;background:#fff}
+.chips span.on{background:#2F6F86;color:#fff;border-color:#2F6F86}
+.map{border:1px solid #D3DCE2;border-radius:6px;background:#E6F0F3;overflow:hidden}
+.map svg{display:block;width:100%;height:auto}
+.lb{font:600 11px "IBM Plex Sans Hebrew",sans-serif;fill:#12202A;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.lg{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:#5E6A75;margin:8px 0}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-inline-end:4px;vertical-align:-2px}
+.card{border:1px solid #D3DCE2;border-radius:6px;background:#fff;padding:14px;margin:10px 0}
+.card h3{margin:0 0 4px;font:700 22px/26px "IBM Plex Sans Hebrew"}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0}
+.k div{border-top:1px solid #D3DCE2;padding-top:6px}
+.k span{display:block;font-size:12px;color:#5E6A75}
+.k b{font:600 17px "IBM Plex Mono",monospace;direction:ltr;unicode-bidi:plaintext}
+.f span{font-size:12px;border:1px solid #D3DCE2;padding:2px 6px;margin-inline-end:6px}
+</style>
+</head>
+<body>
+<div class="w">
+<p class="n">שבבי סינון: כל המדינה, זום לעיר (אטיקה, סלוניקי), ומסננים לפי סוג מקום, גולדן ויזה, תשואה ו־Airbnb</p>
+<div class="chips"><span class="on">כל יוון</span><span>אתונה ואטיקה, מקרוב</span><span>סלוניקי, מקרוב</span><span>איים</span><span>גולדן ויזה ב־400 אלף</span><span>תשואה מעל 5%</span></div>
+<div class="map"><svg viewBox="{{VB}}" role="img" aria-label="מפת מחירי הנדל״ן ביוון"><path d="{{NB}}" fill="#D3DCE2"/><path d="{{GR}}" fill="#fff" stroke="#1F4B5C" stroke-width=".7"/>{{DOTS}}{{LABELS}}</svg></div>
+<div class="lg">{{LEGEND}}</div>
+<p class="n">הכרטיס: לחיצה אחת על נקודה פותחת את כל המספרים של המקום, ושלושה תגים שמשנים החלטה</p>
+<div class="card"><h3>מיקונוס</h3><p style="margin:0;color:#5E6A75;font-size:13px">אי · {{PER}} · {{SRC}}</p>
+<div class="k"><div><span>מחיר מבוקש למ״ר</span><b>€{{M2}}</b></div><div><span>דירת 70 מ״ר</span><b>€{{APT}}</b></div><div><span>שינוי בשנה</span><b>{{YOY}}</b></div></div>
+<div class="f"><span>גולדן ויזה מ־€800,000</span></div></div>
+<p class="n">פלטה: שלושה גוונים של ים לפי מחיר עולה, כחול עמוק ליקר, ואדום סקר רק לקצה העליון. בלי שמנת ובלי זהב: צבעי מפה ימית ותיק מקרקעין.</p>
+</div>
+</body>
+</html>

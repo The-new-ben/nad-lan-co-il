@@ -5,6 +5,8 @@ All retrieval times are Israel time (UTC+3) on 22.10.2026 unless stated.
 
 Intent: "בדיקת קבלן רשום" and its family (פנקס הקבלנים, רשם הקבלנים, קבלן רשום, סיווג קבלנים).
 
+> Raw files (`raw/...` below) were moved on 22.10.2026 22:15 to `C:/Users/777/nad-lan/_private-research/2026-10-22-contractor-register/raw/` (the register carries individuals' phones and emails, and competitor HTML never goes into the public repo).
+
 ---
 
 ## 0. The short version

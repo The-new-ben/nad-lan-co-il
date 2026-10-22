@@ -1,0 +1,248 @@
+[
+ {
+  "label": "One national average asking price per m²",
+  "re": [
+   "(ממוצע|הממוצע|average)[^.]{0,60}€\\s?\\d,\\d{3}[^.]{0,25}(למ״ר|למ\"ר|למטר|/m|per m)",
+   "€\\s?\\d,\\d{3}[^.]{0,25}(למ״ר|למ\"ר|למטר)[^.]{0,40}(ממוצע|בממוצע)"
+  ]
+ },
+ {
+  "label": "The month or quarter of the national number",
+  "re": [
+   "(ספטמבר|אוקטובר|אוגוסט|יולי|רבעון \\d|Q\\d)\\s?2026"
+  ]
+ },
+ {
+  "label": "Prices paid in deals, not only asking prices",
+  "re": [
+   "(עסקאות בפועל|נרשם בעסקאות|נרשמו בעסקאות|מחיר(י)? (ה)?עסקאות|transaction prices?|prices? paid)"
+  ]
+ },
+ {
+  "label": "The gap between asking and paid",
+  "re": [
+   "(מבוקש|ביקוש)[^.]{0,120}(עסקאות|שולם|נמכר)[^.]{0,80}\\d+%",
+   "(הפער)[^.]{0,30}[+]?\\d+%"
+  ]
+ },
+ {
+  "label": "Objective (tax) value explained",
+  "re": [
+   "(שווי|ערך) (ה)?אובייקטיבי",
+   "objective value"
+  ]
+ },
+ {
+  "label": "Change over a year, per place",
+  "re": [
+   "שינוי בשנה",
+   "(לעומת|מול) 2025",
+   "y/y",
+   "year.on.year",
+   "% ?שינוי",
+   "שינוי ?(ב)?%",
+   "אחוז (ה)?שינוי",
+   "שינוי שנתי"
+  ]
+ },
+ {
+  "label": "Rent per m² a month",
+  "re": [
+   "€\\s?\\d+([.,]\\d+)? למ״ר לחודש",
+   "שכירות[^.]{0,40}(למ״ר|למ\"ר)",
+   "rent[^.]{0,30}per m",
+   "שכר (ה)?דירה[^.]{0,60}(למ״ר|למ\"ר)"
+  ]
+ },
+ {
+  "label": "Gross yield per place",
+  "re": [
+   "תשואה (ה)?(ברוטו|גולמית)",
+   "gross yield"
+  ]
+ },
+ {
+  "label": "Price of a typical flat in euros (70 / 80 m²)",
+  "re": [
+   "(דירה|דירת) (של )?\\d{2,3} מ[״\"]ר[^.]{0,60}€",
+   "€[^.]{0,30}(לדירת|לדירה של) \\d{2,3} מ[״\"]ר"
+  ]
+ },
+ {
+  "label": "The price per flat size (studio, rooms)",
+  "re": [
+   "סטודיו[^.]{0,80}€",
+   "\\d חדרים[^.]{0,40}€\\s?\\d",
+   "(דירות|דירה) (קטנות|קטנה) (עד|מתחת)",
+   "(דירת|דירה) \\d חדרים[^.]{0,60}€",
+   "חדר(ים)? (שינה )?[^.]{0,20}€\\s?\\d{2,3}[,.]\\d{3}"
+  ]
+ },
+ {
+  "label": "New build vs old flat premium",
+  "re": [
+   "(דירה חדשה|דירות חדשות|בנייה חדשה)[^.]{0,120}(ישנה|ישנות|יד שנייה|יד 2|קיימות|\\d+%)",
+   "new.build[^.]{0,60}(older|resale)"
+  ]
+ },
+ {
+  "label": "Golden visa €800,000 tier",
+  "re": [
+   "800[,.]?000",
+   "800 אלף"
+  ]
+ },
+ {
+  "label": "Golden visa €400,000 tier",
+  "re": [
+   "400[,.]?000",
+   "400 אלף"
+  ]
+ },
+ {
+  "label": "Golden visa €250,000 only for conversion / listed buildings",
+  "re": [
+   "250[,.]?000[^.]{0,120}(הסב|שימור|מסחרי|לשימור|conversion|listed)",
+   "(הסב|שימור|לשימור|conversion)[^.]{0,120}250"
+  ]
+ },
+ {
+  "label": "Short-let freeze in central Athens",
+  "re": [
+   "(הקפא|הקפאה|מוקפא|freeze|איסור|אוסר|נאסר)[^.]{0,100}(Airbnb|השכרה קצרה|השכרות קצרות|לטווח קצר|short)",
+   "(Airbnb|השכרה קצרה|השכרות קצרות|short.term)[^.]{0,100}(הקפא|הקפאה|freeze|איסור|אסור|נאסר)"
+  ]
+ },
+ {
+  "label": "Border zones need a prior permit",
+  "re": [
+   "אזור(י)? ה?גבול",
+   "border (zone|area)"
+  ]
+ },
+ {
+  "label": "Central Athens €/m²",
+  "re": [
+   "מרכז אתונה[^.]{0,80}\\d,\\d{3}",
+   "\\d,\\d{3}[^.]{0,40}מרכז אתונה"
+  ]
+ },
+ {
+  "label": "Piraeus €/m²",
+  "re": [
+   "פיראוס[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Thessaloniki €/m²",
+  "re": [
+   "סלוניקי[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Crete (or Chania / Heraklion) €/m²",
+  "re": [
+   "(כרתים|חאניה|הרקליון)[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Mykonos €/m²",
+  "re": [
+   "מיקונוס[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Santorini €/m²",
+  "re": [
+   "סנטוריני[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Rhodes €/m²",
+  "re": [
+   "רודוס[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Corfu €/m²",
+  "re": [
+   "קורפו[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Halkidiki €/m²",
+  "re": [
+   "חלקידיקי[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "Peloponnese (Nafplio, Kalamata, Argolida...) €/m²",
+  "re": [
+   "(פלופונס|נפפליו|נאפליו|קלמטה|קלמאטה|ארגוליד)[^.]{0,80}\\d,\\d{3}"
+  ]
+ },
+ {
+  "label": "The cheapest places named",
+  "re": [
+   "(הזולים|הזול ביותר|הכי זול|cheapest)"
+  ]
+ },
+ {
+  "label": "Ten-year trend (the fall to 2017 and the recovery)",
+  "re": [
+   "(2017|2018)[^.]{0,120}(ירד|ירידה|שפל|עלייה|עלו|התאוש|התחילו)",
+   "(ירד|ירידה|שפל)[^.]{0,120}(2017|2018)"
+  ]
+ },
+ {
+  "label": "Number of deals a year",
+  "re": [
+   "\\d{2,3},\\d{3} (העברות|עסקאות)",
+   "(העברות|עסקאות)[^.]{0,30}\\d{2,3},\\d{3}"
+  ]
+ },
+ {
+  "label": "Euro to shekel rate with its date",
+  "re": [
+   "€\\s?1\\s?=\\s?₪\\s?3[.,]\\d+",
+   "(שער|השער)[^.]{0,40}(היציג|יציג)[^.]{0,60}20\\d\\d"
+  ]
+ },
+ {
+  "label": "Total buying costs as a percent",
+  "re": [
+   "(עלויות|הוצאות) (ה)?(קנייה|רכישה|נלוות)[^.]{0,60}\\d+([.,]\\d)?%",
+   "\\d+([.,]\\d)?%[^.]{0,40}(עלויות|הוצאות) (ה)?(קנייה|רכישה|נלוות)"
+  ]
+ },
+ {
+  "label": "Transfer tax 3.09% (or 3%)",
+  "re": [
+   "3[.,]09\\s?%",
+   "מס (ה)?העברה[^.]{0,60}\\d([.,]\\d+)?\\s?%",
+   "transfer tax[^.]{0,40}\\d([.,]\\d+)?\\s?%"
+  ]
+ },
+ {
+  "label": "Comparison with other European cities",
+  "re": [
+   "(לונדון|פריז|ליסבון|ברלין|מדריד|ברצלונה|רומא)[^.]{0,80}\\d"
+  ]
+ },
+ {
+  "label": "Price forecast for the next years",
+  "re": [
+   "תחזית",
+   "צפוי(ים|ה)? (להמשיך|לעלות|לעלייה)",
+   "forecast"
+  ]
+ },
+ {
+  "label": "The date of the next update",
+  "re": [
+   "העדכון הבא",
+   "next update",
+   "יעודכן ב"
+  ]
+ }
+]
