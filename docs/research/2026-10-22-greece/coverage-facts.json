@@ -1,0 +1,175 @@
+[
+ {
+  "label": "15.45% transfer tax proposed for non-EU buyers from 1.7.2027",
+  "re": [
+   "15[.,]45",
+   "15%[^.]{0,80}(מחוץ לאיחוד|non-EU|תושבי מס)"
+  ]
+ },
+ {
+  "label": "Transfer tax 3.09%",
+  "re": [
+   "3[.,]09"
+  ]
+ },
+ {
+  "label": "The buyer pays the transfer tax",
+  "re": [
+   "(הקונה|הרוכש|buyer)[^.]{0,40}(משלם|ישלם|pays)[^.]{0,40}(מס ה?העברה|transfer)",
+   "(מס ה?העברה|transfer tax)[^.]{0,60}(משלם|על) ה?(קונה|רוכש)",
+   "(הקונה|הרוכש) משלם",
+   "משלם ה(קונה|רוכש)"
+  ]
+ },
+ {
+  "label": "VAT 24% on new builds suspended to 31.12.2026",
+  "re": [
+   "(השעי|הקפא|מוקפא|מושעה|suspen)[^.]{0,80}(מע\"?״?מ|VAT)",
+   "(מע\"?״?מ|VAT)[^.]{0,80}(השעי|הקפא|מוקפא|מושעה|suspen)"
+  ]
+ },
+ {
+  "label": "Notary fee scale (0.8% / 0.7% / 0.65%)",
+  "re": [
+   "0[.,]65%",
+   "0[.,]8%[^.]{0,60}(נוטריון|notary)",
+   "(נוטריון|notary)[^.]{0,80}0[.,]8%"
+  ]
+ },
+ {
+  "label": "Cadastre fee 0.5%",
+  "re": [
+   "(קדסטר|cadastr|ktimatologio)[^.]{0,80}0[.,]5%",
+   "0[.,]5%[^.]{0,60}(קדסטר|cadastr)"
+  ]
+ },
+ {
+  "label": "Engineer's legality certificate in every transfer",
+  "re": [
+   "(מהנדס|engineer)[^.]{0,80}(חוקיות|חריג|legal|unauthori)"
+  ]
+ },
+ {
+  "label": "Border-zone permit for non-EU buyers (Rhodes, Santorini...)",
+  "re": [
+   "אזור(י)? ה?גבול",
+   "border (zone|area)",
+   "היתר מראש"
+  ]
+ },
+ {
+  "label": "Golden visa: islands over 3,100 inhabitants are in the EUR 800K tier",
+  "re": [
+   "3[,.]?100 תושבים",
+   "3[,.]?100 inhabitants"
+  ]
+ },
+ {
+  "label": "Golden visa: one property of at least 120 m2",
+  "re": [
+   "120 ?(מ\"ר|מ״ר|מטר|m2|sqm)"
+  ]
+ },
+ {
+  "label": "Golden visa EUR 250K only for conversions / listed buildings",
+  "re": [
+   "(הסב|conversion|שימור|listed)[^.]{0,100}250",
+   "250[^.]{0,100}(הסב|conversion|שימור|listed)"
+  ]
+ },
+ {
+  "label": "Golden visa property may not be let short-term",
+  "re": [
+   "(גולדן ויזה|ויזת זהב|golden visa)[^.]{0,120}(אסור|ban|לא ניתן|אין)[^.]{0,60}(לטווח קצר|short)",
+   "(השכרה לטווח קצר|short.?term)[^.]{0,80}(גולדן|ויזת זהב|golden)[^.]{0,40}(אסור|banned)"
+  ]
+ },
+ {
+  "label": "No new Airbnb registrations in central Athens (districts 1-3)",
+  "re": [
+   "מחוז(ות)? 1",
+   "(הקפא|מוקפא|freeze|frozen)[^.]{0,100}(אתונה|Athens)",
+   "(אתונה|Athens)[^.]{0,100}(הקפא|מוקפא|freeze)"
+  ]
+ },
+ {
+  "label": "An existing AMA is deleted when the flat is sold (frozen districts)",
+  "re": [
+   "(AMA|רישום)[^.]{0,60}(נמחק|נמחקת|deleted|יימחק)"
+  ]
+ },
+ {
+  "label": "Greek rent tax 2026 brackets incl. the new 25% band",
+  "re": [
+   "25%[^.]{0,60}(24,000|24 אלף|24K)",
+   "(12,000|12 אלף)[^.]{0,80}25%"
+  ]
+ },
+ {
+  "label": "Greek capital gains tax suspended",
+  "re": [
+   "(רווח(י)? הון|capital gains?)[^.]{0,100}(מוקפא|מושעה|הקפאה|השעיה|suspend)"
+  ]
+ },
+ {
+  "label": "ENFIA computed per m2 by zone price",
+  "re": [
+   "ENFIA[^.]{0,160}(מ\"ר|מ״ר|למטר|m2|per square|zone)",
+   "(מחיר ה?אזור|zone price|τιμή ζώνης)"
+  ]
+ },
+ {
+  "label": "ENFIA 20% discount for insured homes",
+  "re": [
+   "(ביטוח|insur)[^.]{0,100}20%",
+   "20%[^.]{0,80}(ביטוח|insur)"
+  ]
+ },
+ {
+  "label": "Climate resilience fee per night (EUR 8 summer)",
+  "re": [
+   "(אגרת|מס|היטל|fee)[^.]{0,30}(אקלים|climate)"
+  ]
+ },
+ {
+  "label": "Israeli 15% track on foreign rent (no credit)",
+  "re": [
+   "מסלול (ה)?15%",
+   "122א",
+   "15%[^.]{0,80}(בלי|ללא) (זיכוי|ניכוי)"
+  ]
+ },
+ {
+  "label": "Israel-Greece treaty: English text, rent taxable only in Greece",
+  "re": [
+   "(נוסח|טקסט) ה?אנגלי",
+   "(only|רק) (in|ב)(-|־)?(Greece|יוון)[^.]{0,40}"
+  ]
+ },
+ {
+  "label": "Israeli annual report above ILS 2,086,000 abroad",
+  "re": [
+   "2,?086"
+  ]
+ },
+ {
+  "label": "Greek mortgage for non-residents up to 65%",
+  "re": [
+   "65%[^.]{0,80}(מימון|משכנתא|LTV|הלוואה|loan)",
+   "(מימון|משכנתא|LTV|הלוואה|loan)[^.]{0,80}65%"
+  ]
+ },
+ {
+  "label": "Bank of Greece index with a 2026 figure",
+  "re": [
+   "(בנק יוון|Bank of Greece)[^.]{0,200}2026"
+  ]
+ },
+ {
+  "label": "36-month tax exemption for long-term letting",
+  "re": [
+   "36 חודש",
+   "36.month"
+  ]
+ }
+]

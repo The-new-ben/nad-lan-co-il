@@ -1,0 +1,2071 @@
+{
+ "_meta": {
+  "title": "Greece property facts for Israeli buyers (machine-readable)",
+  "retrieved": "2026-10-22",
+  "as_of": "2026-10-22",
+  "currency": "EUR",
+  "companion": "facts.md",
+  "rules": "Every number carries source + as_of. confidence: high = statute/official document; medium = major firm, reputable press quoting officials, or aggregator of official data; low = single commercial or secondary source. null = unknown / not verified."
+ },
+ "purchase_costs": {
+  "transfer_tax": {
+   "rate_main": 0.03,
+   "municipal_surcharge_on_tax": 0.03,
+   "effective_rate": 0.0309,
+   "base": "higher of contract price or objective (tax-assessed) value",
+   "payer": "buyer",
+   "when": "before the deed is signed",
+   "as_of": "2026-10-22",
+   "sources": [
+    {
+     "source": "https://www.tanea.gr/2023/06/17/economy/o-timokatalogos-stis-metavivaseis-akiniton/",
+     "source_date": "2023-06-17",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "3% plus 3% of the tax to the municipality"
+    },
+    {
+     "source": "https://www.globalpropertyguide.com/europe/greece/taxes-and-costs",
+     "source_date": "2026-09",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "transfer_tax_non_eu_proposed": {
+   "status": "BILL IN PUBLIC CONSULTATION, NOT LAW",
+   "rate_main": 0.15,
+   "effective_rate": 0.1545,
+   "applies_to": "natural persons who are tax residents of non-EU/EEA countries buying residential property (DBP 2027 + bill art. 16). September 2026 ministry statements spoke of non-EU citizens without long-term-resident status.",
+   "excluded": [
+    "legal entities",
+    "non-residential property (commercial, plots)",
+    "ethnic Greeks and long-term residents (ministers, 8 Sep 2026)"
+   ],
+   "effective_for": "definitive contracts signed from 2027-07-01",
+   "consultation_until": "2026-11-01",
+   "open_questions": [
+    "golden-visa EUR 250k conversions and listed buildings",
+    "transitional rule for preliminary contracts and deposits",
+    "new builds under VAT suspension",
+    "dual nationals"
+   ],
+   "as_of": "2026-10-19",
+   "sources": [
+    {
+     "source": "https://minfin.gov.gr/wp-content/uploads/2026/10/Greece_DBP_2027_final.pdf",
+     "source_date": "2026-10-15",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "official: 3% to 15% (15.45% with municipal levy) for residential purchases by tax residents of third countries, from July 2027"
+    },
+    {
+     "source": "https://www.aludata.gr/neodmita-anakainiseis-tekmarto-ti-fernei-to-neo-forologiko-nomosxedio-se-mixanikous-kai-kataskeyastes/",
+     "source_date": "2026-10-19",
+     "retrieved": "2026-10-22",
+     "confidence": "medium",
+     "note": "bill posted on opengov 18 Oct 2026, consultation to 1 Nov 2026; art. 16; tax residence test; definitive contracts from 1.7.2027"
+    },
+    {
+     "source": "https://www.protothema.gr/economy/article/1875396/foros-metavivasis-15-gia-agorastes-apo-trites-hores-poioi-exairoudai-i-ekkremotita-me-tin-golden-visa/",
+     "source_date": "2026-09-08",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.newmoney.gr/roh/palmos-oikonomias/oikonomia/akinita-se-pious-epivallete-o-foros-metavivasis-15-ti-allaxe-meta-tis-antidrasis/",
+     "source_date": "2026-09-08",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "vat_new_build": {
+   "rate": 0.24,
+   "mechanism": "developer elects suspension; buyer then pays 3.09% transfer tax instead of VAT",
+   "suspension_in_force_until": "2026-12-31",
+   "suspension_law": "Law 5246/2025 art. 12 (gazette 11 Nov 2025)",
+   "planned_extension_until": "2027-12-31",
+   "planned_extension_status": "DBP 2027 + art. 17 of bill in consultation (existing suspensions auto-extended one year). NOT YET LAW.",
+   "covers": "building permits from 2006 onward incl. antiparochi; all unsold units under the permit once the developer files",
+   "as_of": "2026-10-19",
+   "sources": [
+    {
+     "source": "https://kpmg.com/us/en/taxnewsflash/news/2025/11/tnf-greece-vat-suspension-on-real-estate-extended-to-december-31-2026.html",
+     "source_date": "2025-11-21",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://minfin.gov.gr/wp-content/uploads/2026/10/Greece_DBP_2027_final.pdf",
+     "source_date": "2026-10-15",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://www.aludata.gr/neodmita-anakainiseis-tekmarto-ti-fernei-to-neo-forologiko-nomosxedio-se-mixanikous-kai-kataskeyastes/",
+     "source_date": "2026-10-19",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.iefimerida.gr/oikonomia/akinita-anastoli-fpa-apallagi-foro-yperaxias-2027",
+     "source_date": "2026-07-08",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "notary_fee_scale": {
+   "fixed_eur": 20,
+   "brackets": [
+    {
+     "upto": 120000,
+     "rate": 0.008
+    },
+    {
+     "upto": 380000,
+     "rate": 0.007
+    },
+    {
+     "upto": 2000000,
+     "rate": 0.0065
+    },
+    {
+     "upto": 5000000,
+     "rate": 0.0055
+    }
+   ],
+   "applied": "as a scale on the higher of declared or assessed value",
+   "vat": 0.24,
+   "extras": "page fees (about EUR 5 per extra page, EUR 4 per copy page) and fund contributions not included",
+   "as_of": "2015-10-08 (latest amendment found)",
+   "sources": [
+    {
+     "source": "https://www.dsanet.gr/Epikairothta/Nomothesia/ya111376_12.htm",
+     "source_date": "2012-01-11",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "KYA 111376/2011"
+    },
+    {
+     "source": "https://www.taxheaven.gr/circulars/21981/ariom-72386-8-10-2015",
+     "source_date": "2015-10-08",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "first bracket cut from 1% to 0.8%"
+    },
+    {
+     "source": "https://www.tanea.gr/2023/06/17/economy/o-timokatalogos-stis-metavivaseis-akiniton/",
+     "source_date": "2023-06-17",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ],
+   "note": "no later amendment verified; confirm with the notary"
+  },
+  "cadastre_fee": {
+   "proportional": 0.005,
+   "proportional_cadastral_book_case": 0.006,
+   "fixed_eur": [
+    20,
+    3
+   ],
+   "vat": null,
+   "mortgage_registration": {
+    "proportional": 0.008,
+    "cadastral_book_case": 0.009,
+    "fixed_eur": 20
+   },
+   "as_of": "2026-01-13",
+   "sources": [
+    {
+     "source": "https://www.taxheaven.gr/news/72587/kthmatologio-h-nea-apofash-me-ta-pagia-kai-analogika-telh",
+     "source_date": "2026-01-14",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "Decision 2/12-1-2026, FEK B 64/13.1.2026"
+    },
+    {
+     "source": "https://www.odigostoupoliti.eu/pagia-kai-analogika-teli-gia-to-ktimatologio-kai-to-ilektroniko-mitroo-enechyron/",
+     "source_date": "2026-01-19",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "lawyer_fee": {
+   "typical_range": [
+    0.005,
+    0.015
+   ],
+   "default_for_calculator": 0.01,
+   "vat": 0.24,
+   "mandatory": false,
+   "note": "not legally required since 1 Jan 2014; a Greek mortgage bank requires a Greek-bar lawyer with PoA for non-Greek borrowers",
+   "as_of": "2026-09-30",
+   "sources": [
+    {
+     "source": "https://ktimatoemporiki.gr/news/367623-the-real-cost-of-buying-property-in-greece-in-2026-line-by-line",
+     "source_date": "2026-09-30",
+     "retrieved": "2026-10-22",
+     "confidence": "low",
+     "note": "up to about 1.5% + VAT"
+    },
+    {
+     "source": "https://www.globalpropertyguide.com/europe/greece/taxes-and-costs",
+     "source_date": "2026-09",
+     "retrieved": "2026-10-22",
+     "confidence": "medium",
+     "note": "1-2%"
+    },
+    {
+     "source": "https://wiki.private.law/en/greece-property-purchase",
+     "source_date": "2026-09-30",
+     "retrieved": "2026-10-22",
+     "confidence": "low",
+     "note": "0.4-1%"
+    }
+   ]
+  },
+  "agent_fee": {
+   "typical_buyer_side": 0.02,
+   "vat": 0.24,
+   "negotiable": true,
+   "note": "commonly 2% + VAT; sometimes only the seller pays",
+   "as_of": "2026-09-30",
+   "sources": [
+    {
+     "source": "https://ktimatoemporiki.gr/news/367623-the-real-cost-of-buying-property-in-greece-in-2026-line-by-line",
+     "source_date": "2026-09-30",
+     "retrieved": "2026-10-22",
+     "confidence": "low"
+    },
+    {
+     "source": "https://www.tanea.gr/2023/06/17/economy/o-timokatalogos-stis-metavivaseis-akiniton/",
+     "source_date": "2023-06-17",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "engineer_legality_certificate": {
+   "required_in_every_transfer": true,
+   "payer": "seller (buyer may hire own engineer)",
+   "legal_basis": "Law 4495/2017 art. 83, restated in art. 368 of Law 5306/2026",
+   "electronic_building_id_cost_eur": [
+    300,
+    1000
+   ],
+   "sources": [
+    {
+     "source": "https://www.taxheaven.gr/law/5306/2026/arthro/368",
+     "source_date": "2026",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://protothema.gr/economy/article/1200873/metavivaseis-akiniton-erhetai-keramida-mehri-kai-1000-euro-gia-tin-ilektroniki-tautotita-ktirion",
+     "source_date": "undated",
+     "retrieved": "2026-10-22",
+     "confidence": "low"
+    }
+   ]
+  },
+  "energy_certificate": {
+   "required": true,
+   "payer": "seller",
+   "cost_eur": null,
+   "note": "cost not verified"
+  },
+  "afm_tax_number": {
+   "cost_eur": 0,
+   "how": "Tax Office for Foreign Residents (Athens) in person, myAADE live video, or a tax representative with apostilled PoA",
+   "tax_representative_mandatory_for_non_eu": null,
+   "sources": [
+    {
+     "source": "https://lookuptax.com/docs/tax-identification-number/greece-tax-id-guide",
+     "source_date": "2026",
+     "retrieved": "2026-10-22",
+     "confidence": "low"
+    }
+   ]
+  },
+  "typical_total_buyer_cost": {
+   "resale_excl_agent_pct": [
+    5.7,
+    5.9
+   ],
+   "resale_incl_agent_pct": [
+    8.1,
+    8.4
+   ],
+   "new_build_vat_suspended": "same as resale today",
+   "new_build_with_vat": "24% VAT replaces the 3.09% transfer tax",
+   "non_eu_tax_resident_from_2027_07_01_if_enacted_excl_agent_pct": [
+    18.0,
+    18.2
+   ],
+   "assumptions": "lawyer 1% + VAT, agent 2% + VAT, objective value not above price, notary page fees excluded",
+   "as_of": "2026-10-22",
+   "source": "computed (scratch calc.py) from the rates in this file",
+   "confidence": "medium"
+  },
+  "worked_examples": {
+   "150000": {
+    "resale_or_newbuild_vat_suspended_today": {
+     "price": 150000,
+     "transfer_tax": 4635,
+     "notary_incl_vat": 1476,
+     "cadastre": 773,
+     "lawyer_1pct_incl_vat": 1860,
+     "agent_2pct_incl_vat": 3720,
+     "total_without_agent": 8744,
+     "total_without_agent_pct": 5.83,
+     "total_with_agent": 12464,
+     "total_with_agent_pct": 8.31
+    },
+    "non_eu_tax_resident_from_2027_07_01_if_bill_passes": {
+     "price": 150000,
+     "transfer_tax": 23175,
+     "notary_incl_vat": 1476,
+     "cadastre": 773,
+     "lawyer_1pct_incl_vat": 1860,
+     "agent_2pct_incl_vat": 3720,
+     "total_without_agent": 27284,
+     "total_without_agent_pct": 18.19,
+     "total_with_agent": 31004,
+     "total_with_agent_pct": 20.67
+    },
+    "newbuild_with_vat_24pct": {
+     "vat_24pct_on_price": 36000,
+     "note": "transfer tax not due when VAT applies; notary/cadastre/lawyer as above"
+    }
+   },
+   "250000": {
+    "resale_or_newbuild_vat_suspended_today": {
+     "price": 250000,
+     "transfer_tax": 7725,
+     "notary_incl_vat": 2344,
+     "cadastre": 1273,
+     "lawyer_1pct_incl_vat": 3100,
+     "agent_2pct_incl_vat": 6200,
+     "total_without_agent": 14442,
+     "total_without_agent_pct": 5.78,
+     "total_with_agent": 20642,
+     "total_with_agent_pct": 8.26
+    },
+    "non_eu_tax_resident_from_2027_07_01_if_bill_passes": {
+     "price": 250000,
+     "transfer_tax": 38625,
+     "notary_incl_vat": 2344,
+     "cadastre": 1273,
+     "lawyer_1pct_incl_vat": 3100,
+     "agent_2pct_incl_vat": 6200,
+     "total_without_agent": 45342,
+     "total_without_agent_pct": 18.14,
+     "total_with_agent": 51542,
+     "total_with_agent_pct": 20.62
+    },
+    "newbuild_with_vat_24pct": {
+     "vat_24pct_on_price": 60000,
+     "note": "transfer tax not due when VAT applies; notary/cadastre/lawyer as above"
+    }
+   },
+   "400000": {
+    "resale_or_newbuild_vat_suspended_today": {
+     "price": 400000,
+     "transfer_tax": 12360,
+     "notary_incl_vat": 3633,
+     "cadastre": 2023,
+     "lawyer_1pct_incl_vat": 4960,
+     "agent_2pct_incl_vat": 9920,
+     "total_without_agent": 22976,
+     "total_without_agent_pct": 5.74,
+     "total_with_agent": 32896,
+     "total_with_agent_pct": 8.22
+    },
+    "non_eu_tax_resident_from_2027_07_01_if_bill_passes": {
+     "price": 400000,
+     "transfer_tax": 61800,
+     "notary_incl_vat": 3633,
+     "cadastre": 2023,
+     "lawyer_1pct_incl_vat": 4960,
+     "agent_2pct_incl_vat": 9920,
+     "total_without_agent": 72416,
+     "total_without_agent_pct": 18.1,
+     "total_with_agent": 82336,
+     "total_with_agent_pct": 20.58
+    },
+    "newbuild_with_vat_24pct": {
+     "vat_24pct_on_price": 96000,
+     "note": "transfer tax not due when VAT applies; notary/cadastre/lawyer as above"
+    }
+   },
+   "800000": {
+    "resale_or_newbuild_vat_suspended_today": {
+     "price": 800000,
+     "transfer_tax": 24720,
+     "notary_incl_vat": 6857,
+     "cadastre": 4023,
+     "lawyer_1pct_incl_vat": 9920,
+     "agent_2pct_incl_vat": 19840,
+     "total_without_agent": 45520,
+     "total_without_agent_pct": 5.69,
+     "total_with_agent": 65360,
+     "total_with_agent_pct": 8.17
+    },
+    "non_eu_tax_resident_from_2027_07_01_if_bill_passes": {
+     "price": 800000,
+     "transfer_tax": 123600,
+     "notary_incl_vat": 6857,
+     "cadastre": 4023,
+     "lawyer_1pct_incl_vat": 9920,
+     "agent_2pct_incl_vat": 19840,
+     "total_without_agent": 144400,
+     "total_without_agent_pct": 18.05,
+     "total_with_agent": 164240,
+     "total_with_agent_pct": 20.53
+    },
+    "newbuild_with_vat_24pct": {
+     "vat_24pct_on_price": 192000,
+     "note": "transfer tax not due when VAT applies; notary/cadastre/lawyer as above"
+    }
+   }
+  }
+ },
+ "border_zone_permit_non_eu": {
+  "law": "Law 1892/1990 arts 24-26",
+  "applies_to": "non-EU/EEA natural and legal persons (Israelis included)",
+  "areas": {
+   "islands": [
+    "entire Dodecanese (Rhodes, Kos, Patmos, Symi and others)",
+    "Lesvos",
+    "Chios",
+    "Samos",
+    "Limnos",
+    "Samothraki",
+    "Thira (Santorini)",
+    "Skyros",
+    "Diapontia islands (Corfu main island not listed)"
+   ],
+   "mainland": [
+    "Evros",
+    "Xanthi",
+    "Rodopi",
+    "Kilkis",
+    "Kastoria",
+    "Florina",
+    "Thesprotia",
+    "Preveza",
+    "parts of Drama, Ioannina, Pella, Serres"
+   ]
+  },
+  "process": "prior approval by a committee of the Decentralised Administration (defence ministry vote); deal void without it; takes months",
+  "as_of": "2026-09-30",
+  "sources": [
+   {
+    "source": "https://wiki.private.law/en/greece-property-purchase",
+    "source_date": "2026-09-30",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "area list to be checked against the law text"
+   },
+   {
+    "source": "https://www.hellenicparliament.gr/UserFiles/c0d5184d-7550-4265-8e0b-078e1bc7375a/12134845.pdf",
+    "source_date": "2024-02",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "art. 25 prohibition, art. 26 committee"
+   }
+  ]
+ },
+ "annual_holding_costs": {
+  "enfia": {
+   "law": "Property Tax Code, Law 5219/2025, art. 11",
+   "assessed_on": "ownership on 1 January",
+   "payment": "lump sum or 12 monthly instalments from end of March",
+   "main_tax_formula": "m2 x base(zone) x age_coef x floor_coef (or 1.02 detached) x facade_coef [x 0.10 auxiliary spaces] [x 0.40 unfinished]",
+   "zones": [
+    {
+     "zone": 1,
+     "zone_price_max": 750,
+     "base": 2.0
+    },
+    {
+     "zone": 2,
+     "zone_price_max": 1500,
+     "base": 2.8
+    },
+    {
+     "zone": 3,
+     "zone_price_max": 2500,
+     "base": 3.7
+    },
+    {
+     "zone": 4,
+     "zone_price_max": 3000,
+     "base": 4.5
+    },
+    {
+     "zone": 5,
+     "zone_price_max": 3500,
+     "base": 7.6
+    },
+    {
+     "zone": 6,
+     "zone_price_max": 4000,
+     "base": 9.2
+    },
+    {
+     "zone": 7,
+     "zone_price_max": 4500,
+     "base": 11.1
+    },
+    {
+     "zone": 8,
+     "zone_price_max": 5000,
+     "base": 13.4
+    },
+    {
+     "zone": 9,
+     "zone_price_max": null,
+     "base": 16.2
+    }
+   ],
+   "age_coef": {
+    "26+": 1.0,
+    "20-25": 1.05,
+    "15-19": 1.1,
+    "10-14": 1.15,
+    "5-9": 1.2,
+    "0-4": 1.25,
+    "built_before_1930": 0.8,
+    "over_100_years": 0.6
+   },
+   "floor_coef": {
+    "basement": 0.98,
+    "ground_1st": 1.0,
+    "2nd_3rd": 1.01,
+    "4th_5th": 1.02,
+    "6th_plus": 1.03,
+    "detached_house": 1.02
+   },
+   "facade_coef": {
+    "none": 1.0,
+    "one": 1.01,
+    "two_plus": 1.02
+   },
+   "value_tax_section_gamma": {
+    "applies_if_total_property_value_over": 300000,
+    "brackets_on_value_of_each_right": [
+     {
+      "upto": 400000,
+      "rate": 0
+     },
+     {
+      "upto": 500000,
+      "rate": 0.002
+     },
+     {
+      "upto": 600000,
+      "rate": 0.003
+     },
+     {
+      "upto": 700000,
+      "rate": 0.004
+     },
+     {
+      "upto": 800000,
+      "rate": 0.005
+     },
+     {
+      "upto": 900000,
+      "rate": 0.006
+     },
+     {
+      "upto": 1000000,
+      "rate": 0.007
+     },
+     {
+      "upto": 2000000,
+      "rate": 0.009
+     },
+     {
+      "upto": null,
+      "rate": 0.01
+     }
+    ]
+   },
+   "surcharge_on_main_tax_section_e": {
+    "applies_if_total_value_over": 500000,
+    "bands": [
+     {
+      "upto": 650000,
+      "pct": 0.05
+     },
+     {
+      "upto": 800000,
+      "pct": 0.1
+     },
+     {
+      "upto": 1000000,
+      "pct": 0.15
+     },
+     {
+      "upto": null,
+      "pct": 0.2
+     }
+    ]
+   },
+   "insurance_discount": {
+    "rate_if_total_residential_value_le_500k": 0.2,
+    "rate_above": 0.1,
+    "conditions": "residence insured against earthquake, fire and flood for at least 3 months of the prior year (pro rata), insured value at least EUR 1,000/m2 of building",
+    "applies_to": "main + supplementary tax"
+   },
+   "legal_entities_supplementary": {
+    "general": 0.0055,
+    "own_business_use": 0.001
+   },
+   "small_settlement_main_residence": "50% cut 2026 / exemption 2027 only for main residences of Greek tax residents - not relevant to non-residents",
+   "national_stats_2026": {
+    "taxpayers_liable": 6171359,
+    "total_eur": 2297019848.39,
+    "average_per_liable_taxpayer_eur": 372,
+    "insurance_discount_beneficiaries": 428147
+   },
+   "examples_computed": [
+    {
+     "m2": 70,
+     "zone_price": 1800,
+     "base_eur_m2": 3.7,
+     "age": "26+",
+     "floor": "2-3",
+     "main_tax": 267,
+     "surcharge_on_main": 0,
+     "value_tax_section_gamma": 0,
+     "total": 267,
+     "with_20pct_insurance_discount": 213
+    },
+    {
+     "m2": 80,
+     "zone_price": 2200,
+     "base_eur_m2": 3.7,
+     "age": "20-25",
+     "floor": "2-3",
+     "main_tax": 320,
+     "surcharge_on_main": 0,
+     "value_tax_section_gamma": 0,
+     "total": 320,
+     "with_20pct_insurance_discount": 256
+    },
+    {
+     "m2": 100,
+     "zone_price": 3200,
+     "base_eur_m2": 7.6,
+     "age": "10-14",
+     "floor": "4-5",
+     "main_tax": 909,
+     "surcharge_on_main": 0,
+     "value_tax_section_gamma": 0,
+     "total": 909,
+     "with_20pct_insurance_discount": 727
+    },
+    {
+     "m2": 120,
+     "zone_price": 4200,
+     "base_eur_m2": 11.1,
+     "age": "0-4",
+     "floor": "2-3",
+     "main_tax": 1715,
+     "surcharge_on_main": 86,
+     "value_tax_section_gamma": 260,
+     "total": 2061,
+     "with_20pct_insurance_discount": 1855
+    },
+    {
+     "m2": 150,
+     "zone_price": 5200,
+     "base_eur_m2": 16.2,
+     "age": "0-4",
+     "floor": "2-3",
+     "main_tax": 3129,
+     "surcharge_on_main": 313,
+     "value_tax_section_gamma": 1400,
+     "total": 4842,
+     "with_20pct_insurance_discount": 4358
+    }
+   ],
+   "examples_note": "objective value in examples approximated as m2 x zone price; real zone price per address must be looked up (AADE)",
+   "as_of": "2026-10-22",
+   "sources": [
+    {
+     "source": "https://www.taxheaven.gr/law/5219/2025/arthro/11",
+     "source_date": "2025 code text",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://www.taxheaven.gr/law/5219/2025/arthro/12",
+     "source_date": "2025 code text",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://www.capital.gr/tax/3967310/enfia-pos-kleidonei-i-ekptosi-eos-20-to-2026-gia-akinita-asfalismena-gia-fusikes-katastrofes/",
+     "source_date": "2026-01-10",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.naftemporiki.gr/finance/economy/2085853/aade-anartithikan-ta-ekkatharistika-toy-enfia-2026-oi-prothesmies-oi-tropoi-pliromis-kai-oi-ekptoseis/",
+     "source_date": "2026-03-15",
+     "retrieved": "2026-10-22",
+     "confidence": "medium",
+     "note": "AADE totals"
+    },
+    {
+     "source": "https://ypologismos.com/en/zone-price/",
+     "source_date": "2026-10-04",
+     "retrieved": "2026-10-22",
+     "confidence": "medium",
+     "note": "same zone table"
+    }
+   ]
+  },
+  "tap_municipal_fee": {
+   "rate_range_per_mille": [
+    0.25,
+    0.35
+   ],
+   "base": "m2 x zone price x age coefficient",
+   "collected": "through the electricity bill",
+   "set_by": "each municipality",
+   "as_of": "2018-12-19",
+   "sources": [
+    {
+     "source": "https://www.tanea.gr/2018/12/19/economy/forologika/eforia-aytes-einai-oles-oi-epivarynseis-stin-akiniti-periousia/",
+     "source_date": "2018-12-19",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.taxheaven.gr/circulars/11452/yp-es-egkyklios-22-12-5-1993",
+     "source_date": "1993-05-12",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    }
+   ]
+  },
+  "common_charges": {
+   "value": null,
+   "note": "building-specific; no reliable 2026 average found"
+  }
+ },
+ "rental_income_tax_greece_individuals": {
+  "applies_to_non_residents": true,
+  "deduction": "flat 5% of gross; lost if rent is not paid through a bank (from 2026)",
+  "brackets_income_from_2026": [
+   {
+    "from": 0,
+    "to": 12000,
+    "rate": 0.15
+   },
+   {
+    "from": 12000.01,
+    "to": 24000,
+    "rate": 0.25
+   },
+   {
+    "from": 24000.01,
+    "to": 36000,
+    "rate": 0.35
+   },
+   {
+    "from": 36000.01,
+    "to": null,
+    "rate": 0.45
+   }
+  ],
+  "brackets_income_to_2025": [
+   {
+    "from": 0,
+    "to": 12000,
+    "rate": 0.15
+   },
+   {
+    "from": 12000.01,
+    "to": 35000,
+    "rate": 0.35
+   },
+   {
+    "from": 35000.01,
+    "to": null,
+    "rate": 0.45
+   }
+  ],
+  "law": "Law 5246/2025 art. 8",
+  "long_term_lease_exemption": "36-month income-tax exemption for residences up to 120 m2 (+20 m2 per child beyond two) let 3+ years after 3 vacant years or STR-only prior year; leases signed by 31.12.2026, bill extends to end-2027",
+  "as_of": "2026-10-22",
+  "sources": [
+   {
+    "source": "https://kpmg.com/gr/en/insights/2025/11/tax-updates-20112025.html",
+    "source_date": "2025-11-20",
+    "retrieved": "2026-10-22",
+    "confidence": "high"
+   },
+   {
+    "source": "https://minfin.gov.gr/wp-content/uploads/2026/10/Greece_DBP_2027_final.pdf",
+    "source_date": "2026-10-15",
+    "retrieved": "2026-10-22",
+    "confidence": "high",
+    "note": "confirms 25% bracket 12-24k and threshold 35k to 36k"
+   },
+   {
+    "source": "https://www.globalpropertyguide.com/europe/greece/taxes-and-costs",
+    "source_date": "2026-09",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "table prints 45% on portion over 35,000 - typo vs 36,000"
+   },
+   {
+    "source": "https://www.tovima.com/society/renting-in-greece-cash-payments-end-on-jan-1-2026/amp/",
+    "source_date": "2025",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "cash rent loses the 5% deduction"
+   }
+  ]
+ },
+ "short_term_rental": {
+  "definition": "furnished lease under 60 days; AMA registration number from AADE required on every listing",
+  "business_threshold": {
+   "properties": 3,
+   "effect": "3+ STR properties = business activity (business income, 13% VAT); up to 2 = property income, outside VAT",
+   "law": "Law 5073/2023, from 1.1.2024"
+  },
+  "vat_rate_business": 0.13,
+  "climate_resilience_fee_eur_per_night": {
+   "from": "2025-01-01",
+   "str_unit": {
+    "apr_oct": 8.0,
+    "nov_mar": 2.0
+   },
+   "str_detached_house_over_80m2": {
+    "apr_oct": 15.0,
+    "nov_mar": 4.0
+   },
+   "pre_2025_reference": {
+    "str_unit": {
+     "mar_oct": 1.5,
+     "nov_feb": 0.5
+    },
+    "detached_over_80m2": {
+     "mar_oct": 10.0,
+     "nov_feb": 4.0
+    }
+   },
+   "payer": "guest; host collects and declares to AADE"
+  },
+  "registration_freeze": {
+   "athens": {
+    "areas": [
+     "1st Municipal District: Plaka, Monastiraki, Syntagma, Omonia, Kolonaki, Exarcheia, Ilisia, Neapoli, Koukaki",
+     "2nd: Mets, Neos Kosmos, Agios Artemios, Pagrati",
+     "3rd: Petralona, Thiseio, Gazi, Votanikos, Metaxourgeio, Rouf"
+    ],
+    "in_force_until": "2026-12-31",
+    "basis": "KYA 225563 EX 2025 (FEK B 7200/31.12.2025)"
+   },
+   "thessaloniki": {
+    "areas": [
+     "1st Municipal Community (historic and commercial centre)"
+    ],
+    "from": "2026-07-01",
+    "in_force_until": "2026-12-31",
+    "basis": "art. 5 Law 5313/2026"
+   },
+   "planned_2027": "extension for 2027 (3 Athens districts + 1 Thessaloniki community) listed in DBP 2027; not yet enacted",
+   "transfer_rule": "in restricted areas the AMA is deleted on sale, gift or parental transfer and cannot be re-registered while the restriction lasts"
+  },
+  "fines": {
+   "no_ama_first": "50% of STR income, min EUR 20,000",
+   "repeat_same_year": "100% of rents, min EUR 40,000",
+   "safety_rules_breach": "from EUR 5,000 (press)"
+  },
+  "as_of": "2026-10-22",
+  "sources": [
+   {
+    "source": "https://stegasi.gov.gr/programs/prosorinoi-periorismoi-stis-vrachychronies-misthoseis/",
+    "source_date": "2026",
+    "retrieved": "2026-10-22",
+    "confidence": "high"
+   },
+   {
+    "source": "https://www.taxheaven.gr/law/5162/2024/arthro/24",
+    "source_date": "2024-12-05",
+    "retrieved": "2026-10-22",
+    "confidence": "high",
+    "note": "fee table"
+   },
+   {
+    "source": "https://minfin.gov.gr/wp-content/uploads/2026/10/Greece_DBP_2027_final.pdf",
+    "source_date": "2026-10-15",
+    "retrieved": "2026-10-22",
+    "confidence": "high",
+    "note": "2027 extension planned"
+   },
+   {
+    "source": "https://news.gtp.gr/2026/01/26/short-term-rentals-in-greece-new-restrictions-take-effect-in-2026/",
+    "source_date": "2026-01-26",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   },
+   {
+    "source": "https://www.zeya.com/sites/default/files/2023-12/real_estate_tax_newsletter_18_december_2023.pdf",
+    "source_date": "2023-12-18",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "Law 5073/2023"
+   },
+   {
+    "source": "https://www.odigostoupoliti.eu/telos-anthektikotitas-stin-klimatiki-krisi-ypochreoi-kai-poso-pliromis/",
+    "source_date": "2024",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "2024 amounts (A.1217/2023)"
+   }
+  ]
+ },
+ "capital_gains_tax_greece": {
+  "rate": 0.15,
+  "status": "suspended for individuals",
+  "suspended_until": "2026-12-31",
+  "planned_extension_until": "2027-12-31",
+  "planned_status": "DBP 2027 + art. 13 of bill in consultation; not yet law",
+  "note": "a sale treated as business activity may be taxed as business income",
+  "sources": [
+   {
+    "source": "https://minfin.gov.gr/wp-content/uploads/2026/10/Greece_DBP_2027_final.pdf",
+    "source_date": "2026-10-15",
+    "retrieved": "2026-10-22",
+    "confidence": "high"
+   },
+   {
+    "source": "https://www.aludata.gr/neodmita-anakainiseis-tekmarto-ti-fernei-to-neo-forologiko-nomosxedio-se-mixanikous-kai-kataskeyastes/",
+    "source_date": "2026-10-19",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   },
+   {
+    "source": "https://www.globalpropertyguide.com/europe/greece/taxes-and-costs",
+    "source_date": "2026-09",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   }
+  ]
+ },
+ "israel_tax": {
+  "foreign_rent_15pct_track": {
+   "section": "122A Income Tax Ordinance",
+   "rate": 0.15,
+   "base": "gross rent minus allowed depreciation only",
+   "expenses_deductible": false,
+   "loss_offset_credit_exemption": false,
+   "foreign_tax_credit": false,
+   "short_report": "possible if no other duty to file; reported in form 1301 fields 345/285/225",
+   "sources": [
+    {
+     "source": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+     "source_date": "2026 (guide for tax year 2025)",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "section 25, page 44"
+    }
+   ]
+  },
+  "foreign_rent_regular_track": {
+   "rate": "marginal individual rates (+ surtax above threshold)",
+   "deductions": "actual expenses + depreciation",
+   "foreign_tax_credit": "yes, per income basket, form 1324 (appendix D to 1301); final tax paid within 24 months after year end; excess carried 5 years, CPI-linked",
+   "not_creditable": "municipal taxes, purchase/transfer taxes (so ENFIA and Greek transfer tax are not creditable)",
+   "sources": [
+    {
+     "source": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+     "source_date": "2026",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    }
+   ]
+  },
+  "israeli_exempt_and_10pct_tracks": "apply only to residential rent in Israel, not to foreign property",
+  "capital_gain_foreign_property": {
+   "rate_real_gain": 0.25,
+   "linear_split": "gain to end-2011 up to 20%, later gain up to 25% (older holdings: other rules)",
+   "report_within_days": 30,
+   "form": "1399 capital-gains appendix",
+   "land_appreciation_tax_law": "does not apply to foreign property",
+   "foreign_tax_credit": true,
+   "sources": [
+    {
+     "source": "https://www.bshcpa.co.il/%D7%9E%D7%9B%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%AA-%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D-%D7%91%D7%97%D7%95%D7%9C/",
+     "source_date": "2024-07-15",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+     "source_date": "2026",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "form 1399 for capital gains other than listed securities"
+    }
+   ]
+  },
+  "annual_report_triggers_tax_year_2025": {
+   "foreign_assets_over_ils": 2086000,
+   "foreign_bank_accounts_over_ils": 2086000,
+   "taxable_income_over_ils": 721560,
+   "sources": [
+    {
+     "source": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+     "source_date": "2026",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    }
+   ]
+  },
+  "treaty_israel_greece": {
+   "signed": "1995-10-24 (Jerusalem)",
+   "in_force": "1998-03-06",
+   "applies_from": "1999-01-01",
+   "greek_ratification": "Law 2572/1998 (FEK A 12/13.1.1998)",
+   "article_6_immovable_income": "English text: taxable ONLY in the state where the property is (Greece). Hebrew text reportedly reads 'may be taxed'. Final clause: English prevails on divergence.",
+   "article_13_gains_immovable": "taxable only in Greece",
+   "article_22": "credit method (general)",
+   "ita_official_position": null,
+   "practical_status": "UNRESOLVED: Israeli practitioners read arts 6/13 as exclusive Greek taxation (no Israeli tax); ITA guide only says 'subject to tax treaties'; no ITA ruling found",
+   "sources": [
+    {
+     "source": "https://treaties.un.org/doc/Publication/UNTS/Volume%202274/v2274.pdf",
+     "source_date": "2004 (UNTS vol. 2274, No. 40499)",
+     "retrieved": "2026-10-22",
+     "confidence": "high"
+    },
+    {
+     "source": "https://asnafy.co.il/%D7%90%D7%9E%D7%A0%D7%AA-%D7%94%D7%9E%D7%A1-%D7%91%D7%99%D7%9F-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%9C%D7%99%D7%95%D7%95%D7%9F-%D7%9E%D7%99%D7%A1%D7%95%D7%99-%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E/",
+     "source_date": "2018-09-05",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    },
+    {
+     "source": "https://www.dt-law.co.il/articles.asp?ArticleID=12209",
+     "source_date": "2019-09-12",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "open_questions": [
+   "whether a Greek flat counts as 'another apartment' for Israeli purchase tax / single-apartment exemption",
+   "National Insurance (Bituach Leumi) on foreign rental income",
+   "inflation adjustment method for foreign-currency property"
+  ]
+ },
+ "golden_visa": {
+  "thresholds": [
+   {
+    "area": "Attica, Thessaloniki regional unit, Mykonos, Santorini, islands over 3,100 inhabitants",
+    "min_eur": 800000,
+    "min_main_area_m2": 120
+   },
+   {
+    "area": "rest of Greece",
+    "min_eur": 400000,
+    "min_main_area_m2": 120
+   },
+   {
+    "area": "anywhere: commercial/industrial converted to residential (legally completed before filing, after 5.4.2024) or listed-building restoration",
+    "min_eur": 250000,
+    "min_main_area_m2": null
+   }
+  ],
+  "single_property": true,
+  "short_term_rental_ban": {
+   "fine_eur": 50000,
+   "plus": "permit revocation",
+   "long_term_lease": "allowed",
+   "not_retroactive": "properties acquired under the old regime / transition"
+  },
+  "listed_building_restoration_failure_fine_eur": 150000,
+  "permit_years": 5,
+  "renewable": true,
+  "min_stay_days": null,
+  "family": "spouse/partner, children under 21, parents of both spouses (secondary sources)",
+  "fees": {
+   "main_applicant_eur": 2000,
+   "family_member_eur": 150,
+   "card_eur": 16,
+   "confidence": "medium (EUR 150 from secondary sources)"
+  },
+  "processing_months": [
+   4,
+   6
+  ],
+  "law": "Law 5100/2024 art. 64 (amends art. 100 Migration Code, Law 5038/2023); new Migration Code Law 5275/2026 from 6.2.2026",
+  "stats": {
+   "h1_2026_new_applications": 2551,
+   "h1_2025_new_applications": 4553,
+   "h1_2026_permits_granted": 4919,
+   "valid_permits_jan_2026": 81561,
+   "israel_approvals_9m_2025": 544,
+   "israel_approvals_9m_2024": 296
+  },
+  "as_of": "2026-09-09",
+  "sources": [
+   {
+    "source": "https://www.ibanet.org/the-greek-golden-visa-after-2024-2026-overhaul",
+    "source_date": "2026-09-09",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   },
+   {
+    "source": "https://migration.gov.gr/en/golden-visa/",
+    "source_date": "undated",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "EUR 2,000 + EUR 16; page text outdated"
+   },
+   {
+    "source": "https://greekreporter.com/2026/08/26/greece-golden-visa-applications-drop/",
+    "source_date": "2026-08-26",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   },
+   {
+    "source": "https://greekcitytimes.com/2026/03/17/greece-golden-visa-israel-turkey-iran-property-investment/",
+    "source_date": "2026-03-17",
+    "retrieved": "2026-10-22",
+    "confidence": "low"
+   },
+   {
+    "source": "https://www.maariv.co.il/economy/international/article-1264853",
+    "source_date": "2025-12-22",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "Migration Ministry figures for Israelis"
+   }
+  ]
+ },
+ "prices": {
+  "bog_index": {
+   "base": "2007=100",
+   "what": "apartment price index from valuations reported by all banks",
+   "latest_quarter": "2026-Q2",
+   "release": "2026-09-15 (provisional)",
+   "yoy_2026_q2": {
+    "whole_country": 0.055,
+    "new_up_to_5y": 0.062,
+    "old": 0.05,
+    "athens": 0.05,
+    "thessaloniki": 0.047,
+    "other_cities": 0.054,
+    "other_areas": 0.071,
+    "urban_areas": 0.053
+   },
+   "annual_avg_change": {
+    "2024": 0.091,
+    "2025": 0.083
+   },
+   "change_2016q2_to_2026q2": {
+    "whole_country": 0.915,
+    "athens": 1.08,
+    "thessaloniki": 1.026,
+    "other_cities": 0.732,
+    "other_areas": 0.746
+   },
+   "change_2021q2_to_2026q2": {
+    "whole_country": 0.593,
+    "athens": 0.582,
+    "thessaloniki": 0.703,
+    "other_cities": 0.598,
+    "other_areas": 0.567
+   },
+   "trough": "2017-Q3 (whole country 58.88); 2026-Q2 (114.25) is a series high, about 12% above the 2008 peak",
+   "next_release": "Q3 2026 not yet published",
+   "quarterly_series_2016_2026": {
+    "whole_country_all": {
+     "2016-Q1": 60.15,
+     "2016-Q2": 59.67,
+     "2016-Q3": 59.27,
+     "2016-Q4": 59.33,
+     "2017-Q1": 59.02,
+     "2017-Q2": 59.04,
+     "2017-Q3": 58.88,
+     "2017-Q4": 59.08,
+     "2018-Q1": 59.3,
+     "2018-Q2": 59.79,
+     "2018-Q3": 60.22,
+     "2018-Q4": 60.97,
+     "2019-Q1": 62.56,
+     "2019-Q2": 64.33,
+     "2019-Q3": 65.21,
+     "2019-Q4": 65.53,
+     "2020-Q1": 66.77,
+     "2020-Q2": 67.09,
+     "2020-Q3": 67.74,
+     "2020-Q4": 67.61,
+     "2021-Q1": 69.8,
+     "2021-Q2": 71.7,
+     "2021-Q3": 73.7,
+     "2021-Q4": 74.4,
+     "2022-Q1": 76.8,
+     "2022-Q2": 79.5,
+     "2022-Q3": 83.0,
+     "2022-Q4": 85.0,
+     "2023-Q1": 88.8,
+     "2023-Q2": 91.3,
+     "2023-Q3": 93.6,
+     "2023-Q4": 95.6,
+     "2024-Q1": 98.4,
+     "2024-Q2": 100.2086,
+     "2024-Q3": 101.6098,
+     "2024-Q4": 102.6848,
+     "2025-Q1": 105.8348,
+     "2025-Q2": 108.3032,
+     "2025-Q3": 110.5302,
+     "2025-Q4": 111.6178,
+     "2026-Q1": 112.7861,
+     "2026-Q2": 114.2495
+    },
+    "whole_country_new": {
+     "2016-Q1": 61.74,
+     "2016-Q2": 61.28,
+     "2016-Q3": 60.67,
+     "2016-Q4": 60.99,
+     "2017-Q1": 60.77,
+     "2017-Q2": 60.79,
+     "2017-Q3": 60.41,
+     "2017-Q4": 60.88,
+     "2018-Q1": 61.21,
+     "2018-Q2": 61.55,
+     "2018-Q3": 62.07,
+     "2018-Q4": 62.95,
+     "2019-Q1": 64.5,
+     "2019-Q2": 66.29,
+     "2019-Q3": 67.38,
+     "2019-Q4": 68.66,
+     "2020-Q1": 69.45,
+     "2020-Q2": 69.67,
+     "2020-Q3": 70.31,
+     "2020-Q4": 70.45,
+     "2021-Q1": 72.89,
+     "2021-Q2": 74.7,
+     "2021-Q3": 76.6,
+     "2021-Q4": 78.5,
+     "2022-Q1": 80.9,
+     "2022-Q2": 83.6,
+     "2022-Q3": 86.9,
+     "2022-Q4": 89.1,
+     "2023-Q1": 92.1,
+     "2023-Q2": 95.2,
+     "2023-Q3": 97.4,
+     "2023-Q4": 99.7,
+     "2024-Q1": 102.6,
+     "2024-Q2": 105.2187,
+     "2024-Q3": 107.1795,
+     "2024-Q4": 108.8415,
+     "2025-Q1": 111.0428,
+     "2025-Q2": 113.0395,
+     "2025-Q3": 115.3086,
+     "2025-Q4": 117.7153,
+     "2026-Q1": 118.8065,
+     "2026-Q2": 120.0219
+    },
+    "whole_country_old": {
+     "2016-Q1": 59.16,
+     "2016-Q2": 58.67,
+     "2016-Q3": 58.4,
+     "2016-Q4": 58.3,
+     "2017-Q1": 57.93,
+     "2017-Q2": 57.95,
+     "2017-Q3": 57.92,
+     "2017-Q4": 57.96,
+     "2018-Q1": 58.1,
+     "2018-Q2": 58.69,
+     "2018-Q3": 59.07,
+     "2018-Q4": 59.74,
+     "2019-Q1": 61.35,
+     "2019-Q2": 63.1,
+     "2019-Q3": 63.85,
+     "2019-Q4": 63.57,
+     "2020-Q1": 65.09,
+     "2020-Q2": 65.48,
+     "2020-Q3": 66.13,
+     "2020-Q4": 65.83,
+     "2021-Q1": 67.87,
+     "2021-Q2": 69.9,
+     "2021-Q3": 71.9,
+     "2021-Q4": 71.9,
+     "2022-Q1": 74.2,
+     "2022-Q2": 76.9,
+     "2022-Q3": 80.6,
+     "2022-Q4": 82.4,
+     "2023-Q1": 86.7,
+     "2023-Q2": 88.8,
+     "2023-Q3": 91.2,
+     "2023-Q4": 93.0,
+     "2024-Q1": 95.8,
+     "2024-Q2": 97.0819,
+     "2024-Q3": 98.1339,
+     "2024-Q4": 98.8426,
+     "2025-Q1": 102.5846,
+     "2025-Q2": 105.3474,
+     "2025-Q3": 107.5481,
+     "2025-Q4": 107.8125,
+     "2026-Q1": 109.0289,
+     "2026-Q2": 110.6472
+    },
+    "greater_athens_all": {
+     "2016-Q1": 57.23,
+     "2016-Q2": 56.87,
+     "2016-Q3": 56.63,
+     "2016-Q4": 56.5,
+     "2017-Q1": 56.1,
+     "2017-Q2": 56.33,
+     "2017-Q3": 56.22,
+     "2017-Q4": 56.25,
+     "2018-Q1": 56.54,
+     "2018-Q2": 57.35,
+     "2018-Q3": 58.26,
+     "2018-Q4": 59.1,
+     "2019-Q1": 61.07,
+     "2019-Q2": 63.77,
+     "2019-Q3": 64.96,
+     "2019-Q4": 65.86,
+     "2020-Q1": 67.72,
+     "2020-Q2": 68.4,
+     "2020-Q3": 69.39,
+     "2020-Q4": 70.03,
+     "2021-Q1": 72.5,
+     "2021-Q2": 74.8,
+     "2021-Q3": 76.9,
+     "2021-Q4": 78.2,
+     "2022-Q1": 80.9,
+     "2022-Q2": 84.1,
+     "2022-Q3": 88.1,
+     "2022-Q4": 91.3,
+     "2023-Q1": 95.0,
+     "2023-Q2": 96.7,
+     "2023-Q3": 99.1,
+     "2023-Q4": 101.4,
+     "2024-Q1": 104.6,
+     "2024-Q2": 106.0166,
+     "2024-Q3": 107.0007,
+     "2024-Q4": 108.3188,
+     "2025-Q1": 110.683,
+     "2025-Q2": 112.7138,
+     "2025-Q3": 114.9314,
+     "2025-Q4": 115.5808,
+     "2026-Q1": 117.2246,
+     "2026-Q2": 118.303
+    },
+    "thessaloniki_all": {
+     "2016-Q1": 55.93,
+     "2016-Q2": 55.2,
+     "2016-Q3": 54.81,
+     "2016-Q4": 55.07,
+     "2017-Q1": 54.49,
+     "2017-Q2": 54.57,
+     "2017-Q3": 54.08,
+     "2017-Q4": 54.75,
+     "2018-Q1": 54.6,
+     "2018-Q2": 54.85,
+     "2018-Q3": 54.79,
+     "2018-Q4": 56.1,
+     "2019-Q1": 58.14,
+     "2019-Q2": 59.07,
+     "2019-Q3": 59.04,
+     "2019-Q4": 59.38,
+     "2020-Q1": 61.3,
+     "2020-Q2": 61.98,
+     "2020-Q3": 62.02,
+     "2020-Q4": 62.05,
+     "2021-Q1": 64.31,
+     "2021-Q2": 65.7,
+     "2021-Q3": 67.9,
+     "2021-Q4": 68.0,
+     "2022-Q1": 70.7,
+     "2022-Q2": 73.2,
+     "2022-Q3": 76.7,
+     "2022-Q4": 79.0,
+     "2023-Q1": 82.9,
+     "2023-Q2": 86.1,
+     "2023-Q3": 89.1,
+     "2023-Q4": 91.1,
+     "2024-Q1": 93.9,
+     "2024-Q2": 97.1599,
+     "2024-Q3": 99.0879,
+     "2024-Q4": 99.936,
+     "2025-Q1": 103.839,
+     "2025-Q2": 106.8363,
+     "2025-Q3": 109.1921,
+     "2025-Q4": 108.2438,
+     "2026-Q1": 110.9676,
+     "2026-Q2": 111.8546
+    },
+    "other_cities_all": {
+     "2016-Q1": 63.01,
+     "2016-Q2": 62.47,
+     "2016-Q3": 61.9,
+     "2016-Q4": 62.01,
+     "2017-Q1": 61.81,
+     "2017-Q2": 61.46,
+     "2017-Q3": 61.56,
+     "2017-Q4": 61.72,
+     "2018-Q1": 61.92,
+     "2018-Q2": 62.13,
+     "2018-Q3": 62.07,
+     "2018-Q4": 62.58,
+     "2019-Q1": 63.4,
+     "2019-Q2": 64.57,
+     "2019-Q3": 65.4,
+     "2019-Q4": 64.44,
+     "2020-Q1": 64.39,
+     "2020-Q2": 64.54,
+     "2020-Q3": 65.27,
+     "2020-Q4": 64.16,
+     "2021-Q1": 65.78,
+     "2021-Q2": 67.7,
+     "2021-Q3": 69.7,
+     "2021-Q4": 70.1,
+     "2022-Q1": 72.0,
+     "2022-Q2": 74.7,
+     "2022-Q3": 77.6,
+     "2022-Q4": 79.1,
+     "2023-Q1": 82.8,
+     "2023-Q2": 86.6,
+     "2023-Q3": 88.8,
+     "2023-Q4": 90.7,
+     "2024-Q1": 91.8,
+     "2024-Q2": 93.0659,
+     "2024-Q3": 94.8772,
+     "2024-Q4": 95.6141,
+     "2025-Q1": 99.1188,
+     "2025-Q2": 102.6913,
+     "2025-Q3": 105.2159,
+     "2025-Q4": 106.9956,
+     "2026-Q1": 105.628,
+     "2026-Q2": 108.2043
+    },
+    "other_areas_all": {
+     "2016-Q1": 65.22,
+     "2016-Q2": 64.63,
+     "2016-Q3": 64.05,
+     "2016-Q4": 64.38,
+     "2017-Q1": 64.27,
+     "2017-Q2": 64.18,
+     "2017-Q3": 63.77,
+     "2017-Q4": 64.19,
+     "2018-Q1": 64.43,
+     "2018-Q2": 64.65,
+     "2018-Q3": 64.8,
+     "2018-Q4": 65.35,
+     "2019-Q1": 66.72,
+     "2019-Q2": 67.49,
+     "2019-Q3": 68.17,
+     "2019-Q4": 68.52,
+     "2020-Q1": 69.49,
+     "2020-Q2": 69.09,
+     "2020-Q3": 69.16,
+     "2020-Q4": 68.36,
+     "2021-Q1": 70.51,
+     "2021-Q2": 72.0,
+     "2021-Q3": 73.5,
+     "2021-Q4": 73.8,
+     "2022-Q1": 75.5,
+     "2022-Q2": 77.2,
+     "2022-Q3": 80.5,
+     "2022-Q4": 80.2,
+     "2023-Q1": 84.2,
+     "2023-Q2": 86.7,
+     "2023-Q3": 88.6,
+     "2023-Q4": 90.2,
+     "2024-Q1": 94.2,
+     "2024-Q2": 96.5009,
+     "2024-Q3": 98.1411,
+     "2024-Q4": 99.1424,
+     "2025-Q1": 103.2638,
+     "2025-Q2": 105.3162,
+     "2025-Q3": 107.2092,
+     "2025-Q4": 109.3841,
+     "2026-Q1": 111.4429,
+     "2026-Q2": 112.8401
+    },
+    "urban_areas_all": {
+     "2016-Q1": 59.11,
+     "2016-Q2": 58.72,
+     "2016-Q3": 58.27,
+     "2016-Q4": 58.32,
+     "2017-Q1": 57.96,
+     "2017-Q2": 58.04,
+     "2017-Q3": 58.0,
+     "2017-Q4": 57.95,
+     "2018-Q1": 58.08,
+     "2018-Q2": 58.75,
+     "2018-Q3": 59.29,
+     "2018-Q4": 59.97,
+     "2019-Q1": 61.44,
+     "2019-Q2": 63.2,
+     "2019-Q3": 64.32,
+     "2019-Q4": 64.51,
+     "2020-Q1": 65.79,
+     "2020-Q2": 66.25,
+     "2020-Q3": 66.84,
+     "2020-Q4": 66.64,
+     "2021-Q1": 68.83,
+     "2021-Q2": 70.99,
+     "2021-Q3": 73.12,
+     "2021-Q4": 73.81,
+     "2022-Q1": 76.13,
+     "2022-Q2": 78.79,
+     "2022-Q3": 82.52,
+     "2022-Q4": 84.85,
+     "2023-Q1": 88.23,
+     "2023-Q2": 90.81,
+     "2023-Q3": 93.48,
+     "2023-Q4": 95.6,
+     "2024-Q1": 98.1,
+     "2024-Q2": 99.412,
+     "2024-Q3": 100.9734,
+     "2024-Q4": 101.9599,
+     "2025-Q1": 104.8054,
+     "2025-Q2": 107.2945,
+     "2025-Q3": 109.6954,
+     "2025-Q4": 110.474,
+     "2026-Q1": 111.6616,
+     "2026-Q2": 112.9993
+    }
+   },
+   "sources": [
+    {
+     "source": "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_DPP/1.0/Q.GR?format=csv",
+     "source_date": "data to 2026-Q2",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "Bank of Greece series redistributed by BIS"
+    },
+    {
+     "source": "https://www.bankofgreece.gr/en/news-and-media/press-office/news-list/news?announcement=ac5ae869-3e94-4550-b486-ef00c4292e07",
+     "source_date": "2026-09-15",
+     "retrieved": "2026-10-22",
+     "confidence": "high",
+     "note": "site returned 403 to us; figures matched via press"
+    },
+    {
+     "source": "https://www.newmoney.gr/roh/palmos-oikonomias/oikonomia/trapeza-tis-ellados-epivradinsi-stin-anodo-ton-timon-ton-akiniton-to-v-trimino-pinakes/",
+     "source_date": "2026-09-15",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "asking_price_eur_m2": [
+   {
+    "area": "Greece national asking (yoy only)",
+    "eur_m2": null,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "yoy": 0.061
+   },
+   {
+    "area": "Athens Centre",
+    "eur_m2": 2500,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2400,
+    "yoy": 0.042
+   },
+   {
+    "area": "Athens South suburbs",
+    "eur_m2": 4231,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "prev_year": 4052,
+    "yoy": 0.044
+   },
+   {
+    "area": "Vouliagmeni (top of Attica)",
+    "eur_m2": 7364,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Glyfada",
+    "eur_m2": null,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "note": "4th most expensive Attica area after Vouliagmeni, Voula, Elliniko; Q1 2026: Voula 6,250, Elliniko 5,568; no Glyfada figure published in text"
+   },
+   {
+    "area": "Athens North suburbs",
+    "eur_m2": 3519,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 3296,
+    "yoy": 0.067
+   },
+   {
+    "area": "Athens West suburbs",
+    "eur_m2": 2288,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2135,
+    "yoy": 0.072
+   },
+   {
+    "area": "Piraeus",
+    "eur_m2": 2606,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2500,
+    "yoy": 0.042
+   },
+   {
+    "area": "Thessaloniki municipality",
+    "eur_m2": 2714,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2625,
+    "yoy": 0.034,
+    "note": "Spitogatos reports Thessaloniki city asking +7.7% yoy - different geography"
+   },
+   {
+    "area": "Kalamaria (top of Thessaloniki)",
+    "eur_m2": 3175,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Crete (island average)",
+    "eur_m2": 2250,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "yoy": 0.069
+   },
+   {
+    "area": "Chania regional unit",
+    "eur_m2": 3102,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "prev_year": 2750,
+    "yoy": 0.128
+   },
+   {
+    "area": "Heraklion regional unit",
+    "eur_m2": 2200,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "alt_value": 1917,
+    "note": "Tranio table shows 1,917 (+7.8%); SOURCES DISAGREE"
+   },
+   {
+    "area": "Rethymno regional unit",
+    "eur_m2": 2202,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Corfu prefecture",
+    "eur_m2": 2417,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2240,
+    "yoy": 0.079
+   },
+   {
+    "area": "Ionian islands average",
+    "eur_m2": 2531,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "yoy": 0.059
+   },
+   {
+    "area": "Halkidiki (all)",
+    "eur_m2": 2759,
+    "period": "2026-Q2",
+    "source": "https://tranio.com/greece/prices/",
+    "as_of": "2026-10-22",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos via Tranio",
+    "confidence": "medium",
+    "prev_year": 2600,
+    "yoy": 0.061
+   },
+   {
+    "area": "Halkidiki Sithonia (holiday homes)",
+    "eur_m2": 3000,
+    "period": "2026-Q2",
+    "source": "https://www.spitogatos.gr/blog/times-exoxikon-katoikion-ellada-2o-trimino-2026",
+    "as_of": "2026-09-24",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Halkidiki Kassandra (holiday homes)",
+    "eur_m2": 2895,
+    "period": "2026-Q2",
+    "source": "https://www.spitogatos.gr/blog/times-exoxikon-katoikion-ellada-2o-trimino-2026",
+    "as_of": "2026-09-24",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Mykonos",
+    "eur_m2": 7059,
+    "period": "2026-Q2",
+    "source": "https://www.mononews.gr/oikonomia/spitogatos-anodos-stis-times-akiniton-sta-ellinika-nisia-to-v-trimino-tou-2026-i-antiparos-prosperase-ti-mykono",
+    "as_of": "2026-08-19",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium",
+    "yoy": "small decline (1-6% range given for a group of islands)"
+   },
+   {
+    "area": "Cyclades average",
+    "eur_m2": 4063,
+    "period": "2026-Q2",
+    "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+    "as_of": "2026-07-11",
+    "retrieved": "2026-10-22",
+    "provider": "Spitogatos",
+    "confidence": "medium"
+   },
+   {
+    "area": "Santorini (Thira)",
+    "eur_m2": 4100,
+    "period": "Jan-May 2026",
+    "source": "https://www.powergame.gr/akinita/1382061/to-chrimatistirio-tis-agoras-katoikias-sta-nisia-tou-aigaiou-oi-times-ana-tm/",
+    "as_of": "2026-07-05",
+    "retrieved": "2026-10-22",
+    "provider": "ReDataset (median asking)",
+    "confidence": "medium",
+    "note": "Spitogatos: slight yoy decline, level not published"
+   },
+   {
+    "area": "Mykonos (ReDataset median)",
+    "eur_m2": 6670,
+    "period": "Jan-May 2026",
+    "source": "https://www.powergame.gr/akinita/1382061/to-chrimatistirio-tis-agoras-katoikias-sta-nisia-tou-aigaiou-oi-times-ana-tm/",
+    "as_of": "2026-07-05",
+    "retrieved": "2026-10-22",
+    "provider": "ReDataset (median asking)",
+    "confidence": "medium"
+   },
+   {
+    "area": "Rhodes",
+    "eur_m2": 2210,
+    "period": "Jan-May 2026",
+    "source": "https://www.powergame.gr/akinita/1382061/to-chrimatistirio-tis-agoras-katoikias-sta-nisia-tou-aigaiou-oi-times-ana-tm/",
+    "as_of": "2026-07-05",
+    "retrieved": "2026-10-22",
+    "provider": "ReDataset (median asking)",
+    "confidence": "medium",
+    "note": "no Spitogatos 2026 level found"
+   },
+   {
+    "area": "Kos",
+    "eur_m2": 2210,
+    "period": "Jan-May 2026",
+    "source": "https://www.powergame.gr/akinita/1382061/to-chrimatistirio-tis-agoras-katoikias-sta-nisia-tou-aigaiou-oi-times-ana-tm/",
+    "as_of": "2026-07-05",
+    "retrieved": "2026-10-22",
+    "provider": "ReDataset (median asking)",
+    "confidence": "medium"
+   }
+  ],
+  "asking_rent_eur_m2_month_q2_2026": {
+   "Cyclades": 14.4,
+   "Athens South suburbs": 11.8,
+   "Athens Centre": 11.8,
+   "Athens North suburbs": 11.8,
+   "Lefkada": 11.8,
+   "Vouliagmeni": 22.0,
+   "Thessaloniki Centre": 12.0,
+   "source": "https://www.ot.gr/2026/07/11/oikonomia/akinita/spitogatos-pos-diamorfothikan-oi-times-polisis-kai-enoikiasis-katoikion-to-v%CE%84-trimino-2026/",
+   "as_of": "2026-07-11",
+   "provider": "Spitogatos",
+   "retrieved": "2026-10-22"
+  },
+  "gross_yields": {
+   "gpg": {
+    "greece_avg": 0.0438,
+    "athens_avg": 0.0552,
+    "thessaloniki_avg": 0.0419,
+    "patra_avg": 0.0468,
+    "heraklion_avg": 0.0425,
+    "volos_avg": 0.042,
+    "kavala_avg": 0.0344,
+    "athens_examples": {
+     "Patision-Acharnon 1-bed": 0.0695,
+     "Athens centre 1-bed": 0.0578,
+     "Pagkrati 2-bed": 0.0392,
+     "Kolonaki 2-bed": 0.0339
+    },
+    "source": "https://www.globalpropertyguide.com/europe/greece/rental-yields",
+    "as_of": "2026-Q2 headline (page last update May 2026)",
+    "retrieved": "2026-10-22",
+    "confidence": "medium",
+    "note": "gross; GPG says net is typically 1.5-2 points lower"
+   },
+   "spitogatos_price_to_rent_2025": {
+    "metric": "monthly rents needed to buy; gross yield = 12 / ratio",
+    "areas": {
+     "Athens Centre": {
+      "rents": 212,
+      "gross_yield": 0.0566
+     },
+     "Southern Suburbs": {
+      "rents": 311,
+      "gross_yield": 0.0386
+     },
+     "Northern Suburbs": {
+      "rents": 288,
+      "gross_yield": 0.0417
+     },
+     "Western Suburbs": {
+      "rents": 238,
+      "gross_yield": 0.0504
+     },
+     "Eastern Suburbs": {
+      "rents": 256,
+      "gross_yield": 0.0469
+     },
+     "Piraeus": {
+      "rents": 242,
+      "gross_yield": 0.0496
+     },
+     "Piraeus suburbs": {
+      "rents": 241,
+      "gross_yield": 0.0498
+     },
+     "Glyfada": {
+      "rents": 342,
+      "gross_yield": 0.0351
+     }
+    },
+    "source": "https://www.cnn.gr/oikonomia/chrima/story/525434/posa-enoikia-xreiazontai-gia-tin-agora-spitioy-ti-isxyei-gia-kathe-proastio-tis-attikis",
+    "as_of": "2026-03-25 (2025 data)",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   }
+  }
+ },
+ "mortgages": {
+  "greek_bank_non_resident": {
+   "ltv_max": 0.65,
+   "ltv_greek_cypriot": 0.8,
+   "own_funds_min": 0.35,
+   "term_years_non_greek": 15,
+   "term_years_israeli_residents": 20,
+   "max_age_at_end": 75,
+   "fixed_rates_published": {
+    "3y": 0.029,
+    "5y": 0.035,
+    "7y": 0.038,
+    "10y": 0.039,
+    "15y": 0.042
+   },
+   "after_fixed": "3M Euribor + fixed margin (margin not published)",
+   "levy_law_128_1975": {
+    "home": 0.0012,
+    "investment": 0.006
+   },
+   "insurance": "mandatory fire/earthquake/weather",
+   "due_diligence_fee_eur": 750,
+   "min_loan_eur": 10000,
+   "early_repayment_penalty": false,
+   "bank": "one unnamed major Greek bank",
+   "source": "https://ktimatoemporiki.gr/news/368665-mortgage-loan-for-non-residents-in-greece",
+   "as_of": "2026-10-06",
+   "retrieved": "2026-10-22",
+   "confidence": "medium"
+  },
+  "market_rates": {
+   "bog_avg_new_housing_loans_floating_aug_2026": 0.0339,
+   "jul_2026": 0.0353,
+   "euribor_12m_2026_10_21": 0.03263,
+   "euribor_3m_2026_10_21": 0.0267,
+   "sources": [
+    {
+     "source": "https://www.financialreport.gr/trapezika-epitokia-akrivotera-ta-nea-epicheirimatika-daneia-ypochorisi-sta-stegastika-ton-avgousto/",
+     "source_date": "2026-10-01",
+     "retrieved": "2026-10-22",
+     "confidence": "medium",
+     "note": "Bank of Greece data"
+    },
+    {
+     "source": "https://www.euribor-rates.eu/en/current-euribor-rates/4/euribor-rate-12-months/",
+     "source_date": "2026-10-21",
+     "retrieved": "2026-10-22",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "israel_all_purpose_loan": {
+   "ltv_base": 0.5,
+   "note": "Bank of Israel Directive 329 limits; temporary relief (to 70% combined) existed in 2024; 2026 status not verified",
+   "source": "https://www.nadlancenter.co.il/article/10189",
+   "as_of": "2024-07-07",
+   "retrieved": "2026-10-22",
+   "confidence": "low"
+  }
+ },
+ "process_timeline": {
+  "afm": "same day to 1 week",
+  "bank_account_non_resident": "2-6 weeks (secondary)",
+  "lawyer_due_diligence": "2-4 weeks (estimate)",
+  "border_zone_permit": "months, where applicable",
+  "total_typical": "about 6-12 weeks without border permit or mortgage (estimate, no authoritative source)",
+  "confidence": "low"
+ },
+ "flights_from_tlv": {
+  "athens": {
+   "minutes": 145,
+   "airlines": [
+    "Aegean",
+    "El Al",
+    "Arkia",
+    "Israir",
+    "Bluebird",
+    "Sky Express",
+    "Wizz Air Malta"
+   ]
+  },
+  "thessaloniki": {
+   "minutes": null,
+   "aggregator_minutes": 215,
+   "distance_km": 1432,
+   "airlines": [
+    "Aegean",
+    "Arkia",
+    "El Al",
+    "TUS Airways"
+   ],
+   "note": "aggregator 3h35 looks inflated"
+  },
+  "heraklion": {
+   "minutes": 120,
+   "airlines": [
+    "Aegean",
+    "Bluebird",
+    "El Al"
+   ]
+  },
+  "rhodes": {
+   "minutes": 105,
+   "airlines": [
+    "El Al",
+    "Aegean"
+   ]
+  },
+  "source": "https://www.flightsfrom.com/TLV-ATH (and /TLV-SKG, /TLV-HER, /TLV-RHO)",
+  "as_of": "2026-10-22",
+  "retrieved": "2026-10-22",
+  "confidence": "low (aggregator, seasonal)"
+ },
+ "israeli_context": {
+  "israel_golden_visa_approvals_9m_2025": 544,
+  "vs_9m_2024": 296,
+  "israeli_investment_eur_per_year": "over 500m (estimates up to 1bn) - press estimate",
+  "israelis_largest_foreign_buyers": "Attica and Thessaloniki, per RE/MAX Hellas 2025 study (no %)",
+  "companies": [
+   "Fattal / Leonardo: 4 hotels, over EUR 200m more planned (Dec 2025)",
+   "Isrotel: 5 hotels via Aluma (Dec 2025)",
+   "Brown Hotels: 9 Greek hotels in 2022; later sold 8 to a Canadian group with Israeli interests (Dec 2025)",
+   "Israel Canada: Athens hotel (2022)",
+   "Israir: 25% of 5 hotels (2022)"
+  ],
+  "sources": [
+   {
+    "source": "https://www.maariv.co.il/economy/international/article-1264853",
+    "source_date": "2025-12-22",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   },
+   {
+    "source": "https://www.calcalist.co.il/market/article/byaudfogj",
+    "source_date": "2022-09-12",
+    "retrieved": "2026-10-22",
+    "confidence": "medium"
+   }
+  ]
+ }
+}

@@ -152,3 +152,22 @@ html body .nli[dir="ltr"] .nli__table td.n{text-align:right}
 html body .nli[dir="ltr"] pre.nli__doc{direction:ltr;text-align:left}
 html body .nli[dir="ltr"] pre.nli__doc[dir="rtl"]{direction:rtl;text-align:right;font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif !important}
 .nli[dir="ltr"] .nls-pop .maplibregl-popup-content{direction:ltr;text-align:left;font-family:"IBM Plex Sans",system-ui,sans-serif}
+
+/* 1.72.498 presets (HAD-592, Ben 22.10.2026 "one click with your fingers to get everything"): ready cases above the form */
+html body .nli .nli__prelab{display:block;margin:14px 0 6px;position:relative}
+html body .nli .nli__pre{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:0 0 18px;position:relative}
+html body .nli .nli__pre button{display:grid;gap:3px;align-content:start;text-align:right;border:1px solid var(--nli-line);border-radius:var(--nli-r-m);background:var(--nli-surface);padding:10px 12px;min-height:58px;cursor:pointer;margin:0;color:var(--nli-ink);box-shadow:none;text-transform:none;letter-spacing:0}
+html body .nli .nli__pre button span{font:600 14px/19px var(--nli-sans)}
+html body .nli .nli__pre button small{font:400 12px/16px var(--nli-mono);color:var(--nli-mute);direction:ltr;unicode-bidi:plaintext;text-align:right}
+html body .nli .nli__pre button:hover{border-color:var(--nli-sea)}
+html body .nli .nli__pre button:focus-visible{outline:2px solid var(--nli-focus);outline-offset:2px}
+html body .nli .nli__pre button[aria-pressed="true"]{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea)}
+html body .nli .nli__pre button[aria-pressed="true"] small{color:var(--nli-on-sea)}
+.nli[dir="ltr"] .nli__pre button,.nli[dir="ltr"] .nli__pre button small{text-align:left}
+@media (max-width:600px){html body .nli .nli__pre{grid-template-columns:1fr 1fr}html body .nli .nli__pre button{min-height:64px}}
+@media print{.nli__pre,.nli__prelab{display:none !important}}
+/* 1.72.499: a select with long options (the Greece regions) set its own width and pushed the form past a 390 px phone; the form
+   column and the box now shrink to the panel, and the select fills its box */
+html body .nli .nli__form{grid-template-columns:minmax(0,1fr)}
+html body .nli .nli__in{min-width:0}
+html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overflow:ellipsis}

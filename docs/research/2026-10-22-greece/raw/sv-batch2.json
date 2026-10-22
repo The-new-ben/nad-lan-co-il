@@ -1,0 +1,2946 @@
+{
+ "version": "0.1.20261022",
+ "status_code": 20000,
+ "status_message": "Ok.",
+ "time": "2.0123 sec.",
+ "cost": 0.09,
+ "tasks_count": 1,
+ "tasks_error": 0,
+ "tasks": [
+  {
+   "id": "10221600-2646-0367-0000-1548591ac83d",
+   "status_code": 20000,
+   "status_message": "Ok.",
+   "time": "1.9188 sec.",
+   "cost": 0.09,
+   "result_count": 80,
+   "path": [
+    "v3",
+    "keywords_data",
+    "google_ads",
+    "search_volume",
+    "live"
+   ],
+   "data": {
+    "api": "keywords_data",
+    "function": "search_volume",
+    "se": "google_ads",
+    "location_code": 2376,
+    "language_code": "iw",
+    "tag": "greece-batch2",
+    "keywords": [
+     "בתים למכירה ביוון",
+     "דירה בסלוניקי",
+     "דירות בסלוניקי",
+     "נדלן סלוניקי",
+     "דירות למכירה בסלוניקי",
+     "השקעה ביוון 2026",
+     "נדלן ביוון 2026",
+     "גולדן ויזה יוון 2026",
+     "גולדן ויזה פורטוגל",
+     "גולדן ויזה קפריסין",
+     "פתיחת חשבון בנק ביוון",
+     "חשבון בנק ביוון",
+     "מס שבח יוון",
+     "מס ירושה ביוון",
+     "ניהול דירה ביוון",
+     "תשואה על דירה ביוון",
+     "תשואות נדלן ביוון",
+     "השקעה בדירה ביוון",
+     "נדלן ביוון לישראלים",
+     "יזמים ישראלים ביוון",
+     "קבוצת רכישה ביוון",
+     "דירה בפיראוס",
+     "גליפדה",
+     "דירה בגליפדה",
+     "קוקאקי",
+     "קיפסלי",
+     "airbnb יוון",
+     "airbnb אתונה",
+     "השכרה לטווח קצר ביוון",
+     "מחיר למטר באתונה",
+     "מחיר מטר ביוון",
+     "קפריסין או יוון",
+     "יוון או פורטוגל",
+     "בית ביוון מחיר",
+     "חלקידיקי",
+     "נדלן באיים ביוון",
+     "השקעה בנדלן באיי יוון",
+     "הלוואה ליוון",
+     "מימון רכישת דירה ביוון",
+     "עורך דין נדלן ביוון",
+     "עורך דין ליוון",
+     "נוטריון ביוון",
+     "דירה ביוון עם תשואה",
+     "השקעה בחו\"ל נדלן",
+     "השקעות בחו\"ל",
+     "השקעה בנדל\"ן בחו\"ל",
+     "השקעה בנדלן בחול",
+     "איפה להשקיע בנדלן בחול",
+     "נדלן בחול להשקעה",
+     "נדלן בפורטוגל",
+     "נדלן ביוון מחירים",
+     "גולדן ויזה ליוון",
+     "ויזת זהב ליוון",
+     "גולדן ויזה יוון מחיר",
+     "ויזת זהב ביוון 250 אלף",
+     "גולדן ויזה יוון 250",
+     "יוון השקעות נדלן",
+     "דירה בכרתים מחיר",
+     "דירות בכרתים",
+     "בתים בחאניה",
+     "דירה בהרקליון",
+     "נדלן בחאניה",
+     "נדלן ברודוס למכירה",
+     "דירה בקורפו",
+     "בתים בקורפו",
+     "מס על שכירות בחו\"ל",
+     "דירה בחו\"ל מס",
+     "דיווח דירה בחול מס הכנסה",
+     "מיסוי דירה בחו\"ל",
+     "מיסוי שכירות בחו\"ל",
+     "השקעה ביוון מסוכנת",
+     "השקעה ביוון סיכונים",
+     "הונאות נדלן ביוון",
+     "פורום נדלן ביוון",
+     "נדלן ביוון כדאי",
+     "האם כדאי להשקיע ביוון",
+     "דירה באתונה להשכרה",
+     "שכירות באתונה",
+     "אתונה",
+     "יוון"
+    ]
+   },
+   "result": [
+    {
+     "keyword": "בתים למכירה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 39,
+     "search_volume": 140,
+     "low_top_of_page_bid": 0.1,
+     "high_top_of_page_bid": 1.44,
+     "cpc": 0.97,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 140
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 140
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 140
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 90
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 70
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 70
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 110
+      }
+     ]
+    },
+    {
+     "keyword": "דירה בסלוניקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 51,
+     "search_volume": 40,
+     "low_top_of_page_bid": 0.52,
+     "high_top_of_page_bid": 2.94,
+     "cpc": 1.28,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 40
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 50
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 40
+      }
+     ]
+    },
+    {
+     "keyword": "דירות בסלוניקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 51,
+     "search_volume": 40,
+     "low_top_of_page_bid": 0.52,
+     "high_top_of_page_bid": 2.94,
+     "cpc": 1.28,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 40
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 50
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 40
+      }
+     ]
+    },
+    {
+     "keyword": "נדלן סלוניקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 60,
+     "search_volume": 10,
+     "low_top_of_page_bid": 0.35,
+     "high_top_of_page_bid": 2.95,
+     "cpc": 2.22,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "דירות למכירה בסלוניקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 53,
+     "search_volume": 20,
+     "low_top_of_page_bid": 0.57,
+     "high_top_of_page_bid": 2.15,
+     "cpc": 3.36,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "השקעה ביוון 2026",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן ביוון 2026",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "גולדן ויזה יוון 2026",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 63,
+     "search_volume": 10,
+     "low_top_of_page_bid": 0.16,
+     "high_top_of_page_bid": 2.53,
+     "cpc": 1.46,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 0
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 0
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 0
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 0
+      }
+     ]
+    },
+    {
+     "keyword": "גולדן ויזה פורטוגל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 23,
+     "search_volume": 10,
+     "low_top_of_page_bid": 0.6,
+     "high_top_of_page_bid": 2.67,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "גולדן ויזה קפריסין",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 37,
+     "search_volume": 20,
+     "low_top_of_page_bid": 1.23,
+     "high_top_of_page_bid": 3.33,
+     "cpc": 4.3,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "פתיחת חשבון בנק ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 23,
+     "search_volume": 20,
+     "low_top_of_page_bid": 0.17,
+     "high_top_of_page_bid": 3.46,
+     "cpc": 0.52,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "חשבון בנק ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מס שבח יוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 10,
+     "search_volume": 10,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": 0.2,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "מס ירושה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 0,
+     "search_volume": 10,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "ניהול דירה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "תשואה על דירה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "תשואות נדלן ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעה בדירה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן ביוון לישראלים",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "יזמים ישראלים ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "קבוצת רכישה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה בפיראוס",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "גליפדה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 15,
+     "search_volume": 480,
+     "low_top_of_page_bid": 0.56,
+     "high_top_of_page_bid": 3.39,
+     "cpc": 2.54,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 590
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 880
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 720
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 880
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 720
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 480
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 210
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 320
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 320
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 320
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 390
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 320
+      }
+     ]
+    },
+    {
+     "keyword": "דירה בגליפדה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "קוקאקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 18,
+     "search_volume": 40,
+     "low_top_of_page_bid": 0.22,
+     "high_top_of_page_bid": 2.83,
+     "cpc": 1.55,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 40
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 40
+      }
+     ]
+    },
+    {
+     "keyword": "קיפסלי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 1,
+     "search_volume": 30,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "airbnb יוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 46,
+     "search_volume": 30,
+     "low_top_of_page_bid": 0.12,
+     "high_top_of_page_bid": 0.93,
+     "cpc": 1.31,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "airbnb אתונה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 50,
+     "search_volume": 70,
+     "low_top_of_page_bid": 0.26,
+     "high_top_of_page_bid": 2.03,
+     "cpc": 1.23,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 90
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 50
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 90
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 70
+      }
+     ]
+    },
+    {
+     "keyword": "השכרה לטווח קצר ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מחיר למטר באתונה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מחיר מטר ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "קפריסין או יוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 0,
+     "search_volume": 10,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "יוון או פורטוגל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "בית ביוון מחיר",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 49,
+     "search_volume": 30,
+     "low_top_of_page_bid": 0.16,
+     "high_top_of_page_bid": 1.58,
+     "cpc": 1.42,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 20
+      }
+     ]
+    },
+    {
+     "keyword": "חלקידיקי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 10,
+     "search_volume": 8100,
+     "low_top_of_page_bid": 0.04,
+     "high_top_of_page_bid": 1.38,
+     "cpc": 0.89,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 9900
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 14800
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 6600
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 3600
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 3600
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 2900
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 2400
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 2400
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 3600
+      }
+     ]
+    },
+    {
+     "keyword": "נדלן באיים ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעה בנדלן באיי יוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "הלוואה ליוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מימון רכישת דירה ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "עורך דין נדלן ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "עורך דין ליוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נוטריון ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה ביוון עם תשואה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעה בחו\"ל נדלן",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעות בחו\"ל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 36,
+     "search_volume": 20,
+     "low_top_of_page_bid": 1.82,
+     "high_top_of_page_bid": 9.81,
+     "cpc": 4.04,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 30
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 30
+      }
+     ]
+    },
+    {
+     "keyword": "השקעה בנדל\"ן בחו\"ל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 0,
+     "search_volume": 10,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 40
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "השקעה בנדלן בחול",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 36,
+     "search_volume": 50,
+     "low_top_of_page_bid": 1.27,
+     "high_top_of_page_bid": 6.21,
+     "cpc": 2.62,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 140
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 50
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 20
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 40
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 70
+      }
+     ]
+    },
+    {
+     "keyword": "איפה להשקיע בנדלן בחול",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן בחול להשקעה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן בפורטוגל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 51,
+     "search_volume": 140,
+     "low_top_of_page_bid": 0.93,
+     "high_top_of_page_bid": 4.42,
+     "cpc": 4.19,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 90
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 140
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 210
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 170
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 170
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 110
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 140
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 110
+      }
+     ]
+    },
+    {
+     "keyword": "נדלן ביוון מחירים",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "גולדן ויזה ליוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "ויזת זהב ליוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "גולדן ויזה יוון מחיר",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "ויזת זהב ביוון 250 אלף",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "גולדן ויזה יוון 250",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "יוון השקעות נדלן",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה בכרתים מחיר",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירות בכרתים",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 58,
+     "search_volume": 30,
+     "low_top_of_page_bid": 0.32,
+     "high_top_of_page_bid": 2.21,
+     "cpc": 1.33,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 50
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 70
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "בתים בחאניה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה בהרקליון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן בחאניה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "נדלן ברודוס למכירה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה בקורפו",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "MEDIUM",
+     "competition_index": 54,
+     "search_volume": 10,
+     "low_top_of_page_bid": 0.25,
+     "high_top_of_page_bid": 2.43,
+     "cpc": 0.35,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 20
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 30
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 40
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 0
+      }
+     ]
+    },
+    {
+     "keyword": "בתים בקורפו",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מס על שכירות בחו\"ל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה בחו\"ל מס",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דיווח דירה בחול מס הכנסה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מיסוי דירה בחו\"ל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "מיסוי שכירות בחו\"ל",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעה ביוון מסוכנת",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "השקעה ביוון סיכונים",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "הונאות נדלן ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "פורום נדלן ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": 10,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 0
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 10
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 0
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 10
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 10
+      }
+     ]
+    },
+    {
+     "keyword": "נדלן ביוון כדאי",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "האם כדאי להשקיע ביוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "דירה באתונה להשכרה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "שכירות באתונה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": null,
+     "competition_index": null,
+     "search_volume": null,
+     "low_top_of_page_bid": null,
+     "high_top_of_page_bid": null,
+     "cpc": null,
+     "monthly_searches": null
+    },
+    {
+     "keyword": "אתונה",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 12,
+     "search_volume": 18100,
+     "low_top_of_page_bid": 0.11,
+     "high_top_of_page_bid": 0.79,
+     "cpc": 0.62,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 22200
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 22200
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 22200
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 14800
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 8100
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 14800
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 14800
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 18100
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 18100
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 14800
+      }
+     ]
+    },
+    {
+     "keyword": "יוון",
+     "spell": null,
+     "location_code": 2376,
+     "language_code": "iw",
+     "search_partners": false,
+     "competition": "LOW",
+     "competition_index": 2,
+     "search_volume": 27100,
+     "low_top_of_page_bid": 0.11,
+     "high_top_of_page_bid": 1.21,
+     "cpc": 0.93,
+     "monthly_searches": [
+      {
+       "year": 2026,
+       "month": 9,
+       "search_volume": 49500
+      },
+      {
+       "year": 2026,
+       "month": 8,
+       "search_volume": 49500
+      },
+      {
+       "year": 2026,
+       "month": 7,
+       "search_volume": 60500
+      },
+      {
+       "year": 2026,
+       "month": 6,
+       "search_volume": 33100
+      },
+      {
+       "year": 2026,
+       "month": 5,
+       "search_volume": 33100
+      },
+      {
+       "year": 2026,
+       "month": 4,
+       "search_volume": 14800
+      },
+      {
+       "year": 2026,
+       "month": 3,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 2,
+       "search_volume": 18100
+      },
+      {
+       "year": 2026,
+       "month": 1,
+       "search_volume": 22200
+      },
+      {
+       "year": 2025,
+       "month": 12,
+       "search_volume": 14800
+      },
+      {
+       "year": 2025,
+       "month": 11,
+       "search_volume": 14800
+      },
+      {
+       "year": 2025,
+       "month": 10,
+       "search_volume": 14800
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

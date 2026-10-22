@@ -115,6 +115,31 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'ptax.json', 'cost.json', 'nrm.json' ),
 				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
+			'dira' => array(
+				'name' => 'דירה בהנחה: מה הסיכוי לזכות בהגרלה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה בהנחה',
+				'desc' => 'הסיכוי לזכות בהגרלות דירה בהנחה (מחיר למשתכן) לפי עיר, מהקובץ הרשמי של התוכנית: כמה נרשמו וכמה זכו בכל הגרלה, הדירות, המחיר למ״ר והיזם, גם במסלול בני מקום.',
+				'data' => array( 'dira.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירי דירות בישראל' ),
+			),
+			/* 1.72.499 (HAD-592): the Greece family, one file tools/greece.js; data greece.json (facts with sources) + the BoI rate */
+			'grbuy' => array(
+				'file' => 'greece', 'name' => 'מחשבון עלות קניית דירה ביוון', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · קניית דירה ביוון',
+				'desc' => 'כמה כסף צריך להביא כדי לקנות דירה ביוון, ביורו ובשקלים: מס העברה 3.09% או מע״מ 24%, נוטריון לפי המדרגות, קדסטר, עורך דין ומתווך עם מע״מ יווני, משכנתא מבנק יווני, והשוואה להצעה של 15.45% לקונים מחוץ לאיחוד מ־1.7.2027.',
+				'data' => array( 'greece.json', 'boi-fx.json' ),
+				'related' => array( '/global/greece/' => 'נדל״ן ביוון', '/athens-apartments/' => 'דירה באתונה', '/acquisition-greece/' => 'קניית דירה ביוון', '/taxation-greece-israel/' => 'מיסוי דירה ביוון' ),
+			),
+			'grgv' => array(
+				'file' => 'greece', 'name' => 'בדיקת זכאות לגולדן ויזה ביוון', 'cat' => 'UtilitiesApplication', 'kicker' => 'בדיקה · גולדן ויזה ביוון',
+				'desc' => 'האם נכס ביוון מזכה בגולדן ויזה לפי החוק של 2024: הסף לפי אזור (800, 400 או 250 אלף אירו), נכס אחד של 120 מ״ר, איסור השכרה לטווח קצר, והאגרות לכל המשפחה.',
+				'data' => array( 'greece.json', 'boi-fx.json' ),
+				'related' => array( '/global/greece/' => 'נדל״ן ביוון', '/acquisition-greece/' => 'קניית דירה ביוון', '/athens-apartments/' => 'דירה באתונה' ),
+			),
+			'gryield' => array(
+				'file' => 'greece', 'name' => 'מחשבון תשואה נטו לדירה ביוון', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · תשואה ביוון',
+				'desc' => 'כמה נשאר ביד מדירה מושכרת ביוון: שכירות ותפוסה, ניהול, דמי בניין וביטוח, ENFIA לפי טבלאות החוק, מס השכירות ביוון לפי מדרגות 2026, והמס בישראל בשלוש הדרכים: לפי האמנה, מסלול 15% ומסלול רגיל עם זיכוי.',
+				'data' => array( 'greece.json', 'boi-fx.json' ),
+				'related' => array( '/taxation-greece-israel/' => 'מיסוי דירה ביוון', '/athens-apartments/' => 'דירה באתונה', '/short-term-rentals-abroad/short-term-rentals-greece/' => 'השכרה לטווח קצר ביוון', '/investment-property-cashflow-calculator/' => 'תזרים דירה להשקעה' ),
+			),
 		) );
 	}
 
@@ -161,7 +186,9 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		wp_enqueue_style( 'nadlan-nli-fonts', $fonts, array(), null );
 		wp_enqueue_style( 'nadlan-nli', nadlan_nli_url( 'core.css' ), array(), $v );
 		wp_enqueue_script( 'nadlan-nli', nadlan_nli_url( 'core.js' ), array(), $v, true );
-		foreach ( $ids as $id ) { wp_enqueue_script( 'nadlan-nli-' . $id, nadlan_nli_url( 'tools/' . $id . '.js' ), array( 'nadlan-nli' ), $v, true ); }
+		// 1.72.499: tools of one family share a file ('file' => 'greece': grbuy, grgv, gryield ... in tools/greece.js), loaded once
+		$files = array(); foreach ( $ids as $id ) { $files[ ! empty( $tl[ $id ]['file'] ) ? $tl[ $id ]['file'] : $id ] = 1; }
+		foreach ( array_keys( $files ) as $f ) { wp_enqueue_script( 'nadlan-nli-' . $f, nadlan_nli_url( 'tools/' . $f . '.js' ), array( 'nadlan-nli' ), $v, true ); }
 	}, 20 );
 
 	add_filter( 'script_loader_tag', function ( $tag, $handle ) {
@@ -222,6 +249,23 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'afford' === $id ) {
 			return '<p>כמה דירה אפשר לקנות: לפי בנק ישראל ההחזר החודשי של משכנתא לא יעלה על 50% מההכנסה הפנויה, ורוב הבנקים מעדיפים עד 35% עד 40%. הבנק מממן עד 75% מהשווי בדירה יחידה ועד 50% בדירה נוספת או לתושב חוץ, ואת השאר, יחד עם מס הרכישה ועורך הדין, צריך להביא מההון העצמי. לדוגמה, משק בית עם הכנסה נטו של 25,000 ₪, החזר של 35% מההכנסה וריבית של 4.62% ל־25 שנה, יכול לקחת משכנתא של כ־1,555,000 ₪.</p>';
 		}
+		if ( 'dira' === $id ) { // site gap #3: the town ranking from the official lottery file, for readers without scripts and for search engines
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/dira.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['towns'] ) ) { return ''; }
+			$rank = array();
+			foreach ( $x['towns'] as $town => $rows ) {
+				$odds = array(); $subs = 0; $wins = 0;
+				foreach ( $rows as $r ) { if ( $r[5] > 0 ) { $odds[] = $r[6] / $r[5]; $subs += $r[5]; $wins += $r[6]; } }
+				if ( count( $odds ) < 3 ) { continue; }
+				sort( $odds ); $n = count( $odds ); $m = $n % 2 ? $odds[ intdiv( $n, 2 ) ] : ( $odds[ $n / 2 - 1 ] + $odds[ $n / 2 ] ) / 2;
+				$rank[] = array( $town, $n, $subs, $wins, $m );
+			}
+			usort( $rank, function ( $a, $b ) { return $b[4] <=> $a[4]; } );
+			$rows = '';
+			foreach ( $rank as $r ) { $rows .= '<tr><td>' . esc_html( $r[0] ) . '</td><td>' . (int) $r[1] . '</td><td>' . esc_html( number_format( $r[2] ) ) . '</td><td>' . esc_html( number_format( $r[3] ) ) . '</td><td>' . esc_html( number_format( 100 * $r[4], $r[4] < 0.01 ? 2 : 1 ) ) . '%</td></tr>'; }
+			return '<p>בהגרלות דירה בהנחה (מחיר למשתכן) זכו ' . esc_html( number_format( 100 * $x['wins'] / max( 1, $x['subs'] ), 2 ) ) . ' על כל 100 נרשמים, לפי הקובץ הרשמי של התוכנית (' . (int) $x['n'] . ' הגרלות, עודכן ' . esc_html( date_i18n( 'j.n.Y', strtotime( $x['updated'] ) ) ) . '). הסיכוי בהגרלה טיפוסית בכל עיר, מהגבוה לנמוך (ערים עם 3 הגרלות ומעלה):</p><table><thead><tr><th>עיר</th><th>הגרלות</th><th>נרשמים</th><th>זוכים</th><th>סיכוי</th></tr></thead><tbody>' . $rows . '</tbody></table>';
+		}
 		if ( 'arnona' === $id ) {
 			return '<p>ארנונה למגורים בתל אביב-יפו לשנת 2026, לפי צו הארנונה של העירייה (₪ למ״ר לשנה), בבניין שהושלם מ־2022 ואילך: אזור 1, דירה עד 140 מ״ר 112.99 ומעל 140 מ״ר 139.60; אזור 2, 90.71 ו־108.98; אזור 3, 78.39; אזורים 4 ו־5, 64.42. מעל 140 מ״ר כל הדירה מחויבת בתעריף הגבוה. מרפסות נכללות בשטח, חניה לא. עולה חדש: 50% על עד 100 מ״ר ל־12 חודשים.</p>';
 		}
@@ -243,6 +287,15 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$fmt = function ( $br ) { $o = array(); $lo = 0; foreach ( $br as $b ) { $o[] = number_format( $b[1] * 100, $b[1] * 100 == (int) ( $b[1] * 100 ) ? 0 : 1 ) . '% ' . ( null === $b[0] ? 'מעל ' . number_format( $lo ) . ' ₪' : 'עד ' . number_format( $b[0] ) . ' ₪' ); $lo = $b[0]; } return implode( ', ', $o ); };
 			return '<p>מדרגות מס רכישה על דירת מגורים לפי רשות המסים, בתוקף מ־' . esc_html( date_i18n( 'j.n.Y', strtotime( $x['effective'] ) ) ) . ' ומוקפאות עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $x['frozen_until'] ) ) ) . '. דירה יחידה: ' . esc_html( $fmt( $x['tracks']['single'] ) )
 				. '. דירה נוספת ותושב חוץ: ' . esc_html( $fmt( $x['tracks']['extra'] ) ) . '. עולה חדש: ' . esc_html( $fmt( $x['tracks']['oleh'] ) ) . '. המס מחושב על שווי הדירה כולה, וקונה של חלק משלם לפי החלק שלו.</p>';
+		}
+		if ( 'grbuy' === $id ) {
+			return '<p>עלויות קניית דירה ביוון, לפי החוק באוקטובר 2026: מס העברה 3.09% על המחיר או על השווי האובייקטיבי, הגבוה מביניהם, ומשלם הקונה לפני החתימה. בדירה חדשה מע״מ 24%, או 3.09% אם היזם ביקש השעיה (בתוקף עד 31.12.2026). נוטריון 0.8% עד 120,000 אירו, 0.7% עד 380,000 ו־0.65% עד 2 מיליון, ועוד 20 אירו ומע״מ 24%. רישום בקדסטר 0.5% ועוד 20 אירו. עורך דין לרוב 0.5% עד 1.5% ומתווך כ־2%, שניהם ועוד מע״מ 24%. סך העלויות כ־5.8% בלי מתווך וכ־8.3% עם מתווך. משרד האוצר היווני הציע מס העברה של 15.45% לקונים פרטיים שתושבי המס שלהם מחוץ לאיחוד, כולל ישראלים, בחוזים מ־1.7.2027; זו הצעת חוק בהערות ציבור עד 1.11.2026.</p>';
+		}
+		if ( 'grgv' === $id ) {
+			return '<p>גולדן ויזה ביוון לפי חוק 5100/2024: 800,000 אירו באטיקה, ביחידת סלוניקי, במיקונוס, בסנטוריני ובכל אי עם יותר מ־3,100 תושבים (כולל כרתים, רודוס וקורפו); 400,000 אירו בשאר יוון; בשני המסלולים נכס אחד של 120 מ״ר לפחות. 250,000 אירו רק בהסבה של נכס מסחרי למגורים או בשיקום מבנה לשימור. נכס של גולדן ויזה אסור בהשכרה לטווח קצר (קנס 50,000 אירו וביטול ההיתר). ההיתר ל־5 שנים ומתחדש; אגרה 2,000 אירו למבקש ו־150 אירו לכל בן משפחה.</p>';
+		}
+		if ( 'gryield' === $id ) {
+			return '<p>מס על שכירות ביוון מ־2026, גם למי שלא גר ביוון, אחרי ניכוי קבוע של 5%: 15% עד 12,000 אירו בשנה, 25% עד 24,000, 35% עד 36,000 ו־45% מעל. ENFIA, מס הרכוש השנתי, לפי השטח ומחיר האזור: מ־2 עד 16.20 אירו למ״ר, כפול מקדמי הגיל והקומה, עם הנחה של 20% לדירה מבוטחת. בישראל: לפי הנוסח האנגלי של אמנת המס, השכירות חייבת במס רק ביוון; רשות המסים לא פרסמה עמדה. מי שמשלם בישראל בוחר בין מסלול 15% על השכירות (בלי הוצאות ובלי זיכוי) למסלול רגיל לפי המדרגות, עם זיכוי על המס ששולם ביוון.</p>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
@@ -282,13 +335,15 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	add_shortcode( 'nadlan_tool', function ( $atts ) {
 		$a = shortcode_atts( array( 'id' => '' ), $atts );
+		$set = array(); // the page's own case: [nadlan_tool id="pval" city="ירושלים" hood="65209775" rooms="4"], [nadlan_tool id="dira" town="חיפה"]
+		foreach ( array( 'city', 'hood', 'town', 'rooms', 'track', 'period', 'method', 'preset', 'region', 'kind', 'price' ) as $k ) { if ( isset( $atts[ $k ] ) && '' !== $atts[ $k ] ) { $set[ $k ] = in_array( $k, array( 'rooms', 'price' ), true ) ? (int) $atts[ $k ] : sanitize_text_field( $atts[ $k ] ); } }  // 1.72.498: preset (a ready case of the tool), region, kind, price
 		$tools = nadlan_nli_tools();
 		$id = sanitize_key( $a['id'] );
 		if ( ! isset( $tools[ $id ] ) ) { return ''; }
 		$lang = nadlan_nli_tool_lang( $tools[ $id ] ); $en = 'en' === $lang;  // HAD-534 (d): English + LTR on /en/ pages, for tools with an 'en' block
 		$t = nadlan_nli_t( $tools[ $id ], $lang );
 		$data = implode( ',', array_map( function ( $f ) { return esc_url( nadlan_nli_url( 'data/' . $f ) . '?ver=' . nadlan_nli_ver() ); }, $t['data'] ) );
-		$h = '<section class="nli" dir="' . ( $en ? 'ltr' : 'rtl' ) . '" lang="' . $lang . '" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . '>'
+		$h = '<section class="nli" dir="' . ( $en ? 'ltr' : 'rtl' ) . '" lang="' . $lang . '" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . ( $set ? ' data-nli-set="' . esc_attr( wp_json_encode( $set, JSON_UNESCAPED_UNICODE ) ) . '"' : '' ) . '>'
 			. '<div class="nli__panel"><p class="nli__kicker">' . esc_html( isset( $t['kicker'] ) ? $t['kicker'] : ( $en ? 'Calculator' : 'מחשבון' ) ) . '</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id, $lang ) . '</div></div>';
 		if ( ! empty( $t['related'] ) ) {
 			$h .= $en ? '<nav class="nli__rel" aria-label="Related tools and guides"><span>Related:</span>' : '<nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span>';
@@ -323,3 +378,71 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		echo '<script type="application/ld+json" id="nadlan-nli-ld">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $out ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 	}, 30 );
 }
+
+/* ---------------------------------------------------------------------------------------------------------------------
+ * AI and search-engine discovery (1.72.498, HAD-592, Ben 22.10.2026: "make sure they index on all the search engines and
+ * on the AI bots"). Two public files, nothing else changes:
+ *  - /llms.txt: a reading list for AI assistants (the llms.txt convention): what the site is, where the official numbers
+ *    come from, and links to the calculators, price pages, guides and projects. The tool pages are found by their
+ *    [nadlan_tool] shortcode, so a new tool page joins the list by itself (cached 6 hours).
+ *  - /<key>.txt: the IndexNow key file. IndexNow tells Bing, Yandex, Seznam and Naver about a new or changed URL at once;
+ *    the publishing scripts post the URLs to https://api.indexnow.org with this key (the key is public by design).
+ * robots.txt already allows every crawler (checked 22.10.2026); it is not touched here.
+ * ------------------------------------------------------------------------------------------------------------------- */
+if ( ! defined( 'NADLAN_INDEXNOW_KEY' ) ) { define( 'NADLAN_INDEXNOW_KEY', 'f25cb29869da9a9709dedcde8a7efc7a' ); }
+
+if ( ! function_exists( 'nadlan_llms_txt' ) ) {
+	function nadlan_llms_txt() {
+		$cached = get_transient( 'nadlan_llms_txt_v1' );
+		if ( is_string( $cached ) && '' !== $cached ) { return $cached; }
+		global $wpdb;
+		$line = function ( $id, $desc = '' ) {
+			$t = trim( html_entity_decode( wp_strip_all_tags( get_the_title( $id ) ), ENT_QUOTES, 'UTF-8' ) );
+			return '- [' . $t . '](' . get_permalink( $id ) . ')' . ( '' !== $desc ? ': ' . $desc : '' ) . "\n";
+		};
+		$by_path = function ( $path ) { $p = get_page_by_path( trim( $path, '/' ) ); return ( $p && 'publish' === $p->post_status ) ? $p->ID : 0; };
+		$o  = "# nad-lan.co.il (נדל\"ן)\n\n";
+		$o .= "> Israeli real-estate portal, Hebrew first with English, French, Russian and Arabic pages: new building projects, official apartment prices by city and neighbourhood, free calculators (purchase tax, total purchase cost, home value, mortgage, arnona, index linkage), buying and selling guides, and guides to buying property abroad for Israelis. Prices come from the deals reported to the Israel Tax Authority (data.nadlan.gov.il) and other official sources, each with its date on the page.\n\n";
+		$o .= "Notes for assistants: numbers on the pages are dated; quote the date with the number. Calculators open on a worked example and recompute in the browser; the page also prints the key figures as plain text.\n\n";
+		$o .= "## Calculators\n";
+		$tools = function_exists( 'nadlan_nli_tools' ) ? nadlan_nli_tools() : array();
+		foreach ( $tools as $tid => $t ) {
+			$pid = (int) $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_type IN ('page','post') AND post_content LIKE %s ORDER BY ID ASC LIMIT 1", '%' . $wpdb->esc_like( '[nadlan_tool id="' . $tid . '"' ) . '%' ) );
+			if ( $pid ) { $o .= '- [' . $t['name'] . '](' . get_permalink( $pid ) . '): ' . $t['desc'] . "\n"; }
+		}
+		$o .= "\n## Apartment prices (official medians)\n";
+		foreach ( array( 'apartment-prices' ) as $p ) { if ( $id = $by_path( $p ) ) { $o .= $line( $id, 'every city with a price page, by rooms and quarter' ); } }
+		$cities = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_type='page' AND post_name LIKE '%-apartment-prices' ORDER BY menu_order, ID LIMIT 60" );
+		foreach ( $cities as $id ) { $o .= $line( (int) $id ); }
+		$o .= "\n## Guides\n";
+		foreach ( array( 'buying-apartment', 'selling-apartment', 'real-estate-lawyer', 'real-estate-tax-advisor', 'mortgage-calculator', 'urban-renewal/map', 'dira-behanacha', 'tabu-extract-check', 'home-inspection', 'investment-apartment', 'sde-dov', 'glossary' ) as $p ) {
+			if ( $id = $by_path( $p ) ) { $o .= $line( $id ); }
+		}
+		$o .= "\n## Buying property abroad\n";
+		$abroad = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_type='page' AND post_content LIKE '%[nadlan_crumbs%' ORDER BY ID LIMIT 80" );
+		foreach ( array( 'short-term-rentals-abroad' ) as $p ) { if ( $id = $by_path( $p ) ) { $o .= $line( $id ); } }
+		foreach ( $abroad as $id ) { $o .= $line( (int) $id ); }
+		$o .= "\n## New projects\n";
+		$o .= '- [פרויקטים חדשים](' . home_url( '/projects/' ) . "): the catalog of new building projects in Israel\n";
+		foreach ( array( 'projects/hamedina', 'projects/rainbow-tel-aviv', 'projects/duo-tel-aviv', 'projects/dimri-yama-sde-dov', 'projects/ashira-sde-dov', 'projects/h-infinity-somail-tel-aviv', 'projects/einstein-tower' ) as $p ) {
+			$pp = get_page_by_path( basename( $p ), OBJECT, 'nadlan_project' );
+			if ( $pp && 'publish' === $pp->post_status ) { $o .= $line( $pp->ID ); }
+		}
+		$o .= "\n## Other languages\n";
+		foreach ( array( 'en' => 'English', 'fr' => 'Français', 'ru' => 'Русский', 'ar' => 'العربية' ) as $p => $n ) { if ( $id = $by_path( $p ) ) { $o .= '- [' . $n . '](' . get_permalink( $id ) . ")\n"; } }
+		set_transient( 'nadlan_llms_txt_v1', $o, 6 * HOUR_IN_SECONDS );
+		return $o;
+	}
+}
+add_action( 'parse_request', function ( $wp ) {
+	$req = isset( $wp->request ) ? (string) $wp->request : '';
+	if ( 'llms.txt' === $req ) {
+		status_header( 200 ); header( 'Content-Type: text/plain; charset=utf-8' ); header( 'Cache-Control: public, max-age=3600' );
+		echo nadlan_llms_txt(); exit;
+	}
+	if ( NADLAN_INDEXNOW_KEY . '.txt' === $req ) {
+		status_header( 200 ); header( 'Content-Type: text/plain; charset=utf-8' ); echo NADLAN_INDEXNOW_KEY; exit;
+	}
+}, 0 );
+/* a page published or updated drops the cached list */
+add_action( 'save_post_page', function () { delete_transient( 'nadlan_llms_txt_v1' ); } );

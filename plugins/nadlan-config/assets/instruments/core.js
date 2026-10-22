@@ -24,13 +24,15 @@
     copyPrompt: { he: 'העתיקו את התוצאה', en: 'Copy the result' },
     wa: { he: 'שליחה בוואטסאפ', en: 'Send on WhatsApp' },
     print: { he: 'הדפסה או שמירה כקובץ', en: 'Print or save as PDF' },
-    noData: { he: 'הנתונים לא נטענו. רעננו את העמוד.', en: 'The data did not load. Please refresh the page.' }
+    noData: { he: 'הנתונים לא נטענו. רעננו את העמוד.', en: 'The data did not load. Please refresh the page.' },
+    pre: { he: 'מקרים מוכנים: לחיצה אחת ממלאת הכול', en: 'Ready cases: one tap fills everything' }
   };
   function langOf(node) { var s = node && node.closest ? node.closest('[lang]') : null; return /^en\b/i.test((s && s.getAttribute('lang')) || LANG) ? 'en' : 'he'; }
   function pick(tx, lang) { var o = {}; Object.keys(tx).forEach(function (k) { o[k] = tx[k][lang] != null ? tx[k][lang] : tx[k].he; }); return o; }
   var nf0 = new Intl.NumberFormat(LOC, { maximumFractionDigits: 0 });
   var fmt = {
     ils: function (n) { return '₪' + nf0.format(Math.round(n || 0)); },
+    eur: function (n) { return '€' + nf0.format(Math.round(n || 0)); },  // 1.72.498: abroad tools (Greece first) speak euros, with shekels beside them
     num: function (n, d) { return new Intl.NumberFormat(LOC, { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }).format(n || 0); },
     pct: function (n, d) { return (n < 0 ? '-' : '') + new Intl.NumberFormat(LOC, { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }).format(Math.abs(n * 100)) + '%'; },
     month: function (key) { var p = String(key).split('-'); return p.length > 1 ? (LANG === 'en' ? (MON[+p[1] - 1] || p[1]) + ' ' + p[0] : (+p[1]) + '.' + p[0]) : key; },
@@ -118,12 +120,29 @@
   function mount(root, spec, data) {
     var lg = langOf(root), T = pick(TX, lg);
     var st = { uid: Math.random().toString(36).slice(2, 7), v: JSON.parse(JSON.stringify(spec.defaults(data))), err: {}, redraw: {}, scen: null, show: [], t: T, data: data };
+    // 1.72.498 presets (Ben 22.10.2026: "one click with your fingers to get everything"): a row of ready cases above the form;
+    // one tap writes every field of the case at once. A page can open on a case: [nadlan_tool id="…" preset="athens-resale"].
+    var PRE = spec.presets ? (typeof spec.presets === 'function' ? spec.presets(data) : spec.presets) : [];
+    function applyPreset(key) { var p = PRE.filter(function (x) { return x.key === key; })[0]; if (!p) return false; Object.keys(p.set).forEach(function (k) { st.v[k] = JSON.parse(JSON.stringify(p.set[k])); }); st.pre = key; return true; }
+    try { var pre = root.getAttribute('data-nli-set'); if (pre) { var P = JSON.parse(pre); if (P.preset) applyPreset(P.preset); Object.keys(P).forEach(function (k) { if (k in st.v) st.v[k] = P[k]; }); } } catch (e) {} // a page can open the tool on its own case (a neighbourhood, a town)
     root.innerHTML = ''; if (!root.parentNode || !root.parentNode.closest || !root.parentNode.closest('.nli')) root.classList.add('nli'); root.setAttribute('dir', lg === 'en' ? 'ltr' : 'rtl');
     var panel = el('div', 'nli__panel');
     if (spec.kicker) panel.appendChild(el('p', 'nli__kicker', esc(spec.kicker)));
     if (spec.title) panel.appendChild(el('h2', 'nli__title', esc(spec.title)));
     if (spec.lede) panel.appendChild(el('p', 'nli__lede', spec.lede));
     if (spec.strip) { var s = spec.strip(data); if (s && s.length) { var sp = el('div', 'nli__strip'); s.forEach(function (x) { sp.appendChild(el('div', '', '<span>' + esc(x.label) + '</span><strong>' + esc(x.value) + '</strong>')); }); panel.appendChild(sp); } }
+    var preRow = null;
+    if (PRE.length) {
+      panel.appendChild(el('span', 'nli__alab nli__prelab', esc(T.pre)));
+      preRow = el('div', 'nli__pre'); preRow.setAttribute('role', 'group'); preRow.setAttribute('aria-label', T.pre);
+      PRE.forEach(function (p) {
+        var b = el('button', '', '<span>' + esc(p.label) + '</span>' + (p.sub ? '<small>' + esc(p.sub) + '</small>' : '')); b.type = 'button'; b.setAttribute('data-k', p.key);
+        b.addEventListener('click', function () { applyPreset(p.key); st.scen = null; buildForm(); markPre(); run(); });
+        preRow.appendChild(b);
+      });
+      panel.appendChild(preRow);
+    }
+    function markPre() { if (preRow) [].forEach.call(preRow.children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === st.pre)); }); }
     var grid = el('div', 'nli__grid'); var form = el('form', 'nli__form'); form.addEventListener('submit', function (e) { e.preventDefault(); });
     var out = el('div', 'nli__out'); out.setAttribute('aria-live', 'polite');
     grid.appendChild(form); grid.appendChild(out); panel.appendChild(grid);
@@ -133,8 +152,9 @@
     panel.appendChild(el('p', 'nli__eg', '<b>' + esc(T.eg) + '</b>' + esc(spec.exampleNote || T.egNote)));
     root.appendChild(panel);
     var last = null, t = 0;
-    function onChange(id, keepRows) { if (spec.onField) spec.onField(id, st.v, data, function (fid) { if (st.redraw[fid] && !keepRows) st.redraw[fid](); }); clearTimeout(t); t = setTimeout(run, 90); }
-    spec.fields.forEach(function (f) { form.appendChild(field(f, st, onChange)); });
+    function onChange(id, keepRows) { if (st.pre) { st.pre = null; markPre(); } if (spec.onField) spec.onField(id, st.v, data, function (fid) { if (st.redraw[fid] && !keepRows) st.redraw[fid](); }); clearTimeout(t); t = setTimeout(run, 90); }
+    function buildForm() { form.innerHTML = ''; st.redraw = {}; st.err = {}; st.show = []; spec.fields.forEach(function (f) { form.appendChild(field(f, st, onChange)); }); }
+    buildForm(); markPre();
     function run() {
       st.show.forEach(function (fn) { fn(); });
       Object.keys(st.err).forEach(function (k) { st.err[k].textContent = ''; });

@@ -112,6 +112,53 @@ add_action( 'wp_head', function () {
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 }, 22 );
 
+/* 1.72.498 (HAD-592, Ben 22.10.2026: "title, breadcrumbs and h1 are never the same"): an opt-in trail for regular pages.
+ * A page that holds [nadlan_crumbs] gets a visible trail at the top (above its H1, inc/page-h1.php) and a BreadcrumbList with
+ * the @id Yoast's WebPage already points to (#breadcrumb), so that reference resolves. Labels: each level's Yoast breadcrumb
+ * title (_yoast_wpseo_bctitle), else its title; the page's own level from label="..." (short, never the H1). A page without a
+ * WordPress parent names its hub with hub="/path/|label". Only pages that carry the shortcode change; no other page does. */
+if ( ! function_exists( 'nadlan_page_crumbs' ) ) {
+	function nadlan_page_crumbs( $post = null ) {
+		$post = $post ? get_post( $post ) : get_post();
+		if ( ! $post || 'page' !== $post->post_type || false === strpos( (string) $post->post_content, '[nadlan_crumbs' ) ) { return array(); }
+		if ( ! preg_match( '/\[nadlan_crumbs([^\]]*)\]/', $post->post_content, $m ) ) { return array(); }
+		$a     = shortcode_parse_atts( trim( $m[1] ) );
+		$a     = is_array( $a ) ? $a : array();
+		$label = function ( $id ) { $b = trim( (string) get_post_meta( $id, '_yoast_wpseo_bctitle', true ) ); return '' !== $b ? $b : wp_strip_all_tags( get_the_title( $id ) ); };
+		$items = array( array( 'name' => 'בית', 'url' => home_url( '/' ) ) );
+		foreach ( array_reverse( get_post_ancestors( $post ) ) as $anc ) { $items[] = array( 'name' => $label( $anc ), 'url' => get_permalink( $anc ) ); }
+		// hub="/global/|השקעות בחו״ל;/global/greece/|יוון": one or more levels above a page that has no WordPress parent (1.72.499)
+		if ( ! empty( $a['hub'] ) ) {
+			foreach ( explode( ';', $a['hub'] ) as $lvl ) {
+				if ( false === strpos( $lvl, '|' ) ) { continue; }
+				list( $path, $name ) = array_map( 'trim', explode( '|', $lvl, 2 ) );
+				if ( '' !== $path && '' !== $name ) { $items[] = array( 'name' => $name, 'url' => home_url( $path ) ); }
+			}
+		}
+		$items[] = array( 'name' => ! empty( $a['label'] ) ? sanitize_text_field( $a['label'] ) : $label( $post->ID ), 'url' => get_permalink( $post ) );
+		return $items;
+	}
+}
+add_shortcode( 'nadlan_crumbs', function () {
+	if ( ! is_page() || ! in_the_loop() ) { return ''; }
+	$items = nadlan_page_crumbs();
+	if ( count( $items ) < 2 ) { return ''; }
+	$n = count( $items ); $h = '<nav class="nlbc nlbc--page" dir="rtl" aria-label="מיקום בעמוד">';
+	foreach ( array_values( $items ) as $i => $it ) {
+		$h .= $i + 1 < $n ? '<a href="' . esc_url( $it['url'] ) . '">' . esc_html( $it['name'] ) . '</a><span class="nlbc-sep" aria-hidden="true">›</span>'
+			: '<span aria-current="page">' . esc_html( $it['name'] ) . '</span>';
+	}
+	return $h . '</nav><style>.nlbc--page{font:500 13px/18px var(--sa-sans,"IBM Plex Sans Hebrew",system-ui,sans-serif);color:#5E6A75;margin:4px 0 10px;display:flex;flex-wrap:wrap;gap:2px 0}.nlbc--page a{color:#2F6F86;text-decoration:none}.nlbc--page a:hover{text-decoration:underline}.nlbc--page .nlbc-sep{margin:0 6px;color:#9AA6B0}.nlbc--page [aria-current]{color:#3E4C58}</style>';
+} );
+add_action( 'wp_head', function () {
+	if ( ! is_page() ) { return; }
+	$items = nadlan_page_crumbs( get_queried_object_id() );
+	if ( count( $items ) < 2 ) { return; }
+	$ld = array( '@context' => 'https://schema.org', '@type' => 'BreadcrumbList', '@id' => get_permalink( get_queried_object_id() ) . '#breadcrumb',
+		'itemListElement' => array_map( function ( $it, $i ) { return array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => $it['name'], 'item' => $it['url'] ); }, array_values( $items ), array_keys( array_values( $items ) ) ) );
+	echo "\n<script type=\"application/ld+json\" id=\"nadlan-page-crumbs\">" . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
+}, 22 );
+
 /* Single BreadcrumbList owner (source-audit 30.8.2026): drop Yoast's graph piece. */
 add_filter( 'wpseo_schema_needs_breadcrumb', '__return_false' );
 

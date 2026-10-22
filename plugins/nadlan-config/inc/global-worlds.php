@@ -330,10 +330,10 @@ if ( ! function_exists( 'nadlan_gw_worlds' ) ) {
 			'facts' => array(
 				array( 'מחיר למ"ר באתונה', 'Athens price per sqm', '2,500-4,500 אירו (מרכז ופרברי חוף מבוקשים)', 'EUR 2,500-4,500 (center and prime coastal suburbs)' ),
 				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-4%-6%; שכירות קצרה גבוהה יותר אך מוגבלת רגולטורית', '~4-6%; short-term higher but regulation-capped' ),
-				array( 'ויזת זהב', 'Golden visa', '800 אלף אירו באתונה/סלוניקי/איים מבוקשים; 400 אלף בשאר המדינה', 'EUR 800K in Athens/Thessaloniki/prime islands; 400K elsewhere' ),
-				array( 'מס רכישה', 'Transfer tax', '3.09% (או מע"מ 24% בנכס חדש מהיזם - בדקו פטורים)', '3.09% (or 24% VAT on new-from-developer - check exemptions)' ),
+				array( 'ויזת זהב', 'Golden visa', '800 אלף אירו באטיקה, סלוניקי, מיקונוס, סנטוריני ובכל אי מעל 3,100 תושבים (גם כרתים, רודוס וקורפו); 400 אלף בשאר המדינה; נכס אחד של 120 מ"ר', 'EUR 800K in Attica, Thessaloniki, Mykonos, Santorini and every island over 3,100 people (Crete, Rhodes and Corfu too); 400K elsewhere; one property of 120 sqm' ),
+				array( 'מס רכישה', 'Transfer tax', '3.09%, משלם הקונה (מע"מ 24% בנכס חדש, מושעה עד 31.12.2026). הצעה: 15.45% לקונים מחוץ לאיחוד, כולל ישראלים, בחוזים מ־1.7.2027', '3.09%, paid by the buyer (24% VAT on new builds, suspended to 31.12.2026). Proposed: 15.45% for non-EU buyers incl. Israelis from 1.7.2027' ),
 				array( 'מס רכוש שנתי (ENFIA)', 'Annual property tax (ENFIA)', 'כמה מאות עד אלפי אירו, לפי הנכס', 'A few hundred to a few thousand EUR by asset' ),
-				array( 'מס על שכירות', 'Tax on rent', 'מדורג: 15% עד 12 אלף אירו, ואז 35%/45%', 'Tiered: 15% to EUR 12K, then 35%/45%' ),
+				array( 'מס על שכירות', 'Tax on rent', 'מ־2026: 15% עד 12 אלף אירו, 25% עד 24 אלף, 35% עד 36 אלף, 45% מעל', 'From 2026: 15% to EUR 12K, 25% to 24K, 35% to 36K, 45% above' ),
 				array( 'בעלות לזרים', 'Foreign ownership', 'חופשית (הגבלות רק באזורי גבול)', 'Unrestricted (limits only in border zones)' ),
 				array( 'אזורים מובילים', 'Top districts', 'אתונה: קוקאקי, פנגראטי, גליפדה; סלוניקי; האיים', 'Athens: Koukaki, Pangrati, Glyfada; Thessaloniki; the islands' ),
 			),
@@ -356,10 +356,10 @@ if ( ! function_exists( 'nadlan_gw_worlds' ) ) {
 				),
 				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
 					array(
-						'השוק היווני עלה בחדות ומחירי מרכז אתונה כבר אינם מציאה; אל תקנו לפי מחירי 2018. בדקו: מגבלות שכירות קצרה חדשות במרכז אתונה, איכות בנייה בבניינים ישנים (רעידות אדמה - העדיפו בנייה מ-1985 ואילך או שיפוץ הנדסי מתועד), חובות שנדבקים לנכס, וביורוקרטיה איטית ברישום. מס ישראלי חל על ההכנסה לפי המסלולים הרגילים, עם זיכוי לפי אמנת המס. הנתונים להמחשה בלבד.',
+						'השוק היווני עלה בחדות ומחירי מרכז אתונה כבר אינם מציאה; אל תקנו לפי מחירי 2018. בדקו: מגבלות שכירות קצרה חדשות במרכז אתונה, איכות בנייה בבניינים ישנים (רעידות אדמה - העדיפו בנייה מ-1985 ואילך או שיפוץ הנדסי מתועד), חובות שנדבקים לנכס, וביורוקרטיה איטית ברישום. לפי הנוסח האנגלי של אמנת המס בין ישראל ליוון, השכירות חייבת במס רק ביוון; רשות המסים לא פרסמה עמדה, ולכן את המסלול בישראל קובעים עם רואה חשבון. הנתונים להמחשה בלבד.',
 					),
 					array(
-						'The Greek market rose sharply and central Athens is no longer a bargain; do not underwrite at 2018 prices. Check: new short-term rental limits in central Athens, build quality in older stock (earthquakes - prefer post-1985 construction or documented structural renovation), debts that attach to the asset, and slow registry bureaucracy. Israeli tax applies to the income under the usual tracks, with treaty credits. Figures for illustration only.',
+						'The Greek market rose sharply and central Athens is no longer a bargain; do not underwrite at 2018 prices. Check: new short-term rental limits in central Athens, build quality in older stock (earthquakes - prefer post-1985 construction or documented structural renovation), debts that attach to the asset, and slow registry bureaucracy. Under the English text of the Israel-Greece tax treaty, the rent is taxable only in Greece; the Israel Tax Authority has published no position, so the Israeli track is set with an accountant. Figures for illustration only.',
 					),
 				),
 			),
@@ -729,6 +729,52 @@ if ( ! function_exists( 'nadlan_gw_head' ) ) {
 	}
 }
 
+/* 1.72.499 (HAD-592, source audit 22.10.2026): the /global/ routes call get_header() in a block theme, so WordPress prints its
+ * fallback header with the site name as an <h1>, a second H1 above the page's own (the "exactly one h1" law). On these routes
+ * only, that site-name heading becomes a paragraph. Nothing else in the header changes. */
+if ( ! function_exists( 'nadlan_gw_one_h1' ) ) {
+	function nadlan_gw_one_h1( $html ) {
+		return preg_replace( '#(<div id="headerimg">\s*)<h1>(.*?)</h1>#s', '$1<p class="nlgw-sitename">$2</p>', $html, 1 );
+	}
+}
+add_action( 'template_redirect', function () {
+	if ( get_query_var( 'nadlan_gw_hub' ) || get_query_var( 'nadlan_gw_world' ) ) { ob_start( 'nadlan_gw_one_h1' ); }
+}, 1 );
+
+/* 1.72.499: the guides of a world (Greece first, the page loop HAD-592) are regular pages; the world page lists the ones
+ * that are published, so each new guide joins the hub by itself. code => array( slug => array( title, line ) ). */
+if ( ! function_exists( 'nadlan_gw_world_guides' ) ) {
+	function nadlan_gw_world_guides( $code ) {
+		$g = array(
+			'greece' => array(
+				'athens-apartments'     => array( 'דירה באתונה', 'שכונה אחרי שכונה: מחיר למ״ר, שכירות ומה בודקים' ),
+				'acquisition-greece'    => array( 'קניית דירה ביוון', 'השלבים, המסמכים וכל העלויות, עם מחשבון' ),
+				'golden-visa-greece'    => array( 'גולדן ויזה ביוון', 'הסכומים של 2026, התנאים ובדיקת זכאות' ),
+				'taxation-greece-israel' => array( 'מיסוי דירה ביוון לישראלים', 'מה משלמים ביוון ומה מדווחים בישראל' ),
+				'seaside-houses-greece' => array( 'בית על הים ביוון', 'איים וחופים: מחירים ובדיקות חוף ויער' ),
+				'thessaloniki-halkidiki' => array( 'סלוניקי וחלקידיקי', 'דירות בעיר ובתי נופש בחצי האי' ),
+				'crete-property'        => array( 'נדל״ן בכרתים', 'חאניה, הרקליון ורתימנו, ובתים לשיפוץ' ),
+			),
+		);
+		$out = array();
+		foreach ( isset( $g[ $code ] ) ? $g[ $code ] : array() as $slug => $t ) {
+			$p = get_page_by_path( $slug );
+			if ( $p && 'publish' === $p->post_status ) { $out[] = array( get_permalink( $p ), $t[0], $t[1] ); }
+		}
+		return $out;
+	}
+}
+
+/* 1.72.499: the hub and the world routes are not WordPress posts, so Yoast's sitemaps never listed them (research 22.10.2026:
+ * /global/greece/ was in no sitemap). They are added to the page sitemap; nothing is removed from any sitemap. */
+add_filter( 'wpseo_sitemap_page_content', function ( $xml ) {
+	if ( ! function_exists( 'nadlan_gw_worlds' ) || ! nadlan_gw_on() ) { return $xml; }
+	$now = gmdate( 'c', (int) ( get_option( 'nadlan_gw_lastmod' ) ?: time() ) );
+	$xml .= '<url><loc>' . esc_url( home_url( '/global/' ) ) . '</loc><lastmod>' . $now . '</lastmod></url>' . "\n";
+	foreach ( array_keys( nadlan_gw_worlds() ) as $code ) { $xml .= '<url><loc>' . esc_url( home_url( '/global/' . $code . '/' ) ) . '</loc><lastmod>' . $now . '</lastmod></url>' . "\n"; }
+	return $xml;
+} );
+
 /* ============================ the hub /global/ ============================ */
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_gw_hub' ) ) { return; }
@@ -828,6 +874,12 @@ add_action( 'template_redirect', function () {
 		<p class="nlgw-lang"><a href="<?php echo esc_url( $en ? $he_url : $en_url ); ?>"><?php echo $en ? 'עברית' : 'English'; ?></a></p>
 	</header>
 	<p class="nlgw-intro"><?php echo esc_html( $en ? $w['intro_en'] : $w['intro_he'] ); ?></p>
+	<?php $nlgw_guides = $en ? array() : nadlan_gw_world_guides( $code ); if ( $nlgw_guides ) : ?>
+	<nav class="nlgw-guides" aria-label="<?php echo esc_attr( 'המדריכים המלאים ל' . $w['name_he'] ); ?>"><h2><?php echo esc_html( 'המדריכים המלאים ל' . $w['name_he'] ); ?></h2><ul>
+		<?php foreach ( $nlgw_guides as $gd ) : ?><li><a href="<?php echo esc_url( $gd[0] ); ?>"><b><?php echo esc_html( $gd[1] ); ?></b><span><?php echo esc_html( $gd[2] ); ?></span></a></li><?php endforeach; ?>
+	</ul></nav>
+	<style>.nlgw .nlgw-guides{margin:18px 0 26px}.nlgw .nlgw-guides h2{font-size:1.25rem;margin:0 0 10px}.nlgw .nlgw-guides ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px}.nlgw .nlgw-guides a{display:block;border:1px solid #D3DCE2;background:#fff;border-radius:4px;padding:10px 12px;text-decoration:none;color:#12202A}.nlgw .nlgw-guides a b{display:block;color:#2F6F86;font-weight:600}.nlgw .nlgw-guides a span{font-size:13px;color:#5E6A75}.nlgw .nlgw-guides a:hover{border-color:#2F6F86}</style>
+	<?php endif; ?>
 
 	<section class="nlgw-facts">
 		<h2><?php echo $L( 'המספרים של ' . $w['name_he'], $w['name_en'] . ' by the numbers' ); ?></h2>

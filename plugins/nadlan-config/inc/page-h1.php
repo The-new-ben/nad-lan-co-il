@@ -100,9 +100,33 @@ add_filter( 'the_content', function ( $content ) {
 		$at = $gm[0][1] + strlen( $gm[0][0] );
 		return substr( $content, 0, $at ) . $header . substr( $content, $at );
 	}
-	// 4. above the content
+	// 4. above the content; a page that opens with its breadcrumb trail ([nadlan_crumbs], 1.72.498) keeps the trail on top
+	if ( preg_match( '/^\s*<nav class="nlbc[^"]*"[^>]*>.*?<\/nav>(?:<style>[^<]*<\/style>)?/s', $content, $bm ) ) {
+		return $bm[0] . $header . substr( $content, strlen( $bm[0] ) );
+	}
 	return $header . $content;
 }, 1000 );
+
+/* 1.72.498 (site gap audit 21.10.2026, item 2; HAD-592): the profession archives printed the core heading "Profession: קבלן"
+ * in English on a Hebrew page, and the document title "ארכיון קבלן". A Hebrew heading and title per term; any other term
+ * shows its own name. Only /profession/<term>/ changes. */
+if ( ! function_exists( 'nadlan_profession_archive_title' ) ) {
+	function nadlan_profession_archive_title() {
+		$term = get_queried_object();
+		if ( ! $term || empty( $term->name ) ) { return ''; }
+		$map = array( 'קבלן' => 'קבלני בנייה וביצוע בפרויקטים באתר', 'יזם' => 'יזמי נדל״ן בישראל: החברות והפרויקטים', 'אדריכל' => 'אדריכלים לפרויקטי מגורים' );
+		return isset( $map[ $term->name ] ) ? $map[ $term->name ] : (string) $term->name;
+	}
+}
+add_filter( 'get_the_archive_title', function ( $t ) {
+	return is_tax( 'nadlan_profession' ) ? esc_html( nadlan_profession_archive_title() ) : $t;
+}, 40 );
+add_filter( 'pre_get_document_title', function ( $t ) {
+	return is_tax( 'nadlan_profession' ) ? nadlan_profession_archive_title() . ' | נדלן' : $t;
+}, 40 );
+add_filter( 'wpseo_title', function ( $t ) {
+	return is_tax( 'nadlan_profession' ) ? nadlan_profession_archive_title() . ' | נדלן' : $t;
+}, 40 );
 
 add_action( 'wp_head', function () {
 	if ( '0' === (string) get_option( 'nadlan_page_h1', '1' ) || ! is_page() || is_front_page() ) { return; }

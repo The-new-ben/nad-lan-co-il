@@ -1,0 +1,924 @@
+{
+ "source": {
+  "dataset": "פנקס הקבלנים הרשומים",
+  "publisher": "משרד הבינוי והשיכון",
+  "package": "https://data.gov.il/dataset/pinkashakablanim",
+  "resource_id": "4eb61bd6-18cf-4e7c-9f9c-e166dfa0a2d8",
+  "api": "https://data.gov.il/api/3/action/datastore_search?resource_id=4eb61bd6-18cf-4e7c-9f9c-e166dfa0a2d8",
+  "resource_last_modified": "2026-08-17T00:01:20",
+  "declared_frequency": "Week (Automat)",
+  "licence": "not stated in the CKAN record (license_id empty, isopen=false); data.gov.il site terms apply",
+  "retrieved_utc": "2026-10-22T16:14:48Z",
+  "official_record_url_pattern": "https://www.gov.il/apps/moch/rasham/details/{MISPAR_KABLAN}"
+ },
+ "totals": {
+  "rows": 24373,
+  "unique_contractors_MISPAR_KABLAN": 17874,
+  "companies_with_MISPAR_YESHUT": 8861,
+  "individuals_no_entity_number": 9013,
+  "unique_names": 17428,
+  "cities": 945,
+  "branches": 32,
+  "rows_with_phone": 23821,
+  "rows_with_email": 23497,
+  "nadlan_pages_matched": 2690,
+  "register_contractors_without_nadlan_page": 15184
+ },
+ "fields": [
+  {
+   "id": "MISPAR_YESHUT",
+   "label_he": "מספר ישות",
+   "notes_he": ""
+  },
+  {
+   "id": "SHEM_YESHUT",
+   "label_he": "שם הישות",
+   "notes_he": "שם הקבלן כפי שהוא מופיע בפנקס הקבלנים. במקרים מסוימים מדובר בשם העוסק מורשה."
+  },
+  {
+   "id": "MISPAR_KABLAN",
+   "label_he": "מספר קבלן",
+   "notes_he": "מספר רישיון הקבלן במערכות הממוחשבות של משרד הבינוי והשיכון. "
+  },
+  {
+   "id": "SHEM_YISHUV",
+   "label_he": "שם ישוב",
+   "notes_he": ""
+  },
+  {
+   "id": "SHEM_REHOV",
+   "label_he": "שם רחוב",
+   "notes_he": ""
+  },
+  {
+   "id": "MISPAR_BAIT",
+   "label_he": "מספר בית",
+   "notes_he": ""
+  },
+  {
+   "id": "TAARICH_KABLAN",
+   "label_he": "",
+   "notes_he": ""
+  },
+  {
+   "id": "MISPAR_TEL",
+   "label_he": "מספר טלפון",
+   "notes_he": ""
+  },
+  {
+   "id": "EMAIL",
+   "label_he": "כתובת דוא\"ל",
+   "notes_he": ""
+  },
+  {
+   "id": "KOD_ANAF",
+   "label_he": "קוד ענף",
+   "notes_he": "המספר המייחד את הענף."
+  },
+  {
+   "id": "TEUR_ANAF",
+   "label_he": "תיאור ענף + הערות",
+   "notes_he": "שם הענף שאליו משויך הקבלן. קבלן יכול להיות משויך לכמה ענפים."
+  },
+  {
+   "id": "KVUTZA",
+   "label_he": "קבוצה",
+   "notes_he": "הקבלנים נחלקים לשלוש קבוצות. קבוצות א' וב' משויכות לענפים משניים כגון: שיפוצים, איטום מבנים, אינסטלציה והתקנת מזגנים.\r\nקבוצה ג' משויכת לענפים ראשיים כגון: בנייה, תשתיות, סלילת כבישים, ביוב ומים.\r\n"
+  },
+  {
+   "id": "SIVUG",
+   "label_he": "סיווג",
+   "notes_he": "הרמה שבה הקבלן רשאי לבצע עבודות. צירוף הסיווג והקבוצה קובע את ההיקף הכספי או את ההיקף הפיזי (מ\"ר). "
+  },
+  {
+   "id": "TARICH_SUG",
+   "label_he": "תאריך הסיווג",
+   "notes_he": "התאריך שבו ניתן הסיווג האחרון לקבלן."
+  },
+  {
+   "id": "HEKEF",
+   "label_he": "היקף (באלפי ש\"ח)",
+   "notes_he": "היקף העבודה שהקבלן רשאי לבצע לפי החוק באתר אחד."
+  },
+  {
+   "id": "KABLAN_MUKAR",
+   "label_he": "קבלן מוכר",
+   "notes_he": ""
+  },
+  {
+   "id": "OVDIM",
+   "label_he": "עובדים בענף",
+   "notes_he": "העובדים הכשירים שעל סמך כישוריהם ניתן הרישיון לקבלן."
+  },
+  {
+   "id": "HEARA",
+   "label_he": "הערה",
+   "notes_he": "החרגות מסוימות בנוגע לרישיון."
+  }
+ ],
+ "group_rows": {
+  "ג": 10671,
+  "ב": 4345,
+  "א": 9357
+ },
+ "group_sivug_hekef_rows": [
+  {
+   "group": "א",
+   "sivug": "1",
+   "hekef_in_dataset_k_nis": "1948",
+   "rows": 6052
+  },
+  {
+   "group": "א",
+   "sivug": "2",
+   "hekef_in_dataset_k_nis": "3896",
+   "rows": 251
+  },
+  {
+   "group": "א",
+   "sivug": "3",
+   "hekef_in_dataset_k_nis": "7793",
+   "rows": 134
+  },
+  {
+   "group": "א",
+   "sivug": "4",
+   "hekef_in_dataset_k_nis": "15586",
+   "rows": 74
+  },
+  {
+   "group": "א",
+   "sivug": "5",
+   "hekef_in_dataset_k_nis": "ב.מ.",
+   "rows": 139
+  },
+  {
+   "group": "א",
+   "sivug": "ק",
+   "hekef_in_dataset_k_nis": "825",
+   "rows": 2707
+  },
+  {
+   "group": "ב",
+   "sivug": "1",
+   "hekef_in_dataset_k_nis": "3192",
+   "rows": 3756
+  },
+  {
+   "group": "ב",
+   "sivug": "2",
+   "hekef_in_dataset_k_nis": "6382",
+   "rows": 217
+  },
+  {
+   "group": "ב",
+   "sivug": "3",
+   "hekef_in_dataset_k_nis": "12765",
+   "rows": 176
+  },
+  {
+   "group": "ב",
+   "sivug": "4",
+   "hekef_in_dataset_k_nis": "25529",
+   "rows": 76
+  },
+  {
+   "group": "ב",
+   "sivug": "5",
+   "hekef_in_dataset_k_nis": "ב.מ.",
+   "rows": 120
+  },
+  {
+   "group": "ג",
+   "sivug": "1",
+   "hekef_in_dataset_k_nis": "5332",
+   "rows": 8055
+  },
+  {
+   "group": "ג",
+   "sivug": "2",
+   "hekef_in_dataset_k_nis": "9405",
+   "rows": 748
+  },
+  {
+   "group": "ג",
+   "sivug": "3",
+   "hekef_in_dataset_k_nis": "18811",
+   "rows": 573
+  },
+  {
+   "group": "ג",
+   "sivug": "4",
+   "hekef_in_dataset_k_nis": "37620",
+   "rows": 407
+  },
+  {
+   "group": "ג",
+   "sivug": "5",
+   "hekef_in_dataset_k_nis": "ב.מ.",
+   "rows": 888
+  }
+ ],
+ "official_table_from_2026_10_01": {
+  "note": "gov.il/he/pages/sivug_kablanim, valid 1.10.2026-1.4.2027, thousands NIS per one site, excl. VAT",
+  "א": {
+   "ק": 846,
+   "1": 1994,
+   "2": 3988,
+   "3": 7977,
+   "4": 15954,
+   "5": "unlimited"
+  },
+  "ב": {
+   "1": 3267,
+   "2": 6533,
+   "3": 13066,
+   "4": 26131,
+   "5": "unlimited"
+  },
+  "ג": {
+   "1": 5458,
+   "2": 9627,
+   "3": 19255,
+   "4": 38508,
+   "5": "unlimited"
+  },
+  "residential_sqm": {
+   "1": 2000,
+   "2": 3000,
+   "3": 5000,
+   "4": 10000,
+   "5": "unlimited"
+  }
+ },
+ "kablan_mukar_rows": {
+  "לא מוכר": 23115,
+  "מוכר בסיווג 1": 340,
+  "מוכר בסיווג 2": 245,
+  "מוכר בסיווג 3": 166,
+  "מוכר בסיווג 4": 127,
+  "מוכר בסיווג 5": 380
+ },
+ "registration_basis_rows": {
+  "בענף זה הרישום על סמך כישורי המנהל": 20886,
+  "בענף זה הרישום על סמך העסקת עובדים מקצועיים": 3487
+ },
+ "restriction_suffixes_in_TEUR_ANAF": {
+  "רישיון זה מותלה בפועל כמפורט בפנקס הקבלנים": 14,
+  "ביצוע עבודות לפי מגבלות חוק החשמל התשי\"ד-1954": 1,
+  "רשאי לפעול בתחום מיזוג אוויר בלבד - ללא קירור": 1,
+  "אינה רשאית לבצע עבודות חדשות": 6,
+  "הקפאת רישיון - מלחמת חרבות ברזל": 3,
+  "רשאי לפעול בתחום מיזוג אוויר בלבד – ללא קירור": 1,
+  "רשאי לפעול בתחום מיזוג אויר בלבד - ללא קירור": 1
+ },
+ "first_registration_year_contractors_last12": {
+  "2015": 460,
+  "2016": 348,
+  "2017": 537,
+  "2018": 571,
+  "2019": 990,
+  "2020": 883,
+  "2021": 980,
+  "2022": 1227,
+  "2023": 1531,
+  "2024": 1306,
+  "2025": 1288,
+  "2026": 778
+ },
+ "branches": [
+  {
+   "code": "100",
+   "name": "בניה",
+   "rows": 8482,
+   "contractors": 8482,
+   "with_nadlan_page": 1144,
+   "groups": {
+    "ג": 8482
+   },
+   "group_sivug": {
+    "ג1": 6521,
+    "ג2": 582,
+    "ג3": 390,
+    "ג4": 307,
+    "ג5": 682
+   }
+  },
+  {
+   "code": "131",
+   "name": "שיפוצים",
+   "rows": 4913,
+   "contractors": 4913,
+   "with_nadlan_page": 996,
+   "groups": {
+    "א": 4913
+   },
+   "group_sivug": {
+    "א1": 2173,
+    "א2": 26,
+    "א3": 4,
+    "א4": 4,
+    "אק": 2706
+   }
+  },
+  {
+   "code": "200",
+   "name": "כבישים תשתית ופיתוח",
+   "rows": 1972,
+   "contractors": 1972,
+   "with_nadlan_page": 210,
+   "groups": {
+    "ג": 1972
+   },
+   "group_sivug": {
+    "ג1": 1405,
+    "ג2": 154,
+    "ג3": 155,
+    "ג4": 89,
+    "ג5": 169
+   }
+  },
+  {
+   "code": "260",
+   "name": "ביצוע קווי מים  ביוב וניקוז",
+   "rows": 1851,
+   "contractors": 1851,
+   "with_nadlan_page": 178,
+   "groups": {
+    "ב": 1851
+   },
+   "group_sivug": {
+    "ב1": 1464,
+    "ב2": 140,
+    "ב3": 118,
+    "ב4": 48,
+    "ב5": 81
+   }
+  },
+  {
+   "code": "160",
+   "name": "חשמלאות ותקשורת במבנים",
+   "rows": 1437,
+   "contractors": 1437,
+   "with_nadlan_page": 179,
+   "groups": {
+    "א": 1437
+   },
+   "group_sivug": {
+    "א1": 1210,
+    "א2": 87,
+    "א3": 47,
+    "א4": 34,
+    "א5": 59
+   }
+  },
+  {
+   "code": "130",
+   "name": "בטונים   בנית שלדים",
+   "rows": 721,
+   "contractors": 721,
+   "with_nadlan_page": 209,
+   "groups": {
+    "ב": 721
+   },
+   "group_sivug": {
+    "ב1": 714,
+    "ב2": 3,
+    "ב3": 3,
+    "ב4": 1
+   }
+  },
+  {
+   "code": "111",
+   "name": "פיתוח חצרות",
+   "rows": 620,
+   "contractors": 620,
+   "with_nadlan_page": 89,
+   "groups": {
+    "א": 620
+   },
+   "group_sivug": {
+    "א1": 610,
+    "א2": 4,
+    "א3": 5,
+    "אק": 1
+   }
+  },
+  {
+   "code": "190",
+   "name": "מתקני תברואה אינסטלציה ומערכות כיבוי אש",
+   "rows": 548,
+   "contractors": 548,
+   "with_nadlan_page": 72,
+   "groups": {
+    "א": 548
+   },
+   "group_sivug": {
+    "א1": 505,
+    "א2": 16,
+    "א3": 10,
+    "א4": 6,
+    "א5": 11
+   }
+  },
+  {
+   "code": "210",
+   "name": "עבודות עפר וחציבה",
+   "rows": 492,
+   "contractors": 492,
+   "with_nadlan_page": 55,
+   "groups": {
+    "ב": 492
+   },
+   "group_sivug": {
+    "ב1": 477,
+    "ב2": 9,
+    "ב3": 2,
+    "ב4": 3,
+    "ב5": 1
+   }
+  },
+  {
+   "code": "270",
+   "name": "קווי חשמל צנרת וכבלים ומערכות תאורת כבישים ורחובות",
+   "rows": 459,
+   "contractors": 459,
+   "with_nadlan_page": 38,
+   "groups": {
+    "א": 459
+   },
+   "group_sivug": {
+    "א1": 362,
+    "א2": 37,
+    "א3": 21,
+    "א4": 14,
+    "א5": 25
+   }
+  },
+  {
+   "code": "170",
+   "name": "מתקני מיזוג אויר וקירור",
+   "rows": 440,
+   "contractors": 440,
+   "with_nadlan_page": 45,
+   "groups": {
+    "ב": 440
+   },
+   "group_sivug": {
+    "ב1": 363,
+    "ב2": 34,
+    "ב3": 17,
+    "ב4": 10,
+    "ב5": 16
+   }
+  },
+  {
+   "code": "135",
+   "name": "הרחבת מבנים",
+   "rows": 430,
+   "contractors": 430,
+   "with_nadlan_page": 112,
+   "groups": {
+    "א": 430
+   },
+   "group_sivug": {
+    "א1": 425,
+    "א2": 4,
+    "א3": 1
+   }
+  },
+  {
+   "code": "240",
+   "name": "הנחת קוי תקשורת",
+   "rows": 398,
+   "contractors": 398,
+   "with_nadlan_page": 33,
+   "groups": {
+    "א": 398
+   },
+   "group_sivug": {
+    "א1": 343,
+    "א2": 20,
+    "א3": 17,
+    "א4": 5,
+    "א5": 13
+   }
+  },
+  {
+   "code": "150",
+   "name": "קונסטרוקציות פלדה לעומס אדם ולגשרי צנרת",
+   "rows": 324,
+   "contractors": 324,
+   "with_nadlan_page": 25,
+   "groups": {
+    "א": 324
+   },
+   "group_sivug": {
+    "א1": 236,
+    "א2": 39,
+    "א3": 18,
+    "א4": 8,
+    "א5": 23
+   }
+  },
+  {
+   "code": "134",
+   "name": "איטום מבנים",
+   "rows": 272,
+   "contractors": 272,
+   "with_nadlan_page": 45,
+   "groups": {
+    "ב": 272
+   },
+   "group_sivug": {
+    "ב1": 267,
+    "ב2": 5
+   }
+  },
+  {
+   "code": "500",
+   "name": "מערכות אלקטרו מכנאיות בתחנות שאיבה ללא המבנה",
+   "rows": 196,
+   "contractors": 196,
+   "with_nadlan_page": 9,
+   "groups": {
+    "ב": 196
+   },
+   "group_sivug": {
+    "ב1": 124,
+    "ב2": 15,
+    "ב3": 27,
+    "ב4": 13,
+    "ב5": 17
+   }
+  },
+  {
+   "code": "132",
+   "name": "עבודות אבן ביבש או ברטוב על קירות מבנים קיימים",
+   "rows": 139,
+   "contractors": 139,
+   "with_nadlan_page": 20,
+   "groups": {
+    "ב": 139
+   },
+   "group_sivug": {
+    "ב1": 131,
+    "ב2": 4,
+    "ב3": 4
+   }
+  },
+  {
+   "code": "120",
+   "name": "כלונסאות  מיקרופייל וקירות סלארי",
+   "rows": 114,
+   "contractors": 114,
+   "with_nadlan_page": 4,
+   "groups": {
+    "א": 114
+   },
+   "group_sivug": {
+    "א1": 97,
+    "א2": 9,
+    "א3": 3,
+    "א4": 2,
+    "א5": 3
+   }
+  },
+  {
+   "code": "300",
+   "name": "גשרים",
+   "rows": 110,
+   "contractors": 110,
+   "with_nadlan_page": 7,
+   "groups": {
+    "ג": 110
+   },
+   "group_sivug": {
+    "ג1": 52,
+    "ג2": 6,
+    "ג3": 17,
+    "ג4": 6,
+    "ג5": 29
+   }
+  },
+  {
+   "code": "171",
+   "name": "מתקני הסקה",
+   "rows": 92,
+   "contractors": 92,
+   "with_nadlan_page": 4,
+   "groups": {
+    "ב": 92
+   },
+   "group_sivug": {
+    "ב1": 87,
+    "ב2": 2,
+    "ב3": 2,
+    "ב4": 1
+   }
+  },
+  {
+   "code": "220",
+   "name": "עבודות אספלט",
+   "rows": 89,
+   "contractors": 89,
+   "with_nadlan_page": 9,
+   "groups": {
+    "ב": 89
+   },
+   "group_sivug": {
+    "ב1": 87,
+    "ב2": 2
+   }
+  },
+  {
+   "code": "191",
+   "name": "מתקני אנרגיה סולרית ותאים פוטו וולטאים",
+   "rows": 86,
+   "contractors": 86,
+   "with_nadlan_page": 2,
+   "groups": {
+    "א": 86
+   },
+   "group_sivug": {
+    "א1": 72,
+    "א2": 9,
+    "א3": 5
+   }
+  },
+  {
+   "code": "193",
+   "name": "בריכות מים",
+   "rows": 46,
+   "contractors": 46,
+   "with_nadlan_page": 6,
+   "groups": {
+    "ג": 46
+   },
+   "group_sivug": {
+    "ג1": 41,
+    "ג2": 1,
+    "ג3": 2,
+    "ג4": 1,
+    "ג5": 1
+   }
+  },
+  {
+   "code": "400",
+   "name": "נמלים  עבודות ימיות",
+   "rows": 34,
+   "contractors": 34,
+   "with_nadlan_page": 1,
+   "groups": {
+    "ג": 34
+   },
+   "group_sivug": {
+    "ג1": 18,
+    "ג2": 1,
+    "ג3": 7,
+    "ג4": 2,
+    "ג5": 6
+   }
+  },
+  {
+   "code": "280",
+   "name": "התקנת רמזורים",
+   "rows": 28,
+   "contractors": 28,
+   "with_nadlan_page": 0,
+   "groups": {
+    "א": 28
+   },
+   "group_sivug": {
+    "א1": 19,
+    "א3": 3,
+    "א4": 1,
+    "א5": 5
+   }
+  },
+  {
+   "code": "180",
+   "name": "מעליות ומדרגות נעות",
+   "rows": 26,
+   "contractors": 26,
+   "with_nadlan_page": 0,
+   "groups": {
+    "ב": 26
+   },
+   "group_sivug": {
+    "ב1": 19,
+    "ב2": 1,
+    "ב3": 1,
+    "ב5": 5
+   }
+  },
+  {
+   "code": "320",
+   "name": "קונסטרוקציות פלדה לגשרים לעומסי תחבורה",
+   "rows": 15,
+   "contractors": 15,
+   "with_nadlan_page": 0,
+   "groups": {
+    "ב": 15
+   },
+   "group_sivug": {
+    "ב1": 11,
+    "ב2": 2,
+    "ב3": 2
+   }
+  },
+  {
+   "code": "700",
+   "name": "ממגורות מגדלי מים וארובות",
+   "rows": 14,
+   "contractors": 14,
+   "with_nadlan_page": 0,
+   "groups": {
+    "ג": 14
+   },
+   "group_sivug": {
+    "ג1": 8,
+    "ג2": 3,
+    "ג3": 2,
+    "ג4": 1
+   }
+  },
+  {
+   "code": "140",
+   "name": "בניה טרומית",
+   "rows": 13,
+   "contractors": 13,
+   "with_nadlan_page": 2,
+   "groups": {
+    "ג": 13
+   },
+   "group_sivug": {
+    "ג1": 10,
+    "ג2": 1,
+    "ג4": 1,
+    "ג5": 1
+   }
+  },
+  {
+   "code": "230",
+   "name": "מסועות בטון",
+   "rows": 6,
+   "contractors": 6,
+   "with_nadlan_page": 0,
+   "groups": {
+    "ב": 6
+   },
+   "group_sivug": {
+    "ב1": 6
+   }
+  },
+  {
+   "code": "133",
+   "name": "דריכת בטון באתר",
+   "rows": 5,
+   "contractors": 5,
+   "with_nadlan_page": 0,
+   "groups": {
+    "ב": 5
+   },
+   "group_sivug": {
+    "ב1": 5
+   }
+  },
+  {
+   "code": "310",
+   "name": "בטונים ובטון דרוך לגשרים",
+   "rows": 1,
+   "contractors": 1,
+   "with_nadlan_page": 1,
+   "groups": {
+    "ב": 1
+   },
+   "group_sivug": {
+    "ב1": 1
+   }
+  }
+ ],
+ "top_cities_rows": [
+  [
+   "ירושלים",
+   1597
+  ],
+  [
+   "תל אביב -יפו",
+   785
+  ],
+  [
+   "באר שבע",
+   699
+  ],
+  [
+   "ראשון לציון",
+   621
+  ],
+  [
+   "פתח תקוה",
+   584
+  ],
+  [
+   "נצרת",
+   541
+  ],
+  [
+   "חיפה",
+   517
+  ],
+  [
+   "אשקלון",
+   487
+  ],
+  [
+   "אם אל-פחם",
+   487
+  ],
+  [
+   "חולון",
+   413
+  ],
+  [
+   "נתניה",
+   410
+  ],
+  [
+   "אשדוד",
+   351
+  ],
+  [
+   "רמת גן",
+   341
+  ],
+  [
+   "הרצליה",
+   296
+  ],
+  [
+   "עילוט",
+   287
+  ],
+  [
+   "רחובות",
+   270
+  ],
+  [
+   "כפר סבא",
+   251
+  ],
+  [
+   "חדרה",
+   243
+  ],
+  [
+   "טיבה",
+   225
+  ],
+  [
+   "מג'דל שמס",
+   214
+  ],
+  [
+   "רעננה",
+   213
+  ],
+  [
+   "מעלה עירון",
+   207
+  ],
+  [
+   "הוד השרון",
+   202
+  ],
+  [
+   "ראש העין",
+   194
+  ],
+  [
+   "יבנה",
+   189
+  ],
+  [
+   "בני ברק",
+   184
+  ],
+  [
+   "אכסאל",
+   184
+  ],
+  [
+   "נוף הגליל",
+   165
+  ],
+  [
+   "רינה",
+   164
+  ],
+  [
+   "נתיבות",
+   157
+  ]
+ ]
+}
