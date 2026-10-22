@@ -1,0 +1,220 @@
+[
+ {
+  "label": "The law: חוק רישום קבלנים, 1969",
+  "re": [
+   "רישום קבלנים לעבודות הנדסה בנאיות",
+   "התשכ[\"״]?ט[־-]?1969"
+  ]
+ },
+ {
+  "label": "Threshold for a main branch: 103,250 NIS",
+  "re": [
+   "103[,.]?250"
+  ]
+ },
+ {
+  "label": "Threshold for a sub-branch: 54,000 NIS",
+  "re": [
+   "54[,.]?000"
+  ]
+ },
+ {
+  "label": "The table in force from October 2026",
+  "re": [
+   "1\\.10\\.2026",
+   "אוקטובר 2026"
+  ]
+ },
+ {
+  "label": "A current ג1 amount (5,458 thousand)",
+  "re": [
+   "5[,.]?458"
+  ]
+ },
+ {
+  "label": "Any ג1 amount stated",
+  "re": [
+   "ג[׳'\\-]?\\s?1[^.]{0,80}\\d[,.]\\d{3}",
+   "\\d[,.]\\d{3}[^.]{0,60}ג[׳'\\-]?\\s?1"
+  ]
+ },
+ {
+  "label": "Level 5 is unlimited",
+  "re": [
+   "(סיווג 5|ג[׳'\\-]?5)[^.]{0,80}(ללא הגבלה|בלי הגבלה|ללא תקרה|בלתי מוגבל)",
+   "(ללא הגבלה|בלי הגבלה|ללא תקרה)[^.]{0,60}(סיווג 5|ג[׳'\\-]?5)"
+  ]
+ },
+ {
+  "label": "Groups א, ב, ג explained",
+  "re": [
+   "קבוצה (א|ב|ג)[^.]{0,120}קבוצה (א|ב|ג)",
+   "קבוצות (א|ב|ג)"
+  ]
+ },
+ {
+  "label": "Level ק for renovations",
+  "re": [
+   "סיווג ק",
+   "סיווג [\"״']?ק[\"״']?"
+  ]
+ },
+ {
+  "label": "Residential area limits (m²)",
+  "re": [
+   "2[,.]?000 מ[\"״]ר",
+   "(מ[\"״]ר|מטר)[^.]{0,80}סיווג[^.]{0,40}(מגורים|בנייה למגורים)"
+  ]
+ },
+ {
+  "label": "Amounts change twice a year (April and October)",
+  "re": [
+   "(אפריל)[^.]{0,40}(אוקטובר)",
+   "פעמיים בשנה"
+  ]
+ },
+ {
+  "label": "Linked to the construction input index",
+  "re": [
+   "מדד תשומות"
+  ]
+ },
+ {
+  "label": "Per one site",
+  "re": [
+   "באתר אחד",
+   "לאתר אחד"
+  ]
+ },
+ {
+  "label": "Before VAT",
+  "re": [
+   "(לפני|לא כולל|ללא) מע[\"״]?מ"
+  ]
+ },
+ {
+  "label": "Status: frozen (מוקפא)",
+  "re": [
+   "מוקפא",
+   "הקפאת רישיון"
+  ]
+ },
+ {
+  "label": "Status: excluded (מוחרג)",
+  "re": [
+   "מוחרג"
+  ]
+ },
+ {
+  "label": "Status: suspended (מותלה)",
+  "re": [
+   "מותלה",
+   "התליית"
+  ]
+ },
+ {
+  "label": "The registrar's decisions list",
+  "re": [
+   "(החלטות|רשימת ההחלטות)[^.]{0,40}(רשם|הרשם)"
+  ]
+ },
+ {
+  "label": "The printable certificate with a QR code",
+  "re": [
+   "QR",
+   "קוד סריקה"
+  ]
+ },
+ {
+  "label": "The official search link (gov.il)",
+  "re": [
+   "gov\\.il[^ ]{0,40}rasham",
+   "rasham",
+   "אתר רשם הקבלנים"
+  ]
+ },
+ {
+  "label": "Search by company number (ח״פ)",
+  "re": [
+   "ח[\"״]פ",
+   "מספר (ה)?חברה"
+  ]
+ },
+ {
+  "label": "Individuals' ID numbers are not published",
+  "re": [
+   "(תעודת זהות|ת[\"״]ז)[^.]{0,80}(לא מתפרסמ|אינ[םן] מתפרסמ|לא מופיע)"
+  ]
+ },
+ {
+  "label": "The number of registered contractors",
+  "re": [
+   "\\d{1,2}[,.]\\d{3} (ה)?קבלנים"
+  ]
+ },
+ {
+  "label": "The number of branches (32)",
+  "re": [
+   "32 ענפים",
+   "ב־?32 ענפים"
+  ]
+ },
+ {
+  "label": "Branch codes (100 building, 131 renovations)",
+  "re": [
+   "131",
+   "ענף 100",
+   "\\(100\\)"
+  ]
+ },
+ {
+  "label": "Recognised contractor (קבלן מוכר) explained",
+  "re": [
+   "קבלן מוכר",
+   "קבלנים מוכרים"
+  ]
+ },
+ {
+  "label": "The upgrade rule (70%)",
+  "re": [
+   "70%[^.]{0,80}(סיווג|תקרה)",
+   "(סיווג|תקרה)[^.]{0,120}70%"
+  ]
+ },
+ {
+  "label": "The date of the data",
+  "re": [
+   "17\\.8\\.2026",
+   "נכון ל[־-]?\\s?\\d{1,2}\\.\\d{1,2}\\.20\\d\\d",
+   "עודכן (ב[־-]?)?\\d{1,2}\\.\\d{1,2}\\.20\\d\\d"
+  ]
+ },
+ {
+  "label": "Check that the name and number on the quote match",
+  "re": [
+   "(הצעת (ה)?מחיר|חוזה)[^.]{0,120}(מספר (ה)?קבלן|השם)[^.]{0,60}(זהים|תואמ|כמו ב)"
+  ]
+ },
+ {
+  "label": "How to complain to the registrar",
+  "re": [
+   "תלונה[^.]{0,60}(רשם|הרשם)",
+   "(רשם|הרשם)[^.]{0,60}תלונ"
+  ]
+ },
+ {
+  "label": "Registration fees",
+  "re": [
+   "אגר(ה|ת) (ה)?רישום",
+   "אגרת רשם"
+  ]
+ },
+ {
+  "label": "Working unregistered is an offence (penalty)",
+  "re": [
+   "עביר(ה|ות)[^.]{0,80}(קבלן|רשום)",
+   "(קנס|קנסות)[^.]{0,80}(קבלן|רשום)",
+   "(בלי|ללא) רישום[^.]{0,40}עביר"
+  ]
+ }
+]

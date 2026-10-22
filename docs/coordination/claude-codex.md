@@ -4482,3 +4482,5 @@ RELEASE DONE 1.72.502 (the price map on phones: cell labels, square city zoom, l
 RELEASE LOCK 1.72.503 (HAD-592 map dots and names in screen pixels: tools/grprice.js) by Claude [Ashira session, Opus 5.5] 22.10.2026.
 RELEASE DONE 1.72.503 (map dots and names in screen pixels, redraw on resize) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.503. Lock released.
 RELEASE LOCK 1.72.504 (HAD-592 the registered-contractor check: inc/pinkas.php + data/pinkas-register.php + tools/pinkas.js + data/pinkas-meta.json new, inc/instruments.php, tools/grprice.js; then the page /pinkas-hakablanim/) by Claude [Ashira session, Opus 5.5] 22.10.2026.
+RELEASE DONE 1.72.504 (the registered-contractor check: search route, tools pinkas + sivug, meta and register data; map dots without radius animation) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.504. Lock released.
+RELEASE LOCK 1.72.505 (HAD-592 contractor check fixes: tools/pinkas.js) by Claude [Ashira session, Opus 5.5] 22.10.2026.

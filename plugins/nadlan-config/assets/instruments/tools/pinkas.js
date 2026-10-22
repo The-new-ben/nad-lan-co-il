@@ -13,6 +13,7 @@
   'use strict';
   var LV = ['ק', '1', '2', '3', '4', '5'];
   function rank(l) { return l === 'ק' ? 0 : +l; }
+  function code(g, l) { return l === 'ק' ? 'ק' : g + l; }  // the official notation: ג1, ב5, and plain ק (renovations only)
   /** The lowest level of group g whose limit covers a job of nis (before VAT); null if none. ק exists only in branch 131. */
   function levelFor(t, g, nis, code) {
     var row = t[g]; if (!row) return null;
@@ -96,10 +97,10 @@
       job.innerHTML = '<summary>העבודה שלי: צריך קבלן רשום? באיזה סיווג?</summary>';
       var jr = document.createElement('div'); jr.className = 'nlpk__row'; jr.setAttribute('role', 'group'); jr.setAttribute('aria-label', 'סוג העבודה');
       JOBS.forEach(function (j) { var b = document.createElement('button'); b.type = 'button'; b.textContent = j[1]; b.setAttribute('data-job', j[0]); b.setAttribute('aria-pressed', 'false');
-        b.onclick = function () { st.job = st.job === j[0] ? '' : j[0]; if (st.job && !st.bud) st.bud = j[3] === 'main' ? 2000000 : 150000; applyJob(); }; jr.appendChild(b); });
+        b.onclick = function () { st.job = st.job === j[0] ? '' : j[0]; if (st.job) { st.q = ''; qi.value = ''; } if (st.job && !st.bud) st.bud = j[3] === 'main' ? 2000000 : 150000; applyJob(); }; jr.appendChild(b); });
       var br = document.createElement('div'); br.className = 'nlpk__row'; br.setAttribute('role', 'group'); br.setAttribute('aria-label', 'היקף העבודה בשקלים, לפני מע״מ');
       BUDGETS.forEach(function (v) { var b = document.createElement('button'); b.type = 'button'; b.textContent = money(v); b.setAttribute('data-bud', v); b.setAttribute('aria-pressed', 'false');
-        b.onclick = function () { st.bud = v; bi.value = ''; if (!st.job) st.job = v > 1000000 ? 'bldg' : 'reno'; applyJob(); }; br.appendChild(b); });
+        b.onclick = function () { st.bud = v; bi.value = ''; st.q = ''; qi.value = ''; if (!st.job) st.job = v > 1000000 ? 'bldg' : 'reno'; applyJob(); }; br.appendChild(b); });
       var bi = document.createElement('input'); bi.className = 'nlpk__bud'; bi.inputMode = 'numeric'; bi.placeholder = '₪ סכום אחר'; bi.setAttribute('aria-label', 'היקף העבודה בשקלים');
       bi.addEventListener('input', function () { var v = +bi.value.replace(/[^\d]/g, ''); if (v > 0) { st.bud = v; if (!st.job) st.job = 'reno'; clearTimeout(timer); timer = setTimeout(applyJob, 450); } });
       br.appendChild(bi); job.appendChild(jr); job.appendChild(br);
@@ -126,7 +127,7 @@
         st.anaf = j[2]; st.min = lv || '5';
         var h = j[1] + ' ב־<b>₪' + F.num(st.bud) + '</b> (לפני מע״מ): ';
         if (!need) h += 'החוק לא מחייב קבלן רשום, כי הסף ב' + (j[3] === 'main' ? 'ענף ראשי' : 'ענף משנה') + ' הוא <b>₪' + F.num(thr) + '</b>. קבלן רשום עדיין נותן בדיקה רשמית של הכישורים, והנה מי שרשום בענף ' + esc(bname) + '.';
-        else h += 'החוק מחייב קבלן רשום (מעל <b>₪' + F.num(thr) + '</b> ב' + (j[3] === 'main' ? 'ענף ראשי' : 'ענף משנה') + '). צריך קבלן בענף ' + esc(bname) + ' (' + j[2] + ') בסיווג <b>' + g + (lv || '5') + '</b> לפחות (' + (T[g][lv || '5'] === 0 ? 'בלי הגבלת סכום' : lim(T, g, lv || '5')) + ' באתר אחד).' +
+        else h += 'החוק מחייב קבלן רשום (מעל <b>₪' + F.num(thr) + '</b> ב' + (j[3] === 'main' ? 'ענף ראשי' : 'ענף משנה') + '). צריך קבלן בענף ' + esc(bname) + ' (' + j[2] + ') בסיווג <b>' + code(g, lv || '5') + '</b> לפחות (' + (T[g][lv || '5'] === 0 ? 'בלי הגבלת סכום' : lim(T, g, lv || '5')) + ' באתר אחד).' +
           (j[0] === 'bldg' ? ' בבניין מגורים הסיווג קובע גם שטח: בסיווג ' + (lv || '5') + ' ' + (T.sqm[lv || '5'] ? 'עד ' + F.num(T.sqm[lv || '5']) + ' מ״ר' : 'ללא הגבלת שטח') + '.' : '');
         ans.innerHTML = '<p class="nlpk__ans' + (need ? '' : ' no') + '">' + h + '</p>';
         sync(); go();
@@ -135,7 +136,7 @@
         var bs = it.b.slice().sort(function (x, y) { return ((y[0] === st.anaf) - (x[0] === st.anaf)) || (rank(y[2]) - rank(x[2])) || (x[0] - y[0]); });
         var line = function (b) {
           var name = BR[b[0]] ? BR[b[0]][1] : '', hit = st.anaf && b[0] === st.anaf;
-          return '<div class="nlpk__br' + (hit ? ' hit' : '') + '"><span>' + esc(name) + ' <span class="c">' + b[0] + '</span></span><span class="m">' + esc(b[1] + b[2]) + '</span><span class="lim">' + lim(T, b[1], b[2]) + '</span>' +
+          return '<div class="nlpk__br' + (hit ? ' hit' : '') + '"><span>' + esc(name) + ' <span class="c">' + b[0] + '</span></span><span class="m">' + esc(code(b[1], b[2])) + '</span><span class="lim">' + lim(T, b[1], b[2]) + '</span>' +
             (b[3] ? '<span class="note' + (red(b[3]) ? ' r' : '') + '">' + esc(b[3]) + '</span>' : '') + '</div>';
         };
         var rows = bs.slice(0, 5).map(line).join('') + (bs.length > 5 ? '<details><summary>+ עוד ' + (bs.length - 5) + ' ענפים</summary>' + bs.slice(5).map(line).join('') + '</details>' : '');
@@ -155,7 +156,7 @@
         fetch(u, { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (r) {
           if (my !== seq) return;
           items = more ? items.concat(r.items) : r.items;
-          meta.innerHTML = r.total ? 'נמצאו <b>' + F.num(r.total) + '</b> קבלנים' + (r.total > items.length ? ' <span>· מוצגים ' + F.num(items.length) + '</span>' : '') : 'לא נמצא קבלן כזה בפנקס. <span>בדקו את האיות, או חפשו לפי מספר הקבלן.</span>';
+          meta.innerHTML = r.total ? (r.total === 1 ? 'נמצא <b>קבלן אחד</b>' : 'נמצאו <b>' + F.num(r.total) + '</b> קבלנים') + (r.total > items.length ? ' <span>· מוצגים ' + F.num(items.length) + '</span>' : '') : 'לא נמצא קבלן כזה בפנקס. <span>בדקו את האיות, או חפשו לפי מספר הקבלן.</span>';
           list.innerHTML = items.map(card).join('');
           if (r.total > items.length) { var m = document.createElement('button'); m.type = 'button'; m.className = 'nlpk__more'; m.textContent = 'עוד ' + Math.min(30, r.total - items.length) + ' קבלנים'; m.onclick = function () { st.off = items.length; go(true); }; list.appendChild(m); }
         }).catch(function () { if (my === seq) meta.textContent = 'החיפוש לא זמין כרגע. אפשר לחפש ישירות באתר רשם הקבלנים ב־gov.il.'; });
@@ -200,7 +201,7 @@
             if (!(l in T[g])) return '<div style="height:0;background:none"></div>';
             var v = T[g][l]; return '<div class="' + (v === 0 ? 'inf' : '') + (l === need ? ' on' : '') + '" style="height:' + h(v) + '%"><span>' + (v === 0 ? '∞' : F.num(v)) + '</span></div>';
           }).join('') + '</div>';
-          say.push('קבוצה ' + g + ': ' + (need ? 'סיווג ' + g + need : '—'));
+          say.push('קבוצה ' + g + ': ' + (need ? 'סיווג ' + code(g, need) : '—'));
         });
         lad.innerHTML = html;
         out.innerHTML = 'עבודה של <b>₪' + F.num(bud) + '</b> באתר אחד: ' + say.join(' · ') + '.';
