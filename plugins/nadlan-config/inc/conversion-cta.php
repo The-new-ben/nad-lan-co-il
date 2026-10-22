@@ -136,11 +136,14 @@ body:has(.nlps-stage--world){--nlcta-band:1;padding-bottom:calc(72px + env(safe-
 /* WhatsAppBarEverywhere (design system v103, 29.9.2026, owner order): the site's "ייעוץ חינם" bar is on EVERY page, broker
    and owner pages included, even where the page has its own WhatsApp. Broker pages are built once with
    ".nlcta-wa{display:none!important}" baked into their styles (broker-drop.php); this stronger rule brings the bar back.
-   On wide screens the broker's own WhatsApp still floats in the same corner, now ABOVE the site bar (bottom 88px), never
-   under it. On phones the broker's bottom bar stays, and the site bar rises above it (the script's collision list). */
+   On phones the broker's bottom bar stays at the page's end, and the site bar rises above it (the script's collision list).
+   OneWhatsApp (1.72.511, Ben 23.10.2026: "there are two floating WhatsApp buttons, the blue and the green; remove the blue"):
+   on wide screens the broker's and the owner's own WhatsApp no longer float above the site bar (it did at bottom 88px). Their
+   WhatsApp, phone and tour buttons stay inside the page (the hero, the side rail, the listing cards). A page without the site's
+   number keeps the owner's floating WhatsApp (#nlcta-owned, the only one there). */
 html body #nlcta .nlcta-wa{display:flex!important}
-@media (min-width:721px){html body .nlb .nlb-mbar{display:block;position:fixed;bottom:88px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}html body .nlb .nlb-mbar > :not(:first-child){display:none}html body .nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
-@media (min-width:761px){html body .nlx .nlx-mbar{display:block;position:fixed;bottom:88px;inset-inline-end:20px;z-index:9990;padding:0;background:none}html body .nlx .nlx-mbar > :not(:first-child){display:none}html body .nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
+@media (min-width:721px){html body .nlb .nlb-mbar{display:none!important}}
+@media (min-width:761px){html body .nlx .nlx-mbar{display:none!important}}
 </style>
 <script>
 (function(){

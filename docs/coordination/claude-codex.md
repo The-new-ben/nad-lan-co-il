@@ -4496,3 +4496,5 @@ RELEASE DONE 1.72.509 (outgoing-mail settings screen; SMTP only with a saved key
 
 RELEASE LOCK 1.72.510 (PriceBar: the floating WhatsApp bar reads "לקבלת מחירים, תוכניות והטבות" in five languages; hunks on the live inc/i18n.php + inc/conversion-cta.php) by Claude [Ashira session, Opus 5.5] 23.10.2026.
 RELEASE DONE 1.72.510 (PriceBar: the floating WhatsApp bar reads "לקבלת מחירים, תוכניות והטבות" in five languages, two lines on phones) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.510. Lock released.
+RELEASE LOCK 1.72.511 (OneWhatsApp: on wide screens the broker/owner own WhatsApp no longer floats above the site bar; one hunk on the live inc/conversion-cta.php) by Claude [Ashira session, Opus 5.5] 23.10.2026.
+RELEASE DONE 1.72.511 (OneWhatsApp: broker/owner own WhatsApp no longer floats on wide screens) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.511. Lock released.
