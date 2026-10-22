@@ -12,12 +12,13 @@
     var k = P.tracks[v.track] ? v.track : 'single', n = Math.round(v.years * 12), ltv = C.ltv[k];
     var payMax = Math.max(0, (v.income || 0) * Math.min(v.ratio, 50) / 100 - (v.loans || 0));
     var loanMax = pv(payMax, v.rate, n), costRate = (v.lawyer || 0) / 100 * (1 + C.vat);
-    function cash(price) { var loan = Math.min(ltv * price, loanMax); return { loan: loan, need: price - loan + ptax(price, P.tracks[k]) + costRate * price }; }
+    function trk(price) { return k === 'oleh' && P.oleh_cap && price > P.oleh_cap ? P.tracks.single : P.tracks[k]; }  // 1.72.500: the oleh cap
+    function cash(price) { var loan = Math.min(ltv * price, loanMax); return { loan: loan, need: price - loan + ptax(price, trk(price)) + costRate * price }; }
     var lo = 0, hi = 200000000;
     for (var i = 0; i < 80; i++) { var mid = (lo + hi) / 2; if (cash(mid).need <= (v.equity || 0)) lo = mid; else hi = mid; }
     var price = Math.floor(lo / 1000) * 1000, c = cash(price);
     var byPayment = c.loan >= loanMax - 1;  // the payment is the binding limit when the loan is at its payment maximum
-    return { k: k, ltv: ltv, payMax: payMax, loanMax: loanMax, price: price, loan: c.loan, tax: ptax(price, P.tracks[k]), lawyer: costRate * price,
+    return { k: k, ltv: ltv, payMax: payMax, loanMax: loanMax, price: price, loan: c.loan, tax: ptax(price, trk(price)), lawyer: costRate * price,
              monthly: pmt(c.loan, v.rate, n), limit: byPayment ? 'payment' : 'equity', n: n };
   }
   window.NLAF = { compute: compute, pv: pv };

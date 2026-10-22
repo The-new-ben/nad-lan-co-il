@@ -18,7 +18,7 @@
   }
   function compute(v, P, C) {
     var k = P.tracks[v.track] ? v.track : 'single', vat = 1 + C.vat;
-    var tax = ptax(v.price, P.tracks[k]);
+    var tax = ptax(v.price, k === 'oleh' && P.oleh_cap && v.price > P.oleh_cap ? P.tracks.single : P.tracks[k]);  // 1.72.500: above the cap regulation 12A does not apply
     var lawyer = v.price * (v.lawyer || 0) / 100 * vat;
     var broker = v.kind === 'second' ? v.price * (v.broker || 0) / 100 * vat : 0;
     var mfee = v.loan > 0 ? Math.min(v.loan * C.mortgage_fee.rate, C.mortgage_fee.max) : 0;

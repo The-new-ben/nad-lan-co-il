@@ -4,11 +4,119 @@
  "url": "https://www.gov.il/he/service/real_eatate_taxsimulator",
  "effective": "2025-01-16",
  "frozen_until": "2028-01-15",
- "checked": "2026-10-21",
+ "checked": "2026-10-22",
  "tracks": {
-  "single": [[1978745, 0], [2347040, 0.035], [6055070, 0.05], [20183565, 0.08], [null, 0.10]],
-  "extra": [[6055070, 0.08], [null, 0.10]],
-  "oleh": [[1978745, 0], [6055070, 0.005], [20183565, 0.08], [null, 0.10]],
-  "foreign": [[6055070, 0.08], [null, 0.10]]
- }
+  "single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "extra": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "oleh": [
+   [
+    1978745,
+    0
+   ],
+   [
+    6055070,
+    0.005
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "foreign": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ]
+ },
+ "instruction": {
+  "label": "הוראת ביצוע מקרקעין 1/2026 (18.1.2026)",
+  "url": "https://www.gov.il/BlobFolder/policy/inst-01-2026/he/realestate_inst-01-2026.pdf"
+ },
+ "guide": {
+  "label": "מדריך רשות המסים לרוכש ולמוכר זכות במקרקעין 2026",
+  "url": "https://www.gov.il/BlobFolder/generalpage/guide-for-seller-right-in-land/he/Guides_knowrightinland_2026.pdf"
+ },
+ "war": {
+  "label": "הוראת ביצוע מקרקעין 2/2026 (30.3.2026)",
+  "url": "https://www.gov.il/BlobFolder/policy/inst-02-2026-1/he/realestate_inst-02-2026.pdf",
+  "from": "2026-02-28",
+  "to": "2026-05-31",
+  "floor": "2026-08-31",
+  "plus_months": 3
+ },
+ "valid": {
+  "single": "2028-01-15",
+  "extra": "2026-12-31",
+  "foreign": "2026-12-31"
+ },
+ "extra_note": "הוראת שעה (סעיף 9(ג1ו)) לרכישות מ־16.1.2025 עד 31.12.2026",
+ "oleh_cap": 20183565,
+ "oleh12": [
+  [
+   1988090,
+   0.005
+  ],
+  [
+   null,
+   0.05
+  ]
+ ],
+ "disabled": {
+  "rate": 0.005,
+  "single_cap": 2500000,
+  "times": 2
+ },
+ "land": 0.06,
+ "land_permit": 0.05,
+ "gift": 0.3333333333333333,
+ "upgrader": [
+  {
+   "from": "2025-06-01",
+   "months": 24
+  },
+  {
+   "from": "2023-06-01",
+   "months": 18
+  }
+ ],
+ "contractor_months": 12
 }

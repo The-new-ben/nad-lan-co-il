@@ -79,7 +79,8 @@ Linear: **HAD-592**. Tracking: Notion row per wave.
 | N1 | Yad Eliyahu price section | **done 22.10** | page 7103, all checks OK |
 | G1 | GREECE wave 1: /athens-apartments/ (8572), /acquisition-greece/ (8573), /taxation-greece-israel/ (8574) + tools grbuy/grgv/gryield + hub fixes (one H1, 2026 facts, guides list, sitemap) | **done 22.10 (1.72.499)**: proof 22/19/13 of 25 facts vs best competitor 7 (PROOF.md); still behind on words and photos: deepen in a later turn | facts.md/facts.json (sources), serp-dna.md, build_pages.py, publish_pages.py, DS v227 AbroadGuide; then fix_str_page.py (page 398 leftovers) |
 | G2 | Greece wave 2: seaside houses, Thessaloniki + Halkidiki, Crete (seasonal: before March 2027), Russian versions of wave 1 | todo | serp-dna.md section 6 |
-| C14 | Purchase tax calculator upgrade (31,160/mo, we are at position 56) | todo, NEXT | gap-map ★1: competitor DNA + depth on the existing page |
+| C14 | Purchase tax calculator upgrade (31,160/mo, we were at position 56) | **done 22.10 (1.72.500)** | live errors fixed (temporary order 31.12.2026, 24 months, oleh cap, disabled); ptax v2 with upgrader date + presets; page 6 rebuilt (4,422 words, 23 FAQ); guides 529/532 fixed; proof 24/25 vs 16 (PROOF.md) |
+| GP | GREECE PRICE LIST (Ben 22.10 evening: the most comprehensive anywhere, all competitors incl. Greek sites, map/infographics/new tools, link to jus-tice) | research running (prices data + all-competitor DNA) | docs/research/2026-10-22-greece-prices/ |
 | N2 | Contractor register: /pinkas-hakablanim/ with a server search over 17,874 contractors (14,400/mo, no competitor search) | todo, brief ready | docs/research/2026-10-22-contractor-register/brief.md; mass pages for the 15,184 missing contractors need Ben's word on pace |
 | C12 | Condo documents (tsav, takanon, tashrit), 12,530/mo | todo | gap-map ★2 |
 | C15 | Home inspection upgrade, 10,500/mo, position 63 | todo | gap-map ★3 |
