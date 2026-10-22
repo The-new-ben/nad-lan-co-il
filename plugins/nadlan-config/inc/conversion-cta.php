@@ -59,12 +59,13 @@ add_action( 'wp_footer', function () {
 		$rv_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
 		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
 		$rv = array(
-			// ApartmentExperience-1 (v101, 29.9.2026): "ייעוץ חינם" on every page; the independence stays in the small line
-			'he' => array( "ייעוץ חינם", "מענה בוואטסאפ", "וואטסאפ · ייעוץ חינם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
-			'en' => array( "Free consultation", "Reply on WhatsApp", "WhatsApp: free consultation on the project", "Hi, I have a question about this project." ),
-			'fr' => array( "Conseil gratuit", "Réponse sur WhatsApp", "WhatsApp : conseil gratuit sur le projet", "Bonjour, j'ai une question sur ce projet." ),
-			'ru' => array( "Бесплатная консультация", "Ответ в WhatsApp", "WhatsApp: бесплатная консультация по проекту", "Здравствуйте, у меня вопрос по проекту." ),
-			'ar' => array( "استشارة مجانية", "رد على واتساب", "واتساب · استشارة مجانية حول المشروع", "مرحبا، لدي سؤال حول المشروع." ),
+			// PriceBar (1.72.510, Ben 23.10.2026): the bar reads "לקבלת מחירים, תוכניות והטבות" on every page (was "ייעוץ חינם",
+			// v101); the message it opens is unchanged
+			'he' => array( "לקבלת מחירים, תוכניות והטבות", "מענה בוואטסאפ", "וואטסאפ · לקבלת מחירים, תוכניות והטבות בפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
+			'en' => array( "Prices, floor plans and offers", "Reply on WhatsApp", "WhatsApp: prices, floor plans and offers for the project", "Hi, I have a question about this project." ),
+			'fr' => array( "Prix, plans et offres", "Réponse sur WhatsApp", "WhatsApp : prix, plans et offres du projet", "Bonjour, j'ai une question sur ce projet." ),
+			'ru' => array( "Цены, планировки и акции", "Ответ в WhatsApp", "WhatsApp: цены, планировки и акции по проекту", "Здравствуйте, у меня вопрос по проекту." ),
+			'ar' => array( "الأسعار والمخططات والعروض", "رد على واتساب", "واتساب · الأسعار والمخططات والعروض للمشروع", "مرحبا، لدي سؤال حول المشروع." ),
 		);
 		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
 		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];
@@ -117,6 +118,10 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 /* P8 (1.72.370): the Russian words ("Бесплатная консультация", 201px) pushed the NadLan mark past the pill and off a 360-390px
    screen; on Russian pages the pill may take a little more width and the words a slightly smaller size (measured: fits at 360) */
 @media(max-width:520px){html[lang^="ru"] #nlcta .nlcta-wa{max-width:min(80vw,292px)}html[lang^="ru"] #nlcta .nlcta-txt b{font-size:13.5px;letter-spacing:-.1px}}
+/* PriceBar (1.72.510, Ben 23.10.2026): "לקבלת מחירים, תוכניות והטבות" is three times the old words. On phones they take two
+   lines inside the same pill, and the small "מענה בוואטסאפ" line steps aside so the pill keeps its height (measured at 360px in
+   the five languages and on a 3D-world band: 233-288px wide, 50px high, the WhatsApp glyph and the NadLan mark inside). */
+@media(max-width:520px){#nlcta .nlcta-txt{white-space:normal;min-width:0}#nlcta .nlcta-txt b{text-wrap:balance;line-height:1.12}#nlcta .nlcta-txt small{display:none}}
 @media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
 /* v101.2: above the area map's cone, on every width (the script below sets is-cone and the lift) */
 html body #nlcta.is-cone{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}
