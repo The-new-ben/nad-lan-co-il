@@ -44,7 +44,7 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	}
 
 	$host = (string) get_option( 'nadlan_smtp_host', '' );
-	if ( '' === $host ) { return; }
+	if ( '' === $host || '' === (string) get_option( 'nadlan_smtp_pass', '' ) ) { return; }  // 1.72.509: no key yet = keep sending through the server, never an SMTP without a key
 	$phpmailer->isSMTP();
 	$phpmailer->Host       = $host;
 	$phpmailer->Port       = (int) get_option( 'nadlan_smtp_port', 587 );
@@ -142,4 +142,44 @@ add_action( 'rest_api_init', function () {
 			);
 		},
 	) );
+} );
+
+/* 1.72.509 (Ben 23.10.2026, Brevo): a settings screen under Settings > "מייל יוצא" where the owner pastes the SMTP login and key
+ * himself (agents never type or read keys). The key field is write-only: it is never printed back, an empty field keeps the saved
+ * key. Brevo defaults: smtp-relay.brevo.com, 587, tls. A test button sends one message to the admin address and shows the result. */
+add_action( 'admin_menu', function () {
+	add_options_page( 'מייל יוצא', 'מייל יוצא (Brevo)', 'manage_options', 'nadlan-mail', function () {
+		if ( ! current_user_can( 'manage_options' ) ) { return; }
+		$msg = '';
+		if ( isset( $_POST['nadlan_mail_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nadlan_mail_nonce'] ) ), 'nadlan_mail' ) ) {
+			$host = sanitize_text_field( wp_unslash( $_POST['smtp_host'] ?? '' ) );
+			update_option( 'nadlan_smtp_host', $host, false );
+			update_option( 'nadlan_smtp_port', max( 1, (int) ( $_POST['smtp_port'] ?? 587 ) ), false );
+			update_option( 'nadlan_smtp_secure', in_array( $_POST['smtp_secure'] ?? 'tls', array( 'tls', 'ssl' ), true ) ? $_POST['smtp_secure'] : 'tls', false );
+			update_option( 'nadlan_smtp_user', sanitize_text_field( wp_unslash( $_POST['smtp_user'] ?? '' ) ), false );
+			$key = trim( (string) wp_unslash( $_POST['smtp_pass'] ?? '' ) );
+			if ( '' !== $key ) { update_option( 'nadlan_smtp_pass', $key, false ); }
+			update_option( 'nadlan_mail_from', sanitize_email( wp_unslash( $_POST['mail_from'] ?? '' ) ), false );
+			update_option( 'nadlan_mail_from_name', sanitize_text_field( wp_unslash( $_POST['mail_from_name'] ?? '' ) ), false );
+			$msg = 'נשמר.';
+			if ( ! empty( $_POST['send_test'] ) ) {
+				$err = null; add_action( 'wp_mail_failed', function ( $e ) use ( &$err ) { $err = $e->get_error_message(); } );
+				$ok = wp_mail( get_option( 'admin_email' ), '[נדלן] בדיקת שליחה דרך ' . ( $host ? $host : 'השרת' ), 'אם המייל הזה הגיע לתיבה הראשית, השליחה עובדת. ' . wp_date( 'j.n.Y H:i' ) );
+				$msg .= $ok ? ' מייל בדיקה נשלח אל ' . get_option( 'admin_email' ) . '.' : ' השליחה נכשלה: ' . esc_html( (string) $err );
+			}
+		}
+		$v = function ( $k, $d = '' ) { return esc_attr( (string) get_option( $k, $d ) ); };
+		$has_key = '' !== (string) get_option( 'nadlan_smtp_pass', '' );
+		echo '<div class="wrap" dir="rtl"><h1>מייל יוצא</h1>';
+		if ( $msg ) { echo '<div class="notice notice-info"><p>' . esc_html( $msg ) . '</p></div>'; }
+		echo '<p>כל המיילים של האתר יוצאים דרך שירות השליחה שמוגדר כאן, במקום דרך שרת האחסון (שמוגבל בכמות ביום). בברבו: Settings › SMTP &amp; API › SMTP. מעתיקים את ה־Login ואת המפתח, ומדביקים כאן.</p>';
+		echo '<form method="post">' . wp_nonce_field( 'nadlan_mail', 'nadlan_mail_nonce', true, false ) . '<table class="form-table" role="presentation">';
+		echo '<tr><th>שרת</th><td><input name="smtp_host" class="regular-text" dir="ltr" value="' . $v( 'nadlan_smtp_host', 'smtp-relay.brevo.com' ) . '"> <input name="smtp_port" size="4" dir="ltr" value="' . $v( 'nadlan_smtp_port', '587' ) . '"> <select name="smtp_secure"><option value="tls">tls</option><option value="ssl"' . selected( get_option( 'nadlan_smtp_secure', 'tls' ), 'ssl', false ) . '>ssl</option></select><p class="description">להשאיר ריק כדי לחזור לשליחה דרך שרת האחסון.</p></td></tr>';
+		echo '<tr><th>Login</th><td><input name="smtp_user" class="regular-text" dir="ltr" autocomplete="off" value="' . $v( 'nadlan_smtp_user' ) . '"></td></tr>';
+		echo '<tr><th>מפתח SMTP</th><td><input name="smtp_pass" type="password" class="regular-text" dir="ltr" autocomplete="new-password" value="" placeholder="' . ( $has_key ? 'שמור. השאירו ריק כדי לא לשנות' : 'הדביקו כאן את המפתח' ) . '"></td></tr>';
+		echo '<tr><th>כתובת השולח</th><td><input name="mail_from" class="regular-text" dir="ltr" value="' . $v( 'nadlan_mail_from' ) . '" placeholder="info@nad-lan.co.il"><p class="description">כתובת בדומיין שאומת בברבו.</p></td></tr>';
+		echo '<tr><th>שם השולח</th><td><input name="mail_from_name" class="regular-text" value="' . $v( 'nadlan_mail_from_name', 'נדלן' ) . '"></td></tr>';
+		echo '</table><p><button class="button button-primary">שמירה</button> <button class="button" name="send_test" value="1">שמירה ושליחת מייל בדיקה</button></p></form>';
+		echo '<p>מצב עכשיו: ' . ( '' !== (string) get_option( 'nadlan_smtp_host', '' ) && $has_key ? 'שולח דרך ' . esc_html( (string) get_option( 'nadlan_smtp_host' ) ) : 'שולח דרך שרת האחסון' ) . '.</p></div>';
+	} );
 } );

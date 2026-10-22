@@ -4487,3 +4487,9 @@ RELEASE LOCK 1.72.505 (HAD-592 contractor check fixes: tools/pinkas.js) by Claud
 RELEASE DONE 1.72.505 (contractor check fixes: ק notation, one result, a job clears the name) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.505. Lock released.
 RELEASE LOCK 1.72.506 (HAD-592 condo documents: tools/condo.js + data/condo.json new, inc/instruments.php; then the page /real-estate-lawyer/condo-documents/) by Claude [Ashira session, Opus 5.5] 22.10.2026.
 RELEASE DONE 1.72.506 (condo documents: tools condo + condomaj, condo.json, registry) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.506. Lock released.
+RELEASE LOCK 1.72.507 (owner mail: inc/owner-morning.php new, inc/alerts.php, inc/lead-inbox.php, inc/health.php, inc/lead-e2e.php) by Claude [Ashira session, Opus 5.5] 22.10.2026, Ben: one useful email, property-view alerts.
+RELEASE DONE 1.72.507 (owner mail: one morning email, property-view beacon + hot alerts, old daily mails stand down) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.507. Lock released.
+RELEASE LOCK 1.72.508 (owner mail preview by day: inc/owner-morning.php) by Claude [Ashira session, Opus 5.5] 23.10.2026.
+RELEASE DONE 1.72.508 (owner mail preview by day) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.508. Lock released.
+RELEASE LOCK 1.72.509 (outgoing-mail settings screen: inc/mailer.php) by Claude [Ashira session, Opus 5.5] 23.10.2026.
+RELEASE DONE 1.72.509 (outgoing-mail settings screen; SMTP only with a saved key) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.509. Lock released.

@@ -122,6 +122,7 @@ add_action( 'init', function () {
 	}
 } );
 add_action( 'nadlan_inbox_daily_digest', function () {
+	if ( function_exists( 'nadlan_om_send' ) ) { return; }  // 1.72.507: folded into the morning email (sent only when there is something to say)
 	$admin = get_option( 'admin_email' );
 	if ( ! $admin ) { return; }
 	$c = nadlan_inbox_counts();

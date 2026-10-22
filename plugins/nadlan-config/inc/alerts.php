@@ -91,6 +91,7 @@ add_action( 'init', function () {
 	}
 } );
 add_action( 'nadlan_leads_daily', function () {
+	if ( function_exists( 'nadlan_om_send' ) ) { return; }  // 1.72.507: the morning email (owner-morning.php) lists waiting leads, each at most twice
 	$stale = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'numberposts' => 20,
 		'date_query' => array( array( 'before' => '20 hours ago' ) ),
 		'meta_query' => array( array( 'key' => 'lead_status', 'value' => 'new' ) ) ) );
@@ -162,3 +163,6 @@ add_action( 'nadlan_owner_digest', function () {
 		nadlan_alert_mail( 'דוח שבועי לבעלים', $lines );
 	}
 } );
+
+/* 1.72.507 (Ben 22.10.2026, "make the emails efficient; alert me when people view properties"): one morning email + hot alerts */
+require_once __DIR__ . '/owner-morning.php';

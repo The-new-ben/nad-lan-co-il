@@ -85,6 +85,7 @@ if ( ! function_exists( 'nadlan_health_maybe_alert' ) ) {
 		if ( get_transient( $tk ) ) { return; }
 		set_transient( $tk, 1, $window );
 		if ( ! apply_filters( 'nadlan_reliability_alert_should_send', true, $channel, $id, $status, $count ) ) { return; }
+		if ( function_exists( 'nadlan_om_queue' ) ) { nadlan_om_queue( 'tech', $channel . ' ' . $status . ' (' . $id . ', ' . $count . ' פעמים)' ); return; }  // 1.72.507: in the morning email, not one by one
 		$admin = sanitize_email( get_option( 'admin_email' ) );
 		if ( ! $admin ) { return; }
 		$subject = sprintf( 'NadLan alert: %s %s', $channel, $status );

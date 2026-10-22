@@ -162,6 +162,12 @@ if ( ! function_exists( 'nadlan_lead_e2e_notify_admin' ) ) {
 	function nadlan_lead_e2e_notify_admin( $lead_id, $card_id, $fields, $reason = 'fallback' ) {
 		$admin = nadlan_lead_e2e_admin_email();
 		if ( ! $admin ) { return false; }
+		if ( 'nadlan_lead' === get_post_type( (int) $lead_id ) && has_action( 'nadlan_lead_rich_alert' ) ) {  // 1.72.507: alerts.php already mails every new lead with full context; one email per lead
+			update_post_meta( $lead_id, 'lead_e2e_admin_notified_at', 'rich-alert' );
+			update_post_meta( $lead_id, 'lead_e2e_fallback_reason', sanitize_key( $reason ) );
+			update_post_meta( $lead_id, 'lead_e2e_fallback_admin', 1 );
+			return true;
+		}
 		$card_title = $card_id ? get_the_title( (int) $card_id ) : '';
 		$lines = array(
 			'פנייה חדשה לטיפול מנהל',
