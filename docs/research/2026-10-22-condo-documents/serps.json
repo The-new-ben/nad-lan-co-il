@@ -1,0 +1,653 @@
+{
+ "meta": {
+  "source": "DataForSEO /v3/serp/google/organic/live/advanced",
+  "location_code": 2376,
+  "language_code": "iw",
+  "device": "desktop",
+  "depth": 10,
+  "load_async_ai_overview": true,
+  "people_also_ask_click_depth": 1,
+  "retrieved": "2026-10-22 19:36 UTC (22:36 Israel)",
+  "note": "Organic positions = rank_group (AI overview and image packs not counted). AI overview present on all 7 SERPs. People-also-ask shown only on the bylaws SERP. The first five are the five biggest family terms; two more intents added. Cost: 7 calls, $0.0162."
+ },
+ "serps": [
+  {
+   "keyword": "תשריט בית משותף",
+   "volume": 2400,
+   "retrieved_utc": "2026-10-22 19:36:03",
+   "organic": [
+    [
+     1,
+     "www.midrag.co.il",
+     "https://www.midrag.co.il/Index/Video/11020",
+     "video page, dated 29.7.2024"
+    ],
+    [
+     2,
+     "adrichalut.com",
+     "https://adrichalut.com/work/תשריט-בית-משותף/",
+     "drawing-preparation service, quotes 1,200 NIS first tenant and 400 each more"
+    ],
+    [
+     3,
+     "www.efi-aharon.co.il",
+     "https://www.efi-aharon.co.il/אתרים-שימושיים-1/how-to-make-extra-money",
+     "link list: download condo documents"
+    ],
+    [
+     4,
+     "www.nadlancenter.co.il",
+     "https://www.nadlancenter.co.il/article/5049",
+     "condo registration guide 2026, dated 10.5.2026"
+    ],
+    [
+     5,
+     "h-l-karkaot.co.il",
+     "https://h-l-karkaot.co.il/תהליך-התכנון-מוסבר-2/",
+     "drawing article 2026"
+    ],
+    [
+     6,
+     "dabullaw.co.il",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "law firm guide, dated 1.12.2025"
+    ],
+    [
+     7,
+     "www.gov.il",
+     "https://www.gov.il/he/pages/common-house-amendment-inf",
+     "official: guidelines for amending a condo order, published 13.06.2021"
+    ],
+    [
+     8,
+     "www.de-eng.co.il",
+     "https://www.de-eng.co.il/expertise/תשריט-בית-משותף-2/",
+     "engineering firm service page"
+    ]
+   ],
+   "other_features": [
+    "images pack (sample drawings from shamay.biz, merchav, sarel-arch, shiluvimbrn, mapro, morad-tasritim, coordinate3d)"
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "top, before organic",
+    "cited": [
+     "https://www.gov.il/he/service/common_house_files",
+     "https://www.nadlancenter.co.il/article/2044",
+     "https://magdilim.co.il/171120251058/",
+     "https://ygoldlaw.co.il/real-estate-lawyer/shared-house/script/",
+     "https://rishonlezion.complot.co.il/rishuy_pikuah/baitmeshutaf/",
+     "https://www.zmora.org.il/הנחיות-מדיניות-ועדה/הנחיות-לאישור-תשריט-בית-משותף/",
+     "https://fileextractor.justice.gov.il/",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx"
+    ],
+    "claims": [
+     "drawing = binding graphic plan filed with the Land Registry: parcel borders, floors, units, common areas, attachments (parking incl. disabled parking, storage)",
+     "marks deviations from the building permit",
+     "banks often ask for it for appraisal and mortgage",
+     "order online at the gov.il service or at fileextractor, by block and parcel or address",
+     "fileextractor snippet: the order costs 39 NIS regardless of how many files are ordered for the building",
+     "tabu.co.il snippet: 130 NIS (instead of 183)"
+    ]
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "תשריט בית משותף חינם",
+    "הזמנת תשריט בית משותף",
+    "תשריט בית משותף gov",
+    "מסמכי בית משותף",
+    "עיריית ירושלים תשריט בית משותף",
+    "תשריט בית משותף עיריית פתח תקווה",
+    "תשריט בית משותף עיריית רמת גן",
+    "תיק בית משותף"
+   ]
+  },
+  {
+   "keyword": "מסמכי בית משותף",
+   "volume": 1000,
+   "retrieved_utc": "2026-10-22 19:36:09",
+   "organic": [
+    [
+     1,
+     "www.gov.il",
+     "https://www.gov.il/he/service/common_house_files",
+     "official service: order condo documents (order, bylaws, drawing)"
+    ],
+    [
+     2,
+     "fileextractor.justice.gov.il",
+     "https://fileextractor.justice.gov.il/",
+     "official ordering system"
+    ],
+    [
+     3,
+     "home.tabu.co.il",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx",
+     "paid reseller"
+    ],
+    [
+     4,
+     "www.efi-aharon.co.il",
+     "https://www.efi-aharon.co.il/אתרים-שימושיים-1/how-to-make-extra-money",
+     "link list"
+    ],
+    [
+     5,
+     "www.gov.il",
+     "https://www.gov.il/he/subjects/certificates_and_passports?OfficeId=7f339ddd-6295-4025-8991-2c5a3ea2a76f",
+     "official: list of the Land Registry Authority services"
+    ],
+    [
+     6,
+     "dabullaw.co.il",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "law firm guide, 1.12.2025"
+    ],
+    [
+     7,
+     "harel-vered.co.il",
+     "https://harel-vered.co.il/uncategorized/condominium-registration-documents-tabu/",
+     "appraiser article"
+    ],
+    [
+     8,
+     "www.batim.org.il",
+     "https://www.batim.org.il/articles/תיק-בית-משותף/",
+     "condo portal article"
+    ],
+    [
+     9,
+     "gershon-catz.com",
+     "https://gershon-catz.com/איך-מורידים-תיק-בית-משותף-מהטאבו/",
+     "blog, 27.11.2021, quotes 33 NIS (old fee)"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 2",
+    "cited": [
+     "https://www.gov.il/he/service/common_house_files",
+     "https://fileextractor.justice.gov.il/",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "https://www.batim.org.il/articles/תיק-בית-משותף/",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx",
+     "https://harel-vered.co.il/uncategorized/condominium-registration-documents-tabu/"
+    ],
+    "claims": [
+     "order online at gov.il or fileextractor by block and parcel or by file number",
+     "registration order (sub-parcels), drawing (floors, units, attachments), bylaws (agreed bylaws registered, or the model bylaws)",
+     "documents arrive as scanned files with an electronic signature"
+    ]
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "תשריט בית משותף חינם",
+    "הזמנת מסמכי בית משותף משרד המשפטים",
+    "תשריט בית משותף להורדה",
+    "הזמנת מסמכי בית משותף צו תקנון ותשריט",
+    "הזמנת תיק בית משותף מקוון",
+    "תקנון בית משותף",
+    "איתור תשריט בית משותף",
+    "מסמכי בית משותף טאבו"
+   ]
+  },
+  {
+   "keyword": "תיק בית משותף",
+   "volume": 1000,
+   "retrieved_utc": "2026-10-22 19:36:15",
+   "organic": [
+    [
+     1,
+     "www.efi-aharon.co.il",
+     "https://www.efi-aharon.co.il/אתרים-שימושיים-1/how-to-make-extra-money",
+     "link list"
+    ],
+    [
+     2,
+     "www.kolzchut.org.il",
+     "https://www.kolzchut.org.il/he/תקנון_בית_משותף",
+     "bylaws concept page, 13.8.2025"
+    ],
+    [
+     3,
+     "adrichalut.com",
+     "https://adrichalut.com/work/תשריט-בית-משותף/",
+     "drawing service"
+    ],
+    [
+     4,
+     "ma-law.co.il",
+     "https://ma-law.co.il/רישום-בית-משותף/",
+     "law firm, registration"
+    ],
+    [
+     5,
+     "www.gov.il",
+     "https://www.gov.il/he/pages/common-house-amendment-inf",
+     "official amendment guidelines"
+    ],
+    [
+     6,
+     "www.midrag.co.il",
+     "https://www.midrag.co.il/Midragonim/Answer/21986",
+     "Q&A: what is a condo order"
+    ],
+    [
+     7,
+     "h-l-karkaot.co.il",
+     "https://h-l-karkaot.co.il/תהליך-התכנון-מוסבר-2/",
+     "drawing article"
+    ],
+    [
+     8,
+     "www.ashlaw.co.il",
+     "https://www.ashlaw.co.il/רישום-בית-משותף-בטאבו/",
+     "law firm guide, 17.3.2018"
+    ]
+   ],
+   "other_features": [
+    "images pack incl. the gov.il PDF guide to digital drawings and sample order and drawing images (shamay.biz)"
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 1",
+    "cited": [
+     "https://www.nadlancenter.co.il/article/2044",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "https://www.gov.il/he/service/common_house_files",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx",
+     "https://fileextractor.justice.gov.il/"
+    ],
+    "claims": [
+     "the file is the official set kept at the Land Registry office",
+     "order, drawing, bylaws (model bylaws if no agreed bylaws), list of sub-parcels with share in common property",
+     "order online, find by block and parcel or address"
+    ]
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "תקנון מצוי בית משותף להורדה",
+    "תקנון מצוי בית משותף pdf",
+    "תקנון מוסכם בית משותף",
+    "תקנון בית משותף דוגמא",
+    "הזמנת תיק בית משותף",
+    "תקנון בית משותף נבו",
+    "תקנון בית משותף האגודה לתרבות הדיור",
+    "הזמנת מסמכי בית משותף משרד המשפטים"
+   ]
+  },
+  {
+   "keyword": "הזמנת תיק בית משותף",
+   "volume": 880,
+   "retrieved_utc": "2026-10-22 19:36:19",
+   "organic": [
+    [
+     1,
+     "www.poleg-law.com",
+     "https://www.poleg-law.com/tashrit-beit-meshutaf/",
+     "law firm: who prepares a drawing, cost, registration"
+    ],
+    [
+     2,
+     "ygoldlaw.co.il",
+     "https://ygoldlaw.co.il/real-estate-lawyer/shared-house/script/",
+     "law firm drawing guide"
+    ],
+    [
+     3,
+     "home.tabu.co.il",
+     "https://home.tabu.co.il/מדריכים/שירותי-טאבו-רשם-המקרקעין/המדריך-לרישום-בית-משותף.aspx",
+     "reseller registration guide"
+    ],
+    [
+     4,
+     "www.kolzchut.org.il",
+     "https://www.kolzchut.org.il/he/תקנון_בית_משותף",
+     "bylaws concept"
+    ],
+    [
+     5,
+     "nes.bartech-net.co.il",
+     "https://nes.bartech-net.co.il/פיקוח-על-הבניה-ואכיפה/הנחיות-לאישור-תשריט-בית-משותף/",
+     "Nes Ziona local committee guidelines"
+    ],
+    [
+     6,
+     "ramathasharon.complot.co.il",
+     "https://ramathasharon.complot.co.il/pikuah_veachifa/Pages/rishum_bait_meshutaf.aspx",
+     "Ramat HaSharon municipality"
+    ],
+    [
+     7,
+     "dabullaw.co.il",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "law firm guide"
+    ],
+    [
+     8,
+     "www.gov.il",
+     "https://www.gov.il/he/pages/common-house-amendment-inf",
+     "official amendment guidelines"
+    ],
+    [
+     9,
+     "yonilevy.co.il",
+     "https://yonilevy.co.il/עורך-דין-מקרקעין/רישום-בית-משותף/",
+     "law firm, 21.3.2025"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 1",
+    "cited": [
+     "https://www.gov.il/he/service/common_house_files",
+     "https://mekarkein-online.justice.gov.il/",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx",
+     "https://www.nadlancenter.co.il/article/2044",
+     "https://fileextractor.justice.gov.il/"
+    ],
+    "claims": [
+     "order online via the gov.il service or 'mekarkein online'",
+     "types include amendment or cancellation of an order",
+     "find by block and parcel, by file number, sometimes by address",
+     "copies are scanned and e-signed"
+    ],
+    "note": "the gov.il service page is NOT in the organic top 10 for this query"
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "תשריט בית משותף חינם",
+    "תשריט בית משותף דוגמא",
+    "תשריט בית משותף מחיר",
+    "תשריט בית משותף gov",
+    "הנחיות לעריכת תשריט בית משותף",
+    "תשריט בית משותף עיריית תל אביב",
+    "תשריט בית פרטי",
+    "תשריט בית משותף להורדה"
+   ]
+  },
+  {
+   "keyword": "הזמנת מסמכי בית משותף",
+   "volume": 590,
+   "retrieved_utc": "2026-10-22 19:36:26",
+   "organic": [
+    [
+     1,
+     "www.kolzchut.org.il",
+     "https://www.kolzchut.org.il/he/תקנון_בית_משותף",
+     "bylaws concept (s.61)"
+    ],
+    [
+     2,
+     "land-registration.lawx.co.il",
+     "https://land-registration.lawx.co.il/ArticleDetail?slug=required-documents-condominium-registration",
+     "documents needed to register a condo, 12.11.2025"
+    ],
+    [
+     3,
+     "lawyerhaifa.co.il",
+     "https://lawyerhaifa.co.il/מהו-רישום-בית-משותף/",
+     "law firm"
+    ],
+    [
+     4,
+     "rishonlezion.complot.co.il",
+     "https://rishonlezion.complot.co.il/rishuy_pikuah/baitmeshutaf/",
+     "Rishon LeZion engineering guidelines"
+    ],
+    [
+     5,
+     "www.gov.il",
+     "https://www.gov.il/he/pages/common-house",
+     "official: rules for preparing a condo drawing, 23.5.2021"
+    ],
+    [
+     6,
+     "www.daud.co.il",
+     "https://www.daud.co.il/תשריט-בית-משותף-הכל-על-רישום-בית-משותף/",
+     "19.11.2024"
+    ],
+    [
+     7,
+     "ramathasharon.complot.co.il",
+     "https://ramathasharon.complot.co.il/pikuah_veachifa/Pages/rishum_bait_meshutaf.aspx",
+     "municipality"
+    ],
+    [
+     8,
+     "eliezer-nechasim.co.il",
+     "https://eliezer-nechasim.co.il/shared_house_plan/",
+     "broker, 6.5.2021"
+    ],
+    [
+     9,
+     "phk.bartech-net.co.il",
+     "https://phk.bartech-net.co.il/מידע-כללי/הגשת-תשריט-לרישום-בית-משותף/",
+     "Pardes Hanna committee"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 1 (asynchronous)",
+    "cited": [
+     "https://www.gov.il/he/service/common_house_files",
+     "https://fileextractor.justice.gov.il/",
+     "https://home.tabu.co.il/דפי-מוצר/תשריט-בניין.aspx",
+     "https://www.gov.il/he/service/land_registration_extract",
+     "https://hagitlaw.com/tag/איך-מוצאים-תשריט-בית-משותף-אונליין/",
+     "https://gershon-catz.com/איך-מורידים-תיק-בית-משותף-מהטאבו/",
+     "https://mekarkein-online.justice.gov.il/"
+    ],
+    "claims": [
+     "order online, 39 NIS per order regardless of how many files for that building",
+     "need block and parcel (Survey of Israel site or the arnona bill) or the file number",
+     "files sent within up to 24 hours by email as a ZIP, scanned and e-signed, Acrobat Reader needed",
+     "call centre *8653 extension 7"
+    ]
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "תקנון מצוי בית משותף pdf",
+    "תקנון מצוי בית משותף להורדה",
+    "תקנון בית משותף דוגמא",
+    "תקנון מוסכם בית משותף",
+    "תקנון בית משותף האגודה לתרבות הדיור",
+    "תקנון בית משותף נבו",
+    "שינוי תקנון בית משותף",
+    "תקנון ועד בית משותף"
+   ]
+  },
+  {
+   "keyword": "תקנון בית משותף",
+   "volume": 390,
+   "retrieved_utc": "2026-10-22 19:36:31",
+   "extra": "sixth SERP, bylaws intent",
+   "organic": [
+    [
+     1,
+     "www.kolodnylaw.co.il",
+     "https://www.kolodnylaw.co.il/מהם-בתים-משותפים/",
+     "law firm, 30.3.2021"
+    ],
+    [
+     2,
+     "www.mishpati.co.il",
+     "https://www.mishpati.co.il/article/82",
+     "legal portal, 'updated 2019'"
+    ],
+    [
+     3,
+     "www.batim.org.il",
+     "https://www.batim.org.il/laws/דוגמא-לתקנון-מוסכם/",
+     "sample agreed bylaws"
+    ],
+    [
+     4,
+     "www.gov.il",
+     "https://www.gov.il/he/service/common-house-registration-application",
+     "official: condo registration service"
+    ],
+    [
+     5,
+     "dabullaw.co.il",
+     "https://dabullaw.co.il/תשריט-ותקנון-בית-משותף-2/",
+     "law firm guide"
+    ],
+    [
+     6,
+     "www.batim.org.il",
+     "https://www.batim.org.il/articles/זכויות-וחובות-בבית-משותף-כל-מה-שצריך-ל/",
+     "rights and duties"
+    ],
+    [
+     7,
+     "elramlaw.co.il",
+     "https://elramlaw.co.il/condominium-bylaws/",
+     "law firm, 22.9.2026"
+    ],
+    [
+     8,
+     "home.tabu.co.il",
+     "https://home.tabu.co.il/מדריכים/שירותי-טאבו-רשם-המקרקעין/תקנון-מוסכם-מצוי.aspx",
+     "reseller guide"
+    ],
+    [
+     9,
+     "www.zmora.org.il",
+     "https://www.zmora.org.il/הנחיות-מדיניות-ועדה/הנחיות-לאישור-תשריט-בית-משותף/",
+     "committee guidelines"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 1",
+    "cited": [
+     "https://www.kolzchut.org.il/he/תקנון_בית_משותף",
+     "https://land-registration.lawx.co.il/ArticleDetail?slug=condominium-bylaws-rights-obligations-legal-guide",
+     "https://www.gov.il/he/service/common_house_files",
+     "https://ygoldlaw.co.il/real-estate-lawyer/shared-house/תקנון-בית-משותף/",
+     "https://karins-law.co.il/תקנון-בית-משותף-תקנון-מוסכם-ותקנון-מצו/",
+     "https://www.tarbut-hadiur.gov.il/content/20553",
+     "https://limorarbel.com/forms-for-download/דוגמה-לתקנון-מוסכם-לבית-משותף/",
+     "https://ieccontent.iec.co.il/media/0trcffyx/takanonvaadטפסי-רישום-להורדה.pdf",
+     "https://www.tarbut-hadiur.gov.il/content/173"
+    ],
+    "claims": [
+     "model bylaws apply by default (first schedule of the Land Law)",
+     "agreed bylaws need a 2/3 majority and registration",
+     "flat extension needs 75% (tarbut-hadiur snippet)",
+     "disputes go to the Superintendent of Land Registration"
+    ]
+   },
+   "people_also_ask": [
+    "מהו תקנון בית משותף מצוי?",
+    "מה קובע סעיף 59 לחוק המקרקעין?",
+    "האם גג הוא רכוש משותף?",
+    "מהו הסכם שיתוף במקרקעין?",
+    "האם חובה לרשום הסכם שיתוף בטאבו?",
+    "איזה עורך דין יכול לעזור לי לפירוק שיתוף במקרקעין?"
+   ],
+   "related_searches": [
+    "תקנון בית משותף דוגמא",
+    "חוק בתים משותפים",
+    "תשריט בית משותף חינם",
+    "תקנון מצוי בית משותף pdf",
+    "בית משותף סדרה",
+    "חוק המקרקעין",
+    "בית משותף שיר",
+    "נסח טאבו"
+   ]
+  },
+  {
+   "keyword": "רישום בית משותף",
+   "volume": 390,
+   "retrieved_utc": "2026-10-22 19:36:37",
+   "extra": "seventh SERP, registration intent",
+   "organic": [
+    [
+     1,
+     "www.gov.il",
+     "https://www.gov.il/he/service/common-house-registration-application",
+     "official: condo registration service"
+    ],
+    [
+     2,
+     "www.gov.il",
+     "https://www.gov.il/he/service/common_house_files",
+     "official: order condo documents"
+    ],
+    [
+     3,
+     "www.nadlancenter.co.il",
+     "https://www.nadlancenter.co.il/article/5049",
+     "guide, 10.5.2026"
+    ],
+    [
+     4,
+     "www.mor.law",
+     "https://www.mor.law/condominium-registration/",
+     "law firm, 27.9.2026"
+    ],
+    [
+     5,
+     "limorarbel.com",
+     "https://limorarbel.com/condominium-registration-process/",
+     "law firm, 13.1.2026"
+    ],
+    [
+     6,
+     "yonilevy.co.il",
+     "https://yonilevy.co.il/עורך-דין-מקרקעין/רישום-בית-משותף/",
+     "law firm"
+    ],
+    [
+     7,
+     "ygoldlaw.co.il",
+     "https://ygoldlaw.co.il/real-estate-lawyer/shared-house/registration/",
+     "law firm"
+    ],
+    [
+     8,
+     "www.zmora.org.il",
+     "https://www.zmora.org.il/הנחיות-מדיניות-ועדה/הנחיות-לאישור-תשריט-בית-משותף/",
+     "committee guidelines"
+    ]
+   ],
+   "ai_overview": {
+    "present": true,
+    "position": "after organic 1",
+    "cited": [
+     "https://www.gov.il/he/service/common-house-registration-application",
+     "https://www.youtube.com/shorts/JiEpjIvTXG4",
+     "https://ygoldlaw.co.il/real-estate-lawyer/shared-house/registration/",
+     "https://yonilevy.co.il/עורך-דין-מקרקעין/רישום-בית-משותף/",
+     "https://www.nadlancenter.co.il/article/5049",
+     "https://www.gov.il/he/service/guide-apartment-building-warrant",
+     "https://limorarbel.com/condominium-registration-process/",
+     "https://www.gov.il/he/service/common_house_files"
+    ],
+    "claims": [
+     "application form to the Superintendent's office",
+     "drawing signed by an architect, engineer or surveyor and approved by the local planning committee",
+     "bylaws: agreed (about 67%) or the model bylaws",
+     "online filing for lawyers with a smart card, or by hand or post",
+     "nadlancenter snippet: developer must register within one year under the Sale (Apartments) Law (check against the law)",
+     "Israel Land Authority has its own service to register, amend or cancel an order"
+    ]
+   },
+   "people_also_ask": [],
+   "related_searches": [
+    "רישום בית משותף הנחיות",
+    "רישום בית משותף בטאבו",
+    "בקשה לרישום בית משותף",
+    "רישום בית משותף מקוון",
+    "תשריט בית משותף חינם",
+    "רישום בית משותף רשות מקרקעי ישראל",
+    "רישום בית משותף מה זה",
+    "צו רישום בית משותף"
+   ]
+  }
+ ],
+ "nadlan_in_top10": false,
+ "jus_tice_in_top10": false
+}

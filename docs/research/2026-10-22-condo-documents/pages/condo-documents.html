@@ -1,0 +1,129 @@
+[nadlan_crumbs label="מסמכי בית משותף"]
+<style id="nlag-css">
+.nlag{--g:#F6F8F9;--w:#FFFFFF;--i:#12202A;--i2:#3E4C58;--mu:#5E6A75;--ln:#D3DCE2;--sea:#2F6F86;--deep:#1F4B5C;--red:#C42550;--sea-t:#E6F0F3;--red-t:#FBE9EE;
+ --disp:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+ direction:rtl;color:var(--i2);font-family:var(--sans)}
+.nlag *{box-sizing:border-box}
+.nlag bdi{white-space:nowrap;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.nlag .m,.nlag .nlag-ledger bdi,.nlag .nlag-bill bdi,.nlag table bdi,.nlag .nlag-route .who{font-family:var(--mono)}
+.nlag .nlag-answer{font-size:1.08rem;line-height:1.75;color:var(--i);margin:0 0 18px}
+.nlag .nlag-answer strong{color:var(--i)}
+.nlag .nlag-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--ln);background:var(--w);border-radius:6px;margin:0 0 22px;position:relative;overflow:hidden}
+.nlag .nlag-ledger::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:16px 16px;opacity:.18}
+.nlag .nlag-ledger div{padding:12px 14px;border-inline-start:1px solid var(--ln);border-bottom:1px solid var(--ln);position:relative;display:grid;gap:2px}
+.nlag .nlag-ledger span{font:500 12.5px/17px var(--sans);color:var(--mu)}
+.nlag .nlag-ledger b{font:700 34px/34px var(--disp);color:var(--i);letter-spacing:.01em;direction:ltr;text-align:right;unicode-bidi:plaintext}
+.nlag .nlag-ledger small{font:400 11.5px/15px var(--mono);color:var(--mu)}
+.nlag .nlag-ledger .warn b{color:var(--red)}
+.nlag h2{scroll-margin-top:80px}
+.nlag .nlag-bill{border:1px solid var(--ln);background:var(--w);border-radius:6px;padding:16px;margin:12px 0 22px}
+.nlag .nlag-bill h3{margin:0 0 10px;font:600 1.05rem/1.4 var(--sans);color:var(--i)}
+.nlag .nlag-bill ol{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.nlag .nlag-bill li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr) auto;gap:10px;align-items:center}
+.nlag .nlag-bill .lb{font:500 14px/19px var(--sans);color:var(--i2)}
+.nlag .nlag-bill .lb small{display:block;color:var(--mu);font:400 12px/16px var(--sans)}
+.nlag .nlag-bill .bar{height:12px;background:var(--sea-t);border-radius:2px;overflow:hidden}
+.nlag .nlag-bill .bar i{display:block;height:100%;background:var(--sea);transform-origin:right;transform:scaleX(var(--s,1))}
+.nlag .nlag-bill li.red .bar i{background:var(--red)}
+.nlag .nlag-bill .am{text-align:left;font:500 14px/18px var(--mono);color:var(--i)}
+.nlag .nlag-bill .am small{display:block;color:var(--mu);font-size:12px}
+.nlag .nlag-bill .tot{margin-top:12px;padding-top:10px;border-top:3px double var(--i);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.nlag .nlag-bill .tot span{font:600 15px/20px var(--sans);color:var(--i)}
+.nlag .nlag-bill .tot b{font:700 30px/30px var(--disp);color:var(--i)}
+@media (prefers-reduced-motion:no-preference){.nlag .nlag-bill.anim .bar i{transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}.nlag .nlag-bill.anim.on .bar i{transform:scaleX(var(--s,1))}.nlag .nlag-hb.anim .br i{transform:scaleX(0);transition:transform .7s cubic-bezier(.2,.7,.2,1)}.nlag .nlag-hb.anim.on .br i{transform:scaleX(1)}}
+.nlag .nlag-chart{border:1px solid var(--ln);background:var(--w);border-radius:6px;padding:14px 14px 8px;margin:12px 0 8px}
+.nlag .nlag-chart h3{margin:0 0 6px;font:600 1.05rem/1.4 var(--sans);color:var(--i)}
+.nlag .nlag-chart svg{width:100%;height:auto;display:block;direction:ltr}
+.nlag .nlag-chart .ax{stroke:var(--ln);stroke-width:1}
+.nlag .nlag-chart .ln{fill:none;stroke:var(--deep);stroke-width:2.2;stroke-linejoin:round}
+.nlag .nlag-chart .ln2{fill:none;stroke:var(--sea);stroke-width:1.6;stroke-dasharray:5 4}
+.nlag .nlag-chart .ar{fill:var(--sea-t);opacity:.55}
+.nlag .nlag-chart text{font:11px var(--mono);fill:var(--mu)}
+.nlag .nlag-chart .pt{fill:var(--red)}
+.nlag .nlag-chart .pl{font:600 12px var(--mono);fill:var(--i)}
+.nlag .nlag-chart .key{display:flex;gap:14px;flex-wrap:wrap;font:400 12px/16px var(--sans);color:var(--mu);margin:6px 0 0}
+.nlag .nlag-chart .key i{display:inline-block;width:18px;height:0;border-top:2.2px solid var(--deep);vertical-align:middle;margin-inline-end:6px}
+.nlag .nlag-chart .key i.d{border-top:1.6px dashed var(--sea)}
+.nlag .nlag-tw{overflow-x:auto;margin:10px 0 22px;border:1px solid var(--ln);border-radius:6px;background:var(--w)}
+.nlag table.nlag-t{width:100%;border-collapse:collapse;font-size:14.5px}
+.nlag table.nlag-t caption{text-align:start;font:600 14px/20px var(--sans);color:var(--i);padding:10px 12px}
+.nlag table.nlag-t th,.nlag table.nlag-t td{padding:9px 12px;border-top:1px solid var(--ln);text-align:start;vertical-align:top}
+.nlag table.nlag-t thead th{background:var(--g);font:600 13px/18px var(--sans);color:var(--i2)}
+.nlag table.nlag-t td.n{font-family:var(--mono);white-space:nowrap}
+.nlag table.nlag-t .l{display:none}
+@media (max-width:600px){
+ .nlag table.nlag-t .l{display:inline;font-weight:600;color:var(--mu);font-family:var(--sans)}
+ .nlag table.nlag-t,.nlag table.nlag-t tbody,.nlag table.nlag-t caption{display:block;width:100%}
+ .nlag table.nlag-t tr{display:block;border-top:1px solid var(--ln);padding:8px 0}
+ .nlag table.nlag-t td,.nlag table.nlag-t th{display:block;border:0;padding:3px 12px}
+ .nlag .nlag-bill li{grid-template-columns:minmax(0,1fr) auto}
+ .nlag .nlag-bill .bar{grid-column:1 / -1;order:3}
+ .nlag .nlag-ledger{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .nlag .nlag-ledger b{font-size:30px;line-height:30px}
+}
+.nlag .nlag-route{list-style:none;margin:12px 0 22px;padding:0;counter-reset:st;position:relative}
+.nlag .nlag-route li{position:relative;padding:0 46px 18px 0;counter-increment:st}
+.nlag .nlag-route li::before{content:counter(st);position:absolute;right:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--w);border:2px solid var(--sea);color:var(--sea);font:700 15px/28px var(--mono);text-align:center}
+.nlag .nlag-route li::after{content:"";position:absolute;right:15px;top:34px;bottom:2px;border-right:2px dotted var(--sea)}
+.nlag .nlag-route li:last-child::after{display:none}
+.nlag .nlag-route b{display:block;color:var(--i);font:600 15.5px/22px var(--sans)}
+.nlag .nlag-route .who{font:400 12.5px/18px var(--mono);color:var(--mu)}
+.nlag .nlag-route p{margin:4px 0 0;line-height:1.7}
+.nlag .nlag-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:12px 0 22px}
+.nlag .nlag-checks div{border:1px solid var(--ln);border-inline-start:4px solid var(--red);background:var(--w);border-radius:4px;padding:12px 14px}
+.nlag .nlag-checks b{display:block;color:var(--i);font:600 15px/21px var(--sans);margin-bottom:4px}
+.nlag .nlag-checks p{margin:0;line-height:1.65;font-size:14.5px}
+.nlag .nlag-checks .doc{display:inline-block;margin-top:6px;font:500 12px/16px var(--mono);color:var(--sea);border:1px solid var(--sea);border-radius:2px;padding:1px 6px}
+.nlag .nlag-il{border:1px solid var(--sea);background:var(--sea-t);border-radius:6px;padding:14px 16px;margin:12px 0 22px}
+.nlag .nlag-il h3{margin:0 0 6px;color:var(--deep);font:600 1.05rem/1.4 var(--sans)}
+.nlag .nlag-honest{border:1px dashed var(--i2);border-radius:6px;padding:14px 16px;margin:22px 0;background:var(--w)}
+.nlag .nlag-honest h3{margin:0 0 6px;font:600 1rem/1.4 var(--sans);color:var(--i)}
+.nlag .nlag-honest ul{margin:6px 0 0;padding-inline-start:18px;line-height:1.7}
+.nlag .nlag-cluster{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin:12px 0 22px;padding:0;list-style:none}
+.nlag .nlag-cluster a{display:block;border:1px solid var(--ln);background:var(--w);border-radius:4px;padding:10px 12px;text-decoration:none;color:var(--i)}
+.nlag .nlag-cluster a b{display:block;color:var(--sea);font:600 14.5px/20px var(--sans)}
+.nlag .nlag-cluster a span{font-size:13px;color:var(--mu);line-height:1.5}
+.nlag .nlag-cluster a:hover{border-color:var(--sea)}
+.nlag .nlag-cluster a[aria-current]{background:var(--g);pointer-events:none}
+.nlag .ils{color:var(--mu)}
+.nlag .nlag-hb .r{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr) auto;gap:4px 10px;align-items:center;margin:5px 0}
+.nlag .nlag-hb .lb{font:500 13.5px/18px var(--sans);color:var(--i);overflow-wrap:anywhere}
+.nlag .nlag-hb .br{height:14px;display:block}
+.nlag .nlag-hb .br i{display:block;height:100%;width:calc(var(--s,1) * 100%);background:var(--sea);border-radius:2px;transform-origin:right}
+.nlag .nlag-hb .r.hi .br i{background:var(--red)}
+.nlag .nlag-hb b{font:500 12.5px/18px var(--mono);color:var(--i);direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+@media (max-width:600px){.nlag .nlag-hb .r{grid-template-columns:minmax(0,40%) minmax(0,1fr) auto;gap:2px 8px}.nlag .nlag-hb .lb{font-size:13px}}
+</style>
+<div class="nlag">
+<style>.nlag.nlag{--sea:#3366CC;--sea-t:#E8EEF8;--deep:#14213D;--red:#D7263D}</style>
+<p class="nlag-answer"><strong>תיק הבית המשותף</strong> נשמר בלשכת רישום המקרקעין, ויש בו שלושה מסמכים: צו הרישום, שמפרט כל דירה כתת־חלקה; התקנון, שקובע את היחסים בין בעלי הדירות; והתשריט, שמסמן כל דירה וההצמדות שלה, כמו חניה, מחסן, גג או חצר, באות ובצבע של הדירה. מזמינים את התיק באתר הממשלתי לפי גוש וחלקה או לפי מספר התיק, משלמים <bdi>39 ₪</bdi> להזמנה (תעריף 2026), ומקבלים קישור להורדה בדואר האלקטרוני תוך 24 שעות. אם לא נרשם תקנון, חל התקנון המצוי שבחוק המקרקעין. חניה או מחסן שלא רשומים כהצמדה לדירה הם חלק מהרכוש המשותף, גם אם המוכר משתמש בהם שנים.</p>
+[nadlan_tool id="condo"]
+<div class="nlag-ledger" role="list"><div role="listitem"><span>הזמנת תיק בית משותף</span><b>39 ₪</b><small>תעריף 2026, להזמנה</small></div><div role="listitem"><span>זמן קבלה</span><b>24 שעות</b><small>קישור בדואר האלקטרוני</small></div><div role="listitem"><span>מסמכים בתיק</span><b>3</b><small>צו, תקנון ותשריט</small></div><div role="listitem"><span>תוקף חתימה על תשריט</span><b>שנה</b><small>מיום החתימה של עורך התשריט</small></div><div role="listitem" class="warn"><span>חניות לדירה בלי אישור</span><b>2</b><small>יותר מזה: אישור הוועדה המקומית</small></div><div role="listitem"><span>התנגדות לתיקון צו</span><b>15 יום</b><small>מהיום שנמסרה ההודעה</small></div></div>
+<h2>מה יש בכל מסמך</h2>
+<p>בתיק הבית המשותף יש שלושה מסמכים, וכל אחד עונה על שאלה אחרת. נסח הטאבו מראה מי הבעלים ומה רשום על הדירה, אבל רק בתיק רואים איפה בדיוק החניה, מה כתוב בתקנון, ואם התשריט אושר. לכן בדיקת דירה בבית משותף מתחילה ב<a href="/tabu-extract-check/">נסח הטאבו</a> וממשיכה בתיק.</p>
+<div class="nlag-tw"><table class="nlag-t"><caption>שלושת המסמכים בתיק הבית המשותף</caption><thead><tr><th>מסמך</th><th>מה הוא קובע</th><th>איפה מחפשים</th><th>על איזו שאלה הוא עונה</th></tr></thead><tbody><tr><td><span class="l">מסמך:</span> צו רישום הבית המשותף</td><td><span class="l">מה הוא קובע:</span> כל דירה רשומה כתת־חלקה, עם החלק שלה ברכוש המשותף וההצמדות שלה. הצו מציין גם אם הבית נרשם לפי תשריט שאישר מוסד תכנון או לפי ״תשריט אחר״.</td><td><span class="l">איפה מחפשים:</span> פרטי כל תת־חלקה, והרישום של סוג התשריט</td><td><span class="l">על איזו שאלה הוא עונה:</span> של מי הדירה, מה החלק שלה ברכוש המשותף, האם התשריט מאושר</td></tr><tr><td><span class="l">מסמך:</span> התקנון</td><td><span class="l">מה הוא קובע:</span> היחסים בין בעלי הדירות: הוצאות, החלטות, שימוש ברכוש המשותף, הצמדות וזכויות בנייה. תקנון מוסכם נרשם בתיק; אם לא נרשם, חל התקנון המצוי שבחוק.</td><td><span class="l">איפה מחפשים:</span> האם יש תקנון מוסכם בתיק, ומה הוא אומר על גג, חניות וזכויות בנייה</td><td><span class="l">על איזו שאלה הוא עונה:</span> מי משלם כמה, מי רשאי לבנות, אילו שינויים מותרים</td></tr><tr><td><span class="l">מסמך:</span> התשריט</td><td><span class="l">מה הוא קובע:</span> השרטוט של הבניין: כל דירה בצבע משלה, ההצמדות שלה באותיות ובאותו צבע, השטחים בטבלה, וחריגות בקו מקווקו.</td><td><span class="l">איפה מחפשים:</span> טבלת תתי־החלקות, תוכניות הקומות, תרשים הגג, והערות עורך התשריט</td><td><span class="l">על איזו שאלה הוא עונה:</span> איזו חניה, איזה מחסן ואיזו חצר שייכים לדירה, ומה השטח שלה</td></tr></tbody></table></div>
+<h2>איך קוראים תשריט בית משותף</h2>
+<p>התשריט נראה כמו תוכנית אדריכלית, אבל הוא מסמך רישום: הוא קובע מה שייך לכל דירה. עורך התשריט חייב לפעול לפי הוראות הרשות לרישום והסדר זכויות מקרקעין, ולכן כל תשריט בנוי מאותם חלקים.</p>
+<div class="nlag-checks"><div><b>הכותרת</b><p>גוש, חלקה, שטח החלקה וכתובת של כל מבנה או כניסה. מבנים מסומנים בספרות רומיות, אגפים במספרים וכניסות באותיות.</p><span class="doc">ראש הגיליון</span></div><div><b>טבלת תתי־החלקות</b><p>לכל דירה: קומה, תיאור, מספר תת־חלקה, שטח רצפה במ״ר, וההצמדות שלה עם אות, שטח וצבע. השטח נמדד לפי כללי המפרט של 2008, בחוזים מ־24.5.2008.</p><span class="doc">הטבלה</span></div><div><b>צבע ואות</b><p>דירה וכל ההצמדות שלה צבועות באותו צבע, ושחור אסור. הצמדה משותפת לכמה דירות מסומנת בטבלה נפרדת, ולפעמים בפסים בצבעי הבעלים.</p><span class="doc">תוכנית הקומה</span></div><div><b>מרפסות</b><p>מרפסת מקורה היא חלק מהדירה. מרפסת פתוחה או מרפסת שמש רשומה כהצמדה.</p><span class="doc">תוכנית הקומה והטבלה</span></div><div><b>מחסן</b><p>מחסן נפרד רשום כהצמדה. מחסן שהכניסה אליו רק מתוך הדירה הוא חלק מהדירה עצמה.</p><span class="doc">תוכנית הקומה</span></div><div><b>חניה</b><p>חניה מוצמדת מסומנת באות ובצבע של הדירה. לפי הוראות עריכת התשריט, יותר משתי חניות לדירה אחת דורשות אישור של הוועדה המקומית.</p><span class="doc">תוכנית קומת החניה</span></div><div><b>גג</b><p>תרשים הגג מראה אם הגג, או חלק ממנו, מוצמד לדירה, ואם יש גישה לדודי השמש דרך הרכוש המשותף. אם אין גישה כזו, התקנון המוסכם צריך לתת זכות מעבר.</p><span class="doc">תרשים הגג</span></div><div><b>חריגות</b><p>חריגה מגבול החלקה או מהיתר הבנייה משורטטת בקו מקווקו עם מידות. היא לא נכללת בשטח הדירה, ומופיעה בהערות של עורך התשריט.</p><span class="doc">הקווים המקווקווים וההערות</span></div><div><b>תוקף</b><p>התשריט תקף שנה מיום החתימה של עורך התשריט: אדריכל, מודד מוסמך, מהנדס או הנדסאי רשוי. אחרי שנה חותמים עליו מחדש.</p><span class="doc">החתימה והתאריך</span></div></div>
+<h2>תקנון מצוי או תקנון מוסכם</h2>
+<p>תקנון מוסכם נרשם בתיק הבית המשותף, ובעלי הדירות יכולים לקבוע בו כמעט הכל: הצמדות, חלוקת הוצאות אחרת, זכויות בנייה, וזכות מעבר לדודי השמש. אם לא נרשם תקנון, או שהתקנון לא מסדיר עניין מסוים, חל התקנון המצוי שבתוספת לחוק המקרקעין. התקנון המצוי קובע, למשל, שהחלק של כל דירה ברכוש המשותף ובהוצאות הוא לפי שטח הרצפה שלה, ושאסור לבעל דירה לשנות בדירה משהו שפוגע ברכוש המשותף או במראה החיצוני בלי הסכמת האסיפה הכללית. תקנון מוסכם שנרשם מחייב גם את מי שקונה דירה אחר כך, ולכן קוראים אותו לפני החתימה.</p>
+<h2>מי צריך להסכים</h2>
+<p>בבית משותף כל שינוי ברכוש המשותף דורש רוב אחר. הצמדה של חניה, גג או חצר לדירה אחת דורשת את כל בעלי הדירות, ולכן הבטחה של מוכר ״השכנים מסכימים״ שווה רק את מה שנרשם בפועל.</p>
+[nadlan_tool id="condomaj"]
+<div class="nlag-tw"><table class="nlag-t"><caption>מי צריך להסכים, לפי חוק המקרקעין</caption><thead><tr><th>הפעולה</th><th>מי צריך להסכים</th><th>המקור</th></tr></thead><tbody><tr><td><span class="l">הפעולה:</span> רישום הבית כבית משותף</td><td><span class="l">מי צריך להסכים:</span> בעלי יותר ממחצית שטח הרצפה</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיף 143(א)</td></tr><tr><td><span class="l">הפעולה:</span> תקנון מוסכם או שינוי שלו</td><td><span class="l">מי צריך להסכים:</span> בעלי שני שלישים מהרכוש המשותף</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיף 62(א)</td></tr><tr><td><span class="l">הפעולה:</span> הצמדת חניה, גג או חצר לדירה</td><td><span class="l">מי צריך להסכים:</span> כל בעלי הדירות</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיף 62(א)</td></tr><tr><td><span class="l">הפעולה:</span> הרחבת דירה</td><td><span class="l">מי צריך להסכים:</span> שלושה רבעים מהדירות, שבבעלותן שני שלישים מהרכוש המשותף</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיף 71ב(א)(1)</td></tr><tr><td><span class="l">הפעולה:</span> בניית ממ״ד</td><td><span class="l">מי צריך להסכים:</span> 60% מהדירות</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיף 71ב(א)(1)</td></tr><tr><td><span class="l">הפעולה:</span> העברת הצמדה קיימת לדירה אחרת באותו בניין</td><td><span class="l">מי צריך להסכים:</span> אין צורך בהסכמת השכנים; נעשית בתיקון צו</td><td><span class="l">המקור:</span> חוק המקרקעין, סעיפים 62(א1) ו־145</td></tr><tr><td><span class="l">הפעולה:</span> שינוי בדירה שפוגע ברכוש המשותף או במראה החיצוני</td><td><span class="l">מי צריך להסכים:</span> האסיפה הכללית</td><td><span class="l">המקור:</span> התקנון המצוי, סעיף 2(א)</td></tr></tbody></table></div>
+<h2>כשהתשריט לא תואם את המצב בשטח</h2>
+<p>מרפסת שנסגרה, מחסן שנבנה, או חניה שעברה מדירה לדירה בלי רישום: כל אלה לא מופיעים בתשריט, והקונה לא מקבל אותם. כדי לעדכן את הרישום מתקנים את צו הבית המשותף. הבקשה חתומה בידי עורך דין, צריך הסכמות של הבעלים ושל בעלי הזכויות כמו הבנק שנתן משכנתא, ותשריט חדש שאישרה הוועדה המקומית. מי שלא הסכים מקבל הודעה, ויש לו 15 יום להתנגד. הפירוט המשפטי של התהליך: <a href="https://jus-tice.co.il/amending-condominium-order/" target="_blank" rel="noopener">תיקון צו בית משותף</a>.</p>
+<h2>דירה בבניין שלא נרשם, או דירה חדשה מקבלן</h2>
+<p>כשהבניין עוד לא נרשם כבית משותף, נסח הטאבו מראה את החלקה בלי תתי־חלקות, והבעלים מחזיקים בה בחלקים. הבניין מתנהל בינתיים לפי התקנון המצוי, ורוב הכללים של בית משותף חלים עליו. בבניין של חברה משכנת או על קרקע של רשות מקרקעי ישראל, הבקשה לרישום מוגשת דרכן. בדירה חדשה, חוק המכר קובע לקבלן מועדים:</p>
+<ol class="nlag-route"><li><b>רישום החלוקה</b><span class="who">הקבלן</span><p>הקבלן פועל לרישום החלוקה של החלקה בהקדם האפשרי.</p></li><li><b>רישום הבית המשותף</b><span class="who">תוך שנה</span><p>מרישום החלוקה או ממסירת הדירה לקונה, המאוחר מביניהם.</p></li><li><b>רישום הזכויות שלכם</b><span class="who">תוך שישה חודשים</span><p>מרישום הבית המשותף או ממסירת הדירה, המאוחר מביניהם. עיכוב שהקבלן מוכיח שלא היה בשליטתו לא נספר.</p></li></ol>
+<p>המועדים האלה כתובים בחוק, וכדאי לראות שגם <a href="/real-estate-lawyer/apartment-sale-contract/">חוזה המכר</a> לא קובע מועדים ארוכים יותר. אם התקנון שהקבלן מתכנן משנה את התקנון המצוי, למשל בהצמדות או בחלוקת ההוצאות, הפרטים צריכים להופיע במפרט או בחוזה.</p>
+<h2>כמה זה עולה</h2>
+<div class="nlag-tw"><table class="nlag-t"><caption>כמה עולים המסמכים והבקשות, תעריף 2026</caption><thead><tr><th>מה</th><th>כמה</th><th>הערה</th></tr></thead><tbody><tr><td><span class="l">מה:</span> הזמנת תיק בית משותף סרוק באינטרנט</td><td><span class="l">כמה:</span> <bdi>39 ₪</bdi></td><td><span class="l">הערה:</span> להזמנה, עם חתימה אלקטרונית</td></tr><tr><td><span class="l">מה:</span> עיון בתיק הנייר בלשכה, עם צילום</td><td><span class="l">כמה:</span> <bdi>257 ₪</bdi></td><td><span class="l">הערה:</span> בתיאום מראש</td></tr><tr><td><span class="l">מה:</span> נסח טאבו אלקטרוני</td><td><span class="l">כמה:</span> <bdi>18 ₪</bdi></td><td><span class="l">הערה:</span> חתום אלקטרונית</td></tr><tr><td><span class="l">מה:</span> נסח טאבו מאושר</td><td><span class="l">כמה:</span> <bdi>88 ₪</bdi></td><td><span class="l">הערה:</span> </td></tr><tr><td><span class="l">מה:</span> בקשה לרישום בית משותף</td><td><span class="l">כמה:</span> <bdi>163 ₪</bdi>, ועוד <bdi>98 ₪</bdi> לכל דירה</td><td><span class="l">הערה:</span> </td></tr><tr><td><span class="l">מה:</span> בקשה לתיקון צו בית משותף</td><td><span class="l">כמה:</span> <bdi>163 ₪</bdi></td><td><span class="l">הערה:</span> ועוד 98 ₪ לכל דירה שנוספת</td></tr></tbody></table></div>
+<p>התעריפים נקבעים בהודעת האגרות של רשות המקרקעין ומתעדכנים ב־1 בינואר לפי המדד. באתרים פרטיים שמזמינים בשמכם המחיר גבוה יותר, ואת אותו תיק אפשר להזמין לבד באתר הממשלתי.</p>
+<h2>לשכות רישום המקרקעין</h2>
+<p>לשכות רישום המקרקעין פועלות בירושלים, תל אביב, חיפה, באר שבע, פתח תקווה, נתניה, רחובות, חולון, ראשון לציון ונוף הגליל, ויש סניף בחדרה. מקבלים קהל בתיאום מראש. רוב העבודה עם התיק נעשית היום באינטרנט, והלשכה נדרשת בעיקר לעיון בתיק הנייר.</p>
+<aside class="nlag-honest"><h3>על המידע</h3><ul><li>כל העובדות בעמוד מבוססות על מקורות רשמיים: חוק המקרקעין, תקנות המקרקעין (ניהול ורישום), הוראות עריכת תשריט בית משותף, חוק המכר (דירות), ודפי השירות של רשות המקרקעין ורשות מקרקעי ישראל.</li><li>התעריף של 39 ₪ נקרא במערכת ההזמנה ובהודעת האגרות ל־2026 ב־22.10.2026.</li><li>התשריט בכלי הוא תשריט לדוגמה שציירנו כדי להסביר, ולא בניין אמיתי.</li><li>העמוד מסביר איך קוראים את המסמכים. בעסקה עצמה, עורך דין בודק את התיק המלא.</li></ul><p style="margin:8px 0 0;font:400 12.5px/18px var(--mono);color:var(--mu)">נבדק 22.10.2026.</p></aside>
+<p style="margin:14px 0 0;font:400 13px/20px var(--sans);color:var(--mu)">המקורות הרשמיים: <a href="https://www.gov.il/he/service/common_house_files" rel="noopener" target="_blank" style="color:var(--sea)">הזמנת מסמכי בית משותף</a> · <a href="https://www.gov.il/he/pages/common-house" rel="noopener" target="_blank" style="color:var(--sea)">הוראות עריכת תשריט בית משותף</a> · <a href="https://www.gov.il/apps/mapi/parcel_address/parcel_address.html" rel="noopener" target="_blank" style="color:var(--sea)">איתור גוש וחלקה</a></p>
+<h2>שאלות נפוצות על מסמכי בית משותף</h2><h3>כמה עולה להזמין תשריט בית משותף, ואפשר לקבל אותו בחינם?</h3><p>באתר הממשלתי ההזמנה עולה 39 ₪ (תעריף 2026), והתיק כולל את הצו, התקנון והתשריט. עיון בתיק הנייר בלשכת רישום המקרקעין, עם צילום, עולה 257 ₪. אין עותק רשמי בחינם.</p><h3>איך מזמינים תיק בית משותף באינטרנט?</h3><p>מוצאים גוש וחלקה באתר המרכז למיפוי ישראל, כי באתר ההזמנה אין חיפוש לפי כתובת. אחר כך נכנסים לשירות ״הזמנת מסמכי בית משותף״ באתר gov.il, מחפשים לפי גוש וחלקה או לפי מספר התיק, משלמים בכרטיס אשראי ומקבלים קישור להורדה בדואר האלקטרוני תוך 24 שעות.</p><h3>מה מקבלים בתיק הבית המשותף, ובאיזה פורמט?</h3><p>בתיק הרישום: צו הרישום, התקנון והתשריט. אם הצו תוקן, יש גם תיקי תיקון, ולא בכל תיק תיקון יש תשריט. הכל מגיע כקובץ ZIP של מסמכים סרוקים עם חתימה אלקטרונית. בתיקים עד 1969 יש הסכם במקום תקנון, אם יש.</p><h3>מהו תקנון בית משותף מצוי?</h3><p>התקנון שבתוספת לחוק המקרקעין. הוא חל כשבעלי הדירות לא רשמו תקנון מוסכם, ובכל עניין שהתקנון המוסכם לא מסדיר.</p><h3>האם גג הוא רכוש משותף?</h3><p>כן, לפי ההגדרה בחוק המקרקעין, אלא אם הוא הוצמד לדירה מסוימת. בתשריט רואים את זה בתרשים הגג ובטבלת ההצמדות.</p><h3>מה קובע סעיף 59 לחוק המקרקעין?</h3><p>בבניין עם כמה מבנים או אגפים, התקנון יכול להצמיד את הרכוש המשותף של כל אגף לדירות שבו ולנהל אותו בנפרד, עם ועד משלו.</p><h3>איך יודעים איזו חניה או איזה מחסן שייכים לדירה?</h3><p>בתשריט: בטבלת תתי־החלקות ובתוכנית הקומה, החניה או המחסן מסומנים באות ובצבע של הדירה. גם נסח הטאבו מציג את ההצמדות תחת תת־החלקה.</p><h3>מה עושים כשהתשריט לא תואם את המצב בשטח?</h3><p>מתקנים את צו הבית המשותף: בקשה חתומה בידי עורך דין, הסכמות של הבעלים ושל בעלי הזכויות, ותשריט שאישרה הוועדה המקומית. מי שלא הסכים מקבל הודעה, ויש לו 15 יום להתנגד.</p><h3>אפשר לשנות תקנון בית משותף?</h3><p>תקנון מוסכם משנים בהסכמת בעלי שני שלישים מהרכוש המשותף. הצמדה של חלק מהרכוש המשותף לדירה דורשת את כל הבעלים, חוץ מהרחבת דירה לפי סעיף 71ב (שלושה רבעים מהדירות עם שני שלישים מהרכוש המשותף) וממ״ד (60% מהדירות).</p><h3>מה עושים כשהבניין לא רשום כבית משותף?</h3><p>הבניין מתנהל לפי התקנון המצוי, ורוב הכללים של בית משותף חלים עליו. בדירה חדשה מקבלן, הקבלן חייב לרשום את הבית המשותף תוך שנה, ואת הזכויות שלכם תוך שישה חודשים אחר כך. בבניין של חברה משכנת או על קרקע של רשות מקרקעי ישראל, הבקשה לרישום מוגשת דרכן.</p>
+<ul class="nlag-cluster"><li><a href="/tabu-extract-check/"><b>בדיקת נסח טאבו</b><span>תת־החלקה וההצמדות בנסח</span></a></li><li><a href="/apartment-buying-checklist/"><b>רשימת בדיקות לפני קנייה</b><span>מה בודקים לפני שחותמים</span></a></li><li><a href="/real-estate-lawyer/apartment-sale-contract/"><b>חוזה מכר דירה</b><span>מה כותבים על ההצמדות</span></a></li><li><a href="/guides/new-project-parking/"><b>חניה בפרויקט חדש</b><span>איך החניה נרשמת</span></a></li><li><a href="/guides/new-apartment-balcony/"><b>מרפסת בדירה חדשה</b><span>מקורה, פתוחה או מרפסת שמש</span></a></li><li><a href="/property-value/building-rights-check/"><b>בדיקת זכויות בנייה</b><span>מה מותר לבנות בבניין</span></a></li><li><a href="/real-estate-lawyer/sale-of-apartments-law/"><b>חוק המכר</b><span>מה הקבלן חייב לקונה</span></a></li><li><a href="/urban-renewal/tama-38-rights-obligations/"><b>זכויות וחובות בתמ״א 38</b><span>הגג ורוב הבעלים</span></a></li><li><a href="/real-estate-lawyer/partition-real-estate/"><b>פירוק שיתוף במקרקעין</b><span>כשהבניין רשום בחלקים</span></a></li></ul>
+</div>

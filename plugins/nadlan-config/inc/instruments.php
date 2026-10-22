@@ -172,6 +172,19 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'pinkas-meta.json' ),
 				'related' => array( '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה', '/professionals/' => 'מאגר בעלי המקצוע' ),
 			),
+			/* 1.72.506 (HAD-592): the condo-documents family, one file tools/condo.js; condo.json from official sources (fee 2026, Land Law, drawing rules) */
+			'condo' => array(
+				'file' => 'condo', 'name' => 'איזה מסמך בבית המשותף עונה על השאלה שלכם', 'cat' => 'ReferenceApplication', 'kicker' => 'תשריט · צו · תקנון',
+				'desc' => 'לחיצה על שאלה של קונה (חניה, מחסן, גג, חצר, מרפסת, זכויות בנייה, הוצאות ועד, שטח הדירה, תשריט מאושר, בניין לא רשום) מדליקה את החלק בתשריט לדוגמה ואומרת באיזה מסמך מחפשים, מה בודקים, מה הדגל האדום ומה המקור בחוק, ואיך מזמינים את תיק הבית המשותף ב־39 ₪.',
+				'data' => array( 'condo.json' ),
+				'related' => array( '/tabu-extract-check/' => 'בדיקת נסח טאבו', '/apartment-buying-checklist/' => 'רשימת בדיקות לפני קניית דירה', '/real-estate-lawyer/' => 'עורך דין מקרקעין', '/guides/new-project-parking/' => 'חניה בפרויקט חדש' ),
+			),
+			'condomaj' => array(
+				'file' => 'condo', 'name' => 'מחשבון רוב בבית משותף', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחשבון · רוב בבית משותף',
+				'desc' => 'כמה בעלי דירות צריכים להסכים לרישום בית משותף, לתקנון מוסכם, להצמדת חניה או גג, להרחבת דירה ולבניית ממ״ד, לפי חוק המקרקעין ומספר הדירות בבניין.',
+				'data' => array( 'condo.json' ),
+				'related' => array( '/urban-renewal/tama-38-rights-obligations/' => 'זכויות וחובות בתמ״א 38', '/property-value/building-rights-check/' => 'בדיקת זכויות בנייה' ),
+			),
 		) );
 	}
 
@@ -355,6 +368,21 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				$rows .= '<tr><td>' . esc_html( $p['he'] ) . '</td><td>' . number_format( $p['m2'] ) . '</td><td>' . ( isset( $p['yoy'] ) && null !== $p['yoy'] ? esc_html( number_format( 100 * $p['yoy'], 1 ) ) . '%' : '' ) . '</td><td>' . ( isset( $p['rent'] ) ? esc_html( number_format( $p['rent'], 1 ) ) : '' ) . '</td><td>' . ( isset( $p['y'] ) ? esc_html( number_format( 100 * $p['y'], 1 ) ) . '%' : '' ) . '</td><td>' . esc_html( $gv( $p['gv'] ) ) . '</td><td>' . esc_html( $p['src'] . ', ' . $p['per'] ) . '</td></tr>';
 			}
 			return $p0 . '<table><caption>מחירון נדל״ן ביוון: ' . count( $pl ) . ' מקומות, מחיר מבוקש באירו למ״ר</caption><thead><tr><th>מקום</th><th>אירו למ״ר</th><th>שינוי בשנה</th><th>שכירות למ״ר לחודש</th><th>תשואה ברוטו</th><th>גולדן ויזה</th><th>מקור ותקופה</th></tr></thead><tbody>' . $rows . '</tbody></table>';
+		}
+		if ( 'condo' === $id || 'condomaj' === $id ) {  // 1.72.506: the answers as plain text and tables (the drawing needs the script)
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/condo.json';
+			$c = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $c ) || empty( $c['chips'] ) ) { return ''; }
+			if ( 'condomaj' === $id ) {
+				$t = '<table><caption>מי צריך להסכים בבית משותף, לפי חוק המקרקעין</caption><thead><tr><th>הפעולה</th><th>מי צריך להסכים</th><th>המקור</th></tr></thead><tbody>';
+				foreach ( $c['maj'] as $m ) { $t .= '<tr><td>' . esc_html( $m['he'] ) . '</td><td>' . esc_html( $m['rule'] ) . '</td><td>' . esc_html( $m['src'] ) . '</td></tr>'; }
+				return '<p>העברת הצמדה קיימת מדירה לדירה באותו בניין אינה דורשת את הסכמת השכנים, ונעשית בתיקון צו הבית המשותף.</p>' . $t . '</tbody></table>';
+			}
+			$f = $c['fee'];
+			$t = '<p>מזמינים את תיק הבית המשותף באתר הממשלתי לפי גוש וחלקה או לפי מספר התיק: ' . (int) $f['order'] . ' ₪ להזמנה (תעריף ' . (int) $f['year'] . '), וקישור להורדה מגיע בדואר האלקטרוני תוך 24 שעות. עיון בתיק הנייר בלשכה: ' . (int) $f['physical'] . ' ₪.</p>';
+			$t .= '<table><caption>איזה מסמך עונה על איזו שאלה</caption><thead><tr><th>השאלה</th><th>באיזה מסמך ואיפה</th><th>דגל אדום</th></tr></thead><tbody>';
+			foreach ( $c['chips'] as $q ) { $t .= '<tr><td>' . esc_html( $q['he'] ) . '</td><td>' . esc_html( $q['doc'] ) . '</td><td>' . esc_html( $q['flag'] ) . '</td></tr>'; }
+			return $t . '</tbody></table>';
 		}
 		if ( 'pinkas' === $id || 'sivug' === $id ) {  // 1.72.504: the rules and the table in force as plain text (the search itself needs the script)
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/pinkas-meta.json';

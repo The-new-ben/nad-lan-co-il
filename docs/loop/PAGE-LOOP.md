@@ -83,14 +83,17 @@ Linear: **HAD-592**. Tracking: Notion row per wave.
 | GP | GREECE PRICE LIST (Ben 22.10 evening: the most comprehensive anywhere, all competitors incl. Greek sites, map/infographics/new tools, link to jus-tice) | **done 22.10 (1.72.501-503)**: /prices-greece/ (page 8585), 253 places on a map + budget + Israel tools; proof 31/35 facts vs jus-tice 21 and 4-11 for the 7 other ranking pages (PROOF.md); phone fixes measured live (labels, 10 px dots, 15 px names); jus-tice linked at /greece-lawyers/ only | docs/research/2026-10-22-greece-prices/ (dna.md, prices.json, PROOF.md); gaps named: price by flat size, Europe comparison, forecast |
 | N2 | Contractor register: /pinkas-hakablanim/ with a server search over 17,874 contractors (14,400/mo, no competitor search) | **done 22.10 (1.72.504-505)**: page 8591 live, search route + tools pinkas/sivug, proof 31/32 facts vs best competitor 13 (PROOF.md), links in from /renovation-contractor/, /buying-apartment/, /construction-supervisor/; TODO: a link from /profession/קבלן/ (term description, not in REST: needs code) and from the /professionals/ directory | docs/research/2026-10-22-contractor-register/brief.md; mass pages for the 15,184 missing contractors need Ben's word on pace |
 | K1 | Kit: nlag.bars as HTML rows (the SVG made 6 px names on phones and cut Hebrew labels, measured live on /prices-greece/) | **done in code 22.10**; republish /prices-greece/ + the 3 wave-1 pages after 1.72.504 | tools/guides/nlag.py |
-| C12 | Condo documents (tsav, takanon, tashrit), 12,530/mo | todo | gap-map ★2 |
+| C12 | Condo documents (tsav, takanon, tashrit), about 10,000/mo | **done 22.10 (1.72.506)**: /real-estate-lawyer/condo-documents/ (page 8600), tools condo (question → lit sample drawing + card + order path, fee 39 ₪ 2026) and condomaj (majorities), proof 34/35 vs 12 (PROOF.md), links in from 3 pages, jus-tice linked twice in context | docs/research/2026-10-22-condo-documents/ (brief.md, PROOF.md), DS v232 CondoDocFinder |
 | C15 | Home inspection upgrade, 10,500/mo, position 63 | todo | gap-map ★3 |
 | C13 | Capital gains tax guide + calculator, 23,280/mo, 2 impressions | todo | gap-map ★5; first find why the tax family is invisible |
 | C01 | Georgia (Batumi, Tbilisi), Hebrew + Russian, 1,520/mo | todo | gap-map ★4, no sister site covers it |
 | C17/C11/C02/C16/C03 | Deciding appraiser, landlords' tax, USA, appraiser, Israeli tax on property abroad | todo | gap-map ★6-★10 |
 
+## LOOP STOPPED 22.10.2026 ~23:55 on Ben's word ("finish what you are doing and stop the loop, take a break"). The cron b7f1a8d1 was deleted. Restart only when Ben says so; the next items are C15, C13, C01, G2.
+
 ## Waiting for Ben (the loop goes on meanwhile)
 - findplace vs nad-lan split for neighbourhood place pages.
 - jus-tice.co.il vs nad-lan for abroad: jus-tice's /greece-price-list/ ranks 3-5 for Greece prices, so nad-lan has no Greece price page. The working split, until Ben says otherwise: nad-lan = market, buying, costs, tax tools; jus-tice = the legal angle.
+- IndexNow: installed 22.10 (key file + pings) before the owner's new law of 22.10 ("a ping app only after Ben approves installing it"); pings stopped; keep or remove is Ben's call.
 - Pace for contractor pages: 15,184 register contractors have no page with us; mass creation needs his word.
 - Our own defects logged: /global/project/koukaki-athens-residence/ claims golden visa "with another property" (wrong under the 2024 single-property rule) and pitches Airbnb in Koukaki (Athens district 1 freeze); nad-lan /price-list-dubai/ duplicates dubai-team's list; ?lang=en on /global/ declares he-IL.
