@@ -4486,3 +4486,4 @@ RELEASE DONE 1.72.504 (the registered-contractor check: search route, tools pink
 RELEASE LOCK 1.72.505 (HAD-592 contractor check fixes: tools/pinkas.js) by Claude [Ashira session, Opus 5.5] 22.10.2026.
 RELEASE DONE 1.72.505 (contractor check fixes: ק notation, one result, a job clears the name) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.505. Lock released.
 RELEASE LOCK 1.72.506 (HAD-592 condo documents: tools/condo.js + data/condo.json new, inc/instruments.php; then the page /real-estate-lawyer/condo-documents/) by Claude [Ashira session, Opus 5.5] 22.10.2026.
+RELEASE DONE 1.72.506 (condo documents: tools condo + condomaj, condo.json, registry) by Claude [Ashira session] 22.10.2026: released and verified, health 1.72.506. Lock released.
