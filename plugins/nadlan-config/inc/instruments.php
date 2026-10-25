@@ -185,6 +185,13 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'condo.json' ),
 				'related' => array( '/urban-renewal/tama-38-rights-obligations/' => 'זכויות וחובות בתמ״א 38', '/property-value/building-rights-check/' => 'בדיקת זכויות בנייה' ),
 			),
+			/* 1.72.521 (HAD-601, Q6): the gypsum wall calculator of the red board term; gwall.json from the manufacturer and supplier sites (25.10.2026) */
+			'gwall' => array(
+				'name' => 'מחשבון קיר גבס ורוד: כמה לוחות, משקל ועלות', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחשבון · קיר גבס',
+				'desc' => 'לפי מקום הקיר, דרישת האש מהיועץ, אורך, גובה, צדדים ושכבות: איזה לוח מתאים (ורוד, משולב, מיוחד לאש או לא לחוץ), כמה לוחות להזמין לפי שטח ולפי תוכנית חיתוך, כמה הם שוקלים לפי טבלת הספק, כמה הם עולים אצל ארבעה ספקים, המחיצה שנבדקה כשיש כזאת, והמסמכים לבקש מהקבלן.',
+				'data' => array( 'gwall.json' ),
+				'related' => array( '/glossary/%D7%9C%D7%95%D7%97-%D7%92%D7%91%D7%A1-%D7%99%D7%A8%D7%95%D7%A7/' => 'לוח גבס ירוק', '/glossary/%D7%98%D7%99%D7%97-%D7%92%D7%91%D7%A1/' => 'טיח גבס', '/home-inspection/' => 'בדק בית', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה' ),
+			),
 		) );
 	}
 
@@ -404,6 +411,30 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				. ' ענפים, לפי המאגר הפתוח ב־data.gov.il נכון ל־' . esc_html( $d( $m['asof'] ) ) . '. עבודה בענף ראשי בהיקף של יותר מ־' . number_format( $m['thr']['main'] ) . ' ₪, או בענף משנה, למשל שיפוצים, ביותר מ־' . number_format( $m['thr']['sub'] )
 				. ' ₪, מותרת רק לקבלן רשום. לפני חתימה בודקים ברשומה הרשמית של הקבלן ב־gov.il שהוא רשום בענף הנכון, שהסיווג שלו מכסה את העבודה, ושהוא לא מוקפא, מוחרג או מותלה.</p>' . $tab;
 		}
+		if ( 'gwall' === $id ) {  // 1.72.521: common walls as a plain table (the same count as tools/gwall.js: the larger of area with 10% waste and the cut plan)
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/gwall.json';
+			$g = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $g ) || empty( $g['kgBoard'] ) ) { return ''; }
+			$wd = (float) $g['width']; $e = 1e-9;
+			$cnt = function ( $L, $H, $n, $lb ) use ( $wd, $e ) {
+				$area = (int) ceil( $L * $H * $n * 1.1 / ( $wd * $lb ) - $e );
+				$nf = (int) floor( $L / $wd + $e ); $wp = $L - $nf * $wd; $fh = (int) floor( $H / $lb + $e ); $rh = $H - $fh * $lb;
+				if ( $wp < 0.01 ) { $wp = 0; } if ( $rh < 0.01 ) { $rh = 0; }
+				$cut = $n * $nf * $fh;
+				if ( $rh ) { $cut += (int) ceil( $n * $nf / floor( $lb / $rh + $e ) - $e ); }
+				if ( $wp ) { $cut += (int) ceil( $n * $fh / floor( $wd / $wp + $e ) - $e ); }
+				if ( $wp && $rh ) { $cut += (int) ceil( $n / ( floor( $wd / $wp + $e ) * floor( $lb / $rh + $e ) ) - $e ); }
+				return max( $area, $cut );
+			};
+			$walls = array( array( 3, 2.6, 2, 1, '2.60' ), array( 4, 2.6, 2, 2, '2.60' ), array( 5, 2.8, 2, 2, '2.80' ), array( 10, 3, 1, 1, '3.00' ), array( 100, 3, 1, 1, '3.00' ) );
+			$t = '<table><caption>כמה לוחות גבס ורודים של 12.5 מ״מ להזמין לקירות נפוצים (10% פחת)</caption><thead><tr><th>הקיר</th><th>צדדים ושכבות</th><th>לוח</th><th>לוחות</th><th>משקל</th><th>עלות לפי רוטנברג</th></tr></thead><tbody>';
+			foreach ( $walls as $w ) {
+				list( $L, $H, $s, $ly, $sz ) = $w; $n = $cnt( $L, $H, $s * $ly, (float) $sz ); $kg = $g['kgBoard']['12.5'][ $sz ];
+				$pr = isset( $g['price']['fr']['12.5'][ $sz ] ) && 0 === strpos( $g['price']['fr']['12.5'][ $sz ]['src'], 'רוטנברג' ) ? $g['price']['fr']['12.5'][ $sz ]['v'] : 0;
+				$t .= '<tr><td>' . esc_html( $L . ' × ' . $H ) . ' מ׳</td><td>' . ( 2 === $s ? 'שני צדדים' : 'צד אחד' ) . ', ' . ( 2 === $ly ? 'שתי שכבות' : 'שכבה אחת' ) . '</td><td>' . esc_html( $sz ) . ' × 1.20</td><td>' . $n . '</td><td>כ־' . number_format( $n * $kg ) . ' ק״ג</td><td>' . ( $pr ? '₪' . number_format( round( $n * $pr ) ) : 'לפי הצעת מחיר' ) . '</td></tr>';
+			}
+			return '<p>לוח גבס ורוד (מעכב בעירה, FR) לשימוש פנימי, ברוחב 1.20 מ׳. משקל לפי טבלת הספק: 27 ק״ג ללוח 2.60 של 12.5 מ״מ. מחיר אצל רוטנברג ב־25.10.2026: 80.8 ₪ ללוח 2.60 כולל מע״מ. את מספר דקות העמידות באש מקבל הקיר כולו בבדיקה לפי ת״י 931, לא הלוח: לבקש מהקבלן תעודת בדיקה של המחיצה, סיווג לפי ת״י 755 ותו תקן לפי ת״י 1490 חלק 1.</p>' . $t . '</tbody></table>';
+		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
 		}
@@ -482,7 +513,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'inLanguage' => $lang, 'url' => $arch ? $arch : get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
 				'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ) );
 		}
-		$p = $arch ? null : get_post(); $faq = $p ? nadlan_nli_faq( $p->post_content ) : array();
+		$p = $arch ? null : get_post(); $faq = $p && 'nadlan_term' !== $p->post_type ? nadlan_nli_faq( $p->post_content ) : array();  // 1.72.521: a glossary term prints its FAQPage in inc/term-faq-schema.php (one FAQPage per page)
 		if ( $faq ) { $out[] = array( '@type' => 'FAQPage', 'url' => get_permalink(), 'mainEntity' => $faq ); }
 		echo '<script type="application/ld+json" id="nadlan-nli-ld">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $out ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 	}, 30 );

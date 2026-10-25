@@ -171,3 +171,7 @@ html body .nli .nli__pre button[aria-pressed="true"] small{color:var(--nli-on-se
 html body .nli .nli__form{grid-template-columns:minmax(0,1fr)}
 html body .nli .nli__in{min-width:0}
 html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overflow:ellipsis}
+/* 1.72.521: a tool's own drawing (r.figure): the gypsum wall, drawn like a fire-safety plan sheet (black line work, red hatch = fire-rated board) */
+.nli__figure{margin:4px 0 0}.nli__figure svg{display:block;width:100%;height:auto;max-width:560px}
+.nli__wall text{font:400 14px/1 var(--nli-sans);fill:var(--nli-ink2)}.nli__wall .t{font:600 16px/1 var(--nli-sans);fill:var(--nli-ink)}
+.nli__wall .m{font:500 15px/1 var(--nli-mono);fill:var(--nli-ink)}.nli__wall .r{fill:var(--nli-survey)}
