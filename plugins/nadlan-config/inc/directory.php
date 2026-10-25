@@ -980,13 +980,13 @@ if ( ! function_exists( 'nadlan_dir_project_cards_html' ) ) {
 
 if ( ! function_exists( 'nadlan_dir_project_facets' ) ) {
 	function nadlan_dir_project_facets() {
-		$k = 'nadlan_dir_projfacets_v3';
+		$k = 'nadlan_dir_projfacets_v4';
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
 		$private_sql = " AND NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} private_v2 WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2')";
 		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql . ' GROUP BY pm.meta_value', ARRAY_A );
-		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql . ' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18', ARRAY_A );
+		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql . ' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 30', ARRAY_A ); // 1.72.513 (F5): 18 left Be'er Sheva (14 projects) out
 		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql ) );
 		foreach ( (array) $types as $r )  { $out['types'][ $r['v'] ] = (int) $r['n']; }
 		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
@@ -997,6 +997,7 @@ if ( ! function_exists( 'nadlan_dir_project_facets' ) ) {
 add_action( 'save_post_nadlan_project', function () {
 	delete_transient( 'nadlan_dir_projfacets_v2' );
 	delete_transient( 'nadlan_dir_projfacets_v3' );
+	delete_transient( 'nadlan_dir_projfacets_v4' );
 } );
 
 add_action( 'rest_api_init', function () {
@@ -1066,7 +1067,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			'project_type' => isset( $_GET['project_type'] ) ? sanitize_key( $_GET['project_type'] ) : '',
 			'min_units' => isset( $_GET['min_units'] ) ? (int) $_GET['min_units'] : 0,
 			'sort' => isset( $_GET['sort'] ) ? sanitize_key( $_GET['sort'] ) : 'featured',
-			'paged' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ),
+			'paged' => max( 1, (int) ( $_GET['paged'] ?? 1 ), (int) get_query_var( 'paged' ) ), // 1.72.513 (F1): /projects/page/2/ showed page 1 again
 			'per_page' => 24,
 		);
 		$wq = nadlan_dir_project_query( $state );
@@ -1095,7 +1096,13 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		$nlpc_last = count( $nlpc_parts ) > 1 ? array_pop( $nlpc_parts ) : '';
 		$nlpc_mix  = $nlpc_parts ? ': ' . implode( ', ', $nlpc_parts ) . ( '' !== $nlpc_last ? ' ו־' . $nlpc_last : '' ) : ''; ?>
 		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים בקטלוג<?php echo esc_html( $nlpc_mix ); ?>, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<?php if ( function_exists( 'nadlan_ph_body' ) && function_exists( 'nadlan_cp_is_catalog' ) && (int) $state['paged'] < 2 ) : /* 1.72.513 the hub: the answer first, then a way into every section below the grid */ ?>
+		<p class="nldir-lead nldir-intro">מחפשים פרויקט חדש או דירה חדשה מקבלן? כאן רואים את כל הפרויקטים החדשים בישראל לפי עיר, יזם ושלב. מתחת לקטלוג: פרויקטים בשיווק עם המחיר שפרסם היזם, פרויקטים חדשים בתל אביב לפי אזור, מחירי עסקאות בכל עיר, לוח הזמנים מהיתר הבנייה ועד המפתח, מחשבונים ותשע בדיקות לפני שחותמים. עודכן ב־<?php echo esc_html( date_i18n( 'j.n.Y', strtotime( NADLAN_PH_UPDATED ) ) ); ?>.</p>
+		<nav class="nldir-jump" aria-label="בעמוד הזה"><?php echo function_exists( 'nadlan_ph_market' ) && ! empty( nadlan_ph_market()['projects'] ) ? '<a href="#nlph-market">בשיווק עכשיו</a>' : ''; ?><a href="#nlph-tlv">פרויקטים בתל אביב</a><a href="#nlph-prices">מחירים לפי עיר</a><a href="#nlph-timeline">מהיתר למפתח</a><a href="#nlph-pay">תשלומים והצמדה</a><a href="#nlph-tools">מחשבונים</a><a href="#nlph-checks">בדיקות לפני חתימה</a><a href="#nlph-faq">שאלות נפוצות</a></nav>
+		<style>.nldir-jump{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:2px 0 12px;padding-bottom:2px}.nldir-jump::-webkit-scrollbar{display:none}.nldir-jump a{flex:0 0 auto;font:500 14px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;color:#14213D;text-decoration:none;border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:9px 13px}.nldir-jump a:hover{border-color:#14213D}html{scroll-padding-top:90px}</style>
+		<?php else : ?>
 		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום וכל מה שחשוב לדעת לפני שמתקדמים.</p>
+		<?php endif; ?>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
@@ -1127,7 +1134,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		</aside>
 		<main class="nldir-main">
 			<div class="nldir-bar">
-				<div class="nldir-count"><strong id="nldir-total"><?php echo number_format( $total ); ?></strong> פרויקטים</div>
+				<h2 class="nldir-count" style="font:inherit;font-size:15px;margin:0;color:inherit;line-height:inherit"><strong id="nldir-total"><?php echo number_format( $total ); ?></strong> פרויקטים בקטלוג</h2><?php /* 1.72.513 (F8): an H2 above the grid */ ?>
 				<div class="nldir-chips" id="nldir-chips"></div>
 				<label class="nldir-sortw">מיון:
 					<select id="nldir-sort">
@@ -1153,3 +1160,4 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 }
 
 require __DIR__ . '/directory-assets.php';
+require_once __DIR__ . '/projects-hub.php'; // 1.72.513: the /projects/ hub (body after the grid, FAQ, tools)

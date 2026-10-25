@@ -209,6 +209,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( null !== $ids ) { return $ids; }
 		$ids = array();
 		if ( is_singular() ) { $p = get_post(); if ( $p ) { $ids = nadlan_nli_ids_in( $p->post_content ); } }
+		// 1.72.513: a page built in PHP (the /projects/ catalog, inc/projects-hub.php) names the tools it prints
+		$ids = array_values( array_intersect( (array) apply_filters( 'nadlan_nli_page_ids', $ids ), array_keys( nadlan_nli_tools() ) ) );
 		return $ids;
 	}
 
@@ -472,13 +474,15 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		$ids = nadlan_nli_page_ids();
 		if ( ! $ids ) { return; }
 		$tools = nadlan_nli_tools(); $out = array();
+		// 1.72.513: on an archive get_permalink() and get_post() are the first card's; the page is the archive itself, and its FAQ is printed elsewhere
+		$arch = is_post_type_archive() ? get_post_type_archive_link( (string) get_query_var( 'post_type' ) ) : '';
 		foreach ( $ids as $id ) {
 			$lang = nadlan_nli_tool_lang( $tools[ $id ] ); $t = nadlan_nli_t( $tools[ $id ], $lang );  // HAD-534 (d): name, description and inLanguage follow the page
 			$out[] = array( '@type' => 'SoftwareApplication', 'name' => $t['name'], 'description' => $t['desc'], 'applicationCategory' => $t['cat'], 'operatingSystem' => 'Any',
-				'inLanguage' => $lang, 'url' => get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
+				'inLanguage' => $lang, 'url' => $arch ? $arch : get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
 				'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ) );
 		}
-		$p = get_post(); $faq = $p ? nadlan_nli_faq( $p->post_content ) : array();
+		$p = $arch ? null : get_post(); $faq = $p ? nadlan_nli_faq( $p->post_content ) : array();
 		if ( $faq ) { $out[] = array( '@type' => 'FAQPage', 'url' => get_permalink(), 'mainEntity' => $faq ); }
 		echo '<script type="application/ld+json" id="nadlan-nli-ld">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $out ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 	}, 30 );

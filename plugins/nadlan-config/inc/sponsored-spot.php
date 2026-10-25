@@ -62,7 +62,9 @@ if ( ! function_exists( 'nadlan_ss_inject' ) ) {
 		// need at least 6 cards to inject after the 6th
 		if ( count( $parts ) <= 6 ) { return $html; }
 		$out = '';
+		$last = count( $parts ) - 1;
 		foreach ( $parts as $i => $part ) {
+			if ( $i === $last ) { $out .= $part; break; } // 1.72.513 (F7): the text after the last card link gets no closing tag of its own
 			if ( $part === '' ) { continue; }
 			$out .= $part . '</a>';
 			if ( $i === 5 ) { $out .= nadlan_ss_card( $mode ); } // after the 6th card

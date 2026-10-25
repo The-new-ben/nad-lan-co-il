@@ -1,0 +1,274 @@
+[
+{
+"slug": "hamedina",
+"title": "מגדלי כיכר המדינה, תל אביב",
+"link": "https://nad-lan.co.il/projects/hamedina/",
+"city": "תל אביב יפו",
+"dev": "חברת בעלי הקרקע בכיכר המדינה",
+"type": "new_build"
+},
+{
+"slug": "aurelia",
+"title": "Aurelia Sports - אורליה ספורט",
+"link": "https://nad-lan.co.il/projects/aurelia/",
+"city": "תל אביב יפו",
+"dev": "",
+"type": "new"
+},
+{
+"slug": "six-8-herbert-samuel-tel-aviv",
+"title": "הרברט סמואל SIX-8 תל אביב - דירות יוקרה בקו הראשון לים",
+"link": "https://nad-lan.co.il/projects/six-8-herbert-samuel-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "קבוצת אביב · לאני גרופ",
+"type": ""
+},
+{
+"slug": "h-infinity-somail-tel-aviv",
+"title": "H Infinity - מגדל אינפיניטי של קבוצת חג'ג' במתחם סומייל, תל אביב",
+"link": "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "קבוצת חג'ג'",
+"type": "new_build"
+},
+{
+"slug": "toha2-tel-aviv",
+"title": "ToHa2 תל אביב - משרדים להשכרה מגדל תוהא תל אביב",
+"link": "https://nad-lan.co.il/projects/toha2-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "אמות השקעות וגב-ים",
+"type": "משרדים ומסחר"
+},
+{
+"slug": "the-park-bnei-brak",
+"title": "THE PARK - משרדים להשכרה בני ברק ליד רכבת",
+"link": "https://nad-lan.co.il/projects/the-park-bnei-brak/",
+"city": "בני ברק",
+"dev": "אמות השקעות ואלייד נדל\"ן",
+"type": "משרדים ומסחר"
+},
+{
+"slug": "aura-pivko-bat-yam",
+"title": "אאורה פיבקו בת ים - פינוי בינוי, מגדל 32 קומות בשדרת העצמאות",
+"link": "https://nad-lan.co.il/projects/aura-pivko-bat-yam/",
+"city": "בת ים",
+"dev": "אאורה ישראל",
+"type": "urban_renewal"
+},
+{
+"slug": "duo-tel-aviv",
+"title": "מגדלי DUO תל אביב - פרוייקט דואו אבן גבירול תל אביב",
+"link": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "אפריקה ישראל מגורים",
+"type": "new_build"
+},
+{
+"slug": "yoo-tel-aviv",
+"title": "מגדלי YOO פארק צמרת - מגה יוקרה בעיצוב פיליפ סטארק",
+"link": "https://nad-lan.co.il/projects/yoo-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "קבוצת חבס",
+"type": "new_build"
+},
+{
+"slug": "meier-on-rothschild",
+"title": "מגדל מאייר על רוטשילד - מגדל יוקרה אייקוני של קבוצת חג׳ג׳",
+"link": "https://nad-lan.co.il/projects/meier-on-rothschild/",
+"city": "תל אביב יפו",
+"dev": "קבוצת חג׳ג׳",
+"type": "new_build"
+},
+{
+"slug": "marina-towers-herzliya",
+"title": "מגדלי המרינה הרצליה - פרויקט יוקרה על הים",
+"link": "https://nad-lan.co.il/projects/marina-towers-herzliya/",
+"city": "הרצליה",
+"dev": "ים סוף",
+"type": "new_build"
+},
+{
+"slug": "akirov-towers",
+"title": "מגדלי אקירוב פארק צמרת - פרויקט יוקרה של אלרוב",
+"link": "https://nad-lan.co.il/projects/akirov-towers/",
+"city": "תל אביב יפו",
+"dev": "אלרוב",
+"type": "new_build"
+},
+{
+"slug": "park-bavli",
+"title": "פארק בבלי - פרויקט יוקרה של קבוצת תשובה בתל אביב",
+"link": "https://nad-lan.co.il/projects/park-bavli/",
+"city": "תל אביב יפו",
+"dev": "קבוצת תשובה",
+"type": "new_build"
+},
+{
+"slug": "recanati-residence",
+"title": "RECANATI RESIDENCE נווה אביבים - פרויקט של אשדר",
+"link": "https://nad-lan.co.il/projects/recanati-residence/",
+"city": "תל אביב יפו",
+"dev": "אשדר",
+"type": "new_build"
+},
+{
+"slug": "ashdar-einstein",
+"title": "אשדר איינשטיין נווה אביבים - פרויקט בוטיק",
+"link": "https://nad-lan.co.il/projects/ashdar-einstein/",
+"city": "תל אביב יפו",
+"dev": "אשדר",
+"type": "new_build"
+},
+{
+"slug": "einstein-19",
+"title": "איינשטיין 19 רמת אביב - פינוי בינוי של אזורים",
+"link": "https://nad-lan.co.il/projects/einstein-19/",
+"city": "תל אביב יפו",
+"dev": "אזורים",
+"type": "urban_renewal"
+},
+{
+"slug": "einstein-tower",
+"title": "EINSTEIN TOWER רמת אביב - פרויקט מגורים של קבוצת חג׳ג׳",
+"link": "https://nad-lan.co.il/projects/einstein-tower/",
+"city": "תל אביב-יפו",
+"dev": "קבוצת חג׳ג׳",
+"type": "new"
+},
+{
+"slug": "migdalei-hayam-sde-dov",
+"title": "דיור מוגן בשדה דב - מגדלי הים התיכון",
+"link": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "מגדלי הים התיכון",
+"type": "new_build"
+},
+{
+"slug": "shikun-binui-sde-dov",
+"title": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109)",
+"link": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "שיכון ובינוי",
+"type": "new_build"
+},
+{
+"slug": "utopia-sde-dov",
+"title": "UTOPIA שדה דב - קבוצת נחמיאס",
+"link": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "קבוצת נחמיאס",
+"type": "new_build"
+},
+{
+"slug": "gindi-vogue-sde-dov",
+"title": "GINDI VOGUE שדה דב - פרוייקט גינדי ווג",
+"link": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "גינדי החזקות",
+"type": "new_build"
+},
+{
+"slug": "zohi-sde-dov",
+"title": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד",
+"link": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "לוינשטין, מבנה ואלייד נדלן",
+"type": "new_build"
+},
+{
+"slug": "dimri-yama-sde-dov",
+"title": "DIMRI YAMA שדה דב - י.ח דמרי",
+"link": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "י.ח דמרי",
+"type": "new_build"
+},
+{
+"slug": "ashira-sde-dov",
+"title": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר",
+"link": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "אביסרור משה ובניו",
+"type": "new_build"
+},
+{
+"slug": "first-sde-dov",
+"title": "FIRST שדה דב - קבוצת חג'ג'",
+"link": "https://nad-lan.co.il/projects/first-sde-dov/",
+"city": "תל אביב יפו",
+"dev": "קבוצת חג'ג'",
+"type": "new_build"
+},
+{
+"slug": "rainbow-tel-aviv",
+"title": "Rainbow Tel Aviv - ריינבו תל אביב",
+"link": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+"city": "תל אביב יפו",
+"dev": "ישראל קנדה",
+"type": "new_build"
+},
+{
+"slug": "%d7%90%d7%a0%d7%a6%d7%95-%d7%a1%d7%99%d7%a8%d7%a0%d7%99-38-42",
+"title": "אנצו סירני 38-42",
+"link": "https://nad-lan.co.il/projects/%d7%90%d7%a0%d7%a6%d7%95-%d7%a1%d7%99%d7%a8%d7%a0%d7%99-38-42/",
+"city": "גבעתים",
+"dev": "",
+"type": "tama38"
+},
+{
+"slug": "%d7%a9%d7%93%d7%a8%d7%95%d7%aa-%d7%94%d7%92%d7%a2%d7%aa%d7%95%d7%9f",
+"title": "שדרות הגעתון",
+"link": "https://nad-lan.co.il/projects/%d7%a9%d7%93%d7%a8%d7%95%d7%aa-%d7%94%d7%92%d7%a2%d7%aa%d7%95%d7%9f/",
+"city": "נהריה",
+"dev": "",
+"type": "tama38"
+},
+{
+"slug": "%d7%a8%d7%91%d7%99-%d7%a2%d7%a7%d7%99%d7%91%d7%90-2",
+"title": "רבי עקיבא",
+"link": "https://nad-lan.co.il/projects/%d7%a8%d7%91%d7%99-%d7%a2%d7%a7%d7%99%d7%91%d7%90-2/",
+"city": "נהריה",
+"dev": "",
+"type": "tama38"
+},
+{
+"slug": "%d7%92%d7%a9%d7%9d-%d7%90%d7%9c%d7%99-%d7%9b%d7%94%d7%9f",
+"title": "גשם - אלי כהן",
+"link": "https://nad-lan.co.il/projects/%d7%92%d7%a9%d7%9d-%d7%90%d7%9c%d7%99-%d7%9b%d7%94%d7%9f/",
+"city": "נהריה",
+"dev": "",
+"type": "tama38"
+},
+{
+"slug": "%d7%91%d7%a8-%d7%9b%d7%95%d7%9b%d7%91%d7%90-2",
+"title": "בר כוכבא",
+"link": "https://nad-lan.co.il/projects/%d7%91%d7%a8-%d7%9b%d7%95%d7%9b%d7%91%d7%90-2/",
+"city": "",
+"dev": "",
+"type": ""
+},
+{
+"slug": "%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%96-%d7%91%d7%95%d7%98%d7%99%d7%a0%d7%a1%d7%a7%d7%99",
+"title": "ויצמן-ז/בוטינסקי",
+"link": "https://nad-lan.co.il/projects/%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%96-%d7%91%d7%95%d7%98%d7%99%d7%a0%d7%a1%d7%a7%d7%99/",
+"city": "",
+"dev": "",
+"type": ""
+},
+{
+"slug": "%d7%93%d7%a0%d7%99%d7%94",
+"title": "דניה",
+"link": "https://nad-lan.co.il/projects/%d7%93%d7%a0%d7%99%d7%94/",
+"city": "",
+"dev": "",
+"type": ""
+},
+{
+"slug": "%d7%a9%d7%99-%d7%a2%d7%92%d7%a0%d7%95%d7%9f-%d7%94%d7%94%d7%a1%d7%aa%d7%93%d7%a8%d7%95%d7%aa",
+"title": "שי עגנון ההסתדרות",
+"link": "https://nad-lan.co.il/projects/%d7%a9%d7%99-%d7%a2%d7%92%d7%a0%d7%95%d7%9f-%d7%94%d7%94%d7%a1%d7%aa%d7%93%d7%a8%d7%95%d7%aa/",
+"city": "אשקלון",
+"dev": "",
+"type": "tama38"
+}
+]

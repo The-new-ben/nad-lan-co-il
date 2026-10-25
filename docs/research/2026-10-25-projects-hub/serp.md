@@ -61,3 +61,12 @@ Related searches: פרויקטים חדשים בתל אביב מחירים / ...
 - /projects/?city=... -> canonical /projects/ (fine). /city/תל אביב יפו/projects/ -> 404 now (old impressions).
 - /city/<city>/projects/ pages own their city queries (Rishon 415 impr pos 27.5, Herzliya, Ashkelon, Haifa...); two Ramat
   Gan variants (space vs hyphen) both get impressions: finding.
+
+## Query 3 (for the retarget Ben approved 25.10): דירות חדשות אכלוס מיידי תל אביב (Ben's Chrome, ~11:20)
+AI overview: PRESENT. Points to Yad2 "דירות חדשות ואכלוס קרוב בתל אביב"; examples Gindi TLV (Hashmonaim, immediate, mamad),
+Ficus 7-11 (south Jaffa, ready); refers to Yad2 presale/immediate board and Madlan.
+Organic: 1 Yad2 /yad1/newprojects/tel-aviv-area ("16 פרויקטים ודירות חדשות בתל אביב והסביבה לאכלוס קרוב") · 2 Madlan TLV projects ·
+3 Ashtrom /projects/projects-past ("דירות חדשות לאכלוס מיידי בפרויקטים מובילים") · 4 Yad2 TLV again · 5 nadlanmaster.co.il/תל-אביב/ ·
+6 Hagag residential · **7 nad-lan.co.il/new-projects/new-projects-tel-aviv/** (Google shows "פרויקטים חדשים בתל אביב: השוואת דירה
+מקבלן לפני חתימה") · 8 dirotpresale.co.il/דירות-חדשות-לאכלוס-מיידי-תל-אביב/ · 9 etzhashaked.co.il TLV category.
+=> page 4484 already ranks 7 for the immediate-occupancy intent: the retarget builds on a position it holds.

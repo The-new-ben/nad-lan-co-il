@@ -1,0 +1,21 @@
+{
+  "released": "1.72.513",
+  "from": "1.72.512",
+  "live_before": {
+    "nadlan-config.php": "3ae0d6a6e4ca58243b2e214655e030fe",
+    "inc/directory.php": "7872da9b4dcca60f45c53ca028adcd26",
+    "inc/instruments.php": "fff25ddca6a0cebb18bb532fbc676ffc",
+    "inc/sponsored-spot.php": "8175687ce440ce4bb33bb7c6b7a28d8e"
+  },
+  "post_before": {},
+  "state": "written, checks pending",
+  "at": "2026-10-25 10:40:58",
+  "files": {
+    "inc/projects-hub.php": "89cb3f62d517bca8a5fad95adb8d05fa",
+    "nadlan-config.php": "e7b530e714bce79866cc426608edd4f7",
+    "inc/directory.php": "b53384a2ff540959cd50e6d11cb49f81",
+    "inc/instruments.php": "f99b7878f243e0107a837821e2f81bc9",
+    "inc/sponsored-spot.php": "69821bdc51904f838042ff98f03c8b36"
+  },
+  "post_after": {}
+}
