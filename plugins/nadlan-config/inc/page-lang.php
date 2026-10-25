@@ -23,6 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'nadlan_pglang_lang' ) ) {
 	/** Language of the current page from its top-level ancestor slug, '' for none. */
 	function nadlan_pglang_lang() {
+		// 1.72.524: a page or post may declare its own language (meta _nadlan_page_lang), for an English article that lives at the
+		// root path (post 4962 /israel-mortgage-non-residents/ was English text inside lang="he-IL"); no URL change, no redirect
+		if ( is_singular() ) {
+			$own = (string) get_post_meta( get_queried_object_id(), '_nadlan_page_lang', true );
+			if ( in_array( $own, array( 'en', 'fr', 'ru', 'ar' ), true ) ) {
+				return $own;
+			}
+		}
 		if ( ! is_page() ) {
 			return '';
 		}
@@ -32,6 +40,14 @@ if ( ! function_exists( 'nadlan_pglang_lang' ) ) {
 		return in_array( $top, array( 'en', 'fr', 'ru', 'ar' ), true ) ? $top : '';
 	}
 }
+
+/* 1.72.524: the language override is set through the REST API by editors only (posts and pages) */
+add_action( 'init', function () {
+	foreach ( array( 'post', 'page' ) as $pt ) {
+		register_post_meta( $pt, '_nadlan_page_lang', array( 'type' => 'string', 'single' => true, 'show_in_rest' => true,
+			'auth_callback' => function () { return current_user_can( 'edit_posts' ); } ) );
+	}
+}, 20 );
 
 add_action( 'wp', function () {
 	$lang = nadlan_pglang_lang();
