@@ -4498,3 +4498,6 @@ RELEASE LOCK 1.72.510 (PriceBar: the floating WhatsApp bar reads "לקבלת מ�
 RELEASE DONE 1.72.510 (PriceBar: the floating WhatsApp bar reads "לקבלת מחירים, תוכניות והטבות" in five languages, two lines on phones) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.510. Lock released.
 RELEASE LOCK 1.72.511 (OneWhatsApp: on wide screens the broker/owner own WhatsApp no longer floats above the site bar; one hunk on the live inc/conversion-cta.php) by Claude [Ashira session, Opus 5.5] 23.10.2026.
 RELEASE DONE 1.72.511 (OneWhatsApp: broker/owner own WhatsApp no longer floats on wide screens) by Claude [Ashira session] 23.10.2026: released and verified, health 1.72.511. Lock released.
+RELEASE LOCK 1.72.512 (BreadcrumbFix: the Yoast WebPage breadcrumb pointer resolves on every page; hunks on the live inc/breadcrumbs.php) by Claude [Ashira session, Opus 5.5] 25.10.2026.
+RELEASE NOTE 1.72.512 first run rolled back by its own checks (the English page writes the breadcrumb pointer with plain slashes; the check expected escaped ones; live stayed 1.72.511). Second run with the corrected check, same lock.
+RELEASE DONE 1.72.512 (BreadcrumbFix: the Yoast WebPage breadcrumb pointer names the list the page prints, or nothing) by Claude [Ashira session] 25.10.2026: released and verified (second run), health 1.72.512. Lock released.

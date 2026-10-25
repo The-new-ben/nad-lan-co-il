@@ -109,8 +109,33 @@ add_action( 'wp_head', function () {
 		'itemListElement' => array_map( function ( $it, $i ) {
 			return array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => $it['name'], 'item' => $it['url'] );
 		}, array_values( $items ), array_keys( $items ) ) );
+	$ld['@id'] = nadlan_breadcrumbs_id(); // 1.72.512: the id Yoast's WebPage points to (the filter below), so the reference resolves
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 }, 22 );
+
+/* 1.72.512 (Ben 25.10.2026, Search Console on /projects/: "BreadcrumbList, Missing field itemListElement"): Yoast's WebPage
+ * piece points to "<url>#breadcrumb" on every page although its own breadcrumb piece is dropped (wpseo_schema_needs_breadcrumb,
+ * below), so Google read an empty BreadcrumbList on every page but the [nadlan_crumbs] pages. Now the pointer names the list
+ * this page really prints (the catalog trail above, or the page trail below), and a page that prints none points to nothing. */
+if ( ! function_exists( 'nadlan_breadcrumbs_id' ) ) {
+	function nadlan_breadcrumbs_id() {
+		$qid = get_queried_object_id();
+		if ( count( nadlan_breadcrumbs_items() ) >= 2 ) {
+			foreach ( array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ) as $pt ) {
+				if ( is_post_type_archive( $pt ) ) { return get_post_type_archive_link( $pt ) . '#breadcrumb'; }
+			}
+			return get_permalink( $qid ) . '#breadcrumb';
+		}
+		if ( is_page() && count( nadlan_page_crumbs( $qid ) ) >= 2 ) { return get_permalink( $qid ) . '#breadcrumb'; }
+		return '';
+	}
+}
+add_filter( 'wpseo_schema_webpage', function ( $data ) {
+	if ( ! is_array( $data ) || ! isset( $data['breadcrumb'] ) ) { return $data; }
+	$id = nadlan_breadcrumbs_id();
+	if ( '' === $id ) { unset( $data['breadcrumb'] ); } else { $data['breadcrumb'] = array( '@id' => $id ); }
+	return $data;
+}, 20 );
 
 /* 1.72.498 (HAD-592, Ben 22.10.2026: "title, breadcrumbs and h1 are never the same"): an opt-in trail for regular pages.
  * A page that holds [nadlan_crumbs] gets a visible trail at the top (above its H1, inc/page-h1.php) and a BreadcrumbList with

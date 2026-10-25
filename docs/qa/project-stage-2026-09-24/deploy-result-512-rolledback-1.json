@@ -1,0 +1,17 @@
+{
+  "released": "1.72.512",
+  "from": "1.72.511",
+  "live_before": {
+    "nadlan-config.php": "a72a7b10294b285a339dd912134dd880",
+    "inc/breadcrumbs.php": "a8a50a2ae0c87122931b6ada7134ebbb"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /projects/hamedina-en/?t512b=1",
+  "at": "2026-10-25 09:48:45",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "nadlan-config.php": "3ae0d6a6e4ca58243b2e214655e030fe",
+    "inc/breadcrumbs.php": "9313807291a0d9bd34f56cb10431922f"
+  }
+}
