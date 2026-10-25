@@ -52,7 +52,7 @@ if ( ! function_exists( 'nadlan_phl_dict' ) ) {
 	/** The Latin part of a project name ("VOGUE גינדי שדה דב" -> "VOGUE"), '' when there is none */
 	/** "ZOHI Sde Dov Tel Aviv apartments for sale - prices, plans" -> "ZOHI Sde Dov Tel Aviv" (the card name) */
 	function nadlan_phl_short( $t ) {
-		$s = preg_split( '/\s+(?:-|\x{2013}|\||:)\s+|:\s|\s+(?:long-term|apartments|квартиры|appartements|аренда|location)\b/iu', (string) $t, 2 );
+		$s = preg_split( '/\s+(?:-|\x{2013}|\||:)\s+|:\s|\s+(?:long-term|apartments?|квартир[а-я]*|appartements?|аренда|location|à vendre)(?![\w])/iu', (string) $t, 2 );
 		$s = trim( (string) ( $s[0] ?? $t ), " ,-" );
 		return mb_strlen( $s ) >= 3 ? $s : (string) $t;
 	}
@@ -200,9 +200,9 @@ if ( ! function_exists( 'nadlan_phl_abroad_html' ) ) {
 		$tool = 'en' === $lang ? do_shortcode( '[nadlan_tool id="nrm"]' ) : '';
 		return '<section class="nlph-sec" id="nlph-abroad"><p class="nlph-kick">' . esc_html( $d['abroad_kick'] ?? '' ) . '</p><h2>' . esc_html( $d['abroad_h'] ?? '' ) . '</h2><p class="nlph-lede">' . esc_html( $d['abroad_lede'] ?? '' ) . '</p>'
 			. '<h3>' . esc_html( $d['tax_h'] ?? '' ) . '</h3><div class="nlph-tw"><table class="nlph-pt nlphl-tax"><thead><tr>' . $tc . '</tr></thead><tbody>' . $rows . '</tbody></table></div><p class="nlph-src">' . esc_html( $d['tax_note'] ?? '' ) . '</p>'
-			. '<h3>' . esc_html( $d['calc_h'] ?? '' ) . '</h3><div class="nlphl-calc" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlphl-in"><label>' . esc_html( $d['calc_price'] ?? '' ) . '<input type="text" inputmode="numeric" value="3500000" data-i="price"></label>'
+			. '<h3>' . esc_html( $d['calc_h'] ?? '' ) . '</h3><form class="nlphl-calc" action="#" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlphl-in"><label>' . esc_html( $d['calc_price'] ?? '' ) . '<input type="text" inputmode="numeric" value="3500000" data-i="price"></label>'
 			. '<label>' . esc_html( $d['calc_buyer'] ?? '' ) . '<select data-i="buyer">' . $opt . '</select></label><label>' . esc_html( $d['calc_cur'] ?? '' ) . '<select data-i="cur">' . $cur . '</select></label></div><div class="nlphl-out">' . $out . '</div>'
-			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['calc_note'] ?? '', array( 'fxdate' => nadlan_phl_date( $fx['fx']['USD']['date'] ?? '', $d ) ) ) ) . '</p></div>'
+			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['calc_note'] ?? '', array( 'fxdate' => nadlan_phl_date( $fx['fx']['USD']['date'] ?? '', $d ) ) ) ) . '</p></form>'
 			. '<h3>' . esc_html( $d['mort_h'] ?? '' ) . '</h3><p>' . esc_html( $d['mort_p'] ?? '' ) . '</p>' . $tool
 			. '<h3>' . esc_html( $d['steps_h'] ?? '' ) . '</h3><ol class="nlphl-steps">' . $steps . '</ol>' . ( $links ? '<p class="nlph-area__l nlphl-links">' . $links . '</p>' : '' ) . '</section>';
 	}
@@ -281,7 +281,7 @@ if ( ! function_exists( 'nadlan_phl_assets' ) ) {
 			. '.nlphl-mt td[data-l]::before{content:attr(data-l) ": ";color:var(--mu);font-size:12.5px}.nlphl-mt td:empty{display:none}.nlph-tl{grid-template-columns:1fr}}</style>'
 			. '<script id="nlphl-js">(function(){var s=document.getElementById("nlph-market"),t=s&&s.querySelector(".nlphl-mt");if(t){var reg="",more=document.getElementById("nlphl-more");function f(){[].forEach.call(t.tBodies[0].rows,function(r){r.classList.toggle("is-off",!!reg&&r.dataset.reg!==reg);});t.classList.toggle("is-all",!!reg||t.dataset.all==="1");if(more)more.hidden=!!reg||t.dataset.all==="1";}'
 			. 's.querySelectorAll(".nlphl-chips button").forEach(function(b){b.addEventListener("click",function(){s.querySelectorAll(".nlphl-chips button").forEach(function(x){x.classList.toggle("is-on",x===b);});reg=b.dataset.reg;f();});});if(more)more.addEventListener("click",function(){t.dataset.all="1";f();});}'
-			. 'var c=document.querySelector(".nlphl-calc");if(c){var cfg={};try{cfg=JSON.parse(c.dataset.cfg);}catch(e){}var sep=cfg.sep||",";function N(n){return Math.round(n).toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g,sep);}'
+			. 'var c=document.querySelector(".nlphl-calc");if(c){c.addEventListener("submit",function(e){e.preventDefault();});var cfg={};try{cfg=JSON.parse(c.dataset.cfg);}catch(e){}var sep=cfg.sep||",";function N(n){return Math.round(n).toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g,sep);}'
 			. 'function tax(tr,p){var b=cfg.tracks[tr]||[],t=0,lo=0;for(var i=0;i<b.length;i++){var hi=b[i][0]===null?Infinity:b[i][0];if(p>lo){t+=(Math.min(p,hi)-lo)*b[i][1];}lo=hi;}return t;}'
 			. 'function run(){var p=+(c.querySelector("[data-i=price]").value.replace(/[^\\d]/g,""))||0,by=c.querySelector("[data-i=buyer]").value,cu=c.querySelector("[data-i=cur]").value,r=cu==="ILS"?1:(cfg.fx[cu]||1),sg={ILS:"₪",USD:"$",EUR:"€",GBP:"£"}[cu];'
 			. 'var tx=tax(by,p),ltv=p*(cfg.ltv[by]||0.5),lg=p*0.005*1.18,eq=p-ltv+tx,tot=eq+lg;function M(v){var a=sg+N(v/r);return cu==="ILS"?a:a+"  (₪"+N(v)+")";}'
