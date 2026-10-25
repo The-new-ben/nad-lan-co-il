@@ -50,6 +50,12 @@ if ( ! function_exists( 'nadlan_phl_dict' ) ) {
 		return preg_match( '/^[A-Za-z0-9 .&\'-]+$/', $k ) ? $k : '';
 	}
 	/** The Latin part of a project name ("VOGUE גינדי שדה דב" -> "VOGUE"), '' when there is none */
+	/** "ZOHI Sde Dov Tel Aviv apartments for sale - prices, plans" -> "ZOHI Sde Dov Tel Aviv" (the card name) */
+	function nadlan_phl_short( $t ) {
+		$s = preg_split( '/\s+(?:-|\x{2013}|\||:)\s+|:\s|\s+(?:long-term|apartments|квартиры|appartements|аренда|location)\b/iu', (string) $t, 2 );
+		$s = trim( (string) ( $s[0] ?? $t ), " ,-" );
+		return mb_strlen( $s ) >= 3 ? $s : (string) $t;
+	}
 	function nadlan_phl_pname( $name ) {
 		$s = trim( preg_replace( '/\s+/u', ' ', preg_replace( '/[\x{0590}-\x{05FF}״׳"]+/u', ' ', (string) $name ) ), " -|,()" );
 		return preg_match( '/[A-Za-z]{2,}/', $s ) ? $s : '';
@@ -64,10 +70,12 @@ if ( ! function_exists( 'nadlan_phl_featured_html' ) ) {
 		if ( ! $ids ) { return ''; }
 		$cards = ''; $items = array();
 		foreach ( $ids as $i => $id ) {
-			$t = wp_strip_all_tags( get_the_title( $id ) ); $u = get_permalink( $id );
-			$img = get_the_post_thumbnail_url( $id, 'medium_large' ); $city = nadlan_phl_city( (string) get_post_meta( $id, 'city', true ), $d ); // the city in the page's language, or nothing
+			$t = nadlan_phl_short( wp_strip_all_tags( get_the_title( $id ) ) ); $u = get_permalink( $id );
+			$img = get_the_post_thumbnail_url( $id, 'medium_large' );
+			if ( ! $img ) { $he = get_page_by_path( preg_replace( '/-(?:en|ru|fr|ar)$/', '', (string) get_post_field( 'post_name', $id ) ), OBJECT, 'nadlan_project' ); $img = $he ? get_the_post_thumbnail_url( $he->ID, 'medium_large' ) : ''; } /* the Hebrew project's picture */
+			$city = nadlan_phl_city( (string) get_post_meta( $id, 'city', true ), $d ); // the city in the page's language, or nothing
 			$cards .= '<a class="nlphl-card" href="' . esc_url( $u ) . '">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $t ) . '" loading="lazy" width="640" height="400">' : '' )
-				. '<b>' . esc_html( $t ) . '</b>' . ( $city ? '<small>' . esc_html( $city ) . '</small>' : '' ) . '<span>' . esc_html( $d['featured_more'] ?? '' ) . ' &rsaquo;</span></a>';
+				. '<h3 class="nlphl-card__t">' . esc_html( $t ) . '</h3>' . ( $city ? '<small>' . esc_html( $city ) . '</small>' : '' ) . '<span>' . esc_html( $d['featured_more'] ?? '' ) . ' &rsaquo;</span></a>';
 			$items[] = array( '@type' => 'ListItem', 'position' => $i + 1, 'url' => $u, 'name' => $t );
 		}
 		$GLOBALS['nadlan_phl_items'] = $items;
@@ -258,12 +266,12 @@ if ( ! function_exists( 'nadlan_phl_render' ) ) {
 
 if ( ! function_exists( 'nadlan_phl_assets' ) ) {
 	function nadlan_phl_assets() {
-		return '<style id="nlphl-css">.nlphl-jump{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:4px 0 16px;padding-bottom:2px}.nlphl-jump::-webkit-scrollbar{display:none}'
+		return '<style id="nlphl-css">.nlds-pagehead--inpage{direction:ltr!important;text-align:left}.nlds-pagehead--inpage .nlds-pagehead__title{font-family:"Noto Serif",Georgia,"Times New Roman",serif!important}.nlphl-jump{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:4px 0 16px;padding-bottom:2px}.nlphl-jump::-webkit-scrollbar{display:none}'
 			. '.nlphl-jump a{flex:0 0 auto;font:500 14px/1 "IBM Plex Sans",system-ui,sans-serif;color:#14213D;text-decoration:none;border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:9px 13px}.nlphl-jump a:hover{border-color:#14213D}html{scroll-padding-top:90px}'
 			. '.nlph--ltr th,.nlph--ltr td{text-align:left}.nlph--ltr .nlph-bars i{transform-origin:left}.nlph--ltr .nlph-ck__l{margin:6px 0 0 34px!important}'
 			. '.nlph--ltr .nlph-paybar i{border-left:0;border-right:1px solid #fff}.nlphl-lead{margin-top:6px}'
 			. '.nlphl-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0}.nlphl-card{display:flex;flex-direction:column;gap:4px;border:1px solid var(--li);border-radius:8px;overflow:hidden;text-decoration:none;color:var(--tx);background:#fff}'
-			. '.nlphl-card img{width:100%;height:150px;object-fit:cover;display:block}.nlphl-card b{padding:0 12px;color:var(--ink);font-size:15.5px;line-height:1.35}.nlphl-card small{padding:0 12px;color:var(--mu);font-size:13px}.nlphl-card span{padding:4px 12px 12px;color:var(--ac2);font-size:13.5px;font-weight:600}'
+			. '.nlphl-card img{width:100%;height:150px;object-fit:cover;display:block}.nlphl-card b,.nlphl-card .nlphl-card__t{padding:0 12px;margin:6px 0 0;color:var(--ink);font-size:15.5px;line-height:1.35;font-weight:700;font-family:inherit}.nlphl-card small{padding:0 12px;color:var(--mu);font-size:13px}.nlphl-card span{padding:4px 12px 12px;color:var(--ac2);font-size:13.5px;font-weight:600}'
 			. '.nlphl-mt{width:100%;border-collapse:collapse}.nlphl-mt tr.nlph-more,.nlphl-mt tr.is-off{display:none!important}.nlphl-mt.is-all tr.nlph-more{display:table-row!important}.nlphl-mt .nlph-p b{font-weight:600;color:var(--ink);white-space:nowrap}'
 			. '.nlphl-calc{border:1px solid var(--li);border-radius:8px;padding:16px;background:var(--bg)}.nlphl-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.nlphl-in label{display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--mu)}'
 			. '.nlphl-in input,.nlphl-in select{font:500 16px "IBM Plex Sans",system-ui,sans-serif;border:1px solid var(--li);border-radius:6px;padding:9px 10px;min-height:44px;background:#fff;color:var(--tx)}'
@@ -287,6 +295,12 @@ add_shortcode( 'nadlan_projects_hub', function ( $atts ) {
 	$lang = sanitize_key( $a['lang'] );
 	return function_exists( 'nadlan_ph_json' ) ? nadlan_phl_render( $lang ) : '';
 } );
+
+/* the language page says when its data was last updated (WebPage dateModified), as the Hebrew catalog does */
+add_filter( 'wpseo_schema_webpage', function ( $data ) {
+	if ( is_array( $data ) && is_page() && defined( 'NADLAN_PH_UPDATED' ) ) { $p = get_post(); if ( $p && false !== strpos( (string) $p->post_content, '[nadlan_projects_hub' ) ) { $data['dateModified'] = NADLAN_PH_UPDATED . 'T08:00:00+02:00'; } }
+	return $data;
+}, 20 );
 
 /* the English page mounts the non-resident mortgage tool of the instruments engine */
 add_filter( 'nadlan_nli_page_ids', function ( $ids ) {
