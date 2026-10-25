@@ -1,0 +1,21 @@
+{
+  "released": "1.72.520",
+  "from": "1.72.519",
+  "live_before": {
+    "nadlan-config.php": "f0e2b61b38e17c9df4c06a319aeaf986",
+    "inc/urban-map.php": "4bde9b53275dc3ff0cefab263ed6b9e3",
+    "inc/term-faq-schema.php": "06448f0d4d102451c66191802e7d0f4e"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /urban-renewal/map/",
+  "at": "2026-10-25 22:54:26",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "inc/urban-map-data.php": "8ba48d1ffd0a0fdff18601b91403d385",
+    "data/renewal-stats.json": "a26236692bb5748f7fa9b0b447122fbc",
+    "nadlan-config.php": "ce95abb4c6a5064754dd25b84eb7cbaf",
+    "inc/urban-map.php": "049d23669ea503b05e5f937574a4ee96",
+    "inc/term-faq-schema.php": "413f79a3617351f21616c336a305d5a0"
+  }
+}

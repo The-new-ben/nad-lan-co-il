@@ -4519,3 +4519,7 @@ RELEASE LOCK 1.72.518 (ProjectsLangLine: hunks on the live inc/projects-hub-lang
 RELEASE DONE 1.72.518 (ProjectsLangLine: visible language line on /projects/ and the en/ru/fr catalogs) by Claude [Ashira session] 25.10.2026: released and verified, health 1.72.518. Lock released.
 RELEASE LOCK 1.72.519 (HomeLangCatalog: hunks on the live inc/home-v2.php: the en/ru/fr home pages link their own catalog /xx/projects/) by Claude [Ashira session, Opus 5.5] 25.10.2026.
 RELEASE DONE 1.72.519 (HomeLangCatalog: the en/ru/fr home pages link their own catalog) by Claude [Ashira session] 25.10.2026: released and verified, health 1.72.519. Lock released.
+RELEASE LOCK 1.72.520 (RenewalMapData + GlossaryFAQ: new inc/urban-map-data.php + data/renewal-stats.json; hunks on the live inc/urban-map.php and inc/term-faq-schema.php) by Claude [Ashira session, Opus 5.5] 25.10.2026.
+RELEASE LOCK 1.72.520 second run (same content; the map keeps its existing H2 'מתחמי התחדשות עירונית בישראל לפי עיר' that an inherited check reads) by Claude [Ashira session, Opus 5.5] 25.10.2026.
+RELEASE LOCK 1.72.520 third run (fresh transient keys mapseo_v6/mapschema_v6: the first run left a 6-hour cached copy under v5) by Claude [Ashira session, Opus 5.5] 25.10.2026.
+RELEASE DONE 1.72.520 (RenewalMapData + GlossaryFAQ: the renewal map data layer, glossary FAQ from real questions, glossary Yoast meta via REST) by Claude [Ashira session] 25.10.2026: released and verified (third run: the first two rolled back on the inherited H2 check and a stale transient), health 1.72.520. Lock released.

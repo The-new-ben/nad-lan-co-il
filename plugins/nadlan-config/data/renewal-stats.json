@@ -1,0 +1,8061 @@
+{
+ "built": "2026-10-25",
+ "file": {
+  "source": "משרד הבינוי והשיכון, הרשות הממשלתית להתחדשות עירונית: מתחמי התחדשות עירונית (data.gov.il)",
+  "url": "https://data.gov.il/dataset/urban_renewal",
+  "resource": "f65a0daf-f737-49c5-9424-d378d52104f5",
+  "last_modified": "2026-08-15",
+  "total": 970,
+  "localities": 76,
+  "existing": 150202,
+  "proposed": 614896,
+  "additional": 459877,
+  "by_status": {
+   "תכנון ראשוני": {
+    "n": 111,
+    "existing": 30379,
+    "proposed": 115588
+   },
+   "תכנון סטטוטורי": {
+    "n": 282,
+    "existing": 46343,
+    "proposed": 196665
+   },
+   "תכנית מאושרת לפני מימוש": {
+    "n": 344,
+    "existing": 46996,
+    "proposed": 192279
+   },
+   "תכנית מאושרת במימוש": {
+    "n": 55,
+    "existing": 12310,
+    "proposed": 54506
+   },
+   "תכנית מאושרת אחרי רישוי": {
+    "n": 177,
+    "existing": 14174,
+    "proposed": 55799
+   },
+   "סטטוס לא תקין בקובץ": {
+    "n": 1,
+    "existing": 0,
+    "proposed": 59
+   }
+  },
+  "other_status": 0,
+  "tracks": {
+   "מיסוי": 363,
+   "ללא מסלול בקובץ": 302,
+   "רשויות": 232,
+   "טרם הוכרז": 73
+  },
+  "in_execution": 55,
+  "permits_units": 76806,
+  "permits_complexes": 232,
+  "by_year": {
+   "2000": 5,
+   "2001": 9,
+   "2002": 12,
+   "2003": 4,
+   "2004": 4,
+   "2005": 6,
+   "2006": 4,
+   "2007": 6,
+   "2008": 3,
+   "2009": 1,
+   "2010": 6,
+   "2011": 5,
+   "2012": 8,
+   "2013": 9,
+   "2014": 6,
+   "2015": 7,
+   "2016": 12,
+   "2017": 23,
+   "2018": 23,
+   "2019": 42,
+   "2020": 37,
+   "2021": 29,
+   "2022": 32,
+   "2023": 46,
+   "2024": 103,
+   "2025": 119,
+   "2026": 30
+  },
+  "last_declaration": "11/06/2026",
+  "cities": [
+   {
+    "city": "אבן יהודה",
+    "district": "המרכז",
+    "n": 2,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 2,
+    "existing": 216,
+    "proposed": 684,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.17
+   },
+   {
+    "city": "אור יהודה",
+    "district": "תל אביב",
+    "n": 9,
+    "approved": 7,
+    "exec": 2,
+    "tax": 6,
+    "auth": 2,
+    "undeclared": 1,
+    "existing": 2997,
+    "proposed": 10736,
+    "permits": 1028,
+    "last_decl": "23/12/2025",
+    "mult": 3.58
+   },
+   {
+    "city": "אור עקיבא",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 1,
+    "auth": 0,
+    "undeclared": 0,
+    "existing": 350,
+    "proposed": 1750,
+    "permits": 0,
+    "last_decl": "09/06/2016",
+    "mult": 5.0
+   },
+   {
+    "city": "אזור",
+    "district": "תל אביב",
+    "n": 5,
+    "approved": 3,
+    "exec": 1,
+    "tax": 1,
+    "auth": 2,
+    "undeclared": 2,
+    "existing": 1405,
+    "proposed": 4510,
+    "permits": 280,
+    "last_decl": "22/12/2021",
+    "mult": 3.21
+   },
+   {
+    "city": "אילת",
+    "district": "הדרום",
+    "n": 6,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 6,
+    "undeclared": 0,
+    "existing": 832,
+    "proposed": 2340,
+    "permits": 0,
+    "last_decl": "22/02/2025",
+    "mult": 2.81
+   },
+   {
+    "city": "אריאל",
+    "district": "יהודה ושומרון",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 378,
+    "proposed": 3154,
+    "permits": 0,
+    "last_decl": "26/11/2015",
+    "mult": 8.34
+   },
+   {
+    "city": "אשדוד",
+    "district": "הדרום",
+    "n": 17,
+    "approved": 13,
+    "exec": 2,
+    "tax": 7,
+    "auth": 0,
+    "undeclared": 10,
+    "existing": 3323,
+    "proposed": 16072,
+    "permits": 1846,
+    "last_decl": "07/08/2025",
+    "mult": 4.84
+   },
+   {
+    "city": "אשקלון",
+    "district": "הדרום",
+    "n": 9,
+    "approved": 5,
+    "exec": 0,
+    "tax": 1,
+    "auth": 4,
+    "undeclared": 4,
+    "existing": 2205,
+    "proposed": 11695,
+    "permits": 0,
+    "last_decl": "29/04/2026",
+    "mult": 5.3
+   },
+   {
+    "city": "באר יעקב",
+    "district": "המרכז",
+    "n": 3,
+    "approved": 1,
+    "exec": 0,
+    "tax": 1,
+    "auth": 1,
+    "undeclared": 1,
+    "existing": 1253,
+    "proposed": 11621,
+    "permits": 0,
+    "last_decl": "30/09/2024",
+    "mult": 9.27
+   },
+   {
+    "city": "באר שבע",
+    "district": "הדרום",
+    "n": 14,
+    "approved": 5,
+    "exec": 0,
+    "tax": 1,
+    "auth": 7,
+    "undeclared": 6,
+    "existing": 1955,
+    "proposed": 13722,
+    "permits": 242,
+    "last_decl": "28/12/2022",
+    "mult": 7.02
+   },
+   {
+    "city": "בית דגן",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 65,
+    "proposed": 233,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.58
+   },
+   {
+    "city": "בית שאן",
+    "district": "הצפון",
+    "n": 3,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 3,
+    "undeclared": 0,
+    "existing": 367,
+    "proposed": 1028,
+    "permits": 0,
+    "last_decl": "15/12/2024",
+    "mult": 2.8
+   },
+   {
+    "city": "בית שמש",
+    "district": "ירושלים",
+    "n": 8,
+    "approved": 4,
+    "exec": 1,
+    "tax": 3,
+    "auth": 3,
+    "undeclared": 2,
+    "existing": 1919,
+    "proposed": 11017,
+    "permits": 1813,
+    "last_decl": "01/06/2026",
+    "mult": 5.74
+   },
+   {
+    "city": "בני ברק",
+    "district": "תל אביב",
+    "n": 3,
+    "approved": 3,
+    "exec": 0,
+    "tax": 3,
+    "auth": 0,
+    "undeclared": 0,
+    "existing": 256,
+    "proposed": 551,
+    "permits": 106,
+    "last_decl": "17/01/2021",
+    "mult": 2.15
+   },
+   {
+    "city": "בנימינה גבעת עדה",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 384,
+    "proposed": 574,
+    "permits": 0,
+    "last_decl": "19/11/2000",
+    "mult": 1.49
+   },
+   {
+    "city": "בת ים",
+    "district": "תל אביב",
+    "n": 39,
+    "approved": 30,
+    "exec": 1,
+    "tax": 23,
+    "auth": 9,
+    "undeclared": 7,
+    "existing": 7509,
+    "proposed": 26163,
+    "permits": 6265,
+    "last_decl": "08/07/2025",
+    "mult": 3.48
+   },
+   {
+    "city": "גבעת שמואל",
+    "district": "המרכז",
+    "n": 4,
+    "approved": 4,
+    "exec": 0,
+    "tax": 3,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 734,
+    "proposed": 1955,
+    "permits": 511,
+    "last_decl": "28/04/2025",
+    "mult": 2.66
+   },
+   {
+    "city": "גבעתים",
+    "district": "תל אביב",
+    "n": 23,
+    "approved": 10,
+    "exec": 2,
+    "tax": 7,
+    "auth": 3,
+    "undeclared": 13,
+    "existing": 6972,
+    "proposed": 18155,
+    "permits": 2952,
+    "last_decl": "01/06/2026",
+    "mult": 2.6
+   },
+   {
+    "city": "גדרה",
+    "district": "המרכז",
+    "n": 3,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 2,
+    "existing": 628,
+    "proposed": 1957,
+    "permits": 0,
+    "last_decl": "15/05/2024",
+    "mult": 3.12
+   },
+   {
+    "city": "הוד השרון",
+    "district": "המרכז",
+    "n": 6,
+    "approved": 5,
+    "exec": 0,
+    "tax": 3,
+    "auth": 1,
+    "undeclared": 2,
+    "existing": 354,
+    "proposed": 1183,
+    "permits": 0,
+    "last_decl": "23/12/2025",
+    "mult": 3.34
+   },
+   {
+    "city": "הרצליה",
+    "district": "תל אביב",
+    "n": 24,
+    "approved": 12,
+    "exec": 2,
+    "tax": 11,
+    "auth": 5,
+    "undeclared": 8,
+    "existing": 4011,
+    "proposed": 13265,
+    "permits": 1256,
+    "last_decl": "28/04/2026",
+    "mult": 3.31
+   },
+   {
+    "city": "זכרון יעקב",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 61,
+    "proposed": 128,
+    "permits": 128,
+    "last_decl": "04/01/2007",
+    "mult": 2.1
+   },
+   {
+    "city": "חדרה",
+    "district": "חיפה",
+    "n": 20,
+    "approved": 14,
+    "exec": 1,
+    "tax": 7,
+    "auth": 8,
+    "undeclared": 5,
+    "existing": 1892,
+    "proposed": 12416,
+    "permits": 2937,
+    "last_decl": "31/12/2025",
+    "mult": 6.56
+   },
+   {
+    "city": "חולון",
+    "district": "תל אביב",
+    "n": 26,
+    "approved": 17,
+    "exec": 0,
+    "tax": 11,
+    "auth": 8,
+    "undeclared": 7,
+    "existing": 5198,
+    "proposed": 16647,
+    "permits": 1538,
+    "last_decl": "28/04/2026",
+    "mult": 3.2
+   },
+   {
+    "city": "חיפה",
+    "district": "חיפה",
+    "n": 46,
+    "approved": 24,
+    "exec": 2,
+    "tax": 6,
+    "auth": 10,
+    "undeclared": 30,
+    "existing": 5327,
+    "proposed": 22775,
+    "permits": 5061,
+    "last_decl": "28/04/2026",
+    "mult": 4.28
+   },
+   {
+    "city": "חצור הגלילית",
+    "district": "הצפון",
+    "n": 3,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 3,
+    "undeclared": 0,
+    "existing": 385,
+    "proposed": 1500,
+    "permits": 0,
+    "last_decl": "08/07/2025",
+    "mult": 3.9
+   },
+   {
+    "city": "טבריה",
+    "district": "הצפון",
+    "n": 6,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 2,
+    "undeclared": 4,
+    "existing": 743,
+    "proposed": 5243,
+    "permits": 0,
+    "last_decl": "13/01/2025",
+    "mult": 7.06
+   },
+   {
+    "city": "טירה",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 120,
+    "proposed": 300,
+    "permits": 0,
+    "last_decl": "22/10/2025",
+    "mult": 2.5
+   },
+   {
+    "city": "טירת כרמל",
+    "district": "חיפה",
+    "n": 12,
+    "approved": 6,
+    "exec": 0,
+    "tax": 3,
+    "auth": 2,
+    "undeclared": 7,
+    "existing": 1933,
+    "proposed": 9528,
+    "permits": 0,
+    "last_decl": "11/06/2026",
+    "mult": 4.93
+   },
+   {
+    "city": "יבנה",
+    "district": "המרכז",
+    "n": 15,
+    "approved": 10,
+    "exec": 3,
+    "tax": 7,
+    "auth": 4,
+    "undeclared": 4,
+    "existing": 2032,
+    "proposed": 8432,
+    "permits": 1361,
+    "last_decl": "08/07/2025",
+    "mult": 4.15
+   },
+   {
+    "city": "יהוד",
+    "district": "המרכז",
+    "n": 11,
+    "approved": 10,
+    "exec": 2,
+    "tax": 5,
+    "auth": 5,
+    "undeclared": 1,
+    "existing": 1840,
+    "proposed": 8323,
+    "permits": 3688,
+    "last_decl": "31/12/2025",
+    "mult": 4.52
+   },
+   {
+    "city": "יקנעם עילית",
+    "district": "הצפון",
+    "n": 5,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 2,
+    "undeclared": 3,
+    "existing": 784,
+    "proposed": 3521,
+    "permits": 0,
+    "last_decl": "25/12/2024",
+    "mult": 4.49
+   },
+   {
+    "city": "ירושלים",
+    "district": "ירושלים",
+    "n": 213,
+    "approved": 117,
+    "exec": 8,
+    "tax": 93,
+    "auth": 15,
+    "undeclared": 105,
+    "existing": 17461,
+    "proposed": 73808,
+    "permits": 12116,
+    "last_decl": "11/06/2026",
+    "mult": 4.23
+   },
+   {
+    "city": "כפר יונה",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 270,
+    "proposed": 850,
+    "permits": 0,
+    "last_decl": "07/01/2018",
+    "mult": 3.15
+   },
+   {
+    "city": "כפר סבא",
+    "district": "המרכז",
+    "n": 12,
+    "approved": 9,
+    "exec": 1,
+    "tax": 2,
+    "auth": 6,
+    "undeclared": 4,
+    "existing": 2410,
+    "proposed": 8949,
+    "permits": 364,
+    "last_decl": "11/06/2026",
+    "mult": 3.71
+   },
+   {
+    "city": "כפר קאסם",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 400,
+    "proposed": 1200,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.0
+   },
+   {
+    "city": "כרמיאל",
+    "district": "הצפון",
+    "n": 2,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 2,
+    "existing": 2030,
+    "proposed": 8100,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.99
+   },
+   {
+    "city": "לוד",
+    "district": "המרכז",
+    "n": 13,
+    "approved": 12,
+    "exec": 3,
+    "tax": 3,
+    "auth": 9,
+    "undeclared": 1,
+    "existing": 6112,
+    "proposed": 33556,
+    "permits": 1865,
+    "last_decl": "27/04/2025",
+    "mult": 5.49
+   },
+   {
+    "city": "מבשרת ציון",
+    "district": "ירושלים",
+    "n": 2,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 2,
+    "undeclared": 0,
+    "existing": 219,
+    "proposed": 849,
+    "permits": 0,
+    "last_decl": "22/10/2025",
+    "mult": 3.88
+   },
+   {
+    "city": "מגדל העמק",
+    "district": "הצפון",
+    "n": 6,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 6,
+    "undeclared": 0,
+    "existing": 592,
+    "proposed": 2606,
+    "permits": 0,
+    "last_decl": "15/12/2024",
+    "mult": 4.4
+   },
+   {
+    "city": "מזכרת בתיה",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 209,
+    "proposed": 1144,
+    "permits": 0,
+    "last_decl": "30/11/2020",
+    "mult": 5.47
+   },
+   {
+    "city": "מעלה אדומים",
+    "district": "יהודה ושומרון",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 1,
+    "auth": 0,
+    "undeclared": 0,
+    "existing": 147,
+    "proposed": 750,
+    "permits": 0,
+    "last_decl": "07/08/2025",
+    "mult": 5.1
+   },
+   {
+    "city": "נהריה",
+    "district": "הצפון",
+    "n": 12,
+    "approved": 3,
+    "exec": 2,
+    "tax": 0,
+    "auth": 6,
+    "undeclared": 6,
+    "existing": 1859,
+    "proposed": 11805,
+    "permits": 422,
+    "last_decl": "08/07/2025",
+    "mult": 6.35
+   },
+   {
+    "city": "נוף הגליל",
+    "district": "הצפון",
+    "n": 3,
+    "approved": 1,
+    "exec": 0,
+    "tax": 1,
+    "auth": 0,
+    "undeclared": 2,
+    "existing": 577,
+    "proposed": 3286,
+    "permits": 0,
+    "last_decl": "02/04/2023",
+    "mult": 5.69
+   },
+   {
+    "city": "נס ציונה",
+    "district": "המרכז",
+    "n": 10,
+    "approved": 8,
+    "exec": 1,
+    "tax": 2,
+    "auth": 4,
+    "undeclared": 4,
+    "existing": 1220,
+    "proposed": 4687,
+    "permits": 218,
+    "last_decl": "11/06/2026",
+    "mult": 3.84
+   },
+   {
+    "city": "נצרת",
+    "district": "הצפון",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 300,
+    "proposed": 900,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.0
+   },
+   {
+    "city": "נשר",
+    "district": "חיפה",
+    "n": 5,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 4,
+    "existing": 812,
+    "proposed": 5105,
+    "permits": 0,
+    "last_decl": "31/12/2025",
+    "mult": 6.29
+   },
+   {
+    "city": "נתיבות",
+    "district": "הדרום",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 116,
+    "proposed": 4350,
+    "permits": 0,
+    "last_decl": "26/09/2019",
+    "mult": 37.5
+   },
+   {
+    "city": "נתניה",
+    "district": "המרכז",
+    "n": 41,
+    "approved": 35,
+    "exec": 2,
+    "tax": 23,
+    "auth": 7,
+    "undeclared": 11,
+    "existing": 4279,
+    "proposed": 16585,
+    "permits": 6175,
+    "last_decl": "01/06/2026",
+    "mult": 3.88
+   },
+   {
+    "city": "סחנין",
+    "district": "הצפון",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 118,
+    "proposed": 456,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.86
+   },
+   {
+    "city": "עכו",
+    "district": "הצפון",
+    "n": 3,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 3,
+    "existing": 1156,
+    "proposed": 5780,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 5.0
+   },
+   {
+    "city": "עתלית",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 242,
+    "proposed": 867,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.58
+   },
+   {
+    "city": "פרדס חנה כרכור",
+    "district": "חיפה",
+    "n": 3,
+    "approved": 2,
+    "exec": 0,
+    "tax": 2,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 236,
+    "proposed": 696,
+    "permits": 0,
+    "last_decl": "20/08/2023",
+    "mult": 2.95
+   },
+   {
+    "city": "פתח תקוה",
+    "district": "המרכז",
+    "n": 37,
+    "approved": 25,
+    "exec": 2,
+    "tax": 16,
+    "auth": 10,
+    "undeclared": 11,
+    "existing": 8225,
+    "proposed": 29360,
+    "permits": 2774,
+    "last_decl": "28/04/2026",
+    "mult": 3.57
+   },
+   {
+    "city": "צורן קדימה",
+    "district": "המרכז",
+    "n": 2,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 1,
+    "existing": 526,
+    "proposed": 1574,
+    "permits": 224,
+    "last_decl": "11/11/2001",
+    "mult": 2.99
+   },
+   {
+    "city": "צפת",
+    "district": "הצפון",
+    "n": 5,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 4,
+    "undeclared": 1,
+    "existing": 723,
+    "proposed": 2370,
+    "permits": 0,
+    "last_decl": "22/03/2025",
+    "mult": 3.28
+   },
+   {
+    "city": "קרית אונו",
+    "district": "תל אביב",
+    "n": 17,
+    "approved": 17,
+    "exec": 1,
+    "tax": 16,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 2318,
+    "proposed": 6400,
+    "permits": 5326,
+    "last_decl": "07/08/2025",
+    "mult": 2.76
+   },
+   {
+    "city": "קרית אתא",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 28,
+    "proposed": 168,
+    "permits": 0,
+    "last_decl": "16/06/2002",
+    "mult": 6.0
+   },
+   {
+    "city": "קרית ביאליק",
+    "district": "חיפה",
+    "n": 5,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 3,
+    "undeclared": 2,
+    "existing": 1262,
+    "proposed": 5923,
+    "permits": 0,
+    "last_decl": "13/01/2025",
+    "mult": 4.69
+   },
+   {
+    "city": "קרית גת",
+    "district": "הדרום",
+    "n": 8,
+    "approved": 5,
+    "exec": 1,
+    "tax": 3,
+    "auth": 3,
+    "undeclared": 2,
+    "existing": 1841,
+    "proposed": 9955,
+    "permits": 1601,
+    "last_decl": "22/10/2025",
+    "mult": 5.41
+   },
+   {
+    "city": "קרית טבעון",
+    "district": "חיפה",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 0,
+    "existing": 420,
+    "proposed": 1248,
+    "permits": 0,
+    "last_decl": "22/12/2021",
+    "mult": 2.97
+   },
+   {
+    "city": "קרית ים",
+    "district": "חיפה",
+    "n": 12,
+    "approved": 5,
+    "exec": 2,
+    "tax": 1,
+    "auth": 4,
+    "undeclared": 7,
+    "existing": 3250,
+    "proposed": 15929,
+    "permits": 609,
+    "last_decl": "05/03/2023",
+    "mult": 4.9
+   },
+   {
+    "city": "קרית מוצקין",
+    "district": "חיפה",
+    "n": 2,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 1,
+    "existing": 280,
+    "proposed": 1349,
+    "permits": 0,
+    "last_decl": "04/01/2007",
+    "mult": 4.82
+   },
+   {
+    "city": "קרית מלאכי",
+    "district": "הדרום",
+    "n": 4,
+    "approved": 2,
+    "exec": 0,
+    "tax": 1,
+    "auth": 0,
+    "undeclared": 3,
+    "existing": 578,
+    "proposed": 3280,
+    "permits": 195,
+    "last_decl": "06/04/2022",
+    "mult": 5.67
+   },
+   {
+    "city": "קרית עקרון",
+    "district": "המרכז",
+    "n": 4,
+    "approved": 2,
+    "exec": 0,
+    "tax": 0,
+    "auth": 3,
+    "undeclared": 1,
+    "existing": 409,
+    "proposed": 1156,
+    "permits": 0,
+    "last_decl": "27/08/2022",
+    "mult": 2.83
+   },
+   {
+    "city": "קרית שמונה",
+    "district": "הצפון",
+    "n": 7,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 6,
+    "undeclared": 1,
+    "existing": 1389,
+    "proposed": 3899,
+    "permits": 0,
+    "last_decl": "08/12/2025",
+    "mult": 2.81
+   },
+   {
+    "city": "ראשון לציון",
+    "district": "המרכז",
+    "n": 19,
+    "approved": 8,
+    "exec": 3,
+    "tax": 5,
+    "auth": 6,
+    "undeclared": 8,
+    "existing": 3083,
+    "proposed": 9931,
+    "permits": 909,
+    "last_decl": "01/06/2026",
+    "mult": 3.22
+   },
+   {
+    "city": "רחובות",
+    "district": "המרכז",
+    "n": 14,
+    "approved": 8,
+    "exec": 2,
+    "tax": 2,
+    "auth": 10,
+    "undeclared": 2,
+    "existing": 4394,
+    "proposed": 15722,
+    "permits": 1462,
+    "last_decl": "08/12/2025",
+    "mult": 3.58
+   },
+   {
+    "city": "רמלה",
+    "district": "המרכז",
+    "n": 17,
+    "approved": 9,
+    "exec": 2,
+    "tax": 3,
+    "auth": 7,
+    "undeclared": 7,
+    "existing": 7053,
+    "proposed": 28773,
+    "permits": 1120,
+    "last_decl": "12/04/2026",
+    "mult": 4.08
+   },
+   {
+    "city": "רמת גן",
+    "district": "תל אביב",
+    "n": 78,
+    "approved": 45,
+    "exec": 0,
+    "tax": 34,
+    "auth": 0,
+    "undeclared": 44,
+    "existing": 5583,
+    "proposed": 18354,
+    "permits": 2987,
+    "last_decl": "29/04/2026",
+    "mult": 3.29
+   },
+   {
+    "city": "רמת השרון",
+    "district": "תל אביב",
+    "n": 8,
+    "approved": 7,
+    "exec": 2,
+    "tax": 2,
+    "auth": 5,
+    "undeclared": 1,
+    "existing": 949,
+    "proposed": 4141,
+    "permits": 1691,
+    "last_decl": "23/12/2019",
+    "mult": 4.36
+   },
+   {
+    "city": "רעננה",
+    "district": "המרכז",
+    "n": 6,
+    "approved": 6,
+    "exec": 0,
+    "tax": 5,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 206,
+    "proposed": 731,
+    "permits": 444,
+    "last_decl": "31/12/2025",
+    "mult": 3.55
+   },
+   {
+    "city": "שדרות",
+    "district": "הדרום",
+    "n": 5,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 1,
+    "undeclared": 4,
+    "existing": 1285,
+    "proposed": 4859,
+    "permits": 0,
+    "last_decl": "22/10/2025",
+    "mult": 3.78
+   },
+   {
+    "city": "שלומי",
+    "district": "הצפון",
+    "n": 1,
+    "approved": 0,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 174,
+    "proposed": 609,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.5
+   },
+   {
+    "city": "תל אביב יפו",
+    "district": "תל אביב",
+    "n": 55,
+    "approved": 49,
+    "exec": 4,
+    "tax": 38,
+    "auth": 10,
+    "undeclared": 7,
+    "existing": 6931,
+    "proposed": 21288,
+    "permits": 5292,
+    "last_decl": "11/06/2026",
+    "mult": 3.07
+   },
+   {
+    "city": "תל מונד",
+    "district": "המרכז",
+    "n": 1,
+    "approved": 1,
+    "exec": 0,
+    "tax": 0,
+    "auth": 0,
+    "undeclared": 1,
+    "existing": 102,
+    "proposed": 370,
+    "permits": 0,
+    "last_decl": "",
+    "mult": 3.63
+   }
+  ],
+  "approved": [
+   {
+    "name": "העצמאות",
+    "city": "אבן יהודה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "457-1253954",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005328820/310",
+    "ex": 114,
+    "prop": 364
+   },
+   {
+    "name": "הסביון",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2009",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000659159/310",
+    "ex": 184,
+    "prop": 808
+   },
+   {
+    "name": "העצמאות",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "552-0284398",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000343541/310",
+    "ex": 128,
+    "prop": 744
+   },
+   {
+    "name": "המלבן",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "555-0958454",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005129408/310",
+    "ex": 152,
+    "prop": 711
+   },
+   {
+    "name": "הכלנית",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תמל/2005",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000499601/310",
+    "ex": 114,
+    "prop": 656
+   },
+   {
+    "name": "שוק גולדמן",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "552-0147272",
+    "link": "",
+    "ex": 40,
+    "prop": 440
+   },
+   {
+    "name": "גניש",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "555-0469163",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000475101/310",
+    "ex": 66,
+    "prop": 400
+   },
+   {
+    "name": "יוסף חיים שלהבת",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "555-0931287",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005113184/310",
+    "ex": 60,
+    "prop": 255
+   },
+   {
+    "name": "שז\"ר",
+    "city": "אור עקיבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "353-0087494",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000238621/310",
+    "ex": 350,
+    "prop": 1750
+   },
+   {
+    "name": "בן גוריון",
+    "city": "אזור",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "554-0969592",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005135718/310",
+    "ex": 672,
+    "prop": 2337
+   },
+   {
+    "name": "יצחק שדה",
+    "city": "אזור",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2042",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005211826/310",
+    "ex": 459,
+    "prop": 1103
+   },
+   {
+    "name": "קפלן",
+    "city": "אזור",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "מאא/234",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5073412/310",
+    "ex": 96,
+    "prop": 390
+   },
+   {
+    "name": "המעפילים",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2022",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000390881/310",
+    "ex": 487,
+    "prop": 2557
+   },
+   {
+    "name": "הרב מימון",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2047",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6001022055/310",
+    "ex": 298,
+    "prop": 1703
+   },
+   {
+    "name": "הרותם-פלדות",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2021",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000383399/310",
+    "ex": 308,
+    "prop": 1436
+   },
+   {
+    "name": "יצחק הנשיא",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "603-1097815",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005230368/310",
+    "ex": 186,
+    "prop": 913
+   },
+   {
+    "name": "נאות ספיר",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2024",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005083836/310",
+    "ex": 200,
+    "prop": 900
+   },
+   {
+    "name": "הדקל",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "3/03/102/94",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6072140/310",
+    "ex": 150,
+    "prop": 846
+   },
+   {
+    "name": "הרב שאולי",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "3/03/104/67",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000262185/310",
+    "ex": 152,
+    "prop": 748
+   },
+   {
+    "name": "אבן עזרא",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "603-0271296",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000337311/310",
+    "ex": 144,
+    "prop": 669
+   },
+   {
+    "name": "אחד העם",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2023",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000397461/310",
+    "ex": 110,
+    "prop": 532
+   },
+   {
+    "name": "האצטדיון",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "603-0346031",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000373087/310",
+    "ex": 128,
+    "prop": 521
+   },
+   {
+    "name": "שפירא/ פעמוני העיר",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "3/03/104/66",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000261531/310",
+    "ex": 72,
+    "prop": 389
+   },
+   {
+    "name": "מרכז מסחרי רובע א'",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "603-0391219",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000396757/310",
+    "ex": 30,
+    "prop": 310
+   },
+   {
+    "name": "הרב שאולי - אביסרור",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "603-0704064",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000974759/310",
+    "ex": 40,
+    "prop": 233
+   },
+   {
+    "name": "אהוד/התחיה",
+    "city": "אשקלון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2038",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005041754/310",
+    "ex": 116,
+    "prop": 1035
+   },
+   {
+    "name": "בנימין",
+    "city": "אשקלון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2037",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005041756/310",
+    "ex": 132,
+    "prop": 927
+   },
+   {
+    "name": "עולי הגרדום",
+    "city": "אשקלון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2041",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005212662/310",
+    "ex": 160,
+    "prop": 792
+   },
+   {
+    "name": "פורטה דל סול",
+    "city": "אשקלון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "604-0190652",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000295769/310",
+    "ex": 72,
+    "prop": 406
+   },
+   {
+    "name": "שפירא",
+    "city": "אשקלון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "604-0669317",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000954335/310",
+    "ex": 290,
+    "prop": 370
+   },
+   {
+    "name": "הרצל",
+    "city": "באר יעקב",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "455-0321877",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000360913/310",
+    "ex": 456,
+    "prop": 1880
+   },
+   {
+    "name": "העיר העתיקה",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "605-0450627",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000426573/310",
+    "ex": 450,
+    "prop": 3000
+   },
+   {
+    "name": "יעקב אבינו - רגר",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2049/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005368340/310",
+    "ex": 136,
+    "prop": 952
+   },
+   {
+    "name": "אורות",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "605-0907691",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005098954/310",
+    "ex": 176,
+    "prop": 846
+   },
+   {
+    "name": "אורן",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "605-0881524",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005082674/310",
+    "ex": 42,
+    "prop": 641
+   },
+   {
+    "name": "שכונה ג'",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "605-0187609",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000294087/310",
+    "ex": 40,
+    "prop": 242
+   },
+   {
+    "name": "ירושלים הבירה",
+    "city": "בית שאן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "203-1060045",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2005207330/310",
+    "ex": 40,
+    "prop": 210
+   },
+   {
+    "name": "הנרקיס",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "102-1372283",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005403914/310",
+    "ex": 486,
+    "prop": 3467
+   },
+   {
+    "name": "ביאליק",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "102-0081398",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000235317/310",
+    "ex": 332,
+    "prop": 1936
+   },
+   {
+    "name": "רמת לח\"י",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תמל/2008",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000896869/310",
+    "ex": 176,
+    "prop": 1170
+   },
+   {
+    "name": "הסביון",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "102-0496190",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000652767/310",
+    "ex": 72,
+    "prop": 547
+   },
+   {
+    "name": "שוק פרדס כץ",
+    "city": "בני ברק",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "501-0193359",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000297365/310",
+    "ex": 72,
+    "prop": 292
+   },
+   {
+    "name": "בר כוכבא",
+    "city": "בני ברק",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "501-0344648",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000372443/310",
+    "ex": 150,
+    "prop": 153
+   },
+   {
+    "name": "ברוט 2-6",
+    "city": "בני ברק",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "501-0418848",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000410447/310",
+    "ex": 34,
+    "prop": 106
+   },
+   {
+    "name": "רמת חן",
+    "city": "בנימינה גבעת עדה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "ש/1053",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3068410/310",
+    "ex": 384,
+    "prop": 574
+   },
+   {
+    "name": "הרב לוי ניסנבוים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0191270",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000296305/310",
+    "ex": 424,
+    "prop": 1728
+   },
+   {
+    "name": "יוספטל מזרח",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0189183",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000295037/310",
+    "ex": 240,
+    "prop": 1078
+   },
+   {
+    "name": "שפרבר",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0969345",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000917981/310",
+    "ex": 272,
+    "prop": 992
+   },
+   {
+    "name": "כ\"ט בנובמבר (מאוחד)",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0749986",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5001003681/310",
+    "ex": 224,
+    "prop": 964
+   },
+   {
+    "name": "דליה",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2035",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005056678/310",
+    "ex": 168,
+    "prop": 780
+   },
+   {
+    "name": "כצנלסון 61-57",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0624999",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000927495/310",
+    "ex": 208,
+    "prop": 740
+   },
+   {
+    "name": "השבטים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0151878",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000274343/310",
+    "ex": 144,
+    "prop": 714
+   },
+   {
+    "name": "אילת",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0492876",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000636831/310",
+    "ex": 192,
+    "prop": 700
+   },
+   {
+    "name": "שער צפון העיר",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0316588",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000358181/310",
+    "ex": 133,
+    "prop": 564
+   },
+   {
+    "name": "כצנלסון",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "בי/517",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000270103/310",
+    "ex": 104,
+    "prop": 560
+   },
+   {
+    "name": "הגיבורים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "בי/515",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000267991/310",
+    "ex": 126,
+    "prop": 506
+   },
+   {
+    "name": "מצדה",
+    "city": "בת ים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "502-0143628",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000267757/310",
+    "ex": 128,
+    "prop": 490
+   },
+   {
+    "name": "הרב מימון",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-1070549",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005213670/310",
+    "ex": 128,
+    "prop": 448
+   },
+   {
+    "name": "רוטשילד",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0196659",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000299051/310",
+    "ex": 163,
+    "prop": 390
+   },
+   {
+    "name": "ביל\"ו",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0142976",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000267529/310",
+    "ex": 101,
+    "prop": 374
+   },
+   {
+    "name": "הנביאים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "בי/456",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5074114/310",
+    "ex": 198,
+    "prop": 345
+   },
+   {
+    "name": "מתחם התחייה - רהב",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0727248",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000989895/310",
+    "ex": 90,
+    "prop": 340
+   },
+   {
+    "name": "איילון- יוספטל",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0436261",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000418807/310",
+    "ex": 112,
+    "prop": 300
+   },
+   {
+    "name": "החשמונאים/יוספטל",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0612366",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000920885/310",
+    "ex": 68,
+    "prop": 267
+   },
+   {
+    "name": "הרצל 59-61",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0154997",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000276583/310",
+    "ex": 64,
+    "prop": 246
+   },
+   {
+    "name": "שינדלר",
+    "city": "בת ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "502-0178285",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000289357/310",
+    "ex": 84,
+    "prop": 234
+   },
+   {
+    "name": "סוקולוב - ירושלים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0201483",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000301647/310",
+    "ex": 51,
+    "prop": 220
+   },
+   {
+    "name": "חנה סנש",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0189720",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000295273/310",
+    "ex": 48,
+    "prop": 186
+   },
+   {
+    "name": "הרב קוקיס",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0160044",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000279489/310",
+    "ex": 24,
+    "prop": 137
+   },
+   {
+    "name": "מגדל הים (רוטשילד 2)",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0147678",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000271293/310",
+    "ex": 24,
+    "prop": 135
+   },
+   {
+    "name": "מבצע סיני 25-27",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0341255",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000370659/310",
+    "ex": 34,
+    "prop": 134
+   },
+   {
+    "name": "הרב מימון - אנה פרנק",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0310714",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000355463/310",
+    "ex": 32,
+    "prop": 128
+   },
+   {
+    "name": "בלפור",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "בי/479",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5076396/310",
+    "ex": 24,
+    "prop": 120
+   },
+   {
+    "name": "העצמאות בלפור",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0145177",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000269355/310",
+    "ex": 24,
+    "prop": 120
+   },
+   {
+    "name": "בלפור 81",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "502-0346007",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000373071/310",
+    "ex": 29,
+    "prop": 105
+   },
+   {
+    "name": "גיורא",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2006",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000911447/310",
+    "ex": 522,
+    "prop": 1240
+   },
+   {
+    "name": "שער העיר (בן גוריון)",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "427-0169672",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000284839/310",
+    "ex": 112,
+    "prop": 367
+   },
+   {
+    "name": "בן גוריון 10-16",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "427-0462259",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000441105/310",
+    "ex": 64,
+    "prop": 204
+   },
+   {
+    "name": "בן גוריון",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "427-0124453",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000256053/310",
+    "ex": 36,
+    "prop": 144
+   },
+   {
+    "name": "ההסתדרות דרום",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "503-0204412",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000303305/310",
+    "ex": 914,
+    "prop": 2679
+   },
+   {
+    "name": "ערבי נחל",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "גב/490",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5073314/310",
+    "ex": 126,
+    "prop": 530
+   },
+   {
+    "name": "ההסתדרות צפון",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "503-0220798",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000312195/310",
+    "ex": 168,
+    "prop": 500
+   },
+   {
+    "name": "לביא",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0723387",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000987083/310",
+    "ex": 69,
+    "prop": 299
+   },
+   {
+    "name": "גב/599 - מתחם ציפורן",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0153338",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000275335/310",
+    "ex": 0,
+    "prop": 222
+   },
+   {
+    "name": "גב/661 - גולומב 2-28",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0549048",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000887083/310",
+    "ex": 68,
+    "prop": 214
+   },
+   {
+    "name": "המרי-ניצנה",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0393967",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000398009/310",
+    "ex": 42,
+    "prop": 105
+   },
+   {
+    "name": "ילדי טהרן",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0277228",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000340191/310",
+    "ex": 48,
+    "prop": 103
+   },
+   {
+    "name": "המאבק 4-10",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "503-0300525",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000350505/310",
+    "ex": 32,
+    "prop": 96
+   },
+   {
+    "name": "בראשית 3-7",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "503-0147389",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000271073/310",
+    "ex": 24,
+    "prop": 75
+   },
+   {
+    "name": "ויצמן",
+    "city": "גדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "460-0951426",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005125282/310",
+    "ex": 45,
+    "prop": 246
+   },
+   {
+    "name": "הפרסה",
+    "city": "הוד השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "423-0861534",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005070174/310",
+    "ex": 62,
+    "prop": 306
+   },
+   {
+    "name": "בן גוריון (21-39)",
+    "city": "הוד השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "423-0962225",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005131560/310",
+    "ex": 76,
+    "prop": 202
+   },
+   {
+    "name": "מתחם הרשות",
+    "city": "הוד השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "423-1002005",
+    "link": "",
+    "ex": 56,
+    "prop": 186
+   },
+   {
+    "name": "גיורא דרום",
+    "city": "הוד השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "423-0932863",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005114166/310",
+    "ex": 48,
+    "prop": 152
+   },
+   {
+    "name": "מגדיאל 55",
+    "city": "הוד השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "423-0855858",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005067780/310",
+    "ex": 32,
+    "prop": 97
+   },
+   {
+    "name": "שיכון ויצמן",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "504-0222943",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000313125/310",
+    "ex": 576,
+    "prop": 1843
+   },
+   {
+    "name": "שיכון דרום",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0315895",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000357895/310",
+    "ex": 216,
+    "prop": 661
+   },
+   {
+    "name": "מעונות שרה",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0351403",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000375991/310",
+    "ex": 186,
+    "prop": 645
+   },
+   {
+    "name": "ביל\"ו",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0413336",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000407579/310",
+    "ex": 146,
+    "prop": 474
+   },
+   {
+    "name": "גורדון",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0960450",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005130582/310",
+    "ex": 128,
+    "prop": 425
+   },
+   {
+    "name": "הר מירון/נווה ישראל",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "504-0373290",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000387377/310",
+    "ex": 124,
+    "prop": 400
+   },
+   {
+    "name": "מנדלבלט",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "504-0306563",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000353425/310",
+    "ex": 96,
+    "prop": 332
+   },
+   {
+    "name": "הכוזרי",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0138628",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000264303/310",
+    "ex": 66,
+    "prop": 204
+   },
+   {
+    "name": "קהילת ציון העצמאות",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-1123066",
+    "link": "",
+    "ex": 33,
+    "prop": 108
+   },
+   {
+    "name": "רמב\"ם",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0177014",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000288809/310",
+    "ex": 33,
+    "prop": 104
+   },
+   {
+    "name": "סוקולוב 91-95",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-1079086",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005218812/310",
+    "ex": 31,
+    "prop": 102
+   },
+   {
+    "name": "הדר 6",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "504-0839241",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005058080/310",
+    "ex": 30,
+    "prop": 92
+   },
+   {
+    "name": "מרבד הקסמים",
+    "city": "זכרון יעקב",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "ש/1318",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3073874/310",
+    "ex": 61,
+    "prop": 128
+   },
+   {
+    "name": "גבעת אולגה - אזורים",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2015",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005044078/310",
+    "ex": 352,
+    "prop": 1864
+   },
+   {
+    "name": "סלע-ביתר",
+    "city": "חדרה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "302-0400754",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000401295/310",
+    "ex": 197,
+    "prop": 1452
+   },
+   {
+    "name": "אלי כהן",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-0555813",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000890673/310",
+    "ex": 198,
+    "prop": 1300
+   },
+   {
+    "name": "השוק",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-0870329",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005075694/310",
+    "ex": 55,
+    "prop": 755
+   },
+   {
+    "name": "העירייה",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חד/1212",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3069158/310",
+    "ex": 0,
+    "prop": 754
+   },
+   {
+    "name": "רסקו",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "302-0892729",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005089774/310",
+    "ex": 94,
+    "prop": 630
+   },
+   {
+    "name": "סמטת יהודית",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-0890368",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005088154/310",
+    "ex": 44,
+    "prop": 446
+   },
+   {
+    "name": "הלל יפה/ג'בוטינסקי",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-1150747",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005263032/310",
+    "ex": 64,
+    "prop": 436
+   },
+   {
+    "name": "העלייה השנייה",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "302-0615021",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000922195/310",
+    "ex": 62,
+    "prop": 400
+   },
+   {
+    "name": "נווה אליעזר",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-1218403",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005306556/310",
+    "ex": 67,
+    "prop": 310
+   },
+   {
+    "name": "בוטוקובסקי 30-32",
+    "city": "חדרה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "302-1326263",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005375308/310",
+    "ex": 40,
+    "prop": 277
+   },
+   {
+    "name": "הגדוד העברי",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "302-0707414",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000976677/310",
+    "ex": 36,
+    "prop": 274
+   },
+   {
+    "name": "מבוא חדרה מזרח",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חד/1264",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3069288/310",
+    "ex": 14,
+    "prop": 132
+   },
+   {
+    "name": "הנשיא ששת הימים",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "302-0493205",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000637021/310",
+    "ex": 29,
+    "prop": 120
+   },
+   {
+    "name": "קוגל",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0874917",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005078404/310",
+    "ex": 844,
+    "prop": 2986
+   },
+   {
+    "name": "יוספטל",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0858258",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005068624/310",
+    "ex": 534,
+    "prop": 1340
+   },
+   {
+    "name": "ראש פינה",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-0970186",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005136014/310",
+    "ex": 242,
+    "prop": 838
+   },
+   {
+    "name": "אילת 22-28",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0978825",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005141152/310",
+    "ex": 128,
+    "prop": 538
+   },
+   {
+    "name": "החצב",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0867267",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005073800/310",
+    "ex": 126,
+    "prop": 414
+   },
+   {
+    "name": "ההסתדרות שנקר",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0668343",
+    "link": "",
+    "ex": 112,
+    "prop": 408
+   },
+   {
+    "name": "מבצע סיני",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0858993",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005068946/310",
+    "ex": 84,
+    "prop": 381
+   },
+   {
+    "name": "התותחנים",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-1169796",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005274750/310",
+    "ex": 74,
+    "prop": 316
+   },
+   {
+    "name": "פיכמן",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-0548057",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000886511/310",
+    "ex": 116,
+    "prop": 235
+   },
+   {
+    "name": "אילת 72 - 74",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0963314",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005132232/310",
+    "ex": 36,
+    "prop": 174
+   },
+   {
+    "name": "שנקר 10-14",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-1024231",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005185714/310",
+    "ex": 46,
+    "prop": 168
+   },
+   {
+    "name": "המעפילים",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-1146851",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005261138/310",
+    "ex": 36,
+    "prop": 155
+   },
+   {
+    "name": "ההסתדרות 143 - 145",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0988105",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005147490/310",
+    "ex": 34,
+    "prop": 136
+   },
+   {
+    "name": "ההסתדרות 80",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-0544395",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000884593/310",
+    "ex": 30,
+    "prop": 130
+   },
+   {
+    "name": "חנקין 57 -61",
+    "city": "חולון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "505-0911826",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005100976/310",
+    "ex": 40,
+    "prop": 96
+   },
+   {
+    "name": "סרלין",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-1072578",
+    "link": "",
+    "ex": 32,
+    "prop": 89
+   },
+   {
+    "name": "שנקר 55",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "505-0884395",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005084272/310",
+    "ex": 24,
+    "prop": 78
+   },
+   {
+    "name": "סטרומה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1034636",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005192416/310",
+    "ex": 548,
+    "prop": 2424
+   },
+   {
+    "name": "המלך שלמה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "304-0638478",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000935179/310",
+    "ex": 219,
+    "prop": 1212
+   },
+   {
+    "name": "חביבה רייך",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חפ/2187",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3069904/310",
+    "ex": 311,
+    "prop": 930
+   },
+   {
+    "name": "רוטשילד",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "304-0624213",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000927011/310",
+    "ex": 168,
+    "prop": 760
+   },
+   {
+    "name": "העלייה השנייה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "304-0540534",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000882565/310",
+    "ex": 175,
+    "prop": 715
+   },
+   {
+    "name": "הפארק שפרינצק",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1164656",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005271510/310",
+    "ex": 121,
+    "prop": 615
+   },
+   {
+    "name": "החותרים",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1253764",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005328716/310",
+    "ex": 109,
+    "prop": 561
+   },
+   {
+    "name": "מח\"ל",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חפ/2218",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3072045/310",
+    "ex": 224,
+    "prop": 504
+   },
+   {
+    "name": "ברל כצנלסון",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חפ/2281",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3075060/310",
+    "ex": 126,
+    "prop": 486
+   },
+   {
+    "name": "פייזר",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-0834648",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005055436/310",
+    "ex": 104,
+    "prop": 480
+   },
+   {
+    "name": "חיל הים",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "304-0540567",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000882579/310",
+    "ex": 119,
+    "prop": 467
+   },
+   {
+    "name": "יואב",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1014257",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005180338/310",
+    "ex": 98,
+    "prop": 465
+   },
+   {
+    "name": "המלך אמציה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "304-0137240",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000263561/310",
+    "ex": 73,
+    "prop": 437
+   },
+   {
+    "name": "צבר-שקמה - חפ/1086/יב",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1268291",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005337666/310",
+    "ex": 96,
+    "prop": 432
+   },
+   {
+    "name": "צה\"ל 63-69 (מתחם 16 קריית אליעזר)",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1199405",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005292520/310",
+    "ex": 96,
+    "prop": 430
+   },
+   {
+    "name": "העליה השניה 20",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-0921189",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005107076/310",
+    "ex": 77,
+    "prop": 315
+   },
+   {
+    "name": "ברנר 2-18",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1129055",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005249998/310",
+    "ex": 55,
+    "prop": 256
+   },
+   {
+    "name": "המלך חזקיהו",
+    "city": "חיפה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "חפ/2277",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3073586/310",
+    "ex": 28,
+    "prop": 210
+   },
+   {
+    "name": "אריה לוין",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-0740860",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000998037/310",
+    "ex": 80,
+    "prop": 163
+   },
+   {
+    "name": "נתיב חן",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-0753681",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3001005611/310",
+    "ex": 32,
+    "prop": 155
+   },
+   {
+    "name": "פינסקר",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-0982157",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005143576/310",
+    "ex": 32,
+    "prop": 142
+   },
+   {
+    "name": "יציאת אירופה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חפ/2280",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3073492/310",
+    "ex": 26,
+    "prop": 126
+   },
+   {
+    "name": "זלמן שניאור 7-13",
+    "city": "חיפה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "304-1031871",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005190596/310",
+    "ex": 28,
+    "prop": 110
+   },
+   {
+    "name": "מורדות הכרמל הצרפתי",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "חפ/2278",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3074147/310",
+    "ex": 33,
+    "prop": 73
+   },
+   {
+    "name": "הרצל מוצקין ביאליק",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-1108448",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005236922/310",
+    "ex": 470,
+    "prop": 1354
+   },
+   {
+    "name": "בן צבי",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-0897462",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005092786/310",
+    "ex": 123,
+    "prop": 734
+   },
+   {
+    "name": "גורדון (גיורא)",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-1171016",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005275430/310",
+    "ex": 124,
+    "prop": 718
+   },
+   {
+    "name": "ביאליק הרצל",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-0895417",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005091550/310",
+    "ex": 80,
+    "prop": 480
+   },
+   {
+    "name": "גן נדיר",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-0951137",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005125128/310",
+    "ex": 48,
+    "prop": 293
+   },
+   {
+    "name": "שרת 41-45",
+    "city": "טירת כרמל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "355-1248947",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005325678/310",
+    "ex": 48,
+    "prop": 280
+   },
+   {
+    "name": "האלון",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "404-0111179",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000248477/310",
+    "ex": 160,
+    "prop": 816
+   },
+   {
+    "name": "הגלבוע התבור",
+    "city": "יבנה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "404-0878033",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005080450/310",
+    "ex": 182,
+    "prop": 764
+   },
+   {
+    "name": "החרמון",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "404-0147124",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000270803/310",
+    "ex": 91,
+    "prop": 487
+   },
+   {
+    "name": "דואני דרום",
+    "city": "יבנה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "404-0905216",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005097542/310",
+    "ex": 96,
+    "prop": 480
+   },
+   {
+    "name": "דואני העצמאות",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "404-0133314",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000261159/310",
+    "ex": 80,
+    "prop": 442
+   },
+   {
+    "name": "הכרמל",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "404-0117507",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000252361/310",
+    "ex": 54,
+    "prop": 286
+   },
+   {
+    "name": "השחף",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "404-0781385",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001024109/310",
+    "ex": 64,
+    "prop": 273
+   },
+   {
+    "name": "הדרור דואני",
+    "city": "יבנה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "404-0806786",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005039152/310",
+    "ex": 80,
+    "prop": 244
+   },
+   {
+    "name": "הלילך העצמאות",
+    "city": "יבנה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "404-1010107",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005161016/310",
+    "ex": 48,
+    "prop": 192
+   },
+   {
+    "name": "הדרור",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "404-0769760",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001016385/310",
+    "ex": 32,
+    "prop": 60
+   },
+   {
+    "name": "מרכז יהוד",
+    "city": "יהוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "יד/6156",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4059722/310",
+    "ex": 80,
+    "prop": 1501
+   },
+   {
+    "name": "מוהליבר",
+    "city": "יהוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2004",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99000978291/310",
+    "ex": 336,
+    "prop": 1344
+   },
+   {
+    "name": "גיורא-קדושי מצרים-הרצל (ביאקובסקי)",
+    "city": "יהוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2016",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99001013147/310",
+    "ex": 332,
+    "prop": 1154
+   },
+   {
+    "name": "בן צבי כצנלסון",
+    "city": "יהוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "411-1049899",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005201620/310",
+    "ex": 320,
+    "prop": 1083
+   },
+   {
+    "name": "התמר",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "יד/6185",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4065969/310",
+    "ex": 200,
+    "prop": 678
+   },
+   {
+    "name": "העצמאות",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "יד/6177",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4066227/310",
+    "ex": 68,
+    "prop": 449
+   },
+   {
+    "name": "אשכנזי",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "411-0738609",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000996669/310",
+    "ex": 114,
+    "prop": 444
+   },
+   {
+    "name": "ויצמן 48-52",
+    "city": "יהוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "411-0985259",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005145516/310",
+    "ex": 76,
+    "prop": 300
+   },
+   {
+    "name": "קדושי מצרים 17-23",
+    "city": "יהוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "411-0810697",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005041462/310",
+    "ex": 56,
+    "prop": 202
+   },
+   {
+    "name": "שוק אשכנזי",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "יד/מק/6175",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4072383/310",
+    "ex": 45,
+    "prop": 168
+   },
+   {
+    "name": "נוף לכרמל",
+    "city": "יקנעם עילית",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2052",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005274888/310",
+    "ex": 454,
+    "prop": 2146
+   },
+   {
+    "name": "הנורית",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2020",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005042480/310",
+    "ex": 648,
+    "prop": 2613
+   },
+   {
+    "name": "דרך חברון הגדול",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-0771600",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001017747/310",
+    "ex": 348,
+    "prop": 1698
+   },
+   {
+    "name": "מרכז קליטה גילה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0532325",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000876429/310",
+    "ex": 287,
+    "prop": 1414
+   },
+   {
+    "name": "מעגלי יבנה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0836809",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005056616/310",
+    "ex": 376,
+    "prop": 1287
+   },
+   {
+    "name": "שטרן",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0826685",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005050634/310",
+    "ex": 336,
+    "prop": 1068
+   },
+   {
+    "name": "בר יוחאי 5-15",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-0511923",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000753843/310",
+    "ex": 376,
+    "prop": 1066
+   },
+   {
+    "name": "צוף",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0701391",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000973217/310",
+    "ex": 182,
+    "prop": 844
+   },
+   {
+    "name": "ההרדוף",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0948356",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005123446/310",
+    "ex": 178,
+    "prop": 800
+   },
+   {
+    "name": "קוסטה ריקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-0561167",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000893701/310",
+    "ex": 175,
+    "prop": 741
+   },
+   {
+    "name": "קטמונים 06",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0855585",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005067670/310",
+    "ex": 125,
+    "prop": 667
+   },
+   {
+    "name": "גוואטמלה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1048420",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005200806/310",
+    "ex": 186,
+    "prop": 629
+   },
+   {
+    "name": "ברזיל 4-12",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0678920",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000959627/310",
+    "ex": 151,
+    "prop": 618
+   },
+   {
+    "name": "אפרסמון",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0403428",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000402571/310",
+    "ex": 116,
+    "prop": 603
+   },
+   {
+    "name": "הקצין סילבר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0928176",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005111370/310",
+    "ex": 134,
+    "prop": 603
+   },
+   {
+    "name": "איסלנד",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1062678",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005208800/310",
+    "ex": 80,
+    "prop": 590
+   },
+   {
+    "name": "קולומביה 6-10",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1072446",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005214716/310",
+    "ex": 131,
+    "prop": 575
+   },
+   {
+    "name": "משולש פת",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1121920",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005245172/310",
+    "ex": 96,
+    "prop": 550
+   },
+   {
+    "name": "התחדשות עירונית ברחוב בן-יוסף 22-48",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1011840",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005162078/310",
+    "ex": 97,
+    "prop": 543
+   },
+   {
+    "name": "נווה יעקב 28-32",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0736884",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000995643/310",
+    "ex": 111,
+    "prop": 539
+   },
+   {
+    "name": "המחתרות",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0817742",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005045634/310",
+    "ex": 105,
+    "prop": 518
+   },
+   {
+    "name": "שמואל הנביא פיתוחי חותם",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0993345",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005150714/310",
+    "ex": 156,
+    "prop": 476
+   },
+   {
+    "name": "יצחק שדה/השומר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-1002054",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005156158/310",
+    "ex": 150,
+    "prop": 474
+   },
+   {
+    "name": "התנופה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0098251",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000243383/310",
+    "ex": 129,
+    "prop": 469
+   },
+   {
+    "name": "קולומביה 28-29",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0496463",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000655097/310",
+    "ex": 96,
+    "prop": 454
+   },
+   {
+    "name": "סן מרטין 22-26 בר יוחאי 12,14",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1063957",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005209594/310",
+    "ex": 119,
+    "prop": 447
+   },
+   {
+    "name": "אלכסנדריון",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0944512",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005121260/310",
+    "ex": 119,
+    "prop": 439
+   },
+   {
+    "name": "דרך חברון דרום",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "11401",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1075709/310",
+    "ex": 72,
+    "prop": 430
+   },
+   {
+    "name": "שלום יהודה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1010123",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005161020/310",
+    "ex": 109,
+    "prop": 429
+   },
+   {
+    "name": "הנורית - קוסטה ריקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-0109876",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000247779/310",
+    "ex": 100,
+    "prop": 428
+   },
+   {
+    "name": "הנטקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0510610",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000747565/310",
+    "ex": 138,
+    "prop": 425
+   },
+   {
+    "name": "בר יוחאי 1-3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1033869",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005191924/310",
+    "ex": 92,
+    "prop": 418
+   },
+   {
+    "name": "קלנר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0468355",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000474471/310",
+    "ex": 117,
+    "prop": 417
+   },
+   {
+    "name": "בית הדוידקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1087774",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005224214/310",
+    "ex": 35,
+    "prop": 410
+   },
+   {
+    "name": "הארזים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0309914",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000355095/310",
+    "ex": 154,
+    "prop": 401
+   },
+   {
+    "name": "מתחם 12 קטמונים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0666032",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000952339/310",
+    "ex": 95,
+    "prop": 392
+   },
+   {
+    "name": "גולומב 23",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0440735",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000421221/310",
+    "ex": 112,
+    "prop": 389
+   },
+   {
+    "name": "הגפן",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0737866",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000996145/310",
+    "ex": 81,
+    "prop": 383
+   },
+   {
+    "name": "יתד בברזיל",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1030428",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005189618/310",
+    "ex": 78,
+    "prop": 352
+   },
+   {
+    "name": "סן מרטין 1",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0987016",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005146800/310",
+    "ex": 85,
+    "prop": 345
+   },
+   {
+    "name": "אבשלום חביב מתחם ד",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0992032",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005149986/310",
+    "ex": 65,
+    "prop": 332
+   },
+   {
+    "name": "סן מרטין 4-6",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1069764",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005213134/310",
+    "ex": 65,
+    "prop": 321
+   },
+   {
+    "name": "גואטמלה 25,27,29",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1075902",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005216752/310",
+    "ex": 85,
+    "prop": 320
+   },
+   {
+    "name": "הרצל 54-58, רב צעיר 3-5ף הברון הירש 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1021278",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005184392/310",
+    "ex": 49,
+    "prop": 311
+   },
+   {
+    "name": "טהון 1-2",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0268219",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000335913/310",
+    "ex": 59,
+    "prop": 310
+   },
+   {
+    "name": "נהוראי",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0778035",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001022041/310",
+    "ex": 80,
+    "prop": 308
+   },
+   {
+    "name": "בר יוחאי 18",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1114305",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005240378/310",
+    "ex": 70,
+    "prop": 301
+   },
+   {
+    "name": "המקשר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "11195",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1075470/310",
+    "ex": 68,
+    "prop": 298
+   },
+   {
+    "name": "טשרניחובסקי",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0690859",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000966579/310",
+    "ex": 108,
+    "prop": 298
+   },
+   {
+    "name": "קטמונים 11",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0855668",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005067692/310",
+    "ex": 72,
+    "prop": 287
+   },
+   {
+    "name": "קדושי בבל 10-14 (עולי הגרדום)",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0967174",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005134070/310",
+    "ex": 48,
+    "prop": 278
+   },
+   {
+    "name": "מתחם הציונות ( מתחם מערבי)",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0835371",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005055746/310",
+    "ex": 64,
+    "prop": 274
+   },
+   {
+    "name": "פנמה 2,6",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0581850",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000903747/310",
+    "ex": 48,
+    "prop": 267
+   },
+   {
+    "name": "עמק היובל",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0373522",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000387429/310",
+    "ex": 60,
+    "prop": 245
+   },
+   {
+    "name": "ברגר על הפארק",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1008176",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005159830/310",
+    "ex": 72,
+    "prop": 242
+   },
+   {
+    "name": "דרך חברון 108-110",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1133180",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005252656/310",
+    "ex": 64,
+    "prop": 242
+   },
+   {
+    "name": "שטרן 37,39,41",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0409656",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000405813/310",
+    "ex": 68,
+    "prop": 240
+   },
+   {
+    "name": "בורוכוב 2-4",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0452615",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000427661/310",
+    "ex": 36,
+    "prop": 233
+   },
+   {
+    "name": "בר כוכבא 18-24",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1074848",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005216138/310",
+    "ex": 53,
+    "prop": 233
+   },
+   {
+    "name": "שטרן 34-42",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0317016",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000358453/310",
+    "ex": 67,
+    "prop": 226
+   },
+   {
+    "name": "טהון 5",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0329516",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000364969/310",
+    "ex": 54,
+    "prop": 226
+   },
+   {
+    "name": "דרך חברון 137-141",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0608125",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000918843/310",
+    "ex": 72,
+    "prop": 220
+   },
+   {
+    "name": "הנרייטה סאלד",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0879577",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005081390/310",
+    "ex": 40,
+    "prop": 218
+   },
+   {
+    "name": "שטרן 29,31,33",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0334334",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000367057/310",
+    "ex": 68,
+    "prop": 216
+   },
+   {
+    "name": "בוליביה 14",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0574178",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000900251/310",
+    "ex": 56,
+    "prop": 216
+   },
+   {
+    "name": "בן זכאי 31",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1025295",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005186454/310",
+    "ex": 55,
+    "prop": 210
+   },
+   {
+    "name": "פ.צ. חיות 24",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "101-0452490",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000427577/310",
+    "ex": 32,
+    "prop": 209
+   },
+   {
+    "name": "שמואל הנביא עץ הדר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0960567",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005130630/310",
+    "ex": 76,
+    "prop": 202
+   },
+   {
+    "name": "פארן 4",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1225895",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005311084/310",
+    "ex": 63,
+    "prop": 200
+   },
+   {
+    "name": "ארץ חפץ",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0484477",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000578555/310",
+    "ex": 38,
+    "prop": 198
+   },
+   {
+    "name": "דהומיי 6",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1213339",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005302908/310",
+    "ex": 56,
+    "prop": 195
+   },
+   {
+    "name": "האחלמה 5",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1197102",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005291050/310",
+    "ex": 36,
+    "prop": 193
+   },
+   {
+    "name": "בורוכוב",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1004969",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005157874/310",
+    "ex": 48,
+    "prop": 191
+   },
+   {
+    "name": "חיים חביב 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1019611",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005183484/310",
+    "ex": 50,
+    "prop": 185
+   },
+   {
+    "name": "לב הכרם",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0967398",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005134268/310",
+    "ex": 43,
+    "prop": 184
+   },
+   {
+    "name": "מלכי ישראל 59,61 תחכמוני 32",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1181007",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005281558/310",
+    "ex": 38,
+    "prop": 175
+   },
+   {
+    "name": "שלום יהודה/דרך חברון",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-1115294",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005240844/310",
+    "ex": 41,
+    "prop": 174
+   },
+   {
+    "name": "קוסטה ריקה 56",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1078146",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005218124/310",
+    "ex": 32,
+    "prop": 165
+   },
+   {
+    "name": "פרנקפורטר 2-4",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1308501",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005363528/310",
+    "ex": 32,
+    "prop": 165
+   },
+   {
+    "name": "דהומיי 8",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0699587",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000971947/310",
+    "ex": 32,
+    "prop": 161
+   },
+   {
+    "name": "אנטיגונוס",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0515635",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000779705/310",
+    "ex": 46,
+    "prop": 152
+   },
+   {
+    "name": "טהון 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0201467",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000301643/310",
+    "ex": 36,
+    "prop": 152
+   },
+   {
+    "name": "שטרן 47",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0714188",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000980721/310",
+    "ex": 34,
+    "prop": 152
+   },
+   {
+    "name": "סן מרטין 21-19",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1019157",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005183160/310",
+    "ex": 36,
+    "prop": 148
+   },
+   {
+    "name": "אור גנים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0345298",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000372755/310",
+    "ex": 28,
+    "prop": 146
+   },
+   {
+    "name": "שלום יהודה 26",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0783548",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001025521/310",
+    "ex": 48,
+    "prop": 144
+   },
+   {
+    "name": "ברל לוקר 13",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0397752",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000399927/310",
+    "ex": 24,
+    "prop": 143
+   },
+   {
+    "name": "אשר 2-6",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0791319",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001030381/310",
+    "ex": 48,
+    "prop": 141
+   },
+   {
+    "name": "מרגולין 1 השומר 21",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1242700",
+    "link": "",
+    "ex": 36,
+    "prop": 141
+   },
+   {
+    "name": "מקסיקו",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0885392",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005084796/310",
+    "ex": 32,
+    "prop": 138
+   },
+   {
+    "name": "בוליביה 1",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0596270",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000912175/310",
+    "ex": 24,
+    "prop": 136
+   },
+   {
+    "name": "מתחם בר אילן שמעון חכם",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1133792",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005252978/310",
+    "ex": 49,
+    "prop": 135
+   },
+   {
+    "name": "פרבשטיין (חדש)",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0395152",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000398673/310",
+    "ex": 32,
+    "prop": 130
+   },
+   {
+    "name": "טהון 4",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0244947",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000324203/310",
+    "ex": 30,
+    "prop": 129
+   },
+   {
+    "name": "דרך חברון 116",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0935189",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005115838/310",
+    "ex": 40,
+    "prop": 127
+   },
+   {
+    "name": "סן מרטין 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0565317",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000895925/310",
+    "ex": 30,
+    "prop": 126
+   },
+   {
+    "name": "שמעוני התקופה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0550541",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000887983/310",
+    "ex": 31,
+    "prop": 126
+   },
+   {
+    "name": "הנורית 8",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0963124",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005132116/310",
+    "ex": 24,
+    "prop": 125
+   },
+   {
+    "name": "ברזיל 14",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0764878",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001012763/310",
+    "ex": 30,
+    "prop": 123
+   },
+   {
+    "name": "סן מרטין 23-25",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0477240",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000533605/310",
+    "ex": 34,
+    "prop": 122
+   },
+   {
+    "name": "קוסטה ריקה 22-24",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1079771",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005219264/310",
+    "ex": 25,
+    "prop": 122
+   },
+   {
+    "name": "חזון ציון 7-9",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1097559",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005230198/310",
+    "ex": 41,
+    "prop": 119
+   },
+   {
+    "name": "קוסטה ריקה 113",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0986067",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005146174/310",
+    "ex": 25,
+    "prop": 117
+   },
+   {
+    "name": "טשרניחובסקי 52-54-55",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0899880",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005094114/310",
+    "ex": 48,
+    "prop": 114
+   },
+   {
+    "name": "הבית בשומר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0950493",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005124814/310",
+    "ex": 30,
+    "prop": 114
+   },
+   {
+    "name": "מעלות דפנה 125",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1019140",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005183158/310",
+    "ex": 26,
+    "prop": 110
+   },
+   {
+    "name": "עין צורים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0791467",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001030483/310",
+    "ex": 24,
+    "prop": 107
+   },
+   {
+    "name": "גורדון 7-9",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1182138",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005282402/310",
+    "ex": 24,
+    "prop": 107
+   },
+   {
+    "name": "טשרניחובסקי 51-53",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0794214",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005031948/310",
+    "ex": 37,
+    "prop": 106
+   },
+   {
+    "name": "קליינמן",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0790865",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001030115/310",
+    "ex": 26,
+    "prop": 100
+   },
+   {
+    "name": "הרצל 88 רחל המשוררת 20",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0889154",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005087060/310",
+    "ex": 27,
+    "prop": 100
+   },
+   {
+    "name": "רבנו גרשום",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0870824",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005075972/310",
+    "ex": 26,
+    "prop": 97
+   },
+   {
+    "name": "פסח חברוני 120",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0811653",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005041902/310",
+    "ex": 27,
+    "prop": 95
+   },
+   {
+    "name": "שדרות הרצל 97",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0995183",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005151700/310",
+    "ex": 28,
+    "prop": 89
+   },
+   {
+    "name": "רחל אמנו 46-48",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-1071448",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005214136/310",
+    "ex": 35,
+    "prop": 80
+   },
+   {
+    "name": "אגריפס 92",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0770743",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1001017103/310",
+    "ex": 27,
+    "prop": 72
+   },
+   {
+    "name": "ברוריה 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "101-0842617",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1005060166/310",
+    "ex": 24,
+    "prop": 71
+   },
+   {
+    "name": "אלעזר בן יאיר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "101-0112557",
+    "link": "https://mavat.iplan.gov.il/SV4/1/1000249329/310",
+    "ex": 14,
+    "prop": 48
+   },
+   {
+    "name": "בגין",
+    "city": "כפר יונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "428-0624353",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000927051/310",
+    "ex": 270,
+    "prop": 850
+   },
+   {
+    "name": "תקומה",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "405-0209585",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000306109/310",
+    "ex": 294,
+    "prop": 1068
+   },
+   {
+    "name": "התפוז",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-1153733",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005264852/310",
+    "ex": 161,
+    "prop": 530
+   },
+   {
+    "name": "כיסופים",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-1084821",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005222318/310",
+    "ex": 160,
+    "prop": 481
+   },
+   {
+    "name": "אגרון הפרדס",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-0844001",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005061196/310",
+    "ex": 122,
+    "prop": 387
+   },
+   {
+    "name": "מתחם הגפן 1-4",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-1207463",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005300038/310",
+    "ex": 64,
+    "prop": 234
+   },
+   {
+    "name": "עלייה - דוד רמז דרומי",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-0876995",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005079798/310",
+    "ex": 66,
+    "prop": 233
+   },
+   {
+    "name": "סוקולוב",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-0832915",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005054312/310",
+    "ex": 42,
+    "prop": 157
+   },
+   {
+    "name": "ששת הימים",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "כס/22/5/ג",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4072082/310",
+    "ex": 40,
+    "prop": 120
+   },
+   {
+    "name": "עמרמי-שרת כפר סבא",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "405-0854299",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005067134/310",
+    "ex": 24,
+    "prop": 84
+   },
+   {
+    "name": "לוד דרום",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2053",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005246926/310",
+    "ex": 875,
+    "prop": 6456
+   },
+   {
+    "name": "העיר העתיקה",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2007",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99000979661/310",
+    "ex": 1172,
+    "prop": 5296
+   },
+   {
+    "name": "דוד המלך",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2046/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005344082/310",
+    "ex": 727,
+    "prop": 4074
+   },
+   {
+    "name": "שלמה המלך",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2012",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005070912/310",
+    "ex": 982,
+    "prop": 3613
+   },
+   {
+    "name": "הס",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2002/ב",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005050572/310",
+    "ex": 0,
+    "prop": 2720
+   },
+   {
+    "name": "כיכר קומנדו",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "406-0768135",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001015211/310",
+    "ex": 246,
+    "prop": 1695
+   },
+   {
+    "name": "לאה גולדברג",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2002/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005050568/310",
+    "ex": 256,
+    "prop": 1313
+   },
+   {
+    "name": "אילת",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2013",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005045116/310",
+    "ex": 256,
+    "prop": 911
+   },
+   {
+    "name": "גרינבוים הציונות",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "406-0488072",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000607371/310",
+    "ex": 124,
+    "prop": 742
+   },
+   {
+    "name": "בית הקשתות",
+    "city": "לוד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/1064/א",
+    "link": "",
+    "ex": 64,
+    "prop": 543
+   },
+   {
+    "name": "חטיבת יפתח",
+    "city": "לוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "406-0845198",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005061842/310",
+    "ex": 60,
+    "prop": 488
+   },
+   {
+    "name": "כצנלסון",
+    "city": "לוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "406-0699488",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000971911/310",
+    "ex": 24,
+    "prop": 130
+   },
+   {
+    "name": "העצמאות",
+    "city": "מגדל העמק",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "221-0764670",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2001012613/310",
+    "ex": 63,
+    "prop": 226
+   },
+   {
+    "name": "שדרות אליהו/ השיכונים",
+    "city": "מזכרת בתיה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "453-0897736",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005092914/310",
+    "ex": 209,
+    "prop": 1144
+   },
+   {
+    "name": "הקרן",
+    "city": "מעלה אדומים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "יוש/40/4/1/420",
+    "link": "",
+    "ex": 147,
+    "prop": 750
+   },
+   {
+    "name": "פינסקר",
+    "city": "נהריה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "ג/19385",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2000204899/310",
+    "ex": 36,
+    "prop": 187
+   },
+   {
+    "name": "ישורון",
+    "city": "נהריה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "ג/16256",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2103970/310",
+    "ex": 28,
+    "prop": 165
+   },
+   {
+    "name": "הפינה",
+    "city": "נהריה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "ג/15621",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2102318/310",
+    "ex": 32,
+    "prop": 133
+   },
+   {
+    "name": "תירוש",
+    "city": "נוף הגליל",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "212-0944231",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2005121066/310",
+    "ex": 120,
+    "prop": 778
+   },
+   {
+    "name": "מרגולין",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "407-1087006",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005223658/310",
+    "ex": 264,
+    "prop": 868
+   },
+   {
+    "name": "הסתדרות",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "407-1048248",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005200730/310",
+    "ex": 220,
+    "prop": 700
+   },
+   {
+    "name": "נחמיה",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "407-0871731",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005076500/310",
+    "ex": 271,
+    "prop": 640
+   },
+   {
+    "name": "יד אליעזר",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "נס/96/3",
+    "link": "",
+    "ex": 116,
+    "prop": 599
+   },
+   {
+    "name": "השוק העירוני",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "נס/136/3",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4065966/310",
+    "ex": 40,
+    "prop": 460
+   },
+   {
+    "name": "הטייסים",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "407-0977595",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005140414/310",
+    "ex": 120,
+    "prop": 387
+   },
+   {
+    "name": "העצמאות",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "407-0850719",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005065094/310",
+    "ex": 44,
+    "prop": 148
+   },
+   {
+    "name": "הבנים",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "נס/202",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4069698/310",
+    "ex": 0,
+    "prop": 12
+   },
+   {
+    "name": "דרך השלום/בר מוחא",
+    "city": "נשר",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2031/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005290850/310",
+    "ex": 136,
+    "prop": 915
+   },
+   {
+    "name": "שד' בן צבי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0912956",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005101770/310",
+    "ex": 392,
+    "prop": 1558
+   },
+   {
+    "name": "יאנוש קורצ'ק",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1246792",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005324388/310",
+    "ex": 304,
+    "prop": 1155
+   },
+   {
+    "name": "נחום",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1147735",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005261700/310",
+    "ex": 264,
+    "prop": 1129
+   },
+   {
+    "name": "הרומנים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "נת/542/ו",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4104784/310",
+    "ex": 89,
+    "prop": 881
+   },
+   {
+    "name": "ש\"י עגנון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תמל/2001",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000746583/310",
+    "ex": 208,
+    "prop": 872
+   },
+   {
+    "name": "הרב קוק בורוכוב",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1217389",
+    "link": "",
+    "ex": 236,
+    "prop": 721
+   },
+   {
+    "name": "שניאור/שלונסקי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0896662",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005092362/310",
+    "ex": 168,
+    "prop": 672
+   },
+   {
+    "name": "העליה",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1156090",
+    "link": "",
+    "ex": 168,
+    "prop": 672
+   },
+   {
+    "name": "נורדאו",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0517458",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000783119/310",
+    "ex": 138,
+    "prop": 553
+   },
+   {
+    "name": "נורוק טהון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2025",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000717889/310",
+    "ex": 166,
+    "prop": 514
+   },
+   {
+    "name": "זלמן שניאור",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0407718",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000404727/310",
+    "ex": 128,
+    "prop": 512
+   },
+   {
+    "name": "גליקסון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-1224781",
+    "link": "",
+    "ex": 116,
+    "prop": 464
+   },
+   {
+    "name": "אנדריוס",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "נת/552/41",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4071674/310",
+    "ex": 116,
+    "prop": 388
+   },
+   {
+    "name": "קצנלסון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "408-1053339",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005203338/310",
+    "ex": 96,
+    "prop": 384
+   },
+   {
+    "name": "ויצמן צפון-בארי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "נת/553/27",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4070902/310",
+    "ex": 86,
+    "prop": 292
+   },
+   {
+    "name": "ברודצקי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1094010",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005227638/310",
+    "ex": 81,
+    "prop": 275
+   },
+   {
+    "name": "הלפרין",
+    "city": "נתניה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "נת/548/34",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4065030/310",
+    "ex": 64,
+    "prop": 264
+   },
+   {
+    "name": "ויצמן סוקולוב",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0511600",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000751335/310",
+    "ex": 64,
+    "prop": 264
+   },
+   {
+    "name": "בן צבי והאר\"י",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1430867",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005438958/310",
+    "ex": 60,
+    "prop": 210
+   },
+   {
+    "name": "הרצוג מערב",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0334599",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000367195/310",
+    "ex": 48,
+    "prop": 206
+   },
+   {
+    "name": "ברודצקי 16-18",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1108695",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005237062/310",
+    "ex": 65,
+    "prop": 205
+   },
+   {
+    "name": "דיזנגוף המייסדים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1085331",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005222602/310",
+    "ex": 62,
+    "prop": 191
+   },
+   {
+    "name": "התחדשות עירונית - \"מגדלי ירושלים\" נת/מק/59/548",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0972851",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005137618/310",
+    "ex": 61,
+    "prop": 191
+   },
+   {
+    "name": "הרב קוק 2 (ההסתדרות)",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "נת/552/36",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4070903/310",
+    "ex": 60,
+    "prop": 182
+   },
+   {
+    "name": "טוברוק נתניה",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0982454",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005143738/310",
+    "ex": 44,
+    "prop": 159
+   },
+   {
+    "name": "שדרות ירושלים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0856955",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005068104/310",
+    "ex": 44,
+    "prop": 152
+   },
+   {
+    "name": "רזיאל",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-1036623",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005193664/310",
+    "ex": 34,
+    "prop": 132
+   },
+   {
+    "name": "ד\"ר סטופ 2,4 נתניה",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1105329",
+    "link": "",
+    "ex": 32,
+    "prop": 132
+   },
+   {
+    "name": "נגב גליל ירושלים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-1117050",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005241810/310",
+    "ex": 38,
+    "prop": 124
+   },
+   {
+    "name": "שד ירושלים 23/25/27",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0935254",
+    "link": "",
+    "ex": 35,
+    "prop": 120
+   },
+   {
+    "name": "הנוטע",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0912741",
+    "link": "",
+    "ex": 33,
+    "prop": 116
+   },
+   {
+    "name": "סמילנסקי 29-31",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-0639328",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000935705/310",
+    "ex": 31,
+    "prop": 104
+   },
+   {
+    "name": "אוסישקין - רמז",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "408-0923409",
+    "link": "",
+    "ex": 35,
+    "prop": 94
+   },
+   {
+    "name": "הבית הלבן",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "נת/555/10",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4062021/310",
+    "ex": 26,
+    "prop": 58
+   },
+   {
+    "name": "בן יהודה השבעה",
+    "city": "נתניה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "408-1322692",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005373184/310",
+    "ex": 0,
+    "prop": 0
+   },
+   {
+    "name": "גבעת קנדי ועין כרמל",
+    "city": "עתלית",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2036",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005102174/310",
+    "ex": 242,
+    "prop": 867
+   },
+   {
+    "name": "הצפירה",
+    "city": "פרדס חנה כרכור",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "308-0945691",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005121882/310",
+    "ex": 36,
+    "prop": 186
+   },
+   {
+    "name": "למרחב",
+    "city": "פרדס חנה כרכור",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "308-0479873",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000547177/310",
+    "ex": 28,
+    "prop": 114
+   },
+   {
+    "name": "ארגוב",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2034",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005094696/310",
+    "ex": 240,
+    "prop": 913
+   },
+   {
+    "name": "יד לבנים",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0986984",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005146792/310",
+    "ex": 236,
+    "prop": 826
+   },
+   {
+    "name": "אנסקי",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2017",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005052494/310",
+    "ex": 255,
+    "prop": 822
+   },
+   {
+    "name": "שלום אש (גן בועז)",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "פת/505/12",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4065289/310",
+    "ex": 210,
+    "prop": 750
+   },
+   {
+    "name": "שלום צאלח",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-1015734",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005181232/310",
+    "ex": 213,
+    "prop": 736
+   },
+   {
+    "name": "פוגל פינסקר",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0749770",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001003551/310",
+    "ex": 184,
+    "prop": 692
+   },
+   {
+    "name": "יחבוב יצחק שדה מתחמים 9+10 רמת ורבר",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0944124",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005121024/310",
+    "ex": 174,
+    "prop": 630
+   },
+   {
+    "name": "דגל ראובן",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "פת/1215/17",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4061885/310",
+    "ex": 141,
+    "prop": 568
+   },
+   {
+    "name": "יוספסברג",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "פת/1238/16",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4073742/310",
+    "ex": 90,
+    "prop": 360
+   },
+   {
+    "name": "יעקב קרול",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0559195",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000892679/310",
+    "ex": 96,
+    "prop": 359
+   },
+   {
+    "name": "כצנלסון 40-42-44",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0882514",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005083212/310",
+    "ex": 90,
+    "prop": 314
+   },
+   {
+    "name": "שכונת עקיבא",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "פת/383/3",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4063523/310",
+    "ex": 72,
+    "prop": 300
+   },
+   {
+    "name": "שילר-אורלוב",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "פת/1269/17",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4072886/310",
+    "ex": 86,
+    "prop": 252
+   },
+   {
+    "name": "יוספברג",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0755355",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001006625/310",
+    "ex": 56,
+    "prop": 227
+   },
+   {
+    "name": "שבט דן",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0752113",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001004761/310",
+    "ex": 58,
+    "prop": 220
+   },
+   {
+    "name": "האחים בכר",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0560862",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000893535/310",
+    "ex": 66,
+    "prop": 220
+   },
+   {
+    "name": "קפלן ז'בוטינסקי",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0589812",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000908329/310",
+    "ex": 48,
+    "prop": 192
+   },
+   {
+    "name": "כיכר התרבות",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0729491",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000991301/310",
+    "ex": 26,
+    "prop": 185
+   },
+   {
+    "name": "ארבע ארצות",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0158550",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000278731/310",
+    "ex": 48,
+    "prop": 175
+   },
+   {
+    "name": "וולפסון",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "פת/1210/52/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4099338/310",
+    "ex": 24,
+    "prop": 172
+   },
+   {
+    "name": "רופין",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-1083526",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005221560/310",
+    "ex": 36,
+    "prop": 140
+   },
+   {
+    "name": "זבוטינסקי 19",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0478206",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000540481/310",
+    "ex": 36,
+    "prop": 132
+   },
+   {
+    "name": "חצר שפירא",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "410-0762427",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001011115/310",
+    "ex": 0,
+    "prop": 120
+   },
+   {
+    "name": "יצחק שדה",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0344531",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000372381/310",
+    "ex": 24,
+    "prop": 90
+   },
+   {
+    "name": "אורלוב",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "410-0435453",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000418413/310",
+    "ex": 31,
+    "prop": 88
+   },
+   {
+    "name": "יוספטל",
+    "city": "צורן קדימה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "457-0282657",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000342759/310",
+    "ex": 72,
+    "prop": 224
+   },
+   {
+    "name": "לוי אשכול צפון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0205393",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000303841/310",
+    "ex": 328,
+    "prop": 1077
+   },
+   {
+    "name": "לוי אשכול דרום",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0252536",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000328377/310",
+    "ex": 232,
+    "prop": 755
+   },
+   {
+    "name": "הצבר רקפת",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "508-0245696",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000324587/310",
+    "ex": 248,
+    "prop": 744
+   },
+   {
+    "name": "בר יהודה",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0238428",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000320893/310",
+    "ex": 216,
+    "prop": 672
+   },
+   {
+    "name": "שאול המלך",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "קא/מק/61/285/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5052333/310",
+    "ex": 180,
+    "prop": 531
+   },
+   {
+    "name": "הרוגי מלכות בבל/הכלנית",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "קא/402",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000196457/310",
+    "ex": 176,
+    "prop": 477
+   },
+   {
+    "name": "ישעיהו",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תממ/284",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5048159/310",
+    "ex": 198,
+    "prop": 396
+   },
+   {
+    "name": "האורן",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0377531",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000389371/310",
+    "ex": 96,
+    "prop": 305
+   },
+   {
+    "name": "התאנה",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0158055",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000278523/310",
+    "ex": 78,
+    "prop": 255
+   },
+   {
+    "name": "רחבת השקד",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0241869",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000322603/310",
+    "ex": 104,
+    "prop": 195
+   },
+   {
+    "name": "שלמה המלך צפון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "קא/346",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5051971/310",
+    "ex": 60,
+    "prop": 180
+   },
+   {
+    "name": "הזמיר",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "קא/מק/213",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000199087/310",
+    "ex": 144,
+    "prop": 171
+   },
+   {
+    "name": "צה\"ל",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "508-1245505",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005323650/310",
+    "ex": 66,
+    "prop": 162
+   },
+   {
+    "name": "אחאב",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0341891",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000370961/310",
+    "ex": 56,
+    "prop": 148
+   },
+   {
+    "name": "שטרן",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "",
+    "link": "",
+    "ex": 72,
+    "prop": 122
+   },
+   {
+    "name": "הרימון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0134445",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000261807/310",
+    "ex": 32,
+    "prop": 110
+   },
+   {
+    "name": "לוי אשכול 125-127",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "508-0293589",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000347347/310",
+    "ex": 32,
+    "prop": 100
+   },
+   {
+    "name": "שיבת ציון",
+    "city": "קרית אתא",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "כ/408",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3070056/310",
+    "ex": 28,
+    "prop": 168
+   },
+   {
+    "name": "שבטי ישראל",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2010",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000969921/310",
+    "ex": 372,
+    "prop": 2728
+   },
+   {
+    "name": "פנינת בנימין",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2026",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005051860/310",
+    "ex": 144,
+    "prop": 993
+   },
+   {
+    "name": "יסקי קוממיות",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2014",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005047258/310",
+    "ex": 114,
+    "prop": 618
+   },
+   {
+    "name": "היסמין",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "606-0232397",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000317783/310",
+    "ex": 120,
+    "prop": 466
+   },
+   {
+    "name": "שדרות גת",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "606-0387407",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000394673/310",
+    "ex": 32,
+    "prop": 294
+   },
+   {
+    "name": "צה\"ל",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "352-1072834",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005215036/310",
+    "ex": 388,
+    "prop": 1900
+   },
+   {
+    "name": "מתחם יוספטל",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2039",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005204816/310",
+    "ex": 452,
+    "prop": 1846
+   },
+   {
+    "name": "אג\"ש- כללי",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "352-0559856",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3000893013/310",
+    "ex": 266,
+    "prop": 1752
+   },
+   {
+    "name": "צבא הקבע",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "352-0790477",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3001029873/310",
+    "ex": 224,
+    "prop": 1450
+   },
+   {
+    "name": "לכיש דרום",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "352-0899195",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3005093814/310",
+    "ex": 60,
+    "prop": 432
+   },
+   {
+    "name": "יוספטל",
+    "city": "קרית מוצקין",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "ק/440",
+    "link": "https://mavat.iplan.gov.il/SV4/1/3074287/310",
+    "ex": 88,
+    "prop": 449
+   },
+   {
+    "name": "חב\"ד",
+    "city": "קרית מלאכי",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "617-0943985",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6005120908/310",
+    "ex": 153,
+    "prop": 676
+   },
+   {
+    "name": "בלוק 101",
+    "city": "קרית מלאכי",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "617-0379792",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000390577/310",
+    "ex": 40,
+    "prop": 195
+   },
+   {
+    "name": "זוגות צעירים",
+    "city": "קרית עקרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "453-0897637",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005092856/310",
+    "ex": 152,
+    "prop": 443
+   },
+   {
+    "name": "הרצל ויצמן",
+    "city": "קרית עקרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "453-0897611",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005092852/310",
+    "ex": 72,
+    "prop": 160
+   },
+   {
+    "name": "יעקב מלול - קרית שמונה",
+    "city": "קרית שמונה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "217-0898288",
+    "link": "https://mavat.iplan.gov.il/SV4/1/2005093240/310",
+    "ex": 60,
+    "prop": 216
+   },
+   {
+    "name": "סלע",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "רצ/מק/1/13/19/4",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4097824/310",
+    "ex": 276,
+    "prop": 1386
+   },
+   {
+    "name": "נחלת יהודה ב'",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "413-0144980",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000269173/310",
+    "ex": 214,
+    "prop": 800
+   },
+   {
+    "name": "רמת אליהו ש\"י עגנון",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "413-0826719",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005050650/310",
+    "ex": 176,
+    "prop": 324
+   },
+   {
+    "name": "רמת אליהו (פוזננסקי)",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "413-0292680",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000346997/310",
+    "ex": 58,
+    "prop": 290
+   },
+   {
+    "name": "דגניה",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "רצ/1/8/52",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4060858/310",
+    "ex": 61,
+    "prop": 254
+   },
+   {
+    "name": "חנה סנש/אנילביץ'",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "413-0982066",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005143534/310",
+    "ex": 104,
+    "prop": 208
+   },
+   {
+    "name": "מתחם ביאליק 9,11",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "413-0860734",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005069706/310",
+    "ex": 44,
+    "prop": 137
+   },
+   {
+    "name": "מונטיפיורי-אוסישקין",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "413-0917237",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005104730/310",
+    "ex": 0,
+    "prop": 0
+   },
+   {
+    "name": "קרית משה",
+    "city": "רחובות",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/1086",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000372341/310",
+    "ex": 1326,
+    "prop": 4126
+   },
+   {
+    "name": "דניה",
+    "city": "רחובות",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2062",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005331070/310",
+    "ex": 652,
+    "prop": 1571
+   },
+   {
+    "name": "כפר גבירול",
+    "city": "רחובות",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "רח/2001/8/ב",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4065751/310",
+    "ex": 23,
+    "prop": 962
+   },
+   {
+    "name": "שעריים",
+    "city": "רחובות",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2033",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000365149/310",
+    "ex": 60,
+    "prop": 538
+   },
+   {
+    "name": "האצ\"ל",
+    "city": "רחובות",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רח/46/5/2",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000220649/310",
+    "ex": 100,
+    "prop": 375
+   },
+   {
+    "name": "בנימין יעקב",
+    "city": "רחובות",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "רח/2010/22",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4067121/310",
+    "ex": 18,
+    "prop": 250
+   },
+   {
+    "name": "אייזנברג",
+    "city": "רחובות",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רח/2010/9/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4066447/310",
+    "ex": 4,
+    "prop": 216
+   },
+   {
+    "name": "הצנחנים",
+    "city": "רחובות",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "414-1008572",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005160046/310",
+    "ex": 54,
+    "prop": 202
+   },
+   {
+    "name": "יוספטל",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "415-0838573",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005057742/310",
+    "ex": 844,
+    "prop": 3777
+   },
+   {
+    "name": "בן גוריון",
+    "city": "רמלה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תמל/2028",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005054212/310",
+    "ex": 944,
+    "prop": 3094
+   },
+   {
+    "name": "גיורא",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2050",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005246944/310",
+    "ex": 750,
+    "prop": 2535
+   },
+   {
+    "name": "הרב מימון",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2043",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005110234/310",
+    "ex": 276,
+    "prop": 1600
+   },
+   {
+    "name": "מסדה",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2061",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005332412/310",
+    "ex": 266,
+    "prop": 1446
+   },
+   {
+    "name": "מבצע יונתן",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2029",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005097414/310",
+    "ex": 246,
+    "prop": 751
+   },
+   {
+    "name": "הרצל",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תמל/2032",
+    "link": "https://mavat.iplan.gov.il/SV4/1/99005099216/310",
+    "ex": 116,
+    "prop": 615
+   },
+   {
+    "name": "הרצל שערי העיר",
+    "city": "רמלה",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "415-0782672",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001024943/310",
+    "ex": 116,
+    "prop": 530
+   },
+   {
+    "name": "ישראל פרנקל",
+    "city": "רמלה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "415-0820787",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005047252/310",
+    "ex": 54,
+    "prop": 297
+   },
+   {
+    "name": "מתחם ארלוזורוב שמחה המתמיד",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0939314",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005118404/310",
+    "ex": 345,
+    "prop": 1103
+   },
+   {
+    "name": "מתחם שלם",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0107094",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000246783/310",
+    "ex": 144,
+    "prop": 522
+   },
+   {
+    "name": "בית חורון",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0305425",
+    "link": "https://mavat.iplan.gov.il/SV4/1/6000352789/310",
+    "ex": 119,
+    "prop": 343
+   },
+   {
+    "name": "עמק החולה",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רג/1255/2",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5051676/310",
+    "ex": 48,
+    "prop": 332
+   },
+   {
+    "name": "נווה יהושע מרכז",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "רג/1255/3/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000258581/310",
+    "ex": 96,
+    "prop": 330
+   },
+   {
+    "name": "מעלה השואבה",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0668095",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000953571/310",
+    "ex": 89,
+    "prop": 308
+   },
+   {
+    "name": "הבילויים",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0651539",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000943063/310",
+    "ex": 96,
+    "prop": 308
+   },
+   {
+    "name": "עלית - המתמיד/ארלוזורוב",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רג/1423/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000208547/310",
+    "ex": 88,
+    "prop": 285
+   },
+   {
+    "name": "מגדלי הגפן 2",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רג/1416",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5074394/310",
+    "ex": 43,
+    "prop": 268
+   },
+   {
+    "name": "שלם",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0740126",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000997611/310",
+    "ex": 86,
+    "prop": 263
+   },
+   {
+    "name": "הררי",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0255620",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000329803/310",
+    "ex": 60,
+    "prop": 240
+   },
+   {
+    "name": "הרוא\"ה 90-102",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0155838",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000277237/310",
+    "ex": 102,
+    "prop": 240
+   },
+   {
+    "name": "משמר הירדן",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-1162346",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005270048/310",
+    "ex": 80,
+    "prop": 224
+   },
+   {
+    "name": "רג/1750 - רש\"י - אבא הלל - מזרח",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0460949",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000432113/310",
+    "ex": 72,
+    "prop": 216
+   },
+   {
+    "name": "אבא הלל חרות התקווה (מתחם 41)",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0893594",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005090412/310",
+    "ex": 72,
+    "prop": 202
+   },
+   {
+    "name": "התמרים-מגדים",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0251132",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000327697/310",
+    "ex": 64,
+    "prop": 198
+   },
+   {
+    "name": "אבא הלל/חרות - מתחם 58+42",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0663609",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000950855/310",
+    "ex": 68,
+    "prop": 190
+   },
+   {
+    "name": "המבדיל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0185744",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000293063/310",
+    "ex": 55,
+    "prop": 180
+   },
+   {
+    "name": "רמת השקמה (שקמה על הפארק)",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0212712",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000307789/310",
+    "ex": 44,
+    "prop": 180
+   },
+   {
+    "name": "ביאליק - בנימין",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0753913",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5001005751/310",
+    "ex": 72,
+    "prop": 170
+   },
+   {
+    "name": "רמת השקמה רח' שלם",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0202762",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000302483/310",
+    "ex": 48,
+    "prop": 154
+   },
+   {
+    "name": "הרוא''ה רמת גן",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-1155308",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005265880/310",
+    "ex": 55,
+    "prop": 154
+   },
+   {
+    "name": "עוזיאל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0222778",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000312997/310",
+    "ex": 43,
+    "prop": 152
+   },
+   {
+    "name": "מתניה1-10",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0795039",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005032454/310",
+    "ex": 40,
+    "prop": 144
+   },
+   {
+    "name": "העמל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0655068",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000945489/310",
+    "ex": 44,
+    "prop": 137
+   },
+   {
+    "name": "רג/1865 גורי יהודה 2,4,6,8",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-1047059",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005200006/310",
+    "ex": 39,
+    "prop": 133
+   },
+   {
+    "name": "אבא הלל 63,65",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0991810",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005149796/310",
+    "ex": 28,
+    "prop": 133
+   },
+   {
+    "name": "שלם ב'",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0395871",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000398943/310",
+    "ex": 43,
+    "prop": 132
+   },
+   {
+    "name": "רג/1849 התחדשות עירונית תרצה ירושלים",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0915140",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005103194/310",
+    "ex": 35,
+    "prop": 125
+   },
+   {
+    "name": "הרב פרדס",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-1004522",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005157616/310",
+    "ex": 36,
+    "prop": 122
+   },
+   {
+    "name": "מתניה 11-20",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0795047",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005032458/310",
+    "ex": 40,
+    "prop": 120
+   },
+   {
+    "name": "הפודים 30",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0511766",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000753741/310",
+    "ex": 37,
+    "prop": 111
+   },
+   {
+    "name": "סוקולוב 10,12",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0836981",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005056712/310",
+    "ex": 21,
+    "prop": 109
+   },
+   {
+    "name": "חשמונאים בעז",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0429415",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000415587/310",
+    "ex": 43,
+    "prop": 107
+   },
+   {
+    "name": "הדקלים אבא הלל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0322149",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000361063/310",
+    "ex": 33,
+    "prop": 100
+   },
+   {
+    "name": "שלם 16-18",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0538405",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000879385/310",
+    "ex": 31,
+    "prop": 96
+   },
+   {
+    "name": "הרא\"ה 174, 176 אהוד 4",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0909762",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005099732/310",
+    "ex": 26,
+    "prop": 94
+   },
+   {
+    "name": "מתחם הרוא\"ה 75,77,79",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0282186",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000342525/310",
+    "ex": 30,
+    "prop": 90
+   },
+   {
+    "name": "ארלוזורוב 11 א",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0822858",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005048484/310",
+    "ex": 28,
+    "prop": 80
+   },
+   {
+    "name": "טבנקין 7-13 התחדשות עירונית",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0494195",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000640971/310",
+    "ex": 24,
+    "prop": 80
+   },
+   {
+    "name": "הגפן 8-10 ר\"ג",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0855098",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005067480/310",
+    "ex": 30,
+    "prop": 78
+   },
+   {
+    "name": "הרכסים",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "רג/1393",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5074367/310",
+    "ex": 24,
+    "prop": 76
+   },
+   {
+    "name": "המקור",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "506-0489682",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000622047/310",
+    "ex": 24,
+    "prop": 72
+   },
+   {
+    "name": "מלכי צדק 5-7",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0794875",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005032276/310",
+    "ex": 24,
+    "prop": 72
+   },
+   {
+    "name": "רח' השר משה - 58 , 60 , 62 ורח' הראובני 12 , רמת גן",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "506-0924712",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005109318/310",
+    "ex": 24,
+    "prop": 70
+   },
+   {
+    "name": "לב העיר - סוקולוב",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "553-0849612",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005064348/310",
+    "ex": 188,
+    "prop": 1154
+   },
+   {
+    "name": "יוספטל מזרח",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "רש/991",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000195781/310",
+    "ex": 189,
+    "prop": 748
+   },
+   {
+    "name": "אילת",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "553-0175711",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000288187/310",
+    "ex": 108,
+    "prop": 687
+   },
+   {
+    "name": "הצעירים",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "רש/1054",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5076814/310",
+    "ex": 108,
+    "prop": 435
+   },
+   {
+    "name": "ריינס",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "553-0922054",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005107722/310",
+    "ex": 104,
+    "prop": 270
+   },
+   {
+    "name": "החלוץ",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רש/1066",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5077861/310",
+    "ex": 48,
+    "prop": 192
+   },
+   {
+    "name": "גאולים",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רש/819/1",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000218027/310",
+    "ex": 24,
+    "prop": 180
+   },
+   {
+    "name": "כנרת",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רע/720",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000236919/310",
+    "ex": 52,
+    "prop": 154
+   },
+   {
+    "name": "ויצמן",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "416-0118315",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000252823/310",
+    "ex": 48,
+    "prop": 154
+   },
+   {
+    "name": "ברנדיס",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "רע/1/511",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4060866/310",
+    "ex": 39,
+    "prop": 136
+   },
+   {
+    "name": "מגדל",
+    "city": "רעננה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "416-1247014",
+    "link": "",
+    "ex": 32,
+    "prop": 133
+   },
+   {
+    "name": "פינוי בינוי מתחם מגדל רע/מק/859 א",
+    "city": "רעננה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "416-0829135",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4005052056/310",
+    "ex": 35,
+    "prop": 88
+   },
+   {
+    "name": "גולן",
+    "city": "רעננה",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "416-0150110",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4000273289/310",
+    "ex": 0,
+    "prop": 66
+   },
+   {
+    "name": "הדר יוסף",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תא/מק/2204/א",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5051121/310",
+    "ex": 666,
+    "prop": 1544
+   },
+   {
+    "name": "רסקו",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0590687",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000908791/310",
+    "ex": 422,
+    "prop": 1481
+   },
+   {
+    "name": "דפנה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תא/3885",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000263383/310",
+    "ex": 471,
+    "prop": 1434
+   },
+   {
+    "name": "לה גווארדיה (מזרח)",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0187237",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000293901/310",
+    "ex": 440,
+    "prop": 1160
+   },
+   {
+    "name": "אח\"י דקר",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0523845",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000822871/310",
+    "ex": 451,
+    "prop": 1159
+   },
+   {
+    "name": "נווה שרת - בית אל",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/3463",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5052815/310",
+    "ex": 368,
+    "prop": 1047
+   },
+   {
+    "name": "קהילת קנדה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0200352",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000301029/310",
+    "ex": 208,
+    "prop": 800
+   },
+   {
+    "name": "חסן עראפה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/3319",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5051002/310",
+    "ex": 0,
+    "prop": 792
+   },
+   {
+    "name": "המאבק",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0259184",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000331463/310",
+    "ex": 182,
+    "prop": 564
+   },
+   {
+    "name": "התחדשות דרך השלום 117-105",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-1028927",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005188716/310",
+    "ex": 150,
+    "prop": 490
+   },
+   {
+    "name": "תא/ מק/ 5069 - דרך השלום 77-85",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0923904",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005108812/310",
+    "ex": 180,
+    "prop": 480
+   },
+   {
+    "name": "לבנה מערב",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0293894",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000347483/310",
+    "ex": 132,
+    "prop": 474
+   },
+   {
+    "name": "וינגייט-לה גווארדיה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "507-0301101",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000350841/310",
+    "ex": 128,
+    "prop": 455
+   },
+   {
+    "name": "קהילת קנדה/שדרות ירושלים",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0368191",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000384401/310",
+    "ex": 96,
+    "prop": 388
+   },
+   {
+    "name": "הצנחנים",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0254292",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000329183/310",
+    "ex": 128,
+    "prop": 370
+   },
+   {
+    "name": "ברקאי",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0556530",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000891085/310",
+    "ex": 115,
+    "prop": 369
+   },
+   {
+    "name": "נחל הבשור",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-1030410",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005189616/310",
+    "ex": 128,
+    "prop": 346
+   },
+   {
+    "name": "אופטושו ליוויק",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0623314",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000926489/310",
+    "ex": 118,
+    "prop": 335
+   },
+   {
+    "name": "ארבר",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0656181",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000946235/310",
+    "ex": 112,
+    "prop": 317
+   },
+   {
+    "name": "תקוע",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0722066",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000986273/310",
+    "ex": 96,
+    "prop": 315
+   },
+   {
+    "name": "בבלי",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "",
+    "link": "",
+    "ex": 123,
+    "prop": 299
+   },
+   {
+    "name": "כפר שלם",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תא/2646",
+    "link": "",
+    "ex": 43,
+    "prop": 294
+   },
+   {
+    "name": "הדר יוסף - לודג'",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תא/מק/3569",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5053862/310",
+    "ex": 193,
+    "prop": 288
+   },
+   {
+    "name": "יפתח",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/4040",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000280533/310",
+    "ex": 72,
+    "prop": 275
+   },
+   {
+    "name": "יפת",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0802983",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005036510/310",
+    "ex": 84,
+    "prop": 273
+   },
+   {
+    "name": "יפת 173-183",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-1200328",
+    "link": "",
+    "ex": 97,
+    "prop": 272
+   },
+   {
+    "name": "מעוז אביב צפון מרכז",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0544247",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000884521/310",
+    "ex": 96,
+    "prop": 265
+   },
+   {
+    "name": "הטייסים 6,8,10",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0373712",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000387525/310",
+    "ex": 72,
+    "prop": 260
+   },
+   {
+    "name": "אלמגור 8-16",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0963157",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005132130/310",
+    "ex": 104,
+    "prop": 260
+   },
+   {
+    "name": "דרך השלום 71-75",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0951863",
+    "link": "",
+    "ex": 104,
+    "prop": 250
+   },
+   {
+    "name": "ארלוזורוב",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0634923",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000933183/310",
+    "ex": 57,
+    "prop": 248
+   },
+   {
+    "name": "קהילת ורשה (2)",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "plan": "תא/2479",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5048060/310",
+    "ex": 32,
+    "prop": 240
+   },
+   {
+    "name": "קשת גיתית משגב עם",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-1080035",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005219432/310",
+    "ex": 86,
+    "prop": 240
+   },
+   {
+    "name": "שמעוני 29-27 תל אביב",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0888040",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005086360/310",
+    "ex": 76,
+    "prop": 233
+   },
+   {
+    "name": "לה גוארדיה 24-28",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0444315",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000423177/310",
+    "ex": 58,
+    "prop": 228
+   },
+   {
+    "name": "אפלטון - אייזיק חריף",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-1140185",
+    "link": "",
+    "ex": 96,
+    "prop": 223
+   },
+   {
+    "name": "אילת - אליפלט",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0137190",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000263543/310",
+    "ex": 93,
+    "prop": 200
+   },
+   {
+    "name": "רקאנטי",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/3850/מח",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5075751/310",
+    "ex": 96,
+    "prop": 198
+   },
+   {
+    "name": "דרך השלום 87,89",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0403873",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000402833/310",
+    "ex": 72,
+    "prop": 172
+   },
+   {
+    "name": "מעפילי אגוז",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0866186",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5005073054/310",
+    "ex": 56,
+    "prop": 157
+   },
+   {
+    "name": "טאגור",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/3853/מח",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5075936/310",
+    "ex": 60,
+    "prop": 144
+   },
+   {
+    "name": "התחדשות עין גב 4-10",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "",
+    "link": "",
+    "ex": 54,
+    "prop": 144
+   },
+   {
+    "name": "החרש והאומן",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "תא/2902",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5054336/310",
+    "ex": 0,
+    "prop": 142
+   },
+   {
+    "name": "הרכבת",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0376731",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000388947/310",
+    "ex": 30,
+    "prop": 137
+   },
+   {
+    "name": "משולש אלחנן",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "תא/2615/ב/1",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000267331/310",
+    "ex": 0,
+    "prop": 133
+   },
+   {
+    "name": "עמק ברכה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0174052",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000287339/310",
+    "ex": 75,
+    "prop": 112
+   },
+   {
+    "name": "מתחם בר לב",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "507-0778662",
+    "link": "",
+    "ex": 32,
+    "prop": 103
+   },
+   {
+    "name": "הטייסים 92",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "507-0236349",
+    "link": "https://mavat.iplan.gov.il/SV4/1/5000319875/310",
+    "ex": 24,
+    "prop": 85
+   },
+   {
+    "name": "קהילת ורשה 73,77,79",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "plan": "",
+    "link": "",
+    "ex": 24,
+    "prop": 72
+   },
+   {
+    "name": "אלי כהן",
+    "city": "תל מונד",
+    "status": "תכנית מאושרת לפני מימוש",
+    "plan": "457-0791384",
+    "link": "https://mavat.iplan.gov.il/SV4/1/4001030447/310",
+    "ex": 102,
+    "prop": 370
+   }
+  ],
+  "execution": [
+   {
+    "name": "ההסתדרות דרום",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 2097,
+    "prop": 2679
+   },
+   {
+    "name": "שד' בן צבי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 1558,
+    "prop": 1558
+   },
+   {
+    "name": "דרך חברון הגדול",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 1353,
+    "prop": 1698
+   },
+   {
+    "name": "רמת לח\"י",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 1170,
+    "prop": 1170
+   },
+   {
+    "name": "שבטי ישראל",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 1135,
+    "prop": 2728
+   },
+   {
+    "name": "יוספטל מזרח",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 1078,
+    "prop": 1078
+   },
+   {
+    "name": "לוי אשכול צפון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 1077,
+    "prop": 1077
+   },
+   {
+    "name": "נווה שרת - בית אל",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 1047,
+    "prop": 1047
+   },
+   {
+    "name": "מרכז יהוד",
+    "city": "יהוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 1008,
+    "prop": 1501
+   },
+   {
+    "name": "כ\"ט בנובמבר (מאוחד)",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 964,
+    "prop": 964
+   },
+   {
+    "name": "מוהליבר",
+    "city": "יהוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 941,
+    "prop": 1344
+   },
+   {
+    "name": "חביבה רייך",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 930,
+    "prop": 930
+   },
+   {
+    "name": "ש\"י עגנון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 872,
+    "prop": 872
+   },
+   {
+    "name": "בן גוריון",
+    "city": "רמלה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 848,
+    "prop": 3094
+   },
+   {
+    "name": "הדקל",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 846,
+    "prop": 846
+   },
+   {
+    "name": "ראש פינה",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 838,
+    "prop": 838
+   },
+   {
+    "name": "חסן עראפה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 792,
+    "prop": 792
+   },
+   {
+    "name": "רוטשילד",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 760,
+    "prop": 760
+   },
+   {
+    "name": "לוי אשכול דרום",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 755,
+    "prop": 755
+   },
+   {
+    "name": "העירייה",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 754,
+    "prop": 754
+   },
+   {
+    "name": "העלייה השנייה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 715,
+    "prop": 715
+   },
+   {
+    "name": "השבטים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 714,
+    "prop": 714
+   },
+   {
+    "name": "אילת",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 687,
+    "prop": 687
+   },
+   {
+    "name": "כפר גבירול",
+    "city": "רחובות",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 685,
+    "prop": 962
+   },
+   {
+    "name": "התמר",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 678,
+    "prop": 678
+   },
+   {
+    "name": "סלע",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 676,
+    "prop": 1386
+   },
+   {
+    "name": "בר יהודה",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 672,
+    "prop": 672
+   },
+   {
+    "name": "קטמונים 06",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 667,
+    "prop": 667
+   },
+   {
+    "name": "הכלנית",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 656,
+    "prop": 656
+   },
+   {
+    "name": "רסקו",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 630,
+    "prop": 630
+   },
+   {
+    "name": "יחבוב יצחק שדה מתחמים 9+10 רמת ורבר",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 630,
+    "prop": 630
+   },
+   {
+    "name": "סלע-ביתר",
+    "city": "חדרה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 627,
+    "prop": 1452
+   },
+   {
+    "name": "הקצין סילבר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 603,
+    "prop": 603
+   },
+   {
+    "name": "לאה גולדברג",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 585,
+    "prop": 1313
+   },
+   {
+    "name": "שיכון ויצמן",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 578,
+    "prop": 1843
+   },
+   {
+    "name": "כצנלסון",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 560,
+    "prop": 560
+   },
+   {
+    "name": "נורדאו",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 553,
+    "prop": 553
+   },
+   {
+    "name": "הסביון",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 547,
+    "prop": 547
+   },
+   {
+    "name": "נווה יעקב 28-32",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 539,
+    "prop": 539
+   },
+   {
+    "name": "שאול המלך",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 531,
+    "prop": 531
+   },
+   {
+    "name": "ערבי נחל",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 530,
+    "prop": 530
+   },
+   {
+    "name": "מתחם שלם",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 522,
+    "prop": 522
+   },
+   {
+    "name": "זלמן שניאור",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 512,
+    "prop": 512
+   },
+   {
+    "name": "הגיבורים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 506,
+    "prop": 506
+   },
+   {
+    "name": "מח\"ל",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 504,
+    "prop": 504
+   },
+   {
+    "name": "חטיבת יפתח",
+    "city": "לוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 488,
+    "prop": 488
+   },
+   {
+    "name": "החרמון",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 487,
+    "prop": 487
+   },
+   {
+    "name": "ברל כצנלסון",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 486,
+    "prop": 486
+   },
+   {
+    "name": "צבא הקבע",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 478,
+    "prop": 1450
+   },
+   {
+    "name": "הרוגי מלכות בבל/הכלנית",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 477,
+    "prop": 477
+   },
+   {
+    "name": "התנופה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 469,
+    "prop": 469
+   },
+   {
+    "name": "יוספטל מזרח",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 468,
+    "prop": 748
+   },
+   {
+    "name": "חיל הים",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 467,
+    "prop": 467
+   },
+   {
+    "name": "היסמין",
+    "city": "קרית גת",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 466,
+    "prop": 466
+   },
+   {
+    "name": "גליקסון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 464,
+    "prop": 464
+   },
+   {
+    "name": "קולומביה 28-29",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 454,
+    "prop": 454
+   },
+   {
+    "name": "העצמאות",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 449,
+    "prop": 449
+   },
+   {
+    "name": "אשכנזי",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 444,
+    "prop": 444
+   },
+   {
+    "name": "המלך אמציה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 437,
+    "prop": 437
+   },
+   {
+    "name": "הנטקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 425,
+    "prop": 425
+   },
+   {
+    "name": "קוסטה ריקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 423,
+    "prop": 741
+   },
+   {
+    "name": "בר יוחאי 5-15",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 420,
+    "prop": 1066
+   },
+   {
+    "name": "קלנר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 417,
+    "prop": 417
+   },
+   {
+    "name": "יצחק שדה/השומר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 406,
+    "prop": 474
+   },
+   {
+    "name": "הארזים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 401,
+    "prop": 401
+   },
+   {
+    "name": "הר מירון/נווה ישראל",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 400,
+    "prop": 400
+   },
+   {
+    "name": "העלייה השנייה",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 400,
+    "prop": 400
+   },
+   {
+    "name": "מתחם 12 קטמונים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 392,
+    "prop": 392
+   },
+   {
+    "name": "שפירא/ פעמוני העיר",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 389,
+    "prop": 389
+   },
+   {
+    "name": "קהילת קנדה/שדרות ירושלים",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 388,
+    "prop": 388
+   },
+   {
+    "name": "אנדריוס",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 388,
+    "prop": 388
+   },
+   {
+    "name": "האצ\"ל",
+    "city": "רחובות",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 375,
+    "prop": 375
+   },
+   {
+    "name": "הרב שאולי",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 374,
+    "prop": 748
+   },
+   {
+    "name": "הצנחנים",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 370,
+    "prop": 370
+   },
+   {
+    "name": "המלך שלמה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 368,
+    "prop": 1212
+   },
+   {
+    "name": "שער העיר (בן גוריון)",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 367,
+    "prop": 367
+   },
+   {
+    "name": "הס",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 364,
+    "prop": 2720
+   },
+   {
+    "name": "יוספסברג",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 360,
+    "prop": 360
+   },
+   {
+    "name": "יעקב קרול",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 359,
+    "prop": 359
+   },
+   {
+    "name": "הנביאים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 345,
+    "prop": 345
+   },
+   {
+    "name": "עמק החולה",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 332,
+    "prop": 332
+   },
+   {
+    "name": "הסביון",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 310,
+    "prop": 808
+   },
+   {
+    "name": "האורן",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 305,
+    "prop": 305
+   },
+   {
+    "name": "מצדה",
+    "city": "בת ים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 300,
+    "prop": 490
+   },
+   {
+    "name": "שלום אש (גן בועז)",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 300,
+    "prop": 750
+   },
+   {
+    "name": "בבלי",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 299,
+    "prop": 299
+   },
+   {
+    "name": "גרינבוים הציונות",
+    "city": "לוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 298,
+    "prop": 742
+   },
+   {
+    "name": "ויצמן צפון-בארי",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 292,
+    "prop": 292
+   },
+   {
+    "name": "קטמונים 11",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 287,
+    "prop": 287
+   },
+   {
+    "name": "עלית - המתמיד/ארלוזורוב",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 285,
+    "prop": 285
+   },
+   {
+    "name": "קפלן",
+    "city": "אזור",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 280,
+    "prop": 390
+   },
+   {
+    "name": "מנדלבלט",
+    "city": "הרצליה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 278,
+    "prop": 332
+   },
+   {
+    "name": "יפתח",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 275,
+    "prop": 275
+   },
+   {
+    "name": "הגדוד העברי",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 274,
+    "prop": 274
+   },
+   {
+    "name": "השחף",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 273,
+    "prop": 273
+   },
+   {
+    "name": "הרצל שערי העיר",
+    "city": "רמלה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 272,
+    "prop": 530
+   },
+   {
+    "name": "מגדלי הגפן 2",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 268,
+    "prop": 268
+   },
+   {
+    "name": "החשמונאים/יוספטל",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 267,
+    "prop": 267
+   },
+   {
+    "name": "ויצמן סוקולוב",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 264,
+    "prop": 264
+   },
+   {
+    "name": "הטייסים 6,8,10",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 260,
+    "prop": 260
+   },
+   {
+    "name": "התאנה",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 255,
+    "prop": 255
+   },
+   {
+    "name": "ההסתדרות צפון",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 250,
+    "prop": 500
+   },
+   {
+    "name": "המקשר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 248,
+    "prop": 298
+   },
+   {
+    "name": "הרצל 59-61",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 246,
+    "prop": 246
+   },
+   {
+    "name": "עמק היובל",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 245,
+    "prop": 245
+   },
+   {
+    "name": "תקומה",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 244,
+    "prop": 1068
+   },
+   {
+    "name": "שכונה ג'",
+    "city": "באר שבע",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 242,
+    "prop": 242
+   },
+   {
+    "name": "הררי",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 240,
+    "prop": 240
+   },
+   {
+    "name": "הרוא\"ה 90-102",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 240,
+    "prop": 240
+   },
+   {
+    "name": "שטרן 37,39,41",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 240,
+    "prop": 240
+   },
+   {
+    "name": "אבן עזרא",
+    "city": "אשדוד",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 237,
+    "prop": 669
+   },
+   {
+    "name": "פיכמן",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 235,
+    "prop": 235
+   },
+   {
+    "name": "הכרמל",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 234,
+    "prop": 286
+   },
+   {
+    "name": "דרך חברון דרום",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 232,
+    "prop": 430
+   },
+   {
+    "name": "דפנה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 232,
+    "prop": 1434
+   },
+   {
+    "name": "שילר-אורלוב",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 231,
+    "prop": 252
+   },
+   {
+    "name": "ישעיהו",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 228,
+    "prop": 396
+   },
+   {
+    "name": "יוספברג",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 227,
+    "prop": 227
+   },
+   {
+    "name": "שטרן 34-42",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 226,
+    "prop": 226
+   },
+   {
+    "name": "טהון 5",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 226,
+    "prop": 226
+   },
+   {
+    "name": "יוספטל",
+    "city": "צורן קדימה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 224,
+    "prop": 224
+   },
+   {
+    "name": "סוקולוב - ירושלים",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 220,
+    "prop": 220
+   },
+   {
+    "name": "דרך חברון 137-141",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 220,
+    "prop": 220
+   },
+   {
+    "name": "שטרן 29,31,33",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 216,
+    "prop": 216
+   },
+   {
+    "name": "בוליביה 14",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 216,
+    "prop": 216
+   },
+   {
+    "name": "אייזנברג",
+    "city": "רחובות",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 216,
+    "prop": 216
+   },
+   {
+    "name": "הדר יוסף",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 210,
+    "prop": 1544
+   },
+   {
+    "name": "הרצוג מערב",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 206,
+    "prop": 206
+   },
+   {
+    "name": "יד אליעזר",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 206,
+    "prop": 599
+   },
+   {
+    "name": "רקאנטי",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 198,
+    "prop": 198
+   },
+   {
+    "name": "התמרים-מגדים",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 198,
+    "prop": 198
+   },
+   {
+    "name": "ארץ חפץ",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 198,
+    "prop": 198
+   },
+   {
+    "name": "בלוק 101",
+    "city": "קרית מלאכי",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 195,
+    "prop": 195
+   },
+   {
+    "name": "רחבת השקד",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 195,
+    "prop": 195
+   },
+   {
+    "name": "המלך חזקיהו",
+    "city": "חיפה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 195,
+    "prop": 210
+   },
+   {
+    "name": "החלוץ",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 192,
+    "prop": 192
+   },
+   {
+    "name": "קצנלסון",
+    "city": "נתניה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 192,
+    "prop": 384
+   },
+   {
+    "name": "קהילת ורשה (2)",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 190,
+    "prop": 240
+   },
+   {
+    "name": "פינסקר",
+    "city": "נהריה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 187,
+    "prop": 187
+   },
+   {
+    "name": "חנה סנש",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 186,
+    "prop": 186
+   },
+   {
+    "name": "קרית משה",
+    "city": "רחובות",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 186,
+    "prop": 4126
+   },
+   {
+    "name": "כיכר התרבות",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 185,
+    "prop": 185
+   },
+   {
+    "name": "הרב קוק 2 (ההסתדרות)",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 182,
+    "prop": 182
+   },
+   {
+    "name": "המבדיל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 180,
+    "prop": 180
+   },
+   {
+    "name": "רמת השקמה (שקמה על הפארק)",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 180,
+    "prop": 180
+   },
+   {
+    "name": "שלמה המלך צפון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 180,
+    "prop": 180
+   },
+   {
+    "name": "גאולים",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 180,
+    "prop": 180
+   },
+   {
+    "name": "שלום יהודה/דרך חברון",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 174,
+    "prop": 174
+   },
+   {
+    "name": "וולפסון",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 172,
+    "prop": 172
+   },
+   {
+    "name": "דרך השלום 87,89",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 172,
+    "prop": 172
+   },
+   {
+    "name": "הזמיר",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 171,
+    "prop": 171
+   },
+   {
+    "name": "דואני העצמאות",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 171,
+    "prop": 442
+   },
+   {
+    "name": "שוק אשכנזי",
+    "city": "יהוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 168,
+    "prop": 168
+   },
+   {
+    "name": "שנקר 10-14",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 168,
+    "prop": 168
+   },
+   {
+    "name": "וינגייט-לה גווארדיה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 167,
+    "prop": 455
+   },
+   {
+    "name": "הצעירים",
+    "city": "רמת השרון",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 164,
+    "prop": 435
+   },
+   {
+    "name": "הנורית - קוסטה ריקה",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 157,
+    "prop": 428
+   },
+   {
+    "name": "כנרת",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 154,
+    "prop": 154
+   },
+   {
+    "name": "ויצמן",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 154,
+    "prop": 154
+   },
+   {
+    "name": "עוזיאל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 152,
+    "prop": 152
+   },
+   {
+    "name": "אנטיגונוס",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 152,
+    "prop": 152
+   },
+   {
+    "name": "טהון 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 152,
+    "prop": 152
+   },
+   {
+    "name": "שדרות ירושלים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 152,
+    "prop": 152
+   },
+   {
+    "name": "אחאב",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 148,
+    "prop": 148
+   },
+   {
+    "name": "אור גנים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 146,
+    "prop": 146
+   },
+   {
+    "name": "טאגור",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 144,
+    "prop": 144
+   },
+   {
+    "name": "בן גוריון",
+    "city": "גבעת שמואל",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 144,
+    "prop": 144
+   },
+   {
+    "name": "שלום יהודה 26",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 144,
+    "prop": 144
+   },
+   {
+    "name": "ברל לוקר 13",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 143,
+    "prop": 143
+   },
+   {
+    "name": "החרש והאומן",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 142,
+    "prop": 142
+   },
+   {
+    "name": "ישורון",
+    "city": "נהריה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 140,
+    "prop": 165
+   },
+   {
+    "name": "מקסיקו",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 138,
+    "prop": 138
+   },
+   {
+    "name": "הרב קוקיס",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 137,
+    "prop": 137
+   },
+   {
+    "name": "הרכבת",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 137,
+    "prop": 137
+   },
+   {
+    "name": "ברנדיס",
+    "city": "רעננה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 136,
+    "prop": 136
+   },
+   {
+    "name": "בוליביה 1",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 136,
+    "prop": 136
+   },
+   {
+    "name": "פ.צ. חיות 24",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 136,
+    "prop": 209
+   },
+   {
+    "name": "האלון",
+    "city": "יבנה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 136,
+    "prop": 816
+   },
+   {
+    "name": "מגדל הים (רוטשילד 2)",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 135,
+    "prop": 135
+   },
+   {
+    "name": "מבצע סיני 25-27",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 134,
+    "prop": 134
+   },
+   {
+    "name": "זבוטינסקי 19",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 132,
+    "prop": 132
+   },
+   {
+    "name": "מבוא חדרה מזרח",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 132,
+    "prop": 132
+   },
+   {
+    "name": "הלפרין",
+    "city": "נתניה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 132,
+    "prop": 264
+   },
+   {
+    "name": "רזיאל",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 132,
+    "prop": 132
+   },
+   {
+    "name": "אג\"ש- כללי",
+    "city": "קרית ים",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 131,
+    "prop": 1752
+   },
+   {
+    "name": "פרבשטיין (חדש)",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 130,
+    "prop": 130
+   },
+   {
+    "name": "כצנלסון",
+    "city": "לוד",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 130,
+    "prop": 130
+   },
+   {
+    "name": "ההסתדרות 80",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 130,
+    "prop": 130
+   },
+   {
+    "name": "טהון 4",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 129,
+    "prop": 129
+   },
+   {
+    "name": "הרב מימון - אנה פרנק",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 128,
+    "prop": 128
+   },
+   {
+    "name": "מרבד הקסמים",
+    "city": "זכרון יעקב",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 128,
+    "prop": 128
+   },
+   {
+    "name": "סן מרטין 3",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 126,
+    "prop": 126
+   },
+   {
+    "name": "יציאת אירופה",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 126,
+    "prop": 126
+   },
+   {
+    "name": "הנורית 8",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 125,
+    "prop": 125
+   },
+   {
+    "name": "נגב גליל ירושלים",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 124,
+    "prop": 124
+   },
+   {
+    "name": "שטרן",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 122,
+    "prop": 122
+   },
+   {
+    "name": "סן מרטין 23-25",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 122,
+    "prop": 122
+   },
+   {
+    "name": "בלפור",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 120,
+    "prop": 120
+   },
+   {
+    "name": "הנשיא ששת הימים",
+    "city": "חדרה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 120,
+    "prop": 120
+   },
+   {
+    "name": "העצמאות בלפור",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 120,
+    "prop": 120
+   },
+   {
+    "name": "ששת הימים",
+    "city": "כפר סבא",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 120,
+    "prop": 120
+   },
+   {
+    "name": "נחלת יהודה ב'",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 117,
+    "prop": 800
+   },
+   {
+    "name": "קוסטה ריקה 113",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 117,
+    "prop": 117
+   },
+   {
+    "name": "רמת אליהו (פוזננסקי)",
+    "city": "ראשון לציון",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 116,
+    "prop": 290
+   },
+   {
+    "name": "הבית בשומר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 114,
+    "prop": 114
+   },
+   {
+    "name": "עמק ברכה",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 112,
+    "prop": 112
+   },
+   {
+    "name": "הפודים 30",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 111,
+    "prop": 111
+   },
+   {
+    "name": "הרימון",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 110,
+    "prop": 110
+   },
+   {
+    "name": "חשמונאים בעז",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 107,
+    "prop": 107
+   },
+   {
+    "name": "עין צורים",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 107,
+    "prop": 107
+   },
+   {
+    "name": "ברוט 2-6",
+    "city": "בני ברק",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 106,
+    "prop": 106
+   },
+   {
+    "name": "בלפור 81",
+    "city": "בת ים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 105,
+    "prop": 105
+   },
+   {
+    "name": "לוי אשכול 125-127",
+    "city": "קרית אונו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 100,
+    "prop": 100
+   },
+   {
+    "name": "הדקלים אבא הלל",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 100,
+    "prop": 100
+   },
+   {
+    "name": "רבנו גרשום",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 97,
+    "prop": 97
+   },
+   {
+    "name": "ביאליק",
+    "city": "בית שמש",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 96,
+    "prop": 1936
+   },
+   {
+    "name": "הפינה",
+    "city": "נהריה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 95,
+    "prop": 133
+   },
+   {
+    "name": "אוסישקין - רמז",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 94,
+    "prop": 94
+   },
+   {
+    "name": "יצחק שדה",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 90,
+    "prop": 90
+   },
+   {
+    "name": "סרלין",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 89,
+    "prop": 89
+   },
+   {
+    "name": "אורלוב",
+    "city": "פתח תקוה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 88,
+    "prop": 88
+   },
+   {
+    "name": "הטייסים 92",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 85,
+    "prop": 85
+   },
+   {
+    "name": "שנקר 55",
+    "city": "חולון",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 78,
+    "prop": 78
+   },
+   {
+    "name": "בראשית 3-7",
+    "city": "גבעתים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 75,
+    "prop": 75
+   },
+   {
+    "name": "מורדות הכרמל הצרפתי",
+    "city": "חיפה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 73,
+    "prop": 73
+   },
+   {
+    "name": "המקור",
+    "city": "רמת גן",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 72,
+    "prop": 72
+   },
+   {
+    "name": "קהילת ורשה 73,77,79",
+    "city": "תל אביב יפו",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 72,
+    "prop": 72
+   },
+   {
+    "name": "העצמאות",
+    "city": "אור יהודה",
+    "status": "תכנית מאושרת במימוש",
+    "permits": 62,
+    "prop": 744
+   },
+   {
+    "name": "הדרור",
+    "city": "יבנה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 60,
+    "prop": 60
+   },
+   {
+    "name": "הבית הלבן",
+    "city": "נתניה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 58,
+    "prop": 58
+   },
+   {
+    "name": "אלעזר בן יאיר",
+    "city": "ירושלים",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 48,
+    "prop": 48
+   },
+   {
+    "name": "הבנים",
+    "city": "נס ציונה",
+    "status": "תכנית מאושרת אחרי רישוי",
+    "permits": 12,
+    "prop": 12
+   }
+  ]
+ },
+ "map": {
+  "source": "הרשות הממשלתית להתחדשות עירונית: מפת מתחמי פינוי בינוי מוכרזים (gov.il)",
+  "url": "https://www.gov.il/he/departments/topics/mapa-renewal",
+  "last_edit": "2026-10-20",
+  "total": 999,
+  "localities": 79,
+  "existing": 153319,
+  "proposed": 618325,
+  "by_stage": {
+   "תכנית מאושרת לפני מימוש": 348,
+   "תכנון סטטוטורי": 303,
+   "תכנון ראשוני": 107,
+   "ללא שלב במפה": 188,
+   "תכנית מאושרת במימוש": 53
+  },
+  "tracks": {
+   "רשויות": 241,
+   "טרם הוכרז": 205,
+   "מיסוי": 553
+  }
+ }
+}

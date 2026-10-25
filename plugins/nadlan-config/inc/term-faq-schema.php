@@ -15,9 +15,16 @@ add_action( 'wp_head', function () {
 	$post = get_queried_object();
 	if ( ! $post ) { return; }
 	$html = (string) $post->post_content;
-	// Extract sections - pattern: <h2>label</h2> ... up to next h2 or end
-	if ( ! preg_match_all( '~<h2[^>]*>(.*?)</h2>(.*?)(?=<h2|$)~us', $html, $m, PREG_SET_ORDER ) ) { return; }
 	$faqs = array();
+	// 1.72.520: a term with a real "שאלות נפוצות" section gives its own visible questions (h3 + p), never questions made of headings
+	if ( preg_match( '~<h2[^>]*>[^<]*שאלות נפוצות[^<]*</h2>(.*?)(?=<h2|$)~us', $html, $fq ) && preg_match_all( '~<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>~us', $fq[1], $qa, PREG_SET_ORDER ) && count( $qa ) >= 2 ) {
+		foreach ( $qa as $x ) {
+			$faqs[] = array( '@type' => 'Question', 'name' => trim( wp_strip_all_tags( $x[1] ) ), 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => trim( wp_strip_all_tags( $x[2] ) ) ) );
+		}
+		$m = array();
+	} elseif ( ! preg_match_all( '~<h2[^>]*>(.*?)</h2>(.*?)(?=<h2|$)~us', $html, $m, PREG_SET_ORDER ) ) {
+		$m = array(); // no sections: the breadcrumb below still prints
+	}
 	foreach ( $m as $sec ) {
 		$q = trim( wp_strip_all_tags( $sec[1] ) );
 		$a = trim( wp_strip_all_tags( $sec[2] ) );
@@ -51,3 +58,12 @@ add_action( 'wp_head', function () {
 		),
 	), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 }, 22 );
+
+/* 1.72.520: the Yoast title and description of a glossary term can be set through the REST API (like pages), so an upgraded term
+   gets its searched title; editors only. */
+add_action( 'init', function () {
+	foreach ( array( '_yoast_wpseo_title', '_yoast_wpseo_metadesc' ) as $k ) {
+		register_post_meta( 'nadlan_term', $k, array( 'type' => 'string', 'single' => true, 'show_in_rest' => true,
+			'auth_callback' => function () { return current_user_can( 'edit_posts' ); } ) );
+	}
+}, 20 );
