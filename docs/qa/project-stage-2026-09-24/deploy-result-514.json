@@ -1,0 +1,22 @@
+{
+  "released": "1.72.514",
+  "from": "1.72.513",
+  "live_before": {
+    "nadlan-config.php": "e7b530e714bce79866cc426608edd4f7",
+    "inc/projects-hub.php": "4cb9bf1efda1a09fe6b3af967a450e56",
+    "inc/page-lang.php": "fd016b9ece595678a2944c2a62ec9dcb"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-25 12:19:05",
+  "files": {
+    "inc/projects-hub-lang.php": "c53dd8c1b84a9c586e9f21c09c9e2d03",
+    "data/hub-lang/names.json": "e63ba795eb75d7777f16e7b3762f3ae9",
+    "data/hub-lang/en.json": "fd6b361d2ab618f19aa2cbb797758e6d",
+    "nadlan-config.php": "29b2555e2eb63fbe97d0c434c6171b08",
+    "inc/projects-hub.php": "f81e2f17d3bd12e143c8396c54f2e5a8",
+    "inc/page-lang.php": "96aca2b1d1381e3651242569c7cc9b14"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.514, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

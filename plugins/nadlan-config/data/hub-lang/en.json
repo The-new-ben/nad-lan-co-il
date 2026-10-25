@@ -1,0 +1,733 @@
+{
+ "lang": "en",
+ "dir": "ltr",
+ "names_i": 0,
+ "cur": "USD",
+ "cur_sign": "$",
+ "num_sep": ",",
+ "home": "/en/",
+ "home_label": "Home",
+ "crumb": "New projects",
+ "page_title": "New Projects in Israel: New Apartments by City and Developer",
+ "seo_title": "New Projects in Israel 2026 | New Apartments by City and Developer | NadLan",
+ "seo_desc": "New projects in Israel in one place: developments on the market with developer prices in shekels and dollars, Tel Aviv by area, prices by city, purchase tax for foreign buyers and olim, and what to check before you sign.",
+ "lead": "Looking for a new apartment in Israel, straight from the developer? This page brings together {total} new projects in {cities} Israeli cities, {market} new developments and off-plan projects on the market now with the prices developers publish, a Tel Aviv guide by area, real deal prices by city, and everything a buyer from abroad needs: purchase tax for foreign residents and olim, mortgages for non-residents and a currency calculator. Updated {date}.",
+ "jump": {
+  "featured": "Featured developments",
+  "market": "On the market now",
+  "tlv": "Tel Aviv",
+  "prices": "Prices by city",
+  "abroad": "Buying from abroad",
+  "timeline": "Permit to keys",
+  "pay": "Payments",
+  "checks": "Checks before signing",
+  "faq": "FAQ"
+ },
+ "featured_kick": "Developments with a full English page",
+ "featured_h": "Featured new developments in Israel",
+ "featured_lede": "Flagship projects with a complete page in English: the building, the apartments, the location, prices where the developer publishes them, and a virtual tour where there is one.",
+ "featured_more": "View the project",
+ "market_kick": "On the market · prices as published by the developers",
+ "market_h": "New developments on the market: prices, rooms and payment terms",
+ "market_lede": "{n} new developments currently selling, {tlv} of them in Tel Aviv, with the starting price the developer publishes, shown in shekels and in dollars at the Bank of Israel rate. Pick a region, compare starting prices and payment terms before you contact a developer.",
+ "market_note": "Prices, rooms and terms as published by the developers on their websites and in their project listings, checked on {date}. \"From\" is the price of the cheapest apartment in the project on that day; the final price is set with the developer and in the contract. The price is the shekel price; the dollar figure is only an approximate conversion for orientation, at the Bank of Israel representative rate of {fxdate} (1 USD = {fx} ILS). Developments listed here carry an English or brand name; the full list of {all} projects, names in Hebrew as published, is on the Hebrew catalog page.",
+ "market_all": "Hebrew catalog: all {all} projects on the market",
+ "market_more": "Show all {n} developments",
+ "col_project": "Project",
+ "col_dev": "Developer",
+ "col_rooms": "Rooms",
+ "col_from": "From",
+ "col_terms": "Terms",
+ "col_stage": "Stage",
+ "price_ask": "On request",
+ "stage": {
+  "presale": "Pre-sale",
+  "marketing": "Selling",
+  "construction": "Under construction",
+  "near_occupancy": "Ready soon",
+  "immediate": "Ready to move in"
+ },
+ "delivery": "Delivery",
+ "regions": {
+  "": "All Israel",
+  "tlv": "Tel Aviv",
+  "dan": "Gush Dan",
+  "center": "Centre & Shfela",
+  "sharon": "Sharon",
+  "south": "South",
+  "north": "Haifa & North",
+  "jlm": "Jerusalem area",
+  "other": "Other cities"
+ },
+ "tlv_kick": "Tel Aviv-Yafo",
+ "tlv_h": "New projects in Tel Aviv: where they build and what it costs",
+ "tlv_lede": "Tel Aviv-Yafo started more new homes than any other Israeli city: 7,611 housing starts in the 12 months to June 2026, up 19.9%. New construction is spread across five very different parts of the city, from seafront towers in the new Sde Dov district to urban renewal in Yad Eliyahu.",
+ "tlv_stats": [
+  [
+   "7,611",
+   "housing starts in the city, July 2025 to June 2026, the most in Israel"
+  ],
+  [
+   "9,820",
+   "unsold new apartments in the city, end of August 2026"
+  ],
+  [
+   "878",
+   "new apartments sold in the city, June to August 2026"
+  ]
+ ],
+ "tlv_median": "median deal, 4 rooms, {q}",
+ "tlv_areas": {
+  "north": [
+   "North Tel Aviv",
+   "Sde Dov, Ramat Aviv, Neot Afeka, Hadar Yosef, Kikar Hamedina, the Old and New North",
+   "The densest cluster of new residential towers in the city. New projects near the sea are concentrated here, in the Sde Dov district on the northern shoreline, alongside urban renewal in the Old North, the New North and Neot Afeka."
+  ],
+  "centre": [
+   "City centre",
+   "Lev Ha'ir, the southern Old North, Sarona and the Somail compound",
+   "Luxury towers around Ibn Gabirol, the Kirya and Sarona, and boutique buildings and TAMA 38 projects inside the historic districts."
+  ],
+  "east": [
+   "East Tel Aviv",
+   "Yad Eliyahu, Nahalat Yitzhak, Bitzaron and Ramat Yisrael, HaSolelim",
+   "Urban renewal and new construction along Derech HaShalom, in Yad Eliyahu and Nahalat Yitzhak, at lower prices than the north."
+  ],
+  "south": [
+   "South Tel Aviv",
+   "Florentin, Shapira, Neve Sha'anan, Kiryat Shalom, Neve Ofer",
+   "Urban renewal compounds and new buildings in the southern neighbourhoods, with the lowest entry prices in the city."
+  ],
+  "jaffa": [
+   "Jaffa",
+   "North Jaffa, Ajami, Jaffa D, Tzahalon",
+   "Projects along the coast and inside old and new Jaffa, next to older estates going through renewal."
+  ]
+ },
+ "hoods": {
+  "בבלי": "Bavli",
+  "הצפון החדש החלק הצפ": "New North (north)",
+  "נאות אפקה א": "Neot Afeka A",
+  "הדר יוסף": "Hadar Yosef",
+  "לב העיר": "Lev Ha'ir",
+  "גני שרונה": "Ganei Sarona",
+  "כרם התימנים": "Kerem HaTeimanim",
+  "נחלת יצחק": "Nahalat Yitzhak",
+  "ביצרון": "Bitzaron",
+  "יד אליהו": "Yad Eliyahu",
+  "קרית שלום": "Kiryat Shalom",
+  "דקר": "Dakar",
+  "נוה חן": "Neve Chen",
+  "צפון יפו": "North Jaffa",
+  "יפו ד": "Jaffa D"
+ },
+ "rooms3": "3 rooms",
+ "rooms4": "4 rooms",
+ "tlv_on_market": "{n} developments on the market in the table, from {lo}",
+ "plans_h": "The plans shaping the city",
+ "plans_cols": [
+  "Plan",
+  "What it includes",
+  "Where it stands"
+ ],
+ "plans": [
+  [
+   "Sde Dov district",
+   "About 16,000 homes for about 40,000 residents on about 1,300 dunams, about 7,000 of them affordable housing, with hotels, offices and retail",
+   "Eshkol (about 4,800 homes) approved May 2021; the centre (about 7,100 homes) approved 2025; the north (about 4,000 homes) in approval",
+   "/en/sde-dov/"
+  ],
+  [
+   "North-West, plan TA/3700",
+   "A new residential district along the northern shoreline, with five detailed plans (3700/1 to 3700/5)",
+   "Objections to the detailed plans were heard in 2019",
+   ""
+  ],
+  [
+   "District plans 3 and 4",
+   "TA/3616A and TA/3729A: extra floors, strengthening and rebuilding of older buildings in the city centre",
+   "Approved in 2018, replacing plan G for rooftop building",
+   ""
+  ],
+  [
+   "Kikar Hamedina",
+   "TA/MK/2500/A: 453 homes around the square",
+   "In force since 2013; the city lists the site at the \"skeleton complete\" stage, April 2026",
+   "/projects/hamedina-en/"
+  ],
+  [
+   "Urban renewal (pinui-binui, TAMA 38)",
+   "Almost half of Israel's demolish-and-rebuild starts are in the Tel Aviv district",
+   "17,670 demolish-and-rebuild starts in the 12 months to June 2026, 45.9% of them in the Tel Aviv district",
+   ""
+  ]
+ ],
+ "prices_kick": "Prices by city · closed deals",
+ "prices_h": "New apartment prices by city",
+ "prices_lede": "Before you weigh a developer's price, know what buyers actually paid in the city. The table shows median deal prices by number of rooms for January to March 2026, from the Israel Tax Authority, in shekels with the dollar equivalent, next to the lowest starting price a developer publishes in that city.",
+ "prices_cols": [
+  "City",
+  "3 rooms",
+  "4 rooms",
+  "5 rooms",
+  "New project from"
+ ],
+ "prices_note": "Median of all deals reported to the Israel Tax Authority (new and resale), Government real estate site, January to March 2026. \"New project from\": the lowest starting price a developer published in the city, from the table above. Dollar amounts at 1 USD = {fx} ILS ({fxdate}).",
+ "yoy_up": "up {x}% in a year",
+ "yoy_down": "down {x}% in a year",
+ "abroad_kick": "Buying from abroad",
+ "abroad_h": "Buying a new apartment in Israel from abroad: tax, mortgage and money",
+ "abroad_lede": "A foreign resident can buy a new apartment in Israel from a developer much like an Israeli, but three things change: the purchase tax, how much a bank will lend, and how the money gets here. New immigrants (olim) get a large purchase tax relief on their first home.",
+ "tax_h": "Purchase tax by buyer, 2026",
+ "tax_cols": [
+  "Price band (ILS)",
+  "Israeli resident, only home",
+  "New immigrant (oleh), only home",
+  "Foreign resident or additional home"
+ ],
+ "tax_note": "Israel Tax Authority, instruction 1/2026. The only-home brackets are frozen to 15.1.2028; the foreign-resident and additional-home rates are a temporary order, extended by the Tax Authority notice of 12.10.2026 to purchases up to 10.2.2027 inclusive. The oleh relief applies from one year before aliyah to seven years after it, on a single home, and not above 20,183,565 ILS. Olim who arrived before 15.8.2024 may choose the older regulation 12 track instead (0.5% up to 1,988,090 ILS and 5% above), which pays off only on homes above about 12.5 million ILS. On a new apartment from a developer the tax is calculated on the price including VAT.",
+ "calc_h": "Buyer calculator: tax, cash needed and currency",
+ "calc_price": "Apartment price (ILS)",
+ "calc_buyer": "You are buying as",
+ "calc_cur": "Show amounts in",
+ "calc_buyers": {
+  "single": "Israeli resident, only home",
+  "oleh": "New immigrant (oleh), only home",
+  "foreign": "Foreign resident",
+  "extra": "Israeli resident, additional home"
+ },
+ "calc_rows": {
+  "tax": "Purchase tax",
+  "ltv": "Maximum bank mortgage",
+  "equity": "Cash needed (down payment + tax)",
+  "legal": "Lawyer, about 0.5% + VAT",
+  "total": "Total cash before moving in"
+ },
+ "calc_note": "An estimate for planning, not an offer. Mortgage cap: 75% for an Israeli only home, 50% for a foreign resident or an additional home (Bank of Israel directive 329). Lawyer fees vary; about 0.5% of the price plus 18% VAT is a common level. Currency at the Bank of Israel rate of {fxdate}.",
+ "mort_h": "Mortgage for non-residents",
+ "mort_p": "Israeli banks lend a foreign resident up to 50% of the property value, under Bank of Israel directive 329. Average rates on new mortgages in August 2026: fixed unlinked about 4.62%, fixed CPI-linked about 3.29%, variable unlinked about 4.42%. The Bank of Israel rate is 3.25% (held on 21.10.2026) and prime is 4.75%.",
+ "steps_h": "From abroad, step by step",
+ "steps": [
+  [
+   "An Israeli real estate lawyer",
+   "Your lawyer checks the developer, the permit, the contract and the guarantee, and registers your rights. In Israel there is no notary in the deal: the lawyer does that work."
+  ],
+  [
+   "Power of attorney",
+   "If you cannot be in Israel for the signing, you sign a power of attorney at an Israeli consulate or before a local notary with an apostille, so your lawyer can sign for you."
+  ],
+  [
+   "An Israeli bank account",
+   "Payments to the developer go through the payment vouchers of the project's accompanying bank, so in practice you need an Israeli account; banks ask for the source of the funds."
+  ],
+  [
+   "Moving the money",
+   "Transfer in stages, by the payment schedule. The currency rate on each transfer day changes your real price, so some buyers fix part of the amount in advance with their bank."
+  ],
+  [
+   "The Sale Law guarantee",
+   "Every payment above 7% of the price must be secured, usually by a bank guarantee issued within 14 business days of each voucher payment."
+  ]
+ ],
+ "abroad_links": [
+  [
+   "/en/buy-property-in-israel/",
+   "Buying property in Israel as a foreigner: the full guide"
+  ],
+  [
+   "/israel-mortgage-non-residents/",
+   "Israeli mortgage calculator for non-residents"
+  ],
+  [
+   "/en/new-projects/",
+   "New-build buyer guide: how to check a project"
+  ]
+ ],
+ "timeline_kick": "Timeline",
+ "timeline_h": "From building permit to keys: how long a new project takes",
+ "timeline_lede": "A residential building in Israel takes on average 31.8 months to build, or 37.3 months weighted by the number of homes, according to the Central Bureau of Statistics. If you sign at pre-sale or before the permit, add the licensing time. This is the road from plan to an apartment registered in your name, and what protects your money at each stage.",
+ "timeline_note": "The months in the building stages illustrate an average of about 32 months per building. The binding delivery date is the one in your contract.",
+ "steps_tl": [
+  [
+   "Plan approval",
+   "years, depending on the project",
+   "The planning committee approves the plan; urban renewal also needs the owners' consent.",
+   "Usually no public sale yet"
+  ],
+  [
+   "Building permit and launch",
+   "pre-sale and sales",
+   "The permit allows construction to start; some developers sell before it, at pre-sale.",
+   "First payment: at most 7% without security"
+  ],
+  [
+   "Excavation and foundations",
+   "months 0 to 6",
+   "Excavation, shoring and foundations: the building clock starts here.",
+   "Every payment by voucher, guarantee within 14 business days"
+  ],
+  [
+   "Skeleton",
+   "months 6 to 20",
+   "The floors go up. At least six months after the foundations, the window for specification changes closes.",
+   "Payments follow construction; up to half of each is index-linked"
+  ],
+  [
+   "Finishes and systems",
+   "months 20 to 32",
+   "Plaster, floors, kitchens, lifts and landscaping.",
+   "Linkage stops at the contractual delivery date"
+  ],
+  [
+   "Form 4 and handover",
+   "about 32 months on average",
+   "The occupancy permit, the inspection and the keys. A delay of more than a month entitles you to compensation under the Sale Law.",
+   "Visible defects reported within a year"
+  ],
+  [
+   "Condominium registration",
+   "within a year of handover",
+   "The developer registers the building as a condominium at the Land Registry.",
+   "Inspection periods of 1 to 7 years by defect"
+  ],
+  [
+   "Your rights registered",
+   "within 6 months of registration",
+   "The apartment is registered in your name and the guarantees are replaced by registration.",
+   "3 more years of warranty after each inspection period"
+  ]
+ ],
+ "pay_kick": "Payments and linkage",
+ "pay_h": "How you pay for a new apartment: schedule, index linkage and 20/80 deals",
+ "pay_lede": "In most new projects you pay in stages as the building rises. 20/80 and 10/90 deals push most of the price to handover. In August 2026 about 30% of developer sales on the free market, in five tax regions including Tel Aviv, came with such a financing benefit; in the Tel Aviv tax region, 21%.",
+ "pay_plans": [
+  [
+   "Regular schedule (example)",
+   "by construction stage",
+   [
+    [
+     15,
+     "Signing"
+    ],
+    [
+     20,
+     "Foundations"
+    ],
+    [
+     25,
+     "Skeleton"
+    ],
+    [
+     25,
+     "Finishes"
+    ],
+    [
+     15,
+     "Handover"
+    ]
+   ]
+  ],
+  [
+   "20/80 deal",
+   "20% at signing, 80% at handover",
+   [
+    [
+     20,
+     "Signing"
+    ],
+    [
+     80,
+     "Handover"
+    ]
+   ]
+  ],
+  [
+   "10/90 deal",
+   "10% at signing, 90% at handover",
+   [
+    [
+     10,
+     "Signing"
+    ],
+    [
+     90,
+     "Handover"
+    ]
+   ]
+  ]
+ ],
+ "link_h": "Index linkage in one picture",
+ "link_parts": [
+  [
+   "20%",
+   "never linked"
+  ],
+  [
+   "up to 40%",
+   "may be linked"
+  ],
+  [
+   "40%",
+   "not linked"
+  ]
+ ],
+ "link_aria": "Of the apartment price, the first 20% is never linked; of the rest, up to half of each payment may be linked, so at most 40% of the price",
+ "link_p": "For contracts signed from 7.7.2022 (Amendment 9 to the Sale Law), up to half of each payment may be linked to the construction inputs index, the first payment of 20% of the price is never linked, and linkage stops at the contractual delivery date even if handover is late. The residential construction inputs index for September 2026: 104.0, up 3.6% over 12 months. So a payment of 1 million shekels on which the index rose 3.6% grows by at most 18,000 shekels.",
+ "boi_p": "Since April 2025 the Bank of Israel limits these deals: developer-subsidised balloon and bullet loans are capped at 10% of each bank's quarterly mortgages, and a project where more than a quarter of the contracts defer more than 40% of the price to handover carries a higher capital charge. The rules run to 31.12.2026.",
+ "checks_kick": "Before you sign",
+ "checks_h": "New apartment from a developer: what to check before you sign",
+ "checks_lede": "Nine checks to make before you sign with a developer, each with its official source. Tick each one as you go; the list stays saved in your browser.",
+ "checks_count": "{n} of {t} checks done",
+ "checks": [
+  [
+   "The contractor is registered",
+   "Active status, not frozen or suspended, and a classification that fits the size of the building.",
+   "https://www.gov.il/apps/moch/rasham/home",
+   "Contractors register, Ministry of Construction"
+  ],
+  [
+   "Every shekel above 7% is secured",
+   "A Sale Law bank guarantee, an insurance policy, a mortgage, a warning note or a transfer of ownership. The guarantee excludes VAT, which a Finance Ministry fund refunds if the guarantee is called.",
+   "https://he.wikisource.org/wiki/חוק_המכר_(דירות)_(הבטחת_השקעות_של_רוכשי_דירות)",
+   "Sale (Apartments) Law (Assurance of Investments), s.2"
+  ],
+  [
+   "You pay only by voucher",
+   "With a financially accompanied project every payment goes through the accompanying bank's voucher booklet, and the guarantee is issued within 14 business days. A developer without accompaniment must tell you so in writing before signing.",
+   "https://he.wikisource.org/wiki/חוק_המכר_(דירות)_(הבטחת_השקעות_של_רוכשי_דירות)",
+   "Assurance of Investments Law, s.2A1, s.3B"
+  ],
+  [
+   "There is a building permit",
+   "In Tel Aviv, check the city's planning information and permit map. At pre-sale, ask when the permit is expected and what happens to your money if it is delayed.",
+   "https://www.tel-aviv.gov.il/About/Pages/planning.aspx",
+   "Planning information, Tel Aviv-Yafo"
+  ],
+  [
+   "The specification is on the official form",
+   "A specification under the Sale of Apartments Order, with a price list for items you may give up or upgrade, and a deadline for change requests.",
+   "https://he.wikisource.org/wiki/צו_מכר_דירות_(טופס_של_מפרט)",
+   "Sale of Apartments (Specification Form) Order"
+  ],
+  [
+   "Linkage follows the law",
+   "Up to half of each payment, nothing on the first 20%, and nothing after the contractual delivery date.",
+   "https://fs.knesset.gov.il/24/law/24_lsr_628987.pdf",
+   "Amendment 9 to the Sale Law, s.5C"
+  ],
+  [
+   "Delivery date and compensation are written",
+   "Compensation based on the rent of a similar apartment from the second month of delay, with no waiver demanded as a condition for the keys.",
+   "https://fs.knesset.gov.il/24/law/24_lsr_628987.pdf",
+   "Amendment 9 to the Sale Law, s.5A"
+  ],
+  [
+   "The developer's legal fee",
+   "At most 5,915 ILS or 0.5% of the price, whichever is lower, plus VAT. The cap does not apply above 4,642,750 ILS.",
+   "https://he.wikisource.org/wiki/תקנות_המכר_(דירות)_(הגבלת_גובה_ההוצאות_המשפטיות)",
+   "Sale (Apartments) Regulations (legal costs)"
+  ],
+  [
+   "Land Registry extract and condominium file",
+   "Look for warning notes, mortgages and liens. After handover the developer registers the condominium within a year and your rights within 6 months.",
+   "https://www.gov.il/he/service/land_registration_extract",
+   "Land registration extract"
+  ]
+ ],
+ "types_kick": "Types of project",
+ "types_h": "New build, urban renewal, TAMA 38, pre-sale and discounted homes: what changes for the buyer",
+ "types_lede": "\"New project\" can mean a tower in a new district, a pinui-binui compound, a TAMA 38 building or a government lottery apartment. In all of them you buy a new apartment from a developer with the protection of the Sale Law, but the time to keys, the price and the risk differ a lot. In the 12 months to June 2026 Israel started 76,040 homes, 17,670 of them in demolish-and-rebuild projects.",
+ "types_rows": [
+  "What it is",
+  "Time to keys",
+  "Price",
+  "Main risk",
+  "Read more"
+ ],
+ "types": [
+  [
+   "New build",
+   "A project on vacant land, usually in a new neighbourhood or district",
+   "Usually about 3 years from the start of works",
+   "The area's market price",
+   "A delay in the permit or the works",
+   "/en/new-projects/",
+   "New-build buyer guide"
+  ],
+  [
+   "Pinui-binui",
+   "A compound of several old buildings demolished and rebuilt",
+   "Years of planning and consents, then a normal build",
+   "Similar to new build in the area",
+   "The pace of consents and approvals",
+   "/en/guides/",
+   "Guides"
+  ],
+  [
+   "TAMA 38",
+   "A single building: strengthening and extra floors, or demolish and rebuild",
+   "Shorter, one building",
+   "Usually a few apartments per building",
+   "Works next to existing residents",
+   "/en/guides/",
+   "Guides"
+  ],
+  [
+   "Pre-sale",
+   "Buying early, usually before the permit",
+   "Longer: add the licensing time",
+   "Below the full launch price",
+   "Time to keys and permit certainty",
+   "/en/developer-deals/",
+   "Developer deals"
+  ],
+  [
+   "Discounted home (Dira Behanacha)",
+   "A government lottery for eligible Israelis",
+   "Depends on the project you win",
+   "A discount on the market price",
+   "The odds of winning",
+   "",
+   ""
+  ],
+  [
+   "Purchasing group",
+   "Buyers who organise and buy land together",
+   "Depends on the group and approvals",
+   "Lower when everything works",
+   "Higher risk, without the full protection of buying from a developer",
+   "",
+   ""
+  ]
+ ],
+ "numbers_kick": "The market in numbers · October 2026",
+ "numbers_h": "Israel's new-home market in numbers",
+ "numbers_lede": "The latest official figures on sales, stock, construction and prices of new homes in Israel, from the Central Bureau of Statistics, the Finance Ministry and the Bank of Israel. New apartments made up 41.8% of all homes sold in June to August 2026.",
+ "tiles": [
+  [
+   "10,110",
+   "new apartments sold, June to August 2026",
+   "up 24.9% on a year earlier · CBS"
+  ],
+  [
+   "85,680",
+   "unsold new apartments, end of August 2026",
+   "26.7 months of supply · CBS"
+  ],
+  [
+   "26,330",
+   "of them in the Tel Aviv district",
+   "30.7% of all unsold stock · CBS"
+  ],
+  [
+   "76,040",
+   "housing starts in the 12 months to June 2026",
+   "60,970 homes completed · CBS"
+  ],
+  [
+   "61%",
+   "of developer sales in August 2026 were off-plan",
+   "delivery 24 months or more away · Finance Ministry"
+  ],
+  [
+   "104.0",
+   "residential construction inputs index, September 2026",
+   "up 3.6% in 12 months · CBS"
+  ],
+  [
+   "0.4%",
+   "fall in the new-home price index over a year",
+   "all homes: down 1.8% · CBS"
+  ],
+  [
+   "3.25%",
+   "Bank of Israel rate, held on 21.10.2026",
+   "prime 4.75% · Bank of Israel"
+  ]
+ ],
+ "cities_h": "New projects by city",
+ "cities_note": "The city catalog pages are in Hebrew.",
+ "city_link": "New projects in {city}",
+ "guides_h": "Guides for buying a new home in Israel",
+ "guides": [
+  [
+   "/en/new-projects/",
+   "New-build buyer guide",
+   "How to check a project before you sign"
+  ],
+  [
+   "/en/buy-property-in-israel/",
+   "Buying as a foreigner",
+   "Tax, mortgage, lawyer and money transfer"
+  ],
+  [
+   "/en/sde-dov/",
+   "Sde Dov district",
+   "Projects and apartments in Tel Aviv's new district"
+  ],
+  [
+   "/en/north-tel-aviv/",
+   "North Tel Aviv",
+   "Neighbourhoods, projects and prices"
+  ],
+  [
+   "/en/developer-deals/",
+   "Developer deals",
+   "20/80, 10/90 and the discounts that matter"
+  ],
+  [
+   "/israel-mortgage-non-residents/",
+   "Mortgage for non-residents",
+   "Calculator and the Bank of Israel rules"
+  ],
+  [
+   "/en/guides/",
+   "All guides",
+   "Buying, renting and investing in Israel"
+  ],
+  [
+   "/projects/",
+   "Hebrew catalog",
+   "Every project in Israel, by city and developer"
+  ]
+ ],
+ "faq_h": "Frequently asked questions about new projects in Israel",
+ "faq": [
+  [
+   "Can foreigners buy a new apartment in Israel?",
+   "Yes. A foreign resident can buy a new apartment from a developer in Israel. The main differences from an Israeli buyer are a purchase tax of 8% up to 6,055,070 ILS and 10% above it (a temporary order, extended to 10.2.2027), a bank mortgage of up to 50% of the value, and the need to move the money into an Israeli account for the voucher payments."
+  ],
+  [
+   "How much purchase tax do I pay on a new apartment in Israel?",
+   "It depends on who you are. An Israeli resident buying an only home pays 0% up to 1,978,745 ILS, 3.5% up to 2,347,040, 5% up to 6,055,070 and 8% and 10% above that. A foreign resident or an Israeli buying an additional home pays 8% up to 6,055,070 ILS and 10% above it. On a new apartment the tax is calculated on the price including VAT."
+  ],
+  [
+   "What purchase tax benefit do new immigrants (olim) get?",
+   "An oleh buying a single home pays 0% up to 1,978,745 ILS and 0.5% up to 6,055,070 ILS, then 8% and 10% above that. The relief applies from one year before aliyah to seven years after it and not above 20,183,565 ILS. For a 3,000,000 ILS apartment that is about 5,100 ILS instead of 45,538 ILS for an Israeli resident. Olim who arrived before 15.8.2024 may choose the older regulation 12 track, which only pays off above about 12.5 million ILS."
+  ],
+  [
+   "Can a foreign resident get a mortgage in Israel?",
+   "Yes. Israeli banks lend non-residents up to 50% of the property value under Bank of Israel directive 329. You will need proof of income and of the source of the funds, an Israeli bank account and an appraisal. Average rates on new mortgages in August 2026 were about 4.62% fixed unlinked and 3.29% fixed CPI-linked."
+  ],
+  [
+   "Can a foreigner own land in Israel?",
+   "Much of Israel's land is Israel Lands, held on long leases. The Israel Lands Law limits transfers to a \"foreigner\", but defines a foreigner as someone who is not an Israeli citizen or resident and not entitled to make aliyah under the Law of Return, so Jewish buyers from abroad are not foreigners for this rule. Others can be approved for one home on residential land."
+  ],
+  [
+   "Where are the new projects in Tel Aviv?",
+   "Mostly in five areas: the Sde Dov district and north Tel Aviv along the shore, luxury towers in the city centre around Ibn Gabirol and Sarona, urban renewal in east Tel Aviv (Yad Eliyahu, Nahalat Yitzhak), the southern neighbourhoods, and Jaffa. The Tel Aviv section on this page shows each area with deal prices and the developments selling there."
+  ],
+  [
+   "How much does a new apartment cost in Tel Aviv?",
+   "The official median deal for a 4-room apartment in Tel Aviv-Yafo in January to March 2026 was 5,229,800 ILS, about 1.69 million dollars, for new and resale homes together. New developments start lower in the south and east of the city and far higher in the north and on the seafront; the table on this page lists the starting prices developers publish."
+  ],
+  [
+   "Is there pre-sale in Tel Aviv?",
+   "Yes. Developers regularly open pre-sale rounds before the building permit or at the start of sales, at a price below the full launch price. At pre-sale you pay for an apartment that is further from the keys, so check the permit stage, the timeline and the security on every payment."
+  ],
+  [
+   "What does buying off-plan mean in Israel?",
+   "Buying off-plan means signing for an apartment in a building that is not yet built, and paying as it goes up. In August 2026, 61% of the apartments developers sold on the free market had a delivery date 24 months or more away. Your money is protected by the Sale Law guarantee on every payment above 7% of the price."
+  ],
+  [
+   "How long does it take from signing to getting the keys?",
+   "It depends on the stage at signing. A residential building takes on average 31.8 months to build from the start of works, according to the Central Bureau of Statistics. Signing before the permit adds the licensing time. If the developer is more than a month late, the Sale Law entitles you to compensation."
+  ],
+  [
+   "What is a Sale Law guarantee?",
+   "A developer may not take more than 7% of the price without security, usually a bank guarantee under the Sale (Apartments) Law. You pay only through the accompanying bank's voucher booklet and each payment triggers a guarantee within 14 business days. The guarantee excludes VAT, which a Finance Ministry fund refunds if the guarantee is called."
+  ],
+  [
+   "What if the developer gives no bank guarantee?",
+   "The developer may not take more than 7% of the price without one of the securities set by the Sale (Apartments) Law. When the money is secured only by a mortgage or a warning note, the regulations limit payments to building stages: 31% when the lowest floor is cast, 25% when the frame with the mamad is done, then 5%, 6%, 10%, 13%, 5% and the last 5% at occupancy and delivery."
+  ],
+  [
+   "How does index linkage work on a new apartment?",
+   "For contracts from 7.7.2022, up to half of each payment may be linked to the construction inputs index, the first 20% of the price is never linked, and linkage stops at the contractual delivery date. At most 40% of the price is linked. The index for September 2026 stood at 104.0, up 3.6% over 12 months."
+  ],
+  [
+   "What compensation do I get if delivery is late?",
+   "For contracts from 7.7.2022, after the first month of delay you get, without proving damage, 1 times the rent of a similar apartment for months 2 to 4, 1.25 times for months 5 to 10 and 1.5 times from month 11. For example, a 12-month delay on an apartment that would rent for 10,000 ILS gives 135,000 ILS."
+  ],
+  [
+   "What are 20/80 and 10/90 deals?",
+   "Developer deals where you pay 20% or 10% at signing and the rest at handover, sometimes with a developer-paid loan. They ease cash flow but are limited by the Bank of Israel since April 2025, to 31.12.2026. In August 2026 about 30% of developer sales in five tax regions included such a financing benefit."
+  ],
+  [
+   "Do I need an Israeli lawyer to buy from a developer?",
+   "In practice, yes. In Israel the buyer's lawyer checks the developer, the permit, the contract and the guarantee, handles the purchase tax filing and registers your rights; there is no notary in the deal. The developer may charge you for his own lawyer up to 5,915 ILS or 0.5% of the price plus VAT, except above 4,642,750 ILS."
+  ],
+  [
+   "Is VAT included in the price of a new apartment?",
+   "Yes. Developer prices for residential apartments in Israel include VAT, which has been 18% since 1.1.2025. Purchase tax on a new apartment is calculated on the price including VAT."
+  ],
+  [
+   "What is a mamad and does every new apartment have one?",
+   "A mamad is the reinforced safe room inside the apartment, for the residents of that apartment only. New residential buildings have been built with protected spaces since the early 1990s, and the Civil Defense regulations set a mamad at no less than 9 square meters net, 2.5 to 2.8 meters high. In a new apartment it is usually one of the bedrooms, so check in the specification whether the bedroom count includes it."
+  ],
+  [
+   "How are rooms and square meters counted in Israel?",
+   "Israeli listings count rooms, not bedrooms: the living room is a room, so a 4-room apartment usually has a living room and three bedrooms, often one of them the mamad. Half rooms such as 3.5 are common. The area in the developer's specification is measured to the outer faces of the exterior walls, so an Israeli 100 square meters (about 1,076 sq ft) includes the walls; balconies, parking and storage are listed separately."
+  ],
+  [
+   "Which cities are popular with English-speaking buyers?",
+   "Jerusalem, Tel Aviv, Ra'anana, Netanya, Herzliya, Beit Shemesh and Modi'in are cities with large English-speaking communities and many new projects. The city links on this page open the projects in each city, and the prices table compares deal prices across Israel's main cities."
+  ],
+  [
+   "How many new apartments are unsold in Israel?",
+   "According to the Central Bureau of Statistics, about 85,680 new apartments were unsold at the end of August 2026, 26.7 months of supply. About 26,330 were in the Tel Aviv district and about 9,820 in Tel Aviv-Yafo itself."
+  ],
+  [
+   "Can I buy in Israel without travelling there?",
+   "Yes. You can sign a power of attorney at an Israeli consulate or before a notary with an apostille, so your Israeli lawyer signs for you. Payments go by voucher from an Israeli account, and the guarantee is issued in your name."
+  ],
+  [
+   "Where can I see the prices of new projects?",
+   "The table of developments on the market on this page lists the starting prices developers publish, in shekels and dollars, with the date they were checked. Next to it, the prices-by-city table shows what buyers actually paid, so you can compare launch prices with real deals."
+  ]
+ ],
+ "sources_h": "Official sources",
+ "sources": [
+  [
+   "https://www.cbs.gov.il/he/mediarelease/DocLib/2026/317/04_26_317b.pdf",
+   "Central Bureau of Statistics: dwellings in real estate deals, June to August 2026"
+  ],
+  [
+   "https://www.cbs.gov.il/he/mediarelease/DocLib/2026/297/04_26_297b.pdf",
+   "Central Bureau of Statistics: building starts and completions, July 2025 to June 2026"
+  ],
+  [
+   "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/review-real-estate-082026/he/reviews-and-publishes_review-real-estate-082026.pdf",
+   "Finance Ministry, Chief Economist: housing market review, August 2026"
+  ],
+  [
+   "https://www.boi.org.il/media/ez4npagt/329.pdf",
+   "Bank of Israel: directive 329 on housing loans"
+  ],
+  [
+   "https://www.boi.org.il/media/xwkag15z/h2816.pdf",
+   "Bank of Israel: circular 2816 on developer financing deals"
+  ],
+  [
+   "https://www.gov.il/BlobFolder/policy/inst-01-2026/he/realestate_inst-01-2026.pdf",
+   "Israel Tax Authority: purchase tax brackets 2026"
+  ],
+  [
+   "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+   "Bank of Israel: representative exchange rates"
+  ],
+  [
+   "https://www.nadlan.gov.il/",
+   "Government real estate site: closed deals"
+  ],
+  [
+   "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+   "Tel Aviv-Yafo municipality: the Sde Dov district"
+  ],
+  [
+   "https://www.gov.il/apps/moch/rasham/home",
+   "Ministry of Construction: contractors register"
+  ]
+ ],
+ "updated": "Updated {date}. NadLan is an independent website; project and developer names appear for identification only."
+}

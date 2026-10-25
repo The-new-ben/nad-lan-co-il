@@ -83,6 +83,10 @@ if ( ! function_exists( 'nadlan_pglang_family' ) ) {
 				$fam[ $lang ] = get_permalink( $p );
 			}
 		}
+		// 1.72.514: /en|fr|ru|ar/projects/ are the language pages of the Hebrew catalog, which is the post-type archive, not a page
+		if ( 'projects' === $rest && empty( $fam['he'] ) ) {
+			$fam = array( 'he' => get_post_type_archive_link( 'nadlan_project' ) ) + $fam;
+		}
 		set_transient( $tkey, $fam, 12 * HOUR_IN_SECONDS );
 		return $fam;
 	}

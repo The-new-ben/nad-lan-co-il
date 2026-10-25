@@ -17,10 +17,15 @@ from the 25.10 incident: PHP_RELS lists every hunked file; never make old code r
 | # | Step | State |
 |---|---|---|
 | L1 | SERP per language in Ben's Chrome (en/ru/fr: head terms, AI overview, PAA, related) -> serp-lang.md | **done 25.10** (serp-lang.md: ru head term новостройки + МАМАД; fr programme neuf + prices in euros) |
-| L2 | Competitor DNA per language (top pages read in full) + searcher nuances (GSC foreign queries, what foreign/oleh buyers need) -> lang-dna-{en,ru,fr}.md | running (3 agents) |
-| L3 | Content per language: hub copy written natively (not a literal translation), language-specific sections (foreign buyer tax, olim, non-resident mortgage, FX, power of attorney, buying from abroad), FAQ from that language's PAA | en written (data/hub-lang/en.json, 20 FAQ); ru, fr next from the DNA files |
+| L2 | Competitor DNA per language (top pages read in full) + searcher nuances (GSC foreign queries, what foreign/oleh buyers need) -> lang-dna-{en,ru,fr}.md | **done 25.10** (lang-dna-en/ru/fr.md; found: foreign-buyer tax extended to 10.2.2027, Consumer Protection s.17D shekel-only prices, mamad 9 m² net, rooms/m² counting, Israel Lands Law 'foreigner') |
+| L3 | Content per language: hub copy written natively (not a literal translation), language-specific sections (foreign buyer tax, olim, non-resident mortgage, FX, power of attorney, buying from abroad), FAQ from that language's PAA | en done (23 FAQ, research findings in); ru done (30 FAQ, новостройки, МАМАД/МАМАК); fr being written |
 | L4 | Code: [nadlan_projects_hub lang=..] render (catalog cards in the language, market table labels, tools with en blocks, infographics), hreflang group /projects/ <-> /xx/projects/ (page-lang.php + projects-hub.php), sitemap | **written** (inc/projects-hub-lang.php, names.json, buyer calculator verified to the shekel; release 1.72.514 prepared, make_deploy514.py) |
 | L5 | Design preview (phone + desktop) for en | done (preview/preview-en.html, phone checked) |
-| L6 | Release (hunk rules), create the WP pages under /en/ /ru/ /fr/, live checks, verify_live per language | todo |
+| L6 | Release (hunk rules), create the WP pages under /en/ /ru/ /fr/, live checks, verify_live per language | 513 market data LIVE 25.10; 514 (code + en) dry-run running; ru+fr data next release |
 | L7 | Links: /xx/ homes + /xx/new-projects/ guides -> /xx/projects/ (a few a day), /projects/ <-> language switcher | todo |
 | L8 | Proof vs each language's competitors (depth + fact coverage), screenshots, links to Ben | todo |
+
+## Follow-ups found
+- ptax tool (ptax.json valid.extra/foreign + ptax.js strings) still says the foreign/additional tax order ends 31.12.2026: extend to 10.2.2027 in its own small release.
+- English-speaker cities thin in our data (Beit Shemesh 1, Modiin 2, Efrat 0); French cities have no French project pages (Netanya, Ashdod, Jerusalem, Ra'anana).
+- Prices: shekel is the price; the $/€ figure is labelled an approximate conversion (Consumer Protection s.17D). Legal reading for Ben.
