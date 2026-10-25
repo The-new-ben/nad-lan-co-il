@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מחשבון משכנתא 2.0 · תצוגה מקומית</title>
+<!-- Local preview of Mortgage 2.0 (U1, 25.10.2026). Loads the engine exactly as inc/instruments.php does on the site: the fonts of
+     the design system, core.css, core.js, tools/mortgage.js (both deferred, as script_loader_tag makes them), and the shortcode's
+     own markup with data-nli-data pointing at data/boi-mortgage.json. Serve the repo root over http (fetch of a local JSON is
+     blocked on file://): http://localhost:8131/docs/research/2026-10-26-upgrades/u1-mortgage-calculator/preview/ -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../../../../plugins/nadlan-config/assets/instruments/core.css">
+<style>
+  :root{color-scheme:light}
+  body{margin:0;background:#FFFFFF;color:#12202A;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}
+  .w{max-width:1180px;margin:0 auto;padding:16px}
+  h1{font:600 30px/38px "IBM Plex Sans Hebrew",system-ui,sans-serif;margin:8px 0 10px}
+  .answer{font:400 17px/28px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#3E4C58;max-width:72ch;margin:0 0 14px}
+  .cta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+  .cta a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid #2F6F86;color:#2F6F86;text-decoration:none;font:500 15px/20px "IBM Plex Sans Hebrew",system-ui,sans-serif}
+  .cta a:first-child{background:#2F6F86;color:#fff}
+  .tag{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:0 0 6px}
+  @media (max-width:520px){h1{font-size:25px;line-height:32px}}
+</style>
+</head>
+<body>
+<div class="w">
+  <p class="tag">תצוגה מקומית · לא באתר</p>
+  <h1>מחשבון משכנתא 2026: החזר חודשי ועלות כוללת</h1>
+  <p class="answer">מחשבון משכנתא מחשב את ההחזר החודשי, הריבית וסך התשלומים לפי סכום, מסלולים ותקופה. הכניסו את הסכום, בחרו תמהיל או אחד משלושת הסלים האחידים של בנק ישראל, וראו את ההחזר הראשון, ההחזר הגבוה הצפוי, ואם הריבית שהבנק הציע לכם גבוהה מהממוצע שבנק ישראל פרסם החודש. כל הנתונים מבנק ישראל, עם תאריך.</p>
+  <div class="cta"><a href="#mortgage-tool">לחישוב ההחזר</a><a href="#bank-offer-check">בדיקת הצעה מהבנק</a></div>
+
+  <!-- the markup [nadlan_tool id="mortgage"] prints (inc/instruments.php, add_shortcode nadlan_tool), with the data URL relative to this folder -->
+  <section class="nli" dir="rtl" lang="he" aria-label="מחשבון משכנתא לפי מסלולים" id="mortgage-tool"><div class="nli-host" data-nli="mortgage" data-nli-data="../../../../../plugins/nadlan-config/assets/instruments/data/boi-mortgage.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · משכנתא</p><h2 class="nli__title">מחשבון משכנתא לפי מסלולים</h2><p>ריבית ממוצעת במשכנתאות חדשות לפי בנק ישראל (8.2026): קבועה לא צמודה 4.62%, קבועה צמודה 3.29%, משתנה צמודה 3.19%. ריבית בנק ישראל 3.25%, פריים 4.75%.</p></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="https://nad-lan.co.il/mortgage-calculator/mortgage-repayment-capacity/">כמה משכנתא אפשר לקחת</a> <a href="https://nad-lan.co.il/mortgage-calculator/mortgage-interest-rates/">ריבית משכנתא היום</a> <a href="https://nad-lan.co.il/mortgage-calculator/mortgage-ltv-ratio/">אחוז מימון</a> <a href="https://nad-lan.co.il/mortgage-calculator/reverse-mortgage/">מחשבון משכנתא הפוכה</a> <a href="https://nad-lan.co.il/mortgage-refinance/">מחזור משכנתא</a> <a href="https://nad-lan.co.il/purchase-tax-calculator/">מחשבון מס רכישה</a></nav></section>
+</div>
+<script defer src="../../../../../plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="../../../../../plugins/nadlan-config/assets/instruments/tools/mortgage.js"></script>
+</body>
+</html>

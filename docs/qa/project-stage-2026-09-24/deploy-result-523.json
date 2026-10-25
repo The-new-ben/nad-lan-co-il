@@ -1,0 +1,21 @@
+{
+  "released": "1.72.523",
+  "from": "1.72.522",
+  "live_before": {
+    "nadlan-config.php": "83d6827737d7ffc6a9723da70cf1ebb1",
+    "inc/instruments.php": "55ac9f556558de56740b4a258fc158ee"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 00:41:13",
+  "files": {
+    "assets/instruments/tools/mortgage.js": "ef67b952057e21aa9ceeebee36b1e758",
+    "assets/instruments/data/boi-mortgage.json": "bac7a8e1ffc44071e6a39f4a04e657da",
+    "assets/instruments/tools/invest.js": "92ecd13b99e8ef8200adbe1c401c93dd",
+    "assets/instruments/data/invest.json": "9e1734b502f6107c7411d11ada9d6ecc",
+    "nadlan-config.php": "6bd2a8fe20b01bd8e527b485e0427071",
+    "inc/instruments.php": "ea2236dfcfa30711d4c1c8a3d2161f9e"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.523, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

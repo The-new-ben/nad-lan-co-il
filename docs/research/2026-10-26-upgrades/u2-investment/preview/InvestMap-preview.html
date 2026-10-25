@@ -1,0 +1,830 @@
+<!-- @dsCard group="Tools" height=2400 subtitle="מפת התשואה והתזרים: 65 ערים, כמה מהמחיר שכר הדירה מחזיק כמשכנתא, תשואה ברוטו, תזרים חודשי, מצב תקציב ודירוג ערים" -->
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>InvestMap</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"><style>/* NadLan Instruments v1 (HAD-527, 14.10.2026): the visual system of every tool. Tokens from the design system
+   https://claude.ai/artifact/ATybPAavyDEkAzH7cdg1bB (survey-and-planning palette; Karantina, IBM Plex Sans Hebrew, IBM Plex
+   Mono). Scoped to .nli so the theme's !important heading colours cannot reach in (the CSS cascade hazard). */
+.nli{--nli-ground:#F6F8F9;--nli-surface:#FFFFFF;--nli-ink:#12202A;--nli-ink2:#3E4C58;--nli-mute:#5E6A75;--nli-line:#D3DCE2;
+  --nli-sea:#2F6F86;--nli-sea-deep:#1F4B5C;--nli-on-sea:#FFFFFF;--nli-survey:#C42550;--nli-housing:#F2D15A;--nli-open:#4F9A5C;
+  --nli-civic:#8E7CC3;--nli-focus:#2F6F86;--nli-r-s:2px;--nli-r-m:6px;
+  --nli-display:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--nli-sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;
+  --nli-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  direction:rtl;font-family:var(--nli-sans);color:var(--nli-ink2);margin:20px 0 28px;clear:both}
+.nli *{box-sizing:border-box}
+.nli [hidden]{display:none !important}
+html body .nli .nli__panel{background:var(--nli-surface);border:1px solid var(--nli-line);border-radius:var(--nli-r-m);padding:16px;position:relative}
+@media (min-width:860px){html body .nli .nli__panel{padding:32px}}
+html body .nli .nli__panel::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:var(--nli-r-m);
+  background-image:linear-gradient(var(--nli-line) 1px,transparent 1px),linear-gradient(90deg,var(--nli-line) 1px,transparent 1px);
+  background-size:16px 16px;opacity:.22;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 120px);mask-image:linear-gradient(180deg,#000 0,transparent 120px)}
+html body .nli .nli__kicker{font:500 13px/18px var(--nli-sans);letter-spacing:.06em;color:var(--nli-sea);margin:0 0 4px;position:relative}
+html body .nli h2.nli__title{font:700 44px/44px var(--nli-display) !important;color:var(--nli-ink) !important;margin:0 0 8px !important;text-wrap:balance;position:relative;letter-spacing:0}
+@media (max-width:520px){html body .nli h2.nli__title{font-size:38px !important;line-height:38px !important}}
+html body .nli .nli__lede{font:400 16px/26px var(--nli-sans);color:var(--nli-ink2);margin:0 0 16px;max-width:68ch;position:relative}
+.nli__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;position:relative}
+@media (min-width:860px){.nli__grid{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:32px}}
+.nli__form{display:grid;gap:16px;align-content:start;margin:0}
+.nli__f{display:grid;gap:8px;min-width:0}
+.nli__f>label,.nli__f>.nli__lab{font:500 13px/18px var(--nli-sans);color:var(--nli-ink);letter-spacing:.02em}
+.nli__help{font:400 13px/18px var(--nli-sans);color:var(--nli-mute)}
+.nli__in{display:flex;align-items:stretch;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);min-height:48px}
+.nli__in:focus-within{border-color:var(--nli-sea);box-shadow:0 0 0 1px var(--nli-sea)}
+html body .nli .nli__in input,html body .nli .nli__in select{flex:1;min-width:0;border:0 !important;outline:0;background:transparent !important;box-shadow:none !important;
+  font:500 17px/24px var(--nli-mono);color:var(--nli-ink);padding:11px 12px;margin:0;border-radius:0;height:auto;direction:ltr;text-align:right}
+html body .nli .nli__in select{font-family:var(--nli-sans);direction:rtl}
+.nli__unit{display:flex;align-items:center;padding:0 12px;font:400 14px/20px var(--nli-mono);color:var(--nli-mute);border-inline-start:1px solid var(--nli-line);background:var(--nli-ground)}
+.nli__seg{display:flex;flex-wrap:wrap;gap:8px}
+html body .nli .nli__seg button{font:500 14px/20px var(--nli-sans);min-height:44px;padding:10px 14px;border:1px solid var(--nli-line);border-radius:999px;background:var(--nli-surface);color:var(--nli-ink2);cursor:pointer;margin:0}
+html body .nli .nli__seg button[aria-pressed="true"]{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea)}
+.nli__err{font:500 13px/18px var(--nli-sans);color:var(--nli-survey);min-height:0}
+.nli__out{display:grid;gap:16px;align-content:start;min-width:0}
+.nli__answer{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:16px;background:var(--nli-ground)}
+.nli__alab{font:500 13px/18px var(--nli-sans);color:var(--nli-ink2);display:block}
+.nli__fig{display:block;font:500 40px/44px var(--nli-mono);color:var(--nli-ink);font-variant-numeric:tabular-nums;margin:4px 0;direction:ltr;unicode-bidi:plaintext;text-align:right}
+.nli__fig.is-survey{color:var(--nli-survey)}
+.nli__asub{font:400 14px/20px var(--nli-sans);color:var(--nli-mute);display:block}
+.nli__bar{display:flex;height:14px;border-radius:var(--nli-r-s);overflow:hidden;background:var(--nli-line)}
+.nli__bar i{display:block;height:100%;min-width:2px}
+.nli__k-housing{background:var(--nli-housing)}.nli__k-open{background:var(--nli-open)}.nli__k-civic{background:var(--nli-civic)}.nli__k-survey{background:var(--nli-survey)}.nli__k-sea{background:var(--nli-sea)}
+.nli__legend{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:8px 0 0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}
+.nli__legend li{display:flex;align-items:center;gap:6px;margin:0}
+.nli__legend b{display:inline-block;width:10px;height:10px;border-radius:2px}
+.nli__lines{margin:0;display:grid}
+.nli__lines div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--nli-line)}
+.nli__lines dt{font:400 14px/20px var(--nli-sans);color:var(--nli-ink2);margin:0}
+.nli__lines dd{font:500 14px/20px var(--nli-mono);color:var(--nli-ink);margin:0;direction:ltr;unicode-bidi:plaintext;text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nli__scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+html body .nli .nli__scen button{display:grid;gap:2px;text-align:right;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);padding:10px 12px;cursor:pointer;min-height:64px;margin:0;color:var(--nli-ink2)}
+html body .nli .nli__scen button[aria-pressed="true"]{border-color:var(--nli-sea);box-shadow:inset 0 0 0 1px var(--nli-sea)}
+.nli__scen span{font:500 12px/16px var(--nli-sans);color:var(--nli-ink2)}
+.nli__scen strong{font:500 17px/22px var(--nli-mono);color:var(--nli-ink);direction:ltr;unicode-bidi:plaintext;text-align:right;font-variant-numeric:tabular-nums}
+.nli__note{font:400 14px/22px var(--nli-sans);color:var(--nli-ink2);margin:0;padding:12px;border-inline-start:3px solid var(--nli-sea);background:var(--nli-ground)}
+.nli__table{margin-top:16px;position:relative}
+html body .nli .nli__table summary{font:500 15px/22px var(--nli-sans);color:var(--nli-sea);cursor:pointer;min-height:44px;display:flex;align-items:center}
+.nli__tw{overflow-x:auto}
+.nli__table table{width:100%;border-collapse:collapse;font:400 14px/20px var(--nli-sans);margin:8px 0 0}
+html body .nli .nli__table th{font-weight:500;color:var(--nli-mute);text-align:right;padding:8px;border-bottom:1px solid var(--nli-line);background:none !important}
+html body .nli .nli__table td{padding:8px;border-bottom:1px solid var(--nli-line);color:var(--nli-ink);background:none !important;white-space:normal;vertical-align:top}
+html body .nli .nli__table table{display:table !important}html body .nli .nli__table thead{display:table-header-group !important}html body .nli .nli__table tbody{display:table-row-group !important}html body .nli .nli__table tr{display:table-row !important}html body .nli .nli__table th,html body .nli .nli__table td{display:table-cell !important;white-space:normal;width:auto !important;padding:8px 6px !important;font-family:var(--nli-sans) !important;font-size:14px !important;line-height:20px !important;border-top:0 !important;border-left:0 !important;border-right:0 !important;border-bottom:1px solid var(--nli-line) !important}
+html body .nli .nli__table td.n{font-family:var(--nli-mono) !important;font-size:13px !important}
+@media (max-width:600px){html body .nli .nli__table th.ph,html body .nli .nli__table td.ph{display:none !important}}
+html body .nli .nli__table summary{border:0 !important;padding:0 !important;background:none !important}
+html body .nli .nli__table td.n{font-family:var(--nli-mono);direction:ltr;unicode-bidi:plaintext;text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nli__formula,.nli__src{font:400 13px/20px var(--nli-sans);color:var(--nli-mute);margin:12px 0 0;position:relative}
+html body .nli .nli__src a{color:var(--nli-sea) !important}
+.nli__share{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative}
+html body .nli .nli__share button,html body .nli .nli__share a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--nli-line);background:var(--nli-surface);
+  color:var(--nli-ink) !important;font:500 14px/20px var(--nli-sans);text-decoration:none !important;cursor:pointer;margin:0}
+html body .nli .nli__share .is-primary{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea) !important}
+.nli__share svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:square}
+.nli__eg{font:400 13px/18px var(--nli-sans);color:var(--nli-mute);margin:12px 0 0;position:relative}
+.nli__eg b{display:inline-block;font-weight:500;color:var(--nli-ink);border:1px solid var(--nli-line);border-radius:999px;padding:0 8px;margin-inline-end:6px}
+.nli__rows{display:grid;gap:8px}
+.nli__row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) 44px;gap:8px;align-items:center}
+html body .nli .nli__row button{min-height:44px;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-ink2);cursor:pointer;font:400 18px/1 var(--nli-sans);margin:0;padding:0}
+html body .nli button.nli__add{justify-self:start;min-height:44px;padding:8px 14px;border:1px dashed var(--nli-sea);border-radius:var(--nli-r-s);background:none;color:var(--nli-sea);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}
+.nli__strip{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0 0 16px;padding:12px 0;border-top:1px solid var(--nli-line);border-bottom:1px solid var(--nli-line);position:relative}
+.nli__strip div{display:grid;gap:2px}
+.nli__strip span{font:500 12px/16px var(--nli-sans);color:var(--nli-mute)}
+.nli__strip strong{font:500 18px/24px var(--nli-mono);color:var(--nli-ink);direction:ltr;unicode-bidi:plaintext;text-align:right}
+html body .nli .nli__rel{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:12px 0 0;font:400 14px/22px var(--nli-sans);color:var(--nli-mute)}
+html body .nli .nli__rel a{color:var(--nli-sea) !important;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}
+html body .nli :focus-visible{outline:2px solid var(--nli-focus);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.nli__fig{transition:color .18s}}
+@media print{body *{visibility:hidden}.nli,.nli *{visibility:visible}.nli{position:absolute;inset:0 auto auto 0;width:100%}.nli__share,.nli__form,.nli__scen{display:none !important}.nli__table{display:block}.nli__table[open] summary{display:none}}
+/* soil map (HAD-534): the Sde Dov plots, boreholes and plot card. Survey shades only for the exceedance scale. */
+.nls__strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 14px;position:relative}
+.nls__strip div{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:10px 12px;background:var(--nli-surface)}
+.nls__strip span{display:block;font:500 12px/16px var(--nli-sans);color:var(--nli-mute)}
+.nls__strip strong{display:block;font:500 20px/26px var(--nli-mono);color:var(--nli-ink);unicode-bidi:plaintext;font-variant-numeric:tabular-nums}
+.nls__strip .is-top strong{color:var(--nli-survey)}
+@media (max-width:520px){.nls__strip{grid-template-columns:1fr 1fr}.nls__strip .is-top{grid-column:1/-1}}
+.nls__find{display:grid;gap:10px;margin:0 0 12px;position:relative}
+.nls__q{display:grid;gap:6px}.nls__q span{font:500 13px/18px var(--nli-sans);color:var(--nli-ink)}
+html body .nli .nls__q input{font:500 17px/24px var(--nli-sans);padding:11px 12px;border:1px solid var(--nli-line) !important;border-radius:var(--nli-r-s);background:var(--nli-surface) !important;color:var(--nli-ink);width:100%;box-sizing:border-box;margin:0;box-shadow:none !important;height:auto}
+.nls__chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+html body .nli .nls__chips button{flex:0 0 auto;min-height:40px;padding:8px 12px;border:1px solid var(--nli-line);border-radius:999px;background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0;white-space:nowrap}
+html body .nli .nls__chips button.is-published{border-color:#8E1238;color:#8E1238}
+html body .nli .nls__chips button.is-findings{border:1px dashed #C42550;color:#A01D44}
+html body .nli .nls__chips button.is-developer{border-color:#2F6F86;color:#21566A}
+html body .nli .nls__chips button.is-under{border:1px dashed #7A8A94;color:#4E5E68}
+html body .nli .nls__chips button[aria-pressed="true"]{background:#12202A;border-color:#12202A;color:#FFFFFF}
+.nls__stage{display:grid;gap:12px;position:relative}
+@media (min-width:900px){.nls__stage{grid-template-columns:minmax(0,1fr) 340px}}
+.nls__map{height:440px;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);overflow:hidden;background:#E9EEF1;position:relative}
+@media (min-width:900px){.nls__map{height:560px}}
+.nls__wait{margin:0;padding:16px;font:400 14px/20px var(--nli-sans);color:var(--nli-mute)}
+.nls__card{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:16px;background:var(--nli-ground);display:grid;gap:10px;align-content:start;min-width:0}
+.nls__ct{margin:0;font:600 20px/26px var(--nli-sans);color:var(--nli-ink)}.nls__ct span{font-weight:400;color:var(--nli-ink2);font-size:15px}
+.nls__badge{justify-self:start;margin:0;padding:4px 10px;border-radius:999px;font:500 13px/18px var(--nli-sans);background:#E6ECEF;color:var(--nli-ink2)}
+.nls__badge.is-published{background:#F7DDE4;color:#8E1238}.nls__badge.is-findings{background:#FBEFF3;color:#A01D44;border:1px dashed #C42550}
+.nls__badge.is-developer{background:#DDEBF0;color:#21566A}.nls__badge.is-under{background:#E9EDEF;color:#4E5E68;border:1px dashed #7A8A94}
+.nls__txt{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink2)}
+.nls__plan{margin:0;font:400 12px/18px var(--nli-sans);color:var(--nli-mute)}
+.nls__links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0}html body .nli .nls__links a{color:var(--nli-sea) !important;font:500 14px/20px var(--nli-sans)}
+.nls__bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
+html body .nli button.nls__3d{min-height:40px;padding:8px 14px;border:1px solid #12202A;border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}
+html body .nli button.nls__3d[aria-pressed="true"]{background:#12202A;color:#FFFFFF}
+.nls__legend{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}
+.nls__legend b{display:inline-block;width:12px;height:12px;border-radius:50%;margin-inline-end:6px;vertical-align:-1px}
+.nls__legend b.is-list{border-radius:2px;border:1.5px dashed #C42550;background:#F3D3DC}.nls__legend b.is-dev{border-radius:2px;border:1.5px solid #2F6F86;background:#D3E5EC}
+html body .nli button.nls__row{border:0;background:none;padding:0;margin:0;font:600 14px/20px var(--nli-mono);color:var(--nli-sea);text-decoration:underline;cursor:pointer;min-height:32px}
+.nls-pop .maplibregl-popup-content{direction:rtl;text-align:right;font:400 13px/19px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A;padding:10px 12px}
+.nls-pop p{margin:0 0 4px}
+html body .nli pre.nli__doc{white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;font:400 15px/25px var(--nli-sans) !important;color:var(--nli-ink) !important;background:var(--nli-surface) !important;border:1px solid var(--nli-line);border-inline-start:3px solid var(--nli-sea);border-radius:var(--nli-r-s);padding:16px;margin:0;direction:rtl;text-align:right;max-height:none;overflow:visible}
+.nls__proj{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink);padding:10px 12px;background:#E5F0EA;border-inline-start:3px solid #4F9A5C;border-radius:var(--nli-r-s)}
+html body .nli a.nls__ask{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 14px;background:#12202A;color:#FFFFFF !important;border-radius:var(--nli-r-s);font:600 15px/20px var(--nli-sans);text-decoration:none !important}
+html body .nli a.nls__ask:hover{background:#2F6F86}
+.nls__legend b.is-green{border-radius:2px;background:#3E8E5A}.nls__badge.is-proj{background:#E5F0EA;color:#2E6B43}
+html body .nli .nls__chips button.is-proj{border-color:#3E8E5A;color:#2E6B43}
+/* English pages (HAD-534 d, 21.10.2026): the shortcode prints dir="ltr" lang="en" on the section. Same palette; Latin faces
+   IBM Plex Sans (text) + IBM Plex Sans Condensed (titles) + IBM Plex Mono (figures): the Plex family the Hebrew already uses,
+   so one survey-instrument voice in both scripts (not Inter, not Space Grotesk, no serif). Everything else mirrors to LTR. */
+.nli[dir="ltr"]{direction:ltr}
+.nli[lang="en"]{--nli-display:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;--nli-sans:"IBM Plex Sans",system-ui,sans-serif}
+html body .nli[lang="en"] h2.nli__title{font:600 36px/40px var(--nli-display) !important;letter-spacing:-.01em}
+@media (max-width:520px){html body .nli[lang="en"] h2.nli__title{font-size:30px !important;line-height:34px !important}}
+html body .nli[dir="ltr"] .nli__in input{text-align:left}
+html body .nli[dir="ltr"] .nli__in select{direction:ltr;text-align:left}
+.nli[dir="ltr"] .nli__fig{text-align:left}
+.nli[dir="ltr"] .nli__lines dd{text-align:right}
+html body .nli[dir="ltr"] .nli__scen button{text-align:left}
+.nli[dir="ltr"] .nli__scen strong,.nli[dir="ltr"] .nli__strip strong{text-align:left}
+html body .nli[dir="ltr"] .nli__table th{text-align:left}
+html body .nli[dir="ltr"] .nli__table td.n{text-align:right}
+html body .nli[dir="ltr"] pre.nli__doc{direction:ltr;text-align:left}
+html body .nli[dir="ltr"] pre.nli__doc[dir="rtl"]{direction:rtl;text-align:right;font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif !important}
+.nli[dir="ltr"] .nls-pop .maplibregl-popup-content{direction:ltr;text-align:left;font-family:"IBM Plex Sans",system-ui,sans-serif}
+
+/* 1.72.498 presets (HAD-592, Ben 22.10.2026 "one click with your fingers to get everything"): ready cases above the form */
+html body .nli .nli__prelab{display:block;margin:14px 0 6px;position:relative}
+html body .nli .nli__pre{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:0 0 18px;position:relative}
+html body .nli .nli__pre button{display:grid;gap:3px;align-content:start;text-align:right;border:1px solid var(--nli-line);border-radius:var(--nli-r-m);background:var(--nli-surface);padding:10px 12px;min-height:58px;cursor:pointer;margin:0;color:var(--nli-ink);box-shadow:none;text-transform:none;letter-spacing:0}
+html body .nli .nli__pre button span{font:600 14px/19px var(--nli-sans)}
+html body .nli .nli__pre button small{font:400 12px/16px var(--nli-mono);color:var(--nli-mute);direction:ltr;unicode-bidi:plaintext;text-align:right}
+html body .nli .nli__pre button:hover{border-color:var(--nli-sea)}
+html body .nli .nli__pre button:focus-visible{outline:2px solid var(--nli-focus);outline-offset:2px}
+html body .nli .nli__pre button[aria-pressed="true"]{background:var(--nli-sea);border-color:var(--nli-sea);color:var(--nli-on-sea)}
+html body .nli .nli__pre button[aria-pressed="true"] small{color:var(--nli-on-sea)}
+.nli[dir="ltr"] .nli__pre button,.nli[dir="ltr"] .nli__pre button small{text-align:left}
+@media (max-width:600px){html body .nli .nli__pre{grid-template-columns:1fr 1fr}html body .nli .nli__pre button{min-height:64px}}
+@media print{.nli__pre,.nli__prelab{display:none !important}}
+/* 1.72.499: a select with long options (the Greece regions) set its own width and pushed the form past a 390 px phone; the form
+   column and the box now shrink to the panel, and the select fills its box */
+html body .nli .nli__form{grid-template-columns:minmax(0,1fr)}
+html body .nli .nli__in{min-width:0}
+html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overflow:ellipsis}
+/* 1.72.521: a tool's own drawing (r.figure): the gypsum wall, drawn like a fire-safety plan sheet (black line work, red hatch = fire-rated board) */
+.nli__figure{margin:4px 0 0}.nli__figure svg{display:block;width:100%;height:auto;max-width:560px}
+.nli__wall text{font:400 14px/1 var(--nli-sans);fill:var(--nli-ink2)}.nli__wall .t{font:600 16px/1 var(--nli-sans);fill:var(--nli-ink)}
+.nli__wall .m{font:500 15px/1 var(--nli-mono);fill:var(--nli-ink)}.nli__wall .r{fill:var(--nli-survey)}
+/* 1.72.522: a rows field with three inputs (the Dekel quote check: quantity, Dekel price, quote price) */
+.nli__row:has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr) 44px}
+
+body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}.w{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px))}.n{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:26px 0 8px;border-top:1px solid #D3DCE2;padding-top:8px}.fig{background:#fff;border:1px solid #D3DCE2;padding:12px;max-width:664px}</style></head><body><div class="w"><p class="n">1 · ברירת המחדל: עיר אחת, 4 חדרים, תשואה, תזרים, מסלולי מס על שכר דירה וגרף הערים</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="invest" id="h0"></div></section><p class="n">פלטה: מכשירי NadLan, ירוק #00806A במקום #1F7A5A שנכשל בבדיקת הניגודיות. IBM Plex Sans Hebrew ו-IBM Plex Mono.</p></div><script>/* NadLan Instruments core v1 (HAD-527, 14.10.2026). One small engine for every tool: a tool registers a spec (fields,
+   defaults, compute) and the engine renders the form, the readout, the breakdown bar, scenarios, the detail table, the
+   formula and sources, and the share bar (copy, WhatsApp, print). Example-first: every tool opens filled. No dependencies.
+   HAD-534 (d), 21.10.2026: the engine speaks the page language. <html lang> picks it (inc/page-lang.php prints lang="en"
+   dir="ltr" on /en/ pages); each tool section also carries lang + dir from the shortcode, and the engine follows the section.
+   Hebrew stays the default and its output is unchanged. Strings: docs/tools/soil-en/strings-en.json (core). */
+(function () {
+  'use strict';
+  var REG = {};
+  var LANG = /^en\b/i.test(document.documentElement.getAttribute('lang') || '') ? 'en' : 'he';
+  var LOC = LANG === 'en' ? 'en-US' : 'he-IL';
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var TX = {
+    rowDel: { he: 'הסרת שורה ', en: 'Remove row ' },
+    rowAdd: { he: 'הוספת שורה', en: 'Add row' },
+    eg: { he: 'דוגמה', en: 'Example' },
+    egNote: { he: 'הערכים בפתיחה הם דוגמה. שנו אותם, והתוצאה מתעדכנת מיד.', en: 'The opening values are an example. Change them and the result updates at once.' },
+    calcErr: { he: 'לא הצלחנו לחשב עם הערכים האלה.', en: 'We could not calculate with these values.' },
+    scen: { he: 'תרחישים', en: 'Scenarios' },
+    table: { he: 'הפירוט המלא', en: 'The full breakdown' },
+    src: { he: 'מקורות: ', en: 'Sources: ' },
+    copy: { he: 'העתקת התוצאה', en: 'Copy the result' },
+    copied: { he: 'הועתק', en: 'Copied' },
+    copyPrompt: { he: 'העתיקו את התוצאה', en: 'Copy the result' },
+    wa: { he: 'שליחה בוואטסאפ', en: 'Send on WhatsApp' },
+    print: { he: 'הדפסה או שמירה כקובץ', en: 'Print or save as PDF' },
+    noData: { he: 'הנתונים לא נטענו. רעננו את העמוד.', en: 'The data did not load. Please refresh the page.' },
+    pre: { he: 'מקרים מוכנים: לחיצה אחת ממלאת הכול', en: 'Ready cases: one tap fills everything' }
+  };
+  function langOf(node) { var s = node && node.closest ? node.closest('[lang]') : null; return /^en\b/i.test((s && s.getAttribute('lang')) || LANG) ? 'en' : 'he'; }
+  function pick(tx, lang) { var o = {}; Object.keys(tx).forEach(function (k) { o[k] = tx[k][lang] != null ? tx[k][lang] : tx[k].he; }); return o; }
+  var nf0 = new Intl.NumberFormat(LOC, { maximumFractionDigits: 0 });
+  var fmt = {
+    ils: function (n) { return '₪' + nf0.format(Math.round(n || 0)); },
+    eur: function (n) { return '€' + nf0.format(Math.round(n || 0)); },  // 1.72.498: abroad tools (Greece first) speak euros, with shekels beside them
+    num: function (n, d) { return new Intl.NumberFormat(LOC, { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }).format(n || 0); },
+    pct: function (n, d) { return (n < 0 ? '-' : '') + new Intl.NumberFormat(LOC, { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }).format(Math.abs(n * 100)) + '%'; },
+    month: function (key) { var p = String(key).split('-'); return p.length > 1 ? (LANG === 'en' ? (MON[+p[1] - 1] || p[1]) + ' ' + p[0] : (+p[1]) + '.' + p[0]) : key; },
+    date: function (iso) { var p = String(iso).split('-'); return p.length === 3 ? (LANG === 'en' ? (+p[2]) + ' ' + (MON[+p[1] - 1] || p[1]) + ' ' + p[0] : (+p[2]) + '.' + (+p[1]) + '.' + p[0]) : iso; }
+  };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function parseMoney(v) { var n = parseFloat(String(v).replace(/[^\d.\-]/g, '')); return isFinite(n) ? n : NaN; }
+  var ICON = {
+    copy: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 7h9v10H7z"/><path d="M4 13V3h9"/></svg>',
+    wa: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16l1-3.2A7 7 0 1 1 7.6 15z"/></svg>',
+    print: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8V3h10v5"/><path d="M5 14H3V8h14v6h-2"/><path d="M6 12h8v5H6z"/></svg>'
+  };
+
+  function field(f, st, onChange) {
+    var T = st.t;
+    var w = el('div', 'nli__f');
+    var id = 'nli-' + st.uid + '-' + f.id;
+    if (f.type === 'segmented') {
+      w.appendChild(el('span', 'nli__lab', esc(f.label)));
+      var seg = el('div', 'nli__seg'); seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', f.label);
+      f.options.forEach(function (o) {
+        var b = el('button', '', esc(o.label)); b.type = 'button'; b.setAttribute('aria-pressed', String(st.v[f.id] === o.value));
+        b.addEventListener('click', function () { st.v[f.id] = o.value; [].forEach.call(seg.children, function (x) { x.setAttribute('aria-pressed', String(x === b)); }); onChange(f.id); });
+        seg.appendChild(b);
+      });
+      w.appendChild(seg);
+    } else if (f.type === 'rows') {
+      w.appendChild(el('span', 'nli__lab', esc(f.label)));
+      var rows = el('div', 'nli__rows'); w.appendChild(rows);
+      var draw = function () {
+        rows.innerHTML = '';
+        (st.v[f.id] || []).forEach(function (r, i) {
+          var row = el('div', 'nli__row');
+          f.cols.forEach(function (c) {
+            var box = el('div', 'nli__in');
+            var inp = el('input'); inp.type = c.type === 'date' ? 'date' : 'text'; if (c.type !== 'date') inp.inputMode = 'decimal';
+            inp.value = r[c.id]; inp.setAttribute('aria-label', c.label + ' ' + (i + 1));
+            inp.addEventListener('input', function () { r[c.id] = c.type === 'date' ? inp.value : parseMoney(inp.value); st.v.__custom = true; onChange(f.id, true); });
+            box.appendChild(inp); if (c.unit) box.appendChild(el('span', 'nli__unit', esc(c.unit)));
+            row.appendChild(box);
+          });
+          var del = el('button', '', '×'); del.type = 'button'; del.setAttribute('aria-label', T.rowDel + (i + 1));
+          del.addEventListener('click', function () { st.v[f.id].splice(i, 1); st.v.__custom = true; draw(); onChange(f.id); });
+          row.appendChild(del); rows.appendChild(row);
+        });
+      };
+      draw(); st.redraw[f.id] = draw;
+      var add = el('button', 'nli__add', '+ ' + esc(f.addLabel || T.rowAdd)); add.type = 'button';
+      add.addEventListener('click', function () { st.v[f.id].push(f.blank()); st.v.__custom = true; draw(); onChange(f.id); });
+      w.appendChild(add);
+    } else {
+      var lab = el('label', '', esc(f.label)); lab.htmlFor = id; w.appendChild(lab);
+      var box2 = el('div', 'nli__in');
+      var inp2;
+      if (f.type === 'select') {
+        inp2 = el('select');
+        // optionsFrom (21.10.2026, the home value tool): the list depends on other fields (a city's neighbourhoods); refilled before every run
+        var fill = function (sel) { var opts = f.optionsFrom ? f.optionsFrom(st.v, st.data) : f.options; if (f.optionsFrom && !opts.some(function (o) { return o.value === st.v[f.id]; })) st.v[f.id] = opts.length ? opts[0].value : '';
+          var key = opts.map(function (o) { return o.value; }).join('|'); if (sel.__k === key) { sel.value = st.v[f.id]; return; } sel.__k = key; sel.innerHTML = '';
+          opts.forEach(function (o) { var op = el('option', '', esc(o.label)); op.value = o.value; if (st.v[f.id] === o.value) op.selected = true; sel.appendChild(op); }); };
+        fill(inp2); if (f.optionsFrom) { (function (sel) { st.show.push(function () { fill(sel); }); })(inp2); }
+      } else {
+        inp2 = el('input'); inp2.type = (f.type === 'date' || f.type === 'month') ? f.type : 'text';
+        if (f.type === 'money' || f.type === 'number' || f.type === 'percent') inp2.inputMode = 'decimal';
+      }
+      inp2.id = id;
+      var show = function () { var x = st.v[f.id]; inp2.value = f.type === 'money' ? nf0.format(x) : (x == null ? '' : x); };
+      if (f.type !== 'select') st.redraw[f.id] = show;  // 21.10.2026: onField may set this field from another one (nrm: the track sets its rate)
+      if (f.type !== 'select') show();
+      inp2.addEventListener(f.type === 'select' ? 'change' : 'input', function () {
+        st.v[f.id] = (f.type === 'money' || f.type === 'number' || f.type === 'percent') ? parseMoney(inp2.value) : inp2.value; onChange(f.id);
+      });
+      if (f.type === 'money') inp2.addEventListener('blur', function () { if (isFinite(st.v[f.id])) show(); });
+      box2.appendChild(inp2);
+      if (f.unit) box2.appendChild(el('span', 'nli__unit', esc(f.unit)));
+      w.appendChild(box2);
+      if (f.help) w.appendChild(el('span', 'nli__help', f.help));
+    }
+    var err = el('span', 'nli__err'); err.setAttribute('aria-live', 'polite'); w.appendChild(err); st.err[f.id] = err;
+    if (f.showIf) { st.show.push(function () { w.hidden = !f.showIf(st.v); }); }
+    return w;
+  }
+
+  function mount(root, spec, data) {
+    var lg = langOf(root), T = pick(TX, lg);
+    var st = { uid: Math.random().toString(36).slice(2, 7), v: JSON.parse(JSON.stringify(spec.defaults(data))), err: {}, redraw: {}, scen: null, show: [], t: T, data: data };
+    // 1.72.498 presets (Ben 22.10.2026: "one click with your fingers to get everything"): a row of ready cases above the form;
+    // one tap writes every field of the case at once. A page can open on a case: [nadlan_tool id="…" preset="athens-resale"].
+    var PRE = spec.presets ? (typeof spec.presets === 'function' ? spec.presets(data) : spec.presets) : [];
+    function applyPreset(key) { var p = PRE.filter(function (x) { return x.key === key; })[0]; if (!p) return false; Object.keys(p.set).forEach(function (k) { st.v[k] = JSON.parse(JSON.stringify(p.set[k])); }); st.pre = key; return true; }
+    try { var pre = root.getAttribute('data-nli-set'); if (pre) { var P = JSON.parse(pre); if (P.preset) applyPreset(P.preset); Object.keys(P).forEach(function (k) { if (k in st.v) st.v[k] = P[k]; }); } } catch (e) {} // a page can open the tool on its own case (a neighbourhood, a town)
+    root.innerHTML = ''; if (!root.parentNode || !root.parentNode.closest || !root.parentNode.closest('.nli')) root.classList.add('nli'); root.setAttribute('dir', lg === 'en' ? 'ltr' : 'rtl');
+    var panel = el('div', 'nli__panel');
+    if (spec.kicker) panel.appendChild(el('p', 'nli__kicker', esc(spec.kicker)));
+    if (spec.title) panel.appendChild(el('h2', 'nli__title', esc(spec.title)));
+    if (spec.lede) panel.appendChild(el('p', 'nli__lede', spec.lede));
+    if (spec.strip) { var s = spec.strip(data); if (s && s.length) { var sp = el('div', 'nli__strip'); s.forEach(function (x) { sp.appendChild(el('div', '', '<span>' + esc(x.label) + '</span><strong>' + esc(x.value) + '</strong>')); }); panel.appendChild(sp); } }
+    var preRow = null;
+    if (PRE.length) {
+      panel.appendChild(el('span', 'nli__alab nli__prelab', esc(T.pre)));
+      preRow = el('div', 'nli__pre'); preRow.setAttribute('role', 'group'); preRow.setAttribute('aria-label', T.pre);
+      PRE.forEach(function (p) {
+        var b = el('button', '', '<span>' + esc(p.label) + '</span>' + (p.sub ? '<small>' + esc(p.sub) + '</small>' : '')); b.type = 'button'; b.setAttribute('data-k', p.key);
+        b.addEventListener('click', function () { applyPreset(p.key); st.scen = null; buildForm(); markPre(); run(); });
+        preRow.appendChild(b);
+      });
+      panel.appendChild(preRow);
+    }
+    function markPre() { if (preRow) [].forEach.call(preRow.children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === st.pre)); }); }
+    var grid = el('div', 'nli__grid'); var form = el('form', 'nli__form'); form.addEventListener('submit', function (e) { e.preventDefault(); });
+    var out = el('div', 'nli__out'); out.setAttribute('aria-live', 'polite');
+    grid.appendChild(form); grid.appendChild(out); panel.appendChild(grid);
+    var table = el('details', 'nli__table'); var formula = el('p', 'nli__formula'); var src = el('p', 'nli__src');
+    panel.appendChild(table); panel.appendChild(formula); panel.appendChild(src);
+    var share = el('div', 'nli__share'); panel.appendChild(share);
+    panel.appendChild(el('p', 'nli__eg', '<b>' + esc(T.eg) + '</b>' + esc(spec.exampleNote || T.egNote)));
+    root.appendChild(panel);
+    var last = null, t = 0;
+    function onChange(id, keepRows) { if (st.pre) { st.pre = null; markPre(); } if (spec.onField) spec.onField(id, st.v, data, function (fid) { if (st.redraw[fid] && !keepRows) st.redraw[fid](); }); clearTimeout(t); t = setTimeout(run, 90); }
+    function buildForm() { form.innerHTML = ''; st.redraw = {}; st.err = {}; st.show = []; spec.fields.forEach(function (f) { form.appendChild(field(f, st, onChange)); }); }
+    buildForm(); markPre();
+    function run() {
+      st.show.forEach(function (fn) { fn(); });
+      Object.keys(st.err).forEach(function (k) { st.err[k].textContent = ''; });
+      var r;
+      try { r = spec.compute(st.v, data, st.scen); } catch (e) { r = { error: { field: null, msg: T.calcErr } }; }
+      if (r.error) { if (r.error.field && st.err[r.error.field]) st.err[r.error.field].textContent = r.error.msg; if (!last) out.innerHTML = '<p class="nli__note">' + esc(r.error.msg) + '</p>'; return; }
+      last = r; paint(r);
+    }
+    function paint(r) {
+      out.innerHTML = '';
+      var a = el('div', 'nli__answer');
+      a.innerHTML = '<span class="nli__alab">' + esc(r.answer.label) + '</span><output class="nli__fig' + (r.answer.tone === 'survey' ? ' is-survey' : '') + '">' + esc(r.answer.value) + '</output>' + (r.answer.sub ? '<span class="nli__asub">' + r.answer.sub + '</span>' : '');
+      out.appendChild(a);
+      if (r.figure) out.appendChild(el('div', 'nli__figure', r.figure));  // 1.72.521: a tool's own drawing, built from escaped parts (the gypsum wall)
+      if (r.breakdown) r.breakdown = r.breakdown.filter(function (b) { return b.value > 0.5; });
+      if (r.breakdown && r.breakdown.length) {
+        var tot = r.breakdown.reduce(function (s, b) { return s + Math.max(0, b.value); }, 0) || 1;
+        var bw = el('div', ''); var bar = el('div', 'nli__bar'); bar.setAttribute('role', 'img');
+        bar.setAttribute('aria-label', r.breakdown.map(function (b) { return b.label + ' ' + fmt.ils(b.value); }).join(', '));
+        var lg2 = el('ul', 'nli__legend');
+        r.breakdown.forEach(function (b) { var i = el('i', 'nli__k-' + b.kind); i.style.width = (100 * Math.max(0, b.value) / tot) + '%'; bar.appendChild(i); lg2.appendChild(el('li', '', '<b class="nli__k-' + b.kind + '"></b>' + esc(b.label) + ' <bdi>' + esc(b.shown || fmt.ils(b.value)) + '</bdi>')); });
+        bw.appendChild(bar); bw.appendChild(lg2); out.appendChild(bw);
+      }
+      if (r.lines && r.lines.length) { var dl = el('dl', 'nli__lines'); r.lines.forEach(function (l) { dl.appendChild(el('div', '', '<dt>' + esc(l.label) + '</dt><dd>' + esc(l.value) + '</dd>')); }); out.appendChild(dl); }
+      if (r.scenarios && r.scenarios.length) {
+        var sc = el('div', 'nli__scen'); sc.setAttribute('role', 'group'); sc.setAttribute('aria-label', r.scenarioLabel || T.scen);
+        r.scenarios.forEach(function (s) { var b = el('button', '', '<span>' + esc(s.name) + '</span><strong>' + esc(s.value) + '</strong>'); b.type = 'button'; b.setAttribute('aria-pressed', String(!!s.on));
+          b.addEventListener('click', function () { st.scen = s.key; run(); }); sc.appendChild(b); });
+        if (r.scenarioLabel) out.appendChild(el('span', 'nli__alab', esc(r.scenarioLabel)));
+        out.appendChild(sc);
+      }
+      if (r.note) out.appendChild(el('p', 'nli__note', r.note));
+      if (r.doc) { var doc = el('pre', 'nli__doc'); if (r.docDir) { doc.dir = r.docDir; doc.lang = r.docLang || ''; } doc.textContent = r.doc; out.appendChild(doc); }  // a generated document (a letter): plain text, copied and shared as is; docDir: a Hebrew letter on an English page
+      if (r.table) {
+        var open = table.open;
+        var ph = r.table.phoneHide || [];  // columns a phone does not need (their content is folded into another cell)
+        table.innerHTML = '<summary>' + esc(r.table.title || T.table) + '</summary><div class="nli__tw"><table><thead><tr>' + r.table.head.map(function (h, i) { return '<th scope="col"' + (ph.indexOf(i) > -1 ? ' class="ph"' : '') + '>' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+          r.table.rows.map(function (row) { return '<tr>' + row.map(function (c, i) { var k = (r.table.num && r.table.num.indexOf(i) > -1 ? 'n' : '') + (ph.indexOf(i) > -1 ? ' ph' : ''); return '<td' + (k ? ' class="' + k.trim() + '"' : '') + '>' + esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+        table.open = open; table.hidden = false;
+      } else { table.hidden = true; }
+      formula.textContent = r.formula || '';
+      src.innerHTML = r.sources && r.sources.length ? esc(T.src) + r.sources.map(function (s) { return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : esc(s.label); }).join(' · ') : '';
+    }
+    function shareText() { return last && last.text ? last.text + (last.bare ? '' : '\n' + location.origin + location.pathname) : location.href; }  // bare: a letter goes out without our link
+    var bc = el('button', 'is-primary', ICON.copy + '<span>' + esc(T.copy) + '</span>'); bc.type = 'button';
+    bc.addEventListener('click', function () { var tx = shareText(); var lab = bc.querySelector('span');
+      var done = function () { lab.textContent = T.copied; setTimeout(function () { lab.textContent = T.copy; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(tx).then(done, function () { window.prompt(T.copyPrompt, tx); }); else window.prompt(T.copyPrompt, tx); });
+    var bw2 = el('a', '', ICON.wa + '<span>' + esc(T.wa) + '</span>'); bw2.target = '_blank'; bw2.rel = 'noopener';
+    bw2.addEventListener('click', function () { bw2.href = 'https://wa.me/?text=' + encodeURIComponent(shareText()); });
+    bw2.href = 'https://wa.me/';
+    var bp = el('button', '', ICON.print + '<span>' + esc(T.print) + '</span>'); bp.type = 'button';
+    bp.addEventListener('click', function () { table.open = true; window.print(); });
+    share.appendChild(bc); share.appendChild(bw2); share.appendChild(bp);
+    run();
+    return { state: st, run: run };
+  }
+
+  function boot() {
+    [].forEach.call(document.querySelectorAll('[data-nli]:not([data-nli-on])'), function (root) {
+      var id = root.getAttribute('data-nli'); var spec = REG[id]; if (!spec) return;
+      root.setAttribute('data-nli-on', '1');
+      var srcs = (root.getAttribute('data-nli-data') || '').split(',').filter(Boolean);
+      Promise.all(srcs.map(function (u) { return fetch(u, { credentials: 'omit' }).then(function (r) { return r.json(); }); })).then(function (list) {
+        var data = {}; list.forEach(function (d, i) { data[d.key || ('d' + i)] = d; data['d' + i] = d; });
+        if (spec.custom) spec.custom(root, data); else mount(root, spec, data);  // custom: a tool that draws its own surface (the soil map)
+      }).catch(function () { root.innerHTML = '<p class="nli__note">' + esc(TX.noData[langOf(root)]) + '</p>'; });
+    });
+  }
+  window.NadLanInstruments = { register: function (id, spec) { REG[id] = spec; if (document.readyState !== 'loading') boot(); }, mount: mount, boot: boot, fmt: fmt, esc: esc,
+    lang: LANG, langOf: langOf, pick: pick, TX: TX };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script><script>var DATA={"key": "invest", "built": "2026-10-25", "cityQ": "2026-03", "natQ": "2026-06", "rows": [{"n": "ישראל", "code": 0, "nat": 1, "r": {"3": {"q": "2026-06", "rent": 3875, "price": 1677400, "n8": 8, "ry": 0.0197, "py": 0.0538}, "4": {"q": "2026-06", "rent": 4825, "price": 2028800, "n8": 8, "ry": 0.0158, "py": -0.04}, "5": {"q": "2026-06", "rent": 6300, "price": 2822700, "n8": 8, "ry": 0.008, "py": -0.0276}}, "pp": "/apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4430.7, "err": 21.0, "g": "2.5-3", "price": 1647500}, "4": {"q": "2026-03", "avg": 5442.9, "err": 27.0, "g": "3.5-4", "price": 2072000}}}, {"n": "אופקים", "code": 31, "r": {"3": {"q": "2026-03", "rent": 3000, "price": 1022200, "n8": 5, "ry": 0.0345}, "4": {"q": "2026-03", "rent": 3200, "price": 1247900, "n8": 4, "ry": 0.1852, "py": 0.1062}, "5": {"q": "2026-03", "rent": 4600, "price": 1783500, "n8": 3, "ry": -0.0316, "py": -0.081}}, "gy": 3.42, "gyRent": 3575, "gyPrice": 1253700, "gpc": 2.65}, {"n": "אור יהודה", "code": 2400, "r": {"3": {"q": "2026-03", "rent": 5000, "price": 1758000, "n8": 3, "ry": 0.0753}, "4": {"q": "2025-09", "rent": 5900, "price": 2433100, "n8": 4, "ry": -0.0167, "py": -0.0231, "old": 1}, "5": {"q": "2025-09", "rent": 7200, "price": 3163100, "n8": 4, "ry": -0.0003, "py": 0.0643, "old": 1}}, "gy": 2.61, "gyRent": 5650, "gyPrice": 2598850, "gpc": 6.75}, {"n": "אור עקיבא", "code": 1020, "r": {"3": {"q": "2026-03", "rent": 3400, "price": 1389100, "n8": 3, "ry": 0.0968, "py": 0.1045}, "4": {"q": "2026-03", "rent": 4200, "price": 1721700, "n8": 3, "ry": 0.0, "py": -0.0408}}, "gy": 2.7, "gyRent": 3900, "gyPrice": 1734600, "gpc": 10.58}, {"n": "אילת", "code": 2600, "r": {"3": {"q": "2026-03", "rent": 4000, "price": 1516100, "n8": 8, "ry": 0.0256, "py": 0.0068}, "4": {"q": "2026-03", "rent": 5200, "price": 1719300, "n8": 8, "ry": 0.0833, "py": -0.0349}, "5": {"q": "2026-03", "rent": 5800, "price": 2587900, "n8": 7, "ry": -0.1714, "py": 0.0326}}, "gy": 3.08, "gyRent": 4000, "gyPrice": 1559800, "gpc": 3.32, "pp": "/eilat-apartment-prices/"}, {"n": "אלעד", "code": 1309, "r": {"3": {"q": "2026-03", "rent": 4950, "price": 1283500, "n8": 3, "ry": 0.0761, "py": -0.1662}, "4": {"q": "2026-03", "rent": 5750, "price": 1935600, "n8": 4, "ry": 0.0455, "py": -0.1964}, "5": {"q": "2026-03", "rent": 6300, "price": 2209800, "n8": 3, "ry": 0.0, "py": 0.0019}}, "gy": 2.93, "gyRent": 5750, "gyPrice": 2352400, "gpc": 11.06}, {"n": "אריאל", "code": 3570, "r": {"4": {"q": "2026-03", "rent": 4500, "price": 1494200, "n8": 2, "ry": 0.0345, "py": -0.0065}, "5": {"q": "2026-03", "rent": 4650, "price": 2082000, "n8": 2, "ry": -0.0681, "py": 0.1093}}, "gy": 2.94, "gyRent": 3850, "gyPrice": 1572500, "gpc": -2.11}, {"n": "אשדוד", "code": 70, "r": {"3": {"q": "2026-03", "rent": 4000, "price": 1603300, "n8": 7, "ry": 0.0256, "py": 0.0031}, "4": {"q": "2026-03", "rent": 5500, "price": 2130200, "n8": 7, "ry": 0.0377, "py": 0.0619}, "5": {"q": "2026-03", "rent": 6100, "price": 2784800, "n8": 7, "py": -0.0579}}, "gy": 2.94, "gyRent": 4500, "gyPrice": 1835300, "gpc": -0.83, "inv": "/investment/ashdod-investment-apartment/", "pp": "/ashdod-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 3867.4, "err": 61.0, "g": "2.5-3", "price": 1603300}, "4": {"q": "2026-03", "avg": 4833.5, "err": 63.0, "g": "3.5-4", "price": 2130200}}}, {"n": "אשקלון", "code": 7100, "r": {"3": {"q": "2026-03", "rent": 3200, "price": 918100, "n8": 8, "ry": 0.0323, "py": -0.2063}, "4": {"q": "2026-03", "rent": 4400, "price": 1405800, "n8": 8, "ry": 0.1, "py": -0.1199}, "5": {"q": "2026-03", "rent": 5200, "price": 1891000, "n8": 8, "ry": 0.04, "py": -0.1174}}, "gy": 3.0, "gyRent": 3799, "gyPrice": 1520200, "gpc": 1.53, "inv": "/investment/ashkelon-investment-apartment/", "pp": "/ashkelon-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 3230.4, "err": 53.0, "g": "2.5-3", "price": 918100}, "4": {"q": "2026-03", "avg": 4000.1, "err": 48.0, "g": "3.5-4", "price": 1405800}}}, {"n": "באר יעקב", "code": 2530, "r": {"3": {"q": "2026-03", "rent": 5300, "price": 1357800, "n8": 2, "ry": 0.0816, "py": 0.0124}, "4": {"q": "2026-03", "rent": 7000, "price": 2652500, "n8": 4, "ry": 0.0294}, "5": {"q": "2026-03", "rent": 8000, "price": 3038600, "n8": 4, "ry": 0.0667}}, "gy": 3.34, "gyRent": 7150, "gyPrice": 2571900, "gpc": -6.17}, {"n": "באר שבע", "code": 9000, "r": {"3": {"q": "2026-03", "rent": 2600, "price": 808800, "n8": 8, "ry": 0.0, "py": -0.006}, "4": {"q": "2026-03", "rent": 3600, "price": 1203200, "n8": 7, "ry": 0.0141, "py": 0.0178}, "5": {"q": "2025-09", "rent": 5000, "price": 1766500, "n8": 8, "ry": 0.0, "py": -0.0434, "old": 1}}, "gy": 3.08, "gyRent": 2800, "gyPrice": 1091200, "gpc": -3.49, "inv": "/investment/beer-sheva-investment-apartment/", "pp": "/beer-sheva-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 2780.6, "err": 46.0, "g": "2.5-3", "price": 808800}, "4": {"q": "2026-03", "avg": 3466.8, "err": 58.0, "g": "3.5-4", "price": 1203200}}}, {"n": "בית שאן", "code": 9200, "r": {"3": {"q": "2026-03", "rent": 2100, "price": 655700, "n8": 2, "ry": 0.05, "py": 0.1315}}, "gy": 2.72, "gyRent": 2225, "gyPrice": 983100, "gpc": -2.25}, {"n": "בית שמש", "code": 2610, "r": {"3": {"q": "2026-03", "rent": 5000, "price": 1971500, "n8": 6, "ry": 0.1628, "py": 0.0347}, "4": {"q": "2025-12", "rent": 5500, "price": 2479000, "n8": 8, "ry": 0.0, "py": 0.0568, "old": 1}, "5": {"q": "2026-03", "rent": 7000, "price": 2980000, "n8": 5, "py": -0.0433}}, "gy": 2.65, "gyRent": 5100, "gyPrice": 2310200, "gpc": 4.95, "cbs": {"3": {"q": "2026-03", "avg": 4354.6, "err": 106.0, "g": "2.5-3", "price": 1971500}}}, {"n": "בני ברק", "code": 6100, "r": {"3": {"q": "2026-03", "rent": 4600, "price": 2028000, "n8": 8, "ry": 0.0, "py": -0.0018}, "4": {"q": "2026-03", "rent": 5800, "price": 2491200, "n8": 7, "py": -0.0248}, "5": {"q": "2026-03", "rent": 6600, "price": 3034100, "n8": 8, "ry": 0.0154, "py": -0.0431}}, "gy": 2.62, "gyRent": 4975, "gyPrice": 2274300, "gpc": -1.73, "pp": "/bnei-brak-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4185.4, "err": 58.0, "g": "2.5-3", "price": 2028000}, "4": {"q": "2026-03", "avg": 5008.3, "err": 77.0, "g": "3.5-4", "price": 2491200}}}, {"n": "בת ים", "code": 6200, "r": {"3": {"q": "2026-03", "rent": 4600, "price": 1823700, "n8": 7, "ry": 0.0222, "py": -0.0114}, "4": {"q": "2026-03", "rent": 6450, "price": 2692600, "n8": 8, "ry": 0.0238, "py": 0.0426}, "5": {"q": "2026-03", "rent": 8500, "price": 3468600, "n8": 5, "ry": 0.018, "py": 0.1299}}, "gy": 2.92, "gyRent": 4625, "gyPrice": 1899900, "gpc": -1.23, "inv": "/investment/bat-yam-investment-apartment/", "pp": "/bat-yam-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4063.8, "err": 44.0, "g": "2.5-3", "price": 1823700}, "4": {"q": "2026-03", "avg": 5297.1, "err": 101.0, "g": "3.5-4", "price": 2692600}}}, {"n": "גבעת שמואל", "code": 681, "r": {"3": {"q": "2026-03", "rent": 4600, "price": 2641000, "n8": 4, "ry": -0.0612, "py": -0.0008}, "4": {"q": "2026-03", "rent": 7000, "price": 3290600, "n8": 6, "ry": 0.0, "py": 0.047}, "5": {"q": "2026-03", "rent": 8500, "price": 3798300, "n8": 8, "ry": 0.0625, "py": 0.0296}}, "gy": 2.9, "gyRent": 7500, "gyPrice": 3108450, "gpc": -2.29}, {"n": "גבעתיים", "code": 6300, "r": {"3": {"q": "2026-03", "rent": 6000, "price": 2815300, "n8": 7, "ry": 0.0, "py": -0.0895}, "4": {"q": "2026-03", "rent": 7500, "price": 4158900, "n8": 8, "ry": 0.0, "py": -0.0466}, "5": {"q": "2026-03", "rent": 9900, "price": 4960000, "n8": 6, "ry": 0.0102, "py": -0.0167}}, "gy": 2.21, "gyRent": 6150, "gyPrice": 3339200, "gpc": -10.76, "inv": "/investment/givatayim-investment-apartment/", "pp": "/givatayim-apartment-prices/"}, {"n": "גדרה", "code": 2550, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 1690300, "n8": 2, "ry": -0.1346, "py": -0.0116}, "4": {"q": "2026-03", "rent": 6200, "price": 2537800, "n8": 3, "ry": 0.181, "py": -0.0384}, "5": {"q": "2026-03", "rent": 6250, "price": 3137000, "n8": 3, "ry": 0.0, "py": -0.001}}, "gy": 2.33, "gyRent": 5850, "gyPrice": 3009100, "gpc": -2.72}, {"n": "גני תקווה", "code": 229, "r": {"4": {"q": "2026-03", "rent": 6100, "price": 3164600, "n8": 3, "ry": 0.0339, "py": -0.0634}}, "gy": 1.87, "gyRent": 5500, "gyPrice": 3529300, "gpc": 12.34}, {"n": "דימונה", "code": 2200, "r": {"3": {"q": "2026-03", "rent": 2300, "price": 574300, "n8": 7, "ry": 0.0, "py": 0.0453}, "4": {"q": "2026-03", "rent": 2600, "price": 740700, "n8": 4, "ry": 0.0833, "py": 0.0535}}, "gy": 4.23, "gyRent": 2300, "gyPrice": 651900, "gpc": 8.38}, {"n": "הוד השרון", "code": 9700, "r": {"3": {"q": "2026-03", "rent": 4250, "price": 2647000, "n8": 4, "ry": -0.1827, "py": 0.005}, "4": {"q": "2026-03", "rent": 6500, "price": 3264800, "n8": 8, "ry": -0.0701, "py": -0.0221}, "5": {"q": "2026-03", "rent": 8800, "price": 4245600, "n8": 7, "ry": 0.0732, "py": -0.0371}}, "gy": 2.73, "gyRent": 7395, "gyPrice": 3247000, "gpc": 4.35, "inv": "/investment/hod-hasharon-investment-apartment/", "pp": "/hod-hasharon-apartment-prices/"}, {"n": "הרצליה", "code": 6400, "r": {"3": {"q": "2026-03", "rent": 6400, "price": 2793600, "n8": 8, "ry": 0.0667, "py": 0.0061}, "4": {"q": "2026-03", "rent": 8000, "price": 3272800, "n8": 7, "ry": 0.0, "py": -0.0914}, "5": {"q": "2026-03", "rent": 10500, "price": 4251200, "n8": 8, "ry": 0.0, "py": -0.0895}}, "gy": 2.94, "gyRent": 7800, "gyPrice": 3188700, "gpc": 2.86, "inv": "/investment/herzliya-investment-apartment/", "pp": "/herzliya-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 5571.8, "err": 166.0, "g": "2.5-3", "price": 2793600}, "4": {"q": "2026-03", "avg": 6989.9, "err": 134.0, "g": "3.5-4", "price": 3272800}}}, {"n": "זכרון יעקב", "code": 9300, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 1570800, "n8": 1, "ry": -0.0816}, "4": {"q": "2025-09", "rent": 5900, "price": 2884100, "n8": 4, "ry": 0.0536, "py": 0.1366, "old": 1}, "5": {"q": "2026-03", "rent": 7600, "price": 3586600, "n8": 2, "ry": 0.1515, "py": 0.1237}}, "gy": 2.51, "gyRent": 5650, "gyPrice": 2698500, "gpc": 3.8}, {"n": "חדרה", "code": 6500, "r": {"3": {"q": "2026-03", "rent": 3500, "price": 1372300, "n8": 7, "ry": 0.0, "py": -0.2406}, "4": {"q": "2026-03", "rent": 4500, "price": 1987300, "n8": 7, "ry": 0.0, "py": -0.116}, "5": {"q": "2026-03", "rent": 5800, "price": 2726700, "n8": 8, "ry": 0.0175, "py": -0.0128}}, "gy": 2.69, "gyRent": 4000, "gyPrice": 1781300, "gpc": -3.71, "cbs": {"3": {"q": "2026-03", "avg": 3519.8, "err": 97.0, "g": "2.5-3", "price": 1372300}, "4": {"q": "2026-03", "avg": 4379.3, "err": 103.0, "g": "3.5-4", "price": 1987300}}}, {"n": "חולון", "code": 6600, "r": {"3": {"q": "2026-03", "rent": 4600, "price": 1918700, "n8": 8, "ry": 0.0222, "py": 0.0101}, "4": {"q": "2026-03", "rent": 6300, "price": 2428500, "n8": 8, "ry": 0.05, "py": -0.0581}, "5": {"q": "2026-03", "rent": 7800, "price": 3142700, "n8": 8, "ry": 0.04, "py": -0.0556}}, "gy": 2.93, "gyRent": 5100, "gyPrice": 2088000, "gpc": -2.18, "inv": "/investment/holon-investment-apartment/", "pp": "/holon-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4286.8, "err": 48.0, "g": "2.5-3", "price": 1918700}, "4": {"q": "2026-03", "avg": 5382.4, "err": 65.0, "g": "3.5-4", "price": 2428500}}}, {"n": "חיפה", "code": 4000, "r": {"3": {"q": "2026-03", "rent": 3300, "price": 1135100, "n8": 8, "ry": 0.0312, "py": 0.0054}, "4": {"q": "2026-03", "rent": 4400, "price": 1597500, "n8": 7, "ry": 0.0, "py": -0.1073}, "5": {"q": "2026-03", "rent": 5600, "price": 2638000, "n8": 7, "ry": 0.0, "py": -0.0875}}, "gy": 2.71, "gyRent": 3195, "gyPrice": 1413750, "gpc": 6.21, "inv": "/investment/haifa-investment-apartment/", "pp": "/haifa-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 3116.6, "err": 32.0, "g": "2.5-3", "price": 1135100}, "4": {"q": "2026-03", "avg": 4052.4, "err": 54.0, "g": "3.5-4", "price": 1597500}}}, {"n": "חריש", "code": 1247, "r": {"4": {"q": "2026-03", "rent": 3600, "price": 1391800, "n8": 7, "ry": 0.0, "py": -0.0777}, "5": {"q": "2026-03", "rent": 4000, "price": 1606200, "n8": 8, "ry": 0.0, "py": -0.0625}}, "gy": 3.15, "gyRent": 3900, "gyPrice": 1487100, "gpc": -2.83}, {"n": "טבריה", "code": 6700, "r": {"3": {"q": "2026-03", "rent": 2500, "price": 1000300, "n8": 8, "ry": -0.0385, "py": 0.1238}, "4": {"q": "2026-03", "rent": 3500, "price": 1379000, "n8": 8, "ry": -0.0278, "py": 0.0368}, "5": {"q": "2026-03", "rent": 4900, "price": 1930800, "n8": 6, "ry": 0.0208, "py": 0.1582}}, "gy": 2.95, "gyRent": 2975, "gyPrice": 1209700, "gpc": -2.66}, {"n": "טירת כרמל", "code": 2100, "r": {"3": {"q": "2026-03", "rent": 3000, "price": 1435000, "n8": 5, "ry": 0.0169, "py": 0.0768}, "4": {"q": "2026-03", "rent": 4300, "price": 1667500, "n8": 4, "py": 0.0057}}, "gy": 2.68, "gyRent": 3300, "gyPrice": 1475900, "gpc": -8.65}, {"n": "יבנה", "code": 2660, "r": {"3": {"q": "2026-03", "rent": 4200, "price": 1990300, "n8": 4, "ry": 0.0769, "py": 0.0313}, "4": {"q": "2026-03", "rent": 5300, "price": 2473700, "n8": 8, "ry": 0.0707, "py": 0.0666}, "5": {"q": "2026-03", "rent": 6000, "price": 2863300, "n8": 5, "py": -0.0224}}, "gy": 2.3, "gyRent": 4750, "gyPrice": 2472900, "gpc": 5.06}, {"n": "יהוד-מונוסון", "code": 9400, "r": {"3": {"q": "2026-03", "rent": 4900, "price": 2468700, "n8": 3, "ry": 0.0208, "py": 0.0321}, "4": {"q": "2026-03", "rent": 6500, "price": 2732000, "n8": 4, "ry": 0.1207, "py": -0.0034}, "5": {"q": "2026-03", "rent": 7850, "price": 2942100, "n8": 3, "ry": 0.0064, "py": -0.0777}}, "gy": 2.78, "gyRent": 6150, "gyPrice": 2651200, "gpc": 1.46}, {"n": "יקנעם עילית", "code": 240, "r": {"3": {"q": "2026-03", "rent": 3300, "price": 1342600, "n8": 3, "ry": 0.0312}, "4": {"q": "2026-03", "rent": 4300, "price": 2110500, "n8": 3, "ry": -0.0444, "py": 0.0143}, "5": {"q": "2026-03", "rent": 5800, "price": 2483600, "n8": 4, "ry": 0.0642, "py": -0.0552}}, "gy": 2.14, "gyRent": 3550, "gyPrice": 1987600, "gpc": 4.28}, {"n": "ירוחם", "code": 831, "r": {"3": {"q": "2026-03", "rent": 1900, "price": 468900, "n8": 3, "ry": -0.05, "py": 0.0245}, "4": {"q": "2026-03", "rent": 2500, "price": 1256500, "n8": 3, "ry": -0.2958, "py": 0.0744}, "5": {"q": "2026-03", "rent": 4350, "price": 1565300, "n8": 3, "ry": 0.0, "py": -0.0116}}}, {"n": "ירושלים", "code": 3000, "r": {"3": {"q": "2026-03", "rent": 5500, "price": 2376700, "n8": 8, "ry": 0.0185, "py": 0.0296}, "4": {"q": "2026-03", "rent": 7200, "price": 2882400, "n8": 8, "ry": -0.0137, "py": -0.098}, "5": {"q": "2026-03", "rent": 9600, "price": 3934400, "n8": 8, "ry": 0.0667, "py": -0.0698}}, "gy": 2.42, "gyRent": 5700, "gyPrice": 2825500, "gpc": 2.67, "inv": "/investment/jerusalem-investment-apartment/", "pp": "/jerusalem-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4837.9, "err": 58.0, "g": "2.5-3", "price": 2376700}, "4": {"q": "2026-03", "avg": 6138.9, "err": 77.0, "g": "3.5-4", "price": 2882400}}}, {"n": "כפר יונה", "code": 168, "r": {"4": {"q": "2026-03", "rent": 5800, "price": 2217100, "n8": 2, "ry": -0.0794, "py": -0.0655}}, "gy": 3.01, "gyRent": 6450, "gyPrice": 2570000, "gpc": 6.02}, {"n": "כפר סבא", "code": 6900, "r": {"3": {"q": "2025-12", "rent": 5200, "price": 1941300, "n8": 8, "ry": 0.04, "py": -0.213, "old": 1}, "4": {"q": "2025-12", "rent": 6700, "price": 2817000, "n8": 8, "ry": -0.029, "py": -0.0614, "old": 1}, "5": {"q": "2026-03", "rent": 8000, "price": 3544700, "n8": 8, "ry": -0.0476, "py": -0.0433}}, "gy": 3.27, "gyRent": 6500, "gyPrice": 2383150, "gpc": -3.69, "inv": "/investment/kfar-saba-investment-apartment/", "pp": "/kfar-saba-apartment-prices/"}, {"n": "כרמיאל", "code": 1139, "r": {"3": {"q": "2026-03", "rent": 2800, "price": 1014100, "n8": 7, "ry": -0.0345, "py": -0.045}, "4": {"q": "2026-03", "rent": 3500, "price": 1219900, "n8": 8, "ry": -0.0789, "py": -0.0857}, "5": {"q": "2026-03", "rent": 5500, "price": 1418100, "n8": 4, "ry": 0.1, "py": -0.3723}}, "gy": 2.83, "gyRent": 2950, "gyPrice": 1248900, "gpc": -4.89}, {"n": "לוד", "code": 7000, "r": {"3": {"q": "2026-03", "rent": 3600, "price": 1385200, "n8": 8, "ry": 0.0588, "py": -0.0111}, "4": {"q": "2026-03", "rent": 4700, "price": 1686000, "n8": 8, "ry": 0.0444, "py": -0.1178}, "5": {"q": "2026-03", "rent": 6000, "price": 2191800, "n8": 7, "ry": 0.0, "py": 0.0437}}, "gy": 2.78, "gyRent": 3825, "gyPrice": 1653700, "gpc": -3.73}, {"n": "מבשרת ציון", "code": 1015, "r": {"3": {"q": "2026-03", "rent": 4800, "price": 2464200, "n8": 2, "ry": -0.04, "py": 0.0222}, "4": {"q": "2026-03", "rent": 6700, "price": 2942300, "n8": 2, "ry": 0.0152, "py": -0.0552}}, "gy": 2.97, "gyRent": 6500, "gyPrice": 2623200, "gpc": -8.26}, {"n": "מגדל העמק", "code": 874, "r": {"3": {"q": "2026-03", "rent": 2400, "price": 810900, "n8": 4, "ry": 0.0435, "py": 0.0346}, "4": {"q": "2026-03", "rent": 3500, "price": 1153100, "n8": 4, "ry": -0.0789, "py": 0.0064}}, "gy": 3.16, "gyRent": 2500, "gyPrice": 948500, "gpc": 0.91}, {"n": "מודיעין-מכבים-רעות", "code": 1200, "r": {"3": {"q": "2025-12", "rent": 6000, "price": 2039500, "n8": 7, "ry": 0.0, "py": -0.1553, "old": 1}, "4": {"q": "2026-03", "rent": 6500, "price": 2559800, "n8": 8, "ry": 0.0, "py": -0.1592}, "5": {"q": "2026-03", "rent": 8500, "price": 3648800, "n8": 8, "ry": 0.0625, "py": -0.0482}}, "gy": 2.96, "gyRent": 7000, "gyPrice": 2837000, "gpc": -7.98, "inv": "/investment/modiin-investment-apartment/", "pp": "/modiin-apartment-prices/"}, {"n": "מעלה אדומים", "code": 3616, "r": {"3": {"q": "2026-03", "rent": 4000, "price": 1653100, "n8": 3, "ry": 0.0, "py": -0.0333}, "4": {"q": "2026-03", "rent": 5200, "price": 2040500, "n8": 4, "ry": -0.037, "py": 0.0137}, "5": {"q": "2026-03", "rent": 6800, "price": 2450900, "n8": 2, "ry": 0.0, "py": -0.063}}, "gy": 2.73, "gyRent": 4700, "gyPrice": 2067500, "gpc": 8.51}, {"n": "נהריה", "code": 9100, "r": {"3": {"q": "2026-03", "rent": 3000, "price": 1220700, "n8": 7, "ry": 0.0345, "py": 0.0712}, "4": {"q": "2026-03", "rent": 4000, "price": 1690800, "n8": 8, "ry": -0.0361, "py": 0.0251}, "5": {"q": "2026-03", "rent": 5200, "price": 2280900, "n8": 8, "ry": 0.04, "py": 0.0335}}, "gy": 2.49, "gyRent": 3600, "gyPrice": 1733200, "gpc": 5.4}, {"n": "נס ציונה", "code": 7200, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 2030000, "n8": 4, "ry": 0.0227, "py": -0.0332}, "4": {"q": "2026-03", "rent": 6000, "price": 3096500, "n8": 3, "py": 0.0541}, "5": {"q": "2026-03", "rent": 7200, "price": 4336500, "n8": 3, "ry": 0.0, "py": 0.0281}}, "gy": 2.66, "gyRent": 4950, "gyPrice": 2232450, "gpc": 18.01}, {"n": "נצרת", "code": 7300, "r": {"4": {"q": "2026-03", "rent": 4000, "price": 895000, "n8": 3, "ry": 0.0526, "py": 0.0602}}, "gpc": -14.81}, {"n": "נשר", "code": 2500, "r": {"3": {"q": "2026-03", "rent": 3100, "price": 1284900, "n8": 8, "ry": 0.0333, "py": 0.0168}, "4": {"q": "2026-03", "rent": 4000, "price": 1664200, "n8": 7, "ry": 0.0256, "py": 0.0331}, "5": {"q": "2026-03", "rent": 6300, "price": 2566000, "n8": 3, "ry": 0.1053, "py": 0.153}}, "gy": 2.51, "gyRent": 3100, "gyPrice": 1480400, "gpc": 12.24}, {"n": "נתיבות", "code": 246, "r": {"3": {"q": "2025-09", "rent": 2800, "price": 1204400, "n8": 5, "ry": 0.2174, "py": 0.2541, "old": 1}, "4": {"q": "2026-03", "rent": 3500, "price": 1350600, "n8": 6, "ry": 0.0294, "py": 0.0031}, "5": {"q": "2026-03", "rent": 5000, "price": 1849500, "n8": 4, "ry": 0.0417, "py": 0.0176}}, "gy": 3.45, "gyRent": 3845, "gyPrice": 1339300, "gpc": 4.36}, {"n": "נתניה", "code": 7400, "r": {"3": {"q": "2025-12", "rent": 4500, "price": 1791300, "n8": 8, "ry": 0.0, "py": -0.116, "old": 1}, "4": {"q": "2026-03", "rent": 6500, "price": 2676100, "n8": 7, "ry": 0.0, "py": 0.0183}, "5": {"q": "2026-03", "rent": 7950, "price": 3365300, "n8": 8, "ry": 0.0392, "py": -0.0224}}, "gy": 2.91, "gyRent": 5850, "gyPrice": 2409300, "gpc": -5.06, "inv": "/investment/netanya-investment-apartment/", "pp": "/netanya-apartment-prices/", "cbs": {"4": {"q": "2026-03", "avg": 5252.3, "err": 90.0, "g": "3.5-4", "price": 2676100}}}, {"n": "עכו", "code": 7600, "r": {"3": {"q": "2026-03", "rent": 2799, "price": 840000, "n8": 7, "ry": -0.0004}, "4": {"q": "2026-03", "rent": 3800, "price": 1312500, "n8": 8, "ry": 0.027, "py": 0.0255}, "5": {"q": "2026-03", "rent": 5500, "price": 1963900, "n8": 4, "ry": 0.0377, "py": 0.0513}}, "gy": 3.18, "gyRent": 2800, "gyPrice": 1057800, "gpc": 2.99}, {"n": "עפולה", "code": 7700, "r": {"3": {"q": "2026-03", "rent": 2600, "price": 1006000, "n8": 8, "ry": 0.04, "py": 0.1293}, "4": {"q": "2026-03", "rent": 3300, "price": 1359900, "n8": 8, "ry": 0.0, "py": 0.0231}, "5": {"q": "2026-03", "rent": 4000, "price": 1738700, "n8": 8, "ry": -0.0696, "py": 0.0241}}, "gy": 2.72, "gyRent": 2850, "gyPrice": 1258900, "gpc": -0.02}, {"n": "ערד", "code": 2560, "r": {"3": {"q": "2026-03", "rent": 2500, "price": 672400, "n8": 8, "ry": 0.0417, "py": 0.1125}, "4": {"q": "2026-03", "rent": 3200, "price": 1226200, "n8": 6, "py": 0.2538}}, "gy": 3.42, "gyRent": 2700, "gyPrice": 947200, "gpc": 2.59}, {"n": "פרדס חנה-כרכור", "code": 7800, "r": {"3": {"q": "2026-03", "rent": 3600, "price": 1681800, "n8": 4, "ry": 0.0588, "py": 0.0538}, "4": {"q": "2026-03", "rent": 4850, "price": 2093800, "n8": 5, "ry": -0.049, "py": -0.0709}, "5": {"q": "2026-03", "rent": 6200, "price": 2936000, "n8": 8, "ry": 0.0333, "py": -0.1079}}, "gy": 2.85, "gyRent": 5625, "gyPrice": 2367900, "gpc": 4.02}, {"n": "פתח תקווה", "code": 7900, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 2057000, "n8": 8, "ry": 0.0227, "py": 0.0433}, "4": {"q": "2026-03", "rent": 5900, "price": 2444100, "n8": 8, "ry": 0.0261, "py": -0.0224}, "5": {"q": "2026-03", "rent": 7200, "price": 3322600, "n8": 8, "ry": 0.0286, "py": -0.0011}}, "gy": 2.46, "gyRent": 5000, "gyPrice": 2441100, "gpc": -0.57, "inv": "/investment/petah-tikva-investment-apartment/", "pp": "/petah-tikva-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4185.7, "err": 55.0, "g": "2.5-3", "price": 2057000}, "4": {"q": "2026-03", "avg": 5276.4, "err": 63.0, "g": "3.5-4", "price": 2444100}}}, {"n": "צפת", "code": 8000, "r": {"3": {"q": "2026-03", "rent": 2600, "price": 1075100, "n8": 6, "ry": 0.0833, "py": 0.0423}, "4": {"q": "2026-03", "rent": 4200, "price": 1514800, "n8": 4, "ry": 0.0769, "py": 0.1017}}, "gy": 2.54, "gyRent": 2950, "gyPrice": 1394350, "gpc": 9.85}, {"n": "קדימה-צורן", "code": 195, "r": {"5": {"q": "2026-03", "rent": 7700, "price": 3153800, "n8": 2, "ry": 0.0, "py": -0.0362}}, "gy": 3.34, "gyRent": 8500, "gyPrice": 3056300, "gpc": -3.41}, {"n": "קריית אונו", "code": 2620, "r": {"3": {"q": "2026-03", "rent": 4700, "price": 2635400, "n8": 4, "ry": 0.0, "py": -0.0472}, "4": {"q": "2026-03", "rent": 7350, "price": 3197900, "n8": 6, "ry": 0.0889, "py": -0.0308}, "5": {"q": "2026-03", "rent": 7900, "price": 3533500, "n8": 5, "py": -0.0597}}, "gy": 2.74, "gyRent": 7250, "gyPrice": 3175100, "gpc": -4.13, "inv": "/investment/kiryat-ono-investment-apartment/", "pp": "/kiryat-ono-apartment-prices/"}, {"n": "קריית אתא", "code": 6800, "r": {"3": {"q": "2026-03", "rent": 2750, "price": 955600, "n8": 8, "ry": -0.0179, "py": -0.0099}, "4": {"q": "2026-03", "rent": 4000, "price": 1690800, "n8": 8, "ry": 0.0959, "py": 0.1979}, "5": {"q": "2026-03", "rent": 5350, "price": 2187200, "n8": 8, "ry": 0.0388, "py": 0.0414}}, "gy": 2.56, "gyRent": 2850, "gyPrice": 1336600, "gpc": -6.61}, {"n": "קריית ביאליק", "code": 9500, "r": {"3": {"q": "2025-09", "rent": 3000, "price": 1096000, "n8": 7, "ry": -0.0625, "py": -0.1074, "old": 1}, "4": {"q": "2025-12", "rent": 4200, "price": 1378000, "n8": 8, "ry": 0.05, "py": -0.0422, "old": 1}, "5": {"q": "2026-03", "rent": 4900, "price": 2515200, "n8": 4, "ry": 0.0, "py": 0.0915}}, "gy": 2.94, "gyRent": 3000, "gyPrice": 1222650, "gpc": -3.18}, {"n": "קריית גת", "code": 2630, "r": {"3": {"q": "2026-03", "rent": 2800, "price": 1107000, "n8": 7, "ry": 0.0, "py": -0.1028}, "4": {"q": "2026-03", "rent": 3400, "price": 1442400, "n8": 8, "ry": 0.0303, "py": -0.1837}, "5": {"q": "2026-03", "rent": 4250, "price": 2579900, "n8": 3, "ry": 0.0, "py": 0.0937}}, "gy": 2.9, "gyRent": 3000, "gyPrice": 1240400, "gpc": -4.47}, {"n": "קריית ים", "code": 9600, "r": {"3": {"q": "2026-03", "rent": 2900, "price": 1240000, "n8": 7, "ry": 0.0741, "py": 0.0754}, "4": {"q": "2026-03", "rent": 3800, "price": 1426400, "n8": 8, "ry": 0.027, "py": -0.0307}, "5": {"q": "2026-03", "rent": 4700, "price": 2016500, "n8": 3, "ry": -0.0962, "py": 0.0288}}, "gy": 2.48, "gyRent": 2800, "gyPrice": 1353100, "gpc": 3.81}, {"n": "קריית מוצקין", "code": 8200, "r": {"3": {"q": "2026-03", "rent": 3200, "price": 1126000, "n8": 8, "ry": 0.0, "py": -0.056}, "4": {"q": "2026-03", "rent": 4200, "price": 1534700, "n8": 8, "ry": 0.012, "py": 0.054}, "5": {"q": "2026-03", "rent": 5650, "price": 2523900, "n8": 7, "ry": 0.0273, "py": 0.1523}}, "gy": 2.84, "gyRent": 3275, "gyPrice": 1383400, "gpc": 2.13}, {"n": "קריית מלאכי", "code": 1034, "r": {"3": {"q": "2025-12", "rent": 2900, "price": 1045100, "n8": 5, "ry": -0.0333, "old": 1}, "4": {"q": "2026-03", "rent": 4200, "price": 1524900, "n8": 4, "ry": -0.0455, "py": 0.095}, "5": {"q": "2026-03", "rent": 5000, "price": 2296500, "n8": 1, "ry": -0.0385}}, "gy": 3.14, "gyRent": 3100, "gyPrice": 1184000, "gpc": -0.4}, {"n": "קריית שמונה", "code": 2800, "r": {"3": {"q": "2026-03", "rent": 2500, "price": 681600, "n8": 3, "ry": -0.0385, "py": 0.0678}, "4": {"q": "2026-03", "rent": 2500, "price": 690800, "n8": 3, "ry": -0.1667, "py": -0.2109}}, "gy": 3.77, "gyRent": 2550, "gyPrice": 811000, "gpc": 0.19}, {"n": "ראש העין", "code": 2640, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 1849100, "n8": 3, "ry": -0.0217, "py": -0.0639}, "4": {"q": "2026-03", "rent": 5500, "price": 2230600, "n8": 6, "ry": -0.0351, "py": -0.039}, "5": {"q": "2026-03", "rent": 6000, "price": 2463100, "n8": 6, "ry": -0.0476, "py": -0.0572}}, "gy": 2.74, "gyRent": 5675, "gyPrice": 2486700, "gpc": 2.23}, {"n": "ראשון לציון", "code": 8300, "r": {"3": {"q": "2026-03", "rent": 4800, "price": 1936700, "n8": 7, "ry": 0.0, "py": -0.0132}, "4": {"q": "2026-03", "rent": 6000, "price": 2392600, "n8": 8, "ry": 0.0, "py": 0.009}, "5": {"q": "2026-03", "rent": 8100, "price": 3631900, "n8": 8, "ry": 0.1096, "py": 0.02}}, "gy": 3.22, "gyRent": 5300, "gyPrice": 1974100, "gpc": -3.14, "inv": "/investment/rishon-lezion-investment-apartment/", "pp": "/rishon-lezion-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4636.1, "err": 59.0, "g": "2.5-3", "price": 1936700}, "4": {"q": "2026-03", "avg": 5512.8, "err": 71.0, "g": "3.5-4", "price": 2392600}}}, {"n": "רחובות", "code": 8400, "r": {"3": {"q": "2026-03", "rent": 4500, "price": 1921100, "n8": 7}, "4": {"q": "2026-03", "rent": 5600, "price": 2345500, "n8": 7, "ry": -0.0175, "py": -0.0688}, "5": {"q": "2026-03", "rent": 7500, "price": 3290000, "n8": 7, "ry": 0.0417, "py": 0.0365}}, "gy": 2.45, "gyRent": 4800, "gyPrice": 2347100, "gpc": -2.75, "inv": "/investment/rehovot-investment-apartment/", "pp": "/rehovot-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 4131.4, "err": 61.0, "g": "2.5-3", "price": 1921100}, "4": {"q": "2026-03", "avg": 5073.3, "err": 73.0, "g": "3.5-4", "price": 2345500}}}, {"n": "רמלה", "code": 8500, "r": {"3": {"q": "2026-03", "rent": 3600, "price": 1410000, "n8": 8, "ry": 0.0286, "py": 0.0265}, "4": {"q": "2026-03", "rent": 4700, "price": 1557900, "n8": 8, "ry": 0.0444, "py": -0.1809}, "5": {"q": "2026-03", "rent": 6350, "price": 2198200, "n8": 4, "ry": -0.0231, "py": -0.0792}}, "gy": 2.92, "gyRent": 3825, "gyPrice": 1572100, "gpc": 7.04}, {"n": "רמת גן", "code": 8600, "r": {"3": {"q": "2026-03", "rent": 6000, "price": 2701700, "n8": 8, "ry": 0.0169, "py": -0.0277}, "4": {"q": "2026-03", "rent": 7500, "price": 3330400, "n8": 7, "ry": 0.0135, "py": 0.035}, "5": {"q": "2026-03", "rent": 8700, "price": 4636200, "n8": 8, "ry": 0.0235, "py": 0.0483}}, "gy": 2.44, "gyRent": 6250, "gyPrice": 3073800, "gpc": 11.04, "inv": "/investment/ramat-gan-investment-apartment/", "pp": "/ramat-gan-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 5403.6, "err": 63.0, "g": "2.5-3", "price": 2701700}, "4": {"q": "2026-03", "avg": 6795.7, "err": 99.0, "g": "3.5-4", "price": 3330400}}}, {"n": "רמת השרון", "code": 2650, "r": {"3": {"q": "2026-03", "rent": 6500, "price": 3544800, "n8": 3, "py": 0.1645}, "4": {"q": "2026-03", "rent": 8500, "price": 3809600, "n8": 7, "ry": 0.0119, "py": -0.1069}, "5": {"q": "2026-03", "rent": 11000, "price": 4663600, "n8": 7, "ry": 0.0185, "py": -0.0236}}, "gy": 2.98, "gyRent": 8900, "gyPrice": 3578000, "gpc": -6.11, "inv": "/investment/ramat-hasharon-investment-apartment/", "pp": "/ramat-hasharon-apartment-prices/"}, {"n": "רעננה", "code": 8700, "r": {"3": {"q": "2026-03", "rent": 6000, "price": 2814000, "n8": 7, "ry": 0.0, "py": -0.0079}, "4": {"q": "2026-03", "rent": 6800, "price": 3289900, "n8": 8, "ry": -0.0286, "py": -0.0076}, "5": {"q": "2026-03", "rent": 8800, "price": 4199400, "n8": 8, "ry": 0.1, "py": 0.0025}}, "gy": 2.51, "gyRent": 7650, "gyPrice": 3659100, "gpc": 5.61, "inv": "/investment/raanana-investment-apartment/", "pp": "/raanana-apartment-prices/"}, {"n": "שדרות", "code": 1031, "r": {"3": {"q": "2026-03", "rent": 3000, "price": 867200, "n8": 2, "ry": 0.2, "py": -0.0316}, "4": {"q": "2026-03", "rent": 3500, "price": 954500, "n8": 4, "ry": 0.1667, "py": -0.1284}, "5": {"q": "2026-03", "rent": 4000, "price": 1621200, "n8": 3, "ry": 0.3333, "py": 0.0815}}, "gy": 3.81, "gyRent": 3300, "gyPrice": 1040400, "gpc": -2.04}, {"n": "שוהם", "code": 1304, "r": {"4": {"q": "2026-03", "rent": 7100, "price": 3279700, "n8": 2, "ry": 0.0519, "py": -0.0049}}, "gy": 2.29, "gyRent": 7200, "gyPrice": 3768450, "gpc": -5.58}, {"n": "תל אביב-יפו", "code": 5000, "r": {"3": {"q": "2026-03", "rent": 8200, "price": 4225800, "n8": 8, "ry": 0.038, "py": 0.1408}, "4": {"q": "2026-03", "rent": 10000, "price": 5229800, "n8": 7, "ry": 0.0101, "py": 0.1071}, "5": {"q": "2026-03", "rent": 13250, "price": 7497700, "n8": 8, "ry": -0.0185, "py": 0.0646}}, "gy": 2.72, "gyRent": 8000, "gyPrice": 3531200, "gpc": -1.45, "inv": "/investment-apartment/tel-aviv-investment-neighborhoods/", "pp": "/tel-aviv-apartment-prices/", "cbs": {"3": {"q": "2026-03", "avg": 7077.6, "err": 68.0, "g": "2.5-3", "price": 4225800}, "4": {"q": "2026-03", "avg": 8843.1, "err": 118.0, "g": "3.5-4", "price": 5229800}}}], "rules": {"ltv": {"extra": 0.5, "single": 0.75, "foreign": 0.5}, "pti": 0.5, "vat": 0.18, "lawyer": 0.5, "broker": 2, "rates": [{"id": "fixed", "he": "קבועה לא צמודה", "rate": 4.62, "series": "BNK_99034_LR_BIR_MRTG_467"}, {"id": "linked", "he": "קבועה צמודה למדד", "rate": 3.29, "series": "BNK_99034_LR_BIR_MRTG_1492"}, {"id": "varlinked", "he": "משתנה צמודה למדד", "rate": 3.19, "series": "_1489 + _1488", "parts": [1.64, 1.55]}], "ratesPeriod": "2026-08", "boi": {"rate": 3.25, "prime": 4.75, "from": "2026-09-03", "asof": "2026-10-21"}, "invLoans": {"n": 694, "vol": 888769150, "allN": 10272, "allVol": 10899046610, "m": "2026-08"}, "ptax": {"extra": [[6055070, 0.08], [null, 0.1]], "single": [[1978745, 0], [2347040, 0.035], [6055070, 0.05], [20183565, 0.08], [null, 0.1]], "foreign": [[6055070, 0.08], [null, 0.1]], "until": {"single": "2028-01-15", "extra": "2027-02-10", "foreign": "2027-02-10"}, "note": "הוראת שעה (סעיף 9(ג1ו)) לרכישות מ־16.1.2025 עד 10.2.2027 (הוארכה בהודעת רשות המסים מ־12.10.2026)"}, "rentTax": {"ceiling": 5654, "zero": 11308, "years": [2024, 2025, 2026], "ten": 0.1, "tenDue": "30.1", "under60": 0.31, "over60": 0.1, "brackets": [84120, 120720, 193800, 269280, 560280, 721560], "business": 10}, "idx": {"rent": {"m": "2026-09", "v": 107.5, "base": "2024 ממוצע", "yoy": 3.2, "mom": 0.4}, "price": {"m": "2026-07", "v": 590.0, "base": "1993 ממוצע", "yoy": -1.8, "mom": -0.6, "window": 2}, "newp": {"m": "2026-07", "v": 538.5, "base": "2017 אוקטובר", "yoy": -0.4, "mom": -0.4, "window": 2}, "cpi": {"m": "2026-09", "v": 105.3, "base": "2024 ממוצע", "yoy": 1.6, "mom": -0.5}}}, "src": {"gov": {"he": "אתר הנדל״ן הממשלתי, קובצי הסיכום לפי עיר (שכירות ועסקאות, רשות המסים), גרסה 20-08-2026", "url": "https://www.nadlan.gov.il/", "api": "https://data.nadlan.gov.il/api/pages/settlement/{kind}/{code}.json", "lastModified": ["Thu, 20 Aug 2026 10:31:36 GMT", "Thu, 20 Aug 2026 10:31:38 GMT", "Thu, 20 Aug 2026 10:31:39 GMT", "Thu, 20 Aug 2026 10:31:40 GMT", "Thu, 20 Aug 2026 10:31:41 GMT", "Thu, 20 Aug 2026 10:31:43 GMT", "Thu, 20 Aug 2026 10:31:44 GMT", "Thu, 20 Aug 2026 10:31:46 GMT", "Thu, 20 Aug 2026 10:31:47 GMT", "Thu, 20 Aug 2026 10:31:48 GMT", "Thu, 20 Aug 2026 10:31:49 GMT", "Thu, 20 Aug 2026 10:31:54 GMT", "Thu, 20 Aug 2026 10:31:55 GMT", "Thu, 20 Aug 2026 10:32:00 GMT", "Thu, 20 Aug 2026 10:32:18 GMT", "Thu, 20 Aug 2026 10:32:20 GMT", "Thu, 20 Aug 2026 10:32:21 GMT", "Thu, 20 Aug 2026 10:32:22 GMT", "Thu, 20 Aug 2026 10:32:23 GMT", "Thu, 20 Aug 2026 10:32:24 GMT", "Thu, 20 Aug 2026 10:32:25 GMT", "Thu, 20 Aug 2026 10:32:26 GMT", "Thu, 20 Aug 2026 10:32:27 GMT", "Thu, 20 Aug 2026 10:32:28 GMT", "Thu, 20 Aug 2026 10:32:29 GMT", "Thu, 20 Aug 2026 10:32:30 GMT", "Thu, 20 Aug 2026 10:32:31 GMT", "Thu, 20 Aug 2026 10:32:32 GMT", "Thu, 20 Aug 2026 10:32:33 GMT", "Thu, 20 Aug 2026 10:32:34 GMT", "Thu, 20 Aug 2026 10:32:36 GMT", "Thu, 20 Aug 2026 10:32:38 GMT", "Thu, 20 Aug 2026 10:32:39 GMT", "Thu, 20 Aug 2026 10:32:40 GMT", "Thu, 20 Aug 2026 10:32:41 GMT", "Thu, 20 Aug 2026 10:32:42 GMT", "Thu, 20 Aug 2026 10:32:43 GMT", "Thu, 20 Aug 2026 10:32:45 GMT", "Thu, 20 Aug 2026 10:32:49 GMT", "Thu, 20 Aug 2026 10:32:50 GMT", "Thu, 20 Aug 2026 10:32:56 GMT", "Thu, 20 Aug 2026 10:32:59 GMT", "Thu, 20 Aug 2026 10:33:01 GMT", "Thu, 20 Aug 2026 10:33:16 GMT", "Thu, 20 Aug 2026 10:33:17 GMT", "Thu, 20 Aug 2026 10:33:18 GMT", "Thu, 20 Aug 2026 10:33:19 GMT", "Thu, 20 Aug 2026 10:33:20 GMT", "Thu, 20 Aug 2026 10:33:21 GMT", "Thu, 20 Aug 2026 10:33:22 GMT"], "fileDate": "2026-08-20", "read": "2026-10-25", "files": 148}, "cbs49": {"he": "הלשכה המרכזית לסטטיסטיקה, ירחון מחירים 7/2026, לוח 4.9: שכר דירה ממוצע בשוק החופשי, ינואר עד מרץ 2026, עם טעות הדגימה", "url": "https://www.cbs.gov.il/"}, "cbsIdx": {"he": "הלשכה המרכזית לסטטיסטיקה: מדד שכר הדירה (120460), מדד מחירי הדירות (40010), מדד הדירות החדשות (70000), מדד המחירים לצרכן (120010)", "url": "https://api.cbs.gov.il/index/data/price?id=120460&format=json&lang=he"}, "boiMrtg": {"he": "בנק ישראל, ריבית ממוצעת במשכנתאות חדשות ומשכנתאות לדירה להשקעה (SDMX BIR_MRTG_99), 2026-08", "url": "https://edge.boi.gov.il/FusionEdgeServer/sdmx/v2/data/dataflow/BOI.STATISTICS/BIR_MRTG_99/1.0/BNK_99034_LR_BIR_MRTG_467?c%5BTIME_PERIOD%5D=ge:2026-01&format=csv"}, "boiRate": {"he": "בנק ישראל, ריבית בנק ישראל (סדרה MNT_RIB_BOI_D)", "url": "https://www.boi.org.il/"}, "d329": {"he": "בנק ישראל, הוראת ניהול בנקאי תקין 329: מימון עד 50% בדירה להשקעה, 75% בדירה יחידה; החזר עד 50% מההכנסה הפנויה", "url": "https://www.boi.org.il/"}, "ptax": {"he": "רשות המסים: מדרגות מס רכישה והודעת רשות המסים: הארכת הוראת השעה לעניין מס רכישה דירה נוספת (12.10.2026)", "url": "https://www.gov.il/he/pages/pa121026-2"}, "guide": {"he": "מדריך רשות המסים לרוכש ולמוכר זכות במקרקעין 2026", "url": "https://www.gov.il/BlobFolder/generalpage/guide-for-seller-right-in-land/he/Guides_knowrightinland_2026.pdf"}, "vat": {"label": "מע״מ 18% מ־1.1.2025, רשות המסים", "url": "https://www.gov.il/he/pages/dec1270-2024"}, "knesset": {"he": "מרכז המחקר והמידע של הכנסת: מיסוי הכנסות משכר דירה למגורים (אפריל 2024), תקרת פטור 5,654 ₪", "url": "https://fs.knesset.gov.il/globaldocs/MMM/787f33ac-56d6-ee11-8162-005056aa4246/2_787f33ac-56d6-ee11-8162-005056aa4246_11_20517.pdf"}, "kz": {"he": "כל זכות: פטור ממס על הכנסה מהשכרת דירה למגורים (עודכן 22.2.2026: 5,654 ₪ נכון ל־2026)", "url": "https://www.kolzchut.org.il/he/פטור_ממס_על_הכנסה_מהשכרת_דירה_למגורים"}}, "checks": {"govYieldFormula": [70, 70], "cbsPairs": 34}};var SP={};NadLanInstruments.register=function(id,s){SP[id]=s};</script><script>/* NadLan Instruments · invest v1 (U2 /investment/, Ben 25.10.2026): "מפת התשואה והתזרים", how much of the flat the rent buys.
+   For every city with official medians (data.nadlan.gov.il, rent and deal price in the same quarter) and 3 / 4 / 5 rooms: the gross
+   yield, the investor mortgage at the Bank of Israel cap (50% for an additional home, Spitzer at the August 2026 average fixed not
+   linked rate), the monthly cash flow before and after the visitor's own costs, the equity needed (price minus loan plus purchase tax
+   as an additional home with its 10.2.2027 end date, lawyer and broker with VAT), the three rental-tax tracks, and the share of the
+   price the rent alone carries as a mortgage (rent x annuity factor / price). A budget mode turns own money into the cities where a
+   median flat fits, ranked by cash flow. Under the readout: the three tax tracks, a ranked board of every city against the loan cap
+   and the national line, and a scatter of yield against price; the visitor's city is marked and every row opens that city.
+   Data: invest.json (tools/instruments/build_invest_data.py). Design: the engine's identity; marks in ledger ink (verdigris #00806A for a
+   flat whose rent carries the loan, signal red #B8322A for one that needs money every month; the pair passes the dataviz validator, deutan dE 9.2). Pure logic in NLIV for unit checks. */
+(function () {
+  'use strict';
+  var QM = { '03': 'ינואר עד מרץ', '06': 'אפריל עד יוני', '09': 'יולי עד ספטמבר', '12': 'אוקטובר עד דצמבר' };
+  var HM = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+  function qlab(q) { var p = String(q).split('-'); return (QM[p[1]] || p[1]) + ' ' + p[0]; }
+  function mlab(m) { var p = String(m).split('-'); return (HM[+p[1] - 1] || p[1]) + ' ' + p[0]; }
+  function qback(q) { var p = String(q).split('-'); return (+p[0] - 1) + '-' + p[1]; }
+  function pmt(P, annual, n) { var r = annual / 1200; return n > 0 ? (r === 0 ? P / n : P * r / (1 - Math.pow(1 + r, -n))) : 0; }
+  function af(annual, n) { var r = annual / 1200; return r === 0 ? n : (1 - Math.pow(1 + r, -n)) / r; }
+  function ptax(price, br) { var t = 0, lo = 0; for (var i = 0; i < br.length; i++) { var hi = br[i][0] == null ? Infinity : br[i][0], top = Math.min(price, hi); if (top > lo) t += (top - lo) * br[i][1]; if (price <= hi) break; lo = hi; } return t; }
+  function rowOf(D, name) { for (var i = 0; i < D.rows.length; i++) if (D.rows[i].n === name) return D.rows[i]; return null; }
+  /* the rent and price the calculator opens on: the government median pair, or the CBS average with its sampling error (same quarter) */
+  function pairOf(rw, rooms, src) {
+    var p = rw && rw.r[String(rooms)]; if (!p) return null;
+    var c = src === 'cbs' && rw.cbs && rw.cbs[String(rooms)];
+    if (c) return { q: c.q, rent: c.avg, price: c.price, err: c.err, g: c.g, src: 'cbs', n8: p.n8 };
+    return { q: p.q, rent: p.rent, price: p.price, n8: p.n8, ry: p.ry, py: p.py, old: p.old, src: 'gov' };
+  }
+  function rateOf(v, L) { if (v.rsel === 'own') return v.rate; if (v.rsel === 'prime') return L.boi.prime; for (var i = 0; i < L.rates.length; i++) if (L.rates[i].id === v.rsel) return L.rates[i].rate; return L.rates[0].rate; }
+  /* rental tax, monthly test on all the landlord's residential rents together (dna.md 6): exempt up to the ceiling, then the exempt
+     part falls shekel for shekel and is gone at twice the ceiling; 10% on the gross rent; the marginal track is personal (method only) */
+  function rentTax(rent, other, occ, RT) {
+    var tot = rent + (other || 0), ex = tot <= RT.ceiling ? tot : Math.max(0, 2 * RT.ceiling - tot);
+    return { total: tot, exempt: ex, taxable: tot - ex, full: tot - ex <= 0, ten: RT.ten * rent * occ };
+  }
+  function calc(v, D) {
+    var L = D.rules, tr = L.ptax[v.track] ? v.track : 'extra', P = v.price, Rn = v.rent, n = Math.round(v.years * 12), rate = rateOf(v, L);
+    var ltv = Math.max(0, v.ltv) / 100, loan = P * ltv, pay = pmt(loan, rate, n), A = af(rate, n), vat = 1 + L.vat;
+    var tax = ptax(P, L.ptax[tr]), law = P * (v.lawyer || 0) / 100 * vat, brk = P * (v.broker || 0) / 100 * vat, reno = v.reno || 0;
+    var equity = P - loan + tax + law + brk + reno, total = P + tax + law + brk + reno;
+    var occ = Math.max(0, 12 - (v.empty || 0)) / 12, costs = (v.mgmt || 0) + (v.upkeep || 0), reff = Rn * occ;
+    var T = rentTax(Rn, v.other, occ, L.rentTax);
+    var taxSel = v.taxtrack === 'ten' ? T.ten : (v.taxtrack === 'exempt' && T.full ? 0 : null);  // null: depends on the visitor's marginal rate
+    var cf0 = Rn - pay, cf1 = reff - pay - costs, cf2 = taxSel == null ? null : cf1 - taxSel;
+    return { tr: tr, rate: rate, n: n, A: A, loan: loan, pay: pay, tax: tax, law: law, brk: brk, reno: reno, equity: equity, total: total,
+      gross: Rn * 12 / P, cf0: cf0, cf1: cf1, cf2: cf2, taxSel: taxSel, T: T, occ: occ, costs: costs,
+      be: Rn * A / P, beNet: (reff - costs) * A / P, cap: L.ltv[tr], over: ltv > L.ltv[tr] + 1e-9,
+      net: (reff - costs - (taxSel || 0)) * 12 / total, coc: equity > 0 ? (cf2 == null ? cf1 : cf2) * 12 / equity : 0,
+      beRent: occ > 0 ? (pay + costs) / occ : 0, months: Rn > 0 ? tax / Rn : 0 };
+  }
+  /* every city with a same-quarter pair in the newest quarter (the ranking never mixes quarters) */
+  function ranking(D, rooms, v) {
+    var out = [];
+    D.rows.forEach(function (rw) {
+      if (rw.nat) return; var p = rw.r[String(rooms)]; if (!p || p.q !== D.cityQ) return;
+      var x = calc(Object.assign({}, v, { price: p.price, rent: p.rent, other: 0, reno: 0 }), D);
+      out.push({ n: rw.n, rooms: +rooms, q: p.q, rent: p.rent, price: p.price, n8: p.n8, gross: x.gross, pay: x.pay, cf0: x.cf0, cf1: x.cf1, be: x.be, equity: x.equity, inv: rw.inv, pp: rw.pp });
+    });
+    return out.sort(function (a, b) { return b.be - a.be; });
+  }
+  /* budget mode: own money (0 = no limit) and a price ceiling (0 = none) -> the median flats that fit, by cash flow after costs */
+  function budget(v, D) {
+    var rooms = v.brooms === '34' ? ['3', '4'] : [String(v.brooms)], all = [], fit = [];
+    rooms.forEach(function (k) { ranking(D, k, v).forEach(function (x) { all.push(x); }); });
+    all.forEach(function (x) { x.gap = v.equity > 0 ? x.equity - v.equity : 0; if ((v.equity > 0 ? x.gap <= 0 : true) && (v.cap > 0 ? x.price <= v.cap : true)) fit.push(x); });
+    fit.sort(function (a, b) { return b.cf1 - a.cf1; });
+    var maxP = 0;
+    if (v.equity > 0) { var lo = 0, hi = 100000000; for (var i = 0; i < 70; i++) { var mid = (lo + hi) / 2; if (calc(Object.assign({}, v, { price: mid, rent: 0 }), D).equity <= v.equity) lo = mid; else hi = mid; } maxP = Math.floor(lo / 100) * 100; }
+    var near = all.filter(function (x) { return fit.indexOf(x) < 0 && (v.cap > 0 ? x.price <= v.cap : true); }).sort(function (a, b) { return a.gap - b.gap; }).slice(0, 8);
+    var cities = {}; fit.forEach(function (x) { cities[x.n] = 1; });
+    return { fit: fit, near: near, maxP: maxP, cities: Object.keys(cities).length, rows: all.length };
+  }
+  window.NLIV = { pmt: pmt, af: af, ptax: ptax, calc: calc, ranking: ranking, budget: budget, pairOf: pairOf, rowOf: rowOf, rentTax: rentTax, qlab: qlab };
+  if (!window.NadLanInstruments) return;
+
+  var NI = window.NadLanInstruments, F = NI.fmt, esc = NI.esc, hashUsed = false;  // a shared link opens the first instance on the page
+  var TRK = { extra: 'דירה נוספת', single: 'דירה יחידה', foreign: 'תושב חוץ' };
+  function signed(x) { return Math.round(x) >= 0 ? 'נשארים ' + F.ils(x) : 'חסרים ' + F.ils(-x); }
+  function pct(x, d) { return (x < 0 ? '−' : '') + F.pct(Math.abs(x), d == null ? 1 : d); }
+  function chg(x, up, down) { return x == null ? '' : (x >= 0 ? up : down) + ' ' + F.pct(Math.abs(x), 1); }
+  function today() { return new Date().toISOString().slice(0, 10); }
+  function rtl(t) { return '\u200F' + t + '\u200F'; }  // keeps the trailing marks and numbers inside the Hebrew run of an SVG label
+  function css() {
+    if (document.getElementById('nliv-css')) return;
+    var s = document.createElement('style'); s.id = 'nliv-css';
+    s.textContent = '.nliv{--iv-pos:#00806A;--iv-neg:#B8322A;--iv-ink:#12304F;--iv-grid:#3E6FA3;--iv-paper:#F6F8FA}' +
+      '.nliv-x{display:grid;gap:22px;margin:24px 0 0;position:relative}.nliv-x>section{min-width:0}' +
+      'html body .nli h3.nliv-h{font:600 19px/26px var(--nli-sans) !important;color:var(--nli-ink) !important;margin:0 0 4px !important;letter-spacing:0;text-transform:none}' +
+      '.nliv-sub{font:400 14px/21px var(--nli-sans);color:var(--nli-ink2);margin:0 0 10px;max-width:72ch}' +
+      '.nliv-tax{width:100%;border-collapse:collapse;font:400 14px/20px var(--nli-sans);background:var(--iv-paper)}' +
+      'html body .nli .nliv-tax th,html body .nli .nliv-tax td{padding:10px 10px !important;border-bottom:1px solid var(--nli-line) !important;text-align:right;vertical-align:top;background:none !important;color:var(--nli-ink);font-size:14px !important;line-height:20px !important}' +
+      'html body .nli .nliv-tax th{font-weight:600;white-space:nowrap}.nliv-tax td.n{font-family:var(--nli-sans);font-variant-numeric:tabular-nums;white-space:nowrap;direction:ltr;unicode-bidi:plaintext}' +
+      '.nliv-tax tr.is-best th{box-shadow:inset -3px 0 0 var(--iv-pos)}.nliv-best{display:inline-block;margin-inline-start:6px;font:500 12px/16px var(--nli-sans);color:#fff;background:var(--iv-pos);border-radius:2px;padding:1px 6px}' +
+      '.nliv-tax small{display:block;color:var(--nli-mute);font-size:12px;line-height:17px;margin-top:2px}' +
+      '.nliv-fig{position:relative;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:var(--nli-surface);padding:8px 8px 4px}' +
+      '.nliv-fig svg{display:block;width:100%;height:auto;direction:ltr;overflow:visible}' +
+      '.nliv-fig text{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;fill:var(--nli-ink2);font-size:12px}' +
+      '.nliv-fig text.v{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;fill:var(--nli-ink)}' +
+      '.nliv-fig text.vw{fill:var(--nli-ink);font-weight:500;font-size:13px}.nliv-fig text.ax{fill:var(--nli-mute);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px}' +
+      '.nliv-fig .row{cursor:pointer}.nliv-fig .row:hover .hit,.nliv-fig .row:focus .hit{fill:#EEF3F6}.nliv-fig .row:focus{outline:none}' +
+      '.nliv-fig .row.is-me text{fill:var(--iv-ink);font-weight:600}.nliv-fig .row.is-me .hit{fill:#E6EEF4}.nliv-fig .row.is-off{opacity:.32}' +
+      '.nliv-fig .dot{cursor:pointer;stroke:#fff;stroke-width:2}.nliv-fig .dot.is-thin{fill:#fff !important;stroke-width:2}.nliv-fig .dot.is-off{opacity:.18}' +
+      '.nliv-fig .dot:hover,.nliv-fig .dot:focus{stroke:var(--iv-ink);outline:none}' +
+      '.nliv-tip{position:absolute;z-index:3;pointer-events:none;background:var(--iv-ink);color:#fff;border-radius:4px;padding:8px 10px;font:400 13px/19px var(--nli-sans);max-width:250px;box-shadow:0 2px 8px rgba(18,48,79,.22);direction:rtl;text-align:right}' +
+      '.nliv-tip b{font-weight:600}.nliv-tip span{display:block;font-family:var(--nli-mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:plaintext;text-align:right}' +
+      '.nliv-legend{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;margin:8px 0 0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}' +
+      '.nliv-legend li{display:flex;align-items:center;gap:6px;margin:0}.nliv-legend i{display:inline-block;width:12px;height:12px;border-radius:2px}.nliv-legend i.c{border-radius:50%}' +
+      '.nliv-legend i.l{width:14px;height:0;border-top:2px solid var(--iv-ink);border-radius:0}.nliv-legend i.d{width:14px;height:0;border-top:2px dashed var(--nli-mute);border-radius:0}' +
+      'html body .nli button.nliv-more{min-height:44px;padding:8px 14px;margin:10px 0 0;border:1px solid var(--nli-sea);border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-sea);font:500 14px/20px var(--nli-sans);cursor:pointer}' +
+      '.nliv-picked{font:500 13px/18px var(--nli-sans);color:var(--iv-pos);min-height:18px;margin:6px 0 0}' +
+      '.nliv-limits{font:400 13px/20px var(--nli-sans);color:var(--nli-ink2);margin:0;padding:12px;border-inline-start:3px solid var(--iv-ink);background:var(--iv-paper)}' +
+      'html body .nli .nli__lines dd.is-w,html body .nli .nli__scen strong.is-w{font-family:var(--nli-sans)}html body .nli .nli__lines dd.is-pos,html body .nli .nli__scen strong.is-pos{color:var(--iv-pos)}html body .nli .nli__lines dd.is-neg,html body .nli .nli__scen strong.is-neg{color:var(--iv-neg)}' +
+      '@media (max-width:600px){html body .nli .nliv-tax,html body .nli .nliv-tax tbody,html body .nli .nliv-tax tr,html body .nli .nliv-tax th,html body .nli .nliv-tax td{display:block !important;width:auto !important}' +
+      'html body .nli .nliv-tax tr{padding:8px 0;border-bottom:1px solid var(--nli-line)}html body .nli .nliv-tax th,html body .nli .nliv-tax td{border:0 !important;padding:3px 10px !important;white-space:normal}' +
+      'html body .nliv .nli__strip{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}}' +
+      '@media print{.nliv-tip,html body .nli button.nliv-more{display:none !important}.nliv-x{display:block}}';
+    document.head.appendChild(s);
+  }
+
+  NI.register('invest', {
+    custom: function (root, D0) {
+      css();
+      var D = D0.invest || D0.d0, L = D.rules, nat = D.rows[0];
+      var nRank = ranking(D, 4, { price: 0, rent: 0, track: 'extra', ltv: 50, rsel: 'fixed', years: 25, lawyer: L.lawyer }).length;
+      var fixedRate = L.rates[0];
+      /* the page's own case ([nadlan_tool id="invest" city="חיפה" rooms="3"]) and a shared link (#invest?c=...) open the tool on it */
+      var set = {}; try { set = JSON.parse(root.getAttribute('data-nli-set') || '{}'); } catch (e) {}
+      if (set.city && !rowOf(D, set.city)) delete set.city;
+      try { if (!hashUsed && /^#invest\?/.test(location.hash)) { hashUsed = true; var q = new URLSearchParams(location.hash.slice(8)); var K = { m: 'mode', c: 'city', r: 'rooms', s: 'rsrc', p: 'price', t: 'rent', k: 'track', l: 'ltv', i: 'rsel', a: 'rate', y: 'years', e: 'equity', b: 'brooms', x: 'cap', g: 'mgmt', u: 'upkeep', z: 'empty', w: 'taxtrack', o: 'other', w2: 'lawyer', br: 'broker', rn: 'reno' };
+        q.forEach(function (val, key) { var f = K[key]; if (!f) return; set[f] = /^(mode|city|rsrc|track|rsel|brooms|taxtrack)$/.test(f) ? val : parseFloat(val); }); set.more = 1; } } catch (e) {}
+      function refill(v) { var p = pairOf(rowOf(D, v.city), v.rooms, v.rsrc); v.price = p ? Math.round(p.price) : 0; v.rent = p ? Math.round(p.rent) : 0; }
+      var start = { city: set.city && rowOf(D, set.city) ? set.city : 'ישראל', rooms: set.rooms || 4, rsrc: set.rsrc || 'gov' }; refill(start);
+      var host = document.createElement('div'); host.setAttribute('data-nli-set', JSON.stringify(set)); root.innerHTML = ''; root.appendChild(host);
+      if (!root.closest('.nli')) root.classList.add('nli'); root.classList.add('nliv'); root.setAttribute('dir', 'rtl');
+      var api = null, X = null, showAll = false, budAll = false, lastKey = '', lastMode = '', picked = '';
+
+      function spec() {
+        var inBudget = function (v) { return v.mode === 'budget'; }, inCity = function (v) { return v.mode !== 'budget'; }, more = function (v) { return !!v.more; };
+        return {
+          kicker: 'מחשבון · נדל״ן להשקעה',
+          title: 'מפת התשואה והתזרים',
+          lede: 'כמה מכניסה דירה להשקעה בכל עיר, כמה נשאר או חסר בחודש אחרי המשכנתא, כמה הון עצמי צריך, ואיזה חלק מהמחיר שכר הדירה לבדו מחזיק. ' + nRank + ' ערים, 3 עד 5 חדרים, לפי החציונים הרשמיים של ' + qlab(D.cityQ) + ', וכל חישוב מסומן "החישוב שלנו".',
+          strip: function () { var I = L.idx, pm = String(I.price.m).split('-'); return [
+            { label: 'מס רכישה, דירה נוספת', value: '8% עד ' + F.date(L.ptax.until.extra) },
+            { label: 'מימון מרבי, דירה להשקעה', value: F.num(100 * L.ltv.extra) + '%' },
+            { label: 'ריבית ממוצעת קבועה לא צמודה, ' + mlab(L.ratesPeriod), value: F.num(fixedRate.rate, 2) + '%' },
+            { label: 'פטור ממס על שכר דירה', value: F.ils(L.rentTax.ceiling) + ' בחודש' },
+            { label: 'שכר הדירה בשנה, הלמ״ס ' + mlab(I.rent.m), value: chg(I.rent.yoy / 100, 'עלה', 'ירד') },
+            { label: 'מחירי הדירות בשנה, הלמ״ס ' + HM[+pm[1] - 1] + ' עד ' + HM[+pm[1] % 12] + ' ' + pm[0], value: chg(I.price.yoy / 100, 'עלו', 'ירדו') }]; },
+          exampleNote: 'המחשבון נפתח על דירת 4 חדרים בחציון הארצי. בחרו עיר, מספר חדרים או מחיר משלכם, והכול מתעדכן מיד.',
+          presets: function () {
+            var tlv = pairOf(rowOf(D, 'תל אביב-יפו'), 3, 'gov'), n4 = pairOf(nat, 4, 'gov'), base = { track: 'extra', ltv: 100 * L.ltv.extra };
+            var P = [{ key: 'nat4', label: 'דירת 4 חדרים בחציון הארצי', sub: F.ils(n4.price) + ' · ' + F.ils(n4.rent) + ' בחודש', set: Object.assign({ mode: 'city', city: 'ישראל', rooms: 4, rsrc: 'gov', price: n4.price, rent: n4.rent }, base) },
+              { key: 'm1', label: 'דירה עד מיליון ₪', sub: '3 או 4 חדרים, כל הערים', set: Object.assign({ mode: 'budget', equity: 0, cap: 1000000, brooms: '34' }, base) },
+              { key: 'e200', label: '200 אלף ₪ הון עצמי', sub: 'אילו ערים עובדות', set: Object.assign({ mode: 'budget', equity: 200000, cap: 0, brooms: '34' }, base) },
+              { key: 'e400', label: '400 אלף ₪ הון עצמי', sub: 'אילו ערים עובדות', set: Object.assign({ mode: 'budget', equity: 400000, cap: 0, brooms: '34' }, base) }];
+            if (tlv) P.push({ key: 'tlv3', label: 'תל אביב, 3 חדרים', sub: F.ils(tlv.price) + ' · ' + F.ils(tlv.rent) + ' בחודש', set: Object.assign({ mode: 'city', city: 'תל אביב-יפו', rooms: 3, rsrc: 'gov', price: tlv.price, rent: tlv.rent }, base) });
+            return P;
+          },
+          defaults: function () { return { mode: 'city', city: start.city, rooms: start.rooms, rsrc: start.rsrc, price: start.price, rent: start.rent, track: 'extra', more: 0, ltv: 100 * L.ltv.extra,
+            rsel: 'fixed', rate: fixedRate.rate, years: 25, sign: today(), lawyer: L.lawyer, broker: 0, reno: 0, mgmt: 0, upkeep: 0, empty: 0, taxtrack: 'exempt', other: 0, equity: 400000, cap: 0, brooms: '34' }; },
+          fields: [
+            { id: 'mode', label: 'מה בודקים', type: 'segmented', options: [{ value: 'city', label: 'דירה בעיר אחת' }, { value: 'budget', label: 'יש לי הון עצמי: אילו ערים עובדות?' }] },
+            { id: 'city', label: 'עיר', type: 'select', showIf: inCity, optionsFrom: function () { return [{ value: 'ישראל', label: 'ישראל, החציון הארצי' }].concat(D.rows.slice(1).map(function (r) { return { value: r.n, label: r.n }; }).sort(function (a, b) { return a.label.localeCompare(b.label, 'he'); })); } },
+            { id: 'rooms', label: 'חדרים', type: 'segmented', showIf: inCity, options: [{ value: 3, label: '3' }, { value: 4, label: '4' }, { value: 5, label: '5' }] },
+            { id: 'rsrc', label: 'שכר הדירה לפי', type: 'segmented', showIf: function (v) { var r = rowOf(D, v.city); return inCity(v) && !!(r && r.cbs && r.cbs[String(v.rooms)]); },
+              options: [{ value: 'gov', label: 'אתר הנדל״ן הממשלתי (חציון)' }, { value: 'cbs', label: 'הלמ״ס (ממוצע)' }] },
+            { id: 'price', label: 'מחיר הדירה', type: 'money', unit: '₪', showIf: inCity, help: 'נפתח על המחיר החציוני של העסקאות שנסגרו. אפשר להקליד מחיר משלכם.' },
+            { id: 'rent', label: 'שכר דירה בחודש', type: 'money', unit: '₪', showIf: inCity, help: 'נפתח על שכר הדירה החציוני באותו רבעון. אפשר להקליד שכר דירה משלכם.' },
+            { id: 'equity', label: 'ההון העצמי שלכם', type: 'money', unit: '₪', showIf: inBudget, help: 'כל הכסף לעסקה, כולל מס רכישה ועורך דין. 0 = בלי הגבלה, רק לפי המחיר.' },
+            { id: 'cap', label: 'מחיר דירה עד', type: 'money', unit: '₪', showIf: inBudget, help: '0 = בלי תקרת מחיר.' },
+            { id: 'brooms', label: 'חדרים', type: 'segmented', showIf: inBudget, options: [{ value: '34', label: '3 או 4' }, { value: '3', label: '3' }, { value: '4', label: '4' }, { value: '5', label: '5' }] },
+            { id: 'track', label: 'מי קונה', type: 'segmented', options: [{ value: 'extra', label: 'דירה נוספת' }, { value: 'single', label: 'דירה יחידה' }, { value: 'foreign', label: 'תושב חוץ' }] },
+            { id: 'more', label: 'פרטי העסקה', type: 'segmented', options: [{ value: 0, label: 'החישוב המהיר' }, { value: 1, label: 'הכול: מימון, הוצאות ומס' }] },
+            { id: 'ltv', label: 'שיעור המימון', type: 'percent', unit: '%', showIf: more, help: 'בנק ישראל (הוראה 329): עד 50% בדירה נוספת ולתושב חוץ, עד 75% בדירה יחידה.' },
+            { id: 'rsel', label: 'ריבית', type: 'select', showIf: more, help: 'הממוצע של המשכנתאות החדשות לפי בנק ישראל, ' + mlab(L.ratesPeriod) + '. הפריים בלי המרווח של הבנק.', optionsFrom: function () { return L.rates.map(function (r) { return { value: r.id, label: r.he + ' ' + F.num(r.rate, 2) + '%' }; })
+              .concat([{ value: 'prime', label: 'פריים ' + F.num(L.boi.prime, 2) + '%' }, { value: 'own', label: 'ריבית אחרת' }]); } },
+            { id: 'rate', label: 'הריבית שלכם', type: 'percent', unit: '%', showIf: function (v) { return v.more && v.rsel === 'own'; } },
+            { id: 'years', label: 'שנים', type: 'number', unit: 'שנים', showIf: more },
+            { id: 'sign', label: 'מועד החתימה', type: 'date', showIf: function (v) { return v.more && inCity(v) && v.track !== 'single'; } },
+            { id: 'lawyer', label: 'עורך דין, לפני מע״מ', type: 'percent', unit: '%', showIf: more },
+            { id: 'broker', label: 'תיווך, לפני מע״מ', type: 'percent', unit: '%', showIf: more, help: 'מקובל ' + L.broker + '%. 0 אם קונים בלי מתווך.' },
+            { id: 'reno', label: 'שיפוץ וריהוט', type: 'money', unit: '₪', showIf: more },
+            { id: 'mgmt', label: 'דמי ניהול בחודש', type: 'money', unit: '₪', showIf: more, help: 'ההוצאות הן שלכם: אין להן נורמה רשמית, ולכן הן נפתחות על 0.' },
+            { id: 'upkeep', label: 'ועד בית, ביטוח ותחזוקה בחודש', type: 'money', unit: '₪', showIf: more },
+            { id: 'empty', label: 'חודשים בלי שוכר בשנה', type: 'number', showIf: more },
+            { id: 'taxtrack', label: 'מסלול המס על שכר הדירה', type: 'segmented', showIf: function (v) { return v.more && inCity(v); }, options: [{ value: 'exempt', label: 'פטור' }, { value: 'ten', label: '10%' }, { value: 'marginal', label: 'מס שולי' }] },
+            { id: 'other', label: 'שכר דירה ממגורים שכבר מקבלים', type: 'money', unit: '₪', showIf: function (v) { return v.more && inCity(v) && v.taxtrack === 'exempt'; }, help: 'מבחן הפטור חודשי, על כל שכר הדירה ממגורים שלכם יחד.' }
+          ],
+          onField: function (id, v, d, redraw) {
+            if (id === 'city' || id === 'rooms' || id === 'rsrc') { refill(v); redraw('price'); redraw('rent'); }
+            if (id === 'track') { v.ltv = 100 * L.ltv[v.track]; redraw('ltv'); }
+          },
+          compute: function (v, d, scen) { var r = v.mode === 'budget' ? budgetOut(v) : cityOut(v, scen); setTimeout(function () { extras(v); }, 0); return r; }
+        };
+      }
+
+      function cityOut(v, scen) {
+        var rw = rowOf(D, v.city), p = pairOf(rw, v.rooms, v.rsrc);
+        if (!(v.price > 0) || !(v.rent > 0)) return { error: { field: 'price', msg: p ? 'הקלידו מחיר ושכר דירה.' : 'לעיר הזאת לא פורסם חציון ל־' + v.rooms + ' חדרים. בחרו מספר חדרים אחר, או הקלידו מחיר ושכר דירה.' } };
+        if (!(v.years >= 4 && v.years <= 30)) return { error: { field: 'years', msg: 'בין 4 ל־30 שנים.' } };
+        if (!(v.ltv >= 0 && v.ltv <= 100)) return { error: { field: 'ltv', msg: 'בין 0% ל־100%.' } };
+        var w = Object.assign({}, v);
+        if (scen === 'rate') { w.rsel = 'own'; w.rate = rateOf(v, L) + 1; } else if (scen === 'rent') w.rent = v.rent * 0.9; else if (scen === 'empty') w.empty = (v.empty || 0) + 1;
+        var x = calc(w, D), base = calc(v, D); X = { v: v, x: x, p: p, rw: rw };
+        var ownP = !p || Math.round(p.price) !== Math.round(v.price), ownR = !p || Math.round(p.rent) !== Math.round(v.rent), where = rw.nat ? 'ישראל' : v.city;
+        var mine = ' · החישוב שלנו', lines = [];
+        lines.push({ label: ownP ? 'מחיר הדירה שהקלדתם' : 'מחיר חציוני, ' + v.rooms + ' חדרים, ' + where + ', ' + qlab(p.q), value: F.ils(v.price) });
+        lines.push({ label: ownR ? 'שכר הדירה שהקלדתם' : (p.src === 'cbs' ? 'שכר דירה ממוצע (הלמ״ס, ' + p.g.replace('-', ' עד ') + ' חדרים, טעות דגימה ' + F.ils(p.err) + ')' : 'שכר דירה חציוני, ' + qlab(p.q)), value: F.ils(w.rent) });
+        lines.push({ label: 'תשואה ברוטו בשנה' + mine, value: pct(x.gross, 2) });
+        lines.push({ label: 'משכנתא ' + F.num(v.ltv) + '%, ' + F.num(v.years) + ' שנים, ריבית ' + F.num(x.rate, 2) + '%', value: F.ils(x.loan) });
+        lines.push({ label: 'החזר חודשי (שפיצר)' + mine, value: F.ils(x.pay) });
+        lines.push({ label: 'שכר הדירה פחות ההחזר' + mine, value: signed(x.cf0) });
+        if (x.costs > 0 || w.empty > 0) lines.push({ label: 'אחרי ההוצאות והחודשים הריקים שלכם' + mine, value: signed(x.cf1) });
+        if (v.taxtrack === 'ten') lines.push({ label: 'אחרי מס 10% על שכר הדירה' + mine, value: signed(x.cf2) });
+        else if (v.taxtrack === 'exempt' && !x.T.full) lines.push({ label: 'אחרי מס: ' + F.ils(x.T.taxable) + ' בחודש חייבים במס שולי', value: 'לפני המס השולי' });
+        lines.push({ label: 'הון עצמי נדרש' + mine, value: F.ils(x.equity) });
+        lines.push({ label: 'מס רכישה, ' + TRK[x.tr] + (x.months >= 1 ? ' · שווה ' + F.num(x.months, 0) + ' חודשי שכירות' : x.tax > 0.5 ? ' · פחות מחודש שכירות' : ''), value: x.tax > 0.5 ? F.ils(x.tax) : 'אין מס רכישה' });
+        if (x.law + x.brk > 0.5) lines.push({ label: (x.brk > 0.5 ? 'עורך דין ותיווך' : 'עורך דין') + ', כולל מע״מ ' + F.num(100 * L.vat) + '%', value: F.ils(x.law + x.brk) });
+        lines.push({ label: 'תשואה נטו על העלות הכוללת' + mine, value: pct(x.net, 2) });
+        lines.push({ label: 'תשואה על ההון העצמי, בשנה' + mine, value: pct(x.coc, 1) });
+        lines.push({ label: 'שכר הדירה שמכסה את ההחזר וההוצאות' + mine, value: F.ils(x.beRent) });
+        if (!ownP && p.src === 'gov' && p.py != null) lines.push({ label: 'המחיר החציוני מול ' + qlab(qback(p.q)), value: chg(p.py, 'עלה', 'ירד') });
+        if (!ownR && p.src === 'gov' && p.ry != null) lines.push({ label: 'שכר הדירה החציוני מול ' + qlab(qback(p.q)), value: chg(p.ry, 'עלה', 'ירד') });
+        if (rw.gy != null) lines.push({ label: 'התשואה באתר הנדל״ן הממשלתי (כל החדרים, שנה)', value: F.num(rw.gy, 2) + '%' });
+        var notes = [];
+        if (x.over) notes.push('<b>שיעור המימון מעל המותר:</b> ל' + TRK[x.tr] + ' בנק ישראל מתיר עד ' + F.num(100 * x.cap) + '% מהשווי.');
+        if (p && p.old && !ownP) notes.push('<b>רבעון אחר:</b> ל' + esc(where) + ' אין חציון של ' + v.rooms + ' חדרים ל' + qlab(D.cityQ) + '. המספרים מ' + qlab(p.q) + ', ולכן העיר לא נכנסת לדירוג.');
+        if (p && p.n8 <= 4 && !ownP) notes.push('<b>מעט עסקאות:</b> החציון של ' + v.rooms + ' חדרים ב' + esc(where) + ' פורסם רק ב־' + p.n8 + ' מתוך 8 הרבעונים האחרונים. מספר אחד לא מספר את כל העיר.');
+        if (x.tr !== 'single' && v.sign && v.sign > L.ptax.until.extra) notes.push('<b>חתימה אחרי ' + F.date(L.ptax.until.extra) + ':</b> הוראת השעה של 8% ו־10% הוארכה עד התאריך הזה. מה יחול אחריו עוד לא פורסם, והחישוב נשאר לפי 8% ו־10%.');
+        if (v.taxtrack === 'marginal') notes.push('<b>מס שולי:</b> מורידים מההכנסה את ההוצאות ואת הפחת, ומשלמים מס לפי המדרגות, מ־' + F.num(100 * L.rentTax.under60) + '% עד גיל 60 ומ־' + F.num(100 * L.rentTax.over60) + '% מגיל 60. החישוב אישי, ולכן התזרים כאן לפני המס.');
+        if (!notes.length) notes.push(rw.gy != null ? 'התשואה באתר הנדל״ן הממשלתי היא שכר הדירה החציוני של השנה האחרונה, כל החדרים יחד, כפול 12 חלקי המחיר החציוני השנתי. בדקנו את זה ב־' + D.checks.govYieldFormula[0] + ' ערים. כאן החישוב לפי מספר החדרים ולפי אותו רבעון, ולכן הוא יכול לצאת שונה.' : 'החציון הוא המחיר שחצי מהעסקאות מעליו וחצי מתחתיו.');
+        var R = ranking(D, v.rooms, v), ltvTxt = F.num(v.ltv) + '%';
+        var sc = [['base', 'כמו שהקלדתם', base], ['rate', 'ריבית גבוהה ב־1%', calc(Object.assign({}, v, { rsel: 'own', rate: rateOf(v, L) + 1 }), D)], ['rent', 'שכר דירה נמוך ב־10%', calc(Object.assign({}, v, { rent: v.rent * 0.9 }), D)], ['empty', 'עוד חודש ריק בשנה', calc(Object.assign({}, v, { empty: (v.empty || 0) + 1 }), D)]];
+        var link = location.origin + location.pathname + '#invest?' + new URLSearchParams({ m: 'city', c: v.city, r: v.rooms, s: v.rsrc, p: Math.round(v.price), t: Math.round(v.rent), k: v.track, l: v.ltv, i: v.rsel, a: rateOf(v, L), y: v.years, g: v.mgmt || 0, u: v.upkeep || 0, z: v.empty || 0, w: v.taxtrack, o: v.other || 0, w2: v.lawyer || 0, br: v.broker || 0, rn: v.reno || 0 }).toString();
+        return {
+          answer: { label: 'כמה מהדירה שכר הדירה קונה', value: pct(x.be, 1),
+            sub: 'שכר דירה של ' + F.ils(w.rent) + ' בחודש מחזיק לבדו משכנתא של ' + F.ils(x.be * v.price) + ', ' + pct(x.be, 1) + ' מהמחיר. המימון שלכם ' + ltvTxt + ', ההחזר ' + F.ils(x.pay) + ', ולכן ' + (x.cf0 >= 0 ? '<b style="color:#00806A">' : '<b style="color:#B8322A">') + signed(x.cf0) + ' בחודש</b> לפני הוצאות. החישוב שלנו.' },
+          breakdown: [{ label: 'משכנתא', value: x.loan, kind: 'sea' }, { label: 'הון עצמי לדירה', value: v.price - x.loan, kind: 'housing' }, { label: 'מס רכישה', value: x.tax, kind: 'survey' }, { label: 'עורך דין ותיווך עם מע״מ', value: x.law + x.brk, kind: 'civic' }, { label: 'שיפוץ וריהוט', value: x.reno, kind: 'open' }],
+          lines: lines,
+          scenarioLabel: 'מה אם: שכר הדירה פחות ההחזר וההוצאות, בחודש',
+          scenarios: sc.map(function (s) { var y = s[2], val = y.cf2 == null ? y.cf1 : y.cf2; return { key: s[0], name: s[1], value: signed(val), on: (scen || 'base') === s[0] }; }),
+          note: notes.join('<br>'),
+          table: { title: 'כל ' + R.length + ' הערים, ' + v.rooms + ' חדרים, ' + qlab(D.cityQ) + ': מימון ' + ltvTxt + ', ריבית ' + F.num(x.rate, 2) + '%, ' + v.years + ' שנים', head: ['עיר', 'שכר דירה', 'מחיר', 'תשואה ברוטו', 'החזר', 'שכר דירה פחות החזר', 'כמה מהדירה שכר הדירה קונה', 'הון עצמי'], num: [1, 2, 3, 4, 5, 6, 7], phoneHide: [1, 2, 4, 7],
+            rows: R.map(function (c) { return [c.n + (c.n8 <= 4 ? ' (מעט עסקאות)' : ''), F.ils(c.rent), F.ils(c.price), pct(c.gross, 2), F.ils(c.pay), signed(c.cf0), pct(c.be, 1), F.ils(c.equity)]; }) },
+          formula: 'תשואה ברוטו = שכר דירה × 12 ÷ מחיר. החזר = לוח שפיצר על המשכנתא, ' + x.n + ' תשלומים בריבית ' + F.num(x.rate, 2) + '%. כמה מהדירה שכר הדירה קונה = שכר דירה × ' + F.num(x.A, 2) + ' (הערך של ' + x.n + ' תשלומים בריבית הזאת) ÷ מחיר. הון עצמי = מחיר פחות משכנתא, ועוד מס רכישה, עורך דין ותיווך עם מע״מ, ושיפוץ. תשואה נטו = (שכר דירה בחודשים המלאים פחות ההוצאות והמס) × 12 ÷ העלות הכוללת.',
+          sources: srcs(p && p.src === 'cbs'),
+          text: 'מפת התשואה והתזרים, ' + where + ', ' + v.rooms + ' חדרים: מחיר ' + F.ils(v.price) + ', שכר דירה ' + F.ils(w.rent) + ', תשואה ברוטו ' + pct(x.gross, 2) + '. משכנתא ' + ltvTxt + ' בריבית ' + F.num(x.rate, 2) + '%: החזר ' + F.ils(x.pay) + ', ' + signed(x.cf0) + ' בחודש. שכר הדירה קונה ' + pct(x.be, 1) + ' מהדירה. הון עצמי ' + F.ils(x.equity) + ' (החישוב שלנו).\n' + link,
+          bare: true
+        };
+      }
+
+      function budgetOut(v) {
+        if (!(v.equity > 0) && !(v.cap > 0)) return { error: { field: 'equity', msg: 'הקלידו הון עצמי או מחיר מרבי.' } };
+        if (!(v.years >= 4 && v.years <= 30)) return { error: { field: 'years', msg: 'בין 4 ל־30 שנים.' } };
+        var B = budget(v, D), rate = rateOf(v, L), roomsTxt = v.brooms === '34' ? '3 או 4 חדרים' : v.brooms + ' חדרים'; X = { v: v, B: B };
+        var top = B.fit[0], ans, lines = [];
+        if (v.equity > 0) {
+          var m = calc(Object.assign({}, v, { price: B.maxP, rent: 0 }), D);
+          ans = { label: 'הדירה היקרה ביותר ש־' + F.ils(v.equity) + ' הון עצמי קונים, במימון ' + F.num(v.ltv) + '%', value: F.ils(B.maxP),
+            sub: B.cities ? (B.cities + ' ערים שבהן דירת ' + roomsTxt + ' בחציון נכנסת בסכום הזה' + (top ? '. הכי טוב בתזרים: ' + esc(top.n) + ', ' + top.rooms + ' חדרים, ' + signed(top.cf1) + ' בחודש' : '') + '. החישוב שלנו.')
+              : 'אף דירת ' + roomsTxt + ' בחציון של עיר לא נכנסת בסכום הזה. ברשימה למטה: הערים הקרובות ביותר וכמה הון עצמי חסר. החישוב שלנו.' };
+          lines.push({ label: 'משכנתא על הדירה הזאת', value: F.ils(m.loan) }, { label: 'מס רכישה, ' + TRK[m.tr], value: F.ils(m.tax) }, { label: 'עורך דין ותיווך עם מע״מ', value: F.ils(m.law + m.brk) });
+        } else {
+          ans = { label: 'ערים שבהן דירת ' + roomsTxt + ' בחציון עולה עד ' + F.ils(v.cap), value: B.cities ? B.cities + ' ערים' : 'אף עיר',
+            sub: top ? 'הכי טוב בתזרים: ' + esc(top.n) + ', ' + top.rooms + ' חדרים, ' + signed(top.cf1) + ' בחודש. החישוב שלנו.' : 'נסו תקרת מחיר גבוהה יותר.' };
+        }
+        if (v.cap > 0) lines.push({ label: 'תקרת המחיר שבחרתם', value: F.ils(v.cap) });
+        lines.push({ label: 'ריבית ותקופה', value: F.num(rate, 2) + '% · ' + v.years + ' שנים' });
+        var rows = B.fit.length ? B.fit : B.near, has = !!B.fit.length;
+        return {
+          answer: ans, lines: lines,
+          note: 'החישוב לכל עיר: מחיר חציוני ושכר דירה חציוני מאותו רבעון (' + qlab(D.cityQ) + '), מימון ' + F.num(v.ltv) + '%, מס רכישה ל' + TRK[v.track] + ', עורך דין' + (v.broker ? ' ותיווך' : '') + ' עם מע״מ' + (v.reno ? ' ושיפוץ' : '') + '. התזרים: שכר הדירה פחות ההחזר' + ((v.mgmt || 0) + (v.upkeep || 0) + (v.empty || 0) ? ', ההוצאות והחודשים הריקים שהקלדתם' : '') + ', לפני מס.',
+          table: { title: has ? 'כל ' + rows.length + ' הדירות שנכנסות, מהתזרים הטוב לחלש' : 'הערים הקרובות ביותר', head: ['דירה', 'מחיר חציוני', 'הון עצמי נדרש', has ? 'שכר דירה' : 'חסר הון עצמי', 'תזרים בחודש', 'כמה מהדירה שכר הדירה קונה'], num: [1, 2, 3, 4, 5], phoneHide: [1, 3],
+            rows: rows.map(function (c) { return [c.n + ', ' + c.rooms + ' חדרים' + (c.n8 <= 4 ? ' (מעט עסקאות)' : ''), F.ils(c.price), F.ils(c.equity), has ? F.ils(c.rent) : F.ils(c.gap), signed(c.cf1), pct(c.be, 1)]; }) },
+          formula: 'עיר נכנסת כשמחיר פחות משכנתא, ועוד מס רכישה, עורך דין ותיווך עם מע״מ ושיפוץ, לא עובר את ההון העצמי' + (v.cap > 0 ? ', והמחיר עד התקרה' : '') + '. המחיר המרבי נמצא בחיפוש על אותה נוסחה.',
+          sources: srcs(false),
+          text: 'מפת התשואה והתזרים: ' + (v.equity > 0 ? 'עם ' + F.ils(v.equity) + ' הון עצמי ומימון ' + F.num(v.ltv) + '%, דירה עד ' + F.ils(B.maxP) + '. ' : 'דירות עד ' + F.ils(v.cap) + '. ') + (B.cities ? B.cities + ' ערים נכנסות' + (top ? ', הכי טוב בתזרים ' + top.n + ' (' + signed(top.cf1) + ' בחודש)' : '') : 'אף חציון לא נכנס') + ' (החישוב שלנו).\n' + location.origin + location.pathname + '#invest?' + new URLSearchParams({ m: 'budget', e: v.equity || 0, x: v.cap || 0, b: v.brooms, k: v.track, l: v.ltv, i: v.rsel, a: rate, y: v.years }).toString(),
+          bare: true
+        };
+      }
+
+      function srcs(cbs) {
+        var S = D.src, o = [{ label: S.gov.he + ', נקרא ' + F.date(S.gov.read), url: S.gov.url }];
+        if (cbs) o.push({ label: S.cbs49.he, url: S.cbs49.url });
+        o.push({ label: S.boiMrtg.he.replace(L.ratesPeriod, mlab(L.ratesPeriod)), url: S.boiMrtg.url }, { label: S.d329.he, url: S.d329.url }, { label: S.ptax.he, url: S.ptax.url }, { label: S.knesset.he, url: S.knesset.url }, { label: S.kz.he, url: S.kz.url });
+        return o;
+      }
+
+      /* ---------------- under the readout: the tax tracks, the board, the scatter, the limits ---------------- */
+      var xs = document.createElement('div'); xs.className = 'nliv-x';
+      xs.innerHTML = '<section class="nliv-budS" hidden></section><section class="nliv-taxs"></section><section class="nliv-boardS"></section><section class="nliv-scatS"></section>' +
+        '<p class="nliv-limits"></p>';
+
+      function pick(name) {
+        if (!api || !rowOf(D, name)) return; var v = api.state.v;
+        var wasBudget = v.mode === 'budget'; v.mode = 'city'; v.city = name; refill(v); api.state.pre = null; api.state.scen = null;
+        [].forEach.call(host.querySelectorAll('.nli__pre button'), function (b) { b.setAttribute('aria-pressed', 'false'); });
+        [].forEach.call(host.querySelectorAll('.nli__seg button'), function (b) { if (b.textContent === 'דירה בעיר אחת') b.setAttribute('aria-pressed', 'true'); if (b.textContent.indexOf('יש לי הון עצמי') === 0) b.setAttribute('aria-pressed', 'false'); });
+        if (wasBudget) [].forEach.call(host.querySelectorAll('.nli__seg'), function (g) { var bs = [].map.call(g.children, function (b) { return b.textContent; }); if (bs.join() === '3,4,5') [].forEach.call(g.children, function (b) { b.setAttribute('aria-pressed', String(b.textContent === String(v.rooms))); }); });
+        if (api.state.redraw.price) api.state.redraw.price(); if (api.state.redraw.rent) api.state.redraw.rent();
+        api.run();
+        var a = host.querySelector('.nli__answer'); if (a && a.getBoundingClientRect().top < 0 && a.scrollIntoView) a.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        picked = 'נבחרה ' + name + '. המספרים למעלה התעדכנו.'; var pk = xs.querySelector('.nliv-picked'); if (pk) pk.textContent = picked;
+      }
+      function tipAt(tip, ev, html, box) {
+        tip.innerHTML = html; tip.hidden = false;
+        var r = box.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top, w = tip.offsetWidth, h = tip.offsetHeight;
+        tip.style.left = Math.max(4, Math.min(r.width - w - 4, x - w / 2)) + 'px'; tip.style.top = Math.max(4, y - h - 14) + 'px';
+      }
+      function wire(fig, getHtml, before) {
+        var tip = document.createElement('div'); tip.className = 'nliv-tip'; tip.hidden = true; fig.appendChild(tip);
+        fig.addEventListener('pointermove', function (ev) { if (ev.pointerType === 'touch') return; var t = ev.target.closest && ev.target.closest('[data-c]'); if (!t) { tip.hidden = true; return; } tipAt(tip, ev, getHtml(t.getAttribute('data-c'), t.getAttribute('data-k'), t), fig); });
+        fig.addEventListener('pointerleave', function () { tip.hidden = true; });
+        fig.addEventListener('click', function (ev) { var t = ev.target.closest && ev.target.closest('[data-c]'); if (t) { tip.hidden = true; if (before) before(t); pick(t.getAttribute('data-c')); } });
+        fig.addEventListener('keydown', function (ev) { var t = ev.target.closest && ev.target.closest('[data-c]'); if (t && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); if (before) before(t); pick(t.getAttribute('data-c')); } });
+      }
+      function tipHtml(c, rooms, x) { return '<b>' + esc(c.n) + ', ' + rooms + ' חדרים</b><span>' + F.ils(c.price) + ' · ' + F.ils(c.rent) + ' בחודש</span>' + 'תשואה ברוטו ' + pct(c.gross, 2) + '<br>שכר הדירה קונה ' + pct(c.be, 1) + ' מהדירה<br>' + signed(c.cf0) + ' בחודש אחרי ההחזר' + (c.n8 <= 4 ? '<br>מעט עסקאות: ' + c.n8 + ' מתוך 8 רבעונים' : ''); }
+
+      function extras(v) {
+        if (!api) return;
+        var B0 = v.mode === 'budget' && X && X.B ? X.B : null;
+        [].forEach.call(host.querySelectorAll('.nli__lines dd, .nli__scen strong'), function (e) { var t = e.textContent; e.classList.toggle('is-w', /[\u0590-\u05FF]/.test(t)); e.classList.toggle('is-pos', /^(נשארים|עלה)/.test(t)); e.classList.toggle('is-neg', /^חסרים/.test(t)); });
+        if (v.mode !== lastMode) { var tb = host.querySelector('.nli__table'); if (tb) tb.open = v.mode === 'budget'; lastMode = v.mode; } var city = v.mode !== 'budget', rooms = city ? v.rooms : (v.brooms === '34' ? 4 : +v.brooms);
+        if (B0 && v.brooms === '34') { var c3 = B0.fit.filter(function (c) { return c.rooms === 3; }).length, c4 = B0.fit.length - c3; rooms = c3 > c4 ? 3 : 4; }
+        var R = ranking(D, rooms, v), me = city ? v.city : '', fit = {};
+        if (!city && X && X.B) X.B.fit.forEach(function (c) { if (c.rooms === rooms) fit[c.n] = 1; });
+        var dim = !city && Object.keys(fit).length > 0;  // budget mode dims the cities that do not fit, only when some do
+        var natP = pairOf(nat, rooms, 'gov'), natX = natP ? calc(Object.assign({}, v, { price: natP.price, rent: natP.rent, other: 0 }), D) : null;
+        var ltv = Math.max(0, v.ltv) / 100, rate = rateOf(v, L), W = Math.max(300, Math.min(900, (xs.clientWidth || host.clientWidth || 680) - 18));
+        var key = [v.mode, v.city, rooms, v.price, v.rent, v.ltv, rate, v.years, v.track, v.mgmt, v.upkeep, v.empty, v.taxtrack, v.other, v.lawyer, v.broker, v.reno, v.equity, v.cap, v.brooms, showAll, budAll, W].join('|');
+        if (key === lastKey) return; lastKey = key;
+        /* 0. budget mode: the median flats that fit, by monthly cash flow (or the nearest ones, by the money missing) */
+        var bu = xs.querySelector('.nliv-budS');
+        if (B0) {
+          var has = !!B0.fit.length, L2 = has ? B0.fit : B0.near, sh = budAll ? L2 : L2.slice(0, 12), bw = W, blw = W < 480 ? 128 : 170, bvw = W < 480 ? 104 : 128, bx0 = bw - blw;
+          var bmax = Math.max.apply(null, L2.map(function (c) { return has ? Math.abs(c.cf1) : c.gap; }).concat([1])), bsx = (bx0 - bvw - 6) / bmax, bh = 26, BH = 8 + sh.length * bh + 4, bg = '';
+          sh.forEach(function (c, i) { var y = 6 + i * bh, val = has ? c.cf1 : -c.gap, w = Math.max(2, Math.abs(val) * bsx), col = val >= 0 ? '#00806A' : '#B8322A';
+            bg += '<g class="row" data-c="' + esc(c.n) + '" data-r="' + c.rooms + '" tabindex="0" role="button" aria-label="' + esc(c.n + ', ' + c.rooms + ' חדרים: ' + (has ? signed(c.cf1) + ' בחודש' : 'חסרים ' + F.ils(c.gap) + ' הון עצמי')) + '"><rect class="hit" x="0" y="' + (y + 1) + '" width="' + bw + '" height="' + (bh - 2) + '" fill="transparent"/>' +
+              '<text x="' + (bw - 4) + '" y="' + (y + 17) + '" text-anchor="end">' + rtl(esc(c.n) + ', ' + c.rooms + ' חדרים' + (c.n8 <= 4 ? ' ◦' : '')) + '</text>' +
+              '<rect x="' + (bx0 - w) + '" y="' + (y + 6) + '" width="' + w + '" height="' + (bh - 12) + '" rx="2" fill="' + col + '"' + (c.n8 <= 4 ? ' fill-opacity=".55"' : '') + '/>' +
+              '<text class="vw" x="' + (bx0 - w - 6) + '" y="' + (y + 17) + '" text-anchor="end">' + rtl(has ? signed(c.cf1) : 'חסרים ' + F.ils(c.gap)) + '</text></g>'; });
+          bu.innerHTML = '<h3 class="nliv-h">' + (has ? (v.equity > 0 ? 'מה ' + F.ils(v.equity) + ' הון עצמי קונים: ' : 'דירות עד ' + F.ils(v.cap) + ': ') + B0.fit.length + ' דירות בחציון, מהתזרים הטוב לחלש' : 'הכי קרוב: כמה הון עצמי חסר') + '</h3>' +
+            '<p class="nliv-sub">' + (has ? 'שכר הדירה החציוני פחות ההחזר' + ((v.mgmt || 0) + (v.upkeep || 0) + (v.empty || 0) ? ', ההוצאות והחודשים הריקים שלכם' : '') + ', בחודש, לפני מס. ' : 'אף דירה בחציון של עיר לא נכנסת בסכום הזה. ') + 'כל שורה פותחת את העיר במחשבון. החישוב שלנו.</p>' +
+            '<div class="nliv-fig" data-fig="budget"><svg viewBox="0 0 ' + bw + ' ' + BH + '" role="img" aria-label="' + esc(has ? 'הדירות שנכנסות בתקציב, לפי התזרים' : 'הערים הקרובות ביותר') + '">' + bg + '</svg></div>' +
+            (L2.length > 12 ? '<button type="button" class="nliv-more">' + (budAll ? 'פחות' : 'כל ' + L2.length + ' הדירות') + '</button>' : '');
+          bu.hidden = false; var bb = bu.querySelector('.nliv-more'); if (bb) bb.onclick = function () { budAll = !budAll; lastKey = ''; extras(api.state.v); };
+          wire(bu.querySelector('.nliv-fig'), function (n, k, el) { var r = +(el && el.getAttribute('data-r')), c = L2.filter(function (x) { return x.n === n && (!r || x.rooms === r); })[0]; return c ? tipHtml(c, c.rooms) + '<br>הון עצמי נדרש ' + F.ils(c.equity) : ''; }, function (el) { var r = +el.getAttribute('data-r'); if (r) api.state.v.rooms = r; });
+        } else { bu.innerHTML = ''; bu.hidden = true; }
+        /* 1. the three rental-tax tracks, on this flat's rent */
+        var ts = xs.querySelector('.nliv-taxs');
+        if (city && X && X.x) {
+          var T = X.x.T, RT = L.rentTax, yr = +(v.sign || today()).slice(0, 4);
+          var ex = T.full ? 'אין מס, פטור מלא' : T.exempt > 0 ? F.ils(T.taxable) + ' בחודש חייבים במס שולי' : 'אין פטור: ' + F.ils(T.total) + ' חייבים';
+          ts.innerHTML = '<h3 class="nliv-h">שלושת מסלולי המס על שכר הדירה</h3><p class="nliv-sub">על שכר דירה של ' + F.ils(v.rent) + (v.other ? ' ועוד ' + F.ils(v.other) + ' מדירות אחרות' : '') + ' בחודש. המבחן חודשי, על כל שכר הדירה ממגורים שלכם יחד.</p>' +
+            '<div class="nli__tw"><table class="nliv-tax"><tbody>' +
+            '<tr' + (T.full ? ' class="is-best"' : '') + '><th scope="row">פטור' + (T.full ? '<span class="nliv-best">הזול ביותר</span>' : '') + '</th><td class="n">' + ex + '</td><td>עד ' + F.ils(RT.ceiling) + ' בחודש אין מס. מעל זה הפטור קטן שקל מול שקל ונעלם ב־' + F.ils(RT.zero) + '.<small>תקרת ' + RT.years.join(', ') + '.</small></td></tr>' +
+            '<tr><th scope="row">10%</th><td class="n">' + F.ils(T.ten) + ' בחודש · ' + F.ils(12 * T.ten) + ' בשנה</td><td>10% משכר הדירה, בלי הוצאות ובלי פחת. משלמים פעם בשנה, עד 30 יום מתום שנת המס: על ' + yr + ' עד 30.1.' + (yr + 1) + '.<small>במכירה בעתיד מוסיפים לחישוב מס השבח את הפחת שאפשר היה לדרוש.</small></td></tr>' +
+            '<tr><th scope="row">מס שולי</th><td class="n">לפי ההכנסה שלכם</td><td>מורידים את ההוצאות ואת הפחת, ומשלמים לפי המדרגות: מ־' + F.num(100 * RT.under60) + '% עד גיל 60, מ־' + F.num(100 * RT.over60) + '% מגיל 60.<small>חישוב אישי, ולכן בלי סכום כאן.</small></td></tr>' +
+            '</tbody></table></div>' + (!T.full && T.total < RT.zero ? '<p class="nliv-sub" style="margin-top:8px">בין ' + F.ils(RT.ceiling) + ' ל־' + F.ils(RT.zero) + ' בחודש משווים את המס השולי על החלק החייב מול 10% על הכול.</p>' : '');
+          ts.hidden = false;
+        } else { ts.innerHTML = ''; ts.hidden = true; }
+        /* 2. the board: how much of the flat the rent buys, city by city, against the loan cap and the national line */
+        var bs = xs.querySelector('.nliv-boardS'), show = R;
+        if (!showAll) { show = R.slice(0, 15).concat(R.length > 20 ? R.slice(-5) : R.slice(15)); var mi = R.filter(function (c) { return c.n === me || fit[c.n]; }); mi.forEach(function (c) { if (show.indexOf(c) < 0) show.push(c); }); show.sort(function (a, b) { return b.be - a.be; }); }
+        var rh = 24, top = 30, lw = W < 480 ? 104 : 132, vw = 52, x0 = W - lw, maxV = Math.max(0.85, ltv + 0.05, R.length ? R[0].be + 0.03 : 0), sx = (x0 - vw - 6) / maxV;
+        var gaps = 0; show.forEach(function (c, i) { if (!showAll && i > 0 && R.indexOf(c) - R.indexOf(show[i - 1]) > 1) gaps++; });
+        var H = top + show.length * rh + gaps * 14 + 30, g = '', yo = 0;
+        [0, 0.25, 0.5, 0.75].forEach(function (t) { if (t > maxV) return; var gx = x0 - t * sx; g += '<line x1="' + gx + '" x2="' + gx + '" y1="' + (top - 6) + '" y2="' + (H - 8) + '" stroke="#D3DCE2" stroke-width="1"/><text class="ax" x="' + gx + '" y="' + (top - 12) + '" text-anchor="middle">' + F.num(100 * t) + '%</text>'; });
+        var gap = false;
+        show.forEach(function (c, i) {
+          if (!showAll && i > 0 && R.indexOf(c) - R.indexOf(show[i - 1]) > 1) { g += '<text class="ax" x="' + (W - 4) + '" y="' + (top + i * rh + yo + 11) + '" text-anchor="end">' + rtl('⋯ עוד ' + (R.indexOf(c) - R.indexOf(show[i - 1]) - 1) + ' ערים') + '</text>'; yo += 14; gap = true; }
+          var y = top + i * rh + yo, w = Math.max(2, c.be * sx), pos = c.be > ltv, col = pos ? '#00806A' : '#B8322A', off = dim && !fit[c.n];
+          g += '<g class="row' + (c.n === me ? ' is-me' : '') + (off ? ' is-off' : '') + '" data-c="' + esc(c.n) + '" data-k="b" tabindex="0" role="button" aria-label="' + esc(c.n + ': שכר הדירה קונה ' + pct(c.be, 1) + ' מהדירה') + '">' +
+            '<rect class="hit" x="0" y="' + (y + 1) + '" width="' + W + '" height="' + (rh - 2) + '" fill="transparent"/>' +
+            '<text x="' + (W - 4) + '" y="' + (y + 16) + '" text-anchor="end">' + rtl(esc(c.n) + (c.n8 <= 4 ? ' ◦' : '')) + '</text>' +
+            '<rect x="' + (x0 - w) + '" y="' + (y + 5) + '" width="' + w + '" height="' + (rh - 10) + '" rx="2" fill="' + col + '"' + (c.n8 <= 4 ? ' fill-opacity=".55"' : '') + '/>' +
+            (c.n === me ? '<rect x="' + (x0 - w - 2) + '" y="' + (y + 3) + '" width="' + (w + 4) + '" height="' + (rh - 6) + '" rx="3" fill="none" stroke="#12304F" stroke-width="2"/>' : '') +
+            '<text class="v" x="' + (x0 - w - 6) + '" y="' + (y + 16) + '" text-anchor="end">' + pct(c.be, 1) + '</text></g>';
+        });
+        var cx = x0 - ltv * sx, yb = H - 26; g += '<line x1="' + cx + '" x2="' + cx + '" y1="' + (top - 6) + '" y2="' + (yb + 4) + '" stroke="#12304F" stroke-width="2"/><text x="' + (cx - 4) + '" y="' + (yb + 18) + '" text-anchor="end" style="fill:#12304F;font-weight:600">' + rtl('המימון שלכם ' + F.num(100 * ltv) + '%') + '</text>';
+        if (natX) { var nx = x0 - natX.be * sx; g += '<line x1="' + nx + '" x2="' + nx + '" y1="' + top + '" y2="' + (yb + 4) + '" stroke="#5E6A75" stroke-width="1.5" stroke-dasharray="4 3"/>' + (Math.abs(nx - cx) > 8 ? '<text x="' + (nx + 4) + '" y="' + (yb + 18) + '" text-anchor="' + (nx > cx ? 'start' : 'end') + '" style="fill:#5E6A75">' + rtl('ישראל ' + pct(natX.be, 1)) + '</text>' : ''); }
+        var nPos = R.filter(function (c) { return c.be > ltv; }).length;
+        bs.innerHTML = '<h3 class="nliv-h">כמה מהדירה שכר הדירה קונה, עיר אחרי עיר</h3><p class="nliv-sub">' + rooms + ' חדרים, ' + qlab(D.cityQ) + '. משכנתא ' + F.num(100 * ltv) + '% לשנים ' + v.years + ' בריבית ' + F.num(rate, 2) + '%: שכר הדירה מכסה את ההחזר ב־' + nPos + ' מתוך ' + R.length + ' ערים' + (natX ? '; בחציון הארצי (' + qlab(natP.q) + ') ' + pct(natX.be, 1) : '') + '. החישוב שלנו.' + (dim ? ' מודגשות: הערים שנכנסות בתקציב.' : '') + '</p>' +
+          '<div class="nliv-fig" data-fig="board"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('כמה מהדירה שכר הדירה קונה ב־' + R.length + ' ערים, ' + rooms + ' חדרים') + '">' + g + '</svg></div>' +
+          '<ul class="nliv-legend"><li><i style="background:#00806A"></i>שכר הדירה מכסה את ההחזר</li><li><i style="background:#B8322A"></i>צריך להוסיף כסף כל חודש</li><li><i class="l"></i>המימון שלכם</li>' + (natX ? '<li><i class="d"></i>החציון הארצי</li>' : '') + '<li><i style="background:#00806A;opacity:.55"></i>◦ מעט עסקאות: החציון פורסם בחצי מהרבעונים או פחות</li></ul>' +
+          (R.length > show.length || showAll ? '<button type="button" class="nliv-more">' + (showAll ? 'פחות ערים' : 'כל ' + R.length + ' הערים') + '</button>' : '') + '<p class="nliv-picked" aria-live="polite">' + esc(city && picked.indexOf(v.city + '.') > -1 ? picked : '') + '</p>';
+        var mb = bs.querySelector('.nliv-more'); if (mb) mb.onclick = function () { showAll = !showAll; lastKey = ''; extras(api.state.v); };
+        wire(bs.querySelector('.nliv-fig'), function (n) { var c = R.filter(function (x) { return x.n === n; })[0]; return c ? tipHtml(c, rooms) : ''; });
+        /* 3. the scatter: gross yield against price, every city, coloured by the same cash-flow sign */
+        var ss = xs.querySelector('.nliv-scatS'), SH = W < 520 ? 300 : 360, ml = 46, mr = 12, mt = 14, mb2 = 40;
+        var maxPr = Math.max.apply(null, R.map(function (c) { return c.price; }).concat([natP ? natP.price : 0])) * 1.05, maxY = Math.max(0.055, Math.max.apply(null, R.map(function (c) { return c.gross; })) + 0.004), minY = 0.015;
+        var px = function (p) { return ml + p / maxPr * (W - ml - mr); }, py = function (y) { return mt + (maxY - y) / (maxY - minY) * (SH - mt - mb2); }, s2 = '';
+        for (var t = 0.02; t <= maxY + 1e-9; t += 0.01) s2 += '<line x1="' + ml + '" x2="' + (W - mr) + '" y1="' + py(t) + '" y2="' + py(t) + '" stroke="#E3E9ED"/><text class="ax" x="' + (ml - 6) + '" y="' + (py(t) + 4) + '" text-anchor="end">' + F.num(100 * t) + '%</text>';
+        var stp = maxPr > 6e6 ? 2e6 : 1e6; for (var pp = 0; pp <= maxPr; pp += stp) s2 += '<text class="ax" x="' + px(pp) + '" y="' + (SH - mb2 + 16) + '" text-anchor="middle">' + (pp ? F.num(pp / 1e6, 0) + 'M' : '0') + '</text>';
+        s2 += '<text x="' + ((ml + W - mr) / 2) + '" y="' + (SH - 6) + '" text-anchor="middle">' + rtl('מחיר הדירה החציוני, במיליוני שקלים') + '</text>';
+        var mine = null;
+        R.slice().sort(function (a, b) { return (a.n === me) - (b.n === me); }).forEach(function (c) {
+          var col = c.be > ltv ? '#00806A' : '#B8322A', off = dim && !fit[c.n], isMe = c.n === me;
+          if (isMe) mine = c;
+          s2 += '<circle class="dot' + (c.n8 <= 4 ? ' is-thin' : '') + (off ? ' is-off' : '') + '" data-c="' + esc(c.n) + '" data-k="s" tabindex="0" role="button" aria-label="' + esc(c.n + ': תשואה ' + pct(c.gross, 2) + ', ' + F.ils(c.price)) + '" cx="' + px(c.price).toFixed(1) + '" cy="' + py(c.gross).toFixed(1) + '" r="' + (isMe ? 7 : 5) + '" fill="' + col + '"' + (c.n8 <= 4 ? ' style="stroke:' + col + '"' : '') + '/>';
+        });
+        if (natX) { var nxp = px(natP.price), nyp = py(natX.gross); s2 += '<path d="M' + (nxp - 6) + ' ' + nyp + 'h12M' + nxp + ' ' + (nyp - 6) + 'v12" stroke="#12304F" stroke-width="2.5"/><text x="' + (nxp + 9) + '" y="' + (nyp + 4) + '" style="fill:#12304F;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:4px">' + rtl('ישראל') + '</text>'; }
+        if (mine) { var mx = px(mine.price), my = py(mine.gross), right = mx > W * 0.6; s2 += '<circle cx="' + mx + '" cy="' + my + '" r="11" fill="none" stroke="#12304F" stroke-width="2"/><text x="' + (right ? mx - 15 : mx + 15) + '" y="' + (my - 10) + '" text-anchor="' + (right ? 'end' : 'start') + '" style="fill:#12304F;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:4px">' + rtl(esc(mine.n) + ' ' + pct(mine.gross, 2)) + '</text>'; }
+        ss.innerHTML = '<h3 class="nliv-h">תשואה ברוטו מול מחיר הדירה</h3><p class="nliv-sub">' + rooms + ' חדרים, ' + qlab(D.cityQ) + ': ככל שהדירה זולה יותר, התשואה ברוטו גבוהה יותר. אותו צבע כמו בדירוג: ירוק כשהשכירות מכסה את ההחזר, אדום כשלא. החישוב שלנו.</p>' +
+          '<div class="nliv-fig" data-fig="scatter"><svg viewBox="0 0 ' + W + ' ' + SH + '" role="img" aria-label="' + esc('תשואה ברוטו מול מחיר ב־' + R.length + ' ערים') + '">' + s2 + '</svg></div>' +
+          '<ul class="nliv-legend"><li><i class="c" style="background:#00806A"></i>שכר הדירה מכסה את ההחזר</li><li><i class="c" style="background:#B8322A"></i>צריך להוסיף כסף כל חודש</li><li><i class="c" style="border:2px solid #5E6A75;background:#fff"></i>מעט עסקאות</li></ul>';
+        wire(ss.querySelector('.nliv-fig'), function (n) { var c = R.filter(function (x) { return x.n === n; })[0]; return c ? tipHtml(c, rooms) : ''; });
+        xs.querySelector('.nliv-limits').innerHTML = '<b>מה המספרים האלה ומה לא:</b> חציונים של רבעון אחד מאתר הנדל״ן הממשלתי, קבצים מ־' + F.date(D.src.gov.fileDate || D.built) + ', שכר דירה ומחיר מאותו רבעון. התשואה ברוטו, לפני הוצאות, חודשים ריקים ומס. כל דירה שונה מהחציון של העיר, והחישוב לא מחליף בדיקה של הדירה, של המימון ושל המס עם אנשי מקצוע. זה מידע, לא ייעוץ השקעות. עודכן ' + F.date(D.built) + '.';
+      }
+
+      api = NI.mount(host, spec(), D0);
+      var grid = host.querySelector('.nli__grid'); if (grid && grid.parentNode) grid.parentNode.insertBefore(xs, grid.nextSibling);
+      lastKey = ''; extras(api.state.v);
+      var rt = 0; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { extras(api.state.v); }, 150); });
+    }
+  });
+})();
+</script><script>var D={};D["invest"]=DATA;D.d0=DATA;SP["invest"].custom(document.getElementById("h0"),D);</script></body></html>

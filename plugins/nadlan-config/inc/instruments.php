@@ -212,6 +212,20 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'dekel.json' ),
 				'related' => array( '/glossary/%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%97%D7%9C%D7%A7%D7%99/' => 'חשבון חלקי', '/professionals/' => 'מאגר בעלי המקצוע' ),
 			),
+			/* 1.72.523 (HAD-601, U1): Mortgage 2.0, a custom surface; boi-mortgage.json from Bank of Israel and CBS (25.10.2026), every value dated */
+			'mortgage' => array(
+				'name' => 'מחשבון משכנתא לפי מסלולים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · משכנתא',
+				'desc' => 'מחשבון משכנתא לפי מסלולים: החזר ראשון, ההחזר הגבוה הצפוי, ריבית, הצמדה ולוח סילוקין, לפי סכום, לפי החזר חודשי או לפי מחיר והון עצמי; שלושת הסלים האחידים של בנק ישראל, בדיקת התמהיל מול הוראה 329, פירעון מוקדם עם הערכת העמלה, והשוואת ההצעה מהבנק לריבית הממוצעת שבנק ישראל פרסם לאותו מסלול ולאותה תקופה.',
+				'data' => array( 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/mortgage-calculator/reverse-mortgage/' => 'מחשבון משכנתא הפוכה', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-for-any-purpose/' => 'משכנתא לכל מטרה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+			/* 1.72.523 (HAD-601, U2): the yield and cash-flow map; invest.json from 148 nadlan.gov.il files (20.8.2026), BoI 4.62% (8.2026) */
+			'invest' => array(
+				'name' => 'מפת התשואה והתזרים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · נדל״ן להשקעה',
+				'desc' => 'דירה להשקעה בכל עיר לפי החציונים הרשמיים של אתר הנדל״ן הממשלתי, לפי מספר החדרים: תשואה ברוטו, משכנתא של 50% בריבית הממוצעת של בנק ישראל, תזרים חודשי לפני ואחרי ההוצאות שלכם, הון עצמי עם מס רכישה של דירה נוספת, שלושת מסלולי המס על שכר הדירה, כמה מהמחיר שכר הדירה לבדו מחזיק, ובדיקה לפי הון עצמי: אילו ערים עובדות.',
+				'data' => array( 'invest.json' ),
+				'related' => array( '/investment-property-mortgage/' => 'משכנתא לדירה להשקעה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/investment/real-estate-yield/' => 'איך מחשבים תשואה', '/apartment-prices/' => 'מחירי הדירות לפי עיר' ),
+			),
 		) );
 	}
 
@@ -481,6 +495,43 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$t = '<table><caption>איזה מחירון של דקל לאיזו עבודה (לפי אתר דקל, 25.10.2026)</caption><thead><tr><th>העבודה</th><th>המחירון</th><th>היקף שהמחירים מכוונים אליו</th></tr></thead><tbody>';
 			foreach ( $d['kinds'] as $k ) { $l = $d['lists'][ $k['list'] ]; $t .= '<tr><td>' . esc_html( $k['label'] ) . '</td><td>' . esc_html( $l['name'] ) . '</td><td>' . ( ! empty( $l['min'] ) ? esc_html( number_format( $l['min'] ) . ' עד ' . number_format( $l['max'] ) ) . ' ₪' : '' ) . '</td></tr>'; }
 			return '<p>מחירון דקל לבנייה ותשתיות כולל ' . (int) $d['lists']['build']['ch'] . ' פרקים ו' . esc_html( $d['lists']['build']['items'] ) . ' סעיפים, ומתעדכן בכל 1 לחודש. מחיר כל סעיף כולל עבודה, חומרים ורווח קבלן. הגישה במנוי בתשלום: ' . esc_html( $d['contact'] ) . '.</p>' . $t . '</tbody></table>';
+		}
+		// 1.72.523 (HAD-601, U1): Mortgage 2.0 as plain text
+		if ( 'mortgage' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-mortgage.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['rates'] ) ) { return ''; }
+			$m = $d['market']['month']; $mm = (int) substr( $m, 5 ) . '.' . substr( $m, 0, 4 );
+			return '<p>ריבית ממוצעת במשכנתאות חדשות לפי בנק ישראל (' . esc_html( $mm ) . '): קבועה לא צמודה ' . esc_html( number_format( $d['rates']['fixed_nl']['rate'], 2 ) ) . '%, קבועה צמודה '
+				. esc_html( number_format( $d['rates']['fixed_cpi']['rate'], 2 ) ) . '%, משתנה צמודה ' . esc_html( number_format( $d['rates']['var_cpi']['rate'], 2 ) ) . '%. ריבית בנק ישראל '
+				. esc_html( number_format( $d['policy']['rate'], 2 ) ) . '%, פריים ' . esc_html( number_format( $d['policy']['prime'], 2 ) ) . '%. ' . esc_html( number_format( $d['market']['loans'] ) ) . ' משכנתאות חדשות בחודש, בממוצע '
+				. esc_html( number_format( $d['market']['avg_loan'] ) ) . ' ₪ למשכנתא.</p>';
+		}
+		if ( 'invest' === $id ) {  // U2 /investment/: the yield and cash-flow map as text and a table
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/invest.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['rows'] ) ) { return ''; }
+			$L = $x['rules']; $rate = (float) $L['rates'][0]['rate']; $r = $rate / 1200; $af = ( 1 - pow( 1 + $r, -300 ) ) / $r;
+			$qm = array( '03' => 'ינואר עד מרץ', '06' => 'אפריל עד יוני', '09' => 'יולי עד ספטמבר', '12' => 'אוקטובר עד דצמבר' );
+			$hm = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$ql = function ( $q ) use ( $qm ) { $p = explode( '-', $q ); return ( isset( $qm[ $p[1] ] ) ? $qm[ $p[1] ] : $p[1] ) . ' ' . $p[0]; };
+			$list = array(); $g = array(); $pos = 0;
+			foreach ( $x['rows'] as $c ) {
+				if ( ! empty( $c['nat'] ) || empty( $c['r']['4'] ) || $x['cityQ'] !== $c['r']['4']['q'] ) { continue; }
+				$p = $c['r']['4']; $pay = 0.5 * $p['price'] / $af; $g[] = $p['rent'] * 12 / $p['price']; if ( $p['rent'] > $pay ) { $pos++; }
+				$list[] = array( $c['n'], $p['rent'], $p['price'], $p['rent'] * 12 / $p['price'], $pay, $p['rent'] * $af / $p['price'] );
+			}
+			$n = count( $list ); if ( ! $n ) { return ''; }
+			usort( $list, function ( $a, $b ) { return $b[5] <=> $a[5]; } );
+			sort( $g ); $med = $n % 2 ? $g[ intdiv( $n, 2 ) ] : ( $g[ $n / 2 - 1 ] + $g[ $n / 2 ] ) / 2;
+			$nat = $x['rows'][0]['r']['4']; $pm = explode( '-', $L['ratesPeriod'] ); $ex = $L['ptax']['extra'];
+			$rows = '';
+			foreach ( $list as $c ) { $rows .= '<tr><td>' . esc_html( $c[0] ) . '</td><td>' . number_format( $c[1] ) . '</td><td>' . number_format( $c[2] ) . '</td><td>' . number_format( 100 * $c[3], 2 ) . '%</td><td>' . number_format( round( $c[4] ) ) . '</td><td>' . number_format( 100 * $c[5], 1 ) . '%</td></tr>'; }
+			return '<p>תשואה ברוטו על דירת 4 חדרים לפי החציונים הרשמיים של אתר הנדל״ן הממשלתי, ' . esc_html( $ql( $x['cityQ'] ) ) . ' (החישוב שלנו): חציון של ' . number_format( 100 * $med, 1 ) . '% ב־' . $n . ' ערים. בחציון הארצי של '
+				. esc_html( $ql( $nat['q'] ) ) . ': מחיר ' . number_format( $nat['price'] ) . ' ₪, שכר דירה ' . number_format( $nat['rent'] ) . ' ₪, תשואה ברוטו ' . number_format( 100 * $nat['rent'] * 12 / $nat['price'], 2 ) . '%. במשכנתא של 50% לדירה נוספת, 25 שנה בריבית '
+				. number_format( $rate, 2 ) . '% (הממוצע של בנק ישראל ב' . esc_html( $hm[ (int) $pm[1] - 1 ] . ' ' . $pm[0] ) . '), כל 100,000 ₪ עולים ' . number_format( round( 100000 / $af ) ) . ' ₪ בחודש, ושכר הדירה מכסה את ההחזר ב־' . $pos . ' מתוך ' . $n
+				. ' ערים. מס רכישה על דירה נוספת: ' . number_format( 100 * $ex[0][1] ) . '% עד ' . number_format( $ex[0][0] ) . ' ₪ ו־' . number_format( 100 * $ex[1][1] ) . '% מעל, עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $L['ptax']['until']['extra'] ) ) ) . '.</p>'
+				. '<table><caption>כמה מהדירה שכר הדירה קונה: ' . $n . ' ערים, 4 חדרים, ' . esc_html( $ql( $x['cityQ'] ) ) . ', משכנתא 50% ל־25 שנה בריבית ' . number_format( $rate, 2 ) . '% (החישוב שלנו)</caption><thead><tr><th>עיר</th><th>שכר דירה חציוני (₪)</th><th>מחיר חציוני (₪)</th><th>תשואה ברוטו</th><th>החזר חודשי (₪)</th><th>כמה מהדירה שכר הדירה קונה</th></tr></thead><tbody>' . $rows . '</tbody></table>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
