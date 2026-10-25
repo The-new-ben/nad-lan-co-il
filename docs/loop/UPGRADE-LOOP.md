@@ -25,8 +25,8 @@ with UX and design, every page a masterpiece. The cities later (HAD-602), not en
 ## Board
 | # | Page | Main queries (90 days, impressions @ position) | State |
 |---|---|---|---|
-| Q1 | /urban-renewal/map/ | מפת התחדשות עירונית 362@13 · מתחמי פינוי בינוי 164@19 · מתחם התחדשות עירונית 122@27 | research (agent A; builds on docs/research/urban-renewal-2026-10/) |
-| Q2 | /property-value-estimator/ | הערכת שווי דירה 461@21 · הערכת שווי נכס 450@20 · כמה שווה הדירה שלי 172@24 · בדיקת שווי נכס 167@20 | research (agent A) |
+| Q1 | /urban-renewal/map/ | מפת התחדשות עירונית 362@13 · מתחמי פינוי בינוי 164@19 · מתחם התחדשות עירונית 122@27 | research DONE (q1-renewal-map/dna.md): data stale (947 from 13.7 vs 970 official since 15.8, 999 on the authority map), exact phrase missing from H1/body, FAQ not visible, no tables, 618 words; moat = complex tracker (stage history + plan dates); map-boundary licence unconfirmed. Next: stage 1 (H1/title/answer with the exact phrase, visible FAQ, tables from the official file), then data refresh |
+| Q2 | /property-value-estimator/ | הערכת שווי דירה 461@21 · הערכת שווי נכס 450@20 · כמה שווה הדירה שלי 172@24 · בדיקת שווי נכס 167@20 | research DONE. **Stage 1 LIVE 25.10**: title 'הערכת שווי דירה בחינם: מחשבון שווי נכס לפי עסקאות אמת', H1, answer, breadcrumb, seller section (247 impr), FAQ 5 -> 22 (schema 22). Proof after stage 1: words 3,316 vs 1,997, figures 97 vs 39, FAQ 22 vs 5, headings 46 vs 24; BEHIND on visuals 1 vs 19 (wecheck). Stage 2: tables T1-T5, 5-year sparkline per city (data.nadlan.gov.il), CBS district index chart, the three-anchors moat in pval; honesty statement only after stage 2 |
 | Q3 | /glossary/מחירון-דקל-לבנייה-ותשתיות/ | מחירון דקל 251@18 · מחירון דקל 2026 67@16 · מחירון דקל בניה 61@12 | research (agent B) |
 | Q4 | /glossary/דקל-תוכנה/ | דקל תוכנה 206@9 | research (agent B) |
 | Q5 | /glossary/תי-466/ | ת"י 466 147@9 · תקן ישראלי 466 86@12 · תקן 466 חלק 2 77@21 | research (agent B) |
