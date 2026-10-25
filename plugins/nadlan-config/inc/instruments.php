@@ -192,6 +192,26 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'gwall.json' ),
 				'related' => array( '/glossary/%D7%9C%D7%95%D7%97-%D7%92%D7%91%D7%A1-%D7%99%D7%A8%D7%95%D7%A7/' => 'לוח גבס ירוק', '/glossary/%D7%98%D7%99%D7%97-%D7%92%D7%91%D7%A1/' => 'טיח גבס', '/home-inspection/' => 'בדק בית', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה' ),
 			),
+			/* 1.72.522 (HAD-601, Q5): "ת"י 466 והדירה שלי"; t466.json from the Standards Institution pages (25.10.2026) */
+			't466' => array(
+				'name' => 'איזה חלק של ת״י 466 חל אצלכם: בדיקה לפי המצב', 'cat' => 'ReferenceApplication', 'kicker' => 'בדיקה · ת״י 466',
+				'desc' => 'לפי המצב (דירה חדשה מקבלן וסוג התקרות, פתיחת קיר בשיפוץ, בית פרטי, סדק או ברזל חשוף, תקרות דרוכות, טרומיות או לוח״דים): אילו חלקים של חוקת הבטון חלים, המהדורה שבתוקף ומחיר כל חלק במכון התקנים, מי אחראי, מה לשאול, איזה תקן עובד לצידו ואיפה קוראים את התקן בלי תשלום, עם חתך בניין שמסמן את האלמנטים.',
+				'data' => array( 't466.json' ),
+				'related' => array( '/glossary/%D7%AA%D7%99-118/' => 'ת״י 118', '/glossary/%D7%A7%D7%95%D7%A0%D7%A1%D7%98%D7%A8%D7%95%D7%A7%D7%98%D7%95%D7%A8/' => 'קונסטרוקטור', '/home-inspection/' => 'בדק בית', '/real-estate-lawyer/construction-defects-lawsuit/' => 'ליקויי בנייה' ),
+			),
+			/* 1.72.522 (HAD-601, Q3): the Dekel price-list family, one file tools/dekel.js; dekel.json from dekel.co.il (25.10.2026), no Dekel price stored */
+			'dkpick' => array(
+				'file' => 'dekel', 'name' => 'איזה מחירון דקל מתאים לעבודה שלכם', 'cat' => 'ReferenceApplication', 'kicker' => 'בחירה · מחירון דקל',
+				'desc' => 'לפי סוג העבודה וההיקף הכספי: איזה מחירון של דקל מתאים (בנייה ותשתיות, שיפוצים ואחזקה, הסכמי מסגרת, בנייה פרטית, שינויי דיירים, שיפוץ דירות או המחשבון למ״ר), כמה פרקים וסעיפים יש בו, והאם ההיקף בתוך הטווח שהמחירים שלו מכוונים אליו.',
+				'data' => array( 'dekel.json' ),
+				'related' => array( '/glossary/%D7%9B%D7%AA%D7%91-%D7%9B%D7%9E%D7%95%D7%99%D7%95%D7%AA/' => 'כתב כמויות', '/glossary/%D7%A4%D7%A7%D7%95%D7%93%D7%AA-%D7%A9%D7%99%D7%A0%D7%95%D7%99%D7%99%D7%9D/' => 'פקודת שינויים', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה' ),
+			),
+			'dkquote' => array(
+				'file' => 'dekel', 'name' => 'בדיקת הצעת מחיר של קבלן מול מחירון דקל', 'cat' => 'UtilitiesApplication', 'kicker' => 'בדיקה · הצעת מחיר מול דקל',
+				'desc' => 'סעיף אחר סעיף: הכמות, מחיר היחידה בדקל מהמנוי שלכם ומחיר היחידה בהצעה, סך ההפרש בשקלים ובאחוזים, והשאלות לקבלן לפי הכללים של דקל: פינוי עד 15 ק״מ בלי אגרת הטמנה, ברזל הזיון בנפרד, תוספת לאזור מרוחק ולעבודת לילה.',
+				'data' => array( 'dekel.json' ),
+				'related' => array( '/glossary/%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%97%D7%9C%D7%A7%D7%99/' => 'חשבון חלקי', '/professionals/' => 'מאגר בעלי המקצוע' ),
+			),
 		) );
 	}
 
@@ -434,6 +454,33 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				$t .= '<tr><td>' . esc_html( $L . ' × ' . $H ) . ' מ׳</td><td>' . ( 2 === $s ? 'שני צדדים' : 'צד אחד' ) . ', ' . ( 2 === $ly ? 'שתי שכבות' : 'שכבה אחת' ) . '</td><td>' . esc_html( $sz ) . ' × 1.20</td><td>' . $n . '</td><td>כ־' . number_format( $n * $kg ) . ' ק״ג</td><td>' . ( $pr ? '₪' . number_format( round( $n * $pr ) ) : 'לפי הצעת מחיר' ) . '</td></tr>';
 			}
 			return '<p>לוח גבס ורוד (מעכב בעירה, FR) לשימוש פנימי, ברוחב 1.20 מ׳. משקל לפי טבלת הספק: 27 ק״ג ללוח 2.60 של 12.5 מ״מ. מחיר אצל רוטנברג ב־25.10.2026: 80.8 ₪ ללוח 2.60 כולל מע״מ. את מספר דקות העמידות באש מקבל הקיר כולו בבדיקה לפי ת״י 931, לא הלוח: לבקש מהקבלן תעודת בדיקה של המחיצה, סיווג לפי ת״י 755 ותו תקן לפי ת״י 1490 חלק 1.</p>' . $t . '</tbody></table>';
+		}
+		if ( 't466' === $id ) {  // 1.72.522: which part of the concrete code governs each element, as plain text (the drawing needs the script)
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/t466.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['parts'] ) ) { return ''; }
+			$p = $d['parts'];
+			$rows = array( array( 'כל המבנה', '1' ), array( 'יסודות, עמודים ותקרות יצוקות', '2' ), array( 'תקרה או קורה דרוכה', '3' ), array( 'חזית ואלמנטים טרומיים', '4' ), array( 'תקרת לוח״דים (מטבלות חלולות)', '5' ) );
+			$t = '<table><caption>איזה חלק של ת״י 466 חל על כל אלמנט בבניין (לפי מכון התקנים, 25.10.2026)</caption><thead><tr><th>האלמנט</th><th>החלק</th><th>מהדורה בתוקף</th><th>מחיר במכון התקנים</th></tr></thead><tbody>';
+			foreach ( $rows as $r ) { $x = $p[ $r[1] ]; $t .= '<tr><td>' . esc_html( $r[0] ) . '</td><td>חלק ' . esc_html( $r[1] ) . ': ' . esc_html( $x['name'] ) . '</td><td>' . esc_html( $x['ed'] ) . '</td><td>' . esc_html( number_format( $x['price'], 2 ) ) . ' ₪</td></tr>'; }
+			return '<p>חלק 1 של חוקת הבטון חל על כל המבנה, וחלק 2 על רכיבי הבטון המזוין והלא מזוין. לתקרות דרוכות חל חלק 3, לאלמנטים טרומיים חלק 4 ולתקרות מטבלות חלולות חלק 5. את התקן קונים במכון התקנים או קוראים בו בלי תשלום במרכז המידע, ' . esc_html( $d['sii']['addr'] ) . ', בתיאום מראש.</p>' . $t . '</tbody></table>';
+		}
+		if ( 'dkpick' === $id || 'dkquote' === $id ) {  // 1.72.522: the Dekel rules as plain text; no Dekel price is stored or shown
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/dekel.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['lists'] ) ) { return ''; }
+			if ( 'dkquote' === $id ) {
+				$r = $d['rules'];
+				$t = '<table><caption>מה לבדוק בהצעת מחיר מול מחירון דקל (לפי אתר דקל, 25.10.2026)</caption><thead><tr><th>הנושא</th><th>מה קובע דקל</th><th>מה לשאול את הקבלן</th></tr></thead><tbody>';
+				foreach ( array( array( 'מה כלול במחיר', $r['incl'], 'מה לא כלול בסעיף?' ), array( 'הריסה ופינוי', $r['demo'], 'מי משלם את אגרת ההטמנה?' ), array( 'ברזל לבטון', $r['steel'], 'האם הברזל כלול במחיר הבטון?' ),
+					array( 'אזור מרוחק', $r['remote'], 'מה התוספת שחושבה?' ), array( 'לילה, שבת וחג', $r['night'], 'האם התוספת מופיעה בנפרד?' ), array( 'מהדורה', $r['monthly'], 'לפי איזו מהדורה התמחור?' ) ) as $x ) {
+					$t .= '<tr><td>' . esc_html( $x[0] ) . '</td><td>' . esc_html( $x[1] ) . '</td><td>' . esc_html( $x[2] ) . '</td></tr>';
+				}
+				return '<p>מחירון דקל הוא מחיר ייחוס, לא חוזה. משווים כל סעיף בהצעה למחיר היחידה בדקל מהמהדורה של אותו חודש, ובודקים את הכללים של דקל עצמו.</p>' . $t . '</tbody></table>';
+			}
+			$t = '<table><caption>איזה מחירון של דקל לאיזו עבודה (לפי אתר דקל, 25.10.2026)</caption><thead><tr><th>העבודה</th><th>המחירון</th><th>היקף שהמחירים מכוונים אליו</th></tr></thead><tbody>';
+			foreach ( $d['kinds'] as $k ) { $l = $d['lists'][ $k['list'] ]; $t .= '<tr><td>' . esc_html( $k['label'] ) . '</td><td>' . esc_html( $l['name'] ) . '</td><td>' . ( ! empty( $l['min'] ) ? esc_html( number_format( $l['min'] ) . ' עד ' . number_format( $l['max'] ) ) . ' ₪' : '' ) . '</td></tr>'; }
+			return '<p>מחירון דקל לבנייה ותשתיות כולל ' . (int) $d['lists']['build']['ch'] . ' פרקים ו' . esc_html( $d['lists']['build']['items'] ) . ' סעיפים, ומתעדכן בכל 1 לחודש. מחיר כל סעיף כולל עבודה, חומרים ורווח קבלן. הגישה במנוי בתשלום: ' . esc_html( $d['contact'] ) . '.</p>' . $t . '</tbody></table>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';

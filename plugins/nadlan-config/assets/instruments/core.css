@@ -175,3 +175,5 @@ html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overfl
 .nli__figure{margin:4px 0 0}.nli__figure svg{display:block;width:100%;height:auto;max-width:560px}
 .nli__wall text{font:400 14px/1 var(--nli-sans);fill:var(--nli-ink2)}.nli__wall .t{font:600 16px/1 var(--nli-sans);fill:var(--nli-ink)}
 .nli__wall .m{font:500 15px/1 var(--nli-mono);fill:var(--nli-ink)}.nli__wall .r{fill:var(--nli-survey)}
+/* 1.72.522: a rows field with three inputs (the Dekel quote check: quantity, Dekel price, quote price) */
+.nli__row:has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr) 44px}
