@@ -1,0 +1,16 @@
+{
+  "released": "1.72.513",
+  "from": "1.72.512",
+  "live_before": {
+    "nadlan-config.php": "3ae0d6a6e4ca58243b2e214655e030fe"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /projects/?t513h=1",
+  "at": "2026-10-25 11:43:34",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "data/projects-market.json": "c82bc79e7b5dffbb673e1e502a9b8552",
+    "nadlan-config.php": "e7b530e714bce79866cc426608edd4f7"
+  }
+}
