@@ -103,9 +103,10 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'arnona-tlv.json' ),
 				'related' => array( '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/property-value-estimator/' => 'מחשבון שווי דירה', '/tel-aviv-apartment-prices/' => 'מחירי דירות בתל אביב', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
+			/* 1.72.524 (HAD-601, U3): nrm v2, your Israeli borrowing limit by passport and paycheck; still English only (phase 1) */
 			'nrm' => array(
-				'only' => 'en', 'name' => 'Israeli mortgage calculator for non-residents', 'cat' => 'FinanceApplication', 'kicker' => 'Calculator · Israeli mortgage',
-				'desc' => 'An Israeli mortgage for a buyer abroad: the 50% loan cap for non-residents, the monthly payment at the average rate by track, the purchase tax a foreign resident pays, the closing costs, and all of it in US dollars, euros or pounds at the Bank of Israel rate.',
+				'only' => 'en', 'name' => 'Israel mortgage calculator for foreigners', 'cat' => 'FinanceApplication', 'kicker' => 'Calculator · Israeli mortgage',
+				'desc' => 'Your Israeli borrowing limit by passport and paycheck: the Bank of Israel loan cap by citizenship (50% for a non-citizen, 75% for an Israeli citizen or registered oleh buying the only home in Israel, 70% for a replacement home), the payment tested against your income at 50% and at one third in your own currency, the purchase tax by residency (foreign resident, Israeli resident, oleh), the cash to close, and the payment in dollars, euros or pounds with a 10% move in the shekel, at the Bank of Israel rates of the day.',
 				'data' => array( 'ptax.json', 'nrm.json', 'boi-fx.json' ),
 				'related' => array( '/israel-purchase-tax-foreign-residents/' => 'Purchase tax for foreign residents', '/en/buy-property-in-israel/' => 'Buying a home in Israel from abroad', '/en/north-tel-aviv/' => 'North Tel Aviv', '/projects/hamedina-en/' => 'Kikar HaMedina towers' ),
 			),
@@ -543,10 +544,20 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
 	function nadlan_nli_summary_en( $id ) {
 		if ( 'nrm' === $id ) {
-			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-fx.json';
-			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
-			$fx = is_array( $x ) && ! empty( $x['fx']['USD'] ) ? ' Bank of Israel representative rates on ' . esc_html( $x['fx']['USD']['date'] ) . ': 1 USD = ' . esc_html( $x['fx']['USD']['rate'] ) . ' ILS, 1 EUR = ' . esc_html( $x['fx']['EUR']['rate'] ) . ' ILS, 1 GBP = ' . esc_html( $x['fx']['GBP']['rate'] ) . ' ILS.' : '';
-			return '<p>An Israeli bank can lend a non-resident up to 50% of the property value. A foreign resident pays purchase tax of 8% up to ILS 6,055,070 and 10% above. The average rate on new fixed, non-linked mortgages was 4.62% in August 2026.' . $fx . '</p>';
+			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';
+			$rd  = function ( $f ) use ( $dir ) { $p = $dir . $f; $x = is_readable( $p ) ? json_decode( (string) file_get_contents( $p ), true ) : null; return is_array( $x ) ? $x : array(); };
+			$n = $rd( 'nrm.json' ); $x = $rd( 'boi-fx.json' ); $t = $rd( 'ptax.json' );
+			if ( empty( $n['ltv_by_status'] ) || empty( $t['tracks']['foreign'] ) ) { return ''; }
+			$c = $n['ltv_by_status']; $r = array(); foreach ( (array) $n['rates'] as $k ) { $r[ $k['id'] ] = $k['rate']; }
+			$pct = function ( $v ) { return rtrim( rtrim( number_format( (float) $v, 2 ), '0' ), '.' ) . '%'; };
+			$day = function ( $iso ) { return gmdate( 'j M Y', strtotime( $iso . ' UTC' ) ); };
+			$f   = $t['tracks']['foreign'];
+			$fx  = ! empty( $x['fx']['USD'] ) ? ' Bank of Israel representative rates on ' . esc_html( $day( $x['fx']['USD']['date'] ) ) . ': 1 USD = ILS ' . esc_html( $x['fx']['USD']['rate'] ) . ', 1 EUR = ILS ' . esc_html( $x['fx']['EUR']['rate'] ) . ', 1 GBP = ILS ' . esc_html( $x['fx']['GBP']['rate'] ) . '.' : '';
+			return '<p>Bank of Israel Directive 329 sizes an Israeli mortgage by citizenship: up to ' . $pct( 100 * $c['foreign'] ) . ' of the value for a buyer who is not an Israeli citizen (any home a non-citizen buys is an investment home), '
+				. $pct( 100 * $c['cit_first'] ) . ' for an Israeli citizen or registered oleh buying the only home in Israel, ' . $pct( 100 * $c['cit_sell'] ) . ' for a replacement home and ' . $pct( 100 * $c['cit_own'] ) . ' for a citizen who already owns one. '
+				. 'The payment may not pass 50% of disposable income, the variable part 66.66% of the loan, the term 30 years. Average rates on new mortgages, ' . esc_html( gmdate( 'F Y', strtotime( $n['rates_month'] . '-01 UTC' ) ) ) . ': fixed not linked ' . $pct( $r['fixed'] )
+				. ', fixed CPI-linked ' . $pct( $r['linked'] ) . ', foreign currency loans ' . $pct( $n['fx_track']['rate'] ) . '. Prime ' . $pct( $n['prime'] ) . ' (Bank of Israel rate ' . $pct( $n['boi_rate'] ) . ' since ' . esc_html( $day( $n['boi_rate_from'] ) ) . ', next decision ' . esc_html( $day( $n['next_decision'] ) ) . '). '
+				. 'Purchase tax is set by residency: a foreign resident pays ' . $pct( 100 * $f[0][1] ) . ' up to ILS ' . number_format( $f[0][0] ) . ' and ' . $pct( 100 * $f[1][1] ) . ' above, until ' . esc_html( $day( $t['valid']['foreign'] ) ) . '.' . $fx . '</p>';
 		}
 		if ( 'soilmap' === $id || 'pfas' === $id ) {
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/sde-dov-soil.json';

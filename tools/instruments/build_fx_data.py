@@ -6,7 +6,7 @@ import csv, io, json, os, time, urllib.request
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "plugins", "nadlan-config", "assets", "instruments", "data", "boi-fx.json")
 since = time.strftime("%Y-%m-%d", time.gmtime(time.time() - 40 * 86400))
 fx = {}
-for cur in ("USD", "EUR", "GBP"):
+for cur in ("USD", "EUR", "GBP", "CAD", "AUD", "ZAR"):  # 26.10.2026: CAD, AUD, ZAR for the foreign-buyer calculator (nrm v2)
     u = "https://edge.boi.gov.il/FusionEdgeServer/sdmx/v2/data/dataflow/BOI.STATISTICS/EXR/1.0/RER_%s_ILS?c%%5BTIME_PERIOD%%5D=ge:%s&format=csv" % (cur, since)
     raw = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 NadLan-instruments"}), timeout=120).read().decode("utf-8")
     rows = list(csv.reader(io.StringIO(raw))); head = rows[0]; ti, vi = head.index("TIME_PERIOD"), head.index("OBS_VALUE")

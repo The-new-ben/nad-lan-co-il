@@ -45,6 +45,22 @@ COMP = {
 Mortgage 2.0 for /mortgage-calculator/ (HAD-601, U1). Tracks with method, grace, CPI and prime paths; payment, loan or price modes; the three uniform Bank of Israel baskets; directive 329 checks; prepayment with the fee estimate; the bank offer against the BoI average for the same track and term, placed among last month's 10,272 loans. Data: boi-mortgage.json (BoI SDMX, BoI xls, CBS 120010, 25.10.2026), every value dated. Built locally by an Opus builder, math cross-checked in Python (16 cases), old calculators reproduced exactly (6,625 / 8,051; 5,627 / 25.6%).
 """,
     },
+    "NrmForeign": {
+        "files": ["nrm.js"], "data": ["ptax.json", "nrm.json", "boi-fx.json"], "key": "nrm", "custom": True,
+        "out": "u3-en-mortgage", "outname": {"en": "index.html", "he": "he.html"},
+        "subtitle": "Israel mortgage calculator for foreigners: the loan cap by citizenship, the purchase tax by residency, the income test in your currency, the 10% shekel swing",
+        "langs": {
+            "en": [("nrm", None, "1 · Default: a non-citizen, ₪4,000,000 home, 50% loan, $12,000 net a month. The status cap binds, not the income"),
+                   ("nrm", "abroad", "2 · Israeli citizen living abroad: 75% loan by citizenship, the 8% purchase tax by residency"),
+                   ("nrm", "cash", "3 · What $800,000 buys: the highest price after tax and fees, thirds mix (basket 2), stacked bar")],
+            "he": [("nrm", None, "1 · ברירת המחדל: בלי אזרחות ישראלית, דירה ב־4,000,000 ₪, מימון 50%, הכנסה של $12,000 נטו בחודש"),
+                   ("nrm", "oleh", "2 · עולה חדש בישראל: מימון 75%, מס רכישה לפי תקנה 12א"),
+                   ("nrm", "couple", "3 · זוג, אחד ישראלי: תקרה משוקללת 62.5%")],
+        },
+        "figs": None,
+        "palette": "Palette: passport navy #1E2B47, visa violet #5B3FA0, security-print teal #0F7C7A, cool paper #F6F8FA, slate #2B3440; figures in IBM Plex Mono, copy in IBM Plex Sans (Plex Sans Hebrew in Hebrew). Not cream, not brass, not an acid accent on black: the colours of passports, visa stamps and banknote security print.",
+        "readme": "# NrmForeign\n\nThe Israel mortgage calculator for foreigners (nrm v2, U3): your Israeli borrowing limit by passport and paycheck. Status (non-citizen, Israeli citizen with or without a home or selling, new oleh, mixed couple), where you live, borrow or cash mode, income and commitments in your currency, appraisal, track mix from the Bank of Israel uniform baskets or a foreign currency loan for non-citizens. Out: the status cap, the income caps at 50% and one third and which binds, first payment, prime +1, a year of CPI, cash to close with the right purchase tax track, the 10% shekel swing, warnings, dated sources. English and Hebrew. Math: tools/instruments/test_nrm_math.py.\n",
+    },
     "InvestMap": {
         "files": ["invest.js"], "data": ["invest.json"], "key": "invest", "custom": True,
         "subtitle": "מפת התשואה והתזרים: 65 ערים, כמה מהמחיר שכר הדירה מחזיק כמשכנתא, תשואה ברוטו, תזרים חודשי, מצב תקציב ודירוג ערים",
@@ -59,7 +75,41 @@ The yield and cash-flow map for /investment/ (HAD-601, U2). 72 cities and the na
 }
 
 
+def build_langs(name):
+    """A tool with several data files and an English and a Hebrew block: one page per language, <html lang> and the section's lang
+    set to it (the engine and the tool follow them), every data file keyed as the shortcode would load it."""
+    c = COMP[name]; D = os.path.join(DS, name); os.makedirs(D, exist_ok=True)
+    css, core = rd(I, "core.css"), rd(I, "core.js")
+    js = "".join("<script>" + rd(I, "tools", f) + "</script>" for f in c["files"])
+    datas = [json.loads(rd(I, "data", f)) for f in c["data"]]
+    dd = {}
+    for i, x in enumerate(datas):
+        dd[x.get("key") or ("d%d" % i)] = x; dd["d%d" % i] = x
+    out = os.path.join(H, c["out"], "preview"); os.makedirs(out, exist_ok=True)
+    fonts = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600'
+             '&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Karantina:wght@700&display=swap">')
+    for lg, cases in c["langs"].items():
+        d = "ltr" if lg == "en" else "rtl"
+        face = '"IBM Plex Sans",system-ui,sans-serif' if lg == "en" else '"IBM Plex Sans Hebrew",system-ui,sans-serif'
+        body = []
+        for i, (tid, preset, note) in enumerate(cases):
+            body.append('<p class="n">%s</p><section class="nli" dir="%s" lang="%s"><div class="nli-host" data-nli="%s" id="h%d"%s></div></section>' % (note, d, lg, tid, i, (" data-nli-set='{\"preset\":\"%s\"}'" % preset) if preset else ""))
+        body.append('<p class="n">%s</p>' % c["palette"])
+        html = ('<!-- @dsCard group="Tools" height=2400 subtitle="%s" -->\n' % c["subtitle"]
+                + '<!doctype html><html lang="%s" dir="%s"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>%s</title>' % (lg, d, name) + fonts
+                + '<style>' + css + '\nbody{margin:0;background:#F4F6FA;color:#12202A;font-family:' + face + '}.w{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px))}'
+                + '.n{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:26px 0 8px;border-top:1px solid #D3DCE2;padding-top:8px}</style></head><body><div class="w">'
+                + "".join(body) + '</div><script>' + core + '</script><script>var D=' + json.dumps(dd, ensure_ascii=False) + ';var SP={};NadLanInstruments.register=function(id,s){SP[id]=s};</script>' + js
+                + '<script>' + "".join(('SP["%s"].custom(document.getElementById("h%d"),D);' % (tid, i)) if c.get("custom") else ('NadLanInstruments.mount(document.getElementById("h%d"),SP["%s"],D);' % (i, tid)) for i, (tid, _, _) in enumerate(cases)) + '</script></body></html>')
+        io.open(os.path.join(out, c["outname"][lg]), "w", encoding="utf-8").write(html)
+        io.open(os.path.join(D, "preview.html" if lg == "en" else "preview-%s.html" % lg), "w", encoding="utf-8").write(html)
+        print(name, lg, len(html.encode()), "bytes ->", os.path.join(out, c["outname"][lg]))
+    io.open(os.path.join(D, "README.md"), "w", encoding="utf-8").write(c["readme"])
+
+
 def build(name):
+    if COMP[name].get("langs"):
+        return build_langs(name)
     c = COMP[name]; D = os.path.join(DS, name); os.makedirs(D, exist_ok=True)
     css, core = rd(I, "core.css"), rd(I, "core.js")
     js = "".join("<script>" + rd(I, "tools", f) + "</script>" for f in c["files"])

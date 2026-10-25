@@ -1,0 +1,27 @@
+{
+  "released": "1.72.524",
+  "from": "1.72.523",
+  "live_before": {
+    "assets/instruments/tools/nrm.js": "b4df46601fc83fa89ea846efd58a296d",
+    "assets/instruments/data/nrm.json": "fc2b74fb7bcd0e5a5db5c2519dfbb367",
+    "assets/instruments/data/boi-fx.json": "264b2eed9b652fba97f207f454773b2d",
+    "assets/instruments/tools/mortgage.js": "ef67b952057e21aa9ceeebee36b1e758",
+    "nadlan-config.php": "6bd2a8fe20b01bd8e527b485e0427071",
+    "inc/page-lang.php": "96aca2b1d1381e3651242569c7cc9b14",
+    "inc/instruments.php": "ea2236dfcfa30711d4c1c8a3d2161f9e"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 01:32:44",
+  "files": {
+    "assets/instruments/tools/nrm.js": "9e863f3e6e3966256995ba969c625d0d",
+    "assets/instruments/data/nrm.json": "86cae31efeb5250995369e4070620ef0",
+    "assets/instruments/data/boi-fx.json": "a495bfcddf07e851b143584ee409e55f",
+    "assets/instruments/tools/mortgage.js": "c99f393d90c41582c453cad6a9900acd",
+    "nadlan-config.php": "df2ddb929bacdcf75ea1c275ee029444",
+    "inc/page-lang.php": "2e8f97861d1091b4df38bae70e2eb85c",
+    "inc/instruments.php": "476caf9329171db7ce1f26e67679a30f"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.524, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

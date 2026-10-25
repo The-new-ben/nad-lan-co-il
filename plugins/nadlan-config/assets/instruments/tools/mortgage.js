@@ -164,7 +164,7 @@
   function mon(key) { return F.month(key); }
   function day(iso) { return F.date(iso); }
   function yearsOf(m) { if (!(m >= 1)) return 'בלי החזר חודשי'; var y = Math.floor((m - 1) / 12) + 1, mm = (m - 1) % 12 + 1; return 'שנה ' + y + (mm > 1 ? ', חודש ' + mm : ''); }
-  var COL = ['#2F6F86', '#C42550', '#8E7CC3', '#4F9A5C', '#D9B43E', '#1F4B5C'];
+  var COL = ['#2F6F86', '#1F4B5C', '#4F9A5C', '#7FA9B8', '#5E6A75', '#12202A'];  // 26.10.2026: sea, deep, open, light sea, slate, ink; red stays for warnings, no mustard (design law 13.10)
   var TRACKS = ['fixed_nl', 'fixed_cpi', 'prime', 'var5_cpi', 'var5_nl', 'zakaut'];
   var TNAME = { fixed_nl: 'קל״צ: קבועה לא צמודה', fixed_cpi: 'ק״צ: קבועה צמודה למדד', prime: 'פריים', var5_cpi: 'משתנה כל 5 שנים, צמודה', var5_nl: 'משתנה כל 5 שנים, לא צמודה', zakaut: 'הלוואת זכאות' };
   var METHODS = [['spitzer', 'שפיצר'], ['equal', 'קרן שווה'], ['balloon', 'בלון'], ['bullet', 'בוליט']];
@@ -772,7 +772,7 @@
         pl.appendChild(pc1);
         var pc2 = el('div', 'nlm__pc'); pc2.appendChild(el('h4', 'nlm__h4', 'שיעור המימון'));
         var ltvList = MK.ltv.filter(function (b) { return b.from < 75; }).concat([{ from: 75, to: null, share: MK.ltv.filter(function (b) { return b.from >= 75; }).reduce(function (a, b) { return a + b.share; }, 0) }]);
-        pc2.insertAdjacentHTML('beforeend', bucketsSvg(ltvList, isFinite(ltv) ? 100 * ltv : null, [{ v: 50, c: '#8E7CC3' }, { v: 70, c: '#12202A' }, { v: 75, c: '#C42550' }], 'התפלגות שיעור המימון במשכנתאות החדשות'));
+        pc2.insertAdjacentHTML('beforeend', bucketsSvg(ltvList, isFinite(ltv) ? 100 * ltv : null, [{ v: 50, c: '#5E6A75' }, { v: 70, c: '#12202A' }, { v: 75, c: '#C42550' }], 'התפלגות שיעור המימון במשכנתאות החדשות'));
         var lb = isFinite(ltv) ? inB(ltvList, 100 * ltv) : null;
         pc2.appendChild(el('p', '', isFinite(ltv) ? 'המימון שלכם <b>' + esc(pc(100 * ltv, 1)) + '</b>. ' + esc(F.num(lb.share, 1) + '% מכספי המשכנתאות של החודש ניתנו בטווח ' + (lb.to == null ? 'מעל ' + lb.from + '%' : lb.from + '% עד ' + lb.to + '%')) + '. הקווים: 50% (דירה להשקעה), 70% (חליפית), 75% (יחידה).' : 'הקלידו את שווי הדירה כדי לראות איפה אתם.'));
         pl.appendChild(pc2);
@@ -782,7 +782,7 @@
         pc3.appendChild(el('p', '', 'התקופה הממוצעת בתמהיל שלכם <b>' + esc(F.num(wy, 1)) + ' שנים</b>, ' + esc(Math.abs(dt) < 0.3 ? 'כמו הממוצע' : F.num(Math.abs(dt), 1) + ' שנים ' + (dt > 0 ? 'יותר' : 'פחות') + ' מהממוצע') + ' של ' + esc(F.num(MK.term_nl, 1)) + ' שנים בהלוואות הלא צמודות.'));
         pl.appendChild(pc3);
         var pc4 = el('div', 'nlm__pc'); pc4.appendChild(el('h4', 'nlm__h4', 'איך לקחו משכנתא ב־' + mon(MK.month)));
-        var bar = el('div', 'nli__bar'), lg = el('ul', 'nli__legend'), tc = ['#C42550', '#2F6F86', '#D9B43E', '#8E7CC3', '#5E6A75'];
+        var bar = el('div', 'nli__bar'), lg = el('ul', 'nli__legend'), tc = ['#1F4B5C', '#2F6F86', '#4F9A5C', '#7FA9B8', '#5E6A75'];
         MK.tracks.forEach(function (x, i) { var q = el('i', ''); q.style.width = x.share + '%'; q.style.background = tc[i % tc.length]; bar.appendChild(q); lg.appendChild(el('li', '', '<b style="background:' + tc[i % tc.length] + '"></b>' + esc(x.label) + ' <bdi>' + esc(F.num(x.share, 1) + '%') + '</bdi>')); });
         bar.setAttribute('role', 'img'); bar.setAttribute('aria-label', MK.tracks.map(function (x) { return x.label + ' ' + x.share + '%'; }).join(', '));
         pc4.appendChild(bar); pc4.appendChild(lg);
