@@ -19,6 +19,7 @@ function get_query_var( $k ) { return 0; } function is_post_type_archive( $t = '
 function get_permalink( $id = 0 ) { return $id ? 'https://nad-lan.co.il/projects/sample-' . $id . '/' : 'https://nad-lan.co.il/' . $GLOBALS['lang'] . '/projects/'; }
 function get_the_title( $id ) { return 'Featured project ' . $id; } function get_the_post_thumbnail_url( $id, $s ) { return ''; }
 function get_post_meta( $id, $k, $s ) { return 'תל אביב יפו'; } function get_post_field( $f, $id ) { return 'sample-' . $id . '-en'; } function get_page_by_path( $p, $o, $t ) { return null; }
+function get_post_type_archive_link( $t ) { return 'https://nad-lan.co.il/projects/'; }
 function wp_strip_all_tags( $s ) { return strip_tags( $s ); } function wp_json_encode( $d, $f = 0 ) { return json_encode( $d, $f ); }
 function sanitize_key( $s ) { return strtolower( preg_replace( '/[^a-z0-9_\-]/i', '', $s ) ); }
 function shortcode_atts( $d, $a ) { return array_merge( $d, (array) $a ); }

@@ -1,40 +1,37 @@
 | page | words | figures | tables | cells | tools | faq | headings | visuals | sources | schema | updated |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| **ours** https://nad-lan.co.il/fr/projects/ | 10158 | 1911 | 5 | 1230 | 0 | 35 | 46 | 13 | 6 | BreadcrumbList,FAQPage,ItemList,WebPage | 2026-10-25 |
+| **ours** https://nad-lan.co.il/fr/projects/ | 10134 | 1911 | 5 | 1230 | 1 | 35 | 46 | 13 | 6 | BreadcrumbList,FAQPage,ItemList,WebPage | 2026-10-25 |
 | https://www.barnes-israel.com/fr/acheter/programmes-neufs.html | 1806 | 406 | 0 | 0 | 0 | 0 | 29 | **101** < | 0 |  |  |
 | https://www.barnes-international.com/fr/programme-neuf/israel/tel-aviv-yafo.html | 426 | 115 | 0 | 0 | 0 | 0 | 3 | **55** < | 0 | BreadcrumbList |  |
-| https://e-projects.fr/projets-immobiliers-a-tel-aviv/ | 216 | 28 | 0 | 0 | **1** < | 0 | 6 | 6 | 0 | BreadcrumbList,WebPage | 2026-07-11 |
+| https://e-projects.fr/projets-immobiliers-a-tel-aviv/ | 216 | 28 | 0 | 0 | 1 | 0 | 6 | 6 | 0 | BreadcrumbList,WebPage | 2026-07-11 |
 | https://immoneuf.co.il/ville/tel-aviv/ | 741 | 60 | 0 | 0 | 0 | 1 | 4 | **67** < | 0 | BreadcrumbList,CollectionPage |  |
 | https://www.ba-hit.com/projets-neufs/ | 1142 | 118 | 0 | 0 | 0 | 0 | 38 | **85** < | 0 |  |  |
 | https://www.evenisgroup.com/projets-neufs/tel-aviv/ | 4371 | 419 | 0 | 0 | 0 | 0 | **81** < | **162** < | 0 | BreadcrumbList,WebPage | 2021-12-23 |
 | https://www.immobilier.co.il/ville/telaviv/projets-neufs | 789 | 113 | 0 | 0 | 0 | 5 | 8 | 11 | 0 | AggregateOffer,Brand,BreadcrumbList,CollectionPage,FAQPage,Product |  |
-| https://www.comacom.co.il/projets-neufs-en-israel-immobilier-neuf/ | 1534 | 156 | 0 | 0 | **1** < | 0 | 9 | 9 | 0 |  |  |
+| https://www.comacom.co.il/projets-neufs-en-israel-immobilier-neuf/ | 1534 | 156 | 0 | 0 | 1 | 0 | 9 | 9 | 0 |  |  |
 | https://acheter-appartement-israel.com/articles/immobilier-neuf-en-isra-l-comment-bien-choisir-sur-plan.html | 2751 | 0 | 0 | 0 | 0 | 1 | 13 | 1 | 0 | Article,BreadcrumbList,FAQPage |  |
-| https://www.yafoinvest.com/fr/neuf/tel-aviv | 91 | 2 | 0 | 0 | **1** < | 1 | 2 | 1 | 0 |  |  |
+| https://www.yafoinvest.com/fr/neuf/tel-aviv | 91 | 2 | 0 | 0 | 1 | 1 | 2 | 1 | 0 |  |  |
 
-Read 2026-10-25 13:04. Counts from raw HTML as served (no scripts run).
+Read 2026-10-25 13:33. Counts from raw HTML as served (no scripts run).
 
 Where a competitor is ahead (for the honesty statement):
 - visuals: https://www.barnes-israel.com/fr/acheter/programmes-neufs.html has 101, we have 13
 - visuals: https://www.barnes-international.com/fr/programme-neuf/israel/tel-aviv-yafo.html has 55, we have 13
-- tools: https://e-projects.fr/projets-immobiliers-a-tel-aviv/ has 1, we have 0
 - visuals: https://immoneuf.co.il/ville/tel-aviv/ has 67, we have 13
 - visuals: https://www.ba-hit.com/projets-neufs/ has 85, we have 13
 - headings: https://www.evenisgroup.com/projets-neufs/tel-aviv/ has 81, we have 46
 - visuals: https://www.evenisgroup.com/projets-neufs/tel-aviv/ has 162, we have 13
-- tools: https://www.comacom.co.il/projets-neufs-en-israel-immobilier-neuf/ has 1, we have 0
-- tools: https://www.yafoinvest.com/fr/neuf/tel-aviv has 1, we have 0
 
 ```json
 [
  {
   "url": "https://nad-lan.co.il/fr/projects/",
   "title": "Programmes neufs en Israël 2026 : projets immobiliers | NadLan",
-  "words": 10158,
+  "words": 10134,
   "figures": 1911,
   "tables": 5,
   "cells": 1230,
-  "tools": 0,
+  "tools": 1,
   "faq": 35,
   "headings": 46,
   "visuals": 13,

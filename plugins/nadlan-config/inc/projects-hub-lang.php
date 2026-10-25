@@ -56,6 +56,20 @@ if ( ! function_exists( 'nadlan_phl_dict' ) ) {
 		$s = trim( (string) ( $s[0] ?? $t ), " ,-" );
 		return mb_strlen( $s ) >= 3 ? $s : (string) $t;
 	}
+	/** "Also in: English · Русский · Français": the same catalog in the other languages, only pages that are published */
+	function nadlan_phl_langs( $cur ) {
+		$names = array( 'he' => 'עברית', 'en' => 'English', 'ru' => 'Русский', 'fr' => 'Français' );
+		$label = array( 'he' => 'הקטלוג גם ב:', 'en' => 'Also in:', 'ru' => 'Эта страница на:', 'fr' => "Cette page en\u{202F}:" );
+		$links = array();
+		foreach ( $names as $l => $n ) {
+			if ( $l === $cur ) { continue; }
+			if ( 'he' === $l ) { $u = get_post_type_archive_link( 'nadlan_project' ); }
+			else { $pg = get_page_by_path( $l . '/projects', OBJECT, 'page' ); $u = ( $pg && 'publish' === $pg->post_status ) ? get_permalink( $pg ) : ''; }
+			if ( $u ) { $links[] = '<a href="' . esc_url( $u ) . '" hreflang="' . $l . '" lang="' . $l . '" dir="' . ( 'he' === $l ? 'rtl' : 'ltr' ) . '">' . esc_html( $n ) . '</a>'; }
+		}
+		if ( ! $links ) { return ''; }
+		return '<p class="nlphl-langs" style="margin:-2px 0 14px;font-size:14px;line-height:1.6;color:#5B6B7A">' . esc_html( $label[ $cur ] ?? '' ) . ' ' . implode( ' <span aria-hidden="true">·</span> ', $links ) . '</p>';
+	}
 	function nadlan_phl_pname( $name ) {
 		$s = trim( preg_replace( '/\s+/u', ' ', preg_replace( '/[\x{0590}-\x{05FF}״׳"]+/u', ' ', (string) $name ) ), " -|,()" );
 		return preg_match( '/[A-Za-z]{2,}/', $s ) ? $s : '';
@@ -244,7 +258,7 @@ if ( ! function_exists( 'nadlan_phl_render' ) ) {
 		$st = nadlan_ph_stage_counts(); $m = nadlan_ph_market();
 		$lead = nadlan_phl_t( $d['lead'] ?? '', array( 'total' => nadlan_phl_num( (int) ( $facets['total'] ?? 0 ), $d ), 'cities' => (int) ( $st['cities'] ?? 0 ), 'market' => count( $m['projects'] ), 'date' => nadlan_phl_date( NADLAN_PH_UPDATED, $d ) ) );
 		$jump = ''; foreach ( (array) ( $d['jump'] ?? array() ) as $k => $l ) { $jump .= '<a href="#nlph-' . esc_attr( $k ) . '">' . esc_html( $l ) . '</a>'; }
-		$out = '<p class="nlph-lede nlphl-lead">' . esc_html( $lead ) . '</p><nav class="nldir-jump nlphl-jump" aria-label="' . esc_attr( $d['crumb'] ?? '' ) . '">' . $jump . '</nav>';
+		$out = '<p class="nlph-lede nlphl-lead">' . esc_html( $lead ) . '</p><nav class="nldir-jump nlphl-jump" aria-label="' . esc_attr( $d['crumb'] ?? '' ) . '">' . $jump . '</nav>' . nadlan_phl_langs( $lang );
 		foreach ( array(
 			function () use ( $d, $lang ) { return nadlan_phl_featured_html( $d, $lang ); },
 			function () use ( $d, $lang ) { return nadlan_phl_market_html( $d, $lang ); },
