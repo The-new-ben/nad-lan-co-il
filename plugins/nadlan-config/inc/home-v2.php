@@ -122,6 +122,15 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
 }, 9999 );
 
+/* The catalog in the home's language (1.72.519, Ben 25.10.2026): /en|ru|fr/projects/ when published, else the Hebrew /projects/. */
+if ( ! function_exists( 'nadlan_hv2_projects_url' ) ) {
+	function nadlan_hv2_projects_url() {
+		$l = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+		if ( in_array( $l, array( 'en', 'ru', 'fr' ), true ) ) { $pg = get_page_by_path( $l . '/projects', OBJECT, 'page' ); if ( $pg && 'publish' === $pg->post_status ) { return get_permalink( $pg ); } }
+		return home_url( '/projects/' );
+	}
+}
+
 /* Top cities by real inventory (cached). [ ['name','projects','properties'], ... ] */
 if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
 	function nadlan_hv2_cities( $limit = 10 ) {
@@ -258,7 +267,7 @@ if ( ! function_exists( 'nadlan_hv2_band_ticker' ) ) {
 		// sample; when it is basically the TLV number it would mislead - hide it.
 		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $items[] = array( nadlan_i18n( 'tk_watch' ), number_format( (int) $s['ppsqm_il'] ) . ' ₪', home_url( '/projects/' ) ); }
 		if ( ! empty( $s['mortgage_rate'] ) ) { $items[] = array( nadlan_i18n( 'mk_rate' ), esc_html( $s['mortgage_rate'] ), home_url( '/mortgage-calculator/' ) ); }
-		if ( ! empty( $s['projects_n'] ) ) { $items[] = array( nadlan_i18n( 'tk_projects' ), number_format( (int) $s['projects_n'] ), home_url( '/projects/' ) ); }
+		if ( ! empty( $s['projects_n'] ) ) { $items[] = array( nadlan_i18n( 'tk_projects' ), number_format( (int) $s['projects_n'] ), nadlan_hv2_projects_url() ); }
 		if ( ! $items ) { return; }
 		echo '<div class="nlhv2-ticker" dir="' . ( nadlan_lang_is_rtl( nadlan_current_lang() ) ? 'rtl' : 'ltr' ) . '"><span class="nlhv2-ticker-date">' . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) ) . ' · ' . nadlan_i18n( 'tk_source' ) . '</span>';
 		foreach ( $items as $i ) {
@@ -281,7 +290,7 @@ if ( ! function_exists( 'nadlan_hv2_band_browse' ) ) {
 	   group joins (the tours hub is the canonical share URL). Panels stay
 	   tight on purpose — nav-wide link dumps dilute PageRank. */ ?>
 	<details><summary><?php nadlan_e( 'm_projects' ); ?></summary><div class="nlhv2-mega">
-		<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><b><?php nadlan_e( 'all_projects' ); ?></b></a>
+		<a href="<?php echo esc_url( nadlan_hv2_projects_url() ); ?>"><b><?php nadlan_e( 'all_projects' ); ?></b></a>
 		<?php foreach ( array_slice( $cities, 0, 6 ) as $c ) : if ( ! $c['projects'] ) { continue; } ?>
 		<a href="<?php echo esc_url( home_url( '/projects/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'projects_in' ); ?><?php echo esc_html( $c['name'] ); ?></a>
 		<?php endforeach; ?>
@@ -385,7 +394,7 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 				</div>
 			</form>
 			<div class="nlhv2-trust">
-				<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><b><?php echo number_format( $counts['projects'] ); ?></b> <?php nadlan_e( 'trust_projects' ); ?></a>
+				<a href="<?php echo esc_url( nadlan_hv2_projects_url() ); ?>"><b><?php echo number_format( $counts['projects'] ); ?></b> <?php nadlan_e( 'trust_projects' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><b><?php echo number_format( $counts['professionals'] ); ?></b> <?php nadlan_e( 'trust_pros' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><b>5</b> <?php nadlan_e( 'trust_calc' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/professionals/?profession=lawyer' ) ); ?>"><b><?php nadlan_e( 'trust_law_pre' ); ?></b> <?php nadlan_e( 'trust_law' ); ?></a>
@@ -625,7 +634,7 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 		?>
 	<section class="nlhv2-dark">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pj_kicker' ); ?></p><h2><?php nadlan_e( 'pj_title' ); ?></h2>
-			<a class="nlhv2-dark-all" href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><?php nadlan_e( 'pj_all' ); ?></a></header>
+			<a class="nlhv2-dark-all" href="<?php echo esc_url( nadlan_hv2_projects_url() ); ?>"><?php nadlan_e( 'pj_all' ); ?></a></header>
 		<div class="nlhv2-projgrid">
 			<?php foreach ( $projects as $p ) :
 				$img = nadlan_hv2_img( $p->ID );

@@ -4517,3 +4517,5 @@ RELEASE LOCK 1.72.517 (ProjectsHubForm: hunks on the live inc/projects-hub-lang.
 RELEASE DONE 1.72.517 (ProjectsHubForm: the buyer calculator is a form, card names cut singular forms) by Claude [Ashira session] 25.10.2026: released and verified, health 1.72.517. Lock released.
 RELEASE LOCK 1.72.518 (ProjectsLangLine: hunks on the live inc/projects-hub-lang.php and inc/directory.php: a visible line linking /projects/ and its English, Russian, French versions) by Claude [Ashira session, Opus 5.5] 25.10.2026.
 RELEASE DONE 1.72.518 (ProjectsLangLine: visible language line on /projects/ and the en/ru/fr catalogs) by Claude [Ashira session] 25.10.2026: released and verified, health 1.72.518. Lock released.
+RELEASE LOCK 1.72.519 (HomeLangCatalog: hunks on the live inc/home-v2.php: the en/ru/fr home pages link their own catalog /xx/projects/) by Claude [Ashira session, Opus 5.5] 25.10.2026.
+RELEASE DONE 1.72.519 (HomeLangCatalog: the en/ru/fr home pages link their own catalog) by Claude [Ashira session] 25.10.2026: released and verified, health 1.72.519. Lock released.
