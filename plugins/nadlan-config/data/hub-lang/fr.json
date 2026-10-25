@@ -1,0 +1,794 @@
+{
+ "lang": "fr",
+ "dir": "ltr",
+ "names_i": 2,
+ "cur": "EUR",
+ "cur_sign": "€",
+ "cur_after": true,
+ "num_sep": " ",
+ "home": "/fr/",
+ "home_label": "Accueil",
+ "crumb": "Programmes neufs",
+ "page_title": "Programmes neufs en Israël : projets immobiliers neufs par ville et par promoteur",
+ "seo_title": "Programmes neufs en Israël 2026 : projets immobiliers | NadLan",
+ "seo_desc": "Programmes neufs en Israël par ville : prix des promoteurs en ₪ et en €, Tel Aviv par quartier, taxe d'achat pour non-résidents et olim, garanties à vérifier.",
+ "lead": "Vous voulez acheter un appartement en Israël, neuf et directement auprès du promoteur ? Cette page réunit l'immobilier neuf en Israël en un seul endroit : {total} projets immobiliers neufs dans {cities} villes israéliennes, {market} programmes neufs et projets sur plan en commercialisation avec les prix publiés par les promoteurs, un guide de Tel Aviv par quartier, les prix réels des transactions par ville, et tout ce qu'un acheteur francophone doit savoir : taxe d'achat (mas rechisha) pour non-résidents et olim, prêt immobilier pour non-résident, garanties de la loi sur la vente et prix en shekels avec leur équivalent en euros. Mis à jour le {date}.",
+ "jump": {
+  "featured": "À la une",
+  "market": "En commercialisation",
+  "tlv": "Tel Aviv",
+  "prices": "Prix par ville",
+  "abroad": "Acheter depuis l'étranger",
+  "timeline": "Du permis aux clés",
+  "pay": "Paiements",
+  "checks": "Avant de signer",
+  "faq": "Questions fréquentes"
+ },
+ "featured_kick": "Programmes présentés en détail en français",
+ "featured_h": "Projets immobiliers neufs à la une en Israël",
+ "featured_lede": "Des programmes phares avec une page complète en français : l'immeuble, les appartements, l'emplacement, les prix lorsque le promoteur les publie et une visite virtuelle lorsqu'elle existe.",
+ "featured_more": "Voir le programme",
+ "market_kick": "En commercialisation · prix publiés par les promoteurs",
+ "market_h": "Programmes neufs en commercialisation : prix, pièces et conditions de paiement",
+ "market_lede": "{n} programmes neufs actuellement en vente, dont {tlv} à Tel Aviv, avec le prix de départ publié par le promoteur, en shekels et en euros au cours de la Banque d'Israël. Choisissez une région, comparez les prix de départ et les conditions de paiement avant de contacter un promoteur.",
+ "market_note": "Prix, pièces et conditions tels que publiés par les promoteurs sur leurs sites et dans leurs annonces, relevés le {date}. « À partir de » est le prix de l'appartement le moins cher du projet ce jour-là ; le prix final se fixe avec le promoteur et dans le contrat. Le prix est celui en shekels ; le montant en euros n'est qu'une conversion approximative pour se repérer, au cours représentatif de la Banque d'Israël du {fxdate} (1 € = {fx} ₪). Les programmes listés ici portent un nom latin ou un nom de marque ; la liste complète des {all} projets, avec les noms publiés en hébreu, figure sur le catalogue en hébreu.",
+ "market_all": "Catalogue en hébreu : les {all} projets en commercialisation",
+ "market_more": "Afficher les {n} programmes",
+ "col_project": "Programme",
+ "col_dev": "Promoteur",
+ "col_rooms": "Pièces",
+ "col_from": "À partir de",
+ "col_terms": "Conditions",
+ "col_stage": "Stade",
+ "price_ask": "Prix sur demande",
+ "stage": {
+  "presale": "Prévente",
+  "marketing": "En commercialisation",
+  "construction": "En construction",
+  "near_occupancy": "Livraison proche",
+  "immediate": "Prêt à emménager"
+ },
+ "delivery": "Livraison",
+ "regions": {
+  "": "Tout Israël",
+  "tlv": "Tel Aviv",
+  "dan": "Goush Dan",
+  "center": "Centre et Shéfela",
+  "sharon": "Sharon",
+  "south": "Sud",
+  "north": "Haïfa et Nord",
+  "jlm": "Région de Jérusalem",
+  "other": "Autres villes"
+ },
+ "tlv_kick": "Tel Aviv-Jaffa",
+ "tlv_h": "Programmes neufs à Tel Aviv : où l'on construit et à quel prix",
+ "tlv_lede": "Tel Aviv-Jaffa lance plus de logements neufs que toute autre ville d'Israël : 7 611 mises en chantier sur les 12 mois à fin juin 2026, en hausse de 19,9 %. La construction neuve se répartit entre cinq secteurs très différents, des tours face à la mer du nouveau quartier de Sde Dov au renouvellement urbain de Yad Eliyahu.",
+ "tlv_stats": [
+  [
+   "7 611",
+   "mises en chantier dans la ville, juillet 2025 à juin 2026, le chiffre le plus élevé d'Israël"
+  ],
+  [
+   "9 820",
+   "appartements neufs invendus dans la ville, fin août 2026"
+  ],
+  [
+   "878",
+   "appartements neufs vendus dans la ville, juin à août 2026"
+  ]
+ ],
+ "tlv_median": "transaction médiane, 4 pièces, {q}",
+ "tlv_areas": {
+  "north": [
+   "Nord de Tel Aviv",
+   "Sde Dov, Ramat Aviv, Neot Afeka, Hadar Yosef, Kikar Hamedina, le Vieux Nord et le Nouveau Nord",
+   "La plus forte concentration de nouvelles tours résidentielles de la ville. Les projets neufs proches de la mer se trouvent ici, dans le quartier de Sde Dov sur le littoral nord, à côté du renouvellement urbain du Vieux Nord, du Nouveau Nord et de Neot Afeka."
+  ],
+  "centre": [
+   "Centre-ville",
+   "Lev Ha'ir, le sud du Vieux Nord, Sarona et l'ensemble Somail",
+   "Des tours de standing autour d'Ibn Gabirol, de la Kirya et de Sarona, et de petits immeubles de caractère et projets TAMA 38 au cœur des quartiers historiques."
+  ],
+  "east": [
+   "Est de Tel Aviv",
+   "Yad Eliyahu, Nahalat Yitzhak, Bitzaron et Ramat Yisrael, HaSolelim",
+   "Renouvellement urbain et construction neuve le long de Derech HaShalom, à Yad Eliyahu et à Nahalat Yitzhak, à des prix inférieurs à ceux du nord."
+  ],
+  "south": [
+   "Sud de Tel Aviv",
+   "Florentin, Shapira, Neve Shaanan, Kiryat Shalom, Neve Ofer",
+   "Opérations de renouvellement urbain et immeubles neufs dans les quartiers sud, avec les prix d'entrée les plus bas de la ville."
+  ],
+  "jaffa": [
+   "Jaffa",
+   "Nord de Jaffa, Ajami, Jaffa D, Tzahalon",
+   "Des projets le long de la côte et dans le vieux et le nouveau Jaffa, à côté d'ensembles anciens en cours de renouvellement."
+  ]
+ },
+ "hoods": {
+  "בבלי": "Bavli",
+  "הצפון החדש החלק הצפ": "Nouveau Nord (partie nord)",
+  "נאות אפקה א": "Neot Afeka A",
+  "הדר יוסף": "Hadar Yosef",
+  "לב העיר": "Lev Ha'ir",
+  "גני שרונה": "Ganei Sarona",
+  "כרם התימנים": "Kerem HaTeimanim",
+  "נחלת יצחק": "Nahalat Yitzhak",
+  "ביצרון": "Bitzaron",
+  "יד אליהו": "Yad Eliyahu",
+  "קרית שלום": "Kiryat Shalom",
+  "דקר": "Dakar",
+  "נוה חן": "Neve Hen",
+  "צפון יפו": "Nord de Jaffa",
+  "יפו ד": "Jaffa D"
+ },
+ "rooms3": "3 pièces",
+ "rooms4": "4 pièces",
+ "tlv_on_market": "{n} programmes en commercialisation dans le tableau, à partir de {lo}",
+ "plans_h": "Les plans d'urbanisme qui transforment la ville",
+ "plans_cols": [
+  "Plan",
+  "Ce qu'il prévoit",
+  "Où il en est"
+ ],
+ "plans": [
+  [
+   "Quartier de Sde Dov",
+   "Environ 16 000 logements pour environ 40 000 habitants sur environ 1 300 dounams, dont environ 7 000 logements à prix abordable, avec hôtels, bureaux et commerces",
+   "Eshkol (environ 4 800 logements) approuvé en mai 2021 ; le centre (environ 7 100 logements) approuvé en 2025 ; le nord (environ 4 000 logements) en cours d'approbation",
+   "/fr/sde-dov/"
+  ],
+  [
+   "Nord-Ouest, plan TA/3700",
+   "Un nouveau quartier résidentiel le long du littoral nord, avec cinq plans détaillés (3700/1 à 3700/5)",
+   "Les oppositions aux plans détaillés ont été entendues en 2019",
+   ""
+  ],
+  [
+   "Plans des quartiers 3 et 4",
+   "TA/3616A et TA/3729A : étages supplémentaires, renforcement et reconstruction des immeubles anciens du centre-ville",
+   "Approuvés en 2018, en remplacement du plan G pour la construction sur les toits",
+   ""
+  ],
+  [
+   "Kikar Hamedina",
+   "TA/MK/2500/A : 453 logements autour de la place",
+   "En vigueur depuis 2013 ; la ville indique le stade « gros œuvre achevé », avril 2026",
+   "/projects/hamedina-fr/"
+  ],
+  [
+   "Renouvellement urbain (pinouï-binouï, TAMA 38)",
+   "Près de la moitié des démolitions-reconstructions lancées en Israël le sont dans le district de Tel Aviv",
+   "17 670 logements lancés en démolition-reconstruction sur les 12 mois à fin juin 2026, dont 45,9 % dans le district de Tel Aviv",
+   ""
+  ]
+ ],
+ "prices_kick": "Prix par ville · transactions conclues",
+ "prices_h": "Prix de l'immobilier par ville : transactions réelles et prix du neuf",
+ "prices_lede": "Avant de juger le prix d'un promoteur, regardez ce que les acheteurs ont réellement payé dans la ville. Le tableau donne le prix médian des transactions par nombre de pièces pour janvier à mars 2026, selon l'Autorité fiscale israélienne, en shekels avec l'équivalent en euros, à côté du prix de départ le plus bas publié par un promoteur dans cette ville.",
+ "prices_cols": [
+  "Ville",
+  "3 pièces",
+  "4 pièces",
+  "5 pièces",
+  "Programme neuf dès"
+ ],
+ "prices_note": "Médiane de toutes les transactions déclarées à l'Autorité fiscale israélienne (neuf et ancien), site immobilier du gouvernement, janvier à mars 2026. Ce sont des prix totaux, pas des prix au m². « Programme neuf dès » : le prix de départ le plus bas publié par un promoteur dans la ville, d'après le tableau ci-dessus. Montants en euros à 1 € = {fx} ₪ ({fxdate}).",
+ "yoy_up": "en hausse de {x} % sur un an",
+ "yoy_down": "en baisse de {x} % sur un an",
+ "abroad_kick": "Acheter depuis l'étranger",
+ "abroad_h": "Acheter un appartement neuf en Israël depuis la France ou l'étranger : taxe, prêt et transfert des fonds",
+ "abroad_lede": "Un non-résident peut acheter un appartement neuf auprès d'un promoteur israélien presque comme un Israélien, mais trois choses changent : la taxe d'achat, la part que la banque accepte de financer et la façon dont l'argent arrive en Israël. Les nouveaux immigrants (olim) bénéficient d'un fort allègement de la taxe d'achat sur leur logement.",
+ "tax_h": "Taxe d'achat (mas rechisha) selon l'acheteur, 2026",
+ "tax_cols": [
+  "Tranche de prix (₪)",
+  "Résident israélien, logement unique",
+  "Nouvel immigrant (oleh), logement unique",
+  "Non-résident ou logement supplémentaire"
+ ],
+ "tax_note": "Autorité fiscale israélienne, instruction 1/2026. Les tranches du logement unique sont gelées jusqu'au 15.1.2028 ; les taux pour non-résidents et logement supplémentaire relèvent d'une disposition temporaire, prolongée par l'avis de l'Autorité fiscale du 12.10.2026 aux achats réalisés jusqu'au 10.2.2027 inclus. L'allègement de l'oleh s'applique d'un an avant l'alyah à sept ans après, sur un seul logement, et pas au-delà de 20 183 565 ₪. Les olim arrivés avant le 15.8.2024 peuvent choisir à la place l'ancienne voie du règlement 12 (0,5 % jusqu'à 1 988 090 ₪ et 5 % au-delà), qui n'est avantageuse que pour un logement de plus de 12,5 millions de shekels environ. Sur un appartement neuf acheté à un promoteur, la taxe se calcule sur le prix TVA incluse.",
+ "calc_h": "Calculez votre achat : taxe, apport et devises",
+ "calc_price": "Prix de l'appartement (₪)",
+ "calc_buyer": "Vous achetez en tant que",
+ "calc_cur": "Afficher les montants en",
+ "calc_buyers": {
+  "single": "Résident israélien, logement unique",
+  "oleh": "Nouvel immigrant (oleh), logement unique",
+  "foreign": "Non-résident (résident étranger)",
+  "extra": "Résident israélien, logement supplémentaire"
+ },
+ "calc_rows": {
+  "tax": "Taxe d'achat (mas rechisha)",
+  "ltv": "Prêt bancaire maximum",
+  "equity": "Fonds propres nécessaires (apport + taxe)",
+  "legal": "Avocat, environ 0,5 % + TVA",
+  "total": "Total à prévoir avant les clés"
+ },
+ "calc_note": "Une estimation pour préparer votre achat, pas une offre. Plafond du prêt : 75 % pour le logement unique d'un Israélien, 50 % pour un non-résident ou un logement supplémentaire (directive 329 de la Banque d'Israël). Les honoraires d'avocat sont libres ; environ 0,5 % du prix plus 18 % de TVA est un niveau courant. Devises au cours de la Banque d'Israël du {fxdate}.",
+ "mort_h": "Prêt immobilier (mashkanta) pour non-résident",
+ "mort_p": "Les banques israéliennes prêtent à un non-résident jusqu'à 50 % de la valeur du bien, selon la directive 329 de la Banque d'Israël. Le plafond de 75 % du logement unique vise les citoyens israéliens au sens de la loi sur la fiscalité foncière, une notion qui inclut les personnes inscrites au registre de la population : un Français déjà citoyen israélien, ou un oleh, peut donc y prétendre, à confirmer avec votre banque. Taux moyens des nouveaux prêts en août 2026 : fixe non indexé environ 4,62 %, fixe indexé sur l'indice des prix environ 3,29 %, variable non indexé environ 4,42 %. Le taux directeur de la Banque d'Israël est de 3,25 % (maintenu le 21.10.2026) et le taux prime de 4,75 %.",
+ "steps_h": "Depuis la France ou l'étranger, étape par étape",
+ "steps": [
+  [
+   "Un avocat immobilier israélien",
+   "Votre avocat vérifie le promoteur, le permis, le contrat et la garantie, et fait inscrire vos droits. En Israël, il n'y a pas de notaire dans la vente : c'est l'avocat qui fait ce travail, et ce que l'on appelle « frais de notaire » en France correspond ici à la taxe d'achat et à ses honoraires."
+  ],
+  [
+   "Une procuration",
+   "Si vous ne pouvez pas être en Israël pour la signature, une procuration permet à votre avocat de signer pour vous. Elle se signe en général dans un consulat israélien ou devant un notaire local avec apostille ; votre avocat vous indique la forme exacte à respecter."
+  ],
+  [
+   "Un compte bancaire en Israël",
+   "Les paiements au promoteur passent par les bordereaux de la banque qui accompagne le projet : en pratique, il vous faut donc un compte en Israël, et la banque vous demandera l'origine des fonds. Résident fiscal français : un compte à l'étranger se déclare chaque année (formulaire 3916)."
+  ],
+  [
+   "Le transfert des fonds",
+   "Transférez par étapes, selon l'échéancier de paiement. Le cours de l'euro le jour de chaque virement modifie votre prix réel ; certains acheteurs fixent à l'avance avec leur banque le cours d'une partie du montant."
+  ],
+  [
+   "La garantie de la loi sur la vente",
+   "Tout paiement au-delà de 7 % du prix doit être garanti, en général par une garantie bancaire émise dans les 14 jours ouvrables suivant chaque paiement par bordereau. Elle tient la place de la garantie financière d'achèvement d'une VEFA française, paiement par paiement."
+  ]
+ ],
+ "abroad_links": [
+  [
+   "/fr/new-projects/",
+   "Immobilier neuf en Israël : le guide complet de l'acheteur"
+  ],
+  [
+   "/fr/guides/remote-new-apartment-handover-israel/",
+   "Réception à distance d'un appartement neuf"
+  ],
+  [
+   "/fr/guides/new-apartment-sale-specification/",
+   "Lire le cahier des charges (mifrat) avant de signer"
+  ]
+ ],
+ "timeline_kick": "Calendrier",
+ "timeline_h": "Du permis de construire aux clés : combien de temps dure un projet neuf",
+ "timeline_lede": "En Israël, la construction d'un immeuble résidentiel prend en moyenne 31,8 mois, ou 37,3 mois pondérés par le nombre de logements, selon le Bureau central des statistiques. Si vous signez en prévente ou avant le permis, ajoutez le temps des autorisations. Voici le parcours du plan d'urbanisme à l'appartement inscrit à votre nom, et ce qui protège votre argent à chaque étape.",
+ "timeline_note": "Les mois indiqués pour les étapes de construction illustrent une moyenne d'environ 32 mois par immeuble. La date de livraison qui fait foi est celle de votre contrat.",
+ "steps_tl": [
+  [
+   "Approbation du plan",
+   "des années, selon le projet",
+   "La commission d'urbanisme approuve le plan ; le renouvellement urbain exige aussi l'accord des propriétaires.",
+   "En général, pas encore de vente au public"
+  ],
+  [
+   "Permis de construire et lancement",
+   "prévente et commercialisation",
+   "Le permis autorise le début des travaux ; certains promoteurs vendent avant, en prévente.",
+   "Premier paiement : 7 % au plus sans garantie"
+  ],
+  [
+   "Terrassement et fondations",
+   "mois 0 à 6",
+   "Terrassement, soutènement et fondations : le compteur de la construction démarre ici.",
+   "Chaque paiement par bordereau, garantie sous 14 jours ouvrables"
+  ],
+  [
+   "Gros œuvre",
+   "mois 6 à 20",
+   "Les étages montent. Au plus tôt six mois après la fin des fondations, la période des modifications du descriptif se referme.",
+   "Paiements selon l'avancement ; la moitié au plus de chacun est indexée"
+  ],
+  [
+   "Finitions et équipements",
+   "mois 20 à 32",
+   "Enduits, sols, cuisines, ascenseurs et aménagements extérieurs.",
+   "L'indexation s'arrête à la date de livraison du contrat"
+  ],
+  [
+   "Tofes 4 et remise des clés",
+   "environ 32 mois en moyenne",
+   "Le certificat d'occupation (Tofes 4), la réception et les clés. Un retard de plus d'un mois ouvre droit à une indemnité selon la loi sur la vente.",
+   "Défauts apparents à signaler dans l'année"
+  ],
+  [
+   "Inscription de la copropriété",
+   "dans l'année suivant la remise des clés",
+   "Le promoteur inscrit l'immeuble en copropriété au registre foncier (Tabou).",
+   "Périodes de contrôle (bedek) de 1 à 7 ans selon le défaut"
+  ],
+  [
+   "Vos droits inscrits",
+   "dans les 6 mois suivant l'inscription",
+   "L'appartement est inscrit à votre nom et les garanties sont remplacées par l'inscription.",
+   "Puis 3 ans de garantie après chaque période de bedek"
+  ]
+ ],
+ "pay_kick": "Paiements et indexation",
+ "pay_h": "Comment payer un appartement neuf : échéancier, indexation et formules 20/80",
+ "pay_lede": "Dans la plupart des projets neufs, vous payez par étapes, au fil de la construction. Les formules 20/80 et 10/90 reportent l'essentiel du prix à la remise des clés. En août 2026, environ 30 % des ventes de promoteurs sur le marché libre, dans cinq régions fiscales dont Tel Aviv, comportaient un tel avantage de financement ; dans la région fiscale de Tel Aviv, 21 %.",
+ "pay_plans": [
+  [
+   "Échéancier classique (exemple)",
+   "selon l'avancement des travaux",
+   [
+    [
+     15,
+     "Signature"
+    ],
+    [
+     20,
+     "Fondations"
+    ],
+    [
+     25,
+     "Gros œuvre"
+    ],
+    [
+     25,
+     "Finitions"
+    ],
+    [
+     15,
+     "Livraison"
+    ]
+   ]
+  ],
+  [
+   "Formule 20/80",
+   "20 % à la signature, 80 % à la remise des clés",
+   [
+    [
+     20,
+     "Signature"
+    ],
+    [
+     80,
+     "Remise des clés"
+    ]
+   ]
+  ],
+  [
+   "Formule 10/90",
+   "10 % à la signature, 90 % à la remise des clés",
+   [
+    [
+     10,
+     "Signature"
+    ],
+    [
+     90,
+     "Remise des clés"
+    ]
+   ]
+  ]
+ ],
+ "link_h": "L'indexation en un coup d'œil",
+ "link_parts": [
+  [
+   "20 %",
+   "jamais indexés"
+  ],
+  [
+   "jusqu'à 40 %",
+   "indexables"
+  ],
+  [
+   "40 %",
+   "non indexés"
+  ]
+ ],
+ "link_aria": "Sur le prix de l'appartement, les premiers 20 % ne sont jamais indexés ; sur le reste, la moitié au plus de chaque paiement peut l'être, soit 40 % du prix au maximum",
+ "link_p": "Pour les contrats signés depuis le 7.7.2022 (amendement 9 à la loi sur la vente), la moitié au plus de chaque paiement peut être indexée sur l'indice des coûts de la construction (madad tsoumot), le premier paiement de 20 % du prix n'est jamais indexé, et l'indexation s'arrête à la date de livraison du contrat, même si la remise des clés est en retard. L'indice des coûts de la construction résidentielle de septembre 2026 : 104,0, en hausse de 3,6 % sur 12 mois. Un paiement d'un million de shekels sur lequel l'indice a progressé de 3,6 % augmente donc au plus de 18 000 shekels.",
+ "boi_p": "Depuis avril 2025, la Banque d'Israël encadre ces formules : les prêts in fine et à paiement final élevé dont le promoteur subventionne les intérêts sont plafonnés à 10 % des prêts immobiliers trimestriels de chaque banque, et un projet où plus d'un quart des contrats reportent plus de 40 % du prix à la livraison supporte une charge en capital plus élevée. Ces règles courent jusqu'au 31.12.2026.",
+ "checks_kick": "Avant de signer",
+ "checks_h": "Appartement neuf chez un promoteur : ce qu'il faut vérifier avant de signer",
+ "checks_lede": "Neuf vérifications à faire avant de signer avec un promoteur, chacune avec sa source officielle. Cochez-les au fur et à mesure : la liste reste enregistrée sur cet appareil.",
+ "checks_count": "{n} vérifications sur {t} effectuées",
+ "checks": [
+  [
+   "L'entrepreneur est inscrit au registre",
+   "Statut actif, ni gelé ni suspendu, et une classification adaptée à la taille de l'immeuble.",
+   "https://www.gov.il/apps/moch/rasham/home",
+   "Registre des entrepreneurs, ministère de la Construction"
+  ],
+  [
+   "Chaque shekel au-delà de 7 % est garanti",
+   "Une garantie bancaire selon la loi sur la vente d'appartements, une police d'assurance, une hypothèque, une note d'avertissement (heara azhara) ou un transfert de propriété. La garantie exclut la TVA, qu'un fonds du ministère des Finances rembourse si la garantie est appelée.",
+   "https://he.wikisource.org/wiki/חוק_המכר_(דירות)_(הבטחת_השקעות_של_רוכשי_דירות)",
+   "Loi sur la vente (appartements) (garantie des investissements), art. 2"
+  ],
+  [
+   "Vous ne payez que par bordereau",
+   "Dans un projet avec accompagnement bancaire, chaque paiement passe par le carnet de bordereaux (pinkas shovarim) de la banque qui accompagne le projet, et la garantie est émise sous 14 jours ouvrables. Un promoteur sans accompagnement doit vous le dire par écrit avant la signature.",
+   "https://he.wikisource.org/wiki/חוק_המכר_(דירות)_(הבטחת_השקעות_של_רוכשי_דירות)",
+   "Loi sur la garantie des investissements, art. 2A1 et 3B"
+  ],
+  [
+   "Il y a un permis de construire",
+   "À Tel Aviv, consultez les informations d'urbanisme et la carte des permis de la ville. En prévente, demandez quand le permis est attendu et ce que devient votre argent s'il prend du retard.",
+   "https://www.tel-aviv.gov.il/About/Pages/planning.aspx",
+   "Informations d'urbanisme, Tel Aviv-Jaffa"
+  ],
+  [
+   "Le descriptif est sur le formulaire officiel",
+   "Un descriptif technique (mifrat) conforme à l'arrêté sur la vente d'appartements, avec une liste de prix des éléments auxquels vous pouvez renoncer ou que vous pouvez améliorer, et une date limite pour les demandes de modification.",
+   "https://he.wikisource.org/wiki/צו_מכר_דירות_(טופס_של_מפרט)",
+   "Arrêté sur la vente d'appartements (formulaire de descriptif)"
+  ],
+  [
+   "L'indexation respecte la loi",
+   "La moitié au plus de chaque paiement, rien sur les premiers 20 % du prix, et rien après la date de livraison du contrat.",
+   "https://fs.knesset.gov.il/24/law/24_lsr_628987.pdf",
+   "Amendement 9 à la loi sur la vente, art. 5C"
+  ],
+  [
+   "La date de livraison et l'indemnité sont écrites",
+   "Une indemnité calculée sur le loyer d'un appartement comparable dès le deuxième mois de retard, sans renonciation exigée en échange des clés.",
+   "https://fs.knesset.gov.il/24/law/24_lsr_628987.pdf",
+   "Amendement 9 à la loi sur la vente, art. 5A"
+  ],
+  [
+   "Les frais d'avocat du promoteur",
+   "Au plus 5 915 ₪ ou 0,5 % du prix, le montant le plus bas étant retenu, plus TVA. Ce plafond ne s'applique pas au-delà de 4 642 750 ₪.",
+   "https://he.wikisource.org/wiki/תקנות_המכר_(דירות)_(הגבלת_גובה_ההוצאות_המשפטיות)",
+   "Règlement sur la vente (appartements) (frais juridiques)"
+  ],
+  [
+   "Extrait du registre foncier et dossier de copropriété",
+   "Cherchez les notes d'avertissement, hypothèques et saisies. Après la remise des clés, le promoteur inscrit la copropriété dans l'année et vos droits dans les 6 mois.",
+   "https://www.gov.il/he/service/land_registration_extract",
+   "Extrait du registre foncier (Tabou)"
+  ]
+ ],
+ "types_kick": "Types de projets",
+ "types_h": "Neuf, renouvellement urbain, TAMA 38, prévente et logements à prix réduit : ce qui change pour l'acheteur",
+ "types_lede": "« Projet neuf » peut désigner une tour dans un nouveau quartier, une opération de pinouï-binouï, un immeuble TAMA 38 ou un appartement de loterie gouvernementale. Dans la plupart des cas, vous achetez un appartement neuf à un promoteur avec la protection de la loi sur la vente, mais le délai jusqu'aux clés, le prix et le risque diffèrent beaucoup. Sur les 12 mois à fin juin 2026, Israël a lancé 76 040 logements, dont 17 670 en démolition-reconstruction.",
+ "types_rows": [
+  "De quoi s'agit-il",
+  "Délai jusqu'aux clés",
+  "Prix",
+  "Risque principal",
+  "En savoir plus"
+ ],
+ "types": [
+  [
+   "Neuf",
+   "Un projet sur un terrain nu, en général dans un nouveau quartier",
+   "En général environ 3 ans à partir du début des travaux",
+   "Le prix du marché du secteur",
+   "Un retard du permis ou des travaux",
+   "/fr/new-projects/",
+   "Guide de l'immobilier neuf"
+  ],
+  [
+   "Pinouï-binouï",
+   "Un ensemble de plusieurs immeubles anciens démolis et reconstruits",
+   "Des années de planification et d'accords, puis une construction normale",
+   "Proche du neuf dans le secteur",
+   "Le rythme des accords et des autorisations",
+   "/fr/guides/",
+   "Guides"
+  ],
+  [
+   "TAMA 38",
+   "Un seul immeuble : renforcement et étages supplémentaires, ou démolition et reconstruction",
+   "Plus court, un seul immeuble",
+   "En général peu d'appartements par immeuble",
+   "Des travaux à côté des habitants",
+   "/fr/guides/",
+   "Guides"
+  ],
+  [
+   "Prévente",
+   "Acheter tôt, en général avant le permis",
+   "Plus long : ajoutez le temps des autorisations",
+   "En dessous du prix de lancement complet",
+   "Le délai jusqu'aux clés et la certitude du permis",
+   "/fr/new-projects/",
+   "Acheter sur plan"
+  ],
+  [
+   "Dira Behanacha (logement à prix réduit)",
+   "Une loterie gouvernementale pour les Israéliens éligibles",
+   "Selon le projet obtenu",
+   "Une remise sur le prix du marché",
+   "Les chances d'être tiré au sort",
+   "",
+   ""
+  ],
+  [
+   "Groupe d'achat",
+   "Des acheteurs qui s'organisent pour acheter ensemble un terrain",
+   "Selon le groupe et les autorisations",
+   "Plus bas quand tout se passe bien",
+   "Risque plus élevé, sans la protection complète d'un achat auprès d'un promoteur",
+   "",
+   ""
+  ]
+ ],
+ "numbers_kick": "Le marché en chiffres · octobre 2026",
+ "numbers_h": "Le marché de l'immobilier neuf en Israël en chiffres",
+ "numbers_lede": "Les derniers chiffres officiels sur les ventes, le stock, la construction et les prix des logements neufs en Israël, du Bureau central des statistiques (CBS), du ministère des Finances et de la Banque d'Israël. Les appartements neufs ont représenté 41,8 % de tous les logements vendus de juin à août 2026.",
+ "tiles": [
+  [
+   "10 110",
+   "appartements neufs vendus, juin à août 2026",
+   "en hausse de 24,9 % sur un an · CBS"
+  ],
+  [
+   "85 680",
+   "appartements neufs invendus, fin août 2026",
+   "26,7 mois d'offre · CBS"
+  ],
+  [
+   "26 330",
+   "d'entre eux dans le district de Tel Aviv",
+   "30,7 % du stock invendu · CBS"
+  ],
+  [
+   "76 040",
+   "mises en chantier sur les 12 mois à fin juin 2026",
+   "60 970 logements achevés · CBS"
+  ],
+  [
+   "61 %",
+   "des ventes de promoteurs en août 2026 étaient sur plan",
+   "livraison à 24 mois ou plus · ministère des Finances"
+  ],
+  [
+   "104,0",
+   "indice des coûts de la construction résidentielle, septembre 2026",
+   "en hausse de 3,6 % sur 12 mois · CBS"
+  ],
+  [
+   "0,4 %",
+   "de baisse de l'indice des prix du neuf sur un an",
+   "tous logements : en baisse de 1,8 % · CBS"
+  ],
+  [
+   "3,25 %",
+   "taux directeur de la Banque d'Israël, maintenu le 21.10.2026",
+   "taux prime 4,75 % · Banque d'Israël"
+  ]
+ ],
+ "cities_h": "Projets neufs par ville",
+ "cities_note": "Les pages catalogue par ville sont en hébreu.",
+ "city_link": "Projets neufs à {city}",
+ "guides_h": "Guides pour acheter un logement neuf en Israël",
+ "guides": [
+  [
+   "/fr/new-projects/",
+   "Guide de l'immobilier neuf",
+   "Acheter sur plan et vérifier un projet avant de signer"
+  ],
+  [
+   "/fr/sde-dov/",
+   "Quartier de Sde Dov",
+   "Programmes et appartements du nouveau quartier de Tel Aviv"
+  ],
+  [
+   "/fr/sde-dov/prices/",
+   "Prix à Sde Dov",
+   "Prix au m², transactions et comparaisons"
+  ],
+  [
+   "/fr/north-tel-aviv/",
+   "Nord de Tel Aviv",
+   "Quartiers, programmes neufs et prix"
+  ],
+  [
+   "/fr/north-tel-aviv/rova-4/",
+   "Rova 4, le Nouveau Nord",
+   "Limites, plan d'urbanisme et prix"
+  ],
+  [
+   "/fr/guides/new-apartment-mamad/",
+   "Le mamad (pièce sécurisée)",
+   "Ce que l'acheteur doit contrôler"
+  ],
+  [
+   "/fr/guides/new-apartment-sale-specification/",
+   "Le cahier des charges (mifrat)",
+   "Lire le descriptif et les plans d'un appartement neuf"
+  ],
+  [
+   "/fr/guides/remote-new-apartment-handover-israel/",
+   "Réception à distance",
+   "Faire réceptionner son appartement neuf par un représentant"
+  ],
+  [
+   "/fr/guides/",
+   "Tous les guides",
+   "Acheter un appartement neuf en Israël, décision par décision"
+  ],
+  [
+   "/projects/",
+   "Catalogue en hébreu",
+   "Tous les projets d'Israël, par ville et par promoteur"
+  ]
+ ],
+ "faq_h": "Questions fréquentes sur les programmes neufs en Israël",
+ "faq": [
+  [
+   "Un non-résident peut-il acheter un appartement neuf en Israël ?",
+   "Oui. Un résident étranger peut acheter un appartement neuf auprès d'un promoteur israélien, sans faire son alyah. Trois points changent par rapport à un acheteur israélien : une taxe d'achat de 8 % jusqu'à 6 055 070 ₪ et de 10 % au-delà (disposition temporaire prolongée aux achats jusqu'au 10.2.2027 inclus), un prêt bancaire limité à 50 % de la valeur, et des paiements par bordereau qui passent par un compte en Israël."
+  ],
+  [
+   "Un étranger peut-il être propriétaire d'un terrain en Israël ?",
+   "Une grande partie du sol israélien relève des terres d'Israël, détenues en baux de longue durée. La loi sur les terres d'Israël limite les transferts à un « étranger », mais elle définit l'étranger comme une personne qui n'est ni citoyen ni résident israélien et qui n'a pas droit à l'alyah selon la loi du Retour : un acheteur juif de France n'est donc pas un étranger au sens de cette règle. Les autres acheteurs peuvent être autorisés pour un logement sur un terrain résidentiel."
+  ],
+  [
+   "Quelle taxe d'achat (mas rechisha) paie-t-on sur un appartement neuf en 2026 ?",
+   "Tout dépend de votre statut. Un résident israélien qui achète son logement unique paie 0 % jusqu'à 1 978 745 ₪, 3,5 % jusqu'à 2 347 040 ₪, 5 % jusqu'à 6 055 070 ₪, 8 % jusqu'à 20 183 565 ₪ et 10 % au-delà. Un non-résident, ou un Israélien qui achète un logement supplémentaire, paie 8 % jusqu'à 6 055 070 ₪ et 10 % au-delà, dès le premier shekel. Sur un appartement neuf, la taxe se calcule sur le prix TVA incluse."
+  ],
+  [
+   "Quel avantage fiscal pour les olim, les nouveaux immigrants ?",
+   "Un oleh qui achète un logement unique paie 0 % jusqu'à 1 978 745 ₪ et 0,5 % jusqu'à 6 055 070 ₪, puis 8 % et 10 % au-delà. L'allègement vaut d'un an avant l'alyah à sept ans après, et pas au-delà de 20 183 565 ₪. Pour un appartement de 3 000 000 ₪, cela fait environ 5 100 ₪, contre 45 538 ₪ pour un résident et 240 000 ₪ pour un non-résident. Les olim arrivés avant le 15.8.2024 peuvent choisir l'ancien règlement 12."
+  ],
+  [
+   "Je prépare mon alyah : puis-je acheter avant mon arrivée et garder l'avantage de l'oleh ?",
+   "L'allègement de l'oleh couvre un achat fait jusqu'à un an avant l'alyah et jusqu'à sept ans après. Le guide 2026 de l'Autorité fiscale précise aussi qu'un acheteur qui devient résident israélien ou résident de retour dans un délai de deux ans est traité comme résident. La façon concrète de payer puis de régulariser la taxe dépend de votre dossier : faites-la vérifier par votre avocat avant de signer, avec la date prévue de votre alyah."
+  ],
+  [
+   "Y a-t-il des frais de notaire en Israël ?",
+   "Pas au sens français. En Israël, il n'y a pas de notaire dans la vente : votre avocat vérifie le promoteur, le permis, le contrat et la garantie, dépose la déclaration de taxe d'achat et fait inscrire vos droits. Le rôle des droits de mutation est tenu par la taxe d'achat. Le promoteur peut vous facturer son propre avocat au plus 5 915 ₪ ou 0,5 % du prix, plus TVA, sauf au-delà de 4 642 750 ₪. Les honoraires de votre avocat sont libres."
+  ],
+  [
+   "Le prix affiché par le promoteur inclut-il la TVA ?",
+   "Oui. En Israël, les prix des appartements neufs publiés par les promoteurs s'entendent TVA incluse, au taux de 18 % depuis le 1.1.2025. La taxe d'achat d'un appartement neuf se calcule sur ce prix TVA incluse. En revanche, la garantie bancaire de la loi sur la vente ne couvre pas la part de TVA : si la garantie est appelée, un fonds du ministère des Finances rembourse cette TVA à l'acheteur."
+  ],
+  [
+   "Qu'est-ce que la garantie bancaire selon la loi sur la vente d'appartements ?",
+   "Un promoteur ne peut pas encaisser plus de 7 % du prix sans garantie, en général une garantie bancaire selon la loi sur la vente d'appartements. Vous payez uniquement par le carnet de bordereaux (pinkas shovarim) de la banque qui accompagne le projet, et chaque paiement entraîne l'émission d'une garantie pour vous dans les 14 jours ouvrables. Elle tient la place, paiement par paiement, de la garantie financière d'achèvement d'une VEFA française."
+  ],
+  [
+   "Acheter sur plan en Israël, est-ce comme une VEFA en France ?",
+   "Le principe est proche, les règles diffèrent. En France, la VEFA se signe chez le notaire avec une garantie financière d'achèvement ; en Israël, il n'y a pas de notaire, et chaque paiement au-delà de 7 % du prix est couvert par une garantie bancaire. L'échéancier est fixé par le contrat, l'indexation porte sur 40 % du prix au plus et l'indemnité de retard est automatique. En août 2026, 61 % des ventes de promoteurs sur le marché libre se faisaient sur plan."
+  ],
+  [
+   "Et si le promoteur ne donne pas de garantie bancaire ?",
+   "Il ne peut pas encaisser plus de 7 % du prix sans l'une des garanties prévues par la loi sur la vente d'appartements. Lorsque l'argent n'est garanti que par une hypothèque ou une note d'avertissement, le règlement limite les paiements selon l'avancement : 31 % quand le plancher le plus bas est coulé, 25 % quand la structure avec le mamad est terminée, puis 5 %, 6 %, 10 %, 13 %, 5 % et les derniers 5 % à l'occupation et à la remise des clés."
+  ],
+  [
+   "Que se passe-t-il si le promoteur livre en retard ?",
+   "Pour les contrats signés depuis le 7.7.2022, après le premier mois de retard, vous recevez sans avoir à prouver de préjudice une indemnité égale à 1 fois le loyer d'un appartement comparable pour les mois 2 à 4, 1,25 fois pour les mois 5 à 10 et 1,5 fois à partir du 11e mois. Exemple : un retard de 12 mois sur un appartement qui se louerait 10 000 ₪ donne 135 000 ₪. Le promoteur ne peut pas exiger que vous y renonciez pour vous remettre les clés."
+  ],
+  [
+   "Quelles garanties après la remise des clés en cas de défauts ?",
+   "La loi sur la vente prévoit des périodes de contrôle (bedek) qui courent dès la livraison : 1 an en règle générale, 2 ans pour la menuiserie et les sols, 3 ans pour l'isolation thermique, 4 ans pour la plomberie et l'étanchéité, jusqu'à 7 ans pour un revêtement de façade qui se décolle. Suit une garantie de 3 ans après chaque période, et 20 ans pour les défauts des parties porteuses. Les défauts visibles se signalent dans l'année suivant la livraison."
+  ],
+  [
+   "Comment fonctionne l'indexation sur un appartement neuf ?",
+   "Pour les contrats signés depuis le 7.7.2022, la moitié au plus de chaque paiement peut être indexée sur l'indice des coûts de la construction (madad tsoumot), les premiers 20 % du prix ne le sont jamais, et l'indexation s'arrête à la date de livraison du contrat. Au total, 40 % du prix au plus est indexé. L'indice de septembre 2026 était de 104,0, en hausse de 3,6 % sur 12 mois."
+  ],
+  [
+   "Que sont les formules 20/80 et 10/90 ?",
+   "Ce sont des offres de promoteurs où vous payez 20 % ou 10 % à la signature et le reste à la remise des clés, parfois avec un prêt dont le promoteur prend en charge les intérêts. Elles allègent la trésorerie, mais la Banque d'Israël les encadre depuis avril 2025, jusqu'au 31.12.2026. En août 2026, environ 30 % des ventes de promoteurs dans cinq régions fiscales comportaient un tel avantage de financement."
+  ],
+  [
+   "Peut-on obtenir un prêt immobilier en Israël quand on vit en France ?",
+   "Oui. Les banques israéliennes prêtent à un non-résident jusqu'à 50 % de la valeur du bien, selon la directive 329 de la Banque d'Israël : prévoyez donc un apport d'au moins la moitié du prix, plus la taxe et les frais. La banque demande en général des justificatifs de revenus et d'origine des fonds, un compte en Israël et une expertise du bien. En août 2026, les nouveaux prêts se faisaient en moyenne à environ 4,62 % en taux fixe non indexé et 3,29 % en taux fixe indexé."
+  ],
+  [
+   "J'ai déjà la nationalité israélienne : puis-je être financé à 75 % ?",
+   "Peut-être. La directive 329 réserve le plafond de 75 % du logement unique aux citoyens israéliens au sens de la loi sur la fiscalité foncière, une notion qui inclut toute personne inscrite au registre de la population. Un Français déjà inscrit, ou un oleh, peut donc relever des 75 % pour un logement unique, au lieu de 50 % pour un résident étranger. C'est notre lecture des textes : faites-la confirmer par votre banque avant de bâtir votre plan de financement."
+  ],
+  [
+   "Les olim ont-ils droit à une aide pour leur prêt immobilier ?",
+   "Oui, il existe un prêt aidé par l'État pour les olim sans logement, pendant 15 ans après l'alyah. Le droit passe par un certificat d'éligibilité du ministère de la Construction et du Logement et du ministère de l'Alyah et de l'Intégration, puis par les banques qui accordent les prêts immobiliers. Le montant dépend d'un barème de points et de la situation familiale : demandez le chiffre exact à votre banque avant de compter dessus."
+  ],
+  [
+   "Que veut dire « 4 pièces » dans une annonce israélienne ?",
+   "Comme en France, les annonces comptent des pièces et non des chambres, et le salon compte comme une pièce : un « 4 pièces » israélien a en général un salon et trois chambres, dont souvent le mamad. Le formulaire officiel du descriptif indique d'ailleurs le nombre de chambres mamad compris ou non. Les demi-pièces, comme 3,5 pièces, sont courantes et sans équivalent en France. Demandez le plan pour savoir ce qui est compté."
+  ],
+  [
+   "Comment sont mesurés les m² d'un appartement neuf en Israël ?",
+   "Le formulaire officiel du descriptif de vente mesure la surface de l'appartement jusqu'à la face extérieure des murs extérieurs, et jusqu'au milieu des murs partagés avec un voisin. Le balcon, le parking, la cave et le jardin sont indiqués à part, avec un écart toléré de 2 %. La surface habitable française exclut au contraire les murs et les cloisons : 100 m² israéliens font donc moins de 100 m² habitables au sens français."
+  ],
+  [
+   "Qu'est-ce qu'un mamad, et tous les appartements neufs en ont-ils un ?",
+   "Le mamad est la pièce sécurisée renforcée de l'appartement, réservée à ses seuls occupants. Les immeubles résidentiels neufs sont construits avec des espaces protégés depuis le début des années 1990, et les règlements de la défense civile fixent un mamad d'au moins 9 m² nets, pour 2,5 à 2,8 mètres de hauteur. Dans un appartement neuf, c'est en général l'une des chambres : vérifiez dans le descriptif si le nombre de chambres l'inclut."
+  ],
+  [
+   "Où se trouvent les programmes neufs à Tel Aviv ?",
+   "Surtout dans cinq secteurs : le quartier de Sde Dov et le nord de Tel Aviv le long de la mer, les tours de standing du centre autour d'Ibn Gabirol et de Sarona, le renouvellement urbain de l'est (Yad Eliyahu, Nahalat Yitzhak), les quartiers sud et Jaffa. La section Tel Aviv de cette page présente chaque secteur avec les prix des transactions et les programmes en commercialisation."
+  ],
+  [
+   "Combien coûte un appartement neuf à Tel Aviv ?",
+   "La transaction médiane officielle pour un 4 pièces à Tel Aviv-Jaffa était de 5 229 800 ₪ de janvier à mars 2026, soit environ 1,5 million d'euros, neuf et ancien confondus. Les programmes neufs démarrent plus bas dans le sud et l'est de la ville, et bien plus haut dans le nord et en front de mer. Le tableau de cette page donne les prix de départ publiés par les promoteurs, en shekels et en euros."
+  ],
+  [
+   "Quel est le prix au m² d'un appartement neuf à Tel Aviv ?",
+   "Il n'existe pas de série officielle du prix au m² du neuf à Tel Aviv : les chiffres au m² qui circulent viennent de promoteurs ou d'agences. Les données officielles sont des prix totaux de transactions : de janvier à mars 2026, la médiane était de 4 225 800 ₪ pour un 3 pièces, 5 229 800 ₪ pour un 4 pièces et 7 497 700 ₪ pour un 5 pièces. N'oubliez pas qu'un m² israélien inclut les murs extérieurs."
+  ],
+  [
+   "Y a-t-il des préventes à Tel Aviv ?",
+   "Oui. Les promoteurs ouvrent régulièrement des tours de prévente avant le permis de construire ou au début de la commercialisation, à un prix inférieur au prix de lancement complet. En prévente, vous payez un appartement plus éloigné des clés : vérifiez le stade du permis, le calendrier et la garantie sur chaque paiement avant de vous engager."
+  ],
+  [
+   "Combien de temps entre la signature et la remise des clés ?",
+   "Cela dépend du stade du projet à la signature. Selon le Bureau central des statistiques, un immeuble résidentiel se construit en moyenne en 31,8 mois à partir du début des travaux. Signer avant le permis ajoute le temps des autorisations. Si le promoteur a plus d'un mois de retard sur la date du contrat, la loi sur la vente vous ouvre droit à une indemnité."
+  ],
+  [
+   "Quelles villes d'Israël attirent les acheteurs francophones ?",
+   "Netanya, Ashdod, Jérusalem, Ra'anana, Tel Aviv, Bat Yam et Herzliya sont des villes où vivent d'importantes communautés francophones, avec de nombreux projets neufs. Les liens par ville de cette page ouvrent les projets de chaque ville sur le catalogue en hébreu, et le tableau des prix compare les transactions dans les principales villes du pays."
+  ],
+  [
+   "Où trouver un programme neuf moins cher en Israël ?",
+   "Dans les prix de départ publiés par les promoteurs que nous avons relevés le 25.10.2026, les programmes les moins chers se trouvent à Eilat, Netivot, Beer Sheva et Hadera, à partir d'environ 1,3 million de shekels, contre 1 990 000 ₪ pour le moins cher de Tel Aviv. À titre de repère, la transaction médiane d'un 4 pièces en Israël était de 2 028 800 ₪ d'avril à juin 2026, neuf et ancien confondus."
+  ],
+  [
+   "Peut-on acheter en Israël sans se déplacer ?",
+   "Oui. Une procuration, signée en général dans un consulat israélien ou devant un notaire avec apostille, selon la forme que demande votre avocat, lui permet de signer pour vous. Les paiements passent par bordereau depuis un compte en Israël, et la garantie de la loi sur la vente est émise à votre nom. La réception de l'appartement peut parfois se faire par un représentant : notre guide de la réception à distance explique comment."
+  ],
+  [
+   "Faut-il déclarer en France un compte ou un bien en Israël ?",
+   "Un résident fiscal français doit déclarer chaque année les comptes ouverts à l'étranger, y compris en Israël, avec le formulaire 3916 ; l'amende est de 1 500 € par compte non déclaré. Pour l'imposition des loyers et de la revente, et pour l'application de la convention fiscale entre la France et Israël, faites le point avec votre conseiller fiscal avant l'achat : les règles dépendent de votre situation."
+  ],
+  [
+   "Comment vérifier un promoteur avant de signer ?",
+   "Vérifiez d'abord que l'entrepreneur est inscrit au registre du ministère de la Construction, avec un statut actif et une classification adaptée à l'immeuble. Demandez ensuite si le projet a un accompagnement bancaire et comment chaque paiement est garanti, s'il y a un permis de construire et un descriptif sur le formulaire officiel. Un extrait du registre foncier (Tabou) montre les hypothèques et les notes d'avertissement. La liste de cette page reprend ces neuf points."
+  ],
+  [
+   "Quand l'appartement est-il inscrit à mon nom au Tabou ?",
+   "La loi sur la vente fixe deux délais. Le promoteur doit inscrire l'immeuble en copropriété dans l'année qui suit l'inscription du parcellaire ou la remise des clés, la date la plus tardive étant retenue. Vos droits doivent ensuite être inscrits au registre foncier, le Tabou, dans les 6 mois suivant l'inscription de la copropriété. Les retards dont le promoteur prouve qu'ils ne dépendaient pas de lui ne sont pas comptés."
+  ],
+  [
+   "TAMA 38 et pinouï-binouï : de quoi s'agit-il ?",
+   "Ce sont les deux grandes formes de renouvellement urbain. La TAMA 38 porte sur un seul immeuble : renforcement et étages supplémentaires, ou démolition et reconstruction. Le pinouï-binouï démolit et reconstruit un ensemble de plusieurs immeubles anciens, après des années de planification et d'accords des propriétaires. Sur les 12 mois à fin juin 2026, 17 670 logements ont été lancés en démolition-reconstruction, dont 45,9 % dans le district de Tel Aviv."
+  ],
+  [
+   "Les prix de l'immobilier neuf en Israël montent-ils ou baissent-ils en 2026 ?",
+   "Les derniers chiffres officiels vont dans des sens différents. L'indice des prix des logements neufs du Bureau central des statistiques a reculé de 0,4 % sur un an, et celui de tous les logements de 1,8 %. À Tel Aviv-Jaffa, la transaction médiane d'un 4 pièces a en revanche progressé de 10,7 % sur un an au premier trimestre 2026. La section du marché en chiffres de cette page donne les dernières données publiées."
+  ],
+  [
+   "Combien d'appartements neufs sont invendus en Israël ?",
+   "Selon le Bureau central des statistiques, environ 85 680 appartements neufs restaient invendus fin août 2026, soit 26,7 mois d'offre. Environ 26 330 se trouvaient dans le district de Tel Aviv et environ 9 820 à Tel Aviv-Jaffa même. Dans le même temps, 10 110 appartements neufs ont été vendus de juin à août 2026, en hausse de 24,9 % sur un an."
+  ],
+  [
+   "Où voir les prix des programmes neufs en Israël ?",
+   "Le tableau des programmes en commercialisation de cette page donne les prix de départ publiés par les promoteurs, en shekels et en euros, avec la date du relevé. À côté, le tableau des prix par ville montre ce que les acheteurs ont réellement payé, pour comparer les prix de lancement aux transactions réelles. Le prix en shekels est celui du contrat ; l'euro est indicatif, au cours de la Banque d'Israël."
+  ]
+ ],
+ "sources_h": "Sources officielles",
+ "sources": [
+  [
+   "https://www.cbs.gov.il/he/mediarelease/DocLib/2026/317/04_26_317b.pdf",
+   "Bureau central des statistiques : logements dans les transactions immobilières, juin à août 2026"
+  ],
+  [
+   "https://www.cbs.gov.il/he/mediarelease/DocLib/2026/297/04_26_297b.pdf",
+   "Bureau central des statistiques : mises en chantier et achèvements, juillet 2025 à juin 2026"
+  ],
+  [
+   "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/review-real-estate-082026/he/reviews-and-publishes_review-real-estate-082026.pdf",
+   "Ministère des Finances, économiste en chef : revue du marché du logement, août 2026"
+  ],
+  [
+   "https://www.boi.org.il/media/ez4npagt/329.pdf",
+   "Banque d'Israël : directive 329 sur les prêts immobiliers"
+  ],
+  [
+   "https://www.boi.org.il/media/xwkag15z/h2816.pdf",
+   "Banque d'Israël : circulaire 2816 sur les formules de financement des promoteurs"
+  ],
+  [
+   "https://www.gov.il/BlobFolder/policy/inst-01-2026/he/realestate_inst-01-2026.pdf",
+   "Autorité fiscale israélienne : tranches de la taxe d'achat 2026"
+  ],
+  [
+   "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+   "Banque d'Israël : cours de change représentatifs"
+  ],
+  [
+   "https://www.nadlan.gov.il/",
+   "Site immobilier du gouvernement : transactions conclues"
+  ],
+  [
+   "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+   "Municipalité de Tel Aviv-Jaffa : le quartier de Sde Dov"
+  ],
+  [
+   "https://www.gov.il/apps/moch/rasham/home",
+   "Ministère de la Construction : registre des entrepreneurs"
+  ]
+ ],
+ "updated": "Mis à jour le {date}. NadLan est un site d'information indépendant, pas une agence immobilière ; les noms des projets et des promoteurs ne figurent qu'à titre d'identification.",
+ "dec": ",",
+ "pct": " %"
+}

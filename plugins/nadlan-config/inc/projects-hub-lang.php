@@ -21,6 +21,8 @@ if ( ! function_exists( 'nadlan_phl_dict' ) ) {
 	function nadlan_phl_t( $s, $v = array() ) { foreach ( (array) $v as $k => $x ) { $s = str_replace( '{' . $k . '}', (string) $x, (string) $s ); } return (string) $s; }
 	/** 3215000 -> "3,215,000" (en) or "3 215 000" (ru, fr; narrow no-break space) */
 	function nadlan_phl_num( $n, $d ) { return number_format( (float) $n, 0, '.', ',' === ( $d['num_sep'] ?? ',' ) ? ',' : "\u{202F}" ); }
+	/** 3.4844 -> "3,4844" where the language writes a decimal comma (ru, fr) */
+	function nadlan_phl_dec( $n, $d ) { return str_replace( '.', (string) ( $d['dec'] ?? '.' ), (string) $n ); }
 	function nadlan_phl_fx( $d ) {
 		$fx = nadlan_ph_json( 'assets/instruments/data/boi-fx.json' ); $c = $d['cur'] ?? 'USD';
 		return array( (float) ( $fx['fx'][ $c ]['rate'] ?? 0 ), (string) ( $fx['fx'][ $c ]['date'] ?? '' ) );
@@ -63,7 +65,7 @@ if ( ! function_exists( 'nadlan_phl_featured_html' ) ) {
 		$cards = ''; $items = array();
 		foreach ( $ids as $i => $id ) {
 			$t = wp_strip_all_tags( get_the_title( $id ) ); $u = get_permalink( $id );
-			$img = get_the_post_thumbnail_url( $id, 'medium_large' ); $city = (string) get_post_meta( $id, 'city', true );
+			$img = get_the_post_thumbnail_url( $id, 'medium_large' ); $city = nadlan_phl_city( (string) get_post_meta( $id, 'city', true ), $d ); // the city in the page's language, or nothing
 			$cards .= '<a class="nlphl-card" href="' . esc_url( $u ) . '">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $t ) . '" loading="lazy" width="640" height="400">' : '' )
 				. '<b>' . esc_html( $t ) . '</b>' . ( $city ? '<small>' . esc_html( $city ) . '</small>' : '' ) . '<span>' . esc_html( $d['featured_more'] ?? '' ) . ' &rsaquo;</span></a>';
 			$items[] = array( '@type' => 'ListItem', 'position' => $i + 1, 'url' => $u, 'name' => $t );
@@ -113,7 +115,7 @@ if ( ! function_exists( 'nadlan_phl_market_html' ) ) {
 			. '<div class="nlph-chips nlphl-chips" role="group">' . $chips . '</div>'
 			. '<div class="nlph-tw"><table class="nlphl-mt"><thead><tr>' . $cols . '</tr></thead><tbody>' . $tr . '</tbody></table></div>'
 			. '<button type="button" class="nlph-btn nlph-btn--ghost" id="nlphl-more">' . esc_html( nadlan_phl_t( $d['market_more'] ?? '', array( 'n' => count( $rows ) ) ) ) . '</button>'
-			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['market_note'] ?? '', array( 'date' => $date, 'fxdate' => nadlan_phl_date( $fxd, $d ), 'fx' => $fx, 'all' => $all ) ) ) . ' <a href="' . esc_url( home_url( '/projects/#nlph-market' ) ) . '">' . esc_html( nadlan_phl_t( $d['market_all'] ?? '', array( 'all' => $all ) ) ) . '</a></p></section>';
+			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['market_note'] ?? '', array( 'date' => $date, 'fxdate' => nadlan_phl_date( $fxd, $d ), 'fx' => nadlan_phl_dec( $fx, $d ), 'all' => $all ) ) ) . ' <a href="' . esc_url( home_url( '/projects/#nlph-market' ) ) . '">' . esc_html( nadlan_phl_t( $d['market_all'] ?? '', array( 'all' => $all ) ) ) . '</a></p></section>';
 	}
 }
 
@@ -154,7 +156,7 @@ if ( ! function_exists( 'nadlan_phl_prices_html' ) ) {
 		foreach ( $rows as $r ) {
 			list( $city, $x ) = $r; $cn = nadlan_phl_city( $city, $d ); if ( '' === $cn ) { continue; }
 			$from = $mk[ $city ] ?? ( $mk[ $alias[ $city ] ?? '' ] ?? 0 );
-			$yoy = isset( $x['yoy4'] ) ? nadlan_phl_t( $x['yoy4'] < 0 ? ( $d['yoy_down'] ?? '' ) : ( $d['yoy_up'] ?? '' ), array( 'x' => abs( (float) $x['yoy4'] ) ) ) : '';
+			$yoy = isset( $x['yoy4'] ) ? nadlan_phl_t( $x['yoy4'] < 0 ? ( $d['yoy_down'] ?? '' ) : ( $d['yoy_up'] ?? '' ), array( 'x' => nadlan_phl_dec( abs( (float) $x['yoy4'] ), $d ) ) ) : '';
 			$bars .= '<li style="--w:' . round( 100 * (int) $x['r4'] / max( 1, $max ), 1 ) . '%"' . ( 'תל אביב יפו' === $city ? ' class="is-tlv"' : '' ) . '><span>' . esc_html( $cn ) . '</span><i></i><b>' . esc_html( '₪' . nadlan_phl_num( $x['r4'], $d ) ) . '</b></li>';
 			$tr .= '<tr><th scope="row">' . esc_html( $cn ) . '</th><td data-l="' . esc_attr( $d['prices_cols'][1] ?? '' ) . '">' . ( ! empty( $x['r3'] ) ? esc_html( '₪' . nadlan_phl_num( $x['r3'], $d ) ) : '' ) . '</td>'
 				. '<td data-l="' . esc_attr( $d['prices_cols'][2] ?? '' ) . '"><b>' . nadlan_phl_money( $x['r4'], $d ) . '</b>' . ( $yoy ? '<small>' . esc_html( $yoy ) . '</small>' : '' ) . '</td>'
@@ -164,7 +166,7 @@ if ( ! function_exists( 'nadlan_phl_prices_html' ) ) {
 		$pc = ''; foreach ( (array) ( $d['prices_cols'] ?? array() ) as $c ) { $pc .= '<th scope="col">' . esc_html( $c ) . '</th>'; }
 		return '<section class="nlph-sec" id="nlph-prices"><p class="nlph-kick">' . esc_html( $d['prices_kick'] ?? '' ) . '</p><h2>' . esc_html( $d['prices_h'] ?? '' ) . '</h2><p class="nlph-lede">' . esc_html( $d['prices_lede'] ?? '' ) . '</p>'
 			. '<ol class="nlph-bars">' . $bars . '</ol><div class="nlph-tw"><table class="nlph-pt"><thead><tr>' . $pc . '</tr></thead><tbody>' . $tr . '</tbody></table></div>'
-			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['prices_note'] ?? '', array( 'fx' => $fx, 'fxdate' => nadlan_phl_date( $fxd, $d ) ) ) ) . '</p></section>';
+			. '<p class="nlph-src">' . esc_html( nadlan_phl_t( $d['prices_note'] ?? '', array( 'fx' => nadlan_phl_dec( $fx, $d ), 'fxdate' => nadlan_phl_date( $fxd, $d ) ) ) ) . '</p></section>';
 	}
 }
 
@@ -176,7 +178,7 @@ if ( ! function_exists( 'nadlan_phl_abroad_html' ) ) {
 		foreach ( $cuts as $i => $lo ) {
 			$hi = $cuts[ $i + 1 ] ?? null; $mid = null === $hi ? $lo + 1 : ( $lo + $hi ) / 2;
 			$band = null === $hi ? '> ' . nadlan_phl_num( $lo, $d ) : nadlan_phl_num( $lo, $d ) . ' - ' . nadlan_phl_num( $hi, $d );
-			$f = function ( $r ) { return rtrim( rtrim( number_format( 100 * $r, 1 ), '0' ), '.' ) . '%'; };
+			$f = function ( $r ) use ( $d ) { return nadlan_phl_dec( rtrim( rtrim( number_format( 100 * $r, 1 ), '0' ), '.' ), $d ) . ( $d['pct'] ?? '%' ); };
 			$rows .= '<tr><th scope="row">' . esc_html( $band ) . '</th><td data-l="' . esc_attr( $d['tax_cols'][1] ?? '' ) . '">' . $f( $rate( 'single', $mid ) ) . '</td><td data-l="' . esc_attr( $d['tax_cols'][2] ?? '' ) . '">' . $f( $rate( 'oleh', $mid ) ) . '</td><td data-l="' . esc_attr( $d['tax_cols'][3] ?? '' ) . '">' . $f( $rate( 'foreign', $mid ) ) . '</td></tr>';
 		}
 		$tc = ''; foreach ( (array) ( $d['tax_cols'] ?? array() ) as $c ) { $tc .= '<th scope="col">' . esc_html( $c ) . '</th>'; }

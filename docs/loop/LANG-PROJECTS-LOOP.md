@@ -21,11 +21,11 @@ from the 25.10 incident: PHP_RELS lists every hunked file; never make old code r
 | L3 | Content per language: hub copy written natively (not a literal translation), language-specific sections (foreign buyer tax, olim, non-resident mortgage, FX, power of attorney, buying from abroad), FAQ from that language's PAA | en done (23 FAQ, research findings in); ru done (30 FAQ, новостройки, МАМАД/МАМАК); fr being written |
 | L4 | Code: [nadlan_projects_hub lang=..] render (catalog cards in the language, market table labels, tools with en blocks, infographics), hreflang group /projects/ <-> /xx/projects/ (page-lang.php + projects-hub.php), sitemap | **written** (inc/projects-hub-lang.php, names.json, buyer calculator verified to the shekel; release 1.72.514 prepared, make_deploy514.py) |
 | L5 | Design preview (phone + desktop) for en | done (preview/preview-en.html, phone checked) |
-| L6 | Release (hunk rules), create the WP pages under /en/ /ru/ /fr/, live checks, verify_live per language | 513 market data LIVE 25.10; 514 (code + en) dry-run running; ru+fr data next release |
+| L6 | Release (hunk rules), create the WP pages under /en/ /ru/ /fr/, live checks, verify_live per language | 513 market LIVE; 514 code+en LIVE; **/en/projects/ LIVE 25.10** (page 8608, all checks OK except Hebrew city on cards -> fixed in 515); 515 (ru+fr data, decimal comma, ptax extension) first run rolled back on an inherited old-date check, rerun running; then publish ru, fr; 516 = cards (short names, pictures, h3), LTR heading, dateModified (scratchpad patch_cards.py) |
 | L7 | Links: /xx/ homes + /xx/new-projects/ guides -> /xx/projects/ (a few a day), /projects/ <-> language switcher | todo |
-| L8 | Proof vs each language's competitors (depth + fact coverage), screenshots, links to Ben | todo |
+| L8 | Proof vs each language's competitors (depth + fact coverage), screenshots, links to Ben | en done (proof-depth-en.md: words 8,194 vs best 5,349; figures 1,154 vs 827; tables 5 vs 0; FAQ 23 vs 8; sources 6 vs 0; behind on pictures 3 vs 11-191 and headings 34 vs 37); ru, fr after publish |
 
 ## Follow-ups found
-- ptax tool (ptax.json valid.extra/foreign + ptax.js strings) still says the foreign/additional tax order ends 31.12.2026: extend to 10.2.2027 in its own small release.
+- ptax tool extension to 10.2.2027 rides 515; the Hebrew pages /purchase-tax-calculator/ (8 sentences + description) and /real-estate-tax-advisor/purchase-tax-investor/ (2) are corrected by fix_ptax_extension.py after 515.
 - English-speaker cities thin in our data (Beit Shemesh 1, Modiin 2, Efrat 0); French cities have no French project pages (Netanya, Ashdod, Jerusalem, Ra'anana).
 - Prices: shekel is the price; the $/€ figure is labelled an approximate conversion (Consumer Protection s.17D). Legal reading for Ben.

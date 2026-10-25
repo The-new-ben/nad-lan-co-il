@@ -3,7 +3,7 @@
 our /<lang>/projects/ against the first-page pages read in lang-dna-<lang>.md (URLs = the canonicals of the saved raw pages).
   python docs/research/2026-10-25-projects-hub/proof_lang.py en|ru|fr  -> proof-depth-<lang>.md"""
 import os, subprocess, sys
-H = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(H))
+H = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(os.path.dirname(H)))
 THEM = {
     "en": ["https://homeinisrael.com/en/new-projects/", "https://www.buyitinisrael.com/projects/",
            "https://www.immobilier.co.il/en/city/telaviv/new-projects",

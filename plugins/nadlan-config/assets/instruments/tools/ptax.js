@@ -4,7 +4,7 @@
      regulation 12 for an oleh who arrived before 15.8.2024), a foreign resident, a disabled buyer (regulation 11), land or a
      non-residential property (6%, 5% with a permit within 2 years), a gift to a relative (1/3 of the regular tax);
    - each track shows its own end date: the only-home brackets are frozen to 15.1.2028, the additional-home and foreign rate is
-     a temporary order to 31.12.2026 (instruction 1/2026);
+     a temporary order to 31.12.2026 (instruction 1/2026), extended to 10.2.2027 (Tax Authority notice 12.10.2026);
    - the upgrader mode: by the purchase date (24 months from 1.6.2025, 18 months from 1.6.2023, 12 months from receiving a
      contractor home, the later of them) and the war extension of instruction 2/2026, the date to sell the previous home by, and
      what missing it costs;
@@ -64,9 +64,9 @@
   var NAMES = { single: 'דירה יחידה', extra: 'דירה נוספת', oleh: 'עולה חדש', foreign: 'תושב חוץ', disabled: 'נכה או נפגע', land: 'קרקע או נכס מסחרי', gift: 'מתנה לקרוב משפחה' };
   var NOTE = {
     single: 'יחיד תושב ישראל שזו הדירה היחידה שלו. מי שיש לו דירה וימכור אותה בזמן נחשב כאן: 24 חודשים לרכישה מ־1.6.2025, 18 חודשים לרכישה מ־1.6.2023 עד 31.5.2025, או 12 חודשים מקבלת דירה מקבלן, המאוחר מביניהם.',
-    extra: 'למי שיש כבר דירה ולא ימכור אותה בזמן, ולחברה. השיעור הזה הוא הוראת שעה עד 31.12.2026; מה יחול אחר כך עוד לא פורסם.',
+    extra: 'למי שיש כבר דירה ולא ימכור אותה בזמן, ולחברה. השיעור הזה הוא הוראת שעה, שהוארכה לרכישות עד 10.2.2027; מה יחול אחר כך עוד לא פורסם.',
     oleh: 'תקנה 12א: מרכישה שנה לפני העלייה ועד 7 שנים אחריה, בדירה יחידה. מעל 20,183,565 ₪ ההקלה לא חלה ומחשבים כדירה יחידה.',
-    foreign: 'מי שאינו תושב ישראל משלם כמו דירה נוספת, גם אם זו הדירה היחידה שלו, אלא אם יהפוך לתושב תוך שנתיים. הוראת שעה עד 31.12.2026.',
+    foreign: 'מי שאינו תושב ישראל משלם כמו דירה נוספת, גם אם זו הדירה היחידה שלו, אלא אם יהפוך לתושב תוך שנתיים. הוראת שעה, הוארכה לרכישות עד 10.2.2027.',
     disabled: 'תקנה 11: נכה, עיוור, נפגע פעולות איבה ומשפחות שכולות, פעמיים בלבד. בדירה יחידה עד 2,500,000 ₪: פטור עד המדרגה הראשונה ו־0.5% על השאר. טופס 2973.',
     land: 'קרקע ונכס שאינו דירת מגורים: 6%. קרקע שיש עליה תכנית לדירה אחת לפחות, והיתר בנייה בתוך שנתיים: 5%.',
     gift: 'מתנה לקרוב (בן זוג, הורה, צאצא ובן זוגו, נכד, אח): שליש מהמס הרגיל. מתנה לבן זוג שגר עם הנותן בדירה: פטורה.'
@@ -127,7 +127,7 @@
           notes.push('<b>עד ' + F.date(sb.date) + '</b> (' + sb.how + (sb.ext ? ', כולל הארכת המלחמה לפי הוראה 2/2026' : '') + '). מי שלא ימכור בזמן ישלם את ההפרש לדירה נוספת, כאן ' + F.ils(extra - single) + ', ועוד הצמדה וריבית.');
         }
       }
-      if ((k === 'extra' || k === 'foreign') && v.bdate && d(v.bdate) && d(v.bdate) > d(P.valid.extra)) notes.push('<b>עסקה אחרי 31.12.2026:</b> הוראת השעה של 8% ו־10% מסתיימת, ומה יחול אחריה עוד לא פורסם.');
+      if ((k === 'extra' || k === 'foreign') && v.bdate && d(v.bdate) && d(v.bdate) > d(P.valid.extra)) notes.push('<b>עסקה אחרי 10.2.2027:</b> הוראת השעה של 8% ו־10% מסתיימת, ומה יחול אחריה עוד לא פורסם.');
       var SC = ['single', 'extra', 'oleh', 'foreign', 'disabled'];
       return {
         answer: { label: 'מס הרכישה, ' + NAMES[k] + (s < 1 ? ', ' + F.num(v.share) + '% מהדירה' : ''), value: F.ils(t), tone: t > 0 ? 'survey' : 'ink',
@@ -140,7 +140,7 @@
         table: { title: 'המס מדרגה אחרי מדרגה, ' + NAMES[k], head: ['מדרגה', 'שיעור', 'הסכום במדרגה', 'המס'], num: [2, 3],
           rows: full.rows.map(function (r) { return [(r.from ? F.ils(r.from) : '₪0') + ' עד ' + (r.to === Infinity ? 'מעל' : F.ils(r.to)), F.num(100 * r.rate, 1) + '%' + (k === 'gift' ? ' × שליש' : ''), F.ils(r.part * s), F.ils(r.tax * s)]; }) },
         formula: 'מס רכישה = סכום על כל המדרגות של (החלק מהמחיר שנופל במדרגה × שיעור המדרגה), כפול החלק שאתם קונים. המדרגות חלות על שווי הדירה כולה.',
-        sources: [{ label: P.instruction.label, url: P.instruction.url }, { label: P.guide.label, url: P.guide.url }, { label: P.source + ', נבדק ' + F.date(P.checked), url: P.url }].concat(k === 'single' && v.upg === 'yes' ? [{ label: P.war.label, url: P.war.url }] : []),
+        sources: [{ label: P.instruction.label, url: P.instruction.url }, { label: P.guide.label, url: P.guide.url }, { label: P.source + ', נבדק ' + F.date(P.checked), url: P.url }].concat(k === 'single' && v.upg === 'yes' ? [{ label: P.war.label, url: P.war.url }] : []).concat((k === 'extra' || k === 'foreign') && P.extension ? [{ label: P.extension.label, url: P.extension.url }] : []),
         text: 'מס רכישה, ' + NAMES[k] + ': דירה ב־' + F.ils(v.price) + (s < 1 ? ', ' + F.num(v.share) + '% מהדירה' : '') + ' = ' + F.ils(t) + ' (' + F.num(part ? 100 * t / part : 0, 2) + '%).'
       };
     }

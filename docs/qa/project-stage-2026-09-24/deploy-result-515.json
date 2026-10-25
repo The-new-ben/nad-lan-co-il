@@ -1,0 +1,23 @@
+{
+  "released": "1.72.515",
+  "from": "1.72.514",
+  "live_before": {
+    "nadlan-config.php": "29b2555e2eb63fbe97d0c434c6171b08",
+    "inc/projects-hub-lang.php": "c53dd8c1b84a9c586e9f21c09c9e2d03",
+    "assets/instruments/data/ptax.json": "7371eb9da252b29a5e6125b5982ced15",
+    "assets/instruments/tools/ptax.js": "f7146a705fac274faa9613b65960fc24"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-25 13:00:42",
+  "files": {
+    "data/hub-lang/ru.json": "8a7de5ee75db0937ac9eb568e6ecb20e",
+    "data/hub-lang/fr.json": "5609ede7027214c4ff79777939ea0957",
+    "nadlan-config.php": "dca0f950b9bc5ba136c1651e24b71d59",
+    "inc/projects-hub-lang.php": "2f5ec5f5bc51696d4f820e762c8be010",
+    "assets/instruments/data/ptax.json": "54e79c5daef0d4349712904e94b39530",
+    "assets/instruments/tools/ptax.js": "df1cac4bd98864312c97866bfe5a1100"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.515, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
