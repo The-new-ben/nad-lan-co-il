@@ -33,7 +33,7 @@ with UX and design, every page a masterpiece. The cities later (HAD-602), not en
 | Q6 | /glossary/לוח-גבס-אדום/ | גבס אדום 133@9 · לוח גבס כתום 80@28 · לוח גבס אדום 70@12 | research (agent B) |
 | Q7 | Sde Dov: /sde-dov/ vs /sde-dov/prices/ | דירות למכירה בשדה דב: 181@34 on /sde-dov/ and 96@17 on /sde-dov/prices/ (two of our pages on one query) | finding; owner decision after research |
 | Q8 | /projects/rainbow-tel-aviv/ | ריינבו קנדה ישראל 100@14 · rainbow תל אביב 96@13 · פרויקט ריינבו 94@15 | later (fleet page laws) |
-| U1 | /mortgage-calculator/ | מחשבון משכנתא 573@45 · מחשבון משכנתא הפוכה 434@54 · חישוב משכנתא 338@44 · כמה משכנתא אפשר לקחת 310@64 · לפי החזר חודשי 298@38 (8,215 impressions) | research (agent C) |
+| U1 | /mortgage-calculator/ | מחשבון משכנתא 573@45 · מחשבון משכנתא הפוכה 434@54 · חישוב משכנתא 338@44 · כמה משכנתא אפשר לקחת 310@64 · לפי החזר חודשי 298@38 (8,215 impressions) | research DONE (u1-mortgage-calculator/dna.md). Quick fixes LIVE 25.10: 19 dead links in 5 cluster pages fixed, calculator defaults = BoI averages (4.62 / 4.75 / 3.19, dated), banned words out, interest-rates meta updated; calculator pressed: 6,625 ₪ for the default mix = hand calc. Next: data file data/boi-mortgage.json (SDMX + BoI xls), Mortgage 2.0 tool, design, page sections T1-T9 + V1-V4 + 30 FAQ + moat |
 | U2 | /investment/ | נדלן להשקעה 345@36 · השקעות נדלן 333@75 · מימון נדלן 273@83 · דירות להשקעה 231@55 (7,026) | next |
 | U3 | /en/israel-mortgage-non-residents/ (English version of the Hebrew page) | israel mortgage for foreigners 179@63 on the Hebrew page · hipoteca en israel para extranjeros 83@77 | next |
 | C | Cities (HAD-602) | later, Ben's word | parked |
