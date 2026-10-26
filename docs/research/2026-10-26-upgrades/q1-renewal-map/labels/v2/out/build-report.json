@@ -1,0 +1,54 @@
+{
+ "target": {
+  "file": "scripts/project-stage/live-520/urban-map.php",
+  "md5": "3864aca919d7e07fed60e49c606e74af",
+  "md5_ok": true
+ },
+ "hunks": [
+  "V1 · a centroid for ערד (the only city on the authority map without one)",
+  "V2 · the data the tags need, printed once (PHP function)",
+  "V3 · the shortcode reads it (PHP)",
+  "V4 · the note under the map (markup)",
+  "V5 · the map block style (CSS)",
+  "V6 · the map block script (JS)"
+ ],
+ "patched": {
+  "lines_before": 292,
+  "lines_after": 810,
+  "php_l": "No syntax errors detected in C:\\Users\\777\\nad-lan\\nad-lan-co-il\\docs\\research\\2026-10-26-upgrades\\q1-renewal-map\\labels\\v2\\out\\urban-map.patched.php",
+  "round_trip_equals_live": true
+ },
+ "had605": {
+  "hunks": [
+   "H1 · the header line",
+   "H2 · 120 per IP in a fixed hour, counted on cache misses only",
+   "H3 · cache first, then the limit, an honest 429",
+   "H4 · store the answer",
+   "H5 · the pillar's lookup box: a limit is not \"not found\"",
+   "H6 · the message"
+  ],
+  "php_l": "No syntax errors detected in C:\\Users\\777\\nad-lan\\nad-lan-co-il\\docs\\research\\2026-10-26-upgrades\\q1-renewal-map\\labels\\v2\\out\\urban-hub.patched.php",
+  "round_trip_equals_repo": true
+ },
+ "boot": {
+  "bytes": 6244,
+  "price_cities": 24,
+  "centroids": 82,
+  "pulled": "13.7.2026",
+  "pxsrc_file": "20.8.2026",
+  "has_arad": true
+ },
+ "live_block_equals_live520": true,
+ "live_note_equals_live520": true,
+ "live_has_tracker_host": true,
+ "node_check": "ok",
+ "block_bytes": {
+  "live": 3441,
+  "patched_filled": 67810,
+  "css": 15663,
+  "js": 52121
+ },
+ "banned_words_in_visible_strings": [],
+ "long_dashes": 0,
+ "preview_html_bytes": 69505
+}

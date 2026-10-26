@@ -1,0 +1,328 @@
+{
+ "at_utc": "2026-10-26 09:42 UTC",
+ "how": "Chrome via Playwright, no stealth flags, no CAPTCHA solving",
+ "sites": {
+  "madlan-map-1280": {
+   "url": "https://www.madlan.co.il/for-sale/%D7%A8%D7%9E%D7%AA-%D7%92%D7%9F-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+   "w": 1280,
+   "status": 403,
+   "title": "Madlan",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "madlan-map-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Madlan, for sale, Ramat Gan (map + list)",
+   "at_utc": "2026-10-26 09:43 UTC"
+  },
+  "madlan-map-390": {
+   "url": "https://www.madlan.co.il/for-sale/%D7%A8%D7%9E%D7%AA-%D7%92%D7%9F-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+   "w": 390,
+   "status": 403,
+   "title": "Madlan",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "madlan-map-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Madlan, for sale, Ramat Gan (map + list)",
+   "at_utc": "2026-10-26 09:43 UTC"
+  },
+  "madlan-renewal-1280": {
+   "url": "https://www.madlan.co.il/urban-renewal",
+   "w": 1280,
+   "status": 404,
+   "title": "שגיאת 404 - הדף לא נמצא",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "madlan-renewal-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Madlan, urban renewal hub",
+   "at_utc": "2026-10-26 09:43 UTC"
+  },
+  "madlan-renewal-390": {
+   "url": "https://www.madlan.co.il/urban-renewal",
+   "w": 390,
+   "status": 404,
+   "title": "שגיאת 404 - הדף לא נמצא",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "madlan-renewal-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Madlan, urban renewal hub",
+   "at_utc": "2026-10-26 09:43 UTC"
+  },
+  "yad2-map-1280": {
+   "url": "https://www.yad2.co.il/realestate/forsale/map?city=8600",
+   "w": 1280,
+   "status": 200,
+   "error": "Page.evaluate: Execution context was destroyed, most likely because of a navigation",
+   "blocked": true,
+   "mode": "visible window",
+   "headless_first": {
+    "status": 200,
+    "blocked_words": [
+     "captcha"
+    ],
+    "error": null
+   },
+   "label": "Yad2, for sale map, Ramat Gan",
+   "at_utc": "2026-10-26 09:44 UTC"
+  },
+  "yad2-map-390": {
+   "url": "https://www.yad2.co.il/realestate/forsale/map?city=8600",
+   "w": 390,
+   "status": 200,
+   "title": "Radware Bot Manager Captcha",
+   "blocked_words": [
+    "captcha"
+   ],
+   "blocked": true,
+   "png": "yad2-map-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 200,
+    "blocked_words": [
+     "captcha"
+    ],
+    "error": null
+   },
+   "label": "Yad2, for sale map, Ramat Gan",
+   "at_utc": "2026-10-26 09:44 UTC"
+  },
+  "onmap-1280": {
+   "url": "https://www.onmap.co.il/homes/buy/c_32.068400,34.811400/t_32.110000,34.870000/b_32.030000,34.760000/z_14",
+   "w": 1280,
+   "status": 200,
+   "title": "דירות למכירה על המפה, מודעות מעודכנות | OnMap",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "onmap-1280.png",
+   "mode": "headless",
+   "label": "OnMap, buy, Ramat Gan",
+   "at_utc": "2026-10-26 09:44 UTC"
+  },
+  "onmap-390": {
+   "url": "https://www.onmap.co.il/homes/buy/c_32.068400,34.811400/t_32.110000,34.870000/b_32.030000,34.760000/z_14",
+   "w": 390,
+   "status": 200,
+   "title": "דירות למכירה על המפה, מודעות מעודכנות | OnMap",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "onmap-390.png",
+   "mode": "headless",
+   "label": "OnMap, buy, Ramat Gan",
+   "at_utc": "2026-10-26 09:44 UTC"
+  },
+  "homeless-1280": {
+   "url": "https://www.homeless.co.il/sale/",
+   "w": 1280,
+   "status": 200,
+   "title": "דירות למכירה | הומלס",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "homeless-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Homeless, for sale",
+   "at_utc": "2026-10-26 09:44 UTC"
+  },
+  "homeless-390": {
+   "url": "https://www.homeless.co.il/sale/",
+   "w": 390,
+   "status": 200,
+   "title": "דירות למכירה | הומלס",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "homeless-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Homeless, for sale",
+   "at_utc": "2026-10-26 09:45 UTC"
+  },
+  "gov-renewal-1280": {
+   "url": "https://www.gov.il/he/departments/topics/mapa-renewal",
+   "w": 1280,
+   "status": 200,
+   "title": "מפת התחדשות עירונית בישראל הרשות הממשלתית להתחדשות עירונית",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "gov-renewal-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [
+     "blocked"
+    ],
+    "error": null
+   },
+   "label": "Government renewal authority, map topic page",
+   "at_utc": "2026-10-26 09:45 UTC"
+  },
+  "gov-renewal-390": {
+   "url": "https://www.gov.il/he/departments/topics/mapa-renewal",
+   "w": 390,
+   "status": 200,
+   "title": "מפת התחדשות עירונית בישראל הרשות הממשלתית להתחדשות עירונית",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "gov-renewal-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [
+     "blocked"
+    ],
+    "error": null
+   },
+   "label": "Government renewal authority, map topic page",
+   "at_utc": "2026-10-26 09:45 UTC"
+  },
+  "govmap-1280": {
+   "url": "https://www.govmap.gov.il/?c=180000,663000&z=5",
+   "w": 1280,
+   "status": 200,
+   "title": "Govmap מפות ישראל",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "govmap-1280.png",
+   "mode": "headless",
+   "label": "govmap, Tel Aviv area",
+   "at_utc": "2026-10-26 09:45 UTC"
+  },
+  "govmap-390": {
+   "url": "https://www.govmap.gov.il/?c=180000,663000&z=5",
+   "w": 390,
+   "status": 200,
+   "title": "Govmap מפות ישראל",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "govmap-390.png",
+   "mode": "headless",
+   "label": "govmap, Tel Aviv area",
+   "at_utc": "2026-10-26 09:46 UTC"
+  },
+  "airbnb-1280": {
+   "url": "https://www.airbnb.com/s/Tel-Aviv--Israel/homes",
+   "w": 1280,
+   "status": 200,
+   "title": "Airbnb‎ |תל אביב-יפו – יחידות נופש ומקומות אירוח - מחוז תל אביב",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "airbnb-1280.png",
+   "mode": "headless",
+   "label": "Airbnb, Tel Aviv search (map + list)",
+   "at_utc": "2026-10-26 09:46 UTC"
+  },
+  "airbnb-390": {
+   "url": "https://www.airbnb.com/s/Tel-Aviv--Israel/homes",
+   "w": 390,
+   "status": 200,
+   "title": "Airbnb‎ |תל אביב-יפו – יחידות נופש ומקומות אירוח - מחוז תל אביב",
+   "blocked_words": [],
+   "blocked": false,
+   "png": "airbnb-390.png",
+   "mode": "headless",
+   "label": "Airbnb, Tel Aviv search (map + list)",
+   "at_utc": "2026-10-26 09:46 UTC"
+  },
+  "zillow-1280": {
+   "url": "https://www.zillow.com/new-york-ny/",
+   "w": 1280,
+   "status": 403,
+   "title": "Access to this page has been denied",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "zillow-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Zillow, New York",
+   "at_utc": "2026-10-26 09:46 UTC"
+  },
+  "zillow-390": {
+   "url": "https://www.zillow.com/new-york-ny/",
+   "w": 390,
+   "status": 403,
+   "title": "Access to this page has been denied",
+   "blocked_words": [],
+   "blocked": true,
+   "png": "zillow-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 403,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Zillow, New York",
+   "at_utc": "2026-10-26 09:46 UTC"
+  },
+  "redfin-1280": {
+   "url": "https://www.redfin.com/city/30749/NY/New-York",
+   "w": 1280,
+   "status": 202,
+   "title": "ERROR: The request could not be satisfied",
+   "blocked_words": [
+    "blocked"
+   ],
+   "blocked": true,
+   "png": "redfin-1280.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 429,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Redfin, New York",
+   "at_utc": "2026-10-26 09:47 UTC"
+  },
+  "redfin-390": {
+   "url": "https://www.redfin.com/city/30749/NY/New-York",
+   "w": 390,
+   "status": 202,
+   "title": "ERROR: The request could not be satisfied",
+   "blocked_words": [
+    "blocked"
+   ],
+   "blocked": true,
+   "png": "redfin-390.png",
+   "mode": "visible window",
+   "headless_first": {
+    "status": 429,
+    "blocked_words": [],
+    "error": null
+   },
+   "label": "Redfin, New York",
+   "at_utc": "2026-10-26 09:47 UTC"
+  }
+ }
+}

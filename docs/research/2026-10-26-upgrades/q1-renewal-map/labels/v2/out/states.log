@@ -1,0 +1,12 @@
+C:\Users\777\nad-lan\nad-lan-co-il\docs\research\2026-10-26-upgrades\q1-renewal-map\labels\v2\proof2.py:150: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  ls = sorted(lum(p) for p in im.crop((x0, y0, x1, y1)).getdata())
+390 after country in view 73 shown 16 names 16 complete 11 facts 22 per tag 1.38 overlaps 0 tap 60 49 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'S': 5, 'M': 11}
+390 after central in view 36 shown 17 names 17 complete 10 facts 21 per tag 1.24 overlaps 0 tap 79 49 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'S': 7, 'M': 9, 'L': 1}
+390 after tlv in view 11 shown 9 names 9 complete 7 facts 16 per tag 1.78 overlaps 0 tap 60 49 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'M': 5, 'S': 2, 'L': 2}
+390 after interactions {}
+1280 after country in view 75 shown 18 names 18 complete 12 facts 29 per tag 1.61 overlaps 0 tap 36 24 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'L': 5, 'S': 6, 'M': 7}
+1280 after central in view 41 shown 22 names 22 complete 17 facts 43 per tag 1.95 overlaps 0 tap 37 24 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'L': 9, 'M': 8, 'S': 5}
+1280 after tlv in view 15 shown 10 names 10 complete 7 facts 21 per tag 2.1 overlaps 0 tap 40 24 tap overlaps 0 ambiguous 0 over lines 0 contrast min 16.59 8.83 px median 16.59 {'L': 7, 'S': 3}
+1280 after interactions {}
+links []
+written proof-results.json

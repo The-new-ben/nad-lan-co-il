@@ -1,0 +1,114 @@
+inc/urban-hub.php · HAD-605: the renewal-lookup limit · proposal of 26.10.2026 · NOT APPLIED
+=============================================================================================
+
+Target: the REPO text of plugins/nadlan-config/inc/urban-hub.php (md5 a52b8f4598587cb208bbffec0f53f295, LF). Its text equals
+the live read of 3.10.2026 (docs/qa/live-read/20261003T094808Z/inc/urban-hub.php, same text with CRLF line ends). The live file
+was not read again for this proposal (no live reads of PHP files in a local-only task), so it may differ: re-read it through the
+release bridge before applying, and apply on the live text. Each hunk: the OLD text must appear exactly once.
+
+The finding (measured 26.10.2026 by the first labels proof): /renewal-lookup allows 30 calls per IP per hour, counted on every
+call, including the same city asked again, and every counted call starts the hour again. Past that it answers 429 and every page that uses it prints "no complexes" for a city
+that has complexes: the map's list ("אין מתחמים להצגה"), the pillar's lookup box and the wizard ("לא נמצא מתחם מוכרז תואם").
+Israeli phone carriers put many visitors behind one public IP, so real visitors can hit the wall.
+
+The fix:
+- every answer is cached for 6 hours per city + query (the complex list changes only on an import); a cached answer is free
+- the limit counts only calls the cache cannot answer, is 120 per IP (filter nadlan_ur_lookup_limit), and runs for a fixed hour
+  from the first counted call; today every counted call sets the hour again, so a steady visitor or a carrier IP shared by
+  many stays blocked until a full quiet hour passes
+- past the limit: HTTP 429 with a Hebrew message and Retry-After, and the pillar's lookup box says so instead of "not found"
+- the map v2 (urban-map-v2.patch.php.txt) no longer calls this endpoint while the tracker file is on the page
+
+Same wrong message, outside this file (not patched here): assets/urban/renewal-3d.js, the renewal wizard, line 38:
+    .then(function (r) { return r.json(); })
+should become
+    .then(function (r) { if (r.status === 429) throw { lim: 1 }; return r.json(); })
+with its catch printing the same limit message instead of "".
+
+=== H1 · the header line ===
+--- OLD
+ *     (source=urban_renewal meta, import.php). Rate limited 30/hr/IP.
+--- NEW
+ *     (source=urban_renewal meta, import.php). Answers cached 6h per city + query;
+ *     only cache misses count against 120/hr/IP (HAD-605, 26.10.2026).
+=== END
+
+=== H2 · 120 per IP in a fixed hour, counted on cache misses only ===
+--- OLD
+		$n   = (int) get_transient( $key );
+		if ( $n >= 30 ) { return true; }
+		set_transient( $key, $n + 1, HOUR_IN_SECONDS );
+		return false;
+--- NEW
+		// HAD-605: a fixed hour from the first counted call (before: every call pushed the hour forward, so a steady user stayed
+		// blocked), 120 calls (was 30), and the route calls this only when the cache cannot answer
+		$now = time();
+		$n   = get_transient( $key );
+		if ( ! is_array( $n ) || $now - (int) $n[1] >= HOUR_IN_SECONDS ) { $n = array( 0, $now ); }
+		if ( (int) $n[0] >= (int) apply_filters( 'nadlan_ur_lookup_limit', 120 ) ) { return true; }
+		$n[0] = (int) $n[0] + 1;
+		set_transient( $key, $n, max( 60, HOUR_IN_SECONDS - ( $now - (int) $n[1] ) ) );
+		return false;
+=== END
+
+=== H3 · cache first, then the limit, an honest 429 ===
+--- OLD
+		'callback'            => function ( $req ) {
+			if ( nadlan_ur_lookup_rate_limited() ) {
+				return new WP_Error( 'rate_limited', 'too many lookups', array( 'status' => 429 ) );
+			}
+			$city = trim( sanitize_text_field( (string) $req->get_param( 'city' ) ) );
+			$q    = trim( sanitize_text_field( (string) $req->get_param( 'q' ) ) );
+			if ( '' === $city && '' === $q ) {
+				return new WP_Error( 'bad_request', 'city or q required', array( 'status' => 400 ) );
+			}
+--- NEW
+		'callback'            => function ( $req ) {
+			$city = trim( sanitize_text_field( (string) $req->get_param( 'city' ) ) );
+			$q    = trim( sanitize_text_field( (string) $req->get_param( 'q' ) ) );
+			if ( '' === $city && '' === $q ) {
+				return new WP_Error( 'bad_request', 'city or q required', array( 'status' => 400 ) );
+			}
+			// HAD-605: one answer per city + query for 6 hours; a cached answer never counts against the limit
+			$ck  = 'nadlan_ur_lkc_' . md5( $city . '|' . $q );
+			$hit = get_transient( $ck );
+			if ( is_array( $hit ) ) {
+				$res = rest_ensure_response( $hit );
+				$res->header( 'Cache-Control', 'public, max-age=600' );
+				return $res;
+			}
+			if ( nadlan_ur_lookup_rate_limited() ) {
+				$res = new WP_REST_Response( array(
+					'code'    => 'rate_limited',
+					'message' => 'הגעתם למספר הבדיקות המרבי לשעה מהחיבור הזה. נסו שוב בעוד כמה דקות.',
+					'data'    => array( 'status' => 429 ),
+				), 429 );
+				$res->header( 'Retry-After', '600' );
+				return $res;
+			}
+=== END
+
+=== H4 · store the answer ===
+--- OLD
+			return array( 'found' => count( $out ) > 0, 'matches' => $out );
+--- NEW
+			$data = array( 'found' => count( $out ) > 0, 'matches' => $out );
+			set_transient( $ck, $data, 6 * HOUR_IN_SECONDS );
+			$res = rest_ensure_response( $data );
+			$res->header( 'Cache-Control', 'public, max-age=600' );
+			return $res;
+=== END
+
+=== H5 · the pillar's lookup box: a limit is not "not found" ===
+--- OLD
+			.then(function(x){return x.json()}).then(function(d){
+--- NEW
+			.then(function(x){if(x.status===429)throw{lim:1};return x.json()}).then(function(d){
+=== END
+
+=== H6 · the message ===
+--- OLD
+			}).catch(function(){r.textContent="שגיאה זמנית, נסו שוב"});
+--- NEW
+			}).catch(function(e){r.textContent=e&&e.lim?"הגעתם למספר הבדיקות המרבי לשעה מהחיבור הזה. נסו שוב בעוד כמה דקות.":"שגיאה זמנית, נסו שוב"});
+=== END

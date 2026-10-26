@@ -51,7 +51,7 @@ Ben: every protected keyword where we do not appear gets a winning page (tools, 
 | G6 | /home-inspection/ | בדק בית 2,900 (not seen) | research + build (agent, local, with G7 G8) |
 | G7 | /real-estate-appraiser/ | שמאי מקרקעין 2,400 (not seen) | research + build (agent, local, with G6 G8) |
 | G8 | /real-estate-lawyer/ | עורך דין מקרקעין 1,600 (not seen) | research + build (agent, local, with G6 G7) |
-| M1 | /urban-renewal/map/ labels v2 | Ben: no circles; small informative labels, hover details, names, prices | agent, local; live only after Ben looks |
+| M1 | /urban-renewal/map/ labels v2 | Ben: no circles; small informative labels, hover details, names, prices | v2 READY locally 26.10 (labels/v2/, DS v244, images sent to Ben): white labels with name + 1-2 facts + stage strip, coastal labels over the sea, 5 chips, hover top-3 complexes, city panel with every complex; 0 overlaps (was 475), contrast 16.6:1, facts on screen up (phone 22/21/16 vs 20/20/10); HAD-605 fix patch ready; waiting for Ben's go |
 | A1 | ADAM'S package | plan, self-serve ads on /advertise/, sample page, renewal app upgrade, prices, reply draft; ad footprint deep search | READY locally 26.10 (72f4bade): pilot ₪948/month or story ₪1,490, room ₪149/complex; ADAM'S buys no ads (the Meta ad was Magdilim's); privacy defect in the room HAD-606; waiting for Ben: amounts, send reply, patch 01 |
 | P1 | Morning checkout | live test 26.10: order 8634 -> "גישה נדחתה, נא להתחבר מחדש" (cancelled). Plugin wc-gateway-greeninvoice 2.4.3; 2.4.2 (8.10) added signed IPN: likely needs a fresh store key from app.greeninvoice.co.il/market/plugin/woocommerce pasted in WooCommerce > Payments > Morning (Ben only: a secret key) | waiting for Ben's paste, then re-test |
 

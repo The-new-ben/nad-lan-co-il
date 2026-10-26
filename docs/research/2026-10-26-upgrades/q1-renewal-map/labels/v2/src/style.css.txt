@@ -1,0 +1,133 @@
+<style>
+/* renewal map v2 (proposal of 26.10.2026): survey tags that carry the facts, a city panel in step with the map, chips that re-label
+   the map. Colours of the page's data block (.nlur2): ink #12202A, ink2 #3E4C58, sea #2F6F86, deep #1F4B5C, line #D3DCE2; red only
+   for warnings. IBM Plex Sans Hebrew for words, IBM Plex Mono for numbers (the faces the page already loads). The site skin forces
+   another face on span, button and p with !important, so the faces are pinned here with scoped !important rules. */
+#nlurm-map{height:520px;border-radius:10px;overflow:hidden;border:1px solid #D3DCE2;background:#E9EEF1}
+.nlurm-note{font:400 12.5px/1.6 "IBM Plex Sans Hebrew",Heebo,sans-serif;color:#3E4C58;margin:10px 0}
+#nlurm-list .nlur-hit{background:#fff;border:1px solid #D3DCE2;border-radius:6px;padding:12px 14px;margin-top:8px;font:400 13.5px/1.6 "IBM Plex Sans Hebrew",Heebo,sans-serif;color:#12202A}
+.nlurm-v2{--ink:#12202A;--ink2:#3E4C58;--sea:#2F6F86;--deep:#1F4B5C;--line:#D3DCE2;--wash:#EEF3F5;--red:#C42550;position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;color:var(--ink);text-align:right}
+.nlurm-v2 *{box-sizing:border-box}
+html body .nlurm-v2 :is(div,span,button,p,a,b,i,small,input,select,option,label,li,ul,ol,h3,h4,strong,em,dl,dt,dd){font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif!important;letter-spacing:0!important;text-transform:none!important}
+html body .nlurm-v2 :is(.n,.n *){font-family:"IBM Plex Mono",ui-monospace,monospace!important;font-variant-numeric:tabular-nums}
+html body .nlurm-v2 :focus-visible{outline:2px solid var(--deep)!important;outline-offset:2px!important;box-shadow:none!important}
+.nlurm-v2 #nlurm-map{height:500px;border:0;border-radius:0;background:#E9EEF1}
+.nlurm-v2.is-wide{display:grid;grid-template-columns:340px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"bar map" "side map";height:600px}
+.nlurm-v2.is-wide .nlurm-bar{grid-area:bar}
+.nlurm-v2.is-wide .nlurm-side{grid-area:side;overflow:auto;border-top:0}
+.nlurm-v2.is-wide #nlurm-map{grid-area:map;height:100%;border-inline-start:1px solid var(--line)}
+/* the bar: search and the chips that choose what the tags say */
+.nlurm-bar{position:relative;z-index:6;display:flex;flex-direction:column;gap:10px;padding:12px 12px 10px;background:#fff;border-bottom:1px solid var(--line)}
+.nlurm-q{position:relative}
+html body .nlurm-v2 .nlurm-q input{width:100%;height:44px;margin:0;border:1px solid #8C99A4!important;border-radius:4px!important;padding:0 40px 0 12px!important;background:#fff!important;color:var(--ink)!important;font-size:15px!important;font-weight:500!important;line-height:44px;box-shadow:none;-webkit-appearance:none;appearance:none}
+.nlurm-q input::placeholder{color:#3E4C58;opacity:1}
+.nlurm-q svg{position:absolute;right:12px;top:13px;width:18px;height:18px;stroke:var(--ink2);fill:none;stroke-width:2;pointer-events:none}
+.nlurm-res{position:absolute;inset-inline:0;top:48px;max-height:340px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:0 10px 28px rgba(18,32,42,.18);z-index:9}
+html body .nlurm-v2 .nlurm-res button{display:block;width:100%;min-height:44px;margin:0;padding:8px 12px;border:0;border-bottom:1px solid var(--wash);background:#fff;color:var(--ink);text-align:right;cursor:pointer;font-size:14.5px!important;font-weight:600!important;line-height:1.35}
+html body .nlurm-v2 .nlurm-res button small{display:block;color:var(--ink2);font-size:12.5px!important;font-weight:400!important}
+.nlurm-res button:hover,.nlurm-res button:focus-visible{background:var(--wash)}
+.nlurm-res p{margin:0;padding:12px;color:var(--ink2);font-size:13.5px}
+.nlurm-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -12px;padding:0 12px 2px}
+.nlurm-chips::-webkit-scrollbar{display:none}
+.nlurm-v2.is-wide .nlurm-bar .nlurm-chips{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
+html body .nlurm-v2:not(.is-touch) .nlurm-bar .nlurm-chip{min-height:36px;padding:0 11px}
+html body .nlurm-v2 .nlurm-chip{flex:none;min-height:44px;margin:0;padding:0 13px;border:1px solid #8C99A4;border-radius:4px;background:#fff;color:var(--ink);cursor:pointer;font-size:14px!important;font-weight:500!important;line-height:1;white-space:nowrap}
+html body .nlurm-v2 .nlurm-chip[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff;font-weight:600!important}
+.nlurm-chip:hover{border-color:var(--deep)}
+/* the tags: a zero-size anchor at the city point, a small dot, and the tag beside it (a survey tag: square corners, a stage strip) */
+.nlurm-v2 .mapboxgl-canvas-container{isolation:isolate} /* the tags stack among themselves, under the map's buttons, the preview and the peek card */
+.nlurm-lb{width:0;height:0;pointer-events:none}
+.nlurm-lb .dt{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--deep,#1F4B5C);box-shadow:0 0 0 1.5px #fff,0 1px 3px rgba(18,32,42,.35)}
+.nlurm-lb .ld{position:absolute;left:0;top:0;display:none;height:1px;background:#3E4C58;transform-origin:0 50%}
+.nlurm-lb .tg.is-c::after{display:none}
+.nlurm-lb.is-hd .dt{display:none}
+.nlurm-lb.is-zero .dt{background:#8C99A4;width:6px;height:6px;left:-3px;top:-3px}
+html body .nlurm-v2 .nlurm-lb .tg{position:absolute;display:block;margin:0;padding:5px 8px 8px;background:#fff;border:1px solid rgba(18,32,42,.28);border-radius:3px;box-shadow:0 1px 3px rgba(18,32,42,.22);color:var(--ink);text-align:right;white-space:nowrap;cursor:pointer;pointer-events:auto;line-height:1;overflow:visible;-webkit-tap-highlight-color:transparent;transition:box-shadow .12s ease,border-color .12s ease}
+html body .nlurm-v2 .nlurm-lb .tg .nm{display:block;color:var(--ink);font-size:14px!important;font-weight:600!important;line-height:18px}
+html body .nlurm-v2 .nlurm-lb .tg .f{display:block;color:var(--ink2);font-size:12px!important;font-weight:500!important;line-height:16px}
+html body .nlurm-v2 .nlurm-lb .tg .f b{color:var(--deep);font-size:12px!important;font-weight:500!important}
+.nlurm-lb .tg .sb{position:absolute;left:0;right:0;bottom:0;height:4px;display:flex;overflow:hidden;border-radius:0 0 2px 2px;background:#D3DCE2}
+.nlurm-lb .tg .sb i{display:block;height:100%}
+.nlurm-lb .tg::after{content:"";position:absolute;width:7px;height:7px;background:#fff;border:solid rgba(18,32,42,.28);border-width:0 1px 1px 0;pointer-events:none}
+.nlurm-lb .tg.is-n::after{left:calc(50% - 4px);bottom:-5px;transform:rotate(45deg)}
+.nlurm-lb .tg.is-s::after{left:calc(50% - 4px);top:-5px;transform:rotate(-135deg)}
+.nlurm-lb .tg.is-w::after{right:-5px;top:calc(50% - 4px);transform:rotate(-45deg)}
+.nlurm-lb .tg.is-e::after{left:-5px;top:calc(50% - 4px);transform:rotate(135deg)}
+.nlurm-lb .tg.is-n .sb,.nlurm-lb .tg.is-e .sb,.nlurm-lb .tg.is-w .sb{border-radius:0 0 2px 2px}
+/* name only: no plate, a cartographer's white halo */
+html body .nlurm-v2 .nlurm-lb .tg.tS{padding:2px 3px;background:none;border:0;box-shadow:none}
+.nlurm-lb .tg.tS::after{display:none}
+html body .nlurm-v2 .nlurm-lb .tg.tS .nm{font-size:13px!important;line-height:16px;text-shadow:0 0 1px #fff,0 0 2px #fff,0 0 3px #fff,0 0 4px #fff,1px 1px 2px #fff,-1px -1px 2px #fff,1px -1px 2px #fff,-1px 1px 2px #fff}
+html body .nlurm-v2:not(.is-touch) .nlurm-lb .tg.tS{padding:4px 4px}
+html body .nlurm-v2.is-touch .nlurm-lb .tg.tS{pointer-events:none} /* a phone opens a name through the map's own tap test (22 px around the point, or the name) */
+html body .nlurm-v2.is-touch .nlurm-lb .tg:is(.tM,.tL){min-width:44px}
+html body .nlurm-v2.is-touch .nlurm-lb .tg.tM{min-height:44px}
+/* states */
+.nlurm-lb .tg:hover,.nlurm-lb .tg.is-hi{border-color:var(--deep);box-shadow:0 0 0 1px var(--deep),0 4px 12px rgba(18,32,42,.25)}
+html body .nlurm-v2 .nlurm-lb .tg.tS:hover .nm,html body .nlurm-v2 .nlurm-lb .tg.tS.is-hi .nm{text-decoration:underline;text-underline-offset:3px}
+.nlurm-lb .tg:active{transform:translateY(1px)}
+html body .nlurm-v2 .nlurm-lb .tg.is-on{background:var(--deep);border-color:var(--deep);box-shadow:0 0 0 2px #fff,0 4px 14px rgba(18,32,42,.35)}
+html body .nlurm-v2 .nlurm-lb .tg.is-on .nm,html body .nlurm-v2 .nlurm-lb .tg.is-on .f,html body .nlurm-v2 .nlurm-lb .tg.is-on .f b{color:#fff;text-shadow:none}
+.nlurm-lb .tg.is-on::after{background:var(--deep);border-color:var(--deep)}
+.nlurm-lb .tg.is-on .sb{box-shadow:0 -1px 0 #fff}
+/* hover preview (mouse) and the peek card (touch) */
+.nlurm-pop{position:absolute;z-index:50;width:300px;max-width:calc(100% - 16px);padding:12px 14px 10px;background:#fff;border:1px solid rgba(18,32,42,.28);border-radius:4px;box-shadow:0 10px 28px rgba(18,32,42,.22);pointer-events:none}
+.nlurm-peek{position:absolute;z-index:50;left:8px;right:8px;bottom:8px;padding:12px 14px 12px;background:#fff;border:1px solid rgba(18,32,42,.28);border-radius:6px;box-shadow:0 -2px 18px rgba(18,32,42,.2)}
+html body .nlurm-v2 :is(.nlurm-pop,.nlurm-peek,.nlurm-side) .ct{display:block;color:var(--ink);font-size:17px!important;font-weight:600!important;line-height:22px;margin:0 0 2px}
+html body .nlurm-v2 :is(.nlurm-pop,.nlurm-peek,.nlurm-side) .k{display:block;color:var(--ink2);font-size:13px!important;font-weight:400!important;line-height:19px}
+html body .nlurm-v2 :is(.nlurm-pop,.nlurm-peek,.nlurm-side) .k b{color:var(--ink);font-weight:500!important}
+.nlurm-big{display:flex;height:8px;margin:8px 0 4px;border-radius:1px;overflow:hidden;background:#D3DCE2}
+.nlurm-big i{display:block;height:100%}
+.nlurm-leg{display:flex;flex-wrap:wrap;gap:2px 10px;margin:0 0 6px}
+html body .nlurm-v2 .nlurm-leg span{display:inline-flex;align-items:center;gap:5px;color:var(--ink2);font-size:12.5px!important;font-weight:400!important;line-height:18px}
+.nlurm-leg span::before{content:"";width:9px;height:9px;border-radius:1px;background:var(--c)}
+html body .nlurm-v2 .nlurm-leg span b{color:var(--ink);font-weight:500!important}
+.nlurm-top3{margin:6px 0 0;padding:6px 0 0;border-top:1px solid var(--wash);list-style:none}
+html body .nlurm-v2 .nlurm-top3 li{color:var(--ink);font-size:13px!important;font-weight:500!important;line-height:19px;margin:0;padding:0}
+html body .nlurm-v2 .nlurm-top3 li small{color:var(--ink2);font-size:12px!important;font-weight:400!important}
+html body .nlurm-v2 .nlurm-pop .hint{display:block;margin-top:6px;color:var(--ink2);font-size:12px!important}
+.nlurm-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+html body .nlurm-v2 .nlurm-acts :is(button,a){display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin:0;padding:0 14px;border:1px solid var(--deep);border-radius:4px;background:#fff;color:var(--deep);text-decoration:none;cursor:pointer;font-size:14px!important;font-weight:600!important;line-height:1.2}
+html body .nlurm-v2 .nlurm-acts :is(button,a).pri{background:var(--deep);color:#fff}
+html body .nlurm-v2 .nlurm-x{position:absolute;top:2px;left:2px;width:44px;height:44px;margin:0;padding:0;border:0;background:none;color:var(--ink);font-size:24px!important;font-weight:400!important;line-height:44px;text-align:center;cursor:pointer}
+/* the side panel (beside the map on a wide screen, under it on a phone) */
+.nlurm-side{position:relative;padding:12px 14px 16px;background:#fff;border-top:1px solid var(--line)}
+html body .nlurm-v2 .nlurm-side h3{margin:0 0 4px;color:var(--ink);font-size:15px!important;font-weight:600!important;line-height:22px}
+html body .nlurm-v2 .nlurm-side .lede{margin:0 0 8px;color:var(--ink2);font-size:13px!important;line-height:19px}
+.nlurm-rows{list-style:none;margin:0;padding:0}
+html body .nlurm-v2 .nlurm-rows .ctr{position:relative;display:block;width:100%;min-height:52px;margin:0;padding:7px 4px 11px;border:0;border-bottom:1px solid var(--wash);background:none;color:var(--ink);text-align:right;cursor:pointer}
+.nlurm-rows .ctr:hover,.nlurm-rows .ctr.is-hi{background:var(--wash)}
+html body .nlurm-v2 .nlurm-rows .ctr .nm{display:block;font-size:14.5px!important;font-weight:600!important;line-height:20px;color:var(--ink)}
+html body .nlurm-v2 .nlurm-rows .ctr .f{display:block;font-size:12.5px!important;font-weight:400!important;line-height:18px;color:var(--ink2)}
+html body .nlurm-v2 .nlurm-rows .ctr .f b{color:var(--deep);font-weight:500!important}
+.nlurm-rows .ctr .sb{position:absolute;right:4px;left:4px;bottom:5px;height:3px;display:flex;overflow:hidden;background:#D3DCE2}
+.nlurm-rows .ctr .sb i{display:block;height:100%}
+html body .nlurm-v2 .nlurm-more{display:block;width:100%;min-height:44px;margin:8px 0 0;padding:0 12px;border:1px solid #8C99A4;border-radius:4px;background:#fff;color:var(--ink);cursor:pointer;font-size:14px!important;font-weight:500!important}
+html body .nlurm-v2 .nlurm-back{display:inline-flex;align-items:center;min-height:44px;margin:-6px 0 4px;padding:0 4px;border:0;background:none;color:var(--deep);cursor:pointer;font-size:14px!important;font-weight:600!important}
+.nlurm-dl{margin:8px 0 0;padding:0}
+.nlurm-dl>div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--wash)}
+html body .nlurm-v2 .nlurm-dl dt{margin:0;color:var(--ink2);font-size:13px!important;font-weight:400!important;line-height:19px}
+html body .nlurm-v2 .nlurm-dl dd{margin:0;color:var(--ink);font-size:13px!important;font-weight:500!important;line-height:19px;text-align:left;white-space:nowrap}
+html body .nlurm-v2 .nlurm-dl dt small{display:block;color:var(--ink2);font-size:11.5px!important}
+.nlurm-cxh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}
+html body .nlurm-v2 .nlurm-cxh select{height:44px;margin:0;padding:0 10px;border:1px solid #8C99A4;border-radius:4px;background:#fff;color:var(--ink);font-size:14px!important}
+.nlurm-cxh .nlurm-chips{margin:0;padding:0;flex-wrap:wrap;overflow:visible}
+html body .nlurm-v2 .nlurm-cxh .nlurm-chip{min-height:36px;padding:0 10px;font-size:13px!important}
+html body .nlurm-v2.is-touch .nlurm-cxh .nlurm-chip{min-height:44px}
+.nlurm-cx{list-style:none;margin:0;padding:0}
+.nlurm-cx li{display:flex;align-items:stretch;gap:8px;border-bottom:1px solid var(--wash)}
+.nlurm-cx .sq{flex:none;width:4px;margin:8px 0;border-radius:1px}
+html body .nlurm-v2 .nlurm-cx .cxm{flex:1;display:block;min-height:44px;padding:7px 0;color:var(--ink);text-decoration:none}
+html body .nlurm-v2 .nlurm-cx .cxm b{display:block;color:var(--ink);font-size:14px!important;font-weight:600!important;line-height:20px}
+html body .nlurm-v2 .nlurm-cx a.cxm b{text-decoration:underline;text-decoration-color:#8C99A4;text-underline-offset:3px}
+html body .nlurm-v2 .nlurm-cx .cxm span{display:block;color:var(--ink2);font-size:12.5px!important;font-weight:400!important;line-height:18px}
+html body .nlurm-v2 .nlurm-cx li.is-hi{background:var(--wash)}
+html body .nlurm-v2 .nlurm-cx .cxt{flex:none;align-self:center;min-height:44px;min-width:56px;margin:0;padding:0 10px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--deep);cursor:pointer;font-size:13px!important;font-weight:600!important}
+html body .nlurm-v2 .nlurm-src{margin:12px 0 0;color:var(--ink2);font-size:12px!important;line-height:18px}
+html body .nlurm-v2 .nlurm-src a{color:var(--deep)}
+.nlurm-msg{margin:8px 0;color:var(--ink2);font-size:13.5px}
+.nlurm-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nlurm-home{display:block}
+html body .nlurm-v2 .nlurm-home button{width:auto!important;padding:0 8px!important;font-size:12.5px!important;font-weight:600!important;color:var(--ink)!important;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.nlurm-lb .tg{transition:none}}
+</style>

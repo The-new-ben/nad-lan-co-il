@@ -1,0 +1,42 @@
+{
+ "at_utc": "2026-10-26 09:41 UTC",
+ "page": {
+  "bytes": 441944,
+  "ms": 1668,
+  "cache": null,
+  "hotjar": true,
+  "has_tracker_host": true,
+  "pins_in_html": 2
+ },
+ "tracker_data_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/instruments/data/renewal-track.json?ver=1.72.529",
+ "map_data": {
+  "total": 947,
+  "cities": 76,
+  "with_point": 76,
+  "ms": 704
+ },
+ "renewal-track.json": {
+  "live_bytes": 233655,
+  "live_md5": "64fbb2009734c856539bed08bede9e41",
+  "repo_md5": "64fbb2009734c856539bed08bede9e41",
+  "same_as_repo": true,
+  "cache_control": null,
+  "ms": 89
+ },
+ "value.json": {
+  "live_bytes": 47040,
+  "live_md5": "53244dacf769ce77e97f826ce0d33965",
+  "repo_md5": "53244dacf769ce77e97f826ce0d33965",
+  "same_as_repo": true,
+  "cache_control": null,
+  "ms": 54
+ },
+ "value-series.json": {
+  "live_bytes": 223689,
+  "live_md5": "b1c3a4171bfe6a39dc76f20685e5b5fc",
+  "repo_md5": "b1c3a4171bfe6a39dc76f20685e5b5fc",
+  "same_as_repo": true,
+  "cache_control": null,
+  "ms": 64
+ }
+}

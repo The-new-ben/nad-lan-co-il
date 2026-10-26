@@ -1,0 +1,27 @@
+{
+ "patched": {
+  "repeat_ok": 130,
+  "repeat_429": 0,
+  "miss_ok": 117,
+  "miss_429": 8,
+  "first_429_at": 118,
+  "msg": "הגעתם למספר הבדיקות המרבי לשעה מהחיבור הזה. נסו שוב בעוד כמה דקות.",
+  "retry": "600",
+  "hit_while_limited": "200 3 matches",
+  "stored": "count + window start",
+  "new_query_after_the_hour": 200,
+  "db_queries": 121
+ },
+ "repo_today": {
+  "repeat_ok": 30,
+  "repeat_429": 100,
+  "miss_ok": 0,
+  "miss_429": 125,
+  "first_429_at": 1,
+  "msg": "too many lookups",
+  "retry": null,
+  "hit_while_limited": "error 429",
+  "stored": "integer",
+  "db_queries": 30
+ }
+}

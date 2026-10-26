@@ -22,6 +22,12 @@ CARDS = {
                   ("g1-dira-behanacha/preview/shots/fig1-390.png", "איור: דירות לכל 100 נרשמים בעיר, ההגרלה ה־11")],
     },
 }
+CARDS["RenewalMapV2"] = {
+    "title": "מפת ההתחדשות העירונית: תוויות שמספרות משהו",
+    "sub": "התוויות של המפה בגרסה 2 (בן, 26.10.2026: בלי עיגולים עם מספרים): תווית לבנה עם שם העיר ועובדה או שתיים, פס שלבים, תוויות של החוף מעל הים עם קו לעיר, חמישה מצבים שמשנים את מה שכל תווית אומרת, תצוגה מקדימה במעבר עכבר וכרטיס עיר בלחיצה.",
+    "shots": [("q1-renewal-map/labels/v2/compare-phone.png", "טלפון: היום, ההצעה, וכרטיס העיר"),
+              ("q1-renewal-map/labels/v2/after-1280-city.png", "מחשב: תל אביב פתוחה, תצוגה מקדימה וחלונית העיר")],
+}
 PAL = [("#12202A", "ink", "טקסט וכותרות"), ("#1F4B5C", "deep", "כפתור ראשי, שלב מתקדם"), ("#2F6F86", "sea", "נקודה, טבעת, קישור"),
        ("#D3DCE2", "line", "קווים ומסגרות"), ("#C42550", "survey red", "רק לאזהרה או מכרז פתוח")]
 
@@ -42,7 +48,7 @@ def card(name, c):
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">'
             '<style>:root{--ink:#12202A;--ink2:#3E4C58;--line:#D3DCE2;--sea:#2F6F86;--deep:#1F4B5C;--ground:#F6F8F9}body{margin:0;background:var(--ground);color:var(--ink2);font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}'
             '.w{max-width:1040px;margin:0 auto;padding:20px 16px 40px}h1{font:600 24px/1.3 "IBM Plex Sans Hebrew";color:var(--ink);margin:0 0 6px}p{font:400 15px/1.7 "IBM Plex Sans Hebrew";max-width:72ch}'
-            '.g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px}'
+            '.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;align-items:start}figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px}'
             'img{display:block;width:100%%;height:auto;border-radius:4px}figcaption{font:600 13px/1.5 "IBM Plex Sans Hebrew";color:var(--ink);margin-top:6px}'
             '.sec{font:500 12px "IBM Plex Mono",monospace;color:#5E6A75;margin:26px 0 10px;border-top:1px solid var(--line);padding-top:8px}'
             '.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}.sw{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}'

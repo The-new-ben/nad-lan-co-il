@@ -1,0 +1,299 @@
+{
+ "note": "software WebGL (SwiftShader), headless; compare before/after only",
+ "runs": {
+  "390-before": [
+   {
+    "ms_to_labels": 2246,
+    "longtasks_n": 6,
+    "longtasks_ms": 947,
+    "zoom_frames": {
+     "frames": 47,
+     "median_ms": 33.4,
+     "p95_ms": 66.7
+    },
+    "zoomout_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "scroll_frames": {
+     "frames": 30,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    }
+   },
+   {
+    "ms_to_labels": 1851,
+    "longtasks_n": 5,
+    "longtasks_ms": 519,
+    "zoom_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    },
+    "zoomout_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "scroll_frames": {
+     "frames": 30,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    }
+   },
+   {
+    "ms_to_labels": 2059,
+    "longtasks_n": 8,
+    "longtasks_ms": 743,
+    "zoom_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "zoomout_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "scroll_frames": {
+     "frames": 30,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    }
+   }
+  ],
+  "390-after": [
+   {
+    "ms_to_labels": 2126,
+    "longtasks_n": 8,
+    "longtasks_ms": 690,
+    "zoom_frames": {
+     "frames": 49,
+     "median_ms": 34.4,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 50,
+     "median_ms": 34.1,
+     "p95_ms": 34.2
+    },
+    "scroll_frames": {
+     "frames": 29,
+     "median_ms": 34.1,
+     "p95_ms": 34.2
+    }
+   },
+   {
+    "ms_to_labels": 2223,
+    "longtasks_n": 7,
+    "longtasks_ms": 773,
+    "zoom_frames": {
+     "frames": 49,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 50,
+     "median_ms": 33.4,
+     "p95_ms": 34.4
+    },
+    "scroll_frames": {
+     "frames": 31,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    }
+   },
+   {
+    "ms_to_labels": 2193,
+    "longtasks_n": 7,
+    "longtasks_ms": 683,
+    "zoom_frames": {
+     "frames": 50,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    },
+    "zoomout_frames": {
+     "frames": 50,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "scroll_frames": {
+     "frames": 29,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    }
+   }
+  ],
+  "1280-before": [
+   {
+    "ms_to_labels": 2232,
+    "longtasks_n": 8,
+    "longtasks_ms": 769,
+    "zoom_frames": {
+     "frames": 47,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    },
+    "zoomout_frames": {
+     "frames": 51,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    },
+    "scroll_frames": {
+     "frames": 30,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    }
+   },
+   {
+    "ms_to_labels": 1991,
+    "longtasks_n": 7,
+    "longtasks_ms": 651,
+    "zoom_frames": {
+     "frames": 47,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 50,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "scroll_frames": {
+     "frames": 29,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    }
+   },
+   {
+    "ms_to_labels": 2085,
+    "longtasks_n": 7,
+    "longtasks_ms": 631,
+    "zoom_frames": {
+     "frames": 49,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 52,
+     "median_ms": 33.4,
+     "p95_ms": 33.4
+    },
+    "scroll_frames": {
+     "frames": 30,
+     "median_ms": 33.4,
+     "p95_ms": 33.5
+    }
+   }
+  ],
+  "1280-after": [
+   {
+    "ms_to_labels": 2457,
+    "longtasks_n": 8,
+    "longtasks_ms": 909,
+    "zoom_frames": {
+     "frames": 48,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 48,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "scroll_frames": {
+     "frames": 28,
+     "median_ms": 34.5,
+     "p95_ms": 34.5
+    }
+   },
+   {
+    "ms_to_labels": 2458,
+    "longtasks_n": 10,
+    "longtasks_ms": 1021,
+    "zoom_frames": {
+     "frames": 48,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 49,
+     "median_ms": 34.5,
+     "p95_ms": 34.5
+    },
+    "scroll_frames": {
+     "frames": 28,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    }
+   },
+   {
+    "ms_to_labels": 2346,
+    "longtasks_n": 9,
+    "longtasks_ms": 909,
+    "zoom_frames": {
+     "frames": 47,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "zoomout_frames": {
+     "frames": 49,
+     "median_ms": 34.5,
+     "p95_ms": 34.6
+    },
+    "scroll_frames": {
+     "frames": 28,
+     "median_ms": 34.5,
+     "p95_ms": 34.5
+    }
+   }
+  ]
+ },
+ "median": {
+  "390-before": {
+   "ms_to_labels": 2059,
+   "longtasks_n": 6,
+   "longtasks_ms": 743,
+   "zoom_median_ms": 33.4,
+   "zoom_p95_ms": 33.5,
+   "zoomout_median_ms": 33.4,
+   "zoomout_p95_ms": 33.5,
+   "scroll_median_ms": 33.4,
+   "scroll_p95_ms": 33.4
+  },
+  "390-after": {
+   "ms_to_labels": 2193,
+   "longtasks_n": 7,
+   "longtasks_ms": 690,
+   "zoom_median_ms": 34.4,
+   "zoom_p95_ms": 34.6,
+   "zoomout_median_ms": 33.4,
+   "zoomout_p95_ms": 34.2,
+   "scroll_median_ms": 33.4,
+   "scroll_p95_ms": 33.5
+  },
+  "1280-before": {
+   "ms_to_labels": 2085,
+   "longtasks_n": 7,
+   "longtasks_ms": 651,
+   "zoom_median_ms": 34.5,
+   "zoom_p95_ms": 34.6,
+   "zoomout_median_ms": 33.4,
+   "zoomout_p95_ms": 33.4,
+   "scroll_median_ms": 33.4,
+   "scroll_p95_ms": 33.5
+  },
+  "1280-after": {
+   "ms_to_labels": 2457,
+   "longtasks_n": 9,
+   "longtasks_ms": 909,
+   "zoom_median_ms": 34.5,
+   "zoom_p95_ms": 34.6,
+   "zoomout_median_ms": 34.5,
+   "zoomout_p95_ms": 34.6,
+   "scroll_median_ms": 34.5,
+   "scroll_p95_ms": 34.5
+  }
+ }
+}
