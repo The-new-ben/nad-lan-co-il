@@ -1,0 +1,17 @@
+{
+  "released": "1.72.532",
+  "from": "1.72.531",
+  "live_before": {
+    "nadlan-config.php": "79c8a05439bcb947d4c56d311cbea3c8",
+    "inc/urban-hub.php": "9f670990000c2922255badf0bd29f728"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 14:16:06",
+  "files": {
+    "nadlan-config.php": "a32b91faa1cca73a4b8bd23d46b5f463",
+    "inc/urban-hub.php": "4329ee7d98fe99134ab703cbc7eaf820"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.532, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

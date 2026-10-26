@@ -6,7 +6,8 @@
  * like every guide). This module ships only what pages cannot:
  *  1. GET /nadlan/v1/renewal-lookup - public compound lookup over the ~938
  *     gov.il urban-renewal compounds already imported as nadlan_project stubs
- *     (source=urban_renewal meta, import.php). Rate limited 30/hr/IP.
+ *     (source=urban_renewal meta, import.php). Answers cached 6h per city + query;
+ *     only cache misses count against 120/hr/IP (HAD-605, 26.10.2026).
  *  2. [nadlan_ur_lookup] - the "is my building in a declared compound?"
  *     teaser embedded on the pillar. Works logged-out, honest miss copy.
  *  3. nadlan_ur_interlinks() - the hub URL map used by the spoke grid.
@@ -35,9 +36,14 @@ if ( ! function_exists( 'nadlan_ur_lookup_rate_limited' ) ) {
 	function nadlan_ur_lookup_rate_limited() {
 		$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0';
 		$key = 'nadlan_ur_lk_' . md5( $ip );
-		$n   = (int) get_transient( $key );
-		if ( $n >= 30 ) { return true; }
-		set_transient( $key, $n + 1, HOUR_IN_SECONDS );
+		// HAD-605: a fixed hour from the first counted call (before: every call pushed the hour forward, so a steady user stayed
+		// blocked), 120 calls (was 30), and the route calls this only when the cache cannot answer
+		$now = time();
+		$n   = get_transient( $key );
+		if ( ! is_array( $n ) || $now - (int) $n[1] >= HOUR_IN_SECONDS ) { $n = array( 0, $now ); }
+		if ( (int) $n[0] >= (int) apply_filters( 'nadlan_ur_lookup_limit', 120 ) ) { return true; }
+		$n[0] = (int) $n[0] + 1;
+		set_transient( $key, $n, max( 60, HOUR_IN_SECONDS - ( $now - (int) $n[1] ) ) );
 		return false;
 	}
 }
@@ -51,13 +57,27 @@ add_action( 'rest_api_init', function () {
 			'q'    => array( 'type' => 'string', 'required' => false ),
 		),
 		'callback'            => function ( $req ) {
-			if ( nadlan_ur_lookup_rate_limited() ) {
-				return new WP_Error( 'rate_limited', 'too many lookups', array( 'status' => 429 ) );
-			}
 			$city = trim( sanitize_text_field( (string) $req->get_param( 'city' ) ) );
 			$q    = trim( sanitize_text_field( (string) $req->get_param( 'q' ) ) );
 			if ( '' === $city && '' === $q ) {
 				return new WP_Error( 'bad_request', 'city or q required', array( 'status' => 400 ) );
+			}
+			// HAD-605: one answer per city + query for 6 hours; a cached answer never counts against the limit
+			$ck  = 'nadlan_ur_lkc_' . md5( $city . '|' . $q );
+			$hit = get_transient( $ck );
+			if ( is_array( $hit ) ) {
+				$res = rest_ensure_response( $hit );
+				$res->header( 'Cache-Control', 'public, max-age=600' );
+				return $res;
+			}
+			if ( nadlan_ur_lookup_rate_limited() ) {
+				$res = new WP_REST_Response( array(
+					'code'    => 'rate_limited',
+					'message' => 'הגעתם למספר הבדיקות המרבי לשעה מהחיבור הזה. נסו שוב בעוד כמה דקות.',
+					'data'    => array( 'status' => 429 ),
+				), 429 );
+				$res->header( 'Retry-After', '600' );
+				return $res;
 			}
 			$args = array(
 				'post_type'      => 'nadlan_project',
@@ -83,7 +103,11 @@ add_action( 'rest_api_init', function () {
 					'units_added'    => (int) get_post_meta( $p->ID, 'units_added', true ),
 				);
 			}
-			return array( 'found' => count( $out ) > 0, 'matches' => $out );
+			$data = array( 'found' => count( $out ) > 0, 'matches' => $out );
+			set_transient( $ck, $data, 6 * HOUR_IN_SECONDS );
+			$res = rest_ensure_response( $data );
+			$res->header( 'Cache-Control', 'public, max-age=600' );
+			return $res;
 		},
 	) );
 } );
@@ -125,13 +149,13 @@ add_shortcode( 'nadlan_ur_lookup', function () {
 		if(!c&&!q){r.textContent="הזינו עיר או שם רחוב";return}
 		r.textContent="בודקים מול המאגר...";
 		fetch("<?php echo $rest; // phpcs:ignore ?>?city="+encodeURIComponent(c)+"&q="+encodeURIComponent(q))
-			.then(function(x){return x.json()}).then(function(d){
+			.then(function(x){if(x.status===429)throw{lim:1};return x.json()}).then(function(d){
 				if(!d||!d.matches||!d.matches.length){r.innerHTML='<div class="nlur-hit">לא נמצא מתחם מוכרז תואם במאגר. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר המתחמים.</div>';return}
 				r.innerHTML=d.matches.map(function(m){
 					var t=m.project_type==="pinui_binui"?"פינוי בינוי":(m.project_type==="tama38"?"תמא 38":"התחדשות");
 					return '<div class="nlur-hit"><b>'+m.title+'</b> · '+m.city+' · <i>'+t+'</i>'+(m.plan_number?' · תכנית '+m.plan_number:'')+(m.project_status?' · '+m.project_status:'')+(m.units_existing?' · '+m.units_existing+' יח׳ קיימות'+(m.units_added?" + "+m.units_added+" תוספת":""):'')+' · <a href="'+m.url+'">לעמוד המתחם</a></div>';
 				}).join("");
-			}).catch(function(){r.textContent="שגיאה זמנית, נסו שוב"});
+			}).catch(function(e){r.textContent=e&&e.lim?"הגעתם למספר הבדיקות המרבי לשעה מהחיבור הזה. נסו שוב בעוד כמה דקות.":"שגיאה זמנית, נסו שוב"});
 	});
 })();
 </script>
