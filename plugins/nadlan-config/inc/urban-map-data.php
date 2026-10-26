@@ -86,7 +86,21 @@ if ( ! function_exists( 'nadlan_urd_html' ) ) {
 			. '<div><span>דירות היום ואחרי הבנייה</span><b>' . nadlan_urd_n( $f['existing'] ) . ' → ' . nadlan_urd_n( $f['proposed'] ) . '</b><small>בקובץ הרשמי</small></div>'
 			. '<div><span>היתרים שנרשמו</span><b>' . nadlan_urd_n( $f['permits_units'] ) . '</b><small>יחידות דיור ב-' . nadlan_urd_n( $f['permits_complexes'] ) . ' מתחמים</small></div>'
 			. '</div>';
-		$h .= '<p class="nlur2-moved">בין הקובץ של 15.8.2026 למפת הרשות של 20.10.2026 נוספו 36 מתחמים ו-17 מתחמים עלו שלב, רובם מתכנון סטטוטורי לתכנית מאושרת (חישוב שלנו, השוואה לפי מספר מתחם).</p>';
+		/* 1.72.528 (Q1 moat): the moved line counts from the tracker's file at its newest check, and "יומן המתחמים" follows it (section 5 of the build spec) */
+		$tp = dirname( __DIR__ ) . '/assets/instruments/data/renewal-track.json';
+		$ta = is_readable( $tp ) ? json_decode( (string) file_get_contents( $tp ), true ) : null;
+		if ( is_array( $ta ) && ! empty( $ta['agg']['since'] ) && ! empty( $ta['agg']['to'] ) ) {
+			$ag = $ta['agg'];
+			$dd = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : (string) $iso; };
+			$mp = array( nadlan_urd_n( $ag['added'] ) . ( 1 === (int) $ag['added'] ? ' מתחם נוסף' : ' מתחמים נוספו' ), nadlan_urd_n( $ag['up'] ) . ( 1 === (int) $ag['up'] ? ' מתחם עלה שלב' : ' מתחמים עלו שלב' ) );
+			if ( ! empty( $ag['gone'] ) ) { $mp[] = nadlan_urd_n( $ag['gone'] ) . ( 1 === (int) $ag['gone'] ? ' לא מופיע עוד' : ' לא מופיעים עוד' ); }
+			$ml = array_pop( $mp );
+			$h .= '<p class="nlur2-moved">בין הקובץ של ' . esc_html( $dd( $ag['since'] ) ) . ' למפת הרשות של ' . esc_html( $dd( $ag['to'] ) ) . ': ' . esc_html( implode( ', ', $mp ) . ' ו-' . $ml ) . ' (חישוב שלנו, השוואה לפי מספר מתחם). <a href="#nlur2-track">ביומן המתחמים</a> כל שינוי מופיע עם תאריך הבדיקה.</p>';
+			// the tracker sits between two .nlur2 blocks, so the page's own heading and paragraph rules (with !important) do not reach it
+			if ( shortcode_exists( 'nadlan_tool' ) ) { $h .= '</div><section id="nlur2-track">' . do_shortcode( '[nadlan_tool id="urtrack"]' ) . '</section><div class="nlur2">'; }
+		} else {
+			$h .= '<p class="nlur2-moved">בין הקובץ של 15.8.2026 למפת הרשות של 20.10.2026 נוספו 36 מתחמים ו-17 מתחמים עלו שלב, רובם מתכנון סטטוטורי לתכנית מאושרת (חישוב שלנו, השוואה לפי מספר מתחם).</p>';
+		}
 		/* stages */
 		$st = (array) $f['by_status']; $mx = 1; foreach ( $st as $v ) { $mx = max( $mx, (int) $v['n'] ); }
 		$map_st = (array) ( $m['by_stage'] ?? array() );
@@ -237,3 +251,10 @@ if ( ! function_exists( 'nadlan_urd_html' ) ) {
 		return $css . '<div class="nlur2" id="nlur2">' . $h . '</div>';
 	}
 }
+
+/* 1.72.528: the map page prints "יומן המתחמים" from inside [nadlan_ur_map]; naming it loads the engine and tools/urtrack.js */
+add_filter( 'nadlan_nli_page_ids', function ( $ids ) {
+	$p = is_singular() ? get_post() : null;
+	if ( ! $p || false === strpos( (string) $p->post_content, '[nadlan_ur_map' ) ) { return $ids; }
+	return array_values( array_unique( array_merge( (array) $ids, array( 'urtrack' ) ) ) );
+} );

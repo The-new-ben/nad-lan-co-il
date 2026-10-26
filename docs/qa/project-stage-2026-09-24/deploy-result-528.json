@@ -1,0 +1,21 @@
+{
+  "released": "1.72.528",
+  "from": "1.72.527",
+  "live_before": {
+    "nadlan-config.php": "51ec7ee32e9dcf5180177b54ddca072a",
+    "inc/instruments.php": "dcf2d9d753d35431a61805d5c27f9631",
+    "inc/urban-map-data.php": "8ba48d1ffd0a0fdff18601b91403d385"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 04:59:19",
+  "files": {
+    "assets/instruments/tools/urtrack.js": "fe79cef23e2926b90ec4ff0d4e53acbc",
+    "assets/instruments/data/renewal-track.json": "64fbb2009734c856539bed08bede9e41",
+    "nadlan-config.php": "0f0f3ac314fd367fb9e171c8c874341e",
+    "inc/instruments.php": "e0d69c17862334e2f04979a7a0ea9de2",
+    "inc/urban-map-data.php": "8361d34b0c5f4d71afe83b3531ab549b"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.528, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

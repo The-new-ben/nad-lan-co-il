@@ -200,6 +200,13 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 't466.json' ),
 				'related' => array( '/glossary/%D7%AA%D7%99-118/' => 'ת״י 118', '/glossary/%D7%A7%D7%95%D7%A0%D7%A1%D7%98%D7%A8%D7%95%D7%A7%D7%98%D7%95%D7%A8/' => 'קונסטרוקטור', '/home-inspection/' => 'בדק בית', '/real-estate-lawyer/construction-defects-lawsuit/' => 'ליקויי בנייה' ),
 			),
+			/* 1.72.528 (HAD-601, Q1 moat): "יומן המתחמים", the complex tracker of /urban-renewal/map/; renewal-track.json from the authority's map, the data.gov.il file, our import and XPLAN (tools/urban/build_renewal_track.py, 26.10.2026) */
+			'urtrack' => array(
+				'name' => 'יומן המתחמים: מה השלב של המתחם שלכם, ומה השתנה בו', 'cat' => 'ReferenceApplication', 'kicker' => 'יומן · התחדשות עירונית',
+				'desc' => 'לכל מתחם התחדשות עירונית: השלב והמסלול אצל הרשות הממשלתית להתחדשות עירונית היום, השלב בקובץ data.gov.il ובייבוא שלנו, כמה דירות יש היום וכמה יהיו אחרי הבנייה והמכפיל, מספר התכנית ותאריכי ההפקדה והאישור, ממתי המתחם מופיע במאגר וכל שינוי שראינו בין הבדיקות עם תאריך הבדיקה. חיפוש לפי עיר, שם מתחם, רחוב או מספר תכנית, וטבלה של כל מה שזז במאגר.',
+				'data' => array( 'renewal-track.json' ),
+				'related' => array( '/urban-renewal/' => 'המדריך להתחדשות עירונית', '/urban-renewal/check/' => 'בדיקת בניין חינמית', '/urban-renewal/pinui-binui/' => 'פינוי בינוי', '/urban-renewal/tama-38/' => 'תמ״א 38 והחלופות', '/my-renewal/' => 'חדר פרויקט לנציגות' ),
+			),
 			/* 1.72.522 (HAD-601, Q3): the Dekel price-list family, one file tools/dekel.js; dekel.json from dekel.co.il (25.10.2026), no Dekel price stored */
 			'dkpick' => array(
 				'file' => 'dekel', 'name' => 'איזה מחירון דקל מתאים לעבודה שלכם', 'cat' => 'ReferenceApplication', 'kicker' => 'בחירה · מחירון דקל',
@@ -483,6 +490,47 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			}
 			return '<p>לוח גבס ורוד (מעכב בעירה, FR) לשימוש פנימי, ברוחב 1.20 מ׳. משקל לפי טבלת הספק: 27 ק״ג ללוח 2.60 של 12.5 מ״מ. מחיר אצל רוטנברג ב־25.10.2026: 80.8 ₪ ללוח 2.60 כולל מע״מ. את מספר דקות העמידות באש מקבל הקיר כולו בבדיקה לפי ת״י 931, לא הלוח: לבקש מהקבלן תעודת בדיקה של המחיצה, סיווג לפי ת״י 755 ותו תקן לפי ת״י 1490 חלק 1.</p>' . $t . '</tbody></table>';
 		}
+		if ( 'urtrack' === $id ) {  // 1.72.528 (Q1 moat): the "מה זז במאגר" count line and every change between the snapshots (T8), the words of tools/urtrack.js
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/renewal-track.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['recs'] ) || empty( $d['agg'] ) ) { return ''; }
+			$dt = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : (string) $iso; };
+			$st = array( 'ללא שלב', 'תכנון ראשוני', 'תכנון סטטוטורי', 'תכנית מאושרת', 'במימוש', 'אחרי רישוי' );
+			$kind = array( 'new' => 'נוסף', 'up' => 'עלה שלב', 'down' => 'ירד שלב', 'chg' => 'השלב השתנה', 'gone' => 'ירד מהרשימה', 'back' => 'חזר לרשימה', 'trk' => 'המסלול השתנה', 'renum' => 'מספר מתחם חדש' );
+			$order = array( 'up' => 0, 'new' => 1, 'down' => 2, 'chg' => 3, 'trk' => 4, 'renum' => 5, 'back' => 6, 'gone' => 7 );
+			$s = function ( $i ) use ( $st ) { return $st[ max( 0, (int) $i ) ]; };
+			$ft = function ( $c ) use ( $s, $d ) {
+				switch ( $c[1] ) {
+					case 'new':
+					case 'back': return 'נכנס: ' . $s( $c[3] );
+					case 'gone': return 'אחרון: ' . $s( $c[2] );
+					case 'trk': return $d['tracks'][ (int) $c[2] ] . ' ← ' . $d['tracks'][ (int) $c[3] ];
+					case 'renum': return $c[2] . ' ← ' . $c[3];
+					default: return $s( $c[2] ) . ' ← ' . $s( $c[3] );
+				}
+			};
+			$rows = array();
+			foreach ( $d['recs'] as $r ) { foreach ( (array) ( $r['ch'] ?? array() ) as $c ) { $rows[] = array( $r, $c ); } }
+			usort( $rows, function ( $x, $y ) use ( $order ) {
+				return strcmp( $y[1][0], $x[1][0] ) ?: ( ( $order[ $x[1][1] ] ?? 9 ) - ( $order[ $y[1][1] ] ?? 9 ) ) ?: strcmp( $x[0]['c'], $y[0]['c'] ) ?: strcmp( $x[0]['n'], $y[0]['n'] );
+			} );
+			$a = $d['agg'];
+			$pl = function ( $n, $one, $many ) { return number_format( (int) $n ) . ' ' . ( 1 === (int) $n ? $one : $many ); };
+			$p = array( ( 1 === (int) $a['added'] ? 'נוסף ' : 'נוספו ' ) . $pl( $a['added'], 'מתחם', 'מתחמים' ), $pl( $a['up'], 'עלה שלב', 'עלו שלב' ) );
+			if ( ! empty( $a['down'] ) ) { $p[] = $pl( $a['down'], 'ירד שלב', 'ירדו שלב' ); }
+			if ( ! empty( $a['chg'] ) ) { $p[] = $pl( $a['chg'], 'שינה שלב', 'שינו שלב' ); }
+			if ( ! empty( $a['gone'] ) ) { $p[] = $pl( $a['gone'], 'לא מופיע עוד', 'לא מופיעים עוד' ); }
+			if ( ! empty( $a['renum'] ) ) { $p[] = $pl( $a['renum'], 'קיבל מספר מתחם חדש', 'קיבלו מספר מתחם חדש' ); }
+			$last = array_pop( $p );
+			$line = 'מאז ' . $dt( $a['since'] ) . ' ' . ( $p ? implode( ', ', $p ) . ' ו-' : '' ) . $last . ' (קובץ data.gov.il מול מפת הרשות של ' . $dt( $a['to'] ) . ').';
+			$snaps = array(); $now = 0;
+			foreach ( $d['snaps'] as $x ) { $snaps[] = $x['label'] . ' ' . $dt( $x['d'] ); if ( 'map' === $x['k'] ) { $now = (int) $x['n']; } }
+			$t = '<table><caption>מה זז במאגר: כל השינויים בין הבדיקות (' . count( $rows ) . ')</caption><thead><tr><th>מתחם</th><th>עיר</th><th>מה השתנה</th><th>משלב ← לשלב</th><th>תאריך הבדיקה</th></tr></thead><tbody>';
+			foreach ( $rows as $x ) {
+				$t .= '<tr><td>' . esc_html( $x[0]['n'] ) . '</td><td>' . esc_html( $x[0]['c'] ) . '</td><td>' . esc_html( $kind[ $x[1][1] ] ?? $x[1][1] ) . '</td><td>' . esc_html( $ft( $x[1] ) ) . '</td><td>' . esc_html( $dt( $x[1][0] ) ) . '</td></tr>';
+			}
+			return '<p>' . esc_html( $line ) . ' במפת הרשות היום ' . number_format( $now ) . ' מתחמים. הבדיקות: ' . esc_html( implode( ', ', $snaps ) ) . '. כל שינוי מתוארך לבדיקה הראשונה שבה ראינו אותו. אין כאן שנת התחלת בנייה או אכלוס: המקורות לא מפרסמים אותן.</p>' . $t . '</tbody></table>';
+		}
 		if ( 't466' === $id ) {  // 1.72.522: which part of the concrete code governs each element, as plain text (the drawing needs the script)
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/t466.json';
 			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
@@ -607,7 +655,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	add_shortcode( 'nadlan_tool', function ( $atts ) {
 		$a = shortcode_atts( array( 'id' => '' ), $atts );
 		$set = array(); // the page's own case: [nadlan_tool id="pval" city="ירושלים" hood="65209775" rooms="4"], [nadlan_tool id="dira" town="חיפה"]
-		foreach ( array( 'city', 'hood', 'town', 'rooms', 'track', 'period', 'method', 'preset', 'region', 'kind', 'price' ) as $k ) { if ( isset( $atts[ $k ] ) && '' !== $atts[ $k ] ) { $set[ $k ] = in_array( $k, array( 'rooms', 'price' ), true ) ? (int) $atts[ $k ] : sanitize_text_field( $atts[ $k ] ); } }  // 1.72.498: preset (a ready case of the tool), region, kind, price
+		foreach ( array( 'city', 'hood', 'town', 'rooms', 'track', 'period', 'method', 'preset', 'region', 'kind', 'price', 'view', 'cx' ) as $k ) { if ( isset( $atts[ $k ] ) && '' !== $atts[ $k ] ) { $set[ $k ] = in_array( $k, array( 'rooms', 'price' ), true ) ? (int) $atts[ $k ] : sanitize_text_field( $atts[ $k ] ); } }  // 1.72.498: preset (a ready case of the tool), region, kind, price
 		$tools = nadlan_nli_tools();
 		$id = sanitize_key( $a['id'] );
 		if ( ! isset( $tools[ $id ] ) ) { return ''; }

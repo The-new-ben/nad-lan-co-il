@@ -4539,3 +4539,5 @@ RELEASE LOCK 1.72.526 (ValueAnchors: pval.js v2 + value.json swapped whole, valu
 RELEASE DONE 1.72.526 (ValueAnchors: pval v2 three official anchors, value-series.json) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.526. Lock released.
 RELEASE LOCK 1.72.527 (PostPictureAndTrail: hunk on the live inc/page-lang.php; post pictures keep their shape, language home in the trail; HAD-604) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.527 (PostPictureAndTrail) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.527. Lock released.
+RELEASE LOCK 1.72.528 (UrbanTracker: urtrack.js + renewal-track.json new; hunks on the live inc/instruments.php and inc/urban-map-data.php; Q1 moat; HAD-601) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.528 (UrbanTracker) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.528. Lock released.

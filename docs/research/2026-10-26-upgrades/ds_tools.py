@@ -90,6 +90,23 @@ The yield and cash-flow map for /investment/ (HAD-601, U2). 72 cities and the na
         "palette": "פלטה: נייר מדידה ורישום מקרקעין. כחול טאבו #1D4E89 לבדיקות ולקו השכונה, רשת גרפיט #4A525B ו-#D7DCE1 על לבן, אדום חותמת #C8102E רק לסיכת המחיר המבוקש. IBM Plex Mono למספרים (ספרות טבלאיות), IBM Plex Sans Hebrew לתוויות. לא שמנת, לא זהב, לא סגול: הצבעים של תשריט ונסח טאבו.",
         "readme": "# ValueAnchors\n\npval v2 for /property-value-estimator/ (Q2). See docs/research/2026-10-26-upgrades/q2-value-estimator/preview/README.md.\n",
     },
+    "UrbanTracker": {
+        "files": ["urtrack.js"], "data": ["renewal-track.json"], "key": "urtrack",
+        "outdir": "q1-renewal-map/preview/urtrack", "outfile": "index.html",
+        "subtitle": "יומן המתחמים: השלב של כל מתחם התחדשות עירונית אצל הרשות היום, ומה השתנה בו בין הבדיקות, עם תאריך הבדיקה",
+        "cases": [("urtrack", None, "ברירת המחדל: כפר שלם, תל אביב יפו. עלה שלב ב-20.10.2026 מתכנית מאושרת לביצוע; ציר ארבע הבדיקות; טבלת המתחמים של העיר"),
+                  ("urtrack", "p1", "השינוי של הבדיקה האחרונה (25.10.2026): מתכנון ראשוני לתכנון סטטוטורי"),
+                  ("urtrack", "p3", "מתחם שירד ממפת הרשות: התשובה באדום, השלב האחרון עם המקור והתאריך"),
+                  ("urtrack", {"city": "בת ים", "cx": "8000478"}, "מתחם (city + cx): תכנית מאושרת לפני מימוש עם תאריכי XPLAN, והממוצע של הרשות כממוצע ולא כתחזית"),
+                  ("urtrack", {"city": "אור יהודה", "cx": "4329"}, "מתחם: המפה בלי שלב, הקובץ אומר אחרי רישוי. שני המקורות עם התאריכים"),
+                  ("urtrack", {"city": "ירושלים", "cx": "8003958"}, "מתחם: אותו מתחם במספר חדש (פנמה 4, ירושלים), ההיסטוריה עוברת איתו"),
+                  ("urtrack", {"city": "חיפה"}, "מקרה עמוד כמו בקוד הקצר [nadlan_tool id=\"urtrack\" city=\"חיפה\"]: נפתח על השינוי האחרון בעיר"),
+                  ("urtrack", "search", "חיפוש: גבעתיים מוצא את המתחמים של גבעתים"),
+                  ("urtrack", "moves", "מה זז במאגר: שורת הספירה, השינויים בכל בדיקה, וטבלת כל השינויים (T8)")],
+        "figs": None,
+        "palette": "פלטה: הצבעים של עמוד המפה ושל מכשירי NadLan. דיו #12202A, ים #2F6F86 לנקודה, ים עמוק #1F4B5C לעלייה בשלב, קו #D3DCE2 לנתיבי השלבים, אדום מדידה #C42550 רק למתחם שירד מהרשימה או ירד שלב. IBM Plex Sans Hebrew לתוויות ו-IBM Plex Mono למספרים. נתיב לכל שלב כמו בגיליון תכנון, לא שמנת, לא זהב, לא כרטיס כהה.",
+        "readme": "# UrbanTracker\n\nThe complex tracker of /urban-renewal/map/ (Q1 moat, local build 26.10.2026). See docs/research/2026-10-26-upgrades/q1-renewal-map/preview/urtrack/README.md.\n",
+    },
 }
 
 
@@ -143,7 +160,7 @@ def build(name):
     body = []
     mounts = []
     for i, (tid, preset, note) in enumerate(c["cases"]):
-        body.append('<p class="n">%d · %s</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="%s" id="h%d"%s></div></section>' % (i + 1, note, tid, i, (" data-nli-set='{\"preset\":\"%s\"}'" % preset) if preset else ""))
+        body.append('<p class="n">%d · %s</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="%s" id="h%d"%s></div></section>' % (i + 1, note, tid, i, set_attr(preset)))
         mounts.append((i, tid))
     if c["figs"]:
         for j, (note, svg) in enumerate(c["figs"]()):
@@ -158,8 +175,9 @@ def build(name):
             + '<script>var D={};D["' + c["key"] + '"]=DATA;D.d0=DATA;' + "".join(('SP["%s"].custom(document.getElementById("h%d"),D);' % (tid, i)) if c.get("custom") else ('NadLanInstruments.mount(document.getElementById("h%d"),SP["%s"],D);' % (i, tid)) for i, tid in mounts) + '</script></body></html>')
     io.open(os.path.join(D, "preview.html"), "w", encoding="utf-8").write(html)
     io.open(os.path.join(D, "README.md"), "w", encoding="utf-8").write(c["readme"])
-    out = os.path.join(H, c.get("out") or ("q5-ti-466" if name == "Concrete466" else "q3-dekel-list"), "preview"); os.makedirs(out, exist_ok=True)
-    io.open(os.path.join(out, name + "-preview.html"), "w", encoding="utf-8").write(html)
+    out = os.path.join(H, c["outdir"]) if c.get("outdir") else os.path.join(H, c.get("out") or ("q5-ti-466" if name == "Concrete466" else "q3-dekel-list"), "preview")
+    os.makedirs(out, exist_ok=True)
+    io.open(os.path.join(out, c.get("outfile") or (name + "-preview.html")), "w", encoding="utf-8").write(html)
     print(name, len(html.encode()), "bytes")
 
 
