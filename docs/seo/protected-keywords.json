@@ -1,0 +1,582 @@
+{
+ "built": "2026-10-26",
+ "sources": "DataForSEO keyword_overview, Israel, Hebrew (monthly searches, KD, CPC USD) + Search Console 26.7 to 24.10.2026",
+ "terms": [
+  {
+   "term": "מחיר למשתכן",
+   "owner": "/dira-behanacha/",
+   "volume": 90500,
+   "kd": 19,
+   "cpc": 3.78,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "דירה בהנחה",
+   "owner": "/dira-behanacha/",
+   "volume": 74000,
+   "kd": 18,
+   "cpc": 3.81,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "מחשבון משכנתא",
+   "owner": "/mortgage-calculator/",
+   "volume": 33100,
+   "kd": 11,
+   "cpc": 1.35,
+   "ours": "/mortgage-calculator/ @44.6 (593 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "דירות להשכרה",
+   "owner": null,
+   "volume": 27100,
+   "kd": 27,
+   "cpc": 0.37,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "דירה להשכרה",
+   "owner": null,
+   "volume": 27100,
+   "kd": 19,
+   "cpc": 0.37,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "משכנתא",
+   "owner": "/mortgage-calculator/",
+   "volume": 12100,
+   "kd": 54,
+   "cpc": 5.73,
+   "ours": "/mortgage-calculator/ @67.5 (2 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "פינוי בינוי",
+   "owner": "/urban-renewal/pinui-binui/",
+   "volume": 12100,
+   "kd": 23,
+   "cpc": 4.67,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "נדלן",
+   "owner": "/",
+   "volume": 8100,
+   "kd": 48,
+   "cpc": 7.55,
+   "ours": "/ @53.7 (245 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "התחדשות עירונית",
+   "owner": "/urban-renewal/",
+   "volume": 8100,
+   "kd": 28,
+   "cpc": 5.16,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "מס רכישה",
+   "owner": "/purchase-tax-calculator/",
+   "volume": 6600,
+   "kd": 27,
+   "cpc": 5.36,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "נדל\"ן",
+   "owner": "/",
+   "volume": 5400,
+   "kd": 48,
+   "cpc": 7.94,
+   "ours": "/ @50.2 (17 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "דירות למכירה",
+   "owner": "/properties/",
+   "volume": 5400,
+   "kd": 19,
+   "cpc": 2.38,
+   "ours": "/properties/ @25.1 (8 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "דירה למכירה",
+   "owner": "/properties/",
+   "volume": 5400,
+   "kd": 24,
+   "cpc": 2.38,
+   "ours": "/ @61.0 (1 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "מחשבון מס רכישה",
+   "owner": "/purchase-tax-calculator/",
+   "volume": 4400,
+   "kd": 13,
+   "cpc": 26.05,
+   "ours": "/purchase-tax-calculator/ @55.0 (193 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "שדה דב",
+   "owner": "/sde-dov/",
+   "volume": 4400,
+   "kd": 0,
+   "cpc": 3.57,
+   "ours": "/sde-dov/ @21.0 (385 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "דירות",
+   "owner": "/properties/",
+   "volume": 2900,
+   "kd": 76,
+   "cpc": 2.88,
+   "ours": "/properties/ @47.6 (115 impressions, 90 days)",
+   "tier": "A"
+  },
+  {
+   "term": "דירות להשכרה בתל אביב",
+   "owner": null,
+   "volume": 2900,
+   "kd": 0,
+   "cpc": 0.64,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "בדק בית",
+   "owner": "/home-inspection/",
+   "volume": 2900,
+   "kd": 2,
+   "cpc": 16.57,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "שמאי מקרקעין",
+   "owner": "/real-estate-appraiser/",
+   "volume": 2400,
+   "kd": 12,
+   "cpc": 9.95,
+   "ours": "not seen in Search Console",
+   "tier": "A"
+  },
+  {
+   "term": "דירות למכירה בחיפה",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1900,
+   "kd": 9,
+   "cpc": 1.11,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בראשון לציון",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1900,
+   "kd": 5,
+   "cpc": 1.28,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "עורך דין מקרקעין",
+   "owner": "/real-estate-lawyer/",
+   "volume": 1600,
+   "kd": 24,
+   "cpc": 12.98,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בירושלים",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1300,
+   "kd": 8,
+   "cpc": 2.71,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בנתניה",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1300,
+   "kd": 0,
+   "cpc": 1.87,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בפתח תקווה",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1300,
+   "kd": 3,
+   "cpc": 1.62,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה באשדוד",
+   "owner": "city page (HAD-602, later)",
+   "volume": 1300,
+   "kd": 0,
+   "cpc": 0.92,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "בתים למכירה",
+   "owner": "/properties/",
+   "volume": 1000,
+   "kd": 13,
+   "cpc": 2.79,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "תמא 38",
+   "owner": "/urban-renewal/tama-38/",
+   "volume": 1000,
+   "kd": 19,
+   "cpc": 1.8,
+   "ours": "/urban-renewal/tama-38/ @52.1 (24 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "תיווך",
+   "owner": "/brokers/",
+   "volume": 1000,
+   "kd": 16,
+   "cpc": 6.44,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "מחירי דירות",
+   "owner": "/apartment-prices/",
+   "volume": 1000,
+   "kd": 62,
+   "cpc": 0.92,
+   "ours": "/apartment-prices/ @52.3 (3 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בתל אביב",
+   "owner": "city page (HAD-602, later)",
+   "volume": 880,
+   "kd": 3,
+   "cpc": 2.75,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה ברמת גן",
+   "owner": "city page (HAD-602, later)",
+   "volume": 880,
+   "kd": 3,
+   "cpc": 2.32,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בחולון",
+   "owner": "city page (HAD-602, later)",
+   "volume": 880,
+   "kd": 7,
+   "cpc": 1.64,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בבאר שבע",
+   "owner": "city page (HAD-602, later)",
+   "volume": 880,
+   "kd": 3,
+   "cpc": 0.89,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "מתווך",
+   "owner": "/brokers/",
+   "volume": 720,
+   "kd": 0,
+   "cpc": 6.26,
+   "ours": "/investment/ @86.0 (1 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "הערכת שווי דירה",
+   "owner": "/property-value-estimator/",
+   "volume": 590,
+   "kd": 5,
+   "cpc": 1.13,
+   "ours": "/property-value-estimator/ @20.6 (465 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "דירות למכירה בבת ים",
+   "owner": "city page (HAD-602, later)",
+   "volume": 590,
+   "kd": 0,
+   "cpc": 1.86,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות יד שניה",
+   "owner": "/properties/",
+   "volume": 480,
+   "kd": 69,
+   "cpc": 1.26,
+   "ours": "not seen in Search Console",
+   "tier": "B"
+  },
+  {
+   "term": "דירות להשקעה",
+   "owner": "/investment/",
+   "volume": 480,
+   "kd": 3,
+   "cpc": 4.83,
+   "ours": "/investment/ @54.9 (233 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "דירה להשקעה",
+   "owner": "/investment/",
+   "volume": 480,
+   "kd": 3,
+   "cpc": 8.42,
+   "ours": "/investment/ @61.2 (81 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "פרויקטים חדשים",
+   "owner": "/projects/",
+   "volume": 390,
+   "kd": 18,
+   "cpc": 4.56,
+   "ours": "/projects/ @32.7 (1219 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "מחשבון משכנתא הפוכה",
+   "owner": "/mortgage-calculator/",
+   "volume": 320,
+   "kd": 0,
+   "cpc": 4.46,
+   "ours": "/mortgage-calculator/ @53.9 (441 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "פרויקטים חדשים בתל אביב",
+   "owner": "/projects/",
+   "volume": 320,
+   "kd": 0,
+   "cpc": 10.18,
+   "ours": "/projects/ @42.3 (592 impressions, 90 days)",
+   "tier": "B"
+  },
+  {
+   "term": "לוח נדלן",
+   "owner": "/properties/",
+   "volume": 260,
+   "kd": 62,
+   "cpc": 1.58,
+   "ours": "/properties/ @44.1 (21 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "מפת התחדשות עירונית",
+   "owner": "/urban-renewal/map/",
+   "volume": 260,
+   "kd": 0,
+   "cpc": 1.33,
+   "ours": "/urban-renewal/map/ @13.3 (367 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירת גן למכירה",
+   "owner": "/properties/",
+   "volume": 210,
+   "kd": 0,
+   "cpc": 3.17,
+   "ours": "not seen in Search Console",
+   "tier": "C"
+  },
+  {
+   "term": "רובע שדה דב",
+   "owner": "/sde-dov/",
+   "volume": 210,
+   "kd": 0,
+   "cpc": 1.05,
+   "ours": "/sde-dov/ @11.7 (92 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "שווי דירה",
+   "owner": "/property-value-estimator/",
+   "volume": 210,
+   "kd": 23,
+   "cpc": 1.76,
+   "ours": "/property-value-estimator/ @21.2 (26 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות חדשות",
+   "owner": "/projects/",
+   "volume": 210,
+   "kd": 19,
+   "cpc": 3.44,
+   "ours": "/projects/ @53.1 (323 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות מקבלן",
+   "owner": "/projects/",
+   "volume": 210,
+   "kd": 24,
+   "cpc": 3.69,
+   "ours": "/projects/ @30.3 (522 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות על הנייר",
+   "owner": "/projects/",
+   "volume": 210,
+   "kd": 2,
+   "cpc": 4.2,
+   "ours": "/projects/ @42.7 (43 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "פנטהאוז למכירה",
+   "owner": "/properties/",
+   "volume": 170,
+   "kd": 0,
+   "cpc": 2.76,
+   "ours": "not seen in Search Console",
+   "tier": "C"
+  },
+  {
+   "term": "דירות חדשות מקבלן",
+   "owner": "/projects/",
+   "volume": 170,
+   "kd": 27,
+   "cpc": 4.1,
+   "ours": "/projects/ @50.4 (347 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות 3 חדרים למכירה",
+   "owner": "/properties/",
+   "volume": 140,
+   "kd": 0,
+   "cpc": 3.64,
+   "ours": "not seen in Search Console",
+   "tier": "C"
+  },
+  {
+   "term": "נדלן בחול",
+   "owner": "/investment/",
+   "volume": 140,
+   "kd": 5,
+   "cpc": 12.1,
+   "ours": "/investment/ @78.9 (47 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "נדלן להשקעה",
+   "owner": "/investment/",
+   "volume": 90,
+   "kd": 0,
+   "cpc": 28.66,
+   "ours": "/investment/ @36.3 (349 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות חדשות בתל אביב",
+   "owner": "/projects/",
+   "volume": 90,
+   "kd": 0,
+   "cpc": 7.47,
+   "ours": "/projects/ @43.7 (490 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות 4 חדרים למכירה",
+   "owner": "/properties/",
+   "volume": 70,
+   "kd": 0,
+   "cpc": 1.98,
+   "ours": "not seen in Search Console",
+   "tier": "C"
+  },
+  {
+   "term": "פרויקטים על הנייר",
+   "owner": "/projects/",
+   "volume": 50,
+   "kd": 13,
+   "cpc": 6.29,
+   "ours": "/projects/ @45.5 (150 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "שדה דב מחירים",
+   "owner": "/sde-dov/prices/",
+   "volume": 30,
+   "kd": null,
+   "cpc": 10.53,
+   "ours": "/sde-dov/prices/ @8.3 (14 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "מחיר למטר",
+   "owner": "/apartment-prices/",
+   "volume": 30,
+   "kd": 20,
+   "cpc": null,
+   "ours": "/projects/duo-tel-aviv/ @4.0 (2 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "דירות למכירה מקבלן",
+   "owner": "/projects/",
+   "volume": 30,
+   "kd": 19,
+   "cpc": 7.44,
+   "ours": "/projects/ @40.7 (6 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "מחירי דירות בשדה דב",
+   "owner": "/sde-dov/prices/",
+   "volume": 20,
+   "kd": null,
+   "cpc": 4.04,
+   "ours": "/sde-dov/prices/ @7.0 (1 impressions, 90 days)",
+   "tier": "C"
+  },
+  {
+   "term": "פרויקטים חדשים בצפון תל אביב",
+   "owner": "/projects/",
+   "volume": 20,
+   "kd": 43,
+   "cpc": 41.61,
+   "ours": "/projects/ @41.8 (187 impressions, 90 days)",
+   "tier": "C"
+  }
+ ]
+}
