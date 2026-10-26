@@ -140,7 +140,16 @@ if ( ! function_exists( 'nadlan_pl_for_request' ) ) {
 if ( ! function_exists( 'nadlan_pl_card' ) ) {
 	function nadlan_pl_card( $pl ) {
 		$pro = (int) get_post_meta( $pl, 'pl_pro', true );
-		if ( $pro <= 0 || 'nadlan_professional' !== get_post_type( $pro ) || 'publish' !== get_post_status( $pro ) || ! function_exists( 'nadlan_bl_feature_card' ) ) { return ''; }
+		if ( $pro <= 0 || 'nadlan_professional' !== get_post_type( $pro ) || 'publish' !== get_post_status( $pro ) ) { return ''; }
+		// a placement for a professional who is not a broker (the area package: a tenants organizer, a lawyer) is the
+		// professional card under the same "פרסומת" label: no broker role, no licence line
+		if ( 'metavech' !== (string) get_post_meta( $pro, 'profession', true ) && function_exists( 'nadlan_procard_html' ) ) {
+			$inner = nadlan_procard_html( get_post( $pro ) );
+			if ( '' === trim( $inner ) ) { return ''; }
+			return '<aside class="nlds nlpl nlpl--pro" dir="rtl" lang="he" data-paid="1" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . get_the_title( $pro ) ) . '">'
+				. '<p class="nlds-kicker nlpl-tag">פרסומת</p>' . $inner . '</aside>';
+		}
+		if ( ! function_exists( 'nadlan_bl_feature_card' ) ) { return ''; }
 		$name  = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $pro ) : get_the_title( $pro );
 		$first = (string) strtok( $name, ' ' );
 		$ask   = trim( (string) get_post_meta( $pl, 'pl_ask', true ) );
@@ -154,10 +163,11 @@ if ( ! function_exists( 'nadlan_pl_card' ) ) {
 			'line'       => trim( (string) get_post_meta( $pl, 'pl_headline', true ) ),
 			'link_attrs' => ' data-nl-ev="place_click" data-nl-slot="' . esc_attr( $slot ) . '"',
 			'calendar'   => false, // an advertisement on an article offers a conversation, not a tour
+			'rel'        => 'sponsored noopener', // a placement is paid: its outbound links are advertisements
 		) );
 		if ( '' === trim( $inner ) ) { return ''; }
 		// the label is the law: the site is a publisher, and this is the broker's advertisement (name and licence are in the card)
-		return '<aside class="nlds nlpl" dir="rtl" lang="he" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . $name ) . '">'
+		return '<aside class="nlds nlpl" dir="rtl" lang="he" data-paid="1" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . $name ) . '">'
 			. '<p class="nlds-kicker nlpl-tag">פרסומת</p>' . $inner . '</aside>';
 	}
 }
@@ -202,6 +212,9 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! in_the_loop() || ! is_main_query() ) { return $content; }
 	$pl = nadlan_pl_for_request();
 	if ( ! $pl ) { return $content; }
+	// neutral-advice pages carry no advertisement, and a placement counts toward the per-page cap (inc/ad-safety.php)
+	if ( function_exists( 'nadlan_ad_free_page' ) && nadlan_ad_free_page() ) { return $content; }
+	if ( function_exists( 'nadlan_ad_slot_take' ) && ! nadlan_ad_slot_take() ) { return $content; }
 	$card = nadlan_pl_card( $pl );
 	if ( '' === $card ) { return $content; }
 	return nadlan_pl_insert( $content, $card, nadlan_pl_for_request( 'pos' ) );
@@ -210,6 +223,6 @@ add_filter( 'the_content', function ( $content ) {
 add_action( 'wp_footer', function () {
 	if ( ! nadlan_pl_for_request() ) { return; }
 	$url = esc_url_raw( rest_url( 'nadlan/v1/ev' ) );
-	echo "\n<style id=\"nadlan-placement-css\">:root body .nlds.nlpl{display:grid!important;gap:var(--nlds-space-10)!important;margin-block:32px!important;clear:both}:root body .nlds.nlpl .nlpl-tag{color:var(--nlds-sa-ink2)!important;font-weight:600!important}</style>\n";
+	echo "\n<style id=\"nadlan-placement-css\">:root body .nlds.nlpl{display:grid!important;gap:var(--nlds-space-10)!important;margin-block:32px!important;clear:both}:root body .nlds.nlpl .nlpl-tag{color:var(--nlds-sa-ink2)!important;font-weight:600!important}:root body .nlpl--pro .nlprc-spon{display:none}</style>\n";
 	echo "<script id=\"nadlan-placement-ev\">(function(){if(!navigator.sendBeacon)return;var u=" . wp_json_encode( $url ) . ";function s(c,e){try{navigator.sendBeacon(u,new Blob([JSON.stringify({e:e,pro:+c.dataset.pro,post:+c.dataset.post,slot:'pl-'+c.dataset.pl})],{type:'application/json'}))}catch(_){}}document.querySelectorAll('.nlpl').forEach(function(c){if('IntersectionObserver' in window){var o=new IntersectionObserver(function(x){if(x[0].isIntersecting){s(c,'place_view');o.disconnect()}},{threshold:.5});o.observe(c)}else{s(c,'place_view')}c.addEventListener('click',function(v){if(v.target.closest('[data-nl-ev]'))s(c,'place_click')})})})();</script>\n";
 }, 41 );

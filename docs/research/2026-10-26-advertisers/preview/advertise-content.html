@@ -1,0 +1,89 @@
+<!-- wp:html -->
+<style id="nlad2-css">
+.nlad2{--ink:#14212B;--ink2:#3E4C58;--mute:#5E6A75;--line:#E3E8EC;--deep:#1F4B5C;--sea:#2F6F86;--chip:#E9F1F4;--sans:"Assistant","Segoe UI",Arial,sans-serif;--serif:"Noto Serif Hebrew","David Libre",Georgia,serif;
+  direction:rtl;font-family:var(--sans);color:var(--ink);max-width:1232px;margin:0 auto;padding:8px 0 10px}
+.nlad2 *{box-sizing:border-box}
+.nlad2 img{display:block;max-width:100%;height:auto}
+html body .nlad2 h1,html body .nlad2 h2,html body .nlad2 h3{font-family:var(--serif)!important;font-weight:600!important;letter-spacing:0;margin:0}
+html body .nlad2 a{text-decoration:none!important}
+.nlad2-hero{position:relative;border-radius:22px;overflow:hidden;min-height:540px;display:flex;align-items:center;background:#1F4B5C}
+.nlad2-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nlad2-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(15,28,38,.78) 0%,rgba(15,28,38,.55) 42%,rgba(15,28,38,.08) 75%)}
+.nlad2-hero__in{position:relative;z-index:1;max-width:660px;padding:46px 48px;color:#fff}
+.nlad2-kick{font:700 15px/1 var(--sans);color:#fff;opacity:.92;margin:0 0 14px}
+html body .nlad2-hero h1{color:#fff!important;font-size:clamp(32px,4.3vw,50px)!important;line-height:1.18!important;margin:0 0 16px}
+.nlad2-lead{font:400 18px/1.65 var(--sans);color:#fff;margin:0 0 22px;max-width:560px}
+.nlad2-card{background:#fff;border-radius:16px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;box-shadow:0 24px 50px -30px rgba(0,0,0,.6);max-width:620px}
+html body .nlad2 .nlad2-tab{flex:1 1 auto;text-align:center;padding:13px 14px;border-radius:11px;font:700 15px/1.2 var(--sans);color:var(--ink)!important;background:#fff}
+html body .nlad2 .nlad2-tab:hover{background:var(--chip)}
+html body .nlad2 .nlad2-tab.is-go{background:var(--deep);color:#fff!important;flex:1 1 100%}
+.nlad2-credit{position:absolute;z-index:1;bottom:12px;left:16px;font:500 12px/1 var(--sans);color:rgba(255,255,255,.85);margin:0}
+.nlad2-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:16px 0 0}
+.nlad2-tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 16px;text-align:center}
+.nlad2-ic{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--chip);color:var(--deep);margin:0 0 10px}
+.nlad2-tile b{display:block;font:700 16px/1.3 var(--sans);color:var(--ink);margin:0 0 6px}
+.nlad2-tile p{font:400 14px/1.55 var(--sans);color:var(--mute);margin:0}
+.nlad2-sec{margin:52px 0 0}
+.nlad2-sec>h2{font-size:clamp(26px,3.2vw,34px)!important;line-height:1.25!important;color:var(--ink)!important;margin:0 0 8px}
+.nlad2-sec>p.nlad2-sub{font:400 17px/1.65 var(--sans);color:var(--ink2);margin:0 0 20px;max-width:760px}
+.nlad2-aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.nlad2-a{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.nlad2-a figure{margin:0;aspect-ratio:3/2;overflow:hidden}
+.nlad2-a figure img{width:100%;height:100%;object-fit:cover}
+.nlad2-a__b{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.nlad2-a__k{font:700 14px/1 var(--sans);color:var(--sea);margin:0}
+html body .nlad2-a h3{font-size:21px!important;line-height:1.35!important;color:var(--ink)!important}
+.nlad2-a p{font:400 15.5px/1.65 var(--sans);color:var(--ink2);margin:0}
+.nlad2-a__cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+html body .nlad2 .nlad2-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:10px;font:700 15px/1.2 var(--sans);background:var(--deep);color:#fff!important;border:1.5px solid var(--deep)}
+html body .nlad2 .nlad2-btn.is-2{background:#fff;color:var(--deep)!important}
+html body .nlad2 .nlad2-btn:hover{background:var(--ink);border-color:var(--ink);color:#fff!important}
+.nlad2-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.nlad2-room figure{margin:0;min-height:100%}.nlad2-room figure img{width:100%;height:100%;object-fit:cover}
+.nlad2-room__b{padding:30px 32px}
+html body .nlad2-room h2{font-size:clamp(24px,2.8vw,30px)!important;line-height:1.3!important;color:var(--ink)!important;margin:0 0 10px}
+.nlad2-room ul{list-style:none;margin:14px 0 20px;padding:0;display:grid;gap:10px}
+.nlad2-room li{font:400 16px/1.6 var(--sans);color:var(--ink2);padding-inline-start:30px;position:relative}
+.nlad2-room li::before{content:"";position:absolute;inset-inline-start:0;top:3px;width:20px;height:20px;border-radius:6px;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%231F4B5C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.nlad2-room li b{color:var(--ink)}
+.nlad2-room .nlad2-a__cta{margin:0}
+.nlad2-need{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.nlad2-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 24px}
+html body .nlad2-box h3{font-size:20px!important;line-height:1.35!important;color:var(--ink)!important;margin:0 0 8px}
+.nlad2-box p{font:400 16px/1.7 var(--sans);color:var(--ink2);margin:0 0 10px}
+html body .nlad2-box a{color:var(--deep)!important;font-weight:700;text-decoration:underline!important;text-underline-offset:3px}
+.nlad2-talk{margin:52px 0 0;background:var(--deep);border-radius:22px;padding:34px 36px;display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between;color:#fff}
+html body .nlad2-talk h2{color:#fff!important;font-size:clamp(26px,3vw,32px)!important;margin:0 0 6px}
+.nlad2-talk p{font:400 17px/1.6 var(--sans);color:#E3EEF2;margin:0;max-width:620px}
+.nlad2-talk__cta{display:flex;flex-wrap:wrap;gap:10px}
+html body .nlad2 .nlad2-talk .nlad2-btn{background:#fff;color:var(--deep)!important;border-color:#fff}
+html body .nlad2 .nlad2-talk .nlad2-btn.is-2{background:transparent;color:#fff!important;border-color:rgba(255,255,255,.7)}
+html body .nlad2 .nlad2-talk .nlad2-btn:hover{background:#E9F1F4;color:var(--ink)!important}
+.nlad2-fine{font:400 13px/1.6 var(--sans);color:var(--mute);margin:18px 0 0}
+/* the two parts the plugin adds after the content, in the same look */
+body.page-id-4959 .nladv,body.page-id-4959 .nlspon{max-width:1232px!important;border:1px solid #E3E8EC!important;border-radius:18px!important;box-shadow:none!important;font-family:"Assistant","Segoe UI",Arial,sans-serif!important}
+html body.page-id-4959 .nladv h2,html body.page-id-4959 .nlspon h2{font-family:"Noto Serif Hebrew","David Libre",Georgia,serif!important;font-weight:600!important;color:#14212B!important}
+body.page-id-4959 .nladv-btn,body.page-id-4959 .nlspon-btn{background:#1F4B5C!important;color:#fff!important;border-radius:10px!important}
+body.page-id-4959 .nladv-btn:hover,body.page-id-4959 .nlspon-btn:hover{background:#14212B!important}
+body.page-id-4959 .nladv-grid input:focus,body.page-id-4959 .nladv-grid select:focus{border-color:#2F6F86!important}
+body.page-id-4959 .nlspon-chip span{background:#fff!important;border-color:#E3E8EC!important;color:#3E4C58!important}
+body.page-id-4959 .nlspon-chip input:checked+span{background:#14212B!important;border-color:#14212B!important;color:#fff!important}
+@media (max-width:1100px){.nlad2-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.nlad2-aud{grid-template-columns:1fr}.nlad2-a{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.nlad2-a figure{aspect-ratio:auto;height:100%}
+  .nlad2-room{grid-template-columns:1fr}.nlad2-room figure{aspect-ratio:3/2}.nlad2-need{grid-template-columns:1fr}}
+@media (max-width:640px){.nlad2-hero{min-height:0;border-radius:18px;align-items:flex-end}.nlad2-hero::after{background:linear-gradient(0deg,rgba(15,28,38,.86) 0%,rgba(15,28,38,.6) 55%,rgba(15,28,38,.15) 100%)}
+  .nlad2-hero__in{padding:150px 18px 22px}.nlad2-lead{font-size:16.5px}.nlad2-tiles{grid-template-columns:1fr 1fr;gap:10px}.nlad2-tile{padding:14px 12px}
+  .nlad2-a{display:flex}.nlad2-a figure{aspect-ratio:3/2}.nlad2-room__b{padding:22px 18px}.nlad2-talk{padding:26px 20px}.nlad2-box{padding:20px 18px}
+  .nlad2-credit{bottom:auto;top:12px}}
+</style>
+<div class="nlad2" dir="rtl">
+<section class="nlad2-hero"><img src="/wp-content/plugins/nadlan-config/assets/advertise/hero-1600.jpg" srcset="/wp-content/plugins/nadlan-config/assets/advertise/hero-800.jpg 800w, /wp-content/plugins/nadlan-config/assets/advertise/hero-1600.jpg 1600w" sizes="(max-width:640px) 100vw, 1232px" alt="שכונה בגוש דן: בנייני מגורים ותיקים ולצדם מגדלי מגורים חדשים ועגורן" width="1600" height="1067" fetchpriority="high"><div class="nlad2-hero__in"><p class="nlad2-kick">ליזמים, קבלנים, בעלי מקצוע וחברות מארגנות</p><h1>פרסום בנדלן: מסלולים ומחירים ליזמים, לבעלי מקצוע ולחברות מארגנות</h1><p class="nlad2-lead">הקונים בוחרים כאן דירה מתוך הבניין, ובעלי הדירות בודקים כאן מי מלווה אותם. בוחרים מסלול, רואים את המחיר ומזמינים בלחיצה. כל פרסום מסומן, והמדריכים נשארים נקיים.</p><nav class="nlad2-card" aria-label="מסלולי פרסום"><a class="nlad2-tab" href="#project">יזמים וקבלנים</a><a class="nlad2-tab" href="#pro">בעלי מקצוע</a><a class="nlad2-tab" href="#renewal">חברות מארגנות</a><a class="nlad2-tab is-go" href="#nladt">כל המסלולים והמחירים</a></nav></div><p class="nlad2-credit">תמונה להמחשה</p></section>
+<div class="nlad2-tiles"><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l8-2v18M12 21h8V9l-8-2"/><path d="M8 8v.01M8 12v.01M8 16v.01M16 12v.01M16 16v.01"/></svg></span><b>עמוד פרויקט מנוהל</b><p>הפרויקט שלכם כנראה כבר מופיע בקטלוג. קחו עליו בעלות, עדכנו פרטים ותמונות, וקבלו את הפניות ישירות אליכם.</p></div><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span><b>חוויית דגל לפרויקט</b><p>בחירת דירה מתוך הבניין, מחירים בהקשר, מפת סביבה וטופס פנייה ברמת הדירה. עובד מהתוכניות שלכם ומתחלף בהדמיה הרשמית כשתגיע.</p></div><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-6"/></svg></span><b>נתונים ברמת הדירה</b><p>אילו דירות מקבלות הכי הרבה עניין, מאיפה מגיעים הקונים, ומה כדאי לתמחר מחדש. דוח שאין לאף לוח אחר.</p></div><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span><b>חשיפה בעמוד הבית</b><p>מקום מוביל ברצועת הפרויקטים הנבחרים, מסומן כממומן, מול קונים בשלב חיפוש פעיל.</p></div><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><b>פרופיל לבעלי מקצוע</b><p>עורכי דין, שמאים, יועצי משכנתאות ובדק בית: פרופיל מאומת מול המאגרים הממשלתיים, עם הפניות ממוקדות.</p></div><div class="nlad2-tile"><span class="nlad2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/><path d="M8 11h.01M16 11h.01"/></svg></span><b>חדר ניהול להתחדשות עירונית</b><p>לחברה מארגנת: מצב החתימה של כל דירה, מה חסר, עשרת השלבים ועדכונים לדיירים. לדיירים ולנציגות חינם.</p></div></div>
+<section class="nlad2-sec"><h2>מה מקבלים, לפי מסלול</h2><p class="nlad2-sub">שלושה סוגי מפרסמים, כל אחד מול הקהל שלו: קונים שבוחרים דירה, קונים שמחפשים איש מקצוע, ובעלי דירות לפני התחדשות עירונית.</p><div class="nlad2-aud"><article class="nlad2-a"><figure><img src="/wp-content/plugins/nadlan-config/assets/advertise/developers-1600.jpg" srcset="/wp-content/plugins/nadlan-config/assets/advertise/developers-800.jpg 800w, /wp-content/plugins/nadlan-config/assets/advertise/developers-1600.jpg 1600w" sizes="(max-width:900px) 100vw, 400px" alt="מגדל מגורים חדש בבנייה עם עגורן ומבנה מכירות בקומת הקרקע" width="1600" height="1067" loading="lazy" decoding="async"></figure><div class="nlad2-a__b"><p class="nlad2-a__k">יזמים וקבלנים</p><h3>הקונים בוחרים דירה מתוך הבניין. אצלכם או אצל המתחרים.</h3><p>נדלן הוא המקום שבו קונה מסתובב סביב הבניין, בוחר דירה, רואה קומה, כיוון ונוף, ושולח פנייה שמגיעה אליכם עם הדירה המדויקת שעניינה אותו. ככה נראית פנייה חמה.</p><div class="nlad2-a__cta"><a class="nlad2-btn" href="#project">מסלולים ומחירים לפרויקטים</a><a class="nlad2-btn is-2" href="/projects/ashira-sde-dov/">ראו דוגמה חיה: פרויקט אשירה</a></div></div></article><article class="nlad2-a"><figure><img src="/wp-content/plugins/nadlan-config/assets/advertise/professionals-1600.jpg" srcset="/wp-content/plugins/nadlan-config/assets/advertise/professionals-800.jpg 800w, /wp-content/plugins/nadlan-config/assets/advertise/professionals-1600.jpg 1600w" sizes="(max-width:900px) 100vw, 400px" alt="שולחן במשרד עורכי דין: חוזה רכישת דירה, עט, תוכנית דירה ומפתחות" width="1600" height="1067" loading="lazy" decoding="async"></figure><div class="nlad2-a__b"><p class="nlad2-a__k">בעלי מקצוע</p><h3>מי שקונה דירה מחפש עורך דין, שמאי ובדק בית. הם מוצאים אתכם כאן.</h3><p>עורכי דין, שמאים, יועצי משכנתאות, בדק בית, אדריכלים ומעצבי פנים: פרופיל מלא בתוך המדריכים שהקונים קוראים, עם וואטסאפ, טלפון וקישור לאתר שלכם.</p><div class="nlad2-a__cta"><a class="nlad2-btn" href="#pro">מסלולים ומחירים לבעלי מקצוע</a><a class="nlad2-btn is-2" href="/professionals/">ראו איך פרופיל נראה</a></div></div></article><article class="nlad2-a"><figure><img src="/wp-content/plugins/nadlan-config/assets/advertise/renewal-1600.jpg" srcset="/wp-content/plugins/nadlan-config/assets/advertise/renewal-800.jpg 800w, /wp-content/plugins/nadlan-config/assets/advertise/renewal-1600.jpg 1600w" sizes="(max-width:900px) 100vw, 400px" alt="דיירים בלובי של בניין ותיק מסתכלים על תוכנית של בניינים חדשים" width="1600" height="1067" loading="lazy" decoding="async"></figure><div class="nlad2-a__b"><p class="nlad2-a__k">חברות מארגנות וליווי דיירים</p><h3>בעלי הדירות בודקים כאן מי מלווה אותם, לפני שהם חותמים.</h3><p>החבילה המלאה לחברה מארגנת: פרופיל מוביל בקטגוריית ארגון דיירים, חסות על התחום, כתבת מפרסם, וחדר ניהול לכל המתחמים שלכם, בלחיצה אחת.</p><div class="nlad2-a__cta"><a class="nlad2-btn" href="#renewal">לחבילה המלאה</a><a class="nlad2-btn is-2" href="/my-renewal/">חדר ניהול לדוגמה</a></div></div></article></div></section>
+<div id="nladt-slot"></div>
+<section class="nlad2-sec nlad2-room"><figure><img src="/wp-content/plugins/nadlan-config/assets/advertise/renewal-1600.jpg" srcset="/wp-content/plugins/nadlan-config/assets/advertise/renewal-800.jpg 800w, /wp-content/plugins/nadlan-config/assets/advertise/renewal-1600.jpg 1600w" sizes="(max-width:900px) 100vw, 616px" alt="דיירים בלובי של בניין ותיק מסתכלים על תוכנית של בניינים חדשים" width="1600" height="1067" loading="lazy" decoding="async"></figure><div class="nlad2-room__b"><p class="nlad2-a__k">לחברות מארגנות</p><h2>חדר הניהול להתחדשות עירונית</h2><p class="nlad2-sub" style="margin:0">כל מתחם במקום אחד, והדיירים רואים שאתם מנהלים את זה בשקיפות.</p><ul><li><b>מצב החתימה של כל דירה</b>: חתם, בתהליך, חסר מסמך, סירב, טרם הושג קשר</li><li><b>מה חסר</b>: צילום תעודת זהות, נסח טאבו, הסכם חתום וייפוי כוח, לכל דירה</li><li><b>עשרת השלבים</b> מההתארגנות ועד מסירת הדירות, עם הצעד הבא בכל שלב</li><li><b>עדכונים לדיירים</b> וקישור אחד לקבוצת הוואטסאפ של הבניין</li><li><b>לדיירים ולנציגות חינם</b>. לחברה מארגנת: ₪149 למתחם בחודש, והחודש הראשון חינם</li></ul><div class="nlad2-a__cta"><a class="nlad2-btn" href="#renewal">לחבילה המלאה</a><a class="nlad2-btn is-2" href="/my-renewal/">חדר ניהול לדוגמה</a></div></div></section>
+<section class="nlad2-sec"><h2>מה אנחנו צריכים מכם כדי להתחיל</h2><div class="nlad2-need"><div class="nlad2-box"><h3>ליזמים וקבלנים</h3><p>פחות ממה שנדמה לכם. טבלת דירות (קומה, חדרים, שטח, כיוון, סטטוס) וכתובת מספיקות כדי לעלות עם הדמיה להמחשה. תוכניות אדריכליות משדרגות את הדיוק. הדמיה רשמית שלכם, כשקיימת, נכנסת כמו שהיא. אנחנו עושים את השאר.</p></div><div class="nlad2-box"><h3>לבעלי מקצוע ולחברות מארגנות</h3><p>עו״ד, שמאים, יועצי משכנתאות, בדק בית ומעצבי פנים: פרופיל מאומת מול המאגרים הממשלתיים, עם קביעת שיחת וידאו, מפת אזור שירות והפניות ממוקדות. חברה מארגנת מוסיפה את הפרויקטים שהיא מלווה ואת הצוות.</p><p><a href="/professionals/">ראו איך פרופיל נראה</a></p></div></div></section>
+<section class="nlad2-talk"><div><h2>נדבר?</h2><p>שלחו הודעה קצרה ונחזור אליכם עם הצעה מסודרת לפרויקט, לפרופיל או למתחמים שלכם.</p></div><div class="nlad2-talk__cta"><a class="nlad2-btn" href="https://wa.me/972525101555?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A4%D7%A8%D7%A1%D7%9D%20%D7%91%D7%A0%D7%93%D7%9C%D7%9F">וואטסאפ</a><a class="nlad2-btn is-2" href="#nladv-form">השאירו פרטים</a></div></section>
+<p class="nlad2-fine">המחירים לפי המסלול שבחרתם, כפי שהם מופיעים בעמוד. התמונות בעמוד להמחשה. הדמיות של פרויקטים מסומנות "הדמיה להמחשה" עד לאישור חומרים רשמיים, ואומדני מחיר תמיד מסומנים כלא מחייבים.</p>
+</div>
+<!-- /wp:html -->

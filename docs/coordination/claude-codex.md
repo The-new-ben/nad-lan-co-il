@@ -4555,3 +4555,6 @@ CORRECTION 1.72.533: the line above is wrong. The run stopped at bridge create (
 RELEASE DONE 1.72.533 (RentFair) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.533. Lock released.
 RELEASE LOCK 1.72.534 (ProsTools: bedek.js, shamai.js, orechdin.js + their data new; inc/rent-listings.php swapped (Hebrew join); hunk on the live inc/instruments.php; round 2 G6-G8) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.534 (ProsTools) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.534. Lock released.
+RELEASE LOCK 1.72.535 (AdvertiseTiers: inc/ad-safety.php + inc/advertise-tiers.php new; hunks on the live profile-extras, pro-cards, placements, brokers-list, advertiser-orders) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+ROLLED BACK 1.72.535 (first run): the checks rolled it back on a wrong check of mine ("ad_safety" in /health: nadlan_config_healthcheck is a function, not a filter); live stayed 1.72.534. Second run follows with that check removed, the site-look restyle and eight /advertise/ photos added. Lock still held. [Ashira session] 26.10.2026.
+RELEASE DONE 1.72.535 (AdvertiseTiers, second run with the site-look restyle and the /advertise/ photos) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.535. Lock released.

@@ -40,7 +40,8 @@ if ( ! function_exists( 'nadlan_procard_default_map' ) ) {
 			'אדריכל'   => array( 'architect' ), 'architecture' => array( 'architect' ),
 			'עיצוב'    => array( 'interior_designer' ), 'design' => array( 'interior_designer' ),
 			'בנייה'    => array( 'kablan', 'engineer' ), 'קבלן' => array( 'kablan' ), 'construction' => array( 'kablan', 'engineer' ),
-			'התחדשות'  => array( 'kablan', 'lawyer' ), 'תמ"א' => array( 'kablan', 'lawyer' ),
+			'התחדשות'  => array( 'kablan', 'lawyer', 'organizer' ), 'תמ"א' => array( 'kablan', 'lawyer', 'organizer' ),
+			'ארגון דיירים' => array( 'organizer' ), 'מארגנ' => array( 'organizer' ), 'ליווי דיירים' => array( 'organizer' ), 'פינוי בינוי' => array( 'organizer', 'lawyer' ),
 			'תיווך'    => array( 'metavech' ), 'brokerage' => array( 'metavech' ),
 			'ניהול'    => array( 'property_manager' ), 'management' => array( 'property_manager' ),
 			'מדידה'    => array( 'surveyor' ), 'טאבו' => array( 'lawyer', 'surveyor' ), 'רישום' => array( 'lawyer' ),
@@ -68,7 +69,7 @@ if ( ! function_exists( 'nadlan_procard_domain_labels' ) ) {
 	/* sponsorable content domains: profession KEY => human label. One source of
 	 * truth for the /advertise/ picker AND the advertiser-center status line. */
 	function nadlan_procard_domain_labels() {
-		return array( 'lawyer' => 'משפט ומיסוי', 'mashkanta' => 'משכנתאות ומימון', 'shamai' => 'שמאות', 'bedek_bait' => 'בדק בית', 'architect' => 'תכנון ואדריכלות', 'kablan' => 'בנייה והתחדשות', 'metavech' => 'תיווך', 'property_manager' => 'ניהול נכסים' );
+		return array( 'lawyer' => 'משפט ומיסוי', 'mashkanta' => 'משכנתאות ומימון', 'shamai' => 'שמאות', 'bedek_bait' => 'בדק בית', 'architect' => 'תכנון ואדריכלות', 'kablan' => 'בנייה והתחדשות', 'metavech' => 'תיווך', 'property_manager' => 'ניהול נכסים', 'organizer' => 'ליווי דיירים' );
 	}
 }
 
@@ -118,7 +119,11 @@ if ( ! function_exists( 'nadlan_procard_match' ) ) {
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'posts_per_page' => 12,
 			'no_found_rows' => true,
-			'meta_query' => array( array( 'key' => 'profession', 'value' => $professions, 'compare' => 'IN' ) ),
+			'meta_query' => array( 'relation' => 'AND',
+				array( 'key' => 'profession', 'value' => $professions, 'compare' => 'IN' ),
+				// a showcase card (is_demo, "פרופיל לדוגמה") never stands inside real content as an expert
+				array( 'relation' => 'OR', array( 'key' => 'is_demo', 'compare' => 'NOT EXISTS' ), array( 'key' => 'is_demo', 'value' => array( '1', 'true' ), 'compare' => 'NOT IN' ) ),
+			),
 		) );
 		$posts = $q->posts;
 		// the monetization order: ACTIVE DOMAIN SPONSORS first (the console
@@ -172,7 +177,8 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 		$fill  = max( 0, min( 100, $rate * 20 ) );
 		$facts = array_filter( array( $city, $cls, $reg ? 'רישיון ' . $reg : '' ) );
 		ob_start(); ?>
-<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?><?php echo $spon ? ' nlprc--spon' : ''; ?>" dir="rtl">
+<?php $paid = $spon || ( 'free' !== $tier && $tier ); ?>
+<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?><?php echo $spon ? ' nlprc--spon' : ''; ?>" dir="rtl"<?php echo $paid ? ' data-paid="1"' : ''; ?>>
 	<?php if ( $spon || ( 'free' !== $tier && $tier ) ) : ?><span class="nlprc-spon">ממומן</span><?php endif; ?>
 	<a class="nlprc-media" href="<?php echo esc_url( get_permalink( $id ) ); ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>>
 		<?php if ( ! $img ) : ?><span class="nlprc-mono"><?php echo esc_html( mb_substr( get_the_title( $id ), 0, 1 ) ); ?></span><?php endif; ?>
@@ -190,7 +196,7 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 		<?php if ( ! $compact && $bio ) : ?><p class="nlprc-bio"><?php echo esc_html( $bio ); ?></p><?php endif; ?>
 		<?php if ( ! $compact ) : ?>
 		<div class="nlprc-cta">
-			<?php if ( $wa ) : ?><a class="nlprc-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg> וואטסאפ</a><?php endif; ?>
+			<?php if ( $wa ) : ?><a class="nlprc-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>" target="_blank" rel="<?php echo $paid ? 'sponsored noopener' : 'noopener'; ?>"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg> וואטסאפ</a><?php endif; ?>
 			<?php if ( $phone ) : ?><a class="nlprc-call" href="tel:<?php echo esc_attr( $phone ); ?>">התקשרו</a><?php endif; ?>
 			<a class="nlprc-go" href="<?php echo esc_url( get_permalink( $id ) ); ?>">לכרטיס המלא ←</a>
 		</div>
@@ -205,7 +211,15 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( array( 'nadlan_term', 'post' ) ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	if ( (int) get_option( 'nadlan_procard_enabled', 1 ) !== 1 ) { return $content; }
+	// neutral-advice pages stay free of paid cards (inc/ad-safety.php)
+	if ( function_exists( 'nadlan_ad_free_page' ) && nadlan_ad_free_page( get_the_ID() ) ) { return $content; }
 	$pros = nadlan_procard_match( get_the_ID() );
+	// the per-page cap on paid cards: a paid card beyond the cap is dropped, free cards stay
+	if ( $pros && function_exists( 'nadlan_ad_slot_take' ) && function_exists( 'nadlan_ad_is_paid' ) ) {
+		$pros = array_values( array_filter( array_slice( $pros, 0, 6 ), function ( $p ) {
+			return ! nadlan_ad_is_paid( $p->ID ) || nadlan_ad_slot_take();
+		} ) );
+	}
 	if ( ! $pros ) { return $content; }
 	$max  = max( 1, (int) get_option( 'nadlan_procard_max', 2 ) );
 	$lead = array_slice( $pros, 0, 1 );
@@ -371,3 +385,6 @@ add_filter( 'the_content', function ( $content ) {
 </script>';
 	return $content . $html;
 }, 22 );
+
+/* 1.72.535: the advertising tracks and prices on /advertise/ (self-serve, invoice until the online checkout is switched on) */
+if ( file_exists( __DIR__ . '/advertise-tiers.php' ) ) { require_once __DIR__ . '/advertise-tiers.php'; }

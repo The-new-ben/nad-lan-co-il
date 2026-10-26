@@ -1,0 +1,35 @@
+{
+  "released": "1.72.535",
+  "from": "1.72.534",
+  "live_before": {
+    "nadlan-config.php": "600a4322d97d4a2d4dd01aff7948d8ce",
+    "inc/profile-extras.php": "d4f8a89552bfc771805cd914a1df154f",
+    "inc/pro-cards.php": "81b98f31830be94afdcb8735c78eaf2b",
+    "inc/placements.php": "b8088ca80da223dc8582245c4b211c90",
+    "inc/brokers-list.php": "b737e133e46c4a3358e3c0032a7f916e",
+    "inc/advertiser-orders.php": "e31d20991733329bd4e61e08b0a901b8"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 20:31:35",
+  "files": {
+    "inc/ad-safety.php": "221f4b7fa5e89ad791db8f96ceb2c81a",
+    "inc/advertise-tiers.php": "1448d82a998c165bb1b7a28f5ab90d0d",
+    "assets/advertise/hero-1600.jpg": "c527491604471f566335cbee43da55a7",
+    "assets/advertise/hero-800.jpg": "705ecfdd2b543452e25d01d492905b7b",
+    "assets/advertise/developers-1600.jpg": "45c084496fc128b2449599c35cbdac73",
+    "assets/advertise/developers-800.jpg": "433b9ee099145a4a3b727e43e0955625",
+    "assets/advertise/professionals-1600.jpg": "a370941a0e87d6ab3f7ba816b02a5077",
+    "assets/advertise/professionals-800.jpg": "31b64c92aa28a0f0f6dd9da071054179",
+    "assets/advertise/renewal-1600.jpg": "f3749c0a30636bbafea5fbf9f3571f84",
+    "assets/advertise/renewal-800.jpg": "889c90e6197ac68682b688a7ec73f0de",
+    "nadlan-config.php": "25b2336d3f16e94a3383789daae39c9b",
+    "inc/profile-extras.php": "83648b6880400d4f667ef2ce1f71571b",
+    "inc/pro-cards.php": "6279bd48f307df15432f693ff2e8b1f7",
+    "inc/placements.php": "69ef4166944ca1aea3498d9bea40e2c5",
+    "inc/brokers-list.php": "a95dbbe02bcf8768f9c72000227e774b",
+    "inc/advertiser-orders.php": "cb96a268d9b5ede621249ee5449309be"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.535, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

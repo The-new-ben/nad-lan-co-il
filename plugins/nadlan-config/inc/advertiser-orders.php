@@ -17,6 +17,11 @@ if ( ! function_exists( 'nadlan_ao_products' ) ) {
 			489 => array( 'tier' => 'premier', 'post_type' => 'nadlan_project', 'days' => 180 ),
 			490 => array( 'tier' => 'pro', 'post_type' => 'nadlan_property', 'days' => 60 ),
 		);
+		// the area package (inc/advertise-tiers.php), once Ben creates its product: Premier for 30 days, renewed monthly
+		$area = (int) get_option( 'nadlan_adt_area_product', 0 );
+		if ( $area > 0 && ! isset( $defs[ $area ] ) ) {
+			$defs[ $area ] = array( 'tier' => 'premier', 'post_type' => 'nadlan_professional', 'days' => 30, 'label' => 'חבילת אזור' );
+		}
 		foreach ( $defs as $pid => $def ) {
 			if ( isset( $labels[ $pid ] ) ) {
 				$defs[ $pid ] = array_merge( $labels[ $pid ], $def );

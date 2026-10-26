@@ -7,6 +7,8 @@
  * Photos already render via cards-render.php's gallery (reads photos_csv).
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
+/* 1.72.535: the paid-content safety rules (sponsored links, "ממומן" labels, at most 3 paid cards a page); loaded here, right after tiers in the module order */
+if ( file_exists( __DIR__ . '/ad-safety.php' ) ) { require_once __DIR__ . '/ad-safety.php'; }
 
 if ( ! function_exists( 'nadlan_pe_video_embed' ) ) {
 	function nadlan_pe_video_embed( $url ) {
@@ -39,19 +41,22 @@ if ( ! function_exists( 'nadlan_pe_render' ) ) {
 			'social_youtube'   => array( 'YouTube',   $ico_yt, '#11110F' ),
 		);
 		$links = '';
+		// paid profiles: every outbound link is an advertisement (rel sponsored), see inc/ad-safety.php
+		$rel  = function_exists( 'nadlan_ad_rel' ) ? nadlan_ad_rel( $id ) : 'noopener';
+		$paid = function_exists( 'nadlan_ad_is_paid' ) && nadlan_ad_is_paid( $id );
 		foreach ( $socials as $key => $info ) {
 			$url = (string) get_post_meta( $id, $key, true );
 			if ( ! $url ) { continue; }
-			$links .= '<a class="nlpe-soc" href="' . esc_url( $url ) . '" target="_blank" rel="noopener" style="--c:' . esc_attr( $info[2] ) . '" aria-label="' . esc_attr( $info[0] ) . '"><span>' . $info[1] . '</span>' . esc_html( $info[0] ) . '</a>';
+			$links .= '<a class="nlpe-soc" href="' . esc_url( $url ) . '" target="_blank" rel="' . esc_attr( $rel ) . '" style="--c:' . esc_attr( $info[2] ) . '" aria-label="' . esc_attr( $info[0] ) . '"><span>' . $info[1] . '</span>' . esc_html( $info[0] ) . '</a>';
 		}
 		$website = (string) get_post_meta( $id, 'website', true );
 		if ( $website ) {
-			$links .= '<a class="nlpe-soc" href="' . esc_url( $website ) . '" target="_blank" rel="noopener" style="--c:#9C7A3C" aria-label="אתר"><span>' . $ico_www . '</span>אתר</a>';
+			$links .= '<a class="nlpe-soc" href="' . esc_url( $website ) . '" target="_blank" rel="' . esc_attr( $rel ) . '" style="--c:#1F4B5C" aria-label="אתר"><span>' . $ico_www . '</span>אתר</a>';
 		}
 		$video_html = nadlan_pe_video_embed( (string) get_post_meta( $id, 'video_url', true ) );
 		if ( ! $links && ! $video_html ) { return ''; }
 		ob_start(); ?>
-<section class="nlpe" dir="rtl">
+<section class="nlpe" dir="rtl"<?php echo $paid ? ' data-paid="1"' : ''; ?>>
 	<?php if ( $links ) : ?><div class="nlpe-socials"><?php echo $links; ?></div><?php endif; ?>
 	<?php if ( $video_html ) : ?><?php echo $video_html; ?><?php endif; ?>
 </section>
