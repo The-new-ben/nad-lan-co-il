@@ -1,0 +1,17 @@
+{
+  "released": "1.72.529",
+  "from": "1.72.528",
+  "live_before": {
+    "data/renewal-stats.json": "a26236692bb5748f7fa9b0b447122fbc",
+    "nadlan-config.php": "0f0f3ac314fd367fb9e171c8c874341e"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 05:38:23",
+  "files": {
+    "data/renewal-stats.json": "ce87adc610205434c26bfabce4a554ed",
+    "nadlan-config.php": "02cd7d1025eccc62dc64080644eb5002"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.529, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

@@ -94,11 +94,19 @@ lay = get(LAYER + "?f=json")
 feats = []
 off = 0
 while True:
-    q = get(LAYER + "/query?" + urllib.parse.urlencode({"where": "1=1", "outFields": "Yeshuv,codeStatusHarashut,TeurSugMaslul,yachadKayamRashut,yachadMutzaRashut",
+    q = get(LAYER + "/query?" + urllib.parse.urlencode({"where": "1=1", "outFields": "MisparProject,Yeshuv,codeStatusHarashut,TeurSugMaslul,yachadKayamRashut,yachadMutzaRashut",
                                                          "returnGeometry": "false", "f": "json", "resultOffset": off, "resultRecordCount": 1000}))
     fs = q.get("features", []); feats += fs; off += len(fs)
     if not fs or not q.get("exceededTransferLimit"):
         break
+# 26.10.2026: a complex drawn as several polygons is several identical rows on the layer (999 rows, 992 complexes on 20.10.2026);
+# count each complex number once, so the tiles, the stage counts and the units are per complex (rows kept for reference)
+rows_n = len(feats)
+_seen = {}
+for f in feats:
+    _k = f["attributes"].get("MisparProject") or ("row", f["attributes"].get("OBJECTID"), len(_seen))
+    _seen.setdefault(_k, f)
+feats = list(_seen.values())
 mstage = collections.Counter(STAGE.get(f["attributes"].get("codeStatusHarashut"), "ללא שלב במפה") for f in feats)
 mtrack = collections.Counter(clean(f["attributes"].get("TeurSugMaslul")) or "ללא מסלול" for f in feats)
 edit = (lay.get("editingInfo") or {}).get("dataLastEditDate")
@@ -115,7 +123,7 @@ out = {
              "approved": [{k: x[k] for k in ("name", "city", "status", "plan", "link", "ex", "prop")} for x in approved],
              "execution": [{k: x[k] for k in ("name", "city", "status", "permits", "prop")} for x in execution]},
     "map": {"source": "הרשות הממשלתית להתחדשות עירונית: מפת מתחמי פינוי בינוי מוכרזים (gov.il)", "url": "https://www.gov.il/he/departments/topics/mapa-renewal",
-            "last_edit": datetime.datetime.utcfromtimestamp(edit / 1000).date().isoformat() if edit else "", "total": len(feats),
+            "last_edit": datetime.datetime.utcfromtimestamp(edit / 1000).date().isoformat() if edit else "", "total": len(feats), "rows": rows_n,
             "localities": len({clean(f["attributes"].get("Yeshuv")) for f in feats}),
             "existing": sum(num(f["attributes"].get("yachadKayamRashut")) for f in feats),
             "proposed": sum(num(f["attributes"].get("yachadMutzaRashut")) for f in feats),

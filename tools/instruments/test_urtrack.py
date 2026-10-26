@@ -62,8 +62,11 @@ true("the file snapshot of renewal-stats.json is in the history", fi is not None
 true("the map snapshot of renewal-stats.json is in the history", mi is not None, STATS["map"]["last_edit"])
 check("file 15.8.2026: complexes = renewal-stats.json", snaps[fi]["rows"], STATS["file"]["total"])
 check("file 15.8.2026: 970", snaps[fi]["rows"], 970)
-check("map 20.10.2026: rows = renewal-stats.json", snaps[mi]["rows"], STATS["map"]["total"])
-check("map 20.10.2026: 999 rows", snaps[mi]["rows"], 999)
+# 26.10.2026: renewal-stats.json counts each complex once (total) and keeps the layer rows (rows)
+check("map: complexes = renewal-stats.json", snaps[mi]["n"], STATS["map"]["total"])
+check("map: rows = renewal-stats.json", snaps[mi]["rows"], STATS["map"].get("rows"))
+m20 = idx.get(("map", "2026-10-20"))
+check("map 20.10.2026: 999 rows, 992 complexes", (snaps[m20]["rows"], snaps[m20]["n"]), (999, 992))
 check("our import 13.7.2026: 947", snaps[si]["rows"], 947)
 check("our import 13.7.2026: dated 13.7.2026", snaps[si]["d"], "2026-07-13")
 if os.path.exists(OUR):
@@ -78,21 +81,24 @@ for r in D["recs"]:
         got[s] = got.get(s, 0) + 1
 check("file 15.8.2026: complexes per stage = renewal-stats.json", dict(sorted(got.items())), dict(sorted(want.items())))
 check("file 15.8.2026: records present = 970", sum(1 for r in D["recs"] if r["s"][fi] != -1), 970)
-check("map 20.10.2026: unique complexes (a multi-polygon complex is one row per polygon)", sum(1 for r in D["recs"] if r["s"][mi] != -1), snaps[mi]["n"])
+check("newest map: unique complexes (a multi-polygon complex is one row per polygon)", sum(1 for r in D["recs"] if r["s"][mi] != -1), snaps[mi]["n"])
 check("our import: records present = 947", sum(1 for r in D["recs"] if r["s"][si] != -1), 947)
 if os.path.isdir(RAW):
     def raw(kind, date):
         return json.load(io.open(os.path.join(RAW, "%s_%s.json" % (kind, date)), encoding="utf-8"))
     rf, rm = raw("file", snaps[fi]["d"]), raw("map", snaps[mi]["d"])
     check("raw file snapshot rows = renewal-stats.json", len(rf["rows"]), STATS["file"]["total"])
-    check("raw map 20.10 rows = renewal-stats.json", len(rm["rows"]), STATS["map"]["total"])
+    check("raw map rows = renewal-stats.json rows", len(rm["rows"]), STATS["map"].get("rows"))
+    _u = {}
+    for a in rm["rows"]: _u.setdefault(a.get("MisparProject"), a)
+    check("raw map complexes = renewal-stats.json", len(_u), STATS["map"]["total"])
     names = {1: "תכנון ראשוני", 2: "תכנון סטטוטורי", 3: "תכנית מאושרת לפני מימוש", 4: "תכנית מאושרת במימוש"}
     cnt = {}
-    for a in rm["rows"]:
+    for a in _u.values():
         k = names.get(a.get("codeStatusHarashut"), "ללא שלב במפה")
         cnt[k] = cnt.get(k, 0) + 1
-    check("raw map 20.10 rows per stage = renewal-stats.json", dict(sorted(cnt.items())), dict(sorted(STATS["map"]["by_stage"].items())))
-    check("raw map 20.10 localities = renewal-stats.json", len({re.sub(r"\s+", " ", str(a.get("Yeshuv") or "")).strip() for a in rm["rows"]}), STATS["map"]["localities"])
+    check("raw map complexes per stage = renewal-stats.json", dict(sorted(cnt.items())), dict(sorted(STATS["map"]["by_stage"].items())))
+    check("raw map localities = renewal-stats.json", len({re.sub(r"\s+", " ", str(a.get("Yeshuv") or "")).strip() for a in _u.values()}), STATS["map"]["localities"])
     rs = raw("site", "2026-07-13")
     check("raw site snapshot rows", len(rs["rows"]), 947)
 else:
@@ -135,8 +141,8 @@ up = sum(1 for r in D["recs"] if r["s"][fi] > 0 and r["s"][lm] > 0 and RANK[r["s
 check("added since the file (recomputed)", add, D["agg"]["added"])
 check("moved up since the file (recomputed)", up, D["agg"]["up"])
 check("gone since the file (recomputed)", gone, D["agg"]["gone"])
-check("research F10 holds at 20.10.2026: 17 moved up between the file and the map", sum(1 for r in D["recs"] if r["s"][fi] > 0 and r["s"][mi] > 0 and RANK[r["s"][mi]] > RANK[r["s"][fi]]), 17)
-check("research F10 holds at 20.10.2026: 36 added (35 new + 1 renumbered)", sum(1 for r, c in allch if c[0] == snaps[mi]["d"] and c[1] in ("new", "renum")), 36)
+check("research F10 holds at 20.10.2026: 17 moved up between the file and the map", sum(1 for r in D["recs"] if r["s"][fi] > 0 and r["s"][m20] > 0 and RANK[r["s"][m20]] > RANK[r["s"][fi]]), 17)
+check("research F10 holds at 20.10.2026: 36 added (35 new + 1 renumbered)", sum(1 for r, c in allch if c[0] == snaps[m20]["d"] and c[1] in ("new", "renum")), 36)
 check("city counts add up to the totals", [sum(v.get(k, 0) for v in D["agg"]["cities"].values()) for k in ("add", "up", "gone")], [D["agg"]["added"], D["agg"]["up"], D["agg"]["gone"]])
 
 # ---------- 3. the tool in node ----------

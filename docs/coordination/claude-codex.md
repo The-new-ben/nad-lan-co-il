@@ -4541,3 +4541,5 @@ RELEASE LOCK 1.72.527 (PostPictureAndTrail: hunk on the live inc/page-lang.php; 
 RELEASE DONE 1.72.527 (PostPictureAndTrail) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.527. Lock released.
 RELEASE LOCK 1.72.528 (UrbanTracker: urtrack.js + renewal-track.json new; hunks on the live inc/instruments.php and inc/urban-map-data.php; Q1 moat; HAD-601) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.528 (UrbanTracker) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.528. Lock released.
+RELEASE LOCK 1.72.529 (RenewalStatsPerComplex: data/renewal-stats.json swapped, map counted per complex; HAD-601) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.529 (RenewalStatsPerComplex) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.529. Lock released.
