@@ -1,0 +1,22 @@
+{
+  "released": "1.72.526",
+  "from": "1.72.525",
+  "live_before": {
+    "assets/instruments/tools/pval.js": "b621cbcb7f569feef154be99fbaa1ddd",
+    "assets/instruments/data/value.json": "22e1db914c5a8a31dbd538cc975d5f2c",
+    "nadlan-config.php": "b6875c5ed322e08eddb684d26b075edc",
+    "inc/instruments.php": "4b475d3ceaa169ef95c2b8c713452bdb"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 03:54:41",
+  "files": {
+    "assets/instruments/tools/pval.js": "ced4d83adcec25355d54f550b990456d",
+    "assets/instruments/data/value.json": "53244dacf769ce77e97f826ce0d33965",
+    "assets/instruments/data/value-series.json": "b1c3a4171bfe6a39dc76f20685e5b5fc",
+    "nadlan-config.php": "e6b4a7a0d90949850264f9fab529d7c5",
+    "inc/instruments.php": "dcf2d9d753d35431a61805d5c27f9631"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.526, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

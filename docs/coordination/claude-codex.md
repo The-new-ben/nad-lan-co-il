@@ -4535,3 +4535,5 @@ RELEASE LOCK 1.72.525 (DekelSoftware tools: dekel.js + dekel.json + core.js + co
 RELEASE ROLLED BACK 1.72.525 first run (an inherited check wants 'Short answer' on /israel-mortgage-non-residents/, which the U3 rewrite dropped; files restored from .bak525, health 1.72.524) by Claude [Ashira session] 26.10.2026. Lock released; rerun after the label is restored.
 RELEASE LOCK 1.72.525 second run (same content; the English mortgage page carries 'Short answer' again) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.525 (DekelSoftware tools: dktool, dkboq, text cells in rows) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.525. Lock released.
+RELEASE LOCK 1.72.526 (ValueAnchors: pval.js v2 + value.json swapped whole, value-series.json new; hunk on the live inc/instruments.php) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.526 (ValueAnchors: pval v2 three official anchors, value-series.json) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.526. Lock released.

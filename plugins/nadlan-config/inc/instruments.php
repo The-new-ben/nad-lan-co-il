@@ -94,7 +94,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			'pval' => array(
 				'name' => 'מחשבון שווי דירה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · שווי דירה',
 				'desc' => 'כמה שווה דירה לפי העסקאות שנסגרו: המחיר החציוני לפי מספר החדרים בשכונה או בעיר (נתוני רשות המסים), עם התאמות למצב, לקומה ולבניין, טווח זהירות ובדיקת מחיר מבוקש, או חישוב לפי מחיר למ״ר.',
-				'data' => array( 'value.json' ),
+				'data' => array( 'value.json', 'value-series.json' ),  // 1.72.526: the 22-quarter official series and the CBS dwelling index (pval v2, three anchors)
 				'related' => array( '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
 			'arnona' => array(
