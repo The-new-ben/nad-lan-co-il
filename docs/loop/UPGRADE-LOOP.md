@@ -44,13 +44,13 @@ Ben: every protected keyword where we do not appear gets a winning page (tools, 
 |---|---|---|---|
 | S1 | /sde-dov/ | שדה דב 4,400 @21 · רובע שדה דב 210 @11.7 | **LIVE 26.10 (1.72.530 + page)**: plot tracker sdplan (73 plots, ILA tenders, city stage, stations, sea), 8 tables, 4 SVG, 26 FAQ, FAQPage+SoftwareApplication; title/H1 unchanged (guard OK). Proof proof-after.md: words 11,023, tables 13, cells 1,130, FAQ 26 vs 1, headings 72, facts 40/40 vs 28; behind: Wikipedia airport article (words 29,760, figures, visuals, sources 6 vs 5), pictures (sdedov.co.il 35, municipality 29, project-tlv 21, ynet 13 vs 9) |
 | G1 | /dira-behanacha/ | מחיר למשתכן 90,500 · דירה בהנחה 74,000 (not seen) | **LIVE 26.10 (1.72.530 + page)**: dirafit + diracost, new title/H1/meta for both terms, 10 tables (635 lotteries), 4 SVG, 30 FAQ. Proof proof-after.md: words 16,957 vs 9,932, figures 5,907 vs 1,266, tables 13 vs 2, cells 6,828 vs 4,488, tools 3 vs 1, FAQ 30 vs 17, headings 51 vs 34; behind: pictures (4 vs up to 105), sources 5 vs 6 (Kol Zchut). Page is "Discovered, not indexed" (4 days): indexing request = Ben's word |
-| G2 | /urban-renewal/pinui-binui/ | פינוי בינוי 12,100 (not seen) | research + build (agent, local, with G3) |
-| G3 | /urban-renewal/ | התחדשות עירונית 8,100 (not seen) | research + build (agent, local, with G2) |
-| G4 | /purchase-tax-calculator/ | מס רכישה 6,600 (not seen) · מחשבון מס רכישה 4,400 @55 | research + build (agent, local; ptax v2) |
-| G5 | new owner page (no owner today) | דירות להשכרה / דירה להשכרה 27,100 (not seen; SERP = listings portals, honest odds first) | queued |
-| G6 | /home-inspection/ | בדק בית 2,900 (not seen) | queued |
-| G7 | /real-estate-appraiser/ | שמאי מקרקעין 2,400 (not seen) | queued |
-| G8 | /real-estate-lawyer/ | עורך דין מקרקעין 1,600 (not seen) | queued |
+| G2 | /urban-renewal/pinui-binui/ | פינוי בינוי 12,100 (not seen) | built; releasing in 1.72.531 (pinui tool), then the page writer |
+| G3 | /urban-renewal/ | התחדשות עירונית 8,100 (not seen) | built; releasing in 1.72.531 (urcity tool), then the page writer |
+| G4 | /purchase-tax-calculator/ | מס רכישה 6,600 (not seen) · מחשבון מס רכישה 4,400 @55 | built; releasing in 1.72.531 (ptax v3), then the page writer (title without "סימולטור") |
+| G5 | new owner page (no owner today) | דירות להשכרה / דירה להשכרה 27,100 (not seen; SERP = listings portals, honest odds first) | research + build (agent, local; owner-page decision first) |
+| G6 | /home-inspection/ | בדק בית 2,900 (not seen) | research + build (agent, local, with G7 G8) |
+| G7 | /real-estate-appraiser/ | שמאי מקרקעין 2,400 (not seen) | research + build (agent, local, with G6 G8) |
+| G8 | /real-estate-lawyer/ | עורך דין מקרקעין 1,600 (not seen) | research + build (agent, local, with G6 G7) |
 | M1 | /urban-renewal/map/ labels v2 | Ben: no circles; small informative labels, hover details, names, prices | agent, local; live only after Ben looks |
 | A1 | ADAM'S package | plan, self-serve ads on /advertise/, sample page, renewal app upgrade, prices, reply draft; ad footprint deep search | READY locally 26.10 (72f4bade): pilot ₪948/month or story ₪1,490, room ₪149/complex; ADAM'S buys no ads (the Meta ad was Magdilim's); privacy defect in the room HAD-606; waiting for Ben: amounts, send reply, patch 01 |
 | P1 | Morning checkout | live test 26.10: order 8634 -> "גישה נדחתה, נא להתחבר מחדש" (cancelled). Plugin wc-gateway-greeninvoice 2.4.3; 2.4.2 (8.10) added signed IPN: likely needs a fresh store key from app.greeninvoice.co.il/market/plugin/woocommerce pasted in WooCommerce > Payments > Morning (Ben only: a secret key) | waiting for Ben's paste, then re-test |
