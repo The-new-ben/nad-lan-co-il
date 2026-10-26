@@ -1,0 +1,481 @@
+{
+    "id": 5006,
+    "title": "בניין לדוגמה: רחוב הדוגמה 1, גבעתיים (פרויקט שהושלם)",
+    "address": "רחוב הדוגמה 1",
+    "city": "גבעתיים",
+    "floors": 4,
+    "units_per_floor": 3,
+    "track": "pinui_binui",
+    "stage": 9,
+    "ladder": [
+        "התארגנות ראשונית",
+        "בחירת נציגות",
+        "החתמות",
+        "בחירת אנשי מקצוע",
+        "בחירת יזם",
+        "תב\"ע ותכנון",
+        "היתר בנייה",
+        "פינוי",
+        "בנייה",
+        "מסירה ורישום"
+    ],
+    "stage_notes": [
+        {
+            "desc": "אסיפת דיירים ראשונה, פרוטוקול כתוב ומיפוי מלא של בעלי הדירות.",
+            "duration": "",
+            "actions": [
+                "כינוס אסיפת דיירים ראשונה",
+                "איסוף פרטי קשר של כל בעלי הדירות",
+                "בדיקת הבניין מול מאגר מתחמי ההתחדשות"
+            ]
+        },
+        {
+            "desc": "בחירת 3 עד 5 שכנים עם מנדט כתוב לנהל את התהליך בשם הבניין.",
+            "duration": "",
+            "actions": [
+                "הצבעה על נציגות דיירים",
+                "חתימה על כתב מינוי",
+                "פתיחת ערוץ עדכונים אחד לכל השכנים"
+            ]
+        },
+        {
+            "desc": "החתמת בעלי הדירות על הסכמה עקרונית, בשקיפות מלאה לכל הבניין.",
+            "duration": "",
+            "actions": [
+                "עדכון סטטוס לכל דירה על חזית הבניין",
+                "טיפול בדירות עם ירושה או מסמכים חסרים",
+                "מעקב אחרי הרוב המיוחס: שני שלישים מהדירות במקבץ, שלוש חמישיות בכל בניין ויותר ממחצית הרכוש המשותף"
+            ]
+        },
+        {
+            "desc": "עורך דין ושמאי שעובדים בשביל הדיירים, בשכר היזם ולפי בחירתכם.",
+            "duration": "",
+            "actions": [
+                "קבלת הצעות מעורכי דין מלווים מנוסים",
+                "בחירת שמאי מטעם הדיירים",
+                "חתימה על הסכמי שכר טרחה"
+            ]
+        },
+        {
+            "desc": "מכרז יזמים: ניסיון מוכח, איתנות פיננסית ובטוחות.",
+            "duration": "",
+            "actions": [
+                "הכנת מסמך דרישות הדיירים",
+                "השוואת הצעות יזמים זו מול זו",
+                "בדיקת ערבויות חוק מכר ובטוחות"
+            ]
+        },
+        {
+            "desc": "התוכנית עוברת בוועדות התכנון: המשתנה הגדול ביותר בלוח הזמנים.",
+            "duration": "",
+            "actions": [
+                "ליווי הליך התכנון מול הוועדה",
+                "עדכון השכנים בכל החלטה",
+                "קשר שוטף עם מנהלת ההתחדשות העירונית"
+            ]
+        },
+        {
+            "desc": "מפרט טכני סופי והליך בחירת דירות התמורה.",
+            "duration": "4 שנים בממוצע מאישור התוכנית (פינוי בינוי, 2025)",
+            "actions": [
+                "חתימה על נספח המפרט הסופי",
+                "הליך בחירת דירות לפי הנוסחה שנקבעה",
+                "היערכות להסכמי שכירות לפינוי"
+            ]
+        },
+        {
+            "desc": "פינוי הבניין, ושכר הדירה במימון היזם עד המסירה.",
+            "duration": "",
+            "actions": [
+                "חתימה על הסכמי שכירות",
+                "תיאום הובלות",
+                "מסירת מפתחות ליזם"
+            ]
+        },
+        {
+            "desc": "הבנייה עצמה, והמפקח מטעם הדיירים מדווח לנציגות.",
+            "duration": "",
+            "actions": [
+                "מעבר על דוחות פיקוח תקופתיים",
+                "ביקורי דיירים מתואמים באתר",
+                "מעקב לוח הזמנים מול ההסכם"
+            ]
+        },
+        {
+            "desc": "טופס 4, מסירת הדירות, שנת הבדק ורישום בטאבו.",
+            "duration": "",
+            "actions": [
+                "פרוטוקול מסירה לכל דירה",
+                "מעקב תיקוני שנת בדק",
+                "רישום הבית המשותף בטאבו"
+            ]
+        }
+    ],
+    "apartments": [
+        {
+            "id": "f1-1",
+            "floor": 1,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 1",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 1,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f1-2",
+            "floor": 1,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 2",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 2,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f1-3",
+            "floor": 1,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 3",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 3,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f2-1",
+            "floor": 2,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 4",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 4,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f2-2",
+            "floor": 2,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 5",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 5,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f2-3",
+            "floor": 2,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 6",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 6,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f3-1",
+            "floor": 3,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 7",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 7,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f3-2",
+            "floor": 3,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 8",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 8,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f3-3",
+            "floor": 3,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 9",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 9,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f4-1",
+            "floor": 4,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 10",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 10,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f4-2",
+            "floor": 4,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 11",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 11,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        },
+        {
+            "id": "f4-3",
+            "floor": 4,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 12",
+            "consent_status": "consented",
+            "building": "b1",
+            "num": 12,
+            "shown": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            }
+        }
+    ],
+    "consents": {
+        "yes": 12,
+        "total": 12,
+        "pct": 100
+    },
+    "updates": [],
+    "stage_log": [
+        {
+            "stage": 9,
+            "at": "2026-06-15 09:00:00"
+        },
+        {
+            "stage": 8,
+            "at": "2023-11-15 07:30:00"
+        },
+        {
+            "stage": 7,
+            "at": "2023-09-01 08:00:00"
+        },
+        {
+            "stage": 6,
+            "at": "2023-04-18 14:00:00"
+        },
+        {
+            "stage": 5,
+            "at": "2021-06-01 09:00:00"
+        },
+        {
+            "stage": 4,
+            "at": "2021-01-14 19:30:00"
+        },
+        {
+            "stage": 3,
+            "at": "2019-12-02 19:00:00"
+        },
+        {
+            "stage": 2,
+            "at": "2020-01-10 10:00:00"
+        },
+        {
+            "stage": 1,
+            "at": "2019-10-01 19:00:00"
+        },
+        {
+            "stage": 0,
+            "at": "2019-09-15 20:00:00"
+        }
+    ],
+    "can_manage": false,
+    "is_demo": true,
+    "statuses": {
+        "consented": [
+            "חתמו",
+            "#1F4B5C"
+        ],
+        "in_process": [
+            "בתהליך",
+            "#2F6F86"
+        ],
+        "missing_docs": [
+            "חסרים מסמכים",
+            "#8DB4C4"
+        ],
+        "refused": [
+            "סירבו",
+            "#3E4C58"
+        ],
+        "unreached": [
+            "טרם הושג קשר",
+            "#D3DCE2"
+        ]
+    },
+    "doc_keys": {
+        "id_copy": "צילום תעודת זהות",
+        "ownership_nesach": "נסח טאבו",
+        "signed_agreement": "הסכם חתום",
+        "poa": "ייפוי כוח"
+    },
+    "centroid": null,
+    "compounds_in_city": 0,
+    "complex_name": "",
+    "street_line": "",
+    "buildings": [
+        {
+            "key": "b1",
+            "label": "",
+            "address": "רחוב הדוגמה 1",
+            "floors": 4,
+            "upf": 3
+        }
+    ],
+    "counts": {
+        "consented": 12,
+        "partial": 0,
+        "in_process": 0,
+        "missing_docs": 0,
+        "refused": 0,
+        "unreached": 0,
+        "total": 12,
+        "yes": 12,
+        "docs_missing_apts": 0,
+        "pct": 100
+    },
+    "law": {
+        "applies": true,
+        "complex": {
+            "total": 12,
+            "yes": 12,
+            "need": 8,
+            "short": 0,
+            "met": true
+        },
+        "buildings": [
+            {
+                "key": "b1",
+                "label": "",
+                "address": "רחוב הדוגמה 1",
+                "total": 12,
+                "yes": 12,
+                "rule": "three_fifths",
+                "need": 8,
+                "short": 0,
+                "met": true,
+                "owners_rule": null,
+                "common": {
+                    "known": false,
+                    "missing": 12,
+                    "pct_yes": null,
+                    "met": null
+                }
+            }
+        ],
+        "all_met": null,
+        "checked": "3.10.2026"
+    },
+    "docs_rollup": {
+        "per": {
+            "id_copy": 12,
+            "ownership_nesach": 12,
+            "signed_agreement": 12,
+            "poa": 12
+        },
+        "base": 12
+    },
+    "org": null,
+    "is_sample": false,
+    "role": "demo",
+    "caps": {
+        "manage": false,
+        "post_updates": false,
+        "see_grid": true,
+        "private": false,
+        "claim": false,
+        "read_only": false
+    },
+    "settings": {
+        "neighbor_grid": "statuses"
+    },
+    "mine": [],
+    "my_claim": null,
+    "claim_options": []
+}

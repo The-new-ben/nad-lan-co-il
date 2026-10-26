@@ -1,0 +1,4 @@
+film/*.mp4
+film/frames/
+film/build/**/*.png
+film/build/**/*.jpg

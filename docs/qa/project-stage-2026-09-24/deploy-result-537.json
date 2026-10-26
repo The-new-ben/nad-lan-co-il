@@ -1,0 +1,24 @@
+{
+  "released": "1.72.537",
+  "from": "1.72.536",
+  "live_before": {
+    "nadlan-config.php": "cf4ed8a4ae22a462b7e98c125a861b77",
+    "inc/urban-space.php": "4fd19149ebdbab4223bb363fa7d26bc2",
+    "inc/urban-tools.php": "cbdfc0210b572b9e825881c52e6ef977",
+    "assets/urban/renewal-space.js": "5cc92acf191bab6efcbb6bac3b03b01d"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 22:20:51",
+  "files": {
+    "inc/renewal-room.php": "dd572058663bfff0db08cc048ba08aac",
+    "inc/renewal-org.php": "233ad428bba9349c36f8cd76cd2aac56",
+    "assets/urban/renewal-room.css": "6c2e4f8811713217bc08ac10619b6c11",
+    "nadlan-config.php": "f7b3087ee99c15e747c016f7ae7fc76b",
+    "inc/urban-space.php": "fb29d7e2b3cd5937e0de3edd2ff48675",
+    "inc/urban-tools.php": "883ee560ebbd03a91c3e3bfe3c07d27b",
+    "assets/urban/renewal-space.js": "b8f60b43c957ec3920bb62657d925715"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.537, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

@@ -1,0 +1,28 @@
+{
+ "tag": {"he": "נתוני דוגמה", "en": "Sample data"},
+ "update_text": {
+  "he": "תודה לכל מי שחתם השבוע. נשארו 5 חתימות עד שני שלישים מהדירות במתחם.",
+  "en": "Thank you to everyone who signed this week. 5 signatures left to two thirds of the apartments in the complex."
+ },
+ "cards": {
+  "open": {
+   "he": {"kicker": "חדר הניהול · התחדשות עירונית", "title": "כך עובדת חברה מארגנת עם חדר הניהול", "sub": "מתחם לדוגמה בפתח תקווה: שלושה בניינים, 48 דירות.", "secs": 5.0},
+   "en": {"kicker": "MANAGEMENT ROOM · URBAN RENEWAL", "title": "How an organizing company works with the room", "sub": "A sample complex in Petah Tikva: three buildings, 48 apartments.", "secs": 5.0}
+  },
+  "end": {
+   "he": {"kicker": "חדר הניהול להתחדשות עירונית · נדל\"ן", "title": "חדר הניהול לחברות מארגנות", "sub": "חינם לדיירים ולנציגות. כל שכן רואה רק את הדירה שלו.", "cta": "לקבלת פרטים נוספים בוואטסאפ", "secs": 5.0},
+   "en": {"kicker": "URBAN RENEWAL MANAGEMENT ROOM · NADLAN", "title": "The management room for organizing companies", "sub": "Free for residents and committees. Every neighbor sees only their own apartment.", "cta": "Ask for more details on WhatsApp", "secs": 5.0}
+  }
+ },
+ "shots": {
+  "portfolio": {"k": {"he": "תיק המתחמים", "en": "PORTFOLIO"}, "t": {"he": "כל המתחמים במסך אחד: כמה חתמו, מה חסר, ומי דורש טיפול.", "en": "Every complex on one screen: who signed, what is missing, what needs attention."}},
+  "open": {"k": {"he": "מתחם", "en": "COMPLEX"}, "t": {"he": "פותחים מתחם: 26 מתוך 48 דירות חתמו. עוד 6 חתימות עד שני שלישים.", "en": "Open a complex: 26 of 48 apartments signed. 6 more to two thirds."}},
+  "apt": {"k": {"he": "חזית הבניינים", "en": "THE BUILDING FACES"}, "t": {"he": "מקישים על דירה בחזית: הבעלים, החתימה והמסמכים של הדירה.", "en": "Tap an apartment on the facade: its owners, signatures and documents."}},
+  "saved": {"k": {"he": "שמירה", "en": "SAVE"}, "t": {"he": "כל שמירה נרשמת עם שם, תאריך וגרסה, והספירה מתעדכנת מיד.", "en": "Every save is logged with a name, a date and a version, and the count updates at once."}},
+  "law": {"k": {"he": "הרוב לפי החוק", "en": "THE MAJORITY UNDER THE LAW"}, "t": {"he": "שני שלישים במתחם, שלוש חמישיות בכל בניין, ומחצית הרכוש המשותף.", "en": "Two thirds of the complex, three fifths of each building, half of the common property."}},
+  "missing": {"k": {"he": "המשימות", "en": "TASKS"}, "t": {"he": "מה חסר עכשיו: מי לא חתם, איזה מסמך חסר, ואיזה מועד מתקרב.", "en": "What is missing now: who has not signed, which document, which deadline is close."}},
+  "updates": {"k": {"he": "עדכונים לדיירים", "en": "UPDATES FOR RESIDENTS"}, "t": {"he": "עדכון אחד לכל המתחם, ומשם ישר לקבוצת הוואטסאפ של הבניין.", "en": "One update for the whole complex, then straight to the building's WhatsApp group."}},
+  "report": {"k": {"he": "דוח לנציגות", "en": "COMMITTEE REPORT"}, "t": {"he": "דוח מצב לכל בניין ולכל תנאי, להדפסה או לשמירה כקובץ.", "en": "A status report per building and per condition, to print or save."}},
+  "neighbor": {"k": {"he": "מה השכן רואה", "en": "WHAT A NEIGHBOR SEES"}, "t": {"he": "השכן רואה את התמונה הכללית ואת הדירה שלו בלבד. בלי שמות.", "en": "A neighbor sees the overall picture and their own apartment only. No names."}}
+ }
+}

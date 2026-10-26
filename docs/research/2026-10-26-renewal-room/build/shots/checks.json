@@ -1,0 +1,376 @@
+{
+ "rrp-portfolio-390": {
+  "buttons": 9,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-portfolio-390.png"
+ },
+ "rrp-portfolio-1280": {
+  "buttons": 6,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-portfolio-1280.png"
+ },
+ "rrp-complex-390": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-390.png"
+ },
+ "rrp-complex-1280": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-1280.png"
+ },
+ "rrp-drawer-390": {
+  "buttons": 79,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-drawer-390.png"
+ },
+ "rrp-drawer-1280": {
+  "buttons": 79,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-drawer-1280.png"
+ },
+ "rrp-report-390": {
+  "buttons": 6,
+  "min": 9.46,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-report-390.png"
+ },
+ "rrp-report-1280": {
+  "buttons": 6,
+  "min": 9.46,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-report-1280.png"
+ },
+ "rrp-updates-390": {
+  "buttons": 11,
+  "min": 9.46,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-updates-390.png"
+ },
+ "rrp-updates-1280": {
+  "buttons": 11,
+  "min": 9.46,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-updates-1280.png"
+ },
+ "rrp-neighbor-390": {
+  "buttons": 0,
+  "min": 99,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-neighbor-390.png"
+ },
+ "rrp-neighbor-1280": {
+  "buttons": 0,
+  "min": 99,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-neighbor-1280.png"
+ },
+ "rrp-neighbor-pending-390": {
+  "buttons": 0,
+  "min": 99,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-neighbor-pending-390.png"
+ },
+ "rrp-neighbor-pending-1280": {
+  "buttons": 0,
+  "min": 99,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": null,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-neighbor-pending-1280.png"
+ },
+ "rrp-committee-390": {
+  "buttons": 69,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-committee-390.png"
+ },
+ "rrp-committee-1280": {
+  "buttons": 69,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-committee-1280.png"
+ },
+ "rrp-landing-390": {
+  "buttons": 30,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-landing-390.png"
+ },
+ "rrp-landing-1280": {
+  "buttons": 30,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "rtl",
+  "rtl_tabs_ok": true,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-landing-1280.png"
+ },
+ "rrp-complex-en-390": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "ltr",
+  "rtl_tabs_ok": false,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-en-390.png"
+ },
+ "rrp-complex-en-1280": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "ltr",
+  "rtl_tabs_ok": false,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-en-1280.png"
+ },
+ "rrp-complex-ru-390": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 390,
+  "clientW": 390,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "ltr",
+  "rtl_tabs_ok": false,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-ru-390.png"
+ },
+ "rrp-complex-ru-1280": {
+  "buttons": 75,
+  "min": 8.83,
+  "fails": [],
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "unclipped_wide": [],
+  "dir": "ltr",
+  "rtl_tabs_ok": false,
+  "fonts": [
+   "Assistant"
+  ],
+  "h1": 1,
+  "console_errors": [],
+  "shot": "rrp-complex-ru-1280.png"
+ }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renewal Room Preview</title>
+<!--
+  RenewalRoomPro local harness (26.10.2026). Serve it with:  php -S 127.0.0.1:8765 build/preview/server.php
+  The server puts the plugin's REAL /my-renewal/ output in place of RR_PAGE below (landing or dashboard, by ?as=), and the
+  room's JSON comes from the plugin's real REST routes over sample data ("נתוני דוגמה"). Opened as a file, it shows nothing.
+  The style block below copies the kind of !important rules the site skin uses (link colour inside .nadlan-guide, heading
+  colour and face), so the screenshots prove the room's buttons and headings survive them.
+-->
+<style>
+html,body{margin:0;padding:0;background:#F6F8F9}
+body{font-family:system-ui,sans-serif}
+/* the site skin, as hostile as it is on the live site */
+body.nl-skin-a .nadlan-guide a{color:#2F6F86!important;text-decoration:underline!important}
+body.nl-skin-a h1,body.nl-skin-a h2,body.nl-skin-a h3,body.nl-skin-a h4{color:#14213D!important;font-family:Heebo,Arial,sans-serif!important}
+body.nl-skin-a button{background:#E8E8E8;color:#222;border-radius:999px}
+/* a stand-in for the site header (the real one comes from the theme) */
+.site-strip{background:#fff;border-bottom:1px solid #D3DCE2;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font:600 17px/1 system-ui,sans-serif;color:#12202A}
+.site-strip span{font:400 13px/1 system-ui,sans-serif;color:#5E6A75}
+</style>
+</head>
+<body class="nl-skin-a">
+<div class="site-strip"><b>נדל"ן</b><span>כותרת האתר (מקום שמור)</span></div>
+<div class="nadlan-guide">
+<!--RR_PAGE-->
+</div>
+</body>
+</html>

@@ -1,0 +1,2318 @@
+{
+    "id": 5002,
+    "title": "מתחם הדוגמה, פתח תקווה",
+    "address": "רחוב הדוגמה 2",
+    "city": "פתח תקווה",
+    "floors": 4,
+    "units_per_floor": 4,
+    "track": "pinui_binui",
+    "stage": 2,
+    "ladder": [
+        "התארגנות ראשונית",
+        "בחירת נציגות",
+        "החתמות",
+        "בחירת אנשי מקצוע",
+        "בחירת יזם",
+        "תב\"ע ותכנון",
+        "היתר בנייה",
+        "פינוי",
+        "בנייה",
+        "מסירה ורישום"
+    ],
+    "stage_notes": [
+        {
+            "desc": "אסיפת דיירים ראשונה, פרוטוקול כתוב ומיפוי מלא של בעלי הדירות.",
+            "duration": "",
+            "actions": [
+                "כינוס אסיפת דיירים ראשונה",
+                "איסוף פרטי קשר של כל בעלי הדירות",
+                "בדיקת הבניין מול מאגר מתחמי ההתחדשות"
+            ]
+        },
+        {
+            "desc": "בחירת 3 עד 5 שכנים עם מנדט כתוב לנהל את התהליך בשם הבניין.",
+            "duration": "",
+            "actions": [
+                "הצבעה על נציגות דיירים",
+                "חתימה על כתב מינוי",
+                "פתיחת ערוץ עדכונים אחד לכל השכנים"
+            ]
+        },
+        {
+            "desc": "החתמת בעלי הדירות על הסכמה עקרונית, בשקיפות מלאה לכל הבניין.",
+            "duration": "",
+            "actions": [
+                "עדכון סטטוס לכל דירה על חזית הבניין",
+                "טיפול בדירות עם ירושה או מסמכים חסרים",
+                "מעקב אחרי הרוב המיוחס: שני שלישים מהדירות במקבץ, שלוש חמישיות בכל בניין ויותר ממחצית הרכוש המשותף"
+            ]
+        },
+        {
+            "desc": "עורך דין ושמאי שעובדים בשביל הדיירים, בשכר היזם ולפי בחירתכם.",
+            "duration": "",
+            "actions": [
+                "קבלת הצעות מעורכי דין מלווים מנוסים",
+                "בחירת שמאי מטעם הדיירים",
+                "חתימה על הסכמי שכר טרחה"
+            ]
+        },
+        {
+            "desc": "מכרז יזמים: ניסיון מוכח, איתנות פיננסית ובטוחות.",
+            "duration": "",
+            "actions": [
+                "הכנת מסמך דרישות הדיירים",
+                "השוואת הצעות יזמים זו מול זו",
+                "בדיקת ערבויות חוק מכר ובטוחות"
+            ]
+        },
+        {
+            "desc": "התוכנית עוברת בוועדות התכנון: המשתנה הגדול ביותר בלוח הזמנים.",
+            "duration": "",
+            "actions": [
+                "ליווי הליך התכנון מול הוועדה",
+                "עדכון השכנים בכל החלטה",
+                "קשר שוטף עם מנהלת ההתחדשות העירונית"
+            ]
+        },
+        {
+            "desc": "מפרט טכני סופי והליך בחירת דירות התמורה.",
+            "duration": "4 שנים בממוצע מאישור התוכנית (פינוי בינוי, 2025)",
+            "actions": [
+                "חתימה על נספח המפרט הסופי",
+                "הליך בחירת דירות לפי הנוסחה שנקבעה",
+                "היערכות להסכמי שכירות לפינוי"
+            ]
+        },
+        {
+            "desc": "פינוי הבניין, ושכר הדירה במימון היזם עד המסירה.",
+            "duration": "",
+            "actions": [
+                "חתימה על הסכמי שכירות",
+                "תיאום הובלות",
+                "מסירת מפתחות ליזם"
+            ]
+        },
+        {
+            "desc": "הבנייה עצמה, והמפקח מטעם הדיירים מדווח לנציגות.",
+            "duration": "",
+            "actions": [
+                "מעבר על דוחות פיקוח תקופתיים",
+                "ביקורי דיירים מתואמים באתר",
+                "מעקב לוח הזמנים מול ההסכם"
+            ]
+        },
+        {
+            "desc": "טופס 4, מסירת הדירות, שנת הבדק ורישום בטאבו.",
+            "duration": "",
+            "actions": [
+                "פרוטוקול מסירה לכל דירה",
+                "מעקב תיקוני שנת בדק",
+                "רישום הבית המשותף בטאבו"
+            ]
+        }
+    ],
+    "apartments": [
+        {
+            "id": "b1-f1-1",
+            "floor": 1,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 1",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-09-21 12:27:00",
+            "building": "b1",
+            "num": 1,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f1-2",
+            "floor": 1,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 2",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-09-23 14:41:00",
+            "building": "b1",
+            "num": 2,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f1-3",
+            "floor": 1,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 3",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-09-25 16:55:00",
+            "building": "b1",
+            "num": 3,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f1-4",
+            "floor": 1,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 4",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-09-27 09:09:00",
+            "building": "b1",
+            "num": 4,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f2-1",
+            "floor": 2,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 5",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-09-05 14:35:00",
+            "building": "b1",
+            "num": 5,
+            "v": 1,
+            "owners": [],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f2-2",
+            "floor": 2,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 6",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-10-01 13:37:00",
+            "building": "b1",
+            "num": 6,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f2-3",
+            "floor": 2,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 7",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-10-03 15:51:00",
+            "building": "b1",
+            "num": 7,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f2-4",
+            "floor": 2,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 8",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-09-13 13:31:00",
+            "building": "b1",
+            "num": 8,
+            "v": 1,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f3-1",
+            "floor": 3,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 9",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-09-28 10:16:00",
+            "building": "b1",
+            "num": 9,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f3-2",
+            "floor": 3,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 10",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-09-30 12:30:00",
+            "building": "b1",
+            "num": 10,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                },
+                {
+                    "n": "פ. ק.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f3-3",
+            "floor": 3,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 11",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-09-21 12:27:00",
+            "building": "b1",
+            "num": 11,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                },
+                {
+                    "n": "ק. נ.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f3-4",
+            "floor": 3,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 12",
+            "consent_status": "missing_docs",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "ירושה: ממתינים לצו קיום צוואה",
+            "updated": "2026-09-17 17:59:00",
+            "building": "b1",
+            "num": 12,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f4-1",
+            "floor": 4,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 13",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-09-25 16:55:00",
+            "building": "b1",
+            "num": 13,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f4-2",
+            "floor": 4,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 14",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-09-27 09:09:00",
+            "building": "b1",
+            "num": 14,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b1-f4-3",
+            "floor": 4,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 15",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "מתלבטים, לחזור אחרי האסיפה",
+            "updated": "2026-09-17 17:59:00",
+            "building": "b1",
+            "num": 15,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                },
+                {
+                    "n": "ב. ש.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b1-f4-4",
+            "floor": 4,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 16",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-01 13:37:00",
+            "building": "b1",
+            "num": 16,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "63\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f1-1",
+            "floor": 1,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 1",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-10-10 13:40:00",
+            "building": "b2",
+            "num": 1,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "1\/3",
+                    "heir": true,
+                    "signed": true
+                },
+                {
+                    "n": "ק. נ.",
+                    "share": "1\/3",
+                    "heir": true,
+                    "signed": true
+                },
+                {
+                    "n": "ס. ע.",
+                    "share": "1\/3",
+                    "heir": true,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b2-f1-2",
+            "floor": 1,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 2",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-10-03 15:51:00",
+            "building": "b2",
+            "num": 2,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f1-3",
+            "floor": 1,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 3",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-09-13 13:31:00",
+            "building": "b2",
+            "num": 3,
+            "v": 1,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f1-4",
+            "floor": 1,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 4",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-07 10:19:00",
+            "building": "b2",
+            "num": 4,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                },
+                {
+                    "n": "ד. ס.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f2-1",
+            "floor": 2,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 5",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-09-12 12:24:00",
+            "building": "b2",
+            "num": 5,
+            "v": 1,
+            "owners": [],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f2-2",
+            "floor": 2,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 6",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-09-30 12:30:00",
+            "building": "b2",
+            "num": 6,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f2-3",
+            "floor": 2,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 7",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-10-02 14:44:00",
+            "building": "b2",
+            "num": 7,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b2-f2-4",
+            "floor": 2,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 8",
+            "consent_status": "refused",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "ביקשו פגישה עם עורך הדין של הדיירים",
+            "updated": "2026-09-30 12:30:00",
+            "building": "b2",
+            "num": 8,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f3-1",
+            "floor": 3,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 9",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-10-06 09:12:00",
+            "building": "b2",
+            "num": 9,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                },
+                {
+                    "n": "י. פ.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 11
+        },
+        {
+            "id": "b2-f3-2",
+            "floor": 3,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 10",
+            "consent_status": "missing_docs",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "ירושה: ממתינים לצו קיום צוואה",
+            "updated": "2026-09-29 11:23:00",
+            "building": "b2",
+            "num": 10,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "62\/1000",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f3-3",
+            "floor": 3,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 11",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-10-01 13:37:00",
+            "building": "b2",
+            "num": 11,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b2-f3-4",
+            "floor": 3,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 12",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-03 15:51:00",
+            "building": "b2",
+            "num": 12,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": true
+                },
+                {
+                    "n": "פ. ק.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f4-1",
+            "floor": 4,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 13",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-10-05 17:05:00",
+            "building": "b2",
+            "num": 13,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b2-f4-2",
+            "floor": 4,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 14",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "מתלבטים, לחזור אחרי האסיפה",
+            "updated": "2026-09-21 12:27:00",
+            "building": "b2",
+            "num": 14,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                },
+                {
+                    "n": "מ. ל.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b2-f4-3",
+            "floor": 4,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 15",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-06-10 10:00:00",
+            "building": "b2",
+            "num": 15,
+            "v": 0,
+            "owners": [],
+            "common_share": ""
+        },
+        {
+            "id": "b2-f4-4",
+            "floor": 4,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 16",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-11 14:47:00",
+            "building": "b2",
+            "num": 16,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b3-f1-1",
+            "floor": 1,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 1",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-10-10 13:40:00",
+            "building": "b3",
+            "num": 1,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f1-2",
+            "floor": 1,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 2",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-06-10 10:00:00",
+            "building": "b3",
+            "num": 2,
+            "v": 0,
+            "owners": [],
+            "common_share": ""
+        },
+        {
+            "id": "b3-f1-3",
+            "floor": 1,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 3",
+            "consent_status": "refused",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "ביקשו פגישה עם עורך הדין של הדיירים",
+            "updated": "2026-10-10 13:40:00",
+            "building": "b3",
+            "num": 3,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                },
+                {
+                    "n": "ק. נ.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f1-4",
+            "floor": 1,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 4",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-07 10:19:00",
+            "building": "b3",
+            "num": 4,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b3-f2-1",
+            "floor": 2,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 5",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-09-21 12:27:00",
+            "building": "b3",
+            "num": 5,
+            "v": 1,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b3-f2-2",
+            "floor": 2,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 6",
+            "consent_status": "missing_docs",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "ירושה: ממתינים לצו קיום צוואה",
+            "updated": "2026-10-01 13:37:00",
+            "building": "b3",
+            "num": 6,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b3-f2-3",
+            "floor": 2,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 7",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "",
+            "updated": "2026-10-13 16:01:00",
+            "building": "b3",
+            "num": 7,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f2-4",
+            "floor": 2,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 8",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-06-10 10:00:00",
+            "building": "b3",
+            "num": 8,
+            "v": 0,
+            "owners": [],
+            "common_share": ""
+        },
+        {
+            "id": "b3-f3-1",
+            "floor": 3,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 9",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": true,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "",
+            "updated": "2026-10-17 11:29:00",
+            "building": "b3",
+            "num": 9,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "צ. ט.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f3-2",
+            "floor": 3,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 10",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-06-10 10:00:00",
+            "building": "b3",
+            "num": 10,
+            "v": 0,
+            "owners": [],
+            "common_share": ""
+        },
+        {
+            "id": "b3-f3-3",
+            "floor": 3,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 11",
+            "consent_status": "missing_docs",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "להתקשר אחרי 18:00",
+            "note": "ירושה: ממתינים לצו קיום צוואה",
+            "updated": "2026-10-06 09:12:00",
+            "building": "b3",
+            "num": 11,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ש. ד.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f3-4",
+            "floor": 3,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 12",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": true
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-12 15:54:00",
+            "building": "b3",
+            "num": 12,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ת. ח.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        },
+        {
+            "id": "b3-f4-1",
+            "floor": 4,
+            "pos": 0,
+            "dir": "west",
+            "label": "דירה 13",
+            "consent_status": "refused",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "שיחה עם הבת, ימי שלישי",
+            "note": "ביקשו פגישה עם עורך הדין של הדיירים",
+            "updated": "2026-10-02 14:44:00",
+            "building": "b3",
+            "num": 13,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ל. ר.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                },
+                {
+                    "n": "ב. ש.",
+                    "share": "1\/2",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f4-2",
+            "floor": 4,
+            "pos": 1,
+            "dir": "south",
+            "label": "דירה 14",
+            "consent_status": "in_process",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "בעלים בחו\"ל, דרך ייפוי כוח",
+            "note": "",
+            "updated": "2026-09-21 12:27:00",
+            "building": "b3",
+            "num": 14,
+            "v": 1,
+            "owners": [
+                {
+                    "n": "ג. ו.",
+                    "share": "",
+                    "heir": false,
+                    "signed": false
+                }
+            ],
+            "common_share": "",
+            "updated_by": 11
+        },
+        {
+            "id": "b3-f4-3",
+            "floor": 4,
+            "pos": 2,
+            "dir": "east",
+            "label": "דירה 15",
+            "consent_status": "unreached",
+            "docs": {
+                "id_copy": false,
+                "ownership_nesach": false,
+                "signed_agreement": false,
+                "poa": false
+            },
+            "contact_note": "",
+            "note": "",
+            "updated": "2026-06-10 10:00:00",
+            "building": "b3",
+            "num": 15,
+            "v": 0,
+            "owners": [],
+            "common_share": ""
+        },
+        {
+            "id": "b3-f4-4",
+            "floor": 4,
+            "pos": 3,
+            "dir": "north",
+            "label": "דירה 16",
+            "consent_status": "consented",
+            "docs": {
+                "id_copy": true,
+                "ownership_nesach": false,
+                "signed_agreement": true,
+                "poa": false
+            },
+            "contact_note": "מעדיפים וואטסאפ בערב",
+            "note": "",
+            "updated": "2026-10-11 14:47:00",
+            "building": "b3",
+            "num": 16,
+            "v": 2,
+            "owners": [
+                {
+                    "n": "ר. כ.",
+                    "share": "",
+                    "heir": false,
+                    "signed": true
+                }
+            ],
+            "common_share": "",
+            "updated_by": 12
+        }
+    ],
+    "consents": {
+        "yes": 26,
+        "total": 48,
+        "pct": 54.2
+    },
+    "updates": [
+        {
+            "text": "אסיפת דיירים ביום שני 3.11 בשעה 19:00 בלובי של בניין 2. על סדר היום: מצב ההחתמות ושאלות לעורך הדין של הדיירים.",
+            "at": "2026-10-24 18:00:00",
+            "by": 11,
+            "by_name": "נועה ש., רכזת שטח",
+            "from": "org"
+        },
+        {
+            "text": "נסחי טאבו התקבלו לעוד דירות בבניין 1. תודה לכל מי ששלח.",
+            "at": "2026-10-20 11:00:00",
+            "by": 11,
+            "by_name": "נועה ש., רכזת שטח",
+            "from": "org"
+        },
+        {
+            "text": "הנציגות נבחרה: שלושה נציגים, אחד מכל בניין. הפרוטוקול נשלח לכל הדיירים.",
+            "at": "2026-09-15 20:00:00",
+            "by": 12,
+            "by_name": "אבי מ., מנהל פרויקט",
+            "from": "org"
+        }
+    ],
+    "stage_log": [
+        {
+            "stage": 2,
+            "at": "2026-09-15 10:00:00",
+            "by": 12
+        },
+        {
+            "stage": 1,
+            "at": "2026-08-01 10:00:00",
+            "by": 12
+        }
+    ],
+    "can_manage": true,
+    "is_demo": false,
+    "statuses": {
+        "consented": [
+            "חתמו",
+            "#1F4B5C"
+        ],
+        "in_process": [
+            "בתהליך",
+            "#2F6F86"
+        ],
+        "missing_docs": [
+            "חסרים מסמכים",
+            "#8DB4C4"
+        ],
+        "refused": [
+            "סירבו",
+            "#3E4C58"
+        ],
+        "unreached": [
+            "טרם הושג קשר",
+            "#D3DCE2"
+        ]
+    },
+    "doc_keys": {
+        "id_copy": "צילום תעודת זהות",
+        "ownership_nesach": "נסח טאבו",
+        "signed_agreement": "הסכם חתום",
+        "poa": "ייפוי כוח"
+    },
+    "centroid": null,
+    "compounds_in_city": 0,
+    "complex_name": "מתחם הדוגמה",
+    "street_line": "רחוב הדוגמה 2 עד 6",
+    "buildings": [
+        {
+            "key": "b1",
+            "label": "בניין 1",
+            "address": "רחוב הדוגמה 2",
+            "floors": 4,
+            "upf": 4
+        },
+        {
+            "key": "b2",
+            "label": "בניין 2",
+            "address": "רחוב הדוגמה 4",
+            "floors": 4,
+            "upf": 4
+        },
+        {
+            "key": "b3",
+            "label": "בניין 3",
+            "address": "רחוב הדוגמה 6",
+            "floors": 4,
+            "upf": 4
+        }
+    ],
+    "counts": {
+        "consented": 26,
+        "partial": 2,
+        "in_process": 6,
+        "missing_docs": 4,
+        "refused": 3,
+        "unreached": 7,
+        "total": 48,
+        "yes": 26,
+        "docs_missing_apts": 25,
+        "pct": 54.2
+    },
+    "law": {
+        "applies": true,
+        "complex": {
+            "total": 48,
+            "yes": 26,
+            "need": 32,
+            "short": 6,
+            "met": false
+        },
+        "buildings": [
+            {
+                "key": "b1",
+                "label": "בניין 1",
+                "address": "רחוב הדוגמה 2",
+                "total": 16,
+                "yes": 11,
+                "rule": "three_fifths",
+                "need": 10,
+                "short": 0,
+                "met": true,
+                "owners_rule": null,
+                "common": {
+                    "known": true,
+                    "missing": 0,
+                    "pct_yes": 68.7,
+                    "met": true
+                }
+            },
+            {
+                "key": "b2",
+                "label": "בניין 2",
+                "address": "רחוב הדוגמה 4",
+                "total": 16,
+                "yes": 9,
+                "rule": "three_fifths",
+                "need": 10,
+                "short": 1,
+                "met": false,
+                "owners_rule": null,
+                "common": {
+                    "known": false,
+                    "missing": 6,
+                    "pct_yes": 60,
+                    "met": null
+                }
+            },
+            {
+                "key": "b3",
+                "label": "בניין 3",
+                "address": "רחוב הדוגמה 6",
+                "total": 16,
+                "yes": 6,
+                "rule": "three_fifths",
+                "need": 10,
+                "short": 4,
+                "met": false,
+                "owners_rule": null,
+                "common": {
+                    "known": false,
+                    "missing": 16,
+                    "pct_yes": null,
+                    "met": null
+                }
+            }
+        ],
+        "all_met": false,
+        "checked": "3.10.2026"
+    },
+    "docs_rollup": {
+        "per": {
+            "id_copy": 41,
+            "ownership_nesach": 20,
+            "signed_agreement": 28,
+            "poa": 19
+        },
+        "base": 41
+    },
+    "deadlines": [
+        {
+            "id": "pcyhvllu",
+            "label": "אסיפת דיירים בלובי של בניין 2",
+            "date": "2026-11-03",
+            "note": "",
+            "by": 12,
+            "at": "2026-10-25 16:00:00",
+            "days": 8
+        },
+        {
+            "id": "98nj3sqx",
+            "label": "סוף תקופת ההחתמה לפי ההסכם עם החברה המארגנת",
+            "date": "2026-11-20",
+            "note": "",
+            "by": 12,
+            "at": "2026-10-25 16:00:00",
+            "days": 25
+        }
+    ],
+    "org": {
+        "id": 5001,
+        "name": "החברה המארגנת שלכם",
+        "staff": 3,
+        "active": true
+    },
+    "is_sample": true,
+    "role": "org",
+    "caps": {
+        "manage": true,
+        "post_updates": true,
+        "see_grid": true,
+        "private": true,
+        "claim": false,
+        "read_only": false
+    },
+    "settings": {
+        "neighbor_grid": "totals"
+    },
+    "members": [
+        {
+            "email": "dayar7@example.net",
+            "joined": "2026-10-02 12:00:00",
+            "claim_apt": "b1-f2-3",
+            "claim_at": "2026-10-02 12:00:00",
+            "approved": true,
+            "approved_by": 11,
+            "approved_at": "2026-10-03 09:30:00"
+        },
+        {
+            "email": "dayar-b2@example.net",
+            "joined": "2026-10-02 12:00:00",
+            "claim_apt": "b2-f3-2",
+            "claim_at": "2026-10-02 12:00:00",
+            "approved": false
+        },
+        {
+            "email": "netzigut@example.net",
+            "joined": "2026-10-02 12:00:00",
+            "claim_apt": "b3-f1-1",
+            "claim_at": "2026-10-02 12:00:00",
+            "approved": true,
+            "approved_by": 11,
+            "approved_at": "2026-10-03 09:30:00",
+            "role": "committee"
+        }
+    ],
+    "events_recent": [
+        {
+            "apt": "b3-f1-1",
+            "at": "2026-10-03 09:30:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "claim",
+            "from": null,
+            "to": "approved",
+            "v": 0
+        },
+        {
+            "apt": "b1-f2-3",
+            "at": "2026-10-03 09:30:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "claim",
+            "from": null,
+            "to": "approved",
+            "v": 0
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-10-11 14:47:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 1,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 1
+            },
+            "v": 2
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-10-11 14:47:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "doc:signed_agreement",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-10-11 14:47:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "status",
+            "from": "in_process",
+            "to": "consented",
+            "v": 2
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-09-23 14:41:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-09-23 14:41:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-09-23 14:41:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:id_copy",
+            "from": false,
+            "to": true,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-4",
+            "at": "2026-09-23 14:41:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "unreached",
+            "to": "in_process",
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-2",
+            "at": "2026-09-21 12:27:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-2",
+            "at": "2026-09-21 12:27:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-2",
+            "at": "2026-09-21 12:27:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:id_copy",
+            "from": false,
+            "to": true,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-2",
+            "at": "2026-09-21 12:27:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "unreached",
+            "to": "in_process",
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-10-02 14:44:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "note",
+            "from": null,
+            "to": null,
+            "v": 2
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-10-02 14:44:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "in_process",
+            "to": "refused",
+            "v": 2
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-09-20 11:20:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 2,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-09-20 11:20:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-09-20 11:20:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "doc:id_copy",
+            "from": false,
+            "to": true,
+            "v": 1
+        },
+        {
+            "apt": "b3-f4-1",
+            "at": "2026-09-20 11:20:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "status",
+            "from": "unreached",
+            "to": "in_process",
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-10-12 15:54:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 1,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 1
+            },
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-10-12 15:54:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "doc:poa",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-10-12 15:54:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "doc:signed_agreement",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-10-12 15:54:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "status",
+            "from": "in_process",
+            "to": "consented",
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-09-28 10:16:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-09-28 10:16:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-09-28 10:16:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:id_copy",
+            "from": false,
+            "to": true,
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-4",
+            "at": "2026-09-28 10:16:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "unreached",
+            "to": "in_process",
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-10-06 09:12:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "note",
+            "from": null,
+            "to": null,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-10-06 09:12:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "in_process",
+            "to": "missing_docs",
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-09-27 09:09:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-09-27 09:09:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-09-27 09:09:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "doc:id_copy",
+            "from": false,
+            "to": true,
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-3",
+            "at": "2026-09-27 09:09:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "status",
+            "from": "unreached",
+            "to": "in_process",
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-10-17 11:29:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 1,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 1
+            },
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-10-17 11:29:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:poa",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-10-17 11:29:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:signed_agreement",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-10-17 11:29:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "doc:ownership_nesach",
+            "from": false,
+            "to": true,
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-10-17 11:29:00",
+            "by": 11,
+            "who": "נועה ש., רכזת שטח",
+            "role": "org",
+            "f": "status",
+            "from": "in_process",
+            "to": "consented",
+            "v": 2
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-09-25 16:55:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "owners",
+            "from": {
+                "n": 0,
+                "signed": 0
+            },
+            "to": {
+                "n": 1,
+                "signed": 0
+            },
+            "v": 1
+        },
+        {
+            "apt": "b3-f3-1",
+            "at": "2026-09-25 16:55:00",
+            "by": 12,
+            "who": "אבי מ., מנהל פרויקט",
+            "role": "org",
+            "f": "contact",
+            "from": null,
+            "to": null,
+            "v": 1
+        }
+    ],
+    "join_url": "https:\/\/nad-lan.co.il\/my-renewal\/?join=Z8zYczNyh7ZRDGGvPEdYtRtH"
+}

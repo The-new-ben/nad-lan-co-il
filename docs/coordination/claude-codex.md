@@ -4560,3 +4560,6 @@ ROLLED BACK 1.72.535 (first run): the checks rolled it back on a wrong check of 
 RELEASE DONE 1.72.535 (AdvertiseTiers, second run with the site-look restyle and the /advertise/ photos) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.535. Lock released.
 RELEASE LOCK 1.72.536 (AdvertiseHonest: inc/advertise-tiers.php swapped; no views report, organizer offer = Pro + optional story, area package and room add-on off) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.536 (AdvertiseHonest) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.536. Lock released.
+RELEASE LOCK 1.72.537 (RenewalRoomPro: renewal-room.php, renewal-org.php, renewal-room.css new; whole-file hunks on the live urban-space.php, urban-tools.php, renewal-space.js; fixes HAD-606) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+ROLLED BACK 1.72.537 (first run): the demo route served its 10-minute cached old payload (still with contact_note), and an inherited /my-renewal/ check named the previous design's cream CSS. Live stayed 1.72.536. Second run: demo cache key bumped to v2, the check updated to the new rules. Lock still held. [Ashira session] 26.10.2026.
+RELEASE DONE 1.72.537 (RenewalRoomPro, second run) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.537. Lock released.
