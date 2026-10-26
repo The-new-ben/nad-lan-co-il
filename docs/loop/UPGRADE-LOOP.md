@@ -38,6 +38,23 @@ with UX and design, every page a masterpiece. The cities later (HAD-602), not en
 | U3 | /israel-mortgage-non-residents/ (post 4962, English) | israel mortgage for foreigners 179@63 · hipoteca en israel para extranjeros 83@77 | **LIVE 26.10 (1.72.524 + post)**: decision taken (Ben: decide SEO yourself): the root English article stays English at its URL, no second English page; 1.72.524 adds meta _nadlan_page_lang (post 4962 = en: html lang=en dir=ltr, og:locale en_US, English chrome and tools). nrm v2 = 'your Israeli borrowing limit by passport and paycheck' (status caps, income caps in your currency, tax track by residency, cash to close, 10% shekel swing; FX 23.10 + CAD/AUD/ZAR). Full English rewrite in the dna 8.3 order: 14 tables, 9 SVG, 25 FAQ, 23 sources; unsourced 'largest mortgage bank' claim dropped. DS v238. Proof: words 11,188 vs 4,481, figures 857 vs 112, tables 14 vs 2, cells 438 vs 42, FAQ 25 vs 8, headings 56 vs 29, pictures 10 vs 9, sources 4 vs 1; TIE tools 1 vs 1 (nbn). Findings: 3 more English posts at root with lang he (4961, 4960, 4945) can get the same meta later |
 | C | Cities (HAD-602) | later, Ben's word | parked |
 
+## Round 2 (Ben 26.10.2026 afternoon): gap keywords, Sde Dov to the top, map labels v2, ADAM'S
+Ben: every protected keyword where we do not appear gets a winning page (tools, text, English too, competitor DNA, SERP + PAA, moat, tables, prices, data, visualization, the right title that harms no other page), with an honesty statement; Sde Dov hub to the highest level with proof. Order by volume x winnability. Owner pages are upgraded in place (no rival URL); a new URL only where no owner exists (keyword guard + URL word audit).
+| # | Page (owner) | Target (monthly searches, our position) | State |
+|---|---|---|---|
+| S1 | /sde-dov/ | שדה דב 4,400 @21 · רובע שדה דב 210 @11.7 | research + build (agent, local) |
+| G1 | /dira-behanacha/ | מחיר למשתכן 90,500 · דירה בהנחה 74,000 (not seen) | research + build (agent, local) |
+| G2 | /urban-renewal/pinui-binui/ | פינוי בינוי 12,100 (not seen) | queued |
+| G3 | /urban-renewal/ | התחדשות עירונית 8,100 (not seen) | queued |
+| G4 | /purchase-tax-calculator/ | מס רכישה 6,600 (not seen) · מחשבון מס רכישה 4,400 @55 | queued |
+| G5 | new owner page (no owner today) | דירות להשכרה / דירה להשכרה 27,100 (not seen; SERP = listings portals, honest odds first) | queued |
+| G6 | /home-inspection/ | בדק בית 2,900 (not seen) | queued |
+| G7 | /real-estate-appraiser/ | שמאי מקרקעין 2,400 (not seen) | queued |
+| G8 | /real-estate-lawyer/ | עורך דין מקרקעין 1,600 (not seen) | queued |
+| M1 | /urban-renewal/map/ labels v2 | Ben: no circles; small informative labels, hover details, names, prices | agent, local; live only after Ben looks |
+| A1 | ADAM'S package | plan, self-serve ads on /advertise/, sample page, renewal app upgrade, prices, reply draft; ad footprint deep search | agents, local |
+| P1 | Morning checkout | live test 26.10: order 8634 -> "גישה נדחתה, נא להתחבר מחדש" (cancelled). Plugin wc-gateway-greeninvoice 2.4.3; 2.4.2 (8.10) added signed IPN: likely needs a fresh store key from app.greeninvoice.co.il/market/plugin/woocommerce pasted in WooCommerce > Payments > Morning (Ben only: a secret key) | waiting for Ben's paste, then re-test |
+
 ## Findings for Ben (no action without his word)
 - Q1 map points: use the authority map layer's locations (centroids, with credit) or ask the authority in writing first? Licence of that layer is not stated.
 - U3: English content at the Hebrew root (4 pages) and the /en/ plan above.
