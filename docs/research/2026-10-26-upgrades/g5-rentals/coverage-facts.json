@@ -1,0 +1,230 @@
+[
+ {
+  "label": "National average rent (CBS) about 5,086 / 5,069 / 5,052 ₪",
+  "re": [
+   "5,08[56]|5,069|5,052|5,051|5086|5069"
+  ]
+ },
+ {
+  "label": "National median 4 rooms 4,825 ₪ (gov)",
+  "re": [
+   "4,825|4825"
+  ]
+ },
+ {
+  "label": "Average by size: 1-2 rooms about 3,760",
+  "re": [
+   "3,7[56]\\d|3,758|3,760"
+  ]
+ },
+ {
+  "label": "Average by size: 3.5-4 rooms about 5,450",
+  "re": [
+   "5,4[45]\\d"
+  ]
+ },
+ {
+  "label": "Tel Aviv average about 7,400 (CBS all sizes)",
+  "re": [
+   "7,39\\d|7,42\\d|7,40\\d"
+  ]
+ },
+ {
+  "label": "Tel Aviv 3.5-4 rooms about 8,860 to 8,870",
+  "re": [
+   "8,8[5-7]\\d"
+  ]
+ },
+ {
+  "label": "Jerusalem average or 3.5-4 rooms (5,3xx / 6,1xx)",
+  "re": [
+   "5,3[34]\\d|6,1[5-8]\\d"
+  ]
+ },
+ {
+  "label": "Haifa 3.5-4 rooms about 4,060 or Haifa average 3,4xx",
+  "re": [
+   "4,06\\d|3,40\\d|3,38\\d"
+  ]
+ },
+ {
+  "label": "Beer Sheva 3.5-4 rooms about 3,500",
+  "re": [
+   "3,50\\d|3,48\\d"
+  ]
+ },
+ {
+  "label": "Rent change over 12 months about 3%",
+  "re": [
+   "3\\.[1-3]\\s?%"
+  ]
+ },
+ {
+  "label": "Sampling error of the CBS average",
+  "re": [
+   "טעות (ה)?דגימה|sampling error"
+  ]
+ },
+ {
+  "label": "Median vs average explained",
+  "re": [
+   "חציון.{0,80}ממוצע|ממוצע.{0,80}חציון"
+  ]
+ },
+ {
+  "label": "Neighbourhood-level rents",
+  "re": [
+   "שכונה|שכונות"
+  ]
+ },
+ {
+  "label": "More than 20 cities with a figure (gov 72 / Scoutr 18 / CBS 18)",
+  "re": [
+   "72 ערים|100\\+ ערים|65 ערים"
+  ]
+ },
+ {
+  "label": "Rent index / its monthly change",
+  "re": [
+   "מדד שכר (ה)?דירה"
+  ]
+ },
+ {
+  "label": "Fair rental law: guarantee up to 3 months or a third of the term",
+  "re": [
+   "שליש.{0,80}(תקופ|חוזה)|3 חודש(י|ים).{0,60}שליש|שלושה חודשי"
+  ]
+ },
+ {
+  "label": "Guarantee returned within 60 days",
+  "re": [
+   "60 (יום|ימים)"
+  ]
+ },
+ {
+  "label": "Urgent repair within 3 days",
+  "re": [
+   "(3|שלושה) ימים"
+  ]
+ },
+ {
+  "label": "Other repair within 30 days",
+  "re": [
+   "30 (יום|ימים)"
+  ]
+ },
+ {
+  "label": "Notice 90 days landlord / 60 tenant",
+  "re": [
+   "90 (יום|ימים)"
+  ]
+ },
+ {
+  "label": "Law applies 3 months to 10 years",
+  "re": [
+   "10 שנים|עשר שנים"
+  ]
+ },
+ {
+  "label": "Rent ceiling 20,000 ₪ for the law",
+  "re": [
+   "20,000|20000"
+  ]
+ },
+ {
+  "label": "Tenant does not pay building insurance / landlord's broker",
+  "re": [
+   "ביטוח (ה)?מבנה"
+  ]
+ },
+ {
+  "label": "Unfit dwelling list (drainage, electricity, ventilation...)",
+  "re": [
+   "ראויה למגורים"
+  ]
+ },
+ {
+  "label": "Contract must be in writing, copy to each party",
+  "re": [
+   "בכתב"
+  ]
+ },
+ {
+  "label": "Personal guarantors not counted in the cap",
+  "re": [
+   "ערבים"
+  ]
+ },
+ {
+  "label": "Non-bank guarantor (credit / insurance company) counts in the cap (5786 amendment)",
+  "re": [
+   "חבר(ת|ות) (אשראי|ביטוח)|נותן ערבות אחר|ערבות מחברה"
+  ]
+ },
+ {
+  "label": "Tax: exemption ceiling 5,654 ₪",
+  "re": [
+   "5,654|5654"
+  ]
+ },
+ {
+  "label": "Tax: partial exemption up to 11,308",
+  "re": [
+   "11,308|11308"
+  ]
+ },
+ {
+  "label": "Tax: 10% track",
+  "re": [
+   "10\\s?%"
+  ]
+ },
+ {
+  "label": "Tax: 10% due by 30 January",
+  "re": [
+   "30 ב?ינואר|30\\.1"
+  ]
+ },
+ {
+  "label": "Tax: offset up to 7,500 for a single-home owner renting elsewhere",
+  "re": [
+   "7,500.{0,80}(10\\s?%|שוכר|מפחית|לקזז|להפחית)|(10\\s?%|שוכר|מפחית|לקזז|להפחית).{0,80}7,500"
+  ]
+ },
+ {
+  "label": "Tax: regular track first bracket 31% (10% from 60)",
+  "re": [
+   "31\\s?%"
+  ]
+ },
+ {
+  "label": "Who pays the broker in a rental",
+  "re": [
+   "דמי תיווך"
+  ]
+ },
+ {
+  "label": "Long-term rental / Dira Lehaskir",
+  "re": [
+   "לטווח ארוך|ארוכת טווח|דירה להשכיר"
+  ]
+ },
+ {
+  "label": "Key money / protected tenancy",
+  "re": [
+   "דמי מפתח|הגנת הדייר"
+  ]
+ },
+ {
+  "label": "Live rental listings on the page",
+  "re": [
+   "₪ ?[\\d,]{4,7} ?לחודש|[\\d,]{4,7} ?₪ ?לחודש|[\\d,]{4,7}₪ בחודש"
+  ]
+ },
+ {
+  "label": "A rent check calculator (fair rent for this flat)",
+  "re": [
+   "מחשבון (שכר דירה|שכירות)|data-nli=|בדקו את שכר הדירה"
+  ]
+ }
+]

@@ -4549,3 +4549,7 @@ RELEASE LOCK 1.72.531 (PurchaseTax3 + UrbanRenewalTools: ptax.js/json swapped, p
 RELEASE DONE 1.72.531 (PurchaseTax3 + UrbanRenewalTools) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
 RELEASE LOCK 1.72.532 (LookupLimit HAD-605: hunk on the live inc/urban-hub.php) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.532 (LookupLimit HAD-605) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
+RELEASE LOCK 1.72.533 (RentFair: rentfair.js + rent.json + rent-listings.css + inc/rent-listings.php new; hunk on the live inc/instruments.php; round 2 G5) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.533 (RentFair) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
+CORRECTION 1.72.533: the line above is wrong. The run stopped at bridge create (host HTTP 502) before any write; live stays 1.72.532. Lock still held for the retry. [Ashira session] 26.10.2026.
+RELEASE DONE 1.72.533 (RentFair) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.533. Lock released.

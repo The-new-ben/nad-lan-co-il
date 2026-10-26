@@ -1,0 +1,21 @@
+{
+  "released": "1.72.533",
+  "from": "1.72.532",
+  "live_before": {
+    "nadlan-config.php": "a32b91faa1cca73a4b8bd23d46b5f463",
+    "inc/instruments.php": "c32bfacf724d7cf8a182ebb102cecf8c"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 14:34:40",
+  "files": {
+    "assets/instruments/tools/rentfair.js": "ee5ac23d0416f905d9d99dc89f34db76",
+    "assets/instruments/data/rent.json": "6a5c637de1fe8b65dc2f5ef13064aad9",
+    "assets/rent-listings.css": "014b27b21fcc338dfb888e3101e2e10e",
+    "inc/rent-listings.php": "61a2abab2c1d00c57957804230cd5f04",
+    "nadlan-config.php": "98ef07d207116631704488ac1e9db2d7",
+    "inc/instruments.php": "063ab6feb83cdac7fb8de06d90dc4578"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.533, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

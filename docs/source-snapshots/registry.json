@@ -43688,5 +43688,63 @@
     "secret_tokens": 0
    }
   }
+ ],
+ "https://nad-lan.co.il/%D7%93%D7%99%D7%A8%D7%95%D7%AA-%D7%9C%D7%94%D7%A9%D7%9B%D7%A8%D7%94/": [
+  {
+   "ts": "20261026T123731Z",
+   "sha256": "8ca851aaa93fe81bf510d8d17e6af782639e6935db69f4cbc1cd82c4f66c4e27",
+   "bytes": 317391,
+   "status": 200,
+   "checks": {
+    "title": "דירות להשכרה 2026: מחירי שכירות בכל עיר ומחשבון שכר דירה",
+    "title_len": 56,
+    "meta_desc": "מחפשים דירה להשכרה? שכר הדירה החציוני ב־72 ערים ו־945 שכונות, ממוצעי הלמ״ס, בדיקת שכר דירה הוגן, הערובה המותרת בחוק והמס למשכיר. נתונים רשמיים 2026.",
+    "meta_desc_len": 148,
+    "canonical": "https://nad-lan.co.il/דירות-להשכרה/",
+    "canonical_count": 1,
+    "robots_meta": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang_count": 10,
+    "favicon_count": 4,
+    "h1_count": 1,
+    "h1_first": "דירות להשכרה: שכר הדירה בכל עיר ושכונה, הדירות באתר והחוק",
+    "jsonld_blocks": 3,
+    "jsonld_faqpage": 1,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://js.stripe.com/v3/",
+     "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js",
+     "https://nad-lan.co.il/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-content-events-90bacb156ab34fa090db.js",
+     "https://nad-lan.co.il/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-woocommerce-6578612452b5920ad014.js",
+     "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/instruments/core.js",
+     "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/instruments/tools/rentfair.js",
+     "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/mv-ux.js",
+     "https://nad-lan.co.il/wp-content/plugins/paid-member-subscriptions/assets/js/front-end.js",
+     "https://nad-lan.co.il/wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/assets/js/frontend-discount-code.js",
+     "https://nad-lan.co.il/wp-content/plugins/paid-member-subscriptions/includes/gateways/stripe/assets/front-end-connect.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+     "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-premium-revenue.js",
+     "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nlpc-header-nav-inject.js",
+     "https://nad-lan.co.il/wp-includes/js/jquery/jquery-migrate.min.js",
+     "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+     "https://www.googletagmanager.com/gtag/js"
+    ],
+    "scripts_count": 47,
+    "styles_count": 30,
+    "duplicate_ids": [],
+    "og_image": "https://nad-lan.co.il/wp-content/uploads/2026/09/og-default-1200x630-1.jpg",
+    "emdash_visible": 0,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  }
  ]
 }

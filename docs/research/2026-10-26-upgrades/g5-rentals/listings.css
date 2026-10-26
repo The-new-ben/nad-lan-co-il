@@ -1,0 +1,29 @@
+.nlrh-list{margin:8px 0 18px;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}
+.nlrh-count{font:500 15px/1.6 "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#3E4C58;margin:0 0 10px}
+.nlrh-count b{font-family:"IBM Plex Mono",ui-monospace,monospace;color:#12202A}
+.nlrh-list .nlpl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.nlrh-list .nlpl-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #D3DCE2;border-radius:6px;overflow:hidden;color:#12202A!important;text-decoration:none!important;transition:border-color .15s}
+.nlrh-list .nlpl-card:hover{border-color:#2F6F86}
+.nlrh-list .nlpl-card:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}
+.nlrh-list .nlpl-media{position:relative;display:block;aspect-ratio:16/10;background:#EEF2F4;overflow:hidden}
+.nlrh-list .nlpl-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nlrh-list .nlpl-deal{position:absolute;top:10px;inset-inline-start:10px;height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:2px;font:600 12px/1 "IBM Plex Sans Hebrew",sans-serif;background:#12202A;color:#fff}
+.nlrh-list .nlpl-body{display:flex;flex-direction:column;gap:6px;padding:12px 14px 10px;flex:1}
+.nlrh-list .nlpl-kicker{font:500 12.5px/1.4 "IBM Plex Sans Hebrew",sans-serif;color:#2F6F86}
+.nlrh-list .nlpl-title{font:600 16px/1.4 "IBM Plex Sans Hebrew",sans-serif;margin:0;color:#12202A;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nlrh-list .nlpl-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px}
+.nlrh-list .nlpl-price strong{font:600 20px/1.2 "IBM Plex Mono",ui-monospace,monospace;color:#12202A}
+.nlrh-list .nlpl-price small{font-size:13px;color:#5E6A75}
+.nlrh-list .nlpl-specs{display:flex;flex-wrap:wrap;gap:4px 12px;font:500 13px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#12202A}
+.nlrh-list .nlpl-specs span+span::before{content:"·";color:#9AA7B1;margin-inline-end:12px}
+.nlrh-list .nlpl-amen{display:flex;flex-wrap:wrap;gap:6px}
+.nlrh-list .nlpl-amen em{font-style:normal;height:22px;display:inline-flex;align-items:center;padding:0 8px;border-radius:2px;background:#EEF4F6;color:#1F4B5C;font-size:12px;font-weight:600}
+.nlrh-list .nlpl-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px solid #D3DCE2;font-size:12.5px;color:#5E6A75}
+.nlrh-list .nlpl-by{display:flex;align-items:center;gap:8px;min-width:0}
+.nlrh-list .nlpl-by b{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#EEF4F6;color:#1F4B5C;font:600 11px/1 "IBM Plex Sans Hebrew",sans-serif;overflow:hidden}
+.nlrh-list .nlpl-by b img{width:26px;height:26px;object-fit:cover}
+.nlrh-list .nlpl-by span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nlrh-list .nlpl-go{flex:none;color:#2F6F86;font-weight:700;font-size:16px}
+.nlrh-list .nlag-km{display:none}
+.nlrh-more a{font-weight:700;color:#1F4B5C}
+@media (max-width:600px){.nlrh-list .nlpl-grid{grid-template-columns:minmax(0,1fr);gap:10px}.nlrh-list .nlpl-card{flex-direction:row;min-height:118px}.nlrh-list .nlpl-media{flex:0 0 108px;aspect-ratio:auto}.nlrh-list .nlpl-deal{display:none}.nlrh-list .nlpl-body{padding:10px 12px 8px;gap:4px}.nlrh-list .nlpl-title{font-size:14.5px}.nlrh-list .nlpl-price strong{font-size:17px}.nlrh-list .nlpl-amen{display:none}.nlrh-list .nlpl-foot{padding-top:6px;font-size:12px}.nlrh-list .nlpl-go{display:none}}

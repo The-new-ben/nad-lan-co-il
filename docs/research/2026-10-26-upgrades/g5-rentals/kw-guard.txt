@@ -1,0 +1,70 @@
+### A. The list as it stands (no owner yet): the guard blocks until Ben names the owner (keyword-guard rule 7)
+== title | /דירות-להשכרה/ | דירות להשכרה 2026: מחירי שכירות בכל עיר ומחשבון שכר דירה
+BLOCK דירות להשכרה | tier A, 27100 searches/month | the text leads with a protected term owned by (no owner yet); lead with this page's own topic instead
+RESULT: BLOCK
+exit 1
+== slug | /דירות-להשכרה/ | דירות-להשכרה
+BLOCK דירות להשכרה | tier A, 27100 searches/month | the text leads with a protected term owned by (no owner yet); lead with this page's own topic instead
+RESULT: BLOCK
+exit 1
+
+### B. With the proposed owner /דירות-להשכרה/ (scratch copy of protected-keywords.json; the repo file is unchanged)
+== title | /דירות-להשכרה/ | דירות להשכרה 2026: מחירי שכירות בכל עיר ומחשבון שכר דירה
+OK    דירות להשכרה | tier A, 27100 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== h1 | /דירות-להשכרה/ | דירות להשכרה: שכר הדירה בכל עיר ושכונה, הדירות באתר והחוק
+OK    דירות להשכרה | tier A, 27100 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== slug | /דירות-להשכרה/ | דירות-להשכרה
+OK    דירות להשכרה | tier A, 27100 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== meta | /דירות-להשכרה/ | מחפשים דירה להשכרה? שכר הדירה החציוני ב־72 ערים ו־945 שכונות, ממוצעי הלמ״ס, בדיקת שכר דירה הוגן, הערובה המותרת בחוק והמס למשכיר. נתונים רשמיים 2026.
+OK    דירה להשכרה | tier A, 27100 searches/month | this page owns the term
+RESULT: OK
+exit 0
+
+### C. The page's outgoing anchors (target, text)
+== anchor | /post-listing/ | פרסום מודעה בחינם
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /my-rentals/ | ניהול נכסים מושכרים
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /cpi-calculator/ | מחשבון הצמדה למדד
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /real-estate-lawyer/residential-lease-agreement/ | חוזה שכירות דירה
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /tabu-extract-check/ | בדיקת נסח טאבו
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /investment/ | נדל״ן להשקעה
+OK    נדלן להשקעה | tier C, 90 searches/month | this page owns the term
+        Search Console: /investment/ 349 impressions @36.3  <- this page
+        Search Console: /investment/ 123 impressions @50.2  <- this page
+RESULT: OK
+exit 0
+== anchor | /buy-vs-rent/ | מחשבון קנייה מול שכירות
+OK    no protected term in the text
+RESULT: OK
+exit 0
+== anchor | /properties/ | לכל המודעות באתר, עם סינון לפי עיר, חדרים ומחיר
+OK    no protected term in the text
+RESULT: OK
+exit 0
+
+### D. Today's sitewide anchors with the bare term point to /properties/?listing_type=rent (home-v3.php menus and grid, skin-a menu).
+Under the proposed owner the guard blocks them; re-pointing them is a sitewide link change (Ben's word, not done here).
+== anchor | /properties/ | דירות להשכרה
+BLOCK דירות להשכרה | tier A, 27100 searches/month | a bare protected anchor must link to its owner /דירות-להשכרה/
+RESULT: BLOCK
+exit 1

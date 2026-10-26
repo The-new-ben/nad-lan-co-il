@@ -1,0 +1,185 @@
+=== --token rent
+urls analyzed: 4598
+
+=== URLs holding token "rent" (44) ===
+  /buy-vs-rent/
+  /commercial-real-estate/commercial-property-for-rent-tel-aviv/
+  /commercial-real-estate/logistics-warehouse-for-rent-gush-dan/
+  /commercial-real-estate/office-for-rent-tel-aviv/
+  /commercial-real-estate/logistics-warehouse-for-rent-modiin-shoham/
+  /commercial-real-estate/logistics-warehouse-for-rent-airport-city/
+  /commercial-real-estate/industrial-property-for-rent-center/
+  /commercial-real-estate/warehouse-for-rent-rishon-lezion-holon/
+  /commercial-real-estate/shop-for-rent-tel-aviv/
+  /commercial-real-estate/restaurant-property-for-rent-tel-aviv/
+  /commercial-real-estate/store-for-rent/
+  /commercial-real-estate/office-for-rent/
+  /en/brokers/meital-katzir/tzukei-aviv-double-height-mini-penthouse-for-rent/
+  /en/brokers/meital-katzir/bsr-sarona-designer-4-5-room-apartment-for-rent/
+  /en/brokers/meital-katzir/bsr-sarona-5-room-sea-view-apartment-for-rent/
+  /en/brokers/meital-katzir/nofei-yam-5-room-mini-penthouse-for-rent/
+  /en/brokers/meital-katzir/nofei-yam-3-room-apartment-for-rent/
+  /en/brokers/meital-katzir/ramat-aviv-5-room-apartment-pool-complex-for-rent/
+  /buy-or-rent/
+  /en/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-4/
+  /ru/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-4/
+  /fr/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-4/
+  /en/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-3/
+  /ru/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-3/
+  /fr/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-3/
+  /en/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-2/
+  /ru/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-2/
+  /fr/brokers/meital-katzir/nofei-yam-5-rooms-for-rent-2/
+  /en/brokers/meital-katzir/nofei-yam-5-rooms-for-rent/
+  /ru/brokers/meital-katzir/nofei-yam-5-rooms-for-rent/
+  /fr/brokers/meital-katzir/nofei-yam-5-rooms-for-rent/
+  /properties/carmel-haifa-4r-rent-demo/
+  /properties/florentin-tlv-2r-rent-demo/
+  /properties/tzukei-aviv-double-height-mini-penthouse-for-rent/
+  /properties/bsr-sarona-designer-4-5-rooms-for-rent/
+  /properties/bsr-sarona-5-rooms-sea-view-for-rent/
+  /properties/nofei-yam-mini-penthouse-5-rooms-for-rent/
+  /properties/nofei-yam-3-rooms-balcony-for-rent/
+  /properties/ramat-aviv-5-rooms-pool-complex-for-rent/
+  /properties/kiryat-ata-3-rooms-for-rent/
+  /properties/nofei-yam-5-rooms-for-rent-4/
+  /properties/nofei-yam-5-rooms-for-rent-3/
+  /properties/nofei-yam-5-rooms-for-rent-2/
+  /properties/nofei-yam-5-rooms-for-rent/
+=== --token rental
+urls analyzed: 4598
+
+=== URLs holding token "rental" (0) ===
+=== --token rentals
+urls analyzed: 4598
+
+=== URLs holding token "rentals" (8) ===
+  /short-term-rentals-abroad/
+  /short-term-rentals-abroad/short-term-rentals-italy/
+  /short-term-rentals-abroad/short-term-rentals-spain/
+  /short-term-rentals-abroad/short-term-rentals-cyprus/
+  /short-term-rentals-abroad/short-term-rentals-dubai/
+  /short-term-rentals-abroad/short-term-rentals-thailand/
+  /short-term-rentals-abroad/short-term-rentals-portugal/
+  /short-term-rentals-abroad/short-term-rentals-greece/
+=== --token apartments
+urls analyzed: 4598
+
+=== URLs holding token "apartments" (8) ===
+  /luxury-apartments-israel-guide/
+  /luxury-apartments-israel-guide-he/
+  /affordable-apartments-israel-2026/
+  /property-value/luxury-apartments-tel-aviv/
+  /real-estate-lawyer/sale-of-apartments-law/
+  /investment/apartments-for-investment/
+  /athens-apartments/
+  /global/project/lion-apartments-paphos/
+=== --token apartment
+urls analyzed: 4598
+
+=== URLs holding token "apartment" (106) ===
+  /buying-new-apartment-developer-2026-negotiation/
+  /3-room-apartment-690k-israel-2026/
+  /investment-apartment/
+  /selling-apartment/real-estate-auction-sale/
+  /mortgage-calculator/bridge-loan-apartment/
+  /real-estate-lawyer/apartment-memorandum/
+  /real-estate-lawyer/breach-apartment-sale-contract/
+  /investment/modiin-investment-apartment/
+  /investment/hod-hasharon-investment-apartment/
+  /investment/kiryat-ono-investment-apartment/
+  /investment/rehovot-investment-apartment/
+  /investment/ashdod-investment-apartment/
+  /investment/jerusalem-investment-apartment/
+  /investment/raanana-investment-apartment/
+  /investment/ramat-hasharon-investment-apartment/
+  /investment/givatayim-investment-apartment/
+  /investment/ramat-gan-investment-apartment/
+  /investment/holon-investment-apartment/
+  /investment/petah-tikva-investment-apartment/
+  /investment/rishon-lezion-investment-apartment/
+  /investment/bat-yam-investment-apartment/
+  /investment/netanya-investment-apartment/
+  /investment/beer-sheva-investment-apartment/
+  /investment/haifa-investment-apartment/
+  /buying-apartment/new-vs-second-hand/
+  /buying-apartment/buying-apartment-step-by-step/
+  /selling-apartment/reduced-capital-gains-sale/
+  /selling-apartment/selling-without-broker/
+  /selling-apartment/who-pays-broker-fees/
+  /real-estate-lawyer/apartment-sale-contract/
+  /guides/new-apartment-sale-specification/
+  /en/guides/new-apartment-sale-specification/
+  /fr/guides/new-apartment-sale-specification/
+  /ru/guides/new-apartment-sale-specification/
+  /ar/guides/new-apartment-sale-specification/
+  /guides/new-apartment-acoustics/
+  /en/guides/new-apartment-acoustics/
+  /fr/guides/new-apartment-acoustics/
+  /ru/guides/new-apartment-acoustics/
+  /guides/new-apartment-balcony/
+  /en/guides/new-apartment-balcony/
+  /fr/guides/new-apartment-balcony/
+  /ru/guides/new-apartment-balcony/
+  /ar/guides/new-apartment-balcony/
+  /neve-tzedek-apartment-prices/
+  /herzliya-pituach-apartment-prices/
+  /tel-aviv-luxury-apartment-prices/
+  /tel-aviv-seafront-apartment-prices/
+  /guides/new-apartment-mamad/
+  /en/guides/new-apartment-mamad/
+  /fr/guides/new-apartment-mamad/
+  /ru/guides/new-apartment-mamad/
+  /ar/guides/new-apartment-mamad/
+  /guides/new-apartment-buyer-changes/
+  /en/guides/new-apartment-buyer-changes/
+  /fr/guides/new-apartment-buyer-changes/
+  /ru/guides/new-apartment-buyer-changes/
+  /ar/guides/new-apartment-buyer-changes/
+  /guides/remote-new-apartment-handover-israel/
+  /en/guides/remote-new-apartment-handover-israel/
+  /fr/guides/remote-new-apartment-handover-israel/
+  /ru/guides/remote-new-apartment-handover-israel/
+  /ar/guides/remote-new-apartment-handover-israel/
+  /en/brokers/meital-katzir/migdalei-neeman-4-5-room-apartment-for-sale/
+  /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/
+  /en/brokers/meital-katzir/bsr-sarona-designer-4-5-room-apartment-for-rent/
+  /en/brokers/meital-katzir/bsr-sarona-5-room-sea-view-apartment-for-rent/
+=== --token dirot
+urls analyzed: 4598
+
+=== URLs holding token "dirot" (1) ===
+  /michraz-dirot/
+=== --token השכרה
+urls analyzed: 4598
+
+=== URLs holding token "השכרה" (0) ===
+=== --token להשכרה
+urls analyzed: 4598
+
+=== URLs holding token "להשכרה" (0) ===
+=== --token דירות
+urls analyzed: 4598
+
+=== URLs holding token "דירות" (0) ===
+=== --token שכירות
+urls analyzed: 4598
+
+=== URLs holding token "שכירות" (1) ===
+  /glossary/דמי-שכירות-ראויים/
+=== --token lease
+urls analyzed: 4598
+
+=== URLs holding token "lease" (3) ===
+  /commercial-real-estate/commercial-lease-agreement/
+  /real-estate-lawyer/residential-lease-agreement/
+  /glossary/perpetual-lease/
+=== --token tenant
+urls analyzed: 4598
+
+=== URLs holding token "tenant" (1) ===
+  /urban-renewal/pinui-binui-tenant-guide/
+=== --token landlord
+urls analyzed: 4598
+
+=== URLs holding token "landlord" (0) ===

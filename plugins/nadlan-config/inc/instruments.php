@@ -214,6 +214,14 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'urcity.json', 'renewal-track.json' ),
 				'related' => array( '/urban-renewal/pinui-binui/' => 'פינוי בינוי', '/urban-renewal/tama-38/' => 'תמ"א 38', '/urban-renewal/tama-38-alternatives/' => 'מה במקום תמ"א 38', '/urban-renewal/map/' => 'מפת התחדשות עירונית', '/urban-renewal/check/' => 'בדיקת בניין חינמית' ),
 			),
+			/* G5 (26.10.2026): the owner page /דירות-להשכרה/ ("דירות להשכרה" / "דירה להשכרה"); data rent.json (data.nadlan.gov.il rent files
+			   20-08-2026, CBS table 4.9 Q2 2026, CBS rent index 120460, the Rental and Loan Law sign 6, Kol Zchut tax pages 22.2.2026) */
+			'rentfair' => array(
+				'name' => 'כמה שכר דירה הוגן לדירה הזאת', 'cat' => 'FinanceApplication', 'kicker' => 'בדיקה · שכר דירה',
+				'desc' => 'שכר הדירה שמבקשים מכם או שאתם מבקשים, מול שכר הדירה החציוני הרשמי בעיר לפי מספר החדרים (72 ערים), מול השכונה (945 שכונות), מול הממוצע של הלמ״ס עם טעות הדגימה ומול החציון הארצי; הערובה המרבית שמותר לבקש לפי חוק השכירות והשאילה, מועדי התיקון וההודעות, ושלושת מסלולי המס של המשכיר ל־2026.',
+				'data' => array( 'rent.json' ),
+				'related' => array( '/real-estate-lawyer/residential-lease-agreement/' => 'חוזה שכירות דירה', '/cpi-calculator/' => 'מחשבון הצמדה למדד', '/buy-vs-rent/' => 'מחשבון קנייה מול שכירות', '/my-rentals/' => 'ניהול נכסים מושכרים' ),
+			),
 			/* G1 (26.10.2026): /dira-behanacha/ upgrade, two tools in one file tools/dirafit.js; data dira-round.json (official lottery
 			   file + the ministry's releases of 25.5, 23.6 and 2.8.2026 + gov.il rules + invest.json), boi-mortgage.json, ptax.json */
 			'dirafit' => array(
@@ -564,6 +572,23 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				$p .= '<tr><td>' . esc_html( $x ) . '</td><td>' . $v['n'] . '</td><td>' . $v['a'] . '</td><td>' . number_format( $v['p'] ) . '</td><td>' . ( $v['pe'] ? esc_html( number_format( $v['pp'] / $v['pe'], 2 ) ) : '' ) . '</td><td>' . esc_html( $tama[ $x ] ?? '' ) . '</td></tr>';
 			}
 			return $p . '</tbody></table>';
+		}
+		if ( 'rentfair' === $id ) {  // G5: national medians by size, the CBS average of the 18 cities, the guarantee cap and the tax ceiling, from rent.json
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/rent.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['cities'] ) ) { return ''; }
+			$f = function ( $n ) { return esc_html( number_format( (float) $n ) ); };
+			$n = $x['nat']['r']; $q = $n['4']['q']; $qm = array( '03' => 'ינואר עד מרץ', '06' => 'אפריל עד יוני', '09' => 'יולי עד ספטמבר', '12' => 'אוקטובר עד דצמבר' );
+			$ql = $qm[ substr( $q, 5, 2 ) ] . ' ' . substr( $q, 0, 4 );
+			$h = '<p>שכר הדירה החציוני בישראל, ' . esc_html( $ql ) . ' (אתר הנדל״ן הממשלתי): ' . $f( $n['3']['v'] ) . ' ₪ לדירת 3 חדרים, ' . $f( $n['4']['v'] ) . ' ₪ ל־4 חדרים, ' . $f( $n['5']['v'] ) . ' ₪ ל־5 חדרים. '
+				. 'הערובה שמותר לבקש כשהיא עולה לשוכר כסף: הנמוך מבין 3 חודשי שכירות ושליש משכר הדירה לכל התקופה. פטור ממס למשכיר ב־' . (int) $x['tax']['year'] . ': עד ' . $f( $x['tax']['ceiling'] ) . ' ₪ בחודש.</p>'
+				. '<table><thead><tr><th>עיר</th><th>3 חדרים</th><th>4 חדרים</th><th>5 חדרים</th><th>ממוצע הלמ״ס, כל הגדלים</th></tr></thead><tbody>';
+			foreach ( $x['cities'] as $c ) {
+				if ( empty( $c['cbs']['total'] ) ) { continue; }  // the 18 cities the CBS measures; the full 72 are in the page's own table
+				$cell = function ( $k ) use ( $c, $f ) { return isset( $c['r'][ $k ] ) ? $f( $c['r'][ $k ]['v'] ) . ' ₪' : ''; };
+				$h .= '<tr><td>' . esc_html( $c['n'] ) . '</td><td>' . $cell( '3' ) . '</td><td>' . $cell( '4' ) . '</td><td>' . $cell( '5' ) . '</td><td>' . $f( $c['cbs']['total']['a'] ) . ' ₪</td></tr>';
+			}
+			return $h . '</tbody></table>';
 		}
 		if ( 'dirafit' === $id || 'diracost' === $id ) { // G1: round 11 by town and the rules, from dira-round.json
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/dira-round.json';
@@ -921,3 +946,6 @@ add_action( 'save_post_page', function () { delete_transient( 'nadlan_llms_txt_v
 
 /* 1.72.504 (HAD-592): the registered-contractor check, its REST search route */
 require_once __DIR__ . '/pinkas.php';
+
+/* 1.72.533 (G5): the [nadlan_rent_listings] shortcode of /דירות-להשכרה/; loaded only if present, so a rollback that removes it leaves this file working */
+if ( file_exists( __DIR__ . '/rent-listings.php' ) ) { require_once __DIR__ . '/rent-listings.php'; }
