@@ -1,0 +1,25 @@
+{
+  "released": "1.72.531",
+  "from": "1.72.530",
+  "live_before": {
+    "assets/instruments/tools/ptax.js": "df1cac4bd98864312c97866bfe5a1100",
+    "assets/instruments/data/ptax.json": "54e79c5daef0d4349712904e94b39530",
+    "nadlan-config.php": "5730f0a5d3f9e9c4883517a8150935c7",
+    "inc/instruments.php": "09e69abe11f6f461b25ec6811c2e17d9"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 13:30:01",
+  "files": {
+    "assets/instruments/tools/ptax.js": "5200a2d2cd731862cfb52bee245717b0",
+    "assets/instruments/data/ptax.json": "a3dd4e0d87c3aacb0b363060227ef4b8",
+    "assets/instruments/tools/pinui.js": "0aeceee1495508366701cd1c6c19ac3e",
+    "assets/instruments/data/pinui.json": "9f29370fcdb958dd8945aaa77c51fb0d",
+    "assets/instruments/tools/urcity.js": "ab00e32263595cad934077063bc8c034",
+    "assets/instruments/data/urcity.json": "2c88890ef4e95c0e362f6a519dfbd26f",
+    "nadlan-config.php": "79c8a05439bcb947d4c56d311cbea3c8",
+    "inc/instruments.php": "c32bfacf724d7cf8a182ebb102cecf8c"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.531, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

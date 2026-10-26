@@ -81,7 +81,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			),
 			'ptax' => array(
 				'name' => 'מחשבון מס רכישה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · מס רכישה',
-				'desc' => 'מחשב את מס הרכישה על דירה לפי המדרגות של רשות המסים בכל המסלולים: דירה יחידה, דירה נוספת, עולה חדש, תושב חוץ, נכה, קרקע ומתנה לקרוב, ועד מתי כל שיעור בתוקף; למשפרי דיור גם עד מתי למכור את הדירה הקודמת, כולל הארכת המלחמה.',
+				'desc' => 'מחשב את מס הרכישה על דירה לפי המדרגות של רשות המסים בכל המסלולים: דירה יחידה, דירה נוספת, עולה חדש, תושב חוץ, נכה, קרקע ומתנה לקרוב, ועד מתי כל שיעור בתוקף; מתי מדווחים ומשלמים ומה עולה כל שבוע של איחור; שני קונים לפי המעמד של כל אחד; חלון ההטבה לעולה ותקנה 12 מול 12א; ולמשפרי דיור עד מתי למכור את הדירה הקודמת, כולל הארכת המלחמה.',
 				'data' => array( 'ptax.json' ),
 				'related' => array( '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/' => 'מחשבון משכנתא', '/real-estate-lawyer/' => 'עורך דין לקניית דירה', '/projects/hamedina/' => 'דירות במגדלי כיכר המדינה' ),
 			),
@@ -199,6 +199,20 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'desc' => 'לפי המצב (דירה חדשה מקבלן וסוג התקרות, פתיחת קיר בשיפוץ, בית פרטי, סדק או ברזל חשוף, תקרות דרוכות, טרומיות או לוח״דים): אילו חלקים של חוקת הבטון חלים, המהדורה שבתוקף ומחיר כל חלק במכון התקנים, מי אחראי, מה לשאול, איזה תקן עובד לצידו ואיפה קוראים את התקן בלי תשלום, עם חתך בניין שמסמן את האלמנטים.',
 				'data' => array( 't466.json' ),
 				'related' => array( '/glossary/%D7%AA%D7%99-118/' => 'ת״י 118', '/glossary/%D7%A7%D7%95%D7%A0%D7%A1%D7%98%D7%A8%D7%95%D7%A7%D7%98%D7%95%D7%A8/' => 'קונסטרוקטור', '/home-inspection/' => 'בדק בית', '/real-estate-lawyer/construction-defects-lawsuit/' => 'ליקויי בנייה' ),
+			),
+			/* G2 (HAD-601 round 2): "הבניין שלכם בפינוי בינוי"; pinui.json from the Pinui Binui law, the 2025 authority report and gov.il (tools/urban/build_g2g3_data.py, 26.10.2026) + the tracker */
+			'pinui' => array(
+				'name' => 'הבניין שלכם בפינוי בינוי: הרוב לפי החוק, מה מגיע לכם וכמה זמן', 'cat' => 'ReferenceApplication', 'kicker' => 'מחשבון · פינוי בינוי',
+				'desc' => 'לפי חוק פינוי ובינוי בנוסחו היום: הרוב המיוחס בניין אחר בניין (שני שלישים במקבץ, שלוש חמישיות בכל בניין), מה חסר, מתי אפשר לבקש שמאי של הרשות בחינם, תקרת השטח לפטור ממס לדירה שלכם, החלופות לבני 70 ו-75, המועדים שהחוק נותן ליזם מהעסקה הראשונה, והשלב של המתחם אצל הרשות עם השנים מאז אישור התכנית מול הממוצע של הרשות.',
+				'data' => array( 'pinui.json', 'renewal-track.json' ),
+				'related' => array( '/urban-renewal/' => 'התחדשות עירונית', '/urban-renewal/map/' => 'מפת התחדשות עירונית', '/urban-renewal/check/' => 'בדיקת בניין חינמית', '/glossary/dayar-sarvan/' => 'דייר סרבן', '/glossary/shamai-pinui-binui/' => 'שמאי פינוי בינוי', '/my-renewal/' => 'חדר פרויקט לנציגות' ),
+			),
+			/* G3: "התחדשות עירונית בעיר שלכם"; urcity.json from the 2025 authority report (annex A, TAMA 38 by city) + the tracker */
+			'urcity' => array(
+				'name' => 'התחדשות עירונית בעיר שלכם: מתחמים, מסלולים ותמ"א 38', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · התחדשות עירונית',
+				'desc' => 'לכל עיר: המתחמים במפת הרשות הממשלתית להתחדשות עירונית לפי שלב ומסלול, הדירות היום ואחרי הבנייה והמכפיל, מה זז מאז הבדיקה הקודמת, ומה דוח הרשות לשנת 2025 אומר על תמ"א 38 בעיר (התכנית המחליפה, ההארכה, הזמן מבקשה להיתר, הדירות שנמכרו). לבניין: איזה מסלול נשאר פתוח, פינוי בינוי, תמ"א 38 או תכנית לרישוי מהיר, וכמה חתימות צריך. והשוואת כל הערים.',
+				'data' => array( 'urcity.json', 'renewal-track.json' ),
+				'related' => array( '/urban-renewal/pinui-binui/' => 'פינוי בינוי', '/urban-renewal/tama-38/' => 'תמ"א 38', '/urban-renewal/tama-38-alternatives/' => 'מה במקום תמ"א 38', '/urban-renewal/map/' => 'מפת התחדשות עירונית', '/urban-renewal/check/' => 'בדיקת בניין חינמית' ),
 			),
 			/* G1 (26.10.2026): /dira-behanacha/ upgrade, two tools in one file tools/dirafit.js; data dira-round.json (official lottery
 			   file + the ministry's releases of 25.5, 23.6 and 2.8.2026 + gov.il rules + invest.json), boi-mortgage.json, ptax.json */
@@ -419,7 +433,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$vu = isset( $x['valid'] ) ? $x['valid'] : array( 'single' => $x['frozen_until'], 'extra' => $x['frozen_until'] );
 			return '<p>מדרגות מס רכישה על דירת מגורים לפי רשות המסים (הוראת ביצוע 1/2026). דירה יחידה, מוקפאות עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $vu['single'] ) ) ) . ': ' . esc_html( $fmt( $x['tracks']['single'] ) )
 				. '. דירה נוספת, תושב חוץ וחברה, הוראת שעה עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $vu['extra'] ) ) ) . ': ' . esc_html( $fmt( $x['tracks']['extra'] ) ) . '. עולה חדש (תקנה 12א, עד 20,183,565 ₪): ' . esc_html( $fmt( $x['tracks']['oleh'] ) )
-				. '. נכה (תקנה 11): 0.5%, ובדירה יחידה עד 2,500,000 ₪ פטור עד המדרגה הראשונה. קרקע ונכס שאינו מגורים: 6%. מתנה לקרוב: שליש מהמס. משפרי דיור נחשבים דירה יחידה אם ימכרו את הדירה הקודמת תוך 24 חודשים (רכישה מ־1.6.2025). המס מחושב על שווי הדירה כולה, וקונה של חלק משלם לפי החלק שלו.</p>';
+				. '. נכה (תקנה 11): 0.5%, ובדירה יחידה עד 2,500,000 ₪ פטור עד המדרגה הראשונה. קרקע ונכס שאינו מגורים: 6%. מתנה לקרוב: שליש מהמס. משפרי דיור נחשבים דירה יחידה אם ימכרו את הדירה הקודמת תוך 24 חודשים (רכישה מ־1.6.2025). המס מחושב על שווי הדירה כולה, וקונה של חלק משלם לפי החלק שלו. מדווחים תוך 30 יום מהעסקה ומשלמים תוך 60 יום, או מאוחר יותר כשהחזקה ורוב התשלום נדחים (סעיף 51); איחור בתשלום: 0.2% מהמס לכל שבוע ועוד הצמדה וריבית.</p>';
 		}
 		if ( 'grbuy' === $id ) {
 			return '<p>עלויות קניית דירה ביוון, לפי החוק באוקטובר 2026: מס העברה 3.09% על המחיר או על השווי האובייקטיבי, הגבוה מביניהם, ומשלם הקונה לפני החתימה. בדירה חדשה מע״מ 24%, או 3.09% אם היזם ביקש השעיה (בתוקף עד 31.12.2026). נוטריון 0.8% עד 120,000 אירו, 0.7% עד 380,000 ו־0.65% עד 2 מיליון, ועוד 20 אירו ומע״מ 24%. רישום בקדסטר 0.5% ועוד 20 אירו. עורך דין לרוב 0.5% עד 1.5% ומתווך כ־2%, שניהם ועוד מע״מ 24%. סך העלויות כ־5.8% בלי מתווך וכ־8.3% עם מתווך. משרד האוצר היווני הציע מס העברה של 15.45% לקונים פרטיים שתושבי המס שלהם מחוץ לאיחוד, כולל ישראלים, בחוזים מ־1.7.2027; זו הצעת חוק בהערות ציבור עד 1.11.2026.</p>';
@@ -510,6 +524,46 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				$t .= '<tr><td>' . esc_html( $L . ' × ' . $H ) . ' מ׳</td><td>' . ( 2 === $s ? 'שני צדדים' : 'צד אחד' ) . ', ' . ( 2 === $ly ? 'שתי שכבות' : 'שכבה אחת' ) . '</td><td>' . esc_html( $sz ) . ' × 1.20</td><td>' . $n . '</td><td>כ־' . number_format( $n * $kg ) . ' ק״ג</td><td>' . ( $pr ? '₪' . number_format( round( $n * $pr ) ) : 'לפי הצעת מחיר' ) . '</td></tr>';
 			}
 			return '<p>לוח גבס ורוד (מעכב בעירה, FR) לשימוש פנימי, ברוחב 1.20 מ׳. משקל לפי טבלת הספק: 27 ק״ג ללוח 2.60 של 12.5 מ״מ. מחיר אצל רוטנברג ב־25.10.2026: 80.8 ₪ ללוח 2.60 כולל מע״מ. את מספר דקות העמידות באש מקבל הקיר כולו בבדיקה לפי ת״י 931, לא הלוח: לבקש מהקבלן תעודת בדיקה של המחיצה, סיווג לפי ת״י 755 ותו תקן לפי ת״י 1490 חלק 1.</p>' . $t . '</tbody></table>';
+		}
+		if ( 'pinui' === $id ) {  // G2 /urban-renewal/pinui-binui/: the law's majorities for common building sizes, the 1ד clock, the tax ceiling
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/pinui.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['law'] ) ) { return ''; }
+			$k = $d['key2025']; $avg = end( $d['series']['approval_to_permit'] );
+			$need = function ( $u ) { return ( $u >= 4 && $u <= 5 ) ? 3 : (int) ceil( $u * 3 / 5 - 1e-9 ); };
+			$p = '<p>פינוי בינוי לפי חוק פינוי ובינוי (עידוד מיזמי פינוי ובינוי), התשס"ו-2006: רוב מיוחס הוא בעלים של שני שלישים לפחות מהדירות במקבץ, שלוש חמישיות לפחות מהדירות בכל בניין (בבניין של 4 או 5 דירות: 3 דירות ויותר משני בעלי דירות), ויותר ממחצית הרכוש המשותף בכל בניין. '
+				. 'בעלי יותר משתי חמישיות מהדירות ומהרכוש המשותף בכל בניין יכולים לבקש מהרשות שמאי פינוי ובינוי בחינם. מהעסקה הראשונה: חצי מבעלי הדירות בתוך שנתיים, שלוש חמישיות בתוך 4 שנים ותכנית בתוך 4.5 שנים, אחרת רוב באסיפה כללית יכול לאפשר ביטול. '
+				. 'תקרת הפטור ממס לדירת התמורה: הגבוה מבין 120 מ"ר, 150% מהשווי בניכוי הזכויות שעוברות ליזם, או 50% יותר עד 200 מ"ר. ב-2025 אושרו ' . (int) $k['pb_plans'] . ' תכניות עם ' . number_format( (int) $k['pb_units'] ) . ' דירות, ומאישור תכנית עד היתר ראשון עברו בממוצע ' . esc_html( number_format( (float) $avg[1], 1 ) ) . ' שנים (' . (int) $avg[2] . ' מתחמים, הרשות הממשלתית להתחדשות עירונית).</p>';
+			$p .= '<table><caption>כמה חתימות צריך בבניין, לפי מספר הדירות</caption><thead><tr><th>דירות בבניין</th><th>שלוש חמישיות</th><th>שני שלישים (כל המקבץ)</th><th>יותר משתי חמישיות (שמאי הרשות)</th></tr></thead><tbody>';
+			foreach ( array( 4, 5, 8, 12, 16, 24, 32, 48 ) as $u ) {
+				$p .= '<tr><td>' . $u . '</td><td>' . $need( $u ) . '</td><td>' . (int) ceil( $u * 2 / 3 - 1e-9 ) . '</td><td>' . ( (int) floor( $u * 2 / 5 + 1e-9 ) + 1 ) . '</td></tr>';
+			}
+			return $p . '</tbody></table>';
+		}
+		if ( 'urcity' === $id ) {  // G3 /urban-renewal/: the complexes per city on the authority's map and the TAMA 38 line of the 2025 report
+			$base = dirname( __DIR__ ) . '/assets/instruments/data/';
+			$u = is_readable( $base . 'urcity.json' ) ? json_decode( (string) file_get_contents( $base . 'urcity.json' ), true ) : null;
+			$t = is_readable( $base . 'renewal-track.json' ) ? json_decode( (string) file_get_contents( $base . 'renewal-track.json' ), true ) : null;
+			if ( ! is_array( $u ) || ! is_array( $t ) || empty( $t['recs'] ) ) { return ''; }
+			$lm = -1; foreach ( $t['snaps'] as $i => $s ) { if ( 'map' === $s['k'] ) { $lm = $i; } }
+			if ( $lm < 0 ) { return ''; }
+			$dt = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : (string) $iso; };
+			$c = array(); $n = 0; $appr = 0;
+			foreach ( $t['recs'] as $r ) {
+				$s = (int) $r['s'][ $lm ]; if ( -1 === $s ) { continue; }
+				$x = $r['c']; if ( ! isset( $c[ $x ] ) ) { $c[ $x ] = array( 'n' => 0, 'a' => 0, 'p' => 0, 'pe' => 0, 'pp' => 0 ); }
+				$c[ $x ]['n']++; $n++; if ( $s >= 3 ) { $c[ $x ]['a']++; $appr++; }
+				$c[ $x ]['p'] += (int) ( $r['p'] ?? 0 ); if ( ! empty( $r['e'] ) && ! empty( $r['p'] ) ) { $c[ $x ]['pe'] += (int) $r['e']; $c[ $x ]['pp'] += (int) $r['p']; }
+			}
+			uasort( $c, function ( $a, $b ) { return $b['n'] <=> $a['n']; } );
+			$tama = array(); foreach ( $u['replace'] as $r ) { $tama[ $r['c'] ] = preg_replace( '/^בבדיקה /u', 'בשלב בדיקה ', (string) $r['st'] ) . ( $r['ext'] ? '' : '; בלי הארכה לתמ"א 38' ); }
+			$p = '<p>מתחמי התחדשות עירונית במפת הרשות הממשלתית להתחדשות עירונית, ' . esc_html( $dt( $t['snaps'][ $lm ]['d'] ) ) . ': ' . number_format( $n ) . ' מתחמים ב-' . count( $c ) . ' ערים, ' . number_format( $appr ) . ' מהם בתכנית מאושרת או במימוש. '
+				. 'שלושה מסלולים: פינוי בינוי של מתחם, תמ"א 38 לבניין, ותכנית לרישוי מהיר לפי סעיף 145א1. תמ"א 38 פקעה באוקטובר 2023, ובערים שמקדמות תכנית מחליפה הוארכה עד מאי 2026 או עד אישור התכנית, המוקדם מביניהם (דוח הרשות לשנת 2025).</p>';
+			$p .= '<table><caption>הערים עם הכי הרבה מתחמים</caption><thead><tr><th>עיר</th><th>מתחמים</th><th>מאושרת או במימוש</th><th>דירות אחרי הבנייה</th><th>מכפיל (חישוב שלנו)</th><th>תמ"א 38 בעיר</th></tr></thead><tbody>';
+			foreach ( array_slice( $c, 0, 20, true ) as $x => $v ) {
+				$p .= '<tr><td>' . esc_html( $x ) . '</td><td>' . $v['n'] . '</td><td>' . $v['a'] . '</td><td>' . number_format( $v['p'] ) . '</td><td>' . ( $v['pe'] ? esc_html( number_format( $v['pp'] / $v['pe'], 2 ) ) : '' ) . '</td><td>' . esc_html( $tama[ $x ] ?? '' ) . '</td></tr>';
+			}
+			return $p . '</tbody></table>';
 		}
 		if ( 'dirafit' === $id || 'diracost' === $id ) { // G1: round 11 by town and the rules, from dira-round.json
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/dira-round.json';

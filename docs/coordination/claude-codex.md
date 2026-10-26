@@ -4545,3 +4545,5 @@ RELEASE LOCK 1.72.529 (RenewalStatsPerComplex: data/renewal-stats.json swapped, 
 RELEASE DONE 1.72.529 (RenewalStatsPerComplex) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.529. Lock released.
 RELEASE LOCK 1.72.530 (SdeDovPlots + DiraFit: sdplan.js/json + dirafit.js + dira-round.json new; hunk on the live inc/instruments.php; round 2 S1+G1) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.530 (SdeDovPlots + DiraFit) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
+RELEASE LOCK 1.72.531 (PurchaseTax3 + UrbanRenewalTools: ptax.js/json swapped, pinui + urcity new; hunk on the live inc/instruments.php; round 2 G2-G4) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.531 (PurchaseTax3 + UrbanRenewalTools) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
