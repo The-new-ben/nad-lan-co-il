@@ -1,0 +1,210 @@
+{
+ "google-tlv-z12": {
+  "key": "google-tlv-z12",
+  "url": "https://www.google.com/maps/@32.0750,34.8100,12z?hl=iw",
+  "note": "Google Maps, Hebrew UI, Tel Aviv at city zoom",
+  "viewport": [
+   1280,
+   800
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:23 UTC",
+  "status": 200,
+  "final_url": "https://www.google.com/maps/@32.0750,34.8100,12z?hl=iw",
+  "title": "מפות ‪Google‬‏",
+  "blocked": false,
+  "screenshot": "google-tlv-z12.png"
+ },
+ "google-il-z8": {
+  "key": "google-il-z8",
+  "url": "https://www.google.com/maps/@31.75,34.95,8z?hl=iw",
+  "note": "Google Maps, Hebrew UI, country zoom",
+  "viewport": [
+   1280,
+   800
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:23 UTC",
+  "status": 200,
+  "final_url": "https://www.google.com/maps/@31.75,34.95,8z?hl=iw",
+  "title": "מפות ‪Google‬‏",
+  "blocked": false,
+  "screenshot": "google-il-z8.png"
+ },
+ "google-search-z12": {
+  "key": "google-search-z12",
+  "url": "https://www.google.com/maps/search/%D7%A4%D7%99%D7%A0%D7%95%D7%99+%D7%91%D7%99%D7%A0%D7%95%D7%99/@32.0750,34.8100,12z?hl=iw",
+  "note": "Google Maps search results as labelled pins",
+  "viewport": [
+   1280,
+   800
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:23 UTC",
+  "status": 200,
+  "final_url": "https://www.google.com/maps/search/%D7%A4%D7%99%D7%A0%D7%95%D7%99+%D7%91%D7%99%D7%A0%D7%95%D7%99/@32.0750,34.8100,12z?hl=iw",
+  "title": "פינוי בינוי - מפות ‪Google‬‏",
+  "blocked": false,
+  "screenshot": "google-search-z12.png"
+ },
+ "google-tlv-390": {
+  "key": "google-tlv-390",
+  "url": "https://www.google.com/maps/@32.0750,34.8100,12z?hl=iw",
+  "note": "Google Maps phone width",
+  "viewport": [
+   390,
+   844
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:24 UTC",
+  "status": 200,
+  "final_url": "https://www.google.com/maps/@32.0750,34.8100,12z?hl=iw",
+  "title": "מפות ‪Google‬‏",
+  "blocked": false,
+  "screenshot": "google-tlv-390.png"
+ },
+ "mapbox-cluster": {
+  "key": "mapbox-cluster",
+  "url": "https://docs.mapbox.com/mapbox-gl-js/example/cluster/",
+  "note": "Mapbox GL JS official cluster example",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:24 UTC",
+  "status": 200,
+  "final_url": "https://docs.mapbox.com/mapbox-gl-js/example/cluster/",
+  "title": "Create and style clusters | Mapbox GL JS | Mapbox",
+  "blocked": false,
+  "screenshot": "mapbox-cluster.png"
+ },
+ "mapbox-cluster-html": {
+  "key": "mapbox-cluster-html",
+  "url": "https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/",
+  "note": "Mapbox GL JS HTML clusters with custom properties",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:24 UTC",
+  "status": 200,
+  "final_url": "https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/",
+  "title": "Display HTML clusters with custom properties | Mapbox GL JS | Mapbox",
+  "blocked": false,
+  "screenshot": "mapbox-cluster-html.png"
+ },
+ "redfin-nyc": {
+  "key": "redfin-nyc",
+  "url": "https://www.redfin.com/city/30749/NY/New-York",
+  "note": "Redfin map clusters and price tags",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headed",
+  "at_utc": "2026-10-26 07:28 UTC",
+  "status": 202,
+  "final_url": "https://www.redfin.com/city/30749/NY/New-York",
+  "title": "New York, NY Homes for Sale & Real Estate | Redfin",
+  "blocked": false,
+  "screenshot": "redfin-nyc.png"
+ },
+ "zillow-nyc": {
+  "key": "zillow-nyc",
+  "url": "https://www.zillow.com/new-york-ny/",
+  "note": "Zillow map clusters and price tags",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headed",
+  "at_utc": "2026-10-26 07:28 UTC",
+  "status": 200,
+  "final_url": "https://www.zillow.com/new-york-ny/",
+  "title": "New York NY Real Estate - New York NY Homes For Sale | Zillow",
+  "blocked": false,
+  "screenshot": "zillow-nyc.png"
+ },
+ "nyt-election": {
+  "key": "nyt-election",
+  "url": "https://www.nytimes.com/interactive/2021/upshot/2020-election-map.html",
+  "note": "NYT Upshot detailed election map",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headed",
+  "at_utc": "2026-10-26 07:28 UTC",
+  "status": 200,
+  "final_url": "https://www.nytimes.com/interactive/2021/upshot/2020-election-map.html",
+  "title": "An Extremely Detailed Map of the 2020 Election Results: Trump vs. Biden - The New York Times",
+  "blocked": false,
+  "screenshot": "nyt-election.png"
+ },
+ "ft-visual-vocabulary": {
+  "key": "ft-visual-vocabulary",
+  "url": "https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary",
+  "note": "FT Visual Vocabulary (public): proportional symbol maps",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:25 UTC",
+  "status": 200,
+  "final_url": "https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary",
+  "title": "chart-doctor/visual-vocabulary at main · Financial-Times/chart-doctor · GitHub",
+  "blocked": false,
+  "screenshot": "ft-visual-vocabulary.png"
+ },
+ "madlan-tlv": {
+  "key": "madlan-tlv",
+  "url": "https://www.madlan.co.il/for-sale/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+  "note": "Madlan for-sale map, Tel Aviv",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headed",
+  "at_utc": "2026-10-26 07:29 UTC",
+  "status": 200,
+  "final_url": "https://www.madlan.co.il/for-sale/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+  "title": "דירות למכירה בתל אביב יפו - 9,318 דירות מחכות לך | מדלן",
+  "blocked": false,
+  "screenshot": "madlan-tlv.png"
+ },
+ "govmap": {
+  "key": "govmap",
+  "url": "https://www.govmap.gov.il/?c=179000,663000&z=4",
+  "note": "govmap.gov.il national map, Hebrew labels",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:25 UTC",
+  "status": 200,
+  "final_url": "https://www.govmap.gov.il/?c=179000,663000&z=4",
+  "title": "Govmap מפות ישראל",
+  "blocked": false,
+  "screenshot": "govmap.png"
+ },
+ "gov-renewal-arcgis": {
+  "key": "gov-renewal-arcgis",
+  "url": "https://moch.maps.arcgis.com/apps/webappviewer/index.html?id=d6191754d18a4fd29ee2e2ca1d040759",
+  "note": "Government Urban Renewal Authority map (ArcGIS), the #1 result for the query",
+  "viewport": [
+   1280,
+   900
+  ],
+  "mode": "headless",
+  "at_utc": "2026-10-26 07:26 UTC",
+  "status": 200,
+  "final_url": "https://moch.maps.arcgis.com/apps/webappviewer/index.html?id=d6191754d18a4fd29ee2e2ca1d040759",
+  "title": "מפת התחדשות עירונית",
+  "blocked": false,
+  "screenshot": "gov-renewal-arcgis.png"
+ }
+}

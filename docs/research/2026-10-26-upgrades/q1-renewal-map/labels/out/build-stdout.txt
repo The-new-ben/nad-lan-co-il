@@ -1,0 +1,36 @@
+{
+ "target": {
+  "file": "scripts/project-stage/live-520/urban-map.php",
+  "md5": "3864aca919d7e07fed60e49c606e74af",
+  "md5_ok": true
+ },
+ "hunks": [
+  "A1 · the pin style (CSS)",
+  "A2 · the label layout (JS, inserted after fail())",
+  "A3 · Hebrew base-map labels (JS, the map options)",
+  "A4 · the marker content (JS)",
+  "A5 · the marker anchor and the layout call (JS)",
+  "B1 · the city card style (CSS)",
+  "B2 · the city card (JS, inserted before boot())",
+  "B3 · tapping a city also opens its card (JS)"
+ ],
+ "urban-map.patched.php": {
+  "lines_before": 292,
+  "lines_after": 459,
+  "php_l": "No syntax errors detected in C:\\Users\\777\\nad-lan\\nad-lan-co-il\\docs\\research\\2026-10-26-upgrades\\q1-renewal-map\\labels\\out\\urban-map.patched.php",
+  "outside_block_unchanged": true
+ },
+ "urban-map.patched-A.php": {
+  "lines_before": 292,
+  "lines_after": 397,
+  "php_l": "No syntax errors detected in C:\\Users\\777\\nad-lan\\nad-lan-co-il\\docs\\research\\2026-10-26-upgrades\\q1-renewal-map\\labels\\out\\urban-map.patched-A.php",
+  "outside_block_unchanged": true
+ },
+ "todays_click_handler_chars": 758,
+ "todays_click_handler_kept_verbatim": true,
+ "live_block_equals_live520": true,
+ "live_pin_count_in_html": 2,
+ "live_has_tracker_select_host": true,
+ "live_has_nlurm_top": false,
+ "preview_html_bytes": 24075
+}
