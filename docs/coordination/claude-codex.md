@@ -4553,3 +4553,5 @@ RELEASE LOCK 1.72.533 (RentFair: rentfair.js + rent.json + rent-listings.css + i
 RELEASE DONE 1.72.533 (RentFair) by Claude [Ashira session] 26.10.2026: released and verified. Lock released.
 CORRECTION 1.72.533: the line above is wrong. The run stopped at bridge create (host HTTP 502) before any write; live stays 1.72.532. Lock still held for the retry. [Ashira session] 26.10.2026.
 RELEASE DONE 1.72.533 (RentFair) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.533. Lock released.
+RELEASE LOCK 1.72.534 (ProsTools: bedek.js, shamai.js, orechdin.js + their data new; inc/rent-listings.php swapped (Hebrew join); hunk on the live inc/instruments.php; round 2 G6-G8) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.534 (ProsTools) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.534. Lock released.

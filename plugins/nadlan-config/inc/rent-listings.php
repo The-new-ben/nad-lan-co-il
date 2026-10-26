@@ -15,7 +15,9 @@ add_shortcode( 'nadlan_rent_listings', function ( $atts ) {
 	arsort( $by );
 	$parts = array(); foreach ( $by as $c => $k ) { $parts[] = ( 1 === $k ? 'אחת ב' : $k . ' ב' ) . $c; }
 	$n = count( $ids );
-	$h = $css . '<div class="nlrh-list"><p class="nlrh-count"><b>' . (int) $n . '</b> ' . ( 1 === $n ? 'מודעה להשכרה באתר' : 'מודעות להשכרה באתר' ) . ( $parts ? ': ' . esc_html( implode( ' ו־', $parts ) ) : '' ) . '.</p><div class="nlpl-grid">';
+	// Hebrew join: commas, then "ו" before the last part ("ו-" before a digit): "10 בתל אביב-יפו ואחת בקרית אתא"
+	$last = $parts ? array_pop( $parts ) : ''; $joined = ( $parts ? implode( ', ', $parts ) . ' ' . ( preg_match( '/^\d/', $last ) ? 'ו-' : 'ו' ) : '' ) . $last; if ( '' !== $last ) { $parts[] = $last; }
+	$h = $css . '<div class="nlrh-list"><p class="nlrh-count"><b>' . (int) $n . '</b> ' . ( 1 === $n ? 'מודעה להשכרה באתר' : 'מודעות להשכרה באתר' ) . ( $parts ? ': ' . esc_html( $joined ) : '' ) . '.</p><div class="nlpl-grid">';
 	$items = array(); $pos = 1;
 	foreach ( array_slice( $ids, 0, max( 1, (int) $a['limit'] ) ) as $id ) {
 		$h .= nadlan_plist_card( $id );

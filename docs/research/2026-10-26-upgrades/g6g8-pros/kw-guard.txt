@@ -1,0 +1,87 @@
+# keyword guard, 26.10.2026 (python tools/seo/kw_guard.py --gsc all-qp.csv)
+== /home-inspection/ | title | בדק בית: מחירים 2026, מה בודקים ועד מתי הקבלן אחראי
+OK    בדק בית | tier A, 2900 searches/month | this page owns the term
+RESULT: OK
+== /home-inspection/ | h1 | בדק בית: מה בודקים, כמה זה עולה ועד מתי הקבלן אחראי
+OK    בדק בית | tier A, 2900 searches/month | this page owns the term
+RESULT: OK
+== /home-inspection/ | meta | בדק בית לדירה חדשה מקבלן וליד שנייה: מחירים שפורסמו ב-2026 לפי סוג הנכס, מה בודקים, איך בוחרים מהנדס, ותקופות הבדק והאחריות לפי חוק המכר.
+OK    בדק בית | tier A, 2900 searches/month | this page owns the term
+RESULT: OK
+== /home-inspection/ | title | בדק בית: עד מתי הקבלן אחראי, מתי לבדוק וכמה זה עולה
+OK    בדק בית | tier A, 2900 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-appraiser/ | title | שמאי מקרקעין: מחירים 2026, סוגי שומה ובדיקת רישיון
+OK    שמאי מקרקעין | tier A, 2400 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-appraiser/ | h1 | שמאי מקרקעין: מתי צריך, כמה זה עולה ואיך בודקים שהוא מורשה
+OK    שמאי מקרקעין | tier A, 2400 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-appraiser/ | meta | שמאי מקרקעין: איזו שומה צריך (בנק, לפני קנייה, היטל השבחה, ירושה), מי משלם, מחירים שפורסמו, המועדים בחוק, ובדיקה בפנקס של 3,182 שמאים מורשים.
+OK    שמאי מקרקעין | tier A, 2400 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-appraiser/ | title | איזה שמאי אתם צריכים, מי משלם, מה המועד וכמה זה עולה
+OK    no protected term in the text
+RESULT: OK
+== /real-estate-appraiser/ | title | האם השמאי רשום בפנקס? חיפוש לפי שם או מספר רישיון
+OK    no protected term in the text
+RESULT: OK
+== /real-estate-lawyer/ | title | עורך דין מקרקעין: שכר טרחה 2026 ובדיקות לפני חתימה
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-lawyer/ | h1 | עורך דין מקרקעין: מה הוא בודק לפני החתימה, כמה זה עולה ואיך בוחרים
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-lawyer/ | meta | עורך דין מקרקעין לקניית דירה: שכר טרחה שפורסם מול התעריף המומלץ של הלשכה, מה מותר לקבלן לגבות (5,915 ₪ ב-2026), אגרות הטאבו, צעדי העסקה ומחשבון.
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-lawyer/ | title | עורך דין מקרקעין: כמה זה עולה, מה מותר לקבלן לגבות ומה המועדים
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+== /glossary/תי-466/ | anchor | ת״י 466
+OK    no protected term in the text
+RESULT: OK
+== /real-estate-lawyer/construction-defects-lawsuit/ | anchor | תביעת ליקויי בנייה
+OK    no protected term in the text
+RESULT: OK
+== /real-estate-lawyer/ | anchor | עורך דין מקרקעין
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+== /real-estate-appraiser/ | anchor | שמאי מקרקעין
+OK    שמאי מקרקעין | tier A, 2400 searches/month | this page owns the term
+RESULT: OK
+== /property-value-estimator/ | anchor | מחשבון שווי דירה
+OK    שווי דירה | tier C, 210 searches/month | this page owns the term
+RESULT: OK
+== /mortgage-calculator/ | anchor | מחשבון משכנתא
+OK    מחשבון משכנתא | tier A, 33100 searches/month | this page owns the term
+RESULT: OK
+== /glossary/שמאי-מכריע/ | anchor | שמאי מכריע
+OK    no protected term in the text
+RESULT: OK
+== /real-estate-tax-advisor/betterment-levy-appeal/ | anchor | ערר על היטל השבחה
+OK    no protected term in the text
+RESULT: OK
+== /glossary/shamai-pinui-binui/ | anchor | שמאי פינוי בינוי
+WARN  פינוי בינוי | tier A, 12100 searches/month | protected term inside the text (owner /urban-renewal/pinui-binui/): fine only as a qualified phrase after this page's own topic, and only if Search Console shows no second URL competing
+RESULT: WARN
+== /urban-renewal/pinui-binui/ | anchor | פינוי בינוי
+OK    פינוי בינוי | tier A, 12100 searches/month | this page owns the term
+RESULT: OK
+== /purchase-tax-calculator/ | anchor | מחשבון מס רכישה
+OK    מחשבון מס רכישה | tier A, 4400 searches/month | this page owns the term
+RESULT: OK
+== /apartment-purchase-cost-calculator/ | anchor | מחשבון עלות רכישה כוללת
+OK    no protected term in the text
+RESULT: OK
+== /home-inspection/ | anchor | בדק בית
+OK    בדק בית | tier A, 2900 searches/month | this page owns the term
+RESULT: OK
+
+# registry snippet (snippets/registry.php), 26.10.2026
+== related anchor | חוק המכר -> /real-estate-lawyer/sale-of-apartments-law/ : OK (no protected term)
+== related anchor | פיצוי על איחור במסירה -> /new-projects/contractor-delay-compensation/ : OK
+== bedek desc (meta, /home-inspection/) : OK בדק בית owned; WARN דירות inside the law's name "חוק המכר (דירות)" (qualified, allowed)
+== shamai desc (meta, /real-estate-appraiser/) : WARN משכנתא and התחדשות עירונית as two of the eight appraisal purposes (qualified, allowed)
+== shamaireg desc : OK שמאי מקרקעין owned
+== orechdin desc : OK

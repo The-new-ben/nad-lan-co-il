@@ -342,6 +342,7 @@ SRCS_P = ('<h2>שיטה ומקורות</h2>\n<p class="nlrh-src">החציוני�
 
 CSS = ('<style id="nlrh-css">.nlrh-lead{font-size:18px;line-height:1.75}.nlrh-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;margin-bottom:8px}'
        '.nlrh-cta a{display:inline-flex;align-items:center;min-height:48px;padding:10px 18px;border-radius:6px;border:1.5px solid #1F4B5C;color:#1F4B5C;font-weight:700;text-decoration:none;font-size:16px;line-height:1.3}'
+       'html body .nlrh-cta a[href]{color:#1F4B5C!important;text-decoration:none!important}html body .nlrh-cta a.is-primary{color:#fff!important}'  # 26.10: the skin's link colour won (fix_r2_cta_d.py)
        '.nlrh-cta a.is-primary{background:#1F4B5C;color:#fff}.nlrh-cta a:focus-visible{outline:3px solid #2F6F86;outline-offset:2px}'
        '.nlrh-t{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:0;margin-bottom:10px;max-width:100%}.nlrh-t table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px;line-height:1.5}'
        '.nlrh-t th,.nlrh-t td{padding:8px 10px;border-bottom:1px solid #D3DCE2;text-align:right;vertical-align:top}.nlrh-t thead th{background:#F6F8F9;color:#12202A;font-weight:700;font-size:14px}'

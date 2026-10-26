@@ -1,0 +1,25 @@
+{
+  "released": "1.72.534",
+  "from": "1.72.533",
+  "live_before": {
+    "inc/rent-listings.php": "61a2abab2c1d00c57957804230cd5f04",
+    "nadlan-config.php": "98ef07d207116631704488ac1e9db2d7",
+    "inc/instruments.php": "063ab6feb83cdac7fb8de06d90dc4578"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 15:32:02",
+  "files": {
+    "assets/instruments/tools/bedek.js": "e02be03b7a790acd00b581a55364d80e",
+    "assets/instruments/data/bedek.json": "7adb6e7ad90e2b87d2cf420aaee0204e",
+    "assets/instruments/tools/shamai.js": "41402496809b6bd5a62df957e5fd7473",
+    "assets/instruments/data/shamai.json": "89be34ac6bec64afe76a122923b3c3e3",
+    "assets/instruments/tools/orechdin.js": "4cffddea55769992c9de9f1423122abe",
+    "assets/instruments/data/orechdin.json": "674c69dbda43906641f5b782ec828fb4",
+    "inc/rent-listings.php": "33dfe218b1fa16e84f0c8ee11d91231f",
+    "nadlan-config.php": "600a4322d97d4a2d4dd01aff7948d8ce",
+    "inc/instruments.php": "c8606819005d29aa8e451f117d570459"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.534, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
