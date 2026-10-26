@@ -3,7 +3,8 @@
 (core.css + core.js) and the real tool files on the real data, a few cases each, plus the page infographics, and a README.
   python docs/research/2026-10-26-upgrades/ds_tools.py Concrete466 | DekelTools"""
 import io, json, os, sys
-H = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(os.path.dirname(H)))
+import html as html_mod
+H =os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(os.path.dirname(H)))
 I = os.path.join(REPO, "plugins", "nadlan-config", "assets", "instruments")
 DS = r"C:\Users\777\AppData\Local\Temp\claude\C--Users-777-nad-lan\f8200c1d-6798-4a3e-8a9f-7b12503e42b2\scratchpad\ds\project\components"
 rd = lambda *p: io.open(os.path.join(*p), encoding="utf-8").read()
@@ -72,7 +73,32 @@ Mortgage 2.0 for /mortgage-calculator/ (HAD-601, U1). Tracks with method, grace,
 The yield and cash-flow map for /investment/ (HAD-601, U2). 72 cities and the national median, 3 to 5 rooms: the share of the price that rent alone carries as a mortgage, gross yield, monthly payment and cash flow, own money, purchase tax in months of rent; a budget mode ranking the cities that fit; the three rental-tax tracks; a ranked chart and a yield-against-price chart. Data: invest.json from 148 nadlan.gov.il files (20.8.2026), BoI 4.62% (8.2026), CBS rent index. Built locally by an Opus builder; math test passes.
 """,
     },
+    "ValueAnchors": {
+        "files": ["pval.js"], "data": ["value.json", "value-series.json"], "key": "value",
+        "out": "q2-value-estimator", "outname": {"he": "index.html"},
+        "subtitle": "הערכת שווי דירה: שווי היום לפי מחיר הקנייה שלכם, בשלוש בדיקות רשמיות (חציון היום, מדד המחוז של הלמ\"ס, חציון מאז הקנייה), עם 22 רבעונים מול ישראל",
+        "langs": {
+            "he": [("pval", None, "1 · ברירת המחדל, כמו היום: תל אביב יפו, 4 חדרים, כל העיר. אותם מספרים כמו בגרסה הקודמת, ועכשיו גם 22 רבעונים מול ישראל"),
+                   ("pval", "yavne21", "2 · הדוגמה V10: יבנה, 4 חדרים, נקנתה ב־3.2021 בחציון של 1-3.2021. שלוש הבדיקות, הטווח, מדד מחוז המרכז"),
+                   ("pval", "tlv22", "3 · תל אביב, נקנתה ב־6.2022 בחציון הרבעון, ומחיר מבוקש לדוגמה: הסיכה האדומה על הטווח"),
+                   ("pval", "bhk22", "4 · שכונה: בית הכרם בירושלים, נקנתה ב־2.2022 בחציון השכונה; בדיקה 3 ברמת השכונה, מדד מחוז ירושלים, והמשפט כשהבדיקות רחוקות"),
+                   ("pval", {"city": "ירושלים", "hood": "65209775", "rooms": 4}, "5 · מקרה עמוד כמו בשכונות (city, hood, rooms): נפתח בדיוק כמו היום"),
+                   ("pval", {"city": "רעננה", "rooms": 6, "kind": "house", "buyY": "2016", "buyM": "5", "bought": 3400000, "asking": 4600000}, "6 · בית פרטי, 6 חדרים, נקנה ב־5.2016: הסדרה של 5 חדרים, מדד כל הארץ לפני מדד המחוזות, אין בדיקה 3 לפני 2021, והאמירה שהחציון של דירות בלבד"),
+                   ("pval", {"method": "sqm", "city": "חיפה", "rooms": 3, "sqm": 80, "ppsqm": 21000, "buyY": "2024", "buyM": "2", "bought": 1500000}, "7 · לפי מחיר למ״ר, עם קנייה ב־2.2024: ההערכה מול שלוש הבדיקות")],
+        },
+        "figs": None,
+        "palette": "פלטה: נייר מדידה ורישום מקרקעין. כחול טאבו #1D4E89 לבדיקות ולקו השכונה, רשת גרפיט #4A525B ו-#D7DCE1 על לבן, אדום חותמת #C8102E רק לסיכת המחיר המבוקש. IBM Plex Mono למספרים (ספרות טבלאיות), IBM Plex Sans Hebrew לתוויות. לא שמנת, לא זהב, לא סגול: הצבעים של תשריט ונסח טאבו.",
+        "readme": "# ValueAnchors\n\npval v2 for /property-value-estimator/ (Q2). See docs/research/2026-10-26-upgrades/q2-value-estimator/preview/README.md.\n",
+    },
 }
+
+
+def set_attr(preset):
+    """The host's data-nli-set: a preset name, or a whole page case (a dict, as the shortcode prints it: city, hood, rooms...)."""
+    if not preset:
+        return ""
+    o = preset if isinstance(preset, dict) else {"preset": preset}
+    return ' data-nli-set="%s"' % html_mod.escape(json.dumps(o, ensure_ascii=False), quote=True)
 
 
 def build_langs(name):
@@ -93,7 +119,7 @@ def build_langs(name):
         face = '"IBM Plex Sans",system-ui,sans-serif' if lg == "en" else '"IBM Plex Sans Hebrew",system-ui,sans-serif'
         body = []
         for i, (tid, preset, note) in enumerate(cases):
-            body.append('<p class="n">%s</p><section class="nli" dir="%s" lang="%s"><div class="nli-host" data-nli="%s" id="h%d"%s></div></section>' % (note, d, lg, tid, i, (" data-nli-set='{\"preset\":\"%s\"}'" % preset) if preset else ""))
+            body.append('<p class="n">%s</p><section class="nli" dir="%s" lang="%s"><div class="nli-host" data-nli="%s" id="h%d"%s></div></section>' % (note, d, lg, tid, i, set_attr(preset)))
         body.append('<p class="n">%s</p>' % c["palette"])
         html = ('<!-- @dsCard group="Tools" height=2400 subtitle="%s" -->\n' % c["subtitle"]
                 + '<!doctype html><html lang="%s" dir="%s"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>%s</title>' % (lg, d, name) + fonts

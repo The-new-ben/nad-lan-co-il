@@ -1,0 +1,5189 @@
+[
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=40010&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:49",
+"bytes": 60844
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60000&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:50",
+"bytes": 17436
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60100&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:51",
+"bytes": 17422
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60200&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:52",
+"bytes": 17421
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60300&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:53",
+"bytes": 17421
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60400&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:54",
+"bytes": 17434
+},
+{
+"url": "https://api.cbs.gov.il/index/data/price?id=60500&format=json&download=false&lang=he&startPeriod=01-1994&PageSize=1000&Page=1",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:55",
+"bytes": 17421
+},
+{
+"url": "https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1000&offset=0",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:56",
+"bytes": 280215
+},
+{
+"url": "https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1000&offset=1000",
+"status": 200,
+"last_modified": null,
+"utc": "2026-10-26 01:26:57",
+"bytes": 89473
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209641.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:31",
+"bytes": 21692
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209642.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:31",
+"bytes": 12703
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209645.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:33",
+"bytes": 13733
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209646.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:34",
+"bytes": 17270
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209647.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:34",
+"bytes": 16401
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209648.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:35",
+"bytes": 12650
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209649.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:37",
+"bytes": 17281
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209650.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:37",
+"bytes": 16981
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209653.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:38",
+"bytes": 17567
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209662.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:39",
+"bytes": 13324
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209663.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:40",
+"bytes": 13191
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209664.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:42",
+"bytes": 12581
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209665.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:53 GMT",
+"utc": "2026-10-26 01:13:43",
+"bytes": 11841
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209666.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:44",
+"bytes": 11990
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209667.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:45",
+"bytes": 12842
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209675.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:46",
+"bytes": 13247
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209676.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:47",
+"bytes": 13410
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209681.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:49",
+"bytes": 12579
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209682.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:50",
+"bytes": 11849
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209683.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:51",
+"bytes": 15447
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209684.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:52",
+"bytes": 12879
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209688.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:53",
+"bytes": 13809
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209689.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:54",
+"bytes": 13703
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209690.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:55",
+"bytes": 12694
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209691.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:56",
+"bytes": 13162
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209692.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:58",
+"bytes": 12054
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209694.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:13:59",
+"bytes": 17937
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209695.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:14:00",
+"bytes": 13243
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209696.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:14:01",
+"bytes": 11653
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209697.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:14:02",
+"bytes": 13243
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209703.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:14:03",
+"bytes": 13434
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209704.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:54 GMT",
+"utc": "2026-10-26 01:14:04",
+"bytes": 12198
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209705.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:05",
+"bytes": 14384
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209706.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:07",
+"bytes": 12084
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209707.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:08",
+"bytes": 12312
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209708.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:09",
+"bytes": 13149
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209709.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:10",
+"bytes": 13035
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209711.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:11",
+"bytes": 13455
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209712.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:12",
+"bytes": 13420
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209713.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:13",
+"bytes": 12289
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209714.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:15",
+"bytes": 16854
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209715.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:16",
+"bytes": 12886
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209716.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:17",
+"bytes": 13942
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209717.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:18",
+"bytes": 15571
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209718.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:19",
+"bytes": 12738
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209719.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:20",
+"bytes": 13630
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209720.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:22",
+"bytes": 14603
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209721.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:23",
+"bytes": 14303
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209722.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:24",
+"bytes": 13038
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209724.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:25",
+"bytes": 14085
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209725.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:26",
+"bytes": 13399
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209726.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:27",
+"bytes": 15707
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209727.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:28",
+"bytes": 13227
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209728.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:30",
+"bytes": 12832
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209729.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:31",
+"bytes": 14161
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209730.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:32",
+"bytes": 14915
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209735.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:33",
+"bytes": 12706
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209736.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:34",
+"bytes": 14486
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209737.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:35",
+"bytes": 12906
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209740.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:37",
+"bytes": 12691
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209743.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:38",
+"bytes": 11870
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209744.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:39",
+"bytes": 27422
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209745.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:40",
+"bytes": 22019
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209746.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:55 GMT",
+"utc": "2026-10-26 01:14:41",
+"bytes": 16904
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209747.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:42",
+"bytes": 19570
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209748.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:43",
+"bytes": 17374
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209749.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:44",
+"bytes": 13095
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209750.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:45",
+"bytes": 12751
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209751.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:46",
+"bytes": 13233
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209752.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:47",
+"bytes": 21169
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209753.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:48",
+"bytes": 11393
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209754.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:49",
+"bytes": 20818
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209755.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:50",
+"bytes": 19725
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209756.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:51",
+"bytes": 11992
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209757.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:52",
+"bytes": 13059
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209758.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:53",
+"bytes": 12236
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209762.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:54",
+"bytes": 12374
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209763.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:55",
+"bytes": 12737
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209764.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:57",
+"bytes": 12406
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209765.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:58",
+"bytes": 13053
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209767.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:14:59",
+"bytes": 12420
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209768.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:00",
+"bytes": 13875
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209769.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:01",
+"bytes": 12487
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209771.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:02",
+"bytes": 13196
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209773.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:04",
+"bytes": 16422
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209774.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:04",
+"bytes": 18297
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209775.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:05",
+"bytes": 19177
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209776.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:06",
+"bytes": 17849
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209778.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:07",
+"bytes": 18172
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209779.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:08",
+"bytes": 16604
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209780.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:09",
+"bytes": 18995
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209781.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:10",
+"bytes": 17271
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209782.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:11",
+"bytes": 13721
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209783.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:56 GMT",
+"utc": "2026-10-26 01:15:12",
+"bytes": 12215
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209786.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:13",
+"bytes": 18925
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209787.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:14",
+"bytes": 19721
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209788.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:15",
+"bytes": 16501
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209789.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:16",
+"bytes": 13061
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209790.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:17",
+"bytes": 16592
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209791.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:18",
+"bytes": 16364
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209792.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:19",
+"bytes": 19480
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209793.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:20",
+"bytes": 12585
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209794.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:21",
+"bytes": 17657
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209797.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:22",
+"bytes": 12768
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209798.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:23",
+"bytes": 15961
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209799.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:24",
+"bytes": 16751
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209801.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:25",
+"bytes": 12765
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209802.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:26",
+"bytes": 12477
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209803.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:28",
+"bytes": 17616
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209804.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:29",
+"bytes": 17399
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209805.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:29",
+"bytes": 16580
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209807.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:30",
+"bytes": 17483
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209808.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:31",
+"bytes": 16541
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209809.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:32",
+"bytes": 17016
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209810.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:33",
+"bytes": 17546
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209811.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:34",
+"bytes": 18766
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209812.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:35",
+"bytes": 15008
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209813.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:37",
+"bytes": 17295
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209814.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:38",
+"bytes": 12920
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209816.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:39",
+"bytes": 16662
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209817.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:40",
+"bytes": 13072
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209818.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:57 GMT",
+"utc": "2026-10-26 01:15:41",
+"bytes": 16984
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209819.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:42",
+"bytes": 16820
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209820.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:43",
+"bytes": 12154
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209821.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:44",
+"bytes": 17951
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209823.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:45",
+"bytes": 13141
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209824.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:46",
+"bytes": 12721
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209825.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:47",
+"bytes": 13417
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209826.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:48",
+"bytes": 13645
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209827.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:49",
+"bytes": 12419
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209828.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:51",
+"bytes": 13438
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209829.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:52",
+"bytes": 17423
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209830.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:53",
+"bytes": 16648
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209831.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:54",
+"bytes": 12933
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209832.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:55",
+"bytes": 19930
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209833.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:56",
+"bytes": 16493
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209834.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:57",
+"bytes": 16844
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209835.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:58",
+"bytes": 24030
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209836.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:58",
+"bytes": 16137
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209837.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:15:59",
+"bytes": 16126
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209838.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:00",
+"bytes": 16689
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209839.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:01",
+"bytes": 17867
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209840.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:03",
+"bytes": 13632
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209841.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:04",
+"bytes": 16940
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209846.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:05",
+"bytes": 16405
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209847.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:06",
+"bytes": 20514
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209848.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:06",
+"bytes": 21182
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209849.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:07",
+"bytes": 16201
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209850.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:08",
+"bytes": 17880
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209851.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:10",
+"bytes": 12238
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209852.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:11",
+"bytes": 12859
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209853.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:12",
+"bytes": 12729
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209854.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:13",
+"bytes": 17195
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209856.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:14",
+"bytes": 17256
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209857.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:58 GMT",
+"utc": "2026-10-26 01:16:15",
+"bytes": 12755
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209858.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:16",
+"bytes": 11891
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209859.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:17",
+"bytes": 16454
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209860.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:18",
+"bytes": 16095
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209861.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:19",
+"bytes": 16438
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209862.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:20",
+"bytes": 16623
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209863.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:21",
+"bytes": 17674
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209864.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:22",
+"bytes": 16228
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209865.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:23",
+"bytes": 16436
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209866.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:24",
+"bytes": 18232
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209867.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:25",
+"bytes": 16204
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209868.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:25",
+"bytes": 12992
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209869.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:27",
+"bytes": 16485
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209870.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:28",
+"bytes": 16808
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209871.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:28",
+"bytes": 16882
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209872.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:30",
+"bytes": 17994
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209873.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:30",
+"bytes": 13450
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209874.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:32",
+"bytes": 18434
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209876.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:32",
+"bytes": 13250
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209881.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:34",
+"bytes": 12202
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209882.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:35",
+"bytes": 12706
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209883.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:36",
+"bytes": 12777
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209884.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:37",
+"bytes": 13604
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209885.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:38",
+"bytes": 13065
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209886.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:39",
+"bytes": 15754
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209887.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:40",
+"bytes": 12391
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209888.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:42",
+"bytes": 13572
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209889.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:43",
+"bytes": 12873
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209890.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:29:59 GMT",
+"utc": "2026-10-26 01:16:44",
+"bytes": 15257
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209891.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:45",
+"bytes": 13585
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209892.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:46",
+"bytes": 17015
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209893.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:47",
+"bytes": 12217
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209895.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:49",
+"bytes": 14259
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209896.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:50",
+"bytes": 16947
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209897.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:51",
+"bytes": 14744
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209898.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:52",
+"bytes": 13139
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209899.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:53",
+"bytes": 13091
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209900.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:54",
+"bytes": 14961
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209901.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:55",
+"bytes": 14092
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209902.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:56",
+"bytes": 12934
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209903.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:58",
+"bytes": 13076
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209904.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:16:59",
+"bytes": 12835
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209905.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:00",
+"bytes": 14379
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209906.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:01",
+"bytes": 14973
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209907.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:02",
+"bytes": 12841
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209908.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:03",
+"bytes": 12436
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209909.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:04",
+"bytes": 13752
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209910.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:05",
+"bytes": 15475
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209911.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:07",
+"bytes": 17058
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209912.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:08",
+"bytes": 12684
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209919.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:09",
+"bytes": 16061
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209920.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:10",
+"bytes": 16628
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209921.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:11",
+"bytes": 15802
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209922.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:12",
+"bytes": 20378
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209923.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:12",
+"bytes": 16912
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209924.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:00 GMT",
+"utc": "2026-10-26 01:17:13",
+"bytes": 16779
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209925.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:14",
+"bytes": 15763
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209926.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:15",
+"bytes": 15888
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209927.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:16",
+"bytes": 16191
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209928.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:17",
+"bytes": 16416
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209929.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:18",
+"bytes": 16108
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209930.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:19",
+"bytes": 16263
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209931.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:20",
+"bytes": 15915
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209932.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:21",
+"bytes": 17277
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209933.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:22",
+"bytes": 20740
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209934.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:23",
+"bytes": 14693
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209935.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:24",
+"bytes": 14478
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209936.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:25",
+"bytes": 16584
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209937.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:26",
+"bytes": 12214
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209938.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:27",
+"bytes": 13211
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209939.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:28",
+"bytes": 12525
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209940.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:30",
+"bytes": 12691
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209941.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:31",
+"bytes": 12127
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209942.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:32",
+"bytes": 13402
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209943.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:33",
+"bytes": 12944
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209944.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:34",
+"bytes": 13275
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209945.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:35",
+"bytes": 12617
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209946.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:37",
+"bytes": 13093
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209947.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:38",
+"bytes": 12641
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209948.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:01 GMT",
+"utc": "2026-10-26 01:17:39",
+"bytes": 12952
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209949.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:40",
+"bytes": 12838
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209950.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:41",
+"bytes": 12506
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209951.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:43",
+"bytes": 12834
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209952.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:44",
+"bytes": 12887
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209953.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:45",
+"bytes": 12660
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209954.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:46",
+"bytes": 14029
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209955.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:15 GMT",
+"utc": "2026-10-26 01:17:47",
+"bytes": 12709
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209956.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:48",
+"bytes": 12468
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209957.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:49",
+"bytes": 12296
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209958.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:51",
+"bytes": 12908
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209959.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:52",
+"bytes": 11887
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209960.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:53",
+"bytes": 11880
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209961.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:54",
+"bytes": 12125
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209962.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:55",
+"bytes": 14106
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209963.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:56",
+"bytes": 12560
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209964.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:57",
+"bytes": 12720
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209965.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:17:58",
+"bytes": 12602
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209966.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:00",
+"bytes": 11569
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209967.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:01",
+"bytes": 12378
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209968.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:02",
+"bytes": 12720
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209969.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:03",
+"bytes": 12415
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209970.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:04",
+"bytes": 16198
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209971.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:05",
+"bytes": 16107
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209972.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:06",
+"bytes": 16750
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209973.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:07",
+"bytes": 18053
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209974.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:08",
+"bytes": 16610
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209975.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:09",
+"bytes": 16843
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209976.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:10",
+"bytes": 16114
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209977.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:11",
+"bytes": 17045
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209978.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:12",
+"bytes": 16684
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209979.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:13",
+"bytes": 16232
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209980.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:16 GMT",
+"utc": "2026-10-26 01:18:14",
+"bytes": 16937
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209981.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:15",
+"bytes": 16947
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209982.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:16",
+"bytes": 18509
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209983.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:17",
+"bytes": 12427
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209984.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:18",
+"bytes": 12098
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209987.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:19",
+"bytes": 14542
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209988.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:20",
+"bytes": 14447
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209989.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:21",
+"bytes": 15846
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209990.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:22",
+"bytes": 19563
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209991.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:24",
+"bytes": 16717
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209992.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:25",
+"bytes": 18710
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209993.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:26",
+"bytes": 16290
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209994.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:27",
+"bytes": 20247
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210013.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:28",
+"bytes": 12577
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210014.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:29",
+"bytes": 14168
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210015.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:30",
+"bytes": 15197
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210016.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:32",
+"bytes": 14957
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210017.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:33",
+"bytes": 14697
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210018.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:34",
+"bytes": 15436
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210019.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:35",
+"bytes": 15450
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210020.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:17 GMT",
+"utc": "2026-10-26 01:18:36",
+"bytes": 14099
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210021.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:37",
+"bytes": 14722
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:38",
+"bytes": 14727
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210023.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:40",
+"bytes": 15128
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210024.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:41",
+"bytes": 14327
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210025.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:42",
+"bytes": 14843
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210026.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:43",
+"bytes": 16385
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210027.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:44",
+"bytes": 15389
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210028.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:45",
+"bytes": 15031
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210029.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:46",
+"bytes": 15210
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210030.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:48",
+"bytes": 14739
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210031.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:49",
+"bytes": 18245
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210032.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:50",
+"bytes": 16269
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210033.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:51",
+"bytes": 17765
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210034.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:52",
+"bytes": 18157
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210035.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:52",
+"bytes": 21414
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210036.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:53",
+"bytes": 15537
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210037.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:55",
+"bytes": 14894
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210038.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:56",
+"bytes": 14900
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210039.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:57",
+"bytes": 15870
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210040.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:58",
+"bytes": 14229
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210041.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:18:59",
+"bytes": 18062
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210042.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:00",
+"bytes": 14657
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210043.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:02",
+"bytes": 19139
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210044.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:03",
+"bytes": 15816
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210045.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:04",
+"bytes": 14491
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210046.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:05",
+"bytes": 15732
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210047.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:06",
+"bytes": 16552
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210048.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:08",
+"bytes": 15679
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210049.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:09",
+"bytes": 16596
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210050.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:10",
+"bytes": 16288
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210051.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:11",
+"bytes": 17507
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210052.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:12",
+"bytes": 15490
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210053.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:13",
+"bytes": 14525
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210054.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:14",
+"bytes": 15556
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210055.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:16",
+"bytes": 16341
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210056.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:17",
+"bytes": 14990
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210057.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:18",
+"bytes": 19555
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210058.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:18 GMT",
+"utc": "2026-10-26 01:19:19",
+"bytes": 14358
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210059.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:20",
+"bytes": 14327
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210060.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:22",
+"bytes": 18744
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210061.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:23",
+"bytes": 14715
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210062.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:24",
+"bytes": 15618
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210063.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:25",
+"bytes": 15498
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210064.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:26",
+"bytes": 14900
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210065.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:27",
+"bytes": 14752
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210066.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:28",
+"bytes": 15921
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210067.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:30",
+"bytes": 15392
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210068.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:31",
+"bytes": 15228
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210069.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:32",
+"bytes": 20264
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210070.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:33",
+"bytes": 17155
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210071.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:34",
+"bytes": 12200
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210072.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:35",
+"bytes": 12552
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210073.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:37",
+"bytes": 12248
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210074.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:38",
+"bytes": 12120
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210077.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:39",
+"bytes": 12231
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210078.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:40",
+"bytes": 14486
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210079.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:41",
+"bytes": 12777
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210080.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:42",
+"bytes": 13919
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210081.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:43",
+"bytes": 13782
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210082.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:45",
+"bytes": 12817
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210083.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:46",
+"bytes": 14603
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210084.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:47",
+"bytes": 13518
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210085.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:48",
+"bytes": 13112
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210086.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:49",
+"bytes": 12756
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210087.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:19 GMT",
+"utc": "2026-10-26 01:19:50",
+"bytes": 12346
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210105.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:51",
+"bytes": 18192
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210106.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:52",
+"bytes": 12836
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210107.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:54",
+"bytes": 13542
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210108.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:55",
+"bytes": 15889
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210109.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:56",
+"bytes": 13817
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210110.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:57",
+"bytes": 13346
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210111.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:58",
+"bytes": 13292
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210112.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:19:59",
+"bytes": 16019
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210113.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:01",
+"bytes": 15531
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210114.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:02",
+"bytes": 12914
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210115.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:03",
+"bytes": 13167
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210116.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:04",
+"bytes": 15493
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210117.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:05",
+"bytes": 13554
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210118.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:06",
+"bytes": 14286
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210119.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:07",
+"bytes": 12605
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210120.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:09",
+"bytes": 12366
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210121.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:10",
+"bytes": 13508
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210122.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:11",
+"bytes": 11976
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210123.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:12",
+"bytes": 12937
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210124.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:20 GMT",
+"utc": "2026-10-26 01:20:13",
+"bytes": 13515
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210125.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:14",
+"bytes": 14753
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210126.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:15",
+"bytes": 14563
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210127.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:17",
+"bytes": 11510
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210128.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:18",
+"bytes": 11506
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210129.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:19",
+"bytes": 12223
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210130.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:20",
+"bytes": 13004
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210131.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:21",
+"bytes": 12571
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210132.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:22",
+"bytes": 13590
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210133.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:23",
+"bytes": 13297
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210134.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:25",
+"bytes": 13578
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210135.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:26",
+"bytes": 12705
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210136.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:27",
+"bytes": 15210
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210137.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:28",
+"bytes": 15820
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210138.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:29",
+"bytes": 14630
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210139.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:30",
+"bytes": 14774
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210140.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:31",
+"bytes": 15554
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210145.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:32",
+"bytes": 12260
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210146.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:34",
+"bytes": 14356
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210147.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:35",
+"bytes": 12586
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210148.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:36",
+"bytes": 13511
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210149.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:37",
+"bytes": 11497
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210150.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:38",
+"bytes": 11330
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210151.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:21 GMT",
+"utc": "2026-10-26 01:20:40",
+"bytes": 11560
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210173.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:41",
+"bytes": 11760
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210174.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:42",
+"bytes": 15109
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210175.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:43",
+"bytes": 13880
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210176.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:44",
+"bytes": 12028
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210177.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:45",
+"bytes": 11732
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210178.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:46",
+"bytes": 12765
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210179.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:48",
+"bytes": 11300
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210180.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:49",
+"bytes": 11758
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210181.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:50",
+"bytes": 11810
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210182.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:51",
+"bytes": 12186
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210183.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:52",
+"bytes": 12107
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210184.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:53",
+"bytes": 12781
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210185.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:54",
+"bytes": 13259
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210186.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:55",
+"bytes": 12899
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210187.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:22 GMT",
+"utc": "2026-10-26 01:20:57",
+"bytes": 12254
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210188.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:20:58",
+"bytes": 12068
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210189.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:20:59",
+"bytes": 11716
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210190.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:00",
+"bytes": 14016
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210191.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:01",
+"bytes": 12533
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210192.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:02",
+"bytes": 13016
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210193.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:03",
+"bytes": 12519
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210194.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:04",
+"bytes": 13051
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210195.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:05",
+"bytes": 13066
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210196.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:07",
+"bytes": 12966
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210197.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:08",
+"bytes": 12672
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210198.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:09",
+"bytes": 12833
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210199.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:10",
+"bytes": 12534
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210200.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:11",
+"bytes": 12541
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210201.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:12",
+"bytes": 12684
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210202.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:13",
+"bytes": 12676
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210203.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:14",
+"bytes": 12967
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210204.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:16",
+"bytes": 12364
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210205.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:17",
+"bytes": 12516
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210206.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:18",
+"bytes": 12754
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210207.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:19",
+"bytes": 12741
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210208.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:20",
+"bytes": 12391
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210209.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:21",
+"bytes": 11665
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210210.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:22",
+"bytes": 11487
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210212.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:23",
+"bytes": 11841
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210213.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:25",
+"bytes": 11968
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210214.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:23 GMT",
+"utc": "2026-10-26 01:21:26",
+"bytes": 12008
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210235.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:27",
+"bytes": 13042
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210236.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:28",
+"bytes": 12851
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210237.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:29",
+"bytes": 12634
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210238.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:30",
+"bytes": 13269
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210239.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:31",
+"bytes": 13006
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210240.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:32",
+"bytes": 13043
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210241.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:34",
+"bytes": 13156
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210242.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:35",
+"bytes": 12784
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210243.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:36",
+"bytes": 16108
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210244.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:37",
+"bytes": 13391
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210245.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:38",
+"bytes": 13628
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210246.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:39",
+"bytes": 12926
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210247.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:41",
+"bytes": 12663
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210248.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:24 GMT",
+"utc": "2026-10-26 01:21:42",
+"bytes": 13505
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210317.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:25 GMT",
+"utc": "2026-10-26 01:21:43",
+"bytes": 13720
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210318.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:25 GMT",
+"utc": "2026-10-26 01:21:44",
+"bytes": 12854
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210319.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:25 GMT",
+"utc": "2026-10-26 01:21:45",
+"bytes": 13925
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210320.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:25 GMT",
+"utc": "2026-10-26 01:21:46",
+"bytes": 12736
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210350.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:26 GMT",
+"utc": "2026-10-26 01:21:47",
+"bytes": 12631
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210351.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:26 GMT",
+"utc": "2026-10-26 01:21:48",
+"bytes": 12697
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210352.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:26 GMT",
+"utc": "2026-10-26 01:21:50",
+"bytes": 13534
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210353.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:51",
+"bytes": 12268
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210354.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:52",
+"bytes": 12202
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210355.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:53",
+"bytes": 13340
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210356.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:54",
+"bytes": 12593
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210357.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:55",
+"bytes": 13865
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210358.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:56",
+"bytes": 12169
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210382.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:58",
+"bytes": 12136
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210383.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:21:59",
+"bytes": 12026
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210384.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:22:00",
+"bytes": 12537
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210385.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:27 GMT",
+"utc": "2026-10-26 01:22:01",
+"bytes": 12773
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210386.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:28 GMT",
+"utc": "2026-10-26 01:22:02",
+"bytes": 12237
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210387.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:28 GMT",
+"utc": "2026-10-26 01:22:03",
+"bytes": 13643
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210388.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:28 GMT",
+"utc": "2026-10-26 01:22:04",
+"bytes": 13545
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210425.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:05",
+"bytes": 13390
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210426.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:06",
+"bytes": 12649
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210427.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:07",
+"bytes": 13188
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210428.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:08",
+"bytes": 14159
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210429.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:10",
+"bytes": 13306
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210430.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:11",
+"bytes": 12074
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210468.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:29 GMT",
+"utc": "2026-10-26 01:22:12",
+"bytes": 12167
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210510.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:30 GMT",
+"utc": "2026-10-26 01:22:13",
+"bytes": 12750
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210511.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:30 GMT",
+"utc": "2026-10-26 01:22:14",
+"bytes": 13520
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210512.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:30 GMT",
+"utc": "2026-10-26 01:22:16",
+"bytes": 13051
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210513.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:30 GMT",
+"utc": "2026-10-26 01:22:17",
+"bytes": 13078
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210514.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:30 GMT",
+"utc": "2026-10-26 01:22:18",
+"bytes": 11467
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210515.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:19",
+"bytes": 11710
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210516.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:20",
+"bytes": 10976
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210517.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:21",
+"bytes": 11090
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210518.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:23",
+"bytes": 11208
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210519.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:24",
+"bytes": 12276
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210532.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:25",
+"bytes": 10948
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210533.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:26",
+"bytes": 11281
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210534.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:27",
+"bytes": 10926
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210535.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:28",
+"bytes": 11478
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210536.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:29",
+"bytes": 11234
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210543.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:30",
+"bytes": 11622
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210544.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:32",
+"bytes": 11512
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210545.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:33",
+"bytes": 11738
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210546.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:34",
+"bytes": 11463
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210547.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:35",
+"bytes": 12028
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210548.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:36",
+"bytes": 12083
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210549.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:37",
+"bytes": 11094
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210550.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:39",
+"bytes": 11760
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210551.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:31 GMT",
+"utc": "2026-10-26 01:22:40",
+"bytes": 11968
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210565.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:41",
+"bytes": 11875
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210566.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:42",
+"bytes": 12116
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210567.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:43",
+"bytes": 11288
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210568.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:44",
+"bytes": 14611
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210569.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:45",
+"bytes": 11013
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210570.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:22:46",
+"bytes": 11825
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210571.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:48",
+"bytes": 12729
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210572.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:49",
+"bytes": 13563
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210573.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:50",
+"bytes": 15081
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210574.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:22:51",
+"bytes": 12734
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210575.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:52",
+"bytes": 12028
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210576.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:53",
+"bytes": 11612
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210577.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:55",
+"bytes": 11098
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210581.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:56",
+"bytes": 10857
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210582.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:57",
+"bytes": 11460
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210583.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:22:58",
+"bytes": 10805
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210584.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:22:59",
+"bytes": 11911
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210585.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:32 GMT",
+"utc": "2026-10-26 01:23:00",
+"bytes": 12426
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210586.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:01",
+"bytes": 13100
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210587.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:03",
+"bytes": 12327
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210589.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:04",
+"bytes": 14458
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210590.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:05",
+"bytes": 13488
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210591.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:06",
+"bytes": 13882
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210592.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:07",
+"bytes": 13530
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210593.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:08",
+"bytes": 15616
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210594.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:09",
+"bytes": 13620
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210595.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:10",
+"bytes": 12924
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210596.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:11",
+"bytes": 13440
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210597.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:12",
+"bytes": 15578
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210598.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:33 GMT",
+"utc": "2026-10-26 01:23:13",
+"bytes": 12864
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210646.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:14",
+"bytes": 11846
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210647.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:15",
+"bytes": 12588
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210648.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:17",
+"bytes": 12538
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210649.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:18",
+"bytes": 12178
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210650.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:19",
+"bytes": 12419
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210651.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:20",
+"bytes": 12166
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210652.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:21",
+"bytes": 11605
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210653.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:22",
+"bytes": 12862
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210654.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:23",
+"bytes": 12647
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210655.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:24",
+"bytes": 11566
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210656.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:26",
+"bytes": 12431
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210657.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:27",
+"bytes": 11644
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210658.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:28",
+"bytes": 12823
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210659.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:29",
+"bytes": 12086
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210660.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:30",
+"bytes": 16100
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210661.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:31",
+"bytes": 13460
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210662.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:32",
+"bytes": 12469
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210663.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:34",
+"bytes": 13311
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210664.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:35",
+"bytes": 12830
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210665.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:36",
+"bytes": 13407
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210666.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:37",
+"bytes": 13278
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210667.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:38",
+"bytes": 12300
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210668.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:34 GMT",
+"utc": "2026-10-26 01:23:39",
+"bytes": 12179
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210669.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:40",
+"bytes": 13436
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210670.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:42",
+"bytes": 13828
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210671.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:43",
+"bytes": 13059
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210672.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:44",
+"bytes": 12753
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210673.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:45",
+"bytes": 12195
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210674.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:46",
+"bytes": 12217
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210675.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:47",
+"bytes": 13349
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210676.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:48",
+"bytes": 12620
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210677.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:50",
+"bytes": 12490
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210678.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:51",
+"bytes": 12950
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210679.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:52",
+"bytes": 13085
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210680.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:53",
+"bytes": 12717
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210681.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:54",
+"bytes": 14437
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210682.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:55",
+"bytes": 12469
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210683.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:56",
+"bytes": 12196
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210684.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:58",
+"bytes": 13955
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210685.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:23:59",
+"bytes": 13103
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210686.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:24:00",
+"bytes": 12396
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210687.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:24:01",
+"bytes": 12926
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210688.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:24:02",
+"bytes": 13296
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210689.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:24:04",
+"bytes": 13106
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210690.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:35 GMT",
+"utc": "2026-10-26 01:24:05",
+"bytes": 12729
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210720.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:06",
+"bytes": 13256
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210722.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:07",
+"bytes": 11419
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210723.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:08",
+"bytes": 12179
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210724.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:09",
+"bytes": 14191
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210725.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:10",
+"bytes": 15199
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210726.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:11",
+"bytes": 14744
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210727.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:12",
+"bytes": 13012
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210728.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:13",
+"bytes": 12074
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210729.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:14",
+"bytes": 12629
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210730.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:16",
+"bytes": 11647
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210737.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:17",
+"bytes": 13236
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210739.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:18",
+"bytes": 13902
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210740.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:19",
+"bytes": 13998
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210741.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:20",
+"bytes": 12586
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210742.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:20",
+"bytes": 11817
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210743.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:22",
+"bytes": 16803
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210744.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:23",
+"bytes": 12896
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210745.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:24",
+"bytes": 11584
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210746.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:25",
+"bytes": 13023
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210748.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:26",
+"bytes": 12916
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210752.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:27",
+"bytes": 13436
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210753.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:36 GMT",
+"utc": "2026-10-26 01:24:28",
+"bytes": 13929
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210762.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:29",
+"bytes": 11814
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210764.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:31",
+"bytes": 13378
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210765.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:32",
+"bytes": 16057
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210766.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:33",
+"bytes": 16181
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210777.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:34",
+"bytes": 13329
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210778.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:35",
+"bytes": 13552
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210779.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:35",
+"bytes": 13948
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210780.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:36",
+"bytes": 13626
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210781.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:37",
+"bytes": 13207
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210782.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:38",
+"bytes": 12618
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210783.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:39",
+"bytes": 13481
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210784.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:40",
+"bytes": 12508
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210785.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:41",
+"bytes": 13325
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210786.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:42",
+"bytes": 13085
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210787.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:43",
+"bytes": 13836
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210788.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:37 GMT",
+"utc": "2026-10-26 01:24:44",
+"bytes": 12976
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210819.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:45",
+"bytes": 13694
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210820.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:46",
+"bytes": 13860
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210821.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:47",
+"bytes": 13117
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210822.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:48",
+"bytes": 13191
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210823.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:49",
+"bytes": 13593
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210824.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:50",
+"bytes": 13060
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210825.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:51",
+"bytes": 13330
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210826.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:52",
+"bytes": 13551
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210827.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:53",
+"bytes": 14255
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210828.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:54",
+"bytes": 14217
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210829.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:55",
+"bytes": 14176
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210830.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:56",
+"bytes": 14679
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210831.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:38 GMT",
+"utc": "2026-10-26 01:24:57",
+"bytes": 13067
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210852.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:24:58",
+"bytes": 14596
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210853.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:24:59",
+"bytes": 14006
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210854.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:00",
+"bytes": 13658
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210855.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:01",
+"bytes": 13589
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210856.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:02",
+"bytes": 14193
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210857.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:03",
+"bytes": 14015
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210858.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:04",
+"bytes": 13439
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210859.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:05",
+"bytes": 13389
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210860.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:06",
+"bytes": 12755
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210861.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:07",
+"bytes": 14482
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210862.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:08",
+"bytes": 14202
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210863.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:09",
+"bytes": 19863
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210864.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:10",
+"bytes": 12993
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210865.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:11",
+"bytes": 12372
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210866.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:12",
+"bytes": 12207
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210867.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:13",
+"bytes": 12095
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210868.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:14",
+"bytes": 13140
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210869.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:15",
+"bytes": 14785
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210870.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:39 GMT",
+"utc": "2026-10-26 01:25:16",
+"bytes": 12923
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210889.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:18",
+"bytes": 13891
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210890.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:19",
+"bytes": 13725
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210891.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:20",
+"bytes": 14100
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210892.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:21",
+"bytes": 13808
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210893.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:22",
+"bytes": 13299
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210894.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:23",
+"bytes": 13995
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210895.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:24",
+"bytes": 13280
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210896.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:25",
+"bytes": 12128
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210897.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:27",
+"bytes": 12468
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210898.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:28",
+"bytes": 12313
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210899.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:29",
+"bytes": 13031
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210900.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:30",
+"bytes": 13581
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210901.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:31",
+"bytes": 12503
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210902.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:32",
+"bytes": 12682
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210903.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:33",
+"bytes": 13442
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210904.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:34",
+"bytes": 12930
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210905.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:40 GMT",
+"utc": "2026-10-26 01:25:35",
+"bytes": 13781
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210922.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:37",
+"bytes": 13784
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210923.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:38",
+"bytes": 14342
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210924.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:39",
+"bytes": 13792
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210925.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:40",
+"bytes": 13466
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210926.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:41",
+"bytes": 14659
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210927.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:42",
+"bytes": 13880
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210928.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:43",
+"bytes": 15649
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210929.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:45",
+"bytes": 12964
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210930.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:46",
+"bytes": 12425
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210931.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:47",
+"bytes": 15060
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210932.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:48",
+"bytes": 13568
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210933.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:49",
+"bytes": 13057
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210934.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:50",
+"bytes": 12767
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210935.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:51",
+"bytes": 12518
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210936.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:52",
+"bytes": 12565
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210937.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:54",
+"bytes": 12268
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210938.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:55",
+"bytes": 12673
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210939.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:56",
+"bytes": 12883
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210940.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:57",
+"bytes": 12652
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210941.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:41 GMT",
+"utc": "2026-10-26 01:25:58",
+"bytes": 12621
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210960.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:25:59",
+"bytes": 15659
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210961.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:00",
+"bytes": 13715
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210962.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:01",
+"bytes": 13888
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210963.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:03",
+"bytes": 13560
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210964.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:04",
+"bytes": 14857
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210965.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:05",
+"bytes": 13567
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210966.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:06",
+"bytes": 12132
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210967.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:42 GMT",
+"utc": "2026-10-26 01:26:07",
+"bytes": 12625
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210993.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:08",
+"bytes": 14140
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210994.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:09",
+"bytes": 14156
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210995.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:11",
+"bytes": 13862
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210996.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:12",
+"bytes": 16117
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210997.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:13",
+"bytes": 17139
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210998.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:14",
+"bytes": 14332
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211025.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:15",
+"bytes": 15838
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211028.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:16",
+"bytes": 13993
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211029.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:17",
+"bytes": 13997
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211030.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:18",
+"bytes": 13687
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211031.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:19",
+"bytes": 14164
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211032.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:43 GMT",
+"utc": "2026-10-26 01:26:21",
+"bytes": 13798
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211033.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:22",
+"bytes": 13691
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211042.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:23",
+"bytes": 11483
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211043.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:24",
+"bytes": 13526
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211044.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:25",
+"bytes": 11180
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211065.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:26",
+"bytes": 14246
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211066.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:27",
+"bytes": 14360
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211067.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:29",
+"bytes": 15303
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211068.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:30",
+"bytes": 13841
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211069.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:31",
+"bytes": 14195
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211070.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:32",
+"bytes": 12420
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211071.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:44 GMT",
+"utc": "2026-10-26 01:26:33",
+"bytes": 12000
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211072.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:34",
+"bytes": 11656
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211073.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:35",
+"bytes": 11486
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211074.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:37",
+"bytes": 11798
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211102.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:38",
+"bytes": 14808
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211103.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:39",
+"bytes": 13793
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211104.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:40",
+"bytes": 14769
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211105.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:41",
+"bytes": 15848
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211106.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:42",
+"bytes": 14110
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211107.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:45 GMT",
+"utc": "2026-10-26 01:26:43",
+"bytes": 13616
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211137.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:46 GMT",
+"utc": "2026-10-26 01:26:45",
+"bytes": 21073
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211138.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:46 GMT",
+"utc": "2026-10-26 01:26:46",
+"bytes": 15005
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211139.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:46 GMT",
+"utc": "2026-10-26 01:26:47",
+"bytes": 14818
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65211140.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:30:46 GMT",
+"utc": "2026-10-26 01:26:48",
+"bytes": 14174
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2650.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:31:47 GMT",
+"utc": "2026-10-26 01:13:26",
+"bytes": 24063
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2660.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:31:47 GMT",
+"utc": "2026-10-26 01:13:30",
+"bytes": 18127
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:32:18 GMT",
+"utc": "2026-10-26 01:13:29",
+"bytes": 115753
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8300.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:32:26 GMT",
+"utc": "2026-10-26 01:13:28",
+"bytes": 67304
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8400.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:32:27 GMT",
+"utc": "2026-10-26 01:13:27",
+"bytes": 37275
+},
+{
+"url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8600.json",
+"status": 200,
+"last_modified": "Thu, 20 Aug 2026 10:32:27 GMT",
+"utc": "2026-10-26 01:13:25",
+"bytes": 35375
+}
+]
