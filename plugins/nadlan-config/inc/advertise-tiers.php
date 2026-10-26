@@ -58,7 +58,7 @@ if ( ! function_exists( 'nadlan_adt_tracks' ) ) {
 			'feats' => array( 'טלפון ווואטסאפ גלויים', 'קישור לאתר שלכם', 'תמונות ותיאור מלא', 'פניות ישירות אליכם' ) );
 		$prem  = array( 'id' => 477, 'label' => 'פרופיל Premier', 'price' => nadlan_adt_price( 477, 749 ), 'period' => 'לחודש', 'small' => 'לחודש', 'meter' => 3,
 			'feats' => array( 'כל מה שב־Pro', 'קדימות בתוך המדריכים', 'תג פרופיל מאומת', 'צוות, פרויקטים וגלריה' ) );
-		return array(
+		$tracks = array(
 			'pro' => array(
 				'tab' => 'בעלי מקצוע', 'who' => 'עורכי דין, שמאים, יועצי משכנתאות, בדק בית, אדריכלים ומעצבי פנים.', 'default' => 476,
 				'levels' => array(
@@ -72,21 +72,22 @@ if ( ! function_exists( 'nadlan_adt_tracks' ) ) {
 				),
 			),
 			'renewal' => array(
-				'tab' => 'התחדשות עירונית', 'who' => 'חברות מארגנות וליווי דיירים, עורכי דין ושמאים מטעם הדיירים, מפקחי בנייה.', 'default' => 477,
+				'tab' => 'התחדשות עירונית', 'who' => 'חברות מארגנות וליווי דיירים, עורכי דין ושמאים מטעם הדיירים, מפקחי בנייה.', 'default' => 476,
 				'levels' => array(
 					$basic + array( 'sub' => 'שם, עיר ותחום במאגר ארגון דיירים.' ),
-					array_merge( $pro, array( 'sub' => 'פרופיל מלא עם הפרויקטים שאתם מלווים והדרך לפנות אליכם.', 'feats' => array( 'טלפון ווואטסאפ גלויים', 'קישור לאתר שלכם', 'הפרויקטים שאתם מלווים', 'פניות ישירות מנציגויות' ) ) ),
+					array_merge( $pro, array( 'sub' => 'פרופיל מלא עם הפרויקטים שאתם מלווים והדרך לפנות אליכם.', 'feats' => array( 'טלפון ווואטסאפ גלויים', 'קישור לאתר שלכם', 'הפרויקטים שאתם מלווים', 'נציגויות פונות אליכם ישירות' ) ) ),
 					array_merge( $prem, array( 'sub' => 'הכרטיס שלכם מוביל בכרטיסי המומחים שבתוך תכני ההתחדשות.' ) ),
-					array( 'id' => $area ? $area : 'area', 'label' => 'חבילת אזור', 'price' => nadlan_adt_price( $area, 1490 ), 'period' => 'לחודש', 'small' => 'לחודש · מינימום 3', 'min' => 3, 'invoice' => $area ? '' : '1', 'meter' => 4, 'cities' => true,
-						'sub' => 'Premier, ועוד כרטיס "פרסומת" בעמודי הערים שבהן אתם פועלים, ודוח חודשי פרטי.',
-						'feats' => array( 'Premier כלול', 'עד 6 ערים לבחירתכם', 'מודעה אחת בעמוד, בלי צפיפות', 'דוח צפיות ופניות פרטי' ) ),
+					/* 26.10 review: the area package (it promised a views report) and the room are off the page until Ben switches them on */
+					'1' !== (string) get_option( 'nadlan_adt_area_enabled', '0' ) ? null : array( 'id' => $area ? $area : 'area', 'label' => 'חבילת אזור', 'price' => nadlan_adt_price( $area, 1490 ), 'period' => 'לחודש', 'small' => 'לחודש · מינימום 3', 'min' => 3, 'invoice' => $area ? '' : '1', 'meter' => 4, 'cities' => true,
+						'sub' => 'Premier, ועוד כרטיס "פרסומת" בעמודי הערים שבהן אתם פועלים.',
+						'feats' => array( 'Premier כלול', 'עד 6 ערים לבחירתכם', 'מודעה אחת בעמוד, בלי צפיפות' ) ),
 				),
 				'adds' => array(
 					array( 'id' => $spon, 'label' => 'חסות תחום: ליווי דיירים', 'price' => nadlan_adt_price( $spon, 199 ), 'period' => 'ל־30 יום', 'small' => 'ל־30 יום', 'domain' => 'organizer',
 						'sub' => 'הכרטיס שלכם ראשון במונחים ובמדריכים של ארגון דיירים, עם סימון "ממומן".' ),
-					array( 'id' => $story ? $story : 'story', 'label' => 'כתבת מפרסם בפרופיל', 'price' => nadlan_adt_price( $story, 1490 ), 'period' => 'חד פעמי', 'small' => 'חד פעמי', 'invoice' => '1',
-						'sub' => 'כתבה בעברית ובאנגלית על החברה, כתובה בסטנדרט שלנו, בתוך הפרופיל שלכם ומסומנת "כתבת מפרסם".' ),
-					array( 'id' => 'room', 'label' => 'חדר ניהול להתחדשות עירונית', 'price' => (int) get_option( 'nadlan_adt_room_price', 149 ), 'period' => 'למתחם לחודש', 'small' => 'למתחם לחודש · הראשון חינם', 'first' => 'החודש הראשון חינם', 'invoice' => '1', 'room' => '1',
+					array( 'id' => $story ? $story : 'story', 'label' => 'כתבת מפרסם בפרופיל', 'price' => nadlan_adt_price( $story, 1490 ), 'period' => 'חד פעמי', 'small' => 'חד פעמי', 'invoice' => '1', 'pack' => '1',
+						'sub' => 'כתבה בעברית ובאנגלית על החברה, כתובה בסטנדרט שלנו, בתוך הפרופיל שלכם ומסומנת "כתבת מפרסם". עולה רק אחרי שאישרתם.' ),
+					'1' !== (string) get_option( 'nadlan_adt_room_enabled', '0' ) ? null : array( 'id' => 'room', 'label' => 'חדר ניהול להתחדשות עירונית', 'price' => (int) get_option( 'nadlan_adt_room_price', 149 ), 'period' => 'למתחם לחודש', 'small' => 'למתחם לחודש · הראשון חינם', 'first' => 'החודש הראשון חינם', 'invoice' => '1', 'room' => '1',
 						'sub' => 'לכל מתחם: מצב החתימה של כל דירה, המסמכים שחסרים, עשרת השלבים עם הצעד הבא, ועדכונים לדיירים בקישור אחד. לדיירים ולנציגות חינם.' ),
 				),
 			),
@@ -103,6 +104,11 @@ if ( ! function_exists( 'nadlan_adt_tracks' ) ) {
 				'adds' => array(),
 			),
 		);
+		foreach ( $tracks as $k => $tr ) {
+			$tracks[ $k ]['levels'] = array_values( array_filter( $tr['levels'] ) );
+			$tracks[ $k ]['adds']   = array_values( array_filter( $tr['adds'] ) );
+		}
+		return $tracks;
 	}
 }
 
@@ -120,7 +126,7 @@ if ( ! function_exists( 'nadlan_adt_item_attrs' ) ) {
 	function nadlan_adt_item_attrs( $it ) {
 		$a  = ' value="' . esc_attr( (string) $it['id'] ) . '" data-label="' . esc_attr( $it['label'] ) . '"';
 		$a .= ' data-price="' . ( null === $it['price'] ? '' : esc_attr( (string) (float) $it['price'] ) ) . '" data-period="' . esc_attr( $it['period'] ) . '"';
-		foreach ( array( 'first', 'min', 'invoice', 'domain' ) as $k ) {
+		foreach ( array( 'first', 'min', 'invoice', 'domain', 'pack' ) as $k ) {
 			if ( ! empty( $it[ $k ] ) ) { $a .= ' data-' . $k . '="' . esc_attr( (string) $it[ $k ] ) . '"'; }
 		}
 		return $a;
@@ -131,8 +137,8 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 	function nadlan_adt_render() {
 		$tracks = nadlan_adt_tracks();
 		$h  = '<section class="nladt" id="nladt" dir="rtl" lang="he" data-live="' . ( nadlan_adt_checkout_live() ? '1' : '0' ) . '" data-cart="' . esc_url( home_url( '/' ) ) . '" data-lead="' . esc_url( rest_url( 'nadlan/v1/lead' ) ) . '">';
-		$h .= '<header class="nladt__head"><div><p class="nladt__kick">מסלולי פרסום ומחירים</p><h2>בוחרים את רמת החשיפה, משלמים, והפרסום עולה</h2>'
-			. '<p class="nladt__lead">כל מסלול מופעל מיד אחרי התשלום ונגמר לבד בסוף התקופה, אלא אם בחרתם לחדש. בלי חוזה ובלי התחייבות. כל מודעה מסומנת "פרסומת" או "ממומן", כדי שהקוראים ידעו, וכדי שזה יישאר הוגן.</p></div>';
+		$h .= '<header class="nladt__head"><div><p class="nladt__kick">מסלולי פרסום ומחירים</p><h2>בוחרים מסלול, משלמים, והפרסום עולה</h2>'
+			. '<p class="nladt__lead">מה שמקבלים מוגדר מראש: פרופיל, מיקום הכרטיס, תוכן שאתם מאשרים ומשך זמן. הקידום באתר אורגני, ואין התחייבות למספר צפיות או פניות. כל מסלול נגמר לבד בסוף התקופה, אלא אם בחרתם לחדש, וכל מודעה מסומנת "פרסומת" או "ממומן".</p></div>';
 		$h .= '<div class="nladt__tracks" role="group" aria-label="סוג המפרסם">';
 		$first = true;
 		foreach ( $tracks as $key => $t ) {
@@ -144,12 +150,13 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 		foreach ( $tracks as $key => $t ) {
 			$h .= '<div class="nladt__track" data-panel="' . esc_attr( $key ) . '"' . ( $first ? '' : ' hidden' ) . '><p class="nladt__who">' . esc_html( $t['who'] ) . '</p>';
 			if ( 'renewal' === $key ) {
-				$h .= '<div class="nladt__pack" data-pack><p class="nladt__kick">החבילה המלאה לחברה מארגנת</p><h3>פרסום, תוכן וחדר ניהול לכל המתחמים שלכם</h3><ul>'
-					. '<li><b>פרופיל Premier</b> בקטגוריית ארגון דיירים, עם הצוות והפרויקטים שאתם מלווים</li>'
-					. '<li><b>חסות "ליווי דיירים"</b>: הכרטיס שלכם ראשון במדריכים ובמונחים של התחום</li>'
-					. '<li><b>כתבת מפרסם</b> בעברית ובאנגלית בתוך הפרופיל, מסומנת "כתבת מפרסם"</li>'
-					. '<li><b>חדר הניהול</b> לכל מתחם, והחודש הראשון חינם (<a href="' . esc_url( home_url( '/my-renewal/' ) ) . '">כך נראה חדר לדוגמה</a>)</li></ul>'
-					. '<button type="button" class="nladt__packgo" data-pack-go>בחירת החבילה המלאה</button></div>';
+				$pp = nadlan_adt_money( nadlan_adt_price( 476, 349 ) ); $sp = nadlan_adt_money( nadlan_adt_price( nadlan_adt_extra( 'story' ), 1490 ) ); $dp = nadlan_adt_money( nadlan_adt_price( (int) get_option( 'nadlan_procard_product', 5403 ), 199 ) );
+				$h .= '<div class="nladt__pack" data-pack><p class="nladt__kick">ההצעה לחברה מארגנת</p><h3>פרופיל בקטגוריית ארגון דיירים, ואם תרצו גם כתבה שאתם מאשרים</h3><ul>'
+					. '<li><b>פרופיל Pro</b>: הצוות, הפרויקטים שאתם מלווים, וואטסאפ, טלפון וקישור לאתר שלכם. ' . esc_html( $pp ) . ' לחודש, והחודש הראשון חינם</li>'
+					. '<li><b>כתבת מפרסם</b> בעברית ובאנגלית בתוך הפרופיל, עולה רק אחרי שאישרתם. ' . esc_html( $sp ) . ' פעם אחת, לא חובה</li>'
+					. '<li><b>חסות "ליווי דיירים"</b>: הכרטיס ראשון במדריכים ובמונחים של התחום. ' . esc_html( $dp ) . ' ל־30 יום, לא חובה</li></ul>'
+					. '<p class="nladt__packnote">הקידום אורגני: אין התחייבות למספר צפיות או פניות. חדר ניהול להתחדשות עירונית בונים עכשיו יחד עם החברות המארגנות הראשונות, ונשמח לבחון אותו איתכם (<a href="' . esc_url( home_url( '/my-renewal/' ) ) . '">חדר לדוגמה</a>).</p>'
+					. '<button type="button" class="nladt__packgo" data-pack-go>בחירת ההצעה: פרופיל וכתבה</button></div>';
 			}
 			$h .= '<ul class="nladt__ladder">';
 			foreach ( $t['levels'] as $i => $lv ) {
@@ -165,7 +172,7 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 				}
 				$h .= '<span class="nladt__meter" aria-hidden="true">';
 				for ( $m = 1; $m <= 4; $m++ ) { $h .= '<i' . ( $m <= (int) $lv['meter'] ? ' class="on"' : '' ) . '></i>'; }
-				$h .= '<span>חשיפה ' . (int) $lv['meter'] . '/4</span></span>';
+				$h .= '<span>מיקום ' . (int) $lv['meter'] . '/4</span></span>';
 				if ( ! empty( $lv['cities'] ) ) {
 					$h .= '<span class="nladt__cities" data-cities hidden><p>בחרו עד 6 ערים</p><span class="nladt__chips">';
 					foreach ( nadlan_adt_cities() as $c ) { $h .= '<label class="nladt__chip"><input type="checkbox" value="' . esc_attr( $c ) . '"><span>' . esc_html( $c ) . '</span></label>'; }
@@ -190,7 +197,7 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 			. '<a class="nladt__go" data-go href="#nladt">להמשך ולתשלום</a><p class="nladt__pay" data-pay>אשראי · Bit · Google Pay · Apple Pay · חשבונית מס למייל</p>'
 			. '<p class="nladt__note">צריך חשבון באתר. אם עוד אין לכם כרטיס, פותחים אחד בדקה אחרי התשלום, והפרסום נדלק עליו.</p></aside></div>';
 		$h .= '<ol class="nladt__steps" aria-label="איך זה עובד">'
-			. '<li class="nladt__step"><b>01</b><strong>בוחרים מסלול</strong><p>רמת חשיפה, תוספות, ובחבילת אזור גם את הערים.</p></li>'
+			. '<li class="nladt__step"><b>01</b><strong>בוחרים מסלול</strong><p>המסלול והתוספות שמתאימים לכם.</p></li>'
 			. ( nadlan_adt_checkout_live()
 				? '<li class="nladt__step"><b>02</b><strong>משלמים באתר</strong><p>אשראי, Bit או ארנק דיגיטלי. החשבונית מגיעה למייל.</p></li>'
 				: '<li class="nladt__step"><b>02</b><strong>מקבלים חשבונית</strong><p>שולחים הזמנה בלחיצה, והחשבונית מגיעה למייל. משלמים בהעברה או באשראי בטלפון.</p></li>' )
@@ -251,6 +258,7 @@ html body .nladt h2,html body .nladt h3,html body .nladt h4{color:var(--ink)!imp
 .nladt__pack li b{color:var(--ink);font-weight:700}
 html body .nladt .nladt__packgo{appearance:none;border:0;border-radius:var(--r);background:var(--deep);color:#fff!important;font:700 15px/1 var(--sans);padding:14px 18px;min-height:48px;cursor:pointer;width:100%}
 html body .nladt a.nladt__go,html body .nladt a.nladt__go:visited{color:#fff!important;text-decoration:none!important}
+.nladt__packnote{font:400 14px/1.6 var(--sans);color:var(--ink2);margin:0 0 14px;padding:10px 12px;background:#F4F7F8;border-radius:10px}
 .nladt__priv{font:400 12.5px/1.6 var(--sans);color:var(--mute);margin:4px 0 8px}
 .nladt__ladder{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .nladt__lvl{position:relative;border-bottom:1px solid var(--line);background:var(--s)}
@@ -453,8 +461,8 @@ if ( ! function_exists( 'nadlan_adt_js' ) ) {
   if (packGo) {
     packGo.addEventListener("click", function () {
       var p = root.querySelector('[data-panel="renewal"]');
-      var prem = p.querySelector('input[type="radio"][value="477"]'); if (prem) { prem.checked = true; }
-      p.querySelectorAll(".nladt__adds input").forEach(function (i) { i.checked = true; });
+      var pro = p.querySelector('input[type="radio"][value="476"]'); if (pro) { pro.checked = true; }
+      p.querySelectorAll(".nladt__adds input").forEach(function (i) { i.checked = !!i.dataset.pack; });
       sum();
       var s = root.querySelector(".nladt__sum"); if (s && s.scrollIntoView) { s.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });

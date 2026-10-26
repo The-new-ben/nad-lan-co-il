@@ -1,0 +1,17 @@
+{
+  "released": "1.72.536",
+  "from": "1.72.535",
+  "live_before": {
+    "inc/advertise-tiers.php": "1448d82a998c165bb1b7a28f5ab90d0d",
+    "nadlan-config.php": "25b2336d3f16e94a3383789daae39c9b"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 20:57:56",
+  "files": {
+    "inc/advertise-tiers.php": "4fb1fa41b10bb56eab2ac85bde7da1cb",
+    "nadlan-config.php": "cf4ed8a4ae22a462b7e98c125a861b77"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.536, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
