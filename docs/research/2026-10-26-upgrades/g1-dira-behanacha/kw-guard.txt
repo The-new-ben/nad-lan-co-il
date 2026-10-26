@@ -1,0 +1,28 @@
+== title | /dira-behanacha/ | מחיר למשתכן ודירה בהנחה 2026: זכאות, הגרלות וסיכויים
+OK    מחיר למשתכן | tier A, 90500 searches/month | this page owns the term
+OK    דירה בהנחה | tier A, 74000 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== h1 | /dira-behanacha/ | דירה בהנחה (מחיר למשתכן): מי זכאי, ההגרלות והסיכוי לזכות בכל עיר
+OK    מחיר למשתכן | tier A, 90500 searches/month | this page owns the term
+OK    דירה בהנחה | tier A, 74000 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== meta | /dira-behanacha/ | דירה בהנחה ומחיר למשתכן 2026: בדיקת זכאות, שלוש הערים עם הסיכוי הגבוה, ההגרלה ה־11 בכל עיר, מילואים 18.6%, המחיר מול העסקאות בעיר והצעדים עד המפתח.
+OK    מחיר למשתכן | tier A, 90500 searches/month | this page owns the term
+OK    דירה בהנחה | tier A, 74000 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== anchor | /mortgage-calculator/ | מחשבון המשכנתא
+OK    משכנתא | tier A, 12100 searches/month | this page owns the term
+RESULT: OK
+exit 0
+== anchor | /mortgage-calculator/mortgage-repayment-capacity/ | מחשבון כמה משכנתא אפשר לקחת
+(dropped from the new copy: Search Console gives "כמה משכנתא אפשר לקחת" only to /mortgage-calculator/, 314 impressions @63.8; a new exact anchor to the child would be a re-targeting decision. The old paragraph keeps its existing link.)
+WARN  משכנתא | tier A, 12100 searches/month | protected term inside the text (owner /mortgage-calculator/): fine only as a qualified phrase after this page's own topic, and only if Search Console shows no second URL competing
+RESULT: WARN
+exit 0
+== anchor | /real-estate-lawyer/ | פגישה עם עורך דין מקרקעין
+OK    עורך דין מקרקעין | tier B, 1600 searches/month | this page owns the term
+RESULT: OK
+exit 0

@@ -1,0 +1,230 @@
+[
+ {
+  "label": "Round 11: 7,922 flats",
+  "re": [
+   "7,922|7922"
+  ]
+ },
+ {
+  "label": "Round 11: 114,848 households",
+  "re": [
+   "114,848|114 אלף|115 אלף|115,000|114,000"
+  ]
+ },
+ {
+  "label": "Round 11: 19 towns",
+  "re": [
+   "19 (יישובים|ערים|ישובים)"
+  ]
+ },
+ {
+  "label": "Round 11: 6.9% of households won",
+  "re": [
+   "6\\.9\\s?%"
+  ]
+ },
+ {
+  "label": "Round 11: reserve 4,734 of 25,394 / 18.6%",
+  "re": [
+   "4,734|25,394|18\\.6\\s?%"
+  ]
+ },
+ {
+  "label": "Round 11 registrants per town (Kfar Saba 38,732, Kiryat Gat 28,514)",
+  "re": [
+   "38,732|28,514"
+  ]
+ },
+ {
+  "label": "Reserve quota about 50% (35% outside the periphery)",
+  "re": [
+   "50\\s?%.{0,60}מילואים|מילואים.{0,60}50\\s?%"
+  ]
+ },
+ {
+  "label": "Reserve definition: 60 days in order 8 since 7.10.2023",
+  "re": [
+   "60 (ימים|יום|ימי)"
+  ]
+ },
+ {
+  "label": "Reserve priority needs a certificate issued after 5.8.2025",
+  "re": [
+   "5\\.8\\.2025|05\\.08\\.2025"
+  ]
+ },
+ {
+  "label": "Reserve status check: 1111 ext. 4",
+  "re": [
+   "1111"
+  ]
+ },
+ {
+  "label": "Up to 3 towns per household",
+  "re": [
+   "(שלוש|3|שלושה) (ערים|יישובים|ישובים)"
+  ]
+ },
+ {
+  "label": "Certificate costs 200 ₪",
+  "re": [
+   "200 ₪|200 ש[\\\"״]ח|₪\\s?200|200 שקל"
+  ]
+ },
+ {
+  "label": "Renewal 50 ₪",
+  "re": [
+   "50 ₪|50 ש[\\\"״]ח|₪\\s?50\\b"
+  ]
+ },
+ {
+  "label": "Up to 10 working days",
+  "re": [
+   "10 ימי עבודה"
+  ]
+ },
+ {
+  "label": "Registration companies Milgam, Alonim, Maof",
+  "re": [
+   "מילגם.{0,80}(אלונים|מעוף)|(אלונים|מעוף).{0,80}מילגם"
+  ]
+ },
+ {
+  "label": "Homeless = no home in the last 3 years",
+  "re": [
+   "(3|שלוש) (ה)?שנים (ה)?אחרונות"
+  ]
+ },
+ {
+  "label": "The one-third ownership rule",
+  "re": [
+   "שליש"
+  ]
+ },
+ {
+  "label": "Singles from age 35",
+  "re": [
+   "(מעל|מגיל|בני) (גיל )?35"
+  ]
+ },
+ {
+  "label": "Improvers only in continuation lotteries",
+  "re": [
+   "הגרלות? המשך"
+  ]
+ },
+ {
+  "label": "Improver sells within 12 months",
+  "re": [
+   "12 חודשים"
+  ]
+ },
+ {
+  "label": "Local resident = 3 of the last years or 4 of 10",
+  "re": [
+   "(4|ארבע) (שנים )?מתוך (10|עשר)"
+  ]
+ },
+ {
+  "label": "Local quota up to 20%",
+  "re": [
+   "20\\s?%.{0,40}בני (ה)?מקום|בני (ה)?מקום.{0,60}20\\s?%"
+  ]
+ },
+ {
+  "label": "Wheelchair users: 1 per 30 flats",
+  "re": [
+   "(1|אחת|יחידת דיור אחת) לכל 30"
+  ]
+ },
+ {
+  "label": "IDF draft-status condition (High Court)",
+  "re": [
+   "חייבי גיוס"
+  ]
+ },
+ {
+  "label": "Married to a foreign citizen is eligible",
+  "re": [
+   "אזרח(י)? חוץ|תושב זר"
+  ]
+ },
+ {
+  "label": "Engaged couples: wedding within 3 months",
+  "re": [
+   "(3|שלושה) חודשים"
+  ]
+ },
+ {
+  "label": "Mortgage up to 75%",
+  "re": [
+   "75\\s?%"
+  ]
+ },
+ {
+  "label": "Appraisal route: 100,000 own money, value up to 2.1M",
+  "re": [
+   "2\\.1 מיליון|2,100,000"
+  ]
+ },
+ {
+  "label": "Grant 40,000 / 60,000 ₪",
+  "re": [
+   "40,000|60,000|40 אלף|60 אלף"
+  ]
+ },
+ {
+  "label": "State loan: 0.5% below the average, up to 3%",
+  "re": [
+   "0\\.5\\s?%.{0,120}3(\\.0)?\\s?%"
+  ]
+ },
+ {
+  "label": "Sale lock: 5 years from Form 4 or 7 from the lottery",
+  "re": [
+   "(5|חמש) שנים.{0,80}(7|שבע) שנים"
+  ]
+ },
+ {
+  "label": "45 minutes to choose a flat",
+  "re": [
+   "45 דקות"
+  ]
+ },
+ {
+  "label": "Contract within 30 working days",
+  "re": [
+   "30 ימי עבודה"
+  ]
+ },
+ {
+  "label": "Purchase tax exemption to 1,978,745 ₪",
+  "re": [
+   "1,978,745"
+  ]
+ },
+ {
+  "label": "Flats without a lottery",
+  "re": [
+   "(ללא|בלי) הגרלה"
+  ]
+ },
+ {
+  "label": "Lottery price compared with the town's deal median",
+  "re": [
+   "חציון (ה)?עסקאות|מחירי (ה)?עסקאות"
+  ]
+ },
+ {
+  "label": "The official lottery file: 2,352 lotteries / 635 since 2022",
+  "re": [
+   "2,352|635 הגרלות"
+  ]
+ },
+ {
+  "label": "The four tracks (מחיר מטרה, מחיר מופחת, מחיר למשתכן, דירה להשכיר)",
+  "re": [
+   "מחיר מופחת.{0,200}דירה להשכיר|דירה להשכיר.{0,200}מחיר מופחת"
+  ]
+ }
+]

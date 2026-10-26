@@ -1,0 +1,21 @@
+{
+  "released": "1.72.530",
+  "from": "1.72.529",
+  "live_before": {
+    "nadlan-config.php": "02cd7d1025eccc62dc64080644eb5002",
+    "inc/instruments.php": "e0d69c17862334e2f04979a7a0ea9de2"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-26 13:03:19",
+  "files": {
+    "assets/instruments/tools/sdplan.js": "11063a07647e2056b3f30c6269e5adf2",
+    "assets/instruments/data/sdplan.json": "9833ab90017a5bbb0e4911fde6b216cb",
+    "assets/instruments/tools/dirafit.js": "4c832557b59c9a7be2f52a2f8f9d668d",
+    "assets/instruments/data/dira-round.json": "894125ec37ca0bfe20401e1a3e915188",
+    "nadlan-config.php": "5730f0a5d3f9e9c4883517a8150935c7",
+    "inc/instruments.php": "09e69abe11f6f461b25ec6811c2e17d9"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.530, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

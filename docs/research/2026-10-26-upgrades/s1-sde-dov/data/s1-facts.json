@@ -1,0 +1,1424 @@
+{
+ "built": "2026-10-26",
+ "tenders": [
+  {
+   "tender": "62/2021",
+   "id": 20210062,
+   "pubDate": "2021-03-14",
+   "use": "בנייה רוויה",
+   "pub": "2021-03-14",
+   "close": "2021-08-23",
+   "committee": "2021-08-23",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "101"
+   ],
+   "units": 406,
+   "area": 7331,
+   "dev": 46312586,
+   "bid": 1092770770,
+   "bids": 14,
+   "winner": "אביסרור משה ובניו עבודות בנין ופתוח בע\"מ",
+   "updated": "2021-08-24"
+  },
+  {
+   "tender": "62/2021",
+   "id": 20210062,
+   "pubDate": "2021-03-14",
+   "use": "בנייה רוויה",
+   "pub": "2021-03-14",
+   "close": "2021-08-23",
+   "committee": "2021-08-23",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "107"
+   ],
+   "units": 458,
+   "area": 7575,
+   "dev": 62020150,
+   "bid": 1457777888,
+   "bids": 11,
+   "winner": "ק.מ. מדף 5",
+   "updated": "2021-08-24"
+  },
+  {
+   "tender": "62/2021",
+   "id": 20210062,
+   "pubDate": "2021-03-14",
+   "use": "בנייה רוויה",
+   "pub": "2021-03-14",
+   "close": "2021-08-23",
+   "committee": "2021-08-23",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "110"
+   ],
+   "units": 230,
+   "area": 4651,
+   "dev": 25802243,
+   "bid": 633790518,
+   "bids": 16,
+   "winner": "משולם לוינשטין הנדסה וקבלנות בע\"מ, אלייד נדל\"ן בע\"מ, מבנה נדל\"ן (כ.ד) בע\"מ",
+   "updated": "2021-08-24"
+  },
+  {
+   "tender": "62/2021",
+   "id": 20210062,
+   "pubDate": "2021-03-14",
+   "use": "בנייה רוויה",
+   "pub": "2021-03-14",
+   "close": "2021-08-23",
+   "committee": "2021-08-23",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "111"
+   ],
+   "units": 480,
+   "area": 8647,
+   "dev": 54486689,
+   "bid": 1253291088,
+   "bids": 11,
+   "winner": "ג.ז. מדף 35 בע\"מ",
+   "updated": "2021-08-24"
+  },
+  {
+   "tender": "72/2021",
+   "id": 20210072,
+   "pubDate": "2021-03-15",
+   "use": "דיור להשכרה",
+   "pub": "2021-03-15",
+   "close": "2021-11-22",
+   "committee": "2021-12-02",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "109"
+   ],
+   "units": 324,
+   "area": 5221,
+   "dev": 36873716,
+   "bid": 793845018,
+   "bids": 2,
+   "winner": "שיכון ובינוי בע\"מ, שיכון ובינוי נדל\"ן(נכסים) בע\"מ",
+   "updated": "2021-12-05"
+  },
+  {
+   "tender": "327/2021",
+   "id": 20210327,
+   "pubDate": "2021-10-05",
+   "use": "דיור להשכרה",
+   "pub": "2021-10-05",
+   "close": "2022-04-04",
+   "committee": "2022-04-10",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "106"
+   ],
+   "units": 511,
+   "area": 9100,
+   "dev": 58792124,
+   "bid": 1118118555,
+   "bids": 1,
+   "winner": "ריט ש.ב. נדל\"ן נכסים בע\"מ",
+   "updated": "2026-02-02"
+  },
+  {
+   "tender": "328/2021",
+   "id": 20210328,
+   "pubDate": "2021-10-06",
+   "use": "מגורים, מסחר ומלונאות",
+   "pub": "2021-10-06",
+   "close": "2022-03-21",
+   "committee": "2022-03-21",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "103"
+   ],
+   "units": 241,
+   "area": 3723,
+   "dev": 27035882,
+   "bid": 654581831,
+   "bids": 3,
+   "winner": "נוף עירוני יזמות בע\"מ",
+   "updated": "2022-03-21"
+  },
+  {
+   "tender": "238/2024",
+   "id": 20240238,
+   "pubDate": "2024-07-29",
+   "use": "בנייה רוויה",
+   "pub": "2024-07-29",
+   "close": "2025-03-03",
+   "committee": "2025-03-03",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "nobid",
+   "plots": [
+    "104"
+   ],
+   "units": 24,
+   "area": 711,
+   "dev": 3876762,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2025-03-04"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3210"
+   ],
+   "units": 275,
+   "area": 4453,
+   "dev": 46182322,
+   "bid": 450000000,
+   "bids": 19,
+   "winner": "י.ח דמרי בניה ופיתוח בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3207"
+   ],
+   "units": 150,
+   "area": 4223,
+   "dev": 27713877,
+   "bid": 247907555,
+   "bids": 22,
+   "winner": "כלנית נכסים ופיתוח מ.ש שותפות מוגבלת",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3203"
+   ],
+   "units": 185,
+   "area": 5543,
+   "dev": 35018926,
+   "bid": 315730263,
+   "bids": 23,
+   "winner": "שיכון ובינוי נדל\"ן בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3107"
+   ],
+   "units": 82,
+   "area": 3151,
+   "dev": 15489281,
+   "bid": 208818818,
+   "bids": 33,
+   "winner": "רשימת מציעים",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3205"
+   ],
+   "units": 320,
+   "area": 6064,
+   "dev": 54401454,
+   "bid": 550555666,
+   "bids": 18,
+   "winner": "אביב מגורים בשדה דב בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3201"
+   ],
+   "units": 260,
+   "area": 3449,
+   "dev": 41104670,
+   "bid": 435680016,
+   "bids": 19,
+   "winner": "יורו -ישראל (י.ש )בעמ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3106"
+   ],
+   "units": 76,
+   "area": 2880,
+   "dev": 14379302,
+   "bid": 181818181,
+   "bids": 34,
+   "winner": "לוזון רונסון נכסים בע\"מ, שמעון אמיר בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3109"
+   ],
+   "units": 144,
+   "area": 3620,
+   "dev": 25160014,
+   "bid": 277024555,
+   "bids": 22,
+   "winner": "יוסי אברהמי עבודות הנדסה בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3105"
+   ],
+   "units": 62,
+   "area": 2306,
+   "dev": 11445213,
+   "bid": 181182183,
+   "bids": 36,
+   "winner": "נחשון קויתי בע\"מ, רשימת מציעים",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "267/2024",
+   "id": 20240267,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3102"
+   ],
+   "units": 177,
+   "area": 4702,
+   "dev": 30397768,
+   "bid": 505963827,
+   "bids": 27,
+   "winner": "תשלוז השקעות והחזקות בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "268/2024",
+   "id": 20240268,
+   "pubDate": "2024-09-01",
+   "use": "דיור מוגן",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "150"
+   ],
+   "units": 300,
+   "area": 4663,
+   "dev": 29155754,
+   "bid": 418518018,
+   "bids": 6,
+   "winner": "מגדלי הים התיכון ניהול פרויקטים דיור מוגן,שותפות מוגבלת",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "270/2024",
+   "id": 20240270,
+   "pubDate": "2024-09-01",
+   "use": "דיור מוגן",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-03-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2104"
+   ],
+   "units": 350,
+   "area": 4459,
+   "dev": 45242680,
+   "bid": 550000180,
+   "bids": 7,
+   "winner": "פאלאס רעננה - דיור מוגן בע\"מ",
+   "updated": "2025-03-19"
+  },
+  {
+   "tender": "271/2024",
+   "id": 20240271,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "nobid",
+   "plots": [
+    "2101"
+   ],
+   "units": 269,
+   "area": 5127,
+   "dev": 36308452,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "272/2024",
+   "id": 20240272,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2026-12-07",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "3204"
+   ],
+   "units": 217,
+   "area": 4496,
+   "dev": 36579424,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-09-14"
+  },
+  {
+   "tender": "273/2024",
+   "id": 20240273,
+   "pubDate": "2024-09-01",
+   "use": "דיור להשכרה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3202",
+    "3209"
+   ],
+   "units": 390,
+   "area": 7039,
+   "dev": 66048065,
+   "bid": 181818013,
+   "bids": 4,
+   "winner": "א.מ. ישראל מגורים פיתוח בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "276/2024",
+   "id": 20240276,
+   "pubDate": "2024-09-01",
+   "use": "דיור להשכרה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2203",
+    "2207"
+   ],
+   "units": 542,
+   "area": 9540,
+   "dev": 75642497,
+   "bid": 350111117,
+   "bids": 5,
+   "winner": "פרשקובסקי מניבים בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2103"
+   ],
+   "units": 424,
+   "area": 6958,
+   "dev": 56150499,
+   "bid": 791884333,
+   "bids": 26,
+   "winner": "האחים ישראל בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2206"
+   ],
+   "units": 326,
+   "area": 8498,
+   "dev": 49458682,
+   "bid": 545555555,
+   "bids": 29,
+   "winner": "גינדי ישראל 2010 בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2208"
+   ],
+   "units": 437,
+   "area": 6153,
+   "dev": 59312386,
+   "bid": 748403181,
+   "bids": 26,
+   "winner": "אלקטרה מגורים בע\"מ, נהור בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2226"
+   ],
+   "units": 347,
+   "area": 7124,
+   "dev": 49903840,
+   "bid": 554579555,
+   "bids": 29,
+   "winner": "א.א.י. אבו מגורים תל אביב בע\"מ, תומר קוקו השקעות בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2227"
+   ],
+   "units": 340,
+   "area": 4436,
+   "dev": 45120286,
+   "bid": 688888888,
+   "bids": 28,
+   "winner": "לוזון רונסון מור ש.ד., שותפות מוגבלת",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2255"
+   ],
+   "units": 382,
+   "area": 5862,
+   "dev": 52196003,
+   "bid": 591555555,
+   "bids": 27,
+   "winner": "גינדי ישראל 2010 בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "277/2024",
+   "id": 20240277,
+   "pubDate": "2024-09-01",
+   "use": "בנייה רוויה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-02-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2270"
+   ],
+   "units": 350,
+   "area": 4924,
+   "dev": 46941071,
+   "bid": 756616026,
+   "bids": 29,
+   "winner": "קבוצת חג'ג' מרכז תל-אביב בע\"מ",
+   "updated": "2025-02-19"
+  },
+  {
+   "tender": "282/2024",
+   "id": 20240282,
+   "pubDate": "2024-09-01",
+   "use": "דיור להשכרה",
+   "pub": "2024-09-01",
+   "close": "2025-03-26",
+   "committee": "2025-03-26",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "3208"
+   ],
+   "units": 323,
+   "area": 6364,
+   "dev": 55236182,
+   "bid": 185555559,
+   "bids": 5,
+   "winner": "יוניון ליב בע\"מ",
+   "updated": "2025-03-26"
+  },
+  {
+   "tender": "284/2024",
+   "id": 20240284,
+   "pubDate": "2024-09-01",
+   "use": "דיור להשכרה",
+   "pub": "2024-09-01",
+   "close": "2025-02-19",
+   "committee": "2025-03-19",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "2102"
+   ],
+   "units": 424,
+   "area": 7067,
+   "dev": 56257896,
+   "bid": 191111117,
+   "bids": 7,
+   "winner": "פרשקובסקי מניבים בע\"מ",
+   "updated": "2025-03-19"
+  },
+  {
+   "tender": "304/2024",
+   "id": 20240304,
+   "pubDate": "2024-09-04",
+   "use": "מסחר ומשרדים",
+   "pub": "2024-09-04",
+   "close": "2024-12-02",
+   "committee": "2024-12-02",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "301"
+   ],
+   "units": 0,
+   "area": 6568,
+   "dev": 63070505,
+   "bid": 48771770,
+   "bids": 2,
+   "winner": "הדס קפיטל מקרקעי ישראל בע\"מ",
+   "updated": "2024-12-02"
+  },
+  {
+   "tender": "304/2024",
+   "id": 20240304,
+   "pubDate": "2024-09-04",
+   "use": "מסחר ומשרדים",
+   "pub": "2024-09-04",
+   "close": "2024-12-02",
+   "committee": "2024-12-02",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "302"
+   ],
+   "units": 0,
+   "area": 5361,
+   "dev": 75788820,
+   "bid": 87166736,
+   "bids": 3,
+   "winner": "רמי שבירו הנדסה בניה והשקעות בע\"מ, רייסדור יזמות בע\"מ, ת. סורנטו בע\"מ",
+   "updated": "2024-12-02"
+  },
+  {
+   "tender": "304/2024",
+   "id": 20240304,
+   "pubDate": "2024-09-04",
+   "use": "מסחר ומשרדים",
+   "pub": "2024-09-04",
+   "close": "2024-12-02",
+   "committee": "2024-12-02",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "303"
+   ],
+   "units": 0,
+   "area": 5639,
+   "dev": 19455362,
+   "bid": 112544659,
+   "bids": 8,
+   "winner": "מבנה נדל\"ן (כ.ד) בע\"מ",
+   "updated": "2024-12-02"
+  },
+  {
+   "tender": "304/2024",
+   "id": 20240304,
+   "pubDate": "2024-09-04",
+   "use": "מסחר ומשרדים",
+   "pub": "2024-09-04",
+   "close": "2024-12-02",
+   "committee": "2024-12-02",
+   "statusX": "נדון בוועדת מכרזים",
+   "st": "won",
+   "plots": [
+    "305"
+   ],
+   "units": 0,
+   "area": 6147,
+   "dev": 21448289,
+   "bid": 133069600,
+   "bids": 8,
+   "winner": "רבד בע\"מ",
+   "updated": "2024-12-02"
+  },
+  {
+   "tender": "344/2024",
+   "id": 20240344,
+   "pubDate": "2024-10-14",
+   "use": "מסחר ומשרדים",
+   "pub": "2024-10-14",
+   "close": "2026-11-30",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "304"
+   ],
+   "units": 0,
+   "area": 2539,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-08-19"
+  },
+  {
+   "tender": "16/2025",
+   "id": 20250016,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-11-16",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2222"
+   ],
+   "units": 0,
+   "area": 2440,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-06-16"
+  },
+  {
+   "tender": "16/2025",
+   "id": 20250016,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-11-16",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2223"
+   ],
+   "units": 0,
+   "area": 1753,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-06-16"
+  },
+  {
+   "tender": "16/2025",
+   "id": 20250016,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-11-16",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2451"
+   ],
+   "units": 0,
+   "area": 3128,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-06-16"
+  },
+  {
+   "tender": "16/2025",
+   "id": 20250016,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-11-16",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2452"
+   ],
+   "units": 0,
+   "area": 3174,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-06-16"
+  },
+  {
+   "tender": "16/2025",
+   "id": 20250016,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-11-16",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2453"
+   ],
+   "units": 0,
+   "area": 2004,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-06-16"
+  },
+  {
+   "tender": "48/2025",
+   "id": 20250048,
+   "pubDate": "2025-02-20",
+   "use": "מלונאות",
+   "pub": "2025-02-20",
+   "close": "2026-12-28",
+   "committee": null,
+   "statusX": "פתוח להגשת הצעות",
+   "st": "open",
+   "plots": [
+    "2453"
+   ],
+   "units": 0,
+   "area": 2004,
+   "dev": 0,
+   "bid": 0,
+   "bids": 0,
+   "winner": "",
+   "updated": "2026-10-15"
+  }
+ ],
+ "plans": {
+  "3/3700": {
+   "shem_taba": "צפון מערב ת\"א מתחם מס' 3",
+   "t_status": "הפקדה",
+   "megurim_yechidot": 2750,
+   "megurim_shetach": 295920,
+   "taasuka_shetach": 5058,
+   "mischar_shetach": 11238,
+   "mivney_tzibur_shetach": 32974,
+   "melonaut_shetach": 11513,
+   "diyur_meuchad_yechidot": 0,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 0,
+   "diyur_bar_hasaga_yechidot_tz": 0,
+   "mispar_tochnit_mavat": "507-0437954",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5000419707/310",
+   "inForce": null,
+   "deposited": "2018-04-15"
+  },
+  "5/3700": {
+   "shem_taba": "צפון מערב ת\"א מתחם מס' 5",
+   "t_status": "הפקדה",
+   "megurim_yechidot": 1827,
+   "megurim_shetach": 144840,
+   "taasuka_shetach": 950,
+   "mischar_shetach": 2000,
+   "mivney_tzibur_shetach": 3000,
+   "melonaut_shetach": 7600,
+   "diyur_meuchad_yechidot": 0,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 0,
+   "diyur_bar_hasaga_yechidot_tz": 0,
+   "mispar_tochnit_mavat": "507-0446757",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5000424357/310",
+   "inForce": null,
+   "deposited": "2018-03-07"
+  },
+  "4/3700": {
+   "shem_taba": "צפון מערב ת\"א מתחם מס' 4",
+   "t_status": "הפקדה",
+   "megurim_yechidot": 4486,
+   "megurim_shetach": 465600,
+   "taasuka_shetach": 81994,
+   "mischar_shetach": 14262,
+   "mivney_tzibur_shetach": 113355,
+   "melonaut_shetach": 32973,
+   "diyur_meuchad_yechidot": 0,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 0,
+   "diyur_bar_hasaga_yechidot_tz": 0,
+   "mispar_tochnit_mavat": "507-0509646",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5000744973/310",
+   "inForce": null,
+   "deposited": "2018-03-07"
+  },
+  "3700": {
+   "shem_taba": "צפון מערב ת\"א",
+   "t_status": "בתוקף",
+   "megurim_yechidot": 0,
+   "megurim_shetach": 0,
+   "taasuka_shetach": 0,
+   "mischar_shetach": 0,
+   "mivney_tzibur_shetach": 0,
+   "melonaut_shetach": 0,
+   "diyur_meuchad_yechidot": 0,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 2160,
+   "diyur_bar_hasaga_yechidot_tz": 360,
+   "mispar_tochnit_mavat": "",
+   "url_iplan": null,
+   "inForce": "2015-01-15",
+   "deposited": "2010-10-21"
+  },
+  "4444": {
+   "shem_taba": "רובע שדה דב",
+   "t_status": "בתוקף",
+   "megurim_yechidot": 0,
+   "megurim_shetach": 0,
+   "taasuka_shetach": 0,
+   "mischar_shetach": 0,
+   "mivney_tzibur_shetach": 0,
+   "melonaut_shetach": 0,
+   "diyur_meuchad_yechidot": 300,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 2100,
+   "diyur_bar_hasaga_yechidot_tz": 2100,
+   "mispar_tochnit_mavat": "507-0403931",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5000402863/310",
+   "inForce": "2020-08-09",
+   "deposited": "2019-04-30"
+  },
+  "תמ\"ל3001": {
+   "shem_taba": "שדה דב- אשכול",
+   "t_status": "בתוקף",
+   "megurim_yechidot": 0,
+   "megurim_shetach": 0,
+   "taasuka_shetach": 0,
+   "mischar_shetach": 0,
+   "mivney_tzibur_shetach": 0,
+   "melonaut_shetach": 0,
+   "diyur_meuchad_yechidot": 0,
+   "dirot_haskara": 418,
+   "total_y_diyur_bar_hasaga": 1085,
+   "diyur_bar_hasaga_yechidot_tz": 668,
+   "mispar_tochnit_mavat": "",
+   "url_iplan": null,
+   "inForce": "2021-05-20",
+   "deposited": "2019-07-18"
+  },
+  "1/4444": {
+   "shem_taba": "מרכז רובע שדה דב",
+   "t_status": "בתוקף",
+   "megurim_yechidot": 7128,
+   "megurim_shetach": 525240,
+   "taasuka_shetach": 115067,
+   "mischar_shetach": 53859,
+   "mivney_tzibur_shetach": 251544,
+   "melonaut_shetach": 65910,
+   "diyur_meuchad_yechidot": 350,
+   "dirot_haskara": 838,
+   "total_y_diyur_bar_hasaga": 1820,
+   "diyur_bar_hasaga_yechidot_tz": 983,
+   "mispar_tochnit_mavat": "507-0915108",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5005103170/310",
+   "inForce": "2025-02-13",
+   "deposited": "2024-03-03"
+  },
+  "2/4444": {
+   "shem_taba": "צפון רובע שדה דב",
+   "t_status": "בתוקף",
+   "megurim_yechidot": 3728,
+   "megurim_shetach": 290936,
+   "taasuka_shetach": 21070,
+   "mischar_shetach": 23603,
+   "mivney_tzibur_shetach": 59533,
+   "melonaut_shetach": 58244,
+   "diyur_meuchad_yechidot": 300,
+   "dirot_haskara": 0,
+   "total_y_diyur_bar_hasaga": 449,
+   "diyur_bar_hasaga_yechidot_tz": 449,
+   "mispar_tochnit_mavat": "507-0973057",
+   "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5005137732/310",
+   "inForce": "2025-06-08",
+   "deposited": "2024-04-02"
+  }
+ },
+ "district": {
+  "plan": "תא/4444",
+  "inForce": "2020-08-09",
+  "deposited": "2019-04-30",
+  "mavat": "507-0403931",
+  "url": "https://mavat.iplan.gov.il/SV4/1/5000402863/310",
+  "dunam": 1300,
+  "units": 16000,
+  "residents": 40000,
+  "resM2": 1725000,
+  "com": 126000,
+  "emp": 330000,
+  "jobs": 15000,
+  "rooms": 2000,
+  "forLess": 7000,
+  "affordMuni": 2100,
+  "seniorPlots": 3,
+  "seniorUnits": 900,
+  "texture": 9,
+  "gis": {
+   "afford": 2100,
+   "special": 300
+  },
+  "green": {
+   "stations": [
+    "פרופס",
+    "נופי ים",
+    "איינשטיין",
+    "זהרה לביטוב"
+   ],
+   "peak": 16,
+   "every": 4
+  }
+ },
+ "compounds": {
+  "eshkol": {
+   "n": "מתחם אשכול",
+   "pos": "דרום מזרח הרובע",
+   "plan": "תמ\"ל/3001",
+   "inForce": "2021-05-20",
+   "deposited": "2019-07-18",
+   "muni": {
+    "units": 4800,
+    "com": 45000,
+    "emp": 145000
+   },
+   "gis": {
+    "rent": 418,
+    "afford": 1085,
+    "affordPerm": 668
+   },
+   "plots": 17,
+   "byStage": [
+    3,
+    0,
+    6,
+    0,
+    0,
+    8
+   ],
+   "tenderUnits": 2650,
+   "openUnits": 0,
+   "bbox": [
+    -413,
+    -972,
+    319,
+    -290
+   ]
+  },
+  "merkaz": {
+   "n": "מרכז הרובע",
+   "pos": "מרכז הרובע ורוב חזית הים",
+   "plan": "תא/1/4444",
+   "inForce": "2025-02-13",
+   "deposited": "2024-03-03",
+   "mavat": "507-0915108",
+   "url": "https://mavat.iplan.gov.il/SV4/1/5005103170/310",
+   "muni": {
+    "units": 7100,
+    "com": 60000,
+    "emp": 155000,
+    "rooms": 800
+   },
+   "gis": {
+    "units": 7128,
+    "res": 525240,
+    "emp": 115067,
+    "com": 53859,
+    "pub": 251544,
+    "hotel": 65910,
+    "special": 350,
+    "rent": 838,
+    "afford": 1820,
+    "affordPerm": 983
+   },
+   "plots": 31,
+   "byStage": [
+    20,
+    0,
+    9,
+    2,
+    0,
+    0
+   ],
+   "tenderUnits": 3922,
+   "openUnits": 0,
+   "bbox": [
+    -700,
+    -526,
+    308,
+    506
+   ]
+  },
+  "tzafon": {
+   "n": "צפון הרובע",
+   "pos": "צפון הרובע, עד רחוב פרופס",
+   "plan": "תא/2/4444",
+   "inForce": "2025-06-08",
+   "deposited": "2024-04-02",
+   "mavat": "507-0973057",
+   "url": "https://mavat.iplan.gov.il/SV4/1/5005137732/310",
+   "muni": {
+    "units": 4000,
+    "com": 20000,
+    "emp": 30000,
+    "rooms": 1150
+   },
+   "gis": {
+    "units": 3728,
+    "res": 290936,
+    "emp": 21070,
+    "com": 23603,
+    "pub": 59533,
+    "hotel": 58244,
+    "special": 300,
+    "rent": 0,
+    "afford": 449,
+    "affordPerm": 449
+   },
+   "plots": 25,
+   "byStage": [
+    10,
+    7,
+    8,
+    0,
+    0,
+    0
+   ],
+   "tenderUnits": 2744,
+   "openUnits": 217,
+   "bbox": [
+    -312,
+    492,
+    290,
+    1414
+   ]
+  }
+ },
+ "neighbourhoods": [
+  {
+   "n": "תל ברוך צפון",
+   "id": 65209987,
+   "version": "20-08-2026",
+   "rooms": {
+    "all": {
+     "q": "2025-03",
+     "v": 3940700
+    }
+   },
+   "idx": {
+    "priceIncreases": 0,
+    "yield": null,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "צוקי אביב",
+   "id": 65210014,
+   "version": "20-08-2026",
+   "rooms": {
+    "all": {
+     "q": "2025-03",
+     "v": 1147200
+    }
+   },
+   "idx": {
+    "priceIncreases": 0,
+    "yield": null,
+    "luxury": 4
+   }
+  },
+  {
+   "n": "כוכב הצפון",
+   "id": 65210017,
+   "version": "20-08-2026",
+   "rooms": {
+    "all": {
+     "q": "2025-03",
+     "v": 5411500
+    }
+   },
+   "idx": {
+    "priceIncreases": 0,
+    "yield": null,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "רמת אביב",
+   "id": 65210019,
+   "version": "20-08-2026",
+   "rooms": {
+    "3": {
+     "q": "2026-03",
+     "v": 4507200
+    },
+    "all": {
+     "q": "2026-03",
+     "v": 4931600
+    }
+   },
+   "idx": {
+    "priceIncreases": 16.06,
+    "yield": 1.88,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "נופי ים",
+   "id": 65210021,
+   "version": "20-08-2026",
+   "rooms": {
+    "all": {
+     "q": "2026-03",
+     "v": 5277400
+    }
+   },
+   "idx": {
+    "priceIncreases": "-0.8",
+    "yield": 3.01,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "תכנית ל",
+   "id": 65210022,
+   "version": "20-08-2026",
+   "rooms": {
+    "3": {
+     "q": "2026-03",
+     "v": 5346100
+    },
+    "4": {
+     "q": "2026-03",
+     "v": 8425800
+    },
+    "all": {
+     "q": "2026-03",
+     "v": 6059900
+    }
+   },
+   "idx": {
+    "priceIncreases": 9.77,
+    "yield": 2.35,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "תל ברוך",
+   "id": 65210027,
+   "version": "20-08-2026",
+   "rooms": {
+    "all": {
+     "q": "2025-03",
+     "v": 10893800
+    }
+   },
+   "idx": {
+    "priceIncreases": 0,
+    "yield": null,
+    "luxury": 10
+   }
+  },
+  {
+   "n": "אזור שדה דב",
+   "id": 65210724,
+   "version": "20-08-2026",
+   "rooms": {},
+   "idx": {
+    "priceIncreases": null,
+    "yield": null,
+    "luxury": null
+   }
+  }
+ ],
+ "stations": [
+  {
+   "n": "איינשטיין",
+   "xy": [
+    -178.9,
+    241.2
+   ],
+   "in": true,
+   "plots400": 23,
+   "units400": 3569
+  },
+  {
+   "n": "פרופס",
+   "xy": [
+    278.9,
+    1332.9
+   ],
+   "in": true,
+   "plots400": 11,
+   "units400": 1596
+  },
+  {
+   "n": "נופי ים",
+   "xy": [
+    39.5,
+    763.9
+   ],
+   "in": true,
+   "plots400": 19,
+   "units400": 2011
+  },
+  {
+   "n": "זהרה לביטוב",
+   "xy": [
+    -324.4,
+    -350.5
+   ],
+   "in": true,
+   "plots400": 27,
+   "units400": 2667
+  },
+  {
+   "n": "לוי אשכול",
+   "xy": [
+    30.9,
+    112.6
+   ],
+   "in": false,
+   "plots400": 13,
+   "units400": 2377
+  }
+ ]
+}
