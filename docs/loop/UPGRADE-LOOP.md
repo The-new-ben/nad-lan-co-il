@@ -46,7 +46,7 @@ Ben: every protected keyword where we do not appear gets a winning page (tools, 
 | G1 | /dira-behanacha/ | מחיר למשתכן 90,500 · דירה בהנחה 74,000 (not seen) | research + build (agent, local) |
 | G2 | /urban-renewal/pinui-binui/ | פינוי בינוי 12,100 (not seen) | research + build (agent, local, with G3) |
 | G3 | /urban-renewal/ | התחדשות עירונית 8,100 (not seen) | research + build (agent, local, with G2) |
-| G4 | /purchase-tax-calculator/ | מס רכישה 6,600 (not seen) · מחשבון מס רכישה 4,400 @55 | queued |
+| G4 | /purchase-tax-calculator/ | מס רכישה 6,600 (not seen) · מחשבון מס רכישה 4,400 @55 | research + build (agent, local; ptax v2) |
 | G5 | new owner page (no owner today) | דירות להשכרה / דירה להשכרה 27,100 (not seen; SERP = listings portals, honest odds first) | queued |
 | G6 | /home-inspection/ | בדק בית 2,900 (not seen) | queued |
 | G7 | /real-estate-appraiser/ | שמאי מקרקעין 2,400 (not seen) | queued |
