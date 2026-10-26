@@ -1,0 +1,25 @@
+{
+  "released": "1.72.525",
+  "from": "1.72.524",
+  "live_before": {
+    "assets/instruments/tools/dekel.js": "a452ee47106d0ab112761895a9a36d32",
+    "assets/instruments/data/dekel.json": "639fb4f1af5cdf1fe98f498a4970e8c7",
+    "assets/instruments/core.js": "699957173f6f6668f88af31c54830a33",
+    "assets/instruments/core.css": "d6855b08f83a425933c850b7ff90e53d",
+    "nadlan-config.php": "df2ddb929bacdcf75ea1c275ee029444",
+    "inc/instruments.php": "476caf9329171db7ce1f26e67679a30f"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /israel-mortgage-non-residents/?t525n=1",
+  "at": "2026-10-26 02:36:32",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "assets/instruments/tools/dekel.js": "d0564fd6ccde1b2829c8e603ec316091",
+    "assets/instruments/data/dekel.json": "c7f14b231c90b60bd1df6b3adf412459",
+    "assets/instruments/core.js": "32a51572908d65fe1217113639624a18",
+    "assets/instruments/core.css": "4a37af90809b67fb75985104174c1f80",
+    "nadlan-config.php": "b6875c5ed322e08eddb684d26b075edc",
+    "inc/instruments.php": "4b475d3ceaa169ef95c2b8c713452bdb"
+  }
+}

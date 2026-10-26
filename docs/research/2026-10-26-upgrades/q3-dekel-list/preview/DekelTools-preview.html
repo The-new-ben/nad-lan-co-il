@@ -178,8 +178,11 @@ html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overfl
 .nli__wall .m{font:500 15px/1 var(--nli-mono);fill:var(--nli-ink)}.nli__wall .r{fill:var(--nli-survey)}
 /* 1.72.522: a rows field with three inputs (the Dekel quote check: quantity, Dekel price, quote price) */
 .nli__row:has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr) 44px}
+/* 1.72.525: a row whose first cell is text (an item code) gives that cell the room */
+.nli__row:has(> .nli__in:first-child input:not([inputmode])):has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,1.5fr) minmax(0,.55fr) minmax(0,1.15fr) 44px}
+.nli__row > .nli__in:first-child input:not([inputmode]){font-size:14px;letter-spacing:-.01em}
 
-body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}.w{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px))}.n{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:26px 0 8px;border-top:1px solid #D3DCE2;padding-top:8px}.fig{background:#fff;border:1px solid #D3DCE2;padding:12px;max-width:664px}</style></head><body><div class="w"><p class="n">1 · ברירת המחדל: פרויקט חדש של 2.5 מיליון ₪, המחירון לבנייה ותשתיות, בתוך הטווח</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" id="h0"></div></section><p class="n">2 · שיפוץ של 90 אלף ₪: מתחת לטווח של המחירון לשיפוצים, אזהרה באדום</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" id="h1" data-nli-set='{"preset":"reno"}'></div></section><p class="n">3 · בדיקת הצעה בלי מחירים: השאלות לפי הכללים של דקל מופיעות כבר עכשיו. אין במחשבון אף מחיר של דקל</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" id="h2"></div></section><p class="n">פלטה: כתב כמויות מודפס ומסומן. נייר לבן, רשת גרפיט, כותרות בדיו כחולה #1F4FA3, אדום הבודק רק לחריגה. IBM Plex Sans Hebrew ו-IBM Plex Mono לקודים ולמספרים.</p></div><script>/* NadLan Instruments core v1 (HAD-527, 14.10.2026). One small engine for every tool: a tool registers a spec (fields,
+body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}.w{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px))}.n{font:500 12px/16px "IBM Plex Mono",monospace;color:#5E6A75;margin:26px 0 8px;border-top:1px solid #D3DCE2;padding-top:8px}.fig{background:#fff;border:1px solid #D3DCE2;padding:12px;max-width:664px}</style></head><body><div class="w"><p class="n">1 · ברירת המחדל: פרויקט חדש של 2.5 מיליון ₪, המחירון לבנייה ותשתיות, בתוך הטווח</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="dkpick" id="h0"></div></section><p class="n">2 · שיפוץ של 90 אלף ₪: מתחת לטווח של המחירון לשיפוצים, אזהרה באדום</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="dkpick" id="h1" data-nli-set='{"preset":"reno"}'></div></section><p class="n">3 · בדיקת הצעה בלי מחירים: השאלות לפי הכללים של דקל מופיעות כבר עכשיו. אין במחשבון אף מחיר של דקל</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="dkquote" id="h2"></div></section><p class="n">4 · 1.72.525: איזה כלי של דקל לפי התפקיד, שלבי הפרויקט עם הכתובות הרשמיות</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="dktool" id="h3"></div></section><p class="n">5 · 1.72.525: כתב כמויות בפורמט דקל עם מחירים שהקורא מקליד, סיכום לפי פרק, בצ"מ ומע"מ</p><section class="nli" dir="rtl" lang="he"><div class="nli-host" data-nli="dkboq" id="h4"></div></section><p class="n">פלטה: כתב כמויות מודפס ומסומן. נייר לבן, רשת גרפיט, כותרות בדיו כחולה #1F4FA3, אדום הבודק רק לחריגה. IBM Plex Sans Hebrew ו-IBM Plex Mono לקודים ולמספרים.</p></div><script>/* NadLan Instruments core v1 (HAD-527, 14.10.2026). One small engine for every tool: a tool registers a spec (fields,
    defaults, compute) and the engine renders the form, the readout, the breakdown bar, scenarios, the detail table, the
    formula and sources, and the share bar (copy, WhatsApp, print). Example-first: every tool opens filled. No dependencies.
    HAD-534 (d), 21.10.2026: the engine speaks the page language. <html lang> picks it (inc/page-lang.php prints lang="en"
@@ -250,9 +253,9 @@ body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew
           var row = el('div', 'nli__row');
           f.cols.forEach(function (c) {
             var box = el('div', 'nli__in');
-            var inp = el('input'); inp.type = c.type === 'date' ? 'date' : 'text'; if (c.type !== 'date') inp.inputMode = 'decimal';
-            inp.value = r[c.id]; inp.setAttribute('aria-label', c.label + ' ' + (i + 1));
-            inp.addEventListener('input', function () { r[c.id] = c.type === 'date' ? inp.value : parseMoney(inp.value); st.v.__custom = true; onChange(f.id, true); });
+            var inp = el('input'); inp.type = c.type === 'date' ? 'date' : 'text'; if (c.type !== 'date' && c.type !== 'text') inp.inputMode = 'decimal';  // 1.72.525: 'text' cells (an item code)
+            inp.value = r[c.id]; inp.setAttribute('aria-label', c.label + ' ' + (i + 1)); if (c.ph) inp.placeholder = c.ph;  // 1.72.525: a cell can name itself
+            inp.addEventListener('input', function () { r[c.id] = (c.type === 'date' || c.type === 'text') ? inp.value : parseMoney(inp.value); st.v.__custom = true; onChange(f.id, true); });
             box.appendChild(inp); if (c.unit) box.appendChild(el('span', 'nli__unit', esc(c.unit)));
             row.appendChild(box);
           });
@@ -409,7 +412,7 @@ body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew
     lang: LANG, langOf: langOf, pick: pick, TX: TX };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
-</script><script>var DATA={"key": "dekel", "asof": "2026-10-25", "note": "dekel.co.il pages read 25.10.2026 (price-list pages, FAQ, site map). No Dekel item price is stored or shown: Dekel sells them. docs/research/2026-10-26-upgrades/q3-dekel-list/dna.md section 6.", "lists": {"build": {"name": "מחירון דקל לבנייה ותשתיות", "ch": 65, "items": "כ-44,000", "fit": "הקמה של פרויקט חדש, מחיר אחד לכל סעיף", "min": 800000, "max": 6000000}, "reno": {"name": "מחירון דקל לשיפוצים ואחזקה", "ch": 62, "items": "מעל 40,000", "fit": "שיפוץ ותחזוקה במבנה קיים, שני מחירים לכל סעיף לפי כמות", "min": 150000, "max": 500000}, "frame": {"name": "מחירון דקל להסכמי מסגרת", "ch": 66, "items": "כ-48,000", "fit": "מכרזי הנחה או תוספת שנתיים של רשויות וחברות"}, "renox": {"name": "מחירון שיפוצים מורחב", "ch": 66, "items": "כ-48,000", "fit": "מכרזי שיפוצים שנתיים"}, "house": {"name": "מחירון דקל לבנייה פרטית", "items": "כ-2,200", "fit": "בניית בית פרטי"}, "tenant": {"name": "מחירון דקל לשינויי דיירים", "items": "מאות סעיפים", "fit": "תוספות ושינויים בדירה מקבלן; מצורף לחוזה כנספח וקובע מחירים מוסכמים מראש"}, "apt": {"name": "מחירון דקל לשיפוץ דירות", "items": "מאות סעיפים, לפי חדרים ואזורים", "fit": "בעלי דירות שמשפצים"}, "sqm": {"name": "מחשבון דקל למ\"ר", "items": "", "fit": "אומדן עלות בנייה למגורים בשלב כלכלי ותכנוני מוקדם, נלווה לדוח 0"}}, "kinds": {"new": {"label": "בנייה של פרויקט חדש", "list": "build"}, "exist": {"label": "שיפוץ או תחזוקה במבנה קיים", "list": "reno"}, "tenant": {"label": "שינויים בדירה חדשה מקבלן", "list": "tenant"}, "house": {"label": "בניית בית פרטי", "list": "house"}, "apt": {"label": "שיפוץ דירה", "list": "apt"}, "tender": {"label": "מכרז שנתי של רשות או חברה", "list": "frame"}, "early": {"label": "אומדן מוקדם לפרויקט מגורים", "list": "sqm"}}, "rules": {"incl": "מחיר כל סעיף כולל עבודה, חומרים ורווח קבלן, אלא אם כתוב אחרת בסעיף", "steel": "ברזל לבטון נמדד ומתומחר בנפרד, אלא אם כתוב בסעיף שהוא כלול", "demo": "סעיפי הריסה ופירוק כוללים פינוי לאתר מורשה עד 15 ק\"מ; אגרת ההטמנה אינה כלולה", "remote": "לאזור מרוחק יש תוספת לפי רשימת האזורים בקובץ \"תוספות והפחתות\"", "night": "לעבודת לילה, שבת וחג יש תוספת לפי קובץ \"תוספות והפחתות\"", "size": "עבודה מחוץ להיקף שהמחירון מכוון אליו מתאימים לפי טבלת \"תוספות והפחתות\"", "monthly": "המחירים מתעדכנים בכל 1 לחודש: משווים למהדורה של החודש שבו ניתנה ההצעה"}, "contact": "מחלקת השיווק של דקל: 04-8145400, שלוחה 1", "sources": [{"label": "דקל: שאלות ותשובות שכיחות", "url": "https://www.dekel.co.il/%D7%A9%D7%90%D7%9C%D7%95%D7%AA-%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA-%D7%A9%D7%9B%D7%99%D7%97%D7%95%D7%AA"}, {"label": "דקל: מחירון לבנייה ותשתיות", "url": "https://www.dekel.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%93%D7%A7%D7%9C-%D7%9C%D7%91%D7%A0%D7%99%D7%94-%D7%95%D7%AA%D7%A9%D7%AA%D7%99%D7%95%D7%AA"}]};var SP={};NadLanInstruments.register=function(id,s){SP[id]=s};</script><script>/* NadLan Instruments · dekel v1 (HAD-601, Q3 stage 2, 26.10.2026): the Dekel price-list family of /glossary/מחירון-דקל-לבנייה-ותשתיות/.
+</script><script>var DATA={"key": "dekel", "asof": "2026-10-25", "note": "dekel.co.il pages read 25.10.2026 (price-list pages, FAQ, site map). No Dekel item price is stored or shown: Dekel sells them. docs/research/2026-10-26-upgrades/q3-dekel-list/dna.md section 6.", "lists": {"build": {"name": "מחירון דקל לבנייה ותשתיות", "ch": 65, "items": "כ-44,000", "fit": "הקמה של פרויקט חדש, מחיר אחד לכל סעיף", "min": 800000, "max": 6000000}, "reno": {"name": "מחירון דקל לשיפוצים ואחזקה", "ch": 62, "items": "מעל 40,000", "fit": "שיפוץ ותחזוקה במבנה קיים, שני מחירים לכל סעיף לפי כמות", "min": 150000, "max": 500000}, "frame": {"name": "מחירון דקל להסכמי מסגרת", "ch": 66, "items": "כ-48,000", "fit": "מכרזי הנחה או תוספת שנתיים של רשויות וחברות"}, "renox": {"name": "מחירון שיפוצים מורחב", "ch": 66, "items": "כ-48,000", "fit": "מכרזי שיפוצים שנתיים"}, "house": {"name": "מחירון דקל לבנייה פרטית", "items": "כ-2,200", "fit": "בניית בית פרטי"}, "tenant": {"name": "מחירון דקל לשינויי דיירים", "items": "מאות סעיפים", "fit": "תוספות ושינויים בדירה מקבלן; מצורף לחוזה כנספח וקובע מחירים מוסכמים מראש"}, "apt": {"name": "מחירון דקל לשיפוץ דירות", "items": "מאות סעיפים, לפי חדרים ואזורים", "fit": "בעלי דירות שמשפצים"}, "sqm": {"name": "מחשבון דקל למ\"ר", "items": "", "fit": "אומדן עלות בנייה למגורים בשלב כלכלי ותכנוני מוקדם, נלווה לדוח 0"}}, "kinds": {"new": {"label": "בנייה של פרויקט חדש", "list": "build"}, "exist": {"label": "שיפוץ או תחזוקה במבנה קיים", "list": "reno"}, "tenant": {"label": "שינויים בדירה חדשה מקבלן", "list": "tenant"}, "house": {"label": "בניית בית פרטי", "list": "house"}, "apt": {"label": "שיפוץ דירה", "list": "apt"}, "tender": {"label": "מכרז שנתי של רשות או חברה", "list": "frame"}, "early": {"label": "אומדן מוקדם לפרויקט מגורים", "list": "sqm"}}, "rules": {"incl": "מחיר כל סעיף כולל עבודה, חומרים ורווח קבלן, אלא אם כתוב אחרת בסעיף", "steel": "ברזל לבטון נמדד ומתומחר בנפרד, אלא אם כתוב בסעיף שהוא כלול", "demo": "סעיפי הריסה ופירוק כוללים פינוי לאתר מורשה עד 15 ק\"מ; אגרת ההטמנה אינה כלולה", "remote": "לאזור מרוחק יש תוספת לפי רשימת האזורים בקובץ \"תוספות והפחתות\"", "night": "לעבודת לילה, שבת וחג יש תוספת לפי קובץ \"תוספות והפחתות\"", "size": "עבודה מחוץ להיקף שהמחירון מכוון אליו מתאימים לפי טבלת \"תוספות והפחתות\"", "monthly": "המחירים מתעדכנים בכל 1 לחודש: משווים למהדורה של החודש שבו ניתנה ההצעה"}, "contact": "מחלקת השיווק של דקל: 04-8145400, שלוחה 1", "sources": [{"label": "דקל: שאלות ותשובות שכיחות", "url": "https://www.dekel.co.il/%D7%A9%D7%90%D7%9C%D7%95%D7%AA-%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA-%D7%A9%D7%9B%D7%99%D7%97%D7%95%D7%AA"}, {"label": "דקל: מחירון לבנייה ותשתיות", "url": "https://www.dekel.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%93%D7%A7%D7%9C-%D7%9C%D7%91%D7%A0%D7%99%D7%94-%D7%95%D7%AA%D7%A9%D7%AA%D7%99%D7%95%D7%AA"}], "company": {"name": "דקל תוכנה (ד.ב.י) בע\"מ", "group": ["דקל שירותי מחשב להנדסה בע\"מ: מחירונים וספרות מקצועית", "דקל תוכנה (ד.ב.י) בע\"מ: תוכנות לניהול, תמחור ובקרה של פרויקטי בנייה", "דקל יפעת בע\"מ: תקצירי מכרזים"], "city": "חיפה, העצמאות 126"}, "sw": {"sqm": {"stage": "תכנון ואומדן ראשוני", "name": "מחשבון דקל למ\"ר", "what": "אומדן עלות בנייה למגורים בשלב מוקדם", "url": "sqm.dekel.co.il"}, "boq": {"stage": "כתב כמויות ואומדן", "name": "הכנת כתבי כמויות (דקל בענן)", "what": "כתב כמויות לפי מחירוני דקל או קטלוג מע\"צ ומשהב\"ט, השוואת כתבים, יבוא מאקסל", "url": "cloud.dekel.co.il"}, "bids": {"stage": "מכרז", "name": "דקל מכרז", "what": "ניהול מכרז מקוון, מסמכים ושאלות הבהרה", "url": "bids.dekel.co.il"}, "kablanomat": {"stage": "הצעות מחיר מקבלנים", "name": "קבצי קבלנומט", "what": "שליחת כתב כמויות לתמחור וקליטת ההצעות להשוואה", "url": ""}, "exec": {"stage": "ביצוע", "name": "ניהול ביצוע ובקרת פרויקט", "what": "יומני עבודה, משימות, סיכומי דיון ומעקב תקציב", "url": ""}, "accounts": {"stage": "חשבונות", "name": "ניהול חשבונות", "what": "חשבונות חלקיים ובקרה תקציבית", "url": ""}, "mobile": {"stage": "שטח ושיפוצים", "name": "דקל מובייל", "what": "כתב כמויות, הצעת מחיר, חשבון וחתימה מהנייד", "url": "app.dekel.co.il"}, "maint": {"stage": "תחזוקה", "name": "דקל תחזוקה", "what": "ביקורות, תקלות ומשימות עם דיווח מהשטח", "url": ""}, "frame": {"stage": "מכרזי מסגרת", "name": "הסכמי מסגרת", "what": "עבודה מול קבלנים לפי אחוז הנחה מהמחירון", "url": ""}}, "roles": {"buyer": {"label": "רוכש דירה שמבקש שינויי דיירים", "sw": [], "list": "tenant", "note": "לא צריך את התוכנה: מבקשים מהקבלן לתמחר את השינויים לפי מחירון דקל לשינויי דיירים, שמצורף לחוזה כנספח וקובע מחירים מוסכמים מראש."}, "reno": {"label": "קבלן שיפוצים או בעל מקצוע בשטח", "sw": ["mobile"], "list": "reno", "note": ""}, "pm": {"label": "מפקח, מתכנן או מנהל פרויקט", "sw": ["boq", "exec", "accounts"], "list": "build", "note": ""}, "tender": {"label": "רשות או חברה שמוציאה מכרז", "sw": ["bids", "kablanomat", "frame"], "list": "frame", "note": "דקל מציגה את דקל מכרז כמותאם לחוק חובת המכרזים (לפי דקל)."}, "dev": {"label": "יזם או שמאי בשלב מוקדם", "sw": ["sqm", "boq"], "list": "build", "note": ""}, "fm": {"label": "מנהל נכסים או אחזקה", "sw": ["maint"], "list": "reno", "note": ""}}, "vat": 18};var SP={};NadLanInstruments.register=function(id,s){SP[id]=s};</script><script>/* NadLan Instruments · dekel v1 (HAD-601, Q3 stage 2, 26.10.2026; 1.72.525 adds dktool and dkboq at the end): the Dekel price-list family of /glossary/מחירון-דקל-לבנייה-ותשתיות/.
    dkpick: the kind of work and its size → the Dekel list that fits, its chapters and items, and a warning when the size is outside the
    band the list is calibrated for; a decision tree with the path lit. dkquote: a contractor's quote line by line against the reader's
    own Dekel unit prices (from a subscription or the contractor's reference), with Dekel's own rules turned into questions for the
@@ -533,5 +536,109 @@ body{margin:0;background:#F4F6FA;color:#12202A;font-family:"IBM Plex Sans Hebrew
       return out;
     }
   });
+
+  /* 1.72.525 (Q4 /glossary/דקל-תוכנה/): dktool, which Dekel software fits a role, by project stage, with the official address; and
+     dkboq, a bill-of-quantities line builder in Dekel's item format with the reader's own unit prices (totals by chapter, contingency,
+     VAT as an editable parameter). No price of Dekel's is stored or shown. */
+  function boq(rows, cont, vat) {
+    var ch = {}, order = [], sub = 0, n = 0;
+    rows.forEach(function (r) {
+      var q = +r.q, p = +r.p; if (!(q > 0 && p > 0)) return;
+      var code = String(r.code || '').trim(), c = (code.split('.')[0] || '').trim() || 'ללא פרק';
+      if (!ch[c]) { ch[c] = 0; order.push(c); }
+      ch[c] += q * p; sub += q * p; n++;
+    });
+    var cn = sub * (cont || 0) / 100, net = sub + cn, v = net * (vat || 0) / 100;
+    return { ch: ch, order: order, sub: sub, cont: cn, net: net, vat: v, total: net + v, n: n };
+  }
+  window.NLDK.boq = boq;
+
+  function stages(d, on) {
+    var K = Object.keys(d.sw), W = 420, top = 66, step = 30, g = [];
+    g.push('<text x="408" y="20" class="t" text-anchor="start">הכלים של דקל לפי שלב בפרויקט</text>');
+    g.push('<text x="408" y="40" class="s" text-anchor="start">מסומן: מה שמתאים לתפקיד שבחרתם</text>');
+    K.forEach(function (k, i) {
+      var y = top + i * step, s = d.sw[k], lit = on.indexOf(k) > -1, c = lit ? '#1F4FA3' : '#C9D1D8';
+      g.push('<rect x="12" y="' + (y - 12) + '" width="396" height="24" fill="' + (lit ? '#EAF0FA' : '#fff') + '" stroke="' + c + '" stroke-width="' + (lit ? 1.8 : 1) + '"/>');
+      g.push('<text x="402" y="' + (y + 5) + '" class="s" text-anchor="start" style="fill:' + (lit ? '#12202A' : '#8A97A2') + '">' + esc(s.stage) + '</text>');
+      g.push('<text x="230" y="' + (y + 5) + '" class="s" text-anchor="start" style="fill:' + (lit ? '#1F4FA3' : '#8A97A2') + ';font-weight:' + (lit ? 600 : 400) + '">' + esc(s.name) + '</text>');
+    });
+    var H = top + K.length * step;
+    return '<svg class="nli__wall" direction="rtl" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('הכלים של דקל לפי שלב בפרויקט') + '">' + g.join('') + '</svg>';
+  }
+
+  NI.register('dktool', {
+    kicker: 'בחירה · תוכנת דקל',
+    title: 'איזה כלי של דקל מתאים לכם',
+    lede: 'בוחרים את התפקיד שלכם בפרויקט ומקבלים את הכלים של דקל שמתאימים לו, מה עושים בכל אחד, הכתובת הרשמית, ואיזה מחירון של דקל עומד מאחוריהם.',
+    presets: [
+      { key: 'pm', label: 'מפקח או מנהל פרויקט', sub: 'כתב כמויות, ביצוע וחשבונות', set: { role: 'pm' } },
+      { key: 'reno', label: 'קבלן שיפוצים', sub: 'מהנייד, בשטח', set: { role: 'reno' } },
+      { key: 'buyer', label: 'רוכש דירה', sub: 'שינויי דיירים', set: { role: 'buyer' } }
+    ],
+    defaults: function () { return { role: 'pm' }; },
+    fields: [
+      { id: 'role', label: 'התפקיד שלכם', type: 'select', optionsFrom: function (v, data) { var r = data.dekel.roles; return Object.keys(r).map(function (k) { return { value: k, label: r[k].label }; }); } }
+    ],
+    compute: function (v, data) {
+      var d = data.dekel, r = d.roles[v.role];
+      if (!r) return { error: { field: 'role', msg: 'בחרו תפקיד.' } };
+      var L = d.lists[r.list], lines = r.sw.map(function (k) { var s = d.sw[k]; return { label: s.name + ': ' + s.what, value: s.url || 'דרך דקל בענן' }; });
+      lines.push({ label: 'סעיפים במחירון שמאחורי הכלים', value: L.items || '' });
+      var note = [];
+      if (r.note) note.push(esc(r.note));
+      note.push('המחירון: ' + esc(L.name) + ', ' + esc(L.fit) + '.');
+      note.push('את המחיר של התוכנה דקל קובעת בהצעה לפי היקף ושימוש, עם הדגמה. ' + esc(d.contact) + '.');
+      note.push('כתובות הכניסה הן הכתובות שבמפת האתר של דקל. אתר שנקרא דומה אינו בהכרח של קבוצת דקל.');
+      return {
+        answer: { label: r.label, value: r.sw.length ? (r.sw.length === 1 ? d.sw[r.sw[0]].name : r.sw.length + ' כלים של דקל') : 'בלי תוכנה', sub: esc(r.sw.length ? r.sw.map(function (k) { return d.sw[k].name; }).join(' · ') : 'מחירון דקל לשינויי דיירים כנספח לחוזה') },
+        figure: stages(d, r.sw),
+        lines: lines,
+        note: note.join('<br>'),
+        table: { title: 'כל הכלים של דקל לפי שלב (לפי אתר דקל, 25.10.2026)', head: ['שלב', 'הכלי', 'מה עושים בו', 'כתובת'], phoneHide: [3],
+          rows: Object.keys(d.sw).map(function (k) { var s = d.sw[k]; return [s.stage, s.name, s.what, s.url || 'דרך דקל בענן']; }) },
+        formula: 'ההתאמה לפי התפקידים שדקל מציינת לכל כלי באתר שלה.',
+        sources: d.sources,
+        text: r.label + ': ' + (r.sw.length ? r.sw.map(function (k) { return d.sw[k].name + (d.sw[k].url ? ' (' + d.sw[k].url + ')' : ''); }).join(', ') : 'מחירון דקל לשינויי דיירים כנספח לחוזה') + '. ' + L.name + '.'
+      };
+    }
+  });
+
+  NI.register('dkboq', {
+    kicker: 'מחשבון · כתב כמויות',
+    title: 'כתב כמויות בפורמט דקל: נסו בעצמכם',
+    lede: 'מקלידים סעיפים בפורמט של דקל (פרק.תת פרק.סעיף), כמות ומחיר יחידה מהמנוי שלכם או מהצעה, ומקבלים סיכום לכל פרק, בצ"מ (בלתי צפוי מראש) לבחירתכם, מע"מ וסך הכול.',
+    defaults: function () { return { rows: [{ code: '02.010.0010', q: 0, p: 0 }, { code: '02.020.0030', q: 0, p: 0 }, { code: '08.011.0050', q: 0, p: 0 }], cont: 5, vat: 18 }; },
+    exampleNote: 'אין כאן מחירים של דקל: מקלידים כמות ומחיר יחידה מהמנוי או מהצעה. הקודים לדוגמה מראים רק את המבנה.',
+    fields: [
+      { id: 'rows', label: 'סעיפים (קוד סעיף, כמות, מחיר יחידה)', type: 'rows', addLabel: 'הוספת סעיף',
+        cols: [{ id: 'code', label: 'קוד סעיף', type: 'text', ph: 'פרק.תת פרק.סעיף' }, { id: 'q', label: 'כמות', ph: 'כמות' }, { id: 'p', label: 'מחיר יחידה', unit: '₪', ph: 'מחיר' }],
+        blank: function () { return { code: '', q: 0, p: 0 }; } },
+      { id: 'cont', label: 'בצ"מ (באחוזים, לבחירתכם)', type: 'percent' },
+      { id: 'vat', label: 'מע"מ (באחוזים)', type: 'percent', help: 'מע"מ בישראל: 18%. אפשר לשנות.' }
+    ],
+    compute: function (v, data) {
+      var b = boq(v.rows || [], v.cont, v.vat);
+      if (!(v.cont >= 0 && v.cont <= 50)) return { error: { field: 'cont', msg: 'בצ"מ בין 0% ל-50%.' } };
+      var lines = b.order.map(function (c) { return { label: 'פרק ' + c, value: F.ils(b.ch[c]) }; });
+      if (b.n) {
+        lines.push({ label: 'סיכום הסעיפים', value: F.ils(b.sub) });
+        if (b.cont) lines.push({ label: 'בצ"מ ' + F.num(v.cont) + '%', value: F.ils(b.cont) });
+        lines.push({ label: 'מע"מ ' + F.num(v.vat) + '%', value: F.ils(b.vat) });
+      }
+      return {
+        answer: b.n ? { label: 'סך הכול כולל מע"מ', value: F.ils(b.total), sub: esc(F.num(b.n) + ' סעיפים ב-' + F.num(b.order.length) + (b.order.length === 1 ? ' פרק' : ' פרקים')) }
+          : { label: 'כתב הכמויות', value: 'הקלידו כמות ומחיר', sub: 'השורות לדוגמה מראות את מבנה הקוד בלבד' },
+        lines: lines,
+        note: 'קוד סעיף בדקל בנוי מפרק, תת פרק וסעיף, למשל 68.035.0010 במסמכי מכרז. הסיכום לפי פרק נלקח מהחלק הראשון של הקוד. בכתב כמויות אמיתי מחירי היחידה מגיעים מהמהדורה של החודש.',
+        table: b.n ? { title: 'כתב הכמויות', head: ['קוד', 'כמות', 'מחיר יחידה', 'סה"כ'], num: [1, 2, 3],
+          rows: (v.rows || []).filter(function (r) { return +r.q > 0 && +r.p > 0; }).map(function (r) { return [String(r.code || ''), F.num(+r.q, +r.q % 1 ? 2 : 0), F.ils(+r.p), F.ils(r.q * r.p)]; }) } : null,
+        formula: 'סה"כ = (סכום כמות × מחיר יחידה) × (1 + בצ"מ) × (1 + מע"מ).',
+        sources: d0src(data),
+        text: b.n ? 'כתב כמויות: ' + F.num(b.n) + ' סעיפים, ' + F.ils(b.sub) + ' לפני בצ"מ ומע"מ, ' + F.ils(b.total) + ' כולל מע"מ.' : 'כתב כמויות בפורמט דקל.'
+      };
+    }
+  });
+  function d0src(data) { return data.dekel ? data.dekel.sources : []; }
 })();
-</script><script>var D={};D["dekel"]=DATA;NadLanInstruments.mount(document.getElementById("h0"),SP["dkpick"],D);NadLanInstruments.mount(document.getElementById("h1"),SP["dkpick"],D);NadLanInstruments.mount(document.getElementById("h2"),SP["dkquote"],D);</script></body></html>
+</script><script>var D={};D["dekel"]=DATA;D.d0=DATA;NadLanInstruments.mount(document.getElementById("h0"),SP["dkpick"],D);NadLanInstruments.mount(document.getElementById("h1"),SP["dkpick"],D);NadLanInstruments.mount(document.getElementById("h2"),SP["dkquote"],D);NadLanInstruments.mount(document.getElementById("h3"),SP["dktool"],D);NadLanInstruments.mount(document.getElementById("h4"),SP["dkboq"],D);</script></body></html>

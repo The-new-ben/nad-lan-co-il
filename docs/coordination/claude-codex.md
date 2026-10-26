@@ -4531,3 +4531,7 @@ RELEASE LOCK 1.72.523 (Mortgage2 + InvestMap: new tools/mortgage.js + data/boi-m
 RELEASE DONE 1.72.523 (Mortgage2 + InvestMap: Mortgage 2.0 and the yield and cash-flow map, registry + plain-text summaries) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.523. Lock released.
 RELEASE LOCK 1.72.524 (NrmForeign + page language override: nrm.js, nrm.json, boi-fx.json, mortgage.js swapped whole; hunks on the live inc/page-lang.php and inc/instruments.php) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.524 (NrmForeign + page language override: nrm v2, FX 23.10 + CAD/AUD/ZAR, mortgage chart colours, _nadlan_page_lang meta) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.524. Lock released.
+RELEASE LOCK 1.72.525 (DekelSoftware tools: dekel.js + dekel.json + core.js + core.css swapped whole; hunks on the live inc/instruments.php) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE ROLLED BACK 1.72.525 first run (an inherited check wants 'Short answer' on /israel-mortgage-non-residents/, which the U3 rewrite dropped; files restored from .bak525, health 1.72.524) by Claude [Ashira session] 26.10.2026. Lock released; rerun after the label is restored.
+RELEASE LOCK 1.72.525 second run (same content; the English mortgage page carries 'Short answer' again) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.525 (DekelSoftware tools: dktool, dkboq, text cells in rows) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.525. Lock released.

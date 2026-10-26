@@ -177,3 +177,6 @@ html body .nli .nli__in select{min-width:0;width:100%;max-width:100%;text-overfl
 .nli__wall .m{font:500 15px/1 var(--nli-mono);fill:var(--nli-ink)}.nli__wall .r{fill:var(--nli-survey)}
 /* 1.72.522: a rows field with three inputs (the Dekel quote check: quantity, Dekel price, quote price) */
 .nli__row:has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr) 44px}
+/* 1.72.525: a row whose first cell is text (an item code) gives that cell the room */
+.nli__row:has(> .nli__in:first-child input:not([inputmode])):has(> .nli__in:nth-child(3)){grid-template-columns:minmax(0,1.5fr) minmax(0,.55fr) minmax(0,1.15fr) 44px}
+.nli__row > .nli__in:first-child input:not([inputmode]){font-size:14px;letter-spacing:-.01em}

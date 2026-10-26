@@ -1,4 +1,4 @@
-/* NadLan Instruments · dekel v1 (HAD-601, Q3 stage 2, 26.10.2026): the Dekel price-list family of /glossary/מחירון-דקל-לבנייה-ותשתיות/.
+/* NadLan Instruments · dekel v1 (HAD-601, Q3 stage 2, 26.10.2026; 1.72.525 adds dktool and dkboq at the end): the Dekel price-list family of /glossary/מחירון-דקל-לבנייה-ותשתיות/.
    dkpick: the kind of work and its size → the Dekel list that fits, its chapters and items, and a warning when the size is outside the
    band the list is calibrated for; a decision tree with the path lit. dkquote: a contractor's quote line by line against the reader's
    own Dekel unit prices (from a subscription or the contractor's reference), with Dekel's own rules turned into questions for the
@@ -122,4 +122,108 @@
       return out;
     }
   });
+
+  /* 1.72.525 (Q4 /glossary/דקל-תוכנה/): dktool, which Dekel software fits a role, by project stage, with the official address; and
+     dkboq, a bill-of-quantities line builder in Dekel's item format with the reader's own unit prices (totals by chapter, contingency,
+     VAT as an editable parameter). No price of Dekel's is stored or shown. */
+  function boq(rows, cont, vat) {
+    var ch = {}, order = [], sub = 0, n = 0;
+    rows.forEach(function (r) {
+      var q = +r.q, p = +r.p; if (!(q > 0 && p > 0)) return;
+      var code = String(r.code || '').trim(), c = (code.split('.')[0] || '').trim() || 'ללא פרק';
+      if (!ch[c]) { ch[c] = 0; order.push(c); }
+      ch[c] += q * p; sub += q * p; n++;
+    });
+    var cn = sub * (cont || 0) / 100, net = sub + cn, v = net * (vat || 0) / 100;
+    return { ch: ch, order: order, sub: sub, cont: cn, net: net, vat: v, total: net + v, n: n };
+  }
+  window.NLDK.boq = boq;
+
+  function stages(d, on) {
+    var K = Object.keys(d.sw), W = 420, top = 66, step = 30, g = [];
+    g.push('<text x="408" y="20" class="t" text-anchor="start">הכלים של דקל לפי שלב בפרויקט</text>');
+    g.push('<text x="408" y="40" class="s" text-anchor="start">מסומן: מה שמתאים לתפקיד שבחרתם</text>');
+    K.forEach(function (k, i) {
+      var y = top + i * step, s = d.sw[k], lit = on.indexOf(k) > -1, c = lit ? '#1F4FA3' : '#C9D1D8';
+      g.push('<rect x="12" y="' + (y - 12) + '" width="396" height="24" fill="' + (lit ? '#EAF0FA' : '#fff') + '" stroke="' + c + '" stroke-width="' + (lit ? 1.8 : 1) + '"/>');
+      g.push('<text x="402" y="' + (y + 5) + '" class="s" text-anchor="start" style="fill:' + (lit ? '#12202A' : '#8A97A2') + '">' + esc(s.stage) + '</text>');
+      g.push('<text x="230" y="' + (y + 5) + '" class="s" text-anchor="start" style="fill:' + (lit ? '#1F4FA3' : '#8A97A2') + ';font-weight:' + (lit ? 600 : 400) + '">' + esc(s.name) + '</text>');
+    });
+    var H = top + K.length * step;
+    return '<svg class="nli__wall" direction="rtl" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('הכלים של דקל לפי שלב בפרויקט') + '">' + g.join('') + '</svg>';
+  }
+
+  NI.register('dktool', {
+    kicker: 'בחירה · תוכנת דקל',
+    title: 'איזה כלי של דקל מתאים לכם',
+    lede: 'בוחרים את התפקיד שלכם בפרויקט ומקבלים את הכלים של דקל שמתאימים לו, מה עושים בכל אחד, הכתובת הרשמית, ואיזה מחירון של דקל עומד מאחוריהם.',
+    presets: [
+      { key: 'pm', label: 'מפקח או מנהל פרויקט', sub: 'כתב כמויות, ביצוע וחשבונות', set: { role: 'pm' } },
+      { key: 'reno', label: 'קבלן שיפוצים', sub: 'מהנייד, בשטח', set: { role: 'reno' } },
+      { key: 'buyer', label: 'רוכש דירה', sub: 'שינויי דיירים', set: { role: 'buyer' } }
+    ],
+    defaults: function () { return { role: 'pm' }; },
+    fields: [
+      { id: 'role', label: 'התפקיד שלכם', type: 'select', optionsFrom: function (v, data) { var r = data.dekel.roles; return Object.keys(r).map(function (k) { return { value: k, label: r[k].label }; }); } }
+    ],
+    compute: function (v, data) {
+      var d = data.dekel, r = d.roles[v.role];
+      if (!r) return { error: { field: 'role', msg: 'בחרו תפקיד.' } };
+      var L = d.lists[r.list], lines = r.sw.map(function (k) { var s = d.sw[k]; return { label: s.name + ': ' + s.what, value: s.url || 'דרך דקל בענן' }; });
+      lines.push({ label: 'סעיפים במחירון שמאחורי הכלים', value: L.items || '' });
+      var note = [];
+      if (r.note) note.push(esc(r.note));
+      note.push('המחירון: ' + esc(L.name) + ', ' + esc(L.fit) + '.');
+      note.push('את המחיר של התוכנה דקל קובעת בהצעה לפי היקף ושימוש, עם הדגמה. ' + esc(d.contact) + '.');
+      note.push('כתובות הכניסה הן הכתובות שבמפת האתר של דקל. אתר שנקרא דומה אינו בהכרח של קבוצת דקל.');
+      return {
+        answer: { label: r.label, value: r.sw.length ? (r.sw.length === 1 ? d.sw[r.sw[0]].name : r.sw.length + ' כלים של דקל') : 'בלי תוכנה', sub: esc(r.sw.length ? r.sw.map(function (k) { return d.sw[k].name; }).join(' · ') : 'מחירון דקל לשינויי דיירים כנספח לחוזה') },
+        figure: stages(d, r.sw),
+        lines: lines,
+        note: note.join('<br>'),
+        table: { title: 'כל הכלים של דקל לפי שלב (לפי אתר דקל, 25.10.2026)', head: ['שלב', 'הכלי', 'מה עושים בו', 'כתובת'], phoneHide: [3],
+          rows: Object.keys(d.sw).map(function (k) { var s = d.sw[k]; return [s.stage, s.name, s.what, s.url || 'דרך דקל בענן']; }) },
+        formula: 'ההתאמה לפי התפקידים שדקל מציינת לכל כלי באתר שלה.',
+        sources: d.sources,
+        text: r.label + ': ' + (r.sw.length ? r.sw.map(function (k) { return d.sw[k].name + (d.sw[k].url ? ' (' + d.sw[k].url + ')' : ''); }).join(', ') : 'מחירון דקל לשינויי דיירים כנספח לחוזה') + '. ' + L.name + '.'
+      };
+    }
+  });
+
+  NI.register('dkboq', {
+    kicker: 'מחשבון · כתב כמויות',
+    title: 'כתב כמויות בפורמט דקל: נסו בעצמכם',
+    lede: 'מקלידים סעיפים בפורמט של דקל (פרק.תת פרק.סעיף), כמות ומחיר יחידה מהמנוי שלכם או מהצעה, ומקבלים סיכום לכל פרק, בצ"מ (בלתי צפוי מראש) לבחירתכם, מע"מ וסך הכול.',
+    defaults: function () { return { rows: [{ code: '02.010.0010', q: 0, p: 0 }, { code: '02.020.0030', q: 0, p: 0 }, { code: '08.011.0050', q: 0, p: 0 }], cont: 5, vat: 18 }; },
+    exampleNote: 'אין כאן מחירים של דקל: מקלידים כמות ומחיר יחידה מהמנוי או מהצעה. הקודים לדוגמה מראים רק את המבנה.',
+    fields: [
+      { id: 'rows', label: 'סעיפים (קוד סעיף, כמות, מחיר יחידה)', type: 'rows', addLabel: 'הוספת סעיף',
+        cols: [{ id: 'code', label: 'קוד סעיף', type: 'text', ph: 'פרק.תת פרק.סעיף' }, { id: 'q', label: 'כמות', ph: 'כמות' }, { id: 'p', label: 'מחיר יחידה', unit: '₪', ph: 'מחיר' }],
+        blank: function () { return { code: '', q: 0, p: 0 }; } },
+      { id: 'cont', label: 'בצ"מ (באחוזים, לבחירתכם)', type: 'percent' },
+      { id: 'vat', label: 'מע"מ (באחוזים)', type: 'percent', help: 'מע"מ בישראל: 18%. אפשר לשנות.' }
+    ],
+    compute: function (v, data) {
+      var b = boq(v.rows || [], v.cont, v.vat);
+      if (!(v.cont >= 0 && v.cont <= 50)) return { error: { field: 'cont', msg: 'בצ"מ בין 0% ל-50%.' } };
+      var lines = b.order.map(function (c) { return { label: 'פרק ' + c, value: F.ils(b.ch[c]) }; });
+      if (b.n) {
+        lines.push({ label: 'סיכום הסעיפים', value: F.ils(b.sub) });
+        if (b.cont) lines.push({ label: 'בצ"מ ' + F.num(v.cont) + '%', value: F.ils(b.cont) });
+        lines.push({ label: 'מע"מ ' + F.num(v.vat) + '%', value: F.ils(b.vat) });
+      }
+      return {
+        answer: b.n ? { label: 'סך הכול כולל מע"מ', value: F.ils(b.total), sub: esc(F.num(b.n) + ' סעיפים ב-' + F.num(b.order.length) + (b.order.length === 1 ? ' פרק' : ' פרקים')) }
+          : { label: 'כתב הכמויות', value: 'הקלידו כמות ומחיר', sub: 'השורות לדוגמה מראות את מבנה הקוד בלבד' },
+        lines: lines,
+        note: 'קוד סעיף בדקל בנוי מפרק, תת פרק וסעיף, למשל 68.035.0010 במסמכי מכרז. הסיכום לפי פרק נלקח מהחלק הראשון של הקוד. בכתב כמויות אמיתי מחירי היחידה מגיעים מהמהדורה של החודש.',
+        table: b.n ? { title: 'כתב הכמויות', head: ['קוד', 'כמות', 'מחיר יחידה', 'סה"כ'], num: [1, 2, 3],
+          rows: (v.rows || []).filter(function (r) { return +r.q > 0 && +r.p > 0; }).map(function (r) { return [String(r.code || ''), F.num(+r.q, +r.q % 1 ? 2 : 0), F.ils(+r.p), F.ils(r.q * r.p)]; }) } : null,
+        formula: 'סה"כ = (סכום כמות × מחיר יחידה) × (1 + בצ"מ) × (1 + מע"מ).',
+        sources: d0src(data),
+        text: b.n ? 'כתב כמויות: ' + F.num(b.n) + ' סעיפים, ' + F.ils(b.sub) + ' לפני בצ"מ ומע"מ, ' + F.ils(b.total) + ' כולל מע"מ.' : 'כתב כמויות בפורמט דקל.'
+      };
+    }
+  });
+  function d0src(data) { return data.dekel ? data.dekel.sources : []; }
 })();

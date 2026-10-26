@@ -213,6 +213,19 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'dekel.json' ),
 				'related' => array( '/glossary/%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%97%D7%9C%D7%A7%D7%99/' => 'חשבון חלקי', '/professionals/' => 'מאגר בעלי המקצוע' ),
 			),
+			/* 1.72.525 (HAD-601, Q4): dktool (which Dekel software fits a role) and dkboq (a BOQ line builder with the reader's own prices), tools/dekel.js */
+			'dktool' => array(
+				'file' => 'dekel', 'name' => 'איזה כלי של דקל מתאים לכם', 'cat' => 'ReferenceApplication', 'kicker' => 'בחירה · תוכנת דקל',
+				'desc' => 'לפי התפקיד בפרויקט (רוכש דירה בשינויי דיירים, קבלן שיפוצים, מפקח או מנהל פרויקט, רשות שמוציאה מכרז, יזם או שמאי, מנהל נכסים): אילו כלים של דקל מתאימים, מה עושים בכל אחד, הכתובת הרשמית מתוך מפת האתר של דקל, ואיזה מחירון של דקל עומד מאחוריהם.',
+				'data' => array( 'dekel.json' ),
+				'related' => array( '/glossary/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%93%D7%A7%D7%9C-%D7%9C%D7%91%D7%A0%D7%99%D7%99%D7%94-%D7%95%D7%AA%D7%A9%D7%AA%D7%99%D7%95%D7%AA/' => 'מחירון דקל לבנייה ותשתיות', '/glossary/%D7%9B%D7%AA%D7%91-%D7%9B%D7%9E%D7%95%D7%99%D7%95%D7%AA/' => 'כתב כמויות' ),
+			),
+			'dkboq' => array(
+				'file' => 'dekel', 'name' => 'כתב כמויות בפורמט דקל: נסו בעצמכם', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחשבון · כתב כמויות',
+				'desc' => 'סעיפים בפורמט של דקל (פרק.תת פרק.סעיף) עם כמות ומחיר יחידה שמקלידים מהמנוי או מהצעה: סיכום לכל פרק, בצ"מ לבחירה, מע"מ שאפשר לשנות וסך הכול. אין במחשבון מחירים של דקל.',
+				'data' => array( 'dekel.json' ),
+				'related' => array( '/glossary/%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%97%D7%9C%D7%A7%D7%99/' => 'חשבון חלקי', '/glossary/%D7%A4%D7%A7%D7%95%D7%93%D7%AA-%D7%A9%D7%99%D7%A0%D7%95%D7%99%D7%99%D7%9D/' => 'פקודת שינויים' ),
+			),
 			/* 1.72.523 (HAD-601, U1): Mortgage 2.0, a custom surface; boi-mortgage.json from Bank of Israel and CBS (25.10.2026), every value dated */
 			'mortgage' => array(
 				'name' => 'מחשבון משכנתא לפי מסלולים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · משכנתא',
@@ -533,6 +546,17 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				. number_format( $rate, 2 ) . '% (הממוצע של בנק ישראל ב' . esc_html( $hm[ (int) $pm[1] - 1 ] . ' ' . $pm[0] ) . '), כל 100,000 ₪ עולים ' . number_format( round( 100000 / $af ) ) . ' ₪ בחודש, ושכר הדירה מכסה את ההחזר ב־' . $pos . ' מתוך ' . $n
 				. ' ערים. מס רכישה על דירה נוספת: ' . number_format( 100 * $ex[0][1] ) . '% עד ' . number_format( $ex[0][0] ) . ' ₪ ו־' . number_format( 100 * $ex[1][1] ) . '% מעל, עד ' . esc_html( date_i18n( 'j.n.Y', strtotime( $L['ptax']['until']['extra'] ) ) ) . '.</p>'
 				. '<table><caption>כמה מהדירה שכר הדירה קונה: ' . $n . ' ערים, 4 חדרים, ' . esc_html( $ql( $x['cityQ'] ) ) . ', משכנתא 50% ל־25 שנה בריבית ' . number_format( $rate, 2 ) . '% (החישוב שלנו)</caption><thead><tr><th>עיר</th><th>שכר דירה חציוני (₪)</th><th>מחיר חציוני (₪)</th><th>תשואה ברוטו</th><th>החזר חודשי (₪)</th><th>כמה מהדירה שכר הדירה קונה</th></tr></thead><tbody>' . $rows . '</tbody></table>';
+		}
+		if ( 'dktool' === $id || 'dkboq' === $id ) {  // 1.72.525: the Dekel software map as plain text; no Dekel price is stored or shown
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/dekel.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['sw'] ) ) { return ''; }
+			if ( 'dkboq' === $id ) {
+				return '<p>קוד סעיף במחירון דקל בנוי מפרק, תת פרק וסעיף, למשל 68.035.0010 במסמכי מכרז. העלות של שורה בכתב כמויות היא הכמות כפול מחיר היחידה מהמהדורה של החודש; לסיכום מוסיפים בצ"מ, אם רוצים, ומע"מ של ' . (int) $d['vat'] . '%. את מחירי היחידה של דקל מקבלים במנוי: ' . esc_html( $d['contact'] ) . '.</p>';
+			}
+			$t = '<table><caption>הכלים של דקל לפי שלב בפרויקט (לפי מפת האתר של דקל, 25.10.2026)</caption><thead><tr><th>שלב</th><th>הכלי</th><th>מה עושים בו</th><th>כתובת</th></tr></thead><tbody>';
+			foreach ( $d['sw'] as $s ) { $t .= '<tr><td>' . esc_html( $s['stage'] ) . '</td><td>' . esc_html( $s['name'] ) . '</td><td>' . esc_html( $s['what'] ) . '</td><td>' . esc_html( '' !== $s['url'] ? $s['url'] : 'דרך דקל בענן' ) . '</td></tr>'; }
+			return '<p>דקל תוכנה היא ' . esc_html( $d['company']['name'] ) . ', החברה בקבוצת דקל (' . esc_html( $d['company']['city'] ) . ') שמפתחת את תוכנות התמחור והניהול של הקבוצה. המוצר המרכזי הוא תוכנת דקל בענן, שבה מכינים כתבי כמויות לפי מחירוני דקל. המחיר נקבע בהצעה לפי היקף.</p>' . $t . '</tbody></table>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';

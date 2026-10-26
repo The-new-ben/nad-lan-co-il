@@ -69,9 +69,9 @@
           var row = el('div', 'nli__row');
           f.cols.forEach(function (c) {
             var box = el('div', 'nli__in');
-            var inp = el('input'); inp.type = c.type === 'date' ? 'date' : 'text'; if (c.type !== 'date') inp.inputMode = 'decimal';
-            inp.value = r[c.id]; inp.setAttribute('aria-label', c.label + ' ' + (i + 1));
-            inp.addEventListener('input', function () { r[c.id] = c.type === 'date' ? inp.value : parseMoney(inp.value); st.v.__custom = true; onChange(f.id, true); });
+            var inp = el('input'); inp.type = c.type === 'date' ? 'date' : 'text'; if (c.type !== 'date' && c.type !== 'text') inp.inputMode = 'decimal';  // 1.72.525: 'text' cells (an item code)
+            inp.value = r[c.id]; inp.setAttribute('aria-label', c.label + ' ' + (i + 1)); if (c.ph) inp.placeholder = c.ph;  // 1.72.525: a cell can name itself
+            inp.addEventListener('input', function () { r[c.id] = (c.type === 'date' || c.type === 'text') ? inp.value : parseMoney(inp.value); st.v.__custom = true; onChange(f.id, true); });
             box.appendChild(inp); if (c.unit) box.appendChild(el('span', 'nli__unit', esc(c.unit)));
             row.appendChild(box);
           });
