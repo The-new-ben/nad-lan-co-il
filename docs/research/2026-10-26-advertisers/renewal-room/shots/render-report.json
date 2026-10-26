@@ -1,0 +1,79 @@
+{
+ "rrp-portfolio-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "rrp-tab -17..76"
+  ],
+  "shot": "rrp-portfolio-390.png"
+ },
+ "rrp-portfolio-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "rrp-portfolio-1280.png"
+ },
+ "rrp-complex-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "rrp-tab -17..76",
+   "rrp-bld -23..157",
+   "rrp-facade -23..157",
+   "rrp-apt s-docs -12..18",
+   "SPAN -3..9",
+   "rrp-apt s-yes -12..18"
+  ],
+  "shot": "rrp-complex-390.png"
+ },
+ "rrp-complex-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "rrp-complex-1280.png"
+ },
+ "rrp-updates-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "rrp-tab -17..76"
+  ],
+  "shot": "rrp-updates-390.png"
+ },
+ "rrp-updates-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "rrp-updates-1280.png"
+ },
+ "rrp-report-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "rrp-tab -17..76"
+  ],
+  "shot": "rrp-report-390.png"
+ },
+ "rrp-report-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "rrp-report-1280.png"
+ }
+}

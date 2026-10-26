@@ -1,0 +1,18 @@
+{
+ "adams-profile-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [],
+  "shot": "adams-profile-390.png"
+ },
+ "adams-profile-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "adams-profile-1280.png"
+ }
+}

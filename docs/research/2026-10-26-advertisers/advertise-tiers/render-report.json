@@ -1,0 +1,34 @@
+{
+ "tiers-renewal-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [],
+  "shot": "tiers-renewal-390.png"
+ },
+ "tiers-renewal-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "tiers-renewal-1280.png"
+ },
+ "tiers-pro-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [],
+  "shot": "tiers-pro-390.png"
+ },
+ "tiers-pro-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "tiers-pro-1280.png"
+ }
+}

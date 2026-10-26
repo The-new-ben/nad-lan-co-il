@@ -1,0 +1,354 @@
+diff --git a/plugins/nadlan-config/inc/ad-safety.php b/plugins/nadlan-config/inc/ad-safety.php
+new file mode 100644
+index 0000000..4a64f15
+--- /dev/null
++++ b/plugins/nadlan-config/inc/ad-safety.php
+@@ -0,0 +1,83 @@
++<?php
++/**
++ * nadlan-config - Advertising safety rules (local patch 26.10.2026, not live).
++ *
++ * Before the site sells exposure to more advertisers, every paid surface follows four rules (Google:
++ * developers.google.com/search/docs/crawling-indexing/qualify-outbound-links and the link-spam and site
++ * reputation policies; research: docs/research/2026-10-26-advertisers/adams-research.md, section 6):
++ *  1) every outbound link that a paying advertiser gets is rel="sponsored noopener" (nadlan_ad_rel);
++ *  2) every paid card or profile carries a visible "פרסומת" / "ממומן" label, and a paid profile says so;
++ *  3) paid text lives on the advertiser's own profile or mini-site, never as a guide page: guides that give
++ *     neutral advice can be marked ad-free (post meta nadlan_ad_free = 1, or a path in the option
++ *     nadlan_ad_free_paths) and then no paid card renders on them;
++ *  4) a cap on paid cards per page (option nadlan_ad_paid_cap, default 3), counted across the inline
++ *     professional cards, the end-of-article experts row and placements.
++ * Paid wrappers carry data-paid="1" so tools/seo/paid_link_check.py can audit the raw HTML.
++ * Unpaid business links keep their current rel unless the filter nadlan_ad_rel_unpaid says otherwise.
++ * Indexing is untouched: no noindex, no robots change, no redirect.
++ */
++if ( ! defined( 'ABSPATH' ) ) { exit; }
++
++if ( ! function_exists( 'nadlan_ad_is_paid' ) ) {
++	/** A card is paid while its tier is pro/premier or a content sponsorship is running. */
++	function nadlan_ad_is_paid( $post_id ) {
++		$post_id = (int) $post_id;
++		if ( $post_id <= 0 ) { return false; }
++		$tier = (string) get_post_meta( $post_id, 'paid_tier', true );
++		if ( in_array( $tier, array( 'pro', 'premier' ), true ) ) { return true; }
++		return (int) get_post_meta( $post_id, 'procard_sponsor_until', true ) >= time();
++	}
++}
++
++if ( ! function_exists( 'nadlan_ad_rel' ) ) {
++	/** The rel for an outbound link printed for this card: sponsored when paid. */
++	function nadlan_ad_rel( $post_id ) {
++		if ( nadlan_ad_is_paid( $post_id ) ) { return 'sponsored noopener'; }
++		return (string) apply_filters( 'nadlan_ad_rel_unpaid', 'noopener', (int) $post_id );
++	}
++}
++
++if ( ! function_exists( 'nadlan_ad_free_page' ) ) {
++	/** True on pages that give neutral advice and must stay free of paid cards. */
++	function nadlan_ad_free_page( $post_id = 0 ) {
++		$post_id = $post_id ? (int) $post_id : (int) get_queried_object_id();
++		if ( $post_id && '1' === (string) get_post_meta( $post_id, 'nadlan_ad_free', true ) ) { return true; }
++		$here  = '/' . trim( rawurldecode( (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ) ), '/' ) . '/';
++		$paths = preg_split( '/\R/', (string) get_option( 'nadlan_ad_free_paths', '' ) );
++		foreach ( (array) $paths as $p ) {
++			$p = trim( (string) $p );
++			if ( '' !== $p && '/' . trim( $p, '/' ) . '/' === $here ) { return true; }
++		}
++		return false;
++	}
++}
++
++if ( ! function_exists( 'nadlan_ad_slot_take' ) ) {
++	/** Takes one paid slot on this request; false once the page reached the cap. */
++	function nadlan_ad_slot_take() {
++		static $used = 0;
++		$cap = max( 0, (int) get_option( 'nadlan_ad_paid_cap', 3 ) );
++		if ( $used >= $cap ) { return false; }
++		$used++;
++		return true;
++	}
++}
++
++/* rule 2 on the profile itself: a paying advertiser's own page says it is a paid profile */
++add_filter( 'the_content', function ( $content ) {
++	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
++	$id = get_the_ID();
++	if ( ! nadlan_ad_is_paid( $id ) ) { return $content; }
++	$label = '<p class="nlad-label" data-paid="1" dir="rtl">פרופיל ממומן · הפרטים והתוכן נמסרו על ידי העסק ובאחריותו</p>'
++		. '<style>.nlad-label{display:inline-block;margin:0 0 12px;padding:4px 9px;border:1px solid #12202A;border-radius:2px;font:600 12px/1.4 "IBM Plex Sans Hebrew",Heebo,sans-serif;color:#12202A;background:#fff}</style>';
++	return $label . $content;
++}, 31 );
++
++add_filter( 'nadlan_config_healthcheck', function ( $out ) {
++	$out['ad_safety'] = array(
++		'paid_rel'  => 'sponsored noopener',
++		'paid_cap'  => (int) get_option( 'nadlan_ad_paid_cap', 3 ),
++		'ad_free_paths' => count( array_filter( preg_split( '/\R/', (string) get_option( 'nadlan_ad_free_paths', '' ) ) ) ),
++	);
++	return $out;
++} );
+diff --git a/plugins/nadlan-config/inc/brokers-list.php b/plugins/nadlan-config/inc/brokers-list.php
+index 3cb4e2d..0fae3a0 100644
+--- a/plugins/nadlan-config/inc/brokers-list.php
++++ b/plugins/nadlan-config/inc/brokers-list.php
+@@ -82,7 +82,9 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
+ 			'line'       => '',
+ 			'link_attrs' => '',
+ 			'calendar'   => true, // the broker's own booking page, when there is one, takes the tour button
++			'rel'        => 'noopener', // a paid placement passes "sponsored noopener" (inc/ad-safety.php)
+ 		) );
++		$rel    = in_array( $args['rel'], array( 'noopener', 'sponsored noopener' ), true ) ? $args['rel'] : 'noopener';
+ 		$tag    = in_array( $args['name_tag'], array( 'h2', 'h3', 'p' ), true ) ? $args['name_tag'] : 'h3';
+ 		$cal    = $args['calendar'] && function_exists( 'nadlan_prof_calendar_url' ) ? nadlan_prof_calendar_url( $id ) : '';
+ 		$brand  = trim( (string) get_post_meta( $id, 'company_name', true ) );
+@@ -108,8 +110,8 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
+ 		<?php if ( $count > 0 ) : ?><p class="nlds-bfeat__count"><b class="nlds-num"><?php echo (int) $count; ?></b> נכסים</p><?php endif; ?>
+ 	</div>
+ 	<div class="nlds-bfeat__cta">
+-		<?php if ( '' !== $cal ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="<?php echo esc_url( $cal ); ?>" data-nl-ev="tour"><span><?php echo esc_html( $args['wa_label'] ); ?></span></a>
+-		<?php elseif ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( (string) $args['wa_text'] ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span><?php echo esc_html( $args['wa_label'] ); ?></span></a><?php endif; ?>
++		<?php if ( '' !== $cal ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="<?php echo esc_attr( $rel ); ?>" href="<?php echo esc_url( $cal ); ?>" data-nl-ev="tour"><span><?php echo esc_html( $args['wa_label'] ); ?></span></a>
++		<?php elseif ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="<?php echo esc_attr( $rel ); ?>" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( (string) $args['wa_text'] ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span><?php echo esc_html( $args['wa_label'] ); ?></span></a><?php endif; ?>
+ 		<a class="nlds-btn nlds-btn--secondary" href="<?php echo esc_url( $href ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><span><?php echo esc_html( $args['site_label'] ); ?></span><?php echo nlds_icon( 'forward' ); // phpcs:ignore ?></a>
+ 	</div>
+ </article>
+diff --git a/plugins/nadlan-config/inc/placements.php b/plugins/nadlan-config/inc/placements.php
+index fdf52a1..b40005a 100644
+--- a/plugins/nadlan-config/inc/placements.php
++++ b/plugins/nadlan-config/inc/placements.php
+@@ -154,10 +154,11 @@ if ( ! function_exists( 'nadlan_pl_card' ) ) {
+ 			'line'       => trim( (string) get_post_meta( $pl, 'pl_headline', true ) ),
+ 			'link_attrs' => ' data-nl-ev="place_click" data-nl-slot="' . esc_attr( $slot ) . '"',
+ 			'calendar'   => false, // an advertisement on an article offers a conversation, not a tour
++			'rel'        => 'sponsored noopener', // a placement is paid: its outbound links are advertisements
+ 		) );
+ 		if ( '' === trim( $inner ) ) { return ''; }
+ 		// the label is the law: the site is a publisher, and this is the broker's advertisement (name and licence are in the card)
+-		return '<aside class="nlds nlpl" dir="rtl" lang="he" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . $name ) . '">'
++		return '<aside class="nlds nlpl" dir="rtl" lang="he" data-paid="1" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . $name ) . '">'
+ 			. '<p class="nlds-kicker nlpl-tag">פרסומת</p>' . $inner . '</aside>';
+ 	}
+ }
+@@ -202,6 +203,9 @@ add_filter( 'the_content', function ( $content ) {
+ 	if ( ! in_the_loop() || ! is_main_query() ) { return $content; }
+ 	$pl = nadlan_pl_for_request();
+ 	if ( ! $pl ) { return $content; }
++	// neutral-advice pages carry no advertisement, and a placement counts toward the per-page cap (inc/ad-safety.php)
++	if ( function_exists( 'nadlan_ad_free_page' ) && nadlan_ad_free_page() ) { return $content; }
++	if ( function_exists( 'nadlan_ad_slot_take' ) && ! nadlan_ad_slot_take() ) { return $content; }
+ 	$card = nadlan_pl_card( $pl );
+ 	if ( '' === $card ) { return $content; }
+ 	return nadlan_pl_insert( $content, $card, nadlan_pl_for_request( 'pos' ) );
+diff --git a/plugins/nadlan-config/inc/pro-cards.php b/plugins/nadlan-config/inc/pro-cards.php
+index 90f3f7c..7b728cc 100644
+--- a/plugins/nadlan-config/inc/pro-cards.php
++++ b/plugins/nadlan-config/inc/pro-cards.php
+@@ -172,7 +172,8 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
+ 		$fill  = max( 0, min( 100, $rate * 20 ) );
+ 		$facts = array_filter( array( $city, $cls, $reg ? 'רישיון ' . $reg : '' ) );
+ 		ob_start(); ?>
+-<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?><?php echo $spon ? ' nlprc--spon' : ''; ?>" dir="rtl">
++<?php $paid = $spon || ( 'free' !== $tier && $tier ); ?>
++<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?><?php echo $spon ? ' nlprc--spon' : ''; ?>" dir="rtl"<?php echo $paid ? ' data-paid="1"' : ''; ?>>
+ 	<?php if ( $spon || ( 'free' !== $tier && $tier ) ) : ?><span class="nlprc-spon">ממומן</span><?php endif; ?>
+ 	<a class="nlprc-media" href="<?php echo esc_url( get_permalink( $id ) ); ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>>
+ 		<?php if ( ! $img ) : ?><span class="nlprc-mono"><?php echo esc_html( mb_substr( get_the_title( $id ), 0, 1 ) ); ?></span><?php endif; ?>
+@@ -190,7 +191,7 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
+ 		<?php if ( ! $compact && $bio ) : ?><p class="nlprc-bio"><?php echo esc_html( $bio ); ?></p><?php endif; ?>
+ 		<?php if ( ! $compact ) : ?>
+ 		<div class="nlprc-cta">
+-			<?php if ( $wa ) : ?><a class="nlprc-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg> וואטסאפ</a><?php endif; ?>
++			<?php if ( $wa ) : ?><a class="nlprc-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>" target="_blank" rel="<?php echo $paid ? 'sponsored noopener' : 'noopener'; ?>"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg> וואטסאפ</a><?php endif; ?>
+ 			<?php if ( $phone ) : ?><a class="nlprc-call" href="tel:<?php echo esc_attr( $phone ); ?>">התקשרו</a><?php endif; ?>
+ 			<a class="nlprc-go" href="<?php echo esc_url( get_permalink( $id ) ); ?>">לכרטיס המלא ←</a>
+ 		</div>
+@@ -205,7 +206,15 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
+ add_filter( 'the_content', function ( $content ) {
+ 	if ( ! is_singular( array( 'nadlan_term', 'post' ) ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+ 	if ( (int) get_option( 'nadlan_procard_enabled', 1 ) !== 1 ) { return $content; }
++	// neutral-advice pages stay free of paid cards (inc/ad-safety.php)
++	if ( function_exists( 'nadlan_ad_free_page' ) && nadlan_ad_free_page( get_the_ID() ) ) { return $content; }
+ 	$pros = nadlan_procard_match( get_the_ID() );
++	// the per-page cap on paid cards: a paid card beyond the cap is dropped, free cards stay
++	if ( $pros && function_exists( 'nadlan_ad_slot_take' ) && function_exists( 'nadlan_ad_is_paid' ) ) {
++		$pros = array_values( array_filter( array_slice( $pros, 0, 6 ), function ( $p ) {
++			return ! nadlan_ad_is_paid( $p->ID ) || nadlan_ad_slot_take();
++		} ) );
++	}
+ 	if ( ! $pros ) { return $content; }
+ 	$max  = max( 1, (int) get_option( 'nadlan_procard_max', 2 ) );
+ 	$lead = array_slice( $pros, 0, 1 );
+diff --git a/plugins/nadlan-config/inc/profile-extras.php b/plugins/nadlan-config/inc/profile-extras.php
+index 5b67157..8696269 100644
+--- a/plugins/nadlan-config/inc/profile-extras.php
++++ b/plugins/nadlan-config/inc/profile-extras.php
+@@ -39,19 +39,22 @@ if ( ! function_exists( 'nadlan_pe_render' ) ) {
+ 			'social_youtube'   => array( 'YouTube',   $ico_yt, '#11110F' ),
+ 		);
+ 		$links = '';
++		// paid profiles: every outbound link is an advertisement (rel sponsored), see inc/ad-safety.php
++		$rel  = function_exists( 'nadlan_ad_rel' ) ? nadlan_ad_rel( $id ) : 'noopener';
++		$paid = function_exists( 'nadlan_ad_is_paid' ) && nadlan_ad_is_paid( $id );
+ 		foreach ( $socials as $key => $info ) {
+ 			$url = (string) get_post_meta( $id, $key, true );
+ 			if ( ! $url ) { continue; }
+-			$links .= '<a class="nlpe-soc" href="' . esc_url( $url ) . '" target="_blank" rel="noopener" style="--c:' . esc_attr( $info[2] ) . '" aria-label="' . esc_attr( $info[0] ) . '"><span>' . $info[1] . '</span>' . esc_html( $info[0] ) . '</a>';
++			$links .= '<a class="nlpe-soc" href="' . esc_url( $url ) . '" target="_blank" rel="' . esc_attr( $rel ) . '" style="--c:' . esc_attr( $info[2] ) . '" aria-label="' . esc_attr( $info[0] ) . '"><span>' . $info[1] . '</span>' . esc_html( $info[0] ) . '</a>';
+ 		}
+ 		$website = (string) get_post_meta( $id, 'website', true );
+ 		if ( $website ) {
+-			$links .= '<a class="nlpe-soc" href="' . esc_url( $website ) . '" target="_blank" rel="noopener" style="--c:#9C7A3C" aria-label="אתר"><span>' . $ico_www . '</span>אתר</a>';
++			$links .= '<a class="nlpe-soc" href="' . esc_url( $website ) . '" target="_blank" rel="' . esc_attr( $rel ) . '" style="--c:#1F4B5C" aria-label="אתר"><span>' . $ico_www . '</span>אתר</a>';
+ 		}
+ 		$video_html = nadlan_pe_video_embed( (string) get_post_meta( $id, 'video_url', true ) );
+ 		if ( ! $links && ! $video_html ) { return ''; }
+ 		ob_start(); ?>
+-<section class="nlpe" dir="rtl">
++<section class="nlpe" dir="rtl"<?php echo $paid ? ' data-paid="1"' : ''; ?>>
+ 	<?php if ( $links ) : ?><div class="nlpe-socials"><?php echo $links; ?></div><?php endif; ?>
+ 	<?php if ( $video_html ) : ?><?php echo $video_html; ?><?php endif; ?>
+ </section>
+diff --git a/plugins/nadlan-config/nadlan-config.php b/plugins/nadlan-config/nadlan-config.php
+index 8fe7c6e..1fdc227 100644
+--- a/plugins/nadlan-config/nadlan-config.php
++++ b/plugins/nadlan-config/nadlan-config.php
+@@ -30,7 +30,7 @@ if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
+  * project-page-assembly and project-3d removed; the pieces the live engine
+  * still needs moved to showroom-support.php.
+  */
+-foreach ( array( 'catalog-meta', 'project-mode', 'claim', 'alerts', 'mailer', 'lead-board', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'flagship-surface', 'flagship-cotour', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-owner', 'property-wizard', 'project-experience', 'project-image-batch', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice', 'tour-routes', 'developers-page', 'earth-experience', 'utopia-sde-dov', 'feature-bar', 'mobile-nav-repair', 'project-lang', 'schema-meta', 'area-price-line', 'auction-upsell', 'developer-redirect', 'page-lang', 'project-strip', 'project-topbar', 'matcher', 'guides-index', 'einstein-lab', 'smart-404', 'seo-gaps', 'layout-fixes', 'insights', 'placements', 'pro-network', 'page-h1', 'design-system', 'brokers-list', 'firgun', 'legal-links', 'project-stage', 'together', 'lang-pages', 'basket', 'rest-privacy', 'home-v3', 'pro-card', 'cta-sheet' ) as $nadlan_mod ) {
++foreach ( array( 'catalog-meta', 'project-mode', 'claim', 'alerts', 'mailer', 'lead-board', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'ad-safety', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'flagship-surface', 'flagship-cotour', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-owner', 'property-wizard', 'project-experience', 'project-image-batch', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice', 'tour-routes', 'developers-page', 'earth-experience', 'utopia-sde-dov', 'feature-bar', 'mobile-nav-repair', 'project-lang', 'schema-meta', 'area-price-line', 'auction-upsell', 'developer-redirect', 'page-lang', 'project-strip', 'project-topbar', 'matcher', 'guides-index', 'einstein-lab', 'smart-404', 'seo-gaps', 'layout-fixes', 'insights', 'placements', 'pro-network', 'page-h1', 'design-system', 'brokers-list', 'firgun', 'legal-links', 'project-stage', 'together', 'lang-pages', 'basket', 'rest-privacy', 'home-v3', 'pro-card', 'cta-sheet' ) as $nadlan_mod ) {
+ 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
+ 	if ( file_exists( $nadlan_mod_file ) ) {
+ 		require_once $nadlan_mod_file;
+diff --git a/tools/seo/paid_link_check.py b/tools/seo/paid_link_check.py
+new file mode 100644
+index 0000000..bcf5bf8
+--- /dev/null
++++ b/tools/seo/paid_link_check.py
+@@ -0,0 +1,125 @@
++"""Paid-link check for nad-lan.co.il (read-only; it only downloads public pages).
++
++Rules (inc/ad-safety.php): every outbound link inside a paid surface is rel="sponsored ...", every paid card
++shows "ממומן" or "פרסומת", a paid profile shows its label, and a page carries at most N paid cards.
++Paid surfaces: elements with data-paid="1", plus (for pages released before the attribute) the existing
++markers: a professional card that holds the "ממומן" chip (.nlprc-spon) and a placement aside (.nlpl).
++
++Usage: python tools/seo/paid_link_check.py URL [URL ...] [--cap 3]
++Exit code 1 when any FAIL is found.
++"""
++import argparse
++import sys
++import urllib.parse
++import urllib.request
++from html.parser import HTMLParser
++
++HOST = 'nad-lan.co.il'
++
++
++class Scan(HTMLParser):
++    def __init__(self):
++        super().__init__(convert_charrefs=True)
++        self.stack = []          # (tag, is_paid_root, kind)
++        self.paid_depth = 0
++        self.roots = []          # dicts: kind, links, text
++        self.label_found = False
++
++    def handle_starttag(self, tag, attrs):
++        a = dict(attrs)
++        cls = ' ' + (a.get('class') or '') + ' '
++        kind = ''
++        if a.get('data-paid') == '1':
++            kind = 'data-paid'
++        elif ' nlpl ' in cls:
++            kind = 'placement'
++        elif ' nlprc ' in cls:
++            kind = 'procard?'
++        if ' nlad-label ' in cls:
++            self.label_found = True
++        is_root = bool(kind) and self.paid_depth == 0
++        if tag in ('br', 'img', 'input', 'meta', 'link', 'hr', 'source'):
++            return
++        self.stack.append((tag, is_root, kind))
++        if is_root:
++            self.paid_depth = 1
++            self.roots.append({'kind': kind, 'cls': cls.strip()[:60], 'links': [], 'text': ''})
++        elif self.paid_depth:
++            self.paid_depth += 1
++        if self.paid_depth and tag == 'a' and a.get('href'):
++            self.roots[-1]['links'].append((a.get('href'), a.get('rel') or ''))
++
++    def handle_endtag(self, tag):
++        while self.stack:
++            t, is_root, _ = self.stack.pop()
++            if self.paid_depth:
++                self.paid_depth -= 1
++            if t == tag:
++                break
++
++    def handle_data(self, d):
++        if self.paid_depth and self.roots:
++            self.roots[-1]['text'] += d
++
++
++def external(href):
++    u = urllib.parse.urlparse(href)
++    if u.scheme in ('tel', 'mailto', 'javascript', ''):
++        return False
++    return bool(u.netloc) and not u.netloc.endswith(HOST)
++
++
++def check(url, cap):
++    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (paid_link_check)'})
++    html = urllib.request.urlopen(req, timeout=60).read().decode('utf-8', 'replace')
++    s = Scan()
++    s.feed(html)
++    out, fails = [], 0
++    roots = []
++    for r in s.roots:
++        if r['kind'] == 'procard?':
++            if 'ממומן' not in r['text']:
++                continue  # an unpaid professional card
++            r['kind'] = 'procard'
++        roots.append(r)
++    cards = [r for r in roots if r['kind'] in ('procard', 'placement') or 'nlprc' in r['cls'] or 'nlpl' in r['cls']]
++    for r in roots:
++        for href, rel in r['links']:
++            if external(href) and 'sponsored' not in rel.split():
++                fails += 1
++                out.append(f'FAIL  {r["kind"]}: outbound link without rel=sponsored: {href[:70]} rel="{rel}"')
++        if (r in cards) and not ('ממומן' in r['text'] or 'פרסומת' in r['text']):
++            fails += 1
++            out.append(f'FAIL  {r["kind"]}: paid card without a visible "ממומן"/"פרסומת" label')
++        if 'nlpe' in r['cls'] and not s.label_found:
++            fails += 1
++            out.append('FAIL  paid profile without the "פרופיל ממומן" label')
++    if len(cards) > cap:
++        fails += 1
++        out.append(f'FAIL  {len(cards)} paid cards on the page (cap {cap})')
++    out.append(f'INFO  paid surfaces: {len(roots)} (cards {len(cards)})')
++    return fails, out
++
++
++def main():
++    sys.stdout.reconfigure(encoding='utf-8')
++    ap = argparse.ArgumentParser()
++    ap.add_argument('urls', nargs='+')
++    ap.add_argument('--cap', type=int, default=3)
++    a = ap.parse_args()
++    total = 0
++    for u in a.urls:
++        try:
++            f, lines = check(u, a.cap)
++        except Exception as e:  # noqa: BLE001 - report and continue
++            f, lines = 1, [f'FAIL  could not read the page: {e}']
++        total += f
++        print(u)
++        for line in lines:
++            print('  ' + line)
++    print('RESULT:', 'FAIL' if total else 'OK')
++    sys.exit(1 if total else 0)
++
++
++if __name__ == '__main__':
++    main()

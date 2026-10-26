@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Advertiser Profile</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Local sample only (26.10.2026): how a paid profile ("פרופיל Premier" + "כתבת מפרסם") for ADAM'S would look on
+   /professionals/adams-tenants/. Only public facts from adams-group.co.il and magdilim.co.il, attributed.
+   Palette and type from planning and land-registry sheets (ink #12202A, sea #2F6F86, deep #1F4B5C, line #D3DCE2,
+   IBM Plex Sans Hebrew + IBM Plex Mono for figures): a ledger, not the cream-and-gold or soft-card AI look. */
+:root{--g:#F6F8F9;--s:#fff;--ink:#12202A;--ink2:#3E4C58;--mute:#5E6A75;--line:#D3DCE2;--sea:#2F6F86;--deep:#1F4B5C;--tint:#E9F1F4;--warn:#C42550;
+  --sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--g);color:var(--ink2);font-family:var(--sans)}
+a{color:var(--deep)}
+.rv{background:#12202A;color:#E9EEF1;font:500 12.5px/1.5 var(--sans);padding:9px 16px}
+.rv b{color:#fff}.rv .flag{display:inline-block;margin-inline-start:6px;padding:1px 6px;border:1px solid #F2D15A;color:#F2D15A;border-radius:2px;font-weight:600}
+.site{background:#fff;border-bottom:1px solid var(--line)}
+.site .in{max-width:1120px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font:600 14px/1 var(--sans);color:var(--ink)}
+.site .in span{font:500 12.5px/1 var(--sans);color:var(--mute)}
+.wrap{max-width:1120px;margin:0 auto;padding:18px 16px 40px}
+.crumbs{font:500 12.5px/1.5 var(--sans);color:var(--mute);margin:0 0 14px}
+.crumbs a{color:var(--mute);text-decoration:none}.crumbs a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+.paidtag{display:inline-block;margin:0 0 12px;padding:4px 9px;border:1px solid var(--ink);border-radius:2px;font:600 12px/1.4 var(--sans);color:var(--ink);background:#fff}
+.hero{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;align-items:start}
+.mono{width:76px;height:76px;background:var(--deep);color:#fff;display:grid;place-items:center;font:700 34px/1 var(--sans);border-radius:4px}
+.role{font:600 13px/1.4 var(--sans);color:var(--sea);margin:0 0 6px}
+h1{font:700 clamp(28px,4.6vw,42px)/1.15 var(--sans);color:var(--ink);margin:0 0 4px;letter-spacing:0}
+.addr{font:500 13.5px/1.5 var(--sans);color:var(--mute);margin:0}
+.lead{font:400 16.5px/1.75 var(--sans);color:var(--ink2);margin:16px 0 0;max-width:720px}
+.said{display:inline-block;font:600 11.5px/1.3 var(--sans);color:var(--deep);background:var(--tint);border-radius:2px;padding:2px 6px;margin-inline-end:4px;vertical-align:1px}
+.ctas{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:6px;font:700 14.5px/1 var(--sans);text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:#fff}
+.btn.pri{background:var(--sea);border-color:var(--sea);color:#fff}
+.btn.pri:hover{background:var(--deep)}
+.btn svg{width:17px;height:17px}
+.btn small{font:500 11px/1 var(--sans);opacity:.8}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;background:#fff;margin:22px 0 4px}
+.fact{padding:14px 14px;border-inline-start:1px solid var(--line)}
+.fact:first-child{border-inline-start:0}
+.fact b{display:block;font:600 24px/1 var(--mono);color:var(--ink);margin-bottom:6px}
+.fact b.w{font:700 16px/1.25 var(--sans)}
+.fact span{font:400 12.5px/1.45 var(--sans);color:var(--mute)}
+.src{font:400 12px/1.5 var(--sans);color:var(--mute);margin:6px 0 0}
+section.blk{margin-top:30px}
+h2{font:700 21px/1.3 var(--sans);color:var(--ink);margin:0 0 4px;letter-spacing:0}
+.h2sub{font:400 13.5px/1.6 var(--sans);color:var(--mute);margin:0 0 12px}
+.ledger{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.ledger th{font:600 12px/1.3 var(--sans);color:var(--mute);text-align:right;padding:10px 12px;border-bottom:1.5px solid var(--ink);background:#fff}
+.ledger td{font:400 14px/1.45 var(--sans);color:var(--ink2);padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.ledger tr:last-child td{border-bottom:0}
+.ledger td.n{font:500 12.5px/1.45 var(--mono);color:var(--mute);width:42px}
+.ledger td.c{font-weight:600;color:var(--ink);white-space:nowrap}
+.ledger td.x{font-size:13px;color:var(--mute)}
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:6px;background:#fff}
+.svc div{padding:14px 16px;border-inline-start:1px solid var(--line)}
+.svc div:first-child{border-inline-start:0}
+.svc strong{display:block;font:700 15px/1.35 var(--sans);color:var(--ink);margin-bottom:4px}
+.svc p{font:400 13.5px/1.6 var(--sans);margin:0}
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center}
+.person i{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--deep);display:grid;place-items:center;font:700 16px/1 var(--sans);font-style:normal}
+.person strong{display:block;font:700 14.5px/1.3 var(--sans);color:var(--ink)}
+.person span{font:400 12.5px/1.4 var(--sans);color:var(--mute)}
+.story{background:#fff;border:1px solid var(--ink);border-radius:6px;padding:18px 20px}
+.story .tag{display:inline-block;font:600 11.5px/1 var(--sans);color:var(--ink);border:1px solid var(--ink);border-radius:2px;padding:4px 7px;margin-bottom:10px}
+.story h3{font:700 18px/1.35 var(--sans);color:var(--ink);margin:0 0 8px}
+.story p{font:400 15px/1.75 var(--sans);margin:0 0 10px}
+.story .draft{font:500 12px/1.5 var(--sans);color:var(--warn);margin:0}
+.recog{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.recog b{font:600 20px/1 var(--mono);color:var(--deep);white-space:nowrap}
+.recog p{margin:0;font:400 14px/1.6 var(--sans)}
+.neutral{border-top:2px solid var(--ink);padding-top:14px}
+.neutral p{font:400 14px/1.7 var(--sans);margin:0 0 6px}
+aside.card{position:sticky;top:16px;background:#fff;border:1px solid var(--ink);border-radius:6px;padding:18px}
+aside.card h2{font-size:17px;margin-bottom:10px}
+aside.card .line{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font:400 13.5px/1.4 var(--sans)}
+aside.card .line b{font:500 13.5px/1.4 var(--mono);color:var(--ink);direction:ltr}
+aside.card .line a{font-weight:600}
+form{margin-top:14px}
+label{display:block;font:600 12.5px/1.4 var(--sans);color:var(--ink);margin:0 0 9px}
+input,textarea{display:block;width:100%;margin-top:5px;min-height:44px;border:1px solid var(--line);border-radius:4px;padding:9px 10px;font:400 15px/1.3 var(--sans);color:var(--ink);background:#fff}
+textarea{min-height:72px;resize:vertical}
+input:focus-visible,textarea:focus-visible,.btn:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+button.send{width:100%;min-height:48px;border:0;border-radius:6px;background:var(--ink);color:#fff;font:700 15px/1 var(--sans);cursor:pointer}
+.priv{font:400 11.5px/1.55 var(--sans);color:var(--mute);margin:8px 0 0}
+.msg{font:500 13px/1.5 var(--sans);color:var(--deep);min-height:18px;margin:6px 0 0}
+.foot{margin-top:30px;border-top:1px solid var(--line);padding-top:12px;font:400 12px/1.65 var(--sans);color:var(--mute)}
+.notes{margin-top:26px;border:1px dashed #B9C6CF;border-radius:6px;padding:14px 16px;background:#fff}
+.notes h3{font:700 14px/1.3 var(--sans);color:var(--ink);margin:0 0 6px}
+.notes li{font:400 13px/1.6 var(--sans);margin:0 0 4px}
+@media (max-width:920px){.grid{grid-template-columns:1fr}aside.card{position:static}}
+@media (max-width:640px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-inline-start:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .svc,.team{grid-template-columns:1fr}.svc div{border-inline-start:0;border-top:1px solid var(--line)}.svc div:first-child{border-top:0}
+  .hero{grid-template-columns:56px minmax(0,1fr);gap:12px}.mono{width:56px;height:56px;font-size:26px}
+  .ledger td.x{display:none}.ctas .btn{flex:1 1 calc(50% - 8px);justify-content:center}.ctas .btn.pri{flex-basis:100%}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"אדמס' ליווי דיירים","alternateName":"ADAM'S","description":"חברה מארגנת לבעלי דירות בתמ\"א 38 ובפינוי בינוי, לפי אתר החברה.","url":"https://nad-lan.co.il/professionals/adams-tenants/","telephone":"+972-54-352-7133","email":"adamsproject.israel@gmail.com","address":{"@type":"PostalAddress","streetAddress":"אחוזה 115","addressLocality":"רעננה","addressCountry":"IL"},"areaServed":["רעננה","כפר סבא","הוד השרון","הרצליה","פתח תקווה"],"sameAs":["https://adams-group.co.il/"],"founder":[{"@type":"Person","name":"ארז שאוליאן"},{"@type":"Person","name":"אדם שמחיוב"},{"@type":"Person","name":"רועי עמרן"}]}
+</script>
+</head>
+<body>
+<div class="rv" role="note"><b>תצוגה מקומית לבן</b> · כך ייראה פרופיל ממומן של אדמס' אצלנו (Premier + כתבת מפרסם). רק עובדות ציבוריות מאתר החברה וממגדילים, בשם החברה. <span class="flag">נתון סותר</span> ותק: "3+ שנים" בדף הבית מול "מעל 9 שנים" בדף אודות, לכן הוותק לא מוצג עד שהחברה תאשר.</div>
+<div class="site"><div class="in">נדלן <span>אנשי מקצוע · ארגון דיירים</span></div></div>
+
+<main class="wrap">
+  <p class="crumbs"><a href="#">דף הבית</a> › <a href="#">אנשי מקצוע</a> › <a href="#">ארגון דיירים</a> › אדמס' ליווי דיירים</p>
+  <div class="grid">
+    <div>
+      <p class="paidtag">פרופיל ממומן · הפרטים והתוכן נמסרו על ידי העסק ובאחריותו</p>
+      <div class="hero">
+        <div class="mono" aria-hidden="true">א'</div>
+        <div>
+          <p class="role">ארגון דיירים · התחדשות עירונית בשרון ובפתח תקווה</p>
+          <h1>אדמס' ליווי דיירים</h1>
+          <p class="addr">אחוזה 115, רעננה</p>
+        </div>
+      </div>
+      <p class="lead">חברה מארגנת שמלווה בעלי דירות בתמ"א 38 ובפינוי בינוי, ומנהלת עבור הדיירים את מכרז היזמים. <span class="said">לדברי החברה</span>הליווי ללא עלות לדיירים. החברה מציגה פרויקטים בכפר סבא, פתח תקווה, הוד השרון, רעננה והרצליה.</p>
+      <div class="ctas">
+        <a class="btn pri" href="https://wa.me/972543527133?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%90%D7%AA%D7%A8%20%D7%A0%D7%93%D7%9C%D7%9F" target="_blank" rel="sponsored noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg>וואטסאפ לאדמס'</a>
+        <a class="btn" href="tel:+972543527133">התקשרו <small dir="ltr">054-352-7133</small></a>
+        <a class="btn" href="https://adams-group.co.il/" target="_blank" rel="sponsored noopener">לאתר החברה</a>
+        <a class="btn" href="#form">השאירו פרטים</a>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><b>8</b><span>פרויקטים שהחברה מציגה באתר שלה</span></div>
+        <div class="fact"><b>5</b><span>ערים: כפר סבא, פתח תקווה, הוד השרון, רעננה, הרצליה</span></div>
+        <div class="fact"><b>6</b><span>אנשי צוות, לפי דף אודות</span></div>
+        <div class="fact"><b class="w">מעל 1,000</b><span>דיירים בליווי, לדברי החברה</span></div>
+      </div>
+      <p class="src">מקור: אתר החברה adams-group.co.il, נקרא ב־26.10.2026. נתון שהחברה מוסרת על עצמה מוצג בשמה.</p>
+
+      <section class="blk">
+        <h2>הפרויקטים שהחברה מציגה</h2>
+        <p class="h2sub">כפי שהם מופיעים בעמוד הפרויקטים של החברה. שלב הפרויקט ומספר הדירות יתווספו כשהחברה תמסור אותם.</p>
+        <table class="ledger">
+          <thead><tr><th scope="col">#</th><th scope="col">עיר</th><th scope="col">פרויקט</th><th scope="col">פרטים שהחברה מציינת</th></tr></thead>
+          <tbody>
+            <tr><td class="n">01</td><td class="c">פתח תקווה</td><td>בגין</td><td class="x">8 בניינים, 64 דירות</td></tr>
+            <tr><td class="n">02</td><td class="c">פתח תקווה</td><td>עמישב</td><td class="x"></td></tr>
+            <tr><td class="n">03</td><td class="c">כפר סבא</td><td>"המוביל"</td><td class="x"></td></tr>
+            <tr><td class="n">04</td><td class="c">הוד השרון</td><td>הבנים</td><td class="x"></td></tr>
+            <tr><td class="n">05</td><td class="c">רעננה</td><td>"רפאל"</td><td class="x"></td></tr>
+            <tr><td class="n">06</td><td class="c">רעננה</td><td>עגנון</td><td class="x"></td></tr>
+            <tr><td class="n">07</td><td class="c">רעננה</td><td>"לב העיר"</td><td class="x"></td></tr>
+            <tr><td class="n">08</td><td class="c">הרצליה</td><td>מלכי יהודה</td><td class="x"></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="blk">
+        <h2>מה החברה עושה</h2>
+        <p class="h2sub">בניסוח החברה, בקיצור.</p>
+        <div class="svc">
+          <div><strong>ארגון בעלי הדירות</strong><p>ליווי הדיירים בתמ"א 38 ובפינוי בינוי, מטעם הדיירים.</p></div>
+          <div><strong>מכרז יזמים</strong><p>ניהול מכרז היזמים עבור הדיירים, עד בחירת היזם.</p></div>
+          <div><strong>בלי עלות לדיירים</strong><p><span class="said">לדברי החברה</span>הדיירים אינם משלמים על הליווי.</p></div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <h2>הצוות</h2>
+        <p class="h2sub">המייסדים, לפי אתר החברה: בוגרי משפטים. צוות של שישה אנשים.</p>
+        <div class="team">
+          <div class="person"><i aria-hidden="true">אש</i><div><strong>ארז שאוליאן</strong><span>מייסד</span></div></div>
+          <div class="person"><i aria-hidden="true">אש</i><div><strong>אדם שמחיוב</strong><span>מייסד</span></div></div>
+          <div class="person"><i aria-hidden="true">רע</i><div><strong>רועי עמרן</strong><span>מייסד</span></div></div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="recog"><b>2026</b><p>החברה ומייסדיה מופיעים ברשימת "40 Under 40: הצעירים המבטיחים בנדל"ן והתחדשות עירונית לשנת 2026" של מגדילים, הפורום הישראלי להתחדשות עירונית. <span class="said">מקור</span>magdilim.co.il</p></div>
+      </section>
+
+      <section class="blk">
+        <article class="story" aria-label="כתבת מפרסם">
+          <span class="tag">כתבת מפרסם · תוכן ממומן</span>
+          <h3>שלושה בוגרי משפטים, משרד אחד ברעננה, ושמונה פרויקטים בשרון</h3>
+          <p>אדמס' הוקמה על ידי ארז שאוליאן, אדם שמחיוב ורועי עמרן, שלושה בוגרי משפטים, כחברה מארגנת שעובדת מטעם בעלי הדירות. היום החברה מציגה שמונה פרויקטים בכפר סבא, פתח תקווה, הוד השרון, רעננה והרצליה, ובהם מתחם בגין בפתח תקווה: שמונה בניינים ו־64 דירות.</p>
+          <p>כאן תיכתב הכתבה המלאה יחד עם החברה: איך נראית אסיפה ראשונה, איך מתנהל מכרז יזמים מטעם הדיירים, ומה הדיירים מקבלים בכל שלב. בעברית ובאנגלית, עם תמונות של הצוות והפרויקטים.</p>
+          <p class="draft">טיוטה לדוגמה מתוך עובדות ציבוריות בלבד. הנוסח הסופי ייכתב עם החברה ויאושר על ידה לפני פרסום.</p>
+        </article>
+      </section>
+
+      <section class="blk neutral">
+        <h2>לפני שבוחרים חברה מארגנת</h2>
+        <p>המדריך שלנו לבעלי דירות נשאר בלי תוכן ממומן: השלבים, הרוב הנדרש, ועורך הדין והשמאי מטעם הדיירים. <a href="#">המדריך שלנו לנציגות ולבעלי הבית</a></p>
+        <p><a href="#">כל אנשי המקצוע בארגון דיירים</a></p>
+      </section>
+
+      <p class="foot">פרופיל ממומן. הפרטים, הנתונים והתוכן בעמוד נמסרו על ידי החברה או נלקחו מאתר החברה, ומוצגים בשמה. נדלן היא אתר תוכן ופרסום, אינה צד להתקשרות בין הדיירים לחברה ואינה ממליצה עליה. אדמס' ליווי דיירים אינה קשורה לחברות אחרות בשם דומה.</p>
+    </div>
+
+    <aside class="card" id="form" aria-label="יצירת קשר">
+      <h2>יצירת קשר עם אדמס'</h2>
+      <div class="line"><span>טלפון</span><b><a href="tel:+972543527133">054-352-7133</a></b></div>
+      <div class="line"><span>אימייל</span><b><a href="mailto:adamsproject.israel@gmail.com">adamsproject.israel@gmail.com</a></b></div>
+      <div class="line"><span>משרד</span><span>אחוזה 115, רעננה</span></div>
+      <div class="line"><span>אזורי פעילות</span><span>השרון, פתח תקווה</span></div>
+      <form data-form novalidate>
+        <label>שם מלא<input name="name" autocomplete="name" required></label>
+        <label>טלפון<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+        <label>כתובת הבניין<input name="building" autocomplete="street-address" placeholder="רחוב, מספר ועיר"></label>
+        <label>מה תרצו לדעת?<textarea name="message"></textarea></label>
+        <button type="submit" class="send">שלחו לאדמס'</button>
+        <div class="msg" data-msg aria-live="polite"></div>
+        <p class="priv">הפרטים יועברו לאדמס' ליווי דיירים בלבד, כדי שיחזרו אליכם. <a href="#">מדיניות הפרטיות</a></p>
+      </form>
+    </aside>
+  </div>
+
+  <div class="notes" role="note">
+    <h3>הערות לבן (לא חלק מהעמוד)</h3>
+    <ul>
+      <li>כתובת מוצעת: /professionals/adams-tenants/ (בדיקת מילים בכתובת: "adams" ו־"tenants" לא קיימות באף כתובת באתר; "group" כבר מופיעה ב־4 כתובות, לכן לא נבחרה).</li>
+      <li>הכותרת המוצעת לגוגל: "אדמס' ליווי דיירים: ארגון דיירים וחברה מארגנת ברעננה, כפר סבא ופתח תקווה" (בדיקת מילות מפתח מוגנות: תקין; גרסה עם "פינוי בינוי" או "דירות" קיבלה אזהרה ולכן נפסלה).</li>
+      <li>כל הקישורים החוצה בפרופיל ממומן מסומנים כפרסומת (rel="sponsored noopener"). הקישורים פנימה רגילים.</li>
+      <li>לא מוצגים: ותק (נתון סותר), גילאי המייסדים, פרויקט בתל אביב (המייל מזכיר תל אביב, אתר החברה לא מציג פרויקט שם), תמונות ולוגו (טרם נמסרו).</li>
+      <li>אחד המייסדים, אדם שמחיוב, מחזיק משרד תיווך נפרד ברעננה ("נכסים לעניין", רישיון תיווך). הפרופיל הזה יושב רק תחת "ארגון דיירים" ולא מזכיר תיווך. אם המשרד ירצה כרטיס, זה כרטיס מתווך נפרד עם שם, "מתווך" ומספר רישיון (תקנה 19), בלי קישור בין השניים בעמוד.</li>
+      <li>מספר הטלפון לפי המייל של ארז (054-352-7133). באחד האינדקסים מופיע גם 052-2043447; לשאול את החברה איזה מספר להציג.</li>
+      <li>ההחלטה אם העמוד יופיע בגוגל היא של בן בלבד.</li>
+    </ul>
+  </div>
+</main>
+<script>
+(function(){
+  var f=document.querySelector("[data-form]"),m=document.querySelector("[data-msg]");
+  f.addEventListener("submit",function(e){e.preventDefault();
+    if(!f.name.value||!f.phone.value){m.textContent="נא למלא שם וטלפון.";return;}
+    m.textContent="תצוגה מקומית: הפרטים לא נשלחו.";});
+})();
+</script>
+</body>
+</html>

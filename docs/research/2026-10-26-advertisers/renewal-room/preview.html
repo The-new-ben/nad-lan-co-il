@@ -1,0 +1,620 @@
+<!-- @dsCard group="Tools" height=2600 subtitle="חדר הניהול לחברה מארגנת: תיק המתחמים, חזית הבניין עם ההסכמה של כל דירה, מסמכים, השלבים, עדכונים לדיירים ודוח מצב לנציגות" -->
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renewal Room Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* RenewalRoomPro (26.10.2026): the organizer's management room for /my-renewal/. NadLan Instruments tokens.
+   Why it is not the default AI look: the forms come from the organizer's own paperwork, an architect's facade
+   elevation (every apartment is a cell on the building face), a land-registry ledger and a tender schedule;
+   ink blue on cool white, survey teal, drafting hatch for "in process", mono figures. No cream, no gold, no
+   gradient, no 3D toy, no soft-shadow card grid. Scoped to .rrp so the theme's !important headings cannot reach in. */
+.rrp{--g:#F6F8F9;--s:#FFFFFF;--ink:#12202A;--ink2:#3E4C58;--mute:#5E6A75;--line:#D3DCE2;--line2:#B9C6CF;--sea:#2F6F86;--deep:#1F4B5C;--tint:#E9F1F4;
+  --yes:#1F4B5C;--proc:#2F6F86;--docs:#F2D15A;--no:#C42550;--none:#FFFFFF;--r:6px;
+  --sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  direction:rtl;font-family:var(--sans);color:var(--ink2);background:var(--g);min-height:100vh}
+.rrp *{box-sizing:border-box}
+.rrp [hidden]{display:none!important}
+html body .rrp h1,html body .rrp h2,html body .rrp h3,html body .rrp h4{color:var(--ink)!important;font-family:var(--sans)!important;letter-spacing:0;margin:0}
+.rrp button{font-family:inherit}
+.rrp :focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.rrp .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+/* top bar */
+.rrp-bar{background:var(--ink);color:#DDE6EB}
+.rrp-bar__in{max-width:1200px;margin:0 auto;padding:10px 16px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center}
+.rrp-brand{display:flex;align-items:center;gap:10px;font:700 15px/1.2 var(--sans);color:#fff}
+.rrp-brand i{width:26px;height:26px;border:1.5px solid #9FD0E0;display:grid;place-items:center;font:600 12px/1 var(--mono);color:#9FD0E0;font-style:normal}
+.rrp-brand span{font:500 12.5px/1.2 var(--sans);color:#9EB2BE}
+.rrp-org{font:500 12.5px/1.3 var(--sans);color:#9EB2BE;text-align:left}
+.rrp-org b{color:#fff;font-weight:600}
+.rrp-tabs{grid-column:1/-1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-top:6px}
+.rrp-tabs::-webkit-scrollbar{display:none}
+.rrp-tab{appearance:none;border:0;background:transparent;color:#B9C9D2;font:600 13.5px/1 var(--sans);padding:12px 14px 13px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;min-height:44px}
+.rrp-tab[aria-selected="true"]{color:#fff;border-bottom-color:#9FD0E0}
+.rrp-sample{display:inline-block;font:600 11px/1 var(--sans);color:var(--ink);background:#F2D15A;padding:3px 6px;border-radius:2px;margin-inline-start:8px;vertical-align:1px}
+.rrp-main{max-width:1200px;margin:0 auto;padding:18px 16px 40px}
+/* shared */
+.rrp-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 16px;margin:0 0 14px}
+.rrp-h h2{font:700 clamp(21px,2.6vw,27px)/1.25 var(--sans)!important}
+.rrp-h p{margin:4px 0 0;font:400 14px/1.6 var(--sans);color:var(--mute)}
+.rrp-panel{background:var(--s);border:1px solid var(--line);border-radius:var(--r)}
+.rrp-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--s);border-radius:3px;padding:4px 8px;font:600 12px/1.2 var(--sans);color:var(--ink2);white-space:nowrap}
+.rrp-chip.t-pinui{border-color:var(--deep);color:var(--deep)}
+.rrp-chip.t-tama{border-color:var(--ink2)}
+.rrp-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r);border:1px solid var(--ink);background:var(--s);color:var(--ink);font:700 14px/1 var(--sans);cursor:pointer;text-decoration:none}
+.rrp-btn.pri{background:var(--sea);border-color:var(--sea);color:#fff}
+.rrp-btn.pri:hover{background:var(--deep)}
+.rrp-note{font:400 12px/1.55 var(--sans);color:var(--mute)}
+/* KPI strip */
+.rrp-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);background:var(--s);margin:0 0 16px}
+.rrp-kpi{padding:14px 14px 12px;border-inline-start:1px solid var(--line)}
+.rrp-kpi:first-child{border-inline-start:0}
+.rrp-kpi b{display:block;font:600 26px/1 var(--mono);color:var(--ink);margin-bottom:6px}
+.rrp-kpi span{font:500 12.5px/1.35 var(--sans);color:var(--mute)}
+.rrp-kpi.warn b{color:var(--no)}
+/* filters */
+.rrp-filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.rrp-filter{appearance:none;border:1px solid var(--line2);background:var(--s);color:var(--ink2);border-radius:3px;padding:8px 11px;font:600 12.5px/1 var(--sans);cursor:pointer;min-height:36px}
+.rrp-filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+/* portfolio table */
+.rrp-port{width:100%;border-collapse:collapse}
+.rrp-port th{font:600 12px/1.3 var(--sans);color:var(--mute);text-align:right;padding:10px 12px;border-bottom:1.5px solid var(--ink);white-space:nowrap}
+.rrp-port td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle;font:400 13.5px/1.45 var(--sans)}
+.rrp-port tr.row{cursor:pointer}
+.rrp-port tr.row:hover td{background:#FAFCFD}
+.rrp-port .nm b{display:block;font:700 15px/1.3 var(--sans);color:var(--ink)}
+.rrp-port .nm span{font:400 12.5px/1.4 var(--sans);color:var(--mute)}
+.rrp-ladmini{display:flex;gap:2px;align-items:center}
+.rrp-ladmini i{display:block;width:9px;height:14px;background:var(--line);border-radius:1px}
+.rrp-ladmini i.d{background:var(--deep)}
+.rrp-ladmini i.n{background:var(--sea);outline:2px solid #9FD0E0;outline-offset:1px}
+.rrp-ladmini em{font:500 12px/1 var(--sans);font-style:normal;color:var(--ink2);margin-inline-start:8px;white-space:nowrap}
+.rrp-meter{position:relative;height:10px;background:var(--line);border-radius:1px;min-width:120px}
+.rrp-meter i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--deep);border-radius:1px}
+.rrp-meter u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);text-decoration:none}
+.rrp-pct{font:600 14px/1 var(--mono);color:var(--ink);white-space:nowrap}
+.rrp-pct small{font:500 11.5px/1 var(--mono);color:var(--mute);margin-inline-start:6px}
+.rrp-flag{font:600 12.5px/1.3 var(--sans);color:var(--no)}
+.rrp-next{font:400 13px/1.45 var(--sans);color:var(--ink2);max-width:260px}
+.rrp-cards{display:none}
+/* complex view */
+.rrp-cx{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+.rrp-cx>*,.rrp-up>*,.rrp-2col>*{min-width:0}
+.rrp-sheet,.rrp-ladder{min-width:0;overflow:hidden}
+.rrp-cxhead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:end;margin:0 0 12px}
+.rrp-cxhead h2{font:700 clamp(22px,3vw,30px)/1.2 var(--sans)!important}
+.rrp-cxhead p{margin:4px 0 0;font:400 13.5px/1.5 var(--sans);color:var(--mute)}
+.rrp-sel{min-height:44px;border:1px solid var(--ink);border-radius:var(--r);background:var(--s);font:600 14px/1 var(--sans);color:var(--ink);padding:0 10px}
+.rrp-consent{padding:14px 16px;margin:0 0 12px}
+.rrp-consent__top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;margin:0 0 10px}
+.rrp-consent__big{font:600 34px/1 var(--mono);color:var(--ink)}
+.rrp-consent__big small{font:500 14px/1 var(--mono);color:var(--mute);margin-inline-start:8px}
+.rrp-mix{display:flex;height:16px;border:1px solid var(--ink);border-radius:1px;overflow:hidden;position:relative}
+.rrp-mix span{display:block;height:100%}
+.rrp-mark{position:relative;height:22px;margin-top:2px}
+.rrp-mark u{position:absolute;top:0;width:2px;height:10px;background:var(--ink)}
+.rrp-mark em{position:absolute;top:10px;transform:translateX(50%);font:500 11.5px/1.2 var(--sans);font-style:normal;color:var(--ink);white-space:nowrap}
+.rrp-legend{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.rrp-leg{appearance:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--s);border-radius:3px;padding:6px 9px;font:500 12.5px/1 var(--sans);color:var(--ink2);cursor:pointer;min-height:34px}
+.rrp-leg b{font:600 12.5px/1 var(--mono);color:var(--ink)}
+.rrp-leg[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.rrp-sw{width:14px;height:14px;border:1px solid var(--ink);display:inline-block;flex:0 0 14px}
+.s-yes{background:var(--yes)}
+.s-proc{background:repeating-linear-gradient(135deg,var(--proc) 0 2px,#fff 2px 5px)}
+.s-docs{background:var(--docs)}
+.s-no{background:var(--no)}
+.s-none{background:var(--none)}
+/* elevation sheet */
+.rrp-sheet{padding:14px 14px 10px;margin:0 0 12px}
+.rrp-sheet__h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px}
+.rrp-sheet__h h3{font:700 15px/1.3 var(--sans)!important}
+.rrp-blds{display:flex;gap:22px;overflow-x:auto;padding:6px 2px 4px;scroll-snap-type:x mandatory;align-items:flex-end}
+.rrp-bld{flex:0 0 auto;scroll-snap-align:start}
+.rrp-facade{display:grid;gap:3px;padding:6px;border:1.5px solid var(--ink);border-bottom:0;background:#fff;position:relative}
+.rrp-facade::before{content:"";position:absolute;top:-7px;inset-inline:-1.5px;height:5px;border:1.5px solid var(--ink);border-bottom:0;background:var(--g)}
+.rrp-ground{height:0;border-top:3px solid var(--ink);margin:0 -10px}
+.rrp-bld figcaption{margin-top:6px;font:600 12.5px/1.35 var(--sans);color:var(--ink);text-align:center}
+.rrp-bld figcaption span{display:block;font:500 11.5px/1.3 var(--mono);color:var(--mute)}
+.rrp-apt{appearance:none;width:34px;height:28px;border:1px solid var(--ink);border-radius:1px;cursor:pointer;padding:0;position:relative;font:600 10.5px/1 var(--mono);color:#fff}
+.rrp-apt.s-none,.rrp-apt.s-docs{color:var(--ink)}
+.rrp-apt.s-proc{color:var(--ink)}
+.rrp-apt.s-proc span{background:#fff;padding:0 2px}
+.rrp-apt.s-no::after{content:"";position:absolute;inset:4px 9px;border-top:1.5px solid #fff;transform:rotate(-30deg);top:13px}
+.rrp-apt[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px;z-index:1}
+.rrp-apt.dim{opacity:.18}
+.rrp-flr{font:500 10px/28px var(--mono);color:var(--mute);text-align:center}
+/* drawer */
+.rrp-drawer{position:sticky;top:12px;padding:16px}
+.rrp-drawer h3{font:700 17px/1.3 var(--sans)!important}
+.rrp-drawer .sub{font:500 12.5px/1.4 var(--sans);color:var(--mute);margin:3px 0 12px}
+.rrp-field{display:block;font:600 12.5px/1.4 var(--sans);color:var(--ink);margin:0 0 12px}
+.rrp-field select,.rrp-field textarea,.rrp-field input{display:block;width:100%;margin-top:5px;min-height:44px;border:1px solid var(--line2);border-radius:4px;padding:8px 10px;font:400 14.5px/1.3 var(--sans);color:var(--ink);background:#fff}
+.rrp-field textarea{min-height:64px;resize:vertical}
+.rrp-owners{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.rrp-owner{font:500 12.5px/1 var(--sans);border:1px solid var(--line);border-radius:3px;padding:6px 8px;background:var(--g)}
+.rrp-docs{list-style:none;margin:0 0 12px;padding:0;border-top:1px solid var(--line)}
+.rrp-docs li{border-bottom:1px solid var(--line)}
+.rrp-docs label{display:flex;align-items:center;gap:10px;padding:9px 0;font:500 13.5px/1.3 var(--sans);color:var(--ink2);cursor:pointer;min-height:40px}
+.rrp-docs input{width:18px;height:18px;accent-color:var(--deep)}
+.rrp-log{list-style:none;margin:0;padding:0}
+.rrp-log li{font:400 12.5px/1.5 var(--sans);color:var(--ink2);padding:6px 0;border-bottom:1px dashed var(--line)}
+.rrp-log time{font:500 11.5px/1.5 var(--mono);color:var(--mute);margin-inline-end:6px}
+.rrp-saved{font:500 12.5px/1.4 var(--sans);color:var(--deep);min-height:18px;margin:6px 0 0}
+/* ladder */
+.rrp-ladder{padding:14px 14px 12px;margin:0 0 12px}
+.rrp-steps{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:0;margin:8px 0 0;overflow-x:auto}
+.rrp-step{appearance:none;border:0;background:none;padding:0 2px 6px;cursor:pointer;text-align:center;position:relative;min-width:64px}
+.rrp-step i{display:grid;place-items:center;width:28px;height:28px;margin:0 auto 6px;border:1.5px solid var(--line2);background:#fff;font:600 12px/1 var(--mono);font-style:normal;color:var(--mute);position:relative;z-index:1}
+.rrp-step::after{content:"";position:absolute;top:14px;inset-inline-start:calc(50% + 14px);width:calc(100% - 28px);height:1.5px;background:var(--line2)}
+.rrp-step:last-child::after{display:none}
+.rrp-step.d i{background:var(--deep);border-color:var(--deep);color:#fff}
+.rrp-step.d::after{background:var(--deep)}
+.rrp-step.n i{background:#fff;border:2.5px solid var(--sea);color:var(--ink);box-shadow:0 0 0 3px var(--tint)}
+.rrp-step span{display:block;font:500 11.5px/1.3 var(--sans);color:var(--ink2)}
+.rrp-step.n span{font-weight:700;color:var(--ink)}
+.rrp-step[aria-pressed="true"] i{outline:2px solid var(--ink);outline-offset:2px}
+.rrp-stagecard{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 20px}
+.rrp-stagecard h4{font:700 15px/1.3 var(--sans)!important;margin:0 0 4px}
+.rrp-stagecard p{font:400 13.5px/1.6 var(--sans);margin:0}
+.rrp-stagecard ul{margin:0;padding:0;list-style:none}
+.rrp-stagecard li{font:400 13.5px/1.55 var(--sans);padding:4px 0;padding-inline-start:16px;position:relative}
+.rrp-stagecard li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;border:1.5px solid var(--sea)}
+.rrp-dur{display:inline-block;font:500 12px/1 var(--mono);color:var(--ink);border:1px solid var(--line2);padding:4px 6px;margin-top:8px}
+.rrp-2col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.rrp-tasks,.rrp-docsum{padding:14px 16px}
+.rrp-tasks h3,.rrp-docsum h3{font:700 15px/1.3 var(--sans)!important;margin:0 0 8px}
+.rrp-tasks ul{list-style:none;margin:0;padding:0}
+.rrp-tasks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--line);font:400 13.5px/1.5 var(--sans)}
+.rrp-tasks li i{width:18px;height:18px;border:1.5px solid var(--ink2);margin-top:2px;font-style:normal;display:grid;place-items:center;font:700 11px/1 var(--sans);color:#fff}
+.rrp-tasks li.ok i{background:var(--deep);border-color:var(--deep)}
+.rrp-tasks li.ok i::after{content:"✓"}
+.rrp-tasks li.ok{color:var(--mute)}
+.rrp-docrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.rrp-docrow span{font:500 13.5px/1.3 var(--sans)}
+.rrp-docrow b{font:600 13px/1 var(--mono);color:var(--ink)}
+.rrp-docrow .rrp-meter{grid-column:1/-1;min-width:0;height:6px}
+/* updates */
+.rrp-up{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start}
+.rrp-compose{padding:14px 16px;margin:0 0 12px}
+.rrp-compose textarea{display:block;width:100%;min-height:86px;border:1px solid var(--line2);border-radius:4px;padding:10px;font:400 15px/1.5 var(--sans);color:var(--ink);resize:vertical}
+.rrp-compose .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.rrp-feed{list-style:none;margin:0;padding:0}
+.rrp-feed li{padding:12px 16px;border-bottom:1px solid var(--line);font:400 14px/1.6 var(--sans);color:var(--ink2)}
+.rrp-feed li:last-child{border-bottom:0}
+.rrp-feed time{display:block;font:500 11.5px/1.4 var(--mono);color:var(--mute);margin-bottom:2px}
+.rrp-feed .auto{font:600 11px/1 var(--sans);color:var(--deep);border:1px solid var(--deep);padding:2px 5px;border-radius:2px;margin-inline-start:6px}
+.rrp-invite{padding:14px 16px;margin:12px 0 0}
+.rrp-invite h3{font:700 15px/1.3 var(--sans)!important;margin:0 0 6px}
+.rrp-invite code{display:block;direction:ltr;text-align:left;font:500 12.5px/1.4 var(--mono);background:var(--g);border:1px solid var(--line);padding:10px;border-radius:4px;margin:8px 0;word-break:break-all;color:var(--ink)}
+.rrp-phone{border:1.5px solid var(--ink);border-radius:26px;padding:12px 10px 16px;background:#fff;max-width:320px;margin:0 auto}
+.rrp-phone__bar{width:70px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 12px}
+.rrp-phone h4{font:700 15px/1.3 var(--sans)!important;margin:0 0 2px}
+.rrp-phone .ps{font:500 12px/1.4 var(--sans);color:var(--mute);margin:0 0 10px}
+.rrp-phone .big{font:600 30px/1 var(--mono);color:var(--ink)}
+.rrp-phone .blk{border-top:1px solid var(--line);padding:10px 2px}
+.rrp-phone .blk b{display:block;font:700 13px/1.4 var(--sans);color:var(--ink);margin-bottom:3px}
+.rrp-phone .blk p{margin:0;font:400 12.5px/1.55 var(--sans)}
+.rrp-phone .ok{color:var(--deep);font-weight:600}
+.rrp-phone .miss{color:var(--no);font-weight:600}
+/* report */
+.rrp-rep{background:#fff;border:1px solid var(--line2);max-width:820px;margin:0 auto;padding:30px 32px;box-shadow:0 1px 0 var(--line)}
+.rrp-rep__h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:14px}
+.rrp-rep__h h2{font:700 22px/1.25 var(--sans)!important}
+.rrp-rep__h p{margin:4px 0 0;font:400 13px/1.5 var(--sans);color:var(--mute)}
+.rrp-rep__h .stamp{font:600 12px/1.5 var(--sans);color:var(--ink);border:1.5px solid var(--ink);padding:6px 8px;text-align:center;align-self:start}
+.rrp-rep table{width:100%;border-collapse:collapse;margin:8px 0 14px}
+.rrp-rep th{font:600 12px/1.3 var(--sans);color:var(--mute);text-align:right;padding:8px 8px;border-bottom:1.5px solid var(--ink)}
+.rrp-rep td{font:500 13.5px/1.4 var(--mono);color:var(--ink);padding:8px;border-bottom:1px solid var(--line)}
+.rrp-rep td:first-child{font-family:var(--sans);font-weight:600}
+.rrp-rep h3{font:700 15px/1.3 var(--sans)!important;margin:16px 0 6px}
+.rrp-rep p,.rrp-rep li{font:400 13.5px/1.65 var(--sans)}
+.rrp-rep ol{margin:0;padding-inline-start:20px}
+.rrp-rep__f{border-top:1px solid var(--line);margin-top:18px;padding-top:10px;font:400 11.5px/1.6 var(--sans);color:var(--mute)}
+.rrp-reptools{display:flex;justify-content:center;gap:8px;margin:0 0 12px}
+@media (max-width:1000px){.rrp-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.rrp-kpi:nth-child(4){border-inline-start:0}.rrp-kpi:nth-child(n+4){border-top:1px solid var(--line)}
+  .rrp-cx,.rrp-up{grid-template-columns:1fr}.rrp-drawer{position:static}}
+@media (max-width:1000px){.rrp-cx>.rrp-cxmain{display:contents}.rrp-cx>.rrp-cxmain>*{min-width:0;margin-bottom:0}
+  .rrp-cx [data-o="1"]{order:1}.rrp-cx [data-o="2"]{order:2}.rrp-drawer{order:3}.rrp-cx [data-o="4"]{order:4}.rrp-cx [data-o="5"]{order:5}.rrp-cx{gap:12px}}
+@media (max-width:560px){.rrp-mark{height:auto}.rrp-mark em{position:static;transform:none;display:block;margin-top:12px;white-space:normal}}
+@media (max-width:760px){.rrp-port{display:none}.rrp-cards{display:grid;gap:8px}
+  .rrp-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:8px;cursor:pointer;text-align:right;appearance:none;width:100%;font:inherit;color:inherit}
+  .rrp-card .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+  .rrp-card .top b{font:700 15px/1.3 var(--sans);color:var(--ink)}
+  .rrp-card .top span{display:block;font:400 12.5px/1.4 var(--sans);color:var(--mute)}
+  .rrp-2col,.rrp-stagecard{grid-template-columns:1fr}.rrp-steps{grid-template-columns:repeat(10,64px)}
+  .rrp-rep{padding:20px 16px}.rrp-rep__h{grid-template-columns:1fr}.rrp-cxhead{grid-template-columns:1fr}}
+@media (max-width:520px){.rrp-kpis{grid-template-columns:1fr 1fr}.rrp-kpi:nth-child(odd){border-inline-start:0}.rrp-kpi:nth-child(4){border-inline-start:1px solid var(--line)}.rrp-kpi:nth-child(n+3){border-top:1px solid var(--line)}
+  .rrp-kpi b{font-size:22px}.rrp-org{display:none}.rrp-apt{width:30px;height:28px}.rrp-rep td,.rrp-rep th{padding:6px 4px;font-size:12px}}
+@media print{.rrp-bar,.rrp-reptools,[data-screen]:not([data-screen="report"]){display:none!important}.rrp{background:#fff}.rrp-rep{border:0;box-shadow:none;max-width:none;padding:0}}
+</style>
+</head>
+<body style="margin:0">
+<div class="rrp" id="rrp">
+  <header class="rrp-bar">
+    <div class="rrp-bar__in">
+      <div class="rrp-brand"><i>נ</i><div>חדר הניהול<span class="rrp-sample">נתוני דוגמה</span><br><span>התחדשות עירונית · נדלן</span></div></div>
+      <div class="rrp-org">מנוהל על ידי <b>החברה המארגנת שלכם</b><br>3 אנשי צוות · 6 מתחמים פעילים</div>
+      <nav class="rrp-tabs" role="tablist" aria-label="מסכי חדר הניהול">
+        <button class="rrp-tab" role="tab" data-tab="portfolio" aria-selected="true">תיק המתחמים</button>
+        <button class="rrp-tab" role="tab" data-tab="complex" aria-selected="false">מתחם</button>
+        <button class="rrp-tab" role="tab" data-tab="updates" aria-selected="false">עדכונים לדיירים</button>
+        <button class="rrp-tab" role="tab" data-tab="report" aria-selected="false">דוח לנציגות</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="rrp-main">
+    <!-- 1. portfolio -->
+    <section data-screen="portfolio" aria-label="תיק המתחמים">
+      <div class="rrp-h"><div><h2>תיק המתחמים</h2><p>כל המתחמים שאתם מלווים, במבט אחד: איפה כל אחד עומד, כמה חתמו, ומה הצעד הבא.</p></div>
+        <button class="rrp-btn pri" type="button" data-new>מתחם חדש</button></div>
+      <div class="rrp-kpis" data-kpis></div>
+      <div class="rrp-filters" role="group" aria-label="סינון">
+        <button class="rrp-filter" data-f="all" aria-pressed="true">הכל</button>
+        <button class="rrp-filter" data-f="pinui" aria-pressed="false">פינוי בינוי</button>
+        <button class="rrp-filter" data-f="tama" aria-pressed="false">תמ"א 38</button>
+        <button class="rrp-filter" data-f="attn" aria-pressed="false">דורש טיפול</button>
+      </div>
+      <div class="rrp-panel" style="overflow-x:auto">
+        <table class="rrp-port"><thead><tr><th scope="col">מתחם</th><th scope="col">מסלול</th><th scope="col">שלב</th><th scope="col">חתמו</th><th scope="col">חסר מסמך</th><th scope="col">הצעד הבא</th></tr></thead><tbody data-rows></tbody></table>
+      </div>
+      <div class="rrp-cards" data-cards></div>
+      <p class="rrp-note" style="margin-top:10px">החדרים חינם לדיירים ולנציגות. השכנים רואים את התמונה של הבניין שלהם ואת הדירה שלהם בלבד.</p>
+    </section>
+
+    <!-- 2. complex -->
+    <section data-screen="complex" aria-label="מתחם" hidden>
+      <div class="rrp-cxhead">
+        <div><h2 data-cx-title></h2><p data-cx-sub></p></div>
+        <label class="rrp-note">מתחם<br><select class="rrp-sel" data-cx-pick aria-label="בחירת מתחם"></select></label>
+      </div>
+      <div class="rrp-cx">
+        <div class="rrp-cxmain">
+          <div class="rrp-panel rrp-consent" data-o="1">
+            <div class="rrp-consent__top"><div><span class="rrp-note">חתמו מתוך כל הדירות במתחם</span><div class="rrp-consent__big" data-cx-big></div><div class="rrp-note num" data-cx-of></div></div><div class="rrp-note" data-cx-gap></div></div>
+            <div class="rrp-mix" data-cx-mix role="img"></div>
+            <div class="rrp-mark" data-cx-mark></div>
+            <div class="rrp-legend" data-legend role="group" aria-label="הדגשה לפי סטטוס"></div>
+          </div>
+          <div class="rrp-panel rrp-sheet" data-o="2">
+            <div class="rrp-sheet__h"><h3>חזית הבניינים</h3><span class="rrp-note">כל משבצת היא דירה. הקישו על דירה כדי לעדכן.</span></div>
+            <div class="rrp-blds" data-blds></div>
+          </div>
+          <div class="rrp-panel rrp-ladder" data-o="4">
+            <div class="rrp-sheet__h"><h3>עשרת השלבים</h3><span class="rrp-note">משכים: ממוצעים ארציים, לא הבטחה</span></div>
+            <div class="rrp-steps" data-steps role="group" aria-label="שלבי הפרויקט"></div>
+            <div class="rrp-stagecard" data-stagecard></div>
+          </div>
+          <div class="rrp-2col" data-o="5">
+            <div class="rrp-panel rrp-tasks"><h3>המשימות של המתחם</h3><ul data-tasks></ul><p class="rrp-note" style="margin-top:8px">נגזר מהנתונים בחדר. אין לראות בכך ייעוץ משפטי.</p></div>
+            <div class="rrp-panel rrp-docsum"><h3>תמונת המסמכים</h3><div data-docsum></div><p class="rrp-note" style="margin-top:8px">בחדר מסמנים אילו מסמכים התקבלו. הקבצים עצמם נשמרים אצלכם.</p></div>
+          </div>
+        </div>
+        <aside class="rrp-panel rrp-drawer" data-drawer aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <!-- 3. updates -->
+    <section data-screen="updates" aria-label="עדכונים לדיירים" hidden>
+      <div class="rrp-h"><div><h2>עדכונים לדיירים</h2><p data-up-sub></p></div></div>
+      <div class="rrp-up">
+        <div>
+          <div class="rrp-panel rrp-compose">
+            <label class="rrp-field" style="margin:0">עדכון חדש לכל הבניין<textarea data-up-text placeholder="מה חדש בפרויקט?"></textarea></label>
+            <div class="row"><span class="rrp-note">העדכון מופיע אצל כל מי שהצטרף לחדר.</span><button class="rrp-btn pri" type="button" data-up-send>פרסום העדכון</button></div>
+          </div>
+          <div class="rrp-panel"><ul class="rrp-feed" data-feed></ul></div>
+          <div class="rrp-panel rrp-invite">
+            <h3>הזמנת השכנים</h3>
+            <p class="rrp-note" style="margin:0">קישור אחד לקבוצת הוואטסאפ של הבניין. מי שנכנס רואה את מצב הבניין ואת הדירה שלו, לקריאה בלבד.</p>
+            <code data-invite>nad-lan.co.il/my-renewal/?join=Q7mK2pX9vB4nR8tY3wE6sL1a</code>
+            <button class="rrp-btn" type="button" data-copy>העתקת הקישור</button>
+          </div>
+        </div>
+        <div>
+          <p class="rrp-note" style="text-align:center;margin:0 0 8px">כך שכן רואה את החדר בטלפון</p>
+          <div class="rrp-phone" data-phone></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. report -->
+    <section data-screen="report" aria-label="דוח לנציגות" hidden>
+      <div class="rrp-reptools"><button class="rrp-btn pri" type="button" data-print>הדפסה או שמירה כ־PDF</button></div>
+      <article class="rrp-rep" data-report></article>
+    </section>
+  </main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.getElementById("rrp");
+  var ST = {
+    yes:  { label: "חתמו", cls: "s-yes" },
+    proc: { label: "בתהליך", cls: "s-proc" },
+    docs: { label: "חסרים מסמכים", cls: "s-docs" },
+    no:   { label: "סירבו", cls: "s-no" },
+    none: { label: "טרם הושג קשר", cls: "s-none" }
+  };
+  var DOCS = { id: "צילום תעודת זהות", tabu: "נסח טאבו", sign: "הסכם חתום", poa: "ייפוי כוח" };
+  var LADDER = [
+    { l: "התארגנות ראשונית", d: "אסיפת דיירים ראשונה, פרוטוקול כתוב ומיפוי מלא של בעלי הדירות.", t: "1 עד 3 חודשים", a: ["כינוס אסיפת דיירים ראשונה", "איסוף פרטי קשר של כל בעלי הדירות", "בדיקת הבניין מול מאגר המתחמים המוכרזים"] },
+    { l: "בחירת נציגות", d: "3 עד 5 שכנים עם מנדט כתוב לנהל את התהליך בשם הבניין.", t: "חודש עד חודשיים", a: ["הצבעה על נציגות דיירים", "חתימה על כתב מינוי", "פתיחת ערוץ עדכונים אחד לכל השכנים"] },
+    { l: "החתמות", d: "החתמת בעלי הדירות על הסכמה, בשקיפות מלאה לכל הבניין.", t: "6 עד 18 חודשים", a: ["עדכון הסטטוס של כל דירה", "טיפול בדירות עם ירושה או מסמכים חסרים", "מעקב אחרי הרוב הנדרש במסלול"] },
+    { l: "בחירת אנשי מקצוע", d: "עורך דין ושמאי שעובדים בשביל הדיירים, בשכר היזם ולפי בחירתכם.", t: "2 עד 4 חודשים", a: ["קבלת הצעות מעורכי דין מנוסים מטעם דיירים", "בחירת שמאי מטעם הדיירים", "חתימה על הסכמי שכר טרחה"] },
+    { l: "בחירת יזם", d: "מכרז יזמים: ניסיון מוכח, איתנות פיננסית ובטוחות.", t: "4 עד 8 חודשים", a: ["הכנת מסמך דרישות הדיירים", "השוואת הצעות היזמים זו מול זו", "בדיקת ערבויות חוק המכר והבטוחות"] },
+    { l: "תב\"ע ותכנון", d: "התוכנית עוברת בוועדות התכנון: המשתנה הגדול ביותר בלוח הזמנים.", t: "2 עד 5 שנים", a: ["ליווי הליך התכנון מול הוועדה", "עדכון השכנים בכל החלטה", "קשר שוטף עם מנהלת ההתחדשות העירונית"] },
+    { l: "היתר בנייה", d: "מפרט סופי והליך בחירת דירות התמורה.", t: "שנה עד שנתיים", a: ["חתימה על נספח המפרט הסופי", "בחירת דירות לפי הנוסחה שנקבעה", "היערכות להסכמי שכירות לפינוי"] },
+    { l: "פינוי", d: "פינוי הבניין, ושכר הדירה במימון היזם עד המסירה.", t: "1 עד 3 חודשים", a: ["חתימה על הסכמי שכירות", "תיאום הובלות", "מסירת מפתחות ליזם"] },
+    { l: "בנייה", d: "הבנייה עצמה, והמפקח מטעם הדיירים מדווח לנציגות.", t: "2 עד 4 שנים", a: ["מעבר על דוחות פיקוח", "ביקורי דיירים מתואמים באתר", "מעקב לוח הזמנים מול ההסכם"] },
+    { l: "מסירה ורישום", d: "טופס 4, מסירת הדירות, שנת הבדק ורישום בטאבו.", t: "6 עד 18 חודשים", a: ["פרוטוקול מסירה לכל דירה", "מעקב תיקוני שנת בדק", "רישום הבית המשותף בטאבו"] }
+  ];
+  var INITIALS = ["ר. כ.", "מ. ל.", "א. ב.", "ש. ד.", "י. פ.", "נ. ג.", "ת. ח.", "ד. ס.", "ע. מ.", "ל. ר.", "ב. ש.", "ח. א."];
+  function rng(seed) { return function () { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }; }
+  function building(name, addr, floors, upf, mix, seed) {
+    var r = rng(seed), apts = [];
+    for (var f = floors; f >= 1; f--) {
+      for (var p = 1; p <= upf; p++) {
+        var x = r(), s = x < mix[0] ? "yes" : x < mix[0] + mix[1] ? "proc" : x < mix[0] + mix[1] + mix[2] ? "docs" : x < mix[0] + mix[1] + mix[2] + mix[3] ? "no" : "none";
+        var docs = { id: s !== "none" && r() > .15, tabu: s === "yes" ? r() > .2 : s === "proc" ? r() > .55 : false, sign: s === "yes", poa: s === "yes" && r() > .35 };
+        if (s === "docs") { docs.id = r() > .5; docs.tabu = false; }
+        var o = [INITIALS[Math.floor(r() * INITIALS.length)]];
+        if (r() > .7) { o.push(INITIALS[Math.floor(r() * INITIALS.length)]); }
+        apts.push({ id: name + "-" + f + "-" + p, floor: f, num: (f - 1) * upf + p, s: s, docs: docs, owners: o, note: s === "docs" ? "ירושה: ממתינים לצו קיום צוואה" : s === "no" ? "ביקשו פגישה עם עורך הדין" : "",
+          log: s === "none" ? [] : [{ t: "19.10.2026", x: "הסטטוס עודכן: " + ST[s].label + " · רכזת השטח" }] });
+      }
+    }
+    return { name: name, addr: addr, floors: floors, upf: upf, apts: apts };
+  }
+  var CX = [
+    { id: "a", name: "מתחם א'", city: "פתח תקווה", street: "רחוב הדוגמה 2 עד 6", track: "pinui", stage: 2, upd: "24.10.2026",
+      b: [building("בניין 1", "הדוגמה 2", 4, 4, [.62, .14, .08, .06], 11), building("בניין 2", "הדוגמה 4", 4, 4, [.58, .16, .1, .04], 12), building("בניין 3", "הדוגמה 6", 4, 4, [.5, .18, .1, .08], 13)] },
+    { id: "b", name: "מתחם ב'", city: "רעננה", street: "רחוב הדוגמה 10 עד 12", track: "pinui", stage: 4, upd: "21.10.2026",
+      b: [building("בניין 1", "הדוגמה 10", 5, 4, [.8, .08, .06, .04], 21), building("בניין 2", "הדוגמה 12", 5, 4, [.76, .1, .06, .04], 22)] },
+    { id: "c", name: "בניין ג'", city: "כפר סבא", street: "רחוב הדוגמה 8", track: "tama", stage: 2, upd: "25.10.2026",
+      b: [building("בניין", "הדוגמה 8", 4, 3, [.5, .2, .12, .04], 31)] },
+    { id: "d", name: "מתחם ד'", city: "הוד השרון", street: "רחוב הדוגמה 1 עד 5", track: "pinui", stage: 1, upd: "12.10.2026",
+      b: [building("בניין 1", "הדוגמה 1", 3, 4, [.25, .2, .05, .05], 41), building("בניין 2", "הדוגמה 3", 3, 4, [.22, .18, .08, .1], 42), building("בניין 3", "הדוגמה 5", 3, 4, [.3, .14, .06, .06], 43)] },
+    { id: "e", name: "בניין ה'", city: "הרצליה", street: "רחוב הדוגמה 14", track: "tama", stage: 5, upd: "18.10.2026",
+      b: [building("בניין", "הדוגמה 14", 6, 4, [.94, .02, .02, .0], 51)] },
+    { id: "f", name: "מתחם ו'", city: "פתח תקווה", street: "רחוב הדוגמה 20 עד 26", track: "pinui", stage: 2, upd: "8.10.2026",
+      b: [building("בניין 1", "הדוגמה 20", 4, 4, [.55, .12, .12, .1], 61), building("בניין 2", "הדוגמה 22", 4, 4, [.5, .16, .1, .1], 62), building("בניין 3", "הדוגמה 24", 4, 4, [.6, .1, .08, .06], 63), building("בניין 4", "הדוגמה 26", 4, 4, [.52, .14, .12, .08], 64)] }
+  ];
+  CX.forEach(function (c) { c.b.forEach(function (b) { b.apts.forEach(function (a) { a.id = c.id + ":" + a.id; }); }); });
+  var FEED = {
+    a: [{ t: "24.10.2026", x: "אסיפת דיירים ביום שני 3.11 בשעה 19:00 בלובי של בניין 2. על סדר היום: עדכון ההחתמות ושאלות לעורך הדין." },
+        { t: "20.10.2026", x: "נסחי טאבו התקבלו לעוד 9 דירות. תודה לכל מי ששלח." },
+        { t: "1.10.2026", x: "", auto: 1 },
+        { t: "15.9.2026", x: "הנציגות נבחרה: שלושה נציגים, אחד מכל בניין. הפרוטוקול נשלח לכל הדיירים." }]
+  };
+  var state = { cx: "a", apt: null, filter: "all", hi: null, stageOpen: null };
+  function $(s, el) { return (el || root).querySelector(s); }
+  function $$(s, el) { return [].slice.call((el || root).querySelectorAll(s)); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function cxById(id) { return CX.filter(function (c) { return c.id === id; })[0]; }
+  function apts(c) { return c.b.reduce(function (a, b) { return a.concat(b.apts); }, []); }
+  function counts(c) {
+    var n = { yes: 0, proc: 0, docs: 0, no: 0, none: 0 }, list = apts(c), miss = 0;
+    list.forEach(function (a) { n[a.s]++; if (a.s === "docs" || (a.s === "yes" && (!a.docs.id || !a.docs.tabu || !a.docs.poa))) { miss++; } });
+    n.total = list.length; n.pct = Math.round(n.yes / n.total * 100); n.miss = miss;
+    return n;
+  }
+  function trackLabel(t) { return t === "pinui" ? "פינוי בינוי" : "תמ\"א 38"; }
+  function days(d) { var p = d.split("."); return Math.round((new Date(2026, 9, 26) - new Date(+p[2], +p[1] - 1, +p[0])) / 864e5); }
+  function attnWhy(c) {
+    var n = counts(c), w = [];
+    if (n.no / n.total > .07) { w.push(n.no + " סירבו"); }
+    if (n.none / n.total > .2) { w.push(n.none + " בלי קשר"); }
+    if (days(c.upd) > 14) { w.push("לא עודכן " + days(c.upd) + " ימים"); }
+    return w;
+  }
+  function needsAttn(c) { return attnWhy(c).length > 0; }
+  function bl(k) { return k === 1 ? "בניין אחד" : k + " בניינים"; }
+  function nextAction(c) {
+    var n = counts(c);
+    if (c.track === "pinui" && c.stage === 2) {
+      var need = Math.ceil(n.total * 2 / 3) - n.yes;
+      if (need > 0) { return "עוד " + need + " חתימות עד שני שלישים מהדירות במתחם"; }
+    }
+    if (n.none > 0 && c.stage <= 2) { return "ליצור קשר עם " + n.none + " בעלי דירות שטרם הושג איתם קשר"; }
+    return LADDER[c.stage].a[0];
+  }
+  function ladMini(c) {
+    var h = '<span class="rrp-ladmini" aria-label="שלב ' + (c.stage + 1) + ' מתוך 10">';
+    for (var i = 0; i < 10; i++) { h += "<i" + (i < c.stage ? ' class="d"' : i === c.stage ? ' class="n"' : "") + "></i>"; }
+    return h + "<em>" + esc(LADDER[c.stage].l) + "</em></span>";
+  }
+  function meter(c, n) {
+    return '<div style="display:flex;align-items:center;gap:10px"><span class="rrp-pct"><span dir="ltr">' + n.pct + '%</span> <small dir="ltr">' + n.yes + "/" + n.total + '</small></span><div class="rrp-meter" style="flex:1"><i style="width:' + n.pct + '%"></i>' +
+      (c.track === "pinui" ? '<u style="inset-inline-start:66.7%" title="שני שלישים"></u>' : "") + "</div></div>";
+  }
+  /* ---------- portfolio ---------- */
+  function renderPortfolio() {
+    var tot = { cx: CX.length, bld: 0, apt: 0, yes: 0, miss: 0, attn: 0 };
+    CX.forEach(function (c) { var n = counts(c); tot.bld += c.b.length; tot.apt += n.total; tot.yes += n.yes; tot.miss += n.miss; if (needsAttn(c)) { tot.attn++; } });
+    $("[data-kpis]").innerHTML =
+      '<div class="rrp-kpi"><b>' + tot.cx + "</b><span>מתחמים פעילים</span></div>" +
+      '<div class="rrp-kpi"><b>' + tot.bld + "</b><span>בניינים</span></div>" +
+      '<div class="rrp-kpi"><b>' + tot.apt + "</b><span>דירות</span></div>" +
+      '<div class="rrp-kpi"><b>' + Math.round(tot.yes / tot.apt * 100) + "%</b><span>חתמו, בכל התיק</span></div>" +
+      '<div class="rrp-kpi"><b>' + tot.miss + "</b><span>דירות שחסר להן מסמך</span></div>" +
+      '<div class="rrp-kpi warn"><b>' + tot.attn + "</b><span>מתחמים שדורשים טיפול</span></div>";
+    var list = CX.filter(function (c) { return state.filter === "all" || (state.filter === "attn" ? needsAttn(c) : c.track === state.filter); });
+    var rows = "", cards = "";
+    list.forEach(function (c) {
+      var n = counts(c), attn = needsAttn(c);
+      rows += '<tr class="row" tabindex="0" data-open="' + c.id + '"><td class="nm"><b>' + esc(c.name) + " · " + esc(c.city) + "</b><span>" + esc(c.street) + " · " + bl(c.b.length) + " · עודכן " + esc(c.upd) + "</span></td>" +
+        '<td><span class="rrp-chip t-' + c.track + '">' + trackLabel(c.track) + "</span></td><td>" + ladMini(c) + "</td><td>" + meter(c, n) + "</td>" +
+        '<td><span class="rrp-pct">' + n.miss + "</span>" + (attn ? '<div class="rrp-flag">דורש טיפול: ' + esc(attnWhy(c).join(", ")) + "</div>" : "") + '</td><td class="rrp-next">' + esc(nextAction(c)) + "</td></tr>";
+      cards += '<button type="button" class="rrp-card" data-open="' + c.id + '"><div class="top"><div><b>' + esc(c.name) + " · " + esc(c.city) + "</b><span>" + bl(c.b.length) + " · עודכן " + esc(c.upd) + '</span></div><span class="rrp-chip t-' + c.track + '">' + trackLabel(c.track) + "</span></div>" +
+        ladMini(c) + meter(c, n) + '<div class="rrp-next">' + esc(nextAction(c)) + (attn ? ' <span class="rrp-flag">· דורש טיפול: ' + esc(attnWhy(c).join(", ")) + "</span>" : "") + "</div></button>";
+    });
+    $("[data-rows]").innerHTML = rows;
+    $("[data-cards]").innerHTML = cards;
+  }
+  /* ---------- complex ---------- */
+  function renderComplex() {
+    var c = cxById(state.cx), n = counts(c);
+    $("[data-cx-title]").textContent = c.name + " · " + c.city;
+    $("[data-cx-sub]").innerHTML = esc(c.street) + " · " + bl(c.b.length) + " · " + n.total + ' דירות · <span class="rrp-chip t-' + c.track + '">' + trackLabel(c.track) + "</span> · שלב " + (c.stage + 1) + " מתוך 10: " + esc(LADDER[c.stage].l);
+    $("[data-cx-pick]").innerHTML = CX.map(function (x) { return '<option value="' + x.id + '"' + (x.id === c.id ? " selected" : "") + ">" + esc(x.name + " · " + x.city) + "</option>"; }).join("");
+    $("[data-cx-big]").innerHTML = '<span dir="ltr">' + n.pct + '%</span>';
+    $("[data-cx-of]").textContent = n.yes + " מתוך " + n.total + " דירות";
+    var gap = "";
+    if (c.track === "pinui") {
+      var need = Math.ceil(n.total * 2 / 3) - n.yes;
+      gap = need > 0 ? "עוד <b class=\"num\">" + need + "</b> חתימות עד שני שלישים מהדירות במתחם" : "עברתם שני שלישים מהדירות במתחם";
+    } else { gap = "הרוב הנדרש בתמ\"א 38 תלוי במסלול ובבניין. בדקו מול עורך הדין."; }
+    $("[data-cx-gap]").innerHTML = gap;
+    var mix = "";
+    ["yes", "proc", "docs", "no", "none"].forEach(function (k) { if (n[k]) { mix += '<span class="' + ST[k].cls + '" style="flex:' + n[k] + '" title="' + ST[k].label + ": " + n[k] + '"></span>'; } });
+    $("[data-cx-mix]").innerHTML = mix;
+    $("[data-cx-mix]").setAttribute("aria-label", ["yes", "proc", "docs", "no", "none"].map(function (k) { return ST[k].label + " " + n[k]; }).join(", "));
+    $("[data-cx-mark]").innerHTML = c.track === "pinui" ? '<u style="inset-inline-start:66.7%"></u><em style="inset-inline-start:66.7%">שני שלישים מהדירות במתחם · תנאי אחד מתוך שלושה</em>' : "";
+    $("[data-legend]").innerHTML = ["yes", "proc", "docs", "no", "none"].map(function (k) {
+      return '<button type="button" class="rrp-leg" data-hi="' + k + '" aria-pressed="' + (state.hi === k ? "true" : "false") + '"><i class="rrp-sw ' + ST[k].cls + '"></i>' + ST[k].label + " <b>" + n[k] + "</b></button>";
+    }).join("");
+    var h = "";
+    c.b.forEach(function (b) {
+      h += '<figure class="rrp-bld" style="margin:0"><div class="rrp-facade" style="grid-template-columns:18px repeat(' + b.upf + ',34px)">';
+      for (var f = b.floors; f >= 1; f--) {
+        h += '<span class="rrp-flr">' + f + "</span>";
+        b.apts.filter(function (a) { return a.floor === f; }).forEach(function (a) {
+          var dim = state.hi && state.hi !== a.s ? " dim" : "";
+          h += '<button type="button" class="rrp-apt ' + ST[a.s].cls + dim + '" data-apt="' + a.id + '" aria-pressed="' + (state.apt === a.id ? "true" : "false") + '" aria-label="' + esc(b.name + ", דירה " + a.num + ", קומה " + f + ": " + ST[a.s].label) + '"><span>' + a.num + "</span></button>";
+        });
+      }
+      var bn = { y: b.apts.filter(function (a) { return a.s === "yes"; }).length, t: b.apts.length };
+      h += '</div><div class="rrp-ground"></div><figcaption>' + esc(b.name) + " · " + esc(b.addr) + '<span>' + bn.y + "/" + bn.t + " חתמו</span></figcaption></figure>";
+    });
+    $("[data-blds]").innerHTML = h;
+    var st = "";
+    LADDER.forEach(function (s, i) {
+      st += '<button type="button" class="rrp-step' + (i < c.stage ? " d" : i === c.stage ? " n" : "") + '" data-stage="' + i + '" aria-pressed="' + ((state.stageOpen === null ? c.stage : state.stageOpen) === i ? "true" : "false") + '"><i>' + (i + 1) + "</i><span>" + esc(s.l) + "</span></button>";
+    });
+    $("[data-steps]").innerHTML = st;
+    var so = state.stageOpen === null ? c.stage : state.stageOpen, S = LADDER[so];
+    $("[data-stagecard]").innerHTML = "<div><h4>" + (so === c.stage ? "עכשיו: " : "") + esc(S.l) + "</h4><p>" + esc(S.d) + '</p><span class="rrp-dur">' + esc(S.t) + "</span></div><div><h4>הצעדים הבאים</h4><ul>" + S.a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+    var t = [], two = Math.ceil(n.total * 2 / 3);
+    t.push({ ok: n.none === 0, x: n.none ? "ליצור קשר עם " + n.none + " בעלי דירות שטרם הושג איתם קשר" : "יש קשר עם כל בעלי הדירות" });
+    if (c.track === "pinui") { t.push({ ok: n.yes >= two, x: n.yes >= two ? "שני שלישים מהדירות במתחם חתמו" : "להגיע לשני שלישים מהדירות במתחם: חסרות " + (two - n.yes) }); }
+    t.push({ ok: n.docs === 0, x: n.docs ? n.docs + " דירות עם מסמכים חסרים: ירושות, ייפוי כוח, נסח" : "אין דירות שתקועות על מסמכים" });
+    t.push({ ok: n.no === 0, x: n.no ? n.no + " בעלי דירות סירבו: לתאם שיחה עם עורך הדין של הדיירים" : "אין סירובים פתוחים" });
+    t.push({ ok: c.stage > 3, x: "נבחרו עורך דין ושמאי מטעם הדיירים" });
+    t.push({ ok: c.stage > 4, x: "נבחר יזם במכרז" });
+    $("[data-tasks]").innerHTML = t.map(function (x) { return '<li class="' + (x.ok ? "ok" : "") + '"><i aria-hidden="true"></i><span>' + esc(x.x) + "</span></li>"; }).join("");
+    var list = apts(c).filter(function (a) { return a.s !== "none"; }), ds = "";
+    Object.keys(DOCS).forEach(function (k) {
+      var have = list.filter(function (a) { return a.docs[k]; }).length;
+      ds += '<div class="rrp-docrow"><span>' + DOCS[k] + '</span><b>' + have + "/" + list.length + '</b><div class="rrp-meter"><i style="width:' + Math.round(have / Math.max(1, list.length) * 100) + '%"></i></div></div>';
+    });
+    $("[data-docsum]").innerHTML = ds;
+    renderDrawer();
+  }
+  function findApt(id) {
+    var out = null;
+    CX.forEach(function (c) { c.b.forEach(function (b) { b.apts.forEach(function (a) { if (a.id === id) { out = { c: c, b: b, a: a }; } }); }); });
+    return out;
+  }
+  function renderDrawer() {
+    var d = $("[data-drawer]"), f = state.apt ? findApt(state.apt) : null;
+    if (!f || f.c.id !== state.cx) {
+      d.innerHTML = "<h3>הדירה שנבחרה</h3><p class=\"sub\">הקישו על דירה בחזית כדי לעדכן סטטוס, מסמכים והערה. כל שינוי נרשם עם התאריך ומי עדכן.</p>";
+      return;
+    }
+    var a = f.a, h = "<h3>דירה " + a.num + " · קומה " + a.floor + "</h3><p class=\"sub\">" + esc(f.b.name + " · " + f.b.addr + " · " + f.c.city) + "</p>";
+    h += '<div class="rrp-owners" aria-label="בעלי הדירה">' + a.owners.map(function (o) { return '<span class="rrp-owner">' + esc(o) + "</span>"; }).join("") + "</div>";
+    h += '<label class="rrp-field">סטטוס<select data-ed-status>' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === a.s ? " selected" : "") + ">" + ST[k].label + "</option>"; }).join("") + "</select></label>";
+    h += '<ul class="rrp-docs" aria-label="מסמכים">' + Object.keys(DOCS).map(function (k) { return '<li><label><input type="checkbox" data-ed-doc="' + k + '"' + (a.docs[k] ? " checked" : "") + "> " + DOCS[k] + "</label></li>"; }).join("") + "</ul>";
+    h += '<label class="rrp-field">הערה<textarea data-ed-note>' + esc(a.note) + "</textarea></label>";
+    h += '<button type="button" class="rrp-btn pri" style="width:100%" data-ed-save>שמירה</button><div class="rrp-saved" data-ed-msg></div>';
+    h += '<h3 style="font-size:14px;margin-top:14px">היסטוריה</h3><ul class="rrp-log">' + (a.log.length ? a.log.map(function (l) { return "<li><time>" + esc(l.t) + "</time>" + esc(l.x) + "</li>"; }).join("") : '<li>אין עדיין שינויים לדירה הזו.</li>') + "</ul>";
+    d.innerHTML = h;
+  }
+  /* ---------- updates ---------- */
+  function renderUpdates() {
+    var c = cxById(state.cx), n = counts(c);
+    $("[data-up-sub]").textContent = c.name + " · " + c.city + ". הנציגות והחברה מפרסמות פעם אחת, וכל השכנים רואים.";
+    var list = (FEED[c.id] || [{ t: c.upd, x: "עדכון ראשון לבניין יופיע כאן." }]).map(function (u) {
+      var txt = u.auto ? "עדכון תקופתי: " + n.yes + " מתוך " + n.total + " דירות חתמו (" + n.pct + "%). השלב הנוכחי: " + LADDER[c.stage].l + "." : u.x;
+      return "<li><time>" + esc(u.t) + "</time>" + esc(txt) + (u.auto ? '<span class="auto">אוטומטי</span>' : "") + "</li>";
+    }).join("");
+    $("[data-feed]").innerHTML = list;
+    var mine = apts(c).filter(function (a) { return a.s === "proc" && a.docs.id; })[0] || apts(c)[0], have = [], miss = [];
+    Object.keys(DOCS).forEach(function (k) { (mine.docs[k] ? have : miss).push(DOCS[k]); });
+    $("[data-phone]").innerHTML = '<div class="rrp-phone__bar"></div><h4>' + esc(c.b[0].addr + ", " + c.city) + '</h4><p class="ps">חדר הבניין · ' + esc(c.name) + '</p>' +
+      '<div class="blk"><b>כמה חתמו</b><span class="big">' + n.pct + '%</span> <span class="rrp-note">' + n.yes + " מתוך " + n.total + '</span><div class="rrp-meter" style="margin-top:8px"><i style="width:' + n.pct + '%"></i></div></div>' +
+      '<div class="blk"><b>השלב</b><p>' + (c.stage + 1) + " מתוך 10: " + esc(LADDER[c.stage].l) + "</p></div>" +
+      '<div class="blk"><b>הדירה שלכם: דירה ' + mine.num + "</b><p>" + (have.length ? '<span class="ok">התקבל: ' + esc(have.join(", ")) + "</span><br>" : "") + (miss.length ? '<span class="miss">חסר: ' + esc(miss.join(", ")) + "</span>" : '<span class="ok">התיק מלא</span>') + "</p></div>" +
+      '<div class="blk"><b>העדכון האחרון</b><p>' + esc((FEED[c.id] || [{ x: "עוד אין עדכונים." }])[0].x) + "</p></div>" +
+      '<p class="rrp-note" style="margin:6px 2px 0">השכנים רואים את התמונה הכללית ואת הדירה שלהם בלבד, בלי שמות של שכנים אחרים.</p>';
+  }
+  /* ---------- report ---------- */
+  function renderReport() {
+    var c = cxById(state.cx), n = counts(c), rows = "";
+    c.b.forEach(function (b) {
+      var k = { yes: 0, proc: 0, docs: 0, no: 0, none: 0 };
+      b.apts.forEach(function (a) { k[a.s]++; });
+      rows += "<tr><td>" + esc(b.name + " · " + b.addr) + "</td><td>" + b.apts.length + "</td><td>" + k.yes + "</td><td>" + k.proc + "</td><td>" + k.docs + "</td><td>" + k.no + "</td><td>" + k.none + "</td></tr>";
+    });
+    rows += '<tr><td>סך הכל</td><td>' + n.total + "</td><td>" + n.yes + "</td><td>" + n.proc + "</td><td>" + n.docs + "</td><td>" + n.no + "</td><td>" + n.none + "</td></tr>";
+    $("[data-report]").innerHTML =
+      '<header class="rrp-rep__h"><div><h2>דוח מצב · ' + esc(c.name + " · " + c.city) + "</h2><p>" + esc(c.street) + " · " + trackLabel(c.track) + " · שלב " + (c.stage + 1) + " מתוך 10: " + esc(LADDER[c.stage].l) + '</p><p>מוגש לנציגות הדיירים על ידי החברה המארגנת</p></div><div class="stamp">נכון ל־<span class="num">26.10.2026</span><br>נתוני דוגמה</div></header>' +
+      '<h3>ההסכמות</h3><p><b class="num">' + n.yes + "</b> מתוך <b class=\"num\">" + n.total + "</b> דירות חתמו (" + n.pct + "%)." + (c.track === "pinui" ? " עד שני שלישים מהדירות במתחם חסרות " + Math.max(0, Math.ceil(n.total * 2 / 3) - n.yes) + " חתימות." : "") + "</p>" +
+      '<div class="rrp-mix" style="margin:6px 0 4px">' + $("[data-cx-mix]").innerHTML + "</div>" +
+      '<table><thead><tr><th scope="col">בניין</th><th scope="col">דירות</th><th scope="col">חתמו</th><th scope="col">בתהליך</th><th scope="col">חסרים מסמכים</th><th scope="col">סירבו</th><th scope="col">טרם הושג קשר</th></tr></thead><tbody>' + rows + "</tbody></table>" +
+      "<h3>מה נעשה החודש</h3><ol>" + (FEED[c.id] || []).filter(function (u) { return !u.auto; }).slice(0, 3).map(function (u) { return "<li>" + esc(u.x) + "</li>"; }).join("") + "</ol>" +
+      "<h3>הצעדים הבאים</h3><ol>" + LADDER[c.stage].a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" +
+      '<div class="rrp-rep__f">הדוח מבוסס על הנתונים שהחברה המארגנת עדכנה בחדר הניהול. אינו ייעוץ משפטי. הרוב הנדרש בכל מסלול נבדק מול עורך הדין של הדיירים.</div>';
+  }
+  /* ---------- tabs and events ---------- */
+  function show(tab) {
+    $$("[data-tab]").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.tab === tab ? "true" : "false"); });
+    $$("[data-screen]").forEach(function (s) { s.hidden = s.dataset.screen !== tab; });
+    if (tab === "portfolio") { renderPortfolio(); }
+    if (tab === "complex") { renderComplex(); }
+    if (tab === "updates") { renderUpdates(); }
+    if (tab === "report") { renderComplex(); renderReport(); }
+  }
+  root.addEventListener("click", function (e) {
+    var t;
+    if ((t = e.target.closest("[data-tab]"))) { show(t.dataset.tab); return; }
+    if ((t = e.target.closest("[data-open]"))) { state.cx = t.dataset.open; state.apt = null; state.stageOpen = null; show("complex"); window.scrollTo(0, 0); return; }
+    if ((t = e.target.closest("[data-f]"))) { state.filter = t.dataset.f; $$("[data-f]").forEach(function (b) { b.setAttribute("aria-pressed", b === t ? "true" : "false"); }); renderPortfolio(); return; }
+    if ((t = e.target.closest("[data-apt]"))) { state.apt = t.dataset.apt; renderComplex(); if (window.innerWidth < 1000) { $("[data-drawer]").scrollIntoView({ behavior: "smooth", block: "start" }); } return; }
+    if ((t = e.target.closest("[data-hi]"))) { state.hi = state.hi === t.dataset.hi ? null : t.dataset.hi; renderComplex(); return; }
+    if ((t = e.target.closest("[data-stage]"))) { state.stageOpen = +t.dataset.stage; renderComplex(); return; }
+    if ((t = e.target.closest("[data-ed-save]"))) {
+      var f = findApt(state.apt), a = f.a, ns = $("[data-ed-status]").value;
+      $$("[data-ed-doc]").forEach(function (cb) { a.docs[cb.dataset.edDoc] = cb.checked; });
+      a.note = $("[data-ed-note]").value;
+      if (ns !== a.s) { a.log.unshift({ t: "26.10.2026", x: "הסטטוס עודכן: " + ST[ns].label + " · אתם" }); a.s = ns; }
+      else { a.log.unshift({ t: "26.10.2026", x: "המסמכים או ההערה עודכנו · אתם" }); }
+      if (ns === "yes") { a.docs.sign = true; }
+      renderComplex(); $("[data-ed-msg]").textContent = "נשמר. הספירה עודכנה.";
+      return;
+    }
+    if ((t = e.target.closest("[data-up-send]"))) {
+      var v = $("[data-up-text]").value.trim(); if (!v) { return; }
+      (FEED[state.cx] = FEED[state.cx] || []).unshift({ t: "26.10.2026", x: v }); $("[data-up-text]").value = ""; renderUpdates(); return;
+    }
+    if ((t = e.target.closest("[data-copy]"))) { t.textContent = "הקישור הועתק"; try { navigator.clipboard.writeText("https://" + $("[data-invite]").textContent); } catch (x) {} return; }
+    if ((t = e.target.closest("[data-print]"))) { window.print(); return; }
+    if ((t = e.target.closest("[data-new]"))) { t.textContent = "פותחים מתחם: כתובת, בניינים, קומות"; return; }
+  });
+  root.addEventListener("change", function (e) { if (e.target.matches("[data-cx-pick]")) { state.cx = e.target.value; state.apt = null; state.stageOpen = null; renderComplex(); } });
+  root.addEventListener("keydown", function (e) { var r = e.target.closest("tr[data-open]"); if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); r.click(); } });
+  /* first view: a selected apartment so the drawer shows its work; ?tab= or #tab picks the screen */
+  var first = apts(cxById("a")).filter(function (a) { return a.s === "docs"; })[0];
+  state.apt = first ? first.id : null;
+  var want = (location.hash || "").replace("#", "") || (new URLSearchParams(location.search).get("tab") || "");
+  show(["portfolio", "complex", "updates", "report"].indexOf(want) >= 0 ? want : "portfolio");
+})();
+</script>
+</body>
+</html>

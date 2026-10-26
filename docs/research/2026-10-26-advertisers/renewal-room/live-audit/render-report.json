@@ -1,0 +1,45 @@
+{
+ "live-my-renewal-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "nlurd-step is-done -14..74",
+   "SPAN -10..70",
+   "nlurd-step is-done -102..-14",
+   "I -73..-43",
+   "SPAN -98..-18",
+   "nlurd-step is-done -190..-102"
+  ],
+  "shot": "live-my-renewal-390.png"
+ },
+ "live-my-renewal-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [],
+  "shot": "live-my-renewal-1280.png"
+ },
+ "live-advertise-390": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 390,
+  "clientW": 390,
+  "wide_examples": [
+   "INPUT -9999..-9805"
+  ],
+  "shot": "live-advertise-390.png"
+ },
+ "live-advertise-1280": {
+  "errors": [],
+  "overflow": false,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "wide_examples": [
+   "INPUT -9959..-9765"
+  ],
+  "shot": "live-advertise-1280.png"
+ }
+}
