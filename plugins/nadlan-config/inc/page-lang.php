@@ -66,6 +66,34 @@ add_filter( 'language_attributes', function ( $output ) {
 	return 'lang="' . esc_attr( $lang ) . '" dir="' . esc_attr( $dir ) . '"';
 }, 20 );
 
+/* 1.72.527: an article marked with its own language (the meta above) keeps the theme's Yoast trail, which started at "דף הבית"
+   on an English page; it now starts at that language's home, with the label the language pages use (inc/lang-pages.php) */
+add_filter( 'wpseo_breadcrumb_links', function ( $links ) {
+	if ( ! is_singular() || ! is_array( $links ) || empty( $links[0] ) || ! is_array( $links[0] ) ) {
+		return $links;
+	}
+	$own  = (string) get_post_meta( get_queried_object_id(), '_nadlan_page_lang', true );
+	$home = array( 'en' => 'Home', 'fr' => 'Accueil', 'ru' => 'Главная', 'ar' => 'الرئيسية' );
+	if ( isset( $home[ $own ] ) ) {
+		$links[0]['text'] = $home[ $own ];
+		$links[0]['url']  = home_url( '/' . $own . '/' );
+	}
+	return $links;
+}, 30 );
+
+/* 1.72.527 (found with the English posts): the single post template draws the featured picture in a 3:2 frame with object-fit
+   cover, so a 1200x630 chart lost both sides (its title read "reign purchases"). The post's own picture now keeps its shape. */
+add_filter( 'render_block_core/post-featured-image', function ( $html, $block, $instance = null ) {
+	if ( ! is_singular( 'post' ) || false === strpos( (string) $html, 'aspect-ratio' ) ) {
+		return $html;
+	}
+	$pid = ( $instance && isset( $instance->context['postId'] ) ) ? (int) $instance->context['postId'] : 0;
+	if ( $pid && $pid !== (int) get_queried_object_id() ) {
+		return $html;
+	}
+	return preg_replace( '/aspect-ratio:\s*[\d.\/ ]+;?|object-fit:\s*cover;?/', '', $html );
+}, 20, 3 );
+
 if ( ! function_exists( 'nadlan_pglang_restpath' ) ) {
 	/** The page's full path with any leading lang prefix stripped: the family key. */
 	function nadlan_pglang_restpath( $post_id ) {

@@ -4537,3 +4537,5 @@ RELEASE LOCK 1.72.525 second run (same content; the English mortgage page carrie
 RELEASE DONE 1.72.525 (DekelSoftware tools: dktool, dkboq, text cells in rows) by Claude [Ashira session] 26.10.2026: second run released and verified, health 1.72.525. Lock released.
 RELEASE LOCK 1.72.526 (ValueAnchors: pval.js v2 + value.json swapped whole, value-series.json new; hunk on the live inc/instruments.php) by Claude [Ashira session, Opus 5.5] 26.10.2026.
 RELEASE DONE 1.72.526 (ValueAnchors: pval v2 three official anchors, value-series.json) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.526. Lock released.
+RELEASE LOCK 1.72.527 (PostPictureAndTrail: hunk on the live inc/page-lang.php; post pictures keep their shape, language home in the trail; HAD-604) by Claude [Ashira session, Opus 5.5] 26.10.2026.
+RELEASE DONE 1.72.527 (PostPictureAndTrail) by Claude [Ashira session] 26.10.2026: released and verified, health 1.72.527. Lock released.
