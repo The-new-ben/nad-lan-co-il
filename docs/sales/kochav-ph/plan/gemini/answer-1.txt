@@ -1,0 +1,148 @@
+### 1. FIDELITY (vs Architect Plan 01)
+
+*   **07 (2D Luxury Marketing Plan)**: Matches. All room counts (5 rooms: 4 bedrooms + living/dining/kitchen), partition walls, door swings, window openings, 2-bay pergola, and stepped terrace outline match plan 01. The kitchen island is strictly parallel to the back kitchen wall. External reference balconies ("גוזטרא בק'10", "מרפסת ק'5") and communal core are correctly omitted.
+*   **02 (Dollhouse Blender)**:
+    *   *Walls, room count & shape*: Matches plan 01. 4 bedrooms, 2.5 bathrooms, laundry room, and living/kitchen suite. Communal core and non-apartment balconies are properly excluded.
+    *   *Kitchen island*: Matches (correctly oriented parallel to the long kitchen counter).
+    *   *Terrace & Pergola*: Matches (stepped L-shape terrace with 2-bay louvered pergola on posts).
+    *   *Living room furniture layout*: Differs from 01 — the two main sofas are placed parallel to each other (facing each other across the coffee table), whereas plan 01 specifies an L-shaped sofa configuration.
+*   **03 (Dollhouse GPT-Image)**:
+    *   *Geometry & Openings*: Matches 02 and plan 01. No walls moved, no room shapes altered, terrace outline and 2-bay pergola intact.
+    *   *Island & Furniture*: Island remains parallel to the kitchen wall. Inherits 02's parallel sofa arrangement instead of the L-shape drawn in 01.
+*   **04 (Dollhouse Nano Banana)**:
+    *   *Walls & Openings*: Differs — hallucinated a heavy freestanding wooden wardrobe/partition in the private bedroom hallway, obstructing circulation to the master suite.
+    *   *Island, Terrace & Pergola*: Island orientation (parallel), terrace perimeter, and pergola match 02. Retains the parallel sofa arrangement.
+*   **05 (Top-Down Blender)**:
+    *   *Walls, rooms & openings*: Matches plan 01 throughout.
+    *   *Island & Terrace*: Kitchen island is parallel to the back wall; terrace footprint and pergola match 01.
+    *   *Living room furniture*: Differs — shows parallel facing sofas instead of the L-shaped sofa layout in 01.
+*   **06 (Terrace Blender)**:
+    *   *Terrace, Facade & Openings*: Matches plan 01 viewpoint and envelope (pergola overhead, large sliding glass corner to living room, dining access door).
+    *   *Interior seen through glass*: Island and dining table orientation match; living room seating reflects 02's parallel sofas.
+
+---
+
+### 2. INVENTED OR FORBIDDEN CONTENT
+
+*   **07**:
+    *   *Dimensions/Numbers*: Fully compliant — zero dimension lines, zero measurements, zero numbers in metres, zero scale bar.
+    *   *Background*: Compliant — pure white background, no city or skyline.
+    *   *Invented elements*: None (standard Hebrew marketing labels and material legend only).
+*   **02**:
+    *   *Dimensions/Numbers*: Fully compliant — none.
+    *   *Background*: Compliant — neutral off-white/light grey studio floor, no skyline.
+    *   *Invented elements*: Arbitrary vertical wood strips on the far living room wall (wrong location compared to real apartment).
+*   **03**:
+    *   *Dimensions/Numbers*: Fully compliant — none.
+    *   *Background*: Compliant — soft neutral studio background, no city.
+    *   *Invented elements*: None.
+*   **04**:
+    *   *Dimensions/Numbers*: Fully compliant — none.
+    *   *Background*: Compliant — neutral studio backdrop.
+    *   *Invented elements*: Hallucinated wardrobe block choking the private corridor.
+*   **05**:
+    *   *Dimensions/Numbers*: Fully compliant — none.
+    *   *Background*: Compliant — flat neutral backdrop, zero exterior context.
+    *   *Invented elements*: None.
+*   **06**:
+    *   *Dimensions/Numbers*: Fully compliant — none.
+    *   *Background*: Compliant — soft gradient sky, no skyline or urban horizon.
+    *   *Invented elements*: None (terrace is completely bare — lacks outdoor seating, dining table, or planters).
+*   **n1**:
+    *   *FORBIDDEN & INVENTED*: Hallucinated the communal staircase and elevator lobby inside the apartment; rendered lower-floor reference balconies ("גוזטרא בק'10", "מרפסת ק'5") as attached penthouse decks; added a second massive pergola; added extensive outdoor furniture, sun beds, and numerous potted plants/trees.
+*   **n2**:
+    *   *FORBIDDEN & INVENTED*: Rendered communal building stairs and elevator shaft inside the living area; rendered floor 5 and 10 balconies as private terraces; added a second pergola; added outdoor dining sets, sun loungers, and perimeter planters.
+*   **n3**:
+    *   *FORBIDDEN & INVENTED*: Rendered communal stairs and lift core inside the unit; rendered lower-floor reference balconies; completely invented a fictitious U-shaped kitchen enclosure; added desks, bedroom artwork, and terrace lounge sets.
+
+---
+
+### 3. MATERIALS vs REAL PHOTOS 08
+
+*Ground truth from 08: 120x120cm warm-grey matte porcelain floor in public zones; natural light-oak parquet in bedrooms; ultra-matte charcoal/black island with black sink/faucet and cognac leather barstools; full-height vertical fluted walnut TV wall; floating warm oak vanity with white vessel sink; warm golden-teak composite terrace deck; clear glass railing with black slim cap; cream/off-white motorized pergola.*
+
+*   **07**: Graphic representation only; accurately differentiates stone tile in public areas from wood parquet in bedrooms; deck tone is representative.
+*   **02 & 05**:
+    *   *Floors*: Flat, washed-out off-white tiles in living area; uniform desaturated wood in bedrooms; lacks tile seams, roughness breakup, and specular response.
+    *   *Kitchen*: Solid matte grey block; missing the dark charcoal finish, waterfall edge detail, inset cooktop/sink, and cognac leather barstools.
+    *   *Sofa & Chairs*: White primitive blocks without fabric weave, cushions, or seams; armchairs are plain orange cylinders.
+    *   *Walnut wall*: Missing entirely on the TV wall (replaced by two irrelevant brown slats on the rear wall).
+    *   *Deck & Railing*: Deck is an untextured, desaturated pale grey-tan; railing is generic grey frame without glass refraction.
+    *   *Pergola*: Chalky flat white without powder-coated aluminum sheen.
+*   **03**:
+    *   *Floors*: Improved stone texture and warmer bedroom parquet, but living room tiles still appear slightly washed out.
+    *   *Kitchen*: Darker island with improved shadow depth; barstools remain plain.
+    *   *Sofa & Chairs*: Added realistic fabric creases and cushion volume; armchairs have believable warm terracotta velvet tone.
+    *   *Walnut wall*: Still missing on the TV feature wall.
+    *   *Deck*: Warmer tone than 02, but plank edges remain soft.
+*   **04**:
+    *   *Floors*: Hallucinated aggressive marble veining across the living area (contradicts the solid matte stone in 08).
+    *   *Kitchen*: Cooktop added, but island finish looks like cheap grey plastic.
+    *   *Walnut wall*: Missing; brown wood tones are incorrectly placed on hallway wardrobe hallucinations.
+*   **06**:
+    *   *Deck*: Dull, cold, desaturated grey-tan plastic planks; completely lacks the rich golden-teak warmth and fine grain shown in photos 02, 03, and 07 of 08.
+    *   *Exterior cladding*: Flat white panels with computer-drawn lines; lacks the warm-beige limestone texture and realistic tile joint depth.
+    *   *Glass facade*: Completely transparent without Fresnel reflections, glass tint, or corner mullion seals.
+    *   *Interior*: Stark clinical white walls visible inside; missing the walnut TV feature wall, warm 3000K recessed lighting, and sheer curtains.
+
+---
+
+### 4. QUALITY vs TOP DEVELOPER MARKETING VISUALS (5 Actionable Blender Fixes)
+
+1.  **Directional Sun & Interior Balance (Lighting)**: Replace the flat studio fill with an angled warm Sun light (~35° elevation, 4800K) paired with a neutral soft sky HDRI, and add warm interior ceiling spots (3000K IES profiles) to eliminate the sterile, clinical shadowless look across 02, 05, and 06.
+2.  **PBR Architectural Materials (Materials)**: Texture the living floor with calibrated 120x120cm warm-grey matte stone tiles (subtle roughness map, 2mm dark grout) and replace the terrace deck in 02, 05, and 06 with a warm golden-teak composite PBR shader featuring realistic normal/specular grain.
+3.  **Full-Height Fluted Walnut TV Feature Wall (Detail)**: Model the continuous vertical dark walnut slat feature wall on the living room boundary wall as documented in real photo 08, providing the essential high-end anchor currently missing in all 3D views.
+4.  **Production-Grade Furniture Assets (Detail)**: Replace the primitive white blocks and cylinder armchairs with high-poly designer furniture featuring realistic fabric folds, a honed charcoal waterfall kitchen island with black undermount fixtures, and cognac leather barstools.
+5.  **Micro-Beveling & Architectural Glass (Camera & Detail)**: Apply a 1.5mm Bevel modifier to all cut-away wall tops, corner returns, and joinery to catch natural specular rim highlights, and set the terrace sliding glass in 06 to IOR 1.52 with subtle Fresnel reflection and sheer white curtain panels.
+
+---
+
+### 5. 03 vs 04 (Realism Pass Comparison)
+
+*   **Winner**: **03 (Dollhouse GPT-Image)** is decisively better for the listing page.
+*   **Why**:
+    *   *Fidelity preservation*: 03 respects the architectural base model perfectly — it does not move walls, does not alter room counts, and keeps circulation corridors wide open.
+    *   *Hallucinations in 04*: 04 catastrophically hallucinated a bulky wooden wardrobe block protruding into the middle of the hallway, physically blocking the passage to the master bedroom and en-suite bath.
+    *   *Material accuracy*: 03 enhances fabrics and wood naturally, whereas 04 hallucinated an aggressive marble-veined floor that directly contradicts the real matte floor tiles in 08.
+*   **Wall / Island / Element Changes**:
+    *   *Walls moved*: Neither moved exterior perimeter walls, but 04 generated an illegal interior wardrobe partition in the hallway.
+    *   *Island rotated*: Neither rotated the island (both correctly kept it parallel to the back kitchen wall).
+
+---
+
+### 6. n1, n2, n3 EVALUATION
+
+*   **Usable as-is?**: **REJECT all three.** None are usable under any circumstances.
+*   **Fidelity Errors**:
+    *   **n1 (Nano Banana 2.1 - Iso)**:
+        *   *Core*: Fully rendered the public building stairwell (with steps and glass balustrades) and elevator lobby inside the private apartment.
+        *   *Extra Balconies*: Erroneously built and furnished the floor 5 terrace and floor 10 cantilevered balconies as part of this apartment.
+        *   *Pergolas*: Hallucinated a second full-sized dark metal pergola over the rear deck.
+        *   *Island & Furniture*: Mismatched oval dining table; distorted island proportions; added unauthorized outdoor lounge sets, sun loungers, and extensive potted plants.
+    *   **n2 (Nano Banana 2.1 - Top)**:
+        *   *Core*: Rendered the communal elevator shaft and internal fire stairs into the floor plan.
+        *   *Extra Balconies*: Turned non-existent exterior floor spaces into accessible, furnished terraces.
+        *   *Pergolas*: Placed two oversized dark pergolas over two separate roof zones.
+        *   *Island & Kitchen*: Distorted the kitchen island into an angled wedge with 6 stools and added a fictitious L-shaped back counter.
+        *   *Flooring*: Hallucinated a herringbone parquet pattern throughout the apartment.
+    *   **n3 (Nano Banana 3 Pro - Iso)**:
+        *   *Core*: Integrated the building's communal stairs and elevator shaft into the private floor area.
+        *   *Extra Balconies*: Fabricated outdoor terrace platforms from lower-floor reference outlines.
+        *   *Kitchen*: Critical architectural failure — wiped out the straight kitchen wall and parallel island, replacing them with a massive enclosed U-shaped peninsula counter.
+        *   *Rooms & Partitions*: Severely distorted bedroom walls, bathroom layouts, and door openings.
+
+---
+
+### 7. VERDICT PER IMAGE
+
+*   **01-architect-plan.jpg**: **SOURCE** (Ground-truth architectural plan)
+*   **02-dollhouse-blender.jpg**: **USE AFTER FIX** (Fix sofa layout to L-shape, add walnut TV wall, update materials to match 08)
+*   **03-dollhouse-gpt-image.jpg**: **USE AFTER FIX** (Base 02 needs sofa layout and TV wall corrected before running the pass)
+*   **04-dollhouse-nano-banana.jpg**: **REJECT** (Hallucinated hallway wardrobe obstruction and incorrect marble floor)
+*   **05-topdown-blender.jpg**: **USE AFTER FIX** (Correct sofa layout to L-shape, add walnut TV wall, tune PBR materials)
+*   **06-terrace-blender.jpg**: **USE AFTER FIX** (Correct deck wood shader to warm teak, add glass reflections, warm interior lighting, and walnut TV wall)
+*   **07-plan-lux-svg.jpg**: **USE** (Fully compliant, clean, zero dimensions, faithful to plan 01)
+*   **08-real-photos.jpg**: **SOURCE** (Ground-truth finishes, materials, and lighting)
+*   **n1-coordinator-iso-nano-2.1.jpg**: **REJECT** (Gross fidelity violations: communal core, extra balconies, second pergola, fake furniture)
+*   **n2-coordinator-top-nano-2.1.jpg**: **REJECT** (Gross fidelity violations: communal core, extra balconies, deformed wedge island)
+*   **n3-coordinator-iso-3-pro.jpg**: **REJECT** (Gross fidelity violations: communal core, destroyed kitchen geometry into U-shape)

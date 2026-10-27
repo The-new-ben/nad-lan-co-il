@@ -1,0 +1,227 @@
+Reading additional input from stdin...
+OpenAI Codex v0.162.0-alpha.2
+--------
+workdir: C:\Users\777\AppData\Local\Temp\claude\C--Users-777-nad-lan\f8200c1d-6798-4a3e-8a9f-7b12503e42b2\scratchpad
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 01a17d9e-039f-7f33-94e7-dbea47a70076
+--------
+user
+Review this HTML section (stdin) that is embedded in a live WordPress real-estate listing page (RTL Hebrew, phone first). It is an interactive floor plan: SVG plan, a toggle to a rendered image, chips per room, a panel with the room photo, pinch/double-tap/buttons zoom, page must keep scrolling through it (no wheel capture except ctrl+wheel). Find REAL bugs only: JS errors, touch/pointer logic flaws (pinch, pan, tap vs scroll on iOS Safari and Android Chrome), accessibility blockers, CSS that can break layout on 360-430px phones or RTL, anything that could freeze page scrolling. For each: line/snippet, the concrete failure scenario, and the minimal fix. No style nitpicks. Answer in English, max 15 findings, most severe first.
+
+<stdin>
+<section class="nlx-sec" id="plan-L07-he">
+<style>
+.nlx .np{--np-ink:var(--nlx-ink,#14212B);--np-deep:var(--nlx-deep,#1F4B5C);--np-sea:var(--nlx-sea,#2F6F86);--np-line:var(--nlx-line,#E3E1DA);--np-mute:var(--nlx-mute,#5F7785);--np-surf:#F4F7F8}
+.nlx .np-bar{display:flex;justify-content:flex-start;margin:0 0 12px}
+.nlx .np-seg{display:inline-flex;border:1px solid var(--np-line);border-radius:999px;padding:3px;background:#fff}
+html body .nlx .np-seg button{min-height:44px;min-width:104px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--np-ink);font:700 16px/1 var(--nlx-sans);cursor:pointer;box-shadow:none}
+html body .nlx .np-seg button[aria-pressed="true"]{background:var(--np-ink);color:#fff}
+.nlx .np{container-type:inline-size}
+.nlx .np-body{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}.nlx .np-body>*{min-width:0}
+.nlx .np-stage{position:relative;overflow:hidden;border:1px solid var(--np-line);border-radius:16px;background:#fff;aspect-ratio:1/1;max-height:min(680px,82vh);touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:none}
+/* the page column is about 715px on a desktop: the plan takes the full width, the room card sits under it with the photo beside the name */
+@container (min-width:600px){.nlx .np-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px;align-items:start}.nlx .np-panel>h3{grid-column:1}.nlx .np-panel>*:not(h3){grid-column:2;grid-row:1/span 2;margin-top:0}}
+.nlx .np-stage.is3d{aspect-ratio:3/2;background:#E6EBEE}.nlx .np-stage:focus-visible{box-shadow:0 0 0 3px var(--np-sea)}
+.nlx .np-canvas{position:absolute;inset:0;transform-origin:0 0;will-change:transform}
+.nlx .np .np-svg{width:100%;height:100%;display:block;max-width:none}
+.nlx .np-3d{position:absolute;inset:0;display:none}
+html body .nlx .np .np-3d img{width:100%;height:100%;max-width:none;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none;border-radius:0;box-shadow:none;margin:0}
+.nlx .is3d .np-3d{display:block}.nlx .is3d .np-svg{display:none}
+.nlx .np-svg .serif{font-family:var(--nlx-serif)}.nlx .np-svg .sans{font-family:var(--nlx-sans)}
+.nlx .np-svg .lbl{paint-order:stroke;stroke:#fff;stroke-width:14px;stroke-linejoin:round;fill:#14212B}
+.nlx .np-svg .room{cursor:pointer;outline:none}
+.nlx .np-svg .room .hl{fill:#2F6F86;fill-opacity:0;stroke:#1F4B5C;stroke-opacity:0;stroke-width:10;transition:fill-opacity .2s,stroke-opacity .2s}
+.nlx .np-svg .room:hover .hl{fill-opacity:.07}.nlx .np-svg .room:focus-visible .hl{stroke-opacity:.6}
+.nlx .np-svg .room.active .hl{fill-opacity:.16;stroke-opacity:.9}.nlx .np-svg .room.active .lbl{fill:#1F4B5C}
+.nlx .np-tag{position:absolute;transform:translate(-50%,-120%);padding:6px 12px;border-radius:999px;background:var(--np-ink);color:#fff;font:700 15px/1.2 var(--nlx-sans);white-space:nowrap;pointer-events:none;box-shadow:0 6px 18px rgba(20,33,43,.25);display:none}
+.nlx .np-tag::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:6px solid transparent;border-bottom:0;border-top-color:var(--np-ink)}
+.nlx .np-tag.on{display:block}
+/* the caption sits in the empty top-left corner of the drawing (and of the rendering), in both languages: physical sides on purpose */
+html body .nlx .np p.np-badge{position:absolute;top:10px;left:10px;margin:0;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid var(--np-line);color:var(--np-deep);font:700 13px/1.2 var(--nlx-sans);pointer-events:none;max-width:none}
+.nlx .np-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+.nlx .np-zoom{display:flex;gap:6px;flex:0 0 auto}
+html body .nlx .np-zoom button{width:44px;height:44px;border-radius:12px;border:1px solid var(--np-line);background:#fff;color:var(--np-ink);font:700 22px/1 var(--nlx-sans);cursor:pointer;box-shadow:0 2px 10px rgba(20,33,43,.10);padding:0}
+html body .nlx .np button:focus-visible{outline:3px solid var(--np-sea);outline-offset:2px}
+html body .nlx .np p.np-hint{margin:0 2px;font:500 14px/1.35 var(--nlx-sans);color:var(--np-mute);max-width:none}
+.nlx .np-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+html body .nlx .np-chips button{flex:0 0 auto;scroll-snap-align:start;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--np-line);background:#fff;color:var(--np-ink);font:700 15px/1 var(--nlx-sans);cursor:pointer;box-shadow:none}
+html body .nlx .np-chips button[aria-pressed="true"]{background:var(--np-deep);border-color:var(--np-deep);color:#fff}
+@media (min-width:900px){.nlx .np-chips{flex-wrap:wrap;overflow:visible}}
+.nlx .np-panel{border:1px solid var(--np-line);border-radius:16px;padding:16px;background:var(--np-surf);min-height:120px}
+html body .nlx .np .np-panel h3{margin:0 0 6px!important;font-family:var(--nlx-serif)!important;font-weight:600!important;font-size:24px!important;line-height:1.25!important;color:var(--np-ink)!important}
+html body .nlx .np .np-panel p{margin:0;color:var(--np-mute);font:500 15px/1.5 var(--nlx-sans);max-width:none}
+.nlx .np-panel figure{margin:12px 0 0}
+html body .nlx .np .np-panel img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;background:#DFE5E8;margin:0;box-shadow:none}
+html body .nlx .np .np-panel figcaption{margin-top:6px;font:500 13px/1.3 var(--nlx-sans);color:var(--np-mute);text-align:start}
+.nlx .np-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-top:12px}
+html body .nlx .np p.np-foot{margin:0;font:400 12.5px/1.55 var(--nlx-sans);color:var(--np-mute);max-width:62ch}
+html body .nlx .np a.np-wa{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 16px;border-radius:12px;border:1.5px solid var(--np-deep);background:#fff;color:var(--np-deep)!important;font:700 15px/1.2 var(--nlx-sans);text-decoration:none!important}
+.nlx .np a.np-wa svg{width:19px;height:19px;flex:0 0 auto}
+/* phones: the drawing is about 0.09 of its size, so the main room names grow to about 8 to 12px and the names of the small rooms
+   show only for the room that is picked (the chips name every room); checked on the live page at 390px, 27.10 */
+@container (max-width:520px){html body .nlx .np-svg text[data-for]{font-size:84px}html body .nlx .np-svg text[data-for=living]{font-size:130px}html body .nlx .np-svg text[data-for=kitchen],html body .nlx .np-svg text[data-for=terrace]{font-size:118px}html body .nlx .np-svg text[data-for=dining]{font-size:96px}html body .nlx .np-svg[lang=en] text[data-for=living]{font-size:112px}html body .nlx .np-svg[lang=en] text[data-for=terrace]{font-size:86px}html body .nlx .np-svg text:is([data-for=corridor],[data-for=wc],[data-for=closet],[data-for=ensuite],[data-for=bath],[data-for=laundry],[data-for=ledge],[data-for=balcony],[data-for=service]){visibility:hidden}html body .nlx .np-svg text[data-for].on{visibility:visible}html body .nlx .np p.np-badge{font-size:11.5px;padding:4px 9px}}
+@media (prefers-reduced-motion:reduce){.nlx .np-svg .room .hl{transition:none}}
+</style>
+<div class="nlx-sec-head"><p class="nlx-eyebrow">תוכנית הדירה</p><h2 class="nlx-h2">חמישה חדרים, מרחב פתוח אחד ומרפסת גג</h2><p class="nlx-lead">סלון, פינת אוכל ומטבח עם אי ארוך במרחב אחד שנפתח אל מרפסת הגג ואל הפרגולות, ואגף שינה נפרד עם סוויטת הורים. בחרו חדר וראו אותו מסומן בתוכנית, ובחדרים שצולמו גם את הצילום מהדירה.</p></div>
+<div class="np">
+<div class="np-bar"><div class="np-seg" role="group" aria-label="תצוגת התוכנית"><button type="button" data-mode="2d" aria-pressed="true">תוכנית</button><button type="button" data-mode="3d" aria-pressed="false">הדמיה</button></div></div>
+<div class="np-body"><div>
+<div class="np-stage" tabindex="0" role="application" aria-roledescription="תוכנית הדירה" aria-label="תוכנית הדירה. בחרו חדר מהרשימה או בתוכנית. פלוס ומינוס להגדלה."><div class="np-canvas"><svg class="np-svg"><!-- 48KB plan drawing: <g class=room data-room=ID><path class=hl .../></g> per room; <text data-for=ID class=lbl> labels; groups pointer-events=none --></svg><div class="np-3d"><img src="https://nad-lan.co.il/wp-content/uploads/2026/10/kochav-mini-penthouse-plan-render.jpg" alt="הדמיית הדירה מלמעלה, חתך בגובה המותניים, על פי תוכנית האדריכל" width="1536" height="1024" loading="lazy" decoding="async"></div><div class="np-tag" aria-hidden="true"></div></div><p class="np-badge">הדמיה על פי תוכנית האדריכל</p></div>
+<div class="np-tools"><p class="np-hint">בחרו חדר בתוכנית או ברשימה · שתי אצבעות או הקשה כפולה להגדלה</p><div class="np-zoom" role="group" aria-label="הגדלה"><button type="button" data-z="in" aria-label="הגדלה">+</button><button type="button" data-z="out" aria-label="הקטנה">&minus;</button><button type="button" data-z="reset" aria-label="חזרה לתצוגה המלאה">&#10530;</button></div></div>
+<div class="np-chips" role="group" aria-label="חדרי הדירה"></div>
+</div>
+<div class="np-panel" aria-live="polite"></div>
+</div>
+<div class="np-end"><p class="np-foot">הדמיה על פי תוכנית האדריכל, להמחשה בלבד וללא מידות. הריהוט כפי ששורטט בתוכנית, והמיטות להמחשה.</p><a class="np-wa" href="https://wa.me/972523631582?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%AA%D7%99%D7%90%D7%95%D7%9D%20%D7%A1%D7%99%D7%95%D7%A8%3A%20%D7%9E%D7%99%D7%A0%D7%99%20%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%96%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%2080%20%D7%9E%D7%B4%D7%A8%20%D7%9E%D7%A8%D7%A4%D7%A1%D7%95%D7%AA%2C%20%D7%9B%D7%95%D7%9B%D7%91%20%D7%94%D7%A6%D7%A4%D7%95%D7%9F%20%28nad-lan.co.il%2C%20L07%29" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>שאלה על התוכנית? כתבו למיטל</span></a></div>
+</div>
+<script>(function(){var root=document.getElementById("plan-L07-he");if(!root||root.__np)return;root.__np=1;
+var ROOMS=[{"id": "living", "name": "סלון", "chip": "סלון", "photo": "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_02-768x768.jpg", "hs": [0.5915, 0.4068]}, {"id": "dining", "name": "פינת אוכל", "chip": "פינת אוכל", "photo": "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_04-768x768.jpg", "hs": [0.7462, 0.5169]}, {"id": "kitchen", "name": "מטבח", "chip": "מטבח", "photo": "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DZp43r5DIou_01-768x768.jpg", "hs": [0.5938, 0.6154]}, {"id": "terrace", "name": "מרפסת גג", "chip": "מרפסת גג", "photo": "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_03-768x768.jpg", "hs": [0.7721, 0.3053]}, {"id": "entry", "name": "מבואה", "chip": "מבואה", "photo": null, "hs": [0.3732, 0.59]}, {"id": "corridor", "name": "מסדרון", "chip": "מסדרון", "photo": null, "hs": [0.2778, 0.7238]}, {"id": "wc", "name": "שירותי אורחים", "chip": "שירותי אורחים", "photo": null, "hs": [0.2536, 0.6147]}, {"id": "room_a", "name": "חדר נוסף", "chip": "חדר נוסף", "photo": null, "hs": [0.1405, 0.6]}, {"id": "bed1", "name": "חדר שינה", "chip": "חדר שינה א׳", "photo": null, "hs": [0.1645, 0.7235]}, {"id": "bed2", "name": "חדר שינה הורים", "chip": "חדר שינה הורים", "photo": null, "hs": [0.2624, 0.8543]}, {"id": "bed3", "name": "חדר שינה", "chip": "חדר שינה ב׳", "photo": null, "hs": [0.4095, 0.7121]}, {"id": "closet", "name": "חדר בסוויטת ההורים", "chip": "חדר בסוויטה", "photo": null, "hs": [0.1089, 0.8441]}, {"id": "ensuite", "name": "חדר רחצה הורים", "chip": "חדר רחצה הורים", "photo": null, "hs": [0.3781, 0.8512]}, {"id": "bath", "name": "חדר רחצה", "chip": "חדר רחצה", "photo": "https://nad-lan.co.il/wp-content/uploads/2026/09/L07_DX9wx4ziADM_05-768x768.jpg", "hs": [0.3825, 0.8018]}, {"id": "laundry", "name": "חדר כביסה", "chip": "חדר כביסה", "photo": null, "hs": [0.4614, 0.796]}, {"id": "balcony", "name": "מרפסת", "chip": "מרפסת", "photo": null, "hs": [0.5197, 0.7346]}, {"id": "service", "name": "מרפסת שירות", "chip": "מרפסת שירות", "photo": null, "hs": [0.0683, 0.7291]}, {"id": "ledge", "name": "מסתור כביסה", "chip": "מסתור כביסה", "photo": null, "hs": [0.4603, 0.8373]}],T={"cap": "צילום מהדירה", "none": "החדר מסומן בתוכנית. הצילומים מהדירה בגלריה למעלה."},byId={};ROOMS.forEach(function(r){byId[r.id]=r});
+var stage=root.querySelector(".np-stage"),canvas=root.querySelector(".np-canvas"),tag=root.querySelector(".np-tag"),panel=root.querySelector(".np-panel"),chips=root.querySelector(".np-chips"),svg=canvas.querySelector("svg"),mode="2d",current=null,AR=1.5;
+ROOMS.forEach(function(r){var b=document.createElement("button");b.type="button";b.textContent=r.chip;b.setAttribute("aria-pressed","false");b.dataset.room=r.id;b.addEventListener("click",function(){select(r.id,true)});chips.appendChild(b)});
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function select(id,fromList){var r=byId[id];if(!r)return;current=id;
+svg.querySelectorAll(".room").forEach(function(g){g.classList.toggle("active",g.dataset.room===id)});svg.querySelectorAll("text[data-for]").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-for")===id)});
+chips.querySelectorAll("button").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.room===id?"true":"false")});
+var h="<h3>"+esc(r.name)+"</h3>";if(r.photo)h+='<figure><img src="'+r.photo+'" alt="'+esc(r.name)+'" width="768" height="768" loading="lazy" decoding="async"><figcaption>'+T.cap+"</figcaption></figure>";else h+="<p>"+T.none+"</p>";
+panel.innerHTML=h;placeTag();if(fromList){var c=chips.querySelector('[data-room="'+id+'"]');if(c){var cr=c.getBoundingClientRect(),pr=chips.getBoundingClientRect();if(cr.left<pr.left||cr.right>pr.right)chips.scrollBy({left:(cr.left+cr.right-pr.left-pr.right)/2,behavior:"auto"})}}}
+function box(){var W=canvas.clientWidth,H=canvas.clientHeight,iw=W,ih=W/AR;if(ih>H){ih=H;iw=H*AR}return[W,H,iw,ih,(W-iw)/2,(H-ih)/2]}
+function placeTag(){var r=current&&byId[current];if(mode!=="3d"||!r||!r.hs){tag.classList.remove("on");return}var b=box();tag.style.left=(b[4]+r.hs[0]*b[2])+"px";tag.style.top=(b[5]+r.hs[1]*b[3])+"px";tag.textContent=r.name;tag.classList.add("on")}
+root.querySelectorAll(".np-seg button").forEach(function(b){b.addEventListener("click",function(){mode=b.dataset.mode;root.querySelectorAll(".np-seg button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});stage.classList.toggle("is3d",mode==="3d");reset();placeTag()})});
+var s=1,tx=0,ty=0,MAX=4;
+function clamp(){var w=stage.clientWidth,h=stage.clientHeight;tx=Math.min(0,Math.max(w-w*s,tx));ty=Math.min(0,Math.max(h-h*s,ty))}
+function apply(){clamp();canvas.style.transform="translate("+tx+"px,"+ty+"px) scale("+s+")";stage.style.touchAction=s>1.001?"none":"pan-y"}
+function zoomAt(px,py,ns){ns=Math.max(1,Math.min(MAX,ns));tx=px-(px-tx)*(ns/s);ty=py-(py-ty)*(ns/s);s=ns;apply()}
+function reset(){s=1;tx=0;ty=0;apply()}
+function center(){return[stage.clientWidth/2,stage.clientHeight/2]}
+root.querySelectorAll(".np-zoom button").forEach(function(b){b.addEventListener("click",function(){var c=center();if(b.dataset.z==="in")zoomAt(c[0],c[1],s*1.5);else if(b.dataset.z==="out")zoomAt(c[0],c[1],s/1.5);else reset()})});
+stage.addEventListener("wheel",function(e){if(!e.ctrlKey)return;e.preventDefault();var r=stage.getBoundingClientRect();zoomAt(e.clientX-r.left,e.clientY-r.top,s*Math.exp(-e.deltaY*.01))},{passive:false});
+stage.addEventListener("keydown",function(e){var c=center();if(e.key==="+"||e.key==="="){zoomAt(c[0],c[1],s*1.5);e.preventDefault()}else if(e.key==="-"){zoomAt(c[0],c[1],s/1.5);e.preventDefault()}else if(e.key==="0"||e.key==="Escape"){reset()}else if(s>1&&/^Arrow/.test(e.key)){var d=40;if(e.key==="ArrowLeft")tx+=d;if(e.key==="ArrowRight")tx-=d;if(e.key==="ArrowUp")ty+=d;if(e.key==="ArrowDown")ty-=d;apply();e.preventDefault()}});
+svg.querySelectorAll(".room").forEach(function(g){g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();select(g.dataset.room)}})});
+var P=new Map(),pinch=null,down=null,lastTap=null;
+stage.addEventListener("pointerdown",function(e){P.set(e.pointerId,{x:e.clientX,y:e.clientY});if(P.size===2){var a=Array.from(P.values()),r=stage.getBoundingClientRect();pinch={d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),s:s,mx:(a[0].x+a[1].x)/2-r.left,my:(a[0].y+a[1].y)/2-r.top};down=null}else if(P.size===1){down={x:e.clientX,y:e.clientY,t:Date.now(),moved:false,lx:e.clientX,ly:e.clientY}}});
+stage.addEventListener("pointermove",function(e){if(!P.has(e.pointerId))return;P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+if(pinch&&P.size===2){var a=Array.from(P.values()),d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),ns=Math.max(1,Math.min(MAX,pinch.s*d/pinch.d));tx=pinch.mx-(pinch.mx-tx)*(ns/s);ty=pinch.my-(pinch.my-ty)*(ns/s);s=ns;apply();return}
+if(down){var dx=e.clientX-down.lx,dy=e.clientY-down.ly;if(Math.hypot(e.clientX-down.x,e.clientY-down.y)>8)down.moved=true;if(s>1.001&&down.moved){if(!stage.hasPointerCapture(e.pointerId))stage.setPointerCapture(e.pointerId);tx+=dx;ty+=dy;apply()}down.lx=e.clientX;down.ly=e.clientY}});
+function end(e){var wasTap=down&&!down.moved&&(Date.now()-down.t)<400&&P.size===1;P.delete(e.pointerId);if(P.size<2)pinch=null;if(e.type!=="pointerup"||!wasTap){if(!P.size)down=null;return}
+var r=stage.getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top,now=Date.now();
+if(lastTap&&now-lastTap.t<320&&Math.hypot(px-lastTap.x,py-lastTap.y)<30){if(s>1.001)reset();else zoomAt(px,py,2.4);lastTap=null}else{lastTap={t:now,x:px,y:py};tapSelect(e.clientX,e.clientY,px,py)}down=null}
+stage.addEventListener("pointerup",end);stage.addEventListener("pointercancel",end);
+function tapSelect(cx,cy,px,py){if(mode==="2d"){var el=document.elementFromPoint(cx,cy),g=el&&el.closest&&el.closest(".room");if(g)select(g.dataset.room);return}
+var b=box(),ux=(px-tx)/s,uy=(py-ty)/s,best=null,bd=1e9;ROOMS.forEach(function(r){if(!r.hs)return;var d=Math.hypot(b[4]+r.hs[0]*b[2]-ux,b[5]+r.hs[1]*b[3]-uy);if(d<bd){bd=d;best=r}});if(best&&bd<Math.max(60,b[2]*.09))select(best.id)}
+window.addEventListener("resize",function(){apply();placeTag()});apply();select("living");
+})();</script>
+</section>
+</stdin>
+warning: Code Mode is unavailable because failed to spawn code-mode host C:\Users\777\.codex\.sandbox-bin\codex-code-mode-host.exe: host executable was not found. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`.
+codex
+I’ll check gesture handling, scrolling, accessibility, and mobile layout, and keep the findings limited to concrete failures in the supplied code.
+2026-10-27T13:48:08.505322Z ERROR codex_core::tools::router: error=failed to spawn code-mode host C:\Users\777\.codex\.sandbox-bin\codex-code-mode-host.exe: The system cannot find the file specified. (os error 2)
+mcp: cua_repl/js started
+mcp: cua_repl/js (completed)
+mcp: cua_repl/js started
+mcp: cua_repl/js (completed)
+codex
+The code definitely blocks touch scrolling over the plan after zooming. I also found flaws in pinch-to-pan transitions and double-tap tracking; I’m checking the browser gesture rules before finalizing the fixes.
+mcp: cua_repl/js started
+mcp: cua_repl/js (completed)
+mcp: cua_repl/js started
+mcp: cua_repl/js (completed)
+2026-10-27T13:49:57.710750Z ERROR codex_core::tools::router: error=failed to spawn code-mode host C:\Users\777\.codex\.sandbox-bin\codex-code-mode-host.exe: The system cannot find the file specified. (os error 2)
+codex
+The gesture rules confirm that changing `touch-action` mid-gesture cannot return that gesture to page scrolling. I’m excluding layout guesses and SVG-specific findings that depend on the omitted drawing markup. This remains a static review, not a device test.
+codex
+Static review; the abbreviated SVG prevents verifying its internal hit targets and focusability.
+
+1. **Zooming blocks page scrolling over the plan.**  
+   **Snippet:** `stage.style.touchAction=s>1.001?"none":"pan-y"`  
+   **Failure:** After pressing `+` or double-tapping, vertical swipes starting on the stage cannot scroll the page—even when the image reaches its pan boundary. Changing back to `pan-y` does not release an already active gesture.  
+   **Minimal fix:** Keep `pan-y` for the inline viewer and reserve one-finger vertical gestures for page scrolling. Use two-finger movement or explicit controls for vertical plan panning. [Gesture rules](https://www.w3.org/TR/pointerevents3/#determining-supported-direct-manipulation-behavior).
+
+2. **Pinch-to-one-finger panning stops responding.**  
+   **Snippet:** Second `pointerdown` sets `down=null`; `end()` only does `if(P.size<2)pinch=null`.  
+   **Failure:** Pinch to zoom, lift one finger, then drag the remaining finger. Neither branch handles movement because both `pinch` and `down` are null. With the current `touch-action:none`, page scrolling is also unavailable.  
+   **Minimal fix:** If retaining one-finger plan panning, initialize `down` from the remaining pointer’s current coordinates, with `moved:true` to prevent an accidental tap. Otherwise explicitly end the interaction; native scrolling requires a fresh gesture.
+
+3. **The image does not follow the fingers during a moving pinch.**  
+   **Snippet:** `tx=pinch.mx-(pinch.mx-tx)*(ns/s)` and the equivalent `ty` expression.  
+   **Failure:** Move both fingers together while pinching. Scaling stays anchored to the original midpoint; translation of the fingers is ignored. At constant separation, two-finger panning does nothing.  
+   **Minimal fix:** Save starting `tx/ty` alongside the starting scale and midpoint. Recompute the current midpoint each move:
+   `tx=mxNow-(pinch.mx-pinch.tx)*(ns/pinch.s)`; likewise for `ty`.
+
+4. **Assistive-technology activation of rooms has no click handler.**  
+   **Snippet:** Room selection is handled through `pointerup` and `.room` `keydown`, but never `click`.  
+   **Failure:** VoiceOver/TalkBack activation that delivers a synthesized click without the tracked pointer sequence or keyboard event cannot activate a room. The separate chip buttons still work.  
+   **Minimal fix:** Add a delegated room `click` activation path, suppressing duplicate activation after handled physical taps and drag-generated clicks. [Input-accessibility guidance](https://www.w3.org/TR/pointerevents3/#intro).
+
+5. **Releasing an uncaptured mouse outside the stage leaves a ghost drag.**  
+   **Snippet:** Capture occurs only inside `if(s>1.001&&down.moved)`; release listeners exist only on `stage`.  
+   **Failure:** On a zoomed plan, press near its edge, leave before crossing the 8px threshold, and release outside. `P` and `down` remain populated. Moving the mouse back can pan the image with no button pressed.  
+   **Minimal fix:** Capture accepted pointers on `pointerdown`; clean up on capture loss/window blur. Reject mouse movement with `e.buttons===0` when a drag is supposedly active.
+
+6. **A third finger can cause a sudden zoom jump.**  
+   **Snippet:** Pinch initialization requires `P.size===2`, while `end()` retains `pinch` whenever two pointers remain.  
+   **Failure:** During a pinch, add a third finger and lift either original finger. The remaining pair uses the original pair’s distance and scale baseline, causing an abrupt scale change on its next movement.  
+   **Minimal fix:** Track the pinch pair’s IDs and rebuild its baseline whenever that pair changes. Suspend pinch calculations while more than two pointers are active.
+
+7. **Dragging or cancellation does not invalidate double-tap history.**  
+   **Snippet:** `if(e.type!=="pointerup"||!wasTap){...return}` leaves `lastTap` unchanged.  
+   **Failure:** Tap, make a short drag, then tap near the original position within 320ms. The final tap unexpectedly zooms or resets instead of selecting.  
+   **Minimal fix:** Clear `lastTap` when movement crosses the threshold, another pointer joins, or a gesture is cancelled.
+
+8. **Selected-room tags are clipped on narrow phones.**  
+   **Snippet:** `.np-tag{transform:translate(-50%,-120%);white-space:nowrap}` inside the transformed canvas; stage uses `overflow:hidden`.  
+   **Failure:** In rendered mode, selecting `service` places its center at `0.0683 × width`—about 23px on a 340px stage. Half the Hebrew label extends past the left edge and disappears. Zooming magnifies the clipping.  
+   **Minimal fix:** Make the tag an unscaled stage overlay, convert its anchor through `tx/ty/s`, and clamp its measured bounds inside the stage.
+
+Required Linear/Notion logging was blocked by the unavailable tool host.
+tokens used
+67,450
+Static review; the abbreviated SVG prevents verifying its internal hit targets and focusability.
+
+1. **Zooming blocks page scrolling over the plan.**  
+   **Snippet:** `stage.style.touchAction=s>1.001?"none":"pan-y"`  
+   **Failure:** After pressing `+` or double-tapping, vertical swipes starting on the stage cannot scroll the page—even when the image reaches its pan boundary. Changing back to `pan-y` does not release an already active gesture.  
+   **Minimal fix:** Keep `pan-y` for the inline viewer and reserve one-finger vertical gestures for page scrolling. Use two-finger movement or explicit controls for vertical plan panning. [Gesture rules](https://www.w3.org/TR/pointerevents3/#determining-supported-direct-manipulation-behavior).
+
+2. **Pinch-to-one-finger panning stops responding.**  
+   **Snippet:** Second `pointerdown` sets `down=null`; `end()` only does `if(P.size<2)pinch=null`.  
+   **Failure:** Pinch to zoom, lift one finger, then drag the remaining finger. Neither branch handles movement because both `pinch` and `down` are null. With the current `touch-action:none`, page scrolling is also unavailable.  
+   **Minimal fix:** If retaining one-finger plan panning, initialize `down` from the remaining pointer’s current coordinates, with `moved:true` to prevent an accidental tap. Otherwise explicitly end the interaction; native scrolling requires a fresh gesture.
+
+3. **The image does not follow the fingers during a moving pinch.**  
+   **Snippet:** `tx=pinch.mx-(pinch.mx-tx)*(ns/s)` and the equivalent `ty` expression.  
+   **Failure:** Move both fingers together while pinching. Scaling stays anchored to the original midpoint; translation of the fingers is ignored. At constant separation, two-finger panning does nothing.  
+   **Minimal fix:** Save starting `tx/ty` alongside the starting scale and midpoint. Recompute the current midpoint each move:
+   `tx=mxNow-(pinch.mx-pinch.tx)*(ns/pinch.s)`; likewise for `ty`.
+
+4. **Assistive-technology activation of rooms has no click handler.**  
+   **Snippet:** Room selection is handled through `pointerup` and `.room` `keydown`, but never `click`.  
+   **Failure:** VoiceOver/TalkBack activation that delivers a synthesized click without the tracked pointer sequence or keyboard event cannot activate a room. The separate chip buttons still work.  
+   **Minimal fix:** Add a delegated room `click` activation path, suppressing duplicate activation after handled physical taps and drag-generated clicks. [Input-accessibility guidance](https://www.w3.org/TR/pointerevents3/#intro).
+
+5. **Releasing an uncaptured mouse outside the stage leaves a ghost drag.**  
+   **Snippet:** Capture occurs only inside `if(s>1.001&&down.moved)`; release listeners exist only on `stage`.  
+   **Failure:** On a zoomed plan, press near its edge, leave before crossing the 8px threshold, and release outside. `P` and `down` remain populated. Moving the mouse back can pan the image with no button pressed.  
+   **Minimal fix:** Capture accepted pointers on `pointerdown`; clean up on capture loss/window blur. Reject mouse movement with `e.buttons===0` when a drag is supposedly active.
+
+6. **A third finger can cause a sudden zoom jump.**  
+   **Snippet:** Pinch initialization requires `P.size===2`, while `end()` retains `pinch` whenever two pointers remain.  
+   **Failure:** During a pinch, add a third finger and lift either original finger. The remaining pair uses the original pair’s distance and scale baseline, causing an abrupt scale change on its next movement.  
+   **Minimal fix:** Track the pinch pair’s IDs and rebuild its baseline whenever that pair changes. Suspend pinch calculations while more than two pointers are active.
+
+7. **Dragging or cancellation does not invalidate double-tap history.**  
+   **Snippet:** `if(e.type!=="pointerup"||!wasTap){...return}` leaves `lastTap` unchanged.  
+   **Failure:** Tap, make a short drag, then tap near the original position within 320ms. The final tap unexpectedly zooms or resets instead of selecting.  
+   **Minimal fix:** Clear `lastTap` when movement crosses the threshold, another pointer joins, or a gesture is cancelled.
+
+8. **Selected-room tags are clipped on narrow phones.**  
+   **Snippet:** `.np-tag{transform:translate(-50%,-120%);white-space:nowrap}` inside the transformed canvas; stage uses `overflow:hidden`.  
+   **Failure:** In rendered mode, selecting `service` places its center at `0.0683 × width`—about 23px on a 340px stage. Half the Hebrew label extends past the left edge and disappears. Zooming magnifies the clipping.  
+   **Minimal fix:** Make the tag an unscaled stage overlay, convert its anchor through `tx/ty/s`, and clamp its measured bounds inside the stage.
+
+Required Linear/Notion logging was blocked by the unavailable tool host.

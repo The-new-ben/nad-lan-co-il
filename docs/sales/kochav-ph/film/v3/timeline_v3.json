@@ -1,0 +1,236 @@
+{
+ "total": 127.34,
+ "scenes": [
+  {
+   "sid": "open",
+   "start": 0.0,
+   "dur": 7.57,
+   "shots": [
+    {
+     "key": "A",
+     "tag": "airvid",
+     "from": 0.0,
+     "to": 2.92
+    },
+    {
+     "key": "p09wide",
+     "tag": "air",
+     "from": 2.92,
+     "to": 7.2
+    }
+   ]
+  },
+  {
+   "sid": "morning",
+   "start": 7.07,
+   "dur": 11.17,
+   "shots": [
+    {
+     "key": "morning",
+     "tag": "ill",
+     "from": 7.07,
+     "to": 15.55
+    },
+    {
+     "key": "C",
+     "tag": "airvid",
+     "from": 15.55,
+     "to": 17.87
+    }
+   ]
+  },
+  {
+   "sid": "centre",
+   "start": 17.74,
+   "dur": 10.83,
+   "shots": [
+    {
+     "key": "cafe",
+     "tag": "ill",
+     "from": 17.74,
+     "to": 21.79
+    },
+    {
+     "key": "deli",
+     "tag": "ill",
+     "from": 21.79,
+     "to": 25.04
+    },
+    {
+     "key": "nuts",
+     "tag": "ill",
+     "from": 25.04,
+     "to": 28.22
+    }
+   ]
+  },
+  {
+   "sid": "bridge",
+   "start": 28.07,
+   "dur": 17.93,
+   "shots": [
+    {
+     "key": "D",
+     "tag": "airvid",
+     "from": 28.07,
+     "to": 29.79
+    },
+    {
+     "key": "p09low",
+     "tag": "today",
+     "from": 29.79,
+     "to": 36.24
+    },
+    {
+     "key": "bridgesim",
+     "tag": "sim",
+     "from": 36.24,
+     "to": 45.62
+    }
+   ]
+  },
+  {
+   "sid": "park",
+   "start": 45.5,
+   "dur": 12.5,
+   "shots": [
+    {
+     "key": "B",
+     "tag": "airvid",
+     "from": 45.5,
+     "to": 48.02
+    },
+    {
+     "key": "family",
+     "tag": "ill",
+     "from": 48.02,
+     "to": 52.0
+    },
+    {
+     "key": "sport",
+     "tag": "ill",
+     "from": 52.0,
+     "to": 54.32
+    },
+    {
+     "key": "dyrl_air",
+     "tag": "airvid",
+     "from": 54.32,
+     "to": 57.64
+    }
+   ]
+  },
+  {
+   "sid": "home",
+   "start": 57.5,
+   "dur": 16.87,
+   "shots": [
+    {
+     "key": "living",
+     "tag": "",
+     "from": 57.5,
+     "to": 61.75
+    },
+    {
+     "key": "h1",
+     "tag": "",
+     "from": 61.75,
+     "to": 63.27
+    },
+    {
+     "key": "h2",
+     "tag": "",
+     "from": 63.27,
+     "to": 64.75
+    },
+    {
+     "key": "h3",
+     "tag": "",
+     "from": 64.75,
+     "to": 67.37
+    },
+    {
+     "key": "h4",
+     "tag": "",
+     "from": 67.37,
+     "to": 69.69
+    },
+    {
+     "key": "kids",
+     "tag": "",
+     "from": 69.69,
+     "to": 74.01
+    }
+   ]
+  },
+  {
+   "sid": "terrace",
+   "start": 73.87,
+   "dur": 10.17,
+   "shots": [
+    {
+     "key": "t1",
+     "tag": "",
+     "from": 73.87,
+     "to": 76.19
+    },
+    {
+     "key": "t2",
+     "tag": "",
+     "from": 76.19,
+     "to": 78.91
+    },
+    {
+     "key": "dyrl_cov",
+     "tag": "",
+     "from": 78.91,
+     "to": 83.66
+    }
+   ]
+  },
+  {
+   "sid": "numbers",
+   "start": 83.54,
+   "dur": 30.17,
+   "shots": [
+    {
+     "key": "dyrl_view",
+     "tag": "",
+     "from": 83.54,
+     "to": 93.96
+    },
+    {
+     "key": "p06",
+     "tag": "sdedov",
+     "from": 93.96,
+     "to": 102.61
+    },
+    {
+     "key": "covered",
+     "tag": "",
+     "from": 102.61,
+     "to": 113.33
+    }
+   ]
+  },
+  {
+   "sid": "close",
+   "start": 113.21,
+   "dur": 14.13,
+   "shots": [
+    {
+     "key": "dusk",
+     "tag": "",
+     "from": 113.21,
+     "to": 116.69
+    },
+    {
+     "key": "dusk_photo",
+     "tag": "",
+     "from": 116.69,
+     "to": 126.97
+    }
+   ]
+  }
+ ]
+}

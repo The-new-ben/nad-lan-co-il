@@ -47,3 +47,18 @@ scripts/project-stage/_cache/
 
 # the contractors register extract (17,874 names, rebuilt by scripts/pros/build_register_facts.py); the plugin ships only business facts
 scripts/pros/data/
+# a listing's architect plan carries measurements the broker does not publish (Meital, 27.10.2026): the PDF, its rasters, the
+# trace with its scale and the inputs that show the drawing stay on this computer, never in this public repo
+docs/sales/kochav-ph/plan/*.pdf
+docs/sales/kochav-ph/plan/plan-raw-*
+docs/sales/kochav-ph/plan/plan-300dpi.png
+docs/sales/kochav-ph/plan/trace/
+docs/sales/kochav-ph/plan/gemini/inputs*/
+docs/sales/kochav-ph/plan/renders/_test/
+docs/sales/kochav-ph/film/v3/_build/
+docs/sales/kochav-ph/film/v3/*.mp4
+docs/sales/kochav-ph/film/v3/web/
+# the world benchmark of 27.10.2026: screenshots of other brokers' and developers' pages are theirs; the numbers (data/, BENCHMARK.md) are ours
+docs/sales/kochav-ph/research-2026-10-27/shots/
+docs/sales/kochav-ph/research-2026-10-27/board-*.png
+docs/sales/kochav-ph/proof-27/*.png

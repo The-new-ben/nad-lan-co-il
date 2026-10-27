@@ -1,0 +1,101 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Chap,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,9,0,1,0,2,7,110,110,92,1
+Style: Big,Bahnschrift,104,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,2,0,1,0,3,1,110,110,250,1
+Style: Sub,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,3,14,0,2,250,250,64,1
+Style: Tag,Segoe UI,22,&H00E6E6E6,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,1,1,9,60,52,132,1
+Style: Num,Bahnschrift,118,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,0,0,1,0,3,1,110,110,330,1
+Style: NumH,Gisha,112,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,0,0,1,0,3,1,110,110,330,-1
+Style: Lab,Segoe UI Semilight,38,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,0,0,1,1.4,2,1,112,110,270,1
+Style: Src,Segoe UI,22,&H00D0D0D0,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,1,1,1,114,110,236,1
+Style: End1,Bahnschrift,66,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,2,0,1,0,3,5,110,110,0,1
+Style: End2,Segoe UI Semilight,38,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,0,0,1,1.2,2,5,110,110,0,1
+Style: EndN,Bahnschrift,70,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,1,0,1,0,3,5,110,110,0,1
+Style: EndP,Bahnschrift,118,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,3,0,1,0,3,5,110,110,0,1
+Style: EndS,Segoe UI,30,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,6,0,1,1.2,2,5,110,110,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.25,0:00:02.82,Tag,,0,0,0,,{\fad(300,300)}Aerial video of the area
+Dialogue: 0,0:00:03.17,0:00:07.10,Tag,,0,0,0,,{\fad(300,300)}Aerial photo of the neighbourhood
+Dialogue: 0,0:00:00.42,0:00:03.31,Sub,,0,0,0,,Some homes keep pace with Tel Aviv.
+Dialogue: 0,0:00:03.55,0:00:06.72,Sub,,0,0,0,,This one also knows how to close the door on it.
+Dialogue: 0,0:00:07.37,0:00:11.27,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  MORNING
+Dialogue: 0,0:00:07.32,0:00:15.45,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:15.80,0:00:17.77,Tag,,0,0,0,,{\fad(300,300)}Aerial video of the area
+Dialogue: 0,0:00:07.49,0:00:09.88,Sub,,0,0,0,,Morning in Kochav HaTzafon.
+Dialogue: 0,0:00:10.23,0:00:17.36,Sub,,0,0,0,,You step out of a brand-new boutique building into one of the quietest, greenest neighbourhoods in north Tel Aviv.
+Dialogue: 0,0:00:18.04,0:00:21.94,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE NEIGHBOURHOOD CENTRE
+Dialogue: 0,0:00:17.99,0:00:21.69,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:22.04,0:00:24.94,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:25.29,0:00:28.12,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:18.16,0:00:21.05,Sub,,0,0,0,,A minute's walk away is the neighbourhood centre:
+Dialogue: 0,0:00:21.13,0:00:24.69,Sub,,0,0,0,,the deli, fresh bread, the nut shop, the supermarket,
+Dialogue: 0,0:00:24.90,0:00:27.41,Sub,,0,0,0,,and coffee with friends who live around the corner.
+Dialogue: 0,0:00:28.37,0:00:32.27,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE BRIDGE TO YARKON PARK
+Dialogue: 0,0:00:28.32,0:00:29.69,Tag,,0,0,0,,{\fad(300,300)}Aerial video of the area
+Dialogue: 0,0:00:30.04,0:00:36.14,Tag,,0,0,0,,{\fad(300,300)}Aerial photo · the neighbourhood and the park today
+Dialogue: 0,0:00:36.49,0:00:45.52,Tag,,0,0,0,,{\fad(300,300)}Planned bridge · simulation
+Dialogue: 0,0:00:28.49,0:00:30.80,Sub,,0,0,0,,And this is what changes everything.
+Dialogue: 0,0:00:30.84,0:00:32.88,Sub,,0,0,0,,A new bridge for walking and cycling,
+Dialogue: 0,0:00:32.99,0:00:37.34,Sub,,0,0,0,,a hundred and seventy metres long, is being built over Rokach Boulevard.
+Dialogue: 0,0:00:37.67,0:00:42.88,Sub,,0,0,0,,When it opens in 2027, you walk straight from the neighbourhood into Yarkon Park,
+Dialogue: 0,0:00:43.01,0:00:44.98,Sub,,0,0,0,,without crossing a single road.
+Dialogue: 0,0:00:45.80,0:00:49.70,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  YARKON PARK
+Dialogue: 0,0:00:45.75,0:00:47.92,Tag,,0,0,0,,{\fad(300,300)}Aerial video of the area
+Dialogue: 0,0:00:48.27,0:00:51.90,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:52.25,0:00:54.22,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:54.57,0:00:57.54,Tag,,0,0,0,,{\fad(300,300)}Aerial video of the area
+Dialogue: 0,0:00:45.92,0:00:48.59,Sub,,0,0,0,,Almost four thousand dunams of park:
+Dialogue: 0,0:00:48.67,0:00:53.31,Sub,,0,0,0,,running paths along the river, cycling, and long Saturdays on the lawn.
+Dialogue: 0,0:00:53.41,0:00:57.45,Sub,,0,0,0,,And right by the home, tennis courts and football pitches.
+Dialogue: 0,0:00:57.80,0:01:01.70,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  A BRAND-NEW HOME
+Dialogue: 0,0:00:57.92,0:01:04.46,Sub,,0,0,0,,Back home, a brand-new mini penthouse of about 197 sqm, on the eleventh floor.
+Dialogue: 0,0:01:04.86,0:01:10.64,Sub,,0,0,0,,Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline,
+Dialogue: 0,0:01:10.90,0:01:13.49,Sub,,0,0,0,,and a children's suite that looks out to the sea.
+Dialogue: 0,0:01:14.17,0:01:18.07,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE TERRACES
+Dialogue: 0,0:01:14.29,0:01:16.47,Sub,,0,0,0,,And then, the real living room:
+Dialogue: 0,0:01:16.53,0:01:19.06,Sub,,0,0,0,,about 80 sqm of terraces.
+Dialogue: 0,0:01:19.17,0:01:22.96,Sub,,0,0,0,,Made for long evenings, a grill, and friends.
+Dialogue: 0,0:01:23.84,0:01:27.74,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE NUMBERS
+Dialogue: 0,0:01:34.21,0:01:42.51,Tag,,0,0,0,,{\fad(300,300)}Aerial photo · the Sde Dov quarter under construction
+Dialogue: 0,0:01:23.96,0:01:25.50,Sub,,0,0,0,,The numbers matter too.
+Dialogue: 0,0:01:25.54,0:01:28.74,Sub,,0,0,0,,Between 2023 and October 2025,
+Dialogue: 0,0:01:28.78,0:01:34.94,Sub,,0,0,0,,the median home deal in Kochav HaTzafon was NIS 6.1 million, the fourth highest in Israel.
+Dialogue: 0,0:01:35.18,0:01:39.06,Sub,,0,0,0,,To the north, the Sde Dov quarter is adding 16,000 new homes,
+Dialogue: 0,0:01:39.09,0:01:42.29,Sub,,0,0,0,,and the Green Line light rail is planned for 2028.
+Dialogue: 0,0:01:42.63,0:01:47.85,Sub,,0,0,0,,A Technion study found that homes closest to Yarkon Park are worth more, and abroad,
+Dialogue: 0,0:01:47.93,0:01:52.80,Sub,,0,0,0,,new park links have lifted nearby home values by five to twenty percent, and more.
+Dialogue: 0,0:01:54.21,0:01:58.12,Sub,,0,0,0,,A home with Tel Aviv on one side and the park on the other.
+Dialogue: 0,0:01:58.38,0:02:01.56,Sub,,0,0,0,,For a private viewing, call Meital Katzir.
+Dialogue: 0,0:00:00.60,0:00:05.80,Big,,0,0,0,,{\an1\pos(110,690)\fad(700,700)}KOCHAV HATZAFON
+Dialogue: 0,0:00:01.00,0:00:05.80,Lab,,0,0,0,,{\an7\pos(113,712)\fad(700,700)\fs42}{\c&H00BFB34F}━━{\c&H00FFFFFF}  A new mini penthouse in a new boutique building · north Tel Aviv
+Dialogue: 2,0:01:25.59,0:01:34.89,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}NIS 6.1M
+Dialogue: 2,0:01:25.74,0:01:34.89,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}median home deal in Kochav HaTzafon, 2023 to Oct 2025
+Dialogue: 2,0:01:25.89,0:01:34.89,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}4th highest in Israel · Mako
+Dialogue: 2,0:01:35.23,0:01:39.04,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}16,000
+Dialogue: 2,0:01:35.38,0:01:39.04,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}new homes planned in the Sde Dov quarter, to the north
+Dialogue: 2,0:01:35.53,0:01:39.04,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Approved plan, Tel Aviv District Committee
+Dialogue: 2,0:01:39.14,0:01:42.24,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}2028
+Dialogue: 2,0:01:39.29,0:01:42.24,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}planned opening of the Green Line light rail
+Dialogue: 2,0:01:39.44,0:01:42.24,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Maariv, Aug 2025
+Dialogue: 2,0:01:42.68,0:01:46.89,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}100 m
+Dialogue: 2,0:01:42.83,0:01:46.89,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}homes this close to Yarkon Park were worth more
+Dialogue: 2,0:01:42.98,0:01:46.89,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Technion study, Shefer & Zakai, 2003
+Dialogue: 2,0:01:46.99,0:01:52.96,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}+5% to 20%+
+Dialogue: 2,0:01:47.14,0:01:52.96,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}home values next to new city park links abroad
+Dialogue: 2,0:01:47.29,0:01:52.96,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}HR&A Advisors, 2014
+Dialogue: 0,0:01:24.34,0:01:52.91,Tag,,0,0,0,,{\fad(300,300)}Area data, not a valuation of this home
+Dialogue: 3,0:02:01.54,0:02:07.34,End1,,0,0,0,,{\fad(600,0)\pos(960,250)}Mini penthouse · Kochav HaTzafon
+Dialogue: 3,0:02:01.74,0:02:07.34,End2,,0,0,0,,{\fad(600,0)\pos(960,330)}A new home in a new boutique building, north Tel Aviv
+Dialogue: 3,0:02:01.89,0:02:07.34,End2,,0,0,0,,{\fad(600,0)\pos(960,386)\fs34}5 rooms  ·  about 197 sqm  ·  about 80 sqm of terraces  ·  floor 11
+Dialogue: 3,0:02:02.14,0:02:07.34,EndS,,0,0,0,,{\fad(600,0)\pos(960,505)\c&H00BFB34F}PRIVATE VIEWING
+Dialogue: 3,0:02:02.24,0:02:07.34,EndN,,0,0,0,,{\fad(600,0)\pos(960,580)}Meital Katzir · Nadlan Al HaYam
+Dialogue: 3,0:02:02.39,0:02:07.34,EndP,,0,0,0,,{\fad(600,0)\pos(960,700)}052-3631582
+Dialogue: 3,0:02:02.54,0:02:07.34,EndS,,0,0,0,,{\fad(600,0)\pos(960,800)}From abroad +972 52-363-1582  ·  nad-lan.co.il

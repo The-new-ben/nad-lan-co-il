@@ -1,0 +1,27 @@
+IMPORTANT: do NOT run any terminal or shell command (they are blocked). Use only your file viewing tool to open these exact image files:
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/01-architect-plan.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/02-dollhouse-blender.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/03-dollhouse-gpt-image.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/04-dollhouse-nano-banana.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/05-topdown-blender.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/06-terrace-blender.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/07-plan-lux-svg.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/08-real-photos.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/n1-coordinator-iso-nano-2.1.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/n2-coordinator-top-nano-2.1.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs/n3-coordinator-iso-3-pro.jpg
+
+You are a senior architectural-visualization art director and a strict plan checker. Open and LOOK at every image in the folder gemini/inputs (they are files on disk; read them as images). Do not edit or create any file; answer in plain text only.
+
+Context: a real 5-room mini penthouse (apartment 43, floor 11, new boutique building, north Tel Aviv). 01-architect-plan.jpg is the architect's raster plan (Hebrew labels: ח.שינה = bedroom, ח.מגורים = living, פרגולה = pergola; the regions labelled "גוזטרא בק'10" and "מרפסת ק'5" are balconies of OTHER floors drawn for reference, NOT part of this apartment; the stair/lift core is the building's, not the apartment's). 08-real-photos.jpg are the broker's real photos of the finished home: the ONLY truth for materials and light. Our deliverables: 07-plan-lux-svg.jpg (2D marketing plan, no dimensions by design), 02-dollhouse-blender.jpg (Blender/Cycles cut-away, walls cut at waist height), 03-dollhouse-gpt-image.jpg (gpt-image realism pass on 02), 04-dollhouse-nano-banana.jpg (Nano Banana realism pass on 02), 05-topdown-blender.jpg, 06-terrace-blender.jpg (eye-level view under the pergola toward the living-room glass). n1, n2, n3 are images another agent made by feeding the raw plan straight into Nano Banana.
+
+Hard rules from the broker: (a) no measurements, dimension lines, numbers in metres or a scale bar anywhere; (b) fidelity: walls, rooms, openings, the long kitchen island PARALLEL to the long kitchen wall, and the L-shaped terrace shape must follow the plan; no invented rooms, columns, arches or views; furniture only as drawn (sofa group, two armchairs, dining table with chairs, island) plus beds; (c) no city, no skyline, neutral studio or soft sky background.
+
+Answer in this exact structure, short and concrete (bullets, no essay):
+1. FIDELITY per image 02, 03, 04, 05, 06, 07: list every place where it differs from the architect's plan (walls, room count and shapes, door/window openings, island orientation, terrace outline, pergolas and their posts). Say "matches" if you find nothing.
+2. INVENTED OR FORBIDDEN CONTENT per image (extra furniture, plants, columns, rooms, numbers/dimensions, city/skyline, text).
+3. MATERIALS vs the real photos 08: what is wrong or missing per image (floors, kitchen, sofa and chairs, walnut wall, bathroom, deck, railing, pergola).
+4. QUALITY vs top developer marketing visuals (Israel Canada, Gindi, Dimri level): the 5 most important visual fixes for 02, 05 and 06, ranked, each one sentence and actionable in Blender (lighting, camera, materials, detail).
+5. 03 vs 04: which realism pass is better for the listing page and why; did either one move a wall, rotate the island or add anything?
+6. n1, n2, n3: for each, is it usable as-is on the listing page? List its fidelity errors (rooms, core, extra balconies, island, furniture count).
+7. One line verdict per image: USE / USE AFTER FIX / REJECT.

@@ -1,0 +1,12 @@
+== dollhouse start 14:59:19
+00:10.078  cycles           | WARNING CUEW initialization failed: Error opening the library
+RENDERED dollhouse C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\kochav-ph\plan\renders\dollhouse-iso.png 205s objects 381
+== dollhouse end 15:02:55
+== topdown start 15:02:55
+00:03.516  cycles           | WARNING CUEW initialization failed: Error opening the library
+RENDERED topdown C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\kochav-ph\plan\renders\topdown.png 317s objects 381
+== topdown end 15:08:16
+== terrace start 15:08:16
+00:03.532  cycles           | WARNING CUEW initialization failed: Error opening the library
+RENDERED terrace C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\kochav-ph\plan\renders\terrace.png 636s objects 414
+== terrace end 15:18:57

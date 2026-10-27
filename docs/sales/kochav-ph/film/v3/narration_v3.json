@@ -1,0 +1,99 @@
+{
+ "model": "gpt-4o-mini-tts-2025-12-15",
+ "voice": "marin",
+ "instructions": "A warm, confident woman, a top Tel Aviv real-estate agent introducing a home she loves to an international client. Natural, unhurried, smiling, never salesy. Clear English, gentle pauses between sentences.",
+ "note": "v3, 27.10.2026, after the broker's corrections of 22.10: no price per square metre anywhere, no invented towers, tennis courts and football pitches, a NEW home in a NEW building, areas only as 'about 197 sqm' and 'about 80 sqm of terraces'. TEMPORARY voice, same as v2. Never this home's price. 'changed' = regenerated for v3; the other scenes reuse the v2 recordings in ../audio.",
+ "changed": [
+  "park",
+  "home",
+  "terrace",
+  "numbers"
+ ],
+ "scenes": [
+  [
+   "open",
+   "Some homes keep pace with Tel Aviv. This one also knows how to close the door on it."
+  ],
+  [
+   "morning",
+   "Morning in Kochav HaTzafon. You step out of a brand-new boutique building into one of the quietest, greenest neighbourhoods in north Tel Aviv."
+  ],
+  [
+   "centre",
+   "A minute's walk away is the neighbourhood centre: the deli, fresh bread, the nut shop, the supermarket, and coffee with friends who live around the corner."
+  ],
+  [
+   "bridge",
+   "And this is what changes everything. A new bridge for walking and cycling, a hundred and seventy metres long, is being built over Rokach Boulevard. When it opens in 2027, you walk straight from the neighbourhood into Yarkon Park, without crossing a single road."
+  ],
+  [
+   "park",
+   "Almost four thousand dunams of park: running paths along the river, cycling, and long Saturdays on the lawn. And right by the home, tennis courts and football pitches."
+  ],
+  [
+   "home",
+   "Back home, a brand-new mini penthouse of about 197 sqm, on the eleventh floor. Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline, and a children's suite that looks out to the sea."
+  ],
+  [
+   "terrace",
+   "And then, the real living room: about 80 sqm of terraces. Made for long evenings, a grill, and friends."
+  ],
+  [
+   "numbers",
+   "The numbers matter too. Between 2023 and October 2025, the median home deal in Kochav HaTzafon was NIS 6.1 million, the fourth highest in Israel. To the north, the Sde Dov quarter is adding 16,000 new homes, and the Green Line light rail is planned for 2028. A Technion study found that homes closest to Yarkon Park are worth more, and abroad, new park links have lifted nearby home values by five to twenty percent, and more."
+  ],
+  [
+   "close",
+   "A home with Tel Aviv on one side and the park on the other. For a private viewing, call Meital Katzir."
+  ]
+ ],
+ "say": {
+  "home": "Back home, a brand-new mini penthouse of about a hundred and ninety-seven square metres, on the eleventh floor. Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline, and a children's suite that looks out to the sea.",
+  "terrace": "And then, the real living room: about eighty square metres of terraces. Made for long evenings, a grill, and friends.",
+  "numbers": "The numbers matter too. Between twenty twenty-three and October twenty twenty-five, the median home deal in Kochav HaTzafon was six point one million shekels, the fourth highest in Israel. To the north, the Sde Dov quarter is adding sixteen thousand new homes, and the Green Line light rail is planned for twenty twenty-eight. A Technion study found that homes closest to Yarkon Park are worth more, and abroad, new park links have lifted nearby home values by five to twenty percent, and more.",
+  "close": "A home with Tel Aviv on one side and the park on the other. For a private viewing, call Meytal Katzir."
+ },
+ "he": {
+  "open": [
+   "יש בתים שעומדים בקצב של תל אביב.",
+   "הבית הזה יודע גם לסגור לה את הדלת."
+  ],
+  "morning": [
+   "בוקר בכוכב הצפון.",
+   "יוצאים מבניין בוטיק חדש לגמרי אל אחת השכונות השקטות והירוקות בצפון תל אביב."
+  ],
+  "centre": [
+   "דקת הליכה מכאן, המרכז השכונתי:",
+   "המעדנייה, לחם טרי, חנות הפיצוחים, הסופר, וקפה עם חברים שגרים מעבר לפינה."
+  ],
+  "bridge": [
+   "וזה מה שמשנה הכול.",
+   "גשר חדש להולכי רגל ולרוכבי אופניים, באורך של כ-170 מטר, נבנה מעל שדרות רוקח.",
+   "כשייפתח ב-2027, תלכו מהשכונה ישר אל פארק הירקון, בלי לחצות אף כביש."
+  ],
+  "park": [
+   "כמעט ארבעת אלפים דונם של פארק:",
+   "שבילי ריצה לאורך הנחל, אופניים, ושבתות ארוכות על הדשא.",
+   "וממש ליד הבית, מגרשי טניס ומגרשי כדורגל."
+  ],
+  "home": [
+   "ובחזרה הביתה: מיני פנטהאוז חדש לגמרי, כ-197 מ״ר, בקומה ה-11.",
+   "נגרות בהתאמה אישית, מטבח מעוצב, סוויטת הורים עם נוף פתוח לקו הרקיע של תל אביב, ויחידת ילדים שצופה לים."
+  ],
+  "terrace": [
+   "ואז, הסלון האמיתי:",
+   "כ-80 מ״ר של מרפסות.",
+   "בנויות לערבים ארוכים, למנגל ולחברים."
+  ],
+  "numbers": [
+   "גם המספרים חשובים.",
+   "בין 2023 לאוקטובר 2025, העסקה החציונית בכוכב הצפון הייתה 6.1 מיליון ש״ח, הרביעית בגובהה בישראל.",
+   "מצפון, רובע שדה דב מוסיף 16,000 דירות חדשות, והקו הירוק של הרכבת הקלה מתוכנן ל-2028.",
+   "מחקר של הטכניון מצא שדירות קרובות לפארק הירקון שוות יותר, ובעולם, חיבורים חדשים לפארקים העלו את ערך הדירות הסמוכות בחמישה עד עשרים אחוז, ויותר."
+  ],
+  "close": [
+   "בית עם תל אביב מצד אחד והפארק מהצד השני.",
+   "לתיאום צפייה פרטית, התקשרו למיטל קציר."
+  ]
+ }
+}

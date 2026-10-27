@@ -1,0 +1,68 @@
+### 1. Differences from Architect's Plan & Invented Elements
+
+* **`02-dollhouse-blender-v2.jpg`**
+  * **Island & Dining orientation:** In the plan (01), the dining table is a freestanding 8-seater placed *parallel* to the long island. Here, it is aligned linearly to the end of the island, reduced to 6 seats, and pushed toward the corner window.
+  * **Living room layout & feature wall:** The walnut slat wall with a central stone panel does not exist in 01 (plan shows a plain partition wall). Sofas are in an L-configuration with two rust tub chairs, differing from the 3-seater against the window wall drawn in 01.
+  * **Bathrooms & Utility:** Master bathroom replaces the plan’s 170 cm bathtub with a walk-in shower. The family bath’s enclosed laundry/water-heater nook (`דווד / מסתור`) is simplified into an open area.
+  * **Openings & Terrace:** The main entrance door is missing (open gap). The far-right terrace corner omits the maintenance cradle (`גונדולה`) setback and step-out shown in 01.
+
+* **`03-dollhouse-gpt-image-v2.jpg`**
+  * **Inherited geometry errors:** Retains the incorrect dining table placement at the island’s short end, the altered bathroom layouts, and missing entrance door from 02.
+  * **AI-invented details:** AI converted the wireframe chair outlines from 02 into solid upholstered dining chairs, added marble veining to the island countertop, and added vanity hardware/vessel sinks not in 01.
+  * **Pergola distortion:** Louvers on the pergola are slightly softened and warped compared to the CAD/Blender geometry.
+
+* **`05-topdown-blender-v2.jpg`**
+  * **Island & Dining orientation:** Exactly like 02, the dining table is attached to the short end of the island in a continuous line instead of sitting parallel between the island and terrace glass as drawn in 01.
+  * **Master Bath & Laundry:** Bathtub in the master suite is replaced by a shower enclosure; the enclosed laundry alcove is merged into the bathroom floor.
+  * **Missing technical data:** All architect dimensions, room labels, door swing arcs, MAMAD blast-door specifications, and ceiling AC drop notations are omitted.
+
+* **`06-terrace-blender-v2.jpg`**
+  * **Missing feature wall:** The entire right-hand wall inside the living room is rendered as a plain, blank white wall. The walnut slat wall and stone panel (present in 02/03/05 and real photo 08) were not modeled or mapped on this angle.
+  * **Missing view / horizon:** The entire background behind the terrace railing is a blank pale-grey void; the high-floor Tel Aviv skyline and Mediterranean sea view (prominent in 08) are completely absent.
+  * **Kitchen/Dining background:** Dining table remains pushed awkwardly into the rear corner behind the island.
+
+* **`06b-terrace-gpt-image.jpg`**
+  * **Inherited missing feature wall:** Retains the blank off-white drywall on the right living room wall (did not hallucinate the walnut wall because Blender 06 lacked it).
+  * **Background / Horizon:** Adds a subtle atmospheric haze and faint horizon line. It correctly avoids inventing a fake fantasy skyline or beachfront, but still lacks the real city/sea view.
+  * **Geometry adherence:** Strictly maintains the camera angle, openings, door frames, and terrace structure of 06 without hallucinating extra architectural elements.
+
+* **`06c-terrace-nano-banana.jpg`**
+  * **Inherited missing feature wall:** Same blank white drywall on the right interior wall.
+  * **Severe glass artifact:** Invented a massive, opaque white specular glare across the right sliding glass panel, blinding the view into the living room.
+  * **View:** Overcast, flat sky void with no real-world contextual skyline.
+
+---
+
+### 2. Fix Verification & Remaining Material/Lighting Issues
+
+**Status of requested fixes:**
+* **Landed:** Warmer stone floor tiles, warm timber decking, granite tile grid/speckle on facade, rust tub chairs, and warmer directional sunbeams (in 06b).
+* **Failed to land:** The walnut slat + stone feature wall was completely omitted from the terrace eye-level views (`06`, `06b`, `06c`), leaving a stark white wall. Stronger glass reflections landed poorly (absent in `06`, ruined by opaque milky glare in `06c`).
+
+**Remaining issues vs real photos (`08`):**
+1. **Critical interior omission (`06`, `06b`, `06c`):** The signature walnut slat and stone TV feature wall from photo `08` is completely missing from all eye-level terrace renders, leaving the main living room wall bare white.
+2. **Missing penthouse view (`06`, `06b`, `06c`):** Photo `08` shows a panoramic 10th-floor vista of the Tel Aviv urban skyline, green park, and Mediterranean sea; the renders show an empty sky void, erasing the property's primary value driver.
+3. **Glass shader failure (`06` vs `06c`):** `06` looks like completely missing glass (no reflection or refraction), while `06c` overcompensates with an unpublishable solid milky reflection that blocks the interior.
+4. **Kitchen island arrangement (`02`, `03`, `05`, `06`):** The dining table remains glued to the end of the island rather than standing parallel as in plan `01`, and the island lacks the clean counter finish and proportion seen in photo `08`.
+5. **Interior lighting & ceiling depth (`06`, `06b`, `06c`):** Photo `08` features recessed black light tracks, warm cove lighting, and drop-ceiling depth; the renders display a flat, uniform white ceiling with diffuse illumination.
+
+---
+
+### 3. Comparison: 06b vs 06c
+
+* **Which realism pass is better:** **`06b` (GPT Image) is substantially better.** It produces convincing granite stone texture, authentic wood plank variation, sharp sun and pergola shadow interplay, and balanced glass transparency. In contrast, `06c` is colder, flatter, and plagued by a severe white glass reflection artifact that obscures the interior.
+* **Publishing safety:**
+  * **Neither pass is legally unsafe regarding fake views or altered geometry:** Neither image hallucinates an unbuilt structure, fake luxury beachfront, or false building heights.
+  * **`06c` is unsafe to publish for quality reasons:** The milky reflection on the glass looks like a rendering glitch.
+  * **`06b` is safe in terms of truthfulness, but commercially flawed:** While safe from misrepresentation claims (the view is neutral atmospheric haze rather than a fake city), omitting the real sea/city panorama fails to showcase the apartment's true setting.
+
+---
+
+### 4. Verdicts
+
+* **`02-dollhouse-blender-v2.jpg`**: **USE AFTER FIX** — Move the dining table to sit parallel to the island per plan 01, and remove the wireframe chair artifacts.
+* **`03-dollhouse-gpt-image-v2.jpg`**: **USE AFTER FIX** — Solid AI enhancement, but requires the corrected dining table layout from the base 3D model first.
+* **`05-topdown-blender-v2.jpg`**: **USE AFTER FIX** — Clean top-down plan, but must detach the dining table from the island to align with plan 01.
+* **`06-terrace-blender-v2.jpg`**: **REJECT** — Incomplete base render missing the walnut TV wall, glass shaders, and real exterior backdrop.
+* **`06b-terrace-gpt-image.jpg`**: **USE AFTER FIX** — Best realism pass, but needs the walnut slat wall added inside and the real skyline/sea view composited into the background before final generation.
+* **`06c-terrace-nano-banana.jpg`**: **REJECT** — Ruined by an opaque milky glass reflection and cold, flat interior lighting.

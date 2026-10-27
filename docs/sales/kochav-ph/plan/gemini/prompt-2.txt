@@ -1,0 +1,15 @@
+IMPORTANT: do NOT run any terminal or shell command (they are blocked). Use only your file viewing tool to open these exact image files:
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/01-architect-plan.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/02-dollhouse-blender-v2.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/03-dollhouse-gpt-image-v2.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/05-topdown-blender-v2.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/06-terrace-blender-v2.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/06b-terrace-gpt-image.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/06c-terrace-nano-banana.jpg
+- C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/plan/gemini/inputs2/08-real-photos.jpg
+
+Second round. You reviewed the first versions earlier; these are the revised renders of the same apartment (01 = the architect's plan, 08 = the broker's real photos). Changes made after your first critique: warmer stone floor tiles, warm wood-look deck, light grey granite facade with speckle, the walnut slat wall extended along the whole wall the sofa faces with a stone panel in the middle, rounded rust tub chairs, glass with stronger reflections, warmer sun and less flat fill. Bar stools, terrace furniture, plants and curtains are deliberately NOT added because the architect's plan does not draw them and the broker allows only furniture as drawn plus beds. Answer in plain text, short bullets, in this structure:
+1. For each image 02, 03, 05, 06, 06b, 06c: anything that differs from the architect's plan or was invented (walls, rooms, openings, island orientation, terrace shape, pergolas and posts, extra objects, sea/city/skyline/horizon views, any numbers).
+2. Did the listed fixes land? Which remaining material or lighting problems are still visible vs the real photos (max 5 bullets in total).
+3. 06b vs 06c: which realism pass is better and is either one unsafe to publish (fake view, changed geometry)?
+4. One-line verdict per image: USE / USE AFTER FIX / REJECT.

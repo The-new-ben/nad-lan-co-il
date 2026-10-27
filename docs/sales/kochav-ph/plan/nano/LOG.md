@@ -1,0 +1,3 @@
+- 2026-10-27 13:53 | google/gemini-nano-banana-2.1 | top-gemini-nano-banana-2.1.png | 12s | cost 0.040608 | tokens 3184
+- 2026-10-27 13:53 | google/gemini-nano-banana-2.1 | iso-gemini-nano-banana-2.1.png | 13s | cost 0.040476 | tokens 3176
+- 2026-10-27 13:53 | google/gemini-3-pro-image | iso-gemini-3-pro-image.png | 29s | cost 0.140386 | tokens 2338
