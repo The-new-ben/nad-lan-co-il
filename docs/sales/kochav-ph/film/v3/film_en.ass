@@ -60,9 +60,9 @@ Dialogue: 0,0:00:57.92,0:01:04.46,Sub,,0,0,0,,Back home, a brand-new mini pentho
 Dialogue: 0,0:01:04.86,0:01:10.64,Sub,,0,0,0,,Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline,
 Dialogue: 0,0:01:10.90,0:01:13.49,Sub,,0,0,0,,and a children's suite that looks out to the sea.
 Dialogue: 0,0:01:14.17,0:01:18.07,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE TERRACES
-Dialogue: 0,0:01:14.29,0:01:16.47,Sub,,0,0,0,,And then, the real living room:
-Dialogue: 0,0:01:16.53,0:01:19.06,Sub,,0,0,0,,about 80 sqm of terraces.
-Dialogue: 0,0:01:19.17,0:01:22.96,Sub,,0,0,0,,Made for long evenings, a grill, and friends.
+Dialogue: 0,0:01:14.29,0:01:16.74,Sub,,0,0,0,,And then, the real living room:
+Dialogue: 0,0:01:16.84,0:01:19.53,Sub,,0,0,0,,about 76 sqm of terraces.
+Dialogue: 0,0:01:19.81,0:01:23.92,Sub,,0,0,0,,Made for long evenings, a grill, and friends.
 Dialogue: 0,0:01:23.84,0:01:27.74,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE NUMBERS
 Dialogue: 0,0:01:34.21,0:01:42.51,Tag,,0,0,0,,{\fad(300,300)}Aerial photo · the Sde Dov quarter under construction
 Dialogue: 0,0:01:23.96,0:01:25.50,Sub,,0,0,0,,The numbers matter too.
@@ -94,7 +94,7 @@ Dialogue: 2,0:01:47.29,0:01:52.96,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}HR
 Dialogue: 0,0:01:24.34,0:01:52.91,Tag,,0,0,0,,{\fad(300,300)}Area data, not a valuation of this home
 Dialogue: 3,0:02:01.54,0:02:07.34,End1,,0,0,0,,{\fad(600,0)\pos(960,250)}Mini penthouse · Kochav HaTzafon
 Dialogue: 3,0:02:01.74,0:02:07.34,End2,,0,0,0,,{\fad(600,0)\pos(960,330)}A new home in a new boutique building, north Tel Aviv
-Dialogue: 3,0:02:01.89,0:02:07.34,End2,,0,0,0,,{\fad(600,0)\pos(960,386)\fs34}5 rooms  ·  about 197 sqm  ·  about 80 sqm of terraces  ·  floor 11
+Dialogue: 3,0:02:01.89,0:02:07.34,End2,,0,0,0,,{\fad(600,0)\pos(960,386)\fs34}5 rooms  ·  about 197 sqm  ·  about 76 sqm of terraces  ·  floor 11
 Dialogue: 3,0:02:02.14,0:02:07.34,EndS,,0,0,0,,{\fad(600,0)\pos(960,505)\c&H00BFB34F}PRIVATE VIEWING
 Dialogue: 3,0:02:02.24,0:02:07.34,EndN,,0,0,0,,{\fad(600,0)\pos(960,580)}Meital Katzir · Nadlan Al HaYam
 Dialogue: 3,0:02:02.39,0:02:07.34,EndP,,0,0,0,,{\fad(600,0)\pos(960,700)}052-3631582

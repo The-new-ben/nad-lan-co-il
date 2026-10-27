@@ -94,3 +94,10 @@ v3, Hebrew cut: מיני פנטהאוז · כוכב הצפון / נכס חדש �
 - Grep of `film_en.ass` and `film_he.ass` for "m²", "sqm", "per m", "למ״ר": no "m²", no "per m", no "למ״ר". "sqm" / "מ״ר" appear only in "about 197 sqm" and "about 80 sqm of terraces" (home caption, terrace caption, end card).
 - Full decode (`ffmpeg -v error -i file -f null -`) of both cuts: no errors.
 - Still open: the temporary voice says "Sde Dov" slightly unclearly in the new numbers take; the final film is to be voiced by Meital anyway.
+
+## v3b, 27.10.2026 evening (Ben: the terraces are 76 sqm, not 80)
+- Narration, terrace scene only, regenerated (same model, voice and instructions; the old take kept in audio/_old80/):
+  "And then, the real living room: about seventy-six square metres of terraces. ..." Screening ASR: "about 76 square meters of terraces".
+- Captions and end card, both cuts: "about 76 sqm of terraces" / "כ-76 מ״ר מרפסות". Every other scene unchanged; 2:07.3.
+- Frame checks: terrace caption 1:17.8 and end card 2:04, English and Hebrew cuts (_build/chk-*.jpg).
+- Web encodes web/kochav-film-en-v3b.mp4 (media 8679) and web/kochav-film-en-v3b-he.mp4 (media 8680), live on 7812 and 7634.

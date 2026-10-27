@@ -2,7 +2,7 @@
  "model": "gpt-4o-mini-tts-2025-12-15",
  "voice": "marin",
  "instructions": "A warm, confident woman, a top Tel Aviv real-estate agent introducing a home she loves to an international client. Natural, unhurried, smiling, never salesy. Clear English, gentle pauses between sentences.",
- "note": "v3, 27.10.2026, after the broker's corrections of 22.10: no price per square metre anywhere, no invented towers, tennis courts and football pitches, a NEW home in a NEW building, areas only as 'about 197 sqm' and 'about 80 sqm of terraces'. TEMPORARY voice, same as v2. Never this home's price. 'changed' = regenerated for v3; the other scenes reuse the v2 recordings in ../audio.",
+ "note": "v3, 27.10.2026, after the broker's corrections of 22.10: no price per square metre anywhere, no invented towers, tennis courts and football pitches, a NEW home in a NEW building, areas only as 'about 197 sqm' and 'about 76 sqm of terraces'. TEMPORARY voice, same as v2. Never this home's price. 'changed' = regenerated for v3; the other scenes reuse the v2 recordings in ../audio.",
  "changed": [
   "park",
   "home",
@@ -36,7 +36,7 @@
   ],
   [
    "terrace",
-   "And then, the real living room: about 80 sqm of terraces. Made for long evenings, a grill, and friends."
+   "And then, the real living room: about 76 sqm of terraces. Made for long evenings, a grill, and friends."
   ],
   [
    "numbers",
@@ -49,7 +49,7 @@
  ],
  "say": {
   "home": "Back home, a brand-new mini penthouse of about a hundred and ninety-seven square metres, on the eleventh floor. Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline, and a children's suite that looks out to the sea.",
-  "terrace": "And then, the real living room: about eighty square metres of terraces. Made for long evenings, a grill, and friends.",
+  "terrace": "And then, the real living room: about seventy-six square metres of terraces. Made for long evenings, a grill, and friends.",
   "numbers": "The numbers matter too. Between twenty twenty-three and October twenty twenty-five, the median home deal in Kochav HaTzafon was six point one million shekels, the fourth highest in Israel. To the north, the Sde Dov quarter is adding sixteen thousand new homes, and the Green Line light rail is planned for twenty twenty-eight. A Technion study found that homes closest to Yarkon Park are worth more, and abroad, new park links have lifted nearby home values by five to twenty percent, and more.",
   "close": "A home with Tel Aviv on one side and the park on the other. For a private viewing, call Meytal Katzir."
  },
@@ -82,7 +82,7 @@
   ],
   "terrace": [
    "ואז, הסלון האמיתי:",
-   "כ-80 מ״ר של מרפסות.",
+   "כ-76 מ״ר של מרפסות.",
    "בנויות לערבים ארוכים, למנגל ולחברים."
   ],
   "numbers": [

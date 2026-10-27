@@ -6,7 +6,7 @@
   buildings), labelled "simulation"; AI lifestyle stills stay only where no towers show (two park stills are cropped below the
   horizon);
 - Meital's real footage and photographs carry the film (the home, the terraces, her drone photos and drone video);
-- tennis courts and football pitches; a NEW home in a NEW building; areas only as "about 197 sqm" / "about 80 sqm of terraces";
+- tennis courts and football pitches; a NEW home in a NEW building; areas only as "about 197 sqm" / "about 76 sqm of terraces";
 - end card: Meital Katzir · Nadlan Al HaYam, 052-3631582, large.
 Builds both cuts from one picture and one sound mix:
   python compose_v3.py [--fast] [--only en|he]  ->  kochav-film-en-v3.mp4, kochav-film-en-v3-he.mp4, kochav-film-v3.jpg
@@ -261,12 +261,12 @@ TXT = {
  "en": dict(title="KOCHAV HATZAFON", tagline="A new mini penthouse in a new boutique building · north Tel Aviv",
             area="Area data, not a valuation of this home",
             e1="Mini penthouse · Kochav HaTzafon", e2="A new home in a new boutique building, north Tel Aviv",
-            e3="5 rooms  ·  about 197 sqm  ·  about 80 sqm of terraces  ·  floor 11", e4="PRIVATE VIEWING",
+            e3="5 rooms  ·  about 197 sqm  ·  about 76 sqm of terraces  ·  floor 11", e4="PRIVATE VIEWING",
             e5="Meital Katzir · Nadlan Al HaYam", e6="052-3631582", e7="From abroad +972 52-363-1582  ·  nad-lan.co.il"),
  "he": dict(title="כוכב הצפון", tagline="מיני פנטהאוז חדש בבניין בוטיק חדש · צפון תל אביב",
             area="נתוני אזור, לא הערכת שווי של הנכס",
             e1="מיני פנטהאוז · כוכב הצפון", e2="נכס חדש בבניין בוטיק חדש, צפון תל אביב",
-            e3="5 חדרים  ·  כ-197 מ״ר  ·  כ-80 מ״ר מרפסות  ·  קומה 11", e4="לתיאום צפייה פרטית",
+            e3="5 חדרים  ·  כ-197 מ״ר  ·  כ-76 מ״ר מרפסות  ·  קומה 11", e4="לתיאום צפייה פרטית",
             e5="מיטל קציר · נדל״ן על הים", e6="052-3631582", e7="nad-lan.co.il"),
 }
 

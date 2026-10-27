@@ -7,7 +7,7 @@ import base64, io, os
 from PIL import Image
 H = os.path.dirname(os.path.abspath(__file__)); S = os.path.join(H, "shots-27p")
 DS = r"C:\Users\777\AppData\Local\Temp\claude\C--Users-777-nad-lan\f8200c1d-6798-4a3e-8a9f-7b12503e42b2\scratchpad\ds\project\components\KochavListing"
-SHOTS = [("he-390-first.png", "טלפון: התמונות, המחיר והעובדות במסך הראשון (המחיר בגובה 511)", 1700),
+SHOTS = [("he-390-first-76.png", "טלפון: התמונות, המחיר והעובדות במסך הראשון (המחיר בגובה 511), 76 מ״ר מרפסות", 1700),
          ("labels-he-390.png", "טלפון: תוכנית הדירה, שמות החדרים קריאים, בלי מידות", None),
          ("he-390-render.png", "טלפון: ההדמיה של התוכנית, החדר שנבחר מסומן, והצילום שלו מהדירה", 2100),
          ("he-1280-kitchen.png", "מחשב: התוכנית ברוחב מלא, החדרים, והצילום ליד שם החדר", 1900),

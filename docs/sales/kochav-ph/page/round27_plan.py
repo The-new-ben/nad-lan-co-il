@@ -214,14 +214,14 @@ def rep1(t, a, b, label):
     return t.replace(a, b)
 
 
-# the film v3 files in the media library (upload_media.py records them in media.json); the swap runs once all three are there
+# the film v3b files in the media library (v3b, 27.10 evening: Ben, terraces 76 sqm, not 80) (upload_media.py records them in media.json); the swap runs once all three are there
 _M = json.load(open(os.path.join(H, "media.json"))) if os.path.exists(os.path.join(H, "media.json")) else {}
 FILM = None
-if all(k in _M for k in ("kochav-film-en-v3.mp4", "kochav-film-en-v3-he.mp4", "kochav-film-v3.jpg")):
+if all(k in _M for k in ("kochav-film-en-v3b.mp4", "kochav-film-en-v3b-he.mp4", "kochav-film-v3.jpg")):
     _p = lambda k: _M[k]["url"].rsplit("/", 1)[1]
-    FILM = {"he": {"mp4": _p("kochav-film-en-v3-he.mp4"), "jpg": _p("kochav-film-v3.jpg")},
-            "en": {"mp4": _p("kochav-film-en-v3.mp4"), "jpg": _p("kochav-film-v3.jpg")}}
-    assert all(_M[k]["url"].startswith("https://nad-lan.co.il/wp-content/uploads/2026/10/") for k in ("kochav-film-en-v3.mp4", "kochav-film-en-v3-he.mp4", "kochav-film-v3.jpg"))
+    FILM = {"he": {"mp4": _p("kochav-film-en-v3b-he.mp4"), "jpg": _p("kochav-film-v3.jpg")},
+            "en": {"mp4": _p("kochav-film-en-v3b.mp4"), "jpg": _p("kochav-film-v3.jpg")}}
+    assert all(_M[k]["url"].startswith("https://nad-lan.co.il/wp-content/uploads/2026/10/") for k in ("kochav-film-en-v3b.mp4", "kochav-film-en-v3b-he.mp4", "kochav-film-v3.jpg"))
 L["he"].update(
     film_lead=("בוקר בשכונה, קפה במרכז המסחרי, הגשר החדש לפארק הירקון, הבית עצמו, ערב עם חברים במרפסת, והמספרים של האזור. באנגלית, עם כתוביות.",
                "בוקר בשכונה, קפה במרכז המסחרי, הגשר החדש לפארק הירקון, מגרשי הטניס והכדורגל ליד הבית, הבית החדש עצמו, ערב במרפסת, והמספרים של האזור. קריינות באנגלית, עם כתוביות בעברית."),

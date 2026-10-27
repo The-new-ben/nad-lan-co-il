@@ -2,7 +2,7 @@
 """Kochav listing, round 27.10.2026 (Ben + Meital's notes of 22.10): built on the LIVE text (live-27-7634.html / live-27-7812.html,
 read by live_io.py --fetch), Hebrew and English.
 - A new opening for a fast decision: Meital's real photos in a one-finger strip, the price large, the key facts in one row
-  (rooms, about 197 m², about 80 m² terraces, floor 11 of 12, by Yarkon Park), "a new property in a new building", WhatsApp and call,
+  (rooms, about 197 m², about 76 m² terraces (Ben 27.10, was 80), floor 11 of 12, by Yarkon Park), "a new property in a new building", WhatsApp and call,
   an area note (the building is not yet registered; the deciding area is the shared-house registration). Replaces the old masthead.
 - Off the page: the showroom whose poster and 3D city showed tall buildings that do not exist ("הבניינים הגבוהים לא קיימים"), and the
   3D building card (same image family). The bridge walk stays, labelled a simulation.
@@ -28,13 +28,13 @@ L = {
             ("L07_DX9wx4ziADM_08.jpg", "הסביבה: מגרשי הכדורגל, פארק הירקון וקו הרקיע", "מצילומי הנכס")],
     aria_car="הנכס בתמונות", prev="התמונה הקודמת", nxt="התמונה הבאה",
     kicker="למכירה · כוכב הצפון, צפון תל אביב · בלעדיות מיטל קציר",
-    title="מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
+    title="מיני פנטהאוז חדש עם 76 מ״ר מרפסות, כוכב הצפון",
     fx='<span class="nlx-num">≈ $5.9M</span> · <span class="nlx-num">≈ €5.1M</span>',
     price='<span class="nlx-num">18,000,000</span>&nbsp;₪',
     new="נכס חדש, בבניין בוטיק חדש",
-    facts=[("חדרים", '<span class="nlx-num">5</span>'), ("שטח בנוי", 'כ-<span class="nlx-num">197</span> מ״ר'), ("מרפסות", 'כ-<span class="nlx-num">80</span> מ״ר'),
+    facts=[("חדרים", '<span class="nlx-num">5</span>'), ("שטח בנוי", 'כ-<span class="nlx-num">197</span> מ״ר'), ("מרפסות", 'כ-<span class="nlx-num">76</span> מ״ר'),
            ("קומה", '<span class="nlx-num">11</span> מתוך <span class="nlx-num">12</span>'), ("ליד", "פארק הירקון")],
-    dek="קומה אחת מתחת לאחרונה, בבניין בוטיק חדש: חמישה חדרים, מטבח עם אי ארוך, אגף ילדים עם מרפסת, ומרפסות שנפתחות אל הים, הפארק וקו הרקיע של תל אביב.",
+    dek="קומה אחת מתחת לאחרונה, בבניין בוטיק חדש עם חדר כושר וחדר דיירים: חמישה חדרים, מטבח עם אי ארוך, אגף ילדים עם מרפסת, ומרפסות שנפתחות אל הים, הפארק וקו הרקיע של תל אביב.",
     wa_lab="תיאום סיור פרטי", tel_lab="חיוג למיטל",
     note="השטחים לפי תוכנית האדריכל ומוצגים בקירוב. הבניין טרם נרשם בטאבו; השטח הקובע הוא לפי רישום הבית המשותף.",
     bldg_card="הבניין והקומה בתלת ממד",
@@ -69,13 +69,13 @@ L = {
             ("L07_DX9wx4ziADM_08.jpg", "Around: the football pitches, Yarkon Park and the skyline", "From the property's photos")],
     aria_car="The home in pictures", prev="Previous photo", nxt="Next photo",
     kicker="For sale · Kochav HaTzafon, north Tel Aviv · Exclusive: Meital Katzir",
-    title="New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon",
+    title="New Mini Penthouse with 76 sqm of Terraces, Kochav HaTzafon",
     fx='<span class="nlx-num">≈ $5.9M</span> · <span class="nlx-num">≈ €5.1M</span>',
     price='NIS&nbsp;<span class="nlx-num">18,000,000</span>',
     new="A new home, in a new boutique building",
-    facts=[("Rooms", '<span class="nlx-num">5</span>'), ("Built", '≈&nbsp;<span class="nlx-num">197</span> sqm'), ("Terraces", '≈&nbsp;<span class="nlx-num">80</span> sqm'),
+    facts=[("Rooms", '<span class="nlx-num">5</span>'), ("Built", '≈&nbsp;<span class="nlx-num">197</span> sqm'), ("Terraces", '≈&nbsp;<span class="nlx-num">76</span> sqm'),
            ("Floor", '<span class="nlx-num">11</span> of <span class="nlx-num">12</span>'), ("Next to", "Yarkon Park")],
-    dek="One floor below the top, in a new boutique building: five rooms, a kitchen with a long island, a children's wing with its own balcony, and terraces that open onto the sea, the park and the Tel Aviv skyline.",
+    dek="One floor below the top, in a new boutique building with a gym and a residents' room: five rooms, a kitchen with a long island, a children's wing with its own balcony, and terraces that open onto the sea, the park and the Tel Aviv skyline.",
     wa_lab="Book a private viewing", tel_lab="Call Meital",
     note="Areas follow the architect's plan and are approximate. The building is not yet registered; the deciding area is the condominium registration.",
     bldg_card="The building and the floor in 3D",
