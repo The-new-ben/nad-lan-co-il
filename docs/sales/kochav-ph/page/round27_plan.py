@@ -186,7 +186,7 @@ def section(c, wa):
     hs = json.load(open(os.path.join(PLAN, "renders", "dollhouse-hotspots.json"), encoding="utf-8"))
     assert hs["size"] == [2400, 1600]
     key = "he" if c["sfx"].endswith("he") else "en"
-    names = {r["id"]: r[key] for r in plan["rooms"]}; names["closet"] = c["closet"][1]
+    names = {r["id"]: c.get("names", {}).get(r["id"], r[key]) for r in plan["rooms"]}; names["closet"] = c["closet"][1]  # French and Russian bring their own names
     rooms = [{"id": i, "name": names[i], "chip": c["chip"].get(i, names[i]),
               "photo": (U + PHOTOS[i] + "-768x768.jpg") if i in PHOTOS else None, "hs": hs["rooms"].get(i)} for i in ORDER]
     js = (JS.replace("__SFX__", c["sfx"]).replace("__ROOMS__", json.dumps(rooms, ensure_ascii=False))
