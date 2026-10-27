@@ -73,7 +73,7 @@ L = {
     fx='<span class="nlx-num">≈ $5.9M</span> · <span class="nlx-num">≈ €5.1M</span>',
     price='NIS&nbsp;<span class="nlx-num">18,000,000</span>',
     new="A new home, in a new boutique building",
-    facts=[("Rooms", '<span class="nlx-num">5</span>'), ("Built", 'about <span class="nlx-num">197</span> sqm'), ("Terraces", 'about <span class="nlx-num">80</span> sqm'),
+    facts=[("Rooms", '<span class="nlx-num">5</span>'), ("Built", '≈&nbsp;<span class="nlx-num">197</span> sqm'), ("Terraces", '≈&nbsp;<span class="nlx-num">80</span> sqm'),
            ("Floor", '<span class="nlx-num">11</span> of <span class="nlx-num">12</span>'), ("Next to", "Yarkon Park")],
     dek="One floor below the top, in a new boutique building: five rooms, a kitchen with a long island, a children's wing with its own balcony, and terraces that open onto the sea, the park and the Tel Aviv skyline.",
     wa_lab="Book a private viewing", tel_lab="Call Meital",
@@ -143,7 +143,8 @@ CSS = ('<style>\n'
        '@media (max-width:760px){body.postid-7634 main#wp--skip-link--target,body.postid-7812 main#wp--skip-link--target{margin-top:6px!important}'
        'body.postid-7634 main#wp--skip-link--target>.wp-block-group,body.postid-7812 main#wp--skip-link--target>.wp-block-group{padding-top:6px!important}'
        'body.postid-7634 nav.nlbc,body.postid-7812 nav.nlbc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:4px 0 6px!important}'
-       'body.postid-7634 article.nlx,body.postid-7812 article.nlx{margin-top:4px!important}'
+       'body.postid-7634 article.nlx,body.postid-7812 article.nlx,body.page-id-7812 article.nlx{margin-top:4px!important}'
+       'body.page-id-7812 main#wp--skip-link--target{margin-top:6px!important;padding-top:6px!important}'
        '.nlx .nlx-h27-media{aspect-ratio:16/10}.nlx .nlx-h27{padding-top:0}.nlx .nlx-h27-copy{gap:10px}}\n'
        '.nlx .nlx-h27-price .nlx-num{direction:ltr;unicode-bidi:isolate}\n'
        '@media (max-width:420px){.nlx button.nlx-h27-nav{width:40px;height:40px;top:calc(50% - 20px);opacity:.92}.nlx .nlx-h27-cta{grid-template-columns:1fr 1fr}}\n'
