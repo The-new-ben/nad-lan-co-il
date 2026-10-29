@@ -1,0 +1,126 @@
+{
+ "scores": [
+  {
+   "criterion": "1. Hook",
+   "pass": true,
+   "evidence": "The first line is 81 characters: 'מיני פנטהאוז חדש בכוכב הצפון: 76 מ״ר של מרפסות בקומה 11 מתוך 12, ליד פארק הירקון.' It clearly states what it is (new mini penthouse), the standout fact (76 m² of terraces on floor 11 of 12), and where it is (Kochav HaTzafon, by Yarkon Park) well within the 125-character cutoff."
+  },
+  {
+   "criterion": "2. Location stated plainly",
+   "pass": false,
+   "evidence": "Line 1 of the post text states the neighbourhood ('בכוכב הצפון') and landmark ('ליד פארק הירקון'), and the visual headers include 'כוכב הצפון, צפון תל אביב', but Line 1 of the post body omits 'צפון תל אביב' (north Tel Aviv), which is required by the checklist."
+  },
+  {
+   "criterion": "3. Specific numbers",
+   "pass": true,
+   "evidence": "All required factual metrics are present without fluff adjectives: 'כ-197 מ״ר בנוי', '76 מ״ר של מרפסות', '5 חדרים', 'קומה 11 מתוך 12', and 'בבניין בוטיק חדש'."
+  },
+  {
+   "criterion": "4. Real media of the actual home",
+   "pass": true,
+   "evidence": "All interior, terrace, and view cards/frames are real photography/video badged 'צולם בדירה'. Card 4 (the 3D floor plan) is transparently badged 'הדמיה על פי תוכנית האדריכל' and explicitly disclosed in the post text, so no render is falsely presented as a photo of the home."
+  },
+  {
+   "criterion": "5. Feed frame",
+   "pass": true,
+   "evidence": "The lead cover is 4:5 (958×1200 aspect ratio matching 1440×1800) and the Reel frames are 9:16. On the Reel frames, all critical text and headlines sit between ~15% and ~62% from the top, respecting the top 14%, bottom 35%, and 6% side safe zones."
+  },
+  {
+   "criterion": "6. Vertical video exists",
+   "pass": true,
+   "evidence": "A 9:16 vertical Reel cut (~22 seconds) is provided alongside the photo album."
+  },
+  {
+   "criterion": "7. Human on camera or named voice",
+   "pass": false,
+   "evidence": "Neither Meital nor any other person appears on camera in any of the Reel frames or cards, and there is no evidence of a spoken voiceover."
+  },
+  {
+   "criterion": "8. Story before the spec sheet",
+   "pass": true,
+   "evidence": "Paragraph 2 of the post text paints the lifestyle feel ('בוקר עם קפה מול קו הרקיע של תל אביב, וערב עם חברים על המרפסת') before the bulleted spec sheet. Reel frame at 15.0s also includes 'בנויות לערבים ארוכים, למנגל ולחברים'."
+  },
+  {
+   "criterion": "9. Broker identification (legal)",
+   "pass": true,
+   "evidence": "Every visual card, the Reel overlay, the end card, the post text, and the X text clearly display 'מיטל קציר', 'מתווכת' / 'מתווכת מורשית', and licence number '3131540'."
+  },
+  {
+   "criterion": "10. Price rule (legal)",
+   "pass": true,
+   "evidence": "The price is stated in full Israeli shekels ('מחיר: 18,000,000 ₪') in both the Facebook post and the X post."
+  },
+  {
+   "criterion": "11. One clear CTA",
+   "pass": true,
+   "evidence": "There is one clear direct-contact action to schedule a private viewing with Meital ('לתיאום צפייה פרטית בוואטסאפ או בטלפון: 052-3631582')."
+  },
+  {
+   "criterion": "12. Sound-off",
+   "pass": true,
+   "evidence": "Every Reel scene features a prominent, high-contrast Hebrew headline and subheadline in the top card banner explaining the property's key features, views, and contact details without needing audio."
+  },
+  {
+   "criterion": "13. Hashtags",
+   "pass": true,
+   "evidence": "Exactly 4 relevant hashtags are placed cleanly at the end of the post: '#כוכב_הצפון #פנטהאוז_למכירה #תל_אביב #פארק_הירקון'."
+  },
+  {
+   "criterion": "14. Owner consent and freshness (legal)",
+   "pass": false,
+   "evidence": "While the post claims exclusivity ('בלעדיות'), no documentation or operational note confirming written owner consent on file or a takedown/update protocol upon sale is provided in the submission."
+  },
+  {
+   "criterion": "15. No external link in the Facebook post body",
+   "pass": true,
+   "evidence": "The main Facebook post body contains zero URLs and directs readers to the first comment, where the UTM-tagged nad-lan.co.il link is placed."
+  },
+  {
+   "criterion": "16. Groups by hand, each one different",
+   "pass": false,
+   "evidence": "No group-specific copy variations, manual posting schedule, or group rule compliance plans are provided in the submission."
+  },
+  {
+   "criterion": "17. No duplicate blasts across accounts",
+   "pass": true,
+   "evidence": "The Facebook post text and the X (short) version have distinct wording tailored to each platform's format and length."
+  },
+  {
+   "criterion": "18. X version",
+   "pass": true,
+   "evidence": "The X text is 177 characters before the URL plus 23 characters for the t.co link = 200 characters total (well under 280), leads with clear text context, and includes the link in the body with its own `utm_source=x` tag."
+  }
+ ],
+ "overall_10": 8.2,
+ "hook_verdict": "Strong, disciplined, and fact-led: at 81 characters, it immediately delivers the property type, standout 76 m² terrace metric, floor height, neighbourhood, and park landmark before the 'See more' truncation—only missing the explicit words 'צפון תל אביב' in line 1 of the body copy.",
+ "strongest": [
+  "Exemplary Reel safe-zone engineering and sound-off readability: the top dark banner keeps all typography cleanly between 15% and 35% of the frame, completely avoiding Meta's top 14% and bottom 35% UI overlays.",
+  "Radical transparency and legal compliance: every single visual asset carries the 'צולם בדירה' or 'הדמיה על פי תוכנית האדריכל' badge alongside Meital Katzir's name, title, and licence number (3131540).",
+  "Smart organic Facebook architecture: zero outbound links in the main copy, lifestyle storytelling ('בוקר עם קפה...') placed before the bulleted spec sheet, and clean UTM separation between the Facebook first comment and X copy."
+ ],
+ "fixes": [
+  {
+   "what": "Feature Meital Katzir on camera in the opening 2–3 seconds of the Reel (or walking out onto the 76 m² terrace) and add her spoken voiceover.",
+   "why": "Checklist #7: Top-performing luxury real estate Reels rely on human presence and agent-led storytelling to drive engagement (39% higher engagement rate) rather than purely slideshow-style pan cuts.",
+   "priority": "high"
+  },
+  {
+   "what": "Add 'צפון תל אביב' to Line 1 of the Facebook post text (e.g., 'מיני פנטהאוז חדש בכוכב הצפון, צפון תל אביב: 76 מ״ר של מרפסות...').",
+   "why": "Checklist #2 requires both the neighbourhood and 'north Tel Aviv' in line 1 of the text (matching what is already on the 4:5 cover image), and it still fits under the 125-character hook limit (96 characters).",
+   "priority": "medium"
+  },
+  {
+   "what": "Clarify the publisher role on Card 6 and the Reel End Card (e.g., 'פורסם ע״י nad-lan.co.il' instead of a bare 'nad-lan.co.il' domain under the broker details).",
+   "why": "Internal compliance rule: ensures the portal nad-lan.co.il is unmistakably presented as the publisher and never confused with the licensed listing broker (Meital Katzir / Nadlan Al HaYam).",
+   "priority": "medium"
+  },
+  {
+   "what": "Supply 2–3 bespoke copy variations for target Facebook Groups and confirm written exclusivity/takedown SOP.",
+   "why": "Checklist #14 and #16 require documented owner consent/freshness handling and non-identical, hand-crafted copy for organic group distribution.",
+   "priority": "low"
+  }
+ ],
+ "_model": "google/gemini-4-argon",
+ "_seconds": 32,
+ "_cost": 0.057708
+}

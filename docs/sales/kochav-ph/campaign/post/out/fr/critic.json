@@ -1,0 +1,122 @@
+{
+ "scores": [
+  {
+   "criterion": "1. Hook (first 125 chars)",
+   "pass": true,
+   "evidence": "The first line is 119 characters ('Mini-penthouse neuf à Kochav HaTzafon, Tel Aviv : 76 m² de terrasses au 11e étage sur 12, à deux pas du parc HaYarkon.') and clearly states what it is (new mini-penthouse), the standout fact (76 m² of terraces on floor 11 of 12), and where it is (Kochav HaTzafon, Tel Aviv, by HaYarkon Park)."
+  },
+  {
+   "criterion": "2. Location stated plainly in line 1",
+   "pass": true,
+   "evidence": "Line 1 states 'Kochav HaTzafon, Tel Aviv' and the landmark 'parc HaYarkon'. The cover and Reel header also state 'Kochav HaTzafon, nord de Tel Aviv'."
+  },
+  {
+   "criterion": "3. Specific numbers (no empty adjectives)",
+   "pass": true,
+   "evidence": "Includes all required specifics without fluff: '5 pièces', 'environ 197 m² habitables', 'Environ 76 m² de terrasses', '11e étage sur 12', and 'immeuble neuf à taille humaine avec salle de sport et salle commune'."
+  },
+  {
+   "criterion": "4. Real media of the actual home",
+   "pass": true,
+   "evidence": "Photos and video frames show the real apartment and bear the badge '• Filmé dans l'appartement'. Card 4 (the 3D floor plan) is transparently labeled '• Illustration d'après le plan de l'architecte' on the image and in the post text."
+  },
+  {
+   "criterion": "5. Feed frame & Reel safe zones",
+   "pass": true,
+   "evidence": "Lead cover is 4:5 (960×1200) and the Reel frames are 9:16 (540×960). In the Reel frames, all primary text is positioned in a header block safely below the top 14% (~134px) and well above the bottom 35% (~336px), with ≥6% side margins."
+  },
+  {
+   "criterion": "6. Vertical video exists",
+   "pass": true,
+   "evidence": "A 22-second 9:16 Reel cut is provided alongside the 4:5 cover and 1:1 album cards."
+  },
+  {
+   "criterion": "7. Human on camera or named voice",
+   "pass": false,
+   "evidence": "Meital Katzir is named in text overlays, watermarks, and the caption, but no person appears on camera in any of the Reel frames or photos, and there is no evidence of a spoken voiceover."
+  },
+  {
+   "criterion": "8. Story before the spec sheet",
+   "pass": true,
+   "evidence": "Paragraph 2 paints the lifestyle picture before the bulleted specs: 'Le café du matin face à la ligne d’horizon de Tel Aviv, les soirées entre amis sur la terrasse.' Reel frame at 15.0s also reads: 'Pour de longues soirées entre amis autour d’un barbecue'."
+  },
+  {
+   "criterion": "9. Broker identification (legal)",
+   "pass": true,
+   "evidence": "The post text includes the exact required Hebrew legal line ('מיטל קציר, מתווכת במקרקעין, רישיון 3131540') as well as the French equivalent ('Meital Katzir, agent immobilier agréé en Israël (licence n° 3131540), Nadlan Al HaYam · exclusivité'), which also appears on every visual asset."
+  },
+  {
+   "criterion": "10. Price rule (legal)",
+   "pass": true,
+   "evidence": "The price is stated first as the full shekel total: 'Prix : 18 000 000 ₪ (environ 5,1 M€ / 5,9 M$)', and '18 M ₪' in the X version."
+  },
+  {
+   "criterion": "11. One clear CTA",
+   "pass": true,
+   "evidence": "A single direct contact action is given: 'Visites privées sur WhatsApp ou par téléphone : +972 52-363-1582' (and 'Visite privée' + phone number on Card 6 and the Reel end card)."
+  },
+  {
+   "criterion": "12. Sound-off comprehension",
+   "pass": true,
+   "evidence": "Every Reel frame has clear, self-explanatory French headline and subhead overlays (e.g., '76 m² de terrasses', 'Un long îlot de cuisine', '5 pièces · environ 197 m²', 'Face à la mer, au parc et à la ville', 'Le parc HaYarkon tout près', plus the CTA end card)."
+  },
+  {
+   "criterion": "13. Hashtags (3–5 relevant)",
+   "pass": true,
+   "evidence": "Exactly 4 relevant hashtags placed cleanly at the end of the post: '#TelAviv #Penthouse #ImmobilierIsrael #TelAvivImmobilier'."
+  },
+  {
+   "criterion": "14. Owner consent and freshness (legal)",
+   "pass": false,
+   "evidence": "While the post claims 'exclusivité' / 'Exclusivité', no documentation of owner exclusivity consent on file or a takedown/update plan upon sale is provided in the submission."
+  },
+  {
+   "criterion": "15. No external link in Facebook post body",
+   "pass": true,
+   "evidence": "The Facebook post body contains zero URLs; it directs readers to the first comment ('Le film complet, le plan et tous les détails sont dans le premier commentaire.'), and the URL is placed in COMMENT TEXT."
+  },
+  {
+   "criterion": "16. Groups by hand, each one different",
+   "pass": false,
+   "evidence": "Cannot be verified from the submission: no group-adapted text variants or manual posting schedule are provided."
+  },
+  {
+   "criterion": "17. No duplicate blasts across accounts",
+   "pass": true,
+   "evidence": "The Facebook post and the X (SHORT TEXT) version have distinct copy tailored to each platform and separate UTM parameters (`utm_source=facebook` vs `utm_source=x`). (Note: multi-Page scheduling intervals are not shown)."
+  },
+  {
+   "criterion": "18. X version (≤280 chars, link in body)",
+   "pass": true,
+   "evidence": "Taking X's 23-character t.co link shortening into account, the SHORT TEXT is 232 characters (209 characters of text + 23 for the URL), well under the 280-character limit, and includes the link in the body with full context."
+  }
+ ],
+ "overall_10": 8.8,
+ "hook_verdict": "Award-grade, factual hook: at 119 characters, it beats the 125-character 'See more' truncation while packing property type (new mini-penthouse), exact neighbourhood (Kochav HaTzafon, Tel Aviv), hero metric (76 m² of terraces on floor 11 of 12), and landmark (HaYarkon Park) with zero puffery.",
+ "strongest": [
+  "Surgical 119-character hook and immediate sensory story ('Le café du matin face à la ligne d’horizon de Tel Aviv...') before the bulleted specs.",
+  "Exemplary transparency and legal compliance: 'Filmé dans l'appartement' vs. 'Illustration d'après le plan de l'architecte' badges, full ILS price primacy (18 000 000 ₪), and complete broker licence disclosures in both French and Hebrew.",
+  "Strict adherence to Meta 9:16 Reel safe zones and sound-off readability via structured top-third title cards.",
+  "Smart organic distribution hygiene: clean link-free Facebook body with UTM-tagged link in the first comment, paired with a tight 232-character X cut."
+ ],
+ "fixes": [
+  {
+   "what": "Put Meital Katzir on camera for the first 2–3 seconds of the Reel (or add a named voiceover introduction with French subtitles).",
+   "why": "Checklist #7: Agent-led Reels drive significantly higher engagement and trust in luxury real estate than B-roll-only slideshows.",
+   "priority": "high"
+  },
+  {
+   "what": "Clarify publisher vs. broker role on Card 6 and the Reel end card (e.g., change 'nad-lan.co.il' to 'Publié sur nad-lan.co.il · Courtier : Meital Katzir (Nadlan Al HaYam)').",
+   "why": "Internal rule: nad-lan.co.il must never appear to be the broker; because the broker's agency is named 'Nadlan Al HaYam', placing 'nad-lan.co.il' directly underneath without a publisher label risks confusing users about who holds the brokerage licence.",
+   "priority": "medium"
+  },
+  {
+   "what": "Attach the operational distribution & compliance log (written owner consent on file, sold-listing removal SLA, and 2–3 bespoke copy variants for manual Facebook Group posts).",
+   "why": "Checklist #14 and #16 require verification of legal consent/freshness workflows and non-spammy manual group seeding.",
+   "priority": "low"
+  }
+ ],
+ "_model": "google/gemini-4-argon",
+ "_seconds": 33,
+ "_cost": 0.057824
+}

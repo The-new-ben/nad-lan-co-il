@@ -1,0 +1,126 @@
+{
+ "scores": [
+  {
+   "criterion": "1. Hook (first 125 chars state what, standout fact, where)",
+   "pass": true,
+   "evidence": "The first line is 111 characters ('Новый мини-пентхаус в Кохав ха-Цафон, Тель-Авив: 76 м² террас на 11-м этаже из 12, в двух шагах от парка Яркон.') and clearly states property type, 76 m² terraces, floor 11/12, neighborhood, and landmark."
+  },
+  {
+   "criterion": "2. Location stated plainly in line 1 (neighbourhood + north Tel Aviv + landmark)",
+   "pass": true,
+   "evidence": "Line 1 of the post states 'Кохав ха-Цафон, Тель-Авив' and 'парка Яркон', while line 1 on the 4:5 Cover and Reel explicitly states 'Кохав ха-Цафон, север Тель-Авива' alongside Yarkon Park."
+  },
+  {
+   "criterion": "3. Specific numbers (built m², terrace m², rooms, floor 11 of 12, new boutique building, no puffery)",
+   "pass": true,
+   "evidence": "States '5 комнат', 'около 197 м²', '76 м² террас', '11-й этаж из 12', and 'в новом бутиковом доме' without relying on empty adjectives."
+  },
+  {
+   "criterion": "4. Real media of the actual home (nothing generated/rendered presented as the home)",
+   "pass": true,
+   "evidence": "Photos and video frames are real shots labeled 'Снято в квартире'; the 3D floorplan on Card 4 is explicitly labeled 'Визуализация по плану архитектора' both on the card and in the post text."
+  },
+  {
+   "criterion": "5. Feed frame (lead 4:5, Reel 9:16 with text outside top 14%, bottom 35%, 6% sides)",
+   "pass": true,
+   "evidence": "Lead cover is 4:5 and Reel frames are 9:16; all primary text in the Reel sits safely below the top 14% (~14.5% to 32% from top) and well above the bottom 35% UI zone."
+  },
+  {
+   "criterion": "6. Vertical video exists (Reel cut in addition to photo album)",
+   "pass": true,
+   "evidence": "A 22-second 9:16 vertical Reel cut is provided alongside the 4:5 cover and six 1:1 album cards."
+  },
+  {
+   "criterion": "7. Human on camera or named voice (Meital or named person appears or speaks)",
+   "pass": false,
+   "evidence": "No human appears on camera in any of the Reel frames or cards, and there is no script, captions, or indication of a named voiceover."
+  },
+  {
+   "criterion": "8. Story before the spec sheet (what living there feels like before facts)",
+   "pass": true,
+   "evidence": "Paragraph 2 ('Утренний кофе с видом на силуэт Тель-Авива, вечера с друзьями на террасе.') precedes the bulleted spec sheet; Reel at 15s also includes 'Для долгих вечеров с барбекю в кругу друзей'."
+  },
+  {
+   "criterion": "9. Broker identification (legal: 'מיטל קציר', 'מתווכת', licence number)",
+   "pass": true,
+   "evidence": "Post text includes the exact Hebrew legal line: 'מיטל קציר, מתווכת במקרקעין, רישיון 3131540', plus Russian/English equivalents on all visual assets."
+  },
+  {
+   "criterion": "10. Price rule (legal: omitted or shekel total ₪18,000,000, never foreign currency only)",
+   "pass": true,
+   "evidence": "Shown in the post text with the shekel total leading: 'Цена: 18 000 000 ₪ (около 5,9 млн $ / 5,1 млн €)', and omitted on visual cards."
+  },
+  {
+   "criterion": "11. One clear CTA (one action, not three)",
+   "pass": true,
+   "evidence": "Single clear action to book a private showing via phone/WhatsApp with Meital at +972 52-363-1582."
+  },
+  {
+   "criterion": "12. Sound-off (Reel understood muted through on-screen text)",
+   "pass": true,
+   "evidence": "Every Reel scene features prominent, high-contrast Russian headlines, subheads, and a progress bar that communicate the full value proposition without audio."
+  },
+  {
+   "criterion": "13. Hashtags (at most 3–5, relevant, not stacked)",
+   "pass": true,
+   "evidence": "Exactly 4 relevant hashtags placed cleanly at the end: #ТельАвив #Пентхаус #НедвижимостьИзраиля #НедвижимостьТельАвива."
+  },
+  {
+   "criterion": "14. Owner consent and freshness (legal: exclusivity consent on file + removal plan)",
+   "pass": false,
+   "evidence": "While 'эксклюзив' is stated in the text and end card, no evidence of written owner consent on file or a takedown/update SLA upon sale is provided in the submission."
+  },
+  {
+   "criterion": "15. No external link in Facebook post body (link only in first comment)",
+   "pass": true,
+   "evidence": "The post body contains no URLs and directs readers to the first comment, which holds the UTM-tagged link."
+  },
+  {
+   "criterion": "16. Groups by hand, each one different (no automated/identical group blasts)",
+   "pass": false,
+   "evidence": "Only one generic Facebook text is submitted; there are no group-adapted text variants or distribution schedule provided."
+  },
+  {
+   "criterion": "17. No duplicate blasts across accounts (distinct wording per Page/X account)",
+   "pass": true,
+   "evidence": "The Facebook post and the X (SHORT TEXT) version use distinct wording, structure, and platform-specific UTM parameters."
+  },
+  {
+   "criterion": "18. X version (≤280 chars counting link as 23, text-led, link in body with context)",
+   "pass": true,
+   "evidence": "Counting the URL as 23 characters, the SHORT TEXT is 246 characters (222 text + 1 space + 23 link), text-led, and includes full context."
+  },
+  {
+   "criterion": "Internal note: Meital presented as listing broker and nad-lan as publisher (never broker)",
+   "pass": true,
+   "evidence": "Meital Katzir (Nadlan Al HaYam, license 3131540) is consistently credited as the broker on every card, frame, and text, while nad-lan.co.il is only shown as the website domain/publisher."
+  }
+ ],
+ "overall_10": 8.4,
+ "hook_verdict": "Strong, award-caliber factual hook: at 111 characters, it beats the 125-character truncation threshold and immediately anchors the property type (new mini-penthouse), the #1 quantitative differentiator (76 m² of terraces on floor 11 of 12), and the exact micro-location + landmark (Kochav HaTzafon, steps from Yarkon Park).",
+ "strongest": [
+  "Exemplary visual and textual transparency ('Снято в квартире' vs. 'Визуализация по плану архитектора'), which builds immediate trust in the luxury segment.",
+  "Strict adherence to Meta Reel safe zones (all text sits cleanly between 14% and 32% from the top, avoiding both top UI and the bottom 35% caption/CTA overlay).",
+  "Disciplined information architecture: zero puffery, complete legal broker disclosure in both Russian and statutory Hebrew, and clean organic link separation into the first comment."
+ ],
+ "fixes": [
+  {
+   "what": "Add Meital Katzir on camera for a 2–3 second intro hook in the Reel (or add her named voiceover with burned-in captions).",
+   "why": "Criterion 7 fails: agent-led Reels drive significantly higher engagement and trust in luxury real estate than faceless pan-and-zoom slideshow cuts.",
+   "priority": "high"
+  },
+  {
+   "what": "Document the owner exclusivity consent and post-sale takedown protocol, and supply 2–3 tailored copy variants if sharing to Facebook Groups.",
+   "why": "Criteria 14 and 16 cannot be verified from a single post copy alone and are required for legal compliance and Meta anti-spam safety.",
+   "priority": "medium"
+  },
+  {
+   "what": "Explicitly add the word 'север' ('на севере Тель-Авива') into Line 1 of the Facebook post body (currently in Line 2, though present on the Cover and Reel).",
+   "why": "Tightens Criterion 2 compliance in the raw text hook to match the Cover card's exact geographic framing before truncation.",
+   "priority": "low"
+  }
+ ],
+ "_model": "google/gemini-4-argon",
+ "_seconds": 35,
+ "_cost": 0.054498
+}

@@ -1,0 +1,126 @@
+{
+ "scores": [
+  {
+   "criterion": "1. Hook",
+   "pass": true,
+   "evidence": "The first line is 122 characters ('A brand-new mini-penthouse in Kochav HaTzafon, Tel Aviv: 76 sqm of terraces on the 11th of 12 floors, next to Yarkon Park.') and clearly states what it is, the standout 76 sqm terrace fact, and the location."
+  },
+  {
+   "criterion": "2. Location stated plainly",
+   "pass": true,
+   "evidence": "Line 1 states 'Kochav HaTzafon, Tel Aviv... next to Yarkon Park', and the 4:5 cover and Reel headers explicitly state 'Kochav HaTzafon, north Tel Aviv' and 'Yarkon Park'."
+  },
+  {
+   "criterion": "3. Specific numbers",
+   "pass": true,
+   "evidence": "Includes all required specifics without fluff: 'about 197 sqm of built area', '76 sqm of terraces', '5 rooms', 'floor 11 of 12' / '11th of 12 floors', and 'new boutique building'."
+  },
+  {
+   "criterion": "4. Real media of the actual home",
+   "pass": true,
+   "evidence": "Photos and video are real footage labeled 'Filmed in the home'. Card 4 (the 3D floor plan) is transparently labeled 'Rendered from the architect's plan' in both the image badge and the post text."
+  },
+  {
+   "criterion": "5. Feed frame",
+   "pass": false,
+   "evidence": "While the Reel 9:16 frames keep text inside the safe zone (top ~15% to 33%), the 4:5 cover image places the broker attribution line ('Meital Katzir... 3131540') right at the bottom edge (approx. 93%–97% down), and Cards 1–5 place it at the bottom edge too, risking cropping or overlay clipping."
+  },
+  {
+   "criterion": "6. Vertical video exists",
+   "pass": true,
+   "evidence": "A 9:16 Reel cut is provided alongside the 4:5 cover and 1:1 album cards."
+  },
+  {
+   "criterion": "7. Human on camera or named voice",
+   "pass": false,
+   "evidence": "No person appears on camera in any of the Reel frames or photos, and there is no evidence of a named voiceover."
+  },
+  {
+   "criterion": "8. Story before the spec sheet",
+   "pass": true,
+   "evidence": "Paragraph 2 of the post text ('Morning coffee facing the Tel Aviv skyline, evenings with friends on the terrace.') sets the lifestyle feeling before the bulleted spec list; Reel at 15s also reads 'Made for long evenings and barbecues with friends'."
+  },
+  {
+   "criterion": "9. Broker identification (legal)",
+   "pass": true,
+   "evidence": "The post text includes the exact Hebrew legal line: 'מיטל קציר, מתווכת במקרקעין, רישיון 3131540', plus English equivalents across all cards and Reel frames."
+  },
+  {
+   "criterion": "10. Price rule (legal)",
+   "pass": true,
+   "evidence": "Price is shown with the full shekel total first: 'Price: NIS 18,000,000 (about $5.9M / €5.1M)'."
+  },
+  {
+   "criterion": "11. One clear CTA",
+   "pass": true,
+   "evidence": "Single clear CTA directed to Meital's number (+972 52-363-1582) for a private viewing."
+  },
+  {
+   "criterion": "12. Sound-off",
+   "pass": true,
+   "evidence": "The Reel features persistent, clear headlines, subheads, and a progress bar across the top safe zone, making it fully comprehensible on mute."
+  },
+  {
+   "criterion": "13. Hashtags",
+   "pass": true,
+   "evidence": "Uses 4 relevant hashtags (#TelAviv #Penthouse #TelAvivRealEstate #LuxuryRealEstate) cleanly at the end of the post."
+  },
+  {
+   "criterion": "14. Owner consent and freshness (legal)",
+   "pass": false,
+   "evidence": "While the post claims 'exclusive listing', there is no evidence provided in the submission of the exclusivity consent on file or a plan to update/remove the post upon sale."
+  },
+  {
+   "criterion": "15. No external link in the Facebook post body",
+   "pass": true,
+   "evidence": "The Facebook post body has no URL, directing readers to the first comment where the UTM-tagged link is placed."
+  },
+  {
+   "criterion": "16. Groups by hand, each one different",
+   "pass": false,
+   "evidence": "No group-adapted texts or manual posting schedule/plan were provided in the submission to verify compliance."
+  },
+  {
+   "criterion": "17. No duplicate blasts across accounts",
+   "pass": true,
+   "evidence": "The Facebook post and the X (short) version use distinct wording and tailored UTM parameters (utm_source=facebook vs utm_source=x)."
+  },
+  {
+   "criterion": "18. X version",
+   "pass": true,
+   "evidence": "Counting the URL as 23 characters, the short text is 243 characters (well under 280), text-led, includes all key specs, broker license, and the link in the body."
+  },
+  {
+   "criterion": "Internal note: Publisher vs. Broker distinction",
+   "pass": true,
+   "evidence": "Meital Katzir (Nadlan Al HaYam) is clearly presented as the licensed exclusive broker, while nad-lan.co.il appears only as the publishing platform/URL."
+  }
+ ],
+ "overall_10": 8.4,
+ "hook_verdict": "Strong, disciplined editorial hook. At 122 characters, it beats the 'See more' truncation while packing property type, exact neighborhood, landmark (Yarkon Park), floor level, and the hero metric (76 sqm terraces) without a single wasted adjective.",
+ "strongest": [
+  "Exemplary transparency on media authenticity ('Filmed in the home' vs. 'Rendered from the architect's plan' badges).",
+  "Disciplined 9:16 Reel layout that respects Meta's top 14% and bottom 35% UI overlays while keeping the narrative completely legible on mute.",
+  "Flawless legal and platform hygiene: exact Hebrew broker disclosure, shekel-first pricing, link isolated to the first comment with proper UTMs, and a tight 243-character X adaptation."
+ ],
+ "fixes": [
+  {
+   "what": "Put Meital Katzir on camera for the first 2–3 seconds of the Reel (or add a named voiceover with captions).",
+   "why": "Checklist #7: Award-winning and top-performing real-estate Reels rely on human presence to drive engagement (39% higher engagement rate on agent-led Reels).",
+   "priority": "high"
+  },
+  {
+   "what": "Move the bottom broker attribution line on the 4:5 Cover image (and 1:1 cards) up by at least 6%–8% from the bottom edge.",
+   "why": "Checklist #5: The license number '3131540' sits flush against the bottom left corner on the 4:5 cover, which is visually cramped and risks clipping in feed previews.",
+   "priority": "medium"
+  },
+  {
+   "what": "Document the owner exclusivity consent and sold-removal workflow, plus custom copy variations if distributing to Facebook Groups.",
+   "why": "Checklist #14 & #16: Required to pass legal freshness standards and Meta's anti-spam rules for organic group distribution.",
+   "priority": "low"
+  }
+ ],
+ "_model": "google/gemini-4-argon",
+ "_seconds": 27,
+ "_cost": 0.051212
+}

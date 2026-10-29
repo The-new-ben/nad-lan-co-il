@@ -62,3 +62,8 @@ docs/sales/kochav-ph/film/v3/web/
 docs/sales/kochav-ph/research-2026-10-27/shots/
 docs/sales/kochav-ph/research-2026-10-27/board-*.png
 docs/sales/kochav-ph/proof-27/*.png
+
+# Kochav organic post 29.10.2026: the videos stay local (large); images, words and scripts are tracked
+docs/sales/kochav-ph/campaign/post/out/*/*.mp4
+docs/sales/kochav-ph/campaign/post/board/m/
+docs/sales/kochav-ph/campaign/post/out/*.zip
