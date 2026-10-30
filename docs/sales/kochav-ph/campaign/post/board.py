@@ -34,7 +34,7 @@ for l, name in LANGS:
     blocks = "".join(
         '<div class="copy"><div class="copy-h"><b>%s</b><button type="button" class="cp" data-for="x-%s-%s">העתקה</button></div>'
         '<pre id="x-%s-%s" dir="%s" lang="%s">%s</pre></div>' % (lab, l, k, l, k, d, l, E(txt[l][k]))
-        for k, lab in (("post", "הפוסט"), ("comment", "תגובה ראשונה, עם הקישור"), ("short", "נוסח קצר ל־X"), ("group", "שני נוסחים לקבוצות, להעלאה ידנית")))
+        for k, lab in (("post", "הפוסט"), ("comment", "תגובה ראשונה, עם הקישור"), ("group", "שני נוסחים לקבוצות (בתיקייה של גרוק בוט יש חמישה)")))
     panels.append(
         '<section role="tabpanel" id="p-%s" aria-labelledby="t-%s" %s>' % (l, l, "" if l == "he" else "hidden") +
         '<div class="media"><div class="reel"><video src="m/%s/reel-9x16-full.mp4" controls playsinline preload="metadata"></video>'
@@ -66,7 +66,7 @@ sc = "".join('<div class="sc"><b dir="ltr">%s</b><span class="was">%s</span><spa
 gaps = "".join("<li>%s</li>" % E(x) for x in (
     "הוחלט ב-30.10: מפרסמים כמו שזה, בלי מיטל מול המצלמה. הבדיקה היחידה שנשארת פתוחה בגלל זה היא אדם מול המצלמה; אם יגיע קליפ שלה, הוא נכנס לפתיחת הרילס בלי לשנות שום דבר אחר",
     "הסכמת הבעלים על הפרסום (מיטל מחזיקה בלעדיות). כשהדירה נמכרת, מורידים את הפוסט",
-    "הבוט יכול לפרסם רק לעמוד פייסבוק ול־X. לקבוצות פייסבוק אין גישה לאפליקציות מאז 22.4.2024, ולכן בקבוצות מעלים ידנית, נוסח שונה בכל קבוצה ולא הכול באותה שעה"))
+    "גרוק בוט מפרסם לעמוד NadLan ולקבוצות. כל החומר, החוקים, העובדות וחמישה נוסחים לקבוצות בכל שפה נמצאים בתיקייה שלו: C:\\Users\\777\\Documents\\grok-bot\\nadlan-campaign. בקבוצות: נוסח שונה בכל קבוצה, עד 5 קבוצות ביום. אין לנו ערוץ ב-X"))
 
 PAGE = """<title>פוסט כוכב הצפון</title>
 <meta name="claude:viewport-fit-sides" content="cover">
