@@ -104,9 +104,11 @@ def cover45(c):
         '<div class="k" style="font-size:26px">%s</div><div class="serif fit" data-min="40" style="font-size:%dpx;line-height:1.08;text-wrap:balance">%s</div>'
         '<div style="font:500 28px/1.3 var(--sans);color:%s">%s</div></div>' % (c["kicker"], 58, t, MIST, s) +
         '<span class="chip" style="top:230px;left:26px;font-size:24px"><i></i>%s</span>' % c["real"] +
-        '<div style="position:absolute;left:0;right:0;bottom:0;height:260px;background:linear-gradient(0deg,rgba(20,33,43,.92),rgba(20,33,43,0))"></div>'
-        '<div style="position:absolute;inset-inline:56px;bottom:84px;display:flex;flex-wrap:wrap;gap:10px">%s</div>' % ch +
-        '<div style="position:absolute;inset-inline:56px;bottom:30px;font:600 25px/1.3 var(--sans);color:%s">%s · %s · %s</div>' % (MIST, c["end"][1], c["end"][2], c["lic_short"])))
+        '<div style="position:absolute;left:0;right:0;bottom:0;height:340px;background:linear-gradient(0deg,rgba(20,33,43,.94),rgba(20,33,43,0))"></div>'
+        # the chips and the broker line stack from the bottom, so a second row of chips never runs into the broker line
+        '<div style="position:absolute;inset-inline:56px;bottom:28px;display:grid;gap:14px">'
+        '<div style="display:flex;flex-wrap:wrap;gap:10px">%s</div>' % ch +
+        '<div style="font:600 25px/1.3 var(--sans);color:%s">%s · %s · %s</div></div>' % (MIST, c["end"][1], c["end"][2], c["lic_short"])))
 
 
 def card11(c, i):
