@@ -1,0 +1,274 @@
+<!-- @dsCard group="Urban renewal" height=2200 width=1240 subtitle="עמוד מתחם התחדשות עירונית מתוקן, עם כלי החלטה מהשורה של המתחם במאגר: מה מקבלים, כמה חתימות חסרות, מה לבדוק לפני קנייה, והמתחם מול העיר (גרסה 105, HAD-642; הדוגמה: הגפן 8-10, רמת גן)" -->
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CompoundDecision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap">
+<style>
+.cd{display:grid;gap:28px;font-family:var(--font-sans);color:var(--sa-ink)}
+.cd-h{margin:0 0 6px;font:600 22px/1.25 var(--font-serif)}
+.cd-p{margin:0;font-size:15px;line-height:1.6;color:var(--sa-ink2);max-width:64ch}
+.cd-row{display:grid;grid-template-columns:400px minmax(0,1fr);gap:36px;align-items:start}
+@media (max-width:980px){.cd-row{grid-template-columns:minmax(0,1fr)}}
+.num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+
+.cd-phone{width:390px;max-width:100%;height:1560px;border:1px solid var(--sa-line);border-radius:34px;background:var(--sa-paper);overflow:hidden;box-shadow:0 18px 40px rgba(16,38,47,.10),0 3px 10px rgba(16,38,47,.05)}
+.cd-top{display:flex;align-items:center;justify-content:space-between;height:52px;padding-inline:16px;background:var(--sa-surf);border-bottom:1px solid var(--sa-line);font:700 17px/1 var(--font-sans)}
+.cd-top i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:7px;background:var(--sa-sea);color:#fff;font-style:normal;font-size:12px}
+.cd-page{padding:14px 16px 28px;display:grid;gap:14px}
+.cd-crumb{margin:0;font-size:13px;color:var(--sa-sea)}
+.cd-crumb span{color:var(--sa-ink2)}
+.cd-page h1{margin:0;font:600 26px/1.22 var(--font-serif);text-wrap:balance}
+.cd-lead{margin:0;font-size:15.5px;line-height:1.62;color:var(--sa-ink2)}
+.cd-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;font:700 15px/1 var(--font-sans);border:1px solid transparent;text-decoration:none;cursor:pointer}
+.cd-btn--wa{background:var(--wa-green);color:#fff;box-shadow:0 10px 24px rgba(15,122,99,.30)}
+.cd-btn--line{background:var(--sa-surf);border-color:var(--sa-line);color:var(--sa-ink)}
+.cd-ctas{display:grid;gap:8px}
+
+/* the tool */
+.cd-tool{background:var(--sa-surf);border:1px solid var(--sa-line);border-radius:22px;padding:16px;display:grid;gap:14px}
+.cd-kick{margin:0;font:700 12.5px/1.3 var(--font-sans);letter-spacing:.02em;color:var(--sa-sea)}
+.cd-tool h2{margin:0;font:600 20px/1.25 var(--font-serif);text-wrap:balance}
+.cd-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:999px;background:var(--sa-sand)}
+.cd-tab{min-height:40px;border:0;border-radius:999px;background:transparent;font:700 13.5px/1.15 var(--font-sans);color:var(--sa-ink2);cursor:pointer;padding:0 6px}
+.cd-tab[aria-selected=true]{background:var(--sa-surf);color:var(--sa-ink);box-shadow:0 1px 2px rgba(20,33,43,.08)}
+.cd-pane{display:grid;gap:14px}
+.cd-pane[hidden]{display:none}
+.cd-q{margin:0;font:700 14.5px/1.4 var(--font-sans);color:var(--sa-ink)}
+.cd-range{display:grid;gap:8px}
+.cd-range input{width:100%;accent-color:var(--sa-sea);height:28px}
+.cd-range .scale{display:flex;justify-content:space-between;font-size:12px;color:var(--sa-mute)}
+.cd-val{display:flex;align-items:baseline;gap:6px;font:600 15px/1 var(--font-sans);color:var(--sa-ink2)}
+.cd-val b{font:600 26px/1 var(--font-serif);color:var(--sa-ink)}
+.cd-out{border:1.5px dashed var(--sa-sea);border-radius:16px;padding:14px;display:grid;gap:6px;background:var(--sa-paper)}
+.cd-out .k{margin:0;font:700 12.5px/1.3 var(--font-sans);color:var(--sa-sea)}
+.cd-out .v{margin:0;font:600 24px/1.2 var(--font-serif);color:var(--sa-ink)}
+.cd-out .s{margin:0;font-size:13.5px;line-height:1.55;color:var(--sa-ink2)}
+.cd-step{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:8px}
+.cd-step button{height:48px;border-radius:14px;border:1px solid var(--sa-line);background:var(--sa-surf);font:600 22px/1 var(--font-sans);color:var(--sa-ink);cursor:pointer}
+.cd-step output{text-align:center;font:600 28px/1 var(--font-serif)}
+.cd-bar{height:12px;border-radius:999px;background:var(--sa-sand);position:relative;overflow:hidden}
+.cd-bar i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--sa-sea);border-radius:999px;transition:width .25s}
+.cd-bar b{position:absolute;inset-block:-3px;width:2px;background:var(--sa-ink)}
+.cd-note{margin:0;font-size:12.5px;line-height:1.55;color:var(--sa-ink2)}
+.cd-time{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--sa-sand)}
+.cd-time b{flex:none;font:600 30px/1 var(--font-serif);color:var(--sa-ink)}
+.cd-time span{font-size:13.5px;line-height:1.5;color:var(--sa-ink2)}
+.cd-checks{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:c}
+.cd-checks li{counter-increment:c;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--sa-line);border-radius:14px;background:var(--sa-surf);font-size:14px;line-height:1.5;color:var(--sa-ink2)}
+.cd-checks li::before{content:counter(c);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sa-sea);color:#fff;font:700 13px/1 var(--font-sans)}
+.cd-checks b{color:var(--sa-ink)}
+.cd-links{display:grid;gap:6px}
+.cd-links a{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--sa-line);border-radius:14px;background:var(--sa-surf);color:var(--sa-ink);text-decoration:none;font:600 14px/1.3 var(--font-sans)}
+.cd-links a span{color:var(--sa-sea)}
+.cd-grid{display:grid;grid-template-columns:repeat(13,1fr);gap:3px}
+.cd-grid i{aspect-ratio:1;border-radius:3px;border:1.5px solid var(--sa-sea)}
+.cd-grid i.f{background:var(--sa-sea)}
+.cd-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--sa-ink2)}
+.cd-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;border:1.5px solid var(--sa-sea);margin-inline-end:6px;vertical-align:-1px}
+.cd-legend span.f::before{background:var(--sa-sea)}
+.cd-cmp{display:grid;gap:8px}
+.cd-cmp div{display:grid;grid-template-columns:118px 1fr 34px;gap:8px;align-items:center;font-size:13px;color:var(--sa-ink2)}
+.cd-cmp em{font-style:normal;height:10px;border-radius:999px;background:var(--chart-mid)}
+.cd-cmp div.me em{background:var(--sa-sea)}
+.cd-cmp div.me{color:var(--sa-ink);font-weight:700}
+.cd-cmp strong{font:600 15px/1 var(--font-serif);color:var(--sa-ink);text-align:end}
+.cd-stamp{justify-self:start;display:grid;gap:2px;padding:10px 14px;border:1.5px dashed var(--sa-sea);border-radius:10px;transform:rotate(-1.2deg)}
+.cd-stamp small{font:700 11.5px/1.2 var(--font-sans);letter-spacing:.06em;color:var(--sa-sea)}
+.cd-stamp b{font:600 17px/1.2 ui-monospace,Consolas,monospace;color:var(--sa-ink);direction:ltr;text-align:right}
+
+.cd-tbl{width:100%;border-collapse:collapse;font-size:14px;background:var(--sa-surf);border:1px solid var(--sa-line);border-radius:14px;overflow:hidden}
+.cd-tbl th,.cd-tbl td{padding:9px 12px;border-bottom:1px solid var(--sa-line);text-align:start;vertical-align:top}
+.cd-tbl th{width:44%;font-weight:600;color:var(--sa-ink2)}
+.cd-tbl td{color:var(--sa-ink);font-weight:600}
+.cd-src{margin:0;font-size:12.5px;line-height:1.55;color:var(--sa-ink2)}
+.cd-city{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cd-city div{background:var(--sa-surf);border:1px solid var(--sa-line);border-radius:14px;padding:10px 12px}
+.cd-city b{display:block;font:600 21px/1.2 var(--font-serif);color:var(--sa-ink)}
+.cd-city span{font-size:12.5px;color:var(--sa-ink2)}
+
+/* right column */
+.cd-side{display:grid;gap:20px}
+.cd-card{background:var(--sa-surf);border:1px solid var(--sa-line);border-radius:16px;padding:16px 18px;display:grid;gap:8px}
+.cd-card h4{margin:0;font:600 17px/1.3 var(--font-serif)}
+.cd-card ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:14px;line-height:1.55;color:var(--sa-ink2)}
+.cd-before{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.cd-before{grid-template-columns:minmax(0,1fr)}}
+.cd-x{color:var(--j-bad);font-weight:700}
+.cd-v{color:var(--j-ok);font-weight:700}
+.cd-serp{background:#fff;border:1px solid var(--sa-line);border-radius:14px;padding:14px 16px;font-family:Arial,sans-serif;direction:rtl}
+.cd-serp .u{font-size:12px;color:#4d5156}
+.cd-serp .t{font-size:18px;line-height:1.3;color:#1a0dab;margin:4px 0}
+.cd-serp .d{font-size:13.5px;line-height:1.55;color:#4d5156}
+</style>
+</head>
+<body>
+<div class="nlds nlds-preview cd" dir="rtl" lang="he">
+
+  <div>
+    <p class="cd-h">עמוד מתחם התחדשות עירונית, מתוקן · גרסה 105</p>
+    <p class="cd-p">כ-950 עמודי מתחמים נכנסו לאתר ממאגר הרשות הממשלתית להתחדשות עירונית. היום הם דקים, מתחילים בפס כלים שלא שייך להם, ומבטיחים "דגם, קומות ונוף" למתחם שעוד בתכנון. כאן: הכותרת והתשובה קודם, ואחריהן כלי החלטה שנבנה מהשורה של המתחם עצמו. הדוגמה אמיתית: הגפן 8-10 ברמת גן, כל מספר מהמאגר או ממקור שכבר אושר.</p>
+  </div>
+
+  <div class="cd-row">
+    <div class="cd-phone">
+      <div class="cd-top"><span>NadLan</span><i>נ</i></div>
+      <div class="cd-page">
+        <p class="cd-crumb">בית › התחדשות עירונית › רמת גן › <span>הגפן 8-10</span></p>
+        <h1>הגפן 8-10, רמת גן: פינוי בינוי</h1>
+        <p class="cd-lead">הגפן 8-10 ברמת גן הוא מתחם פינוי בינוי במאגר הרשות הממשלתית להתחדשות עירונית. התכנית שלו, <span class="num">506-0855098</span>, אושרה וטרם יצאה לביצוע: במקום <span class="num">30</span> הדירות של היום, <span class="num">78</span> דירות חדשות, מהן <span class="num">48</span> דירות נוספות. לפי דוח הרשות לשנת 2025, עוברות בממוצע כ-4 שנים מאישור תכנית ועד ההיתר הראשון.</p>
+        <div class="cd-ctas"><a class="cd-btn cd-btn--wa" href="#">לקבלת עדכונים על המתחם בוואטסאפ</a><a class="cd-btn cd-btn--line" href="#">בדיקת מתחם: האם הבניין שלכם בפנים?</a></div>
+
+        <section class="cd-tool" aria-labelledby="cdT">
+          <p class="cd-kick">הגפן 8-10 · פינוי בינוי</p>
+          <h2 id="cdT">מה זה אומר לכם</h2>
+          <div class="cd-tabs" role="tablist">
+            <button class="cd-tab" role="tab" aria-selected="true" aria-controls="cdA" id="tA">יש לי דירה כאן</button>
+            <button class="cd-tab" role="tab" aria-selected="false" aria-controls="cdB" id="tB">שוקלים לקנות</button>
+            <button class="cd-tab" role="tab" aria-selected="false" aria-controls="cdC" id="tC">במספרים</button>
+          </div>
+
+          <div class="cd-pane" id="cdA" role="tabpanel" aria-labelledby="tA">
+            <div class="cd-range">
+              <p class="cd-q">גודל הדירה שלכם היום</p>
+              <div class="cd-val"><b class="num" id="cdSz">65</b>מ״ר</div>
+              <input type="range" min="35" max="140" value="65" id="cdSize" aria-label="גודל הדירה במ״ר">
+              <div class="scale"><span>35</span><span>140</span></div>
+            </div>
+            <div class="cd-out" aria-live="polite">
+              <p class="k">בדרך כלל בפינוי בינוי</p>
+              <p class="v">דירה חדשה של כ-<span class="num" id="cdLo">77</span> עד <span class="num" id="cdHi">90</span> מ״ר</p>
+              <p class="s" id="cdLine">ועוד מרפסת וחניה, ובדרך כלל גם מחסן. התוספת בפועל נקבעת בהסכם עם היזם.</p>
+            </div>
+            <p class="cd-note">התחתית: תוספת של 12 מ״ר ומרפסת, לפי מדיניות 2020. העליונה: 25 מ״ר, ברירת המחדל במחשבון הרשות (טווח 0 עד 30).</p>
+            <p class="cd-q">כמה דירות במתחם כבר חתמו?</p>
+            <div class="cd-step"><button type="button" id="cdMinus" aria-label="פחות">−</button><output id="cdSig" class="num">12</output><button type="button" id="cdPlus" aria-label="יותר">+</button></div>
+            <div class="cd-bar" aria-hidden="true"><i id="cdFill" style="width:40%"></i><b style="inset-inline-start:66.67%"></b></div>
+            <div class="cd-out" aria-live="polite"><p class="v" id="cdNeed" style="font-size:20px">עוד 8 דירות עד שני שלישים</p><p class="s"><span class="num">20</span> מתוך <span class="num">30</span> הדירות במתחם. זה תנאי אחד מתוך שלושה: בכל בניין לפחות שלוש חמישיות מהדירות, ויותר ממחצית הרכוש המשותף.</p></div>
+            <div class="cd-time"><b class="num">4</b><span>שנים בממוצע מאישור התכנית ועד ההיתר הראשון, לפי דוח הרשות לשנת 2025 (28 מתחמים).</span></div>
+          </div>
+
+          <div class="cd-pane" id="cdB" role="tabpanel" aria-labelledby="tB" hidden>
+            <p class="cd-q">לפני שקונים דירה במתחם שהתכנית שלו אושרה וטרם יצאה לביצוע:</p>
+            <ol class="cd-checks">
+              <li><span><b>מי היזם, והאם נחתם הסכם</b> עם בעלי הדירות. נציגות הבעלים יודעת.</span></li>
+              <li><span><b>כמה חתמו.</b> שני שלישים מ-30 הדירות הם 20.</span></li>
+              <li><span><b>מה ההסכם נותן לדירה הזו</b>: גודל, קומה, חניה, מחסן.</span></li>
+              <li><span><b>נסח טאבו</b>: הערות אזהרה לטובת היזם ומשכנתאות.</span></li>
+              <li><span><b>שמאי</b>: שווי הדירה היום, לפני ההחלטה על המחיר.</span></li>
+            </ol>
+            <div class="cd-links">
+              <a href="#">כל העלויות שמסביב למחיר <span>←</span></a>
+              <a href="#">מדריך פינוי בינוי לבעלי דירות <span>←</span></a>
+              <a href="#">עורכי דין מקרקעין ושמאים ברמת גן <span>←</span></a>
+            </div>
+          </div>
+
+          <div class="cd-pane" id="cdC" role="tabpanel" aria-labelledby="tC" hidden>
+            <p class="cd-q"><span class="num">30</span> דירות היום, <span class="num">78</span> בתכנית</p>
+            <div class="cd-grid" id="cdGrid" aria-hidden="true"></div>
+            <div class="cd-legend"><span class="f">דירות קיימות</span><span>דירות נוספות</span></div>
+            <p class="cd-q">המכפיל: כמה דירות על כל דירה קיימת</p>
+            <div class="cd-cmp">
+              <div class="me"><span>הגפן 8-10</span><em style="width:63%"></em><strong class="num">2.6</strong></div>
+              <div><span>חציון רמת גן*</span><em style="width:76%"></em><strong class="num">3.1</strong></div>
+              <div><span>כל המאגר</span><em style="width:100%"></em><strong class="num">4.1</strong></div>
+            </div>
+            <p class="cd-note">* 45 המתחמים ברמת גן עם תכנית מאושרת. הגפן 8-10 הוא ה-41 בגודלו מתוכם.</p>
+            <div class="cd-stamp"><small>תכנית</small><b>506-0855098</b></div>
+          </div>
+        </section>
+
+        <p class="cd-h" style="font-size:19px;margin:6px 0 0">המתחם בנתונים</p>
+        <table class="cd-tbl">
+          <tr><th>סוג</th><td>פינוי בינוי</td></tr>
+          <tr><th>שלב</th><td>תכנית מאושרת לפני מימוש</td></tr>
+          <tr><th>דירות היום</th><td class="num">30</td></tr>
+          <tr><th>דירות בתכנית</th><td class="num">78</td></tr>
+          <tr><th>דירות נוספות</th><td class="num">48</td></tr>
+          <tr><th>מספר תכנית</th><td class="num">506-0855098</td></tr>
+          <tr><th>שנת תוקף התכנית</th><td class="num">2026</td></tr>
+        </table>
+        <p class="cd-src">לפי מאגר הרשות הממשלתית להתחדשות עירונית (data.gov.il), עדכון הקובץ 15.8.2026.</p>
+
+        <p class="cd-h" style="font-size:19px;margin:6px 0 0">התחדשות עירונית ברמת גן</p>
+        <div class="cd-city">
+          <div><b class="num">78</b><span>מתחמים במאגר, השנייה בארץ</span></div>
+          <div><b class="num">45</b><span>עם תכנית מאושרת</span></div>
+          <div><b class="num">2,987</b><span>דירות עם היתר</span></div>
+          <div><b class="num">34</b><span>מוכרזים במסלול מיסוי</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cd-side">
+      <div class="cd-before">
+        <div class="cd-card"><h4><span class="cd-x">היום</span> בכל עמוד מתחם</h4><ul>
+          <li>הכותרת מתחת לפס שלבים ולפס "הכלים שלנו" (47 מתוך 80 בדגימה).</li>
+          <li>"סיור תלת ממדי ברובע" ו"הדמיית כדור הארץ שלנו" (80 מתוך 80).</li>
+          <li>שיחת וידאו שמבטיחה "הדגם, הקומות, הנוף והמחירים" (80 מתוך 80).</li>
+          <li>השוואת מחיר למגדלי שדה דב בעיר אחרת, 2 עד 3.6 ק״מ.</li>
+          <li>"חינוך 0 · פארקים 0 · תחבורה 0".</li>
+          <li>חציון 276 מילים, בלי פסקת תשובה.</li>
+        </ul></div>
+        <div class="cd-card"><h4><span class="cd-v">אחרי</span></h4><ul>
+          <li>כותרת עם הכתובת ו"פינוי בינוי", ומיד פסקת תשובה מהנתונים.</li>
+          <li>כפתור אחד: עדכונים על המתחם בוואטסאפ.</li>
+          <li>כלי עם שלוש לשוניות, כל מספר מהשורה של המתחם.</li>
+          <li>טבלת נתונים ושורת מקור אחת עם תאריך.</li>
+          <li>העיר מול המתחם: נתונים שאף אתר אחר לא מחשב.</li>
+          <li>מפה רק כשיש בה מקומות; קטגוריה ריקה לא מוצגת.</li>
+        </ul></div>
+      </div>
+
+      <div class="cd-card">
+        <h4>בגוגל: הכתובת קודם, בלי "פרויקטים חדשים"</h4>
+        <div class="cd-serp"><div class="u">nad-lan.co.il › projects › הגפן-8-10</div><div class="t">הגפן 8-10, רמת גן: פינוי בינוי, 78 דירות בתכנית | נדל״ן</div><div class="d">מתחם פינוי בינוי ברמת גן: תכנית 506-0855098 אושרה, 30 דירות היום ו-78 בתכנית. כמה מקבלים, כמה חתימות חסרות ומה לבדוק לפני קנייה.</div></div>
+        <p class="cd-p" style="font-size:14px">אנשים מחפשים את הכתובת ("הגפן 8 רמת גן", מקום 8 עד 10 היום). המילים "פרויקטים חדשים ב..." נשארות לעמודי הערים: היום שאילתות כמו "פרויקטים חדשים בצור יצחק" נוחתות על עמודי מתחמים במקום 30 עד 90, וזו הקניבליזציה שהכותרת הזו עוצרת. "פינוי בינוי" כנושא ראשי שייך ל-/pinui-binui/, והכלי רק מקשר אליו.</p>
+      </div>
+
+      <div class="cd-card">
+        <h4>למה מנועי AI יצטטו את העמוד הזה</h4>
+        <ul>
+          <li>תשובה ישירה בפסקה הראשונה, עם מספרים בטקסט רגיל, לא בתמונה.</li>
+          <li>טבלה עם תאריך גלוי ומקור אחד ברור.</li>
+          <li>מספרים שאנחנו מחשבים בעצמנו מהמאגר (המכפיל, המקום בעיר), כך שהמקור היחיד להם הוא אנחנו.</li>
+          <li>סכמה: Place בתוך העיר, ו-Dataset עם שם המאגר והתאריך.</li>
+        </ul>
+      </div>
+
+      <div class="cd-card">
+        <h4>הקצב (בלי שינוי המוני ביום אחד)</h4>
+        <ul>
+          <li>פיילוט: 10 המתחמים עם הכי הרבה הופעות ב-Search Console.</li>
+          <li>3 שבועות מדידה: הופעות, מקום, הקלקות, פניות בוואטסאפ.</li>
+          <li>אחר כך גלים של עד 50 מתחמים ביום, באישור של בן.</li>
+          <li>עמודי הפרויקטים עם הבמה והסיור הווירטואלי לא נוגעים בכלל.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.cd-tab'));
+  tabs.forEach(function(t){ t.onclick=function(){ tabs.forEach(function(x){ var on=x===t; x.setAttribute('aria-selected',on); document.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); }; });
+  var size=document.getElementById('cdSize');
+  function upd(){ var s=+size.value; document.getElementById('cdSz').textContent=s; document.getElementById('cdLo').textContent=s+12; document.getElementById('cdHi').textContent=s+25;
+    document.getElementById('cdLine').textContent=(s<52?'בדירה מתחת ל-52 מ״ר המדיניות מאפשרת תוספת של עד 25 מ״ר. ':'')+'ועוד מרפסת וחניה, ובדרך כלל גם מחסן. התוספת בפועל נקבעת בהסכם עם היזם.'; }
+  size.addEventListener('input',upd); upd();
+  var N=30, need=Math.ceil(2*N/3), sig=12;
+  function sigUpd(){ document.getElementById('cdSig').textContent=sig; document.getElementById('cdFill').style.width=(sig/N*100)+'%';
+    var miss=need-sig; document.getElementById('cdNeed').textContent= miss>0 ? ('עוד '+miss+' דירות עד שני שלישים') : 'מספר הדירות שחתמו מגיע לשני שלישים'; }
+  document.getElementById('cdMinus').onclick=function(){ sig=Math.max(0,sig-1); sigUpd(); };
+  document.getElementById('cdPlus').onclick=function(){ sig=Math.min(N,sig+1); sigUpd(); };
+  sigUpd();
+  var g=document.getElementById('cdGrid'); for(var i=0;i<78;i++){ var e=document.createElement('i'); if(i<30) e.className='f'; g.appendChild(e); }
+})();
+</script>
+</body>
+</html>
