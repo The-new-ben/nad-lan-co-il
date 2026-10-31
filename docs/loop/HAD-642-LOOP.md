@@ -47,7 +47,7 @@
     - `data_quality=enriched`.
   - Backup and `--undo` like `cms538.py`.
   - Verify 5 random pages on a phone.
-- [ ] **L1b Compound tool, wave 2:** every other city. RUNNING since 1.11 ~00:55 (634 compounds; dry plan clean: 0 odd names, 0 duplicate titles; rules for end-of-name plan codes, quotes and קרית to קריית added).
+- [x] **L1b Compound tool, wave 2** (1.11, 02:00). 634 written, 0 failed; every one of the 980 registry compounds now has the tool and an answer paragraph. 6 random pages checked at 390 px. Found: a city spelled two ways repeated in the H1; release 1.72.547 (CitySpellings) fixes it.
 - [x] **L2 Big developers' projects** (1.11, 00:50).
   - Release 1.72.546 adds `inc/project-kit.php`; Claude Design v105.3 ProjectToolkit.
   - `[nadlan_project_kit]` was appended to 18 projects (`kit_cms.py`, backup `kit-backup.json`).

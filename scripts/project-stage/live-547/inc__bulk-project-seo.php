@@ -1,0 +1,158 @@
+<?php
+/**
+ * Bulk SEO fix for the long-tail nadlan_project catalog (966 pages per the live
+ * sitemap, checked 2026-07-01 -- see docs/marketing/2026-07-01-marketing-seo-revenue-strategy.md).
+ *
+ * Most of these were imported with just an address as the post title and no
+ * SEO meta, so WordPress/Yoast falls back to "{title} - {site name}" -- no
+ * buyer intent, no "for sale", nothing a search engine or a buyer's eye
+ * catches. A handful of flagship projects (Rainbow, Ashira) already have
+ * hand-written, richer titles set via their own higher-priority filters
+ * (see project-page-assembly.php) -- this file runs at LOWER priority so it
+ * never overrides those; it only fills in the gap for everything else.
+ *
+ * Honesty rule: only real data is used (the post's own title, and its
+ * nadlan_city term IF one is actually set). Never invents a city, price,
+ * room count, or floor count that isn't already in the post.
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_is_bare_title' ) ) {
+	/**
+	 * A "bare" title is exactly "{post title} - {site name}" (WordPress/Yoast's
+	 * raw default) with none of the buyer-intent words a real listing needs.
+	 * If a project already has any of these words in its live title, leave it
+	 * alone -- it was written on purpose (imported richer, or hand-edited).
+	 */
+	function nadlan_bulk_project_is_bare_title( $title, $post_title ) {
+		if ( $title === '' || $post_title === '' ) {
+			return false;
+		}
+		$buyer_intent_markers = array( 'דירות', 'למכירה', 'מחיר', 'מחירים', 'קומות', 'יח״ד', 'בינוי', 'תמ״א' );
+		foreach ( $buyer_intent_markers as $marker ) {
+			if ( mb_strpos( $title, $marker ) !== false ) {
+				return false; // already has real buyer-intent content, don't touch it.
+			}
+		}
+		$site_name = get_bloginfo( 'name' );
+		$bare_pattern = trim( $post_title ) . ' - ' . trim( $site_name );
+		return trim( $title ) === $bare_pattern;
+	}
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_city' ) ) {
+	/**
+	 * The project's city, real data only: its nadlan_city term, else the `city` meta the urban-renewal import
+	 * wrote. The 24.9.2026 crawl found 217 pages sharing a title because the import never set the term: eight
+	 * compounds are called "יוספטל", each in another city, and none of their titles said which.
+	 */
+	function nadlan_bulk_project_city( $post_id ) {
+		$terms = $post_id ? get_the_terms( $post_id, 'nadlan_city' ) : false;
+		if ( is_array( $terms ) && ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			return $terms[0]->name;
+		}
+		return $post_id ? trim( (string) get_post_meta( $post_id, 'city', true ) ) : '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_is_renewal' ) ) {
+	/** An urban-renewal compound imported from the planning register: a plan, not apartments for sale. */
+	function nadlan_bulk_project_is_renewal( $post_id ) {
+		return $post_id && 'urban_renewal' === (string) get_post_meta( $post_id, 'source', true );
+	}
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_display_name' ) ) {
+	/**
+	 * "{name}, {city}" unless the name already carries the city (loosely: "תל אביב" counts for "תל אביב יפו").
+	 * The page's H1 asks only for urban-renewal compounds ($always = false), where the duplicates are; the bare
+	 * title asks for every project. 1.72.235 put the city on every H1 and made Rainbow's read
+	 * "Rainbow Tel Aviv - ריינבו תל אביב, תל אביב יפו"; 1.72.236 narrowed it.
+	 */
+	function nadlan_bulk_project_display_name( $post_id, $always = false ) {
+		$name = trim( wp_strip_all_tags( html_entity_decode( get_the_title( $post_id ), ENT_QUOTES, 'UTF-8' ) ) );
+		$city = nadlan_bulk_project_city( $post_id );
+		if ( $city === '' || $name === '' || ( ! $always && ! nadlan_bulk_project_is_renewal( $post_id ) ) ) {
+			return $name;
+		}
+		$norm  = function ( $s ) { return trim( preg_replace( '/[\s\-־"״\']+/u', ' ', $s ) ); };
+		$n     = $norm( $name );
+		$c     = $norm( $city );
+		$short = trim( preg_replace( '/\s*יפו$/u', '', $c ) );
+		if ( false !== mb_strpos( $n, $c ) || ( $short !== '' && false !== mb_strpos( $n, $short ) ) ) {
+			return $name;
+		}
+		return $name . ', ' . $city;
+	}
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_seo_title' ) ) {
+	function nadlan_bulk_project_seo_title( $title ) {
+		if ( ! is_singular( 'nadlan_project' ) ) {
+			return $title;
+		}
+		// a project's language page (/projects/<slug>-en ...) keeps its own title: this Hebrew template made them read
+		// "Rainbow Tel Aviv | Coastal Resort Living in Sde Dov, תל אביב יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+		// (28.9.2026, 51 titles); inc/lang-pages.php writes the site's name there in Latin letters
+		if ( function_exists( 'nadlan_plang_suffix' ) && '' !== (string) nadlan_plang_suffix() ) {
+			return $title;
+		}
+		$post_title = get_the_title();
+		if ( ! nadlan_bulk_project_is_bare_title( $title, $post_title ) ) {
+			return $title;
+		}
+		$post_id = get_queried_object_id();
+		$name    = nadlan_bulk_project_display_name( $post_id, true ); // Yoast escapes the title once on output
+		// Honesty (24.9.2026): a compound in planning has no prices and no apartments for sale, so its title
+		// no longer promises them. It says what the page holds: the plan and its size.
+		if ( nadlan_bulk_project_is_renewal( $post_id ) ) {
+			$units = (int) get_post_meta( $post_id, 'num_units', true );
+			return $units > 0
+				? sprintf( '%s: התחדשות עירונית, %s יח״ד | נדלן', $name, number_format( $units ) )
+				: sprintf( '%s: מתחם התחדשות עירונית | נדלן', $name );
+		}
+		return sprintf( '%s - מחירים, דירות ובחירה מהבניין | נדלן', $name );
+	}
+}
+
+if ( ! function_exists( 'nadlan_bulk_project_seo_description' ) ) {
+	function nadlan_bulk_project_seo_description( $description ) {
+		if ( ! is_singular( 'nadlan_project' ) ) {
+			return $description;
+		}
+		if ( trim( (string) $description ) !== '' ) {
+			return $description; // real description already set (Yoast meta or content excerpt) -- don't touch it.
+		}
+		$post_title = get_the_title();
+		if ( $post_title === '' ) {
+			return $description;
+		}
+		$post_id = get_queried_object_id();
+		$name    = trim( wp_strip_all_tags( html_entity_decode( $post_title, ENT_QUOTES, 'UTF-8' ) ) );
+		$city    = nadlan_bulk_project_city( $post_id );
+		if ( nadlan_bulk_project_is_renewal( $post_id ) ) {
+			$units  = (int) get_post_meta( $post_id, 'num_units', true );
+			$status = trim( (string) get_post_meta( $post_id, 'project_status', true ) );
+			$d = 'מתחם התחדשות עירונית ' . $name . ( $city !== '' ? ' ב' . $city : '' );
+			$d .= $units > 0 ? ': ' . number_format( $units ) . ' יחידות דיור' : '';
+			$d .= $status !== '' ? ', שלב התכנון: ' . $status . '.' : '.';
+			return $d . ' מיקום על המפה ופרטי התוכנית.';
+		}
+		if ( $city !== '' ) {
+			return sprintf( 'כל המידע על %1$s ב%2$s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן, לפני שמתקדמים בעסקה.', $name, $city );
+		}
+		return sprintf( 'כל המידע על %s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן, לפני שמתקדמים בעסקה.', $name );
+	}
+}
+
+// Priority 5: runs early, so any project-specific filter set at a higher
+// priority number (e.g. Rainbow's at 50) still overrides this for its own post.
+add_filter( 'wpseo_title', 'nadlan_bulk_project_seo_title', 5 );
+add_filter( 'pre_get_document_title', 'nadlan_bulk_project_seo_title', 5 );
+// The description is the last resort (28.9.2026, Search Console: the project pages drew 16,004 impressions and 96 clicks
+// in 28 days). At priority 5 this generic line ("כל המידע על ...") filled every empty description first, so the page's
+// own opening paragraph (inc/seo-gaps.php, 90) and the facts line (inc/project-experience.php) never ran. Now it only
+// fills what nothing else could.
+add_filter( 'wpseo_metadesc', 'nadlan_bulk_project_seo_description', 95 );
