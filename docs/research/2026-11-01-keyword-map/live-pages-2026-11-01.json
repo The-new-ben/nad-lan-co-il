@@ -1,0 +1,362 @@
+[
+ {
+  "path": "/projects/",
+  "status": 200,
+  "location": "",
+  "title": "פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן",
+  "h1": "פרויקטים חדשים בישראל",
+  "canonical": "https://nad-lan.co.il/projects/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/city/תל אביב יפו/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/תל-אביב-יפו/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/projects/?city=תל אביב-יפו",
+  "status": 200,
+  "location": "",
+  "title": "פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן",
+  "h1": "פרויקטים חדשים בישראל",
+  "canonical": "https://nad-lan.co.il/projects/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/cities/תל-אביב-יפו/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/תל-אביב-יפו/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/רמת גן/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/רמת-גן/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/רמת-גן/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/ראשון לציון/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/ראשון-לציון/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/ראשון-לציון/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/הרצליה/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/הרצליה/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/פתח-תקוה/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/בת-ים/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/בת-ים/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/חולון/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/חולון/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/קרית אונו/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/קרית-אונו/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/רמת-השרון/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/בני-ברק/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/בני-ברק/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/גבעתים/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/גבעתיים/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/אילת/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/city/אילת/projects/",
+  "status": 410,
+  "location": "",
+  "title": "העמוד לא נמצא - נדלן",
+  "h1": "העמוד הזה כבר לא כאן",
+  "canonical": "",
+  "robots": "noindex, follow"
+ },
+ {
+  "path": "/eilat-apartment-prices/",
+  "status": 200,
+  "location": "",
+  "title": "אילת: מה עולה דירת נופש ומה דירה למגורים",
+  "h1": "מחירי דירות באילת לפי חדרים, שכונות ושכירות",
+  "canonical": "https://nad-lan.co.il/eilat-apartment-prices/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/projects/22-צין-פארן/",
+  "status": 200,
+  "location": "",
+  "title": "מתחם 22, צין פארן, אילת: פינוי בינוי, 390 דירות בתכנית | נדל״ן",
+  "h1": "מתחם 22, צין פארן, אילת: פינוי בינוי",
+  "canonical": "https://nad-lan.co.il/projects/22-צין-פארן/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/projects/6-ברנע/",
+  "status": 200,
+  "location": "",
+  "title": "מתחם 6, ברנע, אילת: פינוי בינוי, 480 דירות בתכנית | נדל״ן",
+  "h1": "מתחם 6, ברנע, אילת: פינוי בינוי",
+  "canonical": "https://nad-lan.co.il/projects/6-ברנע/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/projects/שדרות-התמרים-סינג-סינג/",
+  "status": 200,
+  "location": "",
+  "title": "שדרות התמרים (סינג סינג), אילת: פינוי בינוי, 420 דירות בתכנית | נדל״ן",
+  "h1": "שדרות התמרים (סינג סינג), אילת: פינוי בינוי",
+  "canonical": "https://nad-lan.co.il/projects/שדרות-התמרים-סינג-סינג/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/luxury-tel-aviv/",
+  "status": 200,
+  "location": "",
+  "title": "דירות יוקרה בתל אביב - פארק בבלי ושוק היוקרה | נדל״ן חכם",
+  "h1": "פרויקטי היוקרה ודירות היוקרה בתל אביב",
+  "canonical": "https://nad-lan.co.il/luxury-tel-aviv/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/luxury-apartments-israel-guide-he/",
+  "status": 200,
+  "location": "",
+  "title": "דירות יוקרה בישראל 2026: מדריך לרוכש ולמשקיע | נדלן",
+  "h1": "דירות יוקרה בישראל: המדריך המלא 2026 לרוכשים ולמשקיעים",
+  "canonical": "https://nad-lan.co.il/luxury-apartments-israel-guide-he/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/tel-aviv-penthouse-prices/",
+  "status": 200,
+  "location": "",
+  "title": "פנטהאוז בתל אביב — מחירי הצמרת האמיתיים",
+  "h1": "מחירי פנטהאוזים בתל אביב",
+  "canonical": "https://nad-lan.co.il/tel-aviv-penthouse-prices/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/property-value/luxury-apartments-tel-aviv/",
+  "status": 200,
+  "location": "",
+  "title": "דירות יוקרה בתל אביב: בדיקות לפני רכישת פנטהאוז או דירת מגדל | nad-lan",
+  "h1": "דירות יוקרה בתל אביב: איך לבדוק פנטהאוז, דירת מגדל או דירת קו ים לפני רכישה",
+  "canonical": "https://nad-lan.co.il/property-value/luxury-apartments-tel-aviv/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/tel-aviv-luxury-apartment-prices/",
+  "status": 200,
+  "location": "",
+  "title": "יוקרה בתל אביב: המחירים בקומות הגבוהות",
+  "h1": "מחירי דירות יוקרה בתל אביב",
+  "canonical": "https://nad-lan.co.il/tel-aviv-luxury-apartment-prices/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/tel-aviv-seafront-apartment-prices/",
+  "status": 200,
+  "location": "",
+  "title": "קו ראשון לים בתל אביב: כמה עולה הנוף",
+  "h1": "מחירי דירות בקו ראשון לים בתל אביב",
+  "canonical": "https://nad-lan.co.il/tel-aviv-seafront-apartment-prices/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/new-projects/new-projects-tel-aviv/",
+  "status": 200,
+  "location": "",
+  "title": "אכלוס מיידי בתל אביב 2026: דירות חדשות מוכנות מקבלן | nad-lan",
+  "h1": "דירות חדשות באכלוס מיידי בתל אביב: פרויקטים מוכנים ואכלוס קרוב",
+  "canonical": "https://nad-lan.co.il/new-projects/new-projects-tel-aviv/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ },
+ {
+  "path": "/herzliya-projects/",
+  "status": 200,
+  "location": "",
+  "title": "פרויקטים חדשים בהרצליה והמרינה - על הנייר ויוקרה | נדל״ן חכם",
+  "h1": "פרויקטים חדשים בהרצליה והמרינה - על הנייר, יוקרה ופיתוח",
+  "canonical": "https://nad-lan.co.il/herzliya-projects/",
+  "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+ }
+]

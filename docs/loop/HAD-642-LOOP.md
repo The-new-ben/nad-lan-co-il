@@ -58,7 +58,16 @@
   - Claude Design `ProjectToolkit`: the site's instruments (data-nli: pcost, mortgage, cpi linkage, afford) prefilled with the project's own published numbers, plus "what else the apartment needs" (designer, engineer and handover inspection, kitchen, AC, closets) with sourced ranges.
   - Under the article, never inside the stage. Not on Ashira.
 - [ ] **L2b Price slip on (WAITS for Ben's look, his rule of 31.10: "when I say it looks good, clone it to all"):** the big developers' projects in the center, luxury and Eilat (box = on). Never Ashira.
-- [ ] **L3 Keyword map: center + luxury + Eilat.** A helper agent is researching (read-only); output goes to `docs/research/2026-11-01-keyword-map/`.
+- [x] **L3 Keyword map** (1.11, 01:40). File: `docs/research/2026-11-01-keyword-map/keyword-map.md`.
+  - Finding: no page owns "פרויקטים חדשים ב<city>" in the center outside TLV and Herzliya (about 1,500 searches a month; the retired city pages ranked 21-28). The cannibal pairs are listed in the map.
+  - Eilat demand is mostly listings (rent 2,400, sale 590); we have no listings there. `/eilat-apartment-prices/` is the only owner page.
+- [ ] **L3a City "new projects" block on the existing city price pages.** Data, not prose.
+  - Pages: `/ramat-gan-apartment-prices/`, `/petah-tikva-apartment-prices/`, `/rishon-lezion-apartment-prices/`, `/bat-yam/`, `/holon-apartment-prices/`, `/givatayim-apartment-prices/` and `/eilat-apartment-prices/` (check each exists).
+  - The block: Claude Design `CityProjects`, then the shortcode `[nadlan_city_projects city="…"]`.
+  - It holds the city's developer projects and its registry compounds by stage, each a card linking to its page, plus the registry numbers.
+  - Its H2 is "פרויקטים חדשים ו<התחדשות עירונית> ב<city>". It goes on the page that owns the city; no new URL.
+  - Appended to the end of each page's content (additive).
+- [ ] **L3b Luxury owners:** strengthen `/glossary/penthouse/` (3,600 a month, thin), `/herzliya-pituach-luxury/` (2,900 a month, 1 impression), `/luxury-tel-aviv/` and `/tel-aviv-penthouse-prices/`, with data blocks and the ProjectKit-style tools. Ben decides the Sde Dov pair.
   - Sources: GSC 90 days plus DataForSEO volumes.
   - Map: owner URL per head term, gaps, cannibal pairs.
   - Fix titles and H1s so each page leads with its own words. No new URL without `url_word_audit`. Never a 301.

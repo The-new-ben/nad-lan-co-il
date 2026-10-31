@@ -1,0 +1,3282 @@
+{
+ "דירות למכירה בתל אביב": {
+  "group": "center",
+  "vol": 880,
+  "cpc": 2.75,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בתל אביב": {
+  "group": "center",
+  "vol": 320,
+  "cpc": 7.93,
+  "comp": "MEDIUM",
+  "gsc_impr": 1182,
+  "gsc_clicks": 0,
+  "gsc_pos": 40.7,
+  "variants": [
+   "פרוייקטים חדשים בתל אביב",
+   "פרויקטים חדשים בתל אביב",
+   "פרויקטים חדשים תל אביב",
+   "פרויקטים חדשים תל אביב יפו"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    1122,
+    0,
+    41.7
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    171,
+    0,
+    73.7
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    77,
+    0,
+    33.7
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    43,
+    0,
+    59.6
+   ],
+   [
+    "/",
+    2,
+    0,
+    38.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    374,
+    55.2
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    43,
+    59.6
+   ],
+   [
+    "/",
+    2,
+    38.0
+   ]
+  ],
+  "dead_city_impr": 171
+ },
+ "מחירי דירות בתל אביב": {
+  "group": "center",
+  "vol": 50,
+  "cpc": 1.56,
+  "comp": "MEDIUM",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 30.7,
+  "variants": [
+   "מחירי דירות בתל אביב",
+   "מחירי דירות תל אביב"
+  ],
+  "pages90": [
+   [
+    "/tel-aviv-apartment-prices/",
+    2,
+    0,
+    18.5
+   ],
+   [
+    "/apartment-prices/",
+    1,
+    0,
+    55.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/tel-aviv-apartment-prices/",
+    2,
+    18.5
+   ],
+   [
+    "/apartment-prices/",
+    1,
+    55.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בתל אביב": {
+  "group": "center",
+  "vol": 90,
+  "cpc": 7.47,
+  "comp": "MEDIUM",
+  "gsc_impr": 722,
+  "gsc_clicks": 0,
+  "gsc_pos": 45.0,
+  "variants": [
+   "דירות חדשות בתל אביב",
+   "דירות חדשות בתל אביב יפו",
+   "דירות חדשות תל אביב"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    674,
+    0,
+    45.8
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    96,
+    0,
+    72.7
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    46,
+    0,
+    38.6
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    22,
+    0,
+    58.8
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    224,
+    65.8
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    22,
+    58.8
+   ]
+  ],
+  "dead_city_impr": 96
+ },
+ "פינוי בינוי בתל אביב": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 4.82,
+  "comp": "LOW",
+  "gsc_impr": 1,
+  "gsc_clicks": 0,
+  "gsc_pos": 68.0,
+  "variants": [
+   "פינוי בינוי בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/urban-renewal/map/",
+    1,
+    0,
+    68.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/urban-renewal/map/",
+    1,
+    68.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה ברמת גן": {
+  "group": "center",
+  "vol": 880,
+  "cpc": 2.32,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים ברמת גן": {
+  "group": "center",
+  "vol": 140,
+  "cpc": 7.05,
+  "comp": "HIGH",
+  "gsc_impr": 336,
+  "gsc_clicks": 0,
+  "gsc_pos": 28.1,
+  "variants": [
+   "פרויקטים חדשים ברמת גן",
+   "פרויקטים חדשים רמת גן"
+  ],
+  "pages90": [
+   [
+    "/city/רמת גן/projects/",
+    150,
+    0,
+    21.4
+   ],
+   [
+    "/city/רמת-גן/projects/",
+    150,
+    0,
+    28.3
+   ],
+   [
+    "/city/רמת-גן/",
+    45,
+    0,
+    68.7
+   ],
+   [
+    "/projects/",
+    42,
+    0,
+    54.1
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    42,
+    54.1
+   ]
+  ],
+  "dead_city_impr": 345
+ },
+ "מחירי דירות ברמת גן": {
+  "group": "center",
+  "vol": 30,
+  "cpc": 4.9,
+  "comp": "MEDIUM",
+  "gsc_impr": 1,
+  "gsc_clicks": 0,
+  "gsc_pos": 15.0,
+  "variants": [
+   "מחירי דירות ברמת גן"
+  ],
+  "pages90": [
+   [
+    "/ramat-gan-apartment-prices/",
+    1,
+    0,
+    15.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות ברמת גן": {
+  "group": "center",
+  "vol": 70,
+  "cpc": 6.05,
+  "comp": "MEDIUM",
+  "gsc_impr": 64,
+  "gsc_clicks": 0,
+  "gsc_pos": 45.7,
+  "variants": [
+   "דירות חדשות ברמת גן"
+  ],
+  "pages90": [
+   [
+    "/city/רמת-גן/projects/",
+    52,
+    0,
+    49.8
+   ],
+   [
+    "/city/רמת גן/projects/",
+    21,
+    0,
+    40.9
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 73
+ },
+ "פינוי בינוי ברמת גן": {
+  "group": "center",
+  "vol": 40,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 13,
+  "gsc_clicks": 0,
+  "gsc_pos": 76.8,
+  "variants": [
+   "פינוי בינוי ברמת גן",
+   "פינוי בינוי רמת גן"
+  ],
+  "pages90": [
+   [
+    "/city/רמת-גן/projects/",
+    12,
+    0,
+    79.8
+   ],
+   [
+    "/city/רמת גן/projects/",
+    1,
+    0,
+    40.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 13
+ },
+ "דירות למכירה בגבעתיים": {
+  "group": "center",
+  "vol": 480,
+  "cpc": 2.32,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בגבעתיים": {
+  "group": "center",
+  "vol": 90,
+  "cpc": 3.71,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מחירי דירות בגבעתיים": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בגבעתיים": {
+  "group": "center",
+  "vol": 50,
+  "cpc": 3.47,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פינוי בינוי בגבעתיים": {
+  "group": "center",
+  "vol": 30,
+  "cpc": 6.45,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בהרצליה": {
+  "group": "center",
+  "vol": 720,
+  "cpc": 2.46,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בהרצליה": {
+  "group": "center",
+  "vol": 110,
+  "cpc": 8.98,
+  "comp": "MEDIUM",
+  "gsc_impr": 277,
+  "gsc_clicks": 0,
+  "gsc_pos": 40.7,
+  "variants": [
+   "פרויקטים חדשים בהרצליה",
+   "פרויקטים חדשים הרצליה"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    164,
+    0,
+    40.2
+   ],
+   [
+    "/city/הרצליה/projects/",
+    122,
+    0,
+    43.2
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    43,
+    63.5
+   ]
+  ],
+  "dead_city_impr": 122
+ },
+ "מחירי דירות בהרצליה": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 1.38,
+  "comp": "MEDIUM",
+  "gsc_impr": 6,
+  "gsc_clicks": 0,
+  "gsc_pos": 10.5,
+  "variants": [
+   "מחירי דירות בהרצליה"
+  ],
+  "pages90": [
+   [
+    "/herzliya-apartment-prices/",
+    6,
+    0,
+    10.5
+   ]
+  ],
+  "pages28": [
+   [
+    "/herzliya-apartment-prices/",
+    2,
+    8.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בהרצליה": {
+  "group": "center",
+  "vol": 40,
+  "cpc": 3.47,
+  "comp": "HIGH",
+  "gsc_impr": 101,
+  "gsc_clicks": 0,
+  "gsc_pos": 36.1,
+  "variants": [
+   "דירות חדשות בהרצליה",
+   "דירות חדשות הרצליה"
+  ],
+  "pages90": [
+   [
+    "/herzliya-apartment-prices/",
+    75,
+    0,
+    27.7
+   ],
+   [
+    "/city/הרצליה/projects/",
+    44,
+    0,
+    65.5
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 44
+ },
+ "פינוי בינוי בהרצליה": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בפתח תקווה": {
+  "group": "center",
+  "vol": 1300,
+  "cpc": 1.62,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בפתח תקווה": {
+  "group": "center",
+  "vol": 260,
+  "cpc": 4.9,
+  "comp": "HIGH",
+  "gsc_impr": 246,
+  "gsc_clicks": 0,
+  "gsc_pos": 30.8,
+  "variants": [
+   "פרוייקטים חדשים בפתח תקווה",
+   "פרויקטים חדשים בפתח תקווה",
+   "פרויקטים חדשים פתח תקווה"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    202,
+    0,
+    31.9
+   ],
+   [
+    "/city/פתח-תקוה/projects/",
+    44,
+    0,
+    25.6
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    48,
+    58.1
+   ]
+  ],
+  "dead_city_impr": 44
+ },
+ "מחירי דירות בפתח תקווה": {
+  "group": "center",
+  "vol": 30,
+  "cpc": 1.9,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בפתח תקווה": {
+  "group": "center",
+  "vol": 140,
+  "cpc": 4.03,
+  "comp": "HIGH",
+  "gsc_impr": 55,
+  "gsc_clicks": 0,
+  "gsc_pos": 43.4,
+  "variants": [
+   "דירות חדשות בפתח תקווה"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    51,
+    0,
+    41.7
+   ],
+   [
+    "/projects/?city=פתח תקוה",
+    4,
+    0,
+    65.8
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    16,
+    56.4
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "פינוי בינוי בפתח תקווה": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 0.13,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בבת ים": {
+  "group": "center",
+  "vol": 590,
+  "cpc": 1.86,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בבת ים": {
+  "group": "center",
+  "vol": 110,
+  "cpc": 7.82,
+  "comp": "MEDIUM",
+  "gsc_impr": 74,
+  "gsc_clicks": 0,
+  "gsc_pos": 52.5,
+  "variants": [
+   "פרויקטים חדשים בבת ים",
+   "פרויקטים חדשים בת ים"
+  ],
+  "pages90": [
+   [
+    "/city/בת-ים/projects/",
+    61,
+    0,
+    51.2
+   ],
+   [
+    "/projects/?city=בת ים",
+    9,
+    0,
+    58.2
+   ],
+   [
+    "/projects/",
+    3,
+    0,
+    77.0
+   ],
+   [
+    "/projects/aura-pivko-bat-yam/",
+    1,
+    0,
+    8.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    3,
+    77.0
+   ]
+  ],
+  "dead_city_impr": 61
+ },
+ "מחירי דירות בבת ים": {
+  "group": "center",
+  "vol": 30,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בבת ים": {
+  "group": "center",
+  "vol": 50,
+  "cpc": 5.2,
+  "comp": "MEDIUM",
+  "gsc_impr": 42,
+  "gsc_clicks": 0,
+  "gsc_pos": 56.0,
+  "variants": [
+   "דירות חדשות בבת ים",
+   "דירות חדשות בת ים"
+  ],
+  "pages90": [
+   [
+    "/city/בת-ים/projects/",
+    37,
+    0,
+    55.3
+   ],
+   [
+    "/projects/?city=בת ים",
+    5,
+    0,
+    61.4
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 37
+ },
+ "פינוי בינוי בבת ים": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 1.08,
+  "comp": "LOW",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 86.0,
+  "variants": [
+   "פינוי בינוי בת ים"
+  ],
+  "pages90": [
+   [
+    "/projects/aura-pivko-bat-yam/",
+    3,
+    0,
+    86.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/aura-pivko-bat-yam/",
+    3,
+    86.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בחולון": {
+  "group": "center",
+  "vol": 880,
+  "cpc": 1.64,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בחולון": {
+  "group": "center",
+  "vol": 110,
+  "cpc": 3.95,
+  "comp": "MEDIUM",
+  "gsc_impr": 88,
+  "gsc_clicks": 0,
+  "gsc_pos": 44.7,
+  "variants": [
+   "פרוייקטים חדשים בחולון",
+   "פרויקטים חדשים בחולון",
+   "פרויקטים חדשים חולון"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    55,
+    0,
+    59.7
+   ],
+   [
+    "/city/חולון/",
+    45,
+    0,
+    31.5
+   ],
+   [
+    "/city/חולון/projects/",
+    2,
+    0,
+    41.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    10,
+    71.3
+   ]
+  ],
+  "dead_city_impr": 47
+ },
+ "מחירי דירות בחולון": {
+  "group": "center",
+  "vol": 30,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 5,
+  "gsc_clicks": 0,
+  "gsc_pos": 41.8,
+  "variants": [
+   "מחירי דירות בחולון"
+  ],
+  "pages90": [
+   [
+    "/apartment-prices/",
+    5,
+    0,
+    41.8
+   ]
+  ],
+  "pages28": [
+   [
+    "/apartment-prices/",
+    5,
+    41.8
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בחולון": {
+  "group": "center",
+  "vol": 70,
+  "cpc": 2.53,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פינוי בינוי בחולון": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 1.77,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בראשון לציון": {
+  "group": "center",
+  "vol": 1900,
+  "cpc": 1.28,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בראשון לציון": {
+  "group": "center",
+  "vol": 170,
+  "cpc": 5.87,
+  "comp": "HIGH",
+  "gsc_impr": 475,
+  "gsc_clicks": 0,
+  "gsc_pos": 35.0,
+  "variants": [
+   "פרוייקטים חדשים בראשון לציון",
+   "פרויקטים חדשים בראשון לציון",
+   "פרויקטים חדשים ראשון לציון"
+  ],
+  "pages90": [
+   [
+    "/city/ראשון לציון/projects/",
+    315,
+    0,
+    26.9
+   ],
+   [
+    "/projects/",
+    196,
+    0,
+    52.0
+   ],
+   [
+    "/city/ראשון-לציון/projects/",
+    24,
+    0,
+    90.4
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    32,
+    75.6
+   ]
+  ],
+  "dead_city_impr": 339
+ },
+ "מחירי דירות בראשון לציון": {
+  "group": "center",
+  "vol": 40,
+  "cpc": 0.93,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בראשון לציון": {
+  "group": "center",
+  "vol": 110,
+  "cpc": 4.25,
+  "comp": "HIGH",
+  "gsc_impr": 70,
+  "gsc_clicks": 0,
+  "gsc_pos": 46.0,
+  "variants": [
+   "דירות חדשות בראשון לציון"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    35,
+    0,
+    52.5
+   ],
+   [
+    "/city/ראשון לציון/projects/",
+    33,
+    0,
+    37.7
+   ],
+   [
+    "/city/ראשון-לציון/projects/",
+    16,
+    0,
+    69.1
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    13,
+    71.3
+   ]
+  ],
+  "dead_city_impr": 49
+ },
+ "פינוי בינוי בראשון לציון": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 107,
+  "gsc_clicks": 0,
+  "gsc_pos": 56.8,
+  "variants": [
+   "פינוי בינוי בראשון לציון",
+   "פינוי בינוי ראשון לציון",
+   "פינוי בינוי ראשלצ"
+  ],
+  "pages90": [
+   [
+    "/urban-renewal/map/",
+    51,
+    0,
+    48.3
+   ],
+   [
+    "/city/ראשון לציון/projects/",
+    31,
+    0,
+    44.8
+   ],
+   [
+    "/city/ראשון-לציון/projects/",
+    25,
+    0,
+    89.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/urban-renewal/map/",
+    45,
+    49.8
+   ]
+  ],
+  "dead_city_impr": 56
+ },
+ "דירות למכירה ברמת השרון": {
+  "group": "center",
+  "vol": 210,
+  "cpc": 6,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים ברמת השרון": {
+  "group": "center",
+  "vol": 50,
+  "cpc": 42.94,
+  "comp": "MEDIUM",
+  "gsc_impr": 29,
+  "gsc_clicks": 0,
+  "gsc_pos": 51.6,
+  "variants": [
+   "פרויקטים חדשים ברמת השרון"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    23,
+    0,
+    57.3
+   ],
+   [
+    "/city/רמת-השרון/projects/",
+    10,
+    0,
+    39.2
+   ],
+   [
+    "/city/רמת-השרון/",
+    2,
+    0,
+    69.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    10,
+    62.6
+   ]
+  ],
+  "dead_city_impr": 12
+ },
+ "מחירי דירות ברמת השרון": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 4.86,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות ברמת השרון": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 17.97,
+  "comp": "MEDIUM",
+  "gsc_impr": 16,
+  "gsc_clicks": 0,
+  "gsc_pos": 52.7,
+  "variants": [
+   "דירות חדשות ברמת השרון",
+   "דירות חדשות רמת השרון"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    12,
+    0,
+    56.1
+   ],
+   [
+    "/city/רמת-השרון/projects/",
+    4,
+    0,
+    42.5
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    12,
+    56.1
+   ]
+  ],
+  "dead_city_impr": 4
+ },
+ "פינוי בינוי ברמת השרון": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 6.14,
+  "comp": "LOW",
+  "gsc_impr": 11,
+  "gsc_clicks": 0,
+  "gsc_pos": 79.2,
+  "variants": [
+   "פינוי בינוי רמת השרון"
+  ],
+  "pages90": [
+   [
+    "/city/רמת-השרון/projects/",
+    11,
+    0,
+    79.2
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 11
+ },
+ "דירות למכירה בקרית אונו": {
+  "group": "center",
+  "vol": 320,
+  "cpc": 2.37,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בקרית אונו": {
+  "group": "center",
+  "vol": 40,
+  "cpc": 6.29,
+  "comp": "MEDIUM",
+  "gsc_impr": 60,
+  "gsc_clicks": 0,
+  "gsc_pos": 26.8,
+  "variants": [
+   "פרויקטים חדשים בקריית אונו",
+   "פרויקטים חדשים בקרית אונו",
+   "פרויקטים חדשים קריית אונו"
+  ],
+  "pages90": [
+   [
+    "/city/קרית אונו/projects/",
+    60,
+    0,
+    26.8
+   ],
+   [
+    "/city/קרית-אונו/projects/",
+    13,
+    0,
+    66.8
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 73
+ },
+ "מחירי דירות בקרית אונו": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 0.91,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בקרית אונו": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 7.26,
+  "comp": "MEDIUM",
+  "gsc_impr": 24,
+  "gsc_clicks": 0,
+  "gsc_pos": 37.9,
+  "variants": [
+   "דירות חדשות בקריית אונו",
+   "דירות חדשות בקרית אונו"
+  ],
+  "pages90": [
+   [
+    "/city/קרית אונו/projects/",
+    24,
+    0,
+    37.9
+   ],
+   [
+    "/city/קרית-אונו/projects/",
+    4,
+    0,
+    63.8
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 28
+ },
+ "פינוי בינוי בקרית אונו": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בבני ברק": {
+  "group": "center",
+  "vol": 720,
+  "cpc": 0.95,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בבני ברק": {
+  "group": "center",
+  "vol": 40,
+  "cpc": 1.74,
+  "comp": "MEDIUM",
+  "gsc_impr": 99,
+  "gsc_clicks": 0,
+  "gsc_pos": 45.8,
+  "variants": [
+   "פרויקטים חדשים בבני ברק"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    99,
+    0,
+    45.8
+   ],
+   [
+    "/city/בני-ברק/",
+    6,
+    0,
+    81.3
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    23,
+    68.8
+   ]
+  ],
+  "dead_city_impr": 6
+ },
+ "מחירי דירות בבני ברק": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות בבני ברק": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 1.03,
+  "comp": "MEDIUM",
+  "gsc_impr": 85,
+  "gsc_clicks": 0,
+  "gsc_pos": 46.7,
+  "variants": [
+   "דירות חדשות בבני ברק",
+   "דירות חדשות בני ברק"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    85,
+    0,
+    46.7
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    24,
+    54.7
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "פינוי בינוי בבני ברק": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 15,
+  "gsc_clicks": 0,
+  "gsc_pos": 73.3,
+  "variants": [
+   "פינוי בינוי בבני ברק",
+   "פינוי בינוי בני ברק"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    15,
+    0,
+    73.3
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    5,
+    87.6
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות מקבלן בתל אביב": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 8.52,
+  "comp": "LOW",
+  "gsc_impr": 355,
+  "gsc_clicks": 0,
+  "gsc_pos": 41.6,
+  "variants": [
+   "דירות מקבלן בתל אביב",
+   "דירות מקבלן תל אביב"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    348,
+    0,
+    42.3
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    36,
+    0,
+    75.7
+   ],
+   [
+    "/",
+    24,
+    0,
+    63.2
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    16,
+    0,
+    53.9
+   ],
+   [
+    "/city/תל-אביב-יפו/",
+    13,
+    0,
+    97.2
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    123,
+    64.2
+   ],
+   [
+    "/",
+    22,
+    61.9
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    16,
+    53.9
+   ]
+  ],
+  "dead_city_impr": 49
+ },
+ "נדלן בתל אביב": {
+  "group": "center",
+  "vol": 40,
+  "cpc": 2.84,
+  "comp": "LOW",
+  "gsc_impr": 71,
+  "gsc_clicks": 0,
+  "gsc_pos": 41.9,
+  "variants": [
+   "נדל\"ן תל אביב",
+   "נדלן בתל אביב",
+   "נדלן תל אביב",
+   "נדל״ן בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/city/תל-אביב-יפו/",
+    43,
+    0,
+    61.2
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    29,
+    0,
+    25.1
+   ],
+   [
+    "/",
+    24,
+    0,
+    63.1
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    2,
+    0,
+    26.5
+   ]
+  ],
+  "pages28": [
+   [
+    "/",
+    4,
+    39.8
+   ]
+  ],
+  "dead_city_impr": 72
+ },
+ "השקעות נדלן בתל אביב": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "MEDIUM",
+  "gsc_impr": 206,
+  "gsc_clicks": 0,
+  "gsc_pos": 72.1,
+  "variants": [
+   "השקעות נדל\"ן בתל אביב",
+   "השקעות נדלן בתל אביב",
+   "השקעות נדל״ן בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/investment/",
+    185,
+    0,
+    71.9
+   ],
+   [
+    "/",
+    26,
+    0,
+    76.8
+   ]
+  ],
+  "pages28": [
+   [
+    "/investment/",
+    80,
+    58.6
+   ],
+   [
+    "/",
+    9,
+    68.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "תמא 38 תל אביב": {
+  "group": "center",
+  "vol": 140,
+  "cpc": 3.11,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "צפון תל אביב דירות למכירה": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 5.72,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בצפון תל אביב": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 41.61,
+  "comp": "MEDIUM",
+  "gsc_impr": 214,
+  "gsc_clicks": 0,
+  "gsc_pos": 42.7,
+  "variants": [
+   "פרויקטים חדשים בצפון תל אביב"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    198,
+    0,
+    43.4
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    31,
+    0,
+    61.5
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    18,
+    0,
+    53.6
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    2,
+    0,
+    74.5
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    58,
+    62.6
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    2,
+    74.5
+   ]
+  ],
+  "dead_city_impr": 31
+ },
+ "שדה דב": {
+  "group": "center",
+  "vol": 4400,
+  "cpc": 3.57,
+  "comp": "LOW",
+  "gsc_impr": 411,
+  "gsc_clicks": 2,
+  "gsc_pos": 20.9,
+  "variants": [
+   "שדה דב"
+  ],
+  "pages90": [
+   [
+    "/sde-dov/",
+    393,
+    2,
+    21.4
+   ],
+   [
+    "/projects/duo-tel-aviv/",
+    6,
+    0,
+    13.7
+   ],
+   [
+    "/projects/rainbow-tel-aviv/",
+    3,
+    0,
+    7.0
+   ],
+   [
+    "/apartment-prices/",
+    2,
+    0,
+    11.0
+   ],
+   [
+    "/projects/dimri-yama-sde-dov/",
+    2,
+    0,
+    7.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/sde-dov/",
+    84,
+    28.1
+   ],
+   [
+    "/projects/rainbow-tel-aviv/",
+    3,
+    7.0
+   ],
+   [
+    "/apartment-prices/",
+    2,
+    11.0
+   ],
+   [
+    "/projects/dimri-yama-sde-dov/",
+    1,
+    6.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בשדה דב": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 43.28,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים במרכז": {
+  "group": "center",
+  "vol": 70,
+  "cpc": 5.62,
+  "comp": "MEDIUM",
+  "gsc_impr": 326,
+  "gsc_clicks": 0,
+  "gsc_pos": 38.8,
+  "variants": [
+   "פרויקטים חדשים במרכז"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    321,
+    0,
+    39.0
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    27,
+    0,
+    71.7
+   ],
+   [
+    "/",
+    8,
+    0,
+    64.9
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    6,
+    0,
+    59.7
+   ],
+   [
+    "/city/ירושלים/projects/",
+    3,
+    0,
+    69.7
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    52,
+    58.9
+   ],
+   [
+    "/",
+    7,
+    62.9
+   ],
+   [
+    "/new-projects/new-projects-tel-aviv/",
+    3,
+    51.7
+   ]
+  ],
+  "dead_city_impr": 30
+ },
+ "דירות למכירה במרכז": {
+  "group": "center",
+  "vol": 110,
+  "cpc": 3.31,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות חדשות במרכז": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 3.55,
+  "comp": "MEDIUM",
+  "gsc_impr": 11,
+  "gsc_clicks": 0,
+  "gsc_pos": 39.3,
+  "variants": [
+   "דירות חדשות במרכז"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    11,
+    0,
+    39.3
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    1,
+    83.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "פרויקטים חדשים בהרצליה פיתוח": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 6.9,
+  "comp": "HIGH",
+  "gsc_impr": 67,
+  "gsc_clicks": 0,
+  "gsc_pos": 39.5,
+  "variants": [
+   "פרויקטים חדשים בהרצליה פיתוח"
+  ],
+  "pages90": [
+   [
+    "/city/הרצליה/projects/",
+    67,
+    0,
+    39.5
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 67
+ },
+ "דירות מקבלן ברמת גן": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 5.41,
+  "comp": "HIGH",
+  "gsc_impr": 2,
+  "gsc_clicks": 0,
+  "gsc_pos": 55.0,
+  "variants": [
+   "דירות מקבלן ברמת גן"
+  ],
+  "pages90": [
+   [
+    "/city/רמת גן/projects/",
+    1,
+    0,
+    39.0
+   ],
+   [
+    "/city/רמת-גן/",
+    1,
+    0,
+    71.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 2
+ },
+ "דירות מקבלן בפתח תקווה": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 4.23,
+  "comp": "HIGH",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 48.7,
+  "variants": [
+   "דירות מקבלן בפתח תקווה"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    3,
+    0,
+    48.7
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    2,
+    54.5
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "דירות מקבלן בבת ים": {
+  "group": "center",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "נדלן ברמת גן": {
+  "group": "center",
+  "vol": 20,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 33,
+  "gsc_clicks": 0,
+  "gsc_pos": 25.3,
+  "variants": [
+   "נדלן רמת גן",
+   "נדל״ן ברמת גן"
+  ],
+  "pages90": [
+   [
+    "/city/רמת-גן/",
+    33,
+    0,
+    28.4
+   ],
+   [
+    "/city/רמת-גן/projects/",
+    4,
+    0,
+    16.8
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 37
+ },
+ "נדלן בהרצליה": {
+  "group": "center",
+  "vol": 20,
+  "cpc": 3.62,
+  "comp": "MEDIUM",
+  "gsc_impr": 28,
+  "gsc_clicks": 0,
+  "gsc_pos": 34.1,
+  "variants": [
+   "נדלן בהרצליה",
+   "נדל״ן בהרצליה"
+  ],
+  "pages90": [
+   [
+    "/city/הרצליה/",
+    27,
+    0,
+    35.1
+   ],
+   [
+    "/herzliya-apartment-prices/",
+    1,
+    0,
+    7.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 27
+ },
+ "נדלן בפתח תקווה": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 0.94,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "נדלן בבת ים": {
+  "group": "center",
+  "vol": 10,
+  "cpc": null,
+  "comp": "MEDIUM",
+  "gsc_impr": 53,
+  "gsc_clicks": 0,
+  "gsc_pos": 30.0,
+  "variants": [
+   "נדלן בבת ים",
+   "נדלן בת ים",
+   "נדל״ן בבת ים"
+  ],
+  "pages90": [
+   [
+    "/city/בת-ים/projects/",
+    52,
+    0,
+    29.2
+   ],
+   [
+    "/city/בת-ים/",
+    29,
+    0,
+    68.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 81
+ },
+ "נדלן בחולון": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 10.57,
+  "comp": "HIGH",
+  "gsc_impr": 7,
+  "gsc_clicks": 0,
+  "gsc_pos": 17.1,
+  "variants": [
+   "נדלן בחולון"
+  ],
+  "pages90": [
+   [
+    "/city/חולון/",
+    7,
+    0,
+    17.1
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 7
+ },
+ "נדלן בראשון לציון": {
+  "group": "center",
+  "vol": 10,
+  "cpc": 2.28,
+  "comp": "HIGH",
+  "gsc_impr": 32,
+  "gsc_clicks": 0,
+  "gsc_pos": 56.2,
+  "variants": [
+   "נדלן בראשון לציון",
+   "נדלן ראשון לציון",
+   "נדל״ן בראשון לציון"
+  ],
+  "pages90": [
+   [
+    "/city/ראשון-לציון/",
+    31,
+    0,
+    55.5
+   ],
+   [
+    "/",
+    1,
+    0,
+    76.0
+   ],
+   [
+    "/city/ראשון לציון/projects/",
+    1,
+    0,
+    56.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 32
+ },
+ "פנטהאוז": {
+  "group": "luxury",
+  "vol": 3600,
+  "cpc": 1.1,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז למכירה": {
+  "group": "luxury",
+  "vol": 170,
+  "cpc": 2.76,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז בתל אביב": {
+  "group": "luxury",
+  "vol": 110,
+  "cpc": 3.02,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז למכירה בתל אביב": {
+  "group": "luxury",
+  "vol": 90,
+  "cpc": 4.24,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז בהרצליה": {
+  "group": "luxury",
+  "vol": 20,
+  "cpc": 2.71,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז ברמת גן": {
+  "group": "luxury",
+  "vol": 20,
+  "cpc": 8.75,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז בבת ים": {
+  "group": "luxury",
+  "vol": 20,
+  "cpc": 2.89,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז בפתח תקווה": {
+  "group": "luxury",
+  "vol": 20,
+  "cpc": 2.76,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מיני פנטהאוז": {
+  "group": "luxury",
+  "vol": 170,
+  "cpc": 6.71,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה": {
+  "group": "luxury",
+  "vol": 320,
+  "cpc": 2.09,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה למכירה": {
+  "group": "luxury",
+  "vol": 50,
+  "cpc": 2.97,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירת יוקרה": {
+  "group": "luxury",
+  "vol": 320,
+  "cpc": 2.09,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה בתל אביב": {
+  "group": "luxury",
+  "vol": 140,
+  "cpc": 2.94,
+  "comp": "LOW",
+  "gsc_impr": 1,
+  "gsc_clicks": 0,
+  "gsc_pos": 25.0,
+  "variants": [
+   "דירות יוקרה בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/tel-aviv-luxury-apartment-prices/",
+    1,
+    0,
+    25.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה למכירה בתל אביב": {
+  "group": "luxury",
+  "vol": 70,
+  "cpc": 5.9,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה בהרצליה": {
+  "group": "luxury",
+  "vol": 10,
+  "cpc": 2.3,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה ברמת גן": {
+  "group": "luxury",
+  "vol": 10,
+  "cpc": 2.37,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "נדלן יוקרה": {
+  "group": "luxury",
+  "vol": 30,
+  "cpc": 2.76,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "נדלן יוקרה בישראל": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מגדלי יוקרה": {
+  "group": "luxury",
+  "vol": 40,
+  "cpc": 3.33,
+  "comp": "LOW",
+  "gsc_impr": 156,
+  "gsc_clicks": 0,
+  "gsc_pos": 46.5,
+  "variants": [
+   "מגדלי יוקרה"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    93,
+    0,
+    38.6
+   ],
+   [
+    "/luxury-apartments-israel-guide-he/",
+    57,
+    0,
+    61.5
+   ],
+   [
+    "/projects/yoo-tel-aviv/",
+    5,
+    0,
+    39.2
+   ],
+   [
+    "/projects/hamedina/",
+    3,
+    0,
+    36.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/luxury-apartments-israel-guide-he/",
+    57,
+    61.5
+   ],
+   [
+    "/projects/hamedina/",
+    3,
+    36.0
+   ],
+   [
+    "/projects/",
+    1,
+    88.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "מגדלי יוקרה בתל אביב": {
+  "group": "luxury",
+  "vol": 90,
+  "cpc": 3.23,
+  "comp": "MEDIUM",
+  "gsc_impr": 2,
+  "gsc_clicks": 0,
+  "gsc_pos": 56.0,
+  "variants": [
+   "מגדלי יוקרה בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/projects/hamedina/",
+    1,
+    0,
+    58.0
+   ],
+   [
+    "/projects/meier-on-rothschild/",
+    1,
+    0,
+    54.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/hamedina/",
+    1,
+    58.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "מגדלי מגורים": {
+  "group": "luxury",
+  "vol": 70,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 39.7,
+  "variants": [
+   "מגדלי מגורים"
+  ],
+  "pages90": [
+   [
+    "/projects/",
+    2,
+    0,
+    47.0
+   ],
+   [
+    "/projects/hamedina/",
+    1,
+    0,
+    25.0
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/hamedina/",
+    1,
+    25.0
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "מגדלי מגורים בתל אביב": {
+  "group": "luxury",
+  "vol": 50,
+  "cpc": 1.61,
+  "comp": "LOW",
+  "gsc_impr": 39,
+  "gsc_clicks": 0,
+  "gsc_pos": 20.7,
+  "variants": [
+   "מגדלי מגורים בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/projects/hamedina/",
+    39,
+    0,
+    20.7
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/hamedina/",
+    39,
+    20.7
+   ]
+  ],
+  "dead_city_impr": 0
+ },
+ "פרויקטי יוקרה": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטי יוקרה בתל אביב": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 73,
+  "gsc_clicks": 0,
+  "gsc_pos": 54.1,
+  "variants": [
+   "פרויקטי יוקרה בתל אביב"
+  ],
+  "pages90": [
+   [
+    "/luxury-tel-aviv/",
+    54,
+    0,
+    74.9
+   ],
+   [
+    "/city/תל אביב-יפו/projects/",
+    18,
+    0,
+    40.7
+   ],
+   [
+    "/projects/",
+    18,
+    0,
+    61.9
+   ],
+   [
+    "/city/תל אביב יפו/projects/",
+    8,
+    0,
+    54.2
+   ],
+   [
+    "/projects/?city=תל אביב-יפו",
+    6,
+    0,
+    37.5
+   ]
+  ],
+  "pages28": [
+   [
+    "/projects/",
+    10,
+    77.5
+   ],
+   [
+    "/luxury-tel-aviv/",
+    9,
+    58.1
+   ]
+  ],
+  "dead_city_impr": 26
+ },
+ "קו ראשון לים": {
+  "group": "luxury",
+  "vol": 50,
+  "cpc": 7.29,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירה בקו ראשון לים": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות בקו ראשון לים": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "קו ראשון לים תל אביב": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "קו ראשון לים בת ים": {
+  "group": "luxury",
+  "vol": 10,
+  "cpc": 3.68,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "קו ראשון לים הרצליה": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות על הים": {
+  "group": "luxury",
+  "vol": 110,
+  "cpc": 1.74,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירה מול הים": {
+  "group": "luxury",
+  "vol": 40,
+  "cpc": 3.21,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות עם נוף לים": {
+  "group": "luxury",
+  "vol": 50,
+  "cpc": 4.91,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "הרצליה פיתוח": {
+  "group": "luxury",
+  "vol": 2900,
+  "cpc": 0.69,
+  "comp": "LOW",
+  "gsc_impr": 1,
+  "gsc_clicks": 0,
+  "gsc_pos": 7.0,
+  "variants": [
+   "הרצליה פיתוח"
+  ],
+  "pages90": [
+   [
+    "/herzliya-apartment-prices/",
+    1,
+    0,
+    7.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "בתים למכירה בהרצליה פיתוח": {
+  "group": "luxury",
+  "vol": 110,
+  "cpc": 3.13,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "וילה למכירה בהרצליה פיתוח": {
+  "group": "luxury",
+  "vol": 110,
+  "cpc": 1.74,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה בהרצליה פיתוח": {
+  "group": "luxury",
+  "vol": 10,
+  "cpc": null,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מגדלי אקירוב": {
+  "group": "luxury",
+  "vol": 480,
+  "cpc": 2.52,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מגדלי yoo": {
+  "group": "luxury",
+  "vol": 140,
+  "cpc": 1.89,
+  "comp": "LOW",
+  "gsc_impr": 9,
+  "gsc_clicks": 0,
+  "gsc_pos": 23.7,
+  "variants": [
+   "מגדלי yoo"
+  ],
+  "pages90": [
+   [
+    "/projects/yoo-tel-aviv/",
+    5,
+    0,
+    20.6
+   ],
+   [
+    "/projects/",
+    4,
+    0,
+    27.5
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "ישראל קנדה": {
+  "group": "luxury",
+  "vol": 3600,
+  "cpc": 3.92,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "גינדי החזקות": {
+  "group": "luxury",
+  "vol": 1000,
+  "cpc": 36.92,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "אאורה": {
+  "group": "luxury",
+  "vol": 3600,
+  "cpc": 3.66,
+  "comp": "LOW",
+  "gsc_impr": 1,
+  "gsc_clicks": 0,
+  "gsc_pos": 5.0,
+  "variants": [
+   "אאורה"
+  ],
+  "pages90": [
+   [
+    "http://nad-lan.co.il/professionals/aura-israel/",
+    1,
+    0,
+    5.0
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "יוסי אברהמי": {
+  "group": "luxury",
+  "vol": 1600,
+  "cpc": 3.79,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דמרי": {
+  "group": "luxury",
+  "vol": 1300,
+  "cpc": 1.75,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "אפריקה ישראל מגורים": {
+  "group": "luxury",
+  "vol": 480,
+  "cpc": 5.1,
+  "comp": "LOW",
+  "gsc_impr": 4,
+  "gsc_clicks": 0,
+  "gsc_pos": 56.8,
+  "variants": [
+   "אפריקה ישראל מגורים"
+  ],
+  "pages90": [
+   [
+    "http://nad-lan.co.il/professionals/africa-israel-residential/",
+    4,
+    0,
+    56.8
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "אזורים": {
+  "group": "luxury",
+  "vol": 2900,
+  "cpc": 1.79,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה בשדה דב": {
+  "group": "luxury",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "צוקי אביב": {
+  "group": "luxury",
+  "vol": 480,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מגדלי הים התיכון": {
+  "group": "luxury",
+  "vol": 2400,
+  "cpc": 5.04,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה באילת": {
+  "group": "eilat",
+  "vol": 590,
+  "cpc": 2.06,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירה למכירה באילת": {
+  "group": "eilat",
+  "vol": 590,
+  "cpc": 2.06,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "נדלן באילת": {
+  "group": "eilat",
+  "vol": 40,
+  "cpc": 1.59,
+  "comp": "MEDIUM",
+  "gsc_impr": 33,
+  "gsc_clicks": 0,
+  "gsc_pos": 51.4,
+  "variants": [
+   "נדל״ן באילת"
+  ],
+  "pages90": [
+   [
+    "/city/אילת/",
+    33,
+    0,
+    51.4
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 33
+ },
+ "נדלן אילת": {
+  "group": "eilat",
+  "vol": 50,
+  "cpc": 2.16,
+  "comp": "MEDIUM",
+  "gsc_impr": 33,
+  "gsc_clicks": 0,
+  "gsc_pos": 51.4,
+  "variants": [
+   "נדל״ן באילת"
+  ],
+  "pages90": [
+   [
+    "/city/אילת/",
+    33,
+    0,
+    51.4
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 33
+ },
+ "פרויקטים חדשים באילת": {
+  "group": "eilat",
+  "vol": 110,
+  "cpc": 2.49,
+  "comp": "MEDIUM",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 46.3,
+  "variants": [
+   "פרויקטים חדשים באילת"
+  ],
+  "pages90": [
+   [
+    "/city/אילת/",
+    3,
+    0,
+    46.3
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 3
+ },
+ "דירות חדשות באילת": {
+  "group": "eilat",
+  "vol": 40,
+  "cpc": 2.26,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות מקבלן באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פינוי בינוי באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "התחדשות עירונית באילת": {
+  "group": "eilat",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מחירי דירות באילת": {
+  "group": "eilat",
+  "vol": 40,
+  "cpc": 1.71,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מחיר דירה באילת": {
+  "group": "eilat",
+  "vol": 40,
+  "cpc": 1.71,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות להשכרה באילת": {
+  "group": "eilat",
+  "vol": 2400,
+  "cpc": 0.99,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירת נופש באילת למכירה": {
+  "group": "eilat",
+  "vol": 20,
+  "cpc": 1.2,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "השקעה באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": 2.16,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "השקעות נדלן באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": null,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירה להשקעה באילת": {
+  "group": "eilat",
+  "vol": 70,
+  "cpc": 2.44,
+  "comp": "MEDIUM",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "בתים למכירה באילת": {
+  "group": "eilat",
+  "vol": 110,
+  "cpc": 1.16,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "וילה למכירה באילת": {
+  "group": "eilat",
+  "vol": 140,
+  "cpc": 0.26,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות יוקרה באילת": {
+  "group": "eilat",
+  "vol": 20,
+  "cpc": 1.17,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פנטהאוז באילת": {
+  "group": "eilat",
+  "vol": 90,
+  "cpc": 1.49,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "שכונות באילת": {
+  "group": "eilat",
+  "vol": 70,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מעמ אילת דירה": {
+  "group": "eilat",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פטור ממעמ אילת": {
+  "group": "eilat",
+  "vol": 20,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "שחמון אילת": {
+  "group": "eilat",
+  "vol": 260,
+  "cpc": 0.37,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות למכירה בשחמון": {
+  "group": "eilat",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "מחיר למשתכן אילת": {
+  "group": "eilat",
+  "vol": 50,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירה על הים באילת": {
+  "group": "eilat",
+  "vol": null,
+  "cpc": null,
+  "comp": null,
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "פרויקטים באילת": {
+  "group": "eilat",
+  "vol": 50,
+  "cpc": 2.56,
+  "comp": "MEDIUM",
+  "gsc_impr": 3,
+  "gsc_clicks": 0,
+  "gsc_pos": 45.7,
+  "variants": [
+   "פרוייקטים באילת",
+   "פרויקטים באילת"
+  ],
+  "pages90": [
+   [
+    "/city/אילת/",
+    3,
+    0,
+    45.7
+   ]
+  ],
+  "pages28": [],
+  "dead_city_impr": 3
+ },
+ "דירות 3 חדרים למכירה באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": null,
+  "comp": "LOW",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ },
+ "דירות 4 חדרים למכירה באילת": {
+  "group": "eilat",
+  "vol": 10,
+  "cpc": 1.95,
+  "comp": "HIGH",
+  "gsc_impr": 0,
+  "gsc_clicks": 0,
+  "gsc_pos": null,
+  "variants": [],
+  "pages90": [],
+  "pages28": [],
+  "dead_city_impr": 0
+ }
+}
