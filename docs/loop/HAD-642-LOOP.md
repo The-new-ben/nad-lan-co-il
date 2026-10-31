@@ -47,7 +47,7 @@
     - `data_quality=enriched`.
   - Backup and `--undo` like `cms538.py`.
   - Verify 5 random pages on a phone.
-- [ ] **L1b Compound tool, wave 2:** every other city.
+- [ ] **L1b Compound tool, wave 2:** every other city. RUNNING since 1.11 ~00:55 (634 compounds; dry plan clean: 0 odd names, 0 duplicate titles; rules for end-of-name plan codes, quotes and קרית to קריית added).
 - [x] **L2 Big developers' projects** (1.11, 00:50).
   - Release 1.72.546 adds `inc/project-kit.php`; Claude Design v105.3 ProjectToolkit.
   - `[nadlan_project_kit]` was appended to 18 projects (`kit_cms.py`, backup `kit-backup.json`).
@@ -58,11 +58,19 @@
   - Claude Design `ProjectToolkit`: the site's instruments (data-nli: pcost, mortgage, cpi linkage, afford) prefilled with the project's own published numbers, plus "what else the apartment needs" (designer, engineer and handover inspection, kitchen, AC, closets) with sourced ranges.
   - Under the article, never inside the stage. Not on Ashira.
 - [ ] **L2b Price slip on (WAITS for Ben's look, his rule of 31.10: "when I say it looks good, clone it to all"):** the big developers' projects in the center, luxury and Eilat (box = on). Never Ashira.
-- [ ] **L3 Keyword map: center + luxury + Eilat.**
+- [ ] **L3 Keyword map: center + luxury + Eilat.** A helper agent is researching (read-only); output goes to `docs/research/2026-11-01-keyword-map/`.
   - Sources: GSC 90 days plus DataForSEO volumes.
   - Map: owner URL per head term, gaps, cannibal pairs.
   - Fix titles and H1s so each page leads with its own words. No new URL without `url_word_audit`. Never a 301.
-- [ ] **L4 Home news band:** three real, dated news items in the nadlan-news category (the registry refresh in numbers, plus two current market facts with sources), so the band returns.
+- [x] **L4 Home news band** (1.11, 01:20). Three real news items were published in the nadlan-news category (ids 8728, 8729, 8730):
+  - /compounds-update-2026/: the registry in numbers;
+  - /boi-decision-october-2026/: Bank of Israel, 3.25% on 21.10.2026, from the BOI briefing PDF;
+  - /cbs-dwelling-july-august-2026/: CBS release 325/2026, -0.6% for Jul-Aug, -1.8% on the year.
+  - Unverified dates were removed before publishing.
+  - `url_word_audit` was run for every slug token: each token is owned only by its own new URL.
+  - The home band is back (`nlhp-magazine` present).
+  - Drafts and sources: `docs/content/news-2026-11/`.
+  - Original item: three real, dated news items in the nadlan-news category (the registry refresh in numbers, plus two current market facts with sources), so the band returns.
 - [ ] **L5 Report to Ben:** links, phone shots, what is left.
 
 ## Done

@@ -1,0 +1,98 @@
+{
+  "written": "1.11.2026",
+  "category": "nadlan-news",
+  "items": [
+    {
+      "file": "news-1.html",
+      "category": "nadlan-news",
+      "status": "draft, not published",
+      "title": "עדכון המאגר הממשלתי: 34 מתחמי התחדשות נוספו לקטלוג, 975 בסך הכול",
+      "slug": "compounds-update-2026",
+      "excerpt": "המאגר הממשלתי מונה 970 מתחמי פינוי בינוי ב-76 יישובים. 34 מתחמים נוספו לקטלוג באתר, 18 התקדמו בתכנון, והקטלוג מציג כעת 975 מתחמים.",
+      "key_fact": "Registry file updated 15.8.2026, site catalog refresh 31.10.2026: 970 compounds in 76 localities, +34 to catalog, 975 shown.",
+      "sources": [
+        {
+          "url": "https://data.gov.il/ (resource f65a0daf, government urban-renewal compounds registry, file updated 15.8.2026)",
+          "read": "not re-read by the writer; all numbers taken as given in the brief from the 31.10.2026 site refresh"
+        },
+        {
+          "url": "https://nad-lan.co.il/urban-renewal/map/",
+          "read": "1.11.2026 (existence checked in the live sitemap only)"
+        },
+        {
+          "url": "https://nad-lan.co.il/urban-renewal/pinui-binui/",
+          "read": "1.11.2026 (existence checked in the live sitemap only)"
+        }
+      ],
+      "notes": "Title avoids the tier A protected term פינוי בינוי (owner /urban-renewal/pinui-binui/, keyword guard OK); the excerpt keeps it only as the qualified phrase מתחמי פינוי בינוי (keyword guard WARN). The registry counts 970 compounds while the site catalog shows 975; the brief gives no reason for the gap, so the body states both numbers without explaining it."
+    },
+    {
+      "file": "news-2.html",
+      "category": "nadlan-news",
+      "status": "draft, not published",
+      "title": "בנק ישראל הותיר את הריבית ברמה של 3.25% בהחלטת 21.10.2026",
+      "slug": "boi-decision-october-2026",
+      "excerpt": "הוועדה המוניטרית הותירה ב-21.10.2026 את הריבית על 3.25%, והפריים נשאר 4.75%. מה אמר הנגיד על עסקאות, מלאי ומחירי הדירות.",
+      "key_fact": "Bank of Israel, 21.10.2026: rate unchanged at 3.25%.",
+      "sources": [
+        {
+          "url": "https://www.boi.org.il/media/auvddruu/%D7%93%D7%91%D7%A8%D7%99-%D7%A0%D7%92%D7%99%D7%93-%D7%91%D7%A0%D7%A7-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%AA%D7%93%D7%A8%D7%95%D7%9A-%D7%94%D7%A2%D7%99%D7%AA%D7%95%D7%A0%D7%90%D7%99%D7%9D-%D7%90%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%97%D7%9C%D7%98%D7%AA-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%94%D7%9E%D7%95%D7%A0%D7%99%D7%98%D7%A8%D7%99%D7%AA-21102026.pdf",
+          "read": "1.11.2026 (official PDF, full text read: decision, housing paragraph, inflation, forecast, shekel, FED and ECB)"
+        },
+        {
+          "url": "https://www.boi.org.il/en/communication-and-publications/press-releases/21-10-26ben/",
+          "read": "1.11.2026 (page behind a bot check; official title and next decision date 23.11.2026 confirmed through the search index of boi.org.il)"
+        },
+        {
+          "url": "https://www.boi.org.il/en/economic-roles/monetary-policy/interest-rate-announcement-dates-2026/",
+          "read": "1.11.2026 (search index only: lists 23/11/2026)"
+        },
+        {
+          "url": "https://www.boi.org.il/media/mcqp5bov/january-5-2026-intrest-rate.pdf",
+          "read": "1.11.2026 (official PDF read: cut to 4% on 5.1.2026)"
+        },
+        {
+          "url": "https://boi.org.il/en/communication-and-publications/press-releases/25-05-2026/",
+          "read": "1.11.2026 (search index title: cut to 3.75% on 25.5.2026)"
+        },
+        {
+          "url": "https://www.boi.org.il/en/communication-and-publications/press-releases/the-monetary-committee-decides-on-july-6-2026-to-lower-the-interest-rate-to-35-percent/",
+          "read": "1.11.2026 (search index title: cut to 3.5% on 6.7.2026)"
+        },
+        {
+          "url": "https://www.boi.org.il/en/communication-and-publications/press-releases/01-9-26-en/",
+          "read": "1.11.2026 (search index title: cut to 3.25% on 1.9.2026)"
+        },
+        {
+          "url": "https://www.bankhapoalim.co.il/he/interest-update",
+          "read": "1.11.2026 (search index: prime = Bank of Israel rate + 1.5 points; 4.75% is derived from 3.25%)"
+        }
+      ],
+      "notes": "boi.org.il HTML pages return a Radware bot check to automated fetches; only media PDFs could be read directly. Minutes date (4.11.2026) seen only in a search summary, left out."
+    },
+    {
+      "file": "news-3.html",
+      "category": "nadlan-news",
+      "status": "draft, not published",
+      "title": "הלמ\"ס: מדד מחירי הדירות ירד ב-0.6% בעסקאות של יולי ואוגוסט 2026",
+      "slug": "cbs-dwelling-july-august-2026",
+      "excerpt": "מדד מחירי הדירות של הלמ\"ס ירד ב-0.6% ביולי ובאוגוסט 2026 וב-1.8% בשנה. הפירוט לפי מחוזות, מדד הדירות החדשות ועסקאות בסבסוד.",
+      "key_fact": "CBS release 325/2026 of 15.10.2026: dwelling price index July-August 2026 down 0.6% vs June-July, down 1.8% year on year.",
+      "sources": [
+        {
+          "url": "https://www.cbs.gov.il/he/mediarelease/Madad/DocLib/2026/325/10_26_325b.pdf",
+          "read": "1.11.2026 (official PDF, full text read: national, district, new dwellings, subsidy share, 5-year change, next release 15.11.2026)"
+        },
+        {
+          "url": "https://www.boi.org.il/media/auvddruu/%D7%93%D7%91%D7%A8%D7%99-%D7%A0%D7%92%D7%99%D7%93-%D7%91%D7%A0%D7%A7-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%AA%D7%93%D7%A8%D7%95%D7%9A-%D7%94%D7%A2%D7%99%D7%AA%D7%95%D7%A0%D7%90%D7%99%D7%9D-%D7%90%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%97%D7%9C%D7%98%D7%AA-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%94%D7%9E%D7%95%D7%A0%D7%99%D7%98%D7%A8%D7%99%D7%AA-21102026.pdf",
+          "read": "1.11.2026 (official PDF: governor's mention of the 0.6% and 1.8% figures and the supply remark)"
+        },
+        {
+          "url": "https://www.funder.co.il/article/212003",
+          "read": "1.11.2026 (secondary cross-check of the 0.6% figure only)"
+        }
+      ],
+      "notes": "The CBS text compares the new-dwellings index to 'July-August 2026' (a typo in the release); the same paragraph names the previous period as June-July 2026, so the body says 'לעומת התקופה הקודמת'. All figures are provisional per CBS."
+    }
+  ]
+}

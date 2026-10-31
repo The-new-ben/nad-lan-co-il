@@ -40,6 +40,9 @@ def clean_name(t):
     t = re.sub(r",?\s*[-–]?\s*תכנית\s+[֐-׿״]{1,4}\s*/\s*\d+", "", t)  # an inner "תכנית רג/1767"
     t = re.sub(r"\s*התחדשות עירונית\s*", " ", t)
     t = re.sub(r"\s+,\s*", ", ", t)
+    t = re.sub(r"\s+[֐-׿״]{1,3}(?:\s*/\s*[֐-׿״]{1,3})*\s*/\s*\d+(?:\s*/\s*\d+)*\s*$", "", t)  # a plan code at the end: "נת/מק/59/548"
+    t = t.replace('"', "")
+    t = re.sub(r"\(\s+", "(", t); t = re.sub(r"\s+\)", ")", t)
     t = re.sub(r"^\s*[֐-׿״]{1,5}\s*/\s*\d+\s*(?:/\s*[֐-׿]{1,2}\s*)?[-–]\s*", "", t)  # a plan code in front: "רג/1506/א-"
     t = re.sub(r"\s+[-–—]\s+", ", ", t)
     t = re.sub(r"\s*/\s*", ", ", t)
@@ -111,17 +114,17 @@ for pid, r in snap.items():
     if not (r["units_existing"] and r["num_units"] and r["num_units"] >= r["units_existing"]):
         r["units_existing"] = r["units_added"] = 0
     r["renewal_track"] = "misui" if "מיסוי" in mas else ("rashuyot" if "רשויות" in mas else ("terem_huchraz" if "טרם" in mas else ""))
-cities = set(WAVES[wave])
+cities = set(WAVES[wave]) if wave in WAVES else {r.get("city") for r in snap.values() if r.get("source") == "urban_renewal"} - set(WAVES["1"])  # wave 2: every other city
 todo = [(pid, r) for pid, r in snap.items() if r.get("source") == "urban_renewal" and r.get("status") == "publish" and r.get("city") in cities]
 todo.sort(key=lambda x: (x[1]["city"], x[1]["title"]))
 if "--limit" in ARGV:
     todo = todo[:int(ARGV[ARGV.index("--limit") + 1])]
 plan = {}
 for pid, r in todo:
-    cityd = CITY_DISP.get(r["city"], r["city"])
+    cityd = CITY_DISP.get(r["city"], re.sub(r"^קרית ", "קריית ", r["city"]))
     name = clean_name(r["title"]) or r["title"]
     nm_norm = re.sub(r"[\s\-־״\"']+", "", name)
-    has_city = re.sub(r"[\s\-־״\"']+", "", cityd.replace("-יפו", "")) in nm_norm
+    has_city = any(re.sub(r"[\s\-־״\"']+", "", c.replace("-יפו", "")) in nm_norm for c in (cityd, r["city"]))
     title = f"{name}: פינוי בינוי" if has_city else f"{name}, {cityd}: פינוי בינוי"
     plan[pid] = {"name": name, "city": cityd, "title": title, "lead": lead(name, cityd, r), "r": r}
 seen = {}
