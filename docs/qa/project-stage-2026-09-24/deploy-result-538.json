@@ -1,0 +1,25 @@
+{
+ "released": "1.72.538",
+ "from": "1.72.537",
+ "live_before": {
+  "nadlan-config.php": "f7b3087ee99c15e747c016f7ae7fc76b",
+  "inc/milestones.php": "678255abbef3a8ac59ceb18cdd62adf3",
+  "inc/feature-bar.php": "8a984b32545f3db8d130dda1038e0540",
+  "inc/project-experience.php": "4d57e92e71869faba2fb8529abf110fc",
+  "inc/cards-render.php": "d548c50b35398a85c12ee1516b02447b"
+ },
+ "post_before": {},
+ "state": "released and verified",
+ "at": "2026-10-31 20:48:09",
+ "files": {
+  "inc/compound-tool.php": "e6f6a96cd3465e32c05b1d7fe4b26ba5",
+  "inc/price-nudge.php": "7cd36a25bd9e9ac6207a077ca6736d41",
+  "nadlan-config.php": "282edeb9f0837edcdbfb7124d8b6711e",
+  "inc/milestones.php": "543cf6b4690dc3f7c6ea38331e8e9d52",
+  "inc/feature-bar.php": "75eaee0e188abbf1342c92647c7b80f2",
+  "inc/project-experience.php": "92eda02f013d4ef089ec4435e8d81d68",
+  "inc/cards-render.php": "a69c50d381e2210e2e6016163d176013"
+ },
+ "post_after": {},
+ "verified_by": "verify538.py (read-only second pass, 31.10.2026): live files byte for byte (7/7) + every page check OK in two rounds; home-order alone BAD because the home magazine band needs >=3 nadlan-news posts from the last 120 days and the newest are from 1-2.7.2026 (they aged out on 29-30.10): calendar, not this release (it touches singular project pages only). Finding filed separately."
+}

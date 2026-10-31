@@ -2,7 +2,16 @@
 
 A quiet price-list slip that rises from the bottom of a project page, late in the visit, and offers plans, a timeline and current prices on WhatsApp in one tap. It never covers the page, it leaves with a swipe of the finger, and it fades out by itself if it is ignored.
 
-**Version 105 (31.10.2026, Ben's order: catch the visitors who read Rainbow and leave).** Design only, not built and not released. Linear HAD-642.
+**Version 105.2 (31.10.2026, Ben's wording).** Built for Rainbow only first (release 1.72.538); every other project waits for Ben's look.
+
+- **The line:** "מחירי הנדל״ן משתנים".
+- **The small line:** "לחצו לקבלת עדכון מחיר, תוכניות וסטטוס הפרויקט, ישירות בוואטסאפ."
+- **Three chips** ("עדכון מחיר", "תוכניות", "סטטוס הפרויקט"): each opens WhatsApp with its own ready message, so nobody has to type.
+- **The button:** "לקבלת עדכון בוואטסאפ".
+- **The delay is 25 seconds,** inside the 10 to 50 that the timing studies recommend, with 35% scroll.
+- **Ben owns the wording.** The project box takes his own line.
+
+**Version 105 (31.10.2026, Ben's order: catch the visitors who read Rainbow and leave).** Linear HAD-642.
 
 ## Why it looks like this
 
@@ -12,7 +21,7 @@ A quiet price-list slip that rises from the bottom of a project page, late in th
 
 ## When it appears (all thresholds are settings)
 
-- **Never on arrival.** The first trigger is 40 seconds of the page being visible AND at least 35% of the page scrolled.
+- **Never on arrival.** The first trigger is 25 seconds of the page being visible AND at least 35% of the page scrolled.
 - **Leaving signals, desktop:** the pointer leaves through the top edge of the window after 15 seconds on the page.
 - **Leaving signals, phone (there is no mouse):** a fast scroll back up (over 1,200 px per second) after the reader passed half the page; or the reader returns to the tab after leaving it for 20 seconds or more.
 - **Never:** while a form field has focus, after the reader already tapped any WhatsApp button or opened the chat on this visit, on a page whose project is switched off, or inside the 3D stage's full-screen mode.

@@ -1,0 +1,17 @@
+{
+  "released": "1.72.543",
+  "from": "1.72.542",
+  "live_before": {
+    "inc/compound-tool.php": "1e5c4c40ad2161cf681e9cd097025da1",
+    "nadlan-config.php": "9b8a3b00d5a4e9b5065bcb50d7613afc"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-31 22:32:44",
+  "files": {
+    "inc/compound-tool.php": "bd0a8b3f33d7e5fc5ce3d9e1e38b3c53",
+    "nadlan-config.php": "6251b9986abfd2cfc51fcb356e470d1c"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.543, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
