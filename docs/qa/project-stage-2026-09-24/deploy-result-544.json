@@ -1,0 +1,19 @@
+{
+  "released": "1.72.544",
+  "from": "1.72.543",
+  "live_before": {
+    "inc/compound-tool.php": "bd0a8b3f33d7e5fc5ce3d9e1e38b3c53",
+    "inc/price-nudge.php": "727e781255a921016d5312fe5df7dc4f",
+    "nadlan-config.php": "6251b9986abfd2cfc51fcb356e470d1c"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-31 22:59:01",
+  "files": {
+    "inc/compound-tool.php": "48833605e804356eff80fbe94ed9a081",
+    "inc/price-nudge.php": "dc97aff13b76591fac600545a788fefc",
+    "nadlan-config.php": "9f6096fce5f96018abe91d3a040a8509"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.544, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

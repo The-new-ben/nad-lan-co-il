@@ -9,12 +9,13 @@
  *  - [nadlan_compound_tool] renders the tool from the compound's own registry row and its city's registry numbers
  *    (data/renewal-stats.json): what an owner usually gets, how many signatures are missing for two thirds, five checks
  *    before buying, and the compound against its city;
- *  - the strips that do not belong to a compound in planning step aside in their own modules (milestones, feature bar,
- *    project experience, facts card), each with a one-line guard that calls nadlan_cv2_on();
+ *  - every strip the page had stays (Ben 31.10.2026, the additive law); the one-line guards in milestones, feature bar,
+ *    project experience and the facts card answer false unless the option nadlan_cv2_hide_strips is '1';
  *  - the search title names the compound, its city and "פינוי בינוי".
  * Honesty: every number is the registry's or a source accepted in UrbanRenewalHonesty (the 2020 policy, the authority's
  * calculator, the statute's two thirds, the authority's 2025 report). Unknown values are omitted, never shown as 0.
- * Which compounds: the option nadlan_cv2_ids (default: הגפן 8-10, post 2415). Ben approves before any other compound.
+ * Which compounds: every compound whose content holds [nadlan_compound_tool] (the HAD-642 loop writes it, wave by wave),
+ * plus the option nadlan_cv2_ids (default: הגפן 8-10, post 2415).
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -26,16 +27,27 @@ if ( ! function_exists( 'nadlan_cv2_ids' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_cv2_on' ) ) {
-	/** true on the singular page of an upgraded compound (or for a given post id) */
-	function nadlan_cv2_on( $id = 0 ) {
+if ( ! function_exists( 'nadlan_cv2_page' ) ) {
+	/** true on the singular page of an upgraded compound (or for a given post id): the tool's styles and search title */
+	function nadlan_cv2_page( $id = 0 ) {
 		$id = (int) $id;
 		if ( ! $id ) {
 			if ( is_admin() || ! is_singular( 'nadlan_project' ) ) { return false; }
 			$id = (int) get_queried_object_id();
 		}
 		if ( ! $id || 'urban_renewal' !== (string) get_post_meta( $id, 'source', true ) ) { return false; }
-		return in_array( $id, nadlan_cv2_ids(), true );
+		if ( in_array( $id, nadlan_cv2_ids(), true ) ) { return true; }
+		// HAD-642 loop: a compound is upgraded when its own content holds the tool (one CMS edit per compound, no list)
+		return false !== strpos( (string) get_post_field( 'post_content', $id ), '[nadlan_compound_tool' );
+	}
+}
+
+if ( ! function_exists( 'nadlan_cv2_on' ) ) {
+	/** the one-line guards in milestones, feature-bar, project-experience and cards-render ask this. Ben 31.10.2026 (the
+	 *  additive law): an upgraded compound keeps every strip it had, the tool is added, nothing is taken away; so this is
+	 *  false unless the option nadlan_cv2_hide_strips is '1' (kept only as a switch, off). */
+	function nadlan_cv2_on( $id = 0 ) {
+		return '1' === (string) get_option( 'nadlan_cv2_hide_strips', '0' ) && nadlan_cv2_page( $id );
 	}
 }
 
@@ -274,7 +286,7 @@ add_shortcode( 'nadlan_compound_tool', function () {
 
 /* the page's styles, only where the tool can render */
 add_action( 'wp_head', function () {
-	if ( ! nadlan_cv2_on() ) { return; }
+	if ( ! nadlan_cv2_page() ) { return; }
 	echo '<style id="nadlan-cv2-css">'
 		. '.nlct{--ink:#14212b;--ink2:#3b4753;--mute:#6b7680;--line:#e3e1da;--sea:#2f6f86;--seah:#255c70;--deep:#1f4b5c;--sand:#eee9dd;--paper:#f7f6f2;--wa:#0f7a63;'
 		. 'font-family:Assistant,Heebo,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;margin:6px 0 26px;display:grid;gap:14px;max-width:760px}'
@@ -350,7 +362,7 @@ add_action( 'wp_head', function () {
 /* the search title and description of an upgraded compound: its name, its city and "פינוי בינוי" (after bulk-project-seo) */
 if ( ! function_exists( 'nadlan_cv2_title' ) ) {
 	function nadlan_cv2_title( $title ) {
-		if ( ! nadlan_cv2_on() ) { return $title; }
+		if ( ! nadlan_cv2_page() ) { return $title; }
 		$id    = (int) get_queried_object_id();
 		$name  = trim( wp_strip_all_tags( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) );
 		$units = (int) get_post_meta( $id, 'num_units', true );
@@ -363,7 +375,7 @@ add_filter( 'pre_get_document_title', 'nadlan_cv2_title', 50 );
 add_filter( 'wpseo_opengraph_title', 'nadlan_cv2_title', 50 );
 if ( ! function_exists( 'nadlan_cv2_desc' ) ) {
 	function nadlan_cv2_desc( $desc ) {
-		if ( ! nadlan_cv2_on() ) { return $desc; }
+		if ( ! nadlan_cv2_page() ) { return $desc; }
 		$id   = (int) get_queried_object_id();
 		$name = trim( preg_replace( '/\s*,.*$/u', '', wp_strip_all_tags( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) ) );
 		$city = trim( (string) get_post_meta( $id, 'city', true ) );
