@@ -45,6 +45,17 @@ anchor = "    ('/wp-content/plugins/nadlan-config/assets/instruments/tools/dira.
 assert src.count(anchor) == 1, src.count(anchor)
 ADD = [("/projects/%d7%a9%d7%99%d7%91%d7%aa-%d7%a6%d7%99%d7%95%d7%9f/?t547s=1", ['class="nlpt-h1"'], ['פינוי בינוי, קרית אתא</h1>'])]
 src = src.replace(anchor, "".join("    (%r, %r, %r),\n" % t for t in ADD) + anchor)
+# first 547 run (rolled back): two inherited checks no longer describe the page as it should be.
+# (1) Rainbow carries the ProjectKit (1.72.546 + kit_cms.py): the instruments print the page's FAQPage (built from the same
+#     "שאלות נפוצות" section), so project-stage rightly skips its duplicate nadlan-ps-faq. One FAQPage stays: require that.
+# (2) The control compound (Weizmann North, Netanya) got the compound tool in wave 2: it must now HAVE id="nlct".
+_n = 0
+for _a, _b in (("'nadlan-ps-faq'", "'\"FAQPage\"'"), ("'id=\"nadlan-ps-faq\"'", "'\"FAQPage\"'")):
+    _n += src.count(_a); src = src.replace(_a, _b)
+assert _n >= 2, _n
+_cl = [l for l in src.split(chr(10)) if l.startswith("    ('/projects/%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%a6%d7%a4%d7%95%d7%9f-%d7%91%d7%90%d7%a8%d7%99/?t547c=1'")]
+assert len(_cl) == 1, len(_cl)
+src = src.replace(_cl[0], _cl[0].replace("'nadlan-project-article'], ['id=\"nlct\"', ", "'nadlan-project-article', 'id=\"nlct\"'], ["))
 src = re.sub(r'print\("RELEASE 1\.72\.547 LIVE: [^"]*"\)', 'print("RELEASE 1.72.547 LIVE: the H1 no longer repeats a city spelled the other way")', src)
 open(os.path.join(H, "deploy547.py"), "w", encoding="utf-8", newline="\n").write(src)
 print("deploy547.py + ashira_547.py written")

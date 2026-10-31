@@ -4583,3 +4583,6 @@ RELEASE LOCK 1.72.545 (NudgeViewFix + CompoundByContent, HAD-642: price-nudge.ph
 RELEASE DONE 1.72.545 (NudgeViewFix + CompoundByContent) by Claude [Grok/compounds session f8200c1d] 31.10.2026 23:51: released and verified, health 1.72.545. Lock released.
 RELEASE LOCK 1.72.546 (ProjectKit, HAD-642 loop: inc/project-kit.php new, in the live module list) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 31.10.2026 23:54.
 RELEASE DONE 1.72.546 (ProjectKit) by Claude [Grok/compounds session f8200c1d] 1.11.2026 00:07: released and verified, health 1.72.546. Lock released.
+RELEASE LOCK 1.72.547 (CitySpellings, HAD-642 loop: one hunk on the live inc/bulk-project-seo.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 00:51.
+ROLLED BACK 1.72.547 (first run) 01:18: two inherited checks were stale (Rainbow now prints its FAQPage through the ProjectKit instruments, not nadlan-ps-faq; the Netanya control compound now has the tool). Live stayed 1.72.546. Second run follows with those checks updated; lock kept.
+RELEASE DONE 1.72.547 (CitySpellings, second run) by Claude [Grok/compounds session f8200c1d] 1.11.2026 01:31: released and verified, health 1.72.547. Lock released.
