@@ -4586,3 +4586,5 @@ RELEASE DONE 1.72.546 (ProjectKit) by Claude [Grok/compounds session f8200c1d] 1
 RELEASE LOCK 1.72.547 (CitySpellings, HAD-642 loop: one hunk on the live inc/bulk-project-seo.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 00:51.
 ROLLED BACK 1.72.547 (first run) 01:18: two inherited checks were stale (Rainbow now prints its FAQPage through the ProjectKit instruments, not nadlan-ps-faq; the Netanya control compound now has the tool). Live stayed 1.72.546. Second run follows with those checks updated; lock kept.
 RELEASE DONE 1.72.547 (CitySpellings, second run) by Claude [Grok/compounds session f8200c1d] 1.11.2026 01:31: released and verified, health 1.72.547. Lock released.
+RELEASE LOCK 1.72.548 (CityProjects, HAD-642 loop: inc/city-projects.php new, in the live module list) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 01:52.
+RELEASE DONE 1.72.548 (CityProjects) by Claude [Grok/compounds session f8200c1d] 1.11.2026 02:31: released and verified (round 1 had host 502s on heavy pages, round 2 clean), health 1.72.548. Lock released.

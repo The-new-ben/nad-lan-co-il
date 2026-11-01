@@ -61,7 +61,12 @@
 - [x] **L3 Keyword map** (1.11, 01:40). File: `docs/research/2026-11-01-keyword-map/keyword-map.md`.
   - Finding: no page owns "פרויקטים חדשים ב<city>" in the center outside TLV and Herzliya (about 1,500 searches a month; the retired city pages ranked 21-28). The cannibal pairs are listed in the map.
   - Eilat demand is mostly listings (rent 2,400, sale 590); we have no listings there. `/eilat-apartment-prices/` is the only owner page.
-- [ ] **L3a City "new projects" block on the existing city price pages.** Data, not prose.
+- [x] **L3a City "new projects" block** (1.11, 04:00).
+  - Release 1.72.548 adds `inc/city-projects.php`; Claude Design v105.4 CityProjects.
+  - `city_cms.py` appended `[nadlan_city_projects city=…]` to 7 pages: Ramat Gan, Petah Tikva, Rishon, Bat Yam, Holon, Givatayim and Eilat. Backup: `city-backup.json`.
+  - Checked at 390 px on Ramat Gan, Eilat, Petah Tikva and Givatayim: H2 "פרויקטים חדשים והתחדשות עירונית ב<city>", 12 cards (6 in Eilat), one H1, no sideways scroll.
+- [ ] **L3a-polish:** card names drop the repeated ", <city>"; the registry stage text " - " becomes " · ". Next release.
+- Original L3a item: **L3a City "new projects" block on the existing city price pages.** Data, not prose.
   - Pages: `/ramat-gan-apartment-prices/`, `/petah-tikva-apartment-prices/`, `/rishon-lezion-apartment-prices/`, `/bat-yam/`, `/holon-apartment-prices/`, `/givatayim-apartment-prices/` and `/eilat-apartment-prices/` (check each exists).
   - The block: Claude Design `CityProjects`, then the shortcode `[nadlan_city_projects city="…"]`.
   - It holds the city's developer projects and its registry compounds by stage, each a card linking to its page, plus the registry numbers.
