@@ -1,0 +1,22 @@
+{
+ "id": 8745,
+ "slug": "seven-seas",
+ "link": "https://nad-lan.co.il/projects/seven-seas/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "שדה דב",
+  "address": "איינשטיין פינת אבן גבירול, שדה דב, תל אביב-יפו",
+  "developer_name": "אלקטרה מגורים ודן נדל״ן",
+  "architect_name": "יסקי מור סיון אדריכלים",
+  "project_type": "new_build",
+  "project_status": "בשיווק",
+  "num_units": 437,
+  "num_floors": 45,
+  "website": "https://electra-megurim.com/portfolio-item/%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+  "source": "אלקטרה מגורים, מרכז הנדל״ן, כלכליסט, ביזפורטל, ynet, project-tlv",
+  "source_url": "https://www.bizportal.co.il/realestates/news/article/20032954",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "SEVEN SEAS"
+ }
+}

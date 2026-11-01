@@ -4632,3 +4632,5 @@ RELEASE LOCK 1.72.562 (WhatsAppWordsBack, Ben 1.11 late: 'תחזיר הכל כמ
 RELEASE DONE 1.72.562 (WhatsAppWordsBack) by Claude [Grok/compounds session f8200c1d] 1.11.2026 23:31: released and verified, health 1.72.562. Lock released. Every WhatsApp wording is back to what it was before 1.11 (bar, stage buttons, messages in five languages, sheet, basket, 4 article sentences); the GA4 lead event stays.
 RELEASE LOCK 1.72.563 (MarinaOfficial, HAD-654 R6b: data/radius-prices.json swapped whole, Marina shows the official Herzliya Pituach median) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 00:12.
 RELEASE DONE 1.72.563 (MarinaOfficial) by Claude [Grok/compounds session f8200c1d] 2.11.2026 00:28: released and verified, health 1.72.563. Lock released.
+RELEASE LOCK 1.72.564 (SevenSeasData, HAD-654 R7b: data/project-facts.json swapped whole, 13 sourced rows for the new page 8745) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 00:52.
+RELEASE DONE 1.72.564 (SevenSeasData) by Claude [Grok/compounds session f8200c1d] 2.11.2026 01:03: released and verified, health 1.72.564. Lock released.

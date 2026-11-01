@@ -180,4 +180,9 @@
 - [x] **Ben's yes, 1.11** (both done the same evening):
   - IndexNow for Bing: the radius pages and the new pages were pinged. ChatGPT search reads Bing, and our Bing traffic is 49.
   - The WhatsApp click is now a GA4 key event, `whatsapp_click`. Release 1.72.558 sends it through gtag; before that, a plain dataLayer object never reached GA4.
-- [ ] **Next gap pages, at most two a day:** seven-seas, then shbiro-2468, levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+- [x] **R7b SEVEN SEAS page** (2.11, about 02:30). Live: https://nad-lan.co.il/projects/seven-seas/ (post 8745).
+  - **The article:** ChatGPT Pro wrote it from the brief (https://chatgpt.com/c/6ae7be0d-f46c-83eb-b078-bacce3a573d3). It is 620 words, blacklist clean, and every number comes from the brief. Two table dates written as "לא צוין" became 3.2026, the date of the source.
+  - **The facts:** release 1.72.564 added 13 sourced rows. It was released and verified.
+  - **Checked at 390 px:** H1 at 154, lead at 226, facts at 2073, kit at 7042. One H1, no sideways scroll, no long dash, no raw shortcode, FAQ schema present. Evidence: `docs/qa/gap-pages/seven-seas-*.jpg`.
+  - **No price list around it:** the plot location has no published source.
+- [ ] **Next gap pages, at most two a day:** seven-seas done 2.11; next shbiro-2468, levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
