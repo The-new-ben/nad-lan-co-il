@@ -1968,6 +1968,9 @@ if ( ! function_exists( 'nadlan_utopia_compose_public_content' ) ) {
 			(string) $raw
 		);
 		$raw = nadlan_utopia_rewrite_asset_urls( $raw );
+		// 1.72.559 (HAD-654): the page is rebuilt from the raw content at PHP_INT_MAX, after WordPress ran the shortcodes, so the
+		// blocks appended to the content ([nadlan_project_kit], [nadlan_radius_prices]) printed as text; they run here
+		if ( false !== strpos( $raw, '[nadlan_' ) ) { $raw = do_shortcode( $raw ); }
 		if ( preg_match( '#<header\b[^>]*class="[^"]*nadlan-project-lead[^"]*"[^>]*>.*?</header>#is', $raw, $lead_match, PREG_OFFSET_CAPTURE ) ) {
 			$lead        = $lead_match[0][0];
 			$lead_offset = $lead_match[0][1];

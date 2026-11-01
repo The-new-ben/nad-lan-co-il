@@ -59,13 +59,13 @@ add_action( 'wp_footer', function () {
 		$rv_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
 		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
 		$rv = array(
-			// PriceBar (1.72.510, Ben 23.10.2026): the bar reads "לקבלת מחירים, תוכניות והטבות" on every page (was "ייעוץ חינם",
-			// v101); the message it opens is unchanged
-			'he' => array( "לקבלת מחירים, תוכניות והטבות", "מענה בוואטסאפ", "וואטסאפ · לקבלת מחירים, תוכניות והטבות בפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
-			'en' => array( "Prices, floor plans and offers", "Reply on WhatsApp", "WhatsApp: prices, floor plans and offers for the project", "Hi, I have a question about this project." ),
-			'fr' => array( "Prix, plans et offres", "Réponse sur WhatsApp", "WhatsApp : prix, plans et offres du projet", "Bonjour, j'ai une question sur ce projet." ),
-			'ru' => array( "Цены, планировки и акции", "Ответ в WhatsApp", "WhatsApp: цены, планировки и акции по проекту", "Здравствуйте, у меня вопрос по проекту." ),
-			'ar' => array( "الأسعار والمخططات والعروض", "رد على واتساب", "واتساب · الأسعار والمخططات والعروض للمشروع", "مرحبا، لدي سؤال حول المشروع." ),
+			// PriceBar (1.72.510, Ben 23.10.2026), v105.9 (Ben 1.11.2026): "לקבלת מחירים ופרטים מהיזם": no "תוכניות" (the site holds
+			// no developer plans and is not the developer; it asks the developer for details); the message it opens is unchanged
+			'he' => array( "לקבלת מחירים ופרטים מהיזם", "מענה בוואטסאפ", "וואטסאפ · לקבלת מחירים ופרטים מהיזם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
+			'en' => array( "Prices and details from the developer", "Reply on WhatsApp", "WhatsApp: prices and details from the developer", "Hi, I have a question about this project." ),
+			'fr' => array( "Prix et détails du promoteur", "Réponse sur WhatsApp", "WhatsApp : prix et détails du promoteur", "Bonjour, j'ai une question sur ce projet." ),
+			'ru' => array( "Цены и детали от застройщика", "Ответ в WhatsApp", "WhatsApp: цены и детали от застройщика", "Здравствуйте, у меня вопрос по проекту." ),
+			'ar' => array( "الأسعار والتفاصيل من المطوّر", "رد على واتساب", "واتساب · الأسعار والتفاصيل من المطوّر", "مرحبا، لدي سؤال حول المشروع." ),
 		);
 		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
 		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];
@@ -118,7 +118,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 /* P8 (1.72.370): the Russian words ("Бесплатная консультация", 201px) pushed the NadLan mark past the pill and off a 360-390px
    screen; on Russian pages the pill may take a little more width and the words a slightly smaller size (measured: fits at 360) */
 @media(max-width:520px){html[lang^="ru"] #nlcta .nlcta-wa{max-width:min(80vw,292px)}html[lang^="ru"] #nlcta .nlcta-txt b{font-size:13.5px;letter-spacing:-.1px}}
-/* PriceBar (1.72.510, Ben 23.10.2026): "לקבלת מחירים, תוכניות והטבות" is three times the old words. On phones they take two
+/* PriceBar (1.72.510, Ben 23.10.2026; wording v105.9 1.11.2026): the bar's words are three times the old ones. On phones they take two
    lines inside the same pill, and the small "מענה בוואטסאפ" line steps aside so the pill keeps its height (measured at 360px in
    the five languages and on a 3D-world band: 233-288px wide, 50px high, the WhatsApp glyph and the NadLan mark inside). */
 @media(max-width:520px){#nlcta .nlcta-txt{white-space:normal;min-width:0}#nlcta .nlcta-txt b{text-wrap:balance;line-height:1.12}#nlcta .nlcta-txt small{display:none}}
@@ -148,7 +148,9 @@ html body #nlcta .nlcta-wa{display:flex!important}
 <script>
 (function(){
 	window.dataLayer=window.dataLayer||[];
-	window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};
+	// 1.72.558 (Ben 1.11.2026: count a WhatsApp tap as a lead): the site runs gtag.js, which ignores plain dataLayer objects, so the
+	// event also goes through gtag; GA4 marks whatsapp_click as a key event
+	window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));if(typeof window.gtag==='function')window.gtag('event',n,p||{});}catch(e){}};
 	var wa=document.querySelector('.nlcta-wa');
 	// with the sheet, the click that counts is the sheet's own "open in WhatsApp" (inc/cta-sheet.php); the pill alone stays a link
 	if(wa&&!document.getElementById('nlcta-sheet'))wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});

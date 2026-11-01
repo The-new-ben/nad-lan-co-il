@@ -41,17 +41,15 @@ if ( ! function_exists( 'nadlan_nudge_on' ) ) {
 	function nadlan_nudge_on( $id = 0 ) {
 		$id = (int) ( $id ?: get_queried_object_id() );
 		if ( ! $id || 'publish' !== get_post_status( $id ) || post_password_required( $id ) ) { return false; }
-		/* 105.7 (Ben 1.11.2026): the listings of the brokers named in nadlan_nudge_brokers (first: Meital Katsir, 7833), Hebrew pages */
+		/* 105.9 (Ben 1.11.2026: "on everyone except Rainbow"): every Hebrew listing */
 		if ( 'nadlan_property' === get_post_type( $id ) ) {
-			$br = (array) get_option( 'nadlan_nudge_brokers', array( 7833 ) );
-			return in_array( (int) get_post_meta( $id, 'nl_broker_id', true ), array_map( 'intval', $br ), true )
-				&& (bool) preg_match( '/\p{Hebrew}/u', (string) get_the_title( $id ) );
+			return (bool) preg_match( '/\p{Hebrew}/u', (string) get_the_title( $id ) );
 		}
 		if ( 'nadlan_project' !== get_post_type( $id ) || nadlan_nudge_blocked( $id ) ) { return false; }
 		$m = (string) get_post_meta( $id, 'nadlan_nudge', true );
 		if ( 'on' === $m ) { return true; }
 		if ( 'off' === $m ) { return false; }
-		return 'on' === nadlan_nudge_opts()['default'];
+		return true; // 105.9 (Ben 1.11.2026): on by default; a box that says off (Rainbow) and Ashira stay without it
 	}
 }
 

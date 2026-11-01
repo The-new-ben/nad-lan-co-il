@@ -4606,3 +4606,19 @@ RELEASE LOCK 1.72.554 (PriceNudgeSite, rerun after the check fix) by Claude [Gro
 RELEASE DONE 1.72.554 (PriceNudgeSite) by Claude [Grok/compounds session f8200c1d] 1.11.2026 19:08: released and verified, health 1.72.554. Lock released.
 RELEASE LOCK 1.72.555 (PhilharmonitData, HAD-654 R7a1: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8743) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 19:52.
 RELEASE DONE 1.72.555 (PhilharmonitData) by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:06: released and verified, health 1.72.555. Lock released.
+RELEASE LOCK 1.72.556 (ReadingData, HAD-654 R7a2: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8744) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 20:31.
+RELEASE DONE 1.72.556 (ReadingData) by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:41: released and verified, health 1.72.556. Lock released.
+RELEASE LOCK 1.72.557 (WindowEverywhere + BarWords, Ben 1.11 + Claude Design v105.9: price-nudge.php + conversion-cta.php swapped whole, i18n.php hunks) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 20:45.
+RELEASE DONE 1.72.557 (WindowEverywhere + BarWords) by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:55: released and verified, health 1.72.557. Lock released.
+RELEASE LOCK snippet x-broker-drop (Ben 1.11, Claude Design v105.8: Meital's listing order pinned 7634/7635/7633, the twin uploads 8384/8456 not listed twice; deploydrop.py --only x-broker-drop) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 20:55.
+RELEASE DONE snippet x-broker-drop (first pass: twins hidden) by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:57; second pass next: the hand-built cards also follow the pin.
+RELEASE LOCK snippet x-broker-drop pass 2 (pinned hand-built cards lead) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 20:57.
+RELEASE DONE snippet x-broker-drop pass 2 by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:58: installed (server lint), Meital's sites 200, no PHP error. Lock released.
+RELEASE LOCK snippet x-broker-drop pass 3 (an edited hand-built listing loses its old card: Meital's penthouse showed twice) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 20:59.
+RELEASE DONE snippet x-broker-drop pass 3 by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:59: Meital's sites he/en 200 with 11 cards, order 7634, 7635, 7633, then by date; no duplicates. Lock released.
+RELEASE LOCK 1.72.558 (LeadEvent + FreeMonth + NeutralBar, Ben 1.11: conversion-cta.php + advertise-tiers.php swapped whole, i18n.php hunks) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 21:01.
+RELEASE ROLLED BACK 1.72.558 by Claude [Grok/compounds session f8200c1d] 1.11.2026 21:30: my generator moved two project-page checks (RB = Rainbow, the Kikar path variable) to the neutral words; the bar keeps 'מהיזם' there. Rollback clean, health 1.72.557. Generator fixed; rerun next.
+RELEASE LOCK 1.72.558 (rerun after the generator fix) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 21:30.
+RELEASE DONE 1.72.558 (LeadEvent + FreeMonth + NeutralBar) by Claude [Grok/compounds session f8200c1d] 1.11.2026 21:43: released and verified, health 1.72.558. Lock released.
+RELEASE LOCK 1.72.559 (UtopiaShortcodes: inc/utopia-sde-dov.php swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 21:43.
+RELEASE DONE 1.72.559 (UtopiaShortcodes) by Claude [Grok/compounds session f8200c1d] 1.11.2026 21:58: released and verified, health 1.72.559. Lock released. Utopia now runs [nadlan_radius_prices] and [nadlan_project_kit] instead of printing them.

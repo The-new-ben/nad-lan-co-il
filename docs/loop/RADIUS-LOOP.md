@@ -106,7 +106,7 @@
   - **Order at 390 px:** H1 154, lead 226, facts 2451, radius block 29861.
   - **Checks:** `content_first_check.py` failed 0. The Zohi radius box now shows Rainbow with 459 units. Stage pages (Hamedina) keep their own `.nlpf` and get no ProjectFacts.
   - **Design** v105.6 in DS artifact version 258.
-- [ ] **R2c WAITS FOR Ben's look at the pilot.** Zohi, Einstein 19 and Hamedina. His word gates the clone waves R3-R6 (RadiusPrices + ProjectFacts on every radius page).
+- [x] **R2c Ben's word on the pilot** (1.11, evening): "עוד 17 עמודים, כן". The clone waves R3-R6 are open.
 - [x] **R3a Fix the facts the sources contradict** (1.11, 19:00; meta only, `r3a_cms.py`, backup `r3a-backup.json`).
   - **Utopia** 4749: project_status permits → construction. Source: Nadlan Center 27.10.2025, "קבוצת נחמיאס החלה בעבודות הבניה", article 13109.
   - **Dimri Yama** 4745: num_floors 39 → 38. Source: the developer's page "8/38 קומות", 4 buildings, 458 units, read 1.11.2026.
@@ -134,19 +134,30 @@
   - einstein-19: the Einstein cluster has no AI visits;
   - hamedina: 8 AI visits, no date line, no tools.
   - Then Ben's look.
-- [ ] **R3 Sde Dov wave:** dimri-yama, gindi-vogue, utopia, first, rainbow. Fix Rainbow's 459/480. Rainbow gets additions below only.
-- [ ] **R4 Einstein wave:** ashdar-einstein, recanati-residence, einstein-tower (below the pinned article).
-- [ ] **R5 Kochav and Park Tzameret:** akirov, yoo, park-bavli, duo, h-infinity.
-- [ ] **R6 Herzliya:** marina-towers, plus the gaps there.
+- [x] **R3-R6 price list around each project, RadiusPrices** (1.11, after Ben's yes; `rp_cms.py --ids`, backup `docs/qa/compound-wave/rp-backup.json`). The block went onto 18 pages:
+  - Sde Dov: zohi, first, dimri-yama, gindi-vogue, utopia, migdalei-hayam, shikun-binui, rainbow (below its content only), hamedina;
+  - Einstein: einstein-19, ashdar-einstein, recanati-residence. einstein-tower was skipped because its article is pinned;
+  - Kochav and Park Tzameret: akirov, yoo, park-bavli, duo, h-infinity;
+  - Herzliya: marina-towers. The page shows nothing, because the Tel Aviv deals file has no Herzliya rows.
+  - **Utopia printed the shortcodes as text** (its own kit too, since 31.10). The page is rebuilt from the raw content at PHP_INT_MAX. Fixed in release 1.72.559 (`do_shortcode` inside `nadlan_utopia_compose_public_content`), released and verified 1.11 late.
+    - **Checked at 390 px:** one H1, no sideways scroll, the price list at 40,619 and the kit at 42,665, and no raw shortcode text.
+    - **Evidence:** `docs/qa/radius-552/utopia-559-390.jpg`.
+- [ ] **R3-R6 ProjectFacts on the non-stage radius pages:** the sourced rows come from the R0 inventory and the briefs. Each page gets rows only where a source is linked. Stage pages keep their own `.nlpf`.
+- [ ] **R6b Herzliya deals:** the official file or the big-cities workbook, so that marina-towers gets a price list.
 - [x] **R7a1 Philharmonit page** (1.11, 22:00). Live: https://nad-lan.co.il/projects/philharmonit/ (post 8743).
   - **The article:** ChatGPT Pro wrote it from `briefs/philharmonit.md`, with a second, tighter pass. 710 words, blacklist clean, every number from the brief.
   - **How it was built:** `gap_page_create.py` created the page with its meta and kit name. Release 1.72.555 added its data (11 sourced facts, the radius price list) and was released and verified.
   - **FAQ schema:** the Q&A heading was renamed "שאלות נפוצות", so the site emits 6 FAQ entries.
   - **Checked live at 390 px:** H1 154, lead 226, facts 1664, radius 6179, kit 8309. One H1, no sideways scroll, no long dash in the text. Evidence: `docs/qa/gap-pages/`.
   - **Finding:** the floating bar on project pages reads "לקבלת מחירים, תוכניות והטבות". It offers developer plans the site does not hold, the same risk as the old price slip. Waits for Ben (HAD-658 #12).
+- [x] **R7a2 Aviv BaReading page** (1.11, 20:41). Live: https://nad-lan.co.il/projects/reading-31-33/ (post 8744), with its data in release 1.72.556. The brief is `briefs/reading-31-33.md`; the spec is `briefs/reading-31-33.spec.json`.
+  - Checked: the slug passes; the title "אביב ברדינג, רדינג 31-33 רמת אביב הירוקה: אביב מליסרון" passes `kw_guard` (the first version held the protected term "פינוי בינוי" and was changed); the coordinates are 32.10755, 34.79391 (block 6771, parcel 20); 3 of 4 source links answer 200, and Calcalist blocks bots (403) but opens for people.
+  - ChatGPT Pro is writing (https://chatgpt.com/c/6ae780f6-7900-83ed-8d0d-ff89ebe32533, sent 1.11 around 22:30, with the tight style rules in the first prompt).
+  - Next: collect it, `gap_page_create.py`, facts and radius data (release 556), verify.
 - [ ] **R7 Gap pages:** a new page for each real project we lack, small streets included, written through ChatGPT with the DNA.
 - [ ] **R8 Languages:** the 8 radius pages without EN/FR/RU/AR, then the new pages.
 - [ ] **R9 Measure:** GA4 AI landing pages every week (Rainbow baseline: 19 in 5 months). Record the ChatGPT answer for "<project> מחירים" before and after.
-- [ ] **WAITS FOR BEN:**
-  - IndexNow for Bing (ChatGPT search reads Bing; our Bing traffic is 49);
-  - marking the WhatsApp click as a key event in GA4 (today 0).
+- [x] **Ben's yes, 1.11** (both done the same evening):
+  - IndexNow for Bing: the radius pages and the new pages were pinged. ChatGPT search reads Bing, and our Bing traffic is 49.
+  - The WhatsApp click is now a GA4 key event, `whatsapp_click`. Release 1.72.558 sends it through gtag; before that, a plain dataLayer object never reached GA4.
+- [ ] **Next gap pages, at most two a day:** seven-seas, then shbiro-2468, levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.

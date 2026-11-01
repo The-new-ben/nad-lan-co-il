@@ -54,7 +54,7 @@ if ( ! function_exists( 'nadlan_adt_tracks' ) ) {
 		$area  = nadlan_adt_extra( 'area' );
 		$story = nadlan_adt_extra( 'story' );
 		$basic = array( 'id' => 475, 'label' => 'כרטיס בסיסי', 'price' => 0, 'period' => 'ללא הגבלת זמן', 'small' => 'תמיד', 'meter' => 1 );
-		$pro   = array( 'id' => 476, 'label' => 'פרופיל Pro', 'price' => nadlan_adt_price( 476, 349 ), 'period' => 'לחודש', 'small' => 'לחודש · הראשון חינם', 'first' => 'החודש הראשון חינם', 'meter' => 2,
+		$pro   = array( 'id' => 476, 'label' => 'פרופיל Pro', 'price' => nadlan_adt_price( 476, 349 ), 'period' => 'לחודש', 'small' => 'לחודש', 'meter' => 2,
 			'feats' => array( 'טלפון ווואטסאפ גלויים', 'קישור לאתר שלכם', 'תמונות ותיאור מלא', 'פניות ישירות אליכם' ) );
 		$prem  = array( 'id' => 477, 'label' => 'פרופיל Premier', 'price' => nadlan_adt_price( 477, 749 ), 'period' => 'לחודש', 'small' => 'לחודש', 'meter' => 3,
 			'feats' => array( 'כל מה שב־Pro', 'קדימות בתוך המדריכים', 'תג פרופיל מאומת', 'צוות, פרויקטים וגלריה' ) );
@@ -152,7 +152,7 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 			if ( 'renewal' === $key ) {
 				$pp = nadlan_adt_money( nadlan_adt_price( 476, 349 ) ); $sp = nadlan_adt_money( nadlan_adt_price( nadlan_adt_extra( 'story' ), 1490 ) ); $dp = nadlan_adt_money( nadlan_adt_price( (int) get_option( 'nadlan_procard_product', 5403 ), 199 ) );
 				$h .= '<div class="nladt__pack" data-pack><p class="nladt__kick">ההצעה לחברה מארגנת</p><h3>פרופיל בקטגוריית ארגון דיירים, ואם תרצו גם כתבה שאתם מאשרים</h3><ul>'
-					. '<li><b>פרופיל Pro</b>: הצוות, הפרויקטים שאתם מלווים, וואטסאפ, טלפון וקישור לאתר שלכם. ' . esc_html( $pp ) . ' לחודש, והחודש הראשון חינם</li>'
+					. '<li><b>פרופיל Pro</b>: הצוות, הפרויקטים שאתם מלווים, וואטסאפ, טלפון וקישור לאתר שלכם. ' . esc_html( $pp ) . ' לחודש</li>'
 					. '<li><b>כתבת מפרסם</b> בעברית ובאנגלית בתוך הפרופיל, עולה רק אחרי שאישרתם. ' . esc_html( $sp ) . ' פעם אחת, לא חובה</li>'
 					. '<li><b>חסות "ליווי דיירים"</b>: הכרטיס ראשון במדריכים ובמונחים של התחום. ' . esc_html( $dp ) . ' ל־30 יום, לא חובה</li></ul>'
 					. '<p class="nladt__packnote">הקידום אורגני: אין התחייבות למספר צפיות או פניות. חדר ניהול להתחדשות עירונית בונים עכשיו יחד עם החברות המארגנות הראשונות, ונשמח לבחון אותו איתכם (<a href="' . esc_url( home_url( '/my-renewal/' ) ) . '">חדר לדוגמה</a>).</p>'

@@ -1,0 +1,28 @@
+{
+ "slug": "reading-31-33",
+ "title": "אביב ברדינג, רדינג 31-33 רמת אביב הירוקה: אביב מליסרון",
+ "kit_name": "אביב ברדינג",
+ "allowed_numbers": ["31", "33", "31-33", "36", "84", "2", "3", "4", "5", "6", "7", "2024", "2028", "3,492,000", "4,540,000", "5,576,000", "7,702,000"],
+ "meta": {
+  "city": "תל אביב יפו",
+  "neighborhood": "רמת אביב",
+  "address": "רדינג 31-33, תל אביב-יפו",
+  "gush": "6771",
+  "helka": "20",
+  "developer_name": "אביב מליסרון וסער שקד נדל״ן",
+  "contractor_name": "אביב ייזום",
+  "architect_name": "מילבאואר אדריכלים",
+  "project_type": "new_build",
+  "project_status": "בשיווק",
+  "num_units": 84,
+  "num_buildings": 2,
+  "num_floors": 5,
+  "price_min": 3492000,
+  "website": "https://avivmelisron.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D-%D7%91%D7%A9%D7%99%D7%95%D7%95%D7%A7/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%90%D7%91%D7%99%D7%91-%D7%91%D7%A8%D7%93%D7%99%D7%A0%D7%92-3331/",
+  "lat": "32.10755",
+  "lng": "34.79391",
+  "source": "אביב מליסרון, וואלה נדל״ן, כלכליסט, project-tlv",
+  "source_url": "https://nadlan.walla.co.il/item/3677541",
+  "data_quality": "enriched"
+ }
+}

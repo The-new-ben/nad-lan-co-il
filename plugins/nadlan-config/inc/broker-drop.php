@@ -2737,6 +2737,14 @@ function nl_drop_rest_build( WP_REST_Request $req ) {
 	return $res;
 }
 
+/** v105.8: the broker's own order: pinned ids (in order) and hidden twin uploads. Meital's is the default until the option is saved. */
+function nl_drop_order( $bid ) {
+	$ord = get_option( 'nl_broker_order_' . (int) $bid, null );
+	if ( ! is_array( $ord ) && 7833 === (int) $bid ) { $ord = array( 'pin' => array( 7634, 7635, 7633 ), 'hide' => array( 8384, 8456 ) ); }
+	return array( 'pin' => array_map( 'intval', (array) ( is_array( $ord ) ? ( $ord['pin'] ?? array() ) : array() ) ),
+		'hide' => array_map( 'intval', (array) ( is_array( $ord ) ? ( $ord['hide'] ?? array() ) : array() ) ) );
+}
+
 function nl_drop_broker_listings( $bid, $lang = 'he', $only_live = true ) {
 	$lang = nl_drop_L( $lang );
 	$q    = get_posts( array(
@@ -2769,6 +2777,18 @@ function nl_drop_broker_listings( $bid, $lang = 'he', $only_live = true ) {
 			'date'     => get_post_time( 'U', true, $p->ID ),
 			'modified' => get_post_modified_time( 'U', true, $p->ID ),
 		);
+	}
+	/* v105.8 (Ben 1.11.2026): the broker's own order. Pinned listings lead in the order given, the rest follow newest first.
+	   A twin upload marked hidden stays live at its address but is not listed twice on the public site (the broker's office
+	   still lists it). Option nl_broker_order_<broker id> = array( 'pin' => ids, 'hide' => ids ); Meital's is the default. */
+	$ord  = nl_drop_order( $bid );
+	$pin  = $ord['pin'];
+	$hide = $only_live ? $ord['hide'] : array();
+	if ( $pin || $hide ) {
+		$out  = array_values( array_filter( $out, function ( $L ) use ( $hide ) { return ! in_array( (int) $L['id'], $hide, true ); } ) );
+		$rank = array();
+		foreach ( $out as $i => $L ) { $k = array_search( (int) $L['id'], $pin, true ); $rank[ (int) $L['id'] ] = false === $k ? 1000 + $i : (int) $k; }
+		usort( $out, function ( $a, $b ) use ( $rank ) { return $rank[ (int) $a['id'] ] <=> $rank[ (int) $b['id'] ]; } );
 	}
 	return $out;
 }
@@ -2870,6 +2890,17 @@ function nl_drop_remove_li( $html, $id ) {
 		if ( $depth === 0 ) { return substr( $html, 0, $start ) . substr( $html, $i ); }
 	}
 	return $html;
+}
+
+/** v105.8: takes a card out of the hand-built list: array( the rest, the card ); the card is '' when it is not there. */
+function nl_drop_take_li( $html, $id ) {
+	$p = strpos( $html, 'id="' . $id . '"' );
+	if ( $p === false ) { return array( $html, '' ); }
+	$start = strrpos( substr( $html, 0, $p ), '<li' );
+	if ( $start === false ) { return array( $html, '' ); }
+	$rest = nl_drop_remove_li( $html, $id );
+	$n    = strlen( $html ) - strlen( $rest );
+	return $n > 0 ? array( $rest, substr( $html, $start, $n ) ) : array( $html, '' );
 }
 
 function nl_drop_card_html( $L, $lang, $b ) {
@@ -3544,9 +3575,26 @@ add_filter( 'the_content', function ( $html ) {
 		if ( $L['card_key'] !== '' && $L['status'] !== 'active' ) { $html = nl_drop_remove_li( $html, 'nlb-' . $lang . '-' . $L['card_key'] ); }
 	}
 	$cards = '';
+	$pin   = nl_drop_order( $bid )['pin'];
+	$top   = array();
 	foreach ( $all as $L ) {
-		if ( $L['source'] === 'broker_drop' && $L['status'] === 'active' ) { $cards .= nl_drop_card_html( $L, $lang, $b ); }
+		if ( $L['status'] !== 'active' ) { continue; }
+		// v105.8: a hand-built listing the broker has since edited is uploaded now (source broker_drop): its old hand-built card
+		// goes, so the listing is shown once (Meital's penthouse showed twice, L07 and d7634)
+		if ( $L['source'] === 'broker_drop' && $L['card_key'] !== '' ) { $html = nl_drop_remove_li( $html, 'nlb-' . $lang . '-' . $L['card_key'] ); }
+		$k = array_search( (int) $L['id'], $pin, true );
+		if ( false !== $k ) { // v105.8: a pinned card leads, in the broker's order, whether it was uploaded or hand-built
+			if ( $L['source'] === 'broker_drop' ) { $top[ $k ] = nl_drop_card_html( $L, $lang, $b ); }
+			elseif ( $L['card_key'] !== '' ) {
+				list( $html, $li ) = nl_drop_take_li( $html, 'nlb-' . $lang . '-' . $L['card_key'] );
+				if ( $li !== '' ) { $top[ $k ] = $li; }
+			}
+			continue;
+		}
+		if ( $L['source'] === 'broker_drop' ) { $cards .= nl_drop_card_html( $L, $lang, $b ); }
 	}
+	ksort( $top );
+	$cards = implode( '', $top ) . $cards;
 	if ( $cards !== '' ) {
 		$pos  = strpos( $html, '<ul class="nlb-grid">' ) + strlen( '<ul class="nlb-grid">' );
 		$html = substr( $html, 0, $pos ) . "\n" . $cards . substr( $html, $pos );
