@@ -147,7 +147,7 @@
   - Marina is left out until R6b. Stage pages keep their own `.nlpf`.
   - Contradictions with our page text: HAD-660 (R3b).
 - **WhatsApp wording (1.11, late; Ben's order):** 1.72.560 had changed the stage buttons and the WhatsApp messages. Ben did not want any WhatsApp wording changed. 1.72.562 returned everything from 1.11 (bar, buttons, messages, sheet, basket, 4 article sentences) to what it was before. Never change WhatsApp wording without his yes for that exact place.
-- [ ] **R3b Fix the page text that the sources contradict.** Found by the facts research, 1.11 (`docs/research/2026-11-01-radius/facts-12.json`, "flags"). Each fix uses the source's own words and links the source; nothing is fixed on a guess.
+- [ ] **R3b WAITS FOR BEN (asked 1.11, 23:40): fix the page text that the sources contradict.** It means writing on 10 live pages in one night, right after the WhatsApp wording had to be returned. Under the law against mass changes in one day, it needs his OK (HAD-658 #18). Found by the facts research, 1.11 (`docs/research/2026-11-01-radius/facts-12.json`, "flags"). Each fix uses the source's own words and links the source; nothing is fixed on a guess.
   - **Gindi:** the page gives a start price of 59,000 ₪/m². The source says 49,000 (6.2025); the 59,000 belongs to another Gindi project. It shows buildings of 7-8 floors where the source has 20 and 9. A price box of 54,000 has no source.
   - **Park Bavli:** the page has 4 towers of 46 floors and about 800 flats; the source has 2 towers of 44 floors.
   - **Akirov:** the page has 32 floors and about 350 flats and places the towers in Park Tzameret. The sources have 34 floors and 400 planned flats, west of Namir, not part of Park Tzameret.
@@ -158,7 +158,7 @@
   - **Utopia:** the page text calls it "planned"; construction began 10.2025.
   - **Shikun & Binui:** the badge says permit; the project is under construction (10.2026).
   - **Marina:** the page says 32M for the top-floor flat (Globes valued it at about 30M). Nothing read confirms the developer "Yam Suf", the 167 flats or the two towers. Marina gets no facts table until R6b.
-- [ ] **R6b Herzliya deals:** the official file or the big-cities workbook, so that marina-towers gets a price list.
+- [ ] **R6b Herzliya deals** (1.11 note: the Tel Aviv deals file has no Herzliya rows, so Marina could show only the official neighbourhood median; that box needs a Claude Design variant first): the official file or the big-cities workbook, so that marina-towers gets a price list.
 - [x] **R7a1 Philharmonit page** (1.11, 22:00). Live: https://nad-lan.co.il/projects/philharmonit/ (post 8743).
   - **The article:** ChatGPT Pro wrote it from `briefs/philharmonit.md`, with a second, tighter pass. 710 words, blacklist clean, every number from the brief.
   - **How it was built:** `gap_page_create.py` created the page with its meta and kit name. Release 1.72.555 added its data (11 sourced facts, the radius price list) and was released and verified.
