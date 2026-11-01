@@ -72,6 +72,11 @@ def latest(series, key):
     return {"ils": int(g[key]), "q": (int(g["month"]) + 2) // 3, "y": int(g["year"])}
 
 
+# outside Tel Aviv-Yafo there are no municipal polygons here: a project is tied by hand to the official neighbourhood next to it
+# (R6b, 2.11.2026: the Herzliya marina has no official neighbourhood of its own; Herzliya Pituach is the one beside it)
+OUTSIDE = {"marina-towers-herzliya": ("6400", "הרצליה פיתוח")}
+
+
 def official_of(h, min_points=1):
     o = h["off"]
     if not o:
@@ -98,6 +103,12 @@ for p in json.load(open(PJ, encoding="utf-8")):
     sde = "sde-dov" in p["slug"] or p["slug"] == "rainbow-tel-aviv"
     off = official_of(home) if home else None
     near = bool(off) and sde
+    if not home and p["slug"] in OUTSIDE:
+        sid, title = OUTSIDE[p["slug"]]
+        st = fetch(f"https://data.nadlan.gov.il/api/pages/settlement/buy/{sid}.json", os.path.join(GOV, f"s{sid}.json"))
+        o = next((v for v in st["otherNeighborhoods"] if norm(v["title"]) == norm(title)), None)
+        off = official_of({"off": o, "name": title}, min_points=8) if o else None
+        near = bool(off)
     if home and not off:  # outside Tel Aviv-Yafo (Herzliya) nothing is borrowed
         for h in sorted(hoods, key=lambda h: km(me, h["c"])):
             if h is home or km(me, h["c"]) > 1.5:

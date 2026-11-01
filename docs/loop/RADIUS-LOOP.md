@@ -158,7 +158,12 @@
   - **Utopia:** the page text calls it "planned"; construction began 10.2025.
   - **Shikun & Binui:** the badge says permit; the project is under construction (10.2026).
   - **Marina:** the page says 32M for the top-floor flat (Globes valued it at about 30M). Nothing read confirms the developer "Yam Suf", the 167 flats or the two towers. Marina gets no facts table until R6b.
-- [ ] **R6b Herzliya deals** (1.11 note: the Tel Aviv deals file has no Herzliya rows, so Marina could show only the official neighbourhood median; that box needs a Claude Design variant first): the official file or the big-cities workbook, so that marina-towers gets a price list.
+- [x] **R6b Herzliya, Marina** (2.11, about 01:00; release 1.72.563, released and verified).
+  - The Tel Aviv deals file has no Herzliya rows, so Marina shows the block's existing official-only form (v105.5, no new component). It gives the official median of the neighbouring neighbourhood, Herzliya Pituach: 8,151,400 ₪, Q1 2026 (nadlan.gov.il file of 20.8.2026, settlement 6400, neighbourhood 65209714).
+  - The tie is set by hand in `tools/deals/build_radius_data.py` (OUTSIDE).
+  - Checked at 390 px by DOM: one H1, the block 334 px wide, nothing past the screen. The screenshot failed because the pane was hidden.
+  - **Finding (small, next):** the block's shared source note still names the Tel Aviv address registry and the 5-deal rule on a page that shows no deals. It should show only the official-file line when there are no deals.
+- **Earlier note on R6b:** the Tel Aviv deals file has no Herzliya rows. Deal-level data for Herzliya would need nadlan.gov.il's per-deal service, which is behind a captcha and therefore never used. the official file or the big-cities workbook, so that marina-towers gets a price list.
 - [x] **R7a1 Philharmonit page** (1.11, 22:00). Live: https://nad-lan.co.il/projects/philharmonit/ (post 8743).
   - **The article:** ChatGPT Pro wrote it from `briefs/philharmonit.md`, with a second, tighter pass. 710 words, blacklist clean, every number from the brief.
   - **How it was built:** `gap_page_create.py` created the page with its meta and kit name. Release 1.72.555 added its data (11 sourced facts, the radius price list) and was released and verified.
