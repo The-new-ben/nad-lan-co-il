@@ -13,7 +13,7 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 	$city = trim( (string) $a['city'] );
 	if ( '' === $city ) { return ''; }
 	$disp = preg_replace( '/^קרית /u', 'קריית ', str_replace( array( 'תל אביב יפו', 'תל אביב-יפו', 'גבעתים', 'פתח תקוה' ), array( 'תל אביב', 'תל אביב', 'גבעתיים', 'פתח תקווה' ), $city ) );
-	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|' . ( $dev_only ? 'dev' : 'all' ) . '|v3' );
+	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|' . ( $dev_only ? 'dev' : 'all' ) . '|v4' );
 	$out  = get_transient( $ck );
 	if ( is_string( $out ) && '' !== $out ) { return $out; }
 	$ids = get_posts( array( 'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 400, 'fields' => 'ids', 'no_found_rows' => true,
@@ -27,6 +27,8 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 			$rk = false !== mb_strpos( $st, 'במימוש' ) || false !== mb_strpos( $st, 'אחרי רישוי' ) ? 0 : ( false !== mb_strpos( $st, 'לפני מימוש' ) ? 1 : ( false !== mb_strpos( $st, 'סטטוטורי' ) ? 2 : 3 ) );
 			$comp[] = array( 'id' => $id, 'st' => $st, 'rk' => $rk, 'u' => (int) get_post_meta( $id, 'num_units', true ) );
 		} else {
+			// L3b-polish: the luxury list holds homes for sale only, not offices, rentals, assisted living or concept pages
+			if ( $dev_only && in_array( $slug, (array) apply_filters( 'nadlan_cpj_not_homes', array( 'toha2-tel-aviv', 'the-park-bnei-brak', 'shikun-binui-sde-dov', 'migdalei-hayam-sde-dov', 'aurelia', 'hamedina' ) ), true ) ) { continue; }
 			$dev[] = array( 'id' => $id, 'd' => trim( (string) get_post_meta( $id, 'developer_name', true ) ) );
 		}
 	}
