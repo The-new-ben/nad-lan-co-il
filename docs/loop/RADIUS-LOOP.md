@@ -142,7 +142,11 @@
   - **Utopia printed the shortcodes as text** (its own kit too, since 31.10). The page is rebuilt from the raw content at PHP_INT_MAX. Fixed in release 1.72.559 (`do_shortcode` inside `nadlan_utopia_compose_public_content`), released and verified 1.11 late.
     - **Checked at 390 px:** one H1, no sideways scroll, the price list at 40,619 and the kit at 42,665, and no raw shortcode text.
     - **Evidence:** `docs/qa/radius-552/utopia-559-390.jpg`.
-- [ ] **R3-R6 ProjectFacts on the non-stage radius pages:** the sourced rows come from the R0 inventory and the briefs. Each page gets rows only where a source is linked. Stage pages keep their own `.nlpf`.
+- [x] **R3-R6 ProjectFacts on the non-stage radius pages** (1.11, late; release 1.72.561, released and verified, commit cd08a07d).
+  - Sourced facts tables (115 rows, every row linked to the source that states it, `docs/research/2026-11-01-radius/facts-12.json`) are on 11 pages: Gindi, FIRST, Utopia (above its price list), Shikun & Binui, Migdalei Hayam, Recanati, Ashdar Einstein, H INFINITY, YOO, Akirov and Park Bavli.
+  - Marina is left out until R6b. Stage pages keep their own `.nlpf`.
+  - Contradictions with our page text: HAD-660 (R3b).
+- **WhatsApp wording (1.11, late; Ben's order):** 1.72.560 had changed the stage buttons and the WhatsApp messages. Ben did not want any WhatsApp wording changed. 1.72.562 returned everything from 1.11 (bar, buttons, messages, sheet, basket, 4 article sentences) to what it was before. Never change WhatsApp wording without his yes for that exact place.
 - [ ] **R3b Fix the page text that the sources contradict.** Found by the facts research, 1.11 (`docs/research/2026-11-01-radius/facts-12.json`, "flags"). Each fix uses the source's own words and links the source; nothing is fixed on a guess.
   - **Gindi:** the page gives a start price of 59,000 ₪/m². The source says 49,000 (6.2025); the 59,000 belongs to another Gindi project. It shows buildings of 7-8 floors where the source has 20 and 9. A price box of 54,000 has no source.
   - **Park Bavli:** the page has 4 towers of 46 floors and about 800 flats; the source has 2 towers of 44 floors.
