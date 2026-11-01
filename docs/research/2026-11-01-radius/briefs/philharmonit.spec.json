@@ -1,0 +1,26 @@
+{
+ "slug": "philharmonit",
+ "title": "הפילהרמונית, עגנון 28 כוכב הצפון: פרויקט של יוסי אברהמי",
+ "kit_name": "הפילהרמונית",
+ "allowed_numbers": ["28", "12", "11", "3", "4", "5", "7,390,000", "1966", "2017", "2014", "151", "1.5.2019", "2019", "93", "3,100", "24", "7", "2021", "2024", "6"],
+ "meta": {
+  "city": "תל אביב יפו",
+  "neighborhood": "כוכב הצפון",
+  "address": "ש״י עגנון 28, תל אביב-יפו",
+  "gush": "6634",
+  "helka": "336",
+  "developer_name": "יוסי אברהמי",
+  "architect_name": "בר אוריין אדריכלים",
+  "project_type": "new_build",
+  "project_status": "construction",
+  "num_buildings": 2,
+  "num_floors": 12,
+  "price_min": 7390000,
+  "website": "https://yav.co.il/",
+  "lat": "32.102007",
+  "lng": "34.787648",
+  "source": "יוסי אברהמי (yav.co.il), מרכז הנדל״ן, project-tlv",
+  "source_url": "https://www.nadlancenter.co.il/article/1094",
+  "data_quality": "enriched"
+ }
+}

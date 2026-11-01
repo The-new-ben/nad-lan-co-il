@@ -1,0 +1,19 @@
+{
+  "released": "1.72.555",
+  "from": "1.72.554",
+  "live_before": {
+    "data/project-facts.json": "8f1d89303e2be7d97e5163dba733be92",
+    "data/radius-prices.json": "66198f8f50a359df6bce18e16e1070ac",
+    "nadlan-config.php": "eb3d6db4c4074d6171db61bf5835a44b"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-01 20:05:48",
+  "files": {
+    "data/project-facts.json": "fd72eaab833bcddf3b1f0874e976b378",
+    "data/radius-prices.json": "085433ef825f964df629924013a9535e",
+    "nadlan-config.php": "831252749b89d17be737cd5139d5801d"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.555, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

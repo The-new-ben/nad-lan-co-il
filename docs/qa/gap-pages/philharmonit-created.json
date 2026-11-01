@@ -1,0 +1,27 @@
+{
+ "id": 8743,
+ "slug": "philharmonit",
+ "link": "https://nad-lan.co.il/projects/philharmonit/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "כוכב הצפון",
+  "address": "ש״י עגנון 28, תל אביב-יפו",
+  "gush": "6634",
+  "helka": "336",
+  "developer_name": "יוסי אברהמי",
+  "architect_name": "בר אוריין אדריכלים",
+  "project_type": "new_build",
+  "project_status": "construction",
+  "num_buildings": 2,
+  "num_floors": 12,
+  "price_min": 7390000,
+  "website": "https://yav.co.il/",
+  "lat": 32.102007,
+  "lng": 34.787648,
+  "source": "יוסי אברהמי (yav.co.il), מרכז הנדל״ן, project-tlv",
+  "source_url": "https://www.nadlancenter.co.il/article/1094",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "הפילהרמונית"
+ }
+}

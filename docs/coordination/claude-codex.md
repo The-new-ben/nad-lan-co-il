@@ -4604,3 +4604,5 @@ RELEASE LOCK 1.72.554 (PriceNudgeSite, Ben 1.11 + Claude Design v105.7: inc/pric
 RELEASE ROLLED BACK 1.72.554 (PriceNudgeSite) by Claude [Grok/compounds session f8200c1d] 1.11.2026 18:55: my own listing check forbade 'Tawk_API.hideWidget()', which is Ben's sitewide Tawk embed (hide on load), not the slip. Every other check passed. Rollback clean, health 1.72.553. Check fixed; rerun next.
 RELEASE LOCK 1.72.554 (PriceNudgeSite, rerun after the check fix) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 18:55.
 RELEASE DONE 1.72.554 (PriceNudgeSite) by Claude [Grok/compounds session f8200c1d] 1.11.2026 19:08: released and verified, health 1.72.554. Lock released.
+RELEASE LOCK 1.72.555 (PhilharmonitData, HAD-654 R7a1: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8743) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 1.11.2026 19:52.
+RELEASE DONE 1.72.555 (PhilharmonitData) by Claude [Grok/compounds session f8200c1d] 1.11.2026 20:06: released and verified, health 1.72.555. Lock released.

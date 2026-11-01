@@ -138,6 +138,12 @@
 - [ ] **R4 Einstein wave:** ashdar-einstein, recanati-residence, einstein-tower (below the pinned article).
 - [ ] **R5 Kochav and Park Tzameret:** akirov, yoo, park-bavli, duo, h-infinity.
 - [ ] **R6 Herzliya:** marina-towers, plus the gaps there.
+- [x] **R7a1 Philharmonit page** (1.11, 22:00). Live: https://nad-lan.co.il/projects/philharmonit/ (post 8743).
+  - **The article:** ChatGPT Pro wrote it from `briefs/philharmonit.md`, with a second, tighter pass. 710 words, blacklist clean, every number from the brief.
+  - **How it was built:** `gap_page_create.py` created the page with its meta and kit name. Release 1.72.555 added its data (11 sourced facts, the radius price list) and was released and verified.
+  - **FAQ schema:** the Q&A heading was renamed "שאלות נפוצות", so the site emits 6 FAQ entries.
+  - **Checked live at 390 px:** H1 154, lead 226, facts 1664, radius 6179, kit 8309. One H1, no sideways scroll, no long dash in the text. Evidence: `docs/qa/gap-pages/`.
+  - **Finding:** the floating bar on project pages reads "לקבלת מחירים, תוכניות והטבות". It offers developer plans the site does not hold, the same risk as the old price slip. Waits for Ben (HAD-658 #12).
 - [ ] **R7 Gap pages:** a new page for each real project we lack, small streets included, written through ChatGPT with the DNA.
 - [ ] **R8 Languages:** the 8 radius pages without EN/FR/RU/AR, then the new pages.
 - [ ] **R9 Measure:** GA4 AI landing pages every week (Rainbow baseline: 19 in 5 months). Record the ChatGPT answer for "<project> מחירים" before and after.
