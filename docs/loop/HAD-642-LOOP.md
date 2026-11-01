@@ -72,7 +72,15 @@
   - It holds the city's developer projects and its registry compounds by stage, each a card linking to its page, plus the registry numbers.
   - Its H2 is "פרויקטים חדשים ו<התחדשות עירונית> ב<city>". It goes on the page that owns the city; no new URL.
   - Appended to the end of each page's content (additive).
-- [ ] **L3b Luxury owners:** strengthen `/glossary/penthouse/` (3,600 a month, thin), `/herzliya-pituach-luxury/` (2,900 a month, 1 impression), `/luxury-tel-aviv/` and `/tel-aviv-penthouse-prices/`, with data blocks and the ProjectKit-style tools. Ben decides the Sde Dov pair.
+- [x] **L3b Luxury owners** (1.11, 05:30). Release 1.72.550 adds `only="dev"`; `lux_cms.py` (backup `lux-backup.json`). /luxury-tel-aviv/ and /tel-aviv-penthouse-prices/ list 22 TLV developer projects; /herzliya-pituach-luxury/ lists 1; /glossary/penthouse/ has the pcost instrument live. Checked at 390 px.
+- [ ] **L3b-polish:** the TLV luxury list also shows offices (ToHa2), assisted living, Shikun & Binui rental and concept pages. Exclude them in only="dev" mode by slug or type. Original item: **L3b Luxury owners:** strengthen `/glossary/penthouse/` (3,600 a month, thin), `/herzliya-pituach-luxury/` (2,900 a month, 1 impression), `/luxury-tel-aviv/` and `/tel-aviv-penthouse-prices/`, with data blocks and the ProjectKit-style tools. Ben decides the Sde Dov pair.
+  - **Exact plan (1.11, 04:50):**
+    1. `inc/city-projects.php` gets an `only="dev"` attribute: only the city's developer projects, the H2 becomes "פרויקטי יוקרה חדשים ב<city>", and the registry line is not printed. Bump the cache key to v3. Release 1.72.550: the FILE swap pattern of make_deploy549 (previous 549), with the module-list anchor already including city-projects.
+    2. Append to the end of the content via REST, with a backup (pattern `city_cms.py`):
+       - `/luxury-tel-aviv/` and `/tel-aviv-penthouse-prices/`: `[nadlan_city_projects city="תל אביב יפו" only="dev" limit="20"]`;
+       - `/herzliya-pituach-luxury/`: `[nadlan_city_projects city="הרצליה" only="dev"]`;
+       - `/glossary/penthouse/` (nadlan_term): `[nadlan_tool id="pcost" kind="new"]`.
+    3. Check the four at 390 px, then send Ben the links.
   - Sources: GSC 90 days plus DataForSEO volumes.
   - Map: owner URL per head term, gaps, cannibal pairs.
   - Fix titles and H1s so each page leads with its own words. No new URL without `url_word_audit`. Never a 301.

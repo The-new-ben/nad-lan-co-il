@@ -8,11 +8,12 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 add_shortcode( 'nadlan_city_projects', function ( $atts ) {
-	$a    = shortcode_atts( array( 'city' => '', 'limit' => 12 ), $atts );
+	$a    = shortcode_atts( array( 'city' => '', 'limit' => 12, 'only' => '' ), $atts );
+	$dev_only = 'dev' === (string) $a['only']; // HAD-642 L3b: the luxury owner pages list only the developers' projects
 	$city = trim( (string) $a['city'] );
 	if ( '' === $city ) { return ''; }
 	$disp = preg_replace( '/^קרית /u', 'קריית ', str_replace( array( 'תל אביב יפו', 'תל אביב-יפו', 'גבעתים', 'פתח תקוה' ), array( 'תל אביב', 'תל אביב', 'גבעתיים', 'פתח תקווה' ), $city ) );
-	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|v2' );
+	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|' . ( $dev_only ? 'dev' : 'all' ) . '|v3' );
 	$out  = get_transient( $ck );
 	if ( is_string( $out ) && '' !== $out ) { return $out; }
 	$ids = get_posts( array( 'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 400, 'fields' => 'ids', 'no_found_rows' => true,
@@ -40,8 +41,8 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 	};
 	$cs = function_exists( 'nadlan_cv2_city' ) ? nadlan_cv2_city( $city, 0, 0 ) : array();
 	$h  = '<section class="nlcpj" id="nlcpj" dir="rtl" aria-labelledby="nlcpj-h"><p class="nlcpj-k">' . esc_html( $disp ) . ' · פרויקטים</p>';
-	$h .= '<h2 class="nlcpj-h2" id="nlcpj-h">פרויקטים חדשים והתחדשות עירונית ב' . esc_html( $disp ) . '</h2>';
-	if ( ! empty( $cs['n'] ) ) {
+	$h .= '<h2 class="nlcpj-h2" id="nlcpj-h">' . ( $dev_only ? 'פרויקטי יוקרה חדשים ב' : 'פרויקטים חדשים והתחדשות עירונית ב' ) . esc_html( $disp ) . '</h2>';
+	if ( ! $dev_only && ! empty( $cs['n'] ) ) {
 		$h .= '<p class="nlcpj-p">במאגר הרשות הממשלתית להתחדשות עירונית רשומים ב' . esc_html( $disp ) . ' ' . number_format( (int) $cs['n'] ) . ' מתחמי פינוי בינוי'
 			. ( ! empty( $cs['approved'] ) ? ', ל-' . number_format( (int) $cs['approved'] ) . ' מהם תכנית מאושרת' : '' )
 			. ( ! empty( $cs['permits'] ) ? ', ו-' . number_format( (int) $cs['permits'] ) . ' דירות כבר קיבלו היתר' : '' ) . '.</p>';
@@ -53,7 +54,7 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 		}
 		$h .= '</div>';
 	}
-	if ( $comp ) {
+	if ( $comp && ! $dev_only ) {
 		$h .= '<h3 class="nlcpj-h3">מתחמי פינוי בינוי ב' . esc_html( $disp ) . ', לפי שלב</h3><div class="nlcpj-grid">';
 		foreach ( array_slice( $comp, 0, max( 1, (int) $a['limit'] ) ) as $c ) {
 			$h .= '<a class="nlcpj-card" href="' . esc_url( get_permalink( $c['id'] ) ) . '"><b>' . esc_html( $name( $c['id'] ) ) . '</b>'
@@ -62,11 +63,11 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 		}
 		$h .= '</div><a class="nlcpj-all" href="' . esc_url( home_url( '/projects/?city=' . rawurlencode( $city ) ) ) . '">לכל ' . number_format( count( $comp ) ) . ' המתחמים ב' . esc_html( $disp ) . ' ←</a>';
 	}
-	if ( ! empty( $cs['file_date'] ) && preg_match( '/^(\d{4})-(\d{2})-(\d{2})/', $cs['file_date'], $m ) ) {
+	if ( ! $dev_only && ! empty( $cs['file_date'] ) && preg_match( '/^(\d{4})-(\d{2})-(\d{2})/', $cs['file_date'], $m ) ) {
 		$h .= '<p class="nlcpj-src">לפי מאגר הרשות הממשלתית להתחדשות עירונית (data.gov.il), עדכון הקובץ ' . (int) $m[3] . '.' . (int) $m[2] . '.' . $m[1] . '.</p>';
 	}
 	$h .= '</section>';
-	if ( ! $dev && ! $comp ) { $h = ''; }
+	if ( ! $dev && ( ! $comp || $dev_only ) ) { $h = ''; }
 	set_transient( $ck, $h, 6 * HOUR_IN_SECONDS );
 	return $h;
 } );

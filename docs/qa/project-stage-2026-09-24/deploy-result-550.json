@@ -1,0 +1,17 @@
+{
+  "released": "1.72.550",
+  "from": "1.72.549",
+  "live_before": {
+    "inc/city-projects.php": "e46cd38834e3e97b458114b2b6ac76b2",
+    "nadlan-config.php": "e29e3a308af1edef79593e4c373a26ac"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-01 03:20:58",
+  "files": {
+    "inc/city-projects.php": "e9915f80a54c308504c1b069454771cd",
+    "nadlan-config.php": "61cdde472a3e236c80412297fd7cdaf3"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.550, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
