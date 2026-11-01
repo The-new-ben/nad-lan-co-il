@@ -45,7 +45,29 @@
 - **Report:** every report opens with the campaign line and sends Ben the links.
 
 ## Queue
-- [ ] **R0 Inventory.** Every real project in the radius, with its sources: `docs/research/2026-11-01-radius/` (research agent). The output is a list of gaps.
+- [x] **R0 Inventory** (1.11, 17:40). Output: `docs/research/2026-11-01-radius/projects.json` + `projects.md`.
+  - **Counts:** 218 projects, 20 of them ours, 198 gaps. 75 of the gaps are for sale now; 35 rows carry a dated price with its source.
+  - **Per zone:** Sde Dov 30, Kochav HaTzafon and Reading 6, Lamed and New Lamed 20, Einstein area 111, Herzliya 45.
+  - **Top gaps:**
+    - SEVEN SEAS (Electra and Dan, 437 units, about 80,000 per m²);
+    - EINSTEIN 2.4.6.8 (Gindi and Shapir, 380);
+    - Einstein 15 (Gindi and Shapir, 180, 30 floors);
+    - Philharmonit, Agnon 28;
+    - Sde Dov plot 105 (372 units and a hotel);
+    - Brodetsky North (ICR, 166);
+    - Yehuda Amichai 5 / Isaac Stern 18 (Eshkol Megurim, 62) and Isaac Stern 22 (23);
+    - Reading 22 RAMATA and Reading 31-33;
+    - Herzliya VILLE (Azorim, 1,843);
+    - Herzliya Pituach seafront and the Ritz-Carlton Marina.
+  - **Facts the sources contradict** (fix in R3-R5, each with its source):
+    - Dimri Yama: 40 vs 38-39 floors;
+    - Ashira: 8 vs 9 floors (do not touch Ashira, report only);
+    - Einstein Tower: units, floors, corner;
+    - Utopia: now under construction, since 10.2025;
+    - Shikun & Binui: a second 511-unit rental building exists;
+    - Vogue: floors;
+    - Recanati: neighbourhood.
+  - **Two EcoCity rows are marked do-not-publish** (the takedown order).
 - [x] **R1 Design** (1.11, 16:45). Claude Design v105.5, DS artifact versions 256-257. Renders at 390 px are in `docs/research/2026-11-01-ai-referrals/design-105-5/`.
   - **RadiusPrices:**
     - deals within 500 m (median per m², by rooms, by year, the latest deals);
@@ -75,7 +97,18 @@
     - Einstein 19: about 53,500 per m² (62 deals); Neve Avivim official 5,299,900 (Q1 2026).
     - Zohi: about 47,600 (18 deals); the neighbouring Tochnit Lamed 6,059,900.
     - Hamedina: about 68,200 (135 deals); 5,373,900.
-- [ ] **R2b Small fixes and ProjectFacts on the 3 pilot pages,** then Ben's look.
+- [x] **R2b** (1.11, 18:30). Release 1.72.553 ProjectFacts, plus "בצפון החדש" in the radius block.
+  - **The first run rolled back.** A 552 check forbade nlrp on Einstein 19; the check was fixed and the rerun was released and verified.
+  - **Placement:** `pfx_cms.py` opened Zohi and Einstein 19 with `[nadlan_project_facts]`.
+    - Zohi: 11 sourced rows (Nadlan Center 30.1.2026, Calcalist 24.2.2026 marked as partner content, the Tel Aviv-Yafo plot 110 PDF).
+    - Einstein 19: 8 rows (Nadlan Center 26.9.2023).
+    - Every source is a link.
+  - **Order at 390 px:** H1 154, lead 226, facts 2451, radius block 29861.
+  - **Checks:** `content_first_check.py` failed 0. The Zohi radius box now shows Rainbow with 459 units. Stage pages (Hamedina) keep their own `.nlpf` and get no ProjectFacts.
+  - **Design** v105.6 in DS artifact version 258.
+- [ ] **R2c WAITS FOR Ben's look at the pilot.** Zohi, Einstein 19 and Hamedina. His word gates the clone waves R3-R6 (RadiusPrices + ProjectFacts on every radius page).
+- [ ] **R3a Fix the facts the sources contradict** (from R0). These are data fixes, not a design change, each with its source: Dimri Yama floors, Einstein Tower units, floors and corner (below the pinned article only), Utopia stage → under construction (10.2025), Vogue floors, Recanati neighbourhood. Ashira: report only.
+- [ ] **R7a Research for the gap pages** (no publishing yet). For the top 10 gaps, apply the research law: read the top 4-5 Google results in full, record the questions and the AI answer shown, then `url_word_audit` for each slug. Output: `docs/research/2026-11-01-radius/briefs/`.
   - **Grammar:** "בהצפון החדש" must read "בצפון החדש" (ב before ה).
   - **ProjectFacts needs a new class name.** `.nlpf` is already taken on the project pages (the order checks list `class="nlpf"`), so use `.nlfx`.
   - **Sources:** the facts come from the R0 inventory plus each page's own sourced article. FAQPage merges with the kit's.

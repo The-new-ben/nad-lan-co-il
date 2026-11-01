@@ -88,7 +88,7 @@ add_shortcode( 'nadlan_radius_prices', function ( $atts ) {
 	$id = (int) $a['id'] ? (int) $a['id'] : (int) get_the_ID();
 	if ( ! $id ) { return ''; }
 	$f  = dirname( __DIR__ ) . '/data/radius-prices.json';
-	$ck = 'nlrp_' . $id . '_' . ( file_exists( $f ) ? filemtime( $f ) : 0 ) . '_v1';
+	$ck = 'nlrp_' . $id . '_' . ( file_exists( $f ) ? filemtime( $f ) : 0 ) . '_v2';
 	$c  = get_transient( $ck );
 	if ( is_string( $c ) ) { return $c; }
 	$d  = nadlan_rp_data();
@@ -110,7 +110,7 @@ add_shortcode( 'nadlan_radius_prices', function ( $atts ) {
 	}
 	if ( $of && ! empty( $of['all']['ils'] ) ) {
 		$q = (int) $of['all']['q'];
-		$h .= '<li><b>' . $num( $of['all']['ils'] ) . ' ₪</b><span>המחיר החציוני הרשמי לדירה ' . ( ! empty( $of['near'] ) ? 'בשכונה הסמוכה, ' : 'ב' ) . esc_html( $of['name'] ) . ', ברבעון ' . esc_html( $qw[ $q ] ?? '' ) . ' של ' . (int) $of['all']['y'] . '</span></li>';
+		$h .= '<li><b>' . $num( $of['all']['ils'] ) . ' ₪</b><span>המחיר החציוני הרשמי לדירה ' . ( ! empty( $of['near'] ) ? 'בשכונה הסמוכה, ' . esc_html( $of['name'] ) : 'ב' . esc_html( 0 === mb_strpos( (string) $of['name'], 'ה' ) ? mb_substr( (string) $of['name'], 1 ) : (string) $of['name'] ) ) . ', ברבעון ' . esc_html( $qw[ $q ] ?? '' ) . ' של ' . (int) $of['all']['y'] . '</span></li>';
 	}
 	$top = null;
 	foreach ( (array) ( $p['rooms'] ?? array() ) as $k => $r ) {
