@@ -65,7 +65,7 @@
   - Release 1.72.548 adds `inc/city-projects.php`; Claude Design v105.4 CityProjects.
   - `city_cms.py` appended `[nadlan_city_projects city=…]` to 7 pages: Ramat Gan, Petah Tikva, Rishon, Bat Yam, Holon, Givatayim and Eilat. Backup: `city-backup.json`.
   - Checked at 390 px on Ramat Gan, Eilat, Petah Tikva and Givatayim: H2 "פרויקטים חדשים והתחדשות עירונית ב<city>", 12 cards (6 in Eilat), one H1, no sideways scroll.
-- [ ] **L3a-polish:** card names drop the repeated ", <city>"; the registry stage text " - " becomes " · ". Next release.
+- [x] **L3a-polish** (1.72.549, released and verified: cards name their city once; the stage shows " · "; cache v2). Original item: card names drop the repeated ", <city>"; the registry stage text " - " becomes " · ". Next release.
 - Original L3a item: **L3a City "new projects" block on the existing city price pages.** Data, not prose.
   - Pages: `/ramat-gan-apartment-prices/`, `/petah-tikva-apartment-prices/`, `/rishon-lezion-apartment-prices/`, `/bat-yam/`, `/holon-apartment-prices/`, `/givatayim-apartment-prices/` and `/eilat-apartment-prices/` (check each exists).
   - The block: Claude Design `CityProjects`, then the shortcode `[nadlan_city_projects city="…"]`.

@@ -12,7 +12,7 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 	$city = trim( (string) $a['city'] );
 	if ( '' === $city ) { return ''; }
 	$disp = preg_replace( '/^קרית /u', 'קריית ', str_replace( array( 'תל אביב יפו', 'תל אביב-יפו', 'גבעתים', 'פתח תקוה' ), array( 'תל אביב', 'תל אביב', 'גבעתיים', 'פתח תקווה' ), $city ) );
-	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|v1' );
+	$ck   = 'nlcp_' . md5( $city . '|' . (int) $a['limit'] . '|v2' );
 	$out  = get_transient( $ck );
 	if ( is_string( $out ) && '' !== $out ) { return $out; }
 	$ids = get_posts( array( 'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 400, 'fields' => 'ids', 'no_found_rows' => true,
@@ -22,7 +22,7 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 		$slug = (string) get_post_field( 'post_name', $id );
 		if ( preg_match( '/-(en|fr|ru|ar)$/', $slug ) ) { continue; }
 		if ( 'urban_renewal' === (string) get_post_meta( $id, 'source', true ) ) {
-			$st = preg_replace( '/\s+/u', ' ', trim( (string) get_post_meta( $id, 'project_status', true ) ) );
+			$st = preg_replace( '/\s+[-–]\s+/u', ' · ', preg_replace( '/\s+/u', ' ', trim( (string) get_post_meta( $id, 'project_status', true ) ) ) );
 			$rk = false !== mb_strpos( $st, 'במימוש' ) || false !== mb_strpos( $st, 'אחרי רישוי' ) ? 0 : ( false !== mb_strpos( $st, 'לפני מימוש' ) ? 1 : ( false !== mb_strpos( $st, 'סטטוטורי' ) ? 2 : 3 ) );
 			$comp[] = array( 'id' => $id, 'st' => $st, 'rk' => $rk, 'u' => (int) get_post_meta( $id, 'num_units', true ) );
 		} else {
@@ -30,9 +30,11 @@ add_shortcode( 'nadlan_city_projects', function ( $atts ) {
 		}
 	}
 	usort( $comp, function ( $x, $y ) { return $x['rk'] === $y['rk'] ? $y['u'] <=> $x['u'] : $x['rk'] <=> $y['rk']; } );
+	$GLOBALS['nlcpj_disp'] = $disp; $GLOBALS['nlcpj_city'] = $city;
 	$name = function ( $id ) {
 		$t = trim( wp_strip_all_tags( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) );
 		$t = preg_replace( '/:\s*פינוי בינוי.*$/u', '', $t );
+		$t = preg_replace( '/,\s*(?:' . preg_quote( $GLOBALS['nlcpj_disp'] ?? '', '/' ) . '|' . preg_quote( $GLOBALS['nlcpj_city'] ?? '', '/' ) . ')\s*$/u', '', $t ); // the block names its city once
 		$p = preg_split( '/\s+[-–|]\s+/u', $t );
 		return trim( (string) $p[0] );
 	};
