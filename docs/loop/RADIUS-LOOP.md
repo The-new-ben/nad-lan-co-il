@@ -107,7 +107,17 @@
   - **Checks:** `content_first_check.py` failed 0. The Zohi radius box now shows Rainbow with 459 units. Stage pages (Hamedina) keep their own `.nlpf` and get no ProjectFacts.
   - **Design** v105.6 in DS artifact version 258.
 - [ ] **R2c WAITS FOR Ben's look at the pilot.** Zohi, Einstein 19 and Hamedina. His word gates the clone waves R3-R6 (RadiusPrices + ProjectFacts on every radius page).
-- [ ] **R3a Fix the facts the sources contradict** (from R0). These are data fixes, not a design change, each with its source: Dimri Yama floors, Einstein Tower units, floors and corner (below the pinned article only), Utopia stage → under construction (10.2025), Vogue floors, Recanati neighbourhood. Ashira: report only.
+- [x] **R3a Fix the facts the sources contradict** (1.11, 19:00; meta only, `r3a_cms.py`, backup `r3a-backup.json`).
+  - **Utopia** 4749: project_status permits → construction. Source: Nadlan Center 27.10.2025, "קבוצת נחמיאס החלה בעבודות הבניה", article 13109.
+  - **Dimri Yama** 4745: num_floors 39 → 38. Source: the developer's page "8/38 קומות", 4 buildings, 458 units, read 1.11.2026.
+    - The stage facts panel still says "מגדל של 40 קומות ... לפי תכנית". That is the approved plan, not the developer's design, so it is left as is: two figures, each with its own source.
+  - **The neighbour boxes refresh** when their 12-hour cache ends.
+  - **Left, with the reason:**
+    - Einstein Tower: the sources disagree with each other (215/300/515 units, 28/30/33 floors), and the page is pinned. Report only.
+    - Vogue: 8 vs 9 floors on the low building; minor, the source range is 9-44.
+    - Recanati: the neighbourhood name. The radius block already uses the municipal polygon (Ramat Aviv Gimel).
+    - Shikun & Binui: a second 511-unit rental building. It needs a content addition after Ben's look.
+    - Ashira: report only.
 - [ ] **R7a Research for the gap pages** (no publishing yet). For the top 10 gaps, apply the research law: read the top 4-5 Google results in full, record the questions and the AI answer shown, then `url_word_audit` for each slug. Output: `docs/research/2026-11-01-radius/briefs/`.
   - **Grammar:** "בהצפון החדש" must read "בצפון החדש" (ב before ה).
   - **ProjectFacts needs a new class name.** `.nlpf` is already taken on the project pages (the order checks list `class="nlpf"`), so use `.nlfx`.
