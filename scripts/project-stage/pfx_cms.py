@@ -28,6 +28,11 @@ for pid in PAGES:
         print("[has]", pid, cur["slug"]); continue
     if str(pid) not in bk:
         bk[str(pid)] = c; json.dump(bk, open(BK, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    body = SC + "\n\n" + c
+    # --before-rp ID,...: a page whose content is rebuilt by its own template (Utopia, 1.72.559) gets the block just above the
+    # price list at the end, so its own opening stays first
+    if str(pid) in (ARGV[ARGV.index("--before-rp") + 1].split(",") if "--before-rp" in ARGV else []) and c.count("[nadlan_radius_prices]") == 1:
+        body = c.replace("[nadlan_radius_prices]", SC + "\n\n[nadlan_radius_prices]")
+    else:
+        body = SC + "\n\n" + c
     st, d = req("POST", f"/wp-json/wp/v2/nadlan_project/{pid}", {"content": body})
     print(f"[pfx] {pid} {cur['slug']}: {'OK' if st in (200, 201) and d.get('content', {}).get('raw') == body else 'CHECK ' + str(st)}")

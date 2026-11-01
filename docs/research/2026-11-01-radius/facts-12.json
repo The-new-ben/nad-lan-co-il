@@ -1,0 +1,927 @@
+{
+ "4748": {
+  "title": "GINDI VOGUE במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "גינדי החזקות",
+    "src": "מרכז הנדל״ן, 12.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12256"
+   },
+   {
+    "k": "המגרשים",
+    "v": "מגרשים 2206 ו-2255 במרכז רובע שדה דב (גינדי ישראל 2010)",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/places/sde-dov/"
+   },
+   {
+    "k": "הקבלן המבצע",
+    "v": "דניה סיבוס, בתמורה של כ-1.1 מיליארד ₪; העבודות צפויות להימשך כ-5.5 שנים מצו התחלת עבודה",
+    "src": "מרכז הנדל״ן, 20.2.2025",
+    "url": "https://www.nadlancenter.co.il/article/11608"
+   },
+   {
+    "k": "דירות",
+    "v": "708 דירות",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "3 מבנים: מגדל בן 44 קומות ושני בניינים של 20 ו-9 קומות",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "האדריכלית קיקה ברא״ז",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "מתקנים",
+    "v": "לפי החברה: חדר כושר, בריכות שחייה, מתחם סאונות, חללי עבודה וטרקלין דיירים",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "מחיר ההשקה שפורסם",
+    "v": "החל מ-49 אלף ₪ למ״ר (6.2025)",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "מכירות שפורסמו",
+    "v": "450 מתוך 708 הדירות בתוך כשבוע: כ-90 חוזים חתומים ו-360 רוכשים ששילמו מקדמה (6.2025)",
+    "src": "מרכז הנדל״ן, 12.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12256"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "החברה העריכה שהביצוע יחל בתוך שנה ושהאכלוס צפוי בעוד כ-6.5 שנים (6.2025)",
+    "src": "מרכז הנדל״ן, 3.6.2025",
+    "url": "https://www.nadlancenter.co.il/article/12196"
+   },
+   {
+    "k": "מסחר ותעסוקה",
+    "v": "נמכרו לריט 1: כ-5,000 מ״ר מסחר, כ-7,400 מ״ר תעסוקה ו-127 חניות, בכ-400 מיליון ₪ בתוספת מע״מ (8.2026)",
+    "src": "מרכז הנדל״ן, 23.8.2026",
+    "url": "https://www.nadlancenter.co.il/article/15237"
+   }
+  ],
+  "flags": [
+   "Sources disagree on the buildings: nadlancenter 20.2.2025 (11608) says Danya Cebus will build the 708 units 'ב-3 מגדלי מגורים ו-5 מבנים מרקמיים'; nadlancenter 3.6.2025 (12196) and 12.6.2025 (12256) say '3 מבנים שבהם מגדל בן 44 קומות ושני בניינים נוספים של 20 ו-9 קומות'. The table uses the later wording.",
+   "Our page contradicts the sources on heights: it says 'מגדל 44 קומות, מגדלים 20 קומות ובניינים 7-8 קומות'; the sources give one 44-floor tower plus one 20-floor and one 9-floor building.",
+   "Our page says 'מחירי השיווק המדווחים מתחילים מ-59,000 ש\"ח למ\"ר, ובנוסף דווח על מכירה לפי כ-49,000 ש\"ח למ\"ר'. The sources give the launch price as 'החל מ-49 אלף שקל למ\"ר' (12196, 12256). The 59,000 figure in 12256 belongs to Chen and Itai Gindi with Rami Shapir on Einstein street ('ירדו ל-59 אלף למ\"ר מ-75 אלף שקל למ\"ר, בפרויקט הסמוך לשדה דב ברחוב איינשטיין'), not to Gindi Holdings.",
+   "Our page price box shows '54,000 ₪ למ\"ר, לפי היזם' and '~54,000 מחיר ממוצע'; no source read gives 54,000.",
+   "Our page names one plot only ('מגרש 2206, מתחם ב'); project-tlv lists plots 2206 and 2255 for Gindi Israel 2010, and nadlancenter 20.2.2025 describes two tender compounds of 326 and 382 units (595M and 643.7M ₪ incl. development).",
+   "Sourced but left out of the rows (owner's call, sensitive): ice 8.9.2025 reports Gindi returned about 80M ₪ to 680 buyers after the Housing Ministry's Sale Law supervisor found that in Vogue 'ניתנו תשלומים שלא ניתנו בעדם בטוחות'. https://www.ice.co.il/realestate/news/article/1083001"
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/11608 (200)",
+   "https://www.nadlancenter.co.il/article/12256 (200)",
+   "https://www.nadlancenter.co.il/article/12196 (200)",
+   "https://www.nadlancenter.co.il/article/15237 (200)",
+   "https://www.ice.co.il/realestate/news/article/1083001 (200)",
+   "https://project-tlv.info/places/sde-dov/ (200)",
+   "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/ (200, our live page)"
+  ]
+ },
+ "4743": {
+  "title": "FIRST שדה דב במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "קבוצת חג'ג'",
+    "src": "מרכז הנדל״ן, 13.4.2026",
+    "url": "https://www.nadlancenter.co.il/article/14291"
+   },
+   {
+    "k": "המגרש",
+    "v": "מגרש 2270 במרכז רובע שדה דב (קבוצת חג'ג' מרכז תל אביב)",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/places/sde-dov/"
+   },
+   {
+    "k": "הקרקע",
+    "v": "נרכשה במכרז רמ״י (2.2025) ב-803.5 מיליון ₪, כולל הוצאות פיתוח",
+    "src": "מרכז הנדל״ן, 26.2.2025",
+    "url": "https://www.nadlancenter.co.il/article/11639"
+   },
+   {
+    "k": "דירות",
+    "v": "350 דירות: 258 במגדל ו-92 בבנייה המרקמית",
+    "src": "מרכז הנדל״ן, 26.2.2025",
+    "url": "https://www.nadlancenter.co.il/article/11639"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "מגדל בן 45 קומות ושלושה בנייני בוטיק בני 9 קומות",
+    "src": "מרכז הנדל״ן, 13.4.2026",
+    "url": "https://www.nadlancenter.co.il/article/14291"
+   },
+   {
+    "k": "מסחר ותעסוקה",
+    "v": "כ-1,491 מ״ר מסחר וכ-2,380 מ״ר משרדים",
+    "src": "מרכז הנדל״ן, 26.2.2025",
+    "url": "https://www.nadlancenter.co.il/article/11639"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "ODA מניו יורק, בשיתוף בר אוריין אדריכלים",
+    "src": "מרכז הנדל״ן, 17.7.2025",
+    "url": "https://www.nadlancenter.co.il/article/12512"
+   },
+   {
+    "k": "מחיר ההשקה שפורסם",
+    "v": "בפריסייל (7.2025) המחירים החלו ב-71 אלף ₪ למ״ר, ובקומות הגבוהות 110 עד 120 אלף ₪ למ״ר, לפי בדיקת ice",
+    "src": "ice, 13.7.2025",
+    "url": "https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "k": "מחיר ממוצע שפורסם",
+    "v": "102 דירות נמכרו ב-853 מיליון ₪, כ-8.36 מיליון ₪ לדירה בממוצע (7.2025)",
+    "src": "מרכז הנדל״ן, 17.7.2025",
+    "url": "https://www.nadlancenter.co.il/article/12512"
+   },
+   {
+    "k": "מכירות שפורסמו",
+    "v": "155 מתוך 350 הדירות נמכרו, ועם 35 בקשות הרשמה שווקו 190 (4.2026)",
+    "src": "מרכז הנדל״ן, 13.4.2026",
+    "url": "https://www.nadlancenter.co.il/article/14291"
+   },
+   {
+    "k": "עסקת השיא שפורסמה",
+    "v": "דירה בקומה 38, כ-390 מ״ר ומרפסת של כ-200 מ״ר, ביותר מ-42 מיליון ₪ (12.2025)",
+    "src": "ice, 18.12.2025",
+    "url": "https://www.ice.co.il/realestate/news/article/1096066"
+   }
+  ],
+  "flags": [
+   "Our page's sales figures are out of date: it shows 'כ-102 דירות' sold by mid-2025 (and 148 group-wide); nadlancenter 13.4.2026 reports 155 of 350 sold, 190 with registration requests.",
+   "Our page says marketing prices 'מתחילים סביב כ-60,000 ש\"ח למ\"ר'; ice 13.7.2025 says presale prices 'החלו ב-71 אלף שקל למ\"ר'. Our price box shows '75,000 ₪ למ\"ר, לפי היזם': in nadlancenter 26.2.2025 75K is the company's conservative profit scenario, nadlancenter 17.7.2025 says 'בחג'ג' ההערכה היא שהמחיר הוא 82 אלף ש\"ח למ\"ר', and ice 13.7.2025 says the company set an average of 90K ₪ per sqm.",
+   "Sources disagree on retail area: nadlancenter 26.2.2025 gives 'כ-1,491 מ\"ר' retail plus 'כ-2,380 מ\"ר' offices; ice 9.9.2025 says the company marketed 'כ-1,700 מ\"ר מסחר' for about 101M ₪.",
+   "Three Calcalist articles returned 403 and hagag.co.il did not answer; nothing from them is used."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/14291 (200)",
+   "https://www.nadlancenter.co.il/article/11639 (200)",
+   "https://www.nadlancenter.co.il/article/12512 (200)",
+   "https://www.ice.co.il/realestate/news/article/1073836 (200)",
+   "https://www.ice.co.il/realestate/news/article/1096066 (200)",
+   "https://www.ice.co.il/realestate/news/article/1083235 (200)",
+   "https://www.ice.co.il/realestate/news/article/1109088 (200)",
+   "https://project-tlv.info/places/sde-dov/ (200)",
+   "https://www.calcalist.co.il/article/b1sq4rbmzl (403, blocked)",
+   "https://www.calcalist.co.il/article/hjjykdj8lg (403, blocked)",
+   "https://www.calcalist.co.il/article/skqeve9rgl (403, blocked)",
+   "https://www.hagag.co.il/ (no response)",
+   "https://nad-lan.co.il/projects/first-sde-dov/ (200, our live page)"
+  ]
+ },
+ "4749": {
+  "title": "UTOPIA אוטופיה במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "קבוצת נחמיאס",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "המגרש",
+    "v": "מגרש 103 בשכונת אשכול, 5.2 דונם",
+    "src": "גלובס, 18.10.2026",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001559413"
+   },
+   {
+    "k": "הקרקע",
+    "v": "72% מהזכויות נרכשו במכרז רמ״י (3.2022) בכ-681 מיליון ₪ כולל הוצאות פיתוח; יתרת הקרקע נרכשה (12.2024) בכ-114 מיליון ₪",
+    "src": "גלובס, 22.12.2024",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001497375"
+   },
+   {
+    "k": "דירות",
+    "v": "337 דירות של 2 עד 5 חדרים, מיני פנטהאוזים, פנטהאוזים ודירות מיוחדות",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "4 מבנים: מגדל בן 34 קומות המחובר לבניין בן 7 קומות, ומגדל בן 15 קומות המחובר לבניין בן 7 קומות",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "אבנר ישר אדריכלים",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "מתקנים",
+    "v": "בריכת שחייה, חדר כושר, חדרי פילאטיס וספינינג וג׳ימבורי לילדים",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "עבודות הבנייה החלו (10.2025)",
+    "src": "מרכז הנדל״ן, 27.10.2025",
+    "url": "https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "k": "האכלוס הצפוי",
+    "v": "לקראת אמצע 2029",
+    "src": "גלובס, 18.10.2026",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001559413"
+   },
+   {
+    "k": "מחירים שפורסמו",
+    "v": "לפי נתוני רשות המסים: כ-85 אלף ₪ למ״ר בממוצע, ובכמה עסקאות בקומות הגבוהות כ-90 אלף ₪ למ״ר (10.2026)",
+    "src": "גלובס, 18.10.2026",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001559413"
+   },
+   {
+    "k": "עסקה שפורסמה",
+    "v": "פנטהאוז בקומה 33: 8 חדרים, 394 מ״ר ו-3 מרפסות של 144 מ״ר עם בריכה פרטית של 28 מ״ר, ב-43 מיליון ₪ (10.2026)",
+    "src": "גלובס, 18.10.2026",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001559413"
+   }
+  ],
+  "flags": [
+   "Sources disagree on the tower height: Globes 22.12.2024 says the approved design has 'מגדל בן 35 קומות (עם 205 יחידות דיור)'; nadlancenter 27.10.2025 and Globes 18.10.2026 say 34 floors. Table uses 34.",
+   "Plot size differs slightly: nadlancenter 'כ-5 דונמים', Globes 22.12.2024 'שטחו הכולל 5,000 מ\"ר', Globes 18.10.2026 '5.2 דונם'.",
+   "Our page opens with 'פרויקט מגורים מתוכנן' and says the full-building permit is still in process with only a separate excavation and foundations permit; nadlancenter 27.10.2025 says 'קבוצת נחמיאס החלה בעבודות הבניה' and Globes 18.10.2026 expects occupancy 'לקראת אמצע 2029'. The permit detail is not contradicted, but the 'planned' framing is behind the sources."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/13109 (200)",
+   "https://www.globes.co.il/news/article.aspx?did=1001559413 (200)",
+   "https://www.globes.co.il/news/article.aspx?did=1001497375 (200)",
+   "https://home.walla.co.il/item/3742274 (200, interior designer feature, not used)",
+   "https://project-tlv.info/places/sde-dov/ (200)",
+   "https://nad-lan.co.il/projects/utopia-sde-dov/ (200, our live page)"
+  ]
+ },
+ "4750": {
+  "title": "שדה דב א׳ של שיכון ובינוי במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "שיכון ובינוי",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "המגרש",
+    "v": "מגרש 109 בשכונת אשכול",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/places/sde-dov/"
+   },
+   {
+    "k": "הקרקע",
+    "v": "החברה זכתה בקרקע באוגוסט 2021 ב-830 מיליון ₪, כולל הוצאות פיתוח",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "השכרה",
+    "v": "324 דירות להשכרה ארוכת טווח",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "מגדל בן 38 קומות ושני מבנים בני 8 קומות, מעל חזית מסחרית ושטחים לשימוש הדיירים",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "מילבאואר אדריכלים",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "מסחר",
+    "v": "644 מ״ר מסחר",
+    "src": "מרכז הנדל״ן, 22.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15637"
+   },
+   {
+    "k": "היתר הבנייה",
+    "v": "היתר בנייה מלא מעיריית תל אביב (12.2025), אחרי היתר לחפירה ודיפון",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "בשלבי הקמה (10.2026)",
+    "src": "מרכז הנדל״ן, 22.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15637"
+   },
+   {
+    "k": "סיום הבנייה הצפוי",
+    "v": "ספטמבר 2028, לפי הערכת החברה בדוח לרבעון השלישי",
+    "src": "מרכז הנדל״ן, 11.12.2025",
+    "url": "https://www.nadlancenter.co.il/article/13451"
+   },
+   {
+    "k": "הבעלות",
+    "v": "הפרויקט מוחזק בשיכון ריט, ונחתם הסכם מחייב למזג אותה בחברה הציבורית קונטיניואל; ההשלמה כפופה לאישורים (10.2026)",
+    "src": "מרכז הנדל״ן, 22.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15637"
+   }
+  ],
+  "flags": [
+   "Our page's stage badge reads 'בהיתר בנייה'; nadlancenter 22.10.2026 describes both Shikun REIT projects in Eshkol as 'המצויים בשלבי הקמה'. Units (324), floors (38 plus two of 8), permit (12.2025) and completion (9.2028) on our page match the sources."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/13451 (200)",
+   "https://www.nadlancenter.co.il/article/15637 (200)",
+   "https://project-tlv.info/places/sde-dov/ (200)",
+   "https://nad-lan.co.il/projects/shikun-binui-sde-dov/ (200, our live page)"
+  ]
+ },
+ "4751": {
+  "title": "מגדלי הים התיכון שדה דב במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם והמפעיל",
+    "v": "רשת מגדלי הים התיכון, בשותפות עם כלל ביטוח: 51% לרשת ו-49% לכלל",
+    "src": "פאנדר, 27.3.2025",
+    "url": "https://www.funder.co.il/article/179213"
+   },
+   {
+    "k": "המגרש",
+    "v": "מגרש 150 בצפון רובע שדה דב, 4,663 מ״ר, ביעוד דיור מוגן",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/places/sde-dov/"
+   },
+   {
+    "k": "דירות",
+    "v": "300 יחידות דיור מוגן",
+    "src": "פאנדר, 27.3.2025",
+    "url": "https://www.funder.co.il/article/179213"
+   },
+   {
+    "k": "הקרקע",
+    "v": "נרכשה במכרז רמ״י (3.2025) בכ-418 מיליון ₪, בתוספת הוצאות פיתוח של כ-29 מיליון ₪",
+    "src": "פאנדר, 27.3.2025",
+    "url": "https://www.funder.co.il/article/179213"
+   },
+   {
+    "k": "עלות ההקמה המוערכת",
+    "v": "כמיליארד ₪, לפי החברה",
+    "src": "פאנדר, 27.3.2025",
+    "url": "https://www.funder.co.il/article/179213"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "החברה מקדמת את שלבי התכנון (7.2026)",
+    "src": "ביזפורטל, 9.7.2026",
+    "url": "https://www.bizportal.co.il/realestates/news/article/20035517"
+   },
+   {
+    "k": "צפון הרובע",
+    "v": "מתוכננות 4,028 דירות, מתוכן 449 דיור בר השגה ו-300 דיור מוגן; בנייה מרקמית עד 9 קומות ומגדלים בני 20 עד 40 קומות",
+    "src": "מרכז הנדל״ן, 26.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11816"
+   }
+  ],
+  "flags": [
+   "Land price is stated three ways, all consistent once development costs are separated: nadlancenter 26.3.2025 '447 מיליון שקלים' (the article says all sums include development costs); funder 27.3.2025 'כ-418 מיליון שקל, בתוספת הוצאות פיתוח של כ-29 מיליון שקל'; project-tlv table '418,518,018'. Our page's 418M matches the land-only figure.",
+   "Funder 27.5.2025 says 'עד 300 יחידות דיור' (up to 300)."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/11816 (200)",
+   "https://www.funder.co.il/article/179213 (200)",
+   "https://www.funder.co.il/article/181884 (200)",
+   "https://www.bizportal.co.il/realestates/news/article/20035517 (200)",
+   "https://project-tlv.info/places/sde-dov/ (200)",
+   "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/ (200, our live page)"
+  ]
+ },
+ "4877": {
+  "title": "Recanati Residence במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזמים",
+    "v": "אשטרום מגורים בשיתוף חברת ענב",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "המיקום",
+    "v": "הצד המערבי של רחוב רקאנטי, צמוד לגינת צורי, רמת אביב ג׳",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "התוכנית",
+    "v": "תא/3850/מח, פינוי בינוי ברקנאטי 5-15, מתחם של 6.3 דונם",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/urban-plans/3850-2/"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "3 בניינים בני 16 קומות, מעל 3 מפלסי חניון תת-קרקעי",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "דירות",
+    "v": "198 דירות של 3 עד 5 חדרים, כולל מיני פנטהאוזים ופנטהאוזים",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "לפני ואחרי",
+    "v": "96 דירות נהרסו, ובמקומן 198 דירות חדשות",
+    "src": "ביזפורטל, 12.3.2019",
+    "url": "https://www.bizportal.co.il/realestates/news/article/760927"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "כנען שנהב אדריכלים",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "עיצוב פנים",
+    "v": "דנה אוברזון, בשטחים המשותפים",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "מחיר ההשקה שפורסם",
+    "v": "במכירה המוקדמת (3.2019): 3 חדרים כ-83 מ״ר החל מ-3.8 מיליון ₪, 5 חדרים 123 מ״ר ב-5.5 מיליון ₪, מיני פנטהאוז 6 חדרים 163 מ״ר ב-7.6 מיליון ₪",
+    "src": "ביזפורטל, 12.3.2019",
+    "url": "https://www.bizportal.co.il/realestates/news/article/760927"
+   },
+   {
+    "k": "ציר הזמן",
+    "v": "הדיירים התארגנו ב-2000, הוועדה המחוזית אישרה את התוכנית ב-2011 והבניינים הישנים נהרסו ב-3.2019",
+    "src": "גלובס, 12.3.2019",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001277357"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "אכלוס מיידי",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   }
+  ],
+  "flags": [
+   "Our page places the project in 'נווה אביבים'; Ashtrom ('בלב שכונת רמת אביב ג''), project-tlv ('מיקום: שכונת רמת אביב ג'') and Globes 12.3.2019 all say Ramat Aviv Gimel.",
+   "Our page names the developer as Ashdar of the Ashtrom group only; the Ashtrom page says 'מקימה אשטרום מגורים בשיתוף עם חברת ענב'. Our page's 'כ-400 דירות' that Ashdar promotes in the neighbourhood was not found in any source read.",
+   "Architect differs: Ashtrom names 'כנען שנהב אדריכלים'; the project-tlv plan page lists 'תכנון: אורי שטרית אדריכלים' (possibly the urban plan; not confirmed).",
+   "Old unit count: Globes 12.3.2019 quotes the tenants' lawyer on '98 דירות קיימות' and Ashdar's CEO on '198 דירות חדשות במקום 96 ישנות'; Bizportal 12.3.2019 says 'אשדר הרסה 96 דירות'. Table uses 96.",
+   "Room range: Ashtrom says 'דירות בנות 3-5 חדרים, כולל מיני פנטהאוזים ופנטהאוזים'; Bizportal 2019 presale lists 'מיני פנטהאוזים 6 חדרים'."
+  ],
+  "read": [
+   "https://www.ashtromegurim.co.il/projects/recanati-residence (200)",
+   "https://project-tlv.info/urban-plans/3850-2/ (200)",
+   "https://www.globes.co.il/news/article.aspx?did=1001277357 (200)",
+   "https://www.bizportal.co.il/realestates/news/article/760927 (200)",
+   "https://nad-lan.co.il/projects/recanati-residence/ (200, our live page)"
+  ]
+ },
+ "4875": {
+  "title": "אשדר איינשטיין במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "אשטרום מגורים (לשעבר אשדר)",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "המיקום",
+    "v": "איינשטיין 63-65-67, רמת אביב / נווה אביבים",
+    "src": "פרויקט תל אביב, נקרא 1.11.2026",
+    "url": "https://project-tlv.info/buildings/einstein/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%90%d7%99%d7%99%d7%a0%d7%a9%d7%98%d7%99%d7%99%d7%9f-63-67/"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "בניין בן 8 קומות עם 3 כניסות נפרדות ולובי משותף",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "דירות בקומה",
+    "v": "2 דירות בכל קומה",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "דירות",
+    "v": "45 יחידות דיור",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/recanati-residence"
+   },
+   {
+    "k": "תמהיל הדירות",
+    "v": "3 עד 4 חדרים ופנטהאוזים",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "האדריכל אהוד שני",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "מתקנים",
+    "v": "חניון תת-קרקעי פרטי, מעליות, הכנה לעמדות טעינה לרכב חשמלי, חדר אופניים ועגלות",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "אכלוס מיידי; באתר החברה הפרויקט מסווג כהתחדשות עירונית",
+    "src": "אשטרום מגורים, נקרא 1.11.2026",
+    "url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   }
+  ],
+  "flags": [
+   "Our page says 'שלושה בניינים בני 8 קומות'; the developer page describes one building: 'בבניין הבוטיק בן 8 הקומות יש 3 כניסות עם לובי משותף'.",
+   "Our page's mix 'שני פנטהאוזים בני 5 חדרים ופנטהאוז נוסף בן 3 חדרים' was not found in any source read; the developer says 'דירות בנות 3-4 חדרים ופנטהאוזים'. Our page's 'כ-400 דירות' that Ashdar promotes in the neighbourhood was not found either.",
+   "The 45-unit figure appears only on the Ashtrom site's project card (shown on the Recanati Residence page), not on the Einstein project page itself; the row's URL points to where it appears."
+  ],
+  "read": [
+   "https://www.ashtromegurim.co.il/projects/ashdar-einstein (200)",
+   "https://www.ashtromegurim.co.il/projects/recanati-residence (200)",
+   "https://project-tlv.info/buildings/einstein/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%90%d7%99%d7%99%d7%a0%d7%a9%d7%98%d7%99%d7%99%d7%9f-63-67/ (200)",
+   "https://nad-lan.co.il/projects/ashdar-einstein/ (200, our live page)"
+  ]
+ },
+ "4886": {
+  "title": "מגדלי המרינה הרצליה במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "המיקום",
+    "v": "רחוב הצדף 3, המרינה, מערב הרצליה",
+    "src": "גלובס, 13.12.2016",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001166726"
+   },
+   {
+    "k": "קומות",
+    "v": "12 קומות; הקומה ה-12 היא האחרונה",
+    "src": "גלובס, 13.12.2016",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001166726"
+   },
+   {
+    "k": "מתקנים",
+    "v": "בריכת שחייה, חדר כושר ואולם כנסים לשימוש הדיירים בלבד, ושירותי שמירה",
+    "src": "גלובס, 13.12.2016",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001166726"
+   },
+   {
+    "k": "עסקה שפורסמה",
+    "v": "דירה של כ-360 מ״ר ומרפסת של 110 מ״ר בקומה ה-12 הועמדה למכירה בידי כונס נכסים; שוויה הוערך בשוק בכ-30 מיליון ₪ (12.2016)",
+    "src": "גלובס, 13.12.2016",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001166726"
+   },
+   {
+    "k": "דירות נופש במרינה",
+    "v": "במתחם המרינה, יחידה שנרכשה לראשונה אחרי דצמבר 1999 חייבת לעמוד להשכרה מלונאית לציבור 9 חודשים בשנה לפחות; בית המשפט העליון סגר את הסוגיה (2.2019)",
+    "src": "גלובס, 10.2.2019",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001272535"
+   }
+  ],
+  "flags": [
+   "Developer not confirmed: our page names 'ים סוף'. No source read names the developer of Marina Towers. English Wikipedia (Herzliya Marina) lists 'Almog Yam Suf' among companies that bought building rights in the marina, without naming this project; Globes 13.12.2016 says the top-floor apartment was owned by 'מרינה הרצליה שותפות מוגבלת'.",
+   "Our page's 'כ-167 דירות', 'שני מגדלים' and 'מעל מרכז מסחרי' were not found in any source read.",
+   "Price contradiction: our page says a 4-room ~360 sqm apartment with ~110 sqm balcony 'שווקה במחיר מבוקש של כ-32 מיליון ש\"ח'; Globes 13.12.2016 describes the same-size top-floor apartment (3 bedrooms, 'מרפסת בשטח 110 מ\"ר') with 'שווי הדירה מוערך בשוק ב-30 מיליון שקל', sold by a receiver.",
+   "The 'דירות נופש במרינה' row is marina-wide; the sources do not say which Marina Towers units were first bought after 12.1999 (Globes 11.5.2025 puts the affected marina units at 468).",
+   "Only 4 project-specific rows, all from one 2016 Globes article; the page needs a better primary source (developer, unit count, completion year)."
+  ],
+  "read": [
+   "https://www.globes.co.il/news/article.aspx?did=1001166726 (200)",
+   "https://en.globes.co.il/en/article-receiver-to-sell-motti-zissers-herzliya-home-1001166651 (200)",
+   "https://www.globes.co.il/news/article.aspx?did=1001272535 (200)",
+   "https://www.globes.co.il/news/article.aspx?did=1001509566 (200)",
+   "https://www.globes.co.il/news/%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%91%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94.tag (200, tag list)",
+   "https://www.bizportal.co.il/realestates/news/article/20038994 (200, marina market, not project-specific, not used)",
+   "https://finance.walla.co.il/item/2717890 (200, Ritz-Carlton, not used)",
+   "https://en.wikipedia.org/wiki/Herzliya_Marina (200)",
+   "https://nad-lan.co.il/projects/marina-towers-herzliya/ (200, our live page)"
+  ]
+ },
+ "6548": {
+  "title": "H INFINITY במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "קבוצת חג'ג'",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "המיקום",
+    "v": "פינת אבן גבירול וז'בוטינסקי, מתחם סומייל",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "קומות",
+    "v": "מגדל בן 52 קומות",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "דירות",
+    "v": "278 יחידות דיור",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "הקבלן המבצע",
+    "v": "אלקטרה",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "האדריכל משה צור",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "מתקנים",
+    "v": "בריכת שחייה, מתחמי ספא וכושר ובר דיירים",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "מכירות שפורסמו",
+    "v": "221 מתוך 278 הדירות נמכרו (210 חוזים ו-11 בקשות רכישה), ונותרו 57 (8.2026)",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "שלב ביצוע מתקדם; האכלוס צפוי ברבעון הראשון של 2027, להערכת החברה (10.2026)",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "k": "עסקה שפורסמה",
+    "v": "פנטהאוז בקומות 51 ו-52, כ-293 מ״ר ועוד כ-158 מ״ר מרפסות, ב-55,555,000 ₪ כדירת מעטפת ללא עבודות גמר (10.2026)",
+    "src": "מרכז הנדל״ן, 11.10.2026",
+    "url": "https://www.nadlancenter.co.il/article/15539"
+   }
+  ],
+  "flags": [
+   "Floors: nadlancenter 11.10.2026 says 'מגדל יוקרה בן 52 קומות'; our page's facts box leads with 53 floors from the 2025 annual report (it also lists 52 from the group site and 51 from the marketing page).",
+   "Timing contradiction: our page says 'החברה מעריכה שעבודות ההקמה יסתיימו ברבעון הרביעי של 2026' (annual report 2025); nadlancenter 11.10.2026 says the project 'צפוי להתאכלס ברבעון הראשון של 2027'.",
+   "All rows rest on one article; the Hagag annual report and Globes 30.11.2021 cited on our page were not read in this pass."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/15539 (200)",
+   "https://www.nadlancenter.co.il/tags/H-Infinity (200, tag list)",
+   "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/ (200, our live page)"
+  ]
+ },
+ "4890": {
+  "title": "מגדלי YOO במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "קבוצת חבס",
+    "src": "וואלה כסף, 26.11.2006",
+    "url": "https://finance.walla.co.il/item/1014364"
+   },
+   {
+    "k": "המיקום",
+    "v": "דרך נמיר פינת רחוב ההלכה, שכונת פארק צמרת",
+    "src": "וואלה כסף, 1.7.2005",
+    "url": "https://finance.walla.co.il/item/740072"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "2 מגדלים בני 37 ו-41 קומות, על שטח של 9 דונם",
+    "src": "וואלה כסף, 1.7.2005",
+    "url": "https://finance.walla.co.il/item/740072"
+   },
+   {
+    "k": "דירות",
+    "v": "כ-300 דירות",
+    "src": "וואלה כסף, 26.11.2006",
+    "url": "https://finance.walla.co.il/item/1014364"
+   },
+   {
+    "k": "אדריכלות ועיצוב",
+    "v": "פיליפ סטארק, יחד עם משרד האדריכלים יסקי-סיון",
+    "src": "וואלה כסף, 1.7.2005",
+    "url": "https://finance.walla.co.il/item/740072"
+   },
+   {
+    "k": "שטח הבנייה",
+    "v": "כ-100 אלף מ״ר: 70 אלף מעל הקרקע וכ-30 אלף מתחתיה",
+    "src": "המכלול, נקרא 1.11.2026",
+    "url": "https://www.hamichlol.org.il/YOO"
+   },
+   {
+    "k": "שטחי הדירות",
+    "v": "מ-88 מ״ר ועד דירות על קומה שלמה של כ-800 מ״ר",
+    "src": "המכלול, נקרא 1.11.2026",
+    "url": "https://www.hamichlol.org.il/YOO"
+   },
+   {
+    "k": "מכירות שפורסמו",
+    "v": "במגדל הראשון, מתחילת השיווק (4.2004) עד 3.2005: 245.5 מיליון ₪",
+    "src": "וואלה כסף, 1.7.2005",
+    "url": "https://finance.walla.co.il/item/740072"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "המגדל המזרחי הוא הראשון בפארק צמרת שאכלוסו החל (12.2008)",
+    "src": "וואלה כסף, 1.12.2008",
+    "url": "https://finance.walla.co.il/item/1389110"
+   },
+   {
+    "k": "עסקאות שפורסמו",
+    "v": "YOO 1: 129 מ״ר, 3.5 חדרים, קומה 22, 6.74 מיליון ₪; YOO 2: 112 מ״ר, 3 חדרים, קומה 6, 5.55 מיליון ₪ (פורסם 7.2026)",
+    "src": "ביזפורטל, 16.7.2026",
+    "url": "https://www.bizportal.co.il/realestates/news/article/20036045"
+   }
+  ],
+  "flags": [
+   "Unit sizes: our page says 'כ-80 עד 90 מ\"ר' up to a 'פנטהאוז בן כ-750 מ\"ר'; Hamichlol says 'בין 88 מ\"ר לדירות על קומה שלמה בשטח של כ-800 מ\"ר'. Hamichlol is a Wikipedia-derived encyclopedia; no news source read gives the sizes.",
+   "Contractor not used: Hamichlol names the Turkish firm 'יילמזלר'; Walla 1.7.2005 mentions 'ארבעה מנופים של חברת א.דורי' on site."
+  ],
+  "read": [
+   "https://finance.walla.co.il/item/1014364 (200)",
+   "https://finance.walla.co.il/item/740072 (200)",
+   "https://finance.walla.co.il/item/1389110 (200)",
+   "https://www.hamichlol.org.il/YOO (200)",
+   "https://www.bizportal.co.il/realestates/news/article/20036045 (200)",
+   "https://nad-lan.co.il/projects/yoo-tel-aviv/ (200, our live page)"
+  ]
+ },
+ "4882": {
+  "title": "מגדלי אקירוב במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "קבוצת אלרוב",
+    "src": "גלובס, 24.7.2000",
+    "url": "https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "k": "המיקום",
+    "v": "רחוב פנקס, צפון תל אביב",
+    "src": "וואלה כסף, 28.8.2003",
+    "url": "https://finance.walla.co.il/item/433025"
+   },
+   {
+    "k": "ביחס לפארק צמרת",
+    "v": "ממערב לדרך נמיר; המגדלים אינם חלק משכונת פארק צמרת, שנבנתה ממזרח לדרך",
+    "src": "ביזפורטל, 16.7.2026",
+    "url": "https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "3 מגדלים בני 34 קומות",
+    "src": "גלובס, 24.7.2000",
+    "url": "https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "k": "דירות",
+    "v": "400 יחידות דיור מתוכננות (7.2000)",
+    "src": "גלובס, 24.7.2000",
+    "url": "https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "k": "תחילת הבנייה",
+    "v": "סוף 1998",
+    "src": "גלובס, 24.7.2000",
+    "url": "https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "שני מגדלים כמעט הושלמו, והשלישי בשלבים התחלתיים (8.2003)",
+    "src": "וואלה כסף, 28.8.2003",
+    "url": "https://finance.walla.co.il/item/433025"
+   },
+   {
+    "k": "מכירות שפורסמו",
+    "v": "70% מהדירות בשני המגדלים הראשונים נמכרו ב-647 מיליון ₪ (8.2003)",
+    "src": "וואלה כסף, 28.8.2003",
+    "url": "https://finance.walla.co.il/item/433025"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "אברהם יסקי ויוסי סיון",
+    "src": "המכלול, נקרא 1.11.2026",
+    "url": "https://www.hamichlol.org.il/%D7%9E%D7%92%D7%93%D7%9C%D7%99_%D7%A6%D7%9E%D7%A8%D7%AA"
+   },
+   {
+    "k": "סיום הבנייה",
+    "v": "בניית המגדל האחרון הסתיימה ב-2006",
+    "src": "המכלול, נקרא 1.11.2026",
+    "url": "https://www.hamichlol.org.il/%D7%9E%D7%92%D7%93%D7%9C%D7%99_%D7%A6%D7%9E%D7%A8%D7%AA"
+   }
+  ],
+  "flags": [
+   "Floors contradiction: our page says 'שלושה מגדלי מגורים בני 32 קומות'; Globes 24.7.2000 ('3 מגדלים בני 34 קומות'), Walla 28.8.2003 ('שני מגדלים בני 34 קומות') and Hamichlol all say 34.",
+   "Units: our page says 'כ-350 יחידות דיור'; Globes 24.7.2000 says 'מתוכננות להיבנות 400 יחידות דיור'; Hamichlol says 'כ-360 יחידות דיור'. No source read confirms 350.",
+   "Start date: our page says 'הבנייה החלה בשנת 1999'; Globes 24.7.2000 says 'הבנייה, שהחלה בסוף שנת 98''; Hamichlol says 1999.",
+   "Location: our page's title and text place the towers 'בפארק צמרת'; Bizportal 16.7.2026 says 'מגדלי אקירוב ... אינם חלק מהשכונה. הם נמצאים ממערב לדרך נמיר'."
+  ],
+  "read": [
+   "https://www.globes.co.il/news/article.aspx?did=255351 (200)",
+   "https://www.globes.co.il/news/article.aspx?did=102841 (200, 1997 land deal, not used)",
+   "https://finance.walla.co.il/item/433025 (200)",
+   "https://www.hamichlol.org.il/%D7%9E%D7%92%D7%93%D7%9C%D7%99_%D7%A6%D7%9E%D7%A8%D7%AA (200)",
+   "https://www.bizportal.co.il/realestates/news/article/20036045 (200)",
+   "https://nad-lan.co.il/projects/akirov-towers/ (200, our live page)"
+  ]
+ },
+ "4879": {
+  "title": "פארק בבלי במספרים",
+  "checked": "נובמבר 2026",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "אלעד גרופ, בשליטת יצחק תשובה",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "המיקום",
+    "v": "מדרום לשכונת בבלי, על קרקעות גבעת עמל",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "קומות ובניינים",
+    "v": "2 מגדלים בני 44 קומות",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "אדריכלות",
+    "v": "האדריכלית גל נאור",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "הקבלן המבצע",
+    "v": "המגדל הראשון: דניה סיבוס; המגדל השני: תדהר (3.2025)",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "מתקנים",
+    "v": "לובי עם שומר 24/7, בריכת שחייה, חדר כושר, סלון אירוח, לאונג׳ עסקים, מועדון דיירים ושטחים ירוקים",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "הפנטהאוז שנמכר במגדל הראשון מוכן לאכלוס מיידי; את המגדל השני בונה תדהר (3.2025)",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "עסקה שפורסמה",
+    "v": "פנטהאוז בחצי הקומה ה-44 במגדל הראשון, כ-360 מ״ר ועוד כ-145 מ״ר מרפסות, נמכר ב-43 מיליון ₪ (3.2025)",
+    "src": "מרכז הנדל״ן, 12.3.2025",
+    "url": "https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "k": "התוכנית",
+    "v": "הוועדה המקומית אישרה (6.2009) את תוכנית בבלי-דקל: 7 מגדלי מגורים עד 44 קומות ו-988 דירות, על 108 דונם",
+    "src": "וואלה כסף, 3.6.2009",
+    "url": "https://finance.walla.co.il/item/1496358"
+   }
+  ],
+  "flags": [
+   "Our page contradicts the sources: it says 'כ-800 דירות בארבעה מגדלי מגורים בני 46 קומות ... על פני מעל 100 דונם'; nadlancenter 12.3.2025 says Tshuva's Park Bavli 'כולל, שני מגדלים בני 44 קומות'. Walla 3.6.2009 gives the wider Bavli-Dekel plan as 7 towers up to 44 floors, 988 apartments, 108 dunam. The 46/48-floor figures that surface in searches belong to Hagag's separate H Masterpiece tower (Bavli 3; ice: 48 floors, 247 units), on land Hagag bought from Tshuva.",
+   "The unit count of Elad's two towers was not found in any source read, so there is no 'דירות' row."
+  ],
+  "read": [
+   "https://www.nadlancenter.co.il/article/11730 (200)",
+   "https://www.nadlancenter.co.il/tags/%D7%A4%D7%90%D7%A8%D7%A7_%D7%91%D7%91%D7%9C%D7%99 (200, tag list)",
+   "https://finance.walla.co.il/item/1496358 (200)",
+   "https://www.ice.co.il/realestate/news/article/994668 (200, Hagag Bavli 3, separate project, not used)",
+   "https://www.bizportal.co.il/realestates/news/article/353958 (200, Inbal Or Bavli project, not used)",
+   "https://nad-lan.co.il/projects/park-bavli/ (200, our live page)"
+  ]
+ }
+}
