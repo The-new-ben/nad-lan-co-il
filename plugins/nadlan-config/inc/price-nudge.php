@@ -14,6 +14,10 @@
  * - Control: a box on every project (follow the site / show / do not show + an own line), a switch column in the projects
  *   list, and Settings > חלון עדכון מחירים. Ashira never (Ben, 31.10.2026). Site default: off; Rainbow first.
  * - Measurement: gtag events nudge_shown / nudge_close / nudge_wa / nudge_holdout; a holdout share never sees it.
+ * - 105.7 (Ben 1.11.2026, after a broker asked him for Rainbow's prices and plans): the site's own window. The frame says
+ *   "נדל״ן · nad-lan.co.il", never a project's or a listing's name; no plans are offered; the WhatsApp text carries the page
+ *   address, not a project name; every trigger waits the full delay; no Tawk.to calls (the site hides that chat on load). Also on
+ *   the Hebrew listings of the brokers in the option nadlan_nudge_brokers (first: Meital Katsir, 7833).
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -36,8 +40,14 @@ if ( ! function_exists( 'nadlan_nudge_blocked' ) ) {
 if ( ! function_exists( 'nadlan_nudge_on' ) ) {
 	function nadlan_nudge_on( $id = 0 ) {
 		$id = (int) ( $id ?: get_queried_object_id() );
-		if ( ! $id || 'nadlan_project' !== get_post_type( $id ) || 'publish' !== get_post_status( $id ) ) { return false; }
-		if ( nadlan_nudge_blocked( $id ) || post_password_required( $id ) ) { return false; }
+		if ( ! $id || 'publish' !== get_post_status( $id ) || post_password_required( $id ) ) { return false; }
+		/* 105.7 (Ben 1.11.2026): the listings of the brokers named in nadlan_nudge_brokers (first: Meital Katsir, 7833), Hebrew pages */
+		if ( 'nadlan_property' === get_post_type( $id ) ) {
+			$br = (array) get_option( 'nadlan_nudge_brokers', array( 7833 ) );
+			return in_array( (int) get_post_meta( $id, 'nl_broker_id', true ), array_map( 'intval', $br ), true )
+				&& (bool) preg_match( '/\p{Hebrew}/u', (string) get_the_title( $id ) );
+		}
+		if ( 'nadlan_project' !== get_post_type( $id ) || nadlan_nudge_blocked( $id ) ) { return false; }
 		$m = (string) get_post_meta( $id, 'nadlan_nudge', true );
 		if ( 'on' === $m ) { return true; }
 		if ( 'off' === $m ) { return false; }
@@ -156,22 +166,18 @@ if ( ! function_exists( 'nadlan_nudge_name' ) ) {
 }
 
 add_action( 'wp_footer', function () {
-	if ( is_admin() || ! is_singular( 'nadlan_project' ) ) { return; }
+	if ( is_admin() || ! is_singular( array( 'nadlan_project', 'nadlan_property' ) ) ) { return; }
 	$id = (int) get_queried_object_id();
 	if ( ! nadlan_nudge_on( $id ) ) { return; }
 	$wa = function_exists( 'nadlan_cta_whatsapp_number' ) ? nadlan_cta_whatsapp_number() : '';
 	if ( '' === $wa ) { return; }
 	$o    = nadlan_nudge_opts();
-	$name = nadlan_nudge_name( $id );
+	/* 105.7 (Ben 1.11.2026): the site's own window. Never a project's or a listing's name on the frame or in the message, never
+	   an offer of plans the site does not hold: the site is an independent publisher, never the developer or a broker. */
 	$own  = trim( (string) get_post_meta( $id, 'nadlan_nudge_text', true ) );
 	$line = '' !== $own ? $own : 'מחירי הנדל״ן משתנים';
 	$base = 'https://wa.me/' . rawurlencode( $wa ) . '?text=';
-	$msgs = array(
-		'all'    => 'שלום, אשמח לקבל עדכון מחיר, תוכניות וסטטוס הפרויקט של ' . $name . '.',
-		'price'  => 'שלום, אשמח לקבל עדכון מחיר על ' . $name . '.',
-		'plans'  => 'שלום, אשמח לקבל את תוכניות הדירות של ' . $name . '.',
-		'status' => 'שלום, אשמח לשמוע מה סטטוס הפרויקט ' . $name . '.',
-	);
+	$msgs = array( 'all' => 'שלום, אשמח לקבל עדכון על מחירי הנדל״ן באזור. הגעתי מהעמוד: ' . get_permalink( $id ) );
 	$cfg = array(
 		'p'  => (string) get_post_field( 'post_name', $id ),
 		'd'  => (int) $o['delay'], 'dp' => (int) $o['depth'] / 100, 'f' => (int) $o['fade'],
@@ -180,19 +186,15 @@ add_action( 'wp_footer', function () {
 	?>
 <div id="nlnu" class="nlnu" dir="rtl" role="dialog" aria-modal="false" aria-labelledby="nlnu-line" hidden>
 	<span class="nlnu-grab" aria-hidden="true"></span>
-	<div class="nlnu-head"><p class="nlnu-kick"><?php echo esc_html( $name ); ?> · עדכון מחירים</p><button type="button" class="nlnu-x" aria-label="סגירה">×</button></div>
+	<div class="nlnu-head"><p class="nlnu-kick">נדל״ן · nad-lan.co.il</p><button type="button" class="nlnu-x" aria-label="סגירה">×</button></div>
 	<span class="nlnu-perf" aria-hidden="true"></span>
 	<p class="nlnu-line" id="nlnu-line"><?php echo esc_html( $line ); ?></p>
-	<p class="nlnu-small">לחצו לקבלת עדכון מחיר, תוכניות וסטטוס הפרויקט, ישירות בוואטסאפ.</p>
-	<div class="nlnu-chips">
-		<a class="nlnu-chip" data-k="price" href="<?php echo esc_url( $base . rawurlencode( $msgs['price'] ) ); ?>" target="_blank" rel="noopener">עדכון מחיר</a>
-		<a class="nlnu-chip" data-k="plans" href="<?php echo esc_url( $base . rawurlencode( $msgs['plans'] ) ); ?>" target="_blank" rel="noopener">תוכניות</a>
-		<a class="nlnu-chip" data-k="status" href="<?php echo esc_url( $base . rawurlencode( $msgs['status'] ) ); ?>" target="_blank" rel="noopener">סטטוס הפרויקט</a>
-	</div>
+	<p class="nlnu-small">רוצים לקבל עדכון כשהמחירים באזור משתנים? שלחו הודעה ונעדכן אתכם.</p>
 	<div class="nlnu-acts">
-		<a class="nlnu-wa" data-k="all" href="<?php echo esc_url( $base . rawurlencode( $msgs['all'] ) ); ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>לקבלת עדכון בוואטסאפ</a>
+		<a class="nlnu-wa" data-k="all" href="<?php echo esc_url( $base . rawurlencode( $msgs['all'] ) ); ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>עדכנו אותי בוואטסאפ</a>
 		<button type="button" class="nlnu-later">לא עכשיו</button>
 	</div>
+	<p class="nlnu-ind">אתר מידע עצמאי, לא מטעם יזם או מתווך.</p>
 	<span class="nlnu-fuse" aria-hidden="true"><i></i></span>
 </div>
 <style id="nadlan-nudge-css">
@@ -212,6 +214,7 @@ add_action( 'wp_footer', function () {
 #nlnu .nlnu-perf::before{inset-inline-start:-8px}#nlnu .nlnu-perf::after{inset-inline-end:-8px}
 #nlnu .nlnu-line{font:600 20px/1.22 "Noto Serif Hebrew","Frank Ruhl Libre",Georgia,serif;color:#14212b}
 #nlnu .nlnu-small{font-size:13.5px;line-height:1.45;color:#3b4753}
+#nlnu .nlnu-ind{font-size:12px;line-height:1.4;color:#5b6670}
 #nlnu .nlnu-chips{display:flex;flex-wrap:wrap;gap:6px}
 html body #nlnu a.nlnu-chip{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #e3e1da;background:#fff;font:700 13.5px/1 Assistant,Heebo,sans-serif;color:#14212b!important;text-decoration:none!important}
 html body #nlnu a.nlnu-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#0f7a63;margin-inline-end:7px}
@@ -251,24 +254,22 @@ html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;trans
 	function show(tr){
 		if(state!=='idle'||(!PV&&busy()))return;state='in';if(!PV)SS.s('nlnu_s','1');
 		el.hidden=false;void el.offsetWidth;document.body.style.setProperty('--nlnu-h',el.offsetHeight+'px');el.classList.add('is-in');document.body.classList.add('nlnu-on');
-		try{if(window.Tawk_API&&typeof Tawk_API.hideWidget==='function')Tawk_API.hideWidget();}catch(e){}
 		ev('nudge_shown',{trigger:PV?'preview':tr});startFade();
 	}
 	function hide(how){
 		if(state!=='in')return;state='out';clearTimeout(fadeT);
 		if(!PV)LS.s('nlnu_q',String(Date.now()+(how==='wa'?C.qw:C.q)*864e5));
 		if(how==='fade'){el.classList.add('is-fade');}else{el.classList.remove('is-in');}
-		setTimeout(function(){el.hidden=true;el.classList.remove('is-in','is-fade');el.style.transform='';document.body.classList.remove('nlnu-on');
-			try{if(window.Tawk_API&&typeof Tawk_API.showWidget==='function')Tawk_API.showWidget();}catch(e){}},how==='fade'?1250:450);
+		setTimeout(function(){el.hidden=true;el.classList.remove('is-in','is-fade');el.style.transform='';document.body.classList.remove('nlnu-on');},how==='fade'?1250:450);
 		ev(how==='wa'?'nudge_wa':'nudge_close',how==='wa'?{}:{how:how});
 	}
 	function startFade(){fadeStart=Date.now();fuse.style.setProperty('--f',(fadeLeft/1000)+'s');fuse.classList.remove('run');void fuse.offsetWidth;fuse.classList.add('run');fuse.style.animationPlayState='running';fadeT=setTimeout(function(){hide('fade')},fadeLeft);}
 	function pauseFade(){if(state!=='in'||!fadeT)return;clearTimeout(fadeT);fadeT=null;fadeLeft=Math.max(2000,fadeLeft-(Date.now()-fadeStart));fuse.style.animationPlayState='paused';}
 	function resumeFade(){if(state!=='in'||fadeT||drag)return;fadeStart=Date.now();fuse.style.animationPlayState='running';fadeT=setTimeout(function(){hide('fade')},fadeLeft);}
 	setInterval(function(){if(document.hidden||state!=='idle')return;vis++;if(vis>=C.d&&deep())show('time');},1000);
-	addEventListener('scroll',function(){var t=performance.now(),y=scrollY,d=depth();if(d>maxD)maxD=d;if(y>maxPx)maxPx=y;var v=(lastY-y)/Math.max(1,t-lastT);if((maxD>=.5||maxPx>=4*innerHeight)&&vis>=8&&v>1.2)show('scroll_up');lastY=y;lastT=t;},{passive:true});
-	document.addEventListener('visibilitychange',function(){if(document.hidden){awayAt=Date.now();}else if(awayAt&&Date.now()-awayAt>=20000&&vis>=8){show('tab_return');}});
-	document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<=0&&vis>=15&&matchMedia('(pointer:fine)').matches)show('leave_desktop');});
+	addEventListener('scroll',function(){var t=performance.now(),y=scrollY,d=depth();if(d>maxD)maxD=d;if(y>maxPx)maxPx=y;var v=(lastY-y)/Math.max(1,t-lastT);if((maxD>=.5||maxPx>=4*innerHeight)&&vis>=C.d&&v>1.2)show('scroll_up');lastY=y;lastT=t;},{passive:true});
+	document.addEventListener('visibilitychange',function(){if(document.hidden){awayAt=Date.now();}else if(awayAt&&Date.now()-awayAt>=20000&&vis>=C.d){show('tab_return');}});
+	document.addEventListener('mouseout',function(e){if(!e.relatedTarget&&e.clientY<=0&&vis>=C.d&&deep()&&matchMedia('(pointer:fine)').matches)show('leave_desktop');});
 	el.querySelector('.nlnu-x').addEventListener('click',function(){hide('button')});
 	el.querySelector('.nlnu-later').addEventListener('click',function(){hide('button')});
 	[].forEach.call(el.querySelectorAll('a[href*="wa.me/"]'),function(a){a.addEventListener('click',function(){ev('nudge_wa_'+a.getAttribute('data-k'));hide('wa');});});

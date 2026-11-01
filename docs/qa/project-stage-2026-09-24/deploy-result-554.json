@@ -1,0 +1,17 @@
+{
+  "released": "1.72.554",
+  "from": "1.72.553",
+  "live_before": {
+    "inc/price-nudge.php": "7d842f905c49ee714d479ccee8d7e245",
+    "nadlan-config.php": "728a74a8d4630c0739551255e7f474e2"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-01 19:07:38",
+  "files": {
+    "inc/price-nudge.php": "bb7b2df7bd2dc6ec882c21aae4af91ab",
+    "nadlan-config.php": "eb3d6db4c4074d6171db61bf5835a44b"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.554, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

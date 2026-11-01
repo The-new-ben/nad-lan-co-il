@@ -50,8 +50,8 @@
   - **Per zone:** Sde Dov 30, Kochav HaTzafon and Reading 6, Lamed and New Lamed 20, Einstein area 111, Herzliya 45.
   - **Top gaps:**
     - SEVEN SEAS (Electra and Dan, 437 units, about 80,000 per m²);
-    - EINSTEIN 2.4.6.8 (Gindi and Shapir, 380);
-    - Einstein 15 (Gindi and Shapir, 180, 30 floors);
+    - EINSTEIN 2.4.6.8 (Gindi and Shbiro, 380);
+    - Einstein 15 (Gindi and Shbiro, 180, 30 floors);
     - Philharmonit, Agnon 28;
     - Sde Dov plot 105 (372 units and a hotel);
     - Brodetsky North (ICR, 166);
@@ -118,11 +118,18 @@
     - Recanati: the neighbourhood name. The radius block already uses the municipal polygon (Ramat Aviv Gimel).
     - Shikun & Binui: a second 511-unit rental building. It needs a content addition after Ben's look.
     - Ashira: report only.
-- [ ] **R7a Research for the gap pages** (no publishing yet). For the top 10 gaps, apply the research law: read the top 4-5 Google results in full, record the questions and the AI answer shown, then `url_word_audit` for each slug. Output: `docs/research/2026-11-01-radius/briefs/`.
-  - **Grammar:** "בהצפון החדש" must read "בצפון החדש" (ב before ה).
-  - **ProjectFacts needs a new class name.** `.nlpf` is already taken on the project pages (the order checks list `class="nlpf"`), so use `.nlfx`.
-  - **Sources:** the facts come from the R0 inventory plus each page's own sourced article. FAQPage merges with the kit's.
-- [ ] **R2 Pilot on 3 pages (original item):**
+- [x] **R7a Research for the gap pages** (1.11, 20:10). Output: `docs/research/2026-11-01-radius/briefs/`, 11 briefs plus `index.md` and `serp-log.md`. DataForSEO: 30 calls, $0.096.
+  - **What Google shows:**
+    - no People-Also-Ask in any of the 26 searches;
+    - an AI Overview on 24 of 26, and it never cites us;
+    - Philharmonit and Aviv BaReading show no AI answer on the name, so they are the easiest wins.
+  - **Slugs that pass `url_word_audit`:** seven-seas, shbiro-2468, levi-55, philharmonit, landowners-105, brodetsky-33-39, amichai-stern, ramata, reading-31-33, ville, ritz-carlton.
+    - "einstein" is already owned by 4 URLs, so no new "einstein-…" slug.
+    - Each new street word (brodetsky, reading, amichai, stern) becomes that street's owner page.
+  - **Corrections:**
+    - Gindi's partner is **Shbiro** (Rami Shbiro), not "Shapir".
+    - The Ritz-Carlton is resale of vacation flats in a hotel, not a new build.
+- [x] **R2 Pilot on 3 pages (original item; superseded by R2a, R2b and R2c above):**
   - zohi-sde-dov: AI visits arrive, but the price data is thin;
   - einstein-19: the Einstein cluster has no AI visits;
   - hamedina: 8 AI visits, no date line, no tools.
