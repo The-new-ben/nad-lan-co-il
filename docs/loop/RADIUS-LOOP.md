@@ -66,7 +66,20 @@
     - "אזור שדה דב" has no official median yet, so the Sde Dov pages use the nearest named neighbourhoods (Kochav HaTzafon, Tochnit Lamed, Nofei Yam).
     - Herzliya is not in the Tel Aviv file. It needs the big-cities workbook or the official files (R6).
     - Fresher per-deal rows sit behind reCAPTCHA on api.nadlan.gov.il: never bypassed.
-- [ ] **R2 Pilot on 3 pages:**
+- [x] **R2a RadiusPrices live on the 3 pilot pages** (1.11, 17:15).
+  - **Release 1.72.552:** new `inc/radius-prices.php` and `data/radius-prices.json`, module list + 'radius-prices'. Released and verified (deploy-result-552.json).
+  - **Placement:** `rp_cms.py` put `[nadlan_radius_prices]` on Zohi 4747 and Einstein 19 4874 (before the kit) and on Hamedina 8113 (at the end). Backup: `rp-backup.json`.
+  - **Rainbow fix:** num_units 480 → 459, the developer's figure that the page already quotes.
+  - **Checked live at 390 px** (Chrome, `docs/qa/radius-552/*-390.png`): one H1, no sideways scroll, the block before the kit, 3 tiles, 5-6 projects around.
+  - **Live numbers:**
+    - Einstein 19: about 53,500 per m² (62 deals); Neve Avivim official 5,299,900 (Q1 2026).
+    - Zohi: about 47,600 (18 deals); the neighbouring Tochnit Lamed 6,059,900.
+    - Hamedina: about 68,200 (135 deals); 5,373,900.
+- [ ] **R2b Small fixes and ProjectFacts on the 3 pilot pages,** then Ben's look.
+  - **Grammar:** "בהצפון החדש" must read "בצפון החדש" (ב before ה).
+  - **ProjectFacts needs a new class name.** `.nlpf` is already taken on the project pages (the order checks list `class="nlpf"`), so use `.nlfx`.
+  - **Sources:** the facts come from the R0 inventory plus each page's own sourced article. FAQPage merges with the kit's.
+- [ ] **R2 Pilot on 3 pages (original item):**
   - zohi-sde-dov: AI visits arrive, but the price data is thin;
   - einstein-19: the Einstein cluster has no AI visits;
   - hamedina: 8 AI visits, no date line, no tools.
