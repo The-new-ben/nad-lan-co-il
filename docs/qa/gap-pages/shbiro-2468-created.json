@@ -1,0 +1,26 @@
+{
+ "id": 8746,
+ "slug": "shbiro-2468",
+ "link": "https://nad-lan.co.il/projects/shbiro-2468/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "ל׳ החדשה",
+  "address": "איינשטיין 2, 4, 6, 8, תל אביב-יפו",
+  "gush": "6885",
+  "developer_name": "חן ואיתי גינדי וקבוצת שבירו",
+  "architect_name": "פרופ׳ משה צור",
+  "project_type": "new_build",
+  "project_status": "construction",
+  "num_units": 380,
+  "num_buildings": 5,
+  "num_floors": 25,
+  "website": "https://www.einstein2468.co.il/",
+  "lat": 32.1117,
+  "lng": 34.7851,
+  "source": "einstein2468.co.il, גינדי, קבוצת שבירו, מרכז הנדל״ן, כלכליסט, מאגר הכתובות של עיריית תל אביב-יפו",
+  "source_url": "https://www.nadlancenter.co.il/article/13725",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "איינשטיין 2.4.6.8"
+ }
+}

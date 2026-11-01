@@ -185,4 +185,13 @@
   - **The facts:** release 1.72.564 added 13 sourced rows. It was released and verified.
   - **Checked at 390 px:** H1 at 154, lead at 226, facts at 2073, kit at 7042. One H1, no sideways scroll, no long dash, no raw shortcode, FAQ schema present. Evidence: `docs/qa/gap-pages/seven-seas-*.jpg`.
   - **No price list around it:** the plot location has no published source.
-- [ ] **Next gap pages, at most two a day:** seven-seas done 2.11; next shbiro-2468, levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+- [x] **R7c EINSTEIN 2.4.6.8 page** (2.11, about 03:30). Live: https://nad-lan.co.il/projects/shbiro-2468/ (post 8746).
+  - **The article:** written by ChatGPT Pro from the brief: 614 words, blacklist clean, every number from the brief.
+  - **Release 1.72.565, released and verified:**
+    - 12 sourced facts;
+    - the price list around the project: 15 deals within 500 m, median about 43,100 ₪/m² (10.2023-6.2024), and the official median in תכנית ל׳ of 6,059,900 ₪ (Q1 2026).
+    - The location comes from the Tel Aviv address registry: Einstein 2-8, block 6885.
+  - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1804, price list at 6314, kit at 8424. One H1, no sideways scroll, no raw shortcode.
+  - **Evidence:** `docs/qa/gap-pages/shbiro-2468-top-390.jpg`.
+  - **That is the second new page for 2.11; the next one waits for 3.11.**
+- [ ] **Next gap pages, at most two a day:** seven-seas and shbiro-2468 done 2.11; next levi-55 (3.11), levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
