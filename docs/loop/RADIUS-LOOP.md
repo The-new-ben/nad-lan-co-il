@@ -194,7 +194,7 @@
     - Checked at 390 px: EN and AR (`docs/qa/gap-pages/seven-seas-en-390.jpg`, `seven-seas-ar-390.jpg`).
     - **Findings (old, site-wide, not caused by this work):**
       - every English project page still shows a Hebrew "מחשבונים וכלים" block (gindi-vogue-sde-dov-en has it too);
-      - language pages carry no FAQPage schema, because the emitter reads only the Hebrew "שאלות נפוצות" heading.
+      - no FAQPage JSON-LD shows on seven-seas-en or on the older gindi-vogue-sde-dov-en, although the emitter (`instruments.php` `nadlan_nli_faq`) knows the heading "Frequently asked questions"; the reason is elsewhere, to check. The FR, RU and AR headings are not in its list at all.
   - **The new language pages follow the same pattern:** a separate post per language, the article written by ChatGPT from the same sourced brief, and the slug `<slug>-en|fr|ru|ar`. The hreflang map is rebuilt by `scripts/build-project-hreflang-artifact.mjs`.
   - **How language pages work** (read 2.11 night):
     - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
