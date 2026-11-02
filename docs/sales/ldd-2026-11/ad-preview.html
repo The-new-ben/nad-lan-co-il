@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SponsoredBox · LDD</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@600&amp;family=Assistant:wght@400;600;700&amp;display=swap">
+<style>
+:root{--ink:#14212b;--slate:#3b4753;--muted:#5b6670;--sea:#2f6f86;--paper:#ffffff;--tint:#eef2f4;--line:#d6dade;--clay:#9aa3ab;--silt:#7d8892;--sand:#c9cfd4;--water:#2f6f86}
+*{box-sizing:border-box}
+body{margin:0;background:#e9edf0;color:var(--ink);font-family:Assistant,Heebo,Arial,sans-serif}
+.wrap{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;padding:28px max(16px,env(safe-area-inset-left,0px))}
+.frame{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.frame.ph{width:390px;max-width:100%}
+.frame.dt{width:760px;max-width:100%}
+.cap{font:600 12px/1 Assistant,sans-serif;letter-spacing:.04em;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line);background:var(--tint)}
+.art{padding:18px 16px 6px}
+.art h2{font:600 22px/1.3 "Noto Serif Hebrew",serif;margin:0 0 8px}
+.art p{font-size:16px;line-height:1.7;color:var(--slate);margin:0 0 14px}
+.art .faq{font:700 14px/1 Assistant,sans-serif;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+
+/* the component */
+.nlsp{position:relative;display:grid;grid-template-columns:1fr 18px;gap:14px;margin:18px 16px 22px;padding:16px 16px 14px;border:1px solid var(--line);border-radius:4px;background:linear-gradient(var(--paper),var(--paper)) padding-box}
+.nlsp__tag{font:700 11px/1 Assistant,sans-serif;letter-spacing:.08em;color:var(--muted);text-transform:none;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.nlsp__tag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sea)}
+.nlsp__brand{font:700 13px/1.2 Assistant,sans-serif;color:var(--sea);margin-bottom:6px;letter-spacing:.02em}
+.nlsp__head{display:block;font:600 21px/1.35 "Noto Serif Hebrew",serif;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.nlsp__txt{font-size:15px;line-height:1.6;color:var(--slate);margin:0 0 12px}
+.nlsp__facts{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:600 13px/1.3 Assistant,sans-serif;color:var(--ink)}
+.nlsp__facts span{white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.nlsp__facts span:before{content:"";width:5px;height:5px;background:var(--sea);border-radius:1px}
+.nlsp__act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nlsp__go{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:4px;background:var(--ink);color:#fff;font:700 15px/1 Assistant,sans-serif;text-decoration:none}
+.nlsp__tel{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:var(--sea);font:700 15px/1 Assistant,sans-serif;text-decoration:none;direction:ltr}
+.nlsp__small{font-size:11.5px;color:var(--muted);margin-top:10px}
+/* the borehole log: cool mineral strata, the groundwater table in sea blue */
+.nlsp__core{position:relative;border-radius:2px;overflow:hidden;background:linear-gradient(to bottom,var(--sand) 0 14%,var(--clay) 14% 36%,var(--sand) 36% 44%,var(--silt) 44% 66%,var(--clay) 66% 82%,var(--silt) 82% 100%)}
+.nlsp__core:after{content:"";position:absolute;left:-3px;right:-3px;top:58%;height:2px;background:var(--water);box-shadow:0 0 0 1px var(--paper)}
+@media(max-width:420px){.nlsp{grid-template-columns:1fr 12px;gap:12px}.nlsp__head{font-size:19px}.nlsp__act{flex-direction:column;align-items:stretch}.nlsp__tel{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="frame ph">
+    <div class="cap">טלפון 390 · אחרי המאמר, לפני השאלות הנפוצות</div>
+    <div class="art">
+      <h2>מה עושים לפני שקונים</h2>
+      <p>…סוף המאמר של העמוד, כמו שהוא היום. שום מילה בו לא משתנה.</p>
+    </div>
+    <aside class="nlsp" data-nosnippet aria-label="תוכן ממומן">
+      <div>
+        <div class="nlsp__tag"><i></i>תוכן ממומן</div>
+        <div class="nlsp__brand">LDD · שיקום קרקע ומי תהום</div>
+        <strong class="nlsp__head">לפני שבונים על הקרקע, בודקים מה יש מתחתיה</strong>
+        <p class="nlsp__txt">סקרי קרקע, גז קרקע ומי תהום, ליווי לקבלת היתר בנייה ובדיקות נאותות סביבתית ליזמי נדל״ן, לחברות בנייה ולבעלי קרקעות.</p>
+        <div class="nlsp__facts"><span>נוסדה ב־1989</span><span>מעל 70 עובדים</span><span>מעבדה לאנליזה סביבתית</span></div>
+        <div class="nlsp__act">
+          <a class="nlsp__go" href="https://lddtech.com/" rel="sponsored noopener" target="_blank">לאתר LDD</a>
+          <a class="nlsp__tel" href="tel:+97239265979" rel="sponsored">03-9265979</a>
+        </div>
+        <div class="nlsp__small">מודעה. התוכן באחריות המפרסם.</div>
+      </div>
+      <div class="nlsp__core" aria-hidden="true"></div>
+    </aside>
+    <div class="art"><div class="faq">שאלות נפוצות ›</div></div>
+  </div>
+
+  <div class="frame dt">
+    <div class="cap">מחשב · אותו כרטיס, באותו מקום</div>
+    <div class="art">
+      <h2>מה עושים לפני שקונים</h2>
+      <p>…סוף המאמר של העמוד, כמו שהוא היום. שום מילה בו לא משתנה.</p>
+    </div>
+    <aside class="nlsp" data-nosnippet aria-label="תוכן ממומן">
+      <div>
+        <div class="nlsp__tag"><i></i>תוכן ממומן</div>
+        <div class="nlsp__brand">LDD · שיקום קרקע ומי תהום</div>
+        <strong class="nlsp__head">לפני שבונים על הקרקע, בודקים מה יש מתחתיה</strong>
+        <p class="nlsp__txt">סקרי קרקע, גז קרקע ומי תהום, ליווי לקבלת היתר בנייה ובדיקות נאותות סביבתית ליזמי נדל״ן, לחברות בנייה ולבעלי קרקעות.</p>
+        <div class="nlsp__facts"><span>נוסדה ב־1989</span><span>מעל 70 עובדים</span><span>מעבדה לאנליזה סביבתית</span></div>
+        <div class="nlsp__act">
+          <a class="nlsp__go" href="https://lddtech.com/" rel="sponsored noopener" target="_blank">לאתר LDD</a>
+          <a class="nlsp__tel" href="tel:+97239265979" rel="sponsored">03-9265979</a>
+        </div>
+        <div class="nlsp__small">מודעה. התוכן באחריות המפרסם.</div>
+      </div>
+      <div class="nlsp__core" aria-hidden="true"></div>
+    </aside>
+    <div class="art"><div class="faq">שאלות נפוצות ›</div></div>
+  </div>
+</div>
+</body>
+</html>
