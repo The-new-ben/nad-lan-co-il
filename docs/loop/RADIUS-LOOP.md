@@ -162,7 +162,9 @@
   - The Tel Aviv deals file has no Herzliya rows, so Marina shows the block's existing official-only form (v105.5, no new component). It gives the official median of the neighbouring neighbourhood, Herzliya Pituach: 8,151,400 ₪, Q1 2026 (nadlan.gov.il file of 20.8.2026, settlement 6400, neighbourhood 65209714).
   - The tie is set by hand in `tools/deals/build_radius_data.py` (OUTSIDE).
   - Checked at 390 px by DOM: one H1, the block 334 px wide, nothing past the screen. The screenshot failed because the pane was hidden.
-  - **Finding (small, next):** the block's shared source note still names the Tel Aviv address registry and the 5-deal rule on a page that shows no deals. It should show only the official-file line when there are no deals.
+  - **R6c done (2.11, about 04:15; release 1.72.566, released and verified).** A page that shows no deals now names only the official file: "מקור: המחיר הרשמי בשכונה, כפי שרשות המסים מפרסמת באתר nadlan.gov.il (קובץ השכונה מ־20.8.2026)."
+    - Checked at 390 px by DOM: the block 334 px wide, no sideways scroll, one H1.
+    - The pages with deals keep the full note; the release checks this on shbiro-2468.
 - **Earlier note on R6b:** the Tel Aviv deals file has no Herzliya rows. Deal-level data for Herzliya would need nadlan.gov.il's per-deal service, which is behind a captcha and therefore never used. the official file or the big-cities workbook, so that marina-towers gets a price list.
 - [x] **R7a1 Philharmonit page** (1.11, 22:00). Live: https://nad-lan.co.il/projects/philharmonit/ (post 8743).
   - **The article:** ChatGPT Pro wrote it from `briefs/philharmonit.md`, with a second, tighter pass. 710 words, blacklist clean, every number from the brief.
@@ -176,6 +178,9 @@
   - Next: collect it, `gap_page_create.py`, facts and radius data (release 556), verify.
 - [ ] **R7 Gap pages:** a new page for each real project we lack, small streets included, written through ChatGPT with the DNA.
 - [ ] **R8 Languages:** the 8 radius pages without EN/FR/RU/AR, then the new pages.
+  - **Pace (my rule, 2.11):** one project a day in its four languages, so no day brings a mass change. Each language goes through ChatGPT in the gmktec Chrome with a cultural rewrite, not a word-for-word translation.
+  - **Slugs:** the existing pattern `<slug>-en` / `-fr` / `-ru` / `-ar` (as hamedina). Wiring: the lang-pages system (hreflang).
+  - **Start:** 3.11, by day, beginning with Zohi, which has the most AI visits.
 - [ ] **R9 Measure:** GA4 AI landing pages every week (Rainbow baseline: 19 in 5 months). Record the ChatGPT answer for "<project> מחירים" before and after.
 - [x] **Ben's yes, 1.11** (both done the same evening):
   - IndexNow for Bing: the radius pages and the new pages were pinged. ChatGPT search reads Bing, and our Bing traffic is 49.

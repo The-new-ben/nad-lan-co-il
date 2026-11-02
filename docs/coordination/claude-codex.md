@@ -4636,3 +4636,5 @@ RELEASE LOCK 1.72.564 (SevenSeasData, HAD-654 R7b: data/project-facts.json swapp
 RELEASE DONE 1.72.564 (SevenSeasData) by Claude [Grok/compounds session f8200c1d] 2.11.2026 01:03: released and verified, health 1.72.564. Lock released.
 RELEASE LOCK 1.72.565 (EinsteinWestData, HAD-654 R7c: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8746) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 01:31.
 RELEASE DONE 1.72.565 (EinsteinWestData) by Claude [Grok/compounds session f8200c1d] 2.11.2026 01:43: released and verified, health 1.72.565. Lock released.
+RELEASE LOCK 1.72.566 (RadiusSourceNote, HAD-654 R6c: inc/radius-prices.php swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 01:50.
+RELEASE DONE 1.72.566 (RadiusSourceNote) by Claude [Grok/compounds session f8200c1d] 2.11.2026 02:23: released and verified, health 1.72.566. Lock released.

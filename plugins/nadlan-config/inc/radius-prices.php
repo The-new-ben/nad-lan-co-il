@@ -88,7 +88,7 @@ add_shortcode( 'nadlan_radius_prices', function ( $atts ) {
 	$id = (int) $a['id'] ? (int) $a['id'] : (int) get_the_ID();
 	if ( ! $id ) { return ''; }
 	$f  = dirname( __DIR__ ) . '/data/radius-prices.json';
-	$ck = 'nlrp_' . $id . '_' . ( file_exists( $f ) ? filemtime( $f ) : 0 ) . '_v2';
+	$ck = 'nlrp_' . $id . '_' . ( file_exists( $f ) ? filemtime( $f ) : 0 ) . '_v3';
 	$c  = get_transient( $ck );
 	if ( is_string( $c ) ) { return $c; }
 	$d  = nadlan_rp_data();
@@ -165,8 +165,10 @@ add_shortcode( 'nadlan_radius_prices', function ( $atts ) {
 		$h .= '</div></div>';
 	}
 	$ver = $of && preg_match( '/^(\d{2})-(\d{2})-(\d{4})$/', (string) ( $of['version'] ?? '' ), $mm ) ? (int) $mm[1] . '.' . (int) $mm[2] . '.' . $mm[3] : '';
-	$h .= '<p class="nlrp-src">מקורות: עסקאות שדווחו לרשות המסים כפי שפורסמו באתר nadlan.gov.il, ומאגר הכתובות של עיריית תל אביב-יפו. המחיר למ״ר הוא מחיר העסקה חלקי השטח הרשום. חציון מוצג רק כשיש 5 עסקאות לפחות.'
-		. ( '' !== $ver ? ' המחיר הרשמי בשכונה: קובץ השכונה של רשות המסים מ־' . esc_html( $ver ) . '.' : '' ) . '</p>';
+	// 1.72.566 (R6c): a page that shows no deals (the Herzliya marina) names only the official file it does show
+	$h .= '<p class="nlrp-src">' . ( $n >= 5 ? 'מקורות: עסקאות שדווחו לרשות המסים כפי שפורסמו באתר nadlan.gov.il, ומאגר הכתובות של עיריית תל אביב-יפו. המחיר למ״ר הוא מחיר העסקה חלקי השטח הרשום. חציון מוצג רק כשיש 5 עסקאות לפחות.'
+		. ( '' !== $ver ? ' המחיר הרשמי בשכונה: קובץ השכונה של רשות המסים מ־' . esc_html( $ver ) . '.' : '' )
+		: 'מקור: המחיר הרשמי בשכונה, כפי שרשות המסים מפרסמת באתר nadlan.gov.il' . ( '' !== $ver ? ' (קובץ השכונה מ־' . esc_html( $ver ) . ')' : '' ) . '.' ) . '</p>';
 	$h .= '</section>';
 	set_transient( $ck, $h, 12 * HOUR_IN_SECONDS );
 	return $h;
