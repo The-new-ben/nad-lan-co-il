@@ -279,7 +279,7 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Left out: "does it suit someone who doesn't want to be alone" (no source).
     - kw_guard warned on "שדה דב" and "דירות" inside a question. That is allowed as a phrase after the page's own topic, and no second URL competes.
     - Checked live: one H1, one FAQPage (`nadlan-pfx-faq`) with 14 questions. Checked by eye at 390 px (`faq-mh-390.png`).
-    - **Findings, not changed:** the FAQ says Clal holds "כ-60% מההון", while the facts table (פאנדר 27.3.2025) says 51/49. That needs a source check. "בקו ראשון לים" (plot 150) is also unchecked.
+    - **Findings, not changed:** the FAQ says Clal holds "כ-60% מההון", while the facts table (פאנדר 27.3.2025) says 51/49. That needs a source check. **Checked 2.11 evening: no contradiction, no change.** פאנדר 27.3.2025 gives both: Clal invests 60% of the capital ("תשקיע כלל 60% מההון הנדרש לעסקה"), and the rights split 51% to the network and 49% to Clal. It also confirms the network's ~1,900 units. "בקו ראשון לים" (plot 150) is also unchecked.
   - [x] **Ashdar Einstein checked (2.11 evening): no change.** The page never says "שדרות" (0 times, title and description included). Google pairs the name "אשדר" (it contains "שדר") with the menu's generic "פרויקטים חדשים", so the page shows at position 49 to 60 for "פרויקטים חדשים בשדרות", with no clicks lost. This is a finding only.
   - **Left, too small to act on:**
     - DUO "dou" (13): the page already names "מגדלי DOU סמל דרום" in its developer section.
