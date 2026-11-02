@@ -225,3 +225,31 @@
     - the price list: 27 deals within 500 m, median about 43,700 ₪/m², and the official median for Nofei Yam, 5,277,400 ₪ (Q1 2026).
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1849, price list at 6465, kit at 8549. One H1, no sideways scroll, no raw shortcode.
 - [ ] **Next gap pages, at most two a day:** seven-seas and shbiro-2468 done 2.11; next levi-55 (3.11), levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+
+## R10 MOAT (Ben, 2.11.2026, afternoon)
+Ben's words: "Every page should have so many tools, so many varied things, data. It must be a moat, something nobody can match. Wrapped in the right key phrases, synonyms, associations and intent, practical and useful. Do not ruin other pages; make sure we do not create pages that hurt other pages: keyword cannibalization."
+
+**Audit 2.11 (evidence `docs/research/2026-11-02-moat/`):**
+- **Modules by page (`modules-by-page.txt`, raw HTML):**
+  - Sourced facts: on every page but Marina.
+  - The price list around the project: on every page but Ashira, which is untouchable, and seven-seas, which has no plot location.
+  - Kit and area map: almost every page.
+  - The 3D stage: only Rainbow, DUO, Hamedina, Ashira and Dimri.
+  - **FAQ schema missing:** duo, h-infinity, migdalei-hayam, shikun-binui (Ashira untouched).
+  - Language versions: missing on 7 radius pages and on the new pages.
+- **Search Console, 90 days, `/projects/` (`cannibal-projects-90d.txt`, `tools/seo/cannibal_check.py`):**
+  - Between the radius project pages there is almost no cannibalization: two noise queries.
+  - **Real cannibalization is on the hubs.**
+    - `/projects/` and `/city/תל אביב יפו/projects` share "פרויקטים חדשים בתל אביב" (759 impressions), "דירות חדשות בתל אביב" and more.
+    - Some cities answer on two URL forms: `/city/רמת-גן/projects` next to `/city/רמת גן/projects`, and the same for ראשון לציון.
+    - This is reported only: no redirect, no URL change (owner law). HAD-663.
+  - **Intent mismatch:** ashdar-einstein gets impressions on "פרויקטים חדשים בשדרות" (the city of Sderot, position 49-60). The page's wording on "שדרות" (boulevard) should be checked.
+- **Demand is thin:** most radius pages get under 150 impressions in 90 days. DUO, Rainbow, Hamedina and Ashira lead.
+
+**The moat standard, per page, in this order:**
+- [x] An answer paragraph, sourced facts, the price list around the project, and the kit (done on the radius pages).
+- [ ] **R10a FAQ where it is missing.** The questions come from the page's own Search Console queries. Migdalei Hayam already has strong question queries, for example "האם אפשר לצאת ולחזור חופשי מדיור מוגן". Pages: duo, h-infinity, migdalei-hayam, shikun-binui.
+- [ ] **R10b Intent wrap per page.** Collect the name variants (Hebrew and English spellings), developer + area, price and address intents, from Search Console plus DataForSEO related keywords. Use them in H2s and FAQ under `kw_guard`, and never lead with a protected term.
+- [ ] **R10c NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
+- [ ] **R10d Languages (R8)**, continued one project a day.
+- [ ] **R10e Monthly cannibalization check:** `cannibal_check.py` on the full site, with the results to Linear.

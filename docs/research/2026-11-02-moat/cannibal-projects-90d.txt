@@ -1,0 +1,9 @@
+queries where 2+ of our pages compete (>= 5 impressions each): 138
+  1235 | פרויקטים חדשים | /projects i1196 c0 p35 ; /city/תל אביב יפו/projects i24 c0 p95 ; /city/ירושלים/projects i15 c0 p64
+   759 | פרויקטים חדשים בתל אביב | /projects i671 c0 p36 ; /city/תל אביב יפו/projects i88 c0 p77
+   625 | פרויקטים חדשים תל אביב | /projects i554 c0 p31 ; /city/תל אביב יפו/projects i71 c0 p72
+   615 | דירות חדשות בתל אביב | /projects i540 c0 p41 ; /city/תל אביב יפו/projects i75 c0 p73
+   454 | פרויקטים חדשים בראשון לציון | /city/ראשון לציון/projects i251 c0 p27 ; /projects i181 c0 p52 ; /city/ראשון-לציון/projects i22 c0 p91
+   448 | פרויקטים בתל אביב | /projects i379 c0 p35 ; /city/תל אביב יפו/projects i69 c0 p74
+   353 | פרויקטים חדשים במרכז | /projects i326 c0 p39 ; /city/תל אביב יפו/projects i27 c0 p72
+   341 | פרויקטים חדשים ברמת גן | /city/רמת-גן/projects i150 c0 p28 ; /city/רמת גן/projects i149 c0 p21 ; /projects i42 c0 p54
