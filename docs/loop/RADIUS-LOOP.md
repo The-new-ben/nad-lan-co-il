@@ -269,6 +269,20 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Checked live: one H1, one FAQPage (`nadlan-ps-faq`, 12 questions), H1 before the lead, no "שאלות ותשובות" left. Checked by eye at 390 px (`faq-duo-390.png`).
     - **Finding, not fixed (language-dna):** DUO's older answers and its disclosure use the internal word "בדוסייה" (for example, "רשומת ההיתר בדוסייה"). It should become "במקורות". That is a text pass on one page, for a later tick.
 - [ ] **R10b Intent wrap per page.** Collect the name variants (Hebrew and English spellings), developer + area, price and address intents, from Search Console plus DataForSEO related keywords. Use them in H2s and FAQ under `kw_guard`, and never lead with a protected term.
+  - **Research, 2.11 evening** (`docs/research/2026-11-02-moat/intents-90d.json`; Search Console, 3.8 to 1.11, every radius page plus DUO).
+    - Demand is thin: 11 of 19 pages had 0 to 5 impressions in 90 days.
+    - The wrap matters where people search: DUO 796, Ashdar Einstein 151, H INFINITY 118, Migdalei Hayam 102, YOO 44.
+  - [x] **Migdalei Hayam** (2.11 evening, `scripts/project-stage/faq_mh_r10b.py`, backup `docs/qa/compound-wave/faq-mh-backup.json`, `--undo`).
+    - Its queries are long questions that no heading answered (26, 9, 6, 6 and 6 impressions). Five were added to its FAQ in the searchers' words: flat types and size, going out and coming back, registration documents, included services, total cost and deposit protection.
+    - Sources: the facts table for the project, and כל זכות for the law (21.7.2026 and 28.1.2026: residents are independent; the deposit must be secured above 7% or 70,000 ₪, the lower; mortgage, bank guarantee or 40% to a trustee; it is returned on the later of the two days, linked to the price index).
+    - Left out: "does it suit someone who doesn't want to be alone" (no source).
+    - kw_guard warned on "שדה דב" and "דירות" inside a question. That is allowed as a phrase after the page's own topic, and no second URL competes.
+    - Checked live: one H1, one FAQPage (`nadlan-pfx-faq`) with 14 questions. Checked by eye at 390 px (`faq-mh-390.png`).
+    - **Findings, not changed:** the FAQ says Clal holds "כ-60% מההון", while the facts table (פאנדר 27.3.2025) says 51/49. That needs a source check. "בקו ראשון לים" (plot 150) is also unchecked.
+  - [ ] **Next:**
+    - Ashdar Einstein is shown for the city Sderot ("פרויקטים חדשים בשדרות", 114 impressions, position 49 to 60). Check the page's own use of "שדרות" (boulevard); report it, and change wording only if it is a real mistake.
+    - DUO gets "dou" (13) and "duo tel aviv price" (5).
+    - YOO gets "מגדלי יו מבפנים".
 - [ ] **R10c NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
 - [ ] **R10d Languages (R8)**, continued one project a day.
 - [ ] **R10e Monthly cannibalization check:** `cannibal_check.py` on the full site, with the results to Linear.
