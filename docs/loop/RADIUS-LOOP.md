@@ -199,4 +199,10 @@
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1804, price list at 6314, kit at 8424. One H1, no sideways scroll, no raw shortcode.
   - **Evidence:** `docs/qa/gap-pages/shbiro-2468-top-390.jpg`.
   - **That is the second new page for 2.11; the next one waits for 3.11.**
+- [ ] **R7d EINSTEIN 15 page, /projects/levi-55/ (goes live 3.11; prepared on the night of 2.11).**
+  - The slug passes, and the title passes `kw_guard`.
+  - The spec and 11 sourced facts are ready (`briefs/levi-55.spec.json`, `briefs/levi-55.facts.json`). The sponsored ynet source is marked "תוכן ממומן".
+  - Location from the address registry: Einstein 15, block 6884, parcel 48 (32.112534, 34.788462).
+  - **The article is ready:** `briefs/levi-55.article.html`, 596 words, blacklist clean, every number from the brief. Three phrases "לא פורסם בפרסומים שנקראו" became "טרם פורסם". (ChatGPT: https://chatgpt.com/c/6ae7f15a-61a0-83eb-b6a3-5b806b8fae69)
+  - **Next, on 3.11:** `gap_page_create.py`, then the radius data and the facts in one release, then check at 390 px.
 - [ ] **Next gap pages, at most two a day:** seven-seas and shbiro-2468 done 2.11; next levi-55 (3.11), levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
