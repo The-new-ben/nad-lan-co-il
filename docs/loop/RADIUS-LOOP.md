@@ -252,7 +252,7 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
 
 **The moat standard, per page, in this order:**
 - [x] An answer paragraph, sourced facts, the price list around the project, and the kit (done on the radius pages).
-- [ ] **R10a FAQ where it is missing.** The questions come from the page's own Search Console queries. Migdalei Hayam already has strong question queries, for example "האם אפשר לצאת ולחזור חופשי מדיור מוגן". Pages: duo, h-infinity, migdalei-hayam, shikun-binui.
+- [x] **R10a FAQ where it is missing (done 2.11 evening, all 4 pages).** The questions come from the page's own Search Console queries. Migdalei Hayam already has strong question queries, for example "האם אפשר לצאת ולחזור חופשי מדיור מוגן". Pages: duo, h-infinity, migdalei-hayam, shikun-binui.
   - [x] **Migdalei Hayam and Shikun & Binui** (2.11 evening, release 1.72.569, released and verified, commit 923a31d2).
     - Both already had a visible "שאלות נפוצות" section (9 questions each) but no FAQPage. The only emitter for project pages (`inc/instruments.php`) runs where a calculator kit is embedded, and these two have none.
     - Fix in `inc/project-facts.php`: a page with a facts entry and no kit gets one FAQPage from its own visible questions. On the 18 radius pages this adds it to exactly these two. The kit pages keep theirs; the release checks forbid a second one on Park Bavli and Rainbow.
@@ -261,7 +261,13 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Every answer repeats a figure the page already gives with its source (facts table: מרכז הנדל״ן 11.10.2026; prices: the group's site 9.2026, the marketing page, the developer's reports).
     - Placed before the sources section; "מתחם סומייל" is owned by no other URL (url_word_audit 0, kw_guard OK).
     - Checked live: one H1, one FAQPage with the 6 questions. Checked by eye at 390 px (`faq-hinf-390.png`).
-  - [ ] **DUO, next tick.** DUO has 815 impressions in 90 days on name and price queries ("duo tel aviv", "דואו", "פרויקט duo תל אביב מחירים", "מתי אכלוס", "duo אפריקה ישראל"). It is a 3D-stage page with no facts entry, so its answers must come from the sources its stage already cites.
+  - [x] **DUO** (2.11 evening, `scripts/project-stage/faq_duo_r10a.py`, backup `docs/qa/compound-wave/faq-duo-backup.json`, `--undo`). DUO has 815 impressions in 90 days on name and price queries ("duo tel aviv", "דואו", "פרויקט duo תל אביב מחירים", "מתי אכלוס", "duo אפריקה ישראל").
+    - It already showed 12 questions, but under "שאלות ותשובות". The emitters know only "שאלות נפוצות", so it had no FAQPage.
+    - Widening the emitters would add schema to many pages in one day, so only DUO's heading changed.
+    - One question was added second, for the developer queries: "מי היזם של מגדלי DUO (דואו) בתל אביב?". The answer comes from the page's own developer section: אפריקה ישראל מגורים, "DUO סמל דרום" in the company reports, ישר אדריכלים, and אלקטרה בילדינג as contractor.
+    - The stage emitter takes the first 12 pairs, so the last question ("אילו תכניות סמוכות") stays visible but is out of the schema.
+    - Checked live: one H1, one FAQPage (`nadlan-ps-faq`, 12 questions), H1 before the lead, no "שאלות ותשובות" left. Checked by eye at 390 px (`faq-duo-390.png`).
+    - **Finding, not fixed (language-dna):** DUO's older answers and its disclosure use the internal word "בדוסייה" (for example, "רשומת ההיתר בדוסייה"). It should become "במקורות". That is a text pass on one page, for a later tick.
 - [ ] **R10b Intent wrap per page.** Collect the name variants (Hebrew and English spellings), developer + area, price and address intents, from Search Console plus DataForSEO related keywords. Use them in H2s and FAQ under `kw_guard`, and never lead with a protected term.
 - [ ] **R10c NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
 - [ ] **R10d Languages (R8)**, continued one project a day.
