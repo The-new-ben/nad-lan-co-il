@@ -180,7 +180,14 @@
 - [ ] **R8 Languages:** the 8 radius pages without EN/FR/RU/AR, then the new pages.
   - **Pace (my rule, 2.11):** one project a day in its four languages, so no day brings a mass change. Each language goes through ChatGPT in the gmktec Chrome with a cultural rewrite, not a word-for-word translation.
   - **Slugs:** the existing pattern `<slug>-en` / `-fr` / `-ru` / `-ar` (as hamedina). Wiring: the lang-pages system (hreflang).
-  - **Start:** 3.11, by day, beginning with Zohi, which has the most AI visits.
+  - **Start:** 3.11, by day.
+  - **Which pages lack an English version** (checked 2.11, 08:30): einstein-19, ashdar-einstein, migdalei-hayam-sde-dov, marina-towers-herzliya, h-infinity-somail-tel-aviv, akirov-towers and first-sde-dov, then the new pages (philharmonit, reading-31-33, seven-seas, shbiro-2468, levi-55). Zohi already has its language pages (the earlier note was wrong).
+  - **Order:** seven-seas first (over 60% of its buyers are foreign residents), then first-sde-dov, h-infinity, akirov, then the rest.
+  - **How language pages work** (read 2.11 night):
+    - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
+    - Everything outside the article is translated at render time from `i18n/lang-pages.json`, built by `scripts/i18n/build_lang_pages.py`.
+    - hreflang comes from `scripts/build-project-hreflang-artifact.mjs`.
+    - Before the first one, read how the 56 existing language pages were created (hamedina-en is the model). The new blocks need entries in the dictionary: the facts table and the price list around the project.
 - [ ] **R9 Measure:** GA4 AI landing pages every week (Rainbow baseline: 19 in 5 months). Record the ChatGPT answer for "<project> מחירים" before and after.
 - [x] **Ben's yes, 1.11** (both done the same evening):
   - IndexNow for Bing: the radius pages and the new pages were pinged. ChatGPT search reads Bing, and our Bing traffic is 49.
