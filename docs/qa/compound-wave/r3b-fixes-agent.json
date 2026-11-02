@@ -1,0 +1,720 @@
+{
+ "4748": {
+  "slug": "gindi-vogue-sde-dov",
+  "content": [
+   {
+    "old": "מחירי השיווק המדווחים מתחילים מ-59,000 ש\"ח למ\"ר, ובנוסף דווח על מכירה לפי כ-49,000 ש\"ח למ\"ר.",
+    "new": "מחיר ההשקה שפורסם התחיל מ-49,000 ש\"ח למ\"ר (6.2025).",
+    "why": "Launch price was 'from 49,000 ₪/sqm' (6.2025); the 59,000 figure in 12256 belongs to another Gindi family project on Einstein street. (intro paragraph)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "לכן, כאשר מוצג מחיר החל מ-59,000 ש\"ח למ\"ר, צריך לבדוק",
+    "new": "לכן, כאשר מוצג מחיר השקה החל מ-49,000 ש\"ח למ\"ר (6.2025), צריך לבדוק",
+    "why": "Launch price was 'from 49,000 ₪/sqm' (6.2025); the 59,000 figure in 12256 belongs to another Gindi family project on Einstein street. (price-per-sqm paragraph)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "לפי הנתונים שנמסרו, מחירי GINDI VOGUE מתחילים מ-59,000 ש\"ח למ\"ר, ובנוסף דווח על מכירה לפי כ-49,000 ש\"ח למ\"ר.",
+    "new": "לפי הפרסום מ-6.2025, מחירי ההשקה של GINDI VOGUE התחילו מ-49,000 ש\"ח למ\"ר.",
+    "why": "Launch price was 'from 49,000 ₪/sqm' (6.2025); the 59,000 figure in 12256 belongs to another Gindi family project on Einstein street. (prices section)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "<td dir=\"rtl\">החל מ-59,000 ש\"ח למ\"ר</td>",
+    "new": "<td dir=\"rtl\">החל מ-49,000 ש\"ח למ\"ר (6.2025)</td>",
+    "why": "Launch price was 'from 49,000 ₪/sqm' (6.2025); the 59,000 figure in 12256 belongs to another Gindi family project on Einstein street. (prices table, starting-price row)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "המחיר המדווח מתחיל מ-59,000 ש\"ח למ\"ר, ובנוסף דווח על מכירה לפי כ-49,000 ש\"ח למ\"ר.",
+    "new": "מחיר ההשקה שפורסם התחיל מ-49,000 ש\"ח למ\"ר (6.2025).",
+    "why": "Launch price was 'from 49,000 ₪/sqm' (6.2025); the 59,000 figure in 12256 belongs to another Gindi family project on Einstein street. (FAQ answer)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "לפי הנתונים שנמסרו, התכנון כולל מגדל בן 44 קומות, מגדלים בני 20 קומות ובניינים מרקמיים בני 7-8 קומות. שילוב כזה מייצר פרויקט עירוני רב-שכבתי: מגדלים גבוהים,",
+    "new": "לפי הפרסום מ-6.2025, התכנון כולל שלושה מבנים: מגדל בן 44 קומות ושני בניינים של 20 ו-9 קומות. שילוב כזה מייצר פרויקט עירוני רב-שכבתי: מגדל גבוה,",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (intro)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "<td dir=\"rtl\">מגדלים נוספים</td>\r\n<td dir=\"rtl\">מגדלים בני 20 קומות</td>",
+    "new": "<td dir=\"rtl\">בניין נוסף</td>\r\n<td dir=\"rtl\">בניין בן 20 קומות</td>",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (data table, 20-floor row)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "<td dir=\"rtl\">בניינים בני 7-8 קומות</td>",
+    "new": "<td dir=\"rtl\">בניין בן 9 קומות</td>",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (data table, low-rise row)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "החלוקה בין מגדל בן 44 קומות, מגדלים בני 20 קומות ובניינים בני 7-8 קומות יוצרת",
+    "new": "החלוקה בין מגדל בן 44 קומות, בניין בן 20 קומות ובניין בן 9 קומות יוצרת",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (paragraph under data table)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "<td dir=\"rtl\">מגדל 44 קומות, מגדלים 20 קומות ובניינים 7-8 קומות</td>",
+    "new": "<td dir=\"rtl\">מגדל 44 קומות, בניין 20 קומות ובניין 9 קומות (6.2025)</td>",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (checks table, building types row)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "בפרויקט שכולל מגדל בן 44 קומות, מגדלים בני 20 קומות ובניינים בני 7-8 קומות, קיימים",
+    "new": "בפרויקט שכולל מגדל בן 44 קומות, בניין בן 20 קומות ובניין בן 9 קומות, קיימים",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (location-in-compound check)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   },
+   {
+    "old": "לפי הנתונים, הפרויקט כולל מגדל בן 44 קומות, מגדלים בני 20 קומות ובניינים מרקמיים בני 7-8 קומות.",
+    "new": "לפי הפרסום מ-6.2025, הפרויקט כולל שלושה מבנים: מגדל בן 44 קומות ושני בניינים של 20 ו-9 קומות.",
+    "why": "Dated source (3.6.2025) gives 3 structures: one 44-floor tower and two buildings of 20 and 9 floors; there are no 7-8 floor buildings and only one 20-floor building. (FAQ answer)",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   }
+  ],
+  "meta": {
+   "num_buildings": {
+    "old": 4,
+    "new": 3,
+    "why": "Dated source 3.6.2025 (and 12.6.2025): 3 structures (44-floor tower + 20- and 9-floor buildings). 20.2.2025 (11608) said 3 towers + 5 low-rise buildings; the later wording is preferred.",
+    "source": "מרכז הנדל״ן, 3.6.2025, https://www.nadlancenter.co.il/article/12196 (also 12.6.2025, https://www.nadlancenter.co.il/article/12256)"
+   }
+  },
+  "notes": [
+   "Price box '54,000 ₪ למ\"ר, לפי היזם' / '~54,000 מחיר ממוצע' comes from meta project_3d_avg_price_per_sqm = \"54000\" (not an allowed key here). No source gives 54,000; owner should clear it or set it from a source.",
+   "Prices table row 'דיווח על מכירה | כ-49,000 ש\"ח למ\"ר' left as is: the sources give 49,000 as the launch starting price; the row is not contradicted, only loosely worded.",
+   "Plot: page text and meta address name only 'מגרש 2206, מתחם ב'; project-tlv lists plots 2206 and 2255 for Gindi Israel 2010. Not changed (not a figure fix; address meta is outside the allowed keys).",
+   "Sources disagree on buildings: nadlancenter 20.2.2025 (11608) says 3 residential towers and 5 low-rise buildings; fixes follow the dated 6.2025 wording ('לפי הפרסום מ-6.2025').",
+   "Sensitive and left out on purpose (owner's call): ice 8.9.2025 on ~80M ₪ returned to 680 buyers after the Sale Law supervisor's finding."
+  ]
+ },
+ "4879": {
+  "slug": "park-bavli",
+  "content": [
+   {
+    "old": "\"name\":\"פארק בבלי\",\"numberOfAccommodationUnits\":800,",
+    "new": "\"name\":\"פארק בבלי\",",
+    "why": "JSON-LD in content: unit count 800 is not sourced for Elad's 2 towers; property removed instead of guessed.",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "הפרויקט כולל כ-800 דירות בארבעה מגדלי מגורים בני 46 קומות, לצד מרכז מסחרי ושטחים פתוחים",
+    "new": "הפרויקט כולל שני מגדלי מגורים בני 44 קומות, לצד מרכז מסחרי ושטחים פתוחים",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (intro)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<p>כ-800 דירות, 4 מגדלים בני 46 קומות, פארק ומרכז מסחרי.</p>",
+    "new": "<p>2 מגדלים בני 44 קומות, פארק ומרכז מסחרי.</p>",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (facts card)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "הוא פרויקט רחב היקף המשלב ארבעה מגדלים, מסחר",
+    "new": "הוא פרויקט רחב היקף המשלב שני מגדלים, מסחר",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (planning paragraph)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "מדובר במתחם הכולל מאות דירות, ארבעה מגדלים גבוהים, שטח ירוק רחב",
+    "new": "מדובר במתחם הכולל שני מגדלים גבוהים, שטח ירוק רחב",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. ('מאות דירות' dropped: unit count unknown)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<td>4 מגדלי מגורים</td>",
+    "new": "<td>2 מגדלי מגורים</td>",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (data table, towers row)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<td>גובה המגדלים</td>\n<td>46 קומות</td>",
+    "new": "<td>גובה המגדלים</td>\n<td>44 קומות</td>",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (data table, height row)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<tr>\n<td>מספר דירות</td>\n<td>כ-800 דירות</td>\n<td>פרויקט משמעותי מבחינת קהילה, שירותים וניהול תחזוקה</td>\n</tr>\n",
+    "new": "",
+    "why": "Data table row removed (new is empty): 'כ-800 דירות' is not in any source for the 2 towers; unknown = omitted, never guessed.",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<td>ארבעה מגדלים, פארק, חורש טבעי ומרכז מסחרי</td>",
+    "new": "<td>שני מגדלים, פארק, חורש טבעי ומרכז מסחרי</td>",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (project-type table)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "ארבעת מגדלי המגורים יוצרים נוכחות",
+    "new": "שני מגדלי המגורים יוצרים נוכחות",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (architecture section)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<p>מגדלי מגורים בני 46 קומות מחייבים",
+    "new": "<p>מגדלי מגורים בני 44 קומות מחייבים",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (architecture section)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "<td>מגדלים גבוהים</td>\n<td>46 קומות</td>",
+    "new": "<td>מגדלים גבוהים</td>\n<td>44 קומות</td>",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (apartments table)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   {
+    "old": "הפרויקט כולל כ-800 דירות בארבעה מגדלי מגורים בני 46 קומות, לצד מרכז מסחרי, פארק וחורש טבעי",
+    "new": "הפרויקט כולל שני מגדלי מגורים בני 44 קומות, לצד מרכז מסחרי, פארק וחורש טבעי",
+    "why": "nadlancenter 12.3.2025: Tshuva/Elad's Park Bavli is 2 towers of 44 floors (the 46/48-floor figures belong to Hagag's separate H Masterpiece). The unit count of the 2 towers is not in any source, so it is omitted. (FAQ answer)",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   }
+  ],
+  "meta": {
+   "num_units": {
+    "old": 800,
+    "new": null,
+    "why": "No source gives the unit count of Elad's 2 towers; 800 is unsourced (the 2009 Bavli-Dekel plan had 988 flats in 7 towers). Cleared, not guessed.",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   "num_buildings": {
+    "old": 4,
+    "new": 2,
+    "why": "nadlancenter 12.3.2025: 2 towers.",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   },
+   "num_floors": {
+    "old": 46,
+    "new": 44,
+    "why": "nadlancenter 12.3.2025: towers of 44 floors.",
+    "source": "מרכז הנדל״ן, 12.3.2025, https://www.nadlancenter.co.il/article/11730"
+   }
+  },
+  "notes": [
+   "'מעל 100 דונם' (intro, data table, green-space paragraph, apartments table, FAQ) left: Walla 3.6.2009 gives 108 dunam for the whole 7-tower Bavli-Dekel plan, so it is not contradicted, but it is not confirmed for Elad's 2 towers. Editor may want to attribute it to the plan.",
+   "'מרכז מסחרי', 'פארק וחורש טבעי' and the 3-tower SVG illustration (labelled המחשה) are not in the sources read; left as is.",
+   "Unit count stays omitted everywhere (JSON-LD property and table row removed, meta cleared); add it only when a source gives the 2 towers' count."
+  ]
+ },
+ "4882": {
+  "slug": "akirov-towers",
+  "content": [
+   {
+    "old": "\"name\":\"מגדלי אקירוב\",\"numberOfAccommodationUnits\":350,",
+    "new": "\"name\":\"מגדלי אקירוב\",",
+    "why": "JSON-LD in content: 350 is unsourced and the built count is uncertain (400 planned in 2000, ~360 per Hamichlol); property removed.",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "ממוקם ברחוב פנקס בצפון תל אביב, באזור פארק צמרת וגבעת עמל א׳, ומשלב",
+    "new": "ממוקם ברחוב פנקס בצפון תל אביב, ממערב לדרך נמיר, ליד פארק צמרת וגבעת עמל א׳, ומשלב",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (intro)",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "שלושה מגדלי מגורים בני 32 קומות, ובהם כ-350 יחידות דיור. הבנייה החלה בשנת 1999 והסתיימה בשנת 2006, ובמהלך",
+    "new": "שלושה מגדלי מגורים בני 34 קומות, שבהם תוכננו 400 יחידות דיור (7.2000). הבנייה החלה בשנת 1999 והסתיימה בשנת 2006, ובמהלך",
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32. Globes 24.7.2000: 400 units planned; no source gives 350 (Hamichlol says ~360). Stated as the dated plan figure. (intro)",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "<p>3 מגדלים בני 32 קומות, כ-350 דירות, נבנו 1999-2006.</p>",
+    "new": "<p>3 מגדלים בני 34 קומות, 400 דירות בתכנון המקורי (7.2000), נבנו 1999-2006.</p>",
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32. Globes 24.7.2000: 400 units planned; no source gives 350 (Hamichlol says ~360). Stated as the dated plan figure. (facts card)",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "<p>פארק צמרת וגבעת עמל א׳, רחוב פנקס.</p>",
+    "new": "<p>רחוב פנקס, ממערב לדרך נמיר, ליד פארק צמרת וגבעת עמל א׳.</p>",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (location card)",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "<td>רחוב פנקס, אזור פארק צמרת וגבעת עמל א׳, צפון תל אביב</td>",
+    "new": "<td>רחוב פנקס, ממערב לדרך נמיר, ליד פארק צמרת וגבעת עמל א׳, צפון תל אביב</td>",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (data table, location row)",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "<td>32 קומות בכל מגדל</td>",
+    "new": "<td>34 קומות בכל מגדל</td>",
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32. (data table)",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "<td>כ-350 יחידות דיור</td>",
+    "new": "<td>400 יחידות דיור מתוכננות (7.2000)</td>",
+    "why": "Globes 24.7.2000: 400 units planned; no source gives 350 (Hamichlol says ~360). Stated as the dated plan figure. (data table)",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "<p>היקף של כ-350 יחידות דיור מאפשר מתחם משמעותי",
+    "new": "<p>היקף של 400 יחידות דיור, לפי התכנון שפורסם ב-7.2000, מאפשר מתחם משמעותי",
+    "why": "Globes 24.7.2000: 400 units planned; no source gives 350 (Hamichlol says ~360). Stated as the dated plan figure. (data section paragraph)",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   {
+    "old": "<p>פארק צמרת התפתח כאזור מגורי מגדלים יוקרתי",
+    "new": "<p>פארק צמרת, שנבנה ממזרח לדרך נמיר, התפתח כאזור מגורי מגדלים יוקרתי",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (location section: separates the neighbourhood from the towers)",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "<td>אזור מגורי מגדלים יוקרתי</td>\n<td>שייכות למרחב נדל״ני מבוקש וממותג</td>",
+    "new": "<td>אזור מגורי מגדלים יוקרתי ממזרח לדרך נמיר; המגדלים אינם חלק ממנו</td>\n<td>סמיכות למרחב נדל״ני מבוקש וממותג</td>",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (location table claimed 'שייכות')",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "<td>שלושה מגדלי יוקרה בני 32 קומות בצפון תל אביב</td>\n<td>פרויקט ותיק, מוכר וממותג באזור פארק צמרת וגבעת עמל א׳</td>",
+    "new": "<td>שלושה מגדלי יוקרה בני 34 קומות בצפון תל אביב</td>\n<td>פרויקט ותיק, מוכר וממותג ברחוב פנקס, ליד פארק צמרת וגבעת עמל א׳</td>",
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32. Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (comparison table)",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "מגדלי אקירוב נמצאים ברחוב פנקס בצפון תל אביב, באזור פארק צמרת וגבעת עמל א׳.",
+    "new": "מגדלי אקירוב נמצאים ברחוב פנקס בצפון תל אביב, ממערב לדרך נמיר, ליד פארק צמרת וגבעת עמל א׳. הם אינם חלק משכונת פארק צמרת, שנבנתה ממזרח לדרך.",
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. (FAQ 'איפה נמצאים')",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   },
+   {
+    "old": "<p>הפרויקט כולל שלושה מגדלי מגורים בני 32 קומות, ובהם כ-350 יחידות דיור. הבנייה החלה בשנת 1999 והסתיימה בשנת 2006.</p>",
+    "new": "<p>הפרויקט כולל שלושה מגדלי מגורים בני 34 קומות, שבהם תוכננו 400 יחידות דיור (7.2000). הבנייה החלה בשנת 1999 והסתיימה בשנת 2006.</p>",
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32. Globes 24.7.2000: 400 units planned; no source gives 350 (Hamichlol says ~360). Stated as the dated plan figure. (FAQ 'כמה מגדלים ודירות')",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   }
+  ],
+  "meta": {
+   "num_floors": {
+    "old": 32,
+    "new": 34,
+    "why": "Globes 24.7.2000, Walla 28.8.2003 and Hamichlol all say 34 floors, not 32.",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   "num_units": {
+    "old": 350,
+    "new": null,
+    "why": "350 is unsourced; 400 was the planned figure in 7.2000 and Hamichlol says ~360, so the built count is unknown. Cleared rather than guessed (text carries the dated 400 planned).",
+    "source": "גלובס, 24.7.2000, https://www.globes.co.il/news/article.aspx?did=255351"
+   },
+   "neighborhood": {
+    "old": "פארק צמרת",
+    "new": null,
+    "why": "Bizportal 16.7.2026: the Akirov towers are west of Namir Road and are not part of Park Tzameret, which was built east of the road. Sources name only 'רחוב פנקס, צפון תל אביב', no neighbourhood, so cleared.",
+    "source": "ביזפורטל, 16.7.2026, https://www.bizportal.co.il/realestates/news/article/20036045"
+   }
+  },
+  "notes": [
+   "NOT changed (title/headline, owner decides because of keywords): WP title 'מגדלי אקירוב פארק צמרת - פרויקט יוקרה של אלרוב'; JSON-LD headline 'מגדלי אקירוב פארק צמרת - אלרוב'; hero eyebrow 'פרויקט יוקרה · פארק צמרת' with hero headline 'מגדלי אקירוב בפארק צמרת: פרויקט יוקרה אייקוני בצפון תל אביב'; section heading 'מיקום: פארק צמרת, גבעת עמל א׳ ורחוב פנקס'.",
+   "English keyword line 'Akirov Towers Park Tzameret Tel Aviv / ...' left (keyword copy, owner's call).",
+   "Construction start '1999' (intro, card '1999-2006', table, FAQ) left: Globes 24.7.2000 says end of 1998, Hamichlol says 1999; sources disagree, not a clean contradiction. Completion 2006 matches Hamichlol.",
+   "If meta neighborhood must not be empty for hubs/breadcrumbs, the only sourced locality is 'צפון תל אביב' (Walla 28.8.2003, Pinkas street)."
+  ]
+ },
+ "4875": {
+  "slug": "ashdar-einstein",
+  "content": [
+   {
+    "old": "<p>הפרויקט כולל שלושה בניינים בני 8 קומות, ובהם כ-45 דירות.",
+    "new": "<p>הפרויקט כולל בניין בוטיק אחד בן 8 קומות, עם 3 כניסות נפרדות ולובי משותף, ובו כ-45 דירות.",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (intro)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "<p>שלושה בנייני 8 קומות, כ-45 דירות ושלושה פנטהאוזים, חניון תת-קרקעי.</p>",
+    "new": "<p>בניין אחד בן 8 קומות עם 3 כניסות, כ-45 דירות ושלושה פנטהאוזים, חניון תת-קרקעי.</p>",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (facts card; penthouse count left, see notes)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "השילוב בין מספר דירות מוגבל, בניינים בגובה מתון יחסית,",
+    "new": "השילוב בין מספר דירות מוגבל, בניין בגובה מתון יחסית,",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (scale paragraph)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "שלושה בניינים בני 8 קומות מאפשרים בנייה שאינה חורגת",
+    "new": "בניין אחד בן 8 קומות מאפשר בנייה שאינה חורגת",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (data section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "<td>3 בניינים</td>\n<td>מתחם מגורים קטן יחסית, בעל אופי שכונתי</td>\n</tr>\n<tr>\n<td>גובה הבניינים</td>",
+    "new": "<td>בניין אחד עם 3 כניסות נפרדות ולובי משותף</td>\n<td>מתחם מגורים קטן יחסית, בעל אופי שכונתי</td>\n</tr>\n<tr>\n<td>גובה הבניין</td>",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (data table, buildings + height rows)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "שלושה בניינים בני 8 קומות וכ-45 דירות בלבד יוצרים פרויקט",
+    "new": "בניין אחד בן 8 קומות וכ-45 דירות בלבד יוצרים פרויקט",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (planning section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "<td>3 בניינים</td>\n<td>פיזור נפח הבנייה ויצירת מתחם מגורים מאוזן</td>",
+    "new": "<td>בניין אחד עם 3 כניסות נפרדות ולובי משותף</td>\n<td>כניסות נפרדות בתוך בניין אחד ויצירת מתחם מגורים מאוזן</td>",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (planning table; the 'spreading the volume' rationale assumed 3 buildings)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "<td>פרויקט בוטיק של 3 בניינים בני 8 קומות וכ-45 דירות</td>",
+    "new": "<td>פרויקט בוטיק: בניין אחד בן 8 קומות וכ-45 דירות</td>",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (comparison table)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   },
+   {
+    "old": "הפרויקט כולל שלושה בניינים בני 8 קומות ובהם כ-45 דירות,",
+    "new": "הפרויקט כולל בניין אחד בן 8 קומות, עם 3 כניסות נפרדות ולובי משותף, ובו כ-45 דירות,",
+    "why": "Developer page: one 8-floor boutique building with 3 separate entrances and a shared lobby, 45 units; not three buildings. (FAQ answer)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+   }
+  ],
+  "meta": {},
+  "notes": [
+   "No meta change: num_buildings and num_floors are empty on this post; num_units 45 matches the Ashtrom site card.",
+   "Unverified, left as is: the mix 'שני פנטהאוזים בני 5 חדרים ופנטהאוז נוסף בן 3 חדרים' / 'שלושה פנטהאוזים' (intro, card, data table, planning table, FAQ) is not in any source; the developer says only 'דירות בנות 3-4 חדרים ופנטהאוזים'. Recommend replacing with the developer wording when the owner approves.",
+   "Unverified, left as is: 'כ-400 דירות' that Ashdar promotes in the neighbourhood (note under cards, developer section, table, Ashdar-activity section) was not found in any source."
+  ]
+ },
+ "4877": {
+  "slug": "recanati-residence",
+  "content": [
+   {
+    "old": "ברחוב רקנאטי בשכונת <a href=\"/ramat-aviv/neve-avivim/\">נווה אביבים</a> שבצפון תל אביב.",
+    "new": "ברחוב רקנאטי בשכונת רמת אביב ג׳ שבצפון תל אביב.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (intro; the link to the Neve Avivim hub is dropped with the wrong name; /ramat-aviv/ stays linked in the next sentence)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "ולרשת רחובות שקטה יחסית המאפיינת את נווה אביבים.",
+    "new": "ולרשת רחובות שקטה יחסית המאפיינת את רמת אביב ג׳.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (intro)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "יחד, פעילות אשדר בנווה אביבים כוללת",
+    "new": "יחד, פעילות אשדר באזור רמת אביב כוללת",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. Ashdar's projects span Ramat Aviv areas (intro; 400 itself unverified, see notes)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "{\"@type\":\"ListItem\",\"position\":2,\"name\":\"נווה אביבים\",\"item\":\"https://nad-lan.co.il/ramat-aviv/neve-avivim/\"}",
+    "new": "{\"@type\":\"ListItem\",\"position\":2,\"name\":\"רמת אביב\",\"item\":\"https://nad-lan.co.il/ramat-aviv/\"}",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (JSON-LD breadcrumb; parent hub /ramat-aviv/ is already linked from the page; no Ramat Aviv Gimel hub exists)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<p>כ-198 דירות ברחוב רקנאטי, נווה אביבים.</p>",
+    "new": "<p>כ-198 דירות ברחוב רקנאטי, רמת אביב ג׳.</p>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (facts card)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<p>נווה אביבים, ליד קניון רמת אביב והאוניברסיטה.</p>",
+    "new": "<p>רמת אביב ג׳, ליד קניון רמת אביב והאוניברסיטה.</p>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (location card)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "הוא חלק מכ-400 דירות שאשדר מקדמת בנווה אביבים.",
+    "new": "הוא חלק מכ-400 דירות שאשדר מקדמת באזור רמת אביב.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (note under cards; 400 unverified, see notes)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<td>רחוב רקנאטי, שכונת <a href=\"/ramat-aviv/neve-avivim/\">נווה אביבים</a>, רמת אביב, תל אביב</td>",
+    "new": "<td>רחוב רקנאטי, שכונת רמת אביב ג׳, תל אביב</td>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (data table, location row)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<td>שכונה</td>\n<td>נווה אביבים, רמת אביב</td>",
+    "new": "<td>שכונה</td>\n<td>רמת אביב ג׳</td>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (data table, neighbourhood row)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "חידוש מלאי הדירות בנווה אביבים, תוך שמירה",
+    "new": "חידוש מלאי הדירות ברמת אביב ג׳, תוך שמירה",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (data section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "רחוב רקנאטי נהנה ממיקום פנימי יחסית בתוך נווה אביבים",
+    "new": "רחוב רקנאטי נהנה ממיקום פנימי יחסית בתוך רמת אביב ג׳",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (data section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "בנווה אביבים, פעילות החברה בולטת במיוחד",
+    "new": "באזור רמת אביב, פעילות החברה בולטת במיוחד",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (developer section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "הנוכחות של אשדר בנווה אביבים אינה מתמקדת בפרויקט בודד בלבד. RECANATI RESIDENCE מצטרף לאשדר איינשטיין ולאשדר טאגור, וביחד מדובר בהיקף כולל של כ-400 דירות בשכונה.",
+    "new": "הנוכחות של אשדר באזור רמת אביב אינה מתמקדת בפרויקט בודד בלבד. RECANATI RESIDENCE מצטרף לאשדר איינשטיין ולאשדר טאגור, וביחד מדובר בהיקף כולל של כ-400 דירות באזור.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. The three projects are not in one neighbourhood (developer section; 400 unverified)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "רחוב רקנאטי נהנה מהקשר ישיר למארג הרחובות של נווה אביבים",
+    "new": "רחוב רקנאטי נהנה מהקשר ישיר למארג הרחובות של רמת אביב ג׳",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (location section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<td>נווה אביבים, שכונה מבוססת וירוקה</td>",
+    "new": "<td>רמת אביב ג׳, שכונה מבוססת וירוקה</td>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (location table)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "היתרון המרכזי של נווה אביבים הוא השילוב",
+    "new": "היתרון המרכזי של הסביבה הוא השילוב",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (location section closing paragraph; neutral wording instead of naming the wrong neighbourhood)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "RECANATI RESIDENCE הוא חלק ממערך רחב של פרויקטים שמקדמת אשדר בנווה אביבים.",
+    "new": "RECANATI RESIDENCE הוא חלק ממערך רחב של פרויקטים שמקדמת אשדר באזור רמת אביב.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (Ashdar-activity section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<td>רחוב רקנאטי, נווה אביבים</td>",
+    "new": "<td>רחוב רקנאטי, רמת אביב ג׳</td>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (Ashdar projects table)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "התחדשות מלאי המגורים בנווה אביבים, תוך כניסה",
+    "new": "התחדשות מלאי המגורים ברמת אביב ג׳, תוך כניסה",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (paragraph under Ashdar table)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "<td>רחוב רקנאטי, בתוך נווה אביבים</td>",
+    "new": "<td>רחוב רקנאטי, בתוך רמת אביב ג׳</td>",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (price comparison table)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "בהשוואה בין RECANATI RESIDENCE לבין דירות יד שנייה בנווה אביבים",
+    "new": "בהשוואה בין RECANATI RESIDENCE לבין דירות יד שנייה ברמת אביב ג׳",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (prices section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "מבלי לוותר על האופי השכונתי של נווה אביבים",
+    "new": "מבלי לוותר על האופי השכונתי של רמת אביב ג׳",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (who-it-suits section)",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "ברחוב רקנאטי בשכונת נווה אביבים ברמת אביב. הפרויקט כולל כ-198 דירות",
+    "new": "ברחוב רקנאטי בשכונת רמת אביב ג׳. הפרויקט כולל כ-198 דירות",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (FAQ 'מהו')",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "הפרויקט נמצא ברחוב רקנאטי, בשכונת נווה אביבים שבמרחב רמת אביב בצפון תל אביב.",
+    "new": "הפרויקט נמצא ברחוב רקנאטי, בשכונת רמת אביב ג׳ שבצפון תל אביב, בצד המערבי של הרחוב וצמוד לגינת צורי.",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. Ashtrom: west side of Recanati street, next to Gan Tsuri (FAQ 'איפה נמצא')",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   },
+   {
+    "old": "בנווה אביבים החברה פועלת בכמה פרויקטים, בהם RECANATI RESIDENCE",
+    "new": "באזור רמת אביב החברה פועלת בכמה פרויקטים, בהם RECANATI RESIDENCE",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. (FAQ 'מי היזם')",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   }
+  ],
+  "meta": {
+   "neighborhood": {
+    "old": "נווה אביבים",
+    "new": "רמת אביב ג׳",
+    "why": "Ashtrom ('בלב שכונת רמת אביב ג'), project-tlv and Globes 12.3.2019 all place Recanati 5-15 in Ramat Aviv Gimel, not Neve Avivim. Spelling as in the official neighbourhood list used by radius-prices.json (U+05F3 geresh).",
+    "source": "אשטרום מגורים, נקרא 1.11.2026, https://www.ashtromegurim.co.il/projects/recanati-residence (also project-tlv https://project-tlv.info/urban-plans/3850-2/ and גלובס 12.3.2019 https://www.globes.co.il/news/article.aspx?did=1001277357)"
+   }
+  },
+  "notes": [
+   "NOT changed (title/headline, owner decides because of keywords): WP title 'RECANATI RESIDENCE נווה אביבים - פרויקט של אשדר'; JSON-LD headline 'RECANATI RESIDENCE נווה אביבים - אשדר'; hero eyebrow 'פרויקט · נווה אביבים' with hero headline 'RECANATI RESIDENCE ברחוב רקנאטי, נווה אביבים'; section heading 'מיקום וסביבה בנווה אביבים'.",
+   "NOT changed, needs the owner/writer: hero CTA button <a class='btn secondary' href='/ramat-aviv/neve-avivim/'>נווה אביבים</a> (internal-link choice), and the first paragraph of the location section ('נווה אביבים היא אחת השכונות...') which describes Neve Avivim in general; it should be rewritten about Ramat Aviv Gimel, not patched.",
+   "English keyword line 'Recanati Residence Neve Avivim / ...' left (keyword copy, owner's call).",
+   "Unverified, left: 'כ-400 דירות' Ashdar promotes (intro, note, developer section, Ashdar table) not found in any source. Developer: page says Ashdar of the Ashtrom group; Ashtrom's page says 'אשטרום מגורים בשיתוף עם חברת ענב' (meta developer_name 'אשדר' is outside the allowed keys). Tagore rows ('אזור רחוב טאגור, נווה אביבים') not checked and left."
+  ]
+ },
+ "6548": {
+  "slug": "h-infinity-somail-tel-aviv",
+  "content": [
+   {
+    "old": "מגדל מגורים בן 53 קומות ולצדו בניין בוטיק מעל קומת מסחר, כ-278 דירות של 2 עד 6 חדרים, בתכנון פרופ' משה צור (לפי הדוח השנתי של החברה לשנת 2025 ודף השיווק).",
+    "new": "מגדל מגורים בן 52 קומות ולצדו בניין בוטיק מעל קומת מסחר, כ-278 דירות של 2 עד 6 חדרים, בתכנון פרופ' משה צור (לפי אתר הקבוצה, הדוח השנתי של החברה לשנת 2025 ודף השיווק).",
+    "why": "nadlancenter 11.10.2026 and the group site: a 52-floor tower (53 is the 2024 permit figure in the 2025 annual report). Attribution adds the group site.",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "old": "הפרויקט בבנייה, והחברה מעריכה שעבודות ההקמה יסתיימו ברבעון הרביעי של 2026.",
+    "new": "הפרויקט בשלב ביצוע מתקדם, והחברה מעריכה שהאכלוס יהיה ברבעון הראשון של 2027 (10.2026).",
+    "why": "nadlancenter 11.10.2026: advanced execution, occupancy expected Q1 2027 per the company; Q4 2026 was the older annual-report estimate. (intro)",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "old": "<td>מגדל מגורים בן 53 קומות, ולצדו בניין בן 6 קומות מגורים מעל קומת מסחר<small>היתר בנייה מ-22.12.2021 והיתר שינויים מ-9.12.2024, לפי הדוח השנתי 2025. באתר הקבוצה: מגדל בן 52 קומות ובניין בוטיק בן 7 קומות. בדף השיווק: 51 קומות.</small></td>",
+    "new": "<td>מגדל מגורים בן 52 קומות, ולצדו בניין בוטיק מעל קומת מסחר<small>מרכז הנדל״ן, 11.10.2026, ואתר הקבוצה (שם: בניין בוטיק בן 7 קומות). לפי היתר בנייה מ-22.12.2021 והיתר שינויים מ-9.12.2024 (הדוח השנתי 2025): מגדל בן 53 קומות ולצדו בניין בן 6 קומות מגורים מעל קומת מסחר. בדף השיווק: 51 קומות.</small></td>",
+    "why": "Facts table now leads with the latest dated figure (52 floors, 10.2026) and keeps every other source figure in the small print, as the table promises ('מופיעים כולם').",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "old": "<td>בבנייה. החברה מעריכה שעבודות ההקמה יסתיימו ברבעון הרביעי של 2026.<small>הדוח השנתי 2025. זו הערכה של החברה, לא התחייבות.</small></td>",
+    "new": "<td>בשלב ביצוע מתקדם. האכלוס צפוי ברבעון הראשון של 2027, להערכת החברה (10.2026).<small>מרכז הנדל״ן, 11.10.2026. בדוח השנתי 2025 העריכה החברה שעבודות ההקמה יסתיימו ברבעון הרביעי של 2026. זו הערכה של החברה, לא התחייבות.</small></td>",
+    "why": "nadlancenter 11.10.2026 supersedes the Q4 2026 estimate with occupancy expected Q1 2027; the older estimate stays in small print. (facts table, status row)",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   },
+   {
+    "old": "<li><a href=\"https://www.globes.co.il/news/article.aspx?did=1001392692\" rel=\"nofollow noopener\">גלובס, 30.11.2021: סומייל הופך לפרויקט יזמי</a></li>",
+    "new": "<li><a href=\"https://www.globes.co.il/news/article.aspx?did=1001392692\" rel=\"nofollow noopener\">גלובס, 30.11.2021: סומייל הופך לפרויקט יזמי</a></li><li><a href=\"https://www.nadlancenter.co.il/article/15539\" rel=\"nofollow noopener\">מרכז הנדל״ן, 11.10.2026: H Infinity, מכירות ומועד אכלוס</a></li>",
+    "why": "The page lists its sources; adds the source of the corrected floors and occupancy figures.",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   }
+  ],
+  "meta": {
+   "num_floors": {
+    "old": 53,
+    "new": 52,
+    "why": "nadlancenter 11.10.2026: 'מגדל יוקרה בן 52 קומות' (the 3D floor list in project_3d_units already has 52 floors).",
+    "source": "מרכז הנדל״ן, 11.10.2026, https://www.nadlancenter.co.il/article/15539"
+   }
+  },
+  "notes": [
+   "Checklist item 1 ('...וההיתר מ-2024 מתיר 53 קומות וכ-278 דירות') left: it describes the permit, which the annual report gives as 53; not a claim about the built tower.",
+   "'הנתונים נבדקו ב-28.9.2026' and the table intro ('הנתונים לקוחים מהדוח השנתי... ומאתרי הקבוצה') left; after applying, the editor may update the check date to 11.2026 and mention the 10.2026 report.",
+   "Price 'החל מ-65,000 ₪ למ\"ר' (group site, 9.2026) and 'החל מ-5.82 מיליון ₪' (marketing page) were not in facts-12 and are left. Sourced but not added: 221 of 278 sold, 57 left (8.2026); penthouse floors 51-52 sold for 55,555,000 ₪ as a shell (10.2026)."
+  ]
+ },
+ "4743": {
+  "slug": "first-sde-dov",
+  "content": [
+   {
+    "old": "מחירי השיווק שפורסמו מתחילים סביב כ-60,000 ש\"ח למ\"ר, ובדיווחי",
+    "new": "מחירי הפריסייל (7.2025) החלו ב-71,000 ש\"ח למ\"ר, ובדיווחי",
+    "why": "ice 13.7.2025: presale prices 'החלו ב-71 אלף שקל למ\"ר'; no source gives a start around 60,000. (intro)",
+    "source": "ice, 13.7.2025, https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "old": "<td dir=\"rtl\">החל מכ-60,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מחיר פתיחה אינו מחיר ממוצע",
+    "new": "<td dir=\"rtl\">החל מ-71,000 ש\"ח למ\"ר בפריסייל (7.2025)</td>\n<td dir=\"rtl\">מחיר פתיחה אינו מחיר ממוצע",
+    "why": "ice 13.7.2025: presale prices 'החלו ב-71 אלף שקל למ\"ר'; no source gives a start around 60,000. (data table)",
+    "source": "ice, 13.7.2025, https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "old": "שפורסם מרף של כ-60,000 ש\"ח למ\"ר.",
+    "new": "שבפריסייל (7.2025) התחיל ב-71,000 ש\"ח למ\"ר.",
+    "why": "ice 13.7.2025: presale prices 'החלו ב-71 אלף שקל למ\"ר'; no source gives a start around 60,000. (prices section)",
+    "source": "ice, 13.7.2025, https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "old": "<td dir=\"rtl\">החל מכ-60,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">להשוות רק",
+    "new": "<td dir=\"rtl\">החל מ-71,000 ש\"ח למ\"ר בפריסייל (7.2025)</td>\n<td dir=\"rtl\">להשוות רק",
+    "why": "ice 13.7.2025: presale prices 'החלו ב-71 אלף שקל למ\"ר'; no source gives a start around 60,000. (prices comparison table)",
+    "source": "ice, 13.7.2025, https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "old": "מחירי השיווק פורסמו החל מכ-60,000 ש\"ח למ\"ר.",
+    "new": "בפריסייל (7.2025) המחירים החלו ב-71,000 ש\"ח למ\"ר.",
+    "why": "ice 13.7.2025: presale prices 'החלו ב-71 אלף שקל למ\"ר'; no source gives a start around 60,000. (FAQ answer)",
+    "source": "ice, 13.7.2025, https://www.ice.co.il/realestate/news/article/1073836"
+   },
+   {
+    "old": "עד אמצע השנה דווח על מכירת כ-102 דירות בפרויקט FIRST במחיר ממוצע של כ-8.36 מיליון ש\"ח לדירה.",
+    "new": "עד אמצע השנה דווח על מכירת כ-102 דירות בפרויקט FIRST במחיר ממוצע של כ-8.36 מיליון ש\"ח לדירה. עדכון מ-4.2026: נמכרו 155 מתוך 350 הדירות, ועם 35 בקשות הרשמה שווקו 190.",
+    "why": "Sales stopped at mid-2025; nadlancenter 13.4.2026: 155 of 350 sold, 190 with 35 registration requests. The 102 figure is correct for 7.2025 and stays. (sales section)",
+    "source": "מרכז הנדל״ן, 13.4.2026, https://www.nadlancenter.co.il/article/14291"
+   },
+   {
+    "old": "<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות FIRST שנמכרו עד אמצע 2025</td>",
+    "new": "<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות FIRST שנמכרו עד 4.2026</td>\n<td dir=\"rtl\">155 מתוך 350 הדירות; עם 35 בקשות הרשמה, 190</td>\n<td dir=\"rtl\">הנתון העדכני ביותר שפורסם. כדאי לשאול כמה מהן חוזים חתומים.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות FIRST שנמכרו עד אמצע 2025</td>",
+    "why": "Adds the 4.2026 sales row above the mid-2025 row in the sales table (nadlancenter 13.4.2026).",
+    "source": "מרכז הנדל״ן, 13.4.2026, https://www.nadlancenter.co.il/article/14291"
+   }
+  ],
+  "meta": {},
+  "notes": [
+   "Price box '75,000 ₪ למ\"ר, לפי היזם' comes from meta project_3d_avg_price_per_sqm = \"75000\" (not an allowed key). Sources: 75K was the company's conservative profit scenario (nadlancenter 26.2.2025); the company's estimate was 82K (nadlancenter 17.7.2025); ice 13.7.2025 says the company set a 90K average. Owner to decide.",
+   "Unverified, left: 'קבוצת חגג שיווקה כ-148 דירות מתחילת השנה בהיקף של כ-1.2 מיליארד ש\"ח' (paragraph + table), 'פנטהאוזים... מרף של כ-10 מיליון ש\"ח' (intro, table, FAQ), '21 הודעות ביטול' and the '8 עד' lower bound of '8 עד 8.36 מיליון' (sources give 8.36M average, 7.2025).",
+   "No meta change: num_units 350, num_buildings 4 (45-floor tower + three 9-floor buildings), num_floors 45 and project_status 'בשיווק' match the sources."
+  ]
+ },
+ "4749": {
+  "slug": "utopia-sde-dov",
+  "content": [
+   {
+    "old": "UTOPIA שדה דב תל אביב הוא פרויקט מגורים מתוכנן של קבוצת נחמיאס במגרש 103 במתחם אשכול.",
+    "new": "UTOPIA שדה דב תל אביב הוא פרויקט מגורים בבנייה של קבוצת נחמיאס במגרש 103 במתחם אשכול (עבודות הבנייה החלו ב-10.2025).",
+    "why": "nadlancenter 27.10.2025: 'קבוצת נחמיאס החלה בעבודות הבניה'; Globes 18.10.2026 expects occupancy toward mid-2029. The 'planned' framing is behind the sources. (lead paragraph under the H1)",
+    "source": "מרכז הנדל״ן, 27.10.2025, https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "old": "UTOPIA מתוכנן כמתחם מגורים מעורב שימושים",
+    "new": "UTOPIA תוכנן כמתחם מגורים מעורב שימושים",
+    "why": "nadlancenter 27.10.2025: 'קבוצת נחמיאס החלה בעבודות הבניה'; Globes 18.10.2026 expects occupancy toward mid-2029. The 'planned' framing is behind the sources. (overview: present 'is planned' becomes past 'was designed')",
+    "source": "מרכז הנדל״ן, 27.10.2025, https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "old": "יש תכנון מפורט, בקשה מרכזית לבניין המלא והיתר נפרד לעבודות מוקדמות.",
+    "new": "יש תכנון מפורט, בקשה מרכזית לבניין המלא והיתר נפרד לעבודות מוקדמות, ולפי פרסום מ-10.2025 עבודות הבנייה החלו.",
+    "why": "nadlancenter 27.10.2025: 'קבוצת נחמיאס החלה בעבודות הבניה'; Globes 18.10.2026 expects occupancy toward mid-2029. The 'planned' framing is behind the sources. (status snapshot note)",
+    "source": "מרכז הנדל״ן, 27.10.2025, https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "old": "        <tr>\r\n          <td>לא פורסם</td>\r\n          <td>מועד מסירה חוזי מחייב</td>",
+    "new": "        <tr>\r\n          <td>2025-10</td>\r\n          <td>תחילת עבודות הבנייה</td>\r\n          <td>לפי פרסום מ-27.10.2025, קבוצת נחמיאס החלה בעבודות הבנייה</td>\r\n          <td>אין בכך מועד מסירה חוזי מחייב</td>\r\n        </tr>\r\n        <tr>\r\n          <td>לא פורסם</td>\r\n          <td>מועד מסירה חוזי מחייב</td>",
+    "why": "nadlancenter 27.10.2025: 'קבוצת נחמיאס החלה בעבודות הבניה'; Globes 18.10.2026 expects occupancy toward mid-2029. The 'planned' framing is behind the sources. (stages table: adds the 10.2025 row before the delivery row)",
+    "source": "מרכז הנדל״ן, 27.10.2025, https://www.nadlancenter.co.il/article/13109"
+   },
+   {
+    "old": "אין להסיק מכך שכל בניית הפרויקט אושרה או החלה.",
+    "new": "לפי פרסום מ-10.2025, קבוצת נחמיאס החלה בעבודות הבנייה, והאכלוס צפוי לקראת אמצע 2029 (10.2026). עם זאת, אין להסיק מכך שכל בניית הפרויקט אושרה.",
+    "why": "nadlancenter 27.10.2025: 'קבוצת נחמיאס החלה בעבודות הבניה'; Globes 18.10.2026 expects occupancy toward mid-2029. The 'planned' framing is behind the sources. (FAQ 'האם העבודות כבר התחילו?'; occupancy from Globes 18.10.2026)",
+    "source": "מרכז הנדל״ן, 27.10.2025, https://www.nadlancenter.co.il/article/13109"
+   }
+  ],
+  "meta": {},
+  "notes": [
+   "Occupancy 'לקראת אמצע 2029' in the FAQ fix comes from Globes 18.10.2026 (https://www.globes.co.il/news/article.aspx?did=1001559413).",
+   "Permit wording left (not contradicted): 'בקשה לבניין המלא בתהליך היתר; היתר נפרד לעבודות חפירה, דיפון ויסודות הונפק', 'מועד מסירה חוזי מחייב: לא פורסם', and the 9.2025 stages row 'אין בכך הוכחה שכל עבודות הבנייה אושרו או החלו' (now followed by the new 10.2025 row).",
+   "No meta change: project_status 'construction', 337 units, 4 buildings, 34 floors match the sources (Globes 22.12.2024 said 35 floors; later sources say 34)."
+  ]
+ },
+ "4750": {
+  "slug": "shikun-binui-sde-dov",
+  "content": [],
+  "meta": {
+   "project_status": {
+    "old": "בהיתר בנייה",
+    "new": "בבנייה",
+    "why": "nadlancenter 22.10.2026: the Shikun REIT projects in Eshkol are 'בשלבי הקמה'. Hebrew value used because inc/milestones.php detects the stage from Hebrew tokens only ('בנייה' = stage 'בנייה'); 'construction' would hide the 'איפה הפרויקט עומד' band and print the English word.",
+    "source": "מרכז הנדל״ן, 22.10.2026, https://www.nadlancenter.co.il/article/15637"
+   }
+  },
+  "notes": [
+   "No content change: units (324), floors (38 plus two of 8), full permit (12.2025) and completion (9.2028) in the content match the sources; the content does not state the current stage."
+  ]
+ },
+ "4886": {
+  "slug": "marina-towers-herzliya",
+  "content": [],
+  "meta": {},
+  "notes": [
+   "No edits: nothing is directly contradicted by a source; everything below is unverified and left as is (honesty rule: report, do not invent a replacement).",
+   "Developer 'ים סוף' (meta developer_name; rendered 'היזם: ים סוף', 'אינו האתר הרשמי של ים סוף'): no source names the developer; Globes 13.12.2016 names the top-floor owner 'מרינה הרצליה שותפות מוגבלת'; Wikipedia lists 'Almog Yam Suf' among marina rights buyers without naming this project.",
+   "'כ-167 דירות' / 'כ-167 יחידות דיור' (8 places incl. JSON-LD numberOfAccommodationUnits:167 and meta num_units 167), 'שני מגדלים' / 'צמד מגדלים' (4 places) and 'מעל מרכז מסחרי' / 'מעל קומת מסחר' were not found in any source. 12 floors matches Globes 13.12.2016.",
+   "Price: page says a 4-room ~360 sqm apartment with ~110 sqm balcony 'שווקה במחיר מבוקש של כ-32 מיליון ש״ח' (7 mentions; '88,900 ש״ח למ״ר' derived from it, 2 mentions). Globes 13.12.2016 describes the same-size top-floor unit (3 bedrooms, 110 sqm balcony) sold by a receiver with a market valuation of ~30M ₪. Valuation is not an asking price, so not a direct contradiction; the 32M figure has no source and should be checked.",
+   "The page needs a primary source for developer, unit count and completion year (facts-12 has only 4 project rows, all from one 2016 Globes article)."
+  ]
+ }
+}
