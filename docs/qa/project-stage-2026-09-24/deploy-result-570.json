@@ -1,0 +1,19 @@
+{
+  "released": "1.72.570",
+  "from": "1.72.569",
+  "live_before": {
+    "inc/project-facts.php": "d04a328d02e28ecb26e5b764959df782",
+    "nadlan-config.php": "8107beae1d2641d5e12bbebca9e50a14"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-02 19:07:09",
+  "files": {
+    "inc/project-facts.php": "37e1e92ec1475bdbf57cf846f9fcd251",
+    "inc/neighbour-compare.php": "fc8ca148fd05a5503192d01d216b7ddc",
+    "data/neighbour-spotlight.json": "48ca30cd21d731a09154db12ee48c37d",
+    "nadlan-config.php": "0263448b08e25fdbed6aaeafdbff1c39"
+  },
+  "post_after": {},
+  "checks": "run_checks after the runner was cut off mid-checks (finish570.py): verify_pages + served_exact + verify_order + verify_home_order + verify_kh: OK"
+}

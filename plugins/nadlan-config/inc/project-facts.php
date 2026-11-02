@@ -46,6 +46,8 @@ add_shortcode( 'nadlan_project_facts', function ( $atts ) {
 	$subj = rawurlencode( 'טעות בנתונים: ' . wp_strip_all_tags( get_the_title( $id ) ) );
 	$h .= '<p class="nlfx-note">הנתונים בטבלה מבוססים על פרסומים גלויים, עם קישור למקור בכל שורה. מצאתם טעות? <a href="mailto:info@nad-lan.co.il?subject=' . $subj . '">כתבו לנו</a></p>';
 	$h .= '</section>';
+	// 1.72.570 (R10c, Claude Design v106.6): the neighbours spotlight follows the table on the pages data/neighbour-spotlight.json lists
+	if ( function_exists( 'nadlan_nbc_html' ) ) { $h .= nadlan_nbc_html( $id ); }
 	return $h;
 } );
 
@@ -82,3 +84,6 @@ add_action( 'wp_head', function () {
 		. 'html body .nlfx p.nlfx-note{font-size:12.5px!important;line-height:1.5!important;color:var(--ink2)!important}html body .nlfx p.nlfx-note a{color:var(--sea)!important;text-decoration:underline!important;text-underline-offset:2px}'
 		. '</style>';
 }, 30 );
+
+// 1.72.570: the neighbours spotlight (R10c) lives in its own file and is printed by the facts shortcode above
+if ( file_exists( __DIR__ . '/neighbour-compare.php' ) ) { require_once __DIR__ . '/neighbour-compare.php'; }

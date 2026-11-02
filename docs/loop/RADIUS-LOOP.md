@@ -288,7 +288,17 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Ashdar Einstein is shown for the city Sderot ("פרויקטים חדשים בשדרות", 114 impressions, position 49 to 60). Check the page's own use of "שדרות" (boulevard); report it, and change wording only if it is a real mistake.
     - DUO gets "dou" (13) and "duo tel aviv price" (5).
     - YOO gets "מגדלי יו מבפנים".
-- [ ] **R10c WAITS FOR BEN'S LOOK (v106.6, 2.11 evening).** Ben on v106.5: "make it marketing, something that promotes the project; no sources and dates on everything; price ranges, according to public sources; don't commit; nothing that puts people off". Redesigned in Claude Design v106.6 (design system version 269):
+- [x] **R10c BUILT (Ben 2.11: "Yes, build it"; release 1.72.570, released and verified). First 4 Sde Dov pages: GINDI VOGUE, FIRST, UTOPIA, Shikun & Binui.**
+  - Code: `inc/neighbour-compare.php`, printed by the facts shortcode right after the table. Data: `data/neighbour-spotlight.json`, rounded from the sourced facts.
+  - Checked live:
+    - on 4 of 4 pages, after the facts table, with 3 neighbour cards and one H1, and no sideways scroll at 390 px;
+    - FIRST's range appears only on FIRST, and GINDI's only on GINDI;
+    - Shikun & Binui has no price line;
+    - no block on Park Bavli or Rainbow.
+  - By eye at 390 px and on desktop: `docs/qa/neighbour-spotlight/nb570-*.png`.
+  - **Incident:** the runner was cut off from outside during its checks (exit 4). `--finish` refused at the version gate, so `scripts/project-stage/finish570.py` ran the same `run_checks` once: 909 OK.
+  - **Next, a few pages a day:** Zohi, Migdalei Hayam, SEVEN SEAS, then the Einstein pages. Each needs its own neighbours list and rounded figures in the JSON.
+- Design history: **v106.6, 2.11 evening.** Ben on v106.5: "make it marketing, something that promotes the project; no sources and dates on everything; price ranges, according to public sources; don't commit; nothing that puts people off". Redesigned in Claude Design v106.6 (design system version 269):
   - the page's project is the hero card: approximate pills and one price range, "לפי פרסומים גלויים";
   - up to 3 neighbours as small link cards, with no price;
   - one quiet line: "בקירוב, לפי פרסומים גלויים, ואינם הצעת מחיר".

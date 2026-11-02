@@ -1,0 +1,16 @@
+{
+ "_about": "HAD-654 R10c, Claude Design v106.6 (Ben 2.11.2026: marketing, ranges, commit to nothing). Written by hand from data/project-facts.json, rounded: 708 -> כ-700, 337 -> כ-340, 324 -> כ-320; prices as published (GINDI from 49K 6.2025; FIRST presale 71K to 110-120K on high floors, ice 13.7.2025; UTOPIA about 85K average and about 90K on high floors, Tax Authority via Globes 18.10.2026). A project with no published price has no price line. pages: the page id and the neighbours it shows.",
+ "area": "רובע שדה דב",
+ "projects": {
+  "4748": {"name": "GINDI VOGUE", "dev": "גינדי החזקות", "url": "/projects/gindi-vogue-sde-dov/", "stats": ["כ-700 דירות", "מגדל של 44 קומות", "ועוד שני בניינים"], "price": "החל מכ-49 אלף ₪ למ״ר"},
+  "4743": {"name": "FIRST שדה דב", "dev": "קבוצת חג׳ג׳", "url": "/projects/first-sde-dov/", "stats": ["כ-350 דירות", "מגדל של 45 קומות", "ושלושה בנייני בוטיק"], "price": "כ-71 עד 120 אלף ₪ למ״ר"},
+  "4749": {"name": "UTOPIA", "dev": "קבוצת נחמיאס", "url": "/projects/utopia-sde-dov/", "stats": ["כ-340 דירות", "מגדלים של 34 ו-15 קומות", "בבנייה"], "price": "כ-85 עד 90 אלף ₪ למ״ר"},
+  "4750": {"name": "שדה דב א׳", "dev": "שיכון ובינוי", "url": "/projects/shikun-binui-sde-dov/", "stats": ["כ-320 דירות להשכרה", "מגדל של 38 קומות", "בבנייה"], "h": "שיכון ובינוי בשדה דב והרובע שנבנה סביבו", "subname": "הפרויקט של שיכון ובינוי"}
+ },
+ "pages": {
+  "4748": ["4743", "4749", "4750"],
+  "4743": ["4748", "4749", "4750"],
+  "4749": ["4748", "4743", "4750"],
+  "4750": ["4748", "4743", "4749"]
+ }
+}
