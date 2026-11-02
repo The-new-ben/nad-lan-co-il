@@ -283,6 +283,11 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Ashdar Einstein is shown for the city Sderot ("פרויקטים חדשים בשדרות", 114 impressions, position 49 to 60). Check the page's own use of "שדרות" (boulevard); report it, and change wording only if it is a real mistake.
     - DUO gets "dou" (13) and "duo tel aviv price" (5).
     - YOO gets "מגדלי יו מבפנים".
-- [ ] **R10c NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
+- [ ] **R10c WAITS FOR BEN'S LOOK (v106.6, 2.11 evening).** Ben on v106.5: "make it marketing, something that promotes the project; no sources and dates on everything; price ranges, according to public sources; don't commit; nothing that puts people off". Redesigned in Claude Design v106.6 (design system version 269):
+  - the page's project is the hero card: approximate pills and one price range, "לפי פרסומים גלויים";
+  - up to 3 neighbours as small link cards, with no price;
+  - one quiet line: "בקירוב, לפי פרסומים גלויים, ואינם הצעת מחיר".
+  Shots: scratchpad `nb106-6-390.png` and `nb106-6-desktop.png`, sent to Ben. It is built only on his yes.
+- Original R10c: **NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
 - [ ] **R10d Languages (R8)**, continued one project a day.
 - [ ] **R10e Monthly cannibalization check:** `cannibal_check.py` on the full site, with the results to Linear.
