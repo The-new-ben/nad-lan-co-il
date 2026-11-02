@@ -187,7 +187,7 @@
     - Each is its own `nadlan_project` post with an English title and its own English article.
     - Its meta is almost empty (only claim_status).
     - Their facts agree with the sources: park-bavli-en says 2 towers of 44 floors, which is a further reason for the Hebrew fixes in R3b.
-  - **Prepared 2.11:** the English SEVEN SEAS article is ready: `briefs/seven-seas.en.article.html`, 640 words, every number from the brief, no long dash (ChatGPT: https://chatgpt.com/c/6ae83770-5f08-83eb-bf93-236061f90ff2). FR, RU and AR follow. The page goes live on 3.11.
+  - **Prepared 2.11:** the English SEVEN SEAS article is ready: `briefs/seven-seas.en.article.html`, 640 words, every number from the brief, no long dash (ChatGPT: https://chatgpt.com/c/6ae83770-5f08-83eb-bf93-236061f90ff2). The French article is ready too: `briefs/seven-seas.fr.article.html`, 615 words, every number from the brief; the only numbers the check flagged were French thousands written with a space, 2 200, 3 500 and 80 000, which are correct (ChatGPT: https://chatgpt.com/c/6ae840cc-bfb4-83eb-a7e9-4ca69968b515). RU and AR follow. The page goes live on 3.11.
   - **The new language pages follow the same pattern:** a separate post per language, the article written by ChatGPT from the same sourced brief, and the slug `<slug>-en|fr|ru|ar`. The hreflang map is rebuilt by `scripts/build-project-hreflang-artifact.mjs`.
   - **How language pages work** (read 2.11 night):
     - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
