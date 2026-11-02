@@ -188,6 +188,13 @@
     - Its meta is almost empty (only claim_status).
     - Their facts agree with the sources: park-bavli-en says 2 towers of 44 floors, which is a further reason for the Hebrew fixes in R3b.
   - **Prepared 2.11:** the English SEVEN SEAS article is ready: `briefs/seven-seas.en.article.html`, 640 words, every number from the brief, no long dash (ChatGPT: https://chatgpt.com/c/6ae83770-5f08-83eb-bf93-236061f90ff2). The French article is ready too: `briefs/seven-seas.fr.article.html`, 615 words, every number from the brief; the only numbers the check flagged were French thousands written with a space, 2 200, 3 500 and 80 000, which are correct (ChatGPT: https://chatgpt.com/c/6ae840cc-bfb4-83eb-a7e9-4ca69968b515). Russian is ready too: `briefs/seven-seas.ru.article.html`, 629 words, clean (ChatGPT: https://chatgpt.com/c/6ae84a2b-87d4-83ed-84eb-9262f15a91e2). Arabic is ready too: `briefs/seven-seas.ar.article.html`, 661 words, clean (ChatGPT: https://chatgpt.com/c/6ae8538e-68fc-83eb-a154-692f5e35d662). One fix: ChatGPT had written "including VAT" on the 28 signed contracts, which the brief does not state, so it was removed. All four languages are ready; the pages go live on 3.11.
+  - [x] **SEVEN SEAS in four languages, live 2.11 afternoon** (posts 8748-8751): https://nad-lan.co.il/projects/seven-seas-en/ , -fr/, -ru/, -ar/.
+    - Created by `scripts/project-stage/lang_page_create.py`, which runs the same number check against the brief.
+    - All five pages carry the full hreflang cluster (he, en, fr, ru, ar, x-default), with the right lang and dir, and one H1.
+    - Checked at 390 px: EN and AR (`docs/qa/gap-pages/seven-seas-en-390.jpg`, `seven-seas-ar-390.jpg`).
+    - **Findings (old, site-wide, not caused by this work):**
+      - every English project page still shows a Hebrew "מחשבונים וכלים" block (gindi-vogue-sde-dov-en has it too);
+      - language pages carry no FAQPage schema, because the emitter reads only the Hebrew "שאלות נפוצות" heading.
   - **The new language pages follow the same pattern:** a separate post per language, the article written by ChatGPT from the same sourced brief, and the slug `<slug>-en|fr|ru|ar`. The hreflang map is rebuilt by `scripts/build-project-hreflang-artifact.mjs`.
   - **How language pages work** (read 2.11 night):
     - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
@@ -212,10 +219,9 @@
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1804, price list at 6314, kit at 8424. One H1, no sideways scroll, no raw shortcode.
   - **Evidence:** `docs/qa/gap-pages/shbiro-2468-top-390.jpg`.
   - **That is the second new page for 2.11; the next one waits for 3.11.**
-- [ ] **R7d EINSTEIN 15 page, /projects/levi-55/ (goes live 3.11; prepared on the night of 2.11).**
-  - The slug passes, and the title passes `kw_guard`.
-  - The spec and 11 sourced facts are ready (`briefs/levi-55.spec.json`, `briefs/levi-55.facts.json`). The sponsored ynet source is marked "תוכן ממומן".
-  - Location from the address registry: Einstein 15, block 6884, parcel 48 (32.112534, 34.788462).
-  - **The article is ready:** `briefs/levi-55.article.html`, 596 words, blacklist clean, every number from the brief. Three phrases "לא פורסם בפרסומים שנקראו" became "טרם פורסם". (ChatGPT: https://chatgpt.com/c/6ae7f15a-61a0-83eb-b6a3-5b806b8fae69)
-  - **Next, on 3.11:** `gap_page_create.py`, then the radius data and the facts in one release, then check at 390 px.
+- [x] **R7d EINSTEIN 15 page** (2.11 afternoon, Ben: "proceed"). Live: https://nad-lan.co.il/projects/levi-55/ (post 8747).
+  - **Release 1.72.567, released and verified:**
+    - 11 sourced facts;
+    - the price list: 27 deals within 500 m, median about 43,700 ₪/m², and the official median for Nofei Yam, 5,277,400 ₪ (Q1 2026).
+  - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1849, price list at 6465, kit at 8549. One H1, no sideways scroll, no raw shortcode.
 - [ ] **Next gap pages, at most two a day:** seven-seas and shbiro-2468 done 2.11; next levi-55 (3.11), levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
