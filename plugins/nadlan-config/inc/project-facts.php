@@ -40,7 +40,12 @@ add_shortcode( 'nadlan_project_facts', function ( $atts ) {
 		$h  .= '<dt>' . esc_html( (string) $r['k'] ) . '</dt><dd><b>' . esc_html( (string) $r['v'] ) . '</b>'
 			. ( ! empty( $r['url'] ) ? '<a class="nlfx-s" href="' . esc_url( (string) $r['url'] ) . '" target="_blank" rel="noopener">' . $src . '</a>' : '<span class="nlfx-s">' . $src . '</span>' ) . '</dd>';
 	}
-	$h .= '</dl></section>';
+	$h .= '</dl>';
+	// 1.72.568 (Ben 2.11.2026, Claude Design v106.4): one quiet line, the data rests on public sources, and an error can be reported
+	// by email (not WhatsApp: its buttons and messages are Ben's and stay as they are)
+	$subj = rawurlencode( 'טעות בנתונים: ' . wp_strip_all_tags( get_the_title( $id ) ) );
+	$h .= '<p class="nlfx-note">הנתונים בטבלה מבוססים על פרסומים גלויים, עם קישור למקור בכל שורה. מצאתם טעות? <a href="mailto:info@nad-lan.co.il?subject=' . $subj . '">כתבו לנו</a></p>';
+	$h .= '</section>';
 	return $h;
 } );
 
@@ -60,5 +65,6 @@ add_action( 'wp_head', function () {
 		. 'html body .nlfx dl.nlfx-dl dd{display:grid;gap:4px;justify-items:start}'
 		. '.nlfx dd b{font:600 15.5px/1.4 "Noto Serif Hebrew",Georgia,serif;color:var(--ink)}'
 		. 'html body .nlfx .nlfx-s{font:600 11.5px/1.3 Assistant,sans-serif!important;padding:2px 8px;border-radius:999px;background:' . $t . ';color:var(--ink)!important;text-decoration:none!important}'
+		. 'html body .nlfx p.nlfx-note{font-size:12.5px!important;line-height:1.5!important;color:var(--ink2)!important}html body .nlfx p.nlfx-note a{color:var(--sea)!important;text-decoration:underline!important;text-underline-offset:2px}'
 		. '</style>';
 }, 30 );

@@ -4640,3 +4640,5 @@ RELEASE LOCK 1.72.566 (RadiusSourceNote, HAD-654 R6c: inc/radius-prices.php swap
 RELEASE DONE 1.72.566 (RadiusSourceNote) by Claude [Grok/compounds session f8200c1d] 2.11.2026 02:23: released and verified, health 1.72.566. Lock released.
 RELEASE LOCK 1.72.567 (Einstein15Data, HAD-654 R7d: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8747) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 15:31.
 RELEASE DONE 1.72.567 (Einstein15Data) by Claude [Grok/compounds session f8200c1d] 2.11.2026 15:53: released and verified, health 1.72.567. Lock released.
+RELEASE LOCK 1.72.568 (SourcesNote, Ben 2.11: inc/project-facts.php swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 2.11.2026 16:22.
+RELEASE DONE 1.72.568 (SourcesNote): released and verified (deploy-result-568.json), live health 1.72.568. Lock released. Claude [f8200c1d, Opus 5.5] 2.11.2026.
