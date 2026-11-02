@@ -49,6 +49,20 @@ add_shortcode( 'nadlan_project_facts', function ( $atts ) {
 	return $h;
 } );
 
+// 1.72.569 (HAD-654 R10a, 2.11.2026): the only FAQPage emitter for these pages (inc/instruments.php) runs where a calculator kit is
+// embedded, so a radius page without a kit (Shikun & Binui, Migdalei Hayam) showed its "שאלות נפוצות" with no schema. Here: a page
+// with a facts entry and no kit gets one FAQPage from its own visible questions; every other page is left as it is.
+add_action( 'wp_head', function () {
+	if ( ! is_singular( 'nadlan_project' ) || ! function_exists( 'nadlan_nli_faq' ) || ! function_exists( 'nadlan_nli_page_ids' ) ) { return; }
+	$id = (int) get_queried_object_id();
+	$d  = nadlan_pfx_data();
+	if ( empty( $d[ (string) $id ] ) || nadlan_nli_page_ids() ) { return; }
+	$p   = get_post( $id );
+	$faq = $p ? nadlan_nli_faq( $p->post_content ) : array();
+	if ( ! $faq ) { return; }
+	echo '<script type="application/ld+json" id="nadlan-pfx-faq">' . wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'url' => get_permalink( $id ), 'mainEntity' => $faq ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}, 31 );
+
 add_action( 'wp_head', function () {
 	if ( ! is_singular() ) { return; }
 	$p = get_post();
