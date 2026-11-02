@@ -183,6 +183,11 @@
   - **Start:** 3.11, by day.
   - **Which pages lack an English version** (checked 2.11, 08:30): einstein-19, ashdar-einstein, migdalei-hayam-sde-dov, marina-towers-herzliya, h-infinity-somail-tel-aviv, akirov-towers and first-sde-dov, then the new pages (philharmonit, reading-31-33, seven-seas, shbiro-2468, levi-55). Zohi already has its language pages (the earlier note was wrong).
   - **Order:** seven-seas first (over 60% of its buyers are foreign residents), then first-sde-dov, h-infinity, akirov, then the rest.
+  - **The existing English pages** (read 2.11, read-only; for example gindi-vogue-sde-dov-en, post 5903, and park-bavli-en, post 5911):
+    - Each is its own `nadlan_project` post with an English title and its own English article.
+    - Its meta is almost empty (only claim_status).
+    - Their facts agree with the sources: park-bavli-en says 2 towers of 44 floors, which is a further reason for the Hebrew fixes in R3b.
+  - **The new language pages follow the same pattern:** a separate post per language, the article written by ChatGPT from the same sourced brief, and the slug `<slug>-en|fr|ru|ar`. The hreflang map is rebuilt by `scripts/build-project-hreflang-artifact.mjs`.
   - **How language pages work** (read 2.11 night):
     - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
     - Everything outside the article is translated at render time from `i18n/lang-pages.json`, built by `scripts/i18n/build_lang_pages.py`.
