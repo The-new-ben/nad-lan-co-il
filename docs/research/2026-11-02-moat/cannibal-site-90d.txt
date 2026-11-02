@@ -1,0 +1,31 @@
+queries where 2+ of our pages compete (>= 10 impressions each): 219
+  1275 | פרויקטים חדשים | /projects i1196 c0 p35 ; / i26 c0 p77 ; /city/תל אביב יפו/projects i24 c0 p95 ; /city/ירושלים/projects i15 c0 p64
+   818 | פרויקטים חדשים בתל אביב | /projects i671 c0 p36 ; /city/תל אביב יפו/projects i88 c0 p77 ; /new-projects/new-projects-tel-aviv i59 c0 p58
+   655 | פרויקטים חדשים תל אביב | /projects i554 c0 p31 ; /city/תל אביב יפו/projects i71 c0 p72 ; /new-projects/new-projects-tel-aviv i30 c0 p73
+   648 | דירות חדשות בתל אביב | /projects i540 c0 p41 ; /city/תל אביב יפו/projects i75 c0 p73 ; /new-projects/new-projects-tel-aviv i33 c0 p61
+   560 | נדלן | / i253 c2 p53 ; /properties i161 c0 p84 ; /projects i57 c0 p37 ; /projects/זוגות-צעירים i40 c0 p37
+   539 | דירות מקבלן | /projects i488 c0 p32 ; /developer-deals i30 c0 p90 ; / i21 c0 p81
+   499 | פרויקטים בתל אביב | /projects i379 c0 p35 ; /city/תל אביב יפו/projects i69 c0 p74 ; / i34 c0 p68 ; /new-projects/new-projects-tel-aviv i17 c0 p76
+   454 | פרויקטים חדשים בראשון לציון | /city/ראשון לציון/projects i251 c0 p27 ; /projects i181 c0 p52 ; /city/ראשון-לציון/projects i22 c0 p91
+   451 | מחשבון קניית דירה | /apartment-purchase-cost-calculator i155 c0 p50 ; /buy-or-rent i124 c0 p79 ; /purchase-tax-calculator i72 c0 p67 ; /mortgage-calculator i68 c0 p81
+   435 | דירות חדשות למכירה | /projects i327 c0 p48 ; / i68 c0 p62 ; /developer-deals i28 c0 p82 ; /new-projects/new-projects-tel-aviv i12 c0 p56
+   420 | פרויקטים חדשים מחירים | /projects i166 c0 p31 ; /new-projects/new-projects-tel-aviv i70 c0 p16 ; /projects/העלייה-השנייה i66 c0 p27 ; / i50 c0 p27
+   388 | דירות חדשות | /projects i327 c0 p55 ; / i61 c0 p81
+   386 | פרויקטים חדשים ברמת גן | /city/רמת-גן/projects i150 c0 p28 ; /city/רמת גן/projects i149 c0 p21 ; /city/רמת-גן i45 c0 p69 ; /projects i42 c0 p54
+   371 | פרויקטים חדשים בדרום | /projects i246 c0 p37 ; / i40 c0 p72 ; /city/אשקלון/projects i30 c0 p53 ; /city/לוד/projects i24 c0 p75
+   370 | דירות מקבלן בתל אביב | /projects i276 c0 p44 ; /city/תל אביב יפו/projects i35 c0 p76 ; /new-projects/new-projects-tel-aviv i24 c0 p54 ; / i22 c0 p65
+   364 | דירה חדשה מקבלן | /projects i343 c0 p36 ; /developer-deals i21 c0 p95
+   361 | דירות חדשות מקבלן | /projects i318 c0 p51 ; /developer-deals i43 c0 p88
+   353 | פרויקטים חדשים במרכז | /projects i326 c0 p39 ; /city/תל אביב יפו/projects i27 c0 p72
+   330 | פרויקטים בהתחדשות עירונית | /urban-renewal/map i226 c0 p67 ; /projects i104 c0 p51
+   308 | פרויקטים תל אביב | /projects i246 c0 p30 ; /city/תל אביב יפו/projects i62 c0 p70
+   304 | קניית דירה | /buying-apartment i191 c0 p50 ; /investment i103 c0 p84 ; / i10 c0 p91
+   299 | פרויקטים חדשים בצפון הישן תל אביב | /projects i287 c0 p46 ; /city/תל אביב יפו/projects i12 c0 p73
+   297 | פרויקטים חדשים בבאר שבע | /projects i243 c0 p34 ; /city/באר-שבע/projects i31 c0 p64 ; /city/באר-שבע i23 c0 p89
+   295 | פרויקטים חדשים למגורים | /new-projects/new-projects-tel-aviv i194 c0 p15 ; /projects i101 c0 p46
+   293 | דירות למכירה בשדה דב | /sde-dov i190 c0 p36 ; /sde-dov/prices i103 c0 p16
+   284 | פרויקט דירות | /projects i200 c0 p42 ; /projects/יפת i35 c0 p42 ; /developer-deals i28 c0 p34 ; / i21 c0 p68
+   279 | פרויקטים על הנייר | /projects i166 c0 p48 ; / i90 c0 p64 ; /site-map i23 c0 p90
+   277 | דירות להשקעה | /investment i236 c0 p56 ; /properties i26 c0 p53 ; / i15 c0 p57
+   276 | פרויקטים פינוי בינוי | /urban-renewal/map i215 c0 p44 ; /projects i61 c0 p46
+   274 | פרויקטים חדשים בתל אביב מחירים | /projects i184 c0 p40 ; /projects/יפו i56 c0 p82 ; /city/תל אביב יפו/projects i34 c0 p43

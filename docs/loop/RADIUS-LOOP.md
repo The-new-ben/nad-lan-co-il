@@ -268,7 +268,7 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - The stage emitter takes the first 12 pairs, so the last question ("אילו תכניות סמוכות") stays visible but is out of the schema.
     - Checked live: one H1, one FAQPage (`nadlan-ps-faq`, 12 questions), H1 before the lead, no "שאלות ותשובות" left. Checked by eye at 390 px (`faq-duo-390.png`).
     - **Finding, not fixed (language-dna):** DUO's older answers and its disclosure use the internal word "בדוסייה" (for example, "רשומת ההיתר בדוסייה"). It should become "במקורות". That is a text pass on one page, for a later tick.
-- [ ] **R10b Intent wrap per page.** Collect the name variants (Hebrew and English spellings), developer + area, price and address intents, from Search Console plus DataForSEO related keywords. Use them in H2s and FAQ under `kw_guard`, and never lead with a protected term.
+- [x] **R10b Intent wrap per page (closed 2.11 evening for the pages with demand).** Collect the name variants (Hebrew and English spellings), developer + area, price and address intents, from Search Console plus DataForSEO related keywords. Use them in H2s and FAQ under `kw_guard`, and never lead with a protected term.
   - **Research, 2.11 evening** (`docs/research/2026-11-02-moat/intents-90d.json`; Search Console, 3.8 to 1.11, every radius page plus DUO).
     - Demand is thin: 11 of 19 pages had 0 to 5 impressions in 90 days.
     - The wrap matters where people search: DUO 796, Ashdar Einstein 151, H INFINITY 118, Migdalei Hayam 102, YOO 44.
@@ -279,7 +279,12 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - kw_guard warned on "שדה דב" and "דירות" inside a question. That is allowed as a phrase after the page's own topic, and no second URL competes.
     - Checked live: one H1, one FAQPage (`nadlan-pfx-faq`) with 14 questions. Checked by eye at 390 px (`faq-mh-390.png`).
     - **Findings, not changed:** the FAQ says Clal holds "כ-60% מההון", while the facts table (פאנדר 27.3.2025) says 51/49. That needs a source check. "בקו ראשון לים" (plot 150) is also unchecked.
-  - [ ] **Next:**
+  - [x] **Ashdar Einstein checked (2.11 evening): no change.** The page never says "שדרות" (0 times, title and description included). Google pairs the name "אשדר" (it contains "שדר") with the menu's generic "פרויקטים חדשים", so the page shows at position 49 to 60 for "פרויקטים חדשים בשדרות", with no clicks lost. This is a finding only.
+  - **Left, too small to act on:**
+    - DUO "dou" (13): the page already names "מגדלי DOU סמל דרום" in its developer section.
+    - "duo tel aviv price" (5): an English query.
+    - YOO "מגדלי יו מבפנים" (3): no interior photos exist.
+  - Original next-steps list:
     - Ashdar Einstein is shown for the city Sderot ("פרויקטים חדשים בשדרות", 114 impressions, position 49 to 60). Check the page's own use of "שדרות" (boulevard); report it, and change wording only if it is a real mistake.
     - DUO gets "dou" (13) and "duo tel aviv price" (5).
     - YOO gets "מגדלי יו מבפנים".
@@ -290,4 +295,12 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
   Shots: scratchpad `nb106-6-390.png` and `nb106-6-desktop.png`, sent to Ben. It is built only on his yes.
 - Original R10c: **NEW component "Compare with the neighbours."** A side-by-side of three or four nearby projects, each figure with its source and date (data: project-facts.json). Nobody else compares with sourced figures. Claude Design first.
 - [ ] **R10d Languages (R8)**, continued one project a day.
-- [ ] **R10e Monthly cannibalization check:** `cannibal_check.py` on the full site, with the results to Linear.
+- [x] **R10e Monthly cannibalization check:** `cannibal_check.py` on the full site, with the results to Linear.
+  - **First run, 2.11 evening** (Search Console 3.8 to 1.11, 9,740 rows; `docs/research/2026-11-02-moat/cannibal-site-90d.txt`).
+    - 219 queries have 2+ of our pages, each with at least 10 impressions.
+    - **Tel Aviv head terms:** `/projects/`, `/city/תל אביב יפו/projects` and `/new-projects/new-projects-tel-aviv/` compete on "פרויקטים חדשים בתל אביב" (818), "דירות חדשות בתל אביב" (648), "פרויקטים בתל אביב" (499) and more. `/new-projects/new-projects-tel-aviv/` ranks best on "פרויקטים חדשים מחירים" (16) and "פרויקטים חדשים למגורים" (15).
+    - **Twin city URL forms:** `/city/רמת-גן/projects` and `/city/רמת גן/projects` (150 + 149 impressions, positions 28 and 21), and the same for ראשון לציון and באר שבע.
+    - **Sde Dov:** `/sde-dov/` and `/sde-dov/prices/` share "דירות למכירה בשדה דב" (190 + 103).
+    - **Radius project pages:** no real competition between them.
+    - Reported only, in HAD-663: no redirect, no URL change, no canonical change without Ben.
+  - **Next run: 2.12.**
