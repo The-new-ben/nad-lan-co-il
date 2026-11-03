@@ -1,0 +1,78 @@
+{
+ "he-m": {
+  "scrollWidth": 390,
+  "order": {
+   "h1": 104,
+   "answer": 223,
+   "cta": 486,
+   "hero": 669,
+   "check": 1217,
+   "map": 5545
+  },
+  "check": "אסבסט פריך או מפגע: מטפלים רק בידי מורשה",
+  "cost": "₪2,000",
+  "who": "איגוד ערים מפרץ חיפה",
+  "canvas": 1,
+  "errors": [
+   "console:Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS ",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "he-d": {
+  "scrollWidth": 1366,
+  "order": {
+   "h1": 147,
+   "answer": 268,
+   "cta": 489,
+   "hero": 600,
+   "check": 1298,
+   "map": 4706
+  },
+  "check": "אסבסט פריך או מפגע: מטפלים רק בידי מורשה",
+  "cost": "₪2,000",
+  "who": "איגוד ערים מפרץ חיפה",
+  "canvas": 1,
+  "errors": [
+   "console:Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS ",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "en-m": {
+  "scrollWidth": 390,
+  "order": {
+   "h1": 121,
+   "answer": 306,
+   "cta": 623,
+   "hero": 878,
+   "check": 1503,
+   "map": 6787
+  },
+  "check": "Friable asbestos or a hazard: only a licensed professional deals with it",
+  "cost": "₪2,000",
+  "who": "איגוד ערים מפרץ חיפה",
+  "canvas": 1,
+  "errors": [
+   "console:Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS ",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "en-d": {
+  "scrollWidth": 1366,
+  "order": {
+   "h1": 152,
+   "answer": 324,
+   "cta": 578,
+   "hero": 708,
+   "check": 1449,
+   "map": 5217
+  },
+  "check": "Friable asbestos or a hazard: only a licensed professional deals with it",
+  "cost": "₪2,000",
+  "who": "איגוד ערים מפרץ חיפה",
+  "canvas": 1,
+  "errors": [
+   "console:Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS ",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}

@@ -4654,3 +4654,9 @@ RELEASE LOCK 1.72.573 (SpotlightZohiMigdalei, HAD-654 R10c: data/neighbour-spotl
 RELEASE DONE 1.72.573 (SpotlightZohiMigdalei): released and verified (deploy-result-573.json), 922 checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 09:08.
 RELEASE LOCK 1.72.574 (SpotlightAreaField, HAD-654 R10c: inc/neighbour-compare.php swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 09:10.
 RELEASE DONE 1.72.574 (SpotlightAreaField): released and verified (deploy-result-574.json), 927 checks OK, Sde Dov pages unchanged. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 09:23.
+
+RELEASE LOCK 1.72.575 (AsbestosTools, HAD-668 R11e: new inc/asbestos-tools.php + new assets/instruments/tools/asbestos.js + new assets/instruments/data/asbestos.json, one hunk on the live inc/instruments.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 20:40.
+RELEASE DONE 1.72.575 (AsbestosTools): released and verified (project-stage-2026-09-24/deploy-result-575.json), 932 page checks OK, existing tool pages unchanged. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 20:53.
+
+RELEASE LOCK 1.72.576 (AsbestosLabels, HAD-668 R11e: inc/asbestos-tools.php + assets/instruments/tools/asbestos.js swapped whole, both written by 1.72.575) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 20:54.
+RELEASE DONE 1.72.576 (AsbestosLabels): released and verified (project-stage-2026-09-24/deploy-result-576.json), 934 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 21:12.

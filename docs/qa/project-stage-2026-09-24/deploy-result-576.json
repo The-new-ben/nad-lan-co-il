@@ -1,0 +1,19 @@
+{
+  "released": "1.72.576",
+  "from": "1.72.575",
+  "live_before": {
+    "inc/asbestos-tools.php": "1940e600adc8cc381e928940d4795598",
+    "assets/instruments/tools/asbestos.js": "43f40ba40dafa2051d612a5c6281858a",
+    "nadlan-config.php": "6d62c8197c7ea0f092de98e8358e7818"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-03 21:11:11",
+  "files": {
+    "inc/asbestos-tools.php": "ca9181af88135e4890de1a13ce836d43",
+    "assets/instruments/tools/asbestos.js": "b6cf81ff9688873a4fba837d74a711ea",
+    "nadlan-config.php": "a1d95f68070bd955220ba056f96e6e10"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.576, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

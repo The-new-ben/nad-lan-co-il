@@ -1028,3 +1028,6 @@ require_once __DIR__ . '/pinkas.php';
 
 /* 1.72.533 (G5): the [nadlan_rent_listings] shortcode of /דירות-להשכרה/; loaded only if present, so a rollback that removes it leaves this file working */
 if ( file_exists( __DIR__ . '/rent-listings.php' ) ) { require_once __DIR__ . '/rent-listings.php'; }
+
+/* 1.72.575 (HAD-668): the asbestos page tools (asbcheck, asbcost, asbmap, asbwho); loaded only if present, so a rollback that removes it leaves this file working */
+if ( file_exists( __DIR__ . '/asbestos-tools.php' ) ) { require_once __DIR__ . '/asbestos-tools.php'; }

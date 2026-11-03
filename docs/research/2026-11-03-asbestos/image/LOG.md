@@ -1,0 +1,4 @@
+- 2026-11-03 20:16 | google/gemini-nano-banana-2.1 | cut-gemini-nano-banana-2.1-201600.png | 10s | cost 0.037938
+- 2026-11-03 20:16 | google/gemini-nano-banana-2.1 | roof-gemini-nano-banana-2.1-201600.png | 10s | cost 0.036921
+- 2026-11-03 20:16 | google/gemini-nano-banana-2.1 | cut2-gemini-nano-banana-2.1-201631.png | 11s | cost 0.039333
+- 2026-11-03 20:16 | google/gemini-3-pro-image | cut2-gemini-3-pro-image-201644.png | 23s | cost 0.13989
