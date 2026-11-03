@@ -1,0 +1,706 @@
+[
+ {
+  "topic": "law",
+  "fact": "The Prevention of Asbestos and Harmful Dust Hazards Law 5771-2011 entered into force in August 2011; it bans new uses of asbestos in construction, sets target dates for removing asbestos from use, regulates licensing of asbestos operators and defines maintenance of existing asbestos in public buildings.",
+  "value": "in force August 2011",
+  "source_name": "Ministry of Environmental Protection (MoEP) - חוק למניעת מפגעי אסבסט ואבק מזיק ותקנותיו",
+  "source_url": "https://www.gov.il/he/pages/prevention_of_hazards_from_asbestos_and_harmful_dust_law",
+  "source_date": "published 10.07.2018, updated 11.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Main provisions per MoEP: ban on any new use of asbestos of any type; duty to remove friable asbestos in use within ten years (industry and public buildings) and from IDF installations and equipment within seven years; maintenance duties for asbestos-cement in public buildings (painting, mapping, registration); ban on causing an asbestos hazard; licensing of asbestos contractors, asbestos inspectors, laboratories and surveyors; duty to obtain permits for asbestos work; enforcement powers, monetary sanctions (עיצומים כספיים) and penal sections.",
+  "value": "friable removal: 10 years (IDF: 7 years)",
+  "source_name": "MoEP - law summary page",
+  "source_url": "https://www.gov.il/he/pages/prevention_of_hazards_from_asbestos_and_harmful_dust_law",
+  "source_date": "updated 11.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Regulations under the law listed by MoEP: (1) Exemption from licence and permit for asbestos work and prevention of conflict of interest regulations 5771-2011, amended 5784-2024; (2) Reduction of monetary sanction amount and payment instalments regulations 5772-2011; (3) Application for an asbestos operator licence and additional conditions regulations 5773-2012; (4) Order on asbestos-like product 5776-2016.",
+  "value": "3 regulations + 1 order",
+  "source_name": "MoEP - law summary page",
+  "source_url": "https://www.gov.il/he/pages/prevention_of_hazards_from_asbestos_and_harmful_dust_law",
+  "source_date": "updated 11.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "The exemption regulations allow a person to carry out limited dismantling/removal of asbestos-cement sheets or an asbestos-cement pipe and to dispose of an asbestos product without an asbestos work permit and without hiring an asbestos contractor, subject to the conditions in the regulations (the regulations also include the form of the notice on limited asbestos work).",
+  "value": "limited-work exemption",
+  "source_name": "MoEP - law summary page",
+  "source_url": "https://www.gov.il/he/pages/prevention_of_hazards_from_asbestos_and_harmful_dust_law",
+  "source_date": "updated 11.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "The law set a duty to remove friable asbestos in Israel within up to 10 years (i.e. by August 2021) and imposes strict limits on continued use of a building until removal.",
+  "value": "deadline August 2021",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Limited asbestos work and disposal of an asbestos product, as defined in the exemption regulations 5771-2011, may be done without a permit and without a contractor and inspector, subject to the regulations; MoEP publishes separate guidelines for limited work and a procedure for packaging asbestos waste.",
+  "value": "exemption exists; thresholds in the regulations",
+  "source_name": "MoEP - מדריך לציבור (tab: הנחיות לעבודה מצומצמת)",
+  "source_url": "https://www.gov.il/he/pages/asbestos_guide_for_public?chapterIndex=3",
+  "source_date": "updated 02.09.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Asbestos-cement products installed before the law came into force (August 2011) may continue to be used; exposed friable asbestos had to be removed by August 2021 at the latest; since 1991 it is forbidden to import vehicles with asbestos-containing parts into Israel. Every construction work with asbestos, including dismantling an asbestos-cement roof, requires a permit from the MoEP commissioner before work; the request is filed by the client through a licensed asbestos contractor; works end with air-fibre measurements by an accredited lab.",
+  "value": "vehicle-parts import ban since 1991; permit before any asbestos construction work",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Disposal of an asbestos-cement product (e.g. a planter or pot) weighing up to 700 kg is allowed per MoEP guidelines: wet it, wrap in two layers of 0.15 mm polyethylene, seal with tape, label with an asbestos warning sign, and take it to a licensed asbestos waste site or ask the local authority for instructions.",
+  "value": "up to 700 kg; 2 x 0.15 mm polyethylene",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "2024 amendment of the exemption regulations (Kovetz Takanot 11217) adds 'low-risk work' (עבודה בסיכון נמוך) by a licensed contractor without an MoEP work permit, with advance notice, under conditions: dismantling asbestos-cement sheets of total area up to 500 m² or asbestos-cement pipe up to 100 m in a building intended for demolition or an open shed; removing a pile of intact asbestos-cement waste up to 500 m² of sheets or 5 tons of another asbestos-cement product. The notice must include at least two photos, a sketch of the site and surroundings within 50 m and a signed declaration of the contractor's worker in charge; a notice must be posted on the property and on properties within 50 m at least two days before work; within 50 m of a public place, work must be timed when nobody is there.",
+  "value": "500 m² sheets / 100 m pipe / 5 t; notice 2 days ahead; 50 m radius",
+  "source_name": "קובץ התקנות 11217 - תקנות למניעת מפגעי אסבסט ואבק מזיק (פטור מרישיון ומהיתר לעבודת אסבסט ומניעת ניגוד עניינים)(תיקון), התשפ\"ד-2024 (copy hosted by osh.org.il)",
+  "source_url": "https://osh.org.il/UploadedImages//07_2024/kt_11217.pdf",
+  "source_date": "2024 (read 3.11.2026); in-force date not checked"
+ },
+ {
+  "topic": "law",
+  "fact": "The law focuses on removing asbestos from public buildings, not private ones, but its rules for asbestos work apply to private buildings too. There is no mapping or reporting duty for private buildings, so neither MoEP nor any other authority holds comprehensive data on asbestos in private buildings; public-building owners must map/survey but do not report to a central body.",
+  "value": "no national inventory of private buildings",
+  "source_name": "Knesset Research and Information Center (17.7.2023)",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "law",
+  "fact": "Where asbestos to be removed exceeds 50 m², the law requires hiring a licensed contractor to dismantle, remove, transport and landfill it, at the owner's cost (plus roof replacement if it is a roof). 'Limited work' covers asbestos areas smaller than 50 m² done by a contractor; a different kind of limited work is done by the property owner and needs no work permit. Limited and low-risk works do not require a surveyor for sampling.",
+  "value": "50 m² threshold",
+  "source_name": "Knesset Research and Information Center (17.7.2023), pp. 2, 9, 12",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "law_owner_duties",
+  "fact": "Section 11: a person who caused an asbestos hazard, or has reasonable grounds to believe there is one in a place he owns or holds, must take immediate measures (stop fibre release, keep people out except rescue/inspection, prevent removal of objects including waste, report immediately to the commissioner), and must submit a request for an asbestos work permit to remove the hazard within seven days of learning of it. Section 10: no person shall cause an asbestos hazard.",
+  "value": "permit request within 7 days",
+  "source_name": "Nevo - sections 10-11",
+  "source_url": "https://www.nevo.co.il/law_html/law00/76499.htm",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "law_owner_duties",
+  "fact": "After a fire, collapse or illegal dismantling, the property owner must immediately act to stop the hazard and (MoEP FAQ wording) remove it within 7 days at most from learning of it; the law itself (section 11(c)) requires a permit request within seven days. For fire/collapse/wide destruction contact a friable contractor or friable inspector, with the work done by an asbestos-cement contractor.",
+  "value": "7 days",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "law_public_places",
+  "fact": "Section 8: the owner (and holder) of a public place with existing asbestos-cement must keep it intact: paint it within three years of commencement per MoEP guidelines and renew the paint; inspect visually once a year (every three months until painted); where total asbestos-cement area is 1,000 m² or more (or in certain public places) the inspection must be done by an asbestos surveyor; keep a log displayed prominently. Cracks up to one third of the asbestos-cement in a building must be repaired and sealed within 30 days; above one third, report immediately and remove and landfill it within three months (deferral of up to one year possible by the director).",
+  "value": "1,000 m² surveyor threshold; 30 days; 1/3 rule; 3 months",
+  "source_name": "Nevo - section 8",
+  "source_url": "https://www.nevo.co.il/law_html/law00/76499.htm",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "law_penalties",
+  "fact": "Criminal penalties (section 54): six months' imprisonment or a fine per section 61(a)(4) of the Penal Law for tier-1 offences (e.g. failing to survey/map existing friable asbestos, failing to report); one year for tier-2 (e.g. not stopping/removing friable asbestos, not maintaining asbestos-cement in a public place); two years or double that fine for tier-3 (e.g. illegal manufacture/import/use, causing an asbestos hazard, working without a licence or permit, illegal transport or disposal); three years in aggravated circumstances; corporations pay double; continuing offence adds 5% of the fine per day.",
+  "value": "6 months / 1 year / 2 years / 3 years",
+  "source_name": "Nevo - חוק למניעת מפגעי אסבסט ואבק מזיק, התשע\"א-2011, section 54",
+  "source_url": "https://www.nevo.co.il/law_html/law00/76499.htm",
+  "source_date": "version shown on Nevo, read 3.11.2026"
+ },
+ {
+  "topic": "law_penalties",
+  "fact": "Administrative monetary sanctions (section 58) as shown on Nevo: tier (a) NIS 60,900 (corporation NIS 121,800); tier (b) NIS 243,610 (corporation NIS 487,220) - e.g. not removing friable asbestos, not maintaining or not removing damaged asbestos-cement in a public place; tier (c) NIS 487,220 (corporation NIS 974,430) - e.g. causing an asbestos hazard, not taking immediate measures or not applying for a permit to remove a hazard, working without a licence, work requiring a permit done without one, hiring an unlicensed person, illegal transport or disposal of asbestos.",
+  "value": "NIS 60,900 / 243,610 / 487,220 (x2 for corporations)",
+  "source_name": "Nevo - section 58",
+  "source_url": "https://www.nevo.co.il/law_html/law00/76499.htm",
+  "source_date": "version shown on Nevo, read 3.11.2026 (amounts are periodically indexed; confirm against the official Reshumot text before publishing)"
+ },
+ {
+  "topic": "licensing",
+  "fact": "Licence categories offered in the gov.il registry filter: friable asbestos landfilling, asbestos-cement landfilling, friable asbestos inspector, asbestos surveyor, friable asbestos worker in charge, asbestos-cement worker in charge, friable asbestos contractor, asbestos-cement contractor.",
+  "value": "8 categories",
+  "source_name": "gov.il - מרשם העוסקים באסבסט",
+  "source_url": "https://www.gov.il/he/Departments/DynamicCollectors/asbest_list?skip=0&limit=10",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "licensing",
+  "fact": "Licence holder types defined in chapter E of the law: asbestos contractor, worker in charge, friable asbestos inspector, analysis laboratory, sampling laboratory and asbestos sampler, asbestos surveyor, asbestos waste site operator. MoEP recognises two private training institutions for courses for contractors and inspectors.",
+  "value": "7 licence families; 2 recognised training institutions",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "registry",
+  "fact": "The MoEP public registry of asbestos licence holders ('מרשם העוסקים באסבסט') is searchable on gov.il (filters: licence type) and published on data.gov.il as a CSV (datastore API, no login). On 3.11.2026 the data.gov.il copy held 453 records: 168 asbestos-cement workers in charge, 115 asbestos-cement contractors, 109 asbestos surveyors, 30 friable workers in charge, 16 friable asbestos inspectors, 15 friable asbestos contractors. The gov.il search page also showed 453 results. Fields: licence type, number, name, phones, email, address, locality, district, licence expiry, disciplinary record, employer/contractor, additional terms.",
+  "value": "453 licences (115 AC contractors; 15 friable contractors; 109 surveyors)",
+  "source_name": "data.gov.il - מרשם העוסקים באסבסט (MoEP)",
+  "source_url": "https://data.gov.il/dataset/asbest",
+  "source_date": "dataset modified 03.11.2026; gov.il page updated 25.01.2026 (counted 3.11.2026)"
+ },
+ {
+  "topic": "registry",
+  "fact": "Registry records by MoEP district on 3.11.2026: Center 132, North 115, South 86, Haifa 44, Tel Aviv 37, Jerusalem 33, blank 6. Records list 157 distinct localities; 79 records carry a disciplinary entry (suspension, reprimand or warning).",
+  "value": "by district; 79 with disciplinary entries",
+  "source_name": "data.gov.il - מרשם העוסקים באסבסט (MoEP)",
+  "source_url": "https://data.gov.il/api/3/action/datastore_search?resource_id=512d916e-07f0-4774-b84a-3a989e45e7eb",
+  "source_date": "dataset modified 03.11.2026 (counted 3.11.2026)"
+ },
+ {
+  "topic": "registry",
+  "fact": "MoEP note on the registry: choosing the 'surveyor' category returns surveyors only, but asbestos-cement workers in charge, friable workers in charge and friable inspectors also have surveyor authority and may carry out an asbestos survey.",
+  "value": "surveyor authority also held by 3 other licence types",
+  "source_name": "gov.il - מרשם העוסקים באסבסט",
+  "source_url": "https://www.gov.il/he/Departments/DynamicCollectors/asbest_list?skip=0&limit=10",
+  "source_date": "page updated 25.01.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "registry",
+  "fact": "In mid-2023 the registry listed 435 people: 95 asbestos surveyors (who are not also contractors or workers), 171 asbestos-cement workers in charge and 32 friable workers in charge - 312 in total authorised to do surveys. Five licence types are issued for dismantling: asbestos-cement contractor, asbestos-cement worker in charge, friable contractor, friable worker in charge, friable inspector; the survey licence is included in all five.",
+  "value": "435 (2023); 312 survey-authorised",
+  "source_name": "Knesset Research and Information Center (17.7.2023), p. 9 (MoEP letter 25.6.2023)",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "permits",
+  "fact": "By law MoEP must decide on an asbestos work permit within 30 days (section 37(d)); per MoEP, in practice permits are issued within about a week and a half, and for an asbestos hazard the same day.",
+  "value": "legal max 30 days; practice ~1.5 weeks; hazard same day",
+  "source_name": "Knesset Research and Information Center (17.7.2023), p. 9",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "permits",
+  "fact": "Asbestos work permits issued per year (chart totals, MoEP data to the Knesset): 2011: 1,491; 2012: 1,839; 2013: 2,103; 2014: 2,260; 2015: 2,445; 2016: 2,392; 2017: 2,231; 2018: 2,406; 2019: 2,690; 2020: 3,134; 2021: 3,295; 2022: 3,031 (the text cites 1,423 for 2011). Friable-asbestos permits per year 2011-2022: 18, 37, 51, 57, 51, 45, 49, 59, 55, 51, 52, 60; asbestos-hazard (incident) permits: 37, 70, 80, 109, 88, 75, 82, 110, 145, 175, 142, 154. The rest are asbestos-cement limited/low-risk and regular/type permits, plus Western Galilee project permits in 2011-2016.",
+  "value": "1,491 (2011) to 3,031 (2022)",
+  "source_name": "Knesset Research and Information Center (17.7.2023), chart 1-2, p. 10",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026; numbers read from chart labels in the PDF text layer)"
+ },
+ {
+  "topic": "permits",
+  "fact": "Permits by MoEP district 2019-2022: the highest total was in the Center district and the lowest in Jerusalem; MoEP has no geographic inventory data, so permits cannot be compared with the stock per district. (Chart 3 values as read from the PDF text layer, per year South/North/Center/Jerusalem/Haifa/Tel Aviv: 2019: 340/614/770/173/292/671; 2020: 534/713/916/226/305/746; 2021: 556/681/960/286/313/704; 2022: 424/634/833/246/270/826 - grouping inferred, verify visually before publishing.)",
+  "value": "Center highest, Jerusalem lowest",
+  "source_name": "Knesset Research and Information Center (17.7.2023), chart 3, p. 12",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "who_to_call",
+  "fact": "MoEP table 'who to contact': asbestos-cement work - asbestos-cement contractor or friable contractor; friable asbestos - friable inspector AND friable contractor; hazard after fire/collapse/wide destruction of asbestos-cement - friable contractor, or friable inspector plus asbestos-cement contractor; building asbestos survey (opinion on condition) - asbestos surveyor or friable inspector or worker in charge; survey to locate/map friable asbestos in an industrial facility - friable inspector; survey for friable asbestos in soil in the Western Galilee - friable inspector or friable contractor; air sampling during/after work - sampling laboratory; analysis of air and bulk samples - analysis laboratory; landfilling - asbestos waste site.",
+  "value": "9-row decision table",
+  "source_name": "MoEP - מדריך לציבור בנושא אסבסט (tab: הזמנת בעל רישיון)",
+  "source_url": "https://www.gov.il/he/pages/asbestos_guide_for_public?chapterIndex=4",
+  "source_date": "published 03.04.2019, updated 02.09.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "public_guidance",
+  "fact": "MoEP recommendations: know which building parts are asbestos-cement (roofs, walls, chimneys, pipes) and keep them maintained; never sand, polish, drill, saw, cut or grind them; if not intact or it must be dismantled, hire a licensed asbestos contractor who applies for an MoEP work permit; paint intact asbestos-cement with a water-resistant paint containing binder per MoEP painting guidelines; report hazards to the local authority or the MoEP environment hotline *6911; near removal works ask to see the MoEP work permit, avoid staying nearby, close windows/doors facing the site and avoid running AC units that draw outside air.",
+  "value": "hotline *6911",
+  "source_name": "MoEP - מדריך לציבור בנושא אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_guide_for_public",
+  "source_date": "updated 02.09.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "surveys",
+  "fact": "MoEP asbestos inspectors and local environmental units / city associations visit public buildings only and give opinions and maintenance recommendations; for a private building you hire a licensed asbestos surveyor for a paid opinion (list in the registry).",
+  "value": "private buildings: paid licensed surveyor",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "identification",
+  "fact": "Definitive identification is by sending a bulk sample (a piece of the material) to an accredited laboratory; until proven otherwise treat suspect material as asbestos; a bulk sample can be taken by yourself per MoEP guidelines or by an asbestos surveyor; the result should state whether it is an asbestos-containing material, the asbestos type and its concentration.",
+  "value": "bulk sample to licensed lab",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "definitions",
+  "fact": "Asbestos is a collective name for a group of 6 fibrous minerals; Israeli law (like Western countries) bans manufacture, import, trade or any new use of asbestos or asbestos waste; asbestos is defined as harmful dust, a hazardous substance and an air pollutant.",
+  "value": "6 minerals",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "published 03.04.2019, updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "definitions",
+  "fact": "Asbestos-cement: a rigid mixture of asbestos and cement (usually about 10% asbestos fibres) used in industrial, public, agricultural and residential buildings: flat or corrugated sheets for roofs and walls, water and sewage pipes, gutters, chimneys, roof tiles, planters and water tanks.",
+  "value": "~10% asbestos fibres",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "definitions",
+  "fact": "Friable asbestos: material containing asbestos (more than 1% by weight) that can be crumbled, pulverised or reduced to powder by hand pressure when dry; used for industrial thermal insulation, acoustic insulation, in vehicles and IDF equipment and in household products (wicks in kerosene heaters, stove-top and lab plates, fire blankets and gloves).",
+  "value": ">1% by weight",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "definitions",
+  "fact": "An asbestos hazard (מפגע אסבסט) is a situation with a risk of public exposure to dust containing asbestos fibres: burning asbestos-cement, collapse of a structure containing asbestos parts, or an asbestos waste pile exposed to the air.",
+  "value": "definition",
+  "source_name": "MoEP news 31.05.2021",
+  "source_url": "https://www.gov.il/he/pages/cleaning_fund_approved_nis_11_million_for_removal_asbestos_cement_roofs_and_installating_solar_panels",
+  "source_date": "31.05.2021 (read 3.11.2026)"
+ },
+ {
+  "topic": "friable",
+  "fact": "Since the law, friable asbestos was removed from hundreds of industrial installations, military bases and public buildings (power stations, refineries, factories, cultural institutions, universities and schools). In the IDF more than 40,000 asbestos components were removed from vehicles and aircraft, plus 37,000 m² of 'pikal' boards at various bases.",
+  "value": "40,000+ IDF components; 37,000 m² boards",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "friable",
+  "fact": "In general friable asbestos was not used in private buildings in Israel (MoEP is not aware of private buildings with sprayed acoustic friable asbestos); by mid-2023 sprayed friable asbestos had been removed from 24 public buildings: 14 education buildings, 4 culture buildings and 6 other public buildings.",
+  "value": "24 public buildings (14 education)",
+  "source_name": "Knesset Research and Information Center (17.7.2023)",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "household",
+  "fact": "Household items that may contain asbestos: stove-top and lab heat plates, wicks of kerosene home heaters, fire blankets, gloves, jewellers' work boards; if confirmed, stop using and dispose with household waste in a thick, double, well-sealed plastic bag.",
+  "value": "5 item types",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "history",
+  "fact": "Asbestos manufacture and use in Israel began in the 1950s, rose to a peak in the mid-1970s and dropped gradually thereafter (Tel Aviv University review, as shown in the search snippet); IMAJ (2000) dates the peak of national asbestos use to 1976-78.",
+  "value": "1950s start; peak 1976-78",
+  "source_name": "Tel Aviv University research portal (review of environmental and occupational exposure to asbestos) + IMAJ 2000",
+  "source_url": "https://www.ima.org.il/MedicineIMAJ/Article.aspx?aId=3155",
+  "source_date": "IMAJ vol. 11, Nov 2000 (read 3.11.2026); TAU item seen as SERP snippet only"
+ },
+ {
+  "topic": "scale",
+  "fact": "MoEP estimate: more than 100 million square metres of asbestos-cement sheets in Israel.",
+  "value": ">100,000,000 m²",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "Since the law came into force about NIS 1.5 billion was invested in asbestos removal (costs to end of 2023 estimated at about NIS 1.5 billion). Costs are in general borne by property owners; part was funded by the state directly or indirectly (Western Galilee project budget, government decisions for asbestos removal in the Gaza envelope and the north, MoEP support for owners of public buildings).",
+  "value": "~NIS 1.5 billion (2011-2023)",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "Since the law, about 17.8 million m² of asbestos-cement were removed and landfilled under about 29,000 work permits issued by MoEP; these are about 92% of all permits for all types of asbestos work (friable, industry, soils). The implementation report covers 2011-2023.",
+  "value": "17.8 million m²; ~29,000 permits; 92%",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "MoEP estimates the cost of completing asbestos-cement removal in Israel at about NIS 5.3 billion (the page says 'of which 2.3 million shekels' are excess cost due to growing hazard handling - figure as printed, likely meant billion; do not publish the 2.3 figure without checking the full report). At the current pace asbestos-cement would remain around us for about another 70 years.",
+  "value": "~NIS 5.3 billion; ~70 years",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "MoEP estimate (Sept 2024): about 80 million m² of asbestos-cement products remain in Israel, most of them roofs; MoEP generally recommends removing them to prevent exposure if roofs are accidentally damaged (fire, collapse, blast). In the Gaza envelope about NIS 60 million was allocated under several government decisions for preventive asbestos removal and alternative roofs.",
+  "value": "~80 million m² remaining; Gaza envelope ~NIS 60m",
+  "source_name": "MoEP - roofs call for proposals",
+  "source_url": "https://www.gov.il/he/pages/roofs",
+  "source_date": "26.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "MoEP (May 2021): about 85 million m² of asbestos-cement in Israel, mostly roofs on private homes, public, agricultural, industrial and IDF buildings; most roofs were laid in the 1960s-1980s; about 1.3 million m² of asbestos-cement are removed in a regulated way each year, mostly during renovation or to install solar panels (asbestos removal is a condition for installing panels).",
+  "value": "85 million m² (2021); 1.3 million m²/year removed",
+  "source_name": "MoEP - קרן הניקיון אישרה 11 מיליון שקל ...",
+  "source_url": "https://www.gov.il/he/pages/cleaning_fund_approved_nis_11_million_for_removal_asbestos_cement_roofs_and_installating_solar_panels",
+  "source_date": "31.05.2021 (read 3.11.2026)"
+ },
+ {
+  "topic": "scale",
+  "fact": "Knesset Research and Information Center (17.7.2023): MoEP estimates that of about 100 million m² of asbestos products made by the Nahariya factory, about 80 million m² of asbestos-cement products remain across Israel, mostly building roofs; the removal pace is about 1.3 million m² a year, so if it does not change asbestos-cement will remain in Israeli buildings for at least the next four decades.",
+  "value": "~80 million m² left; 1.3 million m²/year; 40+ years",
+  "source_name": "Knesset Research and Information Center - חסמים לפינוי מוסדר של אסבסט ממבנים פרטיים (Dr. Tehila Shahar)",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "Industrial asbestos waste from the 'Eitanit' asbestos-cement products factory north of Nahariya was scattered in Western Galilee soils, used as a base for roads and paths, partly crumbling and in some sites exposed on the surface. MoEP leads the clean-up; removal works began in 2011 and the first, decisive stage ended six years later.",
+  "value": "started 2011; stage 1 ended ~2017",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "The Eitanit factory in Nahariya produced about 100 million m² of asbestos-cement products applied across Israel and thousands of tons of friable asbestos used as insulation; tens of thousands of cubic metres of friable asbestos waste were scattered in Western Galilee soils.",
+  "value": "~100 million m² products",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "In the Western Galilee, within a 15 km radius of the Eitanit factory that operated on the Nahariya coast, industrial asbestos waste was spread as a base for agricultural roads, urban paths and yards. Stage A (2011-2017) removed about 80% of the waste at a cost of NIS 325 million, of which NIS 150 million was funded by Eitanit under the 'polluter pays' principle. Stage B began in 2023, continuing removal from dozens of sites with a budget of more than NIS 70 million, expected completion during 2026. From the beach site north of Nahariya 45,000 tons of contaminated soil were removed at a total cost of about NIS 100 million; the beach was returned to the public and a new promenade is being developed.",
+  "value": "radius 15 km; stage A NIS 325m (80%); stage B NIS 70m+ (2023-2026); beach 45,000 t / ~NIS 100m",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "Stage A of the Western Galilee project (2011-2017): about 130,000 cubic metres of friable asbestos waste removed from 342 sites across the Western Galilee, total budget NIS 327 million; an estimated 70%-80% of the asbestos spread in the region was cleaned and work was completed at all sites where friable asbestos was exposed and endangering the public. Remaining stage-B sites have the friable asbestos covered (under soil or a cover). NOTE: the 02.12.2025 news item gives NIS 325 million and ~80% for the same stage.",
+  "value": "130,000 m³; 342 sites; NIS 327m; 70-80%",
+  "source_name": "MoEP - אסבסט בגליל המערבי (tab: שלב ב')",
+  "source_url": "https://www.gov.il/he/pages/western_galilee?chapterIndex=2",
+  "source_date": "published 15.04.2019, updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "Stage B started in July 2022 (page header), run with the managing company 'החברה לשירותי איכות הסביבה'; the Cleanliness Maintenance Fund (הקרן לשמירת הניקיון) approved NIS 72.5 million; stage B emphasises surveys to detect friable asbestos and is meant to complete removal fully. NOTE: the 02.12.2025 news item says stage B 'set out in 2023' with 'more than NIS 70 million' and expected completion during 2026.",
+  "value": "NIS 72.5m; start July 2022 (or 2023)",
+  "source_name": "MoEP - אסבסט בגליל המערבי (tab: שלב ב')",
+  "source_url": "https://www.gov.il/he/pages/western_galilee?chapterIndex=2",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "The project covered areas of Mateh Asher Regional Council, Nahariya Municipality and Mazra'a Local Council. Ongoing updates on stage B (work permits, surveys, air-sampling results, photos) are on the managing company's site 'אבן דרך' (soil-remediation.co.il), where the public can also report sites suspected of friable asbestos in soil.",
+  "value": "Mateh Asher RC, Nahariya, Mazra'a LC",
+  "source_name": "MoEP - אסבסט בגליל המערבי (tab: שלב ב')",
+  "source_url": "https://www.gov.il/he/pages/western_galilee?chapterIndex=2",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "The asbestos-cement factory was founded in 1952 on the Nahariya seashore (first named 'ישאסבסט', later 'Eitanit'); it produced corrugated and flat sheets and water/sewage pipes, marketed nationwide, employing hundreds at its peak. Its industrial waste was sold or given to public bodies and private people and used as ground cover on roads, paths, parking lots, agricultural infrastructure and fields; waste with fibres also slid to the adjacent beach. It stopped operating in Nahariya in November 1999 after about 40 years. (Photo caption on the same page reads 1952-1997.)",
+  "value": "1952 - Nov 1999",
+  "source_name": "MoEP - אסבסט בגליל המערבי (tab: מפעל איתנית)",
+  "source_url": "https://www.gov.il/he/pages/western_galilee?chapterIndex=3",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "In 2017 the factory company carried out a soil survey of the 170-dunam factory site under an MoEP asbestos work permit: 922 pits to 1.5 m depth (or natural soil) every 10 m; asbestos found in 135 pits. A staged clean-up plan followed, done by the company at its own cost without state participation; the work plan was published for public review in March 2019.",
+  "value": "170 dunam; 922 pits; 135 positive",
+  "source_name": "MoEP - אסבסט בגליל המערבי (tab: מפעל איתנית)",
+  "source_url": "https://www.gov.il/he/pages/western_galilee?chapterIndex=3",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "Project documentation published by MoEP: project photo book 2011-2017 (PDF), steering-committee protocols for stage A (zip), stage-B professional committee summaries (23.2.2023, 7.12.2023), draft instruction for the project (19.9.2022), air-sampling results Oct 2018-Mar 2019 (Google Drive folder).",
+  "value": "PDF/zip/docx files",
+  "source_name": "MoEP - אסבסט בגליל המערבי",
+  "source_url": "https://www.gov.il/blobFolder/reports/western_galilee_asbestos_removal/he/asbestos_western_galilee_asbestos_removal_photos_2011-2017.pdf",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "western_galilee",
+  "fact": "Public point layer of the Western Galilee friable-asbestos soil project (MoEP data, 2011-2017, published via data.gov.il's ArcGIS account): 348 site points in 14 localities - Nahariya 122 (118 + 4 spelled נהריה), Ben Ami 54, Bustan HaGalil 35, Betzet 28, Liman 21, Sa'ar 16, Yechiam 16, Kabri 16, Kfar Rosh HaNikra 12, Netiv HaShayara 8, Mazra'a 7, Evron 6, Nes Ammim 6, Ga'aton 1; jurisdiction: Mateh Asher 214, Nahariya 128, Mazra'a 6. Status legend: 234 'cleaned, no known asbestos left in soil'; 101 'cleaned but asbestos known to remain under infrastructure'; 13 'known asbestos, not yet cleaned' (status as of the 2018 layer).",
+  "value": "348 points: 234 / 101 / 13",
+  "source_name": "ArcGIS FeatureServer 'asbestos' (item 4066e69c1aa94f40b247db671f8ab527, owner sysdata, access info: המשרד להגנת הסביבה)",
+  "source_url": "https://services8.arcgis.com/JcXY3lLZni6BK4El/arcgis/rest/services/asbestos/FeatureServer/0",
+  "source_date": "layer created 01.05.2018 (queried 3.11.2026)"
+ },
+ {
+  "topic": "gaza_envelope",
+  "fact": "Several government decisions over the last decade funded removing asbestos-cement roofs in Gaza-envelope localities and installing alternative roofs on homes, public buildings and buildings within 50 m of homes: NIS 60.5 million allocated (Cleanliness Fund + Finance Ministry, with owner participation), NIS 45 million used; about 315,000 m² removed from hundreds of homes in four regional councils: Hof Ashkelon, Sdot Negev, Eshkol and Sha'ar HaNegev; at least tens of thousands of m² of asbestos roofs remain.",
+  "value": "NIS 60.5m allocated; 45m used; ~315,000 m² removed",
+  "source_name": "Knesset Research and Information Center - הטיפול באסבסט ובמפגעיו ביישובי קו העימות על רקע מלחמת חרבות ברזל",
+  "source_url": "https://fs.knesset.gov.il/globaldocs/MMM/d2904233-859d-ee11-8162-005056aa4246/2_d2904233-859d-ee11-8162-005056aa4246_11_20321.pdf",
+  "source_date": "17.12.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "war",
+  "fact": "As of 17.12.2023 MoEP knew of 13 asbestos hazards caused by the war (north, center and south, some in IDF bases): 7 cleared, 3 in progress, 3 not yet treated; hazard areas ranged from tens to thousands of m². MoEP said that without the earlier roof removals in the Gaza envelope the number of hazards would have been much higher.",
+  "value": "13 war hazards (7/3/3)",
+  "source_name": "Knesset Research and Information Center (17.12.2023)",
+  "source_url": "https://fs.knesset.gov.il/globaldocs/MMM/d2904233-859d-ee11-8162-005056aa4246/2_d2904233-859d-ee11-8162-005056aa4246_11_20321.pdf",
+  "source_date": "17.12.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "rural",
+  "fact": "Per the Regional Councils Center, rural areas have hundreds to thousands of agricultural and farm buildings (poultry houses, cowsheds, storerooms, industrial buildings) with asbestos-cement; dumping asbestos waste in open rural areas is common; low-cluster local authorities struggle to fund regulated removal of dumped waste.",
+  "value": "hundreds-thousands of farm buildings",
+  "source_name": "Knesset Research and Information Center (17.7.2023), pp. 3, 18",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Main exposure route is inhaling airborne fibres released from friable asbestos products or from asbestos-cement products that are not in good condition (damaged, broken, burnt or crumbling); fibres can be found near buildings with asbestos products undergoing demolition or renovation.",
+  "value": "inhalation",
+  "source_name": "MoEP - מהו אסבסט",
+  "source_url": "https://www.gov.il/he/pages/what_is_asbestos",
+  "source_date": "updated 19.03.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "According to the WHO (as cited by MoEP), asbestos exposure caused excess morbidity placing Israel 32nd in the world and 6th in Asia, with a rate of 1.8 cases per 100,000, and an unusual concentration in the Akko sub-district where the morbidity rate is three times the national average.",
+  "value": "1.8 per 100,000; Akko sub-district x3",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Asbestos is proven carcinogenic in humans and appears on the Israeli inter-ministerial committee's list A of known human carcinogens. Asbestosis: lung disease with shrinking lung tissue; first signs at least 10 years after first exposure, given significant exposure for some years. Lung cancer: among asbestos workers exposed 20+ years, about ten times the general population; smoking raises the risk further; appears 25-30 years after exposure starts. Mesothelioma: cancer of the lining of the lungs, abdomen or heart, usually fatal; about 80% of cases are linked to asbestos, after a latency of 20-40 years; it appears even with light-to-moderate exposures typical of environmental exposure.",
+  "value": "latency: asbestosis 10+ y; lung cancer 25-30 y; mesothelioma 20-40 y; ~80% asbestos-linked",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "published 03.04.2019, updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Drinking water: per MoEP citing WHO (adopted by Israel's national medical committee on harmful dust), asbestos fibres in drinking water are not considered to cause malignant or other diseases of the digestive tract; asbestos-cement water pipes and tanks may stay in use as long as no rubbing or polishing of their surfaces is done. Drinking-water quality is under the Ministry of Health.",
+  "value": "no ingestion risk per WHO (as cited by MoEP)",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Israel Cancer Registry study (IMAJ 2000): 327 mesothelioma cases reported in 1960-96; age-standardised rates 2.64 per million per year in Jews and 1.35 in Arabs; incidence twice as high in males; male rates rose from 1.17 (1978-80) to 8.5 per million (1993-96), a sevenfold increase; females from 0.33 to 2.56; the authors predicted further rises for 10-15 years.",
+  "value": "327 cases (1960-96); men x7",
+  "source_name": "IMAJ - A Worrying Increase in the Incidence of Mesothelioma in Israel",
+  "source_url": "https://www.ima.org.il/MedicineIMAJ/Article.aspx?aId=3155",
+  "source_date": "IMAJ vol. 11, November 2000, pp. 828-832 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "WHO: all six main forms of asbestos are carcinogenic to humans; exposure, including chrysotile, causes cancer of the lung, larynx and ovaries, and mesothelioma, plus asbestosis; more than 200,000 deaths each year from occupational exposure (2016 estimates); asbestos-cement roof tiles are named as a risk product; the most efficient prevention is to stop the use of all forms of asbestos.",
+  "value": ">200,000 deaths/year (2016 est.)",
+  "source_name": "WHO fact sheet - Asbestos: elimination of asbestos-related diseases",
+  "source_url": "https://www.who.int/news-room/fact-sheets/detail/asbestos-elimination-of-asbestos-related-diseases",
+  "source_date": "last updated 11.08.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "IARC Monographs Volume 100C (2012), 'Arsenic, Metals, Fibres, and Dusts', re-evaluated agents classified as carcinogenic to humans (Group 1) and includes asbestos (chrysotile, amosite, crocidolite, tremolite, actinolite, anthophyllite).",
+  "value": "Group 1 (Vol. 100C, 2012)",
+  "source_name": "IARC Publications - Volume 100C",
+  "source_url": "https://publications.iarc.who.int/120",
+  "source_date": "2012 (read 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Israel Cancer Association: mesothelioma symptoms usually appear 30 years or more after exposure; IARC finds sufficient evidence also for cancer of the larynx and ovaries; smoking plus asbestos sharply raises lung-cancer risk; most people do not fall ill from occasional exposure; a person worried about exposure should see a family or occupational physician; symptoms to discuss include shortness of breath, wheezing or hoarseness, a worsening persistent cough, blood in sputum, chest pain, difficulty swallowing, swelling of neck or face, loss of appetite, unintended weight loss, fatigue or anaemia. Sprayed friable asbestos was removed from about 20 buildings since the early 2000s.",
+  "value": "symptom list; latency 30+ y",
+  "source_name": "האגודה למלחמה בסרטן - אסבסט והסיכון לסרטן (professional advice: Dr. Eli Stern)",
+  "source_url": "https://www.cancer.org.il/articles/8255/",
+  "source_date": "22.12.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "costs",
+  "fact": "Price indication from MoEP's 'home contractor' tender (used in emergencies and for low-income owners): NIS 50 per m² to remove substantially broken asbestos-cement, NIS 1,600 per m³ to remove asbestos-cement in a friable state (e.g. after a fire; friable waste is priced by volume). The Knesset note says these indicate but do not represent market prices, which are probably higher; prices vary widely by region (distance to landfills), scale and complexity (condition, access, need for a crane). MoEP is not involved in market prices.",
+  "value": "NIS 50/m² (broken AC); NIS 1,600/m³ (friable-state AC)",
+  "source_name": "Knesset Research and Information Center (17.7.2023), section 5.1, pp. 2, 12-13",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "costs",
+  "fact": "Court case reported by Globes: Migdal HaEmek municipality replaced asbestos roofs in the Nof HaEmek neighbourhood (398 housing units) in about 2017-2019 after the Housing Ministry (which built the buildings) refused, saying they were private property, and MoEP refused co-funding; the court ordered residents to pay a participation of NIS 4,000 per apartment plus interest; about 130 residents had not paid.",
+  "value": "NIS 4,000 per apartment (court-ordered share)",
+  "source_name": "Globes - Nitzan Shapira",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001502416",
+  "source_date": "28.02.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "costs_commercial",
+  "fact": "Commercial price list published by a contractor site (not a public source): removal from cladding or low roof from NIS 3,200; high roof/complex from NIS 4,500; replacement of asbestos roof with corrugated steel (איסכורית) from NIS 440/m², with insulated panel from NIS 520/m²; presence test from NIS 450; professional survey from NIS 750; per-m² removal by size: up to 50 m² NIS 300/m², 51-100 m² NIS 60/m², 101-200 m² NIS 80/m², 201-500 m² NIS 65/m², over 500 m² NIS 35/m² (internally inconsistent table). Google's AI Overview for 'מחיר פינוי אסבסט' quotes this site.",
+  "value": "commercial ranges (marked as such)",
+  "source_name": "asbest.co.il - פינוי אסבסט מחיר 2026 (commercial)",
+  "source_url": "https://asbest.co.il/%D7%A4%D7%99%D7%A0%D7%95%D7%99-%D7%90%D7%A1%D7%91%D7%A1%D7%98-%D7%9E%D7%97%D7%99%D7%A8/",
+  "source_date": "modified 22.10.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "costs_commercial",
+  "fact": "Midrag (service-review platform) price page for asbestos roof replacement: in 37% of cases the price was NIS 10,001-11,000 and in 25% NIS 6,001-7,000; highest price paid NIS 11,000 (sample size and date not shown in snippet).",
+  "value": "NIS 6-11k per job (platform data)",
+  "source_name": "Midrag - החלפת גג אסבסט | ממוצע מחירים (SERP snippet)",
+  "source_url": "https://www.midrag.co.il/Content/PriceList/170706",
+  "source_date": "date not published (seen 3.11.2026)"
+ },
+ {
+  "topic": "grants",
+  "fact": "MoEP call for proposals (26.09.2024): NIS 12 million to support northern local authorities replacing asbestos-cement roofs on public and residential buildings in border areas with alternative roofs, following Government Decision 1786; NIS 2 million from the Finance Ministry and NIS 10 million from MoEP's Cleanliness Maintenance Fund. Partial MoEP data: more than 200,000 m² of asbestos-cement roofs on residential and public buildings in confrontation-line authorities, plus thousands of m² on agricultural buildings.",
+  "value": "NIS 12m; >200,000 m² in the north",
+  "source_name": "MoEP - קול קורא לסיוע מיוחד לרשויות המקומיות בצפון בהחלפת גגות אסבסט צמנט",
+  "source_url": "https://www.gov.il/he/pages/roofs",
+  "source_date": "26.09.2024 (read 3.11.2026)"
+ },
+ {
+  "topic": "grants",
+  "fact": "The Cleanliness Fund approved (31.05.2021) NIS 11 million to encourage removal of asbestos-cement roofs and installation of solar panels (planned tender for 'Asbest2PV agents'), and NIS 1 million for a MoEP 'home contractor' that removes asbestos hazards on property of people with limited means and in emergencies, after eligibility is checked against a dedicated MoEP procedure. By law the property owner must remove an asbestos hazard.",
+  "value": "NIS 11m + NIS 1m (2021)",
+  "source_name": "MoEP news 31.05.2021",
+  "source_url": "https://www.gov.il/he/pages/cleaning_fund_approved_nis_11_million_for_removal_asbestos_cement_roofs_and_installating_solar_panels",
+  "source_date": "31.05.2021 (read 3.11.2026) - current status of the Asbest2PV tender: not published"
+ },
+ {
+  "topic": "grants",
+  "fact": "MoEP assistance for low-income owners (procedure updated 2017): removal of an existing asbestos hazard (not of intact asbestos) by an MoEP contractor at no cost; conditions agreed with the Finance Ministry: private non-corporate owner; hazard not caused by the owner; owner receives income support, a nursing benefit, an elderly disability pension or hostile-action disability compensation; consent signed; MoEP does not install a replacement roof. Requests were very few (one in 2019, one in 2021, three in 2023). First tender (2011-2019): NIS 1 million allocated, NIS 400,000 used; second tender (2021): NIS 1 million, about NIS 200,000 used by mid-2023. The procedure was not published on the MoEP site at the time.",
+  "value": "5 requests in 5 years; NIS 1m + NIS 1m",
+  "source_name": "Knesset Research and Information Center (17.7.2023), section 5.2, pp. 2, 13",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "17.07.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "grants",
+  "fact": "MoEP published for public comment (7.12.2020) draft support criteria of NIS 50 million for owners of public buildings (education, community, culture and more) with sprayed friable acoustic asbestos found by a survey; supported activity: professional removal plan, removal, environmental sampling, supervision, transport and landfilling. Sprayed friable acoustic asbestos was banned in buildings from 1984; the law's deadline to remove friable asbestos from public buildings was 4 August 2021. The law's 'public place' is broad: education, welfare, culture, religion, science, sport, community centres, libraries, event gardens, restaurants, public parks and more (not residential).",
+  "value": "NIS 50m (draft, 2020); friable spraying banned 1984; deadline 4.8.2021",
+  "source_name": "MoEP news 07.12.2020",
+  "source_url": "https://www.gov.il/he/pages/nis_50_million_moep_support_for_public_buildings_for_asbestos_removal",
+  "source_date": "07.12.2020 (read 3.11.2026)"
+ },
+ {
+  "topic": "buyers_tama",
+  "fact": "Haifa municipality policy: an asbestos survey is a condition for building permits on plots with a high likelihood of asbestos; buildings defined as suspect (urban renewal buildings, buildings under TAMA 38, buildings in the Check Post area, the port, Hadar and downtown) must submit a survey as a condition for starting work; if asbestos is found, the condition for starting work is MoEP approval of removal per the regulations. The policy was formed with the Haifa Bay Towns Association for Environmental Quality and MoEP.",
+  "value": "survey = condition to start works (TAMA 38, urban renewal, listed areas)",
+  "source_name": "עיריית חיפה - אסבסט: נוהל עירוני לסקר אסבסט",
+  "source_url": "https://www.haifa.muni.il/development-and-construction/engineering-administration/environmental-and-sustainability/asbestos/",
+  "source_date": "read 3.11.2026 (page date not shown; linked PDF dated 25.05.22 returns 404)"
+ },
+ {
+  "topic": "buyers_tama",
+  "fact": "A national, statutory requirement to attach an asbestos survey to every demolition, TAMA 38 or pinui-binui permit application was NOT found in a primary source during this research (the asbestos law has no survey duty for private buildings; requirements found are municipal: Tel Aviv - survey before renovation in buildings built up to 31.12.2000; Haifa - survey as condition to start works for TAMA 38/urban renewal). Commercial guides (e.g. elm.co.il) state that planning committees require surveys for demolition permits in old buildings, without citing a regulation.",
+  "value": "not published (national); municipal rules exist",
+  "source_name": "research note (based on Nevo law text, Knesset 17.7.2023, Tel Aviv and Haifa municipal pages)",
+  "source_url": "https://fs.knesset.gov.il/25/Committees/25_cs_bg_4141427.pdf",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "municipal",
+  "fact": "Tel Aviv-Yafo municipality: asbestos is common mainly in buildings built from the 1960s to the end of the 1980s; an asbestos survey is mandatory before renovation in buildings built up to 31.12.2000 (part of the renovation licence request); dismantling/demolition of asbestos structures only by MoEP-licensed contractors, and per the city even dismantling under 50 m² requires a licensed asbestos contractor; the city's environment authority inspects municipal and public buildings, private homes must hire a contractor privately; asbestos enquiries via the 106 call centre.",
+  "value": "survey before renovation if built up to 31.12.2000; hotline 106",
+  "source_name": "עיריית תל אביב-יפו - אסבסט",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Environment/Pages/Asbestos.aspx",
+  "source_date": "read 3.11.2026 (page date not shown)"
+ },
+ {
+  "topic": "authorities",
+  "fact": "The responsible MoEP unit is the Air Pollution Prevention and Asbestos Division (אגף מניעת זיהום אוויר ואסבסט); its head as of the report is Reut Rabi.",
+  "value": "אגף מניעת זיהום אוויר ואסבסט",
+  "source_name": "MoEP news + unit page",
+  "source_url": "https://www.gov.il/he/departments/Units/asbestos_department",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "authorities",
+  "fact": "MoEP asbestos hub offers: registry of asbestos operators (contractors, inspectors, surveyors), list of asbestos waste landfill sites, list of analysis and sampling laboratories, online licence application/renewal service (for contractors, workers in charge, inspectors and surveyors) and an online service to notify asbestos work, request a work permit and submit a final report.",
+  "value": "registry + landfills + labs + 2 online services",
+  "source_name": "MoEP asbestos topic hub",
+  "source_url": "https://www.gov.il/he/departments/topics/asbestos",
+  "source_date": "read 3.11.2026"
+ },
+ {
+  "topic": "authorities",
+  "fact": "MoEP environment hotline (מוקד הסביבה) operates 24/7 for urgent environmental reports at 073-2733200 or *6911 extension 5; unauthorised asbestos dismantling is listed as an example of an urgent event; life-threatening hazmat emergencies go to 100 (police) or 102 (fire and rescue). In 2022 the hotline logged 22,119 reports and duty officers went out to about 229 hazards. The local authority call centre (106) is the first address for municipal hazards including demolition/building offences; ongoing hazards go to the public-inquiry centres of MoEP districts; fines/reports of MoEP are handled via Milgam (073-3901050/1).",
+  "value": "*6911 ext. 5 / 073-2733200; 106; 100; 102",
+  "source_name": "MoEP - מוקד הסביבה – מבצעים וחירום",
+  "source_url": "https://www.gov.il/he/pages/moked_hasviva",
+  "source_date": "published 04.04.2021, updated 26.05.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "authorities",
+  "fact": "MoEP publishes a downloadable spreadsheet mapping 255 local authorities to their environmental unit: 57 distinct units (by type of the authority's link: 105 served by a town association for environmental quality, 71 by a regional environmental unit, 24 by a municipal unit, 55 not classified), with district, unit name, manager, phones, e-mail, website (132 rows) and address. Districts in the file: North 93 authorities, Center 67, South 39, Haifa 31, Jerusalem 13, Tel Aviv 12.",
+  "value": "255 authorities -> 57 units",
+  "source_name": "MoEP - רשימת היחידות הסביבתיות ואיגודי הערים לאיכות הסביבה (xlsx)",
+  "source_url": "https://www.gov.il/BlobFolder/generalpage/moked_hasviva/he/Emergency_cyber_environmental-units.xlsx",
+  "source_date": "linked from page updated 26.05.2026 (downloaded and counted 3.11.2026)"
+ },
+ {
+  "topic": "disposal",
+  "fact": "Certain existing reserves for asbestos landfilling are sufficient for only about four more years; additional reserves are in planning.",
+  "value": "~4 years of certain landfill reserves",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "disposal",
+  "fact": "Licensed asbestos landfill sites on data.gov.il (3.11.2026): 6 entries - 5 landfills and 1 transfer station: a transfer station at Milu'ot South (Western Galilee); Ef'e landfills (Tamar Regional Council area, asbestos-cement + friable); Nimra (Eilot area, asbestos-cement); Shfeya site at Tut quarries near Zichron Ya'akov (asbestos-cement); Haruvit landfill ~1.5 km from Sdot Micha, Road 383 (asbestos-cement); Neot Hovav landfill 204 (asbestos-cement + friable).",
+  "value": "5 landfills + 1 transfer station",
+  "source_name": "data.gov.il - מטמנות אסבסט (MoEP)",
+  "source_url": "https://data.gov.il/dataset/asbestoslandfills",
+  "source_date": "dataset modified 03.11.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "labs",
+  "fact": "Licensed asbestos laboratories on data.gov.il (3.11.2026): 8 entries - 4 sampling labs, 2 analysis labs and 2 'analysis of air samples only' labs (some operators hold two licences).",
+  "value": "8 lab licences",
+  "source_name": "data.gov.il - מעבדות אסבסט (MoEP)",
+  "source_url": "https://data.gov.il/dataset/asbestos-lab",
+  "source_date": "dataset modified 03.11.2026 (read 3.11.2026)"
+ },
+ {
+  "topic": "map",
+  "fact": "A national geographic mapping of asbestos is required to prioritise removal and identify hazard-prone areas (e.g. poultry houses near woodland, border localities exposed to rocket hits). Mapping of asbestos roofs was recently done from satellite data in the Gaza envelope area and is expected to be published as a layer on the government map site (govmap).",
+  "value": "Gaza-envelope roof layer: announced, not yet published (as of 02.12.2025)",
+  "source_name": "MoEP news - דוח יישום חוק האסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos-risk-prevention",
+  "source_date": "02.12.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "map",
+  "fact": "Per MoEP (Dec 2023) no mapping of asbestos stock and asbestos-cement roofs with extent and location had ever been done; MoEP was promoting a national mapping in 2024. Local data: Sdot Negev RC mapped about 40,000 m² of asbestos roofs; Hof Ashkelon RC says 80%-90% of its asbestos roofs were removed and replaced; Sha'ar HaNegev RC removed 45,000-50,000 m² and estimates 15,000-20,000 m² remain; a 2020 government decision gave Ashkelon NIS 350,000 for roof mapping out of NIS 5 million for roof replacement.",
+  "value": "no national map (Dec 2023); local figures",
+  "source_name": "Knesset Research and Information Center (17.12.2023), pp. 2-3",
+  "source_url": "https://fs.knesset.gov.il/globaldocs/MMM/d2904233-859d-ee11-8162-005056aa4246/2_d2904233-859d-ee11-8162-005056aa4246_11_20321.pdf",
+  "source_date": "17.12.2023 (read 3.11.2026)"
+ },
+ {
+  "topic": "authorities",
+  "fact": "Ministry of Health: drinking-water quality (including asbestos-cement water pipes) is under its authority; Israel's national medical committee for harmful dust adopted the WHO position on asbestos in drinking water. A dedicated Ministry of Health asbestos contact page was not found in this research.",
+  "value": "role: drinking water + medical committee",
+  "source_name": "MoEP - שאלות נפוצות על אסבסט",
+  "source_url": "https://www.gov.il/he/pages/asbestos_faq",
+  "source_date": "updated 09.04.2025 (read 3.11.2026)"
+ },
+ {
+  "topic": "authorities",
+  "fact": "Ministry of Labor - Occupational Safety and Health Administration: responsible for worker protection under the Work Safety Ordinance regulations (occupational hygiene; the Knesset record refers to regulations on public and worker health in asbestos, talc and silica). Exact current regulation title and the Administration's asbestos contact page were not verified in this research.",
+  "value": "role: worker protection (details not verified)",
+  "source_name": "oknesset committee document (search result) - not read in full",
+  "source_url": "https://production.oknesset.org/pipelines/data/committees/download_document_committee_session/files/23/4/6/468962.DOC",
+  "source_date": "date not verified (seen 3.11.2026)"
+ },
+ {
+  "topic": "health",
+  "fact": "Maccabi Healthcare Services: members who work or worked with asbestos are eligible for free periodic medical surveillance at the occupational clinic serving the workplace (tests may include lung function and examination by a nurse or occupational physician); Maccabi states asbestos-exposed workers must keep the periodic checks on the regulatory schedule for life, even after leaving the job.",
+  "value": "free, lifelong periodic checks (per Maccabi)",
+  "source_name": "Maccabi - פיקוח רפואי תקופתי לעובדים החשופים לגורמי סיכון תעסוקתיים",
+  "source_url": "https://www.maccabi4u.co.il/eligibilites/4491/",
+  "source_date": "date not shown (seen as search summary 3.11.2026)"
+ }
+]

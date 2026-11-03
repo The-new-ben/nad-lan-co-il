@@ -350,7 +350,15 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
 
 ## R11 ASBESTOS PAGE (HAD-668, Ben 3.11.2026: "הדף של האסבסט, תבנה אותו")
 Ben's words: Hebrew and English. A huge page of at least 5,000 net words: tools, cost guides, scientific data, practical steps, every authority. A generated image that speaks to the search term. A map of where asbestos is, or is suspected, in Israel, like the contamination page. **Prove superiority with real evidence**: a benchmark against the top Google results and the world's best pages, on counted criteria with links. Keep scaling up.
-- [ ] **R11a Research** (running 3.11 evening): keywords, SERP/PAA/AI Overview, the top 5 Hebrew pages plus EPA/HSE/ASEA read in full, sourced Israeli facts, public map data. Output: `docs/research/2026-11-03-asbestos/`.
+- [x] **R11a Research done (3.11 evening)**, in `docs/research/2026-11-03-asbestos/`: keywords (325 Hebrew terms, 170 with volume), serp (8 queries), competitors (7 Hebrew pages plus EPA, HSE, ASEA, scored), facts.json (88 sourced facts), map-data, brief.
+  - **Competitors:** the longest Hebrew page is Wikipedia at about 3,170 words. EPA, HSE and ASEA are 140-430-word hubs. No Israeli page has a map.
+  - **Real data:** the Western Galilee clean-up layer (348 points, 3 statuses, downloadable), the licence registry on data.gov.il (453 licences), 6 disposal sites, 8 labs, and 255 authorities mapped to 57 environmental units.
+  - **Honest gaps** (listed in the brief):
+    - no current national mesothelioma rate;
+    - no national map;
+    - no independent price survey;
+    - no national survey duty;
+    - source conflicts to resolve before publishing.
 - [ ] **R11b Claude Design**: hero with image, the map, a cost estimator, an "is my building at risk" check, the authorities directory, the licensed-contractor finder (if the registry is public), FAQ.
 - [ ] **R11c The article**: ChatGPT Pro, 5,000+ net words, from the sourced brief; then English, written natively.
 - [ ] **R11d The image**: Nano Banana or gpt-image, benchmarked against the best before it goes up.
