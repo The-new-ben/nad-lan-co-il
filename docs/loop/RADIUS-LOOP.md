@@ -236,7 +236,16 @@
     - the price list: 30 deals within 500 m, median about 57,500 ₪/m² (10.2023-8.2024), and the official Ramat Aviv median, 4,931,600 ₪ (Q1 2026).
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1776, price list at 6433, kit at 8580. One H1, no sideways scroll, no raw shortcode. Evidence: `docs/qa/gap-pages/brodetsky-33-39-*-390.png`.
   - **This page now owns the word "brodetsky".** Brodetsky 21-25, 38-40 and 9 would need another head word, or a street page.
-- [ ] **Next gap pages, at most two a day:** seven-seas, shbiro-2468 and levi-55 done 2.11, brodetsky-33-39 done 3.11; next amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+- [x] **R7f AMICHAI 5 / STERN 22 page** (3.11 morning, Ben named these streets). Live: https://nad-lan.co.il/projects/amichai-stern/ (post 8753).
+  - **Two buildings:** Yehuda Amichai 5 (= Isaac Stern 18, the same parcel per the city registry: block 6885, parcel 9), by אשכול מגורים, architect רמי לוטן, in marketing; and Isaac Stern 22 (parcel 21): 23 flats, בר אוריין אדריכלים, סווירי מהנדסים, under construction in the site photos of 3.2025 and 7.2025.
+  - **Left out, too weak:** "62 units" (kavbin; not certain it is the same project) and "13 floors / 4-5 rooms" (a Google snippet only).
+  - **The article:** ChatGPT Pro (https://chatgpt.com/c/6ae99287-7ac4-83eb-be53-2fdcad6ba8f7), 509 words, clean. It gave only 4 of the 5 FAQ answers, so the prices answer was added by hand, with no figures. "סוויריי" was corrected to "סווירי" from the source page.
+  - **Release 1.72.572, released and verified (917 checks):**
+    - 9 sourced facts;
+    - the price list: 21 deals within 500 m, median about 48,000 ₪/m² (10.2023-6.2024), and the official Tochnit Lamed median, 6,059,900 ₪.
+  - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1776, price list at 5121, kit at 7250. One H1, no sideways scroll. Evidence: `docs/qa/gap-pages/amichai-stern-*-390.png`.
+  - **This is the second new page for 3.11.** The next one (ramata) waits for 4.11.
+- [ ] **Next gap pages, at most two a day:** seven-seas, shbiro-2468 and levi-55 done 2.11, brodetsky-33-39 and amichai-stern done 3.11; next (4.11), ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
 
 ## R10 MOAT (Ben, 2.11.2026, afternoon)
 Ben's words: "Every page should have so many tools, so many varied things, data. It must be a moat, something nobody can match. Wrapped in the right key phrases, synonyms, associations and intent, practical and useful. Do not ruin other pages; make sure we do not create pages that hurt other pages: keyword cannibalization."

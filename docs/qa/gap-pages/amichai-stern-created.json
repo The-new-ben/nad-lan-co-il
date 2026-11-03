@@ -1,0 +1,24 @@
+{
+ "id": 8753,
+ "slug": "amichai-stern",
+ "link": "https://nad-lan.co.il/projects/amichai-stern/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "ל׳ החדשה",
+  "address": "יהודה עמיחי 5 (אייזק שטרן 18) ואייזק שטרן 22, תל אביב-יפו",
+  "gush": "6885",
+  "helka": "9",
+  "developer_name": "אשכול מגורים",
+  "architect_name": "רמי לוטן אדריכלים",
+  "project_type": "new_build",
+  "project_status": "marketing",
+  "website": "https://eshkol.co.il/yehuda-amichai/",
+  "lat": 32.109255,
+  "lng": 34.7866,
+  "source": "פרויקט תל אביב, אתר אשכול מגורים, מאגר הכתובות של עיריית תל אביב-יפו",
+  "source_url": "https://project-tlv.info/buildings/yehuda-amichai/",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "עמיחי ושטרן"
+ }
+}
