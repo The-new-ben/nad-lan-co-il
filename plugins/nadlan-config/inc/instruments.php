@@ -1034,3 +1034,6 @@ if ( file_exists( __DIR__ . '/asbestos-tools.php' ) ) { require_once __DIR__ . '
 
 /* 1.72.577 (HAD-669): the Tel Aviv garden-apartments tools (gdnworth, gdnmap, gdnstreet, gdnground) and [nadlan_garden_listings]; loaded only if present */
 if ( file_exists( __DIR__ . '/garden-tools.php' ) ) { require_once __DIR__ . '/garden-tools.php'; }
+
+/* 1.72.578 (HAD-670): the environmental-hazards map tools (hzmap, hzant, hzcompare, hzcity, hzplan); loaded only if present */
+if ( file_exists( __DIR__ . '/hazards-tools.php' ) ) { require_once __DIR__ . '/hazards-tools.php'; }

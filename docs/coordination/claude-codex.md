@@ -4663,3 +4663,6 @@ RELEASE DONE 1.72.576 (AsbestosLabels): released and verified (project-stage-202
 
 RELEASE LOCK 1.72.577 (GardenTools, HAD-669 R12d: new inc/garden-tools.php + new assets/instruments/tools/garden.js + new assets/instruments/data/garden.json, one hunk on the live inc/instruments.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 22:25.
 RELEASE DONE 1.72.577 (GardenTools): released and verified (project-stage-2026-09-24/deploy-result-577.json), 938 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 22:47.
+
+RELEASE LOCK 1.72.578 (HazardTools, HAD-670 R13e: new inc/hazards-tools.php + new assets/instruments/tools/hazards.js + new data/hazards.json + new data/hazards-lines.json, one hunk on the live inc/instruments.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 23:25.
+RELEASE DONE 1.72.578 (HazardTools): released and verified (project-stage-2026-09-24/deploy-result-578.json), 943 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 23:50.

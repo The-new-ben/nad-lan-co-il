@@ -1,0 +1,21 @@
+{
+  "released": "1.72.578",
+  "from": "1.72.577",
+  "live_before": {
+    "nadlan-config.php": "f65f239fee52f250c931525d9471fbbe",
+    "inc/instruments.php": "5a48638a1247c77456f198f3bbd5b5f0"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-03 22:49:16",
+  "files": {
+    "inc/hazards-tools.php": "73dd06ab8c03eea47db7ef4a300821c8",
+    "assets/instruments/tools/hazards.js": "5456a7574576e4fe0d5159f63256cd2e",
+    "assets/instruments/data/hazards.json": "537f71cd6f73c5f0e92fecb57dff13aa",
+    "assets/instruments/data/hazards-lines.json": "5c41cf5e072645c948cbd8762e6b8b36",
+    "nadlan-config.php": "636a3b74cd98e75c8e4ed5353c7aa770",
+    "inc/instruments.php": "fafc5ecb15b2bf707ac9fb89a625df02"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.578, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
