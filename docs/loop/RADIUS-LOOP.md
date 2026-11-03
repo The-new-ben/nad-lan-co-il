@@ -347,3 +347,20 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - **Radius project pages:** no real competition between them.
     - Reported only, in HAD-663: no redirect, no URL change, no canonical change without Ben.
   - **Next run: 2.12.**
+
+## R11 ASBESTOS PAGE (HAD-668, Ben 3.11.2026: "הדף של האסבסט, תבנה אותו")
+Ben's words: Hebrew and English. A huge page of at least 5,000 net words: tools, cost guides, scientific data, practical steps, every authority. A generated image that speaks to the search term. A map of where asbestos is, or is suspected, in Israel, like the contamination page. **Prove superiority with real evidence**: a benchmark against the top Google results and the world's best pages, on counted criteria with links. Keep scaling up.
+- [ ] **R11a Research** (running 3.11 evening): keywords, SERP/PAA/AI Overview, the top 5 Hebrew pages plus EPA/HSE/ASEA read in full, sourced Israeli facts, public map data. Output: `docs/research/2026-11-03-asbestos/`.
+- [ ] **R11b Claude Design**: hero with image, the map, a cost estimator, an "is my building at risk" check, the authorities directory, the licensed-contractor finder (if the registry is public), FAQ.
+- [ ] **R11c The article**: ChatGPT Pro, 5,000+ net words, from the sourced brief; then English, written natively.
+- [ ] **R11d The image**: Nano Banana or gpt-image, benchmarked against the best before it goes up.
+- [ ] **R11e Build and release** `/asbestos/`, plus the English page; checked at 390 px.
+- [ ] **R11f The proof**: a benchmark table (words, tools, data tables, map, sources, languages), each row linked.
+
+## R12 GARDEN APARTMENTS IN TEL AVIV (HAD-669, Ben 3.11.2026)
+Many Facebook campaigns run for this, and the site has nothing. Ben wants the best page in the world for it: it holds listings and covers every combination (3 rooms, with a safe room, by area, by street) with tools, prices and data. Our moat: the Tax Authority deals file lists "דירת גן" as its own property type.
+- [ ] **R12a Research** (running 3.11 evening): keywords, SERP, competitors, the deals aggregated, our listings and URL ownership. Output: `docs/research/2026-11-03-garden/`.
+- [ ] **R12b-e** Design, article, tools, build: after R11.
+
+## R13 ENVIRONMENTAL HAZARDS MAP: REMIND BEN (HAD-658 #22)
+- [ ] **WAITS FOR BEN.** Remind him after the asbestos page. The idea is a map of cellular antennas, radiation, power lines and similar hazards. Not started.
