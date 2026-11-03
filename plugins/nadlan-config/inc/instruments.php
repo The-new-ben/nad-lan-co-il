@@ -1031,3 +1031,6 @@ if ( file_exists( __DIR__ . '/rent-listings.php' ) ) { require_once __DIR__ . '/
 
 /* 1.72.575 (HAD-668): the asbestos page tools (asbcheck, asbcost, asbmap, asbwho); loaded only if present, so a rollback that removes it leaves this file working */
 if ( file_exists( __DIR__ . '/asbestos-tools.php' ) ) { require_once __DIR__ . '/asbestos-tools.php'; }
+
+/* 1.72.577 (HAD-669): the Tel Aviv garden-apartments tools (gdnworth, gdnmap, gdnstreet, gdnground) and [nadlan_garden_listings]; loaded only if present */
+if ( file_exists( __DIR__ . '/garden-tools.php' ) ) { require_once __DIR__ . '/garden-tools.php'; }

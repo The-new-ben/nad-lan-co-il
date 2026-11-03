@@ -383,7 +383,18 @@ Many Facebook campaigns run for this, and the site has nothing. Ben wants the be
   - **Our site:** 0 GSC queries and 0 real TA garden listings. The listing type supports property_type=garden and ממ"ד, but needs fields for garden size, Tabu, pool and garden type.
   - **URL:** `/tel-aviv-garden-apartments/`. The slug and the H1 pass the keyword guard.
   - **Decision (mine, under the keyword law):** "דירת גן למכירה" stays with its owner `/properties/`. The new page uses it only lower down, never in the title or H1.
-- [ ] **R12b-e** Design, article, tools, build: after R11.
+- [x] **R12b Data refresh checked + Claude Design (3.11, 21:30-21:45).**
+  - **The refresh:** the 4.2026 open-data copy of the Tax Authority database (odata.org.il, 3 national CSVs, 210 MB, read 3.11) holds 122,738 Tel Aviv rows, but the "דירת גן" type stops at 28.8.2024 there too (295 rows, last 2024-08-28; Tel Aviv rows thin after 2024). The Tax Authority stopped using the type, so newer garden deals do not exist in open data. The government deals service needs a captcha (never). **Decision: publish with "עד אוגוסט 2024" on every figure.**
+  - **The design:** v108.0 GardenHub in the design system (version 273, https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8, `components/GardenHub/`). Lawn-green scale on white with mono numbers; H1, answer, 3 buttons, numbers strip, neighbourhood map, worth tool, tables, real-listings card with garden m² and Tabu chips (shown only for real listings), checklist.
+- [x] **R12c The article (3.11, 21:47-22:20):** ChatGPT Pro, 5,146 net words, 14 h2, 16 FAQ, 7 tables, from 62 facts; every number in the facts (short forms only), no blacklist word, no dash, no portal name, "דירת גן למכירה" in no heading. `docs/research/2026-11-03-garden/garden.he.article.html`.
+- [x] **R12d The tools (3.11):** `assets/instruments/tools/garden.js` (gdnworth, gdnmap, gdnstreet, gdnground), data `data/garden.json` (`tools/instruments/build_garden_data.py`: 227 screened deals, 225 placed by parcel and 2 by street, 166 streets by the street column), module `inc/garden-tools.php` with `[nadlan_garden_listings]` (real listings only, demos out in the query). Release **1.72.577**, 938 checks OK.
+- [x] **R12e Page (3.11, 22:48):** **8764 https://nad-lan.co.il/tel-aviv-garden-apartments/**, H1 "דירת גן בתל אביב: מחירים, שכונות ורחובות" (kw_guard blocked the plural lead "דירות", owned by /properties/). Pressed live in real Chrome at 390 and 1366 (`docs/qa/garden/press-live.json`): order H1 > answer > buttons > strip > map > worth > listings, no sideways scroll, worth 72 m² in לב תל-אביב = ₪4,613,000, street קהילת ורשה = 4 deals, map drawn, the listings line says honestly there is none yet. Sitemap resubmitted. Open: the 4 listing fields (garden m², Tabu, pool, garden type) for the publish form, a later item.
 
-## R13 ENVIRONMENTAL HAZARDS MAP: REMIND BEN (HAD-658 #22)
-- [ ] **WAITS FOR BEN.** Remind him after the asbestos page. The idea is a map of cellular antennas, radiation, power lines and similar hazards. Not started.
+## R13 ENVIRONMENTAL HAZARDS MAP (HAD-670, Ben 3.11.2026 night)
+- [x] **Ben answered 3.11 night: "yes, the awesome map"** (HAD-670). His order: a very extensive page, a 3D map where people see where they are, 4-5+ complex tools with easy mobile UX, deep science, prices and professional services (no names, advertiser-ready), Nano Banana images, AI and Google friendly, an honesty statement and a proof table, Claude Design first.
+- [ ] **R13a Research** into `docs/research/2026-11-03-hazards/`: map layers (checked live, counts), science and law (sourced facts.json), professionals and prices, competitors in Israel and the world, keywords and SERP.
+- [ ] **R13b Claude Design** of the map page and the tools.
+- [ ] **R13c Images** with Nano Banana, benchmarked.
+- [ ] **R13d The article** through ChatGPT Pro from the sourced facts (Hebrew, then English).
+- [ ] **R13e Build and release**: the 3D map, the tools and the data builder; 390 px check.
+- [ ] **R13f The proof table** and the honesty statement.

@@ -1,0 +1,938 @@
+[
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Israel's main radiation statute is חוק הקרינה הבלתי מייננת, התשס״ו-2006. The Knesset passed it on י״ט בכסלו התשס״ו and it was published in ספר החוקים on א׳ בטבת התשס״ו.",
+  "value": "passed 2005-12-20; published 2006-01-01",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 1: the law's purpose is to protect the public and the environment from the effects of exposure to non-ionizing radiation, and to regulate radiation sources, their construction and operation, and radiation-measurement services.",
+  "value": "purpose clause",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 3: no one may build a radiation source, operate one, or provide a radiation-measurement service without a permit from the Supervisor (ממונה).",
+  "value": "permit required to build, operate, measure",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 5: an operating permit and a measurement-service permit are valid for five years. A construction permit is valid for up to three months and may be extended, but for no more than nine months in total.",
+  "value": "operating 5 years; construction 3 months, max 9",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 6: a construction permit is issued only after the applicant has an exposure assessment (הערכת רמות חשיפה) made by a licensed measurement-service holder, under the Supervisor's written guidelines, including the case of a malfunction.",
+  "value": "exposure assessment before construction",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 7: an operating permit is issued only after exposure has been measured at various distances from the operating source by a licensed measurer, and the levels did not exceed the maximum exposure levels the Supervisor set.",
+  "value": "measured compliance before operation",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 19: the Supervisor must publish up-to-date information, including the list of permit holders and cancelled or suspended permits, the locations of radiation sources that need a permit, exposure assessments, test results, measurement results during operation, and applications for construction permits.",
+  "value": "6 categories of mandatory publication",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 16: building or operating a radiation source, or giving a measurement service, without a permit or against its conditions carries six months' imprisonment or a fine. A corporation pays double, and a continuing offence adds 5% of the fine for each day it continues.",
+  "value": "6 months or fine; x2 for a corporation; +5% per day",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "A fine under the law is paid to the Fund for Maintaining Cleanliness (הקרן לשמירת הניקיון); if it followed action by a local-authority employee, it goes to that local authority.",
+  "value": "fine destination",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Section 21: a person who sees himself harmed by an instruction or order of the Supervisor may ask the court to cancel it. Filing does not suspend the order unless the court decides otherwise.",
+  "value": "court review of orders",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "The law amended the Administrative Courts Law so that decisions of the Supervisor under chapter C of the radiation law are reviewed by the administrative court.",
+  "value": "administrative-court review",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "The law amended the Prevention of Environmental Nuisances (Civil Claims) Law, התשנ״ב-1992, so that 'pollution by radiation' covers non-ionizing radiation as defined in the radiation law. This gives residents a civil-claim route.",
+  "value": "NIR added to the civil-claims law",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "The law applies to the State but not to security or operational activity.",
+  "value": "state bound; security exempt",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "Transitional rule for the electricity sector: until regulations are made, the Supervisor's decisions on electricity matters must follow the report of the Expert Committee on magnetic fields from the electricity grid published on the MoEP website. Decisions that affect electricity-sector costs need the prior written approval of the environment, infrastructure and finance ministers, who have 30 days to answer.",
+  "value": "expert-committee report binds Supervisor decisions; 30-day approval",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "The law amended the Planning and Building Law: a planning body must require an indemnity letter (כתב שיפוי) against compensation claims as a condition for a permit to build a cellular transmission facility (מיתקן שידור לתקשורת בשיטה התאית). The 2018 draft regulations cite this provision as section 266ג.",
+  "value": "indemnity letter required (section 266ג)",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Non-Ionizing Radiation Law",
+  "fact": "MoEP operating permits for cellular sites oblige the holder not to exceed the maximum exposure levels in the exposure-assessment report, keep the restriction measures in place, post warning signs in Hebrew and Arabic, and report to the Supervisor by computer in real time. Permit details are published on the MoEP website.",
+  "value": "permit conditions",
+  "source_name": "MoEP operating permit for a cellular site (primary; an example permit)",
+  "source_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/fio8179/he/B002_1_NC4196K_20180123_0942.pdf",
+  "source_date": "2018-01-23; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "MoEP adopted the ICNIRP exposure restrictions and added stricter limits for broadcasting sites: 10% of the ICNIRP level where people stay for long periods (homes, offices) and 30% where people are present briefly (sidewalks, roads).",
+  "value": "10% of ICNIRP (prolonged stay); 30% (brief presence)",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "A municipal radiation report states that MoEP set an 'environmental threshold' (סף סביבתי) equal to 10% of the ICNIRP-based health threshold, and applies it as a binding guideline.",
+  "value": "10% of the health threshold",
+  "source_name": "Ramla municipality radiation report (secondary; read via search summary)",
+  "source_url": "https://www.ramle.org.il/uploads/n/1614522089.4806.pdf",
+  "source_date": "about 2021; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "Media reporting turns the Israeli limit into numbers: about 40 microwatt per cm² for 2G and up to 100 microwatt per cm² for 3G, and says Italy, Poland, Switzerland and Russia use 10 microwatt per cm².",
+  "value": "about 40-100 µW/cm² (media figure, not checked against MoEP)",
+  "source_name": "Israeli news site (media; date not shown)",
+  "source_url": "https://www.mako.co.il/nexter-news/Article-9ff79a5e43f7941006.htm",
+  "source_date": "undated; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "ICNIRP updated its radio-frequency guidelines (100 kHz to 300 GHz) in March 2020. The cellular and Wi-Fi thresholds were not revised.",
+  "value": "ICNIRP 2020; cellular limits unchanged",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "MoEP's surveillance system monitors about 60,000 antennas for compliance with their licensed transmission power; the 3G monitoring system was extended to 4G LTE sites.",
+  "value": "about 60,000 antennas monitored",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "Under a site-sharing policy, the number of active cellular transmission sites fell by 20% from 2014 to 2020.",
+  "value": "-20% sites, 2014-2020",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "From 2013 to 2019, exposure levels around cellular sites rose about 50%, while the data carried over cellular networks grew 14.5-fold.",
+  "value": "+50% exposure; data x14.5",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "RF exposure limits (cellular sites)",
+  "fact": "Whether Israel has formally re-based its thresholds on ICNIRP 2020 was NOT confirmed. The MoEP threshold page on gov.il returned HTTP 403 and could not be read.",
+  "value": "NOT VERIFIED",
+  "source_name": "MoEP guide page (blocked)",
+  "source_url": "https://www.gov.il/he/departments/guides/radiation_cellular_antennas",
+  "source_date": "HTTP 403 on 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "תמ״א 36/א defines a 'safety range for public health' (טווח בטיחות לבריאות הציבור) as the minimum distance in metres from a transmitting antenna beyond which the field is below the exposure limits. Each site has its own horizontal and vertical range.",
+  "value": "site-specific safety range",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "A rooftop wireless-access facility is exempt from a building permit only if its horizontal public-health safety range does not exceed 4 metres; 6 metres when it combines more than one operator, or two technologies of which one is a new generation.",
+  "value": "max 4 m (6 m for combined sites)",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "For an exempt rooftop facility, the public-health safety range must stay inside the plot it stands on, except where it extends into a road reserve or public open space.",
+  "value": "safety range must stay inside the plot",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "The exemption does not apply on a building designated for preservation, in a national park, nature reserve or memorial site, or on a declared antiquities site. One operator may build up to ten new exempt facilities per calendar year.",
+  "value": "exclusions; max 10 new per operator per year",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "The application for such a facility must include a map marking every existing or planned transmitter within 300 metres. The 300 m figure is a mapping requirement, not a safety distance.",
+  "value": "300 m = mapping radius only",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Antenna safety distances",
+  "fact": "The commonly repeated claim of a single 'safe distance' of X metres between a cellular antenna and a home was NOT found in any primary source. The primary texts set a per-site safety range calculated for the permit.",
+  "value": "NOT FOUND in a primary source",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP works by the precautionary principle. One of its main goals is to minimise public exposure to grid magnetic fields above 4 milligauss (mG) as a daily average on the day of peak electricity consumption.",
+  "value": "4 mG daily average (peak day)",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP states that the Ministry of Health determined that prolonged exposure not exceeding a daily average of 4 mG is not a health risk, the daily average being calculated from measurements on the day of peak consumption.",
+  "value": "4 mG = MoH 'no health risk' level",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP states that 4 mG as a 24-hour average on a peak-consumption day is equivalent to 2 mG as an annual average.",
+  "value": "4 mG peak-day = 2 mG annual",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP states that, from studies and thousands of measurements in Israel, the daily average exposure in more than 90% of homes does not exceed 0.4 mG.",
+  "value": "over 90% of homes at or below 0.4 mG",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP recommends that electricity installations be designed and operated by the precautionary principle, to reduce public magnetic-field exposure as far as possible.",
+  "value": "design recommendation",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "In 2011, MoEP and the Ministry of Health issued joint recommendations of 2,000 mG for momentary exposure and 4 mG for continuous, prolonged exposure. These were never made a legally binding standard; a 2015 Supreme Court petition on this was still pending in August 2020.",
+  "value": "2,000 mG momentary; 4 mG prolonged; not binding",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP's ELF measurement procedure (נוהל מדידת שדות מגנטיים בתחום תדרי ה-ELF, edition 01) has been in force since 1 April 2017. Measured values are normalised with the electricity company's current data for the line, because the field changes with the current.",
+  "value": "in force since 2017-04-01; normalised by line current",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "MoEP measured a home after a public inquiry, including a week-long monitoring station. In a house 17.5 m from the axis of a 161 kV double-circuit overhead line, indoor readings were 3.3-7.5 mG, or 6.6-15 mG after normalisation by a factor of 2. MoEP found this did not meet its recommendations and referred it to the electricity company.",
+  "value": "17.5 m from a 161 kV axis: 6.6-15 mG normalised",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "An electricity-company planning document reproduced by a municipality sets minimum horizontal distances between the nearest part of an occupied building and the axis of an overhead line: 20 m for 161 kV, 35 m for 400 kV, and 55 m for buildings with hazardous materials. These are planning clearances, not magnetic-field limits.",
+  "value": "20 m (161 kV); 35 m (400 kV); 55 m (hazardous)",
+  "source_name": "Electricity-company planning document as published by Kfar Saba municipality (read via search summary)",
+  "source_url": "https://kfar-saba.muni.il/uploads/n/1599657600.5025.pdf",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "A commercial Q&A page says the 'safe distance' is at least 50 m from a 161 kV line and 60 m from a 400 kV line, based on 4 mG. This was NOT found in an MoEP or electricity-company primary source.",
+  "value": "50 m / 60 m: NOT FOUND in a primary source",
+  "source_name": "Commercial Q&A page (secondary)",
+  "source_url": "https://www.midrag.co.il/pages/02ws/Midragonim/Answer/26288",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "No official fixed distance between a transformer room (חדר שנאים) and an apartment was found. The published practice is a site measurement against the 4 mG recommendation.",
+  "value": "NOT FOUND",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "ELF magnetic fields (power lines, transformers)",
+  "fact": "A Soreq study of 84 students (grades 6-10) recorded 24-hour magnetic-field exposure: geometric mean 0.59 mG, arithmetic mean 0.73 mG; three participants (3.6%) averaged above 2 mG. Exposure at home was lowest, 0.3 mG (geometric mean).",
+  "value": "GM 0.59 mG; 3.6% above 2 mG",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "IARC classified radiofrequency electromagnetic fields as possibly carcinogenic to humans (Group 2B), based on an increased risk of glioma associated with wireless phone use.",
+  "value": "Group 2B",
+  "source_name": "IARC Press Release No. 208",
+  "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr208_E.pdf",
+  "source_date": "2011-05-31; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "The IARC evaluation was made by a working group of 31 scientists from 14 countries, meeting 24-31 May 2011, and published as IARC Monographs Volume 102.",
+  "value": "31 scientists, 14 countries; Vol. 102",
+  "source_name": "IARC Press Release No. 208",
+  "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr208_E.pdf",
+  "source_date": "2011-05-31; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "IARC rated the evidence 'limited' for glioma and acoustic neuroma in wireless-phone users and 'inadequate' for other cancers. Evidence from occupational exposure and from environmental exposure to radio, TV and telecom transmission was also judged inadequate.",
+  "value": "limited (phones); inadequate (transmitters)",
+  "source_name": "IARC Press Release No. 208",
+  "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr208_E.pdf",
+  "source_date": "2011-05-31; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "IARC did not quantify the risk. It cited one study of past cell-phone use (to 2004) that showed a 40% higher glioma risk in the heaviest-user category, with a reported average of 30 minutes a day over 10 years.",
+  "value": "+40% in heaviest users (one study)",
+  "source_name": "IARC Press Release No. 208",
+  "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr208_E.pdf",
+  "source_date": "2011-05-31; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "An IARC advisory group (report posted November 2024) listed radiofrequency fields as a high-priority agent for re-evaluation in 2025-2029.",
+  "value": "high priority, 2025-2029",
+  "source_name": "EMF-Portal news item (secondary)",
+  "source_url": "https://www.emf-portal.org/en/news/2601",
+  "source_date": "2024; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "WHO's mobile-phone fact sheet states that, to date, no adverse health effects have been established as being caused by mobile phone use.",
+  "value": "no established adverse effects",
+  "source_name": "WHO Fact Sheet No. 193, Electromagnetic fields and public health: mobile phones",
+  "source_url": "http://origin.who.int/mediacentre/factsheets/fs193/en/",
+  "source_date": "2014-10; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "WHO states that, from all evidence accumulated so far, no adverse short- or long-term health effects have been shown to occur from the RF signals produced by base stations, and that cancer clusters near base stations would be expected by chance.",
+  "value": "no effects shown from base stations",
+  "source_name": "WHO, Base stations and wireless technologies",
+  "source_url": "https://www.who.int/teams/environment-climate-change-and-health/radiation-and-health/non-ionizing/wireless",
+  "source_date": "read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "WHO-supported review Part I found moderate-certainty evidence that mobile-phone use likely does not increase the risk of glioma, meningioma or acoustic neuroma.",
+  "value": "moderate certainty: no increase",
+  "source_name": "Karipidis et al., WHO-supported systematic review Part I, Environment International vol. 191 (abstract via Europe PMC)",
+  "source_url": "https://doi.org/10.1016/j.envint.2024.108983",
+  "source_date": "2024-08-30 online; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "Part I found moderate-certainty evidence that RF exposure from fixed-site transmitters (broadcast antennas, base stations) likely does not increase childhood leukaemia risk, and low-certainty evidence that it may not increase paediatric brain tumours.",
+  "value": "moderate (leukaemia); low (brain tumours)",
+  "source_name": "Karipidis et al., WHO-supported systematic review Part I, Environment International vol. 191 (abstract via Europe PMC)",
+  "source_url": "https://doi.org/10.1016/j.envint.2024.108983",
+  "source_date": "2024-08-30 online; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "Part I found low-certainty evidence that cordless phones may not increase glioma, meningioma or acoustic neuroma, and low-certainty evidence that occupational RF exposure may not increase brain cancer or glioma.",
+  "value": "low certainty: no increase",
+  "source_name": "Karipidis et al., WHO-supported systematic review Part I, Environment International vol. 191 (abstract via Europe PMC)",
+  "source_url": "https://doi.org/10.1016/j.envint.2024.108983",
+  "source_date": "2024-08-30 online; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "Part I found NO eligible studies on RF exposure from fixed-site transmitters and the critical tumours in adults. This is an open gap for adults living near antennas.",
+  "value": "no studies (gap)",
+  "source_name": "Karipidis et al., WHO-supported systematic review Part I, Environment International vol. 191 (abstract via Europe PMC)",
+  "source_url": "https://doi.org/10.1016/j.envint.2024.108983",
+  "source_date": "2024-08-30 online; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "WHO-supported review Part II found low-certainty evidence that mobile-phone use does not increase leukaemia, non-Hodgkin lymphoma or thyroid cancer, and not enough evidence to assess whole-body far-field exposure (the kind received near transmitters).",
+  "value": "low certainty; far-field evidence insufficient",
+  "source_name": "Karipidis et al., WHO-supported systematic review Part II, Environment International vol. 196 (abstract via Europe PMC)",
+  "source_url": "https://doi.org/10.1016/j.envint.2025.109274",
+  "source_date": "2025-01-11 online; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "The WHO-supported animal review concluded that RF-EMF exposure increases cancer incidence in experimental animals, with certainty highest for malignant heart schwannomas and gliomas. The authors warned that extrapolating to humans is particularly complex for RF.",
+  "value": "high certainty in animals (2 tumour types)",
+  "source_name": "Mevissen et al., WHO-supported systematic review of animal cancer studies, Environment International vol. 199, art. 109482 (read via search summary)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/40339346/",
+  "source_date": "2025; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "The animal review drew published criticism: commentaries list errors and note that most conclusions rested on the US National Toxicology Program study; ARPANSA reports that the authors conceded many of the errors.",
+  "value": "contested",
+  "source_name": "ARPANSA commentary (Australian radiation regulator)",
+  "source_url": "https://www.arpansa.gov.au/commentary-systematic-review-radiofrequency-field-exposure-and-animal-cancer",
+  "source_date": "read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: RF-EMF",
+  "fact": "The INTEROCC occupational study (Israel was one of seven countries) included 3,978 brain-tumour patients and 5,601 controls. It found no increased risk overall, with a possible signal for glioma at the highest RF exposure percentile.",
+  "value": "3,978 cases / 5,601 controls; no overall increase",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "ELF magnetic fields were classified as possibly carcinogenic (Group 2B) in IARC Monographs Volume 80, evaluated in 2001.",
+  "value": "Group 2B (2001)",
+  "source_name": "IARC Press Release No. 208 (names Vol. 80 on ELF); year from Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr208_E.pdf",
+  "source_date": "2011-05-31; read 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "WHO (Environmental Health Criteria 238): the 2B classification rests on pooled analyses showing a consistent two-fold increase in childhood leukaemia with average residential power-frequency magnetic fields above 0.3 to 0.4 µT (3 to 4 mG).",
+  "value": "x2 above 0.3-0.4 µT",
+  "source_name": "WHO radiation and health page summarising Environmental Health Criteria 238 (ELF)",
+  "source_url": "https://www.who.int/teams/environment-climate-change-and-health/radiation-and-health/non-ionizing/exposure",
+  "source_date": "EHC 238 is from 2007; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "WHO concluded that, on balance, the evidence on childhood leukaemia is not strong enough to be considered causal, partly because of methodological problems such as possible selection bias.",
+  "value": "association, not established as causal",
+  "source_name": "WHO radiation and health page summarising Environmental Health Criteria 238 (ELF)",
+  "source_url": "https://www.who.int/teams/environment-climate-change-and-health/radiation-and-health/non-ionizing/exposure",
+  "source_date": "EHC 238 is from 2007; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "WHO estimates that only 1% to 4% of children live in homes with an average magnetic field above 0.3 µT.",
+  "value": "1-4% of children",
+  "source_name": "WHO radiation and health page summarising Environmental Health Criteria 238 (ELF)",
+  "source_url": "https://www.who.int/teams/environment-climate-change-and-health/radiation-and-health/non-ionizing/exposure",
+  "source_date": "EHC 238 is from 2007; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "WHO states that for cardiovascular disease and breast cancer the evidence suggests ELF fields do not cause them.",
+  "value": "no causal link (CVD, breast cancer)",
+  "source_name": "WHO radiation and health page summarising Environmental Health Criteria 238 (ELF)",
+  "source_url": "https://www.who.int/teams/environment-climate-change-and-health/radiation-and-health/non-ionizing/exposure",
+  "source_date": "EHC 238 is from 2007; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "The EU scientific committee SCHEER judged the evidence linking ELF magnetic-field exposure to childhood leukaemia as weak (epidemiology weak to moderate, animal evidence weak). Preliminary opinion October 2023; final opinion adopted 17 May 2024.",
+  "value": "weak evidence",
+  "source_name": "EU SCHEER opinion on EMF 1 Hz-100 kHz (final text, hosted copy)",
+  "source_url": "https://sfrp.asso.fr/wp-content/uploads/2024/11/scheer_o_063_061124.pdf",
+  "source_date": "2024-05-17; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Health science: ELF and childhood leukaemia",
+  "fact": "An MoEP letter paraphrases WHO as saying that installations exposing the public long-term above a 2 mG annual average are a 'possible carcinogen'. WHO's own wording ties the classification to 0.3-0.4 µT (3-4 mG) in pooled studies; the 2 mG wording is MoEP's.",
+  "value": "MoEP paraphrase differs from WHO wording",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "Ministry of Health guidance",
+  "fact": "The Ministry of Health leaflet states that the guiding principle for non-ionizing radiation exposure, and for mobile phones in particular, is the precautionary principle: take simple, relatively cheap steps to reduce exposure even though a causal link has not been proven.",
+  "value": "precautionary principle",
+  "source_name": "Ministry of Health leaflet as reproduced by a mobile operator (secondary copy of an official text)",
+  "source_url": "https://shops.golantelecom.co.il/media/docs/websites/2/Non-ionizing-radiation-G_1.pdf",
+  "source_date": "undated; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Ministry of Health guidance",
+  "fact": "The Ministry of Health leaflet recommends not letting babies and toddlers use mobile phones, limiting children's exposure as far as possible, and considering the age at which use starts.",
+  "value": "children: limit use",
+  "source_name": "Ministry of Health leaflet as reproduced by a mobile operator (secondary copy of an official text)",
+  "source_url": "https://shops.golantelecom.co.il/media/docs/websites/2/Non-ionizing-radiation-G_1.pdf",
+  "source_date": "undated; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Ministry of Health guidance",
+  "fact": "TNUDA (the national centre for health promotion) updated its mobile-phone recommendations in 2019 (earlier MoH guidance dates from 2008). They rest on three principles: distance from the body, time of exposure and transmission power.",
+  "value": "distance, time, power (2019)",
+  "source_name": "Environmental Health in Israel 2020 report, radiation chapter (Taub Center / Environment and Health Fund; secondary, built on MoEP and MoH data)",
+  "source_url": "https://ehf.taubcenter.org.il/en/tchum/radiation-2/",
+  "source_date": "2020 (latest data Aug 2020); read 2026-11-03"
+ },
+ {
+  "topic": "Ministry of Health guidance",
+  "fact": "In 2010 the Ministry of Health recommended preferring a corded landline over a cordless home phone.",
+  "value": "2010 recommendation",
+  "source_name": "Israeli news report (media)",
+  "source_url": "https://www.ynet.co.il/articles/mobile/0,7340,L-3923177,00.html",
+  "source_date": "2010; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Ministry of Health guidance",
+  "fact": "A primary Ministry of Health web page on precaution near power lines or antennas was NOT read; gov.il pages refused scripted fetches.",
+  "value": "NOT VERIFIED on gov.il",
+  "source_name": "gov.il (blocked)",
+  "source_url": "https://www.gov.il/he/departments/guides/radiation_cellular_antennas",
+  "source_date": "HTTP 403 on 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "The Clean Air Law (חוק אוויר נקי, התשס״ח-2008), section 6, is the basis for air-quality values. There are three types: target values (ערכי יעד, policy goals), environmental values (ערכי סביבה, binding; exceeding them is prohibited) and alert values (ערכי התרעה, immediate risk), the last required for at least 28 pollutants.",
+  "value": "3 value types; alert values for 28+ pollutants",
+  "source_name": "Kol Zchut, air quality values page (secondary)",
+  "source_url": "https://www.kolzchut.org.il/he/%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_(%D7%A8%D7%9E%D7%95%D7%AA_%D7%96%D7%99%D7%94%D7%95%D7%9D_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%9E%D7%A7%D7%A1%D7%99%D7%9E%D7%9C%D7%99%D7%95%D7%AA)",
+  "source_date": "page updated 2023-11-27; read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "The values are set in תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, signed 9 May 2011, amended in 2013, 2015, 2021 and twice in 2022, and listed as valid until 1 March 2027.",
+  "value": "in force to 2027-03-01",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli target values for PM2.5: 15 µg/m³ (24 hours) and 5 µg/m³ (annual).",
+  "value": "15 / 5 µg/m³",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli target values for NO2: 200 µg/m³ (1 hour), 25 µg/m³ (24 hours) and 10 µg/m³ (annual).",
+  "value": "200 / 25 / 10 µg/m³",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli binding environmental values for NO2: 200 µg/m³ (1 hour, 8 exceedances a year allowed) and 40 µg/m³ (annual).",
+  "value": "200 (1 h) / 40 (annual) µg/m³",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli binding environmental value for PM2.5: 25 µg/m³ annual. The 24-hour figure shown in the transcription (17.5) looks inconsistent and must be checked against the official text before printing.",
+  "value": "25 µg/m³ annual (24 h value unverified)",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli values for PM10: environmental 130 µg/m³ (24 h) and 50 µg/m³ (annual); target 45 (24 h) and 15 (annual).",
+  "value": "env 130/50; target 45/15",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Israeli values for ozone: environmental 140 µg/m³ over 8 hours (10 exceedances a year allowed); target 100 µg/m³ over 8 hours.",
+  "value": "env 140; target 100 (8 h)",
+  "source_name": "Wikisource transcription of תקנות אוויר נקי (ערכי איכות אוויר) (הוראת שעה), התשע״א-2011, as amended (secondary copy of the official text; verify on Nevo before printing)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "WHO global air quality guidelines (2021): PM2.5 annual 5 µg/m³ and 24-hour 15 µg/m³; NO2 annual 10 µg/m³.",
+  "value": "PM2.5 5/15; NO2 10 (annual)",
+  "source_name": "WHO global air quality guidelines 2021",
+  "source_url": "https://iris.who.int/server/api/core/bitstreams/551b515e-2a32-4e1a-a58c-cdaecd395b19/content",
+  "source_date": "2021-09; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Comparison: Israel's target values for PM2.5 and NO2 equal the WHO 2021 guideline numbers, but the binding environmental values are looser: PM2.5 annual 25 vs WHO 5 (five times), NO2 annual 40 vs WHO 10 (four times).",
+  "value": "binding PM2.5 = 5x WHO; NO2 = 4x WHO",
+  "source_name": "Derived from the Israeli regulations (Wikisource copy) and WHO 2021",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%A0%D7%A7%D7%99_(%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8)_(%D7%94%D7%95%D7%A8%D7%90%D7%AA_%D7%A9%D7%A2%D7%94)",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "Residents can report air pollution through the MoEP hotline *6911 or the government call centre 1299.",
+  "value": "*6911 / 1299",
+  "source_name": "Kol Zchut, air quality values page (secondary)",
+  "source_url": "https://www.kolzchut.org.il/he/%D7%A2%D7%A8%D7%9B%D7%99_%D7%90%D7%99%D7%9B%D7%95%D7%AA_%D7%90%D7%95%D7%95%D7%99%D7%A8_(%D7%A8%D7%9E%D7%95%D7%AA_%D7%96%D7%99%D7%94%D7%95%D7%9D_%D7%90%D7%95%D7%95%D7%99%D7%A8_%D7%9E%D7%A7%D7%A1%D7%99%D7%9E%D7%9C%D7%99%D7%95%D7%AA)",
+  "source_date": "page updated 2023-11-27; read 2026-11-03"
+ },
+ {
+  "topic": "Air quality",
+  "fact": "The number of stations in the national air-monitoring network and the live-data address were NOT verified in this session.",
+  "value": "NOT VERIFIED",
+  "source_name": "n/a",
+  "source_url": "",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "The core neighbourhood-noise rules are תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990, which replaced the 1977 regulations.",
+  "value": "1990 regulations",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Under these regulations, day is 06:00-22:00 and night is 22:00-06:00.",
+  "value": "day 06-22; night 22-06",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Building types: א = hospital, convalescent or elderly home, school; ב = building in a residential zone; ג = residential plus commerce, crafts or entertainment; ד = apartment in an industrial or commercial zone; ה = industrial or commercial building.",
+  "value": "5 building types",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Permitted level for a home in a residential zone (type ב): 50 dB(A) for noise lasting more than 9 hours in the day, and 40 dB(A) for noise lasting more than 30 minutes at night.",
+  "value": "50 dB(A) day / 40 dB(A) night",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Permitted levels for type א (hospitals, schools, elderly homes): 45 dB(A) day (more than 9 hours) and 35 dB(A) night. For type ג (mixed residential and commerce): 55 dB(A) day and 40 dB(A) night.",
+  "value": "א 45/35; ג 55/40 dB(A)",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "For tonal or impulsive noise, 5 dB is added to the measured level.",
+  "value": "+5 dB",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Measurement is made indoors in a habitable room, at least 1 m from walls and 1.2-1.5 m above the floor, with windows and outside doors open and internal doors closed.",
+  "value": "indoor, windows open",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "These regulations exclude noise from aircraft, trains, vehicles and construction equipment, which have separate rules; they bring back car lots, car parks for 25 or more vehicles, and construction equipment working permanently at one site.",
+  "value": "transport noise excluded",
+  "source_name": "Wikisource transcription of תקנות למניעת מפגעים (רעש בלתי סביר), התש״ן-1990 (secondary copy; Table 1 column layout inferred from the scrape, verify on Nevo)",
+  "source_url": "https://he.wikisource.org/wiki/%D7%AA%D7%A7%D7%A0%D7%95%D7%AA_%D7%9C%D7%9E%D7%A0%D7%99%D7%A2%D7%AA_%D7%9E%D7%A4%D7%92%D7%A2%D7%99%D7%9D_(%D7%A8%D7%A2%D7%A9_%D7%91%D7%9C%D7%AA%D7%99_%D7%A1%D7%91%D7%99%D7%A8)",
+  "source_date": "signed 1990-07-15; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "Ben Gurion airport: take-offs are generally prohibited between 01:40 and 05:50; between 02:00 and 05:00 the airport is closed to take-offs except on Thursday nights and nights before holiday eves. Landings are not restricted to fixed hours.",
+  "value": "no take-offs 01:40-05:50 (with exceptions)",
+  "source_name": "Kol Zchut, aircraft noise limits page (secondary, cites the regulations)",
+  "source_url": "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%AA_%D7%A8%D7%A2%D7%A9_%D7%9E%D7%A9%D7%93%D7%95%D7%AA_%D7%AA%D7%A2%D7%95%D7%A4%D7%94",
+  "source_date": "page updated 2026-07-14; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "MoEP and the Israel Airports Authority monitor aircraft noise continuously, and the Airports Authority publishes monitoring reports. Residents can complain to the Airports Authority's environmental information centre or to the MoEP district office.",
+  "value": "continuous monitoring; complaint routes",
+  "source_name": "Kol Zchut, aircraft noise limits page (secondary, cites the regulations)",
+  "source_url": "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%AA_%D7%A8%D7%A2%D7%A9_%D7%9E%D7%A9%D7%93%D7%95%D7%AA_%D7%AA%D7%A2%D7%95%D7%A4%D7%94",
+  "source_date": "page updated 2026-07-14; read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "תמ״א 2/4 (the Ben Gurion airport national plan, approved 1997) divides the surroundings into four aircraft-noise zones. Zone 1 is Ldn 60-65 and zone 2 is Ldn 65-70, where building is allowed subject to noise-insulation requirements.",
+  "value": "4 zones; Ldn 60-65, 65-70",
+  "source_name": "Municipal planning document (Kfar Saba; read via search summary)",
+  "source_url": "https://kfar-saba.muni.il/uploads/n/1610032407.6708.pdf",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Noise",
+  "fact": "The State Comptroller (2016) found the operating pattern set in תמ״א 2/4 about 19 years earlier no longer relevant and recommended updating the plan.",
+  "value": "plan outdated (2016)",
+  "source_name": "State Comptroller annual report 67A, Ben Gurion airport chapter",
+  "source_url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/67a/2016-67a-509-Natbag.docx",
+  "source_date": "2016; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Industry (PRTR, Haifa Bay)",
+  "fact": "Israel's pollutant register (מפל״ס) is required by חוק הגנת הסביבה (פליטות והעברות לסביבה - חובות דיווח ומרשם), התשע״ב-2012. MoEP publishes it every year, with emissions to air, sea, land and water sources and waste transfers from large plants, and submits a report to the Knesset Interior and Environmental Protection Committee.",
+  "value": "annual register under the 2012 law",
+  "source_name": "MoEP, מרשם פליטות לסביבה annual report submitted to the Knesset Interior and Environmental Protection Committee (primary; the numbers did not extract from the PDF)",
+  "source_url": "https://www.gov.il/BlobFolder/reports/prtr_report/he/prtr_prtr-2025.pdf",
+  "source_date": "report file dated 2026 (September); read 2026-11-03"
+ },
+ {
+  "topic": "Industry (PRTR, Haifa Bay)",
+  "fact": "The register's online system lets anyone find plants on a map, analyse data by plant and pollutant, and compare years. The annual report has a dedicated Haifa Bay section.",
+  "value": "map search by plant and pollutant",
+  "source_name": "MoEP, מרשם פליטות לסביבה annual report submitted to the Knesset Interior and Environmental Protection Committee (primary; the numbers did not extract from the PDF)",
+  "source_url": "https://www.gov.il/BlobFolder/reports/prtr_report/he/prtr_prtr-2025.pdf",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Industry (PRTR, Haifa Bay)",
+  "fact": "The register covers about 570 of Israel's largest plants (figure for 2016 reporting).",
+  "value": "about 570 plants (2016)",
+  "source_name": "Israeli tech-news site summarising MoEP data (secondary)",
+  "source_url": "https://protocol.co.il/%D7%A0%D7%AA%D7%95%D7%A0%D7%99-%D7%9E%D7%A4%D7%9C%D7%A1-2016/",
+  "source_date": "2016 data; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Industry (PRTR, Haifa Bay)",
+  "fact": "The State Comptroller describes the Haifa Bay area as one of Israel's most prominent environmental pollution hotspots.",
+  "value": "pollution hotspot",
+  "source_name": "State Comptroller report on government action on pollution in Haifa Bay",
+  "source_url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1693-1.aspx",
+  "source_date": "read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Industry (PRTR, Haifa Bay)",
+  "fact": "The government decision on moving the petrochemical industry out of Haifa Bay, and its dates, were NOT verified in this session.",
+  "value": "NOT VERIFIED",
+  "source_name": "n/a",
+  "source_url": "",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Fuel stations",
+  "fact": "A 2016 amendment to תמ״א 18 (fuel stations) set a minimum distance of 40 m between residential building and a fuel station with 4 fuelling positions.",
+  "value": "40 m (4 positions)",
+  "source_name": "Business newspaper report (media; read via search summary; one of two articles returned, not opened)",
+  "source_url": "https://www.calcalist.co.il/local/articles/0,7340,L-3717993,00.html",
+  "source_date": "2016; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Fuel stations",
+  "fact": "In urban-renewal plans, the planning body may reduce the station-to-housing distance down to 20 m.",
+  "value": "down to 20 m (urban renewal)",
+  "source_name": "Business newspaper report (media; read via search summary; one of two articles returned, not opened)",
+  "source_url": "https://www.calcalist.co.il/local/articles/0,7340,L-3717993,00.html",
+  "source_date": "2016; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Fuel stations",
+  "fact": "The Ministry of Health opposed shortening the distances because of carcinogens such as benzene; its position was not accepted by the National Planning Council.",
+  "value": "MoH objection rejected",
+  "source_name": "Business newspaper report (media; read via search summary; one of two articles returned, not opened)",
+  "source_url": "https://www.calcalist.co.il/local/articles/0,7340,L-3717993,00.html",
+  "source_date": "2016; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Fuel stations",
+  "fact": "An appeals-committee decision upheld by a district court cited a distance of 80 m between a fuel station and public buildings under תמ״א 18 amendment 4.",
+  "value": "80 m to public buildings",
+  "source_name": "Legal database summary of a court decision (secondary)",
+  "source_url": "https://www.dinrega.com/gs/%D7%94%D7%99%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%97%D7%A0%D7%AA%20%D7%93%D7%9C%D7%A7%20%D7%9E%D7%9B%D7%95%D7%97%20%D7%AA%D7%9E%22%D7%90%2018",
+  "source_date": "read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Fuel stations",
+  "fact": "The binding text of תמ״א 18 amendment 4 was NOT read in this session; the distances above come from media and legal-database summaries.",
+  "value": "NOT VERIFIED in the plan text",
+  "source_name": "Planning Administration national-plan file (not opened)",
+  "source_url": "https://apps.land.gov.il/IturTabotData/takanonim/Artzi/9608745.pdf",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "Radiation measurements for permits must be made by a holder of a permit to provide radiation-measurement services (sections 3 and 18 of the law). A buyer can ask to see the measurer's MoEP permit number on the report.",
+  "value": "licensed measurer required",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "A radiation survey of a standard apartment costs on average 500-650 NIS; the price depends mainly on the apartment's size. It usually covers both cellular (RF) and electrical (ELF) radiation.",
+  "value": "500-650 NIS (commercial)",
+  "source_name": "Commercial price page (crowd-sourced averages)",
+  "source_url": "https://www.midrag.co.il/Content/Tip/82",
+  "source_date": "2026; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "A pre-entry home inspection (בדק בית) cost about 1,788 NIS on average in 2025 data, with reported payments from 1,320 to 2,750 NIS, VAT included.",
+  "value": "avg 1,788 NIS; 1,320-2,750 (commercial)",
+  "source_name": "Commercial price page (crowd-sourced averages) (exact sub-page among the price lists returned was not opened)",
+  "source_url": "https://www.midrag.co.il/pages/homeless/Content/PriceList/472781",
+  "source_date": "2025; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "A general inspection of a new apartment cost about 1,709 NIS on average (1,416-2,200 NIS); a second-hand apartment about 1,805 NIS (1,540-2,336 NIS).",
+  "value": "new 1,709; second-hand 1,805 NIS (commercial)",
+  "source_name": "Commercial price page (crowd-sourced averages) (exact sub-page not opened)",
+  "source_url": "https://www.midrag.co.il/pages/homeless/Content/PriceList/1133316",
+  "source_date": "data updated 2025-06-23 and 2025-07-11; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "Another commercial price list gives home-inspection ranges by home type: 1,300-1,500 NIS for 3-4 rooms, 3,100-3,300 for 5 rooms, 3,800-4,000 for a garden apartment, 4,000-4,200 for a penthouse or duplex, 4,600-4,800 for a detached house.",
+  "value": "1,300-4,800 NIS by type (commercial, undated)",
+  "source_name": "Commercial price page",
+  "source_url": "https://www.pro.co.il/home-inspection/mitzpe-ramon",
+  "source_date": "undated; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Professionals and prices",
+  "fact": "No published Israeli NIS price was found for an acoustic consultant's noise measurement or report, an environmental consultant, an electrician doing magnetic shielding, or a planning lawyer filing an objection to an antenna permit.",
+  "value": "NOT FOUND",
+  "source_name": "n/a",
+  "source_url": "",
+  "source_date": "read 2026-11-03"
+ },
+ {
+  "topic": "Checking a property",
+  "fact": "MoEP itself measured a home's magnetic field following a public inquiry (עקב פניית ציבור), including a monitoring station left in the living room for about a week. A resident can therefore ask MoEP for a measurement; the request channel and any fee were not confirmed on gov.il.",
+  "value": "MoEP measures on public inquiry",
+  "source_name": "MoEP Noise and Radiation Division, ELF magnetic-field measurement letter (primary, on file; not linked: it carries a resident's details)",
+  "source_url": "",
+  "source_date": "2021-07-06; read 2026-11-03"
+ },
+ {
+  "topic": "Checking a property",
+  "fact": "Tel Aviv municipality states that a radiation check at a private address is done by the resident at his own responsibility, and for electrical installations he can turn to a licensed measurer.",
+  "value": "private check = resident's responsibility",
+  "source_name": "Tel Aviv-Yafo municipality, electromagnetic radiation page",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Environment/Pages/Radiation.aspx",
+  "source_date": "read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Checking a property",
+  "fact": "Section 19 of the law obliges MoEP to publish the locations of permitted radiation sources, their exposure assessments and measurement results, so the MoEP publication is the first place to look for antennas near an address.",
+  "value": "MoEP must publish locations and results",
+  "source_name": "חוק הקרינה הבלתי מייננת, התשס״ו-2006, official text (ספר החוקים התשס״ו p.158), Knesset file server",
+  "source_url": "https://fs.knesset.gov.il//16/law/16_lsr_299993.pdf",
+  "source_date": "2006-01-01 (א׳ בטבת התשס״ו); read 2026-11-03"
+ },
+ {
+  "topic": "Checking a property",
+  "fact": "The application file for a rooftop antenna includes a 1:250 map with the facility, its safety ranges, and all transmitters within 300 m. A buyer can ask the local planning committee for this file.",
+  "value": "1:250 map; transmitters within 300 m",
+  "source_name": "Knesset Economics Committee, draft text of תקנות התכנון והבניה (התקנת מיתקן גישה אלחוטית לתקשורת בשיטה התאית), התשע״ח-2018 (draft for discussion; final text not checked)",
+  "source_url": "https://fs.knesset.gov.il/20/Committees/20_cs_bg_493071.docx",
+  "source_date": "2018-05-08 (draft); read 2026-11-03"
+ },
+ {
+  "topic": "Checking a property",
+  "fact": "The national planning information system Mavat (the Planning Administration's plan search) was NOT opened in this session, so its current search options are not described here.",
+  "value": "NOT VERIFIED",
+  "source_name": "Planning Administration, Mavat",
+  "source_url": "https://mavat.iplan.gov.il/",
+  "source_date": "not read 2026-11-03"
+ },
+ {
+  "topic": "Rights and objections",
+  "fact": "A Tel Aviv licensing authority (2020) rejected a neighbour's objection to an antenna because the application conformed to תמ״א 36/א and radiation is not a planning argument; it stated that the local authority is not responsible for radiation matters. The permit was conditioned on an indemnity letter against compensation claims under section 197.",
+  "value": "objection rejected; section 197 indemnity required",
+  "source_name": "Tel Aviv-Yafo licensing authority objections protocol 6-20-0052",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%94%D7%AA%D7%A0%D7%92%D7%93%D7%95%D7%99%D7%95%D7%AA%20%D7%9E%D7%A1%D7%A4%D7%A8%206-20-0052.pdf",
+  "source_date": "2020; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Rights and objections",
+  "fact": "Between 2006 and 2009, 1,551 small transmission facilities were added, of which only 444 went through a building permit; the rest used an exemption. The High Court then barred building antennas without a permit until new regulations took effect.",
+  "value": "1,551 added; 444 with a permit",
+  "source_name": "Business news report (media; read via search summary)",
+  "source_url": "https://finance.walla.co.il/item/1741983",
+  "source_date": "about 2010; read via search summary 2026-11-03"
+ },
+ {
+  "topic": "Rights and objections",
+  "fact": "Whether owners actually receive compensation under section 197 for loss of value caused by an antenna plan, and typical amounts, was NOT established from the sources read.",
+  "value": "NOT FOUND",
+  "source_name": "Legal database summary (the excerpt did not show the holding)",
+  "source_url": "https://www.dinrega.com/gs/%D7%A4%D7%99%D7%A6%D7%95%D7%99%D7%99%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%20%D7%9E%D7%AA%D7%9F%20%D7%94%D7%99%D7%AA%D7%A8%20%D7%91%D7%A0%D7%99%D7%99%D7%94%20%D7%9C%D7%90%D7%A0%D7%98%D7%A0%D7%94%20%D7%A1%D7%9C%D7%95%D7%9C%D7%90%D7%A8%D7%99%D7%AA",
+  "source_date": "read 2026-11-03"
+ }
+]
