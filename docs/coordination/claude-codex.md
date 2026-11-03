@@ -4666,3 +4666,9 @@ RELEASE DONE 1.72.577 (GardenTools): released and verified (project-stage-2026-0
 
 RELEASE LOCK 1.72.578 (HazardTools, HAD-670 R13e: new inc/hazards-tools.php + new assets/instruments/tools/hazards.js + new data/hazards.json + new data/hazards-lines.json, one hunk on the live inc/instruments.php) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 23:25.
 RELEASE DONE 1.72.578 (HazardTools): released and verified (project-stage-2026-09-24/deploy-result-578.json), 943 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 23:50.
+
+RELEASE LOCK 1.72.579 (HazardEnglish, HAD-670 R13g: inc/hazards-tools.php + assets/instruments/tools/hazards.js swapped whole, both written by 1.72.578) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 00:20.
+RELEASE DONE 1.72.579 (HazardEnglish): released and verified (project-stage-2026-09-24/deploy-result-579.json), 946 page checks OK, the Hebrew hazards page unchanged. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 00:40.
+
+RELEASE LOCK 1.72.580 (HazardAddress, HAD-670 R13g: assets/instruments/tools/hazards.js swapped whole, written by 1.72.579) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 01:00.
+RELEASE DONE 1.72.580 (HazardAddress): released and verified (project-stage-2026-09-24/deploy-result-580.json), 949 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 01:20.

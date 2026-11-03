@@ -19,16 +19,23 @@ if ( ! function_exists( 'nadlan_hz_tool_ids' ) ) {
 	add_filter( 'nadlan_nli_tools', function ( $tools ) {
 		$rel = array( '/asbestos/' => 'אסבסט: איך מזהים ומה עושים', '/home-inspection/' => 'בדק בית', '/buying-apartment/' => 'מדריך קניית דירה', '/real-estate-lawyer/' => 'עורך דין לקניית דירה' );
 		$pts = array( 'hazards.json' ); $all = array( 'hazards.json', 'hazards-lines.json' );
+		// 1.72.579 (R13g): the English page /en/environmental-hazards/ prints the English name, kicker, description and related links
+		$rel_en = array( '/en/asbestos/' => 'Asbestos in Israel', '/en/buy-property-in-israel/' => 'Buying property in Israel from abroad', '/en/sde-dov/contamination/' => 'The Sde Dov soil test map' );
 		$tools['hzmap'] = array( 'file' => 'hazards', 'name' => 'מפת מפגעים סביבתיים לפי כתובת', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · מפגעים סביבתיים', 'data' => $all, 'related' => $rel,
-			'desc' => 'לפי כתובת, מיקום או נגיעה במפה: כל אנטנה סלולרית עם הקרינה שנמדדה בה באחוזים מסף הבריאות, קווי מתח עליון, תחנות משנה, מפעלים שמדווחים על פליטות, תחנות דלק, אתרי קרקע ותחנות ניטור אוויר, ברדיוס של 100 עד 1,000 מטר, עם המרחק לכל אחד. מאגרי המשרד להגנת הסביבה, משרד האנרגיה ו-OpenStreetMap.' );
+			'desc' => 'לפי כתובת, מיקום או נגיעה במפה: כל אנטנה סלולרית עם הקרינה שנמדדה בה באחוזים מסף הבריאות, קווי מתח עליון, תחנות משנה, מפעלים שמדווחים על פליטות, תחנות דלק, אתרי קרקע ותחנות ניטור אוויר, ברדיוס של 100 עד 1,000 מטר, עם המרחק לכל אחד. מאגרי המשרד להגנת הסביבה, משרד האנרגיה ו-OpenStreetMap.',
+			'en' => array( 'name' => 'Environmental hazards map by address', 'kicker' => 'Map · Environmental hazards', 'related' => $rel_en, 'desc' => 'By address, your location or a tap on the map: every cellular antenna with the radiation measured at it as a percentage of the health threshold, high-voltage lines, substations, plants that report emissions, fuel stations, soil sites and air monitoring stations, within 100 to 1,000 metres, with the distance to each. Registers of the Ministry of Environmental Protection, the Ministry of Energy and OpenStreetMap.' ) );
 		$tools['hzant'] = array( 'file' => 'hazards', 'name' => 'בדיקת קרינה מאנטנות סלולריות ליד הבית', 'cat' => 'ReferenceApplication', 'kicker' => 'בדיקה · אנטנות סלולריות', 'data' => $pts, 'related' => $rel,
-			'desc' => 'עשר האנטנות הסלולריות הקרובות לנקודה, עם המרחק, סוג האתר, התוצאה הגבוהה שנמדדה באחוזים מסף הבריאות ושנת הבדיקה האחרונה, לפי מאגר המשרד להגנת הסביבה (8,525 אתרים).' );
+			'desc' => 'עשר האנטנות הסלולריות הקרובות לנקודה, עם המרחק, סוג האתר, התוצאה הגבוהה שנמדדה באחוזים מסף הבריאות ושנת הבדיקה האחרונה, לפי מאגר המשרד להגנת הסביבה (8,525 אתרים).',
+			'en' => array( 'name' => 'Radiation measured at the cellular antennas near a home', 'kicker' => 'Check · Cellular antennas', 'related' => $rel_en, 'desc' => 'The ten cellular antennas nearest to a point, with the distance, the site type, the highest measured result as a percentage of the health threshold and the year of the last check, from the Ministry of Environmental Protection register (8,525 sites).' ) );
 		$tools['hzcompare'] = array( 'file' => 'hazards', 'name' => 'השוואת מפגעים סביבתיים בין שתי כתובות', 'cat' => 'ReferenceApplication', 'kicker' => 'השוואה · שתי כתובות', 'data' => $all, 'related' => $rel,
-			'desc' => 'שתי כתובות זו מול זו: האנטנות, קווי המתח, תחנות המשנה, המפעלים המדווחים ותחנות הדלק ברדיוס של 250 מטר, והקרוב מכל סוג.' );
+			'desc' => 'שתי כתובות זו מול זו: האנטנות, קווי המתח, תחנות המשנה, המפעלים המדווחים ותחנות הדלק ברדיוס של 250 מטר, והקרוב מכל סוג.',
+			'en' => array( 'name' => 'Compare environmental hazards at two addresses', 'kicker' => 'Compare · Two addresses', 'related' => $rel_en, 'desc' => 'Two addresses side by side: the antennas, power lines, substations, reporting plants and fuel stations within 250 metres, and the nearest of each kind.' ) );
 		$tools['hzcity'] = array( 'file' => 'hazards', 'name' => 'אנטנות סלולריות, מפעלים ותחנות דלק לפי עיר', 'cat' => 'ReferenceApplication', 'kicker' => 'נתונים · לפי עיר', 'data' => $pts, 'related' => $rel,
-			'desc' => 'לכל יישוב: מספר האנטנות הסלולריות הפעילות, הקרינה החציונית והגבוהה שנמדדה בהן מסף הבריאות, מספר המפעלים המדווחים ומספר תחנות הדלק.' );
+			'desc' => 'לכל יישוב: מספר האנטנות הסלולריות הפעילות, הקרינה החציונית והגבוהה שנמדדה בהן מסף הבריאות, מספר המפעלים המדווחים ומספר תחנות הדלק.',
+			'en' => array( 'name' => 'Cellular antennas, plants and fuel stations by town', 'kicker' => 'Data · By town', 'related' => $rel_en, 'desc' => 'For each town: the number of active cellular antennas, the median and highest radiation measured at them as a share of the health threshold, the number of reporting plants and of fuel stations.' ) );
 		$tools['hzplan'] = array( 'file' => 'hazards', 'name' => 'תכנית בדיקה לדירה: קרינה, רעש, זיהום ומצב הבית', 'cat' => 'UtilitiesApplication', 'kicker' => 'תכנון · לפני שקונים', 'data' => array(), 'related' => $rel,
-			'desc' => 'מסמנים מה יש ליד הדירה ומקבלים תכנית בדיקה: מודד קרינה בעל היתר, יועץ אקוסטי, יועץ סביבתי, בודק בית ועורך דין לתכנון ובנייה, מה כל אחד בודק, והמחיר במקום שבו פורסם.' );
+			'desc' => 'מסמנים מה יש ליד הדירה ומקבלים תכנית בדיקה: מודד קרינה בעל היתר, יועץ אקוסטי, יועץ סביבתי, בודק בית ועורך דין לתכנון ובנייה, מה כל אחד בודק, והמחיר במקום שבו פורסם.',
+			'en' => array( 'name' => 'A check plan for a flat: radiation, noise, pollution and condition', 'kicker' => 'Plan · Before you buy', 'related' => $rel_en, 'desc' => 'Mark what is near the flat and get a check plan: a licensed radiation surveyor, an acoustic consultant, an environmental consultant, a home inspector and a planning lawyer, what each checks, and the price where one was published.' ) );
 		return $tools;
 	} );
 

@@ -6,7 +6,7 @@ https://nad-lan.co.il/environmental-hazards/ (page 8768). It was pressed in real
 
 | Page | Words | Tool | Tables | Maps | Sources | Prices | Pros | Langs | FAQ | Hazards | IL | RE | **Total /24** |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **nad-lan /environmental-hazards/** | 2 (5,794 article words) | 2 (5 own tools) | 2 (article tables + antenna and city tables) | 2 (own 3D map, 8 layers) | 1 (named and dated, not linked in text) | 2 (survey and inspection ranges) | 0 (professions explained, no list of named pros yet) | 0 (Hebrew only) | 2 (17 with FAQPage) | 2 (8 hazard layers) | 2 (law, thresholds, 8,531 measured sites) | 2 (central) | **19** |
+| **nad-lan /environmental-hazards/ + /en/** | 2 (5,794 he + 5,689 en words) | 2 (5 own tools, he + en) | 2 (article tables + antenna and city tables) | 2 (own 3D map, 8 layers) | 1 (named and dated, not linked in text) | 2 (survey and inspection ranges) | 0 (professions explained, no list of named pros yet) | 1 (Hebrew and English, hreflang pair) | 2 (17 he / 16 en, FAQPage) | 2 (8 hazard layers) | 2 (law, thresholds, 8,531 measured sites) | 2 (central) | **20** |
 | [spectrum.fit](https://www.spectrum.fit/מפת-אנטנות-סלולריות/) | 1 | 2 | 1 | 2 | 1 | 0 | 0 | 0 | 2 | 0 | 2 | 0 | **11** |
 | [midrag](https://www.midrag.co.il/Content/Tip/5238) | 1 | 0 | 0 | 0 | 0 | 2 | 2 | 0 | 1 | 1 | 1 | 1 | **9** |
 | [tnuda.org.il](https://www.tnuda.org.il/אנטנות-סלולריות) | 2 | 0 | 2 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 2 | 0 | **8** |
@@ -36,7 +36,7 @@ https://nad-lan.co.il/environmental-hazards/ (page 8768). It was pressed in real
 - **A data correction nobody else made:** the Ministry of Energy register's own coordinates are about 77 m off. We place every station from its ITM grid coordinates, checked to about 1 m against the Tel Aviv-Yafo address layer.
 
 ## Honest gaps (they stay visible)
-- **Languages:** Hebrew only, so we score 0. An English page is the next step.
+- **Languages:** Hebrew and English since 4.11.2026 (https://nad-lan.co.il/en/environmental-hazards/), so we score 1. A third language would make it 2.
 - **Professionals:** the professions are explained, but no list of named, licensed professionals exists yet. The sponsor slot is ready for one.
 - **Sources:** named and dated on the page, but not linked in the text (the house rule). The repo holds `facts.json`: 117 facts from 43 source documents.
 - **Not mappable today:** transformer rooms, pipelines, airport noise contours, live air values, seismic data and radon. None of them is open data; the page says so.

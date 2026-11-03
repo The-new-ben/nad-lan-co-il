@@ -1,0 +1,38 @@
+{
+ "m": {
+  "sw": 390,
+  "lang": "en",
+  "order": {
+   "h1": 121,
+   "cta": 596,
+   "fig": 768,
+   "map": 1292,
+   "honest": 11091
+  },
+  "where": "Address not found. Try street, number and city, or tap the map.",
+  "rep": "Environment report · Rabin Square, Tel Aviv-Yafo (a starting example) |  | 9 cellular antennas | The nearest is 90 m, Indoor small cell. Its highest measured result: 3.98% of the health threshold; the highest in the radius: 7.",
+  "canvas": 1,
+  "hebrew_in_tools": [
+   "תל אביב-יפו\n\n"
+  ],
+  "errors": []
+ },
+ "d": {
+  "sw": 1366,
+  "lang": "en",
+  "order": {
+   "h1": 152,
+   "cta": 545,
+   "fig": 609,
+   "map": 1301,
+   "honest": 7218
+  },
+  "where": "Address not found. Try street, number and city, or tap the map.",
+  "rep": "Environment report · Rabin Square, Tel Aviv-Yafo (a starting example) |  | 9 cellular antennas | The nearest is 90 m, Indoor small cell. Its highest measured result: 3.98% of the health threshold; the highest in the radius: 7.",
+  "canvas": 1,
+  "hebrew_in_tools": [
+   "תל אביב-יפו\n\n"
+  ],
+  "errors": []
+ }
+}

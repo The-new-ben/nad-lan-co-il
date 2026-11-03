@@ -1,0 +1,24 @@
+{
+ "title": "Environmental Hazards Map of Israel by Address: Cell Antennas, Power Lines, Industry and More",
+ "slug": "environmental-hazards",
+ "parent": "EN_ROOT",
+ "tools": [
+  "hzmap",
+  "hzant",
+  "hzcompare",
+  "hzcity",
+  "hzplan"
+ ],
+ "seo_title": "Israel Cell Antenna and Hazards Map by Address | Radiation Data",
+ "seo_desc": "Check any Israeli address: 8,531 cell antennas with their measured radiation, power lines, substations, plants and fuel stations, compared side by side.",
+ "forbid": [
+  "—",
+  "–",
+  "Cellcom",
+  "Partner",
+  "Pelephone",
+  "HOT Mobile",
+  "Golan Telecom",
+  "spectrum.fit"
+ ]
+}
