@@ -359,7 +359,13 @@ Ben's words: Hebrew and English. A huge page of at least 5,000 net words: tools,
     - no independent price survey;
     - no national survey duty;
     - source conflicts to resolve before publishing.
-- [ ] **R11b Claude Design**: hero with image, the map, a cost estimator, an "is my building at risk" check, the authorities directory, the licensed-contractor finder (if the registry is public), FAQ.
+- [x] **R11b Claude Design v107.0 AsbestosHub (3.11 evening, design system version 271).**
+  - **Identity:** fibre-cement greys, hazard yellow on black, Rubik with IBM Plex. No cream, no gold.
+  - **Order:** hazard tag *6911, hero image slot, H1, answer paragraph, 3 CTAs, a numbers panel, then the tools: what do I have, the price guide with Ministry tender prices, the registry (453 by type and district), and who to call (255 authorities to 57 units).
+  - **The map** carries the REAL 348 Western Galilee sites in their 3 statuses. The live page uses a 3D Mapbox map.
+  - **Also:** the buyer checklist and the FAQ.
+  - **Evidence:** `docs/qa/asbestos/ash107-*.png` and `asbestoshub-v107-preview.html`.
+  - **Data saved:** `docs/research/2026-11-03-asbestos/wg-sites.geojson` (348) and `registry-aggregate.json` (453).
 - [ ] **R11c The article**: ChatGPT Pro, 5,000+ net words, from the sourced brief; then English, written natively.
 - [ ] **R11d The image**: Nano Banana or gpt-image, benchmarked against the best before it goes up.
 - [ ] **R11e Build and release** `/asbestos/`, plus the English page; checked at 390 px.
