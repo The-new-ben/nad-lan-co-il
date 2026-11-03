@@ -4650,3 +4650,5 @@ RELEASE LOCK 1.72.571 (BrodetskyData, HAD-654 R7e: data/project-facts.json + dat
 RELEASE DONE 1.72.571 (BrodetskyData): released and verified (deploy-result-571.json), 913 checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 07:48.
 RELEASE LOCK 1.72.572 (AmichaiSternData, HAD-654 R7f: data/project-facts.json + data/radius-prices.json swapped whole for the new page 8753) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 07:59.
 RELEASE DONE 1.72.572 (AmichaiSternData): released and verified (deploy-result-572.json). Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 08:16.
+RELEASE LOCK 1.72.573 (SpotlightZohiMigdalei, HAD-654 R10c: data/neighbour-spotlight.json swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 08:51.
+RELEASE DONE 1.72.573 (SpotlightZohiMigdalei): released and verified (deploy-result-573.json), 922 checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 09:08.

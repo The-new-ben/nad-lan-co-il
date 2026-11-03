@@ -325,7 +325,12 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - no block on Park Bavli or Rainbow.
   - By eye at 390 px and on desktop: `docs/qa/neighbour-spotlight/nb570-*.png`.
   - **Incident:** the runner was cut off from outside during its checks (exit 4). `--finish` refused at the version gate, so `scripts/project-stage/finish570.py` ran the same `run_checks` once: 909 OK.
-  - **Next, a few pages a day:** Zohi, Migdalei Hayam, SEVEN SEAS, then the Einstein pages. Each needs its own neighbours list and rounded figures in the JSON.
+  - [x] **3.11: ZOHI and Migdalei Hayam** (release 1.72.573, released and verified, 922 checks).
+    - ZOHI: range 70-100K/m² as published by the developers. Migdalei Hayam: no price line, since none was published.
+    - Checked at 390 px and on desktop: after the facts table, 3 cards, one H1, no sideways scroll (`docs/qa/neighbour-spotlight/nb573-*`).
+  - **Next:**
+    - SEVEN SEAS: its plot location is unknown, so its neighbours are unclear.
+    - Philharmonit and the Einstein pages sit outside the Sde Dov quarter, and the sub-line names the quarter. The code first needs a per-page area name, which is a small PHP change and a release.
 - Design history: **v106.6, 2.11 evening.** Ben on v106.5: "make it marketing, something that promotes the project; no sources and dates on everything; price ranges, according to public sources; don't commit; nothing that puts people off". Redesigned in Claude Design v106.6 (design system version 269):
   - the page's project is the hero card: approximate pills and one price range, "לפי פרסומים גלויים";
   - up to 3 neighbours as small link cards, with no price;

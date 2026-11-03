@@ -1,0 +1,17 @@
+{
+  "released": "1.72.573",
+  "from": "1.72.572",
+  "live_before": {
+    "data/neighbour-spotlight.json": "48ca30cd21d731a09154db12ee48c37d",
+    "nadlan-config.php": "246b317c47a52e01a895b8f4a27607f5"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-03 11:07:47",
+  "files": {
+    "data/neighbour-spotlight.json": "2fab9277c90c53dae629734209fe3302",
+    "nadlan-config.php": "7aca501eec2537560e691862cf0aacd5"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.573, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
