@@ -1234,5 +1234,95 @@
     "url": "https://www.bizportal.co.il/realestates/news/article/20036077"
    }
   ]
+ },
+ "8752": {
+  "checked": "נובמבר 2026",
+  "title": "ברודצקי צפון במספרים",
+  "rows": [
+   {
+    "k": "היזם",
+    "v": "ICR (ישראל קנדה וראם)",
+    "src": "אתר הפרויקט, נקרא 1.11.2026",
+    "url": "https://icrr.co.il/project/brodetsky-tel-aviv/"
+   },
+   {
+    "k": "המיקום",
+    "v": "ברודצקי 33-39, רמת אביב, על מגרש של כ-7.5 דונם",
+    "src": "ביזפורטל, 17.11.2024",
+    "url": "https://www.bizportal.co.il/realestates/news/article/836693"
+   },
+   {
+    "k": "גוש וחלקה",
+    "v": "גוש 6768, חלקה 5",
+    "src": "מאגר הכתובות של עיריית תל אביב-יפו",
+    "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527"
+   },
+   {
+    "k": "ההתחדשות",
+    "v": "פינוי בינוי: 4 בנייני רכבת בני 3 קומות, עם 98 דירות",
+    "src": "מרכז הנדל״ן, 13.5.2026",
+    "url": "https://www.nadlancenter.co.il/article/14503"
+   },
+   {
+    "k": "בניינים וקומות",
+    "v": "4 בניינים בני 5 קומות",
+    "src": "מרכז הנדל״ן, 13.5.2026",
+    "url": "https://www.nadlancenter.co.il/article/14503"
+   },
+   {
+    "k": "דירות",
+    "v": "166 דירות",
+    "src": "מרכז הנדל״ן, 13.5.2026",
+    "url": "https://www.nadlancenter.co.il/article/14503"
+   },
+   {
+    "k": "דירות לשיווק",
+    "v": "כ-70 דירות, והשאר לבעלי הדירות הקיימים (11.2024)",
+    "src": "ביזפורטל, 17.11.2024",
+    "url": "https://www.bizportal.co.il/realestates/news/article/836693"
+   },
+   {
+    "k": "תמהיל",
+    "v": "2 עד 6 חדרים, דופלקסים ופנטהאוזים, 62 עד 198 מ״ר",
+    "src": "מרכז הנדל״ן, 13.5.2026",
+    "url": "https://www.nadlancenter.co.il/article/14503"
+   },
+   {
+    "k": "מחיר שפורסם",
+    "v": "החל מ-55 אלף ₪ למ״ר (5.2026)",
+    "src": "מרכז הנדל״ן, 13.5.2026",
+    "url": "https://www.nadlancenter.co.il/article/14503"
+   },
+   {
+    "k": "מחיר פתיחה שפורסם",
+    "v": "דירות החל מ-4.2 מיליון ₪, דופלקסים החל מ-6.7 מיליון ₪ (10.2026)",
+    "src": "i11, 30.10.2026",
+    "url": "https://i11.co.il/icr-brodetsky/"
+   },
+   {
+    "k": "היתר",
+    "v": "אושר בתנאים (11.2024)",
+    "src": "ביזפורטל, 17.11.2024",
+    "url": "https://www.bizportal.co.il/realestates/news/article/836693"
+   },
+   {
+    "k": "השלב שפורסם",
+    "v": "בשיווק (10.2026)",
+    "src": "i11, 30.10.2026",
+    "url": "https://i11.co.il/icr-brodetsky/"
+   },
+   {
+    "k": "מתקנים",
+    "v": "גג משותף עם פינת מדורה, וולנס, אמבטיות קרח ויוגה; חצרות עם גינות תבלינים; חדר כושר ופינת ילדים; חניה לכל דירה",
+    "src": "אתר הפרויקט, נקרא 1.11.2026",
+    "url": "https://icrr.co.il/project/brodetsky-tel-aviv/"
+   },
+   {
+    "k": "אתר הפרויקט",
+    "v": "icrr.co.il",
+    "src": "האתר הרשמי",
+    "url": "https://icrr.co.il/project/brodetsky-tel-aviv/"
+   }
+  ]
  }
 }

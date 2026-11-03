@@ -1,0 +1,26 @@
+{
+ "id": 8752,
+ "slug": "brodetsky-33-39",
+ "link": "https://nad-lan.co.il/projects/brodetsky-33-39/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "רמת אביב",
+  "address": "ברודצקי 33-39, רמת אביב, תל אביב-יפו",
+  "gush": "6768",
+  "helka": "5",
+  "developer_name": "ICR (ישראל קנדה וראם)",
+  "project_type": "new_build",
+  "project_status": "marketing",
+  "num_units": 166,
+  "num_buildings": 4,
+  "num_floors": 5,
+  "website": "https://icrr.co.il/project/brodetsky-tel-aviv/",
+  "lat": 32.110569,
+  "lng": 34.797975,
+  "source": "ICR, מרכז הנדל״ן, ביזפורטל, i11, מאגר הכתובות של עיריית תל אביב-יפו",
+  "source_url": "https://www.nadlancenter.co.il/article/14503",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "ברודצקי צפון"
+ }
+}

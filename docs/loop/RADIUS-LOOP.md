@@ -228,7 +228,15 @@
     - 11 sourced facts;
     - the price list: 27 deals within 500 m, median about 43,700 ₪/m², and the official median for Nofei Yam, 5,277,400 ₪ (Q1 2026).
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1849, price list at 6465, kit at 8549. One H1, no sideways scroll, no raw shortcode.
-- [ ] **Next gap pages, at most two a day:** seven-seas and shbiro-2468 done 2.11; next levi-55 (3.11), levi-55, brodetsky-33-39, amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+- [x] **R7e BRODETSKY NORTH page** (3.11 morning). Live: https://nad-lan.co.il/projects/brodetsky-33-39/ (post 8752; ICR, 166 flats, pinui-binui of 98).
+  - **The article:** ChatGPT Pro wrote it from the brief (https://chatgpt.com/c/6ae98b09-74c8-83ed-9945-2baf75ddade3). It is 613 words, blacklist clean, and every number comes from the brief. The floors conflict (5 in 2026, 6 in 2024) is handled gently. The architect is left out, because the Hebrew spelling is unverified.
+  - **The location** comes from the Tel Aviv address registry (layer 527, street code 985): Brodetsky 33-39, block 6768, parcel 5.
+  - **Release 1.72.571, released and verified (913 checks):**
+    - 14 sourced facts;
+    - the price list: 30 deals within 500 m, median about 57,500 ₪/m² (10.2023-8.2024), and the official Ramat Aviv median, 4,931,600 ₪ (Q1 2026).
+  - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1776, price list at 6433, kit at 8580. One H1, no sideways scroll, no raw shortcode. Evidence: `docs/qa/gap-pages/brodetsky-33-39-*-390.png`.
+  - **This page now owns the word "brodetsky".** Brodetsky 21-25, 38-40 and 9 would need another head word, or a street page.
+- [ ] **Next gap pages, at most two a day:** seven-seas, shbiro-2468 and levi-55 done 2.11, brodetsky-33-39 done 3.11; next amichai-stern, ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
 
 ## R10 MOAT (Ben, 2.11.2026, afternoon)
 Ben's words: "Every page should have so many tools, so many varied things, data. It must be a moat, something nobody can match. Wrapped in the right key phrases, synonyms, associations and intent, practical and useful. Do not ruin other pages; make sure we do not create pages that hurt other pages: keyword cannibalization."
