@@ -199,6 +199,16 @@
     - **Findings (old, site-wide, not caused by this work):**
       - every English project page still shows a Hebrew "מחשבונים וכלים" block (gindi-vogue-sde-dov-en has it too);
       - no FAQPage JSON-LD shows on seven-seas-en or on the older gindi-vogue-sde-dov-en, although the emitter (`instruments.php` `nadlan_nli_faq`) knows the heading "Frequently asked questions"; the reason is elsewhere, to check. The FR, RU and AR headings are not in its list at all.
+  - [x] **FIRST in four languages, live 3.11 morning** (posts 8754-8757): https://nad-lan.co.il/projects/first-sde-dov-en/ , -fr/, -ru/, -ar/.
+    - ChatGPT Pro wrote each from the same sourced brief, natively in its language:
+      - EN: https://chatgpt.com/c/6ae899e8-1228-83ed-889d-f14ebd9c8b43
+      - FR: https://chatgpt.com/c/6ae99c0c-40d4-83eb-8213-0ca0b5b111ce
+      - RU: https://chatgpt.com/c/6ae99c1a-4e0c-83eb-a6fd-1e17eafe9018
+      - AR: https://chatgpt.com/c/6ae99c25-6ea8-83eb-9c80-2fe3f0e1b910
+    - Each is 609-626 words, with no long dash and every number from `first-sde-dov.spec.json`.
+    - All five pages (he + 4) carry the full hreflang cluster (he, en, fr, ru, ar, x-default), the right lang and dir, and one H1.
+    - Checked at 390 px: EN and AR (`docs/qa/gap-pages/first-sde-dov-en-390.png`, `-ar-390.png`).
+    - **Next languages (one project a day):** h-infinity on 4.11, then akirov, then the rest.
   - **The new language pages follow the same pattern:** a separate post per language, the article written by ChatGPT from the same sourced brief, and the slug `<slug>-en|fr|ru|ar`. The hreflang map is rebuilt by `scripts/build-project-hreflang-artifact.mjs`.
   - **How language pages work** (read 2.11 night):
     - Each language is its own CMS post, `/projects/<slug>-en|fr|ru|ar/`. Its article is real translated CMS text.
