@@ -1,0 +1,17 @@
+{
+  "released": "1.72.574",
+  "from": "1.72.573",
+  "live_before": {
+    "inc/neighbour-compare.php": "fc8ca148fd05a5503192d01d216b7ddc",
+    "nadlan-config.php": "7aca501eec2537560e691862cf0aacd5"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-03 11:23:37",
+  "files": {
+    "inc/neighbour-compare.php": "6af39b4bf5bf5f50868d5b17b6281a14",
+    "nadlan-config.php": "9250a7133ffddb84ad158328d8357747"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.574, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

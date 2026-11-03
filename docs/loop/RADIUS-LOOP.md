@@ -330,7 +330,7 @@ Ben's words: "Every page should have so many tools, so many varied things, data.
     - Checked at 390 px and on desktop: after the facts table, 3 cards, one H1, no sideways scroll (`docs/qa/neighbour-spotlight/nb573-*`).
   - **Next:**
     - SEVEN SEAS: its plot location is unknown, so its neighbours are unclear.
-    - Philharmonit and the Einstein pages sit outside the Sde Dov quarter, and the sub-line names the quarter. The code first needs a per-page area name, which is a small PHP change and a release.
+    - Philharmonit and the Einstein pages sit outside the Sde Dov quarter. **Done 3.11 (release 1.72.574, released and verified, 927 checks):** a project entry may now carry `area`, `sub` (its own sub-line) and `around` (the label over the cards). No data uses them yet, so the Sde Dov pages read exactly as before; exact-text checks confirm it, and the 390 px DOM check is unchanged. Next (4.11): Philharmonit and the Einstein pages, each with its own area wording.
 - Design history: **v106.6, 2.11 evening.** Ben on v106.5: "make it marketing, something that promotes the project; no sources and dates on everything; price ranges, according to public sources; don't commit; nothing that puts people off". Redesigned in Claude Design v106.6 (design system version 269):
   - the page's project is the hero card: approximate pills and one price range, "לפי פרסומים גלויים";
   - up to 3 neighbours as small link cards, with no price;

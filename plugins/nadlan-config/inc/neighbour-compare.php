@@ -29,7 +29,11 @@ function nadlan_nbc_html( $id ) {
 	$and  = preg_match( '/^[A-Za-z0-9]/', $sn ) ? 'ו-' : 'ו';
 	$h  = '<section class="nlnb" id="nlnb" dir="rtl" aria-labelledby="nlnb-h">';
 	$h .= '<h2 class="nlnb-h2" id="nlnb-h">' . esc_html( ! empty( $me['h'] ) ? (string) $me['h'] : $name . ' והרובע שנבנה סביבו' ) . '</h2>';
-	$h .= '<p class="nlnb-sub">' . esc_html( (string) ( $d['area'] ?? 'הרובע' ) . ' נבנה עכשיו, ' . $and . $sn . ' הוא אחד הפרויקטים החדשים בו. אלה הפרויקטים החדשים בסביבה הקרובה.' ) . '</p>';
+	// 1.72.574: a page outside the Sde Dov quarter (Kochav HaTzafon, the Einstein pages) names its own area or writes its own sub-line,
+	// and its own label over the cards ("around"); the Sde Dov pages keep the shared wording
+	$area = ! empty( $me['area'] ) ? (string) $me['area'] : (string) ( $d['area'] ?? 'הרובע' );
+	$sub  = ! empty( $me['sub'] ) ? (string) $me['sub'] : $area . ' נבנה עכשיו, ' . $and . $sn . ' הוא אחד הפרויקטים החדשים בו. אלה הפרויקטים החדשים בסביבה הקרובה.';
+	$h .= '<p class="nlnb-sub">' . esc_html( $sub ) . '</p>';
 	$h .= '<div class="nlnb-body"><div class="nlnb-hero"><span class="nlnb-tag">הפרויקט בעמוד</span>';
 	$h .= '<p class="nlnb-name">' . esc_html( $name ) . ( ! empty( $me['dev'] ) ? '<small>' . esc_html( (string) $me['dev'] ) . '</small>' : '' ) . '</p>';
 	if ( ! empty( $me['stats'] ) ) {
@@ -40,7 +44,7 @@ function nadlan_nbc_html( $id ) {
 	if ( ! empty( $me['price'] ) ) {
 		$h .= '<div class="nlnb-price"><span>טווח מחירים, לפי פרסומים גלויים</span><b>' . esc_html( (string) $me['price'] ) . '</b></div>';
 	}
-	$h .= '</div><div class="nlnb-side"><p class="nlnb-around">גם ברובע</p><div class="nlnb-scroll"><div class="nlnb-cards">';
+	$h .= '</div><div class="nlnb-side"><p class="nlnb-around">' . esc_html( ! empty( $me['around'] ) ? (string) $me['around'] : 'גם ברובע' ) . '</p><div class="nlnb-scroll"><div class="nlnb-cards">';
 	foreach ( array_slice( (array) $d['pages'][ $k ], 0, 3 ) as $nid ) {
 		$n = $d['projects'][ (string) $nid ] ?? null;
 		if ( ! $n || empty( $n['name'] ) || empty( $n['url'] ) ) { continue; }

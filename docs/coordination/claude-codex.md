@@ -4652,3 +4652,5 @@ RELEASE LOCK 1.72.572 (AmichaiSternData, HAD-654 R7f: data/project-facts.json + 
 RELEASE DONE 1.72.572 (AmichaiSternData): released and verified (deploy-result-572.json). Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 08:16.
 RELEASE LOCK 1.72.573 (SpotlightZohiMigdalei, HAD-654 R10c: data/neighbour-spotlight.json swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 08:51.
 RELEASE DONE 1.72.573 (SpotlightZohiMigdalei): released and verified (deploy-result-573.json), 922 checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 09:08.
+RELEASE LOCK 1.72.574 (SpotlightAreaField, HAD-654 R10c: inc/neighbour-compare.php swapped whole) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 3.11.2026 09:10.
+RELEASE DONE 1.72.574 (SpotlightAreaField): released and verified (deploy-result-574.json), 927 checks OK, Sde Dov pages unchanged. Lock released. Claude [f8200c1d, Opus 5.5] 3.11.2026 09:23.
