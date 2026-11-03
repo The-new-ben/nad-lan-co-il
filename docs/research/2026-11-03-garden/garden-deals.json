@@ -1,0 +1,2178 @@
+{
+ "source": {
+  "file": "C:\\Users\\777\\Documents\\Codex\\2026-08-27\\https-www-nadlan-gov-il-https\\platform\\data\\raw\\tlv-citywide\\tlv-deals.csv",
+  "origin": "Tax Authority deals, big-cities export from odata.org.il (see bigcities.url in the same folder); file saved 2026-09-06",
+  "filter": "DEALNATUREDESCRIPTION == 'דירת גן'",
+  "area_column": "DEALNATURE (holds the area in m2 in this export; checked against rooms)",
+  "price_column": "DEALAMOUNT (NIS, nominal, not inflation-adjusted)",
+  "new_flag": "NEWPROJECTTEXT == '1'",
+  "computed": "2026-11-03",
+  "file_rows": 100780,
+  "file_period": "1998-01-01 .. 2024-09 (dense to 2024-08, thin in 2024-09); 3 stray later rows, one future-dated (2026-11-30)",
+  "garden_period": "2001-10-15 .. 2024-08-28",
+  "garden_future_dated_excluded": 0,
+  "median_rule": "median shown only when >=5 deals; price per m2 only where area >=20 m2",
+  "placement": {
+   "gush-helka match": 246,
+   "street+number match": 2
+  },
+  "outlier_rule": "rows whose price per m2 is under 30% or over 3x the same-year citywide median for ordinary flats are listed in flagged_rows and left out of every aggregate",
+  "rows_after_screen": 227
+ },
+ "overall_raw_all_rows": {
+  "deals": 248,
+  "median_price": 3095000,
+  "median_price_per_sqm": 29924,
+  "with_area": 247,
+  "median_area": 106
+ },
+ "overall": {
+  "deals": 227,
+  "median_price": 3200000,
+  "median_price_per_sqm": 31352,
+  "with_area": 226,
+  "median_area": 107
+ },
+ "flagged_rows": [
+  {
+   "date": "2010-02-15",
+   "address": "יהודה הלוי 10",
+   "rooms": 2.0,
+   "area_m2": 59.0,
+   "price": 5767000.0,
+   "flag": "high: over 3x that year citywide flat median per m2 (likely data error or multi-unit)"
+  },
+  {
+   "date": "2012-03-05",
+   "address": "יצחק חילו 5",
+   "rooms": 5.0,
+   "area_m2": 200.0,
+   "price": 17833000.0,
+   "flag": "high: over 3x that year citywide flat median per m2 (likely data error or multi-unit)"
+  },
+  {
+   "date": "2015-06-18",
+   "address": "תשבי 15",
+   "rooms": 4.0,
+   "area_m2": 127.0,
+   "price": 275000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2015-12-07",
+   "address": "יגאל אלון 50",
+   "rooms": 5.0,
+   "area_m2": 90.0,
+   "price": 128000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2016-01-21",
+   "address": "שמואל בן-עדיה 25",
+   "rooms": 4.0,
+   "area_m2": 80.0,
+   "price": 553000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2016-09-04",
+   "address": "נס לגויים 9",
+   "rooms": 3.0,
+   "area_m2": 101.35,
+   "price": 273000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2016-12-25",
+   "address": "ז'אן ראסין 13",
+   "rooms": 2.0,
+   "area_m2": 32.9,
+   "price": 303000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2017-02-16",
+   "address": "עבד אל-ג'ני 8",
+   "rooms": 4.0,
+   "area_m2": 122.8,
+   "price": 810000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2017-03-26",
+   "address": "הסבא משפולה 6",
+   "rooms": 3.0,
+   "area_m2": 81.0,
+   "price": 140000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2018-08-29",
+   "address": "יהושע ברטונוב 12",
+   "rooms": 6.0,
+   "area_m2": 709.0,
+   "price": 5635000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2018-09-20",
+   "address": "דבורה הנביאה 2",
+   "rooms": 5.0,
+   "area_m2": 1602.0,
+   "price": 4550000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2020-11-23",
+   "address": "עיר שמש 25",
+   "rooms": 5.0,
+   "area_m2": 813.0,
+   "price": 4725000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-04-19",
+   "address": "יצחק כוכבי 15",
+   "rooms": 2.0,
+   "area_m2": 44.0,
+   "price": 400000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-09-22",
+   "address": "באר שבע 18",
+   "rooms": 4.0,
+   "area_m2": 117.46,
+   "price": 977000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-10-12",
+   "address": "עיר שמש 31",
+   "rooms": 6.0,
+   "area_m2": 196.0,
+   "price": 794000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-11-29",
+   "address": "הונא 46",
+   "rooms": 3.0,
+   "area_m2": 50.0,
+   "price": 252000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-05-09",
+   "address": "יצחק כוכבי 15",
+   "rooms": 2.0,
+   "area_m2": 44.0,
+   "price": 400000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-06-29",
+   "address": "פלטיאל 1",
+   "rooms": 3.0,
+   "area_m2": 48.0,
+   "price": 292000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-07-04",
+   "address": "חכמי אתונה 1",
+   "rooms": 3.0,
+   "area_m2": 53.0,
+   "price": 260000.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-10-25",
+   "address": "ציונה תג'ר 13",
+   "rooms": 3.0,
+   "area_m2": 86.0,
+   "price": 656948.0,
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-12-31",
+   "address": "אברהם רוויגו 1",
+   "rooms": 1.0,
+   "area_m2": 25.0,
+   "price": 625000000.0,
+   "flag": "high: over 3x that year citywide flat median per m2 (likely data error or multi-unit)"
+  }
+ ],
+ "by_year": {
+  "2001": {
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null
+  },
+  "2002": {
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null
+  },
+  "2003": {
+   "deals": 8,
+   "median_price": 1627000,
+   "median_price_per_sqm": 14633,
+   "with_area": 8,
+   "median_area": 103
+  },
+  "2004": {
+   "deals": 17,
+   "median_price": 1809000,
+   "median_price_per_sqm": 16026,
+   "with_area": 17,
+   "median_area": 120
+  },
+  "2005": {
+   "deals": 7,
+   "median_price": 1573000,
+   "median_price_per_sqm": 15889,
+   "with_area": 7,
+   "median_area": 87
+  },
+  "2006": {
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null
+  },
+  "2007": {
+   "deals": 12,
+   "median_price": 1868000,
+   "median_price_per_sqm": 18779,
+   "with_area": 12,
+   "median_area": 94
+  },
+  "2008": {
+   "deals": 5,
+   "median_price": 2940000,
+   "median_price_per_sqm": 31281,
+   "with_area": 5,
+   "median_area": 103
+  },
+  "2009": {
+   "deals": 7,
+   "median_price": 3120000,
+   "median_price_per_sqm": 22286,
+   "with_area": 7,
+   "median_area": 129
+  },
+  "2010": {
+   "deals": 5,
+   "median_price": 3435000,
+   "median_price_per_sqm": 32109,
+   "with_area": 5,
+   "median_area": 114
+  },
+  "2011": {
+   "deals": 6,
+   "median_price": 3300000,
+   "median_price_per_sqm": 25057,
+   "with_area": 6,
+   "median_area": 119
+  },
+  "2012": {
+   "deals": 8,
+   "median_price": 2995000,
+   "median_price_per_sqm": 27751,
+   "with_area": 8,
+   "median_area": 148
+  },
+  "2013": {
+   "deals": 8,
+   "median_price": 1602500,
+   "median_price_per_sqm": 25726,
+   "with_area": 8,
+   "median_area": 74
+  },
+  "2014": {
+   "deals": 11,
+   "median_price": 3675000,
+   "median_price_per_sqm": 34271,
+   "with_area": 11,
+   "median_area": 103
+  },
+  "2015": {
+   "deals": 11,
+   "median_price": 2450000,
+   "median_price_per_sqm": 23333,
+   "with_area": 11,
+   "median_area": 100
+  },
+  "2016": {
+   "deals": 15,
+   "median_price": 2774000,
+   "median_price_per_sqm": 34675,
+   "with_area": 15,
+   "median_area": 94
+  },
+  "2017": {
+   "deals": 5,
+   "median_price": 3100000,
+   "median_price_per_sqm": 50664,
+   "with_area": 5,
+   "median_area": 106
+  },
+  "2018": {
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null
+  },
+  "2019": {
+   "deals": 13,
+   "median_price": 4670000,
+   "median_price_per_sqm": 43750,
+   "with_area": 13,
+   "median_area": 104
+  },
+  "2020": {
+   "deals": 14,
+   "median_price": 5750000,
+   "median_price_per_sqm": 31850,
+   "with_area": 14,
+   "median_area": 186
+  },
+  "2021": {
+   "deals": 39,
+   "median_price": 4918000,
+   "median_price_per_sqm": 46410,
+   "with_area": 38,
+   "median_area": 104
+  },
+  "2022": {
+   "deals": 12,
+   "median_price": 5935000,
+   "median_price_per_sqm": 39522,
+   "with_area": 12,
+   "median_area": 118
+  },
+  "2023": {
+   "deals": 11,
+   "median_price": 5442000,
+   "median_price_per_sqm": 68033,
+   "with_area": 11,
+   "median_area": 98
+  },
+  "2024": {
+   "deals": 5,
+   "median_price": 5650000,
+   "median_price_per_sqm": 55511,
+   "with_area": 5,
+   "median_area": 115
+  }
+ },
+ "periods": {
+  "1998-2009": {
+   "deals": 61,
+   "median_price": 1789000,
+   "median_price_per_sqm": 16337,
+   "with_area": 61,
+   "median_area": 103
+  },
+  "2010-2014": {
+   "deals": 38,
+   "median_price": 3095000,
+   "median_price_per_sqm": 31017,
+   "with_area": 38,
+   "median_area": 113
+  },
+  "2015-2019": {
+   "deals": 47,
+   "median_price": 3600000,
+   "median_price_per_sqm": 35614,
+   "with_area": 47,
+   "median_area": 103
+  },
+  "2020-2024": {
+   "deals": 81,
+   "median_price": 5400000,
+   "median_price_per_sqm": 44422,
+   "with_area": 80,
+   "median_area": 115
+  },
+  "2022-2024": {
+   "deals": 28,
+   "median_price": 5546000,
+   "median_price_per_sqm": 48377,
+   "with_area": 28,
+   "median_area": 115
+  }
+ },
+ "by_rooms": {
+  "1-2": {
+   "deals": 31,
+   "median_price": 1700000,
+   "median_price_per_sqm": 35860,
+   "with_area": 30,
+   "median_area": 48
+  },
+  "3": {
+   "deals": 34,
+   "median_price": 2592500,
+   "median_price_per_sqm": 42631,
+   "with_area": 34,
+   "median_area": 74
+  },
+  "4": {
+   "deals": 70,
+   "median_price": 3045000,
+   "median_price_per_sqm": 30018,
+   "with_area": 70,
+   "median_area": 104
+  },
+  "5+": {
+   "deals": 89,
+   "median_price": 5400000,
+   "median_price_per_sqm": 29924,
+   "with_area": 89,
+   "median_area": 157
+  },
+  "not stated": {
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null
+  }
+ },
+ "by_rooms_2020_2024": {
+  "1-2": {
+   "deals": 14,
+   "median_price": 2720000,
+   "median_price_per_sqm": 53879,
+   "with_area": 13,
+   "median_area": 46
+  },
+  "3": {
+   "deals": 14,
+   "median_price": 4100000,
+   "median_price_per_sqm": 66645,
+   "with_area": 14,
+   "median_area": 70
+  },
+  "4": {
+   "deals": 15,
+   "median_price": 4600000,
+   "median_price_per_sqm": 42778,
+   "with_area": 15,
+   "median_area": 102
+  },
+  "5+": {
+   "deals": 38,
+   "median_price": 6875000,
+   "median_price_per_sqm": 41142,
+   "with_area": 38,
+   "median_area": 178
+  },
+  "not stated": {
+   "deals": 0,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 0,
+   "median_area": null
+  }
+ },
+ "new_vs_second_hand": {
+  "new": {
+   "deals": 29,
+   "median_price": 3900000,
+   "median_price_per_sqm": 45333,
+   "with_area": 29,
+   "median_area": 95
+  },
+  "second hand": {
+   "deals": 198,
+   "median_price": 3005000,
+   "median_price_per_sqm": 29924,
+   "with_area": 197,
+   "median_area": 109
+  }
+ },
+ "new_vs_second_hand_2020_2024": {
+  "new": {
+   "deals": 14,
+   "median_price": 4875000,
+   "median_price_per_sqm": 61900,
+   "with_area": 14,
+   "median_area": 73
+  },
+  "second hand": {
+   "deals": 67,
+   "median_price": 5442000,
+   "median_price_per_sqm": 41902,
+   "with_area": 66,
+   "median_area": 121
+  }
+ },
+ "by_neighbourhood": [
+  {
+   "neighbourhood": "נופי ים",
+   "deals": 18,
+   "median_price": 3787500,
+   "median_price_per_sqm": 31075,
+   "with_area": 18,
+   "median_area": 116,
+   "deals_2020_2024": 6,
+   "median_price_per_sqm_2015_2024": 38033,
+   "last_deal": "2023-06-29"
+  },
+  {
+   "neighbourhood": "רביבים",
+   "deals": 17,
+   "median_price": 3435000,
+   "median_price_per_sqm": 32109,
+   "with_area": 17,
+   "median_area": 122,
+   "deals_2020_2024": 4,
+   "median_price_per_sqm_2015_2024": 47697,
+   "last_deal": "2024-08-28"
+  },
+  {
+   "neighbourhood": "לב תל-אביב",
+   "deals": 14,
+   "median_price": 6121000,
+   "median_price_per_sqm": 60887,
+   "with_area": 14,
+   "median_area": 108,
+   "deals_2020_2024": 10,
+   "median_price_per_sqm_2015_2024": 64073,
+   "last_deal": "2024-03-14"
+  },
+  {
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "deals": 13,
+   "median_price": 3800000,
+   "median_price_per_sqm": 25705,
+   "with_area": 13,
+   "median_area": 175,
+   "deals_2020_2024": 3,
+   "median_price_per_sqm_2015_2024": 28757,
+   "last_deal": "2023-12-14"
+  },
+  {
+   "neighbourhood": "המשתלה",
+   "deals": 13,
+   "median_price": 2494000,
+   "median_price_per_sqm": 19697,
+   "with_area": 13,
+   "median_area": 122,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-08-08"
+  },
+  {
+   "neighbourhood": "נוה צדק",
+   "deals": 12,
+   "median_price": 2028500,
+   "median_price_per_sqm": 27269,
+   "with_area": 12,
+   "median_area": 74,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-11-16"
+  },
+  {
+   "neighbourhood": "הדר-יוסף",
+   "deals": 12,
+   "median_price": 2930500,
+   "median_price_per_sqm": 32631,
+   "with_area": 12,
+   "median_area": 116,
+   "deals_2020_2024": 5,
+   "median_price_per_sqm_2015_2024": 42778,
+   "last_deal": "2024-01-17"
+  },
+  {
+   "neighbourhood": "שפירא",
+   "deals": 11,
+   "median_price": 1835000,
+   "median_price_per_sqm": 30808,
+   "with_area": 11,
+   "median_area": 53,
+   "deals_2020_2024": 7,
+   "median_price_per_sqm_2015_2024": 30808,
+   "last_deal": "2024-06-10"
+  },
+  {
+   "neighbourhood": "תל ברוך צפון",
+   "deals": 9,
+   "median_price": 4670000,
+   "median_price_per_sqm": 44356,
+   "with_area": 9,
+   "median_area": 114,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": 45649,
+   "last_deal": "2020-05-20"
+  },
+  {
+   "neighbourhood": "הצפון החדש-החלק הדרומי",
+   "deals": 8,
+   "median_price": 3337000,
+   "median_price_per_sqm": 49944,
+   "with_area": 7,
+   "median_area": 100,
+   "deals_2020_2024": 5,
+   "median_price_per_sqm_2015_2024": 50935,
+   "last_deal": "2021-09-14"
+  },
+  {
+   "neighbourhood": "נוה דן",
+   "deals": 7,
+   "median_price": 6350000,
+   "median_price_per_sqm": 31134,
+   "with_area": 7,
+   "median_area": 253,
+   "deals_2020_2024": 3,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-04-03"
+  },
+  {
+   "neighbourhood": "עג'מי וגבעת עליה",
+   "deals": 6,
+   "median_price": 3750000,
+   "median_price_per_sqm": 32992,
+   "with_area": 6,
+   "median_area": 110,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-02-08"
+  },
+  {
+   "neighbourhood": "הצפון החדש-סביבת ככר המדינה",
+   "deals": 6,
+   "median_price": 4325000,
+   "median_price_per_sqm": 70766,
+   "with_area": 6,
+   "median_area": 58,
+   "deals_2020_2024": 5,
+   "median_price_per_sqm_2015_2024": 70766,
+   "last_deal": "2024-04-18"
+  },
+  {
+   "neighbourhood": "נוה שאנן",
+   "deals": 6,
+   "median_price": 1740000,
+   "median_price_per_sqm": 22652,
+   "with_area": 6,
+   "median_area": 52,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-09-22"
+  },
+  {
+   "neighbourhood": "צוקי אביב",
+   "deals": 6,
+   "median_price": 5866500,
+   "median_price_per_sqm": 38594,
+   "with_area": 6,
+   "median_area": 142,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2020-07-05"
+  },
+  {
+   "neighbourhood": "התקוה",
+   "deals": 5,
+   "median_price": 1125000,
+   "median_price_per_sqm": 11842,
+   "with_area": 5,
+   "median_area": 95,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-01-05"
+  },
+  {
+   "neighbourhood": "הצפון החדש - החלק הצפוני",
+   "deals": 5,
+   "median_price": 7137000,
+   "median_price_per_sqm": 64289,
+   "with_area": 5,
+   "median_area": 109,
+   "deals_2020_2024": 5,
+   "median_price_per_sqm_2015_2024": 64289,
+   "last_deal": "2021-09-05"
+  },
+  {
+   "neighbourhood": "'נאות אפקה ב",
+   "deals": 5,
+   "median_price": 1699000,
+   "median_price_per_sqm": 15492,
+   "with_area": 5,
+   "median_area": 98,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-11-18"
+  },
+  {
+   "neighbourhood": "כרם התימנים",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2023-01-23"
+  },
+  {
+   "neighbourhood": "כוכב הצפון",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2014-11-24"
+  },
+  {
+   "neighbourhood": "צהלון ושיכוני חסכון",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-03-14"
+  },
+  {
+   "neighbourhood": "פלורנטין",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2022-07-03"
+  },
+  {
+   "neighbourhood": "עזרא והארגזים",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2023-05-16"
+  },
+  {
+   "neighbourhood": "יד אליהו",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2015-06-23"
+  },
+  {
+   "neighbourhood": "'תכנית ל",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2020-10-29"
+  },
+  {
+   "neighbourhood": "צפון יפו",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2017-02-22"
+  },
+  {
+   "neighbourhood": "רמת-אביב",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2020-11-15"
+  },
+  {
+   "neighbourhood": "ביצרון ורמת ישראל",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-10-03"
+  },
+  {
+   "neighbourhood": "הצפון הישן - החלק הצפוני",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2014-09-15"
+  },
+  {
+   "neighbourhood": "'נאות אפקה א",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2018-02-15"
+  },
+  {
+   "neighbourhood": "'רמת אביב ג",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2019-04-17"
+  },
+  {
+   "neighbourhood": "הצפון הישן-החלק הדרומי",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2016-06-01"
+  },
+  {
+   "neighbourhood": "רמת החייל",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-03-25"
+  },
+  {
+   "neighbourhood": "תל ברוך",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2023-12-03"
+  },
+  {
+   "neighbourhood": "גלילות",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "deals_2020_2024": 2,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2020-11-03"
+  },
+  {
+   "neighbourhood": "גבעת הרצל, אזור המלאכה-יפו",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2016-04-14"
+  },
+  {
+   "neighbourhood": "בבלי",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-06-30"
+  },
+  {
+   "neighbourhood": "יפו העתיקה,נמל יפו",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2015-09-13"
+  },
+  {
+   "neighbourhood": "(יפו ד' (גבעת התמרים",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "deals_2020_2024": 1,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2021-03-10"
+  },
+  {
+   "neighbourhood": "יפו ג' ונוה גולן",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "deals_2020_2024": 0,
+   "median_price_per_sqm_2015_2024": null,
+   "last_deal": "2013-07-11"
+  }
+ ],
+ "streets_total": 166,
+ "by_street_top40": [
+  {
+   "street": "סשא ארגוב",
+   "deals": 6,
+   "median_price": 2105500,
+   "median_price_per_sqm": 19902,
+   "with_area": 6,
+   "median_area": 127,
+   "last_deal": "2020-10-26",
+   "neighbourhood": "המשתלה",
+   "new_deals": 0
+  },
+  {
+   "street": "פן אלכסנדר",
+   "deals": 6,
+   "median_price": 4775000,
+   "median_price_per_sqm": 44787,
+   "with_area": 6,
+   "median_area": 112,
+   "last_deal": "2020-05-20",
+   "neighbourhood": "תל ברוך צפון",
+   "new_deals": 0
+  },
+  {
+   "street": "בעל העקידה",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "last_deal": "2021-11-07",
+   "neighbourhood": "שפירא",
+   "new_deals": 0
+  },
+  {
+   "street": "גלבוע אמיר",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "last_deal": "2019-05-27",
+   "neighbourhood": "נופי ים",
+   "new_deals": 1
+  },
+  {
+   "street": "קהילת ורשה",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "last_deal": "2021-11-21",
+   "neighbourhood": "הדר-יוסף",
+   "new_deals": 2
+  },
+  {
+   "street": "שגאל מרק",
+   "deals": 4,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 4,
+   "median_area": null,
+   "last_deal": "2023-06-29",
+   "neighbourhood": "נופי ים",
+   "new_deals": 0
+  },
+  {
+   "street": "ארם משה",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2015-08-05",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "נס ציונה",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2021-08-05",
+   "neighbourhood": "לב תל-אביב",
+   "new_deals": 3
+  },
+  {
+   "street": "פינס",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2010-05-09",
+   "neighbourhood": "נוה צדק",
+   "new_deals": 0
+  },
+  {
+   "street": "צה\"ל",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2021-01-31",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "new_deals": 0
+  },
+  {
+   "street": "רוממה",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2021-11-18",
+   "neighbourhood": "'נאות אפקה ב",
+   "new_deals": 0
+  },
+  {
+   "street": "רכטר זאב",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2024-08-28",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "שטרייכמן יחזקאל",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2020-11-08",
+   "neighbourhood": "נופי ים",
+   "new_deals": 0
+  },
+  {
+   "street": "תמיר שמואל",
+   "deals": 3,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 3,
+   "median_area": null,
+   "last_deal": "2020-10-08",
+   "neighbourhood": "נופי ים",
+   "new_deals": 0
+  },
+  {
+   "street": "אחימאיר אבא",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2019-04-17",
+   "neighbourhood": "'רמת אביב ג",
+   "new_deals": 2
+  },
+  {
+   "street": "אשכול לוי",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2010-03-23",
+   "neighbourhood": "'תכנית ל",
+   "new_deals": 1
+  },
+  {
+   "street": "בנימין מטודלה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2012-11-15",
+   "neighbourhood": "נוה דן",
+   "new_deals": 0
+  },
+  {
+   "street": "בת מרים יוכבד",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2019-07-03",
+   "neighbourhood": "תל ברוך צפון",
+   "new_deals": 0
+  },
+  {
+   "street": "דבורה הנביאה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2015-05-14",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "דגניה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2008-04-30",
+   "neighbourhood": "נוה צדק",
+   "new_deals": 0
+  },
+  {
+   "street": "וולמן יהודה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2011-12-14",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "זליגמן מקס",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2022-08-08",
+   "neighbourhood": "המשתלה",
+   "new_deals": 0
+  },
+  {
+   "street": "יבנאל",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2019-12-06",
+   "neighbourhood": "נוה צדק",
+   "new_deals": 0
+  },
+  {
+   "street": "מויאל אהרון",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2023-12-14",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "new_deals": 0
+  },
+  {
+   "street": "סגל שמוליק",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2019-11-06",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "new_deals": 0
+  },
+  {
+   "street": "סמאטס",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2021-09-05",
+   "neighbourhood": "הצפון החדש - החלק הצפוני",
+   "new_deals": 1
+  },
+  {
+   "street": "קדושי השואה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2020-07-05",
+   "neighbourhood": "צוקי אביב",
+   "new_deals": 1
+  },
+  {
+   "street": "קהילת יאסי",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2005-05-17",
+   "neighbourhood": "הדר-יוסף",
+   "new_deals": 0
+  },
+  {
+   "street": "קהילת קייב",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2017-03-26",
+   "neighbourhood": "'נאות אפקה א",
+   "new_deals": 0
+  },
+  {
+   "street": "קובנר אבא",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2012-03-04",
+   "neighbourhood": "כוכב הצפון",
+   "new_deals": 0
+  },
+  {
+   "street": "רביבים",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2023-02-28",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "רובינשטיין ארתור",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2022-02-01",
+   "neighbourhood": "נופי ים",
+   "new_deals": 0
+  },
+  {
+   "street": "רוזן פנחס",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2012-01-02",
+   "neighbourhood": "הדר-יוסף",
+   "new_deals": 0
+  },
+  {
+   "street": "רוזנבלום הרצל",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2020-11-03",
+   "neighbourhood": "גלילות",
+   "new_deals": 0
+  },
+  {
+   "street": "רוזנבלום יאיר",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2019-12-23",
+   "neighbourhood": "צוקי אביב",
+   "new_deals": 0
+  },
+  {
+   "street": "רש\"י",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2021-06-23",
+   "neighbourhood": "לב תל-אביב",
+   "new_deals": 1
+  },
+  {
+   "street": "שרון אריה",
+   "deals": 2,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 2,
+   "median_area": null,
+   "last_deal": "2004-02-11",
+   "neighbourhood": "רביבים",
+   "new_deals": 0
+  },
+  {
+   "street": "אברבנאל",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "last_deal": "2007-05-08",
+   "neighbourhood": "פלורנטין",
+   "new_deals": 0
+  },
+  {
+   "street": "אגדתי ברוך",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "last_deal": "2007-05-02",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "new_deals": 0
+  },
+  {
+   "street": "אדיל עאזר",
+   "deals": 1,
+   "median_price": null,
+   "median_price_per_sqm": null,
+   "with_area": 1,
+   "median_area": null,
+   "last_deal": "2016-05-28",
+   "neighbourhood": "עג'מי וגבעת עליה",
+   "new_deals": 1
+  }
+ ],
+ "top_projects": [
+  {
+   "project": "אביב באחימאיר",
+   "deals": 2,
+   "street": "אחימאיר אבא"
+  },
+  {
+   "project": "נס ציונה",
+   "deals": 2,
+   "street": "נס ציונה"
+  },
+  {
+   "project": "פרויקט המגיד מדובנא",
+   "deals": 1,
+   "street": "אדיל עאזר"
+  },
+  {
+   "project": "ההגנה",
+   "deals": 1,
+   "street": "אחיעזר"
+  },
+  {
+   "project": "נופי ים",
+   "deals": 1,
+   "street": "אשכול לוי"
+  },
+  {
+   "project": "בית פלט 10, יפו",
+   "deals": 1,
+   "street": "בית פלט"
+  },
+  {
+   "project": "גלריה",
+   "deals": 1,
+   "street": "גלבוע אמיר"
+  },
+  {
+   "project": "רמות צהלה",
+   "deals": 1,
+   "street": "טולקובסקי"
+  },
+  {
+   "project": "הבית ביפה נוף",
+   "deals": 1,
+   "street": "יפה נוף"
+  },
+  {
+   "project": "כרמלית בוטיק",
+   "deals": 1,
+   "street": "כרמלית"
+  },
+  {
+   "project": "הבית ברח' מונטיפיורי",
+   "deals": 1,
+   "street": "מונטיפיורי"
+  },
+  {
+   "project": "סביוני העיר-מינץ",
+   "deals": 1,
+   "street": "מינץ בנימין"
+  },
+  {
+   "project": "נס ציונה 13",
+   "deals": 1,
+   "street": "נס ציונה"
+  },
+  {
+   "project": "פינסקר 34",
+   "deals": 1,
+   "street": "פינסקר"
+  },
+  {
+   "project": "פרויקט YOUNG",
+   "deals": 1,
+   "street": "ציהתל\"י"
+  }
+ ],
+ "latest30": [
+  {
+   "date": "2024-08-28",
+   "street": "רכטר זאב",
+   "address": "רכטר זאב 8",
+   "neighbourhood": "רביבים",
+   "rooms": 5.0,
+   "area_m2": 123.4,
+   "price": 6850000.0,
+   "price_per_m2": 55511,
+   "new": false,
+   "project": null,
+   "floor": "קרקע",
+   "flag": null
+  },
+  {
+   "date": "2024-06-10",
+   "street": "מסילת ישרים",
+   "address": "מסילת ישרים 8",
+   "neighbourhood": "שפירא",
+   "rooms": 1.0,
+   "area_m2": 25.0,
+   "price": 675000.0,
+   "price_per_m2": 27000,
+   "new": false,
+   "project": null,
+   "floor": "שניה",
+   "flag": null
+  },
+  {
+   "date": "2024-04-18",
+   "street": "בילטמור",
+   "address": "בילטמור 8",
+   "neighbourhood": "הצפון החדש-סביבת ככר המדינה",
+   "rooms": 2.0,
+   "area_m2": 40.0,
+   "price": 2940000.0,
+   "price_per_m2": 73500,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2024-03-14",
+   "street": "בלפור",
+   "address": "בלפור 6",
+   "neighbourhood": "לב תל-אביב",
+   "rooms": 4.0,
+   "area_m2": 115.0,
+   "price": 10650000.0,
+   "price_per_m2": 92609,
+   "new": false,
+   "project": null,
+   "floor": "מרתף ‎-3‏, קומה ‎0‏",
+   "flag": null
+  },
+  {
+   "date": "2024-01-17",
+   "street": "קהילת לבוב",
+   "address": "קהילת לבוב 7",
+   "neighbourhood": "הדר-יוסף",
+   "rooms": 4.0,
+   "area_m2": 127.0,
+   "price": 5650000.0,
+   "price_per_m2": 44488,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-12-31",
+   "street": "רויגו אברהם",
+   "address": "אברהם רוויגו 1",
+   "neighbourhood": "שפירא",
+   "rooms": 1.0,
+   "area_m2": 25.0,
+   "price": 625000000.0,
+   "price_per_m2": 25000000,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "high: over 3x that year citywide flat median per m2 (likely data error or multi-unit)"
+  },
+  {
+   "date": "2023-12-14",
+   "street": "מויאל אהרון",
+   "address": "אהרון מויאל 3",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "rooms": 5.0,
+   "area_m2": 203.0,
+   "price": 8000000.0,
+   "price_per_m2": 39409,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-12-03",
+   "street": "רובינא חנה",
+   "address": "חנה רובינא 6",
+   "neighbourhood": "תל ברוך",
+   "rooms": 6.0,
+   "area_m2": 181.0,
+   "price": 6308000.0,
+   "price_per_m2": 34851,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-10-25",
+   "street": "תג'ר ציונה",
+   "address": "ציונה תג'ר 13",
+   "neighbourhood": "צהלון ושיכוני חסכון",
+   "rooms": 3.0,
+   "area_m2": 86.0,
+   "price": 656948.0,
+   "price_per_m2": 7639,
+   "new": false,
+   "project": null,
+   "floor": "שניה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-08-07",
+   "street": "קליי",
+   "address": "קליי 10",
+   "neighbourhood": "הצפון החדש-סביבת ככר המדינה",
+   "rooms": 3.0,
+   "area_m2": 61.0,
+   "price": 4150000.0,
+   "price_per_m2": 68033,
+   "new": false,
+   "project": null,
+   "floor": "שניה",
+   "flag": null
+  },
+  {
+   "date": "2023-07-04",
+   "street": "חכמי אתונה",
+   "address": "חכמי אתונה 1",
+   "neighbourhood": "שפירא",
+   "rooms": 3.0,
+   "area_m2": 53.0,
+   "price": 2600000.0,
+   "price_per_m2": 49057,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-07-04",
+   "street": "חכמי אתונה",
+   "address": "חכמי אתונה 1",
+   "neighbourhood": "שפירא",
+   "rooms": 3.0,
+   "area_m2": 53.0,
+   "price": 260000.0,
+   "price_per_m2": 4906,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-06-29",
+   "street": "פלטיאל",
+   "address": "פלטיאל 1",
+   "neighbourhood": "התקוה",
+   "rooms": 3.0,
+   "area_m2": 48.0,
+   "price": 292000.0,
+   "price_per_m2": 6083,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-06-29",
+   "street": "שגאל מרק",
+   "address": "מארק שאגאל 8",
+   "neighbourhood": "נופי ים",
+   "rooms": 5.0,
+   "area_m2": 117.7,
+   "price": 8100000.0,
+   "price_per_m2": 68819,
+   "new": false,
+   "project": null,
+   "floor": "קרקע",
+   "flag": null
+  },
+  {
+   "date": "2023-05-16",
+   "street": "אדר",
+   "address": "אדר 17",
+   "neighbourhood": "עזרא והארגזים",
+   "rooms": 3.0,
+   "area_m2": 70.0,
+   "price": 1210000.0,
+   "price_per_m2": 17286,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-05-09",
+   "street": "כוכבי יצחק",
+   "address": "יצחק כוכבי 15",
+   "neighbourhood": "שפירא",
+   "rooms": 2.0,
+   "area_m2": 44.0,
+   "price": 400000.0,
+   "price_per_m2": 9091,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2023-04-02",
+   "street": "בר אילן",
+   "address": "בר-אילן 17",
+   "neighbourhood": "לב תל-אביב",
+   "rooms": 3.0,
+   "area_m2": 79.0,
+   "price": 5442000.0,
+   "price_per_m2": 68886,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-03-13",
+   "street": "כרם חמד",
+   "address": "כרם חמד 12",
+   "neighbourhood": "שפירא",
+   "rooms": 4.0,
+   "area_m2": 98.0,
+   "price": 2500000.0,
+   "price_per_m2": 25510,
+   "new": false,
+   "project": null,
+   "floor": "קרקע",
+   "flag": null
+  },
+  {
+   "date": "2023-02-28",
+   "street": "רביבים",
+   "address": "רביבים 44",
+   "neighbourhood": "רביבים",
+   "rooms": 4.0,
+   "area_m2": 115.0,
+   "price": 8000000.0,
+   "price_per_m2": 69565,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-02-15",
+   "street": "רביבים",
+   "address": "רביבים 44",
+   "neighbourhood": "רביבים",
+   "rooms": 7.0,
+   "area_m2": 122.0,
+   "price": 9050000.0,
+   "price_per_m2": 74180,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2023-01-23",
+   "street": "קהילת עדן",
+   "address": "קהילת עדן 1",
+   "neighbourhood": "כרם התימנים",
+   "rooms": 3.0,
+   "area_m2": 53.5,
+   "price": 4050000.0,
+   "price_per_m2": 75701,
+   "new": false,
+   "project": null,
+   "floor": "קרקע",
+   "flag": null
+  },
+  {
+   "date": "2022-11-29",
+   "street": "הונא",
+   "address": "הונא 46",
+   "neighbourhood": "התקוה",
+   "rooms": 3.0,
+   "area_m2": 50.0,
+   "price": 252000.0,
+   "price_per_m2": 5040,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-11-23",
+   "street": "דיסנצ'יק אריה",
+   "address": "אריה דיסנצ'יק 4",
+   "neighbourhood": "רביבים",
+   "rooms": 6.0,
+   "area_m2": 152.0,
+   "price": 7250000.0,
+   "price_per_m2": 47697,
+   "new": false,
+   "project": null,
+   "floor": "קרקע, ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2022-11-16",
+   "street": "לפין",
+   "address": "לפין 20",
+   "neighbourhood": "נוה צדק",
+   "rooms": 4.0,
+   "area_m2": 101.0,
+   "price": 7300000.0,
+   "price_per_m2": 72277,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2022-10-12",
+   "street": "עיר שמש",
+   "address": "עיר שמש 31",
+   "neighbourhood": "גני צהלה, רמות צהלה",
+   "rooms": 6.0,
+   "area_m2": 196.0,
+   "price": 794000.0,
+   "price_per_m2": 4051,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-09-22",
+   "street": "באר שבע",
+   "address": "באר שבע 18",
+   "neighbourhood": "מכללת יפו תל אביב ודקר",
+   "rooms": 4.0,
+   "area_m2": 117.46,
+   "price": 977000.0,
+   "price_per_m2": 8318,
+   "new": false,
+   "project": null,
+   "floor": "קרקע",
+   "flag": "low: under 30% of that year citywide flat median per m2 (likely partial share or non-market)"
+  },
+  {
+   "date": "2022-09-22",
+   "street": "נוה שאנן",
+   "address": "נווה שאנן 13",
+   "neighbourhood": "נוה שאנן",
+   "rooms": 4.0,
+   "area_m2": 127.0,
+   "price": 4000000.0,
+   "price_per_m2": 31496,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2022-09-11",
+   "street": "מקור חיים",
+   "address": "מקור חיים 7",
+   "neighbourhood": "שפירא",
+   "rooms": 2.0,
+   "area_m2": 40.0,
+   "price": 1700000.0,
+   "price_per_m2": 42500,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2022-08-23",
+   "street": "חזקיהו המלך",
+   "address": "חזקיהו המלך 29",
+   "neighbourhood": "שפירא",
+   "rooms": 2.0,
+   "area_m2": 47.0,
+   "price": 1240000.0,
+   "price_per_m2": 26383,
+   "new": false,
+   "project": null,
+   "floor": "ראשונה",
+   "flag": null
+  },
+  {
+   "date": "2022-08-08",
+   "street": "זליגמן מקס",
+   "address": "מקס זליגמן 1",
+   "neighbourhood": "המשתלה",
+   "rooms": 5.0,
+   "area_m2": 136.0,
+   "price": 4970000.0,
+   "price_per_m2": 36544,
+   "new": false,
+   "project": null,
+   "floor": "שניה",
+   "flag": null
+  }
+ ],
+ "garden_floor_field": {
+  "ראשונה": 82,
+  "(blank)": 42,
+  "קרקע": 36,
+  "שניה": 13,
+  "שלישית": 6,
+  "מרתף": 3,
+  "קרקע,ראשונה": 3,
+  "מרתף, קרקע": 2,
+  "רביעית": 2,
+  "קרקע+ראשונה": 2,
+  "מרתף + קרקע": 2,
+  "מרתף קרקע ביניים": 2,
+  "קומה ‎1‏": 2,
+  "מרתף עליון, קרקע": 2,
+  "מרתף,קרקע": 1,
+  "-": 1,
+  "מרתף ‎-3‏, קומה ‎0‏": 1,
+  "תשיעית": 1,
+  "מרתף וראשונה": 1,
+  "מרתף שני, קרקע": 1,
+  "רביעית, חמישית": 1,
+  "קרקע וראשונה": 1,
+  "קרקע, ראשונה": 1,
+  "שמינית": 1,
+  "שניה ושלישית": 1,
+  "קומה ‎0‏, קומה ‎1‏": 1,
+  "שישית": 1,
+  "מרתף,קרקע,ראשנה": 1,
+  "מרתף +קרקע ראשונה+גג": 1,
+  "מרתף ‎-1‏, קומה ‎0‏": 1,
+  "קרקע וקרקע עליונה": 1,
+  "מרתף+קרקע+ראשונה": 1,
+  "מרתף, קרקע, ראשונה": 1,
+  "מרתף שני +קרקע": 1,
+  "שניה,שלישית": 1,
+  "מרתף קרקע": 1,
+  "קרקע + ראשונה": 1,
+  "שביעית": 1,
+  "ראה הערות רשם": 1,
+  "מרתף ‎-1‏, קומה ‎0‏, קומה ‎1‏": 1,
+  "חמישית ו-גג": 1,
+  "חמישית+שישית": 1
+ },
+ "possible_bulk_rows": [],
+ "context_2020_2024": {
+  "note": "apartments = DEALNATUREDESCRIPTION in ('דירה בבית קומות','דירה'); ground floor = FLOORNO 'קרקע'. Ground floor is a PROXY, not the same as a garden apartment.",
+  "all_apartments": {
+   "deals": 16889,
+   "median_price": 3450000,
+   "median_price_per_sqm": 47266,
+   "with_area": 16711,
+   "median_area": 74
+  },
+  "ground_floor_apartments": {
+   "deals": 680,
+   "median_price": 2800000,
+   "median_price_per_sqm": 49989,
+   "with_area": 660,
+   "median_area": 60
+  },
+  "garden_labelled": {
+   "deals": 81,
+   "median_price": 5400000,
+   "median_price_per_sqm": 44422,
+   "with_area": 80,
+   "median_area": 115
+  },
+  "penthouse_labelled": {
+   "deals": 86,
+   "median_price": 7714000,
+   "median_price_per_sqm": 56006,
+   "with_area": 84,
+   "median_area": 135
+  }
+ },
+ "ground_floor_proxy_by_neighbourhood_2020_2024": [
+  {
+   "neighbourhood": "הצפון הישן - החלק הצפוני",
+   "all_flats": 1193,
+   "all_flats_median_per_sqm": 61240,
+   "ground_floor_flats": 68,
+   "ground_floor_median_per_sqm": 63167,
+   "ground_vs_all_pct": 3.1
+  },
+  {
+   "neighbourhood": "לב תל-אביב",
+   "all_flats": 1186,
+   "all_flats_median_per_sqm": 60909,
+   "ground_floor_flats": 77,
+   "ground_floor_median_per_sqm": 54107,
+   "ground_vs_all_pct": -11.2
+  },
+  {
+   "neighbourhood": "הצפון הישן-החלק הדרומי",
+   "all_flats": 999,
+   "all_flats_median_per_sqm": 58160,
+   "ground_floor_flats": 83,
+   "ground_floor_median_per_sqm": 57054,
+   "ground_vs_all_pct": -1.9
+  },
+  {
+   "neighbourhood": "הצפון החדש-סביבת ככר המדינה",
+   "all_flats": 895,
+   "all_flats_median_per_sqm": 59680,
+   "ground_floor_flats": 37,
+   "ground_floor_median_per_sqm": 74198,
+   "ground_vs_all_pct": 24.3
+  },
+  {
+   "neighbourhood": "הצפון החדש - החלק הצפוני",
+   "all_flats": 642,
+   "all_flats_median_per_sqm": 61826,
+   "ground_floor_flats": 40,
+   "ground_floor_median_per_sqm": 69204,
+   "ground_vs_all_pct": 11.9
+  },
+  {
+   "neighbourhood": "הצפון החדש-החלק הדרומי",
+   "all_flats": 587,
+   "all_flats_median_per_sqm": 62470,
+   "ground_floor_flats": 30,
+   "ground_floor_median_per_sqm": 68468,
+   "ground_vs_all_pct": 9.6
+  },
+  {
+   "neighbourhood": "נוה אביבים וסביבתה",
+   "all_flats": 519,
+   "all_flats_median_per_sqm": 46715,
+   "ground_floor_flats": 5,
+   "ground_floor_median_per_sqm": null,
+   "ground_vs_all_pct": null
+  },
+  {
+   "neighbourhood": "יד אליהו",
+   "all_flats": 488,
+   "all_flats_median_per_sqm": 37791,
+   "ground_floor_flats": 18,
+   "ground_floor_median_per_sqm": 36406,
+   "ground_vs_all_pct": -3.7
+  },
+  {
+   "neighbourhood": "פלורנטין",
+   "all_flats": 427,
+   "all_flats_median_per_sqm": 52362,
+   "ground_floor_flats": 6,
+   "ground_floor_median_per_sqm": 55128,
+   "ground_vs_all_pct": 5.3
+  },
+  {
+   "neighbourhood": "התקוה",
+   "all_flats": 418,
+   "all_flats_median_per_sqm": 28174,
+   "ground_floor_flats": 17,
+   "ground_floor_median_per_sqm": 28150,
+   "ground_vs_all_pct": -0.1
+  },
+  {
+   "neighbourhood": "(יפו ד' (גבעת התמרים",
+   "all_flats": 386,
+   "all_flats_median_per_sqm": 29199,
+   "ground_floor_flats": 17,
+   "ground_floor_median_per_sqm": 33157,
+   "ground_vs_all_pct": 13.6
+  },
+  {
+   "neighbourhood": "צהלון ושיכוני חסכון",
+   "all_flats": 349,
+   "all_flats_median_per_sqm": 39574,
+   "ground_floor_flats": 34,
+   "ground_floor_median_per_sqm": 37237,
+   "ground_vs_all_pct": -5.9
+  },
+  {
+   "neighbourhood": "נוה שאנן",
+   "all_flats": 338,
+   "all_flats_median_per_sqm": 41591,
+   "ground_floor_flats": 13,
+   "ground_floor_median_per_sqm": 38831,
+   "ground_vs_all_pct": -6.6
+  },
+  {
+   "neighbourhood": "מכללת יפו תל אביב ודקר",
+   "all_flats": 324,
+   "all_flats_median_per_sqm": 34713,
+   "ground_floor_flats": 25,
+   "ground_floor_median_per_sqm": 31646,
+   "ground_vs_all_pct": -8.8
+  },
+  {
+   "neighbourhood": "קרית שלום",
+   "all_flats": 306,
+   "all_flats_median_per_sqm": 30990,
+   "ground_floor_flats": 62,
+   "ground_floor_median_per_sqm": 30920,
+   "ground_vs_all_pct": -0.2
+  },
+  {
+   "neighbourhood": "צפון יפו",
+   "all_flats": 297,
+   "all_flats_median_per_sqm": 51543,
+   "ground_floor_flats": 27,
+   "ground_floor_median_per_sqm": 47048,
+   "ground_vs_all_pct": -8.7
+  },
+  {
+   "neighbourhood": "ביצרון ורמת ישראל",
+   "all_flats": 260,
+   "all_flats_median_per_sqm": 42857,
+   "ground_floor_flats": 8,
+   "ground_floor_median_per_sqm": 55867,
+   "ground_vs_all_pct": 30.4
+  },
+  {
+   "neighbourhood": "יפו ג' ונוה גולן",
+   "all_flats": 245,
+   "all_flats_median_per_sqm": 30286,
+   "ground_floor_flats": 5,
+   "ground_floor_median_per_sqm": 28286,
+   "ground_vs_all_pct": -6.6
+  },
+  {
+   "neighbourhood": "כרם התימנים",
+   "all_flats": 203,
+   "all_flats_median_per_sqm": 65980,
+   "ground_floor_flats": 11,
+   "ground_floor_median_per_sqm": 72045,
+   "ground_vs_all_pct": 9.2
+  },
+  {
+   "neighbourhood": "נוה צדק",
+   "all_flats": 187,
+   "all_flats_median_per_sqm": 65732,
+   "ground_floor_flats": 5,
+   "ground_floor_median_per_sqm": 54015,
+   "ground_vs_all_pct": -17.8
+  },
+  {
+   "neighbourhood": "שפירא",
+   "all_flats": 165,
+   "all_flats_median_per_sqm": 34524,
+   "ground_floor_flats": 13,
+   "ground_floor_median_per_sqm": 31185,
+   "ground_vs_all_pct": -9.7
+  },
+  {
+   "neighbourhood": "עג'מי וגבעת עליה",
+   "all_flats": 131,
+   "all_flats_median_per_sqm": 31507,
+   "ground_floor_flats": 13,
+   "ground_floor_median_per_sqm": 11846,
+   "ground_vs_all_pct": -62.4
+  },
+  {
+   "neighbourhood": "תל ברוך צפון",
+   "all_flats": 118,
+   "all_flats_median_per_sqm": 41721,
+   "ground_floor_flats": 12,
+   "ground_floor_median_per_sqm": 50667,
+   "ground_vs_all_pct": 21.4
+  },
+  {
+   "neighbourhood": "מעוז אביב",
+   "all_flats": 47,
+   "all_flats_median_per_sqm": 55224,
+   "ground_floor_flats": 7,
+   "ground_floor_median_per_sqm": 59875,
+   "ground_vs_all_pct": 8.4
+  }
+ ],
+ "garden_share": {
+  "garden_labelled": 227,
+  "all_residential_flat_deals": 75182,
+  "ground_floor_flat_deals_all_years": 3391
+ }
+}

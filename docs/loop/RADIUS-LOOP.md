@@ -359,7 +359,16 @@ Ben's words: Hebrew and English. A huge page of at least 5,000 net words: tools,
 
 ## R12 GARDEN APARTMENTS IN TEL AVIV (HAD-669, Ben 3.11.2026)
 Many Facebook campaigns run for this, and the site has nothing. Ben wants the best page in the world for it: it holds listings and covers every combination (3 rooms, with a safe room, by area, by street) with tools, prices and data. Our moat: the Tax Authority deals file lists "דירת גן" as its own property type.
-- [ ] **R12a Research** (running 3.11 evening): keywords, SERP, competitors, the deals aggregated, our listings and URL ownership. Output: `docs/research/2026-11-03-garden/`.
+- [x] **R12a Research done (3.11 evening)**, in `docs/research/2026-11-03-garden/`: brief, keywords, serp, competitors, our-site, garden-deals.md/json.
+  - **Demand:** small in Google. "דירת גן" 720 a month, "דירת גן להשכרה" 480, "דירת גן למכירה" 210. The Tel Aviv buy terms run only 10 to 40 a month, and the combinations (rooms, ממ"ד, area) are too small to report. The real demand here is the Facebook campaigns Ben sees, plus AI answers.
+  - **The moat:** the Tax Authority file holds 248 garden deals in Tel Aviv (2001 to 8.2024), 227 after removing outliers. 2020-2024: 81 deals, median 5.4M ₪ and about 44,400 ₪/m². Only 2 streets have the 5 deals a median needs.
+  - **Caveats:**
+    - The garden label stops in 8.2024, so the data needs a refresh before it goes public.
+    - The file has no garden size and no ממ"ד field.
+  - **The strongest competitor: Madlan.** It has 755 TA garden listings and a ממ"ד filter, but no closed-deal prices. Google's AI answer builds its range from asking prices, one of them a placeholder of 111,111 ₪. Closed prices are our edge for AI citations.
+  - **Our site:** 0 GSC queries and 0 real TA garden listings. The listing type supports property_type=garden and ממ"ד, but needs fields for garden size, Tabu, pool and garden type.
+  - **URL:** `/tel-aviv-garden-apartments/`. The slug and the H1 pass the keyword guard.
+  - **Decision (mine, under the keyword law):** "דירת גן למכירה" stays with its owner `/properties/`. The new page uses it only lower down, never in the title or H1.
 - [ ] **R12b-e** Design, article, tools, build: after R11.
 
 ## R13 ENVIRONMENTAL HAZARDS MAP: REMIND BEN (HAD-658 #22)
