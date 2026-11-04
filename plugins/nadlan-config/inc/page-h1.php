@@ -130,6 +130,7 @@ add_filter( 'wpseo_title', function ( $t ) {
 
 add_action( 'wp_head', function () {
 	if ( '0' === (string) get_option( 'nadlan_page_h1', '1' ) || ! is_page() || is_front_page() ) { return; }
-	// the PageHeader title of the NadLan design system (Claude Design), on the Skin A tokens the site already loads
-	echo "\n<style id=\"nadlan-page-h1\">.nlds-pagehead--inpage{padding-block:4px 6px;direction:rtl}.nlds-pagehead--inpage .nlds-pagehead__title{font-family:var(--sa-serif,'Noto Serif Hebrew','David Libre',Georgia,serif);font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.005em;color:var(--sa-ink,#14212B);margin:0 0 14px;text-wrap:balance}@media(max-width:600px){.nlds-pagehead--inpage .nlds-pagehead__title{font-size:30px}}</style>\n";
+	// the PageHeader title of the NadLan design system (Claude Design), on the Skin A tokens the site already loads.
+	// 1.72.583 (HAD-671): an English, French or Russian page (<html dir="ltr">) shows its title left-aligned like its text
+	echo "\n<style id=\"nadlan-page-h1\">.nlds-pagehead--inpage{padding-block:4px 6px;direction:rtl}html[dir=ltr] .nlds-pagehead--inpage{direction:ltr}.nlds-pagehead--inpage .nlds-pagehead__title{font-family:var(--sa-serif,'Noto Serif Hebrew','David Libre',Georgia,serif);font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.005em;color:var(--sa-ink,#14212B);margin:0 0 14px;text-wrap:balance}@media(max-width:600px){.nlds-pagehead--inpage .nlds-pagehead__title{font-size:30px}}</style>\n";
 }, 30 );

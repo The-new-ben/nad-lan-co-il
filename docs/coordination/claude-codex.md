@@ -4672,3 +4672,13 @@ RELEASE DONE 1.72.579 (HazardEnglish): released and verified (project-stage-2026
 
 RELEASE LOCK 1.72.580 (HazardAddress, HAD-670 R13g: assets/instruments/tools/hazards.js swapped whole, written by 1.72.579) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 01:00.
 RELEASE DONE 1.72.580 (HazardAddress): released and verified (project-stage-2026-09-24/deploy-result-580.json), 949 page checks OK. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 01:20.
+
+RELEASE LOCK 1.72.581 (LuxuryFacts, HAD-654 R14: data/project-facts.json + data/radius-prices.json swapped whole, written by 1.72.571-572; RAMATA 8770, Semel Tzafon 8771, complex 4 northern Sde Dov 8772) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 03:05.
+RELEASE NOTE 1.72.581 first run ROLLED BACK by its own checks (deploy-result-581.json): a stale catalogue count (5 to 6 TAMA 38 after RAMATA) and a wrong Rainbow check of mine; live stayed 1.72.580 ok. Checks fixed, rerun under the same lock. Claude [f8200c1d, Opus 5.5] 4.11.2026 03:40.
+RELEASE DONE 1.72.581 (LuxuryFacts): released and verified on the second run (project-stage-2026-09-24/deploy-result-581.json), 954 page checks OK; first run kept as deploy-result-581-run1-rolledback.json. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 04:00.
+
+RELEASE LOCK 1.72.582 (SemelAddress, HAD-654 R14: data/project-facts.json swapped whole, written by 1.72.581; one row of 8771) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 04:10.
+RELEASE DONE 1.72.582 (SemelAddress): released and verified (project-stage-2026-09-24/deploy-result-582.json); 6 pages gave a gateway 502 for seconds right after the swap and passed on the second round. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 04:35.
+
+RELEASE LOCK 1.72.583 (PageTitleLtr, HAD-671: inc/page-h1.php swapped whole, written by 1.72.498; one CSS rule, English/French/Russian in-page titles run left to right) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 06:35.
+RELEASE DONE 1.72.583 (PageTitleLtr): released and verified (project-stage-2026-09-24/deploy-result-583.json), 959 page checks OK; pressed in Chrome: /en/asbestos/, /en/environmental-hazards/, /en/sde-dov/contamination/ titles ltr at 390 and 1280, the Hebrew three still rtl.

@@ -295,7 +295,8 @@
     - the kit on all 3.
   - **Source audit:** all 3 pages GREEN apart from the length of Semel's title (78 characters).
     - **Finding:** Rainbow's raw HTML now carries the map's list of nearby places (`NLPJX_POIS`, 134 places), which was missing from the 3.11 19:15 snapshot. My releases didn't cause it; the map's place cache was probably cold then. Reported, not re-baselined.
-  - **Loop stopped here, on Ben's order.** Dimri's northern lot (275 units) is the next candidate. **WAITS FOR BEN.**
+  - **Loop stopped here, on Ben's order.** Dimri's northern lot (275 units) was the next candidate.
+  - [x] **Closed by Ben, 4.11.2026 ~06:20:** "אל תפנה עוד עמוד על דימרי". No page for Dimri's northern lot, and no paragraph about it on Dimri Yama either.
 - Note: ramata (Metropolis, page 8770) was created at 01:55 before this order; its article is live, its facts and prices ride along in the next data release; no more work on mid-size gap pages until Ben says.
 
 ## R10 MOAT (Ben, 2.11.2026, afternoon)
