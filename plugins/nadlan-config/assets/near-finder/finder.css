@@ -30,7 +30,9 @@ html body .nlnf button,html body .nlnf select{font-family:var(--nf-sans);letter-
 .nlnf__map,.nlnf .nlnf__map.mapboxgl-map{position:absolute !important;top:0;right:0;bottom:0;left:0;width:100%;height:100%} /* mapbox-gl.css sets .mapboxgl-map{position:relative}, which would fold it to 0 */
 .nlnf__panel{grid-area:panel;position:relative;z-index:3;min-width:0;background:var(--nf-surface);border-top:1px solid var(--nf-line);
   border-radius:6px 6px 0 0;margin-top:-12px;padding:8px 16px 16px}
-.nlnf__grab{width:40px;height:4px;border-radius:999px;background:var(--nf-line);margin:0 auto 8px}
+.nlnf__grab{display:block;width:100%;height:12px;margin:0;pointer-events:none;cursor:default} /* v3: a button (the phone sheet's handle); here the same quiet line as before */
+html body .nlnf .nlnf__grab{padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;min-height:0 !important}
+.nlnf__grab span{display:block;width:40px;height:4px;border-radius:999px;background:var(--nf-line);margin:0 auto}
 .nlnf--nomap .nlnf__panel{margin-top:0;border-radius:0}
 .nlnf--nomap .nlnf__grab{display:none}
 
@@ -282,3 +284,150 @@ html.nlnf-open,html.nlnf-open body{overflow:hidden !important} /* only while the
   .nlnf-pin.is-drop .nlnf-pin__t{animation:none !important}
   html body .nlnf-lidi .nlnf-launch{transition:none}
 }
+
+/* ------------------------------------------------------------------ v2 (1.72.585): alerts, the heart, follow (Claude Design project/Alerts.dc.html).
+   The same tokens: sea for the action, ink for text, survey only for an error line here; checkboxes and the frequency are real
+   inputs (keyboard and screen readers as is); the sheet takes the card's place: a full sheet on a phone, the panel on a computer. */
+.nlnf__alert{margin:8px 0 2px}
+html body .nlnf .nlnf-alertbtn{display:inline-flex;align-items:center;gap:8px;min-height:40px;margin:0;padding:0 14px 0 12px;border:1px solid var(--nf-sea);border-radius:999px;
+  background:var(--nf-surface);color:var(--nf-sea-deep);font:600 14px/1.2 var(--nf-sans);letter-spacing:0;text-transform:none;cursor:pointer}
+html body .nlnf .nlnf-alertbtn:hover{background:var(--nf-ground);color:var(--nf-sea-deep)}
+@media (pointer:coarse){html body .nlnf .nlnf-alertbtn{min-height:44px}}
+.nlnf-row__sv{display:inline-flex;vertical-align:-2px;margin-inline-end:6px;color:var(--nf-sea)}
+.nlnf-card__bar{justify-content:space-between;gap:8px}
+html body .nlnf .nlnf-card__save{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:0;padding:0 8px;border:0;border-radius:2px;background:transparent;
+  color:var(--nf-sea-deep);font:600 14px/1 var(--nf-sans);letter-spacing:0;cursor:pointer}
+html body .nlnf .nlnf-card__save:hover{background:var(--nf-ground)}
+html body .nlnf .nlnf-card__save[aria-pressed=true]{color:var(--nf-sea)}
+html body .nlnf .nlnf-card__follow[aria-pressed=false] span{text-decoration:underline;text-underline-offset:3px}
+.nlnf-card__note:empty{display:none}
+.nlnf-card__note{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px;background:var(--nf-surface);border:1px solid var(--nf-line);border-radius:6px}
+html body .nlnf .nlnf-card__note p{margin:0 !important;font-size:14px !important;line-height:1.5 !important;color:var(--nf-ink2) !important}
+
+/* the sheet */
+.nlnf__al{position:fixed;inset:0;z-index:100005;background:var(--nf-ground);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.nlnf-al__in{display:flex;flex-direction:column;gap:16px;margin:0;padding:16px 16px 150px} /* the WhatsApp bar stays below the button */
+.nlnf-al__head{display:flex;flex-direction:column;gap:4px}
+html body .nlnf .nlnf-al__h{margin:0 !important;font-family:var(--nf-display) !important;font-weight:700 !important;font-size:40px !important;line-height:44px !important;
+  color:var(--nf-ink) !important;letter-spacing:0 !important;text-align:start !important;outline:0}
+html body .nlnf .nlnf-al__lead{margin:0 !important;font-size:15px !important;line-height:24px !important;color:var(--nf-ink2) !important}
+.nlnf-al__lead bdi{font-weight:600;color:var(--nf-ink)}
+html body .nlnf .nlnf-al__h:focus,html body .nlnf .nlnf-al__h:focus-visible{outline:0 !important}
+.nlnf-al__r{display:inline-block;margin:0;vertical-align:baseline}
+html body .nlnf .nlnf-al__r select{height:32px;margin:0;padding:0 10px 0 26px;border:1px solid var(--nf-line) !important;border-radius:999px;box-shadow:none !important;
+  background:var(--nf-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%233E4C58' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat left 10px center;
+  color:var(--nf-ink);font:500 14px/1 var(--nf-mono);cursor:pointer;-webkit-appearance:none;appearance:none;min-height:0 !important;width:auto;background-color:var(--nf-surface) !important;height:32px !important;line-height:30px !important}
+.nlnf-al__what{margin:0;padding:0;min-width:0;border:1px solid var(--nf-line);border-radius:6px;background:var(--nf-surface)}
+.nlnf-al__opt{display:flex;gap:12px;align-items:flex-start;min-height:44px;margin:0;padding:12px 16px;border-bottom:1px solid var(--nf-line);cursor:pointer}
+.nlnf-al__opt:last-of-type{border-bottom:0}
+html body .nlnf .nlnf-al__opt input{flex:0 0 18px;width:18px !important;height:18px !important;margin:3px 0 0 !important;padding:0;accent-color:var(--nf-sea);-webkit-appearance:auto;appearance:auto;cursor:pointer}
+.nlnf-al__opt > span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nlnf-al__opt b{font-size:15px;line-height:22px;font-weight:600;color:var(--nf-ink)}
+.nlnf-al__opt small{font-size:13px;line-height:20px;color:var(--nf-ink2)}
+.nlnf-al__grp{display:flex;flex-direction:column;gap:8px;margin:0}
+.nlnf-al__lab{font-size:13px;line-height:18px;font-weight:500;color:var(--nf-ink2)}
+.nlnf-al__seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:44px;border:1px solid var(--nf-line);border-radius:2px;overflow:hidden;background:var(--nf-surface)}
+.nlnf-al__seg label{position:relative;display:block;margin:0;cursor:pointer}
+.nlnf-al__seg label + label{border-inline-start:1px solid var(--nf-line)}
+.nlnf-al__seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.nlnf-al__seg span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--nf-ink2)}
+.nlnf-al__seg input:checked + span{background:var(--nf-sea);color:var(--nf-on-sea);font-weight:600}
+.nlnf-al__seg input:focus-visible + span{outline:2px solid var(--nf-ink);outline-offset:-4px}
+html body .nlnf .nlnf-al__mail input{display:block;width:100%;height:44px;margin:0 !important;padding:0 12px !important;border:1px solid var(--nf-line) !important;border-radius:2px !important;
+  background:var(--nf-surface) !important;box-shadow:none !important;font:400 16px/1.2 var(--nf-sans) !important;color:var(--nf-ink) !important;direction:ltr;text-align:left;-webkit-appearance:none;appearance:none}
+html body .nlnf .nlnf-al__mail input:focus{border:2px solid var(--nf-sea) !important;padding:0 11px !important;outline:0 !important}
+.nlnf-al__mail input::placeholder{color:var(--nf-mute);opacity:1}
+.nlnf-al__hp{position:absolute !important;left:-9999px !important;width:1px !important;height:1px !important;opacity:0 !important}
+html body .nlnf .nlnf-al__go{width:100%;min-height:48px;font-size:16px}
+/* the theme rounds every <button>: the system's buttons are 2px (the small pill buttons stay pills) */
+html body .nlnf .nlnf-btn{border-radius:2px !important}
+html body .nlnf .nlnf-btn--s{border-radius:999px !important}
+html body .nlnf .nlnf-al__go[disabled]{opacity:.75;cursor:progress}
+html body .nlnf .nlnf-al__err{margin:0 !important;padding:8px 12px;border-inline-start:3px solid var(--nf-survey);background:var(--nf-surface);font-size:14px !important;line-height:1.5 !important;color:var(--nf-ink) !important}
+html body .nlnf .nlnf-al__fine{margin:0 !important;font-size:12px !important;line-height:18px !important;color:var(--nf-mute) !important}
+html body .nlnf .nlnf-al__fine a{color:var(--nf-sea-deep);text-decoration:underline;text-underline-offset:3px}
+.nlnf-al__done{gap:14px}
+@media (min-width:1024px){
+  .nlnf__al{position:absolute;inset-block:0;inset-inline-start:0;inset-inline-end:auto;width:440px;z-index:31;border-inline-end:1px solid var(--nf-line)}
+  .nlnf-al__in{padding:16px 24px 24px}
+  .nlnf-dlg .nlnf-al__in{padding-bottom:96px}
+}
+
+/* ------------------------------------------------------------------ v3 (1.72.586): draw a zone, the full filters, travel time, the phone sheet.
+   The same Instruments tokens; nothing new in the palette: the zone and the travel area are sea tints, the line while drawing is
+   ink, dashed (the measuring line's language). The pad exists only while drawing; the handle is the only other element with
+   touch-action:none, and it lives inside the dialog. */
+.nlnf__tools{position:absolute;z-index:6;bottom:24px;right:10px;display:flex;flex-direction:column-reverse;align-items:flex-end;gap:8px}
+html body .nlnf .nlnf__tools .nlnf__ruler{position:static}
+html body .nlnf .nlnf__draw.has-zone{border:2px solid var(--nf-sea);padding:0 13px;color:var(--nf-sea-deep)}
+@media (max-width:1023px){.nlnf--nodraw .nlnf__draw{display:none !important}}
+@media (min-width:1024px){.nlnf__tools{bottom:auto;top:16px;right:auto;left:60px;flex-direction:row;align-items:center}}
+.nlnf__pad{position:absolute;inset:0;z-index:5;touch-action:none;cursor:crosshair;background:rgba(18,32,42,.04);-webkit-user-select:none;user-select:none}
+.nlnf__pad svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.nlnf__pad polyline{fill:rgba(47,111,134,.10);stroke:var(--nf-ink);stroke-width:2;stroke-dasharray:6 4;stroke-linejoin:round;stroke-linecap:round}
+html body .nlnf.is-draw .nlnf__area,.nlnf__app.is-draw .nlnf__area{display:none !important}
+.nlnf-lg--zone{height:14px;width:14px;flex-basis:14px;border-radius:2px;border:2px solid var(--nf-sea-deep);background:rgba(47,111,134,.08)}
+.nlnf-lg--iso{height:14px;width:14px;flex-basis:14px;border-radius:4px;border:1.5px solid rgba(47,111,134,.7);background:rgba(47,111,134,.14)}
+.nlnf-chip__n{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;margin-inline-start:6px;padding:0 5px;border-radius:999px;
+  background:var(--nf-sea);color:var(--nf-on-sea);font:600 11px/1 var(--nf-mono)}
+
+/* the full filters and the travel time: the alert sheet's frame (a full sheet on a phone, the panel's place on a computer) */
+.nlnf__sh{z-index:100006}
+.nlnf-fs__grp{display:flex;flex-direction:column;gap:8px;margin:0;min-width:0}
+.nlnf-fs__pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlnf-fs__sel{display:flex;align-items:center;gap:8px;margin:0;min-width:0}
+.nlnf-fs__k{flex:0 0 22px;font-size:13px;line-height:18px;color:var(--nf-ink2)}
+html body .nlnf .nlnf-fs__sel select{flex:1 1 auto;min-width:0;width:100%;height:44px !important;min-height:0 !important;margin:0 !important;padding:0 12px 0 30px !important;border:1px solid var(--nf-line) !important;border-radius:2px !important;
+  background:var(--nf-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%233E4C58' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat left 12px center !important;
+  box-shadow:none !important;color:var(--nf-ink) !important;font:400 15px/1.2 var(--nf-mono) !important;cursor:pointer;-webkit-appearance:none;appearance:none}
+html body .nlnf .nlnf-fs__sel select:focus{border:2px solid var(--nf-sea) !important;padding:0 11px 0 29px !important;outline:0 !important}
+.nlnf-fs .nlnf-al__opt{align-items:center}
+.nlnf-fs .nlnf-al__opt b{font-weight:500}
+html body .nlnf .nlnf-fs .nlnf-al__opt input{margin:0 !important}
+.nlnf-fs__foot{position:sticky;bottom:0;z-index:2;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;margin:0 -16px;padding:12px 16px;
+  background:var(--nf-ground);border-top:1px solid var(--nf-line)}
+html body .nlnf .nlnf-fs__foot .nlnf-btn{min-height:48px;font-size:15px}
+.nlnf-dlg .nlnf-fs__foot{bottom:var(--nf-wa,0px)} /* inside the dialog the WhatsApp bar and the accessibility button stay above the sheets: the count button stays above them */
+html body .nlnf .nlnf-fs__foot .nlnf-btn.is-none{color:var(--nf-ink);font-weight:500;white-space:normal;line-height:1.3}
+.nlnf-tt__from{display:flex;flex-wrap:wrap;gap:8px}
+.nlnf-tt__from label{position:relative;display:block;margin:0;cursor:pointer}
+.nlnf-tt__from input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.nlnf-tt__from span{display:inline-flex;align-items:center;height:44px;padding:0 14px;border:1px solid var(--nf-line);border-radius:999px;background:var(--nf-surface);color:var(--nf-ink2);font-size:14px;font-weight:500;white-space:nowrap}
+.nlnf-tt__from input:checked + span{border:2px solid var(--nf-sea);padding:0 13px;color:var(--nf-sea-deep);font-weight:600}
+.nlnf-tt__from input:focus-visible + span{outline:2px solid var(--nf-ink);outline-offset:2px}
+.nlnf-tt .nlnf-al__go[disabled]{opacity:.75;cursor:progress}
+@media (min-width:1024px){
+  .nlnf__sh{z-index:32}
+  .nlnf-fs__foot,.nlnf-dlg .nlnf-fs__foot{bottom:0;margin:0 -24px;padding:12px 24px}
+}
+
+/* the phone sheet: inside the dialog only (finder.js adds is-sheet there, below 1024px): the map fills the dialog, the list
+   rises over it to three heights (peek, half, full); the handle drags it and is also a button (keyboard: Enter, arrows) */
+.nlnf-dlg__body.is-sheet{display:flex;flex-direction:column;overflow:hidden;padding-bottom:0}
+.nlnf-dlg .nlnf__app.is-sheet{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;height:auto}
+.nlnf__app.is-sheet .nlnf__ctrl{flex:0 0 auto}
+.nlnf-dlg .nlnf__app.is-sheet .nlnf__mapwrap{flex:1 1 auto;height:auto;min-height:0}
+.nlnf__app.is-sheet .nlnf__panel{position:absolute;inset-inline:0;bottom:0;z-index:8;margin:0;height:var(--nf-shv,124px);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;padding:0 16px calc(var(--nf-wa,0px) + 16px);border-radius:6px 6px 0 0;border-top:1px solid var(--nf-line)}
+.nlnf__app.is-sheet .nlnf__panel.is-anim{transition:height .26s cubic-bezier(.2,.7,.3,1)}
+html body .nlnf .nlnf__app.is-sheet .nlnf__grab{position:sticky;top:0;z-index:2;width:calc(100% + 32px);height:28px;margin:0 -16px 2px;background:var(--nf-surface) !important;
+  pointer-events:auto;cursor:grab;touch-action:none}
+.nlnf__app.is-sheet .nlnf__grab span{margin-top:10px;width:44px;background:var(--nf-ink2);opacity:.45}
+html body .nlnf .nlnf__app.is-sheet .nlnf__grab:focus-visible{outline-offset:-4px}
+html body .nlnf .nlnf__app.is-sheet .nlnf__tools,html body .nlnf .nlnf__app.is-sheet .nlnf__area{bottom:calc(var(--nf-shv,124px) + 12px)}
+.nlnf__app.is-sheet.is-full .nlnf__tools,.nlnf__app.is-sheet.is-full .nlnf__area{visibility:hidden}
+.nlnf__app.is-sheet .mapboxgl-ctrl-bottom-left,.nlnf__app.is-sheet .mapboxgl-ctrl-bottom-right{bottom:var(--nf-shv,124px)}
+@media (prefers-reduced-motion:reduce){.nlnf__app.is-sheet .nlnf__panel.is-anim{transition:none !important}}
+/* in the sheet the controls keep to one line each (the filters and my places scroll sideways), so the map keeps its room */
+.nlnf__app.is-sheet .nlnf__ctrl{gap:8px;padding:10px 12px}
+.nlnf__app.is-sheet .nlnf__chips,.nlnf__app.is-sheet .nlnf__places{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;margin-inline:-12px;padding-inline:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.nlnf__app.is-sheet .nlnf__chips::-webkit-scrollbar,.nlnf__app.is-sheet .nlnf__places::-webkit-scrollbar{display:none}
+.nlnf__app.is-sheet .nlnf__chips > *,.nlnf__app.is-sheet .nlnf__places > *{flex:0 0 auto}
+
+/* email alerts ship dormant: the heart is a device-only saved list with its own view, "השמורים שלי" (the visit day's frame) */
+.nlnf__savedgo{margin:6px 0 0}
+.nlnf__saved{margin-top:14px}
+.nlnf-saved__i{flex:0 0 22px;display:inline-flex;align-items:center;justify-content:center;color:var(--nf-sea)}
+html body .nlnf .nlnf-saved__open{display:block;margin:0;padding:0;border:0;background:transparent;color:var(--nf-ink);font:inherit;font-size:14px;line-height:1.4;text-align:start;cursor:pointer;box-shadow:none}
+html body .nlnf .nlnf-saved__open:hover{color:var(--nf-sea-deep);text-decoration:underline;text-underline-offset:3px}
+html body .nlnf .nlnf__saved h3:focus{outline:0 !important}

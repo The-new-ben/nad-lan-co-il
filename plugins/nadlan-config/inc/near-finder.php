@@ -31,12 +31,48 @@
  *  - An admin-only side box on listings and projects: "hide from the map" (meta nadlan_nf_hidden, never in REST).
  * No negative layer of any kind (no hazards, fuel, soil or asbestos): distances, the sea, my places.
  * The visitor's own location never leaves the page: it is not in a URL and not sent here.
+ *
+ * v3 (release 1.72.586, the counted benchmark of 4.11.2026: draw a zone, full filters, travel time, the phone sheet):
+ *  - each listing row also carries floor (int, or null when the listing does not state it), elevator, parking (true only
+ *    when the listing says so) and balcony (m², 0 when none is stated), via nadlan_nf_extras(); the finder shows a filter
+ *    only when at least one listing has that fact. The cache key moved to nadlan_nf_v3 (the payload gained fields).
+ *  - the travel-time area is the one place a point leaves the browser: the visitor's chosen place (or location), rounded to
+ *    about 100 m, goes to the Mapbox Isochrone API only, only when the visitor asks for it, never here (finder.js).
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! defined( 'NADLAN_NF_CACHE' ) ) {
-	define( 'NADLAN_NF_CACHE', 'nadlan_nf_v1' ); // bump on a rerun after a rollback (a rolled-back run leaves its transient)
+	define( 'NADLAN_NF_CACHE', 'nadlan_nf_v3' ); // bump on a rerun after a rollback (a rolled-back run leaves its transient); v3: floor, elevator, parking, balcony
+}
+
+if ( ! function_exists( 'nadlan_nf_extras' ) ) {
+	/**
+	 * The facts the v3 filters use, only as the listing states them (never a guess):
+	 *  floor:    an apartment's floor (0 = ground); null when not stated, when the type has no floor (a house, a plot) or
+	 *            when it reads 0 with no building height (the empty default of the wizard);
+	 *  elevator, parking: true only when the listing says so (an empty value is not "no", it is "not stated");
+	 *  balcony:  the balcony's m² when stated, else 0.
+	 */
+	function nadlan_nf_extras( $id ) {
+		$yes   = array( '1', 'true', 'yes', 'on', 'כן' );
+		$ptype = (string) get_post_meta( $id, 'property_type', true );
+		$floor = null;
+		$raw   = trim( (string) get_post_meta( $id, 'floor', true ) );
+		if ( in_array( $ptype, array( 'apartment', 'penthouse', 'duplex', 'studio', 'garden', 'office', '' ), true ) && '' !== $raw && is_numeric( $raw ) ) {
+			$f     = (int) round( (float) $raw );
+			$total = (int) round( (float) get_post_meta( $id, 'total_floors', true ) );
+			if ( $f >= -3 && $f <= 120 && ( 0 !== $f || $total > 0 || 'garden' === $ptype ) ) { $floor = $f; }
+		}
+		$park = strtolower( trim( (string) get_post_meta( $id, 'parking', true ) ) );
+		$balc = (float) get_post_meta( $id, 'balcony_sqm', true );
+		return array(
+			'floor'    => $floor,
+			'elevator' => in_array( strtolower( trim( (string) get_post_meta( $id, 'elevator', true ) ) ), $yes, true ),
+			'parking'  => in_array( $park, $yes, true ) || ( is_numeric( $park ) && (float) $park > 0 ),
+			'balcony'  => $balc > 0 && $balc < 1000 ? (int) round( $balc ) : 0,
+		);
+	}
 }
 
 if ( ! function_exists( 'nadlan_nf_norm' ) ) {
@@ -204,7 +240,7 @@ if ( ! function_exists( 'nadlan_nf_listings' ) ) {
 			$price = (float) get_post_meta( $id, 'price', true );
 			$rooms = (float) get_post_meta( $id, 'rooms', true );
 			$sqm   = (float) get_post_meta( $id, 'size_sqm', true );
-			$rows[ $id ] = array(
+			$rows[ $id ] = nadlan_nf_extras( $id ) + array( // v3: floor, elevator, parking, balcony first; the v1 keys follow as before
 				'id'       => $id,
 				'url'      => get_permalink( $id ),
 				'title'    => html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ),
@@ -333,7 +369,8 @@ add_action( 'nadlan_advertiser_paid_tier_expired', 'nadlan_nf_flush' );
 foreach ( array( 'added_post_meta', 'updated_post_meta', 'deleted_post_meta' ) as $nadlan_nf_hook ) {
 	// a status, a price or a paid tier changed by code without save_post (the broker's "rented" button, the daily downgrade)
 	add_action( $nadlan_nf_hook, function ( $mid, $pid, $key ) {
-		if ( in_array( (string) $key, array( 'nadlan_nf_hidden', 'nl_status', 'status', 'price', 'paid_tier', 'campaign_end', 'lat', 'lng', 'neighborhood', 'city', 'nl_broker_id' ), true )
+		if ( in_array( (string) $key, array( 'nadlan_nf_hidden', 'nl_status', 'status', 'price', 'paid_tier', 'campaign_end', 'lat', 'lng', 'neighborhood', 'city', 'nl_broker_id',
+				'rooms', 'size_sqm', 'floor', 'total_floors', 'elevator', 'parking', 'balcony_sqm', 'protected_room' ), true ) // v3: the filters' facts
 			&& in_array( get_post_type( (int) $pid ), array( 'nadlan_property', 'nadlan_project' ), true ) ) {
 			nadlan_nf_flush();
 		}
@@ -472,7 +509,7 @@ if ( ! function_exists( 'nadlan_nf_own_html' ) ) {
 	function nadlan_nf_own_html() {
 		$p490 = ( 'product' === get_post_type( 490 ) && 'publish' === get_post_status( 490 ) ) ? get_permalink( 490 ) : '';
 		return '<div class="nlnf__own"><p class="nlnf__own-a">יש לכם נכס למכירה או להשכרה? <a href="' . esc_url( home_url( '/post-listing/' ) ) . '">הוסיפו אותו למפה</a></p>'
-			. '<p class="nlnf__own-b">פרסום רגיל בחינם, אחרי אישור.' . ( $p490 ? ' רוצים יותר חשיפה? <a href="' . esc_url( $p490 ) . '">מודעה מקודמת ל־60 יום</a>' : '' ) . '</p></div>';
+			. '<p class="nlnf__own-b">פרסום רגיל בחינם.' . ( $p490 ? ' רוצים יותר חשיפה? <a href="' . esc_url( $p490 ) . '">מודעה מקודמת ל־60 יום</a>' : '' ) . '</p></div>';
 	}
 }
 

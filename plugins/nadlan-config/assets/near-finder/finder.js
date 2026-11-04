@@ -6,7 +6,20 @@
    wrapped): never in a URL, never sent to the site. The deep link is #lidi, never a location.
    Map: Mapbox GL v3.7.0 (the same loader and token as /projects/), loaded only when needed; cooperative gestures, so the
    page never sticks while scrolling. No token or no map: the list works alone.
-   Opens inline (/properties/) or from the floating launcher "חפשו נכס לידי" as a full-screen dialog (Back closes it). */
+   Opens inline (/properties/) or from the floating launcher "חפשו נכס לידי" as a full-screen dialog (Back closes it).
+   v2 (release 1.72.585): alerts by email (inc/near-alerts.php), on portal pages only (the page prints #nlna-cfg; a broker's
+   page does not): the quiet "התריעו לי על האזור הזה" sheet (Claude Design project/Alerts.dc.html), the heart "שמרו" on a
+   listing's card (price drops) and "עקבו" on a project's card. Saved and followed items stay in this browser
+   (nlnf_saved_v1); a request made here keeps only its row id and its signed key (nlnf_alert_v1), never the email. The
+   area is sent rounded to 0.001° (about 100 m), in the body of a POST, never in a URL.
+   v3 (release 1.72.586, the counted benchmark of 4.11.2026): "ציירו אזור" (a freehand zone, simplified to 60 points at most;
+   on a phone it is drawn inside the dialog only, on a pad that exists only while drawing, so the page itself never captures
+   a touch or the wheel), "סינון נוסף" (rooms from-to with the halves the data has, price from-to per sale and rent, m², floor,
+   elevator, parking, balcony, only where listings state them, and a live count on the button), "זמן נסיעה" (the Mapbox
+   Isochrone API with the site's public token, drive / walk / cycle, 10 / 20 / 30 minutes from a saved place or from me, called
+   only when the visitor presses the button, cached per point + mode + minutes in sessionStorage; that one call is the only
+   place a point leaves the browser, rounded to 0.001°; on a failure the air-distance estimate, labelled as one), and on a
+   phone inside the dialog a bottom sheet with three snaps (peek, half, full) dragged by its handle, which is also a button. */
 (function () {
 	'use strict';
 	var root = document.getElementById('nlnf-app');
@@ -38,7 +51,7 @@
 	function norm(s) { return String(s || '').replace(/[־‐‑-]+/g, ' ').replace(/\s+/g, ' ').trim(); }
 	function grp(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 	function nis(n) { return grp(n) + ' ₪'; }
-	function mil(n) { return String(Math.round(n / 1e4) / 100).replace(/\.?0+$/, ''); }
+	function mil(n) { return String(Math.round(n / 1e4) / 100); } // v3 fix: the old .replace(/\.?0+$/) turned 10, 20 and 30 million into "1", "2" and "3"
 	function shortPrice(n, deal) {
 		if (!(n > 0)) { return ''; }
 		if (deal === 'rent') { return nis(n); }
@@ -108,11 +121,14 @@
 		sale: [[0, 'מחיר עד'], [3000000, 'עד 3 מ׳ ₪'], [5000000, 'עד 5 מ׳ ₪'], [8000000, 'עד 8 מ׳ ₪'], [15000000, 'עד 15 מ׳ ₪']],
 		rent: [[0, 'מחיר עד'], [6000, 'עד 6,000 ₪'], [10000, 'עד 10,000 ₪'], [15000, 'עד 15,000 ₪'], [25000, 'עד 25,000 ₪']]
 	};
+	function fBlank() { return { mamad: false, rooms: 0, rmax: 0, smin: 0, smax: 0, fmin: null, fmax: null, elev: false, park: false, balc: false, mkt: false, near: 0 }; }
 	var S = {
 		tab: D.deal === 'rent' ? 'rent' : 'sale',
 		L: [], P: [], byKey: {}, loaded: false,
 		origin: null,
-		f: { mamad: false, rooms: 0, pmax: 0, mkt: false, near: 0 },
+		f: fBlank(),
+		fp: { sale: { min: 0, max: 0 }, rent: { min: 0, max: 0 } }, // v3: the price range, kept apart for sale and for rent
+		zone: null, iso: null, sh: null, // v3: the drawn zone, the travel-time area, the open side sheet ('f' filters | 't' travel)
 		anchors: {}, visit: [],
 		bounds: null, group: null, shown: 30,
 		picking: null, measure: null, map: null, mapState: 'off', places: [], card: null, opener: null, dropUntil: 0
@@ -123,6 +139,18 @@
 		var v = lsGet('nlnf_visit_v1');
 		if (Array.isArray(v)) { S.visit = v.filter(function (k) { return typeof k === 'string'; }).slice(0, 6); }
 	})();
+	/* v2: alerts (portal pages only) */
+	var NA = (function () {
+		var c = document.getElementById('nlna-cfg');
+		if (!c || BROKER || !window.fetch) { return null; }
+		try { var j = JSON.parse(c.textContent || '{}'); return j && j.api && j.items ? j : null; } catch (e) { return null; }
+	})();
+	var SAVE = !BROKER; // the heart: a device-only saved list on portal pages, with or without email alerts (alerts ship dormant)
+	S.saved = (function () { var v = lsGet('nlnf_saved_v1'); return Array.isArray(v) ? v.filter(function (k) { return typeof k === 'string' && /^[lp]\d+$/.test(k); }).slice(0, 60) : []; })();
+	S.sub = (function () { var v = lsGet('nlnf_alert_v1'); return v && v.s > 0 && typeof v.k === 'string' ? { s: +v.s, k: v.k } : null; })();
+	function saveSaved() { lsSet('nlnf_saved_v1', S.saved); }
+	function isSaved(key) { return S.saved.indexOf(key) > -1; }
+	function savedIds(t) { return S.saved.filter(function (k) { return k.charAt(0) === t; }).map(function (k) { return +k.slice(1); }); }
 	function saveAnchors() { lsSet('nlnf_places_v1', S.anchors); }
 	function saveVisit() { lsSet('nlnf_visit_v1', S.visit); }
 	function firstAnchor() { for (var i = 0; i < SLOTS.length; i++) { if (S.anchors[SLOTS[i].k]) { return SLOTS[i]; } } return null; }
@@ -131,6 +159,8 @@
 	/* ------------------------------------------------------------ the frame */
 	var ICON_SEARCH = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>';
 	var ICON_ME = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path></svg>';
+	function bell(s) { s = s || 18; return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4z"></path><path d="M10 21h4"></path></svg>'; }
+	function heart(on, s) { s = s || 20; return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="' + (on ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.5l-1.2-1.1C6 15.1 3 12.4 3 9.1 3 6.4 5.1 4.3 7.8 4.3c1.5 0 3 .7 4.2 1.9 1.2-1.2 2.7-1.9 4.2-1.9 2.7 0 4.8 2.1 4.8 4.8 0 3.3-3 6-7.8 10.3z"></path></svg>'; }
 	root.removeAttribute('aria-busy');
 	root.innerHTML =
 		'<div class="nlnf__ctrl">'
@@ -152,29 +182,40 @@
 		+ '<div class="nlnf__mapwrap" id="nlnf-mapwrap">'
 		+ '<div class="nlnf__map" id="nlnf-map" role="region" aria-label="מפת הדירות"></div>'
 		+ '<button type="button" class="nlnf__area" id="nlnf-area" hidden>חפשו באזור הזה</button>'
-		+ '<button type="button" class="nlnf__ruler" id="nlnf-ruler" aria-pressed="false">מדדו מרחק</button>'
+		+ '<div class="nlnf__tools" id="nlnf-tools"><button type="button" class="nlnf__ruler" id="nlnf-ruler" aria-pressed="false">מדדו מרחק</button>'
+		+ '<button type="button" class="nlnf__ruler nlnf__draw" id="nlnf-draw" aria-pressed="false">ציירו אזור</button></div>'
+		+ '<div class="nlnf__pad" id="nlnf-pad" hidden><svg aria-hidden="true" focusable="false"><polyline id="nlnf-pad-l" points=""></polyline></svg></div>'
 		+ '<div class="nlnf__pick" id="nlnf-pick" hidden><span id="nlnf-pick-t"></span><button type="button" id="nlnf-pick-x">ביטול</button></div>'
+		+ '<div class="nlnf__pick nlnf__pick--m" id="nlnf-drw" hidden><span id="nlnf-drw-t" aria-live="polite"></span><button type="button" id="nlnf-drw-x">ביטול</button></div>'
 		+ '<div class="nlnf__pick nlnf__pick--m" id="nlnf-meas" hidden><span id="nlnf-meas-t" aria-live="polite"></span><button type="button" id="nlnf-meas-x">סיום</button></div>'
 		+ '<div class="nlnf__legend" id="nlnf-legend" aria-hidden="true"></div>'
 		+ '</div>'
 		+ '<div class="nlnf__panel" id="nlnf-panel" role="tabpanel" aria-labelledby="nlnf-t-sale">'
-		+ '<div class="nlnf__grab" aria-hidden="true"></div>'
+		+ '<button type="button" class="nlnf__grab" id="nlnf-grab" aria-controls="nlnf-panel" tabindex="-1" aria-hidden="true"><span></span></button>'
 		+ '<div class="nlnf__listhead"><h3 class="nlnf__count" id="nlnf-count" aria-live="polite"></h3><span class="nlnf__sort" id="nlnf-sort"></span></div>'
 		+ '<div class="nlnf__scope" id="nlnf-scope"></div>'
+		+ (NA ? '<div class="nlnf__alert" id="nlnf-alrow" hidden><button type="button" class="nlnf-alertbtn" data-al="open" aria-haspopup="dialog">' + bell() + '<span>התריעו לי על האזור הזה</span></button></div>' : '')
+		+ (SAVE ? '<div class="nlnf__savedgo" id="nlnf-savedgo" hidden><button type="button" class="nlnf-link" data-saved="go"></button></div>' : '')
 		+ '<ol class="nlnf__list" id="nlnf-list"></ol>'
 		+ '<div class="nlnf__empty" id="nlnf-empty" hidden></div>'
 		+ '<button type="button" class="nlnf__more" id="nlnf-more" hidden>הציגו עוד</button>'
+		+ (SAVE ? '<section class="nlnf__visit nlnf__saved" id="nlnf-saved" aria-labelledby="nlnf-saved-h" hidden></section>' : '')
 		+ '<section class="nlnf__visit" id="nlnf-visit" aria-labelledby="nlnf-visit-h" hidden></section>'
-		+ '<p class="nlnf__note">המרחקים בקו אווירי. זמני נסיעה והליכה: הערכה, בלי פקקים. המיקום שלכם נשאר במכשיר.</p>'
+		+ '<p class="nlnf__note">המרחקים בקו אווירי. זמני נסיעה והליכה בכרטיס: הערכה, בלי פקקים. המיקום שלכם נשאר במכשיר. רק כשתבקשו סינון לפי זמן נסיעה, הנקודה שבחרתם נשלחת ל־Mapbox: זמני הנסיעה מחושבים אצל Mapbox.</p>'
 		+ '</div>'
-		+ '<div class="nlnf__card" id="nlnf-card" role="dialog" aria-labelledby="nlnf-card-t" hidden></div>';
+		+ '<div class="nlnf__card" id="nlnf-card" role="dialog" aria-labelledby="nlnf-card-t" hidden></div>'
+		+ (NA ? '<div class="nlnf__al" id="nlnf-al" role="dialog" aria-labelledby="nlnf-al-t" hidden></div>' : '')
+		+ '<div class="nlnf__al nlnf__sh" id="nlnf-sh" role="dialog" aria-labelledby="nlnf-sh-t" hidden></div>';
 	function $(id) { return document.getElementById(id); }
 	var el = {
 		q: $('nlnf-q'), me: $('nlnf-me'), sug: $('nlnf-sug'), msg: $('nlnf-msg'), chips: $('nlnf-chips'), places: $('nlnf-places'),
 		mapwrap: $('nlnf-mapwrap'), map: $('nlnf-map'), area: $('nlnf-area'), ruler: $('nlnf-ruler'), pick: $('nlnf-pick'), pickT: $('nlnf-pick-t'), pickX: $('nlnf-pick-x'),
 		meas: $('nlnf-meas'), measT: $('nlnf-meas-t'), measX: $('nlnf-meas-x'),
 		legend: $('nlnf-legend'), panel: $('nlnf-panel'), count: $('nlnf-count'), sort: $('nlnf-sort'), scope: $('nlnf-scope'),
-		list: $('nlnf-list'), empty: $('nlnf-empty'), more: $('nlnf-more'), visit: $('nlnf-visit'), card: $('nlnf-card')
+		list: $('nlnf-list'), empty: $('nlnf-empty'), more: $('nlnf-more'), visit: $('nlnf-visit'), card: $('nlnf-card'),
+		alrow: $('nlnf-alrow'), al: $('nlnf-al'), saved: $('nlnf-saved'), savedgo: $('nlnf-savedgo'),
+		draw: $('nlnf-draw'), pad: $('nlnf-pad'), padL: $('nlnf-pad-l'), drw: $('nlnf-drw'), drwT: $('nlnf-drw-t'), drwX: $('nlnf-drw-x'),
+		grab: $('nlnf-grab'), sh: $('nlnf-sh'), tools: $('nlnf-tools')
 	};
 	// the owners' quiet line (printed by the server next to the app, portal pages only) moves into the list's footer
 	var holder = root.closest('.nlnf');
@@ -224,13 +265,25 @@
 	/* ------------------------------------------------------------ what is shown */
 	function pool() { return S.tab === 'new' ? S.P : S.L.filter(function (x) { return x.deal === S.tab; }); }
 	function inBounds(x) { var b = S.bounds; return x.has && x.lat >= b.s && x.lat <= b.n && x.lng >= b.w && x.lng <= b.e; }
-	function passes(x, noScope) {
+	function passes(x, noScope) { // a fact the listing does not state never passes a filter on that fact
 		if (x.t === 'l') {
-			if (S.f.mamad && !x.mamad) { return false; }
-			if (S.f.rooms && !(x.rooms >= S.f.rooms)) { return false; }
-			if (S.f.pmax && !(x.price > 0 && x.price <= S.f.pmax)) { return false; }
+			var F = S.f, pp = S.fp[x.deal] || {};
+			if (F.mamad && !x.mamad) { return false; }
+			if (F.rooms && !(x.rooms >= F.rooms)) { return false; }
+			if (F.rmax && !(x.rooms > 0 && x.rooms <= F.rmax)) { return false; }
+			if (pp.min && !(x.price > 0 && x.price >= pp.min)) { return false; }
+			if (pp.max && !(x.price > 0 && x.price <= pp.max)) { return false; }
+			if (F.smin && !(x.sqm > 0 && x.sqm >= F.smin)) { return false; }
+			if (F.smax && !(x.sqm > 0 && x.sqm <= F.smax)) { return false; }
+			if (F.fmin != null && !(x.floor != null && x.floor >= F.fmin)) { return false; }
+			if (F.fmax != null && !(x.floor != null && x.floor <= F.fmax)) { return false; }
+			if (F.elev && x.elevator !== true) { return false; }
+			if (F.park && x.parking !== true) { return false; }
+			if (F.balc && !(x.balcony > 0)) { return false; }
 		} else if (S.f.mkt && x.status !== 'marketing') { return false; }
 		if (S.f.near) { var a = firstAnchor(); if (a && !(x.has && km(x, S.anchors[a.k]) <= S.f.near)) { return false; } }
+		if (S.zone && !(x.has && inRing(x, S.zone))) { return false; } // v3: the drawn zone and the travel-time area filter the map too
+		if (S.iso && !(x.has && inIso(x))) { return false; }
 		if (!noScope) {
 			if (S.bounds && !inBounds(x)) { return false; }
 			if (S.group && S.group.keys.indexOf(x.key) < 0) { return false; }
@@ -290,7 +343,7 @@
 		var t;
 		if (S.tab === 'new') { t = n === 1 ? 'פרויקט אחד' : grp(n) + ' פרויקטים'; }
 		else { t = (n === 1 ? 'נכס אחד ' : grp(n) + ' נכסים ') + (S.tab === 'rent' ? 'להשכרה' : 'למכירה'); }
-		return t + (S.bounds ? ' באזור הזה' : '');
+		return t + (S.zone ? ' באזור שציירתם' : (S.bounds ? ' באזור הזה' : ''));
 	}
 	function sortText() {
 		if (S.origin) { return (S.origin.kind === 'me' ? 'לפי המרחק ממך' : 'לפי המרחק מ' + S.origin.label) + ', בקו אווירי'; }
@@ -306,8 +359,11 @@
 		var sc = '';
 		if (S.bounds) { sc += '<button type="button" class="nlnf-scope" data-scope="bounds">רק מה שעל המפה <span aria-hidden="true">×</span><span class="nlnf__sr">, ביטול</span></button>'; }
 		if (S.group) { sc += '<button type="button" class="nlnf-scope" data-scope="group">' + esc(S.group.label) + ' <span aria-hidden="true">×</span><span class="nlnf__sr">, ביטול</span></button>'; }
+		if (S.zone) { sc += '<button type="button" class="nlnf-scope" data-scope="zone">באזור שציירתם <span aria-hidden="true">×</span><span class="nlnf__sr">, ניקוי אזור</span></button>'; }
+		if (S.iso) { sc += '<button type="button" class="nlnf-scope" data-scope="iso">' + esc(isoText(S.iso)) + ' <span aria-hidden="true">×</span><span class="nlnf__sr">, ביטול</span></button>'; }
 		el.scope.innerHTML = sc;
 		el.scope.hidden = !sc;
+		if (el.alrow) { el.alrow.hidden = !S.loaded; }
 		if (!S.loaded) { return r; }
 		if (!r.length) {
 			el.count.textContent = S.tab === 'new' ? 'פרויקטים' : (S.tab === 'rent' ? 'נכסים להשכרה' : 'נכסים למכירה');
@@ -324,7 +380,7 @@
 		var h = '';
 		r.slice(0, S.shown).forEach(function (x) {
 			h += '<li><button type="button" class="nlnf-row' + (S.card && S.card.key === x.key ? ' is-on' : '') + '" data-key="' + esc(x.key) + '">'
-				+ '<span class="nlnf-row__main"><span class="nlnf-row__t">' + esc(x.title) + '</span>'
+				+ '<span class="nlnf-row__main"><span class="nlnf-row__t">' + (SAVE && isSaved(x.key) && (x.t === 'l' || NA) ? '<span class="nlnf-row__sv">' + (x.t === 'l' ? heart(true, 14) : bell(14)) + '<span class="nlnf__sr">' + (x.t === 'l' ? 'שמור, ' : 'במעקב, ') + '</span></span>' : '') + esc(x.title) + '</span>'
 				+ '<span class="nlnf-row__m">' + metaOf(x) + (x.promoted ? ' ' + AD : '') + '</span></span>'
 				+ '<span class="nlnf-row__side">' + sideOf(x) + '</span></button></li>';
 		});
@@ -335,15 +391,27 @@
 
 	/* ------------------------------------------------------------ controls */
 	function opt(list, val) { return list.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === val ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join(''); }
+	function withVal(list, val, label) { // a quick list that also holds a value the full filters chose
+		if (!val || list.some(function (o) { return o[0] === val; })) { return list; }
+		return list.concat([[val, label]]).sort(function (a, b) { return a[0] - b[0]; });
+	}
+	function priceLabel(n, deal) { return deal === 'rent' ? nis(n) : shortPrice(n, 'sale'); }
+	function moreCount() { // the filters that live only in the full sheet (the quick chips show the rest)
+		var F = S.f, pp = S.fp[S.tab] || {};
+		return (F.rmax ? 1 : 0) + (pp.min ? 1 : 0) + (F.smin || F.smax ? 1 : 0) + (F.fmin != null || F.fmax != null ? 1 : 0) + (F.elev ? 1 : 0) + (F.park ? 1 : 0) + (F.balc ? 1 : 0);
+	}
 	function renderChips() {
 		var h = '';
 		if (S.tab !== 'new') {
+			var pm = S.fp[S.tab].max, more = moreCount();
 			h += '<button type="button" class="nlnf-chip" data-f="mamad" aria-pressed="' + (S.f.mamad ? 'true' : 'false') + '">ממ״ד</button>';
-			h += '<label class="nlnf-chip nlnf-chip--sel' + (S.f.rooms ? ' is-on' : '') + '"><span class="nlnf__sr">חדרים</span><select data-f="rooms">' + opt([[0, 'חדרים'], [3, '3 חדרים ומעלה'], [4, '4 חדרים ומעלה'], [5, '5 חדרים ומעלה']], S.f.rooms) + '</select></label>';
-			h += '<label class="nlnf-chip nlnf-chip--sel' + (S.f.pmax ? ' is-on' : '') + '"><span class="nlnf__sr">מחיר עד</span><select data-f="pmax">' + opt(PRICES[S.tab], S.f.pmax) + '</select></label>';
+			h += '<label class="nlnf-chip nlnf-chip--sel' + (S.f.rooms ? ' is-on' : '') + '"><span class="nlnf__sr">חדרים</span><select data-f="rooms">' + opt(withVal([[0, 'חדרים'], [3, '3 חדרים ומעלה'], [4, '4 חדרים ומעלה'], [5, '5 חדרים ומעלה']], S.f.rooms, num(S.f.rooms) + ' חדרים ומעלה'), S.f.rooms) + '</select></label>';
+			h += '<label class="nlnf-chip nlnf-chip--sel' + (pm ? ' is-on' : '') + '"><span class="nlnf__sr">מחיר עד</span><select data-f="pmax">' + opt(withVal(PRICES[S.tab], pm, 'עד ' + priceLabel(pm, S.tab)), pm) + '</select></label>';
+			h += '<button type="button" class="nlnf-chip' + (more ? ' is-on' : '') + '" data-sh="f" aria-haspopup="dialog">סינון נוסף' + (more ? '<span class="nlnf-chip__n">' + more + '</span><span class="nlnf__sr"> סינונים פעילים</span>' : '') + '</button>';
 		} else {
 			h += '<button type="button" class="nlnf-chip" data-f="mkt" aria-pressed="' + (S.f.mkt ? 'true' : 'false') + '">בשיווק עכשיו</button>';
 		}
+		h += '<button type="button" class="nlnf-chip' + (S.iso ? ' is-on' : '') + '" data-sh="t" aria-haspopup="dialog">זמן נסיעה</button>';
 		var a = firstAnchor();
 		if (a) {
 			h += '<label class="nlnf-chip nlnf-chip--sel' + (S.f.near ? ' is-on' : '') + '"><span class="nlnf__sr">מרחק ' + esc(a.from) + '</span><select data-f="near">'
@@ -375,6 +443,8 @@
 			: (S.tab === 'rent' ? '<span><i class="nlnf-lg nlnf-lg--rent"></i>להשכרה</span>' : '<span><i class="nlnf-lg nlnf-lg--sale"></i>למכירה</span>')
 			+ '<span><i class="nlnf-lg nlnf-lg--area"></i>המיקום לפי השכונה</span>';
 		if (firstAnchor()) { h += '<span><i class="nlnf-lg nlnf-lg--anc"></i>המקומות שלכם</span>'; }
+		if (S.zone) { h += '<span><i class="nlnf-lg nlnf-lg--zone"></i>האזור שציירתם</span>'; }
+		if (S.iso) { h += '<span><i class="nlnf-lg nlnf-lg--iso"></i>' + (S.iso.est ? 'זמן נסיעה, הערכה' : 'זמן נסיעה') + '</span>'; }
 		el.legend.innerHTML = h;
 	}
 	function renderVisit() {
@@ -406,7 +476,23 @@
 		el.visit.innerHTML = h;
 		el.visit.hidden = false;
 	}
-	function renderAll() { renderTabs(); renderChips(); renderPlaces(); renderLegend(); var r = renderList(); renderVisit(); drawMap(r); }
+	function renderSaved() { // "השמורים שלי": the hearts saved on this device (a project only while alerts are on); never sent anywhere
+		if (!el.saved) { return; }
+		var items = S.saved.map(function (k) { return S.byKey[k]; }).filter(function (x) { return x && (x.t === 'l' || NA); });
+		if (el.savedgo) { el.savedgo.hidden = !items.length; el.savedgo.firstChild.textContent = 'השמורים שלי · ' + items.length; }
+		if (!items.length) { el.saved.hidden = true; el.saved.innerHTML = ''; return; }
+		var h = '<div class="nlnf-visit__head"><h3 id="nlnf-saved-h" tabindex="-1">השמורים שלי · ' + items.length + '</h3></div><ol class="nlnf-visit__list">';
+		items.forEach(function (x) {
+			var fact = x.t === 'l' ? (x.price > 0 ? nis(x.price) + (x.deal === 'rent' ? ' לחודש' : '') : '') : (STATUS[x.status] || '');
+			var sub = [x.t === 'l' ? x.place : x.city, fact].filter(Boolean).join(' · ');
+			h += '<li><span class="nlnf-saved__i" aria-hidden="true">' + (x.t === 'l' ? heart(true, 16) : bell(16)) + '</span><span class="nlnf-visit__t">'
+				+ '<button type="button" class="nlnf-saved__open" data-key="' + esc(x.key) + '">' + esc(cut(x.title, 60)) + '</button>' + (sub ? '<span class="nlnf-visit__fine">' + esc(sub) + '</span>' : '') + '</span>'
+				+ '<button type="button" class="nlnf-visit__x" data-unsave="' + esc(x.key) + '" aria-label="הסירו מהשמורים: ' + esc(cut(x.title, 40)) + '">×</button></li>';
+		});
+		el.saved.innerHTML = h + '</ol><p class="nlnf-visit__tot">נשמר במכשיר הזה בלבד.</p>';
+		el.saved.hidden = false;
+	}
+	function renderAll() { renderTabs(); renderChips(); renderPlaces(); renderLegend(); var r = renderList(); renderSaved(); renderVisit(); drawMap(r); }
 
 	/* ------------------------------------------------------------ the card */
 	function openCard(x, opener) {
@@ -417,6 +503,10 @@
 			if (x.rooms > 0) { facts.push(num(x.rooms) + ' חדרים'); }
 			if (x.sqm > 0) { facts.push(grp(x.sqm) + ' מ״ר'); }
 			if (x.mamad) { facts.push('ממ״ד'); }
+			if (x.floor != null) { facts.push(x.floor === 0 ? 'קומת קרקע' : 'קומה ' + x.floor); } // v3: only what the listing states
+			if (x.elevator === true) { facts.push('מעלית'); }
+			if (x.parking === true) { facts.push('חניה'); }
+			if (x.balcony > 0) { facts.push('מרפסת ' + grp(x.balcony) + ' מ״ר'); }
 			facts.push(x.deal === 'rent' ? 'להשכרה' : 'למכירה');
 		} else {
 			if (STATUS[x.status]) { facts.push(STATUS[x.status]); }
@@ -444,12 +534,14 @@
 		var inVisit = S.visit.indexOf(x.key) > -1;
 		var waze = x.t === 'p' && x.exact && x.has ? '<a class="nlnf-link nlnf-link--s" href="https://waze.com/ul?ll=' + x.lat + ',' + x.lng + '&amp;navigate=yes" target="_blank" rel="noopener" data-waze="1">נווטו ב-Waze</a>' : '';
 		el.card.innerHTML =
-			'<div class="nlnf-card__bar"><button type="button" class="nlnf-card__back" data-close="1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"></path></svg>' + (wide() ? 'חזרה לרשימה' : 'חזרה למפה') + '</button></div>'
+			'<div class="nlnf-card__bar"><button type="button" class="nlnf-card__back" data-close="1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"></path></svg>' + (wide() ? 'חזרה לרשימה' : 'חזרה למפה') + '</button>'
+			+ (SAVE && (x.t === 'l' || NA) ? saveBtn(x) : '') + '</div>'
 			+ (x.img ? '<div class="nlnf-card__media"><img src="' + esc(x.img) + '" alt="" loading="lazy" decoding="async"></div>' : '')
 			+ '<div class="nlnf-card__in">'
 			+ '<div class="nlnf-card__top">' + (kick ? '<p class="nlnf-card__kick">' + esc(kick) + '</p>' : '') + '<h3 id="nlnf-card-t" tabindex="-1">' + esc(x.title) + '</h3>'
 			+ (big ? '<p class="nlnf-card__price"><bdi class="nlnf-card__big">' + esc(big) + '</bdi>' + (sub ? '<bdi class="nlnf-card__sub">' + esc(sub) + '</bdi>' : '') + '</p>' : '')
 			+ '</div>'
+			+ (SAVE ? '<div class="nlnf-card__note" id="nlnf-card-note" role="status" aria-live="polite"></div>' : '')
 			+ (facts.length ? '<ul class="nlnf-card__facts">' + facts.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' : '')
 			+ ((x.promoted || (x.t === 'l' && x.near)) ? '<p class="nlnf-card__fine">' + (x.promoted ? AD : '') + (x.t === 'l' && x.approx === 'hood' ? '<span>המיקום לפי השכונה</span>' : '') + (x.t === 'l' && x.approx === 'city' ? '<span>המיקום לפי העיר</span>' : '') + '</p>' : '')
 			+ (dists ? '<section class="nlnf-card__places" aria-labelledby="nlnf-card-d"><h4 id="nlnf-card-d">המרחק</h4>' + dists + '</section>' : '')
@@ -472,6 +564,225 @@
 		S.card = null; markActive();
 		if (S.opener && document.body.contains(S.opener)) { try { S.opener.focus({ preventScroll: true }); } catch (e) { /* gone */ } }
 		return true;
+	}
+
+	/* ------------------------------------------------------------ v2: saved, followed, the alerts sheet */
+	var CHEV = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"></path></svg>';
+	function saveBtn(x) { // the heart on a listing's card, "עקבו" on a project's card
+		var on = isSaved(x.key);
+		if (x.t === 'l') {
+			return '<button type="button" class="nlnf-card__save" data-save="' + esc(x.key) + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + heart(on) + '<span>' + (on ? 'נשמר' : 'שמרו') + '</span></button>';
+		}
+		return '<button type="button" class="nlnf-card__save nlnf-card__follow" data-save="' + esc(x.key) + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + bell() + '<span>' + (on ? 'במעקב' : 'עקבו') + '</span></button>';
+	}
+	var syncQ = { add: [], del: [] }, syncT = 0;
+	function syncItems(x, on) { // only when this device made a request: its row id and signed key, never the email
+		if (!S.sub || !NA) { return; }
+		var it = { t: x.t, id: x.id }, q = on ? syncQ.add : syncQ.del, other = on ? syncQ.del : syncQ.add;
+		for (var i = other.length - 1; i >= 0; i--) { if (other[i].t === it.t && other[i].id === it.id) { other.splice(i, 1); } }
+		q.push(it);
+		clearTimeout(syncT);
+		syncT = setTimeout(function () {
+			var body = { s: S.sub.s, k: S.sub.k, add: syncQ.add, del: syncQ.del };
+			syncQ = { add: [], del: [] };
+			fetch(NA.items, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
+				.then(function (r) { return r.json(); })
+				.then(function (j) { if (j && j.gone) { S.sub = null; lsSet('nlnf_alert_v1', null); } })
+				.catch(function () { /* the device still keeps the item */ });
+		}, 1200);
+	}
+	function noteFor(x, on) {
+		var n = $('nlnf-card-note');
+		if (!n) { return; }
+		var t, go = '';
+		if (x.t === 'l') {
+			if (!on) { t = 'הסרנו מהשמורים.'; }
+			else if (NA && S.sub) { t = 'שמרנו. אם המחיר יורד, נשלח לכם מייל.'; }
+			else if (NA) { t = 'שמרנו את הנכס במכשיר הזה.'; go = '<button type="button" class="nlnf-link" data-al="drop">התריעו לי אם המחיר יורד</button>'; }
+			else { t = 'שמרנו את הנכס במכשיר הזה. תמצאו אותו ב״השמורים שלי״, מתחת לרשימה.'; }
+		} else if (!on) { t = 'הפסקנו לעקוב אחרי הפרויקט.'; }
+		else if (S.sub) { t = 'עוקבים. כשמשהו משתנה בפרויקט, נשלח לכם מייל.'; }
+		else { t = 'הפרויקט במעקב במכשיר הזה.'; go = '<button type="button" class="nlnf-link" data-al="proj">קבלו עדכונים במייל</button>'; }
+		n.innerHTML = '<p>' + esc(t) + '</p>' + go;
+	}
+	function toggleSave(key) {
+		var x = S.byKey[key];
+		if (!x) { return; }
+		var on = !isSaved(key);
+		if (on && S.saved.length >= 60) { var n0 = $('nlnf-card-note'); if (n0) { n0.innerHTML = '<p>שמרתם כבר הרבה. הסירו אחד כדי לשמור עוד.</p>'; } return; }
+		S.saved = on ? S.saved.concat([key]) : S.saved.filter(function (k) { return k !== key; });
+		saveSaved();
+		var old = el.card.querySelector('[data-save]');
+		if (old) { old.outerHTML = saveBtn(x); var nb = el.card.querySelector('[data-save]'); if (nb) { try { nb.focus({ preventScroll: true }); } catch (e) { nb.focus(); } } }
+		noteFor(x, on);
+		syncItems(x, on);
+		renderList(); renderSaved(); markActive();
+		ev(x.t === 'l' ? 'save' : 'follow', { on: on ? 1 : 0 });
+	}
+
+	var RADII = [1, 1.5, 2, 3, 5];
+	var AL = { area: null, r: 1.5, freq: 'day', email: '', step: 'form', want: null, opener: null, sending: false };
+	function nearPlace(lat, lng) { // the data's own neighbourhood (1.5 km) or city (5 km) nearest a point: the sheet's wording only
+		var best = null, bd = 1e9;
+		S.places.forEach(function (p) {
+			var d = km({ lat: lat, lng: lng }, p), sc = p.kind === 'hood' ? d : d + 10;
+			if (d <= (p.kind === 'hood' ? 1.5 : 5) && sc < bd) { bd = sc; best = p; }
+		});
+		return best;
+	}
+	function snapR(k) { for (var i = 0; i < RADII.length; i++) { if (k <= RADII[i] + 0.01) { return RADII[i]; } } return RADII[RADII.length - 1]; }
+	function alertArea() { // the zone the visitor drew, else the place chosen, else me, else what the map shows; null = nothing chosen yet
+		if (S.zone) { var zc = ringCentre(S.zone), npz = nearPlace(zc.lat, zc.lng); return { lat: zc.lat, lng: zc.lng, kind: 'zone', name: npz ? npz.name : '', r: 0 }; }
+		var o = S.origin, b = S.bounds;
+		if (o) {
+			var np = o.kind === 'place' ? null : nearPlace(o.lat, o.lng);
+			return { lat: o.lat, lng: o.lng, kind: o.kind === 'me' ? 'me' : 'place', name: o.kind === 'place' ? o.label : (np ? np.name : ''), r: o.kind === 'place' && o.pkind === 'city' ? 3 : 1.5 };
+		}
+		if (!b && S.map && S.mapState === 'on') { try { var mb = S.map.getBounds(); b = { w: mb.getWest(), s: mb.getSouth(), e: mb.getEast(), n: mb.getNorth() }; } catch (e) { b = null; } }
+		if (!b) { return null; }
+		var c = { lat: (b.s + b.n) / 2, lng: (b.w + b.e) / 2 }, np2 = nearPlace(c.lat, c.lng);
+		return { lat: c.lat, lng: c.lng, kind: 'map', name: np2 ? np2.name : '', r: snapR(Math.max(1, Math.min(km(c, { lat: b.n, lng: c.lng }), km(c, { lat: c.lat, lng: b.e })))) };
+	}
+	function filtText() {
+		var a = [S.tab === 'rent' ? 'להשכרה' : (S.tab === 'sale' ? 'למכירה' : 'למכירה ולהשכרה')];
+		if (S.tab !== 'new') { // the same wording as the mail (inc/near-alerts.php nadlan_na_filters_text)
+			var F = S.f, pp = S.fp[S.tab], pl = function (n) { return priceLabel(n, S.tab); };
+			if (F.rooms && F.rmax) { a.push((F.rooms === F.rmax ? num(F.rooms) : num(F.rooms) + ' עד ' + num(F.rmax)) + ' חדרים'); }
+			else if (F.rooms) { a.push(num(F.rooms) + ' חדרים ומעלה'); }
+			else if (F.rmax) { a.push('עד ' + num(F.rmax) + ' חדרים'); }
+			if (pp.min && pp.max) { a.push('מ־' + pl(pp.min) + ' עד ' + pl(pp.max)); }
+			else if (pp.min) { a.push('מ־' + pl(pp.min)); }
+			else if (pp.max) { a.push('עד ' + pl(pp.max)); }
+			if (F.smin && F.smax) { a.push(grp(F.smin) + ' עד ' + grp(F.smax) + ' מ״ר'); }
+			else if (F.smin) { a.push('מ־' + grp(F.smin) + ' מ״ר'); }
+			else if (F.smax) { a.push('עד ' + grp(F.smax) + ' מ״ר'); }
+			var fn = function (f) { return f === 0 ? 'קרקע' : String(f); };
+			if (F.fmin != null && F.fmax != null) { a.push(F.fmin === F.fmax ? (F.fmin === 0 ? 'קומת קרקע' : 'קומה ' + F.fmin) : 'קומות ' + fn(F.fmin) + ' עד ' + fn(F.fmax)); }
+			else if (F.fmin != null) { a.push(F.fmin === 0 ? 'מקומת קרקע' : 'מקומה ' + F.fmin); }
+			else if (F.fmax != null) { a.push(F.fmax === 0 ? 'קומת קרקע' : 'עד קומה ' + F.fmax); }
+			if (F.mamad) { a.push('עם ממ״ד'); }
+			if (F.elev) { a.push('עם מעלית'); }
+			if (F.park) { a.push('עם חניה'); }
+			if (F.balc) { a.push('עם מרפסת'); }
+		}
+		return a.length > 1 ? a.join(' · ') : a[0] + ', בכל מחיר ובכל מספר חדרים';
+	}
+	function alBar() { return '<div class="nlnf-card__bar"><button type="button" class="nlnf-card__back" data-al="close">' + CHEV + (wide() ? 'חזרה לרשימה' : 'חזרה') + '</button></div>'; }
+	function alertHtml() {
+		if (AL.step === 'done') {
+			return alBar() + '<div class="nlnf-al__in nlnf-al__done"><h3 class="nlnf-al__h" id="nlnf-al-t" tabindex="-1">בדקו את המייל</h3>'
+				+ '<p class="nlnf-al__lead">שלחנו מייל לאישור אל <bdi dir="ltr">' + esc(AL.email) + '</bdi>. ההתראות יתחילו אחרי שתלחצו על הכפתור שבמייל, ועד אז לא נשלח שום התראה.</p>'
+				+ '<p class="nlnf-al__fine">לא הגיע תוך כמה דקות? בדקו גם בתיקיית הספאם.</p>'
+				+ '<button type="button" class="nlnf-btn nlnf-btn--pri nlnf-al__go" data-al="close">חזרה לרשימה</button></div>';
+		}
+		var A = AL.area, deal = S.tab, w = AL.want, nL = savedIds('l').length, nP = savedIds('p').length;
+		var where = A.kind === 'me' ? 'סביב המיקום שלכם' : (A.kind === 'map' ? 'על האזור שעל המפה' + (A.name ? ', סביב ' + esc(A.name) : '')
+			: (A.kind === 'zone' ? 'על האזור שציירתם במפה' + (A.name ? ', סביב ' + esc(A.name) : '') : 'על האזור שבחרתם: ' + esc(A.name)));
+		var opts = [
+			['new', deal === 'rent' ? 'דירה חדשה להשכרה עלתה באזור' : (deal === 'sale' ? 'נכס חדש למכירה עלה באזור' : 'נכס חדש עלה באזור'), filtText(), !w],
+			['drop', 'ירד המחיר בנכס ששמרתם', 'המחיר הקודם, המחיר החדש והפער בשקלים · ' + (nL ? (nL === 1 ? 'שמרתם נכס אחד' : nL + ' נכסים שמורים') : 'שומרים בלב שבכרטיס הנכס'), !w || w === 'drop'],
+			['proj', 'עדכון בפרויקט שאתם עוקבים אחריו', 'מחיר מוערך למ״ר, שלב הפרויקט או מספר הדירות · ' + (nP ? (nP === 1 ? 'עוקבים אחרי פרויקט אחד' : nP + ' פרויקטים במעקב') : 'עוקבים בכפתור שבכרטיס הפרויקט'), !w || w === 'proj']
+		];
+		return alBar() + '<form class="nlnf-al__in" id="nlnf-al-f" novalidate>'
+			+ '<div class="nlnf-al__head"><h3 class="nlnf-al__h" id="nlnf-al-t" tabindex="-1">התריעו לי</h3>'
+			+ '<p class="nlnf-al__lead">' + where + (A.kind === 'zone' ? '.' : ', ברדיוס <label class="nlnf-al__r"><span class="nlnf__sr">רדיוס</span><select name="r" data-al="r">'
+			+ RADII.map(function (r) { return '<option value="' + r + '"' + (r === AL.r ? ' selected' : '') + '>' + r + ' ק״מ</option>'; }).join('')
+			+ '</select></label>' + (A.kind === 'me' ? '. נשמור רק את האזור, לא את המיקום המדויק שלכם.' : '.')) + '</p></div>'
+			+ '<fieldset class="nlnf-al__what"><legend class="nlnf__sr">על מה להתריע</legend>'
+			+ opts.map(function (o) { return '<label class="nlnf-al__opt"><input type="checkbox" name="what" value="' + o[0] + '"' + (o[3] ? ' checked' : '') + '><span><b>' + esc(o[1]) + '</b><small>' + esc(o[2]) + '</small></span></label>'; }).join('')
+			+ '</fieldset>'
+			+ '<div class="nlnf-al__grp"><span class="nlnf-al__lab" id="nlnf-al-fl">באיזו תדירות</span><div class="nlnf-al__seg" role="radiogroup" aria-labelledby="nlnf-al-fl">'
+			+ [['now', 'מיד'], ['day', 'פעם ביום'], ['week', 'פעם בשבוע']].map(function (f) { return '<label><input type="radio" name="freq" value="' + f[0] + '"' + (AL.freq === f[0] ? ' checked' : '') + '><span>' + f[1] + '</span></label>'; }).join('')
+			+ '</div></div>'
+			+ '<label class="nlnf-al__grp nlnf-al__mail"><span class="nlnf-al__lab">מייל</span><input type="email" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="name@example.com" dir="ltr" value="' + esc(AL.email) + '" required></label>'
+			+ '<input type="text" name="company" class="nlnf-al__hp" tabindex="-1" autocomplete="off" aria-hidden="true">'
+			+ '<button type="submit" class="nlnf-btn nlnf-btn--pri nlnf-al__go">הפעילו התראות</button>'
+			+ '<p class="nlnf-al__err" id="nlnf-al-err" role="alert" hidden></p>'
+			+ '<p class="nlnf-al__fine">נשתמש במייל רק כדי לשלוח את ההתראות שבחרתם. קודם יגיע מייל לאישור, ובכל מייל יש קישור לביטול בלחיצה אחת.</p>'
+			+ '<p class="nlnf-al__fine">נשמור רק את המייל, את האזור (מרכזו בעיגול של כ־100 מ׳, ואם ציירתם אזור, גם קווי האזור), את הסינון ואת התדירות, עד שתבטלו. המייל יוצא דרך ספק השליחה של האתר ולא נמסר לאף גורם אחר. מסירת המייל אינה חובה, אבל בלי מייל לא נוכל לשלוח התראות. את הפרטים מחזיק נדלן (nad-lan.co.il); לעיון, לתיקון או למחיקה: info@nad-lan.co.il. <a href="' + esc(NA.privacy) + '" target="_blank" rel="noopener">מדיניות הפרטיות</a></p>'
+			+ '</form>';
+	}
+	function openAlert(want, opener) {
+		if (!NA || !el.al) { return; }
+		var A = alertArea();
+		if (!A) { say('בחרו קודם עיר או שכונה, או לחצו על "המיקום שלי", ונתריע לכם על האזור.'); try { el.q.focus(); } catch (e) { /* focus */ } return; }
+		var back = S.card ? S.opener : null;
+		closeCard(); measureOff(); endPick(); closeSh(); drawOff(); say('');
+		AL.area = A; AL.r = A.r; AL.step = 'form'; AL.want = want || null; AL.sending = false;
+		AL.opener = opener && document.body.contains(opener) && !el.card.contains(opener) ? opener : back;
+		el.al.innerHTML = alertHtml();
+		el.al.hidden = false;
+		el.al.setAttribute('aria-modal', wide() ? 'false' : 'true');
+		root.classList.add('is-al');
+		if (!wide()) { el.al.scrollTop = 0; }
+		var t = $('nlnf-al-t'); if (t) { try { t.focus({ preventScroll: wide() }); } catch (e) { t.focus(); } }
+		drawAlertArea(true);
+		ev('alert_open', { from: want || 'area' });
+	}
+	function closeAlert() {
+		if (!el.al || el.al.hidden) { return false; }
+		el.al.hidden = true; el.al.innerHTML = ''; root.classList.remove('is-al');
+		drawAlertArea(false);
+		var o = AL.opener; AL.opener = null;
+		if (!(o && document.body.contains(o)) && el.alrow) { o = el.alrow.querySelector('button'); }
+		if (o) { try { o.focus({ preventScroll: true }); } catch (e) { /* gone */ } }
+		return true;
+	}
+	function drawAlertArea(fit) { // the alert's circle on the map while the sheet is open (seen beside it on a computer)
+		if (!S.map || S.mapState !== 'on' || !S.map.getSource('nf-alert')) { return; }
+		var A = el.al && !el.al.hidden ? AL.area : null;
+		if (A && A.kind === 'zone') { // v3: the drawn zone is already on the map; no circle
+			try { S.map.getSource('nf-alert').setData({ type: 'FeatureCollection', features: [] }); } catch (e) { return; }
+			if (fit && wide() && S.zone) { fitBox(S.zone.bbox, 15); }
+			return;
+		}
+		try {
+			S.map.getSource('nf-alert').setData({ type: 'FeatureCollection', features: A ? [{ type: 'Feature', properties: { r0: AL.r * 1000 / (78271.517 * Math.cos(A.lat * Math.PI / 180)) }, geometry: { type: 'Point', coordinates: [A.lng, A.lat] } }] : [] });
+		} catch (e) { return; }
+		if (A && fit && wide()) {
+			var dLa = AL.r / 110.574, dLn = AL.r / (111.32 * Math.cos(A.lat * Math.PI / 180));
+			try { S.map.fitBounds([[A.lng - dLn, A.lat - dLa], [A.lng + dLn, A.lat + dLa]], { padding: camPad(56), maxZoom: 15, duration: RM ? 0 : 600 }); } catch (e) { /* keep the view */ }
+			userMoved = false; el.area.hidden = true;
+		}
+	}
+	function alErr(t) { var e = $('nlnf-al-err'); if (!e) { return; } e.textContent = t || ''; e.hidden = !t; }
+	function r3(v) { return Math.round(v * 1000) / 1000; } // about 100 m: the area, never the visitor's exact place
+	function r4(v) { return Math.round(v * 1e4) / 1e4; } // a drawn zone's corners: about 11 m
+	function sendAlert(f) {
+		if (AL.sending) { return; }
+		var email = String(f.elements.email.value || '').trim();
+		var what = [].filter.call(f.querySelectorAll('input[name=what]'), function (i) { return i.checked; }).map(function (i) { return i.value; });
+		var fr = f.querySelector('input[name=freq]:checked');
+		AL.email = email; AL.freq = fr ? fr.value : 'day';
+		if (!what.length) { alErr('בחרו לפחות התראה אחת.'); return; }
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 100) { alErr('בדקו את כתובת המייל.'); try { f.elements.email.focus(); } catch (e) { /* focus */ } return; }
+		alErr('');
+		var A = AL.area, tab = S.tab, go = f.querySelector('.nlnf-al__go'), Lt = tab !== 'new', F = S.f, pp = Lt ? S.fp[tab] : { min: 0, max: 0 };
+		var body = { email: email, lat: r3(A.lat), lng: r3(A.lng), r: AL.r, place: A.name || '', deal: Lt ? tab : '',
+			rooms: Lt ? F.rooms : 0, rmax: Lt ? F.rmax : 0, pmin: pp.min, pmax: pp.max, smin: Lt ? F.smin : 0, smax: Lt ? F.smax : 0,
+			mamad: Lt && !!F.mamad, elev: Lt && !!F.elev, park: Lt && !!F.park, balc: Lt && !!F.balc, what: what, freq: AL.freq,
+			items: what.indexOf('drop') > -1 ? savedIds('l') : [], follow: what.indexOf('proj') > -1 ? savedIds('p') : [], company: f.elements.company.value || '', v: NA.v };
+		if (Lt && F.fmin != null) { body.fmin = F.fmin; }
+		if (Lt && F.fmax != null) { body.fmax = F.fmax; }
+		if (A.kind === 'zone' && S.zone) { body.poly = S.zone.ring.slice(0, -1).map(function (c) { return [r4(c[1]), r4(c[0])]; }); } // [lat, lng], 4 decimals (about 11 m)
+		AL.sending = true; go.disabled = true; go.textContent = 'שולחים…';
+		function back(msg) { AL.sending = false; go.disabled = false; go.textContent = 'הפעילו התראות'; alErr(msg); }
+		fetch(NA.api, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
+			.then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { st: r.status, j: j || {} }; }); })
+			.then(function (x) {
+				if (x.j.ok) {
+					AL.sending = false;
+					if (x.j.s && x.j.k) { S.sub = { s: x.j.s, k: x.j.k }; lsSet('nlnf_alert_v1', S.sub); }
+					AL.step = 'done'; el.al.innerHTML = alertHtml();
+					var t = $('nlnf-al-t'); if (t) { try { t.focus({ preventScroll: true }); } catch (e) { t.focus(); } }
+					ev('alert_sent', { freq: AL.freq, kinds: what.length });
+					return;
+				}
+				var er = x.j.error;
+				back(er === 'email' ? 'בדקו את כתובת המייל.' : er === 'what' ? 'בחרו לפחות התראה אחת.' : er === 'area' ? 'בחרו עיר, שכונה או את המיקום שלכם בישראל.'
+					: x.st === 429 ? 'כבר נשלחו כמה בקשות מהמכשיר הזה או למייל הזה. נסו שוב בעוד שעה.' : 'לא הצלחנו לשלוח עכשיו. נסו שוב בעוד רגע.');
+			})
+			.catch(function () { back('לא הצלחנו לשלוח עכשיו. בדקו את החיבור ונסו שוב.'); });
 	}
 
 	/* ------------------------------------------------------------ the map */
@@ -513,13 +824,24 @@
 				m.addLayer({ id: 'nf-area', type: 'circle', source: 'nf-area', minzoom: 8, paint: {
 					'circle-radius': ['interpolate', ['exponential', 2], ['zoom'], 0, ['get', 'r0'], 22, ['*', ['get', 'r0'], 4194304]],
 					'circle-color': '#2F6F86', 'circle-opacity': 0.1, 'circle-stroke-color': '#2F6F86', 'circle-stroke-width': 1.5, 'circle-stroke-opacity': 0.45 } });
+				m.addSource('nf-alert', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } }); // v2: the alert's circle, while the sheet is open
+				m.addLayer({ id: 'nf-alert', type: 'circle', source: 'nf-alert', minzoom: 7, paint: {
+					'circle-radius': ['interpolate', ['exponential', 2], ['zoom'], 0, ['get', 'r0'], 22, ['*', ['get', 'r0'], 4194304]],
+					'circle-color': '#2F6F86', 'circle-opacity': 0.08, 'circle-stroke-color': '#1F4B5C', 'circle-stroke-width': 2, 'circle-stroke-opacity': 0.75 } });
+				m.addSource('nf-iso', { type: 'geojson', data: EMPTY }); // v3: the travel-time area, a soft sea tint (dashed edge = the distance estimate)
+				m.addLayer({ id: 'nf-iso-f', type: 'fill', source: 'nf-iso', paint: { 'fill-color': '#2F6F86', 'fill-opacity': 0.12 } });
+				m.addLayer({ id: 'nf-iso-l', type: 'line', source: 'nf-iso', filter: ['!=', ['get', 'est'], 1], paint: { 'line-color': '#2F6F86', 'line-width': 1.5, 'line-opacity': 0.7 } });
+				m.addLayer({ id: 'nf-iso-e', type: 'line', source: 'nf-iso', filter: ['==', ['get', 'est'], 1], paint: { 'line-color': '#2F6F86', 'line-width': 1.5, 'line-opacity': 0.8, 'line-dasharray': [3, 2] } });
+				m.addSource('nf-zone', { type: 'geojson', data: EMPTY }); // v3: the zone the visitor drew
+				m.addLayer({ id: 'nf-zone-f', type: 'fill', source: 'nf-zone', paint: { 'fill-color': '#2F6F86', 'fill-opacity': 0.08 } });
+				m.addLayer({ id: 'nf-zone-l', type: 'line', source: 'nf-zone', paint: { 'line-color': '#1F4B5C', 'line-width': 2 } });
 				m.addSource('nf-meas', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
 				m.addLayer({ id: 'nf-meas-l', type: 'line', source: 'nf-meas', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#12202A', 'line-width': 2, 'line-dasharray': [2, 1.5] } });
 				m.addLayer({ id: 'nf-meas-p', type: 'circle', source: 'nf-meas', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#12202A', 'circle-stroke-width': 2 } });
 				m.addSource('nf-pts', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, cluster: true, clusterMaxZoom: 14, clusterRadius: 60, clusterProperties: { n: ['+', ['get', 'n']] } });
 				m.addLayer({ id: 'nf-pts-h', type: 'circle', source: 'nf-pts', paint: { 'circle-radius': 1, 'circle-opacity': 0 } });
 				S.mapState = 'on';
-				m.on('moveend', function () { sync(); if (userMoved && !S.picking && !S.measure) { el.area.hidden = false; } });
+				m.on('moveend', function () { sync(); if (userMoved && !S.picking && !S.measure && !root.classList.contains('is-draw')) { el.area.hidden = false; } });
 				m.on('sourcedata', function (e) { if (e && e.sourceId === 'nf-pts' && e.isSourceLoaded) { sync(); } });
 				['dragstart', 'zoomstart'].forEach(function (n) { m.on(n, function (e) { if (e && e.originalEvent) { userMoved = true; } }); });
 				m.on('click', function (e) {
@@ -529,6 +851,8 @@
 				drawMap(results(), true);
 				drawAnchors();
 				if (S.origin) { drawMe(); }
+				drawAlertArea(true);
+				drawZone(); drawIso();
 			});
 		}).catch(function () { noMap('המפה לא נטענה כרגע. כל הרשימה כאן, ואפשר לבחור עיר או שכונה.'); });
 	}
@@ -575,12 +899,12 @@
 		if (!xs.length) { return; }
 		var w = 180, s = 90, e = -180, n = -90;
 		xs.forEach(function (x) { w = Math.min(w, x.lng); e = Math.max(e, x.lng); s = Math.min(s, x.lat); n = Math.max(n, x.lat); });
-		try { S.map.fitBounds([[w, s], [e, n]], { padding: 48, maxZoom: 13, duration: RM ? 0 : 600 }); } catch (err) { /* keep the view */ }
+		try { S.map.fitBounds([[w, s], [e, n]], { padding: camPad(48), maxZoom: 13, duration: RM ? 0 : 600 }); } catch (err) { /* keep the view */ }
 		userMoved = false; el.area.hidden = true;
 	}
 	function flyTo(lat, lng, z) {
 		if (!S.map) { return; }
-		var o = { center: [lng, lat], zoom: z };
+		var o = { center: [lng, lat], zoom: z, offset: [0, -Math.round(shv() / 2)] }; // above the phone sheet
 		if (RM) { S.map.jumpTo(o); } else { S.map.flyTo(Object.assign({ duration: 900 }, o)); }
 		userMoved = false; el.area.hidden = true;
 	}
@@ -646,7 +970,12 @@
 					return;
 				}
 				var g = S.groups && S.groups[props.key];
-				if (g && g.items.length > 1) { S.group = { keys: g.keys, label: g.label }; S.shown = 30; renderList(); markActive(); if (!wide()) { el.panel.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); } return; }
+				if (g && g.items.length > 1) {
+					S.group = { keys: g.keys, label: g.label }; S.shown = 30; renderList(); markActive();
+					if (root.classList.contains('is-sheet')) { setSnap('half', true); el.panel.scrollTop = 0; } // v3: the phone sheet rises
+					else if (!wide()) { el.panel.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); }
+					return;
+				}
 				var x = g ? g.items[0] : S.byKey[props.key];
 				if (x) { openCard(x, b2); }
 			});
@@ -696,7 +1025,8 @@
 	/* ------------------------------------------------------------ measuring: two taps, the line and the distance */
 	function measureOn() {
 		if (S.mapState !== 'on') { return; }
-		endPick(); closeCard();
+		endPick(); closeCard(); closeSh(); drawOff();
+		if (root.classList.contains('is-sheet')) { setSnap('peek', true); }
 		S.measure = { a: null, b: null };
 		el.ruler.setAttribute('aria-pressed', 'true');
 		el.area.hidden = true; el.meas.hidden = false;
@@ -734,12 +1064,422 @@
 	el.ruler.addEventListener('click', function () { if (S.measure) { measureOff(); } else { measureOn(); } });
 	el.measX.addEventListener('click', measureOff);
 
+	/* ------------------------------------------------------------ v3: geometry */
+	var EMPTY = { type: 'FeatureCollection', features: [] };
+	function inRingLL(lng, lat, ring) { // even-odd rule; ring = [[lng, lat], ...]
+		var inside = false;
+		for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+			var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+			if (((yi > lat) !== (yj > lat)) && (lng < (xj - xi) * (lat - yi) / ((yj - yi) || 1e-12) + xi)) { inside = !inside; }
+		}
+		return inside;
+	}
+	function inBox(x, b) { return x.lat >= b.s && x.lat <= b.n && x.lng >= b.w && x.lng <= b.e; }
+	function inRing(x, z) { return inBox(x, z.bbox) && inRingLL(x.lng, x.lat, z.ring); }
+	function inGeom(lng, lat, g) { // a GeoJSON Polygon or MultiPolygon: inside an outer ring and not in one of its holes
+		var polys = g.type === 'Polygon' ? [g.coordinates] : (g.type === 'MultiPolygon' ? g.coordinates : []);
+		for (var p = 0; p < polys.length; p++) {
+			var rings = polys[p];
+			if (rings.length && inRingLL(lng, lat, rings[0])) {
+				var hole = false;
+				for (var h = 1; h < rings.length; h++) { if (inRingLL(lng, lat, rings[h])) { hole = true; break; } }
+				if (!hole) { return true; }
+			}
+		}
+		return false;
+	}
+	function inIso(x) { var I = S.iso; return !!I && inBox(x, I.bbox) && inGeom(x.lng, x.lat, I.geom); }
+	function bboxOf(cs) { var b = { w: 1e9, s: 1e9, e: -1e9, n: -1e9 }; cs.forEach(function (c) { b.w = Math.min(b.w, c[0]); b.e = Math.max(b.e, c[0]); b.s = Math.min(b.s, c[1]); b.n = Math.max(b.n, c[1]); }); return b; }
+	function geomCoords(g) { var out = []; (g.type === 'Polygon' ? [g.coordinates] : g.coordinates).forEach(function (p) { (p[0] || []).forEach(function (c) { out.push(c); }); }); return out; }
+	function ringCentre(z) { var r = z.ring.slice(0, -1), la = 0, ln = 0; r.forEach(function (c) { ln += c[0]; la += c[1]; }); return { lat: la / r.length, lng: ln / r.length }; }
+	function dp(pts, eps) { // Douglas-Peucker on [x, y] points
+		if (pts.length < 3) { return pts.slice(); }
+		var keep = [], stack = [[0, pts.length - 1]];
+		keep[0] = keep[pts.length - 1] = true;
+		while (stack.length) {
+			var s = stack.pop(), a = pts[s[0]], b = pts[s[1]], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, md = -1, mi = -1;
+			for (var i = s[0] + 1; i < s[1]; i++) {
+				var p = pts[i], t = L ? ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L : 0;
+				t = t < 0 ? 0 : t > 1 ? 1 : t;
+				var ex = a[0] + t * dx - p[0], ey = a[1] + t * dy - p[1], d = ex * ex + ey * ey;
+				if (d > md) { md = d; mi = i; }
+			}
+			if (mi > -1 && md > eps * eps) { keep[mi] = true; stack.push([s[0], mi], [mi, s[1]]); }
+		}
+		return pts.filter(function (p, i) { return keep[i]; });
+	}
+	function simplifyTo(pts, max, eps) { var out = dp(pts, eps); while (out.length > max && eps < 1e6) { eps *= 1.6; out = dp(pts, eps); } return out; }
+	function circleGeom(c, rKm) {
+		var ring = [], kx = 111.32 * Math.cos(c.lat * Math.PI / 180), ky = 110.574;
+		for (var i = 0; i <= 64; i++) { var a = i / 64 * 2 * Math.PI; ring.push([c.lng + rKm * Math.cos(a) / kx, c.lat + rKm * Math.sin(a) / ky]); }
+		ring[64] = ring[0].slice();
+		return { type: 'Polygon', coordinates: [ring] };
+	}
+	function slimGeom(g) { // the isochrone as the browser keeps it: 400 points a ring at most, 5 decimals
+		function ring(r) { var s = r.length > 400 ? simplifyTo(r, 400, 0.00005) : r; return s.map(function (c) { return [Math.round(c[0] * 1e5) / 1e5, Math.round(c[1] * 1e5) / 1e5]; }); }
+		if (g.type === 'Polygon') { return { type: 'Polygon', coordinates: g.coordinates.map(ring) }; }
+		return { type: 'MultiPolygon', coordinates: g.coordinates.map(function (p) { return p.map(ring); }) };
+	}
+	function shv() { return root.classList.contains('is-sheet') ? (SH.vis || 0) : 0; } // the phone sheet's height over the map
+	function camPad(p) { return { top: p, left: p, right: p, bottom: p + shv() }; }
+	function fitBox(b, maxZ) {
+		if (!S.map || !b) { return; }
+		try { S.map.fitBounds([[b.w, b.s], [b.e, b.n]], { padding: camPad(48), maxZoom: maxZ || 15, duration: RM ? 0 : 600 }); } catch (e) { /* keep the view */ }
+		userMoved = false; el.area.hidden = true;
+	}
+	var DLG = { can: false, isOpen: function () { return false; }, open: function () {} }; // the launcher's dialog, when the page has one
+	root.classList.add('nlnf--nodraw'); // until a dialog is there: on a phone the zone is drawn inside the dialog only
+
+	/* ------------------------------------------------------------ v3: draw a zone */
+	var DR = null;
+	function drawLabel() {
+		var on = root.classList.contains('is-draw');
+		el.draw.textContent = S.zone && !on ? 'ניקוי אזור' : 'ציירו אזור';
+		el.draw.setAttribute('aria-pressed', on ? 'true' : 'false');
+		el.draw.classList.toggle('has-zone', !!S.zone && !on);
+	}
+	function drawOn() {
+		if (S.mapState !== 'on') { return; }
+		if (!wide() && DLG.can && !DLG.isOpen()) { DLG.open(); setTimeout(drawOn, RM ? 80 : 450); return; } // a phone draws inside the dialog only
+		if (!wide() && !DLG.can) { return; }
+		endPick(); measureOff(); closeCard(); closeAlert(); closeSh();
+		if (root.classList.contains('is-sheet')) { setSnap('peek', true); }
+		root.classList.add('is-draw');
+		el.pad.hidden = false; el.padL.setAttribute('points', '');
+		el.drw.hidden = false; el.area.hidden = true;
+		el.drwT.textContent = window.matchMedia && window.matchMedia('(pointer:coarse)').matches ? 'ציירו באצבע קו סביב האזור שמעניין אתכם' : 'ציירו בעכבר קו סביב האזור שמעניין אתכם';
+		drawLabel();
+		ev('zone_start');
+	}
+	function drawOff() {
+		if (!root.classList.contains('is-draw')) { return; }
+		DR = null;
+		root.classList.remove('is-draw');
+		el.pad.hidden = true; el.drw.hidden = true; el.padL.setAttribute('points', '');
+		drawLabel();
+	}
+	function padXY(e) { var r = el.pad.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+	el.pad.addEventListener('pointerdown', function (e) { // the pad exists only while drawing: it is the only element that takes the touch
+		if ((e.button && e.button > 0) || DR) { return; }
+		e.preventDefault();
+		try { el.pad.setPointerCapture(e.pointerId); } catch (err) { /* old browser */ }
+		DR = { id: e.pointerId, pts: [padXY(e)] };
+		el.padL.setAttribute('points', DR.pts[0].join(','));
+	});
+	el.pad.addEventListener('pointermove', function (e) {
+		if (!DR || e.pointerId !== DR.id) { return; }
+		e.preventDefault();
+		var p = padXY(e), q = DR.pts[DR.pts.length - 1];
+		if (Math.abs(p[0] - q[0]) + Math.abs(p[1] - q[1]) < 3 || DR.pts.length > 4000) { return; }
+		DR.pts.push(p);
+		el.padL.setAttribute('points', DR.pts.map(function (z) { return Math.round(z[0]) + ',' + Math.round(z[1]); }).join(' '));
+	});
+	function padEnd(e) {
+		if (!DR || e.pointerId !== DR.id) { return; }
+		var pts = DR.pts, b = bboxOf(pts);
+		DR = null;
+		var sp = pts.length >= 6 && (b.e - b.w) >= 24 && (b.n - b.s) >= 24 ? simplifyTo(pts, 60, 2) : [];
+		if (sp.length > 3 && sp[0][0] === sp[sp.length - 1][0] && sp[0][1] === sp[sp.length - 1][1]) { sp.pop(); }
+		if (sp.length < 3) { // too short: still drawing
+			el.padL.setAttribute('points', '');
+			el.drwT.textContent = 'ציירו קו סגור סביב האזור, בלי להרים את האצבע או את העכבר';
+			return;
+		}
+		var ring = sp.map(function (p) { var ll = S.map.unproject(p); return [Math.round(ll.lng * 1e5) / 1e5, Math.round(ll.lat * 1e5) / 1e5]; });
+		ring.push(ring[0].slice());
+		S.zone = { ring: ring, bbox: bboxOf(ring) };
+		drawOff();
+		S.bounds = null; S.group = null; S.shown = 30;
+		renderAll(); drawZone();
+		fitBox(S.zone.bbox, 16);
+		if (root.classList.contains('is-sheet')) { setSnap('half', true); }
+		ev('zone', { points: ring.length - 1 });
+	}
+	el.pad.addEventListener('pointerup', padEnd);
+	el.pad.addEventListener('pointercancel', function () { DR = null; el.padL.setAttribute('points', ''); });
+	function drawZone() {
+		if (!S.map || S.mapState !== 'on' || !S.map.getSource('nf-zone')) { return; }
+		try { S.map.getSource('nf-zone').setData(S.zone ? { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [S.zone.ring] } } : EMPTY); } catch (e) { /* not loaded */ }
+	}
+	function clearZone() { if (!S.zone) { return; } S.zone = null; S.shown = 30; drawZone(); renderAll(); drawLabel(); ev('zone_clear'); }
+	el.draw.addEventListener('click', function () { if (root.classList.contains('is-draw')) { drawOff(); } else if (S.zone) { clearZone(); } else { drawOn(); } });
+	el.drwX.addEventListener('click', drawOff);
+
+	/* ------------------------------------------------------------ v3: travel time (Mapbox Isochrone, only on the visitor's request) */
+	var MODES = { driving: 'ברכב', walking: 'ברגל', cycling: 'באופניים' };
+	var TT = { from: '', mode: 'driving', min: 20, busy: false };
+	function ttFroms() { // where a travel time can start: me (when the location is known), then my places
+		var a = [];
+		if (S.origin && S.origin.kind === 'me') { a.push({ k: 'me', name: 'המיקום שלי', from: 'ממך', lat: S.origin.lat, lng: S.origin.lng }); }
+		SLOTS.forEach(function (s) { var p = S.anchors[s.k]; if (p) { a.push({ k: s.k, name: s.name, from: s.from, lat: p.lat, lng: p.lng }); } });
+		return a;
+	}
+	function isoText(I) { return 'עד ' + I.min + ' דק׳ ' + MODES[I.mode] + ' ' + I.from + (I.est ? ' · הערכה לפי מרחק' : ''); }
+	function estKm(mode, min) { // the finder's own air-distance estimate, inverted (the honest fallback)
+		if (mode === 'walking') { return min / 60 * 4.8 / 1.35; }
+		if (mode === 'cycling') { return min / 60 * 15 / 1.35; }
+		var lo = 0, hi = 150;
+		for (var i = 0; i < 40; i++) { var mid = (lo + hi) / 2; if (driveRaw(mid) <= min) { lo = mid; } else { hi = mid; } }
+		return lo;
+	}
+	function ssGet(k) { try { var v = window.sessionStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+	function ssSet(k, v) { try { window.sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* full or blocked: the next request asks again */ } }
+	function isoKey(lat, lng, mode, min) { return 'nlnf_iso_v1:' + lat.toFixed(3) + ',' + lng.toFixed(3) + ':' + mode + ':' + min; }
+	function drawIso() {
+		if (!S.map || S.mapState !== 'on' || !S.map.getSource('nf-iso')) { return; }
+		try { S.map.getSource('nf-iso').setData(S.iso ? { type: 'Feature', properties: { est: S.iso.est ? 1 : 0 }, geometry: S.iso.geom } : EMPTY); } catch (e) { /* not loaded */ }
+	}
+	function setIso(I) {
+		S.iso = I; S.shown = 30;
+		closeSh(); closeCard();
+		renderAll(); drawIso();
+		if (I) { fitBox(I.bbox, 15); if (root.classList.contains('is-sheet')) { setSnap('half', true); } }
+	}
+	function clearIso() { if (!S.iso) { return; } S.iso = null; S.shown = 30; drawIso(); renderAll(); }
+	function ttErr(t) { var e = $('nlnf-tt-err'); if (e) { e.textContent = t || ''; e.hidden = !t; } }
+	function ttBusy(on) { var b = el.sh.querySelector('[data-tt=go]'); if (b) { b.disabled = !!on; b.textContent = on ? 'מחשבים…' : 'הציגו את האזור'; } }
+	function travelGo() {
+		if (TT.busy) { return; }
+		var fr = ttFroms().filter(function (x) { return x.k === TT.from; })[0];
+		if (!fr) { ttErr('בחרו מאיפה לחשב.'); return; }
+		var lat = r3(fr.lat), lng = r3(fr.lng), mode = MODES[TT.mode] ? TT.mode : 'driving', min = [10, 20, 30].indexOf(TT.min) > -1 ? TT.min : 20; // about 100 m
+		var base = { mode: mode, min: min, from: fr.from, fromK: fr.k, lat: lat, lng: lng };
+		function est() { var g = circleGeom({ lat: lat, lng: lng }, estKm(mode, min)); setIso(Object.assign({}, base, { est: true, geom: g, bbox: bboxOf(g.coordinates[0]) })); }
+		var key = isoKey(lat, lng, mode, min), hit = ssGet(key);
+		if (hit && (hit.type === 'Polygon' || hit.type === 'MultiPolygon')) { setIso(Object.assign({}, base, { est: false, geom: hit, bbox: bboxOf(geomCoords(hit)) })); ev('travel', { mode: mode, min: min, result: 'cache' }); return; }
+		if (!D.mb || !window.fetch) { est(); ev('travel', { mode: mode, min: min, result: 'est' }); return; }
+		TT.busy = true; ttBusy(true); ttErr('');
+		var ctl = window.AbortController ? new AbortController() : null, tm = setTimeout(function () { if (ctl) { ctl.abort(); } }, 9000);
+		// the one call that carries a point out of the browser: the chosen place or my location, rounded to 0.001°, to Mapbox only
+		var url = 'https://api.mapbox.com/isochrone/v1/mapbox/' + mode + '/' + lng.toFixed(3) + ',' + lat.toFixed(3) + '?contours_minutes=' + min + '&polygons=true&denoise=1&generalize=30&access_token=' + encodeURIComponent(D.mb);
+		fetch(url, { credentials: 'omit', signal: ctl ? ctl.signal : undefined })
+			.then(function (r) { if (!r.ok) { throw new Error('http ' + r.status); } return r.json(); })
+			.then(function (j) {
+				var g = j && j.features && j.features[0] && j.features[0].geometry;
+				if (!g || (g.type !== 'Polygon' && g.type !== 'MultiPolygon') || !geomCoords(g).length) { throw new Error('shape'); }
+				g = slimGeom(g);
+				ssSet(key, g);
+				TT.busy = false;
+				setIso(Object.assign({}, base, { est: false, geom: g, bbox: bboxOf(geomCoords(g)) }));
+				ev('travel', { mode: mode, min: min, result: 'ok' });
+			})
+			.catch(function () { TT.busy = false; est(); ev('travel', { mode: mode, min: min, result: 'est' }); })
+			.then(function () { clearTimeout(tm); TT.busy = false; ttBusy(false); });
+	}
+
+	/* ------------------------------------------------------------ v3: the side sheets (the full filters, the travel time) */
+	var SALE_STEPS = [500000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 6000000, 7000000, 8000000, 10000000, 12000000, 15000000, 20000000, 30000000];
+	var RENT_STEPS = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 8000, 9000, 10000, 12000, 15000, 20000, 25000, 30000];
+	var SQM_STEPS = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 140, 160, 180, 200, 250, 300, 400, 500];
+	var SHK = null;
+	function have() { // which facts this tab's listings state: a filter shows only when one does
+		var h = { sqm: false, floor: false, elev: false, park: false, balc: false, halves: {}, ftop: 0 };
+		S.L.forEach(function (x) { if (x.rooms > 0 && x.rooms % 1) { h.halves[x.rooms] = 1; } });
+		pool().forEach(function (x) {
+			if (x.sqm > 0) { h.sqm = true; }
+			if (x.floor != null) { h.floor = true; h.ftop = Math.max(h.ftop, x.floor); }
+			if (x.elevator === true) { h.elev = true; }
+			if (x.parking === true) { h.park = true; }
+			if (x.balcony > 0) { h.balc = true; }
+		});
+		return h;
+	}
+	function roomSteps(h) { var a = []; for (var r = 1; r <= 10; r += 0.5) { if (r % 1 === 0 || h.halves[r]) { a.push(r); } } return a; }
+	function fsel(name, lab, steps, val, fmt, isFloor) { // one "from" or "to" select; the empty choice is "הכול"
+		var none = isFloor ? val == null : !val;
+		return '<label class="nlnf-fs__sel"><span class="nlnf-fs__k">' + lab + '</span><select data-ff="' + name + '"><option value=""' + (none ? ' selected' : '') + '>הכול</option>'
+			+ steps.map(function (v) { return '<option value="' + v + '"' + (!none && val === v ? ' selected' : '') + '>' + esc(fmt(v)) + '</option>'; }).join('') + '</select></label>';
+	}
+	function fpair(title, id, a, b) { return '<div class="nlnf-fs__grp" role="group" aria-labelledby="' + id + '"><span class="nlnf-al__lab" id="' + id + '">' + title + '</span><div class="nlnf-fs__pair">' + a + b + '</div></div>'; }
+	function fchk(k, label, on) { return '<label class="nlnf-al__opt"><input type="checkbox" data-ff="' + k + '"' + (on ? ' checked' : '') + '><span><b>' + label + '</b></span></label>'; }
+	function shBar() { return '<div class="nlnf-card__bar"><button type="button" class="nlnf-card__back" data-sh="close">' + CHEV + (wide() ? 'חזרה לרשימה' : 'חזרה') + '</button></div>'; }
+	function floorName(f) { return f === 0 ? 'קרקע' : String(f); }
+	function filtersHtml() {
+		var h = have(), deal = S.tab, pp = S.fp[deal], F = S.f, rs = roomSteps(h);
+		var steps = deal === 'rent' ? RENT_STEPS : SALE_STEPS, pf = function (v) { return priceLabel(v, deal); }, sq = function (v) { return grp(v) + ' מ״ר'; };
+		var fl = []; for (var i = 0; i <= Math.min(60, Math.max(10, h.ftop)); i++) { fl.push(i); }
+		return shBar() + '<div class="nlnf-al__in nlnf-fs">'
+			+ '<div class="nlnf-al__head"><h3 class="nlnf-al__h" id="nlnf-sh-t" tabindex="-1">סינון</h3><p class="nlnf-al__lead">' + (deal === 'rent' ? 'דירות להשכרה' : 'דירות למכירה') + ': בחרו מה חשוב לכם. המפה והרשימה מתעדכנות מיד.</p></div>'
+			+ fpair('חדרים', 'nlnf-fs-r', fsel('rooms', 'מ־', rs, F.rooms, num), fsel('rmax', 'עד', rs, F.rmax, num))
+			+ fpair(deal === 'rent' ? 'שכר דירה לחודש' : 'מחיר', 'nlnf-fs-p', fsel('pmin', 'מ־', steps, pp.min, pf), fsel('pmax', 'עד', steps, pp.max, pf))
+			+ (h.sqm ? fpair('גודל', 'nlnf-fs-s', fsel('smin', 'מ־', SQM_STEPS, F.smin, sq), fsel('smax', 'עד', SQM_STEPS, F.smax, sq)) : '')
+			+ (h.floor ? fpair('קומה', 'nlnf-fs-f', fsel('fmin', 'מ־', fl, F.fmin, floorName, true), fsel('fmax', 'עד', fl, F.fmax, floorName, true)) : '')
+			+ '<div class="nlnf-fs__grp"><span class="nlnf-al__lab" id="nlnf-fs-c">בבית</span><fieldset class="nlnf-al__what" aria-labelledby="nlnf-fs-c"><legend class="nlnf__sr">בבית</legend>'
+			+ fchk('mamad', 'ממ״ד', F.mamad) + (h.elev ? fchk('elev', 'מעלית', F.elev) : '') + (h.park ? fchk('park', 'חניה', F.park) : '') + (h.balc ? fchk('balc', 'מרפסת', F.balc) : '')
+			+ '</fieldset></div>'
+			+ '<p class="nlnf-al__fine">נכס שהמפרסם לא ציין בו גודל, קומה, מעלית, חניה או מרפסת לא יופיע כשתסננו לפי הפרט הזה.</p>'
+			+ '<div class="nlnf-fs__foot"><button type="button" class="nlnf-btn" data-sh="reset">ניקוי</button><button type="button" class="nlnf-btn nlnf-btn--pri" data-sh="close" id="nlnf-fs-go"></button></div>'
+			+ '<p class="nlnf__sr" id="nlnf-fs-n" role="status" aria-live="polite"></p>'
+			+ '</div>';
+	}
+	function fsCount() { // the live count on the button; never "0"
+		var n = results().length, t = n ? 'הציגו ' + (n === 1 ? 'נכס אחד' : grp(n) + ' נכסים') : 'אין נכסים בסינון הזה, נסו להרחיב';
+		var b = $('nlnf-fs-go'); if (b) { b.textContent = t; b.classList.toggle('nlnf-btn--pri', n > 0); b.classList.toggle('is-none', !n); }
+		var s = $('nlnf-fs-n'); if (s) { s.textContent = t; }
+	}
+	function ffSet(name, v) { var s = el.sh.querySelector('[data-ff="' + name + '"]'); if (s) { s.value = v == null || v === 0 && name.charAt(0) !== 'f' ? '' : String(v); } }
+	function ffChange(s) {
+		var k = s.getAttribute('data-ff'), F = S.f, pp = S.fp[S.tab];
+		var v = s.type === 'checkbox' ? s.checked : (s.value === '' ? null : +s.value);
+		if (k === 'pmin' || k === 'pmax') { pp[k === 'pmin' ? 'min' : 'max'] = v || 0; }
+		else if (k === 'fmin' || k === 'fmax') { F[k] = v; }
+		else if (s.type === 'checkbox') { F[k] = !!v; }
+		else { F[k] = v || 0; }
+		// a "from" above the "to" (or the reverse): the other end follows the one just changed
+		if (F.rooms && F.rmax && F.rooms > F.rmax) { if (k === 'rooms') { F.rmax = F.rooms; ffSet('rmax', F.rmax); } else { F.rooms = F.rmax; ffSet('rooms', F.rooms); } }
+		if (pp.min && pp.max && pp.min > pp.max) { if (k === 'pmin') { pp.max = pp.min; ffSet('pmax', pp.max); } else { pp.min = pp.max; ffSet('pmin', pp.min); } }
+		if (F.smin && F.smax && F.smin > F.smax) { if (k === 'smin') { F.smax = F.smin; ffSet('smax', F.smax); } else { F.smin = F.smax; ffSet('smin', F.smin); } }
+		if (F.fmin != null && F.fmax != null && F.fmin > F.fmax) { if (k === 'fmin') { F.fmax = F.fmin; ffSet('fmax', F.fmax); } else { F.fmin = F.fmax; ffSet('fmin', F.fmin); } }
+		S.shown = 30;
+		renderAll(); fsCount();
+		ev('filter', { name: k });
+	}
+	function fsReset() {
+		S.f = Object.assign(fBlank(), { mkt: S.f.mkt, near: S.f.near });
+		S.fp[S.tab] = { min: 0, max: 0 };
+		S.shown = 30;
+		renderAll();
+		el.sh.innerHTML = filtersHtml(); fsCount();
+		var b = el.sh.querySelector('[data-sh=reset]'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) { b.focus(); } }
+		ev('filter', { name: 'reset' });
+	}
+	function travelHtml() {
+		var fs = ttFroms();
+		var h = shBar() + '<div class="nlnf-al__in nlnf-tt">'
+			+ '<div class="nlnf-al__head"><h3 class="nlnf-al__h" id="nlnf-sh-t" tabindex="-1">זמן נסיעה</h3><p class="nlnf-al__lead">נכסים שמגיעים מהם בזמן שתבחרו, לפי הכבישים והשבילים, מהמקום שחשוב לכם.</p></div>';
+		if (!fs.length) {
+			h += '<p class="nlnf-al__lead">סמנו קודם מקום ב״המקומות שלי״, או לחצו על ״המיקום שלי״.</p><div class="nlnf-empty__go">'
+				+ '<button type="button" class="nlnf-btn nlnf-btn--pri" data-tt="me">המיקום שלי</button>'
+				+ SLOTS.map(function (s) { return '<button type="button" class="nlnf-btn" data-slot="' + s.k + '">+ ' + esc(s.add) + '</button>'; }).join('') + '</div>';
+		} else {
+			h += '<div class="nlnf-al__grp"><span class="nlnf-al__lab" id="nlnf-tt-fl">מאיפה</span><div class="nlnf-tt__from" role="radiogroup" aria-labelledby="nlnf-tt-fl">'
+				+ fs.map(function (x) { return '<label><input type="radio" name="ttfrom" value="' + x.k + '"' + (TT.from === x.k ? ' checked' : '') + '><span>' + esc(x.name) + '</span></label>'; }).join('') + '</div></div>'
+				+ '<div class="nlnf-al__grp"><span class="nlnf-al__lab" id="nlnf-tt-ml">איך</span><div class="nlnf-al__seg" role="radiogroup" aria-labelledby="nlnf-tt-ml">'
+				+ ['driving', 'walking', 'cycling'].map(function (m) { return '<label><input type="radio" name="ttmode" value="' + m + '"' + (TT.mode === m ? ' checked' : '') + '><span>' + MODES[m] + '</span></label>'; }).join('') + '</div></div>'
+				+ '<div class="nlnf-al__grp"><span class="nlnf-al__lab" id="nlnf-tt-nl">תוך כמה זמן</span><div class="nlnf-al__seg" role="radiogroup" aria-labelledby="nlnf-tt-nl">'
+				+ [10, 20, 30].map(function (n) { return '<label><input type="radio" name="ttmin" value="' + n + '"' + (TT.min === n ? ' checked' : '') + '><span>' + n + ' דק׳</span></label>'; }).join('') + '</div></div>'
+				+ '<button type="button" class="nlnf-btn nlnf-btn--pri nlnf-al__go" data-tt="go">הציגו את האזור</button>'
+				+ '<p class="nlnf-al__err" id="nlnf-tt-err" role="alert" hidden></p>';
+		}
+		return h + (S.iso ? '<button type="button" class="nlnf-btn" data-tt="clear">ניקוי זמן הנסיעה</button>' : '')
+			+ '<p class="nlnf-al__fine">זמני הנסיעה מחושבים אצל Mapbox לפי הכבישים והשבילים, בלי פקקים של הרגע. לשם כך נשלחת ל־Mapbox רק הנקודה שבחרתם, בעיגול של כ־100 מ׳; אלינו היא לא נשלחת. אם החישוב לא זמין, נציג הערכה לפי מרחק.</p></div>';
+	}
+	function openSh(kind, opener) {
+		closeCard(); closeAlert(); measureOff(); endPick(); drawOff(); say('');
+		S.sh = kind; SHK = kind;
+		if (kind === 't') { var fs = ttFroms(); if (!fs.some(function (x) { return x.k === TT.from; })) { TT.from = fs.length ? fs[0].k : ''; } }
+		root.style.setProperty('--nf-wa', waInset() + 'px');
+		el.sh.innerHTML = kind === 'f' ? filtersHtml() : travelHtml();
+		el.sh.hidden = false;
+		el.sh.setAttribute('aria-modal', wide() ? 'false' : 'true');
+		root.classList.add('is-sh');
+		if (!wide()) { el.sh.scrollTop = 0; }
+		var t = $('nlnf-sh-t'); if (t) { try { t.focus({ preventScroll: wide() }); } catch (e) { t.focus(); } }
+		if (kind === 'f') { fsCount(); }
+		ev(kind === 'f' ? 'filters_open' : 'travel_open');
+	}
+	function closeSh() {
+		if (!el.sh || el.sh.hidden) { return false; }
+		el.sh.hidden = true; el.sh.innerHTML = ''; root.classList.remove('is-sh'); S.sh = null;
+		var o = el.chips.querySelector('[data-sh="' + SHK + '"]'); // the chips are drawn again on every change: back to the chip that opened it
+		if (o) { try { o.focus({ preventScroll: true }); } catch (e) { /* gone */ } }
+		return true;
+	}
+
+	/* ------------------------------------------------------------ v3: the phone sheet (inside the dialog only): peek, half, full */
+	var SH = { snap: 'peek', vis: 0, drag: null, moved: false };
+	var SNAPS = ['peek', 'half', 'full'];
+	var SNAP_T = { peek: 'הגדילו את רשימת הנכסים', half: 'הרשימה בחצי מסך. לחצו למסך מלא', full: 'הקטינו את רשימת הנכסים' };
+	function waInset() { // the wide WhatsApp bar stays above the dialog: the sheet keeps its content above it (measured, never moved)
+		var o = document.getElementById('nlcta');
+		if (!o) { return 0; }
+		var r = o.getBoundingClientRect(), cs = window.getComputedStyle(o), vh = window.innerHeight;
+		if (!(r.width > 0 && r.height > 0) || cs.display === 'none' || cs.visibility === 'hidden' || r.top < vh * 0.5 || r.top >= vh) { return 0; }
+		return Math.max(0, Math.round(vh - r.top));
+	}
+	function snapPx(n) {
+		var H = el.mapwrap.offsetHeight || 400, peek = Math.min(H, 124 + waInset());
+		if (n === 'full') { return H; }
+		if (n === 'half') { return Math.min(H, Math.max(Math.round(H * 0.58), peek + 130)); }
+		return peek;
+	}
+	function applyVis(v, anim) {
+		SH.vis = Math.round(v);
+		el.panel.classList.toggle('is-anim', !!anim && !RM);
+		el.panel.style.height = SH.vis + 'px';
+		root.style.setProperty('--nf-shv', SH.vis + 'px');
+	}
+	function setSnap(n, anim) {
+		if (!root.classList.contains('is-sheet')) { return; }
+		SH.snap = n;
+		applyVis(snapPx(n), anim);
+		root.classList.toggle('is-full', n === 'full');
+		el.grab.setAttribute('aria-label', SNAP_T[n]);
+	}
+	function updateSheet() {
+		var on = !!root.closest('.nlnf-dlg') && !wide(), was = root.classList.contains('is-sheet'), db = document.getElementById('nlnf-dlg-body');
+		root.classList.toggle('is-sheet', on);
+		if (db) { db.classList.toggle('is-sheet', on); }
+		if (on) {
+			root.style.setProperty('--nf-wa', waInset() + 'px');
+			el.grab.removeAttribute('aria-hidden'); el.grab.tabIndex = 0;
+			setSnap(was ? SH.snap : 'peek', false);
+		} else if (was) {
+			el.grab.setAttribute('aria-hidden', 'true'); el.grab.tabIndex = -1; el.grab.removeAttribute('aria-label');
+			el.panel.style.height = ''; el.panel.classList.remove('is-anim');
+			root.style.removeProperty('--nf-shv'); root.classList.remove('is-full');
+			SH.vis = 0; SH.drag = null;
+		}
+	}
+	el.grab.addEventListener('click', function () {
+		if (SH.moved) { SH.moved = false; return; } // the end of a drag, not a press
+		if (!root.classList.contains('is-sheet')) { return; }
+		setSnap(SNAPS[(SNAPS.indexOf(SH.snap) + 1) % 3], true);
+		ev('sheet', { snap: SH.snap, by: 'press' });
+	});
+	el.grab.addEventListener('keydown', function (e) {
+		if (!root.classList.contains('is-sheet')) { return; }
+		var i = SNAPS.indexOf(SH.snap);
+		if (e.key === 'ArrowUp' && i < 2) { setSnap(SNAPS[i + 1], true); e.preventDefault(); }
+		else if (e.key === 'ArrowDown' && i > 0) { setSnap(SNAPS[i - 1], true); e.preventDefault(); }
+	});
+	el.grab.addEventListener('pointerdown', function (e) { // the handle only (touch-action: none on it alone, inside the dialog)
+		if (!root.classList.contains('is-sheet') || (e.button && e.button > 0)) { return; }
+		SH.drag = { id: e.pointerId, y0: e.clientY, v0: SH.vis, y1: e.clientY, t1: Date.now(), vy: 0 };
+		SH.moved = false;
+		try { el.grab.setPointerCapture(e.pointerId); } catch (err) { /* old browser */ }
+		el.panel.classList.remove('is-anim');
+	});
+	el.grab.addEventListener('pointermove', function (e) {
+		var G = SH.drag;
+		if (!G || e.pointerId !== G.id) { return; }
+		if (!SH.moved && Math.abs(G.y0 - e.clientY) < 6) { return; }
+		SH.moved = true;
+		e.preventDefault();
+		var now = Date.now();
+		G.vy = (G.y1 - e.clientY) / Math.max(1, now - G.t1); G.y1 = e.clientY; G.t1 = now;
+		applyVis(Math.max(snapPx('peek') * 0.7, Math.min(snapPx('full'), G.v0 + G.y0 - e.clientY)), false);
+	});
+	function grabEnd(e) {
+		var G = SH.drag;
+		if (!G || e.pointerId !== G.id) { return; }
+		SH.drag = null;
+		if (!SH.moved) { return; } // a press: the click moves one step
+		var v = SH.vis + Math.max(-1.5, Math.min(1.5, G.vy || 0)) * 160, best = 'peek', bd = 1e9; // a flick carries on a little
+		SNAPS.forEach(function (n) { var d = Math.abs(snapPx(n) - v); if (d < bd) { bd = d; best = n; } });
+		setSnap(best, true);
+		ev('sheet', { snap: best, by: 'drag' });
+	}
+	el.grab.addEventListener('pointerup', grabEnd);
+	el.grab.addEventListener('pointercancel', grabEnd);
+
 	/* ------------------------------------------------------------ places: me, a city or neighbourhood, my places */
 	function setOrigin(o, quiet) {
 		S.origin = o; S.bounds = null; S.group = null; S.shown = 30;
-		closeCard();
+		closeAlert(); closeCard();
 		drop();
 		renderAll();
+		if (S.sh === 't' && o && o.kind === 'me') { TT.from = 'me'; el.sh.innerHTML = travelHtml(); } // "המיקום שלי" pressed inside the travel sheet
 		drawMe();
 		if (o && S.map) { flyTo(o.lat, o.lng, o.zoom || 13); if (o.kind === 'me') { setTimeout(function () { burst(o.lat, o.lng); }, RM ? 0 : 950); } }
 		if (!quiet && o) { ev(o.kind === 'me' ? 'locate' : 'place', o.kind === 'me' ? { result: 'ok' } : { kind: o.pkind || 'city' }); }
@@ -791,13 +1531,13 @@
 
 	function startPick(slot) {
 		var s = SLOTS.filter(function (z) { return z.k === slot; })[0]; if (!s) { return; }
-		closeCard(); measureOff();
+		closeCard(); measureOff(); closeSh(); drawOff();
 		S.picking = slot;
 		if (S.mapState === 'on') {
 			el.pickT.textContent = 'הקישו על המפה במקום: ' + s.name;
 			el.pick.hidden = false; el.area.hidden = true;
 			S.map.getCanvas().style.cursor = 'crosshair';
-			el.mapwrap.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
+			if (root.classList.contains('is-sheet')) { setSnap('peek', true); } else { el.mapwrap.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' }); }
 		} else { // no map: the place box chooses it
 			say('בחרו עיר או שכונה עבור: ' + s.name);
 			el.q.value = ''; el.q.focus(); showSug();
@@ -818,18 +1558,43 @@
 		var t = e.target.closest('button, a');
 		if (!t || !root.contains(t)) { return; }
 		var a;
+		if ((a = t.getAttribute('data-sh'))) { // v3: the full filters and the travel time
+			if (a === 'close') { closeSh(); } else if (a === 'reset') { fsReset(); } else { openSh(a, t); }
+			return;
+		}
+		if ((a = t.getAttribute('data-tt'))) {
+			if (a === 'go') { travelGo(); } else if (a === 'clear') { clearIso(); closeSh(); } else if (a === 'me') { locate(false); }
+			return;
+		}
+		if ((a = t.getAttribute('data-al'))) { if (a === 'close') { closeAlert(); } else { openAlert(a === 'open' ? null : a, t); } return; }
+		if ((a = t.getAttribute('data-save'))) { toggleSave(a); return; }
+		if ((a = t.getAttribute('data-unsave'))) {
+			S.saved = S.saved.filter(function (k) { return k !== a; }); saveSaved();
+			if (S.byKey[a]) { syncItems(S.byKey[a], false); }
+			if (S.card && S.card.key === a) { var sb = el.card.querySelector('[data-save]'); if (sb) { sb.outerHTML = saveBtn(S.card); } }
+			renderList(); renderSaved(); markActive();
+			var nx = el.saved && el.saved.querySelector('[data-unsave]'); if (nx) { try { nx.focus({ preventScroll: true }); } catch (e) { nx.focus(); } }
+			ev('save', { on: 0, from: 'list' }); return;
+		}
+		if (t.getAttribute('data-saved') === 'go') { if (el.saved) { el.saved.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); var sh = $('nlnf-saved-h'); if (sh) { try { sh.focus({ preventScroll: true }); } catch (e) { /* focus */ } } } return; }
 		if ((a = t.getAttribute('data-tab'))) {
 			if (a === S.tab) { return; }
-			S.tab = a; S.f.pmax = 0; S.group = null; S.bounds = null; S.shown = 30; LAST.fit = !S.origin;
+			S.tab = a; S.group = null; S.bounds = null; S.shown = 30; LAST.fit = !S.origin && !S.zone && !S.iso; // v3: the sale and the rent price ranges are kept apart
 			closeCard(); drop(); renderAll(); ev('tab', { tab: a }); return;
 		}
 		if ((a = t.getAttribute('data-f'))) { if (t.tagName === 'BUTTON') { S.f[a] = !S.f[a]; S.shown = 30; renderAll(); ev('filter', { name: a }); } return; }
 		if ((a = t.getAttribute('data-slot'))) { startPick(a); return; }
-		if ((a = t.getAttribute('data-unslot'))) { delete S.anchors[a]; saveAnchors(); renderAll(); drawAnchors(); return; }
+		if ((a = t.getAttribute('data-unslot'))) { if (S.iso && S.iso.fromK === a) { S.iso = null; drawIso(); } delete S.anchors[a]; saveAnchors(); renderAll(); drawAnchors(); return; }
 		if ((a = t.getAttribute('data-key'))) { var x = S.byKey[a]; if (x) { openCard(x, t); } return; }
-		if ((a = t.getAttribute('data-scope'))) { if (a === 'bounds') { S.bounds = null; } else { S.group = null; } S.shown = 30; renderList(); markActive(); return; }
-		if ((a = t.getAttribute('data-empty'))) {
-			S.bounds = null; S.group = null; S.f = { mamad: false, rooms: 0, pmax: 0, mkt: false, near: 0 };
+		if ((a = t.getAttribute('data-scope'))) {
+			if (a === 'zone') { clearZone(); return; }
+			if (a === 'iso') { clearIso(); return; }
+			if (a === 'bounds') { S.bounds = null; } else { S.group = null; }
+			S.shown = 30; renderList(); markActive(); return;
+		}
+		if ((a = t.getAttribute('data-empty'))) { // widen: the area scopes, the drawn zone, the travel time and every filter go
+			S.bounds = null; S.group = null; S.f = fBlank(); S.fp = { sale: { min: 0, max: 0 }, rent: { min: 0, max: 0 } };
+			S.zone = null; S.iso = null; drawZone(); drawIso(); drawLabel();
 			if (a === 'new' && !BROKER) { S.tab = 'new'; }
 			LAST.fit = true; drop(); renderAll(); return;
 		}
@@ -849,10 +1614,18 @@
 		if (t.getAttribute('data-go')) { ev('go', { type: S.card && S.card.t === 'p' ? 'project' : 'listing' }); return; }
 	});
 	root.addEventListener('change', function (e) {
-		var s = e.target; var k = s && s.getAttribute('data-f');
+		var s = e.target;
+		if (s && s.getAttribute && s.getAttribute('data-al') === 'r') { AL.r = +s.value || 1.5; drawAlertArea(true); return; }
+		if (s && s.getAttribute && s.getAttribute('data-ff')) { ffChange(s); return; } // v3: the full filters, applied at once
+		if (s && s.name === 'ttfrom') { TT.from = s.value; ttErr(''); return; }
+		if (s && s.name === 'ttmode') { TT.mode = s.value; return; }
+		if (s && s.name === 'ttmin') { TT.min = +s.value || 20; return; }
+		var k = s && s.getAttribute('data-f');
 		if (!k || s.tagName !== 'SELECT') { return; }
-		S.f[k] = +s.value || 0; S.shown = 30; renderAll(); ev('filter', { name: k });
+		if (k === 'pmax') { S.fp[S.tab].max = +s.value || 0; } else { S.f[k] = +s.value || 0; }
+		S.shown = 30; renderAll(); ev('filter', { name: k });
 	});
+	root.addEventListener('submit', function (e) { if (e.target && e.target.id === 'nlnf-al-f') { e.preventDefault(); sendAlert(e.target); } });
 	root.addEventListener('keydown', function (e) {
 		var t = e.target;
 		if (t && t.getAttribute && t.getAttribute('role') === 'tab' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
@@ -861,7 +1634,10 @@
 			n.focus(); n.click(); e.preventDefault();
 		}
 	});
-	function escape() { // one step back per Escape: the measuring, the picking, the card; false when nothing was open
+	function escape() { // one step back per Escape: a side sheet, the alert sheet, the drawing, the measuring, the picking, the card; false when nothing was open
+		if (closeSh()) { return true; }
+		if (closeAlert()) { return true; }
+		if (root.classList.contains('is-draw')) { drawOff(); return true; }
 		if (S.measure) { measureOff(); return true; }
 		if (S.picking) { endPick(); return true; }
 		return closeCard();
@@ -875,7 +1651,7 @@
 		S.group = null; S.shown = 30; el.area.hidden = true; userMoved = false;
 		renderList(); markActive(); ev('area');
 	});
-	function resize() { if (S.map) { try { S.map.resize(); } catch (e) { /* hidden */ } setTimeout(sync, 80); } }
+	function resize() { updateSheet(); if (S.map) { try { S.map.resize(); } catch (e) { /* hidden */ } setTimeout(sync, 80); } }
 	window.addEventListener('resize', resize);
 
 	/* ------------------------------------------------------------ start */
@@ -954,6 +1730,7 @@
 		dlg.hidden = false;
 		document.documentElement.classList.add('nlnf-open');
 		document.body.style.overflow = 'hidden';
+		updateSheet(); // v3: on a phone the list becomes the sheet over the map
 		showBtn(false);
 		if (!fromHash) { try { history.pushState({ nlnf: 1 }, '', '#lidi'); } catch (e) { /* old browser */ } }
 		var was = started;
@@ -969,16 +1746,19 @@
 	function close(fromPop) {
 		if (!isOpen) { return; }
 		isOpen = false;
-		closeCard(); measureOff(); endPick();
+		closeSh(); closeAlert(); closeCard(); measureOff(); endPick(); drawOff();
 		dlg.hidden = true;
 		document.documentElement.classList.remove('nlnf-open');
 		document.body.style.overflow = '';
 		if (inline && home && home.parentNode) { home.parentNode.insertBefore(root, home); home.parentNode.removeChild(home); home = null; setTimeout(resize, 30); }
+		updateSheet(); // v3: back on the page, the list is a plain list again
 		showBtn(!inlineSeen);
 		placeBtn();
 		if (fromPop !== true && location.hash === '#lidi') { try { history.back(); } catch (e) { /* stays */ } }
 		if (lastFocus && lastFocus.focus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) { /* gone */ } }
 	}
+	DLG.can = true; DLG.isOpen = function () { return isOpen; }; DLG.open = function () { open(false); }; // v3: "ציירו אזור" on a phone opens the dialog first
+	root.classList.remove('nlnf--nodraw');
 	btn.addEventListener('click', function () { open(false); });
 	['pointerenter', 'focus', 'touchstart'].forEach(function (n) { btn.addEventListener(n, function () { data().catch(function () {}); }, { passive: true, once: true }); }); // the list is ready the moment it opens
 	if (xBtn) { xBtn.addEventListener('click', function () { close(); }); }
