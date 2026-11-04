@@ -362,6 +362,7 @@ if ( ! function_exists( 'nadlan_pl_render' ) ) {
 		<a class="nlpl-clear" href="<?php echo esc_url( '' !== $deal ? add_query_arg( 'listing_type', $deal, $arch ) : $arch ); ?>">ניקוי</a>
 	</form>
 	<?php if ( $real > 0 ) : /* never "0 מודעות": the lead says there are none */ ?><div class="nlpl-bar"><span><b><?php echo esc_html( number_format( $real ) ); ?></b> <?php echo 1 === $real ? 'מודעה' : 'מודעות'; ?></span></div><?php endif; ?>
+	<?php if ( function_exists( 'nadlan_nf_render' ) ) { echo nadlan_nf_render( array( 'deal' => $deal, 'city' => $city ) ); } // phpcs:ignore -- 1.72.584 the near finder (HAD-672), inc/near-finder.php ?>
 	<?php if ( $maps > 0 && function_exists( 'nadlan_map_render' ) ) : ?><div class="nlpl-map"><?php echo nadlan_map_render( array( 'city' => $city, 'listing_type' => $deal, 'height' => '360px' ) ); // phpcs:ignore ?></div><?php endif; ?>
 	<?php
 	$posts = $wp_query->posts;

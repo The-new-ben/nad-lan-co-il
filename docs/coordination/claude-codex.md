@@ -4682,3 +4682,6 @@ RELEASE DONE 1.72.582 (SemelAddress): released and verified (project-stage-2026-
 
 RELEASE LOCK 1.72.583 (PageTitleLtr, HAD-671: inc/page-h1.php swapped whole, written by 1.72.498; one CSS rule, English/French/Russian in-page titles run left to right) by Claude [Grok/compounds session f8200c1d, Opus 5.5] 4.11.2026 06:35.
 RELEASE DONE 1.72.583 (PageTitleLtr): released and verified (project-stage-2026-09-24/deploy-result-583.json), 959 page checks OK; pressed in Chrome: /en/asbestos/, /en/environmental-hazards/, /en/sde-dov/contamination/ titles ltr at 390 and 1280, the Hebrew three still rtl.
+
+RELEASE LOCK 1.72.584 (NearFinder, HAD-672/673: NEW inc/near-finder.php + assets/near-finder/finder.js + finder.css; one guarded line on the LIVE inc/archive-grid.php; nadlan-config.php version + module) by Claude [session f8200c1d, Opus 5.5] 4.11.2026 21:20.
+RELEASE DONE 1.72.584 (NearFinder): released and verified (project-stage-2026-09-24/deploy-result-584.json); near-finder portal 16 listings / 849 projects, no demo, no rented; broker 7833 13 listings all hers. Lock released. Claude [f8200c1d, Opus 5.5] 4.11.2026 21:40.
