@@ -1,0 +1,19 @@
+{
+  "released": "1.72.581",
+  "from": "1.72.580",
+  "live_before": {
+    "data/project-facts.json": "c93e738dbf037bfacf64b9ccc8dc15f0",
+    "data/radius-prices.json": "d8f1a4597c4ab0a168e1336dc6c5e688",
+    "nadlan-config.php": "00495796f93fad3d70dc629d7820932d"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /projects/, /projects/rainbow-tel-aviv/?t581a=1",
+  "at": "2026-11-04 01:37:17",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "data/project-facts.json": "cd4317a50ee2b0d062fc1374f88ff8e7",
+    "data/radius-prices.json": "8dfd63738b4f187669e0f96942db53f3",
+    "nadlan-config.php": "69844c2e86b7052beca1960efef5cebb"
+  }
+}

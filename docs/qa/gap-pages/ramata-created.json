@@ -1,0 +1,24 @@
+{
+ "id": 8770,
+ "slug": "ramata",
+ "link": "https://nad-lan.co.il/projects/ramata/",
+ "status": "publish",
+ "meta_back": {
+  "city": "תל אביב יפו",
+  "neighborhood": "רמת אביב",
+  "address": "רדינג 22-24, תל אביב-יפו",
+  "gush": "6770",
+  "helka": "49",
+  "developer_name": "מטרופוליס",
+  "architect_name": "בראלי לויצקי כסיף אדריכלים",
+  "project_type": "tama38",
+  "project_status": "marketing",
+  "website": "https://www.metropolis-il.com/projects/%D7%A8%D7%93%D7%99%D7%A0%D7%92-22-24/",
+  "lat": 32.10637,
+  "lng": 34.79449,
+  "source": "אתר מטרופוליס, מרכז הנדל״ן (23.5.2024), פרסום שיווקי, מאגר הכתובות של עיריית תל אביב-יפו",
+  "source_url": "https://www.nadlancenter.co.il/article/9951",
+  "data_quality": "enriched",
+  "nadlan_kit_name": "RAMATA"
+ }
+}

@@ -255,7 +255,48 @@
     - the price list: 21 deals within 500 m, median about 48,000 ₪/m² (10.2023-6.2024), and the official Tochnit Lamed median, 6,059,900 ₪.
   - **Checked at 390 px:** H1 at 154, lead at 257, facts at 1776, price list at 5121, kit at 7250. One H1, no sideways scroll. Evidence: `docs/qa/gap-pages/amichai-stern-*-390.png`.
   - **This is the second new page for 3.11.** The next one (ramata) waits for 4.11.
-- [ ] **Next gap pages, at most two a day:** seven-seas, shbiro-2468 and levi-55 done 2.11, brodetsky-33-39 and amichai-stern done 3.11; next (4.11), ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page.
+- [ ] **Next gap pages, at most two a day:** seven-seas, shbiro-2468 and levi-55 done 2.11, brodetsky-33-39 and amichai-stern done 3.11; next (4.11), ramata, ville, landowners-105. The Ritz-Carlton is resale, not a gap page. **4.11 ~01:45 ramata started:** spec `briefs/ramata.spec.json` (Reading 22-24 = gush 6770 helka 49 on the city address layer, tama38, title passes kw_guard with a qualified WARN), the article sent to ChatGPT Pro (chat 6aea5bec). Next: check, gap_page_create, data release (facts + radius prices), 390 px.
+
+## R14 LUXURY FIRST (Ben, 4.11.2026, ~02:00): "stick to the luxury projects of the big developers: Gindi, Africa Israel, Israel Canada, Avisror, Dimri, in the centre, in the radius; start with luxury; do 2-3 projects and stop"
+- [x] **R14a Map (4.11, 02:00-02:20)** of the five developers' luxury projects in the radius against our 1,085 pages (agent, `docs/research/2026-11-04-luxury/candidates.md`).
+  - **Already ours:** GINDI VOGUE, DIMRI YAMA, ASHIRA, RAINBOW and the two Einstein pages.
+  - **Missing:**
+    - **Semel Tzafon** (Africa Israel), the only one that is selling.
+    - Two lots won in the northern Sde Dov tender (3.2025) with no launch yet: Chen and Itai Gindi complex 4 (82 units, first line to the sea) and Dimri (275 units).
+  - **Nothing missing** for Avisror (Ashira is its only project) or Israel Canada.
+- [x] **R14b Semel Tzafon (4.11, 02:20-02:55):** **8771 https://nad-lan.co.il/projects/semel/**.
+  - **Brief:** `semel.md`, with facts re-read at the sources. The developer site gave 11 plan types of 2-5 rooms, the amenities, and the architect Moshe Tzur with public spaces by Orly Shrem. Bizportal (29.4.2025) gave Danya Cebus at NIS 430M over 50 months, completion 2029, 257 units (194 on the open market), and 9 sold at about NIS 68K/m².
+  - **Left out on purpose:**
+    - the 88% share, which the source didn't confirm on a second read;
+    - the room prices in the article, which are Old North area prices, not the project's.
+  - **Location:** block 6213, plot 1491, from the city address layer.
+  - **Article:** ChatGPT Pro, 1,070 words; the gate is clean and every number is in the brief.
+  - **Price list:** 130 deals within 500 m.
+  - **Live check:** one H1, kit, FAQPage.
+- [x] **R14c Complex 4, northern Sde Dov, Chen and Itai Gindi (4.11, 02:30-03:00):** **8772 https://nad-lan.co.il/projects/shore/**.
+  - **Brief:** `shore.md`, from nadlancenter 11816 and Calcalist 27.3.2025. Private partners' names are not used.
+  - **Honesty:**
+    - the page is plainly labelled as not launched yet, with a table of what is known and what has not been published;
+    - the NIS 100K/m² figure appears as the paper's 2025 estimate, never as a price;
+    - there is no map pin and no price list, because the lot outline isn't published (the same as SEVEN SEAS).
+  - **Article:** ChatGPT Pro, 938 words, gate clean.
+  - **Slug:** `shore`. The words `gindi`, `seafront` and `tzafon` are owned by other pages; `chen` and `itai` are kept for a future developer page.
+- [x] **R14d Release and check (4.11, 03:05-04:35).**
+  - **Release 1.72.581** (facts for 8770-8772, price lists for 8770-8771) was released and verified on its second run, with 954 checks.
+    - The first run rolled itself back. Live stayed on 1.72.580, and the record is in `deploy-result-581-run1-rolledback.json`.
+    - The causes were a stale catalogue count, 5 to 6 TAMA 38 projects after RAMATA, and a wrong Rainbow check of mine.
+  - **Release 1.72.582**: Semel's address row no longer says "הצפון הישן". The row cites the address layer, and the city's neighbourhood layer says הצפון החדש. After the swap, 6 pages showed a gateway 502 for a few seconds, then passed on the second round.
+  - **Checked in real Chrome at 390 px** (a 390 px frame) on all 3 pages:
+    - one H1, then the answer paragraph;
+    - no sideways scroll (371 ≤ 390);
+    - facts tables with 11, 9 and 8 rows;
+    - price lists for Semel (130 deals, about NIS 68,600/m²) and RAMATA;
+    - none for complex 4, as planned;
+    - the kit on all 3.
+  - **Source audit:** all 3 pages GREEN apart from the length of Semel's title (78 characters).
+    - **Finding:** Rainbow's raw HTML now carries the map's list of nearby places (`NLPJX_POIS`, 134 places), which was missing from the 3.11 19:15 snapshot. My releases didn't cause it; the map's place cache was probably cold then. Reported, not re-baselined.
+  - **Loop stopped here, on Ben's order.** Dimri's northern lot (275 units) is the next candidate. **WAITS FOR BEN.**
+- Note: ramata (Metropolis, page 8770) was created at 01:55 before this order; its article is live, its facts and prices ride along in the next data release; no more work on mid-size gap pages until Ben says.
 
 ## R10 MOAT (Ben, 2.11.2026, afternoon)
 Ben's words: "Every page should have so many tools, so many varied things, data. It must be a moat, something nobody can match. Wrapped in the right key phrases, synonyms, associations and intent, practical and useful. Do not ruin other pages; make sure we do not create pages that hurt other pages: keyword cannibalization."
