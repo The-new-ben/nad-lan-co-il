@@ -1,0 +1,11 @@
+			/* HAD-675 (5.11.2026): mbudget, the mortgage page panel 1 "כמה דירה זה קונה, ואיפה". Reuses NLAF.compute from
+			   tools/afford.js: mbudget.js loads afford.js from its own folder when the page did not enqueue it (no deps key needed;
+			   if the release prefers, enqueue 'nadlan-nli-afford' before 'nadlan-nli-mbudget'). Needs data/boi-mortgage.json with the
+			   v2 keys by_bank + homes + rules (docs/research/2026-11-05-mortgage-world/data/boi-mortgage-v2.json). Reads the public
+			   GET /wp-json/nadlan/v1/near-finder in the browser for the homes on the site (listings with a published price only). */
+			'mbudget' => array(
+				'name' => 'כמה דירה זה קונה, ואיפה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · מהמשכנתא לדירה',
+				'desc' => 'מחיר הדירה הגבוה ביותר שעובר את שתי המגבלות של בנק ישראל, ההחזר מול ההכנסה ושיעור המימון לפי סוג הרכישה, עם מס הרכישה ועורך הדין מתוך ההון העצמי, לפי הריבית והתמהיל הממוצעים של כל הבנקים בחודש האחרון. ואז איפה זה נכנס: הערים שבהן דירת 3, 4 או 5 חדרים במחיר החציוני של עסקאות שנסגרו (רשות המסים) עד הסכום, עם ההחזר שלכם בכל אחת, והדירות למכירה באתר עד המחיר הזה.',
+				'data' => array( 'boi-mortgage.json', 'ptax.json', 'cost.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-prices/' => 'מחירי דירות בישראל', '/properties/' => 'דירות למכירה' ),
+			),

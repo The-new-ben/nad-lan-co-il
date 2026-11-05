@@ -1,4 +1,4 @@
-/* NadLan Instruments · mquick v1 (1.72.587, HAD-675, Ben 5.11.2026): the quick mortgage calculator at the top of
+/* NadLan Instruments · mquick v1 (1.72.587; v2 1.72.588: the amount field first, id-scoped rules over the theme, the tools switcher; HAD-675, Ben 5.11.2026): the quick mortgage calculator at the top of
    /mortgage-calculator/. Three ways in (the loan, the price and equity, or the payment you can carry), a term and whose average
    mix: all the banks or one bank. The answer is the first monthly payment (or the loan that payment carries), the total repaid and
    the interest, at the Bank of Israel average track mix and effective rates of the latest month (data boi-mortgage.json,
@@ -27,6 +27,25 @@
   }
   window.NLMQ = { payPer1: payPer1, solve: solve, TR: TR };
   if (!window.NadLanInstruments) return;
+
+  /* 1.72.588: the tools switcher on the mortgage page. Without scripts every panel shows (readers, search engines, AI answers);
+     with scripts one panel at a time, chosen from the chips (MoneySavingExpert's pattern), never a table of contents. #tool-xxx opens a panel. */
+  function wireSwitch() {
+    if (!document.getElementById('nlmq-css')) { var st0 = document.createElement('style'); st0.id = 'nlmq-css'; st0.textContent = CSS; document.head.appendChild(st0); }
+    [].forEach.call(document.querySelectorAll('.nlmx-sw:not([data-on])'), function (sw) {
+      sw.setAttribute('data-on', '1');
+      var bs = [].slice.call(sw.querySelectorAll('button[data-sw]')), ps = bs.map(function (b) { return document.getElementById(b.getAttribute('data-sw')); });
+      function show(id, scroll) {
+        bs.forEach(function (b, i) { var on = b.getAttribute('data-sw') === id; b.setAttribute('aria-pressed', String(on)); if (ps[i]) ps[i].hidden = !on; });
+        if (scroll) { var p = document.getElementById(id); if (p && p.scrollIntoView) p.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+      }
+      bs.forEach(function (b) { b.addEventListener('click', function () { var id = b.getAttribute('data-sw'); show(id, false); try { history.replaceState(null, '', '#' + id); } catch (e) { /* file or sandbox */ } }); });
+      var h = (location.hash || '').slice(1), first = bs.length ? bs[0].getAttribute('data-sw') : '';
+      show(bs.some(function (b) { return b.getAttribute('data-sw') === h; }) ? h : first, !!h && h.indexOf('tool-') === 0);
+      document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="#tool-"]') : null; if (a) { var id = a.getAttribute('href').slice(1); if (document.getElementById(id)) { e.preventDefault(); show(id, true); } } });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireSwitch); else wireSwitch();
   var NI = window.NadLanInstruments, esc = NI.esc;
   var nf = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
   function ils(x) { return nf.format(Math.round(x || 0)) + ' ₪'; }
@@ -58,7 +77,13 @@
     + '.nlmq a.nlmq__btn.is-main{background:#2F6F86;color:#fff!important}'
     + '.nlmq__copy{align-self:flex-start;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #D3DCE2;background:#fff;color:#3E4C58;font-size:14px}'
     + '.nlmq button:focus-visible,.nlmq a:focus-visible,.nlmq__in:focus-within{outline:2px solid #2F6F86;outline-offset:2px}'
-    + '@media (min-width:900px){.nlmq{padding:24px}}';
+    + '@media (min-width:900px){.nlmq{padding:24px}}'
+    + '#nlmq h2.nlmq__h{margin:0!important;padding:0!important;font-size:17px!important;line-height:24px!important;color:#3E4C58!important;border:0!important;font-weight:600!important}#nlmq h2.nlmq__h::before,#nlmq h2.nlmq__h::after{display:none!important}'
+    + '#nlmq p.nlmq__src{margin:0!important;font:400 12px/18px "IBM Plex Mono",ui-monospace,monospace!important;color:#5E6A75!important}'
+    + '#nlmq .nlmq__seg button{border-radius:2px!important;padding:4px 6px!important;min-height:44px!important;font-size:14px!important;box-shadow:none!important}#nlmq .nlmq__chips button,#nlmq button.nlmq__copy{border-radius:999px!important;box-shadow:none!important;min-height:44px!important}'
+    + '#nlmq .nlmq__seg--3 button{font-size:13px!important}#nlmq .nlmq__modes{margin-top:-6px}'
+    + '.nlmx-sw{margin:8px 0 18px}.nlmx-sw__chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}.nlmx-sw__chips button{min-height:44px;padding:0 14px;border-radius:999px!important;border:1px solid #D3DCE2;background:#fff;color:#3E4C58;font:500 14px/1.2 "IBM Plex Sans Hebrew",system-ui,sans-serif;cursor:pointer;box-shadow:none!important}'
+    + '.nlmx-sw__chips button[aria-pressed="true"]{background:#2F6F86;border-color:#2F6F86;color:#fff;font-weight:600}.nlmx-sw__chips button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}.nlmx-pane[hidden]{display:none!important}';
 
   NI.register('mquick', {
     custom: function (root, data) {
@@ -69,14 +94,14 @@
       var order = ['system'].concat(Object.keys(bb.rate).filter(function (k) { return k !== 'system'; }));
       var v = { mode: 'amount', amount: 1000000, price: 1600000, equity: 400000, pay: 6000, years: 25, bank: 'system' };
       var src = bb.src || {};
-      var h = '<div class="nlmq" dir="rtl" lang="he">'
+      var h = '<div class="nlmq" id="nlmq" dir="rtl" lang="he">'
         + '<h2 class="nlmq__h">מחשבון משכנתא מהיר</h2>'
-        + '<div><span class="nlmq__lab" id="nlmq-ml">איך מחשבים</span><div class="nlmq__seg nlmq__seg--3" role="group" aria-labelledby="nlmq-ml">'
-        + '<button type="button" data-m="amount">לפי סכום</button><button type="button" data-m="price">לפי מחיר והון עצמי</button><button type="button" data-m="pay">לפי החזר חודשי</button></div></div>'
         + '<div class="nlmq__row" data-f="amount"><div><label class="nlmq__lab" for="nlmq-a">סכום המשכנתא</label><div class="nlmq__in"><input id="nlmq-a" inputmode="numeric" autocomplete="off" data-k="amount"><span>₪</span></div></div></div>'
         + '<div class="nlmq__row" data-f="price" hidden><div><label class="nlmq__lab" for="nlmq-p">מחיר הדירה</label><div class="nlmq__in"><input id="nlmq-p" inputmode="numeric" autocomplete="off" data-k="price"><span>₪</span></div></div>'
         + '<div><label class="nlmq__lab" for="nlmq-e">הון עצמי</label><div class="nlmq__in"><input id="nlmq-e" inputmode="numeric" autocomplete="off" data-k="equity"><span>₪</span></div></div></div>'
         + '<div class="nlmq__row" data-f="pay" hidden><div><label class="nlmq__lab" for="nlmq-y">ההחזר החודשי שמתאים לכם</label><div class="nlmq__in"><input id="nlmq-y" inputmode="numeric" autocomplete="off" data-k="pay"><span>₪</span></div></div></div>'
+        + '<div class="nlmq__modes"><span class="nlmq__lab" id="nlmq-ml">אפשר לחשב גם</span><div class="nlmq__seg nlmq__seg--3" role="group" aria-labelledby="nlmq-ml">'
+        + '<button type="button" data-m="amount">לפי סכום</button><button type="button" data-m="price">לפי מחיר והון עצמי</button><button type="button" data-m="pay">לפי החזר חודשי</button></div></div>'
         + '<div><span class="nlmq__lab" id="nlmq-tl">תקופה</span><div class="nlmq__seg nlmq__seg--4" role="group" aria-labelledby="nlmq-tl">'
         + [15, 20, 25, 30].map(function (y) { return '<button type="button" data-y="' + y + '">' + y + ' שנה</button>'; }).join('') + '</div></div>'
         + '<div><span class="nlmq__lab" id="nlmq-bl">ריבית ותמהיל ממוצעים לפי</span><div class="nlmq__chips" role="group" aria-labelledby="nlmq-bl">'

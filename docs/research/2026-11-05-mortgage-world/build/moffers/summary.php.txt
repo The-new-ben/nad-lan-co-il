@@ -1,0 +1,32 @@
+		// HAD-675: moffers as plain text, for readers without scripts, search engines and AI answers. Every number from the data file:
+		// the all-banks overall interest and the five large banks' range (by_bank.latest, Bank of Israel TamInt010), the baskets (baskets.list).
+		if ( 'moffers' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-mortgage.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['by_bank']['latest']['table'] ) || empty( $d['baskets']['list'] ) ) { return ''; }
+			$L = $d['by_bank']['latest'];
+			$he = array( 'hapoalim' => 'בנק הפועלים', 'leumi' => 'בנק לאומי', 'discount' => 'בנק דיסקונט', 'mizrahi' => 'מזרחי טפחות', 'fibi' => 'הבינלאומי' );
+			$irr = array();
+			foreach ( $L['table'] as $r ) { $irr[ $r['bank'] ] = (float) $r['irr']; }
+			$big = array_intersect_key( $irr, $he );
+			if ( count( $big ) < 2 || ! isset( $irr['system'] ) ) { return ''; }
+			asort( $big ); $ks = array_keys( $big ); $lo = $ks[0]; $hi = $ks[ count( $ks ) - 1 ];
+			$hm = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$p = explode( '-', (string) $L['month'] ); $mm = ( isset( $p[1], $hm[ (int) $p[1] - 1 ] ) ? $hm[ (int) $p[1] - 1 ] . ' ' : '' ) . $p[0];
+			$bt = array();
+			foreach ( $d['baskets']['list'] as $i => $b ) {
+				$parts = array();
+				foreach ( $b['mix'] as $x ) {
+					$lab = isset( $d['tracks'][ $x[0] ]['label'] ) ? $d['tracks'][ $x[0] ]['label'] : $x[0];
+					$lab = trim( str_replace( ',', '', preg_replace( '/\s*\([^)]*\)/u', '', $lab ) ) );
+					$f = (float) $x[1];
+					if ( count( $b['mix'] ) === 1 ) { $parts[] = 'כל ההלוואה ב' . $lab; continue; }
+					$parts[] = ( abs( $f - 0.5 ) < 0.01 ? 'חצי' : ( abs( $f - 1 / 3 ) < 0.01 ? 'שליש' : round( 100 * $f ) . '%' ) ) . ' ' . $lab;
+				}
+				$last = array_pop( $parts );
+				$bt[] = 'סל ' . ( $i + 1 ) . ', ' . ( $parts ? implode( ', ', $parts ) . ' ו' . $last : $last );
+			}
+			return '<p>לפי בנק ישראל, הריבית הכוללת החזויה הממוצעת במשכנתאות החדשות של ' . esc_html( $mm ) . ' הייתה ' . esc_html( number_format( $irr['system'], 2 ) ) . '% בכל הבנקים, ובחמשת הבנקים הגדולים בין '
+				. esc_html( number_format( $big[ $lo ], 2 ) ) . '% (' . esc_html( $he[ $lo ] ) . ') ל־' . esc_html( number_format( $big[ $hi ], 2 ) ) . '% (' . esc_html( $he[ $hi ] ) . '). כל אישור עקרוני למשכנתא מציג שלושה סלים אחידים לפי הוראה 451 של בנק ישראל: '
+				. esc_html( implode( '; ', $bt ) ) . '. לכל סל מופיעים הריבית הכוללת החזויה, סך התשלומים הצפוי וההחזר החודשי הגבוה הצפוי, וכך אפשר להשוות בין הבנקים על אותו תמהיל.</p>';
+		}

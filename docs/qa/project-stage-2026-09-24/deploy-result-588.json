@@ -1,0 +1,27 @@
+{
+  "released": "1.72.588",
+  "from": "1.72.587",
+  "live_before": {
+    "assets/instruments/tools/mquick.js": "75511df5655172a84b1bf178961b8ef7",
+    "nadlan-config.php": "f61f7e76089305990436c0088ef38756",
+    "inc/instruments.php": "f4f0cdeab6a569a17720039dc45b76dd"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-05 23:02:42",
+  "files": {
+    "assets/instruments/tools/mbudget.js": "9b492aeb319abe8bf43fee2d5aebde0a",
+    "assets/instruments/tools/moffers.js": "177ace7ad2b02a1b0d170490fcd3d6bf",
+    "assets/instruments/tools/mready.js": "225ac0603056aaf44e65bb8add9e157f",
+    "assets/instruments/tools/mrates-common.js": "07a884622a4ba2e6da46f00eb18424d2",
+    "assets/instruments/tools/mdecision.js": "1238135eb2e8a04ce8a9ea9bf68eee83",
+    "assets/instruments/tools/mreplay.js": "2d36e91954ebb1615c651217707051c4",
+    "assets/instruments/tools/mexit.js": "cecae653670178b78b39f816e6f4504d",
+    "assets/instruments/data/mready.json": "854513c75cb2829b288c1a435947131e",
+    "assets/instruments/tools/mquick.js": "3092772d16a8c0aa5bc602724ab336c8",
+    "nadlan-config.php": "c4d0acf1bf780ab9c0695c6fa9db8c20",
+    "inc/instruments.php": "721e938e2540d2ff7f453a72b4f1f8a7"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.588, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

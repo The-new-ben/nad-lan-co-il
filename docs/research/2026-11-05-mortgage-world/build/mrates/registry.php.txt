@@ -1,0 +1,51 @@
+<?php
+/* HAD-675 · for the release engineer: three entries for nadlan_nli_tools() in plugins/nadlan-config/inc/instruments.php, and a
+   two-line change to the enqueue closure so a tool can name the scripts it needs ('deps'). Nothing here is applied yet.
+
+   Files to copy into plugins/nadlan-config/assets/instruments/:
+     tools/mrates-common.js, tools/mdecision.js, tools/mreplay.js, tools/mexit.js   (from docs/research/2026-11-05-mortgage-world/build/mrates/)
+     data/boi-mortgage.json  = docs/research/2026-11-05-mortgage-world/data/boi-mortgage-v2.json (same keys as the live file, plus
+                               by_bank, expect, prepay, flows, headlines; the three tools need by_bank, prepay, flows, expect)
+   boi-rate.json and cbs-120010.json are already in data/. */
+
+/* ---------------------------------------------------------------------------------------------- (1) the registry entries
+   Paste inside the array of nadlan_nli_tools(), after 'mortgage'. */
+
+			/* 1.72.xxx (HAD-675): the three rate tools of /mortgage-calculator/, one file each, on tools/mrates-common.js and the NLMG
+			   math of tools/mortgage.js ('deps'); data boi-mortgage.json (v2 build 5.11.2026), boi-rate.json, cbs-120010.json */
+			'mdecision' => array(
+				'name' => 'החלטת הריבית והמשכנתא שלכם', 'cat' => 'FinanceApplication', 'kicker' => 'יום ההחלטה · ריבית בנק ישראל',
+				'desc' => 'כמה כל רבע אחוז בריבית בנק ישראל משנה את ההחזר החודשי שלכם בשקלים, לפי היתרה במסלול הפריים והשנים שנותרו או לפי כל התמהיל: מועד ההחלטה הבאה, הריבית והפריים של היום, תחזית חטיבת המחקר של בנק ישראל, ציפיות השוק והחזאים הפרטיים, ההחזר אם כל אחת מהן תתממש, וסולם של כל החלטה מ־1% למטה עד 1% למעלה.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+			'mreplay' => array(
+				'name' => 'אם 2022 חוזרת: מבחן לחץ למשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מבחן לחץ · ריבית בנק ישראל 2022 עד 2023',
+				'desc' => 'עשר העלאות הריבית של בנק ישראל בין אפריל 2022 למאי 2023 והמדד של אותם חודשים, חודש אחרי חודש, על התמהיל שלכם (בפתיחה: התמהיל והריביות הממוצעים של כל הבנקים או של אחד מחמשת הגדולים): ההחזר בשיא, מתי הוא מגיע, כמה יותר משלמים בכל חודש, וכמה מזה מהפריים וכמה מהמדד.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+			'mexit' => array(
+				'name' => 'כמה תעלה היציאה: עמלת פירעון מוקדם', 'cat' => 'FinanceApplication', 'kicker' => 'לפני שנכנסים · פירעון מוקדם',
+				'desc' => 'מתכננים למכור, לשדרג או למחזר בעוד 3, 5, 7 או 10 שנים: הריבית, ההצמדה ועמלת הפירעון המוקדם הצפויה לפי צו הבנקאות, בתמהיל שלכם ובשלושת הסלים האחידים, לפי תחזית בנק ישראל. ולמשכנתא שכבר לקחתם: היתרה היום ועמלת ההיוון אם פורעים היום, לפי הריביות הממוצעות של בנק ישראל ביום ההלוואה והיום.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה' ),
+			),
+
+/* ------------------------------------------------------------------------------------------- (2) the enqueue closure
+   In add_action( 'wp_enqueue_scripts', ... ) replace the line that builds $files:
+
+		$files = array(); foreach ( $ids as $id ) { $files[ ! empty( $tl[ $id ]['file'] ) ? $tl[ $id ]['file'] : $id ] = 1; }
+
+   with (a tool's 'deps' load first, once, in order; mrates-common is a file, not a tool id): */
+
+		$files = array(); foreach ( $ids as $id ) { foreach ( isset( $tl[ $id ]['deps'] ) ? (array) $tl[ $id ]['deps'] : array() as $dep ) { $files[ $dep ] = 1; } $files[ ! empty( $tl[ $id ]['file'] ) ? $tl[ $id ]['file'] : $id ] = 1; }
+
+/* The scripts are deferred and printed in this order, so mortgage.js (NLMG) and mrates-common.js (NLMR) run before the three tools.
+   The tools also wait up to 6 seconds for NLMG and NLMR, so another order still works. tools/mortgage.js registers the 'mortgage'
+   tool, which mounts only where [nadlan_tool id="mortgage"] is on the page.
+
+   (3) on the page: [nadlan_tool id="mdecision"]  [nadlan_tool id="mreplay"]  [nadlan_tool id="mexit"] */

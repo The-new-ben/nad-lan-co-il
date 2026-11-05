@@ -1,0 +1,29 @@
+		/* HAD-675 mready: the readiness card and the documents list as plain sentences, for readers without scripts, search engines
+		   and AI answers. Every number and every document comes from data/mready.json (the research of 5.11.2026, sources.md);
+		   a document tagged "some" is said as "יש בנקים שמבקשים". Paste inside nadlan_nli_summary( $id, $lang ), next to 'afford'. */
+		if ( 'mready' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/mready.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['docs'] ) || empty( $x['rules'] ) ) { return ''; }
+			$r = $x['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$by = array(); foreach ( $x['docs'] as $d ) { $by[ $d['id'] ] = $d; }
+			$say = function ( $ids ) use ( $by ) {
+				$o = array();
+				foreach ( $ids as $i ) {
+					if ( empty( $by[ $i ] ) ) { continue; }
+					$d = $by[ $i ];
+					$o[] = ( ! empty( $d['cond'] ) ? $d['cond'] . ': ' : '' ) . $d['text'] . ( 'some' === $d['level'] ? ' (יש בנקים שמבקשים)' : '' );
+				}
+				return esc_html( implode( '; ', $o ) );
+			};
+			$cd = explode( '-', (string) $x['checked'] ); $checked = count( $cd ) === 3 ? (int) $cd[2] . '.' . (int) $cd[1] . '.' . $cd[0] : '';
+			$p  = '<p>מוכנים לאישור עקרוני? לפי הוראה 329 של בנק ישראל ההחזר החודשי לא עולה על ' . esc_html( $pc( $r['pti_max'] ) ) . ' מההכנסה הפנויה (ומעל ' . esc_html( $pc( $r['pti_risk'] ) ) . ' הבנק נדרש להחזיק יותר הון), והמשכנתא עד '
+				. esc_html( $pc( $r['ltv']['single'] ) ) . ' משווי דירה יחידה, ' . esc_html( $pc( $r['ltv']['replace'] ) ) . ' בדירה חליפית ו־' . esc_html( $pc( $r['ltv']['invest'] ) ) . ' בדירה נוספת. את המקדמה, את מס הרכישה ואת עורך הדין משלמים מההון העצמי. '
+				. 'אישור עקרוני תקף ' . (int) $x['aip']['valid_days'] . ' ימים לפחות, ניתן בלי תשלום, ונשען על הנתונים שמוסרים לבנק; מסמכים אינם תנאי לאישור, אבל מזרזים את הבדיקה.</p>';
+			$p .= '<p>המסמכים שהבנקים מפרטים לאישור העקרוני: ' . $say( array( 'id_il', 'app_form', 'bank3', 'loans_report', 'savings_proof' ) ) . '. שכירים: ' . $say( array( 'pay3', 'f106', 'prev_job', 'ctrl' ) ) . '. עצמאים: ' . $say( array( 'tax_assess', 'cpa', 'vat' ) ) . '. '
+				. 'עזרה מהמשפחה: ' . $say( array( 'gift_trail', 'gift_letter' ) ) . '. מכירת דירה: ' . $say( array( 'sale_contract', 'old_mortgage' ) ) . '. עולים חדשים: ' . $say( array( 'oleh_cert', 'elig', 'elig_docs' ) ) . '. תושבי חוץ: ' . $say( array( 'id_foreign', 'foreign_income', 'foreign_tax', 'foreign_transl', 'foreign_poa' ) ) . '.</p>';
+			$p .= '<p>למשכנתא עצמה, אחרי האישור: ' . $say( array( 'contract', 'tabu', 'appraisal', 'insurance', 'debit', 'lien' ) ) . '. בדירה מקבלן: ' . $say( array( 'dev_commit', 'salelaw', 'vouchers' ) ) . '. ביד שנייה: ' . $say( array( 'seller_commit', 'warn_notes', 'pledges_seller', 'seller_lien' ) ) . '. '
+				. 'הרשימה נבנתה מהעמודים של הפועלים, לאומי, מזרחי טפחות, דיסקונט ומרכנתיל, הבינלאומי ובנק ירושלים, כל זכות ובנק ישראל' . ( $checked ? ', שנבדקו ב־' . esc_html( $checked ) : '' ) . '. כל בנק רשאי לבקש מסמכים נוספים לפי העסקה.</p>';
+			return $p;
+		}

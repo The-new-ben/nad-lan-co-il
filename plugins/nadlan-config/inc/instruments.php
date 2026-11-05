@@ -319,6 +319,66 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'desc' => 'מחשבון משכנתא מהיר: ההחזר החודשי הראשון, סך ההחזרים והריבית לפי סכום המשכנתא, לפי מחיר הדירה וההון העצמי או לפי ההחזר החודשי שמתאים לכם, ל־15 עד 30 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים או של בנק אחד, לפי נתוני בנק ישראל לחודש האחרון.',
 				'data' => array( 'boi-mortgage.json' ),
 			),
+			/* HAD-675 (5.11.2026): mbudget, the mortgage page panel 1 "כמה דירה זה קונה, ואיפה". Reuses NLAF.compute from
+			   tools/afford.js: mbudget.js loads afford.js from its own folder when the page did not enqueue it (no deps key needed;
+			   if the release prefers, enqueue 'nadlan-nli-afford' before 'nadlan-nli-mbudget'). Needs data/boi-mortgage.json with the
+			   v2 keys by_bank + homes + rules (docs/research/2026-11-05-mortgage-world/data/boi-mortgage-v2.json). Reads the public
+			   GET /wp-json/nadlan/v1/near-finder in the browser for the homes on the site (listings with a published price only). */
+			'mbudget' => array(
+				'name' => 'כמה דירה זה קונה, ואיפה', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · מהמשכנתא לדירה',
+				'desc' => 'מחיר הדירה הגבוה ביותר שעובר את שתי המגבלות של בנק ישראל, ההחזר מול ההכנסה ושיעור המימון לפי סוג הרכישה, עם מס הרכישה ועורך הדין מתוך ההון העצמי, לפי הריבית והתמהיל הממוצעים של כל הבנקים בחודש האחרון. ואז איפה זה נכנס: הערים שבהן דירת 3, 4 או 5 חדרים במחיר החציוני של עסקאות שנסגרו (רשות המסים) עד הסכום, עם ההחזר שלכם בכל אחת, והדירות למכירה באתר עד המחיר הזה.',
+				'data' => array( 'boi-mortgage.json', 'ptax.json', 'cost.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-prices/' => 'מחירי דירות בישראל', '/properties/' => 'דירות למכירה' ),
+			),
+			/* HAD-675 (5.11.2026): moffers, "שלוש הצעות, טבלה אחת". Two or three approvals in principle side by side on the three
+			   uniform baskets of directive 451, each bank against its own Bank of Israel average (by_bank, TamInt010), a negotiation
+			   text and a link to the advisor page. Needs the v2 keys by_bank + baskets + tracks + policy in boi-mortgage.json.
+			   File tools/moffers.js (same name as the id, so no 'file' key). Place it after 'mortgage' in nadlan_nli_tools(). */
+			'moffers' => array(
+				'name' => 'השוואת הצעות משכנתא: שלוש הצעות, טבלה אחת', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · השוואת הצעות משכנתא',
+				'desc' => 'השוואה של שניים או שלושה אישורים עקרוניים למשכנתא על שלושת הסלים האחידים של בנק ישראל: הריבית הכוללת החזויה, סך התשלומים הצפוי, ההחזר החודשי הגבוה הצפוי וההחזר הראשון בטבלה אחת, ההצעה הזולה בכל סל והפער בשקלים; כל הצעה מול הממוצע שבנק ישראל פרסם לאותו בנק ולכל מסלול, ומול הנמוך והגבוה בחמשת הבנקים הגדולים; ונוסח מוכן לשיחה עם הבנק.',
+				'data' => array( 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועץ משכנתאות' ),
+			),
+			/* 1.72.588 (HAD-675, the mortgage page, design board Tools.dc.html panel 6): "מוכנים לאישור עקרוני?" Five questions, a
+			   readiness card against directive 329 (payment to disposable income 40% / 50%, LTV by buyer type, equity vs down payment +
+			   purchase tax + lawyer, the highest passing price by NLAF.compute) and a personal documents checklist by profile, every
+			   item sourced and dated in mready.json (research 5.11.2026: Hapoalim, Leumi, Mizrahi-Tefahot, Discount + Mercantile,
+			   FIBI, Bank of Jerusalem, Kol Zchut, Bank of Israel). No lead form: one plain link to /mortgage-advisor/.
+			   Ship: tools/mready.js and data/mready.json from docs/research/2026-11-05-mortgage-world/build/mready/. It reads
+			   boi-mortgage.json v2 (by_bank for the all-banks mix rate, rules for the limits); with v1 it falls back to the fixed
+			   not linked average and to its own rules snapshot. afford.js (window.NLAF) is loaded by mready.js itself from tools/
+			   when the page has not loaded it, so the enqueue loop needs no change. Shortcode: [nadlan_tool id="mready"], a ready
+			   case with preset="couple|upgrade|oleh|foreign", or price="2300000". */
+			'mready' => array(
+				'name' => 'מוכנים לאישור עקרוני?', 'cat' => 'FinanceApplication', 'kicker' => 'לפני הבנק · אישור עקרוני',
+				'desc' => 'בדיקת מוכנות לאישור עקרוני למשכנתא: חמש שאלות על ההכנסה, הלווים, ההלוואות, מקור ההון העצמי והדירה, וכרטיס מוכנות מול מגבלות בנק ישראל (החזר עד 50% מההכנסה הפנויה, שיעור מימון לפי סוג הרוכש, הון עצמי מול מקדמה, מס רכישה ועורך דין), עם רשימת מסמכים אישית לאישור העקרוני ולמשכנתא, לפי מה שהבנקים, כל זכות ובנק ישראל מפרסמים.',
+				'data' => array( 'boi-mortgage.json', 'ptax.json', 'cost.json', 'mready.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/mortgage-advisor/' => 'יועצי משכנתא', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון' ),
+			),
+			/* 1.72.588 (HAD-675): the three rate tools of /mortgage-calculator/, one file each, on tools/mrates-common.js and the NLMG
+			   math of tools/mortgage.js ('deps'); data boi-mortgage.json (v2 build 5.11.2026), boi-rate.json, cbs-120010.json */
+			'mdecision' => array(
+				'name' => 'החלטת הריבית והמשכנתא שלכם', 'cat' => 'FinanceApplication', 'kicker' => 'יום ההחלטה · ריבית בנק ישראל',
+				'desc' => 'כמה כל רבע אחוז בריבית בנק ישראל משנה את ההחזר החודשי שלכם בשקלים, לפי היתרה במסלול הפריים והשנים שנותרו או לפי כל התמהיל: מועד ההחלטה הבאה, הריבית והפריים של היום, תחזית חטיבת המחקר של בנק ישראל, ציפיות השוק והחזאים הפרטיים, ההחזר אם כל אחת מהן תתממש, וסולם של כל החלטה מ־1% למטה עד 1% למעלה.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+			'mreplay' => array(
+				'name' => 'אם 2022 חוזרת: מבחן לחץ למשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מבחן לחץ · ריבית בנק ישראל 2022 עד 2023',
+				'desc' => 'עשר העלאות הריבית של בנק ישראל בין אפריל 2022 למאי 2023 והמדד של אותם חודשים, חודש אחרי חודש, על התמהיל שלכם (בפתיחה: התמהיל והריביות הממוצעים של כל הבנקים או של אחד מחמשת הגדולים): ההחזר בשיא, מתי הוא מגיע, כמה יותר משלמים בכל חודש, וכמה מזה מהפריים וכמה מהמדד.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+			'mexit' => array(
+				'name' => 'כמה תעלה היציאה: עמלת פירעון מוקדם', 'cat' => 'FinanceApplication', 'kicker' => 'לפני שנכנסים · פירעון מוקדם',
+				'desc' => 'מתכננים למכור, לשדרג או למחזר בעוד 3, 5, 7 או 10 שנים: הריבית, ההצמדה ועמלת הפירעון המוקדם הצפויה לפי צו הבנקאות, בתמהיל שלכם ובשלושת הסלים האחידים, לפי תחזית בנק ישראל. ולמשכנתא שכבר לקחתם: היתרה היום ועמלת ההיוון אם פורעים היום, לפי הריביות הממוצעות של בנק ישראל ביום ההלוואה והיום.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה' ),
+			),
 			/* 1.72.523 (HAD-601, U2): the yield and cash-flow map; invest.json from 148 nadlan.gov.il files (20.8.2026), BoI 4.62% (8.2026) */
 			'invest' => array(
 				'name' => 'מפת התשואה והתזרים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · נדל״ן להשקעה',
@@ -375,7 +435,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		wp_enqueue_style( 'nadlan-nli', nadlan_nli_url( 'core.css' ), array(), $v );
 		wp_enqueue_script( 'nadlan-nli', nadlan_nli_url( 'core.js' ), array(), $v, true );
 		// 1.72.499: tools of one family share a file ('file' => 'greece': grbuy, grgv, gryield ... in tools/greece.js), loaded once
-		$files = array(); foreach ( $ids as $id ) { $files[ ! empty( $tl[ $id ]['file'] ) ? $tl[ $id ]['file'] : $id ] = 1; }
+		// 1.72.588 (HAD-675): a tool's own scripts ('deps', tool ids or shared files) load first, once, in order
+		$files = array(); foreach ( $ids as $id ) { foreach ( isset( $tl[ $id ]['deps'] ) ? (array) $tl[ $id ]['deps'] : array() as $dep ) { $files[ $dep ] = 1; } $files[ ! empty( $tl[ $id ]['file'] ) ? $tl[ $id ]['file'] : $id ] = 1; }
 		foreach ( array_keys( $files ) as $f ) { wp_enqueue_script( 'nadlan-nli-' . $f, nadlan_nli_url( 'tools/' . $f . '.js' ), array( 'nadlan-nli' ), $v, true ); }
 	}, 20 );
 
@@ -384,6 +445,22 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	}, 10, 2 );
 
 	/** The summary printed before the script runs: the real numbers, for readers without JS, search engines and AI. */
+	/** HAD-675: the data of the three rate tools (boi-mortgage.json v2, boi-rate.json, cbs-120010.json) and two small formulas. */
+	function nadlan_nli_mrates() {
+		static $x = null;
+		if ( null !== $x ) { return $x; }
+		$dir = dirname( __DIR__ ) . '/assets/instruments/data/';
+		$j = function ( $f ) use ( $dir ) { return is_readable( $dir . $f ) ? json_decode( (string) file_get_contents( $dir . $f ), true ) : null; };
+		$x = array( 'd' => $j( 'boi-mortgage.json' ), 'rt' => $j( 'boi-rate.json' ), 'cpi' => $j( 'cbs-120010.json' ), 'sys' => null );
+		if ( is_array( $x['d'] ) && ! empty( $x['d']['by_bank']['latest']['table'] ) ) {
+			foreach ( $x['d']['by_bank']['latest']['table'] as $row ) { if ( 'system' === $row['bank'] ) { $x['sys'] = $row; } }
+		}
+		return $x;
+	}
+	/** Effective annual % -> nominal for a monthly payment (the Bank of Israel conversion), and the Spitzer payment. */
+	function nadlan_nli_mr_nom( $e ) { return 1200 * ( pow( 1 + $e / 100, 1 / 12 ) - 1 ); }
+	function nadlan_nli_mr_pmt( $b, $rm, $n ) { return $rm == 0 ? $b / $n : $b * $rm / ( 1 - pow( 1 + $rm, -$n ) ); }
+
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
 		if ( 'indexation' === $id ) {
@@ -821,6 +898,173 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		}
 		// 1.72.587 (HAD-675): the quick calculator as plain text (inc/mortgage-market.php)
 		if ( 'mquick' === $id ) { return function_exists( 'nadlan_mm_quick_summary' ) ? nadlan_mm_quick_summary() : ''; }
+		/* HAD-675 mbudget: the branch for nadlan_nli_summary( $id ), Hebrew only (the tool has no 'en' block). Paste it next to the
+		   'afford' branch. It prints, without JavaScript, two sentences with real numbers: the first payment of 1,000,000 over 25 years
+		   in the Bank of Israel system average mix of the latest month (the same five tracks and the same formula as mbudget.js), and the
+		   example household of the tool solved like the tool (both limits, purchase tax and lawyer with VAT inside the equity), with the
+		   cities where a 4 room home at the official median deal price fits. Needs data/boi-mortgage.json with the v2 keys
+		   (by_bank, homes); with the old file it prints nothing (the tool itself then says the data did not load). */
+		if ( 'mbudget' === $id ) {
+			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';
+			$rd  = function ( $f ) use ( $dir ) { return is_readable( $dir . $f ) ? json_decode( (string) file_get_contents( $dir . $f ), true ) : null; };
+			$b = $rd( 'boi-mortgage.json' ); $p = $rd( 'ptax.json' ); $c = $rd( 'cost.json' );
+			if ( ! is_array( $b ) || empty( $b['by_bank']['latest']['table'] ) || empty( $b['homes']['payments']['rows'] ) || empty( $p['tracks']['single'] ) || empty( $c['ltv']['single'] ) ) { return ''; }
+			$sys = null;
+			foreach ( $b['by_bank']['latest']['table'] as $r ) { if ( isset( $r['bank'] ) && 'system' === $r['bank'] ) { $sys = $r; } }
+			if ( ! $sys ) { return ''; }
+			$tr = array( 'fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi' ); $n = 300; $sh = 0; $pm = 0;
+			foreach ( $tr as $k ) { $sh += (float) $sys[ $k ]['share']; }
+			foreach ( $tr as $k ) { $r = pow( 1 + (float) $sys[ $k ]['rate'] / 100, 1 / 12 ) - 1; $pm += 1e6 * (float) $sys[ $k ]['share'] / $sh * $r / ( 1 - pow( 1 + $r, -$n ) ); }
+			if ( $pm <= 0 ) { return ''; }
+			$inc = 22000; $eq = 600000; $ratio = 33;  // the tool's opening example (mbudget.js build(): v)
+			$lmax = $inc * $ratio / 100 / $pm * 1e6; $ltv = (float) $c['ltv']['single'];
+			$cr = ( isset( $c['lawyer']['from'] ) ? (float) $c['lawyer']['from'] : 0.5 ) / 100 * ( 1 + (float) $c['vat'] );
+			$tax = function ( $x ) use ( $p ) { $t = 0; $lo = 0; foreach ( $p['tracks']['single'] as $br ) { $hi = null === $br[0] ? INF : (float) $br[0]; $top = min( $x, $hi ); if ( $top > $lo ) { $t += ( $top - $lo ) * (float) $br[1]; } if ( $x <= $hi ) { break; } $lo = $hi; } return $t; };
+			$lo = 0; $hi = 200000000;
+			for ( $i = 0; $i < 80; $i++ ) { $mid = ( $lo + $hi ) / 2; $loan = min( $ltv * $mid, $lmax ); if ( $mid - $loan + $tax( $mid ) + $cr * $mid <= $eq ) { $lo = $mid; } else { $hi = $mid; } }
+			$price = floor( $lo / 1000 ) * 1000;
+			$fit = array(); $qs = array(); $all = 0;
+			foreach ( $b['homes']['payments']['rows'] as $city => $r ) {
+				if ( 'ישראל' === $city ) { continue; }
+				$all++;
+				if ( ! empty( $r['r4']['median'] ) && (float) $r['r4']['median'] <= $price ) { $fit[ $city ] = (float) $r['r4']['median']; $qs[ $r['r4']['quarter'] ] = 1; }
+			}
+			arsort( $fit );
+			$m  = (string) $b['by_bank']['latest']['month']; $ml = (int) substr( $m, 5, 2 ) . '.' . substr( $m, 0, 4 );
+			$h  = '<p>לפי התמהיל הממוצע של כל הבנקים ב־' . esc_html( $ml ) . ' (בנק ישראל), משכנתא של 1,000,000 ₪ ל־25 שנה מתחילה בהחזר של ' . esc_html( number_format( round( $pm ) ) ) . ' ₪ בחודש. ';
+			$h .= 'משק בית עם הכנסה נטו של ' . number_format( $inc ) . ' ₪ בחודש, החזר של ' . $ratio . '% מההכנסה והון עצמי של ' . number_format( $eq ) . ' ₪ יכול לקנות דירה יחידה עד ' . esc_html( number_format( $price ) ) . ' ₪, כולל מס רכישה ועורך דין';
+			if ( $fit ) {
+				$names = array_keys( $fit ); $last = array_pop( $names );
+				$list  = $names ? implode( ', ', $names ) . ' ו' . $last : $last;
+				$h .= '; דירת 4 חדרים במחיר החציוני נכנסת בסכום הזה ב־' . ( 1 === count( $fit ) ? 'עיר אחת' : count( $fit ) . ' ערים' ) . ' מתוך ' . (int) $all . ': ' . esc_html( $list )
+					. ' (רשות המסים, עסקאות ' . esc_html( 1 === count( $qs ) ? (string) key( $qs ) : 'מהרבעון האחרון שפורסם בכל עיר' ) . ')';
+			}
+			return $h . '.</p>';
+		}
+		// HAD-675: moffers as plain text, for readers without scripts, search engines and AI answers. Every number from the data file:
+		// the all-banks overall interest and the five large banks' range (by_bank.latest, Bank of Israel TamInt010), the baskets (baskets.list).
+		if ( 'moffers' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-mortgage.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['by_bank']['latest']['table'] ) || empty( $d['baskets']['list'] ) ) { return ''; }
+			$L = $d['by_bank']['latest'];
+			$he = array( 'hapoalim' => 'בנק הפועלים', 'leumi' => 'בנק לאומי', 'discount' => 'בנק דיסקונט', 'mizrahi' => 'מזרחי טפחות', 'fibi' => 'הבינלאומי' );
+			$irr = array();
+			foreach ( $L['table'] as $r ) { $irr[ $r['bank'] ] = (float) $r['irr']; }
+			$big = array_intersect_key( $irr, $he );
+			if ( count( $big ) < 2 || ! isset( $irr['system'] ) ) { return ''; }
+			asort( $big ); $ks = array_keys( $big ); $lo = $ks[0]; $hi = $ks[ count( $ks ) - 1 ];
+			$hm = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$p = explode( '-', (string) $L['month'] ); $mm = ( isset( $p[1], $hm[ (int) $p[1] - 1 ] ) ? $hm[ (int) $p[1] - 1 ] . ' ' : '' ) . $p[0];
+			$bt = array();
+			foreach ( $d['baskets']['list'] as $i => $b ) {
+				$parts = array();
+				foreach ( $b['mix'] as $x ) {
+					$lab = isset( $d['tracks'][ $x[0] ]['label'] ) ? $d['tracks'][ $x[0] ]['label'] : $x[0];
+					$lab = trim( str_replace( ',', '', preg_replace( '/\s*\([^)]*\)/u', '', $lab ) ) );
+					$f = (float) $x[1];
+					if ( count( $b['mix'] ) === 1 ) { $parts[] = 'כל ההלוואה ב' . $lab; continue; }
+					$parts[] = ( abs( $f - 0.5 ) < 0.01 ? 'חצי' : ( abs( $f - 1 / 3 ) < 0.01 ? 'שליש' : round( 100 * $f ) . '%' ) ) . ' ' . $lab;
+				}
+				$last = array_pop( $parts );
+				$bt[] = 'סל ' . ( $i + 1 ) . ', ' . ( $parts ? implode( ', ', $parts ) . ' ו' . $last : $last );
+			}
+			return '<p>לפי בנק ישראל, הריבית הכוללת החזויה הממוצעת במשכנתאות החדשות של ' . esc_html( $mm ) . ' הייתה ' . esc_html( number_format( $irr['system'], 2 ) ) . '% בכל הבנקים, ובחמשת הבנקים הגדולים בין '
+				. esc_html( number_format( $big[ $lo ], 2 ) ) . '% (' . esc_html( $he[ $lo ] ) . ') ל־' . esc_html( number_format( $big[ $hi ], 2 ) ) . '% (' . esc_html( $he[ $hi ] ) . '). כל אישור עקרוני למשכנתא מציג שלושה סלים אחידים לפי הוראה 451 של בנק ישראל: '
+				. esc_html( implode( '; ', $bt ) ) . '. לכל סל מופיעים הריבית הכוללת החזויה, סך התשלומים הצפוי וההחזר החודשי הגבוה הצפוי, וכך אפשר להשוות בין הבנקים על אותו תמהיל.</p>';
+		}
+		/* HAD-675 mready: the readiness card and the documents list as plain sentences, for readers without scripts, search engines
+		   and AI answers. Every number and every document comes from data/mready.json (the research of 5.11.2026, sources.md);
+		   a document tagged "some" is said as "יש בנקים שמבקשים". Paste inside nadlan_nli_summary( $id, $lang ), next to 'afford'. */
+		if ( 'mready' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/mready.json';
+			$x = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $x ) || empty( $x['docs'] ) || empty( $x['rules'] ) ) { return ''; }
+			$r = $x['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$by = array(); foreach ( $x['docs'] as $d ) { $by[ $d['id'] ] = $d; }
+			$say = function ( $ids ) use ( $by ) {
+				$o = array();
+				foreach ( $ids as $i ) {
+					if ( empty( $by[ $i ] ) ) { continue; }
+					$d = $by[ $i ];
+					$o[] = ( ! empty( $d['cond'] ) ? $d['cond'] . ': ' : '' ) . $d['text'] . ( 'some' === $d['level'] ? ' (יש בנקים שמבקשים)' : '' );
+				}
+				return esc_html( implode( '; ', $o ) );
+			};
+			$cd = explode( '-', (string) $x['checked'] ); $checked = count( $cd ) === 3 ? (int) $cd[2] . '.' . (int) $cd[1] . '.' . $cd[0] : '';
+			$p  = '<p>מוכנים לאישור עקרוני? לפי הוראה 329 של בנק ישראל ההחזר החודשי לא עולה על ' . esc_html( $pc( $r['pti_max'] ) ) . ' מההכנסה הפנויה (ומעל ' . esc_html( $pc( $r['pti_risk'] ) ) . ' הבנק נדרש להחזיק יותר הון), והמשכנתא עד '
+				. esc_html( $pc( $r['ltv']['single'] ) ) . ' משווי דירה יחידה, ' . esc_html( $pc( $r['ltv']['replace'] ) ) . ' בדירה חליפית ו־' . esc_html( $pc( $r['ltv']['invest'] ) ) . ' בדירה נוספת. את המקדמה, את מס הרכישה ואת עורך הדין משלמים מההון העצמי. '
+				. 'אישור עקרוני תקף ' . (int) $x['aip']['valid_days'] . ' ימים לפחות, ניתן בלי תשלום, ונשען על הנתונים שמוסרים לבנק; מסמכים אינם תנאי לאישור, אבל מזרזים את הבדיקה.</p>';
+			$p .= '<p>המסמכים שהבנקים מפרטים לאישור העקרוני: ' . $say( array( 'id_il', 'app_form', 'bank3', 'loans_report', 'savings_proof' ) ) . '. שכירים: ' . $say( array( 'pay3', 'f106', 'prev_job', 'ctrl' ) ) . '. עצמאים: ' . $say( array( 'tax_assess', 'cpa', 'vat' ) ) . '. '
+				. 'עזרה מהמשפחה: ' . $say( array( 'gift_trail', 'gift_letter' ) ) . '. מכירת דירה: ' . $say( array( 'sale_contract', 'old_mortgage' ) ) . '. עולים חדשים: ' . $say( array( 'oleh_cert', 'elig', 'elig_docs' ) ) . '. תושבי חוץ: ' . $say( array( 'id_foreign', 'foreign_income', 'foreign_tax', 'foreign_transl', 'foreign_poa' ) ) . '.</p>';
+			$p .= '<p>למשכנתא עצמה, אחרי האישור: ' . $say( array( 'contract', 'tabu', 'appraisal', 'insurance', 'debit', 'lien' ) ) . '. בדירה מקבלן: ' . $say( array( 'dev_commit', 'salelaw', 'vouchers' ) ) . '. ביד שנייה: ' . $say( array( 'seller_commit', 'warn_notes', 'pledges_seller', 'seller_lien' ) ) . '. '
+				. 'הרשימה נבנתה מהעמודים של הפועלים, לאומי, מזרחי טפחות, דיסקונט ומרכנתיל, הבינלאומי ובנק ירושלים, כל זכות ובנק ישראל' . ( $checked ? ', שנבדקו ב־' . esc_html( $checked ) : '' ) . '. כל בנק רשאי לבקש מסמכים נוספים לפי העסקה.</p>';
+			return $p;
+		}
+		if ( 'mdecision' === $id ) {  // HAD-675: decision day, from policy, forecast and by_bank
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['policy'] ) || empty( $d['forecast'] ) || empty( $x['sys'] ) ) { return ''; }
+			$pol = $d['policy']; $fc = $d['forecast'];
+			$margin = round( nadlan_nli_mr_nom( $x['sys']['prime']['rate'] ) - $pol['prime'], 2 );  // the average prime margin on new mortgages
+			$rate = $pol['prime'] + $margin; $n = 22 * 12;
+			$now = nadlan_nli_mr_pmt( 400000, $rate / 1200, $n ); $q = nadlan_nli_mr_pmt( 400000, ( $rate + 0.25 ) / 1200, $n ) - $now;
+			$mm = (int) substr( $d['by_bank']['latest']['month'], 5, 2 ) . '.' . substr( $d['by_bank']['latest']['month'], 0, 4 );
+			return '<p>ריבית בנק ישראל: ' . esc_html( number_format( $pol['rate'], 2 ) ) . '% מ־' . esc_html( date_i18n( 'j.n.Y', strtotime( $pol['from'] ) ) ) . ', ריבית הפריים ' . esc_html( number_format( $pol['prime'], 2 ) )
+				. '%. ההחלטה הבאה של בנק ישראל: ' . esc_html( date_i18n( 'j.n.Y', strtotime( $fc['next_decision'] ) ) ) . '. במסלול פריים של 400,000 ₪ ל־22 שנה, במרווח הממוצע של המשכנתאות החדשות (פריים '
+				. ( $margin < 0 ? 'פחות ' : 'ועוד ' ) . esc_html( number_format( abs( $margin ), 2 ) ) . '%, ' . esc_html( $mm ) . '), ההחזר הוא כ־' . esc_html( number_format( $now ) ) . ' ₪ בחודש, וכל רבע אחוז בריבית בנק ישראל מזיז אותו בכ־'
+				. esc_html( number_format( $q ) ) . ' ₪. חטיבת המחקר של בנק ישראל צופה ריבית של ' . esc_html( number_format( $fc['rate_q3_2027'], 1 ) ) . '% ברבע השלישי של 2027 (תחזית ' . esc_html( date_i18n( 'j.n.Y', strtotime( $fc['published'] ) ) )
+				. '); ציפיות השוק: ' . esc_html( number_format( $fc['market_rate'], 1 ) ) . '%.</p>';
+		}
+		if ( 'mreplay' === $id ) {  // HAD-675: the 2022 to 2023 path on the system mix (the same month-by-month rules as tools/mreplay.js)
+			$x = nadlan_nli_mrates(); $d = $x['d']; $rt = $x['rt']; $cpi = $x['cpi']; $sys = $x['sys'];
+			if ( ! is_array( $rt ) || empty( $rt['changes'] ) || ! is_array( $cpi ) || empty( $cpi['months'] ) || empty( $sys ) ) { return ''; }
+			$months = array(); $boi = array(); $prime = array(); $ratio = array(); $hikes = array();
+			for ( $y = 2022, $mo = 3; $y * 12 + $mo <= 2023 * 12 + 5; $mo = 12 === $mo ? 1 : $mo + 1, $y = 1 === $mo ? $y + 1 : $y ) {  // 3.2022 to 5.2023, no clock or timezone
+				$k = sprintf( '%04d-%02d', $y, $mo ); $last = $k . '-' . gmdate( 't', gmmktime( 12, 0, 0, $mo, 1, $y ) ); $b = null; $p = null;
+				foreach ( $rt['changes'] as $c ) { if ( $c['from'] <= $last ) { $b = $c['rate']; $p = $c['prime']; } }
+				if ( null === $b || empty( $cpi['months'][ $k ] ) ) { return ''; }
+				$months[] = $k; $boi[] = $b; $prime[] = $p; $ratio[] = $cpi['months'][ $k ] / $cpi['months']['2022-03'];
+			}
+			foreach ( $rt['changes'] as $c ) { if ( $c['from'] > '2022-03-31' && $c['from'] <= '2023-05-31' ) { $hikes[] = $c['from']; } }
+			$w = count( $months ); $pay = array_fill( 0, $w, 0.0 ); $px = 0.0;
+			foreach ( array( 'fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi' ) as $tk ) {
+				if ( empty( $sys[ $tk ]['share'] ) ) { continue; }
+				$bal = 1000000 * $sys[ $tk ]['share'] / 100; $r0 = nadlan_nli_mr_nom( $sys[ $tk ]['rate'] ); $lk = in_array( $tk, array( 'var_cpi', 'fixed_cpi' ), true ); $p1 = 0;
+				for ( $m = 1; $m <= $w; $m++ ) {  // prime reprices every month by the change since 3.2022; linked: real payment x the CPI ratio
+					$rm = ( $r0 + ( 'prime' === $tk ? $boi[ $m - 1 ] - $boi[0] : 0 ) ) / 1200; $pm = nadlan_nli_mr_pmt( $bal, $rm, 300 - $m + 1 );
+					$pay[ $m - 1 ] += $pm * ( $lk ? $ratio[ $m - 1 ] : 1 ); if ( 1 === $m ) { $p1 = $pm; } if ( 'prime' === $tk && $m === $w ) { $px = $pm - $p1; }
+					$bal = $bal + $bal * $rm - $pm;
+				}
+			}
+			$peak = max( $pay ); $pi = array_search( $peak, $pay, true ); $mm = (int) substr( $d['by_bank']['latest']['month'], 5, 2 ) . '.' . substr( $d['by_bank']['latest']['month'], 0, 4 );
+			$f = function ( $iso ) { return date_i18n( 'j.n.Y', strtotime( $iso ) ); };
+			return '<p>בין ' . esc_html( $f( $hikes[0] ) ) . ' ל־' . esc_html( $f( end( $hikes ) ) ) . ' העלה בנק ישראל את הריבית ' . count( $hikes ) . ' פעמים, מ־' . esc_html( number_format( $boi[0], 2 ) ) . '% ל־' . esc_html( number_format( $boi[ $w - 1 ], 2 ) )
+				. '%, והפריים עלה מ־' . esc_html( number_format( $prime[0], 2 ) ) . '% ל־' . esc_html( number_format( $prime[ $w - 1 ], 2 ) ) . '%; המדד עלה באותם חודשים ב־' . esc_html( number_format( 100 * ( $ratio[ $w - 1 ] - 1 ), 1 ) )
+				. '%. משכנתא של 1,000,000 ₪ ל־25 שנה בתמהיל ובריביות הממוצעים של ' . esc_html( $mm ) . ' מתחילה בהחזר של ' . esc_html( number_format( $pay[0] ) ) . ' ₪ בחודש; אם המסלול של 2022 חוזר, ההחזר מגיע ל־'
+				. esc_html( number_format( $peak ) ) . ' ₪ בחודש ה־' . ( $pi + 1 ) . ', תוספת של ' . esc_html( number_format( $peak - $pay[0] ) ) . ' ₪ בחודש, מזה ' . esc_html( number_format( $px ) ) . ' ₪ מהפריים.</p>';
+		}
+		if ( 'mexit' === $id ) {  // HAD-675: the Banking Order worked example of the data (1,000,000 ILS fixed not linked from 11.2024)
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['flows']['months'] ) ) { return ''; }
+			$from = '2024-11'; $i = array_search( $from, $d['flows']['months'], true ); if ( false === $i ) { return ''; }
+			$rate = (float) $d['flows']['series']['rate_fixed_nl']['v'][ $i ]; $now = substr( $d['built'], 0, 7 );
+			$el = ( (int) substr( $now, 0, 4 ) - 2024 ) * 12 + ( (int) substr( $now, 5, 2 ) - 11 ); $n = 300; $left = $n - $el;
+			$rm = $rate / 1200; $p = nadlan_nli_mr_pmt( 1000000, $rm, $n ); $bal = 1000000; for ( $k = 0; $k < $el; $k++ ) { $bal = $bal + $bal * $rm - $p; }
+			$rows = $d['prepay']['nl']['rows']; $cols = $d['prepay']['nl']['cols']; $today = end( $rows ); $orig = null;
+			foreach ( $rows as $r ) { if ( $r[0] <= $from . '-15' ) { $orig = $r; } }
+			$col = function ( $y ) { return $y <= 1 ? 'le1' : ( $y <= 5 ? '1_5' : ( $y <= 10 ? '5_10' : ( $y <= 15 ? '10_15' : ( $y <= 20 ? '15_20' : ( $y <= 25 ? '20_25' : 'gt25' ) ) ) ) ); };
+			$ae = $today[ array_search( $col( $left / 12 ), $cols, true ) ]; $a = nadlan_nli_mr_nom( $ae );
+			$c = $orig ? nadlan_nli_mr_nom( $orig[ array_search( $col( 25 ), $cols, true ) ] ) : null;
+			$pva = 0; $pvc = 0; $b = $bal;  // the remaining payments (NLMG.stream), discounted at today's average and at the one on the loan day
+			for ( $k = 1; $k <= $left; $k++ ) { $pk = nadlan_nli_mr_pmt( $b, $rm, $left - $k + 1 ); $b = $b + $b * $rm - $pk; if ( $k === $left && $b > 0.005 ) { $pk += $b; } $pva += $pk / pow( 1 + $a / 1200, $k ); if ( null !== $c ) { $pvc += $pk / pow( 1 + $c / 1200, $k ); } }
+			$f3 = $a < $rate ? max( 0, $pva - $bal ) : 0; $f4 = ( null !== $c && $c < $rate ) ? max( 0, $pva - $pvc ) : null;
+			$cut = 0; foreach ( $d['fees']['reduce'] as $red ) { if ( $el / 12 >= $red['after_years'] ) { $cut = $red['cut']; } }
+			$fee = ( null === $f4 ? $f3 : min( $f3, $f4 ) ) * ( 1 - $cut );
+			return '<p>עמלת פירעון מוקדם לפי צו הבנקאות: מי שלקח ב־11.2024 משכנתא של 1,000,000 ₪ בקבועה לא צמודה ל־25 שנה, בריבית הממוצעת של אותו חודש (' . esc_html( number_format( $rate, 2 ) ) . '%), ופורע את כולה ב־'
+				. esc_html( (int) substr( $now, 5, 2 ) . '.' . substr( $now, 0, 4 ) ) . ', משלם עמלת היוון של כ־' . esc_html( number_format( $fee ) ) . ' ₪ על יתרה של ' . esc_html( number_format( $bal ) ) . ' ₪: הריבית הממוצעת של בנק ישראל ל־'
+				. (int) round( $left / 12 ) . ' השנים שנותרו היא ' . esc_html( number_format( $ae, 2 ) ) . '% (בתוקף מ־' . esc_html( date_i18n( 'j.n.Y', strtotime( $today[0] ) ) ) . '), נמוכה מהריבית בהלוואה. אחרי 3 שנים העמלה יורדת ב־20% ואחרי 5 שנים ב־30%; במסלול הפריים אין עמלת היוון.</p>';
+		}
 		// 1.72.523 (HAD-601, U1): Mortgage 2.0 as plain text
 		if ( 'mortgage' === $id ) {
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-mortgage.json';

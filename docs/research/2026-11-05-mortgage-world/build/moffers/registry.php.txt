@@ -1,0 +1,10 @@
+			/* HAD-675 (5.11.2026): moffers, "שלוש הצעות, טבלה אחת". Two or three approvals in principle side by side on the three
+			   uniform baskets of directive 451, each bank against its own Bank of Israel average (by_bank, TamInt010), a negotiation
+			   text and a link to the advisor page. Needs the v2 keys by_bank + baskets + tracks + policy in boi-mortgage.json.
+			   File tools/moffers.js (same name as the id, so no 'file' key). Place it after 'mortgage' in nadlan_nli_tools(). */
+			'moffers' => array(
+				'name' => 'השוואת הצעות משכנתא: שלוש הצעות, טבלה אחת', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · השוואת הצעות משכנתא',
+				'desc' => 'השוואה של שניים או שלושה אישורים עקרוניים למשכנתא על שלושת הסלים האחידים של בנק ישראל: הריבית הכוללת החזויה, סך התשלומים הצפוי, ההחזר החודשי הגבוה הצפוי וההחזר הראשון בטבלה אחת, ההצעה הזולה בכל סל והפער בשקלים; כל הצעה מול הממוצע שבנק ישראל פרסם לאותו בנק ולכל מסלול, ומול הנמוך והגבוה בחמשת הבנקים הגדולים; ונוסח מוכן לשיחה עם הבנק.',
+				'data' => array( 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועץ משכנתאות' ),
+			),

@@ -1,0 +1,16 @@
+			/* 1.72.5xx (HAD-675, the mortgage page, design board Tools.dc.html panel 6): "מוכנים לאישור עקרוני?" Five questions, a
+			   readiness card against directive 329 (payment to disposable income 40% / 50%, LTV by buyer type, equity vs down payment +
+			   purchase tax + lawyer, the highest passing price by NLAF.compute) and a personal documents checklist by profile, every
+			   item sourced and dated in mready.json (research 5.11.2026: Hapoalim, Leumi, Mizrahi-Tefahot, Discount + Mercantile,
+			   FIBI, Bank of Jerusalem, Kol Zchut, Bank of Israel). No lead form: one plain link to /mortgage-advisor/.
+			   Ship: tools/mready.js and data/mready.json from docs/research/2026-11-05-mortgage-world/build/mready/. It reads
+			   boi-mortgage.json v2 (by_bank for the all-banks mix rate, rules for the limits); with v1 it falls back to the fixed
+			   not linked average and to its own rules snapshot. afford.js (window.NLAF) is loaded by mready.js itself from tools/
+			   when the page has not loaded it, so the enqueue loop needs no change. Shortcode: [nadlan_tool id="mready"], a ready
+			   case with preset="couple|upgrade|oleh|foreign", or price="2300000". */
+			'mready' => array(
+				'name' => 'מוכנים לאישור עקרוני?', 'cat' => 'FinanceApplication', 'kicker' => 'לפני הבנק · אישור עקרוני',
+				'desc' => 'בדיקת מוכנות לאישור עקרוני למשכנתא: חמש שאלות על ההכנסה, הלווים, ההלוואות, מקור ההון העצמי והדירה, וכרטיס מוכנות מול מגבלות בנק ישראל (החזר עד 50% מההכנסה הפנויה, שיעור מימון לפי סוג הרוכש, הון עצמי מול מקדמה, מס רכישה ועורך דין), עם רשימת מסמכים אישית לאישור העקרוני ולמשכנתא, לפי מה שהבנקים, כל זכות ובנק ישראל מפרסמים.',
+				'data' => array( 'boi-mortgage.json', 'ptax.json', 'cost.json', 'mready.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/mortgage-advisor/' => 'יועצי משכנתא', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון' ),
+			),

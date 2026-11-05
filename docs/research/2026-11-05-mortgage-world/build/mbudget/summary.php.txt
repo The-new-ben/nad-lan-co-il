@@ -1,0 +1,43 @@
+		/* HAD-675 mbudget: the branch for nadlan_nli_summary( $id ), Hebrew only (the tool has no 'en' block). Paste it next to the
+		   'afford' branch. It prints, without JavaScript, two sentences with real numbers: the first payment of 1,000,000 over 25 years
+		   in the Bank of Israel system average mix of the latest month (the same five tracks and the same formula as mbudget.js), and the
+		   example household of the tool solved like the tool (both limits, purchase tax and lawyer with VAT inside the equity), with the
+		   cities where a 4 room home at the official median deal price fits. Needs data/boi-mortgage.json with the v2 keys
+		   (by_bank, homes); with the old file it prints nothing (the tool itself then says the data did not load). */
+		if ( 'mbudget' === $id ) {
+			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';
+			$rd  = function ( $f ) use ( $dir ) { return is_readable( $dir . $f ) ? json_decode( (string) file_get_contents( $dir . $f ), true ) : null; };
+			$b = $rd( 'boi-mortgage.json' ); $p = $rd( 'ptax.json' ); $c = $rd( 'cost.json' );
+			if ( ! is_array( $b ) || empty( $b['by_bank']['latest']['table'] ) || empty( $b['homes']['payments']['rows'] ) || empty( $p['tracks']['single'] ) || empty( $c['ltv']['single'] ) ) { return ''; }
+			$sys = null;
+			foreach ( $b['by_bank']['latest']['table'] as $r ) { if ( isset( $r['bank'] ) && 'system' === $r['bank'] ) { $sys = $r; } }
+			if ( ! $sys ) { return ''; }
+			$tr = array( 'fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi' ); $n = 300; $sh = 0; $pm = 0;
+			foreach ( $tr as $k ) { $sh += (float) $sys[ $k ]['share']; }
+			foreach ( $tr as $k ) { $r = pow( 1 + (float) $sys[ $k ]['rate'] / 100, 1 / 12 ) - 1; $pm += 1e6 * (float) $sys[ $k ]['share'] / $sh * $r / ( 1 - pow( 1 + $r, -$n ) ); }
+			if ( $pm <= 0 ) { return ''; }
+			$inc = 22000; $eq = 600000; $ratio = 33;  // the tool's opening example (mbudget.js build(): v)
+			$lmax = $inc * $ratio / 100 / $pm * 1e6; $ltv = (float) $c['ltv']['single'];
+			$cr = ( isset( $c['lawyer']['from'] ) ? (float) $c['lawyer']['from'] : 0.5 ) / 100 * ( 1 + (float) $c['vat'] );
+			$tax = function ( $x ) use ( $p ) { $t = 0; $lo = 0; foreach ( $p['tracks']['single'] as $br ) { $hi = null === $br[0] ? INF : (float) $br[0]; $top = min( $x, $hi ); if ( $top > $lo ) { $t += ( $top - $lo ) * (float) $br[1]; } if ( $x <= $hi ) { break; } $lo = $hi; } return $t; };
+			$lo = 0; $hi = 200000000;
+			for ( $i = 0; $i < 80; $i++ ) { $mid = ( $lo + $hi ) / 2; $loan = min( $ltv * $mid, $lmax ); if ( $mid - $loan + $tax( $mid ) + $cr * $mid <= $eq ) { $lo = $mid; } else { $hi = $mid; } }
+			$price = floor( $lo / 1000 ) * 1000;
+			$fit = array(); $qs = array(); $all = 0;
+			foreach ( $b['homes']['payments']['rows'] as $city => $r ) {
+				if ( 'ישראל' === $city ) { continue; }
+				$all++;
+				if ( ! empty( $r['r4']['median'] ) && (float) $r['r4']['median'] <= $price ) { $fit[ $city ] = (float) $r['r4']['median']; $qs[ $r['r4']['quarter'] ] = 1; }
+			}
+			arsort( $fit );
+			$m  = (string) $b['by_bank']['latest']['month']; $ml = (int) substr( $m, 5, 2 ) . '.' . substr( $m, 0, 4 );
+			$h  = '<p>לפי התמהיל הממוצע של כל הבנקים ב־' . esc_html( $ml ) . ' (בנק ישראל), משכנתא של 1,000,000 ₪ ל־25 שנה מתחילה בהחזר של ' . esc_html( number_format( round( $pm ) ) ) . ' ₪ בחודש. ';
+			$h .= 'משק בית עם הכנסה נטו של ' . number_format( $inc ) . ' ₪ בחודש, החזר של ' . $ratio . '% מההכנסה והון עצמי של ' . number_format( $eq ) . ' ₪ יכול לקנות דירה יחידה עד ' . esc_html( number_format( $price ) ) . ' ₪, כולל מס רכישה ועורך דין';
+			if ( $fit ) {
+				$names = array_keys( $fit ); $last = array_pop( $names );
+				$list  = $names ? implode( ', ', $names ) . ' ו' . $last : $last;
+				$h .= '; דירת 4 חדרים במחיר החציוני נכנסת בסכום הזה ב־' . ( 1 === count( $fit ) ? 'עיר אחת' : count( $fit ) . ' ערים' ) . ' מתוך ' . (int) $all . ': ' . esc_html( $list )
+					. ' (רשות המסים, עסקאות ' . esc_html( 1 === count( $qs ) ? (string) key( $qs ) : 'מהרבעון האחרון שפורסם בכל עיר' ) . ')';
+			}
+			return $h . '.</p>';
+		}
