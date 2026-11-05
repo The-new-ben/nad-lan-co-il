@@ -1,0 +1,74 @@
+# MORTGAGE LOOP: the best mortgage-calculator page in the world (HAD-675, Ben 5.11.2026)
+
+**Ben, 5.11.2026 evening.** Upgrade the mortgage calculator page "without excuses, as if it were the best in the world".
+- **Research:** look at the world's leading calculators, the Hebrew results and searches abroad, and the competitors' DNA.
+- **Tools:** startup-grade practical tools (not more calculators), plus many numbers, calculations and proposals.
+- **The page:** an image; a simple phone experience that is accessible, with no table-of-contents menus.
+- **Search signals:** every signal says "מחשבון משכנתא" (title, breadcrumbs, synonyms, intent) without repetition.
+- **Proof:** dozens of parameters showing we beat every page in the world.
+- **English:** an English version that does not collide with the Hebrew page.
+- **Process:** a loop with no self-granted discounts.
+
+**Owner page:** https://nad-lan.co.il/mortgage-calculator/ (page 121, tool `mortgage`, data `boi-mortgage.json`).
+**English owner today:** /israel-mortgage-non-residents/ (post 4962, foreigners).
+**History:** October research is in `../2026-10-26-upgrades/u1-mortgage-calculator/` (dna.md, proof-after.md). Mortgage 2.0 went live in 1.72.523.
+
+## Baseline (5.11.2026, Chrome pane at 375 x 812, code evidence)
+
+| Measure | Value |
+|---|---|
+| Page height | 52,588 px, about 64.8 phone screens |
+| First input | at 1,495 px, about 1.8 screens down |
+| Mortgage 2.0 panel | from 491 to about 13,296 px (about 16 screens) |
+| Content | 33 H2, 15 tables, 10 details, 20 SVG |
+| Calculators | 3 on the page: Mortgage 2.0 plus 2 older ones |
+| Weight | 325 KB HTML |
+| Google | position 28 for the head term (DataForSEO), 9,141 impressions and 1 click in 3 months |
+| Backlinks | none from Israeli sites |
+
+## Board (status: todo / doing / done / waits-Ben)
+
+| # | Item | Status | Evidence |
+|---|---|---|---|
+| R1 | World benchmark + ranked startup-tool ideas (world.md, world-matrix.csv) | done 5.11 | 36 pages, 33 products. The top tools: budget to real homes (100), rate decision and your payment (100), three offers in one table (80), your offer vs that bank's own average (80), "if 2022 returns" (80), exit cost by horizon (80). The BoI publishes "קו המשווה" by bank, so our moat is the PERSONAL comparison. On a phone the leaders' first input sits at 497-553 px, ours at 1,496; their pages are 11.8k-24k px, ours 52.7k. |
+| R2 | Keywords HE + EN, live SERP desktop/mobile, PAA, AI answer, intent and owner map (keywords.md) | done 5.11 | keywords.md, serp-2026-11-05.json (the GSC CSVs and keywords.csv moved out of the public repo to Documents/GSC-Data/nad-lan.co.il/mortgage-2026-11-05/). Not in the top 20 for the head term (desktop or mobile). Title: מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין. H1: מחשבון משכנתא: חישוב החזר חודשי ועלות כוללת לפי מסלולים. 0 crawlable mentions of לוח סילוקין. About 1,900 child-topic impressions land on the main page. The AI answers are wrong on the one-third prime cap, the 40% PTI, the 40-year term and the 60% foreigner LTV. English: /en/mortgage-calculator/ (hreflang twin). |
+| R3 | Data v2: freshness, by-bank rates, borrower distribution, headline numbers (data/) | done 5.11 | data/data.md, build_mortgage_v2.py, boi-mortgage-v2.json (115 KB, 0 fails). New: rates by bank for 7 banks + total, per track, monthly 2024-09 to 2026-09 (TamInt010.xls, 20.10); new loans by LTV/PTI bands, investment and refinance, 25 months; track shares; debt stock and arrears; the early-repayment fee formula and rates; payment per city median (HPI + Tax Authority); 20 headlines with formulas. No official insurance price table. |
+| B0 | Baseline UX audit | done | the table above |
+| D1 | Design board (Artifact): phone-first page, tool switcher (no table of contents), hero instrument, new tools, data block, image | done v1 5.11 | https://claude.ai/artifact/VzwKJdV9HgRxRXDaAuLV7M : Main (phone, a working quick calculator on the BoI by-bank data), Tools (6 phone panels), Market (by bank, by city, KPIs), PageMap (order, signals, GEO, what is not touched). DS NadLan Instruments installed. |
+| T1 | Hero quick answer: 3 inputs to the payment, sticky result on phone; Mortgage 2.0 as the full mode | todo | |
+| T2 | (agent building in build/moffers) Bank-offer X-ray: offers vs the BoI average per track and term, overpay in shekels, negotiation text, up to 4 banks | todo | |
+| T3 | Refinance radar: the existing loan vs today, early-repayment fee by the Banking Order formula, break-even months | todo | |
+| T4 | Contract-to-keys timeline: contractor payment schedule, construction-input-index exposure, when to draw | todo | |
+| T5 | Approval-in-principle readiness and a documents checklist by borrower type | todo | |
+| T6 | (agent building in build/mbudget) Budget to real homes: the payment and capacity matched to listings and projects on the site (near-finder data) | todo | |
+| T7 | Stress test with the BoI forecast and a buffer in months | todo | |
+| D2 | Market this month: rates by bank, borrower distribution, "a one-million-shekel mortgage this month" headline | todo | |
+| C1 | Content: answer first; intents with synonyms; FAQ in the searchers' words. Ben, 5.11: REMOVE NOTHING. Restructure and add only; child-page topics stay, each with a link to its owner. | todo | |
+| G1 | AI engines (GEO/AIO), Ben 5.11: be the page ChatGPT, Perplexity, Gemini, Claude and Google AI Overviews quote. Dated numbers in plain HTML; one-sentence definitions; methodology and sources; JSON-LD BreadcrumbList (missing today) + WebApplication + FAQPage + Dataset + author/reviewer + dateModified; llms.txt entry refreshed; a visible breadcrumb (missing today). Checked 5.11: Googlebot, GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Bingbot and CCBot all get 200; robots.txt allows all; llms.txt lists the page. | todo | |
+| G1b | GEO method (skill ai-seo; Princeton GEO study, KDD 2024): measured gains are +40% from citing sources, +37% from statistics, +30% from expert quotes (only real, attributed quotes from official texts, never invented), +25% from an authoritative tone and +20% from clarity; keyword stuffing costs about 10%. Practice: a direct 40-60 word answer at the top of every section; headings phrased like the queries; comparison tables; dated statistics; an "updated" date; methodology; cover the fan-out queries (rates, LTV, PTI, baskets, refinance, prepayment fee, insurance, documents, timeline). Google: no AI-only markup needed and no chunking; write for people. | todo | |
+| G2 | Titles: compare the SERP title Google shows with the HTML title for the top 10; pick the title and first paragraph from that; protect the sibling pages' keywords | todo | |
+| C2 | Title, meta, breadcrumb, schema | todo | |
+| I1 | Hero image and share image (gpt-image, benchmarked) | todo | |
+| E1 | English twin (hreflang pair) without overlap with /israel-mortgage-non-residents/ | todo | |
+| P1 | Counted benchmark of dozens of parameters vs Israel and world pages | todo | |
+| L1 | Internal links with the anchor "מחשבון משכנתא", about 10 pages a day | waits-Ben (pace) | |
+| O1 | Outreach with the monthly figure | waits-Ben | |
+
+## Rules for every release
+
+- **Release process:** lock line, `source_audit.py` before and after, a runner with hunks on the LIVE files.
+- **Checks after release:** press the page on phone and desktop, then spot-check rainbow and h-infinity.
+- **Language:** no long dashes; the language-dna blacklist applies.
+- **Facts:** no invented numbers; every figure is dated and sourced.
+- **Never:** a 301, a noindex, an indexing request, or a sitewide change in one day.
+- **Additive law:** the two older calculators stay, folded and reachable, never deleted, unless Ben says otherwise.
+
+## Build split (5.11 evening)
+- Release A (me): data v2 as boi-mortgage.json, the `mquick` hero tool, the server-rendered market block + Dataset schema, page 121 content (title, H1, meta, [nadlan_crumbs], answer paragraph, the tool switcher, crawlable schedule sample, AI-correcting facts, child-protecting headings, new FAQ), English later.
+- Agents (staging only, build/<id>/): mbudget, moffers, mrates (mdecision, mreplay, mexit), mready (with sourced document lists).
+
+## Release A log (5.11.2026 night)
+- 1.72.587 code release running: NEW inc/mortgage-market.php + tools/mquick.js, boi-mortgage.json v2, mquick registry + summary hunks on the live instruments.php, module 'mortgage-market'. Dry run clean; live health 1.72.587 while the page checks run.
+- Page write prepared: build/release-a/write_page.py (dry OK: every original line kept, 5 edits (H1, the lead as a superset, three headings that protect child pages), crumbs, mquick, the full tool folded on phones after it draws, both old calculators folded, the market block, a 25-row yearly schedule, the four-rules section, FAQ 30 to 38, Yoast title 56 and description 157).
+- For release 588: the inherited check ('/mortgage-calculator/?t587b=1', ['class="yoast-schema-graph"'], ['"breadcrumb":{"@id"']) expects NO breadcrumb pointer; after write_page.py adds [nadlan_crumbs] the page will have one. Flip that check in make_deploy588.
+- Finding (not this release): /projects/h-infinity-somail-tel-aviv/ alternates between 336,709 and 356,937 bytes within minutes (source_audit 5.11 20:23 and 20:35). It looks like a rotating block; the cause has not been checked yet.

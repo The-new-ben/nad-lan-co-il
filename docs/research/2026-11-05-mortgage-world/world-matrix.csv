@@ -1,0 +1,40 @@
+﻿group,feature,NerdWallet,Bankrate,Zillow,Redfin,Rocket Mortgage,Calculator.net,Forbes Advisor,Chase,Wells Fargo,Better,CFPB,MortgageCalculator.org,Tomo,Homebot,MoneySavingExpert,Which?,Moneyfacts,Mojo,Nationwide,Ratehub,WOWA,nesto,Finder,realestate.com.au,Interhyp,Dr. Klein,Check24,Meilleurtaux,Pretto,De Hypotheker,Hypofriend,BoI kav hamashve,nad-lan (ours)
+tool,Payment from price or loan amount,Y,Y,Y,Y,Y,Y,Y,?,?,Y,-,Y,?,?,Y,Y,Y,-,-,Y,Y,Y,Y,Y,Y,?,?,Y,Y,Y,Y,?,Y
+tool,Reverse solve: payment or income to max loan or price,Y,?,Y,-,Y (suite),-,-,?,Y (suite),Y (suite),-,-,Y (link),?,Y,Y (suite),-,Y,Y,Y,-,-,Y (suite),Y (suite),Y (suite),Y (suite),?,Y (suite),Y,Y,Y,?,Y
+tool,Affordability with income and debts,Y,?,Y,-,-,-,-,?,?,-,-,-,?,?,-,-,-,Y,Y,Y,-,-,-,-,-,?,?,-,Y,Y,-,?,Y (sibling afford.js + PTI)
+tool,"Taxes, insurance, HOA or fees inside the monthly figure",Y,?,Y,Y,Y,Y,Y,?,?,Y,-,Y,?,?,-,-,-,-,-,Y,Y,Y,-,-,-,?,?,Y,-,-,-,?,-
+tool,"Local defaults by ZIP, province or city",Y,?,Y,Y,Y,-,-,?,?,Y,-,Y,?,?,-,-,-,-,-,Y,Y,Y,-,-,-,?,?,-,-,-,Y,?,-
+tool,Amortization or repayment schedule,Y,Y,Y,-,-,Y,Y,?,?,-,-,Y,?,?,-,-,-,-,-,-,Y,Y,-,-,Y,?,?,-,Y (Excel),-,Y,?,Y
+tool,Extra payment or overpayment simulation,-,?,-,-,Y,Y,-,?,?,-,-,-,?,?,Y,Y,-,-,Y,-,Y (accelerated),Y (accelerated),Y (link),-,?,?,?,-,-,-,-,?,Y
+tool,Side-by-side scenario comparison,-,?,-,-,Y,-,-,?,?,-,Y,-,?,?,Y,-,-,-,-,Y,-,Y,-,-,-,?,?,-,-,-,Y,?,Y
+tool,"Rate change, payment shock or stress test",-,?,-,-,-,-,-,?,?,-,-,-,?,?,-,-,-,-,Y,-,-,Y,Y,-,-,?,?,-,-,-,Y,?,Y
+tool,"Refinance, renewal or switch tool in the suite",Y,?,Y,-,-,-,-,?,Y,Y,-,Y,?,?,Y,-,-,-,-,Y,Y,Y,Y,Y,Y,Y,?,Y,Y,Y,-,?,Y (sibling page)
+tool,Rent vs buy or rent-to-buy,Y (link),?,-,Y (link),-,-,-,?,?,Y (link),-,Y (link),?,?,-,-,-,-,-,-,-,-,-,Y,Y,Y,?,-,-,Y (link),Y,?,?
+tool,Early-repayment charge calculator,-,?,-,-,-,-,-,?,?,-,-,-,?,?,Y,-,-,-,Y,-,-,-,-,-,-,?,?,-,Y,-,-,?,Y
+tool,Fixed-period or term optimizer (several terms side by side),-,?,-,-,-,-,-,?,?,-,-,-,?,?,-,-,-,-,-,-,-,-,-,-,-,?,?,-,-,-,Y,?,-
+tool,Payment frequency options,-,?,-,-,-,Y,-,?,?,-,-,Y,?,?,-,-,-,-,-,Y,Y,Y,Y,-,-,?,?,-,-,-,-,?,-
+tool,Charts,-,?,Y,Y,-,-,Y,?,?,-,-,Y,?,?,-,-,-,-,-,-,-,-,-,-,-,Y,?,-,-,-,Y,?,Y
+tool,"Share link, print, PDF or Excel",-,?,-,-,-,Y,-,?,?,Y,-,Y,?,?,-,-,-,-,-,-,-,-,-,-,-,?,?,-,Y,-,-,?,Y
+tool,Several calculators behind one switcher or hub,-,?,-,-,-,-,-,?,Y,-,-,-,?,?,Y,Y,-,-,Y,-,-,-,-,Y,Y,Y,?,-,-,Y,-,?,-
+data,Market rate shown next to the rate input,Y,?,Y (link),Y (link),-,-,-,?,?,-,-,-,?,?,-,-,-,-,-,-,-,Y,-,-,-,?,?,Y,Y,-,-,?,Y
+data,Rate table or lender offers on the page,-,Y,-,-,-,-,Y,?,?,Y,-,Y,Y (by state),?,Y (link),-,-,-,-,Y,-,Y,Y,Y,-,?,Y,-,-,-,-,?,-
+data,"Your rate against a benchmark, in money",Y (% chips),?,-,-,-,-,-,?,?,-,Y (profile deltas),-,?,?,-,-,-,-,-,-,-,Y,Y,-,-,?,?,-,-,-,-,"Y (per bank, IRR)",Y
+data,Rate history or forecast,-,?,-,-,-,-,-,?,?,Y,-,-,?,?,-,-,-,-,-,-,-,-,-,-,-,Y,?,-,-,-,Y (claimed model),?,Y
+data,Dated market news or insight on the calculator page,-,?,-,-,-,-,-,?,?,-,-,-,?,?,-,-,-,-,-,Y (affordability page),-,Y,-,-,-,Y,?,-,-,-,-,?,-
+data,Rate alert or monitoring email,-,?,-,-,-,-,-,?,?,-,-,-,?,Y,Y (general weekly),-,-,-,-,-,-,-,-,-,Y,Y,?,-,Y,-,-,?,-
+trust,"Named author, editor or reviewer",Y,?,-,-,-,-,Y,?,?,-,-,-,?,?,Y,Y,-,Y,-,Y,-,-,Y,-,Y,?,Y,Y,Y,-,-,?,-
+trust,Visible updated date,Y,?,-,-,-,-,Y,?,?,-,Y,-,?,?,-,-,-,-,-,-,Y,Y,Y,-,Y,?,?,Y,Y,-,-,Y,?
+trust,Methodology or data sources stated,-,Y,-,-,-,-,Y,?,?,-,Y,-,?,?,-,-,-,-,-,-,Y,Y,Y,-,-,?,?,-,-,-,-,Y,?
+trust,FAQPage schema (questions),0,?,0,0,-,0,-,5,?,0,-,0,6,?,-,0,0,3,0,6,0,12,6,0,0,3,6,5,4,4,17,?,-
+trust,WebApplication schema,-,?,-,-,-,-,-,?,?,-,-,-,?,?,-,-,-,-,-,-,-,-,-,-,Y,?,?,-,-,-,-,?,?
+trust,Ratings or review counts shown,Y,?,-,-,-,-,-,?,?,-,-,-,Y,?,-,-,-,Y,-,-,-,-,Y,-,-,?,?,Y,Y,Y,Y,?,-
+lead,Prequalify or approval-in-principle CTA,Y,?,Y,Y,-,-,-,Y,Y,Y,-,-,Y,?,-,-,-,Y,Y,-,-,-,-,Y,-,?,?,-,Y,-,Y,?,-
+lead,"Advisor, broker or call CTA",-,?,-,Y,-,-,-,Y,Y,-,-,-,?,?,-,Y,-,Y,-,-,-,Y,-,Y,Y,Y,?,Y,Y,Y,Y,?,Y
+lead,Path from result to homes for sale,-,?,Y,Y,-,-,-,Y,?,-,-,-,?,?,-,-,-,-,-,-,-,-,-,Y,-,?,?,-,-,Y,Y (claimed in llms.txt),?,-
+phone (375px probe),"Result in the first ~screen (y of first money figure, px)",943,?,541,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1973,?,1623,?,?,?,?,?,?,1056,?,310,?,1406
+phone (375px probe),"First input (y, px)",497,?,852,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,497,?,553,?,?,?,?,?,?,549,?,3483 (behind Edit inputs),?,1496
+phone (375px probe),Page height at 375px (px),13928,?,20500,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,13292,?,24009,?,?,?,?,?,?,11832,?,21937,?,52711
+phone (375px probe),Sticky result or CTA bar,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,Y,?,?,?,?,?,?,Y,?,Y,?,Y
+phone (375px probe),Contents collapsed into a sticky control,Y,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,Y,?,Y,?,?,?,?,?,?,Y,?,?,?,?
+phone (375px probe),Advanced inputs hidden behind one tap,Y,?,Y,Y,Y,Y,Y,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+phone (375px probe),"Chips, toggles or segmented tabs instead of long selects",Y,?,?,?,Y,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,Y,Y,?,?,?,Y,?,?,Y,?,?,?,?

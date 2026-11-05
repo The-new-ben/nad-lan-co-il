@@ -313,6 +313,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'boi-mortgage.json' ),
 				'related' => array( '/mortgage-calculator/mortgage-repayment-capacity/' => 'כמה משכנתא אפשר לקחת', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/mortgage-calculator/reverse-mortgage/' => 'מחשבון משכנתא הפוכה', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-for-any-purpose/' => 'משכנתא לכל מטרה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
 			),
+			/* 1.72.587 (HAD-675): the quick mortgage calculator at the top of /mortgage-calculator/; boi-mortgage.json v2 (BoI by bank) */
+			'mquick' => array(
+				'name' => 'מחשבון משכנתא מהיר', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · משכנתא',
+				'desc' => 'מחשבון משכנתא מהיר: ההחזר החודשי הראשון, סך ההחזרים והריבית לפי סכום המשכנתא, לפי מחיר הדירה וההון העצמי או לפי ההחזר החודשי שמתאים לכם, ל־15 עד 30 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים או של בנק אחד, לפי נתוני בנק ישראל לחודש האחרון.',
+				'data' => array( 'boi-mortgage.json' ),
+			),
 			/* 1.72.523 (HAD-601, U2): the yield and cash-flow map; invest.json from 148 nadlan.gov.il files (20.8.2026), BoI 4.62% (8.2026) */
 			'invest' => array(
 				'name' => 'מפת התשואה והתזרים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · נדל״ן להשקעה',
@@ -813,6 +819,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			foreach ( $d['kinds'] as $k ) { $l = $d['lists'][ $k['list'] ]; $t .= '<tr><td>' . esc_html( $k['label'] ) . '</td><td>' . esc_html( $l['name'] ) . '</td><td>' . ( ! empty( $l['min'] ) ? esc_html( number_format( $l['min'] ) . ' עד ' . number_format( $l['max'] ) ) . ' ₪' : '' ) . '</td></tr>'; }
 			return '<p>מחירון דקל לבנייה ותשתיות כולל ' . (int) $d['lists']['build']['ch'] . ' פרקים ו' . esc_html( $d['lists']['build']['items'] ) . ' סעיפים, ומתעדכן בכל 1 לחודש. מחיר כל סעיף כולל עבודה, חומרים ורווח קבלן. הגישה במנוי בתשלום: ' . esc_html( $d['contact'] ) . '.</p>' . $t . '</tbody></table>';
 		}
+		// 1.72.587 (HAD-675): the quick calculator as plain text (inc/mortgage-market.php)
+		if ( 'mquick' === $id ) { return function_exists( 'nadlan_mm_quick_summary' ) ? nadlan_mm_quick_summary() : ''; }
 		// 1.72.523 (HAD-601, U1): Mortgage 2.0 as plain text
 		if ( 'mortgage' === $id ) {
 			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-mortgage.json';
