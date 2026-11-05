@@ -1,0 +1,21 @@
+{
+  "released": "1.72.589",
+  "from": "1.72.588",
+  "live_before": {
+    "assets/instruments/tools/mquick.js": "3092772d16a8c0aa5bc602724ab336c8",
+    "inc/mortgage-market.php": "e40f6a82e44297ef80de61ed76df2b7b",
+    "nadlan-config.php": "c4d0acf1bf780ab9c0695c6fa9db8c20",
+    "inc/instruments.php": "721e938e2540d2ff7f453a72b4f1f8a7"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-05 23:29:25",
+  "files": {
+    "assets/instruments/tools/mquick.js": "502dde5adfb7db0070f352f0af0894f7",
+    "inc/mortgage-market.php": "d2dc5feda65868abde7b7f21ed04aa13",
+    "nadlan-config.php": "771b0e8737d1cd63da88835fb5f5d6d9",
+    "inc/instruments.php": "3cd557889554e103ebb2b7a4fe6bf4c9"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.589, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

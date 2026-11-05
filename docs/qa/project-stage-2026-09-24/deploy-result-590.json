@@ -1,0 +1,17 @@
+{
+  "released": "1.72.590",
+  "from": "1.72.589",
+  "live_before": {
+    "assets/instruments/tools/mquick.js": "502dde5adfb7db0070f352f0af0894f7",
+    "nadlan-config.php": "771b0e8737d1cd63da88835fb5f5d6d9"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-05 23:46:59",
+  "files": {
+    "assets/instruments/tools/mquick.js": "f80dff3a2aa32180dd413c48d7e0ce5e",
+    "nadlan-config.php": "5409b36c2ce159fda6a9fdc73ccde119"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.590, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

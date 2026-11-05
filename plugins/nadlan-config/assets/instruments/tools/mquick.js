@@ -3,7 +3,11 @@
    mix: all the banks or one bank. The answer is the first monthly payment (or the loan that payment carries), the total repaid and
    the interest, at the Bank of Israel average track mix and effective rates of the latest month (data boi-mortgage.json,
    by_bank: TamInt010.xls). Spitzer schedule per track, monthly rate = (1 + e)^(1/12) - 1, CPI tracks with the index unchanged.
-   1,000,000 ILS over 25 years at the system mix of 2026-09 gives 5,428 ILS (the page states the same number). Pure math in NLMQ. */
+   1,000,000 ILS over 25 years at the system mix of 2026-09 gives 5,428 ILS (the page states the same number). Pure math in NLMQ.
+   v3 (HAD-675, English twin /en/mortgage-calculator/): when the tool's section says lang="en" (NadLanInstruments.langOf), every
+   word is English, the surface is LTR (shekel sign before the number), bank names come from by_bank.banks[].en, months are English,
+   numbers en-US, and the two buttons point at the English page's own anchors (#amortization-schedule, #mortgage-market). An extra
+   style block (#nlmq-css-en) is added only in English. The Hebrew surface is byte-identical to v2. */
 (function () {
   'use strict';
   var TR = ['fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi'];
@@ -31,7 +35,7 @@
   /* 1.72.588: the tools switcher on the mortgage page. Without scripts every panel shows (readers, search engines, AI answers);
      with scripts one panel at a time, chosen from the chips (MoneySavingExpert's pattern), never a table of contents. #tool-xxx opens a panel. */
   function wireSwitch() {
-    if (!document.getElementById('nlmq-css')) { var st0 = document.createElement('style'); st0.id = 'nlmq-css'; st0.textContent = CSS; document.head.appendChild(st0); }
+    ensureCss();
     [].forEach.call(document.querySelectorAll('.nlmx-sw:not([data-on])'), function (sw) {
       sw.setAttribute('data-on', '1');
       var bs = [].slice.call(sw.querySelectorAll('button[data-sw]')), ps = bs.map(function (b) { return document.getElementById(b.getAttribute('data-sw')); });
@@ -45,13 +49,19 @@
       document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="#tool-"]') : null; if (a) { var id = a.getAttribute('href').slice(1); if (document.getElementById(id)) { e.preventDefault(); show(id, true); } } });
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireSwitch); else wireSwitch();
   var NI = window.NadLanInstruments, esc = NI.esc;
   var nf = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
   function ils(x) { return nf.format(Math.round(x || 0)) + ' ₪'; }
   function num(s) { var n = parseFloat(String(s).replace(/[^\d.]/g, '')); return isFinite(n) ? n : NaN; }
   var HEM = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
   function month(ym) { var p = String(ym).split('-'); return p.length === 2 ? (HEM[+p[1] - 1] || p[1]) + ' ' + p[0] : ym; }
+  var nfEn = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+  function ilsEn(x) { return '₪' + nfEn.format(Math.round(x || 0)); }
+  var ENM = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function monthEn(ym) { var p = String(ym).split('-'); return p.length === 2 ? (ENM[+p[1] - 1] || p[1]) + ' ' + p[0] : ym; }
+  var CSS_EN = '#nlmq[lang="en"]{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",system-ui,sans-serif}'
+    + '#nlmq[lang="en"] h2.nlmq__h{font-family:"IBM Plex Sans",system-ui,sans-serif!important}'
+    + '#nlmq[lang="en"] .nlmq__in input{text-align:left}#nlmq[lang="en"] .nlmq__src{direction:ltr}';
   var CSS = '.nlmq{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;color:#12202A;background:#fff;border:1px solid #D3DCE2;border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:16px;margin:8px 0 16px}'
     + '.nlmq *{box-sizing:border-box}.nlmq .nlmq__h{margin:0!important;font:600 18px/26px "IBM Plex Sans Hebrew",system-ui,sans-serif!important;color:#12202A!important}'
     + '.nlmq__lab{display:block;font-size:13px;line-height:18px;font-weight:500;color:#3E4C58;margin:0 0 8px}'
@@ -89,30 +99,48 @@
     custom: function (root, data) {
       var D = data.boim || data.d0, bb = D && D.by_bank;
       if (!bb || !bb.months) return;
-      if (!document.getElementById('nlmq-css')) { var st = document.createElement('style'); st.id = 'nlmq-css'; st.textContent = CSS; document.head.appendChild(st); }
-      var names = {}; (bb.banks || []).forEach(function (b) { names[b.k] = b.he; }); names.system = 'כל הבנקים';
+      ensureCss();
+      var EN = !!(NI.langOf && NI.langOf(root) === 'en');  // v3: English on /en/ (the section's lang); Hebrew otherwise, unchanged
+      if (EN && !document.getElementById('nlmq-css-en')) { var st2 = document.createElement('style'); st2.id = 'nlmq-css-en'; st2.textContent = CSS_EN; document.head.appendChild(st2); }
+      var IL = EN ? ilsEn : ils, NF = EN ? nfEn : nf, MO = EN ? monthEn : month;
+      var T = EN ? {
+        all: 'All banks', who_all: 'all banks', h: 'Quick mortgage calculator', amount: 'Mortgage amount', price: 'Home price', equity: 'Your equity (down payment)',
+        pay: 'The monthly payment that suits you', ml: 'You can also calculate', m_amount: 'By amount', m_price: 'By price and equity', m_pay: 'By monthly payment',
+        tl: 'Term (years)', yr: '', bl: 'Average rate and mix of', principal: 'Principal', interest: 'Interest',
+        cta: '<a class="nlmq__btn is-main" href="#amortization-schedule">Yearly amortization schedule</a><a class="nlmq__btn" href="#mortgage-market">Rates by bank this month</a>',
+        copy: 'Copy the result', copied: 'Copied', prompt: 'Copy the result'
+      } : {
+        all: 'כל הבנקים', who_all: 'כל הבנקים', h: 'מחשבון משכנתא מהיר', amount: 'סכום המשכנתא', price: 'מחיר הדירה', equity: 'הון עצמי',
+        pay: 'ההחזר החודשי שמתאים לכם', ml: 'אפשר לחשב גם', m_amount: 'לפי סכום', m_price: 'לפי מחיר והון עצמי', m_pay: 'לפי החזר חודשי',
+        tl: 'תקופה', yr: ' שנה', bl: 'ריבית ותמהיל ממוצעים לפי', principal: 'הקרן', interest: 'ריבית',
+        cta: '<a class="nlmq__btn is-main" href="#mortgage-tool">תמהיל מלא, מסלולים ולוח סילוקין</a><a class="nlmq__btn" href="#bank-offer-check">יש לי הצעה מהבנק: לבדוק אותה</a>',
+        copy: 'העתקת התוצאה', copied: 'הועתק', prompt: 'העתיקו את התוצאה'
+      };
+      // one money field; in English the shekel sign stands before the number (LTR), in Hebrew after it (as before)
+      function fld(id, k, lab) { var inp = '<input id="' + id + '" inputmode="numeric" autocomplete="off" data-k="' + k + '">'; return '<div><label class="nlmq__lab" for="' + id + '">' + lab + '</label><div class="nlmq__in">' + (EN ? '<span>₪</span>' + inp : inp + '<span>₪</span>') + '</div></div>'; }
+      var names = {}; (bb.banks || []).forEach(function (b) { names[b.k] = EN ? ({ hapoalim: 'Hapoalim', leumi: 'Leumi', discount: 'Discount', mizrahi: 'Mizrahi-Tefahot', fibi: 'First International', mercantile: 'Mercantile', jerusalem: 'Jerusalem' }[b.k] || b.en || b.he) : b.he; }); names.system = T.all;
       var order = ['system'].concat(Object.keys(bb.rate).filter(function (k) { return k !== 'system'; }));
       var v = { mode: 'amount', amount: 1000000, price: 1600000, equity: 400000, pay: 6000, years: 25, bank: 'system' };
       var src = bb.src || {};
-      var h = '<div class="nlmq" id="nlmq" dir="rtl" lang="he">'
-        + '<h2 class="nlmq__h">מחשבון משכנתא מהיר</h2>'
-        + '<div class="nlmq__row" data-f="amount"><div><label class="nlmq__lab" for="nlmq-a">סכום המשכנתא</label><div class="nlmq__in"><input id="nlmq-a" inputmode="numeric" autocomplete="off" data-k="amount"><span>₪</span></div></div></div>'
-        + '<div class="nlmq__row" data-f="price" hidden><div><label class="nlmq__lab" for="nlmq-p">מחיר הדירה</label><div class="nlmq__in"><input id="nlmq-p" inputmode="numeric" autocomplete="off" data-k="price"><span>₪</span></div></div>'
-        + '<div><label class="nlmq__lab" for="nlmq-e">הון עצמי</label><div class="nlmq__in"><input id="nlmq-e" inputmode="numeric" autocomplete="off" data-k="equity"><span>₪</span></div></div></div>'
-        + '<div class="nlmq__row" data-f="pay" hidden><div><label class="nlmq__lab" for="nlmq-y">ההחזר החודשי שמתאים לכם</label><div class="nlmq__in"><input id="nlmq-y" inputmode="numeric" autocomplete="off" data-k="pay"><span>₪</span></div></div></div>'
-        + '<div class="nlmq__modes"><span class="nlmq__lab" id="nlmq-ml">אפשר לחשב גם</span><div class="nlmq__seg nlmq__seg--3" role="group" aria-labelledby="nlmq-ml">'
-        + '<button type="button" data-m="amount">לפי סכום</button><button type="button" data-m="price">לפי מחיר והון עצמי</button><button type="button" data-m="pay">לפי החזר חודשי</button></div></div>'
-        + '<div><span class="nlmq__lab" id="nlmq-tl">תקופה</span><div class="nlmq__seg nlmq__seg--4" role="group" aria-labelledby="nlmq-tl">'
-        + [15, 20, 25, 30].map(function (y) { return '<button type="button" data-y="' + y + '">' + y + ' שנה</button>'; }).join('') + '</div></div>'
-        + '<div><span class="nlmq__lab" id="nlmq-bl">ריבית ותמהיל ממוצעים לפי</span><div class="nlmq__chips" role="group" aria-labelledby="nlmq-bl">'
+      var h = '<div class="nlmq" id="nlmq" dir="' + (EN ? 'ltr' : 'rtl') + '" lang="' + (EN ? 'en' : 'he') + '">'
+        + '<h2 class="nlmq__h">' + T.h + '</h2>'
+        + '<div class="nlmq__row" data-f="amount">' + fld('nlmq-a', 'amount', T.amount) + '</div>'
+        + '<div class="nlmq__row" data-f="price" hidden>' + fld('nlmq-p', 'price', T.price)
+        + fld('nlmq-e', 'equity', T.equity) + '</div>'
+        + '<div class="nlmq__row" data-f="pay" hidden>' + fld('nlmq-y', 'pay', T.pay) + '</div>'
+        + '<div class="nlmq__modes"><span class="nlmq__lab" id="nlmq-ml">' + T.ml + '</span><div class="nlmq__seg nlmq__seg--3" role="group" aria-labelledby="nlmq-ml">'
+        + '<button type="button" data-m="amount">' + T.m_amount + '</button><button type="button" data-m="price">' + T.m_price + '</button><button type="button" data-m="pay">' + T.m_pay + '</button></div></div>'
+        + '<div><span class="nlmq__lab" id="nlmq-tl">' + T.tl + '</span><div class="nlmq__seg nlmq__seg--4" role="group" aria-labelledby="nlmq-tl">'
+        + [15, 20, 25, 30].map(function (y) { return '<button type="button" data-y="' + y + '">' + y + T.yr + '</button>'; }).join('') + '</div></div>'
+        + '<div><span class="nlmq__lab" id="nlmq-bl">' + T.bl + '</span><div class="nlmq__chips" role="group" aria-labelledby="nlmq-bl">'
         + order.map(function (k) { return '<button type="button" data-b="' + esc(k) + '">' + esc(names[k] || k) + '</button>'; }).join('') + '</div></div>'
         + '<div class="nlmq__out" aria-live="polite"><span class="nlmq__ol"></span><span class="nlmq__fig"></span><span class="nlmq__sub"></span>'
         + '<div class="nlmq__bar" aria-hidden="true"><i class="p"></i><i class="r"></i></div>'
-        + '<div class="nlmq__key"><span><b style="background:#F2D15A"></b>הקרן</span><span><b style="background:#8E7CC3"></b>ריבית</span></div>'
+        + '<div class="nlmq__key"><span><b style="background:#F2D15A"></b>' + T.principal + '</span><span><b style="background:#8E7CC3"></b>' + T.interest + '</span></div>'
         + '<span class="nlmq__ltv" hidden></span></div>'
         + '<p class="nlmq__src"></p>'
-        + '<div class="nlmq__cta"><a class="nlmq__btn is-main" href="#mortgage-tool">תמהיל מלא, מסלולים ולוח סילוקין</a><a class="nlmq__btn" href="#bank-offer-check">יש לי הצעה מהבנק: לבדוק אותה</a></div>'
-        + '<button type="button" class="nlmq__copy">העתקת התוצאה</button>'
+        + '<div class="nlmq__cta">' + T.cta + '</div>'
+        + '<button type="button" class="nlmq__copy">' + T.copy + '</button>'
         + '</div>';
       root.innerHTML = h;
       var q = function (s) { return root.querySelector(s); }, qa = function (s) { return [].slice.call(root.querySelectorAll(s)); };
@@ -123,15 +151,17 @@
         qa('[data-y]').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-y') === v.years)); });
         qa('[data-b]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-b') === v.bank)); });
         var r = solve(v, bb); last = r;
-        var who = v.bank === 'system' ? 'כל הבנקים' : 'בנק ' + (names[v.bank] || v.bank);
+        var who = v.bank === 'system' ? T.who_all : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
         if (v.mode === 'pay') {
-          q('.nlmq__ol').textContent = 'המשכנתא שההחזר הזה נושא';
-          q('.nlmq__fig').innerHTML = '<bdi>' + ils(r.loan) + '</bdi>';
+          q('.nlmq__ol').textContent = EN ? 'The mortgage this payment carries' : 'המשכנתא שההחזר הזה נושא';
+          q('.nlmq__fig').innerHTML = '<bdi>' + IL(r.loan) + '</bdi>';
         } else {
-          q('.nlmq__ol').textContent = 'ההחזר החודשי הראשון';
-          q('.nlmq__fig').innerHTML = '<bdi>' + ils(r.pay) + '</bdi>';
+          q('.nlmq__ol').textContent = EN ? 'First monthly payment' : 'ההחזר החודשי הראשון';
+          q('.nlmq__fig').innerHTML = '<bdi>' + IL(r.pay) + '</bdi>';
         }
-        q('.nlmq__sub').innerHTML = (v.mode === 'pay' ? 'החזר <bdi>' + ils(r.pay) + '</bdi> · ' : '') + 'סך ההחזרים <bdi>' + ils(r.total) + '</bdi> · מזה ריבית <bdi>' + ils(r.interest) + '</bdi>';
+        q('.nlmq__sub').innerHTML = EN
+          ? (v.mode === 'pay' ? 'Payment <bdi>' + IL(r.pay) + '</bdi> · ' : '') + 'Total repaid <bdi>' + IL(r.total) + '</bdi> · of which interest <bdi>' + IL(r.interest) + '</bdi>'
+          : (v.mode === 'pay' ? 'החזר <bdi>' + ils(r.pay) + '</bdi> · ' : '') + 'סך ההחזרים <bdi>' + ils(r.total) + '</bdi> · מזה ריבית <bdi>' + ils(r.interest) + '</bdi>';
         var tot = r.total > 0 ? r.total : 1;
         q('.nlmq__bar .p').style.width = (r.loan / tot * 100).toFixed(1) + '%';
         q('.nlmq__bar .r').style.width = (r.interest / tot * 100).toFixed(1) + '%';
@@ -139,15 +169,20 @@
         if (r.ltv != null) {
           var over = r.ltv > 0.75;
           lt.hidden = false; lt.className = 'nlmq__ltv' + (over ? ' is-over' : '');
-          lt.innerHTML = 'שיעור המימון <bdi>' + (r.ltv * 100).toFixed(1) + '%</bdi>' + (over ? ': מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (70% לדירה חלופית, 50% לדירה נוספת).' : ' (עד 75% לדירה יחידה, 70% לדירה חלופית, 50% לדירה נוספת).');
+          lt.innerHTML = EN
+            ? 'Loan to value <bdi>' + (r.ltv * 100).toFixed(1) + '%</bdi>' + (over ? ': above 75%, the Bank of Israel maximum for a single home (70% for a replacement home, 50% for an additional home).' : ' (up to 75% for a single home, 70% for a replacement home, 50% for an additional home).')
+            : 'שיעור המימון <bdi>' + (r.ltv * 100).toFixed(1) + '%</bdi>' + (over ? ': מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (70% לדירה חלופית, 50% לדירה נוספת).' : ' (עד 75% לדירה יחידה, 70% לדירה חלופית, 50% לדירה נוספת).');
         } else { lt.hidden = true; }
-        q('.nlmq__src').innerHTML = 'לוח שפיצר, חמשת המסלולים לפי התמהיל והריבית האפקטיבית הממוצעים של ' + esc(who) + ' ב' + esc(month(r.month))
-          + ', במסלולים הצמודים בלי שינוי במדד. מקור: ' + (src.page ? '<a href="' + esc(src.page) + '" target="_blank" rel="noopener">בנק ישראל, השוואת ריביות בהלוואות לדיור</a>' : 'בנק ישראל') + '. ממוצע, לא הצעה אישית.';
+        q('.nlmq__src').innerHTML = EN
+          ? 'Spitzer schedule; the five tracks at the average mix and effective rates of ' + esc(who) + ' in ' + esc(MO(r.month))
+            + ', CPI-linked tracks with the index unchanged. Source: ' + ((src.page_en || src.page) ? '<a href="' + esc(src.page_en || src.page) + '" target="_blank" rel="noopener">Bank of Israel, interest rate comparisons for housing loans</a>' : 'Bank of Israel') + '. An average, not a personal offer.'
+          : 'לוח שפיצר, חמשת המסלולים לפי התמהיל והריבית האפקטיבית הממוצעים של ' + esc(who) + ' ב' + esc(month(r.month))
+            + ', במסלולים הצמודים בלי שינוי במדד. מקור: ' + (src.page ? '<a href="' + esc(src.page) + '" target="_blank" rel="noopener">בנק ישראל, השוואת ריביות בהלוואות לדיור</a>' : 'בנק ישראל') + '. ממוצע, לא הצעה אישית.';
       }
       qa('input[data-k]').forEach(function (inp) {
-        var k = inp.getAttribute('data-k'); inp.value = nf.format(v[k]);
+        var k = inp.getAttribute('data-k'); inp.value = NF.format(v[k]);
         inp.addEventListener('input', function () { var n = num(inp.value); if (isFinite(n)) { v[k] = n; paint(); } });
-        inp.addEventListener('blur', function () { inp.value = nf.format(v[k]); });
+        inp.addEventListener('blur', function () { inp.value = NF.format(v[k]); });
       });
       root.addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b || !root.contains(b)) return;
@@ -155,13 +190,18 @@
         else if (b.hasAttribute('data-y')) { v.years = +b.getAttribute('data-y'); paint(); }
         else if (b.hasAttribute('data-b')) { v.bank = b.getAttribute('data-b'); paint(); }
         else if (b.classList.contains('nlmq__copy') && last) {
-          var who = v.bank === 'system' ? 'כל הבנקים' : 'בנק ' + (names[v.bank] || v.bank);
-          var tx = 'משכנתא של ' + ils(last.loan) + ' ל־' + v.years + ' שנה, בתמהיל הממוצע של ' + who + ' ב' + month(last.month) + ': החזר ראשון ' + ils(last.pay) + ', סך ההחזרים ' + ils(last.total) + '.\n' + location.origin + location.pathname;
-          var done = function () { b.textContent = 'הועתק'; setTimeout(function () { b.textContent = 'העתקת התוצאה'; }, 1600); };
-          if (navigator.clipboard) navigator.clipboard.writeText(tx).then(done, function () { window.prompt('העתיקו את התוצאה', tx); }); else window.prompt('העתיקו את התוצאה', tx);
+          var who = v.bank === 'system' ? T.who_all : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
+          var tx = EN
+            ? 'A ' + IL(last.loan) + ' mortgage over ' + v.years + ' years at the average mix of ' + who + ' in ' + MO(last.month) + ': first payment ' + IL(last.pay) + ', total repaid ' + IL(last.total) + '.\n' + location.origin + location.pathname
+            : 'משכנתא של ' + ils(last.loan) + ' ל־' + v.years + ' שנה, בתמהיל הממוצע של ' + who + ' ב' + month(last.month) + ': החזר ראשון ' + ils(last.pay) + ', סך ההחזרים ' + ils(last.total) + '.\n' + location.origin + location.pathname;
+          var done = function () { b.textContent = T.copied; setTimeout(function () { b.textContent = T.copy; }, 1600); };
+          if (navigator.clipboard) navigator.clipboard.writeText(tx).then(done, function () { window.prompt(T.prompt, tx); }); else window.prompt(T.prompt, tx);
         }
       });
       paint();
     }
   });
+  /* 1.72.590: the style is written once CSS is defined (1.72.588 ran the switcher before it and left an empty style element) */
+  function ensureCss() { var s = document.getElementById('nlmq-css'); if (!s) { s = document.createElement('style'); s.id = 'nlmq-css'; document.head.appendChild(s); } if (!s.textContent) s.textContent = CSS; }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireSwitch); else wireSwitch();
 })();

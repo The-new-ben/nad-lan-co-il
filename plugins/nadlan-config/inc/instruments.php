@@ -318,6 +318,10 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'name' => 'מחשבון משכנתא מהיר', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · משכנתא',
 				'desc' => 'מחשבון משכנתא מהיר: ההחזר החודשי הראשון, סך ההחזרים והריבית לפי סכום המשכנתא, לפי מחיר הדירה וההון העצמי או לפי ההחזר החודשי שמתאים לכם, ל־15 עד 30 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים או של בנק אחד, לפי נתוני בנק ישראל לחודש האחרון.',
 				'data' => array( 'boi-mortgage.json' ),
+				'en' => array(
+					'name' => 'Quick mortgage calculator', 'kicker' => 'Calculator · Mortgage',
+					'desc' => 'A quick Israeli mortgage calculator: the first monthly payment, the total repaid and the interest by mortgage amount, by home price and equity, or by the monthly payment that suits you, over 15 to 30 years, at the average track mix and rates of all banks or of one bank, from the latest Bank of Israel data.',
+				),
 			),
 			/* HAD-675 (5.11.2026): mbudget, the mortgage page panel 1 "כמה דירה זה קונה, ואיפה". Reuses NLAF.compute from
 			   tools/afford.js: mbudget.js loads afford.js from its own folder when the page did not enqueue it (no deps key needed;
@@ -1122,6 +1126,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	/** HAD-534 (d): the same summaries in English, for the tools that carry an 'en' block. Dates with gmdate (English month
 	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
 	function nadlan_nli_summary_en( $id ) {
+		if ( 'mquick' === $id ) { return function_exists( 'nadlan_mm_quick_summary' ) ? nadlan_mm_quick_summary( 'en' ) : ''; }  // 1.72.589 (HAD-675)
 		if ( 'nrm' === $id ) {
 			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';
 			$rd  = function ( $f ) use ( $dir ) { $p = $dir . $f; $x = is_readable( $p ) ? json_decode( (string) file_get_contents( $p ), true ) : null; return is_array( $x ) ? $x : array(); };

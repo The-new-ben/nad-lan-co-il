@@ -1,0 +1,62 @@
+{
+ "title": "Israeli Mortgage Calculator: Monthly Payment, Track Mix and Amortization",
+ "slug": "mortgage-calculator",
+ "parent": "EN_ROOT",
+ "parent_seen": 5011,
+ "status": "draft",
+ "seo_title": "Israel Mortgage Calculator 2026: Payments, Rates, Schedule",
+ "seo_desc": "Israeli mortgage calculator in English: monthly payment in NIS at the latest Bank of Israel rates by bank and track, amortization schedule and 2026 rules.",
+ "meta": [
+  "_yoast_wpseo_title",
+  "_yoast_wpseo_metadesc"
+ ],
+ "tools": [
+  "mquick"
+ ],
+ "shortcodes": [
+  "[nadlan_tool id=\"mquick\"]",
+  "[nadlan_mortgage_market lang=\"en\"]"
+ ],
+ "not_mounted": {
+  "mortgage": "tools/mortgage.js is Hebrew only (its header: 'Hebrew only (RTL)'; no langOf) and its registry entry has no 'en' block"
+ },
+ "hreflang": {
+  "he": "https://nad-lan.co.il/mortgage-calculator/",
+  "en": "https://nad-lan.co.il/en/mortgage-calculator/",
+  "x-default": "https://nad-lan.co.il/mortgage-calculator/",
+  "how": "inc/page-lang.php nadlan_pglang_family(): same path minus the /en/ prefix, both published"
+ },
+ "owns": [
+  "israel mortgage calculator",
+  "mortgage calculator israel",
+  "israeli mortgage calculator",
+  "israel mortgage rates",
+  "mashkanta calculator",
+  "amortization schedule israel"
+ ],
+ "never_targets": "foreigners and non-residents (owner: /israel-mortgage-non-residents/, post 4962); linked with the exact anchor 'Israel mortgage for foreigners'",
+ "mquick_en": {
+  "name": "Quick mortgage calculator",
+  "kicker": "Calculator · Mortgage",
+  "desc": "A quick Israeli mortgage calculator: the first monthly payment, the total repaid and the interest by mortgage amount, by home price and equity, or by the monthly payment that suits you, over 15 to 30 years, at the average track mix and rates of all banks or of one bank, from the latest Bank of Israel data."
+ },
+ "data": {
+  "month": "2026-09",
+  "pay_1m_25y": 5428,
+  "built": "2026-11-05"
+ },
+ "forbid": [
+  "—",
+  "–",
+  "Atlas",
+  "atlas",
+  "platform",
+  "algorithm",
+  "demo",
+  "coming soon",
+  "AI-powered",
+  "Nadlan smart",
+  "best in the world",
+  "guaranteed"
+ ]
+}
