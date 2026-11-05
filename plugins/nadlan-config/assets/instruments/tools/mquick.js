@@ -7,7 +7,13 @@
    v3 (HAD-675, English twin /en/mortgage-calculator/): when the tool's section says lang="en" (NadLanInstruments.langOf), every
    word is English, the surface is LTR (shekel sign before the number), bank names come from by_bank.banks[].en, months are English,
    numbers en-US, and the two buttons point at the English page's own anchors (#amortization-schedule, #mortgage-market). An extra
-   style block (#nlmq-css-en) is added only in English. The Hebrew surface is byte-identical to v2. */
+   style block (#nlmq-css-en) is added only in English. The Hebrew surface is byte-identical to v2.
+   v4 (round E, HAD-675, 6.11.2026; benchmark row 23 "local defaults"): in "לפי מחיר והון עצמי" a compact select "עיר (מחיר חציוני,
+   4 חדרים)" lists homes.medians of boi-mortgage.json (the Tax Authority's closed-deal medians): Israel first, then the 24 cities by
+   name. A city puts its median 4-room price in the price field and shows its quarter ("חציון 1-3.2026, רשות המסים"); typing another
+   price clears the city. Default: no city, so the example 1,600,000 / 400,000 and every other line stay as in v3. English names
+   (the data has none) are the map of the English market block (inc/mortgage-market.php nadlan_mm_city_en, live since 1.72.589); a
+   name missing from it stays Hebrew with lang="he". Pure part: NLMQ.cityList / NLMQ.quarterEn (node test). */
 (function () {
   'use strict';
   var TR = ['fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi'];
@@ -29,7 +35,25 @@
     var n = v.years * 12, total = pay * n;
     return { loan: loan, pay: pay, total: total, interest: Math.max(0, total - loan), ltv: v.mode === 'price' && v.price > 0 ? loan / v.price : null, month: bb.months[i], per1: per1 };
   }
-  window.NLMQ = { payPer1: payPer1, solve: solve, TR: TR };
+  /* v4: the city list of the price mode, Israel first, then the cities by name (Hebrew order; English order in English) */
+  var CITY_EN = {
+    'ישראל': 'All of Israel', 'אילת': 'Eilat', 'אשדוד': 'Ashdod', 'אשקלון': 'Ashkelon', 'באר שבע': 'Beersheba', 'בני ברק': 'Bnei Brak',
+    'בת ים': 'Bat Yam', 'גבעתיים': 'Givatayim', 'הוד השרון': 'Hod HaSharon', 'הרצליה': 'Herzliya', 'חולון': 'Holon', 'חיפה': 'Haifa',
+    'יבנה': 'Yavne', 'ירושלים': 'Jerusalem', 'כפר סבא': 'Kfar Saba', 'מודיעין מכבים רעות': "Modi'in-Maccabim-Re'ut", 'נתניה': 'Netanya',
+    'פתח תקווה': 'Petah Tikva', 'קריית אונו': 'Kiryat Ono', 'ראשון לציון': 'Rishon LeZion', 'רחובות': 'Rehovot', 'רמת גן': 'Ramat Gan',
+    'רמת השרון': 'Ramat HaSharon', 'רעננה': "Ra'anana", 'תל אביב יפו': 'Tel Aviv-Yafo'
+  };
+  function cityList(D, en) {
+    var M = D && D.homes && D.homes.medians, out = [], cs = [];
+    if (!M) return out;
+    function row(k, he, v) { return v && v.r4 && +v.r4.median > 0 ? { k: k, he: he, en: CITY_EN[he] || null, median: +v.r4.median, quarter: String(v.r4.quarter || '') } : null; }
+    var il = row('il', 'ישראל', M.il); if (il) out.push(il);
+    Object.keys(M.city || {}).forEach(function (c) { var r = row(c, c, M.city[c]); if (r) cs.push(r); });
+    cs.sort(function (a, b) { return en ? (a.en || a.he).localeCompare(b.en || b.he, 'en') : a.he.localeCompare(b.he, 'he'); });
+    return out.concat(cs);
+  }
+  function quarterEn(q) { var m = /^(1-3|4-6|7-9|10-12)\.(\d{4})$/.exec(String(q)); return m ? { '1-3': 'Q1', '4-6': 'Q2', '7-9': 'Q3', '10-12': 'Q4' }[m[1]] + ' ' + m[2] : String(q); }
+  window.NLMQ = { payPer1: payPer1, solve: solve, TR: TR, cityList: cityList, quarterEn: quarterEn, CITY_EN: CITY_EN };
   if (!window.NadLanInstruments) return;
 
   /* 1.72.588: the tools switcher on the mortgage page. Without scripts every panel shows (readers, search engines, AI answers);
@@ -93,7 +117,11 @@
     + '#nlmq .nlmq__seg button{border-radius:2px!important;padding:4px 6px!important;min-height:44px!important;font-size:14px!important;box-shadow:none!important}#nlmq .nlmq__chips button,#nlmq button.nlmq__copy{border-radius:999px!important;box-shadow:none!important;min-height:44px!important}'
     + '#nlmq .nlmq__seg--3 button{font-size:13px!important}#nlmq .nlmq__modes{margin-top:-6px}'
     + '.nlmx-sw{margin:8px 0 18px}.nlmx-sw__chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}.nlmx-sw__chips button{min-height:44px;padding:0 14px;border-radius:999px!important;border:1px solid #D3DCE2;background:#fff;color:#3E4C58;font:500 14px/1.2 "IBM Plex Sans Hebrew",system-ui,sans-serif;cursor:pointer;box-shadow:none!important}'
-    + '.nlmx-sw__chips button[aria-pressed="true"]{background:#2F6F86;border-color:#2F6F86;color:#fff;font-weight:600}.nlmx-sw__chips button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}.nlmx-pane[hidden]{display:none!important}';
+    + '.nlmx-sw__chips button[aria-pressed="true"]{background:#2F6F86;border-color:#2F6F86;color:#fff;font-weight:600}.nlmx-sw__chips button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}.nlmx-pane[hidden]{display:none!important}'
+    /* v4: the city select (id-scoped with !important: the theme restyles plain selects) */
+    + '#nlmq .nlmq__city{max-width:440px}#nlmq .nlmq__city[hidden],#nlmq .nlmq__cq[hidden]{display:none!important}#nlmq .nlmq__sel{padding:0 6px!important}'
+    + '#nlmq .nlmq__sel select{flex:1 1 auto;min-width:0;width:100%!important;max-width:100%!important;height:46px!important;min-height:44px!important;margin:0!important;padding:0 6px!important;border:0!important;border-radius:0!important;outline:0;box-shadow:none!important;background:transparent!important;-webkit-appearance:menulist!important;appearance:auto!important;font:400 16px/1.2 "IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif!important;color:#12202A!important;cursor:pointer;text-overflow:ellipsis}'
+    + '#nlmq .nlmq__cq{display:block;margin:6px 0 0!important;font:400 12px/18px "IBM Plex Mono","IBM Plex Sans Hebrew",ui-monospace,monospace!important;color:#5E6A75!important}';
 
   NI.register('mquick', {
     custom: function (root, data) {
@@ -108,23 +136,33 @@
         pay: 'The monthly payment that suits you', ml: 'You can also calculate', m_amount: 'By amount', m_price: 'By price and equity', m_pay: 'By monthly payment',
         tl: 'Term (years)', yr: '', bl: 'Average rate and mix of', principal: 'Principal', interest: 'Interest',
         cta: '<a class="nlmq__btn is-main" href="#amortization-schedule">Yearly amortization schedule</a><a class="nlmq__btn" href="#mortgage-market">Rates by bank this month</a>',
-        copy: 'Copy the result', copied: 'Copied', prompt: 'Copy the result'
+        copy: 'Copy the result', copied: 'Copied', prompt: 'Copy the result',
+        city: 'City (median price, 4 rooms)', nocity: 'Choose a city'
       } : {
         all: 'כל הבנקים', who_all: 'כל הבנקים', h: 'מחשבון משכנתא מהיר', amount: 'סכום המשכנתא', price: 'מחיר הדירה', equity: 'הון עצמי',
         pay: 'ההחזר החודשי שמתאים לכם', ml: 'אפשר לחשב גם', m_amount: 'לפי סכום', m_price: 'לפי מחיר והון עצמי', m_pay: 'לפי החזר חודשי',
         tl: 'תקופה', yr: ' שנה', bl: 'ריבית ותמהיל ממוצעים לפי', principal: 'הקרן', interest: 'ריבית',
         cta: '<a class="nlmq__btn is-main" href="#mortgage-tool">תמהיל מלא, מסלולים ולוח סילוקין</a><a class="nlmq__btn" href="#bank-offer-check">יש לי הצעה מהבנק: לבדוק אותה</a>',
-        copy: 'העתקת התוצאה', copied: 'הועתק', prompt: 'העתיקו את התוצאה'
+        copy: 'העתקת התוצאה', copied: 'הועתק', prompt: 'העתיקו את התוצאה',
+        city: 'עיר (מחיר חציוני, 4 חדרים)', nocity: 'בחרו עיר'
       };
+      /* v4: the city select of the price mode; a city name without an English name stays Hebrew inside lang="he" */
+      var CITIES = cityList(D, EN), cityBy = {}; CITIES.forEach(function (c) { cityBy[c.k] = c; });
+      function cityName(c) { return EN ? (c.en || c.he) : c.he; }
+      function cityQ(c) { return EN ? 'Median, ' + quarterEn(c.quarter) + ', Israel Tax Authority' : 'חציון ' + c.quarter + ', רשות המסים'; }
+      var citySel = CITIES.length ? '<div class="nlmq__city" data-f="price" hidden><label class="nlmq__lab" for="nlmq-c">' + T.city + '</label><div class="nlmq__in nlmq__sel"><select id="nlmq-c"><option value="">' + T.nocity + '</option>'
+        + CITIES.map(function (c) { return '<option value="' + esc(c.k) + '"' + (EN && !c.en ? ' lang="he"' : '') + '>' + esc(cityName(c)) + '</option>'; }).join('')
+        + '</select></div><span class="nlmq__cq" hidden></span></div>' : '';
       // one money field; in English the shekel sign stands before the number (LTR), in Hebrew after it (as before)
       function fld(id, k, lab) { var inp = '<input id="' + id + '" inputmode="numeric" autocomplete="off" data-k="' + k + '">'; return '<div><label class="nlmq__lab" for="' + id + '">' + lab + '</label><div class="nlmq__in">' + (EN ? '<span>₪</span>' + inp : inp + '<span>₪</span>') + '</div></div>'; }
       var names = {}; (bb.banks || []).forEach(function (b) { names[b.k] = EN ? ({ hapoalim: 'Hapoalim', leumi: 'Leumi', discount: 'Discount', mizrahi: 'Mizrahi-Tefahot', fibi: 'First International', mercantile: 'Mercantile', jerusalem: 'Jerusalem' }[b.k] || b.en || b.he) : b.he; }); names.system = T.all;
       var order = ['system'].concat(Object.keys(bb.rate).filter(function (k) { return k !== 'system'; }));
-      var v = { mode: 'amount', amount: 1000000, price: 1600000, equity: 400000, pay: 6000, years: 25, bank: 'system' };
+      var v = { mode: 'amount', amount: 1000000, price: 1600000, equity: 400000, pay: 6000, years: 25, bank: 'system', city: null };
       var src = bb.src || {};
       var h = '<div class="nlmq" id="nlmq" dir="' + (EN ? 'ltr' : 'rtl') + '" lang="' + (EN ? 'en' : 'he') + '">'
         + '<h2 class="nlmq__h">' + T.h + '</h2>'
         + '<div class="nlmq__row" data-f="amount">' + fld('nlmq-a', 'amount', T.amount) + '</div>'
+        + citySel
         + '<div class="nlmq__row" data-f="price" hidden>' + fld('nlmq-p', 'price', T.price)
         + fld('nlmq-e', 'equity', T.equity) + '</div>'
         + '<div class="nlmq__row" data-f="pay" hidden>' + fld('nlmq-y', 'pay', T.pay) + '</div>'
@@ -181,8 +219,16 @@
       }
       qa('input[data-k]').forEach(function (inp) {
         var k = inp.getAttribute('data-k'); inp.value = NF.format(v[k]);
-        inp.addEventListener('input', function () { var n = num(inp.value); if (isFinite(n)) { v[k] = n; paint(); } });
+        inp.addEventListener('input', function () { var n = num(inp.value); if (isFinite(n)) { v[k] = n; if (k === 'price') cityOff(n); paint(); } });
         inp.addEventListener('blur', function () { inp.value = NF.format(v[k]); });
+      });
+      /* v4: a city fills the price with its median 4-room deal; another typed price clears the city */
+      var sel = q('#nlmq-c'), cq = q('.nlmq__cq');
+      function cityOff(n) { if (v.city && cityBy[v.city] && n !== cityBy[v.city].median) { v.city = null; if (sel) sel.value = ''; if (cq) { cq.hidden = true; cq.textContent = ''; } } }
+      if (sel) sel.addEventListener('change', function () {
+        var c = cityBy[sel.value] || null; v.city = c ? c.k : null;
+        if (c) { v.price = c.median; q('#nlmq-p').value = NF.format(c.median); cq.textContent = cityQ(c); cq.hidden = false; } else { cq.hidden = true; cq.textContent = ''; }
+        paint();
       });
       root.addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b || !root.contains(b)) return;
@@ -191,9 +237,11 @@
         else if (b.hasAttribute('data-b')) { v.bank = b.getAttribute('data-b'); paint(); }
         else if (b.classList.contains('nlmq__copy') && last) {
           var who = v.bank === 'system' ? T.who_all : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
+          var cc = v.mode === 'price' && v.city ? cityBy[v.city] : null;  // v4: the city's median, when one was chosen
+          var ct = !cc ? '' : EN ? ' Home price: the median 4-room deal in ' + cityName(cc) + ', ' + quarterEn(cc.quarter) + ', Israel Tax Authority.' : ' מחיר הדירה: חציון העסקאות של 4 חדרים ב' + cc.he + ', ' + cc.quarter + ', רשות המסים.';
           var tx = EN
-            ? 'A ' + IL(last.loan) + ' mortgage over ' + v.years + ' years at the average mix of ' + who + ' in ' + MO(last.month) + ': first payment ' + IL(last.pay) + ', total repaid ' + IL(last.total) + '.\n' + location.origin + location.pathname
-            : 'משכנתא של ' + ils(last.loan) + ' ל־' + v.years + ' שנה, בתמהיל הממוצע של ' + who + ' ב' + month(last.month) + ': החזר ראשון ' + ils(last.pay) + ', סך ההחזרים ' + ils(last.total) + '.\n' + location.origin + location.pathname;
+            ? 'A ' + IL(last.loan) + ' mortgage over ' + v.years + ' years at the average mix of ' + who + ' in ' + MO(last.month) + ': first payment ' + IL(last.pay) + ', total repaid ' + IL(last.total) + '.' + ct + '\n' + location.origin + location.pathname
+            : 'משכנתא של ' + ils(last.loan) + ' ל־' + v.years + ' שנה, בתמהיל הממוצע של ' + who + ' ב' + month(last.month) + ': החזר ראשון ' + ils(last.pay) + ', סך ההחזרים ' + ils(last.total) + '.' + ct + '\n' + location.origin + location.pathname;
           var done = function () { b.textContent = T.copied; setTimeout(function () { b.textContent = T.copy; }, 1600); };
           if (navigator.clipboard) navigator.clipboard.writeText(tx).then(done, function () { window.prompt(T.prompt, tx); }); else window.prompt(T.prompt, tx);
         }

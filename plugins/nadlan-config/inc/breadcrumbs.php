@@ -150,8 +150,10 @@ if ( ! function_exists( 'nadlan_page_crumbs' ) ) {
 		$a     = shortcode_parse_atts( trim( $m[1] ) );
 		$a     = is_array( $a ) ? $a : array();
 		$label = function ( $id ) { $b = trim( (string) get_post_meta( $id, '_yoast_wpseo_bctitle', true ) ); return '' !== $b ? $b : wp_strip_all_tags( get_the_title( $id ) ); };
-		$items = array( array( 'name' => 'בית', 'url' => home_url( '/' ) ) );
-		foreach ( array_reverse( get_post_ancestors( $post ) ) as $anc ) { $items[] = array( 'name' => $label( $anc ), 'url' => get_permalink( $anc ) ); }
+		$pl    = function_exists( 'nadlan_pglang_lang' ) ? nadlan_pglang_lang() : '';  // 1.72.591 (HAD-675): a page under /en/, /fr/, /ru/ or /ar/ starts at that language's home
+		$homes = array( 'en' => 'Home', 'fr' => 'Accueil', 'ru' => 'Главная', 'ar' => 'الرئيسية' );
+		$items = array( isset( $homes[ $pl ] ) ? array( 'name' => $homes[ $pl ], 'url' => home_url( '/' . $pl . '/' ) ) : array( 'name' => 'בית', 'url' => home_url( '/' ) ) );
+		foreach ( array_reverse( get_post_ancestors( $post ) ) as $anc ) { if ( isset( $homes[ $pl ] ) && ! wp_get_post_parent_id( $anc ) && get_post_field( 'post_name', $anc ) === $pl ) { continue; } $items[] = array( 'name' => $label( $anc ), 'url' => get_permalink( $anc ) ); }
 		// hub="/global/|השקעות בחו״ל;/global/greece/|יוון": one or more levels above a page that has no WordPress parent (1.72.499)
 		if ( ! empty( $a['hub'] ) ) {
 			foreach ( explode( ';', $a['hub'] ) as $lvl ) {
@@ -168,7 +170,8 @@ add_shortcode( 'nadlan_crumbs', function () {
 	if ( ! is_page() || ! in_the_loop() ) { return ''; }
 	$items = nadlan_page_crumbs();
 	if ( count( $items ) < 2 ) { return ''; }
-	$n = count( $items ); $h = '<nav class="nlbc nlbc--page" dir="rtl" aria-label="מיקום בעמוד">';
+	$pl = function_exists( 'nadlan_pglang_lang' ) ? nadlan_pglang_lang() : ''; $rtl = in_array( $pl, array( '', 'ar' ), true );  // 1.72.591: the trail speaks the page's language
+	$n = count( $items ); $h = '<nav class="nlbc nlbc--page" dir="' . ( $rtl ? 'rtl' : 'ltr' ) . '" aria-label="' . ( '' === $pl ? 'מיקום בעמוד' : ( 'ar' === $pl ? 'مسار التنقل' : 'Breadcrumb' ) ) . '">';
 	foreach ( array_values( $items ) as $i => $it ) {
 		$h .= $i + 1 < $n ? '<a href="' . esc_url( $it['url'] ) . '">' . esc_html( $it['name'] ) . '</a><span class="nlbc-sep" aria-hidden="true">›</span>'
 			: '<span aria-current="page">' . esc_html( $it['name'] ) . '</span>';

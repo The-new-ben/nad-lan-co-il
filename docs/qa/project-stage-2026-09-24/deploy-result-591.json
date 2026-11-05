@@ -1,0 +1,23 @@
+{
+  "released": "1.72.591",
+  "from": "1.72.590",
+  "live_before": {
+    "assets/instruments/tools/mexit.js": "cecae653670178b78b39f816e6f4504d",
+    "assets/instruments/tools/mrates-common.js": "07a884622a4ba2e6da46f00eb18424d2",
+    "assets/instruments/tools/mquick.js": "f80dff3a2aa32180dd413c48d7e0ce5e",
+    "nadlan-config.php": "5409b36c2ce159fda6a9fdc73ccde119",
+    "inc/breadcrumbs.php": "21757fd70bb77b45b38afc43874482cc"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 00:25:48",
+  "files": {
+    "assets/instruments/tools/mexit.js": "e3dc6204d21df2fc2fd2b14a66fbed82",
+    "assets/instruments/tools/mrates-common.js": "2925adec76f5bc03bc64650173690073",
+    "assets/instruments/tools/mquick.js": "1b24bf3ca4b1e889b2bca401d3c0a293",
+    "nadlan-config.php": "2e1d97f0270c40b66d3cc571af78ff40",
+    "inc/breadcrumbs.php": "3d9952400a4f96453dc55fd42f43effe"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.591, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

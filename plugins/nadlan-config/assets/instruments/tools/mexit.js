@@ -8,6 +8,14 @@
    - "I already have a mortgage": loan month, amount, term, track and rate -> the balance today and the fee if repaid today, from
      the Bank of Israel averages in force today and on the loan day (prepay.nl / prepay.cpi). The data's worked example
      (1,000,000 ILS fixed not linked from 2024-11 at 4.88%) gives 15,908 ILS on 956,994 ILS (test_mrates.js).
+   Round E (HAD-675, 6.11.2026), in "I already have a mortgage": "האם למחזר?". The balance refinanced today for the months left in the
+   same track at the Bank of Israel average (NLMR.refiAvg: a fixed track at the term-to-maturity file in force today, prime and the
+   variable tracks at the track's average of all banks, by_bank, latest month; the reader may type an offer instead), the new
+   payment, the monthly saving or extra, the one-off costs found in the data (the capitalization fee, the operational fee up to 60
+   ILS, 0.1% for under 10 days notice) plus the reader's own appraiser and file costs (empty by default: not in any official file),
+   and the months until the saving covers them; "לא משתלם כרגע" when there is no saving or it does not cover them by the end.
+   Costs and months, never a recommendation. The worked example: 956,994 ILS for 276 months, 5,776 a month today at 4.88%; at the
+   4.788% average (in force 19.10.2026): 5,671 a month, about 105 less, against 16,925 ILS of costs: 162 months (test_mrates.js).
    Math: NLMR on NLMG. Hebrew only, RTL. */
 (function () {
   'use strict';
@@ -30,18 +38,20 @@
     var HZ = [['3', '3 שנים'], ['5', '5 שנים'], ['7', '7 שנים'], ['10', '10 שנים'], ['end', 'עד הסוף']];
     var EX = { date: '2024-11', k: 'fixed_nl' }, exRate = R.rateIn(D, EX.k, EX.date);
     var st = { mode: 'plan', hz: '5', amount: 1000000, years: 25, src: 'system', ex: true, rows: sys.rows.map(function (r) { return { k: r.k, share: r.share, rate: r.rate }; }),
-      have: { date: EX.date, amount: 1000000, years: 25, k: EX.k, rate: exRate != null ? exRate : 4.88, touched: false } };
+      have: { date: EX.date, amount: 1000000, years: 25, k: EX.k, rate: exRate != null ? exRate : 4.88, touched: false },
+      refi: { rate: null, touched: false, extra: null, notice: 'short' } };  // round E: until typed, the refinance rate follows the average
     var h = U.fromHash('mexit');
     if (h) {
       st.ex = false; st.mode = h.mo === 'have' ? 'have' : 'plan'; if (h.hz) st.hz = String(h.hz); if (isFinite(h.a)) st.amount = +h.a; if (isFinite(h.y)) st.years = +h.y; st.src = h.s || 'own';
       if (Array.isArray(h.r)) h.r.forEach(function (x) { var r = st.rows.filter(function (q) { return q.k === x[0]; })[0]; if (r) { r.share = +x[1] || 0; r.rate = +x[2]; } });
       if (h.hv) st.have = { date: R.parseMonth(h.hv[0]) || EX.date, amount: +h.hv[1] || 1000000, years: +h.hv[2] || 25, k: R.KIND[h.hv[3]] ? h.hv[3] : 'fixed_nl', rate: +h.hv[4], touched: true };
+      if (Array.isArray(h.rf)) st.refi = { rate: h.rf[0] != null && isFinite(h.rf[0]) ? +h.rf[0] : null, touched: h.rf[0] != null && isFinite(h.rf[0]), extra: +h.rf[1] > 0 ? +h.rf[1] : null, notice: h.rf[2] === 'long' ? 'long' : 'short' };
     }
 
     var P = U.panel(root, {
       kicker: 'לפני שנכנסים · פירעון מוקדם',
       title: 'כמה תעלה היציאה',
-      lede: 'מתכננים למכור, לשדרג או למחזר בעוד כמה שנים? מה תעלה המשכנתא עד אז בכל תמהיל: הריבית, ההצמדה ועמלת הפירעון המוקדם לפי צו הבנקאות, לפי תחזית בנק ישראל. ויש מצב למשכנתא שכבר לקחתם: כמה עולה לפרוע אותה היום.',
+      lede: 'מתכננים למכור, לשדרג או למחזר בעוד כמה שנים? מה תעלה המשכנתא עד אז בכל תמהיל: הריבית, ההצמדה ועמלת הפירעון המוקדם לפי צו הבנקאות, לפי תחזית בנק ישראל. ויש מצב למשכנתא שכבר לקחתם: כמה עולה לפרוע אותה היום, ואם ממחזרים בריבית הממוצעת: ההחזר החדש ובכמה חודשים החיסכון מכסה את העלויות.',
       strip: [['ריבית בנק ישראל היום', F.pc(POL.rate)], ['תחזית חטיבת המחקר, רבע 3 של 2027', F.pc(FC.rate_q3_2027, 1)], ['תחזית המדד לשנה', F.pc(FC.inflation_4q, 1)], ['הממוצעים לעמלת הפירעון', 'מ־' + F.date(D.prepay.nl.rows[D.prepay.nl.rows.length - 1][0])]],
       eg: 'הערכים בפתיחה הם דוגמה: 1,000,000 ₪ ל־25 שנה בתמהיל הממוצע של ' + F.month(sys.month) + ', ובמשכנתא קיימת: 1,000,000 ₪ קבועה לא צמודה מ־' + F.month(EX.date) + '. שנו אותם, והתוצאה מתעדכנת מיד. אלה עלויות לפי מועד היציאה, לא המלצה על תמהיל ולא ייעוץ.'
     });
@@ -193,6 +203,7 @@
       o.appendChild(srcLine([U.srcHe(D, D.prepay[r.file].src, r.file === 'cpi' ? 'pribmash' : 'mashfix'), D.fees.src, r.linked && X.cpi ? { label: X.cpi.source, url: D.cpi.src.url } : null],
         'היתרה: לוח שפיצר בריבית שלכם מהחודש של ההלוואה' + (r.kind === 'var5' || r.kind === 'prime' ? ' (במסלול משתנה: כאילו הריבית של היום חלה מההתחלה)' : '') + (r.linked ? ', כפול המדד האחרון ÷ המדד של חודש ההלוואה' : '') + '. הממוצעים: קובצי בנק ישראל לעמלת פירעון מוקדם, ריבית אפקטיבית שהומרה לנומינלית (1 + ר)^(1/12) − 1; הממוצע ביום ההלוואה: הקובץ שהיה בתוקף ב־15 לחודש. מקורות: '));
       P.secs.innerHTML = '';
+      paintRefi(L);
       if (L.later.length && r.kind !== 'prime') {
         var s = U.sec(P.secs, 'אם פורעים מאוחר יותר, בממוצעים של היום', 'אחרי 3 שנים מיום ההלוואה העמלה יורדת ב־20%, ואחרי 5 שנים ב־30%. אותם ממוצעים כמו היום; ביום הפירעון הם יהיו אחרים.');
         var rows = [{ cls: 'is-on', cells: [esc('היום, ' + F.month(NOW)), esc(F.ils(r.bal)), esc(F.ils(r.fee))] }].concat(L.later.map(function (x) {
@@ -202,10 +213,76 @@
       }
     }
 
-    function state() { return { mo: st.mode, hz: st.hz, a: st.amount, y: st.years, s: st.src, r: st.rows.map(function (r) { return [r.k, Math.round(r.share * 1000) / 1000, Math.round(r.rate * 10000) / 10000]; }), hv: [st.have.date, st.have.amount, st.have.years, st.have.k, st.have.rate] }; }
+    /* ---------------------------------------------------------------- round E: "האם למחזר?" (the existing loan refinanced today) */
+    var lastRefi = null;
+    function refiOpts() { var hv = st.have, rf = st.refi; return { date: hv.date, amount: hv.amount, years: hv.years, k: hv.k, rate: hv.rate, newRate: rf.touched ? rf.rate : null, extra: rf.extra, notice: rf.notice !== 'long' }; }
+    function avgLabel(a) {  // where the average comes from, and its month
+      return a.via === 'prepay'
+        ? 'הממוצע של בנק ישראל ל' + R.NAME[st.have.k] + ' של ' + a.lab + ' (התקופה שנותרה), בתוקף מ־' + F.date(a.from) + ', נתוני ' + F.month(a.month)
+        : 'הממוצע של בנק ישראל ב' + R.NAME[st.have.k] + ', משכנתאות חדשות בכל הבנקים, ' + F.month(a.month);
+    }
+    function feeNone(x) { var k = R.KIND[st.have.k].kind; return k === 'prime' ? 'ללא: פריים' : x.fx.why === 'reset' ? 'ללא: יום שינוי הריבית' : 'ללא: הממוצע לא נמוך מהריבית'; }
+    function nextChange() { return R.mAdd(st.have.date, 60 * Math.ceil(Math.max(1, R.mDiff(st.have.date, NOW)) / 60)); }
+    function paintRefi(L) {
+      if (!R.refiAvg || !R.refiExisting) return;  // an older cached mrates-common.js: the fee works as before, the refinance waits
+      var fx = L.r, hv = st.have, rf = st.refi, K = R.KIND[hv.k], a = R.refiAvg(D, hv.k, fx.left), t2 = 0;
+      lastRefi = null;
+      if (rf.touched && rf.k && rf.k !== hv.k) { rf.touched = false; rf.rate = null; }  // a typed offer belongs to its track: another track opens at its own average
+      var s = U.sec(P.secs, 'האם למחזר?', 'אם ממחזרים היום את היתרה, ' + F.ils(fx.bal) + ', ל־' + F.num(fx.left) + ' החודשים שנותרו באותו מסלול, בריבית הממוצעת של בנק ישראל: ההחזר החדש, ההפרש בחודש, העלויות של היציאה ובכמה חודשים החיסכון מכסה אותן. עלויות וחודשים, לא המלצה.');
+      var g = el('div', 'nli__grid mrx__rfg'), f = el('form', 'nli__form'), o = el('div', 'nli__out');
+      f.addEventListener('submit', function (e) { e.preventDefault(); }); o.setAttribute('aria-live', 'polite');
+      g.appendChild(f); g.appendChild(o); s.appendChild(g);
+      var help = a ? 'נפתח בממוצע של בנק ישראל: ' + esc(F.pc(a.eff)) + ' אפקטיבית, ' + esc(F.pc(a.nom)) + ' לתשלום חודשי. אם קיבלתם הצעה למחזור, הקלידו את הריבית שלה.' : 'אין בקובץ ממוצע למסלול הזה: הקלידו את הריבית שהוצעה לכם.';
+      var fr = U.field('הריבית במחזור', rf.touched ? rf.rate : a ? a.nom : null, '%', function (n) { rf.touched = isFinite(n); rf.rate = rf.touched ? n : null; rf.k = hv.k; edited(); }, { dec: 2, help: help });
+      var fe = U.field('עלויות נוספות (שמאי, פתיחת תיק)', rf.extra, '₪', function (n) { rf.extra = n > 0 ? n : null; edited(); }, { money: true, help: 'אינן בנתונים הרשמיים, ולכן השדה ריק. הקלידו את הסכום מההצעה שקיבלתם.' });
+      var fn = U.seg('הודעה לבנק על הפירעון', [['short', 'פחות מ־10 ימים'], ['long', '10 ימים ומעלה']], rf.notice, function (k) { rf.notice = k; edited(); });
+      var box = el('div', 'mrx__box'); [fr, fe, fn].forEach(function (x) { box.appendChild(x); }); f.appendChild(box);
+      function edited() { st.ex = false; [].forEach.call(P.panel.querySelectorAll('.mrx__eg'), function (x) { x.parentNode.removeChild(x); }); clearTimeout(t2); t2 = setTimeout(draw, 90); }
+      function draw() {
+        fr._err.textContent = ''; o.innerHTML = ''; lastRefi = null;
+        if (rf.touched && !(rf.rate >= 0 && rf.rate <= 20)) { fr._err.textContent = 'ריבית בין 0% ל־20%.'; return; }
+        var x = R.refiExisting(refiOpts(), D, X.cpi, NOW, fx);
+        if (!x) { o.appendChild(el('p', 'nli__note', 'אין בקובץ ממוצע של בנק ישראל למסלול הזה. הקלידו את הריבית שהוצעה לכם.')); return; }
+        lastRefi = x;
+        var b = function (v) { return '<bdi>' + esc(F.ils(v)) + '</bdi>'; }, ok = x.months != null && x.within, sub;
+        if (x.months == null) sub = 'ההחזר אחרי מחזור, ' + b(x.newPay) + ', לא נמוך מההחזר היום, ' + b(x.oldPay) + ', ולכן אין חיסכון חודשי שיכסה עלויות של ' + b(x.cost) + '.';
+        else if (!ok) sub = 'חיסכון של ' + b(x.save) + ' בחודש מול עלויות של ' + b(x.cost) + ': ' + esc(F.num(x.months)) + ' חודשים, יותר מ־' + esc(F.num(x.left)) + ' החודשים שנותרו להלוואה.';
+        else sub = 'ההחזר יורד מ־' + b(x.oldPay) + ' ל־' + b(x.newPay) + ', חיסכון של ' + b(x.save) + ' בחודש, מול עלויות של ' + b(x.cost) + '. ' + esc(F.num(x.months)) + ' חודשים הם כ־' + esc(F.num(x.months / 12, 1)) + ' שנים, מתוך ' + esc(F.num(x.left)) + ' החודשים שנותרו.';
+        var A = U.answer('בכמה חודשים החיסכון מכסה את העלויות', ok ? F.num(x.months) + ' חודשים' : 'לא משתלם כרגע', sub, st.ex);
+        A.querySelector('.nli__fig').classList.add('is-he'); o.appendChild(A);
+        var li = [['ההחזר היום, בריבית ' + F.pc(hv.rate) + (K.linked ? ', בשקלים של היום' : ''), F.ils(x.oldPay)],
+          [x.own ? 'הריבית במחזור, כפי שהקלדתם' : avgLabel(a), x.own ? F.pc(x.rate) : F.pc(a.eff) + ' אפקטיבית · ' + F.pc(a.nom) + ' לתשלום חודשי'],
+          ['ההחזר אחרי מחזור, ל־' + F.num(x.left) + ' חודשים', F.ils(x.newPay)],
+          x.save >= 0.5 ? ['חיסכון בחודש', F.ils(x.save)] : x.save <= -0.5 ? ['תוספת בחודש', F.ils(-x.save)] : ['הפרש בחודש', F.ils(0)],
+          ['עמלת היוון', x.fee > 0.5 ? F.ils(x.fee) : feeNone(x)],
+          ['עמלה תפעולית', 'עד ' + F.ils(x.op)],
+          ['הודעה של פחות מ־10 ימים (0.1% מהיתרה)', rf.notice === 'long' ? 'ללא: 10 ימים ומעלה' : F.ils(x.notice)],
+          ['עלויות נוספות (שמאי, פתיחת תיק)', x.extra > 0 ? F.ils(x.extra) : 'לא הוקלדו'],
+          ['סך העלויות', F.ils(x.cost)],
+          ['חודשים עד שהחיסכון מכסה את העלויות', x.months == null ? 'אין חיסכון' : F.num(x.months) + (x.within ? ' מתוך ' + F.num(x.left) : ', יותר מ־' + F.num(x.left) + ' שנותרו')]];
+        if (x.cpiFee > 0.5) li.push(['לא נכלל: בפירעון בין ה־1 ל־15 בחודש במסלול צמוד (מחצית השינוי הממוצע במדד)', F.ils(x.cpiFee)]);
+        o.appendChild(U.lines(li));
+        var why = K.kind === 'prime' ? 'במסלול הפריים אין עמלת היוון: הריבית משתנה במועד לא ידוע (צו הבנקאות, סעיף 4). נשארות העמלה התפעולית וההודעה המוקדמת.'
+          : K.kind === 'var5' ? (fx.why === 'reset' ? 'החודש הוא יום שינוי הריבית במסלול, ובו אין עמלת היוון (צו הבנקאות, סעיף 4).' : 'במסלול משתנה עמלת ההיוון מחושבת רק עד יום שינוי הריבית הבא, ' + F.month(nextChange()) + ', וביום השינוי עצמו אין עמלת היוון (צו הבנקאות, סעיף 4).')
+          : 'במסלול קבוע עמלת ההיוון מחושבת מהפרש התשלומים עד סוף ההלוואה, מהוון בריבית הממוצעת של היום (צו הבנקאות, סעיף 3), ולכן היא גדלה ככל שהחיסכון בחודש גדל.';
+        o.appendChild(el('p', 'mrx__hint', esc(why)));
+        var sa = null;
+        if (a && a.via === 'prepay') { var h0 = U.srcHe(D, a.src, a.file === 'cpi' ? 'pribmash' : 'mashfix'); sa = { label: h0.label + ', בתוקף מ־' + F.date(a.from), url: h0.url }; }
+        else if (a) sa = { label: 'בנק ישראל, השוואת ריביות במשכנתאות לפי בנק, ' + F.month(a.month), url: D.by_bank.src.page || D.by_bank.src.url };
+        o.appendChild(srcLine([sa, D.fees.src], 'ההחזר: לוח שפיצר על היתרה של היום ל־' + F.num(x.left) + ' החודשים שנותרו, בריבית שלכם ובריבית במחזור' + (K.linked ? ', בשקלים של היום (שני ההחזרים צמודים לאותו מדד)' : '') + '. העמלה והעלויות משולמות בנפרד ואינן מתווספות להלוואה החדשה. חודשים עד שהחיסכון מכסה את העלויות = סך העלויות ÷ החיסכון בחודש, מעוגל כלפי מעלה, בלי היוון. ריבית אפקטיבית הומרה לנומינלית: (1 + ר)^(1/12) − 1. מקורות: '));
+      }
+      draw();
+    }
+
+    function state() { return { mo: st.mode, hz: st.hz, a: st.amount, y: st.years, s: st.src, r: st.rows.map(function (r) { return [r.k, Math.round(r.share * 1000) / 1000, Math.round(r.rate * 10000) / 10000]; }), hv: [st.have.date, st.have.amount, st.have.years, st.have.k, st.have.rate],
+      rf: [st.refi.touched ? st.refi.rate : null, st.refi.extra, st.refi.notice] }; }
     function paintShare(L) {
       U.shareBar(P.share, function () {
-        if (L.mode === 'have') { var r = L.r; return 'פירעון מוקדם היום: הלוואה של ' + F.ils(st.have.amount) + ' ב' + R.NAME[st.have.k] + ' מ־' + F.month(st.have.date) + ' בריבית ' + F.pc(st.have.rate) + ': יתרה ' + F.ils(r.bal) + ', עמלת היוון כ־' + F.ils(r.fee) + '.'; }
+        if (L.mode === 'have') {
+          var r = L.r, x = lastRefi, tx = 'פירעון מוקדם היום: הלוואה של ' + F.ils(st.have.amount) + ' ב' + R.NAME[st.have.k] + ' מ־' + F.month(st.have.date) + ' בריבית ' + F.pc(st.have.rate) + ': יתרה ' + F.ils(r.bal) + ', עמלת היוון כ־' + F.ils(r.fee) + '.';
+          if (x) tx += ' מחזור בריבית ' + F.pc(x.rate) + (x.own ? '' : ' (הממוצע של בנק ישראל)') + ': החזר ' + F.ils(x.newPay) + ' במקום ' + F.ils(x.oldPay) + (x.months != null && x.within ? ', והחיסכון מכסה עלויות של ' + F.ils(x.cost) + ' אחרי ' + F.num(x.months) + ' חודשים.' : ', לא משתלם כרגע מול עלויות של ' + F.ils(x.cost) + '.');
+          return tx;
+        }
         var me = L.res[0]; return 'כמה תעלה היציאה: משכנתא של ' + F.ils(st.amount) + ' ל־' + F.num(st.years) + ' שנה, ' + (st.hz === 'end' ? 'עד הסוף' : 'יציאה בעוד ' + F.num(L.y) + ' שנים') + ': ריבית, הצמדה ועמלה ' + F.ils(me.price) + ' בתמהיל שלי' + (me.end ? '.' : ' (עמלה צפויה ' + F.ils(me.fee) + ').');
       }, function () { return U.link('mexit', state()); });
     }

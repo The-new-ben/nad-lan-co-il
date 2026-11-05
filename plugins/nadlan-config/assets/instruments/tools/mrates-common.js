@@ -6,6 +6,8 @@
      by the index ratio. Exact, because a linked Spitzer payment is the real payment times the cumulative index;
    - the early-repayment fee of a loan taken in the past: NLMG.prepayFee with the two averages of the Banking Order read from the
      Bank of Israel files (the average in force on the loan day and today's), passed as a one-bucket term table and a "drop".
+   Round E (HAD-675, 6.11.2026), added only: refiAvg and refiExisting (mexit "האם למחזר?") and two style rules (.nli__fig.is-he,
+   .mrx__rfg). Nothing above them changed, so mdecision and mreplay behave as before.
    Data: boi-mortgage.json (key "boim": policy, forecast, expect, by_bank, prepay, fees, baskets, term, flows, cpi), boi-rate.json
    (key "boi"), cbs-120010.json (CPI). The pure part runs in node for test_mrates.js; the page part needs core.js (the engine). */
 (function () {
@@ -201,12 +203,46 @@
     return out;
   }
 
+  /* round E (HAD-675, 6.11.2026): "האם למחזר?" in mexit's "משכנתא שכבר יש לי". The Bank of Israel average for a new loan in the same
+     track: a fixed track at the average of the term-to-maturity file in force today for the months left (prepay.nl / prepay.cpi,
+     the same column as s.3(3) of the fee); prime and the two variable tracks at the track's average on new mortgages of all the
+     banks in the latest month (by_bank, TamInt010.xls), because their rate is set to the next change day, not to the end.
+     Effective annual % turned nominal for a monthly payment (NLMG.ef2nom), like every other figure of the page. */
+  function refiAvg(D, k, left) {
+    var K = KIND[k]; if (!K) return null;
+    if (K.kind === 'fixed') {
+      var T = D.prepay && D.prepay[K.file]; if (!T) return null;
+      var row = T.rows[T.rows.length - 1], col = colFor(K.file, Math.max(left, 1) / 12), e = avgOf(D, K.file, row, col);
+      return e == null ? null : { eff: e, nom: L().ef2nom(e), via: 'prepay', file: K.file, col: col, lab: BLAB[col], from: row[0], month: String(row[1]).slice(0, 7), src: T.src };
+    }
+    var m = bankMix(D, 'system'); if (!m) return null;
+    var r = m.rows.filter(function (x) { return x.k === k; })[0]; if (!r || !(r.eff > 0)) return null;
+    return { eff: r.eff, nom: r.rate, via: 'by_bank', month: m.month, src: D.by_bank.src };
+  }
+  /* the balance of feeExisting refinanced today for the months left, at the average (or at o.newRate, the reader's offer, nominal %).
+     Payments by NLMG.pmt on the same balance and months: today's at the loan's rate (on a Spitzer loan it is the payment being paid
+     now; on a linked one, in today's shekels with the index so far), the new one at the new rate. One-off costs: the capitalization
+     fee, the operational fee (up to fees.operational_max), the 0.1% short-notice fee when o.notice is not false, and o.extra (the
+     reader's appraiser or file costs: not in any official file, so 0 unless typed). months = ceil(costs / monthly saving); null when
+     the saving is under half a shekel (shown as "לא משתלם כרגע"). The fee and costs are paid up front, not added to the new loan. */
+  function refiExisting(o, D, C, now, fx) {
+    fx = fx || feeExisting(o, D, C, now);
+    var avg = refiAvg(D, o.k, fx.left), own = o.newRate != null && isFinite(o.newRate);
+    var nom = own ? +o.newRate : avg ? avg.nom : null; if (nom == null) return null;
+    var n = fx.left, oldPay = L().pmt(fx.bal, o.rate / 1200, n), newPay = L().pmt(fx.bal, nom / 1200, n), save = oldPay - newPay;
+    var notice = o.notice === false ? 0 : fx.notice, extra = Math.max(0, +o.extra || 0), cost = fx.fee + fx.op + notice + extra;
+    var months = save >= 0.5 ? Math.ceil(cost / save) : null;
+    return { fx: fx, avg: avg, own: own, rate: nom, left: n, bal: fx.bal, oldPay: oldPay, newPay: newPay, save: save,
+      fee: fx.fee, op: fx.op, notice: notice, cpiFee: fx.cpiFee, extra: extra, cost: cost, months: months, within: months != null && months <= n };
+  }
+
   var NLMR = { TK: TK, KIND: KIND, NAME: NAME, SHORT: SHORT, COL: COL, BASKET_KEY: BASKET_KEY, REPLAY: REPLAY, BLAB: BLAB,
     pick: pick, mAdd: mAdd, mDiff: mDiff, nowKey: nowKey, lastDay: lastDay, parseMonth: parseMonth,
     bankMix: bankMix, bankList: bankList, mathRows: mathRows, basketRows: basketRows,
     quarter: quarter, rampMonths: rampMonths, pathPay: pathPay, decision: decision, ladderPay: ladderPay, pathMix: pathMix,
     boiOn: boiOn, replayPath: replayPath, replay: replay,
-    exitAt: exitAt, exitScenario: exitScenario, colFor: colFor, avgRow: avgRow, avgOf: avgOf, cpiAt: cpiAt, rateIn: rateIn, feeExisting: feeExisting };
+    exitAt: exitAt, exitScenario: exitScenario, colFor: colFor, avgRow: avgRow, avgOf: avgOf, cpiAt: cpiAt, rateIn: rateIn, feeExisting: feeExisting,
+    refiAvg: refiAvg, refiExisting: refiExisting };
   G.NLMR = NLMR;
   if (typeof document === 'undefined') return;  // node: the math only
 
@@ -237,6 +273,8 @@
       '.mrx__p{font:400 14px/22px var(--nli-sans);color:var(--nli-ink2);margin:0 0 12px;max-width:72ch}',
       'html body .nli .mrx .nli__fig.is-key{color:var(--nli-ink);text-decoration:underline;text-decoration-color:var(--nli-survey);text-decoration-thickness:2px;text-underline-offset:8px;margin:4px 0 10px}',
       '.mrx .nli__answer{border-color:var(--nli-sea);background:var(--nli-surface)}',
+      'html body .nli .mrx .nli__fig.is-he{font:600 30px/38px var(--nli-sans);direction:rtl;unicode-bidi:isolate;text-align:right}',  // round E: "162 חודשים", "לא משתלם כרגע"
+      '.mrx .mrx__rfg{margin-top:4px}',
       '.mrx__al{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}',
       '.mrx__eg{font:500 12px/16px var(--nli-sans);color:var(--nli-mute);border:1px solid var(--nli-line);border-radius:999px;padding:2px 10px;white-space:nowrap}',
       '.mrx__src{font:400 12px/18px var(--nli-mono),var(--nli-sans);color:var(--nli-mute);margin:0;overflow-wrap:anywhere}',

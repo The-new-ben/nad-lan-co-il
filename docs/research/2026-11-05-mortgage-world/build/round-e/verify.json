@@ -1,0 +1,597 @@
+{
+ "checks": 104,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 mquick default payment 5,428",
+   "ok": true,
+   "got": "5,428 ₪"
+  },
+  {
+   "check": "390 city select hidden in amount mode",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 city select visible in price mode",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 26 options (placeholder, Israel, 24 cities)",
+   "ok": true,
+   "got": [
+    "בחרו עיר",
+    "ישראל",
+    "אילת",
+    "אשדוד"
+   ]
+  },
+  {
+   "check": "390 no city: price 1,600,000 and payment unchanged",
+   "ok": true,
+   "got": "6,514 ₪"
+  },
+  {
+   "check": "390 select box >= 44 px, font 16 px",
+   "ok": true,
+   "got": {
+    "h": 46,
+    "box": 48,
+    "fs": "16px"
+   }
+  },
+  {
+   "check": "390 Tel Aviv-Yafo fills 5,229,800 and its quarter",
+   "ok": true,
+   "got": [
+    "5,229,800",
+    "חציון 1-3.2026, רשות המסים"
+   ]
+  },
+  {
+   "check": "390 payment on a 4,829,800 loan, LTV 92.4%",
+   "ok": true,
+   "got": [
+    "26,218 ₪",
+    "שיעור המימון 92.4%: מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (70% לדירה חלופית, 50% לדירה נוספת)."
+   ]
+  },
+  {
+   "check": "390 Israel: 2,028,800 (4-6.2026)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 typing a price clears the city",
+   "ok": true,
+   "got": ""
+  },
+  {
+   "check": "390 mquick controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 mquick no long dashes",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the fee of the worked example still 15,908",
+   "ok": true,
+   "got": "₪15,908"
+  },
+  {
+   "check": "390 refinance: 162 months",
+   "ok": true,
+   "got": "162 חודשים"
+  },
+  {
+   "check": "390 refinance shows 5,776",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 5,671",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 105",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 15,908",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 957",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 16,925",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 4.79% אפקטיבית",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 4.69% לתשלום חודשי",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 19.10.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 9.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows 162 מתוך 276",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 refinance shows לא הוקלדו",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 rate field opens at the average 4.69",
+   "ok": true,
+   "got": "4.69"
+  },
+  {
+   "check": "390 extra costs field empty",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no \"מומלץ\" anywhere in mexit",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mexit no long dashes",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 notice of 10 days or more: 153 months",
+   "ok": true,
+   "got": "153 חודשים"
+  },
+  {
+   "check": "390 typing 3000 keeps focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 extra 3,000 (notice 10+ days): 181 months",
+   "ok": true,
+   "got": "181 חודשים"
+  },
+  {
+   "check": "390 an offer of 4.83%: \"לא משתלם כרגע\"",
+   "ok": true,
+   "got": "לא משתלם כרגע"
+  },
+  {
+   "check": "390 typed rate labelled as typed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 prime: \"ללא: פריים\" and the Banking Order note",
+   "ok": true,
+   "got": "האם למחזר?\n\nאם ממחזרים היום את היתרה, ₪956,994, ל־276 החודשים שנותרו באותו מסלול, בריבית הממוצעת של בנק ישראל: ההחזר החד"
+  },
+  {
+   "check": "390 variable: fee to the change day, said so",
+   "ok": true,
+   "got": "האם למחזר?\n\nאם ממחזרים היום את היתרה, ₪985,796, ל־276 החודשים שנותרו באותו מסלול"
+  },
+  {
+   "check": "390 mexit controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 no horizontal scroll (Hebrew page)",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 no console errors (Hebrew page)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 amount mode: text identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 amount mode: pixels identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 price mode without the city block: DOM identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mquick default payment 5,428",
+   "ok": true,
+   "got": "5,428 ₪"
+  },
+  {
+   "check": "1280 city select hidden in amount mode",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 city select visible in price mode",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 26 options (placeholder, Israel, 24 cities)",
+   "ok": true,
+   "got": [
+    "בחרו עיר",
+    "ישראל",
+    "אילת",
+    "אשדוד"
+   ]
+  },
+  {
+   "check": "1280 no city: price 1,600,000 and payment unchanged",
+   "ok": true,
+   "got": "6,514 ₪"
+  },
+  {
+   "check": "1280 select box >= 44 px, font 16 px",
+   "ok": true,
+   "got": {
+    "h": 46,
+    "box": 48,
+    "fs": "16px"
+   }
+  },
+  {
+   "check": "1280 Tel Aviv-Yafo fills 5,229,800 and its quarter",
+   "ok": true,
+   "got": [
+    "5,229,800",
+    "חציון 1-3.2026, רשות המסים"
+   ]
+  },
+  {
+   "check": "1280 payment on a 4,829,800 loan, LTV 92.4%",
+   "ok": true,
+   "got": [
+    "26,218 ₪",
+    "שיעור המימון 92.4%: מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (70% לדירה חלופית, 50% לדירה נוספת)."
+   ]
+  },
+  {
+   "check": "1280 Israel: 2,028,800 (4-6.2026)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 typing a price clears the city",
+   "ok": true,
+   "got": ""
+  },
+  {
+   "check": "1280 mquick controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 mquick no long dashes",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the fee of the worked example still 15,908",
+   "ok": true,
+   "got": "₪15,908"
+  },
+  {
+   "check": "1280 refinance: 162 months",
+   "ok": true,
+   "got": "162 חודשים"
+  },
+  {
+   "check": "1280 refinance shows 5,776",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 5,671",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 105",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 15,908",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 957",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 16,925",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 4.79% אפקטיבית",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 4.69% לתשלום חודשי",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 19.10.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 9.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows 162 מתוך 276",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 refinance shows לא הוקלדו",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 rate field opens at the average 4.69",
+   "ok": true,
+   "got": "4.69"
+  },
+  {
+   "check": "1280 extra costs field empty",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no \"מומלץ\" anywhere in mexit",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mexit no long dashes",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 notice of 10 days or more: 153 months",
+   "ok": true,
+   "got": "153 חודשים"
+  },
+  {
+   "check": "1280 typing 3000 keeps focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 extra 3,000 (notice 10+ days): 181 months",
+   "ok": true,
+   "got": "181 חודשים"
+  },
+  {
+   "check": "1280 an offer of 4.83%: \"לא משתלם כרגע\"",
+   "ok": true,
+   "got": "לא משתלם כרגע"
+  },
+  {
+   "check": "1280 typed rate labelled as typed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 prime: \"ללא: פריים\" and the Banking Order note",
+   "ok": true,
+   "got": "האם למחזר?\n\nאם ממחזרים היום את היתרה, ₪956,994, ל־276 החודשים שנותרו באותו מסלול, בריבית הממוצעת של בנק ישראל: ההחזר החד"
+  },
+  {
+   "check": "1280 variable: fee to the change day, said so",
+   "ok": true,
+   "got": "האם למחזר?\n\nאם ממחזרים היום את היתרה, ₪985,796, ל־276 החודשים שנותרו באותו מסלול"
+  },
+  {
+   "check": "1280 mexit controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 no horizontal scroll (Hebrew page)",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 no console errors (Hebrew page)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 amount mode: text identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 amount mode: pixels identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 price mode without the city block: DOM identical to live v3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 EN: lang en, ltr",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 EN: label and options in English, sorted",
+   "ok": true,
+   "got": [
+    "Choose a city",
+    "All of Israel",
+    "Ashdod",
+    "Ashkelon",
+    "Yavne"
+   ]
+  },
+  {
+   "check": "390 EN: Tel Aviv-Yafo fills 5,229,800, Q1 2026",
+   "ok": true,
+   "got": [
+    "5,229,800",
+    "Median, Q1 2026, Israel Tax Authority",
+    "₪26,218"
+   ]
+  },
+  {
+   "check": "390 EN: no Hebrew letters in the tool",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "390 EN: controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 EN: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 EN: no console errors",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 EN: lang en, ltr",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 EN: label and options in English, sorted",
+   "ok": true,
+   "got": [
+    "Choose a city",
+    "All of Israel",
+    "Ashdod",
+    "Ashkelon",
+    "Yavne"
+   ]
+  },
+  {
+   "check": "1280 EN: Tel Aviv-Yafo fills 5,229,800, Q1 2026",
+   "ok": true,
+   "got": [
+    "5,229,800",
+    "Median, Q1 2026, Israel Tax Authority",
+    "₪26,218"
+   ]
+  },
+  {
+   "check": "1280 EN: no Hebrew letters in the tool",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "1280 EN: controls >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 EN: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 EN: no console errors",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme: the select keeps 16 px, no own border, box >= 44 px",
+   "ok": true,
+   "got": {
+    "box": 48,
+    "h": 46,
+    "fs": "16px",
+    "ff": "\"IBM Plex Sans Hebrew\", \"IBM P",
+    "bw": "0px"
+   }
+  },
+  {
+   "check": "theme: Haifa 1,597,500",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "theme: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "theme: no page errors",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

@@ -90,3 +90,9 @@
 ## Round D (5.11 night, content only, no release)
 - Shorter lead; aria-label on the classic inputs; the Wikimedia photo self-hosted and credited (it carried no credit before, a CC BY-SA licence gap); phone folding (6 sections) and FAQ tap-to-open. Measured on the phone: first input 556 px (target 600 met), page height 33,472 px (was 50,323), labelled inputs 55/55.
 - Next page items: page height toward 20,000 (the city table and the tools panels), the refinance break-even panel, a city default in mquick, HowTo schema, the English first input (1,024 px) and an English breadcrumb, the monthly data refresh after BoI publishes TamInt010 (around the 20th: run data/build_mortgage_v2.py, then a data-only release).
+
+## Round E (6.11.2026, release 1.72.591 + English page 8780)
+- Live 1.72.591 (deploy-result-591.json, released and verified): "האם למחזר?" in mexit (the existing balance refinanced today at the Bank of Israel average for the months left; new payment, monthly difference, exit costs, break-even months), a city select in mquick's price mode (24 cities + the national row, Tax Authority median 4 rooms, dated), language-aware page breadcrumbs (Hebrew output byte-identical). HowTo schema live on the Hebrew page (nlmx-howto).
+- English page: [nadlan_crumbs label="Mortgage calculator"] at the top; trail Home › Mortgage calculator, BreadcrumbList, dir ltr, one h1.
+- Pressed on a phone 390x844 (Playwright, system Chrome, eyes on screenshots): Hebrew crumbs dir rtl + aria "מיקום בעמוד" unchanged; refinance worked example 162 months, 105 ILS a month, costs 16,925 ILS; city select fills 2,028,800 and the payment 8,842 ILS on both pages; 0 console errors; 0 horizontal scroll on both pages.
+- Next: page height toward 20,000 px (city table and tool panels), T4 contract-to-keys timeline, C1 answer-first lines of the old sections, rerun proof/measure.py, the monthly BoI refresh around the 20th, breadcrumbs on the child pages (about 13, paced with Ben).
