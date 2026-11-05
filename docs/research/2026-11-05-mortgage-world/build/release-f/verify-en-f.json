@@ -1,0 +1,41 @@
+{
+ "phone": {
+  "height": 11572,
+  "hscroll": 0,
+  "folded": 6,
+  "foldedIds": [
+   "how-israeli-mortgages-work",
+   "uniform-baskets",
+   "bank-of-israel-limits",
+   "early-repayment",
+   "olim",
+   "amortization-schedule"
+  ],
+  "buttons": 6,
+  "faqH": 959,
+  "faqQ": 15,
+  "words": 33964,
+  "open": {
+   "chapterBefore": 351,
+   "chapterAfter": 2217,
+   "stillFolded": false,
+   "faqOpen": "true",
+   "answerShown": true
+  },
+  "errors": []
+ },
+ "desktop": {
+  "height": 15670,
+  "hscroll": 0,
+  "folded": 0,
+  "foldedIds": [],
+  "buttons": 0,
+  "faqH": 2811,
+  "faqQ": 0,
+  "words": 33838,
+  "errors": [
+   "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}

@@ -258,3 +258,22 @@ budget-to-homes tool, by-bank and by-city data, depth, and 0 days vs 4 since the
   timings of both passes, controls-based feature hits with evidence snippets, adjudications next to the automatic value), the
   robots.txt and llms.txt verdict per domain, the 77 verdict rows and the pressed-tools log. The raw HTML, rendered text and
   first-screen screenshots of the pass of record stayed in the scratchpad cache (not in the public repo).
+
+## Re-measure after rounds D, E, F and F2 (6.11.2026, our page only, `measure.py measure --only ours`; the other 42 pages as measured 5.11)
+
+Tally: vs Israel 30 LEAD, 36 TIE, 11 LOSE (was 28, 37, 12); vs world 23 LEAD, 37 TIE, 17 LOSE (was 23, 34, 20).
+
+| Row | Ours before | Ours now | Israel | World | Why |
+|---|---|---|---|---|---|
+| refinance | link | Y | TIE -> LEAD | LOSE -> TIE | "האם למחזר?" in mexit (1.72.591) |
+| local_defaults | text | Y | TIE -> LEAD | LOSE -> TIE | the city select in mquick (1.72.591) |
+| update_recency_days | 0 | 0 | LEAD | TIE -> LEAD | |
+| jsonld_types | 18 | 20 | LEAD | LOSE -> TIE | HowTo + BreadcrumbList |
+| tap44_share | 0.75 | 0.83 | LOSE -> LEAD | LEAD | 44 px minimum in the tools (round D) |
+| input_label_share | 0.84 | 1.0 | LOSE -> TIE | LOSE -> TIE | aria-label on the classic inputs (round D) |
+| first_input_y | 665 | 556 | LOSE | LOSE | shorter lead (round D); lower than this breaks the content-first order |
+| page_height | 50,719 | 28,101 | LOSE | LOSE | phone folding v2 (round F); bare tool pages stay shorter while the article is on the page |
+| cls | 0 | 0 | TIE | TIE | went to 0.047 after round D, fixed in F2 (height reserved for mquick) |
+| words_rendered | 8,414 | 4,168 | LEAD -> LOSE | LEAD -> LOSE | folding hides text from `innerText` by definition; words in the HTML stay 9,163 (LEAD). Accepted trade-off. |
+
+Still LOSE vs Israel: payment frequency (weekly payments do not exist in Israel), visible words (the fold), first input, page height, and the weight and speed rows (HTML, transfer, requests, TTFB, DCL, load, LCP), which wait for Ben's word on the sitewide scripts (Stripe, tawk.to, Hotjar, fonts).

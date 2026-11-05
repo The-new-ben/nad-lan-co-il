@@ -1,0 +1,49 @@
+{
+ "phone": {
+  "height": 27963,
+  "hscroll": 0,
+  "folded": 14,
+  "foldedIds": [
+   "mortgage-numbers-today",
+   "offer-vs-average",
+   "mortgages-this-month",
+   "average-mortgage-rates",
+   "payment-per-million",
+   "uniform-baskets",
+   "bank-of-israel-rules",
+   "spitzer-equal-balloon-grace",
+   "cpi-prime-forecast",
+   "early-repayment-refinance",
+   "איך משתמשים במחשבון המשכנתא?",
+   "מה לא רואים במחשבון פשוט?",
+   "איך בודקים הון עצמי לפני חישוב משכנתא?",
+   "המספר הנכון הוא מספר שנבדק בתרחיש פחות נ"
+  ],
+  "buttons": 14,
+  "faqH": 2199,
+  "faqQ": 38,
+  "words": 106686,
+  "open": {
+   "chapterBefore": 335,
+   "chapterAfter": 1440,
+   "stillFolded": false,
+   "faqOpen": "true",
+   "answerShown": true
+  },
+  "errors": []
+ },
+ "desktop": {
+  "height": 43368,
+  "hscroll": 0,
+  "folded": 0,
+  "foldedIds": [],
+  "buttons": 0,
+  "faqH": 6216,
+  "faqQ": 0,
+  "words": 106546,
+  "errors": [
+   "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}
