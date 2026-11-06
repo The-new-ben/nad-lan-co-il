@@ -150,3 +150,8 @@
 - Design: BudgetAbove board on the canvas (version 18). Code: mbudget v2 (round-k/patch_mbudget_v2.py, then capped by hand at 15% above after the first live check listed Tel Aviv homes 2.7 and 3 million above): the note stays, then up to three of the closest priced homes at most 15% above the budget, each with its gap. NLMB.listings returns `above`. Tests: the original suite 148/148 (the trace check now knows the new prices and gaps; it can run on the plugin file with MBUDGET_TOOL) plus 3 new unit cases.
 - Released 1.72.594 (deploy-result-594.json, released and verified; the live file was the 1.72.588 v1, md5 9b492aeb, before the swap). The 594 runner first carried the 593 cache-busting markers; fixed before the run (390 markers t594, none t593).
 - Pressed live: phone shows the Ofakim home at 2,000,000 "₪74,000 מעל הסכום"; all 9 tools mount on phone and desktop; 0 errors; 0 horizontal scroll. Source audit: only the footer email encoding.
+
+## Loop stopped (6.11.2026, Ben)
+- Ben: keep Stripe, the chat and Hotjar on the mortgage page (no page-only removal), so the weight and speed rows stay as they are. Ben stopped the loop.
+- Left for later, time-gated: the title Google shows after 10.11 (GSC + one live SERP), and the Bank of Israel monthly refresh around 20.11 (data/build_mortgage_v2.py, then a data-only release with the page numbers that quote September 2026).
+- Still waiting for Ben: a named reviewer, the pace of Israeli links (L1, O1), breadcrumbs on the child pages.
