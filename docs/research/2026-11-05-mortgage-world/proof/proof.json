@@ -1,6 +1,6 @@
 {
  "about": "Counted benchmark for https://nad-lan.co.il/mortgage-calculator/ (HAD-675). One cold phone load (390x844, is_mobile, has_touch, Chrome 156 headless, no throttling, from Israel) per page; raw HTML = the document response of that load. Definitions: proof.md / measure.py PARAMS.",
- "generated_utc": "2026-11-06T01:09:01Z",
+ "generated_utc": "2026-11-06T01:45:03Z",
  "params": [
   {
    "group": "1 Tool",
@@ -2277,22 +2277,22 @@
    "region": "OURS",
    "name": "nad-lan (ours)",
    "url": "https://nad-lan.co.il/mortgage-calculator/",
-   "measured_utc": "2026-11-06T01:08:04Z",
+   "measured_utc": "2026-11-06T01:44:09Z",
    "goto_error": null,
    "final_url": "https://nad-lan.co.il/mortgage-calculator/",
    "status": 200,
-   "html_bytes": 408563,
+   "html_bytes": 412782,
    "speed": {
-    "ttfb_ms": 1866.6000000014901,
-    "dcl_ms": 2833.5,
-    "load_ms": 3579.10000000149,
-    "lcp_ms": 2716,
+    "ttfb_ms": 776,
+    "dcl_ms": 1975,
+    "load_ms": 2619,
+    "lcp_ms": 1816,
     "cls": 0,
-    "transfer_bytes": 1740253,
-    "requests": 113,
+    "transfer_bytes": 1741800,
+    "requests": 114,
     "failed_requests": 1,
-    "html_transfer_bytes": 126582,
-    "wall_s": 6.7
+    "html_transfer_bytes": 127920,
+    "wall_s": 5.7
    },
    "first_screen": {
     "first_input": {
@@ -2322,27 +2322,27 @@
      },
      {
       "y": 2513,
-      "label": "הכנסה נטו של משק הבית nlmb-income-7cc1h",
+      "label": "הכנסה נטו של משק הבית nlmb-income-em22q",
       "type": "text"
      },
      {
       "y": 2611,
-      "label": "הון עצמי nlmb-equity-7xz9k",
+      "label": "הון עצמי nlmb-equity-k68j8",
       "type": "text"
      },
      {
       "y": 2810,
-      "label": "סכום המשכנתא nlm-42oc1a",
+      "label": "סכום המשכנתא nlm-qm06md",
       "type": "text"
      },
      {
       "y": 2873,
-      "label": "הלוואות קיימות אין nlmb-loans-ivsx3",
+      "label": "הלוואות קיימות אין nlmb-loans-cekzu",
       "type": "text"
      },
      {
       "y": 2873,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-iqs0e",
+      "label": "חלק מההכנסה להחזר nlmb-ratio-xmhn9",
       "type": "text"
      }
     ]
@@ -2353,13 +2353,13 @@
     "first_input_label": "סכום המשכנתא nlmq-a",
     "first_money_y": 302,
     "first_money_text": "1,000,000 ₪",
-    "page_height_initial": 28270,
-    "page_height": 28321,
+    "page_height_initial": 26971,
+    "page_height": 27022,
     "h_overflow": false,
     "scroll_width": 390,
-    "tap_n": 239,
-    "tap_44": 196,
-    "tap_24": 235,
+    "tap_n": 246,
+    "tap_44": 203,
+    "tap_24": 242,
     "overlays_on_load": [
      {
       "kind": "other",
@@ -2397,27 +2397,27 @@
      },
      {
       "y": 2513,
-      "label": "הכנסה נטו של משק הבית nlmb-income-7cc1h",
+      "label": "הכנסה נטו של משק הבית nlmb-income-em22q",
       "type": "text"
      },
      {
       "y": 2611,
-      "label": "הון עצמי nlmb-equity-7xz9k",
+      "label": "הון עצמי nlmb-equity-k68j8",
       "type": "text"
      },
      {
       "y": 2810,
-      "label": "סכום המשכנתא nlm-42oc1a",
+      "label": "סכום המשכנתא nlm-qm06md",
       "type": "text"
      },
      {
       "y": 2873,
-      "label": "הלוואות קיימות אין nlmb-loans-ivsx3",
+      "label": "הלוואות קיימות אין nlmb-loans-cekzu",
       "type": "text"
      },
      {
       "y": 2873,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-iqs0e",
+      "label": "חלק מההכנסה להחזר nlmb-ratio-xmhn9",
       "type": "text"
      }
     ],
@@ -2434,8 +2434,8 @@
    "charts_rendered": 5,
    "title": "מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין",
    "rendered": {
-    "words": 4203,
-    "figures": 223,
+    "words": 3781,
+    "figures": 262,
     "tables": 23,
     "cells": 1066,
     "inputs": 57,
@@ -2447,8 +2447,8 @@
    "raw": {
     "html_lang": "he-IL",
     "canonical": "https://nad-lan.co.il/mortgage-calculator/",
-    "words_raw": 9318,
-    "figures_raw": 674,
+    "words_raw": 9696,
+    "figures_raw": 717,
     "tables_raw": 16,
     "cells_raw": 650,
     "headings_raw": 99,
@@ -2569,7 +2569,7 @@
      "edge.boi.gov.il",
      "gov.il"
     ],
-    "worked_examples": 28,
+    "worked_examples": 34,
     "worked_examples_sample": [
      "משכנתא של 1,000,000 ₪ ל־25 שנה בתמהיל הממוצע של ספטמבר 2026 עולה 5,428 ₪ בחודש הראשון.",
      "ההחזר החודשי הראשון 5,428 ₪ ל־25 שנה, 6,202 ₪ ל־20 שנה ו־4,931 ₪ ל־30 שנה (לוח שפיצר).",
@@ -2578,7 +2578,7 @@
      "במסלול פריים של 400,000 ₪ ל־22 שנה, במרווח הממוצע של המשכנתאות החדשות (פריים פחות 0.68%, 9.2026), ההחזר הוא כ־2,296 ₪ בחודש, וכל רבע אחוז בריבית בנק ישראל מזיז אותו בכ־54 ₪.",
      "משכנתא של 1,000,000 ₪ ל־25 שנה בתמהיל ובריביות הממוצעים של 9.2026 מתחילה בהחזר של 5,428 ₪ בחודש;"
     ],
-    "dated_sourced": 10,
+    "dated_sourced": 15,
     "dated_sourced_sample": [
      "לפי בנק ישראל, הריבית הכוללת החזויה הממוצעת במשכנתאות החדשות של ספטמבר 2026 הייתה 5.09% בכל הבנקים, ובחמשת הבנקים הגדולים בין 4.75% (הבינלאומי) ל־5.16% (מזרחי טפחות).",
      "חטיבת המחקר של בנק ישראל צופה ריבית של 3.0% ברבע השלישי של 2027 (תחזית 21.10.2026);",
@@ -2587,15 +2587,15 @@
      "ריבית בנק ישראל עומדת על 3.25% מאז 3.9.2026, ובהחלטה של 21.10.2026 היא נשארה ללא שינוי.",
      "4.62% הוא הממוצע בקל״צ במשכנתאות החדשות של אוגוסט 2026 (בנק ישראל).",
      "4.62% הוא הממוצע בקל״צ באוגוסט 2026 (בנק ישראל).",
-     "ריבית בנק ישראל, 3.25% מאז 3.9.2026, ועוד 1.5%."
+     "לדוגמה, משכנתא של 1,000,000 ₪ בתמהיל ובריביות הממוצעים של כל הבנקים בספטמבר 2026 מתחילה ב־7,532 ₪ בחודש ל־15 שנה, 6,202 ₪ ל־20 שנה, 5,428 ₪ ל־25 שנה ו־4,931 ₪ ל־30 שנה (בנק ישראל, לוח שפיצר)."
     ],
-    "raw_text_len": 56045,
+    "raw_text_len": 58305,
     "meta_author": ""
    },
    "features": {
     "payment_from_loan": {
      "auto": "Y",
-     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-p9ho95 | ריבית שנתית ריבית שנתית% nlm-v"
+     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-0rljb1 | ריבית שנתית ריבית שנתית% nlm-h"
     },
     "loan_from_payment": {
      "auto": "Y",
@@ -2607,7 +2607,7 @@
     },
     "affordability_income": {
      "auto": "Y",
-     "evidence": "דשים nlm-1ho5wo | סוג הגרייס חלקימלא nlm-2ulgwj | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
+     "evidence": "דשים nlm-m19bfk | סוג הגרייס חלקימלא nlm-xse3pv | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
     },
     "multi_track": {
      "auto": "Y",
@@ -2659,7 +2659,7 @@
     },
     "offer_vs_market_money": {
      "auto": "Y",
-     "evidence": "| בחודש חודש nlm-fp5fzb | סכום סכום₪ nlm-x40vx8 | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
+     "evidence": "| בחודש חודש nlm-e3j8lc | סכום סכום₪ nlm-vk5xad | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
     },
     "readiness_docs": {
      "auto": "Y",
@@ -2775,19 +2775,19 @@
     "by_bank_rates": "Y",
     "borrower_distribution": "Y",
     "city_payments": "Y",
-    "dated_sourced": 10,
+    "dated_sourced": 15,
     "update_recency_days": 0,
     "market_data_age_days": 36,
-    "words_raw": 9318,
-    "words_rendered": 4203,
-    "figures_raw": 674,
+    "words_raw": 9696,
+    "words_rendered": 3781,
+    "figures_raw": 717,
     "tables_raw": 16,
     "cells_raw": 650,
     "faq_schema_q": 38,
     "question_headings": 54,
     "headings_raw": 99,
     "official_sources": 4,
-    "worked_examples": 28,
+    "worked_examples": 34,
     "visuals_rendered": 7,
     "jsonld_types": 20,
     "breadcrumb": "Y",
@@ -2802,17 +2802,17 @@
     "raw_figure_share": 1.0,
     "first_input_y": 556,
     "first_money_y": 302,
-    "page_height": 28321,
+    "page_height": 27022,
     "h_overflow": 0,
-    "tap44_share": 0.82,
+    "tap44_share": 0.83,
     "interruptions": 0,
-    "html_bytes": 408563,
-    "transfer_bytes": 1740253,
-    "requests": 113,
-    "ttfb_ms": 1867,
-    "dcl_ms": 2834,
-    "load_ms": 3579,
-    "lcp_ms": 2716,
+    "html_bytes": 412782,
+    "transfer_bytes": 1741800,
+    "requests": 114,
+    "ttfb_ms": 776,
+    "dcl_ms": 1975,
+    "load_ms": 2619,
+    "lcp_ms": 1816,
     "cls": 0,
     "img_alt_share": 1.0,
     "input_label_share": 1.0,
@@ -22660,7 +22660,7 @@
     "group": "2 Data",
     "id": "dated_sourced",
     "label": "Dated, sourced figure statements (proxy for official dated series)",
-    "ours": 10,
+    "ours": 15,
     "best_il": 3,
     "best_il_pages": [
      "Supermarker"
@@ -22709,7 +22709,7 @@
     "group": "3 Content",
     "id": "words_raw",
     "label": "Visible words in raw HTML",
-    "ours": 9318,
+    "ours": 9696,
     "best_il": 3362,
     "best_il_pages": [
      "Supermarker"
@@ -22726,7 +22726,7 @@
     "group": "3 Content",
     "id": "words_rendered",
     "label": "Visible words after JavaScript",
-    "ours": 4203,
+    "ours": 3781,
     "best_il": 5198,
     "best_il_pages": [
      "Mashcantaman"
@@ -22743,7 +22743,7 @@
     "group": "3 Content",
     "id": "figures_raw",
     "label": "Money and % figures in raw HTML",
-    "ours": 674,
+    "ours": 717,
     "best_il": 196,
     "best_il_pages": [
      "Taxo (rate change)"
@@ -22864,7 +22864,7 @@
     "group": "3 Content",
     "id": "worked_examples",
     "label": "Worked examples in plain HTML",
-    "ours": 28,
+    "ours": 34,
     "best_il": 1,
     "best_il_pages": [
      "Supermarker"
@@ -23299,7 +23299,7 @@
     "group": "5 Phone 390x844",
     "id": "page_height",
     "label": "Page height (px)",
-    "ours": 28321,
+    "ours": 27022,
     "best_il": 1735,
     "best_il_pages": [
      "Goola group"
@@ -23366,7 +23366,7 @@
     "group": "5 Phone 390x844",
     "id": "tap44_share",
     "label": "Share of tappable controls >= 44 px tall",
-    "ours": 0.82,
+    "ours": 0.83,
     "best_il": 0.78,
     "best_il_pages": [
      "Supermarker"
@@ -23428,7 +23428,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "html_bytes",
     "label": "HTML bytes (decoded document)",
-    "ours": 408563,
+    "ours": 412782,
     "best_il": 702,
     "best_il_pages": [
      "Harel servicebank"
@@ -23445,7 +23445,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "transfer_bytes",
     "label": "Total transfer bytes to load + 3 s",
-    "ours": 1740253,
+    "ours": 1741800,
     "best_il": 13528,
     "best_il_pages": [
      "Taxo (mix)"
@@ -23462,7 +23462,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "requests",
     "label": "Requests to load + 3 s",
-    "ours": 113,
+    "ours": 114,
     "best_il": 8,
     "best_il_pages": [
      "Taxo (mix)"
@@ -23479,7 +23479,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "ttfb_ms",
     "label": "Time to first byte (ms)",
-    "ours": 1867,
+    "ours": 776,
     "best_il": 40,
     "best_il_pages": [
      "Family-economy"
@@ -23496,7 +23496,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "dcl_ms",
     "label": "DOMContentLoaded (ms)",
-    "ours": 2834,
+    "ours": 1975,
     "best_il": 105,
     "best_il_pages": [
      "Family-economy"
@@ -23513,7 +23513,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "load_ms",
     "label": "Load event (ms)",
-    "ours": 3579,
+    "ours": 2619,
     "best_il": 237,
     "best_il_pages": [
      "Family-economy"
@@ -23530,7 +23530,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "lcp_ms",
     "label": "Largest Contentful Paint (ms)",
-    "ours": 2716,
+    "ours": 1816,
     "best_il": 120,
     "best_il_pages": [
      "Family-economy"
