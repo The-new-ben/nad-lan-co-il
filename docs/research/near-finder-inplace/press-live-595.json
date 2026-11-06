@@ -1,0 +1,500 @@
+{
+ "home-m390": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "properties-m390": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": []
+ },
+ "rent-m390": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "broker-m390": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "card-m390": {
+  "start": {
+   "launcher": false,
+   "app": false,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": false
+  },
+  "errors": []
+ },
+ "home-d1280": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "properties-d1280": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 45,
+   "count": "7 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": []
+ },
+ "rent-d1280": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 55,
+   "count": "9 נכסים להשכרה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "broker-d1280": {
+  "start": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": true
+  },
+  "switch": true,
+  "map": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "fullscreen": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": true,
+   "dlgOpen": true,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "afterEsc": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "back": {
+   "launcher": false,
+   "app": true,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  },
+  "errors": [],
+  "lidi": {
+   "launcher": false,
+   "app": true,
+   "appVisible": true,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 33,
+   "count": "5 נכסים למכירה",
+   "hs": 0,
+   "finderJs": true
+  }
+ },
+ "card-d1280": {
+  "start": {
+   "launcher": false,
+   "app": false,
+   "appVisible": false,
+   "inDlg": false,
+   "dlgOpen": false,
+   "rows": 0,
+   "count": "",
+   "hs": 0,
+   "finderJs": false
+  },
+  "errors": []
+ }
+}

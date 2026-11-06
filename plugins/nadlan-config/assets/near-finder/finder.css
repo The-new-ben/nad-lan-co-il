@@ -243,22 +243,43 @@ html body .nlnf .nlnf-link--s{min-height:32px;font-size:12px;font-weight:500;col
 .nlnf-burst i:nth-child(3){animation-delay:.36s}
 @keyframes nlnf-burst{0%{transform:scale(.4);opacity:.7}100%{transform:scale(9);opacity:0}}
 
-/* ------------------------------------------------------------------ the launcher: a pill with a small radar */
+/* ------------------------------------------------------------------ in place (owner 6.11.2026: no floating button on any page, ever).
+   Claude Design project/InPlace.dc.html: inside the page's own section, one quiet pill with two choices, sea for the chosen view;
+   the app takes the place of the projects map or of the listing grid. The pill's height is held from the first paint (the three
+   hosts below), so nothing on the page moves when the script adds it. The footer's holder and #nlnf-lidi are never visible. */
 .nlnf-lidi{margin:0}
-html body .nlnf-lidi .nlnf-launch{position:fixed;z-index:99960;right:14px;bottom:140px;display:inline-flex;align-items:center;gap:10px;height:44px;margin:0;padding:0 16px 0 14px;
-  border:1px solid var(--nf-sea-deep);border-radius:999px;background:var(--nf-sea);color:var(--nf-on-sea);font:600 15px/1 var(--nf-sans);letter-spacing:0;cursor:pointer;
-  white-space:nowrap;transition:opacity .2s ease,transform .2s ease,visibility .2s;touch-action:manipulation}
-html body .nlnf-lidi .nlnf-launch:hover{background:var(--nf-sea-deep)}
-html body .nlnf-lidi .nlnf-launch:focus-visible{outline:2px solid var(--nf-ink) !important;outline-offset:3px}
-html body .nlnf-lidi .nlnf-launch[hidden]{display:none !important}
-html body .nlnf-lidi .nlnf-launch.is-away{opacity:0;visibility:hidden;transform:translateY(8px);pointer-events:none}
-.nlnf-radar{position:relative;flex:0 0 18px;width:18px;height:18px}
-.nlnf-radar b{position:absolute;left:6px;top:6px;width:6px;height:6px;border-radius:50%;background:#fff}
-.nlnf-radar i{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.9);opacity:0;animation:nlnf-radar 2.4s cubic-bezier(.2,.6,.35,1) infinite}
-.nlnf-radar i:nth-child(2){animation-delay:.8s}
-.nlnf-radar i:nth-child(3){animation-delay:1.6s}
-@keyframes nlnf-radar{0%{transform:scale(.3);opacity:.85}100%{transform:scale(1.9);opacity:0}}
-@media (min-width:1024px){html body .nlnf-lidi .nlnf-launch{right:20px;bottom:84px}}
+.nlnf-hold,.nlnf-off{display:none !important}
+.nlnf.nlnf-sw,.nlnf.nlnf--host{margin:0;clear:none}
+.nlnf-sw__in{display:inline-grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:3px;height:52px;margin:0;padding:3px;
+  background:var(--nf-surface);border:1px solid var(--nf-line);border-radius:999px;vertical-align:top}
+html body .nlnf .nlnf-sw__b{display:inline-flex;align-items:center;justify-content:center;height:44px;min-height:44px;min-width:136px;margin:0;padding:0 20px;
+  border:0;border-radius:999px !important;background:transparent;color:var(--nf-ink2);font:500 15px/1 var(--nf-sans);letter-spacing:0;text-transform:none;
+  white-space:nowrap;box-shadow:none;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+html body .nlnf .nlnf-sw__b:hover{background:var(--nf-ground);color:var(--nf-sea-deep)}
+html body .nlnf .nlnf-sw__b[aria-pressed=true]{background:var(--nf-sea);color:var(--nf-on-sea);font-weight:600;cursor:default}
+.nlnf-sw--proj{padding:0 0 14px}  /* 66px: the home page's projects map */
+.nlnf-sw--list{padding:0 0 12px}  /* 64px: the rent page's listing block */
+.nlnf-sw--nlb{padding:24px 0 0}   /* 76px: under "הנכסים" on a broker's site */
+@media (max-width:600px){
+  .nlnf-sw--proj .nlnf-sw__in{display:grid;width:100%}
+  html body .nlnf .nlnf-sw__b{min-width:0;padding:0 14px}
+}
+/* the held heights (= the rows above) and their release once the switch is there, or when the page has no such section */
+.nlhp-mapband .nldrone.nldrone--showcase{padding-top:66px}
+#listings ~ .nlrh-list{padding-top:64px}
+.nlb .nlb-listings .nlb-listings-head{padding-bottom:76px}
+.nlhp-mapband .nldrone.nldrone--showcase.nlnf-ready,html.nlnf-nohost .nlhp-mapband .nldrone.nldrone--showcase{padding-top:0}
+#listings ~ .nlrh-list.nlnf-ready,html.nlnf-nohost #listings ~ .nlrh-list{padding-top:0}
+.nlb .nlb-listings .nlb-listings-head.nlnf-ready,html.nlnf-nohost .nlb .nlb-listings .nlb-listings-head{padding-bottom:0}
+/* the app in the host: on a computer the home page's app keeps the projects map's height; the host page's heading rules
+   (a broker's site sets its serif on every h3 with !important) never reach the app's own headings */
+@media (min-width:1024px){.nlnf--host-proj .nlnf__app{height:640px}}
+html body .nlnf.nlnf--host h3,html body .nlnf.nlnf--host h4{font-family:var(--nf-sans) !important;letter-spacing:0 !important}
+/* "מסך מלא": one more quiet tool beside "מדדו מרחק" and "ציירו אזור" (on a computer the row at the map's top, clear of the
+   WhatsApp bar; on a phone the column at its side); never inside the dialog itself. The tools are 44px tall now, as one row. */
+html body .nlnf .nlnf__tools .nlnf__ruler{height:44px}
+html body .nlnf .nlnf__tools .nlnf__fs{color:var(--nf-sea-deep)}
+.nlnf-dlg .nlnf__fs,.nlnf__app.is-draw .nlnf__fs,.nlnf__app.is-measure .nlnf__fs{display:none !important}
 
 /* the dialog: full screen over the page; the WhatsApp bar and the accessibility button stay above it, untouched */
 .nlnf-dlg{position:fixed;inset:0;z-index:99970;display:flex;flex-direction:column;background:var(--nf-ground);color:var(--nf-ink);font-family:var(--nf-sans);direction:rtl;outline:0}
@@ -280,9 +301,9 @@ html.nlnf-open,html.nlnf-open body{overflow:hidden !important} /* only while the
   .nlnf-dlg__body > .nlnf__own{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .nlnf-radar i,.nlnf-burst{display:none !important}
+  .nlnf-burst{display:none !important}
   .nlnf-pin.is-drop .nlnf-pin__t{animation:none !important}
-  html body .nlnf-lidi .nlnf-launch{transition:none}
+  html body .nlnf .nlnf-sw__b{transition:none}
 }
 
 /* ------------------------------------------------------------------ v2 (1.72.585): alerts, the heart, follow (Claude Design project/Alerts.dc.html).

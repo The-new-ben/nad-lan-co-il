@@ -6,7 +6,10 @@
    wrapped): never in a URL, never sent to the site. The deep link is #lidi, never a location.
    Map: Mapbox GL v3.7.0 (the same loader and token as /projects/), loaded only when needed; cooperative gestures, so the
    page never sticks while scrolling. No token or no map: the list works alone.
-   Opens inline (/properties/) or from the floating launcher "חפשו נכס לידי" as a full-screen dialog (Back closes it).
+   Opens inline (/properties/) or, since 6.11.2026 (owner: no floating button on any page, ever), in place inside the page's
+   own map or listings section: a quiet switch there ("פרויקטים חדשים" | "דירות לידי" on the home page, "רשימה" | "על המפה"
+   on the rent page and on a broker's site) puts the app where the projects map or the listing grid was. "מסך מלא" inside the
+   app opens the full-screen dialog (Back or Escape returns it to its place); #lidi chooses the map in place and scrolls to it.
    v2 (release 1.72.585): alerts by email (inc/near-alerts.php), on portal pages only (the page prints #nlna-cfg; a broker's
    page does not): the quiet "התריעו לי על האזור הזה" sheet (Claude Design project/Alerts.dc.html), the heart "שמרו" on a
    listing's card (price drops) and "עקבו" on a project's card. Saved and followed items stay in this browser
@@ -183,7 +186,8 @@
 		+ '<div class="nlnf__map" id="nlnf-map" role="region" aria-label="מפת הדירות"></div>'
 		+ '<button type="button" class="nlnf__area" id="nlnf-area" hidden>חפשו באזור הזה</button>'
 		+ '<div class="nlnf__tools" id="nlnf-tools"><button type="button" class="nlnf__ruler" id="nlnf-ruler" aria-pressed="false">מדדו מרחק</button>'
-		+ '<button type="button" class="nlnf__ruler nlnf__draw" id="nlnf-draw" aria-pressed="false">ציירו אזור</button></div>'
+		+ '<button type="button" class="nlnf__ruler nlnf__draw" id="nlnf-draw" aria-pressed="false">ציירו אזור</button>'
+		+ '<button type="button" class="nlnf__ruler nlnf__fs" id="nlnf-fs" aria-haspopup="dialog" aria-controls="nlnf-dlg" hidden>מסך מלא</button></div>'
 		+ '<div class="nlnf__pad" id="nlnf-pad" hidden><svg aria-hidden="true" focusable="false"><polyline id="nlnf-pad-l" points=""></polyline></svg></div>'
 		+ '<div class="nlnf__pick" id="nlnf-pick" hidden><span id="nlnf-pick-t"></span><button type="button" id="nlnf-pick-x">ביטול</button></div>'
 		+ '<div class="nlnf__pick nlnf__pick--m" id="nlnf-drw" hidden><span id="nlnf-drw-t" aria-live="polite"></span><button type="button" id="nlnf-drw-x">ביטול</button></div>'
@@ -215,7 +219,7 @@
 		list: $('nlnf-list'), empty: $('nlnf-empty'), more: $('nlnf-more'), visit: $('nlnf-visit'), card: $('nlnf-card'),
 		alrow: $('nlnf-alrow'), al: $('nlnf-al'), saved: $('nlnf-saved'), savedgo: $('nlnf-savedgo'),
 		draw: $('nlnf-draw'), pad: $('nlnf-pad'), padL: $('nlnf-pad-l'), drw: $('nlnf-drw'), drwT: $('nlnf-drw-t'), drwX: $('nlnf-drw-x'),
-		grab: $('nlnf-grab'), sh: $('nlnf-sh'), tools: $('nlnf-tools')
+		grab: $('nlnf-grab'), sh: $('nlnf-sh'), tools: $('nlnf-tools'), fs: $('nlnf-fs')
 	};
 	// the owners' quiet line (printed by the server next to the app, portal pages only) moves into the list's footer
 	var holder = root.closest('.nlnf');
@@ -787,7 +791,38 @@
 
 	/* ------------------------------------------------------------ the map */
 	var markers = {}, meMarker = null, ancMarkers = {}, measMarker = null, userMoved = false, MB = null, mapWanted = false;
-	function loadScript(src) { return new Promise(function (res, rej) { if (window.mapboxgl) { return res(); } var s = document.createElement('script'); s.src = src; s.async = true; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+	function loadScript(src) { // 6.11.2026: never a second copy of Mapbox GL. The home page's projects map (the section the app sits in there) loads the
+		// same file when it comes into view: if its script is on the way, wait for it; inside that section, give it up to 3 seconds to start first
+		return new Promise(function (res, rej) {
+			var t0 = Date.now(), grace = root.closest('#nldrone') ? 3000 : 0;
+			(function look() {
+				if (window.mapboxgl) { return res(); }
+				var old = document.querySelector('script[src="' + src + '"]');
+				if (old) {
+					var n = 0, iv = setInterval(function () { if (window.mapboxgl) { clearInterval(iv); res(); } else if (++n > 200) { clearInterval(iv); rej(new Error('timeout')); } }, 100);
+					old.addEventListener('error', function () { clearInterval(iv); rej(new Error('load')); });
+					return;
+				}
+				if (Date.now() - t0 < grace) { setTimeout(look, 100); return; }
+				var s = document.createElement('script'); s.src = src; s.async = true; s.onload = res; s.onerror = rej; document.head.appendChild(s);
+			})();
+		});
+	}
+	function rtlSettled() { // two maps that start while the right-to-left text plugin is still loading make Mapbox load it twice in its shared workers
+		// (an uncaught "RTL text plugin already registered", seen on the live home page too): the finder's map waits, 4 seconds at most, and
+		// when it did wait, 1.5 seconds more after "loaded" (the other map's workers are still finishing then)
+		return new Promise(function (res) {
+			var n = 0;
+			(function w() {
+				var st = '';
+				try { st = MB.getRTLTextPluginStatus ? MB.getRTLTextPluginStatus() : ''; } catch (e) { st = ''; }
+				var busy = st === 'loading' || st === 'requested' || (st === 'deferred' && !!document.querySelector('.mapboxgl-map'));
+				if (busy && ++n <= 40) { setTimeout(w, 100); return; }
+				if (n > 0 && st === 'loaded' && document.querySelector('.mapboxgl-map')) { setTimeout(res, 1500); return; }
+				res();
+			})();
+		});
+	}
 	function loadCss(href) { if (document.querySelector('link[href="' + href + '"]')) { return; } var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); }
 	function noMap(why) {
 		S.mapState = 'fail'; root.classList.add('nlnf--nomap'); el.mapwrap.hidden = true;
@@ -802,6 +837,8 @@
 		loadScript(D.gl).then(function () {
 			MB = window.mapboxgl;
 			if (!MB || (MB.supported && !MB.supported())) { throw new Error('unsupported'); }
+			return rtlSettled();
+		}).then(function () {
 			try { if (MB.getRTLTextPluginStatus && MB.getRTLTextPluginStatus() === 'unavailable') { MB.setRTLTextPlugin(D.rtl, null, true); } } catch (e) { /* the labels stay readable without it */ }
 			MB.accessToken = D.mb;
 			var m = new MB.Map({
@@ -1127,7 +1164,7 @@
 		try { S.map.fitBounds([[b.w, b.s], [b.e, b.n]], { padding: camPad(48), maxZoom: maxZ || 15, duration: RM ? 0 : 600 }); } catch (e) { /* keep the view */ }
 		userMoved = false; el.area.hidden = true;
 	}
-	var DLG = { can: false, isOpen: function () { return false; }, open: function () {} }; // the launcher's dialog, when the page has one
+	var DLG = { can: false, isOpen: function () { return false; }, open: function () {} }; // the full-screen dialog ("מסך מלא"), when the page has one
 	root.classList.add('nlnf--nodraw'); // until a dialog is there: on a phone the zone is drawn inside the dialog only
 
 	/* ------------------------------------------------------------ v3: draw a zone */
@@ -1682,7 +1719,8 @@
 			drawMe();
 		}).catch(function () { el.count.textContent = ''; say('הרשימה לא נטענה כרגע. רעננו את העמוד ונסו שוב.'); });
 	}
-	var inline = !root.closest('.nlnf-dlg');
+	var held = !!root.closest('.nlnf-hold'); // 6.11.2026: printed in the footer's hidden holder, it waits for its place in the page's own section
+	var inline = !held && !root.closest('.nlnf-dlg');
 	if (inline) {
 		if ('IntersectionObserver' in window) {
 			var io = new IntersectionObserver(function (es) { if (es.some(function (x) { return x.isIntersecting; })) { io.disconnect(); start(); } }, { rootMargin: '600px 0px' });
@@ -1690,58 +1728,122 @@
 		} else { start(); }
 	}
 
-	/* ------------------------------------------------------------ the launcher and its dialog (Better Law NearMe pattern) */
+	/* ------------------------------------------------------------ in place (owner 6.11.2026: no floating button on any page, ever)
+	   The page's own map or listings section (data-host on #nlnf-lidi) gets a quiet two-way switch; the map opens there, in the
+	   same place, and only then loads Mapbox and the data. The switch's height is held by finder.css from the first paint, so
+	   nothing on the page moves when it arrives. "מסך מלא" inside the app opens the full-screen dialog (drawing a zone on a phone
+	   needs it too); Back or Escape returns the app to its place. #lidi chooses the map in place and scrolls to it. */
 	var wrap = document.getElementById('nlnf-lidi');
 	if (!wrap) { return; }
-	var btn = document.getElementById('nlnf-launch'), dlg = document.getElementById('nlnf-dlg'), body = document.getElementById('nlnf-dlg-body'), xBtn = document.getElementById('nlnf-dlg-x');
-	if (!btn || !dlg || !body) { return; }
-	if (RM) { wrap.classList.add('is-still'); }
-	var home = null, isOpen = false, lastFocus = null, inlineSeen = false;
-	// stay clear of the wide WhatsApp bar and the accessibility button: measured on the page, never moved or covered
-	function placeBtn() {
-		if (btn.hidden || isOpen) { return; }
-		var vw = window.innerWidth, vh = window.innerHeight, gap = vw >= 1024 ? 20 : 14;
-		var bw = btn.offsetWidth || 160, bh = btn.offsetHeight || 44, bottom = gap;
-		var obs = [];
-		['nlcta', 'nla11y'].forEach(function (id) {
-			var o = document.getElementById(id);
-			if (!o) { return; }
-			var r = o.getBoundingClientRect(), cs = window.getComputedStyle(o);
-			if (r.width > 0 && r.height > 0 && cs.display !== 'none' && cs.visibility !== 'hidden') { obs.push(r); }
-		});
-		for (var loop = 0; loop < 4; loop++) {
-			var top = vh - bottom - bh, left = vw - gap - bw, hit = null;
-			for (var i = 0; i < obs.length; i++) {
-				var r = obs[i];
-				if (left < r.right + 8 && left + bw + 8 > r.left && top < r.bottom + 8 && top + bh + 8 > r.top) { hit = r; break; }
-			}
-			if (!hit) { break; }
-			bottom = Math.ceil(vh - hit.top + 10);
+	var dlg = document.getElementById('nlnf-dlg'), body = document.getElementById('nlnf-dlg-body'), xBtn = document.getElementById('nlnf-dlg-x');
+	var isOpen = false, lastFocus = null, home = null, askedLoc = false, SW = null, touched = false;
+
+	function plan(h) { // where the switch and the app go in this host; null = not a known section (then nothing shows)
+		if (!h) { return null; }
+		if (h.id === 'nldrone') { // the home page's projects map: the switch above its stage, the app in the stage's place
+			var st = h.querySelector('.nldrone-stage');
+			if (!st) { return null; }
+			return { kind: 'proj', near: true, res: h, ctl: st.id || '', t: ['פרויקטים חדשים', 'דירות לידי'], aria: 'מה מוצג על המפה',
+				put: function (row) { h.insertBefore(row, st); }, box: function (b) { st.parentNode.insertBefore(b, st.nextSibling); },
+				hide: function () { return [st]; } };
 		}
-		btn.style.right = gap + 'px';
-		btn.style.bottom = 'calc(' + bottom + 'px + env(safe-area-inset-bottom, 0px))';
+		var grid = h.querySelector('.nlb-grid'), hd = h.querySelector('.nlb-listings-head');
+		if (grid && hd) { // a broker's own site, section "הנכסים": the switch under its heading, the app in the grid's place (her listings only)
+			return { kind: 'nlb', near: false, res: hd, ctl: '', t: ['רשימה', 'על המפה'], aria: 'איך להציג את הנכסים',
+				put: function (row) { hd.appendChild(row); }, box: function (b) { grid.parentNode.insertBefore(b, grid.nextSibling); },
+				hide: function () { return [grid].concat([].slice.call(h.querySelectorAll('.nlb-filters'))); } };
+		}
+		var n = h.nextElementSibling; // the rent page: h2#listings, its paragraph, then the listing block .nlrh-list
+		while (n && !n.classList.contains('nlrh-list') && !/^H[1-3]$/.test(n.tagName)) { n = n.nextElementSibling; }
+		if (n && n.classList.contains('nlrh-list')) {
+			var L = n;
+			return { kind: 'list', near: !BROKER, res: L, ctl: '', t: ['רשימה', BROKER ? 'על המפה' : 'על המפה, לידי'], aria: 'איך להציג את הדירות',
+				put: function (row) { L.insertBefore(row, L.firstChild); }, box: function (b) { L.appendChild(b); },
+				hide: function () { return [].filter.call(L.children, function (c) { return c !== SW.row && c !== SW.box; }); } };
+		}
+		return null;
 	}
-	function showBtn(v) { btn.classList.toggle('is-away', !v); btn.setAttribute('aria-hidden', v ? 'false' : 'true'); btn.tabIndex = v ? 0 : -1; }
-	function open(fromHash) {
-		if (isOpen) { return; }
+	function mountSwitch(P) {
+		var row = document.createElement('div');
+		row.className = 'nlnf nlnf-sw nlnf-sw--' + P.kind;
+		row.setAttribute('dir', 'rtl'); row.setAttribute('lang', 'he');
+		row.innerHTML = '<div class="nlnf-sw__in" role="group" aria-label="' + esc(P.aria) + '">'
+			+ '<button type="button" class="nlnf-sw__b" data-v="list" aria-pressed="true"' + (P.ctl ? ' aria-controls="' + esc(P.ctl) + '"' : '') + '>' + esc(P.t[0]) + '</button>'
+			+ '<button type="button" class="nlnf-sw__b" data-v="map" aria-pressed="false" aria-controls="nlnf-app">' + esc(P.t[1]) + '</button></div>';
+		P.put(row);
+		P.res.classList.add('nlnf-ready'); // the height finder.css held for the switch is now the switch itself
+		SW = { P: P, row: row, btns: row.querySelectorAll('.nlnf-sw__b'), box: null, on: false };
+		row.addEventListener('click', function (e) {
+			var b = e.target.closest('.nlnf-sw__b');
+			if (b) { choose(b.getAttribute('data-v'), 'switch'); }
+		});
+		row.addEventListener('keydown', function (e) { // RTL: the arrows move between the two, like the site's other tabs
+			if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') { return; }
+			var b = e.target.closest('.nlnf-sw__b'); if (!b) { return; }
+			var o = SW.btns[0] === b ? SW.btns[1] : SW.btns[0];
+			o.focus(); choose(o.getAttribute('data-v'), 'switch'); e.preventDefault();
+		});
+		var mb = SW.btns[1]; // the list is ready the moment the map is chosen (the data only, never Mapbox before the choice)
+		['pointerenter', 'focus', 'touchstart'].forEach(function (k) { mb.addEventListener(k, function () { data().catch(function () {}); }, { passive: true, once: true }); });
+	}
+	function choose(v, from) {
+		if (!SW) { return; }
+		var map = v === 'map';
+		if (map === SW.on) { return; }
+		SW.on = map;
+		if (map && !SW.box) {
+			var box = document.createElement('div');
+			box.className = 'nlnf nlnf--host nlnf--host-' + SW.P.kind;
+			box.setAttribute('dir', 'rtl'); box.setAttribute('lang', 'he');
+			SW.box = box;
+			SW.P.box(box);
+			box.appendChild(root);
+		}
+		[].forEach.call(SW.btns, function (b) { b.setAttribute('aria-pressed', (b.getAttribute('data-v') === 'map') === map ? 'true' : 'false'); });
+		SW.P.hide().forEach(function (x) { x.classList.toggle('nlnf-off', map); });
+		if (SW.box) { SW.box.classList.toggle('nlnf-off', !map); }
+		SW.P.res.classList.toggle('nlnf-map', map);
+		if (map) {
+			var was = started;
+			start(); drop();
+			if (was) { renderAll(); }
+			setTimeout(resize, 30); setTimeout(resize, 320);
+			if (!was && SW.P.near && !S.origin && !askedLoc) { askedLoc = true; locate(true); } // "לידי": the visitor asked for near
+			ev('open', { from: from || 'switch' });
+		} else {
+			closeSh(); closeAlert(); closeCard(); measureOff(); endPick(); drawOff();
+			try { window.dispatchEvent(new Event('resize')); } catch (e) { /* old browser: the projects map keeps its size */ }
+			ev('list', { from: from || 'switch' });
+		}
+	}
+
+	if (held) {
+		var hostSel = wrap.getAttribute('data-host') || '', hostEl = null;
+		try { hostEl = hostSel ? document.querySelector(hostSel) : null; } catch (e) { hostEl = null; }
+		var P = plan(hostEl);
+		if (!P) { document.documentElement.classList.add('nlnf-nohost'); return; } // no section to hold it: nothing new on the page, the held height goes
+		mountSwitch(P);
+	}
+
+	function open(fromPop, from) { // full screen: the same app, moved into the dialog and back
+		if (isOpen || !dlg || !body) { return; }
 		isOpen = true; lastFocus = document.activeElement;
-		if (inline) { home = document.createComment('nlnf-home'); root.parentNode.insertBefore(home, root); }
+		home = document.createComment('nlnf-home'); root.parentNode.insertBefore(home, root);
 		body.appendChild(root);
 		dlg.hidden = false;
 		document.documentElement.classList.add('nlnf-open');
 		document.body.style.overflow = 'hidden';
 		updateSheet(); // v3: on a phone the list becomes the sheet over the map
-		showBtn(false);
-		if (!fromHash) { try { history.pushState({ nlnf: 1 }, '', '#lidi'); } catch (e) { /* old browser */ } }
+		if (!fromPop) { try { history.pushState({ nlnf: 1 }, '', '#lidi'); } catch (e) { /* old browser */ } }
 		var was = started;
 		start();
 		drop();
 		if (was) { renderAll(); }
 		setTimeout(resize, 30); setTimeout(resize, 320);
-		if (!S.origin) { locate(true); } else if (S.map) { setTimeout(function () { burst(S.origin.lat, S.origin.lng); }, 300); }
+		if (!S.origin && !askedLoc) { askedLoc = true; locate(true); } else if (S.origin && S.map) { setTimeout(function () { burst(S.origin.lat, S.origin.lng); }, 300); }
 		if (!S.origin && S.map) { setTimeout(function () { burst(null, null); }, 300); }
 		try { dlg.focus({ preventScroll: true }); } catch (e) { /* focus */ } // the dialog itself (tabindex -1); Tab reaches the close button first
-		ev('open', { from: fromHash ? 'link' : 'button' });
+		ev('open', { from: from || 'fullscreen' });
 	}
 	function close(fromPop) {
 		if (!isOpen) { return; }
@@ -1750,36 +1852,63 @@
 		dlg.hidden = true;
 		document.documentElement.classList.remove('nlnf-open');
 		document.body.style.overflow = '';
-		if (inline && home && home.parentNode) { home.parentNode.insertBefore(root, home); home.parentNode.removeChild(home); home = null; setTimeout(resize, 30); }
+		if (home && home.parentNode) { home.parentNode.insertBefore(root, home); home.parentNode.removeChild(home); }
+		home = null;
 		updateSheet(); // v3: back on the page, the list is a plain list again
-		showBtn(!inlineSeen);
-		placeBtn();
-		if (fromPop !== true && location.hash === '#lidi') { try { history.back(); } catch (e) { /* stays */ } }
+		setTimeout(resize, 30);
+		if (fromPop !== true && history.state && history.state.nlnf) { try { history.back(); } catch (e) { /* stays */ } }
 		if (lastFocus && lastFocus.focus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) { /* gone */ } }
 	}
-	DLG.can = true; DLG.isOpen = function () { return isOpen; }; DLG.open = function () { open(false); }; // v3: "ציירו אזור" on a phone opens the dialog first
-	root.classList.remove('nlnf--nodraw');
-	btn.addEventListener('click', function () { open(false); });
-	['pointerenter', 'focus', 'touchstart'].forEach(function (n) { btn.addEventListener(n, function () { data().catch(function () {}); }, { passive: true, once: true }); }); // the list is ready the moment it opens
-	if (xBtn) { xBtn.addEventListener('click', function () { close(); }); }
-	dlg.addEventListener('keydown', function (e) {
-		if (e.key === 'Escape') { if (!escape()) { close(); } e.preventDefault(); return; }
-		if (e.key !== 'Tab') { return; }
-		var f = [].filter.call(dlg.querySelectorAll('a[href],button:not([disabled]),input,select,[tabindex]:not([tabindex="-1"])'), function (n) { return n.offsetParent !== null || n === document.activeElement; });
-		if (!f.length) { return; }
-		var a = f[0], z = f[f.length - 1];
-		if (e.shiftKey && document.activeElement === a) { z.focus(); e.preventDefault(); } else if (!e.shiftKey && document.activeElement === z) { a.focus(); e.preventDefault(); }
-	});
-	window.addEventListener('popstate', function () { var want = location.hash === '#lidi'; if (isOpen && !want) { close(true); } else if (!isOpen && want) { open(true); } });
-	window.addEventListener('pagehide', function () { document.body.style.overflow = ''; document.documentElement.classList.remove('nlnf-open'); });
-	// the launcher steps aside while the inline finder itself is on screen
-	var sect = document.getElementById('nlnf');
-	if (inline && sect && 'IntersectionObserver' in window) {
-		new IntersectionObserver(function (es) { es.forEach(function (x) { inlineSeen = x.isIntersecting; }); if (!isOpen) { showBtn(!inlineSeen); } }, { threshold: 0.2 }).observe(sect);
+	if (dlg && body) {
+		DLG.can = true; DLG.isOpen = function () { return isOpen; }; DLG.open = function () { open(false, 'draw'); }; // v3: "ציירו אזור" on a phone opens the full screen first
+		root.classList.remove('nlnf--nodraw');
+		el.fs.hidden = false;
+		el.fs.addEventListener('click', function () { open(false, 'fullscreen'); });
+		if (xBtn) { xBtn.addEventListener('click', function () { close(); }); }
+		dlg.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') { if (!escape()) { close(); } e.preventDefault(); return; }
+			if (e.key !== 'Tab') { return; }
+			var f = [].filter.call(dlg.querySelectorAll('a[href],button:not([disabled]),input,select,[tabindex]:not([tabindex="-1"])'), function (n) { return n.offsetParent !== null || n === document.activeElement; });
+			if (!f.length) { return; }
+			var a = f[0], z = f[f.length - 1];
+			if (e.shiftKey && document.activeElement === a) { z.focus(); e.preventDefault(); } else if (!e.shiftKey && document.activeElement === z) { a.focus(); e.preventDefault(); }
+		});
+		window.addEventListener('popstate', function () {
+			var want = !!(history.state && history.state.nlnf); // our own full-screen entry, never a bare #lidi
+			if (isOpen && !want) { close(true); } else if (!isOpen && want && (inline || (SW && SW.on))) { open(true, 'fullscreen'); }
+		});
+		window.addEventListener('pagehide', function () { document.body.style.overflow = ''; document.documentElement.classList.remove('nlnf-open'); });
 	}
-	btn.hidden = false;
-	placeBtn();
-	[400, 1500, 4000].forEach(function (t) { setTimeout(placeBtn, t); });
-	window.addEventListener('resize', placeBtn);
-	if (location.hash === '#lidi') { open(true); }
+
+	/* #lidi: the map in place, scrolled to (no dialog on load), below the site's sticky header (measured, never assumed);
+	   again on window load unless the visitor already moved */
+	function topCover() {
+		var max = 0;
+		try {
+			[].forEach.call(document.elementsFromPoint(window.innerWidth / 2, 2) || [], function (n) {
+				for (var e = n; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+					var p = window.getComputedStyle(e).position;
+					if (p === 'fixed' || p === 'sticky') { var r = e.getBoundingClientRect(); if (r.top <= 2 && r.bottom > max && r.bottom < window.innerHeight / 2) { max = r.bottom; } break; }
+				}
+			});
+		} catch (e) { /* old browser: no offset */ }
+		return max;
+	}
+	function scrollToEl(t) { window.scrollTo(0, Math.max(0, Math.round(t.getBoundingClientRect().top + window.pageYOffset - topCover() - 12))); }
+	function lidi(from) {
+		var target = SW ? SW.row : (inline ? document.getElementById('nlnf') || root : null);
+		if (!target) { return; }
+		scrollToEl(target); // first, so the section's own map (the projects map on the home page) starts before the finder's
+		if (SW) { choose('map', from); } else if (inline) { start(); ev('open', { from: from }); }
+	}
+	['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (k) { window.addEventListener(k, function () { touched = true; }, { passive: true, once: true }); });
+	window.addEventListener('hashchange', function () { if (location.hash === '#lidi' && !isOpen && !(history.state && history.state.nlnf)) { lidi('link'); } });
+	if (location.hash === '#lidi') {
+		lidi('link');
+		window.addEventListener('load', function () { // pictures above may have changed the page's height meanwhile
+			if (touched) { return; }
+			var t = SW ? SW.row : document.getElementById('nlnf');
+			if (t) { scrollToEl(t); }
+		});
+	}
 })();

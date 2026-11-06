@@ -426,33 +426,36 @@ if ( ! function_exists( 'nadlan_nf_broker_here' ) ) {
 	}
 }
 if ( ! function_exists( 'nadlan_nf_context' ) ) {
-	/** Where the finder shows and how. Empty = not on this page (never /projects/ or a project page). */
+	/**
+	 * Where the finder shows and how. Empty = not on this page (never /projects/ or a project page).
+	 * Owner 6.11.2026: no floating button on any page, ever. The finder lives inside the page's own map or listings section:
+	 * 'host' is that section's selector (finder.js puts a quiet switch there and opens the map in place). A page with neither
+	 * an inline section nor a host gets nothing. Her professional card (the post itself) has no map or listings section, so
+	 * the finder stays on her site page only.
+	 */
 	function nadlan_nf_context() {
 		static $c = null;
 		if ( null !== $c ) { return $c; }
 		$c = array();
 		if ( is_admin() || is_feed() || ( function_exists( 'wp_is_json_request' ) && wp_is_json_request() ) ) { return $c; }
 		$portal = 'דירות למכירה ולהשכרה על המפה';
-		$label  = 'חפשו נכס לידי';
 		if ( is_post_type_archive( 'nadlan_property' ) ) {
-			$c = array( 'mode' => 'portal', 'deal' => '', 'title' => $portal, 'label' => $label, 'inline' => true, 'broker' => 0 );
-		} elseif ( is_front_page() ) {
-			$c = array( 'mode' => 'portal', 'deal' => 'sale', 'title' => $portal, 'label' => $label, 'inline' => false, 'broker' => 0 );
-		} elseif ( nadlan_nf_rent_page() > 0 && is_page( nadlan_nf_rent_page() ) ) {
-			$c = array( 'mode' => 'portal', 'deal' => 'rent', 'title' => 'דירות להשכרה על המפה', 'label' => $label, 'inline' => false, 'broker' => 0 );
+			$c = array( 'mode' => 'portal', 'deal' => '', 'title' => $portal, 'inline' => true, 'broker' => 0, 'host' => '' );
+		} elseif ( is_front_page() ) { // the projects map section: "פרויקטים חדשים" | "דירות לידי"
+			$c = array( 'mode' => 'portal', 'deal' => 'sale', 'title' => $portal, 'inline' => false, 'broker' => 0, 'host' => '#nldrone' );
+		} elseif ( nadlan_nf_rent_page() > 0 && is_page( nadlan_nf_rent_page() ) ) { // under "הדירות להשכרה באתר עכשיו": "רשימה" | "על המפה, לידי"
+			$c = array( 'mode' => 'portal', 'deal' => 'rent', 'title' => 'דירות להשכרה על המפה', 'inline' => false, 'broker' => 0, 'host' => '#listings' );
 		} else {
 			$bid = nadlan_nf_broker_here();
-			if ( $bid > 0 ) {
+			if ( $bid > 0 && (int) get_queried_object_id() !== $bid ) { // her site page, under "הנכסים": "רשימה" | "על המפה"
 				$bk    = function_exists( 'nl_drop_broker' ) ? nl_drop_broker( $bid ) : null;
 				$parts = preg_split( '/\s*·\s*/u', html_entity_decode( get_the_title( $bid ), ENT_QUOTES, 'UTF-8' ) );
 				$name  = $bk && ! empty( $bk['name_he'] ) ? (string) $bk['name_he'] : trim( (string) $parts[0] );
-				$g     = (string) get_post_meta( $bid, 'nl_gender', true );
-				$lab   = 'f' === $g ? 'הנכסים שלה לידכם' : ( 'm' === $g ? 'הנכסים שלו לידכם' : 'נכסים לידכם' );
-				$c = array( 'mode' => 'broker', 'deal' => 'sale', 'title' => 'הנכסים של ' . $name . ' על המפה', 'label' => $lab, 'inline' => false, 'broker' => $bid );
-			} else {
+				$c = array( 'mode' => 'broker', 'deal' => 'sale', 'title' => 'הנכסים של ' . $name . ' על המפה', 'inline' => false, 'broker' => $bid, 'host' => '#listings' );
+			} elseif ( 0 === $bid ) {
 				$p = is_singular() ? get_post() : null;
 				if ( $p && has_shortcode( (string) $p->post_content, 'nadlan_near_finder' ) ) {
-					$c = array( 'mode' => 'portal', 'deal' => '', 'title' => $portal, 'label' => $label, 'inline' => true, 'broker' => 0, 'shortcode' => true );
+					$c = array( 'mode' => 'portal', 'deal' => '', 'title' => $portal, 'inline' => true, 'broker' => 0, 'host' => '', 'shortcode' => true );
 				}
 			}
 		}
@@ -535,27 +538,30 @@ if ( ! function_exists( 'nadlan_nf_render' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_nf_launcher' ) ) {
-	/** The floating launcher and its full-screen dialog. Hidden until the script runs (no script, no button). */
+	/**
+	 * The full-screen dialog ("מסך מלא" inside the app opens it) and, on a page without the inline section, the app root in a
+	 * hidden holder: data attributes only, no heading, no new text. finder.js moves the root into the host section (data-host)
+	 * the first time the visitor chooses the map there, and only then loads Mapbox and the data. No floating button (6.11.2026).
+	 */
 	function nadlan_nf_launcher( $c ) {
 		$inline = ! empty( $c['inline'] );
-		$h  = '<div class="nlnf nlnf-lidi" id="nlnf-lidi" dir="rtl" lang="he" data-mode="' . esc_attr( $c['mode'] ) . '">';
-		$h .= '<button type="button" class="nlnf-launch" id="nlnf-launch" aria-haspopup="dialog" aria-controls="nlnf-dlg" hidden>'
-			. '<span class="nlnf-radar" aria-hidden="true"><i></i><i></i><i></i><b></b></span><span class="nlnf-launch__t">' . esc_html( $c['label'] ) . '</span></button>';
+		$host   = isset( $c['host'] ) ? (string) $c['host'] : '';
+		if ( ! $inline && '' === $host ) { return ''; } // no section on this page to hold it: nothing at all
+		$h  = '<div class="nlnf nlnf-lidi" id="nlnf-lidi" dir="rtl" lang="he" data-mode="' . esc_attr( $c['mode'] ) . '"' . ( $inline ? '' : ' data-host="' . esc_attr( $host ) . '"' ) . '>';
+		if ( ! $inline ) {
+			$h .= '<div class="nlnf-hold" id="nlnf-hold" hidden>' . nadlan_nf_app_html( (string) $c['deal'], '', (int) $c['broker'] ) . ( 'broker' === $c['mode'] ? '' : nadlan_nf_own_html() ) . '</div>';
+		}
 		$h .= '<div class="nlnf-dlg" id="nlnf-dlg" role="dialog" aria-modal="true" aria-labelledby="nlnf-dlg-t" tabindex="-1" hidden>'
 			. '<div class="nlnf-dlg__bar"><p class="nlnf-dlg__t" id="nlnf-dlg-t">' . esc_html( $c['title'] ) . '</p>'
 			. '<button type="button" class="nlnf-dlg__x" id="nlnf-dlg-x" aria-label="סגירה"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>'
-			. '<div class="nlnf-dlg__body" id="nlnf-dlg-body">';
-		if ( ! $inline ) {
-			$h .= nadlan_nf_app_html( (string) $c['deal'], '', (int) $c['broker'] ) . ( 'broker' === $c['mode'] ? '' : nadlan_nf_own_html() );
-		}
-		$h .= '</div></div></div>';
+			. '<div class="nlnf-dlg__body" id="nlnf-dlg-body"></div></div></div>';
 		return $h;
 	}
 }
 add_action( 'wp_footer', function () {
 	$c = nadlan_nf_context();
 	if ( ! $c || ! empty( $c['shortcode'] ) ) { return; } // a page holding the shortcode gets the inline block only
-	if ( ! empty( $c['inline'] ) && ! did_action( 'nadlan_nf_rendered' ) ) { $c['inline'] = false; } // no inline section printed: the dialog brings its own
+	if ( ! empty( $c['inline'] ) && ! did_action( 'nadlan_nf_rendered' ) ) { $c['inline'] = false; } // no inline section printed (and no host): nothing below
 	echo nadlan_nf_launcher( $c ); // phpcs:ignore -- escaped above
 }, 30 );
 

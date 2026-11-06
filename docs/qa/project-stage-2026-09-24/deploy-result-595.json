@@ -1,0 +1,21 @@
+{
+  "released": "1.72.595",
+  "from": "1.72.594",
+  "live_before": {
+    "assets/near-finder/finder.js": "e0f7ef62c8f4145b0beb7629d9175259",
+    "assets/near-finder/finder.css": "eb37b5657ef5ab196e1f71e0ea976f8a",
+    "nadlan-config.php": "16a5fa229938c4672043467f0e3c6d6a",
+    "inc/near-finder.php": "df98425bda38be38b930768a7176fc28"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 10:39:46",
+  "files": {
+    "assets/near-finder/finder.js": "018e8c8fcf6bc4e2bb25c906807c7a8c",
+    "assets/near-finder/finder.css": "27ca84714938ddab173eca0c4e1e2f0c",
+    "nadlan-config.php": "f11f6c68f6852c3c795c9867c1ef831c",
+    "inc/near-finder.php": "c7fffca3f06350211193fa0ded50295c"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.595, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

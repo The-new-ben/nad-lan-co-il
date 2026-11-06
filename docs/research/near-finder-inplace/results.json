@@ -1,0 +1,1237 @@
+{
+ "home": {
+  "m390": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0.0037,
+    "shifts": [
+     {
+      "v": 0.0037,
+      "t": 1691,
+      "src": [
+       "#text",
+       "#text",
+       "BUTTON.nlhp-search__tab",
+       "BUTTON.nlhp-search__tab",
+       "SPAN.nlhp-hero__cap"
+      ]
+     }
+    ],
+    "shot_first": "shots/home-m390-live-first.png",
+    "shot_section": "shots\\home-m390-live-section.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 0
+    },
+    "shot_dialog": "shots/home-m390-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 4835,
+    "bottom": 5499,
+    "h": 664,
+    "w": 362,
+    "left": 14
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0,
+    "shifts": [],
+    "anchor": {
+     "top": 4835,
+     "bottom": 5499,
+     "h": 664,
+     "w": 362,
+     "left": 14
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/home-m390-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--proj",
+     "buttons": [
+      {
+       "t": "פרויקטים חדשים",
+       "pressed": "true",
+       "h": 44,
+       "w": 176
+      },
+      {
+       "t": "דירות לידי",
+       "pressed": "false",
+       "h": 44,
+       "w": 176
+      }
+     ],
+     "rowH": 66
+    },
+    "shot_section_list": "shots\\home-m390-after-section-list.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 1382,
+     "stage_visible": false,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\home-m390-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": true,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/home-m390-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": true,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": 480
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 69,
+    "scrollY": 4700,
+    "app_visible": true,
+    "shot": "shots/home-m390-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  },
+  "d1280": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0.1792,
+    "shifts": [
+     {
+      "v": 0.1792,
+      "t": 1417,
+      "src": [
+       "DIV.nlhp-hero__body",
+       "DIV#nlcta",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "shot_first": "shots/home-d1280-live-first.png",
+    "shot_section": "shots\\home-d1280-live-section.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "shot_dialog": "shots/home-d1280-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 3946,
+    "bottom": 4610,
+    "h": 664,
+    "w": 1232,
+    "left": 24
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0.16627,
+    "shifts": [
+     {
+      "v": 0.16627,
+      "t": 1303,
+      "src": [
+       "DIV.nlhp-hero__body",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "anchor": {
+     "top": 3946,
+     "bottom": 4610,
+     "h": 664,
+     "w": 1232,
+     "left": 24
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/home-d1280-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--proj",
+     "buttons": [
+      {
+       "t": "פרויקטים חדשים",
+       "pressed": "true",
+       "h": 44,
+       "w": 137
+      },
+      {
+       "t": "דירות לידי",
+       "pressed": "false",
+       "h": 44,
+       "w": 137
+      }
+     ],
+     "rowH": 66
+    },
+    "shot_section_list": "shots\\home-d1280-after-section-list.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 640,
+     "stage_visible": false,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\home-d1280-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": false,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/home-d1280-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": true,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": 600
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 81,
+    "scrollY": 3799,
+    "app_visible": true,
+    "shot": "shots/home-d1280-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  }
+ },
+ "properties": {
+  "m390": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0,
+    "shifts": [],
+    "shot_first": "shots/properties-m390-live-first.png",
+    "shot_section": "shots\\properties-m390-live-section.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 0
+    },
+    "shot_dialog": "shots/properties-m390-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 623,
+    "bottom": 1316,
+    "h": 692,
+    "w": 358,
+    "left": 16
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0,
+    "shifts": [],
+    "anchor": {
+     "top": 623,
+     "bottom": 2236,
+     "h": 1612,
+     "w": 358,
+     "left": 16
+    },
+    "anchor_same_as_nojs": true,
+    "holder": null,
+    "shot_first": "shots/properties-m390-after-first.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 3
+    },
+    "shot_section_map": "shots\\properties-m390-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": true,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/properties-m390-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [],
+    "target_top_in_view": 69,
+    "scrollY": 554,
+    "app_visible": true,
+    "shot": "shots/properties-m390-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  },
+  "d1280": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0.01393,
+    "shifts": [
+     {
+      "v": 0.00039,
+      "t": 1092,
+      "src": [
+       "#text"
+      ]
+     },
+     {
+      "v": 0.01354,
+      "t": 1209,
+      "src": [
+       "DIV#nlnf-panel.nlnf__panel",
+       "DIV#nlcta",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "shot_first": "shots/properties-d1280-live-first.png",
+    "shot_section": "shots\\properties-d1280-live-section.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "shot_dialog": "shots/properties-d1280-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 437,
+    "bottom": 1416,
+    "h": 979,
+    "w": 1192,
+    "left": 44
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0.01425,
+    "shifts": [
+     {
+      "v": 0.00854,
+      "t": 1032,
+      "src": [
+       "#text",
+       "DIV#nlcta",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     },
+     {
+      "v": 0.00571,
+      "t": 1128,
+      "src": [
+       "DIV#nlnf-panel.nlnf__panel",
+       "P.nlnf__note"
+      ]
+     }
+    ],
+    "anchor": {
+     "top": 437,
+     "bottom": 1350,
+     "h": 913,
+     "w": 1192,
+     "left": 44
+    },
+    "anchor_same_as_nojs": true,
+    "holder": null,
+    "shot_first": "shots/properties-d1280-after-first.png",
+    "finder": {
+     "count": "7 נכסים למכירה",
+     "rows": 7,
+     "nomap": false,
+     "canvas": true,
+     "pins": 3
+    },
+    "shot_section_map": "shots\\properties-d1280-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": false,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/properties-d1280-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [],
+    "target_top_in_view": 81,
+    "scrollY": 356,
+    "app_visible": true,
+    "shot": "shots/properties-d1280-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  }
+ },
+ "rent": {
+  "m390": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0,
+    "shifts": [],
+    "shot_first": "shots/rent-m390-live-first.png",
+    "shot_section": "shots\\rent-m390-live-section.png",
+    "finder": {
+     "count": "9 נכסים להשכרה",
+     "rows": 9,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "shot_dialog": "shots/rent-m390-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 4679,
+    "bottom": 4733,
+    "h": 54,
+    "w": 358,
+    "left": 16
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0,
+    "shifts": [],
+    "anchor": {
+     "top": 4679,
+     "bottom": 4733,
+     "h": 54,
+     "w": 358,
+     "left": 16
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/rent-m390-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--list",
+     "buttons": [
+      {
+       "t": "רשימה",
+       "pressed": "true",
+       "h": 44,
+       "w": 113
+      },
+      {
+       "t": "על המפה, לידי",
+       "pressed": "false",
+       "h": 44,
+       "w": 113
+      }
+     ],
+     "rowH": 64
+    },
+    "shot_section_list": "shots\\rent-m390-after-section-list.png",
+    "finder": {
+     "count": "9 נכסים להשכרה",
+     "rows": 9,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 1480,
+     "stage_visible": null,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\rent-m390-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": true,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/rent-m390-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": null,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": null
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 69,
+    "scrollY": 4546,
+    "app_visible": true,
+    "shot": "shots/rent-m390-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  },
+  "d1280": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0.02134,
+    "shifts": [
+     {
+      "v": 0.02134,
+      "t": 1713,
+      "src": [
+       "P.nlrh-lead",
+       "#text",
+       "#text",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "shot_first": "shots/rent-d1280-live-first.png",
+    "shot_section": "shots\\rent-d1280-live-section.png",
+    "finder": {
+     "count": "9 נכסים להשכרה",
+     "rows": 9,
+     "nomap": false,
+     "canvas": true,
+     "pins": 3
+    },
+    "shot_dialog": "shots/rent-d1280-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 3239,
+    "bottom": 3272,
+    "h": 34,
+    "w": 638,
+    "left": 462
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0.02134,
+    "shifts": [
+     {
+      "v": 0.02134,
+      "t": 1518,
+      "src": [
+       "P.nlrh-lead",
+       "#text",
+       "#text",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "anchor": {
+     "top": 3239,
+     "bottom": 3272,
+     "h": 34,
+     "w": 638,
+     "left": 462
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/rent-d1280-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--list",
+     "buttons": [
+      {
+       "t": "רשימה",
+       "pressed": "true",
+       "h": 44,
+       "w": 136
+      },
+      {
+       "t": "על המפה, לידי",
+       "pressed": "false",
+       "h": 44,
+       "w": 136
+      }
+     ],
+     "rowH": 64
+    },
+    "shot_section_list": "shots\\rent-d1280-after-section-list.png",
+    "finder": {
+     "count": "9 נכסים להשכרה",
+     "rows": 9,
+     "nomap": false,
+     "canvas": true,
+     "pins": 2
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 760,
+     "stage_visible": null,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\rent-d1280-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": false,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/rent-d1280-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": null,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": null
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 81,
+    "scrollY": 3094,
+    "app_visible": true,
+    "shot": "shots/rent-d1280-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  }
+ },
+ "broker": {
+  "m390": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0,
+    "shifts": [],
+    "shot_first": "shots/broker-m390-live-first.png",
+    "shot_section": "shots\\broker-m390-live-section.png",
+    "finder": {
+     "count": "5 נכסים למכירה",
+     "rows": 5,
+     "nomap": false,
+     "canvas": true,
+     "pins": 0
+    },
+    "shot_dialog": "shots/broker-m390-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 3114,
+    "bottom": 15721,
+    "h": 12607,
+    "w": 318,
+    "left": 36
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0,
+    "shifts": [],
+    "anchor": {
+     "top": 3114,
+     "bottom": 15721,
+     "h": 12607,
+     "w": 318,
+     "left": 36
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/broker-m390-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--nlb",
+     "buttons": [
+      {
+       "t": "רשימה",
+       "pressed": "true",
+       "h": 44,
+       "w": 82
+      },
+      {
+       "t": "על המפה",
+       "pressed": "false",
+       "h": 44,
+       "w": 82
+      }
+     ],
+     "rowH": 76
+    },
+    "shot_section_list": "shots\\broker-m390-after-section-list.png",
+    "finder": {
+     "count": "5 נכסים למכירה",
+     "rows": 5,
+     "nomap": false,
+     "canvas": true,
+     "pins": 3
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 1254,
+     "stage_visible": null,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\broker-m390-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": true,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/broker-m390-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": null,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": null
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 69,
+    "scrollY": 2857,
+    "app_visible": true,
+    "shot": "shots/broker-m390-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  },
+  "d1280": {
+   "live": {
+    "launchExists": true,
+    "launchVisible": true,
+    "hScroll": 0,
+    "fixedVisible": [
+     "nlnf-launch"
+    ],
+    "cls": 0.00467,
+    "shifts": [
+     {
+      "v": 0.00117,
+      "t": 1117,
+      "src": [
+       "#text",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     },
+     {
+      "v": 0.00349,
+      "t": 1202,
+      "src": [
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "A.nlb-btn.nlb-btn--ghost",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "shot_first": "shots/broker-d1280-live-first.png",
+    "shot_section": "shots\\broker-d1280-live-section.png",
+    "finder": {
+     "count": "5 נכסים למכירה",
+     "rows": 5,
+     "nomap": false,
+     "canvas": true,
+     "pins": 1
+    },
+    "shot_dialog": "shots/broker-d1280-live-dialog.png"
+   },
+   "nojs_anchor": {
+    "top": 3165,
+    "bottom": 7515,
+    "h": 4350,
+    "w": 1001,
+    "left": 140
+   },
+   "after": {
+    "launchExists": false,
+    "launchVisible": false,
+    "hScroll": 0,
+    "fixedVisible": [],
+    "cls": 0.00467,
+    "shifts": [
+     {
+      "v": 0.00117,
+      "t": 1129,
+      "src": [
+       "#text",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     },
+     {
+      "v": 0.00349,
+      "t": 1228,
+      "src": [
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd",
+       "A.nlb-btn.nlb-btn--ghost",
+       "DETAILS.nlhp-dd",
+       "DETAILS.nlhp-dd"
+      ]
+     }
+    ],
+    "anchor": {
+     "top": 3165,
+     "bottom": 7515,
+     "h": 4350,
+     "w": 1001,
+     "left": 140
+    },
+    "anchor_same_as_nojs": true,
+    "holder": {
+     "hidden": true,
+     "visible": false
+    },
+    "shot_first": "shots/broker-d1280-after-first.png",
+    "switch": {
+     "kind": "nlnf nlnf-sw nlnf-sw--nlb",
+     "buttons": [
+      {
+       "t": "רשימה",
+       "pressed": "true",
+       "h": 44,
+       "w": 136
+      },
+      {
+       "t": "על המפה",
+       "pressed": "false",
+       "h": 44,
+       "w": 136
+      }
+     ],
+     "rowH": 76
+    },
+    "shot_section_list": "shots\\broker-d1280-after-section-list.png",
+    "finder": {
+     "count": "5 נכסים למכירה",
+     "rows": 5,
+     "nomap": false,
+     "canvas": true,
+     "pins": 3
+    },
+    "map_view": {
+     "app_visible": true,
+     "app_in_host": true,
+     "app_h": 760,
+     "stage_visible": null,
+     "grid_visible": false,
+     "pressed": [
+      "false",
+      "true"
+     ],
+     "hScroll": 0
+    },
+    "shot_section_map": "shots\\broker-d1280-after-section-map.png",
+    "fs": {
+     "hidden": false,
+     "h": 44,
+     "w": 78,
+     "visible": true
+    },
+    "fs_open": {
+     "dlg": true,
+     "inDlg": true,
+     "hash": "#lidi",
+     "sheet": false,
+     "fsBtnVisible": false
+    },
+    "shot_fullscreen": "shots/broker-d1280-after-fullscreen.png",
+    "fs_closed": {
+     "dlg": false,
+     "back": true,
+     "hash": "",
+     "htmlOpen": false,
+     "bodyOverflow": "",
+     "url_same": true
+    },
+    "list_again": {
+     "app_visible": false,
+     "stage_visible": null,
+     "list_visible": true,
+     "pressed": [
+      "true",
+      "false"
+     ],
+     "droneCanvasH": null
+    },
+    "hScroll_end": 0
+   },
+   "lidi": {
+    "dlg_open": false,
+    "pressed": [
+     "false",
+     "true"
+    ],
+    "target_top_in_view": 81,
+    "scrollY": 2960,
+    "app_visible": true,
+    "shot": "shots/broker-d1280-after-lidi.png"
+   },
+   "errors": {
+    "live": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "after": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ],
+    "lidi": [
+     "Access to script at 'https://embed.tawk.to/6ae44dd6ef50013470475788/1k65t04h3' from origin 'https://nad-lan.co.il' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+     "Failed to load resource: net::ERR_FAILED"
+    ]
+   }
+  }
+ }
+}
