@@ -32,8 +32,8 @@
   var AMEND = [{ k: 'terms', he: 'שינוי תנאים או שמות' }, { k: 'inc', he: 'הגדלת סכום ההלוואה' }];
   var SHORT = { gov_service: 'אתר הממשלה', gov_fees: 'אגרות 2026, אתר הממשלה', gov_forms: 'טפסים, אתר הממשלה', reshumot_land: 'הודעת האגרות 2026',
     reshumot_pledge: 'הודעת המשכון 2026', regs_fees: 'תקנות האגרות', regs_land: 'תקנות הרישום', law_banking: 'חוק הבנקאות', kz_disabled: 'כל זכות',
-    kz_idf_disabled: 'כל זכות', kz_terror: 'כל זכות', kz_bereaved_idf: 'כל זכות', kz_bereaved_terror: 'כל זכות', mod_bereaved: 'משרד הביטחון', ila_guide: 'רמ״י, אתר הממשלה', ila_form: 'הטופס של רמ״י' };
-  var SECW = { regs_fees: 'תקנה', regs_land: 'תקנה', law_banking: 'סעיף', reshumot_land: 'פרט', reshumot_pledge: 'פרט' };
+    kz_idf_disabled: 'כל זכות', kz_terror: 'כל זכות', kz_bereaved_idf: 'כל זכות', kz_bereaved_terror: 'כל זכות', mod_bereaved: 'משרד הביטחון', ila_guide: 'רמ״י, אתר הממשלה', ila_form: 'הטופס של רמ״י', ila_proc: 'נוהל רמ״י 90.02B' };
+  var SECW = { ila_proc: 'סעיף', regs_fees: 'תקנה', regs_land: 'תקנה', law_banking: 'סעיף', reshumot_land: 'פרט', reshumot_pledge: 'פרט' };
 
   /* ------------------------------------------------------------------------------------------------------------- helpers */
   var NF = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
@@ -45,7 +45,7 @@
   function exOf(D, k) { var a = (D && D.exemptions) || []; for (var i = 0; i < a.length; i++) if (a[i].k === k) return a[i]; return null; }
   function reging(a) { return a === 'register' || a === 'second' || a === 'amend'; }
   function ending(a) { return a === 'cancel' || a === 'death'; }
-  function whoOpts(reg, a) { return reging(a) ? (reg === 'ila' ? ['owner', 'rep'] : ['lawyer', 'office']) : a === 'cancel' && reg === 'tabu' ? ['bank', 'office'] : ['bank']; }
+  function whoOpts(reg, a) { if (reg === 'ila') return a === 'register' || a === 'second' ? ['owner', 'rep'] : ['owner']; return reging(a) ? ['lawyer', 'office'] : a === 'cancel' && reg === 'tabu' ? ['bank', 'office'] : ['bank']; }
   function whole(x) { var s = String(x == null ? '' : x).trim(); if (!/^\d{1,3}$/.test(s)) return NaN; return +s; }
   function sum(L) { var s = 0; L.forEach(function (l) { if (l.tot && l.amt > 0) s += l.amt; }); return s; }
 
@@ -80,7 +80,7 @@
     if (X && !exApplies) {
       if (reg === 'tabu') exWhy = 'הפטור מנוסח ״בעד רישום משכנתה״. אם הוא חל גם על ' + (amend === 'inc' ? 'הגדלת הסכום' : 'תיקון') + ', לא מצאנו כתוב, ולכן כאן הוא לא מוריד את האגרה. שאלו את מוקד הרשות.';
       else if (reg === 'none') exWhy = 'הפטור הוא בתקנות האגרות של המקרקעין; בהודעת המשכון אין פטור כזה. הוא יחול כשהמשכנתה תירשם בטאבו.';
-      else if (reg === 'ila') exWhy = 'הפטור הוא מאגרה בעד רישום משכנתה, והוא לא כתוב על כתב ההתחייבות של רמ״י. הוא יחול כשהמשכנתה תירשם בטאבו.';
+      else if (reg === 'ila') exWhy = 'כתב ההתחייבות של רמ״י מופק ממילא ללא אגרה (נוהל 90.02B, סעיף 1.10). הפטור יחול כשהמשכנתה תירשם בטאבו.';
       else exWhy = 'הפטור הוא מאגרה בעד רישום משכנתה, והוא לא כתוב על הערת אזהרה. הוא יחול כשהמשכנתה תירשם בטאבו.';
     }
 
@@ -102,31 +102,30 @@
         status = 'bank';
         if (a === 'death') add({ k: 'inherit', label: 'רישום הירושה בטאבו, בקשה נפרדת של היורשים', amt: F.inherit.amount, item: F.inherit.item, src: [land('inherit')], tot: false, kind: 'info', note: 'לא בסך הכול: זו פעולה נפרדת.' });
       }
-    } else if (reg === 'ila') {  // the ILA service page, read by hand 6.11.2026 (D.ila)
+    } else if (reg === 'ila') {  // the ILA service page (read by hand) and ILA procedure 90.02B (the official PDF), both 6.11.2026 (D.ila)
       var I = D.ila;
       if (a === 'register' || a === 'second') {
-        add({ k: 'commit', label: I.doc + ' מרמ״י', amt: null, shown: 'לא מופיעה בדף השירות', src: [{ id: 'ila_guide' }], tot: false, kind: 'nofee',
-          note: I.fee + '. הבקשה מקוונת, באזור האישי ״' + I.area + '״.' });
+        add({ k: 'commit', label: I.doc + ' ואישור זכויות מרמ״י', amt: I.fee.amount, item: I.fee.sec, src: [{ id: I.fee.src, sec: I.fee.sec }, { id: 'ila_guide' }], tot: true, kind: 'free',
+          note: 'ללא תשלום אגרה. הבקשה מקוונת, באזור האישי ״' + I.area + '״.' });
         add({ k: 'note', label: 'הערת אזהרה לטובת הבנק, אם נרשמת גם בטאבו', amt: F.note.amount, item: F.note.item, src: [land('note'), { id: 'regs_land', sec: '21' }], tot: false, kind: 'info',
-          note: 'לא בסך הכול: דף השירות של רמ״י לא מזכיר הערה כזו. אם היא נרשמת, זו השורה הכללית של הערת אזהרה.' });
-        add({ k: 'later', label: 'כשהזכויות יירשמו בטאבו: רישום המשכנתה', amt: F.mortgage.amount, item: F.mortgage.item, src: [land('mortgage'), { id: 'ila_guide' }, { id: 'regs_fees', sec: '11א' }], tot: false, kind: 'later',
+          note: 'לא בסך הכול: דף השירות ונוהל 90.02B לא מזכירים הערה כזו. אם היא נרשמת, זו השורה הכללית של הערת אזהרה.' });
+        add({ k: 'later', label: 'כשהזכויות יירשמו בטאבו: רישום המשכנתה', amt: F.mortgage.amount, item: F.mortgage.item, src: [land('mortgage'), { id: 'ila_proc', sec: 'א.2' }, { id: 'regs_fees', sec: '11א' }], tot: false, kind: 'later',
           note: 'לא בסך הכול. רמ״י לא תרשום את הזכויות בטאבו בלי המשכנתה. ' + R.deposit_at_commitment.he + '.' + (X ? ' הפטור שבחרתם יחול על הרישום הזה.' : '') });
-        status = 'ila';
       } else if (a === 'amend') {
-        add({ k: 'amend', label: 'תיקון ' + I.doc, amt: null, shown: 'לא בדף השירות', src: [{ id: 'ila_guide' }], tot: false, kind: 'unk',
-          note: 'דף השירות של רמ״י לא מפרט תיקון; התנאים בנוהל 90.02B. בודקים מול רמ״י: ' + I.contact.phone + '.' });
-        status = 'unknown';
+        add({ k: 'amend', label: 'תיקון ' + I.doc + ': הפחתת סכום או שינוי דרגה', amt: null, shown: I.fee_other, item: I.amend.sec, src: [{ id: 'ila_proc', sec: I.amend.sec }], tot: false, kind: 'nofee',
+          note: I.amend.letter + '.' });
+        status = 'ilaamend';
       } else {
-        add({ k: 'commit', label: 'סילוק ' + I.doc, amt: null, shown: 'לא בדף השירות', src: [{ id: 'ila_guide' }, { id: 'law_banking', sec: '9א(א)' }], tot: false, kind: 'unk',
-          note: 'הבנק מבטל את השעבודים אחרי פירעון מלא. השלבים מול רמ״י לא מפורטים בדף השירות; הם ב' + I.procedure + '. בודקים מול רמ״י: ' + I.contact.phone + '.' });
+        add({ k: 'commit', label: 'סילוק ' + I.doc, amt: null, shown: I.fee_other, item: I.discharge.sec, src: [{ id: 'ila_proc', sec: I.discharge.sec }], tot: false, kind: 'nofee',
+          note: I.discharge.he + '.' });
         add({ k: 'note_delete', label: 'מחיקת הערת אזהרה של הבנק, אם נרשמה', amt: F.note_delete.amount, item: F.note_delete.item, src: [land('note_delete')], tot: false, kind: 'info',
           note: 'לא בסך הכול: סעיף 9א(ג) מטיל על הבנק את הוצאות המחיקה של משכנתה או משכון, ולא מזכיר הערת אזהרה. בקשו מהבנק בכתב.' });
-        status = 'bank';
+        status = 'ilaout';
       }
     } else if (reg === 'company') {
       if (a === 'register' || a === 'second') {
-        add({ k: 'commit', label: 'התחייבות לרישום משכנתה מ' + W.body, amt: null, shown: 'לא ידוע', src: reg === 'ila' ? [{ id: 'ila_guide' }] : [], tot: false, kind: 'unk',
-          note: (reg === 'ila' ? 'האגרה של רמ״י לא אומתה. לפי קטע מתוצאת חיפוש בלבד, ההתחייבות מופקת במקוון באזור האישי ״רמ״י שלי״.' : 'התהליך והאגרה של החברה המשכנת לא נמצאו במקור רשמי.') + ' ' + W.check + '.' });
+        add({ k: 'commit', label: 'התחייבות לרישום משכנתה מ' + W.body, amt: null, shown: 'לא ידוע', src: [{ id: 'ila_proc', sec: 'א.2' }], tot: false, kind: 'unk',
+          note: 'ההתחייבות היא של החברה עצמה; התהליך והאגרה שלה לא נקראו במקור רשמי. ' + W.check + '.' });
         add({ k: 'note', label: 'הערת אזהרה לטובת הבנק, אם נרשמת בטאבו', amt: F.note.amount, item: F.note.item, src: [land('note'), { id: 'regs_land', sec: '21' }], tot: true, kind: 'fee',
           note: 'בטבלת ' + D.year + ' אין שורה נפרדת להערה בגין התחייבות לרישום משכנתה; זו השורה הכללית של הערת אזהרה.' });
         add({ k: 'later', label: 'כשהדירה תירשם בטאבו: רישום המשכנתה', amt: F.mortgage.amount, item: F.mortgage.item, src: [land('mortgage'), { id: 'regs_fees', sec: '11א' }], tot: false, kind: 'later',
@@ -184,18 +183,19 @@
   function headline(r, D) {
     var B = r.where.body;
     var I = D.ila;
-    if (r.status === 'ila') return { label: 'האגרה של רמ״י', value: 'לא מופיעה בדף השירות', text: true,
-      sub: I.doc + ' מופק במקוון באזור האישי ״' + I.area + '״, עם מכתב הפנייה מהבנק.' + (r.total > 0 ? ' הנסח שבחרתם: ' + ils(r.total) + '.' : '') };
-    if (r.status === 'unknown') return { label: 'לשלם למדינה', value: r.where.check, text: true, sub: r.reg === 'ila' ? 'דף השירות של רמ״י לא מפרט תיקון של ' + I.doc + '. מוקד רמ״י: ' + I.contact.phone + '.'
-      : 'לתיקון כזה אין שורה מאומתת בטבלת האגרות של ' + D.year + ', ולכן אין כאן סכום.' };
-    if (r.status === 'bank' && (r.reg === 'ila' || r.reg === 'company'))
-      return { label: 'מי מגיש', value: 'הבנק מבטל את השעבוד', text: true, sub: (r.reg === 'ila' ? 'השלבים מול רמ״י לא מפורטים בדף השירות.' : 'האגרות של ' + B + ' לא אומתו.') + ' מחיקת הערת אזהרה, אם נרשמה: ' + ils(D.land.note_delete.amount) + '.' + (r.total > 0 ? ' הנסח שבחרתם: ' + ils(r.total) + '.' : '') };
+    if (r.status === 'ilaamend') return { label: 'מה צריך', value: 'מכתב הסכמה מהבנק', text: true, sub: 'להפחתת סכום ההתחייבות או לשינוי הדרגה, עם התאריך המקורי; לא בקשה מקוונת. ' + I.fee_other + ' לתיקון.' };
+    if (r.status === 'ilaout') return { label: 'מי פונה לרמ״י', value: 'אתם, עם מסמך הסילוק של הבנק', text: true,
+      sub: 'לפי נוהל 90.02B, אחרי פירעון ההלוואה או כשהיא עוברת לנכס אחר. ' + I.fee_other + ' לסילוק.' + (r.total > 0 ? ' הנסח שבחרתם: ' + ils(r.total) + '.' : '') };
+    if (r.status === 'unknown') return { label: 'לשלם למדינה', value: r.where.check, text: true, sub: 'לתיקון כזה אין שורה מאומתת בטבלת האגרות של ' + D.year + ', ולכן אין כאן סכום.' };
+    if (r.status === 'bank' && r.reg === 'company')
+      return { label: 'מי מגיש', value: 'הבנק מבטל את השעבוד', text: true, sub: 'האגרות של ' + B + ' לא אומתו.' + ' מחיקת הערת אזהרה, אם נרשמה: ' + ils(D.land.note_delete.amount) + '.' + (r.total > 0 ? ' הנסח שבחרתם: ' + ils(r.total) + '.' : '') };
     if (r.status === 'bank')
       return { label: 'לשלם למדינה', value: ils(r.total), text: false, sub: (r.reg === 'none' ? 'ביטול משכון פטור' : 'ביטול המשכנתה פטור') + ', והבנק מגיש ומשלם את הוצאות המחיקה.' + (r.total > 0 ? ' ' + ils(r.total) + ' הם הנסח לבדיקה.' : '') };
     var parts = r.lines.filter(function (l) { return l.tot && l.amt > 0; }).map(function (l) { return ils(l.amt) + ' ' + (l.short || l.label.split(',')[0]); });
     var sub = parts.join(' + ');
     if (r.ex && r.ex.applies) sub = 'פטור מאגרת רישום משכנתה לפי תקנה ' + r.ex.reg + (sub ? '. נשאר: ' + sub : '');
-    if (r.reg === 'ila' || r.reg === 'company') sub += (sub ? '. ' : '') + 'בלי האגרה של ' + B + ', שלא אומתה.';
+    if (r.reg === 'company') sub += (sub ? '. ' : '') + 'בלי האגרה של ' + B + ', שלא אומתה.';
+    if (r.reg === 'ila') sub = I.doc + ' ואישור הזכויות: ללא אגרה (נוהל 90.02B, סעיף ' + I.fee.sec + ')' + (sub ? '. נשאר: ' + sub : '') + '. הבקשה מקוונת באזור האישי ״' + I.area + '״, עם מכתב הפנייה מהבנק';
     return { label: 'לשלם למדינה', value: ils(r.total), text: false, sub: sub ? sub + (/[.]$/.test(sub) ? '' : '.') : '' };
   }
   function whereText(r, D) {
@@ -212,15 +212,15 @@
     }
     if (r.reg === 'ila') {
       var I = D.ila;
-      if (ending(r.act)) return { he: 'הבנק מבטל את השעבודים אחרי פירעון מלא. מול רמ״י: סילוק ' + I.doc + ', לפי ' + I.procedure + '; השלבים לא מפורטים בדף השירות. אם נרשמה הערת אזהרה לטובת הבנק, צריך למחוק אותה.',
-        src: [S('law_banking', '9א(א)'), S('ila_guide'), S('reshumot_land', D.land.note_delete.item)], ok: false };
-      if (r.act === 'amend') return { he: 'תיקון של ' + I.doc + ' נעשה מול רמ״י. דף השירות לא מפרט אותו; התנאים ב' + I.procedure + '.', src: [S('ila_guide')], ok: false };
-      return { he: I.scope + '. ' + I.undertaking + '. הבקשה מקוונת, באזור האישי ״' + I.area + '״.', src: [S('ila_guide')], ok: true };
+      if (ending(r.act)) return { he: I.discharge.he + '. ההתחייבות רשומה בספרי רמ״י, ואת מסמך הסילוק נותן הבנק. אם נרשמה הערת אזהרה לטובת הבנק, צריך למחוק אותה.',
+        src: [S('ila_proc', I.discharge.sec), S('reshumot_land', D.land.note_delete.item)], ok: true };
+      if (r.act === 'amend') return { he: I.amend.he + '. ' + I.amend.letter + '.', src: [S('ila_proc', I.amend.sec)], ok: true };
+      return { he: I.scope + '. לפי הנוהל הנכס גם לא ניתן לרישום בטאבו. ' + I.undertaking + '. הבקשה מקוונת, באזור האישי ״' + I.area + '״.', src: [S('ila_guide'), S('ila_proc', 'א.2, 1.8')], ok: true };
     }
     if (ending(r.act)) return { he: 'הבנק מבטל את השעבודים אחרי פירעון מלא. מול ' + B + ': ביטול ההתחייבות לרישום משכנתה, בתהליך שלא אימתנו; ' + r.where.check + '. אם נרשמה הערת אזהרה לטובת הבנק, צריך למחוק אותה.', src: [S('law_banking', '9א(א)'), S('reshumot_land', D.land.note_delete.item)], ok: false };
     if (r.act === 'amend') return { he: 'תיקון של התחייבות לרישום משכנתה נעשה מול ' + B + '. את התהליך לא אימתנו; ' + r.where.check + '.', src: [], ok: false };
-    return { he: 'כשהזכויות רשומות ב' + (r.reg === 'ila' ? 'רמ״י' : 'חברה משכנת') + ' ולא בפנקסי המקרקעין, אין עליהן שטר משכנתה בטאבו: השירות של הרשות מיועד לבעלי זכות הרשומה בפנקסים. במקום זה ' + B + ' נותנת לבנק התחייבות לרישום משכנתה, ואם נרשמת הערת אזהרה לטובת הבנק, היא נרשמת לפי תקנה 21. את התהליך של ' + B + ' לא אימתנו; ' + r.where.check + '.',
-      src: [S('gov_service'), S('regs_land', '21')].concat(r.reg === 'ila' ? [S('ila_guide')] : []), ok: false };
+    return { he: 'כשהזכויות רשומות בחברה משכנת ולא בפנקסי המקרקעין, אין עליהן שטר משכנתה בטאבו: השירות של הרשות מיועד לבעלי זכות הרשומה בפנקסים. ' + D.ila.company_rule.he + '. אם נרשמת הערת אזהרה לטובת הבנק, היא נרשמת לפי תקנה 21. את התהליך ואת האגרה של ' + B + ' לא קראנו; ' + r.where.check + '.',
+      src: [S('gov_service'), S('ila_proc', D.ila.company_rule.sec), S('regs_land', '21')], ok: false };
   }
   function timeList(r, D) {
     var R = D.rules, C = D.contact, T = [], B = r.where.body;
@@ -228,7 +228,9 @@
       if (r.reg === 'none') {
         T.push({ he: 'אגרת רשם המשכונות משולמת לכל שנה, עד ' + D.pledge.paid_years_max + ' שנים; מהשנה השישית אין אגרה.', src: [S('reshumot_pledge', D.pledge.reg_counter.item)] });
       } else if (r.reg !== 'tabu') {
-        T.push(r.reg === 'ila' ? { he: D.ila.fee + '.', src: [S('ila_guide')] } : { he: 'האגרה של ' + B + ': לא אומתה.', src: [] });
+        if (r.reg === 'ila' && r.act === 'amend') { T.push({ he: D.ila.fee_other + ' לתיקון.', src: [S('ila_proc', D.ila.amend.sec)] }); T.push(ilaCall(D)); return T; }
+        if (r.reg === 'ila') { T.push({ he: D.ila.fee.he + '.', src: [S('ila_proc', D.ila.fee.sec)] }); T.push({ he: D.ila.sla.he + ': ' + D.ila.sla.urban_days + ' ימי עבודה במגזר העירוני, ' + D.ila.sla.agri_days + ' במגזר החקלאי.', src: [S('ila_proc', D.ila.sla.sec)] }); }
+        else T.push({ he: 'האגרה של ' + B + ': לא אומתה.', src: [] });
         T.push({ he: 'כשהמשכנתה תירשם בטאבו, את אגרת הרישום משלם הממשכן, כלומר מי שמשעבד את הנכס.', src: [S('regs_fees', R.payer.sec)] });
       } else {
         T.push({ he: R.payer.he + '.', src: [S('regs_fees', R.payer.sec)] });
@@ -243,8 +245,11 @@
       T.push({ he: 'הרשם מזמין את הבנק לקבל את הכסף ולחתום על שטר פדיון, בתוך ' + R.deposit.notice_days_min + ' ימים לפחות.', src: [S('regs_land', '72(ג)')] });
       return T;
     }
-    T.push({ he: 'הבנק מגיש את ההודעה על מחיקת השעבוד תוך ' + R.s9a.days + ' ימים מיום הפירעון, והוצאות המחיקה עליו. ' + R.s9a.one_deadline + '.', src: [S('law_banking', '9א(א), 9א(ג)')] });
-    if (r.reg === 'ila' || r.reg === 'company') T.push({ he: 'בחוק, המועד וההוצאות על הבנק כתובים למשכנתה או למשכון רשום. על התחייבות ב' + (r.reg === 'ila' ? 'רמ״י' : 'חברה משכנת') + ' הוא לא מפרט.', src: [S('law_banking', '9א')] });
+    if (r.reg === 'ila') {
+      T.push({ he: 'את הבקשה לסלק את ההתחייבות מגישים לרמ״י, עם מסמך הסילוק של הבנק. ' + D.ila.fee_other + ' לסילוק.', src: [S('ila_proc', D.ila.discharge.sec)] });
+      T.push({ he: 'לפי חוק הבנקאות הבנק מבטל את השעבודים אחרי פירעון מלא; המועד של ' + R.s9a.days + ' ימים וההוצאות על הבנק כתובים בחוק למשכנתה או למשכון רשום, לא להתחייבות ברמ״י.', src: [S('law_banking', '9א')] });
+    } else T.push({ he: 'הבנק מגיש את ההודעה על מחיקת השעבוד תוך ' + R.s9a.days + ' ימים מיום הפירעון, והוצאות המחיקה עליו. ' + R.s9a.one_deadline + '.', src: [S('law_banking', '9א(א), 9א(ג)')] });
+    if (r.reg === 'company') T.push({ he: 'בחוק, המועד וההוצאות על הבנק כתובים למשכנתה או למשכון רשום. על התחייבות בחברה משכנת הוא לא מפרט.', src: [S('law_banking', '9א')] });
     if (r.reg === 'ila') T.push(ilaCall(D));
     if (r.act === 'death') {
       T.push({ he: 'הסעיף מדבר על לקוח שפרע ״בעצמו ולא באמצעות ערב״. איך הוא חל כשחברת ביטוח פרעה, לא מצאנו כתוב: בקשו מהבנק בכתב את מועד ההגשה.', src: [S('law_banking', '9א(א)')] });
@@ -289,9 +294,13 @@
         st('הבנק מגיש הודעה על מחיקת ' + (r.reg === 'none' ? 'המשכון' : 'המשכנתה') + ' תוך ' + R.s9a.days + ' ימים מיום הפירעון, והוצאות המחיקה עליו.' + (r.reg === 'tabu' ? ' הרשם רשאי לבטל לפי בקשת הבנק לבדו.' : ''), [S('law_banking', '9א')].concat(r.reg === 'tabu' ? [S('regs_land', '71(ב)(2)')] : []));
         st('אחרי ' + R.s9a.days + ' ימים מוציאים ' + (r.reg === 'none' ? 'נסח מרשם המשכונות' : 'נסח רישום') + ' ובודקים שהשעבוד נמחק. לא נמחק: פונים לבנק בכתב.', [S(r.reg === 'none' ? 'reshumot_pledge' : 'reshumot_land', r.reg === 'none' ? D.pledge.search_online.item : F.nesach_online.item)]);
       } else {
+        if (r.reg === 'ila') {
+          st('מבקשים מהבנק מסמך סילוק של ההתחייבות. בנק או חברת ביטוח שולחים אותו על נייר ביטחוני או דרך כספות מאובטחות, עם כל הפרטים שבנוהל.', [S('ila_proc', 'ב')]);
+          st('פונים לרמ״י בבקשה לסלק את ההתחייבות שרשומה בספרי רמ״י, בצירוף מסמך הסילוק. ' + D.ila.fee_other + ' לסילוק. מוקד רמ״י: ' + D.ila.contact.phone + '.', [S('ila_proc', 'א.3')]);
+        } else {
         st('הבנק מבטל את השעבודים אחרי הפירעון.', [S('law_banking', '9א(א)')]);
-        if (r.reg === 'ila') st('בודקים מול רמ״י ש' + D.ila.doc + ' סולק: ' + D.ila.procedure + ', והשלבים לא מפורטים בדף השירות. מוקד רמ״י: ' + D.ila.contact.phone + '.', [S('ila_guide')]);
-        else st('בודקים מול ' + B + ' שההתחייבות לרישום משכנתה בוטלה; את התהליך שלהם לא אימתנו.', []);
+        st('בודקים מול ' + B + ' שההתחייבות לרישום משכנתה בוטלה; את התהליך שלהם לא אימתנו.', []);
+        }
         st('אם נרשמה הערת אזהרה לטובת הבנק: מחיקתה בבקשת הצדדים עולה ' + ils(F.note_delete.amount) + '. בקשו מהבנק בכתב שיגיש אותה.', [S('reshumot_land', F.note_delete.item), S('regs_land', '22')]);
       }
       if (r.act === 'death' && r.reg === 'tabu') st('היורשים רושמים את הירושה בטאבו בבקשה נפרדת (' + ils(F.inherit.amount) + ').', [S('reshumot_land', F.inherit.item)]);
@@ -308,22 +317,29 @@
       return s;
     }
     if (r.reg === 'ila') {
-      var I = D.ila;
-      if (r.act === 'amend') { st('בודקים מול רמ״י: דף השירות לא מפרט תיקון של ' + I.doc + '; התנאים ב' + I.procedure + '. מוקד רמ״י: ' + I.contact.phone + '.', [S('ila_guide')]); return s; }
-      if (r.act === 'second') st('מבקשים את הסכמת הבנק הראשון, אם היא נדרשת. הבנק לא יסרב סירוב בלתי סביר.', [S('law_banking', '7ח')]);
+      var I = D.ila, C1 = {}; I.conditions.forEach(function (c) { C1[c.sec] = c.he; });
+      if (r.act === 'amend') {
+        st('מבקשים מהבנק מכתב הסכמה להפחתת סכום ההתחייבות (גם מ״ללא הגבלה״ לסכום נקוב) או לשינוי הדרגה. המכתב כולל את כל הפרטים של מכתב סילוק.', [S('ila_proc', '1.5ג')]);
+        st(I.amend.raise + '.', [S('ila_proc', '1.5ג')]);
+        st(I.amend.letter + '.', [S('ila_proc', '1.5')]);
+        st('רמ״י מתקנת את ההתחייבות לסכום או לדרגה המעודכנים, ומשאירה את תאריך ההתחייבות המקורי. הסעיף חל רק על הפחתת סכום או שינוי דרגה, לא על שינוי אחר. מוקד רמ״י: ' + I.contact.phone + '.', [S('ila_proc', '1.5ג')]);
+        return s;
+      }
+      st('בודקים את התנאים: הסכם בתוקף, אין עיקול, משכון או הערות מגבילות, אין חובות לרמ״י, אין הפרות או חריגות בנייה, והנכס לא רשום ולא ניתן לרישום בטאבו.', [S('ila_proc', '1.1 עד 1.8')]);
+      if (r.act === 'second') st(C1['1.4'] + '. הבנק לא יסרב סירוב בלתי סביר.', [S('ila_proc', '1.4'), S('law_banking', '7ח')]);
       st('מקבלים מהבנק מכתב הפנייה למתן ' + I.doc + '.', [S('ila_guide')]);
       st(r.who === 'rep' ? 'המייצג נכנס לאזור האישי ״' + I.area + '״, מזדהה ב' + I.id + ' ומגיש את הבקשה עם ייפוי כוח כדין.'
         : 'נכנסים לאזור האישי ״' + I.area + '״, מזדהים ב' + I.id + ' ומגישים את הבקשה.', [S('ila_guide')]);
-      st(I.sign_all + '. התנאים: ' + I.procedure + '.', [S('ila_guide')]);
-      st('רמ״י מנפיקה ' + I.doc + '. ' + I.digital + '. ' + I.fee + '.', [S('ila_guide')]);
-      st('מה רמ״י מתחייבת: ' + I.undertaking.replace(/^רמ״י מתחייבת /, '') + '.', [S('ila_guide')]);
-      st('כשהזכויות יירשמו בטאבו, נרשמת באותו מעמד גם המשכנתה לטובת הבנק (' + ils(F.mortgage.amount) + '). אם האגרה הופקדה כבר בעת ההתחייבות, באישור שר האוצר או מי שהסמיך, רואים אותה כאגרה ששולמה.', [S('ila_guide'), S('regs_fees', '11א')]);
+      st(I.sign_all + '. התנאים: ' + I.procedure + '.', [S('ila_guide'), S('ila_proc')]);
+      st('רמ״י מנפיקה לכם ולבנק ' + I.doc + ' ואישור זכויות, ללא אגרה. ' + I.digital + '.', [S('ila_proc', I.fee.sec), S('ila_guide')]);
+      st('מה רמ״י מתחייבת: ' + I.undertaking.replace(/^רמ״י מתחייבת /, '') + '.', [S('ila_guide'), S('ila_proc', 'א.2')]);
+      st('כשהזכויות יירשמו בטאבו, נרשמת באותו מעמד גם המשכנתה לטובת הבנק (' + ils(F.mortgage.amount) + '). אם האגרה הופקדה כבר בעת ההתחייבות, באישור שר האוצר או מי שהסמיך, רואים אותה כאגרה ששולמה.', [S('ila_proc', 'א.2'), S('regs_fees', '11א')]);
       return s;
     }
     // housing company, registration side
     if (r.act === 'amend') { st(r.where.check + ': התהליך והאגרה לתיקון התחייבות לרישום משכנתה לא נמצאו במקור רשמי שקראנו.', []); return s; }
     if (r.act === 'second') st('מבקשים את הסכמת הבנק הראשון, אם היא נדרשת. הבנק לא יסרב סירוב בלתי סביר.', [S('law_banking', '7ח')]);
-    st('מבקשים מ' + B + ' התחייבות לרישום משכנתה לטובת הבנק. האגרה שלהם לא אומתה.', []);
+    st('מבקשים מ' + B + ' התחייבות לרישום משכנתה לטובת הבנק: ההתחייבות היא של החברה עצמה. התהליך והאגרה שלה לא נקראו.', [S('ila_proc', 'א.2')]);
     st('אם נרשמת הערת אזהרה לטובת הבנק: הבקשה חתומה בידי המתחייב או הזכאי ומאומתת בידי עורך דין או רשם, ומצורפים לה ההתחייבות בכתב, הסכמת בעל הזכות הרשומה אם המתחייב אינו הבעלים הרשום, ומסמכי זיהוי.', [S('regs_land', '21')]);
     st('כשהדירה תירשם על שמכם בטאבו, נרשמת משכנתה רגילה (' + ils(F.mortgage.amount) + '). אם האגרה הופקדה כבר בעת ההתחייבות, באישור שר האוצר או מי שהסמיך, רואים אותה כאגרה ששולמה.', [S('regs_fees', '11א')]);
     return s;
@@ -340,15 +356,19 @@
       return { items: out, note: '' };
     }
     if (r.reg === 'tabu' && r.act === 'cancel' && r.who === 'office') { d('r72_deed'); d('r72_refusal'); d('r72_sum'); d('id'); return { items: out, note: '' }; }
+    if (r.reg === 'ila' && ending(r.act)) {
+      d('ila_dis_bank'); d('ila_dis_private'); d('ila_dis_corp'); if (r.act === 'death') d('death_cert');
+      return { items: out, note: 'לבקשה לסלק את ההתחייבות ברמ״י (נוהל 90.02B, סעיף ב):' };
+    }
     if (ending(r.act)) {
       if (r.act === 'death') d('death_cert');
-      return { items: out, note: 'את מחיקת השעבוד מגיש הבנק, לא אתם' + (r.reg === 'ila' || r.reg === 'company' ? '; מול ' + B + ' בודקים בנפרד.' : '.') };
+      return { items: out, note: 'את מחיקת השעבוד מגיש הבנק, לא אתם' + (r.reg === 'company' ? '; מול ' + B + ' בודקים בנפרד.' : '.') };
     }
     if (r.reg === 'none') return { items: out, note: 'רשימת המסמכים של רשם המשכונות לא נקראה במקור רשמי; בודקים עם הבנק או עם עורך הדין.' };
     if (r.reg === 'ila') {
-      if (r.act === 'amend') return { items: out, note: 'דף השירות של רמ״י לא מפרט מסמכים לתיקון; בודקים מול רמ״י.' };
-      d('ila_referral'); if (r.who === 'rep') d('ila_poa'); d('ila_sign');
-      if (r.act === 'second') d('consent_first');
+      if (r.act === 'amend') { d('ila_amend_letter'); return { items: out, note: 'לתיקון ברמ״י (נוהל 90.02B, סעיף 1.5):' }; }
+      d('ila_referral'); if (r.who === 'rep') d('ila_poa'); d('ila_sign'); d('ila_spouses');
+      if (r.act === 'second') d('ila_consent_prev');
       d('ila_form');
       return { items: out, note: 'לבקשה ברמ״י, במקוון באזור האישי ״' + D.ila.area + '״:' };
     }
@@ -367,7 +387,7 @@
         && (!w.ex || (w.ex[0] === '*' ? exNow !== 'none' : w.ex.indexOf(exNow) > -1));
     });
   }
-  function showTotal(r) { return !(r.status === 'unknown' || (r.status === 'ila' && !(r.total > 0))); }
+  function showTotal(r) { return !(r.status === 'unknown' || ((r.status === 'ilaamend' || r.status === 'ilaout') && !(r.total > 0))); }
   function pathText(r, D) { return D.where[r.reg].long + ' · ' + r.actHe + ' · ' + WHO[r.who]; }
   function enc(v) {
     var o = [REGS.indexOf(v.reg) > -1 ? v.reg : 'tabu', act(v.act) ? v.act : 'register', WHO[v.who] ? v.who : 'lawyer', NES.indexOf(v.nesach) > -1 ? v.nesach : 'auto',
@@ -382,7 +402,7 @@
     return v;
   }
   function chk(D) { return dmy(D.checked); }
-  function itemText(l) { return (l.src[0] && l.src[0].id === 'reshumot_pledge' ? 'הודעת המשכון, פרט ' : 'פרט ') + l.item; }
+  function itemText(l) { var id = l.src[0] && l.src[0].id; return (id === 'reshumot_pledge' ? 'הודעת המשכון, פרט ' : id === 'ila_proc' ? 'נוהל 90.02B, סעיף ' : 'פרט ') + l.item; }
   function sourceLine(D) {
     var f = D.src.gov_fees, l = D.src.reshumot_land, p = D.src.reshumot_pledge;
     return 'המקור לאגרות: ״' + f.title + '״ באתר הממשלה (פורסם ' + dmy(f.published) + ', עודכן ' + dmy(f.updated) + '), לפי ' + l.title + ' (' + l.where + ') ו' + p.title + ' (' + p.where + '). '
@@ -601,22 +621,23 @@
     }).join('');
 
     function whoHelp(r) {
+      if (r.reg === 'ila' && ending(r.act)) return 'את הבקשה לסלק מגישים לרמ״י, עם מסמך הסילוק של הבנק (נוהל 90.02B, סעיפים א.3 ו־ב).';
       if (r.act === 'cancel' && r.reg === 'tabu') return 'ידנית בלשכה: כשהבנק מסרב לקבל את התשלום, מפקידים את החוב אצל הרשם (תקנה 72).';
       if (ending(r.act)) return 'אחרי פירעון מלא הבנק מגיש את המחיקה (סעיף 9א).';
       if (r.reg === 'none') return 'ברשם המשכונות: במקוון ' + ils(P.reg_online.amount) + ' לשנה, בדלפק ' + ils(P.reg_counter.amount) + ' לשנה.';
-      if (r.reg === 'ila') return 'ברמ״י הבקשה מקוונת בלבד, באזור האישי ״' + D.ila.area + '״, אחרי הזדהות ב' + D.ila.id + '.';
+      if (r.reg === 'ila') return r.act === 'amend' ? 'הבנק נותן מכתב הסכמה, ומגישים אותו לרמ״י; לא בקשה מקוונת (נוהל 90.02B, סעיף 1.5).' : 'ברמ״י הבקשה מקוונת בלבד, באזור האישי ״' + D.ila.area + '״, אחרי הזדהות ב' + D.ila.id + '.';
       return C.online + '. ' + C.manual + ', או בתיבות ההפקדה.';
     }
     function paint() {
       var r; try { r = compute(v, D); } catch (e) { r = err(null, 'לא הצלחנו לחשב עם הבחירות האלה.'); }
       // the tiles of step 3 and the extract follow the path
       var wo = whoOpts(v.reg, v.act), none = v.reg === 'none';
-      var wkey = wo.join() + '|' + none + '|' + ending(v.act);  // redraw the tiles only when the set changes (keeps the keyboard focus)
+      var wkey = wo.join() + '|' + none + '|' + ending(v.act) + '|' + (v.reg === 'ila' && v.act === 'amend');  // redraw the tiles only when the set changes (keeps the keyboard focus)
       if (wkey !== wkeyLast) {
         wkeyLast = wkey;
         var wg = $('[data-g="who"]'); wg.className = 'nlrs__opts' + (wo.length === 1 ? ' is-1' : '');
         wg.innerHTML = wo.map(function (k) {
-          var sub = k === 'owner' ? 'באזור האישי ״' + D.ila.area + '״' : k === 'rep' ? 'עם ייפוי כוח כדין' : k === 'lawyer' ? (none ? 'רשם המשכונות במקוון' : 'עם כרטיס חכם') : k === 'office' ? (ending(v.act) ? 'הבנק מסרב לקבל את התשלום' : (none ? 'בדלפק' : 'בלשכה, בדואר או בתיבה')) : 'הבנק מגיש את המחיקה';
+          var sub = k === 'owner' ? (ending(v.act) ? 'עם מסמך הסילוק של הבנק' : v.act === 'amend' ? 'עם מכתב ההסכמה של הבנק' : 'באזור האישי ״' + D.ila.area + '״') : k === 'rep' ? 'עם ייפוי כוח כדין' : k === 'lawyer' ? (none ? 'רשם המשכונות במקוון' : 'עם כרטיס חכם') : k === 'office' ? (ending(v.act) ? 'הבנק מסרב לקבל את התשלום' : (none ? 'בדלפק' : 'בלשכה, בדואר או בתיבה')) : 'הבנק מגיש את המחיקה';
           return tile('who', k, WHO[k], sub);
         }).join('');
       }
@@ -656,7 +677,7 @@
         return '<li class="is-' + l.kind + '"><span class="nlrs__lk">' + esc(l.label) + (l.item ? '<span class="nlrs__it">' + esc(itemText(l)) + '</span>' : '') + '</span>'
           + '<span class="nlrs__lv' + (l.amt == null ? ' is-txt' : '') + '"><bdi>' + esc(val) + '</bdi></span>' + (l.note ? '<span class="nlrs__ln">' + rich(l.note) + '</span>' : '')
           + chips(l.src.map(function (s) { return s.sec && s.sec === l.item ? { id: s.id, sec: '' } : s; })) + '</li>';  // the item is already printed under the label
-      }).join('') + (!showTotal(r) ? '' : '<li class="is-total"><span class="nlrs__lk">לשלם למדינה' + (r.status === 'ila' ? ', בלי האגרה של רמ״י' : r.reg === 'ila' || r.reg === 'company' ? ', לפי מה שאומת' : '') + '</span><span class="nlrs__lv"><bdi>' + esc(ils(r.total)) + '</bdi></span></li>');
+      }).join('') + (!showTotal(r) ? '' : '<li class="is-total"><span class="nlrs__lk">לשלם למדינה' + (r.reg === 'company' || r.status === 'ilaout' || r.status === 'ilaamend' ? ', לפי מה שאומת' : '') + '</span><span class="nlrs__lv"><bdi>' + esc(ils(r.total)) + '</bdi></span></li>');
       // the exemption
       var es = $('[data-exsec]');
       if (r.ex) {

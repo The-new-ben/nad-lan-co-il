@@ -57,7 +57,13 @@ var I = D.ila;
 ok(D.src.ila_guide.read === '2026-11-06' && D.src.ila_guide.url === 'https://www.gov.il/he/service/guide-mortgage' && /בדפדפן של הבעלים/.test(D.src.ila_guide.how), 'ILA service page: read by hand in the owner\'s browser on 6.11.2026');
 ok(D.src.ila_form.url === 'https://www.gov.il/BlobFolder/policy/9002b-procedure/he/forms_wform351.pdf' && D.src.ila_form.title === 'טופס בקשה למתן כתב התחייבות לרישום משכנתא והוראה בלתי חוזרת' && !D.src.ila_form.read, 'ILA form: the official PDF, link only');
 ok(I.contact.phone === '*5575' && I.contact.phone2 === '03-9533333' && I.contact.days === 'ראשון עד חמישי' && I.contact.hours === '8:00 עד 17:00', 'ILA call centre as read: *5575, 03-9533333, Sunday to Thursday 8:00 to 17:00');
-ok(I.area === 'רמ״י שלי' && I.id === 'מערכת ההזדהות הלאומית' && I.procedure.indexOf('90.02B') > -1 && I.fee === 'האגרה של רמ״י לא מופיעה בדף השירות', 'ILA facts: personal area, national identification, procedure 90.02B, no fee stated on the page');
+ok(I.area === 'רמ״י שלי' && I.id === 'מערכת ההזדהות הלאומית' && I.procedure.indexOf('90.02B') > -1, 'ILA facts: personal area, national identification, procedure 90.02B');
+ok(D.src.ila_proc.url === 'https://www.gov.il/BlobFolder/policy/9002b-procedure/he/Procedures_90.02b.pdf' && D.src.ila_proc.published === '2025-07-08' && D.src.ila_proc.where === 'נוהל מקור 26.2.2015' && D.src.ila_proc.read === '2026-11-06', 'ILA procedure 90.02B: the official PDF, original 26.2.2015, published 8.7.2025, read 6.11.2026');
+var PROC = fs.readFileSync(path.join(HERE, 'sources/ila-p9002b.txt'), 'utf8');
+ok(/1\.10[\s\S]{0,120}ללא תשלום אגרה/.test(PROC.replace(/\s+/g, ' ')) || PROC.replace(/\s+/g, ' ').indexOf('.ללא תשלום אגרה') > -1, 'the saved procedure text carries section 1.10 "ללא תשלום אגרה"');
+ok(I.fee.amount === 0 && I.fee.sec === '1.10' && I.fee.src === 'ila_proc' && I.fee_other === 'לא צוינה אגרה בנוהל', 'ILA fee: the commitment and rights confirmation 0 (s.1.10); discharge and amendment "לא צוינה אגרה בנוהל"');
+ok(PROC.indexOf('אגרה') === PROC.lastIndexOf('אגרה'), 'the procedure mentions a fee once only (s.1.10), so discharge and amendment have no stated fee');
+ok(I.conditions.map(function (c) { return c.sec; }).join() === '1.1,1.2,1.3,1.4,1.6,1.7,1.8' && I.sla.urban_days === 3 && I.sla.agri_days === 7, 'ILA conditions 1.1 to 1.8 (as read) and the SLA of 3 / 7 work days');
 var badSrc = [];
 D.exemptions.forEach(function (x) { x.conditions.concat(x.how).forEach(function (c) { if (!D.src[c.src]) badSrc.push(x.k + ':' + c.src); }); });
 Object.keys(D.docs).forEach(function (k) { if (!D.src[D.docs[k].src]) badSrc.push('doc:' + k); });
@@ -80,13 +86,13 @@ var CASES = [
   [{ act: 'cancel', nesach: 'online' }, 18, 'bank', 'tabu, cancellation with an online extract to check: 0 + 18'],
   [{ act: 'cancel', who: 'office' }, 188, 'ok', 'tabu, cancellation by deposit at the office (reg. 72): 188'],
   [{ act: 'death' }, 0, 'bank', 'tabu, cancellation after death, insurance repaid: 0 (inheritance 188 apart)'],
-  [{ reg: 'ila' }, 0, 'ila', 'ILA, registration: the ILA fee is not stated on the service page; the warning note (if any) is apart'],
-  [{ reg: 'ila', who: 'rep' }, 0, 'ila', 'ILA, registration by a representative: the same'],
-  [{ reg: 'ila', nesach: 'online' }, 18, 'ila', 'ILA, registration with an online extract: 18'],
-  [{ reg: 'ila', act: 'second', who: 'rep', nesach: 'counter' }, 88, 'ila', 'ILA, second mortgage, counter extract: 88'],
-  [{ reg: 'ila', act: 'amend' }, 0, 'unknown', 'ILA, amendment: no verified fee'],
-  [{ reg: 'ila', act: 'cancel' }, 0, 'bank', 'ILA, cancellation: the bank cancels; 127 note deletion apart'],
-  [{ reg: 'ila', act: 'death' }, 0, 'bank', 'ILA, after death: 0'],
+  [{ reg: 'ila' }, 0, 'ok', 'ILA, registration: the commitment and rights confirmation 0 (procedure 90.02B s.1.10), in the total; the warning note (if any) is apart'],
+  [{ reg: 'ila', who: 'rep' }, 0, 'ok', 'ILA, registration by a representative: 0'],
+  [{ reg: 'ila', nesach: 'online' }, 18, 'ok', 'ILA, registration with an online extract: 0 + 18'],
+  [{ reg: 'ila', act: 'second', who: 'rep', nesach: 'counter' }, 88, 'ok', 'ILA, second commitment, counter extract: 0 + 88'],
+  [{ reg: 'ila', act: 'amend' }, 0, 'ilaamend', 'ILA, amendment (s.1.5): a lender letter, no fee stated'],
+  [{ reg: 'ila', act: 'cancel' }, 0, 'ilaout', 'ILA, discharge (s.א.3, ב): you apply with the lender\'s discharge document, no fee stated; 127 note deletion apart'],
+  [{ reg: 'ila', act: 'death' }, 0, 'ilaout', 'ILA, after death: the same discharge'],
   [{ reg: 'company' }, 188, 'ok', 'housing company, registration: warning note 188'],
   [{ reg: 'company', act: 'amend' }, 0, 'unknown', 'housing company, amendment: no verified fee'],
   [{ reg: 'company', act: 'cancel' }, 0, 'bank', 'housing company, cancellation: 0'],
@@ -124,7 +130,7 @@ ok(K.unverified(rx, D).some(function (u) { return u.k === 'exempt_scope'; }), 'a
 rx = run({ reg: 'company', ex: 'bereaved_idf' });
 ok(rx.total === 188 && !rx.ex.applies && /הערת אזהרה/.test(rx.ex.why) && /יחול כשהמשכנתה תירשם בטאבו/.test(rx.ex.why) && /הפטור שבחרתם יחול על הרישום הזה/.test(line(rx, 'later').note),'housing company + bereaved: the warning note stays 188; the exemption is said to apply to the later tabu registration', rx.total);
 rx = run({ reg: 'ila', ex: 'bereaved_idf' });
-ok(rx.total === 0 && rx.status === 'ila' && !rx.ex.applies && /כתב ההתחייבות של רמ״י/.test(rx.ex.why) && /הפטור שבחרתם יחול על הרישום הזה/.test(line(rx, 'later').note), 'ILA + bereaved: not on the ILA commitment; said to apply to the later tabu registration');
+ok(rx.total === 0 && rx.status === 'ok' && !rx.ex.applies && /כתב ההתחייבות של רמ״י מופק ממילא ללא אגרה/.test(rx.ex.why) && /הפטור שבחרתם יחול על הרישום הזה/.test(line(rx, 'later').note), 'ILA + bereaved: not on the ILA commitment; said to apply to the later tabu registration');
 rx = run({ reg: 'none', who: 'office', ex: 'olim' });
 ok(rx.total === 225 && !rx.ex.applies && /הודעת המשכון/.test(rx.ex.why), 'pledge + oleh: not applied to the Registrar of Pledges, 225 stays', rx.total);
 ok(K.unverified(rx, D).some(function (u) { return u.k === 'olim'; }), 'oleh picked: the regulation 13 caveat is listed');
@@ -143,8 +149,13 @@ ok(line(rd, 'inherit').amt === 188 && !line(rd, 'inherit').tot && rd.total === 0
 ok(K.timeList(rd, D).some(function (x) { return x.he.indexOf('עד 12 חודשים מהפטירה') > -1; }) && K.timeList(rd, D).some(function (x) { return x.he.indexOf('בעצמו ולא באמצעות ערב') > -1; }), 'after death: s.9ח2 deferral up to 12 months, and the s.9A "בעצמו ולא באמצעות ערב" caveat');
 var ro = run({ act: 'cancel', who: 'office' });
 ok(line(ro, 'redeem').item === '2(ג)(2)' && K.steps(ro, D).some(function (s) { return s.he.indexOf('15 ימים לפחות') > -1; }), 'deposit at the office: item 2(ג)(2), the registrar gives the bank at least 15 days');
-var ri = run({ reg: 'ila', act: 'cancel' });
-ok(line(ri, 'note_delete').amt === 127 && !line(ri, 'note_delete').tot && K.headline(ri, D).value === 'הבנק מבטל את השעבוד', 'ILA cancellation: warning-note deletion 127 shown apart; the headline says the bank cancels');
+var ri = run({ reg: 'company', act: 'cancel' });
+ok(line(ri, 'note_delete').amt === 127 && !line(ri, 'note_delete').tot && K.headline(ri, D).value === 'הבנק מבטל את השעבוד', 'housing company cancellation: warning-note deletion 127 ₪ shown apart; the headline says the bank cancels (unchanged)');
+var rd2 = run({ reg: 'ila', act: 'cancel' });
+ok(rd2.who === 'owner' && K.headline(rd2, D).value === 'אתם, עם מסמך הסילוק של הבנק' && line(rd2, 'commit').shown === 'לא צוינה אגרה בנוהל' && !line(rd2, 'commit').tot && line(rd2, 'note_delete').amt === 127 && !K.showTotal(rd2),
+  'ILA discharge: the rights holder applies with the lender\'s discharge document (s.א.3); no fee stated; no total row');
+ok(K.docs(rd2, D).items.map(function (d) { return d.k; }).join() === 'ila_dis_bank,ila_dis_private,ila_dis_corp' && K.docs(run({ reg: 'ila', act: 'death' }), D).items.some(function (d) { return d.k === 'death_cert'; }),
+  'ILA discharge documents (s.ב): bank or insurer on security paper or secure vaults; private lender verified by a lawyer; a corporate protocol; after death also the death certificate');
 
 console.log('\n4. the Registrar of Pledges, five-year totals');
 ok(run({ reg: 'none', years: 5, who: 'office' }).total === 225 && run({ reg: 'none', years: 5, who: 'lawyer' }).total === 190, 'five years: 225 at the counter, 190 online');
@@ -153,8 +164,8 @@ ok(line(rp, 'pledge').note.indexOf('5 × 38 ₪ לשנה') > -1 && line(rp, 'ple
 ok(line(rp, 'later').amt === 188 && !line(rp, 'later').tot, 'later tabu registration 188 shown, not in the total');
 
 console.log('\n5. who files, the hash, bad values');
-ok(K.whoOpts('ila', 'register').join() === 'owner,rep' && K.whoOpts('ila', 'amend').join() === 'owner,rep' && K.whoOpts('company', 'register').join() === 'lawyer,office' && K.whoOpts('tabu', 'register').join() === 'lawyer,office' && K.whoOpts('tabu', 'cancel').join() === 'bank,office' && K.whoOpts('ila', 'cancel').join() === 'bank' && K.whoOpts('tabu', 'death').join() === 'bank', 'step 3 options follow the path');
-ok(run({ reg: 'ila', who: 'lawyer' }).who === 'owner' && run({ reg: 'tabu', who: 'rep' }).who === 'lawyer' && run({ act: 'cancel', who: 'lawyer' }).who === 'bank' && run({ reg: 'ila', act: 'cancel', who: 'office' }).who === 'bank' && run({ act: 'death', who: 'office' }).who === 'bank', 'a who that does not fit the path falls back to the first option');
+ok(K.whoOpts('ila', 'register').join() === 'owner,rep' && K.whoOpts('ila', 'amend').join() === 'owner' && K.whoOpts('ila', 'cancel').join() === 'owner' && K.whoOpts('company', 'register').join() === 'lawyer,office' && K.whoOpts('tabu', 'register').join() === 'lawyer,office' && K.whoOpts('tabu', 'cancel').join() === 'bank,office' && K.whoOpts('tabu', 'death').join() === 'bank', 'step 3 options follow the path');
+ok(run({ reg: 'ila', who: 'lawyer' }).who === 'owner' && run({ reg: 'tabu', who: 'rep' }).who === 'lawyer' && run({ act: 'cancel', who: 'lawyer' }).who === 'bank' && run({ reg: 'ila', act: 'cancel', who: 'office' }).who === 'owner' && run({ act: 'death', who: 'office' }).who === 'bank', 'a who that does not fit the path falls back to the first option');
 var hv = { reg: 'none', act: 'second', who: 'office', nesach: 'counter', ex: 'olim', years: 3, amend: 'inc' };
 ok(K.enc({ reg: 'ila', act: 'register', who: 'rep', nesach: 'auto', ex: 'none', years: 25, amend: 'terms' }) === 'ila.register.rep.auto.none.25.terms' && K.dec('ila.register.rep.auto.none.25.terms').who === 'rep' && K.enc(hv) === 'none.second.office.counter.olim.3.inc' && JSON.stringify(K.dec(K.enc(hv))) === JSON.stringify(hv), 'hash round trip: none.second.office.counter.olim.3.inc');
 ok(JSON.stringify(K.dec('x.y.z.q.w.999.v')) === JSON.stringify(K.defaults()) && K.dec('tabu.register') === null, 'a broken hash falls back to the defaults, a short one is ignored');
@@ -192,21 +203,25 @@ ok(dc === 'request,deed,fee,id,capacity,corp,consent,nesach', 'tabu registration
 ok(K.docs(run({ act: 'second' }), D).items.some(function (d) { return d.k === 'consent_first'; }), 'second degree: the first bank\'s consent (s.7ח) is on the list');
 ok(K.docs(run({ act: 'cancel', who: 'office' }), D).items.map(function (d) { return d.k; }).join() === 'r72_deed,r72_refusal,r72_sum,id', 'deposit: the regulation 72 documents');
 ok(K.docs(run({ reg: 'company' }), D).items.map(function (d) { return d.k; }).join() === 'commit,note_req,note_commit,note_owner,note_id', 'housing company: the commitment (unverified) and the regulation 21 warning-note documents (unchanged)');
-ok(K.docs(run({ reg: 'ila' }), D).items.map(function (d) { return d.k; }).join() === 'ila_referral,ila_sign,ila_form', 'ILA, the rights holder files: referral letter from the lender, every rights holder signs in the personal area, the official form (link)');
-ok(K.docs(run({ reg: 'ila', who: 'rep' }), D).items.map(function (d) { return d.k; }).join() === 'ila_referral,ila_poa,ila_sign,ila_form', 'ILA, a representative files: the power of attorney is added');
-ok(K.docs(run({ reg: 'ila', act: 'second' }), D).items.some(function (d) { return d.k === 'consent_first'; }), 'ILA, second mortgage: the first bank\'s consent (s.7ח) is on the list');
-ok(!D.unverified.some(function (u) { return u.k === 'ila'; }) && !K.unverified(run({ reg: 'ila' }), D).some(function (u) { return u.k === 'ila_more'; }) && K.unverified(run({ reg: 'ila', act: 'cancel' }), D).some(function (u) { return u.k === 'ila_more'; }) && !K.unverified(run({}), D).some(function (u) { return /^ila/.test(u.k); }),
-  'the old ILA caveat is gone; "ila_more" (amendment and cancellation not on the page) shows on ILA cancellation only, nothing ILA on tabu');
+ok(K.docs(run({ reg: 'ila' }), D).items.map(function (d) { return d.k; }).join() === 'ila_referral,ila_sign,ila_spouses,ila_form', 'ILA, the rights holder files: referral letter from the lender, every rights holder signs in the personal area, the official form (link)');
+ok(K.docs(run({ reg: 'ila', who: 'rep' }), D).items.map(function (d) { return d.k; }).join() === 'ila_referral,ila_poa,ila_sign,ila_spouses,ila_form', 'ILA, a representative files: the power of attorney is added');
+ok(K.docs(run({ reg: 'ila', act: 'second' }), D).items.some(function (d) { return d.k === 'ila_consent_prev'; }) && K.docs(run({ reg: 'ila', act: 'amend' }), D).items.map(function (d) { return d.k; }).join() === 'ila_amend_letter',
+  'ILA second commitment: the earlier lender\'s consent letter (s.1.4); ILA amendment: the lender\'s consent letter only (s.1.5)');
+ok(!D.unverified.some(function (u) { return u.k === 'ila' || u.k === 'ila_more'; }) && K.unverified(run({ reg: 'ila' }), D).some(function (u) { return u.k === 'ila_form_docs'; }) && K.unverified(run({ reg: 'ila', act: 'cancel' }), D).some(function (u) { return u.k === 'ila_fee_other'; }) && !K.unverified(run({ reg: 'ila', act: 'cancel' }), D).some(function (u) { return u.k === 'ila_form_docs'; }) && !K.unverified(run({}), D).some(function (u) { return /^ila/.test(u.k); }),
+  'the old ILA caveats are gone; the form documents caveat on ILA registration, the no-fee-stated caveat on ILA amendment and discharge, nothing ILA on tabu');
 var ILA = []; K.ACTS.forEach(function (a) { K.whoOpts('ila', a.k).forEach(function (who) { ILA.push(texts(run({ reg: 'ila', act: a.k, who: who }))); }); });
 var ILAT = ILA.join(String.fromCharCode(10));
-ok(ILAT.indexOf('לא נקרא') < 0 && ILAT.indexOf('לא ידוע') < 0 && ILAT.indexOf('קטע מתוצאת חיפוש') < 0, 'ILA path: no "לא נקרא", no "לא ידוע", no search-snippet wording left');
-ok(['*5575', '03-9533333', '8:00 עד 17:00', 'רמ״י שלי', 'מערכת ההזדהות הלאומית', '90.02B', 'עותק מודפס לא נחשב נסח רשמי', 'מכתב הפנייה', 'לא מופיעה בדף השירות', 'אלא אם באותו מעמד תירשם גם המשכנתה'].every(function (x) { return ILAT.indexOf(x) > -1; }),
-  'ILA path carries the facts read: call centre, personal area, national identification, procedure, the digital original, the referral letter, no fee stated, the undertaking');
+ok(ILAT.indexOf('לא נקרא ') < 0 && ILAT.indexOf('לא ידוע') < 0 && ILAT.indexOf('קטע מתוצאת חיפוש') < 0 && ILAT.indexOf('לא מופיעה בדף השירות') < 0 && ILAT.indexOf('לא מפורטים בדף השירות') < 0, 'ILA path: no "לא נקרא", "לא ידוע", search-snippet or "not on the service page" wording left');
+ok(['*5575', '03-9533333', '8:00 עד 17:00', 'רמ״י שלי', 'מערכת ההזדהות הלאומית', '90.02B', 'עותק מודפס לא נחשב נסח רשמי', 'מכתב הפנייה', 'ללא אגרה', 'סעיף 1.10', 'לא צוינה אגרה בנוהל', 'הסכם בתוקף', 'אין חובות לרמ״י', 'נייר ביטחוני', 'כספות מאובטחות', '3 ימי עבודה', 'אלא אם באותו מעמד תירשם גם המשכנתה'].every(function (x) { return ILAT.indexOf(x) > -1; }),
+  'ILA path carries the facts read: call centre, personal area, identification, procedure, digital original, referral letter, 0 fee (1.10), no fee stated for discharge or amendment, the conditions, the discharge document, the SLA, the undertaking');
 var rI = run({ reg: 'ila' });
-ok(K.headline(rI, D).value === 'לא מופיעה בדף השירות' && line(rI, 'commit').shown === 'לא מופיעה בדף השירות' && !line(rI, 'note').tot && !K.showTotal(rI) && K.showTotal(run({ reg: 'ila', nesach: 'online' })), 'ILA headline: "לא מופיעה בדף השירות"; the warning note is outside the total; no total row unless an extract is picked');
+ok(K.headline(rI, D).value === '0 ₪' && line(rI, 'commit').amt === 0 && line(rI, 'commit').tot && line(rI, 'commit').kind === 'free' && line(rI, 'commit').item === '1.10' && !line(rI, 'note').tot && K.showTotal(rI), 'ILA headline 0 ₪: the commitment line 0 (s.1.10) counts in the total; the warning note is outside it');
 ok(K.whereText(rI, D).ok && K.whereText(rI, D).he.indexOf('שאינם רשומים בטאבו או בחברה משכנת או קבלנית') > -1, 'ILA where: verified, for ILA-managed homes not registered in tabu or a housing or contractor company');
+var rC = run({ reg: 'company' });
+ok(K.whereText(rC, D).he.indexOf('מנפיקה החברה עצמה') > -1 && K.whereText(rC, D).he.indexOf('נספח 2') > -1 && !K.whereText(rC, D).ok && rC.total === 188 && K.unverified(rC, D).some(function (u) { return u.k === 'company'; }),
+  'housing company: the commitment is the company\'s own (procedure 90.02B s.א.2, Annex 2 aside); its process and fee stay unread; the 188 warning note total unchanged');
 ok(K.checklistText(rI, D).indexOf(D.src.ila_form.url) > -1 && K.checklistText(rI, D).indexOf(D.src.ila_guide.url) > -1, 'ILA checklist copy carries the ILA form and service links');
-ok(K.headline(run({ reg: 'company', act: 'amend' }), D).value === 'בודקים מול החברה המשכנת' && K.headline(run({ reg: 'ila', act: 'amend' }), D).value === 'בודקים מול רמ״י', 'unknown paths say "בודקים מול" instead of a number');
+ok(K.headline(run({ reg: 'company', act: 'amend' }), D).value === 'בודקים מול החברה המשכנת' && K.headline(run({ reg: 'ila', act: 'amend' }), D).value === 'מכתב הסכמה מהבנק', 'the housing-company amendment says "בודקים מול" instead of a number; the ILA amendment (s.1.5) says what is needed: a consent letter from the lender');
 ok(K.copyText(run({}), D, 'L').indexOf('23.12.2025') > -1 && K.copyText(run({}), D, 'L').indexOf('24.12.2025') > -1 && K.copyText(run({}), D, 'L').indexOf('נבדק ב־6.11.2026') > -1, 'the copied summary carries the 2026 notice dates and the check date');
 
 console.log('\n7. the files');

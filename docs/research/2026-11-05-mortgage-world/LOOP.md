@@ -180,3 +180,4 @@ mcheck (pre-signing, 451 format, 28 checks + final documents), mzakaut + zakaut.
 - Pressed live: 51 map links, 0 broken; FAQ 64; 0 errors; no horizontal scroll; tables white with steel rules on 390 and 1280 (eyes).
 - Benchmark: Israel 33 lead / 34 tie / 10 lose (best so far; words_rendered LEAD), world 25 / 38 / 14.
 - Waiting: the mrishum data update with the ILA fee 0 and discharge (agent), then a data release 1.72.598.
+- 1.72.598 (deploy-result-598.json, released and verified): mrishum + rishum.json after ILA procedure 90.02B (commitment 0 ₪ per s.1.10, conditions, discharge by the rights holder with the lender's document; amendment and discharge fees "not stated in the procedure"); the mrishum summary hunk on the live instruments.php. Pressed live on the ILA path at 390 and 1280: 90.02B and 0 ₪ shown, the old "not on the service page" label gone, 0 errors, no horizontal scroll.

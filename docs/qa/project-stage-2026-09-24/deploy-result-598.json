@@ -1,0 +1,21 @@
+{
+  "released": "1.72.598",
+  "from": "1.72.597",
+  "live_before": {
+    "assets/instruments/tools/mrishum.js": "d4c47deb9757bb4e6d161fbfffe04407",
+    "assets/instruments/data/rishum.json": "9f62f962d1d8a8c3b7ae87dbcf2c339b",
+    "nadlan-config.php": "cacc6355d9f45028561caddbd4863485",
+    "inc/instruments.php": "6aded5545fcce1daaa456daa0775b616"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 19:42:41",
+  "files": {
+    "assets/instruments/tools/mrishum.js": "d1b605c3d1c296bb4ac2a1a34f4335ad",
+    "assets/instruments/data/rishum.json": "6b35f5dbda0c0a438ae17fc7add6573b",
+    "nadlan-config.php": "01dfdddfe231e7488c95e9405772cb7a",
+    "inc/instruments.php": "d355ce4bf921467de628af82a2355931"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.598, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

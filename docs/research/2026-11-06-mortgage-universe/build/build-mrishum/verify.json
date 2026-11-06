@@ -1,6 +1,6 @@
 {
- "base": "http://127.0.0.1:62080/docs/research/2026-11-06-mortgage-universe/build/build-mrishum/preview.html",
- "checks": 292,
+ "base": "http://127.0.0.1:57496/docs/research/2026-11-06-mortgage-universe/build/build-mrishum/preview.html",
+ "checks": 302,
  "failed": [],
  "report": [
   {
@@ -211,9 +211,9 @@
    "got": "0 ₪"
   },
   {
-   "check": "390 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "390 ila · register · owner: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "390 ila register owner no horizontal scroll",
@@ -245,9 +245,9 @@
    ]
   },
   {
-   "check": "390 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "390 ila · register · rep: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "390 ila register rep no horizontal scroll",
@@ -279,34 +279,29 @@
    ]
   },
   {
-   "check": "390 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "390 ila · second · owner: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
-   "check": "390 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "390 ila · second · rep: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
-   "check": "390 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "check": "390 ila · amend · owner: pressed, headline = NLRS (מכתב הסכמה מהבנק), total row",
    "ok": true,
-   "got": "בודקים מול רמ״י"
+   "got": "מכתב הסכמה מהבנק"
   },
   {
-   "check": "390 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "check": "390 ila · cancel · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row",
    "ok": true,
-   "got": "בודקים מול רמ״י"
+   "got": "אתם, עם מסמך הסילוק של הבנק"
   },
   {
-   "check": "390 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "check": "390 ila · death · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row",
    "ok": true,
-   "got": "הבנק מבטל את השעבוד"
-  },
-  {
-   "check": "390 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
-   "ok": true,
-   "got": "הבנק מבטל את השעבוד"
+   "got": "אתם, עם מסמך הסילוק של הבנק"
   },
   {
    "check": "390 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row",
@@ -505,9 +500,12 @@
    "got": "0 ₪"
   },
   {
-   "check": "390 all 33 paths pressed",
+   "check": "390 all 32 paths pressed (tabu 9, ILA 7, housing company 8, not registered 8)",
    "ok": true,
-   "got": 33
+   "got": [
+    32,
+    32
+   ]
   },
   {
    "check": "390 after death (none): the s.9ח2 deferral of 12 months is said",
@@ -535,14 +533,14 @@
    "got": null
   },
   {
-   "check": "390 ILA: headline \"לא מופיעה בדף השירות\", no total row",
+   "check": "390 ILA: headline 0 ₪, the commitment line 0 ₪ (procedure 90.02B s.1.10) and a total row of 0 ₪",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "390 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)",
    "ok": true,
-   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nהאגרה של רמ״י\nלא מופיעה בדף השירות\n\nכתב התחייבות לרישום משכנתא מו"
+   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nלשלם למדינה\n0 ₪\n\nכתב התחייבות לרישום משכנתא ואישור הזכויות: ללא א"
   },
   {
    "check": "390 ILA: the warning note is outside the total",
@@ -570,9 +568,47 @@
    "got": null
   },
   {
-   "check": "390 ILA: no \"לא נקרא\" and no \"לא ידוע\" anywhere in the tool",
+   "check": "390 ILA: no \"לא נקרא\", \"לא ידוע\" or \"לא מופיעה בדף השירות\" anywhere in the tool",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "390 ILA amendment (s.1.5): \"מכתב הסכמה מהבנק\", one who tile, the lender letter in the checklist, no fee stated",
+   "ok": true,
+   "got": "מכתב הסכמה מהבנק"
+  },
+  {
+   "check": "390 ILA discharge (s.א.3, ב): \"אתם, עם מסמך הסילוק של הבנק\"; the bank, private and corporate lender documents; no fee stated; no total row",
+   "ok": true,
+   "got": "אתם, עם מסמך הסילוק של הבנק"
+  },
+  {
+   "check": "390 ILA discharge no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 ILA discharge every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ILA discharge every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ILA discharge every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו"
+   ]
   },
   {
    "check": "390 ILA no horizontal scroll",
@@ -1049,9 +1085,9 @@
    "got": "0 ₪"
   },
   {
-   "check": "1280 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "1280 ila · register · owner: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "1280 ila register owner no horizontal scroll",
@@ -1083,9 +1119,9 @@
    ]
   },
   {
-   "check": "1280 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "1280 ila · register · rep: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "1280 ila register rep no horizontal scroll",
@@ -1117,34 +1153,29 @@
    ]
   },
   {
-   "check": "1280 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "1280 ila · second · owner: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
-   "check": "1280 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "check": "1280 ila · second · rep: pressed, headline = NLRS (0 ₪), total row",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
-   "check": "1280 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "check": "1280 ila · amend · owner: pressed, headline = NLRS (מכתב הסכמה מהבנק), total row",
    "ok": true,
-   "got": "בודקים מול רמ״י"
+   "got": "מכתב הסכמה מהבנק"
   },
   {
-   "check": "1280 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "check": "1280 ila · cancel · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row",
    "ok": true,
-   "got": "בודקים מול רמ״י"
+   "got": "אתם, עם מסמך הסילוק של הבנק"
   },
   {
-   "check": "1280 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "check": "1280 ila · death · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row",
    "ok": true,
-   "got": "הבנק מבטל את השעבוד"
-  },
-  {
-   "check": "1280 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
-   "ok": true,
-   "got": "הבנק מבטל את השעבוד"
+   "got": "אתם, עם מסמך הסילוק של הבנק"
   },
   {
    "check": "1280 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row",
@@ -1343,9 +1374,12 @@
    "got": "0 ₪"
   },
   {
-   "check": "1280 all 33 paths pressed",
+   "check": "1280 all 32 paths pressed (tabu 9, ILA 7, housing company 8, not registered 8)",
    "ok": true,
-   "got": 33
+   "got": [
+    32,
+    32
+   ]
   },
   {
    "check": "1280 after death (none): the s.9ח2 deferral of 12 months is said",
@@ -1373,14 +1407,14 @@
    "got": null
   },
   {
-   "check": "1280 ILA: headline \"לא מופיעה בדף השירות\", no total row",
+   "check": "1280 ILA: headline 0 ₪, the commitment line 0 ₪ (procedure 90.02B s.1.10) and a total row of 0 ₪",
    "ok": true,
-   "got": "לא מופיעה בדף השירות"
+   "got": "0 ₪"
   },
   {
    "check": "1280 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)",
    "ok": true,
-   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nהאגרה של רמ״י\nלא מופיעה בדף השירות\n\nכתב התחייבות לרישום משכנתא מו"
+   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nלשלם למדינה\n0 ₪\n\nכתב התחייבות לרישום משכנתא ואישור הזכויות: ללא א"
   },
   {
    "check": "1280 ILA: the warning note is outside the total",
@@ -1408,9 +1442,47 @@
    "got": null
   },
   {
-   "check": "1280 ILA: no \"לא נקרא\" and no \"לא ידוע\" anywhere in the tool",
+   "check": "1280 ILA: no \"לא נקרא\", \"לא ידוע\" or \"לא מופיעה בדף השירות\" anywhere in the tool",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "1280 ILA amendment (s.1.5): \"מכתב הסכמה מהבנק\", one who tile, the lender letter in the checklist, no fee stated",
+   "ok": true,
+   "got": "מכתב הסכמה מהבנק"
+  },
+  {
+   "check": "1280 ILA discharge (s.א.3, ב): \"אתם, עם מסמך הסילוק של הבנק\"; the bank, private and corporate lender documents; no fee stated; no total row",
+   "ok": true,
+   "got": "אתם, עם מסמך הסילוק של הבנק"
+  },
+  {
+   "check": "1280 ILA discharge no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 ILA discharge every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ILA discharge every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ILA discharge every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו"
+   ]
   },
   {
    "check": "1280 ILA no horizontal scroll",

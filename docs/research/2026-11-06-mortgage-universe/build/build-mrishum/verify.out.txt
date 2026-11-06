@@ -1,4 +1,4 @@
-local server on 127.0.0.1:62080
+local server on 127.0.0.1:57496
 
 390x844
   ok   390 opens on tabu, registration, lawyer online: 206 ₪ (188 + 18)  [206 ₪]
@@ -46,22 +46,21 @@ local server on 127.0.0.1:62080
   ok   390 tabu cancel office every visible input labelled  [[]]
   ok   390 tabu cancel office every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום']]
   ok   390 tabu · death · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
-  ok   390 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
+  ok   390 ila · register · owner: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   390 ila register owner no horizontal scroll  [{'sw': 390, 'iw': 390}]
   ok   390 ila register owner every visible control at least 44 px high  [[]]
   ok   390 ila register owner every visible input labelled  [[]]
   ok   390 ila register owner every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו', 'פטור מאגרת רישום משכנתה']]
-  ok   390 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
+  ok   390 ila · register · rep: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   390 ila register rep no horizontal scroll  [{'sw': 390, 'iw': 390}]
   ok   390 ila register rep every visible control at least 44 px high  [[]]
   ok   390 ila register rep every visible input labelled  [[]]
   ok   390 ila register rep every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו', 'פטור מאגרת רישום משכנתה']]
-  ok   390 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
-  ok   390 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
-  ok   390 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row  [בודקים מול רמ״י]
-  ok   390 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row  [בודקים מול רמ״י]
-  ok   390 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row  [הבנק מבטל את השעבוד]
-  ok   390 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row  [הבנק מבטל את השעבוד]
+  ok   390 ila · second · owner: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
+  ok   390 ila · second · rep: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
+  ok   390 ila · amend · owner: pressed, headline = NLRS (מכתב הסכמה מהבנק), total row  [מכתב הסכמה מהבנק]
+  ok   390 ila · cancel · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row  [אתם, עם מסמך הסילוק של הבנק]
+  ok   390 ila · death · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row  [אתם, עם מסמך הסילוק של הבנק]
   ok   390 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
   ok   390 company · register · office: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
   ok   390 company · second · lawyer: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
@@ -94,26 +93,32 @@ local server on 127.0.0.1:62080
   ok   390 none · amend · office: pressed, headline = NLRS (45 ₪), total row  [45 ₪]
   ok   390 none · cancel · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   390 none · death · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
-  ok   390 all 33 paths pressed  [33]
+  ok   390 all 32 paths pressed (tabu 9, ILA 7, housing company 8, not registered 8)  [[32, 32]]
   ok   390 after death (none): the s.9ח2 deferral of 12 months is said
   ok   390 after the paths page text: no long dash
   ok   390 after the paths page text: no banned word
   ok   390 after the paths page text: no sixty-day deadline
   ok   390 ILA: step 3 offers the rights holder and a representative, the rights holder pressed
-  ok   390 ILA: headline "לא מופיעה בדף השירות", no total row  [לא מופיעה בדף השירות]
+  ok   390 ILA: headline 0 ₪, the commitment line 0 ₪ (procedure 90.02B s.1.10) and a total row of 0 ₪  [0 ₪]
   ok   390 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)  [בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות
 
-האגרה של רמ״י
-לא מופיעה בדף השירות
+לשלם למדינה
+0 ₪
 
-כתב התחייבות לרישום משכנתא מו]
+כתב התחייבות לרישום משכנתא ואישור הזכויות: ללא א]
   ok   390 ILA: the warning note is outside the total
   ok   390 ILA: the contact card shows the ILA call centre *5575, 03-9533333, 8:00 to 17:00  [מוקד רשות מקרקעי ישראל: *5575 או 03-9533333, ימים ראשון עד חמישי, 8:00 עד 17:00.]
   ok   390 ILA checklist (rights holder): referral letter, everyone signs, the form; no power of attorney  [מכתב הפנייה מהבנק (הגורם המלווה) למתן כתב התחייבות לרישום משכנתא
 רמ״י, אתר הממשל]
   ok   390 ILA links: the service page and the official form are listed
   ok   390 ILA, a representative: the power of attorney joins the checklist
-  ok   390 ILA: no "לא נקרא" and no "לא ידוע" anywhere in the tool
+  ok   390 ILA: no "לא נקרא", "לא ידוע" or "לא מופיעה בדף השירות" anywhere in the tool
+  ok   390 ILA amendment (s.1.5): "מכתב הסכמה מהבנק", one who tile, the lender letter in the checklist, no fee stated  [מכתב הסכמה מהבנק]
+  ok   390 ILA discharge (s.א.3, ב): "אתם, עם מסמך הסילוק של הבנק"; the bank, private and corporate lender documents; no fee stated; no total row  [אתם, עם מסמך הסילוק של הבנק]
+  ok   390 ILA discharge no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 ILA discharge every visible control at least 44 px high  [[]]
+  ok   390 ILA discharge every visible input labelled  [[]]
+  ok   390 ILA discharge every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו']]
   ok   390 ILA no horizontal scroll  [{'sw': 390, 'iw': 390}]
   ok   390 ILA every visible control at least 44 px high  [[]]
   ok   390 ILA every visible input labelled  [[]]
@@ -207,22 +212,21 @@ local server on 127.0.0.1:62080
   ok   1280 tabu cancel office every visible input labelled  [[]]
   ok   1280 tabu cancel office every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום']]
   ok   1280 tabu · death · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
-  ok   1280 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
+  ok   1280 ila · register · owner: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   1280 ila register owner no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
   ok   1280 ila register owner every visible control at least 44 px high  [[]]
   ok   1280 ila register owner every visible input labelled  [[]]
   ok   1280 ila register owner every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו', 'פטור מאגרת רישום משכנתה']]
-  ok   1280 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
+  ok   1280 ila · register · rep: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   1280 ila register rep no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
   ok   1280 ila register rep every visible control at least 44 px high  [[]]
   ok   1280 ila register rep every visible input labelled  [[]]
   ok   1280 ila register rep every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו', 'פטור מאגרת רישום משכנתה']]
-  ok   1280 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
-  ok   1280 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row  [לא מופיעה בדף השירות]
-  ok   1280 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row  [בודקים מול רמ״י]
-  ok   1280 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row  [בודקים מול רמ״י]
-  ok   1280 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row  [הבנק מבטל את השעבוד]
-  ok   1280 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row  [הבנק מבטל את השעבוד]
+  ok   1280 ila · second · owner: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
+  ok   1280 ila · second · rep: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
+  ok   1280 ila · amend · owner: pressed, headline = NLRS (מכתב הסכמה מהבנק), total row  [מכתב הסכמה מהבנק]
+  ok   1280 ila · cancel · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row  [אתם, עם מסמך הסילוק של הבנק]
+  ok   1280 ila · death · owner: pressed, headline = NLRS (אתם, עם מסמך הסילוק של הבנק), total row  [אתם, עם מסמך הסילוק של הבנק]
   ok   1280 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
   ok   1280 company · register · office: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
   ok   1280 company · second · lawyer: pressed, headline = NLRS (188 ₪), total row  [188 ₪]
@@ -255,26 +259,32 @@ local server on 127.0.0.1:62080
   ok   1280 none · amend · office: pressed, headline = NLRS (45 ₪), total row  [45 ₪]
   ok   1280 none · cancel · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
   ok   1280 none · death · bank: pressed, headline = NLRS (0 ₪), total row  [0 ₪]
-  ok   1280 all 33 paths pressed  [33]
+  ok   1280 all 32 paths pressed (tabu 9, ILA 7, housing company 8, not registered 8)  [[32, 32]]
   ok   1280 after death (none): the s.9ח2 deferral of 12 months is said
   ok   1280 after the paths page text: no long dash
   ok   1280 after the paths page text: no banned word
   ok   1280 after the paths page text: no sixty-day deadline
   ok   1280 ILA: step 3 offers the rights holder and a representative, the rights holder pressed
-  ok   1280 ILA: headline "לא מופיעה בדף השירות", no total row  [לא מופיעה בדף השירות]
+  ok   1280 ILA: headline 0 ₪, the commitment line 0 ₪ (procedure 90.02B s.1.10) and a total row of 0 ₪  [0 ₪]
   ok   1280 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)  [בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות
 
-האגרה של רמ״י
-לא מופיעה בדף השירות
+לשלם למדינה
+0 ₪
 
-כתב התחייבות לרישום משכנתא מו]
+כתב התחייבות לרישום משכנתא ואישור הזכויות: ללא א]
   ok   1280 ILA: the warning note is outside the total
   ok   1280 ILA: the contact card shows the ILA call centre *5575, 03-9533333, 8:00 to 17:00  [מוקד רשות מקרקעי ישראל: *5575 או 03-9533333, ימים ראשון עד חמישי, 8:00 עד 17:00.]
   ok   1280 ILA checklist (rights holder): referral letter, everyone signs, the form; no power of attorney  [מכתב הפנייה מהבנק (הגורם המלווה) למתן כתב התחייבות לרישום משכנתא
 רמ״י, אתר הממשל]
   ok   1280 ILA links: the service page and the official form are listed
   ok   1280 ILA, a representative: the power of attorney joins the checklist
-  ok   1280 ILA: no "לא נקרא" and no "לא ידוע" anywhere in the tool
+  ok   1280 ILA: no "לא נקרא", "לא ידוע" or "לא מופיעה בדף השירות" anywhere in the tool
+  ok   1280 ILA amendment (s.1.5): "מכתב הסכמה מהבנק", one who tile, the lender letter in the checklist, no fee stated  [מכתב הסכמה מהבנק]
+  ok   1280 ILA discharge (s.א.3, ב): "אתם, עם מסמך הסילוק של הבנק"; the bank, private and corporate lender documents; no fee stated; no total row  [אתם, עם מסמך הסילוק של הבנק]
+  ok   1280 ILA discharge no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 ILA discharge every visible control at least 44 px high  [[]]
+  ok   1280 ILA discharge every visible input labelled  [[]]
+  ok   1280 ILA discharge every visible group named  [['1איפה הדירה רשומה היום', '2מה רוצים לעשות', '3מי מגיש', 'נסח רישום, אם הנכס רשום בטאבו']]
   ok   1280 ILA no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
   ok   1280 ILA every visible control at least 44 px high  [[]]
   ok   1280 ILA every visible input labelled  [[]]
@@ -334,4 +344,4 @@ local server on 127.0.0.1:62080
 
 local server stopped
 
-292 of 292 checks passed
+302 of 302 checks passed

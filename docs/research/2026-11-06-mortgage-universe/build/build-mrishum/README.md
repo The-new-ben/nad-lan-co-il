@@ -13,9 +13,9 @@ edited (`inc/instruments.php` untouched). Demand (manual SERP 6.11.2026): ריש
 | `plugins/nadlan-config/assets/instruments/data/rishum.json` | Every amount (with its item number), condition, rule, document, contact fact and source (`src`: URL, title, publish / update / read dates); `"checked": "2026-11-06"`; `unverified` with the path filters that show each caveat. |
 | `build-mrishum/registry.php.txt` | The exact PHP: the `nadlan_nli_tools()` entry and the `nadlan_nli_summary()` branch, plus the switcher chip and pane. `php -l` clean (PHP 8.3). |
 | `build-mrishum/summary.render.html` | The server summary rendered against the real `rishum.json` with WordPress stubs (all 2026 fees in plain HTML). |
-| `build-mrishum/test_mrishum.js` | Node test, 115 assertions. Last run: `test_mrishum.out.txt`. |
+| `build-mrishum/test_mrishum.js` | Node test, 123 assertions. Last run: `test_mrishum.out.txt`. |
 | `build-mrishum/preview.html` | Local mount exactly as the shortcode prints it, inside pane `#tool-rishum`, with the rendered summary inside the host. `?theme=1` adds the live theme stylesheets (read only). |
-| `build-mrishum/verify.py` | Playwright (Chrome, headless): starts `http.server` on a free 127.0.0.1 port and stops it in `finally`. 292 checks. Last run: `verify.out.txt`, `verify.json`, `shots/`. |
+| `build-mrishum/verify.py` | Playwright (Chrome, headless): starts `http.server` on a free 127.0.0.1 port and stops it in `finally`. 302 checks. Last run: `verify.out.txt`, `verify.json`, `shots/`. |
 | `build-mrishum/sources/` | What was read on 6.11.2026: the five Kol Zchut pages and the MoD page (HTML and extracted text), and the Wikisource raw text of the fees regulations, the land regulations and the Banking (Service to Customer) Law. |
 
 Run from the repo root: `node docs/research/2026-11-06-mortgage-universe/build/build-mrishum/test_mrishum.js` and
@@ -46,10 +46,10 @@ with the 2026 notice and its dates, and all sources with dates. The case lives i
 | טאבו | ביטול אחרי סילוק | הבנק | **0 ₪** (2(ג)(1): exempt when paid straight to the lender; the bank files within 30 days and pays, s.9A) |
 | טאבו | ביטול אחרי סילוק | ידנית בלשכה (the bank refuses payment, reg. 72) | **188 ₪** (2(ג)(2)) |
 | טאבו | ביטול אחרי פטירה | הבנק | **0 ₪**; inheritance registration 188 ₪ (3(א)) shown apart, not in the total |
-| רמ"י | רישום / נוספת | בעל הזכויות or מייצג | headline "האגרה של רמ"י: לא מופיעה בדף השירות" (no number, no total row); a tabu warning note, if any, 188 ₪ shown apart (the ILA page does not mention one); later tabu registration 188 ₪ apart |
-| רמ"י | תיקון | either | no number: "בודקים מול רמ"י", with *5575 (amendment is not on the service page) |
-| רמ"י | ביטול / אחרי פטירה | הבנק | headline "הבנק מבטל את השעבוד"; discharge per procedure 90.02B, steps not on the page; warning-note deletion 127 ₪ apart |
-| חברה משכנת | רישום / נוספת | either | **188 ₪** warning note (13(א)(1), an inference: no separate line); the company fee "לא ידוע", not in the total; later tabu registration 188 ₪ shown apart (unchanged, still unread) |
+| רמ"י | רישום / נוספת | בעל הזכויות or מייצג | **0 ₪**: the commitment and rights confirmation are issued without a fee (procedure 90.02B s.1.10), in the total; a tabu warning note, if any, 188 ₪ apart (neither the page nor the procedure mentions one); later tabu registration 188 ₪ apart |
+| רמ"י | תיקון (הפחתת סכום או שינוי דרגה) | בעל הזכויות | headline "מכתב הסכמה מהבנק" (s.1.5); "לא צוינה אגרה בנוהל"; no total row |
+| רמ"י | ביטול / אחרי פטירה | בעל הזכויות | headline "אתם, עם מסמך הסילוק של הבנק" (s.א.3, ב); "לא צוינה אגרה בנוהל"; warning-note deletion 127 ₪ apart |
+| חברה משכנת | רישום / נוספת | either | **188 ₪** warning note (13(א)(1), an inference: no separate line); the commitment is the company's own (procedure 90.02B s.א.2; Annex 2 companies aside), its fee "לא ידוע", not in the total; later tabu registration 188 ₪ shown apart |
 | חברה משכנת | תיקון | either | no number: "בודקים מול החברה המשכנת" |
 | חברה משכנת | ביטול / אחרי פטירה | הבנק | headline "הבנק מבטל את השעבוד", 0 ₪ verified; warning-note deletion 127 ₪ (13(ב)) shown apart (payer not stated in s.9A) |
 | לא רשומה (משכון) | רישום / נוספת | עו"ד במקוון | **38 ₪ × years up to 5: 190 ₪** for 5 years or more (3 years 114 ₪) |
@@ -111,6 +111,27 @@ links and the server summary; step 3 on the ILA path is בעל הזכויות / 
 The old ILA caveat is gone; two narrower ones replace it: amendment and discharge are not on the page (procedure 90.02B not read),
 and the page does not mention a tabu warning note. The housing-company path is unchanged.
 
+## ILA procedure 90.02B (second update, 6.11.2026 evening)
+
+Source: https://www.gov.il/BlobFolder/policy/9002b-procedure/he/Procedures_90.02b.pdf ("נוהל מס' 90.02B התחייבות לרישום משכנתה
+וסילוקה", original 26.2.2015, published 8.7.2025), read 6.11.2026; extracted text in `sources/ila-p9002b.txt`. In `rishum.json` →
+`src.ila_proc`, `ila.fee` (0, s.1.10), `ila.fee_other`, `ila.company_rule` (s.א.2), `ila.conditions` (1.1 to 1.8), `ila.discretion`
+(1.9), `ila.partners` (א.4), `ila.sla` (פרק ד: 3 work days urban, 7 agricultural), `ila.discharge` (א.3, ב), `ila.amend` (1.5),
+and `docs.ila_*`. What changed:
+* Registration: the commitment and rights confirmation cost **0 ₪** (s.1.10, "ללא תשלום אגרה"), counted in the total; the conditions
+  step; spouses' consent (א.4); for a second commitment the earlier lender's consent letter on rank and amount (1.4); the SLA.
+* Discharge (cancellation and after death): the text says the **rights holder** applies to ILA with the lender's approval (א.3),
+  so step 3 is "בעל הזכויות" and the headline "אתם, עם מסמך הסילוק של הבנק" (the coordinator's brief said the bank files; the text
+  says the rights holder applies, with a discharge document the lender issues). Documents (ב): bank or insurer on security paper
+  or secure vaults with the listed details; a private lender's document verified by a lawyer; a corporate protocol.
+* Amendment: only a reduction of the amount (also from "unlimited" to a stated sum) or a change of rank, by the lender's consent
+  letter, keeping the original date; not online (1.5).
+* The procedure mentions a fee once, in s.1.10 (the test checks this), so discharge and amendment show "לא צוינה אגרה בנוהל".
+* Housing company: one sentence, the commitment is the company's own, and for the Annex 2 companies (those that do not issue one)
+  ILA issues it; the company's process and fee stay unread; the 188 ₪ total is unchanged.
+* Caveats: "ila_more" is gone; "ila_form_docs" (the form's mandatory documents not read, ILA registration) and "ila_fee_other"
+  (no fee stated for amendment or discharge) replace it.
+
 ## Other sources
 
 * gov.il "בקשה לרישום משכנתה" and "fees-2026" (published 23.12.2025, updated 24.12.2025): read by hand by the owner on 6.11.2026; to
@@ -137,10 +158,10 @@ and the page does not mention a tabu warning note. The housing-company path is u
 
 ## Results (6.11.2026)
 
-* Node: **115 of 115** passed (after the ILA update; 101 before it) (every path total by hand, the five exemptions to 0, cancellation free when paid to the lender, the
+* Node: **123 of 123** passed (after the procedure update; 115 after the ILA page update, 101 before) (every path total by hand, the five exemptions to 0, cancellation free when paid to the lender, the
   pledge 5-year totals 225 / 190, the hash, bad values, the ILA facts and documents, the words of all 396 combinations: no long dash, no banned word, no longer
   deadline, every shekel figure from the data file or the path total, the logic holds no amount).
-* Browser: **292 of 292** (after the ILA update; 256 before it) at 390x844 (is_mobile) and 1280x900 plus a phone pass under the live theme: all 33 paths pressed at each
+* Browser: **302 of 302** (after the procedure update; 292 and 256 before) at 390x844 (is_mobile) and 1280x900 plus a phone pass under the live theme: all 32 paths pressed at each
   width with the headline equal to `NLRS`, the extract, the five exemptions, the amendment kind, the pledge years (3, 5, 0, 25), the
   checklist ticks, both copy buttons read back from the clipboard, print, a shared link, and the ILA block (headline, facts, call
   centre, checklist with and without a representative, links, no "לא נקרא" or "לא ידוע"). No console error, no horizontal scroll,

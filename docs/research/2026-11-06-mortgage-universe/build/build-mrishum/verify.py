@@ -130,11 +130,12 @@ try:
                         else:
                             tot_ok = page.locator('#nlrs li.is-total').count() == 0
                         check(f'{tag} {reg} · {act} · {who}: pressed, headline = NLRS ({e.get("head")}), total row', pressed(page, 'reg', reg) and pressed(page, 'act', act) and pressed(page, 'who', who) and f == e.get('head') and tot_ok, f)
-                        if (reg, act, who) in (('tabu', 'cancel', 'bank'), ('tabu', 'cancel', 'office'), ('tabu', 'death', 'bank'), ('ila', 'register', 'owner'), ('ila', 'register', 'rep'), ('ila', 'amend', 'owner'), ('company', 'register', 'lawyer'), ('company', 'amend', 'lawyer'), ('none', 'register', 'lawyer'), ('ila', 'cancel', 'bank')):
+                        if (reg, act, who) in (('tabu', 'cancel', 'bank'), ('tabu', 'cancel', 'office'), ('tabu', 'death', 'bank'), ('ila', 'register', 'owner'), ('ila', 'register', 'rep'), ('ila', 'amend', 'owner'), ('ila', 'cancel', 'owner'), ('company', 'register', 'lawyer'), ('company', 'amend', 'lawyer'), ('none', 'register', 'lawyer'), ('ila', 'cancel', 'bank')):
                             page.locator('#nlrs').screenshot(path=str(OUT / f'mrishum-{reg}-{act}-{who}-{tag}.png'))
                         if (reg, act) in (('tabu', 'cancel'), ('ila', 'register'), ('none', 'register'), ('company', 'amend')):
                             common(page, f'{tag} {reg} {act} {who}')
-            check(f'{tag} all 33 paths pressed', n_paths == 33, n_paths)
+            n_expected = page.evaluate('() => window.NLRS.REGS.reduce((s, r) => s + window.NLRS.ACTS.reduce((t, a) => t + window.NLRS.whoOpts(r, a.k).length, 0), 0)')
+            check(f'{tag} all {n_expected} paths pressed (tabu 9, ILA 7, housing company 8, not registered 8)', n_paths == n_expected == 32, [n_paths, n_expected])
             ct = page.locator('#nlrs').inner_text()
             check(tag + ' after death (none): the s.9ח2 deferral of 12 months is said', 'עד 12 חודשים מהפטירה' in ct)
             words(page, tag + ' after the paths')
@@ -142,10 +143,10 @@ try:
             # the Israel Land Authority path (the service page read by hand on 6.11.2026)
             press(page, 'reg', 'ila'); press(page, 'act', 'register')
             check(tag + ' ILA: step 3 offers the rights holder and a representative, the rights holder pressed', pressed(page, 'who', 'owner') and page.locator('#nlrs button[data-s="who"][data-val="rep"]').count() == 1 and page.locator('#nlrs button[data-s="who"][data-val="office"]').count() == 0)
-            check(tag + ' ILA: headline "לא מופיעה בדף השירות", no total row', fig(page) == 'לא מופיעה בדף השירות' and page.locator('#nlrs li.is-total').count() == 0, fig(page))
+            check(tag + ' ILA: headline 0 ₪, the commitment line 0 ₪ (procedure 90.02B s.1.10) and a total row of 0 ₪', fig(page) == '0 ₪' and page.locator('#nlrs li.is-total .nlrs__lv').inner_text().strip() == '0 ₪' and 'נוהל 90.02B, סעיף 1.10' in page.locator('#nlrs ol.nlrs__ls').inner_text(), fig(page))
             res = page.locator('#nlrs .nlrs__res').inner_text()
-            check(tag + ' ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)', all(x in res for x in ('רמ״י שלי', 'מערכת ההזדהות הלאומית', '90.02B', 'עותק מודפס לא נחשב נסח רשמי', 'אלא אם באותו מעמד תירשם גם המשכנתה')), res[:120])
-            check(tag + ' ILA: the warning note is outside the total', 'לא בסך הכול: דף השירות של רמ״י לא מזכיר הערה כזו' in page.locator('#nlrs ol.nlrs__ls').inner_text())
+            check(tag + ' ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)', all(x in res for x in ('רמ״י שלי', 'מערכת ההזדהות הלאומית', '90.02B', 'עותק מודפס לא נחשב נסח רשמי', 'אלא אם באותו מעמד תירשם גם המשכנתה', 'ללא אגרה', 'הסכם בתוקף', 'אין חובות לרמ״י', '3 ימי עבודה')), res[:120])
+            check(tag + ' ILA: the warning note is outside the total', 'לא בסך הכול: דף השירות ונוהל 90.02B לא מזכירים הערה כזו' in page.locator('#nlrs ol.nlrs__ls').inner_text())
             call = page.locator('#nlrs .nlrs__call').inner_text()
             check(tag + ' ILA: the contact card shows the ILA call centre *5575, 03-9533333, 8:00 to 17:00', page.locator('#nlrs [data-ilacall]').is_visible() and all(x in call for x in ('*5575', '03-9533333', '8:00 עד 17:00')), call[:80])
             ck = page.locator('#nlrs [data-ck]').inner_text()
@@ -154,7 +155,18 @@ try:
             press(page, 'who', 'rep')
             check(tag + ' ILA, a representative: the power of attorney joins the checklist', 'ייפוי כוח כדין' in page.locator('#nlrs [data-ck]').inner_text() and 'המייצג נכנס לאזור האישי' in page.locator('#nlrs [data-steps]').inner_text())
             tx = page.locator('#nlrs').inner_text()
-            check(tag + ' ILA: no "לא נקרא" and no "לא ידוע" anywhere in the tool', 'לא נקרא' not in tx and 'לא ידוע' not in tx)
+            check(tag + ' ILA: no "לא נקרא", "לא ידוע" or "לא מופיעה בדף השירות" anywhere in the tool', 'לא נקרא ' not in tx and 'לא ידוע' not in tx and 'לא מופיעה בדף השירות' not in tx)
+            press(page, 'act', 'amend')
+            check(tag + ' ILA amendment (s.1.5): "מכתב הסכמה מהבנק", one who tile, the lender letter in the checklist, no fee stated', fig(page) == 'מכתב הסכמה מהבנק' and page.locator('#nlrs button[data-s="who"]').count() == 1
+                  and 'מכתב הסכמה של הבנק' in page.locator('#nlrs [data-ck]').inner_text() and 'לא צוינה אגרה בנוהל' in page.locator('#nlrs ol.nlrs__ls').inner_text(), fig(page))
+            page.locator('#nlrs').screenshot(path=str(OUT / f'mrishum-ila-amend-checked-{tag}.png'))
+            press(page, 'act', 'cancel')
+            ck2 = page.locator('#nlrs [data-ck]').inner_text()
+            check(tag + ' ILA discharge (s.א.3, ב): "אתם, עם מסמך הסילוק של הבנק"; the bank, private and corporate lender documents; no fee stated; no total row', fig(page) == 'אתם, עם מסמך הסילוק של הבנק'
+                  and all(x in ck2 for x in ('נייר ביטחוני', 'כספות מאובטחות', 'מאומת בידי עורך דין', 'פרוטוקול')) and 'לא צוינה אגרה בנוהל לסילוק' in page.locator('#nlrs .nlrs__res').inner_text() and page.locator('#nlrs li.is-total').count() == 0, fig(page))
+            common(page, tag + ' ILA discharge')
+            page.locator('#nlrs').screenshot(path=str(OUT / f'mrishum-ila-cancel-checked-{tag}.png'))
+            press(page, 'act', 'register'); press(page, 'who', 'rep')
             common(page, tag + ' ILA'); words(page, tag + ' ILA')
             page.locator('#nlrs').screenshot(path=str(OUT / f'mrishum-ila-register-rep-checked-{tag}.png'))
             press(page, 'reg', 'tabu')
