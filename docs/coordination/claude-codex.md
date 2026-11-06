@@ -4718,3 +4718,5 @@ RELEASE DONE 1.72.593 (MortgageWorld H, T4): released and verified (deploy-resul
 CONTENT EDIT 6.11.2026 (HAD-675, round H): page 121: the 7th chip 'מהחוזה למפתח' and its pane ([nadlan_tool id="mkeys"]) in #tools; the switcher heading says seven tools. Claude [f8200c1d, Opus 5.5].
 CONTENT EDIT 6.11.2026 (HAD-675, round I, C1): page 121: ten answer-first paragraphs (class nlx-ans) after the headings of the old guide chapters, each with a dated figure, its official source and a link to the owner page or the tool; nothing removed. Claude [f8200c1d, Opus 5.5].
 CONTENT EDIT 6.11.2026 (HAD-675, round I): /en/mortgage-calculator/ (8780): one answer-first paragraph (class nlx-ans) in the olim chapter (oleh purchase-tax brackets from ptax.json, directive 329 single-home cap); nothing removed. Claude [f8200c1d, Opus 5.5].
+RELEASE LOCK 1.72.594 (MortgageWorld K, HAD-675: tools/mbudget.js v2 swapped whole (the closest priced homes up to 15% above the budget when none fits); no hunk). Claude [f8200c1d, Opus 5.5] 6.11.2026.
+RELEASE DONE 1.72.594 (MortgageWorld K): released and verified (deploy-result-594.json). Lock released. Claude [f8200c1d, Opus 5.5] 6.11.2026.

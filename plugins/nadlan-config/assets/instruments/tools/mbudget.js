@@ -11,7 +11,9 @@
    3. homes for sale on the site at or under that price, from the public read only endpoint /wp-json/nadlan/v1/near-finder
       (listings only: projects there carry no home price, so none is shown; unknown = omitted). If it fails, 1 and 2 stay.
    Data: boi-mortgage.json (key "boim", v2 keys by_bank + homes + rules), ptax.json, cost.json. Pure logic in window.NLMB (DOM
-   free, tested by test_mbudget.js in node). Hebrew only (RTL); no long dash anywhere in visible text. */
+   free, tested by test_mbudget.js in node). Hebrew only (RTL); no long dash anywhere in visible text.
+   v2 (round K, 6.11.2026): when no priced home fits, up to three of the closest priced homes at most 15% ABOVE the budget, each with how much it
+   is above (the default example, 1,926,000, had none under it and one at 2,000,000). NLMB.listings returns `above` too. */
 (function () {
   'use strict';
   var W = typeof window !== 'undefined' ? window : globalThis;
@@ -97,8 +99,10 @@
     var L = (nf && nf.listings) || [];
     var sale = L.filter(function (x) { return x && x.deal === 'sale' && +x.price > 0 && safeUrl(x.url) && x.title; });
     var fit = sale.filter(function (x) { return +x.price <= max; }).sort(function (a, b) { return b.price - a.price; });
+    var up = sale.filter(function (x) { return +x.price > max && +x.price <= max * 1.15; }).sort(function (a, b) { return a.price - b.price; });  // v2: the closest above
+    function card(x) { return { id: x.id, title: String(x.title), city: x.city ? String(x.city) : '', price: +x.price, rooms: +x.rooms || 0, sqm: +x.sqm || 0, url: safeUrl(x.url) }; }
     return { priced: sale.length, count: fit.length, updated: nf && nf.updated ? String(nf.updated) : '',
-      items: fit.slice(0, lim || 6).map(function (x) { return { id: x.id, title: String(x.title), city: x.city ? String(x.city) : '', price: +x.price, rooms: +x.rooms || 0, sqm: +x.sqm || 0, url: safeUrl(x.url) }; }) };
+      items: fit.slice(0, lim || 6).map(card), above: up.slice(0, 3).map(card) };
   }
 
   /* ====================================================================================================== text and html */
@@ -187,7 +191,16 @@
     var h = '', all = '<a class="nlmb__all" href="' + ALL + '">לכל הדירות למכירה באתר</a>';
     if (st === 'loading') return '<p class="nlmb__wait">טוענים את הדירות למכירה באתר…</p>' + all;
     if (st !== 'ok' || !res) return '<p class="nli__note">הדירות באתר לא נטענו כרגע. הן כולן כאן:</p>' + all;
-    if (!res.count) return '<p class="nli__note">כרגע אין באתר דירה למכירה עם מחיר מפורסם עד ' + b(ils(m.price)) + '.</p>' + all;
+    if (!res.count) {
+      h = '<p class="nli__note">כרגע אין באתר דירה למכירה עם מחיר מפורסם עד ' + b(ils(m.price)) + '.</p>';
+      if (res.above && res.above.length) {  // v2: the closest above the budget, each with the gap
+        h += '<p class="nlmb__meta">' + (res.above.length > 1 ? 'הדירות הקרובות ביותר מעל הסכום:' : 'הדירה הקרובה ביותר מעל הסכום:') + '</p><ul class="nlmb__homes">' + res.above.map(function (x) {
+          var meta = [x.city, x.rooms ? num(x.rooms, x.rooms % 1 ? 1 : 0) + ' חדרים' : '', x.sqm ? num(x.sqm) + ' מ״ר' : '', ils(x.price - m.price) + ' מעל הסכום'].filter(Boolean).map(esc).join(' · ');
+          return '<li class="nlmb__home"><a href="' + esc(x.url) + '">' + esc(x.title) + '</a><span class="nlmb__meta">' + meta + '</span><strong>' + b(ils(x.price)) + '</strong></li>';
+        }).join('') + '</ul>';
+      }
+      return h + all;
+    }
     h += '<ul class="nlmb__homes">' + res.items.map(function (x) {
       var meta = [x.city, x.rooms ? num(x.rooms, x.rooms % 1 ? 1 : 0) + ' חדרים' : '', x.sqm ? num(x.sqm) + ' מ״ר' : ''].filter(Boolean).map(esc).join(' · ');
       return '<li class="nlmb__home"><a href="' + esc(x.url) + '">' + esc(x.title) + '</a>' + (meta ? '<span class="nlmb__meta">' + meta + '</span>' : '') + '<strong>' + b(ils(x.price)) + '</strong></li>';

@@ -11,10 +11,11 @@
 'use strict';
 var fs = require('fs'), path = require('path');
 var HERE = __dirname, REPO = path.resolve(HERE, '../../../../..');
+var TOOL = process.env.MBUDGET_TOOL || path.join(HERE, 'mbudget.js');  // round K: test the plugin file with MBUDGET_TOOL
 var INS = path.join(REPO, 'plugins/nadlan-config/assets/instruments');
 global.window = global;
 require(path.join(INS, 'tools/afford.js'));
-require(path.join(HERE, 'mbudget.js'));
+require(TOOL);
 var NLMB = global.NLMB, NLAF = global.NLAF;
 function J(p) { return JSON.parse(fs.readFileSync(p, 'utf8')); }
 var D = { boim: J(path.join(REPO, 'docs/research/2026-11-05-mortgage-world/data/boi-mortgage-v2.json')), ptax: J(path.join(INS, 'data/ptax.json')), cost: J(path.join(INS, 'data/cost.json')) };
@@ -128,6 +129,7 @@ CASES.forEach(function (c) {
   cs.list.forEach(function (x) { money.push(x.median, R3(x.payment)); });
   [3, 4, 5].forEach(function (r) { if (cs.natl[r]) money.push(cs.natl[r].median); if (cs.cheapest[r]) money.push(cs.cheapest[r].median); });
   ls.items.forEach(function (x) { money.push(x.price); });
+  (ls.above || []).forEach(function (x) { money.push(x.price, x.price - m.price); });  // round K (mbudget v2): the closest homes above the budget and their gap
   var pcts = [m.ratio, 100 * m.ltv, D.cost.lawyer.from, 50, 35, 40];
   cs.list.forEach(function (x) { pcts.push(Math.round(Math.max(2, Math.min(100, 100 * x.median / m.price)))); });
   var html = NLMB.html.answer(m, c.inp, D, true);

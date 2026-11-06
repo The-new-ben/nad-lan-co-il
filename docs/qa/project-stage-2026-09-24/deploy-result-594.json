@@ -1,0 +1,17 @@
+{
+  "released": "1.72.594",
+  "from": "1.72.593",
+  "live_before": {
+    "assets/instruments/tools/mbudget.js": "9b492aeb319abe8bf43fee2d5aebde0a",
+    "nadlan-config.php": "3e3e11bf8be27f5b0c6488140f43026d"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 09:33:34",
+  "files": {
+    "assets/instruments/tools/mbudget.js": "d668cb49f7670533abce2f47a362f376",
+    "nadlan-config.php": "16a5fa229938c4672043467f0e3c6d6a"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.594, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
