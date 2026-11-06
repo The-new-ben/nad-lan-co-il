@@ -277,3 +277,7 @@ Tally: vs Israel 30 LEAD, 36 TIE, 11 LOSE (was 28, 37, 12); vs world 23 LEAD, 37
 | words_rendered | 8,414 | 4,168 | LEAD -> LOSE | LEAD -> LOSE | folding hides text from `innerText` by definition; words in the HTML stay 9,163 (LEAD). Accepted trade-off. |
 
 Still LOSE vs Israel: payment frequency (weekly payments do not exist in Israel), visible words (the fold), first input, page height, and the weight and speed rows (HTML, transfer, requests, TTFB, DCL, load, LCP), which wait for Ben's word on the sitewide scripts (Stripe, tawk.to, Hotjar, fonts).
+
+### After 1.72.592 (T8, 6.11.2026 night)
+
+Tally: vs Israel 31 LEAD, 35 TIE, 11 LOSE; vs world 23 LEAD, 38 TIE, 16 LOSE. Changed row: costs_in_payment, ours - -> Y (Israel TIE -> LEAD, world LOSE -> TIE). The manual ruling for our page was rewritten in `measure.py` MANUAL with the live evidence (5,428 + 250 + 600 = 6,278); the notes on refinance and costs were updated.

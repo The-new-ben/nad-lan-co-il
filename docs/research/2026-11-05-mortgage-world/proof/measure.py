@@ -1098,7 +1098,10 @@ PARAMS += [
 # --------------------------------------------------------------------------------------------------------------------
 MANUAL = {
     # ours
-    ("ours", "costs_in_payment"): ("-", "the keyword hit is the documents checklist item 'ביטוח חיים וביטוח מבנה'; no insurance, arnona or fees enter the monthly figure"),
+    # 5.11 (pass 1): ("-", "the keyword hit is the documents checklist item 'ביטוח חיים וביטוח מבנה'; no insurance, arnona or fees enter the monthly figure").
+    # 6.11, after 1.72.592 (mquick v5): the auto hit is now the quick calculator's own fields, checked by pressing them live: 250 + 600 typed
+    # give "העלות החודשית של הדירה" 6,278 = 5,428 + 250 + 600 (round-g/verify-live.json). Kept as an explicit ruling so the evidence is on record.
+    ("ours", "costs_in_payment"): ("Y", "mquick v5 fields 'ביטוח חיים ומבנה' and 'ארנונה וועד בית' enter 'העלות החודשית של הדירה' (pressed live 6.11.2026: 5,428 + 250 + 600 = 6,278)"),
     ("ours", "afford_to_homes"): ("Y", "the automatic hit was the site menu; the real evidence is the budget tool 'כמה דירה זה קונה' with 'הראו לי את הדירות האלה' and rooms x cities buttons that link to listings (verify-ours)"),
     ("ours", "market_data_age_days"): (36, "default rates are the Bank of Israel averages for September 2026 (published 20.10.2026); age counted from 30.9.2026"),
     # Israel
@@ -1378,13 +1381,13 @@ NOTES = {
     "historical_stress": "Supermarker's 'crisis' is a fixed shock, not the real 2022 path",
     "forecast_scenario": "Supermarker also uses the BoI research forecast",
     "prepayment_fee": "world: one click away on a sibling URL (MSE, Nationwide, Dr. Klein, Pretto)",
-    "refinance": "ours: exit-cost tool + link to the refinance page; no break-even tool",
+    "refinance": "ours: the refinance break-even in the exit tool (1.72.591) + the link to the refinance page",
     "afford_to_homes": "budget tool links to /properties/; Chase: a generic link",
     "offer_comparison": "Supermarker checks one offer against the market",
     "per_bank_benchmark": "from the BoI per-bank averages",
     "offer_vs_market_money": "Supermarker has it too (all-bank average)",
     "regulatory_checks": "Supermarker checks 3 rules + LTV; ours 4 rules",
-    "costs_in_payment": "no official insurance price table in Israel",
+    "costs_in_payment": "ours: optional insurance and arnona/building-fee fields add to the payment (1.72.592); no defaults, since Israel has no official insurance price table",
     "local_defaults": "",
     "tool_switcher": "Supermarker has 2 modes",
     "payment_frequency": "Israeli mortgages are paid monthly",

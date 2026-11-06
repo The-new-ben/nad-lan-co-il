@@ -1,6 +1,6 @@
 {
  "about": "Counted benchmark for https://nad-lan.co.il/mortgage-calculator/ (HAD-675). One cold phone load (390x844, is_mobile, has_touch, Chrome 156 headless, no throttling, from Israel) per page; raw HTML = the document response of that load. Definitions: proof.md / measure.py PARAMS.",
- "generated_utc": "2026-11-05T23:12:11Z",
+ "generated_utc": "2026-11-06T00:07:32Z",
  "params": [
   {
    "group": "1 Tool",
@@ -2277,21 +2277,21 @@
    "region": "OURS",
    "name": "nad-lan (ours)",
    "url": "https://nad-lan.co.il/mortgage-calculator/",
-   "measured_utc": "2026-11-05T23:11:16Z",
+   "measured_utc": "2026-11-06T00:06:44Z",
    "goto_error": null,
    "final_url": "https://nad-lan.co.il/mortgage-calculator/",
    "status": 200,
-   "html_bytes": 404773,
+   "html_bytes": 404912,
    "speed": {
-    "ttfb_ms": 829.6000000014901,
-    "dcl_ms": 1762.300000000745,
-    "load_ms": 2433.10000000149,
-    "lcp_ms": 1652,
+    "ttfb_ms": 884,
+    "dcl_ms": 1761.5,
+    "load_ms": 2430.300000000745,
+    "lcp_ms": 1680,
     "cls": 0,
-    "transfer_bytes": 1738853,
+    "transfer_bytes": 1767091,
     "requests": 110,
     "failed_requests": 1,
-    "html_transfer_bytes": 125565,
+    "html_transfer_bytes": 125569,
     "wall_s": 5.5
    },
    "first_screen": {
@@ -2311,38 +2311,38 @@
       "type": "text"
      },
      {
-      "y": 2293,
-      "label": "הכנסה נטו של משק הבית nlmb-income-fl9m4",
+      "y": 1146,
+      "label": "ביטוח חיים ומבנה nlmq-xi",
       "type": "text"
      },
      {
-      "y": 2391,
-      "label": "הון עצמי nlmb-equity-wrvli",
+      "y": 1146,
+      "label": "ארנונה וועד בית nlmq-xa",
       "type": "text"
      },
      {
-      "y": 2642,
-      "label": "סכום המשכנתא nlm-ftzj6h",
+      "y": 2461,
+      "label": "הכנסה נטו של משק הבית nlmb-income-4iep7",
       "type": "text"
      },
      {
-      "y": 2653,
-      "label": "הלוואות קיימות אין nlmb-loans-zubj1",
+      "y": 2559,
+      "label": "הון עצמי nlmb-equity-2psot",
       "type": "text"
      },
      {
-      "y": 2653,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-utnaz",
+      "y": 2810,
+      "label": "סכום המשכנתא nlm-8w9tpy",
       "type": "text"
      },
      {
-      "y": 2772,
-      "label": "שווי הדירה, לבדיקת שיעור המימון nlm-uh1vjt",
+      "y": 2821,
+      "label": "הלוואות קיימות אין nlmb-loans-whq13",
       "type": "text"
      },
      {
-      "y": 3134,
-      "label": "סכום nlm-ws6uie",
+      "y": 2821,
+      "label": "חלק מההכנסה להחזר nlmb-ratio-lxv8n",
       "type": "text"
      }
     ]
@@ -2353,11 +2353,11 @@
     "first_input_label": "סכום המשכנתא nlmq-a",
     "first_money_y": 302,
     "first_money_text": "1,000,000 ₪",
-    "page_height_initial": 28050,
-    "page_height": 28101,
+    "page_height_initial": 28218,
+    "page_height": 28269,
     "h_overflow": false,
     "scroll_width": 390,
-    "tap_n": 236,
+    "tap_n": 238,
     "tap_44": 195,
     "tap_24": 234,
     "overlays_on_load": [
@@ -2386,38 +2386,38 @@
       "type": "text"
      },
      {
-      "y": 2293,
-      "label": "הכנסה נטו של משק הבית nlmb-income-fl9m4",
+      "y": 1146,
+      "label": "ביטוח חיים ומבנה nlmq-xi",
       "type": "text"
      },
      {
-      "y": 2391,
-      "label": "הון עצמי nlmb-equity-wrvli",
+      "y": 1146,
+      "label": "ארנונה וועד בית nlmq-xa",
       "type": "text"
      },
      {
-      "y": 2642,
-      "label": "סכום המשכנתא nlm-ftzj6h",
+      "y": 2461,
+      "label": "הכנסה נטו של משק הבית nlmb-income-4iep7",
       "type": "text"
      },
      {
-      "y": 2653,
-      "label": "הלוואות קיימות אין nlmb-loans-zubj1",
+      "y": 2559,
+      "label": "הון עצמי nlmb-equity-2psot",
       "type": "text"
      },
      {
-      "y": 2653,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-utnaz",
+      "y": 2810,
+      "label": "סכום המשכנתא nlm-8w9tpy",
       "type": "text"
      },
      {
-      "y": 2772,
-      "label": "שווי הדירה, לבדיקת שיעור המימון nlm-uh1vjt",
+      "y": 2821,
+      "label": "הלוואות קיימות אין nlmb-loans-whq13",
       "type": "text"
      },
      {
-      "y": 3134,
-      "label": "סכום nlm-ws6uie",
+      "y": 2821,
+      "label": "חלק מההכנסה להחזר nlmb-ratio-lxv8n",
       "type": "text"
      }
     ],
@@ -2426,19 +2426,19 @@
    "a11y": {
     "img_n": 4,
     "img_alt": 4,
-    "ctrl_n": 55,
-    "ctrl_labelled": 55,
+    "ctrl_n": 57,
+    "ctrl_labelled": 57,
     "html_lang": "he-IL"
    },
    "visuals_rendered": 7,
    "charts_rendered": 5,
    "title": "מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין",
    "rendered": {
-    "words": 4168,
+    "words": 4201,
     "figures": 223,
     "tables": 23,
     "cells": 1066,
-    "inputs": 55,
+    "inputs": 57,
     "frames": [
      "https://nad-lan.co.il/mortgage-calculator/",
      "https://m.stripe.network/inner.html#url=https%3A%2F%2Fnad-lan.co.il%2Fmortgage-calculator%2F&title=%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%202026%3A%20%D7%97%D7%99%D7%A9%D7%95%D7%91%20%D7%94%D7%97%D7%96%D7%A8%20%D7%97%D7%95%D7%93%D7%A9%D7%99%2C%20%D7%AA%D7%9E%D7%94%D7%99%D7%9C%20%D7%95%D7%9C%D7%95%D7%97%20%D7%A1%D7%99%D7%9C%D7%95%D7%A7%D7%99%D7%9F&referrer=&muid=NA&sid=NA&version=6&preview=false&__shared_params__[version]=v3"
@@ -2561,7 +2561,7 @@
      "WebSite"
     ],
     "faq_schema_q": 38,
-    "date_modified": "2026-11-05",
+    "date_modified": "2026-11-06",
     "persons": [],
     "official_sources": [
      "api.cbs.gov.il",
@@ -2595,11 +2595,11 @@
    "features": {
     "payment_from_loan": {
      "auto": "Y",
-     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-ws6uie | ריבית שנתית ריבית שנתית% nlm-e"
+     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-s8sn5r | ריבית שנתית ריבית שנתית% nlm-y"
     },
     "loan_from_payment": {
      "auto": "Y",
-     "evidence": " מחיר הדירה₪ nlmq-p | הון עצמי הון עצמי₪ nlmq-e | ההחזר החודשי שמתאים לכם ההחזר החודשי שמתאים לכם₪ nlmq-y | סכום המשכנתא סכ"
+     "evidence": " מחיר הדירה₪ nlmq-p | הון עצמי הון עצמי₪ nlmq-e | ההחזר החודשי שמתאים לכם ההחזר החודשי שמתאים לכם₪ nlmq-y | ביטוח חיים ומבנ"
     },
     "price_plus_equity": {
      "auto": "Y",
@@ -2607,7 +2607,7 @@
     },
     "affordability_income": {
      "auto": "Y",
-     "evidence": "דשים nlm-546xmv | סוג הגרייס חלקימלא nlm-y4r43d | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
+     "evidence": "דשים nlm-njrmrj | סוג הגרייס חלקימלא nlm-1cyzqw | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
     },
     "multi_track": {
      "auto": "Y",
@@ -2659,7 +2659,7 @@
     },
     "offer_vs_market_money": {
      "auto": "Y",
-     "evidence": "| בחודש חודש nlm-jnuo3y | סכום סכום₪ nlm-7o2ptz | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
+     "evidence": "| בחודש חודש nlm-mcvv2g | סכום סכום₪ nlm-ke1axx | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
     },
     "readiness_docs": {
      "auto": "Y",
@@ -2679,7 +2679,7 @@
     },
     "costs_in_payment": {
      "auto": "Y",
-     "evidence": "סקונט ומרכנתיל · בנק ירושלים · לאומי · כל זכות | ביטוח חיים וביטוח מבנה, עם הבנק כמוטבהפועלים · דיסקונט "
+     "evidence": "ודשי שמתאים לכם ההחזר החודשי שמתאים לכם₪ nlmq-y | ביטוח חיים ומבנה ביטוח חיים ומבנה ₪ nlmq-xi | ארנונה וו"
     },
     "local_defaults": {
      "auto": "Y",
@@ -2761,7 +2761,7 @@
     "rate_decision_impact": "Y",
     "regulatory_checks": "Y",
     "total_cost": "Y",
-    "costs_in_payment": "-",
+    "costs_in_payment": "Y",
     "local_defaults": "Y",
     "charts": "Y",
     "share_link": "Y",
@@ -2779,7 +2779,7 @@
     "update_recency_days": 0,
     "market_data_age_days": 36,
     "words_raw": 9187,
-    "words_rendered": 4168,
+    "words_rendered": 4201,
     "figures_raw": 672,
     "tables_raw": 16,
     "cells_raw": 650,
@@ -2794,7 +2794,7 @@
     "dataset": "Y",
     "faqpage": "Y",
     "webapp": "Y",
-    "date_modified_days": 0,
+    "date_modified_days": -1,
     "author_reviewer": "-",
     "methodology": "Y",
     "llms_txt": "Y",
@@ -2802,17 +2802,17 @@
     "raw_figure_share": 1.0,
     "first_input_y": 556,
     "first_money_y": 302,
-    "page_height": 28101,
+    "page_height": 28269,
     "h_overflow": 0,
-    "tap44_share": 0.83,
+    "tap44_share": 0.82,
     "interruptions": 0,
-    "html_bytes": 404773,
-    "transfer_bytes": 1738853,
+    "html_bytes": 404912,
+    "transfer_bytes": 1767091,
     "requests": 110,
-    "ttfb_ms": 830,
+    "ttfb_ms": 884,
     "dcl_ms": 1762,
-    "load_ms": 2433,
-    "lcp_ms": 1652,
+    "load_ms": 2430,
+    "lcp_ms": 1680,
     "cls": 0,
     "img_alt_share": 1.0,
     "input_label_share": 1.0,
@@ -2820,9 +2820,9 @@
    },
    "adjudicated": {
     "costs_in_payment": {
-     "value": "-",
+     "value": "Y",
      "auto": "Y",
-     "reason": "the keyword hit is the documents checklist item 'ביטוח חיים וביטוח מבנה'; no insurance, arnona or fees enter the monthly figure"
+     "reason": "mquick v5 fields 'ביטוח חיים ומבנה' and 'ארנונה וועד בית' enter 'העלות החודשית של הדירה' (pressed live 6.11.2026: 5,428 + 250 + 600 = 6,278)"
     },
     "afford_to_homes": {
      "value": "Y",
@@ -21371,15 +21371,15 @@
  "verdicts": {
   "tally": {
    "IL": {
-    "LEAD": 30,
-    "TIE": 36,
+    "LEAD": 31,
+    "TIE": 35,
     "LOSE": 11,
     "n/a": 0
    },
    "WORLD": {
     "LEAD": 23,
-    "TIE": 37,
-    "LOSE": 17,
+    "TIE": 38,
+    "LOSE": 16,
     "n/a": 0
    }
   },
@@ -22154,7 +22154,7 @@
     "group": "1 Tool",
     "id": "costs_in_payment",
     "label": "Taxes, insurance or HOA inside the monthly figure",
-    "ours": "-",
+    "ours": "Y",
     "best_il": "-",
     "best_il_pages": [
      "Bank Hapoalim",
@@ -22191,8 +22191,8 @@
      "Interhyp (DE)",
      "Meilleurtaux (FR)"
     ],
-    "v_il": "TIE",
-    "v_world": "LOSE",
+    "v_il": "LEAD",
+    "v_world": "TIE",
     "direction": "bool"
    },
    {
@@ -22726,7 +22726,7 @@
     "group": "3 Content",
     "id": "words_rendered",
     "label": "Visible words after JavaScript",
-    "ours": 4168,
+    "ours": 4201,
     "best_il": 5198,
     "best_il_pages": [
      "Mashcantaman"
@@ -23058,7 +23058,7 @@
     "group": "4 AI and search",
     "id": "date_modified_days",
     "label": "Days since schema/meta dateModified",
-    "ours": 0,
+    "ours": -1,
     "best_il": 4,
     "best_il_pages": [
      "Supermarker"
@@ -23299,7 +23299,7 @@
     "group": "5 Phone 390x844",
     "id": "page_height",
     "label": "Page height (px)",
-    "ours": 28101,
+    "ours": 28269,
     "best_il": 1735,
     "best_il_pages": [
      "Goola group"
@@ -23366,7 +23366,7 @@
     "group": "5 Phone 390x844",
     "id": "tap44_share",
     "label": "Share of tappable controls >= 44 px tall",
-    "ours": 0.83,
+    "ours": 0.82,
     "best_il": 0.78,
     "best_il_pages": [
      "Supermarker"
@@ -23428,7 +23428,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "html_bytes",
     "label": "HTML bytes (decoded document)",
-    "ours": 404773,
+    "ours": 404912,
     "best_il": 702,
     "best_il_pages": [
      "Harel servicebank"
@@ -23445,7 +23445,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "transfer_bytes",
     "label": "Total transfer bytes to load + 3 s",
-    "ours": 1738853,
+    "ours": 1767091,
     "best_il": 13528,
     "best_il_pages": [
      "Taxo (mix)"
@@ -23479,7 +23479,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "ttfb_ms",
     "label": "Time to first byte (ms)",
-    "ours": 830,
+    "ours": 884,
     "best_il": 40,
     "best_il_pages": [
      "Family-economy"
@@ -23513,7 +23513,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "load_ms",
     "label": "Load event (ms)",
-    "ours": 2433,
+    "ours": 2430,
     "best_il": 237,
     "best_il_pages": [
      "Family-economy"
@@ -23530,7 +23530,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "lcp_ms",
     "label": "Largest Contentful Paint (ms)",
-    "ours": 1652,
+    "ours": 1680,
     "best_il": 120,
     "best_il_pages": [
      "Family-economy"

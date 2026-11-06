@@ -1,0 +1,230 @@
+{
+ "he": {
+  "start": {
+   "ins": "",
+   "arn": "",
+   "totHidden": true,
+   "fig": "5,428 ₪",
+   "tf": "",
+   "tb": "",
+   "sub": "סך ההחזרים 1,628,489 ₪ · מזה ריבית 628,489 ₪",
+   "labels": [
+    "ביטוח חיים ומבנה",
+    "ארנונה וועד בית"
+   ],
+   "note": "הבנק דורש ביטוח חיים וביטוח מבנה, ואתם בוחרים את חברת הביטוח. השוואת מחירים ברשות שוק ההון",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1049,
+   "hscroll": 0
+  },
+  "typed": {
+   "ins": "250",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "5,428 ₪",
+   "tf": "6,278 ₪",
+   "tb": "החזר 5,428 + ביטוחים 250 + ארנונה וועד בית 600",
+   "sub": "סך ההחזרים 1,628,489 ₪ · מזה ריבית 628,489 ₪",
+   "labels": [
+    "ביטוח חיים ומבנה",
+    "ארנונה וועד בית"
+   ],
+   "note": "הבנק דורש ביטוח חיים וביטוח מבנה, ואתם בוחרים את חברת הביטוח. השוואת מחירים ברשות שוק ההון",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1151,
+   "hscroll": 0
+  },
+  "one": {
+   "ins": "",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "5,428 ₪",
+   "tf": "6,028 ₪",
+   "tb": "החזר 5,428 + ארנונה וועד בית 600",
+   "sub": "סך ההחזרים 1,628,489 ₪ · מזה ריבית 628,489 ₪",
+   "labels": [
+    "ביטוח חיים ומבנה",
+    "ארנונה וועד בית"
+   ],
+   "note": "הבנק דורש ביטוח חיים וביטוח מבנה, ואתם בוחרים את חברת הביטוח. השוואת מחירים ברשות שוק ההון",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1151,
+   "hscroll": 0
+  },
+  "paymode": {
+   "ins": "",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "1,105,319 ₪",
+   "tf": "6,600 ₪",
+   "tb": "החזר 6,000 + ארנונה וועד בית 600",
+   "sub": "החזר 6,000 ₪ · סך ההחזרים 1,800,000 ₪ · מזה ריבית 694,681 ₪",
+   "labels": [
+    "ביטוח חיים ומבנה",
+    "ארנונה וועד בית"
+   ],
+   "note": "הבנק דורש ביטוח חיים וביטוח מבנה, ואתם בוחרים את חברת הביטוח. השוואת מחירים ברשות שוק ההון",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1151,
+   "hscroll": 0
+  },
+  "cleared": {
+   "ins": "",
+   "arn": "",
+   "totHidden": true,
+   "fig": "1,105,319 ₪",
+   "tf": "6,600 ₪",
+   "tb": "החזר 6,000 + ארנונה וועד בית 600",
+   "sub": "החזר 6,000 ₪ · סך ההחזרים 1,800,000 ₪ · מזה ריבית 694,681 ₪",
+   "labels": [
+    "ביטוח חיים ומבנה",
+    "ארנונה וועד בית"
+   ],
+   "note": "הבנק דורש ביטוח חיים וביטוח מבנה, ואתם בוחרים את חברת הביטוח. השוואת מחירים ברשות שוק ההון",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1049,
+   "hscroll": 0
+  },
+  "errors": [],
+  "mounted": {
+   "360": 1119,
+   "375": 1101,
+   "390": 1049,
+   "412": 1049,
+   "430": 1031,
+   "600": 1013,
+   "768": 905,
+   "1024": 921,
+   "1280": 921
+  }
+ },
+ "en": {
+  "start": {
+   "ins": "",
+   "arn": "",
+   "totHidden": true,
+   "fig": "₪5,428",
+   "tf": "",
+   "tb": "",
+   "sub": "Total repaid ₪1,628,489 · of which interest ₪628,489",
+   "labels": [
+    "Life and structure insurance",
+    "Arnona and building fees"
+   ],
+   "note": "Banks require life and structure insurance, and you choose the insurer. Compare prices at ",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1207,
+   "hscroll": 0
+  },
+  "typed": {
+   "ins": "250",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "₪5,428",
+   "tf": "₪6,278",
+   "tb": "payment 5,428 + insurance 250 + arnona and building fees 600",
+   "sub": "Total repaid ₪1,628,489 · of which interest ₪628,489",
+   "labels": [
+    "Life and structure insurance",
+    "Arnona and building fees"
+   ],
+   "note": "Banks require life and structure insurance, and you choose the insurer. Compare prices at ",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1327,
+   "hscroll": 0
+  },
+  "one": {
+   "ins": "",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "₪5,428",
+   "tf": "₪6,028",
+   "tb": "payment 5,428 + arnona and building fees 600",
+   "sub": "Total repaid ₪1,628,489 · of which interest ₪628,489",
+   "labels": [
+    "Life and structure insurance",
+    "Arnona and building fees"
+   ],
+   "note": "Banks require life and structure insurance, and you choose the insurer. Compare prices at ",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1309,
+   "hscroll": 0
+  },
+  "paymode": {
+   "ins": "",
+   "arn": "600",
+   "totHidden": false,
+   "fig": "₪1,105,319",
+   "tf": "₪6,600",
+   "tb": "payment 6,000 + arnona and building fees 600",
+   "sub": "Payment ₪6,000 · Total repaid ₪1,800,000 · of which interest ₪694,681",
+   "labels": [
+    "Life and structure insurance",
+    "Arnona and building fees"
+   ],
+   "note": "Banks require life and structure insurance, and you choose the insurer. Compare prices at ",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1329,
+   "hscroll": 0
+  },
+  "cleared": {
+   "ins": "",
+   "arn": "",
+   "totHidden": true,
+   "fig": "₪1,105,319",
+   "tf": "₪6,600",
+   "tb": "payment 6,000 + arnona and building fees 600",
+   "sub": "Payment ₪6,000 · Total repaid ₪1,800,000 · of which interest ₪694,681",
+   "labels": [
+    "Life and structure insurance",
+    "Arnona and building fees"
+   ],
+   "note": "Banks require life and structure insurance, and you choose the insurer. Compare prices at ",
+   "links": [
+    "https://life.cma.gov.il/",
+    "https://dira.cma.gov.il/"
+   ],
+   "h": 1227,
+   "hscroll": 0
+  },
+  "errors": [],
+  "mounted": {
+   "360": 1207,
+   "375": 1207,
+   "390": 1207,
+   "412": 1171,
+   "430": 1119,
+   "600": 1049,
+   "768": 993,
+   "1024": 957,
+   "1280": 957
+  }
+ }
+}
