@@ -143,3 +143,4 @@
   - author_reviewer (world): a named reviewer is Ben's decision (HAD-658).
   - figures_raw, cells_raw, visuals_rendered (world, Calculator.net and Meilleurtaux): we lead Israel; matching them means very large tables and images that would add weight to rows we already lose.
 - Cadence: the loop now runs slow (hourly), for the time-gated items: the title recheck after 10.11, the BoI data refresh around 20.11 (build_mortgage_v2.py, then a data-only release), and anything Ben answers.
+- Round I, English (6.11 early morning): the olim chapter of /en/mortgage-calculator/ was the one English chapter opening with no figure; it now opens with the oleh purchase-tax brackets (0% to ₪1,978,745, 0.5% to ₪6,055,070, ptax.json, in force since 16.1.2025) and the 75% single-home cap. Live, phone: visible as the kept paragraph of the folded chapter, 0 errors, 0 horizontal scroll, page 11,867 px. Both pages healthy at 1.72.593 (all 9 Hebrew tools in the HTML).
