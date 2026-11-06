@@ -1,0 +1,317 @@
+[
+ {
+  "ok": true,
+  "check": "phone-390: default state, every v1 block and the case link identical to the live v1",
+  "info": "14 blocks"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: default numbers identical (first, highest, total, interest, linkage, months)",
+  "info": "{\"first\": 6517.332228859217, \"highest\": 7136.03498999986, \"highestMonth\": 300, \"totalPaid\": 2040429.3566189595, \"totalInterest\": 772976.9608350478, \"totalLinkage\": 67452.39578391115, \"N\": 300}"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: no horizontal scroll (default)",
+  "info": "{'sw': 390, 'cw': 390}"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C1 one band line under each of the 3 rate fields",
+  "info": "3"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C1 track 1 line: month in Hebrew, source, the 7 banks, effective min and max of by_bank",
+  "info": "הריבית ב־7 הבנקים, ספטמבר 2026: מ־4.47% (דיסקונט) עד 5.96% (ירושלים) נומינלית, ובריבית אפקטיבית מ־4.56% עד 6.13%. מקור: קו המשווה של בנק ישראל."
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C1 no band line on the eligibility loan",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 the frequency select only on the variable track (1 of 3)",
+  "info": "1"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 five frequencies, five years chosen",
+  "info": "כל שנה | כל שנתיים | כל 2.5 שנים | כל 5 שנים | כל 10 שנים"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 every 2 years, no shock: the same payments as every 5 years",
+  "info": "[6517.332228859217, 7136.03498999986, 2040429.3566189595]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 the choice is in the results (line and track name)",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 with the +2% path the variable track changes at month 25 only",
+  "info": "[25]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C2 the choice is in the copied text",
+  "info": "מחשבון משכנתא: הלוואה ₪1,200,000 ב־3 מסלולים, החזר ראשון ₪6,990, החזר גבוה צפוי ₪7,948, סך תשלומים ₪2,257,494 (ריבית ₪985,851, הצמדה ₪71,643"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C3 the term in months, 300 in each of 3 tracks",
+  "info": "3"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C3 250 months on track 1: 250 monthly payments, paid off at month 250, schedule 300 rows (the longest track)",
+  "info": "[250, 300] rows 300"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C3 30 months refused with the 48 to 360 message",
+  "info": "['מסלול 1: תקופה בין 48 ל־360 חודשים.']"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C3 back to 300 months and years: the default numbers again",
+  "info": "[6517.332228859217, 7136.03498999986, 2040429.3566189595]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C5 the download: UTF-8 BOM, one row per month plus the header, 21 columns",
+  "info": "mortgage-schedule.csv, 301 rows, 21 columns"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C5 header names",
+  "info": "חודש | מסלול 1 קל״צ: תשלום | מסלול 1 קל״צ: קרן | סך הכול: הצמדה | סך הכול: יתרה"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C5 the schedule section has the same download",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C9 three scenario cards: today, BoI forecast, stress, each with first, highest and its year, total",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C9 the stress card is the existing +2% check, today is the default result",
+  "info": "[True, True]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C9 every amount on one line and inside its card",
+  "info": "9"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C9 the three cards keep their value rows on the same lines",
+  "info": "[[375, 421, 481], [375, 421, 481], [375, 421, 481]]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C14 the button is there, closed",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C14 four cards: your mix and the three uniform baskets",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "phone-390: C14 every basket equals the mexit basket math (NLMR) in the page",
+  "info": "[2025596, 2079031, 1989944]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: no horizontal scroll (baskets open, months used)",
+  "info": "{'sw': 390, 'cw': 390}"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: the case link reopens months and every 2 years",
+  "info": "['m', 24, 2040429.3566189595, 1]"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: every new control at least 44 px and labelled (5 controls)",
+  "info": "term toggle 44px, term toggle 44px, frequency select 44px, baskets button 44px, csv button (share bar) 44px"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: the schedule CSV link is at least 44 px",
+  "info": "44"
+ },
+ {
+  "ok": true,
+  "check": "phone-390: no console errors",
+  "info": "[]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: default state, every v1 block and the case link identical to the live v1",
+  "info": "14 blocks"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: default numbers identical (first, highest, total, interest, linkage, months)",
+  "info": "{\"first\": 6517.332228859217, \"highest\": 7136.03498999986, \"highestMonth\": 300, \"totalPaid\": 2040429.3566189595, \"totalInterest\": 772976.9608350478, \"totalLinkage\": 67452.39578391115, \"N\": 300}"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: no horizontal scroll (default)",
+  "info": "{'sw': 1280, 'cw': 1280}"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C1 one band line under each of the 3 rate fields",
+  "info": "3"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C1 track 1 line: month in Hebrew, source, the 7 banks, effective min and max of by_bank",
+  "info": "הריבית ב־7 הבנקים, ספטמבר 2026: מ־4.47% (דיסקונט) עד 5.96% (ירושלים) נומינלית, ובריבית אפקטיבית מ־4.56% עד 6.13%. מקור: קו המשווה של בנק ישראל."
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C1 no band line on the eligibility loan",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 the frequency select only on the variable track (1 of 3)",
+  "info": "1"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 five frequencies, five years chosen",
+  "info": "כל שנה | כל שנתיים | כל 2.5 שנים | כל 5 שנים | כל 10 שנים"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 every 2 years, no shock: the same payments as every 5 years",
+  "info": "[6517.332228859217, 7136.03498999986, 2040429.3566189595]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 the choice is in the results (line and track name)",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 with the +2% path the variable track changes at month 25 only",
+  "info": "[25]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C2 the choice is in the copied text",
+  "info": "מחשבון משכנתא: הלוואה ₪1,200,000 ב־3 מסלולים, החזר ראשון ₪6,990, החזר גבוה צפוי ₪7,948, סך תשלומים ₪2,257,494 (ריבית ₪985,851, הצמדה ₪71,643"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C3 the term in months, 300 in each of 3 tracks",
+  "info": "3"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C3 250 months on track 1: 250 monthly payments, paid off at month 250, schedule 300 rows (the longest track)",
+  "info": "[250, 300] rows 300"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C3 30 months refused with the 48 to 360 message",
+  "info": "['מסלול 1: תקופה בין 48 ל־360 חודשים.']"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C3 back to 300 months and years: the default numbers again",
+  "info": "[6517.332228859217, 7136.03498999986, 2040429.3566189595]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C5 the download: UTF-8 BOM, one row per month plus the header, 21 columns",
+  "info": "mortgage-schedule.csv, 301 rows, 21 columns"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C5 header names",
+  "info": "חודש | מסלול 1 קל״צ: תשלום | מסלול 1 קל״צ: קרן | סך הכול: הצמדה | סך הכול: יתרה"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C5 the schedule section has the same download",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C9 three scenario cards: today, BoI forecast, stress, each with first, highest and its year, total",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C9 the stress card is the existing +2% check, today is the default result",
+  "info": "[True, True]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C9 every amount on one line and inside its card",
+  "info": "9"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C9 the three cards keep their value rows on the same lines",
+  "info": "[[395, 441, 501], [395, 441, 501], [395, 441, 501]]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C14 the button is there, closed",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C14 four cards: your mix and the three uniform baskets",
+  "info": ""
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: C14 every basket equals the mexit basket math (NLMR) in the page",
+  "info": "[2025596, 2079031, 1989944]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: no horizontal scroll (baskets open, months used)",
+  "info": "{'sw': 1280, 'cw': 1280}"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: the case link reopens months and every 2 years",
+  "info": "['m', 24, 2040429.3566189595, 1]"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: every new control at least 44 px and labelled (5 controls)",
+  "info": "term toggle 44px, term toggle 44px, frequency select 44px, baskets button 44px, csv button (share bar) 44px"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: the schedule CSV link is at least 44 px",
+  "info": "44"
+ },
+ {
+  "ok": true,
+  "check": "desktop-1280: no console errors",
+  "info": "[]"
+ },
+ {
+  "ok": true,
+  "check": "English page /en/mortgage-calculator/ does not mount Mortgage 2.0 (snapshot 20261106T031914Z-bb30591a6328.html): mquick",
+  "info": ""
+ }
+]

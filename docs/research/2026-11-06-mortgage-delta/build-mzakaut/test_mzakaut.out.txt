@@ -1,0 +1,91 @@
+data: zakaut.json checked 2026-11-06, S3 updated 2026-03-30; boi-mortgage by_bank 2026-09
+
+0. the data file
+  ok   zakaut.json carries "checked": "2026-11-06"  [2026-11-06]
+  ok   S1 to S14: a gov.il URL and a page date each
+  ok   S3 / S7 band table: 11 rows, 54,240 to 161,665, top service 1,617 a month
+  ok   every table block names a source id that exists in sources  [18 blocks]
+
+1. a family married 3 years, 2 children, siblings 2 and 4, service 24 and 20 months
+  ok   marriage, 3 full years: 350 (S3)  [350]
+  ok   children, 2: 500 (S3)  [500]
+  ok   siblings counted per spouse: 2 = 100, 4 = 400 (S3)  [100 + 400]
+  ok   total 1,350 points  [1350]
+  ok   not the zakaut.com error (6 siblings summed = 650 points, 1,500 total, 85,250)  [1350]
+  ok   band 1,000 to 1,399: basic loan 62,400 (S3)  [62400]
+  ok   service supplement 44 months x 624 = 27,456 (S7)  [27456]
+  ok   total 89,856 ILS, a veteran family: the S3 amount, no unverified label  [89856]
+  ok   headline "89,856 ₪"  [89,856 ₪]
+  ok   every points and amount line carries a source id
+  ok   source tags carry the page date (S3 updated 30.3.2026, S4 published 29.9.2021)  [S3 · עודכן 30.3.2026]
+  ok   zone א: a family gets the 1,500-point amount, 85,250 (S3, S8)  [85250]
+  ok   zone א: service 44 x 852 = 37,488, plus 100,000 at 4.5% (first payment 633): 222,738  [222738]
+  ok   zone ב: 70,000 (first payment 443), basic unchanged: 159,856  [159856]
+  ok   S8 first payments 633 / 443 = Spitzer of 100,000 / 70,000 at 4.5% for 20 years  [632.65]
+  ok   reserve 90 full days: 0.5% per 15 days (S2) = 3% of 62,400 = 1,872; total 91,728  [1872]
+  ok   reserve 30 days: the 2% minimum (S7) = 1,248
+  ok   reserve 400 days: the 10% maximum a person (S7) = 6,240
+  ok   service 72% + reserve 20% > 65%: capped at 65% of 62,400 = 40,560 (S7)  [40560]
+  ok   service counted at most 36 months (S16), civic service 12 (S7)  [36 + 12]
+  ok   marriage date 5.11.2023: 3 full years; 7.11.2023: 2 years, 300 points
+  ok   rate typed from the certificate, 2.5% for 30 years on 89,856: first payment 355.04  [355.04]
+  ok   no rate typed: no payment and no rate number anywhere
+
+2. a veteran single aged 35 (S4)
+  ok   age 35: 300 at 32 + 3 x 50 = 450 points  [450]
+  ok   below the S3 table (599): the points, no shekel figure  [450 נקודות]
+  ok   with 4 siblings: 450 + 400 = 850, band 599 to 999, 54,240 (unverified mapping)  [850]
+  ok   the headline is the points; the shekel figure carries the label of eligibility.md section 4  [קבוצת ניקוד 599 עד 999 · סכום משוער 67,248 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   S4 ladder: 31 = 250, 45 = 950, 46 = 1,200, 47 = 1,250, 48 = 1,300
+  ok   age 60 with 6 siblings: capped at 1,690 (S4)
+  ok   age 25: not eligible outside a priority zone or without service; in zone א after service: 30 + 600 = 630 points (S4)
+  ok   age 19: not eligible (from 21)
+
+3. an olim family in its second year (S11)
+  ok   1 full year in Israel: seniority 250, fixed 730  [250]
+  ok   250 + 500 + 730 = 1,480, floor from the second year 1,800  [1800]
+  ok   band 1,800 to 1,899: 117,985, labelled; headline = points  [117985]
+  ok   first year: 30 + 500 + 730 = 1,260, floor 1,700
+  ok   7 years, 3 children: 550 + 650 + 730 = 1,930, 128,930 + 28,370 at 3% for 28 years = 157,300  [157300]
+  ok   olim supplement: 5 years 19,630; 8 years 43,630
+  ok   4 years: no supplement, and no "0 ₪" supplement line
+
+4. a family under 599 points (S3)
+  ok   250 + 0 + 50 + 50 = 350 points: no loan by points  [350]
+  ok   no basic, no service supplement; the headline says so in words, not "0 ₪"  [אין הלוואה לפי הניקוד]
+  ok   the S3 sentence about locality supplements is shown
+  ok   the same family in zone א: only the 100,000 locality supplement  [100000]
+
+5. the other profiles
+  ok   single parent: 2,200 points = 161,665, as S5 prints it  [161665]
+  ok   disabled family 75%: 1,350 + 200 = 1,550, floor 1,600: 96,190 (S10)
+  ok   wheelchair-bound family: floor 2,200 (S10)
+  ok   disabled single age 35: degree א' 450 + 200 = 650 -> 1,500; degree ב' 2,000 (S10)  [1500 / 2000]
+  ok   10 פלוס: 12 years (800) + 3 children (650) = 1,450, 74,350 + 132,000 = 206,350 (S9)  [206350]
+  ok   the same family in a priority zone: 10 פלוס needs 4 children (S9)  [באזור עדיפות לאומית: 4 ילדים לפחות]
+  ok   oleh single, 50, 8 years: 600 (S11 ladder, labelled) + 400 = 1,000; 62,400 + 10,895 = 73,295  [73295]
+  ok   the olim singles' seniority ladder is labelled unverified
+  ok   Negev: the 48,000 to 84,000 range in words only, never added to the total
+  ok   no eligible-loan rate number is printed (the rule stays in words)
+  ok   a bad children value is an error on its field
+
+6. nominal and effective (mnomeff)
+  ok   4.5% nominal (monthly) = 4.5940% effective  [4.5940]
+  ok   4.5% effective = 4.4098% nominal  [4.4098]
+  ok   both ways round trip at 4.5%
+  ok   the example is the all-banks fixed not linked effective rate of the latest month  [2026-09 4.7162]
+  ok   system average 4.7162% effective (9.2026) = 4.6172% nominal  [4.6172]
+  ok   system average: back to effective
+  ok   the example names its month: דוגמה: בספטמבר 2026 הריבית האפקטיבית הממוצעת של כל הבנקים בקבועה לא צמודה הייתה 4.72%, שהן 4.62% נומינלית בשנה.
+  ok   the result sentence at 4.5% nominal  [4.50% נומינלית בשנה = 0.375% בחודש = 4.59% אפקטיבית בשנה]
+  ok   a comma decimal is read; empty or over 30% is an error
+
+7. words and files
+  ok   no long dash in any generated sentence
+  ok   no banned word in any generated sentence
+  ok   no "0 ₪" in any generated sentence (no fake zero)
+  ok   no long dash in mzakaut.js, mnomeff.js or zakaut.json
+  ok   no banned word in the two tool files
+  ok   neither tool sends anything (no fetch, beacon or form of its own)
+
+72 of 72 passed

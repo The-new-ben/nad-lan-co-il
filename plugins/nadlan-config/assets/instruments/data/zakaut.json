@@ -1,0 +1,221 @@
+{
+  "key": "zakaut",
+  "title": "הלוואת זכאות של משרד הבינוי והשיכון: טבלאות הניקוד, הסכומים, התוספות והתנאים",
+  "checked": "2026-11-06",
+  "built": "2026-11-06",
+  "research": "docs/research/2026-11-06-mortgage-delta/eligibility.md",
+  "rule": "Every number below was read on the official page named by its src (gov.il, rendered browser, 6.11.2026). Nothing here comes from Kol Zchut, zakaut.com or any other secondary site. Items that could not be confirmed are listed in 'unverified' and are never shown as a number.",
+  "sources": {
+    "S1": { "title": "מחשבון לחישוב ניקוד וגובה ההלוואה לדיור (משכנתא)", "url": "https://www.gov.il/he/pages/mashkanta-calculator", "published": "2019-11-25", "updated": "2023-08-14", "checked": "2026-11-06" },
+    "S2": { "title": "המדריך לקבלת משכנתא ממשרד הבינוי והשיכון", "url": "https://www.gov.il/he/pages/mortgage_guide", "published": "2017-10-01", "updated": "2024-09-25", "checked": "2026-11-06" },
+    "S3": { "title": "סיוע במשכנתא למשפחות ותיקות ולזוגות צעירים", "url": "https://www.gov.il/he/pages/old_and_new_family_mortgage", "published": "2021-05-19", "updated": "2026-03-30", "checked": "2026-11-06" },
+    "S4": { "title": "סיוע במשכנתא ליחידים ותיקים", "url": "https://www.gov.il/he/pages/mortgage_help_individuals", "published": "2021-09-29", "updated": null, "checked": "2026-11-06" },
+    "S5": { "title": "סיוע במשכנתא למשפחות ותיקות שבראשן הורה עצמאי (משפחות \"חד-הוריות\")", "url": "https://www.gov.il/he/pages/single_parent_old_family_assistance", "published": "2017-08-06", "updated": "2019-04-01", "checked": "2026-11-06" },
+    "S6": { "title": "סיוע במשכנתא לזוגות ידועים בציבור ותיקים", "url": "https://www.gov.il/he/pages/old_couples_mortgage_assistance", "published": "2017-08-06", "updated": "2020-02-06", "checked": "2026-11-06" },
+    "S7": { "title": "תוספת משכנתא בגין שירות חובה או מילואים בצה\"ל או שירות אזרחי-לאומי", "url": "https://www.gov.il/he/pages/mortgage_security_service", "published": "2021-05-19", "updated": "2024-05-06", "checked": "2026-11-06" },
+    "S8": { "title": "תוספת משכנתא באזורי עדיפות לאומית", "url": "https://www.gov.il/he/pages/national_priority_areas_mortgage", "published": "2021-02-10", "updated": "2023-07-09", "checked": "2026-11-06" },
+    "S9": { "title": "תוכנית 10 פלוס", "url": "https://www.gov.il/he/pages/program_ten_plus", "published": "2017-10-01", "updated": "2026-01-20", "checked": "2026-11-06" },
+    "S10": { "title": "תוספת נקודות משכנתא לזכאים נכים", "url": "https://www.gov.il/he/pages/handicapped_mortgage", "published": "2021-02-10", "updated": null, "checked": "2026-11-06" },
+    "S11": { "title": "סיוע במשכנתא למשפחות עולים", "url": "https://www.gov.il/he/pages/immigrants_families_assistance", "published": "2021-02-10", "updated": "2026-03-30", "checked": "2026-11-06" },
+    "S12": { "title": "סיוע במשכנתא לעולים יחידים", "url": "https://www.gov.il/he/pages/individual_immigrant_mortgage_assistance", "published": "2021-02-10", "updated": null, "checked": "2026-11-06" },
+    "S13": { "title": "סיוע במשכנתא ליישובי הנגב", "url": "https://www.gov.il/he/pages/mashkanta_for_negev_settlements", "published": "2020-02-04", "updated": null, "checked": "2026-11-06" },
+    "S14": { "title": "סיוע במשכנתא ומענק ביטחוני לבניית ממ\"ד ביישובי קו העימות", "url": "https://www.gov.il/he/pages/extra_mortgage", "published": "2021-07-29", "updated": "2025-02-23", "checked": "2026-11-06" },
+    "S15": { "title": "רשימת יישובי עדיפות לאומית", "url": "https://www.gov.il/apps/moch/viewlist/list/yeshuvey_adifut_leumit", "published": null, "updated": null, "checked": null, "opened": false, "note": "linked from S8; not opened on 6.11.2026, so no locality is listed here" },
+    "S16": { "title": "המחשבון החיצוני שהעמוד S1 מקשר אליו (כניסה למחשבון)", "url": "https://www.calcurate.co.il/", "published": null, "updated": null, "checked": "2026-11-06", "note": "no date on the page; computes on its server; read for its fields only (the code caps compulsory service months at 36)" },
+    "S17": { "title": "צו הבנקאות (פירעון מוקדם של הלוואה לדיור), התשס\"ב-2002, סעיף 2", "url": "https://www.nevo.co.il/law_html/Law01/047_037.htm", "published": null, "updated": null, "version": "2015-02-23", "checked": "2026-11-06", "note": "נוסח 23.2.2015 (read through Nevo by a sub-agent)" }
+  },
+
+  "vet_family": {
+    "src": "S3",
+    "marriage": { "src": "S3", "by": [30, 250, 300, 350, 400, 450], "step": 50, "what": "שנות נישואין מלאות 0, 1, 2, 3, 4, 5; כל שנה נוספת +50", "registered_couple": "זוג רשום לנישואין: 30 נקודות, ואישור נישואין מהרבנות תוך שלושה חודשים", "common_law": "ידועים בציבור: מיום שהתחילו משק בית משותף, בכפוף לוועדת חריגים (S3); בזוג ותיק: גיל הילד המשותף הבכור ועוד שנה (S6)" },
+    "children": { "src": "S3", "by": [0, 350, 500, 650, 800, 900, 1000], "step": 100, "max_age": 21, "pregnancy_week": 24, "what": "ילד: לא נשוי, עד גיל 21, גר דרך קבע עם המבקשים; היריון משבוע 24 נחשב ילד נוסף", "conflict": "S2 (רשימת המסמכים) מבקש אישור היריון 'מחודש חמישי'; כלל הניקוד הוא שבוע 24 של S3" },
+    "siblings": { "src": "S3", "by": [0, 50, 100, 150, 400, 600, 650], "step": 50, "per_applicant": true, "what": "אחים ואחיות אזרחים ותושבי ישראל; חישוב מספר האחים והאחיות של כל אחד מהמבקשים ייעשה בנפרד" },
+    "no_points_loan_upto": 599,
+    "no_points_loan_text": "לא יהיו זכאים למשכנתא על פי הניקוד. אלא רק לתוספות סיוע הניתנת ביישובים"
+  },
+
+  "bands": {
+    "src": "S3",
+    "service_src": "S7",
+    "cols": ["from", "to", "basic", "service_month"],
+    "what": "basic = משכנתא בסיסית בריבית לזכאים (S3); service_month = תוספת לכל חודש שירות חובה (S7, אותן קבוצות ניקוד)",
+    "rows": [
+      [599, 999, 54240, 542],
+      [1000, 1399, 62400, 624],
+      [1400, 1499, 74350, 743],
+      [1500, 1599, 85250, 852],
+      [1600, 1699, 96190, 962],
+      [1700, 1799, 107090, 1071],
+      [1800, 1899, 117985, 1180],
+      [1900, 1999, 128930, 1290],
+      [2000, 2099, 139825, 1399],
+      [2100, 2199, 150720, 1507],
+      [2200, null, 161665, 1617]
+    ],
+    "family_only": true,
+    "note": "S3 is the only official amount table found. Whether singles (S4, S12) and olim families (S11) use it is unverified."
+  },
+
+  "vet_single": {
+    "src": "S4",
+    "age_min": 21,
+    "age_everywhere": 30,
+    "young_rule": "מגיל 21 באזורי עדיפות לאומית א' וב' למי ששירת בצה\"ל או בשירות לאומי; מגיל 30 בכל מקום",
+    "upto30": 30,
+    "at31": 250,
+    "at32": 300,
+    "step": 50,
+    "bonus_from": 46,
+    "bonus": 200,
+    "max": 1690,
+    "shown": { "32": 300, "45": 950, "46": 1200, "47": 1250, "48": 1300 },
+    "siblings": "vet_family.siblings"
+  },
+
+  "single_parent": { "src": "S5", "points": 2200, "amount": 161665, "text": "נקבע לפי 2,200 נקודות והוא עומד על סך 161,665 ש\"ח" },
+
+  "olim_family": {
+    "src": "S11",
+    "seniority": { "src": "S11", "by": [30, 250, 300, 350, 400, 450], "step": 50, "what": "ותק בארץ מיום קבלת מעמד עולה: 0, 1, 2, 3, 4, 5 שנים; כל שנה נוספת +50" },
+    "children": "vet_family.children",
+    "child_rule": "ילד: לא נשוי ומתחת לגיל 25 בעלייה, וילדים שנולדו אחרי העלייה; היריון משבוע 24",
+    "child_age_at_aliyah": 25,
+    "fixed": 730,
+    "floor_first_year": 1700,
+    "floor_from_second_year": 1800,
+    "supplement": { "src": "S11", "rate_pct": 3, "years": 28, "rows": [[5, 6, 19630], [7, 7, 28370], [8, null, 43630]], "what": "משפחות שעברו יותר מחמש שנים מהעלייה: תוספת בריבית 3% ל־28 שנה" },
+    "veteran_track": "עולים יכולים לבחור במקום זה במסלול של משפחות ותיקות"
+  },
+
+  "olim_single": {
+    "src": "S12",
+    "age_min": 21,
+    "fixed_to45": 600,
+    "fixed_over45": 400,
+    "max": 1690,
+    "over45_after_years": 8,
+    "over45_supplement": 10895,
+    "seniority": "olim_family.seniority",
+    "seniority_verified": false,
+    "seniority_note": "S12 לא מפרסם טבלת ותק ליחידים; כאן לפי טבלת הוותק של משפחות עולים (S11)"
+  },
+
+  "disability": {
+    "src": "S10",
+    "plus": 200,
+    "vet_family_75": 1600,
+    "vet_family_wheelchair_or_both75": 2200,
+    "vet_single_a_min": 1500,
+    "vet_single_a_max": 1890,
+    "vet_single_b": 2000,
+    "vet_single_b_page_example": 2200,
+    "olim_family_a": 1900,
+    "olim_family_b_or_both75": 2200,
+    "olim_single": "כמו יחידים ותיקים",
+    "conflict": "S10 כותב ליחיד בדרגה ב' 2,000 נקודות, והדוגמה באותו דף מגיעה ל־2,200"
+  },
+
+  "service": {
+    "src": "S7",
+    "pct_per_month": 1,
+    "cap_months": 36,
+    "cap_months_src": "S16",
+    "civic_cap_months": 12,
+    "what": "תוספת של 1% מהמשכנתא הבסיסית לכל חודש מלא של שירות חובה בצה\"ל או שירות אזרחי־לאומי; שירות אזרחי־לאומי נספר עד 12 חודשים; חייל בשירות סופר חודשים עד יום הבקשה"
+  },
+
+  "reserve": {
+    "src": "S7",
+    "unit_src": "S2",
+    "years": 6,
+    "days_per_year": 10,
+    "pct": 0.5,
+    "per_days": 15,
+    "min_pct": 2,
+    "max_pct_person": 10,
+    "cap_single_pct": 46,
+    "cap_family_pct": 65,
+    "wording": "S7: שש שנים לפחות עם 10 ימי מילואים לפחות בכל אחת, תוספת של 0.5% מהמשכנתא הבסיסית, לפחות 2% ועד 10% לאדם; עם שירות החובה עד 46% ליחיד ועד 65% לזוג או משפחה. S2 (המסמכים): 0.5% עבור כל 15 ימי מילואים מלאים. S7 לא חוזר על היחידה '15 ימים'; החישוב כאן לפי S2."
+  },
+
+  "priority": {
+    "src": "S8",
+    "list_src": "S15",
+    "a": { "amount": 100000, "rate_pct": 4.5, "years": 20, "first_family": 633, "first_single": 317 },
+    "b": { "amount": 70000, "rate_pct": 4.5, "years": 20, "first_family": 443, "first_single": 222, "only": "רק לדירה חדשה או יד שנייה בבנייה רוויה" },
+    "family_a_basic_points": 1500,
+    "family_a_basic_src": "S3",
+    "single_amount_listed": false
+  },
+
+  "ten_plus": {
+    "src": "S9",
+    "amount": 132000,
+    "terms": "בתנאי הלוואת זכאות",
+    "who": "זוג או משפחה שבראשה הורה עצמאי",
+    "min_children": 2,
+    "min_children_priority": 4,
+    "years_in_israel": 10,
+    "abroad_months_max": 2,
+    "years_as_family": 10,
+    "income_what": "הכנסה ממשכורת של משק הבית, בחודש, עד הסכום של השנה (או קצבת הבטחת הכנסה)",
+    "income": [[2025, 11105], [2024, 10735], [2023, 10216], [2022, 9771], [2021, 9434], [2020, 9208]]
+  },
+
+  "negev": { "src": "S13", "min": 48000, "max": 84000, "per_locality_listed": false, "terms": "בתנאי הלוואת זכאות (חוק הלוואות לדיור, התשנ\"ב-1992)" },
+
+  "frontline": { "src": "S14", "grant_ground": 10400, "grant_building": 9100, "what": "מענק ביטחוני לבניית ממ\"ד: 10,400 ₪ בבנייה עצמית או צמודת קרקע, 9,100 ₪ בבניין של 2 קומות ומעלה; היישובים לפי פיקוד העורף" },
+
+  "terms": {
+    "src": "S2",
+    "rate_rule_quote": "0.5% פחות מהריבית הממוצעת על הלוואות צמודות מדד של הבנקים למשכנתאות, שאותה מפרסם בנק ישראל, אך לא יותר מ-3%",
+    "rate_below_pct": 0.5,
+    "rate_cap_pct": 3,
+    "rate_verified": false,
+    "rate_note": "the Bank of Israel page of the average CPI-linked mortgage rate answered with a CAPTCHA on 6.11.2026; no current number is published here",
+    "max_years": 30,
+    "shorter_years": [5, 6, 7, 8, 9, 10, 15, 20, 25],
+    "cpi_linked": true,
+    "cpi_quote": "סכומי ההחזר החודשי ההתחלתי צמודים למדד המחירים לצרכן הידוע בעת מתן ההלוואה",
+    "paid_to": "הכסף עובר ישירות לחשבון המוכר או הקבלן; בבנייה עצמית בשלבים",
+    "any_bank": true
+  },
+
+  "prepay": { "src": "S17", "fee": false, "what": "הלוואה מכוונת: אין עמלת פירעון מוקדם מכל סוג" },
+
+  "process": {
+    "src": "S2",
+    "certificate_valid_years": 1,
+    "developer_months": 36,
+    "second_hand_months": 12,
+    "self_build_months": 36,
+    "steps": [
+      "נרשמים בסניף של כל בנק למשכנתאות",
+      "המשרד בודק את הפרטים מול מאגרי מידע ממשלתיים",
+      "המשרד מנפיק תעודת זכאות, בתוקף שנה מיום הבקשה; אפשר להאריך בסניף. מבקשים אותה לפני שחותמים על חוזה",
+      "את הסיוע אפשר לקחת בכל בנק למשכנתאות, לא רק בבנק שהנפיק את התעודה",
+      "ערעור: לוועדת האכלוס העליונה או לוועדת האכלוס הציבורית, דרך סניף הבנק, עם מסמכים"
+    ],
+    "after_signing": "דירה חדשה מקבלן: עד 36 חודשים מהחתימה; דירה יד שנייה: עד שנה מהחתימה; בכל מקרה כל עוד לא שולם כל המחיר. בונים לבד: עד 36 חודשים מהיתר הבנייה. הסיוע לא עובר את היתרה שעוד חייבים למוכר"
+  },
+
+  "banks": { "src": "S2", "list": ["בנק אגוד", "בנק דיסקונט", "הבנק הבינלאומי למשכנתאות", "בנק ירושלים", "בנק לאומי למשכנתאות", "בנק מזרחי טפחות", "בנק מרכנתיל דיסקונט", "בנק משכן", "פועלים משכנתאות"] },
+
+  "binding": { "src": "S1", "text": "הזכאות ותנאי ההלוואות המחייבים מופיעים בתעודת הזכאות" },
+
+  "labels": { "amount_unverified": "לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות" },
+
+  "unverified": [
+    "The current eligible-loan interest rate (the Bank of Israel page answered with a CAPTCHA): the rule is shown in words only.",
+    "Whether singles (S4, S12) and olim families (S11) use the S3 amount table: their shekel figure carries labels.amount_unverified.",
+    "Olim singles' seniority ladder (not printed on S12): S11's ladder is used and labelled.",
+    "Negev amount per locality (S13 lists only the 48,000 to 84,000 range): shown in words, never added to a total.",
+    "The 'חסרי דירה' definition from the ministry's own procedure (not read): not shown.",
+    "The total financing cap for eligible buyers (S2 says 75% 'ככלל'; Kol Zchut says 95% to 99%): not shown.",
+    "The registration fee (60 on S2, 70 on Kol Zchut): not shown.",
+    "The reserve supplement unit (S2 'per 15 days' versus S7 '0.5%'): S2's unit is used and the wording difference is shown.",
+    "The S10 example for disability degree ב' singles (2,000 versus 2,200 in the same paragraph): 2,000 is used and the difference is shown.",
+    "Priority-zone amounts for singles (S8 prints only their first payment, 317 and 222): the first payment is shown, no amount is added.",
+    "The priority zone list S15 was not opened: the reader chooses zone א, ב or none."
+  ]
+}

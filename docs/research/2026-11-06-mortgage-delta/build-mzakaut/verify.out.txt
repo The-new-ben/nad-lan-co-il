@@ -1,0 +1,199 @@
+
+390x844
+  ok   390 opens on the family example: 89,856 ₪  [89,856 ₪]
+  ok   390 opening values 3 / 2 / 2 / 4 / 24 / 20
+  ok   390 lines: 350, 500, 100, 400, 1,350, 62,400, 27,456  [שנות נישואין: 3
+350 נקודות
+S3 · עודכן 30.3.2026
+ילדים: 2
+500 נקודות
+S3 · עודכן 30.3.2026
+אחים ואחיות של בן/בת הזוג הראשון/ה: 2
+100 נקודות
+S3 · עודכן 30.3.2026
+א]
+  ok   390 source chips carry the page date
+  ok   390 the rate rule in words; the only percentages are 0.5% and 3% of the rule  [['0.5%', '3%']]
+  ok   390 binding line (S1)
+  ok   390 official links S1 to S14 and the official calculator
+  ok   390 running text in IBM Plex Sans Hebrew  [['"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"']]
+  ok   390 numbers in IBM Plex Mono  [['"IBM Plex Mono"', '"IBM Plex Mono"', '"IBM Plex Mono"']]
+  ok   390 layout: one column on the phone  [1]
+  ok   390 family no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 family every visible control at least 44 px high  [[]]
+  ok   390 family every input and select labelled  [[]]
+  ok   390 family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   390 profile family: pressed, headline = NLZK (89,856 ₪)  [89,856 ₪]
+  ok   390 family no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 family every visible control at least 44 px high  [[]]
+  ok   390 family every input and select labelled  [[]]
+  ok   390 family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   390 profile olim_family: pressed, headline = NLZK (1,800 נקודות)  [1,800 נקודות]
+  ok   390 profile olim_family: the shekel figure carries the unverified label  [קבוצת ניקוד 1,800 עד 1,899 · סכום משוער 169,905 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   390 olim_family no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 olim_family every visible control at least 44 px high  [[]]
+  ok   390 olim_family every input and select labelled  [[]]
+  ok   390 olim_family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   390 profile dis_family: pressed, headline = NLZK (122,738 ₪)  [122,738 ₪]
+  ok   390 dis_family no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 dis_family every visible control at least 44 px high  [[]]
+  ok   390 dis_family every input and select labelled  [[]]
+  ok   390 dis_family every visible group named  [['מי מבקש', 'גם משפחת עולים?', 'הנכות', 'סוג השירות']]
+  ok   390 profile single_parent: pressed, headline = NLZK (200,473 ₪)  [200,473 ₪]
+  ok   390 single_parent no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 single_parent every visible control at least 44 px high  [[]]
+  ok   390 single_parent every input and select labelled  [[]]
+  ok   390 single_parent every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   390 profile wheelchair: pressed, headline = NLZK (232,813 ₪)  [232,813 ₪]
+  ok   390 wheelchair no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 wheelchair every visible control at least 44 px high  [[]]
+  ok   390 wheelchair every input and select labelled  [[]]
+  ok   390 wheelchair every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   390 profile dis_single: pressed, headline = NLZK (1,500 נקודות)  [1,500 נקודות]
+  ok   390 profile dis_single: the shekel figure carries the unverified label  [קבוצת ניקוד 1,500 עד 1,599 · סכום משוער 105,698 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   390 dis_single no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 dis_single every visible control at least 44 px high  [[]]
+  ok   390 dis_single every input and select labelled  [[]]
+  ok   390 dis_single every visible group named  [['מי מבקש', 'הנכות', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?']]
+  ok   390 profile single: pressed, headline = NLZK (550 נקודות)  [550 נקודות]
+  ok   390 profile single: 550 points is below the S3 table, so no shekel figure and the reason is said  [אין שורה בטבלת הסכומים לניקוד הזה]
+  ok   390 single no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 single every visible control at least 44 px high  [[]]
+  ok   390 single every input and select labelled  [[]]
+  ok   390 single every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   390 profile oleh: pressed, headline = NLZK (900 נקודות)  [900 נקודות]
+  ok   390 profile oleh: the shekel figure carries the unverified label  [קבוצת ניקוד 599 עד 999 · סכום משוער 67,248 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   390 oleh no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 oleh every visible control at least 44 px high  [[]]
+  ok   390 oleh every input and select labelled  [[]]
+  ok   390 oleh every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   390 disabled family + olim: seniority field shown, marriage field hidden
+  ok   390 disabled olim family headline = NLZK  [['2,000 נקודות', '2,000 נקודות']]
+  ok   390 zone א: 222,738 ₪ (85,250 + 37,488 + 100,000)  [222,738 ₪]
+  ok   390 reserve yes: the days field appears
+  ok   390 reserve 90 days: 91,728 ₪ and the S2 / S7 wording  [91,728 ₪]
+  ok   390 10 פלוס all yes with 2 children: included  [221,856 ₪]
+  ok   390 10 פלוס in a priority zone with 2 children: not included, says 4 children
+  ok   390 Negev: the range in words, total unchanged  [89,856 ₪]
+  ok   390 rate 2.5% from the certificate: first payment 355 ₪ for 30 years  [ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־30 שנה: 355 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד).]
+  ok   390 term select 20 years changes the payment  [ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־20 שנה: 476 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד).]
+  ok   390 rate emptied: no payment line
+  ok   390 marriage date 10.1.2016 fills 10 full years  [10]
+  ok   390 under 599 points: "אין הלוואה לפי הניקוד", never "0 ₪"  [אין הלוואה לפי הניקוד]
+  ok   390 a bad value: the message on its field  [הקלידו את מספר הילדים, מ־0 עד 20.]
+  ok   390 4.5% nominal = 4.59% effective  [4.59]
+  ok   390 4.5% effective = 4.41% nominal  [4.41]
+  ok   390 chip "קבועה לא צמודה": 4.7162% effective = 4.62% nominal, pressed  [['4.7162', '4.62']]
+  ok   390 the example names its month
+  ok   390 45%: an error on the field
+  ok   390 converter no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 converter every visible control at least 44 px high  [[]]
+  ok   390 converter every input and select labelled  [[]]
+  ok   390 converter every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   390 no console error or warning, no page error  [[]]
+
+1280x900
+  ok   1280 opens on the family example: 89,856 ₪  [89,856 ₪]
+  ok   1280 opening values 3 / 2 / 2 / 4 / 24 / 20
+  ok   1280 lines: 350, 500, 100, 400, 1,350, 62,400, 27,456  [שנות נישואין: 3
+350 נקודות
+S3 · עודכן 30.3.2026
+ילדים: 2
+500 נקודות
+S3 · עודכן 30.3.2026
+אחים ואחיות של בן/בת הזוג הראשון/ה: 2
+100 נקודות
+S3 · עודכן 30.3.2026
+א]
+  ok   1280 source chips carry the page date
+  ok   1280 the rate rule in words; the only percentages are 0.5% and 3% of the rule  [['0.5%', '3%']]
+  ok   1280 binding line (S1)
+  ok   1280 official links S1 to S14 and the official calculator
+  ok   1280 running text in IBM Plex Sans Hebrew  [['"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"']]
+  ok   1280 numbers in IBM Plex Mono  [['"IBM Plex Mono"', '"IBM Plex Mono"', '"IBM Plex Mono"']]
+  ok   1280 layout: form and result side by side  [2]
+  ok   1280 family no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 family every visible control at least 44 px high  [[]]
+  ok   1280 family every input and select labelled  [[]]
+  ok   1280 family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   1280 profile family: pressed, headline = NLZK (89,856 ₪)  [89,856 ₪]
+  ok   1280 family no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 family every visible control at least 44 px high  [[]]
+  ok   1280 family every input and select labelled  [[]]
+  ok   1280 family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   1280 profile olim_family: pressed, headline = NLZK (1,800 נקודות)  [1,800 נקודות]
+  ok   1280 profile olim_family: the shekel figure carries the unverified label  [קבוצת ניקוד 1,800 עד 1,899 · סכום משוער 169,905 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   1280 olim_family no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 olim_family every visible control at least 44 px high  [[]]
+  ok   1280 olim_family every input and select labelled  [[]]
+  ok   1280 olim_family every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   1280 profile dis_family: pressed, headline = NLZK (122,738 ₪)  [122,738 ₪]
+  ok   1280 dis_family no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 dis_family every visible control at least 44 px high  [[]]
+  ok   1280 dis_family every input and select labelled  [[]]
+  ok   1280 dis_family every visible group named  [['מי מבקש', 'גם משפחת עולים?', 'הנכות', 'סוג השירות']]
+  ok   1280 profile single_parent: pressed, headline = NLZK (200,473 ₪)  [200,473 ₪]
+  ok   1280 single_parent no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 single_parent every visible control at least 44 px high  [[]]
+  ok   1280 single_parent every input and select labelled  [[]]
+  ok   1280 single_parent every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   1280 profile wheelchair: pressed, headline = NLZK (232,813 ₪)  [232,813 ₪]
+  ok   1280 wheelchair no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 wheelchair every visible control at least 44 px high  [[]]
+  ok   1280 wheelchair every input and select labelled  [[]]
+  ok   1280 wheelchair every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   1280 profile dis_single: pressed, headline = NLZK (1,500 נקודות)  [1,500 נקודות]
+  ok   1280 profile dis_single: the shekel figure carries the unverified label  [קבוצת ניקוד 1,500 עד 1,599 · סכום משוער 105,698 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   1280 dis_single no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 dis_single every visible control at least 44 px high  [[]]
+  ok   1280 dis_single every input and select labelled  [[]]
+  ok   1280 dis_single every visible group named  [['מי מבקש', 'הנכות', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?']]
+  ok   1280 profile single: pressed, headline = NLZK (550 נקודות)  [550 נקודות]
+  ok   1280 profile single: 550 points is below the S3 table, so no shekel figure and the reason is said  [אין שורה בטבלת הסכומים לניקוד הזה]
+  ok   1280 single no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 single every visible control at least 44 px high  [[]]
+  ok   1280 single every input and select labelled  [[]]
+  ok   1280 single every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   1280 profile oleh: pressed, headline = NLZK (900 נקודות)  [900 נקודות]
+  ok   1280 profile oleh: the shekel figure carries the unverified label  [קבוצת ניקוד 599 עד 999 · סכום משוער 67,248 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות]
+  ok   1280 oleh no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 oleh every visible control at least 44 px high  [[]]
+  ok   1280 oleh every input and select labelled  [[]]
+  ok   1280 oleh every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'אזור עדיפות לאומית']]
+  ok   1280 disabled family + olim: seniority field shown, marriage field hidden
+  ok   1280 disabled olim family headline = NLZK  [['2,000 נקודות', '2,000 נקודות']]
+  ok   1280 zone א: 222,738 ₪ (85,250 + 37,488 + 100,000)  [222,738 ₪]
+  ok   1280 reserve yes: the days field appears
+  ok   1280 reserve 90 days: 91,728 ₪ and the S2 / S7 wording  [91,728 ₪]
+  ok   1280 10 פלוס all yes with 2 children: included  [221,856 ₪]
+  ok   1280 10 פלוס in a priority zone with 2 children: not included, says 4 children
+  ok   1280 Negev: the range in words, total unchanged  [89,856 ₪]
+  ok   1280 rate 2.5% from the certificate: first payment 355 ₪ for 30 years  [ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־30 שנה: 355 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד).]
+  ok   1280 term select 20 years changes the payment  [ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־20 שנה: 476 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד).]
+  ok   1280 rate emptied: no payment line
+  ok   1280 marriage date 10.1.2016 fills 10 full years  [10]
+  ok   1280 under 599 points: "אין הלוואה לפי הניקוד", never "0 ₪"  [אין הלוואה לפי הניקוד]
+  ok   1280 a bad value: the message on its field  [הקלידו את מספר הילדים, מ־0 עד 20.]
+  ok   1280 4.5% nominal = 4.59% effective  [4.59]
+  ok   1280 4.5% effective = 4.41% nominal  [4.41]
+  ok   1280 chip "קבועה לא צמודה": 4.7162% effective = 4.62% nominal, pressed  [['4.7162', '4.62']]
+  ok   1280 the example names its month
+  ok   1280 45%: an error on the field
+  ok   1280 converter no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 converter every visible control at least 44 px high  [[]]
+  ok   1280 converter every input and select labelled  [[]]
+  ok   1280 converter every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   1280 no console error or warning, no page error  [[]]
+
+390 + live theme
+  ok   theme 390 opens on 89,856 ₪  [89,856 ₪]
+  ok   theme 390 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 every visible control at least 44 px high  [[]]
+  ok   theme 390 every input and select labelled  [[]]
+  ok   theme 390 every visible group named  [['מי מבקש', 'סוג השירות', 'מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?', 'סוג השירות']]
+  ok   theme 390: heading face and button radius hold against the theme  [['"IBM Plex Sans Hebrew"', '2px']]
+  ok   theme 390: no page error and no local console error  [[]]
+
+local server stopped
+
+171 of 171 checks passed

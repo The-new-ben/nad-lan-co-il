@@ -1,0 +1,178 @@
+{
+ "m390": {
+  "start": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "chip-mcheck": true,
+  "after-mcheck": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 3490,
+    "vis": true,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "chip-mzakaut": true,
+  "after-mzakaut": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 5069,
+    "vis": true,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "converter_folded": true,
+  "mnomeff_text": "מחשבון · המרת ריבית\n\nריבית נומינלית וריבית אפקטיבית\nריבית נומינלית שנתית, בתשלום חודשי\n%\nריבית אפקטיבית שנתית\n%\n\n4.95% נומינלית בשנה = 0.413% בחודש = 5.06% אפקטיבית בשנה\n\nהנוסחה, כש־n היא הריבית הנומינלית ו־e האפקטיבית:\ne = (1 + n/12)^12 - 1\nn = 12 × ((1 + e)^(1/12) - 1)\n\nהממוצע של כל הבנקים, ספטמבר 2026, ריבית אפקטיבית:\nקבועה לא צמודה4.72%\nפריים4.15%\nמשתנה לא צמודה4.43%\nקבועה צמודה3.26%\nמשתנה צמו",
+  "errors": []
+ },
+ "d1280": {
+  "start": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 564,
+    "vis": true,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "chip-mcheck": true,
+  "after-mcheck": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 2602,
+    "vis": true,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 564,
+    "vis": true,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "chip-mzakaut": true,
+  "after-mzakaut": {
+   "sw": "ומה עוד בודקים: תשעה כלים למשכנתא",
+   "mcheck": {
+    "h": 0,
+    "vis": false,
+    "kids": 1
+   },
+   "mzakaut": {
+    "h": 2344,
+    "vis": true,
+    "kids": 1
+   },
+   "mnomeff": {
+    "h": 564,
+    "vis": true,
+    "kids": 1
+   },
+   "before": true,
+   "elig": true,
+   "method": true,
+   "faq": 41,
+   "byline": "נכתב על ידי צוות נדל״ן · נבדק על ידי צוות נדל״ן · עודכן לאחרונה ב־6.11.2026 · נתוני בנק ישראל עד ספטמבר 2026",
+   "bylineVisible": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0
+  },
+  "converter_folded": false,
+  "mnomeff_text": "מחשבון · המרת ריבית\n\nריבית נומינלית וריבית אפקטיבית\nריבית נומינלית שנתית, בתשלום חודשי\n%\nריבית אפקטיבית שנתית\n%\n\n4.95% נומינלית בשנה = 0.413% בחודש = 5.06% אפקטיבית בשנה\n\nהנוסחה, כש־n היא הריבית הנומינלית ו־e האפקטיבית:\ne = (1 + n/12)^12 - 1\nn = 12 × ((1 + e)^(1/12) - 1)\n\nהממוצע של כל הבנקים, ספטמבר 2026, ריבית אפקטיבית:\nקבועה לא צמודה4.72%\nפריים4.15%\nמשתנה לא צמודה4.43%\nקבועה צמודה3.26%\nמשתנה צמו",
+  "errors": []
+ }
+}

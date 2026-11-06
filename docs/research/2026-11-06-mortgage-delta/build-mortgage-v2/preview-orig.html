@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="he-IL" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>מחשבון משכנתא לפי מסלולים</title>
+<!-- Round M (HAD-675, 6.11.2026): local preview of Mortgage 2.0 v1 (orig-mortgage.js, the live file), for the side by side identity check. Serve the repo root (python -m http.server 47963 --bind 127.0.0.1)
+     and open /docs/research/2026-11-06-mortgage-delta/build-mortgage-v2/preview.html. The markup copies the [nadlan_tool id="mortgage"]
+     output of inc/instruments.php on /mortgage-calculator/ (section.nli dir rtl lang he > div.nli-host data-nli data-nli-data), and the
+     scripts load deferred in the live order (core.js, mortgage.js, then mrates-common.js as on the page). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&amp;family=IBM+Plex+Sans+Hebrew:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<style>
+  :root{color-scheme:light}
+  body{margin:0;background:#F6F8F9;color:#12202A;font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}
+  main{max-width:1200px;margin:0 auto;padding:16px}
+</style>
+</head>
+<body>
+<main>
+<section class="nli" dir="rtl" lang="he" aria-label="מחשבון משכנתא לפי מסלולים"><div class="nli-host" data-nli="mortgage" data-nli-data="/plugins/nadlan-config/assets/instruments/data/boi-mortgage.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · משכנתא</p><h2 class="nli__title">מחשבון משכנתא לפי מסלולים</h2></div></div></section>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/docs/research/2026-11-06-mortgage-delta/build-mortgage-v2/orig-mortgage.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mrates-common.js"></script>
+</body>
+</html>

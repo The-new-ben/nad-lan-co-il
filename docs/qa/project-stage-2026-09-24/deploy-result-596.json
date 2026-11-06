@@ -1,0 +1,23 @@
+{
+  "released": "1.72.596",
+  "from": "1.72.595",
+  "live_before": {
+    "assets/instruments/tools/mortgage.js": "c99f393d90c41582c453cad6a9900acd",
+    "nadlan-config.php": "f11f6c68f6852c3c795c9867c1ef831c",
+    "inc/instruments.php": "adca316822d0c22b7ee739bd8f6bfc26"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 15:01:21",
+  "files": {
+    "assets/instruments/tools/mcheck.js": "04731baa27f09cf54e2d1cbb66c51c26",
+    "assets/instruments/tools/mzakaut.js": "a4f8343405442290ad2ed2e270cdc26e",
+    "assets/instruments/tools/mnomeff.js": "e6139a93ba92816308d433db035cf418",
+    "assets/instruments/data/zakaut.json": "073ba990f9ffba6dafa19967c0ef71b2",
+    "assets/instruments/tools/mortgage.js": "8cd8308ea03537f0edeb7af208c0adf9",
+    "nadlan-config.php": "39780eb07bb07b52a1f6a2781f73e5a2",
+    "inc/instruments.php": "8e1c004665203e2acca57206cd6d9920"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.596, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

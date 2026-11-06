@@ -1,0 +1,51 @@
+<?php
+/* HAD-675 · mcheck "בדיקת משכנתא לפני חתימה": for the release engineer. Nothing here is applied: plugins/nadlan-config/inc/instruments.php
+   was NOT edited. Two pastes, both in instruments.php:
+
+   File to ship: plugins/nadlan-config/assets/instruments/tools/mcheck.js (already in the repo tree, new, not deployed).
+   Data: no new file. data/boi-mortgage.json (the live v2 keys by_bank, rules, fees, prepay, term, forecast, baskets, policy, cpi,
+   insurance), data/boi-rate.json and data/cbs-120010.json (both optional: they feed only the 2022 replay of check 13).
+   Scripts: 'deps' loads tools/mortgage.js (NLMG), tools/mrates-common.js (NLMR and NLMR.ui), tools/moffers.js (NLMO: bankRef, place,
+   trackCmp, clean, normalize, compare) and tools/mquick.js (NLMQ.fullCost) before mcheck.js. moffers.js and mquick.js register their
+   own tools, which mount only where their shortcode is, so on /mortgage-calculator/ (where all four already load) nothing changes.
+   mcheck.js waits up to 2 seconds for NLMO / NLMQ and then runs without them (checks 9 to 11 and 22 then say "לא ניתן לבדוק"). */
+
+/* ---------------------------------------------------------------------------------------------- (1) the registry entry
+   Paste inside the array of nadlan_nli_tools(), after 'mexit'. */
+
+			/* 1.72.xxx (HAD-675, presign.md 6.11.2026): mcheck, "בדיקת משכנתא לפני חתימה". The approval in principle typed in the uniform
+			   format of directive 451 (addendum 6): the header, the proposed basket and the three uniform baskets (quick: the totals row,
+			   rows 7 to 11; full: the tracks, rows 1 to 6 and 12), the reader's own context; 28 checks with the rule, the source and its
+			   date, a summary of plain sentences, the questions to ask the bank, and a second mode that diffs the final documents against
+			   the approval. Nothing is sent to a server; the case lives in #mcheck= only. File tools/mcheck.js (same name as the id). */
+			'mcheck' => array(
+				'name' => 'בדיקת משכנתא לפני חתימה', 'cat' => 'FinanceApplication', 'kicker' => 'לפני חתימה · אישור עקרוני',
+				'desc' => 'בדיקת משכנתא לפני חתימה: מעתיקים את האישור העקרוני בפורמט האחיד של הוראה 451 של בנק ישראל, הסל המוצע ושלושת הסלים האחידים, ומקבלים 28 בדיקות עם הכלל והמקור: תוקף האישור, הסלים והשורות, מגבלות הוראה 329 (מימון, החזר מההכנסה, ריבית משתנה ותקופה), הריבית הכוללת החזויה מול הממוצע של אותו בנק בקו המשווה, הריבית בכל מסלול מול הממוצע, חיובים ועמלות, ערבים, ביטוח, שמאות ועמלת פירעון מוקדם לפי צו הבנקאות; סיכום במספרים, מה לשאול את הבנק, ובדיקה של המסמכים הסופיים מול האישור.',
+				'deps' => array( 'mortgage', 'mrates-common', 'moffers', 'mquick' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-pre-approval/' => 'אישור עקרוני למשכנתא', '/mortgage-home-insurance/' => 'ביטוח משכנתא', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועץ משכנתאות' ),
+			),
+
+/* ---------------------------------------------------------------------------------------------- (2) the server summary
+   Paste inside nadlan_nli_summary( $id, $lang ), next to the 'mexit' branch. One paragraph for readers without scripts, search
+   engines and AI answers. Stable facts only: what the tool checks and the 24-day hold of directive 451 (a rule, not data); every
+   number of directive 329 and the all-banks overall rate come from boi-mortgage.json at render time (rules, by_bank via
+   nadlan_nli_mrates()). No example, no figure that would age. */
+
+		if ( 'mcheck' === $id ) {  // HAD-675: the pre-signing check; the 329 limits from rules, the all-banks overall rate from by_bank
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['rules']['ltv'] ) || empty( $x['sys'] ) || empty( $d['by_bank']['latest']['month'] ) ) { return ''; }
+			$r  = $d['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$m  = (string) $d['by_bank']['latest']['month']; $mm = (int) substr( $m, 5, 2 ) . '.' . substr( $m, 0, 4 );
+			return '<p>בדיקת משכנתא לפני חתימה קוראת את האישור העקרוני בפורמט האחיד של הוראה 451 של בנק ישראל: הסל שהבנק מציע ושלושת הסלים האחידים, ולכל סל הריבית הכוללת החזויה, ההחזר הראשון, ההחזר הגבוה הצפוי והחודש שלו, סך התשלומים וסכומי החיובים והעמלות. '
+				. 'לפי הוראה 451 הבנק שומר את תנאי האישור 24 ימים לפחות, ולא גובה דמי שריון או תשלום על אופציה לקבלת הלוואה. '
+				. 'הבדיקה משווה את המספרים למגבלות של הוראה 329: מימון עד ' . esc_html( $pc( $r['ltv']['single'] ) ) . ' בדירה יחידה, ' . esc_html( $pc( $r['ltv']['replace'] ) ) . ' בדירה חליפית ו־' . esc_html( $pc( $r['ltv']['invest'] ) ) . ' בדירה להשקעה; החזר חודשי עד '
+				. esc_html( $pc( $r['pti_max'] ) ) . ' מההכנסה הפנויה (ומעל ' . esc_html( $pc( $r['pti_risk'] ) ) . ' הבנק מחזיק יותר הון); עד ' . esc_html( number_format( 100 * (float) $r['variable_max'], 2 ) ) . '% בריבית משתנה; ותקופה עד ' . (int) $r['term_max'] . ' שנה. '
+				. 'היא משווה גם את הריבית הכוללת החזויה לממוצע של אותו בנק בקו המשווה של בנק ישראל (בכל הבנקים ' . esc_html( number_format( (float) $x['sys']['irr'], 2 ) ) . '% במשכנתאות החדשות של ' . esc_html( $mm ) . '), '
+				. 'מחשבת עמלת פירעון מוקדם לפי צו הבנקאות, בודקת ערבים, ביטוח ושמאות, ומסכמת מה לשאול את הבנק. במצב השני היא משווה את המסמכים הסופיים לאישור. מה שמקלידים נשאר בדפדפן.</p>';
+		}
+
+/* (3) on the page: [nadlan_tool id="mcheck"]. presign.md section 1 asks for it inside the tools switcher of /mortgage-calculator/
+   (a chip "בדיקה לפני חתימה" next to "שלוש הצעות, טבלה אחת"), not on a new URL; the switcher markup is page content, so the chip and
+   its place are Ben's call and are not part of this build. */

@@ -1,6 +1,6 @@
 {
  "about": "Counted benchmark for https://nad-lan.co.il/mortgage-calculator/ (HAD-675). One cold phone load (390x844, is_mobile, has_touch, Chrome 156 headless, no throttling, from Israel) per page; raw HTML = the document response of that load. Definitions: proof.md / measure.py PARAMS.",
- "generated_utc": "2026-11-06T01:45:03Z",
+ "generated_utc": "2026-11-06T13:06:32Z",
  "params": [
   {
    "group": "1 Tool",
@@ -879,7 +879,7 @@
    "robots_named": [],
    "llms_status": 200,
    "llms_txt": true,
-   "llms_chars": 24690
+   "llms_chars": 25972
   },
   "www.bankhapoalim.co.il": {
    "root": "https://www.bankhapoalim.co.il",
@@ -1394,7 +1394,7 @@
    ],
    "llms_status": 200,
    "llms_txt": true,
-   "llms_chars": 28780
+   "llms_chars": 28741
   },
   "www.discountbank.co.il": {
    "root": "https://www.discountbank.co.il",
@@ -2277,22 +2277,22 @@
    "region": "OURS",
    "name": "nad-lan (ours)",
    "url": "https://nad-lan.co.il/mortgage-calculator/",
-   "measured_utc": "2026-11-06T01:44:09Z",
+   "measured_utc": "2026-11-06T13:05:23Z",
    "goto_error": null,
    "final_url": "https://nad-lan.co.il/mortgage-calculator/",
    "status": 200,
-   "html_bytes": 412782,
+   "html_bytes": 443639,
    "speed": {
-    "ttfb_ms": 776,
-    "dcl_ms": 1975,
-    "load_ms": 2619,
-    "lcp_ms": 1816,
+    "ttfb_ms": 857,
+    "dcl_ms": 1961.7999999970198,
+    "load_ms": 2752.5999999940395,
+    "lcp_ms": 1724,
     "cls": 0,
-    "transfer_bytes": 1741800,
-    "requests": 114,
+    "transfer_bytes": 1859866,
+    "requests": 123,
     "failed_requests": 1,
-    "html_transfer_bytes": 127920,
-    "wall_s": 5.7
+    "html_transfer_bytes": 137570,
+    "wall_s": 5.8
    },
    "first_screen": {
     "first_input": {
@@ -2321,28 +2321,28 @@
       "type": "text"
      },
      {
-      "y": 2513,
-      "label": "הכנסה נטו של משק הבית nlmb-income-em22q",
+      "y": 2565,
+      "label": "הכנסה נטו של משק הבית nlmb-income-i5yye",
       "type": "text"
      },
      {
-      "y": 2611,
-      "label": "הון עצמי nlmb-equity-k68j8",
+      "y": 2663,
+      "label": "הון עצמי nlmb-equity-lhdwt",
       "type": "text"
      },
      {
       "y": 2810,
-      "label": "סכום המשכנתא nlm-qm06md",
+      "label": "סכום המשכנתא nlm-xqor4s",
       "type": "text"
      },
      {
-      "y": 2873,
-      "label": "הלוואות קיימות אין nlmb-loans-cekzu",
+      "y": 2925,
+      "label": "הלוואות קיימות אין nlmb-loans-hd83u",
       "type": "text"
      },
      {
-      "y": 2873,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-xmhn9",
+      "y": 2925,
+      "label": "חלק מההכנסה להחזר nlmb-ratio-55p38",
       "type": "text"
      }
     ]
@@ -2353,13 +2353,13 @@
     "first_input_label": "סכום המשכנתא nlmq-a",
     "first_money_y": 302,
     "first_money_text": "1,000,000 ₪",
-    "page_height_initial": 26971,
-    "page_height": 27022,
+    "page_height_initial": 28321,
+    "page_height": 28537,
     "h_overflow": false,
     "scroll_width": 390,
-    "tap_n": 246,
-    "tap_44": 203,
-    "tap_24": 242,
+    "tap_n": 262,
+    "tap_44": 218,
+    "tap_24": 257,
     "overlays_on_load": [
      {
       "kind": "other",
@@ -2396,28 +2396,28 @@
       "type": "text"
      },
      {
-      "y": 2513,
-      "label": "הכנסה נטו של משק הבית nlmb-income-em22q",
+      "y": 2565,
+      "label": "הכנסה נטו של משק הבית nlmb-income-i5yye",
       "type": "text"
      },
      {
-      "y": 2611,
-      "label": "הון עצמי nlmb-equity-k68j8",
+      "y": 2663,
+      "label": "הון עצמי nlmb-equity-lhdwt",
       "type": "text"
      },
      {
       "y": 2810,
-      "label": "סכום המשכנתא nlm-qm06md",
+      "label": "סכום המשכנתא nlm-xqor4s",
       "type": "text"
      },
      {
-      "y": 2873,
-      "label": "הלוואות קיימות אין nlmb-loans-cekzu",
+      "y": 2925,
+      "label": "הלוואות קיימות אין nlmb-loans-hd83u",
       "type": "text"
      },
      {
-      "y": 2873,
-      "label": "חלק מההכנסה להחזר nlmb-ratio-xmhn9",
+      "y": 2925,
+      "label": "חלק מההכנסה להחזר nlmb-ratio-55p38",
       "type": "text"
      }
     ],
@@ -2426,19 +2426,19 @@
    "a11y": {
     "img_n": 4,
     "img_alt": 4,
-    "ctrl_n": 57,
-    "ctrl_labelled": 57,
+    "ctrl_n": 58,
+    "ctrl_labelled": 58,
     "html_lang": "he-IL"
    },
    "visuals_rendered": 7,
    "charts_rendered": 5,
    "title": "מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין",
    "rendered": {
-    "words": 3781,
-    "figures": 262,
-    "tables": 23,
-    "cells": 1066,
-    "inputs": 57,
+    "words": 4020,
+    "figures": 268,
+    "tables": 27,
+    "cells": 1144,
+    "inputs": 58,
     "frames": [
      "https://nad-lan.co.il/mortgage-calculator/",
      "https://m.stripe.network/inner.html#url=https%3A%2F%2Fnad-lan.co.il%2Fmortgage-calculator%2F&title=%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%202026%3A%20%D7%97%D7%99%D7%A9%D7%95%D7%91%20%D7%94%D7%97%D7%96%D7%A8%20%D7%97%D7%95%D7%93%D7%A9%D7%99%2C%20%D7%AA%D7%9E%D7%94%D7%99%D7%9C%20%D7%95%D7%9C%D7%95%D7%97%20%D7%A1%D7%99%D7%9C%D7%95%D7%A7%D7%99%D7%9F&referrer=&muid=NA&sid=NA&version=6&preview=false&__shared_params__[version]=v3"
@@ -2447,16 +2447,16 @@
    "raw": {
     "html_lang": "he-IL",
     "canonical": "https://nad-lan.co.il/mortgage-calculator/",
-    "words_raw": 9696,
-    "figures_raw": 717,
-    "tables_raw": 16,
-    "cells_raw": 650,
-    "headings_raw": 99,
+    "words_raw": 11440,
+    "figures_raw": 780,
+    "tables_raw": 19,
+    "cells_raw": 714,
+    "headings_raw": 108,
     "headings_sample": [
      "מחשבון משכנתא: חישוב החזר חודשי ועלות כוללת לפי מסלולים",
      "מחשבון משכנתא מהיר",
      "מחשבון משכנתא לפי מסלולים",
-     "ומה עוד בודקים: שבעה כלים למשכנתא",
+     "ומה עוד בודקים: תשעה כלים למשכנתא",
      "כמה דירה זה קונה, ואיפה",
      "השוואת הצעות משכנתא: שלוש הצעות, טבלה אחת",
      "החלטת הריבית והמשכנתא שלכם",
@@ -2464,6 +2464,8 @@
      "כמה תעלה היציאה: עמלת פירעון מוקדם",
      "מוכנים לאישור עקרוני?",
      "מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא",
+     "בדיקת משכנתא לפני חתימה",
+     "מחשבון זכאות משכנתא",
      "מחשבון משכנתא: תמהיל 3 מסלולים",
      "קל\"צ קבועה לא צמודה",
      "פריים צמודה לריבית פריים",
@@ -2475,15 +2477,18 @@
      "כמה עולה משכנתא על דירת 4 חדרים בכל עיר",
      "המספרים של היום: ריבית, פריים ומדד",
      "ההצעה שלכם מול הממוצע של בנק ישראל",
+     "בדיקת משכנתא לפני חתימה: מה לבדוק באישור העקרוני",
      "המשכנתא שלכם מול כל המשכנתאות של החודש",
      "ההחזר מההכנסה",
      "שיעור המימון",
      "הממוצע החודשי של בנק ישראל לפי מסלול ותקופה",
      "ריבית ממוצעת לפי התקופה לפירעון",
      "הריבית לאורך השנים",
+     "ריבית נומינלית וריבית אפקטיבית",
      "כמה ההחזר על משכנתא של מיליון, מיליון וחצי ושני מיליון",
      "שלושת הסלים האחידים של בנק ישראל",
      "מה בנק ישראל מתיר: מימון, החזר מהכנסה, תמהיל ותקופה",
+     "מחשבון זכאות משכנתא: הניקוד וגובה ההלוואה ממשרד הבינוי והשיכון",
      "ארבע טעויות שחוזרות בתשובות על משכנתאות, ומה הכללים אומרים",
      "שליש בפריים? אין מגבלה כזאת היום",
      "ההחזר עד 40% מההכנסה? המגבלה היא 50%",
@@ -2506,6 +2511,7 @@
      "טעויות נפוצות בשימוש במחשבון משכנתא",
      "מתי כדאי לפנות ליועץ משכנתאות?",
      "מקורות מידע שכדאי לבדוק",
+     "איך המחשבון מחשב: הנחות, מה לא כלול ומקורות",
      "שאלות נפוצות על מחשבון משכנתא",
      "האם ההחזר במחשבון הוא ההחזר הסופי שאקבל מהבנק?",
      "מה עדיף, תקופה קצרה או ארוכה?",
@@ -2526,17 +2532,11 @@
      "מה ההבדל בין מסלולי משכנתא?",
      "מה ההבדל בין קל״צ לפריים?",
      "מה זה תמהיל משכנתא ואיך בודקים אותו?",
-     "מה הם שלושת הסלים האחידים של בנק ישראל?",
-     "כמה מהמשכנתא מותר לקחת בריבית משתנה?",
-     "מה ריבית הפריים היום ומתי ההחלטה הבאה?",
-     "מה הריבית הממוצעת על משכנתא החודש?",
-     "איך אדע אם הריבית שהבנק הציע לי טובה?",
-     "מה זה לוח שפיצר ומה ההבדל מקרן שווה?",
-     "מה זה משכנתא בלון ובוליט ומתי משתמשים בהן?"
+     "מה הם שלושת הסלים האחידים של בנק ישראל?"
     ],
-    "question_headings": 54,
+    "question_headings": 58,
     "img_raw": 4,
-    "jsonld_blocks": 5,
+    "jsonld_blocks": 6,
     "jsonld_unparsed": 0,
     "jsonld_types": [
      "Answer",
@@ -2560,16 +2560,30 @@
      "WebPage",
      "WebSite"
     ],
-    "faq_schema_q": 38,
+    "faq_schema_q": 41,
     "date_modified": "2026-11-06",
-    "persons": [],
+    "persons": [
+     {
+      "role": "author",
+      "type": "Organization",
+      "name": "צוות נדל״ן"
+     },
+     {
+      "role": "reviewedBy",
+      "type": "Organization",
+      "name": "צוות נדל״ן"
+     }
+    ],
     "official_sources": [
      "api.cbs.gov.il",
      "boi.org.il",
+     "dira.cma.gov.il",
      "edge.boi.gov.il",
-     "gov.il"
+     "gov.il",
+     "kolzchut.org.il",
+     "life.cma.gov.il"
     ],
-    "worked_examples": 34,
+    "worked_examples": 37,
     "worked_examples_sample": [
      "משכנתא של 1,000,000 ₪ ל־25 שנה בתמהיל הממוצע של ספטמבר 2026 עולה 5,428 ₪ בחודש הראשון.",
      "ההחזר החודשי הראשון 5,428 ₪ ל־25 שנה, 6,202 ₪ ל־20 שנה ו־4,931 ₪ ל־30 שנה (לוח שפיצר).",
@@ -2578,7 +2592,7 @@
      "במסלול פריים של 400,000 ₪ ל־22 שנה, במרווח הממוצע של המשכנתאות החדשות (פריים פחות 0.68%, 9.2026), ההחזר הוא כ־2,296 ₪ בחודש, וכל רבע אחוז בריבית בנק ישראל מזיז אותו בכ־54 ₪.",
      "משכנתא של 1,000,000 ₪ ל־25 שנה בתמהיל ובריביות הממוצעים של 9.2026 מתחילה בהחזר של 5,428 ₪ בחודש;"
     ],
-    "dated_sourced": 15,
+    "dated_sourced": 18,
     "dated_sourced_sample": [
      "לפי בנק ישראל, הריבית הכוללת החזויה הממוצעת במשכנתאות החדשות של ספטמבר 2026 הייתה 5.09% בכל הבנקים, ובחמשת הבנקים הגדולים בין 4.75% (הבינלאומי) ל־5.16% (מזרחי טפחות).",
      "חטיבת המחקר של בנק ישראל צופה ריבית של 3.0% ברבע השלישי של 2027 (תחזית 21.10.2026);",
@@ -2586,16 +2600,16 @@
      "הריבית הממוצעת של בנק ישראל ל־23 השנים שנותרו היא 4.79% (בתוקף מ־19.10.2026), נמוכה מהריבית בהלוואה.",
      "ריבית בנק ישראל עומדת על 3.25% מאז 3.9.2026, ובהחלטה של 21.10.2026 היא נשארה ללא שינוי.",
      "4.62% הוא הממוצע בקל״צ במשכנתאות החדשות של אוגוסט 2026 (בנק ישראל).",
-     "4.62% הוא הממוצע בקל״צ באוגוסט 2026 (בנק ישראל).",
-     "לדוגמה, משכנתא של 1,000,000 ₪ בתמהיל ובריביות הממוצעים של כל הבנקים בספטמבר 2026 מתחילה ב־7,532 ₪ בחודש ל־15 שנה, 6,202 ₪ ל־20 שנה, 5,428 ₪ ל־25 שנה ו־4,931 ₪ ל־30 שנה (בנק ישראל, לוח שפיצר)."
+     "בתמהיל ובריביות הממוצעים של כל הבנקים בספטמבר 2026 (קו המשווה של בנק ישראל) מחזירים כ־1.63 ₪ לשקל, 1,628,489 ₪ על 1,000,000 ₪, בלוח שפיצר ובלי שינוי במדד.",
+     "0.5% מתחת לממוצע הצמודות של בנק ישראל ולא יותר מ־3%, בלי עמלת פירעון מוקדם (gov.il, עודכן 30.3.2026)."
     ],
-    "raw_text_len": 58305,
+    "raw_text_len": 68618,
     "meta_author": ""
    },
    "features": {
     "payment_from_loan": {
      "auto": "Y",
-     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-0rljb1 | ריבית שנתית ריבית שנתית% nlm-h"
+     "evidence": "סכום המשכנתא סכום המשכנתא ₪ n /  סכום סכום₪ nlm-rl6x95 | ריבית שנתית ריבית שנתית% nlm-o"
     },
     "loan_from_payment": {
      "auto": "Y",
@@ -2607,7 +2621,7 @@
     },
     "affordability_income": {
      "auto": "Y",
-     "evidence": "דשים nlm-m19bfk | סוג הגרייס חלקימלא nlm-xse3pv | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
+     "evidence": "דשים nlm-8t3etv | סוג הגרייס חלקימלא nlm-4fem4w | הכנסה חודשית נטו של משק הבית הכנסה חודשית נטו של משק הב"
     },
     "multi_track": {
      "auto": "Y",
@@ -2615,7 +2629,7 @@
     },
     "compare_scenarios": {
      "auto": "Y",
-     "evidence": "נת החזר | למלא מהתמהיל שלמעלה | שמירת התמהיל הזה להשוואה | הוספת שלושת הסלים האחידים | להצגת כל 300 החוד"
+     "evidence": "כום שלי | למלא מהתמהיל שלמעלה | שמירת התמהיל הזה להשוואה | הוספת שלושת הסלים האחידים | להצגת כל 300 החוד"
     },
     "schedule": {
      "auto": "Y",
@@ -2635,7 +2649,7 @@
     },
     "prepayment_fee": {
      "auto": "Y",
-     "evidence": " הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | דירה יחי"
+     "evidence": " הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | בדיקה לפ"
     },
     "extra_payments": {
      "auto": "Y",
@@ -2651,23 +2665,23 @@
     },
     "offer_comparison": {
      "auto": "Y",
-     "evidence": "ספרים | הדפסה או שמירה כקובץ | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תע"
+     "evidence": "ץ | הורדת לוח הסילוקין (CSV) | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תע"
     },
     "per_bank_benchmark": {
      "auto": "Y",
-     "evidence": "פית | דירה להשקעה | דירה במחיר מופחת | × | לחזור לממוצע של בנק ישראל | × | לחזור לממוצע של בנק ישראל | × | לחזור"
+     "evidence": "| דירה במחיר מופחת | בשנים | בחודשים | × | לחזור לממוצע של בנק ישראל | × | לחזור לממוצע של בנק ישראל | × | לחזור"
     },
     "offer_vs_market_money": {
      "auto": "Y",
-     "evidence": "| בחודש חודש nlm-e3j8lc | סכום סכום₪ nlm-vk5xad | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
+     "evidence": "| בחודש חודש nlm-e45mdb | סכום סכום₪ nlm-qzc46z | הריבית בהצעה, מסלול 1 1. קל״צ: קבועה לא צמודה254.62%8.20264.69"
     },
     "readiness_docs": {
      "auto": "Y",
-     "evidence": " החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | דירה יחידה | דירה נוספת "
+     "evidence": " החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | בדיקה לפני חתימה | מחשבו"
     },
     "rate_decision_impact": {
      "auto": "Y",
-     "evidence": "כקובץ | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור"
+     "evidence": "(CSV) | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | החלטת הריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור"
     },
     "regulatory_checks": {
      "auto": "Y",
@@ -2691,15 +2705,15 @@
     },
     "share_link": {
      "auto": "Y",
-     "evidence": "ם האחידים | להצגת כל 300 החודשים | העתקת התוצאה | קישור שפותח את אותם מספרים | הדפסה או שמירה כקובץ | כמה דירה "
+     "evidence": "ודשים | הורדת לוח הסילוקין (CSV) | העתקת התוצאה | קישור שפותח את אותם מספרים | הדפסה או שמירה כקובץ | הורדת לוח"
     },
     "print_export": {
      "auto": "Y",
-     "evidence": "שים | העתקת התוצאה | קישור שפותח את אותם מספרים | הדפסה או שמירה כקובץ | כמה דירה זה קונה | שלוש הצעות, "
+     "evidence": "וספת שלושת הסלים האחידים | להצגת כל 300 החודשים | הורדת לוח הסילוקין (CSV) | העתקת התוצאה | קישור שפותח "
     },
     "tool_switcher": {
      "auto": "Y",
-     "evidence": "בדיקת עליית ריבית (+2%), | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | כמה תעלה היציאה"
+     "evidence": "בדיקת עליית ריבית (+2%), | כמה דירה זה קונה | שלוש הצעות, טבלה אחת | כמה תעלה היציאה | מחשבון זכאות"
     },
     "payment_frequency": {
      "auto": "-",
@@ -2715,7 +2729,7 @@
     },
     "lead_cta": {
      "auto": "Y",
-     "evidence": "ריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | דירה יחידה | דירה נוספת | עולה "
+     "evidence": "ריבית | אם 2022 חוזרת | כמה תעלה היציאה | מוכנים לאישור עקרוני? | מהחוזה למפתח | בדיקה לפני חתימה | מחשבון זכאות"
     },
     "market_rate_near_input": {
      "auto": "Y",
@@ -2736,9 +2750,9 @@
    },
    "_author_evidence": {
     "persons": [],
-    "byline": null
+    "byline": " רכישה · משכנתא לדירה להשקעה נכתב על ידי צוות נדל״ן · נבדק על ידי צוות"
    },
-   "_method_evidence": " כדאי לפנות ליועץ משכנתאות? | מקורות מידע שכדאי לבדוק | שאלות נפוצ",
+   "_method_evidence": " כדאי לפנות ליועץ משכנתאות? | מקורות מידע שכדאי לבדוק | איך המחשבו",
    "values": {
     "payment_from_loan": "Y",
     "loan_from_payment": "Y",
@@ -2775,19 +2789,19 @@
     "by_bank_rates": "Y",
     "borrower_distribution": "Y",
     "city_payments": "Y",
-    "dated_sourced": 15,
+    "dated_sourced": 18,
     "update_recency_days": 0,
     "market_data_age_days": 36,
-    "words_raw": 9696,
-    "words_rendered": 3781,
-    "figures_raw": 717,
-    "tables_raw": 16,
-    "cells_raw": 650,
-    "faq_schema_q": 38,
-    "question_headings": 54,
-    "headings_raw": 99,
-    "official_sources": 4,
-    "worked_examples": 34,
+    "words_raw": 11440,
+    "words_rendered": 4020,
+    "figures_raw": 780,
+    "tables_raw": 19,
+    "cells_raw": 714,
+    "faq_schema_q": 41,
+    "question_headings": 58,
+    "headings_raw": 108,
+    "official_sources": 7,
+    "worked_examples": 37,
     "visuals_rendered": 7,
     "jsonld_types": 20,
     "breadcrumb": "Y",
@@ -2795,24 +2809,24 @@
     "faqpage": "Y",
     "webapp": "Y",
     "date_modified_days": -1,
-    "author_reviewer": "-",
+    "author_reviewer": "Y",
     "methodology": "Y",
     "llms_txt": "Y",
     "robots_ai_allowed": 4,
     "raw_figure_share": 1.0,
     "first_input_y": 556,
     "first_money_y": 302,
-    "page_height": 27022,
+    "page_height": 28537,
     "h_overflow": 0,
     "tap44_share": 0.83,
     "interruptions": 0,
-    "html_bytes": 412782,
-    "transfer_bytes": 1741800,
-    "requests": 114,
-    "ttfb_ms": 776,
-    "dcl_ms": 1975,
-    "load_ms": 2619,
-    "lcp_ms": 1816,
+    "html_bytes": 443639,
+    "transfer_bytes": 1859866,
+    "requests": 123,
+    "ttfb_ms": 857,
+    "dcl_ms": 1962,
+    "load_ms": 2753,
+    "lcp_ms": 1724,
     "cls": 0,
     "img_alt_share": 1.0,
     "input_label_share": 1.0,
@@ -21371,15 +21385,15 @@
  "verdicts": {
   "tally": {
    "IL": {
-    "LEAD": 31,
-    "TIE": 35,
+    "LEAD": 32,
+    "TIE": 34,
     "LOSE": 11,
     "n/a": 0
    },
    "WORLD": {
-    "LEAD": 23,
+    "LEAD": 24,
     "TIE": 38,
-    "LOSE": 16,
+    "LOSE": 15,
     "n/a": 0
    }
   },
@@ -22660,7 +22674,7 @@
     "group": "2 Data",
     "id": "dated_sourced",
     "label": "Dated, sourced figure statements (proxy for official dated series)",
-    "ours": 15,
+    "ours": 18,
     "best_il": 3,
     "best_il_pages": [
      "Supermarker"
@@ -22709,7 +22723,7 @@
     "group": "3 Content",
     "id": "words_raw",
     "label": "Visible words in raw HTML",
-    "ours": 9696,
+    "ours": 11440,
     "best_il": 3362,
     "best_il_pages": [
      "Supermarker"
@@ -22726,7 +22740,7 @@
     "group": "3 Content",
     "id": "words_rendered",
     "label": "Visible words after JavaScript",
-    "ours": 3781,
+    "ours": 4020,
     "best_il": 5198,
     "best_il_pages": [
      "Mashcantaman"
@@ -22743,7 +22757,7 @@
     "group": "3 Content",
     "id": "figures_raw",
     "label": "Money and % figures in raw HTML",
-    "ours": 717,
+    "ours": 780,
     "best_il": 196,
     "best_il_pages": [
      "Taxo (rate change)"
@@ -22760,7 +22774,7 @@
     "group": "3 Content",
     "id": "tables_raw",
     "label": "Tables in raw HTML",
-    "ours": 16,
+    "ours": 19,
     "best_il": 7,
     "best_il_pages": [
      "Supermarker"
@@ -22777,7 +22791,7 @@
     "group": "3 Content",
     "id": "cells_raw",
     "label": "Table cells in raw HTML",
-    "ours": 650,
+    "ours": 714,
     "best_il": 130,
     "best_il_pages": [
      "SBC"
@@ -22794,7 +22808,7 @@
     "group": "3 Content",
     "id": "faq_schema_q",
     "label": "FAQ questions in FAQPage schema",
-    "ours": 38,
+    "ours": 41,
     "best_il": 8,
     "best_il_pages": [
      "Supermarker"
@@ -22811,7 +22825,7 @@
     "group": "3 Content",
     "id": "question_headings",
     "label": "Question headings in raw HTML",
-    "ours": 54,
+    "ours": 58,
     "best_il": 12,
     "best_il_pages": [
      "Supermarker"
@@ -22828,7 +22842,7 @@
     "group": "3 Content",
     "id": "headings_raw",
     "label": "Headings in raw HTML",
-    "ours": 99,
+    "ours": 108,
     "best_il": 94,
     "best_il_pages": [
      "Bank Hapoalim"
@@ -22845,7 +22859,7 @@
     "group": "3 Content",
     "id": "official_sources",
     "label": "Official sources linked (distinct domains)",
-    "ours": 4,
+    "ours": 7,
     "best_il": 1,
     "best_il_pages": [
      "Supermarker",
@@ -22857,14 +22871,14 @@
      "nesto (CA)"
     ],
     "v_il": "LEAD",
-    "v_world": "TIE",
+    "v_world": "LEAD",
     "direction": "hi"
    },
    {
     "group": "3 Content",
     "id": "worked_examples",
     "label": "Worked examples in plain HTML",
-    "ours": 34,
+    "ours": 37,
     "best_il": 1,
     "best_il_pages": [
      "Supermarker"
@@ -23075,7 +23089,7 @@
     "group": "4 AI and search",
     "id": "author_reviewer",
     "label": "Named author or reviewer",
-    "ours": "-",
+    "ours": "Y",
     "best_il": "-",
     "best_il_pages": [
      "Bank Hapoalim",
@@ -23108,8 +23122,8 @@
      "Meilleurtaux (FR)",
      "Pretto (FR)"
     ],
-    "v_il": "TIE",
-    "v_world": "LOSE",
+    "v_il": "LEAD",
+    "v_world": "TIE",
     "direction": "bool"
    },
    {
@@ -23299,7 +23313,7 @@
     "group": "5 Phone 390x844",
     "id": "page_height",
     "label": "Page height (px)",
-    "ours": 27022,
+    "ours": 28537,
     "best_il": 1735,
     "best_il_pages": [
      "Goola group"
@@ -23428,7 +23442,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "html_bytes",
     "label": "HTML bytes (decoded document)",
-    "ours": 412782,
+    "ours": 443639,
     "best_il": 702,
     "best_il_pages": [
      "Harel servicebank"
@@ -23445,7 +23459,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "transfer_bytes",
     "label": "Total transfer bytes to load + 3 s",
-    "ours": 1741800,
+    "ours": 1859866,
     "best_il": 13528,
     "best_il_pages": [
      "Taxo (mix)"
@@ -23462,7 +23476,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "requests",
     "label": "Requests to load + 3 s",
-    "ours": 114,
+    "ours": 123,
     "best_il": 8,
     "best_il_pages": [
      "Taxo (mix)"
@@ -23479,7 +23493,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "ttfb_ms",
     "label": "Time to first byte (ms)",
-    "ours": 776,
+    "ours": 857,
     "best_il": 40,
     "best_il_pages": [
      "Family-economy"
@@ -23496,7 +23510,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "dcl_ms",
     "label": "DOMContentLoaded (ms)",
-    "ours": 1975,
+    "ours": 1962,
     "best_il": 105,
     "best_il_pages": [
      "Family-economy"
@@ -23513,7 +23527,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "load_ms",
     "label": "Load event (ms)",
-    "ours": 2619,
+    "ours": 2753,
     "best_il": 237,
     "best_il_pages": [
      "Family-economy"
@@ -23530,7 +23544,7 @@
     "group": "6 Speed (cold, one load)",
     "id": "lcp_ms",
     "label": "Largest Contentful Paint (ms)",
-    "ours": 1816,
+    "ours": 1724,
     "best_il": 120,
     "best_il_pages": [
      "Family-economy"

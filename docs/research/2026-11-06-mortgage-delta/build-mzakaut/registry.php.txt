@@ -1,0 +1,72 @@
+<?php
+/*
+ * HAD-675 (6.11.2026, mortgage delta A1, A2, A8): the exact PHP for plugins/nadlan-config/inc/instruments.php.
+ * NOT applied: inc/instruments.php was not edited. Linted with php -l (PHP 8.3) and both summaries rendered against the real data
+ * files with WordPress stubs (README.md, "Server summaries").
+ *
+ * (1) Paste the two entries into the array of nadlan_nli_tools(), after 'mkeys'.
+ * (2) Paste the two branches into nadlan_nli_summary(), right after its first line (if ( 'en' === $lang ) ...), before 'mkeys'.
+ * (3) Ship plugins/nadlan-config/assets/instruments/tools/mzakaut.js, tools/mnomeff.js and data/zakaut.json.
+ * (4) On /mortgage-calculator/: two chips and two panes in the switcher, ids exactly tool-zakaut and tool-nomeff (the copy button
+ *     of mzakaut links #tool-zakaut):
+ *       <button type="button" data-sw="tool-zakaut" aria-controls="tool-zakaut">מחשבון זכאות משכנתא</button>
+ *       <button type="button" data-sw="tool-nomeff" aria-controls="tool-nomeff">נומינלית או אפקטיבית</button>
+ *       <div class="nlmx-pane" id="tool-zakaut">[nadlan_tool id="mzakaut"]</div>
+ *       <div class="nlmx-pane" id="tool-nomeff">[nadlan_tool id="mnomeff"]</div>
+ * Neither tool needs 'deps'. Both are Hebrew only (no 'en' block): on /en/ pages the shortcode stays Hebrew and the scripts draw
+ * nothing, so the server summary is what an English page would show; do not place them there.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_mzakaut_registry_snippet( $id ) {
+
+	/* ===================================================================== (1) entries for nadlan_nli_tools() */
+	$entries = array(
+			/* HAD-675 (6.11.2026, mortgage delta A1/A2): the state eligibility loan by points. zakaut.json = the gov.il pages S1 to S17,
+			   each table with its source id, URL and page date, "checked": "2026-11-06" (docs/research/2026-11-06-mortgage-delta/eligibility.md) */
+			'mzakaut' => array(
+				'name' => 'מחשבון זכאות משכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · הלוואת זכאות',
+				'desc' => 'מחשבון זכאות משכנתא של משרד הבינוי והשיכון: הניקוד לפי שמונת המצבים של המחשבון הרשמי (משפחה, משפחת עולים, משפחת נכים, הורה עצמאי, נכה רתוק לכסא גלגלים, נכה רווק, רווק או רווקה, עולה חדש), עם שנות הנישואין, הילדים והאחים של כל אחד מבני הזוג בנפרד; קבוצת הניקוד והמשכנתא הבסיסית, התוספות לשירות חובה ולמילואים, לאזור עדיפות לאומית, לתוכנית 10 פלוס ולעולים, כל שורה עם הדף הרשמי ותאריך העדכון שלו, וכלל הריבית ותנאי ההלוואה.',
+				'data' => array( 'zakaut.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/dira-behanacha/' => 'דירה בהנחה', '/mortgage-advisor/' => 'יועצי משכנתא', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+			/* HAD-675 (6.11.2026, mortgage delta A8): nominal and effective rate, monthly payments (the Bank of Israel conversion); the
+			   example and the chips are the all-banks effective rates of the latest month of boi-mortgage.json (by_bank) */
+			'mnomeff' => array(
+				'name' => 'ריבית נומינלית וריבית אפקטיבית', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · המרת ריבית',
+				'desc' => 'ממיר ריבית נומינלית שנתית בתשלום חודשי לריבית אפקטיבית שנתית ובחזרה, באותה נוסחה של בנק ישראל, עם הריבית האפקטיבית הממוצעת של כל הבנקים בכל מסלול בחודש האחרון שפורסם.',
+				'data' => array( 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+	);
+
+	/* ===================================================================== (2) branches for nadlan_nli_summary() */
+		if ( 'mzakaut' === $id ) {  // HAD-675 (6.11.2026): the eligibility loan tables of zakaut.json, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/zakaut.json';
+			$z = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $z ) || empty( $z['bands']['rows'] ) || empty( $z['vet_family']['marriage']['by'] ) || empty( $z['sources']['S3']['updated'] ) ) { return ''; }
+			$n = function ( $x ) { return number_format( (float) $x ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$f = $z['vet_family']; $rows = $z['bands']['rows']; $lo = $rows[0]; $hi = $rows[ count( $rows ) - 1 ];
+			$m = $f['marriage']['by']; $c = $f['children']['by']; $s = $f['siblings']['by']; $za = $z['priority']['a']; $t = $z['terms'];
+			return '<p>הלוואת זכאות של משרד הבינוי והשיכון: למשפחה ותיקה הניקוד נקבע לפי שנות הנישואין (' . $n( $m[0] ) . ' נקודות בשנה הראשונה, ' . $n( $m[1] ) . ' אחרי שנה, ועוד ' . $n( $f['marriage']['step'] ) . ' לכל שנה), '
+				. 'מספר הילדים (' . $n( $c[1] ) . ' לילד אחד, ' . $n( $c[2] ) . ' לשניים) ומספר האחים והאחיות של כל אחד מבני הזוג בנפרד (' . $n( $s[1] ) . ' לאח אחד, ' . $n( $s[4] ) . ' לארבעה). '
+				. 'המשכנתא הבסיסית לפי קבוצת הניקוד: מ־' . $n( $lo[2] ) . ' ₪ (' . $n( $lo[0] ) . ' עד ' . $n( $lo[1] ) . ' נקודות) ועד ' . $n( $hi[2] ) . ' ₪ (' . $n( $hi[0] ) . ' נקודות ומעלה); משפחה ותיקה עם ניקוד נמוך מזה מקבלת רק תוספות לפי היישוב. '
+				. 'על כל חודש של שירות חובה מתווסף ' . $n( $z['service']['pct_per_month'] ) . '% מהמשכנתא הבסיסית, באזור עדיפות לאומית א\' עוד ' . $n( $za['amount'] ) . ' ₪ בריבית ' . esc_html( $za['rate_pct'] ) . '% ל־' . (int) $za['years'] . ' שנה, ובתוכנית 10 פלוס ' . $n( $z['ten_plus']['amount'] ) . ' ₪. '
+				. 'הריבית: ' . esc_html( $t['rate_below_pct'] ) . '% מתחת לממוצע ההלוואות הצמודות שבנק ישראל מפרסם, ולא יותר מ־' . esc_html( $t['rate_cap_pct'] ) . '%; ההלוואה צמודה למדד, עד ' . (int) $t['max_years'] . ' שנה, בלי עמלת פירעון מוקדם. '
+				. esc_html( $z['binding']['text'] ) . '. לפי דפי משרד הבינוי והשיכון באתר הממשלה (טבלאות הניקוד והסכומים עודכנו ב־' . esc_html( $dm( $z['sources']['S3']['updated'] ) ) . '), נבדק ב־' . esc_html( $dm( $z['checked'] ) ) . '.</p>';
+		}
+		if ( 'mnomeff' === $id ) {  // HAD-675 (6.11.2026): the conversion, and the all-banks fixed not linked effective rate of the latest month (by_bank)
+			$x = nadlan_nli_mrates(); $d = $x['d']; $sys = $x['sys'];
+			$eff = function ( $nom ) { return 100 * ( pow( 1 + $nom / 1200, 12 ) - 1 ); };
+			$p = '<p>ריבית נומינלית שנתית בתשלום חודשי היא 12 כפול הריבית החודשית. הריבית האפקטיבית מצרפת את הריבית של כל חודש לקרן: אחד ועוד הנומינלית חלקי 12, בחזקת 12, פחות אחד. '
+				. 'למשל 4.50% נומינלית הן ' . number_format( $eff( 4.5 ), 2 ) . '% אפקטיבית, ו־4.50% אפקטיבית הן ' . number_format( nadlan_nli_mr_nom( 4.5 ), 2 ) . '% נומינלית.';
+			if ( is_array( $sys ) && ! empty( $sys['fixed_nl']['rate'] ) && ! empty( $d['by_bank']['latest']['month'] ) ) {
+				$mo = $d['by_bank']['latest']['month']; $e = (float) $sys['fixed_nl']['rate'];
+				$p .= ' בנק ישראל מפרסם ריביות אפקטיביות: הריבית האפקטיבית הממוצעת של כל הבנקים בקבועה לא צמודה ב־' . esc_html( (int) substr( $mo, 5, 2 ) . '.' . substr( $mo, 0, 4 ) ) . ' הייתה ' . number_format( $e, 2 ) . '%, שהן '
+					. number_format( nadlan_nli_mr_nom( $e ), 2 ) . '% נומינלית. המחשבונים בעמוד ממירים את הריביות האלה לריבית חודשית באותה נוסחה.';
+			}
+			return $p . '</p>';
+		}
+
+	return $entries;
+}

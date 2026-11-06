@@ -1,0 +1,1067 @@
+{
+ "base": "http://127.0.0.1:47986/docs/research/2026-11-06-mortgage-delta/build-mzakaut/preview.html",
+ "checks": 171,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 opens on the family example: 89,856 ₪",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "390 opening values 3 / 2 / 2 / 4 / 24 / 20",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 lines: 350, 500, 100, 400, 1,350, 62,400, 27,456",
+   "ok": true,
+   "got": "שנות נישואין: 3\n350 נקודות\nS3 · עודכן 30.3.2026\nילדים: 2\n500 נקודות\nS3 · עודכן 30.3.2026\nאחים ואחיות של בן/בת הזוג הראשון/ה: 2\n100 נקודות\nS3 · עודכן 30.3.2026\nאחים ואחיות של בן/בת הזוג השני/ה: 4\n400 נ"
+  },
+  {
+   "check": "390 source chips carry the page date",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the rate rule in words; the only percentages are 0.5% and 3% of the rule",
+   "ok": true,
+   "got": [
+    "0.5%",
+    "3%"
+   ]
+  },
+  {
+   "check": "390 binding line (S1)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 official links S1 to S14 and the official calculator",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 profile family: pressed, headline = NLZK (89,856 ₪)",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "390 family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 profile olim_family: pressed, headline = NLZK (1,800 נקודות)",
+   "ok": true,
+   "got": "1,800 נקודות"
+  },
+  {
+   "check": "390 profile olim_family: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 1,800 עד 1,899 · סכום משוער 169,905 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "390 olim_family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 olim_family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 olim_family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 olim_family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 profile dis_family: pressed, headline = NLZK (122,738 ₪)",
+   "ok": true,
+   "got": "122,738 ₪"
+  },
+  {
+   "check": "390 dis_family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 dis_family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 dis_family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 dis_family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "גם משפחת עולים?",
+    "הנכות",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 profile single_parent: pressed, headline = NLZK (200,473 ₪)",
+   "ok": true,
+   "got": "200,473 ₪"
+  },
+  {
+   "check": "390 single_parent no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 single_parent every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 single_parent every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 single_parent every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "390 profile wheelchair: pressed, headline = NLZK (232,813 ₪)",
+   "ok": true,
+   "got": "232,813 ₪"
+  },
+  {
+   "check": "390 wheelchair no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 wheelchair every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 wheelchair every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 wheelchair every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 profile dis_single: pressed, headline = NLZK (1,500 נקודות)",
+   "ok": true,
+   "got": "1,500 נקודות"
+  },
+  {
+   "check": "390 profile dis_single: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 1,500 עד 1,599 · סכום משוער 105,698 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "390 dis_single no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 dis_single every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 dis_single every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 dis_single every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "הנכות",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?"
+   ]
+  },
+  {
+   "check": "390 profile single: pressed, headline = NLZK (550 נקודות)",
+   "ok": true,
+   "got": "550 נקודות"
+  },
+  {
+   "check": "390 profile single: 550 points is below the S3 table, so no shekel figure and the reason is said",
+   "ok": true,
+   "got": "אין שורה בטבלת הסכומים לניקוד הזה"
+  },
+  {
+   "check": "390 single no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 single every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 single every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 single every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "390 profile oleh: pressed, headline = NLZK (900 נקודות)",
+   "ok": true,
+   "got": "900 נקודות"
+  },
+  {
+   "check": "390 profile oleh: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 599 עד 999 · סכום משוער 67,248 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "390 oleh no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 oleh every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 oleh every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 oleh every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "390 disabled family + olim: seniority field shown, marriage field hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 disabled olim family headline = NLZK",
+   "ok": true,
+   "got": [
+    "2,000 נקודות",
+    "2,000 נקודות"
+   ]
+  },
+  {
+   "check": "390 zone א: 222,738 ₪ (85,250 + 37,488 + 100,000)",
+   "ok": true,
+   "got": "222,738 ₪"
+  },
+  {
+   "check": "390 reserve yes: the days field appears",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 reserve 90 days: 91,728 ₪ and the S2 / S7 wording",
+   "ok": true,
+   "got": "91,728 ₪"
+  },
+  {
+   "check": "390 10 פלוס all yes with 2 children: included",
+   "ok": true,
+   "got": "221,856 ₪"
+  },
+  {
+   "check": "390 10 פלוס in a priority zone with 2 children: not included, says 4 children",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 Negev: the range in words, total unchanged",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "390 rate 2.5% from the certificate: first payment 355 ₪ for 30 years",
+   "ok": true,
+   "got": "ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־30 שנה: 355 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד)."
+  },
+  {
+   "check": "390 term select 20 years changes the payment",
+   "ok": true,
+   "got": "ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־20 שנה: 476 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד)."
+  },
+  {
+   "check": "390 rate emptied: no payment line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 marriage date 10.1.2016 fills 10 full years",
+   "ok": true,
+   "got": "10"
+  },
+  {
+   "check": "390 under 599 points: \"אין הלוואה לפי הניקוד\", never \"0 ₪\"",
+   "ok": true,
+   "got": "אין הלוואה לפי הניקוד"
+  },
+  {
+   "check": "390 a bad value: the message on its field",
+   "ok": true,
+   "got": "הקלידו את מספר הילדים, מ־0 עד 20."
+  },
+  {
+   "check": "390 4.5% nominal = 4.59% effective",
+   "ok": true,
+   "got": "4.59"
+  },
+  {
+   "check": "390 4.5% effective = 4.41% nominal",
+   "ok": true,
+   "got": "4.41"
+  },
+  {
+   "check": "390 chip \"קבועה לא צמודה\": 4.7162% effective = 4.62% nominal, pressed",
+   "ok": true,
+   "got": [
+    "4.7162",
+    "4.62"
+   ]
+  },
+  {
+   "check": "390 the example names its month",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 45%: an error on the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 converter no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 converter every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 converter every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 converter every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opens on the family example: 89,856 ₪",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "1280 opening values 3 / 2 / 2 / 4 / 24 / 20",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 lines: 350, 500, 100, 400, 1,350, 62,400, 27,456",
+   "ok": true,
+   "got": "שנות נישואין: 3\n350 נקודות\nS3 · עודכן 30.3.2026\nילדים: 2\n500 נקודות\nS3 · עודכן 30.3.2026\nאחים ואחיות של בן/בת הזוג הראשון/ה: 2\n100 נקודות\nS3 · עודכן 30.3.2026\nאחים ואחיות של בן/בת הזוג השני/ה: 4\n400 נ"
+  },
+  {
+   "check": "1280 source chips carry the page date",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the rate rule in words; the only percentages are 0.5% and 3% of the rule",
+   "ok": true,
+   "got": [
+    "0.5%",
+    "3%"
+   ]
+  },
+  {
+   "check": "1280 binding line (S1)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 official links S1 to S14 and the official calculator",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "1280 layout: form and result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 profile family: pressed, headline = NLZK (89,856 ₪)",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "1280 family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 profile olim_family: pressed, headline = NLZK (1,800 נקודות)",
+   "ok": true,
+   "got": "1,800 נקודות"
+  },
+  {
+   "check": "1280 profile olim_family: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 1,800 עד 1,899 · סכום משוער 169,905 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "1280 olim_family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 olim_family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 olim_family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 olim_family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 profile dis_family: pressed, headline = NLZK (122,738 ₪)",
+   "ok": true,
+   "got": "122,738 ₪"
+  },
+  {
+   "check": "1280 dis_family no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 dis_family every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 dis_family every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 dis_family every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "גם משפחת עולים?",
+    "הנכות",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 profile single_parent: pressed, headline = NLZK (200,473 ₪)",
+   "ok": true,
+   "got": "200,473 ₪"
+  },
+  {
+   "check": "1280 single_parent no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 single_parent every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 single_parent every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 single_parent every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "1280 profile wheelchair: pressed, headline = NLZK (232,813 ₪)",
+   "ok": true,
+   "got": "232,813 ₪"
+  },
+  {
+   "check": "1280 wheelchair no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 wheelchair every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 wheelchair every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 wheelchair every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 profile dis_single: pressed, headline = NLZK (1,500 נקודות)",
+   "ok": true,
+   "got": "1,500 נקודות"
+  },
+  {
+   "check": "1280 profile dis_single: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 1,500 עד 1,599 · סכום משוער 105,698 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "1280 dis_single no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 dis_single every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 dis_single every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 dis_single every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "הנכות",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?"
+   ]
+  },
+  {
+   "check": "1280 profile single: pressed, headline = NLZK (550 נקודות)",
+   "ok": true,
+   "got": "550 נקודות"
+  },
+  {
+   "check": "1280 profile single: 550 points is below the S3 table, so no shekel figure and the reason is said",
+   "ok": true,
+   "got": "אין שורה בטבלת הסכומים לניקוד הזה"
+  },
+  {
+   "check": "1280 single no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 single every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 single every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 single every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "1280 profile oleh: pressed, headline = NLZK (900 נקודות)",
+   "ok": true,
+   "got": "900 נקודות"
+  },
+  {
+   "check": "1280 profile oleh: the shekel figure carries the unverified label",
+   "ok": true,
+   "got": "קבוצת ניקוד 599 עד 999 · סכום משוער 67,248 ₪: לפי טבלת הסכומים למשפחות ותיקות (S3); לבדוק בתעודת הזכאות"
+  },
+  {
+   "check": "1280 oleh no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 oleh every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 oleh every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 oleh every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "אזור עדיפות לאומית"
+   ]
+  },
+  {
+   "check": "1280 disabled family + olim: seniority field shown, marriage field hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 disabled olim family headline = NLZK",
+   "ok": true,
+   "got": [
+    "2,000 נקודות",
+    "2,000 נקודות"
+   ]
+  },
+  {
+   "check": "1280 zone א: 222,738 ₪ (85,250 + 37,488 + 100,000)",
+   "ok": true,
+   "got": "222,738 ₪"
+  },
+  {
+   "check": "1280 reserve yes: the days field appears",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 reserve 90 days: 91,728 ₪ and the S2 / S7 wording",
+   "ok": true,
+   "got": "91,728 ₪"
+  },
+  {
+   "check": "1280 10 פלוס all yes with 2 children: included",
+   "ok": true,
+   "got": "221,856 ₪"
+  },
+  {
+   "check": "1280 10 פלוס in a priority zone with 2 children: not included, says 4 children",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 Negev: the range in words, total unchanged",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "1280 rate 2.5% from the certificate: first payment 355 ₪ for 30 years",
+   "ok": true,
+   "got": "ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־30 שנה: 355 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד)."
+  },
+  {
+   "check": "1280 term select 20 years changes the payment",
+   "ok": true,
+   "got": "ההחזר הראשון על 89,856 ₪ בתנאי זכאות, בריבית 2.5% ל־20 שנה: 476 ₪ בחודש (לוח שפיצר, הריבית חלקי 12, בלי שינוי במדד)."
+  },
+  {
+   "check": "1280 rate emptied: no payment line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 marriage date 10.1.2016 fills 10 full years",
+   "ok": true,
+   "got": "10"
+  },
+  {
+   "check": "1280 under 599 points: \"אין הלוואה לפי הניקוד\", never \"0 ₪\"",
+   "ok": true,
+   "got": "אין הלוואה לפי הניקוד"
+  },
+  {
+   "check": "1280 a bad value: the message on its field",
+   "ok": true,
+   "got": "הקלידו את מספר הילדים, מ־0 עד 20."
+  },
+  {
+   "check": "1280 4.5% nominal = 4.59% effective",
+   "ok": true,
+   "got": "4.59"
+  },
+  {
+   "check": "1280 4.5% effective = 4.41% nominal",
+   "ok": true,
+   "got": "4.41"
+  },
+  {
+   "check": "1280 chip \"קבועה לא צמודה\": 4.7162% effective = 4.62% nominal, pressed",
+   "ok": true,
+   "got": [
+    "4.7162",
+    "4.62"
+   ]
+  },
+  {
+   "check": "1280 the example names its month",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 45%: an error on the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 converter no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 converter every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 converter every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 converter every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 opens on 89,856 ₪",
+   "ok": true,
+   "got": "89,856 ₪"
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "מי מבקש",
+    "סוג השירות",
+    "מילואים פעיל: שש שנים לפחות, 10 ימים לפחות בכל שנה?",
+    "סוג השירות"
+   ]
+  },
+  {
+   "check": "theme 390: heading face and button radius hold against the theme",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "2px"
+   ]
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

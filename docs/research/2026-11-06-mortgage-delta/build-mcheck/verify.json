@@ -1,0 +1,554 @@
+{
+ "checks": [
+  {
+   "check": "390 empty: the guide shows and no flag",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 empty: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 empty: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 empty: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 empty: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 empty: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 empty: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 example: 0 red, 2 to check",
+   "ok": true,
+   "got": [
+    0,
+    2,
+    22
+   ]
+  },
+  {
+   "check": "390 example: marked as an example",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example: summary of 5 to 8 sentences",
+   "ok": true,
+   "got": 7
+  },
+  {
+   "check": "390 example: validity 19 days shown prominently",
+   "ok": true,
+   "got": "תוקף האישור: נשארו 19 ימים, עד 25.11.2026."
+  },
+  {
+   "check": "390 example: first payment 6,511 in the basket field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 example: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 example: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 info group opens",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 questions: at least 8, generated from the flags",
+   "ok": true,
+   "got": 10
+  },
+  {
+   "check": "390 copy: summary, flags and questions copied",
+   "ok": true,
+   "got": 15255
+  },
+  {
+   "check": "390 case link: the state in the hash only",
+   "ok": true,
+   "got": "http://127.0.0.1:47971/docs/research/2026-11-06-mortgage-delta/build-mcheck/preview.html#m"
+  },
+  {
+   "check": "390 basket switcher: basket 2 shows its definition",
+   "ok": true,
+   "got": "סל אחיד 2: שליש קבועה לא צמודה, שליש פריים, שליש משתנה צמודה למדד כל 5 שנים, בלוח שפיצר."
+  },
+  {
+   "check": "390 all rows: 5 tracks in the proposed basket",
+   "ok": true,
+   "got": 5
+  },
+  {
+   "check": "390 all rows: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 all rows: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 all rows: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 red case: expired, LTV, totals, reservation fee",
+   "ok": true,
+   "got": [
+    4,
+    3,
+    19
+   ]
+  },
+  {
+   "check": "390 red case: guarantors to check",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 red case: the validity strip is red",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 red case: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 red case: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 red case: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 red case: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 red case: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 red case: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 mode 2: a copy of the proposed basket shows no change",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mode 2: rate up, new insurance, after the hold",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mode 2: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mode 2: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mode 2: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 mode 2: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 mode 2: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 mode 2: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 print: form hidden, flags kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 case link: the same 0 red / 2 to check after reopening",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no console errors",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 empty: the guide shows and no flag",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 empty: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 empty: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 empty: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 empty: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 empty: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 empty: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 example: 0 red, 2 to check",
+   "ok": true,
+   "got": [
+    0,
+    2,
+    22
+   ]
+  },
+  {
+   "check": "1280 example: marked as an example",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example: summary of 5 to 8 sentences",
+   "ok": true,
+   "got": 7
+  },
+  {
+   "check": "1280 example: validity 19 days shown prominently",
+   "ok": true,
+   "got": "תוקף האישור: נשארו 19 ימים, עד 25.11.2026."
+  },
+  {
+   "check": "1280 example: first payment 6,511 in the basket field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 example: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 example: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 info group opens",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 questions: at least 8, generated from the flags",
+   "ok": true,
+   "got": 10
+  },
+  {
+   "check": "1280 copy: summary, flags and questions copied",
+   "ok": true,
+   "got": 15255
+  },
+  {
+   "check": "1280 case link: the state in the hash only",
+   "ok": true,
+   "got": "http://127.0.0.1:47971/docs/research/2026-11-06-mortgage-delta/build-mcheck/preview.html#m"
+  },
+  {
+   "check": "1280 basket switcher: basket 2 shows its definition",
+   "ok": true,
+   "got": "סל אחיד 2: שליש קבועה לא צמודה, שליש פריים, שליש משתנה צמודה למדד כל 5 שנים, בלוח שפיצר."
+  },
+  {
+   "check": "1280 all rows: 5 tracks in the proposed basket",
+   "ok": true,
+   "got": 5
+  },
+  {
+   "check": "1280 all rows: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 all rows: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 all rows: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 red case: expired, LTV, totals, reservation fee",
+   "ok": true,
+   "got": [
+    4,
+    3,
+    19
+   ]
+  },
+  {
+   "check": "1280 red case: guarantors to check",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 red case: the validity strip is red",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 red case: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 red case: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 red case: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 red case: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 red case: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 red case: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 mode 2: a copy of the proposed basket shows no change",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mode 2: rate up, new insurance, after the hold",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mode 2: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mode 2: no recommendation word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mode 2: no \"0 ₪\" for an untyped value",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 mode 2: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 mode 2: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 mode 2: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 print: form hidden, flags kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 case link: the same 0 red / 2 to check after reopening",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no console errors",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme: list bullets off, legend in Plex Sans Hebrew, tabs >= 44 px",
+   "ok": true,
+   "got": {
+    "liStyle": "none",
+    "liBefore": "none",
+    "lgFont": "\"IBM Plex Sans Hebrew\"",
+    "tbH": 44
+   }
+  },
+  {
+   "check": "theme example: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "theme example: every control >= 44 px",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme example: every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme: no page errors",
+   "ok": true,
+   "got": []
+  }
+ ],
+ "failed": []
+}

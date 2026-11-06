@@ -383,6 +383,34 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
 				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה' ),
 			),
+			/* 1.72.596 (HAD-675, presign.md 6.11.2026): mcheck, "בדיקת משכנתא לפני חתימה". The approval in principle typed in the uniform
+			   format of directive 451 (addendum 6): the header, the proposed basket and the three uniform baskets (quick: the totals row,
+			   rows 7 to 11; full: the tracks, rows 1 to 6 and 12), the reader's own context; 28 checks with the rule, the source and its
+			   date, a summary of plain sentences, the questions to ask the bank, and a second mode that diffs the final documents against
+			   the approval. Nothing is sent to a server; the case lives in #mcheck= only. File tools/mcheck.js (same name as the id). */
+			'mcheck' => array(
+				'name' => 'בדיקת משכנתא לפני חתימה', 'cat' => 'FinanceApplication', 'kicker' => 'לפני חתימה · אישור עקרוני',
+				'desc' => 'בדיקת משכנתא לפני חתימה: מעתיקים את האישור העקרוני בפורמט האחיד של הוראה 451 של בנק ישראל, הסל המוצע ושלושת הסלים האחידים, ומקבלים 28 בדיקות עם הכלל והמקור: תוקף האישור, הסלים והשורות, מגבלות הוראה 329 (מימון, החזר מההכנסה, ריבית משתנה ותקופה), הריבית הכוללת החזויה מול הממוצע של אותו בנק בקו המשווה, הריבית בכל מסלול מול הממוצע, חיובים ועמלות, ערבים, ביטוח, שמאות ועמלת פירעון מוקדם לפי צו הבנקאות; סיכום במספרים, מה לשאול את הבנק, ובדיקה של המסמכים הסופיים מול האישור.',
+				'deps' => array( 'mortgage', 'mrates-common', 'moffers', 'mquick' ),
+				'data' => array( 'boi-mortgage.json', 'boi-rate.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-pre-approval/' => 'אישור עקרוני למשכנתא', '/mortgage-home-insurance/' => 'ביטוח משכנתא', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועץ משכנתאות' ),
+			),
+			/* HAD-675 (6.11.2026, mortgage delta A1/A2): the state eligibility loan by points. zakaut.json = the gov.il pages S1 to S17,
+			   each table with its source id, URL and page date, "checked": "2026-11-06" (docs/research/2026-11-06-mortgage-delta/eligibility.md) */
+			'mzakaut' => array(
+				'name' => 'מחשבון זכאות משכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · הלוואת זכאות',
+				'desc' => 'מחשבון זכאות משכנתא של משרד הבינוי והשיכון: הניקוד לפי שמונת המצבים של המחשבון הרשמי (משפחה, משפחת עולים, משפחת נכים, הורה עצמאי, נכה רתוק לכסא גלגלים, נכה רווק, רווק או רווקה, עולה חדש), עם שנות הנישואין, הילדים והאחים של כל אחד מבני הזוג בנפרד; קבוצת הניקוד והמשכנתא הבסיסית, התוספות לשירות חובה ולמילואים, לאזור עדיפות לאומית, לתוכנית 10 פלוס ולעולים, כל שורה עם הדף הרשמי ותאריך העדכון שלו, וכלל הריבית ותנאי ההלוואה.',
+				'data' => array( 'zakaut.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/dira-behanacha/' => 'דירה בהנחה', '/mortgage-advisor/' => 'יועצי משכנתא', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+			/* HAD-675 (6.11.2026, mortgage delta A8): nominal and effective rate, monthly payments (the Bank of Israel conversion); the
+			   example and the chips are the all-banks effective rates of the latest month of boi-mortgage.json (by_bank) */
+			'mnomeff' => array(
+				'name' => 'ריבית נומינלית וריבית אפקטיבית', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · המרת ריבית',
+				'desc' => 'ממיר ריבית נומינלית שנתית בתשלום חודשי לריבית אפקטיבית שנתית ובחזרה, באותה נוסחה של בנק ישראל, עם הריבית האפקטיבית הממוצעת של כל הבנקים בכל מסלול בחודש האחרון שפורסם.',
+				'data' => array( 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
 			/* 1.72.593 (HAD-675, T4): from contract to keys, the 7th tool of /mortgage-calculator/ (the linkage of indexation.js, the payment of mquick.js) */
 			'mkeys' => array(
 				'name' => 'מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה מקבלן',
@@ -475,6 +503,46 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
+		if ( 'mcheck' === $id ) {  // HAD-675: the pre-signing check; the 329 limits from rules, the all-banks overall rate from by_bank
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['rules']['ltv'] ) || empty( $x['sys'] ) || empty( $d['by_bank']['latest']['month'] ) ) { return ''; }
+			$r  = $d['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$m  = (string) $d['by_bank']['latest']['month']; $mm = (int) substr( $m, 5, 2 ) . '.' . substr( $m, 0, 4 );
+			return '<p>בדיקת משכנתא לפני חתימה קוראת את האישור העקרוני בפורמט האחיד של הוראה 451 של בנק ישראל: הסל שהבנק מציע ושלושת הסלים האחידים, ולכל סל הריבית הכוללת החזויה, ההחזר הראשון, ההחזר הגבוה הצפוי והחודש שלו, סך התשלומים וסכומי החיובים והעמלות. '
+				. 'לפי הוראה 451 הבנק שומר את תנאי האישור 24 ימים לפחות, ולא גובה דמי שריון או תשלום על אופציה לקבלת הלוואה. '
+				. 'הבדיקה משווה את המספרים למגבלות של הוראה 329: מימון עד ' . esc_html( $pc( $r['ltv']['single'] ) ) . ' בדירה יחידה, ' . esc_html( $pc( $r['ltv']['replace'] ) ) . ' בדירה חליפית ו־' . esc_html( $pc( $r['ltv']['invest'] ) ) . ' בדירה להשקעה; החזר חודשי עד '
+				. esc_html( $pc( $r['pti_max'] ) ) . ' מההכנסה הפנויה (ומעל ' . esc_html( $pc( $r['pti_risk'] ) ) . ' הבנק מחזיק יותר הון); עד ' . esc_html( number_format( 100 * (float) $r['variable_max'], 2 ) ) . '% בריבית משתנה; ותקופה עד ' . (int) $r['term_max'] . ' שנה. '
+				. 'היא משווה גם את הריבית הכוללת החזויה לממוצע של אותו בנק בקו המשווה של בנק ישראל (בכל הבנקים ' . esc_html( number_format( (float) $x['sys']['irr'], 2 ) ) . '% במשכנתאות החדשות של ' . esc_html( $mm ) . '), '
+				. 'מחשבת עמלת פירעון מוקדם לפי צו הבנקאות, בודקת ערבים, ביטוח ושמאות, ומסכמת מה לשאול את הבנק. במצב השני היא משווה את המסמכים הסופיים לאישור. מה שמקלידים נשאר בדפדפן.</p>';
+		}
+		if ( 'mzakaut' === $id ) {  // HAD-675 (6.11.2026): the eligibility loan tables of zakaut.json, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/zakaut.json';
+			$z = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $z ) || empty( $z['bands']['rows'] ) || empty( $z['vet_family']['marriage']['by'] ) || empty( $z['sources']['S3']['updated'] ) ) { return ''; }
+			$n = function ( $x ) { return number_format( (float) $x ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$f = $z['vet_family']; $rows = $z['bands']['rows']; $lo = $rows[0]; $hi = $rows[ count( $rows ) - 1 ];
+			$m = $f['marriage']['by']; $c = $f['children']['by']; $s = $f['siblings']['by']; $za = $z['priority']['a']; $t = $z['terms'];
+			return '<p>הלוואת זכאות של משרד הבינוי והשיכון: למשפחה ותיקה הניקוד נקבע לפי שנות הנישואין (' . $n( $m[0] ) . ' נקודות בשנה הראשונה, ' . $n( $m[1] ) . ' אחרי שנה, ועוד ' . $n( $f['marriage']['step'] ) . ' לכל שנה), '
+				. 'מספר הילדים (' . $n( $c[1] ) . ' לילד אחד, ' . $n( $c[2] ) . ' לשניים) ומספר האחים והאחיות של כל אחד מבני הזוג בנפרד (' . $n( $s[1] ) . ' לאח אחד, ' . $n( $s[4] ) . ' לארבעה). '
+				. 'המשכנתא הבסיסית לפי קבוצת הניקוד: מ־' . $n( $lo[2] ) . ' ₪ (' . $n( $lo[0] ) . ' עד ' . $n( $lo[1] ) . ' נקודות) ועד ' . $n( $hi[2] ) . ' ₪ (' . $n( $hi[0] ) . ' נקודות ומעלה); משפחה ותיקה עם ניקוד נמוך מזה מקבלת רק תוספות לפי היישוב. '
+				. 'על כל חודש של שירות חובה מתווסף ' . $n( $z['service']['pct_per_month'] ) . '% מהמשכנתא הבסיסית, באזור עדיפות לאומית א\' עוד ' . $n( $za['amount'] ) . ' ₪ בריבית ' . esc_html( $za['rate_pct'] ) . '% ל־' . (int) $za['years'] . ' שנה, ובתוכנית 10 פלוס ' . $n( $z['ten_plus']['amount'] ) . ' ₪. '
+				. 'הריבית: ' . esc_html( $t['rate_below_pct'] ) . '% מתחת לממוצע ההלוואות הצמודות שבנק ישראל מפרסם, ולא יותר מ־' . esc_html( $t['rate_cap_pct'] ) . '%; ההלוואה צמודה למדד, עד ' . (int) $t['max_years'] . ' שנה, בלי עמלת פירעון מוקדם. '
+				. esc_html( $z['binding']['text'] ) . '. לפי דפי משרד הבינוי והשיכון באתר הממשלה (טבלאות הניקוד והסכומים עודכנו ב־' . esc_html( $dm( $z['sources']['S3']['updated'] ) ) . '), נבדק ב־' . esc_html( $dm( $z['checked'] ) ) . '.</p>';
+		}
+		if ( 'mnomeff' === $id ) {  // HAD-675 (6.11.2026): the conversion, and the all-banks fixed not linked effective rate of the latest month (by_bank)
+			$x = nadlan_nli_mrates(); $d = $x['d']; $sys = $x['sys'];
+			$eff = function ( $nom ) { return 100 * ( pow( 1 + $nom / 1200, 12 ) - 1 ); };
+			$p = '<p>ריבית נומינלית שנתית בתשלום חודשי היא 12 כפול הריבית החודשית. הריבית האפקטיבית מצרפת את הריבית של כל חודש לקרן: אחד ועוד הנומינלית חלקי 12, בחזקת 12, פחות אחד. '
+				. 'למשל 4.50% נומינלית הן ' . number_format( $eff( 4.5 ), 2 ) . '% אפקטיבית, ו־4.50% אפקטיבית הן ' . number_format( nadlan_nli_mr_nom( 4.5 ), 2 ) . '% נומינלית.';
+			if ( is_array( $sys ) && ! empty( $sys['fixed_nl']['rate'] ) && ! empty( $d['by_bank']['latest']['month'] ) ) {
+				$mo = $d['by_bank']['latest']['month']; $e = (float) $sys['fixed_nl']['rate'];
+				$p .= ' בנק ישראל מפרסם ריביות אפקטיביות: הריבית האפקטיבית הממוצעת של כל הבנקים בקבועה לא צמודה ב־' . esc_html( (int) substr( $mo, 5, 2 ) . '.' . substr( $mo, 0, 4 ) ) . ' הייתה ' . number_format( $e, 2 ) . '%, שהן '
+					. number_format( nadlan_nli_mr_nom( $e ), 2 ) . '% נומינלית. המחשבונים בעמוד ממירים את הריביות האלה לריבית חודשית באותה נוסחה.';
+			}
+			return $p . '</p>';
+		}
 		if ( 'mkeys' === $id ) {  // 1.72.593 (HAD-675, T4): the Sale Law rule and the latest construction index
 			$d = nadlan_nli_series( 'cbs-200010.json' );
 			if ( ! $d ) { return ''; }

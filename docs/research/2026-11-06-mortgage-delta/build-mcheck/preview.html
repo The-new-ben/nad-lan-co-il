@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>בדיקת משכנתא לפני חתימה, תצוגה מקומית</title>
+<!-- HAD-675, mcheck, local preview only (nothing here is deployed). Serve the repo root (nad-lan-co-il) over http, for example
+       python -m http.server 47971 --bind 127.0.0.1
+     and open /docs/research/2026-11-06-mortgage-delta/build-mcheck/preview.html
+     The tool is mounted exactly like the shortcode prints it: <section class="nli"> + <div class="nli-host" data-nli data-nli-data>,
+     with the scripts in the order the 'deps' of registry.php.txt enqueue them: core.js, mortgage.js, mrates-common.js, moffers.js,
+     mquick.js, then mcheck.js. Every file is the repo file under plugins/nadlan-config/assets/instruments/.
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the id-scoped rules. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    if (!/[?&]theme=1/.test(location.search)) return;
+    ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+     'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+     'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) { document.write('<link rel="stylesheet" href="' + u + '">'); });
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font:400 13px/20px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content">
+<p class="pv-top">תצוגה מקומית, HAD-675 · בדיקת משכנתא לפני חתימה (mcheck) · נתונים: בנק ישראל והלמ״ס, הקובץ מ־5.11.2026 · לא באתר</p>
+
+<section class="nli" dir="rtl" lang="he" aria-label="בדיקת משכנתא לפני חתימה" id="pv-check"><div class="nli-host" data-nli="mcheck" data-nli-data="/plugins/nadlan-config/assets/instruments/data/boi-mortgage.json,/plugins/nadlan-config/assets/instruments/data/boi-rate.json,/plugins/nadlan-config/assets/instruments/data/cbs-120010.json"><div class="nli__panel"><p class="nli__kicker">לפני חתימה · אישור עקרוני</p><h2 class="nli__title">בדיקת משכנתא לפני חתימה</h2><p>בדיקת משכנתא לפני חתימה בודקת אישור עקרוני למשכנתא לפי הפורמט האחיד של הוראה 451 של בנק ישראל: הסל המוצע ושלושת הסלים האחידים, תוקף של 24 ימים לפחות, המגבלות של הוראה 329, הריבית הכוללת החזויה מול הממוצע של אותו בנק בקו המשווה, עמלות, ערבים, ביטוח, שמאות ועמלת פירעון מוקדם, ומה לשאול את הבנק.</p></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="https://nad-lan.co.il/mortgage-calculator/mortgage-pre-approval/">אישור עקרוני למשכנתא</a> <a href="https://nad-lan.co.il/mortgage-advisor/">יועץ משכנתאות</a></nav></section>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mortgage.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mrates-common.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/moffers.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mquick.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mcheck.js"></script>
+</body>
+</html>

@@ -14,7 +14,19 @@
      average-by-term files are effective rates, converted to nominal), the gap in shekels over the loan and per month, and the
      loan placed among last month's new mortgages (payment to income, LTV, size, term), with its honest limits.
    Data: data/boi-mortgage.json (key "boim"), built by tools/instruments/build_boi_mortgage_data.py. Pure logic in NLMG for the
-   cross-check tools/instruments/test_mortgage_math.py. Hebrew only (RTL); no em or en dash in any visible string. */
+   cross-check tools/instruments/test_mortgage_math.py. Hebrew only (RTL); no em or en dash in any visible string.
+   v2 (round M, HAD-675, 6.11.2026): six additions from the competitor delta (docs/research/2026-11-06-mortgage-delta/delta.md,
+   section c), all additive; with the new controls untouched every payment, total and text of v1 is the same:
+   - C1 under each rate field, the lowest and highest of the 7 banks for that track in the latest month of by_bank (Bank of
+     Israel "קו המשווה", effective rates shown nominal like every other rate here, and as published); only for the 5 tracks
+     by_bank covers (NLMG.band);
+   - C2 a change frequency on the variable tracks (every 1, 2, 2.5, 5 or 10 years; 5 as before): the reset path of the scenario
+     (the +2% or your own shock) reaches the track only at those months, the moat reference and the Banking Order fee follow it;
+   - C3 the term in years or in months (48 to 360), exact to the month (the math was already monthly);
+   - C5 "הורדת לוח הסילוקין (CSV)": one row per month, per track and total, UTF-8 with BOM, built in the browser (NLMG.csv);
+   - C9 three scenarios side by side in the results: today, the Bank of Israel forecast, and the existing +2% stress;
+   - C14 one tap "הסלים האחידים לסכום שלי": the three uniform baskets of directive 451 on your amount and term, beside your mix
+     (the file's own basket(), the same rows as NLMR.basketRows of tools/mrates-common.js). Test: build-mortgage-v2/. */
 (function () {
   'use strict';
 
@@ -42,16 +54,18 @@
   /* One track, month by month. t: amount, rate (annual nominal %), years, method (spitzer | equal | balloon | bullet), grace
      (months, inside the term), graceType (partial: interest only | full: nothing paid, interest added), kind (fixed | prime |
      var5), linked (CPI), prepay {month, amount, mode: shorten | reduce} or null.
-     A linked balance is indexed every month by the scenario CPI and the payment is recomputed on the indexed balance. */
+     A linked balance is indexed every month by the scenario CPI and the payment is recomputed on the indexed balance.
+     v2: freq (months between rate changes of a var5 track: 12, 24, 30, 60 or 120; missing = 60, the v1 behaviour). */
+  function freqOf(t) { var q = Math.round(+t.freq || 0); return q >= 1 ? q : 60; }
   function track(t, sc) {
-    var N = Math.max(1, Math.round((+t.years || 0) * 12)), g = Math.min(Math.max(0, Math.round(+t.grace || 0)), N - 1);
+    var N = Math.max(1, Math.round((+t.years || 0) * 12)), g = Math.min(Math.max(0, Math.round(+t.grace || 0)), N - 1), FQ = freqOf(t);
     var f = t.linked ? Math.pow(1 + (sc.cpi || 0) / 100, 1 / 12) : 1;
     var B = Math.max(0, +t.amount || 0), C = 0, end = N, r = +t.rate || 0;
     var S = { N: N, pay: [], reg: [], intr: [], prin: [], link: [], bal: [], rate: [], lump: 0, lumpMonth: 0, prepay: null, end: N, sumI: 0, sumL: 0, sumP: 0 };
     for (var m = 1; m <= N; m++) {
       if (B <= 0.005 || m > end) { S.pay.push(0); S.reg.push(0); S.intr.push(0); S.prin.push(0); S.link.push(0); S.bal.push(0); S.rate.push(r); continue; }
       if (t.kind === 'prime') r = t.rate + sc.all + sc.prime(m);
-      else if (t.kind === 'var5') { if (m === 1) r = t.rate + sc.all; else if ((m - 1) % 60 === 0) r = t.rate + sc.all + sc.reset(m); }
+      else if (t.kind === 'var5') { if (m === 1) r = t.rate + sc.all; else if ((m - 1) % FQ === 0) r = t.rate + sc.all + sc.reset(m); }
       else r = t.rate + sc.all;
       var L = B * (f - 1); B += L; C *= f;
       var rm = Math.max(0, r) / 1200, I = B * rm, n = end - m + 1, P, lump = 0;
@@ -140,8 +154,9 @@
     if (t.directed) { out.op = 0; out.notice = 0; out.none = true; out.why = 'directed'; return out; }
     if (t.linked && D.cpi.avg_m12 != null) out.cpi = P.amount * D.cpi.avg_m12 / 100 / 2;
     if (t.kind === 'prime') { out.why = 'prime'; return out; }
-    var left = P.endBefore - P.month, h = left;
-    if (t.kind === 'var5') { var next = 60 * Math.ceil(P.month / 60) + 1; h = Math.min(left, next - 1 - P.month); if (h <= 0) { out.why = 'reset'; return out; } }
+    var left = P.endBefore - P.month, h = left, FQ = freqOf(t);
+    if (t.kind === 'var5' && FQ !== 60 && FQ <= (F.no_cap_fee_if_change_within_months || 12)) { out.why = 'prime'; return out; }  // v2: a rate that changes at least yearly
+    if (t.kind === 'var5') { var next = FQ * Math.ceil(P.month / FQ) + 1; h = Math.min(left, next - 1 - P.month); if (h <= 0) { out.why = 'reset'; return out; } }
     if (left <= 0) return out;
     var file = t.linked ? 'cpi' : 'nl', b = bucket(D.term[file].buckets, h / 12), C = b.nom, A = C - (drop || 0), R = P.rate;
     var s = stream(P.before, R, left, h, t.method), pvA = pv(s, A), pvC = pv(s, C);
@@ -152,7 +167,71 @@
     return out;
   }
 
-  window.NLMG = { pmt: pmt, scenario: scenario, track: track, mix: mix, solveLoan: solveLoan, ef2nom: ef2nom, bucket: bucket, prepayFee: prepayFee, stream: stream, pv: pv };
+  /* ----------------------------------------------------------------------------------------------- v2 helpers (pure) */
+  /* C1: the lowest and the highest of the banks in the Bank of Israel comparison by bank (by_bank, TamInt010.xls, latest month,
+     the "system" row left out) for a track of this file; null when the data has no by_bank or the track is not one of its five
+     (the eligibility loan). The file's rates are effective; nom is the nominal rate of a monthly payment (ef2nom). */
+  var BBK = { fixed_nl: 'fixed_nl', fixed_cpi: 'fixed_cpi', prime: 'prime', var5_cpi: 'var_cpi', var5_nl: 'var_nl_other' };
+  var HEMON = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+  function monthHe(key) { var p = String(key || '').split('-'); return p.length > 1 && HEMON[+p[1] - 1] ? HEMON[+p[1] - 1] + ' ' + p[0] : String(key || ''); }
+  function band(D, trackKey) {
+    var BB = D && D.by_bank, k = BBK[trackKey];
+    if (!k || !BB || !BB.latest || !Array.isArray(BB.latest.table)) return null;
+    var he = {}; (BB.banks || []).forEach(function (b) { he[b.k] = b.he; });
+    var rows = BB.latest.table.filter(function (x) { return x.bank !== 'system' && x[k] && isFinite(x[k].rate) && x[k].rate > 0; });
+    if (rows.length < 2) return null;
+    var lo = rows[0], hi = rows[0];
+    rows.forEach(function (x) { if (x[k].rate < lo[k].rate) lo = x; if (x[k].rate > hi[k].rate) hi = x; });
+    function one(x) { return { bank: x.bank, he: he[x.bank] || x.bank, eff: x[k].rate, nom: ef2nom(x[k].rate) }; }
+    return { month: BB.latest.month, key: k, n: rows.length, min: one(lo), max: one(hi) };
+  }
+  /* C5: the monthly schedule of a mix() result as CSV text, UTF-8 with BOM (so Excel opens the Hebrew), comma separated, CRLF.
+     One row per month; per track and for the whole loan: the payment, the principal (the payment less the interest; below zero in
+     a full grace or a balloon month, when the interest joins the balance), the interest, the CPI linkage added to the balance in
+     that month, and the balance at the end of the month. A prepayment is not a payment here; the balance already includes it. */
+  var CSVCOL = ['תשלום', 'קרן', 'ריבית', 'הצמדה', 'יתרה'];
+  function csvCell(s) { s = String(s); return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function csv(R, names) {
+    function f2(x) { var y = Math.round((+x || 0) * 100) / 100; return (y === 0 ? 0 : y).toFixed(2); }
+    var head = ['חודש'];
+    R.T.forEach(function (s, k) { var n = names && names[k] ? names[k] : 'מסלול ' + (k + 1); CSVCOL.forEach(function (c) { head.push(n + ': ' + c); }); });
+    CSVCOL.forEach(function (c) { head.push('סך הכול: ' + c); });
+    var out = [head.map(csvCell).join(',')];
+    for (var m = 0; m < R.N; m++) {
+      var row = [String(m + 1)];
+      R.T.forEach(function (s) { var i = m < s.N; row.push(f2(i ? s.pay[m] : 0), f2(i ? s.prin[m] : 0), f2(i ? s.intr[m] : 0), f2(i ? s.link[m] : 0), f2(i ? s.bal[m] : 0)); });
+      row.push(f2(R.pay[m]), f2(R.prin[m]), f2(R.intr[m]), f2(R.link[m]), f2(R.bal[m]));
+      out.push(row.join(','));
+    }
+    return '\uFEFF' + out.join('\r\n') + '\r\n';
+  }
+  /* C9: three scenarios on the same rows. o = the scenario options of the page (cpi, prime, rampTo, rampMonths, shock, shockMonth).
+     today: the rates do not move (no prime path, no shock), the CPI as chosen; boi: the Bank of Israel forecast in the data, the
+     policy rate to forecast.rate_q3_2027 on the prime track by the middle of Q3 2027 (the ramp of the page) and the CPI at
+     forecast.inflation_4q; stress: the tool's own +2% check of v1 (scen({all: 2}): 2 points on every track from month 1, on the
+     chosen path and CPI). */
+  function three(rows, D, o) {
+    o = o || {}; var FC = D.forecast, POL = D.policy;
+    return {
+      today: mix(rows, scenario(Object.assign({}, o, { prime: 'none', all: 0 }))),
+      boi: mix(rows, scenario({ cpi: FC.inflation_4q, prime: 'boi', rampTo: FC.rate_q3_2027 - POL.rate, rampMonths: o.rampMonths || 1 })),
+      stress: mix(rows, scenario(Object.assign({}, o, { all: 2 })))
+    };
+  }
+  /* C14: the three uniform baskets of directive 451 (D.baskets.list, Spitzer, one term for every track) on a loan and a term, each
+     track at rateOf(track) (this file's track names; the average of the data when rateOf is missing). The amount of a track is
+     loan x its share, as NLMR.mathRows(NLMR.basketRows(...)) of tools/mrates-common.js builds them for mexit. */
+  function baskets(D, loan, years, rateOf, sc) {
+    var TR = D.tracks || {};
+    return ((D.baskets && D.baskets.list) || []).map(function (b) {
+      var rows = b.mix.map(function (x) { var T = TR[x[0]] || {}, r = rateOf ? rateOf(x[0]) : T.rate;
+        return { track: x[0], amount: loan * x[1], rate: isFinite(r) ? +r : +T.rate, years: years, method: 'spitzer', grace: 0, graceType: 'partial', kind: T.kind, linked: !!T.linked, directed: !!T.directed }; });
+      return { k: b.k, label: b.label, mix: b.mix, rows: rows, R: mix(rows, sc || scenario({})) };
+    });
+  }
+
+  window.NLMG = { pmt: pmt, scenario: scenario, track: track, mix: mix, solveLoan: solveLoan, ef2nom: ef2nom, bucket: bucket, prepayFee: prepayFee, stream: stream, pv: pv,
+    freqOf: freqOf, band: band, monthHe: monthHe, csv: csv, three: three, baskets: baskets };  // v2: the last six
   if (!window.NadLanInstruments) return;
 
   /* ============================================================================================================== the page */
@@ -167,6 +246,11 @@
   var COL = ['#2F6F86', '#1F4B5C', '#4F9A5C', '#7FA9B8', '#5E6A75', '#12202A'];  // 26.10.2026: sea, deep, open, light sea, slate, ink; red stays for warnings, no mustard (design law 13.10)
   var TRACKS = ['fixed_nl', 'fixed_cpi', 'prime', 'var5_cpi', 'var5_nl', 'zakaut'];
   var TNAME = { fixed_nl: 'קל״צ: קבועה לא צמודה', fixed_cpi: 'ק״צ: קבועה צמודה למדד', prime: 'פריים', var5_cpi: 'משתנה כל 5 שנים, צמודה', var5_nl: 'משתנה כל 5 שנים, לא צמודה', zakaut: 'הלוואת זכאות' };
+  var FREQS = [['12', 'כל שנה'], ['24', 'כל שנתיים'], ['30', 'כל 2.5 שנים'], ['60', 'כל 5 שנים'], ['120', 'כל 10 שנים']];  // v2 (C2)
+  function freqLabel(q) { var f = FREQS.filter(function (x) { return +x[0] === q; })[0]; return f ? f[1] : 'כל ' + F.num(q / 12, q % 12 ? 1 : 0) + ' שנים'; }
+  function isVar(r) { return /^var5_/.test(r.track); }
+  function offFreq(r) { return isVar(r) && freqOf(r) !== 60; }  // a variable track on a frequency the user chose (not the v1 five years)
+  function tn(r) { var n = TNAME[r.track]; return n && offFreq(r) ? n.replace('כל 5 שנים', freqLabel(freqOf(r))) : n; }  // v2: the name follows the frequency
   var METHODS = [['spitzer', 'שפיצר'], ['equal', 'קרן שווה'], ['balloon', 'בלון'], ['bullet', 'בוליט']];
   var BUYER = [['single', 'דירה יחידה'], ['replace', 'דירה חליפית'], ['invest', 'דירה להשקעה'], ['reduced', 'דירה במחיר מופחת']];
   var MODES = [['amount', 'לפי סכום'], ['payment', 'לפי החזר חודשי'], ['price', 'לפי מחיר והון עצמי']];
@@ -252,6 +336,29 @@
       '.nlm__stress small{display:block;font:400 12px/16px var(--nli-sans);color:var(--nli-mute)}',
       '.nlm__status{font:400 14px/22px var(--nli-sans);color:var(--nli-ink2);margin:0;padding:12px;border-inline-start:3px solid var(--nli-sea);background:var(--nli-ground)}',
       '.nlm__status.is-mid{border-inline-start-color:#12202A}.nlm__status.is-hi{border-inline-start-color:#C42550}',
+      /* v2 (round M): the bank band under the rate (C1), the three scenarios (C9), the uniform baskets for my amount (C14) */
+      '.nlm__rg{grid-auto-flow:row dense}',
+      'html body .nli .nlm p.nlm__band{grid-column:1/-1;margin:-2px 0 2px !important;font:400 12px/18px var(--nli-sans) !important;color:var(--nli-mute) !important;max-width:none}',
+      '.nlm__band bdi{font:500 12px/18px var(--nli-mono);color:var(--nli-ink)}.nlm__band b{font-weight:500;color:var(--nli-ink2)}',
+      '.nlm__s3,.nlm__s4{display:grid;gap:8px;margin:0 0 12px}.nlm__s3{grid-template-columns:repeat(3,minmax(0,1fr))}.nlm__s4{grid-template-columns:repeat(2,minmax(0,1fr))}',
+      '@media (min-width:1000px){.nlm__s4{grid-template-columns:repeat(4,minmax(0,1fr))}}',
+      '.nlm__sc{border:1px solid var(--nli-line);border-top:3px solid #2F6F86;border-radius:var(--nli-r-s);padding:10px 10px 8px;background:var(--nli-surface);min-width:0;display:grid;gap:6px;align-content:start;grid-row:span 5;grid-template-rows:subgrid}',  // the five lines of every card on the same rows
+      '@media (max-width:599px){.nlm__s3 .nlm__sc{padding:8px 6px 6px}.nlm__s3 .nlm__sc .nlm__scr strong{font-size:clamp(11px,3.3vw,14px);letter-spacing:-.02em;white-space:nowrap;overflow-wrap:normal}}',
+      '.nlm__sc.is-me{border-top-color:#12202A;background:var(--nli-ground)}.nlm__sc.is-hard{border-top-color:#C42550}.nlm__sc.is-fc{border-top-color:#1F4B5C}',
+      '.nlm__sc .nlm__sct{display:block;font:600 14px/19px var(--nli-sans);color:var(--nli-ink)}',
+      '.nlm__sc .nlm__scs{display:block;font:400 11px/15px var(--nli-sans);color:var(--nli-mute)}',
+      '.nlm__sc .nlm__scr{display:grid;gap:0;border-top:1px solid var(--nli-line);padding-top:5px}',
+      '.nlm__sc .nlm__scr span{font:400 11px/15px var(--nli-sans);color:var(--nli-ink2)}',
+      '.nlm__sc .nlm__scr strong{font:500 14px/19px var(--nli-mono);color:var(--nli-ink);direction:ltr;unicode-bidi:plaintext;text-align:right;overflow-wrap:anywhere}',
+      '.nlm__sc .nlm__scr small{font:400 11px/14px var(--nli-sans);color:var(--nli-mute)}',
+      '.nlm__sc .nlm__scr.is-low strong{color:#2E6B43}',
+      'html body .nli .nlm__btns button[aria-pressed="true"]{background:var(--nli-sea);color:#fff}',
+      '@media (min-width:600px){.nlm__sc .nlm__scr strong{font-size:15px}}',
+      'html body .nli .nlm button.nlm__csv{margin-inline-start:20px}',
+      'html body .nli .nlm__rg .nlm__fq .nli__in{border:0;outline:1px solid var(--nli-line);outline-offset:-1px}',  // the same line drawn inside, so the select itself is 44 px
+      'html body .nli .nlm__rg .nlm__fq .nli__in:focus-within{outline:2px solid var(--nli-sea);outline-offset:-2px;box-shadow:none}',
+      'html body .nli .nlm__rg .nlm__fq select{min-height:44px}',
+      '@media print{.nlm__csv,.nlm__bk .nlm__btns{display:none !important}}',
       '@media print{.nlm__live,.nlm__btns,.nlm__x,.nlm__rh button,.nlm .nli__seg,.nlm .nli__pre{display:none !important}.nlm__out{position:static}}'
     ].join('\n');
     document.head.appendChild(s);
@@ -362,18 +469,25 @@
       var rampMonths = Math.max(1, (2027 - y0) * 12 + (8 - m0));  // to the middle of the third quarter of 2027 (the forecast horizon)
 
       function defRate(k) { return TR[k] ? TR[k].rate : 4; }
-      function newRow(k, amount, share, years) { return { track: k, amount: amount, share: share, rate: defRate(k), touched: false, years: years || 25, method: 'spitzer', grace: 0, graceType: 'partial' }; }
+      function newRow(k, amount, share, years) { return { track: k, amount: amount, share: share, rate: defRate(k), touched: false, years: years || 25, method: 'spitzer', grace: 0, graceType: 'partial', freq: 60 }; }
       function base() {
         return { mode: 'amount', buyer: 'single', rows: [newRow('fixed_nl', 600000, 50), newRow('prime', 400000, 100 / 3), newRow('var5_cpi', 200000, 50 / 3)],
           target: 6000, basis: 'first', price: 2000000, equity: 500000, value: 2000000, appraisal: null, grant: false,
           cpi: 'boi', cpiCustom: 2.5, prime: 'none', shock: 1, shockMonth: 24, income: 22000, loans: 0, expenses: 0, stress: 1,
-          prepay: { on: false, row: 0, month: 60, amount: 100000, mode: 'shorten' }, offer: [], compare: [] };
+          prepay: { on: false, row: 0, month: 60, amount: 100000, mode: 'shorten' }, offer: [], compare: [],
+          termUnit: 'y', showBaskets: false };  // v2: the term typed in years or months (C3); the uniform baskets for my amount shown (C14)
       }
       var v = base(), pre = null;
       function basket(k, loan, years) {
         var b = D.baskets.list.filter(function (x) { return x.k === k; })[0];
         return b.mix.map(function (x) { return newRow(x[0], Math.round(loan * x[1]), 100 * x[1], years); });
       }
+      /* v2 (C14): the uniform baskets on this loan, on the term of track 1 (the convention of the compare button below), each track at
+         the rate typed for it in the mix (a bank offer, if that is what was typed) and at the Bank of Israel average when the mix has
+         no such track; NLMG.baskets builds the rows, NLMG.mix computes them on the page's scenario */
+      function basketTerm() { var y = v.rows[0] ? +v.rows[0].years : NaN; return isFinite(y) && y > 0 ? y : 25; }
+      function basketRate(k) { var r = v.rows.filter(function (x) { return x.track === k && isFinite(x.rate); })[0]; return r ? r.rate : defRate(k); }
+      function basketsFor(loan, sc) { return baskets(D, loan, basketTerm(), basketRate, sc); }
       var PRESETS = [
         { key: 'b1', label: 'סל אחיד 1', sub: 'כל ההלוואה בקל״צ' },
         { key: 'b2', label: 'סל אחיד 2', sub: 'שליש קל״צ, שליש פריים, שליש משתנה צמודה' },
@@ -392,14 +506,15 @@
       function syncShares() { var t = v.rows.reduce(function (a, r) { return a + (r.amount || 0); }, 0) || 1; v.rows.forEach(function (r) { r.share = 100 * (r.amount || 0) / t; }); }
 
       /* the loan and the amounts by mode */
-      function scen(extra) {
+      function scenOpts(extra) {  // v2: the options alone, so the three scenarios (C9) start from the same ones
         var c = v.cpi === 'boi' ? FC.inflation_4q : v.cpi === 'market' ? FC.market_inflation : v.cpi === 'zero' ? 0 : (isFinite(v.cpiCustom) ? v.cpiCustom : 0);
         var to = v.prime === 'boi' ? FC.rate_q3_2027 - POL.rate : v.prime === 'market' ? FC.market_rate - POL.rate : 0;
-        return scenario(Object.assign({ cpi: c, prime: v.prime, rampTo: to, rampMonths: rampMonths, shock: v.shock, shockMonth: v.shockMonth }, extra || {}));
+        return Object.assign({ cpi: c, prime: v.prime, rampTo: to, rampMonths: rampMonths, shock: v.shock, shockMonth: v.shockMonth }, extra || {});
       }
+      function scen(extra) { return scenario(scenOpts(extra)); }
       function mathRow(r, amount, withPrepay, i) {
         var T = TR[r.track] || TR.fixed_nl;
-        return { amount: amount, rate: r.rate, years: r.years, method: r.method, grace: r.grace, graceType: r.graceType, kind: T.kind, linked: !!T.linked, directed: !!T.directed,
+        return { amount: amount, rate: r.rate, years: r.years, method: r.method, grace: r.grace, graceType: r.graceType, kind: T.kind, linked: !!T.linked, directed: !!T.directed, freq: r.freq,
           prepay: withPrepay && v.prepay.on && v.prepay.row === i ? { month: v.prepay.month, amount: v.prepay.amount, mode: v.prepay.mode } : null };
       }
       function shares() { return v.rows.map(function (r) { return Math.max(0, +r.share || 0); }); }
@@ -501,6 +616,7 @@
         totalBox = el('p', 'nlm__sum'); top.appendChild(totalBox);
         form.appendChild(top);
         var rl = el('div', 'nli__f'); rl.appendChild(el('span', 'nli__lab', 'המסלולים')); form.appendChild(rl);
+        form.appendChild(seg('התקופה בכל מסלול', [['y', 'בשנים'], ['m', 'בחודשים']], v.termUnit, function (k) { if (k === v.termUnit) return; v.termUnit = k; drawRows(); touch(); }));  // v2 (C3)
         rowsBox = el('div', 'nlm__rows'); form.appendChild(rowsBox); drawRows();
         var add = el('button', 'nli__add', '+ הוספת מסלול'); add.type = 'button'; add.hidden = v.rows.length >= 6;
         add.addEventListener('click', function () { if (v.rows.length >= 6) return; var R = resolve(); var r = newRow('fixed_cpi', v.mode === 'amount' ? 100000 : 0, v.mode === 'amount' ? 0 : 10, 25);
@@ -527,7 +643,7 @@
         var pb = el('div', 'nlm__box');
         var ck2 = el('label', 'nlm__chk'); var cb2 = el('input'); cb2.type = 'checkbox'; cb2.checked = !!v.prepay.on; cb2.addEventListener('change', function () { v.prepay.on = cb2.checked; touch(); });
         ck2.appendChild(cb2); ck2.appendChild(document.createTextNode('לחשב פירעון מוקדם')); pb.appendChild(ck2);
-        pb.appendChild(select('באיזה מסלול', v.rows.map(function (r, i) { return [String(i), (i + 1) + '. ' + (TNAME[r.track] || r.track)]; }), String(Math.min(v.prepay.row, v.rows.length - 1)), function (k) { v.prepay.row = +k; touch(); }));
+        pb.appendChild(select('באיזה מסלול', v.rows.map(function (r, i) { return [String(i), (i + 1) + '. ' + (tn(r) || r.track)]; }), String(Math.min(v.prepay.row, v.rows.length - 1)), function (k) { v.prepay.row = +k; touch(); }));
         var t3 = el('div', 'nlm__two');
         t3.appendChild(input('בחודש', v.prepay.month, 'חודש', function (n) { v.prepay.month = n; touch(); }, { help: '60 = אחרי 5 שנים' }));
         t3.appendChild(input('סכום', v.prepay.amount, '₪', function (n) { v.prepay.amount = n; touch(); }, { money: true }));
@@ -545,6 +661,10 @@
         if (r.touched) txt = 'הריבית שהקלדתם. ' + txt;
         return txt;
       }
+      function bandText(b) {  // v2 (C1): the lowest and the highest bank, the month in Hebrew, the source by name
+        return 'הריבית ב־' + b.n + ' הבנקים, ' + esc(monthHe(b.month)) + ': מ־<bdi>' + esc(pc(b.min.nom)) + '</bdi> (' + esc(b.min.he) + ') עד <bdi>' + esc(pc(b.max.nom)) + '</bdi> (' + esc(b.max.he) + ') נומינלית, ובריבית אפקטיבית מ־' +
+          esc(pc(b.min.eff)) + ' עד ' + esc(pc(b.max.eff)) + '. <b>מקור: קו המשווה של בנק ישראל.</b>';
+      }
       function drawRows() {
         rowsBox.innerHTML = '';
         var R = resolve();
@@ -561,7 +681,10 @@
           else g.appendChild(input('חלק מההלוואה', Math.round(r.share * 100) / 100, '%', function (n) { r.share = isFinite(n) ? n : 0; touch(); }));
           var rateF = input('ריבית שנתית', r.rate, '%', function (n) { r.rate = n; r.touched = true; hint.innerHTML = rateHint(r); reset.hidden = false; touch(); });
           g.appendChild(rateF);
-          g.appendChild(input('שנים', r.years, 'שנים', function (n) { r.years = n; touch(); }));
+          var bd = band(D, r.track); if (bd) g.appendChild(el('p', 'nlm__hint nlm__band', bandText(bd)));  // v2 (C1): only where by_bank has the track
+          if (v.termUnit === 'm') g.appendChild(input('חודשים', isFinite(r.years) ? Math.round(r.years * 12) : NaN, 'חודשים', function (n) { r.years = isFinite(n) ? n / 12 : NaN; touch(); }));  // v2 (C3)
+          else g.appendChild(input('שנים', r.years % 1 ? Math.round(r.years * 100) / 100 : r.years, 'שנים', function (n) { r.years = n; touch(); }));
+          if (isVar(r)) { var fq = select('תדירות שינוי הריבית', FREQS, String(freqOf(r)), function (k) { r.freq = +k; buildMoat(); touch(); }); fq.classList.add('nlm__fq'); g.appendChild(fq); }  // v2 (C2)
           g.appendChild(select('לוח סילוקין', METHODS, r.method, function (k) { r.method = k; touch(); }));
           g.appendChild(input('חודשי גרייס', r.grace, 'חודשים', function (n) { r.grace = isFinite(n) ? n : 0; touch(); }));
           g.appendChild(select('סוג הגרייס', [['partial', 'חלקי'], ['full', 'מלא']], r.graceType, function (k) { r.graceType = k; touch(); }));
@@ -597,7 +720,7 @@
         offerBox.innerHTML = tb;
         var body = offerBox.querySelector('tbody');
         v.rows.forEach(function (r, i) {
-          var tr = el('tr', ''); tr.innerHTML = '<td>' + esc((i + 1) + '. ' + TNAME[r.track]) + '</td><td class="n" data-y data-l="שנים"></td><td data-l="הריבית בהצעה"></td><td class="r" data-s data-l="ממוצע בנק ישראל למסלול"></td><td class="r" data-b data-l="ממוצע לאותה תקופה"></td><td class="n" data-g data-l="הפער"></td><td class="n" data-ils data-l="לאורך ההלוואה"></td><td class="n" data-m data-l="בחודש הראשון"></td>';
+          var tr = el('tr', ''); tr.innerHTML = '<td>' + esc((i + 1) + '. ' + tn(r)) + '</td><td class="n" data-y data-l="שנים"></td><td data-l="הריבית בהצעה"></td><td class="r" data-s data-l="ממוצע בנק ישראל למסלול"></td><td class="r" data-b data-l="ממוצע לאותה תקופה"></td><td class="n" data-g data-l="הפער"></td><td class="n" data-ils data-l="לאורך ההלוואה"></td><td class="n" data-m data-l="בחודש הראשון"></td>';
           var inp = el('input'); inp.type = 'text'; inp.inputMode = 'decimal'; inp.setAttribute('aria-label', 'הריבית בהצעה, מסלול ' + (i + 1));
           inp.value = v.offer[i] != null ? String(v.offer[i]) : String(r.rate);
           inp.addEventListener('input', function () { var n = num(inp.value); v.offer[i] = isFinite(n) ? n : null; soon(); });
@@ -615,7 +738,8 @@
         if (!(R0.loan > 0) || !isFinite(R0.loan)) return err(v.mode === 'payment' ? 'הקלידו את ההחזר החודשי, ולפחות מסלול אחד עם חלק מההלוואה.' : v.mode === 'price' ? 'ההון העצמי גדול ממחיר הדירה, או שהמחיר חסר.' : 'הקלידו סכום לפחות במסלול אחד.');
         for (var i = 0; i < v.rows.length; i++) {
           var r = v.rows[i];
-          if (!(r.years >= 4 && r.years <= 35)) return err('מסלול ' + (i + 1) + ': תקופה בין 4 ל־30 שנים.');
+          if (v.termUnit === 'm') { var mo = Math.round(r.years * 12); if (!(mo >= 48 && mo <= 360)) return err('מסלול ' + (i + 1) + ': תקופה בין 48 ל־360 חודשים.'); }  // v2 (C3)
+          else if (!(r.years >= 4 && r.years <= 35)) return err('מסלול ' + (i + 1) + ': תקופה בין 4 ל־30 שנים.');
           if (!(r.rate >= 0 && r.rate <= 20)) return err('מסלול ' + (i + 1) + ': ריבית שנתית בין 0% ל־20%.');
           if (!(r.grace >= 0 && r.grace < r.years * 12)) return err('מסלול ' + (i + 1) + ': הגרייס צריך להיות קצר מתקופת המסלול.');
         }
@@ -624,7 +748,10 @@
         var base0 = mix(v.rows.map(function (r, i) { return mathRow(r, R0.amounts[i], false, i); }), sc);
         var st1 = isFinite(v.stress) && v.stress !== 0 ? mix(v.rows.map(function (r, i) { return mathRow(r, R0.amounts[i], false, i); }), scen({ all: v.stress })) : null;
         var st2 = mix(v.rows.map(function (r, i) { return mathRow(r, R0.amounts[i], false, i); }), scen({ all: 2 }));
-        last = { R: R, base: base0, R0: R0, sc: sc, st1: st1, st2: st2 };
+        // v2: the three scenarios side by side (C9) and, on request, the uniform baskets on this amount and term (C14)
+        var s3 = three(v.rows.map(function (r, i) { return mathRow(r, R0.amounts[i], false, i); }), D, scenOpts());
+        var bk = v.showBaskets ? basketsFor(R0.loan, sc) : null;
+        last = { R: R, base: base0, R0: R0, sc: sc, st1: st1, st2: st2, s3: s3, bk: bk };
         paintOut(last); paintCharts(last); paintMoat(last); paintCompare(); paintSched(last); paintFoot(last);
       }
 
@@ -638,9 +765,9 @@
           (R.highest >= 0.5 ? 'ההחזר הגבוה הצפוי: <bdi>' + esc(ils(R.highest)) + '</bdi>, ' + esc(yearsOf(R.highestMonth)) : 'אין החזר חודשי עד התשלום בסוף התקופה') + (R.first < 0.5 && R.highest >= 0.5 ? ' (בחודשי הגרייס המלא אין תשלום)' : '') + ' · משכנתא של <bdi>' + esc(ils(loan)) + '</bdi></span>';
         out.appendChild(a);
         var tot = R.firstBy.reduce(function (s, b) { return s + b; }, 0) || 1, bw = el('div', ''), bar = el('div', 'nli__bar'), lg = el('ul', 'nli__legend');
-        bar.setAttribute('role', 'img'); bar.setAttribute('aria-label', 'ההחזר הראשון לפי מסלול: ' + v.rows.map(function (r, i) { return TNAME[r.track] + ' ' + ils(R.firstBy[i]); }).join(', '));
+        bar.setAttribute('role', 'img'); bar.setAttribute('aria-label', 'ההחזר הראשון לפי מסלול: ' + v.rows.map(function (r, i) { return tn(r) + ' ' + ils(R.firstBy[i]); }).join(', '));
         v.rows.forEach(function (r, i) { var x = el('i', ''); x.style.width = (100 * R.firstBy[i] / tot) + '%'; x.style.background = COL[i % COL.length]; bar.appendChild(x);
-          lg.appendChild(el('li', '', '<b style="background:' + COL[i % COL.length] + '"></b>' + esc(TNAME[r.track]) + ' <bdi>' + esc(ils(R.firstBy[i])) + '</bdi>')); });
+          lg.appendChild(el('li', '', '<b style="background:' + COL[i % COL.length] + '"></b>' + esc(tn(r)) + ' <bdi>' + esc(ils(R.firstBy[i])) + '</bdi>')); });
         bw.appendChild(bar); bw.appendChild(lg); out.appendChild(bw);
         var pti = ptiOf(R.first), ptiH = ptiOf(R.highest);
         var lines = [['ההחזר הגבוה הצפוי, ' + yearsOf(R.highestMonth), ils(R.highest)], ['סך כל התשלומים', ils(R.totalPaid)], ['סך הריבית', ils(R.totalInterest)], ['סך ההצמדה למדד', R.totalLinkage > 0.5 ? ils(R.totalLinkage) : 'ללא הצמדה'],
@@ -649,6 +776,7 @@
           ['שיעור מימון (מותר עד ' + pc(100 * cap, 0) + ')', isFinite(ltv) ? pc(100 * ltv, 1) : 'הקלידו שווי']];
         if (v.mode === 'price') lines.push(['ההון העצמי הנדרש לפחות', ils(Math.max(0, v.price - mx))]);
         R.lumps.forEach(function (l) { lines.push([(v.rows[l.k].method === 'balloon' ? 'התשלום בסוף מסלול ' + (l.k + 1) + ' (בלון: הקרן והריבית שנצברה)' : 'הקרן בסוף מסלול ' + (l.k + 1) + ' (בוליט)') + ', ' + yearsOf(l.month), ils(l.amount)]); });
+        v.rows.forEach(function (r, i) { if (offFreq(r)) lines.push(['תדירות שינוי הריבית, מסלול ' + (i + 1), freqLabel(freqOf(r))]); });  // v2 (C2): the choice is in the results
         var dl = el('dl', 'nli__lines'); lines.forEach(function (x) { dl.appendChild(el('div', '', '<dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd>')); }); out.appendChild(dl);
         if (isFinite(pti)) { var cls = pti > 0.4 ? 'is-hi' : pti > 0.3 ? 'is-mid' : ''; out.appendChild(el('p', 'nlm__status ' + cls, esc(pti > 0.4 ? OLD.hi : pti > 0.3 ? OLD.mid : OLD.lo))); }
         var ss = el('div', 'nlm__stress'), b0 = L.base.first;
@@ -662,6 +790,45 @@
         rules(R, loan, ltv, cap, pti).forEach(function (x) { ul.appendChild(el('li', x[0] === 'bad' ? 'is-bad' : x[0] === 'warn' ? 'is-warn' : '', '<b>' + esc(x[0] === 'bad' ? 'חריגה' : x[0] === 'warn' ? 'לתשומת לב' : 'תקין') + '</b><span>' + esc(x[1]) + '</span>')); });
         out.appendChild(ul);
         if (v.prepay.on) out.appendChild(prepayBlock(L));
+        out.appendChild(threeBlock(L)); out.appendChild(basketBlock(L));  // v2 (C9, C14)
+      }
+      /* v2: one card of a scenario or a mix: the first payment, the highest with its year, the total paid */
+      function scCard(cls, title, sub, M, low) {
+        var c = el('div', 'nlm__sc' + (cls ? ' ' + cls : ''));
+        c.innerHTML = '<b class="nlm__sct">' + esc(title) + '</b><span class="nlm__scs">' + esc(sub) + '</span>' +
+          '<div class="nlm__scr"><span>ההחזר הראשון</span><strong>' + esc(ils(M.first)) + '</strong></div>' +
+          '<div class="nlm__scr"><span>ההחזר הגבוה</span><strong>' + esc(ils(M.highest)) + '</strong><small>' + esc(yearsOf(M.highestMonth)) + '</small></div>' +
+          '<div class="nlm__scr' + (low ? ' is-low' : '') + '"><span>סך כל התשלומים</span><strong>' + esc(ils(M.totalPaid)) + '</strong></div>';
+        return c;
+      }
+      function threeBlock(L) {  // C9
+        var w = el('div', 'nlm__three'), S = L.s3, o = scenOpts();
+        w.appendChild(el('span', 'nli__alab', 'שלושה תרחישים זה לצד זה'));
+        var g = el('div', 'nlm__s3'); g.setAttribute('role', 'group'); g.setAttribute('aria-label', 'שלושה תרחישים: היום, תחזית בנק ישראל ותרחיש מחמיר');
+        g.appendChild(scCard('', 'היום', 'הריביות של היום עד הסוף, מדד ' + pc(o.cpi, 1) + ' בשנה', S.today));
+        g.appendChild(scCard('is-fc', 'תחזית בנק ישראל', 'ריבית בנק ישראל ' + pc(FC.rate_q3_2027, 1) + ' ברבע 3 של 2027, מדד ' + pc(FC.inflation_4q, 1) + ' בשנה', S.boi));
+        g.appendChild(scCard('is-hard', 'תרחיש מחמיר', 'עלייה של 2% בכל המסלולים מהחודש הראשון', S.stress));
+        w.appendChild(g);
+        w.appendChild(el('p', 'nlm__hint', 'באותם מסלולים ובאותו סכום, בלי פירעון מוקדם. התחזית של בנק ישראל מ־' + day(FC.published) + ' חלה על מסלול הפריים, כמו בבחירה למעלה. התרחיש המחמיר הוא בדיקת ה־2% שלמעלה, על המדד ומסלול הפריים שבחרתם.'));
+        return w;
+      }
+      function basketBlock(L) {  // C14
+        var w = el('div', 'nlm__bk'), bt = el('div', 'nlm__btns'), b = el('button', '', 'הסלים האחידים לסכום שלי'); b.type = 'button';
+        b.setAttribute('aria-pressed', String(!!v.showBaskets));
+        b.addEventListener('click', function () { v.showBaskets = !v.showBaskets; run(); var nb = out.querySelector('.nlm__bk button'); if (nb) nb.focus(); });
+        bt.appendChild(b); w.appendChild(bt);
+        if (!v.showBaskets || !L.bk) return w;
+        var yrs = basketTerm(), term = v.termUnit === 'm' ? nf0.format(Math.round(yrs * 12)) + ' חודשים' : F.num(yrs, yrs % 1 ? 1 : 0) + ' שנה';
+        var mixed = v.rows.some(function (r) { return r.years !== v.rows[0].years; });
+        w.appendChild(el('p', 'nlm__hint', esc('שלושת הסלים האחידים של הוראה 451 על ' + ils(L.R0.loan) + ' ל־' + term + (mixed ? ' (התקופה של מסלול 1)' : '') + ', בלוח שפיצר, באותו מדד ובאותו מסלול פריים, ליד התמהיל שלכם.')));
+        var all = [{ name: 'התמהיל שלכם', sub: v.rows.length === 1 ? 'מסלול אחד' : v.rows.length + ' מסלולים', M: L.base, cls: 'is-me' }].concat(L.bk.map(function (x) {
+          var p = PRESETS.filter(function (q) { return q.key === x.k; })[0]; return { name: x.label, sub: p ? p.sub : '', M: x.R, cls: '' }; }));
+        var lo = all.reduce(function (a, x, i) { return x.M.totalPaid < all[a].M.totalPaid - 0.5 ? i : a; }, 0);
+        var g = el('div', 'nlm__s4'); g.setAttribute('role', 'group'); g.setAttribute('aria-label', 'התמהיל שלכם ושלושת הסלים האחידים');
+        all.forEach(function (x, i) { g.appendChild(scCard(x.cls, x.name, x.sub, x.M, i === lo)); });
+        w.appendChild(g);
+        w.appendChild(el('p', 'nlm__hint', 'בירוק: סך התשלומים הנמוך מבין הארבעה. בכל אישור עקרוני הבנק חייב להציג את שלושת הסלים בריביות שלו. כאן כל מסלול בריבית שהקלדתם לו בתמהיל, ומסלול שאין בתמהיל בממוצע של בנק ישראל.'));
+        return w;
       }
       function rules(R, loan, ltv, cap, pti) {
         var o = [], varAmt = 0, rl = D.rules;
@@ -683,7 +850,7 @@
       function L0amt(i) { return last && last.R0 ? last.R0.amounts[i] || 0 : 0; }
       function prepayBlock(L) {
         var i = Math.min(v.prepay.row, v.rows.length - 1), S = L.R.T[i], B0 = L.base, w = el('div', 'nlm__box');
-        w.appendChild(el('h4', 'nlm__h4', 'פירעון מוקדם במסלול ' + (i + 1) + ': ' + TNAME[v.rows[i].track]));
+        w.appendChild(el('h4', 'nlm__h4', 'פירעון מוקדם במסלול ' + (i + 1) + ': ' + tn(v.rows[i])));
         if (!S || !S.prepay) { w.appendChild(el('p', 'nlm__hint', 'בחודש הזה המסלול כבר נפרע, או שהסכום חסר. בחרו חודש מוקדם יותר.')); return w; }
         var P = S.prepay, tr = mathRow(v.rows[i], L.R0.amounts[i], true, i);
         var f0 = prepayFee(tr, P, D, 0), f1 = prepayFee(tr, P, D, 1);
@@ -709,7 +876,7 @@
         chartsSec.appendChild(el('h3', 'nlm__h', 'המשכנתא לאורך השנים'));
         var g = el('div', 'nlm__charts');
         function fig(title, svg, lg, cap) { var f = el('figure', 'nlm__chart'); f.style.margin = '0'; f.appendChild(el('h4', 'nlm__h4', esc(title))); f.insertAdjacentHTML('beforeend', svg); if (lg) f.appendChild(lg); if (cap) f.appendChild(el('figcaption', '', esc(cap))); return f; }
-        var lg1 = el('ul', 'nlm__lg'); v.rows.forEach(function (r, i) { lg1.appendChild(el('li', '', '<i style="background:' + COL[i % COL.length] + '"></i>' + esc((i + 1) + '. ' + TNAME[r.track]))); });
+        var lg1 = el('ul', 'nlm__lg'); v.rows.forEach(function (r, i) { lg1.appendChild(el('li', '', '<i style="background:' + COL[i % COL.length] + '"></i>' + esc((i + 1) + '. ' + tn(r)))); });
         g.appendChild(fig('ההחזר החודשי לפי מסלול', chartPay(R, COL, W), lg1, 'ממוצע ההחזר החודשי בכל שנה, בשקלים של אותה שנה' + (R.lumps.length ? '; בלי תשלום הקרן בסוף מסלולי בלון ובוליט' : '') + '.'));
         g.appendChild(fig('יתרת ההלוואה', chartBal(R, W), null, 'בסוף כל שנה, כולל ההצמדה למדד.'));
         var lg3 = el('ul', 'nlm__lg', '<li><i style="background:#2F6F86"></i>קרן, כולל הצמדה</li><li><i style="background:#C42550"></i>ריבית</li>');
@@ -722,6 +889,7 @@
         var T = TR[r.track]; if (!T || T.directed) return null;
         var s = T.ref && T.ref.type === 'sdmx' ? D.rates[T.ref.key] : null, b = null, file = T.term_file;
         if (r.track === 'fixed_nl' || r.track === 'fixed_cpi') b = bucket(D.term[file].buckets, r.years);
+        else if (offFreq(r)) b = bucket(D.term[file].buckets, freqOf(r) / 12);  // v2 (C2): the period until the rate changes
         else if (T.term_bucket != null) b = D.term[file].buckets[T.term_bucket];
         var main = r.track === 'var5_cpi' && s ? { rate: s.rate, by: 'sdmx' } : b ? { rate: b.nom, by: 'term' } : s ? { rate: s.rate, by: 'sdmx' } : null;
         return { sdmx: s ? s.rate : null, term: b, file: file, main: main };
@@ -794,7 +962,7 @@
       }
 
       /* ------------------------------------------------------------------------------------------------- compare mixes */
-      function snapshot(name, rows) { return { name: name, rows: rows.map(function (r) { return { track: r.track, amount: r.amount, rate: r.rate, years: r.years, method: r.method, grace: r.grace, graceType: r.graceType }; }) }; }
+      function snapshot(name, rows) { return { name: name, rows: rows.map(function (r) { return { track: r.track, amount: r.amount, rate: r.rate, years: r.years, method: r.method, grace: r.grace, graceType: r.graceType, freq: r.freq }; }) }; }
       function paintCompare() {
         cmpSec.innerHTML = '';
         cmpSec.appendChild(el('h3', 'nlm__h', 'השוואת תמהילים'));
@@ -811,7 +979,7 @@
         var h = '<table class="nlm__t"><thead><tr><th scope="col"></th>' + cols.map(function (c, j) { return '<th scope="col">' + esc(c.name) + (j ? ' <button type="button" class="nlm__x" data-x="' + (j - 1) + '" aria-label="הסרה מההשוואה">×</button>' : '') + '</th>'; }).join('') + '</tr></thead><tbody>';
         var best = rowsT.map(function (rt, k) { if (k === 0) return -1; var vals = cols.map(function (c) { return c.R ? [c.R.first, c.R.highest, c.R.totalPaid, c.R.totalInterest, c.R.totalLinkage, c.R.perShekel, c.R.bal60][k - 1] : Infinity; }); return vals.indexOf(Math.min.apply(null, vals)); });
         rowsT.forEach(function (rt, k) { h += '<tr><th scope="row">' + esc(rt[0]) + '</th>' + cols.map(function (c, j) { return '<td class="n' + (best[k] === j && cols.length > 1 ? ' neg' : '') + '">' + (c.R ? esc(rt[1](c.R)) : '') + '</td>'; }).join('') + '</tr>'; });
-        h += '<tr><th scope="row">המסלולים</th>' + cols.map(function (c) { var rs = c.c ? c.c.rows : v.rows; return '<td style="white-space:normal;font-size:12px !important">' + esc(rs.map(function (r) { return (TNAME[r.track] || '').split(':')[0] + ' ' + F.num(r.rate, 2) + '%'; }).join(' · ')) + '</td>'; }).join('') + '</tr></tbody></table>';
+        h += '<tr><th scope="row">המסלולים</th>' + cols.map(function (c) { var rs = c.c ? c.c.rows : v.rows; return '<td style="white-space:normal;font-size:12px !important">' + esc(rs.map(function (r) { return (tn(r) || '').split(':')[0] + ' ' + F.num(r.rate, 2) + '%'; }).join(' · ')) + '</td>'; }).join('') + '</tr></tbody></table>';
         var tw = el('div', 'nlm__tw', h); cmpSec.appendChild(tw);
         [].forEach.call(tw.querySelectorAll('[data-x]'), function (b) { b.addEventListener('click', function () { v.compare.splice(+b.getAttribute('data-x'), 1); paintCompare(); }); });
         cmpSec.appendChild(el('p', 'nlm__hint', 'בירוק: הנמוך בכל שורה. הסלים האחידים לפי הוראה 451: בכל אישור עקרוני הבנק חייב להציג אותם, בלוח שפיצר, עם הריבית הכוללת, סך ההחזר וההחזר החודשי הגבוה הצפוי. כאן הם בריביות הממוצעות של בנק ישראל.'));
@@ -829,14 +997,25 @@
         var b = el('button', 'nlm__link', monthly ? 'לחזור ללוח השנתי' : 'להצגת כל ' + nf0.format(R.N) + ' החודשים'); b.type = 'button';
         b.addEventListener('click', function () { monthly = !monthly; paintSched(last); schedSec.open = true; });
         schedSec.appendChild(b);
+        var dc = el('button', 'nlm__link nlm__csv', 'הורדת לוח הסילוקין (CSV)'); dc.type = 'button'; dc.addEventListener('click', downloadCsv); schedSec.appendChild(dc);  // v2 (C5)
         if (R.prepaid > 0) schedSec.appendChild(el('p', 'nlm__hint', 'הפירעון המוקדם (' + ils(R.prepaid) + ') אינו בעמודת התשלומים; היתרה כבר כוללת אותו.'));
         schedSec.open = open;
       }
 
+      /* v2 (C5): the monthly schedule as a CSV file, built in the browser; nothing is sent anywhere */
+      function csvNames() { return v.rows.map(function (r, i) { var T = TR[r.track] || {}; return 'מסלול ' + (i + 1) + ' ' + (T.short || r.track) + (offFreq(r) ? ' ' + freqLabel(freqOf(r)) : ''); }); }
+      function downloadCsv() {
+        if (!last) return;
+        var blob = new Blob([csv(last.R, csvNames())], { type: 'text/csv;charset=utf-8' }), url = URL.createObjectURL(blob), a = document.createElement('a');
+        a.href = url; a.download = 'mortgage-schedule.csv'; a.style.display = 'none'; document.body.appendChild(a); a.click();
+        setTimeout(function () { URL.revokeObjectURL(url); if (a.parentNode) a.parentNode.removeChild(a); }, 1500);
+      }
+
       function shareState() {
-        var s = { mo: v.mode, bu: v.buyer, r: v.rows.map(function (r) { return [r.track, Math.round(r.amount || 0), Math.round((r.share || 0) * 100) / 100, r.rate, r.touched ? 1 : 0, r.years, r.method, r.grace, r.graceType]; }),
+        var s = { mo: v.mode, bu: v.buyer, r: v.rows.map(function (r) { return [r.track, Math.round(r.amount || 0), Math.round((r.share || 0) * 100) / 100, r.rate, r.touched ? 1 : 0, r.years, r.method, r.grace, r.graceType].concat(offFreq(r) ? [freqOf(r)] : []); }),
           tg: v.target, ba: v.basis, pr: v.price, eq: v.equity, va: v.value, ap: v.appraisal, gr: v.grant ? 1 : 0, cp: v.cpi, cc: v.cpiCustom, pp: v.prime, sk: v.shock, sm: v.shockMonth,
           in: v.income, lo: v.loans, ex: v.expenses, ss: v.stress, pf: [v.prepay.on ? 1 : 0, v.prepay.row, v.prepay.month, v.prepay.amount, v.prepay.mode], of: v.offer };
+        if (v.termUnit === 'm') s.tu = 'm';  // v2: written only when used, so a v1 case keeps its link
         var j = JSON.stringify(s), b = btoa(unescape(encodeURIComponent(j))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
         return (location.origin && location.origin !== 'null' ? location.origin + location.pathname : location.href.split('#')[0]) + '#mortgage=' + b;
       }
@@ -845,7 +1024,8 @@
           var b = h.replace(/-/g, '+').replace(/_/g, '/'); while (b.length % 4) b += '=';
           var s = JSON.parse(decodeURIComponent(escape(atob(b)))), n = base();
           n.mode = s.mo || n.mode; n.buyer = s.bu || n.buyer;
-          if (s.r && s.r.length) n.rows = s.r.slice(0, 6).map(function (x) { return { track: TR[x[0]] ? x[0] : 'fixed_nl', amount: +x[1] || 0, share: +x[2] || 0, rate: +x[3], touched: !!x[4], years: +x[5] || 25, method: x[6] || 'spitzer', grace: +x[7] || 0, graceType: x[8] || 'partial' }; });
+          if (s.r && s.r.length) n.rows = s.r.slice(0, 6).map(function (x) { return { track: TR[x[0]] ? x[0] : 'fixed_nl', amount: +x[1] || 0, share: +x[2] || 0, rate: +x[3], touched: !!x[4], years: +x[5] || 25, method: x[6] || 'spitzer', grace: +x[7] || 0, graceType: x[8] || 'partial', freq: FREQS.some(function (f) { return +f[0] === +x[9]; }) ? +x[9] : 60 }; });
+          n.termUnit = s.tu === 'm' ? 'm' : 'y';
           ['tg:target', 'ba:basis', 'pr:price', 'eq:equity', 'va:value', 'ap:appraisal', 'cp:cpi', 'cc:cpiCustom', 'pp:prime', 'sk:shock', 'sm:shockMonth', 'in:income', 'lo:loans', 'ex:expenses', 'ss:stress'].forEach(function (p) { var q = p.split(':'); if (s[q[0]] != null) n[q[1]] = s[q[0]]; });
           n.grant = !!s.gr; if (s.pf) n.prepay = { on: !!s.pf[0], row: +s.pf[1] || 0, month: +s.pf[2] || 60, amount: +s.pf[3] || 0, mode: s.pf[4] || 'shorten' };
           n.offer = Array.isArray(s.of) ? s.of : [];
@@ -856,10 +1036,13 @@
 
       function paintFoot(L) {
         var R = L.R;
-        formula.textContent = 'שפיצר: החזר = יתרה × ר ÷ (1 − (1 + ר)^−מ), כש־ר היא הריבית השנתית ÷ 12 ומ מספר התשלומים שנותרו. קרן שווה: אותו חלק קרן בכל חודש ועוד ריבית על היתרה. בוליט: רק ריבית בכל חודש והקרן בסוף. בלון: תשלום אחד בסוף, עם הריבית שנצברה. גרייס חלקי: רק ריבית; גרייס מלא: בלי תשלום, והריבית מצטרפת ליתרה. במסלול צמוד היתרה מוצמדת כל חודש למדד שבחרתם, וההחזר מחושב מחדש. פריים: ריבית בנק ישראל ועוד 1.5%; הריבית במסלול זזה לפי מסלול הפריים שבחרתם. משתנה כל 5 שנים: הריבית מתעדכנת בתחילת כל 5 שנים. החזר מההכנסה = ההחזר ÷ (הכנסה נטו − הלוואות קיימות − הוצאות קבועות).';
+        formula.textContent = 'שפיצר: החזר = יתרה × ר ÷ (1 − (1 + ר)^−מ), כש־ר היא הריבית השנתית ÷ 12 ומ מספר התשלומים שנותרו. קרן שווה: אותו חלק קרן בכל חודש ועוד ריבית על היתרה. בוליט: רק ריבית בכל חודש והקרן בסוף. בלון: תשלום אחד בסוף, עם הריבית שנצברה. גרייס חלקי: רק ריבית; גרייס מלא: בלי תשלום, והריבית מצטרפת ליתרה. במסלול צמוד היתרה מוצמדת כל חודש למדד שבחרתם, וההחזר מחושב מחדש. פריים: ריבית בנק ישראל ועוד 1.5%; הריבית במסלול זזה לפי מסלול הפריים שבחרתם. משתנה כל 5 שנים: הריבית מתעדכנת בתחילת כל 5 שנים. החזר מההכנסה = ההחזר ÷ (הכנסה נטו − הלוואות קיימות − הוצאות קבועות).' +
+          (v.rows.some(offFreq) ? ' במסלול משתנה בתדירות אחרת שבחרתם, הריבית מתעדכנת בתחילת כל תקופה כזו, ועלייה של 2% או שינוי משלכם מגיעים אליו רק בתחנת היציאה הבאה.' : '');  // v2 (C2)
         src.innerHTML = 'מקורות: ' + D.sources.map(function (s) { return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>'; }).join(' · ') + '. הנתונים עודכנו ב־' + esc(day(D.built)) + '.';
         share.innerHTML = '';
         var text = 'מחשבון משכנתא: הלוואה ' + ils(L.R0.loan) + ' ב־' + v.rows.length + ' מסלולים, החזר ראשון ' + ils(R.first) + ', החזר גבוה צפוי ' + ils(R.highest) + ', סך תשלומים ' + ils(R.totalPaid) + ' (ריבית ' + ils(R.totalInterest) + ', הצמדה ' + ils(R.totalLinkage) + ').';
+        var fq = v.rows.map(function (r, i) { return offFreq(r) ? 'מסלול ' + (i + 1) + ' ' + freqLabel(freqOf(r)) : ''; }).filter(Boolean);
+        if (fq.length) text += ' שינוי הריבית במסלול המשתנה: ' + fq.join(', ') + '.';  // v2 (C2): the choice goes into the copied text
         var ICON = { copy: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 7h9v10H7z"/><path d="M4 13V3h9"/></svg>', wa: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16l1-3.2A7 7 0 1 1 7.6 15z"/></svg>',
           print: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8V3h10v5"/><path d="M5 14H3V8h14v6h-2"/><path d="M6 12h8v5H6z"/></svg>', link: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 12l4-4"/><path d="M9 5l2-2a3 3 0 0 1 4 4l-2 2"/><path d="M11 15l-2 2a3 3 0 0 1-4-4l2-2"/></svg>' };
         function copy(btn, txt, lab) { var sp = btn.querySelector('span'); var done = function () { sp.textContent = 'הועתק'; setTimeout(function () { sp.textContent = lab; }, 1600); };
@@ -868,7 +1051,8 @@
         var b2 = el('a', '', ICON.wa + '<span>שליחה בוואטסאפ</span>'); b2.target = '_blank'; b2.rel = 'noopener'; b2.href = 'https://wa.me/'; b2.addEventListener('click', function () { b2.href = 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + shareState()); });
         var b3 = el('button', '', ICON.link + '<span>קישור שפותח את אותם מספרים</span>'); b3.type = 'button'; b3.addEventListener('click', function () { copy(b3, shareState(), 'קישור שפותח את אותם מספרים'); });
         var b4 = el('button', '', ICON.print + '<span>הדפסה או שמירה כקובץ</span>'); b4.type = 'button'; b4.addEventListener('click', function () { schedSec.open = true; window.print(); });
-        share.appendChild(b1); share.appendChild(b2); share.appendChild(b3); share.appendChild(b4);
+        var b5 = el('button', '', '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10"/><path d="M6 9l4 4 4-4"/><path d="M4 16h12"/></svg><span>הורדת לוח הסילוקין (CSV)</span>'); b5.type = 'button'; b5.addEventListener('click', downloadCsv);  // v2 (C5)
+        share.appendChild(b1); share.appendChild(b2); share.appendChild(b3); share.appendChild(b4); share.appendChild(b5);
       }
 
       /* the case the page opens on: a shared link, else the page's preset, else the example */
@@ -877,7 +1061,8 @@
       if (!opened) { try { var P = JSON.parse(root.getAttribute('data-nli-set') || '{}'); if (P.preset && PRESETS.some(function (p) { return p.key === P.preset; })) applyPreset(P.preset); } catch (e) {} }
       buildAll(); run();
       var rz = 0, lastW = chartsSec.clientWidth; window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(function () { if (last && Math.abs(chartsSec.clientWidth - lastW) > 40) { lastW = chartsSec.clientWidth; paintCharts(last); } }, 200); });
-      window.NLMG.ui = { state: function () { return v; }, last: function () { return last; }, run: run, rebuild: function () { buildAll(); run(); }, link: shareState };
+      window.NLMG.ui = { state: function () { return v; }, last: function () { return last; }, run: run, rebuild: function () { buildAll(); run(); }, link: shareState,
+        csv: function () { return last ? csv(last.R, csvNames()) : ''; } };  // v2: csv, the text the download button saves
     }
   });
 })();
