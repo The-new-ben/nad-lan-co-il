@@ -1,0 +1,96 @@
+data: kashe.json checked 2026-11-06; boi-mortgage rates.fixed_nl 4.62% (2026-08)
+
+0. the data file
+  ok   kashe.json: key "kashe", "checked": "2026-11-06", "src" names gov.md  [2026-11-06]
+  ok   every source: short label, title, https URL, a date and the read date 6.11.2026  [27 sources]
+  ok   every Kol Zchut source: a kolzchut.org.il/he/ URL and the page update date
+  ok   every source reference (timeline, rights, programs, lines, help, rules) resolves  [75 refs]
+  ok   every timeline step, right and program carries at least one source
+  ok   rules: 21 business days, 6 months, 3 months up to 3 times once per 12, 18 months rent, 12 months after death
+  ok   rules: 20 / 90 days, 90 days after the receiver, 10%, 2.5 million, committee 60 / 15 / 30
+  ok   the texts carry the rule numbers: 21 ימי עסקים (notice), 6 חודשים (day 0, six)
+  ok   the texts carry 20 and 90 days (warning), 90 days (receiver), 10% (immediate)
+  ok   the sale step carries 18 months, 2.5 million ₪ and the 16.5.2009 deeds
+  ok   rights carry 3 months, once per 12, 3 times (s.9ח1) and 12 months after death (s.9ח2)
+  ok   the committee right: 60, 15 and 30 days, Housing Loans Law s.5א and 5ב
+  ok   the elderly right: 70, until 4.11.2007, 300 ₪ / 200 ₪, the *2310 line
+  ok   the copy sentence (texts.copy_rules) carries 6 months, 21 business days, 20 / 90 days, 18 months, 3 months / 12 / 3 times, 12 months
+
+1. hand-worked Spitzer: 1,000,000 ILS, 300 months left, 4.62%, 3 months
+  ok   payment before: 5,626.656114  [5626.656114]
+  ok   all payments without a deferral: 1,687,996.83  [1687996.83]
+  ok   full deferral: balance after 3 months 1,011,594.52 (interest 11,594.52 joined it)  [1011594.524567]
+  ok   full deferral: payment after 5,722.51 over 297 months, nothing paid during  [5722.512908]
+  ok   full deferral: 11,589.50 more in total  [11589.4995]
+  ok   interest only: 3,850 a month during (11,550 paid)  [3850]
+  ok   interest only: payment after 5,656.92, 3,659.47 more in total  [5656.923568 / 3659.4657]
+  ok   extension: payment after 5,691.89 over 300 months, the loan 3 months longer  [5691.894516]
+  ok   extension: 19,571.52 more in total  [19571.5208]
+  ok   the cheapest in one sentence: ריבית בלבד, 3,659 ₪  [הזולה ביותר בסך הכול: ריבית בלבד, 3,659 ₪ יותר מהמסלול בלי דחייה. בחודשי הדחייה משלמים בה 3,850 ₪ בחודש, את הריבית בלבד.]
+  ok   identity: extension payment = P0 x 1.00385^3; full and extension end the deferral on the same balance
+  ok   6 months: after 5,820.54 / 5,687.88 / 5,757.89  [5820.54 / 5687.88 / 5757.89]
+  ok   6 months: extra 23,240.79 / 7,338.44 / 39,369.96
+  ok   1 month: full after 5,658.37, interest only +1,217.66, extension +6,498.79
+  ok   600,000 / 180 months / 5% / 2 months: 4,744.76 before; after 4,820.53 / 4,780.61 / 4,784.38
+  ok   600,000 case: extra 3,997.00 / 1,890.99 / 7,131.97, cheapest interest only
+  ok   0%: no extra cost for any way, said in words (3,333.33 before, 3,418.80 after a full deferral)  [בריבית 0% אין עלות נוספת לאף אחת מהדרכים.]
+
+2. the payment instead of the rate
+  ok   the rate solved from 1,000,000 / 300 / 5,626.66: 4.62%  [4.620000]
+  ok   payment mode gives the same three ways (full after 5,722.51)  [5722.5129]
+  ok   a payment below balance / months: an error on the payment field
+  ok   balance / months exactly: rate 0
+
+3. bad values
+  ok   balance 5,000, 300.5 months, 6 months, 7 deferral months, 25%: each an error on its own field
+  ok   no data: the reload message
+  ok   parsers: "1,000,000 ₪" = 1000000; "4,62" and "4.62" = 4.62
+
+4. the timeline
+  ok   order: day 0, the notice, 6 months, the execution office, the receiver, the sale  [day0 > notice > six > office > receiver > sale]
+  ok   the data file lists the steps in their order
+  ok   first missed payment 10.5.2026: the 6-month line falls on 10.11.2026  [2026-11-10]
+  ok   six calendar months: 31.8 -> 28.2 (29.2 in 2028), 15.12 -> 15.6
+  ok   no date (or a bad one): no date on the steps
+  ok   arrears only (six), objection (office), half within 90 days (receiver)
+
+5. the wartime outlines
+  ok   two outlines with their last application day: שאגת הארי 15.5.2026, עם כלביא 31.7.2025
+  ok   on 6.11.2026 both are "הסתיים"
+  ok   the status follows the date (open on 1.5.2026, ended on 16.5.2026)
+  ok   no outline text invites to apply; the block title says they ended
+  ok   the one line about a new operation
+  ok   the official dates: 2.3.2026, 15.4.2026, 15.5.2026; 17.6.2025, 1.7 to 31.7.2025
+
+6. the rights checklist
+  ok   פיטורים או מחלה, לידה: the deferral of s.9ח1
+  ok   פטירה של לווה: s.9ח2 and the life insurance
+  ok   הלוואת זכאות: the committee; גיל מבוגר: the elderly share; מילואים: what Kol Zchut says
+  ok   all six ticked: six rights, none twice; nothing ticked: none
+  ok   מילואים: no special mortgage arrangement in שאגת הארי, per Kol Zchut (26.7.2026)
+
+7. the bank lines and the free help
+  ok   Mizrahi-Tefahot arrears line *8860, extension 4 then 3, as in banks.json  [*8860 ext. 4 then 3]
+  ok   every bank number shown is in banks.json  [7 lines]
+  ok   free help: שי״ל 118, *2310, legal aid, *35592; each from a Kol Zchut page
+
+8. the case link and the summary
+  ok   the hash round trip: 1,000,000 / 300 / 4.62% / 3 months  [eyJiIjoxMDAwMDAwLCJuIjozMDAsIm0iOiJyYXRlIiwiZCI6MywiayI6ImZ1bGwiLCJyIjo0LjYyfQ]
+  ok   the hash holds no date and no ticked situation
+  ok   a forged hash: only sane known values are taken
+  ok   a broken hash: ignored
+  ok   the summary: 5,627 before, 5,723 after, 3,659 cheapest, not legal advice, the check date
+  ok   the summary names no situation and no open outline
+
+9. the rate starting point
+  ok   opens on the BoI average fixed not linked of 8.2026: 4.62% (boi-mortgage.json rates.fixed_nl)  [4.62 / 2026-08]
+  ok   without the BoI file: no rate is made up (the field opens empty)
+
+10. words and hygiene
+  ok   no long dash in mkashe.js or kashe.json
+  ok   none of the banned words in the visible texts or the script
+  ok   the unverified items (Swords of Iron terms, an arrears-interest cap, the reservist advice refund) are not on the page
+  ok   the script sends nothing and stores nothing (no fetch, beacon, XHR, form or localStorage)
+  ok   the case goes into #mkashe= only when asked: the script never writes the address
+
+71 of 71 passed

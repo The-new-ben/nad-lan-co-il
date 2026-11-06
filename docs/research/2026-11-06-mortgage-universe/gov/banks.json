@@ -1,0 +1,153 @@
+{
+  "title": "Mortgage lenders in Israel: official mortgage site and phone numbers as published on each bank's own website",
+  "retrieved_at": "2026-11-06T14:43Z to 14:46Z",
+  "method": "Plain HTTPS GET with a normal browser user agent; static HTML read (no JavaScript). Phone numbers copied only from the bank's own pages listed in source_page. No third-party site used. Raw copies in gov/raw/banks/.",
+  "banks": [
+    {
+      "name_he": "בנק לאומי (לאומי למשכנתאות)",
+      "name_en": "Bank Leumi",
+      "mortgage_site": "https://mortgage.leumi.co.il/",
+      "phones": [
+        {"purpose": "הגשת בקשה ותכנון משכנתא (מרכז משכנתאות)", "numbers": ["*3200", "076-8038181"], "hours": "09:00-18:00 (home page)"},
+        {"purpose": "מידע ושירות למשכנתא קיימת (לקוחות בעלי חשבון משכנתא בלבד)", "numbers": ["*6062", "076-8038111"], "hours": "08:30-16:00 (home page)"},
+        {"purpose": "לקוחות בעלי חשבון עו\"ש וחשבון משכנתא בלאומי", "numbers": ["03-9544333"], "hours": null}
+      ],
+      "source_page": "https://mortgage.leumi.co.il/all_about_mortgage/category/management/contact-us",
+      "digital_application": true,
+      "digital_evidence": "https://mortgage.leumi.co.il/all-about-mortgage/category/about/digital-mortgage : apply digitally only, or finish the whole process digitally and sign remotely",
+      "retrieved_at": "2026-11-06T14:43Z"
+    },
+    {
+      "name_he": "בנק הפועלים",
+      "name_en": "Bank Hapoalim",
+      "mortgage_site": "https://www.bankhapoalim.co.il/mortgage",
+      "phones": [
+        {"purpose": "פנייה למשכנתא חדשה, מיחזור וגרירה", "numbers": ["*2408", "1-800-800-700", "03-6532408"], "hours": "Sun-Thu 08:30-17:00; Fri and holiday eves closed"},
+        {"purpose": "שירות למשכנתא קיימת", "numbers": ["*2401", "03-6532401"], "hours": "Sun-Thu 08:30-15:30; Fri and holiday eves closed"}
+      ],
+      "source_page": "https://www.bankhapoalim.co.il/contact-us",
+      "digital_application": true,
+      "digital_evidence": "https://www.bankhapoalim.co.il/mortgage/digital-mortgage : online application, Zoom meeting after approval in principle, no branch visit; portal https://mortgage.bankhapoalim.co.il/ng-portals/dm/he/lobby",
+      "retrieved_at": "2026-11-06T14:43Z"
+    },
+    {
+      "name_he": "בנק מזרחי-טפחות",
+      "name_en": "Mizrahi-Tefahot Bank",
+      "mortgage_site": "https://www.mizrahi-tefahot.co.il/mortgages/",
+      "phones": [
+        {"purpose": "בירור או עדכון לגבי משכנתא קיימת", "numbers": ["*8860 ext. 4 then 5", "+972-76-8048860 (from abroad)"], "hours": "Sun-Thu 08:00-17:30; Fri 08:00-13:00"},
+        {"purpose": "מיחזור משכנתא", "numbers": ["*8860 ext. 4 then 2"], "hours": "Sun-Thu 08:00-21:30; Fri 08:00-13:00"},
+        {"purpose": "גבייה או איחור בתשלומי המשכנתא", "numbers": ["*8860 ext. 4 then 3"], "hours": "Sun-Thu 08:00-20:30; Fri 08:00-13:00"},
+        {"purpose": "מחלקת גביית משכנתאות", "numbers": ["076-8043381"], "hours": "Sun-Thu 09:00-16:00"},
+        {"purpose": "מידע על המשכנתא ב-WhatsApp", "numbers": ["076-8818860"], "hours": null},
+        {"purpose": "מומחי טפחות למשכנתא חדשה (as quoted on Bank Yahav's page)", "numbers": ["*8860 ext. 4"], "hours": null}
+      ],
+      "source_page": "https://www.mizrahi-tefahot.co.il/contact-us/",
+      "digital_application": true,
+      "digital_evidence": "https://www.mizrahi-tefahot.co.il/mortgages/takemortgagelib/mortgage-app/ (Tefahot Touch app); the mortgages page offers an online offer request and a digital refinance request",
+      "note": "Mortgage-specific line is extension 4 of the main number *8860; the hours above are as printed for each extension.",
+      "retrieved_at": "2026-11-06T14:43Z"
+    },
+    {
+      "name_he": "בנק דיסקונט",
+      "name_en": "Israel Discount Bank",
+      "mortgage_site": "https://mortgage.discountbank.co.il/",
+      "phones": [
+        {"purpose": "מוקד משכנתאות", "numbers": ["03-9439008", "*2009"], "hours": null}
+      ],
+      "source_page": "https://mortgage.discountbank.co.il/",
+      "digital_application": true,
+      "digital_evidence": "Same page: 'איך מגישים בקשה דיגיטלית למשכנתא?' and the online offer flow ('מבקשים הצעה, מקבלים אישור עקרוני'). Also linked from https://www.discountbank.co.il/private/mortgage/",
+      "retrieved_at": "2026-11-06T14:43Z"
+    },
+    {
+      "name_he": "בנק מרכנתיל (קבוצת דיסקונט)",
+      "name_en": "Mercantile Discount Bank",
+      "mortgage_site": "https://mortgage.mercantile.co.il/",
+      "phones": [
+        {"purpose": "צור קשר כללי (no mortgage-specific number found in the static pages)", "numbers": ["*3477"], "hours": null}
+      ],
+      "source_page": "https://www.mercantile.co.il/private/contact-us/",
+      "digital_application": true,
+      "digital_evidence": "https://mortgage.mercantile.co.il/ : 'מגישים בקשה דיגיטלית וזוכים לשירות אישי ואנושי'",
+      "note": "The mortgage site's own contact page (/contact-us) returned 404 and its phone, if any, is loaded by JavaScript. Mortgage-line number: unverified.",
+      "retrieved_at": "2026-11-06T14:44Z"
+    },
+    {
+      "name_he": "הבנק הבינלאומי הראשון",
+      "name_en": "First International Bank of Israel (FIBI)",
+      "mortgage_site": "https://www.fibi.co.il/private/loansandmortgages/mortgages/",
+      "phones": [
+        {"purpose": "מרכז שירות בנקאי (no mortgage-specific number on the mortgages page)", "numbers": ["*3009"], "hours": null},
+        {"purpose": "סוכנות הביטוח של הבנק, הצעת מחיר לביטוח משכנתא", "numbers": ["03-9208104", "*5176"], "hours": null}
+      ],
+      "source_page": "https://www.fibi.co.il/private/loansandmortgages/mortgages/",
+      "digital_application": true,
+      "digital_evidence": "https://mortgage.fibi.co.il/digmo/ (page title 'בקשה למשכנתה - קבוצת הבינלאומי'); https://mortgage.fibi.co.il/ root returned an error page",
+      "retrieved_at": "2026-11-06T14:44Z"
+    },
+    {
+      "name_he": "בנק אוצר החייל (קבוצת הבינלאומי)",
+      "name_en": "Bank Otsar Ha-Hayal (FIBI group)",
+      "mortgage_site": "https://www.bankotsar.co.il/private/loansandmortgages/mortgages/",
+      "phones": [
+        {"purpose": "מרכז שירות בנקאי (general)", "numbers": ["*3390"], "hours": null},
+        {"purpose": "סוכנות הביטוח של הבנק, ביטוח משכנתא", "numbers": ["03-9208104", "*5176"], "hours": null}
+      ],
+      "source_page": "https://www.bankotsar.co.il/private/loansandmortgages/mortgages/",
+      "digital_application": true,
+      "digital_evidence": "https://www.bankotsar.co.il/private/loansandmortgages/mortgages/digitalmor/ : digital application for customers of all banks, 18+, Israeli residents (form at https://apps.fibi.co.il/digmo/)",
+      "retrieved_at": "2026-11-06T14:44Z"
+    },
+    {
+      "name_he": "בנק מסד (קבוצת הבינלאומי)",
+      "name_en": "Bank Massad (FIBI group)",
+      "mortgage_site": "https://www.bankmassad.co.il/private/loansmortgage/mortgages/",
+      "phones": [
+        {"purpose": "מסד call (general)", "numbers": ["*2448"], "hours": null}
+      ],
+      "source_page": "https://www.bankmassad.co.il/private/loansmortgage/mortgages/",
+      "digital_application": true,
+      "digital_evidence": "Same page: 'הגשת בקשה למשכנתא בדיגיטל'; links to https://mortgage.fibi.co.il/digmo/",
+      "retrieved_at": "2026-11-06T14:44Z"
+    },
+    {
+      "name_he": "בנק ירושלים",
+      "name_en": "Bank of Jerusalem",
+      "mortgage_site": "https://www.bankjerusalem.co.il/mortgage",
+      "phones": [
+        {"purpose": "מוקד משכנתא, לקוחות חדשים", "numbers": ["*5727", "076-8095111"], "hours": null},
+        {"purpose": "מוקד משכנתא, לקוחות קיימים", "numbers": ["*5726", "076-8095143"], "hours": null}
+      ],
+      "source_page": "https://www.bankjerusalem.co.il/mortgage",
+      "digital_application": true,
+      "digital_evidence": "Same page: customers of all banks over 18 can apply for a mortgage online, no current account needed",
+      "retrieved_at": "2026-11-06T14:43Z"
+    },
+    {
+      "name_he": "בנק יהב (קבוצת מזרחי-טפחות)",
+      "name_en": "Bank Yahav",
+      "mortgage_site": "https://www.bank-yahav.co.il/loans/mortgage-in-tefahot/",
+      "phones": [
+        {"purpose": "מומחי טפחות למשכנתא (Yahav refers mortgage customers to Mizrahi-Tefahot)", "numbers": ["*8860 ext. 4"], "hours": null},
+        {"purpose": "יצירת קשר כללי בבנק יהב", "numbers": ["*2616"], "hours": null}
+      ],
+      "source_page": "https://www.bank-yahav.co.il/loans/mortgage-in-tefahot/",
+      "digital_application": true,
+      "digital_evidence": "Same page links Tefahot's online mortgage form https://sc.mizrahi-tefahot.co.il/TofesMashkantaClient/",
+      "note": "Yahav does not present its own mortgage product: 'משכנתא בטפחות... בחלק מסניפי בנק יהב תוכלו לפנות למומחים של טפחות'. The URL https://www.bank-yahav.co.il/mortgage/ answered 'Request Rejected' (web firewall); not retried.",
+      "retrieved_at": "2026-11-06T14:44Z"
+    },
+    {
+      "name_he": "וואן זירו (One Zero)",
+      "name_en": "One Zero Digital Bank",
+      "mortgage_site": null,
+      "phones": [],
+      "source_page": "https://www.onezerobank.com/",
+      "digital_application": null,
+      "note": "Blocked: Cloudflare challenge ('Just a moment', HTTP 403). Not bypassed. Whether it offers mortgages: unverified.",
+      "retrieved_at": "2026-11-06T14:43Z"
+    }
+  ],
+  "not_checked": "Banks that no longer exist as separate mortgage lenders (Union Bank, Discount Mortgage Bank) and non-bank lenders were not checked. Bank Esh was not checked."
+}

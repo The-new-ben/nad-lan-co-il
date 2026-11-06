@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>הלוואה על דירה קיימת, תצוגה מקומית</title>
+<!-- HAD-675, tool mneches, local preview only. verify.py serves the repo root (nad-lan-co-il) on a free 127.0.0.1 port and opens
+       /docs/research/2026-11-06-mortgage-universe/build/build-mneches/preview.html
+     By hand: python -m http.server 47990 --bind 127.0.0.1 (from the repo root).
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the id-scoped rules.
+     The tool is mounted exactly like the shortcode prints it: <section class="nli"> + <div class="nli-host" data-nli data-nli-data>,
+     inside a switcher pane (id tool-neches) next to a second pane, with the switcher of tools/mquick.js (wireSwitch), as on
+     /mortgage-calculator/. The paragraph inside the host is the server summary of registry.php.txt, rendered by PHP 8.3 from the
+     real data files (replaced when the script runs). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    if (!/[?&]theme=1/.test(location.search)) return;
+    ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+     'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+     'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) {
+      document.write('<link rel="stylesheet" href="' + u + '">');
+    });
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font:400 13px/20px "IBM Plex Sans Hebrew",sans-serif;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+  .pv-other{font:400 14px/22px "IBM Plex Sans Hebrew",sans-serif;color:#3E4C58;border:1px dashed #D3DCE2;padding:16px;margin:0}
+</style>
+</head>
+<body>
+<main class="entry-content">
+<p class="pv-top">תצוגה מקומית, HAD-675 · כלי חדש לעמוד מחשבון המשכנתא · נתונים: הוראה 329 של בנק ישראל (גרסה 13, נבדקה 6.11.2026), בנק ישראל (8.2026, 9.2026)</p>
+<div class="nlmx-sw" id="tools">
+<div class="nlmx-sw__chips" role="group" aria-label="בחירת כלי"><button type="button" data-sw="tool-other" aria-controls="tool-other">כלי אחר בעמוד</button><button type="button" data-sw="tool-neches" aria-controls="tool-neches">כמה אפשר לקבל על דירה קיימת</button></div>
+<div class="nlmx-pane" id="tool-other"><p class="pv-other">כאן עומד כלי אחר של העמוד. בתצוגה המקומית הזו הוא ריק; בחרו בכפתור השני.</p></div>
+<div class="nlmx-pane" id="tool-neches">
+<section class="nli" dir="rtl" lang="he" aria-label="כמה אפשר לקבל על דירה קיימת" id="pv-neches"><div class="nli-host" data-nli="mneches" data-nli-data="/plugins/nadlan-config/assets/instruments/data/boi-mortgage.json,/plugins/nadlan-config/assets/instruments/data/mneches.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · הלוואה בשעבוד דירה</p><h2 class="nli__title">כמה אפשר לקבל על דירה קיימת</h2><p>כמה אפשר לקבל על דירה קיימת לפי בנק ישראל: בהלוואה לכל מטרה בשעבוד דירת מגורים המימון המרבי הוא 50% משווי הדירה, יחד עם יתרת המשכנתא שכבר רשומה עליה. בשיקול דעת הבנק אפשר עד 70%, כשהחלק שמעל 50% עד 200,000 ₪ בכל ההלוואות על הדירה. ההחזר החודשי עד 50% מההכנסה הפנויה, ומ־1.10.2026 הוא כולל גם הלוואות קודמות על אותה דירה שנותרו להן יותר מ־18 חודשים; הלוואה לכל מטרה של עד 120,000 ₪ פטורה ממגבלת ההחזר. למשל דירה בשווי 2,800,000 ₪ עם יתרת משכנתא של 350,000 ₪: 50% הם 1,400,000 ₪, פחות היתרה, כלומר עד 1,050,000 ₪, ובהקלה עד 1,250,000 ₪. באוגוסט 2026 נתנו הבנקים 1,386 הלוואות חדשות לכל מטרה בשעבוד דירה, 532.5 מיליון ₪, וההחזר הממוצע היה 23.97% מההכנסה; הריבית הממוצעת בקבועה לא צמודה 6.61%, מול 4.62% במשכנתאות לדיור באותו חודש. לפי הוראת ניהול בנקאי תקין 329, גרסה 13 (30.6.2026), וקובץ השאלות והתשובות (8.2.2026), נבדק ב־6.11.2026.</p></div></div></section>
+</div>
+</div>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mquick.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mneches.js"></script>
+</body>
+</html>

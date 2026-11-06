@@ -1,0 +1,800 @@
+{
+ "base": "http://127.0.0.1:50689/docs/research/2026-11-06-mortgage-universe/build/build-mneches/preview.html",
+ "checks": 144,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 the pane starts hidden behind the first chip (as on the page)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the chip opens the pane",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 opens on the example: 1,050,000 ₪",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 opening: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 opening values 2,800,000 / 350,000 / 3,150 / 25,000 / 1,500",
+   "ok": true,
+   "got": [
+    "2,800,000",
+    "350,000",
+    "3,150",
+    "25,000",
+    "1,500"
+   ]
+  },
+  {
+   "check": "390 opening presses: any purpose, 20 years, the any-purpose average",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ledger: 1,400,000, −350,000, 1,050,000 (קובע), 1,250,000, 8,600, 1,173,288",
+   "ok": true,
+   "got": "שווי הדירה היום\n2,800,000 ₪\n50% משווי הדירה, המימון המרבי בהלוואה לכל מטרה\n1,400,000 ₪\nהוראה 329, שו\"ת 2.2 ו־8.2\nפחות יתרת המשכנתא על הדירה\n−350,000 ₪\nהוראה 329, סעיף 4\nלפי כלל המימוןקובע\n1,050,000 ₪\nבשיקול דעת הבנק: עד "
+  },
+  {
+   "check": "390 the example tag is shown until the first edit",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 title \"כמה אפשר לקבל על דירה קיימת\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the guide link, exact anchor \"משכנתא לכל מטרה\"",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 source line: directive 329 version 13, 30.6.2026, Q&A 8.2.2026, checked 6.11.2026",
+   "ok": true,
+   "got": "מקור: הוראת ניהול בנקאי תקין 329, גרסה 13 (חוזר 2852, 30.6.2026) וקובץ השאלות והתשובות (8.2.2026), באתר בנק ישראל, נבדק ב־6.11.2026. ריביות: בנק ישראל, הלוואות "
+  },
+  {
+   "check": "390 non-bank line, no lender named, no number",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 rules, the 1.10.2026 change and the Bank of Israel data are printed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 every amount of the figure, the ledger and the table shows the sign on the same side (as the live tools)",
+   "ok": true,
+   "got": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+  },
+  {
+   "check": "390 opening no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 opening every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 opening every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 opening every visible group named",
+   "ok": true,
+   "got": [
+    "מטרת ההלוואה",
+    "תקופה בשנים",
+    "הריבית לחישוב"
+   ]
+  },
+  {
+   "check": "390 purpose buy: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 buy: the housing mix is used, the new home's caps (section 2) and a link to the full calculator",
+   "ok": true,
+   "got": "לקניית דירה נוספת: גם לדירה שקונים יש תקרה משלה, 75% לדירה יחידה, 70% לדירה חלופית ו־50% לדירה להשקעה (סעיף 2), והבנק בו"
+  },
+  {
+   "check": "390 purpose kids: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 kids: Q&A 2.7 and Annex A 1.3, no 70% relief line",
+   "ok": true,
+   "got": "עזרה לילדים: הורים יכולים לקחת הלוואה בשעבוד הבית שלהם כדי לעזור בהון העצמי, והיא נחשבת הלוואה לכל מטרה, עד 50% משווי הב"
+  },
+  {
+   "check": "390 purpose close: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 close: Q&A 7.7 and the relief line",
+   "ok": true,
+   "got": "סגירת הלוואות: אל תכללו בשדה ההלוואות האחרות את ההחזרים של ההלוואות שייסגרו מהכסף. סגירה של משכנתא קיימת היא מחזור, והיא"
+  },
+  {
+   "check": "390 purpose any: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 any: back to the any-purpose average and 1,050,000",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 term 10: headline = NLNC (764,788 ₪)",
+   "ok": true,
+   "got": "764,788 ₪"
+  },
+  {
+   "check": "390 term 10: its row is marked in the table",
+   "ok": true,
+   "got": "10 שנה\nההכנסה קובעת"
+  },
+  {
+   "check": "390 term 15: headline = NLNC (1,000,808 ₪)",
+   "ok": true,
+   "got": "1,000,808 ₪"
+  },
+  {
+   "check": "390 term 15: its row is marked in the table",
+   "ok": true,
+   "got": "15 שנה\nההכנסה קובעת"
+  },
+  {
+   "check": "390 term 25: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 term 25: its row is marked in the table",
+   "ok": true,
+   "got": "25 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "390 term 30: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 term 30: its row is marked in the table",
+   "ok": true,
+   "got": "30 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "390 term 20: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 term 20: its row is marked in the table",
+   "ok": true,
+   "got": "20 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "390 10 years: the income binds (764,788 ₪ in the table)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 source home: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 the housing average is labelled with the any-purpose price beside it",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 own rate: the field appears, opening at 6.61",
+   "ok": true,
+   "got": "6.61"
+  },
+  {
+   "check": "390 own 6.61%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 own 5%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 own 25%: an error on its field, no stale result",
+   "ok": true,
+   "got": "הקלידו ריבית שנתית בין 0% ל־20%, למשל 6.2."
+  },
+  {
+   "check": "390 income 18,000, other 2,000, own 5%: headline = NLNC (734,897 ₪)",
+   "ok": true,
+   "got": "734,897 ₪"
+  },
+  {
+   "check": "390 income-bound: 734,897 ₪, the income line carries \"קובע\"",
+   "ok": true,
+   "got": "734,897 ₪"
+  },
+  {
+   "check": "390 the sub says the income binds and by how much (315,103)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 balance 0: the existing-payment field hides",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 balance 0: headline = NLNC (1,212,202 ₪)",
+   "ok": true,
+   "got": "1,212,202 ₪"
+  },
+  {
+   "check": "390 balance 1,600,000 on 2,800,000: headline = NLNC (אין מקום להלוואה נוספת)",
+   "ok": true,
+   "got": "אין מקום להלוואה נוספת"
+  },
+  {
+   "check": "390 above the cap: \"אין מקום להלוואה נוספת\", red underline, no negative amount",
+   "ok": true,
+   "got": "אין מקום להלוואה נוספת"
+  },
+  {
+   "check": "390 exemption case: headline = NLNC (120,000 ₪)",
+   "ok": true,
+   "got": "120,000 ₪"
+  },
+  {
+   "check": "390 income room 500: the 120,000 exemption (sections 11, 12.2)",
+   "ok": true,
+   "got": "120,000 ₪"
+  },
+  {
+   "check": "390 empty value: the message on its field",
+   "ok": true,
+   "got": "הקלידו את שווי הדירה בשקלים, למשל 2,800,000."
+  },
+  {
+   "check": "390 back to the example with own 5%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "390 the example tag is gone after editing",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 after typing no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 after typing every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after typing every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after typing every visible group named",
+   "ok": true,
+   "got": [
+    "מטרת ההלוואה",
+    "תקופה בשנים",
+    "הריבית לחישוב"
+   ]
+  },
+  {
+   "check": "390 copy: the summary and the #tool-neches link",
+   "ok": true,
+   "got": "כמה אפשר לקבל על דירה קיימת: דירה בשווי 2,800,000 ₪ עם יתרת משכנתא של 350,000 ₪, לכל מטרה. לפי כלל המימון של בנק ישראל ("
+  },
+  {
+   "check": "390 WhatsApp: the link carries the summary (navigation blocked in the test)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%9B%D7%9E%D7%94%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A7"
+  },
+  {
+   "check": "390 case link: #mneches=",
+   "ok": true,
+   "got": "LCJpIjoyNTAwMCwibyI6MTUwMCwieSI6MjAsInMiOiJvd24iLCJyIjoiNSJ9"
+  },
+  {
+   "check": "390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 the case link opens the pane, presses its chip and restores the case",
+   "ok": true,
+   "got": [
+    "1,050,000 ₪",
+    "1,050,000 ₪"
+   ]
+  },
+  {
+   "check": "390 the case link page: no console error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 the pane starts hidden behind the first chip (as on the page)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the chip opens the pane",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 opens on the example: 1,050,000 ₪",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 opening: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 opening values 2,800,000 / 350,000 / 3,150 / 25,000 / 1,500",
+   "ok": true,
+   "got": [
+    "2,800,000",
+    "350,000",
+    "3,150",
+    "25,000",
+    "1,500"
+   ]
+  },
+  {
+   "check": "1280 opening presses: any purpose, 20 years, the any-purpose average",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ledger: 1,400,000, −350,000, 1,050,000 (קובע), 1,250,000, 8,600, 1,173,288",
+   "ok": true,
+   "got": "שווי הדירה היום\n2,800,000 ₪\n50% משווי הדירה, המימון המרבי בהלוואה לכל מטרה\n1,400,000 ₪\nהוראה 329, שו\"ת 2.2 ו־8.2\nפחות יתרת המשכנתא על הדירה\n−350,000 ₪\nהוראה 329, סעיף 4\nלפי כלל המימוןקובע\n1,050,000 ₪\nבשיקול דעת הבנק: עד "
+  },
+  {
+   "check": "1280 the example tag is shown until the first edit",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 title \"כמה אפשר לקבל על דירה קיימת\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the guide link, exact anchor \"משכנתא לכל מטרה\"",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "1280 source line: directive 329 version 13, 30.6.2026, Q&A 8.2.2026, checked 6.11.2026",
+   "ok": true,
+   "got": "מקור: הוראת ניהול בנקאי תקין 329, גרסה 13 (חוזר 2852, 30.6.2026) וקובץ השאלות והתשובות (8.2.2026), באתר בנק ישראל, נבדק ב־6.11.2026. ריביות: בנק ישראל, הלוואות "
+  },
+  {
+   "check": "1280 non-bank line, no lender named, no number",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 rules, the 1.10.2026 change and the Bank of Israel data are printed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "1280 layout: form and result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 every amount of the figure, the ledger and the table shows the sign on the same side (as the live tools)",
+   "ok": true,
+   "got": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+  },
+  {
+   "check": "1280 opening no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 opening every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opening every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opening every visible group named",
+   "ok": true,
+   "got": [
+    "מטרת ההלוואה",
+    "תקופה בשנים",
+    "הריבית לחישוב"
+   ]
+  },
+  {
+   "check": "1280 purpose buy: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 buy: the housing mix is used, the new home's caps (section 2) and a link to the full calculator",
+   "ok": true,
+   "got": "לקניית דירה נוספת: גם לדירה שקונים יש תקרה משלה, 75% לדירה יחידה, 70% לדירה חלופית ו־50% לדירה להשקעה (סעיף 2), והבנק בו"
+  },
+  {
+   "check": "1280 purpose kids: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 kids: Q&A 2.7 and Annex A 1.3, no 70% relief line",
+   "ok": true,
+   "got": "עזרה לילדים: הורים יכולים לקחת הלוואה בשעבוד הבית שלהם כדי לעזור בהון העצמי, והיא נחשבת הלוואה לכל מטרה, עד 50% משווי הב"
+  },
+  {
+   "check": "1280 purpose close: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 close: Q&A 7.7 and the relief line",
+   "ok": true,
+   "got": "סגירת הלוואות: אל תכללו בשדה ההלוואות האחרות את ההחזרים של ההלוואות שייסגרו מהכסף. סגירה של משכנתא קיימת היא מחזור, והיא"
+  },
+  {
+   "check": "1280 purpose any: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 any: back to the any-purpose average and 1,050,000",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 term 10: headline = NLNC (764,788 ₪)",
+   "ok": true,
+   "got": "764,788 ₪"
+  },
+  {
+   "check": "1280 term 10: its row is marked in the table",
+   "ok": true,
+   "got": "10 שנה\nההכנסה קובעת"
+  },
+  {
+   "check": "1280 term 15: headline = NLNC (1,000,808 ₪)",
+   "ok": true,
+   "got": "1,000,808 ₪"
+  },
+  {
+   "check": "1280 term 15: its row is marked in the table",
+   "ok": true,
+   "got": "15 שנה\nההכנסה קובעת"
+  },
+  {
+   "check": "1280 term 25: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 term 25: its row is marked in the table",
+   "ok": true,
+   "got": "25 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "1280 term 30: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 term 30: its row is marked in the table",
+   "ok": true,
+   "got": "30 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "1280 term 20: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 term 20: its row is marked in the table",
+   "ok": true,
+   "got": "20 שנה\nכלל המימון קובע"
+  },
+  {
+   "check": "1280 10 years: the income binds (764,788 ₪ in the table)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 source home: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 the housing average is labelled with the any-purpose price beside it",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 own rate: the field appears, opening at 6.61",
+   "ok": true,
+   "got": "6.61"
+  },
+  {
+   "check": "1280 own 6.61%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 own 5%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 own 25%: an error on its field, no stale result",
+   "ok": true,
+   "got": "הקלידו ריבית שנתית בין 0% ל־20%, למשל 6.2."
+  },
+  {
+   "check": "1280 income 18,000, other 2,000, own 5%: headline = NLNC (734,897 ₪)",
+   "ok": true,
+   "got": "734,897 ₪"
+  },
+  {
+   "check": "1280 income-bound: 734,897 ₪, the income line carries \"קובע\"",
+   "ok": true,
+   "got": "734,897 ₪"
+  },
+  {
+   "check": "1280 the sub says the income binds and by how much (315,103)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 balance 0: the existing-payment field hides",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 balance 0: headline = NLNC (1,212,202 ₪)",
+   "ok": true,
+   "got": "1,212,202 ₪"
+  },
+  {
+   "check": "1280 balance 1,600,000 on 2,800,000: headline = NLNC (אין מקום להלוואה נוספת)",
+   "ok": true,
+   "got": "אין מקום להלוואה נוספת"
+  },
+  {
+   "check": "1280 above the cap: \"אין מקום להלוואה נוספת\", red underline, no negative amount",
+   "ok": true,
+   "got": "אין מקום להלוואה נוספת"
+  },
+  {
+   "check": "1280 exemption case: headline = NLNC (120,000 ₪)",
+   "ok": true,
+   "got": "120,000 ₪"
+  },
+  {
+   "check": "1280 income room 500: the 120,000 exemption (sections 11, 12.2)",
+   "ok": true,
+   "got": "120,000 ₪"
+  },
+  {
+   "check": "1280 empty value: the message on its field",
+   "ok": true,
+   "got": "הקלידו את שווי הדירה בשקלים, למשל 2,800,000."
+  },
+  {
+   "check": "1280 back to the example with own 5%: headline = NLNC (1,050,000 ₪)",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "1280 the example tag is gone after editing",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 after typing no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 after typing every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after typing every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after typing every visible group named",
+   "ok": true,
+   "got": [
+    "מטרת ההלוואה",
+    "תקופה בשנים",
+    "הריבית לחישוב"
+   ]
+  },
+  {
+   "check": "1280 copy: the summary and the #tool-neches link",
+   "ok": true,
+   "got": "כמה אפשר לקבל על דירה קיימת: דירה בשווי 2,800,000 ₪ עם יתרת משכנתא של 350,000 ₪, לכל מטרה. לפי כלל המימון של בנק ישראל ("
+  },
+  {
+   "check": "1280 WhatsApp: the link carries the summary (navigation blocked in the test)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%9B%D7%9E%D7%94%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A7"
+  },
+  {
+   "check": "1280 case link: #mneches=",
+   "ok": true,
+   "got": "LCJpIjoyNTAwMCwibyI6MTUwMCwieSI6MjAsInMiOiJvd24iLCJyIjoiNSJ9"
+  },
+  {
+   "check": "1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 the case link opens the pane, presses its chip and restores the case",
+   "ok": true,
+   "got": [
+    "1,050,000 ₪",
+    "1,050,000 ₪"
+   ]
+  },
+  {
+   "check": "1280 the case link page: no console error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 opens on 1,050,000 ₪",
+   "ok": true,
+   "got": "1,050,000 ₪"
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "מטרת ההלוואה",
+    "תקופה בשנים",
+    "הריבית לחישוב"
+   ]
+  },
+  {
+   "check": "theme 390: text face, button radius and sub-heading face hold against the theme",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "2px",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "theme 390: a purpose pressed under the theme",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

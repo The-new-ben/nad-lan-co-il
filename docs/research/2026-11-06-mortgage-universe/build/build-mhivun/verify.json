@@ -1,0 +1,851 @@
+{
+ "base": "http://127.0.0.1:62407/docs/research/2026-11-06-mortgage-universe/build/build-mhivun/preview.html",
+ "checks": 154,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 opens on the example: total = NLHV (₪13,750)",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 the example is labelled (tag on the answer and the note under the tool)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 4 rows, 4 cards",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the prime card says why there is no fee",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the lines: balance, operational once, notice, CPI fee, totals",
+   "ok": true,
+   "got": "עמלת היוון לכל המשכנתא, בפירעון ב־11.2026\nדוגמה, שנו כל שדה\n₪13,750\nעל יתרה של ₪1,319,919 ב־4 מסלולים, בפירעון ב־11.2026. בלי עמלת היוון: מסלול 2 (פריים, הריבית משתנה במועד לא ידוע). ועוד עמלה תפעולית"
+  },
+  {
+   "check": "390 the top strip: the averages and their in-force date",
+   "ok": true,
+   "got": "קבועה לא צמודה, מעל 20 ועד 25 שנים 4.788% קבועה לא צמודה, מעל 10 ועד 15 שנים 4.607% צמודה למדד, מעל 10 ועד 15 שנים 3.242% הממוצעים בתוקף מתאריך 19.10.2026"
+  },
+  {
+   "check": "390 the source line: the Order, the averages file, cir2103, the rates page, the CPI",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 text in IBM Plex Sans Hebrew, the figure in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 \"מה זה היוון משכנתא\" section",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 example every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 example every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "390 example no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 \"איך זה חושב\" 1 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "390 \"איך זה חושב\" 2 opens with its steps",
+   "ok": true,
+   "got": 5
+  },
+  {
+   "check": "390 \"איך זה חושב\" 3 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "390 \"איך זה חושב\" 4 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "390 track 1 steps carry the numbers: s.3(3), s.3(4), the fee, both values, 4.788%, 5.022%, 20%",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 track 2 (prime) explains why, section 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 track 3 (variable) counts payments to the change day 7.2028",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 steps open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 steps open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 steps open every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 steps open every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "390 steps open no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 notice \"10 ימים ומעלה\": the 0.1% line says none",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the example tag is gone after the first change",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 notice back to under 10 days",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 track 3 to \"משתנה לא צמודה\": the change-cycle select appears",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 every 2.5 years: total = NLHV (₪12,213)",
+   "ok": true,
+   "got": "₪12,213"
+  },
+  {
+   "check": "390 every year: no fee on track 3, said so; total = NLHV",
+   "ok": true,
+   "got": "₪12,213"
+  },
+  {
+   "check": "390 back to the example",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 term unit to months: 20 years shows 240, same total",
+   "ok": true,
+   "got": "240"
+  },
+  {
+   "check": "390 239 months: total = NLHV (₪13,727)",
+   "ok": true,
+   "got": "₪13,727"
+  },
+  {
+   "check": "390 back to years: 20",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 add: 5 rows, the new one asks for its amount, the total unchanged with a note",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 row 5 filled (fixed, 7.2023, 20 years copied, 4.5%): total = NLHV (₪13,750)",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 add again: 6 rows and the add button disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 remove twice: 4 rows, the example total",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 month 13.2023: the message on its field, track 1 left out, total = NLHV without it",
+   "ok": true,
+   "got": "₪5,911"
+  },
+  {
+   "check": "390 a future month: \"החודש צריך להיות לפני\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 back to 7.2023",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "390 partial 200,000: all to prime, no fee, the drop said",
+   "ok": true,
+   "got": "אין עמלת היוון"
+  },
+  {
+   "check": "390 partial 600,000: fee = NLHV (₪962), prime first, the order explained, vs the split by balances",
+   "ok": true,
+   "got": "₪962"
+  },
+  {
+   "check": "390 mode \"קיצור התקופה\": months column, prime closed (260 months)",
+   "ok": true,
+   "got": "פירעון חלקי: איך לחלק את הסכום\n\nמקלידים כמה רוצים לפרוע, ואנחנו מחלקים את הסכום בין המסלולים כך שעמלת ההיוון תהיה הנמוכה"
+  },
+  {
+   "check": "390 mode back to \"הקטנת ההחזר\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 more than the balance: capped, said so",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the cheapest month named with the saving (6.2028, ₪10,849)",
+   "ok": true,
+   "got": "החודש הזול ביותר ב־24 החודשים, אם הממוצעים לא ישתנו: 6.2028, עמלה של ₪10,849. זה ₪2,901 פחות מהיום, שבו העמלה ₪13,750."
+  },
+  {
+   "check": "390 the chart: one bar per month (24 or 25) with the event markers",
+   "ok": true,
+   "got": 26
+  },
+  {
+   "check": "390 the chart is an image with a text alternative",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the months where something changes: the discount and the change day of 7.2028",
+   "ok": true,
+   "got": "7.2028מסלול 1, קל״צ: 5 שנים מההתחלה, הפחתה של 30%; מסלול 1, קל״צ: התקופה שנותרה עוברת לטור \"מעל 15 ועד 20 שנים\"; מסלול 3, משתנה צמודה: יום שינוי הריבית, אין בו "
+  },
+  {
+   "check": "390 the 24-month table opens under the chart: 25 rows (today and 24)",
+   "ok": true,
+   "got": 25
+  },
+  {
+   "check": "390 when no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 when every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 when every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 when every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "390 when no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 bank 16,000: a gap, no accusation, the usual reasons listed",
+   "ok": true,
+   "got": "בדיקת המספר של הבנק\n\nקיבלתם מהבנק דוח לסילוק או מכתב עם עמלת ההיוון? הקלידו את הסכום, ונשווה אותו לחישוב.\n\nהעמלה שהבנק נ"
+  },
+  {
+   "check": "390 bank within 2%: close",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 copy: the Hebrew summary with the case link",
+   "ok": true,
+   "got": "עמלת היוון למשכנתא, בפירעון ב־11.2026:\r | 1. קבועה לא צמודה: יתרה ₪464,967, עמלת היוון ₪7,839 (אחרי הפחתה של 20%).\r | 2. פרי"
+  },
+  {
+   "check": "390 WhatsApp: opens wa.me with the summary (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%A2%D7%9E%D7%9C%D7%AA%20%D7%94%D7%99%D7%95%D7%95%D7%9F%20"
+  },
+  {
+   "check": "390 case link copied",
+   "ok": true,
+   "got": "ZHVjZSIsIm50Ijoic2hvcnQiLCJiayI6MTM4NTB9"
+  },
+  {
+   "check": "390 print pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no dialog fell back to a prompt",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after every control no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 after every control every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after every control every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after every control every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "390 after every control no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 the link reopens the case: same total, partial 600,000, bank number, no example tag",
+   "ok": true,
+   "got": [
+    "₪13,750",
+    "600,000"
+   ]
+  },
+  {
+   "check": "390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opens on the example: total = NLHV (₪13,750)",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 the example is labelled (tag on the answer and the note under the tool)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 4 rows, 4 cards",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the prime card says why there is no fee",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the lines: balance, operational once, notice, CPI fee, totals",
+   "ok": true,
+   "got": "עמלת היוון לכל המשכנתא, בפירעון ב־11.2026\nדוגמה, שנו כל שדה\n₪13,750\nעל יתרה של ₪1,319,919 ב־4 מסלולים, בפירעון ב־11.2026. בלי עמלת היוון: מסלול 2 (פריים, הריבית משתנה במועד לא ידוע). ועוד עמלה תפעולית"
+  },
+  {
+   "check": "1280 the top strip: the averages and their in-force date",
+   "ok": true,
+   "got": "קבועה לא צמודה, מעל 20 ועד 25 שנים 4.788% קבועה לא צמודה, מעל 10 ועד 15 שנים 4.607% צמודה למדד, מעל 10 ועד 15 שנים 3.242% הממוצעים בתוקף מתאריך 19.10.2026"
+  },
+  {
+   "check": "1280 the source line: the Order, the averages file, cir2103, the rates page, the CPI",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 text in IBM Plex Sans Hebrew, the figure in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 layout: form and result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 \"מה זה היוון משכנתא\" section",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 example every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 example every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "1280 example no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 \"איך זה חושב\" 1 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "1280 \"איך זה חושב\" 2 opens with its steps",
+   "ok": true,
+   "got": 5
+  },
+  {
+   "check": "1280 \"איך זה חושב\" 3 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "1280 \"איך זה חושב\" 4 opens with its steps",
+   "ok": true,
+   "got": 15
+  },
+  {
+   "check": "1280 track 1 steps carry the numbers: s.3(3), s.3(4), the fee, both values, 4.788%, 5.022%, 20%",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 track 2 (prime) explains why, section 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 track 3 (variable) counts payments to the change day 7.2028",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 steps open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 steps open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 steps open every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 steps open every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "1280 steps open no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 notice \"10 ימים ומעלה\": the 0.1% line says none",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the example tag is gone after the first change",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 notice back to under 10 days",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 track 3 to \"משתנה לא צמודה\": the change-cycle select appears",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 every 2.5 years: total = NLHV (₪12,213)",
+   "ok": true,
+   "got": "₪12,213"
+  },
+  {
+   "check": "1280 every year: no fee on track 3, said so; total = NLHV",
+   "ok": true,
+   "got": "₪12,213"
+  },
+  {
+   "check": "1280 back to the example",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 term unit to months: 20 years shows 240, same total",
+   "ok": true,
+   "got": "240"
+  },
+  {
+   "check": "1280 239 months: total = NLHV (₪13,727)",
+   "ok": true,
+   "got": "₪13,727"
+  },
+  {
+   "check": "1280 back to years: 20",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 add: 5 rows, the new one asks for its amount, the total unchanged with a note",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 row 5 filled (fixed, 7.2023, 20 years copied, 4.5%): total = NLHV (₪13,750)",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 add again: 6 rows and the add button disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 remove twice: 4 rows, the example total",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 month 13.2023: the message on its field, track 1 left out, total = NLHV without it",
+   "ok": true,
+   "got": "₪5,911"
+  },
+  {
+   "check": "1280 a future month: \"החודש צריך להיות לפני\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 back to 7.2023",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "1280 partial 200,000: all to prime, no fee, the drop said",
+   "ok": true,
+   "got": "אין עמלת היוון"
+  },
+  {
+   "check": "1280 partial 600,000: fee = NLHV (₪962), prime first, the order explained, vs the split by balances",
+   "ok": true,
+   "got": "₪962"
+  },
+  {
+   "check": "1280 mode \"קיצור התקופה\": months column, prime closed (260 months)",
+   "ok": true,
+   "got": "פירעון חלקי: איך לחלק את הסכום\n\nמקלידים כמה רוצים לפרוע, ואנחנו מחלקים את הסכום בין המסלולים כך שעמלת ההיוון תהיה הנמוכה"
+  },
+  {
+   "check": "1280 mode back to \"הקטנת ההחזר\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 more than the balance: capped, said so",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the cheapest month named with the saving (6.2028, ₪10,849)",
+   "ok": true,
+   "got": "החודש הזול ביותר ב־24 החודשים, אם הממוצעים לא ישתנו: 6.2028, עמלה של ₪10,849. זה ₪2,901 פחות מהיום, שבו העמלה ₪13,750."
+  },
+  {
+   "check": "1280 the chart: one bar per month (24 or 25) with the event markers",
+   "ok": true,
+   "got": 26
+  },
+  {
+   "check": "1280 the chart is an image with a text alternative",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the months where something changes: the discount and the change day of 7.2028",
+   "ok": true,
+   "got": "7.2028מסלול 1, קל״צ: 5 שנים מההתחלה, הפחתה של 30%; מסלול 1, קל״צ: התקופה שנותרה עוברת לטור \"מעל 15 ועד 20 שנים\"; מסלול 3, משתנה צמודה: יום שינוי הריבית, אין בו "
+  },
+  {
+   "check": "1280 the 24-month table opens under the chart: 25 rows (today and 24)",
+   "ok": true,
+   "got": 25
+  },
+  {
+   "check": "1280 when no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 when every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 when every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 when every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "1280 when no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 bank 16,000: a gap, no accusation, the usual reasons listed",
+   "ok": true,
+   "got": "בדיקת המספר של הבנק\n\nקיבלתם מהבנק דוח לסילוק או מכתב עם עמלת ההיוון? הקלידו את הסכום, ונשווה אותו לחישוב.\n\nהעמלה שהבנק נ"
+  },
+  {
+   "check": "1280 bank within 2%: close",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 copy: the Hebrew summary with the case link",
+   "ok": true,
+   "got": "עמלת היוון למשכנתא, בפירעון ב־11.2026:\r | 1. קבועה לא צמודה: יתרה ₪464,967, עמלת היוון ₪7,839 (אחרי הפחתה של 20%).\r | 2. פרי"
+  },
+  {
+   "check": "1280 WhatsApp: opens wa.me with the summary (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%A2%D7%9E%D7%9C%D7%AA%20%D7%94%D7%99%D7%95%D7%95%D7%9F%20"
+  },
+  {
+   "check": "1280 case link copied",
+   "ok": true,
+   "got": "ZHVjZSIsIm50Ijoic2hvcnQiLCJiayI6MTM4NTB9"
+  },
+  {
+   "check": "1280 print pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no dialog fell back to a prompt",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after every control no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 after every control every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after every control every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after every control every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "1280 after every control no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 the link reopens the case: same total, partial 600,000, bank number, no example tag",
+   "ok": true,
+   "got": [
+    "₪13,750",
+    "600,000"
+   ]
+  },
+  {
+   "check": "1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 opens on the example total (₪13,750)",
+   "ok": true,
+   "got": "₪13,750"
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every input and select labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "מתי מודיעים לבנק על הפירעון",
+    "מה עושים עם הפירעון"
+   ]
+  },
+  {
+   "check": "theme 390 no long dash, no banned word, never a bare ₪0",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390: card heading face, the steps numbered, section headings in ink, inputs in Plex Mono and buttons in Plex Sans Hebrew against the theme",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "decimal",
+    "rgb(18, 32, 42)",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

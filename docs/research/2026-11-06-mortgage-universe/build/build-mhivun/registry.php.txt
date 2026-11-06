@@ -1,0 +1,73 @@
+<?php
+/*
+ * HAD-675 (6.11.2026, mortgage universe): the exact PHP for plugins/nadlan-config/inc/instruments.php, tool mhivun ("עמלת היוון").
+ * NOT applied: inc/instruments.php was not edited. Linted with php -l (PHP 8.3); the summary rendered against the real data files
+ * by render_summary.php (WordPress stubs) and checked against the JS numbers by test_mhivun.js, section 9.
+ *
+ * (1) Paste the entry into the array of nadlan_nli_tools(), after 'mexit' (it shares mexit's deps and data).
+ * (2) Paste the branch into nadlan_nli_summary(), after the 'mexit' branch. It uses nadlan_nli_mrates(), nadlan_nli_mr_nom() and
+ *     nadlan_nli_mr_pmt(), which already exist in that file (1.72.588).
+ * (3) Ship plugins/nadlan-config/assets/instruments/tools/mhivun.js. No new data file: boi-mortgage.json and cbs-120010.json.
+ * (4) On /mortgage-calculator/: one chip and one pane in the switcher (the copy and link buttons open #mhivun=, not the pane id):
+ *       <button type="button" data-sw="tool-hivun" aria-controls="tool-hivun">עמלת היוון</button>
+ *       <div class="nlmx-pane" id="tool-hivun">[nadlan_tool id="mhivun"]</div>
+ *     Before release: the keyword guard for "עמלת היוון" and "היוון משכנתא" (one owner page each; this is a tool pane, no new URL).
+ * Hebrew only (no 'en' block): on /en/ pages the shortcode stays Hebrew; do not place it there.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_mhivun_registry_snippet( $id ) {
+
+	/* ===================================================================== (1) entry for nadlan_nli_tools() */
+	$entries = array(
+			/* HAD-675 (6.11.2026, mortgage universe): the capitalization fee of a whole mortgage, up to 6 tracks, by the Banking Order;
+			   every fee is NLMR.feeExisting of tools/mrates-common.js (the same function as mexit), the Bank of Israel averages of
+			   boi-mortgage.json (prepay.nl / prepay.cpi). Staged in docs/research/2026-11-06-mortgage-universe/build/build-mhivun/ */
+			'mhivun' => array(
+				'name' => 'עמלת היוון', 'cat' => 'FinanceApplication', 'kicker' => 'פירעון מוקדם · צו הבנקאות',
+				'desc' => 'מחשבון עמלת היוון למשכנתא שלמה, עד 6 מסלולים: היתרה ועמלת ההיוון בכל מסלול לפי צו הבנקאות והריביות הממוצעות של בנק ישראל, עם הטור, הממוצע ותאריך התוקף שלו, ההפחתה לוותק והחישוב המלא שלב אחרי שלב; פירעון חלקי בחלוקה שבה העמלה הנמוכה ביותר, עם הירידה בהחזר והריבית שנחסכת; העמלה בכל אחד מ־24 החודשים הקרובים, החודש הזול וימי שינוי הריבית; והשוואה למספר שהבנק נתן בדוח לסילוק.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+	);
+
+	/* ===================================================================== (2) branch for nadlan_nli_summary() */
+		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['prepay']['cpi']['rows'] ) || empty( $d['fees']['reduce'] ) || empty( $d['built'] ) ) { return ''; }
+			$nl = $d['prepay']['nl']; $cp = $d['prepay']['cpi']; $tn = $nl['rows'][ count( $nl['rows'] ) - 1 ]; $tc = $cp['rows'][ count( $cp['rows'] ) - 1 ];
+			$av = function ( $t, $row, $c ) { $i = array_search( $c, $t['cols'], true ); return false === $i ? null : (float) $row[ $i ]; };
+			$p3 = function ( $v ) { return rtrim( rtrim( number_format( (float) $v, 3, '.', '' ), '0' ), '.' ) . '%'; };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$mo = function ( $k ) { return (int) substr( (string) $k, 5, 2 ) . '.' . substr( (string) $k, 0, 4 ); };
+			$col = function ( $y ) { return $y <= 1 ? 'le1' : ( $y <= 5 ? '1_5' : ( $y <= 10 ? '5_10' : ( $y <= 15 ? '10_15' : ( $y <= 20 ? '15_20' : ( $y <= 25 ? '20_25' : 'gt25' ) ) ) ) ); };
+			$a1 = $av( $nl, $tn, '10_15' ); $a2 = $av( $nl, $tn, '20_25' ); $c1 = $av( $cp, $tc, '10_15' ); $c2 = $av( $cp, $tc, '20_25' );
+			if ( null === $a1 || null === $a2 || null === $c1 || null === $c2 ) { return ''; }
+			// the worked example: fixed not linked, 500,000 ILS from 7.2023 for 25 years at 5.30%, repaid in full in the data month
+			$from = '2023-07'; $amt = 500000; $rate = 5.3; $n = 300; $now = substr( (string) $d['built'], 0, 7 );
+			$el = ( (int) substr( $now, 0, 4 ) - (int) substr( $from, 0, 4 ) ) * 12 + ( (int) substr( $now, 5, 2 ) - (int) substr( $from, 5, 2 ) );
+			$ex = '';
+			if ( $el >= 1 && $el < $n ) {
+				$rm = $rate / 1200; $bal = $amt;
+				for ( $k = 1; $k <= $el; $k++ ) { $pk = nadlan_nli_mr_pmt( $bal, $rm, $n - $k + 1 ); $bal = $bal + $bal * $rm - $pk; }
+				$left = $n - $el; $orig = null; foreach ( $nl['rows'] as $r ) { if ( $r[0] <= $from . '-15' ) { $orig = $r; } }
+				$ae = $av( $nl, $tn, $col( $left / 12 ) ); $a = nadlan_nli_mr_nom( $ae ); $ce = $orig ? $av( $nl, $orig, $col( $n / 12 ) ) : null; $c = null === $ce ? null : nadlan_nli_mr_nom( $ce );
+				$pva = 0; $pvc = 0; $b = $bal;  // the remaining payments (NLMG.stream), discounted at today's average and at the loan-day one
+				for ( $k = 1; $k <= $left; $k++ ) { $pk = nadlan_nli_mr_pmt( $b, $rm, $left - $k + 1 ); $b = $b + $b * $rm - $pk; if ( $k === $left && $b > 0.005 ) { $pk += $b; } $pva += $pk / pow( 1 + $a / 1200, $k ); if ( null !== $c ) { $pvc += $pk / pow( 1 + $c / 1200, $k ); } }
+				$f3 = $a < $rate ? max( 0, $pva - $bal ) : 0; $f4 = ( null !== $c && $c < $rate ) ? max( 0, $pva - $pvc ) : null;
+				$cut = 0; foreach ( $d['fees']['reduce'] as $red ) { if ( $el / 12 >= $red['after_years'] ) { $cut = $red['cut']; } }
+				$fee = ( null === $f4 ? $f3 : min( $f3, $f4 ) ) * ( 1 - $cut );
+				$ex = 'למשל, הלוואה קבועה לא צמודה של 500,000 ₪ שנלקחה ב־7.2023 ל־25 שנה בריבית 5.30%, ונפרעת כולה ב־' . esc_html( $mo( $now ) ) . ': היתרה ' . esc_html( number_format( $bal ) ) . ' ₪, הממוצע לתקופה שנותרה '
+					. esc_html( $p3( $ae ) ) . ( null !== $ce ? ' (ביום ההלוואה ' . esc_html( $p3( $ce ) ) . ')' : '' ) . ', ועמלת ההיוון כ־' . esc_html( number_format( $fee ) ) . ' ₪, הנמוך משני החישובים של הצו'
+					. ( $cut > 0 ? ' אחרי הפחתה של ' . (int) round( 100 * $cut ) . '% לוותק' : '' ) . '. ';
+			}
+			return '<p>עמלת היוון היא עמלת הפירעון המוקדם שהבנק גובה לפי צו הבנקאות כשפורעים לפני הזמן מסלול בריבית קבועה, או מסלול משתנה לפני יום שינוי הריבית: התשלומים שנותרו מהוונים בריבית הממוצעת שבנק ישראל מפרסם לתקופה שנותרה, '
+				. 'ואם היא נמוכה מהריבית בהלוואה, ההפרש הוא העמלה (נקראת גם הפרשי היוון). הבנק גובה את הנמוך משני חישובים: הממוצע של היום מול הריבית בהלוואה, והממוצע של היום מול הממוצע ביום ההלוואה. '
+				. 'הממוצעים שבתוקף מ־' . esc_html( $dm( $tn[0] ) ) . ' (נתוני ' . esc_html( $mo( $tn[1] ) ) . ', ריבית שנתית אפקטיבית): בקבועה לא צמודה ' . esc_html( $p3( $a1 ) ) . ' לתקופה של מעל 10 ועד 15 שנים ו־' . esc_html( $p3( $a2 ) ) . ' למעל 20 ועד 25 שנים; '
+				. 'בצמודה למדד ' . esc_html( $p3( $c1 ) ) . ' ו־' . esc_html( $p3( $c2 ) ) . '. ' . $ex
+				. 'אחרי 3 שנים העמלה יורדת ב־20% ואחרי 5 שנים ב־30%; במסלול פריים, במסלול שהריבית בו משתנה כל שנה וביום שינוי הריבית אין עמלת היוון. בכל פירעון יש עמלה תפעולית של עד ' . (int) $d['fees']['operational_max'] . ' ₪, ו־0.1% מהסכום בהודעה של פחות מ־10 ימים. '
+				. 'המחשבון מחשב את עמלת ההיוון לכל המשכנתא, עד 6 מסלולים, מראה את החישוב המלא בכל מסלול, מחלק פירעון חלקי כך שהעמלה הנמוכה ביותר, ומראה את העמלה בכל אחד מ־24 החודשים הקרובים.</p>';
+		}
+
+	return $entries;
+}

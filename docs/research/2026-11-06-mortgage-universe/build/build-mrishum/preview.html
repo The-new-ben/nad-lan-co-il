@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>רישום משכנתה ואגרות, תצוגה מקומית</title>
+<!-- HAD-675, mortgage universe, local preview only. verify.py serves the repo root (nad-lan-co-il) on a free 127.0.0.1 port and opens
+       /docs/research/2026-11-06-mortgage-universe/build/build-mrishum/preview.html
+     By hand: python -m http.server 47990 --bind 127.0.0.1 (from the repo root).
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the id-scoped rules.
+     The tool is mounted exactly like the shortcode prints it: <section class="nli"> + <div class="nli-host" data-nli data-nli-data>,
+     inside a switcher pane id tool-rishum, with the repo scripts core.js and mrishum.js. The panel inside the host is the server
+     summary of registry.php.txt rendered against the real rishum.json (summary.render.html), replaced when the script runs. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    if (!/[?&]theme=1/.test(location.search)) return;
+    ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+     'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+     'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) {
+      document.write('<link rel="stylesheet" href="' + u + '">');
+    });
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font:400 13px/20px "IBM Plex Sans Hebrew",sans-serif;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content">
+<p class="pv-top">תצוגה מקומית, HAD-675 · כלי חדש לעמוד מחשבון המשכנתא · נתונים: הודעות האגרות של 2026 ברשומות, דפי אתר הממשלה, כל זכות ומשרד הביטחון (נבדקו 6.11.2026)</p>
+<div class="nlmx-pane" id="tool-rishum">
+<section class="nli" dir="rtl" lang="he" aria-label="רישום משכנתה ואגרות" id="pv-rishum"><div class="nli-host" data-nli="mrishum" data-nli-data="/plugins/nadlan-config/assets/instruments/data/rishum.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · רישום משכנתה</p><h2 class="nli__title">רישום משכנתה ואגרות</h2><p>רישום משכנתה בטאבו נעשה בשטר משכנתה, בלשכת רישום המקרקעין שבה רשום הנכס; כשהדירה עוד לא רשומה, למשל דירה מקבלן, נרשם משכון ברשם המשכונות. האגרות של 2026, בתוקף מ־1.1.2026:</p><ul><li>רישום משכנתה, משכנתה נוספת או הגדלת סכום ההלוואה: 188 ₪ <small>(פרט 2(א))</small></li><li>תיקון משכנתה (שינוי או תיקון בתנאים או בשמות הצדדים) והעברת משכנתה: 188 ₪ <small>(פרט 2(ב))</small></li><li>ביטול משכנתה אחרי פירעון (רישום פדיון): פטור מאגרה כשהכסף שולם ישירות לבנק, ו־188 ₪ כשהכסף מופקד בלשכה <small>(פרט 2(ג)(1), 2(ג)(2))</small></li><li>הערת אזהרה: 188 ₪ לכל רישום, ומחיקתה בבקשת הצדדים 127 ₪ <small>(פרט 13(א)(1), 13(ב))</small></li><li>נסח רישום: 88 ₪ בדלפק, 18 ₪ במקוון <small>(פרט 7(א), 7(א2))</small></li><li>רשם המשכונות: 45 ₪ לכל שנה עד 5 שנים, 38 ₪ במקוון, ומהשנה השישית פטור; לחמש שנים 225 ₪ בדלפק או 190 ₪ במקוון. ביטול משכון פטור.</li></ul><p>את אגרת רישום המשכנתה משלם הממשכן. אחרי פירעון מלא הבנק מגיש תוך 30 ימים מיום הפירעון הודעה על מחיקת המשכנתה, והוצאות המחיקה עליו (חוק הבנקאות (שירות ללקוח), סעיף 9א); מועד אחד לכל הבנקים. פטור מאגרת רישום משכנתה: אנשים עם נכות (תקנה 12), משפחות שכולות של חללי צה״ל וכוחות הביטחון (תקנה 12), משפחות שכולות של חללי פעולות איבה (תקנה 12), נפגעי פעולות איבה (תקנה 12), עולים (בתנאי תקנה 13), וגם לבן או לבת הזוג. רמ״י מנפיקה כתב התחייבות לרישום משכנתא בנכסים שהיא מנהלת ושאינם רשומים בטאבו או בחברה משכנת או קבלנית: הבקשה מקוונת, באזור האישי ״רמ״י שלי״, עם מכתב הפנייה מהבנק, וכל בעלי הזכויות חותמים; האגרה של רמ״י לא מופיעה בדף השירות. מוקד הרשות לרישום והסדר זכויות מקרקעין: *8653, שלוחה 7 ואז 1, ימים ראשון עד חמישי 8:00 עד 16:00. מוקד רשות מקרקעי ישראל: *5575 או 03-9533333, ימים ראשון עד חמישי 8:00 עד 17:00. לפי הודעת המקרקעין (אגרות), התשפ״ו־2026 (קובץ התקנות 12193, 5.1.2026, עמ׳ 732) ו״הודעה בדבר עדכון תעריפי אגרות החל מיום 01/01/2026״ באתר הממשלה (פורסם 23.12.2025, עודכן 24.12.2025); נבדק ב־6.11.2026.</p></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="/tabu-extract-check/">בדיקת נסח טאבו</a> <a href="/real-estate-lawyer/">עורך דין מקרקעין</a> <a href="/mortgage-refinance/">מחזור משכנתא</a> <a href="/apartment-purchase-cost-calculator/">עלות רכישה כוללת</a></nav></section>
+</div>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mrishum.js"></script>
+</body>
+</html>

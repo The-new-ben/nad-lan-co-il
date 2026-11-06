@@ -1,0 +1,73 @@
+<?php
+/*
+ * HAD-675 (6.11.2026, mortgage universe): the exact PHP for plugins/nadlan-config/inc/instruments.php, tool "mkashe" (כשקשה לשלם).
+ * NOT applied: inc/instruments.php was not edited. Linted with php -l (PHP 8.3) and the summary rendered against the real data
+ * files with WordPress stubs (render_summary.php in this folder; output in summary.out.html).
+ *
+ * (1) Paste the entry into the array of nadlan_nli_tools(), after 'mnomeff' (or after 'mkeys').
+ * (2) Paste the branch into nadlan_nli_summary(), right after its first line (if ( 'en' === $lang ) ...), before 'mcheck'.
+ *     It uses nadlan_nli_mrates() and nadlan_nli_mr_pmt(), both already in instruments.php (HAD-675).
+ * (3) Ship plugins/nadlan-config/assets/instruments/tools/mkashe.js and data/kashe.json.
+ * (4) On /mortgage-calculator/: one chip and one pane in the tools switcher, id exactly tool-kashe:
+ *       <button type="button" data-sw="tool-kashe" aria-controls="tool-kashe">כשקשה לשלם</button>
+ *       <div class="nlmx-pane" id="tool-kashe">[nadlan_tool id="mkashe"]</div>
+ * No 'deps' (the math is in mkashe.js itself). Hebrew only (no 'en' block): on /en/ pages the script draws nothing, so the server
+ * summary is what an English page would show; do not place it there.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_mkashe_registry_snippet( $id ) {
+
+	/* ===================================================================== (1) entry for nadlan_nli_tools() */
+	$entries = array(
+			/* HAD-675 (6.11.2026, mortgage universe): the hardship tool. kashe.json = the rules of the Banking (Service to Customer) Law,
+			   the Execution Law and the Housing Loans Law, the Kol Zchut pages, the bank lines and the ended BoI wartime outlines, each
+			   with its source and date, "checked": "2026-11-06" (docs/research/2026-11-06-mortgage-universe/gov/gov.md section 4);
+			   the opening rate is the BoI average of boi-mortgage.json (rates.fixed_nl) */
+			'mkashe' => array(
+				'name' => 'כשקשה לשלם את המשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · כשקשה לשלם',
+				'desc' => 'מחשבון הקפאת משכנתא: כמה עולה לדחות חודש עד שישה חודשים בשלוש דרכים, דחייה מלאה של קרן וריבית, ריבית בלבד או הארכת תקופה, וההחזר אחר כך. ואם כבר לא שילמתם: מה קורה מהתשלום הראשון שלא שולם, ההודעה של 21 ימי עסקים, הקו של שישה חודשים לפני הוצאה לפועל, האזהרה, כונס הנכסים והדיור החלוף, עם מה שמגן עליכם בכל שלב; הזכויות לפי המצב (פיטורים, מחלה, לידה, פטירה, הלוואת זכאות, גיל מבוגר, מילואים) עם הסעיף או הדף של כל זכות, וקווי הבנקים.',
+				'data' => array( 'kashe.json', 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועצי משכנתא' ),
+			),
+	);
+
+	/* ===================================================================== (2) branch for nadlan_nli_summary() */
+		if ( 'mkashe' === $id ) {  // HAD-675 (6.11.2026): the hardship rules of kashe.json and a deferral example, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/kashe.json';
+			$k = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $k ) || empty( $k['rules']['enforce_months'] ) || empty( $k['rules']['notice_business_days'] ) || empty( $k['programs']['items'] ) || empty( $k['checked'] ) ) { return ''; }
+			$r  = $k['rules'];
+			$n  = function ( $x ) { return number_format( (float) $x ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$h  = '';
+			$x  = nadlan_nli_mrates(); $d = $x['d'];
+			if ( is_array( $d ) && ! empty( $d['rates']['fixed_nl']['rate'] ) && ! empty( $d['rates']['fixed_nl']['hist'] ) ) {
+				$rate = (float) $d['rates']['fixed_nl']['rate']; $hist = $d['rates']['fixed_nl']['hist']; $mo = (string) $hist[ count( $hist ) - 1 ][0];
+				$i = $rate / 1200; $b = 1000000; $nn = 300; $m = 3;
+				$p0 = nadlan_nli_mr_pmt( $b, $i, $nn ); $bd = $b * pow( 1 + $i, $m );
+				$pf = nadlan_nli_mr_pmt( $bd, $i, $nn - $m ); $pi = nadlan_nli_mr_pmt( $b, $i, $nn - $m ); $pe = nadlan_nli_mr_pmt( $bd, $i, $nn );
+				$xf = $pf * ( $nn - $m ) - $p0 * $nn; $xi = $b * $i * $m + $pi * ( $nn - $m ) - $p0 * $nn; $xe = $pe * $nn - $p0 * $nn;
+				$h .= '<p>מחשבון הקפאת משכנתא, דוגמה: יתרה של 1,000,000 ₪ ל־300 חודשים בריבית ' . esc_html( number_format( $rate, 2 ) ) . '% (הממוצע של בנק ישראל במשכנתאות חדשות בריבית קבועה לא צמודה, '
+					. esc_html( (int) substr( $mo, 5, 2 ) . '.' . substr( $mo, 0, 4 ) ) . '): ההחזר היום ' . $n( $p0 ) . ' ₪. דחייה מלאה של 3 חודשים, קרן וריבית: אחר כך ' . $n( $pf ) . ' ₪ בחודש, ' . $n( $xf ) . ' ₪ יותר בסך הכול. '
+					. 'ריבית בלבד: ' . $n( $b * $i ) . ' ₪ בחודשי הדחייה, אחר כך ' . $n( $pi ) . ' ₪, ' . $n( $xi ) . ' ₪ יותר. הארכת התקופה ב־3 חודשים: ' . $n( $pe ) . ' ₪ בחודש, ' . $n( $xe ) . ' ₪ יותר. '
+					. 'לוח שפיצר, ריבית שנתית חלקי 12, בלי שינוי במדד; את התנאים בפועל קובע הבנק.</p>';
+			}
+			$h .= '<p>אם כבר לא שילמתם את המשכנתא, אלה הכללים לפי חוק ההוצאה לפועל וחוק הבנקאות (שירות ללקוח):</p><ul>'
+				. '<li>בקשה לביצוע משכנתא על דירת מגורים של אדם פרטי לא מוגשת לפני שעברו ' . (int) $r['enforce_months'] . ' חודשים מהתשלום הראשון שלא שולם, והיא מוגשת קודם על החוב שבפיגור בלבד (סעיף 81ב1). חריג: כשהפיגור עם ריבית הפיגורים עולה על ' . (int) $r['immediate_arrears_pct'] . '% מיתרת החוב, ובעוד מקרים שבחוק.</li>'
+				. '<li>לפני העמדה לפירעון מיידי או הליך משפטי הבנק שולח הודעה בכתב ' . (int) $r['notice_business_days'] . ' ימי עסקים לפחות מראש (סעיף 5א1).</li>'
+				. '<li>בתוך ' . (int) $r['self_sale_notice_days'] . ' ימים מהאזהרה של ההוצאה לפועל אפשר להודיע שתמכרו את הדירה בעצמכם, וההליכים מתעכבים ל־' . (int) $r['self_sale_stay_days'] . ' ימים. בתוך ' . (int) $r['receiver_days'] . ' ימים ממינוי כונס נכסים, פירעון החוב שבפיגור (או מחציתו, כשהיתרה מובטחת לתוך ' . (int) $r['receiver_half_months'] . ' חודשים) עוצר את המימוש.</li>'
+				. '<li>מכירה ופינוי רק כשיש מקום מגורים סביר או סידור חלוף; אם בשטר נקבע סידור זמני, סכום לשכירות באזור עד ' . (int) $r['rent_months'] . ' חודשים (סעיף 38).</li>'
+				. '<li>במימוש דירה יחידה לא נגבית עמלת פירעון מוקדם, אלא אם התמורה עולה על ' . esc_html( number_format( (float) $r['fee_free_cap_ils'] / 1000000, 1 ) ) . ' מיליון ₪ (צמוד למדד) או על מלוא החוב (סעיף 9א1).</li>'
+				. '<li>דחייה בנסיבות מיוחדות, אם נבחרה בהסכם ההלוואה (אבטלה, מחלה של יותר מ־' . (int) $r['hardship_illness_months'] . ' חודשים, לידה): עד ' . (int) $r['hardship_months'] . ' חודשים, פעם ב־' . (int) $r['hardship_every_months'] . ' חודשים, עד ' . (int) $r['hardship_times'] . ' פעמים (סעיף 9ח1). אחרי פטירה של לווה: עד ' . (int) $r['death_months'] . ' חודשים בלי ריבית פיגורים (סעיף 9ח2).</li>'
+				. '<li>בהלוואת זכאות: הוועדה המיוחדת מחליטה בתוך ' . (int) $r['committee_days'] . ' ימים, ערר בתוך ' . (int) $r['appeal_file_days'] . ' ימים, וועדת הערר מחליטה בתוך ' . (int) $r['appeal_decide_days'] . ' ימים (חוק הלוואות לדיור, סעיפים 5א ו־5ב).</li></ul>';
+			$today = gmdate( 'Y-m-d' ); $pp = array();
+			foreach ( $k['programs']['items'] as $pr ) {
+				if ( empty( $pr['name'] ) || empty( $pr['last'] ) || empty( $pr['outline'] ) ) { continue; }
+				$pp[] = esc_html( $pr['name'] ) . ' (המתווה פורסם ב־' . esc_html( $dm( $pr['outline'] ) ) . ', הגשה עד ' . esc_html( $dm( $pr['last'] ) ) . ( $today > $pr['last'] ? ', הסתיים' : '' ) . ')';
+			}
+			if ( $pp ) { $h .= '<p>מתווי מלחמה של בנק ישראל: ' . implode( '; ', $pp ) . '. ' . esc_html( $k['programs']['note'] ) . '</p>'; }
+			return $h . '<p>' . esc_html( $k['texts']['not_advice'] ) . ' נבדק ב־' . esc_html( $dm( $k['checked'] ) ) . '.</p>';
+		}
+
+	return $entries;
+}

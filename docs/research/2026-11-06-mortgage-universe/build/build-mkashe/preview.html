@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>כשקשה לשלם, תצוגה מקומית</title>
+<!-- HAD-675, mortgage universe, local preview only. verify.py serves the repo root (nad-lan-co-il) on a free 127.0.0.1 port and opens
+       /docs/research/2026-11-06-mortgage-universe/build/build-mkashe/preview.html
+     By hand: python -m http.server 47990 --bind 127.0.0.1 (from the repo root).
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the id-scoped rules.
+     The tool is mounted exactly like the shortcode prints it: <section class="nli"> + <div class="nli-host" data-nli data-nli-data>,
+     inside the switcher pane #tool-kashe, with the repo scripts core.js and mkashe.js. The paragraphs inside the host are the server
+     summary of registry.php.txt as render_summary.php printed it (summary.out.html); the script replaces them. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    if (!/[?&]theme=1/.test(location.search)) return;
+    ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+     'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+     'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) {
+      document.write('<link rel="stylesheet" href="' + u + '">');
+    });
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font:400 13px/20px "IBM Plex Sans Hebrew",sans-serif;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content">
+<p class="pv-top">תצוגה מקומית, HAD-675 · כלי חדש לעמוד מחשבון המשכנתא · נתונים: חוק הבנקאות (שירות ללקוח), חוק ההוצאה לפועל, חוק הלוואות לדיור, כל זכות, בנק ישראל (נבדקו 6.11.2026)</p>
+<div class="nlmx-pane" id="tool-kashe">
+<section class="nli" dir="rtl" lang="he" aria-label="כשקשה לשלם את המשכנתא" id="pv-kashe"><div class="nli-host" data-nli="mkashe" data-nli-data="/plugins/nadlan-config/assets/instruments/data/kashe.json,/plugins/nadlan-config/assets/instruments/data/boi-mortgage.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · כשקשה לשלם</p><h2 class="nli__title">כשקשה לשלם את המשכנתא</h2><p>מחשבון הקפאת משכנתא, דוגמה: יתרה של 1,000,000 ₪ ל־300 חודשים בריבית 4.62% (הממוצע של בנק ישראל במשכנתאות חדשות בריבית קבועה לא צמודה, 8.2026): ההחזר היום 5,627 ₪. דחייה מלאה של 3 חודשים, קרן וריבית: אחר כך 5,723 ₪ בחודש, 11,589 ₪ יותר בסך הכול. ריבית בלבד: 3,850 ₪ בחודשי הדחייה, אחר כך 5,657 ₪, 3,659 ₪ יותר. הארכת התקופה ב־3 חודשים: 5,692 ₪ בחודש, 19,572 ₪ יותר. לוח שפיצר, ריבית שנתית חלקי 12, בלי שינוי במדד; את התנאים בפועל קובע הבנק.</p><p>אם כבר לא שילמתם את המשכנתא, אלה הכללים לפי חוק ההוצאה לפועל וחוק הבנקאות (שירות ללקוח):</p><ul><li>בקשה לביצוע משכנתא על דירת מגורים של אדם פרטי לא מוגשת לפני שעברו 6 חודשים מהתשלום הראשון שלא שולם, והיא מוגשת קודם על החוב שבפיגור בלבד (סעיף 81ב1). חריג: כשהפיגור עם ריבית הפיגורים עולה על 10% מיתרת החוב, ובעוד מקרים שבחוק.</li><li>לפני העמדה לפירעון מיידי או הליך משפטי הבנק שולח הודעה בכתב 21 ימי עסקים לפחות מראש (סעיף 5א1).</li><li>בתוך 20 ימים מהאזהרה של ההוצאה לפועל אפשר להודיע שתמכרו את הדירה בעצמכם, וההליכים מתעכבים ל־90 ימים. בתוך 90 ימים ממינוי כונס נכסים, פירעון החוב שבפיגור (או מחציתו, כשהיתרה מובטחת לתוך 6 חודשים) עוצר את המימוש.</li><li>מכירה ופינוי רק כשיש מקום מגורים סביר או סידור חלוף; אם בשטר נקבע סידור זמני, סכום לשכירות באזור עד 18 חודשים (סעיף 38).</li><li>במימוש דירה יחידה לא נגבית עמלת פירעון מוקדם, אלא אם התמורה עולה על 2.5 מיליון ₪ (צמוד למדד) או על מלוא החוב (סעיף 9א1).</li><li>דחייה בנסיבות מיוחדות, אם נבחרה בהסכם ההלוואה (אבטלה, מחלה של יותר מ־3 חודשים, לידה): עד 3 חודשים, פעם ב־12 חודשים, עד 3 פעמים (סעיף 9ח1). אחרי פטירה של לווה: עד 12 חודשים בלי ריבית פיגורים (סעיף 9ח2).</li><li>בהלוואת זכאות: הוועדה המיוחדת מחליטה בתוך 60 ימים, ערר בתוך 15 ימים, וועדת הערר מחליטה בתוך 30 ימים (חוק הלוואות לדיור, סעיפים 5א ו־5ב).</li></ul><p>מתווי מלחמה של בנק ישראל: שאגת הארי (המתווה פורסם ב־2.3.2026, הגשה עד 15.5.2026, הסתיים); עם כלביא (המתווה פורסם ב־17.6.2025, הגשה עד 31.7.2025, הסתיים). בכל מבצע חדש בנק ישראל מפרסם מתווה; בודקים מול הבנק.</p><p>המידע כאן כללי ואינו ייעוץ משפטי. התנאים בפועל נקבעים בהסכם ההלוואה שלכם ובבנק. ככל שמדברים עם הבנק מוקדם יותר, יש יותר דרכים לפתור. נבדק ב־6.11.2026.</p></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="/mortgage-calculator/mortgage-interest-rates/">ריבית משכנתא היום</a> <a href="/mortgage-refinance/">מחזור משכנתא</a> <a href="/mortgage-advisor/">יועצי משכנתא</a></nav></section>
+</div>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mkashe.js"></script>
+</body>
+</html>

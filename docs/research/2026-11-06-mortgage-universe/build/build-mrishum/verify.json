@@ -1,0 +1,1736 @@
+{
+ "base": "http://127.0.0.1:62080/docs/research/2026-11-06-mortgage-universe/build/build-mrishum/preview.html",
+ "checks": 292,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 opens on tabu, registration, lawyer online: 206 ₪ (188 + 18)",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 the opening tiles are pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ledger: 188 ₪ registration, 18 ₪ extract, total 206 ₪, items 2(א) and 7(א2)",
+   "ok": true,
+   "got": "רישום משכנתה\nפרט 2(א)\n188 ₪\nהודעת האגרות 2026\nאגרות 2026, אתר הממשלה\nנסח רישום מקוון, חתום אלקטרונית\nפרט 7(א2)\n18 ₪\nהודעת האגרות 2026\nלשלם למדינה\n206 ₪"
+  },
+  {
+   "check": "390 source chips link the 2026 notice and the regulations",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the contact line: *8653, 7 then 1, Sunday to Thursday 8:00 to 16:00, WhatsApp, deed days",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no \"לא נקרא\" label on the tool (the unread sources are links only)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the source line names the 2026 notice and its dates",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the checklist is titled \"טופס רישום משכנתא\" and links the gov.il forms page",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 amounts in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 default no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 default every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 default every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 default every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 default page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 default page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 default page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 tabu · register · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · register · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · second · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · second · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · amend · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · amend · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu · cancel · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "390 tabu cancel bank no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 tabu cancel bank every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 tabu cancel bank every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 tabu cancel bank every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום"
+   ]
+  },
+  {
+   "check": "390 tabu · cancel · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 tabu cancel office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 tabu cancel office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 tabu cancel office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 tabu cancel office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום"
+   ]
+  },
+  {
+   "check": "390 tabu · death · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "390 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "390 ila register owner no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 ila register owner every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ila register owner every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ila register owner every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "390 ila register rep no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 ila register rep every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ila register rep every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ila register rep every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "390 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "390 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "ok": true,
+   "got": "בודקים מול רמ״י"
+  },
+  {
+   "check": "390 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "ok": true,
+   "got": "בודקים מול רמ״י"
+  },
+  {
+   "check": "390 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "390 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "390 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 company · register · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 company · second · lawyer: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 company · second · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 company · amend · lawyer: pressed, headline = NLRS (בודקים מול החברה המשכנת), total row",
+   "ok": true,
+   "got": "בודקים מול החברה המשכנת"
+  },
+  {
+   "check": "390 company amend lawyer no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 company amend lawyer every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 company amend lawyer every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 company amend lawyer every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 company · amend · office: pressed, headline = NLRS (בודקים מול החברה המשכנת), total row",
+   "ok": true,
+   "got": "בודקים מול החברה המשכנת"
+  },
+  {
+   "check": "390 company amend office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 company amend office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 company amend office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 company amend office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 company · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "390 company · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "390 none · register · lawyer: pressed, headline = NLRS (190 ₪), total row",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "390 none register lawyer no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 none register lawyer every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 none register lawyer every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 none register lawyer every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 none · register · office: pressed, headline = NLRS (225 ₪), total row",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "390 none register office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 none register office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 none register office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 none register office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 none · second · lawyer: pressed, headline = NLRS (190 ₪), total row",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "390 none · second · office: pressed, headline = NLRS (225 ₪), total row",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "390 none · amend · lawyer: pressed, headline = NLRS (38 ₪), total row",
+   "ok": true,
+   "got": "38 ₪"
+  },
+  {
+   "check": "390 none · amend · office: pressed, headline = NLRS (45 ₪), total row",
+   "ok": true,
+   "got": "45 ₪"
+  },
+  {
+   "check": "390 none · cancel · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "390 none · death · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "390 all 33 paths pressed",
+   "ok": true,
+   "got": 33
+  },
+  {
+   "check": "390 after death (none): the s.9ח2 deferral of 12 months is said",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 after the paths page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 after the paths page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 after the paths page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA: step 3 offers the rights holder and a representative, the rights holder pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA: headline \"לא מופיעה בדף השירות\", no total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "390 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)",
+   "ok": true,
+   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nהאגרה של רמ״י\nלא מופיעה בדף השירות\n\nכתב התחייבות לרישום משכנתא מו"
+  },
+  {
+   "check": "390 ILA: the warning note is outside the total",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA: the contact card shows the ILA call centre *5575, 03-9533333, 8:00 to 17:00",
+   "ok": true,
+   "got": "מוקד רשות מקרקעי ישראל: *5575 או 03-9533333, ימים ראשון עד חמישי, 8:00 עד 17:00."
+  },
+  {
+   "check": "390 ILA checklist (rights holder): referral letter, everyone signs, the form; no power of attorney",
+   "ok": true,
+   "got": "מכתב הפנייה מהבנק (הגורם המלווה) למתן כתב התחייבות לרישום משכנתא\nרמ״י, אתר הממשל"
+  },
+  {
+   "check": "390 ILA links: the service page and the official form are listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA, a representative: the power of attorney joins the checklist",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA: no \"לא נקרא\" and no \"לא ידוע\" anywhere in the tool",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 ILA every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ILA every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 ILA every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 ILA page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 ILA page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 back to tabu: the ILA call centre and links hide, step 3 is the lawyer and the office again",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 counter extract: 276 ₪ (188 + 88)",
+   "ok": true,
+   "got": "276 ₪"
+  },
+  {
+   "check": "390 no extract: 188 ₪",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "390 online extract: 206 ₪",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 exemption disabled: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "390 exemption bereaved_idf: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "390 exemption bereaved_terror: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "390 exemption terror: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "390 exemption olim: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "390 bereaved IDF families: MoD approval within 7 work days, orphans up to 30, refund within 12 months",
+   "ok": true,
+   "got": "משפחות שכולות של חללי צה״ל וכוחות הביטחון, תקנה 12. אגרת רישום המשכנתה יורדת ל־0 ₪, במקום 188 ₪, אם אחד התנאים חל עליכם."
+  },
+  {
+   "check": "390 the exemption approval replaces the fee receipt in the checklist",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 exemption no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 exemption every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 exemption every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 exemption every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 amendment: the amendment kind appears, 206 ₪, the exemption does not lower it",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 amendment, increase of the loan: item 2(א)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 exemption back to none: 206 ₪, no exemption block",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "390 tabu registration checklist: 8 documents with checkboxes",
+   "ok": true,
+   "got": 8
+  },
+  {
+   "check": "390 a checklist item ticks by its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 copy summary: the path, the total, the dates and a #mrishum= link",
+   "ok": true,
+   "got": "רישום משכנתה ואגרות 2026: רשומה בטאבו (פנקסי המקרקעין) · רישום משכנתה · עורך דין במקוון.\r\nלשלם למדינה: 206 ₪ (188 ₪ רישו"
+  },
+  {
+   "check": "390 copy checklist: \"טופס רישום משכנתא\", 8 lines, the forms URL",
+   "ok": true,
+   "got": "טופס רישום משכנתא, מה מגישים: רשומה בטאבו (פנקסי המקרקעין) · רישום משכנתה · עורך"
+  },
+  {
+   "check": "390 print button calls window.print",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 pledge: the years field appears, 25 years online = 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "390 pledge 3 years online: 114 ₪",
+   "ok": true,
+   "got": "114 ₪"
+  },
+  {
+   "check": "390 pledge 3 years at the counter: 135 ₪",
+   "ok": true,
+   "got": "135 ₪"
+  },
+  {
+   "check": "390 pledge 5 years at the counter: 225 ₪",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "390 pledge 5 years online: 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "390 years 0: the message on its field",
+   "ok": true,
+   "got": "הקלידו מספר שנים שלם, מ־1 עד 40."
+  },
+  {
+   "check": "390 years 25 again: 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "390 pledge + internet search of the register: 202 ₪ (190 + 12)",
+   "ok": true,
+   "got": "202 ₪"
+  },
+  {
+   "check": "390 pledge no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 pledge every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 pledge every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 pledge every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 #mrishum=none.second.office.counter.olim.3.inc opens on 173 ₪ (3 x 45 + 38), tiles pressed",
+   "ok": true,
+   "got": "173 ₪"
+  },
+  {
+   "check": "390 shared link: no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opens on tabu, registration, lawyer online: 206 ₪ (188 + 18)",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 the opening tiles are pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ledger: 188 ₪ registration, 18 ₪ extract, total 206 ₪, items 2(א) and 7(א2)",
+   "ok": true,
+   "got": "רישום משכנתה\nפרט 2(א)\n188 ₪\nהודעת האגרות 2026\nאגרות 2026, אתר הממשלה\nנסח רישום מקוון, חתום אלקטרונית\nפרט 7(א2)\n18 ₪\nהודעת האגרות 2026\nלשלם למדינה\n206 ₪"
+  },
+  {
+   "check": "1280 source chips link the 2026 notice and the regulations",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the contact line: *8653, 7 then 1, Sunday to Thursday 8:00 to 16:00, WhatsApp, deed days",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no \"לא נקרא\" label on the tool (the unread sources are links only)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the source line names the 2026 notice and its dates",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the checklist is titled \"טופס רישום משכנתא\" and links the gov.il forms page",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 amounts in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "1280 layout: the steps and the result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 default no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 default every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 default every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 default every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 default page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 default page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 default page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 tabu · register · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · register · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · second · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · second · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · amend · lawyer: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · amend · office: pressed, headline = NLRS (206 ₪), total row",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu · cancel · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "1280 tabu cancel bank no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 tabu cancel bank every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 tabu cancel bank every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 tabu cancel bank every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום"
+   ]
+  },
+  {
+   "check": "1280 tabu · cancel · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 tabu cancel office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 tabu cancel office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 tabu cancel office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 tabu cancel office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום"
+   ]
+  },
+  {
+   "check": "1280 tabu · death · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "1280 ila · register · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "1280 ila register owner no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 ila register owner every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ila register owner every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ila register owner every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 ila · register · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "1280 ila register rep no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 ila register rep every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ila register rep every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ila register rep every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 ila · second · owner: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "1280 ila · second · rep: pressed, headline = NLRS (לא מופיעה בדף השירות), total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "1280 ila · amend · owner: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "ok": true,
+   "got": "בודקים מול רמ״י"
+  },
+  {
+   "check": "1280 ila · amend · rep: pressed, headline = NLRS (בודקים מול רמ״י), total row",
+   "ok": true,
+   "got": "בודקים מול רמ״י"
+  },
+  {
+   "check": "1280 ila · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "1280 ila · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "1280 company · register · lawyer: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 company · register · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 company · second · lawyer: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 company · second · office: pressed, headline = NLRS (188 ₪), total row",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 company · amend · lawyer: pressed, headline = NLRS (בודקים מול החברה המשכנת), total row",
+   "ok": true,
+   "got": "בודקים מול החברה המשכנת"
+  },
+  {
+   "check": "1280 company amend lawyer no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 company amend lawyer every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 company amend lawyer every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 company amend lawyer every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 company · amend · office: pressed, headline = NLRS (בודקים מול החברה המשכנת), total row",
+   "ok": true,
+   "got": "בודקים מול החברה המשכנת"
+  },
+  {
+   "check": "1280 company amend office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 company amend office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 company amend office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 company amend office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 company · cancel · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "1280 company · death · bank: pressed, headline = NLRS (הבנק מבטל את השעבוד), total row",
+   "ok": true,
+   "got": "הבנק מבטל את השעבוד"
+  },
+  {
+   "check": "1280 none · register · lawyer: pressed, headline = NLRS (190 ₪), total row",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "1280 none register lawyer no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 none register lawyer every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 none register lawyer every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 none register lawyer every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 none · register · office: pressed, headline = NLRS (225 ₪), total row",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "1280 none register office no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 none register office every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 none register office every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 none register office every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 none · second · lawyer: pressed, headline = NLRS (190 ₪), total row",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "1280 none · second · office: pressed, headline = NLRS (225 ₪), total row",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "1280 none · amend · lawyer: pressed, headline = NLRS (38 ₪), total row",
+   "ok": true,
+   "got": "38 ₪"
+  },
+  {
+   "check": "1280 none · amend · office: pressed, headline = NLRS (45 ₪), total row",
+   "ok": true,
+   "got": "45 ₪"
+  },
+  {
+   "check": "1280 none · cancel · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "1280 none · death · bank: pressed, headline = NLRS (0 ₪), total row",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "1280 all 33 paths pressed",
+   "ok": true,
+   "got": 33
+  },
+  {
+   "check": "1280 after death (none): the s.9ח2 deferral of 12 months is said",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 after the paths page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 after the paths page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 after the paths page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA: step 3 offers the rights holder and a representative, the rights holder pressed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA: headline \"לא מופיעה בדף השירות\", no total row",
+   "ok": true,
+   "got": "לא מופיעה בדף השירות"
+  },
+  {
+   "check": "1280 ILA: the facts read are on the page (personal area, national identification, 90.02B, digital original, undertaking)",
+   "ok": true,
+   "got": "בניהול רשות מקרקעי ישראל · רישום משכנתה · בעל הזכויות\n\nהאגרה של רמ״י\nלא מופיעה בדף השירות\n\nכתב התחייבות לרישום משכנתא מו"
+  },
+  {
+   "check": "1280 ILA: the warning note is outside the total",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA: the contact card shows the ILA call centre *5575, 03-9533333, 8:00 to 17:00",
+   "ok": true,
+   "got": "מוקד רשות מקרקעי ישראל: *5575 או 03-9533333, ימים ראשון עד חמישי, 8:00 עד 17:00."
+  },
+  {
+   "check": "1280 ILA checklist (rights holder): referral letter, everyone signs, the form; no power of attorney",
+   "ok": true,
+   "got": "מכתב הפנייה מהבנק (הגורם המלווה) למתן כתב התחייבות לרישום משכנתא\nרמ״י, אתר הממשל"
+  },
+  {
+   "check": "1280 ILA links: the service page and the official form are listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA, a representative: the power of attorney joins the checklist",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA: no \"לא נקרא\" and no \"לא ידוע\" anywhere in the tool",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 ILA every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ILA every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 ILA every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום, אם הנכס רשום בטאבו",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 ILA page text: no long dash",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA page text: no banned word",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 ILA page text: no sixty-day deadline",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 back to tabu: the ILA call centre and links hide, step 3 is the lawyer and the office again",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 counter extract: 276 ₪ (188 + 88)",
+   "ok": true,
+   "got": "276 ₪"
+  },
+  {
+   "check": "1280 no extract: 188 ₪",
+   "ok": true,
+   "got": "188 ₪"
+  },
+  {
+   "check": "1280 online extract: 206 ₪",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 exemption disabled: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "1280 exemption bereaved_idf: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "1280 exemption bereaved_terror: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "1280 exemption terror: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "1280 exemption olim: 188 becomes 0, 18 ₪ left for the extract, conditions shown",
+   "ok": true,
+   "got": [
+    "18 ₪",
+    "במסלול הזה: 0 ₪"
+   ]
+  },
+  {
+   "check": "1280 bereaved IDF families: MoD approval within 7 work days, orphans up to 30, refund within 12 months",
+   "ok": true,
+   "got": "משפחות שכולות של חללי צה״ל וכוחות הביטחון, תקנה 12. אגרת רישום המשכנתה יורדת ל־0 ₪, במקום 188 ₪, אם אחד התנאים חל עליכם."
+  },
+  {
+   "check": "1280 the exemption approval replaces the fee receipt in the checklist",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 exemption no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 exemption every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 exemption every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 exemption every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 amendment: the amendment kind appears, 206 ₪, the exemption does not lower it",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 amendment, increase of the loan: item 2(א)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 exemption back to none: 206 ₪, no exemption block",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "1280 tabu registration checklist: 8 documents with checkboxes",
+   "ok": true,
+   "got": 8
+  },
+  {
+   "check": "1280 a checklist item ticks by its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 copy summary: the path, the total, the dates and a #mrishum= link",
+   "ok": true,
+   "got": "רישום משכנתה ואגרות 2026: רשומה בטאבו (פנקסי המקרקעין) · רישום משכנתה · עורך דין במקוון.\r\nלשלם למדינה: 206 ₪ (188 ₪ רישו"
+  },
+  {
+   "check": "1280 copy checklist: \"טופס רישום משכנתא\", 8 lines, the forms URL",
+   "ok": true,
+   "got": "טופס רישום משכנתא, מה מגישים: רשומה בטאבו (פנקסי המקרקעין) · רישום משכנתה · עורך"
+  },
+  {
+   "check": "1280 print button calls window.print",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 pledge: the years field appears, 25 years online = 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "1280 pledge 3 years online: 114 ₪",
+   "ok": true,
+   "got": "114 ₪"
+  },
+  {
+   "check": "1280 pledge 3 years at the counter: 135 ₪",
+   "ok": true,
+   "got": "135 ₪"
+  },
+  {
+   "check": "1280 pledge 5 years at the counter: 225 ₪",
+   "ok": true,
+   "got": "225 ₪"
+  },
+  {
+   "check": "1280 pledge 5 years online: 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "1280 years 0: the message on its field",
+   "ok": true,
+   "got": "הקלידו מספר שנים שלם, מ־1 עד 40."
+  },
+  {
+   "check": "1280 years 25 again: 190 ₪",
+   "ok": true,
+   "got": "190 ₪"
+  },
+  {
+   "check": "1280 pledge + internet search of the register: 202 ₪ (190 + 12)",
+   "ok": true,
+   "got": "202 ₪"
+  },
+  {
+   "check": "1280 pledge no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 pledge every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 pledge every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 pledge every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח מרשם המשכונות",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 #mrishum=none.second.office.counter.olim.3.inc opens on 173 ₪ (3 x 45 + 38), tiles pressed",
+   "ok": true,
+   "got": "173 ₪"
+  },
+  {
+   "check": "1280 shared link: no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 opens on 206 ₪",
+   "ok": true,
+   "got": "206 ₪"
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "1איפה הדירה רשומה היום",
+    "2מה רוצים לעשות",
+    "3מי מגיש",
+    "נסח רישום",
+    "פטור מאגרת רישום משכנתה"
+   ]
+  },
+  {
+   "check": "theme 390: heading face, tile radius and the ledger list hold against the theme",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "2px",
+    "none"
+   ]
+  },
+  {
+   "check": "theme 390: cancellation pressed = 0 ₪",
+   "ok": true,
+   "got": "0 ₪"
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

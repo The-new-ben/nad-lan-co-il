@@ -1,0 +1,58 @@
+<?php
+/*
+ * HAD-675 (6.11.2026): the exact PHP for plugins/nadlan-config/inc/instruments.php, tool mneches ("כמה אפשר לקבל על דירה קיימת").
+ * NOT applied: inc/instruments.php was not edited. Linted with php -l (PHP 8.3) and the summary rendered against the real data
+ * files with WordPress stubs (README.md, "Server summary").
+ *
+ * (1) Paste the entry into the array of nadlan_nli_tools(), after 'mnomeff' (or after 'mkeys').
+ * (2) Paste the branch into nadlan_nli_summary(), right after its first line (if ( 'en' === $lang ) ...).
+ * (3) Ship plugins/nadlan-config/assets/instruments/tools/mneches.js and data/mneches.json (boi-mortgage.json is already live).
+ * (4) On /mortgage-calculator/: one chip and one pane in the switcher, ids exactly tool-neches (the copy button links #tool-neches,
+ *     and a shared #mneches= link opens this pane by pressing its chip):
+ *       <button type="button" data-sw="tool-neches" aria-controls="tool-neches">כמה אפשר לקבל על דירה קיימת</button>
+ *       <div class="nlmx-pane" id="tool-neches">[nadlan_tool id="mneches"]</div>
+ * No 'deps': mneches.js carries its own math (the per-shekel payment of the housing mix is the same formula as mquick.js).
+ * Hebrew only (no 'en' block): on /en/ pages the script draws nothing; do not place it there.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_mneches_registry_snippet( $id ) {
+
+	/* ===================================================================== (1) entry for nadlan_nli_tools() */
+	$entries = array(
+			/* HAD-675 (6.11.2026): the loan against a home the reader owns. Directive 329 version 13 (circular 2852, 30.6.2026) and the
+			   Q&A of 8.2.2026, fetched from boi.org.il 6.11.2026; the any-purpose loan figures of SDMX BIR_MRTG_99 (8.2026) in
+			   mneches.json; LTV, PTI and term numbers from boi-mortgage.json rules. Build: docs/research/2026-11-06-mortgage-universe/build/build-mneches */
+			'mneches' => array(
+				'name' => 'כמה אפשר לקבל על דירה קיימת', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · הלוואה בשעבוד דירה',
+				'desc' => 'כמה הבנק יכול לתת על דירה שכבר בבעלותכם: לפי כלל המימון של בנק ישראל (50% משווי הדירה יחד עם יתרת המשכנתא, ובשיקול דעת הבנק עד 70%) ולפי ההחזר מההכנסה (עד 50%, כולל ההחזר על המשכנתא הקיימת), למטרה שבחרתם: לכל מטרה, לקניית דירה נוספת, לעזרה לילדים או לסגירת הלוואות. מה מגביל ובכמה, ההחזר החודשי, סך ההחזרים וטבלה לפי תקופה, בריבית הממוצעת של בנק ישראל או בריבית שקיבלתם.',
+				'data' => array( 'boi-mortgage.json', 'mneches.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-for-any-purpose/' => 'משכנתא לכל מטרה', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/mortgage-calculator/bridge-loan-apartment/' => 'הלוואת גישור', '/mortgage-refinance/' => 'מחזור משכנתא' ),
+			),
+	);
+
+	/* ===================================================================== (2) branch for nadlan_nli_summary() */
+		if ( 'mneches' === $id ) {  // HAD-675 (6.11.2026): the two limits of directive 329 and a worked example, every number read at render time
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/mneches.json';
+			$nc = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['rules']['any_purpose']['ltv'] ) || ! is_array( $nc ) || empty( $nc['anyp']['tracks'] ) || empty( $nc['sources']['D329']['version'] ) ) { return ''; }
+			$ap = $d['rules']['any_purpose']; $a = $nc['anyp']; $r = $nc['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$n  = function ( $v ) { return number_format( (float) $v ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$heM = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$mo = $heM[ (int) substr( $a['month'], 5, 2 ) - 1 ] . ' ' . substr( $a['month'], 0, 4 );
+			$val = 2800000; $bal = 350000;  // the tool's opening example
+			$cap = floor( (float) $ap['ltv'] * $val ); $room = max( 0, $cap - $bal );
+			$rel = max( 0, floor( min( (float) $ap['ltv_upto'] * $val, $cap + (float) $ap['above_cap'] ) ) - $bal );
+			return '<p>כמה אפשר לקבל על דירה קיימת לפי בנק ישראל: בהלוואה לכל מטרה בשעבוד דירת מגורים המימון המרבי הוא ' . esc_html( $pc( $ap['ltv'] ) ) . ' משווי הדירה, יחד עם יתרת המשכנתא שכבר רשומה עליה. '
+				. 'בשיקול דעת הבנק אפשר עד ' . esc_html( $pc( $ap['ltv_upto'] ) ) . ', כשהחלק שמעל ' . esc_html( $pc( $ap['ltv'] ) ) . ' עד ' . esc_html( $n( $ap['above_cap'] ) ) . ' ₪ בכל ההלוואות על הדירה. '
+				. 'ההחזר החודשי עד ' . esc_html( $pc( $d['rules']['pti_max'] ) ) . ' מההכנסה הפנויה, ומ־' . esc_html( $dm( $r['same_asset']['from'] ) ) . ' הוא כולל גם הלוואות קודמות על אותה דירה שנותרו להן יותר מ־' . (int) $r['same_asset']['months'] . ' חודשים; הלוואה לכל מטרה של עד ' . esc_html( $n( $r['pti_exempt']['value'] ) ) . ' ₪ פטורה ממגבלת ההחזר. '
+				. 'למשל דירה בשווי ' . esc_html( $n( $val ) ) . ' ₪ עם יתרת משכנתא של ' . esc_html( $n( $bal ) ) . ' ₪: ' . esc_html( $pc( $ap['ltv'] ) ) . ' הם ' . esc_html( $n( $cap ) ) . ' ₪, פחות היתרה, כלומר עד ' . esc_html( $n( $room ) ) . ' ₪, ובהקלה עד ' . esc_html( $n( $rel ) ) . ' ₪. '
+				. 'ב' . esc_html( $mo ) . ' נתנו הבנקים ' . esc_html( $n( $a['loans']['value'] ) ) . ' הלוואות חדשות לכל מטרה בשעבוד דירה, ' . esc_html( number_format( $a['volume_k']['value'] / 1000, 1 ) ) . ' מיליון ₪, וההחזר הממוצע היה ' . esc_html( number_format( (float) $a['pti']['value'], 2 ) ) . '% מההכנסה; '
+				. 'הריבית הממוצעת בקבועה לא צמודה ' . esc_html( number_format( (float) $a['fixed']['nl']['rate'], 2 ) ) . '%, מול ' . esc_html( number_format( (float) $a['housing_fixed']['nl']['rate'], 2 ) ) . '% במשכנתאות לדיור באותו חודש. '
+				. 'לפי הוראת ניהול בנקאי תקין 329, גרסה ' . (int) $nc['sources']['D329']['version'] . ' (' . esc_html( $dm( $nc['sources']['D329']['date'] ) ) . '), וקובץ השאלות והתשובות (' . esc_html( $dm( $nc['sources']['QA329']['date'] ) ) . '), נבדק ב־' . esc_html( $dm( $nc['checked'] ) ) . '.</p>';
+		}
+
+	return $entries;
+}

@@ -1,0 +1,184 @@
+
+390x844  (http://127.0.0.1:62407/docs/research/2026-11-06-mortgage-universe/build/build-mhivun/preview.html)
+  today in the page: 2026-11
+  ok   390 opens on the example: total = NLHV (₪13,750)  [₪13,750]
+  ok   390 the example is labelled (tag on the answer and the note under the tool)
+  ok   390 4 rows, 4 cards
+  ok   390 the prime card says why there is no fee
+  ok   390 the lines: balance, operational once, notice, CPI fee, totals  [עמלת היוון לכל המשכנתא, בפירעון ב־11.2026
+דוגמה, שנו כל שדה
+₪13,750
+על יתרה של ₪1,319,919 ב־4 מסלולים, בפירעון ב־11.2026. בלי עמלת היוון: מסלול 2 (פריים, הריבית משתנה במועד לא ידוע]
+  ok   390 the top strip: the averages and their in-force date  [קבועה לא צמודה, מעל 20 ועד 25 שנים 4.788% קבועה לא צמודה, מעל 10 ועד 15 שנים 4.607% צמודה למדד, מעל 10 ועד 15 שנים 3.242% הממוצעים בתוקף מתאריך 19.10.2026]
+  ok   390 the source line: the Order, the averages file, cir2103, the rates page, the CPI
+  ok   390 text in IBM Plex Sans Hebrew, the figure in IBM Plex Mono  [['"IBM Plex Sans Hebrew"', '"IBM Plex Mono"', '"IBM Plex Sans Hebrew"']]
+  ok   390 layout: one column on the phone  [1]
+  ok   390 "מה זה היוון משכנתא" section
+  ok   390 example no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 example every visible control at least 44 px high  [[]]
+  ok   390 example every input and select labelled  [[]]
+  ok   390 example every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   390 example no long dash, no banned word, never a bare ₪0  [[]]
+  ok   390 "איך זה חושב" 1 opens with its steps  [15]
+  ok   390 "איך זה חושב" 2 opens with its steps  [5]
+  ok   390 "איך זה חושב" 3 opens with its steps  [15]
+  ok   390 "איך זה חושב" 4 opens with its steps  [15]
+  ok   390 track 1 steps carry the numbers: s.3(3), s.3(4), the fee, both values, 4.788%, 5.022%, 20%  [[]]
+  ok   390 track 2 (prime) explains why, section 4
+  ok   390 track 3 (variable) counts payments to the change day 7.2028
+  ok   390 steps open no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 steps open every visible control at least 44 px high  [[]]
+  ok   390 steps open every input and select labelled  [[]]
+  ok   390 steps open every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   390 steps open no long dash, no banned word, never a bare ₪0  [[]]
+  ok   390 notice "10 ימים ומעלה": the 0.1% line says none
+  ok   390 the example tag is gone after the first change
+  ok   390 notice back to under 10 days
+  ok   390 track 3 to "משתנה לא צמודה": the change-cycle select appears
+  ok   390 every 2.5 years: total = NLHV (₪12,213)  [₪12,213]
+  ok   390 every year: no fee on track 3, said so; total = NLHV  [₪12,213]
+  ok   390 back to the example  [₪13,750]
+  ok   390 term unit to months: 20 years shows 240, same total  [240]
+  ok   390 239 months: total = NLHV (₪13,727)  [₪13,727]
+  ok   390 back to years: 20
+  ok   390 add: 5 rows, the new one asks for its amount, the total unchanged with a note  [₪13,750]
+  ok   390 row 5 filled (fixed, 7.2023, 20 years copied, 4.5%): total = NLHV (₪13,750)  [₪13,750]
+  ok   390 add again: 6 rows and the add button disabled
+  ok   390 remove twice: 4 rows, the example total  [₪13,750]
+  ok   390 month 13.2023: the message on its field, track 1 left out, total = NLHV without it  [₪5,911]
+  ok   390 a future month: "החודש צריך להיות לפני"
+  ok   390 back to 7.2023  [₪13,750]
+  ok   390 partial 200,000: all to prime, no fee, the drop said  [אין עמלת היוון]
+  ok   390 partial 600,000: fee = NLHV (₪962), prime first, the order explained, vs the split by balances  [₪962]
+  ok   390 mode "קיצור התקופה": months column, prime closed (260 months)  [פירעון חלקי: איך לחלק את הסכום
+
+מקלידים כמה רוצים לפרוע, ואנחנו מחלקים את הסכום בין המסלולים כך שעמלת ההיוון תהיה הנמוכה]
+  ok   390 mode back to "הקטנת ההחזר"
+  ok   390 more than the balance: capped, said so
+  ok   390 the cheapest month named with the saving (6.2028, ₪10,849)  [החודש הזול ביותר ב־24 החודשים, אם הממוצעים לא ישתנו: 6.2028, עמלה של ₪10,849. זה ₪2,901 פחות מהיום, שבו העמלה ₪13,750.]
+  ok   390 the chart: one bar per month (24 or 25) with the event markers  [26]
+  ok   390 the chart is an image with a text alternative
+  ok   390 the months where something changes: the discount and the change day of 7.2028  [7.2028מסלול 1, קל״צ: 5 שנים מההתחלה, הפחתה של 30%; מסלול 1, קל״צ: התקופה שנותרה עוברת לטור "מעל 15 ועד 20 שנים"; מסלול 3, משתנה צמודה: יום שינוי הריבית, אין בו ]
+  ok   390 the 24-month table opens under the chart: 25 rows (today and 24)  [25]
+  ok   390 when no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 when every visible control at least 44 px high  [[]]
+  ok   390 when every input and select labelled  [[]]
+  ok   390 when every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   390 when no long dash, no banned word, never a bare ₪0  [[]]
+  ok   390 bank 16,000: a gap, no accusation, the usual reasons listed  [בדיקת המספר של הבנק
+
+קיבלתם מהבנק דוח לסילוק או מכתב עם עמלת ההיוון? הקלידו את הסכום, ונשווה אותו לחישוב.
+
+העמלה שהבנק נ]
+  ok   390 bank within 2%: close
+  ok   390 copy: the Hebrew summary with the case link  [עמלת היוון למשכנתא, בפירעון ב־11.2026: | 1. קבועה לא צמודה: יתרה ₪464,967, עמלת היוון ₪7,839 (אחרי הפחתה של 20%). | 2. פרי]
+  ok   390 WhatsApp: opens wa.me with the summary (answered locally)  [https://wa.me/?text=%D7%A2%D7%9E%D7%9C%D7%AA%20%D7%94%D7%99%D7%95%D7%95%D7%9F%20]
+  ok   390 case link copied  [ZHVjZSIsIm50Ijoic2hvcnQiLCJiayI6MTM4NTB9]
+  ok   390 print pressed
+  ok   390 no dialog fell back to a prompt  [[]]
+  ok   390 after every control no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 after every control every visible control at least 44 px high  [[]]
+  ok   390 after every control every input and select labelled  [[]]
+  ok   390 after every control every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   390 after every control no long dash, no banned word, never a bare ₪0  [[]]
+  ok   390 the link reopens the case: same total, partial 600,000, bank number, no example tag  [['₪13,750', '600,000']]
+  ok   390 no console error or warning, no page error  [[]]
+
+1280x900  (http://127.0.0.1:62407/docs/research/2026-11-06-mortgage-universe/build/build-mhivun/preview.html)
+  today in the page: 2026-11
+  ok   1280 opens on the example: total = NLHV (₪13,750)  [₪13,750]
+  ok   1280 the example is labelled (tag on the answer and the note under the tool)
+  ok   1280 4 rows, 4 cards
+  ok   1280 the prime card says why there is no fee
+  ok   1280 the lines: balance, operational once, notice, CPI fee, totals  [עמלת היוון לכל המשכנתא, בפירעון ב־11.2026
+דוגמה, שנו כל שדה
+₪13,750
+על יתרה של ₪1,319,919 ב־4 מסלולים, בפירעון ב־11.2026. בלי עמלת היוון: מסלול 2 (פריים, הריבית משתנה במועד לא ידוע]
+  ok   1280 the top strip: the averages and their in-force date  [קבועה לא צמודה, מעל 20 ועד 25 שנים 4.788% קבועה לא צמודה, מעל 10 ועד 15 שנים 4.607% צמודה למדד, מעל 10 ועד 15 שנים 3.242% הממוצעים בתוקף מתאריך 19.10.2026]
+  ok   1280 the source line: the Order, the averages file, cir2103, the rates page, the CPI
+  ok   1280 text in IBM Plex Sans Hebrew, the figure in IBM Plex Mono  [['"IBM Plex Sans Hebrew"', '"IBM Plex Mono"', '"IBM Plex Sans Hebrew"']]
+  ok   1280 layout: form and result side by side  [2]
+  ok   1280 "מה זה היוון משכנתא" section
+  ok   1280 example no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 example every visible control at least 44 px high  [[]]
+  ok   1280 example every input and select labelled  [[]]
+  ok   1280 example every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   1280 example no long dash, no banned word, never a bare ₪0  [[]]
+  ok   1280 "איך זה חושב" 1 opens with its steps  [15]
+  ok   1280 "איך זה חושב" 2 opens with its steps  [5]
+  ok   1280 "איך זה חושב" 3 opens with its steps  [15]
+  ok   1280 "איך זה חושב" 4 opens with its steps  [15]
+  ok   1280 track 1 steps carry the numbers: s.3(3), s.3(4), the fee, both values, 4.788%, 5.022%, 20%  [[]]
+  ok   1280 track 2 (prime) explains why, section 4
+  ok   1280 track 3 (variable) counts payments to the change day 7.2028
+  ok   1280 steps open no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 steps open every visible control at least 44 px high  [[]]
+  ok   1280 steps open every input and select labelled  [[]]
+  ok   1280 steps open every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   1280 steps open no long dash, no banned word, never a bare ₪0  [[]]
+  ok   1280 notice "10 ימים ומעלה": the 0.1% line says none
+  ok   1280 the example tag is gone after the first change
+  ok   1280 notice back to under 10 days
+  ok   1280 track 3 to "משתנה לא צמודה": the change-cycle select appears
+  ok   1280 every 2.5 years: total = NLHV (₪12,213)  [₪12,213]
+  ok   1280 every year: no fee on track 3, said so; total = NLHV  [₪12,213]
+  ok   1280 back to the example  [₪13,750]
+  ok   1280 term unit to months: 20 years shows 240, same total  [240]
+  ok   1280 239 months: total = NLHV (₪13,727)  [₪13,727]
+  ok   1280 back to years: 20
+  ok   1280 add: 5 rows, the new one asks for its amount, the total unchanged with a note  [₪13,750]
+  ok   1280 row 5 filled (fixed, 7.2023, 20 years copied, 4.5%): total = NLHV (₪13,750)  [₪13,750]
+  ok   1280 add again: 6 rows and the add button disabled
+  ok   1280 remove twice: 4 rows, the example total  [₪13,750]
+  ok   1280 month 13.2023: the message on its field, track 1 left out, total = NLHV without it  [₪5,911]
+  ok   1280 a future month: "החודש צריך להיות לפני"
+  ok   1280 back to 7.2023  [₪13,750]
+  ok   1280 partial 200,000: all to prime, no fee, the drop said  [אין עמלת היוון]
+  ok   1280 partial 600,000: fee = NLHV (₪962), prime first, the order explained, vs the split by balances  [₪962]
+  ok   1280 mode "קיצור התקופה": months column, prime closed (260 months)  [פירעון חלקי: איך לחלק את הסכום
+
+מקלידים כמה רוצים לפרוע, ואנחנו מחלקים את הסכום בין המסלולים כך שעמלת ההיוון תהיה הנמוכה]
+  ok   1280 mode back to "הקטנת ההחזר"
+  ok   1280 more than the balance: capped, said so
+  ok   1280 the cheapest month named with the saving (6.2028, ₪10,849)  [החודש הזול ביותר ב־24 החודשים, אם הממוצעים לא ישתנו: 6.2028, עמלה של ₪10,849. זה ₪2,901 פחות מהיום, שבו העמלה ₪13,750.]
+  ok   1280 the chart: one bar per month (24 or 25) with the event markers  [26]
+  ok   1280 the chart is an image with a text alternative
+  ok   1280 the months where something changes: the discount and the change day of 7.2028  [7.2028מסלול 1, קל״צ: 5 שנים מההתחלה, הפחתה של 30%; מסלול 1, קל״צ: התקופה שנותרה עוברת לטור "מעל 15 ועד 20 שנים"; מסלול 3, משתנה צמודה: יום שינוי הריבית, אין בו ]
+  ok   1280 the 24-month table opens under the chart: 25 rows (today and 24)  [25]
+  ok   1280 when no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 when every visible control at least 44 px high  [[]]
+  ok   1280 when every input and select labelled  [[]]
+  ok   1280 when every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   1280 when no long dash, no banned word, never a bare ₪0  [[]]
+  ok   1280 bank 16,000: a gap, no accusation, the usual reasons listed  [בדיקת המספר של הבנק
+
+קיבלתם מהבנק דוח לסילוק או מכתב עם עמלת ההיוון? הקלידו את הסכום, ונשווה אותו לחישוב.
+
+העמלה שהבנק נ]
+  ok   1280 bank within 2%: close
+  ok   1280 copy: the Hebrew summary with the case link  [עמלת היוון למשכנתא, בפירעון ב־11.2026: | 1. קבועה לא צמודה: יתרה ₪464,967, עמלת היוון ₪7,839 (אחרי הפחתה של 20%). | 2. פרי]
+  ok   1280 WhatsApp: opens wa.me with the summary (answered locally)  [https://wa.me/?text=%D7%A2%D7%9E%D7%9C%D7%AA%20%D7%94%D7%99%D7%95%D7%95%D7%9F%20]
+  ok   1280 case link copied  [ZHVjZSIsIm50Ijoic2hvcnQiLCJiayI6MTM4NTB9]
+  ok   1280 print pressed
+  ok   1280 no dialog fell back to a prompt  [[]]
+  ok   1280 after every control no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 after every control every visible control at least 44 px high  [[]]
+  ok   1280 after every control every input and select labelled  [[]]
+  ok   1280 after every control every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   1280 after every control no long dash, no banned word, never a bare ₪0  [[]]
+  ok   1280 the link reopens the case: same total, partial 600,000, bank number, no example tag  [['₪13,750', '600,000']]
+  ok   1280 no console error or warning, no page error  [[]]
+
+390 + live theme
+  ok   theme 390 opens on the example total (₪13,750)  [₪13,750]
+  ok   theme 390 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 every visible control at least 44 px high  [[]]
+  ok   theme 390 every input and select labelled  [[]]
+  ok   theme 390 every visible group named  [['מתי מודיעים לבנק על הפירעון', 'מה עושים עם הפירעון']]
+  ok   theme 390 no long dash, no banned word, never a bare ₪0  [[]]
+  ok   theme 390: card heading face, the steps numbered, section headings in ink, inputs in Plex Mono and buttons in Plex Sans Hebrew against the theme  [['"IBM Plex Sans Hebrew"', 'decimal', 'rgb(18, 32, 42)', '"IBM Plex Mono"', '"IBM Plex Sans Hebrew"']]
+  ok   theme 390: no page error and no local console error  [[]]
+
+local server stopped
+
+154 of 154 checks passed

@@ -1,0 +1,877 @@
+{
+ "base": "http://127.0.0.1:58148/docs/research/2026-11-06-mortgage-universe/build/build-mkashe/preview.html",
+ "checks": 134,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 opens on 1,000,000 / 300 / 4.62% / 3 months",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the rate help names the BoI average of 8.2026",
+   "ok": true,
+   "got": "נפתח בממוצע של בנק ישראל במשכנתאות חדשות בריבית קבועה לא צמודה, 8.2026: 4.62%. הקלידו את הריבית שלכם; בתמהיל, הריבית הממוצעת שלו."
+  },
+  {
+   "check": "390 payment today 5,627 ₪",
+   "ok": true,
+   "got": "5,627 ₪"
+  },
+  {
+   "check": "390 three ways side by side: 5,723 / 5,657 / 5,692 ₪",
+   "ok": true,
+   "got": [
+    "5,723 ₪",
+    "5,657 ₪",
+    "5,692 ₪"
+   ]
+  },
+  {
+   "check": "390 the three cards in one row",
+   "ok": true,
+   "got": [
+    3,
+    [
+     1186,
+     1186,
+     1186
+    ]
+   ]
+  },
+  {
+   "check": "390 the cheapest is tagged on \"ריבית בלבד\" and said in one sentence",
+   "ok": true,
+   "got": "הזולה ביותר בסך הכול: ריבית בלבד, 3,659 ₪ יותר מהמסלול בלי דחייה. בחודשי הדחייה משלמים בה 3,850 ₪ בחודש, את הריבית בלבד."
+  },
+  {
+   "check": "390 the CPI and the bank are said under the result",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "390 open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 open every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 open every visible group named",
+   "ok": true,
+   "got": [
+    "מה אתם יודעים",
+    "כמה חודשים לדחות",
+    "שלוש דרכים לדחות: לחצו כדי לראות את הפירוט",
+    "סמנו את המצב שלכם, ותקבלו את הזכויות שחלות עליו. אפשר לסמן יותר ממצב אחד."
+   ]
+  },
+  {
+   "check": "390 open no long dash, no banned word in the rendered text",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 card full: pressed, the breakdown ends on its extra 11,589 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 11,589 ₪"
+  },
+  {
+   "check": "390 card io: pressed, the breakdown ends on its extra 3,659 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 3,659 ₪"
+  },
+  {
+   "check": "390 card ext: pressed, the breakdown ends on its extra 19,572 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 19,572 ₪"
+  },
+  {
+   "check": "390 extension card: \"מתארך ב־3 חודשים\" in the breakdown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 1 months: pressed, cards = NLKS (5,658 ₪ / 5,637 ₪ / 5,648 ₪)",
+   "ok": true,
+   "got": "אם דוחים 1 חודש, בשלוש דרכים:"
+  },
+  {
+   "check": "390 2 months: pressed, cards = NLKS (5,690 ₪ / 5,647 ₪ / 5,670 ₪)",
+   "ok": true,
+   "got": "אם דוחים 2 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 3 months: pressed, cards = NLKS (5,723 ₪ / 5,657 ₪ / 5,692 ₪)",
+   "ok": true,
+   "got": "אם דוחים 3 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 4 months: pressed, cards = NLKS (5,755 ₪ / 5,667 ₪ / 5,714 ₪)",
+   "ok": true,
+   "got": "אם דוחים 4 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 5 months: pressed, cards = NLKS (5,788 ₪ / 5,677 ₪ / 5,736 ₪)",
+   "ok": true,
+   "got": "אם דוחים 5 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 6 months: pressed, cards = NLKS (5,821 ₪ / 5,688 ₪ / 5,758 ₪)",
+   "ok": true,
+   "got": "אם דוחים 6 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 6 months: 5,821 / 5,688 / 5,758 ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 payment mode: the rate field hides, the payment opens on 5,627 and the rate it implies is said",
+   "ok": true,
+   "got": [
+    "5,627",
+    "הריבית שיוצאת מהיתרה, מהתקופה ומההחזר: 4.62% בשנה."
+   ]
+  },
+  {
+   "check": "390 payment 6,000: the rate is solved and the cards follow (6,109 ₪)",
+   "ok": true,
+   "got": [
+    "הריבית שיוצאת מהיתרה, מהתקופה ומההחזר: 5.26% בשנה.",
+    "6,109 ₪"
+   ]
+  },
+  {
+   "check": "390 payment 3,000 (below balance / months): the message sits on the payment field",
+   "ok": true,
+   "got": "ההחזר נמוך מדי: בלי ריבית בכלל ההחזר הוא 3,333 ₪ בחודש."
+  },
+  {
+   "check": "390 back to the rate: the field holds the rate of the 6,000 payment",
+   "ok": true,
+   "got": "5.26"
+  },
+  {
+   "check": "390 balance 5,000: an error on the balance field",
+   "ok": true,
+   "got": "הקלידו יתרה בין 10,000 ל־20,000,000 ₪."
+  },
+  {
+   "check": "390 balance back to 1,000,000: 5,627 ₪ again",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 jump to nlks-late: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    130,
+    ""
+   ]
+  },
+  {
+   "check": "390 jump to nlks-rights: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    129,
+    ""
+   ]
+  },
+  {
+   "check": "390 jump to nlks-war: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    129,
+    ""
+   ]
+  },
+  {
+   "check": "390 jump to nlks-calc: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    112,
+    ""
+   ]
+  },
+  {
+   "check": "390 timeline: six steps in order",
+   "ok": true,
+   "got": [
+    "day0",
+    "notice",
+    "six",
+    "office",
+    "receiver",
+    "sale"
+   ]
+  },
+  {
+   "check": "390 timeline: 21 ימי עסקים, 6 חודשים, 20 / 90 ימים, 18 חודשים, 2.5 מיליון ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 timeline: every step has its protection block and its sources",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 first missed payment 10.5.2026: the 6-month line shows 10.11.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 bank and help lines are tap-to-call links (*8860 first)",
+   "ok": true,
+   "got": [
+    "tel:*8860",
+    "tel:076-8043381",
+    "tel:*6062",
+    "tel:076-8038111"
+   ]
+  },
+  {
+   "check": "390 Mizrahi-Tefahot arrears line: שלוחה 4 ואז 3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 situation reserve: pressed, rights ['reserve']",
+   "ok": true,
+   "got": [
+    "reserve"
+   ]
+  },
+  {
+   "check": "390 situation jobill: pressed, rights ['hardship']",
+   "ok": true,
+   "got": [
+    "hardship"
+   ]
+  },
+  {
+   "check": "390 situation birth: pressed, rights ['hardship']",
+   "ok": true,
+   "got": [
+    "hardship"
+   ]
+  },
+  {
+   "check": "390 situation death: pressed, rights ['death', 'insurance']",
+   "ok": true,
+   "got": [
+    "death",
+    "insurance"
+   ]
+  },
+  {
+   "check": "390 situation zakaut: pressed, rights ['committee']",
+   "ok": true,
+   "got": [
+    "committee"
+   ]
+  },
+  {
+   "check": "390 situation elder: pressed, rights ['elder']",
+   "ok": true,
+   "got": [
+    "elder"
+   ]
+  },
+  {
+   "check": "390 all six ticked: six rights, none twice",
+   "ok": true,
+   "got": [
+    "hardship",
+    "death",
+    "insurance",
+    "committee",
+    "elder",
+    "reserve"
+   ]
+  },
+  {
+   "check": "390 nothing ticked: the hint is back, no right listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 the six rights of every borrower are always listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 outlines: שאגת הארי and עם כלביא, both \"הסתיים\", none open",
+   "ok": true,
+   "got": [
+    [
+     "shaagat",
+     "הסתיים"
+    ],
+    [
+     "kalavi",
+     "הסתיים"
+    ]
+   ]
+  },
+  {
+   "check": "390 copy: the summary with 5,627 / 5,723 / 3,659 ₪, not legal advice, the #mkashe= link",
+   "ok": true,
+   "got": "כשקשה לשלם את המשכנתא\r יתרה 1,000,000 ₪, 300 חודשים, ריבית 4.62%: ההחזר היום 5,627 ₪.\r דחייה של 3 חודשים:\r · דחייה מלאה:"
+  },
+  {
+   "check": "390 copy: no ticked situation and no date in the text",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 link: the address holds #mkashe= and the page address itself was not changed",
+   "ok": true,
+   "got": "LCJuIjozMDAsIm0iOiJyYXRlIiwiZCI6NSwiayI6ImV4dCIsInIiOjQuNjJ9"
+  },
+  {
+   "check": "390 the link opens the same case: 5 months, extension pressed",
+   "ok": true,
+   "got": "אם דוחים 5 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "390 the sources list opens: 27 sources, each linked with a date",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 after no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "390 after every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 after every visible group named",
+   "ok": true,
+   "got": [
+    "מה אתם יודעים",
+    "כמה חודשים לדחות",
+    "שלוש דרכים לדחות: לחצו כדי לראות את הפירוט",
+    "סמנו את המצב שלכם, ותקבלו את הזכויות שחלות עליו. אפשר לסמן יותר ממצב אחד."
+   ]
+  },
+  {
+   "check": "390 after no long dash, no banned word in the rendered text",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opens on 1,000,000 / 300 / 4.62% / 3 months",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the rate help names the BoI average of 8.2026",
+   "ok": true,
+   "got": "נפתח בממוצע של בנק ישראל במשכנתאות חדשות בריבית קבועה לא צמודה, 8.2026: 4.62%. הקלידו את הריבית שלכם; בתמהיל, הריבית הממוצעת שלו."
+  },
+  {
+   "check": "1280 payment today 5,627 ₪",
+   "ok": true,
+   "got": "5,627 ₪"
+  },
+  {
+   "check": "1280 three ways side by side: 5,723 / 5,657 / 5,692 ₪",
+   "ok": true,
+   "got": [
+    "5,723 ₪",
+    "5,657 ₪",
+    "5,692 ₪"
+   ]
+  },
+  {
+   "check": "1280 the three cards in one row",
+   "ok": true,
+   "got": [
+    3,
+    [
+     466,
+     466,
+     466
+    ]
+   ]
+  },
+  {
+   "check": "1280 the cheapest is tagged on \"ריבית בלבד\" and said in one sentence",
+   "ok": true,
+   "got": "הזולה ביותר בסך הכול: ריבית בלבד, 3,659 ₪ יותר מהמסלול בלי דחייה. בחודשי הדחייה משלמים בה 3,850 ₪ בחודש, את הריבית בלבד."
+  },
+  {
+   "check": "1280 the CPI and the bank are said under the result",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 layout: form and result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 running text in IBM Plex Sans Hebrew",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 numbers in IBM Plex Mono",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "1280 open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 open every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 open every visible group named",
+   "ok": true,
+   "got": [
+    "מה אתם יודעים",
+    "כמה חודשים לדחות",
+    "שלוש דרכים לדחות: לחצו כדי לראות את הפירוט",
+    "סמנו את המצב שלכם, ותקבלו את הזכויות שחלות עליו. אפשר לסמן יותר ממצב אחד."
+   ]
+  },
+  {
+   "check": "1280 open no long dash, no banned word in the rendered text",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 card full: pressed, the breakdown ends on its extra 11,589 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 11,589 ₪"
+  },
+  {
+   "check": "1280 card io: pressed, the breakdown ends on its extra 3,659 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 3,659 ₪"
+  },
+  {
+   "check": "1280 card ext: pressed, the breakdown ends on its extra 19,572 ₪",
+   "ok": true,
+   "got": "התוספת בסך הכול 19,572 ₪"
+  },
+  {
+   "check": "1280 extension card: \"מתארך ב־3 חודשים\" in the breakdown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 1 months: pressed, cards = NLKS (5,658 ₪ / 5,637 ₪ / 5,648 ₪)",
+   "ok": true,
+   "got": "אם דוחים 1 חודש, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 2 months: pressed, cards = NLKS (5,690 ₪ / 5,647 ₪ / 5,670 ₪)",
+   "ok": true,
+   "got": "אם דוחים 2 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 3 months: pressed, cards = NLKS (5,723 ₪ / 5,657 ₪ / 5,692 ₪)",
+   "ok": true,
+   "got": "אם דוחים 3 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 4 months: pressed, cards = NLKS (5,755 ₪ / 5,667 ₪ / 5,714 ₪)",
+   "ok": true,
+   "got": "אם דוחים 4 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 5 months: pressed, cards = NLKS (5,788 ₪ / 5,677 ₪ / 5,736 ₪)",
+   "ok": true,
+   "got": "אם דוחים 5 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 6 months: pressed, cards = NLKS (5,821 ₪ / 5,688 ₪ / 5,758 ₪)",
+   "ok": true,
+   "got": "אם דוחים 6 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 6 months: 5,821 / 5,688 / 5,758 ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 payment mode: the rate field hides, the payment opens on 5,627 and the rate it implies is said",
+   "ok": true,
+   "got": [
+    "5,627",
+    "הריבית שיוצאת מהיתרה, מהתקופה ומההחזר: 4.62% בשנה."
+   ]
+  },
+  {
+   "check": "1280 payment 6,000: the rate is solved and the cards follow (6,109 ₪)",
+   "ok": true,
+   "got": [
+    "הריבית שיוצאת מהיתרה, מהתקופה ומההחזר: 5.26% בשנה.",
+    "6,109 ₪"
+   ]
+  },
+  {
+   "check": "1280 payment 3,000 (below balance / months): the message sits on the payment field",
+   "ok": true,
+   "got": "ההחזר נמוך מדי: בלי ריבית בכלל ההחזר הוא 3,333 ₪ בחודש."
+  },
+  {
+   "check": "1280 back to the rate: the field holds the rate of the 6,000 payment",
+   "ok": true,
+   "got": "5.26"
+  },
+  {
+   "check": "1280 balance 5,000: an error on the balance field",
+   "ok": true,
+   "got": "הקלידו יתרה בין 10,000 ל־20,000,000 ₪."
+  },
+  {
+   "check": "1280 balance back to 1,000,000: 5,627 ₪ again",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 jump to nlks-late: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    118,
+    ""
+   ]
+  },
+  {
+   "check": "1280 jump to nlks-rights: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    123,
+    ""
+   ]
+  },
+  {
+   "check": "1280 jump to nlks-war: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    135,
+    ""
+   ]
+  },
+  {
+   "check": "1280 jump to nlks-calc: the section comes to the top (or the page reached its end)",
+   "ok": true,
+   "got": [
+    88,
+    ""
+   ]
+  },
+  {
+   "check": "1280 timeline: six steps in order",
+   "ok": true,
+   "got": [
+    "day0",
+    "notice",
+    "six",
+    "office",
+    "receiver",
+    "sale"
+   ]
+  },
+  {
+   "check": "1280 timeline: 21 ימי עסקים, 6 חודשים, 20 / 90 ימים, 18 חודשים, 2.5 מיליון ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 timeline: every step has its protection block and its sources",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 first missed payment 10.5.2026: the 6-month line shows 10.11.2026",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 bank and help lines are tap-to-call links (*8860 first)",
+   "ok": true,
+   "got": [
+    "tel:*8860",
+    "tel:076-8043381",
+    "tel:*6062",
+    "tel:076-8038111"
+   ]
+  },
+  {
+   "check": "1280 Mizrahi-Tefahot arrears line: שלוחה 4 ואז 3",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 situation reserve: pressed, rights ['reserve']",
+   "ok": true,
+   "got": [
+    "reserve"
+   ]
+  },
+  {
+   "check": "1280 situation jobill: pressed, rights ['hardship']",
+   "ok": true,
+   "got": [
+    "hardship"
+   ]
+  },
+  {
+   "check": "1280 situation birth: pressed, rights ['hardship']",
+   "ok": true,
+   "got": [
+    "hardship"
+   ]
+  },
+  {
+   "check": "1280 situation death: pressed, rights ['death', 'insurance']",
+   "ok": true,
+   "got": [
+    "death",
+    "insurance"
+   ]
+  },
+  {
+   "check": "1280 situation zakaut: pressed, rights ['committee']",
+   "ok": true,
+   "got": [
+    "committee"
+   ]
+  },
+  {
+   "check": "1280 situation elder: pressed, rights ['elder']",
+   "ok": true,
+   "got": [
+    "elder"
+   ]
+  },
+  {
+   "check": "1280 all six ticked: six rights, none twice",
+   "ok": true,
+   "got": [
+    "hardship",
+    "death",
+    "insurance",
+    "committee",
+    "elder",
+    "reserve"
+   ]
+  },
+  {
+   "check": "1280 nothing ticked: the hint is back, no right listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 the six rights of every borrower are always listed",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 outlines: שאגת הארי and עם כלביא, both \"הסתיים\", none open",
+   "ok": true,
+   "got": [
+    [
+     "shaagat",
+     "הסתיים"
+    ],
+    [
+     "kalavi",
+     "הסתיים"
+    ]
+   ]
+  },
+  {
+   "check": "1280 copy: the summary with 5,627 / 5,723 / 3,659 ₪, not legal advice, the #mkashe= link",
+   "ok": true,
+   "got": "כשקשה לשלם את המשכנתא\r יתרה 1,000,000 ₪, 300 חודשים, ריבית 4.62%: ההחזר היום 5,627 ₪.\r דחייה של 3 חודשים:\r · דחייה מלאה:"
+  },
+  {
+   "check": "1280 copy: no ticked situation and no date in the text",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 link: the address holds #mkashe= and the page address itself was not changed",
+   "ok": true,
+   "got": "LCJuIjozMDAsIm0iOiJyYXRlIiwiZCI6NSwiayI6ImV4dCIsInIiOjQuNjJ9"
+  },
+  {
+   "check": "1280 the link opens the same case: 5 months, extension pressed",
+   "ok": true,
+   "got": "אם דוחים 5 חודשים, בשלוש דרכים:"
+  },
+  {
+   "check": "1280 the sources list opens: 27 sources, each linked with a date",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 after no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "1280 after every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 after every visible group named",
+   "ok": true,
+   "got": [
+    "מה אתם יודעים",
+    "כמה חודשים לדחות",
+    "שלוש דרכים לדחות: לחצו כדי לראות את הפירוט",
+    "סמנו את המצב שלכם, ותקבלו את הזכויות שחלות עליו. אפשר לסמן יותר ממצב אחד."
+   ]
+  },
+  {
+   "check": "1280 after no long dash, no banned word in the rendered text",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 opens on 5,627 ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "מה אתם יודעים",
+    "כמה חודשים לדחות",
+    "שלוש דרכים לדחות: לחצו כדי לראות את הפירוט",
+    "סמנו את המצב שלכם, ותקבלו את הזכויות שחלות עליו. אפשר לסמן יותר ממצב אחד."
+   ]
+  },
+  {
+   "check": "theme 390 no long dash, no banned word in the rendered text",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390: heading face, card radius and section heading colour hold against the theme",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "2px",
+    "rgb(31, 75, 92)"
+   ]
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

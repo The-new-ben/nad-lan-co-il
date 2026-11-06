@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Content-Type: application/vnd.ms-excel
+Content-Length: 122368
+Connection: keep-alive
+Cache-Control: private,no-cache,no-store;max-age=0,must-revalidate
+Pragma: no-cache
+Last-Modified: Sun, 18 Oct 2026 06:38:14 GMT
+Accept-Ranges: bytes
+ETag: "1dd5ecb403a5100"
+X-Content-Type-Options: nosniff
+X-Frame-Options: SameOrigin
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=63072000;includeSubDomains;preload
+X-MS-InvokeApp: 1; RequireReadOnly
+Content-Security-Policy: frame-src 'self'          https://bankofisrael.formtitan.com          https://forms.monday.com          https://www.google.com/recaptcha/          https://*.google.com/recaptcha/         https://www.gstatic.com/recaptcha/                   http://www.googletagmanager.com          https://danifinkelshtein-gmail1.formtitan.com/          https://embed.vp4.me/          https://td.doubleclick.net/          https://open.spotify.com/          https://www.boi.org.il/          https://omny.fm/          https://youtu.be          http://www.youtube-nocookie.com          https://www.youtube-nocookie.com          https://www.youtube.com/          https://cdn.jwplayer.com/          http://www.gpolive.co.il          https://app.powerbi.com          https://boi.checkfront.com/          https://mugbalim.boi.org.il/          https://online.anyflip.com/          https://www.google.com          https://forms.office.com/;       connect-src 'self' https://*.taboola.com/          https://www.google.com/recaptcha/          https://*.google.com/recaptcha/         https://www.gstatic.com/recaptcha/          https://*.clarity.ms/          https://www.google.com/ccm/collect          https://amplify.outbrain.com/          https://tr.outbrain.com/          https://www.google.com          https://gooleads.g.doubleclick.net/          https://www.google.com/recaptcha/          https://www.gstatic.com/recaptcha/           https://l.clarity.ms/          https://n.clarity.ms/collect          https://edge.boi.gov.il/          https://mugbalim.boi.org.il/          https://analytics.google.com          https://www.google-analytics.com          https://stats.g.doubleclick.net;       script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com          https://www.google.com/recaptcha/          https://*.google.com/recaptcha/         https://www.gstatic.com/recaptcha/         https://*.gstatic.com/recaptcha/                 https://www.googletagmanager.com          https://gooleads.g.doubleclick.net/          https://www.google.com/recaptcha/          https://www.gstatic.com/recaptcha/;        object-src none; script-src-elem 'self' 'unsafe-inline' https://cdnjs.cloudflare.com         https://www.google.com/recaptcha/         https://www.gstatic.com/recaptcha/          https://trc.taboola.com/          https://scripts.clarity.ms/          https://connect.facebook.net/          https://cdn.taboola.com/          https://googleads.g.doubleclick.net/          https://wave.outbrain.com          https://tr.outbrain.com          https://connect.facebook.net/en_US/          https://boi.checkfront.com/lib/interface--0.js          https://www.clarity.ms          https://www.youtube.com          https://www.googletagmanager.com          https://amplify.outbrain.com/cp/          https://gooleads.g.doubleclick.net/          https://www.google.com/recaptcha/          https://www.gstatic.com/          https://d3v0igf1i1i9dg.cloudfront.net/;
+Date: Fri, 06 Nov 2026 14:32:26 GMT
+Set-Cookie: p_hosting=!OxQfnLdfy0yh6W0LO1mcmM6YMh5RyZg+yzuR5h8Pp45k5VrI4JhKRb1t8A4LVsluE7gckzcxaMkNNg==; path=/; Httponly; Secure; HttpOnly; samesite=none
+Set-Cookie: TS018f327d=0124934a81e0c5531798b687339552b63b75af7e44e1f60d2434b1c39f27bbc860fb4db3bb957579b4e1a16548a6d17d22828ce78b; Path=/; Domain=.boi.org.il; Secure; HttpOnly; HttpOnly; samesite=none
+

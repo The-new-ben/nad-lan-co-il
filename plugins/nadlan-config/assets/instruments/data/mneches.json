@@ -1,0 +1,90 @@
+{
+ "key": "mneches",
+ "v": 1,
+ "checked": "2026-11-06",
+ "what": "Rules and Bank of Israel figures of the tool mneches (\"כמה אפשר לקבל על דירה קיימת\", /mortgage-calculator/, HAD-675). The LTV, PTI and term numbers the tool computes with are read from boi-mortgage.json (rules); this file carries the rest: the directive version, the Q&A answers it relies on, the 120,000 exemption, the 18-month rule of 1.10.2026, and the any-purpose loan figures of the Bank of Israel (SDMX BIR_MRTG_99, 8.2026), each with its source and date.",
+ "sources": {
+  "D329": {
+   "title": "הוראת ניהול בנקאי תקין 329, מגבלות למתן הלוואות לדיור",
+   "version": 13,
+   "circular": "ח-06-2852",
+   "date": "2026-06-30",
+   "url": "https://boi.org.il/media/hjrlkrse/h2852.pdf",
+   "fetched": "2026-11-06",
+   "sha256": "3325d8940080a722c02e46199f832f6ccabea061b6ccba1e52464209430e473b",
+   "note": "The circular carries the full text of the directive, version 13 (pages 329-1 to 329-10). Its version table: 2840, version 12, 8.2.2026; 2852, version 13, 30.6.2026."
+  },
+  "QA329": {
+   "title": "שאלות ותשובות, הנחיות המפקח על הבנקים, מגבלות למתן הלוואות לדיור",
+   "date": "2026-02-08",
+   "url": "https://www.boi.org.il/media/emunmobp/202601.pdf",
+   "fetched": "2026-11-06",
+   "sha256": "857decac411e9dd30d87312249b05840546c8cccd6e7e425a73045d8dfcc7713"
+  },
+  "SDMX": {
+   "title": "בנק ישראל, ריביות והיקפי עסקים בהלוואות לדיור (SDMX BIR_MRTG_99), כל הבנקים",
+   "url": "https://edge.boi.gov.il/FusionEdgeServer/sdmx/v2/data/dataflow/BOI.STATISTICS/BIR_MRTG_99/1.0/?c%5BTIME_PERIOD%5D=ge:2026-08&format=csv&labels=both",
+   "fetched": "2026-11-06",
+   "copy": "docs/research/2026-11-06-mortgage-universe/build/build-mneches/sources/boi-sdmx-BIR_MRTG_99-2026-08_09.csv",
+   "note": "The any-purpose loan is the series family \"Consumer loans other than overdrafts, with housing collateral\" (BS_ITEM A2B2), new business (BIR_COVERAGE N). Whether its rates are nominal or effective is not stated in the file; the tool uses them as published, divided by 12 each month."
+  }
+ },
+ "rules": {
+  "any_ltv": { "value": 0.5, "src": "QA329", "where": "שו\"ת 2.2 ו־8.2", "text": "הלוואה לכל מטרה: שיעור המימון מחושב ביחס לנכס המשמש כבטוחה, והמרבי הוא 50%." },
+  "prior_loans": { "src": "D329", "where": "סעיף 4", "text": "שיעור המימון הכולל, ביחד עם יתרת ההלוואות הקודמות בביטחון אותה הדירה, לא יעלה על השיעורים שבהוראה." },
+  "relief": { "ltv_upto": 0.7, "above_cap": 200000, "src": "D329", "where": "סעיף 10א; שו\"ת 2.31", "text": "בנק רשאי לאשר הלוואה שלא לצורך רכישת זכות במקרקעין עד שיעור מימון של 70%, ובלבד שהחריגה מעל 50% לא תעלה על 200,000 ₪, במצטבר בכל ההלוואות בביטחון אותו נכס." },
+  "pti_max": { "value": 0.5, "src": "D329", "where": "סעיף 5", "text": "שיעור ההחזר מההכנסה לא יעלה על 50%." },
+  "pti_risk": { "value": 0.4, "src": "D329", "where": "סעיף 6", "text": "מעל 40% הבנק מקצה להלוואה משקל סיכון של 100%." },
+  "pti_exempt": { "value": 120000, "src": "D329", "where": "סעיפים 11 ו־12.2; שו\"ת 8.3", "text": "מגבלת ההחזר מההכנסה לא חלה על הלוואה לכל מטרה של עד 120,000 ₪, והסף נבחן במצטבר." },
+  "same_asset": { "months": 18, "from": "2026-10-01", "src": "D329", "where": "נספח א, סעיף 1.1; חוזר 2852, סעיף 2", "text": "ההחזר החודשי כולל גם הלוואות שניתנו בעבר בשעבוד אותו הנכס, אצל כל גוף, שמועד פירעונן עולה על 18 חודשים. בתוקף מ־1.10.2026." },
+  "variable_same_asset": { "from": "2026-10-01", "src": "QA329", "where": "שו\"ת 5.1; חוזר 2852, סעיף 3", "text": "אשראי חדש באותו בנק בשעבוד אותו הנכס: מגבלת החלק בריבית משתנה (66.66%) נבדקת על סך האשראי בשעבוד הנכס." },
+  "fixed_costs": { "months": 18, "src": "D329", "where": "נספח א, סעיף 1.2", "text": "הכנסה פנויה היא ההכנסה נטו פחות הוצאות קבועות: התחייבויות שנותרו להן יותר מ־18 חודשים, כולל מזונות והחזרי הלוואות." },
+  "term_max": { "value": 30, "src": "D329", "where": "סעיף 8" },
+  "purchase_ltv": { "single": 0.75, "replace": 0.7, "invest": 0.5, "src": "D329", "where": "סעיף 2" },
+  "pledged_for_purchase": { "value": 0.5, "src": "QA329", "where": "שו\"ת 2.1", "text": "נכס קיים משמש בטוחה לרכישת נכס אחר: המימון לפי הנכס הנרכש, ובכל מקרה האשראי לא יעלה על 50% מהנכס המשמש כבטוחה." },
+  "parents": { "value": 0.5, "src": "QA329", "where": "שו\"ת 2.7", "text": "עזרה בהון העצמי מקרוב משפחה מדרגה ראשונה, בהלוואה בביטחון הבית שלו: הלוואה לכל מטרה, עד 50% מהנכס המשועבד." },
+  "relative_income": { "src": "D329", "where": "נספח א, סעיף 1.3", "text": "אפשר להכיר במחצית לכל היותר מההכנסה הפנויה של קרוב שאינו רוכש, אף אם חתם כלווה." },
+  "refi_class": { "src": "QA329", "where": "שו\"ת 7.7", "text": "הלוואה למחזור הלוואה קיימת מסווגת לפי מטרת ההלוואה המקורית." },
+  "not_any_purpose": { "src": "QA329", "where": "שו\"ת 2.2", "text": "רכישה, חכירה, בנייה, הרחבה או שיפוץ של דירת מגורים אינם הלוואה לכל מטרה." },
+  "banks_only": { "src": "D329", "where": "סעיפים 2 עד 9", "text": "ההוראה פונה לתאגידים בנקאיים." }
+ },
+ "anyp": {
+  "month": "2026-08",
+  "src": "SDMX",
+  "loans": { "value": 1386, "id": "BNK_99034_LR_BIR_MRTG_61" },
+  "volume_k": { "value": 532545, "id": "BNK_99034_LR_BIR_MRTG_154" },
+  "pti": { "value": 23.97, "id": "BNK_99034_LR_BIR_MRTG_153" },
+  "tracks": [
+   { "k": "nl", "he": "לא צמודה", "linked": false, "rate": 6.53, "id": "BNK_99034_LR_BIR_MRTG_1804", "vol_k": 421602.07, "vol_id": "BNK_99034_LR_BIR_MRTG_1805", "years": 23.3, "years_id": "BNK_99034_LR_BIR_MRTG_1803" },
+   { "k": "cpi", "he": "צמודה למדד", "linked": true, "rate": 5.33, "id": "BNK_99034_LR_BIR_MRTG_1902", "vol_k": 110738.91, "vol_id": "BNK_99034_LR_BIR_MRTG_1903", "years": 22.64, "years_id": "BNK_99034_LR_BIR_MRTG_1901" }
+  ],
+  "fixed": {
+   "nl": { "rate": 6.61, "id": "BNK_99034_LR_BIR_MRTG_1811", "vol_k": 151486.96 },
+   "cpi": { "rate": 5.28, "id": "BNK_99034_LR_BIR_MRTG_1909", "vol_k": 76118.47 }
+  },
+  "housing_fixed": {
+   "nl": { "rate": 4.62, "id": "BNK_99034_LR_BIR_MRTG_467" },
+   "cpi": { "rate": 3.29, "id": "BNK_99034_LR_BIR_MRTG_1492" }
+  },
+  "ltv_bands": {
+   "unit": "ILS thousands, new business",
+   "rows": [
+    { "from": 0, "to": 30, "vol_k": 122764, "id": "BNK_99034_LR_BIR_MRTG_238" },
+    { "from": 30, "to": 45, "vol_k": 136419, "id": "BNK_99034_LR_BIR_MRTG_225" },
+    { "from": 45, "to": 60, "vol_k": 227479, "id": "BNK_99034_LR_BIR_MRTG_212" },
+    { "from": 60, "to": 75, "vol_k": 45823, "id": "BNK_99034_LR_BIR_MRTG_199" },
+    { "from": 75, "to": 90, "vol_k": 60, "id": "BNK_99034_LR_BIR_MRTG_186" },
+    { "from": 90, "to": null, "vol_k": 0, "id": "BNK_99034_LR_BIR_MRTG_173" }
+   ]
+  },
+  "not_used": "Foreign-currency any-purpose loans (205 thousand ILS, BNK_99034_LR_BIR_MRTG_1708) are left out of the two-track average; recycled (RC, 541 loans) and from-other-bank (NO, 180 loans) series are not part of the new-business figures."
+ },
+ "unverified": [
+  "Whether the SDMX rates (any-purpose and housing) are nominal or effective: used as published, divided by 12.",
+  "Whether a bank applies the section 10a relief (up to 70%) to a parents' loan that helps a child buy: not applied by the tool (Q&A 2.7 says 50%).",
+  "For a loan to buy another home secured on the existing one, the tool counts the existing balance inside the 50% of Q&A 2.1, as section 4 does for the same apartment (our reading).",
+  "The Calcalist articles on the October and November 2026 changes were not opened; the tool states only what the directive (version 13) and the Q&A file of 8.2.2026 say.",
+  "The start date 1.10.2026 of Annex A section 1.1: circular 2852 (section 2) moves the start of \"the amendment under section 9 of circular 2840\" to 1.10.2026; that section 9 is the Annex A 1.1 change is read from the December 2025 draft circular (its section 9 and 10(b)) and from Q&A 5.1 of 8.2.2026. The final text of circular 2840 itself was not opened (no URL found).",
+  "Q&A 4.11 (a relative's income at half even when the relative pays it all) appears only in the draft Q&A file of 10.5.2026; the same rule is in Annex A section 1.3 of version 13, which the tool quotes."
+ ]
+}

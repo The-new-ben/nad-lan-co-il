@@ -1,0 +1,60 @@
+<?php
+/*
+ * HAD-675 (6.11.2026, mortgage universe): the exact PHP for plugins/nadlan-config/inc/instruments.php, tool "רישום משכנתה ואגרות".
+ * NOT applied: inc/instruments.php was not edited. Linted with php -l (PHP 8.3) and the summary rendered against the real
+ * data/rishum.json with WordPress stubs (README.md, "Server summary").
+ *
+ * (1) Paste the entry into the array of nadlan_nli_tools(), after 'mnomeff' (or next to the other /mortgage-calculator/ tools).
+ * (2) Paste the branch into nadlan_nli_summary(), right after its first line (if ( 'en' === $lang ) ...), next to 'mzakaut'.
+ * (3) Ship plugins/nadlan-config/assets/instruments/tools/mrishum.js and data/rishum.json.
+ * (4) On /mortgage-calculator/: one chip and one pane in the switcher, the pane id exactly tool-rishum (a shared #mrishum= link
+ *     opens the pane by clicking its chip):
+ *       <button type="button" data-sw="tool-rishum" aria-controls="tool-rishum">רישום משכנתה ואגרות</button>
+ *       <div class="nlmx-pane" id="tool-rishum">[nadlan_tool id="mrishum"]</div>
+ * No 'deps'. Hebrew only (no 'en' block): on /en/ pages the script draws nothing and the server summary stays; do not place it there.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_mrishum_registry_snippet( $id ) {
+
+	/* ===================================================================== (1) entry for nadlan_nli_tools() */
+	$entries = array(
+			/* HAD-675 (6.11.2026, mortgage universe): mortgage registration and the 2026 fees, a three-step wizard (where the home is
+			   registered, the action, who files). rishum.json = the 2026 Reshumot notices (land 12193, pledges 12123), the gov.il service
+			   and fees pages read by hand, the land and fees regulations, the Banking (Service to Customer) Law, Kol Zchut and the MoD
+			   exemption pages, each with URL and date, "checked": "2026-11-06" (docs/research/2026-11-06-mortgage-universe/build/build-mrishum) */
+			'mrishum' => array(
+				'name' => 'רישום משכנתה ואגרות', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · רישום משכנתה',
+				'desc' => 'רישום משכנתא ואגרות 2026: איפה הדירה רשומה (טאבו, רשות מקרקעי ישראל, חברה משכנת, או דירה מקבלן שעוד לא נרשמה), מה עושים (רישום משכנתה, משכנתה נוספת או בדרגה שנייה, תיקון, ביטול אחרי סילוק או אחרי פטירה) ומי מגיש; מה נרשם ואיפה, אגרת רישום המשכנתה ושאר האגרות של 2026 עם סך הכול, פטור לאנשים עם נכות, למשפחות שכולות, לנפגעי פעולות איבה ולעולים, השלבים, רשימת המסמכים לבקשה (טופס רישום משכנתא) עם הקישורים לאתר הממשלה, ומועד המחיקה של הבנק לפי חוק הבנקאות.',
+				'data' => array( 'rishum.json' ),
+				'related' => array( '/tabu-extract-check/' => 'בדיקת נסח טאבו', '/real-estate-lawyer/' => 'עורך דין מקרקעין', '/mortgage-refinance/' => 'מחזור משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+	);
+
+	/* ===================================================================== (2) branch for nadlan_nli_summary() */
+		if ( 'mrishum' === $id ) {  // HAD-675 (6.11.2026): mortgage registration, the 2026 fees of rishum.json in plain HTML, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/rishum.json';
+			$z = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $z ) || empty( $z['land']['mortgage']['amount'] ) || empty( $z['pledge']['reg_counter']['amount'] ) || empty( $z['src']['gov_fees']['published'] ) || empty( $z['rules']['s9a']['days'] ) ) { return ''; }
+			$l = $z['land']; $p = $z['pledge']; $c = $z['contact']; $g = $z['src']['gov_fees']; $k = $z['src']['reshumot_land'];
+			$s = function ( $x ) { return esc_html( number_format( (float) $x ) ) . ' ₪'; };
+			$dm = function ( $iso ) { $q = explode( '-', (string) $iso ); return 3 === count( $q ) ? (int) $q[2] . '.' . (int) $q[1] . '.' . $q[0] : ''; };
+			$it = function () { return ' <small>(פרט ' . esc_html( implode( ', ', func_get_args() ) ) . ')</small>'; };
+			$y5 = (int) $p['paid_years_max'];
+			$ex = array(); foreach ( (array) $z['exemptions'] as $e ) { $ex[] = esc_html( $e['he'] ) . ( '13' === (string) $e['reg'] ? ' (בתנאי תקנה 13)' : ' (תקנה ' . esc_html( $e['reg'] ) . ')' ); }
+			return '<p>רישום משכנתה בטאבו נעשה בשטר משכנתה, בלשכת רישום המקרקעין שבה רשום הנכס; כשהדירה עוד לא רשומה, למשל דירה מקבלן, נרשם משכון ברשם המשכונות. האגרות של ' . (int) $z['year'] . ', בתוקף מ־' . esc_html( $dm( $z['in_force'] ) ) . ':</p><ul>'
+				. '<li>רישום משכנתה, משכנתה נוספת או הגדלת סכום ההלוואה: ' . $s( $l['mortgage']['amount'] ) . $it( $l['mortgage']['item'] ) . '</li>'
+				. '<li>תיקון משכנתה (שינוי או תיקון בתנאים או בשמות הצדדים) והעברת משכנתה: ' . $s( $l['change']['amount'] ) . $it( $l['change']['item'] ) . '</li>'
+				. '<li>ביטול משכנתה אחרי פירעון (רישום פדיון): פטור מאגרה כשהכסף שולם ישירות לבנק, ו־' . $s( $l['redeem_deposit']['amount'] ) . ' כשהכסף מופקד בלשכה' . $it( $l['redeem_direct']['item'], $l['redeem_deposit']['item'] ) . '</li>'
+				. '<li>הערת אזהרה: ' . $s( $l['note']['amount'] ) . ' לכל רישום, ומחיקתה בבקשת הצדדים ' . $s( $l['note_delete']['amount'] ) . $it( $l['note']['item'], $l['note_delete']['item'] ) . '</li>'
+				. '<li>נסח רישום: ' . $s( $l['nesach_counter']['amount'] ) . ' בדלפק, ' . $s( $l['nesach_online']['amount'] ) . ' במקוון' . $it( $l['nesach_counter']['item'], $l['nesach_online']['item'] ) . '</li>'
+				. '<li>רשם המשכונות: ' . $s( $p['reg_counter']['amount'] ) . ' לכל שנה עד ' . $y5 . ' שנים, ' . $s( $p['reg_online']['amount'] ) . ' במקוון, ומהשנה השישית פטור; לחמש שנים ' . $s( $y5 * $p['reg_counter']['amount'] ) . ' בדלפק או ' . $s( $y5 * $p['reg_online']['amount'] ) . ' במקוון. ביטול משכון פטור.</li></ul>'
+				. '<p>את אגרת רישום המשכנתה משלם הממשכן. אחרי פירעון מלא הבנק מגיש תוך ' . (int) $z['rules']['s9a']['days'] . ' ימים מיום הפירעון הודעה על מחיקת המשכנתה, והוצאות המחיקה עליו (חוק הבנקאות (שירות ללקוח), סעיף 9א); מועד אחד לכל הבנקים. '
+				. 'פטור מאגרת רישום משכנתה: ' . implode( ', ', $ex ) . ', וגם לבן או לבת הזוג. '
+				. ( ! empty( $z['ila']['scope'] ) ? esc_html( $z['ila']['scope'] ) . ': הבקשה מקוונת, באזור האישי ״' . esc_html( $z['ila']['area'] ) . '״, עם מכתב הפנייה מהבנק, וכל בעלי הזכויות חותמים; ' . esc_html( $z['ila']['fee'] ) . '. ' : '' )
+				. 'מוקד ' . esc_html( $c['body'] ) . ': ' . esc_html( $c['phone'] ) . ', ' . esc_html( $c['ext'] ) . ', ימים ' . esc_html( $c['days'] ) . ' ' . esc_html( $c['hours'] ) . '. '
+				. ( ! empty( $z['ila']['contact']['phone'] ) ? 'מוקד ' . esc_html( $z['ila']['contact']['body'] ) . ': ' . esc_html( $z['ila']['contact']['phone'] ) . ' או ' . esc_html( $z['ila']['contact']['phone2'] ) . ', ימים ' . esc_html( $z['ila']['contact']['days'] ) . ' ' . esc_html( $z['ila']['contact']['hours'] ) . '. ' : '' )
+				. 'לפי ' . esc_html( $k['title'] ) . ' (' . esc_html( $k['where'] ) . ') ו״' . esc_html( $g['title'] ) . '״ באתר הממשלה (פורסם ' . esc_html( $dm( $g['published'] ) ) . ', עודכן ' . esc_html( $dm( $g['updated'] ) ) . '); נבדק ב־' . esc_html( $dm( $z['checked'] ) ) . '.</p>';
+		}
+
+	return $entries;
+}

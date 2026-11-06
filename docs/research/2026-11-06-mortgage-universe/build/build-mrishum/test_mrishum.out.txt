@@ -1,0 +1,134 @@
+data: rishum.json checked 2026-11-06, year 2026, in force 2026-01-01
+
+0. the data file
+  ok   key "rishum", "checked": "2026-11-06", year 2026 in force 1.1.2026
+  ok   every src has a title and an https URL  [16 sources]
+  ok   every src was read on 6.11.2026 except the two official forms (link only)  [gov_forms,ila_form]
+  ok   gov.il fees-2026: published 23.12.2025, updated 24.12.2025
+  ok   Reshumot: land notice 12193, pledge notice 12123
+  ok   land fees 2026 = gov.md: 188, 188, 0, 188, 188, 127, 88, 18, 188
+  ok   pledge fees 2026 = gov.md: 45 / 38 a year, 5 paid years, free from year 6, cancel 0, change 45 / 38, search 38 / 12
+  ok   Kol Zchut page dates as read: 2.3.2025, 10.11.2025, 16.3.2026, 2.3.2025, 2.3.2025
+  ok   contact line as read by hand on gov.il: *8653, 7 then 1, Sunday to Thursday 8:00 to 16:00, WhatsApp 073-3929983
+  ok   deed authentication by appointment: Sunday and Wednesday 8:30 to 12:30
+  ok   rules: s.9A 30 days, s.9ח2 12 months, reg. 72 at least 15 days
+  ok   ILA service page: read by hand in the owner's browser on 6.11.2026
+  ok   ILA form: the official PDF, link only
+  ok   ILA call centre as read: *5575, 03-9533333, Sunday to Thursday 8:00 to 17:00
+  ok   ILA facts: personal area, national identification, procedure 90.02B, no fee stated on the page
+  ok   every condition, document and rule names a src that exists  [all]
+  ok   five exemption groups: regulation 12 (four) and 13 (olim)
+
+1. every path, the total "לשלם למדינה" (by hand)
+  ok   tabu, registration, lawyer online, the default online extract: 188 + 18 = 206  [206 ok]
+  ok   tabu, registration, no extract: 188 = 188  [188 ok]
+  ok   tabu, registration, by hand: 188 + 18 (who files does not change the fee) = 206  [206 ok]
+  ok   tabu, registration, counter extract: 188 + 88 = 276  [276 ok]
+  ok   tabu, additional or second-degree mortgage: 188 = 188  [188 ok]
+  ok   tabu, second degree, by hand: 188 + 18 = 206  [206 ok]
+  ok   tabu, amendment of terms: 188 (item 2(ב)) = 188  [188 ok]
+  ok   tabu, increase of the loan: 188 (item 2(א)) = 188  [188 ok]
+  ok   tabu, cancellation after payoff, the bank files: 0 = 0  [0 bank]
+  ok   tabu, cancellation with an online extract to check: 0 + 18 = 18  [18 bank]
+  ok   tabu, cancellation by deposit at the office (reg. 72): 188 = 188  [188 ok]
+  ok   tabu, cancellation after death, insurance repaid: 0 (inheritance 188 apart) = 0  [0 bank]
+  ok   ILA, registration: the ILA fee is not stated on the service page; the warning note (if any) is apart = 0  [0 ila]
+  ok   ILA, registration by a representative: the same = 0  [0 ila]
+  ok   ILA, registration with an online extract: 18 = 18  [18 ila]
+  ok   ILA, second mortgage, counter extract: 88 = 88  [88 ila]
+  ok   ILA, amendment: no verified fee = 0  [0 unknown]
+  ok   ILA, cancellation: the bank cancels; 127 note deletion apart = 0  [0 bank]
+  ok   ILA, after death: 0 = 0  [0 bank]
+  ok   housing company, registration: warning note 188 = 188  [188 ok]
+  ok   housing company, amendment: no verified fee = 0  [0 unknown]
+  ok   housing company, cancellation: 0 = 0  [0 bank]
+  ok   not registered, pledge 25 years online: 5 x 38 = 190  [190 ok]
+  ok   not registered, pledge 25 years at the counter: 5 x 45 = 225  [225 ok]
+  ok   pledge, 5 years online: 190 = 190  [190 ok]
+  ok   pledge, 5 years at the counter: 225 = 225  [225 ok]
+  ok   pledge, 3 years online: 3 x 38 = 114  [114 ok]
+  ok   pledge, 3 years at the counter: 3 x 45 = 135  [135 ok]
+  ok   pledge, 1 year at the counter: 45 = 45  [45 ok]
+  ok   pledge, 6 years at the counter: the 6th is free, 225 = 225  [225 ok]
+  ok   pledge, 30 years typed as text: 190 = 190  [190 ok]
+  ok   not registered, an additional pledge: 190 = 190  [190 ok]
+  ok   pledge online + internet search of the register: 190 + 12 = 202  [202 ok]
+  ok   pledge at the counter + counter search: 225 + 38 = 263  [263 ok]
+  ok   pledge, change of details online: 38 = 38  [38 ok]
+  ok   pledge, change of details at the counter: 45 = 45  [45 ok]
+  ok   pledge cancellation: free = 0  [0 bank]
+  ok   pledge after death: free = 0  [0 bank]
+
+2. the exemptions (regulations 12 and 13)
+  ok   tabu registration, disabled: 188 becomes 0 with the reason (תקנה 12)  [0]
+  ok   tabu registration, bereaved_idf: 188 becomes 0 with the reason (תקנה 12)  [0]
+  ok   tabu registration, bereaved_terror: 188 becomes 0 with the reason (תקנה 12)  [0]
+  ok   tabu registration, terror: 188 becomes 0 with the reason (תקנה 12)  [0]
+  ok   tabu registration, olim: 188 becomes 0 with the reason (תקנה 13)  [0]
+  ok   exempt registration with the default online extract: 0 + 18 = 18  [18]
+  ok   second-degree mortgage, terror victim: 0  [0]
+  ok   amendment + exemption: not applied (the regulation says "בעד רישום משכנתה"), 188 stays  [188]
+  ok   amendment + exemption: the "exempt_scope" caveat is listed
+  ok   housing company + bereaved: the warning note stays 188; the exemption is said to apply to the later tabu registration  [188]
+  ok   ILA + bereaved: not on the ILA commitment; said to apply to the later tabu registration
+  ok   pledge + oleh: not applied to the Registrar of Pledges, 225 stays  [225]
+  ok   oleh picked: the regulation 13 caveat is listed
+  ok   cancellation: no exemption block (nothing to exempt)
+  ok   exempt path: the checklist asks for the exemption approval instead of the fee receipt
+
+3. cancellation, the bank and the deadline
+  ok   cancellation paid straight to the lender: 0, item 2(ג)(1), counted in the total
+  ok   time: the bank files within 30 days of payoff, at its cost, one deadline for every bank
+  ok   where: regulation 71(ב)(2), the registrar may cancel at the bank's request alone
+  ok   after death: inheritance registration 188 shown apart, not in the total
+  ok   after death: s.9ח2 deferral up to 12 months, and the s.9A "בעצמו ולא באמצעות ערב" caveat
+  ok   deposit at the office: item 2(ג)(2), the registrar gives the bank at least 15 days
+  ok   ILA cancellation: warning-note deletion 127 shown apart; the headline says the bank cancels
+
+4. the Registrar of Pledges, five-year totals
+  ok   five years: 225 at the counter, 190 online
+  ok   the pledge line explains 5 x 38 and the free sixth year  [5 × 38 ₪ לשנה; מהשנה השישית אין אגרה.]
+  ok   later tabu registration 188 shown, not in the total
+
+5. who files, the hash, bad values
+  ok   step 3 options follow the path
+  ok   a who that does not fit the path falls back to the first option
+  ok   hash round trip: none.second.office.counter.olim.3.inc
+  ok   a broken hash falls back to the defaults, a short one is ignored
+  ok   the hash holds choices only, no personal data  [tabu.register.lawyer.auto.none.25.terms]
+  ok   years 0, 41 or "x": an error on the years field
+  ok   an unknown registry, action, or missing data: an error, no figure
+
+6. the words
+  ok   every combination computes  [396 combinations]
+  ok   no long dash in any text
+  ok   no banned word in any text  []
+  ok   no "sixty days" anywhere in the texts
+  ok   in every combination the total is the sum of its counted lines  [396 combinations]
+  ok   every shekel figure in every combination is a 2026 amount of rishum.json, a pledge product, or that path's total  [all]
+  ok   the legal steps say "משכנתה", never the everyday spelling  [all]
+  ok   the checklist is titled "טופס רישום משכנתא" and links the official forms page (no form recreated)
+  ok   tabu registration checklist: request, deed, fee receipt, ID, capacity, bank documents, consent, extract  [request,deed,fee,id,capacity,corp,consent,nesach]
+  ok   second degree: the first bank's consent (s.7ח) is on the list
+  ok   deposit: the regulation 72 documents
+  ok   housing company: the commitment (unverified) and the regulation 21 warning-note documents (unchanged)
+  ok   ILA, the rights holder files: referral letter from the lender, every rights holder signs in the personal area, the official form (link)
+  ok   ILA, a representative files: the power of attorney is added
+  ok   ILA, second mortgage: the first bank's consent (s.7ח) is on the list
+  ok   the old ILA caveat is gone; "ila_more" (amendment and cancellation not on the page) shows on ILA cancellation only, nothing ILA on tabu
+  ok   ILA path: no "לא נקרא", no "לא ידוע", no search-snippet wording left
+  ok   ILA path carries the facts read: call centre, personal area, national identification, procedure, the digital original, the referral letter, no fee stated, the undertaking
+  ok   ILA headline: "לא מופיעה בדף השירות"; the warning note is outside the total; no total row unless an extract is picked
+  ok   ILA where: verified, for ILA-managed homes not registered in tabu or a housing or contractor company
+  ok   ILA checklist copy carries the ILA form and service links
+  ok   unknown paths say "בודקים מול" instead of a number
+  ok   the copied summary carries the 2026 notice dates and the check date
+
+7. the files
+  ok   no "sixty days" in any file of the build  [8 files]
+  ok   no long dash in any file of the build  [none]
+  ok   the logic of mrishum.js holds no amount or deadline of its own  [none]
+  ok   mrishum.js sends nothing: no fetch, sendBeacon, XMLHttpRequest or form
+  ok   no banned word in mrishum.js or rishum.json
+
+115 of 115 passed

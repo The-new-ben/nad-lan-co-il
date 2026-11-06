@@ -1,0 +1,24 @@
+{
+  "released": "1.72.597",
+  "from": "1.72.596",
+  "live_before": {
+    "nadlan-config.php": "39780eb07bb07b52a1f6a2781f73e5a2",
+    "inc/instruments.php": "8e1c004665203e2acca57206cd6d9920"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 17:59:00",
+  "files": {
+    "assets/instruments/tools/mhivun.js": "e745956e6cd0ca9efa7d87c3406fbf9a",
+    "assets/instruments/tools/mneches.js": "e36c085564f4d2ee5d557400ba169124",
+    "assets/instruments/data/mneches.json": "ce8439afc3a25c532a4267d423a5dd8a",
+    "assets/instruments/tools/mrishum.js": "d4c47deb9757bb4e6d161fbfffe04407",
+    "assets/instruments/data/rishum.json": "9f62f962d1d8a8c3b7ae87dbcf2c339b",
+    "assets/instruments/tools/mkashe.js": "1021d02b11f69893e4b53714bf9177ba",
+    "assets/instruments/data/kashe.json": "4aabf5fc80f8731985a5086a231fa3f3",
+    "nadlan-config.php": "cacc6355d9f45028561caddbd4863485",
+    "inc/instruments.php": "6aded5545fcce1daaa456daa0775b616"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.597, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

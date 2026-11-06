@@ -1,0 +1,180 @@
+
+390x844  (http://127.0.0.1:50689/docs/research/2026-11-06-mortgage-universe/build/build-mneches/preview.html)
+  ok   390 the pane starts hidden behind the first chip (as on the page)
+  ok   390 the chip opens the pane
+  ok   390 opens on the example: 1,050,000 ₪  [1,050,000 ₪]
+  ok   390 opening: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 opening values 2,800,000 / 350,000 / 3,150 / 25,000 / 1,500  [['2,800,000', '350,000', '3,150', '25,000', '1,500']]
+  ok   390 opening presses: any purpose, 20 years, the any-purpose average
+  ok   390 ledger: 1,400,000, −350,000, 1,050,000 (קובע), 1,250,000, 8,600, 1,173,288  [שווי הדירה היום
+2,800,000 ₪
+50% משווי הדירה, המימון המרבי בהלוואה לכל מטרה
+1,400,000 ₪
+הוראה 329, שו"ת 2.2 ו־8.2
+פחות יתרת המשכנתא על הדירה
+−350,000 ₪
+הוראה 329, סעיף 4
+ל]
+  ok   390 the example tag is shown until the first edit
+  ok   390 title "כמה אפשר לקבל על דירה קיימת"
+  ok   390 the guide link, exact anchor "משכנתא לכל מטרה"  [1]
+  ok   390 source line: directive 329 version 13, 30.6.2026, Q&A 8.2.2026, checked 6.11.2026  [מקור: הוראת ניהול בנקאי תקין 329, גרסה 13 (חוזר 2852, 30.6.2026) וקובץ השאלות והתשובות (8.2.2026), באתר בנק ישראל, נבדק ב־6.11.2026. ריביות: בנק ישראל, הלוואות ]
+  ok   390 non-bank line, no lender named, no number
+  ok   390 rules, the 1.10.2026 change and the Bank of Israel data are printed
+  ok   390 running text in IBM Plex Sans Hebrew  [['"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"']]
+  ok   390 numbers in IBM Plex Mono  [['"IBM Plex Mono"', '"IBM Plex Mono"', '"IBM Plex Mono"']]
+  ok   390 layout: one column on the phone  [1]
+  ok   390 every amount of the figure, the ledger and the table shows the sign on the same side (as the live tools)  [RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR]
+  ok   390 opening no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 opening every visible control at least 44 px high  [[]]
+  ok   390 opening every visible input labelled  [[]]
+  ok   390 opening every visible group named  [['מטרת ההלוואה', 'תקופה בשנים', 'הריבית לחישוב']]
+  ok   390 purpose buy: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 buy: the housing mix is used, the new home's caps (section 2) and a link to the full calculator  [לקניית דירה נוספת: גם לדירה שקונים יש תקרה משלה, 75% לדירה יחידה, 70% לדירה חלופית ו־50% לדירה להשקעה (סעיף 2), והבנק בו]
+  ok   390 purpose kids: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 kids: Q&A 2.7 and Annex A 1.3, no 70% relief line  [עזרה לילדים: הורים יכולים לקחת הלוואה בשעבוד הבית שלהם כדי לעזור בהון העצמי, והיא נחשבת הלוואה לכל מטרה, עד 50% משווי הב]
+  ok   390 purpose close: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 close: Q&A 7.7 and the relief line  [סגירת הלוואות: אל תכללו בשדה ההלוואות האחרות את ההחזרים של ההלוואות שייסגרו מהכסף. סגירה של משכנתא קיימת היא מחזור, והיא]
+  ok   390 purpose any: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 any: back to the any-purpose average and 1,050,000  [1,050,000 ₪]
+  ok   390 term 10: headline = NLNC (764,788 ₪)  [764,788 ₪]
+  ok   390 term 10: its row is marked in the table  [10 שנה
+ההכנסה קובעת]
+  ok   390 term 15: headline = NLNC (1,000,808 ₪)  [1,000,808 ₪]
+  ok   390 term 15: its row is marked in the table  [15 שנה
+ההכנסה קובעת]
+  ok   390 term 25: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 term 25: its row is marked in the table  [25 שנה
+כלל המימון קובע]
+  ok   390 term 30: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 term 30: its row is marked in the table  [30 שנה
+כלל המימון קובע]
+  ok   390 term 20: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 term 20: its row is marked in the table  [20 שנה
+כלל המימון קובע]
+  ok   390 10 years: the income binds (764,788 ₪ in the table)
+  ok   390 source home: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 the housing average is labelled with the any-purpose price beside it
+  ok   390 own rate: the field appears, opening at 6.61  [6.61]
+  ok   390 own 6.61%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 own 5%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 own 25%: an error on its field, no stale result  [הקלידו ריבית שנתית בין 0% ל־20%, למשל 6.2.]
+  ok   390 income 18,000, other 2,000, own 5%: headline = NLNC (734,897 ₪)  [734,897 ₪]
+  ok   390 income-bound: 734,897 ₪, the income line carries "קובע"  [734,897 ₪]
+  ok   390 the sub says the income binds and by how much (315,103)
+  ok   390 balance 0: the existing-payment field hides
+  ok   390 balance 0: headline = NLNC (1,212,202 ₪)  [1,212,202 ₪]
+  ok   390 balance 1,600,000 on 2,800,000: headline = NLNC (אין מקום להלוואה נוספת)  [אין מקום להלוואה נוספת]
+  ok   390 above the cap: "אין מקום להלוואה נוספת", red underline, no negative amount  [אין מקום להלוואה נוספת]
+  ok   390 exemption case: headline = NLNC (120,000 ₪)  [120,000 ₪]
+  ok   390 income room 500: the 120,000 exemption (sections 11, 12.2)  [120,000 ₪]
+  ok   390 empty value: the message on its field  [הקלידו את שווי הדירה בשקלים, למשל 2,800,000.]
+  ok   390 back to the example with own 5%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   390 the example tag is gone after editing
+  ok   390 after typing no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   390 after typing every visible control at least 44 px high  [[]]
+  ok   390 after typing every visible input labelled  [[]]
+  ok   390 after typing every visible group named  [['מטרת ההלוואה', 'תקופה בשנים', 'הריבית לחישוב']]
+  ok   390 copy: the summary and the #tool-neches link  [כמה אפשר לקבל על דירה קיימת: דירה בשווי 2,800,000 ₪ עם יתרת משכנתא של 350,000 ₪, לכל מטרה. לפי כלל המימון של בנק ישראל (]
+  ok   390 WhatsApp: the link carries the summary (navigation blocked in the test)  [https://wa.me/?text=%D7%9B%D7%9E%D7%94%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A7]
+  ok   390 case link: #mneches=  [LCJpIjoyNTAwMCwibyI6MTUwMCwieSI6MjAsInMiOiJvd24iLCJyIjoiNSJ9]
+  ok   390 no console error or warning, no page error  [[]]
+  ok   390 the case link opens the pane, presses its chip and restores the case  [['1,050,000 ₪', '1,050,000 ₪']]
+  ok   390 the case link page: no console error  [[]]
+
+1280x900  (http://127.0.0.1:50689/docs/research/2026-11-06-mortgage-universe/build/build-mneches/preview.html)
+  ok   1280 the pane starts hidden behind the first chip (as on the page)
+  ok   1280 the chip opens the pane
+  ok   1280 opens on the example: 1,050,000 ₪  [1,050,000 ₪]
+  ok   1280 opening: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 opening values 2,800,000 / 350,000 / 3,150 / 25,000 / 1,500  [['2,800,000', '350,000', '3,150', '25,000', '1,500']]
+  ok   1280 opening presses: any purpose, 20 years, the any-purpose average
+  ok   1280 ledger: 1,400,000, −350,000, 1,050,000 (קובע), 1,250,000, 8,600, 1,173,288  [שווי הדירה היום
+2,800,000 ₪
+50% משווי הדירה, המימון המרבי בהלוואה לכל מטרה
+1,400,000 ₪
+הוראה 329, שו"ת 2.2 ו־8.2
+פחות יתרת המשכנתא על הדירה
+−350,000 ₪
+הוראה 329, סעיף 4
+ל]
+  ok   1280 the example tag is shown until the first edit
+  ok   1280 title "כמה אפשר לקבל על דירה קיימת"
+  ok   1280 the guide link, exact anchor "משכנתא לכל מטרה"  [1]
+  ok   1280 source line: directive 329 version 13, 30.6.2026, Q&A 8.2.2026, checked 6.11.2026  [מקור: הוראת ניהול בנקאי תקין 329, גרסה 13 (חוזר 2852, 30.6.2026) וקובץ השאלות והתשובות (8.2.2026), באתר בנק ישראל, נבדק ב־6.11.2026. ריביות: בנק ישראל, הלוואות ]
+  ok   1280 non-bank line, no lender named, no number
+  ok   1280 rules, the 1.10.2026 change and the Bank of Israel data are printed
+  ok   1280 running text in IBM Plex Sans Hebrew  [['"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"', '"IBM Plex Sans Hebrew"']]
+  ok   1280 numbers in IBM Plex Mono  [['"IBM Plex Mono"', '"IBM Plex Mono"', '"IBM Plex Mono"']]
+  ok   1280 layout: form and result side by side  [2]
+  ok   1280 every amount of the figure, the ledger and the table shows the sign on the same side (as the live tools)  [RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR]
+  ok   1280 opening no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 opening every visible control at least 44 px high  [[]]
+  ok   1280 opening every visible input labelled  [[]]
+  ok   1280 opening every visible group named  [['מטרת ההלוואה', 'תקופה בשנים', 'הריבית לחישוב']]
+  ok   1280 purpose buy: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 buy: the housing mix is used, the new home's caps (section 2) and a link to the full calculator  [לקניית דירה נוספת: גם לדירה שקונים יש תקרה משלה, 75% לדירה יחידה, 70% לדירה חלופית ו־50% לדירה להשקעה (סעיף 2), והבנק בו]
+  ok   1280 purpose kids: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 kids: Q&A 2.7 and Annex A 1.3, no 70% relief line  [עזרה לילדים: הורים יכולים לקחת הלוואה בשעבוד הבית שלהם כדי לעזור בהון העצמי, והיא נחשבת הלוואה לכל מטרה, עד 50% משווי הב]
+  ok   1280 purpose close: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 close: Q&A 7.7 and the relief line  [סגירת הלוואות: אל תכללו בשדה ההלוואות האחרות את ההחזרים של ההלוואות שייסגרו מהכסף. סגירה של משכנתא קיימת היא מחזור, והיא]
+  ok   1280 purpose any: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 any: back to the any-purpose average and 1,050,000  [1,050,000 ₪]
+  ok   1280 term 10: headline = NLNC (764,788 ₪)  [764,788 ₪]
+  ok   1280 term 10: its row is marked in the table  [10 שנה
+ההכנסה קובעת]
+  ok   1280 term 15: headline = NLNC (1,000,808 ₪)  [1,000,808 ₪]
+  ok   1280 term 15: its row is marked in the table  [15 שנה
+ההכנסה קובעת]
+  ok   1280 term 25: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 term 25: its row is marked in the table  [25 שנה
+כלל המימון קובע]
+  ok   1280 term 30: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 term 30: its row is marked in the table  [30 שנה
+כלל המימון קובע]
+  ok   1280 term 20: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 term 20: its row is marked in the table  [20 שנה
+כלל המימון קובע]
+  ok   1280 10 years: the income binds (764,788 ₪ in the table)
+  ok   1280 source home: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 the housing average is labelled with the any-purpose price beside it
+  ok   1280 own rate: the field appears, opening at 6.61  [6.61]
+  ok   1280 own 6.61%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 own 5%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 own 25%: an error on its field, no stale result  [הקלידו ריבית שנתית בין 0% ל־20%, למשל 6.2.]
+  ok   1280 income 18,000, other 2,000, own 5%: headline = NLNC (734,897 ₪)  [734,897 ₪]
+  ok   1280 income-bound: 734,897 ₪, the income line carries "קובע"  [734,897 ₪]
+  ok   1280 the sub says the income binds and by how much (315,103)
+  ok   1280 balance 0: the existing-payment field hides
+  ok   1280 balance 0: headline = NLNC (1,212,202 ₪)  [1,212,202 ₪]
+  ok   1280 balance 1,600,000 on 2,800,000: headline = NLNC (אין מקום להלוואה נוספת)  [אין מקום להלוואה נוספת]
+  ok   1280 above the cap: "אין מקום להלוואה נוספת", red underline, no negative amount  [אין מקום להלוואה נוספת]
+  ok   1280 exemption case: headline = NLNC (120,000 ₪)  [120,000 ₪]
+  ok   1280 income room 500: the 120,000 exemption (sections 11, 12.2)  [120,000 ₪]
+  ok   1280 empty value: the message on its field  [הקלידו את שווי הדירה בשקלים, למשל 2,800,000.]
+  ok   1280 back to the example with own 5%: headline = NLNC (1,050,000 ₪)  [1,050,000 ₪]
+  ok   1280 the example tag is gone after editing
+  ok   1280 after typing no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   1280 after typing every visible control at least 44 px high  [[]]
+  ok   1280 after typing every visible input labelled  [[]]
+  ok   1280 after typing every visible group named  [['מטרת ההלוואה', 'תקופה בשנים', 'הריבית לחישוב']]
+  ok   1280 copy: the summary and the #tool-neches link  [כמה אפשר לקבל על דירה קיימת: דירה בשווי 2,800,000 ₪ עם יתרת משכנתא של 350,000 ₪, לכל מטרה. לפי כלל המימון של בנק ישראל (]
+  ok   1280 WhatsApp: the link carries the summary (navigation blocked in the test)  [https://wa.me/?text=%D7%9B%D7%9E%D7%94%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A7]
+  ok   1280 case link: #mneches=  [LCJpIjoyNTAwMCwibyI6MTUwMCwieSI6MjAsInMiOiJvd24iLCJyIjoiNSJ9]
+  ok   1280 no console error or warning, no page error  [[]]
+  ok   1280 the case link opens the pane, presses its chip and restores the case  [['1,050,000 ₪', '1,050,000 ₪']]
+  ok   1280 the case link page: no console error  [[]]
+
+390 + live theme
+  ok   theme 390 opens on 1,050,000 ₪  [1,050,000 ₪]
+  ok   theme 390 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 every visible control at least 44 px high  [[]]
+  ok   theme 390 every visible input labelled  [[]]
+  ok   theme 390 every visible group named  [['מטרת ההלוואה', 'תקופה בשנים', 'הריבית לחישוב']]
+  ok   theme 390: text face, button radius and sub-heading face hold against the theme  [['"IBM Plex Sans Hebrew"', '2px', '"IBM Plex Sans Hebrew"']]
+  ok   theme 390: a purpose pressed under the theme
+  ok   theme 390: no page error and no local console error  [[]]
+
+local server stopped
+
+144 of 144 checks passed

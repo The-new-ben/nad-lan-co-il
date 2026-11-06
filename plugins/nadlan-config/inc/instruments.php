@@ -411,6 +411,31 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'boi-mortgage.json' ),
 				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
 			),
+			'mhivun' => array(
+				'name' => 'עמלת היוון', 'cat' => 'FinanceApplication', 'kicker' => 'פירעון מוקדם · צו הבנקאות',
+				'desc' => 'מחשבון עמלת היוון למשכנתא שלמה, עד 6 מסלולים: היתרה ועמלת ההיוון בכל מסלול לפי צו הבנקאות והריביות הממוצעות של בנק ישראל, עם הטור, הממוצע ותאריך התוקף שלו, ההפחתה לוותק והחישוב המלא שלב אחרי שלב; פירעון חלקי בחלוקה שבה העמלה הנמוכה ביותר, עם הירידה בהחזר והריבית שנחסכת; העמלה בכל אחד מ־24 החודשים הקרובים, החודש הזול וימי שינוי הריבית; והשוואה למספר שהבנק נתן בדוח לסילוק.',
+				'deps' => array( 'mortgage', 'mrates-common' ),
+				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
+				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
+			'mneches' => array(
+				'name' => 'כמה אפשר לקבל על דירה קיימת', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · הלוואה בשעבוד דירה',
+				'desc' => 'כמה הבנק יכול לתת על דירה שכבר בבעלותכם: לפי כלל המימון של בנק ישראל (50% משווי הדירה יחד עם יתרת המשכנתא, ובשיקול דעת הבנק עד 70%) ולפי ההחזר מההכנסה (עד 50%, כולל ההחזר על המשכנתא הקיימת), למטרה שבחרתם: לכל מטרה, לקניית דירה נוספת, לעזרה לילדים או לסגירת הלוואות. מה מגביל ובכמה, ההחזר החודשי, סך ההחזרים וטבלה לפי תקופה, בריבית הממוצעת של בנק ישראל או בריבית שקיבלתם.',
+				'data' => array( 'boi-mortgage.json', 'mneches.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-for-any-purpose/' => 'משכנתא לכל מטרה', '/mortgage-calculator/mortgage-ltv-ratio/' => 'אחוז מימון', '/mortgage-calculator/bridge-loan-apartment/' => 'הלוואת גישור', '/mortgage-refinance/' => 'מחזור משכנתא' ),
+			),
+			'mrishum' => array(
+				'name' => 'רישום משכנתה ואגרות', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · רישום משכנתה',
+				'desc' => 'רישום משכנתא ואגרות 2026: איפה הדירה רשומה (טאבו, רשות מקרקעי ישראל, חברה משכנת, או דירה מקבלן שעוד לא נרשמה), מה עושים (רישום משכנתה, משכנתה נוספת או בדרגה שנייה, תיקון, ביטול אחרי סילוק או אחרי פטירה) ומי מגיש; מה נרשם ואיפה, אגרת רישום המשכנתה ושאר האגרות של 2026 עם סך הכול, פטור לאנשים עם נכות, למשפחות שכולות, לנפגעי פעולות איבה ולעולים, השלבים, רשימת המסמכים לבקשה (טופס רישום משכנתא) עם הקישורים לאתר הממשלה, ומועד המחיקה של הבנק לפי חוק הבנקאות.',
+				'data' => array( 'rishum.json' ),
+				'related' => array( '/tabu-extract-check/' => 'בדיקת נסח טאבו', '/real-estate-lawyer/' => 'עורך דין מקרקעין', '/mortgage-refinance/' => 'מחזור משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+			'mkashe' => array(
+				'name' => 'כשקשה לשלם את המשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · כשקשה לשלם',
+				'desc' => 'מחשבון הקפאת משכנתא: כמה עולה לדחות חודש עד שישה חודשים בשלוש דרכים, דחייה מלאה של קרן וריבית, ריבית בלבד או הארכת תקופה, וההחזר אחר כך. ואם כבר לא שילמתם: מה קורה מהתשלום הראשון שלא שולם, ההודעה של 21 ימי עסקים, הקו של שישה חודשים לפני הוצאה לפועל, האזהרה, כונס הנכסים והדיור החלוף, עם מה שמגן עליכם בכל שלב; הזכויות לפי המצב (פיטורים, מחלה, לידה, פטירה, הלוואת זכאות, גיל מבוגר, מילואים) עם הסעיף או הדף של כל זכות, וקווי הבנקים.',
+				'data' => array( 'kashe.json', 'boi-mortgage.json' ),
+				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועצי משכנתא' ),
+			),
 			/* 1.72.593 (HAD-675, T4): from contract to keys, the 7th tool of /mortgage-calculator/ (the linkage of indexation.js, the payment of mquick.js) */
 			'mkeys' => array(
 				'name' => 'מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה מקבלן',
@@ -503,6 +528,124 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
+		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['prepay']['cpi']['rows'] ) || empty( $d['fees']['reduce'] ) || empty( $d['built'] ) ) { return ''; }
+			$nl = $d['prepay']['nl']; $cp = $d['prepay']['cpi']; $tn = $nl['rows'][ count( $nl['rows'] ) - 1 ]; $tc = $cp['rows'][ count( $cp['rows'] ) - 1 ];
+			$av = function ( $t, $row, $c ) { $i = array_search( $c, $t['cols'], true ); return false === $i ? null : (float) $row[ $i ]; };
+			$p3 = function ( $v ) { return rtrim( rtrim( number_format( (float) $v, 3, '.', '' ), '0' ), '.' ) . '%'; };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$mo = function ( $k ) { return (int) substr( (string) $k, 5, 2 ) . '.' . substr( (string) $k, 0, 4 ); };
+			$col = function ( $y ) { return $y <= 1 ? 'le1' : ( $y <= 5 ? '1_5' : ( $y <= 10 ? '5_10' : ( $y <= 15 ? '10_15' : ( $y <= 20 ? '15_20' : ( $y <= 25 ? '20_25' : 'gt25' ) ) ) ) ); };
+			$a1 = $av( $nl, $tn, '10_15' ); $a2 = $av( $nl, $tn, '20_25' ); $c1 = $av( $cp, $tc, '10_15' ); $c2 = $av( $cp, $tc, '20_25' );
+			if ( null === $a1 || null === $a2 || null === $c1 || null === $c2 ) { return ''; }
+			// the worked example: fixed not linked, 500,000 ILS from 7.2023 for 25 years at 5.30%, repaid in full in the data month
+			$from = '2023-07'; $amt = 500000; $rate = 5.3; $n = 300; $now = substr( (string) $d['built'], 0, 7 );
+			$el = ( (int) substr( $now, 0, 4 ) - (int) substr( $from, 0, 4 ) ) * 12 + ( (int) substr( $now, 5, 2 ) - (int) substr( $from, 5, 2 ) );
+			$ex = '';
+			if ( $el >= 1 && $el < $n ) {
+				$rm = $rate / 1200; $bal = $amt;
+				for ( $k = 1; $k <= $el; $k++ ) { $pk = nadlan_nli_mr_pmt( $bal, $rm, $n - $k + 1 ); $bal = $bal + $bal * $rm - $pk; }
+				$left = $n - $el; $orig = null; foreach ( $nl['rows'] as $r ) { if ( $r[0] <= $from . '-15' ) { $orig = $r; } }
+				$ae = $av( $nl, $tn, $col( $left / 12 ) ); $a = nadlan_nli_mr_nom( $ae ); $ce = $orig ? $av( $nl, $orig, $col( $n / 12 ) ) : null; $c = null === $ce ? null : nadlan_nli_mr_nom( $ce );
+				$pva = 0; $pvc = 0; $b = $bal;  // the remaining payments (NLMG.stream), discounted at today's average and at the loan-day one
+				for ( $k = 1; $k <= $left; $k++ ) { $pk = nadlan_nli_mr_pmt( $b, $rm, $left - $k + 1 ); $b = $b + $b * $rm - $pk; if ( $k === $left && $b > 0.005 ) { $pk += $b; } $pva += $pk / pow( 1 + $a / 1200, $k ); if ( null !== $c ) { $pvc += $pk / pow( 1 + $c / 1200, $k ); } }
+				$f3 = $a < $rate ? max( 0, $pva - $bal ) : 0; $f4 = ( null !== $c && $c < $rate ) ? max( 0, $pva - $pvc ) : null;
+				$cut = 0; foreach ( $d['fees']['reduce'] as $red ) { if ( $el / 12 >= $red['after_years'] ) { $cut = $red['cut']; } }
+				$fee = ( null === $f4 ? $f3 : min( $f3, $f4 ) ) * ( 1 - $cut );
+				$ex = 'למשל, הלוואה קבועה לא צמודה של 500,000 ₪ שנלקחה ב־7.2023 ל־25 שנה בריבית 5.30%, ונפרעת כולה ב־' . esc_html( $mo( $now ) ) . ': היתרה ' . esc_html( number_format( $bal ) ) . ' ₪, הממוצע לתקופה שנותרה '
+					. esc_html( $p3( $ae ) ) . ( null !== $ce ? ' (ביום ההלוואה ' . esc_html( $p3( $ce ) ) . ')' : '' ) . ', ועמלת ההיוון כ־' . esc_html( number_format( $fee ) ) . ' ₪, הנמוך משני החישובים של הצו'
+					. ( $cut > 0 ? ' אחרי הפחתה של ' . (int) round( 100 * $cut ) . '% לוותק' : '' ) . '. ';
+			}
+			return '<p>עמלת היוון היא עמלת הפירעון המוקדם שהבנק גובה לפי צו הבנקאות כשפורעים לפני הזמן מסלול בריבית קבועה, או מסלול משתנה לפני יום שינוי הריבית: התשלומים שנותרו מהוונים בריבית הממוצעת שבנק ישראל מפרסם לתקופה שנותרה, '
+				. 'ואם היא נמוכה מהריבית בהלוואה, ההפרש הוא העמלה (נקראת גם הפרשי היוון). הבנק גובה את הנמוך משני חישובים: הממוצע של היום מול הריבית בהלוואה, והממוצע של היום מול הממוצע ביום ההלוואה. '
+				. 'הממוצעים שבתוקף מ־' . esc_html( $dm( $tn[0] ) ) . ' (נתוני ' . esc_html( $mo( $tn[1] ) ) . ', ריבית שנתית אפקטיבית): בקבועה לא צמודה ' . esc_html( $p3( $a1 ) ) . ' לתקופה של מעל 10 ועד 15 שנים ו־' . esc_html( $p3( $a2 ) ) . ' למעל 20 ועד 25 שנים; '
+				. 'בצמודה למדד ' . esc_html( $p3( $c1 ) ) . ' ו־' . esc_html( $p3( $c2 ) ) . '. ' . $ex
+				. 'אחרי 3 שנים העמלה יורדת ב־20% ואחרי 5 שנים ב־30%; במסלול פריים, במסלול שהריבית בו משתנה כל שנה וביום שינוי הריבית אין עמלת היוון. בכל פירעון יש עמלה תפעולית של עד ' . (int) $d['fees']['operational_max'] . ' ₪, ו־0.1% מהסכום בהודעה של פחות מ־10 ימים. '
+				. 'המחשבון מחשב את עמלת ההיוון לכל המשכנתא, עד 6 מסלולים, מראה את החישוב המלא בכל מסלול, מחלק פירעון חלקי כך שהעמלה הנמוכה ביותר, ומראה את העמלה בכל אחד מ־24 החודשים הקרובים.</p>';
+		}
+		if ( 'mneches' === $id ) {  // HAD-675 (6.11.2026): the two limits of directive 329 and a worked example, every number read at render time
+			$x = nadlan_nli_mrates(); $d = $x['d'];
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/mneches.json';
+			$nc = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['rules']['any_purpose']['ltv'] ) || ! is_array( $nc ) || empty( $nc['anyp']['tracks'] ) || empty( $nc['sources']['D329']['version'] ) ) { return ''; }
+			$ap = $d['rules']['any_purpose']; $a = $nc['anyp']; $r = $nc['rules'];
+			$pc = function ( $f ) { return (int) round( 100 * (float) $f ) . '%'; };
+			$n  = function ( $v ) { return number_format( (float) $v ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$heM = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$mo = $heM[ (int) substr( $a['month'], 5, 2 ) - 1 ] . ' ' . substr( $a['month'], 0, 4 );
+			$val = 2800000; $bal = 350000;  // the tool's opening example
+			$cap = floor( (float) $ap['ltv'] * $val ); $room = max( 0, $cap - $bal );
+			$rel = max( 0, floor( min( (float) $ap['ltv_upto'] * $val, $cap + (float) $ap['above_cap'] ) ) - $bal );
+			return '<p>כמה אפשר לקבל על דירה קיימת לפי בנק ישראל: בהלוואה לכל מטרה בשעבוד דירת מגורים המימון המרבי הוא ' . esc_html( $pc( $ap['ltv'] ) ) . ' משווי הדירה, יחד עם יתרת המשכנתא שכבר רשומה עליה. '
+				. 'בשיקול דעת הבנק אפשר עד ' . esc_html( $pc( $ap['ltv_upto'] ) ) . ', כשהחלק שמעל ' . esc_html( $pc( $ap['ltv'] ) ) . ' עד ' . esc_html( $n( $ap['above_cap'] ) ) . ' ₪ בכל ההלוואות על הדירה. '
+				. 'ההחזר החודשי עד ' . esc_html( $pc( $d['rules']['pti_max'] ) ) . ' מההכנסה הפנויה, ומ־' . esc_html( $dm( $r['same_asset']['from'] ) ) . ' הוא כולל גם הלוואות קודמות על אותה דירה שנותרו להן יותר מ־' . (int) $r['same_asset']['months'] . ' חודשים; הלוואה לכל מטרה של עד ' . esc_html( $n( $r['pti_exempt']['value'] ) ) . ' ₪ פטורה ממגבלת ההחזר. '
+				. 'למשל דירה בשווי ' . esc_html( $n( $val ) ) . ' ₪ עם יתרת משכנתא של ' . esc_html( $n( $bal ) ) . ' ₪: ' . esc_html( $pc( $ap['ltv'] ) ) . ' הם ' . esc_html( $n( $cap ) ) . ' ₪, פחות היתרה, כלומר עד ' . esc_html( $n( $room ) ) . ' ₪, ובהקלה עד ' . esc_html( $n( $rel ) ) . ' ₪. '
+				. 'ב' . esc_html( $mo ) . ' נתנו הבנקים ' . esc_html( $n( $a['loans']['value'] ) ) . ' הלוואות חדשות לכל מטרה בשעבוד דירה, ' . esc_html( number_format( $a['volume_k']['value'] / 1000, 1 ) ) . ' מיליון ₪, וההחזר הממוצע היה ' . esc_html( number_format( (float) $a['pti']['value'], 2 ) ) . '% מההכנסה; '
+				. 'הריבית הממוצעת בקבועה לא צמודה ' . esc_html( number_format( (float) $a['fixed']['nl']['rate'], 2 ) ) . '%, מול ' . esc_html( number_format( (float) $a['housing_fixed']['nl']['rate'], 2 ) ) . '% במשכנתאות לדיור באותו חודש. '
+				. 'לפי הוראת ניהול בנקאי תקין 329, גרסה ' . (int) $nc['sources']['D329']['version'] . ' (' . esc_html( $dm( $nc['sources']['D329']['date'] ) ) . '), וקובץ השאלות והתשובות (' . esc_html( $dm( $nc['sources']['QA329']['date'] ) ) . '), נבדק ב־' . esc_html( $dm( $nc['checked'] ) ) . '.</p>';
+		}
+		if ( 'mrishum' === $id ) {  // HAD-675 (6.11.2026): mortgage registration, the 2026 fees of rishum.json in plain HTML, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/rishum.json';
+			$z = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $z ) || empty( $z['land']['mortgage']['amount'] ) || empty( $z['pledge']['reg_counter']['amount'] ) || empty( $z['src']['gov_fees']['published'] ) || empty( $z['rules']['s9a']['days'] ) ) { return ''; }
+			$l = $z['land']; $p = $z['pledge']; $c = $z['contact']; $g = $z['src']['gov_fees']; $k = $z['src']['reshumot_land'];
+			$s = function ( $x ) { return esc_html( number_format( (float) $x ) ) . ' ₪'; };
+			$dm = function ( $iso ) { $q = explode( '-', (string) $iso ); return 3 === count( $q ) ? (int) $q[2] . '.' . (int) $q[1] . '.' . $q[0] : ''; };
+			$it = function () { return ' <small>(פרט ' . esc_html( implode( ', ', func_get_args() ) ) . ')</small>'; };
+			$y5 = (int) $p['paid_years_max'];
+			$ex = array(); foreach ( (array) $z['exemptions'] as $e ) { $ex[] = esc_html( $e['he'] ) . ( '13' === (string) $e['reg'] ? ' (בתנאי תקנה 13)' : ' (תקנה ' . esc_html( $e['reg'] ) . ')' ); }
+			return '<p>רישום משכנתה בטאבו נעשה בשטר משכנתה, בלשכת רישום המקרקעין שבה רשום הנכס; כשהדירה עוד לא רשומה, למשל דירה מקבלן, נרשם משכון ברשם המשכונות. האגרות של ' . (int) $z['year'] . ', בתוקף מ־' . esc_html( $dm( $z['in_force'] ) ) . ':</p><ul>'
+				. '<li>רישום משכנתה, משכנתה נוספת או הגדלת סכום ההלוואה: ' . $s( $l['mortgage']['amount'] ) . $it( $l['mortgage']['item'] ) . '</li>'
+				. '<li>תיקון משכנתה (שינוי או תיקון בתנאים או בשמות הצדדים) והעברת משכנתה: ' . $s( $l['change']['amount'] ) . $it( $l['change']['item'] ) . '</li>'
+				. '<li>ביטול משכנתה אחרי פירעון (רישום פדיון): פטור מאגרה כשהכסף שולם ישירות לבנק, ו־' . $s( $l['redeem_deposit']['amount'] ) . ' כשהכסף מופקד בלשכה' . $it( $l['redeem_direct']['item'], $l['redeem_deposit']['item'] ) . '</li>'
+				. '<li>הערת אזהרה: ' . $s( $l['note']['amount'] ) . ' לכל רישום, ומחיקתה בבקשת הצדדים ' . $s( $l['note_delete']['amount'] ) . $it( $l['note']['item'], $l['note_delete']['item'] ) . '</li>'
+				. '<li>נסח רישום: ' . $s( $l['nesach_counter']['amount'] ) . ' בדלפק, ' . $s( $l['nesach_online']['amount'] ) . ' במקוון' . $it( $l['nesach_counter']['item'], $l['nesach_online']['item'] ) . '</li>'
+				. '<li>רשם המשכונות: ' . $s( $p['reg_counter']['amount'] ) . ' לכל שנה עד ' . $y5 . ' שנים, ' . $s( $p['reg_online']['amount'] ) . ' במקוון, ומהשנה השישית פטור; לחמש שנים ' . $s( $y5 * $p['reg_counter']['amount'] ) . ' בדלפק או ' . $s( $y5 * $p['reg_online']['amount'] ) . ' במקוון. ביטול משכון פטור.</li></ul>'
+				. '<p>את אגרת רישום המשכנתה משלם הממשכן. אחרי פירעון מלא הבנק מגיש תוך ' . (int) $z['rules']['s9a']['days'] . ' ימים מיום הפירעון הודעה על מחיקת המשכנתה, והוצאות המחיקה עליו (חוק הבנקאות (שירות ללקוח), סעיף 9א); מועד אחד לכל הבנקים. '
+				. 'פטור מאגרת רישום משכנתה: ' . implode( ', ', $ex ) . ', וגם לבן או לבת הזוג. '
+				. ( ! empty( $z['ila']['scope'] ) ? esc_html( $z['ila']['scope'] ) . ': הבקשה מקוונת, באזור האישי ״' . esc_html( $z['ila']['area'] ) . '״, עם מכתב הפנייה מהבנק, וכל בעלי הזכויות חותמים; ' . esc_html( $z['ila']['fee'] ) . '. ' : '' )
+				. 'מוקד ' . esc_html( $c['body'] ) . ': ' . esc_html( $c['phone'] ) . ', ' . esc_html( $c['ext'] ) . ', ימים ' . esc_html( $c['days'] ) . ' ' . esc_html( $c['hours'] ) . '. '
+				. ( ! empty( $z['ila']['contact']['phone'] ) ? 'מוקד ' . esc_html( $z['ila']['contact']['body'] ) . ': ' . esc_html( $z['ila']['contact']['phone'] ) . ' או ' . esc_html( $z['ila']['contact']['phone2'] ) . ', ימים ' . esc_html( $z['ila']['contact']['days'] ) . ' ' . esc_html( $z['ila']['contact']['hours'] ) . '. ' : '' )
+				. 'לפי ' . esc_html( $k['title'] ) . ' (' . esc_html( $k['where'] ) . ') ו״' . esc_html( $g['title'] ) . '״ באתר הממשלה (פורסם ' . esc_html( $dm( $g['published'] ) ) . ', עודכן ' . esc_html( $dm( $g['updated'] ) ) . '); נבדק ב־' . esc_html( $dm( $z['checked'] ) ) . '.</p>';
+		}
+		if ( 'mkashe' === $id ) {  // HAD-675 (6.11.2026): the hardship rules of kashe.json and a deferral example, every number read at render time
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/kashe.json';
+			$k = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $k ) || empty( $k['rules']['enforce_months'] ) || empty( $k['rules']['notice_business_days'] ) || empty( $k['programs']['items'] ) || empty( $k['checked'] ) ) { return ''; }
+			$r  = $k['rules'];
+			$n  = function ( $x ) { return number_format( (float) $x ); };
+			$dm = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : ''; };
+			$h  = '';
+			$x  = nadlan_nli_mrates(); $d = $x['d'];
+			if ( is_array( $d ) && ! empty( $d['rates']['fixed_nl']['rate'] ) && ! empty( $d['rates']['fixed_nl']['hist'] ) ) {
+				$rate = (float) $d['rates']['fixed_nl']['rate']; $hist = $d['rates']['fixed_nl']['hist']; $mo = (string) $hist[ count( $hist ) - 1 ][0];
+				$i = $rate / 1200; $b = 1000000; $nn = 300; $m = 3;
+				$p0 = nadlan_nli_mr_pmt( $b, $i, $nn ); $bd = $b * pow( 1 + $i, $m );
+				$pf = nadlan_nli_mr_pmt( $bd, $i, $nn - $m ); $pi = nadlan_nli_mr_pmt( $b, $i, $nn - $m ); $pe = nadlan_nli_mr_pmt( $bd, $i, $nn );
+				$xf = $pf * ( $nn - $m ) - $p0 * $nn; $xi = $b * $i * $m + $pi * ( $nn - $m ) - $p0 * $nn; $xe = $pe * $nn - $p0 * $nn;
+				$h .= '<p>מחשבון הקפאת משכנתא, דוגמה: יתרה של 1,000,000 ₪ ל־300 חודשים בריבית ' . esc_html( number_format( $rate, 2 ) ) . '% (הממוצע של בנק ישראל במשכנתאות חדשות בריבית קבועה לא צמודה, '
+					. esc_html( (int) substr( $mo, 5, 2 ) . '.' . substr( $mo, 0, 4 ) ) . '): ההחזר היום ' . $n( $p0 ) . ' ₪. דחייה מלאה של 3 חודשים, קרן וריבית: אחר כך ' . $n( $pf ) . ' ₪ בחודש, ' . $n( $xf ) . ' ₪ יותר בסך הכול. '
+					. 'ריבית בלבד: ' . $n( $b * $i ) . ' ₪ בחודשי הדחייה, אחר כך ' . $n( $pi ) . ' ₪, ' . $n( $xi ) . ' ₪ יותר. הארכת התקופה ב־3 חודשים: ' . $n( $pe ) . ' ₪ בחודש, ' . $n( $xe ) . ' ₪ יותר. '
+					. 'לוח שפיצר, ריבית שנתית חלקי 12, בלי שינוי במדד; את התנאים בפועל קובע הבנק.</p>';
+			}
+			$h .= '<p>אם כבר לא שילמתם את המשכנתא, אלה הכללים לפי חוק ההוצאה לפועל וחוק הבנקאות (שירות ללקוח):</p><ul>'
+				. '<li>בקשה לביצוע משכנתא על דירת מגורים של אדם פרטי לא מוגשת לפני שעברו ' . (int) $r['enforce_months'] . ' חודשים מהתשלום הראשון שלא שולם, והיא מוגשת קודם על החוב שבפיגור בלבד (סעיף 81ב1). חריג: כשהפיגור עם ריבית הפיגורים עולה על ' . (int) $r['immediate_arrears_pct'] . '% מיתרת החוב, ובעוד מקרים שבחוק.</li>'
+				. '<li>לפני העמדה לפירעון מיידי או הליך משפטי הבנק שולח הודעה בכתב ' . (int) $r['notice_business_days'] . ' ימי עסקים לפחות מראש (סעיף 5א1).</li>'
+				. '<li>בתוך ' . (int) $r['self_sale_notice_days'] . ' ימים מהאזהרה של ההוצאה לפועל אפשר להודיע שתמכרו את הדירה בעצמכם, וההליכים מתעכבים ל־' . (int) $r['self_sale_stay_days'] . ' ימים. בתוך ' . (int) $r['receiver_days'] . ' ימים ממינוי כונס נכסים, פירעון החוב שבפיגור (או מחציתו, כשהיתרה מובטחת לתוך ' . (int) $r['receiver_half_months'] . ' חודשים) עוצר את המימוש.</li>'
+				. '<li>מכירה ופינוי רק כשיש מקום מגורים סביר או סידור חלוף; אם בשטר נקבע סידור זמני, סכום לשכירות באזור עד ' . (int) $r['rent_months'] . ' חודשים (סעיף 38).</li>'
+				. '<li>במימוש דירה יחידה לא נגבית עמלת פירעון מוקדם, אלא אם התמורה עולה על ' . esc_html( number_format( (float) $r['fee_free_cap_ils'] / 1000000, 1 ) ) . ' מיליון ₪ (צמוד למדד) או על מלוא החוב (סעיף 9א1).</li>'
+				. '<li>דחייה בנסיבות מיוחדות, אם נבחרה בהסכם ההלוואה (אבטלה, מחלה של יותר מ־' . (int) $r['hardship_illness_months'] . ' חודשים, לידה): עד ' . (int) $r['hardship_months'] . ' חודשים, פעם ב־' . (int) $r['hardship_every_months'] . ' חודשים, עד ' . (int) $r['hardship_times'] . ' פעמים (סעיף 9ח1). אחרי פטירה של לווה: עד ' . (int) $r['death_months'] . ' חודשים בלי ריבית פיגורים (סעיף 9ח2).</li>'
+				. '<li>בהלוואת זכאות: הוועדה המיוחדת מחליטה בתוך ' . (int) $r['committee_days'] . ' ימים, ערר בתוך ' . (int) $r['appeal_file_days'] . ' ימים, וועדת הערר מחליטה בתוך ' . (int) $r['appeal_decide_days'] . ' ימים (חוק הלוואות לדיור, סעיפים 5א ו־5ב).</li></ul>';
+			$today = gmdate( 'Y-m-d' ); $pp = array();
+			foreach ( $k['programs']['items'] as $pr ) {
+				if ( empty( $pr['name'] ) || empty( $pr['last'] ) || empty( $pr['outline'] ) ) { continue; }
+				$pp[] = esc_html( $pr['name'] ) . ' (המתווה פורסם ב־' . esc_html( $dm( $pr['outline'] ) ) . ', הגשה עד ' . esc_html( $dm( $pr['last'] ) ) . ( $today > $pr['last'] ? ', הסתיים' : '' ) . ')';
+			}
+			if ( $pp ) { $h .= '<p>מתווי מלחמה של בנק ישראל: ' . implode( '; ', $pp ) . '. ' . esc_html( $k['programs']['note'] ) . '</p>'; }
+			return $h . '<p>' . esc_html( $k['texts']['not_advice'] ) . ' נבדק ב־' . esc_html( $dm( $k['checked'] ) ) . '.</p>';
+		}
 		if ( 'mcheck' === $id ) {  // HAD-675: the pre-signing check; the 329 limits from rules, the all-banks overall rate from by_bank
 			$x = nadlan_nli_mrates(); $d = $x['d'];
 			if ( ! is_array( $d ) || empty( $d['rules']['ltv'] ) || empty( $x['sys'] ) || empty( $d['by_bank']['latest']['month'] ) ) { return ''; }

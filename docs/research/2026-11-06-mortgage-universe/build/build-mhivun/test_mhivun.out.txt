@@ -1,0 +1,88 @@
+data: built 2026-11-05, prepay.nl in force 2026-10-19, CPI 2026-09, today 2026-11
+
+1. one loan: exactly what mexit (NLMR.feeExisting) gives
+  ok   mexit's worked example: same fee and balance to the last digit  [15907.528553986107 / 956993.9825470215]
+  ok   the data headline: 15,908 on 956,994  [15908 on 956994]
+  ok   equals headlines.prepay_fee of boi-mortgage.json  [15908]
+  ok   NLHV.feeOne returns the feeExisting object itself, field by field
+  ok   400 seeded single loans: mortgage() fee, balance and notice === feeExisting  [mismatches 0, {"zero":197,"prime":80,"fee":123}]
+  ok   feeFreq with a 60-month cycle returns exactly the feeExisting object in all 400 (the same formula)  [mismatches 0]
+  ok   variable every 5 years on its change day (month 61): both say reset, no fee  [60]
+
+2. the opening example (7.2023, four tracks), by hand
+  ok   example: 4 tracks, 1,400,000 from 7.2023
+  ok   fixed not linked: 40 paid, 260 left, balance = P(1-(1+r)^-260)/r = 464,966.66  [464966.66]
+  ok   today's average for 21.7 years: column 20_25, 4.788% effective, in force 19.10.2026  [4.788]
+  ok   loan-day average: 5.022% (file in force 12.7.2023)  [2023-07-12 5.022]
+  ok   4.788% effective = 4.68603% nominal: 1200((1.04788)^(1/12) - 1)  [4.68603]
+  ok   s.3(3) = annuity at 4.68603% - balance = 26,191  [26191.49]
+  ok   s.3(4) = annuity at 4.68603% - annuity at 4.9100% (5.022% effective) = 9,799  [9798.95]
+  ok   the lower one (s.3(4)) x 0.8 (3 years passed in 7.2026) = 7,839  [7839.16]
+  ok   detail: value at the loan rate = the balance; 260 payments of 3011.01; lower = s.3(4)  [464966.66]
+  ok   prime: no capitalization fee, the reason kept (status prime), balance by hand  [413327]
+  ok   linked: CPI 9.2026 / CPI 7.2023 = 1.0822  [1.0822217846743705]
+  ok   variable every 5 years: balance x CPI = 298377.86; 20 payments to the change day 7.2028  [20]
+  ok   variable: 20 payments + the balance on the change day, at 3.501% and 3.921% (column le5)  [3556 / 1922]
+  ok   variable fee = min x 0.8 = 1,537; next change day 7.2028  [1537.26]
+  ok   fixed linked (20 years): column 15_20, the loan-day average 3.995% was above 3.9%, so only s.3(3): 4,374  [4373.94]
+  ok   the whole mortgage: 7,839 + 0 + 1,537 + 4,374 = 13,750  [13750.36]
+  ok   balance 1,319,919; operational fee 60 once; notice 0.1% of the balance = 1,320  [1320]
+  ok   CPI fee (1st to 15th) only on the two linked tracks: 302  [302.07]
+
+3. variable tracks every 1, 2, 2.5 and 10 years
+  ok   every 2.5 years from 1.2024: change days 7.2026 and 1.2029, 26 payments counted, columns 1_5  [26]
+  ok   every 2.5 years: s.3(3) on those 26 payments at the 1_5 average  [3180.12]
+  ok   every year: no capitalization fee (the rate changes at least yearly, s.4)  [prime]
+  ok   every 2 years, taken 11.2024, repaid 11.2026: the change day, no fee  [24]
+  ok   every 10 years from 11.2021: 60 payments to 11.2031, loan-day column 5_10  [60 5_10]
+
+4. the 20% and 30% steps, and never a bare zero
+  ok   35 payments: no discount; 36: 20%  [10057 -> 8004]
+  ok   59: 20%; 60: 30%  [7055 -> 7445]
+  ok   a 3.00% loan from 1.2022: no fee, status "today's average not lower than your rate"  [4.788]
+  ok   a 5.00% loan from 12.2021: s.3(3) = 11936, but the loan-day average 3.36% is below today's, so s.3(4) = 0 and the fee is 0: status orig  [11936]
+  ok   a 4.80% loan from 1.2024: the loan-day average 5.235% was above the rate, so only s.3(3) applies: 4,931  [4930.67]
+  ok   every track has a fee or a named reason  [fee,prime]
+  ok   a track past its term is not counted
+
+5. partial prepayment: the least fee
+  ok   200,000: all to prime (no capitalization fee), fee 0  [[[1,200000]]]
+  ok   payment drop = pmt(200,000, 4.15%, 260) = 1,167  [1167.45]
+  ok   interest saved to the end = 260 x drop - 200,000 = 103,537  [103536.82]
+  ok   split by the balances instead: 2,084 of fee  [2083.52]
+  ok   600,000: prime closed, the rest to the variable track (lowest fee per shekel 0.52% vs 1.69% and 3.05%)  [186673]
+  ok   fee = 1,537 x 186,673 / 298,378 = 962  [961.75]
+  ok   NLMG.prepayFee with share = a/B gives the same partial fee (the fee is linear in the share)  [961.75]
+  ok   the least-fee split beats the split by balances by over 5,000  [5289]
+  ok   shorten: prime closed (260 months), the variable track shorter by 187 months, more interest saved than reduce  [355594 > 311922]
+  ok   shorten with 0 repaid: nothing saved, no month cut
+  ok   more than the balance: capped at the balance, the fee = the full payoff fee  [1319919]
+
+6. the next 24 months
+  ok   25 months from 11.2026 to 11.2028; month 0 = today's total  [13750]
+  ok   cheapest month 6.2028: 10,849, 2,901 less than today  [2028-06]
+  ok   7.2028: 30% on tracks 1 and 4, change day on track 3, two tracks move to a lower-average column  [col0 col3 cut300 cut303 reset2]
+  ok   on the change day track 3 pays nothing, yet the total rises (20 years left: the 15-20 average is lower)  [10849 -> 12051]
+  ok   every month: averages 0.5 lower >= unchanged >= 0.5 higher (the fee falls as the average rises)
+  ok   scenario data: one moved row appended, the original untouched, the loan-day average unchanged
+  ok   every 2 years from 3.2024: the change day 3.2028 is marked and its fee is 0  [2028-03]
+  ok   a loan with no fee all along: no cheaper month is claimed
+
+7. the bank's number
+  ok   13,900 against 13,750: close (within 2%)  [0.0109]
+  ok   16,000 against 13,750: a gap of 2,250 (16.4%)  [16.4%]
+  ok   no fee here, 40 from the bank: within 50, no percentage
+
+8. the file: words, dashes, sources
+  ok   no long dash (U+2013 or U+2014) anywhere in mhivun.js
+  ok   none of the banned words  []
+  ok   title "עמלת היוון", "מה זה היוון משכנתא", "הפרשי היוון", "פירעון חלקי" present
+  ok   the source line: the Order, the BoI fee averages file, cir2103, the interest rates page
+  ok   no request and no storage of its own (the data comes from the shortcode, the case lives in #mhivun=)
+
+9. the server summary
+  ok   PHP worked example = JS at 2026-11: balance 464,967, fee 7,839
+  ok   PHP summary: the 10-15 and 20-25 averages of both files, in force 19.10.2026, data 9.2026
+  ok   PHP summary: no long dash; says עמלת היוון and הפרשי היוון
+
+67 of 67 passed

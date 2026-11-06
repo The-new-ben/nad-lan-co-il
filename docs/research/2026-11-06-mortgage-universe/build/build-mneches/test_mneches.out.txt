@@ -1,0 +1,81 @@
+data: mneches.json checked 2026-11-06; directive 329 v13 (2026-06-30); any-purpose month 2026-08; by_bank 2026-09
+
+0. the rules and the data files
+  ok   rules: 50%, 70% with 200,000 above 50%, PTI 50% (40% risk), 30 years, exemption 120,000  [[0.5,0.7,200000,0.5,30,120000]]
+  ok   boi-mortgage.json rules and mneches.json (from the directive text) agree
+  ok   directive 329 version 13 (circular 2852, 30.6.2026) and the Q&A of 8.2.2026, checked 6.11.2026
+  ok   every source is a Bank of Israel URL
+  ok   the recorded SHA-256 of the two boi.org.il files match the copies in gov/raw
+  ok   the any-purpose rates, count and PTI in mneches.json are the values of the saved SDMX file
+  ok   LTV bands sum to the volume, 532,545 thousand; the tracks plus 205 foreign currency within 1  [532545]
+  ok   the any-purpose series family is "Consumer loans other than overdrafts, with housing collateral" in the official file
+
+1. the opening example: 2,800,000, balance 350,000, any purpose (hand-worked)
+  ok   LTV: 50% of 2,800,000 = 1,400,000, minus 350,000 = 1,050,000  [1050000]
+  ok   section 10a: min(70% = 1,960,000; 50% + 200,000 = 1,600,000) = 1,600,000, minus 350,000 = 1,250,000  [1250000]
+  ok   PTI: 25,000 - 1,500 = 23,500; 50% = 11,750; minus the existing 3,150 = 8,600 a month  [8600]
+  ok   rate: the any-purpose average of 8.2026 (6.53% x 79.20%, 5.33% x 20.80%), 7,329.83 a month per 1,000,000 over 20 years  [7329.8283]
+  ok   by income: 8,600 / 7,329.83 per million = 1,173,288  [1173288]
+  ok   the LTV rule binds, by 123,288; the headline is 1,050,000  [ltv 123288]
+  ok   payment 7,696.32, total 1,847,116.74 over 240 months  [7696.32]
+  ok   PTI after the loan: (3,150 + 7,696.32) / 23,500 = 46.15%  [46.15]
+  ok   headline "1,050,000 ₪"  [1,050,000 ₪]
+  ok   the LTV line carries "קובע", the income line the spare 123,288
+  ok   PTI 46.2% > 40%: the section 6 note is shown
+  ok   term table: 10 = 764,788 (income), 15 = 1,000,808, 25 = 1,299,338, 30 = 1,391,471  [764788,1000808,1173288,1299338,1391471]
+  ok   term table payments: 10 years 8,600 (the full room), 25 years 6,949.69, 30 years 6,489.53
+
+2. an income-bound case (own rate 5%, 20 years)
+  ok   5% / 12 over 240 months: 6,599.5574 a month per 1,000,000  [6599.5574]
+  ok   room 50% x 16,000 - 3,150 = 4,850; by income 734,897  [734897]
+  ok   income binds, 315,103 below the LTV room of 1,050,000  [315103]
+  ok   the payment fills the room exactly: 4,850, PTI 50%  [4849.99]
+  ok   the sub says the income binds and by how much  [ההכנסה קובעת: החזר של עד 4,850 ₪ בחודש נושא 734,897 ₪ ל־20 ש]
+
+3. zero balance
+  ok   no balance: 1,000,000 by LTV; relief min(1,400,000; 1,200,000) = 1,200,000  [1000000 / 1200000]
+  ok   no balance: a typed existing payment is not counted (room 20,000)  [20000]
+  ok   by income 3,030,506; the LTV rule binds at 1,000,000
+  ok   1,000,000 at 5% for 20 years: 6,599.56 a month, 1,583,893.77 in all, 583,893.77 interest
+  ok   the ledger says "אין משכנתא" and has no existing-payment line
+
+4. a balance above the cap: "no room", never a negative amount
+  ok   900,000 on 1,500,000 (60%): cap 750,000, no room, kind "noroom"  [0]
+  ok   headline "אין מקום להלוואה נוספת", ledger "אין מקום"
+  ok   relief: min(1,050,000; 950,000) - 900,000 = 50,000, said in the sub  [50000]
+  ok   800,000 on 1,000,000: no room, also under the 70% relief
+  ok   no amount printed with a hyphen minus (negative) anywhere
+  ok   the term table has no amount when there is no room
+
+5. the 120,000 exemption (sections 11 and 12.2) and purpose rules
+  ok   any purpose, income room 500 = 75,762, but up to 120,000 the PTI limit does not apply: 120,000  [120000]
+  ok   buying another home and helping children: no exemption (75,762); closing loans: exemption (120,000)
+  ok   the 70% relief only for any purpose and closing loans
+  ok   exemption capped by the LTV room: 150,000 - 100,000 = 50,000  [50000]
+  ok   existing 6,000 on 10,000: no income room; buying "אין מקום לפי ההכנסה"; any purpose 120,000 (exempt)
+  ok   buying: one line on the new home's own caps (section 2)
+  ok   parents: Q&A 2.7 and Annex A 1.3; closing loans: Q&A 7.7
+
+6. the rate sources
+  ok   auto: any-purpose average, the housing mix when buying; a chosen source sticks
+  ok   the housing mix of 9.2026: 1,000,000 over 25 years = 5,428.30, the same as the data headline 5,428
+  ok   the housing mix (lower rates) carries more by income; LTV still binds at 1,050,000  [1386541]
+  ok   own rate: 25% and empty are errors on the field; "6,2" reads 6.2
+  ok   own rate opens at the fixed not linked average of 8.2026: 6.61% any purpose, 4.62% housing
+  ok   the housing average is labelled, with the any-purpose price beside it (6.61% vs 4.62%)
+
+7. errors, the address, words and files
+  ok   missing value, income, existing payment, or 31 years: an error on its field
+  ok   amounts typed with separators are read
+  ok   the case survives #mneches= (encode, decode)
+  ok   a broken or foreign hash falls back to the defaults
+  ok   the data line: 1,386 loans, 532.5 million, about 384 thousand each (532,545,000 / 1,386 = 384,232), PTI 23.97% (8.2026)
+  ok   no long dash in any generated sentence
+  ok   no banned word in any generated sentence
+  ok   no "0 ₪", NaN or undefined in any generated sentence
+  ok   no long dash in mneches.js or mneches.json
+  ok   no banned word in mneches.js or mneches.json
+  ok   the tool sends nothing (no fetch, beacon or form of its own)
+  ok   the guide link with the exact anchor "משכנתא לכל מטרה"; the title is "כמה אפשר לקבל על דירה קיימת"
+
+62 of 62 passed

@@ -1,0 +1,118 @@
+{
+ "m390": {
+  "start": {
+   "sw": "ומה עוד בודקים: שלושה עשר כלים למשכנתא",
+   "chips": 13,
+   "map": true,
+   "groups": 8,
+   "open": 0,
+   "links": 49,
+   "broken": [],
+   "secs": [],
+   "backs": 24,
+   "faq": 54,
+   "byline": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0,
+   "tools": {
+    "mhivun": {
+     "h": 0,
+     "kids": 1
+    },
+    "mneches": {
+     "h": 0,
+     "kids": 1
+    },
+    "mrishum": {
+     "h": 0,
+     "kids": 1
+    },
+    "mkashe": {
+     "h": 0,
+     "kids": 1
+    }
+   }
+  },
+  "chip-mhivun": true,
+  "after-mhivun": {
+   "h": 8064,
+   "kids": 1
+  },
+  "chip-mneches": true,
+  "after-mneches": {
+   "h": 5558,
+   "kids": 1
+  },
+  "chip-mrishum": true,
+  "after-mrishum": {
+   "h": 4645,
+   "kids": 1
+  },
+  "chip-mkashe": true,
+  "after-mkashe": {
+   "h": 9904,
+   "kids": 1
+  },
+  "map_to_chip": "true",
+  "errors": []
+ },
+ "d1280": {
+  "start": {
+   "sw": "ומה עוד בודקים: שלושה עשר כלים למשכנתא",
+   "chips": 13,
+   "map": true,
+   "groups": 8,
+   "open": 8,
+   "links": 49,
+   "broken": [],
+   "secs": [],
+   "backs": 24,
+   "faq": 54,
+   "byline": true,
+   "afterByline": 0,
+   "h1": 1,
+   "hs": 0,
+   "tools": {
+    "mhivun": {
+     "h": 0,
+     "kids": 1
+    },
+    "mneches": {
+     "h": 0,
+     "kids": 1
+    },
+    "mrishum": {
+     "h": 0,
+     "kids": 1
+    },
+    "mkashe": {
+     "h": 0,
+     "kids": 1
+    }
+   }
+  },
+  "chip-mhivun": true,
+  "after-mhivun": {
+   "h": 5565,
+   "kids": 1
+  },
+  "chip-mneches": true,
+  "after-mneches": {
+   "h": 3057,
+   "kids": 1
+  },
+  "chip-mrishum": true,
+  "after-mrishum": {
+   "h": 2508,
+   "kids": 1
+  },
+  "chip-mkashe": true,
+  "after-mkashe": {
+   "h": 5756,
+   "kids": 1
+  },
+  "map_to_chip": "true",
+  "errors": []
+ }
+}
