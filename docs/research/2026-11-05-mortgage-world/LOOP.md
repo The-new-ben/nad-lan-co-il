@@ -155,3 +155,6 @@
 - Ben: keep Stripe, the chat and Hotjar on the mortgage page (no page-only removal), so the weight and speed rows stay as they are. Ben stopped the loop.
 - Left for later, time-gated: the title Google shows after 10.11 (GSC + one live SERP), and the Bank of Israel monthly refresh around 20.11 (data/build_mortgage_v2.py, then a data-only release with the page numbers that quote September 2026).
 - Still waiting for Ben: a named reviewer, the pace of Israeli links (L1, O1), breadcrumbs on the child pages.
+
+## Round M, 6.11.2026 (Ben: manual Google pass, competitors and government sites, nothing they have and we lack): LIVE 1.72.596
+mcheck (pre-signing, 451 format, 28 checks + final documents), mzakaut + zakaut.json (eligibility points, gov.il), mnomeff (nominal/effective), Mortgage 2.0 v2 (C1 C2 C3 C5 C9 C14); page 121: before-signing, eligibility-loan, calculator-method, קו המשווה, FAQ 41, byline צוות נדל״ן at the very end. Proof: ../2026-11-06-mortgage-delta/proof-after-m.md (78 rows, 66 yes). Benchmark IL 32/34/11, world 24/38/15. Commit 702edaef.
