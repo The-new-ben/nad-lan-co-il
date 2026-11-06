@@ -1,0 +1,18 @@
+{
+  "released": "1.72.593",
+  "from": "1.72.592",
+  "live_before": {
+    "nadlan-config.php": "1dfb9147ad37a49ced5431c1b9134c97",
+    "inc/instruments.php": "3cd557889554e103ebb2b7a4fe6bf4c9"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-06 03:06:10",
+  "files": {
+    "assets/instruments/tools/mkeys.js": "7378d794c06dc4bbe50be63fc2059b5b",
+    "nadlan-config.php": "3e3e11bf8be27f5b0c6488140f43026d",
+    "inc/instruments.php": "adca316822d0c22b7ee739bd8f6bfc26"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.593, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

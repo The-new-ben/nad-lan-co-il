@@ -1,0 +1,88 @@
+data: by_bank month 2026-09, CBS 200010 latest 2026-09, trailing 12 months 3.586%, all-banks monthly rate 0.3555%
+
+0. exposed API
+  ok   NLMK exposes compute, rowText, headline
+  ok   NLIX exposes compute, knownKey, schedule, trailing  [compute,knownKey,schedule,trailing]
+  ok   NLMK.rates(system).rm = the mix-weighted monthly rate from the data  [0.35548%]
+  ok   the rate month is the latest month of by_bank  [2026-09]
+
+(a) 20/80 signed after 7.7.2022: the first 20% has no linkage
+  ok   contract of 6.11.2026 falls under the new law
+  ok   two payments: 20% at signing, 80% at delivery
+  ok   the 20% at signing: linked part 0, linkage 0
+  ok   its timeline row says "בלי הצמדה"  [20% בחתימה, 400,000 ₪, בלי הצמדה. מההון העצמי.]
+  ok   the 80% payment: half of it linked (800,000)  [800000]
+  ok   the 80% payment carries a projected linkage  [89178]
+  ok   the linkage total is exactly NLIX.compute (no law re-implemented)  [89178]
+  ok   a contract of 10.5.2021 (old law): every payment linked in full, the upper bound  [400000]
+
+(b) equity covers every payment: no draws, no mortgage, and the headline says so
+  ok   index flat (0% a year, base = the latest index): linkage 0  [0]
+  ok   no draws, balance 0, payment 0
+  ok   headline: "לא צריך משכנתא", not "0 ₪"  [לא צריך משכנתא]
+  ok   the keys row: "בלי משכנתא"  [המפתח. בלי משכנתא: ההון העצמי מכסה את כל התשלומים לקבלן, כולל ההצמדה.]
+  ok   every row: "מההון העצמי"
+  ok   a future row with a flat index: "לפי השינוי שבחרתם", not "המדד הידוע"  [15%, 300,000 ₪, בלי תוספת הצמדה (לפי השינוי שבחרתם במדד). מההון העצמי.]
+  ok   equity = price with the default index change: only the linkage is drawn  [55040]
+
+(c) partial grace: the monthly interest = the drawn balance x the monthly rate
+  ok   each row before the keys: monthInt = cumulative draws x rate (4/4)
+  ok   interest until delivery = sum of draw x rate x months to the keys  [57809]
+  ok   the row prints that interest  [15%, 300,000 ₪, הצמדה 3,114 ₪ (צפי). 200,000 ₪ מההון העצמי, 103,114 ₪ נמשכים מהמשכנתא. מכאן ריבית 367 ₪ בחודש.]
+  ok   partial: the balance at delivery = the sum of the draws  [1455040]
+  ok   every payment: from equity + drawn = amount + its linkage
+  ok   equity used up, draws + equity = price + linkage
+  ok   equity first: no equity is spent after a draw began
+
+(d) full grace: the balance at delivery is above the sum of the draws
+  ok   balance 1514756 > draws 1455040
+  ok   balance = sum of draw x (1 + rate)^months  [1514756]
+  ok   capitalized interest = balance - draws  [59716]
+  ok   the row balances roll forward to the balance at the keys
+
+(e) after the keys: balance x payPer1(system, 2026-09, term), within 1 ILS
+  ok   partial, 20 years: 9025 vs 9025
+  ok   full, 20 years: 9395 vs 9395
+  ok   partial, 25 years: 7898 vs 7898
+  ok   full, 25 years: 8223 vs 8223
+  ok   partial, 30 years: 7175 vs 7175
+  ok   full, 30 years: 7469 vs 7469
+  ok   immediate: the full payment = the draws x payPer1 (each draw on its own schedule)  [7898]
+  ok   immediate: balance below the draws, interest = paid - principal repaid  [56808]
+  ok   calibration: 1,000,000 ILS / 25 years = 5,428 (as mquick)  [5428.30]
+
+(f) the 75% flag (directive 329)
+  ok   equity 400,000: 82.8% flagged
+  ok   its line: "מעל 75% ... הוראה 329"  [שיעור המימון 82.8%: מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (הוראה 329).]
+  ok   equity 600,000, partial: 72.8% not flagged
+  ok   equity 600,000, full grace: the capitalized balance 75.7% is flagged
+
+validation
+  ok   {"price":null} -> price  [הקלידו את מחיר הדירה בחוזה.]
+  ok   {"sign":""} -> sign  [בחרו את תאריך חתימת החוזה.]
+  ok   {"delivery":""} -> delivery  [בחרו את מועד המסירה בחוזה.]
+  ok   {"delivery":"2026-10-01"} -> delivery  [מועד המסירה בחוזה צריך להיות אחרי תאריך החתימה.]
+  ok   {"equity":2500000} -> equity  [ההון העצמי גבוה ממחיר הדירה. הקלידו סכום עד מחיר הדירה.]
+  ok   {"equity":""} -> equity  [הקלידו את ההון העצמי שלכם (אפשר גם 0).]
+  ok   {"annual":null} -> annual  [הקלידו שינוי שנתי במדד באחוזים, למשל 3.6 (בין מינוס 20 ל־30).]
+  ok   {"sign":"2009-05-01","delivery":"2012-01-01"} -> sign  [אין נתוני מדד לתאריך הזה (הנתונים מתחילים ב־2010).]
+
+wording
+  ok   no long dashes in any generated text (240 strings)
+  ok   no banned words
+  ok   no NaN, undefined or Infinity
+
+worked example (the opening values): 2,000,000 ILS, equity 600,000, signed 6.11.2026, delivery 6.11.2029, stages, 25 years
+  partial: headline 7898 ILS/month · linkage 55040 · interest until delivery 57809 · mortgage at delivery 1455040 · share 72.8%
+  full: headline 8223 ILS/month · linkage 55040 · interest until delivery 59716 · mortgage at delivery 1514756 · share 75.7%
+  immediate: headline 7898 ILS/month · linkage 55040 · interest until delivery 56808 (paid 88276) · mortgage at delivery 1423572 · share 72.8%
+  rows (partial):
+    11.2026  20% בחתימה, 400,000 ₪, בלי הצמדה. מההון העצמי.
+    06.2027  15%, 300,000 ₪, הצמדה 3,114 ₪ (צפי). 200,000 ₪ מההון העצמי, 103,114 ₪ נמשכים מהמשכנתא. מכאן ריבית 367 ₪ בחודש.
+    01.2028  15%, 300,000 ₪, הצמדה 6,293 ₪ (צפי). 306,293 ₪ נמשכים מהמשכנתא. מכאן ריבית 1,455 ₪ בחודש.
+    09.2028  15%, 300,000 ₪, הצמדה 10,008 ₪ (צפי). 310,008 ₪ נמשכים מהמשכנתא. מכאן ריבית 2,557 ₪ בחודש.
+    04.2029  15%, 300,000 ₪, הצמדה 13,330 ₪ (צפי). 313,330 ₪ נמשכים מהמשכנתא. מכאן ריבית 3,671 ₪ בחודש.
+    11.2029  20% במסירה, 400,000 ₪, הצמדה 22,295 ₪ (צפי). 422,295 ₪ נמשכים מהמשכנתא.
+    11.2029  המפתח. יתרת המשכנתא 1,455,040 ₪ נפרסת ל־25 שנה, וההחזר המלא 7,898 ₪ בחודש.
+
+54/54 passed

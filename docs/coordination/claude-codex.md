@@ -4713,3 +4713,6 @@ CONTENT EDIT 6.11.2026 (HAD-675, round F2): pages 121 + 8780: min-height reserve
 RELEASE LOCK 1.72.592 (MortgageWorld G, T8, HAD-675: tools/mquick.js v5 swapped whole (the full monthly cost: insurance, arnona and building fees, empty by default; CMA comparison links); no hunk). Claude [f8200c1d, Opus 5.5] 6.11.2026.
 RELEASE DONE 1.72.592 (MortgageWorld G, T8): released and verified (deploy-result-592.json). Lock released. Claude [f8200c1d, Opus 5.5] 6.11.2026.
 CONTENT EDIT 6.11.2026 (HAD-675, round G): pages 121 + 8780: the nlmq-reserve min-heights follow mquick v5's mounted heights (1.72.592). Claude [f8200c1d, Opus 5.5].
+RELEASE LOCK 1.72.593 (MortgageWorld H, T4, HAD-675: NEW tools/mkeys.js (from contract to keys); two insert hunks on the LIVE inc/instruments.php: the mkeys registry entry and its summary). Claude [f8200c1d, Opus 5.5] 6.11.2026.
+RELEASE DONE 1.72.593 (MortgageWorld H, T4): released and verified (deploy-result-593.json). Lock released. Claude [f8200c1d, Opus 5.5] 6.11.2026.
+CONTENT EDIT 6.11.2026 (HAD-675, round H): page 121: the 7th chip 'מהחוזה למפתח' and its pane ([nadlan_tool id="mkeys"]) in #tools; the switcher heading says seven tools. Claude [f8200c1d, Opus 5.5].

@@ -38,7 +38,7 @@
 | T1 | Hero quick answer: 3 inputs to the payment, sticky result on phone; Mortgage 2.0 as the full mode | done 5.11 (1.72.587 + 588) | mquick: by amount / price and equity / payment, 15-30 years, all banks or one bank; first input at 663 px on the phone (was 1,495). The full tool is folded on phones. |
 | T2 | Bank-offer X-ray (moffers) | done 5.11 (1.72.588) | Three offers in one table, each against its own bank's BoI average, with a negotiation text. |
 | T3 | Exit cost and early-repayment fee (mexit) | done 5.11 (1.72.588) | Cost by horizon plus the fee; 15,908 ILS worked example. The refinance monitor belongs to /mortgage-refinance/ (later). |
-| T4 | Contract-to-keys timeline: contractor payment schedule, construction-input-index exposure, when to draw | todo | |
+| T4 | Contract-to-keys timeline: contractor payment schedule, construction-input-index exposure, when to draw | done 6.11 (1.72.593 + page) | mkeys, the 7th chip "מהחוזה למפתח": the Sale Law linkage of indexation.js per payment, equity first then mortgage draws, interest until delivery (partial / full / immediate), the full payment after the keys at the BoI all-banks mix (mquick payPer1). Built by a sub-agent (node 54/54, browser 120/120), pressed live: 2,000,000 / 600,000 / stages / partial / 25 years gives 7,898 ILS, linkage 55,040, interest 57,809. |
 | T8 | The full monthly cost in the quick calculator (benchmark row "taxes, insurance or HOA inside the monthly figure": NerdWallet, Rocket and Calculator.net have it, no Israeli page does) | done 6.11 (1.72.592) | mquick v5: two optional fields, "ביטוח חיים ומבנה" and "ארנונה וועד בית", empty by default (no official insurance price table, so no invented default); "העלות החודשית של הדירה" = payment + typed costs in all three modes; links to the Capital Market Authority calculators life.cma.gov.il and dira.cma.gov.il (both opened 6.11). Pressed live: 5,428 + 250 + 600 = 6,278. Benchmark: IL TIE -> LEAD, world LOSE -> TIE. |
 | T5 | Readiness for approval in principle (mready) | done 5.11 (1.72.588) | 43 documents, each with its sources and date. |
 | T6 | Budget to real homes (mbudget) | done 5.11 (1.72.588) | The listings load lazily. |
@@ -116,3 +116,10 @@
 - Pressed live on a phone, both pages: fields empty at start, total hidden; 250 + 600 gives 6,278 with a three-part breakdown; emptying one field leaves two parts; "by monthly payment" adds the costs to the typed payment; 0 console errors, 0 horizontal scroll.
 - Benchmark (our page re-measured; the old manual ruling "no insurance enters the monthly figure" replaced with the new evidence): vs Israel 31 LEAD, 35 TIE, 11 LOSE; vs world 23 LEAD, 38 TIE, 16 LOSE.
 - Next: T4 (contract-to-keys timeline), C1 (answer-first lines), the BoI refresh around the 20th.
+
+## Round H (6.11.2026 night, release 1.72.593 + page): T4, from contract to keys
+- Design: Keys board on the canvas (version 14). Build: build/round-h/ (mkeys.js, test_mkeys.js 54/54, preview + verify_h.py 120/120, README with the worked example).
+- Released 1.72.593 (deploy-result-593.json, released and verified): NEW tools/mkeys.js; two insert hunks on the live inc/instruments.php (the registry entry with deps indexation + mquick, and a server summary: the Sale Law rule and the latest construction index). Then page 121: the 7th chip and its pane, the switcher heading "שבעה כלים" (write_page_h.py).
+- Pressed live (press_live_h.py, phone 390 and desktop 1280): all 9 tools mount; the default case 7,898 ILS; every plan, grace and term chip changes the result; #tool-keys opens the pane; 0 console errors; 0 horizontal scroll.
+- Benchmark: no row measures this tool; the tally stays vs Israel 31/35/11, vs world 23/38/16.
+- Next: C1 (answer-first lines in the old chapters, GEO), G2 (titles), the BoI refresh around the 20th.

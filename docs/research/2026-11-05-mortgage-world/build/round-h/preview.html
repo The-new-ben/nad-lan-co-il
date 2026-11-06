@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>מהחוזה למפתח, תצוגה מקומית</title>
+<!-- HAD-675 round H, local preview only. Serve the repo root (nad-lan-co-il) over http, for example
+       python -m http.server 47971 --bind 127.0.0.1
+     and open /docs/research/2026-11-05-mortgage-world/build/round-h/preview.html
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the id-scoped rules.
+     The tool is mounted exactly like the shortcode prints it: <section class="nli"> + <div class="nli-host" data-nli data-nli-data>,
+     and every script is the repo file, in the order the registry's 'deps' would enqueue it: core.js, indexation.js, mquick.js, mkeys.js. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    if (!/[?&]theme=1/.test(location.search)) return;
+    ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+     'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+     'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+     'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) {
+      document.write('<link rel="stylesheet" href="' + u + '">');
+    });
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font:400 13px/20px "IBM Plex Sans Hebrew",sans-serif;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content">
+<p class="pv-top">תצוגה מקומית, HAD-675 סבב H · הכלי השביעי, מהחוזה למפתח · נתונים: בנק ישראל (9.2026) והלמ״ס (מדד תשומות הבנייה, 9.2026)</p>
+<div class="nlmx-pane" id="tool-keys"><p>קונים דירה מקבלן? כל תשלום לפי התאריך שלו: ההצמדה למדד תשומות הבנייה לפי חוק המכר, מה יוצא מההון העצמי ומה מהמשכנתא, הריבית עד המסירה וההחזר המלא אחרי המפתח.</p>
+<section class="nli" dir="rtl" lang="he" aria-label="מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא" id="pv-keys"><div class="nli-host" data-nli="mkeys" data-nli-data="/plugins/nadlan-config/assets/instruments/data/boi-mortgage.json,/plugins/nadlan-config/assets/instruments/data/cbs-200010.json"><div class="nli__panel"><p class="nli__kicker">מחשבון · דירה מקבלן</p><h2 class="nli__title">מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא</h2><p>דירה ב־2,000,000 ₪ עם הון עצמי של 600,000 ₪, חוזה מ־6.11.2026 ומסירה ב־6.11.2029 בתשלומים לפי שלבים: ההצמדה הצפויה עד המסירה כ־55,040 ₪, ריבית של כ־57,809 ₪ עד המסירה, וההחזר המלא אחרי המפתח כ־7,898 ₪ בחודש ל־25 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים בספטמבר 2026.</p></div></div></section>
+</div>
+</main>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/indexation.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mquick.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/mkeys.js"></script>
+</body>
+</html>

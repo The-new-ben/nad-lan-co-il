@@ -383,6 +383,14 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'boi-mortgage.json', 'cbs-120010.json' ),
 				'related' => array( '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/purchase-tax-calculator/' => 'מחשבון מס רכישה' ),
 			),
+			/* 1.72.593 (HAD-675, T4): from contract to keys, the 7th tool of /mortgage-calculator/ (the linkage of indexation.js, the payment of mquick.js) */
+			'mkeys' => array(
+				'name' => 'מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה מקבלן',
+				'desc' => 'לדירה מקבלן: כל תשלום לקבלן לפי התאריך שלו, ההצמדה שלו למדד תשומות הבנייה לפי חוק המכר, מה יוצא מההון העצמי ומה נמשך מהמשכנתא, הריבית עד המסירה בגרייס חלקי, בגרייס מלא או בהחזר מלא מיד, וההחזר המלא אחרי קבלת המפתח, בתמהיל ובריבית הממוצעים של כל הבנקים לפי בנק ישראל.',
+				'deps' => array( 'indexation', 'mquick' ),
+				'data' => array( 'boi-mortgage.json', 'cbs-200010.json' ),
+				'related' => array( '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה', '/new-projects/presale-apartment/' => 'דירת פריסייל ו־20/80', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/mortgage-calculator/bridge-loan-apartment/' => 'הלוואת גישור' ),
+			),
 			/* 1.72.523 (HAD-601, U2): the yield and cash-flow map; invest.json from 148 nadlan.gov.il files (20.8.2026), BoI 4.62% (8.2026) */
 			'invest' => array(
 				'name' => 'מפת התשואה והתזרים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · נדל״ן להשקעה',
@@ -467,6 +475,16 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
+		if ( 'mkeys' === $id ) {  // 1.72.593 (HAD-675, T4): the Sale Law rule and the latest construction index
+			$d = nadlan_nli_series( 'cbs-200010.json' );
+			if ( ! $d ) { return ''; }
+			$ks = array_keys( $d['months'] ); $l = end( $ks ); $y = ( (int) substr( $l, 0, 4 ) - 1 ) . substr( $l, 4 );
+			$m12 = isset( $d['months'][ $y ] ) ? $d['months'][ $l ] / $d['months'][ $y ] - 1 : null; $lm = (int) substr( $l, 5 ) . '.' . substr( $l, 0, 4 );
+			return '<p>לדירה מקבלן: כל תשלום לקבלן לפי התאריך שלו, ההצמדה שלו למדד תשומות הבנייה, מה יוצא מההון העצמי ומה נמשך מהמשכנתא, הריבית עד המסירה '
+				. '(גרייס חלקי, גרייס מלא או החזר מלא מיד) וההחזר המלא אחרי קבלת המפתח, בתמהיל ובריבית הממוצעים של כל הבנקים לפי בנק ישראל. '
+				. 'בחוזה מ־7.7.2022: 20% מהמחיר המשולמים בחתימה אינם צמודים, ומכל תשלום אחר מותר להצמיד עד מחצית, ורק עד מועד המסירה שבחוזה. '
+				. 'המדד האחרון שפרסמה הלשכה המרכזית לסטטיסטיקה: ' . esc_html( $lm ) . ( null !== $m12 ? ', שינוי ב־12 חודשים: ' . esc_html( number_format( $m12 * 100, 1 ) ) . '%' : '' ) . '.</p>';
+		}
 		if ( 'indexation' === $id ) {
 			$d = nadlan_nli_series( 'cbs-200010.json' );
 			if ( ! $d ) { return ''; }

@@ -1,0 +1,742 @@
+{
+ "checks": 120,
+ "failed": [],
+ "report": [
+  {
+   "check": "390 opens on today as the signing date",
+   "ok": true,
+   "got": "2026-11-06"
+  },
+  {
+   "check": "390 delivery opens 36 months later",
+   "ok": true,
+   "got": "2029-11-06"
+  },
+  {
+   "check": "390 opening values 2,000,000 / 600,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 opening chips: stages, interest paid, 25 years",
+   "ok": true,
+   "got": [
+    "לפי שלבים",
+    "משלמים ריבית",
+    "25 שנה"
+   ]
+  },
+  {
+   "check": "390 index field opens at the trailing 12-month change with its source months",
+   "ok": true,
+   "got": [
+    "3.59",
+    "ברירת המחדל: השינוי ב־12 החודשים שבין 9.2025 ל־9.2026 במדד תשומות הבנייה של הלמ״ס, 3.6%."
+   ]
+  },
+  {
+   "check": "390 headline = NLMK.compute on the form values",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "390 summary line: linkage, interest, mortgage at delivery",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · ריבית עד המסירה 57,809 ₪ · המשכנתא במסירה 1,455,040 ₪"
+  },
+  {
+   "check": "390 financing share shown, not flagged at 600,000",
+   "ok": true,
+   "got": "שיעור המימון 72.8% (עד 75% לדירה יחידה, לפי הוראה 329 של בנק ישראל)."
+  },
+  {
+   "check": "390 timeline: one row per payment + the keys row",
+   "ok": true,
+   "got": 7
+  },
+  {
+   "check": "390 first row: 20% at signing without linkage, from equity",
+   "ok": true,
+   "got": "11.2026\n20% בחתימה, 400,000 ₪, בלי הצמדה. מההון העצמי."
+  },
+  {
+   "check": "390 keys row: balance spread over 25 years and the full payment",
+   "ok": true,
+   "got": "11.2029\nהמפתח. יתרת המשכנתא 1,455,040 ₪ נפרסת ל־25 שנה, וההחזר המלא 7,898 ₪ בחודש."
+  },
+  {
+   "check": "390 running sentences in the text face",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "390 numbers in the mono face (headline, summary numbers, money fields)",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "390 layout: one column on the phone",
+   "ok": true,
+   "got": 1
+  },
+  {
+   "check": "390 grace full: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "8,223 ₪",
+    "8,223"
+   ]
+  },
+  {
+   "check": "390 full grace: \"ריבית שנצברה\" and a balance above the draws",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · ריבית שנצברה עד המסירה 59,716 ₪ · המשכנתא במסירה 1,514,756 ₪"
+  },
+  {
+   "check": "390 full grace at 600,000: the capitalized balance flagged above 75%",
+   "ok": true,
+   "got": "שיעור המימון 75.7% (עם הריבית שנצברה): מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (הוראה 329)."
+  },
+  {
+   "check": "390 grace immediate: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "390 immediate: paid until delivery and its interest, \"מכאן החזר\" per row",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · שולם לבנק עד המסירה 88,276 ₪, מזה ריבית 56,808 ₪ · המשכנתא במסירה 1,423,572 ₪"
+  },
+  {
+   "check": "390 grace partial: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "390 full grace headline above partial",
+   "ok": true,
+   "got": {
+    "full": "8,223 ₪",
+    "immediate": "7,898 ₪",
+    "partial": "7,898 ₪"
+   }
+  },
+  {
+   "check": "390 plan end: pressed, 2 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "8,084 ₪",
+    2
+   ]
+  },
+  {
+   "check": "390 20/80: no interest before the keys (the draw is at delivery)",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 89,178 ₪ · בלי ריבית לפני המסירה · המשכנתא במסירה 1,489,178 ₪"
+  },
+  {
+   "check": "390 plan thirds: pressed, 3 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "7,961 ₪",
+    3
+   ]
+  },
+  {
+   "check": "390 plan stages: pressed, 6 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    6
+   ]
+  },
+  {
+   "check": "390 term 20: pressed, headline = logic, keys row says 20",
+   "ok": true,
+   "got": "9,025 ₪"
+  },
+  {
+   "check": "390 term 30: pressed, headline = logic, keys row says 30",
+   "ok": true,
+   "got": "7,175 ₪"
+  },
+  {
+   "check": "390 term 25: pressed, headline = logic, keys row says 25",
+   "ok": true,
+   "got": "7,898 ₪"
+  },
+  {
+   "check": "390 equity 400,000: share above 75% underlined with the directive 329 sentence",
+   "ok": true,
+   "got": "שיעור המימון 82.8%: מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (הוראה 329)."
+  },
+  {
+   "check": "390 the underline is #C42550",
+   "ok": true,
+   "got": [
+    "underline",
+    "rgb(196, 37, 80)"
+   ]
+  },
+  {
+   "check": "390 money field reformats on blur",
+   "ok": true,
+   "got": "400,000"
+  },
+  {
+   "check": "390 price 2,500,000: headline = logic",
+   "ok": true,
+   "got": [
+    "11,773 ₪",
+    "11,773"
+   ]
+  },
+  {
+   "check": "390 a new signing date moves the untouched delivery 36 months on",
+   "ok": true,
+   "got": "2030-01-20"
+  },
+  {
+   "check": "390 signing 20.1.2027: headline = logic",
+   "ok": true,
+   "got": "11,773 ₪"
+  },
+  {
+   "check": "390 a delivery typed by hand stays when the signing date changes",
+   "ok": true,
+   "got": "2029-06-30"
+  },
+  {
+   "check": "390 delivery 30.6.2029: headline and keys row date",
+   "ok": true,
+   "got": "11,692 ₪"
+  },
+  {
+   "check": "390 index change 5%: headline = logic, the note says 5.0% as typed",
+   "ok": true,
+   "got": [
+    "11,809 ₪",
+    "דד. המדד: מדד תשומות הבנייה של הלמ״ס, המדד הידוע בכל תאריך, ובחודשים שעוד לא פורסמו 5.0% בשנה (כפי שהקלדתם). ההצמדה לפי חוק המכר, סעיף 5ג. ממוצע, לא הצעה אישית."
+   ]
+  },
+  {
+   "check": "390 a negative change is accepted",
+   "ok": true,
+   "got": "11,399 ₪"
+  },
+  {
+   "check": "390 the index field reads left to right (the minus stays before the number)",
+   "ok": true,
+   "got": [
+    "ltr",
+    "-1"
+   ]
+  },
+  {
+   "check": "390 empty price: message under the field and in the result, numbers hidden",
+   "ok": true,
+   "got": "הקלידו את מחיר הדירה בחוזה."
+  },
+  {
+   "check": "390 equity above price: message under equity",
+   "ok": true,
+   "got": "ההון העצמי גבוה ממחיר הדירה. הקלידו סכום עד מחיר הדירה."
+  },
+  {
+   "check": "390 delivery before signing: message under delivery",
+   "ok": true,
+   "got": "מועד המסירה בחוזה צריך להיות אחרי תאריך החתימה."
+  },
+  {
+   "check": "390 empty delivery: message",
+   "ok": true,
+   "got": "בחרו את מועד המסירה בחוזה."
+  },
+  {
+   "check": "390 empty signing date: message",
+   "ok": true,
+   "got": "בחרו את תאריך חתימת החוזה."
+  },
+  {
+   "check": "390 empty index change: message",
+   "ok": true,
+   "got": "הקלידו שינוי שנתי במדד באחוזים, למשל 3.6 (בין מינוס 20 ל־30)."
+  },
+  {
+   "check": "390 flat index: future rows say \"לפי השינוי שבחרתם\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 equity = price, index flat: \"לא צריך משכנתא\", not \"0 ₪\"",
+   "ok": true,
+   "got": "לא צריך משכנתא"
+  },
+  {
+   "check": "390 copy: the clipboard holds the result and the link",
+   "ok": true,
+   "got": "מהחוזה למפתח: דירה ב־2,000,000 ₪, הון עצמי 600,000 ₪, חתימה 11.2026, מסירה 11.2029, לוח התשלומים לפי שלבים, עד המסירה: משלמים ריבית. ההצמדה "
+  },
+  {
+   "check": "390 copy: the button says \"הועתק\"",
+   "ok": true,
+   "got": "הועתק"
+  },
+  {
+   "check": "390 copy without a clipboard: the prompt shows the text",
+   "ok": true,
+   "got": [
+    "מהחוזה למפתח: דירה ב־2,000,000 ₪, הון עצמי 600,000 ₪, חתימה 11.2026, מסירה 11.2029, לוח התשלומים לפי שלבים, עד המסירה: משלמים ריבית. ההצמדה עד המסירה 55,108 ₪. ריבית עד המסירה 57,811 ₪. המשכנתא במסירה 1,455,108 ₪, שיעור מימון 72.8%. ההחזר המלא אחרי המפתח: 7,899 ₪ בחודש ל־25 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים בספטמבר 2026 (בנק ישראל).\nhttp://127.0.0.1:47971/docs/research/2026-11-05-mortgage-world/build/round-h/preview.html#tool-keys"
+   ]
+  },
+  {
+   "check": "390 no long dashes in the tool",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no banned words",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 no NaN or undefined on the surface",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "390 every button and input at least 44 px tall",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 every input has a label",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "390 every chip group is named",
+   "ok": true,
+   "got": [
+    "לוח התשלומים לקבלן",
+    "עד המסירה (גרייס)",
+    "המשכנתא אחרי המפתח, לתקופה של"
+   ]
+  },
+  {
+   "check": "390 no horizontal scroll (scrollWidth - innerWidth = 0)",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "390 no console errors or warnings",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 opens on today as the signing date",
+   "ok": true,
+   "got": "2026-11-06"
+  },
+  {
+   "check": "1280 delivery opens 36 months later",
+   "ok": true,
+   "got": "2029-11-06"
+  },
+  {
+   "check": "1280 opening values 2,000,000 / 600,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 opening chips: stages, interest paid, 25 years",
+   "ok": true,
+   "got": [
+    "לפי שלבים",
+    "משלמים ריבית",
+    "25 שנה"
+   ]
+  },
+  {
+   "check": "1280 index field opens at the trailing 12-month change with its source months",
+   "ok": true,
+   "got": [
+    "3.59",
+    "ברירת המחדל: השינוי ב־12 החודשים שבין 9.2025 ל־9.2026 במדד תשומות הבנייה של הלמ״ס, 3.6%."
+   ]
+  },
+  {
+   "check": "1280 headline = NLMK.compute on the form values",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "1280 summary line: linkage, interest, mortgage at delivery",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · ריבית עד המסירה 57,809 ₪ · המשכנתא במסירה 1,455,040 ₪"
+  },
+  {
+   "check": "1280 financing share shown, not flagged at 600,000",
+   "ok": true,
+   "got": "שיעור המימון 72.8% (עד 75% לדירה יחידה, לפי הוראה 329 של בנק ישראל)."
+  },
+  {
+   "check": "1280 timeline: one row per payment + the keys row",
+   "ok": true,
+   "got": 7
+  },
+  {
+   "check": "1280 first row: 20% at signing without linkage, from equity",
+   "ok": true,
+   "got": "11.2026\n20% בחתימה, 400,000 ₪, בלי הצמדה. מההון העצמי."
+  },
+  {
+   "check": "1280 keys row: balance spread over 25 years and the full payment",
+   "ok": true,
+   "got": "11.2029\nהמפתח. יתרת המשכנתא 1,455,040 ₪ נפרסת ל־25 שנה, וההחזר המלא 7,898 ₪ בחודש."
+  },
+  {
+   "check": "1280 running sentences in the text face",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\"",
+    "\"IBM Plex Sans Hebrew\""
+   ]
+  },
+  {
+   "check": "1280 numbers in the mono face (headline, summary numbers, money fields)",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\"",
+    "\"IBM Plex Mono\""
+   ]
+  },
+  {
+   "check": "1280 layout: form and result side by side",
+   "ok": true,
+   "got": 2
+  },
+  {
+   "check": "1280 grace full: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "8,223 ₪",
+    "8,223"
+   ]
+  },
+  {
+   "check": "1280 full grace: \"ריבית שנצברה\" and a balance above the draws",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · ריבית שנצברה עד המסירה 59,716 ₪ · המשכנתא במסירה 1,514,756 ₪"
+  },
+  {
+   "check": "1280 full grace at 600,000: the capitalized balance flagged above 75%",
+   "ok": true,
+   "got": "שיעור המימון 75.7% (עם הריבית שנצברה): מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (הוראה 329)."
+  },
+  {
+   "check": "1280 grace immediate: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "1280 immediate: paid until delivery and its interest, \"מכאן החזר\" per row",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 55,040 ₪ · שולם לבנק עד המסירה 88,276 ₪, מזה ריבית 56,808 ₪ · המשכנתא במסירה 1,423,572 ₪"
+  },
+  {
+   "check": "1280 grace partial: pressed and headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    "7,898"
+   ]
+  },
+  {
+   "check": "1280 full grace headline above partial",
+   "ok": true,
+   "got": {
+    "full": "8,223 ₪",
+    "immediate": "7,898 ₪",
+    "partial": "7,898 ₪"
+   }
+  },
+  {
+   "check": "1280 plan end: pressed, 2 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "8,084 ₪",
+    2
+   ]
+  },
+  {
+   "check": "1280 20/80: no interest before the keys (the draw is at delivery)",
+   "ok": true,
+   "got": "ההצמדה עד המסירה 89,178 ₪ · בלי ריבית לפני המסירה · המשכנתא במסירה 1,489,178 ₪"
+  },
+  {
+   "check": "1280 plan thirds: pressed, 3 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "7,961 ₪",
+    3
+   ]
+  },
+  {
+   "check": "1280 plan stages: pressed, 6 payments, headline = logic",
+   "ok": true,
+   "got": [
+    "7,898 ₪",
+    6
+   ]
+  },
+  {
+   "check": "1280 term 20: pressed, headline = logic, keys row says 20",
+   "ok": true,
+   "got": "9,025 ₪"
+  },
+  {
+   "check": "1280 term 30: pressed, headline = logic, keys row says 30",
+   "ok": true,
+   "got": "7,175 ₪"
+  },
+  {
+   "check": "1280 term 25: pressed, headline = logic, keys row says 25",
+   "ok": true,
+   "got": "7,898 ₪"
+  },
+  {
+   "check": "1280 equity 400,000: share above 75% underlined with the directive 329 sentence",
+   "ok": true,
+   "got": "שיעור המימון 82.8%: מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (הוראה 329)."
+  },
+  {
+   "check": "1280 the underline is #C42550",
+   "ok": true,
+   "got": [
+    "underline",
+    "rgb(196, 37, 80)"
+   ]
+  },
+  {
+   "check": "1280 money field reformats on blur",
+   "ok": true,
+   "got": "400,000"
+  },
+  {
+   "check": "1280 price 2,500,000: headline = logic",
+   "ok": true,
+   "got": [
+    "11,773 ₪",
+    "11,773"
+   ]
+  },
+  {
+   "check": "1280 a new signing date moves the untouched delivery 36 months on",
+   "ok": true,
+   "got": "2030-01-20"
+  },
+  {
+   "check": "1280 signing 20.1.2027: headline = logic",
+   "ok": true,
+   "got": "11,773 ₪"
+  },
+  {
+   "check": "1280 a delivery typed by hand stays when the signing date changes",
+   "ok": true,
+   "got": "2029-06-30"
+  },
+  {
+   "check": "1280 delivery 30.6.2029: headline and keys row date",
+   "ok": true,
+   "got": "11,692 ₪"
+  },
+  {
+   "check": "1280 index change 5%: headline = logic, the note says 5.0% as typed",
+   "ok": true,
+   "got": [
+    "11,809 ₪",
+    "דד. המדד: מדד תשומות הבנייה של הלמ״ס, המדד הידוע בכל תאריך, ובחודשים שעוד לא פורסמו 5.0% בשנה (כפי שהקלדתם). ההצמדה לפי חוק המכר, סעיף 5ג. ממוצע, לא הצעה אישית."
+   ]
+  },
+  {
+   "check": "1280 a negative change is accepted",
+   "ok": true,
+   "got": "11,399 ₪"
+  },
+  {
+   "check": "1280 the index field reads left to right (the minus stays before the number)",
+   "ok": true,
+   "got": [
+    "ltr",
+    "-1"
+   ]
+  },
+  {
+   "check": "1280 empty price: message under the field and in the result, numbers hidden",
+   "ok": true,
+   "got": "הקלידו את מחיר הדירה בחוזה."
+  },
+  {
+   "check": "1280 equity above price: message under equity",
+   "ok": true,
+   "got": "ההון העצמי גבוה ממחיר הדירה. הקלידו סכום עד מחיר הדירה."
+  },
+  {
+   "check": "1280 delivery before signing: message under delivery",
+   "ok": true,
+   "got": "מועד המסירה בחוזה צריך להיות אחרי תאריך החתימה."
+  },
+  {
+   "check": "1280 empty delivery: message",
+   "ok": true,
+   "got": "בחרו את מועד המסירה בחוזה."
+  },
+  {
+   "check": "1280 empty signing date: message",
+   "ok": true,
+   "got": "בחרו את תאריך חתימת החוזה."
+  },
+  {
+   "check": "1280 empty index change: message",
+   "ok": true,
+   "got": "הקלידו שינוי שנתי במדד באחוזים, למשל 3.6 (בין מינוס 20 ל־30)."
+  },
+  {
+   "check": "1280 flat index: future rows say \"לפי השינוי שבחרתם\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 equity = price, index flat: \"לא צריך משכנתא\", not \"0 ₪\"",
+   "ok": true,
+   "got": "לא צריך משכנתא"
+  },
+  {
+   "check": "1280 copy: the clipboard holds the result and the link",
+   "ok": true,
+   "got": "מהחוזה למפתח: דירה ב־2,000,000 ₪, הון עצמי 600,000 ₪, חתימה 11.2026, מסירה 11.2029, לוח התשלומים לפי שלבים, עד המסירה: משלמים ריבית. ההצמדה "
+  },
+  {
+   "check": "1280 copy: the button says \"הועתק\"",
+   "ok": true,
+   "got": "הועתק"
+  },
+  {
+   "check": "1280 copy without a clipboard: the prompt shows the text",
+   "ok": true,
+   "got": [
+    "מהחוזה למפתח: דירה ב־2,000,000 ₪, הון עצמי 600,000 ₪, חתימה 11.2026, מסירה 11.2029, לוח התשלומים לפי שלבים, עד המסירה: משלמים ריבית. ההצמדה עד המסירה 55,108 ₪. ריבית עד המסירה 57,811 ₪. המשכנתא במסירה 1,455,108 ₪, שיעור מימון 72.8%. ההחזר המלא אחרי המפתח: 7,899 ₪ בחודש ל־25 שנה, בתמהיל ובריבית הממוצעים של כל הבנקים בספטמבר 2026 (בנק ישראל).\nhttp://127.0.0.1:47971/docs/research/2026-11-05-mortgage-world/build/round-h/preview.html#tool-keys"
+   ]
+  },
+  {
+   "check": "1280 no long dashes in the tool",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no banned words",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 no NaN or undefined on the surface",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "1280 every button and input at least 44 px tall",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 every input has a label",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "1280 every chip group is named",
+   "ok": true,
+   "got": [
+    "לוח התשלומים לקבלן",
+    "עד המסירה (גרייס)",
+    "המשכנתא אחרי המפתח, לתקופה של"
+   ]
+  },
+  {
+   "check": "1280 no horizontal scroll (scrollWidth - innerWidth = 0)",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280,
+    "cw": 1280
+   }
+  },
+  {
+   "check": "1280 no console errors or warnings",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme: heading 20px ink, list unstyled, chips 2px radius, mono input without its own border",
+   "ok": true,
+   "got": {
+    "t": "13px 400",
+    "h2": "20px rgb(18, 32, 42)",
+    "li": "none 10px",
+    "btnH": 58.75,
+    "btnR": "2px",
+    "inFont": "\"IBM Plex Mono\"",
+    "inBorder": "0px"
+   }
+  },
+  {
+   "check": "theme: every button and input at least 44 px tall",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme: no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390,
+    "cw": 390
+   }
+  },
+  {
+   "check": "theme: no page errors",
+   "ok": true,
+   "got": []
+  }
+ ]
+}
