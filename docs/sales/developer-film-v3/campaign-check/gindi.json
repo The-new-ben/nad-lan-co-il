@@ -1,0 +1,153 @@
+{
+ "slug": "gindi",
+ "developer": "Gindi Holdings (גינדי החזקות)",
+ "project": "Gindi LOVE Glil Yam, Herzliya (project minisite)",
+ "checked_local": "2026-11-07 15:42 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://glilyam.gindih.co.il/",
+   "http_status": 200,
+   "redirect_chain": [
+    "https://glilyam.gindih.co.il/"
+   ],
+   "cookie_declined_with": null,
+   "final_url": "https://mapatz.gindih.co.il/#glilyam",
+   "title": "המפץ הגדול של גינדי",
+   "shot_top": "gindi_top.jpg",
+   "scroll_mode": "element",
+   "rendered_text_chars": 2868,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 1,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 1,
+    "מלאי": 2,
+    "זמינות": 0,
+    "הדמיות": 1,
+    "תוכניות": 2,
+    "השאירו פרטים": 0,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 1,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 3,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {
+    "360": [
+     "כלי מודרני במפרט גבוה ומוקפד. קראו עוד לסיור 360° בשכונה » 3 חדרים סלון 3 חדרים סלון 4 חדרים "
+    ],
+    "מלאי": [
+     "200,000 ₪ היתרה 10 שנים לאחר האכלוס! עד גמר המלאי  אנו משתמשים בקבצי Cookies כדי לשפר את חוויי",
+     "200,000 ₪ היתרה 10 שנים לאחר האכלוס! עד גמר המלאי 20/80 ללא הצמדה למדד! המחיר המוצג אינו כולל "
+    ],
+    "סיור": [
+     " אדריכלי מודרני במפרט גבוה ומוקפד. קראו עוד לסיור 360° בשכונה » 3 חדרים סלון 3 חדרים סלון 4 חד"
+    ]
+   },
+   "iframe_count": 0,
+   "iframes": [],
+   "iframe_domains": [],
+   "canvas_count": 2,
+   "canvases": [
+    {
+     "w": 1440,
+     "h": 900,
+     "id": "stars",
+     "cls": ""
+    },
+    {
+     "w": 1440,
+     "h": 900,
+     "id": "sparks",
+     "cls": ""
+    }
+   ],
+   "frames": [],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [
+    "לסיור 360° בשכונה »"
+   ],
+   "external_link_domains": [
+    "waze.com",
+    "www.gindih.co.il"
+   ],
+   "script_domains": [
+    "mapatz.gindih.co.il",
+    "p.teads.tv",
+    "s3.eu-central-1.amazonaws.com",
+    "static.hotjar.com",
+    "tovaai.co.il",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 7,
+     "names": [
+      "project",
+      "full_name",
+      "phone",
+      "email",
+      "leadText",
+      "agree",
+      "website"
+     ]
+    },
+    {
+     "inputs": 6,
+     "names": [
+      "project",
+      "fullName",
+      "guest_email",
+      "guest_phone",
+      "checked",
+      "website"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 6,
+   "videos": [
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4",
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4",
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4",
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4",
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4",
+    "https://mapatz.gindih.co.il/assets/vid/vid2-m2.mp4"
+   ],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 26,
+   "pdf_links": [],
+   "scrollHeight": 900,
+   "inner_scroll_height": 3586,
+   "shot_full": "gindi_full.jpg",
+   "shot_full_height": 3586,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)",
+   "viewer_click": "לסיור 360",
+   "shot_viewer": "gindi_viewer.jpg"
+  }
+ ]
+}

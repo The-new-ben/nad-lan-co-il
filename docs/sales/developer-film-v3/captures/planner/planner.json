@@ -1,0 +1,16 @@
+{
+ "url": "https://nad-lan.co.il/marketing/",
+ "status": 200,
+ "taken": "2026-11-07 16:50:58",
+ "steps": [
+  "click button.nlcp__chip[data-m=\"fr\"]",
+  "click button.nlcp__chip[data-m=\"ca\"]",
+  "click button[data-act=\"next\"]",
+  "click label.nlcp__card:has(input[value=\"invest\"])",
+  "click button[data-act=\"next\"]",
+  "click button[data-act=\"next\"]",
+  "click label.nlcp__card:has(input[value=\"existing\"])",
+  "click button[data-act=\"next\"]"
+ ],
+ "count": "5 / 5"
+}

@@ -1,0 +1,35 @@
+{
+ "engine": "VibeVoice-Realtime-0.5B, CPU fp32, cfg 1.5, 5 diffusion steps",
+ "takes": [
+  {
+   "voice": "en-Carter_man",
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\vibevoice_en-Carter_man.wav",
+   "sr": 24000,
+   "seconds": 12.133,
+   "genSeconds": 57.4,
+   "sha256": "b91de326656390e3ebe507b3fc9296af622f5991f9c9c932ffebc44181f95f24"
+  },
+  {
+   "voice": "en-Frank_man",
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\vibevoice_en-Frank_man.wav",
+   "sr": 24000,
+   "seconds": 11.867,
+   "genSeconds": 50.0,
+   "sha256": "86b9e293f2004b26f70509e06e125c5e7edeb695639ed77cfbe01940d4d4872c"
+  },
+  {
+   "voice": "en-Grace_woman",
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\vibevoice_en-Grace_woman.wav",
+   "sr": 24000,
+   "seconds": 14.4,
+   "genSeconds": 59.8,
+   "sha256": "a471446443cd3c6f4104e16211370c418320e841942f20ac591e0087fcb94278"
+  }
+ ]
+}

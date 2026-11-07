@@ -1,0 +1,243 @@
+{
+ "slug": "tidhar",
+ "developer": "Tidhar (תדהר)",
+ "project": "Kochav HaTzafon, Ashdod",
+ "checked_local": "2026-11-07 15:45 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://tidhar.co.il/project/kohav-hatsafon-ashdod/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": "close:#CybotCookiebotDialogBodyButtonDecline",
+   "final_url": "https://tidhar.co.il/project/kohav-hatsafon-ashdod/",
+   "title": "פרויקטים חדשים באשדוד | שכונת כוכב הצפון אשדוד | תדהר",
+   "shot_top": "tidhar_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 8673,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 1,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 1,
+    "הדמיות": 1,
+    "תוכניות": 1,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {
+    "360": [
+     "רכן וסחר הוגן.  מכירות ושירות 8383✱ | משרדים 3604✱  התדהר 14 רעננה  אודות תדהר קריירה מאמרים "
+    ],
+    "זמינות": [
+     "ות בצפון החדש של אשדוד  קבוצות תדהר ויובלים מזמינות אתכם לשדרג לצפון החדש של אשדוד. שכונת כוכב ה"
+    ]
+   },
+   "iframe_count": 6,
+   "iframes": [
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "Blank"
+    },
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    },
+    {
+     "src": "https://consentcdn.cookiebot.com/sdk/bc-v5.min.html",
+     "data_src": "",
+     "w": 1,
+     "h": 1,
+     "title": "Blank"
+    },
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "IND - Default Props"
+    },
+    {
+     "src": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdRV5YpAAAAAPjJJMwj5jjnxfgdu4fy4R6rPidr&co=aHR0cHM6Ly90aWRoYXIuY28uaWw6NDQz&hl=iw&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&size=invisible&anchor-ms=20000&execute-ms=30000&cb=uhye2lwyzw8v",
+     "data_src": "",
+     "w": 256,
+     "h": 60,
+     "title": "reCAPTCHA"
+    },
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    }
+   ],
+   "iframe_domains": [
+    "consentcdn.cookiebot.com",
+    "www.google.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://consentcdn.cookiebot.com/sdk/bc-v5.min.html",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdRV5YpAAAAAPjJJMwj5jjnxfgdu4fy4R6rPidr&co=aHR0cHM6Ly90aWRoYXIuY28uaWw6NDQz&hl=iw&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&size=invisible&anchor-ms=20000&execute-ms=30000&cb=uhye2lwyzw8v",
+     "canvas": 0,
+     "text_len": 22,
+     "text_head": "מוגן באמצעות reCAPTCHA",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [
+    {
+     "href": "tel:*3604",
+     "text": "3604✱"
+    }
+   ],
+   "candidate_buttons": [
+    "צור קשר מכירות 8383✱ משרדים 3604✱ צור קשר"
+   ],
+   "external_link_domains": [
+    "tidhar.my.site.com",
+    "www.cookiebot.com",
+    "www.dofinity.com",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.youtube.com"
+   ],
+   "script_domains": [
+    "cdn.equalweb.com",
+    "cdn.jsdelivr.net",
+    "cdn.logr-ingest.com",
+    "cdn.plyr.io",
+    "cdnjs.cloudflare.com",
+    "consent.cookiebot.com",
+    "consentcdn.cookiebot.com",
+    "d221oziut8gs4d.cloudfront.net",
+    "d2xerlamkztbb1.cloudfront.net",
+    "maps.googleapis.com",
+    "static.cloudflareinsights.com",
+    "static.hotjar.com",
+    "tidhar.co.il",
+    "www.google.com",
+    "www.googletagmanager.com",
+    "www.gstatic.com"
+   ],
+   "forms": [
+    {
+     "inputs": 1,
+     "names": [
+      "s"
+     ]
+    },
+    {
+     "inputs": 6,
+     "names": [
+      "full_name",
+      "mobile",
+      "email",
+      "message",
+      "marketing[]",
+      "submit"
+     ]
+    },
+    {
+     "inputs": 1,
+     "names": [
+      "s"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 3,
+   "videos": [],
+   "svg_with_15plus_shapes": [
+    25
+   ],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 70,
+   "pdf_links": [],
+   "scrollHeight": 11917,
+   "shot_full": "tidhar_full.jpg",
+   "shot_full_height": 9000,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

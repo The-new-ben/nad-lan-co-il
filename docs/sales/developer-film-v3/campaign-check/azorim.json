@@ -1,0 +1,112 @@
+{
+ "slug": "azorim",
+ "developer": "Azorim (אזורים)",
+ "project": "Azorim Park HaYam, Bat Yam",
+ "checked_local": "2026-11-07 15:46 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://www.azorim.co.il/projects/%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D-%D7%91%D7%AA-%D7%99%D7%9D/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://www.azorim.co.il/projects/פארק-הים-בת-ים/",
+   "title": "אזורים פארק הים בת ים | אזורים",
+   "shot_top": "azorim_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 2008,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 7,
+    "תוכניות": 0,
+    "השאירו פרטים": 0,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 0,
+   "iframes": [],
+   "iframe_domains": [],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "api.whatsapp.com",
+    "b2c-azorim.tafniterp.co.il",
+    "instagram.com",
+    "www.blanco-adv.co.il",
+    "www.digitaliz.co.il",
+    "www.duns100.co.il",
+    "www.facebook.com",
+    "www.living-il.co.il",
+    "www.waze.com",
+    "www.youtube.com"
+   ],
+   "script_domains": [
+    "www.azorim.co.il",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 4,
+     "names": [
+      "שם:",
+      "טלפון:",
+      "דוא\"ל:",
+      "checkbox"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 2,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 58,
+   "pdf_links": [
+    "https://www.azorim.co.il/wp-content/uploads/2022/08/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%94%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA.pdf",
+    "https://www.azorim.co.il/wp-content/uploads/2022/08/%D7%AA%D7%A0%D7%90%D7%99-%D7%A9%D7%99%D7%9E%D7%95%D7%A9-%D7%91%D7%90%D7%AA%D7%A8.pdf",
+    "https://www.azorim.co.il/wp-content/uploads/2025/05/%E2%80%8E%E2%81%A8%D7%93%D7%95%D7%97-%D7%9C%D7%A6%D7%99%D7%91%D7%95%D7%A8-%D7%A9%D7%9B%D7%A8-%D7%A9%D7%95%D7%95%D7%94-%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%AA-%D7%95%D7%9C%D7%A2%D7%95%D7%91%D7%93-%D7%93%D7%95%D7%97-%D7%9C%D7%A9%D7%A0%D7%AA-2024-%D7%A1%D7%95%D7%A4%D7%99-%D7%9E%D7%95%D7%A0%D7%92%D7%A9%E2%81%A9.pdf",
+    "https://www.azorim.co.il/wp-content/uploads/2025/10/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA-%D7%91%D7%90%D7%AA%D7%A8-%D7%90%D7%96%D7%95%D7%A8%D7%99%D7%9D-1.pdf"
+   ],
+   "scrollHeight": 3694,
+   "shot_full": "azorim_full.jpg",
+   "shot_full_height": 3694,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

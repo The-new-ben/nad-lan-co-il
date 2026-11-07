@@ -1,0 +1,78 @@
+{
+ "reference": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+ "whisper": "small, CPU, temperature 0, beam 5",
+ "takes": [
+  {
+   "file": "kokoro_af_heart.wav",
+   "seconds": 11.75,
+   "transcript": "Your marketing department runs the campaign, where the special unit you send in for one mission, bringing you buyers who are ready to sign. Nadlan.co.ill slash marketing.",
+   "wordErrors": 6,
+   "refWords": 32,
+   "wordsPerSecond": 2.72,
+   "f0MedianHz": 200.7,
+   "pitchSpreadSemitones": 2.69,
+   "pitchRange90Semitones": 8.8,
+   "pauseShare": 0.202
+  },
+  {
+   "file": "kokoro_am_michael.wav",
+   "seconds": 13.2,
+   "transcript": "Your marketing department runs the campaign, with a special unit you send in for one mission, bringing you buyers who are ready to sign. NADLAND.CO.IL Slash Marketing",
+   "wordErrors": 6,
+   "refWords": 32,
+   "wordsPerSecond": 2.42,
+   "f0MedianHz": 117.3,
+   "pitchSpreadSemitones": 4.08,
+   "pitchRange90Semitones": 16.3,
+   "pauseShare": 0.211
+  },
+  {
+   "file": "kokoro_bm_george.wav",
+   "seconds": 12.27,
+   "transcript": "Your marketing department runs the campaign. We are the special unit you send in for one mission, bringing you buyers who are ready to sign, nadlan.co.ill slash marketing.",
+   "wordErrors": 7,
+   "refWords": 32,
+   "wordsPerSecond": 2.61,
+   "f0MedianHz": 140.3,
+   "pitchSpreadSemitones": 3.9,
+   "pitchRange90Semitones": 13.39,
+   "pauseShare": 0.197
+  },
+  {
+   "file": "vibevoice_en-Carter_man.wav",
+   "seconds": 12.13,
+   "transcript": "Your marketing department runs the campaign where the special unit you send in for one mission, bringing you buyers who are ready to sign NADLAND.CO.IL slash marketing.",
+   "wordErrors": 5,
+   "refWords": 32,
+   "wordsPerSecond": 2.64,
+   "f0MedianHz": 163.0,
+   "pitchSpreadSemitones": 5.81,
+   "pitchRange90Semitones": 16.18,
+   "pauseShare": 0.31
+  },
+  {
+   "file": "vibevoice_en-Frank_man.wav",
+   "seconds": 11.87,
+   "transcript": "Your marketing department runs the campaign with a special unit you send in for one mission, bringing you buyers who are ready to sign, nadlan.co.ill slash marketing.",
+   "wordErrors": 7,
+   "refWords": 32,
+   "wordsPerSecond": 2.7,
+   "f0MedianHz": 122.8,
+   "pitchSpreadSemitones": 3.49,
+   "pitchRange90Semitones": 10.9,
+   "pauseShare": 0.239
+  },
+  {
+   "file": "vibevoice_en-Grace_woman.wav",
+   "seconds": 14.4,
+   "transcript": "Your marketing department runs the campaign where the special unit you send in for one mission, bringing you buyers who are ready to sign. NADLAND.CO.DIL slash marketing",
+   "wordErrors": 6,
+   "refWords": 32,
+   "wordsPerSecond": 2.22,
+   "f0MedianHz": 146.0,
+   "pitchSpreadSemitones": 5.33,
+   "pitchRange90Semitones": 18.8,
+   "pauseShare": 0.241
+  }
+ ]
+}

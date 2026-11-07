@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>סרט ליזמים 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=block">
+<!--
+  Developer film v3 (nad-lan.co.il, HAD-678): English voice-over, Hebrew subtitles. One page draws both cuts: ?f=h (1920x1080)
+  and ?f=v (1080x1920); window.render(t) draws the frame at t seconds (deterministic; footage = JPEG sequences in ./ben, ./cast).
+  The scene boundaries and the subtitle cues come from timeline.json (vo_build.py), so the picture follows the voice.
+  Palette (owner design law 13.10.2026, the v2 look): survey ground #F6F8F9, ink #12202A, sea #2F6F86, sea-deep #1F4B5C, one
+  survey magenta #C42550 per scene at most. Type: Karantina (big Hebrew words), IBM Plex Sans Hebrew (text, subtitles), IBM Plex
+  Mono (figures, addresses). Why not the default: marine-chart and survey instruments (ruled ground, corner ticks, coordinates),
+  cool and high contrast; no cream, no brass, no serif on paper, no gradients, no emoji.
+-->
+<style>
+:root{--ground:#F6F8F9;--ink:#12202A;--sea:#2F6F86;--deep:#1F4B5C;--mag:#C42550;--line:#D3DCE2;--mute:#5E6A75;--ink2:#3E4C58;--ice:#A8D6E4;--white:#FFFFFF;
+  --he:'IBM Plex Sans Hebrew','IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace;--disp:'Karantina','IBM Plex Sans Hebrew',sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--ground)}
+#stage{position:relative;overflow:hidden;background:var(--ground);font-family:var(--he);color:var(--ink);width:1920px;height:1080px}
+body.v #stage{width:1080px;height:1920px}
+.sc{position:absolute;inset:0;opacity:0;display:none;background:var(--ground);overflow:hidden}
+.sc.dark{background:var(--ink);color:var(--white)}
+.rule{position:absolute;inset:0;background-image:linear-gradient(to right,#E7ECEF 1px,transparent 1px),linear-gradient(to bottom,#E7ECEF 1px,transparent 1px);background-size:96px 96px;background-position:48px 48px}
+/* the scene number, survey style */
+.no{position:absolute;right:96px;top:44px;font-family:var(--mono);font-size:20px;letter-spacing:.1em;color:var(--sea);direction:ltr}
+.dark .no{color:var(--ice)}
+body.v .no{right:56px;top:96px;font-size:24px}
+/* media frames: white, hairline, two sea corner ticks */
+.fr{position:absolute;background:var(--white);border:1px solid var(--line)}
+.fr::before,.fr::after{content:"";position:absolute;width:22px;height:22px;border-color:var(--sea);border-style:solid;pointer-events:none;z-index:3}
+.fr::before{top:-12px;left:-12px;border-width:3px 0 0 3px}
+.fr::after{bottom:-12px;right:-12px;border-width:0 3px 3px 0}
+.fr > img,.fr > .in{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tab{position:absolute;display:flex;gap:14px;align-items:baseline;white-space:nowrap;direction:rtl}
+.tab b{font-weight:600;font-size:23px;color:var(--ink)}
+.tab i{font-style:normal;font-family:'IBM Plex Mono','IBM Plex Sans Hebrew',monospace;font-size:17px;color:var(--mute);direction:ltr;unicode-bidi:isolate}
+.dark .tab b{color:#fff}.dark .tab i{color:var(--ice)}
+body.v .tab{flex-direction:column;gap:6px;align-items:flex-end}
+body.v .tab b{font-size:28px} body.v .tab i{font-size:20px}
+.lab{position:absolute;background:var(--ink);color:var(--white);font-size:21px;font-weight:600;padding:7px 14px 8px;white-space:nowrap;z-index:4}
+body.v .lab{font-size:25px}
+.lab.sea{background:var(--sea)} .lab.mag{background:var(--mag)} .lab.wh{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+bdi{unicode-bidi:isolate}
+/* subtitles (Hebrew, burned in by the browser, two lines at most) */
+#subs{position:absolute;left:0;right:0;bottom:46px;display:flex;justify-content:center;pointer-events:none;z-index:50}
+#subs span{display:inline-block;max-width:1560px;background:rgba(18,32,42,.9);color:#fff;font-family:var(--he);font-weight:600;font-size:42px;line-height:1.32;
+  padding:12px 30px 15px;text-align:center;direction:rtl;unicode-bidi:plaintext}
+body.v #subs{bottom:236px}
+body.v #subs span{max-width:964px;font-size:46px;padding:14px 26px 17px}
+
+/* ---------- 01 / 14 the route chart ---------- */
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.city{font-family:var(--mono);font-size:19px;fill:var(--ice);letter-spacing:.06em}
+body.v .city{font-size:24px}
+.maptag{position:absolute;left:96px;top:60px;font-family:var(--mono);font-size:20px;color:var(--ice);letter-spacing:.1em;direction:ltr}
+body.v .maptag{left:56px;top:96px;font-size:24px}
+
+/* ---------- 02 the wall of renders ---------- */
+#s02 .wall{position:absolute;left:136px;top:112px;width:1648px;height:782px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:16px;transform-origin:50% 50%}
+#s02 .wall .t{position:relative;overflow:hidden;background:#dfe5e9}
+#s02 .wall img{width:100%;height:100%;object-fit:cover;display:block}
+#s02 .wall .ad{position:absolute;top:12px;right:12px;background:#fff;color:var(--ink);font-size:19px;font-weight:600;padding:4px 10px 6px;border:1px solid var(--line)}
+#s02 .wtag{position:absolute;left:136px;top:62px}
+#s02 .form{position:absolute;left:660px;top:190px;width:600px;background:#fff;border:1px solid var(--line);padding:44px 48px 48px;text-align:right}
+#s02 .form h3{margin:0 0 8px;font-size:40px;font-weight:700}
+#s02 .form p{margin:0 0 26px;font-size:24px;color:var(--mute)}
+#s02 .form .f{border:1.5px solid var(--line);height:64px;margin-bottom:16px;display:flex;align-items:center;padding:0 18px;font-size:24px;color:#9aa5ae}
+#s02 .form .go{background:var(--sea);color:#fff;font-size:27px;font-weight:600;height:68px;display:flex;align-items:center;justify-content:center;margin-top:8px}
+#s02 .form .lab{left:-1px;top:-44px}
+body.v #s02 .wall{left:56px;top:300px;width:968px;height:1180px;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr);gap:12px}
+body.v #s02 .wtag{left:auto;right:56px;top:196px}
+body.v #s02 .form{left:120px;top:520px;width:840px;padding:52px 56px 56px}
+body.v #s02 .form h3{font-size:48px} body.v #s02 .form p{font-size:28px} body.v #s02 .form .f{height:78px;font-size:28px} body.v #s02 .form .go{height:84px;font-size:32px}
+
+/* ---------- 03 the check ---------- */
+#s03 .hd{position:absolute;right:96px;top:104px;width:1728px;text-align:right}
+#s03 .hd .k{font-family:var(--mono);font-size:21px;color:var(--sea);letter-spacing:.08em;direction:ltr;text-align:right}
+#s03 .hd h2{margin:10px 0 0;font-family:var(--disp);font-weight:700;font-size:104px;line-height:.9}
+#s03 .pages{position:absolute;right:96px;top:300px;width:1728px;display:grid;grid-template-columns:repeat(12,1fr);gap:14px;direction:rtl}
+#s03 .pg{position:relative;height:250px;background:#fff;border:1.5px solid var(--line);padding:12px}
+#s03 .pg .r{height:118px;background:#C9D6DE}
+#s03 .pg .l{height:10px;background:#E3E9ED;margin-top:12px}
+#s03 .pg .l.s{width:60%} #s03 .pg .b{height:22px;background:#D3DCE2;margin-top:14px;width:70%}
+#s03 .pg .m{position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-size:17px;font-weight:600;color:#fff;background:var(--ink);padding:3px 0 5px}
+#s03 .pg.b2 .m{background:var(--sea)}
+#s03 .pg.b2 .r{background:repeating-conic-gradient(from 0deg,#B9CCD6 0 15deg,#C9D6DE 15deg 30deg)}
+#s03 .cnt{position:absolute;right:96px;top:600px;width:1728px;display:flex;gap:28px;direction:rtl}
+#s03 .c{flex:1;border-top:3px solid var(--ink);padding-top:12px;text-align:right}
+#s03 .c .n{font-family:var(--disp);font-weight:700;font-size:150px;line-height:.82}
+#s03 .c .w{font-size:28px;font-weight:600;line-height:1.3;margin-top:8px;color:var(--ink2)}
+#s03 .c.c2{border-color:var(--sea)} #s03 .c.c2 .n{color:var(--sea)}
+#s03 .c.c3{border-color:var(--mag)} #s03 .c.c3 .n{color:var(--mag)}
+body.v #s03 .hd{right:56px;width:968px;top:200px}
+body.v #s03 .hd h2{font-size:104px}
+body.v #s03 .pages{right:56px;width:968px;top:470px;grid-template-columns:repeat(6,1fr);gap:12px}
+body.v #s03 .pg{height:230px}
+body.v #s03 .pg .r{height:100px}
+body.v #s03 .cnt{right:56px;width:968px;top:1010px;flex-direction:column;gap:20px}
+body.v #s03 .c{display:flex;align-items:baseline;gap:26px}
+body.v #s03 .c .n{font-size:130px;width:150px;flex:none}
+body.v #s03 .c .w{font-size:34px}
+
+/* ---------- 04 the mark and the positioning ---------- */
+#s04 .mk{position:absolute;left:0;right:0;top:300px;text-align:center}
+#s04 .mk .w{font-family:var(--disp);font-weight:700;font-size:250px;line-height:.85;color:#fff}
+#s04 .mk .u{font-family:var(--mono);font-size:40px;color:var(--ice);direction:ltr;display:inline-block;border-bottom:3px solid var(--mag);padding-bottom:6px;margin-top:22px}
+#s04 .dg{position:absolute;left:310px;width:1300px;top:500px;height:380px}
+#s04 .band{position:absolute;left:0;right:0;bottom:0;height:120px;border:2px solid #4A6C7D;display:flex;align-items:center;justify-content:center;gap:18px;font-size:36px;font-weight:600;color:#DDE7EC}
+#s04 .band i{font-style:normal;font-size:26px;color:#8FB3C3;font-weight:500}
+#s04 .unit{position:absolute;left:390px;width:520px;bottom:150px;height:120px;background:var(--sea);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+#s04 .unit b{font-size:38px;font-weight:700} #s04 .unit span{font-size:24px;color:#DDEEF4;margin-top:2px}
+#s04 .goal{position:absolute;left:0;bottom:300px;border:3px solid var(--mag);color:#fff;font-size:32px;font-weight:600;padding:12px 26px 14px;background:var(--ink)}
+#s04 svg.ar{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+body.v #s04 .mk{top:470px} body.v #s04 .mk .w{font-size:230px}
+body.v #s04 .dg{left:56px;width:968px;top:820px;height:640px}
+body.v #s04 .band{height:150px;flex-direction:column;gap:6px;font-size:40px}
+body.v #s04 .unit{left:150px;width:668px;bottom:200px;height:150px}
+body.v #s04 .unit b{font-size:44px} body.v #s04 .unit span{font-size:28px}
+body.v #s04 .goal{left:auto;right:0;bottom:430px;font-size:36px}
+
+/* ---------- 05 search, page, AI answer ---------- */
+#s05 .fm{left:302px;top:136px;width:1316px;height:740px}
+#s05 .tm{left:302px;top:88px}
+#s05 .card{position:absolute;left:302px;top:136px;width:1316px;height:740px;background:#fff;border:1px solid var(--line);direction:ltr;text-align:left;padding:50px 60px;font-family:'IBM Plex Sans',var(--he)}
+#s05 .card .hdr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:20px;color:var(--mute);letter-spacing:.06em}
+#s05 .card .q{margin-top:30px;display:inline-block;border:1px solid var(--line);background:#EEF2F4;padding:14px 22px;font-size:28px;color:var(--ink);min-height:64px}
+#s05 .card .q .caret{display:inline-block;width:2px;height:28px;background:var(--ink);vertical-align:-4px;margin-left:2px}
+#s05 .card .ans{margin-top:36px;font-size:40px;line-height:1.42;color:var(--ink);font-weight:500;max-width:1160px}
+#s05 .card .srcs{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+#s05 .card .srcl{font-family:var(--mono);font-size:18px;color:var(--mute);letter-spacing:.08em;margin-right:6px}
+#s05 .card .src{font-family:var(--mono);font-size:21px;border:1.5px solid var(--line);padding:9px 14px;color:var(--ink2);background:#fff}
+#s05 .card .src.us{border:3px solid var(--mag);color:var(--mag);padding:7.5px 12.5px;position:relative}
+#s05 .card .us-tag{position:absolute;bottom:-44px;left:0;font-family:var(--he);direction:rtl;font-size:22px;font-weight:600;color:var(--mag);white-space:nowrap}
+#s05 .card .ft{position:absolute;left:60px;bottom:30px;font-family:var(--mono);font-size:19px;color:var(--mute)}
+#s05 .note{position:absolute;left:302px;top:884px;font-size:21px;color:var(--mute);direction:rtl}
+#s05 .phone{position:absolute;inset:14px;overflow:hidden;background:#fff}
+#s05 .phone img{position:absolute;left:0;top:0;width:100%}
+body.v #s05 .fm{left:56px;top:400px;width:968px;height:545px}
+body.v #s05 .fp{left:240px;top:330px;width:600px;height:1180px}
+body.v #s05 .tm{left:auto;right:56px;top:196px}
+body.v #s05 .card{left:56px;top:330px;width:968px;height:1120px;padding:44px 44px}
+body.v #s05 .card .ans{font-size:50px}
+body.v #s05 .card .q{font-size:31px}
+body.v #s05 .card .src{font-size:23px}
+body.v #s05 .card .ft{left:44px}
+body.v #s05 .note{left:56px;top:1462px;width:968px;font-size:24px;text-align:right}
+
+/* ---------- 06 / 07 the stage, the floor, the view, the design ---------- */
+.fbig{left:302px;top:136px;width:1316px;height:740px}
+.tbig{left:302px;top:88px}
+body.v .fbig{left:56px;top:330px;width:968px;height:1180px}
+body.v .tbig{left:auto;right:56px;top:196px}
+.chips{position:absolute;display:flex;gap:12px;direction:rtl;z-index:5}
+.chip{font-size:27px;font-weight:600;padding:9px 18px 11px;border:2px solid var(--deep);color:var(--deep);background:#fff;line-height:1}
+.chip.on{background:var(--deep);color:#fff}
+#s06 .chips,#s07 .chips{right:330px;top:800px}
+body.v #s06 .chips,body.v #s07 .chips{right:84px;top:1420px}
+#s07 .notes{position:absolute;left:330px;top:190px;width:480px;background:#fff;border:1px solid var(--line);padding:0;overflow:hidden;z-index:6}
+#s07 .notes img{display:block;width:100%}
+#s07 .notes .lab{position:static;display:inline-block;margin:0}
+body.v #s07 .notes{left:84px;top:700px;width:620px}
+.geo{position:absolute;right:96px;bottom:20px;font-family:var(--mono);font-size:17px;color:var(--mute);direction:ltr}
+
+/* ---------- 08 the walk, VR ---------- */
+#s08 .vr{position:absolute;left:96px;right:96px;top:136px;height:740px;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:28px}
+#s08 .vr .eye{position:relative;width:820px;height:640px;overflow:hidden;border-radius:120px 120px 160px 160px / 110px 110px 180px 180px}
+#s08 .vr .eye img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#s08 .vr .lab{top:24px;right:24px}
+body.v #s08 .vr{left:56px;right:56px;top:330px;height:1180px;flex-direction:column;gap:22px}
+body.v #s08 .vr .eye{width:900px;height:540px}
+
+/* ---------- 09 the decision room ---------- */
+#s09 .fmap{left:740px;top:136px;width:1084px;height:740px}
+#s09 .fmap img{object-fit:cover;object-position:50% 0}
+#s09 .fdeal{left:96px;top:136px;width:612px;height:240px}
+#s09 .fprice{left:96px;top:410px;width:612px;height:150px}
+#s09 .ftile{left:96px;top:594px;width:612px;height:282px}
+#s09 .fdeal img,#s09 .fprice img,#s09 .ftile img{object-fit:contain;background:#fff}
+#s09 .t9{left:740px;top:88px}
+body.v #s09 .fmap{left:56px;top:330px;width:968px;height:640px}
+body.v #s09 .fdeal{left:56px;top:1000px;width:968px;height:250px}
+body.v #s09 .fprice{left:56px;top:1280px;width:470px;height:230px}
+body.v #s09 .ftile{left:554px;top:1280px;width:470px;height:230px}
+body.v #s09 .t9{left:auto;right:56px;top:196px}
+
+/* ---------- 10 the recordings ---------- */
+#s10 .p{position:absolute}
+#s10 .pl{position:absolute;font-size:23px;font-weight:600;color:var(--ink);white-space:nowrap;text-align:right}
+#s10 .pl i{display:block;font-style:normal;font-weight:500;font-size:20px;color:var(--sea);margin-top:4px}
+#s10 .t10{left:96px;top:88px}
+#s10 .bigd{left:302px;top:136px;width:1316px;height:740px}
+#s10 .bigd > img{object-fit:cover;object-position:50% 30%;background:#fff}
+#s10 .ins{position:absolute;z-index:6;left:330px;top:520px;width:380px;height:330px}
+body.v #s10 .t10{left:auto;right:56px;top:196px}
+body.v #s10 .bigd{left:56px;top:420px;width:968px;height:620px}
+body.v #s10 .ins{left:56px;top:1090px;width:520px;height:420px}
+
+/* ---------- 11 the shared room ---------- */
+#s11 .ring{position:absolute;border:4px solid var(--mag);z-index:7;pointer-events:none}
+#s11 .hero{left:510px;top:226px;width:900px;height:485px}
+#s11 .hero > img{object-fit:contain;background:#fff}
+body.v #s11 .hero{left:56px;top:600px;width:968px;height:522px}
+body.v #s11 .room img{object-position:50% 0}
+
+/* ---------- 12 the lead ---------- */
+#s12 .cold{position:absolute;left:180px;top:250px;width:680px;background:#fff;border:1px solid var(--line);padding:40px 48px 46px;font-size:54px;line-height:1.55;color:var(--ink2);font-weight:500}
+#s12 .cold b{display:block;font-size:28px;font-family:var(--mono);color:var(--mute);font-weight:500;direction:ltr;text-align:right;margin-bottom:10px}
+#s12 .wa{position:absolute;left:960px;top:150px;width:760px;height:720px;background:#E9EEF1;border:1px solid var(--line);overflow:hidden}
+#s12 .wa .bar{height:96px;background:var(--deep);color:#fff;display:flex;align-items:center;gap:18px;padding:0 28px}
+#s12 .wa .bar .av{width:56px;height:56px;border-radius:50%;background:#fff;color:var(--deep);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700}
+#s12 .wa .bar b{font-size:28px;font-weight:600;display:block}
+#s12 .wa .bar span{font-size:20px;opacity:.85}
+#s12 .wa .msg{position:absolute;right:28px;left:28px;top:128px;background:#fff;border:1px solid var(--line);padding:24px 28px 18px;font-size:27px;line-height:1.55}
+#s12 .wa .msg .k{color:var(--mute);font-weight:500}
+#s12 .wa .msg .h{font-weight:700;font-size:29px;margin-bottom:8px}
+#s12 .wa .msg .ln{transition:none}
+#s12 .wa .msg .ln.hit{background:#E3EEF3;box-shadow:inset -4px 0 0 var(--sea)}
+#s12 .wa .msg .tm{font-family:var(--mono);font-size:17px;color:var(--mute);text-align:left;margin-top:10px}
+#s12 .demo{position:absolute;left:960px;top:896px;font-size:23px;font-weight:700;color:#fff;background:var(--mag);padding:7px 16px 9px}
+#s12 .demo-note{position:absolute;left:1068px;top:902px;font-size:21px;color:var(--mute)}
+#s12 .big{position:absolute;left:150px;top:250px;width:740px;text-align:right}
+#s12 .big .a{font-family:var(--disp);font-weight:700;font-size:118px;line-height:.9;color:#9aa5ae;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:var(--ink)}
+#s12 .big .b{font-family:var(--disp);font-weight:700;font-size:118px;line-height:.9;color:var(--ink);margin-top:18px}
+body.v #s12 .cold{left:120px;top:520px;width:840px;font-size:60px}
+body.v #s12 .wa{left:56px;top:330px;width:968px;height:900px}
+body.v #s12 .wa .msg{font-size:33px} body.v #s12 .wa .msg .h{font-size:35px}
+body.v #s12 .demo{left:56px;top:1250px;font-size:27px}
+body.v #s12 .demo-note{left:auto;right:56px;top:1256px;font-size:25px}
+body.v #s12 .big{left:56px;top:1310px;width:968px}
+body.v #s12 .big .a,body.v #s12 .big .b{font-size:96px}
+
+/* ---------- 13 the team's pages ---------- */
+#s13 .ph{position:absolute;left:840px;top:150px;width:400px;height:760px;background:var(--ink);padding:12px;border-radius:44px}
+body.v #s13 .ph{left:230px;top:330px;width:620px;height:1180px;border-radius:60px;padding:16px}
+#s13 .ph .scr{position:absolute;inset:12px;border-radius:34px;overflow:hidden;background:#fff}
+body.v #s13 .ph .scr{inset:16px;border-radius:46px}
+#s13 .ph .scr img{position:absolute;left:0;top:0;width:100%}
+
+/* ---------- 15 the planner ---------- */
+#s15 .ph{position:absolute;left:740px;top:110px;width:440px;height:800px;background:var(--ink);padding:14px;border-radius:46px}
+#s15 .ph .scr{position:absolute;inset:14px;border-radius:34px;overflow:hidden;background:#fff}
+#s15 .ph .scr img{position:absolute;left:0;top:0;width:100%}
+#s15 .steps{position:absolute;right:120px;top:200px;width:440px;display:flex;flex-direction:column;gap:16px}
+#s15 .st{display:flex;align-items:center;gap:18px;font-size:32px;font-weight:600;color:var(--mute);border:2px solid var(--line);background:#fff;padding:14px 20px}
+#s15 .st .n{font-family:var(--mono);font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--line);flex:none}
+#s15 .st.on{color:#fff;background:var(--deep);border-color:var(--deep)} #s15 .st.on .n{border-color:#fff}
+#s15 .st.done{color:var(--deep);border-color:var(--deep)} #s15 .st.done .n{border-color:var(--deep)}
+#s15 .t15{left:120px;top:150px}
+#s15 .seven{position:absolute;left:120px;top:300px;width:520px;text-align:right}
+#s15 .seven .n{font-family:var(--disp);font-weight:700;font-size:230px;line-height:.8;color:var(--ink)}
+#s15 .seven .w{font-size:32px;font-weight:600;color:var(--ink2);margin-top:10px}
+body.v #s15 .ph{left:230px;top:300px;width:620px;height:1110px;border-radius:60px}
+body.v #s15 .steps{right:56px;left:56px;width:auto;top:1436px;flex-direction:row;gap:8px;justify-content:center}
+body.v #s15 .st{font-size:24px;padding:10px 10px;gap:8px}
+body.v #s15 .st .n{width:32px;height:32px;font-size:18px}
+body.v #s15 .t15{left:auto;right:56px;top:196px}
+body.v #s15 .seven{display:none}
+
+/* ---------- 16 end card ---------- */
+#s16 .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#s16 .big{font-family:var(--disp);font-weight:700;font-size:170px;line-height:.92;color:#fff}
+#s16 .big span{display:block}
+#s16 .url{margin-top:56px;font-family:var(--mono);font-size:54px;color:var(--ice);letter-spacing:.02em;direction:ltr;border-bottom:3px solid var(--mag);padding-bottom:8px}
+body.v #s16 .big{font-size:150px}
+body.v #s16 .url{font-size:50px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 the route chart -->
+<section class="sc dark map" id="s01"><svg class="mapsvg" xmlns="http://www.w3.org/2000/svg"></svg><div class="maptag">ROUTES TO TEL AVIV</div></section>
+
+<!-- 02 the wall of renders, then a form -->
+<section class="sc" id="s02"><div class="rule"></div>
+  <div class="tab wtag"><b>הדמיות כמו בכל קמפיין</b><i>מתוך ההדמיות שלנו · ללא שם פרויקט</i></div>
+  <div class="wall"></div>
+  <div class="form"><span class="lab">טופס טיפוסי</span><h3>השאירו פרטים</h3><p>ונחזור אליכם עם כל המידע על הפרויקט</p><div class="f">שם מלא</div><div class="f">טלפון</div><div class="go">שליחה</div></div>
+  <div class="no">02 / 16</div>
+</section>
+
+<!-- 03 the check -->
+<section class="sc" id="s03"><div class="rule"></div>
+  <div class="hd"><div class="k">LIVE PROJECT PAGES · 7.11.2026</div><h2>בדקנו 12 עמודי פרויקט של יזמים מובילים</h2></div>
+  <div class="pages"></div>
+  <div class="cnt">
+    <div class="c c1"><div class="n">10</div><div class="w">הדמיות וטופס, וזהו</div></div>
+    <div class="c c2"><div class="n">2</div><div class="w">הדמיות, טופס ותצוגת 360°</div></div>
+    <div class="c c3"><div class="n">0</div><div class="w">נכנסים לבניין ובוחרים קומה</div></div>
+  </div>
+  <div class="no">03 / 16</div>
+</section>
+
+<!-- 04 the mark, the positioning -->
+<section class="sc dark" id="s04">
+  <div class="mk"><div class="w">נדל״ן</div><div class="u">nad-lan.co.il</div></div>
+  <div class="dg">
+    <div class="band">מחלקת השיווק שלכם<i>· מובילה את הקמפיין</i></div>
+    <div class="unit"><b>נדל״ן</b><span>היחידה המיוחדת, משימה אחת</span></div>
+    <div class="goal">קונים שמוכנים לחתום</div>
+    <svg class="ar" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <div class="no">04 / 16</div>
+</section>
+
+<!-- 05 the search, the page, the AI answer -->
+<section class="sc" id="s05"><div class="rule"></div>
+  <div class="tab tm"><b class="tb"></b><i class="ti"></i></div>
+  <div class="fr fm"><img id="g_fr" alt=""></div>
+  <div class="fr fm fp"><img id="fr_cast" class="hv" alt=""><div class="phone vv"><img id="fr_phone" src="img/fr_phone_full.png" alt=""></div></div>
+  <div class="card">
+    <div class="hdr"><span>GOOGLE · AI MODE</span><span>google.co.il</span></div>
+    <div class="q"><span class="qt"></span><span class="caret"></span></div>
+    <div class="ans">The average list price for an apartment in the Rainbow Sde Dov project in Tel Aviv is approximately <bdi>₪81,800</bdi> to <bdi>₪85,700</bdi> per square meter (sqm).</div>
+    <div class="srcs"><span class="srcl">SOURCES</span><span class="src s1">en.globes.co.il</span><span class="src s2">shavnu.com</span><span class="src s3">nad-lan.co.il/projects/rainbow-tel-aviv-en/<span class="us-tag">זה העמוד שלנו</span></span></div>
+    <div class="ft">AI Mode · Google · 7.11.2026</div>
+  </div>
+  <div class="note">התשובה, כפי שהופיעה בבדיקה ב־7.11.2026</div>
+  <div class="no">05 / 16</div>
+</section>
+
+<!-- 06 into the stage -->
+<section class="sc" id="s06"><div class="rule"></div>
+  <div class="tab tbig"><b>הבמה החיה של ריינבו</b><i>nad-lan.co.il/projects/rainbow-tel-aviv · 7.11.2026</i></div>
+  <div class="fr fbig"><img id="st6" alt=""></div>
+  <div class="geo">32.1035N  34.7847E</div>
+  <div class="no">06 / 16</div>
+</section>
+
+<!-- 07 the floor, the view, the design, the notes -->
+<section class="sc" id="s07"><div class="rule"></div>
+  <div class="tab tbig"><b class="tb"></b><i class="ti"></i></div>
+  <div class="fr fbig"><img id="st7" alt=""><img id="t7" alt="" style="opacity:0"></div>
+  <div class="chips"><span class="chip c1">קומה 23</span><span class="chip c2">לכיוון הים</span></div>
+  <div class="notes"><span class="lab sea">הערות בתיק הדירה</span><img class="nimg" alt=""></div>
+  <div class="no">07 / 16</div>
+</section>
+
+<!-- 08 the walk, VR -->
+<section class="sc" id="s08"><div class="rule"></div>
+  <div class="tab tbig"><b class="tb"></b><i class="ti"></i></div>
+  <div class="fr fbig"><img id="walk" alt=""></div>
+  <div class="vr"><span class="lab mag">VR · בפיתוח · המחשה</span><div class="eye"><img id="vr1" alt=""></div><div class="eye"><img id="vr2" alt=""></div></div>
+  <div class="no">08 / 16</div>
+</section>
+
+<!-- 09 the decision room -->
+<section class="sc" id="s09"><div class="rule"></div>
+  <div class="tab t9"><b>עמוד הפרויקט</b><i>nad-lan.co.il/projects/rainbow-tel-aviv · 7.11.2026</i></div>
+  <div class="fr fmap"><img class="mapimg" alt=""></div>
+  <div class="fr fdeal"><img src="img/rb_deals_top.png" alt=""></div>
+  <div class="fr fprice"><img src="img/rb_price_top.png" alt=""></div>
+  <div class="fr ftile"><img src="img/rb_price_tile.png" alt=""></div>
+  <div class="no">09 / 16</div>
+</section>
+
+<!-- 10 the recordings -->
+<section class="sc" id="s10"><div class="rule"></div>
+  <div class="tab t10"><b class="tb">הקלטות אמיתיות של גולשים באתר</b><i class="ti">מהסרט של בן · 1.11.2026</i></div>
+  <div class="fr p pi"><img id="ph_il" alt=""></div><div class="pl li">ישראל · טלפון</div>
+  <div class="fr p pb"><img id="brit" alt=""></div><div class="pl lb">בריטניה · מחשב<i>הבניין: מהבמה שלנו</i></div>
+  <div class="fr p pf"><img id="ph_fr" alt=""></div><div class="pl lf">צרפת · טלפון</div>
+  <div class="fr p pa"><img id="ph_au" alt=""></div><div class="pl la">אוסטרליה · טלפון</div>
+  <div class="fr bigd"><img id="d10" alt=""></div>
+  <div class="fr ins"><img id="st10" alt=""><span class="lab sea" style="right:10px;top:10px">הבניין: מהבמה שלנו</span></div>
+  <div class="no">10 / 16</div>
+</section>
+
+<!-- 11 the shared viewing room -->
+<section class="sc" id="s11"><div class="rule"></div>
+  <div class="tab tbig"><b class="tb"></b><i class="ti"></i></div>
+  <div class="fr hero"><img src="img/rb_hero_buttons.png" alt=""></div>
+  <div class="fr fbig room"><img id="room" alt=""><span class="lab mag" style="left:16px;bottom:16px">משתתפים והערות לדוגמה</span></div>
+  <div class="ring r1"></div>
+  <div class="no">11 / 16</div>
+</section>
+
+<!-- 12 the lead -->
+<section class="sc" id="s12"><div class="rule"></div>
+  <div class="cold"><b>LEAD · 10:41</b>שם: ________<br>טלפון: ________</div>
+  <div class="big"><div class="a">לא ליד.</div><div class="b">קונה שיודע מה הוא קונה.</div></div>
+  <div class="wa">
+    <div class="bar"><div class="av">נ</div><div><b>פנייה חדשה מנדל״ן</b><span>הודעה בוואטסאפ</span></div></div>
+    <div class="msg">
+      <div class="h">פנייה מעמוד הפרויקט</div>
+      <div class="ln l1"><span class="k">בחר:</span> קומה 23, דירה לדוגמה</div>
+      <div class="ln l2"><span class="k">כיוון:</span> לים</div>
+      <div class="ln l3"><span class="k">שפה:</span> צרפתית · פריז</div>
+      <div class="ln l4"><span class="k">ראה:</span> השכונה ב־2035, הנוף מהקומה, הדירה מרוהטת, המחירים והמפה</div>
+      <div class="ln l5"><span class="k">בתיק הדירה:</span> 3 הערות, תוכנית הדירה</div>
+      <div class="tm">10:42</div>
+    </div>
+  </div>
+  <div class="demo">דוגמה</div><div class="demo-note">הודעה לדוגמה, לא פנייה אמיתית</div>
+  <div class="no">12 / 16</div>
+</section>
+
+<!-- 13 the team's pages -->
+<section class="sc" id="s13"><div class="rule"></div>
+  <div class="tab tbig"><b class="tb"></b><i class="ti"></i></div>
+  <div class="fr fbig hv"><img id="pg" alt=""></div>
+  <div class="ph vv"><div class="scr"><img id="pgv" alt=""></div></div>
+  <div class="fr fbig bk"><img src="img/rb_booking.png" alt="" style="object-fit:contain;background:#fff"></div>
+  <div class="no">13 / 16</div>
+</section>
+
+<!-- 14 the route chart again -->
+<section class="sc dark map" id="s14"><svg class="mapsvg" xmlns="http://www.w3.org/2000/svg"></svg><div class="maptag">ABROAD · AND HERE</div></section>
+
+<!-- 15 the planner -->
+<section class="sc" id="s15"><div class="rule"></div>
+  <div class="tab t15"><b>מתכנן הקמפיין</b><i>nad-lan.co.il/marketing · 7.11.2026</i></div>
+  <div class="ph"><div class="scr"><img id="plan" alt=""></div></div>
+  <div class="steps"><div class="st"><span class="n">1</span>שווקים</div><div class="st"><span class="n">2</span>קונים</div><div class="st"><span class="n">3</span>תקציב</div><div class="st"><span class="n">4</span>פרויקט</div><div class="st"><span class="n">5</span>סיכום</div></div>
+  <div class="seven"><div class="n">7</div><div class="w">ימים, והקמפיין יכול להיות באוויר</div></div>
+  <div class="no">15 / 16</div>
+</section>
+
+<!-- 16 end card -->
+<section class="sc dark" id="s16">
+  <div class="end"><div class="big"><span class="b1">יותר קונים.</span><span class="b2">יותר תקציב.</span><span class="b3">הפרויקט הבא שלכם.</span></div><div class="url">nad-lan.co.il/marketing</div></div>
+</section>
+
+<div id="subs"><span></span></div>
+</div>
+<script>
+const Q = new URLSearchParams(location.search);
+const V = Q.get('f') === 'v';
+if (V) document.body.classList.add('v');
+const W = V ? 1080 : 1920, H = V ? 1920 : 1080;
+const FPS = 30;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const C = (x) => x < 0 ? 0 : x > 1 ? 1 : x;
+const eo = (x) => 1 - Math.pow(1 - x, 3);
+const eio = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const R = (u, a, b, f = eo) => f(C((u - a) / (b - a)));
+function show(el, u, a, d = .5, dy = 22) { if (!el) return; const p = R(u, a, a + d); el.style.opacity = p; el.style.transform = `translateY(${((1 - p) * dy).toFixed(2)}px)`; }
+function op(el, v) { if (el) el.style.opacity = v; }
+function frameIn(el, u, a) { if (!el) return; el.style.opacity = R(u, a, a + .45); el.style.transform = `scale(${(0.985 + 0.015 * R(u, a, a + .6)).toFixed(4)})`; }
+for (const el of $$('.hv')) if (V) el.style.display = 'none';
+for (const el of $$('.vv')) if (!V) el.style.display = 'none';
+
+let A = null, TL = null, pending = [], FAILED = false, FAILS = 0, SCN = {};
+/* a voice block of a scene, in scene time: VB('s05', 2) -> {a, b} */
+const VB = (sid, k) => { const s = SCN[sid]; const b = TL.voice.find(x => x.scene === sid && x.k === k); return { a: b.a - s.a, b: b.b - s.a }; };
+function setSrc(img, src) {
+  if (img.dataset.want !== src || img.dataset.bad) { const retry = !!img.dataset.bad; delete img.dataset.bad; img.dataset.want = src; img.setAttribute('src', src + (retry ? '?r=' + FAILS : '')); pending.push(img.decode().catch(() => { img.dataset.bad = 1; FAILED = true; })); }
+}
+function seq(id, kind, name, srcT) {
+  const img = typeof id === 'string' ? document.getElementById(id) : id; if (!img) return;
+  const n = (A[kind] && A[kind][name]) ? A[kind][name].frames : 1;
+  const i = Math.max(1, Math.min(n, Math.floor(srcT * FPS + 1e-6) + 1));
+  setSrc(img, `${kind}/${name}/${String(i).padStart(4, '0')}.jpg`);
+}
+function tmap(u, pts) {
+  if (u <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) if (u <= pts[i][0]) { const [a, x] = pts[i - 1], [b, y] = pts[i]; return x + (y - x) * (u - a) / (b - a); }
+  return pts[pts.length - 1][1];
+}
+const MK = (cast, m) => A.cast[cast].marks[m];
+function tab(sec, b, i) { const e = $(`#${sec} .tab`); if (e.querySelector('.tb').textContent !== b) e.querySelector('.tb').textContent = b; if (e.querySelector('.ti').textContent !== i) e.querySelector('.ti').textContent = i; }
+
+/* ---------- the route chart (01, 14) ---------- */
+const CITIES = { paris: [2.35, 48.86, 'PARIS 48.86N 2.35E'], london: [-0.13, 51.51, 'LONDON 51.51N 0.13W'], ny: [-74.0, 40.71, 'NEW YORK 40.71N 74.00W'],
+  tlv: [34.78, 32.08, 'TEL AVIV 32.08N 34.78E'], raanana: [34.87, 32.18, "RA'ANANA"], haifa: [34.99, 32.79, 'HAIFA'], jlm: [35.21, 31.77, 'JERUSALEM'], ash: [34.65, 31.80, 'ASHDOD'] };
+const PROJ = V ? { lon0: -14, lon1: 40, x0: 40, x1: 1040, lat0: 57.5, y0: 860 } : { lon0: -80, lon1: 38, x0: 90, x1: 1830, lat0: 60, y0: 390 };
+PROJ.k = (PROJ.x1 - PROJ.x0) / (PROJ.lon1 - PROJ.lon0); PROJ.ky = PROJ.k / Math.cos(45 * Math.PI / 180) * 0.86;
+const P = (lon, lat) => [PROJ.x0 + (lon - PROJ.lon0) * PROJ.k, PROJ.y0 + (PROJ.lat0 - lat) * PROJ.ky];
+let LAND = null;
+function buildMap(sec, arcs) {
+  const svg = $(`#${sec} .mapsvg`); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.style.direction = 'ltr';
+  let g = '';
+  for (let lon = -180; lon <= 180; lon += 10) { const [x] = P(lon, 0); g += `<line x1="${x}" y1="-4000" x2="${x}" y2="4000" stroke="#1B3140" stroke-width="1" vector-effect="non-scaling-stroke"/>`; }
+  for (let lat = -80; lat <= 80; lat += 10) { const [, y] = P(0, lat); g += `<line x1="-4000" y1="${y}" x2="6000" y2="${y}" stroke="#1B3140" stroke-width="1" vector-effect="non-scaling-stroke"/>`; }
+  let d = '';
+  for (const r of LAND) { let s = ''; for (let i = 0; i < r.length; i++) { const q = P(r[i][0], r[i][1]); s += (i === 0 || Math.abs(r[i][0] - r[i - 1][0]) > 90 ? 'M' : 'L') + q[0].toFixed(2) + ',' + q[1].toFixed(2); } d += s + 'Z'; }
+  g += `<path d="${d}" fill="#18303E" stroke="#2C5468" stroke-width="1.2" vector-effect="non-scaling-stroke"/>`;
+  const [tx, ty] = P(...CITIES.tlv);
+  for (const k of arcs) {
+    const [x, y] = P(...CITIES[k]);
+    const far = Math.hypot(tx - x, ty - y) > 40;
+    const mx = (x + tx) / 2, my = (y + ty) / 2 - Math.hypot(tx - x, ty - y) * (far ? 0.28 : 0.5);
+    g += `<path class="arc" data-k="${k}" d="M${x},${y} Q${mx},${my} ${tx},${ty}" fill="none" stroke="#A8D6E4" stroke-width="${V ? 4 : 3}" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
+    g += `<circle class="head" data-k="${k}" r="6" fill="#FFFFFF"/>`;
+    g += `<g class="pt" data-k="${k}"><circle class="dot" cx="${x}" cy="${y}" r="7" fill="#A8D6E4"/><text class="city" data-x="${x}" data-y="${y}" data-k="${k}">${CITIES[k][2]}</text></g>`;
+  }
+  g += `<g class="tlv"><circle class="ring" cx="${tx}" cy="${ty}" r="18" fill="none" stroke="#C42550" stroke-width="3" vector-effect="non-scaling-stroke"/><circle class="dot" cx="${tx}" cy="${ty}" r="8" fill="#C42550"/>`;
+  g += `<text class="city" data-x="${tx}" data-y="${ty}" data-k="tlv" style="fill:#FFFFFF">${CITIES.tlv[2]}</text></g>`;
+  svg.innerHTML = g;
+  for (const p of $$(`#${sec} .arc`)) { const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = `${L} ${L}`; }
+}
+/* draw one map frame: arcs {k: progress}, zoom (1 = the world, 0..1 between) toward Israel */
+function mapFrame(sec, prog, z, u) {
+  const svg = $(`#${sec} .mapsvg`); const [tx, ty] = P(...CITIES.tlv);
+  const ZW = V ? 150 : 260; // the zoomed box width in the world's pixels
+  const zw = W + (ZW - W) * z, zh = zw * H / W;
+  const cx = W / 2 + (tx - W / 2) * z, cy = H / 2 + (ty - H / 2 + (V ? 0 : 20) * z) * z;
+  svg.setAttribute('viewBox', `${(cx - zw / 2).toFixed(2)} ${(cy - zh / 2).toFixed(2)} ${zw.toFixed(2)} ${zh.toFixed(2)}`);
+  const s = zw / W; // one screen pixel in viewBox units
+  for (const p of $$(`#${sec} .arc`)) {
+    const k = p.dataset.k, q = prog[k] || 0, L = +p.dataset.len;
+    p.style.strokeDashoffset = (L * (1 - q)).toFixed(2); p.style.opacity = q > 0 ? 1 : 0;
+    const h = $(`#${sec} .head[data-k="${k}"]`); const pt = p.getPointAtLength(L * q);
+    h.setAttribute('cx', pt.x); h.setAttribute('cy', pt.y); h.setAttribute('r', (V ? 8 : 6) * s); h.style.opacity = q > 0 && q < 1 ? 1 : 0;
+    op($(`#${sec} .pt[data-k="${k}"]`), C(q * 4));
+  }
+  for (const c of $$(`#${sec} .dot`)) c.setAttribute('r', ((c.closest('.tlv') ? 9 : 7) * (V ? 1.2 : 1) * s).toFixed(3));
+  for (const t of $$(`#${sec} text.city`)) {
+    const k = t.dataset.k, x = +t.dataset.x, y = +t.dataset.y, fs = (V ? 24 : 19) * s;
+    t.style.fontSize = fs + 'px';
+    const left = k === 'paris' || k === 'tlv' || k === 'jlm' || k === 'ash';
+    t.setAttribute('x', x + (left ? -16 : 16) * s); t.setAttribute('y', y + (k === 'tlv' ? 44 : (k === 'paris' || k === 'jlm' || k === 'ash' ? 30 : -16)) * s);
+    t.setAttribute('text-anchor', left ? 'end' : 'start');
+    if (k === 'ny' && V) { t.setAttribute('x', (cx - zw / 2) + 30 * s); t.setAttribute('text-anchor', 'start'); t.textContent = '← ' + CITIES.ny[2]; }
+    if (['raanana', 'haifa', 'jlm', 'ash'].includes(k)) t.style.opacity = C((z - .7) / .3);
+    if (['paris', 'london', 'ny'].includes(k)) t.style.opacity = 1 - C((z - .3) / .3);
+  }
+  const ring = $(`#${sec} .ring`); const ph = ((u * 0.8) % 1); ring.setAttribute('r', ((12 + 26 * ph) * s).toFixed(2)); ring.style.opacity = (1 - ph).toFixed(2);
+}
+function s01(u, D) {
+  const b1 = VB('s01', 1), b2 = VB('s01', 2), half = b2.a + (b2.b - b2.a) * .46;
+  const prog = { paris: R(u, b1.a + .2, b1.a + 2.4, eio), ny: R(u, b1.a + 1.4, b1.a + 3.6, eio), london: R(u, b2.a - .2, b2.a + 1.3, eio), raanana: R(u, half + .5, half + 1.3, eio) };
+  mapFrame('s01', prog, R(u, half - .3, half + .7, eio), u);
+}
+function s14(u, D) {
+  const b2 = VB('s14', 2);
+  const prog = { paris: 1, london: 1, ny: 1, raanana: R(u, b2.a + .5, b2.a + 1.2, eio), haifa: R(u, b2.a + .7, b2.a + 1.5, eio), jlm: R(u, b2.a + .9, b2.a + 1.7, eio), ash: R(u, b2.a + 1.1, b2.a + 1.9, eio) };
+  mapFrame('s14', prog, R(u, b2.a - .5, b2.a + .6, eio), u);
+}
+
+/* ---------- 02 ---------- */
+function s02(u, D) {
+  const b1 = VB('s02', 1), b2 = VB('s02', 2);
+  const ts = $$('#s02 .wall .t');
+  ts.forEach((t, i) => { const a = .05 + i * .11; t.style.opacity = R(u, a, a + .25); t.style.transform = `scale(${(1.04 - .04 * R(u, a, a + .5)).toFixed(4)})`; });
+  $('#s02 .wall').style.transform = `scale(${(1 + .035 * C(u / D)).toFixed(4)})`;
+  const adAt = b1.a + (b1.b - b1.a) * .52;
+  $$('#s02 .wall .ad').forEach((e, i) => show(e, u, adAt + i * .12, .25, 6));
+  show($('#s02 .wtag'), u, .1, .4, 8);
+  const f = R(u, b2.a - .25, b2.a + .25);
+  $('#s02 .wall').style.filter = `saturate(${(1 - .7 * f).toFixed(3)}) brightness(${(1 - .25 * f).toFixed(3)})`;
+  $('#s02 .wall').style.opacity = 1 - .55 * f;
+  show($('#s02 .form'), u, b2.a - .2, .45, 24);
+}
+
+/* ---------- 03 ---------- */
+function s03(u, D) {
+  const b1 = VB('s03', 1), b2 = VB('s03', 2), b3 = VB('s03', 3);
+  show($('#s03 .hd'), u, .05, .45, 14);
+  $$('#s03 .pg').forEach((p, i) => { show(p, u, b1.a + .3 + i * .1, .3, 14); op(p.querySelector('.m'), R(u, b2.a + .1 + (p.classList.contains('b2') ? .9 : i * .06), b2.a + .4 + (p.classList.contains('b2') ? .9 : i * .06))); });
+  show($('#s03 .c1'), u, b2.a + .2, .45, 16); show($('#s03 .c2'), u, b2.a + 1.1, .45, 16); show($('#s03 .c3'), u, b3.a + .3, .5, 16);
+}
+
+/* ---------- 04 ---------- */
+function s04(u, D) {
+  const b1 = VB('s04', 1), b2 = VB('s04', 2), b3 = VB('s04', 3);
+  const mk = $('#s04 .mk'); const m = R(u, b1.b - 1.4, b1.b - .6); const up = R(u, b2.a - .4, b2.a + .3, eio);
+  mk.style.opacity = m; mk.style.transform = `translateY(${(-(V ? 300 : 210) * up).toFixed(1)}px) scale(${(1 - .45 * up).toFixed(3)})`;
+  show($('#s04 .band'), u, b2.a, .5, 20);
+  const s3 = b3.a + (b3.b - b3.a) * .5;
+  show($('#s04 .unit'), u, b3.a, .5, 30); show($('#s04 .goal'), u, s3, .5, 10);
+  const svg = $('#s04 svg.ar'); const dg = $('#s04 .dg').getBoundingClientRect(), un = $('#s04 .unit').getBoundingClientRect(), go = $('#s04 .goal').getBoundingClientRect();
+  const sx = V ? 1 : 1; const x1 = (V ? un.left + un.width * .8 : un.left) - dg.left, y1 = un.top + un.height / 2 - dg.top, x2 = (V ? go.left + go.width / 2 : go.right) - dg.left, y2 = (V ? go.bottom : go.top + go.height / 2) - dg.top;
+  const q = R(u, s3 - .3, s3 + .3);
+  svg.innerHTML = q > 0 ? `<line x1="${x1}" y1="${y1}" x2="${x1 + (x2 - x1) * q}" y2="${y1 + (y2 - y1) * q}" stroke="#C42550" stroke-width="3" stroke-dasharray="10 8"/>` : '';
+}
+
+/* ---------- 05 ---------- */
+const QTXT = 'Rainbow Sde Dov Tel Aviv price per square meter';
+function s05(u, D) {
+  const b1 = VB('s05', 1), b2 = VB('s05', 2);
+  const sw = b1.a + (b1.b - b1.a) * .55, sc = b2.a - .1;
+  frameIn($('#s05 .fm'), u, 0);
+  seq('g_fr', 'ben', 'g_fr', C(u - .2) * .45);
+  const pb = R(u, sw, sw + .4);
+  $$('#s05 .fm')[0].style.opacity = u < sw ? $$('#s05 .fm')[0].style.opacity : 1 - pb;
+  const fp = $('#s05 .fp'); fp.style.opacity = pb * (1 - R(u, sc, sc + .4));
+  if (!V) seq('fr_cast', 'cast', 'fr', tmap(u, [[sw, 0.2], [sc, 2.6]]));
+  else { const k = R(u, sw + .4, sc, eio); $('#fr_phone').style.transform = `translateY(${(-k * 700).toFixed(1)}px)`; }
+  const card = $('#s05 .card'); const pc = R(u, sc, sc + .45); card.style.opacity = pc; card.style.transform = `translateY(${((1 - pc) * 20).toFixed(1)}px)`;
+  const n = Math.round(QTXT.length * R(u, sc + .3, sc + 1.4, x => x)); $('#s05 .qt').textContent = QTXT.slice(0, n);
+  $('#s05 .caret').style.opacity = u < sc + 1.4 || Math.floor(u * 2.4) % 2 === 0 ? 1 : 0;
+  show($('#s05 .ans'), u, sc + 1.5, .5, 12);
+  $$('#s05 .src').forEach((e, i) => show(e, u, sc + 2.0 + i * .12, .35, 8));
+  const hit = u > sc + 2.7; $('#s05 .s3').classList.toggle('us', hit); op($('#s05 .us-tag'), R(u, sc + 2.8, sc + 3.1));
+  show($('#s05 .card .ft'), u, sc + 2.0, .4, 0); show($('#s05 .note'), u, sc + 2.3, .4, 0);
+  if (u < sw + .2) tab('s05', 'חיפוש בגוגל, בצרפתית', 'מהסרט של בן · 1.11.2026');
+  else if (u < sc + .2) tab('s05', 'עמוד הפרויקט בצרפתית', 'nad-lan.co.il/projects/rainbow-tel-aviv-fr · 7.11.2026');
+  else tab('s05', 'במצב AI של גוגל', 'google.co.il · 7.11.2026');
+}
+
+/* ---------- 06, 07 ---------- */
+function s06(u, D) {
+  frameIn($('#s06 .fbig'), u, 0); show($('#s06 .tab'), u, .05, .4, 8); show($('#s06 .geo'), u, .4, .4, 0);
+  const map = V ? [[0, 2.6], [1.6, 4.4], [D, 7.4]] : [[0, 3.0], [1.4, 4.8], [D, 7.8]];
+  seq('st6', 'cast', V ? 'stage_v' : 'stage_h', tmap(u, map));
+}
+function s07(u, D) {
+  const b1 = VB('s07', 1), b2 = VB('s07', 2);
+  const tv = b1.a + (b1.b - b1.a) * .5;            // "He sees his view."
+  const tf = b2.a;                                  // "He furnishes the apartment"
+  const tn = b2.a + (b2.b - b2.a) * .62;            // "and leaves his notes"
+  const cast = V ? 'stage_v' : 'stage_h';
+  seq('st7', 'cast', cast, tmap(u, V ? [[0, 7.4], [tv - .3, 12.0], [tv, 12.4]] : [[0, 7.8], [tv - .3, 12.4], [tv, 12.8]]));
+  const t360 = V ? 't360_v' : 't360_h';
+  const lt = MK(t360, 'light'), wm = MK(t360, 'warm');
+  const src = u < tf ? tmap(u, [[tv, 0.4], [tf, Math.min(lt - .2, 0.4 + (tf - tv) * 1.6)]]) : tmap(u, [[tf, lt + .2], [tn, lt + 2.6], [tn + .01, wm + .3], [D, wm + .3 + (D - tn) * 1.2]]);
+  const t7 = $('#t7'); seq(t7, 'cast', t360, src); t7.style.opacity = R(u, tv - .1, tv + .3);
+  show($('#s07 .c1'), u, .3, .3, 8); $('#s07 .c1').classList.toggle('on', u > .9); show($('#s07 .c2'), u, 1.0, .3, 8); $('#s07 .c2').classList.toggle('on', u > 1.6);
+  const ch = 1 - R(u, tv - .1, tv + .3); if (u > tv - .1) { op($('#s07 .c1'), ch); op($('#s07 .c2'), ch); }
+  show($('#s07 .notes'), u, tn, .45, 18);
+  if (u < tv) tab('s07', 'בוחרים קומה במגדל', 'nad-lan.co.il/projects/rainbow-tel-aviv · 7.11.2026');
+  else if (u < tf) tab('s07', 'הנוף מהדירה לדוגמה · 360°', 'הדמיה · ריינבו, קומה 25 · 7.11.2026');
+  else tab('s07', 'עיצוב הדירה, בתוך הסיור', 'הדמיה · דירה לדוגמה · 7.11.2026');
+}
+
+/* ---------- 08 ---------- */
+function s08(u, D) {
+  const b1 = VB('s08', 1), b2 = VB('s08', 2);
+  const wcast = V ? 'walk_v' : 'walk_h', wk = MK(wcast, 'walk'), wsec = A.cast[wcast].seconds;
+  frameIn($('#s08 .fbig'), u, 0);
+  seq('walk', 'cast', wcast, tmap(u, [[0, wk + .6], [b2.a, Math.min(wsec - .2, wk + .6 + b2.a * 1.05)]]));
+  const v = R(u, b2.a - .3, b2.a + .2); const vr = $('#s08 .vr'); vr.style.opacity = v;
+  const t360 = V ? 't360_v' : 't360_h', pool = MK(t360, 'pool');
+  const st = Math.min(A.cast[t360].seconds - .1, pool + 1.2 + C(u - b2.a) * .9);
+  seq('vr1', 'cast', t360, st); seq('vr2', 'cast', t360, st);
+  $('#vr1').style.objectPosition = '46% 50%'; $('#vr2').style.objectPosition = '54% 50%';
+  if (u < b2.a) tab('s08', 'רובע שדה דב, כפי שהוא מתוכנן ל־2035', 'הדמיה לפי התוכנית · nad-lan.co.il/tour/sde-dov · 7.11.2026');
+  else tab('s08', 'בתוך הדירה, במשקפי VR', 'בפיתוח · המחשה מתוך הסיור בריינבו');
+}
+
+/* ---------- 09 ---------- */
+function s09(u, D) {
+  const b1 = VB('s09', 1);
+  const k = b1.b - b1.a;   // "Prices, the neighbourhood, the numbers."
+  show($('#s09 .tab'), u, .05, .4, 8);
+  frameIn($('#s09 .fprice'), u, b1.a); frameIn($('#s09 .ftile'), u, b1.a + .15); frameIn($('#s09 .fmap'), u, b1.a + k * .3); frameIn($('#s09 .fdeal'), u, b1.a + k * .68);
+  const mp = $('#s09 .fmap img'); mp.style.objectPosition = `50% ${(V ? 20 : 24) + 8 * C(u / D)}%`;
+}
+/* ---------- 10 ---------- */
+function lay10() {
+  const L = V ? { pi: [724, 330, 300, 430], li: [724, 772, 300], pb: [56, 830, 968, 470], lb: [56, 1310, 968], pf: [390, 330, 300, 430], lf: [390, 772, 300], pa: [56, 330, 300, 430], la: [56, 772, 300] }
+              : { pa: [96, 136, 330, 600], la: [96, 752, 330], pf: [456, 136, 330, 600], lf: [456, 752, 330], pb: [816, 136, 648, 600], lb: [816, 752, 648], pi: [1494, 136, 330, 600], li: [1494, 752, 330] };
+  for (const k of ['pb', 'pi', 'pf', 'pa']) { const [x, y, w, h] = L[k]; Object.assign($('#s10 .' + k).style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' }); }
+  for (const k of ['lb', 'li', 'lf', 'la']) { const [x, y, w] = L[k]; Object.assign($('#s10 .' + k).style, { left: x + 'px', top: y + 'px', width: w + 'px' }); }
+}
+function s10(u, D) {
+  const b1 = VB('s10', 1), b2 = VB('s10', 2), b3 = VB('s10', 3);
+  const c0 = b1.a + (b1.b - b1.a) * .36, cs = (b1.b - c0) / 4;
+  const at = { pi: c0, pb: c0 + cs, pf: c0 + 2 * cs, pa: c0 + 3 * cs };
+  const sw = b2.a - .2;   // to the big recordings
+  for (const [k, a] of Object.entries(at)) { frameIn($('#s10 .' + k), u, Math.min(a, .2 + Object.keys(at).indexOf(k) * .25)); }
+  const lbl = { li: at.pi, lb: at.pb, lf: at.pf, la: at.pa };
+  for (const [k, a] of Object.entries(lbl)) show($('#s10 .' + k), u, a - .1, .35, 8);
+  for (const k of ['pi', 'pb', 'pf', 'pa']) { const e = $('#s10 .' + k); const hi = u >= at[k] && u < at[k] + cs; e.style.outline = hi ? '4px solid #2F6F86' : 'none'; }
+  seq('ph_il', 'ben', 'ph_il', C(u - .2) * .34); seq('brit', 'ben', 'brit', C(u - .3) * .3);
+  seq('ph_fr', 'ben', 'ph_fr', C(u - .4) * .3); seq('ph_au', 'ben', 'ph_au', C(u - .5) * .3);
+  const out = R(u, sw, sw + .35);
+  for (const k of ['pi', 'pb', 'pf', 'pa', 'li', 'lb', 'lf', 'la']) if (u > sw) op($('#s10 .' + k), 1 - out);
+  const big = $('#s10 .bigd'); op(big, out);
+  const hm = b2.a + (b2.b - b2.a) * .45;     // "the maps, the renders": the click map
+  const d10 = $('#d10');
+  if (u < hm) seq(d10, 'ben', 'desk_il', C(u - sw) * .5);
+  else if (u < b3.a - .1) seq(d10, 'ben', 'heat_d', C(u - hm) * .8);
+  else seq(d10, 'ben', 'contact', C(u - b3.a + .1) * .7);
+  const ins = $('#s10 .ins'); op(ins, R(u, hm + .5, hm + .9) * (1 - R(u, b3.a - .3, b3.a)));
+  seq('st10', 'cast', V ? 'stage_v' : 'stage_h', 7.6 + C(u - hm) * .9);
+  if (u < sw) { $('#s10 .tb').textContent = 'הקלטות אמיתיות של גולשים באתר'; $('#s10 .ti').textContent = 'מהסרט של בן · 1.11.2026'; }
+  else if (u < hm) { $('#s10 .tb').textContent = 'הקלטה אמיתית: תנועת העכבר על העמוד'; $('#s10 .ti').textContent = 'ישראל · מחשב · מהסרט של בן'; }
+  else if (u < b3.a - .1) { $('#s10 .tb').textContent = 'מפת הלחיצות האמיתית של העמוד'; $('#s10 .ti').textContent = 'מחשב · מהסרט של בן'; }
+  else { $('#s10 .tb').textContent = 'ואז, לחיצה על יצירת קשר'; $('#s10 .ti').textContent = 'ישראל · מחשב · מהסרט של בן'; }
+}
+
+/* ---------- 11 ---------- */
+function s11(u, D) {
+  const b1 = VB('s11', 1), b2 = VB('s11', 2);
+  const tap = b1.a + 1.0, sw = b1.a + 1.9;
+  const room = V ? 'room_v' : 'room_h';
+  show($('#s11 .tab'), u, .05, .4, 8);
+  const hero = $('#s11 .hero'); frameIn(hero, u, 0); if (u > sw) op(hero, 1 - R(u, sw, sw + .35));
+  const fr = $('#s11 .room'); op(fr, R(u, sw, sw + .35));
+  seq('room', 'cast', room, tmap(u, [[sw, 0.2], [b1.b, 3.4], [D, 3.4 + (D - b1.b) * .9]]));
+  // the tap on "שיחת וידאו עם נציג", then the participants one by one, then the plan
+  const ring = $('#s11 .r1');
+  const hb = hero.getBoundingClientRect(), st = $('#stage').getBoundingClientRect(), img = hero.querySelector('img');
+  const iw = img.naturalWidth || 1226, ih = img.naturalHeight || 660, sc = Math.min(hb.width / iw, hb.height / ih), ox = hb.left - st.left + (hb.width - iw * sc) / 2, oy = hb.top - st.top + (hb.height - ih * sc) / 2;
+  const fb = fr.getBoundingClientRect(), fsx = fb.width / (V ? 1080 : 1920), fsy = V ? fsx : fb.height / 1080, fx = fb.left - st.left, fy = fb.top - st.top;
+  const TILES = V ? null : [[28, 104, 348, 152], [264, 262, 113, 77], [146, 262, 113, 77], [28, 262, 113, 77], [264, 345, 113, 77]];
+  const words = [b2.a, b2.a + (b2.b - b2.a) * .1, b2.a + (b2.b - b2.a) * .2, b2.a + (b2.b - b2.a) * .3, b2.a + (b2.b - b2.a) * .38];
+  let box = null;
+  if (u >= tap - .2 && u < sw) { const k = HEROBTN; box = [ox + k[0] * sc, oy + k[1] * sc, k[2] * sc, k[3] * sc]; }
+  else if (u >= b2.a && u < b2.a + (b2.b - b2.a) * .5) {
+    const i = words.reduce((m, w, j) => (u >= w ? j : m), 0);
+    const T = TILEPOS[room]; if (T && T[i]) box = [fx + T[i][0] * fsx, fy + T[i][1] * fsy, T[i][2] * fsx, T[i][3] * fsy];
+  } else if (u >= b2.a + (b2.b - b2.a) * .55) { const T = PLANPOS[room]; if (T) box = [fx + T[0] * fsx, fy + T[1] * fsy, T[2] * fsx, T[3] * fsy]; }
+  if (box) { Object.assign(ring.style, { left: (box[0] - 6) + 'px', top: (box[1] - 6) + 'px', width: (box[2] + 12) + 'px', height: (box[3] + 12) + 'px' }); op(ring, 1); } else op(ring, 0);
+  if (u < sw) tab('s11', 'עמוד הפרויקט: "שיחת וידאו עם נציג"', 'nad-lan.co.il/projects/rainbow-tel-aviv · 7.11.2026');
+  else tab('s11', 'חדר הצפייה המשותף, בתוך עמוד הפרויקט', 'התוכנית והחתך, קומה 23 · הדמיה של החדר');
+}
+let HEROBTN = [0, 0, 0, 0];
+const TILEPOS = {}, PLANPOS = {};
+
+/* ---------- 12 ---------- */
+function s12(u, D) {
+  const b1 = VB('s12', 1), b2 = VB('s12', 2), b3 = VB('s12', 3);
+  show($('#s12 .cold'), u, b1.a - .1, .4, 10);
+  const c = $('#s12 .cold'); if (u > b1.b) op(c, (1 - R(u, b1.b, b1.b + .4)) * 1 + .25 * R(u, b1.b, b1.b + .4));
+  // the bare lead sits in the middle while it is named, then steps aside for the real message
+  const side = R(u, b1.b - .2, b1.b + .35, eio);
+  if (!V) c.style.transform = `translateX(${(440 * (1 - side)).toFixed(1)}px)`;
+  else if (u > b1.b - .1) op(c, 1 - R(u, b1.b - .1, b1.b + .2));
+  show($('#s12 .wa'), u, b1.b - .1, .45, 20);
+  const msg = $('#s12 .msg'); op(msg, R(u, b1.b + .2, b1.b + .5));
+  const L = (b2.b - b2.a) / 3;
+  $('#s12 .l1').classList.toggle('hit', u >= b2.a && u < b2.a + L); $('#s12 .l2').classList.toggle('hit', u >= b2.a + L && u < b2.a + 2 * L); $('#s12 .l3').classList.toggle('hit', u >= b2.a + 2 * L && u < b2.b + .3);
+  $('#s12 .l4').classList.toggle('hit', u >= b3.a + (b3.b - b3.a) * .35); $('#s12 .l5').classList.toggle('hit', u >= b3.a + (b3.b - b3.a) * .35);
+  show($('#s12 .demo'), u, b1.b, .4, 0); show($('#s12 .demo-note'), u, b1.b + .2, .4, 0);
+  const bg = $('#s12 .big'); op(bg, R(u, b3.a - .1, b3.a + .3)); op(bg.querySelector('.b'), R(u, b3.a + (b3.b - b3.a) * .3, b3.a + (b3.b - b3.a) * .3 + .4));
+  if (u > b3.a - .1 && !V) op(c, (1 - R(u, b3.a - .1, b3.a + .2)) * .25);
+}
+
+/* ---------- 13 ---------- */
+const PG = [['pg_mort', 'mortgage-calculator', 'מחשבון המשכנתא', 'nad-lan.co.il/mortgage-calculator'], ['pg_tax', 'purchase-tax-calculator', 'מחשבון מס הרכישה', 'nad-lan.co.il/purchase-tax-calculator'],
+  [null, 'booking', 'שיחת וידאו עם נציג נדל״ן, בעמוד הפרויקט', 'nad-lan.co.il/projects/rainbow-tel-aviv']];
+function s13(u, D) {
+  const n = PG.length, seg = D / n, i = Math.min(n - 1, Math.floor(u / seg)), lu = u - i * seg;
+  show($('#s13 .tab'), u, .05, .4, 8);
+  const still = !PG[i][0];
+  op($('#s13 .bk'), still ? R(lu, 0, .3) : 0);
+  if (!V) { frameIn($('#s13 .fbig'), u, 0); if (!still) { seq('pg', 'cast', PG[i][0], Math.min(A.cast[PG[i][0]].seconds - .1, .3 + lu * .9)); op($('#pg'), R(lu, 0, .25)); } else op($('#pg'), 0); }
+  else { const im = $('#pgv'); if (!still) { setSrc(im, `img/pg_${PG[i][1]}_390.png`); im.style.transform = `translateY(${(-lu * 60).toFixed(1)}px)`; } op($('#s13 .ph'), still ? 1 - R(lu, 0, .3) : 1); op(im, still ? 0 : R(lu, 0, .25)); if (u < .5) frameIn($('#s13 .ph'), u, 0); }
+  $('#s13 .bk img').style.transform = `scale(${(1 + .03 * C(lu / seg)).toFixed(4)})`;
+  tab('s13', PG[i][2], PG[i][3] + ' · 7.11.2026');
+}
+
+/* ---------- 15 ---------- */
+const PLAN_H = {};
+function s15(u, D) {
+  const b2 = VB('s15', 2);
+  frameIn($('#s15 .ph'), u, 0); show($('#s15 .tab'), u, .05, .4, 8);
+  const t0 = .3, step = (b2.a - t0 + .2) / 4; const k = Math.max(0, Math.min(4, Math.floor((u - t0) / step)));
+  const img = $('#plan'); setSrc(img, `img/plan${k + 1}.png`);
+  const scr = $('#s15 .scr'); const sh = scr.clientHeight, sw_ = scr.clientWidth;
+  const natural = PLAN_H[k + 1] ? PLAN_H[k + 1] * sw_ / PLAN_W[k + 1] : sh;
+  const loc = C((u - t0 - k * step) / step); const room = Math.max(0, Math.min(natural - sh, k === 4 ? 1400 : 300));
+  img.style.transform = `translateY(${(-room * eio(C((loc - .2) / .75))).toFixed(1)}px)`;
+  $$('#s15 .st').forEach((s, i) => { show(s, u, .15 + i * .08, .3, 10); s.classList.toggle('on', u >= t0 && i === k); s.classList.toggle('done', u >= t0 && i < k); });
+  show($('#s15 .seven'), u, b2.a + .2, .5, 16);
+}
+const PLAN_W = {};
+
+/* ---------- 16 ---------- */
+function s16(u, D) {
+  const b1 = VB('s16', 1), b2 = VB('s16', 2), d = (b1.b - b1.a) / 3;
+  show($('#s16 .b1'), u, b1.a - .1, .5, 26); show($('#s16 .b2'), u, b1.a + d - .1, .5, 26); show($('#s16 .b3'), u, b1.a + 2 * d - .1, .5, 26);
+  show($('#s16 .url'), u, b2.a - .2, .5, 14);
+}
+
+const FN = { s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16 };
+const XF = .45;
+let SC = [];
+window.render = async function (t) {
+  pending = [];
+  SC.forEach(([id, a, b, fn], idx) => {
+    const el = document.getElementById(id);
+    const last = idx === SC.length - 1;
+    const vis = t >= a && (t < b + XF || last);
+    el.style.display = vis ? 'block' : 'none';
+    if (!vis) return;
+    el.style.opacity = a === 0 ? 1 : R(t, a, a + XF, x => x);
+    el.style.zIndex = idx + 1;
+    fn(Math.max(0, t - a), b - a);
+  });
+  // the subtitle line (none on the end card: its words are the card)
+  const cue = TL.cues.find(c => t >= c.a && t < c.b && c.scene !== 's16');
+  const sp = $('#subs span');
+  if (cue) { if (sp.textContent !== cue.he) sp.textContent = cue.he; sp.parentElement.style.opacity = Math.min(R(t, cue.a, cue.a + .12, x => x), 1 - R(t, cue.b - .12, cue.b, x => x)); sp.style.display = 'inline-block'; }
+  else sp.style.display = 'none';
+  await Promise.all(pending);
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const ok = !FAILED; if (FAILED) FAILS++; FAILED = false;
+  return ok;
+};
+window.subLines = () => { const sp = $('#subs span'); if (sp.style.display === 'none') return 0; return Math.round(sp.getBoundingClientRect().height / (parseFloat(getComputedStyle(sp).lineHeight) || 1) - .3); };
+window.READY = false;
+(async () => {
+  [A, TL, LAND] = await Promise.all(['assets.json', 'timeline.json', 'land.json'].map(async f => (await fetch(f)).json()));
+  for (const s of TL.scenes) SCN[s.id] = s;
+  SC = TL.scenes.map(s => [s.id, s.a, s.b, FN[s.id]]);
+  window.DUR = TL.duration;
+  // the wall (our own renders) and the twelve checked pages
+  const wall = $('#s02 .wall'); const AD = [1, 4, 6, 9];
+  for (let i = 1; i <= 12; i++) wall.insertAdjacentHTML('beforeend', `<div class="t"><img src="wall/w${String(i).padStart(2, '0')}.jpg" alt="">${AD.includes(i) ? '<span class="ad">ממומן</span>' : ''}</div>`);
+  const pages = $('#s03 .pages');
+  for (let i = 0; i < 12; i++) { const b2 = i === 4 || i === 9; pages.insertAdjacentHTML('beforeend', `<div class="pg${b2 ? ' b2' : ''}"><div class="r"></div><div class="l"></div><div class="l s"></div><div class="l"></div><div class="b"></div><div class="m">${b2 ? '+ 360°' : 'הדמיה + טופס'}</div></div>`); }
+  await Promise.all([document.fonts.load('700 100px Karantina'), document.fonts.load('500 30px "IBM Plex Sans Hebrew"'), document.fonts.load('600 30px "IBM Plex Sans Hebrew"'),
+    document.fonts.load('700 30px "IBM Plex Sans Hebrew"'), document.fonts.load('500 20px "IBM Plex Mono"'), document.fonts.load('500 20px "IBM Plex Sans"')]);
+  await document.fonts.ready;
+  buildMap('s01', ['paris', 'ny', 'london', 'raanana']);
+  buildMap('s14', ['paris', 'ny', 'london', 'raanana', 'haifa', 'jlm', 'ash']);
+  lay10();
+  for (let k = 1; k <= 5; k++) { const im = new Image(); im.src = `img/plan${k}.png`; await im.decode(); PLAN_H[k] = im.naturalHeight; PLAN_W[k] = im.naturalWidth; }
+  $('#s09 .mapimg').src = 'img/rb_map.png';
+  $('#s07 .nimg').src = V ? 'img/room_notes_v.png' : 'img/room_notes_h.png';
+  Object.assign(TILEPOS, A.roomUI ? A.roomUI.tiles : {}); Object.assign(PLANPOS, A.roomUI ? A.roomUI.plan : {}); HEROBTN = A.roomUI ? A.roomUI.hero : HEROBTN;
+  await Promise.all($$('img[src]').map(i => i.decode().catch(() => {})));
+  if (Q.get('t') !== null) await window.render(parseFloat(Q.get('t')));
+  window.READY = true;
+})();
+</script>
+</body>
+</html>

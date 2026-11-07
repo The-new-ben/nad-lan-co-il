@@ -1,0 +1,112 @@
+{
+ "slug": "aura",
+ "developer": "Aura (אאורה)",
+ "project": "Aura Ramat HaSharon (project minisite)",
+ "checked_local": "2026-11-07 15:50 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://aura-project.co.il/aura-ha-sharon/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://aura-project.co.il/aura-ha-sharon/",
+   "title": "AURA RAMAT HA-SHARON - אאורה ישראל | Aura Israel",
+   "shot_top": "aura_top.jpg",
+   "popups_closed": [
+    0
+   ],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 1662,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 0,
+    "תוכניות": 1,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 2,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 0,
+   "iframes": [],
+   "iframe_domains": [],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "auraisrael.co.il",
+    "cookiedatabase.org"
+   ],
+   "script_domains": [
+    "aura-project.co.il",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 5,
+     "names": [
+      "form_fields[name]",
+      "form_fields[phone]",
+      "form_fields[email]",
+      "form_fields[divur]",
+      "full-name-maspik-hp"
+     ]
+    },
+    {
+     "inputs": 5,
+     "names": [
+      "form_fields[name]",
+      "form_fields[phone]",
+      "form_fields[email]",
+      "form_fields[divur]",
+      "full-name-maspik-hp"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 12,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 50,
+   "pdf_links": [],
+   "scrollHeight": 1925,
+   "shot_full": "aura_full.jpg",
+   "shot_full_height": 1925,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

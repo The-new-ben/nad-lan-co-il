@@ -1,0 +1,41 @@
+{
+ "engine": "Kokoro-82M v1.0 fp32 (kokoro-onnx), CPU",
+ "takes": [
+  {
+   "voice": "am_michael",
+   "speed": 0.95,
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\kokoro_am_michael.wav",
+   "sr": 24000,
+   "seconds": 13.203,
+   "genSeconds": 9.02,
+   "peak": 0.403,
+   "sha256": "c45211f8d93d497db07f43347f13054a526e51850cf5b8cc353249a66cd97a24"
+  },
+  {
+   "voice": "bm_george",
+   "speed": 0.95,
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\kokoro_bm_george.wav",
+   "sr": 24000,
+   "seconds": 12.266,
+   "genSeconds": 6.81,
+   "peak": 0.369,
+   "sha256": "100c9da670df6c35e3797077420d578850c0a5de3b06ddd07efa5c9f302a2a8a"
+  },
+  {
+   "voice": "af_heart",
+   "speed": 0.95,
+   "text": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "spoken": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+   "path": "..\\voice\\tests\\kokoro_af_heart.wav",
+   "sr": 24000,
+   "seconds": 11.754,
+   "genSeconds": 6.91,
+   "peak": 0.377,
+   "sha256": "109aeaaaf8233b90d2cb053dae850b1cc7eceb0b36e29f8d6c60a6f592dce3b9"
+  }
+ ]
+}

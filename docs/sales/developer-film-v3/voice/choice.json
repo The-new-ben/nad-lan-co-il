@@ -1,0 +1,27 @@
+{
+ "chosen": "Kokoro-82M v1.0 fp32, voice bm_george (British English, male), speed 1.0, CPU, free and local",
+ "final_voice_only": "vo_en_bm_george_final.flac (the placed, loudness-normalised voice track of the film, mono FLAC)",
+ "per_line_takes": "bm_george/<scene>_<group>.wav, generation receipt bm_george/receipt.json",
+ "tested": {
+  "kokoro": ["am_michael", "bm_george", "af_heart"],
+  "vibevoice_realtime_0.5b": ["en-Carter_man", "en-Frank_man", "en-Grace_woman"],
+  "test_line": "Your marketing department runs the campaign. We're the special unit you send in for one mission: bringing you buyers who are ready to sign. Nad lan dot co dot il, slash marketing.",
+  "files": "tests/*.wav, tests/kokoro_receipt.json, tests/vibevoice_receipt.json, tests/compare.json, tests/compare_extra.json"
+ },
+ "why": [
+  "Calm senior register: median pitch 140 Hz with a 3.9 semitone spread (measured, tests/compare.json): low and steady but not flat (af_heart 2.7 st is flatter; Carter 5.8 st is the most animated).",
+  "Clean, full sound: noise floor -93 dB and 73 dB speech-to-floor (tests/compare_extra.json). Both VibeVoice male voices have a hard cut at 8 kHz (their voice prompts are 16 kHz audio): -76 dB above 8 kHz, a duller, phone-like top; en-Grace_woman has a -56 dB noise floor.",
+  "Clearest to Whisper: average log-probability -0.19 (best of the six); every take misheard 'We're the' as 'where the', fixed in the film by saying 'We are'.",
+  "Practical: all 36 lines in 66 s on the CPU; VibeVoice took 50 to 60 s per 12 s line (about 5 times real time) and loads 1.9 GB of weights on a machine that had 1 to 3 GB free during this session.",
+  "Not a human listening verdict: nobody listened here. Ben should play tests/*.wav (same sentence, six voices) and can swap the voice by re-running voice_kokoro.py lines with another voice name; the film's timing follows the new takes automatically (vo_build.py, then render)."
+ ],
+ "pronunciation_fixes": {
+  "We're the special unit": "said 'We are the special unit' (all six test takes were heard as 'where the')",
+  "lead": "phoneme lˈiːd lengthened to lˈiːːd in s12_3 (heard as 'laid' before; 'lead' after)",
+  "nad-lan.co.il": "spoken 'Nad lan dot co dot eel' (Israeli 'co dot il'; Whisper writes it 'Nadlan .co .il')",
+  "Ra'anana": "Kokoro phonemes ɹˌaɐnˈɑːnə (ra-a-NA-na); Whisper does not know the name and writes 'Rannanet', not a fault of the voice",
+  "VR, AI": "spelled 'V R' and 'A I' (the lexicon of services/vibevoice/pronunciation.json)",
+  "twenty-three": "written as words"
+ },
+ "not_used": "the remote Chatterbox gateway, any paid GPU, ElevenLabs (4 characters left)"
+}

@@ -1,0 +1,231 @@
+{
+ "slug": "dimri",
+ "developer": "Y.H. Dimri (י.ח. דמרי)",
+ "project": "YAMA TLV, Sde Dov, Tel Aviv",
+ "checked_local": "2026-11-07 16:08 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://www.dimri.co.il/project/sde-dov",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://www.dimri.co.il/project/sde-dov",
+   "title": "YAMA TLV | י.ח. דמרי",
+   "shot_top": "dimri_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 4581,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 1,
+    "זמינות": 0,
+    "הדמיות": 0,
+    "תוכניות": 0,
+    "השאירו פרטים": 0,
+    "טופס": 1
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 1,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {
+    "מלאי": [
+     "יחודיים של הפרויקט יאפשרו לכם שקט נפשי וחיים מלאים בלייף סטייל.  מאחורי דמרי ימה עומדים שניים "
+    ],
+    "סיור": [
+     "ת לפרויקט תמונות חוץ תמונות פנים תמונות לובי סיור ויטואלי חברת דמרי מביאה איתה את ערכי היסוד ש"
+    ]
+   },
+   "iframe_count": 4,
+   "iframes": [
+    {
+     "src": "https://dreamstours.bmby.com/Tours/Dimri_Yama/I/index.htm",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    },
+    {
+     "src": "https://player.vimeo.com/video/1219125291?background=1&autoplay=1&loop=1&muted=1",
+     "data_src": "",
+     "w": 790,
+     "h": 444,
+     "title": ""
+    },
+    {
+     "src": "https://www.google.com/maps?q=32.0801226976325,%2034.79581419186239&z=15&output=embed",
+     "data_src": "",
+     "w": 595,
+     "h": 560,
+     "title": ""
+    },
+    {
+     "src": "https://static.glassix.com/widget/conversations/878e9be4-360a-4de7-8933-e2d3c291287b?conversational-flow-id=9d5c0e8d-6e17-408a-b96c-0bd35c7157c3&culture=he-IL&default-department-id=05306e6e-0957-4fc6-95fa-6b51327dfe9f&h=&has-had-conversations=false&host-origin=https%3A%2F%2Fwww.dimri.co.il&host-page-title=YAMA%20TLV%20%7C%20%D7%99.%D7%97.%20%D7%93%D7%9E%D7%A8%D7%99&is-embedded=true&loaderBg=%23FFFFFF&snippet-id=9YS24ziWUyA4QRVX4R9L&unique-identifier=12ae5a44-29ba-4bec-85ef-637c5f11f427&w=&was-unique-identifier-provided=false&handled-widget=1",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "Chat"
+    }
+   ],
+   "iframe_domains": [
+    "dreamstours.bmby.com",
+    "player.vimeo.com",
+    "static.glassix.com",
+    "www.google.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://dreamstours.bmby.com/Tours/Dimri_Yama/I/index.htm",
+     "canvas": 90,
+     "text_len": 1121,
+     "text_head": "ACCEPTREJECT (function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"wi",
+     "inputs": 0
+    },
+    {
+     "url": "https://player.vimeo.com/video/1219125291?background=1&autoplay=1&loop=1&muted=1",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s32.0801226976325,+34.79581419186239!6i15",
+     "canvas": 0,
+     "text_len": 73,
+     "text_head": "מקשי קיצור נתוני מפה ©2026 Google, Mapa GISrael תנאים דיווח על שגיאה במפה",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://static.glassix.com/widget/conversations/878e9be4-360a-4de7-8933-e2d3c291287b?conversational-flow-id=9d5c0e8d-6e17-408a-b96c-0bd35c7157c3&culture=he-IL&default-department-id=05306e6e-0957-4fc6-95fa-6b51327dfe9f&h=&has-had-conversations=false&host-origin=https%3A%2F%2Fwww.dimri.co.il&host-page-title=YAMA%20TLV%20%7C%20%D7%99.%D7%97.%20%D7%93%D7%9E%D7%A8%D7%99&is-embedded=true&loaderBg=%23FFFFFF&snippet-id=9YS24ziWUyA4QRVX4R9L&unique-identifier=12ae5a44-29ba-4bec-85ef-637c5f11f427&w=&was-unique-identifier-provided=false&handled-widget=1",
+     "canvas": 0,
+     "text_len": 147,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [
+    {
+     "src": "https://dreamstours.bmby.com/Tours/Dimri_Yama/I/index.htm",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    }
+   ],
+   "candidate_links_3d_tour_picker": [
+    {
+     "href": "https://www.dimri.co.il/project/sde-dov#w-tabs-0-data-w-pane-3",
+     "text": "סיור ויטואלי"
+    }
+   ],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "comrax.com",
+    "dimrimishtaken.com",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.linkedin.com",
+    "www.tiktok.com"
+   ],
+   "script_domains": [
+    "ajax.googleapis.com",
+    "cdn.glassix.com",
+    "cdn.jsdelivr.net",
+    "cdn.prod.website-files.com",
+    "cdn.scarabresearch.com",
+    "cookie-consent-cdn-prod.pages.dev",
+    "d3e54v103j8qbb.cloudfront.net",
+    "dimri-files.betacomrax.com",
+    "player.vimeo.com",
+    "snap.licdn.com",
+    "static.scarabresearch.com",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 2,
+     "names": [
+      "search-field",
+      "submit"
+     ]
+    },
+    {
+     "inputs": 10,
+     "names": [
+      "first-name",
+      "last-name",
+      "phone",
+      "email",
+      "whatsap",
+      "advertisement",
+      "page-title",
+      "url"
+     ]
+    },
+    {
+     "inputs": 3,
+     "names": [
+      "cookie-marketing-3",
+      "cookie-marketing-3",
+      "cookie-marketing-3"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 4,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 87,
+   "pdf_links": [],
+   "scrollHeight": 6087,
+   "shot_full": "dimri_full.jpg",
+   "shot_full_height": 6087,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)",
+   "viewer_click": "סיור ויטואלי",
+   "shot_viewer": "dimri_viewer.jpg"
+  }
+ ]
+}

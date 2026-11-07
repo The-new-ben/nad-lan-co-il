@@ -1,0 +1,174 @@
+{
+ "slug": "shikun-binui",
+ "developer": "Shikun & Binui Real Estate (שיכון ובינוי נדל\"ן)",
+ "project": "D-Point, Jaffa - Tel Aviv",
+ "checked_local": "2026-11-07 16:00 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://www.shbn.co.il/projects/d-point/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://www.shbn.co.il/projects/d-point/",
+   "title": "D-Point - שיכון ובינוי נדל\"ן",
+   "shot_top": "shikun-binui_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 1315,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 1,
+    "תוכניות": 1,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 2,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 1,
+   "iframes": [
+    {
+     "src": "",
+     "data_src": "",
+     "w": 300,
+     "h": 150,
+     "title": ""
+    }
+   ],
+   "iframe_domains": [],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "about:srcdoc",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "il.linkedin.com",
+    "instagram.com",
+    "send",
+    "shikunbinui.com",
+    "www.facebook.com",
+    "www.shikunbinui.com",
+    "zigit.co.il"
+   ],
+   "script_domains": [
+    "acsbapp.com",
+    "maps.googleapis.com",
+    "www.googletagmanager.com",
+    "www.shbn.co.il"
+   ],
+   "forms": [
+    {
+     "inputs": 5,
+     "names": [
+      "fullName",
+      "phoneNum",
+      "mailAddress",
+      "checkbox-572[]",
+      "submit"
+     ]
+    },
+    {
+     "inputs": 11,
+     "names": [
+      "fullName",
+      "easyDay",
+      "easyHour",
+      "livingAddress",
+      "phoneNum",
+      "mailAddress",
+      "livingCity",
+      "yourMassage"
+     ]
+    },
+    {
+     "inputs": 6,
+     "names": [
+      "fullName",
+      "phoneNum",
+      "mailAddress",
+      "yourMassage",
+      "checkbox-572[]",
+      "submit"
+     ]
+    },
+    {
+     "inputs": 10,
+     "names": [
+      "fullName",
+      "easyDay",
+      "easyHour",
+      "livingAddress",
+      "phoneNum",
+      "mailAddress",
+      "livingCity",
+      "yourMassage"
+     ]
+    },
+    {
+     "inputs": 6,
+     "names": [
+      "fullName",
+      "phoneNum",
+      "mailAddress",
+      "yourMassage",
+      "checkbox-572[]",
+      "submit"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 18,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 174,
+   "pdf_links": [
+    "https://www.shbn.co.il/wp-content/uploads/2024/08/20240825190647.pdf",
+    "https://www.shbn.co.il/wp-content/uploads/2026/04/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%94%D7%92%D7%A8%D7%9C%D7%94-%D7%A0%D7%93%D7%9C%D7%A0%D7%99%D7%99%D7%A9%D7%9F-%D7%9E%D7%90%D7%99-2026-2.pdf"
+   ],
+   "scrollHeight": 1663,
+   "shot_full": "shikun-binui_full.jpg",
+   "shot_full_height": 1663,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

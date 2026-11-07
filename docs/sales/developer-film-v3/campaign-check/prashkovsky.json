@@ -1,0 +1,119 @@
+{
+ "slug": "prashkovsky",
+ "developer": "Prashkovsky (פרשקובסקי)",
+ "project": "Prashkovsky Glil Yam, Herzliya",
+ "checked_local": "2026-11-07 15:58 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://www.prashkovsky.co.il/project/%D7%A4%D7%A8%D7%A9%D7%A7%D7%95%D7%91%D7%A1%D7%A7%D7%99-%D7%91%D7%92%D7%9C%D7%99%D7%9C-%D7%99%D7%9D-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://www.prashkovsky.co.il/project/פרשקובסקי-בגליל-ים-הרצליה/",
+   "title": "GLILYAM פרשקובסקי | הרצליה | פרשקובסקי מצויינות בנדל\"ן",
+   "shot_top": "prashkovsky_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 3555,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 1,
+    "תוכניות": 0,
+    "השאירו פרטים": 0,
+    "טופס": 1
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 3,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 0,
+   "iframes": [],
+   "iframe_domains": [],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "api.whatsapp.com",
+    "vee.co.il",
+    "www.facebook.com",
+    "www.instagram.com"
+   ],
+   "script_domains": [
+    "vee-crm.com",
+    "www.googletagmanager.com",
+    "www.prashkovsky.co.il"
+   ],
+   "forms": [
+    {
+     "inputs": 9,
+     "names": [
+      "form_fields[thename]",
+      "form_fields[theemail]",
+      "form_fields[thetel]",
+      "form_fields[theprojint]",
+      "form_fields[country]",
+      "form_fields[accept]",
+      "form_fields[disclaimer][]",
+      "form_fields[disclaimer][]"
+     ]
+    },
+    {
+     "inputs": 9,
+     "names": [
+      "form_fields[thename]",
+      "form_fields[theemail]",
+      "form_fields[thetel]",
+      "form_fields[theprojint]",
+      "form_fields[country]",
+      "form_fields[accept]",
+      "form_fields[disclaimer][]",
+      "form_fields[disclaimer][]"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 6,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 23,
+   "pdf_links": [],
+   "scrollHeight": 6219,
+   "shot_full": "prashkovsky_full.jpg",
+   "shot_full_height": 6219,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

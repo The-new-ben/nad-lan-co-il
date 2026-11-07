@@ -1,0 +1,160 @@
+{
+ "slug": "electra",
+ "developer": "Electra Residential (אלקטרה מגורים)",
+ "project": "SEVEN SEAS, Sde Dov West, Tel Aviv (presale soon)",
+ "checked_local": "2026-11-07 16:07 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://electra-megurim.com/portfolio-item/%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://electra-megurim.com/portfolio-item/שדה-דב/",
+   "title": "SEVEN SEAS - פרויקט המגורים הראשון בשדה דב מערב | אלקטרה מגורים",
+   "shot_top": "electra_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 4563,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 2,
+    "תוכניות": 1,
+    "השאירו פרטים": 0,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 1,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 1,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 3,
+   "iframes": [
+    {
+     "src": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LctNtsZAAAAAADJdBqI1Snsg4Vj_1juRsPcCqoW&co=aHR0cHM6Ly9lbGVjdHJhLW1lZ3VyaW0uY29tOjQ0Mw..&hl=iw&type=image&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&theme=light&size=normal&anchor-ms=20000&execute-ms=30000&cb=4sw84dwj1nug",
+     "data_src": "",
+     "w": 304,
+     "h": 78,
+     "title": "reCAPTCHA"
+    },
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    },
+    {
+     "src": "https://www.google.com/recaptcha/api2/bframe?hl=iw&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&k=6LctNtsZAAAAAADJdBqI1Snsg4Vj_1juRsPcCqoW&bft=0dAFcWeA7YIc0H3EoNkASe9f-2FCNXiR9s8vlgeeTyloUGdrBTtJ1ZMwv09hi23Urh0cVWN2MPonC9wNFiLYstVxv-8BpiklJ2Fg",
+     "data_src": "",
+     "w": 300,
+     "h": 150,
+     "title": "התוקף של אתגר reCAPTCHA יפוג בעוד שתי דקות"
+    }
+   ],
+   "iframe_domains": [
+    "www.google.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LctNtsZAAAAAADJdBqI1Snsg4Vj_1juRsPcCqoW&co=aHR0cHM6Ly9lbGVjdHJhLW1lZ3VyaW0uY29tOjQ0Mw..&hl=iw&type=image&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&theme=light&size=normal&anchor-ms=20000&execute-ms=30000&cb=4sw84dwj1nug",
+     "canvas": 0,
+     "text_len": 22,
+     "text_head": "אני לא רובוט reCAPTCHA",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://www.google.com/recaptcha/api2/bframe?hl=iw&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&k=6LctNtsZAAAAAADJdBqI1Snsg4Vj_1juRsPcCqoW&bft=0dAFcWeA7YIc0H3EoNkASe9f-2FCNXiR9s8vlgeeTyloUGdrBTtJ1ZMwv09hi23Urh0cVWN2MPonC9wNFiLYstVxv-8BpiklJ2Fg",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "my.pluro.ai",
+    "www.kahuna.co.il"
+   ],
+   "script_domains": [
+    "electra-megurim.com",
+    "my.pluro.ai",
+    "static.hotjar.com",
+    "www.google.com",
+    "www.googletagmanager.com",
+    "www.gstatic.com"
+   ],
+   "forms": [
+    {
+     "inputs": 10,
+     "names": [
+      "your_name",
+      "your_lname",
+      "your_email",
+      "your_tel",
+      "your-message",
+      "accept_info[]",
+      "accept_info2[]",
+      "submit"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 4,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 8,
+   "pdf_links": [],
+   "scrollHeight": 6064,
+   "shot_full": "electra_full.jpg",
+   "shot_full_height": 6064,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?room=filmdemo2345",
+ "status": 200,
+ "taken": "2026-11-07 16:38:05",
+ "mocked": "all /wp-json/nadlan/v1/room* answered locally",
+ "buttons": [
+  [
+   "הזמנת משתתף",
+   null,
+   "nltg-btn ghost nltg-invite"
+  ],
+  [
+   "הבניין",
+   null,
+   ""
+  ],
+  [
+   "התוכנית והחתכים",
+   null,
+   ""
+  ],
+  [
+   "בתוך הדירה",
+   null,
+   ""
+  ],
+  [
+   "הנוף",
+   null,
+   ""
+  ],
+  [
+   "יציאה",
+   null,
+   "nltg-btn leave nltg-leave-top"
+  ]
+ ]
+}

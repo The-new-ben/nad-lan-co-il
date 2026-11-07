@@ -1,0 +1,126 @@
+{
+ "slug": "israel-canada",
+ "developer": "Israel Canada (ישראל קנדה)",
+ "project": "Vertical City, Ramat Gan",
+ "checked_local": "2026-11-07 15:36 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": "דחה",
+   "final_url": "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city",
+   "title": "פרויקט ורטיקל סיטי רמת גן | עירוב שימושים יוקרתי",
+   "shot_top": "israel-canada_top.jpg",
+   "popups_closed": [],
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 1453,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 0,
+    "תוכניות": 0,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 1,
+   "iframes": [
+    {
+     "src": "https://www-israel-canada-co-il.filesusr.com/html/a4f5ba_754c9986925fa32c97df2cd9379225b6.html",
+     "data_src": "",
+     "w": 536,
+     "h": 500,
+     "title": "טופס צור קשר"
+    }
+   ],
+   "iframe_domains": [
+    "www-israel-canada-co-il.filesusr.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://www-israel-canada-co-il.filesusr.com/html/a4f5ba_754c9986925fa32c97df2cd9379225b6.html",
+     "canvas": 0,
+     "text_len": 237,
+     "text_head": "שם פרטי * שדה חובה שם משפחה * שדה חובה טלפון נייד * שדה חובה אימייל * שדה חובה אני מסכימ/ה לקבל מידע שיווקי והטבות על מוצרים ו/או שירותים מקבוצת ישראל קנדה אני ",
+     "inputs": 9
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [
+    "מקלדת וירטואלית"
+   ],
+   "external_link_domains": [
+    "pluro.ai",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.linkedin.com"
+   ],
+   "script_domains": [
+    "",
+    "ajax.googleapis.com",
+    "browser.sentry-cdn.com",
+    "bundler-velo.parastorage.com",
+    "cdnai.tycontrol.me",
+    "my.pluro.ai",
+    "sdk.getlimy.ai",
+    "static.parastorage.com",
+    "web.cmp.usercentrics.eu"
+   ],
+   "forms": [],
+   "loose_contact_inputs": 0,
+   "videos": [
+    "https://video.wixstatic.com/video/11062b_d14ea38398994dd3af199158a56b311a/480p/mp4/file.mp4"
+   ],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 13,
+   "pdf_links": [],
+   "scrollHeight": 5991,
+   "shot_full": "israel-canada_full.jpg",
+   "shot_full_height": 5991,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

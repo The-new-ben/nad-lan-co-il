@@ -1,0 +1,118 @@
+{
+ "slug": "israel-canada-einstein-lp",
+ "developer": "Israel Canada (ישראל קנדה)",
+ "project": "Einstein, Tel Aviv - campaign landing domain seen on Meta ads",
+ "checked_local": "2026-11-07 16:06 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://einstein.israel-canada.co.il/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://einstein.israel-canada.co.il/",
+   "title": "Einstein 57-61 Ramat Aviv by ACRO",
+   "shot_top": "israel-canada-einstein-lp_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 456,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 0,
+    "תוכניות": 0,
+    "השאירו פרטים": 0,
+    "טופס": 2
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 1,
+   "iframes": [
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "UserWay Accessibility Menu"
+    }
+   ],
+   "iframe_domains": [],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "www.israel-canada.co.il"
+   ],
+   "script_domains": [
+    "cdn.userway.org",
+    "einstein.israel-canada.co.il",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 7,
+     "names": [
+      "first_name",
+      "last_name",
+      "mobile",
+      "email",
+      "00N3Y00000GWS85",
+      "00N3Y00000HB91p",
+      "submit"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 3,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 16,
+   "pdf_links": [],
+   "scrollHeight": 900,
+   "shot_full": "israel-canada-einstein-lp_full.jpg",
+   "shot_full_height": 900,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

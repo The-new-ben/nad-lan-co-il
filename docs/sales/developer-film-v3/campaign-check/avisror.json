@@ -1,0 +1,130 @@
+{
+ "slug": "avisror",
+ "developer": "Avisror (אביסרור)",
+ "project": "Ashira, Sde Dov, Tel Aviv",
+ "checked_local": "2026-11-07 15:32 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://avisror.com/residential/%D7%90%D7%A9%D7%99%D7%A8%D7%94-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": "דחה הכל",
+   "final_url": "https://avisror.com/residential/אשירה-בשדה-דב/",
+   "title": "אשירה בשדה דב - אביסרור משה ובניו",
+   "shot_top": "avisror_top.jpg",
+   "rendered_text_chars": 1385,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 1,
+    "תוכניות": 0,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 2,
+   "iframes": [
+    {
+     "src": "https://www.youtube-nocookie.com/embed/9ssqCpXE4Ak?rel=0",
+     "data_src": "",
+     "w": 1240,
+     "h": 720,
+     "title": ""
+    },
+    {
+     "src": "about:blank",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "IND - Default Props"
+    }
+   ],
+   "iframe_domains": [
+    "",
+    "www.youtube-nocookie.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://www.youtube-nocookie.com/embed/9ssqCpXE4Ak?rel=0",
+     "canvas": 0,
+     "text_len": 132
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "www.cookieyes.com",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.youtube.com"
+   ],
+   "script_domains": [
+    "avisror.com",
+    "cdn-cookieyes.com",
+    "cdn.nagich.co.il",
+    "connect.facebook.net",
+    "unpkg.com",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 4,
+     "names": [
+      "name",
+      "phone",
+      "email",
+      "marketing_approval"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 3,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 65,
+   "pdf_links": [],
+   "scrollHeight": 4815,
+   "shot_full": "avisror_full.jpg",
+   "shot_full_height": 4815
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "professionals": {
+  "url": "https://nad-lan.co.il/professionals/",
+  "status": 200,
+  "title": "מאגר בעלי מקצוע בנדל״ן: קבלנים, מתווכים, שמאים ויועצים | נדלן",
+  "h1": "מצאו בעל מקצוע לנדל״ן"
+ },
+ "mortgage-calculator": {
+  "url": "https://nad-lan.co.il/mortgage-calculator/",
+  "status": 200,
+  "title": "מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין",
+  "h1": "מחשבון משכנתא: חישוב החזר חודשי ועלות כוללת לפי מסלולים"
+ },
+ "purchase-tax-calculator": {
+  "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+  "status": 200,
+  "title": "מחשבון מס רכישה 2026: מדרגות, הקלות ומתי משלמים",
+  "h1": "חישוב מס רכישה על דירה: מדרגות 2026, מסלולים ומועד תשלום"
+ }
+}

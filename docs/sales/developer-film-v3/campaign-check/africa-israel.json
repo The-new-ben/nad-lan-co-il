@@ -1,0 +1,147 @@
+{
+ "slug": "africa-israel",
+ "developer": "Africa Israel Residences (אפריקה ישראל מגורים)",
+ "project": "Semel Tzafon, Tel Aviv (marked new)",
+ "checked_local": "2026-11-07 16:01 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://res.afi-g.com/cities/TelAviv-Jaffa/semel-zafon/Pages/default.aspx",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": null,
+   "final_url": "https://res.afi-g.com/cities/TelAviv-Jaffa/semel-zafon/Pages/default.aspx",
+   "title": "סמל צפון, תל אביב",
+   "shot_top": "africa-israel_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 4037,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 1,
+    "זמינות": 0,
+    "הדמיות": 0,
+    "תוכניות": 1,
+    "השאירו פרטים": 1,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 1,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 3,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {
+    "מלאי": [
+     "הקפה ומהים. שילוב נדיר בין רחובות אינטימיים ומלאי אופי לבין הקצב והאנרגיה של העיר, במקום שבו כ"
+    ]
+   },
+   "iframe_count": 1,
+   "iframes": [
+    {
+     "src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.3136400297954!2d34.783861!3d32.087807999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b8d756c25cf%3A0x6f6bdb047398cc6f!2sBen%20Saruq%20St%20%26%20Zeev%20Jabotinsky%20St%2C%20Tel%20Aviv-Yafo!5e0!3m2!1sen!2sil!4v1783316232940!5m2!1sen!2sil",
+     "data_src": "",
+     "w": 1200,
+     "h": 300,
+     "title": ""
+    }
+   ],
+   "iframe_domains": [
+    "www.google.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.3136400297954!2d34.783861!3d32.087807999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b8d756c25cf%3A0x6f6bdb047398cc6f!2sBen%20Saruq%20St%20%26%20Zeev%20Jabotinsky%20St%2C%20Tel%20Aviv-Yafo!5e0!3m2!1sen!2sil!4v1783316232940!5m2!1sen!2sil",
+     "canvas": 0,
+     "text_len": 79,
+     "text_head": "Keyboard shortcuts Map data ©2026 Google, Mapa GISrael Terms Report a map error",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "pz.africa-israel.co.il",
+    "shohamrent.co.il",
+    "www.africa-ur.co.il",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.tiktok.com",
+    "www.youtube.com"
+   ],
+   "script_domains": [
+    "apis.google.com",
+    "connect.facebook.net",
+    "portal.mk-sense.com",
+    "res.afi-g.com",
+    "www.googletagmanager.com"
+   ],
+   "forms": [
+    {
+     "inputs": 19,
+     "names": [
+      "ctl00$LandingPage$ctl00$HeaderUC1$ddlCities",
+      "ctl00$LandingPage$ctl00$HeaderUC1$ddlProjects",
+      "ctl00$LandingPage$ctl00$HeaderUC1$ddlRoomsNum",
+      "ctl00$SPWebPartManager1$g_b2b85da7_32ef_45d7_8ebb_0c917898c431$ctl00$txtFullName",
+      "ctl00$SPWebPartManager1$g_b2b85da7_32ef_45d7_8ebb_0c917898c431$ctl00$txtPhoneNum",
+      "ctl00$SPWebPartManager1$g_b2b85da7_32ef_45d7_8ebb_0c917898c431$ctl00$txtEmail",
+      "ctl00$SPWebPartManager1$g_b2b85da7_32ef_45d7_8ebb_0c917898c431$ctl00$cbNewsletter",
+      "ctl00$SPWebPartManager1$g_b2b85da7_32ef_45d7_8ebb_0c917898c431$ctl00$btnSend"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 9,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 136,
+   "pdf_links": [],
+   "scrollHeight": 5028,
+   "shot_full": "africa-israel_full.jpg",
+   "shot_full_height": 5028,
+   "shot_full_method": "stitched 1440x900 viewport slices (fixed headers repeat per slice)"
+  }
+ ]
+}

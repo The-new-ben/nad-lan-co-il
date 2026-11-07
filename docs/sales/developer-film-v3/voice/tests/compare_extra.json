@@ -1,0 +1,50 @@
+{
+ "kokoro_af_heart.wav": {
+  "avgLogprob": -0.206,
+  "noiseFloor_dB": -75.9,
+  "speech80_dB": -21.3,
+  "snr_dB": 54.7,
+  "hfShare8k": 0.1466,
+  "flatness": 0.0306
+ },
+ "kokoro_am_michael.wav": {
+  "avgLogprob": -0.318,
+  "noiseFloor_dB": -74.3,
+  "speech80_dB": -23.9,
+  "snr_dB": 50.3,
+  "hfShare8k": 0.0645,
+  "flatness": 0.0213
+ },
+ "kokoro_bm_george.wav": {
+  "avgLogprob": -0.192,
+  "noiseFloor_dB": -93.2,
+  "speech80_dB": -20.4,
+  "snr_dB": 72.8,
+  "hfShare8k": 0.0314,
+  "flatness": 0.0325
+ },
+ "vibevoice_en-Carter_man.wav": {
+  "avgLogprob": -0.379,
+  "noiseFloor_dB": -93.0,
+  "speech80_dB": -22.4,
+  "snr_dB": 70.7,
+  "hfShare8k": 0.0006,
+  "flatness": 0.0213
+ },
+ "vibevoice_en-Frank_man.wav": {
+  "avgLogprob": -0.284,
+  "noiseFloor_dB": -74.2,
+  "speech80_dB": -21.7,
+  "snr_dB": 52.5,
+  "hfShare8k": 0.0005,
+  "flatness": 0.0076
+ },
+ "vibevoice_en-Grace_woman.wav": {
+  "avgLogprob": -0.435,
+  "noiseFloor_dB": -56.2,
+  "speech80_dB": -23.4,
+  "snr_dB": 32.8,
+  "hfShare8k": 0.1305,
+  "flatness": 0.0249
+ }
+}

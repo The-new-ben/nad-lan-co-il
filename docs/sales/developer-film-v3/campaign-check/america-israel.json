@@ -1,0 +1,197 @@
+{
+ "slug": "america-israel",
+ "developer": "America Israel (אמריקה ישראל)",
+ "project": "MUZA, Tel Aviv",
+ "checked_local": "2026-11-07 15:57 Jerusalem Standard Time (UTC+0200)",
+ "method": "headless Chrome (Playwright channel=chrome), 1440x900, he-IL, analytics/ads blocked in own context, no login, no form input",
+ "pages": [
+  {
+   "tag": "",
+   "requested_url": "https://america-israel.co.il/project/muza/",
+   "http_status": 200,
+   "redirect_chain": [],
+   "cookie_declined_with": "close:.cc-window .cc-close",
+   "final_url": "https://america-israel.co.il/project/muza/",
+   "title": "פרויקטים בשיווק - מוזה | אמריקה ישראל",
+   "shot_top": "america-israel_top.jpg",
+   "popups_closed": [],
+   "scroll_mode": "window",
+   "popups_closed_after_scroll": [],
+   "rendered_text_chars": 1558,
+   "words_required": {
+    "סיור וירטואלי": 0,
+    "360": 0,
+    "תלת מימד": 0,
+    "3D": 0,
+    "בחירת דירה": 0,
+    "בחר דירה": 0,
+    "בחר קומה": 0,
+    "קומה": 0,
+    "מלאי": 0,
+    "זמינות": 0,
+    "הדמיות": 1,
+    "תוכניות": 0,
+    "השאירו פרטים": 0,
+    "טופס": 0
+   },
+   "words_extra": {
+    "תלת-מימד": 0,
+    "תלת ממד": 0,
+    "וירטואלי": 0,
+    "סיור": 0,
+    "דירה לדוגמה": 0,
+    "דירה לדוגמא": 0,
+    "בחרו דירה": 0,
+    "בחירת קומה": 0,
+    "תכניות": 0,
+    "תוכנית": 0,
+    "פנויה": 0,
+    "נמכרה": 0,
+    "מפרט": 0,
+    "הורדת": 0,
+    "קטלוג": 0,
+    "סרטון": 0,
+    "וידאו": 0,
+    "צפייה": 0
+   },
+   "word_contexts": {},
+   "iframe_count": 5,
+   "iframes": [
+    {
+     "src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3379.8412476081185!2d34.78735181516507!3d32.10057598118159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4be5ca293127%3A0x87f570a3ef32a089!2sSderot%20Levi%20Eshkol%201%2C%20Tel%20Aviv-Yafo!5e0!3m2!1sen!2sil!4v1645302881765!5m2!1sen!2sil",
+     "data_src": "",
+     "w": 300,
+     "h": 450,
+     "title": ""
+    },
+    {
+     "src": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfUNz4iAAAAAKLVU6lwe3V5EqX7IDk4IqZz9IFR&co=aHR0cHM6Ly9hbWVyaWNhLWlzcmFlbC5jby5pbDo0NDM.&hl=en&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&theme=light&size=normal&anchor-ms=20000&execute-ms=30000&cb=jpxk0va0nozc",
+     "data_src": "",
+     "w": 304,
+     "h": 78,
+     "title": "reCAPTCHA"
+    },
+    {
+     "src": "",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": ""
+    },
+    {
+     "src": "about:blank",
+     "data_src": "",
+     "w": 0,
+     "h": 0,
+     "title": "Iframe זה מכיל את התנאי הנדרש לטיפול ב-Gravity Forms באמצעות Ajax."
+    },
+    {
+     "src": "https://www.google.com/recaptcha/api2/bframe?hl=en&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&k=6LfUNz4iAAAAAKLVU6lwe3V5EqX7IDk4IqZz9IFR&bft=0dAFcWeA4grv6ykpcWi13XAI3EjAht8-pY9uIb1EX1ZzezVm2L_556kRKDAzytm8oymGZvCxxxp7k4seeG-au71-PAwcYQUZo5cA",
+     "data_src": "",
+     "w": 300,
+     "h": 150,
+     "title": "recaptcha challenge expires in two minutes"
+    }
+   ],
+   "iframe_domains": [
+    "",
+    "www.google.com"
+   ],
+   "canvas_count": 0,
+   "canvases": [],
+   "frames": [
+    {
+     "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3379.8412476081185!2d34.78735181516507!3d32.10057598118159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4be5ca293127%3A0x87f570a3ef32a089!2sSderot%20Levi%20Eshkol%201%2C%20Tel%20Aviv-Yafo!5e0!3m2!1sen!2sil!4v1645302881765!5m2!1sen!2sil",
+     "canvas": 0,
+     "text_len": 52,
+     "text_head": "Keyboard shortcuts Map Data Terms Report a map error",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfUNz4iAAAAAKLVU6lwe3V5EqX7IDk4IqZz9IFR&co=aHR0cHM6Ly9hbWVyaWNhLWlzcmFlbC5jby5pbDo0NDM.&hl=en&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&theme=light&size=normal&anchor-ms=20000&execute-ms=30000&cb=jpxk0va0nozc",
+     "canvas": 0,
+     "text_len": 25,
+     "text_head": "I'm not a robot reCAPTCHA",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "https://www.google.com/recaptcha/api2/bframe?hl=en&v=bSuJ2xBC8cFy7pM4Z3Hu9boH&k=6LfUNz4iAAAAAKLVU6lwe3V5EqX7IDk4IqZz9IFR&bft=0dAFcWeA4grv6ykpcWi13XAI3EjAht8-pY9uIb1EX1ZzezVm2L_556kRKDAzytm8oymGZvCxxxp7k4seeG-au71-PAwcYQUZo5cA",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    },
+    {
+     "url": "about:blank",
+     "canvas": 0,
+     "text_len": 0,
+     "text_head": "",
+     "inputs": 0
+    }
+   ],
+   "viewer_like_iframes": [],
+   "candidate_links_3d_tour_picker": [],
+   "candidate_buttons": [],
+   "external_link_domains": [
+    "www.instagram.com"
+   ],
+   "script_domains": [
+    "america-israel.co.il",
+    "www.google.com",
+    "www.gstatic.com"
+   ],
+   "forms": [
+    {
+     "inputs": 8,
+     "names": [
+      "input_1.3",
+      "input_4",
+      "input_5",
+      "input_6",
+      "input_10.1",
+      "g-recaptcha-response",
+      "input_11",
+      "submit"
+     ]
+    }
+   ],
+   "loose_contact_inputs": 2,
+   "videos": [],
+   "svg_with_15plus_shapes": [],
+   "svg_polygons": 0,
+   "image_map_areas": 0,
+   "img_count": 8,
+   "pdf_links": [],
+   "scrollHeight": 4026,
+   "shot_full": "america-israel_full.jpg",
+   "shot_full_height": 4026,
+   "shot_full_method": "CDP captureBeyondViewport, right-most 1440 px crop (RTL page with wide horizontal overflow renders empty in headless viewport shots)",
+   "rtl_wide_capture": {
+    "doc_width": 11020,
+    "doc_height": 4026,
+    "crop_x": 9580
+   }
+  }
+ ]
+}
