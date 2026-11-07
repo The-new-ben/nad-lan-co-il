@@ -288,3 +288,5 @@ Before ANY new or rewritten page, guide or article goes to ChatGPT or a writer:
 6. Research stays internal (in the repo).
 
 It does not reopen already-published work.
+
+- **Talking agent (a face that pops up and talks, every site):** start at `C:/Users/777/Documents/agent-tools/TALKING-AGENT.md` (what exists from the court avatar bake-off, rules, costs). Ben 7.11.2026: do not start from zero.
