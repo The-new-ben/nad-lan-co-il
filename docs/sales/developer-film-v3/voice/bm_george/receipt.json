@@ -160,20 +160,6 @@
   {
    "voice": "bm_george",
    "speed": 1.0,
-   "text": "On Google, and in the AI answers buyers now ask.",
-   "spoken": "On Google, and in the A I answers buyers now ask.",
-   "path": "..\\voice\\bm_george\\s05_2.wav",
-   "sr": 24000,
-   "seconds": 3.775,
-   "genSeconds": 1.94,
-   "peak": 0.308,
-   "sha256": "964da2089545d544d261cb8439a93002665eeab5dcb94dec65263393d61d5fc7",
-   "id": "s05",
-   "k": 2
-  },
-  {
-   "voice": "bm_george",
-   "speed": 1.0,
    "text": "We know how to put you there.",
    "spoken": "We know how to put you there.",
    "path": "..\\voice\\bm_george\\s05_3.wav",
@@ -506,6 +492,20 @@
    "sha256": "2a09da174e28b5c700704d021a8c8319f6ffd8e2c5d49b7f3e754caeb28b0f90",
    "id": "s12",
    "k": 3
+  },
+  {
+   "voice": "bm_george",
+   "speed": 1.0,
+   "text": "On Google, and inside the answers of ChatGPT, Gemini and Claude.",
+   "spoken": "On Google, and inside the answers of ChatGPT, Gemini and Claude.",
+   "path": "..\\voice\\bm_george\\s05_2.wav",
+   "sr": 24000,
+   "seconds": 5.428,
+   "genSeconds": 3.08,
+   "peak": 0.398,
+   "sha256": "e332c73c7fa03ae073c5f2365a4014096ed243fbc34e32fa0f528a1636188fd4",
+   "id": "s05",
+   "k": 2
   }
  ]
 }

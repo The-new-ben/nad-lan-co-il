@@ -6,7 +6,7 @@ Generated from C:/Users/777/Documents/agent-tools/video-index.json (re-run build
 
 | What | Where |
 |---|---|
-| Developer film v3 (CEO, English voice-over, Hebrew subtitles), in production 7.11.2026 | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v3/ (en-vo_he-sub_16x9.mp4, en-vo_he-sub_9x16.mp4 when done) |
+| Developer film v3 (CEO, English voice-over, Hebrew subtitles, 2:27, approved by Ben 7.11.2026; LIVE on https://nad-lan.co.il/marketing/#film) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v3/ (en-vo_he-sub_16x9.mp4, en-vo_he-sub_9x16.mp4, web cut he-web-16x9.mp4 = https://nad-lan.co.il/wp-content/uploads/2026/11/developer-film-v3-he.mp4, media 8833, poster 8834) |
 | Developer film v2 (Hebrew captions, 90 s, sent to Ben 7.11) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v2/he-16x9.mp4 and he-9x16.mp4 |
 | Ben's own developer film (1.11, 87 s, English voice-over, real visitor recordings) | C:/Users/777/.claude/uploads/f8200c1d-6798-4a3e-8a9f-7b12503e42b2/479ba69e-VID-20261101-WA0001.mp4 |
 | Developer intro film | C:/Users/777/nad-lan/nad-lan-co-il/scripts/project-video/out/nadlan-developers_1080x1920.mp4 and media/film/nadlan-developer-film.mp4 |
@@ -15,12 +15,15 @@ Generated from C:/Users/777/Documents/agent-tools/video-index.json (re-run build
 | Kochav penthouse (Meital's listing; real-listing rules apply) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/kochav-ph/film/v3/web/ and campaign reels in docs/sales/kochav-ph/campaign/post/out/{he,en,fr,ru} |
 | Grok bot campaign kit (reels and feed per language) | C:/Users/777/Documents/grok-bot/nadlan-campaign/assets/ |
 
-Full list below: 283 nad-lan files, 3382 on the whole computer.
+Full list below: 286 nad-lan files, 3385 on the whole computer.
 
 | Date | Length | Res | Sound | Path |
 |---|---|---|---|---|
 | 2026-11-07 | 90.0s | 1920x1080 | yes | C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\developer-film-v2\he-16x9.mp4 |
 | 2026-11-07 | 90.0s | 1080x1920 | yes | C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\developer-film-v2\he-9x16.mp4 |
+| 2026-11-07 | 147.3s | 1920x1080 | yes | C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\developer-film-v3\en-vo_he-sub_16x9.mp4 |
+| 2026-11-07 | 147.3s | 1080x1920 | yes | C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\developer-film-v3\en-vo_he-sub_9x16.mp4 |
+| 2026-11-07 | 147.3s | 1280x720 | yes | C:\Users\777\nad-lan\nad-lan-co-il\docs\sales\developer-film-v3\he-web-16x9.mp4 |
 | 2026-11-07 | 87.7s | 1280x720 | yes | C:\Users\777\.claude\uploads\f8200c1d-6798-4a3e-8a9f-7b12503e42b2\479ba69e-VID-20261101-WA0001.mp4 |
 | 2026-10-30 | 23.6s | 1080x1350 | yes | C:\Users\777\Documents\grok-bot\nadlan-campaign\assets\en\feed-4x5.mp4 |
 | 2026-10-30 | 23.4s | 1080x1920 | yes | C:\Users\777\Documents\grok-bot\nadlan-campaign\assets\en\reel-9x16-full.mp4 |

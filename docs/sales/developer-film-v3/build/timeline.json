@@ -1,5 +1,5 @@
 {
- "duration": 145.59,
+ "duration": 147.33,
  "scenes": [
   {
    "id": "s01",
@@ -28,73 +28,73 @@
   {
    "id": "s05",
    "a": 42.7,
-   "b": 53.19,
+   "b": 54.93,
    "pic": "Google in French (Ben's film), our French project page, the AI Mode answer with our page among the sources"
   },
   {
    "id": "s06",
-   "a": 53.19,
-   "b": 57.28,
+   "a": 54.93,
+   "b": 59.02,
    "pic": "into the live 3D stage of Rainbow"
   },
   {
    "id": "s07",
-   "a": 57.28,
-   "b": 64.47,
+   "a": 59.02,
+   "b": 66.21,
    "pic": "floor 23 on the stage, the view from that floor, the apartment designer and a note"
   },
   {
    "id": "s08",
-   "a": 64.47,
-   "b": 73.99,
+   "a": 66.21,
+   "b": 75.73,
    "pic": "the Sde Dov quarter walk, 2035 (as planned), then VR (in development)"
   },
   {
    "id": "s09",
-   "a": 73.99,
-   "b": 80.34,
+   "a": 75.73,
+   "b": 82.08,
    "pic": "Rainbow's price tile, map and neighbourhood facts (Hebrew page)"
   },
   {
    "id": "s10",
-   "a": 80.34,
-   "b": 91.98,
+   "a": 82.08,
+   "b": 93.72,
    "pic": "Ben's real recordings: Israel, the UK, France, Australia; mouse paths, clicks, the click map"
   },
   {
    "id": "s11",
-   "a": 91.98,
-   "b": 103.91,
+   "a": 93.72,
+   "b": 105.65,
    "pic": "the video button on the project page, then the shared viewing room on the plan"
   },
   {
    "id": "s12",
-   "a": 103.91,
-   "b": 115.44,
+   "a": 105.65,
+   "b": 117.18,
    "pic": "the WhatsApp message card, labelled דוגמה"
   },
   {
    "id": "s13",
-   "a": 115.44,
-   "b": 122.47,
+   "a": 117.18,
+   "b": 124.21,
    "pic": "our team's pages: professionals, mortgage calculator, purchase-tax calculator"
   },
   {
    "id": "s14",
-   "a": 122.47,
-   "b": 128.73,
+   "a": 124.21,
+   "b": 130.47,
    "pic": "the route chart again, Tel Aviv glowing"
   },
   {
    "id": "s15",
-   "a": 128.73,
-   "b": 135.74,
+   "a": 130.47,
+   "b": 137.48,
    "pic": "the campaign planner of /marketing/ on a phone, five steps"
   },
   {
    "id": "s16",
-   "a": 135.74,
-   "b": 145.59,
+   "a": 137.48,
+   "b": 147.33,
    "pic": "end card"
   }
  ],
@@ -180,175 +180,175 @@
    "scene": "s05",
    "k": 2,
    "a": 46.94,
-   "b": 50.38,
-   "en": "On Google, and in the AI answers buyers now ask."
+   "b": 52.12,
+   "en": "On Google, and inside the answers of ChatGPT, Gemini and Claude."
   },
   {
    "scene": "s05",
    "k": 3,
-   "a": 50.98,
-   "b": 52.64,
+   "a": 52.72,
+   "b": 54.38,
    "en": "We know how to put you there."
   },
   {
    "scene": "s06",
    "k": 1,
-   "a": 53.54,
-   "b": 56.88,
+   "a": 55.28,
+   "b": 58.62,
    "en": "He doesn't just look at a render. He lands inside it."
   },
   {
    "scene": "s07",
    "k": 1,
-   "a": 57.58,
-   "b": 60.12,
+   "a": 59.32,
+   "b": 61.86,
    "en": "He picks the floor. He sees his view."
   },
   {
    "scene": "s07",
    "k": 2,
-   "a": 60.92,
-   "b": 63.92,
+   "a": 62.66,
+   "b": 65.66,
    "en": "He furnishes the apartment and leaves his notes."
   },
   {
    "scene": "s08",
    "k": 1,
-   "a": 64.82,
-   "b": 68.94,
+   "a": 66.56,
+   "b": 70.68,
    "en": "He can walk the neighbourhood as it will be, after your building is built."
   },
   {
    "scene": "s08",
    "k": 2,
-   "a": 69.74,
-   "b": 73.44,
+   "a": 71.48,
+   "b": 75.18,
    "en": "And we're now taking it into V R, inside the apartment."
   },
   {
    "scene": "s09",
    "k": 1,
-   "a": 74.29,
-   "b": 76.73,
+   "a": 76.03,
+   "b": 78.47,
    "en": "Prices, the neighbourhood, the numbers."
   },
   {
    "scene": "s09",
    "k": 2,
-   "a": 77.05,
-   "b": 79.79,
+   "a": 78.79,
+   "b": 81.53,
    "en": "A complete decision room for your project."
   },
   {
    "scene": "s10",
    "k": 1,
-   "a": 80.69,
-   "b": 85.65,
+   "a": 82.43,
+   "b": 87.39,
    "en": "These are real buyers. Israel. The UK. France. Australia."
   },
   {
    "scene": "s10",
    "k": 2,
-   "a": 86.35,
-   "b": 89.05,
+   "a": 88.09,
+   "b": 90.79,
    "en": "Checking the area, the maps, the renders."
   },
   {
    "scene": "s10",
    "k": 3,
-   "a": 89.65,
-   "b": 91.43,
+   "a": 91.39,
+   "b": 93.17,
    "en": "Choosing, and reaching out."
   },
   {
    "scene": "s11",
    "k": 1,
-   "a": 92.28,
-   "b": 96.86,
+   "a": 94.02,
+   "b": 98.6,
    "en": "One tap opens a live video meeting inside the project page."
   },
   {
    "scene": "s11",
    "k": 2,
-   "a": 97.18,
-   "b": 103.36,
+   "a": 98.92,
+   "b": 105.1,
    "en": "Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together."
   },
   {
    "scene": "s12",
    "k": 1,
-   "a": 104.21,
-   "b": 106.63,
+   "a": 105.95,
+   "b": 108.37,
    "en": "You don't get a name and a phone number."
   },
   {
    "scene": "s12",
    "k": 2,
-   "a": 107.23,
-   "b": 110.21,
+   "a": 108.97,
+   "b": 111.95,
    "en": "Floor twenty-three. Sea view. In French."
   },
   {
    "scene": "s12",
    "k": 3,
-   "a": 110.91,
-   "b": 114.89,
+   "a": 112.65,
+   "b": 116.63,
    "en": "This isn't a lead. It's a buyer who already knows what he's buying."
   },
   {
    "scene": "s13",
    "k": 1,
-   "a": 115.74,
-   "b": 120.02,
+   "a": 117.48,
+   "b": 121.76,
    "en": "From there, our team stays with him all the way to the signed contract."
   },
   {
    "scene": "s13",
    "k": 2,
-   "a": 120.34,
-   "b": 121.92,
+   "a": 122.08,
+   "b": 123.66,
    "en": "We don't let him slip away."
   },
   {
    "scene": "s14",
    "k": 1,
-   "a": 122.82,
-   "b": 125.86,
+   "a": 124.56,
+   "b": 127.6,
    "en": "The big money is abroad right now. We're there."
   },
   {
    "scene": "s14",
    "k": 2,
-   "a": 126.18,
-   "b": 128.18,
+   "a": 127.92,
+   "b": 129.92,
    "en": "And we're here, in Israel."
   },
   {
    "scene": "s15",
    "k": 1,
-   "a": 129.03,
-   "b": 131.85,
+   "a": 130.77,
+   "b": 133.59,
    "en": "Pick your markets, your buyers, your budget."
   },
   {
    "scene": "s15",
    "k": 2,
-   "a": 132.17,
-   "b": 135.19,
+   "a": 133.91,
+   "b": 136.93,
    "en": "Your campaign can be live in seven days."
   },
   {
    "scene": "s16",
    "k": 1,
-   "a": 136.09,
-   "b": 139.45,
+   "a": 137.83,
+   "b": 141.19,
    "en": "More buyers. Bigger budgets. Your next project."
   },
   {
    "scene": "s16",
    "k": 2,
-   "a": 140.05,
-   "b": 143.39,
+   "a": 141.79,
+   "b": 145.13,
    "en": "nad-lan.co.il, slash marketing.",
    "say": "Nad lan dot co dot eel, slash marketing."
   }
@@ -441,200 +441,200 @@
   {
    "scene": "s05",
    "a": 46.86,
-   "b": 50.73,
-   "he": "בגוגל, ובתשובות ה־AI.",
-   "en": "On Google, and in the AI answers buyers now ask."
+   "b": 52.47,
+   "he": "בגוגל, ובתוך התשובות של ChatGPT, Gemini ו־Claude.",
+   "en": "On Google, and inside the answers of ChatGPT, Gemini and Claude."
   },
   {
    "scene": "s05",
-   "a": 50.9,
-   "b": 52.99,
+   "a": 52.64,
+   "b": 54.73,
    "he": "אנחנו יודעים לשים אתכם שם.",
    "en": "We know how to put you there."
   },
   {
    "scene": "s06",
-   "a": 53.46,
-   "b": 57.23,
+   "a": 55.2,
+   "b": 58.97,
    "he": "הוא לא רק מסתכל על הדמיה. הוא נוחת בתוכה.",
    "en": "He doesn't just look at a render. He lands inside it."
   },
   {
    "scene": "s07",
-   "a": 57.5,
-   "b": 60.47,
+   "a": 59.24,
+   "b": 62.21,
    "he": "בוחר קומה. רואה את הנוף שלו.",
    "en": "He picks the floor. He sees his view."
   },
   {
    "scene": "s07",
-   "a": 60.84,
-   "b": 64.27,
+   "a": 62.58,
+   "b": 66.01,
    "he": "מעצב את הדירה ומשאיר הערות.",
    "en": "He furnishes the apartment and leaves his notes."
   },
   {
    "scene": "s08",
-   "a": 64.74,
-   "b": 69.29,
+   "a": 66.48,
+   "b": 71.03,
    "he": "הוא מסתובב בשכונה כמו שהיא תיראה אחרי שהבניין ייבנה.",
    "en": "He can walk the neighbourhood as it will be, after your building is built."
   },
   {
    "scene": "s08",
-   "a": 69.66,
-   "b": 73.79,
+   "a": 71.4,
+   "b": 75.53,
    "he": "ועכשיו אנחנו מכניסים את זה למשקפי VR, בתוך הדירה.",
    "en": "And we're now taking it into V R, inside the apartment."
   },
   {
    "scene": "s09",
-   "a": 74.21,
-   "b": 76.91,
+   "a": 75.95,
+   "b": 78.65,
    "he": "מחירים, השכונה, המספרים.",
    "en": "Prices, the neighbourhood, the numbers."
   },
   {
    "scene": "s09",
-   "a": 76.97,
-   "b": 80.14,
+   "a": 78.71,
+   "b": 81.88,
    "he": "חדר החלטות שלם לפרויקט שלכם.",
    "en": "A complete decision room for your project."
   },
   {
    "scene": "s10",
-   "a": 80.61,
-   "b": 82.85,
+   "a": 82.35,
+   "b": 84.59,
    "he": "אלה קונים אמיתיים.",
    "en": "These are real buyers. Israel. The UK. France. Australia. [1/2]"
   },
   {
    "scene": "s10",
-   "a": 82.91,
-   "b": 86.0,
+   "a": 84.65,
+   "b": 87.74,
    "he": "ישראל, בריטניה, צרפת, אוסטרליה.",
    "en": "These are real buyers. Israel. The UK. France. Australia. [2/2]"
   },
   {
    "scene": "s10",
-   "a": 86.27,
-   "b": 89.4,
+   "a": 88.01,
+   "b": 91.14,
    "he": "בודקים את האזור, את המפות, את ההדמיות.",
    "en": "Checking the area, the maps, the renders."
   },
   {
    "scene": "s10",
-   "a": 89.57,
-   "b": 91.78,
+   "a": 91.31,
+   "b": 93.52,
    "he": "בוחרים, ופונים.",
    "en": "Choosing, and reaching out."
   },
   {
    "scene": "s11",
-   "a": 92.2,
-   "b": 97.04,
+   "a": 93.94,
+   "b": 98.78,
    "he": "לחיצה אחת פותחת פגישת וידאו בתוך עמוד הפרויקט:",
    "en": "One tap opens a live video meeting inside the project page."
   },
   {
    "scene": "s11",
-   "a": 97.1,
-   "b": 99.335,
+   "a": 98.84,
+   "b": 101.075,
    "he": "הצוות שלכם, הקונה, המשפחה שלו",
    "en": "Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. [1/2]"
   },
   {
    "scene": "s11",
-   "a": 99.395,
-   "b": 103.71,
+   "a": 101.135,
+   "b": 105.45,
    "he": "וכל מי שהוא רוצה לצרף, מסתכלים יחד על תוכנית הדירה.",
    "en": "Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. [2/2]"
   },
   {
    "scene": "s12",
-   "a": 104.13,
-   "b": 106.98,
+   "a": 105.87,
+   "b": 108.72,
    "he": "לא מקבלים שם וטלפון.",
    "en": "You don't get a name and a phone number."
   },
   {
    "scene": "s12",
-   "a": 107.15,
-   "b": 110.56,
+   "a": 108.89,
+   "b": 112.3,
    "he": "קומה 23, לים, בצרפתית.",
    "en": "Floor twenty-three. Sea view. In French."
   },
   {
    "scene": "s12",
-   "a": 110.83,
-   "b": 115.24,
+   "a": 112.57,
+   "b": 116.98,
    "he": "זה לא ליד. זה קונה שכבר יודע מה הוא קונה.",
    "en": "This isn't a lead. It's a buyer who already knows what he's buying."
   },
   {
    "scene": "s13",
-   "a": 115.66,
-   "b": 120.2,
+   "a": 117.4,
+   "b": 121.94,
    "he": "משם הצוות שלנו נשאר איתו עד החוזה החתום.",
    "en": "From there, our team stays with him all the way to the signed contract."
   },
   {
    "scene": "s13",
-   "a": 120.26,
-   "b": 122.27,
+   "a": 122.0,
+   "b": 124.01,
    "he": "לא נותנים לו לברוח.",
    "en": "We don't let him slip away."
   },
   {
    "scene": "s14",
-   "a": 122.74,
-   "b": 126.04,
+   "a": 124.48,
+   "b": 127.78,
    "he": "הכסף הגדול נמצא עכשיו בחו״ל. אנחנו שם.",
    "en": "The big money is abroad right now. We're there."
   },
   {
    "scene": "s14",
-   "a": 126.1,
-   "b": 128.53,
+   "a": 127.84,
+   "b": 130.27,
    "he": "וגם כאן, בארץ.",
    "en": "And we're here, in Israel."
   },
   {
    "scene": "s15",
-   "a": 128.95,
-   "b": 132.03,
+   "a": 130.69,
+   "b": 133.77,
    "he": "בוחרים שווקים, קונים ותקציב.",
    "en": "Pick your markets, your buyers, your budget."
   },
   {
    "scene": "s15",
-   "a": 132.09,
-   "b": 135.54,
+   "a": 133.83,
+   "b": 137.28,
    "he": "הקמפיין יכול להיות באוויר תוך שבעה ימים.",
    "en": "Your campaign can be live in seven days."
   },
   {
    "scene": "s16",
-   "a": 136.01,
-   "b": 139.8,
+   "a": 137.75,
+   "b": 141.54,
    "he": "יותר קונים. יותר תקציב. הפרויקט הבא שלכם.",
    "en": "More buyers. Bigger budgets. Your next project."
   },
   {
    "scene": "s16",
-   "a": 139.97,
-   "b": 143.74,
+   "a": 141.71,
+   "b": 145.48,
    "he": "nad-lan.co.il/marketing",
    "en": "nad-lan.co.il, slash marketing."
   }
  ],
  "voLoudness": {
-  "before": -21.41,
+  "before": -21.42,
   "after": -16.01,
   "truePeak": -1.5
  },
  "mixLoudness": {
-  "before": -15.95,
+  "before": -15.97,
   "after": -16.01,
   "truePeak": -1.5
  },

@@ -2,8 +2,8 @@
  "whisper": "small (cached C:/Users/777/.cache/whisper/small.pt), CPU, temperature 0, beam 5, language en, word timestamps",
  "note": "ASR screening only, not a naturalness or listening judgement",
  "scriptWords": 336,
- "wordDiffs": 19,
- "fullTranscript": "Right now, a buyer in Paris is looking for a home in Tel Aviv, another in London, another in Rannanet. You can build a beautiful render, you can buy ads. Every developer does. We checked the live project pages of 12 leading Israeli developers, 10 stop at the render and a form. Non lets the buyer step inside and pick his floor. What no one sells you is all of it, working together on one buyer. Your marketing department runs the campaign. We are the special unit you send in for one mission, bringing you buyers who are ready to sign. When he searches in his own language, he finds your project on Google and in the AI answers buyers now ask. We know how to put you there. He doesn't just look at a render, he lands inside it. He picks the floor, he sees his view. He furnishes the apartment and leaves his notes. He can walk the neighborhood as it will be after your building is built. And we're now taking it into VR inside the apartment. Prices, the neighborhood, the numbers, a complete decision room for your project. These are real buyers, Israel, the UK, France, Australia. Checking the area, the maps, the renders. Choosing and reaching out. One tap opens a live video meeting inside the project page. Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. You don't get a name and a phone number. Floor 23, see view in French. This isn't a lead, it's a buyer who already knows what he's buying. From there, our team stays with him all the way to the signed contract. We don't let him slip away. The big money is abroad right now, we are there. And we are here in Israel. Pick your markets, your buyers, your budget. Your campaign can be live in seven days. More buyers, bigger budgets, your next project. Nadlan.co.il slash marketing.",
+ "wordDiffs": 25,
+ "fullTranscript": "Right now, a buyer in Paris is looking for a home in Tel Aviv, another in London, another in Rannanet. You can build a beautiful render, you can buy ads. Every developer does. We checked the live project pages of 12 leading Israeli developers, 10 stop at the render and a form. Non lets the buyer step inside and pick his floor. What no one sells you is all of it, working together on one buyer. Your marketing department runs the campaign. We are the special unit you send in for one mission, bringing you buyers who are ready to sign. When he searches in his own language, he finds your project on Google and inside the answers of chat GPT, Gemini and Claude. We know how to put you there. He doesn't just look at a render, he lands inside it. He picks the floor, he sees his view. He furnishes the apartment and leaves his notes. He can walk the neighborhood as it will be after your building is built. And we're now taking it into VR, inside the apartment. Prices, the neighborhood, the numbers. A complete decision room for your project. These are real buyers, Israel, the UK, France, Australia. Checking the area, the maps, the renders. Choosing and reaching out. One tap opens a live video meeting inside the project page. Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. You don't get a name and a phone number. Floor 23, see View in French. This isn't a lead, it's a buyer who already knows what he's buying. From there, our team stays with him all the way to the signed contract. We don't let him slip away. The big money is abroad right now, we are there, and we are here in Israel. Pick your markets, your buyers, your budget. Your campaign can be live in seven days. More buyers, bigger budgets, your next project. NADLAN.CO.EAL.",
  "blocks": [
   {
    "scene": "s01",
@@ -97,22 +97,22 @@
    "scene": "s05",
    "k": 2,
    "a": 46.94,
-   "script": "On Google, and in the AI answers buyers now ask.",
-   "heard": "on Google and in the AI answers buyers now ask.",
-   "wordDiffs": 0
+   "script": "On Google, and inside the answers of ChatGPT, Gemini and Claude.",
+   "heard": "on Google and inside the answers of chat GPT, Gemini and Claude.",
+   "wordDiffs": 2
   },
   {
    "scene": "s05",
    "k": 3,
-   "a": 50.98,
+   "a": 52.72,
    "script": "We know how to put you there.",
-   "heard": "We know how to put you there.",
-   "wordDiffs": 0
+   "heard": "know how to put you there.",
+   "wordDiffs": 1
   },
   {
    "scene": "s06",
    "k": 1,
-   "a": 53.54,
+   "a": 55.28,
    "script": "He doesn't just look at a render. He lands inside it.",
    "heard": "He doesn't just look at a render, he lands inside it.",
    "wordDiffs": 0
@@ -120,7 +120,7 @@
   {
    "scene": "s07",
    "k": 1,
-   "a": 57.58,
+   "a": 59.32,
    "script": "He picks the floor. He sees his view.",
    "heard": "He picks the floor, he sees his view.",
    "wordDiffs": 0
@@ -128,7 +128,7 @@
   {
    "scene": "s07",
    "k": 2,
-   "a": 60.92,
+   "a": 62.66,
    "script": "He furnishes the apartment and leaves his notes.",
    "heard": "He furnishes the apartment and leaves his notes.",
    "wordDiffs": 0
@@ -136,39 +136,39 @@
   {
    "scene": "s08",
    "k": 1,
-   "a": 64.82,
+   "a": 66.56,
    "script": "He can walk the neighbourhood as it will be, after your building is built.",
-   "heard": "He can walk the neighborhood as it will be after your building is built.",
-   "wordDiffs": 1
+   "heard": "He can walk the neighborhood as it will be after your building is built. And",
+   "wordDiffs": 2
   },
   {
    "scene": "s08",
    "k": 2,
-   "a": 69.74,
+   "a": 71.48,
    "script": "And we're now taking it into V R, inside the apartment.",
-   "heard": "And we're now taking it into VR inside the apartment.",
-   "wordDiffs": 2
+   "heard": "we're now taking it into VR, inside the apartment.",
+   "wordDiffs": 3
   },
   {
    "scene": "s09",
    "k": 1,
-   "a": 74.29,
+   "a": 76.03,
    "script": "Prices, the neighbourhood, the numbers.",
-   "heard": "Prices, the neighborhood, the numbers,",
+   "heard": "Prices, the neighborhood, the numbers.",
    "wordDiffs": 1
   },
   {
    "scene": "s09",
    "k": 2,
-   "a": 77.05,
+   "a": 78.79,
    "script": "A complete decision room for your project.",
-   "heard": "a complete decision room for your project.",
+   "heard": "A complete decision room for your project.",
    "wordDiffs": 0
   },
   {
    "scene": "s10",
    "k": 1,
-   "a": 80.69,
+   "a": 82.43,
    "script": "These are real buyers. Israel. The UK. France. Australia.",
    "heard": "These are real buyers, Israel, the UK, France, Australia.",
    "wordDiffs": 0
@@ -176,7 +176,7 @@
   {
    "scene": "s10",
    "k": 2,
-   "a": 86.35,
+   "a": 88.09,
    "script": "Checking the area, the maps, the renders.",
    "heard": "Checking the area, the maps, the renders.",
    "wordDiffs": 0
@@ -184,7 +184,7 @@
   {
    "scene": "s10",
    "k": 3,
-   "a": 89.65,
+   "a": 91.39,
    "script": "Choosing, and reaching out.",
    "heard": "Choosing and reaching out.",
    "wordDiffs": 0
@@ -192,15 +192,15 @@
   {
    "scene": "s11",
    "k": 1,
-   "a": 92.28,
+   "a": 94.02,
    "script": "One tap opens a live video meeting inside the project page.",
-   "heard": "One tap opens a live video meeting inside the project page.",
-   "wordDiffs": 0
+   "heard": "tap opens a live video meeting inside the project page.",
+   "wordDiffs": 1
   },
   {
    "scene": "s11",
    "k": 2,
-   "a": 97.18,
+   "a": 98.92,
    "script": "Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together.",
    "heard": "Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together.",
    "wordDiffs": 0
@@ -208,7 +208,7 @@
   {
    "scene": "s12",
    "k": 1,
-   "a": 104.21,
+   "a": 105.95,
    "script": "You don't get a name and a phone number.",
    "heard": "You don't get a name and a phone number.",
    "wordDiffs": 0
@@ -216,15 +216,15 @@
   {
    "scene": "s12",
    "k": 2,
-   "a": 107.23,
+   "a": 108.97,
    "script": "Floor twenty-three. Sea view. In French.",
-   "heard": "23, see view in French.",
-   "wordDiffs": 2
+   "heard": "Floor 23, see View in French.",
+   "wordDiffs": 1
   },
   {
    "scene": "s12",
    "k": 3,
-   "a": 110.91,
+   "a": 112.65,
    "script": "This isn't a lead. It's a buyer who already knows what he's buying.",
    "heard": "This isn't a lead, it's a buyer who already knows what he's buying.",
    "wordDiffs": 0
@@ -232,7 +232,7 @@
   {
    "scene": "s13",
    "k": 1,
-   "a": 115.74,
+   "a": 117.48,
    "script": "From there, our team stays with him all the way to the signed contract.",
    "heard": "From there, our team stays with him all the way to the signed contract.",
    "wordDiffs": 0
@@ -240,7 +240,7 @@
   {
    "scene": "s13",
    "k": 2,
-   "a": 120.34,
+   "a": 122.08,
    "script": "We don't let him slip away.",
    "heard": "We don't let him slip away.",
    "wordDiffs": 0
@@ -248,23 +248,23 @@
   {
    "scene": "s14",
    "k": 1,
-   "a": 122.82,
+   "a": 124.56,
    "script": "The big money is abroad right now. We're there.",
-   "heard": "The big money is abroad right now, we are there.",
+   "heard": "The big money is abroad right now, we are there,",
    "wordDiffs": 2
   },
   {
    "scene": "s14",
    "k": 2,
-   "a": 126.18,
+   "a": 127.92,
    "script": "And we're here, in Israel.",
-   "heard": "And we are here in Israel.",
+   "heard": "and we are here in Israel.",
    "wordDiffs": 2
   },
   {
    "scene": "s15",
    "k": 1,
-   "a": 129.03,
+   "a": 130.77,
    "script": "Pick your markets, your buyers, your budget.",
    "heard": "Pick your markets, your buyers, your budget.",
    "wordDiffs": 0
@@ -272,7 +272,7 @@
   {
    "scene": "s15",
    "k": 2,
-   "a": 132.17,
+   "a": 133.91,
    "script": "Your campaign can be live in seven days.",
    "heard": "Your campaign can be live in seven days.",
    "wordDiffs": 0
@@ -280,18 +280,18 @@
   {
    "scene": "s16",
    "k": 1,
-   "a": 136.09,
+   "a": 137.83,
    "script": "More buyers. Bigger budgets. Your next project.",
-   "heard": "buyers, bigger budgets, your next project.",
-   "wordDiffs": 1
+   "heard": "More buyers, bigger budgets, your next project.",
+   "wordDiffs": 0
   },
   {
    "scene": "s16",
    "k": 2,
-   "a": 140.05,
+   "a": 141.79,
    "script": "Nad lan dot co dot eel, slash marketing.",
-   "heard": "Nadlan .co .il slash marketing.",
-   "wordDiffs": 5
+   "heard": "NADLAN .CO .EAL.",
+   "wordDiffs": 7
   }
  ]
 }

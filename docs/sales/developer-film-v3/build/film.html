@@ -787,6 +787,7 @@ window.render = async function (t) {
   const ok = !FAILED; if (FAILED) FAILS++; FAILED = false;
   return ok;
 };
+window.subsOff = () => { $('#subs').style.visibility = 'hidden'; };   // for the poster still (build/poster.py)
 window.subLines = () => { const sp = $('#subs span'); if (sp.style.display === 'none') return 0; return Math.round(sp.getBoundingClientRect().height / (parseFloat(getComputedStyle(sp).lineHeight) || 1) - .3); };
 window.READY = false;
 (async () => {

@@ -5,8 +5,10 @@ no Linear or Notion entry was written by this build.
 
 | File | What |
 |---|---|
-| `en-vo_he-sub_16x9.mp4` | 1920x1080, 30 fps, H.264 CRF 17 + AAC 192k 48 kHz, moov first: 2:25.59, 25.5 MB, -16.0 LUFS integrated, true peak -1.5 dBTP |
-| `en-vo_he-sub_9x16.mp4` | the same film laid out for phones, 1080x1920: 2:25.59, 26.2 MB, -16.0 LUFS integrated, true peak -1.5 dBTP |
+| `en-vo_he-sub_16x9.mp4` | 1920x1080, 30 fps, H.264 CRF 17 + AAC 192k 48 kHz, moov first: 2:27.33, 25.6 MB, -16.0 LUFS integrated, true peak -1.4 dBTP |
+| `en-vo_he-sub_9x16.mp4` | the same film laid out for phones, 1080x1920: 2:27.33, 26.0 MB, -16.0 LUFS integrated, true peak -1.4 dBTP |
+| `he-web-16x9.mp4` | the site page's copy of the 16:9 film: 1280x720, H.264 high, CRF 26, AAC 128k 48 kHz, moov first (`build/render.py web`): 2:27.35, 6.8 MB, -16.1 LUFS |
+| `poster-16x9.jpg` | the poster for the site page: the "לא ליד. קונה שיודע מה הוא קונה." frame of scene 12 at 116.4 s, drawn without the subtitle box (`build/poster.py`), 1280x720, 72 KB |
 | `en-vo_he-sub_16x9-sheet.jpg`, `en-vo_he-sub_9x16-sheet.jpg` | contact sheets, one frame every 3 s decoded from the finished files |
 | `voice/` | the six test takes (`tests/`), the 36 takes of the chosen voice (`bm_george/`), the placed voice track (`vo_en_bm_george_final.flac`), why this voice (`choice.json`), the Whisper screening of the final mix (`whisper_check.json`) |
 | `campaign-check.md`, `campaign-check/` | the check of 12 developers' live project pages and 5 Meta Ad Library searches: method, table, screenshots, raw JSON |
@@ -23,21 +25,24 @@ no Linear or Notion entry was written by this build.
 | 02 | 0:08.6 | You can build a beautiful render. You can buy ads. Every developer does. | אפשר לבנות הדמיה יפה. אפשר לקנות מודעות. כל יזם עושה את זה. |
 | 03 | 0:14.8 | We checked the live project pages of twelve leading Israeli developers. Ten stop at the render and a form. None lets the buyer step inside and pick his floor. | בדקנו את עמודי הפרויקטים החיים של 12 יזמים מובילים בישראל. עשרה נעצרים בהדמיה ובטופס. באף אחד מהם הקונה לא נכנס לבניין ובוחר קומה. |
 | 04 | 0:27.1 | What no one sells you is all of it, working together, on one buyer. Your marketing department runs the campaign. We are the special unit you send in for one mission: bringing you buyers who are ready to sign. | מה שאף אחד לא מוכר לכם: את הכל, עובד ביחד, על קונה אחד. מחלקת השיווק שלכם מובילה את הקמפיין. אנחנו היחידה המיוחדת שאתם שולחים למשימה אחת: להביא לכם קונים שמוכנים לחתום. |
-| 05 | 0:42.7 | When he searches in his own language, he finds your project. On Google, and in the AI answers buyers now ask. We know how to put you there. | כשהוא מחפש בשפה שלו, הוא מוצא את הפרויקט שלכם. בגוגל, ובתשובות ה־AI. אנחנו יודעים לשים אתכם שם. |
-| 06 | 0:53.2 | He doesn't just look at a render. He lands inside it. | הוא לא רק מסתכל על הדמיה. הוא נוחת בתוכה. |
-| 07 | 0:57.3 | He picks the floor. He sees his view. He furnishes the apartment and leaves his notes. | בוחר קומה. רואה את הנוף שלו. מעצב את הדירה ומשאיר הערות. |
-| 08 | 1:04.5 | He can walk the neighbourhood as it will be, after your building is built. And we're now taking it into VR, inside the apartment. | הוא מסתובב בשכונה כמו שהיא תיראה אחרי שהבניין ייבנה. ועכשיו אנחנו מכניסים את זה למשקפי VR, בתוך הדירה. |
-| 09 | 1:14.0 | Prices, the neighbourhood, the numbers. A complete decision room for your project. | מחירים, השכונה, המספרים. חדר החלטות שלם לפרויקט שלכם. |
-| 10 | 1:20.3 | These are real buyers. Israel. The UK. France. Australia. Checking the area, the maps, the renders. Choosing, and reaching out. | אלה קונים אמיתיים. ישראל, בריטניה, צרפת, אוסטרליה. בודקים את האזור, את המפות, את ההדמיות. בוחרים, ופונים. |
-| 11 | 1:32.0 | One tap opens a live video meeting inside the project page. Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. | לחיצה אחת פותחת פגישת וידאו בתוך עמוד הפרויקט: הצוות שלכם, הקונה, המשפחה שלו וכל מי שהוא רוצה לצרף, מסתכלים יחד על תוכנית הדירה. |
-| 12 | 1:43.9 | You don't get a name and a phone number. Floor twenty-three. Sea view. In French. This isn't a lead. It's a buyer who already knows what he's buying. | לא מקבלים שם וטלפון. קומה 23, לים, בצרפתית. זה לא ליד. זה קונה שכבר יודע מה הוא קונה. |
-| 13 | 1:55.4 | From there, our team stays with him all the way to the signed contract. We don't let him slip away. | משם הצוות שלנו נשאר איתו עד החוזה החתום. לא נותנים לו לברוח. |
-| 14 | 2:02.5 | The big money is abroad right now. We're there. And we're here, in Israel. | הכסף הגדול נמצא עכשיו בחו״ל. אנחנו שם. וגם כאן, בארץ. |
-| 15 | 2:08.7 | Pick your markets, your buyers, your budget. Your campaign can be live in seven days. | בוחרים שווקים, קונים ותקציב. הקמפיין יכול להיות באוויר תוך שבעה ימים. |
-| 16 | 2:15.7 | More buyers. Bigger budgets. Your next project. nad-lan.co.il, slash marketing. | יותר קונים. יותר תקציב. הפרויקט הבא שלכם. nad-lan.co.il/marketing (on the end card, not as a subtitle) |
+| 05 | 0:42.7 | When he searches in his own language, he finds your project. On Google, and inside the answers of ChatGPT, Gemini and Claude. We know how to put you there. | כשהוא מחפש בשפה שלו, הוא מוצא את הפרויקט שלכם. בגוגל, ובתוך התשובות של ChatGPT, Gemini ו־Claude. אנחנו יודעים לשים אתכם שם. |
+| 06 | 0:54.9 | He doesn't just look at a render. He lands inside it. | הוא לא רק מסתכל על הדמיה. הוא נוחת בתוכה. |
+| 07 | 0:59.0 | He picks the floor. He sees his view. He furnishes the apartment and leaves his notes. | בוחר קומה. רואה את הנוף שלו. מעצב את הדירה ומשאיר הערות. |
+| 08 | 1:06.2 | He can walk the neighbourhood as it will be, after your building is built. And we're now taking it into VR, inside the apartment. | הוא מסתובב בשכונה כמו שהיא תיראה אחרי שהבניין ייבנה. ועכשיו אנחנו מכניסים את זה למשקפי VR, בתוך הדירה. |
+| 09 | 1:15.7 | Prices, the neighbourhood, the numbers. A complete decision room for your project. | מחירים, השכונה, המספרים. חדר החלטות שלם לפרויקט שלכם. |
+| 10 | 1:22.1 | These are real buyers. Israel. The UK. France. Australia. Checking the area, the maps, the renders. Choosing, and reaching out. | אלה קונים אמיתיים. ישראל, בריטניה, צרפת, אוסטרליה. בודקים את האזור, את המפות, את ההדמיות. בוחרים, ופונים. |
+| 11 | 1:33.7 | One tap opens a live video meeting inside the project page. Your team, the buyer, his family, anyone he wants to bring, looking at the same floor plan together. | לחיצה אחת פותחת פגישת וידאו בתוך עמוד הפרויקט: הצוות שלכם, הקונה, המשפחה שלו וכל מי שהוא רוצה לצרף, מסתכלים יחד על תוכנית הדירה. |
+| 12 | 1:45.7 | You don't get a name and a phone number. Floor twenty-three. Sea view. In French. This isn't a lead. It's a buyer who already knows what he's buying. | לא מקבלים שם וטלפון. קומה 23, לים, בצרפתית. זה לא ליד. זה קונה שכבר יודע מה הוא קונה. |
+| 13 | 1:57.2 | From there, our team stays with him all the way to the signed contract. We don't let him slip away. | משם הצוות שלנו נשאר איתו עד החוזה החתום. לא נותנים לו לברוח. |
+| 14 | 2:04.2 | The big money is abroad right now. We're there. And we're here, in Israel. | הכסף הגדול נמצא עכשיו בחו״ל. אנחנו שם. וגם כאן, בארץ. |
+| 15 | 2:10.5 | Pick your markets, your buyers, your budget. Your campaign can be live in seven days. | בוחרים שווקים, קונים ותקציב. הקמפיין יכול להיות באוויר תוך שבעה ימים. |
+| 16 | 2:17.5 | More buyers. Bigger budgets. Your next project. nad-lan.co.il, slash marketing. | יותר קונים. יותר תקציב. הפרויקט הבא שלכם. nad-lan.co.il/marketing (on the end card, not as a subtitle) |
 
 Changes against `SCRIPT.md`, all from the owner's corrections of 7.11 evening or for length (no claim added):
 - Scene 2 drops "You can get traffic" and "Renders are easy today" (traffic is not the point any more; length).
+- Scene 5 (Ben, after seeing v3): the AI line names the engines: "On Google, and inside the answers of ChatGPT, Gemini and
+  Claude." / "בגוגל, ובתוך התשובות של ChatGPT, Gemini ו־Claude." Re-voiced alone (same voice and pace), the picture re-timed;
+  still no method. The picture stays the dated AI Mode answer.
 - Scene 3 states the check exactly: 12 live project pages, 10 stop at renders and a form, 2 add a 360 view, 0 let the buyer step
   into the building and pick a floor (`campaign-check.md`). The developers are not named on screen.
 - Scene 4 adds the positioning line (second correction, verbatim); "That's what we built" dropped for length.
@@ -52,7 +57,7 @@ Changes against `SCRIPT.md`, all from the owner's corrections of 7.11 evening or
 - Never said or shown: how we get into Google or AI answers, the word broker, lead or traffic counts, guarantees.
   v2's scene "למה מצטטים אותנו" and its source close-ups are gone.
 
-Length: 145.59 s (2:25.59), 16 scenes, 36 voice takes, 39 subtitle lines. Longer than the 2:15 the owner allowed for, because every line of both corrections is kept verbatim at a calm pace.
+Length: 147.33 s (2:27.33), 16 scenes, 36 voice takes, 39 subtitle lines. Longer than the 2:15 the owner allowed for, because every line of both corrections is kept verbatim at a calm pace.
 
 ## Voice and sound
 
@@ -68,7 +73,14 @@ Length: 145.59 s (2:25.59), 16 scenes, 36 voice takes, 39 subtitle lines. Longer
   scene, longer before a punch line), splits two-line groups at the pause in the take itself, and times every Hebrew line to it.
 - Mix: the voice at -16 LUFS, v2's bed under it, ducked 12 dB while the voice speaks (0.2 s look-ahead, 0.25 s down, 0.8 s up,
   pauses under 1.6 s stay ducked), the whole mix normalised to -16.0 LUFS integrated, true peak -1.5 dBTP.
-- Whisper small (cached, CPU) on the final mix: 19 raw word differences in 336 script words (`voice/whisper_check.json`). Read one by one, none is a mispronunciation: British versus American spelling (neighbourhood), "V R" written "VR", "we're" written "we are", "None" written "Non", the words "Floor" and "More" counted in the next window (the full transcript has "Floor 23" and "More buyers"), "nad-lan.co.il" written ".co .il", and "Ra'anana" written "Rannanet" (Whisper does not know the name; the voice says ra-a-NA-na). Before the fixes the check also caught "lead" heard as "laid" (fixed by lengthening the vowel) and "We're the" heard as "where the" (now "We are the"). Screening only, not a listening test.
+- Whisper small (cached, CPU) on the final mix: 25 raw word differences in 336 script words (`voice/whisper_check.json`).
+  The new engine line comes out right: "on Google and inside the answers of chat GPT, Gemini and Claude" (spelled as written; the
+  voice says chat-G-P-T, JEM-in-eye, Claude). Read one by one, none of the differences is a mispronunciation: first words of a
+  line counted in the window before it ("We", "One", "And"; the full transcript has them), British versus American spelling
+  (neighbourhood), "V R" written "VR", "we're" written "we are", "None" written "Non", "nad-lan.co.il" written ".CO .EAL", and
+  "Ra'anana" written "Rannanet" (Whisper does not know the name; the voice says ra-a-NA-na). Earlier runs caught "lead" heard as
+  "laid" (fixed by lengthening the vowel) and "We're the" heard as "where the" (now "We are the"). Screening only, not a
+  listening test.
 
 ## Look
 
@@ -134,6 +146,8 @@ python build/prep_v3.py <scratch>/film3 captures                          (needs
 python build/render.py frames <scratch>/film3 h --workers 5               (and v)
 python build/render.py encode <scratch>/film3 h en-vo_he-sub_16x9.mp4 <scratch>/film3/audio/mix.wav
 python build/sheet.py en-vo_he-sub_16x9.mp4 en-vo_he-sub_16x9-sheet.jpg
+python build/render.py web en-vo_he-sub_16x9.mp4 he-web-16x9.mp4 26
+python build/poster.py <scratch>/film3 116.43 poster-16x9.jpg
 python build/whisper_check.py <scratch>/film3/audio/mix.wav <scratch>/film3/audio/timeline.json voice/whisper_check.json
 ```
 

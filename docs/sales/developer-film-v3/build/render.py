@@ -5,6 +5,7 @@
                                                               number of subtitle lines on each, which must stay <= 2)
   python render.py frames <scratch>/film3 h [--workers 4]     every frame (30 fps) -> <scratch>/film3/frames_h/00001.jpg
   python render.py encode <scratch>/film3 h <out.mp4> <mix.wav>  H.264 (CRF 17, slow) + AAC 192k, moov first
+  python render.py web <film_16x9.mp4> <out.mp4> [crf]           the site page's copy: 1280x720, CRF 26, AAC 128k, moov first
 
 film.html, the assets.json made by prep_v3.py and the JPEG sequences are served from <scratch>/film3/web by a local
 http.server on 127.0.0.1 (started and stopped here). film.html is copied there from this folder on every run.
@@ -115,7 +116,17 @@ def encode(S, f, mp4, wav):
     print(mp4)
 
 
+def web(src, out, crf=26):
+    """the site page's copy: 1280x720, H.264 high, CRF about 26, AAC 128k, moov first"""
+    subprocess.run([FF, "-y", "-loglevel", "error", "-i", src, "-vf", "scale=1280:720:flags=lanczos", "-c:v", "libx264", "-profile:v", "high",
+                    "-preset", "slow", "-crf", str(crf), "-pix_fmt", "yuv420p", "-color_range", "tv", "-colorspace", "bt709", "-color_primaries", "bt709",
+                    "-color_trc", "bt709", "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-movflags", "+faststart", out], check=True)
+    print(out, f"{os.path.getsize(out) / 1e6:.1f} MB")
+
+
 if __name__ == "__main__":
+    if sys.argv[1] == "web":       # python render.py web <film_16x9.mp4> <out.mp4> [crf]
+        web(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 26); sys.exit()
     cmd, S, f = sys.argv[1], sys.argv[2], sys.argv[3]
     import json
     DUR = json.load(open(os.path.join(S, "web", "timeline.json"), encoding="utf-8"))["duration"]
