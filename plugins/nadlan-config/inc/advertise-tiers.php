@@ -213,7 +213,7 @@ if ( ! function_exists( 'nadlan_adt_render' ) ) {
 			. '<div class="nladt__spec" aria-label="כך נראית מודעה בתוך מדריך"><small>כך נראית מודעה בתוך מדריך</small>'
 			. '<p class="nladt__guide">אחרי שבוחרים נציגות, הצעד הבא הוא עורך דין ושמאי מטעם הדיירים. את שכרם משלם היזם, והבחירה נשארת שלכם.</p>'
 			. '<div class="nladt__ad"><span class="nladt__adtag">פרסומת</span><strong>שם החברה · ארגון דיירים</strong><span>רעננה, כפר סבא, הוד השרון</span></div></div></div>';
-		$h .= '<p class="nladt__fine">המחירים כפי שהם מופיעים בחנות האתר. נדלן היא אתר תוכן ופרסום: אינה מתווכת, אינה צד להתקשרות בין המפרסם ללקוחותיו, ואינה ממליצה על מפרסם מסוים. <a href="' . esc_url( home_url( '/join-pro/' ) ) . '">כל המסלולים והמחירים</a></p>';
+		$h .= '<p class="nladt__fine">המחירים כפי שהם מופיעים בחנות האתר. נדלן היא אתר תוכן ופרסום: אינה מתווכת, אינה צד להתקשרות בין המפרסם ללקוחותיו, ואינה ממליצה על מפרסם מסוים. <a href="' . esc_url( home_url( '/join-pro/' ) ) . '">כל המסלולים והמחירים</a><span aria-hidden="true"> · </span><a href="' . esc_url( home_url( '/marketing/' ) ) . '">כמה עולה לשווק פרויקט נדל״ן</a></p>';  // 1.72.601 (HAD-678): the marketing hub
 		$h .= '<dialog data-dlg><form method="dialog" data-form><h3>הזמנה בחשבונית</h3><p data-dlg-what></p>'
 			. '<label>שם מלא<input name="name" autocomplete="name" required></label>'
 			. '<label>טלפון<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>'

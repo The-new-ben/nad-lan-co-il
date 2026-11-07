@@ -553,6 +553,7 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 				</div>
 			<?php endforeach; ?>
 		</div>
+		<p class="nlac-muted">לפני שבוחרים מסלול לפרויקט: <a href="<?php echo esc_url( home_url( '/marketing/' ) ); ?>">כמה עולה לשווק פרויקט נדל״ן</a></p>
 	</section>
 </main>
 		<?php

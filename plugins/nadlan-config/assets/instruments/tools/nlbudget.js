@@ -10,7 +10,9 @@
    percent-of-sales anchors, each bound named (the one survey figure); (2) advertising per apartment sold; (3) leads needed, only with the
    developer's own leads per deal, and their cost at three labelled bases. Then the budget sheet line by line, the spend by stage from the
    worked example abroad, and the big developers' published ad spend as a small sourced line. Copy as text and WhatsApp (text only).
-   The state lives in memory only. Pure part in window.NLBUDGET (runs in node, takes the data as an argument). */
+   The state lives in memory only. Pure part in window.NLBUDGET (runs in node, takes the data as an argument).
+   v1.1 (1.72.601, 7.11.2026): the budget sheet sits in a fold, "כל שורות התקציב (17)" / "All budget lines (17)": closed under 768 px
+   (the tool was about 8,000 px tall on a 390 px phone), open on wider screens; a 44 px summary in the anchors panel's open/close look. */
 (function () {
   'use strict';
   var G = typeof window !== 'undefined' ? window : globalThis;
@@ -52,7 +54,7 @@
       th_basis: 'לפי', th_per: 'לליד', th_n: 'פניות', th_tot: 'סך הכול',
       noAbroad: 'בחלוקה שבחרתם אין פניות מחו״ל.', noIl: 'בחלוקה שבחרתם אין פניות מישראל.', usNote: 'בדולרים, כפי שפורסם, בלי המרה. אין נתון ישראלי לקונים מחו״ל או לדירות חדשות.',
       anchHead: 'כל העוגנים שפורסמו, על הפרויקט שלכם', th_aSrc: 'מקור', th_aWhat: 'מה כלול', th_aPct: 'אחוז', th_aSum: 'בפרויקט שלכם',
-      tabHead: 'שורות התקציב', th_item: 'רכיב', th_range: 'טווח מחיר', th_when: 'מתי', th_src: 'מקור',
+      linesHead: 'כל שורות התקציב ({n})', tabHead: 'שורות התקציב', th_item: 'רכיב', th_range: 'טווח מחיר', th_when: 'מתי', th_src: 'מקור',
       ln_research: 'מחקר שוק, אסטרטגיה ותמחור', ln_brand: 'מיתוג וקריאייטיב: שם, שפה, חוברת מכירה', ln_ext3: 'הדמיות חוץ (3 זוויות)',
       ln_plan3d: 'תוכנית מכר בתלת ממד, לכל דירה', ln_film: 'סרט פרויקט, דקה עד 3 דקות', ln_tour: 'עמוד פרויקט עם סיור וירטואלי',
       ln_photo: 'צילום האתר לאורך הבנייה', ln_site: 'אתר ודפי נחיתה', ln_crm: 'ניהול פניות (CRM) ומעקב שיחות',
@@ -107,7 +109,7 @@
       th_basis: 'Basis', th_per: 'Per lead', th_n: 'Leads', th_tot: 'Total',
       noAbroad: 'Your split has no leads from abroad.', noIl: 'Your split has no leads from Israel.', usNote: 'In dollars, as published, not converted. No Israeli figure exists for buyers abroad or for new apartments.',
       anchHead: 'Every published anchor, on your project', th_aSrc: 'Source', th_aWhat: 'What it covers', th_aPct: 'Share', th_aSum: 'On your project',
-      tabHead: 'The budget lines', th_item: 'Line', th_range: 'Price range', th_when: 'When', th_src: 'Source',
+      linesHead: 'All budget lines ({n})', tabHead: 'The budget lines', th_item: 'Line', th_range: 'Price range', th_when: 'When', th_src: 'Source',
       ln_research: 'Market research, strategy and pricing', ln_brand: 'Branding and creative: name, look, sales brochure', ln_ext3: 'Exterior renders (3 angles)',
       ln_plan3d: '3D sales plan, per apartment', ln_film: 'Project film, 1 to 3 minutes', ln_tour: 'Project page with a virtual tour',
       ln_photo: 'Photography through construction', ln_site: 'Website and landing pages', ln_crm: 'Lead handling (CRM) and call tracking',
@@ -425,11 +427,14 @@
         + 'html body .nli .nlbg table.nlbg__t tr.is-now{background:var(--nli-ground)}html body .nli .nlbg table.nlbg__t tr.is-now td{background:none !important}html body .nli .nlbg table.nlbg__t tr.is-now td:first-child{border:0 !important}'
         + 'html body .nli .nlbg table.nlbg__t tr.is-now{border-inline-start:3px solid var(--nli-sea)}'
         + '.nlbg td[data-o="s"]>.nlbg__src:first-child{display:inline}html body .nli .nlbg table.nlbg__t td:first-child{font-weight:500 !important}html body .nli .nlbg table.nlbg__t td[data-th]:not(:first-child)::before{content:attr(data-th) ": ";color:var(--nli-mute);font-size:13px}}',
-      'html body .nli .nlbg details.nlbg__anch{border:1px solid var(--nli-line);border-radius:var(--nli-r-m);background:var(--nli-surface);padding:0}',
-      'html body .nli .nlbg details.nlbg__anch>summary{min-height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;font:500 15px/22px var(--nli-sans);color:var(--nli-sea);cursor:pointer;list-style:none}',
-      '.nlbg details.nlbg__anch>summary::-webkit-details-marker{display:none}',
-      '.nlbg details.nlbg__anch>summary::after{content:"";flex:none;width:8px;height:8px;margin-inline-start:auto;margin-top:-4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}',
-      '.nlbg details.nlbg__anch[open]>summary::after{margin-top:4px;transform:rotate(-135deg)}',
+      'html body .nli .nlbg details.nlbg__anch,html body .nli .nlbg details.nlbg__lines{border:1px solid var(--nli-line);border-radius:var(--nli-r-m);background:var(--nli-surface);padding:0}',
+      'html body .nli .nlbg details.nlbg__anch>summary,html body .nli .nlbg details.nlbg__lines>summary{min-height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;font:500 15px/22px var(--nli-sans);color:var(--nli-sea);cursor:pointer;list-style:none}',
+      '.nlbg details.nlbg__anch>summary::-webkit-details-marker,.nlbg details.nlbg__lines>summary::-webkit-details-marker{display:none}',
+      '.nlbg details.nlbg__anch>summary::after,.nlbg details.nlbg__lines>summary::after{content:"";flex:none;width:8px;height:8px;margin-inline-start:auto;margin-top:-4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}',
+      '.nlbg details.nlbg__anch[open]>summary::after,.nlbg details.nlbg__lines[open]>summary::after{margin-top:4px;transform:rotate(-135deg)}',
+      /* v1.1: the budget lines' fold; the sheet inside keeps its table, without a second frame; its caption is read, not shown twice */
+      'html body .nli .nlbg details.nlbg__lines>.nlbg__box{border:0;border-top:1px solid var(--nli-line);border-radius:0}',
+      'html body .nli .nlbg details.nlbg__lines table.nlbg__t caption{position:absolute !important;width:1px;height:1px;padding:0 !important;overflow:hidden;clip-path:inset(50%);white-space:nowrap}',
       '.nlbg .nlbg__note{font:400 13px/20px var(--nli-sans);color:var(--nli-ink2);margin:0;padding:10px 14px}',
       /* the spread by stage */
       '.nlbg .nlbg__bars{display:grid;gap:10px;padding:16px;border:1px solid var(--nli-line);border-radius:var(--nli-r-m);background:var(--nli-surface)}',
@@ -537,7 +542,12 @@
     });
     sheet.innerHTML = '<table class="nlbg__t is-sheet"><caption>' + esc(t.tabHead) + '</caption><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup><thead><tr><th scope="col">' + esc(t.th_item) + '</th><th scope="col">' + esc(t.th_range) + '</th><th scope="col">' + esc(t.th_when) + '</th><th scope="col">' + esc(t.th_src) + '</th></tr></thead><tbody>' + tb
       + '</tbody><tfoot><tr><td data-o="sumLab">' + esc(t.sumLab) + '</td><td class="r" data-th="' + esc(t.th_range) + '" data-o="sum"></td><td colspan="2" data-o="open"></td></tr></tfoot></table>';
-    wide.appendChild(sheet);
+    /* v1.1: the lines in a fold, closed on phones (under 768 px), open on wider screens; widening the window opens it, never closes it */
+    var fold = el('details', 'nlbg__lines', '<summary>' + esc(tpl(t.linesHead, { n: D.lines.length })) + '</summary>'); fold.setAttribute('data-o', 'lines');
+    var mq = G.matchMedia ? G.matchMedia('(max-width:767px)') : null;
+    fold.open = !(mq && mq.matches);
+    if (mq) { var widen = function () { if (!mq.matches) fold.open = true; }; if (mq.addEventListener) mq.addEventListener('change', widen); else if (mq.addListener) mq.addListener(widen); }
+    fold.appendChild(sheet); wide.appendChild(fold);
     var rowEl = {};
     D.lines.forEach(function (ln) {
       var tr = sheet.querySelector('tr[data-ln="' + ln.id + '"]'); rowEl[ln.id] = tr;

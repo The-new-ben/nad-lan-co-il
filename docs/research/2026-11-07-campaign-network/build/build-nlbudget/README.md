@@ -81,6 +81,14 @@ x 2.4 million, tagged "דוגמה") and a 24-month window (the top of Semerenko'
   cramped beside the inputs on desktop (now full width below the inputs and readouts); "התקדמות" tripped the blacklist substring "דמו" (line
   renamed "צילום האתר לאורך הבנייה").
 
+## 1.72.601: the budget lines fold on phones (7.11.2026)
+
+The 17 lines sit in a native `<details>` fold, "כל שורות התקציב (17)" / "All budget lines (17)", in the anchors panel's open/close look
+(44 px summary): closed under 768 px, open from 768 px (widening the window opens it; nothing but the reader closes it). The table's
+caption stays for screen readers, not shown twice. Measured (verify.json "heights"): the tool on a 390 px phone 7,241 px open, 3,185 px
+folded (he); 7,874 / 3,366 (en). Node 88 of 88 (section 9b), browser 344 of 344 (the fold closed on phones and opened by one tap, open on
+desktop and closed / reopened by its summary, closed under the live theme). Ships in 1.72.601 as a swap (scripts/project-stage/make_deploy601.py).
+
 ## Not done / open
 
 1. **Release** (registry.php.txt): the entry, the two branches, the summary function inside the `nadlan_nli_tools` block; ship `nlbudget.js`

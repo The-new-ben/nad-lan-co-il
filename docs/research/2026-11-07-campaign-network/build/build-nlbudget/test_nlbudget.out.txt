@@ -72,7 +72,7 @@
   ok   no units: the text asks for them instead of a budget
 
 8. the words: Hebrew and English complete, copy rules
-  ok   every Hebrew key has an English key and back (150 keys)  [[]]
+  ok   every Hebrew key has an English key and back (151 keys)  [[]]
   ok   no empty string
   ok   the same {placeholders} in both languages  [[]]
   ok   a name for every line, stage, seller, flag, example part and lead basis (38)  [[]]
@@ -97,9 +97,15 @@
   ok   controls at least 44 px (the own-price field 44 px with a 42 px input inside its border)
   ok   registers a custom NadLan Instruments tool and reads data.nlbudget
 
+9b. the budget lines fold on phones (1.72.601)
+  ok   the fold's words: "כל שורות התקציב (17)" / "All budget lines (17)", the count from the data (17 lines)
+  ok   the sheet sits inside a native details element with its summary (built once, the own-price fields inside it)
+  ok   closed under 768 px, open from 768 px; widening the window opens it, nothing but the reader closes it
+  ok   the summary is a 44 px target in the anchors panel's own open/close look (one shared rule)
+
 10. the same numbers on the server (registry.php.txt)
   ok   the server summary gives the same example total as the tool  [2,880,000 עד 5,760,000 ₪]
   ok   and the same per-apartment, lead and render ranges
   ok   and the same source names and flags
 
-84 of 84 passed
+88 of 88 passed

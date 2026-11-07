@@ -1,6 +1,8 @@
 """nlbudget build (7.11.2026, HAD-678): press every control of "כמה עולה לשווק את הפרויקט" in preview.html, headless Chrome (Playwright,
 channel chrome), in Hebrew and in English, at 390x844 (is_mobile, touch) and 1280x900, plus a pass with the campaign planner on the same page
 (?both=1: the plans link scrolls to it) and a Hebrew phone pass under the live theme stylesheets (?theme=1, read only).
+1.72.601: the budget lines fold ("כל שורות התקציב (17)" / "All budget lines (17)"): closed on the 390 phone, opened by one tap, the tool's
+height folded and open measured; open on the 1280 desktop, the summary closes and opens it.
 
 Pressed: the units and the price (good, off the range, empty, text), the four stage pills (the lines of the stage and the stage bar
 follow), the two seller pills (the commission field appears; empty, off the range, 1.5%), the share abroad field and its slider (typed,
@@ -28,6 +30,7 @@ BASE = ORIGIN + '/docs/research/2026-11-07-campaign-network/build/build-nlbudget
 OUT = HERE / 'shots'
 OUT.mkdir(parents=True, exist_ok=True)
 report, fails = [], []
+HEIGHTS = {}  # 1.72.601: the tool's height, [folded, open], per run
 
 def check(name, cond, got=None):
     report.append({'check': name, 'ok': bool(cond), 'got': got})
@@ -42,13 +45,13 @@ L = {
  'he': dict(q='', title='כמה עולה לשווק את הפרויקט', kicker='תקציב שיווק ליזמים', eg='דוגמה', r1_dev='תקציב שיווק ומכירה, כל הפרויקט', r1_co='שיווק ועמלת חברת השיווק, כל הפרויקט',
    sales='מחזור המכירות: 144,000,000 ₪', r3empty='כתבו כמה פניות לעסקה', e_units='כתבו מספר דירות', e_price='כתבו מחיר ממוצע', e_comm='כתבו שיעור עמלה', e_abroad='כתבו אחוז',
    e_months='כתבו מספר חודשים', e_lpd='כתבו מספר פניות', e_own='כתבו סכום בשקלים', nocomm='ועוד העמלה של חברת השיווק', feeNeed='כתבו את שיעור העמלה', year='בשנה, לפי',
-   noIl='לא פורסם מחיר ישראלי', included='כלול במנוי נדל״ן', plans='המנויים: שוק אחד 36,000 ₪ לשנה, שלושה שווקים 72,000 ₪ לשנה, פרויקט דגל 144,000 ₪ לשנה', href='/marketing/',
+   linesHead='כל שורות התקציב (17)', noIl='לא פורסם מחיר ישראלי', included='כלול במנוי נדל״ן', plans='המנויים: שוק אחד 36,000 ₪ לשנה, שלושה שווקים 72,000 ₪ לשנה, פרויקט דגל 144,000 ₪ לשנה', href='/marketing/',
    ln_research='מחקר שוק, אסטרטגיה ותמחור', ln_fee='עמלת חברת השיווק', ln_fee_dev='צוות המכירות שלכם', copied='הועתק', head='תקציב שיווק לפרויקט, לפי נדל״ן',
    split='בישראל 2,304, מחו״ל 576', fix='כתבו מספר דירות ומחיר ממוצע כדי לראות את התקציב.', now='בשלב שלכם', abroadEx='דוגמה מחו״ל', honest='כל טווח מגיע עם המקור שלו ותאריך', title_font='Karantina', sans='IBM Plex Sans Hebrew'),
  'en': dict(q='?lang=en', title='What it costs to market your project', kicker='Marketing budget for developers', eg='Example', r1_dev='Marketing and sales budget, whole project', r1_co="Marketing and the marketing company's commission, whole project",
    sales='Sales value: ₪144,000,000', r3empty='Enter leads per deal', e_units='Enter a number of apartments', e_price='Enter an average price', e_comm='Enter a commission rate', e_abroad='Enter a share',
    e_months='Enter a number of months', e_lpd='Enter a number of leads', e_own='Enter an amount in shekels', nocomm="Plus the marketing company's commission", feeNeed='Enter the commission rate', year='A year, over',
-   noIl='No Israeli price published', included='Included in the NadLan plan', plans='The plans: One market ₪36,000 a year, Three markets ₪72,000 a year, Flagship ₪144,000 a year', href='/en/marketing/',
+   linesHead='All budget lines (17)', noIl='No Israeli price published', included='Included in the NadLan plan', plans='The plans: One market ₪36,000 a year, Three markets ₪72,000 a year, Flagship ₪144,000 a year', href='/en/marketing/',
    ln_research='Market research, strategy and pricing', ln_fee='Marketing company commission', ln_fee_dev='Your sales team', copied='Copied', head='Project marketing budget, by NadLan',
    split='In Israel 2,304, abroad 576', fix='Enter the apartments and the average price to see the budget.', now='Your stage', abroadEx='Example abroad', honest='Every range comes with its source and date', title_font='IBM Plex Sans Condensed', sans='IBM Plex Sans'),
 }
@@ -127,6 +130,27 @@ def run(ctx, lg, W, mob):
     check(tag + ' readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60', txt(page, 'output[data-o="unit"]') == R(3000, 23000, lg) and R(180000, 1380000, lg) in txt(page, '[data-o="unitAll"]'))
     check(tag + ' readout 3: asks for the close rate, no number; the leads table hidden', txt(page, 'output[data-o="leadsN"]') == x['r3empty'] and page.locator(T + ' [data-o="leads"]').is_hidden())
     check(tag + ' the honesty line', x['honest'] in txt(page, '.nlbg__honest'))
+    # 1.72.601: the budget lines' fold
+    fold = page.locator(T + ' details.nlbg__lines'); fs = fold.locator(':scope > summary')
+    hgt = lambda: page.evaluate("(t) => Math.round(document.querySelector(t + ' .nlbg').getBoundingClientRect().height)", T)
+    isopen = lambda: fold.get_attribute('open') is not None
+    fsb = fs.bounding_box() or {'height': 0}
+    check(tag + ' the fold: one, its summary "' + x['linesHead'] + '", 44 px or more', fold.count() == 1 and fs.inner_text().strip() == x['linesHead'] and fsb['height'] >= 43.5, [fold.count(), fs.inner_text().strip(), fsb['height']])
+    if W < 768:
+        h0 = hgt()
+        check(tag + ' phone: the budget lines closed by default, no line and no own-price field shown', not isopen() and not page.locator(T + ' tr[data-ln="research"]').is_visible() and page.locator(T + ' input[data-own]:visible').count() == 0, [isopen(), h0])
+        common(page, tag + ' folded', lg)
+        shot(page, f'{lg}-{W}-folded', full=True)
+        fs.click(); page.wait_for_timeout(150); h1 = hgt()
+        check(tag + f' phone: one tap opens all 17 lines; the tool {h0} px folded, {h1} px open', isopen() and page.locator(T + ' tr[data-ln="research"]').is_visible() and h1 > h0 + 1500, [h0, h1])
+        HEIGHTS[tag] = [h0, h1]
+    else:
+        h1 = hgt()
+        check(tag + ' desktop: the budget lines open by default, every line shown', isopen() and page.locator(T + ' tr[data-ln="research"]').is_visible(), [isopen(), h1])
+        fs.click(); page.wait_for_timeout(120); c1 = not isopen() and not page.locator(T + ' tr[data-ln="research"]').is_visible(); h0 = hgt()
+        fs.click(); page.wait_for_timeout(120)
+        check(tag + f' desktop: the summary closes the lines and opens them again ({h1} px open, {h0} px closed)', c1 and isopen() and page.locator(T + ' tr[data-ln="research"]').is_visible(), [c1, isopen(), h0, h1])
+        HEIGHTS[tag] = [h0, h1]
     rows = page.locator(T + ' tr[data-ln]').count(); nosrc = page.evaluate(JS_ROWSRC, T)
     check(tag + ' the sheet: 17 lines, each with a source and a flag', rows == 17 and not nosrc, [rows, nosrc])
     rr = page.evaluate("(t) => Object.fromEntries([...document.querySelectorAll(t + ' tr[data-ln]')].map(r => [r.getAttribute('data-ln'), r.querySelector('[data-o=\"v\"]').innerText.trim()]))", T)
@@ -287,6 +311,8 @@ try:
         page.on('pageerror', lambda e: errs.append('pageerror: ' + str(e)))
         page.on('console', lambda m: errs.append(m.text + ' @ ' + str((m.location or {}).get('url', ''))) if m.type == 'error' and 'nad-lan.co.il' not in m.text + str((m.location or {}).get('url', '')) else None)
         page.goto(BASE + '?theme=1', wait_until='networkidle'); page.wait_for_selector(T + ' .nlbg')
+        check('theme 390: the budget lines closed under the live theme too, the summary 44 px or more', page.locator(T + ' details.nlbg__lines').get_attribute('open') is None
+              and (page.locator(T + ' details.nlbg__lines > summary').bounding_box() or {'height': 0})['height'] >= 43.5)
         put(page, 'lpd', '48'); put(page, 'abroad', '20')
         common(page, 'theme 390', 'he')
         ff = page.evaluate('''(t) => { const q = s => getComputedStyle(document.querySelector(t + ' ' + s)); return [q('label.nlbg__pill').fontFamily.split(',')[0], q('label.nlbg__pill:has(input:checked)').backgroundColor, q('label.nlbg__pill').borderRadius,
@@ -302,6 +328,7 @@ finally:
     except Exception: server.kill()
     print('\nlocal server stopped')
 
-(HERE / 'verify.json').write_text(json.dumps({'base': BASE, 'checks': len(report), 'failed': fails, 'report': report}, ensure_ascii=False, indent=1), encoding='utf-8')
+(HERE / 'verify.json').write_text(json.dumps({'base': BASE, 'checks': len(report), 'failed': fails, 'heights': HEIGHTS, 'report': report}, ensure_ascii=False, indent=1), encoding='utf-8')
+print('\nthe tool height [folded, open] px:', json.dumps(HEIGHTS))
 print(f'\n{len(report) - len(fails)} of {len(report)} checks passed' + (f', {len(fails)} FAILED' if fails else ''))
 sys.exit(1 if fails else 0)

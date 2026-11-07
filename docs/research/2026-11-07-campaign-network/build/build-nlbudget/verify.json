@@ -1,7 +1,25 @@
 {
- "base": "http://127.0.0.1:59722/docs/research/2026-11-07-campaign-network/build/build-nlbudget/preview.html",
- "checks": 317,
+ "base": "http://127.0.0.1:57358/docs/research/2026-11-07-campaign-network/build/build-nlbudget/preview.html",
+ "checks": 344,
  "failed": [],
+ "heights": {
+  "he 390": [
+   3185,
+   7241
+  ],
+  "he 1280": [
+   1895,
+   3816
+  ],
+  "en 390": [
+   3366,
+   7874
+  ],
+  "en 1280": [
+   2022,
+   4145
+  ]
+ },
  "report": [
   {
    "check": "he 390 the shortcode summary is replaced by the tool; kicker and title",
@@ -56,6 +74,74 @@
    "check": "he 390 the honesty line",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "he 390 the fold: one, its summary \"כל שורות התקציב (17)\", 44 px or more",
+   "ok": true,
+   "got": [
+    1,
+    "כל שורות התקציב (17)",
+    44
+   ]
+  },
+  {
+   "check": "he 390 phone: the budget lines closed by default, no line and no own-price field shown",
+   "ok": true,
+   "got": [
+    false,
+    3185
+   ]
+  },
+  {
+   "check": "he 390 folded no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 folded every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 folded every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 folded every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 390 folded no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 folded survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 390 folded every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 390 phone: one tap opens all 17 lines; the tool 3185 px folded, 7241 px open",
+   "ok": true,
+   "got": [
+    3185,
+    7241
+   ]
   },
   {
    "check": "he 390 the sheet: 17 lines, each with a source and a flag",
@@ -521,7 +607,7 @@
   {
    "check": "he 390 the plans link alone opens /marketing/ (stubbed here)",
    "ok": true,
-   "got": "http://127.0.0.1:59722/marketing/"
+   "got": "http://127.0.0.1:57358/marketing/"
   },
   {
    "check": "he 390 no console error or warning, no page error",
@@ -586,6 +672,33 @@
    "check": "he 1280 the honesty line",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "he 1280 the fold: one, its summary \"כל שורות התקציב (17)\", 44 px or more",
+   "ok": true,
+   "got": [
+    1,
+    "כל שורות התקציב (17)",
+    44
+   ]
+  },
+  {
+   "check": "he 1280 desktop: the budget lines open by default, every line shown",
+   "ok": true,
+   "got": [
+    true,
+    3816
+   ]
+  },
+  {
+   "check": "he 1280 desktop: the summary closes the lines and opens them again (3816 px open, 1895 px closed)",
+   "ok": true,
+   "got": [
+    true,
+    true,
+    1895,
+    3816
+   ]
   },
   {
    "check": "he 1280 the sheet: 17 lines, each with a source and a flag",
@@ -1051,7 +1164,7 @@
   {
    "check": "he 1280 the plans link alone opens /marketing/ (stubbed here)",
    "ok": true,
-   "got": "http://127.0.0.1:59722/marketing/"
+   "got": "http://127.0.0.1:57358/marketing/"
   },
   {
    "check": "he 1280 no console error or warning, no page error",
@@ -1116,6 +1229,74 @@
    "check": "en 390 the honesty line",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "en 390 the fold: one, its summary \"All budget lines (17)\", 44 px or more",
+   "ok": true,
+   "got": [
+    1,
+    "All budget lines (17)",
+    44
+   ]
+  },
+  {
+   "check": "en 390 phone: the budget lines closed by default, no line and no own-price field shown",
+   "ok": true,
+   "got": [
+    false,
+    3366
+   ]
+  },
+  {
+   "check": "en 390 folded no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 folded every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 folded every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 folded every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 390 folded no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 folded survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 390 folded every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 390 phone: one tap opens all 17 lines; the tool 3366 px folded, 7874 px open",
+   "ok": true,
+   "got": [
+    3366,
+    7874
+   ]
   },
   {
    "check": "en 390 the sheet: 17 lines, each with a source and a flag",
@@ -1581,7 +1762,7 @@
   {
    "check": "en 390 the plans link alone opens /en/marketing/ (stubbed here)",
    "ok": true,
-   "got": "http://127.0.0.1:59722/en/marketing/"
+   "got": "http://127.0.0.1:57358/en/marketing/"
   },
   {
    "check": "en 390 no console error or warning, no page error",
@@ -1646,6 +1827,33 @@
    "check": "en 1280 the honesty line",
    "ok": true,
    "got": null
+  },
+  {
+   "check": "en 1280 the fold: one, its summary \"All budget lines (17)\", 44 px or more",
+   "ok": true,
+   "got": [
+    1,
+    "All budget lines (17)",
+    44
+   ]
+  },
+  {
+   "check": "en 1280 desktop: the budget lines open by default, every line shown",
+   "ok": true,
+   "got": [
+    true,
+    4145
+   ]
+  },
+  {
+   "check": "en 1280 desktop: the summary closes the lines and opens them again (4145 px open, 2022 px closed)",
+   "ok": true,
+   "got": [
+    true,
+    true,
+    2022,
+    4145
+   ]
   },
   {
    "check": "en 1280 the sheet: 17 lines, each with a source and a flag",
@@ -2111,7 +2319,7 @@
   {
    "check": "en 1280 the plans link alone opens /en/marketing/ (stubbed here)",
    "ok": true,
-   "got": "http://127.0.0.1:59722/en/marketing/"
+   "got": "http://127.0.0.1:57358/en/marketing/"
   },
   {
    "check": "en 1280 no console error or warning, no page error",
@@ -2128,7 +2336,7 @@
    "ok": true,
    "got": [
     0,
-    3790,
+    3791,
     162
    ]
   },
@@ -2142,7 +2350,7 @@
    "ok": true,
    "got": [
     0,
-    4071,
+    4072,
     166
    ]
   },
@@ -2150,6 +2358,11 @@
    "check": "en both: no console error, nothing outside",
    "ok": true,
    "got": []
+  },
+  {
+   "check": "theme 390: the budget lines closed under the live theme too, the summary 44 px or more",
+   "ok": true,
+   "got": null
   },
   {
    "check": "theme 390 no horizontal scroll",

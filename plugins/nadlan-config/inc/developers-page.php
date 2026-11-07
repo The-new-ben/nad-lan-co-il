@@ -115,6 +115,10 @@ if ( ! function_exists( 'nadlan_dev_page_render' ) ) {
 			<b>רובע שדה דב</b>
 			<span>סיור עם מעבר בין המצב הקיים לתכנון העתידי</span>
 		</a>
+		<a class="nldev-tour" href="<?php echo esc_url( home_url( '/marketing/' ) ); ?>">
+			<b>כמה עולה לשווק פרויקט נדל״ן</b>
+			<span>תקציב השיווק והמכירה של הפרויקט, שורה אחר שורה, עם המקור של כל מספר</span>
+		</a>
 	</div>
 
 	<div class="nldev-honest">

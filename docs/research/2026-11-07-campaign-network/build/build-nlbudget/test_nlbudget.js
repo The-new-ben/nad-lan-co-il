@@ -3,7 +3,7 @@
    is missing from its evidence; the calculations (the source's own example worked through, the bounds and who gives them, per apartment,
    leads only with the developer's own close rate, the budget sheet, the spread by stage), ranges that never invert or claim precision,
    the formatting (Hebrew shekel after the number), the shared text, i18n parity and the copy rules, plus a cross-check with the server
-   summary (registry.php.txt through test_nlbudget_summary.php --summary).
+   summary (registry.php.txt through test_nlbudget_summary.php --summary). 1.72.601: the fold of the budget lines (section 9b).
    Run from anywhere:  node docs/research/2026-11-07-campaign-network/build/build-nlbudget/test_nlbudget.js
    Exit code 1 on any failure. */
 'use strict';
@@ -193,6 +193,16 @@ ok(sv.length >= 1 && sv.every(function (x) { return /data-o="total"/.test(x); })
 ok(!/Karantina/.test(SRC) && /<bdi>/.test(SRC), 'the title face comes from core.css; figures in <bdi>');
 ok(/min-height:44px/.test(SRC) && !/min-height:(3\d|[12]\d)px/.test(SRC.replace(/min-height:42px !important;font-size:15px/, '')), 'controls at least 44 px (the own-price field 44 px with a 42 px input inside its border)');
 ok(/NadLanInstruments\.register\('nlbudget', \{ custom:/.test(SRC) && /data\.nlbudget/.test(SRC), 'registers a custom NadLan Instruments tool and reads data.nlbudget');
+
+console.log('\n9b. the budget lines fold on phones (1.72.601)');
+ok(he.linesHead === 'כל שורות התקציב ({n})' && en.linesHead === 'All budget lines ({n})' && N.tpl(he.linesHead, { n: D.lines.length }) === 'כל שורות התקציב (17)' && N.tpl(en.linesHead, { n: D.lines.length }) === 'All budget lines (17)',
+  'the fold\'s words: "כל שורות התקציב (17)" / "All budget lines (17)", the count from the data (' + D.lines.length + ' lines)');
+ok(SRC.indexOf("el('details', 'nlbg__lines', '<summary>' + esc(tpl(t.linesHead, { n: D.lines.length })) + '</summary>')") > -1 && SRC.indexOf('fold.appendChild(sheet); wide.appendChild(fold);') > -1,
+  'the sheet sits inside a native details element with its summary (built once, the own-price fields inside it)');
+ok(SRC.indexOf("matchMedia('(max-width:767px)')") > -1 && SRC.indexOf('fold.open = !(mq && mq.matches);') > -1 && SRC.indexOf('if (!mq.matches) fold.open = true;') > -1 && SRC.indexOf('fold.open = false') < 0,
+  'closed under 768 px, open from 768 px; widening the window opens it, nothing but the reader closes it');
+ok(SRC.indexOf('details.nlbg__lines>summary{min-height:44px;') > -1 && SRC.indexOf('details.nlbg__anch>summary,html body .nli .nlbg details.nlbg__lines>summary{') > -1,
+  'the summary is a 44 px target in the anchors panel\'s own open/close look (one shared rule)');
 
 console.log('\n10. the same numbers on the server (registry.php.txt)');
 var php = function (lg) { return cp.spawnSync('php', [path.join(HERE, 'test_nlbudget_summary.php'), '--summary', lg], { encoding: 'utf8' }); };

@@ -16,6 +16,16 @@ he 390: the example
   ok   he 390 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60
   ok   he 390 readout 3: asks for the close rate, no number; the leads table hidden
   ok   he 390 the honesty line
+  ok   he 390 the fold: one, its summary "כל שורות התקציב (17)", 44 px or more  [[1, 'כל שורות התקציב (17)', 44]]
+  ok   he 390 phone: the budget lines closed by default, no line and no own-price field shown  [[False, 3185]]
+  ok   he 390 folded no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 folded every visible control at least 44 px high  [[]]
+  ok   he 390 folded every input labelled  [[]]
+  ok   he 390 folded every visible group named  [['שלב הפרויקט', 'מי מוכר']]
+  ok   he 390 folded no long dash, no tech word  [[]]
+  ok   he 390 folded survey red only on the total  [['total']]
+  ok   he 390 folded every visible source line carries its flag  [0]
+  ok   he 390 phone: one tap opens all 17 lines; the tool 3185 px folded, 7241 px open  [[3185, 7241]]
   ok   he 390 the sheet: 17 lines, each with a source and a flag  [[17, []]]
   ok   he 390 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000  [['4,000 עד 6,000 ₪', '60,000 עד 90,000 ₪\n1,000 עד 1,500 ₪ לדיר', 'כ־1,080,000 ₪\nכ־0.75% ממחזור ה']]
   ok   he 390 "לא פורסם מחיר ישראלי" on the 11 unpriced lines and the sales team, each with its own field  [[]]
@@ -95,7 +105,7 @@ he 390: anchors, share
 הפרויקט: 60 דירות, מחיר ממוצע 2,400,000 ₪, מחזור מכירות 144,000,000 ₪
 שלב: טרום שיווק. מוכר: צוות מכירות של היזם. קונים מחו״ל: 20%. תקופת מכירה: 24 חודשים. 48 פניות לעסק]
   ok   he 390 WhatsApp: wa.me with the same text only  [https://wa.me/?text=%D7%AA%D7%A7%D7%A6%D7%99%D7%91%20%D7%A9%D7%99%D7%95%D7%95%D7]
-  ok   he 390 the plans link alone opens /marketing/ (stubbed here)  [http://127.0.0.1:59722/marketing/]
+  ok   he 390 the plans link alone opens /marketing/ (stubbed here)  [http://127.0.0.1:57358/marketing/]
   ok   he 390 no console error or warning, no page error  [[]]
   ok   he 390 nothing left 127.0.0.1 except Google fonts and wa.me  [[]]
 
@@ -116,6 +126,9 @@ he 1280: the example
   ok   he 1280 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60
   ok   he 1280 readout 3: asks for the close rate, no number; the leads table hidden
   ok   he 1280 the honesty line
+  ok   he 1280 the fold: one, its summary "כל שורות התקציב (17)", 44 px or more  [[1, 'כל שורות התקציב (17)', 44]]
+  ok   he 1280 desktop: the budget lines open by default, every line shown  [[True, 3816]]
+  ok   he 1280 desktop: the summary closes the lines and opens them again (3816 px open, 1895 px closed)  [[True, True, 1895, 3816]]
   ok   he 1280 the sheet: 17 lines, each with a source and a flag  [[17, []]]
   ok   he 1280 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000  [['4,000 עד 6,000 ₪', '60,000 עד 90,000 ₪\n1,000 עד 1,500 ₪ לדיר', 'כ־1,080,000 ₪\nכ־0.75% ממחזור ה']]
   ok   he 1280 "לא פורסם מחיר ישראלי" on the 11 unpriced lines and the sales team, each with its own field  [[]]
@@ -195,7 +208,7 @@ he 1280: anchors, share
 הפרויקט: 60 דירות, מחיר ממוצע 2,400,000 ₪, מחזור מכירות 144,000,000 ₪
 שלב: טרום שיווק. מוכר: צוות מכירות של היזם. קונים מחו״ל: 20%. תקופת מכירה: 24 חודשים. 48 פניות לעסק]
   ok   he 1280 WhatsApp: wa.me with the same text only  [https://wa.me/?text=%D7%AA%D7%A7%D7%A6%D7%99%D7%91%20%D7%A9%D7%99%D7%95%D7%95%D7]
-  ok   he 1280 the plans link alone opens /marketing/ (stubbed here)  [http://127.0.0.1:59722/marketing/]
+  ok   he 1280 the plans link alone opens /marketing/ (stubbed here)  [http://127.0.0.1:57358/marketing/]
   ok   he 1280 no console error or warning, no page error  [[]]
   ok   he 1280 nothing left 127.0.0.1 except Google fonts and wa.me  [[]]
 
@@ -215,6 +228,16 @@ Start Point, 5.11.2026 Agency cl]
   ok   en 390 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60
   ok   en 390 readout 3: asks for the close rate, no number; the leads table hidden
   ok   en 390 the honesty line
+  ok   en 390 the fold: one, its summary "All budget lines (17)", 44 px or more  [[1, 'All budget lines (17)', 44]]
+  ok   en 390 phone: the budget lines closed by default, no line and no own-price field shown  [[False, 3366]]
+  ok   en 390 folded no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 folded every visible control at least 44 px high  [[]]
+  ok   en 390 folded every input labelled  [[]]
+  ok   en 390 folded every visible group named  [['Project stage', 'Who sells']]
+  ok   en 390 folded no long dash, no tech word  [[]]
+  ok   en 390 folded survey red only on the total  [['total']]
+  ok   en 390 folded every visible source line carries its flag  [0]
+  ok   en 390 phone: one tap opens all 17 lines; the tool 3366 px folded, 7874 px open  [[3366, 7874]]
   ok   en 390 the sheet: 17 lines, each with a source and a flag  [[17, []]]
   ok   en 390 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000  [['₪4,000 to ₪6,000', '₪60,000 to ₪90,000\n₪1,000 to ₪1,500 per ', 'about ₪1,080,000\nabout 0.75% o']]
   ok   en 390 "No Israeli price published" on the 11 unpriced lines and the sales team, each with its own field  [[]]
@@ -294,7 +317,7 @@ en 390: anchors, share
 The project: 60 apartments, average price ₪2,400,000, sales value ₪144,000,000
 Stage: Pre-launch. Who sells: The developer's sales team. Buyers abroad: 20%. Sales p]
   ok   en 390 WhatsApp: wa.me with the same text only  [https://wa.me/?text=Project%20marketing%20budget%2C%20by%20NadLan%0AThe%20projec]
-  ok   en 390 the plans link alone opens /en/marketing/ (stubbed here)  [http://127.0.0.1:59722/en/marketing/]
+  ok   en 390 the plans link alone opens /en/marketing/ (stubbed here)  [http://127.0.0.1:57358/en/marketing/]
   ok   en 390 no console error or warning, no page error  [[]]
   ok   en 390 nothing left 127.0.0.1 except Google fonts and wa.me  [[]]
 
@@ -314,6 +337,9 @@ Start Point, 5.11.2026 Agency cl]
   ok   en 1280 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60
   ok   en 1280 readout 3: asks for the close rate, no number; the leads table hidden
   ok   en 1280 the honesty line
+  ok   en 1280 the fold: one, its summary "All budget lines (17)", 44 px or more  [[1, 'All budget lines (17)', 44]]
+  ok   en 1280 desktop: the budget lines open by default, every line shown  [[True, 4145]]
+  ok   en 1280 desktop: the summary closes the lines and opens them again (4145 px open, 2022 px closed)  [[True, True, 2022, 4145]]
   ok   en 1280 the sheet: 17 lines, each with a source and a flag  [[17, []]]
   ok   en 1280 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000  [['₪4,000 to ₪6,000', '₪60,000 to ₪90,000\n₪1,000 to ₪1,500 per ', 'about ₪1,080,000\nabout 0.75% o']]
   ok   en 1280 "No Israeli price published" on the 11 unpriced lines and the sales team, each with its own field  [[]]
@@ -393,19 +419,20 @@ en 1280: anchors, share
 The project: 60 apartments, average price ₪2,400,000, sales value ₪144,000,000
 Stage: Pre-launch. Who sells: The developer's sales team. Buyers abroad: 20%. Sales p]
   ok   en 1280 WhatsApp: wa.me with the same text only  [https://wa.me/?text=Project%20marketing%20budget%2C%20by%20NadLan%0AThe%20projec]
-  ok   en 1280 the plans link alone opens /en/marketing/ (stubbed here)  [http://127.0.0.1:59722/en/marketing/]
+  ok   en 1280 the plans link alone opens /en/marketing/ (stubbed here)  [http://127.0.0.1:57358/en/marketing/]
   ok   en 1280 no console error or warning, no page error  [[]]
   ok   en 1280 nothing left 127.0.0.1 except Google fonts and wa.me  [[]]
 
 he 1280 + the planner on the page
-  ok   he both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)  [[0, 3790, 162]]
+  ok   he both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)  [[0, 3791, 162]]
   ok   he both: no console error, nothing outside  [[]]
 
 en 1280 + the planner on the page
-  ok   en both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)  [[0, 4071, 166]]
+  ok   en both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)  [[0, 4072, 166]]
   ok   en both: no console error, nothing outside  [[]]
 
 he 390 + live theme
+  ok   theme 390: the budget lines closed under the live theme too, the summary 44 px or more
   ok   theme 390 no horizontal scroll  [{'sw': 390, 'iw': 390}]
   ok   theme 390 every visible control at least 44 px high  [[]]
   ok   theme 390 every input labelled  [[]]
@@ -418,4 +445,6 @@ he 390 + live theme
 
 local server stopped
 
-317 of 317 checks passed
+the tool height [folded, open] px: {"he 390": [3185, 7241], "he 1280": [1895, 3816], "en 390": [3366, 7874], "en 1280": [2022, 4145]}
+
+344 of 344 checks passed
