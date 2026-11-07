@@ -436,6 +436,20 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'kashe.json', 'boi-mortgage.json' ),
 				'related' => array( '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית משכנתא היום', '/mortgage-refinance/' => 'מחזור משכנתא', '/mortgage-advisor/' => 'יועצי משכנתא' ),
 			),
+			/* 7.11.2026 (Ben): the international campaign planner for developers, 5 steps (markets, buyers, monthly ad budget,
+			   the project, summary and plan); the brief is saved by POST /wp-json/nadlan/v1/campaign-brief (inc/campaign-brief.php),
+			   then the payment step. Staged in docs/research/2026-11-07-campaign-network/build/build-nlcamp/ */
+			'nlcamp' => array(
+				'name' => 'מתכנן הקמפיין', 'cat' => 'BusinessApplication', 'kicker' => 'קמפיין בינלאומי ליזמים',
+				'desc' => 'מתכנן קמפיין ליזמים שמוכרים לקונים בחו״ל ובתפוצות: בוחרים שווקים וקהילות (צרפת, ארצות הברית, בריטניה, קנדה, בלגיה, שווייץ, דרום אפריקה, אוסטרליה, דוברי רוסית ועולים חדשים בישראל) ואת השפות שלהם, את הקונים, תקציב פרסום חודשי ואת הפרויקט, ורואים את התוכנית השנתית ואת המחיר לפני ששולחים. הפניות מגיעות לעמוד הפרויקט בנדלן, עם הסיור התלת־ממדי.',
+				'data' => array(),
+				'related' => array( '/developers/' => 'שיווק פרויקטים ליזמים', '/advertiser-center/' => 'פרסום פרויקט נדל״ן', '/advertise/' => 'מחירון הפרסום באתר' ),
+				'en' => array(
+					'name' => 'Campaign planner', 'kicker' => 'International campaigns for developers',
+					'desc' => 'A campaign planner for property developers who sell to buyers abroad and in the diaspora: choose the markets and communities (France, USA, UK, Canada, Belgium, Switzerland, South Africa, Australia, Russian speakers and olim in Israel) and their languages, the buyers, a monthly ad budget and the project, and see the annual plan and its price before you send it. The leads land on the project page on NadLan, with the 3D tour.',
+					'related' => array(),  // no English B2B page is confirmed yet; empty, so the Hebrew links stay off the English page
+				),
+			),
 			/* 1.72.593 (HAD-675, T4): from contract to keys, the 7th tool of /mortgage-calculator/ (the linkage of indexation.js, the payment of mquick.js) */
 			'mkeys' => array(
 				'name' => 'מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה מקבלן',
@@ -528,6 +542,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
+		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'he' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
 		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
 			$x = nadlan_nli_mrates(); $d = $x['d'];
 			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['prepay']['cpi']['rows'] ) || empty( $d['fees']['reduce'] ) || empty( $d['built'] ) ) { return ''; }
@@ -1355,6 +1370,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	/** HAD-534 (d): the same summaries in English, for the tools that carry an 'en' block. Dates with gmdate (English month
 	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
 	function nadlan_nli_summary_en( $id ) {
+		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'en' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
 		if ( 'mquick' === $id ) { return function_exists( 'nadlan_mm_quick_summary' ) ? nadlan_mm_quick_summary( 'en' ) : ''; }  // 1.72.589 (HAD-675)
 		if ( 'nrm' === $id ) {
 			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="he-IL" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>מתכנן הקמפיין, תצוגה מקומית</title>
+<!-- nlcamp build (7.11.2026): LOCAL preview only. verify.py serves the repo root (nad-lan-co-il) on a free 127.0.0.1 port and opens
+       /docs/research/2026-11-07-campaign-network/build/build-nlcamp/preview.html          (Hebrew page, like /international-campaigns/)
+       /docs/research/2026-11-07-campaign-network/build/build-nlcamp/preview.html?lang=en  (English page, like /en/international-campaigns/)
+     By hand: python -m http.server 47991 --bind 127.0.0.1 (from the repo root). ?stub=1 answers the brief locally (a fetch stub in this
+     page, not in the tool), so the whole flow can be pressed by hand; without it the save fails here (no WordPress), and the tool says so.
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the scoped rules.
+     The tool is mounted exactly as the shortcode prints it (inc/instruments.php + registry.php.txt): <section class="nli" dir lang> +
+     <div class="nli-host" data-nli="nlcamp"> (no data file) with the kicker, the title and the server summary (nadlan_cb_summary(),
+     rendered by test_campaign_brief.php --summary), then the related links (Hebrew only; the English block has none). Before the
+     scripts, the same window.NLCAMP_CONFIG inc/campaign-brief.php prints with its defaults (first-payment products 8822 / 8823 / 8824,
+     firstPay 18,000), but with a LOCAL endpoint and LOCAL checkout paths (never the live site). Scripts in the
+     enqueue order: core.js, then tools/nlcamp.js, both deferred, both repo files. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    var q = location.search, en = /[?&]lang=en\b/.test(q);
+    window.__PV = { en: en };
+    if (en) { document.documentElement.setAttribute('lang', 'en'); document.documentElement.setAttribute('dir', 'ltr'); document.title = 'Campaign planner, local preview'; }
+    // the fonts inc/instruments.php enqueues for the page language
+    var f = en ? 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans+Hebrew:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap'
+               : 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+    document.write('<link rel="stylesheet" href="' + f + '">');
+    if (/[?&]theme=1/.test(q)) {
+      ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+       'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+       'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) { document.write('<link rel="stylesheet" href="' + u + '">'); });
+    }
+    if (/[?&]stub=1/.test(q)) {  // hand checks only: answer the brief here, nothing leaves the machine
+      var real = window.fetch.bind(window);
+      window.fetch = function (u, o) {
+        if (String(u).indexOf('/wp-json/nadlan/v1/campaign-brief') > -1) {
+          var d = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; };
+          var ref = 'NLC-' + String(d.getFullYear()).slice(2) + p(d.getMonth() + 1) + p(d.getDate()) + '-L0CL';
+          return Promise.resolve(new Response(JSON.stringify({ ok: true, ref: ref }), { status: 201, headers: { 'Content-Type': 'application/json' } }));
+        }
+        return real(u, o);
+      };
+    }
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  html[lang="en"] body{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font-size:13px;line-height:20px;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content" id="pv-main">
+<p class="pv-top" id="pv-top">תצוגה מקומית · מתכנן הקמפיין הבינלאומי ליזמים (nlcamp) · שום דבר לא נשלח מכאן לאתר</p>
+</main>
+<template id="pv-he"><section class="nli" dir="rtl" lang="he" aria-label="מתכנן הקמפיין"><div class="nli-host" data-nli="nlcamp"><div class="nli__panel"><p class="nli__kicker">קמפיין בינלאומי ליזמים</p><h2 class="nli__title">מתכנן הקמפיין</h2><p>מתכנן קמפיין ליזמים שמוכרים לקונים בחו״ל ובתפוצות: בוחרים שווקים וקהילות (צרפת, ארצות הברית, בריטניה, קנדה, בלגיה, שווייץ, דרום אפריקה, אוסטרליה, דוברי רוסית ועולים חדשים בישראל), את הקונים שאתם מחפשים, תקציב פרסום חודשי ואת הפרויקט, ורואים את התוכנית ואת המחיר לפני ששולחים. הקמפיין מדבר עם הקונים בשפה שלהם (אנגלית, צרפתית, רוסית), והפרסום מכוון לפי מדינה, עיר ושפה, ובעיתונות ובניוזלטרים של הקהילות. הפניות מגיעות לעמוד הפרויקט שלכם בנדלן, עם הסיור התלת־ממדי, וכל פנייה מגיעה אליכם בוואטסאפ עם מה שהקונה פתח בפרויקט. שלוש תוכניות שנתיות: שוק אחד <bdi>36,000</bdi> ₪ לשנה; שלושה שווקים <bdi>72,000</bdi> ₪ לשנה; פרויקט דגל <bdi>144,000</bdi> ₪ לשנה. תקציב הפרסום, בין <bdi>3,000</bdi> ל־<bdi>60,000</bdi> ₪ בחודש, משולם על ידכם ישירות ל־Meta, ל־Google ולשאר הערוצים, ואינו חלק ממחיר התוכנית. המנוי משולם לפני שהקמפיין יוצא לדרך.</p></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="https://nad-lan.co.il/developers/">שיווק פרויקטים ליזמים</a> <a href="https://nad-lan.co.il/advertiser-center/">פרסום פרויקט נדל״ן</a> <a href="https://nad-lan.co.il/advertise/">מחירון הפרסום באתר</a></nav></section></template>
+<template id="pv-en"><section class="nli" dir="ltr" lang="en" aria-label="Campaign planner"><div class="nli-host" data-nli="nlcamp"><div class="nli__panel"><p class="nli__kicker">International campaigns for developers</p><h2 class="nli__title">Campaign planner</h2><p>A planner for property developers who sell to buyers abroad and in the diaspora: choose the markets and communities (France, USA, UK, Canada, Belgium, Switzerland, South Africa, Australia, Russian speakers and Olim in Israel), the buyers you want, a monthly ad budget and the project, and see the plan and its price before you send it. The campaign speaks to buyers in their own language (English, French, Russian); ads are aimed by country, city and language, plus community press and newsletters. The leads land on your project page on NadLan, with the 3D tour, and every lead reaches you on WhatsApp with what the buyer opened in the project. Three annual plans: One market ₪<bdi>36,000</bdi> a year; Three markets ₪<bdi>72,000</bdi> a year; Flagship ₪<bdi>144,000</bdi> a year. The ad budget, from ₪<bdi>3,000</bdi> to ₪<bdi>60,000</bdi> a month, is paid by you straight to Meta, Google and the other channels, and is not part of the plan price. The subscription is paid before the campaign goes live.</p></div></div></section></template>
+<script>
+  (function () {
+    var en = window.__PV.en, main = document.getElementById('pv-main');
+    if (en) document.getElementById('pv-top').textContent = 'Local preview · International campaign planner for developers (nlcamp) · nothing is sent to the site from here';
+    var box = document.createElement('div'); box.id = 'pv-camp';
+    box.appendChild(document.getElementById(en ? 'pv-en' : 'pv-he').content.cloneNode(true));
+    main.appendChild(box);
+    // what inc/campaign-brief.php prints before tools/nlcamp.js, with a LOCAL endpoint
+    // (the server prints https://nad-lan.co.il/checkout/?add-to-cart=8822 ...; here a LOCAL path, so a press by hand never reaches the shop)
+    window.NLCAMP_CONFIG = { endpoint: '/wp-json/nadlan/v1/campaign-brief', privacy: 'https://nad-lan.co.il/privacy/', plans: {
+      one: { productUrl: '/checkout/?add-to-cart=8822', firstPay: 18000 }, three: { productUrl: '/checkout/?add-to-cart=8823', firstPay: 18000 }, flag: { productUrl: '/checkout/?add-to-cart=8824', firstPay: 18000 } } };
+  })();
+</script>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/nlcamp.js"></script>
+</body>
+</html>

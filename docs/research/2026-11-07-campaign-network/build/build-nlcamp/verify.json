@@ -1,0 +1,3020 @@
+{
+ "base": "http://127.0.0.1:60003/docs/research/2026-11-07-campaign-network/build/build-nlcamp/preview.html",
+ "checks": 529,
+ "failed": [],
+ "report": [
+  {
+   "check": "he 390 header: the title, \"1 / 5\", 5 progress segments, aria step 1",
+   "ok": true,
+   "got": [
+    "1 / 5",
+    "שווקים וקהילות"
+   ]
+  },
+  {
+   "check": "he 390 faces: the title in Karantina at 32 px or more, the chips in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "Karantina, \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    38,
+    "\"IBM Plex Sans Hebrew\", \"IBM Plex Sans\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "rtl",
+    "he"
+   ]
+  },
+  {
+   "check": "he 390 step 1: Back hidden, Next says \"המשיכו\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 ten market chips, each with its languages; the targeting line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 side panel hidden on the phone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 1 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 1 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 1 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 1 every visible group named",
+   "ok": true,
+   "got": [
+    "שווקים וקהילות לקמפיין"
+   ]
+  },
+  {
+   "check": "he 390 step 1 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 1 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 Next with no market: the message, still step 1, focus on the first chip",
+   "ok": true,
+   "got": "בחרו לפחות שוק או קהילה אחת."
+  },
+  {
+   "check": "he 390 all ten pressed: flagship recommended, languages en fr ru, the message cleared",
+   "ok": true,
+   "got": "פרויקט דגל, ₪144,000 לשנה"
+  },
+  {
+   "check": "he 390 France only: languages \"צרפתית\", one market ₪36,000",
+   "ok": true,
+   "got": "שוק אחד, ₪36,000 לשנה"
+  },
+  {
+   "check": "he 390 France + Canada: languages \"אנגלית, צרפתית\", three markets ₪72,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 2: \"2 / 5\", heading, aria step 2, focus on the heading, Back shown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 progress: segment 1 done, segment 2 current",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 four buyer cards (one choice)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 Next with no buyer: the message, still step 2",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 one choice: investors checked, luxury not, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 2 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 2 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 2 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 2 every visible group named",
+   "ok": true,
+   "got": [
+    "הקונים שאתם מחפשים"
+   ]
+  },
+  {
+   "check": "he 390 step 2 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 2 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 Back to step 1: the chips kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 and forward: investors still checked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 3 opens at ₪10,000 a month, ₪120,000 a year",
+   "ok": true,
+   "got": [
+    "₪10,000",
+    "₪120,000"
+   ]
+  },
+  {
+   "check": "he 390 the yearly total is the survey red figure",
+   "ok": true,
+   "got": "rgb(196, 37, 80)"
+  },
+  {
+   "check": "he 390 + three times: ₪13,000 / ₪156,000",
+   "ok": true,
+   "got": [
+    "₪13,000",
+    "₪156,000"
+   ]
+  },
+  {
+   "check": "he 390 - once: ₪12,000 / ₪144,000, the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 slider to the end: ₪60,000 / ₪720,000, + disabled",
+   "ok": true,
+   "got": [
+    "₪60,000",
+    "₪720,000"
+   ]
+  },
+  {
+   "check": "he 390 slider to the start: ₪3,000 / ₪36,000, - disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 typed 2,500 and Next: the range message, still step 3",
+   "ok": true,
+   "got": "התקציב החודשי צריך להיות בין ₪3,000 ל־₪60,000, בקפיצות של ₪1,000."
+  },
+  {
+   "check": "he 390 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared",
+   "ok": true,
+   "got": [
+    "Meta (פייסבוק ואינסטגרם)\n55%\n₪13,750",
+    "Google (חיפוש ויוטיוב)\n25%\n₪6,250",
+    "עיתונות קהילתית וניוזלטרים\n15%\n₪3,750",
+    "אתרי נדלן בינלאומיים\n5%\n₪1,250"
+   ]
+  },
+  {
+   "check": "he 390 the split is labelled a starting point, the ad budget paid straight to the channels",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 3 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 3 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "he 390 split: press +5 = 20%, the total 105%, \"החלוקה שלכם\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 Next at 105%: the message, still step 3",
+   "ok": true,
+   "got": "החלוקה צריכה להסתכם ב־100%. עכשיו: 105%."
+  },
+  {
+   "check": "he 390 ... and Next again: the panel opens itself to show the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 reset: back to 55 / 25 / 15 / 5, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%",
+   "ok": true,
+   "got": "Meta (פייסבוק ואינסטגרם)\n50%\n₪12,500 Google (חיפוש ויוטיוב)\n25%\n₪6,250 עיתונות קהילתית וניוזלטרים\n20%\n₪5,000 אתרי נדלן בינלאומיים\n5%\n₪1,250"
+  },
+  {
+   "check": "he 390 step 3 split open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 3 split open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 split open every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 split open every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 split open no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 3 split open survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "he 390 Enter in the budget field moves on: step 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 Next with no project kind: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 existing page: the field \"כתובת העמוד או שם הפרויקט\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 Next with the field empty: the message, focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 a new project: the label \"שם הפרויקט והעיר (לא חובה)\", the text kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 4 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 4 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 4 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 4 every visible group named",
+   "ok": true,
+   "got": [
+    "הפרויקט"
+   ]
+  },
+  {
+   "check": "he 390 step 4 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 4 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5: \"5 / 5\", Next says \"שלחו את התוכנית\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the summary list: markets, languages, buyers, budget, split, project",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 a \"שינוי\" button on each of the 6 rows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the recommended plan is checked: three markets, ₪72,000 לשנה, tagged \"מתאימה ל־2 שווקים שבחרתם\"",
+   "ok": true,
+   "got": "שלושה שווקים ₪72,000 לשנה קמפיין בעד שלושה שווקים וקהילות. מתאימה ל־2 שווקים שבחרתם"
+  },
+  {
+   "check": "he 390 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the lead promise line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the privacy notice with its link, the consent box unchecked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 5 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 5 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 every visible group named",
+   "ok": true,
+   "got": [
+    "בחרו תוכנית שנתית",
+    "פרטים ליצירת קשר"
+   ]
+  },
+  {
+   "check": "he 390 step 5 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 plan \"one market\" for two markets and Send: the plan message and every contact message; nothing sent",
+   "ok": true,
+   "got": "בחרתם 2 שווקים, ובתוכנית \"שוק אחד\" יש מקום לשוק אחד. בחרו תוכנית גדולה יותר, או צמצמו את השווקים בשלב הראשון. | כתבו שם מלא. | כתבו את שם החברה. | כתבו מספר טלפון, אפשר עם קידומת של מדינה. | כתבו כתובת אימייל מלאה. | כדי"
+  },
+  {
+   "check": "he 390 focus on the first invalid control (the plan)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 step 5 errors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 step 5 errors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 errors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 errors every visible group named",
+   "ok": true,
+   "got": [
+    "בחרו תוכנית שנתית",
+    "פרטים ליצירת קשר"
+   ]
+  },
+  {
+   "check": "he 390 step 5 errors no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 step 5 errors survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 a bad email and no consent: only those two messages",
+   "ok": true,
+   "got": "כתבו כתובת אימייל מלאה. | כדי לשלוח, סמנו את האישור."
+  },
+  {
+   "check": "he 390 the consent box ticked by pressing its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 \"שינוי\" on the markets row: step 1, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 forward to step 5: three markets, the plan still three (chosen), the tag \"מתאימה ל־3 שווקים שבחרתם\", the fields kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 copy: the plan as text, no name, company, phone or email",
+   "ok": true,
+   "got": "תוכנית קמפיין בינלאומי בנדלן\r | שווקים וקהילות: צרפת, ארצות הברית, קנדה\r | שפות: אנגלית, צרפתית\r | הקונים: משקיעים, להשכרה\r | תקציב פרסום: ₪25,000 ב"
+  },
+  {
+   "check": "he 390 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%"
+  },
+  {
+   "check": "he 390 send with a server error: the message, the form kept, Send pressable again",
+   "ok": true,
+   "got": "לא הצלחנו לשמור את התוכנית. בדקו את החיבור ונסו שוב."
+  },
+  {
+   "check": "he 390 saved: the reference NLC-261107-T3ST, the payment step, launch after payment",
+   "ok": true,
+   "got": "קמפיין בינלאומי ליזמים |  | מתכנן הקמפיין |  | 5 / 5 |  | התוכנית נשמרה | מספר התוכנית שלכם | NLC-261107-T3ST |  | שמרו את המספר. צוות נדלן כבר קיבל את התוכנית. |  | תשלום המנוי השנתי | "
+  },
+  {
+   "check": "he 390 first-payment mode (the config default): \"לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)\" to the first-payment product 8823 with the reference",
+   "ok": true,
+   "got": "לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)"
+  },
+  {
+   "check": "he 390 the rest line under it: \"את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם.\"; no same-day link line",
+   "ok": true,
+   "got": "את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם."
+  },
+  {
+   "check": "he 390 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 after saving: the footer gone, \"5 / 5\", every segment done, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field",
+   "ok": true,
+   "got": {
+    "markets": [
+     "fr",
+     "us",
+     "ca"
+    ],
+    "plan": "three",
+    "budget": 25000,
+    "t": 13358
+   }
+  },
+  {
+   "check": "he 390 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies",
+   "ok": true,
+   "got": [
+    "POST",
+    "application/json",
+    ""
+   ]
+  },
+  {
+   "check": "he 390 copy after saving carries the reference",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 saved no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 saved every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 saved every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 saved every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 saved no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 saved survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 no dialog (no prompt fallback)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 full plan in one charge: \"לתשלום: שלושה שווקים, ₪72,000 לשנה\" to product 8810 with the reference, no rest line",
+   "ok": true,
+   "got": "לתשלום: שלושה שווקים, ₪72,000 לשנה"
+  },
+  {
+   "check": "he 390 pay full no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 pay full every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay full every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay full every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay full no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay full survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 (pay full) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 no product: no pay button, \"קישור לתשלום יישלח אליכם עוד היום.\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 pay none no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 pay none every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay none every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay none every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay none no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 pay none survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 (pay none) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 header: the title, \"1 / 5\", 5 progress segments, aria step 1",
+   "ok": true,
+   "got": [
+    "1 / 5",
+    "שווקים וקהילות"
+   ]
+  },
+  {
+   "check": "he 1280 faces: the title in Karantina at 32 px or more, the chips in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "Karantina, \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    44,
+    "\"IBM Plex Sans Hebrew\", \"IBM Plex Sans\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "rtl",
+    "he"
+   ]
+  },
+  {
+   "check": "he 1280 step 1: Back hidden, Next says \"המשיכו\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 ten market chips, each with its languages; the targeting line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 side panel shown (wide)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 1 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 1 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 1 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 1 every visible group named",
+   "ok": true,
+   "got": [
+    "שווקים וקהילות לקמפיין"
+   ]
+  },
+  {
+   "check": "he 1280 step 1 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 1 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 Next with no market: the message, still step 1, focus on the first chip",
+   "ok": true,
+   "got": "בחרו לפחות שוק או קהילה אחת."
+  },
+  {
+   "check": "he 1280 all ten pressed: flagship recommended, languages en fr ru, the message cleared",
+   "ok": true,
+   "got": "פרויקט דגל, ₪144,000 לשנה"
+  },
+  {
+   "check": "he 1280 France only: languages \"צרפתית\", one market ₪36,000",
+   "ok": true,
+   "got": "שוק אחד, ₪36,000 לשנה"
+  },
+  {
+   "check": "he 1280 France + Canada: languages \"אנגלית, צרפתית\", three markets ₪72,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 2: \"2 / 5\", heading, aria step 2, focus on the heading, Back shown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 progress: segment 1 done, segment 2 current",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 four buyer cards (one choice)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 Next with no buyer: the message, still step 2",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 one choice: investors checked, luxury not, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 2 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 2 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 2 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 2 every visible group named",
+   "ok": true,
+   "got": [
+    "הקונים שאתם מחפשים"
+   ]
+  },
+  {
+   "check": "he 1280 step 2 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 2 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 Back to step 1: the chips kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 and forward: investors still checked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 3 opens at ₪10,000 a month, ₪120,000 a year",
+   "ok": true,
+   "got": [
+    "₪10,000",
+    "₪120,000"
+   ]
+  },
+  {
+   "check": "he 1280 the yearly total is the survey red figure",
+   "ok": true,
+   "got": "rgb(196, 37, 80)"
+  },
+  {
+   "check": "he 1280 + three times: ₪13,000 / ₪156,000",
+   "ok": true,
+   "got": [
+    "₪13,000",
+    "₪156,000"
+   ]
+  },
+  {
+   "check": "he 1280 - once: ₪12,000 / ₪144,000, the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 slider to the end: ₪60,000 / ₪720,000, + disabled",
+   "ok": true,
+   "got": [
+    "₪60,000",
+    "₪720,000"
+   ]
+  },
+  {
+   "check": "he 1280 slider to the start: ₪3,000 / ₪36,000, - disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 typed 2,500 and Next: the range message, still step 3",
+   "ok": true,
+   "got": "התקציב החודשי צריך להיות בין ₪3,000 ל־₪60,000, בקפיצות של ₪1,000."
+  },
+  {
+   "check": "he 1280 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared",
+   "ok": true,
+   "got": [
+    "Meta (פייסבוק ואינסטגרם)\n55%\n₪13,750",
+    "Google (חיפוש ויוטיוב)\n25%\n₪6,250",
+    "עיתונות קהילתית וניוזלטרים\n15%\n₪3,750",
+    "אתרי נדלן בינלאומיים\n5%\n₪1,250"
+   ]
+  },
+  {
+   "check": "he 1280 the split is labelled a starting point, the ad budget paid straight to the channels",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 3 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 3 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "he 1280 split: press +5 = 20%, the total 105%, \"החלוקה שלכם\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 Next at 105%: the message, still step 3",
+   "ok": true,
+   "got": "החלוקה צריכה להסתכם ב־100%. עכשיו: 105%."
+  },
+  {
+   "check": "he 1280 ... and Next again: the panel opens itself to show the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 reset: back to 55 / 25 / 15 / 5, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%",
+   "ok": true,
+   "got": "Meta (פייסבוק ואינסטגרם)\n50%\n₪12,500 Google (חיפוש ויוטיוב)\n25%\n₪6,250 עיתונות קהילתית וניוזלטרים\n20%\n₪5,000 אתרי נדלן בינלאומיים\n5%\n₪1,250"
+  },
+  {
+   "check": "he 1280 step 3 split open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 3 split open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 split open every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 split open every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 split open no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 3 split open survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "he 1280 Enter in the budget field moves on: step 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 Next with no project kind: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 existing page: the field \"כתובת העמוד או שם הפרויקט\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 Next with the field empty: the message, focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 a new project: the label \"שם הפרויקט והעיר (לא חובה)\", the text kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 4 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 4 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 4 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 4 every visible group named",
+   "ok": true,
+   "got": [
+    "הפרויקט"
+   ]
+  },
+  {
+   "check": "he 1280 step 4 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 4 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5: \"5 / 5\", Next says \"שלחו את התוכנית\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the summary list: markets, languages, buyers, budget, split, project",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 a \"שינוי\" button on each of the 6 rows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the recommended plan is checked: three markets, ₪72,000 לשנה, tagged \"מתאימה ל־2 שווקים שבחרתם\"",
+   "ok": true,
+   "got": "שלושה שווקים ₪72,000 לשנה קמפיין בעד שלושה שווקים וקהילות. מתאימה ל־2 שווקים שבחרתם"
+  },
+  {
+   "check": "he 1280 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the lead promise line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the privacy notice with its link, the consent box unchecked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 5 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 5 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 every visible group named",
+   "ok": true,
+   "got": [
+    "בחרו תוכנית שנתית",
+    "פרטים ליצירת קשר"
+   ]
+  },
+  {
+   "check": "he 1280 step 5 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 plan \"one market\" for two markets and Send: the plan message and every contact message; nothing sent",
+   "ok": true,
+   "got": "בחרתם 2 שווקים, ובתוכנית \"שוק אחד\" יש מקום לשוק אחד. בחרו תוכנית גדולה יותר, או צמצמו את השווקים בשלב הראשון. | כתבו שם מלא. | כתבו את שם החברה. | כתבו מספר טלפון, אפשר עם קידומת של מדינה. | כתבו כתובת אימייל מלאה. | כדי"
+  },
+  {
+   "check": "he 1280 focus on the first invalid control (the plan)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 step 5 errors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 step 5 errors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 errors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 errors every visible group named",
+   "ok": true,
+   "got": [
+    "בחרו תוכנית שנתית",
+    "פרטים ליצירת קשר"
+   ]
+  },
+  {
+   "check": "he 1280 step 5 errors no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 step 5 errors survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 a bad email and no consent: only those two messages",
+   "ok": true,
+   "got": "כתבו כתובת אימייל מלאה. | כדי לשלוח, סמנו את האישור."
+  },
+  {
+   "check": "he 1280 the consent box ticked by pressing its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 \"שינוי\" on the markets row: step 1, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 forward to step 5: three markets, the plan still three (chosen), the tag \"מתאימה ל־3 שווקים שבחרתם\", the fields kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 copy: the plan as text, no name, company, phone or email",
+   "ok": true,
+   "got": "תוכנית קמפיין בינלאומי בנדלן\r | שווקים וקהילות: צרפת, ארצות הברית, קנדה\r | שפות: אנגלית, צרפתית\r | הקונים: משקיעים, להשכרה\r | תקציב פרסום: ₪25,000 ב"
+  },
+  {
+   "check": "he 1280 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%"
+  },
+  {
+   "check": "he 1280 send with a server error: the message, the form kept, Send pressable again",
+   "ok": true,
+   "got": "לא הצלחנו לשמור את התוכנית. בדקו את החיבור ונסו שוב."
+  },
+  {
+   "check": "he 1280 saved: the reference NLC-261107-T3ST, the payment step, launch after payment",
+   "ok": true,
+   "got": "קמפיין בינלאומי ליזמים |  | מתכנן הקמפיין |  | 5 / 5 |  | התוכנית נשמרה | מספר התוכנית שלכם | NLC-261107-T3ST |  | שמרו את המספר. צוות נדלן כבר קיבל את התוכנית. |  | תשלום המנוי השנתי | "
+  },
+  {
+   "check": "he 1280 first-payment mode (the config default): \"לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)\" to the first-payment product 8823 with the reference",
+   "ok": true,
+   "got": "לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)"
+  },
+  {
+   "check": "he 1280 the rest line under it: \"את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם.\"; no same-day link line",
+   "ok": true,
+   "got": "את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם."
+  },
+  {
+   "check": "he 1280 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 after saving: the footer gone, \"5 / 5\", every segment done, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field",
+   "ok": true,
+   "got": {
+    "markets": [
+     "fr",
+     "us",
+     "ca"
+    ],
+    "plan": "three",
+    "budget": 25000,
+    "t": 13058
+   }
+  },
+  {
+   "check": "he 1280 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies",
+   "ok": true,
+   "got": [
+    "POST",
+    "application/json",
+    ""
+   ]
+  },
+  {
+   "check": "he 1280 copy after saving carries the reference",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 saved no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 saved every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 saved every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 saved every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 saved no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 saved survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 no dialog (no prompt fallback)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 full plan in one charge: \"לתשלום: שלושה שווקים, ₪72,000 לשנה\" to product 8810 with the reference, no rest line",
+   "ok": true,
+   "got": "לתשלום: שלושה שווקים, ₪72,000 לשנה"
+  },
+  {
+   "check": "he 1280 pay full no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 pay full every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay full every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay full every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay full no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay full survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 (pay full) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 no product: no pay button, \"קישור לתשלום יישלח אליכם עוד היום.\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 pay none no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 pay none every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay none every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay none every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay none no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 pay none survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 (pay none) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 header: the title, \"1 / 5\", 5 progress segments, aria step 1",
+   "ok": true,
+   "got": [
+    "1 / 5",
+    "Markets and communities"
+   ]
+  },
+  {
+   "check": "en 390 faces: the title in IBM Plex Sans Condensed, the chips in IBM Plex Sans, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Condensed\", \"IBM Plex Sans\", system-ui, sans-serif",
+    30,
+    "\"IBM Plex Sans\", \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "ltr",
+    "en"
+   ]
+  },
+  {
+   "check": "en 390 step 1: Back hidden, Next says \"Continue\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 ten market chips, each with its languages; the targeting line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 side panel hidden on the phone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 1 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 1 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 1 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 1 every visible group named",
+   "ok": true,
+   "got": [
+    "Markets and communities for the campaign"
+   ]
+  },
+  {
+   "check": "en 390 step 1 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 1 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 Next with no market: the message, still step 1, focus on the first chip",
+   "ok": true,
+   "got": "Choose at least one market or community."
+  },
+  {
+   "check": "en 390 all ten pressed: flagship recommended, languages en fr ru, the message cleared",
+   "ok": true,
+   "got": "Flagship, ₪144,000 a year"
+  },
+  {
+   "check": "en 390 France only: languages \"French\", one market ₪36,000",
+   "ok": true,
+   "got": "One market, ₪36,000 a year"
+  },
+  {
+   "check": "en 390 France + Canada: languages \"English, French\", three markets ₪72,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 2: \"2 / 5\", heading, aria step 2, focus on the heading, Back shown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 progress: segment 1 done, segment 2 current",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 four buyer cards (one choice)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 Next with no buyer: the message, still step 2",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 one choice: investors checked, luxury not, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 2 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 2 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 2 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 2 every visible group named",
+   "ok": true,
+   "got": [
+    "The buyers you want"
+   ]
+  },
+  {
+   "check": "en 390 step 2 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 2 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 Back to step 1: the chips kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 and forward: investors still checked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 3 opens at ₪10,000 a month, ₪120,000 a year",
+   "ok": true,
+   "got": [
+    "₪10,000",
+    "₪120,000"
+   ]
+  },
+  {
+   "check": "en 390 the yearly total is the survey red figure",
+   "ok": true,
+   "got": "rgb(196, 37, 80)"
+  },
+  {
+   "check": "en 390 + three times: ₪13,000 / ₪156,000",
+   "ok": true,
+   "got": [
+    "₪13,000",
+    "₪156,000"
+   ]
+  },
+  {
+   "check": "en 390 - once: ₪12,000 / ₪144,000, the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 slider to the end: ₪60,000 / ₪720,000, + disabled",
+   "ok": true,
+   "got": [
+    "₪60,000",
+    "₪720,000"
+   ]
+  },
+  {
+   "check": "en 390 slider to the start: ₪3,000 / ₪36,000, - disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 typed 2,500 and Next: the range message, still step 3",
+   "ok": true,
+   "got": "The monthly budget must be from ₪3,000 to ₪60,000, in steps of ₪1,000."
+  },
+  {
+   "check": "en 390 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared",
+   "ok": true,
+   "got": [
+    "Meta (Facebook and Instagram)\n55%\n₪13,750",
+    "Google (Search and YouTube)\n25%\n₪6,250",
+    "Community press and newsletters\n15%\n₪3,750",
+    "International property portals\n5%\n₪1,250"
+   ]
+  },
+  {
+   "check": "en 390 the split is labelled a starting point, the ad budget paid straight to the channels",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 3 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 3 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "en 390 split: press +5 = 20%, the total 105%, \"Your split\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 Next at 105%: the message, still step 3",
+   "ok": true,
+   "got": "The split must add up to 100%. Now: 105%."
+  },
+  {
+   "check": "en 390 ... and Next again: the panel opens itself to show the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 reset: back to 55 / 25 / 15 / 5, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%",
+   "ok": true,
+   "got": "Meta (Facebook and Instagram)\n50%\n₪12,500 Google (Search and YouTube)\n25%\n₪6,250 Community press and newsletters\n20%\n₪5,000 International property portals\n5%\n₪1"
+  },
+  {
+   "check": "en 390 step 3 split open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 3 split open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 split open every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 split open every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 split open no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 3 split open survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "en 390 Enter in the budget field moves on: step 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 Next with no project kind: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 existing page: the field \"The page address or the project name\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 Next with the field empty: the message, focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 a new project: the label \"Project name and city (optional)\", the text kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 4 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 4 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 4 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 4 every visible group named",
+   "ok": true,
+   "got": [
+    "The project"
+   ]
+  },
+  {
+   "check": "en 390 step 4 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 4 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5: \"5 / 5\", Next says \"Send the plan\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the summary list: markets, languages, buyers, budget, split, project",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 a \"שינוי\" button on each of the 6 rows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the recommended plan is checked: three markets, ₪72,000 a year, tagged \"Fits the 2 markets you chose\"",
+   "ok": true,
+   "got": "Three markets ₪72,000 a year A campaign in up to three markets and communities. Fits the 2 markets you chose"
+  },
+  {
+   "check": "en 390 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the lead promise line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the privacy notice with its link, the consent box unchecked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 5 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 5 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 every visible group named",
+   "ok": true,
+   "got": [
+    "Choose an annual plan",
+    "Contact details"
+   ]
+  },
+  {
+   "check": "en 390 step 5 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 plan \"one market\" for two markets and Send: the plan message and every contact message; nothing sent",
+   "ok": true,
+   "got": "You chose 2 markets, and the \"One market\" plan has room for 1 market. Choose a bigger plan, or narrow the markets in step 1. | Write your full name. | Write the company name. | Write a phone number, with the country code"
+  },
+  {
+   "check": "en 390 focus on the first invalid control (the plan)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 step 5 errors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 step 5 errors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 errors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 errors every visible group named",
+   "ok": true,
+   "got": [
+    "Choose an annual plan",
+    "Contact details"
+   ]
+  },
+  {
+   "check": "en 390 step 5 errors no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 step 5 errors survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 a bad email and no consent: only those two messages",
+   "ok": true,
+   "got": "Write a full email address. | To send, tick the consent box."
+  },
+  {
+   "check": "en 390 the consent box ticked by pressing its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 \"שינוי\" on the markets row: step 1, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 forward to step 5: three markets, the plan still three (chosen), the tag \"Fits the 3 markets you chose\", the fields kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 copy: the plan as text, no name, company, phone or email",
+   "ok": true,
+   "got": "International campaign plan on NadLan\r | Markets and communities: France, USA, Canada\r | Languages: English, French\r | Buyers: Investors (rental)\r"
+  },
+  {
+   "check": "en 390 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=International%20campaign%20plan%20on%20N"
+  },
+  {
+   "check": "en 390 send with a server error: the message, the form kept, Send pressable again",
+   "ok": true,
+   "got": "We could not save the plan. Check your connection and try again."
+  },
+  {
+   "check": "en 390 saved: the reference NLC-261107-T3ST, the payment step, launch after payment",
+   "ok": true,
+   "got": "International campaigns for developers |  | Campaign planner |  | 5 / 5 |  | Your plan is saved | Your plan number | NLC-261107-T3ST |  | Keep this number. The NadLan team already "
+  },
+  {
+   "check": "en 390 first-payment mode (the config default): \"Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)\" to the first-payment product 8823 with the reference",
+   "ok": true,
+   "got": "Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)"
+  },
+  {
+   "check": "en 390 the rest line under it: \"The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you.\"; no same-day link line",
+   "ok": true,
+   "got": "The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you."
+  },
+  {
+   "check": "en 390 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 after saving: the footer gone, \"5 / 5\", every segment done, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field",
+   "ok": true,
+   "got": {
+    "markets": [
+     "fr",
+     "us",
+     "ca"
+    ],
+    "plan": "three",
+    "budget": 25000,
+    "t": 13368
+   }
+  },
+  {
+   "check": "en 390 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies",
+   "ok": true,
+   "got": [
+    "POST",
+    "application/json",
+    ""
+   ]
+  },
+  {
+   "check": "en 390 copy after saving carries the reference",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 saved no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 saved every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 saved every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 saved every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 saved no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 saved survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 no dialog (no prompt fallback)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 full plan in one charge: \"Pay: Three markets, ₪72,000 a year\" to product 8810 with the reference, no rest line",
+   "ok": true,
+   "got": "Pay: Three markets, ₪72,000 a year"
+  },
+  {
+   "check": "en 390 pay full no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 pay full every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay full every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay full every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay full no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay full survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 (pay full) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 no product: no pay button, \"A payment link will be sent to you today.\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 pay none no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 pay none every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay none every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay none every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay none no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 pay none survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 (pay none) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 header: the title, \"1 / 5\", 5 progress segments, aria step 1",
+   "ok": true,
+   "got": [
+    "1 / 5",
+    "Markets and communities"
+   ]
+  },
+  {
+   "check": "en 1280 faces: the title in IBM Plex Sans Condensed, the chips in IBM Plex Sans, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Condensed\", \"IBM Plex Sans\", system-ui, sans-serif",
+    36,
+    "\"IBM Plex Sans\", \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "ltr",
+    "en"
+   ]
+  },
+  {
+   "check": "en 1280 step 1: Back hidden, Next says \"Continue\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 ten market chips, each with its languages; the targeting line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 side panel shown (wide)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 1 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 1 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 1 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 1 every visible group named",
+   "ok": true,
+   "got": [
+    "Markets and communities for the campaign"
+   ]
+  },
+  {
+   "check": "en 1280 step 1 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 1 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 Next with no market: the message, still step 1, focus on the first chip",
+   "ok": true,
+   "got": "Choose at least one market or community."
+  },
+  {
+   "check": "en 1280 all ten pressed: flagship recommended, languages en fr ru, the message cleared",
+   "ok": true,
+   "got": "Flagship, ₪144,000 a year"
+  },
+  {
+   "check": "en 1280 France only: languages \"French\", one market ₪36,000",
+   "ok": true,
+   "got": "One market, ₪36,000 a year"
+  },
+  {
+   "check": "en 1280 France + Canada: languages \"English, French\", three markets ₪72,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 2: \"2 / 5\", heading, aria step 2, focus on the heading, Back shown",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 progress: segment 1 done, segment 2 current",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 four buyer cards (one choice)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 Next with no buyer: the message, still step 2",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 one choice: investors checked, luxury not, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 2 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 2 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 2 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 2 every visible group named",
+   "ok": true,
+   "got": [
+    "The buyers you want"
+   ]
+  },
+  {
+   "check": "en 1280 step 2 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 2 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 Back to step 1: the chips kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 and forward: investors still checked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 3 opens at ₪10,000 a month, ₪120,000 a year",
+   "ok": true,
+   "got": [
+    "₪10,000",
+    "₪120,000"
+   ]
+  },
+  {
+   "check": "en 1280 the yearly total is the survey red figure",
+   "ok": true,
+   "got": "rgb(196, 37, 80)"
+  },
+  {
+   "check": "en 1280 + three times: ₪13,000 / ₪156,000",
+   "ok": true,
+   "got": [
+    "₪13,000",
+    "₪156,000"
+   ]
+  },
+  {
+   "check": "en 1280 - once: ₪12,000 / ₪144,000, the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 slider to the end: ₪60,000 / ₪720,000, + disabled",
+   "ok": true,
+   "got": [
+    "₪60,000",
+    "₪720,000"
+   ]
+  },
+  {
+   "check": "en 1280 slider to the start: ₪3,000 / ₪36,000, - disabled",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 typed 2,500 and Next: the range message, still step 3",
+   "ok": true,
+   "got": "The monthly budget must be from ₪3,000 to ₪60,000, in steps of ₪1,000."
+  },
+  {
+   "check": "en 1280 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared",
+   "ok": true,
+   "got": [
+    "Meta (Facebook and Instagram)\n55%\n₪13,750",
+    "Google (Search and YouTube)\n25%\n₪6,250",
+    "Community press and newsletters\n15%\n₪3,750",
+    "International property portals\n5%\n₪1,250"
+   ]
+  },
+  {
+   "check": "en 1280 the split is labelled a starting point, the ad budget paid straight to the channels",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 3 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 3 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "en 1280 split: press +5 = 20%, the total 105%, \"Your split\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 Next at 105%: the message, still step 3",
+   "ok": true,
+   "got": "The split must add up to 100%. Now: 105%."
+  },
+  {
+   "check": "en 1280 ... and Next again: the panel opens itself to show the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 reset: back to 55 / 25 / 15 / 5, the message cleared",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%",
+   "ok": true,
+   "got": "Meta (Facebook and Instagram)\n50%\n₪12,500 Google (Search and YouTube)\n25%\n₪6,250 Community press and newsletters\n20%\n₪5,000 International property portals\n5%\n₪1"
+  },
+  {
+   "check": "en 1280 step 3 split open no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 3 split open every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 split open every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 split open every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 split open no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 3 split open survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "en 1280 Enter in the budget field moves on: step 4",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 Next with no project kind: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 existing page: the field \"The page address or the project name\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 Next with the field empty: the message, focus in the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 a new project: the label \"Project name and city (optional)\", the text kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 4 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 4 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 4 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 4 every visible group named",
+   "ok": true,
+   "got": [
+    "The project"
+   ]
+  },
+  {
+   "check": "en 1280 step 4 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 4 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5: \"5 / 5\", Next says \"Send the plan\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the summary list: markets, languages, buyers, budget, split, project",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 a \"שינוי\" button on each of the 6 rows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the recommended plan is checked: three markets, ₪72,000 a year, tagged \"Fits the 2 markets you chose\"",
+   "ok": true,
+   "got": "Three markets ₪72,000 a year A campaign in up to three markets and communities. Fits the 2 markets you chose"
+  },
+  {
+   "check": "en 1280 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the lead promise line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the privacy notice with its link, the consent box unchecked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 5 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 5 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 every visible group named",
+   "ok": true,
+   "got": [
+    "Choose an annual plan",
+    "Contact details"
+   ]
+  },
+  {
+   "check": "en 1280 step 5 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 plan \"one market\" for two markets and Send: the plan message and every contact message; nothing sent",
+   "ok": true,
+   "got": "You chose 2 markets, and the \"One market\" plan has room for 1 market. Choose a bigger plan, or narrow the markets in step 1. | Write your full name. | Write the company name. | Write a phone number, with the country code"
+  },
+  {
+   "check": "en 1280 focus on the first invalid control (the plan)",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 step 5 errors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 step 5 errors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 errors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 errors every visible group named",
+   "ok": true,
+   "got": [
+    "Choose an annual plan",
+    "Contact details"
+   ]
+  },
+  {
+   "check": "en 1280 step 5 errors no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 step 5 errors survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 a bad email and no consent: only those two messages",
+   "ok": true,
+   "got": "Write a full email address. | To send, tick the consent box."
+  },
+  {
+   "check": "en 1280 the consent box ticked by pressing its label",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 \"שינוי\" on the markets row: step 1, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 forward to step 5: three markets, the plan still three (chosen), the tag \"Fits the 3 markets you chose\", the fields kept",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 copy: the plan as text, no name, company, phone or email",
+   "ok": true,
+   "got": "International campaign plan on NadLan\r | Markets and communities: France, USA, Canada\r | Languages: English, French\r | Buyers: Investors (rental)\r"
+  },
+  {
+   "check": "en 1280 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)",
+   "ok": true,
+   "got": "https://wa.me/?text=International%20campaign%20plan%20on%20N"
+  },
+  {
+   "check": "en 1280 send with a server error: the message, the form kept, Send pressable again",
+   "ok": true,
+   "got": "We could not save the plan. Check your connection and try again."
+  },
+  {
+   "check": "en 1280 saved: the reference NLC-261107-T3ST, the payment step, launch after payment",
+   "ok": true,
+   "got": "International campaigns for developers |  | Campaign planner |  | 5 / 5 |  | Your plan is saved | Your plan number | NLC-261107-T3ST |  | Keep this number. The NadLan team already "
+  },
+  {
+   "check": "en 1280 first-payment mode (the config default): \"Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)\" to the first-payment product 8823 with the reference",
+   "ok": true,
+   "got": "Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)"
+  },
+  {
+   "check": "en 1280 the rest line under it: \"The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you.\"; no same-day link line",
+   "ok": true,
+   "got": "The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you."
+  },
+  {
+   "check": "en 1280 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 after saving: the footer gone, \"5 / 5\", every segment done, focus on the heading",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field",
+   "ok": true,
+   "got": {
+    "markets": [
+     "fr",
+     "us",
+     "ca"
+    ],
+    "plan": "three",
+    "budget": 25000,
+    "t": 13325
+   }
+  },
+  {
+   "check": "en 1280 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies",
+   "ok": true,
+   "got": [
+    "POST",
+    "application/json",
+    ""
+   ]
+  },
+  {
+   "check": "en 1280 copy after saving carries the reference",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 saved no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 saved every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 saved every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 saved every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 saved no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 saved survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 no dialog (no prompt fallback)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 full plan in one charge: \"Pay: Three markets, ₪72,000 a year\" to product 8810 with the reference, no rest line",
+   "ok": true,
+   "got": "Pay: Three markets, ₪72,000 a year"
+  },
+  {
+   "check": "en 1280 pay full no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 pay full every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay full every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay full every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay full no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay full survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 (pay full) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 no product: no pay button, \"A payment link will be sent to you today.\"",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 pay none no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 pay none every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay none every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay none every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay none no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 pay none survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 (pay none) no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 1 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 step 1 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 1 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 1 every visible group named",
+   "ok": true,
+   "got": [
+    "שווקים וקהילות לקמפיין"
+   ]
+  },
+  {
+   "check": "theme 390 step 1 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 1 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390: chips and buttons keep Plex Sans Hebrew, the pressed chip and Next in sea, chips round, the title in ink",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "rgb(47, 111, 134)",
+    "\"IBM Plex Sans Hebrew\"",
+    "rgb(47, 111, 134)",
+    "999px",
+    "rgb(18, 32, 42)"
+   ]
+  },
+  {
+   "check": "theme 390 step 3 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 step 3 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 3 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 3 every visible group named",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 3 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 3 survey red only on the yearly total",
+   "ok": true,
+   "got": [
+    "y:y",
+    "BDI:y"
+   ]
+  },
+  {
+   "check": "theme 390 step 3: the budget field in Plex Mono, the legend without bullets, the yearly total survey red",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Mono\"",
+    "none",
+    "rgb(196, 37, 80)"
+   ]
+  },
+  {
+   "check": "theme 390 step 5 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 step 5 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 5 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 5 every visible group named",
+   "ok": true,
+   "got": [
+    "בחרו תוכנית שנתית",
+    "פרטים ליצירת קשר"
+   ]
+  },
+  {
+   "check": "theme 390 step 5 no long dash, no tech word, no VAT wording",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 step 5 survey red only on the yearly total",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

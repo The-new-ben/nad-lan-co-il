@@ -1,0 +1,61 @@
+<?php
+/*
+ * nlcamp build (7.11.2026, Ben: international campaign planner for developers): the exact PHP for the release step.
+ * NOT applied: inc/instruments.php and nadlan-config.php were not edited. Linted with php -l (PHP 8.3).
+ *
+ * (1) Paste the entry into the array of nadlan_nli_tools() in inc/instruments.php (anywhere; after 'mhivun' is fine).
+ *     'data' is empty (the planner needs no data file); 'en' carries the English name, kicker and description, and an EMPTY
+ *     'related' so the Hebrew links never show on the English page (nadlan_nli_t() merges 'en' over the Hebrew block).
+ * (2) Paste branch (2a) at the top of nadlan_nli_summary( $id, $lang ) (after the 'en' hand-off line) and branch (2b) at the
+ *     top of nadlan_nli_summary_en( $id ). Both call nadlan_cb_summary() of inc/campaign-brief.php (the mquick pattern).
+ * (3) Add 'campaign-brief' to the module list of nadlan-config.php (the foreach of inc/ files), on the LIVE copy read through
+ *     the bridge: the repo copy of that list is not the live one (the local list does not even name 'instruments').
+ *     Without the module the tool still opens, but the brief cannot be saved (the planner then says so and keeps the form).
+ * (4) Ship: plugins/nadlan-config/assets/instruments/tools/nlcamp.js (new) and plugins/nadlan-config/inc/campaign-brief.php (new).
+ * (5) The page: /international-campaigns/ (he) and /en/international-campaigns/ (en) per PLAN.md, one line in the content:
+ *       [nadlan_tool id="nlcamp"]
+ *     The tool takes the page language from the section the shortcode prints (lang="he" / lang="en"); a data-lang attribute on
+ *     a wrapper overrides it. Before minting the slugs: tools/gsc/url_word_audit.py (PLAN.md says the tokens are free, 7.11).
+ * (6) Payment (7.11.2026): the products exist, hidden: full plans 8809 / 8810 / 8811 (36,000 / 72,000 / 144,000) and first
+ *     payments of 18,000: 8822 / 8823 / 8824. No option write is needed at release: inc/campaign-brief.php reads the options
+ *     nadlan_cb_product_one / _three / _flag first and, when they are unset, uses 8822 / 8823 / 8824; the option nadlan_cb_first_amount
+ *     (unset = 18,000) is printed as firstPay, so the planner's button pays the first 18,000 and says the rest is paid in parts of up to
+ *     18,000 through links we send (Morning's terminal refuses one charge of 25,000; 20,000 passes). When Morning raises the cap:
+ *     nadlan_cb_first_amount = 0 and the three product options = 8809 / 8810 / 8811 (the full plan in one charge). A product option of 0
+ *     = no button, the planner then says a payment link is sent the same day. Links: the shop checkout ?add-to-cart=<id>&nlc_ref=<ref>.
+ * After release: press the planner through in the owner's Chrome on phone and desktop, send one real brief (check the admin mail
+ * and the private post under Projects > תוכניות קמפיין בינלאומי), source audit, content_first_check, spot-check rainbow and
+ * h-infinity, Linear + Notion.
+ * The wrapper function below exists only so that php -l can parse the snippet; copy what is inside it.
+ */
+function nadlan_nlcamp_registry_snippet( $id, $lang ) {
+
+	/* ===================================================================== (1) entry for nadlan_nli_tools() */
+	$entries = array(
+			/* 7.11.2026 (Ben): the international campaign planner for developers, 5 steps (markets, buyers, monthly ad budget,
+			   the project, summary and plan); the brief is saved by POST /wp-json/nadlan/v1/campaign-brief (inc/campaign-brief.php),
+			   then the payment step. Staged in docs/research/2026-11-07-campaign-network/build/build-nlcamp/ */
+			'nlcamp' => array(
+				'name' => 'מתכנן הקמפיין', 'cat' => 'BusinessApplication', 'kicker' => 'קמפיין בינלאומי ליזמים',
+				'desc' => 'מתכנן קמפיין ליזמים שמוכרים לקונים בחו״ל ובתפוצות: בוחרים שווקים וקהילות (צרפת, ארצות הברית, בריטניה, קנדה, בלגיה, שווייץ, דרום אפריקה, אוסטרליה, דוברי רוסית ועולים חדשים בישראל) ואת השפות שלהם, את הקונים, תקציב פרסום חודשי ואת הפרויקט, ורואים את התוכנית השנתית ואת המחיר לפני ששולחים. הפניות מגיעות לעמוד הפרויקט בנדלן, עם הסיור התלת־ממדי.',
+				'data' => array(),
+				'related' => array( '/developers/' => 'שיווק פרויקטים ליזמים', '/advertiser-center/' => 'פרסום פרויקט נדל״ן', '/advertise/' => 'מחירון הפרסום באתר' ),
+				'en' => array(
+					'name' => 'Campaign planner', 'kicker' => 'International campaigns for developers',
+					'desc' => 'A campaign planner for property developers who sell to buyers abroad and in the diaspora: choose the markets and communities (France, USA, UK, Canada, Belgium, Switzerland, South Africa, Australia, Russian speakers and olim in Israel) and their languages, the buyers, a monthly ad budget and the project, and see the annual plan and its price before you send it. The leads land on the project page on NadLan, with the 3D tour.',
+					'related' => array(),  // no English B2B page is confirmed yet; empty, so the Hebrew links stay off the English page
+				),
+			),
+	);
+
+	/* ===================================================================== (2a) branch for nadlan_nli_summary( $id, $lang ) */
+		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'he' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
+
+	/* ===================================================================== (2b) branch for nadlan_nli_summary_en( $id ) */
+		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'en' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
+
+	/* ===================================================================== (3) nadlan-config.php, the module list: add one name */
+	// foreach ( array( ..., 'cta-sheet', 'campaign-brief' ) as $nadlan_mod ) {
+
+	return $entries;
+}

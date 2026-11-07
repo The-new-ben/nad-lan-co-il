@@ -1,0 +1,79 @@
+1. hooks
+  ok   the brief type is private: not public, not queryable, not in REST, no URL, not in search
+  ok   POST /wp-json/nadlan/v1/campaign-brief is registered (POST only)
+
+2. a good brief
+  ok   201 with ok and a reference id NLC-yymmdd-XXXX  [{"ok":true,"ref":"NLC-261107-0866","plan":"three","price":72000}]
+  ok   the answer names the plan and its price (72,000)
+  ok   saved as a private nadlan_camp_brief, the reference in the title  [NLC-261107-0866 · לוי יזמות · שלושה שווקים]
+  ok   meta: reference, status new, consent time
+  ok   computed on the server: languages en+fr, yearly 300,000, price 72,000, recommended three  [["en","fr"]]
+  ok   the split by channel; the phone without spaces and hyphens  [0501234567]
+  ok   mailed to the site admin, the reference and company in the subject  [[נדלן] תוכנית קמפיין בינלאומי NLC-261107-0866 · לוי יזמות]
+  ok   the mail: markets, budget, plan, the first payment (product 8823) and the rest of 54,000 to send in links, the admin link
+  ok   no long dash and no VAT wording in the saved text and the mail
+  ok   unknown and repeated markets dropped, the fixed order kept; price, yearly and languages from the browser ignored  [["fr","ca"]]
+  ok   a plan other than the recommended one is said in the mail
+  ok   tags stripped from the text fields  [דנה xלוי | פרויקט שני]
+  ok   a new project may come without a name
+  ok   an English brief, five markets: the languages en, fr, ru; recommended flagship
+
+3. refused
+  ok   refused, field markets: {"markets":[]}  [markets]
+  ok   refused, field markets: {"markets":["zz","il"]}  [markets]
+  ok   refused, field buyer: {"buyer":"tourists"}  [buyer]
+  ok   refused, field budget: {"budget":2000}  [budget]
+  ok   refused, field budget: {"budget":61000}  [budget]
+  ok   refused, field budget: {"budget":25500}  [budget]
+  ok   refused, field budget: {"budget":"abc"}  [budget]
+  ok   refused, field budget: {"budget":25000.5}  [budget]
+  ok   refused, field split: {"shares":[50,25,20]}  [split]
+  ok   refused, field split: {"shares":[55,25,15,0]}  [split]
+  ok   refused, field split: {"shares":[52,28,15,5]}  [split]
+  ok   refused, field split: {"shares":[105,-5,0,0]}  [split]
+  ok   refused, field kind: {"kind":"land"}  [kind]
+  ok   refused, field ref: {"kind":"existing","project":" "}  [ref]
+  ok   refused, field plan: {"plan":"gold"}  [plan]
+  ok   refused, field plan: {"plan":"one"}  [plan]
+  ok   refused, field plan: {"plan":"three","markets":["fr","us","uk","ca"]}  [plan]
+  ok   refused, field name: {"name":"ד"}  [name]
+  ok   refused, field company: {"company":""}  [company]
+  ok   refused, field phone: {"phone":"1234"}  [phone]
+  ok   refused, field phone: {"phone":"050-123-4567 ext 9"}  [phone]
+  ok   refused, field email: {"email":"dana@"}  [email]
+  ok   refused, field consent: {"consent":false}  [consent]
+  ok   refused, field consent: {"consent":"true"}  [consent]
+  ok   the honeypot filled: refused
+  ok   filled in under 2 seconds: refused
+  ok   another site (Origin evil.example): 403
+  ok   Origin "null": 403
+  ok   www.nad-lan.co.il: accepted
+  ok   no Origin header (old browser or server): accepted, still limited
+  ok   a body over 8 KB: 413
+  ok   not JSON: 400
+  ok   nothing refused was saved (only the two accepted ones)  [2]
+
+4. limits and the reference
+  ok   one visitor: 5 briefs an hour, the 6th gets 429  [[201,201,201,201,201,429]]
+  ok   the site: 60 briefs a day, then 429
+  ok   a reference that exists already is drawn again  [NLC-261107-05A8]
+
+5. the page config and the health line
+  ok   no config on a page without the tool
+  ok   window.NLCAMP_CONFIG before nlcamp.js: the REST address and the privacy page  [window.NLCAMP_CONFIG={"endpoint":"https://nad-lan.co.il/wp-json/nadlan/v1/campaign-brief","plans":{"one":{"productUrl":"https://nad-lan.co.il/checkout/?add-to-cart=8822","firstPay":18000},"three":{"productUrl":"https://nad-lan.co.il/checkout/?add-to-cart=8823","firstPay":18000},"flag":{"productUrl":"https://nad-lan.co.il/checkout/?add-to-cart=8824","firstPay":18000}},"privacy":"https://nad-lan.co.il/privacy/"};]
+  ok   options unset (the release as is): the first-payment products 8822 / 8823 / 8824 and firstPay 18,000 on every plan  [["https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8822","https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8823","https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8824"]]
+  ok   once Morning raises the cap (first amount 0, products 8809 / 8810 / 8811): the full plans, no firstPay  [["https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8809","https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8810","https:\/\/nad-lan.co.il\/checkout\/?add-to-cart=8811"]]
+  ok   then the mail says the developer got the full payment button (product 8810)
+  ok   a product option set to 0: no link; a first amount not below the price (40,000 on 36,000): no firstPay on that plan  [[null,40000,40000]]
+  ok   no product: the mail says to send a payment link today
+  ok   an empty first-amount option reads as the default 18,000
+  ok   /health shows the version, the three product ids and the first amount  [{"version":"1.1.0","products":{"one":8822,"three":8823,"flag":8824},"first_amount":18000}]
+  ok   no long dash and no VAT wording in any mail
+
+6. the server summary
+  ok   Hebrew: the three plans with their yearly prices
+  ok   Hebrew: all 10 markets, the languages, the targeting line, the WhatsApp lead line
+  ok   English: the plans a year, the targeting line
+  ok   no long dash, no VAT wording, no tech word, no religion targeting word, in either language
+
+66 of 66 passed

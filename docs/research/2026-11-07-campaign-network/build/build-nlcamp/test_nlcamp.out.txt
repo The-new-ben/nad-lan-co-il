@@ -1,0 +1,115 @@
+1. the offer
+  ok   NLCAMP.benchmarks is the named hook and stays null (no reach, lead or cost-per-lead figure)
+  ok   the approved annual plans: 36,000 / 72,000 / 144,000
+  ok   in the file every productUrl and firstPay is null (the server config sets them)
+  ok   ten markets with the languages of the brief  [10]
+  ok   budget 3,000 to 60,000, step 1,000, opens at 10,000
+  ok   the suggested split: Meta 55, Google 25, press 15, portals 5
+
+2. the plan follows the number of markets
+  ok   0 none, 1 one market, 2-3 three markets, 4+ flagship  [[null,"one","three","three","flag","flag","flag","flag","flag","flag","flag"]]
+  ok   covers: one carries 1, three carries 3, flagship any
+  ok   chips keep the list order; an unknown id is ignored  [["fr","ca","olim"]]
+  ok   a second press removes the market
+  ok   languages implied: France fr; France + Canada en, fr; olim en, fr, ru
+
+3. budget and totals
+  ok   in range and on the step only
+  ok   clamp: 2,500 -> 3,000; 99,999 -> 60,000; 12,400 -> 12,000; empty -> 10,000
+  ok   the -/+ buttons stop at 3,000 and 60,000; 10,000 +2 -1 = 11,000  [[3000,60000,11000]]
+  ok   a typed value off the range: the first press only brings it into range  [3000]
+  ok   yearly total = 12 months: 120,000 / 720,000 / 36,000
+
+4. the split
+  ok   whole shekels that add up to the budget exactly, 290 cases (5 splits x every budget step)  [0]
+  ok   25,000 by the suggested split: 13,750 / 6,250 / 3,750 / 1,250
+  ok   3,000: 1,650 / 750 / 450 / 150
+  ok   Meta -5, press +5: 50 / 25 / 20 / 5, still 100
+  ok   a share stays between 0 and 100
+
+5. validation, step by step
+  ok   empty: step 1 markets, step 2 buyer, step 4 kind
+  ok   step 3 opens valid (10,000, the suggested split)
+  ok   step 3: budget off range and a split of 105  [[{"f":"budget"},{"f":"split","sum":105}]]
+  ok   an existing page needs its address or name (2 letters at least)
+  ok   a new project needs no name
+  ok   a full state passes all five steps  [[]]
+  ok   one market chosen for two markets: the plan error "cover"
+  ok   no plan: error; a bigger plan than needed: fine
+  ok   contact errors in screen order; consent must be true itself  [["name","company","phone","email","consent"]]
+  ok   phones: Israeli mobile and landline, French, US; short or with words refused
+  ok   emails
+  ok   validateAll names the step of the first error
+
+6. the brief sent to the server
+  ok   the keys inc/campaign-brief.php reads, nothing else  [18]
+  ok   no card or bank field
+  ok   consent true, project trimmed, time in whole ms, the consent wording sent with it
+  ok   English brief, the honeypot passed through as typed
+  ok   the payload is a copy (the state is not changed by it)
+
+7. the shared text (copy and WhatsApp)
+  ok   Hebrew: markets, languages, buyers
+  ok   Hebrew text: a right-to-left mark after each of the 4 split items (keeps "Meta 55%" together in WhatsApp); none in English
+  ok   budget a month and a year, the split, the plan a year  [תקציב פרסום: ₪25,000 בחודש, ₪300,000 בשנה]
+  ok   the WhatsApp lead line, the ad budget paid directly, the page link
+  ok   no name, company, phone or email in the shared text
+  ok   the reference only after the brief is saved
+  ok   English text
+  ok   no long dash, no VAT wording
+  ok   WhatsApp: wa.me with text only, no phone number
+
+8. the payment link
+  ok   no product: no link (the page says a link is sent today)
+  ok   with a product: the checkout link plus the reference
+  ok   a javascript: link is refused
+  ok   a plain http link is refused
+  ok   a site path is fine
+  ok   window.NLCAMP_CONFIG: endpoint, privacy, product links; a bad link becomes null, an unknown plan is ignored
+  ok   only a well formed reference is shown
+
+8b. first-payment mode (Morning takes one charge of up to about 20,000, 7.11.2026)
+  ok   no firstPay: the full plan in one charge, no rest
+  ok   firstPay 18,000: the rest 18,000 / 54,000 / 126,000
+  ok   the button goes to the first-payment product with the reference
+  ok   firstPay refused when 0, negative, not below the price, not whole, a string, null or NaN  [[null,null,null,null,null,null,null,null]]
+  ok   a config without firstPay leaves it as it was
+  ok   the button wording, as the coordinator wrote it
+  ok   the rest line, as the coordinator wrote it (the part amount filled from firstPay, 18,000)
+  ok   filled: "לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)" and the English rest line
+
+9. the words: Hebrew and English complete, copy rules
+  ok   every Hebrew key has an English key and back (141 keys)  [[]]
+  ok   no empty string
+  ok   the same {placeholders} in both languages  [[]]
+  ok   a name for every market, language, buyer, project kind, plan and channel (39)  [[]]
+  ok   no long dash (– or —) in any string
+  ok   no tech words in Hebrew or English (ממשק, מערכת, פלטפורמה, אלגוריתם, AI, דמו, סימולציה ...)  [[]]
+  ok   no VAT wording; prices say "לשנה" / "a year"
+  ok   no religion or ethnicity targeting words (Meta and Google housing rules)
+  ok   step 1 targeting line, as the coordinator wrote it
+  ok   step 5 lead line: WhatsApp with what the buyer opened, and no guarantee anywhere (coordinator, 7.11)
+  ok   the honest payment line while there is no product
+  ok   buttons in the plural ("המשיכו", "שלחו")
+  ok   no emoji in the file
+
+10. the file itself
+  ok   no browser storage, no cookies
+  ok   nothing written to the address (the state stays in memory)
+  ok   the brief goes by POST to /wp-json/nadlan/v1/campaign-brief, no cookies
+  ok   every colour is a NadLan Instruments token  [[]]
+  ok   no gradient, no shadow (borders only)
+  ok   survey red on one figure only: the yearly total (one use in the markup, one colour rule)
+  ok   the title face comes from core.css (Karantina on Hebrew pages, 32 px and more), not set again here
+
+11. the same offer on the server (inc/campaign-brief.php)
+  ok   plan prices and market limits equal
+  ok   plan names equal in both languages
+  ok   markets: ids, order, languages and names equal
+  ok   languages, buyers, project kinds and channels equal
+  ok   budget range and step equal
+  ok   the recommendation table equal for 0 to 10 markets
+  ok   server defaults: first amount 18,000 on every plan, products 8822 / 8823 / 8824 with no option set  [[18000,{"one":18000,"three":18000,"flag":18000}]]
+  ok   the server firstPay values are accepted by the planner as printed
+
+90 of 90 passed

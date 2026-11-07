@@ -1,0 +1,591 @@
+
+he 390: step 1
+  ok   he 390 header: the title, "1 / 5", 5 progress segments, aria step 1  [['1 / 5', 'שווקים וקהילות']]
+  ok   he 390 faces: the title in Karantina at 32 px or more, the chips in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang  [['Karantina, "IBM Plex Sans Hebrew", system-ui, sans-serif', 38, '"IBM Plex Sans Hebrew", "IBM Plex Sans", system-ui, sans-serif', '"IBM Plex Mono", ui-monospace, SFMono-Regular, monospace', 'rtl', 'h]
+  ok   he 390 step 1: Back hidden, Next says "המשיכו"
+  ok   he 390 ten market chips, each with its languages; the targeting line
+  ok   he 390 side panel hidden on the phone
+  ok   he 390 step 1 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 1 every visible control at least 44 px high  [[]]
+  ok   he 390 step 1 every input labelled  [[]]
+  ok   he 390 step 1 every visible group named  [['שווקים וקהילות לקמפיין']]
+  ok   he 390 step 1 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 1 survey red only on the yearly total  [[]]
+  ok   he 390 Next with no market: the message, still step 1, focus on the first chip  [בחרו לפחות שוק או קהילה אחת.]
+  ok   he 390 all ten pressed: flagship recommended, languages en fr ru, the message cleared  [פרויקט דגל, ₪144,000 לשנה]
+  ok   he 390 France only: languages "צרפתית", one market ₪36,000  [שוק אחד, ₪36,000 לשנה]
+  ok   he 390 France + Canada: languages "אנגלית, צרפתית", three markets ₪72,000
+he 390: step 2
+  ok   he 390 step 2: "2 / 5", heading, aria step 2, focus on the heading, Back shown
+  ok   he 390 progress: segment 1 done, segment 2 current
+  ok   he 390 four buyer cards (one choice)
+  ok   he 390 Next with no buyer: the message, still step 2
+  ok   he 390 one choice: investors checked, luxury not, the message cleared
+  ok   he 390 step 2 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 2 every visible control at least 44 px high  [[]]
+  ok   he 390 step 2 every input labelled  [[]]
+  ok   he 390 step 2 every visible group named  [['הקונים שאתם מחפשים']]
+  ok   he 390 step 2 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 2 survey red only on the yearly total  [[]]
+  ok   he 390 Back to step 1: the chips kept
+  ok   he 390 and forward: investors still checked
+he 390: step 3
+  ok   he 390 step 3 opens at ₪10,000 a month, ₪120,000 a year  [['₪10,000', '₪120,000']]
+  ok   he 390 the yearly total is the survey red figure  [rgb(196, 37, 80)]
+  ok   he 390 + three times: ₪13,000 / ₪156,000  [['₪13,000', '₪156,000']]
+  ok   he 390 - once: ₪12,000 / ₪144,000, the slider follows
+  ok   he 390 slider to the end: ₪60,000 / ₪720,000, + disabled  [['₪60,000', '₪720,000']]
+  ok   he 390 slider to the start: ₪3,000 / ₪36,000, - disabled
+  ok   he 390 typed 2,500 and Next: the range message, still step 3  [התקציב החודשי צריך להיות בין ₪3,000 ל־₪60,000, בקפיצות של ₪1,000.]
+  ok   he 390 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared  [['Meta (פייסבוק ואינסטגרם)\n55%\n₪13,750', 'Google (חיפוש ויוטיוב)\n25%\n₪6,250', 'עיתונות קהילתית וניוזלטרים\n15%\n₪3,750', 'אתרי נדלן בינלאומיים\n5%\n₪1,250']]
+  ok   he 390 the split is labelled a starting point, the ad budget paid straight to the channels
+  ok   he 390 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null
+  ok   he 390 step 3 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 3 every visible control at least 44 px high  [[]]
+  ok   he 390 step 3 every input labelled  [[]]
+  ok   he 390 step 3 every visible group named  [[]]
+  ok   he 390 step 3 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 3 survey red only on the yearly total  [['y:y', 'BDI:y']]
+  ok   he 390 split: press +5 = 20%, the total 105%, "החלוקה שלכם"
+  ok   he 390 Next at 105%: the message, still step 3  [החלוקה צריכה להסתכם ב־100%. עכשיו: 105%.]
+  ok   he 390 ... and Next again: the panel opens itself to show the message
+  ok   he 390 reset: back to 55 / 25 / 15 / 5, the message cleared
+  ok   he 390 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%  [Meta (פייסבוק ואינסטגרם)
+50%
+₪12,500 Google (חיפוש ויוטיוב)
+25%
+₪6,250 עיתונות קהילתית וניוזלטרים
+20%
+₪5,000 אתרי נדלן בינלאומיים
+5%
+₪1,250]
+  ok   he 390 step 3 split open no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 3 split open every visible control at least 44 px high  [[]]
+  ok   he 390 step 3 split open every input labelled  [[]]
+  ok   he 390 step 3 split open every visible group named  [[]]
+  ok   he 390 step 3 split open no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 3 split open survey red only on the yearly total  [['y:y', 'BDI:y']]
+he 390: step 4
+  ok   he 390 Enter in the budget field moves on: step 4
+  ok   he 390 Next with no project kind: the message
+  ok   he 390 existing page: the field "כתובת העמוד או שם הפרויקט"
+  ok   he 390 Next with the field empty: the message, focus in the field
+  ok   he 390 a new project: the label "שם הפרויקט והעיר (לא חובה)", the text kept
+  ok   he 390 step 4 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 4 every visible control at least 44 px high  [[]]
+  ok   he 390 step 4 every input labelled  [[]]
+  ok   he 390 step 4 every visible group named  [['הפרויקט']]
+  ok   he 390 step 4 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 4 survey red only on the yearly total  [[]]
+he 390: step 5
+  ok   he 390 step 5: "5 / 5", Next says "שלחו את התוכנית"
+  ok   he 390 the summary list: markets, languages, buyers, budget, split, project  [[]]
+  ok   he 390 a "שינוי" button on each of the 6 rows
+  ok   he 390 the recommended plan is checked: three markets, ₪72,000 לשנה, tagged "מתאימה ל־2 שווקים שבחרתם"  [שלושה שווקים ₪72,000 לשנה קמפיין בעד שלושה שווקים וקהילות. מתאימה ל־2 שווקים שבחרתם]
+  ok   he 390 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000
+  ok   he 390 the lead promise line
+  ok   he 390 the privacy notice with its link, the consent box unchecked
+  ok   he 390 step 5 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 5 every visible control at least 44 px high  [[]]
+  ok   he 390 step 5 every input labelled  [[]]
+  ok   he 390 step 5 every visible group named  [['בחרו תוכנית שנתית', 'פרטים ליצירת קשר']]
+  ok   he 390 step 5 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 5 survey red only on the yearly total  [[]]
+  ok   he 390 plan "one market" for two markets and Send: the plan message and every contact message; nothing sent  [בחרתם 2 שווקים, ובתוכנית "שוק אחד" יש מקום לשוק אחד. בחרו תוכנית גדולה יותר, או צמצמו את השווקים בשלב הראשון. | כתבו שם מלא. | כתבו את שם החברה. | כתבו מספר טלפון, אפשר עם קידומת של מדינה. | כתבו כתוב]
+  ok   he 390 focus on the first invalid control (the plan)
+  ok   he 390 step 5 errors no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 step 5 errors every visible control at least 44 px high  [[]]
+  ok   he 390 step 5 errors every input labelled  [[]]
+  ok   he 390 step 5 errors every visible group named  [['בחרו תוכנית שנתית', 'פרטים ליצירת קשר']]
+  ok   he 390 step 5 errors no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 step 5 errors survey red only on the yearly total  [[]]
+  ok   he 390 a bad email and no consent: only those two messages  [כתבו כתובת אימייל מלאה. | כדי לשלוח, סמנו את האישור.]
+  ok   he 390 the consent box ticked by pressing its label
+  ok   he 390 "שינוי" on the markets row: step 1, focus on the heading
+  ok   he 390 forward to step 5: three markets, the plan still three (chosen), the tag "מתאימה ל־3 שווקים שבחרתם", the fields kept
+  ok   he 390 copy: the plan as text, no name, company, phone or email  [תוכנית קמפיין בינלאומי בנדלן | שווקים וקהילות: צרפת, ארצות הברית, קנדה | שפות: אנגלית, צרפתית | הקונים: משקיעים, להשכרה | תקציב פרסום: ₪25,000 ב]
+  ok   he 390 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)  [https://wa.me/?text=%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%]
+  ok   he 390 send with a server error: the message, the form kept, Send pressable again  [לא הצלחנו לשמור את התוכנית. בדקו את החיבור ונסו שוב.]
+  ok   he 390 saved: the reference NLC-261107-T3ST, the payment step, launch after payment  [קמפיין בינלאומי ליזמים |  | מתכנן הקמפיין |  | 5 / 5 |  | התוכנית נשמרה | מספר התוכנית שלכם | NLC-261107-T3ST |  | שמרו את המספר. צוות נדלן כבר קיבל את התוכנית. |  | תשלום המנוי השנתי | ]
+  ok   he 390 first-payment mode (the config default): "לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)" to the first-payment product 8823 with the reference  [לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)]
+  ok   he 390 the rest line under it: "את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם."; no same-day link line  [את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם.]
+  ok   he 390 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000
+  ok   he 390 after saving: the footer gone, "5 / 5", every segment done, focus on the heading
+  ok   he 390 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field  [{'markets': ['fr', 'us', 'ca'], 'plan': 'three', 'budget': 25000, 't': 13358}]
+  ok   he 390 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies  [('POST', 'application/json', '')]
+  ok   he 390 copy after saving carries the reference
+  ok   he 390 saved no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 saved every visible control at least 44 px high  [[]]
+  ok   he 390 saved every input labelled  [[]]
+  ok   he 390 saved every visible group named  [[]]
+  ok   he 390 saved no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 saved survey red only on the yearly total  [[]]
+  ok   he 390 no dialog (no prompt fallback)  [[]]
+  ok   he 390 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)  [[]]
+  ok   he 390 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)  [[]]
+  ok   he 390 full plan in one charge: "לתשלום: שלושה שווקים, ₪72,000 לשנה" to product 8810 with the reference, no rest line  [לתשלום: שלושה שווקים, ₪72,000 לשנה]
+  ok   he 390 pay full no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 pay full every visible control at least 44 px high  [[]]
+  ok   he 390 pay full every input labelled  [[]]
+  ok   he 390 pay full every visible group named  [[]]
+  ok   he 390 pay full no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 pay full survey red only on the yearly total  [[]]
+  ok   he 390 (pay full) no page error  [[]]
+  ok   he 390 no product: no pay button, "קישור לתשלום יישלח אליכם עוד היום."
+  ok   he 390 pay none no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   he 390 pay none every visible control at least 44 px high  [[]]
+  ok   he 390 pay none every input labelled  [[]]
+  ok   he 390 pay none every visible group named  [[]]
+  ok   he 390 pay none no long dash, no tech word, no VAT wording  [[]]
+  ok   he 390 pay none survey red only on the yearly total  [[]]
+  ok   he 390 (pay none) no page error  [[]]
+
+he 1280: step 1
+  ok   he 1280 header: the title, "1 / 5", 5 progress segments, aria step 1  [['1 / 5', 'שווקים וקהילות']]
+  ok   he 1280 faces: the title in Karantina at 32 px or more, the chips in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang  [['Karantina, "IBM Plex Sans Hebrew", system-ui, sans-serif', 44, '"IBM Plex Sans Hebrew", "IBM Plex Sans", system-ui, sans-serif', '"IBM Plex Mono", ui-monospace, SFMono-Regular, monospace', 'rtl', 'h]
+  ok   he 1280 step 1: Back hidden, Next says "המשיכו"
+  ok   he 1280 ten market chips, each with its languages; the targeting line
+  ok   he 1280 side panel shown (wide)
+  ok   he 1280 step 1 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 1 every visible control at least 44 px high  [[]]
+  ok   he 1280 step 1 every input labelled  [[]]
+  ok   he 1280 step 1 every visible group named  [['שווקים וקהילות לקמפיין']]
+  ok   he 1280 step 1 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 1 survey red only on the yearly total  [[]]
+  ok   he 1280 Next with no market: the message, still step 1, focus on the first chip  [בחרו לפחות שוק או קהילה אחת.]
+  ok   he 1280 all ten pressed: flagship recommended, languages en fr ru, the message cleared  [פרויקט דגל, ₪144,000 לשנה]
+  ok   he 1280 France only: languages "צרפתית", one market ₪36,000  [שוק אחד, ₪36,000 לשנה]
+  ok   he 1280 France + Canada: languages "אנגלית, צרפתית", three markets ₪72,000
+he 1280: step 2
+  ok   he 1280 step 2: "2 / 5", heading, aria step 2, focus on the heading, Back shown
+  ok   he 1280 progress: segment 1 done, segment 2 current
+  ok   he 1280 four buyer cards (one choice)
+  ok   he 1280 Next with no buyer: the message, still step 2
+  ok   he 1280 one choice: investors checked, luxury not, the message cleared
+  ok   he 1280 step 2 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 2 every visible control at least 44 px high  [[]]
+  ok   he 1280 step 2 every input labelled  [[]]
+  ok   he 1280 step 2 every visible group named  [['הקונים שאתם מחפשים']]
+  ok   he 1280 step 2 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 2 survey red only on the yearly total  [[]]
+  ok   he 1280 Back to step 1: the chips kept
+  ok   he 1280 and forward: investors still checked
+he 1280: step 3
+  ok   he 1280 step 3 opens at ₪10,000 a month, ₪120,000 a year  [['₪10,000', '₪120,000']]
+  ok   he 1280 the yearly total is the survey red figure  [rgb(196, 37, 80)]
+  ok   he 1280 + three times: ₪13,000 / ₪156,000  [['₪13,000', '₪156,000']]
+  ok   he 1280 - once: ₪12,000 / ₪144,000, the slider follows
+  ok   he 1280 slider to the end: ₪60,000 / ₪720,000, + disabled  [['₪60,000', '₪720,000']]
+  ok   he 1280 slider to the start: ₪3,000 / ₪36,000, - disabled
+  ok   he 1280 typed 2,500 and Next: the range message, still step 3  [התקציב החודשי צריך להיות בין ₪3,000 ל־₪60,000, בקפיצות של ₪1,000.]
+  ok   he 1280 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared  [['Meta (פייסבוק ואינסטגרם)\n55%\n₪13,750', 'Google (חיפוש ויוטיוב)\n25%\n₪6,250', 'עיתונות קהילתית וניוזלטרים\n15%\n₪3,750', 'אתרי נדלן בינלאומיים\n5%\n₪1,250']]
+  ok   he 1280 the split is labelled a starting point, the ad budget paid straight to the channels
+  ok   he 1280 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null
+  ok   he 1280 step 3 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 3 every visible control at least 44 px high  [[]]
+  ok   he 1280 step 3 every input labelled  [[]]
+  ok   he 1280 step 3 every visible group named  [[]]
+  ok   he 1280 step 3 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 3 survey red only on the yearly total  [['y:y', 'BDI:y']]
+  ok   he 1280 split: press +5 = 20%, the total 105%, "החלוקה שלכם"
+  ok   he 1280 Next at 105%: the message, still step 3  [החלוקה צריכה להסתכם ב־100%. עכשיו: 105%.]
+  ok   he 1280 ... and Next again: the panel opens itself to show the message
+  ok   he 1280 reset: back to 55 / 25 / 15 / 5, the message cleared
+  ok   he 1280 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%  [Meta (פייסבוק ואינסטגרם)
+50%
+₪12,500 Google (חיפוש ויוטיוב)
+25%
+₪6,250 עיתונות קהילתית וניוזלטרים
+20%
+₪5,000 אתרי נדלן בינלאומיים
+5%
+₪1,250]
+  ok   he 1280 step 3 split open no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 3 split open every visible control at least 44 px high  [[]]
+  ok   he 1280 step 3 split open every input labelled  [[]]
+  ok   he 1280 step 3 split open every visible group named  [[]]
+  ok   he 1280 step 3 split open no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 3 split open survey red only on the yearly total  [['y:y', 'BDI:y']]
+he 1280: step 4
+  ok   he 1280 Enter in the budget field moves on: step 4
+  ok   he 1280 Next with no project kind: the message
+  ok   he 1280 existing page: the field "כתובת העמוד או שם הפרויקט"
+  ok   he 1280 Next with the field empty: the message, focus in the field
+  ok   he 1280 a new project: the label "שם הפרויקט והעיר (לא חובה)", the text kept
+  ok   he 1280 step 4 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 4 every visible control at least 44 px high  [[]]
+  ok   he 1280 step 4 every input labelled  [[]]
+  ok   he 1280 step 4 every visible group named  [['הפרויקט']]
+  ok   he 1280 step 4 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 4 survey red only on the yearly total  [[]]
+he 1280: step 5
+  ok   he 1280 step 5: "5 / 5", Next says "שלחו את התוכנית"
+  ok   he 1280 the summary list: markets, languages, buyers, budget, split, project  [[]]
+  ok   he 1280 a "שינוי" button on each of the 6 rows
+  ok   he 1280 the recommended plan is checked: three markets, ₪72,000 לשנה, tagged "מתאימה ל־2 שווקים שבחרתם"  [שלושה שווקים ₪72,000 לשנה קמפיין בעד שלושה שווקים וקהילות. מתאימה ל־2 שווקים שבחרתם]
+  ok   he 1280 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000
+  ok   he 1280 the lead promise line
+  ok   he 1280 the privacy notice with its link, the consent box unchecked
+  ok   he 1280 step 5 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 5 every visible control at least 44 px high  [[]]
+  ok   he 1280 step 5 every input labelled  [[]]
+  ok   he 1280 step 5 every visible group named  [['בחרו תוכנית שנתית', 'פרטים ליצירת קשר']]
+  ok   he 1280 step 5 no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 5 survey red only on the yearly total  [[]]
+  ok   he 1280 plan "one market" for two markets and Send: the plan message and every contact message; nothing sent  [בחרתם 2 שווקים, ובתוכנית "שוק אחד" יש מקום לשוק אחד. בחרו תוכנית גדולה יותר, או צמצמו את השווקים בשלב הראשון. | כתבו שם מלא. | כתבו את שם החברה. | כתבו מספר טלפון, אפשר עם קידומת של מדינה. | כתבו כתוב]
+  ok   he 1280 focus on the first invalid control (the plan)
+  ok   he 1280 step 5 errors no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 step 5 errors every visible control at least 44 px high  [[]]
+  ok   he 1280 step 5 errors every input labelled  [[]]
+  ok   he 1280 step 5 errors every visible group named  [['בחרו תוכנית שנתית', 'פרטים ליצירת קשר']]
+  ok   he 1280 step 5 errors no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 step 5 errors survey red only on the yearly total  [[]]
+  ok   he 1280 a bad email and no consent: only those two messages  [כתבו כתובת אימייל מלאה. | כדי לשלוח, סמנו את האישור.]
+  ok   he 1280 the consent box ticked by pressing its label
+  ok   he 1280 "שינוי" on the markets row: step 1, focus on the heading
+  ok   he 1280 forward to step 5: three markets, the plan still three (chosen), the tag "מתאימה ל־3 שווקים שבחרתם", the fields kept
+  ok   he 1280 copy: the plan as text, no name, company, phone or email  [תוכנית קמפיין בינלאומי בנדלן | שווקים וקהילות: צרפת, ארצות הברית, קנדה | שפות: אנגלית, צרפתית | הקונים: משקיעים, להשכרה | תקציב פרסום: ₪25,000 ב]
+  ok   he 1280 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)  [https://wa.me/?text=%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%]
+  ok   he 1280 send with a server error: the message, the form kept, Send pressable again  [לא הצלחנו לשמור את התוכנית. בדקו את החיבור ונסו שוב.]
+  ok   he 1280 saved: the reference NLC-261107-T3ST, the payment step, launch after payment  [קמפיין בינלאומי ליזמים |  | מתכנן הקמפיין |  | 5 / 5 |  | התוכנית נשמרה | מספר התוכנית שלכם | NLC-261107-T3ST |  | שמרו את המספר. צוות נדלן כבר קיבל את התוכנית. |  | תשלום המנוי השנתי | ]
+  ok   he 1280 first-payment mode (the config default): "לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)" to the first-payment product 8823 with the reference  [לתשלום ראשון: ₪18,000 (שלושה שווקים, ₪72,000 לשנה)]
+  ok   he 1280 the rest line under it: "את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם."; no same-day link line  [את היתרה, ₪54,000, משלמים בתשלומים של עד ₪18,000, בקישורים שנשלחים אליכם.]
+  ok   he 1280 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000
+  ok   he 1280 after saving: the footer gone, "5 / 5", every segment done, focus on the heading
+  ok   he 1280 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field  [{'markets': ['fr', 'us', 'ca'], 'plan': 'three', 'budget': 25000, 't': 13058}]
+  ok   he 1280 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies  [('POST', 'application/json', '')]
+  ok   he 1280 copy after saving carries the reference
+  ok   he 1280 saved no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 saved every visible control at least 44 px high  [[]]
+  ok   he 1280 saved every input labelled  [[]]
+  ok   he 1280 saved every visible group named  [[]]
+  ok   he 1280 saved no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 saved survey red only on the yearly total  [[]]
+  ok   he 1280 no dialog (no prompt fallback)  [[]]
+  ok   he 1280 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)  [[]]
+  ok   he 1280 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)  [[]]
+  ok   he 1280 full plan in one charge: "לתשלום: שלושה שווקים, ₪72,000 לשנה" to product 8810 with the reference, no rest line  [לתשלום: שלושה שווקים, ₪72,000 לשנה]
+  ok   he 1280 pay full no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 pay full every visible control at least 44 px high  [[]]
+  ok   he 1280 pay full every input labelled  [[]]
+  ok   he 1280 pay full every visible group named  [[]]
+  ok   he 1280 pay full no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 pay full survey red only on the yearly total  [[]]
+  ok   he 1280 (pay full) no page error  [[]]
+  ok   he 1280 no product: no pay button, "קישור לתשלום יישלח אליכם עוד היום."
+  ok   he 1280 pay none no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   he 1280 pay none every visible control at least 44 px high  [[]]
+  ok   he 1280 pay none every input labelled  [[]]
+  ok   he 1280 pay none every visible group named  [[]]
+  ok   he 1280 pay none no long dash, no tech word, no VAT wording  [[]]
+  ok   he 1280 pay none survey red only on the yearly total  [[]]
+  ok   he 1280 (pay none) no page error  [[]]
+
+en 390: step 1
+  ok   en 390 header: the title, "1 / 5", 5 progress segments, aria step 1  [['1 / 5', 'Markets and communities']]
+  ok   en 390 faces: the title in IBM Plex Sans Condensed, the chips in IBM Plex Sans, figures in IBM Plex Mono; dir and lang  [['"IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif', 30, '"IBM Plex Sans", "IBM Plex Sans Hebrew", system-ui, sans-serif', '"IBM Plex Mono", ui-monospace, SFMono-Regular, monospace', ]
+  ok   en 390 step 1: Back hidden, Next says "Continue"
+  ok   en 390 ten market chips, each with its languages; the targeting line
+  ok   en 390 side panel hidden on the phone
+  ok   en 390 step 1 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 1 every visible control at least 44 px high  [[]]
+  ok   en 390 step 1 every input labelled  [[]]
+  ok   en 390 step 1 every visible group named  [['Markets and communities for the campaign']]
+  ok   en 390 step 1 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 1 survey red only on the yearly total  [[]]
+  ok   en 390 Next with no market: the message, still step 1, focus on the first chip  [Choose at least one market or community.]
+  ok   en 390 all ten pressed: flagship recommended, languages en fr ru, the message cleared  [Flagship, ₪144,000 a year]
+  ok   en 390 France only: languages "French", one market ₪36,000  [One market, ₪36,000 a year]
+  ok   en 390 France + Canada: languages "English, French", three markets ₪72,000
+en 390: step 2
+  ok   en 390 step 2: "2 / 5", heading, aria step 2, focus on the heading, Back shown
+  ok   en 390 progress: segment 1 done, segment 2 current
+  ok   en 390 four buyer cards (one choice)
+  ok   en 390 Next with no buyer: the message, still step 2
+  ok   en 390 one choice: investors checked, luxury not, the message cleared
+  ok   en 390 step 2 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 2 every visible control at least 44 px high  [[]]
+  ok   en 390 step 2 every input labelled  [[]]
+  ok   en 390 step 2 every visible group named  [['The buyers you want']]
+  ok   en 390 step 2 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 2 survey red only on the yearly total  [[]]
+  ok   en 390 Back to step 1: the chips kept
+  ok   en 390 and forward: investors still checked
+en 390: step 3
+  ok   en 390 step 3 opens at ₪10,000 a month, ₪120,000 a year  [['₪10,000', '₪120,000']]
+  ok   en 390 the yearly total is the survey red figure  [rgb(196, 37, 80)]
+  ok   en 390 + three times: ₪13,000 / ₪156,000  [['₪13,000', '₪156,000']]
+  ok   en 390 - once: ₪12,000 / ₪144,000, the slider follows
+  ok   en 390 slider to the end: ₪60,000 / ₪720,000, + disabled  [['₪60,000', '₪720,000']]
+  ok   en 390 slider to the start: ₪3,000 / ₪36,000, - disabled
+  ok   en 390 typed 2,500 and Next: the range message, still step 3  [The monthly budget must be from ₪3,000 to ₪60,000, in steps of ₪1,000.]
+  ok   en 390 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared  [['Meta (Facebook and Instagram)\n55%\n₪13,750', 'Google (Search and YouTube)\n25%\n₪6,250', 'Community press and newsletters\n15%\n₪3,750', 'International property portals\n5%\n₪1,250']]
+  ok   en 390 the split is labelled a starting point, the ad budget paid straight to the channels
+  ok   en 390 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null
+  ok   en 390 step 3 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 3 every visible control at least 44 px high  [[]]
+  ok   en 390 step 3 every input labelled  [[]]
+  ok   en 390 step 3 every visible group named  [[]]
+  ok   en 390 step 3 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 3 survey red only on the yearly total  [['y:y', 'BDI:y']]
+  ok   en 390 split: press +5 = 20%, the total 105%, "Your split"
+  ok   en 390 Next at 105%: the message, still step 3  [The split must add up to 100%. Now: 105%.]
+  ok   en 390 ... and Next again: the panel opens itself to show the message
+  ok   en 390 reset: back to 55 / 25 / 15 / 5, the message cleared
+  ok   en 390 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%  [Meta (Facebook and Instagram)
+50%
+₪12,500 Google (Search and YouTube)
+25%
+₪6,250 Community press and newsletters
+20%
+₪5,000 International property portals
+5%
+₪1]
+  ok   en 390 step 3 split open no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 3 split open every visible control at least 44 px high  [[]]
+  ok   en 390 step 3 split open every input labelled  [[]]
+  ok   en 390 step 3 split open every visible group named  [[]]
+  ok   en 390 step 3 split open no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 3 split open survey red only on the yearly total  [['y:y', 'BDI:y']]
+en 390: step 4
+  ok   en 390 Enter in the budget field moves on: step 4
+  ok   en 390 Next with no project kind: the message
+  ok   en 390 existing page: the field "The page address or the project name"
+  ok   en 390 Next with the field empty: the message, focus in the field
+  ok   en 390 a new project: the label "Project name and city (optional)", the text kept
+  ok   en 390 step 4 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 4 every visible control at least 44 px high  [[]]
+  ok   en 390 step 4 every input labelled  [[]]
+  ok   en 390 step 4 every visible group named  [['The project']]
+  ok   en 390 step 4 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 4 survey red only on the yearly total  [[]]
+en 390: step 5
+  ok   en 390 step 5: "5 / 5", Next says "Send the plan"
+  ok   en 390 the summary list: markets, languages, buyers, budget, split, project  [[]]
+  ok   en 390 a "שינוי" button on each of the 6 rows
+  ok   en 390 the recommended plan is checked: three markets, ₪72,000 a year, tagged "Fits the 2 markets you chose"  [Three markets ₪72,000 a year A campaign in up to three markets and communities. Fits the 2 markets you chose]
+  ok   en 390 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000
+  ok   en 390 the lead promise line
+  ok   en 390 the privacy notice with its link, the consent box unchecked
+  ok   en 390 step 5 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 5 every visible control at least 44 px high  [[]]
+  ok   en 390 step 5 every input labelled  [[]]
+  ok   en 390 step 5 every visible group named  [['Choose an annual plan', 'Contact details']]
+  ok   en 390 step 5 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 5 survey red only on the yearly total  [[]]
+  ok   en 390 plan "one market" for two markets and Send: the plan message and every contact message; nothing sent  [You chose 2 markets, and the "One market" plan has room for 1 market. Choose a bigger plan, or narrow the markets in step 1. | Write your full name. | Write the company name. | Write a phone number, w]
+  ok   en 390 focus on the first invalid control (the plan)
+  ok   en 390 step 5 errors no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 step 5 errors every visible control at least 44 px high  [[]]
+  ok   en 390 step 5 errors every input labelled  [[]]
+  ok   en 390 step 5 errors every visible group named  [['Choose an annual plan', 'Contact details']]
+  ok   en 390 step 5 errors no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 step 5 errors survey red only on the yearly total  [[]]
+  ok   en 390 a bad email and no consent: only those two messages  [Write a full email address. | To send, tick the consent box.]
+  ok   en 390 the consent box ticked by pressing its label
+  ok   en 390 "שינוי" on the markets row: step 1, focus on the heading
+  ok   en 390 forward to step 5: three markets, the plan still three (chosen), the tag "Fits the 3 markets you chose", the fields kept
+  ok   en 390 copy: the plan as text, no name, company, phone or email  [International campaign plan on NadLan | Markets and communities: France, USA, Canada | Languages: English, French | Buyers: Investors (rental)]
+  ok   en 390 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)  [https://wa.me/?text=International%20campaign%20plan%20on%20N]
+  ok   en 390 send with a server error: the message, the form kept, Send pressable again  [We could not save the plan. Check your connection and try again.]
+  ok   en 390 saved: the reference NLC-261107-T3ST, the payment step, launch after payment  [International campaigns for developers |  | Campaign planner |  | 5 / 5 |  | Your plan is saved | Your plan number | NLC-261107-T3ST |  | Keep this number. The NadLan team already ]
+  ok   en 390 first-payment mode (the config default): "Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)" to the first-payment product 8823 with the reference  [Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)]
+  ok   en 390 the rest line under it: "The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you."; no same-day link line  [The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you.]
+  ok   en 390 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000
+  ok   en 390 after saving: the footer gone, "5 / 5", every segment done, focus on the heading
+  ok   en 390 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field  [{'markets': ['fr', 'us', 'ca'], 'plan': 'three', 'budget': 25000, 't': 13368}]
+  ok   en 390 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies  [('POST', 'application/json', '')]
+  ok   en 390 copy after saving carries the reference
+  ok   en 390 saved no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 saved every visible control at least 44 px high  [[]]
+  ok   en 390 saved every input labelled  [[]]
+  ok   en 390 saved every visible group named  [[]]
+  ok   en 390 saved no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 saved survey red only on the yearly total  [[]]
+  ok   en 390 no dialog (no prompt fallback)  [[]]
+  ok   en 390 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)  [[]]
+  ok   en 390 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)  [[]]
+  ok   en 390 full plan in one charge: "Pay: Three markets, ₪72,000 a year" to product 8810 with the reference, no rest line  [Pay: Three markets, ₪72,000 a year]
+  ok   en 390 pay full no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 pay full every visible control at least 44 px high  [[]]
+  ok   en 390 pay full every input labelled  [[]]
+  ok   en 390 pay full every visible group named  [[]]
+  ok   en 390 pay full no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 pay full survey red only on the yearly total  [[]]
+  ok   en 390 (pay full) no page error  [[]]
+  ok   en 390 no product: no pay button, "A payment link will be sent to you today."
+  ok   en 390 pay none no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   en 390 pay none every visible control at least 44 px high  [[]]
+  ok   en 390 pay none every input labelled  [[]]
+  ok   en 390 pay none every visible group named  [[]]
+  ok   en 390 pay none no long dash, no tech word, no VAT wording  [[]]
+  ok   en 390 pay none survey red only on the yearly total  [[]]
+  ok   en 390 (pay none) no page error  [[]]
+
+en 1280: step 1
+  ok   en 1280 header: the title, "1 / 5", 5 progress segments, aria step 1  [['1 / 5', 'Markets and communities']]
+  ok   en 1280 faces: the title in IBM Plex Sans Condensed, the chips in IBM Plex Sans, figures in IBM Plex Mono; dir and lang  [['"IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif', 36, '"IBM Plex Sans", "IBM Plex Sans Hebrew", system-ui, sans-serif', '"IBM Plex Mono", ui-monospace, SFMono-Regular, monospace', ]
+  ok   en 1280 step 1: Back hidden, Next says "Continue"
+  ok   en 1280 ten market chips, each with its languages; the targeting line
+  ok   en 1280 side panel shown (wide)
+  ok   en 1280 step 1 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 1 every visible control at least 44 px high  [[]]
+  ok   en 1280 step 1 every input labelled  [[]]
+  ok   en 1280 step 1 every visible group named  [['Markets and communities for the campaign']]
+  ok   en 1280 step 1 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 1 survey red only on the yearly total  [[]]
+  ok   en 1280 Next with no market: the message, still step 1, focus on the first chip  [Choose at least one market or community.]
+  ok   en 1280 all ten pressed: flagship recommended, languages en fr ru, the message cleared  [Flagship, ₪144,000 a year]
+  ok   en 1280 France only: languages "French", one market ₪36,000  [One market, ₪36,000 a year]
+  ok   en 1280 France + Canada: languages "English, French", three markets ₪72,000
+en 1280: step 2
+  ok   en 1280 step 2: "2 / 5", heading, aria step 2, focus on the heading, Back shown
+  ok   en 1280 progress: segment 1 done, segment 2 current
+  ok   en 1280 four buyer cards (one choice)
+  ok   en 1280 Next with no buyer: the message, still step 2
+  ok   en 1280 one choice: investors checked, luxury not, the message cleared
+  ok   en 1280 step 2 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 2 every visible control at least 44 px high  [[]]
+  ok   en 1280 step 2 every input labelled  [[]]
+  ok   en 1280 step 2 every visible group named  [['The buyers you want']]
+  ok   en 1280 step 2 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 2 survey red only on the yearly total  [[]]
+  ok   en 1280 Back to step 1: the chips kept
+  ok   en 1280 and forward: investors still checked
+en 1280: step 3
+  ok   en 1280 step 3 opens at ₪10,000 a month, ₪120,000 a year  [['₪10,000', '₪120,000']]
+  ok   en 1280 the yearly total is the survey red figure  [rgb(196, 37, 80)]
+  ok   en 1280 + three times: ₪13,000 / ₪156,000  [['₪13,000', '₪156,000']]
+  ok   en 1280 - once: ₪12,000 / ₪144,000, the slider follows
+  ok   en 1280 slider to the end: ₪60,000 / ₪720,000, + disabled  [['₪60,000', '₪720,000']]
+  ok   en 1280 slider to the start: ₪3,000 / ₪36,000, - disabled
+  ok   en 1280 typed 2,500 and Next: the range message, still step 3  [The monthly budget must be from ₪3,000 to ₪60,000, in steps of ₪1,000.]
+  ok   en 1280 typed 25,000: ₪25,000 / ₪300,000; the split ₪13,750 / ₪6,250 / ₪3,750 / ₪1,250; message cleared  [['Meta (Facebook and Instagram)\n55%\n₪13,750', 'Google (Search and YouTube)\n25%\n₪6,250', 'Community press and newsletters\n15%\n₪3,750', 'International property portals\n5%\n₪1,250']]
+  ok   en 1280 the split is labelled a starting point, the ad budget paid straight to the channels
+  ok   en 1280 no reach, lead or cost-per-lead figure on the screen; NLCAMP.benchmarks is null
+  ok   en 1280 step 3 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 3 every visible control at least 44 px high  [[]]
+  ok   en 1280 step 3 every input labelled  [[]]
+  ok   en 1280 step 3 every visible group named  [[]]
+  ok   en 1280 step 3 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 3 survey red only on the yearly total  [['y:y', 'BDI:y']]
+  ok   en 1280 split: press +5 = 20%, the total 105%, "Your split"
+  ok   en 1280 Next at 105%: the message, still step 3  [The split must add up to 100%. Now: 105%.]
+  ok   en 1280 ... and Next again: the panel opens itself to show the message
+  ok   en 1280 reset: back to 55 / 25 / 15 / 5, the message cleared
+  ok   en 1280 Meta 50%, press 20%: ₪12,500 and ₪5,000, the total 100%  [Meta (Facebook and Instagram)
+50%
+₪12,500 Google (Search and YouTube)
+25%
+₪6,250 Community press and newsletters
+20%
+₪5,000 International property portals
+5%
+₪1]
+  ok   en 1280 step 3 split open no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 3 split open every visible control at least 44 px high  [[]]
+  ok   en 1280 step 3 split open every input labelled  [[]]
+  ok   en 1280 step 3 split open every visible group named  [[]]
+  ok   en 1280 step 3 split open no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 3 split open survey red only on the yearly total  [['y:y', 'BDI:y']]
+en 1280: step 4
+  ok   en 1280 Enter in the budget field moves on: step 4
+  ok   en 1280 Next with no project kind: the message
+  ok   en 1280 existing page: the field "The page address or the project name"
+  ok   en 1280 Next with the field empty: the message, focus in the field
+  ok   en 1280 a new project: the label "Project name and city (optional)", the text kept
+  ok   en 1280 step 4 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 4 every visible control at least 44 px high  [[]]
+  ok   en 1280 step 4 every input labelled  [[]]
+  ok   en 1280 step 4 every visible group named  [['The project']]
+  ok   en 1280 step 4 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 4 survey red only on the yearly total  [[]]
+en 1280: step 5
+  ok   en 1280 step 5: "5 / 5", Next says "Send the plan"
+  ok   en 1280 the summary list: markets, languages, buyers, budget, split, project  [[]]
+  ok   en 1280 a "שינוי" button on each of the 6 rows
+  ok   en 1280 the recommended plan is checked: three markets, ₪72,000 a year, tagged "Fits the 2 markets you chose"  [Three markets ₪72,000 a year A campaign in up to three markets and communities. Fits the 2 markets you chose]
+  ok   en 1280 all three plans with yearly prices: ₪36,000, ₪72,000, ₪144,000
+  ok   en 1280 the lead promise line
+  ok   en 1280 the privacy notice with its link, the consent box unchecked
+  ok   en 1280 step 5 no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 5 every visible control at least 44 px high  [[]]
+  ok   en 1280 step 5 every input labelled  [[]]
+  ok   en 1280 step 5 every visible group named  [['Choose an annual plan', 'Contact details']]
+  ok   en 1280 step 5 no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 5 survey red only on the yearly total  [[]]
+  ok   en 1280 plan "one market" for two markets and Send: the plan message and every contact message; nothing sent  [You chose 2 markets, and the "One market" plan has room for 1 market. Choose a bigger plan, or narrow the markets in step 1. | Write your full name. | Write the company name. | Write a phone number, w]
+  ok   en 1280 focus on the first invalid control (the plan)
+  ok   en 1280 step 5 errors no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 step 5 errors every visible control at least 44 px high  [[]]
+  ok   en 1280 step 5 errors every input labelled  [[]]
+  ok   en 1280 step 5 errors every visible group named  [['Choose an annual plan', 'Contact details']]
+  ok   en 1280 step 5 errors no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 step 5 errors survey red only on the yearly total  [[]]
+  ok   en 1280 a bad email and no consent: only those two messages  [Write a full email address. | To send, tick the consent box.]
+  ok   en 1280 the consent box ticked by pressing its label
+  ok   en 1280 "שינוי" on the markets row: step 1, focus on the heading
+  ok   en 1280 forward to step 5: three markets, the plan still three (chosen), the tag "Fits the 3 markets you chose", the fields kept
+  ok   en 1280 copy: the plan as text, no name, company, phone or email  [International campaign plan on NadLan | Markets and communities: France, USA, Canada | Languages: English, French | Buyers: Investors (rental)]
+  ok   en 1280 WhatsApp: wa.me/?text= (no phone number), the same text (answered locally)  [https://wa.me/?text=International%20campaign%20plan%20on%20N]
+  ok   en 1280 send with a server error: the message, the form kept, Send pressable again  [We could not save the plan. Check your connection and try again.]
+  ok   en 1280 saved: the reference NLC-261107-T3ST, the payment step, launch after payment  [International campaigns for developers |  | Campaign planner |  | 5 / 5 |  | Your plan is saved | Your plan number | NLC-261107-T3ST |  | Keep this number. The NadLan team already ]
+  ok   en 1280 first-payment mode (the config default): "Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)" to the first-payment product 8823 with the reference  [Pay the first part: ₪18,000 (Three markets, ₪72,000 a year)]
+  ok   en 1280 the rest line under it: "The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you."; no same-day link line  [The rest, ₪54,000, is paid in parts of up to ₪18,000 through links we send you.]
+  ok   en 1280 figures of the pay step in <bdi>: ₪18,000, ₪72,000, ₪54,000
+  ok   en 1280 after saving: the footer gone, "5 / 5", every segment done, focus on the heading
+  ok   en 1280 the brief sent: markets fr us ca, investors, 25,000, split 50/25/20/5, existing + text, plan three, consent, honeypot empty, no card field  [{'markets': ['fr', 'us', 'ca'], 'plan': 'three', 'budget': 25000, 't': 13325}]
+  ok   en 1280 sent as JSON by POST to /wp-json/nadlan/v1/campaign-brief, no cookies  [('POST', 'application/json', '')]
+  ok   en 1280 copy after saving carries the reference
+  ok   en 1280 saved no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 saved every visible control at least 44 px high  [[]]
+  ok   en 1280 saved every input labelled  [[]]
+  ok   en 1280 saved every visible group named  [[]]
+  ok   en 1280 saved no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 saved survey red only on the yearly total  [[]]
+  ok   en 1280 no dialog (no prompt fallback)  [[]]
+  ok   en 1280 nothing sent outside 127.0.0.1 (fonts and the wa.me stub aside)  [[]]
+  ok   en 1280 no console error or warning, no page error (the one expected 500 of the failure test aside: 1)  [[]]
+  ok   en 1280 full plan in one charge: "Pay: Three markets, ₪72,000 a year" to product 8810 with the reference, no rest line  [Pay: Three markets, ₪72,000 a year]
+  ok   en 1280 pay full no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 pay full every visible control at least 44 px high  [[]]
+  ok   en 1280 pay full every input labelled  [[]]
+  ok   en 1280 pay full every visible group named  [[]]
+  ok   en 1280 pay full no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 pay full survey red only on the yearly total  [[]]
+  ok   en 1280 (pay full) no page error  [[]]
+  ok   en 1280 no product: no pay button, "A payment link will be sent to you today."
+  ok   en 1280 pay none no horizontal scroll  [{'sw': 1280, 'iw': 1280}]
+  ok   en 1280 pay none every visible control at least 44 px high  [[]]
+  ok   en 1280 pay none every input labelled  [[]]
+  ok   en 1280 pay none every visible group named  [[]]
+  ok   en 1280 pay none no long dash, no tech word, no VAT wording  [[]]
+  ok   en 1280 pay none survey red only on the yearly total  [[]]
+  ok   en 1280 (pay none) no page error  [[]]
+
+he 390 + live theme
+  ok   theme 390 step 1 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 step 1 every visible control at least 44 px high  [[]]
+  ok   theme 390 step 1 every input labelled  [[]]
+  ok   theme 390 step 1 every visible group named  [['שווקים וקהילות לקמפיין']]
+  ok   theme 390 step 1 no long dash, no tech word, no VAT wording  [[]]
+  ok   theme 390 step 1 survey red only on the yearly total  [[]]
+  ok   theme 390: chips and buttons keep Plex Sans Hebrew, the pressed chip and Next in sea, chips round, the title in ink  [['"IBM Plex Sans Hebrew"', 'rgb(47, 111, 134)', '"IBM Plex Sans Hebrew"', 'rgb(47, 111, 134)', '999px', 'rgb(18, 32, 42)']]
+  ok   theme 390 step 3 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 step 3 every visible control at least 44 px high  [[]]
+  ok   theme 390 step 3 every input labelled  [[]]
+  ok   theme 390 step 3 every visible group named  [[]]
+  ok   theme 390 step 3 no long dash, no tech word, no VAT wording  [[]]
+  ok   theme 390 step 3 survey red only on the yearly total  [['y:y', 'BDI:y']]
+  ok   theme 390 step 3: the budget field in Plex Mono, the legend without bullets, the yearly total survey red  [['"IBM Plex Mono"', 'none', 'rgb(196, 37, 80)']]
+  ok   theme 390 step 5 no horizontal scroll  [{'sw': 390, 'iw': 390}]
+  ok   theme 390 step 5 every visible control at least 44 px high  [[]]
+  ok   theme 390 step 5 every input labelled  [[]]
+  ok   theme 390 step 5 every visible group named  [['בחרו תוכנית שנתית', 'פרטים ליצירת קשר']]
+  ok   theme 390 step 5 no long dash, no tech word, no VAT wording  [[]]
+  ok   theme 390 step 5 survey red only on the yearly total  [[]]
+  ok   theme 390: no page error and no local console error  [[]]
+
+local server stopped
+
+529 of 529 checks passed
