@@ -1,0 +1,144 @@
+/* NadLan real-estate advisor 0.1.1 (HAD-680, 7.11.2026): the section inside the page, never floating. Design system NadLan
+   Instruments (https://claude.ai/artifact/ATybPAavyDEkAzH7cdg1bB): ground #F6F8F9, ink #12202A, sea #2F6F86, sea-deep #1F4B5C,
+   survey #C42550 (the one deciding figure of an answer), Karantina for the Hebrew display, IBM Plex Sans Hebrew for reading,
+   IBM Plex Mono for every figure. The look is a surveyor's working sheet: a title block (who answers, what it knows, the
+   numbers' sources), the stages of a deal as a numbered track, the conversation as entries ruled like a field log, results as
+   readout cells. Borders, not shadows. Scoped to #nladv with id specificity (and !important where the theme forces heading
+   colours and the guide forces paragraph sizes: the CSS cascade hazard). */
+html body #nladv{--a-ground:#F6F8F9;--a-surface:#FFFFFF;--a-ink:#12202A;--a-ink2:#3E4C58;--a-mute:#5E6A75;--a-line:#D3DCE2;
+  --a-sea:#2F6F86;--a-sea-deep:#1F4B5C;--a-on-sea:#FFFFFF;--a-survey:#C42550;--a-civic:#8E7CC3;--a-open:#4F9A5C;--a-housing:#F2D15A;
+  --a-display:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--a-sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;
+  --a-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  display:block;clear:both;margin:28px 0 36px;padding:20px 16px 18px;background:var(--a-ground);border:1px solid var(--a-line);
+  border-radius:6px;font-family:var(--a-sans);color:var(--a-ink2);text-align:start;box-sizing:border-box;max-width:100%}
+html body #nladv[hidden]{display:none!important}
+/* 0.1.1: inside a page grid (the project page's .nlps-page is two columns) the section spans the whole row */
+html body #nladv{grid-column:1 / -1;width:auto;min-width:0}
+html body #nladv.nladv--en{--a-display:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;--a-sans:"IBM Plex Sans",system-ui,sans-serif}
+html body #nladv *,html body #nladv *::before,html body #nladv *::after{box-sizing:border-box}
+html body #nladv [hidden]{display:none!important}
+html body #nladv p,html body #nladv li,html body #nladv dd,html body #nladv dt,html body #nladv label,html body #nladv summary{font-family:var(--a-sans)!important;margin:0;letter-spacing:0}
+@media (min-width:900px){html body #nladv{padding:32px 32px 28px}}
+
+/* the head */
+html body #nladv .nladv__kick{font:500 13px/1.4 var(--a-sans)!important;color:var(--a-sea)!important;margin:0 0 6px}
+html body #nladv .nladv__title{font:700 46px/0.95 var(--a-display)!important;color:var(--a-ink)!important;margin:0 0 10px!important;padding:0!important;border:0!important;background:none!important}
+html body #nladv.nladv--en .nladv__title{font:600 34px/1.05 var(--a-display)!important}
+@media (min-width:900px){html body #nladv .nladv__title{font-size:60px!important}html body #nladv.nladv--en .nladv__title{font-size:42px!important}}
+html body #nladv .nladv__sub{font-size:16px!important;line-height:1.6!important;color:var(--a-ink2)!important;max-width:62ch;margin:0 0 18px}
+
+/* the grid: the title block on the start side, the conversation beside it */
+html body #nladv .nladv__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:900px){html body #nladv .nladv__grid{grid-template-columns:290px minmax(0,1fr);gap:24px;align-items:start}}
+
+/* the title block */
+html body #nladv .nladv__file{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:0;overflow:hidden}
+html body #nladv .nladv__tb{margin:0;display:grid;grid-template-columns:1fr 1fr}
+html body #nladv .nladv__tb>div{padding:10px 12px;border-bottom:1px solid var(--a-line)}
+html body #nladv .nladv__tb>div:nth-child(odd){border-inline-end:1px solid var(--a-line)}
+html body #nladv .nladv__tb>div:nth-child(2){grid-column:1/-1;border-inline-end:0;order:3}
+html body #nladv .nladv__tb>div:nth-child(1){order:1}html body #nladv .nladv__tb>div:nth-child(3){order:4}html body #nladv .nladv__tb>div:nth-child(4){order:2;border-inline-end:0}
+@media (min-width:900px){html body #nladv .nladv__tb{grid-template-columns:1fr}html body #nladv .nladv__tb>div{border-inline-end:0!important;grid-column:auto!important;order:0!important}}
+html body #nladv .nladv__tb dt{font:500 12px/1.3 var(--a-sans)!important;color:var(--a-mute)!important;margin:0 0 3px}
+html body #nladv .nladv__tb dd{font-size:14px!important;line-height:1.45!important;color:var(--a-ink)!important;margin:0}
+
+/* the stages of a deal */
+html body #nladv .nladv__track{list-style:none;margin:0;padding:10px 12px;display:flex;flex-wrap:wrap;gap:6px 8px;border-bottom:1px solid var(--a-line)}
+@media (min-width:900px){html body #nladv .nladv__track{flex-direction:column;gap:0;padding:6px 0}}
+html body #nladv .nladv__track li{display:flex;align-items:center;gap:7px;font-size:13.5px!important;line-height:1.3!important;color:var(--a-mute)!important;padding:0;margin:0!important}
+@media (min-width:900px){html body #nladv .nladv__track li{padding:6px 12px;font-size:14px!important}}
+html body #nladv .nladv__track li::before,html body #nladv .nladv__track li::marker{content:none}
+html body #nladv .nladv__n{display:inline-grid;place-items:center;min-width:22px;height:22px;border:1px solid var(--a-line);border-radius:2px;font:500 12px/1 var(--a-mono);color:var(--a-ink2);background:var(--a-surface)}
+html body #nladv .nladv__track li.is-past{color:var(--a-sea-deep)!important}
+html body #nladv .nladv__track li.is-past .nladv__n{border-color:var(--a-sea);color:var(--a-sea)}
+html body #nladv .nladv__track li.is-now{color:var(--a-ink)!important;font-weight:600}
+html body #nladv .nladv__track li.is-now .nladv__n{background:var(--a-sea);border-color:var(--a-sea);color:var(--a-on-sea)}
+
+/* what it does not do */
+html body #nladv .nladv__not{padding:10px 12px}
+html body #nladv .nladv__not summary{cursor:pointer;font-size:14px!important;font-weight:600;color:var(--a-ink)!important;min-height:28px;display:flex;align-items:center}
+html body #nladv .nladv__not ul{margin:8px 0 2px;padding:0;list-style:none}
+html body #nladv .nladv__not li{position:relative;padding-inline-start:16px;font-size:13.5px!important;line-height:1.5!important;color:var(--a-ink2)!important;margin:0 0 4px!important}
+html body #nladv .nladv__not li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:7px;height:1.5px;background:var(--a-ink2)}
+
+/* the conversation */
+html body #nladv .nladv__main{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:14px 14px 12px;min-width:0}
+@media (min-width:900px){html body #nladv .nladv__main{padding:22px 24px 18px}}
+html body #nladv .nladv__log{display:flex;flex-direction:column;gap:0}
+html body #nladv .nladv__log:empty{display:none}
+html body #nladv .nladv__msg{padding:12px 0;border-bottom:1px dashed var(--a-line)}
+html body #nladv .nladv__msg:first-child{padding-top:0}
+html body #nladv .nladv__who{font:500 12px/1.3 var(--a-sans)!important;color:var(--a-mute)!important;margin:0 0 6px!important}
+html body #nladv .nladv__msg--a .nladv__who{color:var(--a-sea)!important}
+html body #nladv .nladv__msg--u{align-self:flex-end;max-width:88%;border-bottom:0;padding:10px 0 4px}
+html body #nladv .nladv__msg--u .nladv__body{background:var(--a-ground);border:1px solid var(--a-line);border-radius:6px;padding:9px 13px}
+html body #nladv .nladv__msg--u .nladv__who{text-align:end}
+html body #nladv .nladv__body p,html body #nladv .nladv__body li{font-size:16px!important;line-height:1.65!important;color:var(--a-ink)!important}
+html body #nladv .nladv__body p+p,html body #nladv .nladv__body p+ul,html body #nladv .nladv__body ul+p,html body #nladv .nladv__body p+ol,html body #nladv .nladv__body ol+p{margin-top:8px!important}
+html body #nladv .nladv__body ul,html body #nladv .nladv__body ol{margin:4px 0 0!important;padding:0!important;list-style:none!important}
+html body #nladv .nladv__body li{position:relative;padding-inline-start:18px!important;margin:0 0 5px!important}
+html body #nladv .nladv__body ul>li::before{content:"";position:absolute;inset-inline-start:3px;top:.7em;width:6px;height:6px;background:var(--a-sea)}
+html body #nladv .nladv__body ol{counter-reset:nla}
+html body #nladv .nladv__body ol>li{counter-increment:nla}
+html body #nladv .nladv__body ol>li::before{content:counter(nla);position:absolute;inset-inline-start:0;top:.15em;font:500 12px/1.4 var(--a-mono);color:var(--a-sea)}
+html body #nladv .nladv__body strong{color:var(--a-ink);font-weight:600}
+html body #nladv .nladv__body a,html body #nladv .nladv__card a,html body #nladv .nladv__consent a{color:var(--a-sea)!important;text-decoration:underline!important;text-underline-offset:3px;font-weight:500}
+html body #nladv bdi{font-family:var(--a-mono);font-size:.94em}
+
+/* the readout cells under an answer */
+html body #nladv .nladv__cards{display:grid;gap:10px;margin-top:12px}
+@media (min-width:640px){html body #nladv .nladv__cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
+html body #nladv .nladv__card{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:12px 14px}
+html body #nladv .nladv__card-k{font:600 12.5px/1.35 var(--a-sans)!important;color:var(--a-sea)!important;margin:0 0 6px!important}
+html body #nladv .nladv__fig{font:500 28px/1.15 var(--a-mono)!important;color:var(--a-ink)!important;margin:0 0 10px!important}
+html body #nladv .nladv__fig>span{border-bottom:2px solid var(--a-survey);padding-bottom:1px}
+html body #nladv .nladv__fig small{display:block;font:400 14px/1.4 var(--a-sans);color:var(--a-mute);margin:4px 0 0}
+html body #nladv .nladv__fig small bdi{font-size:14px;color:var(--a-ink2)}
+html body #nladv .nladv__rows{margin:0 0 8px;padding:0;list-style:none}
+html body #nladv .nladv__rows li{display:flex;justify-content:space-between;gap:10px;padding:5px 0!important;border-top:1px solid var(--a-line);font-size:13.5px!important;line-height:1.35!important;color:var(--a-ink2)!important;margin:0!important}
+html body #nladv .nladv__rows li::before{content:none!important}
+html body #nladv .nladv__rows b{font-weight:500;color:var(--a-ink);white-space:nowrap;text-align:end}
+html body #nladv .nladv__rows span{min-width:0}
+html body #nladv .nladv__bar{display:flex;height:8px;border-radius:2px;overflow:hidden;background:var(--a-ground);margin:2px 0 8px}
+html body #nladv .nladv__bar i{display:block;height:100%}
+html body #nladv .nladv__src{font:400 12px/1.5 var(--a-sans)!important;color:var(--a-mute)!important}
+
+/* thinking */
+html body #nladv .nladv__busy{display:flex;align-items:center;gap:8px;padding:12px 0;font:500 12.5px/1 var(--a-mono);color:var(--a-sea)}
+html body #nladv .nladv__busy i{width:6px;height:6px;background:var(--a-sea);animation:nladvb 1s infinite ease-in-out}
+html body #nladv .nladv__busy i:nth-child(3){animation-delay:.15s}html body #nladv .nladv__busy i:nth-child(4){animation-delay:.3s}
+@keyframes nladvb{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){html body #nladv .nladv__busy i{animation:none;opacity:.7}}
+
+/* suggestions */
+html body #nladv .nladv__chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 12px}
+html body #nladv .nladv__chip{min-height:44px;padding:8px 14px;border:1px solid var(--a-line);border-radius:999px;background:var(--a-surface);color:var(--a-ink2);font:500 14px/1.3 var(--a-sans);cursor:pointer;text-align:start}
+html body #nladv .nladv__chip:hover{border-color:var(--a-sea);color:var(--a-sea-deep)}
+
+/* the question */
+html body #nladv .nladv__ask{margin:0}
+html body #nladv .nladv__lbl{display:block;font:500 13px/1.3 var(--a-sans)!important;color:var(--a-ink2)!important;margin:0 0 6px!important}
+html body #nladv .nladv__row{display:flex;gap:8px;align-items:stretch}
+html body #nladv textarea{flex:1;min-width:0;min-height:56px;max-height:180px;resize:vertical;padding:12px 12px;border:1px solid #9AA8B3;border-radius:2px;background:var(--a-surface);color:var(--a-ink);font:400 16px/1.5 var(--a-sans);margin:0}
+html body #nladv textarea::placeholder{color:var(--a-mute)}
+html body #nladv .nladv__send,html body #nladv .nladv__go{min-height:48px;min-width:76px;padding:0 18px;border:0;border-radius:6px;background:var(--a-sea);color:var(--a-on-sea);font:600 16px/1 var(--a-sans);cursor:pointer}
+html body #nladv .nladv__send:hover,html body #nladv .nladv__go:hover{background:var(--a-sea-deep)}
+html body #nladv .nladv__send[disabled],html body #nladv .nladv__go[disabled]{opacity:.55;cursor:default}
+html body #nladv textarea:focus-visible,html body #nladv input:focus-visible,html body #nladv button:focus-visible,html body #nladv summary:focus-visible,html body #nladv a:focus-visible{outline:2px solid var(--a-sea);outline-offset:2px}
+html body #nladv .nladv__priv{font-size:12.5px!important;line-height:1.5!important;color:var(--a-mute)!important;margin:8px 0 0!important}
+
+/* a person from the team */
+html body #nladv .nladv__open{margin:12px 0 0;min-height:44px;padding:0 16px;border:1px solid var(--a-sea);border-radius:6px;background:var(--a-surface);color:var(--a-sea-deep);font:600 15px/1 var(--a-sans);cursor:pointer}
+html body #nladv .nladv__hand{margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--a-line)}
+html body #nladv .nladv__hand-t{font-size:17px!important;font-weight:600;color:var(--a-ink)!important;margin:0 0 10px!important}
+html body #nladv .nladv__fields{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){html body #nladv .nladv__fields{grid-template-columns:repeat(3,minmax(0,1fr))}}
+html body #nladv .nladv__fields label{display:grid;gap:4px;font-size:13px!important;color:var(--a-ink2)!important}
+html body #nladv .nladv__fields input{min-height:46px;padding:0 12px;border:1px solid #9AA8B3;border-radius:2px;background:var(--a-surface);color:var(--a-ink);font:400 16px/1.2 var(--a-sans);margin:0;width:100%}
+html body #nladv .nladv__hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+html body #nladv .nladv__consent{font-size:12.5px!important;line-height:1.55!important;color:var(--a-ink2)!important;margin:10px 0 8px!important}
+html body #nladv .nladv__agree{display:flex;align-items:center;gap:8px;min-height:44px;font-size:14.5px!important;color:var(--a-ink)!important;cursor:pointer}
+html body #nladv .nladv__agree input{width:20px;height:20px;margin:0;accent-color:var(--a-sea)}
+html body #nladv .nladv__go{background:var(--a-sea-deep);margin-top:6px}
+html body #nladv .nladv__done{font-size:15px!important;color:var(--a-ink)!important;margin:10px 0 0!important}
+html body #nladv .nladv__err{font-size:14px!important;color:var(--a-survey)!important;margin:6px 0 0!important}

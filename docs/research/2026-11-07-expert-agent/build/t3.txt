@@ -1,0 +1,46 @@
+
+===== Q: I live in London. What purchase tax would I pay on a 3.2 million shekel apartment in Tel Aviv, and can I get an Israeli mortgage?
+As a foreign resident, you would pay purchase tax of ₪256,000 on ₪3,200,000. That is a flat 8% on the whole price. This rate is valid until 2027-02-10, so check it again if you sign after that date.
+
+Yes, you can generally get an Israeli mortgage as a foreign resident. Bank of Israel directive 329 caps the bank's financing at 50%, which here is up to ₪1,600,000. Approval is the bank's decision and depends on your income, your credit history and the documents you can provide from abroad.
+
+Estimated cash needed:
+- Equity of about ₪1,600,000, which is the price minus the maximum loan.
+- Costs on top of about ₪276,730 to ₪297,210. These are the purchase tax, the lawyer (0.5% to 1% plus VAT), the appraiser and the home inspection.
+- Total cash of about ₪1,876,730 to ₪1,897,210. That excludes a broker, renovation, moving and a reserve.
+
+Currency matters too. You will pay in shekels, so exchange rate swings can change what the purchase costs you in pounds.
+
+What to do now:
+- Ask two or three Israeli banks about their foreign-resident mortgage terms and what income documents they accept.
+- Hire your own Israeli real-estate lawyer, and discuss a power of attorney so you can sign from London.
+- Read [Buying a home in Israel from abroad](https://nad-lan.co.il/en/buy-property-in-israel/) and use the [foreign-resident tax calculator](https://nad-lan.co.il/israel-purchase-tax-foreign-residents/).
+
+The final word on tax and your mortgage eligibility belongs to a real-estate lawyer and a mortgage adviser.
+
+Would you like me to estimate the monthly payment on a ₪1,600,000 loan? If so, tell me the term you have in mind.
+[card tax] {"price":3200000,"track":"foreign","tax":256000}
+[card costs] {"price":3200000,"track":"foreign","cash_needed":[1876730,1897210]}
+[meta] stage=1 handoff=no next=["What would the monthly payment be?","What documents do banks ask from abroad?"]
+[usage] in=17024 out=823 cost=$0.01883 time=7.7s
+
+===== Q: Do I need to come to Israel to sign? What about the lawyer?
+You don't always have to come to Israel. Many buyers abroad sign through a power of attorney (ייפוי כוח). You sign it in London before a notary or at the Israeli consulate, and your Israeli lawyer then signs for you. The exact formalities, such as notarisation, apostille or consular signing, depend on the document, so your lawyer should confirm them before you sign anything. Banks have their own rules for mortgage documents, and some may ask you to sign in person or at a consulate.
+
+On the lawyer:
+- Hire your own real-estate lawyer, not the seller's or the developer's. The typical fee is 0.5% to 1% plus VAT.
+- The lawyer checks the land registry extract (נסח טאבו), liens and the building file. They also review the contract and register the warning note (הערת אזהרה) right after signing.
+- They also report the purchase to the Tax Authority within 30 days, and the tax is paid within 60 days.
+
+What to do now:
+- Ask the lawyer for a power of attorney limited to this property, this price and a short validity period, not a general one.
+- Never sign a memorandum (זיכרון דברים) before your lawyer has read it. In Israel it can bind you like a contract.
+- Ask the lawyer to confirm that payments are released only against their written approval.
+
+The [guide you are reading](https://nad-lan.co.il/en/buy-property-in-israel/) also covers how to appoint local help.
+
+Do you already have a lawyer in mind, or would you like a checklist of questions to ask one at a first meeting?
+[meta] stage=6 handoff=no next=["What should a power of attorney limit?","Which questions for the first lawyer meeting?"]
+[usage] in=8861 out=1001 cost=$0.01237 time=9.3s
+
+[total] in=25885 out=1824 cost=$0.0312 model=anthropic/claude-sonnet-5.5

@@ -1,0 +1,77 @@
+[
+    {
+        "q": "I live in London. What purchase tax would I pay on a 3.2 million shekel apartment in Tel Aviv, and can I get an Israeli mortgage?",
+        "r": {
+            "answer": "As a foreign resident, you would pay ₪256,000 purchase tax on ₪3,200,000. That is a flat 8% (the rate in force until 2027-02-10). Israeli banks can lend foreign residents up to 50% under Bank of Israel directive 329, so the maximum loan is ₪1,600,000. The bank decides whether to approve you, and I can't promise it will.\n\nCash needed:\n- Equity for the price: ₪1,600,000.\n- Costs on top: about ₪276,730 to ₪297,210. This is the purchase tax, a lawyer at 0.5%-1% plus VAT, an appraiser and a home inspection. It assumes you don't use a broker.\n- Total cash: about ₪1,876,730 to ₪1,897,210, before moving, furnishing, renovation and a reserve.\n\nWhat to do now:\n- Ask 2-3 Israeli banks whether they lend to non-residents. Ask what income and documents they want from abroad, and whether they accept UK income and credit history. Policies differ a lot.\n- Ask for an approval in principle before you search seriously.\n- Hire your own Israeli real-estate lawyer, with a power of attorney if you can't be here to sign. The lawyer should also advise you on tax in the UK and Israel.\n- Plan for currency exchange and for payments in shekels.\n\nThe purchase tax is declared within 30 days and paid within 60 days of signing. The final word on your case belongs to a lawyer and a mortgage adviser. You can read more in [Purchase tax for foreign residents](https:\/\/nad-lan.co.il\/israel-purchase-tax-foreign-residents\/).\n\nIs this home for your own use, for a later move, or partly for renting out? The answer changes the budget and the checks.",
+            "cards": [
+                {
+                    "kind": "tax",
+                    "data": {
+                        "price": 3200000,
+                        "track": "foreign",
+                        "tax": 256000,
+                        "brackets": [
+                            {
+                                "from": 0,
+                                "to": 6055070,
+                                "rate": 0.08,
+                                "tax": 256000
+                            }
+                        ],
+                        "source": "רשות המסים, סימולטור מס רכישה ועמוד המדרגות",
+                        "source_url": "https:\/\/www.gov.il\/he\/service\/real_eatate_taxsimulator",
+                        "checked": "2026-10-26",
+                        "valid_until": "2027-02-10"
+                    },
+                    "link": "\/israel-purchase-tax-foreign-residents\/"
+                },
+                {
+                    "kind": "costs",
+                    "data": {
+                        "price": 3200000,
+                        "track": "foreign",
+                        "purchase_tax": 256000,
+                        "lawyer_with_vat": [
+                            18880,
+                            37760
+                        ],
+                        "appraiser": [
+                            350,
+                            950
+                        ],
+                        "home_inspection": [
+                            1500,
+                            2500
+                        ],
+                        "broker_with_vat": 0,
+                        "max_ltv": 0.5,
+                        "max_loan": 1600000,
+                        "equity_for_price": 1600000,
+                        "costs_on_top": [
+                            276730,
+                            297210
+                        ],
+                        "cash_needed": [
+                            1876730,
+                            1897210
+                        ],
+                        "checked": "2026-10-21",
+                        "source": "מס רכישה: רשות המסים; שיעור המימון: בנק ישראל (הוראה 329); טווחי שכר טרחה, שמאי ובדק בית: סקירת שוק, 2026-10-21"
+                    },
+                    "link": "\/apartment-purchase-cost-calculator\/"
+                }
+            ],
+            "stage": 1,
+            "handoff": false,
+            "next": [
+                "How do banks assess income from abroad?",
+                "Do I need a power of attorney?"
+            ],
+            "usage": {
+                "in": 17024,
+                "out": 781,
+                "cost": 0.01114
+            }
+        }
+    }
+]

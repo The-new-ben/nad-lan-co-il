@@ -1,0 +1,431 @@
+
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExpertAdvisor 107</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>body{margin:0;background:#fff;font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;color:#3E4C58}
+.site{border-bottom:1px solid #D3DCE2;padding:12px 20px;font:600 15px/1 "IBM Plex Sans Hebrew",sans-serif;color:#12202A;display:flex;justify-content:space-between}
+.site small{font:400 12px/1 "IBM Plex Mono",monospace;color:#5E6A75}
+.wrapx{max-width:1120px;margin:0 auto;padding:20px 16px 40px}
+h1{font:600 30px/1.2 "IBM Plex Sans Hebrew",sans-serif;color:#12202A;margin:6px 0 12px}
+.hero p{font-size:16.5px;line-height:1.7;margin:0 0 12px;max-width:72ch}
+.cta{display:inline-block;background:#1F4B5C;color:#fff;padding:12px 18px;border-radius:6px;font-weight:600;margin:4px 0 6px}
+.next h2{font:600 22px/1.3 "IBM Plex Sans Hebrew",sans-serif;color:#1F4B5C;margin:8px 0 8px}.next p{margin:0;line-height:1.7}
+.note{font:400 12px/1.4 "IBM Plex Mono",monospace;color:#5E6A75;margin:0 0 10px}</style>
+<style>/* NadLan real-estate advisor 0.1.1 (HAD-680, 7.11.2026): the section inside the page, never floating. Design system NadLan
+   Instruments (https://claude.ai/artifact/ATybPAavyDEkAzH7cdg1bB): ground #F6F8F9, ink #12202A, sea #2F6F86, sea-deep #1F4B5C,
+   survey #C42550 (the one deciding figure of an answer), Karantina for the Hebrew display, IBM Plex Sans Hebrew for reading,
+   IBM Plex Mono for every figure. The look is a surveyor's working sheet: a title block (who answers, what it knows, the
+   numbers' sources), the stages of a deal as a numbered track, the conversation as entries ruled like a field log, results as
+   readout cells. Borders, not shadows. Scoped to #nladv with id specificity (and !important where the theme forces heading
+   colours and the guide forces paragraph sizes: the CSS cascade hazard). */
+html body #nladv{--a-ground:#F6F8F9;--a-surface:#FFFFFF;--a-ink:#12202A;--a-ink2:#3E4C58;--a-mute:#5E6A75;--a-line:#D3DCE2;
+  --a-sea:#2F6F86;--a-sea-deep:#1F4B5C;--a-on-sea:#FFFFFF;--a-survey:#C42550;--a-civic:#8E7CC3;--a-open:#4F9A5C;--a-housing:#F2D15A;
+  --a-display:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--a-sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;
+  --a-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  display:block;clear:both;margin:28px 0 36px;padding:20px 16px 18px;background:var(--a-ground);border:1px solid var(--a-line);
+  border-radius:6px;font-family:var(--a-sans);color:var(--a-ink2);text-align:start;box-sizing:border-box;max-width:100%}
+html body #nladv[hidden]{display:none!important}
+/* 0.1.1: inside a page grid (the project page's .nlps-page is two columns) the section spans the whole row */
+html body #nladv{grid-column:1 / -1;width:auto;min-width:0}
+html body #nladv.nladv--en{--a-display:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;--a-sans:"IBM Plex Sans",system-ui,sans-serif}
+html body #nladv *,html body #nladv *::before,html body #nladv *::after{box-sizing:border-box}
+html body #nladv [hidden]{display:none!important}
+html body #nladv p,html body #nladv li,html body #nladv dd,html body #nladv dt,html body #nladv label,html body #nladv summary{font-family:var(--a-sans)!important;margin:0;letter-spacing:0}
+@media (min-width:900px){html body #nladv{padding:32px 32px 28px}}
+
+/* the head */
+html body #nladv .nladv__kick{font:500 13px/1.4 var(--a-sans)!important;color:var(--a-sea)!important;margin:0 0 6px}
+html body #nladv .nladv__title{font:700 46px/0.95 var(--a-display)!important;color:var(--a-ink)!important;margin:0 0 10px!important;padding:0!important;border:0!important;background:none!important}
+html body #nladv.nladv--en .nladv__title{font:600 34px/1.05 var(--a-display)!important}
+@media (min-width:900px){html body #nladv .nladv__title{font-size:60px!important}html body #nladv.nladv--en .nladv__title{font-size:42px!important}}
+html body #nladv .nladv__sub{font-size:16px!important;line-height:1.6!important;color:var(--a-ink2)!important;max-width:62ch;margin:0 0 18px}
+
+/* the grid: the title block on the start side, the conversation beside it */
+html body #nladv .nladv__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:900px){html body #nladv .nladv__grid{grid-template-columns:290px minmax(0,1fr);gap:24px;align-items:start}}
+
+/* the title block */
+html body #nladv .nladv__file{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:0;overflow:hidden}
+html body #nladv .nladv__tb{margin:0;display:grid;grid-template-columns:1fr 1fr}
+html body #nladv .nladv__tb>div{padding:10px 12px;border-bottom:1px solid var(--a-line)}
+html body #nladv .nladv__tb>div:nth-child(odd){border-inline-end:1px solid var(--a-line)}
+html body #nladv .nladv__tb>div:nth-child(2){grid-column:1/-1;border-inline-end:0;order:3}
+html body #nladv .nladv__tb>div:nth-child(1){order:1}html body #nladv .nladv__tb>div:nth-child(3){order:4}html body #nladv .nladv__tb>div:nth-child(4){order:2;border-inline-end:0}
+@media (min-width:900px){html body #nladv .nladv__tb{grid-template-columns:1fr}html body #nladv .nladv__tb>div{border-inline-end:0!important;grid-column:auto!important;order:0!important}}
+html body #nladv .nladv__tb dt{font:500 12px/1.3 var(--a-sans)!important;color:var(--a-mute)!important;margin:0 0 3px}
+html body #nladv .nladv__tb dd{font-size:14px!important;line-height:1.45!important;color:var(--a-ink)!important;margin:0}
+
+/* the stages of a deal */
+html body #nladv .nladv__track{list-style:none;margin:0;padding:10px 12px;display:flex;flex-wrap:wrap;gap:6px 8px;border-bottom:1px solid var(--a-line)}
+@media (min-width:900px){html body #nladv .nladv__track{flex-direction:column;gap:0;padding:6px 0}}
+html body #nladv .nladv__track li{display:flex;align-items:center;gap:7px;font-size:13.5px!important;line-height:1.3!important;color:var(--a-mute)!important;padding:0;margin:0!important}
+@media (min-width:900px){html body #nladv .nladv__track li{padding:6px 12px;font-size:14px!important}}
+html body #nladv .nladv__track li::before,html body #nladv .nladv__track li::marker{content:none}
+html body #nladv .nladv__n{display:inline-grid;place-items:center;min-width:22px;height:22px;border:1px solid var(--a-line);border-radius:2px;font:500 12px/1 var(--a-mono);color:var(--a-ink2);background:var(--a-surface)}
+html body #nladv .nladv__track li.is-past{color:var(--a-sea-deep)!important}
+html body #nladv .nladv__track li.is-past .nladv__n{border-color:var(--a-sea);color:var(--a-sea)}
+html body #nladv .nladv__track li.is-now{color:var(--a-ink)!important;font-weight:600}
+html body #nladv .nladv__track li.is-now .nladv__n{background:var(--a-sea);border-color:var(--a-sea);color:var(--a-on-sea)}
+
+/* what it does not do */
+html body #nladv .nladv__not{padding:10px 12px}
+html body #nladv .nladv__not summary{cursor:pointer;font-size:14px!important;font-weight:600;color:var(--a-ink)!important;min-height:28px;display:flex;align-items:center}
+html body #nladv .nladv__not ul{margin:8px 0 2px;padding:0;list-style:none}
+html body #nladv .nladv__not li{position:relative;padding-inline-start:16px;font-size:13.5px!important;line-height:1.5!important;color:var(--a-ink2)!important;margin:0 0 4px!important}
+html body #nladv .nladv__not li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:7px;height:1.5px;background:var(--a-ink2)}
+
+/* the conversation */
+html body #nladv .nladv__main{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:14px 14px 12px;min-width:0}
+@media (min-width:900px){html body #nladv .nladv__main{padding:22px 24px 18px}}
+html body #nladv .nladv__log{display:flex;flex-direction:column;gap:0}
+html body #nladv .nladv__log:empty{display:none}
+html body #nladv .nladv__msg{padding:12px 0;border-bottom:1px dashed var(--a-line)}
+html body #nladv .nladv__msg:first-child{padding-top:0}
+html body #nladv .nladv__who{font:500 12px/1.3 var(--a-sans)!important;color:var(--a-mute)!important;margin:0 0 6px!important}
+html body #nladv .nladv__msg--a .nladv__who{color:var(--a-sea)!important}
+html body #nladv .nladv__msg--u{align-self:flex-end;max-width:88%;border-bottom:0;padding:10px 0 4px}
+html body #nladv .nladv__msg--u .nladv__body{background:var(--a-ground);border:1px solid var(--a-line);border-radius:6px;padding:9px 13px}
+html body #nladv .nladv__msg--u .nladv__who{text-align:end}
+html body #nladv .nladv__body p,html body #nladv .nladv__body li{font-size:16px!important;line-height:1.65!important;color:var(--a-ink)!important}
+html body #nladv .nladv__body p+p,html body #nladv .nladv__body p+ul,html body #nladv .nladv__body ul+p,html body #nladv .nladv__body p+ol,html body #nladv .nladv__body ol+p{margin-top:8px!important}
+html body #nladv .nladv__body ul,html body #nladv .nladv__body ol{margin:4px 0 0!important;padding:0!important;list-style:none!important}
+html body #nladv .nladv__body li{position:relative;padding-inline-start:18px!important;margin:0 0 5px!important}
+html body #nladv .nladv__body ul>li::before{content:"";position:absolute;inset-inline-start:3px;top:.7em;width:6px;height:6px;background:var(--a-sea)}
+html body #nladv .nladv__body ol{counter-reset:nla}
+html body #nladv .nladv__body ol>li{counter-increment:nla}
+html body #nladv .nladv__body ol>li::before{content:counter(nla);position:absolute;inset-inline-start:0;top:.15em;font:500 12px/1.4 var(--a-mono);color:var(--a-sea)}
+html body #nladv .nladv__body strong{color:var(--a-ink);font-weight:600}
+html body #nladv .nladv__body a,html body #nladv .nladv__card a,html body #nladv .nladv__consent a{color:var(--a-sea)!important;text-decoration:underline!important;text-underline-offset:3px;font-weight:500}
+html body #nladv bdi{font-family:var(--a-mono);font-size:.94em}
+
+/* the readout cells under an answer */
+html body #nladv .nladv__cards{display:grid;gap:10px;margin-top:12px}
+@media (min-width:640px){html body #nladv .nladv__cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
+html body #nladv .nladv__card{background:var(--a-surface);border:1px solid var(--a-line);border-radius:6px;padding:12px 14px}
+html body #nladv .nladv__card-k{font:600 12.5px/1.35 var(--a-sans)!important;color:var(--a-sea)!important;margin:0 0 6px!important}
+html body #nladv .nladv__fig{font:500 28px/1.15 var(--a-mono)!important;color:var(--a-ink)!important;margin:0 0 10px!important}
+html body #nladv .nladv__fig>span{border-bottom:2px solid var(--a-survey);padding-bottom:1px}
+html body #nladv .nladv__fig small{display:block;font:400 14px/1.4 var(--a-sans);color:var(--a-mute);margin:4px 0 0}
+html body #nladv .nladv__fig small bdi{font-size:14px;color:var(--a-ink2)}
+html body #nladv .nladv__rows{margin:0 0 8px;padding:0;list-style:none}
+html body #nladv .nladv__rows li{display:flex;justify-content:space-between;gap:10px;padding:5px 0!important;border-top:1px solid var(--a-line);font-size:13.5px!important;line-height:1.35!important;color:var(--a-ink2)!important;margin:0!important}
+html body #nladv .nladv__rows li::before{content:none!important}
+html body #nladv .nladv__rows b{font-weight:500;color:var(--a-ink);white-space:nowrap;text-align:end}
+html body #nladv .nladv__rows span{min-width:0}
+html body #nladv .nladv__bar{display:flex;height:8px;border-radius:2px;overflow:hidden;background:var(--a-ground);margin:2px 0 8px}
+html body #nladv .nladv__bar i{display:block;height:100%}
+html body #nladv .nladv__src{font:400 12px/1.5 var(--a-sans)!important;color:var(--a-mute)!important}
+
+/* thinking */
+html body #nladv .nladv__busy{display:flex;align-items:center;gap:8px;padding:12px 0;font:500 12.5px/1 var(--a-mono);color:var(--a-sea)}
+html body #nladv .nladv__busy i{width:6px;height:6px;background:var(--a-sea);animation:nladvb 1s infinite ease-in-out}
+html body #nladv .nladv__busy i:nth-child(3){animation-delay:.15s}html body #nladv .nladv__busy i:nth-child(4){animation-delay:.3s}
+@keyframes nladvb{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){html body #nladv .nladv__busy i{animation:none;opacity:.7}}
+
+/* suggestions */
+html body #nladv .nladv__chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 12px}
+html body #nladv .nladv__chip{min-height:44px;padding:8px 14px;border:1px solid var(--a-line);border-radius:999px;background:var(--a-surface);color:var(--a-ink2);font:500 14px/1.3 var(--a-sans);cursor:pointer;text-align:start}
+html body #nladv .nladv__chip:hover{border-color:var(--a-sea);color:var(--a-sea-deep)}
+
+/* the question */
+html body #nladv .nladv__ask{margin:0}
+html body #nladv .nladv__lbl{display:block;font:500 13px/1.3 var(--a-sans)!important;color:var(--a-ink2)!important;margin:0 0 6px!important}
+html body #nladv .nladv__row{display:flex;gap:8px;align-items:stretch}
+html body #nladv textarea{flex:1;min-width:0;min-height:56px;max-height:180px;resize:vertical;padding:12px 12px;border:1px solid #9AA8B3;border-radius:2px;background:var(--a-surface);color:var(--a-ink);font:400 16px/1.5 var(--a-sans);margin:0}
+html body #nladv textarea::placeholder{color:var(--a-mute)}
+html body #nladv .nladv__send,html body #nladv .nladv__go{min-height:48px;min-width:76px;padding:0 18px;border:0;border-radius:6px;background:var(--a-sea);color:var(--a-on-sea);font:600 16px/1 var(--a-sans);cursor:pointer}
+html body #nladv .nladv__send:hover,html body #nladv .nladv__go:hover{background:var(--a-sea-deep)}
+html body #nladv .nladv__send[disabled],html body #nladv .nladv__go[disabled]{opacity:.55;cursor:default}
+html body #nladv textarea:focus-visible,html body #nladv input:focus-visible,html body #nladv button:focus-visible,html body #nladv summary:focus-visible,html body #nladv a:focus-visible{outline:2px solid var(--a-sea);outline-offset:2px}
+html body #nladv .nladv__priv{font-size:12.5px!important;line-height:1.5!important;color:var(--a-mute)!important;margin:8px 0 0!important}
+
+/* a person from the team */
+html body #nladv .nladv__open{margin:12px 0 0;min-height:44px;padding:0 16px;border:1px solid var(--a-sea);border-radius:6px;background:var(--a-surface);color:var(--a-sea-deep);font:600 15px/1 var(--a-sans);cursor:pointer}
+html body #nladv .nladv__hand{margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--a-line)}
+html body #nladv .nladv__hand-t{font-size:17px!important;font-weight:600;color:var(--a-ink)!important;margin:0 0 10px!important}
+html body #nladv .nladv__fields{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){html body #nladv .nladv__fields{grid-template-columns:repeat(3,minmax(0,1fr))}}
+html body #nladv .nladv__fields label{display:grid;gap:4px;font-size:13px!important;color:var(--a-ink2)!important}
+html body #nladv .nladv__fields input{min-height:46px;padding:0 12px;border:1px solid #9AA8B3;border-radius:2px;background:var(--a-surface);color:var(--a-ink);font:400 16px/1.2 var(--a-sans);margin:0;width:100%}
+html body #nladv .nladv__hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+html body #nladv .nladv__consent{font-size:12.5px!important;line-height:1.55!important;color:var(--a-ink2)!important;margin:10px 0 8px!important}
+html body #nladv .nladv__agree{display:flex;align-items:center;gap:8px;min-height:44px;font-size:14.5px!important;color:var(--a-ink)!important;cursor:pointer}
+html body #nladv .nladv__agree input{width:20px;height:20px;margin:0;accent-color:var(--a-sea)}
+html body #nladv .nladv__go{background:var(--a-sea-deep);margin-top:6px}
+html body #nladv .nladv__done{font-size:15px!important;color:var(--a-ink)!important;margin:10px 0 0!important}
+html body #nladv .nladv__err{font-size:14px!important;color:var(--a-survey)!important;margin:6px 0 0!important}
+</style>
+</head>
+<body>
+<div class="site"><span>נדל״ן · nad-lan.co.il</span><small>390px · phone</small></div>
+<div class="wrapx"><h1>קניית דירה בישראל: מדריך בדיקות לפני חתימה</h1>
+<div class="entry-content"><div class="nadlan-guide"><section class="hero wrap"><div><p>קניית דירה בישראל היא אחת ההחלטות הכלכליות הגדולות ביותר למשפחה, לזוג צעיר או למשקיע. המחיר שמופיע במודעה הוא רק נקודת פתיחה.</p><span class="cta">בדיקת עלות כוללת</span></div></section>
+<div class="next"><h2>לפני שמתחילים לראות דירות</h2><p>המדריך ממשיך כאן, מתחת ליועץ, בלי שינוי.</p></div></div></div></div>
+<section id="nladv" class="nladv nladv--he" dir="rtl" lang="he" data-nosnippet aria-labelledby="nladv-t"><header class="nladv__head"><p class="nladv__kick">יועץ ממוחשב · ידע של 40 שנה בנדל״ן הישראלי</p><h2 class="nladv__title" id="nladv-t">שאלו את יועץ הנדל״ן</h2><p class="nladv__sub">שאלה על הדירה, על המחיר, על הבדיקות או על המשכנתא: תשובה ישירה, עם המספרים והמקור שלהם, ומה עושים עכשיו.</p></header><div class="nladv__grid"><aside class="nladv__file"><dl class="nladv__tb"><div><dt>מי עונה</dt><dd>יועץ ממוחשב. לא אדם ולא מתווך.</dd></div><div><dt>מה הוא יודע</dt><dd>יד שנייה ודירה מקבלן, משכנתא, מסים, בדיקות לפני חתימה, השכרה, התחדשות עירונית וקנייה מחו״ל</dd></div><div><dt>מספרים</dt><dd>רשות המסים ובנק ישראל, עם התאריך</dd></div><div><dt>עלות</dt><dd>חינם</dd></div></dl><ol class="nladv__track" aria-label="שלבי העסקה"><li data-stage="1"><span class="nladv__n">1</span>תקציב</li><li data-stage="2"><span class="nladv__n">2</span>משכנתא</li><li data-stage="3"><span class="nladv__n">3</span>בחירה</li><li data-stage="4"><span class="nladv__n">4</span>בדיקות</li><li data-stage="5"><span class="nladv__n">5</span>משא ומתן</li><li data-stage="6"><span class="nladv__n">6</span>חוזה</li><li data-stage="7"><span class="nladv__n">7</span>מסירה</li></ol><details class="nladv__not"><summary>מה היועץ לא עושה</summary><ul><li>לא מתווך, לא מתאם ביקורים ולא מנהל משא ומתן בשמכם</li><li>לא אומר לכם איזו דירה לקנות</li><li>לא מחליף עורך דין, שמאי או יועץ משכנתאות</li><li>לא ממציא מחירים או דירות פנויות</li></ul></details></aside><div class="nladv__main"><div class="nladv__log" id="nladv-log" aria-live="polite"></div><div class="nladv__chips" id="nladv-chips"><button type="button" class="nladv__chip">כמה מס רכישה על דירה יחידה ב-2.5 מיליון?</button><button type="button" class="nladv__chip">מה בודקים בנסח טאבו לפני שחותמים?</button><button type="button" class="nladv__chip">איך מתמקחים על דירה יד שנייה?</button></div><form class="nladv__ask" id="nladv-ask" novalidate><label class="nladv__lbl" for="nladv-q">השאלה שלכם</label><div class="nladv__row"><textarea id="nladv-q" rows="2" maxlength="1200" placeholder="לדוגמה: כמה מס רכישה על דירה יחידה ב-2.5 מיליון?"></textarea><button type="submit" class="nladv__send">שאלו</button></div><p class="nladv__priv">עונה תוכנה של בינה מלאכותית, לא אדם. מידע כללי, לא ייעוץ משפטי, מיסויי או פיננסי. השאלות עוברות לעיבוד אצל ספק חיצוני ולא נשמרות באתר. אל תכתבו מספר זהות או פרטי חשבון.</p></form><form class="nladv__hand" id="nladv-hand" hidden novalidate><p class="nladv__hand-t">רוצים שאדם מצוות נדל״ן יחזור אליכם?</p><div class="nladv__fields"><label><span>שם</span><input name="name" autocomplete="name" required maxlength="80"></label><label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" dir="ltr"></label><label><span>אימייל (לא חובה)</span><input name="email" type="email" autocomplete="email" maxlength="120" dir="ltr"></label><input name="company" class="nladv__hp" tabindex="-1" autocomplete="off" aria-hidden="true"></div><p class="nladv__consent" id="nladv-consent">מסירת הפרטים היא לפי רצונכם, ובלי פרטים לא נוכל לחזור אליכם. הפרטים ותקציר קצר של השיחה נשמרים אצל נדל״ן (nad-lan.co.il, info@nad-lan.co.il) רק כדי לחזור אליכם בעניין שביקשתם, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי שתבקשו. אפשר לבקש לעיין בפרטים, לתקן אותם או למחוק אותם. <a href="https://nad-lan.co.il/privacy/">מדיניות הפרטיות</a></p><label class="nladv__agree"><input type="checkbox" name="consent" required aria-describedby="nladv-consent"> <span>מסכימים</span></label><button type="submit" class="nladv__go">שלחו לצוות</button><p class="nladv__done" hidden></p></form><button type="button" class="nladv__open" id="nladv-open">לשיחה עם אדם</button></div></div><script type="application/json" id="nladv-str">{"err":"היועץ לא הצליח לענות כרגע. נסו שוב בעוד דקה.","busy":"היועץ חושב","you":"אתם","adv":"היועץ","thanks":"תודה. צוות נדל״ן יחזור אליכם.","cap":"היועץ הגיע למכסת היום. השאירו פרטים והצוות יחזור אליכם.","consent":"מסירת הפרטים היא לפי רצונכם, ובלי פרטים לא נוכל לחזור אליכם. הפרטים ותקציר קצר של השיחה נשמרים אצל נדל״ן (nad-lan.co.il, info@nad-lan.co.il) רק כדי לחזור אליכם בעניין שביקשתם, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי שתבקשו. אפשר לבקש לעיין בפרטים, לתקן אותם או למחוק אותם."}</script></section>
+<script>
+window.NL_ADV_CFG={"endpoint": "/wp-json/nadlan/v1/advisor", "lead": "/wp-json/nadlan/v1/lead", "page": 9, "tok": "xxxxxxxxxxxxxxxxxxxxxxxx", "lang": "he", "kind": "guide", "title": "קניית דירה בישראל: מדריך בדיקות לפני חתימה", "v": "0.1.0"};
+(function(){var R=[{"answer": "מס הרכישה על דירה יחידה במחיר ₪2,500,000 הוא ₪20,538. סך המזומן הנדרש הוא בערך ₪662,000 עד ₪678,000, ללא מתווך.\n\nהפירוט:\n- הון עצמי לדירה: ₪625,000. הבנק מממן עד 75%, כלומר משכנתא של עד ₪1,875,000.\n- עלויות נוספות: ₪37,138 עד ₪53,488. הן כוללות את מס הרכישה, עורך דין (₪14,750 עד ₪29,500 כולל מע״מ), שמאי (₪350 עד ₪950) ובדק בית (₪1,500 עד ₪2,500).\n- אם תשלמו למתווך, בדרך כלל 2% + מע״מ, הסכום יתווסף.\n- הסכומים האלה לא כוללים שיפוץ, הובלה, ריהוט וקרן שמורה לבלתי צפוי. כדאי להוסיף להם כרית.\n\nמה עושים עכשיו:\n- בדקו שההון העצמי מכסה את הסכום, כולל כרית לשיפוץ והובלה.\n- בקשו אישור עקרוני מכמה בנקים לפני שמתחייבים. מספיקים שלושה להשוואה.\n- אל תחתמו על זיכרון דברים בלי עורך דין מקרקעין משלכם. הוא יבדוק נסח טאבו, היתר וחריגות בנייה.\n- הכי נכון להשוות את המחיר לעסקאות אמיתיות ברחוב, לא למחיר המבוקש. אפשר להיעזר ב[הערכת שווי דירה לפי עסקאות](https://nad-lan.co.il/property-value-estimator/).\n\nהדירה תהיה היחידה שלכם, אז החישוב הוא לפי מסלול דירה יחידה. את הסכום הסופי יאשר עורך הדין.\n\nכמה הון עצמי יש לכם כרגע, ומה ההכנסה החודשית נטו? כך נבדוק אם ההחזר החודשי נוח.", "cards": [{"kind": "tax", "data": {"price": 2500000, "track": "single", "tax": 20538, "brackets": [{"from": 0, "to": 1978745, "rate": 0, "tax": 0}, {"from": 1978745, "to": 2347040, "rate": 0.035, "tax": 12890}, {"from": 2347040, "to": 6055070, "rate": 0.05, "tax": 7648}], "source": "רשות המסים, סימולטור מס רכישה ועמוד המדרגות", "source_url": "https://www.gov.il/he/service/real_eatate_taxsimulator", "checked": "2026-10-26", "valid_until": "2028-01-15"}, "link": "/purchase-tax-calculator/"}, {"kind": "costs", "data": {"price": 2500000, "track": "single", "purchase_tax": 20538, "lawyer_with_vat": [14750, 29500], "appraiser": [350, 950], "home_inspection": [1500, 2500], "broker_with_vat": 0, "max_ltv": 0.75, "max_loan": 1875000, "equity_for_price": 625000, "costs_on_top": [37138, 53488], "cash_needed": [662138, 678488], "checked": "2026-10-21", "source": "מס רכישה: רשות המסים; שיעור המימון: בנק ישראל (הוראה 329); טווחי שכר טרחה, שמאי ובדק בית: סקירת שוק, 2026-10-21"}, "link": "/apartment-purchase-cost-calculator/"}], "stage": 1, "handoff": false, "next": ["כמה יהיה ההחזר החודשי על המשכנתא?", "מה בודקים לפני שחותמים על דירה יד שנייה?"], "usage": {"in": 25784, "out": 967, "cost": 0.01406}, "ok": true}, {"answer": "אני לא מתווך. אני יועץ נדל״ן מבוסס בינה מלאכותית, והאתר מפרסם מידע בלבד. לכן אני לא מתאם ביקורים, לא פונה למוכר ולא מגיש הצעות בשם אף אחד. את ההצעה וההחלטה אתם מקבלים בעצמכם, ואני יכול לעזור לכם להתכונן.\n\nמה עושים עכשיו:\n- בדקו עסקאות אמיתיות ברחוב ובבניינים סמוכים, לא מחירים מבוקשים. זה מה שמצדיק כל מספר שתציעו, ואפשר להיעזר ב[הערכת שווי דירה לפי עסקאות](https://nad-lan.co.il/property-value-estimator/).\n- קבעו מראש מחיר מקסימלי שמעליו אתם הולכים, ואל תראו למוכר שהתאהבתם.\n- בקשו מהמוכר נסח טאבו והיתר, ובצעו בדק בית. ליקויים או חריגות בנייה הם נימוק עובדתי להורדת מחיר.\n- נסו להבין את מצב המוכר בשאלות: למה הוא מוכר, ומה לוח הזמנים שלו.\n- כל מספר שתציעו צריך נימוק, וכל מה שהוסכם נכנס לטיוטה של עורך הדין שלכם. אל תחתמו על זיכרון דברים בלי עורך דין מקרקעין משלכם.\n\nהצעה של ₪2,300,000 היא ירידה של 8% מהמחיר המבוקש. אם תרצו, אחשב לכם את מס הרכישה ואת העלות הכוללת במחיר הזה. אם אתם רוצים שמישהו מצוות NadLan יחזור אליכם, השאירו פרטים בטופס מתחת לשיחה.\n\nעל איזה בסיס אתם חושבים על ₪2,300,000, יש לכם עסקאות להשוואה?", "cards": [], "stage": 5, "handoff": false, "next": ["חשב עלות כוללת ב-2,300,000 ₪", "איך מוצאים עסקאות אמיתיות ברחוב?"], "usage": {"in": 13359, "out": 783, "cost": 0.01096}, "ok": true}],Q=["מצאתי דירת 4 חדרים יד שנייה ב-2,500,000 ₪. זו תהיה הדירה היחידה שלי. כמה מס רכישה וכמה כסף צריך בסך הכל?", "אתה מתווך? תוכל לתאם לי ביקור ולהציע למוכר 2.3 מיליון?"],i=0;var of=window.fetch;
+window.fetch=function(u,o){if(String(u).indexOf('/advisor')>-1){var r=R[Math.min(i++,R.length-1)];return new Promise(function(res){setTimeout(function(){res({json:function(){return Promise.resolve(r)}})},350)})}
+if(String(u).indexOf('/lead')>-1){return Promise.resolve({status:200,json:function(){return Promise.resolve({ok:true,lead_id:1})}})}return of.apply(this,arguments)};
+window.addEventListener('load',function(){var k=0;function go(){if(k>=Q.length){var b=document.getElementById('nladv-open');if(b&&!b.hidden)b.click(); return}window.NL_ADV.send(Q[k++]);setTimeout(go,900)}setTimeout(go,200)})})();
+</script>
+<script>/* NadLan real-estate advisor 0.1.2 (HAD-680, 7.11.2026; 0.1.1: starts when the page is ready, so the order of the footer never matters;
+   0.1.2: the English guide's own wrapper (.nlint, after its opening paragraph) and never above the page's opening; figures only in bdi). Runs only where inc/expert-advisor.php printed the section
+   (?advisor=on on a listed page). It moves the section to its place in the reading order (after the guide's opening, or
+   after the project's map), sends the conversation to POST /wp-json/nadlan/v1/advisor, draws the answer, the readout
+   cells and the deal stage, and posts the "talk to a person" form to the site's existing lead route /wp-json/nadlan/v1/lead
+   (source expert_advisor, with the visit id of the visit trail when there is one). The conversation lives in this page only:
+   nothing is kept in the browser's storage. No floating element, nothing fixed on the screen. */
+(function (w, d) {
+  'use strict';
+  var VERSION = '0.1.2';
+  function boot() {
+  var cfg = w.NL_ADV_CFG || null;
+  var root = d.getElementById('nladv');
+  if (!cfg || !root || w.NL_ADV) return;
+  var S = {};
+  try { S = JSON.parse((d.getElementById('nladv-str') || {}).textContent || '{}'); } catch (e) { S = {}; }
+  var EN = cfg.lang === 'en';
+  var log = d.getElementById('nladv-log');
+  var chips = d.getElementById('nladv-chips');
+  var ask = d.getElementById('nladv-ask');
+  var q = d.getElementById('nladv-q');
+  var hand = d.getElementById('nladv-hand');
+  var openBtn = d.getElementById('nladv-open');
+  var msgs = [];
+  var busy = false;
+  var answered = 0;
+
+  /* ---------------------------------------------------------------- the place in the page */
+  function place() {
+    var spots = cfg.kind === 'project'
+      ? [['section.nlpjx-map', 'after'], ['.nlps-below', 'after'], ['.nlps-stagebox', 'after'], ['.entry-content', 'append']]
+      : [['.nadlan-guide > section.hero', 'after'], ['.nadlan-guide section.hero', 'after'], ['.nlint > p.lede', 'after'], ['.entry-content h1 + p', 'after'],
+         ['.entry-content h1 ~ p', 'after'], ['.entry-content > p', 'after'], ['.entry-content', 'append'], ['main', 'append']]; // never above the page's opening
+    for (var i = 0; i < spots.length; i++) {
+      var el = d.querySelector(spots[i][0]);
+      if (!el) continue;
+      if (spots[i][1] === 'after') el.parentNode.insertBefore(root, el.nextSibling);
+      else if (spots[i][1] === 'append') el.appendChild(root);
+      else el.insertBefore(root, el.firstChild);
+      root.setAttribute('data-spot', spots[i][0]);
+      break;
+    }
+    root.hidden = false;
+  }
+
+  /* ---------------------------------------------------------------- safe text */
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+  function okHref(u) {
+    u = String(u || '').trim();
+    if (/^\/(?!\/)/.test(u)) return u;
+    if (/^https:\/\/([a-z0-9-]+\.)*(nad-lan\.co\.il|gov\.il|boi\.org\.il|cbs\.gov\.il|kolzchut\.org\.il|nevo\.co\.il)(\/|$)/i.test(u)) return u;
+    return '';
+  }
+  function inline(s) {
+    var t = esc(s);
+    t = t.replace(/\[([^\]]{1,120})\]\(([^)\s]{1,400})\)/g, function (m, label, href) {
+      var h = okHref(href.replace(/&amp;/g, '&'));
+      if (!h) return label;
+      var ext = !/^https:\/\/([a-z0-9-]+\.)*nad-lan\.co\.il/i.test(h) && h.charAt(0) !== '/';
+      return '<a href="' + esc(h) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+    });
+    t = t.replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/(₪\s?[\d,.]*\d|[\d][\d,.]*\s?(?:₪|%))/g, '<bdi>$1</bdi>'); // figures only: a Hebrew word never takes the figure face
+    return t;
+  }
+  /** a small, safe subset: paragraphs, bullet and numbered lists, bold, links to the site and official sites */
+  function render(md) {
+    var lines = String(md || '').replace(/\r/g, '').split('\n');
+    var out = [], list = null, para = [];
+    function flushP() { if (para.length) { out.push('<p>' + para.map(inline).join('<br>') + '</p>'); para = []; } }
+    function flushL() { if (list) { out.push('<' + list.t + '>' + list.items.map(function (x) { return '<li>' + inline(x) + '</li>'; }).join('') + '</' + list.t + '>'); list = null; } }
+    lines.forEach(function (raw) {
+      var l = raw.replace(/^#{1,6}\s+/, '').trim();
+      var b = /^[-*•]\s+(.*)$/.exec(l), n = /^\d{1,2}[.)]\s+(.*)$/.exec(l);
+      if (!l) { flushP(); flushL(); return; }
+      if (b || n) {
+        flushP();
+        var t = b ? 'ul' : 'ol';
+        if (!list || list.t !== t) { flushL(); list = { t: t, items: [] }; }
+        list.items.push((b || n)[1]);
+        return;
+      }
+      flushL();
+      para.push(l);
+    });
+    flushP(); flushL();
+    return out.join('');
+  }
+
+  /* ---------------------------------------------------------------- figures */
+  function ils(n) { return '₪' + Math.round(Number(n) || 0).toLocaleString('en-US'); }
+  function pct(r) { return (Math.round(Number(r) * 10000) / 100) + '%'; }
+  function dmy(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || '')); return m ? (+m[3]) + '.' + (+m[2]) + '.' + m[1] : String(iso || ''); }
+  function ym(iso) { var m = /^(\d{4})-(\d{2})/.exec(String(iso || '')); return m ? (+m[2]) + '.' + m[1] : String(iso || ''); }
+  var TRACK = EN ? { single: 'only home', extra: 'additional home', oleh: 'new immigrant', foreign: 'foreign resident' }
+    : { single: 'דירה יחידה', extra: 'דירה נוספת', oleh: 'עולה חדש', foreign: 'תושב חוץ' };
+  /** a row: the label (plain words, figures already wrapped) and its value; a range keeps reading order with "עד" / "to" */
+  function row(k, v) { return '<li><span>' + k + '</span><b>' + v + '</b></li>'; }
+  function fig(n) { return '<bdi>' + ils(n) + '</bdi>'; }
+  function span(a, b) { return fig(a) + (EN ? ' to ' : ' עד ') + fig(b); }
+  function more(link) {
+    var h = okHref(link);
+    return h ? ' · <a href="' + esc(h) + '">' + (EN ? 'Full calculator' : 'לחישוב המלא') + '</a>' : '';
+  }
+  function card(c) {
+    var x = c && c.data ? c.data : null;
+    if (!x) return '';
+    var h = '';
+    if (c.kind === 'tax') {
+      h += '<p class="nladv__card-k">' + (EN ? 'Purchase tax · ' : 'מס רכישה · ') + esc(TRACK[x.track] || x.track) + ' · ' + ils(x.price) + '</p>';
+      h += '<p class="nladv__fig"><span>' + fig(x.tax) + '</span></p><ul class="nladv__rows">';
+      (x.brackets || []).forEach(function (b) {
+        var lab = b.to === null ? (EN ? 'above ' : 'מעל ') + fig(b.from) : (b.from ? span(b.from, b.to) : (EN ? 'up to ' : 'עד ') + fig(b.to));
+        h += row('<bdi>' + pct(b.rate) + '</bdi> · ' + lab, fig(b.tax));
+      });
+      h += '</ul><p class="nladv__src">' + (EN ? 'Source: Israel Tax Authority brackets, valid until ' : 'מקור: מדרגות רשות המסים, בתוקף עד ') + esc(dmy(x.valid_until)) + more(c.link) + '</p>';
+    } else if (c.kind === 'mortgage') {
+      h += '<p class="nladv__card-k">' + (EN ? 'Monthly payment · ' : 'החזר חודשי · ') + ils(x.loan) + (EN ? ' over ' : ' ל-') + esc(x.years) + (EN ? ' years' : ' שנים') + '</p>';
+      h += '<p class="nladv__fig"><span>' + fig(x.monthly) + '</span><small>' + (EN ? 'a month' : 'בחודש') + '</small></p><ul class="nladv__rows">';
+      h += row(esc(EN ? 'Rate used' : 'הריבית בחישוב') + (x.rate_is_market_average ? esc(EN ? ' (BoI average, fixed unlinked)' : ' (ממוצע, קבועה לא צמודה)') : ''), '<bdi>' + esc(x.rate_used) + '%</bdi>');
+      h += row(esc(EN ? 'Total repaid' : 'סך כל ההחזרים'), fig(x.total_paid));
+      if (x.prime) h += row(esc(EN ? 'Prime today' : 'הפריים היום'), '<bdi>' + esc(x.prime) + '%</bdi>');
+      h += '</ul><p class="nladv__src">' + (EN ? 'Source: Bank of Israel, average new mortgage rates ' : 'מקור: בנק ישראל, ריביות המשכנתאות הממוצעות ') + esc(ym(x.market_month)) + more(c.link) + '</p>';
+    } else if (c.kind === 'costs') {
+      var lo = x.cash_needed[0], hi = x.cash_needed[1];
+      h += '<p class="nladv__card-k">' + (EN ? 'Cash needed · ' : 'כמה כסף צריך · ') + esc(TRACK[x.track] || x.track) + ' · ' + ils(x.price) + '</p>';
+      h += '<p class="nladv__fig"><span>' + fig(lo) + '</span><small>' + (EN ? 'to ' : 'עד ') + fig(hi) + '</small></p>';
+      var share = Math.max(2, Math.min(60, (x.costs_on_top[1] / Math.max(1, x.equity_for_price + x.costs_on_top[1])) * 100));
+      h += '<div class="nladv__bar" aria-hidden="true"><i style="width:' + (100 - share) + '%;background:var(--a-open)"></i><i style="width:' + share + '%;background:var(--a-civic)"></i></div><ul class="nladv__rows">';
+      h += row(esc(EN ? 'Equity for the price' : 'הון עצמי למחיר') + ' (<bdi>' + Math.round((1 - x.max_ltv) * 100) + '%</bdi>)', fig(x.equity_for_price));
+      h += row(esc(EN ? 'Purchase tax' : 'מס רכישה'), fig(x.purchase_tax));
+      h += row(esc(EN ? 'Lawyer incl. VAT' : 'עורך דין כולל מע״מ'), span(x.lawyer_with_vat[0], x.lawyer_with_vat[1]));
+      h += row(esc(EN ? 'Appraiser and inspection' : 'שמאי ובדק בית'), span(x.appraiser[0] + x.home_inspection[0], x.appraiser[1] + x.home_inspection[1]));
+      if (x.broker_with_vat) h += row(esc(EN ? 'Broker incl. VAT' : 'תיווך כולל מע״מ'), fig(x.broker_with_vat));
+      h += '</ul><p class="nladv__src">' + (EN ? 'Sources: Tax Authority, Bank of Israel directive 329, fee survey ' : 'מקורות: רשות המסים, הוראה 329 של בנק ישראל, סקירת שכר טרחה ') + esc(dmy(x.checked)) + more(c.link) + '</p>';
+    }
+    return h ? '<div class="nladv__card">' + h + '</div>' : '';
+  }
+
+  /* ---------------------------------------------------------------- the log */
+  function now() { var t = new Date(); return ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2); }
+  function add(role, html, extra) {
+    var el = d.createElement('div');
+    el.className = 'nladv__msg nladv__msg--' + (role === 'user' ? 'u' : 'a');
+    el.innerHTML = '<p class="nladv__who">' + esc(role === 'user' ? (S.you || '') : (S.adv || '')) + ' · ' + now() + '</p><div class="nladv__body">' + html + '</div>' + (extra || '');
+    log.appendChild(el);
+    return el;
+  }
+  function stage(n) {
+    n = Number(n) || 0;
+    if (!n) return;
+    Array.prototype.forEach.call(root.querySelectorAll('.nladv__track li'), function (li) {
+      var k = Number(li.getAttribute('data-stage'));
+      li.classList.toggle('is-now', k === n);
+      li.classList.toggle('is-past', k < n);
+    });
+  }
+  function setChips(list) {
+    if (!list || !list.length) return;
+    chips.innerHTML = list.map(function (t) { return '<button type="button" class="nladv__chip">' + esc(t) + '</button>'; }).join('');
+  }
+  function showHand() { hand.hidden = false; openBtn.hidden = true; }
+
+  function send(text) {
+    text = String(text || '').trim();
+    if (!text || busy) return;
+    busy = true;
+    var btn = ask.querySelector('.nladv__send');
+    btn.disabled = true;
+    add('user', '<p>' + esc(text).replace(/\n/g, '<br>') + '</p>');
+    msgs.push({ role: 'user', content: text.slice(0, 1200) });
+    q.value = '';
+    var wait = d.createElement('div');
+    wait.className = 'nladv__busy';
+    wait.innerHTML = '<span>' + esc(S.busy || '') + '</span><i></i><i></i><i></i>';
+    log.appendChild(wait);
+    var body = JSON.stringify({ page: cfg.page, tok: cfg.tok, lang: cfg.lang, messages: msgs.slice(-16) });
+    w.fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, credentials: 'same-origin' })
+      .then(function (r) { return r.json().catch(function () { return { ok: false, code: 'http_' + r.status }; }); })
+      .then(function (j) {
+        wait.remove();
+        if (!j || !j.ok) {
+          msgs.pop();
+          var cap = j && (j.code === 'nladv_cap');
+          add('assistant', '<p class="nladv__err">' + esc(cap ? S.cap : S.err) + '</p>');
+          if (cap) showHand();
+          return;
+        }
+        answered++;
+        msgs.push({ role: 'assistant', content: String(j.answer).slice(0, 4000) });
+        var cards = (j.cards || []).map(card).join('');
+        add('assistant', render(j.answer), cards ? '<div class="nladv__cards">' + cards + '</div>' : '');
+        stage(j.stage);
+        setChips(j.next);
+        if (j.handoff) showHand(); else if (answered >= 1 && hand.hidden) openBtn.hidden = false;
+      })
+      .catch(function () { wait.remove(); msgs.pop(); add('assistant', '<p class="nladv__err">' + esc(S.err) + '</p>'); })
+      .then(function () { busy = false; btn.disabled = false; });
+  }
+
+  /* ---------------------------------------------------------------- the team's form: the site's existing lead route */
+  function visitId() {
+    try {
+      var o = JSON.parse(w.localStorage.getItem('nl_vid') || 'null');
+      if (o && /^[A-Za-z0-9_-]{16,32}$/.test(String(o.id))) return String(o.id);
+    } catch (e) { /* no storage */ }
+    return '';
+  }
+  function summary() {
+    var lines = [(EN ? 'Conversation with the NadLan advisor on: ' : 'שיחה עם יועץ הנדל״ן בעמוד: ') + cfg.title + ' (' + w.location.pathname + ')'];
+    msgs.forEach(function (m) { if (m.role === 'user') lines.push((EN ? 'Q: ' : 'שאלה: ') + m.content.slice(0, 220)); });
+    var last = msgs.filter(function (m) { return m.role === 'assistant'; }).pop();
+    if (last) lines.push((EN ? 'Last answer: ' : 'תשובה אחרונה: ') + last.content.replace(/\s+/g, ' ').slice(0, 420));
+    return lines.join('\n').slice(0, 1500);
+  }
+  hand.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = hand.elements, go = hand.querySelector('.nladv__go'), done = hand.querySelector('.nladv__done');
+    var name = String(f.name.value || '').trim(), phone = String(f.phone.value || '').replace(/[^\d+]/g, ''), email = String(f.email.value || '').trim();
+    var bad = !name ? f.name : (phone.replace(/\D/g, '').length < 9 ? f.phone : (!f.consent.checked ? f.consent : null));
+    if (bad) { bad.focus(); bad.setAttribute('aria-invalid', 'true'); return; }
+    go.disabled = true;
+    var h = { 'Content-Type': 'application/json' }, vid = visitId();
+    if (vid) h['X-NL-Visit'] = vid;
+    var payload = { name: name, phone: phone, email: email, goal: EN ? 'NadLan advisor' : 'יועץ הנדל״ן', message: summary(), source: 'expert_advisor',
+      consent: 1, consent_text: S.consent || '', company: f.company.value || '' };
+    if (cfg.kind === 'project') { payload.project_title = cfg.title; payload.project_wp_id = cfg.page; }
+    w.fetch(cfg.lead, { method: 'POST', headers: h, body: JSON.stringify(payload), credentials: 'same-origin' })
+      .then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }).catch(function () { return { s: r.status, j: null }; }); })
+      .then(function (x) {
+        if (x.s >= 200 && x.s < 300 && x.j && (x.j.ok || x.j.lead_id)) {
+          Array.prototype.forEach.call(hand.querySelectorAll('.nladv__fields,.nladv__consent,.nladv__agree,.nladv__go'), function (el) { el.hidden = true; });
+          done.textContent = S.thanks || ''; done.hidden = false;
+        } else { done.textContent = S.err || ''; done.hidden = false; go.disabled = false; }
+      })
+      .catch(function () { done.textContent = S.err || ''; done.hidden = false; go.disabled = false; });
+  });
+
+  /* ---------------------------------------------------------------- wiring */
+  ask.addEventListener('submit', function (e) { e.preventDefault(); send(q.value); });
+  q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); send(q.value); } });
+  chips.addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('.nladv__chip') : null; if (b) send(b.textContent); });
+  openBtn.hidden = true;
+  openBtn.addEventListener('click', function () { showHand(); var i = hand.querySelector('input[name="name"]'); if (i) i.focus(); });
+  place();
+  w.NL_ADV = { version: VERSION, send: send, render: render, card: card };
+  }
+  /* 1.72.603 printed the script before the section, so it found nothing: now it waits for the page when the section is not there yet */
+  if (d.getElementById('nladv') || d.readyState !== 'loading') boot(); else d.addEventListener('DOMContentLoaded', boot);
+})(window, document);
+</script>
+</body>
+</html>
