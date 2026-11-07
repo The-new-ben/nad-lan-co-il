@@ -71,7 +71,44 @@
   function pubLabel(k) { return 'אמצע ' + monLabel(addM(k, 3)); }
   function qLabel(q) { var m = qMonths(q), a = ym(m[0]), b = ym(m[m.length - 1]); return HM[a[1] - 1] + ' עד ' + HM[b[1] - 1] + ' ' + a[0]; }
   function qShort(q) { var p = String(q).split('.'); return 'רבעון ' + ({ '1-3': 1, '4-6': 2, '7-9': 3, '10-12': 4 }[p[0]] || p[0]) + ' ' + p[1]; }
-  window.NLPH = { HM: HM, addM: addM, mIndex: mIndex, lastKey: lastKey, at: at, cpiDeal: cpiDeal, chg: chg, realChg: realChg, hpiAt: hpiAt, window: window_,
+  /* months of the official average wage per apartment (gross monthly wage; null without a wage) */
+  function salaries(price, wage) { return price && wage && wage.v ? price / wage.v : null; }
+  /* the city x rooms table as CSV rows: a source line, a header row, then the country and the 24 cities (raw numbers, % with 1 decimal) */
+  function csvRows(D, today) {
+    var R = [['3', '3 חדרים'], ['4', '4 חדרים'], ['5', '5 חדרים'], ['a', 'כל הדירות']], p = function (x) { return x == null ? '' : (100 * x).toFixed(1); };
+    var head = ['עיר'];
+    R.forEach(function (r) { head.push('חציון ' + r[1] + ' (₪)', 'רבעון ' + r[1], 'שינוי בשנה ' + r[1] + ' (%)', 'מתחילת 2021 ' + r[1] + ' (%)', 'מתחילת 2021 אחרי אינפלציה ' + r[1] + ' (%)'); });
+    if (D.wage) head.push('משכורות ממוצעות לדירת 4 חדרים');
+    var src = 'מחירי דירות לפי עיר וחדרים: חציון העסקאות שדווחו לרשות המסים (אתר הנדל״ן הממשלתי, קובץ ' + D.vsrc.version + ', נקרא ' + D.vsrc.read + '); אחרי אינפלציה לפי מדד המחירים לצרכן של הלמ״ס' +
+      (D.wage ? '; שכר ממוצע ' + D.wage.v + ' ₪ (הביטוח הלאומי, סעיף 1, מ־' + D.wage.from + ')' : '') + '; החישובים: nad-lan.co.il/apartment-prices/' + (today ? ', ' + today : '');
+    var rows = [[src], head];
+    [{ n: 'כל הארץ', r3: D.il.r3, r4: D.il.r4, r5: D.il.r5, ra: D.il.ra }].concat(D.city).forEach(function (c) {
+      var row = [c.n];
+      R.forEach(function (r) { var s = cityStat(c[r[0] === 'a' ? 'ra' : 'r' + r[0]], D.q, D.cpi); row.push(s ? s.v : '', s ? s.q : '', p(s && s.yoy), p(s && s.since), p(s && s.real)); });
+      if (D.wage) { var s4 = cityStat(c.r4, D.q, D.cpi); row.push(s4 ? salaries(s4.v, D.wage).toFixed(0) : ''); }
+      rows.push(row);
+    });
+    return rows;
+  }
+  function toCSV(rows) { return '﻿' + rows.map(function (r) { return r.map(function (v) { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\r\n') + '\r\n'; }
+  /* the map: an equirectangular projection of a lat/lon box into a W x H frame (north up, cos(lat) for the east-west scale) */
+  function proj(box, W, H, pad) {
+    var k = Math.cos((box.s + box.n) / 2 * Math.PI / 180), dx = (box.e - box.w) * k, dy = box.n - box.s, s = Math.min((W - 2 * pad.x) / dx, (H - 2 * pad.y) / dy);
+    var ox = (W - dx * s) / 2, oy = (H - dy * s) / 2;
+    return function (lat, lon) { return [ox + (lon - box.w) * k * s, oy + (box.n - lat) * s]; };
+  }
+  /* callout labels in two gutters (west = left, east = right): sorted by height, pushed apart to at least `gap`, kept inside 0..H */
+  function callouts(pts, H, gap, split) {
+    var out = [];
+    ['L', 'R'].forEach(function (side) {
+      var g = pts.filter(function (p) { return (p.lon < split) === (side === 'L'); }).map(function (p) { return { id: p.id, x: p.x, y: p.y, side: side, ly: p.y }; }).sort(function (a, b) { return a.y - b.y; });
+      for (var i = 0; i < g.length; i++) { g[i].ly = Math.max(gap / 2 + 2, i ? Math.max(g[i].ly, g[i - 1].ly + gap) : g[i].ly); }
+      for (var j = g.length - 1; j >= 0; j--) { var lim = j === g.length - 1 ? H - gap / 2 - 2 : g[j + 1].ly - gap; if (g[j].ly > lim) g[j].ly = lim; }
+      out = out.concat(g);
+    });
+    return out;
+  }
+  window.NLPH = { HM: HM, addM: addM, salaries: salaries, csvRows: csvRows, toCSV: toCSV, proj: proj, callouts: callouts, mIndex: mIndex, lastKey: lastKey, at: at, cpiDeal: cpiDeal, chg: chg, realChg: realChg, hpiAt: hpiAt, window: window_,
     qMonths: qMonths, qEnd: qEnd, cpiQ: cpiQ, lastIdx: lastIdx, cityStat: cityStat, rentAt: rentAt, ef2nom: ef2nom, pmt: pmt, payment: payment,
     ptax: ptax, grossYield: grossYield, vatIn: vatIn, monLabel: monLabel, dealLabel: dealLabel, pubLabel: pubLabel, qLabel: qLabel, qShort: qShort };
   if (!window.NadLanInstruments || typeof document === 'undefined') return;

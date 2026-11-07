@@ -124,6 +124,27 @@ t('anatomy: the Bank of Israel quotes are kept verbatim', A.src.boi13.q.length =
 t('anatomy: developer margin carries no number', A.dev.find(g => g.id === 'rest').sub.find(s => s.he === 'רווח היזם') && !A.dev.find(g => g.id === 'rest').sub.find(s => s.he === 'רווח היזם').rule);
 t('anatomy: facts sourced (prime, Reichman)', srcOk(A.facts.prime.src) && srcOk(A.facts.runi.src) && A.facts.prime.v === BM.policy.prime);
 
+/* ---- phase 2: salaries per apartment, CSV, the map ---- */
+t('wage: the NII average wage with its date and URL', D.wage && D.wage.v > 8000 && /^\d{4}-\d{2}-\d{2}$/.test(D.wage.from) && /^https:\/\/www\.btl\.gov\.il\//.test(D.wage.url) && D.wage.read, D.wage);
+t('salaries = price / monthly wage', near(P.salaries(2028800, D.wage), 2028800 / D.wage.v) && P.salaries(1, null) === null && P.salaries(0, D.wage) === null);
+const rows = P.csvRows(D, '8.11.2026');
+t('CSV: a source line, a header row, the country and 24 cities', rows.length === 27 && rows[0].length === 1 && rows[0][0].indexOf(D.vsrc.version) > -1 && rows[0][0].indexOf(String(D.wage.v)) > -1 && rows[1][0] === 'עיר' && rows[2][0] === 'כל הארץ');
+t('CSV: 4 room groups x 5 columns + salaries', rows[1].length === 22 && rows.slice(2).every(r => r.length === 22));
+const taRow = rows.find(r => r[0] === 'תל אביב יפו'), i4 = rows[1].indexOf('חציון 4 חדרים (₪)');
+t('CSV: Tel Aviv 4 rooms = the table median and change', taRow[i4] === 5229800 && taRow[i4 + 1] === '1-3.2026' && taRow[i4 + 2] === (100 * sTA.yoy).toFixed(1) && taRow[21] === (5229800 / D.wage.v).toFixed(0));
+const csv = P.toCSV([['a,b', 'c"d', 'e'], [1, null, 'x\ny']]);
+t('toCSV: BOM, quoting, CRLF', csv === '﻿"a,b","c""d",e\r\n1,,"x\ny"\r\n');
+t('map: every city has a point inside Israel', D.city.every(c => c.ll && c.ll[0] > 29.4 && c.ll[0] < 33.4 && c.ll[1] > 34.2 && c.ll[1] < 35.95));
+t('map: Tel Aviv where it is (ITM -> WGS84)', near(ta.ll[0], 32.088, 0.02) && near(ta.ll[1], 34.783, 0.02));
+t('map: land polygons from Natural Earth', D.map && D.map.land.length >= 2 && D.map.land.every(p => p.length > 8) && /naturalearthdata/.test(D.map.src.url));
+const pr = P.proj({ s: 29.45, n: 33.35, w: 34.2, e: 35.95 }, 360, 560, { x: 92, y: 14 }), q1 = pr(33.35, 34.2), q2 = pr(29.45, 35.95);
+t('proj: the box fits the frame inside its padding', q1[1] >= 13.9 && q2[1] <= 546.1 && q1[0] >= 91.9 && q2[0] <= 268.1, [q1, q2]);
+const CB = { s: 31.85, n: 32.34, w: 34.68, e: 34.98 }, prc = P.proj(CB, 360, 560, { x: 92, y: 14 });
+const cpts = D.city.filter(c => c.ll[0] >= CB.s && c.ll[0] <= CB.n && c.ll[1] >= CB.w && c.ll[1] <= CB.e).map(c => { const q = prc(c.ll[0], c.ll[1]); return { id: c.n, x: q[0], y: q[1], lon: c.ll[1] }; });
+const lab = P.callouts(cpts, 560, 32, 34.81);
+const clash = ['L', 'R'].some(sd => { const g = lab.filter(l => l.side === sd).sort((a, b) => a.ly - b.ly); return g.some((l, i) => i && l.ly - g[i - 1].ly < 31.99); });
+t('callouts: the centre cities (' + cpts.length + ') never overlap and stay in the frame', cpts.length >= 15 && lab.length === cpts.length && !clash && lab.every(l => l.ly >= 15 && l.ly <= 545), lab.map(l => Math.round(l.ly)));
+
 /* ---- the server summaries (PHP, inc/instruments.php) print the same numbers as the tools (JS) ---- */
 try {
   const os = require('os'), cp = require('child_process'), tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'phub-'));

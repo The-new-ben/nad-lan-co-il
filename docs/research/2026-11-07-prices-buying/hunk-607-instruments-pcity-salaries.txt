@@ -1,0 +1,13 @@
+1.72.607, inc/instruments.php (LIVE text, apply in the runner's PX loop): the pcity summary gains the salaries sentence.
+Anchor found exactly once in the 1.72.606 file; php -l clean on a temp copy (8.11.2026). Not applied to the repo file.
+
+=== OLD ===
+' ₪ בחודש (החישוב שלנו).</p>';
+			}
+
+			if ( 'panatomy' === $id ) {
+=== NEW ===
+' ₪ בחודש (החישוב שלנו).' . ( ! empty( $D['wage']['v'] ) ? ' דירת 4 חדרים בחציון הארצי שווה ' . number_format( $n4['v'] / $D['wage']['v'] ) . ' משכורות ממוצעות של ' . number_format( $D['wage']['v'] ) . ' ₪ ברוטו (הביטוח הלאומי, השכר הממוצע לפי סעיף 1, מ־' . esc_html( $dt( $D['wage']['from'] ) ) . ').' : '' ) . '</p>';
+			}
+
+			if ( 'panatomy' === $id ) {

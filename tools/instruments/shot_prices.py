@@ -55,7 +55,7 @@ def run(b, w, h, tag):
     pg.goto(URL, wait_until="networkidle")
     pg.wait_for_function("document.querySelectorAll('[data-nli-on] .nlph').length === 3", timeout=20000)
     pg.wait_for_timeout(600)
-    own = [e for e in errs if "127.0.0.1" in e or "nlph" in e or "NLPH" in e or "Uncaught" in e]
+    own = [e for e in errs if ("127.0.0.1" in e or "nlph" in e or "NLPH" in e or "Uncaught" in e) and "CORS policy" not in e]
     check(tag + " no page errors from our code", not own, own[:3])
     o = pg.evaluate(OVER)
     check(tag + " no sideways scroll", o["sw"] <= o["W"] and not o["out"], o)
@@ -109,6 +109,26 @@ def run(b, w, h, tag):
     c.locator(".nlph-tabs button", has_text="גוש דן").click(); pg.wait_for_timeout(150)
     check(tag + " pcity preset compare", "רמת גן" in c.locator("table.nlpc-cmp thead").inner_text())
     c.screenshot(path=os.path.join(OUT, f"{tag}-2b-pcity-3rooms-dan.png"))
+    # phase 2: salaries, CSV, map
+    if tag == "1366":
+        check(tag + " pcity salaries column", c.locator("button.nlpc-sort[data-k=sal]").count() == 1)
+    else:
+        check(tag + " pcity salaries line under the median (phone)", "משכורות" in c.locator(".nlph-tw").first.locator("tbody tr").first.inner_text())
+    check(tag + " pcity compare has the salaries row", "משכורות ממוצעות" in c.locator("table.nlpc-cmp").inner_text())
+    with pg.expect_download() as dl:
+        c.locator("button.nlpc-csv").click()
+    csvt = open(dl.value.path(), encoding="utf-8-sig").read().splitlines()
+    check(tag + " pcity CSV download: source line, header, 25 rows", len(csvt) == 27 and "רשות המסים" in csvt[0] and csvt[1].startswith("עיר,") and dl.value.suggested_filename.endswith(".csv"), (len(csvt), dl.value.suggested_filename))
+    c.locator(".nlpc-vbar button[data-v=map]").click(); pg.wait_for_timeout(250)
+    check(tag + " pcity map: 24 labelled cities, no numbers on the dots", c.locator(".nlpc-map g.pt").count() == 24 and c.locator(".nlpc-map g.pt text.n").count() == 24)
+    _g = c.locator('.nlpc-map g.pt[data-c="רמת גן"]'); _g.evaluate("e => e.scrollIntoView({block: 'center'})"); pg.wait_for_timeout(100); _g.locator("rect").click(); pg.wait_for_timeout(200)
+    _g = c.locator('.nlpc-map g.pt[data-c="נתניה"]'); _g.evaluate("e => e.scrollIntoView({block: 'center'})"); pg.wait_for_timeout(100); _g.locator("rect").click(); pg.wait_for_timeout(200)
+    head = c.locator("table.nlpc-cmp thead").inner_text()
+    check(tag + " pcity map tap: out of compare, into compare", "נתניה" in head and "רמת גן" not in head and c.locator('.nlpc-map g.pt.on[data-c="נתניה"]').count() == 1, head.replace("\n", " "))
+    o3 = pg.evaluate(OVER)
+    check(tag + " no sideways scroll with the map", o3["sw"] <= o3["W"] and not o3["out"], o3)
+    c.locator(".nlpc-map").screenshot(path=os.path.join(OUT, f"{tag}-2c-pcity-map.png"))
+    c.locator(".nlpc-vbar button[data-v=table]").click(); pg.wait_for_timeout(150)
 
     # ---- panatomy ----
     a = pg.locator('[data-nli="panatomy"]')

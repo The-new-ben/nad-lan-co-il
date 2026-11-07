@@ -47,7 +47,20 @@
       'html body .nli .nlph table.nlpc-cmp tbody th{font:400 13px/18px var(--nli-sans) !important;color:var(--nli-ink2) !important;min-width:96px}',
       'html body .nli .nlph table.nlpc-cmp tr.grp th,html body .nli .nlph table.nlpc-cmp tr.grp td{border-top:2px solid var(--nli-ink) !important}',
       '@media (max-width:600px){html body .nli .nlph table.nlpc-cmp th,html body .nli .nlph table.nlpc-cmp td{padding:7px 4px !important;font-size:12.5px !important}html body .nli .nlph table.nlpc-cmp tbody th{min-width:0;width:30%}}',
-      '.nlpc-scroll{max-height:none}'
+      '.nlpc-scroll{max-height:none}',
+      '.nlpc-vbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:0 0 10px}',
+      'html body .nli button.nlpc-csv{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1px solid var(--nli-sea);border-radius:2px;background:var(--nli-surface);color:var(--nli-sea);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}',
+      '.nlpc-csv svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6}',
+      '.nlpc-mps{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}@media (min-width:760px){.nlpc-mps{grid-template-columns:repeat(2,minmax(0,1fr))}}',
+      '.nlpc-mp{margin:0;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);background:#EAF1F4;padding:8px 6px 4px;min-width:0}',
+      '.nlpc-mp figcaption{font:600 13px/18px var(--nli-sans);color:var(--nli-ink);padding:0 6px 4px}',
+      '.nlpc-mp svg{display:block;width:100%;height:auto}',
+      '.nlpc-mp .land{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:.8}.nlpc-mp .box{fill:none;stroke:var(--nli-sea);stroke-width:1.4;stroke-dasharray:4 3}',
+      '.nlpc-mp g.pt{cursor:pointer;outline:none}.nlpc-mp g.pt line{stroke:#7F929E;stroke-width:1}.nlpc-mp g.pt circle{fill:var(--nli-ink)}',
+      '.nlpc-mp g.pt rect{fill:#FFFFFF;stroke:#B9C7D0;stroke-width:1}.nlpc-mp g.pt text{text-anchor:start;direction:rtl}',
+      '.nlpc-mp g.pt text.n{font:600 12.5px var(--nli-sans);fill:var(--nli-ink)}.nlpc-mp g.pt text.v{font:500 11.5px var(--nli-mono);fill:var(--nli-ink2)}',
+      '.nlpc-mp g.pt.on rect{fill:var(--nli-sea);stroke:var(--nli-sea)}.nlpc-mp g.pt.on text{fill:#FFFFFF}.nlpc-mp g.pt.on circle{fill:var(--nli-sea)}',
+      '.nlpc-mp g.pt:hover rect,.nlpc-mp g.pt:focus rect{stroke:var(--nli-ink);stroke-width:1.6}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -61,7 +74,7 @@
       root.innerHTML = '';
       var byN = {}; D.city.forEach(function (c) { byN[c.n] = c; }); byN[NAT] = { n: NAT, slug: null, dist: '', r3: D.il.r3, r4: D.il.r4, r5: D.il.r5, ra: D.il.ra, rent: D.il.rent, nat: true };
       var dists = []; D.city.forEach(function (c) { if (dists.indexOf(c.dist) < 0) dists.push(c.dist); });
-      var st = { rooms: /^[345]$/.test(String(set.rooms)) ? String(set.rooms) : '4', sk: 'v', sd: -1, dist: '', q: '', sel: PRE[0].c.slice() };
+      var st = { uid: Math.random().toString(36).slice(2, 7), rooms: /^[345]$/.test(String(set.rooms)) ? String(set.rooms) : '4', sk: 'v', sd: -1, dist: '', q: '', sel: PRE[0].c.slice() };
       if (set.city && byN[set.city]) { st.sel = [set.city]; PRE[0].c.forEach(function (n) { if (st.sel.length < 3 && st.sel.indexOf(n) < 0) st.sel.push(n); }); }
       var M = D.mort, rk = function () { return st.rooms === 'a' ? 'ra' : 'r' + st.rooms; };
 
@@ -87,7 +100,19 @@
       panel.appendChild(pre);
       var selLine = U.el('p', 'nlpc-sel'); selLine.setAttribute('aria-live', 'polite'); selLine.style.marginTop = '10px'; panel.appendChild(selLine);
       var warn = U.el('p', 'nlpc-warn'); warn.setAttribute('aria-live', 'assertive');
-      var tw = U.el('div', 'nlph-tw'); panel.appendChild(tw); panel.appendChild(warn);
+      var W = D.wage || null, view = 'table';
+      var vbar = U.el('div', 'nlpc-vbar'); var vt = U.el('div', 'nlph-tabs'); vt.setAttribute('role', 'group'); vt.setAttribute('aria-label', 'תצוגה');
+      [['table', 'טבלה'], ['map', 'מפה']].forEach(function (o) { var b = U.el('button', '', esc(o[1])); b.type = 'button'; b.setAttribute('data-v', o[0]); b.setAttribute('aria-pressed', String(o[0] === view));
+        b.addEventListener('click', function () { view = o[0]; [].forEach.call(vt.children, function (z) { z.setAttribute('aria-pressed', String(z === b)); }); tw.hidden = view !== 'table'; mw.hidden = view !== 'map'; if (view === 'map') map(); }); vt.appendChild(b); });
+      var csvb = U.el('button', 'nlpc-csv', '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 16h12"/></svg><span>הורדת הטבלה (CSV)</span>'); csvb.type = 'button';
+      csvb.addEventListener('click', function () {
+        var d = new Date(), t = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear(), blob = new Blob([P.toCSV(P.csvRows(D, t))], { type: 'text/csv;charset=utf-8' });
+        var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'mehirei-dirot-nad-lan-' + D.vsrc.version + '.csv'; document.body.appendChild(a); a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+      });
+      vbar.appendChild(vt); vbar.appendChild(csvb); panel.appendChild(vbar);
+      var tw = U.el('div', 'nlph-tw'); panel.appendChild(tw);
+      var mw = U.el('div', 'nlpc-map'); mw.hidden = true; panel.appendChild(mw); panel.appendChild(warn);
       var cmp = U.el('section', 'nlph-sec'); cmp.id = 'nlpc-cmp-' + Math.random().toString(36).slice(2, 7); panel.appendChild(cmp);
       panel.appendChild(U.el('p', 'nlph-fine', esc('איך לקרוא: חציון הוא המחיר שחצי מהעסקאות ברבעון היו מתחתיו וחצי מעליו, לכל הדירות שנמכרו (חדשות ויד שנייה יחד). רבעון עם מעט עסקאות לא מתפרסם (·), ואז מוצג הרבעון האחרון שכן פורסם. השינוי בשנה משווה לאותו רבעון שנה קודם, כדי שעונות השנה לא יטעו. אחרי אינפלציה: לפי ממוצע מדד המחירים לצרכן ברבעון. החישובים שלנו.')));
       var src = U.el('p', 'nli__src'); src.innerHTML = U.srcs([{ label: D.vsrc.he + ', קובץ ' + D.vsrc.version, url: D.vsrc.url }, { label: D.rsrc.he, url: D.rsrc.url }, { label: M.src.he, url: M.src.url }, { label: M.ltvSrc.he, url: M.ltvSrc.url }, { label: D.cpi.src.he, url: D.cpi.src.url }]);
@@ -106,20 +131,20 @@
         var k = rk(), cq = commonQ(), nat = stat(NAT);
         var list = D.city.filter(function (c) { return (!st.dist || c.dist === st.dist) && (!st.q || c.n.indexOf(st.q) > -1 || short(c.n).indexOf(st.q) > -1); })
           .map(function (c) { return { c: c, s: stat(c.n) }; });
-        var val = function (r) { var s = r.s; if (st.sk === 'n') return r.c.n; if (!s) return null; return st.sk === 'v' ? s.v : s[st.sk]; };
+        var val = function (r) { var s = r.s; if (st.sk === 'n') return r.c.n; if (!s) return null; return st.sk === 'v' || st.sk === 'sal' ? s.v : s[st.sk]; };
         list.sort(function (a, b) { var x = val(a), y = val(b); if (st.sk === 'n') return st.sd * x.localeCompare(y, 'he'); if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1; return st.sd * (x - y); });
         var row = function (c, s, cls) {
           var on = st.sel.indexOf(c.n) > -1, h = href(c), qn = s && s.q !== cq ? '<span class="nlpc-q">' + esc(P.qShort(s.q)) + '</span>' : '';
           return '<tr class="' + (cls || '') + (on ? ' is-sel' : '') + '"><th scope="row"><div class="nlpc-city"><input type="checkbox" value="' + esc(c.n) + '"' + (on ? ' checked' : '') + ' aria-label="' + esc('השוואה: ' + c.n) + '"><span>' +
             (h ? '<a href="' + esc(h) + '">' + esc(short(c.n)) + '</a>' : esc(c.nat ? 'כל הארץ' : short(c.n))) + qn + '</span></div></th>' +
-            '<td class="n">' + (s ? U.k(s.v) : '<span class="nlph-na">·</span>') + '</td><td class="n">' + U.pct(s && s.yoy) + '</td>' +
-            '<td class="n">' + U.pct(s && s.since) + '<span class="nlph-ph nlpc-q">' + (s && s.real != null ? 'ריאלי <bdi>' + U.pctTxt(s.real) + '</bdi>' : '') + '</span></td><td class="n nlph-dk">' + U.pct(s && s.real) + '</td></tr>';
+            '<td class="n">' + (s ? U.k(s.v) : '<span class="nlph-na">·</span>') + (W && s ? '<span class="nlph-ph nlpc-q">' + U.num(P.salaries(s.v, W)) + ' משכורות</span>' : '') + '</td><td class="n">' + U.pct(s && s.yoy) + '</td>' +
+            '<td class="n">' + U.pct(s && s.since) + '<span class="nlph-ph nlpc-q">' + (s && s.real != null ? 'ריאלי <bdi>' + U.pctTxt(s.real) + '</bdi>' : '') + '</span></td><td class="n nlph-dk">' + U.pct(s && s.real) + '</td>' + (W ? '<td class="n nlph-dk">' + (s ? U.num(P.salaries(s.v, W)) : '<span class="nlph-na">·</span>') + '</td>' : '') + '</tr>';
         };
         var th = function (key, label, cls) { var on = st.sk === key; return '<th scope="col" class="' + (cls || 'n') + '"' + (on ? ' aria-sort="' + (st.sd > 0 ? 'ascending' : 'descending') + '"' : '') + '><button type="button" class="nlpc-sort" data-k="' + key + '">' + label + '<i aria-hidden="true">' + (on ? (st.sd > 0 ? '▲' : '▼') : '') + '</i></button></th>'; };
-        tw.innerHTML = '<table class="nlph-t"><caption>' + esc('חציון מחיר העסקה, ' + (st.rooms === 'a' ? 'כל הדירות' : st.rooms + ' חדרים') + ', באלפי ₪. ' + P.qLabel(cq) + ' (רשות המסים, אתר הנדל״ן הממשלתי, קובץ ' + D.vsrc.version + '). ' + list.length + (list.length === 1 ? ' עיר.' : ' ערים.')) + '</caption><thead><tr>' +
-          th('n', 'עיר', '') + th('v', 'חציון') + th('yoy', 'בשנה') + th('since', 'מתחילת 2021') + th('real', 'מתחילת 2021, אחרי אינפלציה', 'n nlph-dk') + '</tr></thead><tbody>' +
+        tw.innerHTML = '<table class="nlph-t"><caption>' + esc('חציון מחיר העסקה, ' + (st.rooms === 'a' ? 'כל הדירות' : st.rooms + ' חדרים') + ', באלפי ₪. ' + P.qLabel(cq) + ' (רשות המסים, אתר הנדל״ן הממשלתי, קובץ ' + D.vsrc.version + ').' + (W ? ' משכורות: המחיר חלקי השכר הממוצע, ' + U.num(W.v) + ' ₪ ברוטו (הביטוח הלאומי, מ' + P.monLabel(W.from.slice(0, 7)) + ').' : '') + ' ' + list.length + (list.length === 1 ? ' עיר.' : ' ערים.')) + '</caption><thead><tr>' +
+          th('n', 'עיר', '') + th('v', 'חציון') + th('yoy', 'בשנה') + th('since', 'מתחילת 2021') + th('real', 'מתחילת 2021, אחרי אינפלציה', 'n nlph-dk') + (W ? th('sal', 'משכורות', 'n nlph-dk') : '') + '</tr></thead><tbody>' +
           row(byN[NAT], nat, 'is-nat') + list.map(function (r) { return row(r.c, r.s); }).join('') + '</tbody></table>';
-        if (!list.length) tw.querySelector('tbody').insertAdjacentHTML('beforeend', '<tr><td colspan="5">' + esc('לא מצאנו עיר בשם הזה. הטבלה כוללת 24 ערים עם מספיק עסקאות.') + '</td></tr>');
+        if (!list.length) tw.querySelector('tbody').insertAdjacentHTML('beforeend', '<tr><td colspan="6">' + esc('לא מצאנו עיר בשם הזה. הטבלה כוללת 24 ערים עם מספיק עסקאות.') + '</td></tr>');
         [].forEach.call(tw.querySelectorAll('button.nlpc-sort'), function (b) { b.addEventListener('click', function () { var k2 = b.getAttribute('data-k'); if (st.sk === k2) st.sd = -st.sd; else { st.sk = k2; st.sd = k2 === 'n' ? 1 : -1; } table(); var nb = tw.querySelector('button[data-k="' + k2 + '"]'); if (nb) nb.focus(); }); });
         [].forEach.call(tw.querySelectorAll('input[type=checkbox]'), function (x) { x.addEventListener('change', function () { toggle(x.value, x.checked); }); });
         marks();
@@ -150,6 +175,7 @@
           tr('תשואה ברוטו בשנה', function (x) { return x.y != null ? '<bdi class="nlph-n">' + (100 * x.y).toFixed(2) + '%</bdi>' : '<span class="nlph-na">·</span>'; }) +
           tr(esc('מקדמה של ' + Math.round(100 * (1 - M.ltv)) + '%, 4 חדרים (אלפי ₪)'), function (x) { return x.s4 ? U.k(x.s4.v * (1 - M.ltv)) : '<span class="nlph-na">·</span>'; }, 'grp') +
           tr('החזר חודשי, 4 חדרים (₪)', function (x) { return x.pay ? '<b>' + U.num(x.pay.pay) + '</b>' : '<span class="nlph-na">·</span>'; }) +
+          (W ? tr(esc('משכורות ממוצעות לדירת 4 חדרים (' + U.num(W.v) + ' ₪ לחודש)'), function (x) { return x.s4 ? U.num(P.salaries(x.s4.v, W)) : '<span class="nlph-na">·</span>'; }) : '') +
           '</tbody></table></div>';
         function x_rooms(s) { return s.rooms === 'a' ? '4 חדרים' : s.rooms + ' חדרים'; }
       }
@@ -158,7 +184,39 @@
         (st.sel.length ? st.sel : [NAT]).forEach(function (n) { var s = stat(n); if (s) t += '\n' + short(n === NAT ? 'כל הארץ' : n) + ': ' + U.num(s.v) + ' ₪' + (s.yoy != null ? ', בשנה ' + U.pctTxt(s.yoy) : ''); });
         return t;
       }
-      function draw() { table(); compare(); }
+      var CENTER = { s: 31.85, n: 32.34, w: 34.68, e: 34.98 }, ALL = { s: 29.45, n: 33.35, w: 34.2, e: 35.95 };
+      function inBox(ll, b) { return ll[0] >= b.s && ll[0] <= b.n && ll[1] >= b.w && ll[1] <= b.e; }
+      function panel_(title, id, box, list, split, extra) {
+        var Wv = 360, Hv = 560, pr = P.proj(box, Wv, Hv, { x: 92, y: 14 }), k = rk();
+        var land = D.map.land.map(function (poly) { return 'M' + poly.map(function (p) { var q = pr(p[1], p[0]); return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'Z'; }).join('');
+        var pts = list.map(function (c) { var q = pr(c.ll[0], c.ll[1]); return { id: c.n, x: q[0], y: q[1], lon: c.ll[1] }; });
+        var L = P.callouts(pts, Hv, 32, split), cid = 'nlpc-clip-' + id + '-' + st.uid;
+        var o = '<figure class="nlpc-mp"><figcaption>' + esc(title) + '</figcaption><svg viewBox="0 0 ' + Wv + ' ' + Hv + '" role="group" aria-label="' + esc(title) + '">' +
+          '<defs><clipPath id="' + cid + '"><rect x="0" y="0" width="' + Wv + '" height="' + Hv + '"/></clipPath></defs><g clip-path="url(#' + cid + ')"><path class="land" d="' + land + '"/></g>' + (extra ? extra(pr) : '');
+        L.forEach(function (l) {
+          var s = stat(l.id, k), on = st.sel.indexOf(l.id) > -1, w = 84, bx = l.side === 'L' ? 4 : Wv - 4 - w, ex = l.side === 'L' ? bx + w : bx;
+          o += '<g class="pt' + (on ? ' on' : '') + '" data-c="' + esc(l.id) + '" tabindex="0" role="button" aria-pressed="' + on + '" aria-label="' + esc(short(l.id) + (s ? ', ' + U.num(s.v) + ' ₪' : '') + ', השוואה') + '">' +
+            '<line x1="' + l.x.toFixed(1) + '" y1="' + l.y.toFixed(1) + '" x2="' + ex.toFixed(1) + '" y2="' + l.ly.toFixed(1) + '"/><circle cx="' + l.x.toFixed(1) + '" cy="' + l.y.toFixed(1) + '" r="3.2"/>' +
+            '<rect x="' + bx.toFixed(1) + '" y="' + (l.ly - 15).toFixed(1) + '" width="' + w + '" height="30" rx="2"/>' +
+            '<text class="n" x="' + (bx + w - 6).toFixed(1) + '" y="' + (l.ly - 2).toFixed(1) + '">' + esc(short(l.id)) + '</text>' +
+            '<text class="v" x="' + (bx + w - 6).toFixed(1) + '" y="' + (l.ly + 11).toFixed(1) + '">' + (s ? U.k(s.v) : '·') + '</text></g>';
+        });
+        return o + '</svg></figure>';
+      }
+      function map() {
+        if (!D.map || !D.map.land) { mw.innerHTML = ''; return; }
+        var cs = D.city.filter(function (c) { return c.ll; }), inC = cs.filter(function (c) { return inBox(c.ll, CENTER); }), out = cs.filter(function (c) { return !inBox(c.ll, CENTER); });
+        var rl = st.rooms === 'a' ? 'כל הדירות' : st.rooms + ' חדרים';
+        mw.innerHTML = '<p class="nlph-sub">' + esc('חציון ' + rl + ' באלפי ₪, ' + P.qLabel(commonQ()) + '. לחיצה על עיר מוסיפה אותה להשוואה או מוציאה ממנה.') + '</p><div class="nlpc-mps">' +
+          panel_('גוש דן, השרון והשפלה', 'c', CENTER, inC, 34.81) +
+          panel_('כל הארץ', 'a', ALL, out, 34.9, function (pr) { var a = pr(CENTER.n, CENTER.w), b = pr(CENTER.s, CENTER.e); return '<rect class="box" x="' + a[0].toFixed(1) + '" y="' + a[1].toFixed(1) + '" width="' + (b[0] - a[0]).toFixed(1) + '" height="' + (b[1] - a[1]).toFixed(1) + '"/>'; }) +
+          '</div><p class="nlph-fine">' + esc(D.map.src.he + '.') + '</p>';
+        [].forEach.call(mw.querySelectorAll('g.pt'), function (g) {
+          var go = function () { var n = g.getAttribute('data-c'); toggle(n, st.sel.indexOf(n) < 0); map(); var f = mw.querySelector('g.pt[data-c="' + n + '"]'); if (f && f.focus) f.focus({ preventScroll: true }); };
+          g.addEventListener('click', go); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+      }
+      function draw() { table(); compare(); if (view === 'map') map(); }
       draw();
     }
   });

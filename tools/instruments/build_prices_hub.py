@@ -16,6 +16,7 @@ Label of the dwelling index: CBS publishes it for two-month periods; the API mon
 the 15th of M+3 (checked: 2026-07 = -0.6% = "July and August 2026", published 15.10.2026; our post /cbs-dwelling-july-august-2026/).
 """
 import io
+import re
 import json
 import os
 import sys
@@ -94,6 +95,79 @@ def cpi_since_1994(cpi10):
     return [round(cpi10[k] if k in cpi10 else out[k] * s, 4) for k in keys], keys[0], keys[-1], round(100 * spread, 4)
 
 
+def itm_to_wgs(x, y):
+    """Israeli Transverse Mercator (EPSG:2039, GRS80) -> (lat, lon), Snyder's inverse; good to about a metre (the Helmert shift to
+    WGS84, under 10 m, is left out: the map draws whole cities at about 1 px per 300 m)."""
+    import math
+    a, f = 6378137.0, 1 / 298.257222101
+    e2 = f * (2 - f); ep2 = e2 / (1 - e2); k0 = 1.0000067
+    lat0, lon0 = math.radians(31.7343936111111), math.radians(35.2045169444444)
+    fe, fn = 219529.584, 626907.390
+
+    def mlen(p):
+        return a * ((1 - e2 / 4 - 3 * e2 ** 2 / 64 - 5 * e2 ** 3 / 256) * p - (3 * e2 / 8 + 3 * e2 ** 2 / 32 + 45 * e2 ** 3 / 1024) * math.sin(2 * p)
+                    + (15 * e2 ** 2 / 256 + 45 * e2 ** 3 / 1024) * math.sin(4 * p) - (35 * e2 ** 3 / 3072) * math.sin(6 * p))
+    m = mlen(lat0) + (y - fn) / k0
+    mu = m / (a * (1 - e2 / 4 - 3 * e2 ** 2 / 64 - 5 * e2 ** 3 / 256))
+    e1 = (1 - math.sqrt(1 - e2)) / (1 + math.sqrt(1 - e2))
+    p1 = mu + (3 * e1 / 2 - 27 * e1 ** 3 / 32) * math.sin(2 * mu) + (21 * e1 ** 2 / 16 - 55 * e1 ** 4 / 32) * math.sin(4 * mu) + (151 * e1 ** 3 / 96) * math.sin(6 * mu)
+    c1, t1 = ep2 * math.cos(p1) ** 2, math.tan(p1) ** 2
+    n1 = a / math.sqrt(1 - e2 * math.sin(p1) ** 2); r1 = a * (1 - e2) / (1 - e2 * math.sin(p1) ** 2) ** 1.5
+    d = (x - fe) / (n1 * k0)
+    lat = p1 - (n1 * math.tan(p1) / r1) * (d ** 2 / 2 - (5 + 3 * t1 + 10 * c1 - 4 * c1 ** 2 - 9 * ep2) * d ** 4 / 24
+                                            + (61 + 90 * t1 + 298 * c1 + 45 * t1 ** 2 - 252 * ep2 - 3 * c1 ** 2) * d ** 6 / 720)
+    lon = lon0 + (d - (1 + 2 * t1 + c1) * d ** 3 / 6 + (5 - 2 * c1 + 28 * t1 - 3 * c1 ** 2 + 8 * ep2 + 24 * t1 ** 2) * d ** 5 / 120) / math.cos(p1)
+    return round(math.degrees(lat), 4), round(math.degrees(lon), 4)
+
+
+NII_WAGE = "https://www.btl.gov.il/Mediniyut/GeneralData/Pages/%d7%a9%d7%9b%d7%a8%20%d7%9e%d7%9e%d7%95%d7%a6%d7%a2.aspx"
+NE50 = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
+
+
+def fetch_wage():
+    """The average wage of section 1 of the National Insurance Law (the first row of the NII table: from date, monthly ILS). None when
+    the page cannot be read or parsed: then the tools leave the salaries column out."""
+    import html as H
+    try:
+        s = urllib.request.urlopen(urllib.request.Request(NII_WAGE, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130"}), timeout=60).read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print("wage: the NII page could not be read:", e)
+        return None
+    t = H.unescape(s[s.find("<table"):]); t = t.replace("​", "")
+    t = re.sub(r"<[^>]+>", "|", t); t = re.sub(r"(\s*\|\s*)+", "|", t)
+    m = re.search(r"\|(\d{1,2})\.(\d{2})\.(\d{4})\|([\d,]{5,7})\|", t)
+    if not m or "לפי סעיף 1" not in t:
+        print("wage: the NII table did not parse")
+        return None
+    v = int(m.group(4).replace(",", ""))
+    if not 8000 < v < 30000:
+        print("wage: implausible", v)
+        return None
+    return {"v": v, "from": f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}", "url": NII_WAGE, "read": time.strftime("%Y-%m-%d"),
+            "he": "הביטוח הלאומי: השכר הממוצע לפי סעיף 1 לחוק הביטוח הלאומי (שכר חודשי ברוטו)"}
+
+
+def fetch_map(codes):
+    """The cities' points (ITM x, y of each settlement in the data.nadlan.gov.il summary file -> lat, lon) and the land outline
+    (Natural Earth 1:50m, public domain: the polygons of Israel and of the West Bank and Gaza, drawn as one land without inner lines)."""
+    pts = {}
+    for code in codes:
+        try:
+            raw = urllib.request.urlopen(urllib.request.Request(f"https://data.nadlan.gov.il/api/pages/settlement/buy/{code}.json", headers=UA), timeout=60).read()
+            j = json.loads(raw.decode("utf-8-sig"))
+            pts[code] = itm_to_wgs(float(j["x"]), float(j["y"]))
+        except Exception as e:  # noqa: BLE001
+            print("map: no point for", code, e)
+    ne = get(NE50)
+    land = []
+    for ft in ne["features"]:
+        if ft["properties"].get("ADMIN") in ("Israel", "Palestine"):
+            g = ft["geometry"]
+            for poly in (g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]):
+                land.append([[round(p[0], 3), round(p[1], 3)] for p in poly[0]])
+    return pts, land
+
+
 def qend(q):
     """'1-3.2026' -> '2026-03' (the quarter as rent.json names it)."""
     a, y = q.split(".")
@@ -152,6 +226,13 @@ def main():
         raise
     except Exception as e:  # noqa: BLE001 (the calculator is a check, not a source)
         print("CPI calculator check skipped:", e)
+    wage = fetch_wage()
+    print("wage:", wage and (wage["v"], wage["from"]))
+    pts, land = fetch_map([c["code"] for c in cities])
+    for c in cities:
+        if c["code"] in pts:
+            c["ll"] = list(pts[c["code"]])
+    print("map:", len(pts), "city points,", len(land), "land polygons,", sum(len(p) for p in land), "vertices")
     fx = boim["rates"]["fixed_nl"]
     src0 = boim["sources"][0]
     out = {
@@ -172,7 +253,10 @@ def main():
         "mort": {"eff": fx["rate"], "month": fx["hist"][-1][0], "label": fx["label"], "ltv": boim["rules"]["ltv"]["single"], "years": 25,
                  "src": {"he": "בנק ישראל, הריבית הממוצעת על הלוואות חדשות לדיור", "url": src0["url"]},
                  "ltvSrc": {"he": boim["rules"]["src"]["label"], "url": boim["rules"]["src"]["url"]}},
+        "map": {"land": land, "src": {"he": "קווי היבשה: Natural Earth 1:50m (נחלת הכלל); מיקום הערים: אתר הנדל״ן הממשלתי (קואורדינטות רשת ישראל)", "url": "https://www.naturalearthdata.com/"}},
     }
+    if wage:
+        out["wage"] = wage
     path = os.path.join(DATA, "prices-hub.json")
     with io.open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
