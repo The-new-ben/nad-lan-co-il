@@ -2,10 +2,14 @@
 """Screening check of the finished sound (not a listening test): local Whisper small (cached, CPU, no download) on the mix,
 word timestamps, each voice block of timeline.json compared with its script line (normalised words, edit distance).
 
-  python whisper_check.py <mix.wav> <timeline.json> <out.json>
+  python whisper_check.py [--variant <name>]      (no flag: main-he)
+reads <WORK>/var/<name>/audio/mix.wav and its timeline.json, writes the variant's outputs.whisper. Prints every line whose words
+differ; read them one by one (spelling, numbers written as digits and a word counted in the next line's window are not errors).
 """
-import json, re, sys
+import json, os, re, sys
 import numpy as np, librosa, whisper
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import variant as VAR
 
 NUM = {"23": "twenty three", "12": "twelve", "10": "ten", "7": "seven", "360": "three sixty"}
 
@@ -26,7 +30,9 @@ def dist(r, h):
 
 
 if __name__ == "__main__":
-    mix, tl, out = sys.argv[1:4]
+    PA = VAR.Paths(VAR.load())
+    mix, tl, out = os.path.join(PA.audio, "mix.wav"), os.path.join(PA.audio, "timeline.json"), PA.files["whisper"]
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     T = json.load(open(tl, encoding="utf-8"))
     y, _ = librosa.load(mix, sr=16000)
     m = whisper.load_model("small", device="cpu")

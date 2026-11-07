@@ -6,7 +6,8 @@ Generated from C:/Users/777/Documents/agent-tools/video-index.json (re-run build
 
 | What | Where |
 |---|---|
-| Developer film v3 (CEO, English voice-over, Hebrew subtitles, 2:27, approved by Ben 7.11.2026; LIVE on https://nad-lan.co.il/marketing/#film) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v3/ (en-vo_he-sub_16x9.mp4, en-vo_he-sub_9x16.mp4, web cut he-web-16x9.mp4 = https://nad-lan.co.il/wp-content/uploads/2026/11/developer-film-v3-he.mp4, media 8833, poster 8834) |
+| FILM STUDIO: making or changing a nad-lan film (new versions of the developer film too): read this first | C:/Users/777/Documents/agent-tools/FILM-STUDIO.md (variants, one build command, voice, rules) and docs/sales/developer-film-v3/START-HERE.md |
+| Developer film v3, variant main-he (a short video that describes our capabilities; English voice-over, Hebrew subtitles, 2:27, approved by Ben 7.11.2026; LIVE on https://nad-lan.co.il/marketing/#film) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v3/ (en-vo_he-sub_16x9.mp4, en-vo_he-sub_9x16.mp4, web cut he-web-16x9.mp4 = https://nad-lan.co.il/wp-content/uploads/2026/11/developer-film-v3-he.mp4, media 8833, poster 8834); other versions in variants/ and out/<name>/ |
 | Developer film v2 (Hebrew captions, 90 s, sent to Ben 7.11) | C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/developer-film-v2/he-16x9.mp4 and he-9x16.mp4 |
 | Ben's own developer film (1.11, 87 s, English voice-over, real visitor recordings) | C:/Users/777/.claude/uploads/f8200c1d-6798-4a3e-8a9f-7b12503e42b2/479ba69e-VID-20261101-WA0001.mp4 |
 | Developer intro film | C:/Users/777/nad-lan/nad-lan-co-il/scripts/project-video/out/nadlan-developers_1080x1920.mp4 and media/film/nadlan-developer-film.mp4 |

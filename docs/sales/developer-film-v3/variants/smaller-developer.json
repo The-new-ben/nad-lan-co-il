@@ -1,0 +1,349 @@
+{
+ "name": "smaller-developer",
+ "status": "DRAFT 7.11.2026 night: script only, not voiced, not rendered. Needs Ben's word on the lines before a build.",
+ "audience": "owners and managers of smaller development companies",
+ "why": "the same buyer experience the largest developers do not offer, without a big marketing department or a big budget",
+ "public_description": "a short video that describes our capabilities",
+ "language": {
+  "voice_over": "en",
+  "subtitles": "he"
+ },
+ "voice": {
+  "engine": "kokoro",
+  "model": "Kokoro-82M v1.0 fp32, local CPU, free",
+  "voice": "bm_george",
+  "speed": 1.0,
+  "takes": "out/smaller-developer/voice"
+ },
+ "outputs": {
+  "dir": "out/smaller-developer",
+  "h": "en-vo_he-sub_16x9.mp4",
+  "v": "en-vo_he-sub_9x16.mp4",
+  "web": "he-web-16x9.mp4",
+  "poster": "poster-16x9.jpg",
+  "sheet_h": "en-vo_he-sub_16x9-sheet.jpg",
+  "sheet_v": "en-vo_he-sub_9x16-sheet.jpg",
+  "timeline": "timeline.json",
+  "whisper": "whisper_check.json",
+  "voice_flac": "voice-over.flac"
+ },
+ "web": {
+  "crf": 26
+ },
+ "poster": {
+  "scene": "s12",
+  "group": 3,
+  "at": "end",
+  "offset": -0.2
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "module": "s01",
+   "pic": "route chart: Paris, London, Ra'anana",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "Right now, a buyer in Paris is looking for a home in Israel.",
+     "he": [
+      "ברגע זה, קונה בפריז מחפש בית בישראל."
+     ]
+    },
+    {
+     "en": "Another in London. Another in Ra'anana.",
+     "he": [
+      "עוד אחד בלונדון. ועוד אחד ברעננה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "module": "s02",
+   "pic": "the wall of our own renders, then a lead form",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "You have beautiful renders, like everyone. You can buy ads, like everyone.",
+     "he": [
+      "יש לכם הדמיות יפות, כמו לכולם.",
+      "אפשר לקנות מודעות, כמו כולם."
+     ],
+     "split": [
+      0.48
+     ]
+    },
+    {
+     "en": "But the largest developers will always spend more.",
+     "he": [
+      "אבל היזמים הגדולים תמיד יוציאו יותר."
+     ],
+     "gap": 0.45
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "module": "s03",
+   "pic": "the check card: 12 live project pages, 10 / 2 / 0",
+   "lead": 0.35,
+   "tail": 0.8,
+   "groups": [
+    {
+     "en": "We checked the live project pages of twelve of Israel's largest developers.",
+     "he": [
+      "בדקנו את עמודי הפרויקטים החיים של 12 מהיזמים הגדולים בישראל."
+     ]
+    },
+    {
+     "en": "Ten stop at the render and a form.",
+     "he": [
+      "עשרה נעצרים בהדמיה ובטופס."
+     ]
+    },
+    {
+     "en": "None lets the buyer step inside and pick his floor.",
+     "he": [
+      "באף אחד מהם הקונה לא נכנס לבניין ובוחר קומה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "module": "s04",
+   "pic": "black, the mark, then the positioning (own words on screen)",
+   "lead": 0.6,
+   "tail": 0.8,
+   "groups": [
+    {
+     "en": "So the gap is open, and it is not about budget.",
+     "he": [
+      "אז הפער פתוח, והוא לא עניין של תקציב."
+     ]
+    },
+    {
+     "en": "You don't need a big marketing department for this.",
+     "he": [
+      "לא צריך מחלקת שיווק גדולה בשביל זה."
+     ],
+     "gap": 0.9
+    },
+    {
+     "en": "You need one project page with everything the buyer needs, and a team that brings you buyers who are ready to sign.",
+     "he": [
+      "עמוד פרויקט אחד עם כל מה שהקונה צריך,",
+      "וצוות שמביא לכם קונים שמוכנים לחתום."
+     ],
+     "split": [
+      0.48
+     ]
+    }
+   ],
+   "screen": {
+    "band": "הפרויקט שלכם",
+    "bandNote": "· בלי מחלקת שיווק גדולה",
+    "unitNote": "עמוד אחד, וצוות שמביא קונים",
+    "goal": "קונים שמוכנים לחתום"
+   }
+  },
+  {
+   "id": "s05",
+   "module": "s05",
+   "pic": "Google in French, our French project page, the AI Mode answer",
+   "lead": 0.35,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "When he searches in his own language, he finds your project.",
+     "he": [
+      "כשהוא מחפש בשפה שלו, הוא מוצא את הפרויקט שלכם."
+     ]
+    },
+    {
+     "en": "On Google, and inside the answers of ChatGPT, Gemini and Claude.",
+     "he": [
+      "בגוגל, ובתוך התשובות של ChatGPT, Gemini ו־Claude."
+     ]
+    },
+    {
+     "en": "We know how to put you there.",
+     "he": [
+      "אנחנו יודעים לשים אתכם שם."
+     ],
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "module": "s06",
+   "pic": "into the live 3D stage",
+   "lead": 0.4,
+   "tail": 0.4,
+   "groups": [
+    {
+     "en": "He doesn't just look at a render. He lands inside it.",
+     "he": [
+      "הוא לא רק מסתכל על הדמיה. הוא נוחת בתוכה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "module": "s07",
+   "pic": "floor 23, the view, the furnished 360, the notes",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "He picks the floor. He sees his view.",
+     "he": [
+      "בוחר קומה. רואה את הנוף שלו."
+     ]
+    },
+    {
+     "en": "He furnishes the apartment and leaves his notes.",
+     "he": [
+      "מעצב את הדירה ומשאיר הערות."
+     ],
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "module": "s08",
+   "pic": "the quarter walk as planned, then VR (in development)",
+   "lead": 0.4,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "He walks the neighbourhood as it will be, after your building is built.",
+     "he": [
+      "הוא מסתובב בשכונה כמו שהיא תיראה אחרי שהבניין ייבנה."
+     ]
+    },
+    {
+     "en": "And we're now taking it into V R, inside the apartment.",
+     "he": [
+      "ועכשיו אנחנו מכניסים את זה למשקפי VR, בתוך הדירה."
+     ],
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "module": "s11",
+   "pic": "the video button, then the shared viewing room on the plan",
+   "lead": 0.35,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "One tap opens a live video meeting inside the project page.",
+     "he": [
+      "לחיצה אחת פותחת פגישת וידאו בתוך עמוד הפרויקט:"
+     ]
+    },
+    {
+     "en": "Your team, the buyer and his family, looking at the same floor plan together.",
+     "he": [
+      "הצוות שלכם, הקונה והמשפחה שלו,",
+      "מסתכלים יחד על אותה תוכנית דירה."
+     ],
+     "split": [
+      0.45
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "module": "s12",
+   "pic": "the WhatsApp message card, labelled דוגמה",
+   "lead": 0.35,
+   "tail": 0.8,
+   "groups": [
+    {
+     "en": "You don't get a name and a phone number.",
+     "he": [
+      "לא מקבלים שם וטלפון."
+     ]
+    },
+    {
+     "en": "Floor twenty-three. Sea view. In French.",
+     "he": [
+      "קומה 23, לים, בצרפתית."
+     ],
+     "gap": 0.6
+    },
+    {
+     "en": "This isn't a lead. It's a buyer who already knows what he's buying.",
+     "he": [
+      "זה לא ליד. זה קונה שכבר יודע מה הוא קונה."
+     ],
+     "gap": 0.7,
+     "ph": [
+      [
+       "lˈiːd",
+       "lˈiːːd"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "module": "s15",
+   "pic": "the campaign planner on a phone, five steps",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "Pick your markets, your buyers and your budget. A small budget too.",
+     "he": [
+      "בוחרים שווקים, קונים ותקציב. גם תקציב קטן."
+     ]
+    },
+    {
+     "en": "Your campaign can be live in seven days.",
+     "he": [
+      "הקמפיין יכול להיות באוויר תוך שבעה ימים."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "module": "s16",
+   "pic": "end card (own words)",
+   "lead": 0.5,
+   "tail": 2.2,
+   "groups": [
+    {
+     "en": "Buyers who already chose. A budget that fits you. Your next project.",
+     "he": [
+      "קונים שכבר בחרו. תקציב שמתאים לכם. הפרויקט הבא שלכם."
+     ]
+    },
+    {
+     "en": "nad-lan.co.il, slash marketing.",
+     "say": "Nad lan dot co dot eel, slash marketing.",
+     "he": [
+      "nad-lan.co.il/marketing"
+     ],
+     "gap": 0.6
+    }
+   ],
+   "screen": {
+    "line1": "קונים שכבר בחרו.",
+    "line2": "תקציב שמתאים לכם.",
+    "line3": "הפרויקט הבא שלכם."
+   }
+  }
+ ]
+}

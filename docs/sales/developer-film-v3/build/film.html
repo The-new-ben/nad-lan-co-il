@@ -9,7 +9,10 @@
 <!--
   Developer film v3 (nad-lan.co.il, HAD-678): English voice-over, Hebrew subtitles. One page draws both cuts: ?f=h (1920x1080)
   and ?f=v (1080x1920); window.render(t) draws the frame at t seconds (deterministic; footage = JPEG sequences in ./ben, ./cast).
-  The scene boundaries and the subtitle cues come from timeline.json (vo_build.py), so the picture follows the voice.
+  The scene boundaries and the subtitle cues come from the variant's timeline (?tl=timelines/<name>.json, made by vo_build.py), so
+  the picture follows the voice. Every <section> below is a PICTURE MODULE (s01 ... s16); a variant's scene names the module it
+  uses ("module"), each module at most once per variant. Words on screen marked data-t="<key>" can be replaced per scene by the
+  variant ("screen": {"<key>": "<text>"}); everything else stays as in the approved film (main-he).
   Palette (owner design law 13.10.2026, the v2 look): survey ground #F6F8F9, ink #12202A, sea #2F6F86, sea-deep #1F4B5C, one
   survey magenta #C42550 per scene at most. Type: Karantina (big Hebrew words), IBM Plex Sans Hebrew (text, subtitles), IBM Plex
   Mono (figures, addresses). Why not the default: marine-chart and survey instruments (ruled ground, corner ticks, coordinates),
@@ -280,13 +283,13 @@ body.v #s16 .url{font-size:50px}
 <section class="sc" id="s02"><div class="rule"></div>
   <div class="tab wtag"><b>הדמיות כמו בכל קמפיין</b><i>מתוך ההדמיות שלנו · ללא שם פרויקט</i></div>
   <div class="wall"></div>
-  <div class="form"><span class="lab">טופס טיפוסי</span><h3>השאירו פרטים</h3><p>ונחזור אליכם עם כל המידע על הפרויקט</p><div class="f">שם מלא</div><div class="f">טלפון</div><div class="go">שליחה</div></div>
+  <div class="form"><span class="lab">טופס טיפוסי</span><h3 data-t="formTitle">השאירו פרטים</h3><p data-t="formText">ונחזור אליכם עם כל המידע על הפרויקט</p><div class="f">שם מלא</div><div class="f">טלפון</div><div class="go">שליחה</div></div>
   <div class="no">02 / 16</div>
 </section>
 
 <!-- 03 the check -->
 <section class="sc" id="s03"><div class="rule"></div>
-  <div class="hd"><div class="k">LIVE PROJECT PAGES · 7.11.2026</div><h2>בדקנו 12 עמודי פרויקט של יזמים מובילים</h2></div>
+  <div class="hd"><div class="k">LIVE PROJECT PAGES · 7.11.2026</div><h2 data-t="title">בדקנו 12 עמודי פרויקט של יזמים מובילים</h2></div>
   <div class="pages"></div>
   <div class="cnt">
     <div class="c c1"><div class="n">10</div><div class="w">הדמיות וטופס, וזהו</div></div>
@@ -300,9 +303,9 @@ body.v #s16 .url{font-size:50px}
 <section class="sc dark" id="s04">
   <div class="mk"><div class="w">נדל״ן</div><div class="u">nad-lan.co.il</div></div>
   <div class="dg">
-    <div class="band">מחלקת השיווק שלכם<i>· מובילה את הקמפיין</i></div>
-    <div class="unit"><b>נדל״ן</b><span>היחידה המיוחדת, משימה אחת</span></div>
-    <div class="goal">קונים שמוכנים לחתום</div>
+    <div class="band" data-t="band">מחלקת השיווק שלכם<i data-t="bandNote">· מובילה את הקמפיין</i></div>
+    <div class="unit"><b data-t="unit">נדל״ן</b><span data-t="unitNote">היחידה המיוחדת, משימה אחת</span></div>
+    <div class="goal" data-t="goal">קונים שמוכנים לחתום</div>
     <svg class="ar" xmlns="http://www.w3.org/2000/svg"></svg>
   </div>
   <div class="no">04 / 16</div>
@@ -383,7 +386,7 @@ body.v #s16 .url{font-size:50px}
 <!-- 12 the lead -->
 <section class="sc" id="s12"><div class="rule"></div>
   <div class="cold"><b>LEAD · 10:41</b>שם: ________<br>טלפון: ________</div>
-  <div class="big"><div class="a">לא ליד.</div><div class="b">קונה שיודע מה הוא קונה.</div></div>
+  <div class="big"><div class="a" data-t="bigA">לא ליד.</div><div class="b" data-t="bigB">קונה שיודע מה הוא קונה.</div></div>
   <div class="wa">
     <div class="bar"><div class="av">נ</div><div><b>פנייה חדשה מנדל״ן</b><span>הודעה בוואטסאפ</span></div></div>
     <div class="msg">
@@ -417,13 +420,13 @@ body.v #s16 .url{font-size:50px}
   <div class="tab t15"><b>מתכנן הקמפיין</b><i>nad-lan.co.il/marketing · 7.11.2026</i></div>
   <div class="ph"><div class="scr"><img id="plan" alt=""></div></div>
   <div class="steps"><div class="st"><span class="n">1</span>שווקים</div><div class="st"><span class="n">2</span>קונים</div><div class="st"><span class="n">3</span>תקציב</div><div class="st"><span class="n">4</span>פרויקט</div><div class="st"><span class="n">5</span>סיכום</div></div>
-  <div class="seven"><div class="n">7</div><div class="w">ימים, והקמפיין יכול להיות באוויר</div></div>
+  <div class="seven"><div class="n" data-t="sevenN">7</div><div class="w" data-t="sevenText">ימים, והקמפיין יכול להיות באוויר</div></div>
   <div class="no">15 / 16</div>
 </section>
 
 <!-- 16 end card -->
 <section class="sc dark" id="s16">
-  <div class="end"><div class="big"><span class="b1">יותר קונים.</span><span class="b2">יותר תקציב.</span><span class="b3">הפרויקט הבא שלכם.</span></div><div class="url">nad-lan.co.il/marketing</div></div>
+  <div class="end"><div class="big"><span class="b1" data-t="line1">יותר קונים.</span><span class="b2" data-t="line2">יותר תקציב.</span><span class="b3" data-t="line3">הפרויקט הבא שלכם.</span></div><div class="url" data-t="url">nad-lan.co.il/marketing</div></div>
 </section>
 
 <div id="subs"><span></span></div>
@@ -447,8 +450,10 @@ for (const el of $$('.hv')) if (V) el.style.display = 'none';
 for (const el of $$('.vv')) if (!V) el.style.display = 'none';
 
 let A = null, TL = null, pending = [], FAILED = false, FAILS = 0, SCN = {};
-/* a voice block of a scene, in scene time: VB('s05', 2) -> {a, b} */
-const VB = (sid, k) => { const s = SCN[sid]; const b = TL.voice.find(x => x.scene === sid && x.k === k); return { a: b.a - s.a, b: b.b - s.a }; };
+/* a voice block of a scene, in scene time: VB(CUR, 2) -> {a, b} (CUR = the scene being drawn; a variant with fewer lines than
+   the module was made for gets its last line instead, so every module still times itself to the words) */
+let CUR = '';
+const VB = (sid, k) => { const s = SCN[sid]; const bl = TL.voice.filter(x => x.scene === sid); const b = bl.find(x => x.k === k) || bl[bl.length - 1] || { a: s.a, b: s.b }; return { a: b.a - s.a, b: b.b - s.a }; };
 function setSrc(img, src) {
   if (img.dataset.want !== src || img.dataset.bad) { const retry = !!img.dataset.bad; delete img.dataset.bad; img.dataset.want = src; img.setAttribute('src', src + (retry ? '?r=' + FAILS : '')); pending.push(img.decode().catch(() => { img.dataset.bad = 1; FAILED = true; })); }
 }
@@ -524,19 +529,19 @@ function mapFrame(sec, prog, z, u) {
   const ring = $(`#${sec} .ring`); const ph = ((u * 0.8) % 1); ring.setAttribute('r', ((12 + 26 * ph) * s).toFixed(2)); ring.style.opacity = (1 - ph).toFixed(2);
 }
 function s01(u, D) {
-  const b1 = VB('s01', 1), b2 = VB('s01', 2), half = b2.a + (b2.b - b2.a) * .46;
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), half = b2.a + (b2.b - b2.a) * .46;
   const prog = { paris: R(u, b1.a + .2, b1.a + 2.4, eio), ny: R(u, b1.a + 1.4, b1.a + 3.6, eio), london: R(u, b2.a - .2, b2.a + 1.3, eio), raanana: R(u, half + .5, half + 1.3, eio) };
   mapFrame('s01', prog, R(u, half - .3, half + .7, eio), u);
 }
 function s14(u, D) {
-  const b2 = VB('s14', 2);
+  const b2 = VB(CUR, 2);
   const prog = { paris: 1, london: 1, ny: 1, raanana: R(u, b2.a + .5, b2.a + 1.2, eio), haifa: R(u, b2.a + .7, b2.a + 1.5, eio), jlm: R(u, b2.a + .9, b2.a + 1.7, eio), ash: R(u, b2.a + 1.1, b2.a + 1.9, eio) };
   mapFrame('s14', prog, R(u, b2.a - .5, b2.a + .6, eio), u);
 }
 
 /* ---------- 02 ---------- */
 function s02(u, D) {
-  const b1 = VB('s02', 1), b2 = VB('s02', 2);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2);
   const ts = $$('#s02 .wall .t');
   ts.forEach((t, i) => { const a = .05 + i * .11; t.style.opacity = R(u, a, a + .25); t.style.transform = `scale(${(1.04 - .04 * R(u, a, a + .5)).toFixed(4)})`; });
   $('#s02 .wall').style.transform = `scale(${(1 + .035 * C(u / D)).toFixed(4)})`;
@@ -551,7 +556,7 @@ function s02(u, D) {
 
 /* ---------- 03 ---------- */
 function s03(u, D) {
-  const b1 = VB('s03', 1), b2 = VB('s03', 2), b3 = VB('s03', 3);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), b3 = VB(CUR, 3);
   show($('#s03 .hd'), u, .05, .45, 14);
   $$('#s03 .pg').forEach((p, i) => { show(p, u, b1.a + .3 + i * .1, .3, 14); op(p.querySelector('.m'), R(u, b2.a + .1 + (p.classList.contains('b2') ? .9 : i * .06), b2.a + .4 + (p.classList.contains('b2') ? .9 : i * .06))); });
   show($('#s03 .c1'), u, b2.a + .2, .45, 16); show($('#s03 .c2'), u, b2.a + 1.1, .45, 16); show($('#s03 .c3'), u, b3.a + .3, .5, 16);
@@ -559,7 +564,7 @@ function s03(u, D) {
 
 /* ---------- 04 ---------- */
 function s04(u, D) {
-  const b1 = VB('s04', 1), b2 = VB('s04', 2), b3 = VB('s04', 3);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), b3 = VB(CUR, 3);
   const mk = $('#s04 .mk'); const m = R(u, b1.b - 1.4, b1.b - .6); const up = R(u, b2.a - .4, b2.a + .3, eio);
   mk.style.opacity = m; mk.style.transform = `translateY(${(-(V ? 300 : 210) * up).toFixed(1)}px) scale(${(1 - .45 * up).toFixed(3)})`;
   show($('#s04 .band'), u, b2.a, .5, 20);
@@ -574,7 +579,7 @@ function s04(u, D) {
 /* ---------- 05 ---------- */
 const QTXT = 'Rainbow Sde Dov Tel Aviv price per square meter';
 function s05(u, D) {
-  const b1 = VB('s05', 1), b2 = VB('s05', 2);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2);
   const sw = b1.a + (b1.b - b1.a) * .55, sc = b2.a - .1;
   frameIn($('#s05 .fm'), u, 0);
   seq('g_fr', 'ben', 'g_fr', C(u - .2) * .45);
@@ -602,7 +607,7 @@ function s06(u, D) {
   seq('st6', 'cast', V ? 'stage_v' : 'stage_h', tmap(u, map));
 }
 function s07(u, D) {
-  const b1 = VB('s07', 1), b2 = VB('s07', 2);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2);
   const tv = b1.a + (b1.b - b1.a) * .5;            // "He sees his view."
   const tf = b2.a;                                  // "He furnishes the apartment"
   const tn = b2.a + (b2.b - b2.a) * .62;            // "and leaves his notes"
@@ -622,7 +627,7 @@ function s07(u, D) {
 
 /* ---------- 08 ---------- */
 function s08(u, D) {
-  const b1 = VB('s08', 1), b2 = VB('s08', 2);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2);
   const wcast = V ? 'walk_v' : 'walk_h', wk = MK(wcast, 'walk'), wsec = A.cast[wcast].seconds;
   frameIn($('#s08 .fbig'), u, 0);
   seq('walk', 'cast', wcast, tmap(u, [[0, wk + .6], [b2.a, Math.min(wsec - .2, wk + .6 + b2.a * 1.05)]]));
@@ -637,7 +642,7 @@ function s08(u, D) {
 
 /* ---------- 09 ---------- */
 function s09(u, D) {
-  const b1 = VB('s09', 1);
+  const b1 = VB(CUR, 1);
   const k = b1.b - b1.a;   // "Prices, the neighbourhood, the numbers."
   show($('#s09 .tab'), u, .05, .4, 8);
   frameIn($('#s09 .fprice'), u, b1.a); frameIn($('#s09 .ftile'), u, b1.a + .15); frameIn($('#s09 .fmap'), u, b1.a + k * .3); frameIn($('#s09 .fdeal'), u, b1.a + k * .68);
@@ -651,7 +656,7 @@ function lay10() {
   for (const k of ['lb', 'li', 'lf', 'la']) { const [x, y, w] = L[k]; Object.assign($('#s10 .' + k).style, { left: x + 'px', top: y + 'px', width: w + 'px' }); }
 }
 function s10(u, D) {
-  const b1 = VB('s10', 1), b2 = VB('s10', 2), b3 = VB('s10', 3);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), b3 = VB(CUR, 3);
   const c0 = b1.a + (b1.b - b1.a) * .36, cs = (b1.b - c0) / 4;
   const at = { pi: c0, pb: c0 + cs, pf: c0 + 2 * cs, pa: c0 + 3 * cs };
   const sw = b2.a - .2;   // to the big recordings
@@ -679,7 +684,7 @@ function s10(u, D) {
 
 /* ---------- 11 ---------- */
 function s11(u, D) {
-  const b1 = VB('s11', 1), b2 = VB('s11', 2);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2);
   const tap = b1.a + 1.0, sw = b1.a + 1.9;
   const room = V ? 'room_v' : 'room_h';
   show($('#s11 .tab'), u, .05, .4, 8);
@@ -708,7 +713,7 @@ const TILEPOS = {}, PLANPOS = {};
 
 /* ---------- 12 ---------- */
 function s12(u, D) {
-  const b1 = VB('s12', 1), b2 = VB('s12', 2), b3 = VB('s12', 3);
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), b3 = VB(CUR, 3);
   show($('#s12 .cold'), u, b1.a - .1, .4, 10);
   const c = $('#s12 .cold'); if (u > b1.b) op(c, (1 - R(u, b1.b, b1.b + .4)) * 1 + .25 * R(u, b1.b, b1.b + .4));
   // the bare lead sits in the middle while it is named, then steps aside for the real message
@@ -742,7 +747,7 @@ function s13(u, D) {
 /* ---------- 15 ---------- */
 const PLAN_H = {};
 function s15(u, D) {
-  const b2 = VB('s15', 2);
+  const b2 = VB(CUR, 2);
   frameIn($('#s15 .ph'), u, 0); show($('#s15 .tab'), u, .05, .4, 8);
   const t0 = .3, step = (b2.a - t0 + .2) / 4; const k = Math.max(0, Math.min(4, Math.floor((u - t0) / step)));
   const img = $('#plan'); setSrc(img, `img/plan${k + 1}.png`);
@@ -757,7 +762,7 @@ const PLAN_W = {};
 
 /* ---------- 16 ---------- */
 function s16(u, D) {
-  const b1 = VB('s16', 1), b2 = VB('s16', 2), d = (b1.b - b1.a) / 3;
+  const b1 = VB(CUR, 1), b2 = VB(CUR, 2), d = (b1.b - b1.a) / 3;
   show($('#s16 .b1'), u, b1.a - .1, .5, 26); show($('#s16 .b2'), u, b1.a + d - .1, .5, 26); show($('#s16 .b3'), u, b1.a + 2 * d - .1, .5, 26);
   show($('#s16 .url'), u, b2.a - .2, .5, 14);
 }
@@ -765,10 +770,12 @@ function s16(u, D) {
 const FN = { s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16 };
 const XF = .45;
 let SC = [];
+const NOSUB = new Set();   // scenes without a subtitle line (the end card: its words are the card)
 window.render = async function (t) {
   pending = [];
-  SC.forEach(([id, a, b, fn], idx) => {
+  SC.forEach(([id, a, b, fn, sid], idx) => {
     const el = document.getElementById(id);
+    CUR = sid;
     const last = idx === SC.length - 1;
     const vis = t >= a && (t < b + XF || last);
     el.style.display = vis ? 'block' : 'none';
@@ -778,7 +785,7 @@ window.render = async function (t) {
     fn(Math.max(0, t - a), b - a);
   });
   // the subtitle line (none on the end card: its words are the card)
-  const cue = TL.cues.find(c => t >= c.a && t < c.b && c.scene !== 's16');
+  const cue = TL.cues.find(c => t >= c.a && t < c.b && !NOSUB.has(c.scene));
   const sp = $('#subs span');
   if (cue) { if (sp.textContent !== cue.he) sp.textContent = cue.he; sp.parentElement.style.opacity = Math.min(R(t, cue.a, cue.a + .12, x => x), 1 - R(t, cue.b - .12, cue.b, x => x)); sp.style.display = 'inline-block'; }
   else sp.style.display = 'none';
@@ -791,9 +798,17 @@ window.subsOff = () => { $('#subs').style.visibility = 'hidden'; };   // for the
 window.subLines = () => { const sp = $('#subs span'); if (sp.style.display === 'none') return 0; return Math.round(sp.getBoundingClientRect().height / (parseFloat(getComputedStyle(sp).lineHeight) || 1) - .3); };
 window.READY = false;
 (async () => {
-  [A, TL, LAND] = await Promise.all(['assets.json', 'timeline.json', 'land.json'].map(async f => (await fetch(f)).json()));
+  [A, TL, LAND] = await Promise.all(['assets.json', Q.get('tl') || 'timeline.json', 'land.json'].map(async f => (await fetch(f)).json()));
   for (const s of TL.scenes) SCN[s.id] = s;
-  SC = TL.scenes.map(s => [s.id, s.a, s.b, FN[s.id]]);
+  const MOD = (s) => s.module || s.id;
+  SC = TL.scenes.map(s => [MOD(s), s.a, s.b, FN[MOD(s)], s.id]);
+  for (const s of TL.scenes) if (MOD(s) === 's16' || s.subs === false) NOSUB.add(s.id);
+  // the scene numbers ("05 / 16") follow the variant's order, and its own words replace the marked ones on screen
+  TL.scenes.forEach((s, i) => { const n = document.querySelector('#' + MOD(s) + ' .no'); if (n) n.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(TL.scenes.length).padStart(2, '0'); });
+  for (const s of TL.scenes) for (const [k, v] of Object.entries(s.screen || {})) {
+    const el = document.querySelector('#' + MOD(s) + ' [data-t="' + k + '"]'); if (!el) { console.error('no screen key', MOD(s), k); continue; }
+    const tn = [...el.childNodes].find(x => x.nodeType === 3); if (el.children.length && tn) tn.textContent = v; else el.textContent = v;
+  }
   window.DUR = TL.duration;
   // the wall (our own renders) and the twelve checked pages
   const wall = $('#s02 .wall'); const AD = [1, 4, 6, 9];

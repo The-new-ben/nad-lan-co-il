@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
-"""Render the developer film v3 (copied from v2's render.py; the length now comes from web/timeline.json) from film.html with the installed Chrome (Playwright, headless). Local only.
+"""Render one variant of the developer film from film.html with the installed Chrome (Playwright, headless). Local only.
+(Copied from v2's render.py; the length and the scenes come from the variant's timeline.)
 
-  python render.py stills <scratch>/film3 h 1.5,9,20          PNG stills at those seconds -> <scratch>/film3/stills/ (+ the
+  python render.py stills h 1.5,9,20 [--variant <name>]      PNG stills at those seconds -> <WORK>/var/<name>/stills/ (+ the
                                                               number of subtitle lines on each, which must stay <= 2)
-  python render.py frames <scratch>/film3 h [--workers 4]     every frame (30 fps) -> <scratch>/film3/frames_h/00001.jpg
-  python render.py encode <scratch>/film3 h <out.mp4> <mix.wav>  H.264 (CRF 17, slow) + AAC 192k, moov first
-  python render.py web <film_16x9.mp4> <out.mp4> [crf]           the site page's copy: 1280x720, CRF 26, AAC 128k, moov first
+  python render.py frames h [--variant <name>] [--workers 4] every frame (30 fps) -> <WORK>/var/<name>/frames_h/00001.jpg
+  python render.py encode h [--variant <name>]               H.264 (CRF 17, slow) + AAC 192k of <WORK>/var/<name>/audio/mix.wav,
+                                                              moov first -> the variant's outputs.h (outputs.v for "v")
+  python render.py web [--variant <name>]                    the site page's copy of outputs.h: 1280x720, H.264 high, CRF
+                                                              (variant web.crf, default 26), AAC 128k, moov first -> outputs.web
+  (no --variant: main-he, the approved film; --out <dir> writes the finished files to <dir> under the film folder instead)
 
-film.html, the assets.json made by prep_v3.py and the JPEG sequences are served from <scratch>/film3/web by a local
-http.server on 127.0.0.1 (started and stopped here). film.html is copied there from this folder on every run.
+film.html, assets.json (prep_v3.py), the timelines and the JPEG sequences are served from <WORK>/web by a local http.server on
+127.0.0.1 (started and stopped here). film.html is copied there from this folder on every run; the page reads the variant's
+timeline from ?tl=timelines/<name>.json.
 """
 import os, shutil, socket, subprocess, sys, time, urllib.request
 from multiprocessing import Process
 
 H = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, H)
+import variant as VAR
 FF = r"C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe"
 FPS, DUR = 30, None   # DUR: web/timeline.json (vo_build.py)
 
@@ -41,24 +48,24 @@ def size(f):
     return (1080, 1920) if f == "v" else (1920, 1080)
 
 
-def open_page(p, base, f):
+def open_page(p, base, f, tl="timeline.json"):
     w, h = size(f)
     b = p.chromium.launch(channel="chrome", headless=True)
     pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=1)
     pg.on("pageerror", lambda e: print("  [pageerror]", e))
     pg.on("console", lambda m: m.type == "error" and print("  [console]", m.text))
-    pg.goto(f"{base}/film.html?f={f}")
+    pg.goto(f"{base}/film.html?f={f}&tl={tl}")
     pg.wait_for_function("window.READY === true", timeout=180000)
     return b, pg
 
 
-def stills(S, f, times):
+def stills(PA, f, times):
     from playwright.sync_api import sync_playwright
-    out = os.path.join(S, "stills"); os.makedirs(out, exist_ok=True)
-    srv = Server(os.path.join(S, "web"))
+    out = os.path.join(PA.work, "stills"); os.makedirs(out, exist_ok=True)
+    srv = Server(VAR.WEB)
     try:
         with sync_playwright() as p:
-            b, pg = open_page(p, srv.base, f)
+            b, pg = open_page(p, srv.base, f, PA.tl_rel)
             for t in times:
                 pg.evaluate("t => window.render(t)", t)
                 fn = os.path.join(out, f"{f}_{t:05.2f}.png")
@@ -69,10 +76,10 @@ def stills(S, f, times):
         srv.stop()
 
 
-def worker(base, f, frames, out):
+def worker(base, f, frames, out, tl):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
-        b, pg = open_page(p, base, f)
+        b, pg = open_page(p, base, f, tl)
         for i in frames:
             fn = os.path.join(out, "%05d.jpg" % (i + 1))
             if os.path.exists(fn):
@@ -89,14 +96,14 @@ def worker(base, f, frames, out):
         b.close()
 
 
-def frames(S, f, workers):
-    out = os.path.join(S, f"frames_{f}"); os.makedirs(out, exist_ok=True)
+def frames(PA, f, workers):
+    out = PA.frames(f); os.makedirs(out, exist_ok=True)
     n = int(DUR * FPS)
-    srv = Server(os.path.join(S, "web"))
+    srv = Server(VAR.WEB)
     t0 = time.time()
     try:
         chunk = (n + workers - 1) // workers
-        ps = [Process(target=worker, args=(srv.base, f, list(range(k * chunk, min(n, (k + 1) * chunk))), out)) for k in range(workers)]
+        ps = [Process(target=worker, args=(srv.base, f, list(range(k * chunk, min(n, (k + 1) * chunk))), out, PA.tl_rel)) for k in range(workers)]
         for q in ps:
             q.start()
         for q in ps:
@@ -107,8 +114,9 @@ def frames(S, f, workers):
     print(f"{done}/{n} frames in {time.time() - t0:.0f} s -> {out}")
 
 
-def encode(S, f, mp4, wav):
-    src = os.path.join(S, f"frames_{f}", "%05d.jpg")
+def encode(PA, f):
+    src = os.path.join(PA.frames(f), "%05d.jpg"); wav = os.path.join(PA.audio, "mix.wav"); mp4 = PA.files[f]
+    os.makedirs(os.path.dirname(mp4), exist_ok=True)
     subprocess.run([FF, "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", src, "-i", wav,
                     "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", "-color_range", "tv",
                     "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
@@ -125,15 +133,16 @@ def web(src, out, crf=26):
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == "web":       # python render.py web <film_16x9.mp4> <out.mp4> [crf]
-        web(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 26); sys.exit()
-    cmd, S, f = sys.argv[1], sys.argv[2], sys.argv[3]
     import json
-    DUR = json.load(open(os.path.join(S, "web", "timeline.json"), encoding="utf-8"))["duration"]
-    shutil.copyfile(os.path.join(H, "film.html"), os.path.join(S, "web", "film.html"))
+    VA = VAR.load(); PA = VAR.Paths(VA); cmd = sys.argv[1]
+    if cmd == "web":
+        web(PA.files["h"], PA.files["web"], int(VA.get("web", {}).get("crf", 26))); sys.exit()
+    f = sys.argv[2]
+    DUR = json.load(open(PA.tl_web, encoding="utf-8"))["duration"]
+    shutil.copyfile(os.path.join(H, "film.html"), os.path.join(VAR.WEB, "film.html"))
     if cmd == "stills":
-        stills(S, f, [float(x) for x in sys.argv[4].split(",")])
+        stills(PA, f, [float(x) for x in sys.argv[3].split(",")])
     elif cmd == "frames":
-        frames(S, f, int(sys.argv[sys.argv.index("--workers") + 1]) if "--workers" in sys.argv else 4)
+        frames(PA, f, int(VAR.arg("--workers", 4)))
     elif cmd == "encode":
-        encode(S, f, sys.argv[4], sys.argv[5])
+        encode(PA, f)

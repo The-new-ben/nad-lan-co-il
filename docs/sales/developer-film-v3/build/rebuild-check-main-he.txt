@@ -1,0 +1,19 @@
+Rebuild check of the approved film (variant main-he) through the new variant pipeline, 7.11.2026 night.
+Command: python build/film.py --out out/_check-main-he --workers 5   (888 s); compared with build/compare_films.py . out/_check-main-he
+
+Same: the 36 voice takes (none re-made), the timeline (scenes, voice blocks, 39 subtitle cues), vo.wav, the music bed and mix.wav
+(byte-identical md5), the voice FLAC (byte-identical), the poster (byte-identical), every audio packet of all three films,
+the durations (2:27.33 full cuts, 2:27.35 web cut) and the frame counts (4,419 in each film).
+
+Not byte-identical: the pictures of a few image-heavy stretches. Published he-web-16x9.mp4 against the rebuild: 891 of 4,419
+decoded frames differ; 16x9 full cut 829, 9x16 full cut 663. Measured on the 16x9 cut: lowest frame PSNR 48.0 dB, the largest
+pixel difference 44 of 255 on a few hundred pixels, mean difference 0.03 to 0.33 of 255; the stretches are 0:55 to 0:59 (the
+stage), 1:22 to 1:31 (Ben's recordings), 1:57 to 2:02 (the calculators), 2:14 to 2:25 (planner and end card). Two renders of
+the same still with the same code are bit-identical; the most likely cause is Chrome drawing scaled images a hair differently
+under the heavier machine load of the published run, which the encoder then carries to the next keyframe. Invisible, but not the same
+bytes: the published files were NOT overwritten (owner rule: only if identical). The check output was deleted after this record.
+he-web-16x9.mp4: bytes differ (6813245 / 6805868); duration 00:02:27.35 / 00:02:27.35; video frames 4419 / 4419, differing 891; audio packets 6907 / 6907, differing 0
+en-vo_he-sub_16x9.mp4: bytes differ (25640492 / 25642984); duration 00:02:27.33 / 00:02:27.33; video frames 4419 / 4419, differing 829; audio packets 6907 / 6907, differing 0
+en-vo_he-sub_9x16.mp4: bytes differ (26029789 / 26028821); duration 00:02:27.33 / 00:02:27.33; video frames 4419 / 4419, differing 663; audio packets 6907 / 6907, differing 0
+poster-16x9.jpg: bytes IDENTICAL (73918 / 73918)
+RESULT: NOT the same

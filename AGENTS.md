@@ -231,6 +231,7 @@ When you learn something worth keeping, follow
 | Portable DNA branches | `skills/SKILLS-TREE.md` |
 | Skills accumulation protocol | `skills/ACCUMULATION.md` |
 | Implementation logs / handoffs | `docs/<date>-<topic>.md` |
+| Films (every version of the developer film) | Making or changing a nad-lan film: read Documents/agent-tools/FILM-STUDIO.md first (`docs/sales/developer-film-v3/START-HERE.md`) |
 
 ---
 

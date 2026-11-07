@@ -4,7 +4,10 @@ Pattern: C:/Users/777/Documents/Hadmaya-Visual-Studio/2026-10-28/scripts/run_fre
 speech preparation from services/vibevoice/speech_text.py). Run with C:/Users/777/nad-lan/voice-rig/venv/Scripts/python.exe.
 
   python voice_kokoro.py test  <out_dir>                         the 12-15 s test line in three voices
-  python voice_kokoro.py lines <script_v3.json> <out_dir> <voice> [speed]   every line of the film, one WAV per group
+  python voice_kokoro.py variant [--variant <name>] [--force]   the takes a variant still needs (no flag: main-he): one WAV per
+                                 group into the variant's voice.takes folder, with the variant's voice and speed; a take is made
+                                 again only when it is missing or its text, voice, speed or phoneme fix changed (receipt.json
+                                 records them); --force makes all of them again
 """
 import hashlib, json, os, pathlib, sys, time
 STUDIO = pathlib.Path("C:/Users/777/Documents/Hadmaya-Visual-Studio/2026-10-28/voice-research")
@@ -42,6 +45,33 @@ def say(m, text, voice, speed, out, ph=None):
 
 
 if __name__ == "__main__":
+    if sys.argv[1] == "variant":
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import variant as VAR
+        VA = VAR.load(); PA = VAR.Paths(VA); vo = VA["voice"]; voice = vo["voice"]; speed = float(vo.get("speed", 1.0))
+        assert vo.get("engine", "kokoro") == "kokoro", "this script makes Kokoro takes only"
+        out = pathlib.Path(PA.takes); out.mkdir(parents=True, exist_ok=True); rp = out / "receipt.json"
+        old = {f"{x['id']}_{x['k']}": x for x in json.load(open(rp))["takes"]} if rp.exists() else {}
+        oldv = json.load(open(rp)).get("voice") if rp.exists() else None
+        need = []
+        for L in VA["scenes"]:
+            for k, g in enumerate(L["groups"]):
+                key = f"{L['id']}_{k + 1}"; o = old.get(key); text = g.get("say", g["en"]); sp = g.get("speed", speed)
+                same = (o is not None and (out / f"{key}.wav").exists() and o.get("text") == text and abs(o.get("speed", sp) - sp) < 1e-9
+                        and (oldv or voice) == voice and ("ph" not in o or o.get("ph") == g.get("ph")))
+                if "--force" in sys.argv or not same:
+                    need.append((L["id"], k + 1, text, sp, g.get("ph")))
+        print(VA["name"], ":", len(need), "takes to make,", sum(len(L["groups"]) for L in VA["scenes"]) - len(need), "kept", flush=True)
+        if need:
+            m = model()
+            for sid, k, text, sp, ph in need:
+                r = say(m, text, voice, sp, out / f"{sid}_{k}.wav", ph); r["id"] = sid; r["k"] = k
+                if ph:
+                    r["ph"] = ph
+                old[f"{sid}_{k}"] = r; print(sid, k, r["seconds"], flush=True)
+            json.dump({"engine": "Kokoro-82M v1.0 fp32 (kokoro-onnx), CPU", "voice": voice, "speed": speed, "takes": list(old.values())},
+                      open(rp, "w"), indent=1)
+        sys.exit()
     m = model()
     if sys.argv[1] == "test":
         out = pathlib.Path(sys.argv[2]); out.mkdir(parents=True, exist_ok=True); rec = []

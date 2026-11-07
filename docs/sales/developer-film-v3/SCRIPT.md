@@ -1,6 +1,6 @@
 # Developer film v3: script (Ben, 7.11.2026 evening)
 
-Audience: the CEO of a top Israeli developer (think Avisror). English voice-over, Hebrew subtitles. About 110 seconds.
+Audience: decision makers at Israeli development companies. English voice-over, Hebrew subtitles. About 110 seconds.
 Tone: calm, certain, senior. "We know how to do this." Never explain HOW we rank in Google or in AI answers (Ben: no secrets).
 Never say broker, never promise lead counts. Every shot is a real capture of nad-lan.co.il or Ben's real recordings.
 
@@ -28,4 +28,4 @@ Never say broker, never promise lead counts. Every shot is a real capture of nad
   sales all the way to the signed contract. Scene 4 adds: "Your marketing department keeps doing what it does. We're the layer on top of
   it: a channel that brings you buyers, and walks them to the signed contract." End card: "We're not another agency. We're your sales
   channel." (he: "אנחנו לא עוד משרד פרסום. אנחנו ערוץ המכירות שלכם.")
-- Audience: CEOs of construction and development companies; the film runs in nad-lan's own campaigns aimed at them.
+- Audience: decision makers at construction and development companies. Public text never says who the film is for (Ben 7.11).

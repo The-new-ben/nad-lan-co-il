@@ -18,7 +18,7 @@ m = re.search(r"Duration: (\d+):(\d+):(\d+)\.(\d+)", info); assert m, info[:300]
 secs = int(m.group(1)) * 3600 + int(m.group(2)) * 60 + int(m.group(3)) + (1 if int(m.group(4)) >= 50 else 0)
 assert re.search(r"1280x720", info), "not 1280x720"
 dur_iso = "PT%dM%dS" % (secs // 60, secs % 60); dur_he = "%d:%02d" % (secs // 60, secs % 60)
-script = json.load(io.open(os.path.join(FILMDIR, "build", "script_v3.json"), encoding="utf-8"))
+script = json.load(io.open(os.path.join(FILMDIR, "variants", "main-he.json"), encoding="utf-8"))["scenes"]  # one file per film version (FILM-STUDIO.md)
 transcript = " ".join(g["en"] for s in script for g in s.get("groups", []) if g.get("en"))
 assert "ChatGPT" in transcript and "Gemini" in transcript and "Claude" in transcript, "film text has no ChatGPT/Gemini/Claude line yet"
 

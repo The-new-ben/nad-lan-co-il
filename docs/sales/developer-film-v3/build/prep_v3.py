@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
-"""Gather every picture the v3 film page draws into <scratch>/film3/web (local only).
+"""Gather every picture the film page draws into the shared web folder, and hand it a variant's timeline (local only).
 
-  python prep_v3.py <scratch>/film3 <captures_dir>
+  python prep_v3.py [--variant <name>] [--assets]
 
-- from v2 (<scratch>/film2/web, made by v2's prep_assets.py): Ben's clips (ben/<clip>), the Rainbow stage screencasts
-  (cast/stage_h, cast/stage_v), the French page scroll (cast/fr), the world land outline (land.json), the French phone page
-- the v3 screencasts (capture_room.py, capture_v3.py; raw frames in <captures>/<x>/<cast> or <scratch>/film3/casts_raw), resampled to a constant 30 fps by their CDP timestamps, with the
-  named moments ("marks") turned into seconds from the start of each cast
-- stills: the Rainbow page elements (capture_rainbow.py), the room, the planner's five steps, our other pages
-- the wall of renders (scene 2): twelve of OUR OWN renders from the plugin's project-stage tours (Kikar Hamedina cards,
-  Rainbow and DUO facility panoramas, centre-cropped); no developer's image, no logo
-- timeline.json (vo_build.py) -> web/timeline.json
+- always: the variant's timeline (made by vo_build.py) -> <WORK>/web/timelines/<name>.json (film.html reads ?tl=timelines/<name>.json)
+- with --assets, or when <WORK>/web/assets.json is missing: the pictures themselves, shared by every variant
+  - from v2 (<WORK>/v2_assets.json and, if it still exists, v2's scratch web folder): Ben's clips (ben/<clip>), the Rainbow stage
+    screencasts (cast/stage_h, cast/stage_v), the French page scroll (cast/fr), land.json, the French phone page
+  - the v3 screencasts (capture_room.py, capture_v3.py; raw frames in <captures>/<x>/<cast> or <WORK>/casts_raw), resampled to a
+    constant 30 fps by their CDP timestamps, with the named moments ("marks") turned into seconds from the start of each cast
+  - stills: the Rainbow page elements (capture_rainbow.py), the room, the planner's five steps, our other pages
+  - the wall of renders: twelve of OUR OWN renders from the plugin's project-stage tours (Kikar Hamedina cards, Rainbow and DUO
+    facility panoramas, centre-cropped); no developer's image, no logo
 """
 import json, os, shutil, sys
 from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import variant as VAR
 
-S, CAP = sys.argv[1], sys.argv[2]
-WEB = os.path.join(S, "web"); V2 = os.path.join(os.path.dirname(S), "film2", "web")
+S, CAP, WEB = VAR.WORK, os.path.join(VAR.ROOT, "captures"), VAR.WEB
+V2 = "C:/Users/777/AppData/Local/Temp/claude/231dc6a3026aa599/f8200c1d-6798-4a3e-8a9f-7b12503e42b2/scratchpad/film2/web"   # v2's work folder (may be gone; its parts are already in WEB)
 PS = r"C:\Users\777\nad-lan\nad-lan-co-il\plugins\nadlan-config\assets\project-stage"
 WALL = ["hamedina/tour/living-c30w-day-card.jpg", "hamedina/tour/balcony-c30w-sunset-card.jpg", "hamedina/tour/fac-pool-c-card.jpg",
         "rainbow/tour/fac-roofpool.jpg", "hamedina/tour/living-c30w-evening-card.jpg", "hamedina/tour/bedroom-c30nw-day-card.jpg",
@@ -61,17 +64,17 @@ def wall():
     return WALL
 
 
-if __name__ == "__main__":
+def assets():
     os.makedirs(os.path.join(WEB, "img"), exist_ok=True)
     for sub in ["ben", "cast/stage_h", "cast/stage_v", "cast/fr"]:
         dst = os.path.join(WEB, sub)
         if not os.path.isdir(dst):
             shutil.copytree(os.path.join(V2, sub), dst)
-    shutil.copyfile(os.path.join(V2, "land.json"), os.path.join(WEB, "land.json"))
-    shutil.copyfile(os.path.join(V2, "img", "fr_phone_full.png"), os.path.join(WEB, "img", "fr_phone_full.png"))
-    meta = {"ben": json.load(open(os.path.join(V2, "assets.json")))["ben"], "cast": {}}
-    for k in ["stage_h", "stage_v", "fr"]:
-        meta["cast"][k] = json.load(open(os.path.join(V2, "assets.json")))["cast"][k]
+    for f in ("land.json", os.path.join("img", "fr_phone_full.png")):
+        if not os.path.exists(os.path.join(WEB, f)):
+            shutil.copyfile(os.path.join(V2, f), os.path.join(WEB, f))
+    v2 = json.load(open(os.path.join(S, "v2_assets.json")))
+    meta = {"ben": v2["ben"], "cast": {k: v2["cast"][k] for k in ["stage_h", "stage_v", "fr"]}}
     casts = {"t360_h": "tour360/t360_cast_1920x1080", "t360_v": "tour360/t360_cast_1080x1920",
              "room_h": "room/room_cast_1920x1080", "room_v": "room/room_cast_1080x1920",
              "walk_h": "walk/walk_cast_1920x1080", "walk_v": "walk/walk_cast_1080x1920",
@@ -101,6 +104,14 @@ if __name__ == "__main__":
                                 "room_v": [[28, 104, 348, 152], [264, 262, 113, 77], [146, 262, 113, 77], [28, 262, 113, 77], [264, 345, 113, 77]]},
                       "plan": {"room_h": [945, 405, 590, 345], "room_v": [583, 866, 452, 262]},
                       "hero": [840, 300, 348, 104]}
-    shutil.copyfile(os.path.join(S, "audio", "timeline.json"), os.path.join(WEB, "timeline.json"))
     json.dump(meta, open(os.path.join(WEB, "assets.json"), "w"), indent=1)
-    print("ok", WEB)
+    print("assets ok", WEB)
+
+
+if __name__ == "__main__":
+    VA = VAR.load(); PA = VAR.Paths(VA)
+    if "--assets" in sys.argv or not os.path.exists(os.path.join(WEB, "assets.json")):
+        assets()
+    os.makedirs(os.path.dirname(PA.tl_web), exist_ok=True)
+    shutil.copyfile(os.path.join(PA.audio, "timeline.json"), PA.tl_web)
+    print("timeline ->", PA.tl_web)

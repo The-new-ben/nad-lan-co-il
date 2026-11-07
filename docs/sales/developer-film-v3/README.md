@@ -1,6 +1,7 @@
 # Developer film, version 3 (HAD-678), local build of 7.11.2026
 
-English voice-over, Hebrew subtitles, for the CEO of a large Israeli developer. Nothing here was uploaded, posted or committed;
+English voice-over, Hebrew subtitles: a short video that describes our capabilities (variant `main-he`, made for decision makers
+at development companies). **New versions: read `START-HERE.md`** (variants, one build command, the rules). Nothing here was uploaded, posted or committed;
 no Linear or Notion entry was written by this build.
 
 | File | What |
@@ -128,29 +129,24 @@ marks from marine charts and survey instruments, cool and high contrast.
 
 ## Rebuild (local)
 
+Since 7.11.2026 night every version is a variant file (`variants/<name>.json`) and one command builds it; this film is
+`variants/main-he.json` (it replaces `build/script_v3.json`). See `START-HERE.md` for the steps and the checks.
+
 ```
-# voice (voice-rig venv python), then the timeline, subtitles and mix
-python build/voice_kokoro.py test voice/tests
-python build/voice_vibevoice.py test voice/tests                         (vibevoice-env python)
-python build/voice_compare.py voice/tests
-python build/voice_kokoro.py lines build/script_v3.json voice/bm_george bm_george 1.0
-python ../developer-film-v2/build/bed.py <seconds> audio/bed.wav
-python build/vo_build.py voice/bm_george <scratch>/film3/audio --bed audio/bed.wav
+python build/film.py                          the approved film (main-he), rebuilt into out/_rebuild-main-he/ (never over the
+                                              published files; same sound, timeline and frame count, picture equal to the eye:
+                                              build/rebuild-check-main-he.txt)
+python build/film.py --variant <name>         any other version, into out/<name>/
+# the voice tests of 7.11 (kept for the record)
+python build/voice_kokoro.py test voice/tests ; python build/voice_vibevoice.py test voice/tests ; python build/voice_compare.py voice/tests
 # captures (installed Chrome, headless; analytics blocked in the capture browser)
 python build/capture_rainbow.py captures/rainbow
 python build/capture_room.py captures/room 1920x1080 --lk                 (and 1080x1920)
 python build/capture_v3.py tour360|walk captures/<x> 1920x1080            (and 1080x1920)
 python build/capture_v3.py planner captures/planner ; python build/capture_v3.py pages captures/pages
-# assets, frames, files
-python build/prep_v3.py <scratch>/film3 captures                          (needs v2's <scratch>/film2/web)
-python build/render.py frames <scratch>/film3 h --workers 5               (and v)
-python build/render.py encode <scratch>/film3 h en-vo_he-sub_16x9.mp4 <scratch>/film3/audio/mix.wav
-python build/sheet.py en-vo_he-sub_16x9.mp4 en-vo_he-sub_16x9-sheet.jpg
-python build/render.py web en-vo_he-sub_16x9.mp4 he-web-16x9.mp4 26
-python build/poster.py <scratch>/film3 116.43 poster-16x9.jpg
-python build/whisper_check.py <scratch>/film3/audio/mix.wav <scratch>/film3/audio/timeline.json voice/whisper_check.json
+python build/prep_v3.py --assets                                          the shared pictures, in C:/Users/777/Documents/film-studio-work/nadlan-developer-film/web
 ```
 
-`build/film.html` is the whole film (both layouts, `?f=h` / `?f=v`, `window.render(t)`); the scenes and subtitles follow
-`timeline.json`. `build/script_v3.json` holds every voiced line, its Hebrew subtitle and the pronunciation fixes.
-`build/campaign_check.py` and its helpers are the campaign check's scripts.
+`build/film.html` is the whole film (both layouts, `?f=h` / `?f=v`, `window.render(t)`); its sections are picture modules, the
+scenes and subtitles follow the variant's timeline (`?tl=timelines/<name>.json`). `build/variant.py` holds the paths and the
+variant rules. `build/campaign_check.py` and its helpers are the campaign check's scripts.

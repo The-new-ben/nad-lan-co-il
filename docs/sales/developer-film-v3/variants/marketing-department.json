@@ -1,0 +1,333 @@
+{
+ "name": "marketing-department",
+ "status": "DRAFT 7.11.2026 night: script only, not voiced, not rendered. Needs Ben's word on the lines before a build.",
+ "audience": "marketing managers and teams at development companies",
+ "why": "in their language: which leads reach them, what each lead already chose, how it works next to their own campaigns",
+ "public_description": "a short video that describes our capabilities",
+ "language": {
+  "voice_over": "en",
+  "subtitles": "he"
+ },
+ "voice": {
+  "engine": "kokoro",
+  "model": "Kokoro-82M v1.0 fp32, local CPU, free",
+  "voice": "bm_george",
+  "speed": 1.0,
+  "takes": "out/marketing-department/voice"
+ },
+ "outputs": {
+  "dir": "out/marketing-department",
+  "h": "en-vo_he-sub_16x9.mp4",
+  "v": "en-vo_he-sub_9x16.mp4",
+  "web": "he-web-16x9.mp4",
+  "poster": "poster-16x9.jpg",
+  "sheet_h": "en-vo_he-sub_16x9-sheet.jpg",
+  "sheet_v": "en-vo_he-sub_9x16-sheet.jpg",
+  "timeline": "timeline.json",
+  "whisper": "whisper_check.json",
+  "voice_flac": "voice-over.flac"
+ },
+ "web": {
+  "crf": 26
+ },
+ "poster": {
+  "scene": "s12",
+  "group": 3,
+  "at": "end",
+  "offset": -0.2
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "module": "s01",
+   "pic": "route chart: Paris, London, Ra'anana",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "Right now, buyers in Paris are looking at projects like yours.",
+     "he": [
+      "ברגע זה, קונים בפריז מסתכלים על פרויקטים כמו שלכם."
+     ]
+    },
+    {
+     "en": "In London. And in Ra'anana.",
+     "he": [
+      "בלונדון. וברעננה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "module": "s04",
+   "pic": "black, the mark, then the positioning (own words on screen)",
+   "lead": 0.6,
+   "tail": 0.8,
+   "groups": [
+    {
+     "en": "Here is what we add to your marketing.",
+     "he": [
+      "זה מה שאנחנו מוסיפים לשיווק שלכם."
+     ]
+    },
+    {
+     "en": "Your team runs the campaign, the brand and the media.",
+     "he": [
+      "הצוות שלכם מוביל את הקמפיין, את המותג ואת המדיה."
+     ],
+     "gap": 0.9
+    },
+    {
+     "en": "We work alongside it. One more channel, built for one result: buyers who are ready to sign.",
+     "he": [
+      "אנחנו עובדים לצדו. עוד ערוץ, שבנוי לתוצאה אחת:",
+      "קונים שמוכנים לחתום."
+     ],
+     "split": [
+      0.62
+     ]
+    }
+   ],
+   "screen": {
+    "band": "הקמפיין שלכם",
+    "bandNote": "· המותג, המדיה, הצוות",
+    "unitNote": "עוד ערוץ, לצד הקמפיין",
+    "goal": "קונים שמוכנים לחתום"
+   }
+  },
+  {
+   "id": "s05",
+   "module": "s05",
+   "pic": "Google in French, our French project page, the AI Mode answer",
+   "lead": 0.35,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "Your buyer searches in his own language, and finds your project.",
+     "he": [
+      "הקונה שלכם מחפש בשפה שלו, ומוצא את הפרויקט שלכם."
+     ]
+    },
+    {
+     "en": "On Google, and inside the answers of ChatGPT, Gemini and Claude.",
+     "he": [
+      "בגוגל, ובתוך התשובות של ChatGPT, Gemini ו־Claude."
+     ]
+    },
+    {
+     "en": "We know how to put you there.",
+     "he": [
+      "אנחנו יודעים לשים אתכם שם."
+     ],
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "module": "s06",
+   "pic": "into the live 3D stage",
+   "lead": 0.4,
+   "tail": 0.4,
+   "groups": [
+    {
+     "en": "He doesn't just look at your render. He lands inside it.",
+     "he": [
+      "הוא לא רק מסתכל על ההדמיה שלכם. הוא נוחת בתוכה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "module": "s07",
+   "pic": "floor 23, the view, the furnished 360, the notes",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "He picks the floor. He sees his view.",
+     "he": [
+      "בוחר קומה. רואה את הנוף שלו."
+     ]
+    },
+    {
+     "en": "He furnishes the apartment and leaves his notes.",
+     "he": [
+      "מעצב את הדירה ומשאיר הערות."
+     ],
+     "gap": 0.8
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "module": "s10",
+   "pic": "Ben's real recordings, by country and device only",
+   "lead": 0.4,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "These are real buyers on our project pages. Israel. The UK. France. Australia.",
+     "he": [
+      "אלה קונים אמיתיים בעמודי הפרויקטים שלנו.",
+      "ישראל, בריטניה, צרפת, אוסטרליה."
+     ],
+     "split": [
+      0.52
+     ]
+    },
+    {
+     "en": "Checking the area, the maps, the renders.",
+     "he": [
+      "בודקים את האזור, את המפות, את ההדמיות."
+     ],
+     "gap": 0.7
+    },
+    {
+     "en": "Choosing, and reaching out.",
+     "he": [
+      "בוחרים, ופונים."
+     ],
+     "gap": 0.6
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "module": "s12",
+   "pic": "the WhatsApp message card, labelled דוגמה: what reaches the sales team",
+   "lead": 0.35,
+   "tail": 0.8,
+   "groups": [
+    {
+     "en": "A form gives your sales team a name and a phone number.",
+     "he": [
+      "טופס נותן לצוות המכירות שלכם שם וטלפון."
+     ]
+    },
+    {
+     "en": "We hand them the floor, the view, the language, and what he already checked.",
+     "he": [
+      "אנחנו מוסרים להם את הקומה, את הנוף, את השפה,",
+      "ואת מה שהוא כבר בדק."
+     ],
+     "split": [
+      0.62
+     ],
+     "gap": 0.6
+    },
+    {
+     "en": "This isn't a lead. It's a buyer who already knows what he's buying.",
+     "he": [
+      "זה לא ליד. זה קונה שכבר יודע מה הוא קונה."
+     ],
+     "gap": 0.7,
+     "ph": [
+      [
+       "lˈiːd",
+       "lˈiːːd"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "module": "s11",
+   "pic": "the video button, then the shared viewing room on the plan",
+   "lead": 0.35,
+   "tail": 0.7,
+   "groups": [
+    {
+     "en": "When he's ready, one tap opens a live video meeting inside the project page.",
+     "he": [
+      "כשהוא מוכן, לחיצה אחת פותחת פגישת וידאו בתוך עמוד הפרויקט."
+     ]
+    },
+    {
+     "en": "Your sales team, the buyer and his family, on the same floor plan.",
+     "he": [
+      "צוות המכירות שלכם, הקונה והמשפחה שלו, על אותה תוכנית דירה."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "module": "s13",
+   "pic": "our team's pages: mortgage and purchase-tax calculators, the booking band",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "From there we stay with him, alongside your sales team,",
+     "he": [
+      "משם אנחנו נשארים איתו, לצד צוות המכירות שלכם,"
+     ]
+    },
+    {
+     "en": "all the way to the signed contract.",
+     "he": [
+      "עד החוזה החתום."
+     ],
+     "gap": 0.2
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "module": "s15",
+   "pic": "the campaign planner on a phone, five steps",
+   "lead": 0.35,
+   "tail": 0.55,
+   "groups": [
+    {
+     "en": "You choose the markets, the buyers and the budget. Next to your own campaigns, not instead of them.",
+     "he": [
+      "אתם בוחרים שווקים, קונים ותקציב.",
+      "לצד הקמפיינים שלכם, לא במקומם."
+     ],
+     "split": [
+      0.5
+     ]
+    },
+    {
+     "en": "It can be live in seven days.",
+     "he": [
+      "הקמפיין יכול להיות באוויר תוך שבעה ימים."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "module": "s16",
+   "pic": "end card (own words)",
+   "lead": 0.5,
+   "tail": 2.2,
+   "groups": [
+    {
+     "en": "Your campaign. And one more channel, of buyers who already chose.",
+     "he": [
+      "הקמפיין שלכם. ועוד ערוץ, של קונים שכבר בחרו."
+     ]
+    },
+    {
+     "en": "nad-lan.co.il, slash marketing.",
+     "say": "Nad lan dot co dot eel, slash marketing.",
+     "he": [
+      "nad-lan.co.il/marketing"
+     ],
+     "gap": 0.6
+    }
+   ],
+   "screen": {
+    "line1": "הקמפיין שלכם.",
+    "line2": "ועוד ערוץ",
+    "line3": "של קונים שכבר בחרו."
+   }
+  }
+ ]
+}

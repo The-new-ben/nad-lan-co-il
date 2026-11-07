@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 """Lay the voice-over on the film's timeline, time the Hebrew subtitles to it, and mix the sound (local only).
 
-  python vo_build.py <voice_dir> <out_dir> [--bed <bed.wav>]
+  python vo_build.py [--variant <name>]        (no flag: main-he, the approved film)
 
-- <voice_dir>/<scene>_<group>.wav from voice_kokoro.py (one generation per group of script_v3.json)
+- the takes: <variant voice.takes>/<scene>_<group>.wav (voice_kokoro.py variant), one generation per group of the variant
 - every take is trimmed of its own silence (-45 dB, 40 ms kept), then placed: the scene's lead, the groups with their gaps
   (default 0.32 s), the scene's tail; the next scene starts where this one ends
 - a group with two subtitle lines is split at the pause nearest to its "split" fraction (the pause found in the take itself)
-- out: vo.wav (48 kHz stereo, the voice only, -16 LUFS), timeline.json (scenes, voice blocks, subtitle cues), and with --bed
-  mix.wav: the bed ducked 12 dB under the voice (pauses shorter than 1.6 s keep it ducked), then the whole mix to -16 LUFS
-  integrated, true peak -1.5 dBTP (two-pass ffmpeg loudnorm, linear)
+- the music bed: v2's own generator (../developer-film-v2/build/bed.py) run at the film's length -> <work>/audio/bed.wav
+- out (in <WORK>/var/<name>/audio): vo.wav (48 kHz stereo, the voice only, -16 LUFS), mix.wav (the bed ducked 12 dB under the voice,
+  pauses shorter than 1.6 s keep it ducked, then the whole mix to -16 LUFS integrated, true peak -1.5 dBTP, two-pass ffmpeg
+  loudnorm, linear), timeline.json (scenes with their picture module, voice blocks, subtitle cues); the timeline is also copied
+  to the variant's outputs (outputs.timeline) and the voice track to outputs.voice_flac
 """
-import json, os, subprocess, sys
+import json, os, shutil, subprocess, sys
 import numpy as np, soundfile as sf
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import variant as VAR
 
 FF = r"C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe"
 H = os.path.dirname(os.path.abspath(__file__))
@@ -74,8 +78,9 @@ def loudnorm(src, dst, I, tp=-1.5):
 
 
 if __name__ == "__main__":
-    VD, OUT = sys.argv[1], sys.argv[2]; os.makedirs(OUT, exist_ok=True)
-    S = json.load(open(os.path.join(H, "script_v3.json"), encoding="utf-8"))
+    VA = VAR.load(); PA = VAR.Paths(VA)
+    VD, OUT = PA.takes, PA.audio; os.makedirs(OUT, exist_ok=True)
+    S = VA["scenes"]
     t = 0.0; parts = []; scenes = []; cues = []; blocks = []
     for s in S:
         a = t; t += s.get("lead", .35)
@@ -93,7 +98,8 @@ if __name__ == "__main__":
                 cues.append({"scene": s["id"], "a": t + c, "b": t + d, "he": he[1], "en": g["en"] + " [2/2]"})
             t += d
         t += s.get("tail", .55)
-        scenes.append({"id": s["id"], "a": round(a, 3), "b": round(t, 3), "pic": s["pic"]})
+        scenes.append({"id": s["id"], "a": round(a, 3), "b": round(t, 3), "pic": s["pic"], "module": s.get("module", s["id"]),
+                       **({"screen": s["screen"]} if s.get("screen") else {}), **({"subs": False} if s.get("subs") is False else {})})
     DUR = round(t, 2)
     # subtitle display: in 0.08 s before the words, out 0.35 s after (never into the next line)
     for i, c in enumerate(cues):
@@ -106,9 +112,13 @@ if __name__ == "__main__":
     vo = vo[:int(DUR * SR)]
     raw = os.path.join(OUT, "vo_raw.wav"); sf.write(raw, np.stack([vo, vo], 1), SR, subtype="PCM_24")
     ln_vo = loudnorm(raw, os.path.join(OUT, "vo.wav"), -16)
-    tl = {"duration": DUR, "scenes": scenes, "voice": blocks, "cues": cues, "voLoudness": ln_vo}
-    if "--bed" in sys.argv:
-        bed, sr = sf.read(sys.argv[sys.argv.index("--bed") + 1], dtype="float32")
+    tl = {"variant": VA["name"], "duration": DUR, "scenes": scenes, "voice": blocks, "cues": cues, "voLoudness": ln_vo}
+    bedp = os.path.join(OUT, "bed.wav")
+    subprocess.run([VAR.SYS_PY, os.path.join(VAR.ROOT, "..", "developer-film-v2", "build", "bed.py"), str(DUR), bedp], check=True, stdout=subprocess.DEVNULL)
+    if os.path.exists(bedp + ".raw.wav"):
+        os.remove(bedp + ".raw.wav")
+    if True:
+        bed, sr = sf.read(bedp, dtype="float32")
         assert sr == SR and len(bed) >= len(vo) - SR, (sr, len(bed), len(vo))
         bed = np.pad(bed, ((0, max(0, len(vo) - len(bed))), (0, 0)))[:len(vo)]
         v, _ = sf.read(os.path.join(OUT, "vo.wav"), dtype="float32"); v = v[:len(vo)]
@@ -132,6 +142,9 @@ if __name__ == "__main__":
         tl["mixLoudness"] = loudnorm(rawm, os.path.join(OUT, "mix.wav"), -16)
         tl["duck"] = "bed -12 dB while the voice speaks (pauses < 1.6 s stay ducked), 0.25 s down with 0.2 s look-ahead, 0.8 s up"
     json.dump(tl, open(os.path.join(OUT, "timeline.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    os.makedirs(os.path.dirname(PA.files["timeline"]), exist_ok=True); shutil.copyfile(os.path.join(OUT, "timeline.json"), PA.files["timeline"])
+    os.makedirs(os.path.dirname(PA.files["voice_flac"]), exist_ok=True)
+    subprocess.run([FF, "-y", "-loglevel", "error", "-i", os.path.join(OUT, "vo.wav"), "-ac", "1", "-c:a", "flac", PA.files["voice_flac"]], check=True)
     print("duration", DUR, "s;", len(cues), "cues;", json.dumps({k: v for k, v in tl.items() if "oud" in k}))
     for s in scenes:
         print(s["id"], s["a"], s["b"], round(s["b"] - s["a"], 2))
