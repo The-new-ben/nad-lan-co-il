@@ -73,3 +73,17 @@ American communities. Proposal only.
 5. Release through the runner, press live on phone and desktop, source audit, benchmark vs immobilier.
 
 Evidence: serp-manual.md; design canvas https://claude.ai/artifact/CCEWLTVzmsbQ3wDnekCnsF (v3: desktop page + interactive phone planner).
+
+## 8. Page decision after Ben's 7.11 midday order ("the whole field in one page, rank first for what developers search")
+- Manual SERP (kw/serp-manual-2.md): "שיווק פרויקטים" is a brand SERP of sales-marketing firms (brokers; we never present as a broker).
+  The winnable developer intent is the budget question: "כמה עולה לשווק פרויקט נדל״ן" / "תקציב שיווק פרויקט נדל״ן": only agency
+  guides rank, no tool, no portal, no AI answer shown. Plus the open field "שיווק פרויקטים לתושבי חוץ".
+- So ONE hub page: H1 around "שיווק פרויקט נדל״ן" + the budget question; sections = the full breakdown of a project's marketing (every
+  line item with sourced prices), the market and data, foreign buyers, AI-answer exposure (geo-test-2026-11-07.md), the planner, our
+  proptech (3D project pages, rentals, renewal room, brokers), proof vs competitors, FAQ with schema.
+- Slug: /marketing/ and /en/marketing/ ("marketing" and "budget" own no URL; "project" is owned by /global/project/..., "cost" by
+  /apartment-purchase-cost-calculator/). Replaces the earlier /international-campaigns/ idea (nothing was live).
+- Tools on the page: (1) the campaign planner nlcamp (built, release 1.72.599 in preparation); (2) a budget breakdown calculator
+  (every line item, by project size and stage, sourced ranges); (3) an AI-citation check for a project (Google AI Mode test, dated);
+  (4) the 3D visit replay (listens to nl:floor / nl:facing / nl:view outside the frozen engine; Hotjar cannot record WebGL).
+- Film v2 from Ben's 1.11 video: storyboard Film.dc.html in the canvas, build in docs/sales/developer-film-v2/.
