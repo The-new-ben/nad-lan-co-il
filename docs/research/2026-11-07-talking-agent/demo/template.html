@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NadLan talking advisor demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0E1F2E; --card:#0F2233; --line:#24435C; --sea:#2F6F86; --mist:#D3DCE2; --paper:#F6F8F9; --on:#FFFFFF; --soft:#A9BCCB; }
+  * { box-sizing:border-box }
+  html,body { margin:0; height:100%; background:var(--paper); font-family:"Assistant","Segoe UI",Arial,sans-serif; color:var(--ink) }
+  .page { min-height:100%; background:#fff url("bg.jpg") top center / 100% auto no-repeat }
+  .agent { position:fixed; inset-inline:12px; bottom:84px; max-width:380px; margin-inline:auto; background:var(--card); color:var(--on);
+           border:1px solid var(--line); border-radius:18px; box-shadow:0 18px 50px rgba(8,20,32,.45); padding:14px 14px 12px;
+           transform:translateY(140%); opacity:0; transition:transform .55s cubic-bezier(.2,1.3,.4,1), opacity .35s }
+  .agent.on { transform:none; opacity:1 }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:10px }
+  .who { font-weight:700; font-size:17px; letter-spacing:.01em }
+  .who small { display:block; font-weight:400; font-size:12.5px; color:var(--soft) }
+  .x { width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--on); font-size:18px; cursor:pointer }
+  .face { position:relative; width:100%; aspect-ratio:1/1; max-height:46vh; border-radius:14px; overflow:hidden; background:#1a2f40; margin-inline:auto }
+  .face .f { position:absolute; inset:0; width:100%; height:100%; transform-origin:50% 60%; animation:breathe 4.2s ease-in-out infinite }
+  .face img { position:absolute; display:block; pointer-events:none }
+  .face img.p { visibility:hidden }
+  @keyframes breathe { 0%,100% { transform:scale(1) translateY(0) } 50% { transform:scale(1.012) translateY(-1px) } }
+  .live { position:absolute; top:10px; inset-inline-start:10px; background:rgba(14,31,46,.72); color:var(--on); font-size:12px; padding:4px 9px; border-radius:20px; display:flex; gap:6px; align-items:center }
+  .live i { width:8px; height:8px; border-radius:50%; background:#4FD1A5; display:inline-block; animation:pulse 1.2s infinite }
+  @keyframes pulse { 50% { opacity:.3 } }
+  .tap { position:absolute; inset:auto 0 12px 0; margin:auto; width:max-content; background:var(--on); color:var(--ink); font-weight:700; border:0; border-radius:24px; padding:9px 16px; font-size:15px; display:none; cursor:pointer }
+  .cap { min-height:3.2em; margin:11px 2px 10px; font-size:16.5px; line-height:1.5 }
+  .cap span { color:var(--soft) } .cap b { font-weight:600; color:var(--on) }
+  .row { display:flex; gap:8px }
+  .row button { flex:1; height:44px; border-radius:12px; font:600 15px "Assistant",sans-serif; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px }
+  .talk { background:var(--sea); color:var(--on); border:0 }
+  .type { background:transparent; color:var(--on); border:1px solid var(--line) }
+  .note { margin-top:8px; font-size:11.5px; color:var(--soft); text-align:center }
+  .wa { position:fixed; inset-inline:0; bottom:0; height:64px; background:#1E7E5A; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px }
+</style>
+</head>
+<body>
+<div class="page"></div>
+<div class="wa">ייעוץ חינם בוואטסאפ</div>
+<section class="agent" id="agent" aria-live="polite">
+  <div class="top">
+    <div class="who" id="who"></div>
+    <button class="x" id="x" aria-label="סגירה">×</button>
+  </div>
+  <div class="face" id="face">
+    <div class="f" id="fwrap"><img id="base" src="face.webp" alt="" style="inset:0;width:100%;height:100%"></div>
+    <div class="live" id="live"><i></i><span id="livet"></span></div>
+    <button class="tap" id="tap"></button>
+  </div>
+  <div class="cap" id="cap"></div>
+  <div class="row">
+    <button class="talk" id="talk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="talkt"></span></button>
+    <button class="type" id="type"></button>
+  </div>
+  <div class="note" id="note"></div>
+</section>
+<audio id="au" preload="auto"></audio>
+<script>
+const DATA = /*DATA*/{};
+const L = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "he";
+const d = DATA[L]; document.documentElement.lang = L; document.documentElement.dir = L === "en" ? "ltr" : "rtl";
+const T = d.ui;
+document.getElementById("who").innerHTML = T.who + "<small>" + T.sub + "</small>";
+document.getElementById("talkt").textContent = T.talk; document.getElementById("type").textContent = T.type;
+document.getElementById("note").textContent = T.note; document.getElementById("livet").textContent = T.live;
+document.getElementById("tap").textContent = T.tap;
+const meta = DATA.meta, wrap = document.getElementById("fwrap"), face = document.getElementById("face");
+const P = {};
+for (const k in meta.patches) {
+  const m = meta.patches[k], im = document.createElement("img");
+  im.src = "m-" + k + ".webp"; im.className = "p";
+  im.style.left = (m.x / meta.size * 100) + "%"; im.style.top = (m.y / meta.size * 100) + "%";
+  im.style.width = (m.w / meta.size * 100) + "%"; im.style.height = (m.h / meta.size * 100) + "%";
+  wrap.appendChild(im); P[k] = im;
+}
+const MAP = { A: null, X: null, B: "B", C: "C", D: "D", E: "E", F: "F", G: "G", H: "C" };
+let cur = null;
+function shape(k) { if (k === cur) return; if (cur && P[cur]) P[cur].style.visibility = "hidden"; if (k && P[k]) P[k].style.visibility = "visible"; cur = k; }
+function blink() { P.BLINK.style.visibility = "visible"; setTimeout(() => P.BLINK.style.visibility = "hidden", 140); setTimeout(blink, 2600 + Math.random() * 2400); }
+setTimeout(blink, 1800);
+const au = document.getElementById("au"); au.src = d.audio;
+const cues = d.cues, words = d.text.split(" ");
+const cap = document.getElementById("cap");
+function caption(t) {
+  const n = Math.min(words.length, Math.ceil(words.length * Math.min(1, t / (d.dur * 0.97))));
+  cap.innerHTML = "<b>" + words.slice(0, n).join(" ") + "</b> <span>" + words.slice(n).join(" ") + "</span>";
+}
+caption(0);
+let raf = 0;
+function tick() {
+  const t = au.currentTime; let k = null;
+  for (const c of cues) { if (t >= c.start && t < c.end) { k = MAP[c.value]; break; } }
+  shape(au.paused ? null : k); caption(t);
+  if (!au.ended) raf = requestAnimationFrame(tick); else { shape(null); caption(d.dur); document.getElementById("live").style.display = "none"; }
+}
+async function speak() {
+  try { await au.play(); window.__playedAt = performance.now(); document.getElementById("tap").style.display = "none"; tick(); }
+  catch (e) { document.getElementById("tap").style.display = "block"; }
+}
+document.getElementById("tap").onclick = speak;
+document.getElementById("x").onclick = () => { au.pause(); document.getElementById("agent").classList.remove("on"); };
+window.__open = () => { document.getElementById("agent").classList.add("on"); setTimeout(speak, 650); };
+if (!location.search.includes("manual")) setTimeout(window.__open, 1200);
+</script>
+</body>
+</html>
