@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="he-IL" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>כמה עולה לשווק את הפרויקט, תצוגה מקומית</title>
+<!-- nlbudget build (7.11.2026, HAD-678): LOCAL preview only. verify.py serves the repo root (nad-lan-co-il) on a free 127.0.0.1 port and opens
+       /docs/research/2026-11-07-campaign-network/build/build-nlbudget/preview.html          (Hebrew page, like /marketing/)
+       /docs/research/2026-11-07-campaign-network/build/build-nlbudget/preview.html?lang=en  (English page, like /en/marketing/)
+     By hand: python -m http.server 47992 --bind 127.0.0.1 (from the repo root).
+     ?both=1 also mounts the campaign planner (nlcamp) below, as on the hub page, so the plans link of the tour line scrolls to it.
+     ?theme=1 also loads the live theme and design-system stylesheets of nad-lan.co.il (read only) to test the scoped rules.
+     The tool is mounted exactly as the shortcode prints it (inc/instruments.php + registry.php.txt): <section class="nli" dir lang> +
+     <div class="nli-host" data-nli="nlbudget" data-nli-data="(the data file)"> with the kicker, the title and the server summary
+     (nadlan_nlb_summary(), rendered by test_nlbudget_summary.php into summary.he.html / summary.en.html and pasted here), then the related
+     links (Hebrew only; the English block has none). Scripts in the enqueue order: core.js, then tools/nlbudget.js, both deferred, both
+     repo files; the data file is the repo file core.js fetches. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/instruments/core.css">
+<script>
+  (function () {
+    var q = location.search, en = /[?&]lang=en\b/.test(q);
+    window.__PV = { en: en, both: /[?&]both=1/.test(q) };
+    if (en) { document.documentElement.setAttribute('lang', 'en'); document.documentElement.setAttribute('dir', 'ltr'); document.title = 'What it costs to market your project, local preview'; }
+    var f = en ? 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans+Hebrew:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap'
+               : 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+    document.write('<link rel="stylesheet" href="' + f + '">');
+    if (/[?&]theme=1/.test(q)) {
+      ['https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css',
+       'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/nlds/nlds.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.css',
+       'https://nad-lan.co.il/wp-content/themes/nadlan-platform-child/assets/css/platform.css',
+       'https://nad-lan.co.il/wp-content/uploads/nadlan-skin/skin-a.css'].forEach(function (u) { document.write('<link rel="stylesheet" href="' + u + '">'); });
+    }
+  })();
+</script>
+<style>
+  html,body{margin:0;background:#FFFFFF;color:#12202A}
+  body{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+  html[lang="en"] body{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:12px 16px 56px;box-sizing:border-box}
+  .pv-top{font-size:13px;line-height:20px;color:#5E6A75;margin:4px 0 8px;border-bottom:1px solid #D3DCE2;padding-bottom:8px}
+</style>
+</head>
+<body>
+<main class="entry-content" id="pv-main">
+<p class="pv-top" id="pv-top">תצוגה מקומית · כמה עולה לשווק את הפרויקט (nlbudget) · שום דבר לא נשלח מכאן לאתר</p>
+</main>
+<template id="pv-he"><section class="nli" dir="rtl" lang="he" aria-label="כמה עולה לשווק את הפרויקט"><div class="nli-host" data-nli="nlbudget" data-nli-data="/plugins/nadlan-config/assets/instruments/data/nlbudget.json"><div class="nli__panel"><p class="nli__kicker">תקציב שיווק ליזמים</p><h2 class="nli__title">כמה עולה לשווק את הפרויקט</h2><!--SUM_HE--><p>מחשבון תקציב השיווק והמכירה של פרויקט נדל״ן חדש: כותבים את מספר הדירות למכירה ואת המחיר הממוצע, בוחרים את שלב הפרויקט ומי מוכר, ומקבלים טווח לכל הפרויקט, את שורות התקציב אחת אחת ואת המקור והסימון של כל מספר (מקור מצוטט, מחירון שפורסם או טענת משרד פרסום).</p><p>העוגנים שפורסמו בישראל: כ־1% ממחזור המכירות לשיווק, מתוכו כ־0.75% ברשת (WE DO MEDIA, טענת משרד פרסום); 2% עד 4% לשיווק ומכירה, כולל צוות מכירות ופרסום (סטארט פוינט, טענת משרד פרסום); 3,000 עד 23,000 ₪ לפרסום לכל דירה שנמכרת (סטארט פוינט, טענת משרד, בלי שם המקור). בדוגמה של סמרנקו, 60 דירות במחיר ממוצע של 2,400,000 ₪ (מכירות של 144,000,000 ₪), זה 2,880,000 עד 5,760,000 ₪ לשיווק ומכירה, וכ־1,440,000 ₪ לשיווק בלבד.</p><p>ליד בלעדי לדירה חדשה עולה 128 עד 173 ₪ לפני מע״מ במחירון של סטארט פוינט, ולפי סמרנקו ליד בקמפיין של פרויקט עולה בפועל 300 עד 800 ₪ (סמרנקו, טענת משרד, בלי שם המקור). בחו״ל: 0.75% עד 2% לשיווק בלבד ו־3% עד 5% לשיווק ומכירה (Feasly, אוסטרליה, טענת משרד פרסום).</p><p>לא פורסם מחיר ישראלי לשורות האלה: מחקר ותמחור, מיתוג, צילום, אתר ודפי נחיתה, ניהול פניות, שילוט חוצות וגדר האתר, דפוס, רדיו וטלוויזיה, יחסי ציבור, אירועים ותערוכות, משרד מכירות ודירה לדוגמה, וגם לא שיעור העמלה של חברות שיווק לפרויקטים חדשים.</p><table><caption>שורות התקציב שיש להן מחיר ישראלי שפורסם</caption><thead><tr><th>רכיב</th><th>טווח</th><th>מקור</th></tr></thead><tbody><tr><td>סט הדמיות חוץ, 3 זוויות</td><td>4,000 עד 6,000 ₪</td><td>מבטים, מחירון הדמיות, מחירון שפורסם</td></tr><tr><td>תוכנית מכר בתלת ממד, לדירה</td><td>1,000 עד 1,500 ₪</td><td>מבטים, מחירון הדמיות, מחירון שפורסם</td></tr><tr><td>סרט הדמיה של דקה עד 3 דקות</td><td>12,000 עד 30,000 ₪</td><td>מבטים, מחירון הדמיות, מחירון שפורסם</td></tr><tr><td>פרסום ממומן ברשת</td><td>כ־0.75% ממחזור המכירות</td><td>WE DO MEDIA, טענת משרד פרסום</td></tr><tr><td>עמוד פרויקט עם סיור וירטואלי</td><td>כלול במנוי נדל״ן: 36,000 ₪, 72,000 ₪ או 144,000 ₪ לשנה</td><td>נדל״ן, המחיר של נדל״ן</td></tr></tbody></table><!--/SUM_HE--></div></div><nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span> <a href="https://nad-lan.co.il/developers/">שיווק פרויקטים ליזמים</a> <a href="https://nad-lan.co.il/advertiser-center/">פרסום פרויקט נדל״ן</a> <a href="https://nad-lan.co.il/advertise/">מחירון הפרסום באתר</a></nav></section></template>
+<template id="pv-en"><section class="nli" dir="ltr" lang="en" aria-label="What it costs to market your project"><div class="nli-host" data-nli="nlbudget" data-nli-data="/plugins/nadlan-config/assets/instruments/data/nlbudget.json"><div class="nli__panel"><p class="nli__kicker">Marketing budget for developers</p><h2 class="nli__title">What it costs to market your project</h2><!--SUM_EN--><p>A marketing and sales budget calculator for a new real-estate project: enter the apartments for sale and the average price, choose the stage and who sells, and get a range for the whole project, the budget lines one by one and the source and flag of every number (cited source, published price list or agency claim).</p><p>The anchors published in Israel: about 1% of sales value for marketing, of which about 0.75% online (WE DO MEDIA, agency claim); 2% to 4% for marketing and sales, the sales team and advertising included (Start Point, agency claim); ₪3,000 to ₪23,000 of advertising per apartment sold (Start Point, agency claim, source not named). In the Semerenko example, 60 apartments at an average of ₪2,400,000 (sales of ₪144,000,000), that is ₪2,880,000 to ₪5,760,000 for marketing and sales, and about ₪1,440,000 for marketing alone.</p><p>An exclusive new-apartment lead costs ₪128 to ₪173 before VAT in the Start Point price list, and per Semerenko a lead in a project campaign actually costs ₪300 to ₪800 (Semerenko, agency claim, source not named). Abroad: 0.75% to 2% for marketing alone and 3% to 5% for marketing and selling (Feasly, Australia, agency claim).</p><p>No Israeli price is published for these lines: research and pricing, branding, photography, website and landing pages, lead handling, outdoor signs and the site fence, print, radio and TV, PR, events and exhibitions, the sales office and model apartment, nor a commission rate of marketing companies for new projects.</p><table><caption>The budget lines with a published Israeli price</caption><thead><tr><th>Line</th><th>Range</th><th>Source</th></tr></thead><tbody><tr><td>Exterior render set, 3 angles</td><td>₪4,000 to ₪6,000</td><td>Mabatim render price list, published price list</td></tr><tr><td>3D sales plan, per apartment</td><td>₪1,000 to ₪1,500</td><td>Mabatim render price list, published price list</td></tr><tr><td>Render film of 1 to 3 minutes</td><td>₪12,000 to ₪30,000</td><td>Mabatim render price list, published price list</td></tr><tr><td>Paid online ads</td><td>about 0.75% of sales value</td><td>WE DO MEDIA, agency claim</td></tr><tr><td>Project page with a virtual tour</td><td>Included in the NadLan plan: ₪36,000, ₪72,000 or ₪144,000 a year</td><td>NadLan, NadLan price</td></tr></tbody></table><!--/SUM_EN--></div></div></section></template>
+<template id="pv-camp-he"><section class="nli" dir="rtl" lang="he" aria-label="מתכנן הקמפיין"><div class="nli-host" data-nli="nlcamp"><div class="nli__panel"><p class="nli__kicker">קמפיין בינלאומי ליזמים</p><h2 class="nli__title">מתכנן הקמפיין</h2></div></div></section></template>
+<template id="pv-camp-en"><section class="nli" dir="ltr" lang="en" aria-label="Campaign planner"><div class="nli-host" data-nli="nlcamp"><div class="nli__panel"><p class="nli__kicker">International campaigns for developers</p><h2 class="nli__title">Campaign planner</h2></div></div></section></template>
+<script>
+  (function () {
+    var en = window.__PV.en, main = document.getElementById('pv-main');
+    if (en) document.getElementById('pv-top').textContent = 'Local preview · What it costs to market your project (nlbudget) · nothing is sent to the site from here';
+    var box = document.createElement('div'); box.id = 'pv-budget';
+    box.appendChild(document.getElementById(en ? 'pv-en' : 'pv-he').content.cloneNode(true));
+    main.appendChild(box);
+    if (window.__PV.both) {
+      var c = document.createElement('div'); c.id = 'pv-camp';
+      c.appendChild(document.getElementById(en ? 'pv-camp-en' : 'pv-camp-he').content.cloneNode(true));
+      main.appendChild(c);
+      window.NLCAMP_CONFIG = { endpoint: '/wp-json/nadlan/v1/campaign-brief', privacy: 'https://nad-lan.co.il/privacy/', plans: {} };
+      var s = document.createElement('script'); s.defer = true; s.src = '/plugins/nadlan-config/assets/instruments/tools/nlcamp.js'; document.body.appendChild(s);
+    }
+  })();
+</script>
+<script defer src="/plugins/nadlan-config/assets/instruments/core.js"></script>
+<script defer src="/plugins/nadlan-config/assets/instruments/tools/nlbudget.js"></script>
+</body>
+</html>

@@ -1,0 +1,2217 @@
+{
+ "base": "http://127.0.0.1:59722/docs/research/2026-11-07-campaign-network/build/build-nlbudget/preview.html",
+ "checks": 317,
+ "failed": [],
+ "report": [
+  {
+   "check": "he 390 the shortcode summary is replaced by the tool; kicker and title",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 faces: the title in Karantina, pills in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "Karantina, \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    38,
+    "\"IBM Plex Sans Hebrew\", \"IBM Plex Sans\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "rtl",
+    "he"
+   ]
+  },
+  {
+   "check": "he 390 phone: the inputs first, the readouts below",
+   "ok": true,
+   "got": [
+    33,
+    33,
+    332,
+    1494
+   ]
+  },
+  {
+   "check": "he 390 opens on the example (tag \"דוגמה\"), sales value, total 2,880,000 עד 5,760,000 ₪",
+   "ok": true,
+   "got": [
+    "2,880,000 עד 5,760,000 ₪"
+   ]
+  },
+  {
+   "check": "he 390 readout 1: \"תקציב שיווק ומכירה, כל הפרויקט\", both bounds named (Start Point), the year line, marketing alone",
+   "ok": true,
+   "got": "תקציב שיווק ומכירה, כל הפרויקט\n2,880,000 עד 5,760,000 ₪\n\n2% עד 4% ממחזור המכירות של 144,000,000 ₪\n\nהגבול התחתון\n2%\nסטארט פוינט, 5.11.2026 טענת משרד פרסום\nהגבול "
+  },
+  {
+   "check": "he 390 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 readout 3: asks for the close rate, no number; the leads table hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the honesty line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the sheet: 17 lines, each with a source and a flag",
+   "ok": true,
+   "got": [
+    17,
+    []
+   ]
+  },
+  {
+   "check": "he 390 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000",
+   "ok": true,
+   "got": [
+    "4,000 עד 6,000 ₪",
+    "60,000 עד 90,000 ₪\n1,000 עד 1,500 ₪ לדיר",
+    "כ־1,080,000 ₪\nכ־0.75% ממחזור ה"
+   ]
+  },
+  {
+   "check": "he 390 \"לא פורסם מחיר ישראלי\" on the 11 unpriced lines and the sales team, each with its own field",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 the tour line: \"כלול במנוי נדל״ן\" and the plans link (36,000 / 72,000 / 144,000 a year) to /marketing/",
+   "ok": true,
+   "got": "המנויים: שוק אחד 36,000 ₪ לשנה, שלושה שווקים 72,000 ₪ לשנה, פרויקט דגל 144,000 ₪ לשנה"
+  },
+  {
+   "check": "he 390 the sheet total 1,156,000 to 1,206,000",
+   "ok": true,
+   "got": "1,156,000 עד 1,206,000 ₪"
+  },
+  {
+   "check": "he 390 the spread: 74% / 26% / +22%, the pre-launch bar marked, heights in proportion; labelled \"דוגמה מחו״ל\"",
+   "ok": true,
+   "got": [
+    [
+     "pre",
+     true,
+     "74%",
+     128
+    ],
+    [
+     "post",
+     false,
+     "26%",
+     54
+    ],
+    [
+     "delay",
+     false,
+     "+22%",
+     45
+    ]
+   ]
+  },
+  {
+   "check": "he 390 the ad-spend line: five companies, sourced, list price",
+   "ok": true,
+   "got": "לעיון: פרסום של חברות הבנייה: השקעה בפרסום ב־2025 לפי בקרת הפרסום של יפעת, במחירון ולא בהכרח בפועל. אאורה כמעט 62 מיליון"
+  },
+  {
+   "check": "he 390 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 example every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 example every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 390 example no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 example survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 390 example every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 390 120 units: total 5,760,000 עד 11,600,000 ₪ (11,520,000 rounded outward to three figures), the example tag gone",
+   "ok": true,
+   "got": "5,760,000 עד 11,600,000 ₪"
+  },
+  {
+   "check": "he 390 0 units: the message, the field marked, the readouts ask for the numbers",
+   "ok": true,
+   "got": [
+    "כתבו מספר דירות, מ־1 עד 10,000.",
+    "כתבו מספר דירות ומחיר ממוצע כדי לראות את התקציב."
+   ]
+  },
+  {
+   "check": "he 390 empty units: still the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 price 3,400,000: total 4,080,000 עד 8,160,000 ₪, the field unmarked",
+   "ok": true,
+   "got": "4,080,000 עד 8,160,000 ₪"
+  },
+  {
+   "check": "he 390 price \"abc\": the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 back to the example; the price is grouped on leaving the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 stage launch: its lines marked \"בשלב שלכם\" (6), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "film",
+     "outdoor",
+     "print",
+     "tv",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 390 stage build: its lines marked \"בשלב שלכם\" (3), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "photo",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 390 stage last: its lines marked \"בשלב שלכם\" (0), the stage bar follows",
+   "ok": true,
+   "got": [
+    [],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 390 stage pre: its lines marked \"בשלב שלכם\" (7), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "research",
+     "brand",
+     "ext3",
+     "plan3d",
+     "tour",
+     "site",
+     "outdoor"
+    ],
+    [
+     "pre"
+    ]
+   ]
+  },
+  {
+   "check": "he 390 marketing company: the commission field appears empty (no default); 1,440,000 עד 2,880,000 ₪ marketing alone, the commission asked for",
+   "ok": true,
+   "got": "1,440,000 עד 2,880,000 ₪"
+  },
+  {
+   "check": "he 390 the fee line: \"עמלת חברת השיווק\", asks for the rate, no own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 bounds: WE DO MEDIA 1% and Feasly 2%",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 company no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 company every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 company every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 company every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 390 company no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 company survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 390 company every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 390 commission 20%: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 commission 1.5%: 3,600,000 עד 5,040,000 ₪, the fee line 2,160,000",
+   "ok": true,
+   "got": "3,600,000 עד 5,040,000 ₪"
+  },
+  {
+   "check": "he 390 back to the developer's team: the field hidden, the total back, the line \"צוות המכירות שלכם\" with its own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 share abroad 20: the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the slider by keyboard: 25, the field follows",
+   "ok": true,
+   "got": "25"
+  },
+  {
+   "check": "he 390 share 101: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 12 months: a year 2,880,000 עד 5,760,000 ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 months empty: no year line, no error",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 months 0: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 48 leads per deal: 2,880 leads, בישראל 2,304, מחו״ל 576; the cost at three labelled bases",
+   "ok": true,
+   "got": [
+    "294,000 עד 399,000 ₪",
+    "691,000 עד 1,850,000 ₪",
+    "$59,000 עד $82,200"
+   ]
+  },
+  {
+   "check": "he 390 leads no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 leads every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 leads every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 leads every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 390 leads no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 leads survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 390 leads every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 390 0 leads per deal: the message, the leads gone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 every \"your price\" field (12) joins the total when typed and leaves it when cleared",
+   "ok": true,
+   "got": [
+    12,
+    12
+   ]
+  },
+  {
+   "check": "he 390 research 50,000 and sales office 400,000: total 1,606,000 עד 1,656,000 ₪, 10 lines left",
+   "ok": true,
+   "got": "1,606,000 עד 1,656,000 ₪"
+  },
+  {
+   "check": "he 390 a wrong own price: its message, the field marked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 390 the anchors panel opens: 7 anchors on the project, each flagged",
+   "ok": true,
+   "got": [
+    [
+     "wedo_total",
+     true
+    ],
+    [
+     "sp_sm",
+     true
+    ],
+    [
+     "fe_mkt",
+     true
+    ],
+    [
+     "fe_sm",
+     true
+    ],
+    [
+     "ud_mkt",
+     true
+    ],
+    [
+     "mf_mkt",
+     true
+    ],
+    [
+     "pb_sm",
+     true
+    ]
+   ]
+  },
+  {
+   "check": "he 390 anchors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "he 390 anchors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 anchors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 anchors every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 390 anchors no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 anchors survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 390 anchors every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 390 copy: the button says \"הועתק\"; the text holds the heading, the total, the leads, my own prices, the page address",
+   "ok": true,
+   "got": "תקציב שיווק לפרויקט, לפי נדל״ן\nהפרויקט: 60 דירות, מחיר ממוצע 2,400,000 ₪, מחזור מכירות 144,000,000 ₪\nשלב: טרום שיווק. מוכר: צוות מכירות של היזם. קונים מחו״ל: 20%. תקופת מכירה: 24 חודשים. 48 פניות לעסק"
+  },
+  {
+   "check": "he 390 WhatsApp: wa.me with the same text only",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%AA%D7%A7%D7%A6%D7%99%D7%91%20%D7%A9%D7%99%D7%95%D7%95%D7"
+  },
+  {
+   "check": "he 390 the plans link alone opens /marketing/ (stubbed here)",
+   "ok": true,
+   "got": "http://127.0.0.1:59722/marketing/"
+  },
+  {
+   "check": "he 390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 390 nothing left 127.0.0.1 except Google fonts and wa.me",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 the shortcode summary is replaced by the tool; kicker and title",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 faces: the title in Karantina, pills in IBM Plex Sans Hebrew, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "Karantina, \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    44,
+    "\"IBM Plex Sans Hebrew\", \"IBM Plex Sans\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "rtl",
+    "he"
+   ]
+  },
+  {
+   "check": "he 1280 the inputs panel on the right, beside the readouts",
+   "ok": true,
+   "got": [
+    821,
+    99,
+    244,
+    244
+   ]
+  },
+  {
+   "check": "he 1280 opens on the example (tag \"דוגמה\"), sales value, total 2,880,000 עד 5,760,000 ₪",
+   "ok": true,
+   "got": [
+    "2,880,000 עד 5,760,000 ₪"
+   ]
+  },
+  {
+   "check": "he 1280 readout 1: \"תקציב שיווק ומכירה, כל הפרויקט\", both bounds named (Start Point), the year line, marketing alone",
+   "ok": true,
+   "got": "תקציב שיווק ומכירה, כל הפרויקט\n2,880,000 עד 5,760,000 ₪\n\n2% עד 4% ממחזור המכירות של 144,000,000 ₪\n\nהגבול התחתון\n2%\nסטארט פוינט, 5.11.2026 טענת משרד פרסום\nהגבול "
+  },
+  {
+   "check": "he 1280 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 readout 3: asks for the close rate, no number; the leads table hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the honesty line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the sheet: 17 lines, each with a source and a flag",
+   "ok": true,
+   "got": [
+    17,
+    []
+   ]
+  },
+  {
+   "check": "he 1280 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000",
+   "ok": true,
+   "got": [
+    "4,000 עד 6,000 ₪",
+    "60,000 עד 90,000 ₪\n1,000 עד 1,500 ₪ לדיר",
+    "כ־1,080,000 ₪\nכ־0.75% ממחזור ה"
+   ]
+  },
+  {
+   "check": "he 1280 \"לא פורסם מחיר ישראלי\" on the 11 unpriced lines and the sales team, each with its own field",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 the tour line: \"כלול במנוי נדל״ן\" and the plans link (36,000 / 72,000 / 144,000 a year) to /marketing/",
+   "ok": true,
+   "got": "המנויים: שוק אחד 36,000 ₪ לשנה, שלושה שווקים 72,000 ₪ לשנה, פרויקט דגל 144,000 ₪ לשנה"
+  },
+  {
+   "check": "he 1280 the sheet total 1,156,000 to 1,206,000",
+   "ok": true,
+   "got": "1,156,000 עד 1,206,000 ₪"
+  },
+  {
+   "check": "he 1280 the spread: 74% / 26% / +22%, the pre-launch bar marked, heights in proportion; labelled \"דוגמה מחו״ל\"",
+   "ok": true,
+   "got": [
+    [
+     "pre",
+     true,
+     "74%",
+     128
+    ],
+    [
+     "post",
+     false,
+     "26%",
+     54
+    ],
+    [
+     "delay",
+     false,
+     "+22%",
+     45
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 the ad-spend line: five companies, sourced, list price",
+   "ok": true,
+   "got": "לעיון: פרסום של חברות הבנייה: השקעה בפרסום ב־2025 לפי בקרת הפרסום של יפעת, במחירון ולא בהכרח בפועל. אאורה כמעט 62 מיליון"
+  },
+  {
+   "check": "he 1280 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 example every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 example every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 1280 example no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 example survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 1280 example every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 1280 120 units: total 5,760,000 עד 11,600,000 ₪ (11,520,000 rounded outward to three figures), the example tag gone",
+   "ok": true,
+   "got": "5,760,000 עד 11,600,000 ₪"
+  },
+  {
+   "check": "he 1280 0 units: the message, the field marked, the readouts ask for the numbers",
+   "ok": true,
+   "got": [
+    "כתבו מספר דירות, מ־1 עד 10,000.",
+    "כתבו מספר דירות ומחיר ממוצע כדי לראות את התקציב."
+   ]
+  },
+  {
+   "check": "he 1280 empty units: still the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 price 3,400,000: total 4,080,000 עד 8,160,000 ₪, the field unmarked",
+   "ok": true,
+   "got": "4,080,000 עד 8,160,000 ₪"
+  },
+  {
+   "check": "he 1280 price \"abc\": the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 back to the example; the price is grouped on leaving the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 stage launch: its lines marked \"בשלב שלכם\" (6), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "film",
+     "outdoor",
+     "print",
+     "tv",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 stage build: its lines marked \"בשלב שלכם\" (3), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "photo",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 stage last: its lines marked \"בשלב שלכם\" (0), the stage bar follows",
+   "ok": true,
+   "got": [
+    [],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 stage pre: its lines marked \"בשלב שלכם\" (7), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "research",
+     "brand",
+     "ext3",
+     "plan3d",
+     "tour",
+     "site",
+     "outdoor"
+    ],
+    [
+     "pre"
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 marketing company: the commission field appears empty (no default); 1,440,000 עד 2,880,000 ₪ marketing alone, the commission asked for",
+   "ok": true,
+   "got": "1,440,000 עד 2,880,000 ₪"
+  },
+  {
+   "check": "he 1280 the fee line: \"עמלת חברת השיווק\", asks for the rate, no own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 bounds: WE DO MEDIA 1% and Feasly 2%",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 company no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 company every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 company every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 company every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 1280 company no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 company survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 1280 company every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 1280 commission 20%: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 commission 1.5%: 3,600,000 עד 5,040,000 ₪, the fee line 2,160,000",
+   "ok": true,
+   "got": "3,600,000 עד 5,040,000 ₪"
+  },
+  {
+   "check": "he 1280 back to the developer's team: the field hidden, the total back, the line \"צוות המכירות שלכם\" with its own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 share abroad 20: the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the slider by keyboard: 25, the field follows",
+   "ok": true,
+   "got": "25"
+  },
+  {
+   "check": "he 1280 share 101: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 12 months: a year 2,880,000 עד 5,760,000 ₪",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 months empty: no year line, no error",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 months 0: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 48 leads per deal: 2,880 leads, בישראל 2,304, מחו״ל 576; the cost at three labelled bases",
+   "ok": true,
+   "got": [
+    "294,000 עד 399,000 ₪",
+    "691,000 עד 1,850,000 ₪",
+    "$59,000 עד $82,200"
+   ]
+  },
+  {
+   "check": "he 1280 leads no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 leads every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 leads every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 leads every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 1280 leads no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 leads survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 1280 leads every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 1280 0 leads per deal: the message, the leads gone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 every \"your price\" field (12) joins the total when typed and leaves it when cleared",
+   "ok": true,
+   "got": [
+    12,
+    12
+   ]
+  },
+  {
+   "check": "he 1280 research 50,000 and sales office 400,000: total 1,606,000 עד 1,656,000 ₪, 10 lines left",
+   "ok": true,
+   "got": "1,606,000 עד 1,656,000 ₪"
+  },
+  {
+   "check": "he 1280 a wrong own price: its message, the field marked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "he 1280 the anchors panel opens: 7 anchors on the project, each flagged",
+   "ok": true,
+   "got": [
+    [
+     "wedo_total",
+     true
+    ],
+    [
+     "sp_sm",
+     true
+    ],
+    [
+     "fe_mkt",
+     true
+    ],
+    [
+     "fe_sm",
+     true
+    ],
+    [
+     "ud_mkt",
+     true
+    ],
+    [
+     "mf_mkt",
+     true
+    ],
+    [
+     "pb_sm",
+     true
+    ]
+   ]
+  },
+  {
+   "check": "he 1280 anchors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "he 1280 anchors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 anchors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 anchors every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "he 1280 anchors no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 anchors survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "he 1280 anchors every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "he 1280 copy: the button says \"הועתק\"; the text holds the heading, the total, the leads, my own prices, the page address",
+   "ok": true,
+   "got": "תקציב שיווק לפרויקט, לפי נדל״ן\nהפרויקט: 60 דירות, מחיר ממוצע 2,400,000 ₪, מחזור מכירות 144,000,000 ₪\nשלב: טרום שיווק. מוכר: צוות מכירות של היזם. קונים מחו״ל: 20%. תקופת מכירה: 24 חודשים. 48 פניות לעסק"
+  },
+  {
+   "check": "he 1280 WhatsApp: wa.me with the same text only",
+   "ok": true,
+   "got": "https://wa.me/?text=%D7%AA%D7%A7%D7%A6%D7%99%D7%91%20%D7%A9%D7%99%D7%95%D7%95%D7"
+  },
+  {
+   "check": "he 1280 the plans link alone opens /marketing/ (stubbed here)",
+   "ok": true,
+   "got": "http://127.0.0.1:59722/marketing/"
+  },
+  {
+   "check": "he 1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he 1280 nothing left 127.0.0.1 except Google fonts and wa.me",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 the shortcode summary is replaced by the tool; kicker and title",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 faces: the title in IBM Plex Sans Condensed, pills in IBM Plex Sans, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Condensed\", \"IBM Plex Sans\", system-ui, sans-serif",
+    30,
+    "\"IBM Plex Sans\", \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "ltr",
+    "en"
+   ]
+  },
+  {
+   "check": "en 390 phone: the inputs first, the readouts below",
+   "ok": true,
+   "got": [
+    33,
+    33,
+    350,
+    1568
+   ]
+  },
+  {
+   "check": "en 390 opens on the example (tag \"Example\"), sales value, total ₪2,880,000 to ₪5,760,000",
+   "ok": true,
+   "got": [
+    "₪2,880,000 to ₪5,760,000"
+   ]
+  },
+  {
+   "check": "en 390 readout 1: \"Marketing and sales budget, whole project\", both bounds named (Start Point), the year line, marketing alone",
+   "ok": true,
+   "got": "Marketing and sales budget, whole project\n₪2,880,000 to ₪5,760,000\n\n2% to 4% of the sales value of ₪144,000,000\n\nLower bound\n2%\nStart Point, 5.11.2026 Agency cl"
+  },
+  {
+   "check": "en 390 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 readout 3: asks for the close rate, no number; the leads table hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the honesty line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the sheet: 17 lines, each with a source and a flag",
+   "ok": true,
+   "got": [
+    17,
+    []
+   ]
+  },
+  {
+   "check": "en 390 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000",
+   "ok": true,
+   "got": [
+    "₪4,000 to ₪6,000",
+    "₪60,000 to ₪90,000\n₪1,000 to ₪1,500 per ",
+    "about ₪1,080,000\nabout 0.75% o"
+   ]
+  },
+  {
+   "check": "en 390 \"No Israeli price published\" on the 11 unpriced lines and the sales team, each with its own field",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 the tour line: \"Included in the NadLan plan\" and the plans link (36,000 / 72,000 / 144,000 a year) to /en/marketing/",
+   "ok": true,
+   "got": "The plans: One market ₪36,000 a year, Three markets ₪72,000 a year, Flagship ₪144,000 a year"
+  },
+  {
+   "check": "en 390 the sheet total 1,156,000 to 1,206,000",
+   "ok": true,
+   "got": "₪1,156,000 to ₪1,206,000"
+  },
+  {
+   "check": "en 390 the spread: 74% / 26% / +22%, the pre-launch bar marked, heights in proportion; labelled \"Example abroad\"",
+   "ok": true,
+   "got": [
+    [
+     "pre",
+     true,
+     "74%",
+     128
+    ],
+    [
+     "post",
+     false,
+     "26%",
+     54
+    ],
+    [
+     "delay",
+     false,
+     "+22%",
+     45
+    ]
+   ]
+  },
+  {
+   "check": "en 390 the ad-spend line: five companies, sourced, list price",
+   "ok": true,
+   "got": "For reference: ad spend of the building companies: Ad investment in 2025 per Ifat ad monitoring, at list price, not nece"
+  },
+  {
+   "check": "en 390 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 example every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 example every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 390 example no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 example survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 390 example every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 390 120 units: total ₪5,760,000 to ₪11,600,000 (11,520,000 rounded outward to three figures), the example tag gone",
+   "ok": true,
+   "got": "₪5,760,000 to ₪11,600,000"
+  },
+  {
+   "check": "en 390 0 units: the message, the field marked, the readouts ask for the numbers",
+   "ok": true,
+   "got": [
+    "Enter a number of apartments from 1 to 10,000.",
+    "Enter the apartments and the average price to see the budget."
+   ]
+  },
+  {
+   "check": "en 390 empty units: still the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 price 3,400,000: total ₪4,080,000 to ₪8,160,000, the field unmarked",
+   "ok": true,
+   "got": "₪4,080,000 to ₪8,160,000"
+  },
+  {
+   "check": "en 390 price \"abc\": the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 back to the example; the price is grouped on leaving the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 stage launch: its lines marked \"Your stage\" (6), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "film",
+     "outdoor",
+     "print",
+     "tv",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 390 stage build: its lines marked \"Your stage\" (3), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "photo",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 390 stage last: its lines marked \"Your stage\" (0), the stage bar follows",
+   "ok": true,
+   "got": [
+    [],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 390 stage pre: its lines marked \"Your stage\" (7), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "research",
+     "brand",
+     "ext3",
+     "plan3d",
+     "tour",
+     "site",
+     "outdoor"
+    ],
+    [
+     "pre"
+    ]
+   ]
+  },
+  {
+   "check": "en 390 marketing company: the commission field appears empty (no default); ₪1,440,000 to ₪2,880,000 marketing alone, the commission asked for",
+   "ok": true,
+   "got": "₪1,440,000 to ₪2,880,000"
+  },
+  {
+   "check": "en 390 the fee line: \"Marketing company commission\", asks for the rate, no own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 bounds: WE DO MEDIA 1% and Feasly 2%",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 company no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 company every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 company every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 company every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 390 company no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 company survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 390 company every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 390 commission 20%: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 commission 1.5%: ₪3,600,000 to ₪5,040,000, the fee line 2,160,000",
+   "ok": true,
+   "got": "₪3,600,000 to ₪5,040,000"
+  },
+  {
+   "check": "en 390 back to the developer's team: the field hidden, the total back, the line \"Your sales team\" with its own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 share abroad 20: the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the slider by keyboard: 25, the field follows",
+   "ok": true,
+   "got": "25"
+  },
+  {
+   "check": "en 390 share 101: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 12 months: a year ₪2,880,000 to ₪5,760,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 months empty: no year line, no error",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 months 0: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 48 leads per deal: 2,880 leads, In Israel 2,304, abroad 576; the cost at three labelled bases",
+   "ok": true,
+   "got": [
+    "₪294,000 to ₪399,000",
+    "₪691,000 to ₪1,850,000",
+    "$59,000 to $82,200"
+   ]
+  },
+  {
+   "check": "en 390 leads no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 leads every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 leads every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 leads every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 390 leads no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 leads survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 390 leads every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 390 0 leads per deal: the message, the leads gone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 every \"your price\" field (12) joins the total when typed and leaves it when cleared",
+   "ok": true,
+   "got": [
+    12,
+    12
+   ]
+  },
+  {
+   "check": "en 390 research 50,000 and sales office 400,000: total ₪1,606,000 to ₪1,656,000, 10 lines left",
+   "ok": true,
+   "got": "₪1,606,000 to ₪1,656,000"
+  },
+  {
+   "check": "en 390 a wrong own price: its message, the field marked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 390 the anchors panel opens: 7 anchors on the project, each flagged",
+   "ok": true,
+   "got": [
+    [
+     "wedo_total",
+     true
+    ],
+    [
+     "sp_sm",
+     true
+    ],
+    [
+     "fe_mkt",
+     true
+    ],
+    [
+     "fe_sm",
+     true
+    ],
+    [
+     "ud_mkt",
+     true
+    ],
+    [
+     "mf_mkt",
+     true
+    ],
+    [
+     "pb_sm",
+     true
+    ]
+   ]
+  },
+  {
+   "check": "en 390 anchors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "en 390 anchors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 anchors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 anchors every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 390 anchors no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 anchors survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 390 anchors every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 390 copy: the button says \"Copied\"; the text holds the heading, the total, the leads, my own prices, the page address",
+   "ok": true,
+   "got": "Project marketing budget, by NadLan\nThe project: 60 apartments, average price ₪2,400,000, sales value ₪144,000,000\nStage: Pre-launch. Who sells: The developer's sales team. Buyers abroad: 20%. Sales p"
+  },
+  {
+   "check": "en 390 WhatsApp: wa.me with the same text only",
+   "ok": true,
+   "got": "https://wa.me/?text=Project%20marketing%20budget%2C%20by%20NadLan%0AThe%20projec"
+  },
+  {
+   "check": "en 390 the plans link alone opens /en/marketing/ (stubbed here)",
+   "ok": true,
+   "got": "http://127.0.0.1:59722/en/marketing/"
+  },
+  {
+   "check": "en 390 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 390 nothing left 127.0.0.1 except Google fonts and wa.me",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 the shortcode summary is replaced by the tool; kicker and title",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 faces: the title in IBM Plex Sans Condensed, pills in IBM Plex Sans, figures in IBM Plex Mono; dir and lang",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Condensed\", \"IBM Plex Sans\", system-ui, sans-serif",
+    36,
+    "\"IBM Plex Sans\", \"IBM Plex Sans Hebrew\", system-ui, sans-serif",
+    "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, monospace",
+    "ltr",
+    "en"
+   ]
+  },
+  {
+   "check": "en 1280 the inputs panel on the left, beside the readouts",
+   "ok": true,
+   "got": [
+    99,
+    487,
+    240,
+    240
+   ]
+  },
+  {
+   "check": "en 1280 opens on the example (tag \"Example\"), sales value, total ₪2,880,000 to ₪5,760,000",
+   "ok": true,
+   "got": [
+    "₪2,880,000 to ₪5,760,000"
+   ]
+  },
+  {
+   "check": "en 1280 readout 1: \"Marketing and sales budget, whole project\", both bounds named (Start Point), the year line, marketing alone",
+   "ok": true,
+   "got": "Marketing and sales budget, whole project\n₪2,880,000 to ₪5,760,000\n\n2% to 4% of the sales value of ₪144,000,000\n\nLower bound\n2%\nStart Point, 5.11.2026 Agency cl"
+  },
+  {
+   "check": "en 1280 readout 2: 3,000 to 23,000 per apartment, 180,000 to 1,380,000 for 60",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 readout 3: asks for the close rate, no number; the leads table hidden",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the honesty line",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the sheet: 17 lines, each with a source and a flag",
+   "ok": true,
+   "got": [
+    17,
+    []
+   ]
+  },
+  {
+   "check": "en 1280 renders 4,000 to 6,000; sales plans 60,000 to 90,000; film 12,000 to 30,000; media about 1,080,000",
+   "ok": true,
+   "got": [
+    "₪4,000 to ₪6,000",
+    "₪60,000 to ₪90,000\n₪1,000 to ₪1,500 per ",
+    "about ₪1,080,000\nabout 0.75% o"
+   ]
+  },
+  {
+   "check": "en 1280 \"No Israeli price published\" on the 11 unpriced lines and the sales team, each with its own field",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 the tour line: \"Included in the NadLan plan\" and the plans link (36,000 / 72,000 / 144,000 a year) to /en/marketing/",
+   "ok": true,
+   "got": "The plans: One market ₪36,000 a year, Three markets ₪72,000 a year, Flagship ₪144,000 a year"
+  },
+  {
+   "check": "en 1280 the sheet total 1,156,000 to 1,206,000",
+   "ok": true,
+   "got": "₪1,156,000 to ₪1,206,000"
+  },
+  {
+   "check": "en 1280 the spread: 74% / 26% / +22%, the pre-launch bar marked, heights in proportion; labelled \"Example abroad\"",
+   "ok": true,
+   "got": [
+    [
+     "pre",
+     true,
+     "74%",
+     128
+    ],
+    [
+     "post",
+     false,
+     "26%",
+     54
+    ],
+    [
+     "delay",
+     false,
+     "+22%",
+     45
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 the ad-spend line: five companies, sourced, list price",
+   "ok": true,
+   "got": "For reference: ad spend of the building companies: Ad investment in 2025 per Ifat ad monitoring, at list price, not nece"
+  },
+  {
+   "check": "en 1280 example no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 example every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 example every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 example every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 1280 example no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 example survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 1280 example every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 1280 120 units: total ₪5,760,000 to ₪11,600,000 (11,520,000 rounded outward to three figures), the example tag gone",
+   "ok": true,
+   "got": "₪5,760,000 to ₪11,600,000"
+  },
+  {
+   "check": "en 1280 0 units: the message, the field marked, the readouts ask for the numbers",
+   "ok": true,
+   "got": [
+    "Enter a number of apartments from 1 to 10,000.",
+    "Enter the apartments and the average price to see the budget."
+   ]
+  },
+  {
+   "check": "en 1280 empty units: still the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 price 3,400,000: total ₪4,080,000 to ₪8,160,000, the field unmarked",
+   "ok": true,
+   "got": "₪4,080,000 to ₪8,160,000"
+  },
+  {
+   "check": "en 1280 price \"abc\": the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 back to the example; the price is grouped on leaving the field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 stage launch: its lines marked \"Your stage\" (6), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "film",
+     "outdoor",
+     "print",
+     "tv",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 stage build: its lines marked \"Your stage\" (3), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "photo",
+     "events",
+     "office"
+    ],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 stage last: its lines marked \"Your stage\" (0), the stage bar follows",
+   "ok": true,
+   "got": [
+    [],
+    [
+     "post"
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 stage pre: its lines marked \"Your stage\" (7), the stage bar follows",
+   "ok": true,
+   "got": [
+    [
+     "research",
+     "brand",
+     "ext3",
+     "plan3d",
+     "tour",
+     "site",
+     "outdoor"
+    ],
+    [
+     "pre"
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 marketing company: the commission field appears empty (no default); ₪1,440,000 to ₪2,880,000 marketing alone, the commission asked for",
+   "ok": true,
+   "got": "₪1,440,000 to ₪2,880,000"
+  },
+  {
+   "check": "en 1280 the fee line: \"Marketing company commission\", asks for the rate, no own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 bounds: WE DO MEDIA 1% and Feasly 2%",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 company no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 company every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 company every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 company every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 1280 company no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 company survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 1280 company every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 1280 commission 20%: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 commission 1.5%: ₪3,600,000 to ₪5,040,000, the fee line 2,160,000",
+   "ok": true,
+   "got": "₪3,600,000 to ₪5,040,000"
+  },
+  {
+   "check": "en 1280 back to the developer's team: the field hidden, the total back, the line \"Your sales team\" with its own field",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 share abroad 20: the slider follows",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the slider by keyboard: 25, the field follows",
+   "ok": true,
+   "got": "25"
+  },
+  {
+   "check": "en 1280 share 101: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 12 months: a year ₪2,880,000 to ₪5,760,000",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 months empty: no year line, no error",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 months 0: the message",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 48 leads per deal: 2,880 leads, In Israel 2,304, abroad 576; the cost at three labelled bases",
+   "ok": true,
+   "got": [
+    "₪294,000 to ₪399,000",
+    "₪691,000 to ₪1,850,000",
+    "$59,000 to $82,200"
+   ]
+  },
+  {
+   "check": "en 1280 leads no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 leads every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 leads every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 leads every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 1280 leads no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 leads survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 1280 leads every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 1280 0 leads per deal: the message, the leads gone",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 every \"your price\" field (12) joins the total when typed and leaves it when cleared",
+   "ok": true,
+   "got": [
+    12,
+    12
+   ]
+  },
+  {
+   "check": "en 1280 research 50,000 and sales office 400,000: total ₪1,606,000 to ₪1,656,000, 10 lines left",
+   "ok": true,
+   "got": "₪1,606,000 to ₪1,656,000"
+  },
+  {
+   "check": "en 1280 a wrong own price: its message, the field marked",
+   "ok": true,
+   "got": null
+  },
+  {
+   "check": "en 1280 the anchors panel opens: 7 anchors on the project, each flagged",
+   "ok": true,
+   "got": [
+    [
+     "wedo_total",
+     true
+    ],
+    [
+     "sp_sm",
+     true
+    ],
+    [
+     "fe_mkt",
+     true
+    ],
+    [
+     "fe_sm",
+     true
+    ],
+    [
+     "ud_mkt",
+     true
+    ],
+    [
+     "mf_mkt",
+     true
+    ],
+    [
+     "pb_sm",
+     true
+    ]
+   ]
+  },
+  {
+   "check": "en 1280 anchors no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 1280,
+    "iw": 1280
+   }
+  },
+  {
+   "check": "en 1280 anchors every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 anchors every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 anchors every visible group named",
+   "ok": true,
+   "got": [
+    "Project stage",
+    "Who sells"
+   ]
+  },
+  {
+   "check": "en 1280 anchors no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 anchors survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "en 1280 anchors every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "en 1280 copy: the button says \"Copied\"; the text holds the heading, the total, the leads, my own prices, the page address",
+   "ok": true,
+   "got": "Project marketing budget, by NadLan\nThe project: 60 apartments, average price ₪2,400,000, sales value ₪144,000,000\nStage: Pre-launch. Who sells: The developer's sales team. Buyers abroad: 20%. Sales p"
+  },
+  {
+   "check": "en 1280 WhatsApp: wa.me with the same text only",
+   "ok": true,
+   "got": "https://wa.me/?text=Project%20marketing%20budget%2C%20by%20NadLan%0AThe%20projec"
+  },
+  {
+   "check": "en 1280 the plans link alone opens /en/marketing/ (stubbed here)",
+   "ok": true,
+   "got": "http://127.0.0.1:59722/en/marketing/"
+  },
+  {
+   "check": "en 1280 no console error or warning, no page error",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en 1280 nothing left 127.0.0.1 except Google fonts and wa.me",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "he both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)",
+   "ok": true,
+   "got": [
+    0,
+    3790,
+    162
+   ]
+  },
+  {
+   "check": "he both: no console error, nothing outside",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "en both: the plans link scrolls to the planner on the same page (the address unchanged, the planner in the upper part of the screen)",
+   "ok": true,
+   "got": [
+    0,
+    4071,
+    166
+   ]
+  },
+  {
+   "check": "en both: no console error, nothing outside",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 no horizontal scroll",
+   "ok": true,
+   "got": {
+    "sw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "check": "theme 390 every visible control at least 44 px high",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every input labelled",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 every visible group named",
+   "ok": true,
+   "got": [
+    "שלב הפרויקט",
+    "מי מוכר"
+   ]
+  },
+  {
+   "check": "theme 390 no long dash, no tech word",
+   "ok": true,
+   "got": []
+  },
+  {
+   "check": "theme 390 survey red only on the total",
+   "ok": true,
+   "got": [
+    "total"
+   ]
+  },
+  {
+   "check": "theme 390 every visible source line carries its flag",
+   "ok": true,
+   "got": 0
+  },
+  {
+   "check": "theme 390: pills in Plex Sans Hebrew, the pressed pill in sea, round; the title in ink; fields in Plex Mono; the sheet stacked (no header row); the total underlined survey red",
+   "ok": true,
+   "got": [
+    "\"IBM Plex Sans Hebrew\"",
+    "rgb(47, 111, 134)",
+    "999px",
+    "rgb(18, 32, 42)",
+    "\"IBM Plex Mono\"",
+    "block",
+    "none",
+    "rgb(196, 37, 80)"
+   ]
+  },
+  {
+   "check": "theme 390: no page error and no local console error",
+   "ok": true,
+   "got": []
+  }
+ ]
+}

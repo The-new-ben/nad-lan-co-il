@@ -1,0 +1,28 @@
+1. the snippet
+  ok   php -l registry.php.txt  [No syntax errors detected in C:\Users\777\nad-lan\nad-lan-co-il\docs\research\2026-11-07-campaign-network\build\build-nlbudget/registry.php.txt]
+  ok   entry: the Hebrew name, kicker and category
+  ok   entry: one data file, nlbudget.json
+  ok   entry: the English name, and no Hebrew related links on the English page
+  ok   entry: no long dash
+  ok   the two summary branches
+
+2. the summary
+  ok   both summaries are written  [[3048,2351]]
+  ok   the source's example worked through: 60 x 2.4 million, 2% to 4% = 2,880,000 to 5,760,000
+  ok   and about 1,440,000 for marketing alone (the source said about 1.4 million)
+  ok   Hebrew: the anchor with its source and flag
+  ok   the lead price list, before VAT as published
+  ok   the campaign cost per lead, flagged as an unnamed source
+  ok   the anchors abroad, named and flagged
+  ok   the render price list rows
+  ok   the tour line: included in the plan, the three yearly prices
+  ok   the lines without an Israeli price are said, not priced
+  ok   no long dash
+  ok   no outbound links (sources named, not linked)
+  ok   one well-closed table
+  ok   no tech word in either summary
+  ok   no data file: an empty summary, no error
+  ok   source names come from the data file
+  ok   preview.html carries both summaries
+
+23 of 23 passed

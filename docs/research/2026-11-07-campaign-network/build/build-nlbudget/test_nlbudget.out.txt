@@ -1,0 +1,105 @@
+1. the data file: every figure sourced, flagged, with verbatim evidence
+  ok   key nlbudget, as of 7.11.2026, 33 figures
+  ok   every date is the source page own published / modified date (pages.json); an undated page (the Mabatim price list) says so and shows the retrieval date  [[]]
+  ok   every figure: unit, currency, scope (il / abroad), source name he + en, URL field, date, retrieval date, a union.md flag, he + en words, evidence  [[]]
+  ok   a URL on every outside source; only NadLan's own price and our own checks have none
+  ok   every evidence string is found verbatim in its file (teardown/pages.json, competitors/services.json, teardown/union.md, PLAN.md)  [[]]
+  ok   never an invented number: every number of every figure appears in its own evidence string  [[]]
+  ok   the words of every figure carry no number its fields do not hold (dates aside)  [[]]
+  ok   every published range has lo <= hi
+  ok   the budget sheet: research and pricing, branding, renders (3-angle set, 3D sales plan per unit, film), tour and project page, photography, site, CRM, media, outdoor and fence, print, radio/TV, PR and SEO, events abroad, sales office and model apartment, marketing company fee  [["research","brand","ext3","plan3d","film","tour","photo","site","crm","media","outdoor","print","tv","pr","events","office","fee"]]
+  ok   every line: a known kind and stage; a priced line points to its figure; context refers to real figures
+  ok   no Israeli price: research, branding, photography, site, CRM, outdoor, print, radio/TV, PR, events, sales office (the developer enters his own)  [["research","brand","photo","site","crm","outdoor","print","tv","pr","events","office"]]
+
+2. the figures, against union.md
+  ok   about 1% of sales, 0.75% online: WE DO MEDIA, agency claim
+  ok   2% to 4% incl. sales team: Start Point, agency claim
+  ok   3,000 to 23,000 per apartment sold: claim, unnamed source
+  ok   exclusive leads 128 to 173 before VAT: price list of 4.11.2026
+  ok   campaign cost per lead 300 to 800: claim, unnamed source
+  ok   US search CPL $102.51 (all) to $142.59 (homes for sale): LocaliQ, cited, in dollars
+  ok   renders: 3 angles 4,000-6,000; 3D sales plan 1,000-1,500 a unit; film 12,000-30,000 (Mabatim price list)
+  ok   the worked example abroad: 530,000 of 720,000 before launch (Feasly, Australia, example)
+  ok   the NadLan plans: 36,000 / 72,000 / 144,000 a year
+  ok   Globes / Ifat 2025: Aura almost 62, Tidhar 15, Israel Canada 30.5, Hagag 11.5, Dimri 6.5 million (cited)
+  ok   the "no Israeli price" source: 50 pages read; 4 exhibitions checked, none publishes an exhibitor price
+
+3. the calculations: the source's own example worked through
+  ok   opens on the Semerenko example (60 x 2.4 million), a 24-month window (12 to 24, Semerenko); no commission, no close rate
+  ok   sales value 144,000,000 (the source wrote "about 144 million")  [144000000]
+  ok   developer team: 2,880,000 to 5,760,000 (2% to 4%), both bounds by Start Point  [[2880000,5760000]]
+  ok   marketing alone, 1%: 1,440,000, the source's "about 1.4 million"  [1440000]
+  ok   a year over 24 months: 1,440,000 to 2,880,000
+  ok   marketing company, no rate yet: marketing alone 1% (WE DO MEDIA) to 2% (Feasly), marked partial  [[1440000,2880000]]
+  ok   with the developer's 1.5%: 2.5% to 3.5% = 3,600,000 to 5,040,000  [[3600000,5040000]]
+  ok   the fee line: 1.5% x 144 million = 2,160,000; without a rate it asks for one; with the developer's team it takes his own figure
+  ok   advertising: 3,000 to 23,000 a unit = 180,000 to 1,380,000 for 60; 0.13% to 0.96% of the price
+  ok   no leads figure until the developer enters his own leads per deal
+  ok   leads = 60 deals x 48 = 2,880; 20% abroad = 576, Israel 2,304; 120 a month
+  ok   their cost: price list 294,000 to 399,000; campaigns 691,000 to 1,850,000; abroad $59,000 to $82,200 (three significant figures, outward)  [[[294000,399000],[691000,1850000],[59000,82200]]]
+  ok   all in Israel: no leads abroad; all abroad: no Israeli leads
+  ok   the close-rate hint, from the sources' examples: 200 and 40 (Semerenko), 48 (Mirai); never a default
+  ok   sheet: renders 4,000-6,000; sales plans 1,000-1,500 x 60 = 60,000-90,000; film 12,000-30,000
+  ok   sheet: media about 1,080,000 (0.75%); the tour line is included in the plan, not summed
+  ok   total of the priced lines 1,156,000 to 1,206,000; 12 lines open (11 without an Israeli price + the sales team)  [[1156000,1206000,12]]
+  ok   the developer's own figures join the total (research 50,000, sales office 400,000)
+  ok   the stage marks its lines (pre-launch 7, launch 6, last units none)
+  ok   the spread (Feasly example): 530,000 before launch (74%), 190,000 after (26%), +160,000 if the sale runs 12 more months (+22%)
+
+4. ranges: never inverted, never more precise than the anchor
+  ok   three significant figures, down for lo, up for hi
+  ok   random projects (800): every range has lo <= hi, the rounded total holds the exact one, leads add up  [0]
+
+5. inputs and validation
+  ok   typed numbers: grouping, ₪ and % read; empty is null; text or a minus sign is not a number
+  ok   limits: units 1 to 10,000; price 100,000 to 200 million; share 0 to 100; commission 0.1% to 10%; leads per deal 1 to 2,000; months 1 to 120
+  ok   errors name the field; optional fields may stay empty; no units or price, no budget
+
+6. formatting
+  ok   ranges: "4,000 עד 6,000 ₪", "₪4,000 to ₪6,000", "2% עד 4%", "$102.51 עד $142.59"
+  ok   every figure in <bdi>; in Hebrew the shekel sign stays outside the isolate (after the number, as Hebrew reads)
+  ok   the source line: name, date (or "no date, read ..."), flag, and the VAT terms when the source gives them
+  ok   a flag inside a sentence is lower case in English
+
+7. the shared text (copy and WhatsApp)
+  ok   a heading line
+  ok   the total with its bounds, source and flag
+  ok   every line of the sheet, in both languages
+  ok   a priced line carries its source and flag; an own figure says it is the developer's, and the line stays "no Israeli price"
+  ok   leads and their cost, the page address last
+  ok   text only (no markup), no long dash; right-to-left marks after sources in Hebrew only
+  ok   WhatsApp: wa.me with the text only
+  ok   no units: the text asks for them instead of a budget
+
+8. the words: Hebrew and English complete, copy rules
+  ok   every Hebrew key has an English key and back (150 keys)  [[]]
+  ok   no empty string
+  ok   the same {placeholders} in both languages  [[]]
+  ok   a name for every line, stage, seller, flag, example part and lead basis (38)  [[]]
+  ok   no unused string  [[]]
+  ok   every figure has words in both languages
+  ok   no long dash (– or —) in any string or in the data words
+  ok   no tech words in Hebrew or English (ממשק, מערכת, פלטפורמה, דיגיטלי, AI, דמו, סימולציה ...), no "אטלס"  [[]]
+  ok   VAT words only where a source states its VAT terms (Start Point, the broker fee); none on NadLan's prices  [[]]
+  ok   the plans line: "המנויים: שוק אחד 36,000 ₪ לשנה, ..."
+  ok   the words of the brief and the design: "לא פורסם מחיר ישראלי", "כלול במנוי נדל״ן", the honesty line
+  ok   no religion or ethnicity words
+  ok   the ad-spend line makes no ranking claim (source order, not sorted)
+  ok   no emoji in the file
+
+9. the file itself
+  ok   no browser storage, nothing written to the address
+  ok   sends nothing anywhere (the data file is fetched by core.js)
+  ok   every colour is a NadLan Instruments token (no own hex at all)  [[]]
+  ok   no gradient, no shadow (borders only)
+  ok   survey red on one figure only: the total budget (one colour rule)  [["is-survey\" data-o=\"total\"","is-survey\" data-o=\"total\""]]
+  ok   the title face comes from core.css; figures in <bdi>
+  ok   controls at least 44 px (the own-price field 44 px with a 42 px input inside its border)
+  ok   registers a custom NadLan Instruments tool and reads data.nlbudget
+
+10. the same numbers on the server (registry.php.txt)
+  ok   the server summary gives the same example total as the tool  [2,880,000 עד 5,760,000 ₪]
+  ok   and the same per-apartment, lead and render ranges
+  ok   and the same source names and flags
+
+84 of 84 passed

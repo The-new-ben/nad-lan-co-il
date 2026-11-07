@@ -1,0 +1,1138 @@
+{
+ "key": "nlbudget",
+ "v": 1,
+ "asof": "2026-11-07",
+ "note": "Every number of the tool \"כמה עולה לשווק את הפרויקט\" (HAD-678). Built by docs/research/2026-11-07-campaign-network/build/build-nlbudget/build_nlbudget_data.py from teardown/pages.json, competitors/services.json and PLAN.md (retrieved 7.11.2026). Flags as union.md marks them. Prices as each source published them; no conversion between currencies. ev = the verbatim value string of the source record.",
+ "flags": [
+  "cited",
+  "price list",
+  "agency claim",
+  "agency claim, unnamed source",
+  "example",
+  "own price",
+  "not published"
+ ],
+ "figures": {
+  "wedo_total": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B08a",
+   "src_he": "WE DO MEDIA",
+   "src_en": "WE DO MEDIA",
+   "url": "https://wedomedia.co.il/פרסום-נדלן/",
+   "date": "2020-04-13 / 2023-12-17",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "תקציב השיווק: כ־1% מסך מחירי הדירות בפרויקט",
+   "en": "Marketing budget: about 1% of the total price of the apartments in the project",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B08a",
+     "value": "about 1% of every apartment in the project, with 0.75% to digital"
+    }
+   ],
+   "v": 1,
+   "approx": "about"
+  },
+  "wedo_online": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B08a",
+   "src_he": "WE DO MEDIA",
+   "src_en": "WE DO MEDIA",
+   "url": "https://wedomedia.co.il/פרסום-נדלן/",
+   "date": "2020-04-13 / 2023-12-17",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "מתוכו כ־0.75% לפרסום ברשת",
+   "en": "of which about 0.75% for online advertising",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B08a",
+     "value": "about 1% of every apartment in the project, with 0.75% to digital"
+    }
+   ],
+   "v": 0.75,
+   "approx": "about"
+  },
+  "sp_sm": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B06",
+   "src_he": "סטארט פוינט",
+   "src_en": "Start Point",
+   "url": "https://start-point.co.il/real-estate-project-marketing/",
+   "date": "2026-11-05",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "שיווק ומכירה, כולל צוות מכירות ופרסום",
+   "en": "Marketing and sales, including the sales team and advertising",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B06",
+     "value": "2% to 4% of sales volume, including sales team and advertising"
+    }
+   ],
+   "lo": 2,
+   "hi": 4
+  },
+  "fe_mkt": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "שיווק בלבד, בלי עמלת מכירה",
+   "en": "Marketing only, without sales commission",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "0.75% to 2% of GRV"
+    }
+   ],
+   "lo": 0.75,
+   "hi": 2
+  },
+  "fe_sm": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "שיווק ומכירה יחד, כולל עמלה",
+   "en": "Marketing and selling together, commission included",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "3% to 5% of GRV"
+    }
+   ],
+   "lo": 3,
+   "hi": 5
+  },
+  "ud_mkt": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A01",
+   "src_he": "The Urban Developer, אוסטרליה",
+   "src_en": "The Urban Developer, Australia",
+   "url": "https://www.theurbandeveloper.com/articles/how-much-to-spend-on-off-the-plan-marketing",
+   "date": "2026-10-30",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "שיווק פרויקט על הנייר, בכתבה ממומנת של משרד פרסום",
+   "en": "Off-the-plan marketing, in a sponsored piece by an agency",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A01",
+     "value": "between 1 and 2 per cent of gross realisation; on a $40 million project $400,000 to $800,000"
+    }
+   ],
+   "lo": 1,
+   "hi": 2
+  },
+  "mf_mkt": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "abroad",
+   "country": null,
+   "src": "A06",
+   "src_he": "Maverick Frame",
+   "src_en": "Maverick Frame",
+   "url": "https://maverickframe.com/blog/real-estate-developer-marketing/",
+   "date": "2026-10-09",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "עלות שיווק מקובלת ליזם, לפי סטודיו הדמיות",
+   "en": "Typical developer marketing cost, per a render studio",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A06",
+     "value": "between 1% and 5% of gross development value"
+    }
+   ],
+   "lo": 1,
+   "hi": 5
+  },
+  "pb_sm": {
+   "unit": "pct_sales",
+   "currency": null,
+   "scope": "abroad",
+   "country": "US",
+   "src": "A07",
+   "src_he": "Pro Builder, ארצות הברית",
+   "src_en": "Pro Builder, USA",
+   "url": "https://www.probuilder.com/business-management/article/55195799/control-sales-marketing-costs",
+   "date": "2004",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "שיווק ומכירה אצל בוני בתים: יעד של 6%, ולעיתים קרובות 8% עד 10% בפועל",
+   "en": "Sales and marketing at home builders: a 6% target, often 8% to 10% in practice",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A07",
+     "value": "6% of home building revenue; often 8% to 10%"
+    }
+   ],
+   "lo": 6,
+   "hi": 10,
+   "target": 6,
+   "often": [
+    8,
+    10
+   ]
+  },
+  "se_ex": {
+   "unit": "example",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B01",
+   "src_he": "סמרנקו",
+   "src_en": "Semerenko",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/real-estate-marketing-cost/",
+   "date": "2026-07-10 / 2026-07-11",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "הדוגמה: 60 דירות במחיר ממוצע של 2.4 מיליון ₪, מכירות של כ־144 מיליון ₪, מסגרת שיווק של כ־1.4 מיליון ₪",
+   "en": "The example: 60 apartments at an average of 2.4 million ₪, about 144 million ₪ of sales, a marketing frame of about 1.4 million ₪",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B01",
+     "value": "60 units x 2.4 million ₪ average = about 144 million ₪ sales; marketing frame about 1.4 million ₪ over project life, mostly digital"
+    }
+   ],
+   "units": 60,
+   "price": 2400000,
+   "sales": 144000000,
+   "mkt": 1400000
+  },
+  "se_window": {
+   "unit": "months",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B01c",
+   "src_he": "סמרנקו",
+   "src_en": "Semerenko",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/how-to-market-new-project/",
+   "date": "2026-07-10 / 2026-07-11",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "חלון מכירה של 12 עד 24 חודשים",
+   "en": "A sales window of 12 to 24 months",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B01c",
+     "value": "12 to 24 months"
+    }
+   ],
+   "lo": 12,
+   "hi": 24
+  },
+  "sp_unit": {
+   "unit": "ils_per_unit",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B06",
+   "src_he": "סטארט פוינט",
+   "src_en": "Start Point",
+   "url": "https://start-point.co.il/real-estate-project-marketing/",
+   "date": "2026-11-05",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim, unnamed source",
+   "he": "פרסום בלבד לכל דירה שנמכרת, לפי דיווחים על יזמים גדולים",
+   "en": "Advertising alone per apartment sold, per reports on large developers",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B06",
+     "value": "3,000 to 23,000 ₪ per apartment sold"
+    }
+   ],
+   "lo": 3000,
+   "hi": 23000
+  },
+  "sp_leads": {
+   "unit": "ils_per_lead",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B06",
+   "src_he": "סטארט פוינט",
+   "src_en": "Start Point",
+   "url": "https://start-point.co.il/real-estate-project-marketing/",
+   "date": "2026-11-05",
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "מחירון לידים בלעדיים לדירות חדשות: 173 ₪ לליד בחבילה של 25, עד 128 ₪ בחבילה של 500, לפני מע״מ, מחירון 4.11.2026",
+   "en": "Exclusive new-apartment lead price list: 173 ₪ a lead in a pack of 25 down to 128 ₪ in a pack of 500, before VAT, price list of 4.11.2026",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B06",
+     "value": "from 173 ₪ per lead in a pack of 25 to 128 ₪ in a pack of 500 (new apartments presale, land, real estate abroad); home-sale valuation from 230 ₪ to 170 ₪; before VAT, price list of 4 Nov 2026; packs of 25, 50, 100, 150, 200, 300, 500 exclusive leads, no retainer, no annual contract"
+    }
+   ],
+   "lo": 128,
+   "hi": 173,
+   "packs": [
+    25,
+    500
+   ],
+   "vat": "before"
+  },
+  "se_cpl": {
+   "unit": "ils_per_lead",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B01",
+   "src_he": "סמרנקו",
+   "src_en": "Semerenko",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/real-estate-marketing-cost/",
+   "date": "2026-07-10 / 2026-07-11",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim, unnamed source",
+   "he": "עלות ליד בפועל בקמפיינים של פרויקטים, ולעיתים יותר מ־1,000 ₪",
+   "en": "Actual cost per lead in project campaigns, sometimes above 1,000 ₪",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B01",
+     "value": "₪300 to ₪800 per lead, sometimes above ₪1,000 in expensive channels"
+    }
+   ],
+   "lo": 300,
+   "hi": 800,
+   "over": 1000
+  },
+  "lq_cpl": {
+   "unit": "usd_per_lead",
+   "currency": "USD",
+   "scope": "abroad",
+   "country": "US",
+   "src": "A03",
+   "src_he": "LocaliQ, ארצות הברית",
+   "src_en": "LocaliQ, USA",
+   "url": "https://localiq.com/blog/real-estate-search-advertising-benchmarks/",
+   "date": "2026-06-24 / 2026-09-15",
+   "retrieved": "2026-11-07",
+   "flag": "cited",
+   "he": "מודעות חיפוש בנדל״ן בארצות הברית, חציון: 102.51 דולר לליד בכל הנדל״ן, 142.59 דולר לבתים למכירה דרך מתווך; 894 קמפיינים, אפריל 2025 עד מרץ 2026; אין קטגוריה של דירות חדשות",
+   "en": "US real-estate search ads, medians: $102.51 a lead for all real estate, $142.59 for homes for sale by agent; 894 campaigns, Apr 2025 to Mar 2026; no new-construction category",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A03",
+     "value": "CTR 7.61% (-9.73% YoY); CPC $3.22 (+27.27%); CVR 3.70% (+12.8%); CPL $102.51 (+2.02%)"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "A03",
+     "value": "CPL: Apartments and Rentals $99.48; Homes for Sale by Agent $142.59; Property Management $76.71; Real Estate Broker $162.39; Residential Real Estate Agent $157.59"
+    },
+    {
+     "file": "competitors/services.json",
+     "id": "localiq-search-real-estate-2026",
+     "value": "Real estate overall: CPC USD 3.22 (+27.27% y/y), CTR 7.61%, conversion rate 3.70%, cost per lead USD 102.51 (+2.02% y/y). Homes for Sale by Agent: CPC USD 3.90, conversion 1.83%, CPL USD 142.59. Real Estate Broker: CPL USD 162.39. Apartments and Rentals: CPL USD 99.48. No new-construction or developer subcategory."
+    },
+    {
+     "file": "competitors/services.json",
+     "id": "localiq-search-real-estate-2026.period",
+     "value": "1 Apr 2025 to 31 Mar 2026; 894 US campaigns; figures are medians; page last updated 14 Sep 2026"
+    }
+   ],
+   "lo": 102.51,
+   "hi": 142.59,
+   "n_campaigns": 894
+  },
+  "se_funnel": {
+   "unit": "example",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B01e",
+   "src_he": "סמרנקו",
+   "src_en": "Semerenko",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/crm-automation-measurement/real-estate-lead-management-roi/",
+   "date": "2026-07-10 / 2026-07-11",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "דוגמה של שני ערוצים: 400 פניות ו־2 עסקאות, מול 200 פניות ו־5 עסקאות",
+   "en": "A two-channel example: 400 inquiries and 2 deals, against 200 inquiries and 5 deals",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B01e",
+     "value": "monthly media ₪100,000 in both channels; unique inquiries 400 vs 200; cost per inquiry ₪250 vs ₪500; qualified 80 (20%) vs 90 (45%); meetings held 24 vs 40; cost per meeting ₪4,167 vs ₪2,500; deals 2 vs 5; cost per signed deal ₪50,000 vs ₪20,000"
+    }
+   ],
+   "inq": [
+    400,
+    200
+   ],
+   "deals": [
+    2,
+    5
+   ]
+  },
+  "mi_funnel": {
+   "unit": "example",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B04",
+   "src_he": "מיראי",
+   "src_en": "Mirai",
+   "url": "https://www.mirai.co.il/post/real-estate-marketing-budget",
+   "date": "2026-11-03",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "דוגמה: 576 פניות ל־12 עסקאות בחצי שנה",
+   "en": "An example: 576 leads for 12 deals in six months",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B04",
+     "value": "12 deals in six months; 6 meetings per deal (1 in 6 closes); 72 meetings; 8 leads per meeting; 576 leads; 100 ₪ per lead; media for six months 57,600 ₪"
+    }
+   ],
+   "leads": 576,
+   "deals": 12
+  },
+  "mb_ext3": {
+   "unit": "ils",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "R01",
+   "src_he": "מבטים, מחירון הדמיות",
+   "src_en": "Mabatim render price list",
+   "url": "https://mabatim.com/pricing/",
+   "date": null,
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "סט הדמיות חוץ, 3 זוויות",
+   "en": "Exterior render set, 3 angles",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "R01",
+     "value": "exterior set 3 angles ₪4,000-6,000; extra exterior angle ₪1,500-2,500; interior apartment or lobby per angle ₪2,000-3,500"
+    }
+   ],
+   "lo": 4000,
+   "hi": 6000,
+   "angles": 3
+  },
+  "mb_plan3d": {
+   "unit": "ils_per_unit",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "R01",
+   "src_he": "מבטים, מחירון הדמיות",
+   "src_en": "Mabatim render price list",
+   "url": "https://mabatim.com/pricing/",
+   "date": null,
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "תוכנית מכר בתלת ממד, לדירה",
+   "en": "3D sales plan, per apartment",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "R01",
+     "value": "colour sales plan ₪500-750 per unit; 3D sales plan ₪1,000-1,500 per unit"
+    }
+   ],
+   "lo": 1000,
+   "hi": 1500
+  },
+  "mb_plancol": {
+   "unit": "ils_per_unit",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "R01",
+   "src_he": "מבטים, מחירון הדמיות",
+   "src_en": "Mabatim render price list",
+   "url": "https://mabatim.com/pricing/",
+   "date": null,
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "תוכנית מכר צבעונית, לדירה",
+   "en": "Colour sales plan, per apartment",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "R01",
+     "value": "colour sales plan ₪500-750 per unit; 3D sales plan ₪1,000-1,500 per unit"
+    }
+   ],
+   "lo": 500,
+   "hi": 750
+  },
+  "mb_film": {
+   "unit": "ils",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "R01",
+   "src_he": "מבטים, מחירון הדמיות",
+   "src_en": "Mabatim render price list",
+   "url": "https://mabatim.com/pricing/",
+   "date": null,
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "סרט הדמיה של דקה עד 3 דקות",
+   "en": "Render film of 1 to 3 minutes",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "R01",
+     "value": "short video 30-60 seconds ₪7,000-15,000; full video 1-3 minutes ₪12,000-30,000"
+    }
+   ],
+   "lo": 12000,
+   "hi": 30000,
+   "minutes": [
+    1,
+    3
+   ]
+  },
+  "mb_film_s": {
+   "unit": "ils",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "R01",
+   "src_he": "מבטים, מחירון הדמיות",
+   "src_en": "Mabatim render price list",
+   "url": "https://mabatim.com/pricing/",
+   "date": null,
+   "retrieved": "2026-11-07",
+   "flag": "price list",
+   "he": "סרט קצר של 30 עד 60 שניות",
+   "en": "Short film of 30 to 60 seconds",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "R01",
+     "value": "short video 30-60 seconds ₪7,000-15,000; full video 1-3 minutes ₪12,000-30,000"
+    }
+   ],
+   "lo": 7000,
+   "hi": 15000,
+   "seconds": [
+    30,
+    60
+   ]
+  },
+  "fe_ex": {
+   "unit": "aud",
+   "currency": "AUD",
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "דוגמה: 60 דירות, מכירות של 60 מיליון דולר אוסטרלי, שיווק 1.2% (720,000)",
+   "en": "Example: 60 apartments, 60 million Australian dollars of sales, marketing 1.2% (720,000)",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "60 apartments, GRV $60,000,000 ex GST; marketing 1.2% = $720,000: brand, collateral, website $60,000; CGI and film $120,000; display suite fitout $320,000; display suite running 18 months $90,000; digital, portals, paid media $90,000; signage, hoarding, print $40,000; commission 2.5% = $1,500,000; combined $2,220,000 = 3.7% of GRV; margin on cost 19.5%"
+    }
+   ],
+   "units": 60,
+   "grv": 60000000,
+   "total": 720000,
+   "pct": 1.2,
+   "brand": 60000,
+   "cgi": 120000,
+   "suite_fit": 320000,
+   "suite_run": 90000,
+   "suite_months": 18,
+   "media": 90000,
+   "sign": 40000,
+   "comm_pct": 2.5,
+   "comm": 1500000,
+   "combined": 2220000,
+   "combined_pct": 3.7
+  },
+  "fe_pre": {
+   "unit": "aud",
+   "currency": "AUD",
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "כ־530,000 מתוך 720,000 הוצאו לפני ההשקה",
+   "en": "About 530,000 of the 720,000 was spent before launch",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "about $530,000 of $720,000 spent before launch"
+    }
+   ],
+   "v": 530000,
+   "of": 720000,
+   "approx": "about"
+  },
+  "fe_delay": {
+   "unit": "aud",
+   "currency": "AUD",
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "example",
+   "he": "אם המכירה נמשכת עוד 12 חודשים: עוד 60,000 לחלל המכירות, 70,000 למדיה ו־30,000 לקריאייטיב חדש; השיווק עולה ל־880,000 (1.47%)",
+   "en": "If the sale runs 12 more months: 60,000 more for the display suite, 70,000 for media, 30,000 for relaunch creative; marketing rises to 880,000 (1.47%)",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "+12 months: +$60,000 suite, +$70,000 media, +$30,000 relaunch creative; marketing $880,000 = 1.47% of GRV; margin 19.1%"
+    }
+   ],
+   "suite": 60000,
+   "media": 70000,
+   "creative": 30000,
+   "total": 880000,
+   "pct": 1.47,
+   "months": 12
+  },
+  "fe_suite": {
+   "unit": "aud",
+   "currency": "AUD",
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "חלל תצוגה ומכירה: בדרך כלל השורה הגדולה ביותר בשיווק",
+   "en": "Display suite: usually the largest marketing line",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "roughly $150,000 to well beyond $700,000"
+    }
+   ],
+   "lo": 150000,
+   "hi": 700000,
+   "hi_more": true
+  },
+  "fe_comm": {
+   "unit": "pct_price",
+   "currency": null,
+   "scope": "abroad",
+   "country": "AU",
+   "src": "A02",
+   "src_he": "Feasly, אוסטרליה",
+   "src_en": "Feasly, Australia",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "date": "2026-08-28",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "עמלת סוכנות על מכירה ישירה, ממחיר הדירה",
+   "en": "Agency commission on a direct sale, of the sale price",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "A02",
+     "value": "2% to 3% of sale price, on settlement"
+    }
+   ],
+   "lo": 2,
+   "hi": 3
+  },
+  "sp_broker": {
+   "unit": "pct_price",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B06",
+   "src_he": "סטארט פוינט",
+   "src_en": "Start Point",
+   "url": "https://start-point.co.il/real-estate-project-marketing/",
+   "date": "2026-11-05",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "דמי תיווך, רק כשמתווך מביא את הקונה, בתוספת מע״מ",
+   "en": "Brokerage fee, only when a broker brings the buyer, plus VAT",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B06",
+     "value": "1% to 2% of the apartment price, plus VAT"
+    }
+   ],
+   "lo": 1,
+   "hi": 2,
+   "vat": "plus"
+  },
+  "gl_2025": {
+   "unit": "ils_million",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B10",
+   "src_he": "גלובס, לפי יפעת בקרת פרסום",
+   "src_en": "Globes, from Ifat ad monitoring",
+   "url": "https://www.globes.co.il/news/article.aspx?did=1001546786",
+   "date": "2026-07-01 / 2026-10-06",
+   "retrieved": "2026-11-07",
+   "flag": "cited",
+   "he": "השקעה בפרסום ב־2025 לפי בקרת הפרסום של יפעת, במחירון ולא בהכרח בפועל",
+   "en": "Ad investment in 2025 per Ifat ad monitoring, at list price, not necessarily actual spend",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "Aura: 3.5 million ₪ (2023), almost 31 million ₪ (2024), almost 62 million ₪ (2025), more than 36 million ₪ (H1 2026)"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "Tidhar: 15 million ₪ (2025), over 6.5 million ₪ (H1 2026)"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "Israel Canada: about 16 million ₪ (2024), 30.5 million ₪ (2025), 14.5 million ₪ (H1 2026)"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "Hagag: 11.5 million ₪ (2025), about 8 million ₪ (H1 2026)"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "Dimri: 6.5 million ₪ (2025)"
+    }
+   ],
+   "list": [
+    {
+     "he": "אאורה",
+     "en": "Aura",
+     "v": 62,
+     "approx": "almost"
+    },
+    {
+     "he": "תדהר",
+     "en": "Tidhar",
+     "v": 15
+    },
+    {
+     "he": "ישראל קנדה",
+     "en": "Israel Canada",
+     "v": 30.5
+    },
+    {
+     "he": "חגג",
+     "en": "Hagag",
+     "v": 11.5
+    },
+    {
+     "he": "דמרי",
+     "en": "Dimri",
+     "v": 6.5
+    }
+   ]
+  },
+  "gl_camp": {
+   "unit": "ils_million",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "B10",
+   "src_he": "גלובס, לפי יפעת בקרת פרסום",
+   "src_en": "Globes, from Ifat ad monitoring",
+   "url": "https://www.globes.co.il/news/article.aspx?did=1001546786",
+   "date": "2026-07-01 / 2026-10-06",
+   "retrieved": "2026-11-07",
+   "flag": "cited",
+   "he": "קמפיינים שדווחו: כ־2 מיליון ₪ (ברזני, קצרין: טלוויזיה, רשת ורשתות חברתיות) עד כ־5 מיליון ₪ (דמרי, DIMRI YAMA)",
+   "en": "Reported campaigns: about 2 million ₪ (Barazani, Katzrin: TV, online, social) to about 5 million ₪ (Dimri, DIMRI YAMA)",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "about 2 million ₪"
+    },
+    {
+     "file": "teardown/pages.json",
+     "id": "B10",
+     "value": "about 5 million ₪"
+    }
+   ],
+   "lo": 2,
+   "hi": 5,
+   "approx": "about"
+  },
+  "px_time": {
+   "unit": "weeks",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "B05b",
+   "src_he": "פיקסל נדל״ן",
+   "src_en": "Pixel Nadlan",
+   "url": "https://pixel-nadlan.co.il/2026/08/27/שיווק-פרויקט-נדלן-מדריך-ליזמים/",
+   "date": "2026-08-27 / 2026-10-08",
+   "retrieved": "2026-11-07",
+   "flag": "agency claim",
+   "he": "אסטרטגיה ומיתוג 4 עד 8 שבועות, טרום שיווק 4 עד 8 שבועות, פריסייל 2 עד 6 שבועות, השקה שבוע אחד",
+   "en": "Strategy and branding 4 to 8 weeks, pre-launch 4 to 8 weeks, presale 2 to 6 weeks, launch one week",
+   "ev": [
+    {
+     "file": "teardown/pages.json",
+     "id": "B05b",
+     "value": "strategy and branding 4-8 weeks; digital assets in parallel 4-8 weeks; pre-launch 4-8 weeks (waiting list, fence, first content); presale 2-6 weeks; official launch one concentrated week; ongoing until sold out"
+    }
+   ],
+   "parts": [
+    [
+     4,
+     8
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     6
+    ]
+   ]
+  },
+  "expo_np": {
+   "unit": "none",
+   "currency": null,
+   "scope": "abroad",
+   "country": null,
+   "src": "services",
+   "src_he": "בדיקה של נדל״ן",
+   "src_en": "NadLan check",
+   "url": null,
+   "date": "2026-11-07",
+   "retrieved": "2026-11-07",
+   "flag": "not published",
+   "n": 4,
+   "he": "נבדקו 4 תערוכות ויריד לקונים מחו״ל: באף אחד לא פורסם מחיר למציגים",
+   "en": "4 exhibitions and fairs for buyers abroad were checked: none publishes an exhibitor price",
+   "ev": [
+    {
+     "file": "competitors/services.json",
+     "id": "great-israeli-real-estate-event",
+     "value": "Exhibitor prices not published. Visitor entry free with registration ('PARTICIPATION IS FREE!')."
+    },
+    {
+     "file": "competitors/services.json",
+     "id": "israeli-building-center-diaspora-expos",
+     "value": "Exhibitor packages and prices not published. Israel Home Expo was free for visitors (Times of Israel French edition, 12 Oct 2026). New York fair required registration; venue sent by email 48 hours before for security (JPost, 26 May 2026)."
+    },
+    {
+     "file": "competitors/services.json",
+     "id": "icube-salon-paris",
+     "value": "Not published: 'Nous vous transmettons un devis personnalise apres votre demande'. Rate depends on stand location (standard or premium), stand size and presence type (in person, virtual or both). Visitors: '100% Entree gratuite' with online registration."
+    },
+    {
+     "file": "competitors/services.json",
+     "id": "bmby-virtual-fair",
+     "value": "Developer participation fee not published. Buyer terms per Nadlan Center (24 Oct 2023): prices shown in US dollars, 5% to 10% down payment depending on the developer with the balance after the war, purchase tax payable after the war under a tax pre-ruling."
+    }
+   ]
+  },
+  "td_np": {
+   "unit": "none",
+   "currency": null,
+   "scope": "il",
+   "country": "IL",
+   "src": "union",
+   "src_he": "בדיקה של נדל״ן",
+   "src_en": "NadLan check",
+   "url": null,
+   "date": "2026-11-07",
+   "retrieved": "2026-11-07",
+   "flag": "not published",
+   "pages": 50,
+   "he": "לא פורסם מחיר ישראלי באף אחד מ־50 העמודים המובילים שנקראו",
+   "en": "No Israeli price in any of the 50 top-ranking pages read",
+   "ev": [
+    {
+     "file": "teardown/union.md",
+     "id": "line 3",
+     "value": "Retrieved 7 Nov 2026. 50 pages read (19 budget, 10 how-to, 7 foreign-buyer, 9 abroad, 2 proptech, 3 render-price). Per-page detail, headings"
+    }
+   ]
+  },
+  "nl_plans": {
+   "unit": "ils_year",
+   "currency": "ILS",
+   "scope": "il",
+   "country": "IL",
+   "src": "nadlan",
+   "src_he": "נדל״ן",
+   "src_en": "NadLan",
+   "url": null,
+   "date": "2026-11-07",
+   "retrieved": "2026-11-07",
+   "flag": "own price",
+   "plans": {
+    "one": 36000,
+    "three": 72000,
+    "flag": 144000
+   },
+   "he": "עמוד הפרויקט בנדל״ן עם הסיור הווירטואלי: כלול במנוי השנתי",
+   "en": "The project page on NadLan with the virtual tour: included in the annual plan",
+   "ev": [
+    {
+     "file": "PLAN.md",
+     "id": "section 5",
+     "value": "APPROVED by Ben 7.11.2026, annual, ad spend separate: one market 36,000 ₪; three markets 72,000 ₪; flagship 144,000 ₪. Written \"₪ לשנה\" (VAT wording waits for the accountant)."
+    }
+   ]
+  }
+ },
+ "lines": [
+  {
+   "id": "research",
+   "kind": "own",
+   "stage": [
+    "pre"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "brand",
+   "kind": "own",
+   "stage": [
+    "pre"
+   ],
+   "ctx": [
+    "fe_ex:brand"
+   ]
+  },
+  {
+   "id": "ext3",
+   "kind": "once",
+   "fig": "mb_ext3",
+   "stage": [
+    "pre"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "plan3d",
+   "kind": "unit",
+   "fig": "mb_plan3d",
+   "stage": [
+    "pre"
+   ],
+   "ctx": [
+    "mb_plancol"
+   ]
+  },
+  {
+   "id": "film",
+   "kind": "once",
+   "fig": "mb_film",
+   "stage": [
+    "launch"
+   ],
+   "ctx": [
+    "mb_film_s",
+    "fe_ex:cgi"
+   ]
+  },
+  {
+   "id": "tour",
+   "kind": "plan",
+   "fig": "nl_plans",
+   "stage": [
+    "pre"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "photo",
+   "kind": "own",
+   "stage": [
+    "build"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "site",
+   "kind": "own",
+   "stage": [
+    "pre"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "crm",
+   "kind": "own",
+   "stage": [
+    "all"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "media",
+   "kind": "pct",
+   "fig": "wedo_online",
+   "stage": [
+    "all"
+   ],
+   "ctx": [
+    "fe_ex:media"
+   ]
+  },
+  {
+   "id": "outdoor",
+   "kind": "own",
+   "stage": [
+    "pre",
+    "launch"
+   ],
+   "ctx": [
+    "fe_ex:sign"
+   ]
+  },
+  {
+   "id": "print",
+   "kind": "own",
+   "stage": [
+    "launch"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "tv",
+   "kind": "own",
+   "stage": [
+    "launch"
+   ],
+   "ctx": [
+    "gl_camp"
+   ]
+  },
+  {
+   "id": "pr",
+   "kind": "own",
+   "stage": [
+    "all"
+   ],
+   "ctx": []
+  },
+  {
+   "id": "events",
+   "kind": "own",
+   "stage": [
+    "launch",
+    "build"
+   ],
+   "ctx": [
+    "expo_np"
+   ]
+  },
+  {
+   "id": "office",
+   "kind": "own",
+   "stage": [
+    "launch",
+    "build"
+   ],
+   "ctx": [
+    "fe_suite"
+   ]
+  },
+  {
+   "id": "fee",
+   "kind": "fee",
+   "stage": [
+    "all"
+   ],
+   "ctx": [
+    "sp_broker",
+    "fe_comm"
+   ]
+  }
+ ],
+ "stages": [
+  "pre",
+  "launch",
+  "build",
+  "last"
+ ],
+ "example": {
+  "units": 60,
+  "price": 2400000,
+  "months": 24,
+  "from": [
+   "se_ex",
+   "se_window"
+  ]
+ },
+ "plans_href": {
+  "he": "/marketing/",
+  "en": "/en/marketing/"
+ }
+}

@@ -1,0 +1,3432 @@
+{
+ "meta": {
+  "task": "Competitor teardown for the nad-lan.co.il developer page (Linear HAD-678)",
+  "retrieved": "2026-11-07",
+  "method": "Normal GET of each page (browser user agent) parsed for headings, JSON-LD types, FAQ and number sentences, then read by hand. lotus-real.com and anewgo.com read in the owner's Chrome (403 to scripts / JavaScript-only). Google used in the owner's Chrome only to find two URLs (Globes article, Lotus guide) and the render-price SERP.",
+  "evidence_flags": {
+   "cited": "the page names a checkable source for the number",
+   "agency claim": "the publisher's own statement, no source",
+   "agency claim citing unnamed reports or price lists": "page says 'industry reports' or 'price lists' without naming them",
+   "illustrative example": "page itself says the numbers are an example",
+   "vendor price list": "the publisher's own published prices",
+   "statutory or official figure stated by the page (verify)": "a legal or regulatory figure quoted by a commercial page; verify at the official source before use"
+  },
+  "conventions": "Headings, titles and FAQ questions are kept verbatim in the original language as SERP data (long dashes normalised to '-'). Claims are rendered in plain English; numbers and units are exact as published. Word counts are estimates of the main text (menus partly included). Sidebar and related-post headings removed.",
+  "not_read": [
+   "dubizzle.com launch strategies (bot check)",
+   "pov360 render cost calculator (seen in SERP only)",
+   "Globes print version (subscribers only; web article read)"
+  ]
+ },
+ "pages": [
+  {
+   "id": "B01",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/real-estate-marketing-cost/",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "כמה עולה שיווק פרויקט נדל״ן בישראל: תקציב, מודלים ומה שלא מספרים | Semerenko Group",
+   "h1": [
+    "כמה עולה שיווק פרויקט נדל״ן בישראל"
+   ],
+   "h2": [
+    "התשובה הקצרה, בלי התחמקות",
+    "למה אף חברת שיווק לא מפרסמת מחירון",
+    "ממה מורכב התקציב: תשעה רכיבים",
+    "ארבעה מודלים של שכר טרחה, ומה כל אחד מתמרץ",
+    "המספרים שכן פורסמו בענף",
+    "איך גוזרים תקציב לפרויקט ספציפי",
+    "העלויות שלא מופיעות בהצעה הראשונה",
+    "איך משווים הצעות: רשימת בדיקה לפני חתימה",
+    "למה אנחנו מדברים על עלויות רק יחד עם מדידה"
+   ],
+   "h3": [
+    "ריטיינר חודשי",
+    "תשלום לפי ליד (CPL)",
+    "עמלת מכירה",
+    "היברידי",
+    "חשבו שווי מכירות כולל",
+    "קבעו עוגן אחוזי",
+    "פצלו לפי שלבים",
+    "פצלו לפי קהלים",
+    "השאירו רזרבה מנוהלת",
+    "הטעות: להשוות מחיר",
+    "הטעות: עמלה בלי הגדרות",
+    "הטעות: לקצץ במדידה"
+   ],
+   "word_count_est": 1622,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Research and strategy (market and competition, pricing, audiences, messages), one-time before launch",
+    "Branding and creative (name, visual language, sales brochure, ad concept), one-time plus updates",
+    "Renders, photo and video (exterior and interior renders, project film, construction progress photos), renewed by construction stage",
+    "Project site and landing pages (project page, campaign landing pages, forms, tracking), setup plus maintenance",
+    "Media budget (Google, Meta, real-estate portals, outdoor signage), ongoing, varies by stage",
+    "Campaign management (platforms, optimisation, reports), ongoing",
+    "CRM and automation (lead intake, routing, follow-up sequences, call tracking), setup plus ongoing",
+    "Sales setup (salespeople, sales office, model apartment, scripts), ongoing",
+    "PR and content (professional articles, media presence, organic content), ongoing",
+    "Hidden costs listed: setup fees in contract annex; media commission as % of media; creative beyond package (extra renders, language versions, plan updates); refresh of materials in late construction and towards occupancy; portal subscriptions; call tracking and star numbers; sales office, model apartment and site signage falling between marketing and construction budgets; salespeople wages, commissions, training; VAT; schedule delays (each extra month adds retainer and media)",
+    "Fee models: monthly retainer; pay per lead (CPL); sales commission; hybrid (reduced retainer plus commission or target bonus)",
+    "Budget method: total sales value (units x average price), percentage anchor, split by stage, split by audience, managed reserve"
+   ],
+   "numbers": [
+    {
+     "value": "about 1% of total sales value, of which about 0.75% digital",
+     "claim": "The only Hebrew reference point: one professional publication names a marketing budget of about 1% of the project's total sales value, about 0.75% of it digital (checked July 2026)",
+     "evidence": "agency claim citing unnamed reports or price lists",
+     "source_named": "unnamed 'one professional publication' (matches wedomedia.co.il wording)"
+    },
+    {
+     "value": "1% to 2% of total project sales value",
+     "claim": "Professional guides abroad give a similar range",
+     "evidence": "agency claim citing unnamed reports or price lists",
+     "source_named": "unnamed 'professional guides abroad'"
+    },
+    {
+     "value": "60 units x 2.4 million ₪ average = about 144 million ₪ sales; marketing frame about 1.4 million ₪ over project life, mostly digital",
+     "claim": "Numeric example for illustration only, applying the 1% anchor",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "₪90 to ₪150 per lead, plus VAT",
+     "claim": "Lead price in lead vendors' public price lists",
+     "evidence": "agency claim citing unnamed reports or price lists",
+     "source_named": "public price lists of lead vendors"
+    },
+    {
+     "value": "₪300 to ₪800 per lead, sometimes above ₪1,000 in expensive channels",
+     "claim": "Actual cost per lead in campaigns, per industry reports",
+     "evidence": "agency claim citing unnamed reports or price lists",
+     "source_named": "unnamed industry reports"
+    },
+    {
+     "value": "up to three competitors",
+     "claim": "Cheap list-price leads are often shared with several competitors at once, sometimes up to three",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "350+ inquiries in 12 months; 65,667 Google clicks in 16 months; 58% of clicks from outside Israel",
+     "claim": "Own platform statistics shown as proof",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [
+    "No calculator on the page (the word appears in site navigation). Lead form with fields: project stage, number of units, city, company, role"
+   ],
+   "notes": "Astro site. Anchor links: direct-answer, why-no-prices, budget-components, fee-models, published-numbers, budget-logic, hidden-costs, compare-proposals. Author box (founder), 'checked and updated July 2026'. Comparison checklist of mistakes: compare price only; commission without definitions; cutting measurement."
+  },
+  {
+   "id": "B01b",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "budget (sibling hub)",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "שיווק פרויקטים ודירות מקבלן ליזמים | Semerenko Group",
+   "h1": [
+    "שיווק פרויקטי נדל״ן ודירות מקבלן"
+   ],
+   "h2": [
+    "מערכת השקה, לא אוסף מודעות",
+    "למי השירות מתאים, ולמי לא",
+    "הבעיה העסקית: חשיפה יש, עסקאות אין",
+    "שיעורי הבית שלפני הקמפיין",
+    "מה כלול בליווי השיווקי",
+    "שלבי חיי הפרויקט: מטרום השקה ועד השקה מחדש",
+    "הצעה שמוכרת בלי דחיפות מלאכותית",
+    "יישור קו בין הקמפיין לשולחן המכירות",
+    "התהליך: משיחה ראשונה לקמפיין רץ",
+    "הוכחות אמיתיות ומדדי הצלחה",
+    "שאלות של יזמים"
+   ],
+   "h3": [
+    "למי זה מתאים",
+    "למי זה לא מתאים",
+    "מיצוב ומסר לכל קהל",
+    "תכנון ההצעה",
+    "קמפיין ותשתית מדידה",
+    "גשר לקהל דובר אנגלית",
+    "ניתוח ראשוני",
+    "מיצוב והצעה",
+    "תשתית מדידה",
+    "נכסים והשקה",
+    "ניהול ואופטימיזציה",
+    "דוח שבועי"
+   ],
+   "word_count_est": 1660,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "Service",
+    "WebPage"
+   ],
+   "faq_questions": [
+    "אתם מחליפים את צוות המכירות שלנו?",
+    "באיזה שלב נכון לחבר אתכם לפרויקט?",
+    "מה ההבדל ביניכם לחברת שיווק פרויקטים מסורתית?",
+    "תוך כמה זמן רואים תוצאות?",
+    "הקהל דובר האנגלית רלוונטי לכל פרויקט?"
+   ],
+   "budget_line_items": [
+    "Positioning and message per audience",
+    "Offer planning (no artificial urgency)",
+    "Campaign and measurement infrastructure",
+    "Bridge to English-speaking audience",
+    "Process: initial analysis, positioning and offer, measurement infrastructure, assets and launch, management and optimisation, weekly report",
+    "Project life stages from pre-launch to relaunch"
+   ],
+   "numbers": [
+    {
+     "value": "15% to 20% of units",
+     "claim": "According to professional content published in the industry, a real presale is usually limited to a small part of the inventory, around 15% to 20% of units, at a real discount and mostly without broad advertising",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "about 1% of project sales value",
+     "claim": "Budget anchor repeated from the cost page",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    }
+   ],
+   "tools_on_page": [
+    "Lead form (no calculator)"
+   ],
+   "notes": "Service page; FAQ in toggles without FAQPage schema."
+  },
+  {
+   "id": "B01c",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/project-marketing/how-to-market-new-project/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (Semerenko sibling)",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "איך לשווק פרויקט נדל״ן חדש בישראל: מדריך שלב אחרי שלב | Semerenko Group",
+   "h1": [
+    "איך לשווק פרויקט נדל״ן חדש בישראל"
+   ],
+   "h2": [
+    "התשובה הקצרה: סדר פעולות, לא רשימת ערוצים",
+    "לפני שקל ראשון למדיה: מחקר מתחרים, קהל והצעת ערך",
+    "שם, מסר והנכסים שחייבים להיות מוכנים",
+    "ציר הזמן: חמישה שלבים מהשקה שקטה ועד דירה אחרונה",
+    "פריסייל אמיתי מול ״פריסייל שיווקי״",
+    "גוגל או מטא, אורגני או ממומן: איך מחלקים את התקציב",
+    "לחיצת היד בין השיווק למכירות, ומדידה עד העסקה",
+    "שש טעויות שחוזרות כמעט בכל פרויקט",
+    "רשימת בדיקה לפני עלייה לאוויר",
+    "הניסיון שלנו, במספרים שאפשר לבדוק"
+   ],
+   "h3": [
+    "אתר פרויקט",
+    "דף נחיתה",
+    "השקה שקטה (פרי־פרייסייל)",
+    "פריסייל",
+    "השקה רשמית",
+    "תקופת הבנייה",
+    "זנב מכירות ומלאי אחרון",
+    "Google Ads: ביקוש קיים",
+    "Meta: יצירת ביקוש",
+    "מדיה לפני מוכנות",
+    "דחיפות מזויפת",
+    "שיפוט לפי עלות ליד בלבד",
+    "מסר אחד לכל הקהלים",
+    "נטישת תקופת הבנייה",
+    "ויתור על רוכשים מחו״ל"
+   ],
+   "word_count_est": 1733,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Five stages with a table of goal, channels, success metric: quiet launch (friends and family, waiting list), presale (early registration, real benefit, sales conference), official launch (Google, Meta, PR, signage, launch event), construction period (search, remarketing, organic, CRM optimisation), sales tail and last units (unit-specific messages, warm audiences, phone)",
+    "Real presale vs 'marketing presale'",
+    "Google vs Meta, organic vs paid split",
+    "Marketing to sales handshake and measurement to the deal",
+    "Six repeated mistakes",
+    "Pre-launch checklist"
+   ],
+   "numbers": [
+    {
+     "value": "15% to 20% of units",
+     "claim": "Publications of this type name about 15% to 20% of units at a real discount as the mark of a serious presale",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "12 to 24 months",
+     "claim": "In a sales window of 12 to 24 months paid media carries presale and launch; organic starts paying back from mid-project",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "about 1% of project sales value",
+     "claim": "Budget anchor repeated",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "8.69M Google impressions in 16 months; 203 cities and 1,371 neighbourhoods",
+     "claim": "Own platform statistics",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": ""
+  },
+  {
+   "id": "B01d",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/digital-advertising-leads/google-meta-ads/",
+   "retrieved": "2026-11-07",
+   "group": "budget (Semerenko sibling: Google and Meta)",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "פרסום בגוגל ובמטא לפרויקט נדל״ן: מתי, איך וכמה | Semerenko Group",
+   "h1": [
+    "פרסום בגוגל ובמטא לפרויקט נדל״ן"
+   ],
+   "h2": [
+    "התשובה הקצרה: מתי גוגל ומתי מטא",
+    "הבעיה: מדדים של פלטפורמה, החלטות של מיליונים",
+    "מסגרת ההחלטה: ביקוש קיים מול ביקוש שמייצרים",
+    "קריאייטיב ודפי נחיתה: איפה הקמפיין נשפט באמת",
+    "מעקב, שיוך ומניעת לידים כפולים",
+    "חלוקת תקציב ושיפוט לפי ה-CRM",
+    "ומה עם פייסבוק, אינסטגרם, יוטיוב וטיקטוק?",
+    "טעויות שחוזרות בחשבונות של פרויקטים",
+    "רשימת בדיקה לפני שהקמפיין עולה",
+    "מאיפה אנחנו מכירים את זה: הנתונים שלנו"
+   ],
+   "h3": [
+    "גוגל: לקצור ביקוש קיים",
+    "מטא: לייצר ביקוש חדש",
+    "Lead Ads במטא מול טופס בדף נחיתה",
+    "מבנה חשבון: הפרדה לפי פרויקט ולפי קהל",
+    "התאמת מסר: המודעה, הדף והטלפון אומרים אותו דבר",
+    "קריאייטיב שעובד בנדל״ן",
+    "דף נחיתה: העיקרון של אחד",
+    "רימרקטינג: המערכת שמחזירה מתעניינים",
+    "ספירה כפולה של אותו אדם",
+    "קמפיין אחד לכל הקהלים",
+    "נפח לפני מדידה",
+    "אין קמפיין מותג",
+    "ליד שנולד ומת בפלטפורמה",
+    "שיפוט לפי CPL בלבד"
+   ],
+   "word_count_est": 1970,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Google search: three keyword layers plus negative list",
+    "Meta Lead Ads vs landing-page form",
+    "Account structure per project and per audience",
+    "Message match ad, page, phone",
+    "Creative that works in real estate",
+    "Landing page 'principle of one'",
+    "Remarketing",
+    "Tracking, attribution, duplicate-lead prevention",
+    "Budget split judged by CRM",
+    "YouTube and TikTok role"
+   ],
+   "numbers": [
+    {
+     "value": "about ₪90 to ₪150 per real-estate lead",
+     "claim": "Public price lists of lead vendors",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "hundreds of shekels per inquiry, mostly ₪300 to ₪800",
+     "claim": "Industry reports on paid campaigns for projects",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": ""
+  },
+  {
+   "id": "B01e",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/crm-automation-measurement/real-estate-lead-management-roi/",
+   "retrieved": "2026-11-07",
+   "group": "budget (Semerenko sibling: lead management and ROI)",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "ניהול לידים ומדידת ROI בשיווק פרויקט נדל״ן | Semerenko Group",
+   "h1": [
+    "ניהול לידים ומדידת ROI בפרויקט נדל״ן"
+   ],
+   "h2": [
+    "התשובה הקצרה: מודדים עלות לעסקה, לא עלות לליד",
+    "למה עלות לליד לבדה מטעה",
+    "ליד מתאים: הגדרה אופרטיבית, לא סיסמה",
+    "שלבי הפייפליין: מליד חדש עד עסקה, כולל ״אבוד״",
+    "שישה רכיבי תשתית שבלעדיהם המספרים פשוט לא נכונים",
+    "שיוך מקור: מגע ראשון, מגע אחרון והאמת שבאמצע",
+    "הנוסחאות: עלות לפגישה, להזדמנות ולעסקה, עם דוגמה מספרית",
+    "מבנה דוח שבועי שמנכ״ל באמת קורא",
+    "איתור צוואר הבקבוק בין השיווק למכירות",
+    "טעויות נפוצות במדידת שיווק של פרויקטים",
+    "המערכת שאנחנו מפעילים על עצמנו",
+    "רשימת בדיקה: לפני שמאשרים עוד תקציב מדיה"
+   ],
+   "h3": [
+    "כל המקורות נכנסים לפייפליין אחד",
+    "ניקוי וסינון כפילויות",
+    "מעקב שיחות ו-WhatsApp",
+    "יעד זמן מענה (SLA) עם התראות",
+    "ניקוד לידים וניתוב",
+    "מעקב עד העסקה, וחזרה לקמפיינים",
+    "סופרים המרות במקום בני אדם",
+    "אין מדידה בסיסית בכלל",
+    "שופטים ערוץ אחרי שבוע",
+    "סוגרים את הערוץ ״היקר״",
+    "מנהלים לידים באקסל",
+    "מסתמכים על דשבורד הפלטפורמות"
+   ],
+   "word_count_est": 1854,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Five formulas: cost per unique inquiry, per qualified lead, per meeting held, per opportunity, per signed deal (full marketing cost incl. management and production)",
+    "Six infrastructure parts: one pipeline for all sources; dedupe; call and WhatsApp tracking; response-time SLA with alerts; lead scoring and routing; tracking to the deal and back to campaigns",
+    "Attribution: first touch, last touch",
+    "Weekly report structure for the CEO",
+    "Bottleneck between marketing and sales"
+   ],
+   "numbers": [
+    {
+     "value": "monthly media ₪100,000 in both channels; unique inquiries 400 vs 200; cost per inquiry ₪250 vs ₪500; qualified 80 (20%) vs 90 (45%); meetings held 24 vs 40; cost per meeting ₪4,167 vs ₪2,500; deals 2 vs 5; cost per signed deal ₪50,000 vs ₪20,000",
+     "claim": "Two-channel example showing CPL and cost per deal point in opposite directions",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "average apartment 2.4 million ₪: channel B marketing cost per deal under 1% of revenue vs over 2% for channel A",
+     "claim": "Same example",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "HubSpot pipeline, Make automations, GA4 with event-level dedupe, call recording and transcription, WhatsApp intake, follow-up sequences with a daily send cap, auto-stop on reply, no sending on Shabbat",
+     "claim": "Own stack described",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": ""
+  },
+  {
+   "id": "B01f",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/digital-advertising-leads/qualified-real-estate-leads/",
+   "retrieved": "2026-11-07",
+   "group": "budget (Semerenko sibling: qualified leads)",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "לידים איכותיים לנדל״ן: הגדרה, סינון ומדידה עד העסקה | Semerenko Group",
+   "h1": [
+    "איך לייצר לידים איכותיים לנדל״ן"
+   ],
+   "h2": [
+    "התשובה הישירה: איכות מגדירים מראש ומודדים עד העסקה",
+    "הגדרה אופרטיבית: חמשת הפרמטרים של ליד מתאים",
+    "כלכלת הליד: למה הליד הזול עלול להיות היקר מכולם",
+    "מקורות לידים בהשוואה כנה",
+    "טופס קצר או טופס מסנן: המחיר של כל בחירה",
+    "שאלות הסינון שעובדות: השדות מהצנרת שלנו",
+    "סינון אוטומטי, סינון אנושי וניקוד לידים",
+    "מהירות תגובה, מספר ניסיונות ומה עושים כשלא עונים",
+    "אבחון תקלות: לידים בלי פגישות, פגישות בלי מכירות",
+    "מדידה עד העסקה: הסולם שמחליף את ה-CPL",
+    "טעויות נפוצות שמייקרות כל עסקה",
+    "רשימת בדיקה לפני שמדליקים קמפיין לידים",
+    "הנתונים שלנו, לא הבטחות"
+   ],
+   "h3": [
+    "טופס קצר: שם וטלפון",
+    "טופס מסנן: שלוש עד חמש שאלות",
+    "תקציב",
+    "עיר מבוקשת",
+    "סוג עסקה",
+    "מועד",
+    "שפה",
+    "שיוך מקור",
+    "הרבה לידים, מעט פגישות",
+    "פגישות מתקיימות, עסקאות לא נסגרות",
+    "קנייה לפי CPL בלבד",
+    "דף נחיתה שמבטיח יותר מדי",
+    "חזרה לליד אחרי יום",
+    "ויתור אחרי ניסיון אחד",
+    "אין תיעוד סיבת פסילה",
+    "כמה ספקים בלי ניהול כפילויות"
+   ],
+   "word_count_est": 1889,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Five parameters of a qualified lead",
+    "Lead economics",
+    "Lead sources compared (Google Ads, Meta, bought leads, portals, organic and SEO, direct phone and WhatsApp)",
+    "Short form vs filtering form (3 to 5 questions)",
+    "Qualifying fields: budget, city, deal type, timing, language, source",
+    "Auto, human filtering and scoring",
+    "Response speed and attempts"
+   ],
+   "numbers": [
+    {
+     "value": "₪90 to ₪120 per new-apartment lead; ₪80 to ₪140 per Israeli investment lead; ₪100 to ₪150 per real-estate-abroad lead; before VAT",
+     "claim": "Lead price lists published in the industry (note: 'real estate abroad' here means Israelis buying abroad, not foreign buyers)",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "sold exclusive or shared with up to three competitors",
+     "claim": "Same price-list publications",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "source A: CPL ₪100, 10% qualify, ₪1,000 per qualified lead, 25% meeting rate, ₪4,000 per meeting held; source B: CPL ₪350, 40%, ₪875, 50%, ₪1,750",
+     "claim": "Example to show the principle only",
+     "evidence": "illustrative example"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": ""
+  },
+  {
+   "id": "B02",
+   "url": "https://swipeup.co.il/עלות-שיווק-פרויקט-נדלן/",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "swipeup.co.il",
+   "title": "כמה עולה שיווק פרויקט נדל״ן? מדריך תקציב | SwipeUp",
+   "h1": [
+    "כמה עולה שיווק ופרסום פרויקט נדל״ן? מדריך לבניית תקציב"
+   ],
+   "h2": [
+    "למה אין מחיר אחד לשיווק פרויקט נדל״ן?",
+    "שלושת חלקי התקציב שחייבים להפריד",
+    "איך מחשבים תקציב מדיה לפי יעד פגישות?",
+    "ואם אין עדיין נתונים על עלות לליד או יחס לפגישה?",
+    "מה נכלל בעלות ההקמה החד-פעמית?",
+    "כמה צריך להשקיע בכל חודש?",
+    "מה משפיע על העלות לליד בפרסום נדל״ן?",
+    "למה עלות לליד לבדה לא מספרת אם התקציב טוב?",
+    "שלושה מודלים נפוצים של תקציב שיווק",
+    "אילו עלויות נוטים לשכוח בהצעת המחיר?",
+    "מה חייב להופיע בהצעה מסודרת?",
+    "מתי אפשר להתחיל בתקציב מצומצם?",
+    "מתי נכון להגדיל את התקציב?",
+    "איך SwipeUp בונה תקציב לפרויקט נדל״ן?",
+    "שאלות נפוצות על עלות שיווק ופרסום נדל״ן",
+    "לסיכום: תקציב שיווק טוב מתחיל מהתוצאה הרצויה",
+    "מקורות מקצועיים להעמקה"
+   ],
+   "h3": [
+    "דוגמה מספרית להמחשה בלבד",
+    "מחקר ואסטרטגיה",
+    "מיתוג וקריאייטיב",
+    "דף נחיתה ומערכות",
+    "הפקות ואופליין",
+    "1. קמפיינים ולידים",
+    "2. קמפיינים עם שיפור תשתית ההמרה",
+    "3. מעטפת שיווק מלאה",
+    "כמה עולה שיווק פרויקט נדל״ן?",
+    "כמה עולה קמפיין נדל״ן בחודש?",
+    "כמה עולה ליד בתחום הנדל״ן?",
+    "מה חשוב יותר: עלות לליד או עלות לפגישה?",
+    "האם תקציב המדיה כולל את התשלום לחברת השיווק?",
+    "האם כל פרויקט צריך מיתוג, אתר וקמפיינים חדשים?",
+    "האם כדאי לחלק תקציב בין Google ל-Meta?",
+    "כמה זמן צריך לבדוק קמפיין לפני שמשנים תקציב?",
+    "האם אפשר לקבל הצעה לקמפיינים ולידים בלבד?",
+    "איך יודעים אם הצעת המחיר משתלמת?"
+   ],
+   "word_count_est": 2241,
+   "published": "2026-09-06",
+   "modified": "2026-09-24",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "כמה עולה שיווק פרויקט נדל״ן?",
+    "כמה עולה קמפיין נדל״ן בחודש?",
+    "כמה עולה ליד בתחום הנדל״ן?",
+    "מה חשוב יותר: עלות לליד או עלות לפגישה?",
+    "האם תקציב המדיה כולל את התשלום לחברת השיווק?",
+    "האם כל פרויקט צריך מיתוג, אתר וקמפיינים חדשים?",
+    "האם כדאי לחלק תקציב בין Google ל-Meta?",
+    "כמה זמן צריך לבדוק קמפיין לפני שמשנים תקציב?",
+    "האם אפשר לקבל הצעה לקמפיינים ולידים בלבד?",
+    "איך יודעים אם הצעת המחיר משתלמת?"
+   ],
+   "budget_line_items": [
+    "Three budget parts with payee: setup and infrastructure (strategy, branding, first creative, landing page, CRM, automations, measurement; one-time or by milestone; to vendors); ongoing management (campaigns, optimisation, reports, rotating creative, coordination with sales; monthly; to the agency); media (Google Ads, Meta, portals, sponsored content, signage; ongoing; paid directly to platforms)",
+    "Setup items: research and strategy; branding and creative (incl. language and format versions); landing page and systems (forms, WhatsApp, call tracking, CRM, automations, GA4, Google Tag Manager); productions and offline (photo, video, renders, virtual tours, signage, brochures, sales-centre design)",
+    "Budget formula: monthly media = meetings target x leads needed per meeting x expected CPL; three scenarios (conservative, base, improved)",
+    "Three budget models: campaigns and leads only; campaigns plus conversion-infrastructure fixes; full marketing envelope",
+    "Forgotten costs: media paid from client account or not; VAT, clearing or platform fees; photo, video, renders, voice-over, music; stock images, fonts, licences; landing page, hosting, domain, CRM; number of creatives and revision rounds; mobile, language and format adaptations; call tracking, WhatsApp, automations; maintenance and out-of-scope work; portals, influencers, PR, signage",
+    "What a proper proposal must show; when a small budget is fine; when to increase"
+   ],
+   "numbers": [
+    {
+     "value": "20,000 ש״ח",
+     "claim": "A proposal of 20,000 ש״ח can be media only, or include management and production",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "20 meetings a month x 5 leads per meeting = 100 leads x 250 ש״ח = 25,000 ש״ח media",
+     "claim": "Numeric example for illustration only; media only, fees and production extra",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "average daily budget x 30.4",
+     "claim": "Google says the monthly charge limit in most campaigns is the average daily budget times 30.4, and daily spend can vary with demand",
+     "evidence": "cited",
+     "source_named": "Google Ads Help (support.google.com/google-ads/answer/10486536 and siblings)"
+    }
+   ],
+   "tools_on_page": [
+    "None (WhatsApp and phone buttons)"
+   ],
+   "notes": "FAQ section of 10 questions rendered as H3 without FAQPage schema. 'Professional sources' list links four Google Ads help articles."
+  },
+  {
+   "id": "B02b",
+   "url": "https://swipeup.co.il/שיווק-פרויקטים-בנדלן/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (SwipeUp sibling)",
+   "site": "swipeup.co.il",
+   "title": "שיווק פרויקטים בנדל״ן: מדריך ללידים ומכירות | SwipeUp",
+   "h1": [
+    "שיווק פרויקטים בנדל״ן: איך בונים תהליך שמביא לידים ומכירות?"
+   ],
+   "h2": [
+    "שיווק פרויקט נדל״ן: מה עושים בכל שלב?",
+    "מה כולל שיווק פרויקטים בנדל״ן?",
+    "מה משתנה בשיווק פרויקטים מסחריים?",
+    "שלב 1: מגדירים יעד עסקי ולא רק יעד קמפיין",
+    "שלב 2: בונים מיצוב שמסביר למה לבחור דווקא בפרויקט",
+    "שלב 3: מחברים בין המסר, הקריאייטיב ודף הנחיתה",
+    "שלב 4: בוחרים ערוצים לפי תפקידם בתהליך",
+    "שלב 5: בונים תשתית לידים שמחברת בין שיווק למכירות",
+    "שלב 6: מודדים את כל המשפך ולא רק עלות לליד",
+    "כמה עולה שיווק פרויקט נדל״ן?",
+    "טעויות נפוצות בשיווק פרויקט נדל״ן",
+    "איך לבחור חברה לשיווק פרויקט נדל״ן?",
+    "שאלות נפוצות על שיווק פרויקטים בנדל״ן",
+    "לסיכום: שיווק פרויקט הוא מערכת אחת",
+    "מקורות מקצועיים להעמקה"
+   ],
+   "h3": [
+    "מתי מתאימים קמפיינים ולידים בלבד?",
+    "מתי נדרשת מעטפת שיווק מלאה?",
+    "Google Search",
+    "Meta, טיקטוק ויוטיוב",
+    "פורטלים, תוכן ופרסום אופליין",
+    "רימרקטינג וטיפוח",
+    "מה כולל שיווק פרויקט נדל״ן?",
+    "מה ההבדל בין שיווק פרויקט נדל״ן לבין קמפיין לידים?",
+    "האם אפשר לקבל רק קמפיינים ולידים?",
+    "באילו ערוצים כדאי לפרסם פרויקט נדל״ן?",
+    "איך יודעים אם הלידים איכותיים?",
+    "תוך כמה זמן רואים תוצאות?",
+    "האם כל פרויקט צריך פרסום אופליין?",
+    "כמה תקציב צריך לשיווק פרויקט?"
+   ],
+   "word_count_est": 2430,
+   "published": "2026-08-09",
+   "modified": "2026-09-30",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מתי מתאימים קמפיינים ולידים בלבד?",
+    "מתי נדרשת מעטפת שיווק מלאה?",
+    "מה כולל שיווק פרויקט נדל״ן?",
+    "מה ההבדל בין שיווק פרויקט נדל״ן לבין קמפיין לידים?",
+    "האם אפשר לקבל רק קמפיינים ולידים?",
+    "באילו ערוצים כדאי לפרסם פרויקט נדל״ן?",
+    "איך יודעים אם הלידים איכותיים?",
+    "תוך כמה זמן רואים תוצאות?",
+    "האם כל פרויקט צריך פרסום אופליין?",
+    "כמה תקציב צריך לשיווק פרויקט?"
+   ],
+   "budget_line_items": [
+    "Six steps: business goal not campaign goal; positioning; message-creative-landing page; channels by role (Google Search; Meta, TikTok, YouTube; portals, content, offline; remarketing and nurture); lead infrastructure linking marketing and sales; measure the whole funnel",
+    "Commercial projects differ",
+    "Choosing a project marketing company"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "8 FAQ questions as H3 without FAQPage schema."
+  },
+  {
+   "id": "B03",
+   "url": "https://www.brandytlv.com/blog/real-estate-campaign-cost",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "brandytlv.com",
+   "title": "כמה באמת עולה לשווק פרויקט נדל\"ן: פירוק התקציב המלא ליזם | בלוג ברנדי",
+   "h1": [
+    "כמה באמת עולה לשווק פרויקט נדל\"ן: פירוק התקציב המלא ליזם"
+   ],
+   "h2": [
+    "רכיבי התקציב",
+    "מה באמת קובע את עלות הליד",
+    "איך להשוות בין הצעות"
+   ],
+   "h3": [],
+   "word_count_est": 338,
+   "published": "2026-04-16",
+   "modified": "2026-08-16",
+   "schema_types": [
+    "BlogPosting",
+    "BreadcrumbList",
+    "City",
+    "Country",
+    "EducationalOccupationalCredential",
+    "GeoCoordinates",
+    "ImageObject",
+    "ListItem",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Paid media (largest; Facebook, Instagram, Google; size from desired sales pace and local competition)",
+    "Digital infrastructure (dedicated landing page, CRM link, measurement; one-time)",
+    "Content and production (pro photo day, renders, video, ad versions)",
+    "Automation (WhatsApp chatbot that filters and warms leads around the clock)",
+    "Management and optimisation"
+   ],
+   "numbers": [
+    {
+     "value": "42 ₪ to 200 ₪ per lead",
+     "claim": "We have seen quality leads at 42 shekels and leads at 200; gap explained by location and pricing vs area, funnel quality, message sharpness",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Short post (2-minute read, about 340 words). Published 16 Apr 2026, updated 16 Aug 2026. Comparison advice: share of budget to media vs fees, cost per meeting, open live dashboard."
+  },
+  {
+   "id": "B04",
+   "url": "https://www.mirai.co.il/post/real-estate-marketing-budget",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "mirai.co.il",
+   "title": "כמה עולה לשווק פרויקט נדל״ן: פירוק תקציב | mirai",
+   "h1": [
+    "כמה עולה לשווק פרויקט נדל״ן? פירוק תקציב ליזם: הקמה, ניהול ומדיה"
+   ],
+   "h2": [
+    "התשובה הקצרה",
+    "מה נכלל בכל שכבה?",
+    "מה קובע כמה צריך להשקיע?",
+    "איך מחשבים תקציב מדיה מהיעד אחורה?",
+    "איך התקציב משתנה לאורך שלבי הפרויקט?",
+    "איך משווים בין הצעות מחיר?",
+    "טעויות נפוצות בתכנון תקציב",
+    "שאלות נפוצות",
+    "רוצים לפרק תקציב לפרויקט שלכם?"
+   ],
+   "h3": [
+    "האם כדאי לקבוע תקציב כאחוז מההכנסות הצפויות מהפרויקט?",
+    "מה ההבדל בין עלות ניהול לתקציב מדיה?",
+    "מתי מתחילים לשלם על מדיה?",
+    "כמה זמן עד שרואים תוצאות?",
+    "אפשר להתחיל בתקציב קטן?"
+   ],
+   "word_count_est": 772,
+   "published": "2026-11-03",
+   "modified": "2026-11-03",
+   "schema_types": [
+    "Answer",
+    "BlogPosting",
+    "FAQPage",
+    "HowTo",
+    "HowToStep",
+    "ImageObject",
+    "Organization",
+    "Person",
+    "Question",
+    "itemPage"
+   ],
+   "faq_questions": [
+    "האם כדאי לקבוע תקציב כאחוז מההכנסות הצפויות מהפרויקט?",
+    "מה ההבדל בין עלות ניהול לתקציב מדיה?",
+    "מתי מתחילים לשלם על מדיה?",
+    "כמה זמן עד שרואים תוצאות?",
+    "אפשר להתחיל בתקציב קטן?"
+   ],
+   "budget_line_items": [
+    "Three layers: setup (renders and virtual tour, landing page, creative, measurement and lead system; one-time, mostly pre-launch); management (running campaigns, ad and audience tests, reports, regular meeting with sales office; monthly); media (Facebook, Instagram, Google and more; monthly, paid directly to platform)",
+    "Drivers: number and price of units; time available (sell in one year vs two); project stage; location and competition; existing materials; sales-office response",
+    "Back-calculation from deals target",
+    "Stage table: presale (setup costliest), launch (media and management), ongoing sales (management, remarketing, re-contact)",
+    "Comparing offers: what management includes; ownership of ad account, pixel and landing page; media commission; what counts as a lead; commitment period and hand-over of accounts and data"
+   ],
+   "numbers": [
+    {
+     "value": "12 deals in six months; 6 meetings per deal (1 in 6 closes); 72 meetings; 8 leads per meeting; 576 leads; 100 ₪ per lead; media for six months 57,600 ₪",
+     "claim": "Example numbers, not results and not a promise",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "432 leads instead of 576 (about a quarter fewer)",
+     "claim": "If meetings come from every six leads instead of eight, without changing a shekel in ads",
+     "evidence": "illustrative example"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Wix blog with FAQPage and HowTo schema. FAQ answer: a percentage of revenue can estimate a ceiling, not set the budget."
+  },
+  {
+   "id": "B05",
+   "url": "https://pixel-nadlan.co.il/2026/08/27/תקציב-שיווק-פרויקט-נדלן/",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "pixel-nadlan.co.il",
+   "title": "כמה עולה לשווק פרויקט נדל״ן? מדריך תקציב ליזמים - PIXEL NADALAN",
+   "h1": [
+    "כמה עולה לשווק פרויקט נדל״ן? מדריך תקציב ליזמים"
+   ],
+   "h2": [
+    "שני סוגי עלויות שחשוב להפריד",
+    "איך גוזרים תקציב מיעדי מכירה",
+    "איפה הכסף מתחלק",
+    "שלוש טעויות תקציב נפוצות",
+    "איך יודעים שהתקציב עובד",
+    "סיכום"
+   ],
+   "h3": [
+    "הכל בהשקה, כלום אחריה",
+    "חיסכון במיתוג",
+    "אין תקציב לתפעול הלידים"
+   ],
+   "word_count_est": 662,
+   "published": "2026-08-27",
+   "modified": null,
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "Country",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Offer",
+    "OfferCatalog",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "Service",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Two cost types: production and work (branding, site, photography, signage, campaign management; paid to vendors) vs media (paid directly to Facebook, Google, real-estate boards, outdoor)",
+    "Budget from sales targets: units and pace, meetings per deal, inquiry-to-meeting rate, multiply back",
+    "Where the money goes: branding and language (one-time); site and landing pages (one-time plus maintenance); photo and productions (rounds through the project); signage and print (one-time plus renewals: fence, signs, sales brochure); marketing management (monthly); media (monthly, rises at launch)",
+    "Three mistakes: all at launch nothing after; saving on branding; no budget for lead handling",
+    "Three KPIs: meetings held, average cost per meeting, deals closed and their source channel"
+   ],
+   "numbers": [
+    {
+     "value": "tens of meetings per deal",
+     "claim": "In many projects the close rate is in the range of tens of meetings per deal, depending on price and competition",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 27 Aug 2026. No FAQ, no figures in shekels."
+  },
+  {
+   "id": "B05b",
+   "url": "https://pixel-nadlan.co.il/2026/08/27/שיווק-פרויקט-נדלן-מדריך-ליזמים/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (Pixel sibling)",
+   "site": "pixel-nadlan.co.il",
+   "title": "שיווק פרויקט נדל״ן: המדריך המלא ליזמים ולקבלנים - PIXEL NADALAN",
+   "h1": [
+    "שיווק פרויקט נדל״ן: המדריך המלא ליזמים ולקבלנים"
+   ],
+   "h2": [
+    "למה שיווק נדל״ן שונה מכל שיווק אחר",
+    "שלב 1: אסטרטגיה ומיצוב - לפני שנוגעים בעיצוב",
+    "שלב 2: מיתוג ובניית שפה",
+    "שלב 3: נכסים דיגיטליים",
+    "שלב 4: מדיה וקמפיינים",
+    "שלב 5: תוכן וסושיאל",
+    "שלב 6: אופליין ושילוט",
+    "שלב 7: ניהול לידים ואוטומציה",
+    "שלב 8: ליווי מכירות",
+    "לוח זמנים לדוגמה",
+    "חמש טעויות שחוזרות אצל יזמים",
+    "שאלות נפוצות",
+    "סיכום"
+   ],
+   "h3": [
+    "הגדרת קהל היעד",
+    "מיצוב מול המתחרים"
+   ],
+   "word_count_est": 1269,
+   "published": "2026-08-27",
+   "modified": "2026-10-08",
+   "schema_types": [
+    "Answer",
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "Country",
+    "EntryPoint",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "Offer",
+    "OfferCatalog",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "SearchAction",
+    "Service",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מה השלב הראשון בשיווק פרויקט נדל״ן?",
+    "מתי מתחילים לשווק פרויקט נדל״ן?",
+    "כמה עולה לשווק פרויקט נדל״ן?",
+    "במה שונה שיווק נדל״ן משיווק רגיל?",
+    "איך מודדים הצלחה בשיווק פרויקט נדל״ן?"
+   ],
+   "budget_line_items": [
+    "Eight stages: strategy and positioning; branding; digital assets; media and campaigns; content and social; offline and signage (the 'talking fence' called the cheapest asset relative to exposure, plus brochure and branded sales office); lead management and automation; sales support",
+    "Sample timeline",
+    "Five mistakes"
+   ],
+   "numbers": [
+    {
+     "value": "strategy and branding 4-8 weeks; digital assets in parallel 4-8 weeks; pre-launch 4-8 weeks (waiting list, fence, first content); presale 2-6 weeks; official launch one concentrated week; ongoing until sold out",
+     "claim": "Sample timeline table",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "couples aged 30 to 38 renting within a radius of ten kilometres, three rooms with safe room and parking",
+     "claim": "Example of a precise target audience",
+     "evidence": "illustrative example"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": ""
+  },
+  {
+   "id": "B06",
+   "url": "https://start-point.co.il/real-estate-project-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "budget (lead cost sub-intent)",
+   "site": "start-point.co.il",
+   "title": "שיווק פרויקטים נדל״ן: מאיפה מגיעים רוכשים ומה עולה כל ליד | Start Point",
+   "h1": [
+    "שיווק פרויקטים נדל״ן: מאיפה מגיעים רוכשים לדירה מקבלן, וכמה עולה כל ליד"
+   ],
+   "h2": [
+    "מה זה שיווק פרויקטים נדל״ן, ומי משלם עליו בסוף?",
+    "מאיפה מגיעים רוכשים לדירה מקבלן?",
+    "כמה עולה ליד לדירה מקבלן, וכמה עולה פגישה במשרד המכירות?",
+    "פרי סייל, קרקע, חו״ל ויד שנייה: מה ההבדל בין הלידים?",
+    "מתי עדיף ליזם לקנות לידים במקום להריץ קמפיין?",
+    "מה רוכש דירה בודק לפני שהוא מגיע למשרד המכירות?",
+    "שאלות נפוצות"
+   ],
+   "h3": [
+    "דירה חדשה מקבלן (פרי סייל)",
+    "קרקעות להשקעה",
+    "נדל״ן בחו״ל",
+    "מכירת דירה (הערכת שווי)",
+    "כמה עולה שיווק פרויקט נדל״ן?",
+    "מה עדיף לפרויקט חדש, גוגל או פייסבוק?",
+    "מה לשאול בשיחה הראשונה עם ליד לדירה מקבלן?",
+    "חברת שיווק או צוות מכירות פנימי?",
+    "כמה מהר צריך לחזור לליד לדירה מקבלן?",
+    "איפה קונים לידים לפרויקטי נדל״ן, וכמה עולה ליד?"
+   ],
+   "word_count_est": 1229,
+   "published": "2026-11-05",
+   "modified": null,
+   "schema_types": [
+    "Answer",
+    "Article",
+    "BreadcrumbList",
+    "ContactPoint",
+    "Country",
+    "EntryPoint",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "LocalBusiness",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "כמה עולה שיווק פרויקט נדל״ן?",
+    "מה עדיף לפרויקט חדש, גוגל או פייסבוק?",
+    "מה לשאול בשיחה הראשונה עם ליד לדירה מקבלן?",
+    "חברת שיווק או צוות מכירות פנימי?",
+    "כמה מהר צריך לחזור לליד לדירה מקבלן?",
+    "איפה קונים לידים לפרויקטי נדל״ן, וכמה עולה ליד?"
+   ],
+   "budget_line_items": [
+    "Who pays: the buyer, through the apartment price",
+    "Buyer sources table: Google search, Facebook and Instagram, Taboola and Outbrain articles, site sign and sales office, brokers, bought leads",
+    "Lead types: new apartment presale, land investment, real estate abroad, home-sale valuation",
+    "When to buy leads vs run a campaign",
+    "What buyers check before the sales office: accompanying bank, guarantee type, caveat registration (Sale Law, investment protection)"
+   ],
+   "numbers": [
+    {
+     "value": "2% to 4% of sales volume, including sales team and advertising",
+     "claim": "Common market range for project marketing and sales budget",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "3,000 to 23,000 ₪ per apartment sold",
+     "claim": "Advertising alone per apartment sold, according to reports on large developers",
+     "evidence": "agency claim citing unnamed reports or price lists",
+     "source_named": "unnamed reports; a linked Bizportal article (bizportal.co.il/general/news/article/238717) compared two developers where one spent seven times more per apartment"
+    },
+    {
+     "value": "1% to 2% of the apartment price, plus VAT",
+     "claim": "Common brokerage fee, only when a broker brings the buyer",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "4 to 12 ₪ per click",
+     "claim": "A Google click on 'שיווק פרויקטים נדל״ן' per Google Keyword Planner (developers searching for a marketer, not buyers)",
+     "evidence": "cited",
+     "source_named": "Google Keyword Planner"
+    },
+    {
+     "value": "150 ₪ lead, 1 in 10 to meeting = 1,500 ₪ per meeting; called back after two days, 1 in 20 = 3,000 ₪ per meeting",
+     "claim": "Calculation for illustration, not market data",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "75% (sole apartment), 50% (investor)",
+     "claim": "Bank of Israel limits mortgage LTV",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "from 173 ₪ per lead in a pack of 25 to 128 ₪ in a pack of 500 (new apartments presale, land, real estate abroad); home-sale valuation from 230 ₪ to 170 ₪; before VAT, price list of 4 Nov 2026; packs of 25, 50, 100, 150, 200, 300, 500 exclusive leads, no retainer, no annual contract",
+     "claim": "Own lead store prices",
+     "evidence": "vendor price list"
+    }
+   ],
+   "tools_on_page": [
+    "Links to its lead store (packs with prices)"
+   ],
+   "notes": "Published 5 Nov 2026. Links Sale Law text (Wikisource), Capital Market Authority and Privacy Protection Authority pages. FAQPage schema with 6 questions."
+  },
+  {
+   "id": "B07b",
+   "url": "https://www.baranesgroup.com/שיווק-פרויקטים-למגורים/developer-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "budget / how-to (Baranes 'project marketing guide')",
+   "site": "baranesgroup.com",
+   "title": "מדריך מעשי להצלחה: כל מה שצריך לדעת על שיווק דירות קבלן",
+   "h1": [
+    "מדריך מעשי להצלחה: כל מה שצריך לדעת על שיווק דירות קבלן",
+    "שיווק דירות קבלן: המדריך האסטרטגי המלא ליזמים ולקבלנים",
+    "שיווק נדל\"ן"
+   ],
+   "h2": [
+    "מה זה שיווק דירות קבלן ולמי זה מתאים?",
+    "איך משווקים דירות קבלן בצורה שמביאה לידים איכותיים ולא רק כמות?",
+    "מה ההבדל בין שיווק פרויקט בנייה לבין תיווך דירות?",
+    "איך בונים אסטרטגיית שיווק לפריסייל בלי לפגוע במחיר?",
+    "איך קובעים קהל יעד נכון למכירת דירות חדשות?",
+    "מה חייב להיות בעמוד פרויקט כדי להעלות יחס המרה?",
+    "כמה עולה שיווק דירות קבלן ומה משפיע על התקציב?",
+    "איך מייצרים בידול לפרויקט בנייה בשוק רווי פרויקטים?",
+    "איך מודדים הצלחה בשיווק פרויקט לפי KPI אמיתיים?",
+    "איך שיווק דיגיטלי משתלב עם מכירות שטח ומשרד מכירות?",
+    "איך מטפלים בהתנגדויות נפוצות של רוכשים?",
+    "איך המערכת של קבוצת ברנס עונה על הצרכים העסקיים של היזם?",
+    "הצעדים הבאים להצלחת שיווק פרויקט הנדל\"ן הבא שלכם",
+    "שאלות נפוצות"
+   ],
+   "h3": [
+    "איך נראה \"משפך\" נכון לפרויקט דירות חדשות?",
+    "מקרה מדגים: מהמשפך לחוזה חתום",
+    "אילו מבצעי פריסייל עובדים בלי לשחוק את המותג?",
+    "אילו רכיבים מגדילים המרות בפועל?",
+    "KPI מומלצים לדוח שבועי ליזם",
+    "SLA מומלץ לטיפול בלידים",
+    "קבוצת ברנס - שיווק אסטרטגי לפרויקטי נדל\"ן"
+   ],
+   "word_count_est": 2512,
+   "published": "2026-07-09",
+   "modified": null,
+   "schema_types": [
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מתי כדאי להתחיל בשיווק פרויקט דירות קבלן?",
+    "מה ההבדל בין ליד רגיל לליד איכותי?",
+    "האם מבצעי פריסייל פוגעים במחיר הפרויקט?",
+    "אילו מדדים באמת חשוב למדוד בשיווק פרויקט?",
+    "איך מפיגים את חששות הרוכשים לגבי כספם?"
+   ],
+   "budget_line_items": [
+    "Funnel for new apartments; case from funnel to signed contract",
+    "Presale strategy without hurting price; presale offers that do not wear the brand",
+    "Target audience",
+    "Project page elements that raise conversion",
+    "Cost drivers: project size and units, location, market state, local competition; buyer's full deal cost incl. purchase-tax steps (links Tax Authority update)",
+    "Differentiation in a saturated market",
+    "Weekly KPI table: qualified leads, cost per meeting, meeting-to-contract ratio, inventory sales pace vs target",
+    "Recommended lead SLA",
+    "Digital plus field sales and sales office",
+    "CTR in ads and search results",
+    "Handling buyer objections",
+    "Unit mix and pricing that speed sales"
+   ],
+   "numbers": [
+    {
+     "value": "'entry with 20% equity'",
+     "claim": "Copy example said to work better than '4-room apartments for sale'",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "16 years, 750 housing units, 1,500 clients, 100K sqm sold",
+     "claim": "Company stats block",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Theme injects accessibility-widget text into the title tag. Seven H1s on the page (template defect). FAQ in toggles, no FAQPage schema. 'Questions' as H2s (16 question headings)."
+  },
+  {
+   "id": "B07c",
+   "url": "https://www.baranesgroup.com/שיווק-פרויקטים-למגורים/new-apartment-advertising/",
+   "retrieved": "2026-11-07",
+   "group": "budget / how-to (Baranes sibling)",
+   "site": "baranesgroup.com",
+   "title": "פרסום דירות חדשות: המדריך השלם לשיווק נדלן דיגיטלי",
+   "h1": [
+    "פרסום דירות חדשות: המדריך השלם לשיווק נדלן דיגיטלי",
+    "שיווק פרויקטים בנדל\"ן: איך בונים תהליך שמייצר עסקאות ולא רק חשיפה",
+    "שיווק נדל\"ן"
+   ],
+   "h2": [
+    "מה באמת קובע אם פרויקט יימכר בקצב שתוכנן?",
+    "מחקר שוק וסביבה תחרותית: הבסיס לכל החלטה שיווקית",
+    "שדרוג הפרויקט בראייה שיווקית לפני היציאה לשוק",
+    "תרחיש מהשטח: פרויקט שיצא לשוק בלי מחקר, והמחיר ששילם על כך",
+    "בידול ומיתוג: איך פרויקט מקבל סיפור שנשאר בזיכרון",
+    "טעויות נפוצות בשיווק פרויקטים - ואיך מונעים אותן מראש",
+    "שקיפות מול הרוכש: מה החוק דורש ולמה זה גם שיווק נכון",
+    "הגבול בין מסר משכנע לבין פרסום שעלול להטעות",
+    "משרד מכירות, דף נחיתה או שטח: השוואה בין נקודות המפגש",
+    "מדדים ובדיקות: מה בודקים בכל שבוע לאורך הקמפיין",
+    "ניהול לידים, מיקור חוץ ואחריות על מידע אישי",
+    "סגירת מכירה, תמ\"א 38 ופרויקטים מסחריים",
+    "שאלות נפוצות",
+    "אז מה השלב הבא בפרויקט שלכם?"
+   ],
+   "h3": [
+    "תמהיל דירות ופריסה בקומות",
+    "לובי, חצר ופרטים שנראים ראשונים",
+    "קבוצת ברנס - שיווק פרויקטים בנדל\"ן"
+   ],
+   "word_count_est": 2344,
+   "published": "2026-08-03",
+   "modified": "2026-08-03",
+   "schema_types": [
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מתי הזמן הנכון להתחיל בשיווק פרויקט?",
+    "מה ההבדל בין קמפיין פרסום לבין שיווק פרויקט?",
+    "איך יודעים שהמחיר שנקבע ריאלי?",
+    "מה נדרש כדי לשמור על שקיפות מול רוכשים?",
+    "האם ליווי אישי של מנכ\"ל אכן משנה תוצאה?",
+    "מה עושים כשפרויקט נתקע באמצע השיווק?"
+   ],
+   "budget_line_items": [
+    "Market research and competitive environment",
+    "Upgrading the product before launch (unit mix and floor layout; lobby, yard, first-seen details)",
+    "Field scenario of a project launched without research",
+    "Branding",
+    "Common mistakes",
+    "Transparency and the law: Sale Law (apartments) investment protection; Consumer Protection Law ban on misleading, incl. at advertising stage; Consumer Protection and Fair Trade Authority",
+    "Persuasive vs misleading: 'price from' with no units behind it; render showing a view that will not stay open; distance to a train station that does not exist yet; rule: every ad claim provable by a document, future plans stated as such",
+    "Sales office vs landing page vs field comparison",
+    "Weekly checks",
+    "Lead management, outsourcing and personal data (Privacy Protection Authority, database notification duty, minimal fields, purpose, consent record)",
+    "Closing, TAMA 38 (two audiences), commercial"
+   ],
+   "numbers": [
+    {
+     "value": "more than 16 years; over 100,000 sqm; over 750 units; over 1,500 clients",
+     "claim": "Company claims",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "The only Israeli page read that names misleading-advertising examples and privacy duties."
+  },
+  {
+   "id": "B08a",
+   "url": "https://wedomedia.co.il/פרסום-נדלן/",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "wedomedia.co.il",
+   "title": "פרסום נדלן ומיתוג הפרויקט האם זה כל מה שצריך למכירת נכסים? WE DO MEDIA",
+   "h1": [
+    "שיווק פרויקטים למגורים באינטרנט- איפה, איך וכמה זה עולה?"
+   ],
+   "h2": [
+    "שיווק פרויקטים למגורים באינטרנט- איפה, איך וכמה זה עולה?",
+    "שיווק נדל\"ן באינטרנט- למה זה כדאי?",
+    "איפה משווקים פרויקטים למגורים או השקעה?",
+    "אז.. כמה שיווק נדל\"ן באינטרנט עולה?"
+   ],
+   "h3": [],
+   "word_count_est": 918,
+   "published": "2020-04-13",
+   "modified": "2023-12-17",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "GeoCoordinates",
+    "ImageObject",
+    "ListItem",
+    "Offer",
+    "OfferCatalog",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "Service",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Channels: Facebook; LinkedIn (luxury, role targeting); Google search (pay per click); Outbrain (articles, remarketing pools); YouTube (pre-roll with CTA); banners on large sites; Google display",
+    "Research the agency before hiring"
+   ],
+   "numbers": [
+    {
+     "value": "about 1% of every apartment in the project, with 0.75% to digital",
+     "claim": "From our experience, marketing cost should be about 1% of the total of every apartment in the project, with 0.75% going to digital advertising",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "above 1000 ₪ per inquiry",
+     "claim": "LinkedIn lead cost is very high and can exceed 1000 ₪ per inquiry",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "a few agorot per view",
+     "claim": "YouTube, if the right audience is reached",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "thousands of shekels per single banner",
+     "claim": "Banner space on large sites",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 13 Apr 2020, modified 17 Dec 2023. Very likely the 'one professional publication' that Semerenko quotes for the 1% / 0.75% anchor."
+  },
+  {
+   "id": "B08b",
+   "url": "https://wedomedia.co.il/marketing-budget-calculator/",
+   "retrieved": "2026-11-07",
+   "group": "budget (tool)",
+   "site": "wedomedia.co.il",
+   "title": "מחשבון תקציב שיווק",
+   "h1": [
+    "מחשבון תקציב שיווק"
+   ],
+   "h2": [
+    "תכנון תקציב שיווק: המדריך המלא עם כלי חינמי",
+    "למה חשוב לחלק את התקציב בצורה נכונה?",
+    "איך להתחיל?",
+    "FAQs"
+   ],
+   "h3": [
+    "האם אני יכול להוסיף ערוצי שיווק משלי?",
+    "מה קורה אם אני חורג מהתקציב שלי?",
+    "האם התוצאות כוללות גם אחוזים וגם סכומים?"
+   ],
+   "word_count_est": 486,
+   "published": "2025-12-31",
+   "modified": "2026-01-06",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "GeoCoordinates",
+    "ImageObject",
+    "ListItem",
+    "Offer",
+    "OfferCatalog",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "Service",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "האם אני יכול להוסיף ערוצי שיווק משלי?",
+    "מה קורה אם אני חורג מהתקציב שלי?",
+    "האם התוצאות כוללות גם אחוזים וגם סכומים?"
+   ],
+   "budget_line_items": [
+    "Generic marketing budget split by channel"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Generic marketing budget calculator: enter total budget and channels, returns split in percent and amounts; not real-estate specific"
+   ],
+   "notes": "The only calculator found on any ranking budget page, and it is generic."
+  },
+  {
+   "id": "B09",
+   "url": "https://nefussy.com/project-marketing-for-contractors/",
+   "retrieved": "2026-11-07",
+   "group": "budget",
+   "site": "nefussy.com",
+   "title": "שיווק פרויקטים לקבלנים - המדריך המלא | נפוסי",
+   "h1": [
+    "שיווק פרויקטים לקבלנים"
+   ],
+   "h2": [
+    "מה כולל שיווק פרויקטים מקצועי",
+    "השאלה שקבלנים לא שואלים מספיק מוקדם",
+    "איך בוחנים חברת שיווק",
+    "שאלות ותשובות"
+   ],
+   "h3": [
+    "מתי נכון לצרף חברת שיווק לפרויקט?",
+    "מה ההבדל בין משרד תיווך לחברת שיווק פרויקטים?",
+    "האם שיווק חיצוני מתאים גם לקבלן עם מערך מכירות פנימי?"
+   ],
+   "word_count_est": 367,
+   "published": "2026-07-30",
+   "modified": "2026-09-16",
+   "schema_types": [
+    "Answer",
+    "BreadcrumbList",
+    "Country",
+    "EntryPoint",
+    "FAQPage",
+    "GeoCoordinates",
+    "ImageObject",
+    "ListItem",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "Place",
+    "PostalAddress",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "RealEstateAgent",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מתי נכון לצרף חברת שיווק לפרויקט?",
+    "מה ההבדל בין משרד תיווך לחברת שיווק פרויקטים?",
+    "האם שיווק חיצוני מתאים גם לקבלן עם מערך מכירות פנימי?"
+   ],
+   "budget_line_items": [
+    "Five stages: market analysis and pricing before unit mix; project brand strategy; dedicated sales setup (salespeople, sales room, lead system); digital and traditional campaign; buyer support to contract and after",
+    "Key question: what does an extra month of unsold inventory cost",
+    "Three tests for a marketing company: scope (parallel projects, average sales pace), depth (enters at planning, affects mix and pricing), reliability (external rating, years, completed projects)"
+   ],
+   "numbers": [
+    {
+     "value": "100 units; a one-quarter slowdown",
+     "claim": "In a 100-unit project a quarter's slowdown in sales pace turns into financing costs usually higher than the whole marketing budget",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "rated by BDI among the top 8 for seven consecutive years; 20+ years",
+     "claim": "Company claims",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Short (about 370 words). FAQPage schema (3 questions). Schema type RealEstateAgent."
+  },
+  {
+   "id": "B10",
+   "url": "https://www.globes.co.il/news/article.aspx?did=1001546786",
+   "retrieved": "2026-11-07",
+   "group": "budget (news, cited data)",
+   "site": "globes.co.il",
+   "title": "הכול כדי למכור: תקציבי הפרסום של חברות הבנייה בזינוק - גלובס",
+   "h1": [
+    "הכול כדי למכור: תקציבי הפרסום של חברות הבנייה בזינוק"
+   ],
+   "h2": [
+    "המשבר בענף הנדל\"ן הוביל לזינוק משמעותי בהוצאות השיווק של חברות הנדל\"ן, ותקציבי הפרסום של השחקניות הגדולות קפצו בעשרות אחוזים, וחלקם אף יותר מהכפילו את עצמם • אך האם באמת הסלבריטאים יקדמו את המכירות באתרים? • \"למיתוג יש תפקיד חשוב, אך הוא אינו מסוגל לבדו להפוך את המגמה\""
+   ],
+   "h3": [
+    "הקמפיינים - ניב סולטן, עידן עמדי ויוצאי ריאליטי",
+    "העלות - גידול של עשרות אחוזים בתקציב הפרסום",
+    "היעילות - \"ללא הנחה, קמפיין לא יביא מכירות\""
+   ],
+   "word_count_est": 1648,
+   "published": "2026-07-01",
+   "modified": "2026-10-06",
+   "schema_types": [
+    "BreadcrumbList",
+    "CreativeWork",
+    "ImageObject",
+    "ListItem",
+    "NewsArticle",
+    "Organization",
+    "Person",
+    "Product",
+    "WebPage",
+    "WebPageElement",
+    "imageObject"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Celebrity presenter campaigns",
+    "TV, outdoor, digital, social",
+    "Discounts and financing offers as the real sales driver"
+   ],
+   "numbers": [
+    {
+     "value": "Aura: 3.5 million ₪ (2023), almost 31 million ₪ (2024), almost 62 million ₪ (2025), more than 36 million ₪ (H1 2026)",
+     "claim": "Ad investment per Ifat ad monitoring, at list price, not necessarily actual spend",
+     "evidence": "cited",
+     "source_named": "Ifat advertising monitoring (יפעת בקרת פרסום)"
+    },
+    {
+     "value": "Tidhar: 15 million ₪ (2025), over 6.5 million ₪ (H1 2026)",
+     "claim": "Same source",
+     "evidence": "cited",
+     "source_named": "Ifat"
+    },
+    {
+     "value": "Israel Canada: about 16 million ₪ (2024), 30.5 million ₪ (2025), 14.5 million ₪ (H1 2026)",
+     "claim": "Same source; 2024 campaign for RAINBOW tower at Sde Dov with Noa Kirel",
+     "evidence": "cited",
+     "source_named": "Ifat"
+    },
+    {
+     "value": "Hagag: 11.5 million ₪ (2025), about 8 million ₪ (H1 2026)",
+     "claim": "Same source",
+     "evidence": "cited",
+     "source_named": "Ifat"
+    },
+    {
+     "value": "Dimri: 6.5 million ₪ (2025)",
+     "claim": "Same source",
+     "evidence": "cited",
+     "source_named": "Ifat"
+    },
+    {
+     "value": "about 5 million ₪",
+     "claim": "Y.H. Dimri campaign for Dimri Yama at Sde Dov with Idan Amedi (December)",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "about 5 million ₪ (estimated)",
+     "claim": "Nahmias Group UTOPIA at Sde Dov campaign: billboards, TV, digital",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "about 2 million ₪",
+     "claim": "Barazani, Katzrin project campaign (TV, digital, social)",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "about 3 million ₪ (estimated)",
+     "claim": "Tidhar campaign running in all media",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "about 3 million ₪, incl. 5% discount on five-room apartments",
+     "claim": "Reisdor campaign",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "production cost double the Israeli norm; presenter fee estimated 1-1.5 million dollars",
+     "claim": "Aviv (Melisron) 51PARK Herzliya with Gwyneth Paltrow",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    },
+    {
+     "value": "more than 85 thousand unsold apartments",
+     "claim": "Record supply the market faces",
+     "evidence": "cited",
+     "source_named": "Globes reporting"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 1 Jul 2026 (NewsArticle). Expert view inside: without a discount, benefit or real offer, campaigns alone do not lift sales. Page mostly readable; print is subscriber-only."
+  },
+  {
+   "id": "H01",
+   "url": "https://lotus-real.com/שיווק-פרויקטים-בנדלן-איך-עושים-את-זה-נ/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "lotus-real.com",
+   "title": "קבוצת לוטוס | קבוצת לוטוס - שיווק פרויקטים בנדל\"ן | שיווק פרויקטים נדלן",
+   "h1": [
+    "שיווק פרויקטים בנדל\"ן - איך עושים את זה נכון?"
+   ],
+   "h2": [],
+   "h3": [
+    "שיווק פרויקטים בנדל\"ן - איך עושים את זה נכון?",
+    "כיצד צריך לשווק נכסי נדל\"ן?",
+    "ערוצי פרסום",
+    "מדוע כדאי להיעזר בחברה מקצועית עבור שיווק הפרויקטים בנדל\"ן?",
+    "שיטת השיווק",
+    "ניתוח ואסטרטגיה",
+    "ייעוץ וגיבוש מוצר",
+    "לוטוס מחקר",
+    "לוטוס אפיון",
+    "ניהול מכירות",
+    "בידול ומיתוג",
+    "פרסום"
+   ],
+   "word_count_est": 836,
+   "published": null,
+   "modified": null,
+   "schema_types": [
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Project types: industrial, commercial, REIT funds",
+    "What project marketing is: segmentation, price checks, matching methods to audience and property type",
+    "Start advertising before the project exists, from the day the land is bought",
+    "Channels: print (local papers); outdoor billboards near the project; info leaflets in mailboxes and doors near the project; radio (programmes, jingles, local or national); social (Facebook, Instagram, LinkedIn); digital (real-estate sites, listing sites such as Yad2, financial sites)",
+    "Why use a professional company: segmentation, budget routing"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Blocks scripted requests (HTTP 403, Cloudflare). Read in the owner's Chrome after the automatic browser check passed by itself. About 836 words including menus. Single H1, content in H3s, no H2. Schema: BreadcrumbList, Organization, WebPage, ImageObject, WebSite."
+  },
+  {
+   "id": "H02a",
+   "url": "https://sistermarketing.co.il/real-estate/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (service page)",
+   "site": "sistermarketing.co.il",
+   "title": "שיווק נדל\"ן בלי כאב ראש - SISTER",
+   "h1": [
+    "שיווק נדל\"ן בלי כאב ראש"
+   ],
+   "h2": [],
+   "h3": [
+    "ניהול קמפיינים",
+    "קריאייטיב",
+    "סרטונים",
+    "דפי נחיתה",
+    "Basic",
+    "Pro",
+    "Premium"
+   ],
+   "word_count_est": 398,
+   "published": null,
+   "modified": null,
+   "schema_types": [],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Campaign management",
+    "Creative",
+    "Videos",
+    "Landing pages and print materials",
+    "Packages: Basic (campaigns, ad creative, CRM link), Pro (adds social management, content shoot days), Premium (adds full branding, landing pages and print, custom CRM at extra cost)"
+   ],
+   "numbers": [
+    {
+     "value": "below 100 ש\"ח per lead",
+     "claim": "Hot leads at costs below 100 ש\"ח per lead",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "15% conversion",
+     "claim": "15% conversion to relevant leads that lead to sales meetings",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "No schema at all. Packages have no prices."
+  },
+  {
+   "id": "H02b",
+   "url": "https://sistermarketing.co.il/איך-לשווק-נדלן-ב-2025/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "sistermarketing.co.il",
+   "title": "איך לשווק נדל\"ן ב-2025: טרנדים, כלים וכל מה שחם - SISTER",
+   "h1": [
+    "איך לשווק נדל\"ן ב-2025: טרנדים, כלים וכל מה שחם"
+   ],
+   "h2": [],
+   "h3": [
+    "שורה תחתונה"
+   ],
+   "word_count_est": 487,
+   "published": null,
+   "modified": null,
+   "schema_types": [],
+   "faq_questions": [],
+   "budget_line_items": [
+    "People in front (developer, first resident, designer story video)",
+    "AI-based targeting",
+    "Platforms (TikTok, LinkedIn for investors)",
+    "Precise creative",
+    "Added value (sustainability, community, technology)",
+    "Audience precision"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Trend post, no schema, no numbers."
+  },
+  {
+   "id": "H03",
+   "url": "https://bst.co.il/blog/projects-marketing-done-right/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "bst.co.il",
+   "title": "שיווק פרויקטים - איך עושים את זה נכון - bst",
+   "h1": [
+    "שיווק פרויקטים - איך עושים את זה נכון"
+   ],
+   "h2": [
+    "שיווק פרויקטים - איך זה נעשה בפועל?",
+    "איך ניגשים לשווק פרויקט"
+   ],
+   "h3": [],
+   "word_count_est": 494,
+   "published": "2022-05-11",
+   "modified": "2025-06-09",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Two approaches: broad public (newspapers and real-estate sites, real-estate or economy programmes, billboards) and direct approach to investors, companies and groups",
+    "Marketer must know market, prices, trends and the surroundings"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "About 340 words of body. Published 2022, modified 2025. Construction company blog."
+  },
+  {
+   "id": "H04",
+   "url": "https://bks.co.il/effective-real-estate-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "bks.co.il",
+   "title": "שיווק נדל״ן יעיל: איך למנף את הפוטנציאל של פרויקטים למגורים ומסחר - קבוצת ב.קרן נדל\"ן",
+   "h1": [
+    "שיווק נדל״ן יעיל: איך למנף את הפוטנציאל של פרויקטים למגורים ומסחר"
+   ],
+   "h2": [
+    "השלב הראשון : הגדרת קהל היעד",
+    "שיווק דיגיטלי של נכסי נדל\"ן",
+    "שיווק נדל\"ן יעיל ברשתות החברתיות",
+    "טכניקות שיווק מסורתיות שכדאי להכיר",
+    "טכניקות שיווק נדל\"ן להשקעה",
+    "לסיכום"
+   ],
+   "h3": [],
+   "word_count_est": 875,
+   "published": "2024-11-12",
+   "modified": "2026-03-04",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Target audience and local market analysis",
+    "Digital: paid (Google Ads, Facebook Ads), SEO, professional website, social presence; video and virtual tours",
+    "Social: community, testimonials",
+    "Traditional: local newspaper ads, real-estate exhibitions, direct mail, launch event, professional networking",
+    "Investment property marketing: investors, referrals"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Published Nov 2024, modified Mar 2026."
+  },
+  {
+   "id": "H05",
+   "url": "https://all-i.co.il/real-estate-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "all-i.co.il",
+   "title": "איך משווקים נדל\"ן ב-2025 - המדריך המלא לשיווק דיגיטלי מנצח",
+   "h1": [
+    "המדריך המלא לשיווק נדל\"ן מנצח ב-2026"
+   ],
+   "h2": [
+    "אסטרטגיה, ניהול קמפיינים PPC",
+    "מה צריך כדי להצליח בשיווק נדל\"ן",
+    "סיפורי הצלחה שמוכיחים שזה עובד",
+    "היתרונות בעבודה עם שותף שיווק מקצועי",
+    "איך לבחור שותף שיווקי נכון",
+    "הזמן לפעול הוא עכשיו"
+   ],
+   "h3": [
+    "הבנה עמוקה של קהל היעד",
+    "אסטרטגיה רב-ערוצית",
+    "תוכן ויזואלי איכותי",
+    "מעקב ואופטימיזציה שוטפת"
+   ],
+   "word_count_est": 1671,
+   "published": "2025-10-26",
+   "modified": "2026-02-18",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Deep audience understanding",
+    "Multichannel (Facebook and Instagram, Google, LinkedIn for luxury and commercial, YouTube and TikTok)",
+    "Visual content (pro photo, video and virtual tours, infographics)",
+    "Tracking and optimisation",
+    "Choosing a marketing partner"
+   ],
+   "numbers": [
+    {
+     "value": "apartments from 7 million ש\"ח",
+     "claim": "Case: luxury apartments in Tel Aviv and Givatayim",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "'reduction of about 300%' in lead cost, meaning cost fell to a third",
+     "claim": "Case result (the arithmetic is wrong: a cost cannot fall by 300%)",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "over 70% relevant leads",
+     "claim": "Case result",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "ROI 1:12",
+     "claim": "Case result: every shekel invested produced 12 shekels of revenue",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "H1 says 2026, title says 2025."
+  },
+  {
+   "id": "H06",
+   "url": "https://shoham-levy.co.il/marketing-plan-for-real-estate/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (company-level plan, PR agency)",
+   "site": "shoham-levy.co.il",
+   "title": "איך לבנות תכנית שיווקית לחברת נדל\"ן? | צעדים אפקטיביים",
+   "h1": [
+    "המדריך המקיף לבניית תוכנית שיווקית מנצחת לחברת נדל\"ן בישראל"
+   ],
+   "h2": [
+    "אפיון פרופילים של רוכשי דירות בישראל עבור חברות נדל\"ן",
+    "בניית מותג נדל\"ן עוצמתי",
+    "שילוב הפודקאסט באסטרטגיית התוכן הכוללת",
+    "יצירת סינרגיה: שילוב מאמצי השיווק",
+    "תיאום בין שיווק למכירות"
+   ],
+   "h3": [
+    "הגדרת יעדים מדידים",
+    "דוגמאות לקהלי יעד מובחנים בענף הנדל\"ן בישראל כוללות :",
+    "מטרות המיתוג בענף הנדל\"ן הן רבות ומגוונות:",
+    "גיבוש זהות המותג",
+    "פיתוח הצעת מכר ייחודית (USP)",
+    "תהליך פיתוח USP אפקטיבי כולל את השלבים הבאים :",
+    "דוגמאות פוטנציאליות ל-USP בענף הנדל\"ן (בהשראת ):",
+    "יצירת מסרים מרכזיים משכנעים"
+   ],
+   "word_count_est": 6583,
+   "published": "2025-04-12",
+   "modified": "2026-07-19",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Buyer personas table (first-time buyer, experienced investor, luxury upgrader) with demographics, needs, pain points, motives, information sources, key messages",
+    "SMART goals",
+    "Brand identity, USP, key messages",
+    "Podcast in content strategy",
+    "Synergy across channels",
+    "Marketing and sales alignment"
+   ],
+   "numbers": [
+    {
+     "value": "ages 28-35 / 45-60 / 50-65",
+     "claim": "Three persona age bands",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "+15% qualified leads from first-time buyers in six months; 50 qualified leads a month from investors via Google Ads; +20% site traffic in a quarter",
+     "claim": "Examples of SMART goals",
+     "evidence": "illustrative example"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Longest Hebrew page (about 6,600 words) but about a real-estate company's plan, not a single project budget. Five H2s."
+  },
+  {
+   "id": "H07a",
+   "url": "https://dara.co.il/articles/איך-נשווק-את-נכס-הנדלן-או-פרויקט-בתחום/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "dara.co.il",
+   "title": "איך נשווק את נכס הנדל\"ן או פרויקט בתחום?",
+   "h1": [
+    "איך נשווק את נכס הנדל\"ן או פרויקט בתחום?"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 1307,
+   "published": "2022-08-27",
+   "modified": "2022-09-14",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Make sure everything is legal (documents at the land registry; stress local-authority and state support)",
+    "Target audience",
+    "Real-estate lawyer throughout",
+    "TAMA 38 marketing to residents"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Newsletter and pre-sale sign-up form"
+   ],
+   "notes": "2022 article from the market-leading sales-marketing firm; thin on method. Number hits on the page are sidebar dates only."
+  },
+  {
+   "id": "H07b",
+   "url": "https://dara.co.il/articles/כל-מה-שצריך-לדעת-על-שיווק-דירות-בארץ/",
+   "retrieved": "2026-11-07",
+   "group": "how-to (Dara sibling)",
+   "site": "dara.co.il",
+   "title": "כל מה שצריך לדעת על שיווק דירות בארץ",
+   "h1": [
+    "כל מה שצריך לדעת על שיווק דירות בארץ"
+   ],
+   "h2": [],
+   "h3": [
+    "שיווק התחדשות עירונית",
+    "שיווק נדל\"ן באינטרנט",
+    "לסיכום"
+   ],
+   "word_count_est": 1379,
+   "published": "2022-08-27",
+   "modified": "2023-06-28",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Urban renewal marketing",
+    "Real estate marketing on the internet"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Sibling article, read for completeness."
+  },
+  {
+   "id": "H08",
+   "url": "https://etgarim.net/איך-בונים-אסטרטגיית-שיווק-לפרויקט-נדל/",
+   "retrieved": "2026-11-07",
+   "group": "how-to",
+   "site": "etgarim.net",
+   "title": "איך בונים אסטרטגיית שיווק לפרויקט נדל״ן? - etgarim.net",
+   "h1": [
+    "איך בונים אסטרטגיית שיווק לפרויקט נדל״ן?",
+    "איך בונים אסטרטגיית שיווק לפרויקט נדל״ן?"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 603,
+   "published": "2026-07-30",
+   "modified": "2026-08-09",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "One core message and what not to tell",
+    "Consistency across ads, project site, sales office and reps",
+    "Dynamic strategy across the project life cycle (launch vs advanced construction; remaining mix and price levels change)",
+    "Selling starts before the meeting"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Published 30 Jul 2026. Haifa developer-marketer. Sibling articles cover pricing a new project, unit mix that sells, selling fast, why a project does not sell."
+  },
+  {
+   "id": "F01",
+   "url": "https://semerenkogroup.com/en/real-estate-marketing/foreign-buyers/market-israeli-project-overseas/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers",
+   "site": "semerenkogroup.com (English)",
+   "title": "How to Market an Israeli Real Estate Project to Overseas Buyers | Semerenko Group",
+   "h1": [
+    "How to Market an Israeli Real Estate Project to Overseas Buyers"
+   ],
+   "h2": [
+    "Step one: choose target countries, not overseas in general",
+    "Build a buyer profile for each community",
+    "Translation versus genuine localization",
+    "What must be available in English",
+    "Build trust across distance",
+    "From first inquiry to a visit to Israel",
+    "Where to reach this audience",
+    "Recurring mistakes in international project marketing",
+    "Checklist before you begin"
+   ],
+   "h3": [
+    "Religious American buyers",
+    "French buyers",
+    "British and Australian buyers",
+    "Former Israelis",
+    "Video and virtual tours",
+    "A personal video call",
+    "Transparency about the developer and construction",
+    "Time-zone coverage as part of the service",
+    "A token English page",
+    "Machine translation",
+    "Relying on an aliyah wave",
+    "A local brand that does not travel",
+    "No WhatsApp and poor availability",
+    "Slow response across continents"
+   ],
+   "word_count_est": 1708,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ListItem",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Choose target countries, not 'overseas'",
+    "Buyer profile per community: religious American buyers, French buyers, British and Australian buyers, former Israelis",
+    "Translation vs localisation (square metres, '3.5 rooms', Form 4, protected room)",
+    "Core English asset list: full project page; price presentation incl. foreign-resident purchase tax and legal fees; payment schedule incl. construction-cost indexation; specification in familiar terms; city, neighbourhood, community, synagogues, schools; remote purchase (power of attorney, account opening, fund transfer); team, WhatsApp, Zoom",
+    "Trust at distance: video and virtual tours, personal video call, developer and construction transparency, time-zone coverage",
+    "From first inquiry to a visit to Israel",
+    "Channels: existing audience and English SEO; Meta and Google geo campaigns; newsletters and organised Jewish communities; market guides; events and webinars with aliyah professionals; partnerships",
+    "Mistakes: token English page; machine translation; relying on an aliyah wave; local brand that does not travel; no WhatsApp; slow response across continents",
+    "Checklist"
+   ],
+   "numbers": [
+    {
+     "value": "8% and then 10%",
+     "claim": "A non-resident buyer pays purchase tax at graduated rates of 8% and then 10%, under a temporary order, as of July 2026",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    }
+   ],
+   "tools_on_page": [
+    "Fit-check form for English-speaking audience"
+   ],
+   "notes": "Says serious international marketing needs sustained monthly investment and may need events abroad; small fast budgets should stay local."
+  },
+  {
+   "id": "F01h",
+   "url": "https://semerenkogroup.com/he/real-estate-marketing/foreign-buyers/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers",
+   "site": "semerenkogroup.com (Hebrew)",
+   "title": "שיווק נדל״ן לתושבי חוץ ודוברי אנגלית: הגשר לרוכשים מחו״ל | Semerenko Group",
+   "h1": [
+    "שיווק פרויקטי נדל״ן לתושבי חוץ ודוברי אנגלית"
+   ],
+   "h2": [
+    "מערכת השקה, לא אוסף מודעות",
+    "למי השירות מתאים, ולמי נגיד שלא",
+    "למה קמפיין בעברית לא פוגש את הרוכש בניו יורק",
+    "הקהלים: מי באמת קונה מחו״ל ומה מניע כל קבוצה",
+    "מה שונה אצל רוכש מחו״ל: שפה, מס, אמון ומרחק",
+    "מה כלול: נכסים באנגלית וערוצי הפצה שכבר פועלים",
+    "התהליך: שישה שלבים מבדיקת התאמה ועד עסקה",
+    "ההוכחות: הקהל דובר האנגלית שכבר נמצא אצלנו",
+    "שאלות של יזמים"
+   ],
+   "h3": [
+    "מתי יש בסיס אמיתי לעבודה",
+    "מתי נמליץ לוותר",
+    "אמריקאים וקנדים",
+    "בריטים",
+    "דוברי אנגלית שכבר בישראל",
+    "עולים בדרך ועולים חדשים",
+    "משקיעים מחו״ל",
+    "בית שני ויוקרה",
+    "נכסי השיווק שאנחנו בונים",
+    "ערוצי ההפצה",
+    "בדיקת התאמה",
+    "מיפוי קהלים ומדינות יעד",
+    "בניית הנכסים",
+    "הפצה",
+    "סינון ומעקב",
+    "מדידה עד עסקה"
+   ],
+   "word_count_est": 1968,
+   "published": "2026-07-10",
+   "modified": "2026-07-11",
+   "schema_types": [
+    "BreadcrumbList",
+    "ListItem",
+    "Service",
+    "WebPage"
+   ],
+   "faq_questions": [
+    "יש בכלל ביקוש מתושבי חוץ עכשיו, או שזה סיפור של כותרות?",
+    "הפרויקט שלנו לא בירושלים ולא בנתניה. זה עדיין רלוונטי?",
+    "צוות המכירות שלנו לא חזק באנגלית. איך זה עובד בפועל?",
+    "כמה זמן לוקח עד שרואים פניות ראשונות?",
+    "כבר תרגמנו את אתר הפרויקט לאנגלית. במה זה שונה?",
+    "איך נדע שהתקציב הזה עובד?"
+   ],
+   "budget_line_items": [
+    "Who it suits and who not",
+    "Audiences: Americans and Canadians; British; English speakers already in Israel; olim on the way and new olim; investors from abroad; second home and luxury",
+    "What differs: language, tax, trust, distance",
+    "Assets: English-first project page (price, extra costs, payment schedule, basic tax answers); digital English brochure; explainer video and filmed tour; FAQ for overseas buyers (tax, financing, remote purchase, guarantees, delivery, defects period); city and neighbourhood content; developer and team in English; English WhatsApp, Zoom, time-zone sequences",
+    "Distribution: own English audience; English SEO; newsletter; Jewish communities and organisations in North America and the UK; aliyah professionals; webinars; English PR; geo-targeted Google and Meta",
+    "Six steps: fit check, audience and country mapping, building assets, distribution, filtering and follow-up, measurement to the deal"
+   ],
+   "numbers": [
+    {
+     "value": "about 130 deals a month in May 2025 vs 180 to 200 a month in previous years",
+     "claim": "Foreign-resident purchase pace, according to data published in the industry",
+     "evidence": "agency claim citing unnamed reports or price lists"
+    },
+    {
+     "value": "8% up to the ceiling and 10% above it",
+     "claim": "Purchase tax for a foreign resident, temporary order, as of July 2026",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "203 cities, 1,371 neighbourhoods; 48,384 English-interface users in 12 months; 65,667 Google clicks in 16 months; 58% from outside Israel",
+     "claim": "Own platform statistics",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [
+    "Fit-check form"
+   ],
+   "notes": "Service page; 6 FAQ toggles without FAQPage schema."
+  },
+  {
+   "id": "F02",
+   "url": "https://semerenkogroup.com/selling-to-foreign-buyers-israel/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers (resale seller guide)",
+   "site": "semerenkogroup.com (English)",
+   "title": "Selling Israeli Property To Foreign Buyers",
+   "h1": [
+    "Selling Israeli Property to English-Speaking and Foreign Buyers"
+   ],
+   "h2": [
+    "The three buyer types, and the exact fear each one carries",
+    "Why the tax status of your buyer (and you) changes the deal",
+    "Removing the friction: an English-first document pack",
+    "Remote-sale logistics: tours, video, and how the buyer signs from abroad",
+    "The friction-removal kit costs you almost nothing",
+    "Your remove-the-friction checklist before you list to foreign buyers"
+   ],
+   "h3": [
+    "What tax residency does to a worked NIS 4,000,000 deal",
+    "Remote tours and a video walkthrough",
+    "WhatsApp as the deal’s spine",
+    "Currency transfer, framed honestly",
+    "Foreign mortgages, and why timing slips",
+    "Power of attorney: how the buyer (and you) sign without flying in"
+   ],
+   "word_count_est": 2402,
+   "published": "2026-06-21",
+   "modified": "2026-10-30",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ContactPoint",
+    "Country",
+    "EducationalOccupationalCredential",
+    "GovernmentOrganization",
+    "ImageObject",
+    "ListItem",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "RealEstateAgent",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Three buyer types and their fears",
+    "Tax status of buyer and seller",
+    "English-first document pack",
+    "Remote-sale logistics: tours and video walkthrough, WhatsApp as the deal's spine, currency transfer, foreign mortgages and timing, power of attorney",
+    "Friction-removal checklist"
+   ],
+   "numbers": [
+    {
+     "value": "in writing (Land Law, 1969); notarised power of attorney (Notary Law s.20) with apostille or consular legalisation",
+     "claim": "Formal requirements for remote signing",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "about 2% plus 18% VAT per side (about 2.36% effective); seller lawyer about 0.5% to 1.5% plus VAT; on a NIS 3,000,000 sale about NIS 70,800 agent fees and NIS 35,000 legal, about NIS 105,800 before tax",
+     "claim": "Resale selling costs",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "60 to 90 days",
+     "claim": "Typical time from signed contract to registration",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "NIS 5,008,000 (frozen 2025 to 2027)",
+     "claim": "Single-apartment exemption ceiling for Israeli residents",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "pre-approval valid about 45 to 90 days; rate lock about 24 days",
+     "claim": "Foreign buyer mortgage timing",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "advance to Tax Authority 15% of price (bought before 7 Nov 2001) or 7.5% (on or after, or company seller); from installments after more than 40% paid; 80% where profit is business income",
+     "claim": "Withholding advance (mikdama) rules",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "a few hundred shekels, well under 1% of costs",
+     "claim": "Cost of the friction-removal kit (video, live tours, English summaries, WhatsApp)",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Written for resale sellers, not developers. Useful only for remote-purchase logistics and the tax facts a foreign buyer asks about."
+  },
+  {
+   "id": "F03",
+   "url": "https://gambit360.co.il/שיווק-נכסי-יוקרה-בישראל/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers",
+   "site": "gambit360.co.il",
+   "title": "שיווק נכסי יוקרה בישראל לקהלי יעד הנמצאים בחו\"ל - Gambit360",
+   "h1": [
+    "שיווק נכסי יוקרה בישראל לקהלי יעד הנמצאים בחו\"ל"
+   ],
+   "h2": [
+    "שיווק נכסי יוקרה בישראל לקהלי יעד הנמצאים בחו\"ל"
+   ],
+   "h3": [],
+   "word_count_est": 379,
+   "published": "2021-01-22",
+   "modified": "2022-07-31",
+   "schema_types": [
+    "BlogPosting",
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "ProfessionalService",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Virtual tour bridges the distance to buyers abroad",
+    "One-link marketing landing page per property: virtual tour, stills, video, description, location map, contact form"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Virtual tour (vendor product)"
+   ],
+   "notes": "2021 post from a virtual-tour studio. About 380 words."
+  },
+  {
+   "id": "F04",
+   "url": "https://www.mfreg.com/service/project-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers (developer service)",
+   "site": "mfreg.com (Montefiore Real Estate Group)",
+   "title": "Developers - New Development Marketing & Selling - Montefiore Real Estate Group",
+   "h1": [
+    "Developers - New Development Marketing & Selling"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 195,
+   "published": "2025-04-16",
+   "modified": "2025-07-05",
+   "schema_types": [
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Comprehensive luxury branding and marketing package for new developments (one sentence)"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Contact form with marketing-consent checkbox"
+   ],
+   "notes": "Thin service page (about 200 words). Brokerage with English, French and Hebrew new-development listings."
+  },
+  {
+   "id": "F05",
+   "url": "https://klikatnadlan.co.il/realestateabroadil/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers (buyer-side guide)",
+   "site": "klikatnadlan.co.il",
+   "title": "רכישת נדל\"ן בישראל לתושבי חוץ - מה חשוב לדעת | קליקת הנדל״ן",
+   "h1": [
+    "תושבי חוץ בנדל\"ן הישראלי: מדריך מלא לקנייה ולמכירה"
+   ],
+   "h2": [
+    "מי נחשב תושב חוץ ומה משמעות ההגדרה?",
+    "פרופיל הרוכשים והמגמות הבולטות",
+    "כיצד מתייחסים הבנקים לרכישת דירה על ידי תושבי חוץ?",
+    "ייפוי כוח פרטני: מפתח להצלחה",
+    "יתרונות למי שחוזר לישראל או נמצא ברילוקיישן",
+    "מכירת דירה על ידי תושב חוץ - מה חשוב לדעת?",
+    "סיכום: ניהול נכון מונע עיכובים",
+    "שאלות ותשובות"
+   ],
+   "h3": [],
+   "word_count_est": 2274,
+   "published": "2025-05-06",
+   "modified": "2026-10-29",
+   "schema_types": [
+    "Answer",
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "ContactPoint",
+    "Country",
+    "EntryPoint",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מי נחשב תושב חוץ ומה משמעות ההגדרה?",
+    "מה חשוב לדעת על פרופיל הרוכשים והמגמות הבולטות?",
+    "כיצד מתייחסים הבנקים לרכישת דירה על ידי תושבי חוץ?",
+    "מה חשוב לדעת על ייפוי כוח פרטני: מפתח להצלחה?",
+    "מה חשוב לדעת על יתרונות למי שחוזר לישראל או נמצא ברילוקיישן?"
+   ],
+   "budget_line_items": [
+    "Who is a foreign resident",
+    "Buyer profile and trends (4 to 5 rooms, often resale; source countries USA, Canada, France, UK, South Africa)",
+    "How banks treat foreign residents",
+    "Specific power of attorney",
+    "Returning residents and relocation",
+    "Selling by a foreign resident"
+   ],
+   "numbers": [
+    {
+     "value": "fewer than 180 days a year in Israel; centre of life abroad",
+     "claim": "Definition of a foreign resident",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "up to 50% of the property value",
+     "claim": "Bank mortgage financing for foreign residents",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "up to 75% for a single apartment",
+     "claim": "Foreign residents with an Israeli work contract",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "over 50% of project inventory within three weeks; 87 apartments in a month and a half; meeting close rates up to 85% and almost 80%",
+     "claim": "Testimonials from developers using the buyers' club",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "300,000+ members, 2,000+ deals accompanied, over 3 billion ש\"ח in deals",
+     "claim": "Company claims",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "FAQPage schema (5 questions). Buyer-side, but ranks for the developer foreign-resident query."
+  },
+  {
+   "id": "F06",
+   "url": "https://pixel-nadlan.co.il/2026/11/04/real-estate-marketing-overseas-diaspora-buyers/",
+   "retrieved": "2026-11-07",
+   "group": "foreign buyers",
+   "site": "pixel-nadlan.co.il",
+   "title": "שיווק פרויקט נדלן בישראל לרוכשים ומשקיעים מחול - PIXEL NADALAN",
+   "h1": [
+    "שיווק פרויקט נדלן בישראל לרוכשים ומשקיעים מחול"
+   ],
+   "h2": [
+    "מי הם הרוכשים מחול",
+    "אתר ותוכן באנגלית",
+    "סיורים וירטואליים ווידאו",
+    "היכן מוצאים את הקהל",
+    "אמון וליווי לאורך זמן"
+   ],
+   "h3": [],
+   "word_count_est": 723,
+   "published": "2026-11-04",
+   "modified": "2026-11-04",
+   "schema_types": [
+    "Answer",
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "Country",
+    "EntryPoint",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "Offer",
+    "OfferCatalog",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "ProfessionalService",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "SearchAction",
+    "Service",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "איך משווקים פרויקט נדלן בישראל לקונים מחול",
+    "אילו ערוצים מגיעים לקהל מחול",
+    "מה מיוחד בקהל הרוכשים מחול",
+    "האם צריך אתר באנגלית",
+    "כמה זמן לוקח למכור לקהל מחול"
+   ],
+   "budget_line_items": [
+    "Who the buyers abroad are (diaspora Jews, investors with ties to Israel)",
+    "English site and content (quality, not machine translation; explain remote purchase)",
+    "Virtual tours, 360 and video",
+    "Challenge to solution table (cannot visit: tour and video; language: English content; time zones: availability; distrust at distance: transparency)",
+    "Where to find them: targeted ads to Jewish audiences abroad, English SEO, community partnerships, newsletters to investor lists",
+    "Long sales cycle and continuous support"
+   ],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "Published 4 Nov 2026. FAQPage schema (5 questions)."
+  },
+  {
+   "id": "A01",
+   "url": "https://www.theurbandeveloper.com/articles/how-much-to-spend-on-off-the-plan-marketing",
+   "retrieved": "2026-11-07",
+   "group": "abroad (Australia, sponsored)",
+   "site": "theurbandeveloper.com",
+   "title": "Cut Wasted Ad Spend and Sell Off the Plan Faster in a Tight Market | The Urban Developer",
+   "h1": [
+    "Cut Wasted Ad Spend and Sell Off the Plan Faster in a Tight Market"
+   ],
+   "h2": [
+    "How much should an off-the-plan project spend on marketing?",
+    "A slow market clears out the bloat",
+    "Think further ahead than feels comfortable"
+   ],
+   "h3": [],
+   "word_count_est": 925,
+   "published": "2026-10-30",
+   "modified": "2026-10-30",
+   "schema_types": [
+    "ContactPoint",
+    "ImageObject",
+    "NewsArticle",
+    "NewsMediaOrganization",
+    "Person"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Marketing budget belongs in the feasibility, with a contingency",
+    "Slow market clears out bloat",
+    "Plan further ahead (branding, marketing, sales timeline)"
+   ],
+   "numbers": [
+    {
+     "value": "between 1 and 2 per cent of gross realisation; on a $40 million project $400,000 to $800,000",
+     "claim": "Off-the-plan marketing budget usually set by the agency, with a contingency",
+     "evidence": "agency claim",
+     "source_named": "iCreate Agency (Sonia Jeffrey), sponsored content"
+    },
+    {
+     "value": "2026 federal budget",
+     "claim": "Changes to negative gearing and capital gains tax cut lead flow from the same ad spend",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Sponsored content, published 30 Oct 2026."
+  },
+  {
+   "id": "A02",
+   "url": "https://www.feasly.com.au/guides/project-marketing-costs-off-the-plan-australia",
+   "retrieved": "2026-11-07",
+   "group": "abroad (Australia and NZ, the deepest page found)",
+   "site": "feasly.com.au",
+   "title": "Project Marketing Costs for Off-the-Plan Developments | Feasly",
+   "h1": [
+    "Project Marketing Costs for Off-the-Plan Developments"
+   ],
+   "h2": [
+    "What does project marketing actually cover?",
+    "What does an off-the-plan project marketing campaign typically cost?",
+    "How should project marketing sit in the feasibility?",
+    "How do project marketing agencies charge?",
+    "What does a display suite cost, and is one always needed?",
+    "What do the brand, images and digital assets cost?",
+    "When does the project marketing money actually leave the account?",
+    "What do the agency agreement rules require in each state?",
+    "What can a project marketing campaign legally claim?",
+    "How does off-the-plan disclosure constrain the campaign?",
+    "Can you market an off-the-plan project to overseas buyers?",
+    "What happens to the deposits a campaign generates?",
+    "How does project marketing work in New Zealand?",
+    "Where do project marketing budgets go wrong?",
+    "What to ask your lawyer",
+    "What to ask your project marketing agency",
+    "What to ask your accountant",
+    "The short version"
+   ],
+   "h3": [
+    "A worked campaign budget"
+   ],
+   "word_count_est": 5982,
+   "published": "2026-08-28",
+   "modified": "2026-08-28",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "What project marketing covers",
+    "Cost ranges table (total S&M, marketing only, direct commission, third-party channels)",
+    "Where it sits in the feasibility",
+    "Fee structures: commission only; retainer plus commission; cost recovery with a marketing budget; earned vs paid; committed spend if project stops; termination tail",
+    "Display suite cost and whether needed",
+    "Brand, images, digital assets cost",
+    "Cash-out timing",
+    "Agency agreement rules per state",
+    "What a campaign may legally claim (consumer law, underquoting)",
+    "Off-the-plan disclosure",
+    "Overseas buyers (foreign-investment exemption caps)",
+    "Deposits",
+    "New Zealand differences",
+    "Where budgets go wrong",
+    "Questions for lawyer, agency, accountant",
+    "Worked budget lines: brand identity, collateral and website; CGI and film; display suite fitout and furniture; display suite running costs; digital, portals and paid media; signage, hoarding and print"
+   ],
+   "numbers": [
+    {
+     "value": "3% to 5% of GRV",
+     "claim": "Combined marketing and selling spend on residential apartment or land projects",
+     "evidence": "agency claim",
+     "source_named": "market practice; page states no government benchmark exists"
+    },
+    {
+     "value": "0.75% to 2% of GRV",
+     "claim": "Marketing costs only, excluding commission",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "2% to 3% of sale price, on settlement",
+     "claim": "Agency commission, direct sales",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "4% to 8% of sale price",
+     "claim": "Third-party or referral channels incl. primary agency split",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "60 apartments, GRV $60,000,000 ex GST; marketing 1.2% = $720,000: brand, collateral, website $60,000; CGI and film $120,000; display suite fitout $320,000; display suite running 18 months $90,000; digital, portals, paid media $90,000; signage, hoarding, print $40,000; commission 2.5% = $1,500,000; combined $2,220,000 = 3.7% of GRV; margin on cost 19.5%",
+     "claim": "Worked campaign budget, illustrative",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "+12 months: +$60,000 suite, +$70,000 media, +$30,000 relaunch creative; marketing $880,000 = 1.47% of GRV; margin 19.1%",
+     "claim": "Scenario of a campaign running 12 months longer",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "about $530,000 of $720,000 spent before launch",
+     "claim": "Cash-out timing in the example",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "roughly $150,000 to well beyond $700,000",
+     "claim": "Display suite, usually the largest marketing line",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "$3,000 to $10,000 per still CGI; film tens of thousands",
+     "claim": "Commonly quoted CGI ranges",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "no more than 50% of dwellings and no more than $3 million per foreign person under the exemption certificate",
+     "claim": "Australian foreign-buyer caps for new dwellings",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    },
+    {
+     "value": "maximum penalty $110,000 or three times commission (from 29 June 2026)",
+     "claim": "NSW underquoting penalty",
+     "evidence": "statutory or official figure stated by the page (verify)"
+    }
+   ],
+   "tools_on_page": [
+    "Feasibility software promotion (14-day trial)"
+   ],
+   "notes": "Published 28 Aug 2026. About 6,000 words. The model for a legal plus budget plus cash-flow section."
+  },
+  {
+   "id": "A03",
+   "url": "https://localiq.com/blog/real-estate-search-advertising-benchmarks/",
+   "retrieved": "2026-11-07",
+   "group": "abroad (search ads benchmark)",
+   "site": "localiq.com",
+   "title": "Real Estate Advertising Benchmarks (+Ideas for Better Results)",
+   "h1": [
+    "2026 Real Estate Search Advertising Benchmarks (+Tips for the Best Results)"
+   ],
+   "h2": [
+    "Key takeaways: The state of real estate search advertising",
+    "Real estate search ads benchmarks by metric and industry",
+    "Expert tips to improve real estate search ads campaigns",
+    "Make your real estate search advertising a success"
+   ],
+   "h3": [
+    "Average click-through rate",
+    "Average cost per click",
+    "Average conversion rate",
+    "Average cost per lead",
+    "1. A/B test your PPC ads",
+    "2. Refine your landing page",
+    "3. Use platform automation to expand your ad creative and reach",
+    "4. Use remarketing",
+    "5. Run Local Services Ads"
+   ],
+   "word_count_est": 2185,
+   "published": "2026-06-24",
+   "modified": "2026-09-15",
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "EntryPoint",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PropertyValueSpecification",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "CTR, CPC, conversion rate, CPL by real-estate subcategory",
+    "Tips: A/B tests, landing page, automation, remarketing, Local Services Ads"
+   ],
+   "numbers": [
+    {
+     "value": "nearly 900 campaigns, April 2025 to March 2026",
+     "claim": "Method: proprietary data",
+     "evidence": "cited",
+     "source_named": "LocaliQ proprietary data"
+    },
+    {
+     "value": "CTR 7.61% (-9.73% YoY); CPC $3.22 (+27.27%); CVR 3.70% (+12.8%); CPL $102.51 (+2.02%)",
+     "claim": "Overall real-estate search ad averages 2026",
+     "evidence": "cited",
+     "source_named": "LocaliQ proprietary data"
+    },
+    {
+     "value": "CPL: Apartments and Rentals $99.48; Homes for Sale by Agent $142.59; Property Management $76.71; Real Estate Broker $162.39; Residential Real Estate Agent $157.59",
+     "claim": "CPL by subcategory",
+     "evidence": "cited",
+     "source_named": "LocaliQ proprietary data"
+    },
+    {
+     "value": "$4.00 to $8.00 per click, 8-12% conversion",
+     "claim": "High-intent keywords",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 24 Jun 2026, updated 14 Sep 2026. US agent and rental focus; no new-development category."
+  },
+  {
+   "id": "A04",
+   "url": "https://www.zillow.com/resources/new-construction/calculating-roi-metrics-that-matter",
+   "retrieved": "2026-11-07",
+   "group": "abroad (portal for builders)",
+   "site": "zillow.com (New Construction)",
+   "title": "Calculating ROI: Metrics That Really Matter | Zillow New Construction",
+   "h1": [
+    "Calculating ROI: Metrics That Really Matter"
+   ],
+   "h2": [
+    "Cost per click (CPC)",
+    "Cost per lead (CPL)",
+    "Lead to appointment and appointment to sale",
+    "Cost per sale (CPS)"
+   ],
+   "h3": [],
+   "word_count_est": 760,
+   "published": "2018-10-25",
+   "modified": null,
+   "schema_types": [
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "ImageObject",
+    "ListItem",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "CPC",
+    "CPL",
+    "Lead to appointment and appointment to sale",
+    "Cost per sale"
+   ],
+   "numbers": [
+    {
+     "value": "$100 / 32 clicks = $3.125 CPC",
+     "claim": "Formula example",
+     "evidence": "illustrative example"
+    },
+    {
+     "value": "82 percent",
+     "claim": "Of prospective buyers consider new construction (asterisked, own claim)",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 2018. Same metric ladder the Israeli pages use."
+  },
+  {
+   "id": "A05",
+   "url": "https://www.bisnow.com/news/south-florida/multifamily/luxury-condo-developers-spending-millions-on-sales-galleries-to-stand-out-crowded-miami-market-135534",
+   "retrieved": "2026-11-07",
+   "group": "abroad (news, Miami sales galleries)",
+   "site": "bisnow.com",
+   "title": "Miami's Condo Craze Has Developers Spending Millions On Sales Galleries",
+   "h1": [
+    "Miami's Condo Craze Has Developers Spending Millions On Sales Galleries"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 1567,
+   "published": "2026-07-29",
+   "modified": "2026-08-01",
+   "schema_types": [
+    "NewsArticle",
+    "WebPageElement"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Sales galleries and model units for luxury condos",
+    "Leases for sales centres",
+    "Branded residences"
+   ],
+   "numbers": [
+    {
+     "value": "$5M to $8M",
+     "claim": "DaGrosa spent to build the Kempinski sales centre on site",
+     "evidence": "cited",
+     "source_named": "named developer quote"
+    },
+    {
+     "value": "two-to-five-year leases",
+     "claim": "Most developers sign for sales-centre space",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "more than 50%",
+     "claim": "International buyers bought more than 50% of new-construction, preconstruction and condo-conversion units in South Florida last year",
+     "evidence": "cited",
+     "source_named": "Miami Realtors + RWorld"
+    },
+    {
+     "value": "55 branded condo projects in pipeline; average 30% premium",
+     "claim": "Branded condos in South Florida",
+     "evidence": "cited",
+     "source_named": "Savills"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 29 Jul 2026. Partly behind a free sign-in wall."
+  },
+  {
+   "id": "A06",
+   "url": "https://maverickframe.com/blog/real-estate-developer-marketing/",
+   "retrieved": "2026-11-07",
+   "group": "abroad (render studio guide)",
+   "site": "maverickframe.com",
+   "title": "Real Estate Developer Marketing: A Practical Guide",
+   "h1": [
+    "Real Estate Developer Marketing"
+   ],
+   "h2": [
+    "How real estate developer marketing differs from agent marketing",
+    "Marketing strategies for real estate developers across the project lifecycle",
+    "Digital marketing channels for real estate developers",
+    "Why visual content drives real estate development marketing",
+    "Real estate developer marketing examples and ideas that work",
+    "How much real estate developer marketing costs",
+    "FAQ"
+   ],
+   "h3": [],
+   "word_count_est": 1809,
+   "published": "2026-10-09",
+   "modified": "2026-10-09",
+   "schema_types": [
+    "Answer",
+    "BlogPosting",
+    "BreadcrumbList",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "Organization",
+    "Person",
+    "PostalAddress",
+    "Question",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "Do real estate developers need marketing?",
+    "What is the best marketing strategy for a real estate developer?",
+    "How do developers market off-plan or pre-construction projects?",
+    "How much should a developer spend on marketing?",
+    "What is the difference between developer marketing and agent marketing?"
+   ],
+   "budget_line_items": [
+    "Developer vs agent marketing",
+    "Strategies across the lifecycle",
+    "Digital channels",
+    "Why visual content drives sales (renders, 3D tours, virtual staging, sales gallery)",
+    "Examples",
+    "Cost"
+   ],
+   "numbers": [
+    {
+     "value": "between 1% and 5% of gross development value",
+     "claim": "Typical developer marketing cost; early spend on visual production, pre-sales on paid media and sales gallery, later nurture, PR, referral",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 9 Oct 2026. FAQPage schema (5 questions)."
+  },
+  {
+   "id": "A07",
+   "url": "https://www.probuilder.com/business-management/article/55195799/control-sales-marketing-costs",
+   "retrieved": "2026-11-07",
+   "group": "abroad (US builders, consultant)",
+   "site": "probuilder.com",
+   "title": "Control Sales, Marketing Costs | Pro Builder",
+   "h1": [
+    "Control Sales, Marketing Costs"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 840,
+   "published": "2004-01-01",
+   "modified": null,
+   "schema_types": [
+    "ImageObject",
+    "NewsArticle",
+    "Organization",
+    "WebPage"
+   ],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Sales and marketing cost targets by line: internal sales commissions and salaries; external brokerage; advertising and promotion; model homes and sales office"
+   ],
+   "numbers": [
+    {
+     "value": "6% of home building revenue; often 8% to 10%",
+     "claim": "Sales and marketing target vs what is seen",
+     "evidence": "agency claim",
+     "source_named": "Chuck Shinn, Lee Evans Group"
+    },
+    {
+     "value": "internal sales 1.5% (2% in slowdowns); external brokerage 2% (co-op 3% on two-thirds of sales); advertising and promotion 1%; model homes and sales office about 1%",
+     "claim": "Line targets as % of revenue",
+     "evidence": "agency claim",
+     "source_named": "Lee Evans Group"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Dated 2004 in schema. Old but the only line-by-line percentage split found."
+  },
+  {
+   "id": "A08",
+   "url": "https://eyeonhousing.org/2025/03/builders-profit-margins-improved-in-2023/",
+   "retrieved": "2026-11-07",
+   "group": "abroad (US builders, survey)",
+   "site": "eyeonhousing.org (NAHB)",
+   "title": "Builders’ Profit Margins Improved in 2023 - Eye On Housing",
+   "h1": [
+    "Builders’ Profit Margins Improved in 2023"
+   ],
+   "h2": [],
+   "h3": [],
+   "word_count_est": 605,
+   "published": null,
+   "modified": null,
+   "schema_types": [],
+   "faq_questions": [],
+   "budget_line_items": [
+    "Builder income statement averages"
+   ],
+   "numbers": [
+    {
+     "value": "operating expenses (finance, sales and marketing, G&A, owner's compensation) 12.0% of revenue; gross margin 20.7%; net margin 8.7%; FY2023",
+     "claim": "NAHB Cost of Doing Business survey",
+     "evidence": "cited",
+     "source_named": "NAHB"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "No separate sales and marketing figure published in the post."
+  },
+  {
+   "id": "A09",
+   "url": "https://www.dubizzle.com/blog/property/real-estate-project-launch-strategies/",
+   "retrieved": "2026-11-07",
+   "group": "abroad (UAE)",
+   "site": "dubizzle.com",
+   "title": "(blocked)",
+   "h1": [],
+   "h2": [],
+   "h3": [],
+   "word_count_est": null,
+   "published": null,
+   "modified": null,
+   "schema_types": [],
+   "faq_questions": [],
+   "budget_line_items": [],
+   "numbers": [],
+   "tools_on_page": [],
+   "notes": "BLOCKED: bot-check page ('Pardon Our Interruption'). Not read; moved on as instructed."
+  },
+  {
+   "id": "P01",
+   "url": "https://www.spark.re/solutions/developers",
+   "retrieved": "2026-11-07",
+   "group": "proptech (developer platform, not in matrix.md)",
+   "site": "spark.re",
+   "title": "Developers - Spark Real Estate Software",
+   "h1": [
+    "Sell your Next Project with Confidence"
+   ],
+   "h2": [
+    "A platform for all phases. Pre-launch to closing.",
+    "A Solution for every Challenge"
+   ],
+   "h3": [
+    "Developers & Home Builders",
+    "How Spark empowers your role:",
+    "Sales Representative",
+    "Contract Admin",
+    "Customer Care",
+    "Managing multiple projects and systems",
+    "Establish Spark a single source of truth",
+    "Extracting insights from project data",
+    "Effortless data collection & interpretation",
+    "Time intensive administrative tasks",
+    "Automate manual processes",
+    "Automate many manual processes",
+    "Products that Developers & Home Builders use:",
+    "Learn how the top North American developers sell out projects."
+   ],
+   "word_count_est": 706,
+   "published": null,
+   "modified": null,
+   "schema_types": [],
+   "faq_questions": [],
+   "budget_line_items": [
+    "One platform from pre-launch to closing",
+    "Inventory: live stacking plans, interest and reservation tracking, pricing management",
+    "Contracts and closing: signing, deposits, commissions, assignments",
+    "Homeowner care",
+    "Registration forms, data standardisation, custom reports"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Product (no public price on page)"
+   ],
+   "notes": "Developer and builder sales CRM (Vancouver). No pricing on the page read."
+  },
+  {
+   "id": "P02",
+   "url": "https://anewgo.com/communities",
+   "retrieved": "2026-11-07",
+   "group": "proptech (builder platform, not in matrix.md)",
+   "site": "anewgo.com",
+   "title": "Interactive Site Plans for Home Builders | anewgo",
+   "h1": [
+    "New Home Community Marketing Solutions",
+    "Site Plans"
+   ],
+   "h2": [
+    "A Smarter Way to Showcase Your Community Online",
+    "Explore the Interactive Experience",
+    "Features",
+    "Site Plan Renderings Gallery",
+    "Still Not Sure Which Style Is Right For You?",
+    "Frequently Asked Questions"
+   ],
+   "h3": [
+    "Community Videos",
+    "Interactive Floor Plans",
+    "Websites",
+    "Virtual Tours",
+    "Marketing App"
+   ],
+   "word_count_est": 721,
+   "published": null,
+   "modified": null,
+   "schema_types": [
+    "ContactPoint",
+    "Country",
+    "Offer",
+    "Organization",
+    "PostalAddress",
+    "QuantitativeValue",
+    "SearchAction",
+    "SoftwareApplication",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "What can an interactive site map show?",
+    "Can buyers see which plans fit on each lot?",
+    "Can the map show only my company's lots in a multi-builder community?",
+    "Can buyers filter the map?",
+    "Can the map include amenities, media, or Google Maps overlays?",
+    "How is the site map integrated into my website?"
+   ],
+   "budget_line_items": [
+    "Interactive site plan replacing static PDFs",
+    "Real-time lot availability with pricing and premiums",
+    "Which plans fit each lot; quick move-in homes",
+    "Dashboard updates",
+    "Filters: price, lot size, availability, construction status, completion date, plan type",
+    "Hotspots for amenities, media; Google Maps overlay",
+    "Multi-builder community: show only own lots"
+   ],
+   "numbers": [],
+   "tools_on_page": [
+    "Interactive site plan, floor plans, virtual tours, marketing app"
+   ],
+   "notes": "JavaScript-rendered; read in the owner's Chrome (about 720 words). No prices on page."
+  },
+  {
+   "id": "R01",
+   "url": "https://mabatim.com/pricing/",
+   "retrieved": "2026-11-07",
+   "group": "line item: renders (price list)",
+   "site": "mabatim.com",
+   "title": "מחיר הדמיה אדריכלית - מחירון מפורט | מבטים",
+   "h1": [
+    "מחירי הדמיות -מעודכן 2026"
+   ],
+   "h2": [
+    "בנייני מגורים",
+    "התחדשות עירונית",
+    "בתים פרטיים ווילות",
+    "פיתוח נוף ושטח ציבורי",
+    "בתי כנסת ומבני קודש",
+    "משרדים ומסחרי",
+    "תכניות מכירה",
+    "סרטוני הדמיה",
+    "גורמים שקובעים את העלות",
+    "יש שאלות?",
+    "מה הלקוחות אומרים",
+    "קבלו הצעת מחיר מותאמת",
+    "בואו נדבר"
+   ],
+   "h3": [
+    "מורכבות אדריכלית",
+    "טופוגרפיה ופיתוח",
+    "רמת הגימור",
+    "מספר הזוויות",
+    "אלמנטים מותאמים",
+    "תודה רבה!",
+    "נגישות"
+   ],
+   "word_count_est": 1432,
+   "published": null,
+   "modified": null,
+   "schema_types": [
+    "Answer",
+    "Country",
+    "FAQPage",
+    "LocalBusiness",
+    "PostalAddress",
+    "Question"
+   ],
+   "faq_questions": [
+    "מה כולל המחיר?",
+    "כמה זמן לוקח לקבל הדמיה?",
+    "מה צריך לספק לכם כדי להתחיל?",
+    "האם המחירים כוללים מע\"מ?",
+    "מה אם אני צריך תיקונים?",
+    "יש הנחה לכמויות?",
+    "באילו פורמטים אקבל את ההדמיה?",
+    "מה אם אני לא מרוצה מהתוצאה?"
+   ],
+   "budget_line_items": [
+    "Residential buildings",
+    "Urban renewal",
+    "Private houses",
+    "Landscape",
+    "Synagogues",
+    "Offices and commercial",
+    "Sales plans",
+    "Render videos",
+    "Cost factors"
+   ],
+   "numbers": [
+    {
+     "value": "exterior set 3 angles ₪4,000-6,000; extra exterior angle ₪1,500-2,500; interior apartment or lobby per angle ₪2,000-3,500",
+     "claim": "Residential building renders, 2026 price list",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "TAMA 38 exterior ₪4,000-6,000",
+     "claim": "Urban renewal",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "colour sales plan ₪500-750 per unit; 3D sales plan ₪1,000-1,500 per unit",
+     "claim": "Sales plans",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "short video 30-60 seconds ₪7,000-15,000; full video 1-3 minutes ₪12,000-30,000",
+     "claim": "Render videos",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "single render 5-7 working days; large projects 2-3 weeks",
+     "claim": "Turnaround",
+     "evidence": "vendor price list"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "FAQPage schema incl. 'do prices include VAT?'. Ranks #1 for 'הדמיות לפרויקט נדלן מחיר' (owner Chrome, 7.11.2026)."
+  },
+  {
+   "id": "R02",
+   "url": "https://realitech.co.il/architectural-rendering-price-guide/",
+   "retrieved": "2026-11-07",
+   "group": "line item: renders (guide)",
+   "site": "realitech.co.il",
+   "title": "הדמיות אדריכליות מחיר: המדריך המלא לתקצוב ותכנון ב-2026",
+   "h1": [
+    "הדמיות אדריכליות מחיר: המדריך המלא לתקצוב ותכנון ב-2026"
+   ],
+   "h2": [
+    "נקודות מפתח",
+    "תוכן העניינים",
+    "מהו מחיר הדמיה אדריכלית ב-2026 ומה הוא כולל?",
+    "הגורמים המרכזיים המשפיעים על הדמיות אדריכליות מחיר",
+    "מחירון מומלץ לפי סוג פרויקט: כמה תשלמו בפועל?",
+    "איך לחסוך בעלויות ההדמיה בלי לפגוע באיכות?",
+    "למה Realitech היא הבחירה המשתלמת ביותר להדמיות ב-2026?",
+    "הופכים חזון למציאות מוחשית ורווחית",
+    "שאלות ותשובות נפוצות"
+   ],
+   "h3": [
+    "רינדור בסיסי לעומת הדמיה פוטוריאליסטית",
+    "המרכיבים הסמויים בהצעת המחיר",
+    "הדמיית פנים לעומת הדמיית חוץ",
+    "טכנולוגיה וכלים: מנועי רינדור ובינה מלאכותית",
+    "הדמיות לבונים פרטיים (וילות ודירות)",
+    "מחירון יזמות והתחדשות עירונית",
+    "טעויות נפוצות שמייקרות את הפרויקט",
+    "החזר ההשקעה (ROI) של הדמיה איכותית",
+    "הערך המוסף שלנו: יותר מסתם תמונה",
+    "מוכנים להפיח חיים בפרויקט שלכם?",
+    "מה המחיר ההתחלתי להדמיה אדריכלית ב-Realitech?",
+    "כמה זמן לוקח להפיק הדמיה מרגע הזמנת העבודה?",
+    "האם המחיר כולל תיקונים במידה ואני לא מרוצה?",
+    "מה ההבדל במחיר בין הדמיית סטילס לסרטון שיווקי?",
+    "האם אתם מציעים חבילות מיוחדות לפרויקטים של תמ\"א 38?",
+    "האם ניתן לקבל הנחה על כמות גדולה של הדמיות לאותו פרויקט?",
+    "אילו קבצים אני צריך לספק כדי לקבל הצעת מחיר מדויקת?",
+    "האם אתם מבצעים הדמיות בכל הארץ?"
+   ],
+   "word_count_est": 2892,
+   "published": "2026-08-13",
+   "modified": "2026-08-21",
+   "schema_types": [
+    "Answer",
+    "Article",
+    "BreadcrumbList",
+    "CommentAction",
+    "EntryPoint",
+    "FAQPage",
+    "ImageObject",
+    "ListItem",
+    "OpeningHoursSpecification",
+    "Organization",
+    "Person",
+    "Place",
+    "PostalAddress",
+    "PropertyValueSpecification",
+    "Question",
+    "ReadAction",
+    "SearchAction",
+    "WebPage",
+    "WebSite"
+   ],
+   "faq_questions": [
+    "מה המחיר ההתחלתי להדמיה אדריכלית ב-Realitech?",
+    "כמה זמן לוקח להפיק הדמיה מרגע הזמנת העבודה?",
+    "האם המחיר כולל תיקונים במידה ואני לא מרוצה?",
+    "מה ההבדל במחיר בין הדמיית סטילס לסרטון שיווקי?",
+    "האם אתם מציעים חבילות מיוחדות לפרויקטים של תמ\"א 38?",
+    "האם ניתן לקבל הנחה על כמות גדולה של הדמיות לאותו פרויקט?",
+    "אילו קבצים אני צריך לספק כדי לקבל הצעת מחיר מדויקת?",
+    "האם אתם מבצעים הדמיות בכל הארץ?"
+   ],
+   "budget_line_items": [
+    "What a render price includes",
+    "Price drivers",
+    "Price list by project type",
+    "How to save"
+   ],
+   "numbers": [
+    {
+     "value": "single interior 1,000 ₪ to 3,500 ₪; villa exterior 5,000 ₪ to 6,000 ₪",
+     "claim": "Typical ranges",
+     "evidence": "agency claim"
+    },
+    {
+     "value": "from 1,500 ₪ per photoreal still; marketing video from 3,000 ₪",
+     "claim": "Own starting prices",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "50,000 ₪ and up",
+     "claim": "Cost of fixing a field error a render could have caught",
+     "evidence": "agency claim"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 13 Aug 2026. FAQPage schema."
+  },
+  {
+   "id": "R03",
+   "url": "https://www.midrag.co.il/Content/Price/9879",
+   "retrieved": "2026-11-07",
+   "group": "line item: renders (marketplace)",
+   "site": "midrag.co.il",
+   "title": "מחיר הדמיה אדריכלית | כל מה שצריך לדעת על מחיר הדמיה אדריכלית - במידרג",
+   "h1": [
+    "מחיר הדמיה אדריכלית"
+   ],
+   "h2": [
+    "אדריכלים מומלצים לבניית הדמיה אדריכלית",
+    "מחיר הדמיה אדריכלית",
+    "מה משפיע על מחיר הדמיה אדריכלית?",
+    "הצעות מחיר לדוגמה",
+    "אדריכלים מומלצים להדמיה אדריכלית",
+    "שאלות נפוצות לדף זה",
+    "אנשים שהתעניינו במחיר הדמיה אדריכלית התעניינו גם בזה...",
+    "טיפים ומחירים בשיפוץ ועיצוב הבית"
+   ],
+   "h3": [
+    "סוג ההדמיה האדריכלית",
+    "מיקום ההדמיה האדריכלית",
+    "מורכבות המבנה",
+    "כמות ההדמיות האדריכליות",
+    "ניסיון האדריכל",
+    "סרטי הדמיה אדריכלית",
+    "הדמיה אדריכלית - הצעת מחיר לדוגמה."
+   ],
+   "word_count_est": 1668,
+   "published": "2021-05-11",
+   "modified": "2026-10-29",
+   "schema_types": [
+    "Answer",
+    "Article",
+    "FAQPage",
+    "ImageObject",
+    "Organization",
+    "Question"
+   ],
+   "faq_questions": [
+    "מה משפיע על מחיר הדמיה אדריכלית?",
+    "כמה עולה הדמיה אדריכלית?",
+    "כמה עולה סרט הדמיה אדריכלית?"
+   ],
+   "budget_line_items": [
+    "Price per image",
+    "What affects price",
+    "Sample quotes"
+   ],
+   "numbers": [
+    {
+     "value": "800-3,000 ₪ per image; basic 3,000-5,000 ₪ for 6 images; photoreal exterior 1,500-3,000; interior 1,000-2,500 ₪ per image; render film 2,000-7,000 ₪",
+     "claim": "Marketplace price guide",
+     "evidence": "vendor price list"
+    },
+    {
+     "value": "4 renders 6,000 ₪; 3 renders 3,000 ₪; 6 renders 5,000 ₪",
+     "claim": "Sample quotes on the platform",
+     "evidence": "vendor price list"
+    }
+   ],
+   "tools_on_page": [],
+   "notes": "Published 2021, modified 29 Oct 2026. FAQPage schema."
+  }
+ ]
+}
