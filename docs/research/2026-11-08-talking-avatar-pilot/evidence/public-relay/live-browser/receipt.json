@@ -1,0 +1,467 @@
+{
+  "testType": "ANONYMOUS_NATIVE_CHROME_PRODUCTION_SMOKE",
+  "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
+  "expectedRelease": "v-1701190a83c6",
+  "routeMocks": false,
+  "backendFixtures": false,
+  "productionCredentialsLoaded": false,
+  "permissionTest": "Native Chrome denies microphone permission; no recording is captured.",
+  "logicalQuestionLimit": 1,
+  "question": "Who are you?",
+  "checks": [
+    {
+      "name": "Published guide responds successfully",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Live page has exactly the deployed one-page signature",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Avatar starts silent before a trusted gesture",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "desktop head remains within the viewport",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "desktop head keeps its compact dimensions",
+      "pass": true,
+      "detail": {
+        "width": 176,
+        "height": 198
+      },
+      "required": true
+    },
+    {
+      "name": "desktop WhatsApp and accessibility controls are observed",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "desktop avatar does not overlap WhatsApp or accessibility controls",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "desktop first trusted tap plays the original greeting",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "desktop captions expose an editable text question",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Close stops the live greeting",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Close persists only in the isolated browser storage",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Published guide responds successfully",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Live page has exactly the deployed one-page signature",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Avatar starts silent before a trusted gesture",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "phone head remains within the viewport",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "phone head keeps its compact dimensions",
+      "pass": true,
+      "detail": {
+        "width": 144,
+        "height": 166
+      },
+      "required": true
+    },
+    {
+      "name": "phone WhatsApp and accessibility controls are observed",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "phone avatar does not overlap WhatsApp or accessibility controls",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "phone first trusted tap plays the original greeting",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "phone captions expose an editable text question",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Actual HTTPS session cookie is Secure HttpOnly Strict",
+      "pass": true,
+      "detail": {
+        "present": true,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Strict"
+      },
+      "required": true
+    },
+    {
+      "name": "Public session and health responses prohibit caching",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Native microphone permission denial leaves text input usable",
+      "pass": true,
+      "detail": {
+        "status": "Mic not allowed"
+      },
+      "required": true
+    },
+    {
+      "name": "Unavailable worker returns an actual503 without a job",
+      "pass": true,
+      "detail": {
+        "status": 503,
+        "cacheControl": "private, no-store, max-age=0",
+        "phase": null,
+        "jobId": null,
+        "errorCode": "unavailable",
+        "message": "Voice conversation is unavailable just now. Please try again shortly."
+      },
+      "required": true
+    },
+    {
+      "name": "Unavailable reply is explicitly not presented as success",
+      "pass": true,
+      "detail": {
+        "outcome": "unavailable",
+        "caption": "The reply could not finish. Please try asking again."
+      },
+      "required": true
+    },
+    {
+      "name": "Unavailable response also prohibits caching",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "Homepage remains outside the one-page pilot",
+      "pass": true,
+      "detail": null,
+      "required": true
+    },
+    {
+      "name": "No failed public avatar asset request",
+      "pass": true,
+      "detail": [],
+      "required": true
+    },
+    {
+      "name": "No avatar JavaScript exception",
+      "pass": true,
+      "detail": [],
+      "required": true
+    }
+  ],
+  "viewports": {
+    "desktop": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "avatar": {
+        "x": 1240,
+        "y": 614,
+        "width": 176,
+        "height": 198,
+        "left": 1240,
+        "right": 1416,
+        "top": 614,
+        "bottom": 812
+      },
+      "obstacles": [
+        {
+          "id": "nla11y",
+          "box": {
+            "x": 20,
+            "y": 828,
+            "width": 52,
+            "height": 52,
+            "left": 20,
+            "right": 72,
+            "top": 828,
+            "bottom": 880
+          },
+          "overlap": false
+        },
+        {
+          "id": "nlcta",
+          "box": {
+            "x": 1119.5,
+            "y": 826,
+            "width": 300.5,
+            "height": 54,
+            "left": 1119.5,
+            "right": 1420,
+            "top": 826,
+            "bottom": 880
+          },
+          "overlap": false
+        }
+      ],
+      "controls": [
+        {
+          "label": "Hear greeting",
+          "x": 1240,
+          "y": 614,
+          "width": 150,
+          "height": 174,
+          "left": 1240,
+          "right": 1390,
+          "top": 614,
+          "bottom": 788
+        },
+        {
+          "label": "Close character",
+          "x": 1372,
+          "y": 608,
+          "width": 44,
+          "height": 44,
+          "left": 1372,
+          "right": 1416,
+          "top": 608,
+          "bottom": 652
+        },
+        {
+          "label": "Ask a question by voice",
+          "x": 1372,
+          "y": 714,
+          "width": 44,
+          "height": 44,
+          "left": 1372,
+          "right": 1416,
+          "top": 714,
+          "bottom": 758
+        },
+        {
+          "label": "Show captions and text question",
+          "x": 1372,
+          "y": 758,
+          "width": 44,
+          "height": 44,
+          "left": 1372,
+          "right": 1416,
+          "top": 758,
+          "bottom": 802
+        }
+      ],
+      "greeting": {
+        "audio": {
+          "paused": false,
+          "currentTime": 0.231458,
+          "duration": 11.805333
+        },
+        "source": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-1701190a83c6/assets/greet-en.mp3",
+        "firstInteractionAt": 2716.600000000559
+      }
+    },
+    "phone": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "avatar": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "left": 234,
+        "right": 378,
+        "top": 536,
+        "bottom": 702
+      },
+      "obstacles": [
+        {
+          "id": "nla11y",
+          "box": {
+            "x": 14,
+            "y": 778,
+            "width": 52,
+            "height": 52,
+            "left": 14,
+            "right": 66,
+            "top": 778,
+            "bottom": 830
+          },
+          "overlap": false
+        },
+        {
+          "id": "nlcta",
+          "box": {
+            "x": 98,
+            "y": 716,
+            "width": 280,
+            "height": 50,
+            "left": 98,
+            "right": 378,
+            "top": 716,
+            "bottom": 766
+          },
+          "overlap": false
+        }
+      ],
+      "controls": [
+        {
+          "label": "Hear greeting",
+          "x": 234,
+          "y": 536,
+          "width": 118,
+          "height": 142,
+          "left": 234,
+          "right": 352,
+          "top": 536,
+          "bottom": 678
+        },
+        {
+          "label": "Close character",
+          "x": 334,
+          "y": 530,
+          "width": 44,
+          "height": 44,
+          "left": 334,
+          "right": 378,
+          "top": 530,
+          "bottom": 574
+        },
+        {
+          "label": "Ask a question by voice",
+          "x": 334,
+          "y": 604,
+          "width": 44,
+          "height": 44,
+          "left": 334,
+          "right": 378,
+          "top": 604,
+          "bottom": 648
+        },
+        {
+          "label": "Show captions and text question",
+          "x": 334,
+          "y": 648,
+          "width": 44,
+          "height": 44,
+          "left": 334,
+          "right": 378,
+          "top": 648,
+          "bottom": 692
+        }
+      ],
+      "greeting": {
+        "audio": {
+          "paused": false,
+          "currentTime": 0.215781,
+          "duration": 11.805333
+        },
+        "source": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-1701190a83c6/assets/greet-en.mp3",
+        "firstInteractionAt": 2810.800000000745
+      }
+    }
+  },
+  "assetFailures": [],
+  "avatarJavaScriptErrors": [],
+  "otherJavaScriptErrors": [],
+  "conversation": {
+    "outcome": "unavailable",
+    "readinessBeforeQuestion": false,
+    "probePurpose": "One genuine identity question if ready; otherwise one explicitly authorized rejection probe.",
+    "elapsedSeconds": 2.141,
+    "submissions": [
+      {
+        "status": 503,
+        "cacheControl": "private, no-store, max-age=0",
+        "phase": null,
+        "jobId": null,
+        "errorCode": "unavailable",
+        "message": "Voice conversation is unavailable just now. Please try again shortly."
+      }
+    ],
+    "state": {
+      "state": "waiting",
+      "audio": {
+        "paused": true,
+        "currentTime": 2.239222,
+        "duration": 11.805333
+      },
+      "errors": [
+        "microphone:NotAllowedError",
+        "conversation:Voice conversation is unavailable just now. Please try again shortly."
+      ],
+      "reply": "",
+      "stream": [],
+      "sendEnabled": true,
+      "caption": "The reply could not finish. Please try asking again."
+    }
+  },
+  "startedAt": 1794090755.843832,
+  "publicSession": {
+    "status": 200,
+    "ready": true,
+    "available": false,
+    "cacheControl": "private, no-store, max-age=0"
+  },
+  "publicHealth": {
+    "status": 200,
+    "body": {
+      "available": false,
+      "unavailableCode": "resource_busy"
+    },
+    "cacheControl": "private, no-store, max-age=0"
+  },
+  "completedAt": 1794090772.7375324,
+  "passed": 29,
+  "total": 29
+}

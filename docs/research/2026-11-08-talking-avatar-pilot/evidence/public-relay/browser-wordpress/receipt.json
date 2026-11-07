@@ -1,0 +1,176 @@
+{
+  "testType": "NATIVE_CHROME_REAL_LOCAL_WORDPRESS_REAL_PYTHON_WORKER_CONTROLLED_MODEL",
+  "releaseId": "v-a27cf72d496c",
+  "modelInference": false,
+  "publicRequests": false,
+  "productionCredentialsLoaded": false,
+  "staticPageAndAssetsFulfilled": true,
+  "apiRoutesMocked": false,
+  "voice": "Prerecorded greeting excerpt repeated as two controlled fixture chunks; not new speech generation.",
+  "microphone": "Native Chrome MediaRecorder using a controlled WAV-backed fake device, not a physical microphone.",
+  "readiness": "Controlled 4 GiB fixture value only for the fake loopback backend; actual voice server guards unchanged.",
+  "checks": [
+    {
+      "name": "Native browser bootstraps cookie and CSRF before accepted question",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Visitor cookie is HttpOnly and Strict in browser",
+      "pass": true,
+      "detail": {
+        "secureContext": true,
+        "secureCookie": false,
+        "transport": "HTTP loopback; HTTPS Secure flag is not asserted here"
+      }
+    },
+    {
+      "name": "First real browser audio starts before fixture releases final sentence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Actual relay delivers two ordered played chunks",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "First playback precedes real PHP final publication",
+      "pass": true,
+      "detail": {
+        "firstPlaybackEpoch": 1794090301.0272,
+        "finalUpdateResponseEpoch": 1794090307.7712262,
+        "controlledPublication": true
+      }
+    },
+    {
+      "name": "Complete replay uses actual authorized full audio route",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Separate native browser context cannot read or play another visitor reply",
+      "pass": true,
+      "detail": [
+        404,
+        404
+      ]
+    },
+    {
+      "name": "Stopped native recorder reaches a new backend job",
+      "pass": true,
+      "detail": {
+        "submissionStatuses": [
+          202,
+          202
+        ]
+      }
+    },
+    {
+      "name": "Native MediaRecorder WebM crosses actual PHP and worker unchanged",
+      "pass": true,
+      "detail": {
+        "bytes": 28976,
+        "durationHint": 1.922,
+        "mime": "audio/webm",
+        "sha256": "1344d250f2f692030ce8e9067dbada31b326c72012e6a1bb8a8cfbf3d5e0840a"
+      }
+    },
+    {
+      "name": "Recorder sends a positive bounded duration and ends microphone tracks",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Uploaded MediaRecorder payload decodes as bounded real audio",
+      "pass": true,
+      "detail": {
+        "decodedSeconds": 1.86,
+        "transcriptionPerformed": false
+      }
+    },
+    {
+      "name": "Microphone turn completes actual browser chunk playback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Expired native cookie refreshes CSRF and retries exactly once",
+      "pass": true,
+      "detail": [
+        409,
+        202
+      ]
+    },
+    {
+      "name": "Expired-session recovery creates exactly one owned model fixture job",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Close stops audio and cancels owned work through actual PHP",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Close suppresses later fixture chunk playback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Real session refresh request begins before close control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Close during real session refresh prevents retry and model job",
+      "pass": true,
+      "detail": [
+        409
+      ]
+    },
+    {
+      "name": "Actual page navigation leaves a session-owned cancellation tombstone",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "No browser JavaScript exception during integration",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "browserErrors": [],
+  "startedAt": 1794090271.6664722,
+  "workerOutcomes": [
+    {
+      "outcome": "done",
+      "submitted": true,
+      "chunks": 2
+    },
+    {
+      "outcome": "done",
+      "submitted": true,
+      "chunks": 2
+    },
+    {
+      "outcome": "done",
+      "submitted": true,
+      "chunks": 2
+    },
+    {
+      "outcome": "cancelled",
+      "submitted": true,
+      "chunks": 1
+    },
+    {
+      "outcome": "done",
+      "submitted": true,
+      "chunks": 2
+    }
+  ],
+  "completedAt": 1794090426.0076542,
+  "passed": 20,
+  "total": 20,
+  "modelInferenceScope": "No STT, Qwen or TTS inference. The browser lip-analysis module and audio playback ran normally."
+}
