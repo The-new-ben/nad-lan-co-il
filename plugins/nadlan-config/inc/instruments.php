@@ -480,6 +480,29 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'invest.json' ),
 				'related' => array( '/investment-property-mortgage/' => 'משכנתא לדירה להשקעה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/investment/real-estate-yield/' => 'איך מחשבים תשואה', '/apartment-prices/' => 'מחירי הדירות לפי עיר' ),
 			),
+			/* HAD-681 (Ben 7.11.2026): the three tools of /apartment-prices/, one data file prices-hub.json (tools/instruments/build_prices_hub.py)
+			   and the shared math in tools/prices-common.js; panatomy's sources in anatomy.json (tools/instruments/build_anatomy_data.py) */
+			'pmarket' => array(
+				'name' => 'מחירי הדירות עכשיו', 'cat' => 'ReferenceApplication', 'kicker' => 'מדד · הלשכה המרכזית לסטטיסטיקה',
+				'desc' => 'האם מחירי הדירות ירדו: השינוי האחרון במדד מחירי הדירות של הלמ״ס בשנה ומול התקופה הקודמת, גם אחרי אינפלציה ומול השיא, בכל אחד מששת המחוזות, וגרף של המדד בשנה, ב־5 שנים ומ־1994, במחירי אותה תקופה או אחרי אינפלציה.',
+				'deps' => array( 'prices-common' ),
+				'data' => array( 'prices-hub.json' ),
+				'related' => array( '/property-value-estimator/' => 'מחשבון שווי דירה', '/new-projects/construction-input-index/' => 'מדד תשומות הבנייה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן', '/mortgage-calculator/' => 'מחשבון משכנתא' ),
+			),
+			'pcity' => array(
+				'name' => 'מחירי דירות לפי עיר וחדרים', 'cat' => 'ReferenceApplication', 'kicker' => 'טבלה · עסקאות שנסגרו',
+				'desc' => 'המחיר החציוני של הדירות שנמכרו ב־24 ערים ובכל הארץ, לפי מספר החדרים ולפי העסקאות שדווחו לרשות המסים: הרבעון האחרון, השינוי בשנה, השינוי מתחילת 2021 וגם אחרי אינפלציה, עם מיון וסינון לפי מחוז, והשוואה של 2 עד 4 ערים עם שכר דירה, תשואה ברוטו, מקדמה והחזר חודשי למשכנתא.',
+				'deps' => array( 'prices-common' ),
+				'data' => array( 'prices-hub.json' ),
+				'related' => array( '/property-value-estimator/' => 'מחשבון שווי דירה', '/investment/real-estate-yield/' => 'איך מחשבים תשואה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת' ),
+			),
+			'panatomy' => array(
+				'name' => 'מה יש בתוך המחיר של דירה חדשה', 'cat' => 'FinanceApplication', 'kicker' => 'פירוק · מחיר דירה חדשה',
+				'desc' => 'פירוק המחיר של דירה חדשה: קרקע, בנייה, מע״מ, רווח היזם, מימון, תכנון ושיווק, לפי בנק ישראל ומקורות רשמיים עם תאריך, ומה שאין לו מקור ציבורי מופיע בלי מספר; ומעל המחיר: מס רכישה לפי המדרגות, עורך דין, תיווך, שמאי, בדק בית ופתיחת תיק משכנתא.',
+				'deps' => array( 'prices-common' ),
+				'data' => array( 'anatomy.json', 'ptax.json', 'cost.json', 'cbs-200010.json', 'prices-hub.json' ),
+				'related' => array( '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/real-estate-tax-advisor/betterment-levy/' => 'היטל השבחה' ),
+			),
 		) );
 	}
 
@@ -596,6 +619,109 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			return $h . $t . '</tbody></table>';
 		}
 	}
+	/** HAD-681 (7.11.2026): the plain summaries of pmarket, pcity and panatomy (/apartment-prices/), from prices-hub.json and
+	 *  anatomy.json: the same numbers the tools show (the math of tools/prices-common.js), as sentences and real tables with a caption
+	 *  and the data date, for readers without JS, search engines and AI answers. $dir: tests point it at the repo data folder. */
+	if ( ! function_exists( 'nadlan_phub_summary' ) ) {
+		function nadlan_phub_summary( $id, $dir = null ) {
+			$dir = $dir ? $dir : dirname( __DIR__ ) . '/assets/instruments/data/';
+			$rd  = function ( $f ) use ( $dir ) { return is_readable( $dir . $f ) ? json_decode( (string) file_get_contents( $dir . $f ), true ) : null; };
+			$D   = $rd( 'prices-hub.json' );
+			if ( ! is_array( $D ) || empty( $D['hpi']['v'] ) || empty( $D['city'] ) ) { return ''; }
+			$HM  = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+			$add = function ( $k, $d ) { $y = (int) substr( $k, 0, 4 ); $m = (int) substr( $k, 5, 2 ) + $d; while ( $m > 12 ) { $m -= 12; $y++; } while ( $m < 1 ) { $m += 12; $y--; } return sprintf( '%d-%02d', $y, $m ); };
+			$ix  = function ( $from, $k ) { return ( (int) substr( $k, 0, 4 ) - (int) substr( $from, 0, 4 ) ) * 12 + (int) substr( $k, 5, 2 ) - (int) substr( $from, 5, 2 ); };
+			$at  = function ( $S, $k ) use ( $ix ) { $i = $ix( $S['from'], $k ); return $i >= 0 && $i < count( $S['v'] ) && null !== $S['v'][ $i ] ? (float) $S['v'][ $i ] : null; };
+			$last = function ( $S ) use ( $add ) { return $add( $S['from'], count( $S['v'] ) - 1 ); };
+			$cpd = function ( $k ) use ( $at, $add, $D ) { $a = $at( $D['cpi'], $k ); $b = $at( $D['cpi'], $add( $k, 1 ) ); return null === $a ? null : ( null === $b ? $a : ( $a + $b ) / 2 ); };
+			$chg = function ( $a, $b ) { return null === $a || null === $b || ! $b ? null : $a / $b - 1; };
+			$rch = function ( $pa, $pb, $ca, $cb ) { return null === $pa || null === $pb || null === $ca || null === $cb || ! $pb || ! $cb ? null : ( $pa / $pb ) / ( $ca / $cb ) - 1; };
+			$mon = function ( $k ) use ( $HM ) { return $HM[ (int) substr( $k, 5, 2 ) - 1 ] . ' ' . substr( $k, 0, 4 ); };
+			$deal = function ( $k ) use ( $HM, $add ) { $n = $add( $k, 1 ); $a = $HM[ (int) substr( $k, 5, 2 ) - 1 ]; $b = $HM[ (int) substr( $n, 5, 2 ) - 1 ]; return substr( $k, 0, 4 ) === substr( $n, 0, 4 ) ? $a . ' ו' . $b . ' ' . substr( $k, 0, 4 ) : $a . ' ' . substr( $k, 0, 4 ) . ' ו' . $b . ' ' . substr( $n, 0, 4 ); };
+			$pc  = function ( $x, $d = 1 ) { if ( null === $x ) { return '·'; } $s = number_format( abs( 100 * $x ), $d ); return '<bdi dir="ltr">' . ( 0.0 === (float) $s ? '' : ( $x > 0 ? '+' : '-' ) ) . $s . '%</bdi>'; };
+			$abs = function ( $x, $d = 1 ) { return number_format( abs( 100 * $x ), $d ) . '%'; };
+			$qm  = function ( $q ) { $p = explode( '.', $q ); $a = explode( '-', $p[0] ); $o = array(); for ( $m = (int) $a[0]; $m <= (int) $a[1]; $m++ ) { $o[] = sprintf( '%s-%02d', $p[1], $m ); } return $o; };
+			$cpq = function ( $q ) use ( $qm, $at, $D ) { $s = 0; $n = 0; foreach ( $qm( $q ) as $k ) { $x = $at( $D['cpi'], $k ); if ( null !== $x ) { $s += $x; $n++; } } return $n ? $s / $n : null; };
+			$ql  = function ( $q ) use ( $HM, $qm ) { $m = $qm( $q ); return $HM[ (int) substr( $m[0], 5, 2 ) - 1 ] . ' עד ' . $HM[ (int) substr( end( $m ), 5, 2 ) - 1 ] . ' ' . substr( $m[0], 0, 4 ); };
+			$cst = function ( $arr ) use ( $D, $chg, $rch, $cpq ) {
+				$arr = (array) $arr; $i = -1; for ( $j = count( $arr ) - 1; $j >= 0; $j-- ) { if ( null !== $arr[ $j ] ) { $i = $j; break; } }
+				if ( $i < 0 ) { return null; }
+				$v = (float) $arr[ $i ]; $y = $i >= 4 && null !== $arr[ $i - 4 ] ? (float) $arr[ $i - 4 ] : null; $b = null !== $arr[0] ? (float) $arr[0] : null;
+				return array( 'q' => $D['q'][ $i ], 'v' => $v, 'yoy' => $chg( $v, $y ), 'since' => $chg( $v, $b ), 'real' => null === $b ? null : $rch( $v, $b, $cpq( $D['q'][ $i ] ), $cpq( $D['q'][0] ) ) );
+			};
+			$dt  = function ( $iso ) { $p = explode( '-', (string) $iso ); return 3 === count( $p ) ? (int) $p[2] . '.' . (int) $p[1] . '.' . $p[0] : (string) $iso; };
+			$H   = array( 'from' => $D['hpi']['from'], 'v' => $D['hpi']['v'] );
+
+			if ( 'pmarket' === $id ) {
+				$k = $last( $H ); $v = $at( $H, $k ); $p = $add( $k, -1 ); $y = $add( $k, -12 );
+				$yoy = $chg( $v, $at( $H, $y ) ); $mom = $chg( $v, $at( $H, $p ) ); $real = $rch( $v, $at( $H, $y ), $cpd( $k ), $cpd( $y ) );
+				$pk = null; $pv = null; for ( $i = 1; $i <= 60; $i++ ) { $kk = $add( $k, -$i ); $x = $at( $H, $kk ); if ( null !== $x && ( null === $pv || $x > $pv ) ) { $pv = $x; $pk = $kk; } }
+				$lead = abs( $yoy ) < 0.0005 ? 'מחירי הדירות בישראל כמעט לא השתנו בשנה האחרונה' : ( $yoy < 0 ? 'מחירי הדירות בישראל ירדו ב־' : 'מחירי הדירות בישראל עלו ב־' ) . $abs( $yoy ) . ' בשנה';
+				$h = '<p><strong>' . esc_html( $lead ) . '</strong>, לפי מדד מחירי הדירות של הלמ״ס לעסקאות של ' . esc_html( $deal( $k ) ) . ' (נתון זמני, פורסם באמצע ' . esc_html( $mon( $add( $k, 3 ) ) ) . '). '
+					. ( null !== $mom ? 'מול התקופה הקודמת (' . esc_html( $deal( $p ) ) . ') המדד ' . ( $mom < 0 ? 'ירד' : 'עלה' ) . ' ב־' . $abs( $mom ) . '. ' : '' )
+					. ( null !== $real ? 'אחרי האינפלציה, השינוי בשנה הוא ' . $pc( $real ) . '. ' : '' )
+					. ( $pv && $pv > $v ? 'המדד נמצא ' . $abs( $v / $pv - 1 ) . ' מתחת לשיא של ' . esc_html( $deal( $pk ) ) . '. ' : '' )
+					. 'ערך המדד: ' . number_format( $v, 1 ) . ' נקודות (ממוצע 1993 = 100).</p>';
+				$rows = array();
+				foreach ( $D['dist'] as $d ) {
+					$S = array( 'from' => $d['from'], 'v' => $d['v'] ); $kk = $last( $S ); $vv = $at( $S, $kk );
+					$rows[] = array( 'מחוז ' . $d['n'], $chg( $vv, $at( $S, $add( $kk, -12 ) ) ), $rch( $vv, $at( $S, $add( $kk, -12 ) ), $cpd( $kk ), $cpd( $add( $kk, -12 ) ) ), $chg( $vv, $at( $S, $add( $kk, -1 ) ) ), $chg( $vv, $at( $S, $add( $kk, -60 ) ) ) );
+				}
+				usort( $rows, function ( $a, $b ) { return $a[1] <=> $b[1]; } );
+				array_unshift( $rows, array( 'כל הארץ', $yoy, $real, $mom, $chg( $v, $at( $H, $add( $k, -60 ) ) ) ) );
+				$t = '<table><caption>מדד מחירי הדירות לפי מחוז, עסקאות ' . esc_html( $deal( $k ) ) . ' (זמני). מקור: הלשכה המרכזית לסטטיסטיקה, נקרא ' . esc_html( $dt( $D['hpi']['src']['read'] ) ) . '.</caption><thead><tr><th>אזור</th><th>שינוי בשנה</th><th>בשנה, אחרי אינפלציה</th><th>מול התקופה הקודמת</th><th>ב־5 שנים</th></tr></thead><tbody>';
+				foreach ( $rows as $r ) { $t .= '<tr><td>' . esc_html( $r[0] ) . '</td><td>' . $pc( $r[1] ) . '</td><td>' . $pc( $r[2] ) . '</td><td>' . $pc( $r[3] ) . '</td><td>' . $pc( $r[4], 0 ) . '</td></tr>'; }
+				$b5 = $at( $H, $add( $k, -60 ) ); $b0 = $at( $H, $D['hpi']['from'] );
+				return $h . $t . '</tbody></table><p>לאורך זמן: ב־5 השנים האחרונות המדד ' . ( $v >= $b5 ? 'עלה' : 'ירד' ) . ' ב־' . $abs( $chg( $v, $b5 ) ) . ' (אחרי אינפלציה: ' . $pc( $rch( $v, $b5, $cpd( $k ), $cpd( $add( $k, -60 ) ) ) ) . '), ומינואר 1994 הוא עלה פי ' . number_format( $v / $b0, 1 ) . ' (אחרי אינפלציה: ' . $pc( $rch( $v, $b0, $cpd( $k ), $cpd( $D['hpi']['from'] ) ), 0 ) . '). מדד מחירי הדירות אינו חלק ממדד המחירים לצרכן.</p>';
+			}
+
+			if ( 'pcity' === $id ) {
+				$cities = $D['city']; $count = array(); $best = null;
+				foreach ( $cities as $c ) { $s = $cst( $c['r4'] ); if ( $s ) { $count[ $s['q'] ] = isset( $count[ $s['q'] ] ) ? $count[ $s['q'] ] + 1 : 1; if ( null === $best || $count[ $s['q'] ] > $count[ $best ] ) { $best = $s['q']; } } }
+				$rowsd = array();
+				foreach ( $cities as $c ) { $rowsd[] = array( $c, $cst( $c['r4'] ) ); }
+				usort( $rowsd, function ( $a, $b ) { return ( $b[1] ? $b[1]['v'] : 0 ) <=> ( $a[1] ? $a[1]['v'] : 0 ); } );
+				$nat = array( 'n' => 'כל הארץ', 'slug' => null, 'r3' => $D['il']['r3'], 'r4' => $D['il']['r4'], 'r5' => $D['il']['r5'], 'ra' => $D['il']['ra'] );
+				$cell = function ( $s ) use ( $best ) { return $s ? number_format( $s['v'] ) . ( $s['q'] !== $best ? ' <small>(' . esc_html( $s['q'] ) . ')</small>' : '' ) : '·'; };
+				$tr = function ( $c ) use ( $cst, $cell, $pc ) {
+					$s4 = $cst( $c['r4'] ); $name = $c['slug'] ? '<a href="' . esc_url( home_url( '/' . $c['slug'] . '-apartment-prices/' ) ) . '">' . esc_html( $c['n'] ) . '</a>' : esc_html( $c['n'] );
+					return '<tr><td>' . $name . '</td><td>' . $cell( $cst( $c['r3'] ) ) . '</td><td>' . $cell( $s4 ) . '</td><td>' . $cell( $cst( $c['r5'] ) ) . '</td><td>' . $cell( $cst( $c['ra'] ) ) . '</td><td>' . $pc( $s4 ? $s4['yoy'] : null ) . '</td><td>' . $pc( $s4 ? $s4['since'] : null ) . '</td><td>' . $pc( $s4 ? $s4['real'] : null ) . '</td></tr>';
+				};
+				$n4 = $cst( $D['il']['r4'] ); $top = $rowsd[0]; $low = null; foreach ( $rowsd as $r ) { if ( $r[1] && $r[1]['q'] === $best ) { $low = $r; } }
+				$h = '<p>המחיר החציוני של דירת 4 חדרים בישראל היה ' . number_format( $n4['v'] ) . ' ₪ ב' . esc_html( $ql( $n4['q'] ) ) . ', ' . ( $n4['yoy'] < 0 ? 'ירידה' : 'עלייה' ) . ' של ' . $abs( $n4['yoy'] ) . ' לעומת אותו רבעון שנה קודם, לפי העסקאות שדווחו לרשות המסים (אתר הנדל״ן הממשלתי, קובץ ' . esc_html( $D['vsrc']['version'] ) . '). '
+					. 'ב' . esc_html( $ql( $best ) ) . ', הרבעון האחרון שפורסם לערים, החציון לדירת 4 חדרים נע בין ' . number_format( $low[1]['v'] ) . ' ₪ ב' . esc_html( $low[0]['n'] ) . ' ל־' . number_format( $top[1]['v'] ) . ' ₪ ב' . esc_html( $top[0]['n'] ) . '.</p>';
+				$t = '<div class="nli__tw"><table><caption>מחירי דירות לפי עיר ומספר חדרים: חציון מחיר העסקה בש״ח, ' . esc_html( $ql( $best ) ) . ' (אחרת, הרבעון בסוגריים). השינויים לדירת 4 חדרים. מקור: רשות המסים דרך אתר הנדל״ן הממשלתי, נקרא ' . esc_html( $dt( $D['vsrc']['read'] ) ) . '. אחרי אינפלציה: החישוב שלנו לפי מדד המחירים לצרכן. · = לא פורסם.</caption><thead><tr><th>עיר</th><th>3 חדרים</th><th>4 חדרים</th><th>5 חדרים</th><th>כל הדירות</th><th>4 חדרים, בשנה</th><th>4 חדרים, מתחילת 2021</th><th>מתחילת 2021, אחרי אינפלציה</th></tr></thead><tbody>' . $tr( $nat );
+				foreach ( $rowsd as $r ) { $t .= $tr( $r[0] ); }
+				$M = $D['mort']; $pay = nadlan_nli_mr_pmt( $n4['v'] * $M['ltv'], nadlan_nli_mr_nom( $M['eff'] ) / 1200, 12 * $M['years'] );  // monthly rate
+				return $h . $t . '</tbody></table></div><p>ההחזר החודשי על דירת 4 חדרים בחציון הארצי, במשכנתא של ' . (int) round( 100 * $M['ltv'] ) . '% ל־' . (int) $M['years'] . ' שנה בריבית ' . number_format( $M['eff'], 2 ) . '% (הממוצע של בנק ישראל למסלול קבועה לא צמודה, ' . esc_html( $mon( $M['month'] ) ) . '): כ־' . number_format( round( $pay ) ) . ' ₪ בחודש (החישוב שלנו).</p>';
+			}
+
+			if ( 'panatomy' === $id ) {
+				$A = $rd( 'anatomy.json' ); $PT = $rd( 'ptax.json' ); $CO = $rd( 'cost.json' );
+				if ( ! is_array( $A ) || empty( $A['dev'] ) || ! is_array( $PT ) || ! is_array( $CO ) ) { return ''; }
+				$S = $A['src']; $vat = (float) $CO['vat']; $vw = $vat / ( 1 + $vat );
+				$cite = function ( $k ) use ( $S, $dt ) { $s = $S[ $k ]; return esc_html( $s['he'] ) . ( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $s['date'] ) ? ', ' . esc_html( $dt( $s['date'] ) ) : ( preg_match( '/^\d{4}-\d{2}$/', $s['date'] ) ? ', ' . esc_html( (int) substr( $s['date'], 5, 2 ) . '.' . substr( $s['date'], 0, 4 ) ) : '' ) ); };
+				$n4 = $cst( $D['il']['r4'] ); $price = $n4['v'];
+				$tax = 0; $lo = 0; foreach ( $PT['tracks']['single'] as $br ) { $hi = null === $br[0] ? INF : (float) $br[0]; $top = min( $price, $hi ); if ( $top > $lo ) { $tax += ( $top - $lo ) * (float) $br[1]; } if ( $price <= $hi ) { break; } $lo = $hi; }
+				$f = $A['facts']; $cl = array( 'lo' => '', 'hi' => '' ); foreach ( $A['dev'] as $g ) { foreach ( $g['sub'] as $x ) { if ( ! empty( $x['claim'] ) ) { $cl = $x['claim']; } } }
+				$h = '<p>לפי בנק ישראל, בממוצע הארצי של 2009 עד 2010 הקרקע הייתה כשליש ממחיר דירה, עלויות הבנייה כשליש, והיתר נזקף לרווח היזמי ולמסים. בשיא של 2011 מחיר הקרקע ליחידת דיור (כולל הוצאות פיתוח, בלי מע״מ) היה כשליש ממחיר דירה טיפוסית של 3.5 עד 4 חדרים במרכז הארץ וכעשירית בפריפריה. '
+					. 'בדירה חדשה מקבלן המע״מ הוא ' . (int) round( 100 * $vat ) . '% על המחיר לפני מע״מ, כלומר ' . number_format( 100 * $vw, 1 ) . '% מהמחיר הסופי. היטל השבחה הוא מחצית מעליית שווי הקרקע בעקבות תוכנית, ומס רכישה על קרקע הוא ' . (int) round( 100 * $PT['land'] ) . '%. '
+					. 'במבצעי מימון, שהיו ב־' . (int) $f['runi']['year'] . ' כ־' . (int) round( 100 * $f['runi']['deals'] ) . '% מהעסקאות בשוק החופשי, ההטבה נאמדה בממוצע בכ־' . (int) round( 100 * $f['runi']['disc'] ) . '% ממחיר הדירה.</p>'
+					. '<p>מעל המחיר: על דירה במחיר החציוני הארצי לדירת 4 חדרים (' . number_format( $price ) . ' ₪), קונה של דירה יחידה משלם מס רכישה של ' . number_format( round( $tax ) ) . ' ₪, ועוד עורך דין ' . esc_html( $CO['lawyer']['from'] ) . '% עד ' . esc_html( $CO['lawyer']['to'] ) . '% ועוד מע״מ, שמאי ' . number_format( $CO['appraiser'][0] ) . ' עד ' . number_format( $CO['appraiser'][1] ) . ' ₪ ובדק בית ' . number_format( $CO['inspection'][0] ) . ' עד ' . number_format( $CO['inspection'][1] ) . ' ₪.</p>';
+				$t = '<table><caption>מה יש בתוך המחיר של דירה חדשה: כל חלק והמקור שלו</caption><thead><tr><th>חלק</th><th>כמה</th><th>מקור</th></tr></thead><tbody>'
+					. '<tr><td>קרקע</td><td>כשליש (ממוצע ארצי 2009 עד 2010); כשליש במרכז וכעשירית בפריפריה (2011)</td><td>' . $cite( 'boi13' ) . '</td></tr>'
+					. '<tr><td>בנייה</td><td>כשליש (ממוצע ארצי 2009 עד 2010)</td><td>' . $cite( 'boi13' ) . '</td></tr>'
+					. '<tr><td>רווח יזמי ומסים</td><td>היתר, כשליש (ממוצע ארצי 2009 עד 2010)</td><td>' . $cite( 'boi13' ) . '</td></tr>'
+					. '<tr><td>מע״מ</td><td>' . (int) round( 100 * $vat ) . '% על המחיר לפני מע״מ (' . number_format( 100 * $vw, 1 ) . '% מהמחיר)</td><td>' . $cite( 'vat' ) . '</td></tr>'
+					. '<tr><td>היטל השבחה</td><td>50% מההשבחה</td><td>' . $cite( 'hashbacha' ) . '</td></tr>'
+					. '<tr><td>מימון</td><td>הטבות מימון בכ־' . (int) round( 100 * $f['runi']['deals'] ) . '% מהעסקאות, כ־' . (int) round( 100 * $f['runi']['disc'] ) . '% ממחיר הדירה (' . (int) $f['runi']['year'] . ')</td><td>' . $cite( 'runi26' ) . '</td></tr>'
+					. '<tr><td>שיווק ומכירה</td><td>' . esc_html( $cl['lo'] ) . '% עד ' . esc_html( $cl['hi'] ) . '% ממחזור המכירות, טענה של חברת שיווק</td><td>' . $cite( 'mkt' ) . '</td></tr>'
+					. '<tr><td>מס רכישה (הקונה)</td><td>לפי המדרגות: ' . number_format( round( $tax ) ) . ' ₪ על ' . number_format( $price ) . ' ₪, דירה יחידה</td><td>' . $cite( 'ptax' ) . '</td></tr>';
+				return $h . $t . '</tbody></table><p>בלי מספר, כי לא מצאנו מקור ציבורי מתוארך: ' . esc_html( implode( ', ', $A['none'] ) ) . '.</p>';
+			}
+			return '';
+		}
+	}
 	/** Effective annual % -> nominal for a monthly payment (the Bank of Israel conversion), and the Spitzer payment. */
 	function nadlan_nli_mr_nom( $e ) { return 1200 * ( pow( 1 + $e / 100, 1 / 12 ) - 1 ); }
 	function nadlan_nli_mr_pmt( $b, $rm, $n ) { return $rm == 0 ? $b / $n : $b * $rm / ( 1 - pow( 1 + $rm, -$n ) ); }
@@ -604,6 +730,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
 		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'he' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
 		if ( 'nlbudget' === $id ) { return function_exists( 'nadlan_nlb_summary' ) ? nadlan_nlb_summary( 'he' ) : ''; }  // 7.11.2026 (HAD-678)
+		if ( in_array( $id, array( 'pmarket', 'pcity', 'panatomy' ), true ) ) { return function_exists( 'nadlan_phub_summary' ) ? nadlan_phub_summary( $id ) : ''; }  // 7.11.2026 (HAD-681)
 		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
 			$x = nadlan_nli_mrates(); $d = $x['d'];
 			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['prepay']['cpi']['rows'] ) || empty( $d['fees']['reduce'] ) || empty( $d['built'] ) ) { return ''; }
