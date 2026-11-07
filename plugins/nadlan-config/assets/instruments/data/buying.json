@@ -1,71 +1,779 @@
 {
  "key": "buying",
  "built": "2026-11-07",
- "note": "HAD-683 (Ben 7.11.2026): the content of the buying hub tools on /buying-apartment/ (bplan, bequity, bladder, boffer). No number lives here: every rule number is read at runtime from ptax.json, nrm.json, zakaut.json, orechdin.json, boi-mortgage.json, cbs-200010.json, prices-hub.json and value.json, each with its own source and date. {a.b.c} in a text is filled from those files. Statuses: the 12 buyer statuses seen in Google autocomplete on 7.11.2026 (docs/research/2026-11-07-prices-buying/buying-deep/autocomplete.md).",
+ "note": "HAD-683 (Ben 7.11.2026): the content of the buying hub tools on /buying-apartment/ (bplan, bequity, bladder, boffer). No number lives here: every rule number is read at runtime from ptax.json, nrm.json, zakaut.json, orechdin.json, boi-mortgage.json, cbs-200010.json, prices-hub.json and value.json, each with its own source and date. {a.b.c} in a text is filled from those files. Statuses: the 12 buyer statuses seen in Google autocomplete on 7.11.2026 (docs/research/2026-11-07-prices-buying/buying-deep/autocomplete.md). Phase 2 (8.11.2026): visit (T21 questions), who (T11 rows: only rules with an official source; contract-only items in who_contract), help (T19 programmes from zakaut.json and ptax.json), help_out (what was left out and why), toggles.",
  "statuses": [
-  { "id": "first", "label": "דירה ראשונה", "sub": "עוד לא הייתה לנו דירה", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut"] },
-  { "id": "single", "label": "דירה יחידה", "sub": "תהיה הדירה היחידה שלנו", "ptax": "single", "ltv": "cit_first", "flags": [] },
-  { "id": "replace", "label": "דירה חלופית", "sub": "קונים ומוכרים את הקיימת", "ptax": "single", "ltv": "cit_sell", "flags": ["upgrader"] },
-  { "id": "extra", "label": "דירה שנייה", "sub": "כבר יש לנו דירה ונשאיר אותה", "ptax": "extra", "ltv": "cit_own", "flags": [] },
-  { "id": "invest", "label": "דירה להשקעה", "sub": "יש לנו דירה, קונים עוד אחת להשכרה", "ptax": "extra", "ltv": "cit_own", "flags": ["invest"] },
-  { "id": "young", "label": "זוג צעיר", "sub": "נשואים או לפני החתונה", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut", "marriage"] },
-  { "id": "soldier", "label": "חיילים משוחררים", "sub": "שירות חובה או שירות לאומי", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut", "service"] },
-  { "id": "career", "label": "אנשי קבע", "sub": "משרתים בשירות קבע", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut", "service", "career"] },
-  { "id": "reserve", "label": "מילואים", "sub": "שש שנים ויותר של מילואים", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut", "service", "reserve"] },
-  { "id": "oleh", "label": "עולים חדשים", "sub": "עד 7 שנים מהעלייה", "ptax": "oleh", "ltv": "oleh", "flags": ["zakaut", "olim"] },
-  { "id": "foreign", "label": "תושבי חוץ", "sub": "גרים בחו״ל וקונים בישראל", "ptax": "foreign", "ltv": "foreign", "flags": ["foreign"] },
-  { "id": "disabled", "label": "נכות במשפחה", "sub": "נכות, עיוורון או ילד עם נכות", "ptax": "single", "ltv": "cit_first", "flags": ["zakaut", "disability", "ptax_disabled"] }
+  {
+   "id": "first",
+   "label": "דירה ראשונה",
+   "sub": "עוד לא הייתה לנו דירה",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut"
+   ]
+  },
+  {
+   "id": "single",
+   "label": "דירה יחידה",
+   "sub": "תהיה הדירה היחידה שלנו",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": []
+  },
+  {
+   "id": "replace",
+   "label": "דירה חלופית",
+   "sub": "קונים ומוכרים את הקיימת",
+   "ptax": "single",
+   "ltv": "cit_sell",
+   "flags": [
+    "upgrader"
+   ]
+  },
+  {
+   "id": "extra",
+   "label": "דירה שנייה",
+   "sub": "כבר יש לנו דירה ונשאיר אותה",
+   "ptax": "extra",
+   "ltv": "cit_own",
+   "flags": []
+  },
+  {
+   "id": "invest",
+   "label": "דירה להשקעה",
+   "sub": "יש לנו דירה, קונים עוד אחת להשכרה",
+   "ptax": "extra",
+   "ltv": "cit_own",
+   "flags": [
+    "invest"
+   ]
+  },
+  {
+   "id": "young",
+   "label": "זוג צעיר",
+   "sub": "נשואים או לפני החתונה",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut",
+    "marriage"
+   ]
+  },
+  {
+   "id": "soldier",
+   "label": "חיילים משוחררים",
+   "sub": "שירות חובה או שירות לאומי",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut",
+    "service"
+   ]
+  },
+  {
+   "id": "career",
+   "label": "אנשי קבע",
+   "sub": "משרתים בשירות קבע",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut",
+    "service",
+    "career"
+   ]
+  },
+  {
+   "id": "reserve",
+   "label": "מילואים",
+   "sub": "שש שנים ויותר של מילואים",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut",
+    "service",
+    "reserve"
+   ]
+  },
+  {
+   "id": "oleh",
+   "label": "עולים חדשים",
+   "sub": "עד 7 שנים מהעלייה",
+   "ptax": "oleh",
+   "ltv": "oleh",
+   "flags": [
+    "zakaut",
+    "olim"
+   ]
+  },
+  {
+   "id": "foreign",
+   "label": "תושבי חוץ",
+   "sub": "גרים בחו״ל וקונים בישראל",
+   "ptax": "foreign",
+   "ltv": "foreign",
+   "flags": [
+    "foreign"
+   ]
+  },
+  {
+   "id": "disabled",
+   "label": "נכות במשפחה",
+   "sub": "נכות, עיוורון או ילד עם נכות",
+   "ptax": "single",
+   "ltv": "cit_first",
+   "flags": [
+    "zakaut",
+    "disability",
+    "ptax_disabled"
+   ]
+  }
  ],
  "types": [
-  { "id": "used", "label": "יד שנייה" },
-  { "id": "new", "label": "מקבלן" },
-  { "id": "any", "label": "עוד לא החלטנו" }
+  {
+   "id": "used",
+   "label": "יד שנייה"
+  },
+  {
+   "id": "new",
+   "label": "מקבלן"
+  },
+  {
+   "id": "any",
+   "label": "עוד לא החלטנו"
+  }
  ],
  "stages": [
-  { "id": 0, "label": "רק מתחילים", "t": "לפני שמחפשים: מטרה, כסף ומיסים" },
-  { "id": 1, "label": "בודקים מימון", "t": "המימון: אישור עקרוני וכושר החזר" },
-  { "id": 2, "label": "מחפשים דירה", "t": "החיפוש: ערים, מחירים וסביבה" },
-  { "id": 3, "label": "מצאנו דירה", "t": "לפני הצעה: זכויות, מצב הדירה ומחיר" },
-  { "id": 4, "label": "לפני חתימה", "t": "לפני חתימה: עורך דין, חוזה ועלות סופית" },
-  { "id": 5, "label": "חתמנו", "t": "אחרי החתימה: דיווח, מס ותשלומים" },
-  { "id": 6, "label": "מקבלים מפתח", "t": "מסירה, רישום ומעבר" }
+  {
+   "id": 0,
+   "label": "רק מתחילים",
+   "t": "לפני שמחפשים: מטרה, כסף ומיסים"
+  },
+  {
+   "id": 1,
+   "label": "בודקים מימון",
+   "t": "המימון: אישור עקרוני וכושר החזר"
+  },
+  {
+   "id": 2,
+   "label": "מחפשים דירה",
+   "t": "החיפוש: ערים, מחירים וסביבה"
+  },
+  {
+   "id": 3,
+   "label": "מצאנו דירה",
+   "t": "לפני הצעה: זכויות, מצב הדירה ומחיר"
+  },
+  {
+   "id": 4,
+   "label": "לפני חתימה",
+   "t": "לפני חתימה: עורך דין, חוזה ועלות סופית"
+  },
+  {
+   "id": 5,
+   "label": "חתמנו",
+   "t": "אחרי החתימה: דיווח, מס ותשלומים"
+  },
+  {
+   "id": 6,
+   "label": "מקבלים מפתח",
+   "t": "מסירה, רישום ומעבר"
+  }
  ],
  "steps": [
-  { "id": "goal", "st": 0, "t": "מחליטים מה המטרה ומהו המחיר הנוח", "d": "מחיר מקסימלי הוא מה שהבנק וההון העצמי מאפשרים. מחיר נוח משאיר כסף לחיים, לתיקונים ולהפתעות.", "href": "/buy-vs-rent/", "a": "לקנות או לשכור", "who": "אתם" },
-  { "id": "equity", "st": 0, "t": "סופרים את ההון העצמי ומאיפה הוא מגיע", "d": "חסכונות, עזרה מההורים, הלוואות ושותפים: כל מקור עם ההחזר החודשי שהוא מוסיף.", "href": "#equity", "a": "למחשבון מקורות ההון העצמי", "who": "אתם" },
-  { "id": "zakaut", "st": 0, "t": "מוציאים תעודת זכאות", "d": "נרשמים בכל בנק למשכנתאות; תוקף התעודה: {zakaut.process.certificate_valid_years} שנה. הסכום נקבע לפי ניקוד.", "href": "https://www.gov.il/he/pages/mashkanta-calculator", "a": "מחשבון הניקוד של משרד הבינוי והשיכון", "who": "בנק למשכנתאות", "flag": "zakaut" },
-  { "id": "ptax", "st": 0, "t": "בודקים את מס הרכישה לפי המצב שלכם", "d": "המס תלוי במחיר ובמצב: דירה יחידה, נוספת, עולה או תושב חוץ.", "href": "/purchase-tax-calculator/", "a": "מחשבון מס רכישה", "who": "אתם", "alt": { "first": "/real-estate-tax-advisor/purchase-tax-first-home/", "extra": "/real-estate-tax-advisor/purchase-tax-investor/", "invest": "/real-estate-tax-advisor/purchase-tax-investor/", "foreign": "/israel-purchase-tax-foreign-residents/" } },
-  { "id": "sellplan", "st": 0, "t": "מתכננים את מכירת הדירה הקיימת", "d": "כדי לשמור על המדרגות של דירה יחידה, מוכרים את הקיימת בתוך {ptax.upgrader.0.months} חודשים.", "href": "/mortgage-calculator/bridge-loan-apartment/", "a": "הלוואת גישור", "who": "אתם ויועץ מס", "only": ["replace"] },
-  { "id": "preapp", "st": 1, "t": "אישור עקרוני מכמה בנקים", "d": "שלושה סלים אחידים בכל אישור עקרוני מאפשרים להשוות בין הבנקים על אותו בסיס.", "href": "/mortgage-calculator/mortgage-pre-approval/", "a": "אישור עקרוני למשכנתא", "who": "הבנק או יועץ משכנתאות" },
-  { "id": "capacity", "st": 1, "t": "בודקים כושר החזר", "d": "ההחזר החודשי מול ההכנסה הפנויה, אחרי התחייבויות קבועות.", "href": "/mortgage-calculator/mortgage-repayment-capacity/", "a": "מחשבון כושר החזר", "who": "אתם" },
-  { "id": "ltv", "st": 1, "t": "יודעים כמה הבנק מממן", "d": "שיעור המימון המרבי נקבע לפי המצב שלכם, והשאר מכספכם.", "href": "/mortgage-calculator/mortgage-ltv-ratio/", "a": "אחוז מימון למשכנתא", "who": "הבנק" },
-  { "id": "investmort", "st": 1, "t": "משכנתא לדירה נוספת", "d": "בדירה להשקעה הבנק מממן עד מחצית מהשווי.", "href": "/investment-property-mortgage/", "a": "משכנתא לדירה להשקעה", "who": "הבנק", "only": ["extra", "invest", "foreign"] },
-  { "id": "advisor", "st": 1, "t": "שוקלים יועץ משכנתאות", "d": "מי שמשווה הצעות בשבילכם, ומה שואלים אותו לפני שמתחילים.", "href": "/mortgage-advisor/", "a": "יועץ משכנתאות", "who": "יועץ משכנתאות" },
-  { "id": "cities", "st": 2, "t": "בוחרים ערים לפי התקציב", "d": "ההון העצמי והמימון קובעים מחיר מרבי, והמחיר החציוני בכל עיר אומר איפה הוא מספיק.", "href": "#ladder", "a": "איפה התקציב שלכם מספיק", "who": "אתם" },
-  { "id": "prices", "st": 2, "t": "בודקים מחירים של עסקאות שנסגרו", "d": "המחיר במודעה הוא בקשה. העסקאות שדווחו לרשות המסים הן השוק.", "href": "/apartment-prices/", "a": "מחירי דירות לפי עיר", "who": "אתם" },
-  { "id": "area", "st": 2, "t": "מבקרים באזור בבוקר, בערב ובסוף שבוע", "d": "רעש, חניה, תחבורה, בתי ספר ומה נבנה ליד.", "href": "/environmental-hazards/", "a": "מפגעים סביבתיים ליד הבית", "who": "אתם" },
-  { "id": "renewal", "st": 2, "t": "בודקים התחדשות עירונית בבניין ובסביבה", "d": "פינוי בינוי או תמ״א 38 יכולים לשנות את המחיר ואת השנים הקרובות.", "href": "/urban-renewal/check/", "a": "בדיקת התחדשות עירונית", "who": "אתם" },
-  { "id": "developer", "st": 2, "t": "בודקים את הקבלן בפנקס הקבלנים", "d": "רישום בענף, סיווג והגבלות על הרישיון.", "href": "/pinkas-hakablanim/", "a": "פנקס הקבלנים", "who": "אתם", "type": "new" },
-  { "id": "tabu", "st": 3, "t": "נסח טאבו או אישור זכויות", "d": "בעלים, משכנתאות, הערות אזהרה ועיקולים. מפיקים שוב סמוך לחתימה.", "href": "/tabu-extract-check/", "a": "בדיקת נסח טאבו", "who": "עורך הדין שלכם", "type": "used" },
-  { "id": "inspect", "st": 3, "t": "בדק בית לפני ההצעה", "d": "ליקויים נכנסים למשא ומתן, למחיר או לתקציב.", "href": "/home-inspection/", "a": "בדק בית", "who": "מהנדס או בודק מוסמך", "type": "used" },
-  { "id": "permit", "st": 3, "t": "היתר, טופס 4 וחריגות בנייה", "d": "מה שנבנה בלי היתר עובר אליכם עם הדירה.", "href": "/real-estate-lawyer/building-permit-citizen-guide/", "a": "היתר בנייה: מדריך לאזרח", "who": "עורך הדין שלכם" },
-  { "id": "offer", "st": 3, "t": "הצעת מחיר מול העסקאות בעיר", "d": "המחיר המבוקש מול החציון של אותה עיר ואותו מספר חדרים, וטווח פתיחה עם הבסיס שלו.", "href": "#offer", "a": "למחשבון הצעת המחיר", "who": "אתם" },
-  { "id": "appraiser", "st": 3, "t": "שמאי, כשהמחיר לא ברור", "d": "שמאי מטעמכם לפני ההצעה; השמאי של הבנק בודק אחרי.", "href": "/real-estate-appraiser/", "a": "שמאי מקרקעין", "who": "שמאי" },
-  { "id": "lawyer", "st": 4, "t": "עורך דין מטעמכם, לפני זיכרון דברים", "d": "מסמך עם הפרטים המהותיים עלול לחייב כמו חוזה.", "href": "/real-estate-lawyer/apartment-memorandum/", "a": "זיכרון דברים", "who": "עורך הדין שלכם" },
-  { "id": "devlawyer", "st": 4, "t": "שכר הטרחה לעורך הדין של היזם", "d": "התקרה ב־{orechdin.cap.year}: {orechdin.cap.fixed} ₪ או {orechdin.cap.pctx}% מהמחיר, הנמוך מביניהם, ועוד מע״מ.", "href": "/real-estate-lawyer/", "a": "עורך דין מקרקעין", "who": "עורך הדין של היזם", "type": "new" },
-  { "id": "salelaw", "st": 4, "t": "ערבות או ביטוח על כל תשלום לקבלן", "d": "כל תשלום עובר לחשבון הפרויקט מול ערבות לפי חוק המכר.", "href": "/investment/bank-guarantee-purchase/", "a": "ערבות בנקאית ברכישת דירה", "who": "עורך הדין שלכם", "type": "new" },
-  { "id": "contract", "st": 4, "t": "החוזה: מחיר, לוח תשלומים, מועד מסירה ופיצוי", "d": "התנאים נסגרים לפני החתימה, לא אחריה.", "href": "/real-estate-lawyer/apartment-sale-contract/", "a": "חוזה מכר דירה", "who": "שני עורכי הדין" },
-  { "id": "total", "st": 4, "t": "העלות הכוללת, סופית", "d": "מחיר, מס רכישה, עורך דין, שמאי, תיווך, מעבר ומרווח ביטחון.", "href": "/apartment-purchase-cost-calculator/", "a": "מחשבון עלויות רכישת דירה", "who": "אתם" },
-  { "id": "declare", "st": 5, "t": "הצהרה לרשות המסים בתוך {ptax.pay.declare_days} יום", "d": "גם כשאין מס, מגישים הצהרה. איחור: {ptax.pay.decl_fine} ₪ לכל שבועיים.", "href": "/purchase-tax-calculator/", "a": "מחשבון מס רכישה", "who": "עורך הדין שלכם" },
-  { "id": "paytax", "st": 5, "t": "תשלום מס הרכישה בתוך {ptax.pay.pay_days} יום", "d": "לפי השובר. כשהחזקה נדחית, התשלום יכול להידחות לפי סעיף 51.", "href": "/purchase-tax-calculator/", "a": "מחשבון מס רכישה", "who": "אתם" },
-  { "id": "warning", "st": 5, "t": "הערת אזהרה מיד אחרי החתימה", "d": "עד שהיא נרשמת, הכסף הראשון נשאר בנאמנות.", "href": "/tabu-extract-check/", "a": "בדיקת נסח טאבו", "who": "עורך הדין שלכם" },
-  { "id": "cgt", "st": 5, "t": "מקדמה על מס שבח מתוך התשלומים למוכר", "d": "אחרי שעברתם {orechdin.cgt_advance.afterx}% מהמחיר, מעבירים {orechdin.cgt_advance.ratex}% לרשות המסים, אלא אם המוכר הציג אישור אחר.", "href": "/real-estate-tax-advisor/capital-gains-tax-guide/", "a": "מס שבח", "who": "עורך הדין שלכם", "type": "used" },
-  { "id": "index", "st": 5, "t": "ההצמדה למדד תשומות הבנייה", "d": "בחוזה שנחתם מ־7.7.2022 מותר להצמיד עד מחצית מכל תשלום.", "href": "/new-projects/construction-input-index/", "a": "מחשבון הצמדה למדד תשומות הבנייה", "who": "אתם", "type": "new" },
-  { "id": "zakautuse", "st": 5, "t": "מממשים את הלוואת הזכאות בזמן", "d": "יד שנייה: עד {zakaut.process.second_hand_months} חודשים מהחתימה. מקבלן: עד {zakaut.process.developer_months} חודשים.", "href": "https://www.gov.il/he/pages/mortgage_guide", "a": "המדריך לקבלת משכנתא ממשרד הבינוי", "who": "הבנק", "flag": "zakaut" },
-  { "id": "handover", "st": 6, "t": "פרוטוקול מסירה ובודק מטעמכם", "d": "מכאן רצות תקופות הבדק והאחריות.", "href": "/guides/remote-new-apartment-handover-israel/", "a": "מסירת דירה חדשה", "who": "אתם ובודק", "type": "new" },
-  { "id": "keys", "st": 6, "t": "מסירה: מונים, חובות וּועד בית", "d": "קריאת מוני חשמל, מים וגז, ואישור שאין חובות לוועד.", "href": "/guides/common-property-handover/", "a": "מסירת הרכוש המשותף", "who": "שני הצדדים", "type": "used" },
-  { "id": "defects", "st": 6, "t": "ליקויי בנייה ותקופות הבדק", "d": "מה מכוסה, כמה זמן, ואיך פונים לקבלן.", "href": "/real-estate-lawyer/construction-defects-lawsuit/", "a": "תביעת ליקויי בנייה", "who": "אתם", "type": "new" },
-  { "id": "register", "st": 6, "t": "רישום הדירה על שמכם", "d": "אישור עירייה, אישורי מסים ורישום בטאבו, אצל רמ״י או בחברה המשכנת.", "href": "/real-estate-lawyer/condo-documents/", "a": "מסמכי הבית המשותף", "who": "עורך הדין שלכם" },
-  { "id": "arnona", "st": 6, "t": "ארנונה, ביטוח מבנה וביטוח חיים", "d": "מעבירים את הארנונה על שמכם ובודקים את הביטוחים שהבנק דורש.", "href": "/arnona/", "a": "ארנונה", "who": "אתם" }
- ]
+  {
+   "id": "goal",
+   "st": 0,
+   "t": "מחליטים מה המטרה ומהו המחיר הנוח",
+   "d": "מחיר מקסימלי הוא מה שהבנק וההון העצמי מאפשרים. מחיר נוח משאיר כסף לחיים, לתיקונים ולהפתעות.",
+   "href": "/buy-vs-rent/",
+   "a": "לקנות או לשכור",
+   "who": "אתם"
+  },
+  {
+   "id": "equity",
+   "st": 0,
+   "t": "סופרים את ההון העצמי ומאיפה הוא מגיע",
+   "d": "חסכונות, עזרה מההורים, הלוואות ושותפים: כל מקור עם ההחזר החודשי שהוא מוסיף.",
+   "href": "#equity",
+   "a": "למחשבון מקורות ההון העצמי",
+   "who": "אתם"
+  },
+  {
+   "id": "zakaut",
+   "st": 0,
+   "t": "מוציאים תעודת זכאות",
+   "d": "נרשמים בכל בנק למשכנתאות; תוקף התעודה: {zakaut.process.certificate_valid_years} שנה. הסכום נקבע לפי ניקוד.",
+   "href": "https://www.gov.il/he/pages/mashkanta-calculator",
+   "a": "מחשבון הניקוד של משרד הבינוי והשיכון",
+   "who": "בנק למשכנתאות",
+   "flag": "zakaut"
+  },
+  {
+   "id": "ptax",
+   "st": 0,
+   "t": "בודקים את מס הרכישה לפי המצב שלכם",
+   "d": "המס תלוי במחיר ובמצב: דירה יחידה, נוספת, עולה או תושב חוץ.",
+   "href": "/purchase-tax-calculator/",
+   "a": "מחשבון מס רכישה",
+   "who": "אתם",
+   "alt": {
+    "first": "/real-estate-tax-advisor/purchase-tax-first-home/",
+    "extra": "/real-estate-tax-advisor/purchase-tax-investor/",
+    "invest": "/real-estate-tax-advisor/purchase-tax-investor/",
+    "foreign": "/israel-purchase-tax-foreign-residents/"
+   }
+  },
+  {
+   "id": "sellplan",
+   "st": 0,
+   "t": "מתכננים את מכירת הדירה הקיימת",
+   "d": "כדי לשמור על המדרגות של דירה יחידה, מוכרים את הקיימת בתוך {ptax.upgrader.0.months} חודשים.",
+   "href": "/mortgage-calculator/bridge-loan-apartment/",
+   "a": "הלוואת גישור",
+   "who": "אתם ויועץ מס",
+   "only": [
+    "replace"
+   ]
+  },
+  {
+   "id": "preapp",
+   "st": 1,
+   "t": "אישור עקרוני מכמה בנקים",
+   "d": "שלושה סלים אחידים בכל אישור עקרוני מאפשרים להשוות בין הבנקים על אותו בסיס.",
+   "href": "/mortgage-calculator/mortgage-pre-approval/",
+   "a": "אישור עקרוני למשכנתא",
+   "who": "הבנק או יועץ משכנתאות"
+  },
+  {
+   "id": "capacity",
+   "st": 1,
+   "t": "בודקים כושר החזר",
+   "d": "ההחזר החודשי מול ההכנסה הפנויה, אחרי התחייבויות קבועות.",
+   "href": "/mortgage-calculator/mortgage-repayment-capacity/",
+   "a": "מחשבון כושר החזר",
+   "who": "אתם"
+  },
+  {
+   "id": "ltv",
+   "st": 1,
+   "t": "יודעים כמה הבנק מממן",
+   "d": "שיעור המימון המרבי נקבע לפי המצב שלכם, והשאר מכספכם.",
+   "href": "/mortgage-calculator/mortgage-ltv-ratio/",
+   "a": "אחוז מימון למשכנתא",
+   "who": "הבנק"
+  },
+  {
+   "id": "investmort",
+   "st": 1,
+   "t": "משכנתא לדירה נוספת",
+   "d": "בדירה להשקעה הבנק מממן עד מחצית מהשווי.",
+   "href": "/investment-property-mortgage/",
+   "a": "משכנתא לדירה להשקעה",
+   "who": "הבנק",
+   "only": [
+    "extra",
+    "invest",
+    "foreign"
+   ]
+  },
+  {
+   "id": "advisor",
+   "st": 1,
+   "t": "שוקלים יועץ משכנתאות",
+   "d": "מי שמשווה הצעות בשבילכם, ומה שואלים אותו לפני שמתחילים.",
+   "href": "/mortgage-advisor/",
+   "a": "יועץ משכנתאות",
+   "who": "יועץ משכנתאות"
+  },
+  {
+   "id": "cities",
+   "st": 2,
+   "t": "בוחרים ערים לפי התקציב",
+   "d": "ההון העצמי והמימון קובעים מחיר מרבי, והמחיר החציוני בכל עיר אומר איפה הוא מספיק.",
+   "href": "#ladder",
+   "a": "איפה התקציב שלכם מספיק",
+   "who": "אתם"
+  },
+  {
+   "id": "prices",
+   "st": 2,
+   "t": "בודקים מחירים של עסקאות שנסגרו",
+   "d": "המחיר במודעה הוא בקשה. העסקאות שדווחו לרשות המסים הן השוק.",
+   "href": "/apartment-prices/",
+   "a": "מחירי דירות לפי עיר",
+   "who": "אתם"
+  },
+  {
+   "id": "area",
+   "st": 2,
+   "t": "מבקרים באזור בבוקר, בערב ובסוף שבוע",
+   "d": "רעש, חניה, תחבורה, בתי ספר ומה נבנה ליד.",
+   "href": "/environmental-hazards/",
+   "a": "מפגעים סביבתיים ליד הבית",
+   "who": "אתם"
+  },
+  {
+   "id": "renewal",
+   "st": 2,
+   "t": "בודקים התחדשות עירונית בבניין ובסביבה",
+   "d": "פינוי בינוי או תמ״א 38 יכולים לשנות את המחיר ואת השנים הקרובות.",
+   "href": "/urban-renewal/check/",
+   "a": "בדיקת התחדשות עירונית",
+   "who": "אתם"
+  },
+  {
+   "id": "developer",
+   "st": 2,
+   "t": "בודקים את הקבלן בפנקס הקבלנים",
+   "d": "רישום בענף, סיווג והגבלות על הרישיון.",
+   "href": "/pinkas-hakablanim/",
+   "a": "פנקס הקבלנים",
+   "who": "אתם",
+   "type": "new"
+  },
+  {
+   "id": "tabu",
+   "st": 3,
+   "t": "נסח טאבו או אישור זכויות",
+   "d": "בעלים, משכנתאות, הערות אזהרה ועיקולים. מפיקים שוב סמוך לחתימה.",
+   "href": "/tabu-extract-check/",
+   "a": "בדיקת נסח טאבו",
+   "who": "עורך הדין שלכם",
+   "type": "used"
+  },
+  {
+   "id": "inspect",
+   "st": 3,
+   "t": "בדק בית לפני ההצעה",
+   "d": "ליקויים נכנסים למשא ומתן, למחיר או לתקציב.",
+   "href": "/home-inspection/",
+   "a": "בדק בית",
+   "who": "מהנדס או בודק מוסמך",
+   "type": "used"
+  },
+  {
+   "id": "permit",
+   "st": 3,
+   "t": "היתר, טופס 4 וחריגות בנייה",
+   "d": "מה שנבנה בלי היתר עובר אליכם עם הדירה.",
+   "href": "/real-estate-lawyer/building-permit-citizen-guide/",
+   "a": "היתר בנייה: מדריך לאזרח",
+   "who": "עורך הדין שלכם"
+  },
+  {
+   "id": "offer",
+   "st": 3,
+   "t": "הצעת מחיר מול העסקאות בעיר",
+   "d": "המחיר המבוקש מול החציון של אותה עיר ואותו מספר חדרים, וטווח פתיחה עם הבסיס שלו.",
+   "href": "#offer",
+   "a": "למחשבון הצעת המחיר",
+   "who": "אתם"
+  },
+  {
+   "id": "appraiser",
+   "st": 3,
+   "t": "שמאי, כשהמחיר לא ברור",
+   "d": "שמאי מטעמכם לפני ההצעה; השמאי של הבנק בודק אחרי.",
+   "href": "/real-estate-appraiser/",
+   "a": "שמאי מקרקעין",
+   "who": "שמאי"
+  },
+  {
+   "id": "lawyer",
+   "st": 4,
+   "t": "עורך דין מטעמכם, לפני זיכרון דברים",
+   "d": "מסמך עם הפרטים המהותיים עלול לחייב כמו חוזה.",
+   "href": "/real-estate-lawyer/apartment-memorandum/",
+   "a": "זיכרון דברים",
+   "who": "עורך הדין שלכם"
+  },
+  {
+   "id": "devlawyer",
+   "st": 4,
+   "t": "שכר הטרחה לעורך הדין של היזם",
+   "d": "התקרה ב־{orechdin.cap.year}: {orechdin.cap.fixed} ₪ או {orechdin.cap.pctx}% מהמחיר, הנמוך מביניהם, ועוד מע״מ.",
+   "href": "/real-estate-lawyer/",
+   "a": "עורך דין מקרקעין",
+   "who": "עורך הדין של היזם",
+   "type": "new"
+  },
+  {
+   "id": "salelaw",
+   "st": 4,
+   "t": "ערבות או ביטוח על כל תשלום לקבלן",
+   "d": "כל תשלום עובר לחשבון הפרויקט מול ערבות לפי חוק המכר.",
+   "href": "/investment/bank-guarantee-purchase/",
+   "a": "ערבות בנקאית ברכישת דירה",
+   "who": "עורך הדין שלכם",
+   "type": "new"
+  },
+  {
+   "id": "contract",
+   "st": 4,
+   "t": "החוזה: מחיר, לוח תשלומים, מועד מסירה ופיצוי",
+   "d": "התנאים נסגרים לפני החתימה, לא אחריה.",
+   "href": "/real-estate-lawyer/apartment-sale-contract/",
+   "a": "חוזה מכר דירה",
+   "who": "שני עורכי הדין"
+  },
+  {
+   "id": "total",
+   "st": 4,
+   "t": "העלות הכוללת, סופית",
+   "d": "מחיר, מס רכישה, עורך דין, שמאי, תיווך, מעבר ומרווח ביטחון.",
+   "href": "/apartment-purchase-cost-calculator/",
+   "a": "מחשבון עלויות רכישת דירה",
+   "who": "אתם"
+  },
+  {
+   "id": "declare",
+   "st": 5,
+   "t": "הצהרה לרשות המסים בתוך {ptax.pay.declare_days} יום",
+   "d": "גם כשאין מס, מגישים הצהרה. איחור: {ptax.pay.decl_fine} ₪ לכל שבועיים.",
+   "href": "/purchase-tax-calculator/",
+   "a": "מחשבון מס רכישה",
+   "who": "עורך הדין שלכם"
+  },
+  {
+   "id": "paytax",
+   "st": 5,
+   "t": "תשלום מס הרכישה בתוך {ptax.pay.pay_days} יום",
+   "d": "לפי השובר. כשהחזקה נדחית, התשלום יכול להידחות לפי סעיף 51.",
+   "href": "/purchase-tax-calculator/",
+   "a": "מחשבון מס רכישה",
+   "who": "אתם"
+  },
+  {
+   "id": "warning",
+   "st": 5,
+   "t": "הערת אזהרה מיד אחרי החתימה",
+   "d": "עד שהיא נרשמת, הכסף הראשון נשאר בנאמנות.",
+   "href": "/tabu-extract-check/",
+   "a": "בדיקת נסח טאבו",
+   "who": "עורך הדין שלכם"
+  },
+  {
+   "id": "cgt",
+   "st": 5,
+   "t": "מקדמה על מס שבח מתוך התשלומים למוכר",
+   "d": "אחרי שעברתם {orechdin.cgt_advance.afterx}% מהמחיר, מעבירים {orechdin.cgt_advance.ratex}% לרשות המסים, אלא אם המוכר הציג אישור אחר.",
+   "href": "/real-estate-tax-advisor/capital-gains-tax-guide/",
+   "a": "מס שבח",
+   "who": "עורך הדין שלכם",
+   "type": "used"
+  },
+  {
+   "id": "index",
+   "st": 5,
+   "t": "ההצמדה למדד תשומות הבנייה",
+   "d": "בחוזה שנחתם מ־7.7.2022 מותר להצמיד עד מחצית מכל תשלום.",
+   "href": "/new-projects/construction-input-index/",
+   "a": "מחשבון הצמדה למדד תשומות הבנייה",
+   "who": "אתם",
+   "type": "new"
+  },
+  {
+   "id": "zakautuse",
+   "st": 5,
+   "t": "מממשים את הלוואת הזכאות בזמן",
+   "d": "יד שנייה: עד {zakaut.process.second_hand_months} חודשים מהחתימה. מקבלן: עד {zakaut.process.developer_months} חודשים.",
+   "href": "https://www.gov.il/he/pages/mortgage_guide",
+   "a": "המדריך לקבלת משכנתא ממשרד הבינוי",
+   "who": "הבנק",
+   "flag": "zakaut"
+  },
+  {
+   "id": "handover",
+   "st": 6,
+   "t": "פרוטוקול מסירה ובודק מטעמכם",
+   "d": "מכאן רצות תקופות הבדק והאחריות.",
+   "href": "/guides/remote-new-apartment-handover-israel/",
+   "a": "מסירת דירה חדשה",
+   "who": "אתם ובודק",
+   "type": "new"
+  },
+  {
+   "id": "keys",
+   "st": 6,
+   "t": "מסירה: מונים, חובות וּועד בית",
+   "d": "קריאת מוני חשמל, מים וגז, ואישור שאין חובות לוועד.",
+   "href": "/guides/common-property-handover/",
+   "a": "מסירת הרכוש המשותף",
+   "who": "שני הצדדים",
+   "type": "used"
+  },
+  {
+   "id": "defects",
+   "st": 6,
+   "t": "ליקויי בנייה ותקופות הבדק",
+   "d": "מה מכוסה, כמה זמן, ואיך פונים לקבלן.",
+   "href": "/real-estate-lawyer/construction-defects-lawsuit/",
+   "a": "תביעת ליקויי בנייה",
+   "who": "אתם",
+   "type": "new"
+  },
+  {
+   "id": "register",
+   "st": 6,
+   "t": "רישום הדירה על שמכם",
+   "d": "אישור עירייה, אישורי מסים ורישום בטאבו, אצל רמ״י או בחברה המשכנת.",
+   "href": "/real-estate-lawyer/condo-documents/",
+   "a": "מסמכי הבית המשותף",
+   "who": "עורך הדין שלכם"
+  },
+  {
+   "id": "arnona",
+   "st": 6,
+   "t": "ארנונה, ביטוח מבנה וביטוח חיים",
+   "d": "מעבירים את הארנונה על שמכם ובודקים את הביטוחים שהבנק דורש.",
+   "href": "/arnona/",
+   "a": "ארנונה",
+   "who": "אתם"
+  }
+ ],
+ "visit": [
+  {
+   "g": "הדירה",
+   "q": [
+    "רטיבות, עובש או צבע טרי בתקרה, בפינות ובארונות?",
+    "לחץ המים: פותחים ברז ומקלחת יחד",
+    "לוח החשמל: יש מפסק פחת? מה גיל החיווט?",
+    "חלונות ותריסים נסגרים עד הסוף?",
+    "אור יום וכיווני אוויר בשעת הביקור",
+    "מזגנים ודוד: בני כמה, ומה נשאר בדירה?",
+    "ממ״ד או מרחב מוגן, ואיפה המקלט הקרוב?",
+    "מה בדיוק נשאר: מטבח, ארונות, גופי תאורה?"
+   ]
+  },
+  {
+   "g": "הבניין",
+   "q": [
+    "מעלית: עובדת, מתי עברה בדיקה?",
+    "לובי, חדר מדרגות וגג: מתוחזקים?",
+    "ועד בית: כמה משלמים, ויש חובות?",
+    "גג: נזילות, ומי משתמש בו?",
+    "חניה: מוצמדת ורשומה, או לפי הסכם?",
+    "מחסן: מוצמד ורשום?",
+    "יש תוכנית לתמ״א 38 או לפינוי בינוי?"
+   ]
+  },
+  {
+   "g": "הסביבה",
+   "q": [
+    "רעש בשעת הביקור: כביש, מסעדות, בית ספר",
+    "חניה ברחוב בערב",
+    "כמה דקות לעבודה בשעת עומס",
+    "גנים ובתי ספר קרובים",
+    "מגרש ריק או בנייה מתוכננת ליד",
+    "אנטנות, קווי מתח או תחנת דלק ליד"
+   ]
+  },
+  {
+   "g": "שאלות למוכר",
+   "q": [
+    "למה מוכרים, וממתי הדירה בשוק?",
+    "יש משכנתא על הדירה?",
+    "נעשו שינויים בלי היתר: מרפסת סגורה, חדר שנוסף?",
+    "יש שוכרים, ועד מתי החוזה?",
+    "מתי אפשר להיכנס?",
+    "יש חובות ארנונה, מים או ועד?",
+    "יש תביעות או סכסוכים בבניין?"
+   ]
+  },
+  {
+   "g": "לפני שיוצאים",
+   "q": [
+    "צילמתם כל חדר, את לוח החשמל ואת הגג?",
+    "רשמתם את הגוש והחלקה, או ביקשתם נסח טאבו?",
+    "קבעתם ביקור נוסף בשעה אחרת?"
+   ]
+  }
+ ],
+ "laws": {
+  "betterment": {
+   "label": "חוק התכנון והבנייה, התשכ״ה-1965, התוספת השלישית, סעיף 2",
+   "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%AA%D7%9B%D7%A0%D7%95%D7%9F_%D7%95%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94"
+  },
+  "m324": {
+   "label": "פקודת העיריות, סעיף 324",
+   "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%A2%D7%99%D7%A8%D7%99%D7%95%D7%AA"
+  },
+  "brokers": {
+   "label": "חוק המתווכים במקרקעין, התשנ״ו-1996, סעיף 9",
+   "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%9E%D7%AA%D7%95%D7%95%D7%9B%D7%99%D7%9D_%D7%91%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F"
+  }
+ },
+ "who": [
+  {
+   "t": "מס רכישה",
+   "who": "הקונה",
+   "d": "לפי המדרגות של המצב שלו: דירה יחידה, נוספת, עולה או תושב חוץ",
+   "src": "ptax"
+  },
+  {
+   "t": "הצהרה לרשות המסים",
+   "who": "שניהם",
+   "d": "כל צד מגיש הצהרה בתוך {ptax.pay.declare_days} יום מהעסקה, גם כשאין מס",
+   "src": "ptaxpay"
+  },
+  {
+   "t": "מס שבח",
+   "who": "המוכר",
+   "d": "על השבח במכירה; בדירת מגורים יש מסלולי פטור",
+   "src": "guide"
+  },
+  {
+   "t": "מקדמה על מס שבח",
+   "who": "הקונה מעביר, מתוך המחיר",
+   "d": "{orechdin.cgt_advance.ratex}% מהמחיר ({orechdin.cgt_advance.oldx}% בנכס שנרכש לפני 7.11.2001), אחרי שעברו {orechdin.cgt_advance.afterx}% מהמחיר, אלא אם המוכר הציג אישור אחר",
+   "src": "tax15"
+  },
+  {
+   "t": "היטל השבחה",
+   "who": "המוכר",
+   "d": "מחצית מעליית השווי בעקבות תוכנית, כשמוכרים",
+   "src": "betterment"
+  },
+  {
+   "t": "חובות לעירייה",
+   "who": "המוכר",
+   "d": "מסלק אותם כדי לקבל את אישור העירייה, שבלעדיו הדירה לא נרשמת על שם הקונה",
+   "src": "m324"
+  },
+  {
+   "t": "עורך דין",
+   "who": "כל צד לעורך הדין שלו",
+   "d": "עורך דין אחד לשני הצדדים רק בהסכמה בכתב של שניהם",
+   "src": "eth"
+  },
+  {
+   "t": "דמי תיווך",
+   "who": "מי שחתם על הזמנה בכתב",
+   "d": "מתווך זכאי לדמי תיווך רק ממי שחתם לו על הזמנת שירותי תיווך בכתב",
+   "src": "brokers"
+  }
+ ],
+ "who_contract": "נקבעים בחוזה, בלי כלל בחוק שאפשר להפנות אליו, ולכן אין להם שורה: מי משלם את אגרות הרישום בטאבו (הערת אזהרה {orechdin.land.1.2} ₪ ורישום משכנתה {orechdin.land.3.2} ₪ ב־2026), ועד הבית, המים והחשמל עד יום המסירה, ואיך נמחקת המשכנתא של המוכר מתוך התשלומים.",
+ "toggles": [
+  [
+   "zoneA",
+   "אזור עדיפות לאומית א"
+  ],
+  [
+   "zoneB",
+   "אזור עדיפות לאומית ב"
+  ],
+  [
+   "negev",
+   "יישוב בנגב"
+  ],
+  [
+   "parent",
+   "הורה עצמאי"
+  ],
+  [
+   "ten",
+   "2 ילדים ומעלה ו־10 שנים בארץ"
+  ]
+ ],
+ "help": [
+  {
+   "id": "base",
+   "flag": "zakaut",
+   "t": "הלוואת זכאות",
+   "d": "משכנתא בריבית לזכאים, בכל בנק למשכנתאות: בטבלת המשפחות הוותיקות מ־{zakaut.bands.rows.0.2} ₪ ועד {zakaut.bands.rows.10.2} ₪, לפי הניקוד",
+   "z": "S3"
+  },
+  {
+   "id": "service",
+   "flag": "zakaut",
+   "t": "תוספת שירות חובה או לאומי",
+   "d": "{zakaut.service.pct_per_month}% מהמשכנתא הבסיסית לכל חודש שירות מלא, עד {zakaut.service.cap_months} חודשים (שירות לאומי עד {zakaut.service.civic_cap_months})",
+   "z": "S7"
+  },
+  {
+   "id": "reserve",
+   "flag": "reserve",
+   "t": "תוספת מילואים",
+   "d": "{zakaut.reserve.pct}% מהמשכנתא הבסיסית לכל {zakaut.reserve.per_days} ימי מילואים, לפחות {zakaut.reserve.min_pct}% ועד {zakaut.reserve.max_pct_person}% לאדם, אחרי {zakaut.reserve.years} שנים עם {zakaut.reserve.days_per_year} ימים בכל אחת",
+   "z": "S7"
+  },
+  {
+   "id": "olim",
+   "flag": "olim",
+   "t": "סיוע במשכנתא לעולים",
+   "d": "מסלול עולים לפי הוותק בארץ, או מסלול המשפחות הוותיקות",
+   "z": "S11"
+  },
+  {
+   "id": "olimtax",
+   "flag": "olim",
+   "t": "מס רכישה מופחת לעולים",
+   "d": "0.5% על החלק שבין {ptax.tracks.oleh.0.0} ל־{ptax.tracks.oleh.1.0} ₪, על דירה שנקנתה מהשנה שלפני העלייה ועד 7 שנים אחריה",
+   "p": "oleh"
+  },
+  {
+   "id": "dis",
+   "flag": "disability",
+   "t": "נקודות נכות בהלוואת הזכאות",
+   "d": "למשל {zakaut.disability.vet_family_75} נקודות למשפחה ותיקה עם נכות של 75%",
+   "z": "S10"
+  },
+  {
+   "id": "distax",
+   "flag": "ptax_disabled",
+   "t": "מס רכישה מופחת לנכים",
+   "d": "{ptax.disabled.ratex}% על החלק שמעל {ptax.tracks.single.0.0} ₪, בדירה יחידה עד {ptax.disabled.single_cap} ₪",
+   "p": "single"
+  },
+  {
+   "id": "zoneA",
+   "toggle": "zoneA",
+   "flag": "zakaut",
+   "t": "אזור עדיפות לאומית א",
+   "d": "הלוואה של {zakaut.priority.a.amount} ₪ בריבית {zakaut.priority.a.rate_pct}% ל־{zakaut.priority.a.years} שנה",
+   "z": "S8"
+  },
+  {
+   "id": "zoneB",
+   "toggle": "zoneB",
+   "flag": "zakaut",
+   "t": "אזור עדיפות לאומית ב",
+   "d": "הלוואה של {zakaut.priority.b.amount} ₪ בריבית {zakaut.priority.b.rate_pct}% ל־{zakaut.priority.b.years} שנה, רק לדירה חדשה או ליד שנייה בבנייה רוויה",
+   "z": "S8"
+  },
+  {
+   "id": "negev",
+   "toggle": "negev",
+   "flag": "zakaut",
+   "t": "סיוע ליישובי הנגב",
+   "d": "{zakaut.negev.min} עד {zakaut.negev.max} ₪, בתנאי הלוואת זכאות, לפי היישוב",
+   "z": "S13"
+  },
+  {
+   "id": "parent",
+   "toggle": "parent",
+   "flag": "zakaut",
+   "t": "משפחה שבראשה הורה עצמאי",
+   "d": "סכום לפי {zakaut.single_parent.points} נקודות: {zakaut.single_parent.amount} ₪",
+   "z": "S5"
+  },
+  {
+   "id": "ten",
+   "toggle": "ten",
+   "flag": "zakaut",
+   "t": "תוכנית 10 פלוס",
+   "d": "{zakaut.ten_plus.amount} ₪ בתנאי הלוואת זכאות, לזוג או למשפחה שבראשה הורה עצמאי, עם {zakaut.ten_plus.min_children} ילדים לפחות, {zakaut.ten_plus.years_in_israel} שנים בארץ, והכנסה ממשכורת עד {zakaut.ten_plus.income.0.1} ₪ בחודש לפי הסכום של {zakaut.ten_plus.income.0.0}",
+   "z": "S9"
+  },
+  {
+   "id": "dira",
+   "flag": "zakaut",
+   "t": "דירה בהנחה",
+   "d": "הגרלות על דירות חדשות במחיר מופחת למי שאין לו דירה; התנאים וההגרלות הפתוחות בעמוד שלהן",
+   "href": "/dira-behanacha/"
+  }
+ ],
+ "help_out": "לא נכנסו, כי לא אימתנו אותם היום במקור הרשמי: מענק של עד 50,000 ₪ לדירה יד שנייה (דף המדריך ב־gov.il לא נפתח לקריאה ב־8.11.2026, ולא מצאנו שההגרלה פתוחה), מענקי הביטוח הלאומי לנכים, וסיוע אגף השיקום של משרד הביטחון."
 }

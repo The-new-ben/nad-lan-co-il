@@ -24,7 +24,7 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 PAGE = os.path.join(REPO, "docs", "research", "2026-11-07-prices-buying", "page-9-new.html")
 BASE = "../../plugins/nadlan-config/"
 FONTS = "https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-TOOLS = ["prices-common", "buying"]
+TOOLS = ["prices-common", "buying", "buying2"]
 
 
 def render():

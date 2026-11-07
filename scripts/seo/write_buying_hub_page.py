@@ -24,7 +24,7 @@ s, h, _ = req("GET", "/wp-json/nadlan/v1/health"); ver = (h or {}).get("version"
 s, g, _ = req("GET", "/wp-json/wp/v2/pages/%d?context=edit&_fields=title,meta,content,link" % PAGE); assert s == 200, s
 print("[plan] live version %s; content %d -> %d chars; title: %s -> %s" % (ver, len(g["content"]["raw"]), len(NEWC), g["title"]["raw"], TITLE))
 if "--go" not in sys.argv: sys.exit(0)
-assert ver == "1.72.607", "the buying tools are not live yet (%s)" % ver
+assert ver == "1.72.608", "the buying tools are not live yet (%s)" % ver
 stamp = time.strftime("%Y%m%dT%H%M%S"); bkf = os.path.join(BK, "backup-9-%s.json" % stamp)
 io.open(bkf, "w", encoding="utf-8").write(json.dumps({"title": g["title"]["raw"], "content": g["content"]["raw"],
     "meta": {k: (g.get("meta") or {}).get(k) for k in META}}, ensure_ascii=False))

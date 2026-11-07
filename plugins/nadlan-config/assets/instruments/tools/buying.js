@@ -27,10 +27,11 @@
   B.model = function (data) {
     var M = {};
     Object.keys(data).forEach(function (k) { var d = data[k]; if (!/^d\d+$/.test(k)) M[k] = d; if (d && d.id === 200010) M.cbsb = d; });
-    if (M.orechdin && M.orechdin.cap) { M.orechdin.cap.pctx = pc(M.orechdin.cap.pct); M.orechdin.cgt_advance.afterx = pc(M.orechdin.cgt_advance.after_paid); M.orechdin.cgt_advance.ratex = pc(M.orechdin.cgt_advance.rate); }
+    if (M.orechdin && M.orechdin.cap) { M.orechdin.cap.pctx = pc(M.orechdin.cap.pct); M.orechdin.cgt_advance.afterx = pc(M.orechdin.cgt_advance.after_paid); M.orechdin.cgt_advance.ratex = pc(M.orechdin.cgt_advance.rate); M.orechdin.cgt_advance.oldx = pc(M.orechdin.cgt_advance.rate_old); }
+    if (M.ptax && M.ptax.disabled) M.ptax.disabled.ratex = pc(M.ptax.disabled.rate);
     return M;
   };
-  B.fill = function (s, M) { return String(s).replace(/\{([a-z0-9_.]+)\}/gi, function (m, p) { var v = get(M, p); return v == null ? m : typeof v === 'number' ? (v % 1 === 0 ? n0(v) : String(v)) : String(v); }); };
+  B.fill = function (s, M) { return String(s).replace(/\{([a-z0-9_.]+)\}/gi, function (m, p) { var v = get(M, p); return v == null ? m : typeof v === 'number' ? (v % 1 === 0 && !(v >= 1900 && v <= 2100) ? n0(v) : String(v)) : String(v); }); };  // a year stays a year
   B.status = function (BU, id) { for (var i = 0; i < BU.statuses.length; i++) if (BU.statuses[i].id === id) return BU.statuses[i]; return BU.statuses[0]; };
   B.has = function (s, f) { return (s.flags || []).indexOf(f) >= 0; };
 
@@ -194,7 +195,10 @@
       'html body .nli .nlph table.nlph-t td.fit{background:var(--ph-tint) !important;color:var(--nli-sea-deep);font-weight:600}html body .nli .nlph table.nlph-t td.no{color:var(--nli-mute)}',
       'html body .nli .nlph table.nlph-t th a{color:var(--nli-ink) !important;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--nli-line)}',
       '.nlbh-basis{margin:12px 0 0;padding:0 18px 0 0;font:400 14.5px/23px var(--nli-sans);color:var(--nli-ink)}.nlbh-basis li{margin:0 0 6px}',
-      '@media print{.nlbh .nlbh-acts,.nlbh .nlbh-st button[aria-pressed="false"],.nlbh .nlph-tabs{display:none !important}.nlbh-stages details{display:block}.nlbh-stages details>*{display:block !important}}'
+      '@media screen{#nlbh-print-host{display:none}}@media print{html.nlbh-printing,html.nlbh-printing body{height:auto !important;min-height:0 !important;overflow:visible !important;background:#fff !important}html.nlbh-printing body>*:not(#nlbh-print-host){display:none !important}html.nlbh-printing #nlbh-print-host{display:block !important;position:static !important;margin:0 !important}html.nlbh-printing #nlbh-print-host,html.nlbh-printing #nlbh-print-host *{visibility:visible !important;opacity:1 !important}}',
+      '#nlbh-print-host{font:400 12.5pt/1.5 "IBM Plex Sans Hebrew",Arial,sans-serif;color:#000;direction:rtl}#nlbh-print-host h2{font:700 18pt/1.2 "IBM Plex Sans Hebrew",Arial,sans-serif;margin:0 0 6pt}#nlbh-print-host h3{font:600 13pt/1.3 "IBM Plex Sans Hebrew",Arial,sans-serif;margin:12pt 0 4pt;border-bottom:1px solid #000}',
+      '#nlbh-print-host table{width:100%;border-collapse:collapse;margin:6pt 0}#nlbh-print-host th,#nlbh-print-host td{border:1px solid #999;padding:4pt 6pt;text-align:right;vertical-align:top}#nlbh-print-host ul{margin:4pt 0;padding-inline-start:16pt}#nlbh-print-host li{margin:0 0 3pt}#nlbh-print-host .nlbh-pv-f{margin-top:14pt;font-size:9pt;color:#555}',
+      'html body .nli .nlbh .nlbh-acts button.nlbh-pdf{display:inline-flex;align-items:center;gap:6px;background:var(--nli-ink);border-color:var(--nli-ink);color:#fff}.nlbh-pdf svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -234,8 +238,20 @@
     return f;
   }
   function kpis(list) { return '<div class="nlph-kpis">' + list.map(function (k) { return '<div><span>' + esc(k[0]) + '</span><strong' + (k[3] ? ' class="' + k[3] + '"' : '') + '>' + esc(k[1]) + '</strong><small>' + esc(k[2] || '') + '</small></div>'; }).join('') + '</div>'; }
+  /* 'הדפסה או שמירה כ־PDF': the tool's own static view alone on the page (every browser saves a print as PDF) */
+  function printBtn(view) {
+    var b = U.el('button', 'nlbh-pdf', '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8V3h10v5M5 14H3V8h14v6h-2M5 11h10v6H5z"/></svg><span>הדפסה או שמירה כ־PDF</span>'); b.type = 'button';
+    b.addEventListener('click', function () {
+      var host = document.getElementById('nlbh-print-host'); if (!host) { host = document.createElement('div'); host.id = 'nlbh-print-host'; host.setAttribute('dir', 'rtl'); document.body.appendChild(host); }
+      host.innerHTML = '<div class="nlbh-pv">' + view() + '<p class="nlbh-pv-f">' + esc(location.origin + location.pathname) + ' · ' + esc(new Date().toLocaleDateString('he-IL')) + '</p></div>';
+      var done = function () { document.documentElement.classList.remove('nlbh-printing'); W.removeEventListener('afterprint', done); };
+      document.documentElement.classList.add('nlbh-printing'); W.addEventListener('afterprint', done); W.print();
+    });
+    return b;
+  }
   function pre(root) { try { return JSON.parse(root.getAttribute('data-nli-set') || '{}'); } catch (e) { return {}; } }
 
+  B.ui = { panel: panel, tabs: tabs, field: field, select: select, statusSelect: statusSelect, kpis: kpis, pre: pre, load: load, save: save, big: big, src1: src1, printBtn: printBtn };  // buying2.js builds on these
   /* ---------------- bplan ---------------- */
   NI.register('bplan', { custom: function (root, D0) {
     var M = B.model(D0), BU = M.buying, p = panel(root, 'התוכנית שלי לקניית דירה', 'קניית דירה צעד אחר צעד לפי המצב שלך');
@@ -269,7 +285,9 @@
       last = 'התוכנית שלי לקניית דירה (' + s.label + ', ' + B.status({ statuses: BU.types }, st.ty).label + '): ' + done + ' מתוך ' + steps.length + ' צעדים. הצעד הבא: ' + (nx ? nx.t : 'אין') + '.';
     }
     draw();
-    var acts = U.el('div', 'nlbh-acts'); var pr = U.el('button', '', 'הדפסת התוכנית'); pr.type = 'button'; pr.addEventListener('click', function () { [].forEach.call(out.querySelectorAll('details'), function (d) { d.open = true; }); W.print(); });
+    var acts = U.el('div', 'nlbh-acts'), pr = printBtn(function () { var s = B.status(BU, st.s), steps = B.steps(BU, s, st.ty, M);
+      return '<h2>התוכנית שלי לקניית דירה: ' + esc(s.label + ', ' + B.status({ statuses: BU.types }, st.ty).label) + '</h2><h3>הכללים שחלים עליכם</h3><ul>' + B.rules(s, M).map(function (r) { return '<li>' + esc(r.t) + ' <small>(' + (r.src ? esc(r.src.label + (r.src.date ? ', ' + date(r.src.date) : '')) : 'אין מקור רשמי מתוארך') + ')</small></li>'; }).join('') + '</ul>' +
+        BU.stages.map(function (g) { var l = steps.filter(function (x) { return x.st === g.id; }); return l.length ? '<h3>' + esc(g.t) + '</h3><ul>' + l.map(function (x) { return '<li>' + (st.done[x.id] ? '☑ ' : '☐ ') + '<b>' + esc(x.t) + '</b>: ' + esc(x.d) + ' (' + esc(x.who) + ')</li>'; }).join('') + '</ul>' : ''; }).join(''); });
     var rs = U.el('button', '', 'ניקוי הסימונים'); rs.type = 'button'; rs.addEventListener('click', function () { st.done = {}; persist(); draw(); });
     acts.appendChild(pr); acts.appendChild(rs); p.appendChild(acts);
     p.appendChild(U.el('p', 'nlph-fine', esc('התוכנית היא רשימת צעדים, לא ייעוץ משפטי, מיסויי או פיננסי. הכללים מתעדכנים מהקבצים הרשמיים: רשות המסים (נבדק ' + date(M.ptax.checked) + '), בנק ישראל (נבדק ' + date(M.nrm.checked) + ') ומשרד הבינוי והשיכון (נבדק ' + date(M.zakaut.checked) + '). הסימונים נשמרים בדפדפן הזה בלבד, ואינם נשלחים אלינו.')));

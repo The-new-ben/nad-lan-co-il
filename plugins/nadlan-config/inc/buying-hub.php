@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 
-	function nadlan_bhub_tool_ids() { return array( 'bplan', 'bequity', 'bladder', 'boffer' ); }
+	function nadlan_bhub_tool_ids() { return array( 'bplan', 'bequity', 'bladder', 'boffer', 'bsell', 'bdates', 'bcompare', 'bvisit', 'bwho', 'bhelp' ); }
 
 	add_filter( 'nadlan_nli_tools', function ( $tools ) {
 		$tools['bplan'] = array( 'file' => 'buying', 'deps' => array( 'prices-common' ),
@@ -41,6 +41,32 @@ if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 			'desc' => 'המחיר המבוקש של דירה יד שנייה מול המחיר החציוני של העסקאות שנסגרו באותה עיר ובאותו מספר חדרים, כמה מהשכונות בעיר נמכרו בחציון נמוך יותר, מדד המחוז, וטווח פתיחה להצעה עם הבסיס שלו, בלי "הנחה מקובלת" שאין לה מקור.',
 			'data' => array( 'prices-hub.json', 'value.json' ),
 			'related' => array( '/property-value-estimator/' => 'מחשבון שווי דירה', '/real-estate-appraiser/' => 'שמאי מקרקעין', '/buying-new-apartment-developer-2026-negotiation/' => 'משא ומתן מול קבלן', '/home-inspection/' => 'בדק בית' ) );
+		/* Phase 2 (8.11.2026): six more tools in tools/buying2.js, on buying.js (the shared math and surfaces) */
+		$b2 = array( 'file' => 'buying2', 'deps' => array( 'prices-common', 'buying' ) );
+		$tools['bsell'] = $b2 + array( 'name' => 'קניית דירה לפני מכירה: הלוואת הגישור, המס והחודשים הכפולים', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה חלופית',
+			'desc' => 'קונים דירה לפני שמוכרים את הקיימת: כמה הלוואת גישור צריך, כמה מס רכישה אם הקיימת נמכרת בזמן ואם לא, כמה עולים החודשים עם שתי משכנתאות, ומה קורה אם המכירה מתאחרת ב־3 חודשים.',
+			'data' => array( 'buying.json', 'ptax.json', 'nrm.json', 'cost.json', 'boi-mortgage.json', 'prices-hub.json' ),
+			'related' => array( '/mortgage-calculator/bridge-loan-apartment/' => 'הלוואת גישור', '/real-estate-tax-advisor/' => 'יועץ מס מקרקעין', '/selling-apartment/who-pays-broker-fees/' => 'מי משלם דמי תיווך' ) );
+		$tools['bdates'] = $b2 + array( 'name' => 'לוח זמנים לקניית דירה: המועדים שלכם ביומן', 'cat' => 'UtilitiesApplication', 'kicker' => 'יומן · מועדים בחוק',
+			'desc' => 'תאריך החתימה נותן את המועדים שהחוק קובע אחריה: הצהרה לרשות המסים, תשלום מס הרכישה, מכירת דירה חלופית ומימוש הלוואת הזכאות, כל אחד עם המקור שלו, וקובץ ליומן בטלפון.',
+			'data' => array( 'buying.json', 'ptax.json', 'zakaut.json', 'orechdin.json' ),
+			'related' => array( '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/real-estate-lawyer/' => 'עורך דין מקרקעין' ) );
+		$tools['bcompare'] = $b2 + array( 'name' => 'השוואה לפני קניית דירה: עלות כוללת, הון עצמי והחזר חודשי', 'cat' => 'FinanceApplication', 'kicker' => 'השוואה · 2 עד 4 דירות',
+			'desc' => 'שתיים עד ארבע דירות זו לצד זו: מחיר, מס רכישה, עורך דין, עלות כוללת, ההון העצמי הנדרש, המשכנתא וההחזר החודשי לפי הריבית הממוצעת של בנק ישראל.',
+			'data' => array( 'buying.json', 'ptax.json', 'nrm.json', 'cost.json', 'boi-mortgage.json', 'prices-hub.json' ),
+			'related' => array( '/apartment-purchase-cost-calculator/' => 'מחשבון עלויות רכישת דירה', '/property-value-estimator/' => 'מחשבון שווי דירה' ) );
+		$tools['bvisit'] = $b2 + array( 'name' => 'שאלות לשאול כשרואים דירה: דף ביקור שנשמר', 'cat' => 'UtilitiesApplication', 'kicker' => 'דף ביקור · נשמר בדפדפן',
+			'desc' => 'דף לכל דירה שרואים: שאלות על הדירה, הבניין, הסביבה והמוכר, עם כן, לא או לבדוק והערות, שנשמרים בדפדפן ואפשר להדפיס או לשמור כ־PDF.',
+			'data' => array( 'buying.json' ),
+			'related' => array( '/home-inspection/' => 'בדק בית', '/environmental-hazards/' => 'מפגעים סביבתיים ליד הבית', '/apartment-buying-checklist/' => 'בדיקות לפני קניית דירה' ) );
+		$tools['bwho'] = $b2 + array( 'name' => 'מי משלם מה בעסקת דירה יד שנייה: הקונה מול המוכר', 'cat' => 'ReferenceApplication', 'kicker' => 'טבלה · קונה מול מוכר',
+			'desc' => 'מס רכישה, מס שבח והמקדמה עליו, היטל השבחה, חובות לעירייה, עורך דין ודמי תיווך: מי משלם כל אחד לפי החוק, עם המקור, ומה נקבע רק בחוזה.',
+			'data' => array( 'buying.json', 'ptax.json', 'orechdin.json' ),
+			'related' => array( '/real-estate-tax-advisor/capital-gains-tax-guide/' => 'מס שבח', '/real-estate-tax-advisor/betterment-levy/' => 'היטל השבחה', '/selling-apartment/who-pays-broker-fees/' => 'מי משלם דמי תיווך' ) );
+		$tools['bhelp'] = $b2 + array( 'name' => 'ההטבות לקונה לפי המצב שלכם: זכאות, תוספות ומענקים', 'cat' => 'ReferenceApplication', 'kicker' => 'הטבות · לפי המצב שלכם',
+			'desc' => 'הלוואת זכאות, תוספות שירות ומילואים, עולים, נכות, אזורי עדיפות, יישובי הנגב, הורה עצמאי ותוכנית 10 פלוס: לפי המצב שלכם, כל הטבה עם הדף שלה ב־gov.il ותאריך העדכון.',
+			'data' => array( 'buying.json', 'ptax.json', 'zakaut.json' ),
+			'related' => array( '/dira-behanacha/' => 'דירה בהנחה', '/mortgage-calculator/' => 'מחשבון משכנתא' ) );
 		return $tools;
 	} );
 
@@ -128,6 +154,57 @@ if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 			$ask = round( $L['v'] * 1.08 / 10000 ) * 10000; $lo = $L['v'] * $low[0] / $L['v'];
 			$h = '<p>הצעת מחיר לדירה יד שנייה נשענת על העסקאות שנסגרו, לא על המודעות. דוגמה: דירת 4 חדרים ב' . esc_html( $c['n'] ) . ' במחיר מבוקש של ' . $n0( $ask ) . ' ₪. החציון של העסקאות בעיר היה ' . $n0( $L['v'] ) . ' ₪ ב' . esc_html( $ql( $L['q'] ) ) . ', כלומר המחיר המבוקש גבוה ב־' . $pc( $ask / $L['v'] - 1, 1 ) . '% מהחציון. הרבעון הנמוך מבין ארבעת האחרונים היה ' . $n0( $low[0] ) . ' ₪ (' . esc_html( $ql( $low[1] ) ) . '). טווח פתיחה עם בסיס: מ־' . $n0( $lo ) . ' ₪ ועד ' . $n0( min( $ask, $L['v'] ) ) . ' ₪. מחיר מבוקש שכבר מתחת לטווח לא משאיר בסיס שוק לירידה, ואז הבסיס הוא הדירה עצמה: בדק בית, תיקונים, רישום ולוח זמנים.</p>';
 			return $wrap( $h . '<p>מקורות: רשות המסים דרך אתר הנדל״ן הממשלתי (חציון לפי עיר וחדרים וחציון לפי שכונה), הלשכה המרכזית לסטטיסטיקה (מדד מחירי הדירות לפי מחוז). אין כאן "הנחה מקובלת", כי לא מצאנו לה מקור מתוארך.</p>' );
+		}
+		/* Phase 2: the six tools of buying2.js; the content (questions, rows, programmes) is the same buying.json the tools read */
+		$Z = $rd( 'zakaut.json' ); $O = $rd( 'orechdin.json' );
+		$M2 = array( 'ptax' => $PT, 'zakaut' => $Z, 'orechdin' => $O );
+		if ( is_array( $O ) ) { $M2['orechdin']['cgt_advance']['ratex'] = $pc( $O['cgt_advance']['rate'] ); $M2['orechdin']['cgt_advance']['afterx'] = $pc( $O['cgt_advance']['after_paid'] ); $M2['orechdin']['cgt_advance']['oldx'] = $pc( $O['cgt_advance']['rate_old'] ); }
+		$M2['ptax']['disabled']['ratex'] = $pc( $PT['disabled']['rate'] );
+		$fill2 = function ( $s ) use ( $M2 ) { return preg_replace_callback( '/\{([a-z0-9_.]+)\}/i', function ( $m ) use ( $M2 ) { $v = $M2; foreach ( explode( '.', $m[1] ) as $k ) { if ( ! is_array( $v ) || ! array_key_exists( $k, $v ) ) { return $m[0]; } $v = $v[ $k ]; } return is_numeric( $v ) && floor( (float) $v ) == (float) $v && ! ( $v >= 1900 && $v <= 2100 ) ? number_format( (float) $v ) : (string) $v; }, $s ); };
+		if ( 'bvisit' === $id ) {
+			$h = '<p>שאלות לשאול כשרואים דירה, לפי הסדר שבו עוברים בה. בכלי מסמנים כן, לא או לבדוק ליד כל שאלה, כותבים הערות, ושומרים כ־PDF.</p>';
+			foreach ( $BU['visit'] as $g ) { $h .= '<p><strong>' . esc_html( $g['g'] ) . '</strong></p><ul>'; foreach ( $g['q'] as $q ) { $h .= '<li>' . esc_html( $q ) . '</li>'; } $h .= '</ul>'; }
+			return $wrap( $h );
+		}
+		if ( ! is_array( $Z ) || ! is_array( $O ) ) { return ''; }
+		if ( 'bwho' === $id ) {
+			$S = array( 'ptax' => $PT['source'], 'ptaxpay' => $PT['pay']['label'], 'guide' => $PT['guide']['label'], 'tax15' => $O['sources']['TAX']['label'], 'eth' => $O['sources']['ETH']['label'] );
+			foreach ( $BU['laws'] as $k => $l ) { $S[ $k ] = $l['label']; }
+			$h = '<table><caption>מי משלם מה בעסקת דירה יד שנייה, לפי החוק</caption><thead><tr><th>מה</th><th>מי משלם</th><th>פירוט</th><th>מקור</th></tr></thead><tbody>';
+			foreach ( $BU['who'] as $r ) { $h .= '<tr><td>' . esc_html( $r['t'] ) . '</td><td>' . esc_html( $r['who'] ) . '</td><td>' . esc_html( $fill2( $r['d'] ) ) . '</td><td>' . esc_html( isset( $S[ $r['src'] ] ) ? $S[ $r['src'] ] : '' ) . '</td></tr>'; }
+			return $wrap( $h . '</tbody></table><p>' . esc_html( $fill2( $BU['who_contract'] ) ) . '</p>' );
+		}
+		if ( 'bhelp' === $id ) {
+			$h = '<table><caption>ההטבות לקונה דירה: מה מגיע ולמי, לפי דפי משרד הבינוי והשיכון ורשות המסים</caption><thead><tr><th>הטבה</th><th>מה מגיע</th><th>מקור</th></tr></thead><tbody>';
+			foreach ( $BU['help'] as $x ) { $z = ! empty( $x['z'] ) ? $Z['sources'][ $x['z'] ] : null; $src = $z ? 'משרד הבינוי והשיכון: ' . $z['title'] . ( ! empty( $z['updated'] ) ? ', עודכן ' . $dt( $z['updated'] ) : '' ) : ( ! empty( $x['p'] ) ? $PT['source'] : 'התנאים בעמוד' );
+				$h .= '<tr><td>' . esc_html( $x['t'] ) . '</td><td>' . esc_html( $fill2( $x['d'] ) ) . '</td><td>' . esc_html( $src ) . '</td></tr>'; }
+			return $wrap( $h . '</tbody></table><p>' . esc_html( $BU['help_out'] ) . '</p>' );
+		}
+		if ( 'bdates' === $id ) {
+			$p = $PT['pay']; $zp = $Z['process'];
+			$h = '<p>המועדים שהחוק קובע אחרי חתימה על חוזה לקניית דירה. בכלי מקלידים את תאריך החתימה ומקבלים תאריכים וקובץ ליומן.</p><ul>'
+				. '<li>הצהרת רוכש לרשות המסים: בתוך ' . (int) $p['declare_days'] . ' יום מהעסקה, גם כשאין מס. איחור: ' . $n0( $p['decl_fine'] ) . ' ₪ לכל שבועיים (' . esc_html( $dt( $p['fine_from'] ) ) . ' עד ' . esc_html( $dt( $p['fine_to'] ) ) . ').</li>'
+				. '<li>תשלום מס הרכישה: בתוך ' . (int) $p['pay_days'] . ' יום מהעסקה; נדחה כשעוד לא קיבלתם חזקה, לא שילמתם יותר ממחצית המחיר ולא קיבלתם ייפוי כוח לרישום (סעיף 51).</li>'
+				. '<li>השגה על שומת מס הרכישה: בתוך ' . (int) $p['objection_days'] . ' יום מיום קבלת השומה.</li>'
+				. '<li>דירה חלופית: מוכרים את הקיימת בתוך ' . (int) $PT['upgrader'][0]['months'] . ' חודשים כדי לשלם לפי המדרגות של דירה יחידה.</li>'
+				. '<li>הלוואת הזכאות: מממשים עד ' . (int) $zp['second_hand_months'] . ' חודשים מהחתימה ביד שנייה ועד ' . (int) $zp['developer_months'] . ' חודשים בדירה מקבלן; התעודה בתוקף ' . (int) $zp['certificate_valid_years'] . ' שנה.</li>'
+				. '<li>יד שנייה: מקדמה על מס שבח של ' . $pc( $O['cgt_advance']['rate'] ) . '% מהמחיר כשעברו ' . $pc( $O['cgt_advance']['after_paid'] ) . '% מהמחיר.</li></ul>'
+				. '<p>מקורות: ' . esc_html( $p['label'] ) . '; ' . esc_html( $p['fines_label'] ) . '; משרד הבינוי והשיכון, ' . esc_html( $Z['sources'][ $zp['src'] ]['title'] ) . '. לרישום הערת אזהרה לא מצאנו מועד בחוק, ולכן אין לו שורה.</p>';
+			return $wrap( $h );
+		}
+		if ( 'bsell' === $id || 'bcompare' === $id ) {
+			$il = function ( $r ) use ( $PH, $lastq ) { $x = $lastq( $PH['il'][ 'r' . $r ], $PH['q'] ); return $x['v']; };
+			if ( 'bsell' === $id ) {
+				$l = (float) $NR['ltv_by_status']['cit_sell']; $nP = $il( 5 ); $sP = $il( 4 ); $win = (int) $PT['upgrader'][0]['months'];
+				$tr = $tax( $nP, 'single' ); $te = $tax( $nP, 'extra' ); $need = $nP * ( 1 - $l ) + $tr + $law( $nP ); $bridge = max( 0, $need - 150000 ); $net = $sP - 500000;
+				return $wrap( '<p>דוגמה: קונים דירת 5 חדרים במחיר החציוני הארצי, ' . $n0( $nP ) . ' ₪, לפני שמוכרים דירת 4 חדרים בחציון, ' . $n0( $sP ) . ' ₪, עם יתרת משכנתא של 500,000 ₪ ו־150,000 ₪ זמינים. בדירה חלופית הבנק מממן עד ' . $pc( $l ) . '%, ולכן צריך ' . $n0( $need ) . ' ₪ מכספכם (כולל מס רכישה ועורך דין), ו<strong>הלוואת גישור של כ־' . $n0( $bridge ) . ' ₪</strong> עד המכירה. המכירה מחזירה ' . $n0( $net ) . ' ₪ אחרי המשכנתא הקיימת. מס הרכישה: ' . $n0( $tr ) . ' ₪ אם הקיימת נמכרת בתוך ' . $win . ' חודשים, ו־' . $n0( $te ) . ' ₪ לפי מדרגות דירה נוספת אם לא.</p><p>בכל חודש עד המכירה משלמים גם על המשכנתא הקיימת וגם על החדשה (' . $n0( $pmt( $nP * $l, $rate, 25 ) ) . ' ₪ בחודש ל־25 שנה בריבית ' . esc_html( $rate ) . '%, ממוצע בנק ישראל). לריבית על הלוואת גישור אין ממוצע מפורסם, ולכן בכלי מקלידים את ההצעה.</p>' );
+			}
+			$l = (float) $NR['ltv_by_status']['cit_first']; $ap = $CO['appraiser']; $ins = $CO['inspection'];
+			$h = '<table><caption>שתי דירות במחיר החציוני הארצי, דירה יחידה, מימון ' . $pc( $l ) . '%, ריבית ' . esc_html( $rate ) . '% ל־25 שנה</caption><thead><tr><th></th><th>3 חדרים</th><th>4 חדרים</th></tr></thead><tbody>';
+			$c = array(); foreach ( array( 3, 4 ) as $r ) { $P = $il( $r ); $t = $tax( $P, 'single' ); $c[ $r ] = array( $P, $t, $P + $t + $law( $P ) + $ap[0] + $ins[0], $P + $t + $P * $CO['lawyer']['to'] / 100 * ( 1 + $CO['vat'] ) + $ap[1] + $ins[1], $P * ( 1 - $l ) + $t + $law( $P ), $pmt( $P * $l, $rate, 25 ) ); }
+			foreach ( array( 'מחיר' => 0, 'מס רכישה' => 1, 'הון עצמי נדרש' => 4, 'החזר חודשי' => 5 ) as $lab => $k ) { $h .= '<tr><td>' . esc_html( $lab ) . '</td><td>' . $n0( $c[3][ $k ] ) . ' ₪</td><td>' . $n0( $c[4][ $k ] ) . ' ₪</td></tr>'; }
+			$h .= '<tr><td>עלות כוללת</td><td>' . $n0( $c[3][2] ) . ' עד ' . $n0( $c[3][3] ) . ' ₪</td><td>' . $n0( $c[4][2] ) . ' עד ' . $n0( $c[4][3] ) . ' ₪</td></tr>';
+			return $wrap( $h . '</tbody></table><p>עלות כוללת: מחיר, מס רכישה, עורך דין ' . esc_html( $CO['lawyer']['from'] ) . '% עד ' . esc_html( $CO['lawyer']['to'] ) . '% ועוד מע״מ, שמאי ובדק בית (ביזפורטל, 6.8.2026). בכלי משווים 2 עד 4 דירות משלכם.</p>' );
 		}
 		return '';
 	}

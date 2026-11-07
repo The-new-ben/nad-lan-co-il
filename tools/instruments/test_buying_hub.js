@@ -9,8 +9,8 @@ const J = f => JSON.parse(fs.readFileSync(path.join(INS, 'data', f), 'utf8'));
 const ctx = { window: {}, document: {}, Intl, Math, JSON, console };
 ctx.window.NadLanInstruments = { register() {}, fmt: {}, esc: s => String(s) };
 vm.createContext(ctx);
-['prices-common.js', 'buying.js'].forEach(f => vm.runInContext(fs.readFileSync(path.join(INS, 'tools', f), 'utf8'), ctx, { filename: f }));
-const B = ctx.window.NLBH;
+['prices-common.js', 'buying.js', 'buying2.js'].forEach(f => vm.runInContext(fs.readFileSync(path.join(INS, 'tools', f), 'utf8'), ctx, { filename: f }));
+const B = ctx.window.NLBH, X = ctx.window.NLBH2;
 const BU = J('buying.json'), PT = J('ptax.json'), NR = J('nrm.json'), Z = J('zakaut.json'), O = J('orechdin.json'), BM = J('boi-mortgage.json'), CO = J('cost.json'), C = J('cbs-200010.json'), PH = J('prices-hub.json'), V = J('value.json');
 const M = B.model({ buying: BU, ptax: PT, nrm: NR, zakaut: Z, orechdin: O, boim: BM, cost: CO, phub: PH, value: V, d9: C });
 let n = 0; const fail = [];
@@ -109,6 +109,41 @@ t('offer: a neighbourhood becomes the basis', ofh.hood && ofh.basis === h0.v && 
 t('offer: the district index of the city', of.dist && /^[֐-׿ ]+$/.test(of.dist.n));
 t('offer: the whole country works', B.offer(PH, V, { code: 0, rooms: 4, ask: 2.2e6, hood: '' }).med === B.lastQ(PH.il.r4, PH.q).v);
 
+/* ---- Phase 2 (buying2.js) ---- */
+t('dates: +30 and +60 days, month ends clamp', X.addDays('2026-11-08', 30) === '2026-12-08' && X.addDays('2026-11-08', 60) === '2027-01-07' && X.addMonths('2026-01-31', 1) === '2026-02-28' && X.addMonths('2026-11-08', 24) === '2028-11-08');
+const D1 = X.dates(M, '2026-11-08', 'used', B.status(BU, 'first')), ids1 = D1.map(x => x.id);
+t('deadlines, first home second-hand: declare, pay, eligibility loan 12 months, then the undated', JSON.stringify(ids1) === JSON.stringify(['declare', 'paytax', 'zakaut', 'objection', 'cgt']) && D1[0].d === '2026-12-08' && D1[1].d === '2027-01-07' && D1[2].d === '2027-11-08', ids1);
+const D2 = X.dates(M, '2026-11-08', 'new', B.status(BU, 'replace'));
+t('deadlines, replacement from a developer: sell within 24 months, no eligibility loan, no capital-gains advance', D2.some(x => x.id === 'sellby' && x.d === '2028-11-08') && !D2.some(x => x.id === 'zakaut' || x.id === 'cgt'));
+t('deadlines: eligibility loan 36 months from a developer', X.dates(M, '2026-11-08', 'new', B.status(BU, 'young')).some(x => x.id === 'zakaut' && x.d === '2029-11-08'));
+t('deadlines: every row has an official source', D1.concat(D2).every(x => x.src && x.src.label && x.src.url));
+const ics = X.ics(D1, '2026-11-08T10:00:00.000Z'), lines = ics.split('\r\n');
+t('ics: a calendar, one event per dated row, CRLF, 75-octet lines', ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.trim().endsWith('END:VCALENDAR') && (ics.match(/BEGIN:VEVENT/g) || []).length === 3 && lines.every(l => Buffer.byteLength(l, 'utf8') <= 75) && ics.indexOf('DTSTART;VALUE=DATE:20261208') > 0 && ics.indexOf('TRIGGER:-P3D') > 0);
+const pr = { PT, NRM: NR, CO, rate: rr.rate, years: 25 };
+const sl = X.sell(Object.assign({ newP: 3e6, saleP: 2e6, oldLoan: 5e5, oldPay: 4000, cash: 15e4, months: 6, bridgeRate: 6 }, pr));
+t('sell: replacement LTV 70%, need = 30% + single-home tax + lawyer, bridge = need - cash', sl.ltv === 0.7 && near(sl.need, 9e5 + B.tax(3e6, 'single', PT) + 3e6 * CO.lawyer.from / 100 * (1 + CO.vat)) && near(sl.bridge, sl.need - 15e4));
+t('sell: the tax risk is the additional-home brackets', near(sl.taxExtra - sl.taxRep, B.tax(3e6, 'extra', PT) - B.tax(3e6, 'single', PT)) && sl.taxExtra > sl.taxRep);
+t('sell: double months = old payment + bridge interest', near(sl.bi, sl.bridge * 0.06 / 12) && near(sl.double, 6 * (4000 + sl.bi)) && near(sl.late.extra, 3 * (4000 + sl.bi)) && sl.late.taxJump === 0);
+t('sell: 3 months late past the window costs the tax jump', X.sell(Object.assign({ newP: 3e6, saleP: 2e6, oldLoan: 5e5, oldPay: 4000, cash: 15e4, months: 22, bridgeRate: null }, pr)).late.taxJump > 0);
+t('sell: no bridge rate, no interest number', X.sell(Object.assign({ newP: 3e6, saleP: 2e6, oldLoan: 5e5, oldPay: 0, cash: 15e4, months: 6, bridgeRate: null }, pr)).bi === null);
+const cmp = X.compare([{ name: 'א', price: 2e6, type: 'used' }, { name: 'ב', price: 2.5e6, type: 'new' }], { ltv: 0.75, track: 'single', dis: false, PT, CO, rate: rr.rate, years: 25 });
+t('compare: equity = the need of the equity tool, payment = Spitzer, a range for the all-in cost', near(cmp[0].eq, B.need(2e6, o1).cash) && near(cmp[1].pay, B.pmt(2.5e6 * 0.75, rr.rate, 25)) && cmp.every(r => r.lo < r.hi));
+const who = X.who(BU, M);
+t('who pays: 8 rows, each with an official source, numbers filled', who.length === 8 && who.every(r => r.src && r.src.label && r.src.url && !/[{}]/.test(r.d)) && who[3].d.indexOf('7.5%') === 0);
+t('who pays: the contract line fills the 2026 fees', B.fill(BU.who_contract, M).indexOf('188 ₪') > 0 && !/[{}]/.test(B.fill(BU.who_contract, M)));
+const hp = (id, tg) => X.help(BU, B.status(BU, id), tg || {}, M).map(h => h.id);
+t('benefits: first home without toggles', JSON.stringify(hp('first')) === JSON.stringify(['base', 'service', 'dira']), hp('first'));
+t('benefits: toggles add priority zone and Negev', hp('first', { zoneA: 1, negev: 1 }).includes('zoneA') && hp('first', { zoneA: 1, negev: 1 }).includes('negev'));
+t('benefits: none for a foreign resident or a second home', !hp('foreign').length && !hp('extra').length);
+t('benefits: olim, disability, reserve', hp('oleh').includes('olimtax') && hp('disabled').includes('distax') && hp('reserve').includes('reserve'));
+const all = X.help(BU, B.status(BU, 'disabled'), { zoneA: 1, zoneB: 1, negev: 1, parent: 1, ten: 1 }, M).concat(X.help(BU, B.status(BU, 'oleh'), {}, M));
+t('benefits: every number filled, every card has a link, a year stays a year', all.every(h => !/[{}]/.test(h.d) && h.href) && all.filter(h => h.id === 'ten')[0].d.indexOf('2025') > 0 && all.filter(h => h.id === 'ten')[0].d.indexOf('2,025') < 0);
+t('benefits: the unverified grant is named as left out', /50,000/.test(BU.help_out) && !BU.help.some(h => /50,000|50 אלף/.test(h.d)));
+t('visit sheet: 5 groups, 31 questions', BU.visit.length === 5 && BU.visit.reduce((a, g) => a + g.q.length, 0) === 31);
+t('visit count', JSON.stringify(X.visitCount({ a: { '0.0': 'y', '0.1': 'n', '1.0': 'q', '1.1': 'y' } })) === '{"y":2,"n":1,"q":1}');
+const related = (fs.readFileSync(path.join(ROOT, 'plugins', 'nadlan-config', 'inc', 'buying-hub.php'), 'utf8').match(/'(\/[a-z0-9\-\/]+\/)' =>/g) || []).map(x => x.slice(1, -4));
+t('every related link of the registry is a live URL' + (paths ? '' : ' (shape only)'), related.length >= 30 && related.every(h => paths ? paths.has(h) : true), related.filter(h => paths && !paths.has(h)));
+
 /* ---- the PHP summaries: same numbers ---- */
 let php = null;
 try {
@@ -119,7 +154,11 @@ try {
   php = JSON.parse(cp.execFileSync('php', [stub], { encoding: 'utf8' })); fs.unlinkSync(stub);
 } catch (e) { fail.push('php summaries did not run | ' + String(e.message).slice(0, 200)); }
 if (php) {
-  t('PHP: four summaries, each with its marker', ['bplan', 'bequity', 'bladder', 'boffer'].every(i => php[i].indexOf('data-bhub-sum="' + i + '"') > 0));
+  t('PHP: ten summaries, each with its marker', ['bplan', 'bequity', 'bladder', 'boffer', 'bsell', 'bdates', 'bcompare', 'bvisit', 'bwho', 'bhelp'].every(i => php[i] && php[i].indexOf('data-bhub-sum="' + i + '"') > 0));
+  t('PHP bwho: 8 rows; bhelp: 13 rows; bvisit: 31 questions', (php.bwho.match(/<tr><td>/g) || []).length === 8 && (php.bhelp.match(/<tr><td>/g) || []).length === 13 && (php.bvisit.match(/<li>/g) || []).length === 31);
+  const s5 = X.sell(Object.assign({ newP: B.lastQ(PH.il.r5, PH.q).v, saleP: B.lastQ(PH.il.r4, PH.q).v, oldLoan: 5e5, oldPay: 0, cash: 15e4, months: 6, bridgeRate: null }, pr));
+  t('PHP bsell bridge = JS', php.bsell.indexOf('הלוואת גישור של כ־' + B.n0(s5.bridge) + ' ₪') > 0, B.n0(s5.bridge));
+  t('PHP: no unfilled placeholder anywhere', !/\{[a-z_.0-9]+\}/.test(Object.values(php).filter(v => typeof v === 'string').join('')));
   t('PHP bplan: a row per status', (php.bplan.match(/<tr><td>/g) || []).length === 12);
   [100000, 300000, 500000, 1000000].forEach(E => t('PHP bladder max price = JS for ' + E, php.bladder.indexOf('<td>' + B.n0(E) + ' ₪</td><td>' + B.n0(B.maxPrice(E, o1).P) + ' ₪</td>') >= 0));
   const P4 = B.lastQ(PH.il.r4, PH.q).v, need4 = P4 * 0.25 + B.tax(P4, 'single', PT) + P4 * CO.lawyer.from / 100 * (1 + CO.vat);
