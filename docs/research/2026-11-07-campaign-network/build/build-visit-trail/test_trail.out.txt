@@ -1,0 +1,102 @@
+1. opt-out: Global Privacy Control, Do Not Track, robots
+  ok   GPC true opts out
+  ok   DNT "1" opts out
+  ok   DNT "yes" (old Firefox) opts out
+  ok   window.doNotTrack "1" (old IE / Safari) opts out
+  ok   msDoNotTrack "1" opts out
+  ok   DNT "0" and GPC false record
+  ok   DNT unspecified records
+  ok   navigator.webdriver is a robot
+  ok   Googlebot is a robot
+  ok   HeadlessChrome is a robot
+  ok   an iPhone is not
+  ok   gpc: boot returns null, nothing stored, fetch untouched, no timer
+  ok   dnt: boot returns null, nothing stored, fetch untouched, no timer
+  ok   robot: boot returns null, nothing stored, fetch untouched, no timer
+  ok   a normal browser boots, one timer of 20 s  [[20000]]
+  ok   stop() gives fetch back
+  ok   no NL_TRAIL_CFG: nothing runs
+2. the visit id: random, 30 days from its creation, then new
+  ok   a 22-character id, kept in localStorage  [m4KS5-w1HgccdwIjNHHxn-]
+  ok   the same id 5 days later
+  ok   a new id after 30 days
+  ok   the new id is stamped with its own creation time (not rolled forward)
+  ok   200 fresh browsers, 200 different ids
+  ok   a broken stored value is replaced
+  ok   a stored value that is not an id is replaced
+  ok   a value stamped in the future is replaced
+  ok   no storage: an id for this page only
+  ok   storage that throws (private mode): still an id
+  ok   no cookie is written (localStorage only)
+3. batching: 40 a request, the 20 s timer, nothing when nothing happened
+  ok   the page view opens with one "open" event
+  ok   the timer sends the queue  [1]
+  ok   the frame: v, vid, pv, seq 0, page, lang, device class  [{"seq":0,"dev":"m"}]
+  ok   the path without the query string  [/projects/rainbow-tel-aviv/]
+  ok   the referring site by name only (no path, no query)  [google.co.il]
+  ok   an empty queue sends nothing
+  ok   45 events: one request of 40, one of 5  [[40,5]]
+  ok   seq counts up; the referrer rides the first request only
+  ok   every request under the server limit of 16 KB  [2287]
+  ok   the same floor twice inside 1.5 s is one event
+  ok   again after 1.5 s: recorded
+  ok   turning the view: at most one record per 8 s  [[270,290]]
+  ok   a view set from outside (not source user) is not recorded
+  ok   a page view records at most 400 events  [400]
+4. the stage events: only the allowed fields
+  ok   nl:floor -> floor {f, tw, src} (no height, no tower name)  [{"t":"floor","f":23,"tw":"A","src":"user"}]
+  ok   nl:facing -> facing {f, b rounded, u, tw, lbl, src}  [{"t":"facing","f":23,"b":268,"u":"23-w","tw":"A","lbl":"דירה 23 מערב","src":"user"}]
+  ok   a bearing of -90 is 270; the world's direction word is kept  [{"t":"facing","at":1762500004000,"f":12,"b":270,"dir":"מערב"}]
+  ok   nl:quarter -> {k, n}
+  ok   nl:facility -> {n, id}
+  ok   nl:facility-tour -> {id, n}: no picture address, no DOM element
+  ok   nl:floor-cta -> {f, b, tw}
+  ok   nl:floor-action -> {a, f, u, tw}
+  ok   nl:tour open / close
+  ok   nl:example -> {o, id, f, tw, dir}  [{"t":"example","o":1,"id":"B4","f":18,"tw":"B","dir":"צפון"}]
+  ok   no address and no DOM element in any event
+  ok   a floor that is not a number or off the range is dropped from the event
+  ok   a long name is cut at 60 characters
+  ok   control characters and runs of spaces are folded  [line break ctl spaces]
+5. time on the page, the leave record
+  ok   hidden: the queue is sent
+  ok   a leave record with 30 s in view  [{"t":"leave","at":1762500030000,"vis":30000,"sc":20}]
+  ok   pagehide: 45 s in view (the 10 minutes away are not counted)  [[30000,45000]]
+  ok   scrolled to 75% of the page ((2200 + 800) / 4000)  [75]
+  ok   a second pagehide at the same time adds no second leave
+6. the lead link: the visit id rides the page's own lead requests
+  ok   /wp-json/nadlan/v1/lead
+  ok   the booking route
+  ok   ?rest_route=/nadlan/v1/lead
+  ok   admin-post.php
+  ok   never the trail route itself
+  ok   never another site
+  ok   not other REST routes
+  ok   a lead POST carries X-NL-Visit, its own Content-Type kept  [zSnStgy4by21_wm1aeSCEw]
+  ok   the body is untouched; fetch is called on window
+  ok   a GET goes out exactly as it came (no init added)
+  ok   another site: no header
+  ok   a Request object goes out untouched
+  ok   a header already set is kept
+  ok   wrapping twice is a no-op
+  ok   stop() restores the original fetch
+  ok   a form posted to admin-post.php gets nl_visit
+  ok   any other form gets nothing (a script that reads its FormData sees no extra field)
+  ok   a form marked data-nl-visit gets it
+  ok   submit: {k: lead, id} and it is sent at once  [{"t":"form","at":1762500000000,"k":"lead","id":"f1"}]
+  ok   the phone typed in the form is in no request
+7. no keystrokes, no mouse paths, no field values
+  ok   eleven input and pointer events: nothing recorded  [0]
+  ok   the file listens to no key, input, mouse, pointer or touch event
+  ok   the file never reads a .value
+  ok   the file never reads page markup
+  ok   sent with navigator.sendBeacon as text/plain (no preflight)
+8. formKind and the copy rules
+  ok   admin-post.php form = lead
+  ok   a form inside the booking band = book
+  ok   another form: its first class as the id
+  ok   no long dash in the file
+  ok   version 1.0.0
+  ok   limits: batch under the server cap of 60, 20 s, 30 days
+
+92 of 92 passed

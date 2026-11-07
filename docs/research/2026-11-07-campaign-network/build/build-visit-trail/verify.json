@@ -1,0 +1,783 @@
+{
+ "snapshot": "docs/source-snapshots/projects-rainbow-tel-aviv/20261107T110446Z-b8107cd224f3.html",
+ "trail_md5": "43b3ab235b481093837118de749bab97",
+ "passes": [
+  {
+   "label": "1. phone 390x844, recording",
+   "vid": "xs1deW8NyVTOm56mCavruv",
+   "trail_requests": 9,
+   "events": 24,
+   "kinds": [
+    "click",
+    "example",
+    "facility",
+    "facing",
+    "faction",
+    "fcta",
+    "floor",
+    "form",
+    "ftour",
+    "leave",
+    "open",
+    "quarter",
+    "tour",
+    "view"
+   ],
+   "blocked": 98
+  },
+  {
+   "label": "2. desktop 1280x900, the same visit an hour later",
+   "vid": "xs1deW8NyVTOm56mCavruv",
+   "trail_requests": 8,
+   "events": 23,
+   "kinds": [
+    "click",
+    "example",
+    "facility",
+    "facing",
+    "faction",
+    "fcta",
+    "floor",
+    "form",
+    "ftour",
+    "leave",
+    "open",
+    "quarter",
+    "tour",
+    "view"
+   ],
+   "blocked": 98
+  },
+  {
+   "label": "3. Global Privacy Control on",
+   "trail_requests": 0,
+   "blocked": 98
+  },
+  {
+   "label": "4. Do Not Track on",
+   "trail_requests": 0,
+   "blocked": 98
+  },
+  {
+   "label": "5. an automated browser (navigator.webdriver, the default under Playwright)",
+   "trail_requests": 0,
+   "blocked": 98
+  }
+ ],
+ "checks": [
+  {
+   "ok": true,
+   "name": "the recorder runs, the visit id is in localStorage, the lead requests carry it",
+   "got": "xs1deW8NyVTOm56mCavruv"
+  },
+  {
+   "ok": true,
+   "name": "the 20 s timer sent a batch while the page stayed open",
+   "got": {
+    "before": 4,
+    "after": 5
+   }
+  },
+  {
+   "ok": true,
+   "name": "no page error from trail.js",
+   "got": []
+  },
+  {
+   "ok": true,
+   "name": "recorded: open",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: floor",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: facing",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: view",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: quarter",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: facility",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: ftour",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: fcta",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: faction",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: tour",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: example",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: click",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: form",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: leave",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "facing: floor 23, 268°, unit 23-w",
+   "got": {
+    "f": 23,
+    "b": 268,
+    "u": "23-w"
+   }
+  },
+  {
+   "ok": true,
+   "name": "facility tour: id and name only (no picture address, no element)",
+   "got": {
+    "t": "ftour",
+    "at": 1794060126903,
+    "id": "pool",
+    "n": "בריכה",
+    "_pv": "yBLUWnQATV4k",
+    "_vid": "xs1deW8NyVTOm56mCavruv",
+    "_seq": 0
+   }
+  },
+  {
+   "ok": true,
+   "name": "the WhatsApp bar tap: click wa, where bar",
+   "got": [
+    [
+     "wa",
+     "bar"
+    ],
+    [
+     "wa",
+     "hero"
+    ],
+    [
+     "step",
+     "stage"
+    ],
+    [
+     "tel",
+     ""
+    ],
+    [
+     "book_day",
+     "booking"
+    ],
+    [
+     "book_time",
+     "booking"
+    ],
+    [
+     "book_send",
+     "booking"
+    ],
+    [
+     "send",
+     ""
+    ]
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the hero WhatsApp button: click wa, where hero",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the stage step \"view\"",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the call link: click tel",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "a plain link is not recorded",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "booking: day, hour (their labels not kept), send",
+   "got": [
+    {
+     "t": "click",
+     "at": 1794060127722,
+     "k": "book_day",
+     "w": "booking",
+     "_pv": "yBLUWnQATV4k",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    },
+    {
+     "t": "click",
+     "at": 1794060127840,
+     "k": "book_time",
+     "w": "booking",
+     "_pv": "yBLUWnQATV4k",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    },
+    {
+     "t": "click",
+     "at": 1794060127953,
+     "k": "book_send",
+     "l": "קבעו לי פגישה",
+     "w": "booking",
+     "_pv": "yBLUWnQATV4k",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    }
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the lead form: form lead vt-form",
+   "got": [
+    {
+     "t": "form",
+     "at": 1794060149479,
+     "k": "lead",
+     "id": "vt-form",
+     "_pv": "yBLUWnQATV4k",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 6
+    }
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the typed phone is in no trail request (nor the lead's name)",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch body is in no trail request",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "one visit id for both page views",
+   "got": [
+    "xs1deW8NyVTOm56mCavruv"
+   ]
+  },
+  {
+   "ok": true,
+   "name": "two page views (pv), each opened once",
+   "got": 2
+  },
+  {
+   "ok": true,
+   "name": "two \"open\" events",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "leave records carry the time in view",
+   "got": [
+    23258
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the second page view's pick arrived on leaving the page",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch carried X-NL-Visit = the visit id",
+   "got": "xs1deW8NyVTOm56mCavruv"
+  },
+  {
+   "ok": true,
+   "name": "the form posted to admin-post.php carried nl_visit (and its own fields, untouched)",
+   "got": {
+    "action": [
+     "nadlan_lead"
+    ],
+    "nl_visit": [
+     "xs1deW8NyVTOm56mCavruv"
+    ]
+   }
+  },
+  {
+   "ok": true,
+   "name": "every trail request: text/plain, under 16 KB",
+   "got": 952
+  },
+  {
+   "ok": true,
+   "name": "at most 40 events a request",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "seq counts 0, 1, 2... per page view",
+   "got": {
+    "yBLUWnQATV4k": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "9jE2csV_qa3U": [
+     0
+    ]
+   }
+  },
+  {
+   "ok": true,
+   "name": "98 requests to other hosts blocked (the page's own scripts, fonts, WhatsApp): nothing left 127.0.0.1",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the recorder runs, the visit id is in localStorage, the lead requests carry it",
+   "got": "xs1deW8NyVTOm56mCavruv"
+  },
+  {
+   "ok": true,
+   "name": "no page error from trail.js",
+   "got": []
+  },
+  {
+   "ok": true,
+   "name": "recorded: open",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: floor",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: facing",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: view",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: quarter",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: facility",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: ftour",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: fcta",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: faction",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: tour",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: example",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: click",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: form",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "recorded: leave",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "facing: floor 23, 268°, unit 23-w",
+   "got": {
+    "f": 23,
+    "b": 268,
+    "u": "23-w"
+   }
+  },
+  {
+   "ok": true,
+   "name": "facility tour: id and name only (no picture address, no element)",
+   "got": {
+    "t": "ftour",
+    "at": 1794060153025,
+    "id": "pool",
+    "n": "בריכה",
+    "_pv": "kUO4_W1jniBk",
+    "_vid": "xs1deW8NyVTOm56mCavruv",
+    "_seq": 0
+   }
+  },
+  {
+   "ok": true,
+   "name": "the WhatsApp bar tap: click wa, where bar",
+   "got": [
+    [
+     "wa",
+     "bar"
+    ],
+    [
+     "wa",
+     "hero"
+    ],
+    [
+     "step",
+     "stage"
+    ],
+    [
+     "tel",
+     ""
+    ],
+    [
+     "book_day",
+     "booking"
+    ],
+    [
+     "book_time",
+     "booking"
+    ],
+    [
+     "book_send",
+     "booking"
+    ],
+    [
+     "send",
+     ""
+    ]
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the hero WhatsApp button: click wa, where hero",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the stage step \"view\"",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the call link: click tel",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "a plain link is not recorded",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "booking: day, hour (their labels not kept), send",
+   "got": [
+    {
+     "t": "click",
+     "at": 1794060153833,
+     "k": "book_day",
+     "w": "booking",
+     "_pv": "kUO4_W1jniBk",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    },
+    {
+     "t": "click",
+     "at": 1794060153951,
+     "k": "book_time",
+     "w": "booking",
+     "_pv": "kUO4_W1jniBk",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    },
+    {
+     "t": "click",
+     "at": 1794060154076,
+     "k": "book_send",
+     "l": "קבעו לי פגישה",
+     "w": "booking",
+     "_pv": "kUO4_W1jniBk",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 3
+    }
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the lead form: form lead vt-form",
+   "got": [
+    {
+     "t": "form",
+     "at": 1794060154582,
+     "k": "lead",
+     "id": "vt-form",
+     "_pv": "kUO4_W1jniBk",
+     "_vid": "xs1deW8NyVTOm56mCavruv",
+     "_seq": 5
+    }
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the typed phone is in no trail request (nor the lead's name)",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch body is in no trail request",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "one visit id for both page views",
+   "got": [
+    "xs1deW8NyVTOm56mCavruv"
+   ]
+  },
+  {
+   "ok": true,
+   "name": "two page views (pv), each opened once",
+   "got": 2
+  },
+  {
+   "ok": true,
+   "name": "two \"open\" events",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "leave records carry the time in view",
+   "got": [
+    2226
+   ]
+  },
+  {
+   "ok": true,
+   "name": "the second page view's pick arrived on leaving the page",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch carried X-NL-Visit = the visit id",
+   "got": "xs1deW8NyVTOm56mCavruv"
+  },
+  {
+   "ok": true,
+   "name": "the form posted to admin-post.php carried nl_visit (and its own fields, untouched)",
+   "got": {
+    "action": [
+     "nadlan_lead"
+    ],
+    "nl_visit": [
+     "xs1deW8NyVTOm56mCavruv"
+    ]
+   }
+  },
+  {
+   "ok": true,
+   "name": "every trail request: text/plain, under 16 KB",
+   "got": 952
+  },
+  {
+   "ok": true,
+   "name": "at most 40 events a request",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "seq counts 0, 1, 2... per page view",
+   "got": {
+    "kUO4_W1jniBk": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "fzT5QnDZ4VxI": [
+     0
+    ]
+   }
+  },
+  {
+   "ok": true,
+   "name": "98 requests to other hosts blocked (the page's own scripts, fonts, WhatsApp): nothing left 127.0.0.1",
+   "got": null
+  },
+  {
+   "ok": true,
+   "name": "pass 2 kept the visit id of pass 1 (30-day id)",
+   "got": "xs1deW8NyVTOm56mCavruv"
+  },
+  {
+   "ok": true,
+   "name": "nothing runs: no recorder, no id stored, fetch is the browser's own",
+   "got": {
+    "rec": false,
+    "vid": "",
+    "wrapped": false
+   }
+  },
+  {
+   "ok": true,
+   "name": "no page error from trail.js",
+   "got": []
+  },
+  {
+   "ok": true,
+   "name": "no trail request at all",
+   "got": 0
+  },
+  {
+   "ok": true,
+   "name": "the form carries no visit id",
+   "got": "action=nadlan_lead&lead_phone=0501234567"
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch carries no X-NL-Visit",
+   "got": ""
+  },
+  {
+   "ok": true,
+   "name": "still no id stored after a second page view",
+   "got": ""
+  },
+  {
+   "ok": true,
+   "name": "nothing runs: no recorder, no id stored, fetch is the browser's own",
+   "got": {
+    "rec": false,
+    "vid": "",
+    "wrapped": false
+   }
+  },
+  {
+   "ok": true,
+   "name": "no page error from trail.js",
+   "got": []
+  },
+  {
+   "ok": true,
+   "name": "no trail request at all",
+   "got": 0
+  },
+  {
+   "ok": true,
+   "name": "the form carries no visit id",
+   "got": "action=nadlan_lead&lead_phone=0501234567"
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch carries no X-NL-Visit",
+   "got": ""
+  },
+  {
+   "ok": true,
+   "name": "still no id stored after a second page view",
+   "got": ""
+  },
+  {
+   "ok": true,
+   "name": "nothing runs: no recorder, no id stored, fetch is the browser's own",
+   "got": {
+    "rec": false,
+    "vid": "",
+    "wrapped": false
+   }
+  },
+  {
+   "ok": true,
+   "name": "no page error from trail.js",
+   "got": []
+  },
+  {
+   "ok": true,
+   "name": "no trail request at all",
+   "got": 0
+  },
+  {
+   "ok": true,
+   "name": "the form carries no visit id",
+   "got": "action=nadlan_lead&lead_phone=0501234567"
+  },
+  {
+   "ok": true,
+   "name": "the lead fetch carries no X-NL-Visit",
+   "got": ""
+  },
+  {
+   "ok": true,
+   "name": "still no id stored after a second page view",
+   "got": ""
+  }
+ ],
+ "passed": 96,
+ "failed": 0
+}
