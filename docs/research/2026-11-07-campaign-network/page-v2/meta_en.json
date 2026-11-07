@@ -1,0 +1,112 @@
+{
+ "status": "LOCAL DRAFT v2 (en), 7.11.2026 (HAD-678). Not live, nothing created on the site. Publish: python create_en.py --go",
+ "title": "Marketing a new real estate project in Israel: costs, budget and reaching buyers abroad",
+ "slug": "marketing",
+ "path": "/en/marketing/",
+ "parent": "EN_ROOT",
+ "twin": {
+  "he": "/marketing/",
+  "he_page_id": 8827
+ },
+ "h1": "Marketing a new real estate project in Israel: costs, budget and reaching buyers abroad",
+ "seo_title": "How Much to Market a Real Estate Project in Israel? | NadLan",
+ "seo_title_chars": 60,
+ "seo_desc": "Real estate project marketing in Israel: about 1% of sales value, 2% to 4% with sales. Cost per lead, each cost priced, buyers abroad and a calculator.",
+ "seo_desc_chars": 151,
+ "crumbs": "[nadlan_crumbs label=\"Project marketing\"]",
+ "tools": [
+  "nlbudget",
+  "nlcamp"
+ ],
+ "tool_lang": "no lang attribute: [nadlan_tool] has none; the tool speaks English because the page's top ancestor is /en/ (nadlan_nli_lang, inc/instruments.php) and both tools carry an 'en' block, as on /en/asbestos/",
+ "forbid": [
+  "—",
+  "–",
+  "‒",
+  "―"
+ ],
+ "faq_h2": "Frequently asked questions about project marketing and budgets",
+ "faq": [
+  {
+   "q": "How much does it cost to market a real estate project in Israel?",
+   "a": "The usual Israeli anchor is about 1% of total sales value for the marketing itself, about 0.75% of it online, and 2% to 4% when the sales team is counted too. For 60 apartments at ₪2.4 million that is about ₪1.44 million for marketing, about ₪24,000 per apartment. These are marketing agencies' claims, not public research."
+  },
+  {
+   "q": "How much does a real estate campaign cost per month?",
+   "a": "It depends on the target. A published sum: 20 meetings a month, 5 enquiries per meeting and ₪250 per enquiry make ₪25,000 of media a month, before management and production. With ₪1.44 million for marketing over 12 to 24 months of sales, the average is ₪60,000 to ₪120,000 a month for every marketing line."
+  },
+  {
+   "q": "What does a real estate lead cost in Israel?",
+   "a": "An exclusive-lead price list published on 4 November 2026 quotes ₪128 to ₪173 before VAT, by pack size. Agencies report that a lead in a project campaign actually costs ₪300 to ₪800, sometimes over ₪1,000. For French and English speakers, immobilier.co.il starts at ₪69 a lead at the largest volumes. Compare cost per meeting, not lead price."
+  },
+  {
+   "q": "Which matters more, cost per lead or cost per meeting?",
+   "a": "Cost per meeting, and in the end cost per sale. In a published example, a channel with ₪250 leads brought two sales on ₪100,000 of media, and a channel with ₪500 leads brought five. A sale through the seemingly cheap channel cost ₪50,000, and through the dear one ₪20,000. So measure every channel all the way to the contract."
+  },
+  {
+   "q": "Does the media budget include the marketing agency's fee?",
+   "a": "Usually not. A proposal of ₪20,000 a month can be media alone, or media with management and production. Ask whether a percentage of the media budget is charged as a fee, and ask to see the ad account. In our plans you pay Facebook and Google directly, so you know what went to ads and what to the work."
+  },
+  {
+   "q": "Should the marketing budget be a percentage of expected sales?",
+   "a": "As a starting point, yes: a share of sales value gives a sensible ceiling. The working budget comes from the sales target: how many sales, meetings per sale and enquiries per meeting. When working back lands far above the percentage, the problem is usually the offer or the response. Without a written target, no proposal can be tested."
+  },
+  {
+   "q": "When should project marketing start, and when do you start paying for media?",
+   "a": "Research, pricing and the unit mix start at planning. Renders, the project page and a film are prepared 4 to 8 weeks before the soft launch. Media spend starts in the pre-launch with a small campaign for the interest list, then grows in the presale and the launch. The sales office and model apartment must be ready for the presale."
+  },
+  {
+   "q": "How long until the first enquiries arrive?",
+   "a": "A digital campaign brings first enquiries in the first days, but a real picture takes weeks. immobilier.co.il, for example, sets up a campaign in 5 to 7 business days and delivers the enquiries over 4 to 6 weeks. Our target: the campaign live seven days after payment and your materials. From day one, measure to the meeting, not the enquiry."
+  },
+  {
+   "q": "Can we start with a small budget?",
+   "a": "Yes, at the soft launch: a project page, a sign-up form and a small campaign to warm audiences test price and interest. Do not cut tracking and response: without tracking to the meeting, even a small budget burns. In our planner the ad budget starts at ₪3,000 a month and grows as you see which channels bring meetings."
+  },
+  {
+   "q": "Google or Facebook for a new development?",
+   "a": "Both, for different jobs. Google catches people already searching for a project in the area; Facebook and Instagram create demand among people who were not. For a campaign to buyers abroad we suggest starting at 55% Facebook and Instagram, 25% Google, 15% community press and newsletters and 5% international portals, then moving the split by the meetings each channel brought."
+  },
+  {
+   "q": "A marketing company or the developer's own sales team?",
+   "a": "A marketing company brings a ready team, experience and contacts, usually for a commission, a monthly fee or both; the rates are not published. An in-house team gives control and data, but needs hiring, training and evening cover. It depends on project size and how many you sell at once. Either way, keep the accounts and data in your name."
+  },
+  {
+   "q": "What is the difference between a real estate broker and a project marketing company in Israel?",
+   "a": "An Israeli broker earns a fee only with a licence, a written order and being the effective cause of the deal; the quoted fee is 1% to 2% plus VAT. A project marketing company runs the whole sale for the developer, from pricing to contract, and is sometimes also a brokerage. Check the licence before you sign."
+  },
+  {
+   "q": "How fast should a lead be called back?",
+   "a": "The same day. In a published example, a ₪150 lead of which one in ten reaches a meeting gives a meeting at ₪1,500. Call back after two days and only one in twenty arrives: the meeting costs ₪3,000. A late response doubles the cost of a meeting with no extra media, so write the response time into the agreement."
+  },
+  {
+   "q": "Does a presale hurt the project's price?",
+   "a": "A real presale, with a real discount on part of the apartments, helps meet the accompanying bank's early sales targets and builds a price; industry reports mention 15% to 20% of the apartments. A fake presale, where the price does not change, wears away trust. And any deposit above 7% needs a security under the Sale Law."
+  },
+  {
+   "q": "How do you market an Israeli project to overseas buyers, and do you need an English site?",
+   "a": "You need a page in the language of every market, not only English: French and Russian are whole markets. The page answers on price, tax, financing, the payment security and signing from abroad, and has a virtual tour. Choose countries and cities, reach communities through press and newsletters, and answer on WhatsApp in the buyer's hours. Measure each market separately."
+  },
+  {
+   "q": "How much purchase tax does a foreign resident pay on a new apartment from a developer?",
+   "a": "8% on the part of the price up to ₪6,055,070 and 10% above it, from the first shekel, under the brackets in force from 16 January 2024 to 31 December 2026. For a new apartment from a developer the price includes VAT, and banks do not finance the tax. On ₪4 million, a foreign resident pays ₪320,000."
+  },
+  {
+   "q": "Can ads be targeted at Jewish communities abroad?",
+   "a": "Not through Facebook and not through Google. Since 19 January 2022, Meta has not allowed ads to be aimed by religion or origin anywhere in the world, and on Google religion is a sensitive category. Aim by country, city and language, and reach communities through community press, newsletters, events and lists of people who agreed to receive information."
+  },
+  {
+   "q": "Who pays for the ads on Facebook and Google?",
+   "a": "You do, directly to Facebook and Google, in an ad account in your name that we manage. Every shekel of advertising is visible to you. The annual subscription pays for the work, the project page in its languages, the virtual tour, the ads and the videos. When it ends, the account, the audiences and the history stay yours."
+  },
+  {
+   "q": "How many enquiries will we get?",
+   "a": "We do not promise a number. It depends on the price, the location, the market, the offer and the ad budget. What you do get: every enquiry from the project page reaches you with the floor and direction the buyer chose, and each week the budget split is corrected by the channels that brought meetings."
+  },
+  {
+   "q": "We have no renders yet. Can we start?",
+   "a": "Yes. The project page and the virtual tour are built from the plans and the specification; renders are added when ready. If you order them, an exterior set of three views costs ₪4,000 to ₪6,000 in the market, and a colour sales plan ₪500 to ₪750 per apartment. Published turnaround: 5 to 7 working days per render."
+  }
+ ],
+ "slug_audit": "url_word_audit.py --token marketing (7.11.2026): 1 URL holds it, /marketing/ (the Hebrew twin, page 8827); /en/marketing/ answers 404"
+}
