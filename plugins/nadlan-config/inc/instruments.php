@@ -450,6 +450,21 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 					'related' => array(),  // no English B2B page is confirmed yet; empty, so the Hebrew links stay off the English page
 				),
 			),
+			/* 7.11.2026 (HAD-678): "כמה עולה לשווק את הפרויקט", the marketing-and-sales budget of a new project from the published
+			   percent-of-sales anchors, the budget sheet line by line with the source and flag of every figure, leads and their cost,
+			   the spread by stage; nlbudget.json from the teardown (build_nlbudget_data.py). Staged in
+			   docs/research/2026-11-07-campaign-network/build/build-nlbudget/ */
+			'nlbudget' => array(
+				'name' => 'כמה עולה לשווק את הפרויקט', 'cat' => 'BusinessApplication', 'kicker' => 'תקציב שיווק ליזמים',
+				'desc' => 'מחשבון תקציב השיווק והמכירה של פרויקט נדל״ן חדש: לפי מספר הדירות, המחיר הממוצע, השלב, מי מוכר (צוות היזם או חברת שיווק בעמלה), חלק הקונים מחו״ל ותקופת המכירה. טווח לכל הפרויקט מהעוגנים שפורסמו (אחוז ממחזור המכירות), פרסום לכל דירה שנמכרת, כמה פניות צריך ומה הן עולות, ושורות התקציב אחת אחת: הדמיות, תוכנית מכר, סרט, עמוד פרויקט עם סיור וירטואלי, מדיה, שילוט, משרד מכירות ועוד, עם המקור והסימון של כל מספר.',
+				'data' => array( 'nlbudget.json' ),
+				'related' => array( '/developers/' => 'שיווק פרויקטים ליזמים', '/advertiser-center/' => 'פרסום פרויקט נדל״ן', '/advertise/' => 'מחירון הפרסום באתר' ),
+				'en' => array(
+					'name' => 'What it costs to market your project', 'kicker' => 'Marketing budget for developers',
+					'desc' => 'A marketing and sales budget calculator for a new real-estate project: by the number of apartments, the average price, the stage, who sells (the developer\'s team or a marketing company on commission), the share of buyers abroad and the sales period. A range for the whole project from the published percent-of-sales anchors, advertising per apartment sold, the leads needed and their cost, and the budget lines one by one (renders, sales plans, film, a project page with a virtual tour, media, signage, sales office and more), with the source and flag of every number.',
+					'related' => array(),  // no English B2B page is confirmed yet; empty, so the Hebrew links stay off the English page
+				),
+			),
 			/* 1.72.593 (HAD-675, T4): from contract to keys, the 7th tool of /mortgage-calculator/ (the linkage of indexation.js, the payment of mquick.js) */
 			'mkeys' => array(
 				'name' => 'מהחוזה למפתח: התשלומים, ההצמדה והמשכנתא', 'cat' => 'FinanceApplication', 'kicker' => 'מחשבון · דירה מקבלן',
@@ -536,6 +551,51 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		}
 		return $x;
 	}
+	/** HAD-678 (7.11.2026): the plain summary of nlbudget, from data/nlbudget.json (the numbers the tool shows, each with its source and flag). */
+	if ( ! function_exists( 'nadlan_nlb_summary' ) ) {
+		function nadlan_nlb_summary( $lang = 'he', $path = null ) {
+			$path = $path ? $path : dirname( __DIR__ ) . '/assets/instruments/data/nlbudget.json';
+			$d = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $d ) || empty( $d['figures']['sp_sm'] ) || empty( $d['figures']['se_ex'] ) || empty( $d['figures']['nl_plans']['plans'] ) ) { return ''; }
+			$f = $d['figures']; $en = 'en' === $lang;
+			$n = function ( $v ) { $v = (float) $v; return number_format( $v, floor( $v ) == $v ? 0 : 2 ); };
+			$ils = function ( $v ) use ( $n, $en ) { return $en ? '₪' . $n( $v ) : $n( $v ) . ' ₪'; };
+			$rg = function ( $lo, $hi ) use ( $n, $ils, $en ) { return $en ? $ils( $lo ) . ' to ' . $ils( $hi ) : $n( $lo ) . ' עד ' . $ils( $hi ); };
+			$pc = function ( $v ) { return rtrim( rtrim( number_format( (float) $v, 2, '.', '' ), '0' ), '.' ) . '%'; };
+			$pr = function ( $lo, $hi ) use ( $pc, $en ) { return $pc( $lo ) . ( $en ? ' to ' : ' עד ' ) . $pc( $hi ); };
+			$fl = array(
+				'cited' => array( 'מקור מצוטט', 'cited source' ), 'price list' => array( 'מחירון שפורסם', 'published price list' ), 'agency claim' => array( 'טענת משרד פרסום', 'agency claim' ),
+				'agency claim, unnamed source' => array( 'טענת משרד, בלי שם המקור', 'agency claim, source not named' ), 'example' => array( 'דוגמה של המקור', 'the source\'s own example' ),
+				'own price' => array( 'המחיר של נדל״ן', 'NadLan price' ), 'not published' => array( 'לא פורסם', 'not published' ),
+			);
+			$src = function ( $k ) use ( $f, $fl, $en ) { $x = $f[ $k ]; return esc_html( $x[ $en ? 'src_en' : 'src_he' ] . ', ' . ( isset( $fl[ $x['flag'] ] ) ? $fl[ $x['flag'] ][ $en ? 1 : 0 ] : $x['flag'] ) ); };
+			$ex = $f['se_ex']; $V = $ex['units'] * $ex['price']; $sp = $f['sp_sm']; $wd = $f['wedo_total']; $wo = $f['wedo_online']; $pu = $f['sp_unit'];
+			$ld = $f['sp_leads']; $cp = $f['se_cpl']; $fm = $f['fe_mkt']; $fs = $f['fe_sm']; $pl = $f['nl_plans']['plans'];
+			$mb = array( 'mb_ext3', 'mb_plan3d', 'mb_film' );
+			if ( $en ) {
+				$h = '<p>A marketing and sales budget calculator for a new real-estate project: enter the apartments for sale and the average price, choose the stage and who sells, and get a range for the whole project, the budget lines one by one and the source and flag of every number (cited source, published price list or agency claim).</p>'
+					. '<p>The anchors published in Israel: about ' . $pc( $wd['v'] ) . ' of sales value for marketing, of which about ' . $pc( $wo['v'] ) . ' online (' . $src( 'wedo_total' ) . '); ' . $pr( $sp['lo'], $sp['hi'] ) . ' for marketing and sales, the sales team and advertising included (' . $src( 'sp_sm' ) . '); ' . $rg( $pu['lo'], $pu['hi'] ) . ' of advertising per apartment sold (' . $src( 'sp_unit' ) . '). '
+					. 'In the ' . esc_html( $ex['src_en'] ) . ' example, ' . $n( $ex['units'] ) . ' apartments at an average of ' . $ils( $ex['price'] ) . ' (sales of ' . $ils( $V ) . '), that is ' . $rg( $V * $sp['lo'] / 100, $V * $sp['hi'] / 100 ) . ' for marketing and sales, and about ' . $ils( $V * $wd['v'] / 100 ) . ' for marketing alone.</p>'
+					. '<p>An exclusive new-apartment lead costs ' . $rg( $ld['lo'], $ld['hi'] ) . ' before VAT in the ' . esc_html( $ld['src_en'] ) . ' price list, and per ' . esc_html( $cp['src_en'] ) . ' a lead in a project campaign actually costs ' . $rg( $cp['lo'], $cp['hi'] ) . ' (' . $src( 'se_cpl' ) . '). Abroad: ' . $pr( $fm['lo'], $fm['hi'] ) . ' for marketing alone and ' . $pr( $fs['lo'], $fs['hi'] ) . ' for marketing and selling (' . $src( 'fe_sm' ) . ').</p>'
+					. '<p>No Israeli price is published for these lines: research and pricing, branding, photography, website and landing pages, lead handling, outdoor signs and the site fence, print, radio and TV, PR, events and exhibitions, the sales office and model apartment, nor a commission rate of marketing companies for new projects.</p>';
+				$t = '<table><caption>The budget lines with a published Israeli price</caption><thead><tr><th>Line</th><th>Range</th><th>Source</th></tr></thead><tbody>';
+				foreach ( $mb as $k ) { $t .= '<tr><td>' . esc_html( $f[ $k ]['en'] ) . '</td><td>' . $rg( $f[ $k ]['lo'], $f[ $k ]['hi'] ) . '</td><td>' . $src( $k ) . '</td></tr>'; }
+				$t .= '<tr><td>Paid online ads</td><td>about ' . $pc( $wo['v'] ) . ' of sales value</td><td>' . $src( 'wedo_online' ) . '</td></tr>';
+				$t .= '<tr><td>Project page with a virtual tour</td><td>Included in the NadLan plan: ' . $ils( $pl['one'] ) . ', ' . $ils( $pl['three'] ) . ' or ' . $ils( $pl['flag'] ) . ' a year</td><td>' . $src( 'nl_plans' ) . '</td></tr>';
+			} else {
+				$h = '<p>מחשבון תקציב השיווק והמכירה של פרויקט נדל״ן חדש: כותבים את מספר הדירות למכירה ואת המחיר הממוצע, בוחרים את שלב הפרויקט ומי מוכר, ומקבלים טווח לכל הפרויקט, את שורות התקציב אחת אחת ואת המקור והסימון של כל מספר (מקור מצוטט, מחירון שפורסם או טענת משרד פרסום).</p>'
+					. '<p>העוגנים שפורסמו בישראל: כ־' . $pc( $wd['v'] ) . ' ממחזור המכירות לשיווק, מתוכו כ־' . $pc( $wo['v'] ) . ' ברשת (' . $src( 'wedo_total' ) . '); ' . $pr( $sp['lo'], $sp['hi'] ) . ' לשיווק ומכירה, כולל צוות מכירות ופרסום (' . $src( 'sp_sm' ) . '); ' . $rg( $pu['lo'], $pu['hi'] ) . ' לפרסום לכל דירה שנמכרת (' . $src( 'sp_unit' ) . '). '
+					. 'בדוגמה של ' . esc_html( $ex['src_he'] ) . ', ' . $n( $ex['units'] ) . ' דירות במחיר ממוצע של ' . $ils( $ex['price'] ) . ' (מכירות של ' . $ils( $V ) . '), זה ' . $rg( $V * $sp['lo'] / 100, $V * $sp['hi'] / 100 ) . ' לשיווק ומכירה, וכ־' . $ils( $V * $wd['v'] / 100 ) . ' לשיווק בלבד.</p>'
+					. '<p>ליד בלעדי לדירה חדשה עולה ' . $rg( $ld['lo'], $ld['hi'] ) . ' לפני מע״מ במחירון של ' . esc_html( $ld['src_he'] ) . ', ולפי ' . esc_html( $cp['src_he'] ) . ' ליד בקמפיין של פרויקט עולה בפועל ' . $rg( $cp['lo'], $cp['hi'] ) . ' (' . $src( 'se_cpl' ) . '). בחו״ל: ' . $pr( $fm['lo'], $fm['hi'] ) . ' לשיווק בלבד ו־' . $pr( $fs['lo'], $fs['hi'] ) . ' לשיווק ומכירה (' . $src( 'fe_sm' ) . ').</p>'
+					. '<p>לא פורסם מחיר ישראלי לשורות האלה: מחקר ותמחור, מיתוג, צילום, אתר ודפי נחיתה, ניהול פניות, שילוט חוצות וגדר האתר, דפוס, רדיו וטלוויזיה, יחסי ציבור, אירועים ותערוכות, משרד מכירות ודירה לדוגמה, וגם לא שיעור העמלה של חברות שיווק לפרויקטים חדשים.</p>';
+				$t = '<table><caption>שורות התקציב שיש להן מחיר ישראלי שפורסם</caption><thead><tr><th>רכיב</th><th>טווח</th><th>מקור</th></tr></thead><tbody>';
+				foreach ( $mb as $k ) { $t .= '<tr><td>' . esc_html( $f[ $k ]['he'] ) . '</td><td>' . $rg( $f[ $k ]['lo'], $f[ $k ]['hi'] ) . '</td><td>' . $src( $k ) . '</td></tr>'; }
+				$t .= '<tr><td>פרסום ממומן ברשת</td><td>כ־' . $pc( $wo['v'] ) . ' ממחזור המכירות</td><td>' . $src( 'wedo_online' ) . '</td></tr>';
+				$t .= '<tr><td>עמוד פרויקט עם סיור וירטואלי</td><td>כלול במנוי נדל״ן: ' . $ils( $pl['one'] ) . ', ' . $ils( $pl['three'] ) . ' או ' . $ils( $pl['flag'] ) . ' לשנה</td><td>' . $src( 'nl_plans' ) . '</td></tr>';
+			}
+			return $h . $t . '</tbody></table>';
+		}
+	}
 	/** Effective annual % -> nominal for a monthly payment (the Bank of Israel conversion), and the Spitzer payment. */
 	function nadlan_nli_mr_nom( $e ) { return 1200 * ( pow( 1 + $e / 100, 1 / 12 ) - 1 ); }
 	function nadlan_nli_mr_pmt( $b, $rm, $n ) { return $rm == 0 ? $b / $n : $b * $rm / ( 1 - pow( 1 + $rm, -$n ) ); }
@@ -543,6 +603,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	function nadlan_nli_summary( $id, $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
 		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'he' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
+		if ( 'nlbudget' === $id ) { return function_exists( 'nadlan_nlb_summary' ) ? nadlan_nlb_summary( 'he' ) : ''; }  // 7.11.2026 (HAD-678)
 		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
 			$x = nadlan_nli_mrates(); $d = $x['d'];
 			if ( ! is_array( $d ) || empty( $d['prepay']['nl']['rows'] ) || empty( $d['prepay']['cpi']['rows'] ) || empty( $d['fees']['reduce'] ) || empty( $d['built'] ) ) { return ''; }
@@ -1371,6 +1432,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 	 *  names whatever the site locale). The same numbers as the Hebrew, from the same data file. */
 	function nadlan_nli_summary_en( $id ) {
 		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'en' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
+		if ( 'nlbudget' === $id ) { return function_exists( 'nadlan_nlb_summary' ) ? nadlan_nlb_summary( 'en' ) : ''; }  // 7.11.2026 (HAD-678)
 		if ( 'mquick' === $id ) { return function_exists( 'nadlan_mm_quick_summary' ) ? nadlan_mm_quick_summary( 'en' ) : ''; }  // 1.72.589 (HAD-675)
 		if ( 'nrm' === $id ) {
 			$dir = dirname( __DIR__ ) . '/assets/instruments/data/';

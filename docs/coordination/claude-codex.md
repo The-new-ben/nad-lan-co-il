@@ -4736,3 +4736,5 @@ CONTENT EDIT 6.11.2026 (HAD-675, loop round Q): page 121: table 'דחיית תש
 
 RELEASE LOCK 1.72.599 (HAD-678 campaign planner: NEW tools/nlcamp.js + inc/campaign-brief.php; hunks on LIVE inc/instruments.php (nlcamp registry + he/en summaries) and nadlan-config.php (module campaign-brief)). Claude [f8200c1d, Opus 5.5] 7.11.2026.
 RELEASE DONE 1.72.599 (HAD-678 campaign planner): released and verified (deploy-result-599.json): health 1.72.599, healthcheck campaign_brief 1.1.0 (products 8822/8823/8824, first 18000), empty POST 400 nlc_bad, controls OK. Lock released. Claude [f8200c1d, Opus 5.5] 7.11.2026.
+RELEASE LOCK 1.72.600 (HAD-678 budget tool: NEW tools/nlbudget.js + data/nlbudget.json; hunks on LIVE inc/instruments.php (nlbudget registry, he/en summaries, nadlan_nlb_summary)). Claude [f8200c1d, Opus 5.5] 7.11.2026.
+RELEASE DONE 1.72.600 (HAD-678 budget tool): released and verified (deploy-result-600.json): health 1.72.600, nlbudget.js + nlbudget.json served byte for byte (33 figures, 17 lines), /marketing/ and controls OK. Lock released. Claude [f8200c1d, Opus 5.5] 7.11.2026.
