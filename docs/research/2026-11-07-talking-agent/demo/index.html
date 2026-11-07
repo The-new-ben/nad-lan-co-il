@@ -77,9 +77,11 @@ for (const k in meta.patches) {
   im.style.width = (m.w / meta.size * 100) + "%"; im.style.height = (m.h / meta.size * 100) + "%";
   wrap.appendChild(im); P[k] = im;
 }
-const MAP = { A: null, X: null, B: "B", C: "C", D: "D", E: "E", F: "F", G: "G", H: "C" };
+// Ben 7.11: lips "ממש מינימליות": only the slightly-parted shape, and a little more for the widest sounds, both half-blended
+const MAP = { A: null, X: null, B: "B", C: "B", D: "C", E: "B", F: "B", G: "B", H: "B" };
+const OPA = { B: 0.55, C: 0.5 };
 let cur = null;
-function shape(k) { if (k === cur) return; if (cur && P[cur]) P[cur].style.visibility = "hidden"; if (k && P[k]) P[k].style.visibility = "visible"; cur = k; }
+function shape(k) { if (k === cur) return; if (cur && P[cur]) P[cur].style.visibility = "hidden"; if (k && P[k]) { P[k].style.opacity = OPA[k] || 0.55; P[k].style.visibility = "visible"; } cur = k; }
 function blink() { P.BLINK.style.visibility = "visible"; setTimeout(() => P.BLINK.style.visibility = "hidden", 140); setTimeout(blink, 2600 + Math.random() * 2400); }
 setTimeout(blink, 1800);
 const au = document.getElementById("au"); au.src = d.audio;
