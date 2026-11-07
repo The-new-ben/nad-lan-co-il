@@ -18,6 +18,14 @@ the 3D. Premium pricing. Fix the payment flow for real.
 - Fallback that does not depend on the plugin: a Morning payment page per plan (the LDD path) linked from the planner, with the brief saved
   on our side first, so a broken plugin never loses an order.
 
+## 1b. Payment status after the fix (7.11.2026, later the same day)
+- FIXED: Morning's WooCommerce connection was registered to jus-tice.co.il only. A new connection for nad-lan.co.il (Ben approved
+  18.88 ₪ to 30.11, then 20 ₪ + VAT a month), licence pasted by Ben, status active. Test order 8808 showed the Grow/CreditGuard card form.
+- CEILING: one charge up to 20,000 ₪ reaches the card form; 25,000 / 30,000 / 36,000 ₪ answer "סכום זה אינו מורשה". Asked Morning
+  support (same thread) to raise it to 150,000 ₪. Until then an annual plan is charged in parts of up to 20,000 ₪.
+- Plan products (hidden, virtual): 8809 /product/nlcamp-1/ 36,000; 8810 /product/nlcamp-3/ 72,000; 8811 /product/nlcamp-flagship/
+  144,000 (plans-products.json). Re-check: tools/checkout/checkout_check.py, then tools/checkout/cancel_test_order.py.
+
 ## 2. Where the page lives (no cannibalization)
 | Intent | Owner page | Rule |
 |---|---|---|
@@ -51,8 +59,7 @@ needs his OK); promise lead counts (never).
 
 ## 5. Pricing proposal (Ben decides)
 Anchors we have: LDD sponsor card 24,000 ₪ a year; product 489 "קמפיין פרויקט" 3,990 ₪ a month; immobilier from 69 ₪ a lead.
-Proposal, annual, ad spend separate: one market 36,000 ₪; three markets 72,000 ₪; flagship (all markets, priority spots, personal
-manager, expo materials) 144,000 ₪. To check against the competitor matrix before it goes on the page.
+APPROVED by Ben 7.11.2026, annual, ad spend separate: one market 36,000 ₪; three markets 72,000 ₪; flagship 144,000 ₪. Written "₪ לשנה" (VAT wording waits for the accountant).
 
 ## 6. Gaps vs immobilier to close
 They publish in 7 to 8 languages (fr, en, he, ru, es, pt, it, de); we have 5 (he, en, fr, ru, ar). Spanish and Portuguese reach Latin
