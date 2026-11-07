@@ -1,0 +1,141 @@
+{
+ "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+ "status": 200,
+ "size": [
+  1920,
+  1080
+ ],
+ "taken": "2026-11-07 12:02:02",
+ "steps": [
+  "click [data-preset=noon]",
+  "tap tower at 915,420",
+  "nl:floor after tap: 24",
+  "arrows to floor 23 (1 presses)",
+  "facing 270 after 4 ArrowRight presses"
+ ],
+ "events": [
+  {
+   "n": "nl:view",
+   "d": {
+    "mode": "building",
+    "target": [
+     35.03,
+     64,
+     -30.48
+    ],
+    "r": 528.46,
+    "phi": 1.2915,
+    "theta": 0.4849,
+    "hf": 0.8891,
+    "source": "user"
+   },
+   "t": 22233.29999998212
+  },
+  {
+   "n": "nl:floor",
+   "d": {
+    "floor": 24,
+    "heightM": 95.1
+   },
+   "t": 22329.5
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 24,
+    "heightM": 95.1,
+    "bearing": 270,
+    "unit": "24-w"
+   },
+   "t": 22332.79999998212
+  },
+  {
+   "n": "nl:view",
+   "d": {
+    "mode": "building",
+    "target": [
+     35.01,
+     64.02,
+     -30.49
+    ],
+    "r": 527.76,
+    "phi": 1.2916,
+    "theta": 0.4868,
+    "hf": 0.8891,
+    "source": "user"
+   },
+   "t": 22380.19999998808
+  },
+  {
+   "n": "nl:floor",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3
+   },
+   "t": 24999.5
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3,
+    "bearing": 270,
+    "unit": "23-w"
+   },
+   "t": 25002.09999999404
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3,
+    "bearing": 0,
+    "unit": "23-n",
+    "toward": null
+   },
+   "t": 26875.5
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3,
+    "bearing": 90,
+    "unit": "23-e",
+    "toward": null
+   },
+   "t": 27889.19999998808
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3,
+    "bearing": 180,
+    "unit": "23-s",
+    "toward": null
+   },
+   "t": 28925.69999998808
+  },
+  {
+   "n": "nl:facing",
+   "d": {
+    "floor": 23,
+    "heightM": 91.3,
+    "bearing": 270,
+    "unit": "23-w",
+    "toward": null
+   },
+   "t": 29954.5
+  }
+ ],
+ "card": "קומה 23 דירה לדוגמה\n\n–\n×\n\nבקומות עד 25 בערך יש גם דירות 2 חדרים, לפי היזם\n\nלכיוון הים\n\nלהיכנס לדירה · מקומה 25\nהנוף והמפה\nלעצב את הדירה\nלקבלת תוכניות ומחירים",
+ "viewBox": [
+  968,
+  3268.75,
+  932,
+  1259.140625,
+  "nlps-view"
+ ],
+ "viewErr": "Page.screenshot: Expected options.clip.height to be greater than 0."
+}

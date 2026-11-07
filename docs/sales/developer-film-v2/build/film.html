@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>סרט ליזמים 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@500;600&family=IBM+Plex+Mono:wght@400;500;600&display=block">
+<!--
+  Developer film v2 (nad-lan.co.il, HAD-678). One page draws both cuts: ?f=h (1920x1080) and ?f=v (1080x1920).
+  window.render(t) draws the frame at t seconds (deterministic; footage is JPEG sequences in ./ben and ./cast).
+  Palette (owner design law 13.10.2026, not the default look): survey ground #F6F8F9, ink #12202A, sea #2F6F86,
+  sea-deep #1F4B5C, one survey magenta #C42550 per scene at most. Type: Karantina (big Hebrew titles), IBM Plex Sans Hebrew
+  (text), IBM Plex Mono (figures, addresses). Why not the default: taken from survey and marine-chart instruments (ruled
+  ground, corner ticks, coordinates), cool and high contrast; no cream, no brass, no serif-on-paper, no gradients, no emoji.
+-->
+<style>
+:root{--ground:#F6F8F9;--ink:#12202A;--sea:#2F6F86;--deep:#1F4B5C;--mag:#C42550;--line:#D3DCE2;--mute:#5E6A75;--ink2:#3E4C58;--ice:#A8D6E4;--white:#FFFFFF;
+  --he:'IBM Plex Sans Hebrew','IBM Plex Sans','IBM Plex Sans Arabic',sans-serif;--mono:'IBM Plex Mono',monospace;--disp:'Karantina','IBM Plex Sans Hebrew',sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--ground)}
+#stage{position:relative;overflow:hidden;background:var(--ground);font-family:var(--he);color:var(--ink);width:1920px;height:1080px}
+body.v #stage{width:1080px;height:1920px}
+.sc{position:absolute;inset:0;opacity:0;display:none;background:var(--ground);overflow:hidden}
+.sc.dark{background:var(--ink);color:var(--white)}
+/* the ruled survey ground */
+.rule{position:absolute;inset:0;background-image:linear-gradient(to right,#E7ECEF 1px,transparent 1px),linear-gradient(to bottom,#E7ECEF 1px,transparent 1px);background-size:96px 96px;background-position:48px 48px}
+.dark .rule{display:none}
+/* text column */
+.txt{position:absolute;right:96px;top:206px;width:500px;text-align:right}
+body.v .txt{right:72px;left:72px;top:132px;width:auto}
+.kick{font-family:var(--mono);font-size:22px;letter-spacing:.08em;color:var(--sea);margin:0 0 18px;direction:ltr;text-align:right}
+.dark .kick{color:var(--ice)}
+.ttl{font-family:var(--disp);font-weight:700;font-size:132px;line-height:.9;margin:0;letter-spacing:-.005em}
+.ttl span{display:block}
+body.v .ttl{font-size:128px}
+body.v .ttl span{display:inline}
+body.v .ttl span::after{content:" "}
+.cap{font-size:34px;line-height:1.45;font-weight:500;color:var(--ink2);margin:30px 0 0}
+body.v .cap{font-size:38px;margin-top:22px}
+.dark .cap{color:#DDE7EC}
+/* media frames: white, hairline, survey corner ticks (no rounded soft-shadow card) */
+.fr{position:absolute;background:var(--white);border:1px solid var(--line)}
+.fr::before,.fr::after{content:"";position:absolute;width:22px;height:22px;border-color:var(--sea);border-style:solid;pointer-events:none}
+.fr::before{top:-12px;left:-12px;border-width:3px 0 0 3px}
+.fr::after{bottom:-12px;right:-12px;border-width:0 3px 3px 0}
+.fr > img,.fr > .in{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tab{position:absolute;display:flex;gap:14px;align-items:baseline;white-space:nowrap}
+.tab b{font-weight:600;font-size:22px;color:var(--ink)}
+.tab i{font-style:normal;font-family:'IBM Plex Mono','IBM Plex Sans Hebrew',monospace;font-size:17px;color:var(--mute);direction:ltr;unicode-bidi:isolate}
+body.v .tab b{font-size:26px} body.v .tab i{font-size:19px}
+.lab{position:absolute;background:var(--ink);color:var(--white);font-size:21px;font-weight:600;padding:7px 14px 8px;white-space:nowrap}
+body.v .lab{font-size:24px}
+.lab.sea{background:var(--sea)}
+.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+bdi{unicode-bidi:isolate}
+
+/* ---------- 01 the map ---------- */
+#s1 svg{position:absolute;inset:0;width:100%;height:100%}
+#s1 .txt{top:84px;width:1180px;right:auto;left:96px}
+#s1 .ttl{font-size:128px;color:var(--white)}
+#s1 .cap{color:var(--ice)}
+body.v #s1 .txt{top:150px;left:72px;right:72px;width:auto}
+body.v #s1 .l3{display:none}
+body.v #s1 .ttl{font-size:132px}
+.city{font-family:var(--mono);font-size:19px;fill:var(--ice);letter-spacing:.06em}
+body.v .city{font-size:24px}
+
+/* ---------- 02 the words, the language ---------- */
+#s2 .fa{left:96px;top:186px;width:1200px;height:589px}
+#s2 .fb{left:96px;top:186px;width:1200px;height:675px}
+#s2 .ta{left:96px;top:140px}
+#s2 .chips{position:absolute;right:96px;top:640px;width:500px;display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start}
+.chip{border:2px solid var(--deep);color:var(--deep);font-size:25px;font-weight:600;padding:8px 16px 10px;background:var(--white);line-height:1}
+.chip.on{background:var(--deep);color:var(--white)}
+.chip.ltr{direction:ltr}
+#s2 .note{position:absolute;right:96px;top:780px;width:500px;font-size:24px;color:var(--mute)}
+body.v #s2 .fa{left:56px;top:700px;width:968px;height:475px}
+body.v #s2 .fb{left:290px;top:690px;width:500px;height:1010px;background:var(--white)}
+body.v #s2 .ta{left:56px;right:auto;top:630px}
+body.v #s2 .chips{right:56px;left:56px;width:auto;top:1745px;justify-content:center}
+body.v #s2 .note{display:none}
+#s2 .phone{position:absolute;inset:14px;overflow:hidden;background:#fff}
+#s2 .phone img{position:absolute;left:0;top:0;width:100%}
+
+/* ---------- 03 Google AI Mode ---------- */
+#s3 .card{position:absolute;left:96px;top:186px;width:1200px;height:700px;background:var(--white);border:1px solid var(--line);direction:ltr;text-align:left;padding:46px 56px;font-family:'IBM Plex Sans',var(--he)}
+#s3 .card::before,#s3 .card::after{content:"";position:absolute;width:22px;height:22px;border-color:var(--sea);border-style:solid}
+#s3 .card::before{top:-12px;left:-12px;border-width:3px 0 0 3px}
+#s3 .card::after{bottom:-12px;right:-12px;border-width:0 3px 3px 0}
+#s3 .hdr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:19px;color:var(--mute);letter-spacing:.06em}
+#s3 .q{margin-top:28px;display:inline-block;border:1px solid var(--line);background:#EEF2F4;padding:14px 22px;font-size:27px;color:var(--ink);min-height:62px}
+#s3 .q .caret{display:inline-block;width:2px;height:28px;background:var(--ink);vertical-align:-4px;margin-left:2px}
+#s3 .ans{margin-top:34px;font-size:39px;line-height:1.42;color:var(--ink);font-weight:500;max-width:1080px}
+#s3 .srcl{margin-top:36px;font-family:var(--mono);font-size:18px;color:var(--mute);letter-spacing:.08em}
+#s3 .srcs{margin-top:14px;display:flex;gap:14px;flex-wrap:wrap}
+#s3 .src{font-family:var(--mono);font-size:22px;border:1.5px solid var(--line);padding:10px 16px;color:var(--ink2);background:var(--white);position:relative}
+#s3 .src.us{border-color:var(--ink)}
+#s3 .src.us.hit{border:3px solid var(--mag);color:var(--mag);padding:8.5px 14.5px}
+#s3 .us-tag{position:absolute;bottom:-46px;left:0;font-family:var(--he);direction:rtl;font-size:22px;font-weight:600;color:var(--mag);white-space:nowrap}
+#s3 .ft{position:absolute;left:56px;bottom:30px;font-family:var(--mono);font-size:19px;color:var(--mute)}
+#s3 .note{position:absolute;left:96px;top:912px;width:1200px;font-size:22px;color:var(--mute);text-align:left;direction:rtl}
+body.v #s3 .card{left:56px;top:700px;width:968px;height:930px;padding:40px 40px}
+body.v #s3 .ans{font-size:48px}
+body.v #s3 .src{font-size:24px}
+body.v #s3 .hdr{font-size:21px}
+body.v #s3 .q{font-size:30px}
+body.v #s3 .note{left:56px;top:1660px;width:968px;font-size:25px;text-align:right}
+body.v #s3 .ft{left:40px}
+
+/* ---------- 04 why we are cited ---------- */
+#s4 .row{position:absolute;left:96px;width:1200px;display:flex;flex-direction:row;align-items:center;gap:40px}
+#s4 .row .why{width:400px;flex:none;text-align:right}
+#s4 .row .why .n{font-family:var(--mono);font-size:24px;color:var(--sea);direction:ltr;text-align:right}
+#s4 .row .why .w{font-size:38px;font-weight:600;line-height:1.25;margin-top:6px}
+#s4 .row .pic{position:relative;flex:none;background:var(--white);border:1px solid var(--line);padding:18px}
+#s4 .row .pic img{display:block}
+#s4 .r1{top:186px} #s4 .r2{top:448px} #s4 .r3{top:790px}
+#s4 .r1 .pic img{height:180px} #s4 .r2 .pic img{height:262px} #s4 .r3 .pic img{height:72px}
+body.v #s4 .row{left:56px;width:968px;flex-direction:column;align-items:flex-end;gap:14px}
+body.v #s4 .row .why{width:968px}
+body.v #s4 .row .why .w{font-size:40px}
+body.v #s4 .r1{top:630px} body.v #s4 .r2{top:1000px} body.v #s4 .r3{top:1500px}
+body.v #s4 .r1 .pic img{height:220px} body.v #s4 .r2 .pic img{height:340px} body.v #s4 .r3 .pic img{height:116px}
+body.v #s4 .row .pic{align-self:flex-end}
+
+/* ---------- 05 the stage ---------- */
+#s5 .fs{left:96px;top:186px;width:1200px;height:675px}
+#s5 .ts{left:96px;top:140px}
+#s5 .pick{position:absolute;left:96px;top:890px;display:flex;gap:12px;direction:rtl}
+#s5 .pick .p{font-size:27px;font-weight:600;padding:9px 18px 11px;border:2px solid var(--deep);color:var(--deep);background:var(--white)}
+#s5 .pick .p.on{background:var(--deep);color:var(--white)}
+#s5 .geo{position:absolute;right:96px;bottom:70px;font-family:var(--mono);font-size:18px;color:var(--mute);direction:ltr}
+body.v #s5 .fs{left:56px;top:690px;width:968px;height:1000px}
+body.v #s5 .fs > img{object-position:50% 34%}
+body.v #s5 .ts{left:56px;top:630px}
+body.v #s5 .pick{left:56px;right:56px;top:1730px;justify-content:center}
+body.v #s5 .geo{right:auto;left:56px;bottom:44px}
+
+/* ---------- 06 view and design ---------- */
+#s6 .fv{left:96px;top:186px;width:1200px;height:620px}
+#s6 .fv .clipb{position:absolute;inset:0;overflow:hidden}
+#s6 .fv .clipb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#s6 .lv{left:auto}
+#s6 .tv{left:96px;top:140px}
+#s6 .sub{position:absolute;left:96px;top:830px;font-size:24px;color:var(--mute);width:1200px;text-align:left;direction:rtl}
+body.v #s6 .fv{left:56px;top:700px;width:968px;height:500px}
+body.v #s6 .fv2{left:56px;top:1236px;width:968px;height:500px}
+body.v #s6 .tv{left:56px;top:630px}
+body.v #s6 .sub{left:56px;top:1770px;width:968px;text-align:right}
+
+/* ---------- 07 recordings ---------- */
+#s7 .fd{left:96px;top:186px;width:1200px;height:567px}
+#s7 .fh{left:536px;top:186px;width:760px;height:504px}
+#s7 .fst{left:96px;top:186px;width:400px;height:504px}
+#s7 .fst > img{object-position:42% 50%}
+#s7 .td{left:96px;top:140px}
+#s7 .hole{position:absolute;border:3px dashed var(--sea)}
+#s7 .say{position:absolute;left:96px;top:718px;width:400px;font-size:30px;font-weight:600;color:var(--deep);line-height:1.3;text-align:right}
+#s7 .say2{position:absolute;left:536px;top:722px;width:760px;font-size:24px;color:var(--mute);text-align:right}
+#s7 svg.link{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+body.v #s7 .fd{left:56px;top:740px;width:968px;height:457px}
+body.v #s7 .fh{left:56px;top:690px;width:968px;height:642px}
+body.v #s7 .fst{left:56px;top:1400px;width:420px;height:400px}
+body.v #s7 .say{left:520px;top:1460px;width:504px}
+body.v #s7 .say2{left:520px;top:1640px;width:504px;font-size:26px}
+body.v #s7 .td{left:56px;top:630px}
+
+/* ---------- 08 around the world ---------- */
+#s8 .p{position:absolute}
+#s8 .pl{position:absolute;font-size:23px;font-weight:600;color:var(--ink);white-space:nowrap}
+#s8 .pl i{display:block;font-style:normal;font-weight:500;font-size:20px;color:var(--sea);margin-top:4px}
+#s8 .tw{left:107px;top:372px}
+body:not(.v) #s8 .txt{top:96px;width:1400px}
+body:not(.v) #s8 .cap{margin-top:14px}
+body.v #s8 .tw{left:56px;top:630px}
+
+/* ---------- 09 the lead ---------- */
+#s9 .fc{left:96px;top:186px;width:1200px;height:567px}
+#s9 .tc{left:96px;top:140px}
+#s9 .wa{position:absolute;left:356px;top:186px;width:680px;height:480px;background:#E9EEF1;border:1px solid var(--line);overflow:hidden}
+#s9 .wa .bar{height:96px;background:var(--deep);color:#fff;display:flex;align-items:center;gap:18px;padding:0 28px}
+#s9 .wa .bar .av{width:56px;height:56px;border-radius:50%;background:#fff;color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:var(--he);font-size:30px;font-weight:700}
+#s9 .wa .bar b{font-size:28px;font-weight:600;display:block}
+#s9 .wa .bar span{font-size:20px;opacity:.85}
+#s9 .wa .msg{position:absolute;right:28px;top:140px;width:560px;background:#fff;border:1px solid var(--line);padding:24px 28px 18px;font-size:27px;line-height:1.5}
+#s9 .wa .msg .k{color:var(--mute);font-weight:500}
+#s9 .wa .msg .h{font-weight:700;font-size:29px;margin-bottom:8px}
+#s9 .wa .msg .tm{font-family:var(--mono);font-size:17px;color:var(--mute);text-align:left;margin-top:10px}
+#s9 .wa .dots{position:absolute;right:28px;top:140px;background:#fff;border:1px solid var(--line);padding:18px 26px;display:flex;gap:10px}
+#s9 .wa .dots i{width:14px;height:14px;border-radius:50%;background:var(--mute);display:block}
+#s9 .demo{position:absolute;left:356px;top:692px;font-size:24px;font-weight:700;color:var(--white);background:var(--mag);padding:8px 18px 10px}
+#s9 .demo-note{position:absolute;left:470px;top:700px;font-size:22px;color:var(--mute);direction:rtl}
+body.v #s9 .fc{left:56px;top:740px;width:968px;height:457px}
+body.v #s9 .tc{left:56px;top:630px}
+body.v #s9 .wa{left:110px;top:720px;width:860px;height:600px}
+body.v #s9 .wa .msg{width:700px;font-size:32px}
+body.v #s9 .wa .msg .h{font-size:34px}
+body.v #s9 .demo{left:110px;top:1350px;font-size:28px}
+body.v #s9 .demo-note{left:auto;right:110px;top:1356px;font-size:26px}
+
+/* ---------- 10 the planner ---------- */
+#s10 .ph{position:absolute;left:640px;top:150px;width:440px;height:840px;background:var(--ink);padding:14px;border-radius:46px}
+#s10 .ph .scr{position:absolute;inset:14px;border-radius:34px;overflow:hidden;background:#fff}
+#s10 .ph .scr img{position:absolute;left:0;top:0;width:100%}
+#s10 .steps{position:absolute;left:96px;top:210px;width:480px;display:flex;flex-direction:column;gap:16px}
+#s10 .st{display:flex;align-items:center;gap:18px;font-size:32px;font-weight:600;color:var(--mute);border:2px solid var(--line);background:var(--white);padding:14px 20px}
+#s10 .st .n{font-family:var(--mono);font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--line);flex:none}
+#s10 .st.on{color:var(--white);background:var(--deep);border-color:var(--deep)}
+#s10 .st.on .n{border-color:var(--white)}
+#s10 .st.done{color:var(--deep);border-color:var(--deep)}
+#s10 .st.done .n{border-color:var(--deep)}
+#s10 .shot{position:absolute;left:96px;top:860px;font-size:22px;color:var(--mute);width:480px}
+body.v #s10 .ph{left:250px;top:660px;width:580px;height:1080px}
+body.v #s10 .steps{left:56px;right:56px;width:auto;top:1772px;flex-direction:row;gap:8px;justify-content:center}
+body.v #s10 .st{font-size:24px;padding:10px 10px;gap:8px}
+body.v #s10 .st .n{width:32px;height:32px;font-size:18px}
+body.v #s10 .shot{display:none}
+
+/* ---------- 11 the table ---------- */
+#s11 table{position:absolute;left:96px;top:186px;width:1200px;border-collapse:collapse;table-layout:fixed;background:var(--white)}
+#s11 th,#s11 td{border:1px solid var(--line);padding:22px 16px;text-align:right;vertical-align:top;font-size:27px;line-height:1.36}
+#s11 thead th{font-size:23px;font-weight:600;color:var(--ink2);background:#EEF2F4;vertical-align:bottom}
+#s11 thead th.us{background:var(--deep);color:#fff;font-size:30px;border-color:var(--deep)}
+#s11 tbody th{font-weight:700;font-size:29px;color:var(--ink)}
+#s11 td.us{background:var(--deep);color:#fff;font-weight:600;font-size:29px;border-color:var(--deep)}
+#s11 td{color:var(--ink2)}
+#s11 .ltr{direction:ltr;unicode-bidi:isolate}
+#s11 .chk{position:absolute;left:96px;top:930px;font-size:22px;color:var(--mute);width:1200px;text-align:right}
+body.v #s11 table{left:36px;top:700px;width:1008px}
+body.v #s11 th,body.v #s11 td{font-size:26px;padding:26px 10px}
+body.v #s11 tbody th{font-size:27px}
+body.v #s11 thead th{font-size:22px}
+body.v #s11 thead th.us{font-size:30px}
+body.v #s11 td.us{font-size:27px}
+body.v #s11 .chk{left:36px;top:1760px;width:1008px;font-size:24px}
+
+/* ---------- 12 end card ---------- */
+#s12 .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#s12 .big{font-family:var(--disp);font-weight:700;font-size:168px;line-height:.9;color:#fff}
+#s12 .big span{display:block}
+#s12 .go{margin-top:58px;background:var(--sea);color:#fff;font-size:42px;font-weight:600;padding:20px 46px 24px}
+#s12 .url{margin-top:40px;font-family:var(--mono);font-size:50px;color:var(--ice);letter-spacing:.02em;direction:ltr;border-bottom:3px solid var(--mag);padding-bottom:6px}
+#s12 .langs{margin-top:44px;display:flex;gap:14px}
+#s12 .langs span{border:2px solid #3B5868;color:#DDE7EC;font-size:27px;font-weight:500;padding:8px 18px 10px}
+body.v #s12 .big{font-size:158px}
+body.v #s12 .langs{flex-wrap:wrap;justify-content:center;width:900px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 -->
+<section class="sc dark" id="s1">
+  <svg id="map" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="txt">
+    <p class="kick">01 / 12</p>
+    <h1 class="ttl"><span class="l1">ברגע זה, קונה בפריז</span><span class="l2">מחפש דירה בתל אביב.</span><span class="l3"></span></h1>
+    <p class="cap c1">ובלונדון. ובניו יורק.</p>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="sc" id="s2"><div class="rule"></div>
+  <div class="tab ta"><b class="tal">חיפוש בגוגל, בצרפתית</b><i class="tai">מהסרט של בן · 1.11.2026</i></div>
+  <div class="fr fa"><img id="g_fr" alt=""></div>
+  <div class="fr fb"><img id="fr_cast" class="hv" alt=""><div class="phone vv"><img id="fr_phone" src="img/fr_phone_full.png" alt=""></div></div>
+  <div class="txt">
+    <p class="kick">02 / 12</p>
+    <h2 class="ttl"><span>המילים שלו.</span><span>השפה שלו.</span></h2>
+    <p class="cap">הוא מחפש בגוגל בצרפתית, ומגיע לעמוד הפרויקט בצרפתית.</p>
+  </div>
+  <div class="chips"><span class="chip">עברית</span><span class="chip ltr">English</span><span class="chip ltr on">Français</span><span class="chip ltr">Русский</span><span class="chip">العربية</span></div>
+  <div class="note">חמש שפות. אותו פרויקט, אותו עמוד.</div>
+</section>
+
+<!-- 03 -->
+<section class="sc" id="s3"><div class="rule"></div>
+  <div class="card">
+    <div class="hdr"><span>GOOGLE · AI MODE</span><span>google.co.il</span></div>
+    <div class="q"><span id="qtext"></span><span class="caret"></span></div>
+    <div class="ans" id="ans">The average list price for an apartment in the Rainbow Sde Dov project in Tel Aviv is approximately <bdi>₪81,800</bdi> to <bdi>₪85,700</bdi> per square meter (sqm).</div>
+    <div class="srcl">SOURCES</div>
+    <div class="srcs"><span class="src s1">en.globes.co.il</span><span class="src s2">shavnu.com</span><span class="src s3 us">nad-lan.co.il/projects/rainbow-tel-aviv-en/<span class="us-tag">זה העמוד שלנו</span></span></div>
+    <div class="ft">AI Mode · Google · 7.11.2026</div>
+  </div>
+  <div class="note">משפט הפתיחה ורשימת המקורות, כפי שהופיעו בבדיקה ב־7.11.2026.</div>
+  <div class="txt">
+    <p class="kick">03 / 12</p>
+    <h2 class="ttl"><span>גם במצב AI</span><span>של גוגל.</span></h2>
+    <p class="cap">כשקונה שואל את גוגל במצב AI כמה עולה מטר בריינבו, התשובה מצטטת את נדל״ן.</p>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="sc" id="s4"><div class="rule"></div>
+  <div class="row r1"><div class="why"><div class="n">01</div><div class="w">מחיר למ״ר, עם תאריך ומקור</div></div><div class="pic"><img src="img/en_price_tile.png" alt=""></div></div>
+  <div class="row r2"><div class="why"><div class="n">02</div><div class="w">שאלות ותשובות מסודרות</div></div><div class="pic"><img src="img/en_faq2.png" alt=""></div></div>
+  <div class="row r3"><div class="why"><div class="n">03</div><div class="w">אותו פרויקט בחמש שפות</div></div><div class="pic"><img src="img/fr_langbar_x4.png" alt=""></div></div>
+  <div class="txt">
+    <p class="kick">04 / 12</p>
+    <h2 class="ttl"><span>למה</span><span>מצטטים אותנו.</span></h2>
+    <p class="cap">צילומים מעמוד ריינבו באתר, באנגלית ובצרפתית, 7.11.2026.</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sc" id="s5"><div class="rule"></div>
+  <div class="tab ts"><b>הבמה החיה של ריינבו</b><i>nad-lan.co.il/projects/rainbow-tel-aviv · 7.11.2026</i></div>
+  <div class="fr fs"><img id="stage_cast" alt=""></div>
+  <div class="pick"><span class="p p1">קומה 23</span><span class="p p2">דירה לדוגמה</span><span class="p p3">לכיוון הים</span></div>
+  <div class="txt">
+    <p class="kick">05 / 12</p>
+    <h2 class="ttl"><span>נכנסים</span><span>פנימה.</span></h2>
+    <p class="cap">בוחרים קומה במגדל ואת הכיוון. כאן: קומה 23, לכיוון הים.</p>
+  </div>
+  <div class="geo">32.1035N  34.7847E</div>
+</section>
+
+<!-- 06 -->
+<section class="sc" id="s6"><div class="rule"></div>
+  <div class="tab tv"><b>מהסרט של בן</b><i>1.11.2026</i></div>
+  <div class="fr fv"><img id="view" alt=""><div class="clipb hv"><img id="furn" alt=""></div><span class="lab l-empty" style="right:20px;top:20px">ריקה</span><span class="lab sea l-furn hv" style="right:20px;top:20px">מרוהטת</span></div>
+  <div class="fr fv2 vv"><img id="furn_v" alt=""><span class="lab sea" style="right:20px;top:20px">מרוהטת</span></div>
+  <div class="sub">הדמיה · דירה לדוגמה · הנוף מקומה 25, לכיוון הים</div>
+  <div class="txt">
+    <p class="kick">06 / 12</p>
+    <h2 class="ttl"><span>רואים.</span><span>מעצבים.</span></h2>
+    <p class="cap">הנוף מהחלון, לכיוון הים. והדירה ריקה, או מרוהטת.</p>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="sc" id="s7"><div class="rule"></div>
+  <div class="tab td"><b class="tdb">הקלטה אמיתית מהאתר</b><i class="tdi">ישראל · מחשב · מהסרט של בן</i></div>
+  <div class="fr fd"><img id="desk_il" alt=""></div>
+  <div class="fr fh"><img id="heat_d" alt=""><div class="hole"></div></div>
+  <div class="fr fst"><img id="stage_mini" alt=""></div>
+  <svg class="link" id="s7link" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="say">את הבניין משלבים מהבמה שלנו</div>
+  <div class="say2">מפת הלחיצות לא מקליטה את התלת ממד, לכן המשטח שם ריק.</div>
+  <div class="txt">
+    <p class="kick">07 / 12</p>
+    <h2 class="ttl"><span>ככה זה נראה</span><span>כשהם עושים</span><span>את זה.</span></h2>
+    <p class="cap">הקלטות אמיתיות של גולשים באתר: תנועת העכבר, הלחיצות, מפת החום.</p>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="sc" id="s8"><div class="rule"></div>
+  <div class="tab tw"><b>הקלטות אמיתיות מהאתר</b><i>מהסרט של בן · 1.11.2026</i></div>
+  <div class="fr p pb"><img id="brit" alt=""></div><div class="pl lb">בריטניה · מחשב<i>הבניין: מהבמה שלנו</i></div>
+  <div class="fr p pf"><img id="ph_fr" alt=""></div><div class="pl lf">צרפת · טלפון</div>
+  <div class="fr p pa"><img id="ph_au" alt=""></div><div class="pl la">אוסטרליה · טלפון</div>
+  <div class="fr p pi"><img id="ph_il" alt=""></div><div class="pl li">ישראל · טלפון</div>
+  <div class="txt">
+    <p class="kick">08 / 12</p>
+    <h2 class="ttl"><span>מכל העולם.</span></h2>
+    <p class="cap">ישראל, בריטניה, צרפת, אוסטרליה. בטלפון ובמחשב.</p>
+  </div>
+</section>
+
+<!-- 09 -->
+<section class="sc" id="s9"><div class="rule"></div>
+  <div class="tab tc"><b>ואז לוחצים על יצירת קשר</b><i>ישראל · מחשב · מהסרט של בן</i></div>
+  <div class="fr fc"><img id="contact" alt=""></div>
+  <div class="wa">
+    <div class="bar"><div class="av">נ</div><div><b>פנייה חדשה מנדל״ן</b><span>הודעה בוואטסאפ</span></div></div>
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="msg">
+      <div class="h">פנייה מעמוד הפרויקט</div>
+      <div><span class="k">מדינה:</span> צרפת, פריז</div>
+      <div><span class="k">שפה:</span> צרפתית</div>
+      <div><span class="k">בחר:</span> קומה 23, דירה לדוגמה לכיוון הים</div>
+      <div><span class="k">צפה:</span> הנוף מהקומה, הדירה מרוהטת</div>
+      <div class="tm">10:42</div>
+    </div>
+  </div>
+  <div class="demo">דוגמה</div><div class="demo-note">הודעה לדוגמה, לא פנייה אמיתית</div>
+  <div class="txt">
+    <p class="kick">09 / 12</p>
+    <h2 class="ttl"><span>הפנייה מגיעה</span><span>עם ההקשר.</span></h2>
+    <p class="cap">לא שם וטלפון. מה הוא ראה, באיזו קומה, באיזו שפה.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="sc" id="s10"><div class="rule"></div>
+  <div class="ph"><div class="scr"><img id="plan" alt=""></div></div>
+  <div class="steps">
+    <div class="st"><span class="n">1</span>שווקים</div>
+    <div class="st"><span class="n">2</span>קונים</div>
+    <div class="st"><span class="n">3</span>תקציב</div>
+    <div class="st"><span class="n">4</span>פרויקט</div>
+    <div class="st"><span class="n">5</span>תשלום</div>
+  </div>
+  <div class="shot">צילומי מסך של מתכנן הקמפיין, בטלפון.</div>
+  <div class="txt">
+    <p class="kick">10 / 12</p>
+    <h2 class="ttl"><span>בונים קמפיין</span><span>לבד, בטלפון.</span></h2>
+    <p class="cap">חמישה צעדים, מהשווקים ועד התשלום.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="sc" id="s11"><div class="rule"></div>
+  <table>
+    <colgroup><col style="width:23%"><col style="width:21%"><col style="width:14%"><col style="width:14%"><col style="width:14%"><col style="width:14%"></colgroup>
+    <thead><tr><th></th><th class="us">נדל״ן</th><th class="ltr">immobilier<wbr>.co.il</th><th>יד2 פרויקטים</th><th class="ltr">Juwai IQI</th><th class="ltr">Rightmove</th></tr></thead>
+    <tbody>
+      <tr class="r1"><th>בונים את הקמפיין לבד, בטלפון</th><td class="us">כן, בחמישה צעדים</td><td>בקשת הצעת מחיר</td><td>דרך נציג</td><td>דרך נציג</td><td>דרך נציג</td></tr>
+      <tr class="r2"><th>בוחרים מדינות</th><td class="us">10 שווקים, לבחירתכם</td><td>רשימה קבועה שלהם</td><td>ישראל</td><td>הונג קונג או סין</td><td>קונים בבריטניה</td></tr>
+      <tr class="r3"><th>לאן הפנייה מגיעה</th><td class="us">לעמוד הפרויקט עם סיור וירטואלי, ומשם לוואטסאפ שלכם</td><td>מייל או SMS</td><td>מספר טלפון וירטואלי</td><td>מיני־אתר בסינית</td><td>תיאום ביקור ביומן</td></tr>
+    </tbody>
+  </table>
+  <div class="chk">נבדק באתרים של כל שירות, 7.11.2026.</div>
+  <div class="txt">
+    <p class="kick">11 / 12</p>
+    <h2 class="ttl"><span>מה אין</span><span>לאחרים.</span></h2>
+    <p class="cap">שלוש שורות מתוך ההשוואה המלאה.</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="sc dark" id="s12">
+  <div class="end">
+    <div class="big"><span>שיווק פרויקט נדל״ן</span><span>לקונים בחו״ל</span></div>
+    <div class="go">בנו את הקמפיין שלכם</div>
+    <div class="url">nad-lan.co.il</div>
+    <div class="langs"><span>עברית</span><span>English</span><span>Français</span><span>Русский</span><span>العربية</span></div>
+  </div>
+</section>
+
+</div>
+<script>
+const Q = new URLSearchParams(location.search);
+const V = Q.get('f') === 'v';
+if (V) document.body.classList.add('v');
+const W = V ? 1080 : 1920, H = V ? 1920 : 1080;
+const FPS = 30, DUR = 90;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const C = (x) => x < 0 ? 0 : x > 1 ? 1 : x;
+const eo = (x) => 1 - Math.pow(1 - x, 3);
+const eio = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const R = (u, a, b, f = eo) => f(C((u - a) / (b - a)));
+function show(el, u, a, d = .55, dy = 26) { if (!el) return; const p = R(u, a, a + d); el.style.opacity = p; el.style.transform = `translateY(${((1 - p) * dy).toFixed(2)}px)`; }
+function op(el, v) { if (el) el.style.opacity = v; }
+for (const el of $$('.hv')) if (V) el.style.display = 'none';
+for (const el of $$('.vv')) if (!V) el.style.display = 'none';
+
+/* JPEG sequences: Ben's clips (ben/<name>) and the live screencasts (cast/<name>) at 30 fps */
+let A = null, pending = [], FAILED = false, FAILS = 0;
+function seq(id, kind, name, srcT) {
+  const img = document.getElementById(id); if (!img) return;
+  const n = (A[kind] && A[kind][name]) ? A[kind][name].frames : 1;
+  const i = Math.max(1, Math.min(n, Math.floor(srcT * FPS + 1e-6) + 1));
+  const src = `${kind}/${name}/${String(i).padStart(4, '0')}.jpg`;
+  if (img.dataset.want !== src || img.dataset.bad) { const retry = !!img.dataset.bad; delete img.dataset.bad; img.dataset.want = src; img.setAttribute('src', src + (retry ? '?r=' + FAILS : '')); pending.push(img.decode().catch(() => { img.dataset.bad = 1; FAILED = true; })); }
+}
+/* piecewise time maps [[u, src], ...] (linear between points) */
+function tmap(u, pts) {
+  if (u <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) if (u <= pts[i][0]) { const [a, x] = pts[i - 1], [b, y] = pts[i]; return x + (y - x) * (u - a) / (b - a); }
+  return pts[pts.length - 1][1];
+}
+function frameTicks(el, u, a) { el.style.opacity = R(u, a, a + .5); el.style.transform = `scale(${(0.985 + 0.015 * R(u, a, a + .7)).toFixed(4)})`; }
+
+/* ---------- 01 the map ---------- */
+const CITIES = { paris: [2.35, 48.86, 'PARIS 48.86N 2.35E'], london: [-0.13, 51.51, 'LONDON 51.51N 0.13W'], ny: [-74.0, 40.71, 'NEW YORK 40.71N 74.00W'], tlv: [34.78, 32.08, 'TEL AVIV 32.08N 34.78E'] };
+const PROJ = V ? { lon0: -14, lon1: 40, x0: 40, x1: 1040, lat0: 57.5, y0: 860 } : { lon0: -80, lon1: 38, x0: 90, x1: 1830, lat0: 60, y0: 390 };
+PROJ.k = (PROJ.x1 - PROJ.x0) / (PROJ.lon1 - PROJ.lon0); PROJ.ky = PROJ.k / Math.cos(45 * Math.PI / 180) * 0.86;
+const P = (lon, lat) => [PROJ.x0 + (lon - PROJ.lon0) * PROJ.k, PROJ.y0 + (PROJ.lat0 - lat) * PROJ.ky];
+const ARCS = [];
+async function buildMap() {
+  const svg = $('#map'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('direction', 'ltr'); svg.style.direction = 'ltr';
+  const rings = await (await fetch('land.json')).json();
+  let g = '';
+  for (let lon = -180; lon <= 180; lon += 10) { const [x] = P(lon, 0); if (x > -10 && x < W + 10) g += `<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="#1B3140" stroke-width="1"/>`; }
+  for (let lat = -80; lat <= 80; lat += 10) { const [, y] = P(0, lat); if (y > -10 && y < H + 10) g += `<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#1B3140" stroke-width="1"/>`; }
+  let d = '';
+  for (const r of rings) { let s = ''; for (let i = 0; i < r.length; i++) { const q = P(r[i][0], r[i][1]); s += (i === 0 || Math.abs(r[i][0] - r[i - 1][0]) > 90 ? 'M' : 'L') + q[0].toFixed(1) + ',' + q[1].toFixed(1); } d += s + 'Z'; }
+  g += `<path d="${d}" fill="#18303E" stroke="#2C5468" stroke-width="1.2"/>`;
+  const [tx, ty] = P(...CITIES.tlv);
+  const order = [['paris', 0.7, 2.6], ['london', 2.9, 4.3], ['ny', 3.5, 5.3]];
+  for (const [k, a, b] of order) {
+    const [x, y] = P(...CITIES[k]);
+    const mx = (x + tx) / 2, my = (y + ty) / 2 - Math.hypot(tx - x, ty - y) * 0.28;
+    g += `<path id="arc_${k}" d="M${x},${y} Q${mx},${my} ${tx},${ty}" fill="none" stroke="#A8D6E4" stroke-width="${V ? 4 : 3}" stroke-linecap="round"/>`;
+    g += `<circle id="head_${k}" r="${V ? 8 : 6}" fill="#FFFFFF"/>`;
+    g += `<g id="pt_${k}"><circle cx="${x}" cy="${y}" r="${V ? 9 : 7}" fill="#A8D6E4"/>`;
+    const right = k === 'ny' && V;
+    g += `<text class="city" x="${right ? 30 : (k === 'paris' ? x - 16 : x + 16)}" y="${k === 'paris' ? y + 30 : y - 16}" text-anchor="${k === 'paris' && !right ? 'end' : 'start'}">${right ? '← ' : ''}${CITIES[k][2]}</text></g>`;
+    ARCS.push([k, a, b]);
+  }
+  g += `<g id="pt_tlv"><circle id="tlv_ring" cx="${tx}" cy="${ty}" r="18" fill="none" stroke="#C42550" stroke-width="3"/><circle cx="${tx}" cy="${ty}" r="${V ? 10 : 8}" fill="#C42550"/>`;
+  g += `<text class="city" x="${tx - 18}" y="${ty + (V ? 52 : 44)}" text-anchor="end" style="fill:#FFFFFF">${CITIES.tlv[2]}</text></g>`;
+  svg.innerHTML = g;
+  for (const [k] of ARCS) { const p = $('#arc_' + k); const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = `${L} ${L}`; }
+}
+function s1(u) {
+  for (const [k, a, b] of ARCS) {
+    const p = $('#arc_' + k), L = +p.dataset.len, q = R(u, a, b, eio);
+    p.style.strokeDashoffset = (L * (1 - q)).toFixed(1);
+    const h = $('#head_' + k); const pt = p.getPointAtLength(L * q);
+    h.setAttribute('cx', pt.x); h.setAttribute('cy', pt.y); h.style.opacity = q > 0 && q < 1 ? 1 : 0;
+    op($('#pt_' + k), R(u, a - .4, a));
+  }
+  op($('#pt_tlv'), R(u, .2, .7));
+  const ring = $('#tlv_ring'); const ph = ((u * 0.8) % 1); ring.setAttribute('r', (12 + 26 * ph).toFixed(1)); ring.style.opacity = (1 - ph).toFixed(2);
+  op($('#s1 .kick'), 1); op($('#s1 .l1'), 1); op($('#s1 .l2'), 1); op($('#s1 .l3'), 1); // the first frame is complete (thumbnail)
+  show($('#s1 .c1'), u, 3.2);
+}
+
+/* ---------- 02 ---------- */
+function s2(u) {
+  show($('#s2 .kick'), u, .1); show($('#s2 .ttl span:nth-child(1)'), u, .15); show($('#s2 .ttl span:nth-child(2)'), u, .35); show($('#s2 .cap'), u, .6);
+  const sw = 3.4;
+  frameTicks($('#s2 .fa'), u, .1);
+  seq('g_fr', 'ben', 'g_fr', C(u - .3) * 0.44);
+  const pb = R(u, sw, sw + .45);
+  $('#s2 .fa').style.opacity = u < sw ? $('#s2 .fa').style.opacity : 1 - pb;
+  $('#s2 .fb').style.opacity = pb; $('#s2 .fb').style.transform = `translateY(${((1 - pb) * 20).toFixed(1)}px)`;
+  if (!V) seq('fr_cast', 'cast', 'fr', tmap(u, [[sw, 0.2], [sw + 4.8, 1.7]]));
+  else { const im = $('#fr_phone'); const k = R(u, sw + .8, sw + 4.6, eio); im.style.transform = `translateY(${(-k * 600).toFixed(1)}px)`; }
+  $('#s2 .tal').textContent = u < sw + .2 ? 'חיפוש בגוגל, בצרפתית' : 'עמוד הפרויקט בצרפתית';
+  $('#s2 .tai').textContent = u < sw + .2 ? 'מהסרט של בן · 1.11.2026' : 'nad-lan.co.il/projects/rainbow-tel-aviv-fr · 7.11.2026';
+  $$('#s2 .chip').forEach((c, i) => show(c, u, sw + .5 + i * .12, .4, 14));
+  show($('#s2 .note'), u, sw + 1.3);
+}
+
+/* ---------- 03 ---------- */
+const QTXT = 'Rainbow Sde Dov Tel Aviv price per square meter';
+function s3(u) {
+  show($('#s3 .kick'), u, .1); show($('#s3 .ttl span:nth-child(1)'), u, .15); show($('#s3 .ttl span:nth-child(2)'), u, .35); show($('#s3 .cap'), u, .7);
+  frameTicks($('#s3 .card'), u, 0);
+  const n = Math.round(QTXT.length * R(u, .5, 1.9, x => x));
+  $('#qtext').textContent = QTXT.slice(0, n);
+  $('#s3 .caret').style.opacity = (u < 2.2 && Math.floor(u * 2.4) % 2 === 0) || u < 1.9 ? 1 : 0;
+  show($('#ans'), u, 2.2, .7, 16);
+  show($('#s3 .srcl'), u, 3.0, .4, 10);
+  show($('#s3 .s1'), u, 3.15, .4, 10); show($('#s3 .s2'), u, 3.3, .4, 10); show($('#s3 .s3'), u, 3.45, .4, 10);
+  $('#s3 .s3').classList.toggle('hit', u > 4.2);
+  op($('#s3 .us-tag'), R(u, 4.3, 4.7));
+  show($('#s3 .ft'), u, 3.6, .4, 0); show($('#s3 .note'), u, 4.6, .5, 8);
+}
+
+/* ---------- 04 ---------- */
+function s4(u) {
+  show($('#s4 .kick'), u, .1); show($('#s4 .ttl span:nth-child(1)'), u, .15); show($('#s4 .ttl span:nth-child(2)'), u, .3); show($('#s4 .cap'), u, .6);
+  show($('#s4 .r1'), u, .5, .6, 30); show($('#s4 .r2'), u, 1.8, .6, 30); show($('#s4 .r3'), u, 3.1, .6, 30);
+}
+
+/* ---------- 05 the stage ---------- */
+function s5(u) {
+  show($('#s5 .kick'), u, .1); show($('#s5 .ttl span:nth-child(1)'), u, .15); show($('#s5 .ttl span:nth-child(2)'), u, .35); show($('#s5 .cap'), u, .65);
+  show($('#s5 .tab'), u, .1, .4, 8); frameTicks($('#s5 .fs'), u, 0);
+  // the drive, recorded live: hover, tap, glide to the floor (real time), the arrow to 23 and the turns to the sea side (x2)
+  const map = V ? [[0, 1.9], [3.4, 5.3], [4.3, 7.1], [6.4, 11.3], [7.4, 12.3]] : [[0, 2.4], [3.0, 5.4], [4.1, 7.6], [6.4, 12.2], [7.4, 13.2]];
+  seq('stage_cast', 'cast', V ? 'stage_v' : 'stage_h', tmap(u, map));
+  const tf = V ? 3.6 : 3.4, tw = V ? 6.3 : 6.2;
+  show($('#s5 .p1'), u, tf, .35, 10); show($('#s5 .p2'), u, tf + .25, .35, 10); show($('#s5 .p3'), u, tw, .35, 10);
+  $('#s5 .p1').classList.toggle('on', u > tf); $('#s5 .p3').classList.toggle('on', u > tw);
+  show($('#s5 .geo'), u, .8, .5, 0);
+}
+
+/* ---------- 06 ---------- */
+function s6(u) {
+  show($('#s6 .kick'), u, .1); show($('#s6 .ttl span:nth-child(1)'), u, .15); show($('#s6 .ttl span:nth-child(2)'), u, .9); show($('#s6 .cap'), u, .5);
+  show($('#s6 .tab'), u, .1, .4, 8); frameTicks($('#s6 .fv'), u, 0); show($('#s6 .sub'), u, .6, .4, 0);
+  seq('view', 'ben', 'view', u * 0.55);
+  if (!V) {
+    const sw = 3.3, p = R(u, sw, sw + .8, eio);
+    $('#s6 .clipb').style.clipPath = `inset(0 0 0 ${((1 - p) * 100).toFixed(2)}%)`;
+    seq('furn', 'ben', 'furn', C(u - sw) * 0.6);
+    op($('#s6 .l-furn'), R(u, sw + .5, sw + .8)); op($('#s6 .l-empty'), 1 - R(u, sw + .3, sw + .6));
+    $('#s6 .sub').textContent = u < sw + .4 ? 'הדמיה · דירה לדוגמה · הנוף מקומה 25, לכיוון הים' : 'הדמיה · דירה לדוגמה, מרוהטת';
+  } else {
+    const sw = 2.4; frameTicks($('#s6 .fv2'), u, sw); seq('furn_v', 'ben', 'furn', C(u - sw) * 0.5);
+  }
+}
+
+/* ---------- 07 ---------- */
+function s7(u) {
+  show($('#s7 .kick'), u, .1); $$('#s7 .ttl span').forEach((s, i) => show(s, u, .15 + i * .18)); show($('#s7 .cap'), u, .8);
+  const sw = 4.6;
+  frameTicks($('#s7 .fd'), u, 0);
+  seq('desk_il', 'ben', 'desk_il', C(u - .2) * 0.5);
+  if (u > sw - .1) op($('#s7 .fd'), 1 - R(u, sw - .1, sw + .3));
+  const pb = R(u, sw, sw + .5);
+  op($('#s7 .fh'), pb); seq('heat_d', 'ben', 'heat_d', C(u - sw) * 0.8);
+  // the empty 3D canvas in the heatmap (Ben's crop: about x 116..438, y 6..280 of 598x397)
+  const fh = $('#s7 .fh'), sx = fh.clientWidth / 598, sy = fh.clientHeight / 397;
+  const hole = $('#s7 .hole'); Object.assign(hole.style, { left: (116 * sx) + 'px', top: (8 * sy) + 'px', width: (322 * sx) + 'px', height: (272 * sy) + 'px' });
+  op(hole, R(u, sw + .9, sw + 1.3));
+  op($('#s7 .fst'), R(u, sw + 1.3, sw + 1.8)); seq('stage_mini', 'cast', V ? 'stage_v' : 'stage_h', 7.6 + C(u - sw - 1.3) * 0.9);
+  show($('#s7 .say'), u, sw + 1.7, .5, 12); show($('#s7 .say2'), u, sw + 2.1, .5, 0);
+  // the dashed line from the empty canvas to our stage
+  const svg = $('#s7link'); const st = $('#stage').getBoundingClientRect();
+  const hb = hole.getBoundingClientRect(), sb = $('#s7 .fst').getBoundingClientRect();
+  const x1 = V ? hb.left + hb.width * .3 - st.left : hb.left - st.left, y1 = V ? hb.bottom - st.top : hb.top + hb.height / 2 - st.top;
+  const x2 = V ? sb.left + sb.width / 2 - st.left : sb.right - st.left, y2 = V ? sb.top - st.top : sb.top + sb.height / 2 - st.top;
+  const q = R(u, sw + 1.2, sw + 1.7);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = q > 0 ? `<line x1="${x1}" y1="${y1}" x2="${x1 + (x2 - x1) * q}" y2="${y1 + (y2 - y1) * q}" stroke="#2F6F86" stroke-width="3" stroke-dasharray="10 8"/>` : '';
+  $('#s7 .tdb').textContent = u < sw + .2 ? 'הקלטה אמיתית מהאתר' : 'מפת לחיצות אמיתית מהאתר';
+  $('#s7 .tdi').textContent = u < sw + .2 ? 'ישראל · מחשב · מהסרט של בן' : 'מחשב · מהסרט של בן';
+  if (!V) { $('#s7 .td').style.top = '140px'; }
+}
+
+/* ---------- 08 ---------- */
+function lay8() {
+  // panels right to left in the caption's order: Israel, the UK, France, Australia
+  const L = V ? {
+    pb: [56, 700, 968, 500], lb: [56, 1216, 968],
+    pi: [724, 1290, 300, 400], li: [724, 1706, 300],
+    pf: [390, 1290, 300, 400], lf: [390, 1706, 300],
+    pa: [56, 1290, 300, 400], la: [56, 1706, 300],
+  } : {
+    pa: [107, 420, 280, 400], la: [107, 842, 280],
+    pf: [417, 420, 280, 400], lf: [417, 842, 280],
+    pb: [727, 420, 776, 400], lb: [727, 842, 776],
+    pi: [1533, 420, 280, 400], li: [1533, 842, 280],
+  };
+  for (const k of ['pb', 'pi', 'pf', 'pa']) { const [x, y, w, h] = L[k]; Object.assign($('#s8 .' + k).style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' }); }
+  for (const k of ['lb', 'li', 'lf', 'la']) { const [x, y, w] = L[k]; Object.assign($('#s8 .' + k).style, { left: x + 'px', top: y + 'px', width: w + 'px', textAlign: 'right' }); }
+}
+function s8(u) {
+  show($('#s8 .kick'), u, .1); show($('#s8 .ttl span'), u, .15); show($('#s8 .cap'), u, .5); show($('#s8 .tab'), u, .1, .4, 8);
+  const at = { pi: .3, pb: .6, pf: .9, pa: 1.2 };
+  for (const [k, a] of Object.entries(at)) frameTicks($('#s8 .' + k), u, a);
+  show($('#s8 .li'), u, .6, .4, 8); show($('#s8 .lb'), u, .9, .4, 8); show($('#s8 .lf'), u, 1.2, .4, 8); show($('#s8 .la'), u, 1.5, .4, 8);
+  seq('ph_il', 'ben', 'ph_il', C(u - .3) * 0.33); seq('brit', 'ben', 'brit', C(u - .6) * 0.3);
+  seq('ph_fr', 'ben', 'ph_fr', C(u - .9) * 0.3); seq('ph_au', 'ben', 'ph_au', C(u - 1.2) * 0.3);
+}
+
+/* ---------- 09 ---------- */
+function s9(u) {
+  show($('#s9 .kick'), u, .1); show($('#s9 .ttl span:nth-child(1)'), u, .15); show($('#s9 .ttl span:nth-child(2)'), u, .35); show($('#s9 .cap'), u, 2.9);
+  const sw = 2.6;
+  frameTicks($('#s9 .fc'), u, 0); seq('contact', 'ben', 'contact', C(u - .1) * 0.72);
+  const pb = R(u, sw, sw + .45);
+  op($('#s9 .fc'), Math.min(+$('#s9 .fc').style.opacity, 1 - pb)); op($('#s9 .tc'), 1 - pb);
+  show($('#s9 .tc'), u, .1, .4, 8); if (u > sw) op($('#s9 .tc'), 1 - pb);
+  op($('#s9 .wa'), pb); $('#s9 .wa').style.transform = `translateY(${((1 - pb) * 24).toFixed(1)}px)`;
+  const dot = R(u, sw + .5, sw + .6) * (1 - R(u, sw + 1.5, sw + 1.6));
+  op($('#s9 .dots'), dot); $$('#s9 .dots i').forEach((d, i) => d.style.opacity = .35 + .65 * Math.max(0, Math.sin((u * 6 - i * .9))));
+  show($('#s9 .msg'), u, sw + 1.6, .45, 18);
+  show($('#s9 .demo'), u, sw + .2, .4, 0); show($('#s9 .demo-note'), u, sw + .4, .4, 0);
+}
+
+/* ---------- 10 ---------- */
+const PLAN_H = {};
+function s10(u) {
+  show($('#s10 .kick'), u, .1); show($('#s10 .ttl span:nth-child(1)'), u, .15); show($('#s10 .ttl span:nth-child(2)'), u, .35); show($('#s10 .cap'), u, .6);
+  frameTicks($('#s10 .ph'), u, 0); show($('#s10 .shot'), u, .8, .4, 0);
+  const t0 = .5, step = 1.45; const k = Math.max(0, Math.min(4, Math.floor((u - t0) / step)));
+  const img = $('#plan'); const src = `img/plan${k + 1}.png`;
+  if (img.getAttribute('src') !== src || img.dataset.bad) { delete img.dataset.bad; img.setAttribute('src', src); pending.push(img.decode().catch(() => { img.dataset.bad = 1; FAILED = true; })); }
+  // inside a step, a slow scroll down when the screen is taller than the phone
+  const scr = $('#s10 .scr'); const sh = scr.clientHeight, sw_ = scr.clientWidth;
+  const natural = PLAN_H[k + 1] ? PLAN_H[k + 1] * sw_ / 716 : sh;
+  const loc = C((u - t0 - k * step) / step); const room = Math.max(0, Math.min(natural - sh, k === 4 ? 900 : 260));
+  img.style.transform = `translateY(${(-room * eio(C((loc - .25) / .7))).toFixed(1)}px)`;
+  $$('#s10 .st').forEach((s, i) => { show(s, u, .2 + i * .1, .35, 12); s.classList.toggle('on', u >= t0 && i === k); s.classList.toggle('done', u >= t0 && i < k); });
+}
+
+/* ---------- 11 ---------- */
+function s11(u) {
+  show($('#s11 .kick'), u, .1); show($('#s11 .ttl span:nth-child(1)'), u, .15); show($('#s11 .ttl span:nth-child(2)'), u, .35); show($('#s11 .cap'), u, .6);
+  show($('#s11 thead'), u, .3, .5, 10); show($('#s11 .r1'), u, 1.0, .5, 10); show($('#s11 .r2'), u, 2.2, .5, 10); show($('#s11 .r3'), u, 3.4, .5, 10);
+  show($('#s11 .chk'), u, 4.2, .5, 0);
+  op($('#s11 table'), 1);
+}
+
+/* ---------- 12 ---------- */
+function s12(u) {
+  show($('#s12 .big span:nth-child(1)'), u, .2, .6, 30); show($('#s12 .big span:nth-child(2)'), u, .4, .6, 30);
+  show($('#s12 .go'), u, 1.1, .5, 16); show($('#s12 .url'), u, 1.5, .5, 12);
+  $$('#s12 .langs span').forEach((s, i) => show(s, u, 2.0 + i * .1, .4, 10));
+}
+
+const SC = [
+  ['s1', 0, 7, s1], ['s2', 7, 15, s2], ['s3', 15, 22, s3], ['s4', 22, 28, s4], ['s5', 28, 35, s5], ['s6', 35, 42, s6],
+  ['s7', 42, 52, s7], ['s8', 52, 60, s8], ['s9', 60, 68, s9], ['s10', 68, 76, s10], ['s11', 76, 84, s11], ['s12', 84, 90, s12],
+];
+const XF = .45; // crossfade: the incoming scene fades in over the outgoing one
+window.render = async function (t) {
+  pending = [];
+  for (const [id, a, b, fn] of SC) {
+    const el = document.getElementById(id);
+    const vis = t >= a && t < b + XF;
+    el.style.display = vis ? 'block' : 'none';
+    if (!vis) continue;
+    el.style.opacity = a === 0 ? 1 : R(t, a, a + XF, x => x);
+    el.style.zIndex = SC.findIndex(s => s[0] === id) + 1;
+    fn(Math.max(0, t - a));
+  }
+  await Promise.all(pending);
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const ok = !FAILED; if (FAILED) FAILS++; FAILED = false;
+  return ok;
+};
+window.READY = false;
+(async () => {
+  A = await (await fetch('assets.json')).json();
+  await Promise.all([document.fonts.load('700 100px Karantina'), document.fonts.load('500 30px "IBM Plex Sans Hebrew"'), document.fonts.load('600 30px "IBM Plex Sans Hebrew"'),
+    document.fonts.load('700 30px "IBM Plex Sans Hebrew"'), document.fonts.load('500 20px "IBM Plex Mono"'), document.fonts.load('500 20px "IBM Plex Sans"'), document.fonts.load('600 20px "IBM Plex Sans Arabic"')]);
+  await document.fonts.ready;
+  await buildMap();
+  lay8();
+  for (let k = 1; k <= 5; k++) { const im = new Image(); im.src = `img/plan${k}.png`; await im.decode(); PLAN_H[k] = im.naturalHeight; }
+  await Promise.all($$('img[src]').map(i => i.decode().catch(() => {})));
+  if (Q.get('t') !== null) await window.render(parseFloat(Q.get('t')));
+  window.READY = true;
+})();
+</script>
+</body>
+</html>
