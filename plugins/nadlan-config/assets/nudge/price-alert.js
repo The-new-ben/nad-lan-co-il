@@ -196,6 +196,21 @@
 				step(2);
 			});
 		});
+		/* v106.4 (Ben 8.11.2026): a direct way to reach us, not only updates: "שיחזרו אליי" opens the form in call mode, WhatsApp opens a chat */
+		var cb = card.querySelector('input[name="callback"]'), noteBox = card.querySelector('.nlpa-note'), q2 = card.querySelector('.nlpa-q2');
+		function callMode(on) { if (cb) { cb.checked = !!on; } if (noteBox) { noteBox.hidden = !on; } if (q2) { q2.textContent = on ? 'לאן לחזור אליכם?' : 'לאן לשלוח את העדכונים?'; } }
+		if (cb) { cb.addEventListener('change', function () { callMode(cb.checked); if (cb.checked) { ev('pa_call_tick'); } }); }
+		var callme = card.querySelector('.nlpa-callme');
+		if (callme) {
+			callme.addEventListener('click', function () {
+				interest = 'call';
+				[].forEach.call(card.querySelectorAll('.nlpa-chip'), function (o) { o.setAttribute('aria-pressed', 'false'); });
+				ev('pa_call');
+				step(2); callMode(true);
+			});
+		}
+		var waS = card.querySelector('.nlpa-wa-s');
+		if (waS) { waS.addEventListener('click', function () { ev('pa_wa_direct'); setTimeout(function () { hide('done_wa'); }, 300); }); }
 		var f = card.querySelector('.nlpa-s2'), tel = card.querySelector('#nlpa-tel'), mail = card.querySelector('#nlpa-mail'), ok = card.querySelector('input[name="consent"]');
 		var go = card.querySelector('.nlpa-go'), fe = card.querySelector('.nlpa-e--form'), t0 = 0;
 		tel.addEventListener('focus', function () { if (!t0) { t0 = Date.now(); } });
@@ -230,7 +245,7 @@
 			var hp = card.querySelector('.nlpa-hp');
 			fetch(C.api, {
 				method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ id: C.id, phone: ph, email: em, consent: 1, interest: interest, trigger: trigger, sig: sigs() + ':a' + act + ':s' + vis + ':p' + pages, v: C.v, company: hp ? hp.value : '', ms: t0 ? Date.now() - t0 : 0 })
+				body: JSON.stringify({ id: C.id, phone: ph, email: em, consent: 1, interest: interest, trigger: trigger, sig: sigs() + ':a' + act + ':s' + vis + ':p' + pages, v: C.v, callback: cb && cb.checked ? 1 : 0, note: (card.querySelector('#nlpa-note') || {}).value || '', company: hp ? hp.value : '', ms: t0 ? Date.now() - t0 : 0 })
 			}).then(function (r) { return r.json().catch(function () { return { ok: false, error: 'net' }; }).then(function (j) { j.status = r.status; return j; }); })
 				.then(function (j) {
 					go.disabled = false; card.classList.remove('is-sending');
@@ -238,8 +253,9 @@
 						ev('pa_done', { pa_interest: interest, pa_trigger: trigger });
 						ev('generate_lead', { method: 'price_alert', lead_source: 'price_alert' });
 						if (!PV) { LS.s('nlpa_done', String(Date.now() + 365 * DAY)); }
-						var cf = card.querySelector('.nlpa-conf');
+						var cf = card.querySelector('.nlpa-conf'), co = card.querySelector('.nlpa-callok');
 						if (cf && j.confirm) { cf.hidden = false; }
+						if (co && j.call) { co.hidden = false; ev('pa_call_done'); }
 						step(3);
 						return;
 					}

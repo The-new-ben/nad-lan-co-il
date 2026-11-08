@@ -191,6 +191,29 @@ The highest competitor score is 2 of 8. No site checked offers an area or projec
 - **The one-step version** (fields on the first screen) is the next test.
 - **Sending is manual for now.** The sign-ups reach Ben. The automatic alert engine (`inc/near-alerts.php`) is dormant until he turns it on.
 
+## 106.3 and 106.4 (8.11.2026, 1.72.612 and 1.72.613): automatic updates, a direct line and the owner's lead mail
+Ben, 8.11.2026: "Turn the automatic updates on; what matters is that we keep their details and it sends them to us. Let a person also just contact us through the window. Send me the details in an orderly way, like a lead. Make it possible to act from the mail."
+
+- **Automatic updates.**
+  - A sign-up also asks the site's alert engine (inc/near-alerts.php), which was switched on 8.11.
+  - **Double opt-in:** one confirmation mail first; step 3 says it was sent.
+  - **On a project**, a change in its price per m², stage or units, and new listings within 1.5 km.
+  - **On a listing**, its price drop and new listings around it.
+  - The privacy policy carries the matching sentence.
+- **A direct line.**
+  - Step 1 adds a row under the three choices: "או ישר: [שיחזרו אליי] [וואטסאפ]".
+  - "שיחזרו אליי" opens the form in call mode ("לאן לחזור אליכם?"), with an optional question.
+  - The form also has "אשמח גם שיחזרו אליי לשיחה קצרה על האזור".
+  - The WhatsApp message is Ben's approved 105.7 wording.
+  - A repeat sign-up from the same person that asks for a call is never lost: it updates the first lead and mails again.
+- **The owner's lead mail.** One HTML mail per sign-up replaces the plain-text alert for these leads.
+  - **The top:** a dark strip with the city, then "ליד חדש" or "ליד חם: ביקש/ה שיחה". The phone in 34 px, tap to call, then the email.
+  - **Three buttons:** התקשר, וואטסאפ, מייל.
+  - **The facts:** what interests them, the request, their question, area, page, behaviour before signing up, the updates status, time.
+  - **Two signed actions** that work from the mail with no login: "חזרתי אליו" and "לא רלוונטי". The link opens one confirm button, so a mail scanner changes nothing; the click marks the lead's status and the audit log.
+  - **Links:** the lead in the admin, and the Excel of all sign-ups.
+- **The Excel export:** Settings › חלון עדכוני מחירים, "הורדת כל הנרשמים (Excel)".
+
 ## Pressed live (8.11.2026, Chrome, 1.72.609 and 1.72.610)
 - **Desktop 1366:** the modal opens over a 55% scrim. Focus moves in and the floating bar steps aside.
   - Step 1, then step 2, then the empty-form errors (three, in Hebrew).

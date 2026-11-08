@@ -4788,3 +4788,9 @@ RELEASE DONE 1.72.611 (HAD-684 price-alert behaviour model): released and verifi
 RELEASE LOCK 1.72.612 (HAD-684 alerts-engine link: swaps inc/price-nudge.php, assets/nudge/price-alert.js + .css; nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 21:18. (The buying-guide session waits for DONE.)
 RELEASE DONE 1.72.612 (HAD-684 alerts-engine link): released and verified by deploy612.py (deploy-result-612.json): health 1.72.612; 3 files served/loaded; 1,103 page rows OK incl. the confirmation line and its js/css; the route refuses bad input; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 21:32.
 CONTENT LOCK 8.11.2026 HAD-684: privacy policy page 396, two exact edits (mail-sending service; the price-update/alerts sentence) via scripts/project-stage/cms612_privacy.py (backup + --undo). Claude [79a63961, Opus 5.5] 21:32.
+CONTENT DONE 8.11.2026 HAD-684: page 396 privacy sentence live (public check OK); alerts engine switched ON in Settings > מייל יוצא (near-alerts route answers, finder carries nlna-cfg). Lock released. Claude [79a63961, Opus 5.5] 21:33.
+
+RELEASE LOCK 1.72.613 (HAD-684 lead mail + direct contact: swaps inc/price-nudge.php, assets/nudge/price-alert.js + .css; nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 22:20. (buying-guide-re and owner-emails-v2 wait for DONE.)
+RELEASE DONE 1.72.613 (HAD-684 lead mail + direct contact): released and verified by deploy613.py (deploy-result-613.json): health 1.72.613; 3 files; 1,106 page rows OK; the alerts checks now prove the ON state (Ben 8.11); a forged pa-act link answers "הקישור אינו בתוקף"; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 22:38.
+
+RELEASE LOCK 1.72.614 (HAD-687 OwnerMail v1: new inc/owner-mail.php; swaps inc/alerts.php + inc/owner-morning.php; nadlan-config.php version only; no post, page, option or meta). Claude [owner-emails-v2, Opus 5.5] 8.11.2026 22:38.

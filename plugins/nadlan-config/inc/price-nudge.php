@@ -305,6 +305,108 @@ add_action( 'admin_post_nadlan_pa_csv', function () {
 	exit;
 } );
 
+/* ---------- the owner's lead mail (v106.4, Ben 8.11.2026: "תשלח לי את הפרטים בצורה מסודרת... כמו ליד, כדי ליצור איתו קשר...
+   שיהיה אפשר לבצע פעולות דרך המייל"): one HTML mail per sign-up, the phone first, one tap to call / WhatsApp / mail, the facts,
+   and two signed actions that work from the mail with no login ("חזרתי אליו", "לא רלוונטי"). It replaces the plain-text alert
+   of inc/alerts.php for these leads (that one is unscheduled at insert). ---------- */
+if ( ! function_exists( 'nadlan_pa_sig' ) ) {
+	function nadlan_pa_sig( $lid, $a ) { return substr( hash_hmac( 'sha256', 'pa|' . (int) $lid . '|' . $a, wp_salt( 'nonce' ) ), 0, 24 ); }
+	function nadlan_pa_act_url( $lid, $a ) { return add_query_arg( array( 'l' => (int) $lid, 'a' => $a, 's' => nadlan_pa_sig( $lid, $a ) ), rest_url( 'nadlan/v1/pa-act' ) ); }
+}
+if ( ! function_exists( 'nadlan_pa_owner_mail' ) ) {
+	function nadlan_pa_owner_mail( $lid ) {
+		$to = (string) get_option( 'admin_email' );
+		if ( ! is_email( $to ) ) { return false; }
+		$m      = function ( $k ) use ( $lid ) { return (string) get_post_meta( $lid, $k, true ); };
+		$phone  = $m( 'phone' );
+		$email  = $m( 'email' );
+		$city   = $m( 'city' );
+		$pid    = (int) $m( 'project_wp_id' );
+		$ptitle = $pid ? wp_strip_all_tags( get_the_title( $pid ) ) : '';
+		$call   = '1' === $m( 'pa_callback' );
+		$ints   = array( 'buy' => 'קנייה באזור', 'own' => 'יש לו/ה נכס באזור', 'invest' => 'השקעה', 'call' => 'ביקש/ה שיחה' );
+		$int    = $ints[ $m( 'pa_interest' ) ] ?? '';
+		$note   = $m( 'pa_note' );
+		$intl   = '972' . ltrim( $phone, '0' );
+		$pretty = strlen( $phone ) === 10 ? substr( $phone, 0, 3 ) . '-' . substr( $phone, 3 ) : $phone;
+		$beh    = '';
+		if ( preg_match( '/^([a-z+]*):a(\d+):s(\d+):p(\d+)$/', $m( 'pa_signals' ), $sm ) ) {
+			$names = array( 'read' => 'קרא את העמוד', 'price' => 'ראה מחירים', 'explore' => 'השתמש בכלים בעמוד', 'pause' => 'עצר לקרוא', 'ret' => 'עבר לעמוד נוסף' );
+			$said  = array();
+			foreach ( array_filter( explode( '+', $sm[1] ) ) as $s ) { if ( isset( $names[ $s ] ) ) { $said[] = $names[ $s ]; } }
+			$beh = (int) $sm[2] . ' שניות פעילות, עמוד ' . (int) $sm[4] . ' בביקור' . ( $said ? ': ' . implode( ', ', $said ) : '' );
+		}
+		$al     = array( 'confirm-sent' => 'נשלח אליו מייל אישור; אחרי לחיצה יקבל עדכונים אוטומטיים', 'off' => 'מנוע העדכונים כבוי', 'no-point' => 'לעמוד אין נקודה על המפה' );
+		$sans   = "'IBM Plex Sans Hebrew',Arial,Helvetica,sans-serif";
+		$btn    = function ( $url, $txt, $bg, $fg = '#FFFFFF' ) use ( $sans ) {
+			return '<a href="' . esc_url( $url ) . '" style="display:inline-block;margin:0 0 8px 8px;background:' . $bg . ';color:' . $fg . ';border:1px solid ' . ( '#FFFFFF' === $bg ? '#B8C2C9' : $bg ) . ';font-family:' . $sans . ';font-weight:700;font-size:16px;line-height:20px;padding:13px 18px;border-radius:8px;text-decoration:none">' . esc_html( $txt ) . '</a>';
+		};
+		$row    = function ( $k, $v ) { return '' === $v ? '' : '<tr><td style="padding:7px 0;width:120px;color:#5E6A75;font-size:14px;vertical-align:top">' . esc_html( $k ) . '</td><td style="padding:7px 0;font-size:15px;color:#12202A">' . $v . '</td></tr>'; };
+		$facts  = $row( 'מה מעניין', esc_html( $int ) )
+			. ( $call ? $row( 'בקשה', '<b style="color:#B3261E">רוצה שיחה חוזרת</b>' ) : '' )
+			. ( '' !== $note ? $row( 'שאל/ה', esc_html( $note ) ) : '' )
+			. $row( 'אזור', esc_html( $city ) )
+			. ( $pid ? $row( 'עמוד', '<a href="' . esc_url( get_permalink( $pid ) ) . '" style="color:#2F6F86">' . esc_html( $ptitle ) . '</a>' ) : '' )
+			. $row( 'לפני ההרשמה', esc_html( $beh ) )
+			. $row( 'עדכונים', esc_html( $al[ $m( 'pa_alerts' ) ] ?? $m( 'pa_alerts' ) ) )
+			. $row( 'זמן', esc_html( get_the_date( 'j.n.Y H:i', $lid ) ) );
+		$h1     = $call ? 'ליד חם: ביקש/ה שיחה' : 'ליד חדש: נרשם/ה לעדכוני מחירים';
+		$html   = '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>'
+			. '<body style="margin:0;padding:0;background:#F6F8F9"><div style="display:none;max-height:0;overflow:hidden">' . esc_html( $pretty . ' · ' . $city . ' · ' . $int ) . '</div>'
+			. '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F6F8F9"><tr><td align="center" style="padding:18px 10px">'
+			. '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" dir="rtl" style="max-width:560px;font-family:' . $sans . ';color:#12202A;text-align:right;background:#FFFFFF;border:1px solid #D3DCE2;border-radius:12px">'
+			. '<tr><td style="background:#10262F;border-radius:12px 12px 0 0;padding:14px 18px;color:#CFE3EA;font-size:13px;font-weight:700">נדל״ן · חלון עדכוני מחירים · ' . esc_html( $city ) . '</td></tr>'
+			. '<tr><td style="padding:18px 18px 6px"><div style="font-size:15px;color:#5E6A75;font-weight:700">' . esc_html( $h1 ) . '</div>'
+			. '<div style="font-size:34px;line-height:40px;font-weight:800;letter-spacing:.5px;margin:6px 0 2px" dir="ltr"><a href="tel:' . esc_attr( $phone ) . '" style="color:#12202A;text-decoration:none">' . esc_html( $pretty ) . '</a></div>'
+			. '<div style="font-size:15px;margin:0 0 14px" dir="ltr"><a href="mailto:' . esc_attr( $email ) . '" style="color:#2F6F86">' . esc_html( $email ) . '</a></div>'
+			. $btn( 'tel:' . $phone, 'התקשר', '#2F6F86' ) . $btn( 'https://wa.me/' . $intl, 'וואטסאפ', '#0F7A63' ) . $btn( 'mailto:' . $email, 'מייל', '#FFFFFF', '#12202A' ) . '</td></tr>'
+			. '<tr><td style="padding:4px 18px 8px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #E3E1DA">' . $facts . '</table></td></tr>'
+			. '<tr><td style="padding:10px 18px 18px;border-top:1px solid #E3E1DA"><div style="font-size:13px;color:#5E6A75;margin:0 0 8px">אחרי שטיפלת, לחיצה אחת מעדכנת את הליד באתר:</div>'
+			. $btn( nadlan_pa_act_url( $lid, 'contacted' ), 'חזרתי אליו', '#12202A' ) . $btn( nadlan_pa_act_url( $lid, 'lost' ), 'לא רלוונטי', '#FFFFFF', '#5E6A75' )
+			. '<div style="font-size:12px;color:#5E6A75;margin-top:6px"><a href="' . esc_url( admin_url( 'post.php?post=' . (int) $lid . '&action=edit' ) ) . '" style="color:#5E6A75">פתיחה בניהול</a> · <a href="' . esc_url( admin_url( 'options-general.php?page=nadlan-nudge' ) ) . '" style="color:#5E6A75">כל הנרשמים (Excel)</a></div></td></tr>'
+			. '</table></td></tr></table></body></html>';
+		$subj = ( $call ? 'ליד חם · ביקש/ה שיחה · ' : 'ליד חדש · עדכוני מחירים · ' ) . $city . ( '' !== $int && ! $call ? ' · ' . $int : '' ) . ' · ' . $pretty;
+		$ok = wp_mail( $to, $subj, $html, array( 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . $email ) );
+		update_post_meta( $lid, 'pa_owner_mail', $ok ? 'sent ' . gmdate( 'Y-m-d H:i' ) : 'failed ' . gmdate( 'Y-m-d H:i' ) );
+		return $ok;
+	}
+}
+add_action( 'rest_api_init', function () {
+	/* admin only: send the owner mail of one price-alert lead again (the check after a release, or a lost mail) */
+	register_rest_route( 'nadlan/v1', '/pa-resend', array( 'methods' => 'POST', 'permission_callback' => function () { return current_user_can( 'manage_options' ); }, 'callback' => function ( $req ) {
+		$lid = (int) $req->get_param( 'l' );
+		if ( 'nadlan_lead' !== get_post_type( $lid ) || 'price_alert' !== (string) get_post_meta( $lid, 'utm_source', true ) ) { return new WP_REST_Response( array( 'ok' => false ), 200 ); }
+		return new WP_REST_Response( array( 'ok' => (bool) nadlan_pa_owner_mail( $lid ), 'to' => (string) get_option( 'admin_email' ) ), 200 );
+	} ) );
+	/* the two actions from the mail: GET shows one button (a mail scanner opening the link changes nothing), POST acts */
+	register_rest_route( 'nadlan/v1', '/pa-act', array( 'methods' => array( 'GET', 'POST' ), 'permission_callback' => '__return_true', 'callback' => function ( $req ) {
+		$lid = (int) $req->get_param( 'l' );
+		$a   = (string) $req->get_param( 'a' );
+		$s   = (string) $req->get_param( 's' );
+		$lbl = array( 'contacted' => 'חזרתי אליו', 'lost' => 'לא רלוונטי' );
+		$page = function ( $t, $body, $code = 200 ) {
+			status_header( $code ); nocache_headers(); header( 'Content-Type: text/html; charset=utf-8' );
+			echo '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>' . esc_html( $t ) . '</title></head>'
+				. '<body style="margin:0;font-family:Assistant,Arial,sans-serif;background:#F6F8F9;color:#12202A"><div style="max-width:460px;margin:40px auto;padding:22px;background:#fff;border:1px solid #D3DCE2;border-radius:12px">'
+				. '<p style="margin:0 0 6px;font-size:13px;color:#5E6A75;font-weight:700">נדל״ן · ניהול לידים</p><h1 style="margin:0 0 12px;font-size:24px">' . esc_html( $t ) . '</h1>' . $body . '</div></body></html>'; // phpcs:ignore
+			exit;
+		};
+		if ( ! $lid || ! isset( $lbl[ $a ] ) || ! hash_equals( nadlan_pa_sig( $lid, $a ), $s ) || 'nadlan_lead' !== get_post_type( $lid ) ) {
+			$page( 'הקישור אינו בתוקף', '<p>אפשר לטפל בליד מתוך הניהול באתר.</p>' ); // 200: the uPress edge swaps a PHP 403 for its own page
+		}
+		$who = esc_html( (string) get_post_meta( $lid, 'phone', true ) );
+		if ( 'POST' !== $req->get_method() ) {
+			$page( $lbl[ $a ] . '?', '<p>הליד ' . $who . '</p><form method="post"><input type="hidden" name="l" value="' . $lid . '"><input type="hidden" name="a" value="' . esc_attr( $a ) . '"><input type="hidden" name="s" value="' . esc_attr( $s ) . '">'
+				. '<button type="submit" style="font:700 17px Assistant,Arial,sans-serif;background:#2F6F86;color:#fff;border:0;border-radius:10px;padding:14px 22px;cursor:pointer">כן, ' . esc_html( $lbl[ $a ] ) . '</button></form>' );
+		}
+		$old = (string) get_post_meta( $lid, 'lead_status', true );
+		update_post_meta( $lid, 'lead_status', $a );
+		update_post_meta( $lid, 'pa_action_at', gmdate( 'Y-m-d H:i' ) . ' ' . $a );
+		if ( function_exists( 'nadlan_lead_e2e_audit' ) ) { nadlan_lead_e2e_audit( array( 'lead_id' => $lid, 'card_id' => 0, 'user_id' => 0, 'old' => $old, 'new' => $a ) ); }
+		$page( 'עודכן: ' . $lbl[ $a ], '<p>הליד ' . $who . ' סומן "' . esc_html( $lbl[ $a ] ) . '". אפשר לסגור את העמוד.</p>' );
+	} ) );
+} );
+
 /* ---------- the sign-up ---------- */
 if ( ! function_exists( 'nadlan_pa_phone' ) ) {
 	/** an Israeli number as 05XXXXXXXX / 0XXXXXXXX, or '' */
@@ -336,8 +438,10 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 		$cl = function_exists( 'nadlan_hardening_client_key' ) ? nadlan_hardening_client_key() : 'ip' . md5( substr( (string) ( $_SERVER['REMOTE_ADDR'] ?? '' ), 0, 80 ) ); // phpcs:ignore -- hashed, never stored
 		$lim = function ( $k, $max, $win ) { $k = 'nadlan_pa_rl_' . md5( $k ); $n = (int) get_transient( $k ); if ( $n >= $max ) { return false; } set_transient( $k, $n + 1, $win ); return true; };
 		if ( ! $lim( 'c|' . $cl, 6, HOUR_IN_SECONDS ) || ! $lim( 'e|' . strtolower( $email ), 4, DAY_IN_SECONDS ) ) { return $r( array( 'ok' => false, 'error' => 'rate' ), 429 ); }
-		$interest = in_array( (string) ( $p['interest'] ?? '' ), array( 'buy', 'own', 'invest' ), true ) ? (string) $p['interest'] : '';
-		$labels   = array( 'buy' => 'קנייה באזור', 'own' => 'יש לי נכס באזור', 'invest' => 'השקעה', '' => '' );
+		$interest = in_array( (string) ( $p['interest'] ?? '' ), array( 'buy', 'own', 'invest', 'call' ), true ) ? (string) $p['interest'] : '';
+		$labels   = array( 'buy' => 'קנייה באזור', 'own' => 'יש לי נכס באזור', 'invest' => 'השקעה', 'call' => 'ביקש/ה שיחה', '' => '' );
+		$callback = ! empty( $p['callback'] ) || 'call' === $interest; // v106.4 (Ben 8.11.2026): "לאפשר לפנות אלינו סתם כי הוא רוצה לפנות"
+		$note     = mb_substr( sanitize_textarea_field( (string) ( $p['note'] ?? '' ) ), 0, 400 );
 		$trigger  = substr( sanitize_key( (string) ( $p['trigger'] ?? '' ) ), 0, 20 );
 		$signals  = substr( preg_replace( '/[^a-z0-9+:]/', '', strtolower( (string) ( $p['sig'] ?? '' ) ) ), 0, 80 ); // e.g. read+price:a31:s44:p2
 		$tr       = nadlan_pa_trend( $id );
@@ -345,7 +449,15 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 		$dup = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'posts_per_page' => 1, 'fields' => 'ids', 'no_found_rows' => true, 'suppress_filters' => true,
 			'date_query' => array( array( 'after' => '1 day ago' ) ),
 			'meta_query' => array( array( 'key' => 'utm_source', 'value' => 'price_alert' ), array( 'key' => 'email', 'value' => $email ), array( 'key' => 'project_wp_id', 'value' => (string) $id ) ) ) );
-		if ( $dup ) { return $r( array( 'ok' => true, 'again' => true ) ); }
+		if ( $dup ) {
+			if ( $callback && '1' !== (string) get_post_meta( (int) $dup[0], 'pa_callback', true ) ) { // the same person now asks for a call: never lose it
+				update_post_meta( (int) $dup[0], 'pa_callback', '1' );
+				update_post_meta( (int) $dup[0], 'goal', 'בקשת שיחה + עדכוני מחירים' );
+				if ( '' !== $note ) { update_post_meta( (int) $dup[0], 'pa_note', $note ); }
+				nadlan_pa_owner_mail( (int) $dup[0] );
+			}
+			return $r( array( 'ok' => true, 'again' => true, 'call' => $callback ) );
+		}
 		$where = '' !== $tr['city'] ? $tr['city'] : 'האזור';
 		/* the behaviour before the sign-up, in words for the owner's mail (first 200 characters of the content are mailed) */
 		$beh = '';
@@ -358,14 +470,17 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 		$lid = wp_insert_post( array(
 			'post_type'    => 'nadlan_lead',
 			'post_status'  => 'private',
-			'post_title'   => 'עדכוני מחירים · ' . $where . ' · ' . current_time( 'Y-m-d H:i' ),
-			'post_content' => ( '' !== $labels[ $interest ] ? 'מעניין אותו/ה: ' . $labels[ $interest ] . ".\n" : '' ) . $beh . 'נרשם/ה לעדכוני מחירים מהעמוד ' . get_permalink( $id ),
+			'post_title'   => ( $callback ? 'בקשת שיחה + עדכוני מחירים · ' : 'עדכוני מחירים · ' ) . $where . ' · ' . current_time( 'Y-m-d H:i' ),
+			'post_content' => ( $callback ? "ביקש/ה שיחה חוזרת.\n" : '' ) . ( '' !== $note ? 'שאל/ה: ' . $note . "\n" : '' ) . ( '' !== $labels[ $interest ] && 'call' !== $interest ? 'מעניין אותו/ה: ' . $labels[ $interest ] . ".\n" : '' ) . $beh . 'נרשם/ה לעדכוני מחירים מהעמוד ' . get_permalink( $id ),
 		), true );
 		if ( is_wp_error( $lid ) || ! $lid ) { return $r( array( 'ok' => false, 'error' => 'store' ), 500 ); }
+		wp_clear_scheduled_hook( 'nadlan_lead_rich_alert', array( (int) $lid ) ); // the owner gets nadlan_pa_owner_mail() instead of the plain-text alert
 		$meta = array(
 			'phone'            => $phone,
 			'email'            => $email,
-			'goal'             => 'עדכוני מחירים',
+			'goal'             => $callback ? 'בקשת שיחה + עדכוני מחירים' : 'עדכוני מחירים',
+			'pa_callback'      => $callback ? '1' : '',
+			'pa_note'          => $note,
 			'topic'            => 'price_alert',
 			'utm_source'       => 'price_alert',
 			'source_url'       => get_permalink( $id ),
@@ -417,11 +532,17 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 			}
 		}
 		update_post_meta( $lid, 'pa_alerts', $alerts );
-		return $r( array( 'ok' => true, 'confirm' => 'confirm-sent' === $alerts ) );
+		nadlan_pa_owner_mail( (int) $lid );
+		return $r( array( 'ok' => true, 'confirm' => 'confirm-sent' === $alerts, 'call' => $callback ) );
 	}
 }
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/price-alert', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => 'nadlan_pa_signup' ) );
+} );
+add_filter( 'nadlan_hardening_public_post_routes', function ( $r ) { // the site's generic public-POST limit (inc/final-hardening.php)
+	$r[] = '#^/nadlan/v1/price-alert$#';
+	$r[] = '#^/nadlan/v1/pa-act$#';
+	return $r;
 } );
 
 /* ---------- the page ---------- */
@@ -449,6 +570,7 @@ add_action( 'wp_footer', function () {
 	$city = $tr['city'];
 	$in   = '' !== $city ? 'ב' . $city : 'באזור';
 	$wa   = function_exists( 'nadlan_cta_whatsapp_number' ) ? (string) nadlan_cta_whatsapp_number() : '';
+	$wa1  = '' !== $wa ? 'https://wa.me/' . rawurlencode( $wa ) . '?text=' . rawurlencode( 'שלום, אשמח לקבל עדכון על מחירי הנדל״ן באזור. הגעתי מהעמוד: ' . get_permalink( $id ) ) : ''; // Ben's 105.7 wording
 	$wa   = '' !== $wa ? 'https://wa.me/' . rawurlencode( $wa ) . '?text=' . rawurlencode( 'שלום, נרשמתי לעדכוני המחירים באתר ואשמח לשאול שאלה. הגעתי מהעמוד: ' . get_permalink( $id ) ) : '';
 	$cfg  = array(
 		'id' => $id, 't' => $type, 'api' => esc_url_raw( rest_url( 'nadlan/v1/price-alert' ) ),
@@ -486,11 +608,14 @@ add_action( 'wp_footer', function () {
 				<button type="button" class="nlpa-chip" data-i="own">יש לי נכס באזור</button>
 				<button type="button" class="nlpa-chip" data-i="invest">השקעה</button>
 			</div>
+			<div class="nlpa-or"><span>או ישר:</span><button type="button" class="nlpa-callme">שיחזרו אליי</button><?php if ( '' !== $wa1 ) : ?><a class="nlpa-wa-s" href="<?php echo esc_url( $wa1 ); ?>" target="_blank" rel="noopener">וואטסאפ</a><?php endif; ?></div>
 		</div>
 		<form class="nlpa-s2" novalidate>
 			<p class="nlpa-q2">לאן לשלוח את העדכונים?</p>
 			<div class="nlpa-f"><label for="nlpa-tel">טלפון נייד</label><p class="nlpa-hint" id="nlpa-tel-h">לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.</p><input id="nlpa-tel" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" dir="ltr" placeholder="050-1234567" maxlength="20" required aria-describedby="nlpa-tel-h nlpa-tel-e"><p class="nlpa-e" id="nlpa-tel-e" aria-live="polite"></p></div>
 			<div class="nlpa-f"><label for="nlpa-mail">אימייל</label><input id="nlpa-mail" name="email" type="email" inputmode="email" autocomplete="email" dir="ltr" placeholder="name@gmail.com" maxlength="100" required aria-describedby="nlpa-mail-e"><p class="nlpa-e" id="nlpa-mail-e" aria-live="polite"></p></div>
+			<label class="nlpa-ok nlpa-cb"><input type="checkbox" name="callback" value="1"><span>אשמח גם שיחזרו אליי לשיחה קצרה על האזור</span></label>
+			<div class="nlpa-f nlpa-note" hidden><label for="nlpa-note">מה תרצו לשאול? (לא חובה)</label><textarea id="nlpa-note" name="note" rows="2" maxlength="400"></textarea></div>
 			<label class="nlpa-ok"><input type="checkbox" name="consent" value="1" required aria-describedby="nlpa-ok-e"><span><?php echo esc_html( nadlan_pa_consent_text() ); ?></span></label>
 			<p class="nlpa-e" id="nlpa-ok-e" aria-live="polite"></p>
 			<input class="nlpa-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -502,6 +627,7 @@ add_action( 'wp_footer', function () {
 			<svg class="nlpa-check" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="18" fill="#eaf4ef" stroke="#2e7d5b" stroke-width="2"/><path d="M12.5 20.5l5 5 10-11" fill="none" stroke="#2e7d5b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 			<p class="nlpa-done" tabindex="-1">נרשמתם לעדכוני המחירים</p>
 			<p class="nlpa-sub2">נעדכן אתכם כשהמחירים <?php echo esc_html( $in ); ?> זזים. רוצים תשובה כבר עכשיו?</p>
+			<p class="nlpa-callok" hidden>קיבלנו גם את הבקשה לשיחה: נחזור אליכם בהקדם למספר שמסרתם.</p>
 			<p class="nlpa-conf" hidden>שלחנו לכם מייל קצר. לחיצה אחת בו מפעילה את העדכונים האוטומטיים (אם הוא לא מגיע, הציצו בספאם).</p>
 			<?php if ( '' !== $wa ) : ?><a class="nlpa-wa" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>דברו איתנו בוואטסאפ</a><?php endif; ?>
 			<button type="button" class="nlpa-later">סגירה</button>
