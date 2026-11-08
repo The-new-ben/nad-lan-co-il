@@ -51,20 +51,64 @@ A price-alert window for every Hebrew project page and listing. It carries an at
 - **Step 3:** "נרשמתם לעדכוני המחירים", then "נעדכן אתכם כשהמחירים ב{עיר} זזים. רוצים תשובה כבר עכשיו?", a "דברו איתנו בוואטסאפ" button and "סגירה". "ייעוץ חינם" stays on the floating bar only.
 - **Independence line:** "אתר מידע עצמאי, לא מטעם יזם או מתווך."
 
-## When it appears (all thresholds are settings)
-- **Never on arrival.** The floor is 12 s of the page being visible.
-- **Then the first of these:**
-  - one screen or 25% of the page read;
-  - a price (₪) in view for 2.5 s;
-  - the pointer leaving through the top (desktop);
-  - a fast scroll back up after 1.5 screens;
-  - a return to the tab after 15 s away.
-- **Never:**
-  - while a field has focus;
-  - in full screen;
-  - while another dialog is open;
-  - after a WhatsApp tap on this visit;
-  - on a page that is not Hebrew.
+## When it appears: the behaviour model (106.2, 1.72.611)
+Ben, 8.11.2026: "Too fast, too aggressive. Wait at least 10-15 s, let them search and look, then pop it. Smart, by behaviour. Prove the method."
+
+A clock alone is not a reason. A founder showed a fixed 20 s popup to all 80,000 visitors and got 0.1%; the same box inside the page got 0.5% (IndieHackers, 2022). So the window waits for four things. All thresholds are settings.
+
+1. **A floor: 15 s of the page being visible.** It never opens earlier, whatever happens.
+2. **Active time: 25 s on the first project or listing page of a visit, 15 s from the second page on.**
+   - A second counts only while the tab is visible AND the reader scrolled, touched, moved or typed in the last 15 s. A tab left open does not count.
+   - Evidence:
+     - Klaviyo and Shopify practitioners: "delay until 30 seconds or the second page view".
+     - Wisepops' best delay bucket is 11 to 15 s, and it reports a page-2 trigger at +39%.
+     - Kivetz et al. 2006 (goal gradient): motivation grows with progress, so ask deep in the visit.
+3. **Evidence of looking: 2 signals out of 5.**
+   - The five signals:
+     - **read:** 1.5 screens or 30% of the page;
+     - **price:** a ₪ figure on screen for 2 s;
+     - **explore:** a tap on the page's own tools (a tab, the gallery, the map, the 3D stage, the plans);
+     - **pause:** a 6 s stop to read after a screen;
+     - **return:** the 2nd project or listing page of the visit.
+   - Evidence:
+     - Freedman and Fraser 1966: a small earlier action raised agreement to the big one from 17% to 76% (foot in the door; consistency).
+     - Organic Aromas: a popup "after three clicks" or on exit brought subscribers who bought more often (14.1% and 19.03%).
+     - Real-estate tools ask after 1 to 2 listing views (BoomTown at the 2nd, IDX Broker "request after the 1st or 2nd").
+4. **A natural break.** Even when ready, it waits until:
+   - scrolling stopped for 1.5 s;
+   - no finger or button is down;
+   - no text is selected, no field is focused, no video is playing.
+   - Evidence:
+     - Adamczyk and Bailey (CHI 2004): the best moment brought 56% less annoyance than the worst and 43% less than a random timer.
+     - Bailey and Konstan 2006: mid-task interruption gave 31% to 106% more annoyance and twice the errors.
+     - Iqbal and Bailey 2008: frustration was 2.6 at a breakpoint against 5.5 mid-action.
+     - Edwards, Li and Lee 2002 (pop-up ads, about 373 people): show them "only at breaks in content".
+     - Yahoo! JAPAN 2017 (687,840 users): waiting for a break cut response time 49.7% and raised clicks.
+
+**Leaving signals are the last chance.** They need the floor and one signal: the pointer out through the top (desktop), a fast run back to the top after 2 screens (phone), a return to the tab after 15 s away.
+
+**A visitor who never engages never sees it.**
+
+**Never:**
+- while a field has focus;
+- in full screen;
+- while another dialog is open;
+- after a WhatsApp tap on this visit;
+- on a page that is not Hebrew.
+
+**Measured, not assumed:**
+- `pa_shown` carries the trigger, the active seconds, the page seconds, the signals and the page number.
+- Every sign-up stores the same, and Ben's mail says it in words, for example "לפני ההרשמה: 31 שניות פעילות מתוך 44, עמוד 2 בביקור; ראה מחירים, עצר לקרוא".
+- The 10% holdout shows the lift.
+
+**Checking links:**
+- `?nudge=show`: only a look at the design, after 2 s.
+- `?nudge=fresh`: the real timing as a new visitor, with a small live meter at the top: seconds, active time, signals, and "מחכה לרגע שקט" until the window opens.
+
+**Tested before release** (the real markup, CSS and JS on a long page; phone 375):
+- idle for 41 s: never opened;
+- skimming continuously for 27 s: active 26 of 25, but one signal (read), so it did not open;
+- the same reader then stopped to read: it opened at 31 s active with read and pause (`pa_trigger: engaged`).
 - **How often:**
   - once a session, and at most twice in 30 days;
   - 3 days of quiet after a close, 1 day if it was ignored (30 s untouched on a phone);

@@ -865,13 +865,13 @@ CHECKS = [
     ('/projects/hamedina/?t610f=1', ['id="nlrp"', 'בצפון החדש, סביבת כיכר המדינה'], ['Fatal error', 'בהצפון']),
     ('/projects/zohi-sde-dov/?t610r=1', ['class="nlkit', 'id="nlrp"'], ['Fatal error']),
     ('/projects/einstein-19/?t610f=1', ['class="nlkit', 'id="nlrp"', 'class="nlfx"'], ['Fatal error']),
-    ('/projects/rainbow-tel-aviv/?t610n=1', ['class="nlps-page"', 'id="nlcta"'], ['id="nlnu"', 'nadlan-nudge-js']),
+    ('/projects/rainbow-tel-aviv/?t610n=1', ['class="nlps-page"', 'id="nlcta"', 'id="nlnu"'], ['nadlan-nudge-js']),  # Ben 8.11.2026: the v106 window on Rainbow too (cms610_rainbow.py)
     ('/properties/kochav-hatzafon-new-mini-penthouse-for-sale/?t610n=1', ['<h1'], ['id="nlnu"', 'nadlan-nudge-js', 'price-alert.js', 'Fatal error']),
     ('/projects/philharmonit/?t610p=1', ['id="nlfx"', 'הפילהרמונית במספרים', 'id="nlrp"', 'מחירי הדירות סביב הפילהרמונית', 'class="nlkit', '<h1'], ['Fatal error']),
     ('/projects/reading-31-33/?t610p=1', ['id="nlfx"', 'אביב ברדינג במספרים', 'id="nlrp"', 'מחירי הדירות סביב אביב ברדינג', 'class="nlkit', '<h1'], ['Fatal error']),
     ('/projects/zohi-sde-dov/?t610e=1', ['id="nlnu"', 'נדל״ן · nad-lan.co.il', '<b>לקבלת מחירים, תוכניות והטבות</b>'], ['Fatal error']),
     ('/projects/philharmonit/?t610e=1', ['id="nlnu"', '<b>לקבלת מחירים, תוכניות והטבות</b>'], ['Fatal error']),
-    ('/projects/rainbow-tel-aviv/?t610e=1', ['<b>לקבלת מחירים, תוכניות והטבות</b>'], ['id="nlnu"']),
+    ('/projects/rainbow-tel-aviv/?t610e=1', ['<b>לקבלת מחירים, תוכניות והטבות</b>', 'id="nlnu"'], []),  # Ben 8.11.2026: Rainbow on
     ('/projects/ashira-sde-dov/?t610e=1', [], ['id="nlnu"']),
     ('/properties/tzukei-aviv-3-rooms-berlin-for-sale/?t610e=1', ['<h1'], ['id="nlnu"', 'price-alert.js', 'Fatal error']),
     ('/advertise/?t610f=1', ['class="nladt'], ['Fatal error', 'החודש הראשון חינם', 'הראשון חינם']),
@@ -1389,7 +1389,7 @@ CHECKS = [
 CHECKS += [
     ('/projects/%d7%94%d7%92%d7%a4%d7%9f-8-10-%d7%a8%d7%92/?t610p=1', ['id="nlnu"', 'id="nlpa-tpl"', 'assets/nudge/price-alert.js?ver=1.72.610', 'assets/nudge/price-alert.css?ver=1.72.610', 'המחירים באזור זה במגמת שינוי', 'class="nlpa-tick"', 'כן, עדכנו אותי', 'נדל״ן · nad-lan.co.il', 'info@nad-lan.co.il', 'אתר מידע עצמאי, לא מטעם יזם או מתווך.', '&quot;id&quot;:2415'], ['nadlan-nudge-js', 'class="nlnu-wa"', 'Fatal error']),
     ('/projects/zohi-sde-dov/?t610p=1', ['id="nlnu"', 'id="nlpa-tpl"', 'class="nlpa-tick"', 'class="nlpa-city"'], ['nadlan-nudge-js', 'Fatal error']),
-    ('/projects/rainbow-tel-aviv/?t610p=1', ['class="nlps-page"'], ['id="nlnu"', 'price-alert.js']),
+    ('/projects/rainbow-tel-aviv/?t610p=1', ['class="nlps-page"', 'id="nlnu"', 'class="nlpa-tick"', 'price-alert.js?ver='], ['nadlan-nudge-js']),  # Ben 8.11.2026: Rainbow on (box 'on')
     ('/projects/ashira-sde-dov/?t610p=1', ['nadlan-project-article'], ['id="nlnu"', 'price-alert.js']),
     ('/properties/yavne-el-villa-4-rooms-for-sale/?t610p=1', ['<h1'], ['id="nlnu"', 'price-alert.js']),
     ('/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/?t610p=1', ['id="nlnu"', 'id="nlpa-tpl"', 'class="nlpa-tick"', 'המחירים באזור זה במגמת שינוי'], ['Fatal error']),

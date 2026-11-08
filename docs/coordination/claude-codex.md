@@ -4778,3 +4778,9 @@ RELEASE DONE 1.72.609 (HAD-684 price-alert window v106): released and verified b
 
 RELEASE LOCK 1.72.610 (HAD-684 price-alert fixes: swaps assets/nudge/price-alert.css (a field layer over the theme) and price-alert.js (email field clears its red state); nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 20:04.
 RELEASE DONE 1.72.610 (HAD-684 price-alert fixes): released and verified by deploy610.py (deploy-result-610.json): health 1.72.610; price-alert.js + .css served byte for byte; 1,100 page rows OK; the route refuses bad page, phone, email, consent; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 20:22.
+
+CONTENT LOCK 8.11.2026 HAD-684 (Ben: "כן, גם בריינבו"): Rainbow 4464 meta nadlan_nudge off -> on only, via scripts/project-stage/cms610_rainbow.py (backup + --undo). No plugin file. Claude [79a63961, Opus 5.5] 20:28.
+CONTENT DONE 8.11.2026 HAD-684: Rainbow 4464 nadlan_nudge on (backup docs/qa/project-stage-2026-09-24/cms-610-rainbow-backup.json, --undo ready); public page carries the window, tick and city chip, one h1; deploy610.py Rainbow rows flipped (17 Rainbow rows pass live). Lock released. Claude [79a63961, Opus 5.5] 20:30.
+
+RELEASE LOCK 1.72.611 (HAD-684 price-alert behaviour model: swaps inc/price-nudge.php and assets/nudge/price-alert.js; nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 20:39.
+RELEASE DONE 1.72.611 (HAD-684 price-alert behaviour model): released and verified by deploy611.py (deploy-result-611.json): health 1.72.611; price-nudge.php + price-alert.js written, js served byte for byte; 1,101 page rows OK incl. the model markers and the f/a1/a2/n settings on the page; the route refuses bad input; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 20:52.

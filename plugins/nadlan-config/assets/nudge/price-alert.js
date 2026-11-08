@@ -22,12 +22,19 @@
 	}
 	var DAY = 864e5, now = Date.now();
 	var PV = /[?&]nudge=show(?:&|#|$)/.test(location.search);
+	/* ?nudge=fresh: the owner's REAL-timing test: this browser starts as a new visitor (quiet days, cap, session and holdout cleared),
+	   and the window then waits for the real behaviour, like for anyone else */
+	var FRESH = /[?&]nudge=fresh(?:&|#|$)/.test(location.search);
+	if (FRESH) {
+		['nlpa_done', 'nlpa_q', 'nlpa_n', 'nlpa_b'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} });
+		['nlpa_s', 'nlpa_h', 'nlpa_pv'].forEach(function (k) { try { sessionStorage.removeItem(k); } catch (e) {} });
+	}
 	/* ?nudge=show: the owner's viewing link, the window after 2 s whatever the holdout, the quiet days or the session say */
 	if (!PV && ((+(LS.g('nlpa_done') || 0)) > now || (+(LS.g('nlpa_q') || 0)) > now || SS.g('nlpa_s'))) { return; }
 	var b = null;
 	try { b = JSON.parse(LS.g('nlpa_b') || 'null'); } catch (e) { b = null; }
 	if (!b || typeof b.v !== 'number' || !(b.t > now)) { b = { v: Math.floor(Math.random() * 100), t: now + 30 * DAY }; LS.s('nlpa_b', JSON.stringify(b)); }
-	if (!PV && b.v < C.h) { if (!SS.g('nlpa_h')) { SS.s('nlpa_h', '1'); ev('pa_holdout'); } return; }
+	if (!PV && !FRESH && b.v < C.h) { if (!SS.g('nlpa_h')) { SS.s('nlpa_h', '1'); ev('pa_holdout'); } return; }
 	/* at most two showings in 30 days for someone who did not sign up (the third converts at a third of the first) */
 	var cap = null;
 	try { cap = JSON.parse(LS.g('nlpa_n') || 'null'); } catch (e) { cap = null; }
@@ -42,7 +49,49 @@
 		if (a && !(card && card.contains(a))) { waTapped = true; }
 	}, true);
 	function depth() { var h = document.documentElement.scrollHeight - innerHeight; return h > 0 ? scrollY / h : 0; }
-	function read() { return maxD >= C.dp || maxPx >= innerHeight; } // a quarter of the page or one screen, the smaller
+
+	/* ---------- the engagement model (v106.2, Ben 8.11.2026: "let them be inside, search, look, then pop it") ----------
+	 * A clock alone is not a reason (a fixed 20 s popup shown to everyone got 0.1%, IndieHackers 2022). The window waits for:
+	 * 1. a floor of C.f seconds of the page being visible (never earlier, whatever happens);
+	 * 2. ACTIVE time: a second counts only while the tab is visible AND the reader touched, scrolled, moved or typed in the last 15 s
+	 *    (a tab left open idle never qualifies). C.a1 seconds on the first project/listing page of a visit, C.a2 from the second;
+	 * 3. EVIDENCE of looking, C.n signals of: read (scrolled 1.5 screens or the depth share), price (a ₪ figure on screen for 2 s),
+	 *    explore (a tap on the page's own tools: a tab, gallery, map, 3D stage, plan, accordion), pause (stopped for 6 s after a
+	 *    screen, reading), return (this is the 2nd+ project or listing page of the visit);
+	 * 4. a NATURAL BREAK: the window never lands mid-gesture. It waits until scrolling stopped 1.5 s, no finger or button is down,
+	 *    no text is selected, no field is focused and no video is playing (interruptions at task breakpoints cost less: Adamczyk &
+	 *    Bailey, CHI 2004; Iqbal & Bailey 2008).
+	 * Leaving signals (the pointer out through the top, a fast scroll back to the top, a return to the tab) are the last chance:
+	 * they need the floor and one signal. A visitor who never engages never sees it. */
+	var FLOOR = C.f || 15, NEED = C.n || 2;
+	var pages = (+(SS.g('nlpa_pv') || 0)) + 1;
+	SS.s('nlpa_pv', String(pages));
+	var sig = {}, act = 0, lastAct = 0, lastScroll = 0, downAt = 0;
+	if (pages > 1) { sig.ret = 1; }
+	function pts() { var n = 0; for (var k in sig) { n++; } return n; }
+	function sigs() { return Object.keys(sig).join('+'); }
+	function needAct() { return pages > 1 ? (C.a2 || 15) : (C.a1 || 25); }
+	function engaged() { return vis >= FLOOR && act >= needAct() && pts() >= NEED; }
+	function calm() {
+		var t = Date.now();
+		if (t - lastScroll < 1500 || t - downAt < 2000) { return false; }
+		try { if (String(window.getSelection ? window.getSelection() : '').length > 0) { return false; } } catch (e) {}
+		var vs = document.getElementsByTagName('video');
+		for (var i = 0; i < vs.length; i++) { var v = vs[i]; if (!v.paused && !v.ended && v.offsetParent !== null) { return false; } }
+		return true;
+	}
+	function poke() { lastAct = Date.now(); }
+	['pointermove', 'keydown', 'touchstart', 'wheel', 'touchmove'].forEach(function (n) { addEventListener(n, poke, { passive: true, capture: true }); });
+	addEventListener('pointerdown', function () { poke(); downAt = Date.now(); }, { passive: true, capture: true });
+	addEventListener('pointerup', function () { downAt = 0; }, { passive: true, capture: true });
+	/* explore: a tap on the page's own tools (not a link that leaves, not the header, footer, the bar or this window) */
+	document.addEventListener('click', function (e) {
+		var t = e.target;
+		if (!t || !t.closest || t.closest('#nlnu,#nlcta,header,footer,nav,#wpadminbar')) { return; }
+		var a = t.closest('a[href]');
+		if (a && !/^#/.test(a.getAttribute('href') || '')) { return; }
+		if (t.closest('button,[role="tab"],[role="button"],summary,canvas,video,img,select,label,[data-nli],.nlps-stage,.nlms,.nlfb,[class*="gallery"],[class*="map"]')) { sig.explore = 1; }
+	}, true);
 	function otherDialog() {
 		var ds = document.querySelectorAll('[aria-modal="true"],dialog[open]');
 		for (var i = 0; i < ds.length; i++) { var d = ds[i]; if (card && card.contains(d)) { continue; } if (d.offsetParent !== null || getComputedStyle(d).position === 'fixed') { var r = d.getBoundingClientRect(); if (r.width > 40 && r.height > 40) { return true; } } }
@@ -82,7 +131,8 @@
 		document.body.classList.add('nlnu-on');
 		setH();
 		if (desk) { try { card.focus({ preventScroll: true }); } catch (e) {} }
-		ev('pa_shown', { pa_trigger: PV ? 'preview' : tr, pa_down: C.down });
+		ev('pa_shown', { pa_trigger: PV ? 'preview' : tr, pa_down: C.down, pa_active: act, pa_seconds: vis, pa_signals: sigs(), pa_pages: pages });
+		meterDraw('החלון נפתח (' + tr + ')');
 		/* ignored on a phone: no touch inside it for 30 s while the reader keeps scrolling -> it leaves, 1 day of quiet */
 		if (!desk) { ignT = setTimeout(function () { if (!touched && state === 'in') { hide('ignored'); } }, 30000); }
 	}
@@ -180,7 +230,7 @@
 			var hp = card.querySelector('.nlpa-hp');
 			fetch(C.api, {
 				method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ id: C.id, phone: ph, email: em, consent: 1, interest: interest, trigger: trigger, v: C.v, company: hp ? hp.value : '', ms: t0 ? Date.now() - t0 : 0 })
+				body: JSON.stringify({ id: C.id, phone: ph, email: em, consent: 1, interest: interest, trigger: trigger, sig: sigs() + ':a' + act + ':s' + vis + ':p' + pages, v: C.v, company: hp ? hp.value : '', ms: t0 ? Date.now() - t0 : 0 })
 			}).then(function (r) { return r.json().catch(function () { return { ok: false, error: 'net' }; }).then(function (j) { j.status = r.status; return j; }); })
 				.then(function (j) {
 					go.disabled = false; card.classList.remove('is-sending');
@@ -229,28 +279,53 @@
 	}
 	document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state === 'in') { hide('esc'); } });
 
-	/* ---------- the signals ---------- */
-	setInterval(function () { if (document.hidden || state !== 'idle') { return; } vis++; if (vis >= C.d && read()) { show('time'); } }, 1000);
+	/* ?nudge=fresh: a small live meter (only for that link) so the owner sees the model work: seconds, active time, signals, the moment */
+	var NAMES = { read: 'קרא', price: 'ראה מחיר', explore: 'השתמש בכלי', pause: 'עצר לקרוא', ret: 'עמוד נוסף' }, meter = null;
+	function meterDraw(why) {
+		if (!FRESH) { return; }
+		if (!meter) {
+			meter = document.createElement('div');
+			meter.setAttribute('aria-hidden', 'true');
+			meter.style.cssText = 'position:fixed;z-index:99991;top:8px;inset-inline-start:8px;max-width:260px;padding:8px 10px;border-radius:10px;background:rgba(16,38,47,.92);color:#cfe3ea;font:600 12px/1.45 Assistant,Heebo,sans-serif;direction:rtl;pointer-events:none';
+			document.body.appendChild(meter);
+		}
+		var s = [];
+		for (var k in sig) { s.push(NAMES[k] || k); }
+		meter.textContent = 'מצב בדיקה · שניות בעמוד ' + vis + ' (רצפה ' + FLOOR + ') · זמן פעיל ' + act + '/' + needAct() + ' · סימני עניין ' + pts() + '/' + NEED + (s.length ? ': ' + s.join(', ') : '') + ' · ' + (why || (state === 'idle' ? (engaged() ? 'מחכה לרגע שקט' : 'עוד לא') : 'החלון נפתח'));
+	}
+	/* ---------- the clock, the signals and the moment ---------- */
+	setInterval(function () {
+		if (document.hidden || state !== 'idle') { return; }
+		vis++;
+		var t = Date.now();
+		if (lastAct && t - lastAct < 15000) { act++; }
+		if (!sig.pause && maxPx >= innerHeight && lastScroll && t - lastScroll >= 6000 && t - lastAct < 15000) { sig.pause = 1; } // stopped to read
+		if (engaged() && calm()) { show('engaged'); }
+		meterDraw();
+	}, 1000);
 	addEventListener('scroll', function () {
 		var t = performance.now(), y = scrollY, d = depth();
+		lastScroll = Date.now(); poke();
 		if (d > maxD) { maxD = d; }
 		if (y > maxPx) { maxPx = y; }
+		if (!sig.read && (maxPx >= 1.5 * innerHeight || maxD >= C.dp)) { sig.read = 1; }
 		var v = (lastY - y) / Math.max(1, t - lastT);
-		if (state === 'idle' && maxPx >= 1.5 * innerHeight && vis >= C.d && v > 1.2) { show('scroll_up'); }
+		/* leaving, phone: a fast run back to the top after 2 screens, once the floor passed and the reader showed one signal */
+		if (state === 'idle' && maxPx >= 2 * innerHeight && y < innerHeight && vis >= FLOOR && pts() >= 1 && v > 1.5) { show('scroll_up'); }
 		lastY = y; lastT = t;
 	}, { passive: true });
 	document.addEventListener('visibilitychange', function () {
 		if (document.hidden) { awayAt = Date.now(); }
-		else if (awayAt && Date.now() - awayAt >= 15000 && vis >= C.d) { show('tab_return'); }
+		else if (awayAt && Date.now() - awayAt >= 15000 && vis >= FLOOR && pts() >= 1) { show('tab_return'); }
 	});
 	document.addEventListener('mouseout', function (e) {
-		if (!e.relatedTarget && e.clientY <= 0 && vis >= C.d && matchMedia('(pointer:fine)').matches) { show('leave_desktop'); }
+		if (!e.relatedTarget && e.clientY <= 0 && vis >= FLOOR && pts() >= 1 && matchMedia('(pointer:fine)').matches) { show('leave_desktop'); }
 	});
-	/* a price in view for 2.5 s: the moment the reader is looking at money */
+	/* price: a ₪ figure on screen for 2 s is a signal (looking at money), never a trigger by itself */
 	if ('IntersectionObserver' in window) {
 		var seen = null, io = new IntersectionObserver(function (es) {
 			es.forEach(function (x) {
-				if (x.isIntersecting && x.intersectionRatio >= 0.6) { if (!seen) { seen = setTimeout(function () { if (vis >= C.d) { show('price_view'); } seen = null; }, 2500); } }
+				if (x.isIntersecting && x.intersectionRatio >= 0.6) { if (!seen) { seen = setTimeout(function () { sig.price = 1; seen = null; }, 2000); } }
 				else if (seen) { clearTimeout(seen); seen = null; }
 			});
 		}, { threshold: [0, 0.6] });

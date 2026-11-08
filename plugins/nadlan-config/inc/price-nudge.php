@@ -17,10 +17,13 @@
  *   page's district (or the national one, when the city is not mapped) is down over 12 months (data/prices-hub.json, the file
  *   the prices hub uses). Elsewhere (a rent listing, a project abroad, a district going up) the line is "משתנים" and the arrow
  *   points down at the form. The window never states a figure and never says "יורדים".
- * - When (all settings): never on arrival. The first chance is 12 s of the page being visible AND one screen (or 25%) read;
- *   sooner signals with the same 12 s floor: a price on screen for 2.5 s, the pointer leaving through the top (desktop), a fast
- *   scroll back up after 1.5 screens, a return to the tab after 15 s away. Never while typing, in full screen, inside another
- *   open dialog, or after a WhatsApp tap on this visit.
+ * - When (v106.2, Ben 8.11.2026 "too fast, let them browse and look first"; all settings): behaviour, not a clock. Never before a
+ *   15 s floor; then 25 s of ACTIVE time on the first project/listing page of a visit (15 s from the second), counted only while
+ *   the reader scrolls, touches or moves; AND 2 signals of looking (read 1.5 screens, a ₪ figure on screen 2 s, a tap on the page's
+ *   own tools, a 6 s reading pause, a 2nd page in the visit); THEN only at a natural break (scrolling stopped 1.5 s, no finger
+ *   down, nothing selected, no video playing). Leaving signals (pointer out at the top, a fast run back to the top, a return to
+ *   the tab) need the floor and one signal. Never while typing, in full screen, inside another dialog, after a WhatsApp tap.
+ *   ?nudge=fresh = a real-timing test as a new visitor.
  * - Format: a phone bottom sheet (no backdrop, the page keeps scrolling, swipe down to close) and a desktop modal with a scrim.
  *   Step 1 asks one tap ("על מה לעדכן אתכם?": קנייה / יש לי נכס / השקעה); step 2 asks the phone and the email (both required),
  *   one consent box and the collection notice; step 3 says what happens next and offers WhatsApp.
@@ -43,7 +46,9 @@ if ( ! defined( 'NADLAN_PA_NOTICE' ) ) {
 if ( ! function_exists( 'nadlan_pa_opts' ) ) {
 	/** v106 settings, a new option (the 105.x option kept 25 s / 35% / 7 days / 20% and would override new defaults). */
 	function nadlan_pa_opts() {
-		$d = array( 'on' => 1, 'listings' => 1, 'global' => 1, 'delay' => 12, 'depth' => 25, 'quiet' => 3, 'quiet_ign' => 1, 'holdout' => 10 );
+		/* v106.2 (Ben 8.11.2026 "too fast"): floor 15 s visible; 25 s of ACTIVE time on the first page of a visit, 15 s from the second;
+		   2 behaviour signals; then a natural break (see assets/nudge/price-alert.js) */
+		$d = array( 'on' => 1, 'listings' => 1, 'global' => 1, 'floor' => 15, 'act1' => 25, 'act2' => 15, 'need' => 2, 'depth' => 30, 'quiet' => 3, 'quiet_ign' => 1, 'holdout' => 10 );
 		$o = get_option( 'nadlan_pa_opts', array() );
 		return is_array( $o ) ? array_merge( $d, array_intersect_key( $o, $d ) ) : $d;
 	}
@@ -231,8 +236,11 @@ add_action( 'admin_menu', function () {
 				'on'        => ! empty( $in['on'] ) ? 1 : 0,
 				'listings'  => ! empty( $in['listings'] ) ? 1 : 0,
 				'global'    => ! empty( $in['global'] ) ? 1 : 0,
-				'delay'     => max( 6, min( 120, (int) ( $in['delay'] ?? 12 ) ) ),
-				'depth'     => max( 5, min( 90, (int) ( $in['depth'] ?? 25 ) ) ),
+				'floor'     => max( 10, min( 120, (int) ( $in['floor'] ?? 15 ) ) ),
+				'act1'      => max( 10, min( 180, (int) ( $in['act1'] ?? 25 ) ) ),
+				'act2'      => max( 5, min( 120, (int) ( $in['act2'] ?? 15 ) ) ),
+				'need'      => max( 1, min( 4, (int) ( $in['need'] ?? 2 ) ) ),
+				'depth'     => max( 5, min( 90, (int) ( $in['depth'] ?? 30 ) ) ),
 				'quiet'     => max( 1, min( 60, (int) ( $in['quiet'] ?? 3 ) ) ),
 				'quiet_ign' => max( 1, min( 30, (int) ( $in['quiet_ign'] ?? 1 ) ) ),
 				'holdout'   => max( 0, min( 50, (int) ( $in['holdout'] ?? 10 ) ) ),
@@ -256,12 +264,15 @@ add_action( 'admin_menu', function () {
 		$c( 'listings', 'מודעות הנכסים (לא של מתווכים: לא מיטל קציר ולא אחרים)' );
 		$c( 'global', 'פרויקטים בחו״ל (בלי חץ: אין להם מדד ישראלי)' );
 		echo '</td></tr>';
-		$f( 'delay', 'המתנה (שניות)', 'כמה שניות העמוד גלוי לפני שהחלון יכול לעלות' );
-		$f( 'depth', 'עומק קריאה (%)', 'או מסך אחד, הקטן מביניהם' );
+		$f( 'floor', 'רצפה (שניות)', 'לעולם לא לפני: כמה שניות העמוד גלוי' );
+		$f( 'act1', 'זמן פעיל, עמוד ראשון (שניות)', 'שניות שבהן הגולש באמת גלל, נגע או הזיז את העכבר, בעמוד הפרויקט או הנכס הראשון בביקור' );
+		$f( 'act2', 'זמן פעיל, מהעמוד השני (שניות)', 'מי שכבר עבר לפרויקט או נכס נוסף מתעניין יותר' );
+		$f( 'need', 'סימני עניין נדרשים', 'מתוך: קרא 1.5 מסכים, ראה מחיר בשקלים, לחץ על כלי בעמוד, עצר לקרוא, עמוד שני בביקור' );
+		$f( 'depth', 'עומק קריאה (%)', 'או מסך וחצי, הקטן מביניהם, נחשב סימן עניין' );
 		$f( 'quiet', 'שקט אחרי סגירה (ימים)', 'בכל האתר' );
 		$f( 'quiet_ign', 'שקט כשהתעלמו (ימים)', 'כשהחלון נסגר בגלילה או בלי מגע' );
 		$f( 'holdout', 'קבוצת ביקורת (%)', 'אחוז מבקרים שלא רואים אותו 30 יום, כדי למדוד מה הוא מוסיף' );
-		echo '</table><p class="description">לבדיקה: הוסיפו ?nudge=show לכתובת של פרויקט, והחלון יעלה אחרי 2 שניות.</p>';
+		echo '</table><p class="description">לבדיקה: ?nudge=show בסוף כתובת של פרויקט מראה את החלון אחרי 2 שניות (רק להסתכל עליו). ?nudge=fresh מתחיל אתכם כגולש חדש עם התזמון האמיתי: גללו, הסתכלו, והחלון יעלה רק כשתראו עניין.</p>';
 		submit_button( 'שמירה' );
 		echo '</form></div>';
 	} );
@@ -301,6 +312,7 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 		$interest = in_array( (string) ( $p['interest'] ?? '' ), array( 'buy', 'own', 'invest' ), true ) ? (string) $p['interest'] : '';
 		$labels   = array( 'buy' => 'קנייה באזור', 'own' => 'יש לי נכס באזור', 'invest' => 'השקעה', '' => '' );
 		$trigger  = substr( sanitize_key( (string) ( $p['trigger'] ?? '' ) ), 0, 20 );
+		$signals  = substr( preg_replace( '/[^a-z0-9+:]/', '', strtolower( (string) ( $p['sig'] ?? '' ) ) ), 0, 80 ); // e.g. read+price:a31:s44:p2
 		$tr       = nadlan_pa_trend( $id );
 		/* one sign-up per email and page a day: a repeat answers ok and keeps the first */
 		$dup = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'posts_per_page' => 1, 'fields' => 'ids', 'no_found_rows' => true, 'suppress_filters' => true,
@@ -308,11 +320,19 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 			'meta_query' => array( array( 'key' => 'utm_source', 'value' => 'price_alert' ), array( 'key' => 'email', 'value' => $email ), array( 'key' => 'project_wp_id', 'value' => (string) $id ) ) ) );
 		if ( $dup ) { return $r( array( 'ok' => true, 'again' => true ) ); }
 		$where = '' !== $tr['city'] ? $tr['city'] : 'האזור';
+		/* the behaviour before the sign-up, in words for the owner's mail (first 200 characters of the content are mailed) */
+		$beh = '';
+		if ( preg_match( '/^([a-z+]*):a(\d+):s(\d+):p(\d+)$/', $signals, $sm ) ) {
+			$names = array( 'read' => 'קרא את העמוד', 'price' => 'ראה מחירים', 'explore' => 'השתמש בכלים בעמוד', 'pause' => 'עצר לקרוא', 'ret' => 'עמוד נוסף בביקור' );
+			$said  = array();
+			foreach ( array_filter( explode( '+', $sm[1] ) ) as $s ) { if ( isset( $names[ $s ] ) ) { $said[] = $names[ $s ]; } }
+			$beh = 'לפני ההרשמה: ' . (int) $sm[2] . ' שניות פעילות מתוך ' . (int) $sm[3] . ', עמוד ' . (int) $sm[4] . ' בביקור' . ( $said ? '; ' . implode( ', ', $said ) : '' ) . ".\n";
+		}
 		$lid = wp_insert_post( array(
 			'post_type'    => 'nadlan_lead',
 			'post_status'  => 'private',
 			'post_title'   => 'עדכוני מחירים · ' . $where . ' · ' . current_time( 'Y-m-d H:i' ),
-			'post_content' => 'נרשם/ה לעדכוני מחירים מהעמוד ' . get_permalink( $id ) . ( '' !== $labels[ $interest ] ? "\nמעניין אותו/ה: " . $labels[ $interest ] : '' ),
+			'post_content' => ( '' !== $labels[ $interest ] ? 'מעניין אותו/ה: ' . $labels[ $interest ] . ".\n" : '' ) . $beh . 'נרשם/ה לעדכוני מחירים מהעמוד ' . get_permalink( $id ),
 		), true );
 		if ( is_wp_error( $lid ) || ! $lid ) { return $r( array( 'ok' => false, 'error' => 'store' ), 500 ); }
 		$meta = array(
@@ -327,6 +347,7 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 			'city'             => $tr['city'],
 			'pa_interest'      => $interest,
 			'pa_trigger'       => $trigger,
+			'pa_signals'       => $signals,
 			'pa_trend'         => null === $tr['pct'] ? '' : $tr['src'] . ':' . $tr['pct'],
 			'consent'          => 1,
 			'consent_text'     => nadlan_pa_consent_text(),
@@ -376,7 +397,8 @@ add_action( 'wp_footer', function () {
 	$wa   = '' !== $wa ? 'https://wa.me/' . rawurlencode( $wa ) . '?text=' . rawurlencode( 'שלום, נרשמתי לעדכוני המחירים באתר ואשמח לשאול שאלה. הגעתי מהעמוד: ' . get_permalink( $id ) ) : '';
 	$cfg  = array(
 		'id' => $id, 't' => $type, 'api' => esc_url_raw( rest_url( 'nadlan/v1/price-alert' ) ),
-		'd' => (int) $o['delay'], 'dp' => (int) $o['depth'] / 100, 'q' => (int) $o['quiet'], 'qi' => (int) $o['quiet_ign'], 'h' => (int) $o['holdout'],
+		'f' => (int) $o['floor'], 'a1' => (int) $o['act1'], 'a2' => (int) $o['act2'], 'n' => (int) $o['need'],
+		'dp' => (int) $o['depth'] / 100, 'q' => (int) $o['quiet'], 'qi' => (int) $o['quiet_ign'], 'h' => (int) $o['holdout'],
 		'down' => $down ? 1 : 0, 'v' => NADLAN_PA_NOTICE,
 	);
 	$priv = function_exists( 'get_privacy_policy_url' ) && get_privacy_policy_url() ? get_privacy_policy_url() : home_url( '/privacy/' );

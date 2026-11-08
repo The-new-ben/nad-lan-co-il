@@ -1,0 +1,19 @@
+{
+  "released": "1.72.611",
+  "from": "1.72.610",
+  "live_before": {
+    "inc/price-nudge.php": "52e7e1fb28d8744e918e3e4ffebd1c49",
+    "assets/nudge/price-alert.js": "a3cb7ea40b66dee8583893cd79d72fe7",
+    "nadlan-config.php": "9b838fd189e685ce7267a27622fb3407"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-08 20:52:04",
+  "files": {
+    "inc/price-nudge.php": "a79e4a28777c97de086155cfa8a4530c",
+    "assets/nudge/price-alert.js": "5babc47344a02538f2956ef350e0bbe7",
+    "nadlan-config.php": "fd8a71f0c06a64c4196dde2734993329"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (4 files at ?ver=1.72.611, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
