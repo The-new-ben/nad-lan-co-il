@@ -12,6 +12,10 @@
 }
 .nl3d[data-visible="true"] { opacity:1; transform:none; }
 .nl3d[hidden] { display:none!important; }
+.nl3d-reopen { position:fixed;left:var(--nl3d-left,14px);bottom:calc(var(--nl3d-bottom,140px) + env(safe-area-inset-bottom,0px));
+  z-index:99980;width:72px;height:44px;padding:0;border:1px solid #D3DCE2;border-radius:22px;
+  color:#0F2233;background:#fff;font:500 12px/1 'IBM Plex Sans','Segoe UI',sans-serif;cursor:pointer;touch-action:manipulation; }
+.nl3d-reopen:focus-visible { outline:3px solid #2F6F86;outline-offset:3px; }
 .nl3d *, .nl3d *::before,.nl3d *::after { box-sizing:border-box; }
 .nl3d button { font:inherit; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
 .nl3d button:focus-visible { outline:3px solid #2F6F86; outline-offset:3px; }

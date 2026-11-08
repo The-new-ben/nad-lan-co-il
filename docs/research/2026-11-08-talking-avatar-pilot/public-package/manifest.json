@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "widget.js",
-      "bytes": 591139,
-      "sha256": "99c4fd74fa89bfbd2806ade9bb4dee108e8007e1205ebf5a2c726c498aac1955"
+      "bytes": 592711,
+      "sha256": "10a12e3cb62ede9aed5b8b74ae51ca510da0d86dfb041b48b130281a69c98567"
     },
     {
       "path": "dynamic-lips.js",
@@ -21,8 +21,8 @@
     },
     {
       "path": "widget.css",
-      "bytes": 5167,
-      "sha256": "84dd320b68e2887175fd57cf6d92c883cd971f5698efee4d3570a10a43ec0afb"
+      "bytes": 5578,
+      "sha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4"
     },
     {
       "path": "assets/nadlan-advisor-v2.glb",
@@ -75,6 +75,6 @@
       "sha256": "32007a2d12b12ed1836a05e5df7b43127aa2f23ef8ec7f8c64715ffd66951cba"
     }
   ],
-  "totalBytes": 4911453,
-  "releaseId": "v-1701190a83c6"
+  "totalBytes": 4913436,
+  "releaseId": "v-2d37e9a1a8ad"
 }

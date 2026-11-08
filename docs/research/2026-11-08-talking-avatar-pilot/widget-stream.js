@@ -31,7 +31,8 @@ api.playSpeech=options=>playSpeech(options);
 api.stopSpeech=()=>{cancelSpeechAnalysis();cancelQuestion();stopRecording(false);pause();};
 api.enableConversation=endpoint=>{cfg.conversationEndpoint=endpoint;if(mic){mic.hidden=false;textForm.hidden=false;cc.setAttribute('aria-label','Show captions and text question');}};
 let closed=false, started=false, starting=false, revealed=false, readyResolved=false,playAttempt=0,pageSuspended=false;
-let root,face,caption,captionPanel,textForm,textInput,cancelButton,cc,mic,status,fallback,canvas;
+let root,face,caption,captionPanel,textForm,textInput,cancelButton,cc,mic,status,fallback,canvas,reopenButton;
+let modelGeneration=0,removeLauncherListeners=null;
 let renderer,scene,camera,model,rig,raf=0,lastFrame=0,mouth=0;
 let cues=[],morphMeshes=[],blinkMaterials=[];
 let dynamicMouth=null,speechAnalysisController=null;
@@ -45,6 +46,7 @@ let sentenceCues=[
   [7.9,10.2,'and every check before you sign.'],
   [10.2,99,'What shall we talk about?']
 ];
+const greetingText=transcript,greetingSentenceCues=sentenceCues;
 let recorder=null,micStream=null,micPermissionGeneration=0,recordingSendGeneration=0,micAnalyser=null,micContext=null,micRaf=0,recordingTimeout=0;
 let recordingStarted=0,hadSpeech=false,lastSpeechAt=0,requestController=null,currentJobId=null;
 let sentenceQueue=null,activeChunk=false,prewarmRequested=false,prewarmJobId=null,prewarmRequestToken=null,completedStreamReply=null;
@@ -63,6 +65,34 @@ async function ensureSession(){
 function listen(target,type,fn,opts) {target.addEventListener(type,fn,opts);cleanups.push(()=>target.removeEventListener(type,fn,opts));}
 function ready() {if(!readyResolved){readyResolved=true;resolveReady(api);}}
 function storageClosed(){try{return localStorage.getItem(cfg.storageKey)==='1';}catch{return false;}}
+function clearDismissal(){try{localStorage.removeItem(cfg.storageKey);}catch{}}
+function consumeOpenLink(){
+  if(location.hash!=='#talk')return false;
+  history.replaceState(history.state,'',location.pathname+location.search);clearDismissal();return true;
+}
+function showReopenControl(){
+  if(reopenButton)return;
+  reopenButton=document.createElement('button');reopenButton.type='button';reopenButton.className='nl3d-reopen';
+  reopenButton.textContent='Talk';reopenButton.setAttribute('aria-label','Open voice guide');
+  document.body.appendChild(reopenButton);reopenButton.addEventListener('click',event=>{event.stopPropagation();reopen(event);});
+  window.addEventListener('resize',queuePosition);window.addEventListener('scroll',queuePosition,{passive:true});
+  if(window.visualViewport){visualViewport.addEventListener('resize',queuePosition);visualViewport.addEventListener('scroll',queuePosition);}
+  removeLauncherListeners=()=>{window.removeEventListener('resize',queuePosition);window.removeEventListener('scroll',queuePosition);if(window.visualViewport){visualViewport.removeEventListener('resize',queuePosition);visualViewport.removeEventListener('scroll',queuePosition);}};
+  position();
+}
+function reopen(event){
+  clearDismissal();
+  if(!closed){reveal();return;}
+  removeLauncherListeners?.();removeLauncherListeners=null;reopenButton?.remove();reopenButton=null;root?.remove();
+  closed=false;started=false;starting=false;revealed=false;pageSuspended=false;completedStreamReply=null;
+  renderer=null;scene=null;camera=null;model=null;rig=null;morphMeshes=[];blinkMaterials=[];dynamicMouth=null;mouth=0;
+  transcript=greetingText;sentenceCues=greetingSentenceCues;audio.src=cfg.voiceUrl;audio.load();
+  api.state='initializing';api.renderer='pending';api.firstInteractionAt=null;api.startedAt=null;api.mouth=0;api.blink=0;api.modelStats=null;
+  readyResolved=false;api.ready=new Promise(resolve=>{resolveReady=resolve;});
+  init();
+  // Only a real click starts speech. A recovery URL merely reveals the guide.
+  if(event?.isTrusted)firstInteraction(event);
+}
 function diagnostics(){return {
   state:api.state,renderer:api.renderer,closed,started,visible:revealed,frames:api.frames,
   mouth:api.mouth,blink:api.blink,startedAt:api.startedAt,firstInteractionAt:api.firstInteractionAt,
@@ -72,13 +102,14 @@ function diagnostics(){return {
 };}
 function rect(r){return {x:r.x,y:r.y,width:r.width,height:r.height,top:r.top,right:r.right,bottom:r.bottom,left:r.left};}
 function close(){
-  if(closed)return;closed=true;api.state='closed';playAttempt++;starting=false;audio.pause();
+  if(closed)return;closed=true;modelGeneration++;api.state='closed';playAttempt++;starting=false;audio.pause();
   clearTimeout(revealTimer);clearTimeout(positionTimer);cancelAnimationFrame(raf);raf=0;
   stopRecording(false);cancelQuestion();cancelSpeechAnalysis();cancelPrewarm();
   cleanups.splice(0).forEach(fn=>fn());
   if(root){root.hidden=true;root.setAttribute('aria-hidden','true');}
   try{localStorage.setItem(cfg.storageKey,'1');}catch{}
   if(renderer){renderer.dispose();renderer.forceContextLoss();}
+  showReopenControl();
   ready();
 }
 function reveal(){
@@ -336,27 +367,28 @@ function invalidateExpiredSession(response,data){
 function replyError(data){
   const error=new Error(data.error||data.message||'Response unavailable');
   if((data.errorCode||data.code)==='resource_busy')error.publicMessage=cfg.sessionEndpoint?'The voice is busy. Please try again shortly.':'This computer is busy. Please try again shortly.';
+  if(data.code==='unavailable')error.publicMessage='Voice conversation is unavailable just now. Please try again shortly.';
   return error;
 }
 function updateCaption(){const line=sentenceCues.find(([a,b])=>audio.currentTime>=a&&audio.currentTime<b);caption.textContent=line?line[2]:transcript;}
 function position(){
-  if(!root||closed)return;
+  const target=closed?reopenButton:root;if(!target)return;
   const viewportWidth=window.visualViewport?.width||innerWidth,viewportHeight=window.visualViewport?.height||innerHeight;
-  const minLeft=Math.max(8,viewportWidth-root.offsetWidth-(viewportWidth>=900?24:12));
-  root.style.setProperty('--nl3d-left',`${minLeft}px`);
+  const minLeft=Math.max(8,viewportWidth-target.offsetWidth-(viewportWidth>=900?24:12));
+  target.style.setProperty('--nl3d-left',`${minLeft}px`);
   let bottom=14;
   // Keep both existing site controls completely clear, using their actual current rectangles.
   const obstacles=[...document.querySelectorAll(cfg.obstacles)].filter(el=>el!==root&&el.getClientRects().length)
     .map(el=>el.getBoundingClientRect()).filter(r=>r.width>0&&r.height>0&&r.bottom>0&&r.top<viewportHeight);
-  const width=root.offsetWidth,height=root.offsetHeight;
+  const width=target.offsetWidth,height=target.offsetHeight;
   for(const r of obstacles){
     if(minLeft<r.right+12&&minLeft+width>r.left-12&&r.bottom>viewportHeight*.45)
       bottom=Math.max(bottom,viewportHeight-r.top+14);
   }
   if(!obstacles.length)bottom=140;
   bottom=Math.min(bottom,Math.max(8,viewportHeight-height-12));
-  root.style.setProperty('--nl3d-bottom',`${Math.round(bottom)}px`);
-  positionCaption();resize();
+  target.style.setProperty('--nl3d-bottom',`${Math.round(bottom)}px`);
+  if(!closed){positionCaption();resize();}
 }
 function positionCaption(){
   if(!captionPanel||captionPanel.hidden||!root)return;
@@ -409,6 +441,7 @@ function tick(now){
   if(!reducedMotion.matches||active||mouth>0)schedule();
 }
 async function loadModel(){
+  const generation=++modelGeneration;
   try{
     renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
     renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -417,7 +450,7 @@ async function loadModel(){
     camera.position.set(0,.10,5);camera.lookAt(0,.10,0);
     scene.add(new THREE.AmbientLight(0xffffff,2));
     const gltf=await new GLTFLoader().loadAsync(cfg.modelUrl);
-    if(closed){gltf.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();});return;}
+    if(closed||generation!==modelGeneration){gltf.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();});return;}
     model=gltf.scene;const box=new THREE.Box3().setFromObject(model),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
     model.position.sub(center);rig=new THREE.Group();rig.add(model);scene.add(rig);
     if(cfg.modelRotation)rig.rotation.set(...cfg.modelRotation);
@@ -425,12 +458,14 @@ async function loadModel(){
     api.modelStats={size:size.toArray(),vertices,triangles,morphTargets:morphMeshes.map(o=>Object.keys(o.morphTargetDictionary||{}))};
     api.renderer='webgl';fallback.hidden=true;resize();schedule();ready();
   }catch(error){
+    if(closed||generation!==modelGeneration)return;
     api.renderer='fallback';api.errors.push('model:'+String(error.message||error));
     if(renderer){renderer.dispose();renderer=null;}canvas.hidden=true;fallback.hidden=false;ready();
   }
 }
 async function init(){
-  if(storageClosed()){closed=true;api.state='closed';api.renderer='not-loaded';ready();return;}
+  consumeOpenLink();
+  if(storageClosed()){closed=true;api.state='closed';api.renderer='not-loaded';showReopenControl();ready();return;}
   root=document.createElement('aside');root.className='nl3d';root.id='nl3d';root.setAttribute('aria-label','NadLan computer-made character');
   root.innerHTML=`<button class="nl3d-face" aria-label="Hear greeting"><img class="nl3d-fallback" alt="" draggable="false"><canvas class="nl3d-canvas" aria-hidden="true"></canvas><span class="nl3d-status">Tap to hear</span></button><button class="nl3d-close" aria-label="Close character"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><p class="nl3d-disclosure">Computer-made character</p><button class="nl3d-mic" hidden aria-label="Ask a question by voice" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="2" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9v1a6 6 0 0 0 12 0V9M10 16v3M6.5 19h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><button class="nl3d-cc" aria-label="Show greeting captions" aria-pressed="false" aria-controls="nl3d-caption"><span aria-hidden="true">CC</span></button><div id="nl3d-caption" class="nl3d-caption" hidden><p class="nl3d-caption-text"></p><form class="nl3d-text-form" hidden><label for="nl3d-question">Or type your question</label><input id="nl3d-question" name="question" type="text" maxlength="500" autocomplete="off" placeholder="Ask in English" required><button type="submit">Send</button><button type="button" class="nl3d-cancel" hidden>Cancel response</button></form></div>`;
   document.body.appendChild(root);
@@ -459,4 +494,5 @@ async function init(){
   fetch(cfg.cuesUrl).then(r=>{if(!r.ok)throw new Error('cue load');return r.json();}).then(data=>{cues=data.mouthCues||[];}).catch(e=>api.errors.push(e.message));
   position();revealTimer=setTimeout(reveal,cfg.revealDelay);loadModel();
 }
+window.addEventListener('hashchange',()=>{if(consumeOpenLink())reopen();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();

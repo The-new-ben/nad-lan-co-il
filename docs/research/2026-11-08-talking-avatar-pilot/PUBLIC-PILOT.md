@@ -3,16 +3,19 @@
 Current at8 November2026. Owner approval: Ben expressly requested publication on the English buying guide and an email with working links. Only WordPress page5154 was replaced, inside its existing `nlagent` markers. Existing content outside the block was preserved exactly. No analytics settings, other page, shared plugin version, domain or DNS change.
 
 - Live: https://nad-lan.co.il/en/buy-property-in-israel/
-- Release: `v-1701190a83c6`,14 allowlisted files,4,911,453 bytes. The two review videos load only when opened, not with the widget.
+- Current release: `v-2d37e9a1a8ad`, 14 allowlisted files, 4,913,436 bytes. The two review videos load only when opened, not with the widget. Their original versioned URLs below remain valid and intentionally unchanged.
+- Intentional recovery link: https://nad-lan.co.il/en/buy-property-in-israel/#talk
 - Phone review: https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-1701190a83c6/review/nadlan-small-avatar-phone-final.mp4
 - Desktop review: https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-1701190a83c6/review/nadlan-small-avatar-desktop-final.mp4
 - Clips are local Chrome captures made before deployment. Phone is viewport emulation, not a physical handset. Subsequent actual-public-page evidence is under `evidence/public-relay/live-browser/` and `evidence/public-deployment/`.
 
 ## What works and what remains
 
-The original English Chatterbox greeting starts after a trusted first interaction. The small portrait, subtle lips, captions, microphone permission handling, text field, one-click persistent close and clearance from the actual WhatsApp/accessibility controls passed live checks. The homepage has no widget. The character is labelled computer-made.
+The original English Chatterbox greeting starts after a trusted first interaction. The small portrait, subtle lips, captions, microphone permission handling, text field, one-click persistent close and clearance from the actual WhatsApp/accessibility controls passed live checks. Both `/` and `/en/` have no widget. The character is labelled computer-made. The same approved face, original voice, ink/sea palette and IBM Plex Sans remain in use.
 
-Public talk-back transport is installed, but the actual public identity question returned503 unavailable, with no job created. Available physical RAM was about1.5GiB against the measured workflow's existing3GiB startup reserve. No successful public generated reply or fast conversation is claimed. Owner applications were not closed. Original local new-voice end-to-end measurement was236.1s; optional faster-engine measurements are separate and that engine is not selected publicly.
+A saved close from either the old large card or this portrait uses `nlag-closed`. Previously that hid the character permanently without a recovery control. The current release leaves a 72 by 44 pixel **Talk** button when closed. A trusted click reopens one guide and starts the original greeting. The `#talk` link deliberately clears only that dismissal and reveals the guide silently; it consumes the fragment so a later close remains closed on ordinary reload. Sound still requires a trusted interaction.
+
+Public talk-back transport is installed, but the recorded public identity question returned 503 unavailable, with no job created. That receipt records a memory shortfall against the existing 3 GiB startup reserve; it is not a current memory reading. Memory recovery work is continuing, so check current readiness rather than copying an old free-RAM value. No successful public generated reply or fast conversation is claimed. Owner applications were not closed. Original local new-voice end-to-end measurement was 236.1 s; optional faster-engine measurements are separate and that engine is not selected publicly.
 
 The computer must remain on, online and have sufficient resources. The worker is a manually launched hidden process, not an installed boot service. There is no paid server, external paid inference fallback or public listener on this computer.
 
@@ -36,6 +39,8 @@ The initial helper-cleanup pass had a hosting/API discrepancy: temporary snippet
 
 ## Evidence and handoff
 
-`evidence/public-deployment/latest.json` proves exact page/asset readback. `evidence/public-relay/live-browser/receipt.json` records29/29 scoped live checks and explicitly preserves the503 result. `evidence/public-relay/browser-wordpress/receipt.json` records20 transport tests with a controlled model fixture, not real speech inference. Source audit returnedGREEN200, oneH1 and onecanonical. Native owner-profile Chrome was also pressed and photographed.
+`evidence/public-deployment/latest.json` proves exact current page/asset readback and unchanged content outside the existing block. The recovery release passed 40 focused local checks in `evidence/visibility-recovery/v-2d37e9a1a8ad/receipt.json` and 28 actual anonymous live checks in `evidence/visibility-recovery/v-2d37e9a1a8ad-live/receipt.json`. These cover saved dismissal, Talk, silent fragment recovery, one guide/playback, keyboard access, delayed GLB completion/failure and control clearance at 360, 390 and 1366 pixels. Delayed-load and controlled 503 tests were local; the live suite made no avatar API POST and ran no conversation inference. Live JavaScript/CSS hashes match the reviewed release. Owner-profile native phone-size evidence is `evidence/visibility-recovery/live-native-phone.png`.
+
+The initial `evidence/public-relay/live-browser/receipt.json` retains 29/29 scoped live checks and the 503 result. `evidence/public-relay/browser-wordpress/receipt.json` retains 20 transport tests with a controlled model fixture, not real speech inference. Source audit returned GREEN 200, one H1 and one canonical. Historical releases, videos, failure receipts and the initial visibility reproduction remain available.
 
 Ben was emailed the live page and both review clips, with the current voice limitation stated. Shared learning is maintained in `../skill/SKILL.md`. Finish the first character's actual public conversation before starting additional characters. Deployment approval for NadLan does not authorize publishing on Hadmaya or Justice.
