@@ -1,0 +1,17 @@
+{
+  "status": "not_started_resource_preflight",
+  "physicalAbortFloorGiB": 0.75,
+  "commitAbortFloorGiB": 1.0,
+  "preflightPhysicalGiB": 6.0,
+  "preflightCommitGiB": 8.0,
+  "maximumSeconds": 420,
+  "productionDefaultsChanged": false,
+  "publicRequests": false,
+  "monitorIntervalSeconds": 0.1,
+  "samplesEverySeconds": 0.25,
+  "before": {
+    "at": 1794119432.5738933,
+    "availableGiB": 1.4583,
+    "commitCapacityAvailableGiB": 1.6194
+  }
+}

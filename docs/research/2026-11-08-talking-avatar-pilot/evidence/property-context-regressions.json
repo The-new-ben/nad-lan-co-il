@@ -1,0 +1,334 @@
+{
+  "checkedAtUTC": "2026-11-08T11:17:48.334704+00:00",
+  "modelInference": false,
+  "publicChanges": false,
+  "moduleSha256": "995f92bf864fb0bc4fbacd09397720ed9793aeadb2dbebc253ee3bddc77084e7",
+  "checks": [
+    {
+      "name": "wrong_city_after_context",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "other_meital_listing",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "different_kochav",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "neighborhood_not_unit",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "tax_not_asking",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "tax_with_price",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "bridge_cost",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "bridge_price",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "different_bridge",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "ambiguous_bridge",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "ambiguous_park_route",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "identity_mixed",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "broker_action_mixed",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "viewing_mixed",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "identity_broker",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "identity_name",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "full_target_plus_other_place",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "full_target_plus_other_listing",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "full_target_comparison",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "full_target_plural",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "partial_target",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "partial_suffix",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "generic_how_much",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "mortgage_price",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "unknown_geo_lowercase",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "unknown_geo_abroad",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "known_amenity_wrong_property",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "bare_neighborhood",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "indefinite_home_in_target_area",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "indefinite_new_home_after_history",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "personal_home_after_history",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "explicit_price",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    },
+    {
+      "name": "followup_price",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    },
+    {
+      "name": "explicit_registration",
+      "expectedTopic": "registration",
+      "actualTopic": "registration",
+      "passed": true
+    },
+    {
+      "name": "followup_registration",
+      "expectedTopic": "registration",
+      "actualTopic": "registration",
+      "passed": true
+    },
+    {
+      "name": "guarantee",
+      "expectedTopic": "returns",
+      "actualTopic": "returns",
+      "passed": true
+    },
+    {
+      "name": "area",
+      "expectedTopic": "area",
+      "actualTopic": "area",
+      "passed": true
+    },
+    {
+      "name": "amenities",
+      "expectedTopic": "amenities",
+      "actualTopic": "amenities",
+      "passed": true
+    },
+    {
+      "name": "family",
+      "expectedTopic": "family",
+      "actualTopic": "family",
+      "passed": true
+    },
+    {
+      "name": "overview",
+      "expectedTopic": "overview",
+      "actualTopic": "overview",
+      "passed": true
+    },
+    {
+      "name": "value",
+      "expectedTopic": "value",
+      "actualTopic": "value",
+      "passed": true
+    },
+    {
+      "name": "unknown",
+      "expectedTopic": "unknown",
+      "actualTopic": "unknown",
+      "passed": true
+    },
+    {
+      "name": "identified_bridge",
+      "expectedTopic": "bridge",
+      "actualTopic": "bridge",
+      "passed": true
+    },
+    {
+      "name": "identified_bridge_explicit",
+      "expectedTopic": "bridge",
+      "actualTopic": "bridge",
+      "passed": true
+    },
+    {
+      "name": "name_variant",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    },
+    {
+      "name": "broker_attribution_with_full_target",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    },
+    {
+      "name": "no_context_no_price",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "broker_only_not_context",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "partial_name_not_context",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "new_city_breaks_history",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "other_listing_breaks_history",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "ambiguous_neighborhood_breaks_history",
+      "expectedTopic": null,
+      "actualTopic": null,
+      "passed": true
+    },
+    {
+      "name": "valid_followup_retains_context",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    },
+    {
+      "name": "explicit_target_after_other_place",
+      "expectedTopic": "price",
+      "actualTopic": "price",
+      "passed": true
+    }
+  ],
+  "passed": 54,
+  "total": 54
+}

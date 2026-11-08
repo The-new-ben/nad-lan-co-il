@@ -1,0 +1,2476 @@
+{
+  "scope": "Actual local packaged widget and saved host page, isolated Chrome; controlled 503 and delayed GLB network fixtures",
+  "releaseId": "v-2d37e9a1a8ad",
+  "modelInference": false,
+  "publicMutation": false,
+  "checks": [
+    {
+      "name": "360: initial guide visible without launcher",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360/0: one closed Talk control, clear and reachable",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": false,
+          "visible": true,
+          "frames": 17,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "rootCount": 1,
+        "visibleRoots": 0,
+        "launcherCount": 1,
+        "hash": "",
+        "storage": "1",
+        "playCalls": [],
+        "bounds": {
+          "x": 276,
+          "y": 454,
+          "width": 72,
+          "height": 44,
+          "right": 348,
+          "bottom": 498
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/0: Talk hit area 72 by 44",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360/0: one guide and one real playback after reopen",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "speaking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 24,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 1352.8999999985099,
+          "firstInteractionAt": 1291.1000000014901,
+          "audio": {
+            "paused": false,
+            "currentTime": 0.039563,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 204,
+            "y": 336.2353820800781,
+            "width": 144,
+            "height": 166,
+            "top": 336.2353820800781,
+            "right": 348,
+            "bottom": 502.2353820800781,
+            "left": 204
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1295.199999999255
+          }
+        ],
+        "bounds": {
+          "x": 204,
+          "y": 336.2353820800781,
+          "width": 144,
+          "height": 166,
+          "right": 348,
+          "bottom": 502.2353820800781
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/0: reopened guide clears actual controls",
+      "pass": true,
+      "detail": {
+        "x": 204,
+        "y": 336.2353820800781,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 502.2353820800781
+      }
+    },
+    {
+      "name": "360/1: one closed Talk control, clear and reachable",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": true,
+          "visible": true,
+          "frames": 31,
+          "mouth": 0.34996973752520544,
+          "blink": 0,
+          "startedAt": 1352.8999999985099,
+          "firstInteractionAt": 1291.1000000014901,
+          "audio": {
+            "paused": true,
+            "currentTime": 0.272142,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "rootCount": 1,
+        "visibleRoots": 0,
+        "launcherCount": 1,
+        "hash": "",
+        "storage": "1",
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1295.199999999255
+          }
+        ],
+        "bounds": {
+          "x": 276,
+          "y": 454,
+          "width": 72,
+          "height": 44,
+          "right": 348,
+          "bottom": 498
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/1: Talk hit area 72 by 44",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360/1: one guide and one real playback after reopen",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "speaking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 37,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 1771.3999999985099,
+          "firstInteractionAt": 1726.300000000745,
+          "audio": {
+            "paused": false,
+            "currentTime": 0.014148,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 204,
+            "y": 338.53680419921875,
+            "width": 144,
+            "height": 166,
+            "top": 338.53680419921875,
+            "right": 348,
+            "bottom": 504.53680419921875,
+            "left": 204
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1295.199999999255
+          },
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1729.6000000014901
+          }
+        ],
+        "bounds": {
+          "x": 204,
+          "y": 338.53680419921875,
+          "width": 144,
+          "height": 166,
+          "right": 348,
+          "bottom": 504.53680419921875
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/1: reopened guide clears actual controls",
+      "pass": true,
+      "detail": {
+        "x": 204,
+        "y": 338.53680419921875,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 504.53680419921875
+      }
+    },
+    {
+      "name": "360/2: one closed Talk control, clear and reachable",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": true,
+          "visible": true,
+          "frames": 50,
+          "mouth": 0.312119038334864,
+          "blink": 0,
+          "startedAt": 1771.3999999985099,
+          "firstInteractionAt": 1726.300000000745,
+          "audio": {
+            "paused": true,
+            "currentTime": 0.40547,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "rootCount": 1,
+        "visibleRoots": 0,
+        "launcherCount": 1,
+        "hash": "",
+        "storage": "1",
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1295.199999999255
+          },
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1729.6000000014901
+          }
+        ],
+        "bounds": {
+          "x": 276,
+          "y": 454,
+          "width": 72,
+          "height": 44,
+          "right": 348,
+          "bottom": 498
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/2: Talk hit area 72 by 44",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360/2: one guide and one real playback after reopen",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "speaking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 56,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 2338.39999999851,
+          "firstInteractionAt": 2293.39999999851,
+          "audio": {
+            "paused": false,
+            "currentTime": 0.01789,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 204,
+            "y": 338.5393981933594,
+            "width": 144,
+            "height": 166,
+            "top": 338.5393981933594,
+            "right": 348,
+            "bottom": 504.5393981933594,
+            "left": 204
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1295.199999999255
+          },
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1729.6000000014901
+          },
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 2296.89999999851
+          }
+        ],
+        "bounds": {
+          "x": 204,
+          "y": 338.5393981933594,
+          "width": 144,
+          "height": 166,
+          "right": 348,
+          "bottom": 504.5393981933594
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "360/2: reopened guide clears actual controls",
+      "pass": true,
+      "detail": {
+        "x": 204,
+        "y": 338.5393981933594,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 504.5393981933594
+      }
+    },
+    {
+      "name": "360: ordinary reload remains closed with Talk available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: initial guide visible without launcher",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390/0: one closed Talk control, clear and reachable",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": false,
+          "visible": true,
+          "frames": 15,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "rootCount": 1,
+        "visibleRoots": 0,
+        "launcherCount": 1,
+        "hash": "",
+        "storage": "1",
+        "playCalls": [],
+        "bounds": {
+          "x": 306,
+          "y": 658,
+          "width": 72,
+          "height": 44,
+          "right": 378,
+          "bottom": 702
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "390/0: Talk hit area 72 by 44",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390/0: one guide and one real playback after reopen",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "speaking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 21,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 1188.2000000029802,
+          "firstInteractionAt": 1148.4000000022352,
+          "audio": {
+            "paused": false,
+            "currentTime": 0.016509,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 542.5418090820312,
+            "width": 144,
+            "height": 166,
+            "top": 542.5418090820312,
+            "right": 378,
+            "bottom": 708.5418090820312,
+            "left": 234
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1151.9000000022352
+          }
+        ],
+        "bounds": {
+          "x": 234,
+          "y": 542.5418090820312,
+          "width": 144,
+          "height": 166,
+          "right": 378,
+          "bottom": 708.5418090820312
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "390/0: reopened guide clears actual controls",
+      "pass": true,
+      "detail": {
+        "x": 234,
+        "y": 542.5418090820312,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 708.5418090820312
+      }
+    },
+    {
+      "name": "390: ordinary reload remains closed with Talk available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard Enter opens guide with exactly one playback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: initial guide visible without launcher",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366/0: one closed Talk control, clear and reachable",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": false,
+          "visible": true,
+          "frames": 16,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "rootCount": 1,
+        "visibleRoots": 0,
+        "launcherCount": 1,
+        "hash": "",
+        "storage": "1",
+        "playCalls": [],
+        "bounds": {
+          "x": 1270,
+          "y": 636,
+          "width": 72,
+          "height": 44,
+          "right": 1342,
+          "bottom": 680
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "1366/0: Talk hit area 72 by 44",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366/0: one guide and one real playback after reopen",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "speaking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 22,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 1228.800000000745,
+          "firstInteractionAt": 1130.300000000745,
+          "audio": {
+            "paused": false,
+            "currentTime": 0.01943,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 1166,
+            "y": 488.537353515625,
+            "width": 176,
+            "height": 198,
+            "top": 488.537353515625,
+            "right": 1342,
+            "bottom": 686.537353515625,
+            "left": 1166
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [
+          {
+            "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+            "at": 1133.8999999985099
+          }
+        ],
+        "bounds": {
+          "x": 1166,
+          "y": 488.537353515625,
+          "width": 176,
+          "height": 198,
+          "right": 1342,
+          "bottom": 686.537353515625
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Hi, welcome to NadLan.",
+        "faceDisabled": false
+      }
+    },
+    {
+      "name": "1366/0: reopened guide clears actual controls",
+      "pass": true,
+      "detail": {
+        "x": 1166,
+        "y": 488.537353515625,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 686.537353515625
+      }
+    },
+    {
+      "name": "1366: ordinary reload remains closed with Talk available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Same-page #talk reveals silently and consumes fragment",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Close after hash recovery remains closed on reload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Initial #talk overrides saved dismissal silently once",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Close after initial fragment remains closed on reload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Configured legacy key remains honored with recovery control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Explicit legacy recovery clears only configured key",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Delayed GLB allows repeated close/reopen without duplicate roots",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Late GLB completion preserves only current renderer",
+      "pass": true,
+      "detail": {
+        "requestCount": 1,
+        "state": {
+          "diagnostics": {
+            "state": "speaking",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 64,
+            "mouth": 0.3144086228868607,
+            "blink": 0,
+            "startedAt": 2197.400000002235,
+            "firstInteractionAt": 2140.400000002235,
+            "audio": {
+              "paused": false,
+              "currentTime": 0.372961,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "rootCount": 1,
+          "visibleRoots": 1,
+          "launcherCount": 0,
+          "hash": "",
+          "storage": null,
+          "playCalls": [
+            {
+              "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+              "at": 1241.300000000745
+            },
+            {
+              "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+              "at": 1711.5
+            },
+            {
+              "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+              "at": 2143.300000000745
+            }
+          ],
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "right": 378,
+            "bottom": 702
+          },
+          "inside": true,
+          "overlaps": [],
+          "targetReachable": true,
+          "caption": "Hi, welcome to NadLan.",
+          "faceDisabled": false
+        }
+      }
+    },
+    {
+      "name": "Late GLB failure cannot overwrite closed state",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh renderer can load after closed stale failure",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "503 unavailable uses specific caption and disables partial replay",
+      "pass": true,
+      "detail": {
+        "diagnostics": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 21,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "conversation:Controlled fixture unavailable"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "rootCount": 1,
+        "visibleRoots": 1,
+        "launcherCount": 0,
+        "hash": "",
+        "storage": null,
+        "playCalls": [],
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "right": 378,
+          "bottom": 702
+        },
+        "inside": true,
+        "overlaps": [],
+        "targetReachable": true,
+        "caption": "Voice conversation is unavailable just now. Please try again shortly.",
+        "faceDisabled": true
+      }
+    },
+    {
+      "name": "Reopen after 503 resets original greeting and enabled face",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "packageHashes": {
+    "widget.js": "10a12e3cb62ede9aed5b8b74ae51ca510da0d86dfb041b48b130281a69c98567",
+    "dynamic-lips.js": "d69b0347b612149422f257f68ca863c8c72b05d93651946ad23e93c9882420d5",
+    "dynamic-lips-worker.js": "de0a0f1d4e64e19062267a5e1ef4cc1c641d32d65bb121e038f1af1e8fe65e15",
+    "widget.css": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+    "assets/nadlan-advisor-v2.glb": "a1b9a62754ab89c7d5336c5603baebe9cd0025905022d90d686be4852749dc8f",
+    "assets/greet-en.mp3": "79a1b04e12aa75a00cee5b0205e273dd0e11aab743641eef22a38bad86a7e96c",
+    "assets/greet-en.cues.json": "61f65f00d58ef886a14c041bdd6730be5d38af5e0821d3b35d675039d53faa13",
+    "assets/fallback-original.webp": "2dfbc459969bc08fda811966853a2ece782114ecf533673f2d1b0c003169bec8",
+    "vendor/talking-avatar/viseme-model.bin": "f1cdf2b76b9f2da8730b1d3e47d7e05a2b79c9b92d00dd00c595d64e471f419c",
+    "vendor/talking-avatar/LICENSE": "7fd507aff0c0a220e9665b0bc928dc8f0f2c51c178d89b42147925aecf573668",
+    "vendor/THREE-LICENSE.txt": "df2a91696186fe58c92518a25d48bc59c8ee2edc7cac9ca6d19a5a0d599a2a05",
+    "assets/portrait-cutout-v2.webp": "fbab80f6f03cb142135c6d93ee73988b7748ce15d7ae7326c8d317ecb77fe9e1",
+    "review/nadlan-small-avatar-phone-final.mp4": "8b999835b25c0ad4c9e7120fd0d37f11f945ed1224a4a6fd0764d62199e5d10f",
+    "review/nadlan-small-avatar-desktop-final.mp4": "32007a2d12b12ed1836a05e5df7b43127aa2f23ef8ec7f8c64715ffd66951cba"
+  },
+  "pageErrors": [],
+  "scenarios": {
+    "360-closed-0": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": false,
+        "visible": true,
+        "frames": 17,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "360-reopened-0": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 24,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1352.8999999985099,
+        "firstInteractionAt": 1291.1000000014901,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.039563,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 336.2353820800781,
+          "width": 144,
+          "height": 166,
+          "top": 336.2353820800781,
+          "right": 348,
+          "bottom": 502.2353820800781,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1295.199999999255
+        }
+      ],
+      "bounds": {
+        "x": 204,
+        "y": 336.2353820800781,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 502.2353820800781
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "360-closed-1": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": true,
+        "visible": true,
+        "frames": 31,
+        "mouth": 0.34996973752520544,
+        "blink": 0,
+        "startedAt": 1352.8999999985099,
+        "firstInteractionAt": 1291.1000000014901,
+        "audio": {
+          "paused": true,
+          "currentTime": 0.272142,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1295.199999999255
+        }
+      ],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "360-reopened-1": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 37,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1771.3999999985099,
+        "firstInteractionAt": 1726.300000000745,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.014148,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 338.53680419921875,
+          "width": 144,
+          "height": 166,
+          "top": 338.53680419921875,
+          "right": 348,
+          "bottom": 504.53680419921875,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1295.199999999255
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1729.6000000014901
+        }
+      ],
+      "bounds": {
+        "x": 204,
+        "y": 338.53680419921875,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 504.53680419921875
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "360-closed-2": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": true,
+        "visible": true,
+        "frames": 50,
+        "mouth": 0.312119038334864,
+        "blink": 0,
+        "startedAt": 1771.3999999985099,
+        "firstInteractionAt": 1726.300000000745,
+        "audio": {
+          "paused": true,
+          "currentTime": 0.40547,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1295.199999999255
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1729.6000000014901
+        }
+      ],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "360-reopened-2": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 56,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 2338.39999999851,
+        "firstInteractionAt": 2293.39999999851,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.01789,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 338.5393981933594,
+          "width": 144,
+          "height": 166,
+          "top": 338.5393981933594,
+          "right": 348,
+          "bottom": 504.5393981933594,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1295.199999999255
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1729.6000000014901
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 2296.89999999851
+        }
+      ],
+      "bounds": {
+        "x": 204,
+        "y": 338.5393981933594,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 504.5393981933594
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "360-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": null,
+      "faceDisabled": null
+    },
+    "390-closed-0": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": false,
+        "visible": true,
+        "frames": 15,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "390-reopened-0": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 21,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1188.2000000029802,
+        "firstInteractionAt": 1148.4000000022352,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.016509,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 542.5418090820312,
+          "width": 144,
+          "height": 166,
+          "top": 542.5418090820312,
+          "right": 378,
+          "bottom": 708.5418090820312,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1151.9000000022352
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 542.5418090820312,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 708.5418090820312
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "390-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": null,
+      "faceDisabled": null
+    },
+    "keyboard-open": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 7,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 274.5999999977648,
+        "firstInteractionAt": 223.69999999925494,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.026707,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 542.5433349609375,
+          "width": 144,
+          "height": 166,
+          "top": 542.5433349609375,
+          "right": 378,
+          "bottom": 708.5433349609375,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 227.69999999925494
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 542.5433349609375,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 708.5433349609375
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "1366-closed-0": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": false,
+        "visible": true,
+        "frames": 16,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "1366-reopened-0": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 22,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1228.800000000745,
+        "firstInteractionAt": 1130.300000000745,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.01943,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 488.537353515625,
+          "width": 176,
+          "height": 198,
+          "top": 488.537353515625,
+          "right": 1342,
+          "bottom": 686.537353515625,
+          "left": 1166
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1133.8999999985099
+        }
+      ],
+      "bounds": {
+        "x": 1166,
+        "y": 488.537353515625,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 686.537353515625
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "1366-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": null,
+      "faceDisabled": null
+    },
+    "same-page-hash": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 20,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 546,
+          "width": 144,
+          "height": 166,
+          "top": 546,
+          "right": 378,
+          "bottom": 712,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 234,
+        "y": 546,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 712
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "initial-hash": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 546,
+          "width": 144,
+          "height": 166,
+          "top": 546,
+          "right": 378,
+          "bottom": 712,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 234,
+        "y": 546,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 712
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "legacy-key-closed": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": null
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": null,
+      "faceDisabled": null
+    },
+    "legacy-key-reopened": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 7,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 378.30000000074506,
+        "firstInteractionAt": 242.39999999850988,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.038694,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 540.237548828125,
+          "width": 144,
+          "height": 166,
+          "top": 540.237548828125,
+          "right": 378,
+          "bottom": 706.237548828125,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 246.30000000074506
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 540.237548828125,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 706.237548828125
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "delayed-glb-complete": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 64,
+        "mouth": 0.3144086228868607,
+        "blink": 0,
+        "startedAt": 2197.400000002235,
+        "firstInteractionAt": 2140.400000002235,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.372961,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "top": 536,
+          "right": 378,
+          "bottom": 702,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1241.300000000745
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1711.5
+        },
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 2143.300000000745
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    },
+    "delayed-glb-error-closed": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "pending",
+        "closed": true,
+        "started": false,
+        "visible": true,
+        "frames": 19,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 1,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan. I'm here to help you find the right home in Israel: prices, mortgages, new projects, and every check before you sign. What shall we talk about?",
+      "faceDisabled": false
+    },
+    "specific-503": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 21,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [
+          "conversation:Controlled fixture unavailable"
+        ],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "top": 536,
+          "right": 378,
+          "bottom": 702,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Voice conversation is unavailable just now. Please try again shortly.",
+      "faceDisabled": true
+    },
+    "reopen-after-503": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 31,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1465.6000000014901,
+        "firstInteractionAt": 1403,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.021621,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [
+          "conversation:Controlled fixture unavailable"
+        ],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 540.2323608398438,
+          "width": 144,
+          "height": 166,
+          "top": 540.2323608398438,
+          "right": 378,
+          "bottom": 706.2323608398438,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "http://127.0.0.1:62039/public-package/assets/greet-en.mp3",
+          "at": 1406.5
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 540.2323608398438,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 706.2323608398438
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true,
+      "caption": "Hi, welcome to NadLan.",
+      "faceDisabled": false
+    }
+  },
+  "finishedUtc": "2026-11-08T05:51:15Z"
+}

@@ -1,0 +1,330 @@
+{
+  "status": "server_error",
+  "testType": "REAL_LOCAL_HTTP_TYPED_QUESTION",
+  "question": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+  "requestToken": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+  "serverPID": 24000,
+  "base": "http://127.0.0.1:8770",
+  "controlledInput": {
+    "type": "typed_text",
+    "textSha256": "eec5ab68ef5f9275ffc773b63ceb4a6df6100228906e67a7f883c092ee7446aa",
+    "source": "Controlled local typed HTTP question; not a browser, phone or microphone test."
+  },
+  "modelsMocked": false,
+  "browserOrPlaybackTested": false,
+  "physicalMicrophoneTested": false,
+  "publicRequests": false,
+  "privateCredentialsLoaded": false,
+  "maximumSeconds": 240,
+  "abortPhysicalGiB": 0.75,
+  "abortCommitGiB": 1.0,
+  "cancellationScope": "Only this fresh cookie session and request token/job. No process is killed by this probe.",
+  "phases": [
+    {
+      "kind": "phase",
+      "atEpoch": 1794138208.012642,
+      "elapsedSeconds": 0.078,
+      "job": {
+        "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+        "phase": "synthesizing",
+        "timings": {
+          "answer": 0
+        },
+        "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+        "streaming": true,
+        "chunks": [],
+        "userText": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+        "responseText": "Its terraces, separated living areas and location near Yarkon Park may suit your needs, but incomplete registration, comparable sales and ownership costs need review. Which of those features matters most to you?",
+        "completed": false
+      }
+    },
+    {
+      "kind": "phase",
+      "atEpoch": 1794138247.4684196,
+      "elapsedSeconds": 39.531,
+      "job": {
+        "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+        "phase": "error",
+        "timings": {
+          "answer": 0,
+          "voice worker load": 24.031,
+          "voice": 39.343,
+          "total": 39.343
+        },
+        "error": "This computer is busy. Please try again shortly.",
+        "errorCode": "resource_busy",
+        "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+        "streaming": true,
+        "chunks": [],
+        "userText": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+        "responseText": "Its terraces, separated living areas and location near Yarkon Park may suit your needs, but incomplete registration, comparable sales and ownership costs need review. Which of those features matters most to you?",
+        "completed": false
+      }
+    }
+  ],
+  "chunks": [],
+  "cancellationAttempts": [],
+  "before": {
+    "at": 1794138207.9360168,
+    "availableGiB": 3.7073,
+    "commitCapacityAvailableGiB": 3.2309
+  },
+  "minimumPhysicalGiB": 2.0009,
+  "minimumCommitGiB": 1.1762,
+  "submissionAttempted": true,
+  "idleSupportProcesses": [
+    {
+      "pid": 24000,
+      "name": "python.exe"
+    },
+    {
+      "pid": 16672,
+      "name": "conhost.exe"
+    }
+  ],
+  "health": {
+    "available": true,
+    "localOnly": true,
+    "offline": true,
+    "missing": [],
+    "readiness": "local file checks, models load on demand",
+    "queued": 0,
+    "activeJobs": 0,
+    "maxRecordingSeconds": 20,
+    "requestCancellation": true,
+    "voiceEngine": "onnx-q4",
+    "voiceCandidate": true,
+    "streaming": true,
+    "prewarmAvailable": false,
+    "persistentBrain": false,
+    "sttEngine": "faster-small-en",
+    "sequentialModels": true,
+    "brainModel": "q4",
+    "brainModelFile": "Qwen3-1.7B-Q4_K_M.gguf",
+    "noRepack": true,
+    "memoryProfile": "compact",
+    "resourceAdmission": {
+      "physicalGiB": 2.3,
+      "commitGiB": 2.5
+    },
+    "memoryThresholds": {
+      "entryPhysicalGiB": 2.3,
+      "entryCommitGiB": 2.5,
+      "runtimePhysicalFloorGiB": 0.75,
+      "runtimeCommitFloorGiB": 1.0,
+      "pollIntervalSeconds": 0.1,
+      "provisionalForLongVoice": true
+    },
+    "voiceImplementation": "encoder-release-seeded",
+    "reviewedPropertyFacts": true,
+    "conciseFirst": false
+  },
+  "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+  "submitReceipt": {
+    "kind": "submitted",
+    "atEpoch": 1794138208.002629,
+    "elapsedSeconds": 0.063,
+    "job": {
+      "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+      "phase": "queued",
+      "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7"
+    }
+  },
+  "lastJob": {
+    "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+    "phase": "error",
+    "timings": {
+      "answer": 0,
+      "voice worker load": 24.031,
+      "voice": 39.343,
+      "total": 39.343
+    },
+    "error": "This computer is busy. Please try again shortly.",
+    "errorCode": "resource_busy",
+    "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+    "streaming": true,
+    "chunks": [],
+    "userText": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+    "responseText": "Its terraces, separated living areas and location near Yarkon Park may suit your needs, but incomplete registration, comparable sales and ownership costs need review. Which of those features matters most to you?",
+    "completed": false
+  },
+  "terminalJob": {
+    "jobId": "0e24af3e718b4b9f9609d7318294ea4f",
+    "phase": "error",
+    "timings": {
+      "answer": 0,
+      "voice worker load": 24.031,
+      "voice": 39.343,
+      "total": 39.343
+    },
+    "error": "This computer is busy. Please try again shortly.",
+    "errorCode": "resource_busy",
+    "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+    "streaming": true,
+    "chunks": [],
+    "userText": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+    "responseText": "Its terraces, separated living areas and location near Yarkon Park may suit your needs, but incomplete registration, comparable sales and ownership costs need review. Which of those features matters most to you?",
+    "completed": false
+  },
+  "terminalObservedSeconds": 39.531,
+  "networkThreadFinished": true,
+  "cancellationThreadFinished": true,
+  "observedServerDescendantsStopped": true,
+  "processPeaks": [
+    {
+      "pid": 24000,
+      "name": "python.exe",
+      "workingMiB": 29.969,
+      "privateCommittedMiB": 20.508,
+      "peakWorkingMiB": 31.691,
+      "peakCommitMiB": 21.969
+    },
+    {
+      "pid": 16672,
+      "name": "conhost.exe",
+      "workingMiB": 10.246,
+      "privateCommittedMiB": 1.738,
+      "peakWorkingMiB": 10.309,
+      "peakCommitMiB": 1.84
+    },
+    {
+      "pid": 27316,
+      "name": "python.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 4.156,
+      "peakCommitMiB": 0.797
+    },
+    {
+      "pid": 8904,
+      "name": "conhost.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 7.586,
+      "peakCommitMiB": 1.215
+    },
+    {
+      "pid": 18476,
+      "name": "python.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 890.008,
+      "peakCommitMiB": 1169.395
+    }
+  ],
+  "maxSingleDescendantPeakWorkingMiB": 890.008,
+  "maxSingleDescendantPeakCommitMiB": 1169.395,
+  "serverJobReceipt": {
+    "id": "0e24af3e718b4b9f9609d7318294ea4f",
+    "phase": "error",
+    "text": "Why might the Kochav HaTzafon mini-penthouse be good value?",
+    "created": 1794138208.000631,
+    "timings": {
+      "answer": 0,
+      "voice worker load": 24.031,
+      "voice": 39.343,
+      "total": 39.343
+    },
+    "error": "This computer is busy. Please try again shortly.",
+    "retrieval": [
+      {
+        "sourceUrl": "https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/",
+        "sourcePage": 7812,
+        "sourceDate": "2026-11-08",
+        "topic": "value"
+      }
+    ],
+    "streaming": true,
+    "streamingEvents": [],
+    "voiceWorkerPid": 27316,
+    "availableMemoryAtStartGiB": 3.705,
+    "resourceRequirementGiB": 2.3,
+    "failedAfterChunks": 0,
+    "errorCode": "resource_busy",
+    "technicalError": "This computer is busy. Please try again shortly.",
+    "requestId": "compact_fb23ca683d064ef89b13ddbf4a5342a7",
+    "answerProvenance": {
+      "mode": "reviewed_property_facts",
+      "topic": "value",
+      "sourceUrl": "https://nad-lan.co.il/en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/",
+      "sourcePage": 7812,
+      "sourceDate": "2026-11-08",
+      "currentAvailabilityVerified": false,
+      "languageModelInference": false,
+      "modelAttempted": false
+    },
+    "resourceAdmission": [
+      {
+        "stage": "request",
+        "physicalGiB": 3.705455780029297,
+        "commitGiB": 3.2279129028320312,
+        "atEpoch": 1794138208.000631
+      },
+      {
+        "stage": "voice",
+        "physicalGiB": 3.7050094604492188,
+        "commitGiB": 3.2279129028320312,
+        "atEpoch": 1794138208.0036345
+      }
+    ],
+    "resourceAbort": {
+      "physicalGiB": 1.9921379089355469,
+      "commitGiB": 0.9853172302246094,
+      "phase": "synthesizing",
+      "atEpoch": 1794138247.3411074
+    },
+    "minimumPhysicalGiB": 1.9921379089355469,
+    "minimumCommitGiB": 0.9853172302246094,
+    "offline": true,
+    "providerCharge": 0,
+    "voiceEngine": "onnx-q4",
+    "sttEngine": "faster-small-en",
+    "persistentBrain": false,
+    "sequentialModels": true,
+    "brainModel": "q4",
+    "brainModelFile": "Qwen3-1.7B-Q4_K_M.gguf",
+    "noRepack": true,
+    "memoryProfile": "compact",
+    "memoryThresholds": {
+      "entryPhysicalGiB": 2.3,
+      "entryCommitGiB": 2.5,
+      "runtimePhysicalFloorGiB": 0.75,
+      "runtimeCommitFloorGiB": 1.0,
+      "pollIntervalSeconds": 0.1,
+      "provisionalForLongVoice": true
+    },
+    "voiceImplementation": "encoder-release-seeded",
+    "sequentialStages": [
+      "faster-whisper small.en int8 if audio",
+      "Qwen3 1.7B Q4_K_M",
+      "Chatterbox Turbo ONNX q4 candidate"
+    ],
+    "warmVoiceMayRemainResident": false
+  },
+  "transcript": null,
+  "answer": "Its terraces, separated living areas and location near Yarkon Park may suit your needs, but incomplete registration, comparable sales and ownership costs need review. Which of those features matters most to you?",
+  "transcriptionPerformed": false,
+  "transcriptExactWords": null,
+  "typedQuestionExactWords": true,
+  "answerContentReviewPending": true,
+  "cacheFlags": {
+    "voiceCacheHit": null,
+    "voiceWorkerWarm": null,
+    "brainWarm": null,
+    "persistentBrain": null
+  },
+  "answerProvenance": {
+    "mode": null,
+    "sourceUrl": null,
+    "sourcePage": null,
+    "sourceDate": null,
+    "languageModelInference": null,
+    "modelAttempted": null
+  },
+  "after": {
+    "at": 1794138248.0274448,
+    "availableGiB": 2.8748,
+    "commitCapacityAvailableGiB": 2.3118
+  },
+  "elapsedSeconds": 40.078
+}

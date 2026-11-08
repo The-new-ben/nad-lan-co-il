@@ -1,0 +1,332 @@
+{
+  "phase": "after",
+  "method": "Real native Chrome MediaRecorder with known WAV fake device; controlled API replies for lifecycle only, no backend inference. Before source replay is explicitly archived.",
+  "fixture": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\microphone-question-48k.wav",
+  "fixtureSha256": "c396037f245f229d22a83abb8e85e626de367323112925c6e6e4bf1b7aa7b040",
+  "startedAt": 1794134917.023476,
+  "cases": [
+    {
+      "variant": "widget",
+      "scenario": "typed-during-recording",
+      "submissions": [
+        {
+          "kind": "text",
+          "jobId": "controlled-0",
+          "at": 1794134920.1876929
+        }
+      ],
+      "cancelRequests": [
+        "http://127.0.0.1:52278/api/jobs/controlled-0/cancel"
+      ],
+      "errors": [],
+      "sourceSha256": "02b4941cbb1d3fc6ef7f3f57e8037bd411cd0f511e14fc1b9e646232d1ae8246",
+      "sourcePath": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\widget.js",
+      "correctSubmissionCount": true,
+      "audit": {
+        "recorderStates": [
+          "inactive"
+        ],
+        "trackStates": [
+          "ended"
+        ],
+        "stopEvents": 1,
+        "data": [
+          {
+            "bytes": 6758,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "diag": {
+          "state": "thinking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 244,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        }
+      },
+      "allTracksStopped": true,
+      "nativeDataProduced": true,
+      "applicationCorrect": true,
+      "expectedObserved": true
+    },
+    {
+      "variant": "widget",
+      "scenario": "cancel-after-stop-before-onstop",
+      "submissions": [],
+      "cancelRequests": [],
+      "errors": [],
+      "sourceSha256": "02b4941cbb1d3fc6ef7f3f57e8037bd411cd0f511e14fc1b9e646232d1ae8246",
+      "sourcePath": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\widget.js",
+      "immediateStopState": {
+        "stoppedState": "inactive",
+        "stopEvents": 0
+      },
+      "correctSubmissionCount": true,
+      "audit": {
+        "recorderStates": [
+          "inactive"
+        ],
+        "trackStates": [
+          "ended"
+        ],
+        "stopEvents": 1,
+        "data": [
+          {
+            "bytes": 5792,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "diag": {
+          "state": "paused",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 66,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        }
+      },
+      "allTracksStopped": true,
+      "nativeDataProduced": true,
+      "applicationCorrect": true,
+      "expectedObserved": true
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "typed-during-recording",
+      "submissions": [
+        {
+          "kind": "text",
+          "jobId": "controlled-0",
+          "at": 1794134932.67042
+        }
+      ],
+      "cancelRequests": [
+        "http://127.0.0.1:52278/api/jobs/controlled-0/cancel"
+      ],
+      "errors": [],
+      "sourceSha256": "680e847e37b0b58e8842a408c3bb284ddd0f6c297c7de67734f5621ce3057d2e",
+      "sourcePath": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\widget-stream.js",
+      "correctSubmissionCount": true,
+      "audit": {
+        "recorderStates": [
+          "inactive"
+        ],
+        "trackStates": [
+          "ended"
+        ],
+        "stopEvents": 1,
+        "data": [
+          {
+            "bytes": 6758,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "diag": {
+          "state": "thinking",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 248,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        }
+      },
+      "allTracksStopped": true,
+      "nativeDataProduced": true,
+      "applicationCorrect": true,
+      "expectedObserved": true
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "cancel-after-stop-before-onstop",
+      "submissions": [],
+      "cancelRequests": [],
+      "errors": [],
+      "sourceSha256": "680e847e37b0b58e8842a408c3bb284ddd0f6c297c7de67734f5621ce3057d2e",
+      "sourcePath": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\widget-stream.js",
+      "immediateStopState": {
+        "stoppedState": "inactive",
+        "stopEvents": 0
+      },
+      "correctSubmissionCount": true,
+      "audit": {
+        "recorderStates": [
+          "inactive"
+        ],
+        "trackStates": [
+          "ended"
+        ],
+        "stopEvents": 1,
+        "data": [
+          {
+            "bytes": 5792,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "diag": {
+          "state": "paused",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 65,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        }
+      },
+      "allTracksStopped": true,
+      "nativeDataProduced": true,
+      "applicationCorrect": true,
+      "expectedObserved": true
+    }
+  ],
+  "completedAt": 1794134943.3419957
+}

@@ -1,0 +1,387 @@
+{
+  "sampledFromBeforeRequest": true,
+  "sampleIntervalSeconds": 2,
+  "minimumAvailablePhysicalGiB": 0.0445,
+  "minimumCommitCapacityAvailableGiB": 0.723,
+  "minimumPhysicalSample": {
+    "elapsed": 174.102,
+    "at": 1794118544.9516318,
+    "availableGiB": 0.0445,
+    "commitCapacityAvailableGiB": 1.4702,
+    "pressure": {
+      "pagesInputPerSecond": 46218.998,
+      "pageReadsPerSecond": 434.307,
+      "pagesOutputPerSecond": 0.0
+    },
+    "processes": [
+      {
+        "pid": 25516,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 17.957,
+        "peakWorkingMiB": 30.012,
+        "privateCommittedMiB": 21.016,
+        "peakPagefileMiB": 21.078,
+        "faults": 97229
+      },
+      {
+        "pid": 21012,
+        "name": "conhost.exe",
+        "alive": true,
+        "workingMiB": 5.18,
+        "peakWorkingMiB": 9.863,
+        "privateCommittedMiB": 1.73,
+        "peakPagefileMiB": 1.832,
+        "faults": 2791
+      },
+      {
+        "pid": 9568,
+        "name": "python.exe",
+        "alive": false,
+        "workingMiB": 0.031,
+        "peakWorkingMiB": 1659.727,
+        "privateCommittedMiB": 0.074,
+        "peakPagefileMiB": 2329.895,
+        "faults": 455770
+      },
+      {
+        "pid": 15644,
+        "name": "conhost.exe",
+        "alive": false,
+        "workingMiB": 0.031,
+        "peakWorkingMiB": 7.582,
+        "privateCommittedMiB": 0.074,
+        "peakPagefileMiB": 1.199,
+        "faults": 2027
+      },
+      {
+        "pid": 24664,
+        "name": "python.exe",
+        "alive": false,
+        "workingMiB": 0.027,
+        "peakWorkingMiB": 4.371,
+        "privateCommittedMiB": 0.07,
+        "peakPagefileMiB": 0.809,
+        "faults": 1163
+      },
+      {
+        "pid": 1088,
+        "name": "llama-completion.exe",
+        "alive": false,
+        "workingMiB": 0.035,
+        "peakWorkingMiB": 2048.07,
+        "privateCommittedMiB": 0.078,
+        "peakPagefileMiB": 416.105,
+        "faults": 550778
+      },
+      {
+        "pid": 18708,
+        "name": "conhost.exe",
+        "alive": false,
+        "workingMiB": 0.035,
+        "peakWorkingMiB": 7.445,
+        "privateCommittedMiB": 0.078,
+        "peakPagefileMiB": 1.207,
+        "faults": 1988
+      },
+      {
+        "pid": 15004,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 6007.031,
+        "peakWorkingMiB": 6007.031,
+        "privateCommittedMiB": 7417.738,
+        "peakPagefileMiB": 7645.07,
+        "faults": 1597462
+      },
+      {
+        "pid": 6340,
+        "name": "conhost.exe",
+        "alive": true,
+        "workingMiB": 6.297,
+        "peakWorkingMiB": 7.152,
+        "privateCommittedMiB": 1.215,
+        "peakPagefileMiB": 1.215,
+        "faults": 1919
+      },
+      {
+        "pid": 13116,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 3.414,
+        "peakWorkingMiB": 4.16,
+        "privateCommittedMiB": 0.797,
+        "peakPagefileMiB": 0.797,
+        "faults": 1119
+      }
+    ],
+    "recentJobs": [
+      {
+        "jobId": "87a159f1027a4f00ae308066b26e7d86",
+        "hasUpload": true,
+        "hasTranscript": true,
+        "hasAnswer": true,
+        "latestStartedStage": "voice"
+      }
+    ],
+    "health": {
+      "queued": 0,
+      "activeJobs": 1,
+      "voiceEngine": "mtl",
+      "streaming": false
+    }
+  },
+  "minimumCommitSample": {
+    "elapsed": 176.127,
+    "at": 1794118546.976519,
+    "availableGiB": 0.3056,
+    "commitCapacityAvailableGiB": 0.723,
+    "pressure": {
+      "pagesInputPerSecond": 87493.157,
+      "pageReadsPerSecond": 613.753,
+      "pagesOutputPerSecond": 11869.68
+    },
+    "processes": [
+      {
+        "pid": 25516,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 15.535,
+        "peakWorkingMiB": 30.012,
+        "privateCommittedMiB": 21.066,
+        "peakPagefileMiB": 21.078,
+        "faults": 97288
+      },
+      {
+        "pid": 21012,
+        "name": "conhost.exe",
+        "alive": true,
+        "workingMiB": 2.52,
+        "peakWorkingMiB": 9.863,
+        "privateCommittedMiB": 1.73,
+        "peakPagefileMiB": 1.832,
+        "faults": 2791
+      },
+      {
+        "pid": 9568,
+        "name": "python.exe",
+        "alive": false,
+        "workingMiB": 0.031,
+        "peakWorkingMiB": 1659.727,
+        "privateCommittedMiB": 0.074,
+        "peakPagefileMiB": 2329.895,
+        "faults": 455770
+      },
+      {
+        "pid": 15644,
+        "name": "conhost.exe",
+        "alive": false,
+        "workingMiB": 0.031,
+        "peakWorkingMiB": 7.582,
+        "privateCommittedMiB": 0.074,
+        "peakPagefileMiB": 1.199,
+        "faults": 2027
+      },
+      {
+        "pid": 24664,
+        "name": "python.exe",
+        "alive": false,
+        "workingMiB": 0.027,
+        "peakWorkingMiB": 4.371,
+        "privateCommittedMiB": 0.07,
+        "peakPagefileMiB": 0.809,
+        "faults": 1163
+      },
+      {
+        "pid": 1088,
+        "name": "llama-completion.exe",
+        "alive": false,
+        "workingMiB": 0.035,
+        "peakWorkingMiB": 2048.07,
+        "privateCommittedMiB": 0.078,
+        "peakPagefileMiB": 416.105,
+        "faults": 550778
+      },
+      {
+        "pid": 18708,
+        "name": "conhost.exe",
+        "alive": false,
+        "workingMiB": 0.035,
+        "peakWorkingMiB": 7.445,
+        "privateCommittedMiB": 0.078,
+        "peakPagefileMiB": 1.207,
+        "faults": 1988
+      },
+      {
+        "pid": 15004,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 5747.203,
+        "peakWorkingMiB": 6205.371,
+        "privateCommittedMiB": 8236.285,
+        "peakPagefileMiB": 8236.285,
+        "faults": 1751080
+      },
+      {
+        "pid": 6340,
+        "name": "conhost.exe",
+        "alive": true,
+        "workingMiB": 6.277,
+        "peakWorkingMiB": 7.152,
+        "privateCommittedMiB": 1.18,
+        "peakPagefileMiB": 1.215,
+        "faults": 1919
+      },
+      {
+        "pid": 13116,
+        "name": "python.exe",
+        "alive": true,
+        "workingMiB": 3.391,
+        "peakWorkingMiB": 4.16,
+        "privateCommittedMiB": 0.742,
+        "peakPagefileMiB": 0.797,
+        "faults": 1120
+      }
+    ],
+    "recentJobs": [
+      {
+        "jobId": "87a159f1027a4f00ae308066b26e7d86",
+        "hasUpload": true,
+        "hasTranscript": true,
+        "hasAnswer": true,
+        "latestStartedStage": "voice"
+      }
+    ],
+    "health": {
+      "queued": 0,
+      "activeJobs": 1,
+      "voiceEngine": "mtl",
+      "streaming": false
+    }
+  },
+  "peakPagesInputPerSecond": 122744.882,
+  "processes": [
+    {
+      "pid": 25516,
+      "name": "python.exe",
+      "peakWorkingMiB": 30.012,
+      "peakPagefileMiB": 21.129,
+      "maxSampledPrivateMiB": 21.066,
+      "observedStages": [
+        "answer",
+        "transcription",
+        "voice"
+      ]
+    },
+    {
+      "pid": 21012,
+      "name": "conhost.exe",
+      "peakWorkingMiB": 9.863,
+      "peakPagefileMiB": 1.832,
+      "maxSampledPrivateMiB": 1.73,
+      "observedStages": [
+        "answer",
+        "transcription",
+        "voice"
+      ]
+    },
+    {
+      "pid": 9568,
+      "name": "python.exe",
+      "peakWorkingMiB": 1659.727,
+      "peakPagefileMiB": 2329.895,
+      "maxSampledPrivateMiB": 2329.895,
+      "observedStages": [
+        "transcription"
+      ]
+    },
+    {
+      "pid": 15644,
+      "name": "conhost.exe",
+      "peakWorkingMiB": 7.582,
+      "peakPagefileMiB": 1.199,
+      "maxSampledPrivateMiB": 1.199,
+      "observedStages": [
+        "transcription"
+      ]
+    },
+    {
+      "pid": 24664,
+      "name": "python.exe",
+      "peakWorkingMiB": 4.371,
+      "peakPagefileMiB": 0.809,
+      "maxSampledPrivateMiB": 0.789,
+      "observedStages": [
+        "transcription"
+      ]
+    },
+    {
+      "pid": 1088,
+      "name": "llama-completion.exe",
+      "peakWorkingMiB": 2048.07,
+      "peakPagefileMiB": 416.105,
+      "maxSampledPrivateMiB": 416.059,
+      "observedStages": [
+        "answer"
+      ]
+    },
+    {
+      "pid": 18708,
+      "name": "conhost.exe",
+      "peakWorkingMiB": 7.445,
+      "peakPagefileMiB": 1.207,
+      "maxSampledPrivateMiB": 1.207,
+      "observedStages": [
+        "answer"
+      ]
+    },
+    {
+      "pid": 15004,
+      "name": "python.exe",
+      "peakWorkingMiB": 6205.371,
+      "peakPagefileMiB": 8284.379,
+      "maxSampledPrivateMiB": 8236.285,
+      "observedStages": [
+        "voice"
+      ]
+    },
+    {
+      "pid": 6340,
+      "name": "conhost.exe",
+      "peakWorkingMiB": 7.152,
+      "peakPagefileMiB": 1.215,
+      "maxSampledPrivateMiB": 1.215,
+      "observedStages": [
+        "voice"
+      ]
+    },
+    {
+      "pid": 13116,
+      "name": "python.exe",
+      "peakWorkingMiB": 4.16,
+      "peakPagefileMiB": 0.797,
+      "maxSampledPrivateMiB": 0.797,
+      "observedStages": [
+        "voice"
+      ]
+    }
+  ],
+  "localJob": {
+    "id": "87a159f1027a4f00ae308066b26e7d86",
+    "phase": "error",
+    "cancelled": true,
+    "errorCode": "cancelled",
+    "timings": {
+      "audio decode": 0.172,
+      "transcription": 10.672,
+      "answer": 12.938,
+      "voice": 31.422,
+      "total": 55.219
+    },
+    "availableMemoryAtStartGiB": 5.595,
+    "voiceEngine": "mtl",
+    "sttEngine": "whisper-small"
+  },
+  "finalAvailablePhysicalGiB": 6.525,
+  "finalCommitCapacityAvailableGiB": 8.6675
+}

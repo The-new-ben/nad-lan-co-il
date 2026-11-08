@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-08",
+  "updatedUtc": "2026-11-08T11:48:05.058763+00:00",
+  "page": "https://nad-lan.co.il/en/buy-property-in-israel/",
+  "pageId": 5154,
+  "release": "v-90fc03cc26ff",
+  "liveGreetingAndControlsVerified": true,
+  "liveGeneratedReplyVerified": false,
+  "publicWorkerRunning": false,
+  "publicWorkerStopFlagPresent": true,
+  "currentPublicConversationAvailable": false,
+  "lastLiveQuestion": {
+    "outcome": "resource_busy_before_voice",
+    "transcriptionCompleted": true,
+    "answerGenerated": true,
+    "spokenAnswerCompleted": false,
+    "evidence": "evidence/public-relay/real-reply-recovery/receipt.json"
+  },
+  "localFreshIdentityTurn": {
+    "completed": true,
+    "modelsMocked": false,
+    "voiceCacheHit": false,
+    "firstAudioFetchedSeconds": 51.828,
+    "fullResponseFetchedSeconds": 63.36,
+    "audioSeconds": 6.62,
+    "input": "Controlled Windows synthesized WAV, not a physical microphone",
+    "audioSHA256": "9f0e7a95ebc8aa13b7175d8ff6fafaf1352e912425aec38c150cbd5569fa681e",
+    "browserPlaybackTested": false,
+    "evidence": "evidence/local-compact-conversation/identity-02/receipt.json"
+  },
+  "localPropertyTurn": {
+    "completed": false,
+    "status": "server_error",
+    "reviewedFactsMatched": true,
+    "languageModelInference": false,
+    "transcriptionPerformed": false,
+    "resourceAbort": {
+      "physicalGiB": 1.9921379089355469,
+      "commitGiB": 0.9853172302246094,
+      "phase": "synthesizing",
+      "atEpoch": 1794138247.3411074
+    },
+    "evidence": "evidence/local-compact-conversation/property-value-local-01/receipt.json"
+  },
+  "preparedChanges": {
+    "waitCacheControlsPassed": 72,
+    "liveActivation": false,
+    "existingIdentityAudioCacheAdopted": true,
+    "newSynthesisByCacheAdoption": false,
+    "propertyShorterSentences": "Draft only;54 controls passed; speech and memory effect not tested"
+  },
+  "activationBlocker": {
+    "type": "Automatic policy review rejection",
+    "actions": [
+      "Restart idle owned local speech server",
+      "Resume outbound relay against unchanged server"
+    ],
+    "statedReason": "blocked by policy",
+    "commandsExecuted": false,
+    "existingCompactServerPid": 24000,
+    "existingLegacyServerPid": 25516,
+    "newWaitCacheCodeRunning": false,
+    "evidence": "evidence/service-activation-blocked.json"
+  },
+  "ownerApplications": {
+    "keepOpen": [
+      "Claude Desktop",
+      "Grok Bot"
+    ],
+    "closedByThisPass": []
+  },
+  "voiceCandidate": {
+    "engine": "Chatterbox Turbo ONNX q4",
+    "ownerListeningApproval": "explicitly approved8November2026",
+    "completedLocalTurn": true,
+    "completedPublicTurn": false
+  },
+  "newPaidServices": 0,
+  "newCharactersGenerated": 0,
+  "sharedSkillValidated": true,
+  "sharedSkillVersion": "2026-11-08.7",
+  "portablePackage": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\talking-avatar-studio-portable.zip",
+  "portableSHA256": "be10f90f10c6fe8a99bf9fb4770de35fde9cb5880bf4837e447906eb15ce3ef5",
+  "pr": "https://github.com/The-new-ben/nad-lan-co-il/pull/498",
+  "email": {
+    "sent": true,
+    "messageId": "1a1b825c08004693",
+    "links": "public page and two static review videos",
+    "limitationDisclosed": true,
+    "recoveryMessageId": "1a1b9bae4582228e",
+    "latestMessageId": "1a1baff13d02fc0b",
+    "latestSent": true,
+    "latestLinks": "Fresh pilot link, two dated review videos, exact local identity WAV and shared skill ZIP",
+    "currentPublicUnavailabilityDisclosed": true,
+    "localLatencyDisclosed": true
+  },
+  "nextDependency": "Resolve the explicit activation rejection; then verify a completed public spoken turn and sustained availability without closing owner apps.",
+  "limitations": [
+    "Longer speech still hit the1GiB commit guard in the property turn.",
+    "Current portrait is frontal photo-textured Blender geometry, not a full volumetric360-degree head.",
+    "No physical phone or physical microphone validation in these controlled runs.",
+    "No world-best, perfect or scientific-breakthrough claim."
+  ],
+  "handoffCommit": "f1a27c2199f3ba5deb880cfdb4d0044f30337d54",
+  "tracking": {
+    "linear": "HAD-682",
+    "lastCommentId": "763c458c-4191-4520-a08a-69c20dde1ea4",
+    "notionRowUpdated": true,
+    "notionHQUpdated": true
+  }
+}

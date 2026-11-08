@@ -1,0 +1,1195 @@
+{
+  "releaseId": "v-6dff055c6784",
+  "scope": "Fresh anonymous public visibility, exact asset cache/version, trusted prerecorded greeting and closure only",
+  "speechInference": false,
+  "publicMutation": false,
+  "apiPosts": [],
+  "checks": [
+    {
+      "name": "390: immediate configuration and silent visible portrait",
+      "pass": true,
+      "detail": {
+        "config": {
+          "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+          "storageKey": "nlag-closed",
+          "revealDelay": 0,
+          "apiBase": "/wp-json/nadlan-talk/v1",
+          "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+          "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+          "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+          "pollInterval": 1000
+        },
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": false,
+          "visible": true,
+          "frames": 9,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536.7514038085938,
+            "width": 144,
+            "height": 166,
+            "top": 536.7514038085938,
+            "right": 378,
+            "bottom": 702.7514038085938,
+            "left": 234
+          }
+        },
+        "roots": 1,
+        "launchers": 0,
+        "storage": null,
+        "bounds": {
+          "x": 234,
+          "y": 536.7514038085938,
+          "width": 144,
+          "height": 166,
+          "right": 378,
+          "bottom": 702.7514038085938
+        },
+        "inside": true,
+        "overlaps": [],
+        "reachable": true
+      }
+    },
+    {
+      "name": "390: live portrait clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 234,
+        "y": 536.7514038085938,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702.7514038085938
+      }
+    },
+    {
+      "name": "390: trusted tap plays original greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: one close stops audio and presents reachable Talk",
+      "pass": true,
+      "detail": {
+        "config": {
+          "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+          "storageKey": "nlag-closed",
+          "revealDelay": 0,
+          "apiBase": "/wp-json/nadlan-talk/v1",
+          "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+          "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+          "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+          "pollInterval": 1000
+        },
+        "diag": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": true,
+          "visible": true,
+          "frames": 22,
+          "mouth": 0.2575938035378304,
+          "blink": 0,
+          "startedAt": 1766.1000000014901,
+          "firstInteractionAt": 1720.6000000014901,
+          "audio": {
+            "paused": true,
+            "currentTime": 0.075911,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "roots": 1,
+        "launchers": 1,
+        "storage": "1",
+        "bounds": {
+          "x": 306,
+          "y": 658,
+          "width": 72,
+          "height": 44,
+          "right": 378,
+          "bottom": 702
+        },
+        "inside": true,
+        "overlaps": [],
+        "reachable": true
+      }
+    },
+    {
+      "name": "390: revealDelay zero still honors persisted close",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: Talk reopens one guide and greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Current live widget.js exact hash",
+      "pass": true,
+      "detail": {
+        "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+        "status": 200,
+        "sha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+        "expectedSha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+        "cacheControl": "max-age=31536000"
+      }
+    },
+    {
+      "name": "Current live widget.css exact hash",
+      "pass": true,
+      "detail": {
+        "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+        "status": 200,
+        "sha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+        "expectedSha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+        "cacheControl": "max-age=31536000"
+      }
+    },
+    {
+      "name": "1366: immediate configuration and silent visible portrait",
+      "pass": true,
+      "detail": {
+        "config": {
+          "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+          "storageKey": "nlag-closed",
+          "revealDelay": 0,
+          "apiBase": "/wp-json/nadlan-talk/v1",
+          "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+          "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+          "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+          "pollInterval": 1000
+        },
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": false,
+          "visible": true,
+          "frames": 9,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 1166,
+            "y": 486.2400817871094,
+            "width": 176,
+            "height": 198.00003051757812,
+            "top": 486.2400817871094,
+            "right": 1342,
+            "bottom": 684.2401123046875,
+            "left": 1166
+          }
+        },
+        "roots": 1,
+        "launchers": 0,
+        "storage": null,
+        "bounds": {
+          "x": 1166,
+          "y": 486.2400817871094,
+          "width": 176,
+          "height": 198.00003051757812,
+          "right": 1342,
+          "bottom": 684.2401123046875
+        },
+        "inside": true,
+        "overlaps": [],
+        "reachable": true
+      }
+    },
+    {
+      "name": "1366: live portrait clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 1166,
+        "y": 486.2400817871094,
+        "width": 176,
+        "height": 198.00003051757812,
+        "right": 1342,
+        "bottom": 684.2401123046875
+      }
+    },
+    {
+      "name": "1366: trusted tap plays original greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: one close stops audio and presents reachable Talk",
+      "pass": true,
+      "detail": {
+        "config": {
+          "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+          "storageKey": "nlag-closed",
+          "revealDelay": 0,
+          "apiBase": "/wp-json/nadlan-talk/v1",
+          "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+          "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+          "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+          "pollInterval": 1000
+        },
+        "diag": {
+          "state": "closed",
+          "renderer": "webgl",
+          "closed": true,
+          "started": true,
+          "visible": true,
+          "frames": 21,
+          "mouth": 0.2575938035378316,
+          "blink": 0,
+          "startedAt": 1599.5,
+          "firstInteractionAt": 1565.2999999970198,
+          "audio": {
+            "paused": true,
+            "currentTime": 0.059567,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": null
+        },
+        "roots": 1,
+        "launchers": 1,
+        "storage": "1",
+        "bounds": {
+          "x": 1270,
+          "y": 636,
+          "width": 72,
+          "height": 44,
+          "right": 1342,
+          "bottom": 680
+        },
+        "inside": true,
+        "overlaps": [],
+        "reachable": true
+      }
+    },
+    {
+      "name": "1366: revealDelay zero still honors persisted close",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: Talk reopens one guide and greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Only current avatar asset version loaded",
+      "pass": true,
+      "detail": [
+        "v-6dff055c6784"
+      ]
+    },
+    {
+      "name": "No avatar API POST and no uncaught exceptions",
+      "pass": true,
+      "detail": {
+        "posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "states": {
+    "390-fresh": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 9,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536.7514038085938,
+          "width": 144,
+          "height": 166,
+          "top": 536.7514038085938,
+          "right": 378,
+          "bottom": 702.7514038085938,
+          "left": 234
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 234,
+        "y": 536.7514038085938,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702.7514038085938
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "390-greeting": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 20,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1766.1000000014901,
+        "firstInteractionAt": 1720.6000000014901,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.015018,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "top": 536,
+          "right": 378,
+          "bottom": 702,
+          "left": 234
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "390-closed": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": true,
+        "visible": true,
+        "frames": 22,
+        "mouth": 0.2575938035378304,
+        "blink": 0,
+        "startedAt": 1766.1000000014901,
+        "firstInteractionAt": 1720.6000000014901,
+        "audio": {
+          "paused": true,
+          "currentTime": 0.075911,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "roots": 1,
+      "launchers": 1,
+      "storage": "1",
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "390-reload": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "roots": 0,
+      "launchers": 1,
+      "storage": "1",
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "390-reopened": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 7,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 954.7000000029802,
+        "firstInteractionAt": 896.8000000044703,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.040263,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 542.5326538085938,
+          "width": 144,
+          "height": 166,
+          "top": 542.5326538085938,
+          "right": 378,
+          "bottom": 708.5326538085938,
+          "left": 234
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 234,
+        "y": 542.5326538085938,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 708.5326538085938
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "1366-fresh": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 9,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 486.2400817871094,
+          "width": 176,
+          "height": 198.00003051757812,
+          "top": 486.2400817871094,
+          "right": 1342,
+          "bottom": 684.2401123046875,
+          "left": 1166
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 1166,
+        "y": 486.2400817871094,
+        "width": 176,
+        "height": 198.00003051757812,
+        "right": 1342,
+        "bottom": 684.2401123046875
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "1366-greeting": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 19,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 1599.5,
+        "firstInteractionAt": 1565.2999999970198,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.007115,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 482,
+          "width": 176,
+          "height": 198,
+          "top": 482,
+          "right": 1342,
+          "bottom": 680,
+          "left": 1166
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 1166,
+        "y": 482,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "1366-closed": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "closed",
+        "renderer": "webgl",
+        "closed": true,
+        "started": true,
+        "visible": true,
+        "frames": 21,
+        "mouth": 0.2575938035378316,
+        "blink": 0,
+        "startedAt": 1599.5,
+        "firstInteractionAt": 1565.2999999970198,
+        "audio": {
+          "paused": true,
+          "currentTime": 0.059567,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "roots": 1,
+      "launchers": 1,
+      "storage": "1",
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "1366-reload": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "roots": 0,
+      "launchers": 1,
+      "storage": "1",
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    },
+    "1366-reopened": {
+      "config": {
+        "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-closed",
+        "revealDelay": 0,
+        "apiBase": "/wp-json/nadlan-talk/v1",
+        "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+        "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+        "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+        "pollInterval": 1000
+      },
+      "diag": {
+        "state": "speaking",
+        "renderer": "pending",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 4,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 911.6999999955297,
+        "firstInteractionAt": 863.7999999970198,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.004316,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 490.8687744140625,
+          "width": 176,
+          "height": 198,
+          "top": 490.8687744140625,
+          "right": 1342,
+          "bottom": 688.8687744140625,
+          "left": 1166
+        }
+      },
+      "roots": 1,
+      "launchers": 0,
+      "storage": null,
+      "bounds": {
+        "x": 1166,
+        "y": 490.8687744140625,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 688.8687744140625
+      },
+      "inside": true,
+      "overlaps": [],
+      "reachable": true
+    }
+  },
+  "assetResponses": [
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137e-15ca\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137c-90d7f\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.cues.json",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "W/\"6af01380-d9a\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/nadlan-advisor-v2.glb",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "\"6af0137f-e8b88\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+      "status": 200,
+      "cacheControl": "max-age=315360000",
+      "etag": "\"6af01384-6f82c\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.mp3",
+      "status": 206,
+      "cacheControl": null,
+      "etag": "\"6af0137f-1736d\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137e-15ca\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137c-90d7f\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.mp3",
+      "status": 206,
+      "cacheControl": null,
+      "etag": "\"6af0137f-1736d\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+      "status": 200,
+      "cacheControl": "max-age=315360000",
+      "etag": "\"6af01384-6f82c\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.cues.json",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "W/\"6af01380-d9a\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/nadlan-advisor-v2.glb",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "\"6af0137f-e8b88\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137e-15ca\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137c-90d7f\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.cues.json",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "W/\"6af01380-d9a\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/nadlan-advisor-v2.glb",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "\"6af0137f-e8b88\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+      "status": 200,
+      "cacheControl": "max-age=315360000",
+      "etag": "\"6af01384-6f82c\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.mp3",
+      "status": 206,
+      "cacheControl": null,
+      "etag": "\"6af0137f-1736d\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137e-15ca\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+      "status": 200,
+      "cacheControl": "max-age=31536000",
+      "etag": "W/\"6af0137c-90d7f\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.mp3",
+      "status": 206,
+      "cacheControl": null,
+      "etag": "\"6af0137f-1736d\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+      "status": 200,
+      "cacheControl": "max-age=315360000",
+      "etag": "\"6af01384-6f82c\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.cues.json",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "W/\"6af01380-d9a\""
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/nadlan-advisor-v2.glb",
+      "status": 200,
+      "cacheControl": null,
+      "etag": "\"6af0137f-e8b88\""
+    }
+  ],
+  "pageErrors": [],
+  "startedUtc": "2026-11-08T06:22:50Z",
+  "assetReadback": [
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
+      "status": 200,
+      "sha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+      "expectedSha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+      "cacheControl": "max-age=31536000"
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
+      "status": 200,
+      "sha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+      "expectedSha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+      "cacheControl": "max-age=31536000"
+    }
+  ],
+  "finishedUtc": "2026-11-08T06:23:00Z"
+}

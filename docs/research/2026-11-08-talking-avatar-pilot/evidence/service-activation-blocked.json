@@ -1,0 +1,17 @@
+{
+  "dateUtc": "2026-11-08T11:42:56.7752432Z",
+  "actions": [
+    "Restart idle task-owned compact speech server PID24000",
+    "Resume outbound public relay against unchanged compact server"
+  ],
+  "outcome": "Both commands rejected before execution by automatic policy review",
+  "reason": "blocked by policy; no more specific reason supplied",
+  "localServerPid": 24000,
+  "localServerRestarted": false,
+  "newWaitCacheCodeActive": false,
+  "publicWorkerRunning": false,
+  "publicStopFlagPresent": true,
+  "avatarAndGreetingRemainLive": true,
+  "ownerAppsClosed": [],
+  "bypassAttempted": false
+}

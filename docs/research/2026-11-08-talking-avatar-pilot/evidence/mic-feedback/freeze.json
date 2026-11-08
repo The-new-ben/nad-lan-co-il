@@ -1,0 +1,30 @@
+{
+  "createdAt": "2026-11-08T10:51:44.075108+00:00",
+  "status": "source_frozen_for_parent_packaging",
+  "sourceHashes": {
+    "widget.js": "02b4941cbb1d3fc6ef7f3f57e8037bd411cd0f511e14fc1b9e646232d1ae8246",
+    "widget-stream.js": "680e847e37b0b58e8842a408c3bb284ddd0f6c297c7de67734f5621ce3057d2e",
+    "widget.css": "6a453ee35e67a7f9e4ec388eb6fe9df0a308ff4bb0d611921c5a2c9860728ff9"
+  },
+  "focusedPhoneChecks": {
+    "passed": 62,
+    "total": 62,
+    "receipt": "receipt.json"
+  },
+  "nativeRecorderRegressions": {
+    "passed": 4,
+    "total": 4,
+    "receipt": "recorder-regression/after.json"
+  },
+  "cleanup": {
+    "browserAndServerClosedInFinally": true,
+    "targetedOwnedTestProcessMatches": 0,
+    "regressionPort52278Listening": false
+  },
+  "limits": [
+    "390x844 Chromium emulation, not a physical phone or iOS test",
+    "Native fake-device MediaRecorder and WebM; permission and API phases are controlled fixtures",
+    "No STT, Qwen or TTS inference; no deployment or public mutation",
+    "No changes to face, model, host page, server or voice"
+  ]
+}

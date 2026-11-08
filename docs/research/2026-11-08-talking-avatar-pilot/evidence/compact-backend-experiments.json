@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-08",
+  "sameMachineOwnerAppsKeptOpen": true,
+  "paidProviderCharges": 0,
+  "experiments": [
+    {
+      "label": "q8-vulkan-eight-01",
+      "outcome": "stopped_cancelled_resource_floor",
+      "cases": [
+        {
+          "id": "buyer_checks",
+          "status": "cancelled_resource_floor",
+          "wallSeconds": 4.093,
+          "peakWorkingMiB": 644.543,
+          "peakCommitMiB": 2368.914,
+          "minimumPhysicalGiB": 1.4211,
+          "minimumCommitGiB": 0.7843,
+          "validationError": null
+        }
+      ]
+    },
+    {
+      "label": "q4-low-headroom-eight-01",
+      "outcome": "stopped_cancelled_resource_floor",
+      "cases": [
+        {
+          "id": "buyer_checks",
+          "status": "cancelled_resource_floor",
+          "wallSeconds": 2.266,
+          "peakWorkingMiB": 1985.773,
+          "peakCommitMiB": 1062.637,
+          "minimumPhysicalGiB": 0.4983,
+          "minimumCommitGiB": 2.2213,
+          "validationError": null
+        }
+      ]
+    },
+    {
+      "label": "q4-vulkan-eight-01",
+      "outcome": "stopped_cancelled_resource_floor",
+      "cases": [
+        {
+          "id": "buyer_checks",
+          "status": "generated",
+          "wallSeconds": 10.641,
+          "peakWorkingMiB": 553.531,
+          "peakCommitMiB": 1711.766,
+          "minimumPhysicalGiB": 1.9585,
+          "minimumCommitGiB": 1.3218,
+          "validationError": null
+        },
+        {
+          "id": "remote_limits",
+          "status": "cancelled_resource_floor",
+          "wallSeconds": 2.266,
+          "peakWorkingMiB": 499.078,
+          "peakCommitMiB": 1664.543,
+          "minimumPhysicalGiB": 1.4703,
+          "minimumCommitGiB": 0.801,
+          "validationError": null
+        }
+      ]
+    },
+    {
+      "label": "q4-norepack-eight-01",
+      "outcome": "stopped_not_started_resource_preflight",
+      "cases": [
+        {
+          "id": "buyer_checks",
+          "status": "generated",
+          "wallSeconds": 8.312,
+          "peakWorkingMiB": 1359.156,
+          "peakCommitMiB": 418.336,
+          "minimumPhysicalGiB": 1.1077,
+          "minimumCommitGiB": 2.8188,
+          "validationError": null
+        },
+        {
+          "id": "remote_limits",
+          "status": "generated",
+          "wallSeconds": 9.641,
+          "peakWorkingMiB": 1359.273,
+          "peakCommitMiB": 417.762,
+          "minimumPhysicalGiB": 1.0913,
+          "minimumCommitGiB": 2.8314,
+          "validationError": null
+        },
+        {
+          "id": "unknown_price",
+          "status": "generated",
+          "wallSeconds": 9.672,
+          "peakWorkingMiB": 1359.355,
+          "peakCommitMiB": 417.809,
+          "minimumPhysicalGiB": 1.1208,
+          "minimumCommitGiB": 2.8121,
+          "validationError": null
+        },
+        {
+          "id": "unknown_address",
+          "status": "generated_validator_rejected",
+          "wallSeconds": 8.75,
+          "peakWorkingMiB": 1359.305,
+          "peakCommitMiB": 417.891,
+          "minimumPhysicalGiB": 0.9343,
+          "minimumCommitGiB": 2.6092,
+          "validationError": "The answer included an unverified figure; please rephrase the question."
+        },
+        {
+          "id": "identity",
+          "status": "generated",
+          "wallSeconds": 9.204,
+          "peakWorkingMiB": 1359.199,
+          "peakCommitMiB": 417.949,
+          "minimumPhysicalGiB": 0.9799,
+          "minimumCommitGiB": 2.5414,
+          "validationError": null
+        },
+        {
+          "id": "broker_actions",
+          "status": "generated",
+          "wallSeconds": 8.656,
+          "peakWorkingMiB": 1359.332,
+          "peakCommitMiB": 417.797,
+          "minimumPhysicalGiB": 0.9032,
+          "minimumCommitGiB": 2.3952,
+          "validationError": null
+        },
+        {
+          "id": "guaranteed_return",
+          "status": "not_started_resource_preflight",
+          "wallSeconds": null,
+          "peakWorkingMiB": null,
+          "peakCommitMiB": null,
+          "minimumPhysicalGiB": 2.2107,
+          "minimumCommitGiB": 2.6753,
+          "validationError": null
+        }
+      ]
+    }
+  ],
+  "claim": "No full public spoken conversation has yet completed; requested GPU settings are not proof of actual offload without runtime evidence."
+}

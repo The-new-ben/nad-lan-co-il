@@ -1,0 +1,44 @@
+{
+  "temporaryName": "tmp-HAD682-relay-option-20261108T002939-288736",
+  "temporaryId": 1637,
+  "delete": {
+    "status": 500,
+    "responseType": "dict",
+    "keys": [
+      "code",
+      "message",
+      "data"
+    ],
+    "safeFlags": {}
+  },
+  "detailStatus": 200,
+  "active": false,
+  "stillListed": true,
+  "endpointStatus": 404,
+  "permanentUnchanged": true,
+  "priorFailurePreserved": true,
+  "productionMutationScope": "DELETE only verified temporary snippet1637",
+  "deleteError": {
+    "status": 500,
+    "code": "rest_cannot_delete",
+    "message": "The snippet could not be deleted.",
+    "data": {
+      "status": 500
+    }
+  },
+  "resolution": "Temporary snippet remains inactive; endpoint404 verified. Permanent1638 unchanged. No new helper created.",
+  "assetUploaderReadOnlyCheck": {
+    "id": 1639,
+    "name": "tmp-nadlan-avatar-assets-20261108T003120",
+    "active": false,
+    "optionsStatus": 200,
+    "mutationPerformed": false
+  },
+  "registeredTemporaryRoutesReadOnlyCheck": {
+    "routeIndexStatus": 200,
+    "routeCount": 1091,
+    "matches": [],
+    "checkedAtUnix": 1794090914.1676931,
+    "mutationsPerformed": false
+  }
+}

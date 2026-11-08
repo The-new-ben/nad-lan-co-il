@@ -1,0 +1,12 @@
+{
+  "testedRelease": "v-a27cf72d496c",
+  "finalPackageRelease": "v-1701190a83c6",
+  "verifiedUnchangedCoreFiles": 12,
+  "newFilesOnly": [
+    "review/nadlan-small-avatar-phone-final.mp4",
+    "review/nadlan-small-avatar-desktop-final.mp4"
+  ],
+  "allCurrentFileHashesVerified": true,
+  "nativeBrowserChecksPassed": 20,
+  "nativeBrowserChecksTotal": 20
+}

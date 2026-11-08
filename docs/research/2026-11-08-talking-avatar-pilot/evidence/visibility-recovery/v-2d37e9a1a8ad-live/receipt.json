@@ -1,0 +1,1514 @@
+{
+  "scope": "Actual anonymous live page in isolated Chrome; no owner profile, conversation submission or model inference",
+  "releaseId": "v-2d37e9a1a8ad",
+  "modelInference": false,
+  "publicMutation": false,
+  "checks": [
+    {
+      "name": "360: fresh live avatar visible and silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360: persisted legacy close shows one Talk control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360: Talk fits and clears live site controls",
+      "pass": true,
+      "detail": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      }
+    },
+    {
+      "name": "360: Talk plays original greeting once with one guide",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360: reopened live guide fits and clears controls",
+      "pass": true,
+      "detail": {
+        "x": 204,
+        "y": 332,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 498
+      }
+    },
+    {
+      "name": "360: initial #talk silently consumes saved dismissal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360: closing after recovery remains closed on reload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: fresh live avatar visible and silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: persisted legacy close shows one Talk control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: Talk fits and clears live site controls",
+      "pass": true,
+      "detail": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      }
+    },
+    {
+      "name": "390: Talk plays original greeting once with one guide",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: reopened live guide fits and clears controls",
+      "pass": true,
+      "detail": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702
+      }
+    },
+    {
+      "name": "390: initial #talk silently consumes saved dismissal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390: closing after recovery remains closed on reload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Live widget.js exact reviewed release hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Live widget.css exact reviewed release hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: fresh live avatar visible and silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: persisted legacy close shows one Talk control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: Talk fits and clears live site controls",
+      "pass": true,
+      "detail": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      }
+    },
+    {
+      "name": "1366: Talk plays original greeting once with one guide",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: reopened live guide fits and clears controls",
+      "pass": true,
+      "detail": {
+        "x": 1166,
+        "y": 482,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 680
+      }
+    },
+    {
+      "name": "1366: initial #talk silently consumes saved dismissal",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1366: closing after recovery remains closed on reload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Control page has no avatar: https://nad-lan.co.il/",
+      "pass": true,
+      "detail": {
+        "url": "https://nad-lan.co.il/",
+        "avatar": false,
+        "roots": 0,
+        "packageResources": [],
+        "httpStatus": 200
+      }
+    },
+    {
+      "name": "Control page has no avatar: https://nad-lan.co.il/en/",
+      "pass": true,
+      "detail": {
+        "url": "https://nad-lan.co.il/en/",
+        "avatar": false,
+        "roots": 0,
+        "packageResources": [],
+        "httpStatus": 200
+      }
+    },
+    {
+      "name": "Browser loaded only current versioned avatar assets",
+      "pass": true,
+      "detail": [
+        "v-2d37e9a1a8ad"
+      ]
+    },
+    {
+      "name": "No conversation or other avatar API POST occurred",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "pageErrors": [],
+  "scenarios": {
+    "360-fresh": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 342,
+          "width": 144,
+          "height": 166,
+          "top": 342,
+          "right": 348,
+          "bottom": 508,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 204,
+        "y": 342,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 508
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "360-legacy-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "360-trusted-talk-open": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 27,
+        "mouth": 0.3100063060562641,
+        "blink": 0,
+        "startedAt": 1442.800000000745,
+        "firstInteractionAt": 1395.2000000029802,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.671126,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 332,
+          "width": 144,
+          "height": 166,
+          "top": 332,
+          "right": 348,
+          "bottom": 498,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+          "at": 1398.6000000014901
+        }
+      ],
+      "bounds": {
+        "x": 204,
+        "y": 332,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "360-initial-hash": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 204,
+          "y": 342,
+          "width": 144,
+          "height": 166,
+          "top": 342,
+          "right": 348,
+          "bottom": 508,
+          "left": 204
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 204,
+        "y": 342,
+        "width": 144,
+        "height": 166,
+        "right": 348,
+        "bottom": 508
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "360-closed-after-hash-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 276,
+        "y": 454,
+        "width": 72,
+        "height": 44,
+        "right": 348,
+        "bottom": 498
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "390-fresh": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 546,
+          "width": 144,
+          "height": 166,
+          "top": 546,
+          "right": 378,
+          "bottom": 712,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 234,
+        "y": 546,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 712
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "390-legacy-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "390-trusted-talk-open": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 26,
+        "mouth": 0.3100128949670216,
+        "blink": 0,
+        "startedAt": 1414.300000000745,
+        "firstInteractionAt": 1358.6000000014901,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.654338,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "top": 536,
+          "right": 378,
+          "bottom": 702,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+          "at": 1363.199999999255
+        }
+      ],
+      "bounds": {
+        "x": 234,
+        "y": 536,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "390-initial-hash": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 546,
+          "width": 144,
+          "height": 166,
+          "top": 546,
+          "right": 378,
+          "bottom": 712,
+          "left": 234
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 234,
+        "y": 546,
+        "width": 144,
+        "height": 166,
+        "right": 378,
+        "bottom": 712
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "390-closed-after-hash-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 306,
+        "y": 658,
+        "width": 72,
+        "height": 44,
+        "right": 378,
+        "bottom": 702
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "1366-fresh": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 492,
+          "width": 176,
+          "height": 198,
+          "top": 492,
+          "right": 1342,
+          "bottom": 690,
+          "left": 1166
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 1166,
+        "y": 492,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 690
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "1366-legacy-closed-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "1366-trusted-talk-open": {
+      "diagnostics": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 27,
+        "mouth": 0.31001242260316464,
+        "blink": 0,
+        "startedAt": 1394.300000000745,
+        "firstInteractionAt": 1338,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.63086,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 482,
+          "width": 176,
+          "height": 198,
+          "top": 482,
+          "right": 1342,
+          "bottom": 680,
+          "left": 1166
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [
+        {
+          "src": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+          "at": 1342.4000000022352
+        }
+      ],
+      "bounds": {
+        "x": 1166,
+        "y": 482,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "1366-initial-hash": {
+      "diagnostics": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 5,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 1166,
+          "y": 492,
+          "width": 176,
+          "height": 198,
+          "top": 492,
+          "right": 1342,
+          "bottom": 690,
+          "left": 1166
+        }
+      },
+      "rootCount": 1,
+      "visibleRoots": 1,
+      "launcherCount": 0,
+      "hash": "",
+      "storage": null,
+      "playCalls": [],
+      "bounds": {
+        "x": 1166,
+        "y": 492,
+        "width": 176,
+        "height": 198,
+        "right": 1342,
+        "bottom": 690
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "1366-closed-after-hash-reload": {
+      "diagnostics": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "rootCount": 0,
+      "visibleRoots": 0,
+      "launcherCount": 1,
+      "hash": "",
+      "storage": "1",
+      "playCalls": [],
+      "bounds": {
+        "x": 1270,
+        "y": 636,
+        "width": 72,
+        "height": 44,
+        "right": 1342,
+        "bottom": 680
+      },
+      "inside": true,
+      "overlaps": [],
+      "targetReachable": true
+    },
+    "control-https://nad-lan.co.il/": {
+      "url": "https://nad-lan.co.il/",
+      "avatar": false,
+      "roots": 0,
+      "packageResources": [],
+      "httpStatus": 200
+    },
+    "control-https://nad-lan.co.il/en/": {
+      "url": "https://nad-lan.co.il/en/",
+      "avatar": false,
+      "roots": 0,
+      "packageResources": [],
+      "httpStatus": 200
+    }
+  },
+  "assetResponses": [
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:55:55 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:55:58 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:55:55 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:55:58 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:55:55 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:55:58 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:55:55 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:55:58 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:06 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/portrait-cutout-v2.webp",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.cues.json",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/nadlan-advisor-v2.glb",
+      "status": 200
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e60-15ca\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "text/css",
+        "last-modified": "Sun, 08 Nov 2026 05:53:36 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "cacheHeaders": {
+        "cache-control": "max-age=31536000",
+        "etag": "W/\"6af00e5c-90b47\"",
+        "expires": "Mon, 08 Nov 2027 05:56:16 GMT",
+        "content-type": "application/javascript",
+        "last-modified": "Sun, 08 Nov 2026 05:53:32 GMT"
+      }
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/assets/greet-en.mp3",
+      "status": 206
+    }
+  ],
+  "apiPosts": [],
+  "startedUtc": "2026-11-08T05:55:51Z",
+  "assetReadback": [
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.js",
+      "status": 200,
+      "sha256": "10a12e3cb62ede9aed5b8b74ae51ca510da0d86dfb041b48b130281a69c98567",
+      "expectedSha256": "10a12e3cb62ede9aed5b8b74ae51ca510da0d86dfb041b48b130281a69c98567",
+      "cacheControl": "max-age=31536000"
+    },
+    {
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-2d37e9a1a8ad/widget.css",
+      "status": 200,
+      "sha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+      "expectedSha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4",
+      "cacheControl": "max-age=31536000"
+    }
+  ],
+  "finishedUtc": "2026-11-08T05:56:25Z"
+}

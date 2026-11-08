@@ -1,0 +1,4 @@
+# This directory preserves the exact deployed asset bytes and SHA256 manifest.
+public-package/** -text whitespace=cr-at-eol
+# Generated Three.js shader literals contain intentional whitespace; review source separately.
+public-package/widget.js binary

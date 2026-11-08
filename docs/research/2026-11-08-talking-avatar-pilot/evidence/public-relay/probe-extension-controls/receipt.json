@@ -1,0 +1,112 @@
+{
+  "scope": "Offline CLI previews and helper controls using temporary fake evidence bytes only.",
+  "publicRequests": false,
+  "modelInference": false,
+  "browserUsed": false,
+  "existingEvidenceModified": false,
+  "probeSha256": "f3e1c5e03064e64da55ff72851f2b6affb9f95af8fe0413880fdd80f52e115b3",
+  "checks": [
+    {
+      "name": "default_identity_and_output_preserved",
+      "passed": true
+    },
+    {
+      "name": "controlled_audio_identity_preserved",
+      "passed": true
+    },
+    {
+      "name": "exact_typed_property_question_selected",
+      "passed": true
+    },
+    {
+      "name": "label_selects_separate_evidence_directory",
+      "passed": true
+    },
+    {
+      "name": "typed_preview_has_no_public_request",
+      "passed": true
+    },
+    {
+      "name": "audio_and_text_are_mutually_exclusive",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'../escape'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'nested/path'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'nested\\\\path'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'C:\\\\escape'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'name:stream'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'con'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'lpt1'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'UPPER'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_rejected_''",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_rejected_3",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_rejected_1201",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_rejected_3",
+      "passed": true
+    },
+    {
+      "name": "new_labeled_directory_created",
+      "passed": true
+    },
+    {
+      "name": "existing_labeled_run_refused_without_overwrite",
+      "passed": true
+    },
+    {
+      "name": "legacy_receipt_archived_exactly",
+      "passed": true
+    },
+    {
+      "name": "legacy_audio_archived_exactly",
+      "passed": true
+    },
+    {
+      "name": "archive_preparation_preserves_current_files",
+      "passed": true
+    },
+    {
+      "name": "repeated_archival_does_not_duplicate",
+      "passed": true
+    }
+  ],
+  "passed": 25,
+  "total": 25
+}

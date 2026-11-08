@@ -1,0 +1,44 @@
+{
+  "type": "isolated admission policy checks",
+  "publicRequests": false,
+  "inference": false,
+  "sourceSHA256": "e8aeb48df6c683027a043b75a99a320fb75133f0de7e56432bfb9320a4a8ddba",
+  "checks": [
+    {
+      "name": "exact approved compact profile",
+      "pass": true
+    },
+    {
+      "name": "missing memoryProfile preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "missing voiceEngine preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "missing brainModel preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "missing noRepack preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "missing sequentialModels preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "missing resourceAdmission preserves previous requirements",
+      "pass": true
+    },
+    {
+      "name": "arbitrary lower thresholds ignored",
+      "pass": true
+    },
+    {
+      "name": "original always retains its requirements",
+      "pass": true
+    }
+  ]
+}

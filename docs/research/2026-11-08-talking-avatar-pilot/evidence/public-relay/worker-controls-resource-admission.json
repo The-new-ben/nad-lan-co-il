@@ -1,0 +1,146 @@
+{
+  "testType": "REAL_LOCAL_HTTP_RELAY_WORKER_FIXTURES",
+  "modelInference": false,
+  "publicRequests": false,
+  "productionCredentialsLoaded": false,
+  "audio": "100 ms silent PCM fixture, not generated speech",
+  "checks": [
+    {
+      "case": "lock_busy_recovers_after_two_bounded_retries",
+      "passed": true,
+      "attempts": 3,
+      "elapsedSeconds": 1.203
+    },
+    {
+      "case": "lock_busy_exhaustion_stops_at_three_attempts",
+      "passed": true,
+      "attempts": 3,
+      "elapsedSeconds": 1.204
+    },
+    {
+      "case": "rate429_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "http401_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "http403_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "http404_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "http409_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "http500_is_never_retried",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "uncertain_transport_is_never_replayed",
+      "passed": true,
+      "attempts": 1,
+      "elapsedSeconds": 0.0
+    },
+    {
+      "case": "failure_diagnostics_only_allow_controlled_status_and_code",
+      "passed": true
+    },
+    {
+      "case": "original_independent_reserves_7.0_9.2",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "case": "original_independent_reserves_7.2_9.0",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "case": "original_independent_reserves_7.1_9.1",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "case": "original_independent_reserves_8.0_10.0",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "case": "optional_existing_guard_3.0_0.1",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "case": "optional_existing_guard_2.9_99",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "case": "resource_readiness_only_reads_health_never_submits_or_loads_models",
+      "passed": true
+    },
+    {
+      "case": "separate_visitor_cookies_and_same_visitor_reuse",
+      "passed": true
+    },
+    {
+      "case": "cumulative_chunk_deduplication_and_complete_replay_forwarding",
+      "passed": true
+    },
+    {
+      "case": "bounded_audio_forwarding_uses_visitor_cookie",
+      "passed": true
+    },
+    {
+      "case": "close_before_id_cancels_token_then_late_job_no_audio",
+      "passed": true
+    },
+    {
+      "case": "later_sentence_failure_publishes_error_never_success",
+      "passed": true
+    },
+    {
+      "case": "lost_lease_stops_owned_local_work_without_late_success",
+      "passed": true
+    },
+    {
+      "case": "cancellation_during_busy_backoff_prevents_retry_and_audio_publication",
+      "passed": true
+    },
+    {
+      "case": "hidden_worker_stop_file_cancels_only_its_current_request",
+      "passed": true
+    },
+    {
+      "case": "local_session_failure_finishes_public_job_without_submitting",
+      "passed": true
+    },
+    {
+      "case": "memory_guard_advertises_busy_without_claiming_or_submitting",
+      "passed": true
+    },
+    {
+      "case": "local_backend_loopback_only",
+      "passed": true
+    }
+  ],
+  "passed": 28
+}
