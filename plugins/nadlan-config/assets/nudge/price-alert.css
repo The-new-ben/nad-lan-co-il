@@ -79,6 +79,8 @@
 #nlnu .nlpa-check{width:44px;height:44px}
 #nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
 #nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+#nlnu .nlpa-conf{font-size:13.5px;line-height:1.45;color:var(--pa-ink);background:#eaf4ef;border:1px solid #2e7d5b;border-radius:10px;padding:8px 10px;max-width:36ch}
+#nlnu .nlpa-conf[hidden]{display:none}
 html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
 #nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
 

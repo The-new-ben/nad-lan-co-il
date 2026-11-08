@@ -257,7 +257,10 @@ add_action( 'admin_menu', function () {
 		$n = (int) ( new WP_Query( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => 'utm_source', 'meta_value' => 'price_alert' ) ) )->found_posts; // phpcs:ignore
 		$ix = nadlan_pa_index();
 		echo '<div class="wrap" dir="rtl"><h1>חלון עדכוני מחירים</h1><p>החלון עולה מאוחר בביקור בעמודי הפרויקטים והנכסים: סימן "שימו לב", "המחירים באזור זה במגמת שינוי" וחץ למטה, ואז טלפון ואימייל (שניהם חובה). כל הרשמה נכנסת לפניות (מקור: price_alert) ומגיעה אליכם במייל.</p>';
-		echo '<p><b>נרשמו עד היום: ' . (int) $n . '</b> · <a href="' . esc_url( admin_url( 'edit.php?post_type=nadlan_lead' ) ) . '">לפניות</a> · מדד מחירי הדירות הארצי, 12 חודשים עד ' . esc_html( $ix['asof'] ) . ': ' . esc_html( null === $ix['nat'] ? 'אין נתון' : $ix['nat'] . '%' ) . ' (הלמ״ס)</p><form method="post">';
+		$na_on = function_exists( 'nadlan_na_enabled' ) && nadlan_na_enabled();
+		echo '<p><b>נרשמו עד היום: ' . (int) $n . '</b> · <a class="button" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=nadlan_pa_csv' ), 'nadlan_pa_csv' ) ) . '">הורדת כל הנרשמים (Excel)</a> · <a href="' . esc_url( admin_url( 'edit.php?post_type=nadlan_lead' ) ) . '">לפניות</a></p>';
+		echo '<p>עדכונים אוטומטיים לנרשמים: <b>' . ( $na_on ? 'פעילים' : 'כבויים' ) . '</b>. כל נרשם מקבל מייל אישור, ואחרי לחיצה אחת מקבל מייל כשמשתנה מחיר למ״ר, שלב או מספר הדירות בפרויקט, כשיורד מחיר הנכס, או כשעולה נכס חדש עד 1.5 ק״מ. ' . ( $na_on ? '' : 'מדליקים במסך <a href="' . esc_url( admin_url( 'options-general.php?page=nadlan-mail' ) ) . '">מייל יוצא (Brevo)</a>, אחרי שמפתח השליחה נשמר.' ) . '</p><p>';
+		echo 'מדד מחירי הדירות הארצי, 12 חודשים עד ' . esc_html( $ix['asof'] ) . ': ' . esc_html( null === $ix['nat'] ? 'אין נתון' : $ix['nat'] . '%' ) . ' (הלמ״ס)</p><form method="post">';
 		wp_nonce_field( 'nadlan_pa_opts', 'nadlan_pa_opts_nonce' );
 		echo '<table class="form-table"><tr><th>איפה</th><td>';
 		$c( 'on', 'כל עמודי הפרויקטים (חוץ ממה שכובה בתיבה שלו, ואשירה)' );
@@ -276,6 +279,30 @@ add_action( 'admin_menu', function () {
 		submit_button( 'שמירה' );
 		echo '</form></div>';
 	} );
+} );
+
+/* ---------- admin: every sign-up in one Excel-ready file (Ben 8.11.2026: "שנשמור את הפרטים שלהם") ---------- */
+add_action( 'admin_post_nadlan_pa_csv', function () {
+	if ( ! current_user_can( 'manage_options' ) ) { wp_die( 'forbidden' ); }
+	check_admin_referer( 'nadlan_pa_csv' );
+	$ids = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'posts_per_page' => 5000, 'fields' => 'ids', 'no_found_rows' => true, 'suppress_filters' => true,
+		'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array( array( 'key' => 'utm_source', 'value' => 'price_alert' ) ) ) );
+	nocache_headers();
+	header( 'Content-Type: text/csv; charset=utf-8' );
+	header( 'Content-Disposition: attachment; filename="price-alert-signups-' . gmdate( 'Y-m-d' ) . '.csv"' );
+	$out = fopen( 'php://output', 'w' );
+	fwrite( $out, "\xEF\xBB\xBF" ); // Excel reads the Hebrew as UTF-8
+	fputcsv( $out, array( 'תאריך', 'טלפון', 'אימייל', 'עיר', 'עמוד', 'מה מעניין', 'התנהגות לפני ההרשמה', 'עדכונים אוטומטיים', 'הסכמה (UTC)', 'סטטוס' ) );
+	$ints = array( 'buy' => 'קנייה', 'own' => 'יש נכס באזור', 'invest' => 'השקעה' );
+	$al   = array( 'confirm-sent' => 'נשלח מייל אישור', 'off' => 'המנוע היה כבוי', 'no-point' => 'אין נקודה על המפה' );
+	foreach ( $ids as $lid ) {
+		$m = function ( $k ) use ( $lid ) { return (string) get_post_meta( $lid, $k, true ); };
+		$i = $m( 'pa_interest' );
+		$a = $m( 'pa_alerts' );
+		fputcsv( $out, array( get_the_date( 'Y-m-d H:i', $lid ), $m( 'phone' ), $m( 'email' ), $m( 'city' ), $m( 'source_url' ), $ints[ $i ] ?? $i, $m( 'pa_signals' ), $al[ $a ] ?? $a, $m( 'consent_recorded' ), $m( 'lead_status' ) ) );
+	}
+	fclose( $out );
+	exit;
 } );
 
 /* ---------- the sign-up ---------- */
@@ -362,7 +389,35 @@ if ( ! function_exists( 'nadlan_pa_signup' ) ) {
 		if ( function_exists( 'nadlan_lead_e2e_audit' ) ) {
 			nadlan_lead_e2e_audit( array( 'lead_id' => $lid, 'card_id' => 0, 'user_id' => 0, 'old' => 'created', 'new' => 'new' ) );
 		}
-		return $r( array( 'ok' => true ) );
+		/* v106.3 (Ben 8.11.2026, "תדליק מנוע עדכונים אוטומטי"): the sign-up also asks the existing alert engine (inc/near-alerts.php)
+		   for real, automatic updates: on a project, a change in its price per m², stage or units and new listings within 1.5 km; on a
+		   listing, a drop in its price and new listings around it. The engine's own double opt-in applies: one confirmation mail, and
+		   nothing else is sent until the visitor clicks it. Abroad (no Israeli point) and with the engine off, the lead alone stands. */
+		$alerts = 'off';
+		if ( function_exists( 'nadlan_na_enabled' ) && nadlan_na_enabled() && function_exists( 'nadlan_na_signup' ) ) {
+			$lat = (float) get_post_meta( $id, 'lat', true );
+			$lng = (float) get_post_meta( $id, 'lng', true );
+			$alerts = 'no-point';
+			if ( $lat && $lng && 'nadlan_intl' !== get_post_type( $id ) ) {
+				$isp  = 'nadlan_property' === get_post_type( $id );
+				$deal = $isp && 'rent' === (string) get_post_meta( $id, 'listing_type', true ) ? 'rent' : 'sale';
+				$body = array( 'email' => $email, 'lat' => $lat, 'lng' => $lng, 'r' => 1.5, 'deal' => $deal, 'freq' => 'day', 'place' => $tr['city'], 'v' => NADLAN_PA_NOTICE,
+					'what' => $isp ? array( 'drop', 'new' ) : array( 'proj', 'new' ) );
+				if ( $isp ) { $body['items'] = array( $id ); } else { $body['follow'] = array( $id ); }
+				$rq = new WP_REST_Request( 'POST', '/nadlan/v1/near-alerts' );
+				$rq->set_header( 'content-type', 'application/json' );
+				$rq->set_body( wp_json_encode( $body ) );
+				try {
+					$res  = nadlan_na_signup( $rq );
+					$data = $res instanceof WP_REST_Response ? (array) $res->get_data() : array();
+					$alerts = ! empty( $data['ok'] ) ? 'confirm-sent' : 'na-' . sanitize_key( (string) ( $data['error'] ?? 'fail' ) );
+				} catch ( \Throwable $e ) {
+					$alerts = 'na-error';
+				}
+			}
+		}
+		update_post_meta( $lid, 'pa_alerts', $alerts );
+		return $r( array( 'ok' => true, 'confirm' => 'confirm-sent' === $alerts ) );
 	}
 }
 add_action( 'rest_api_init', function () {
@@ -447,6 +502,7 @@ add_action( 'wp_footer', function () {
 			<svg class="nlpa-check" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="18" fill="#eaf4ef" stroke="#2e7d5b" stroke-width="2"/><path d="M12.5 20.5l5 5 10-11" fill="none" stroke="#2e7d5b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 			<p class="nlpa-done" tabindex="-1">נרשמתם לעדכוני המחירים</p>
 			<p class="nlpa-sub2">נעדכן אתכם כשהמחירים <?php echo esc_html( $in ); ?> זזים. רוצים תשובה כבר עכשיו?</p>
+			<p class="nlpa-conf" hidden>שלחנו לכם מייל קצר. לחיצה אחת בו מפעילה את העדכונים האוטומטיים (אם הוא לא מגיע, הציצו בספאם).</p>
 			<?php if ( '' !== $wa ) : ?><a class="nlpa-wa" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>דברו איתנו בוואטסאפ</a><?php endif; ?>
 			<button type="button" class="nlpa-later">סגירה</button>
 		</div>

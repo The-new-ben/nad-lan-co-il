@@ -238,6 +238,8 @@
 						ev('pa_done', { pa_interest: interest, pa_trigger: trigger });
 						ev('generate_lead', { method: 'price_alert', lead_source: 'price_alert' });
 						if (!PV) { LS.s('nlpa_done', String(Date.now() + 365 * DAY)); }
+						var cf = card.querySelector('.nlpa-conf');
+						if (cf && j.confirm) { cf.hidden = false; }
 						step(3);
 						return;
 					}

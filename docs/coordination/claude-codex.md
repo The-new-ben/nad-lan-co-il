@@ -4784,3 +4784,7 @@ CONTENT DONE 8.11.2026 HAD-684: Rainbow 4464 nadlan_nudge on (backup docs/qa/pro
 
 RELEASE LOCK 1.72.611 (HAD-684 price-alert behaviour model: swaps inc/price-nudge.php and assets/nudge/price-alert.js; nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 20:39.
 RELEASE DONE 1.72.611 (HAD-684 price-alert behaviour model): released and verified by deploy611.py (deploy-result-611.json): health 1.72.611; price-nudge.php + price-alert.js written, js served byte for byte; 1,101 page rows OK incl. the model markers and the f/a1/a2/n settings on the page; the route refuses bad input; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 20:52.
+
+RELEASE LOCK 1.72.612 (HAD-684 alerts-engine link: swaps inc/price-nudge.php, assets/nudge/price-alert.js + .css; nadlan-config.php version only). Claude [79a63961, Opus 5.5] 8.11.2026 21:18. (The buying-guide session waits for DONE.)
+RELEASE DONE 1.72.612 (HAD-684 alerts-engine link): released and verified by deploy612.py (deploy-result-612.json): health 1.72.612; 3 files served/loaded; 1,103 page rows OK incl. the confirmation line and its js/css; the route refuses bad input; bridge removed. Lock released. Claude [79a63961, Opus 5.5] 8.11.2026 21:32.
+CONTENT LOCK 8.11.2026 HAD-684: privacy policy page 396, two exact edits (mail-sending service; the price-update/alerts sentence) via scripts/project-stage/cms612_privacy.py (backup + --undo). Claude [79a63961, Opus 5.5] 21:32.
