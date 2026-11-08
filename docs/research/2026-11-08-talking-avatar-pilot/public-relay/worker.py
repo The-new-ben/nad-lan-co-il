@@ -34,6 +34,8 @@ OUTPUT_LIMIT = 4 * 1024 * 1024
 MIN_MEMORY_GIB = 3.0
 ORIGINAL_MIN_MEMORY_GIB = 7.1
 ORIGINAL_MIN_COMMIT_GIB = 9.1
+COMPACT_MIN_MEMORY_GIB = 2.3
+COMPACT_MIN_COMMIT_GIB = 2.5
 BUSY = 'This computer is busy. Please try again shortly.'
 
 
@@ -291,6 +293,18 @@ class RelayWorker:
         self.current = None
         self.stop_file = Path(stop_file) if stop_file else None
 
+    def resource_requirements(self, health):
+        # Only the explicitly selected, verified compact stack has different entry costs.
+        # Never accept arbitrary lower limits advertised by a local health response.
+        compact = (self.local_base == 'http://127.0.0.1:8770'
+                   and health.get('memoryProfile') == 'compact'
+                   and health.get('voiceEngine') == 'onnx-q4'
+                   and health.get('brainModel') == 'q4'
+                   and health.get('noRepack') is True
+                   and health.get('sequentialModels') is True
+                   and health.get('resourceAdmission') == {'physicalGiB': 2.3, 'commitGiB': 2.5})
+        return (COMPACT_MIN_MEMORY_GIB, COMPACT_MIN_COMMIT_GIB) if compact else (self.minimum_memory, self.minimum_commit)
+
     def stopping(self):
         if self.stop_file and self.stop_file.exists():
             self.stop.set()
@@ -304,9 +318,10 @@ class RelayWorker:
                 return False, 'local_unavailable'
             if health.get('queued', 0) or health.get('activeJobs', 0):
                 return False, 'resource_busy'
-            if self.memory() < self.minimum_memory:
+            physical_required, commit_required = self.resource_requirements(health)
+            if self.memory() < physical_required:
                 return False, 'resource_busy'
-            if self.minimum_commit and self.commit_memory() < self.minimum_commit:
+            if commit_required and self.commit_memory() < commit_required:
                 return False, 'resource_busy'
             return True, None
         except Exception:

@@ -1,5 +1,5 @@
 {
-  "startedUtc": "2026-11-08T06:14:47Z",
+  "startedUtc": "2026-11-08T11:25:59Z",
   "testType": "GENUINE_PUBLIC_HTTP_WAV_QUESTION",
   "question": "Who are you, and how can you help me?",
   "modelsMocked": false,
@@ -9,37 +9,37 @@
   "phases": [
     {
       "phase": "queued",
-      "elapsedSeconds": 1.344,
-      "freeMemoryGiB": 5.59
+      "elapsedSeconds": 1.625,
+      "freeMemoryGiB": 2.918
     },
     {
       "phase": "claimed",
-      "elapsedSeconds": 4.063,
-      "freeMemoryGiB": 5.58
+      "elapsedSeconds": 4.406,
+      "freeMemoryGiB": 2.873
     },
     {
       "phase": "transcribing",
-      "elapsedSeconds": 6.719,
-      "freeMemoryGiB": 5.436
+      "elapsedSeconds": 7.156,
+      "freeMemoryGiB": 2.652
     },
     {
       "phase": "thinking",
-      "elapsedSeconds": 17.547,
-      "freeMemoryGiB": 3.486
+      "elapsedSeconds": 12.703,
+      "freeMemoryGiB": 1.725
     },
     {
-      "phase": "synthesizing",
-      "elapsedSeconds": 30.891,
-      "freeMemoryGiB": 5.213
+      "phase": "error",
+      "elapsedSeconds": 21.063,
+      "freeMemoryGiB": 2.627
     }
   ],
-  "outcome": "cancelled_critical_memory",
+  "outcome": "error",
   "session": {
     "status": 200,
     "ready": true,
     "available": true
   },
-  "memoryBeforeGiB": 5.59,
+  "memoryBeforeGiB": 2.92,
   "controlledInput": {
     "file": "controlled-identity-question.wav",
     "sha256": "8753b7990e0c80d0a5ff0574e5e8614fbaf604105be163fefff311c50a0a15f7",
@@ -47,7 +47,8 @@
     "source": "Local Windows synthesized English test question; not Ben or a physical microphone"
   },
   "submitStatus": 202,
-  "jobId": "5b9686505a81aaba783e324011466f6f",
-  "elapsedSeconds": 58.172,
-  "memoryAfterGiB": 0.089
+  "jobId": "9a005de602f82d8e2c85639bef54a80c",
+  "elapsedSeconds": 21.063,
+  "errorCode": "resource_busy",
+  "memoryAfterGiB": 2.627
 }

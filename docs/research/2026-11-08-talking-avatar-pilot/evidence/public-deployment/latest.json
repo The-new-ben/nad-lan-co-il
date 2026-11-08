@@ -1,97 +1,97 @@
 {
   "page": 5154,
   "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
-  "releaseId": "v-6dff055c6784",
-  "assetBytes": 4914004,
+  "releaseId": "v-90fc03cc26ff",
+  "assetBytes": 4917113,
   "assetFiles": 14,
   "conversation": true,
   "outsideBlockUnchanged": true,
-  "pageBeforeSHA256": "5d446d00695cd782f627e5d00815d599d565ca6811a3e0f7d0a88e148eb3bfa3",
-  "pageAfterSHA256": "a5d290e4eadf0e97982467e75525ace134c65e807fef7ea02ddd7acf3c6030b7",
+  "pageBeforeSHA256": "a5d290e4eadf0e97982467e75525ace134c65e807fef7ea02ddd7acf3c6030b7",
+  "pageAfterSHA256": "aa1a43f822d3e27cac79afc97cacb950829f5e767e64eb90e5fd3bfa54b284bf",
   "newPaidServices": 0,
-  "backup": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\public-deployment\\page-5154-20261108T081518-before.html",
+  "backup": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\public-deployment\\page-5154-20261108T125300-before.html",
   "assets": [
     {
       "path": "widget.js",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.js",
-      "bytes": 593279,
-      "sha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729"
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+      "bytes": 595747,
+      "sha256": "48ba0fcd6e4b8240a50fc47bcfc7658bd770935b06d5a8688a45e9770468770b"
     },
     {
       "path": "dynamic-lips.js",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/dynamic-lips.js",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/dynamic-lips.js",
       "bytes": 8387,
       "sha256": "d69b0347b612149422f257f68ca863c8c72b05d93651946ad23e93c9882420d5"
     },
     {
       "path": "dynamic-lips-worker.js",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/dynamic-lips-worker.js",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/dynamic-lips-worker.js",
       "bytes": 7373,
       "sha256": "de0a0f1d4e64e19062267a5e1ef4cc1c641d32d65bb121e038f1af1e8fe65e15"
     },
     {
       "path": "widget.css",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/widget.css",
-      "bytes": 5578,
-      "sha256": "b5f156653d64ccb316b133add4005ff809f82b62b538c1ee301378e528ec60d4"
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+      "bytes": 6219,
+      "sha256": "e407b524b1ef800f0c19abe647bca433d677b85f106aaf86e1c96cabf3e49df6"
     },
     {
       "path": "assets/nadlan-advisor-v2.glb",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/nadlan-advisor-v2.glb",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/nadlan-advisor-v2.glb",
       "bytes": 953224,
       "sha256": "a1b9a62754ab89c7d5336c5603baebe9cd0025905022d90d686be4852749dc8f"
     },
     {
       "path": "assets/greet-en.mp3",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.mp3",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
       "bytes": 95085,
       "sha256": "79a1b04e12aa75a00cee5b0205e273dd0e11aab743641eef22a38bad86a7e96c"
     },
     {
       "path": "assets/greet-en.cues.json",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/greet-en.cues.json",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.cues.json",
       "bytes": 3482,
       "sha256": "61f65f00d58ef886a14c041bdd6730be5d38af5e0821d3b35d675039d53faa13"
     },
     {
       "path": "assets/fallback-original.webp",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/fallback-original.webp",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/fallback-original.webp",
       "bytes": 41902,
       "sha256": "2dfbc459969bc08fda811966853a2ece782114ecf533673f2d1b0c003169bec8"
     },
     {
       "path": "vendor/talking-avatar/viseme-model.bin",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/vendor/talking-avatar/viseme-model.bin",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/vendor/talking-avatar/viseme-model.bin",
       "bytes": 1040276,
       "sha256": "f1cdf2b76b9f2da8730b1d3e47d7e05a2b79c9b92d00dd00c595d64e471f419c"
     },
     {
       "path": "vendor/talking-avatar/LICENSE",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/vendor/talking-avatar/LICENSE",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/vendor/talking-avatar/LICENSE",
       "bytes": 1102,
       "sha256": "7fd507aff0c0a220e9665b0bc928dc8f0f2c51c178d89b42147925aecf573668"
     },
     {
       "path": "vendor/THREE-LICENSE.txt",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/vendor/THREE-LICENSE.txt",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/vendor/THREE-LICENSE.txt",
       "bytes": 1102,
       "sha256": "df2a91696186fe58c92518a25d48bc59c8ee2edc7cac9ca6d19a5a0d599a2a05"
     },
     {
       "path": "assets/portrait-cutout-v2.webp",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/assets/portrait-cutout-v2.webp",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
       "bytes": 456748,
       "sha256": "fbab80f6f03cb142135c6d93ee73988b7748ce15d7ae7326c8d317ecb77fe9e1"
     },
     {
       "path": "review/nadlan-small-avatar-phone-final.mp4",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/review/nadlan-small-avatar-phone-final.mp4",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/review/nadlan-small-avatar-phone-final.mp4",
       "bytes": 1072103,
       "sha256": "8b999835b25c0ad4c9e7120fd0d37f11f945ed1224a4a6fd0764d62199e5d10f"
     },
     {
       "path": "review/nadlan-small-avatar-desktop-final.mp4",
-      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-6dff055c6784/review/nadlan-small-avatar-desktop-final.mp4",
+      "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/review/nadlan-small-avatar-desktop-final.mp4",
       "bytes": 634363,
       "sha256": "32007a2d12b12ed1836a05e5df7b43127aa2f23ef8ec7f8c64715ffd66951cba"
     }

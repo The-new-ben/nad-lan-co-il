@@ -1,0 +1,95 @@
+{
+  "testType": "REAL_SERVER_HELPERS_AND_OWNED_SYNTHETIC_PROCESS_FIXTURES",
+  "modelsLoaded": false,
+  "ownerAudioRead": false,
+  "publicRequests": false,
+  "existingServerRestarted": false,
+  "decode": "Real installed ffmpeg via server.run_child and OwnedProcessTree",
+  "residency": "Sleep-only Python parent/descendant trees, not model inference",
+  "checks": [
+    {
+      "case": "original_defaults_preserved",
+      "passed": true
+    },
+    {
+      "case": "real_run_child_recovers_gapped_pcm",
+      "passed": true,
+      "duration": 3.48,
+      "ownedDecodeSeconds": 1.39
+    },
+    {
+      "case": "decode_child_detached_after_return",
+      "passed": true
+    },
+    {
+      "case": "twenty_seconds_accepted",
+      "passed": true
+    },
+    {
+      "case": "overlong_rejected_without_stt",
+      "passed": true
+    },
+    {
+      "case": "tiny_rejected_without_stt",
+      "passed": true
+    },
+    {
+      "case": "oversized_rejected_without_stt",
+      "passed": true
+    },
+    {
+      "case": "oversize_rejected_before_subprocess",
+      "passed": true
+    },
+    {
+      "case": "real_decode_cancel_stops_owned_ffmpeg",
+      "passed": true,
+      "cancellationSeconds": 0.0
+    },
+    {
+      "case": "cancel_clears_owned_process_fields",
+      "passed": true
+    },
+    {
+      "case": "owned_residency_fixture_started",
+      "passed": true
+    },
+    {
+      "case": "sequential_release_waits_for_all_owned_descendants",
+      "passed": true
+    },
+    {
+      "case": "sequential_release_records_both_models",
+      "passed": true
+    },
+    {
+      "case": "resident_references_cleared",
+      "passed": true
+    },
+    {
+      "case": "sequential-default_rejected_before_server_start",
+      "passed": true
+    },
+    {
+      "case": "sequential-prewarm_rejected_before_server_start",
+      "passed": true
+    },
+    {
+      "case": "q4-default_rejected_before_server_start",
+      "passed": true
+    },
+    {
+      "case": "q4-persistent_rejected_before_server_start",
+      "passed": true
+    },
+    {
+      "case": "explicit_q4_file_hash_validated_without_loading",
+      "passed": true
+    },
+    {
+      "case": "q8_default_selection_unchanged",
+      "passed": true
+    }
+  ],
+  "passed": 20
+}

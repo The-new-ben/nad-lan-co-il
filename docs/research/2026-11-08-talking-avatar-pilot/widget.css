@@ -84,3 +84,13 @@
   .nl3d-status { min-width:64px; font-size:9px; }
 }
 @media(prefers-reduced-motion:reduce) { .nl3d { transition:none; transform:none; } }
+
+/* Intentional microphone feedback reuses the compact instrument caption panel. */
+.nl3d-feedback { margin:0;font-size:13px;line-height:1.45;font-weight:500;color:#fff; }
+.nl3d-feedback[hidden],.nl3d-caption-text[hidden] { display:none!important; }
+.nl3d-feedback[data-kind="listening"]::before { content:"";display:inline-block;width:8px;height:8px;margin-right:6px;border-radius:50%;background:#D3DCE2; }
+.nl3d-mic-stop { display:none;width:10px;height:10px;background:currentColor;border-radius:2px; }
+.nl3d-mic[aria-pressed="true"] svg { display:none; }
+.nl3d-mic[aria-pressed="true"] .nl3d-mic-stop { display:block; }
+.nl3d-mic[aria-busy="true"]::before { border:2px dashed #2F6F86; }
+.nl3d[data-mic-state="listening"] .nl3d-status { background:#2F6F86;font-size:11px; }

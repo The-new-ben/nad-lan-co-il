@@ -30,7 +30,7 @@ api.playSpeech=options=>playSpeech(options);
 api.stopSpeech=()=>{cancelSpeechAnalysis();cancelQuestion();stopRecording(false);pause();};
 api.enableConversation=endpoint=>{cfg.conversationEndpoint=endpoint;if(mic){mic.hidden=false;textForm.hidden=false;cc.setAttribute('aria-label','Show captions and text question');}};
 let closed=false, started=false, starting=false, revealed=false, readyResolved=false,playAttempt=0,pageSuspended=false;
-let root,face,caption,captionPanel,textForm,textInput,cancelButton,cc,mic,status,fallback,canvas;
+let root,face,caption,captionPanel,feedback,textForm,textInput,cancelButton,cc,mic,status,fallback,canvas;
 let renderer,scene,camera,model,rig,raf=0,lastFrame=0,mouth=0;
 let cues=[],morphMeshes=[],blinkMaterials=[];
 let dynamicMouth=null,speechAnalysisController=null;
@@ -89,7 +89,7 @@ function speak(replay=false,responseReady=false){
     if(attempt!==playAttempt)return;
     starting=false;if(closed){audio.pause();return;}
     started=true;api.state='speaking';api.startedAt=performance.now();
-    status.textContent='Speaking';face.setAttribute('aria-label','Pause voice');
+    status.textContent='Speaking';face.setAttribute('aria-label','Pause voice');clearInputFeedback();
     schedule();
   }).catch(error=>{
     if(attempt!==playAttempt)return;
@@ -103,7 +103,7 @@ async function playSpeech({url,cues:nextCues=[],text='',captionCues=null}){
   cancelSpeechAnalysis();playAttempt++;starting=false;audio.pause();dynamicMouth=null;
   const controller=new AbortController();speechAnalysisController=controller;
   const speechUrl=new URL(url,location.href).href;
-  api.state='preparing-speech';status.textContent='Preparing voice…';
+  api.state='preparing-speech';status.textContent='Preparing voice…';phaseFeedback('synthesizing');
   try{
     const {analyzeSpeech}=await import('./dynamic-lips.js');
     const timeline=await analyzeSpeech(speechUrl,{signal:controller.signal});
@@ -122,15 +122,45 @@ async function playSpeech({url,cues:nextCues=[],text='',captionCues=null}){
   started=true;starting=false;reveal();speak(false,true);
 }
 function cancelSpeechAnalysis(){speechAnalysisController?.abort();speechAnalysisController=null;}
+function inputFeedback(message,{open=true,kind='processing'}={}){
+  if(closed||!feedback)return;
+  feedback.textContent=message;feedback.hidden=false;feedback.dataset.kind=kind;caption.hidden=true;
+  root.dataset.micState=kind;textForm.hidden=!cfg.conversationEndpoint;
+  if(open){captionPanel.hidden=false;cc.setAttribute('aria-pressed','true');cc.setAttribute('aria-label','Hide captions');}
+  positionCaption();
+}
+function clearInputFeedback(){
+  if(feedback)feedback.hidden=true;if(caption)caption.hidden=false;if(root)delete root.dataset.micState;
+}
+function phaseFeedback(phase){
+  const message=({queued:'Question received. Waiting for a reply…',claimed:'Question received. Preparing a reply…',
+    transcribing:'Recording received. Turning your speech into text…',thinking:'Preparing an answer…',
+    speaking:'Preparing the spoken reply…',synthesizing:'Preparing the spoken reply…',streaming:'Preparing the spoken reply…'})[phase]||'Preparing your reply…';
+  inputFeedback(message,{open:false});
+}
+function microphoneFailure(error){
+  const message=error.name==='NotAllowedError'||error.name==='SecurityError'
+    ?'Microphone access was not allowed. Allow it in your browser, or type your question.'
+    :error.name==='NotFoundError'?'No microphone was found. Connect one or type your question.'
+    :'The microphone could not start. Please try again or type your question.';
+  api.state='waiting';status.textContent='Try microphone';mic.disabled=false;mic.setAttribute('aria-busy','false');
+  mic.setAttribute('aria-label','Try microphone again');inputFeedback(message,{kind:'error'});
+}
 async function startRecording(){
   if(closed||!cfg.conversationEndpoint)return;
   if(recorder?.state==='recording'){stopRecording(true);return;}
-  if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){status.textContent='Mic unavailable';return;}
-  cancelSpeechAnalysis();playAttempt++;audio.pause();starting=false;api.state='microphone-permission';mic.disabled=true;
+  // A microphone tap is conversation intent, even while permission is pending or denied.
+  started=true;reveal();cancelQuestion();cancelSpeechAnalysis();playAttempt++;audio.pause();starting=false;
+  if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){
+    api.state='waiting';status.textContent='Mic unavailable';
+    inputFeedback('Voice recording is unavailable in this browser. You can type your question below.',{kind:'error'});return;
+  }
+  api.state='microphone-permission';status.textContent='Allow microphone';mic.disabled=true;mic.setAttribute('aria-busy','true');
+  inputFeedback('Allow microphone access in your browser to start listening.',{kind:'permission'});
   const permissionGeneration=++micPermissionGeneration;
   try{
     const grantedStream=await navigator.mediaDevices.getUserMedia({audio:true});
-    if(closed||document.hidden||pageSuspended||permissionGeneration!==micPermissionGeneration){grantedStream.getTracks().forEach(t=>t.stop());if(!closed&&permissionGeneration===micPermissionGeneration){mic.disabled=false;api.state='waiting';}return;}
+    if(closed||document.hidden||pageSuspended||permissionGeneration!==micPermissionGeneration){grantedStream.getTracks().forEach(t=>t.stop());if(!closed&&permissionGeneration===micPermissionGeneration){mic.disabled=false;mic.setAttribute('aria-busy','false');api.state='waiting';status.textContent='Mic stopped';inputFeedback('Recording did not start. Tap the microphone again or type a question.',{open:false,kind:'idle'});}return;}
     micStream=grantedStream;
     const mime=['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(type=>MediaRecorder.isTypeSupported(type));
     const activeRecorder=new MediaRecorder(micStream,mime?{mimeType:mime}:undefined),parts=[];
@@ -138,7 +168,8 @@ async function startRecording(){
     activeRecorder.ondataavailable=e=>{if(e.data.size)parts.push(e.data);};
     activeRecorder.onstop=()=>{if(recorder===activeRecorder)recorder=null;if(activeRecorder.__send&&sendGeneration===recordingSendGeneration&&!closed&&!pageSuspended)sendRecording(new Blob(parts,{type:activeRecorder.mimeType}));};
     recorder.start();started=true;recordingStarted=performance.now();lastSpeechAt=recordingStarted;hadSpeech=false;
-    api.state='listening';status.textContent='Listening…';mic.disabled=false;mic.setAttribute('aria-pressed','true');mic.setAttribute('aria-label','Stop recording and send question');
+    api.state='listening';status.textContent='Listening…';mic.disabled=false;mic.setAttribute('aria-busy','false');mic.setAttribute('aria-pressed','true');mic.setAttribute('aria-label','Stop recording and send question');
+    inputFeedback('Listening. Tap the microphone again to send your question.',{kind:'listening'});
     recordingTimeout=setTimeout(()=>stopRecording(true),20000);
     // Local voice activity is used only to end this explicitly requested microphone recording.
     try{
@@ -147,7 +178,7 @@ async function startRecording(){
       micContext.createMediaStreamSource(micStream).connect(micAnalyser);
       monitorSpeech();
     }catch{}
-  }catch(error){if(closed||permissionGeneration!==micPermissionGeneration)return;stopRecording(false);api.errors.push('microphone:'+error.name);api.state='waiting';status.textContent=error.name==='NotAllowedError'?'Mic not allowed':'Try microphone';mic.disabled=false;}
+  }catch(error){if(closed||permissionGeneration!==micPermissionGeneration)return;stopRecording(false);api.errors.push('microphone:'+error.name);microphoneFailure(error);}
 }
 function monitorSpeech(){
   if(!micAnalyser||recorder?.state!=='recording')return;
@@ -158,13 +189,16 @@ function monitorSpeech(){
   micRaf=requestAnimationFrame(monitorSpeech);
 }
 function stopRecording(send){
+  const active=recorder?.state==='recording'||api.state==='microphone-permission';
   micPermissionGeneration++;
   if(!send)recordingSendGeneration++;
   clearTimeout(recordingTimeout);cancelAnimationFrame(micRaf);micRaf=0;
   if(recorder){recorder.__send=send;if(recorder.state!=='inactive')recorder.stop();}
   micStream?.getTracks().forEach(t=>t.stop());micStream=null;micAnalyser=null;
   micContext?.close().catch(()=>{});micContext=null;
-  if(mic){mic.disabled=send;mic.setAttribute('aria-pressed','false');mic.setAttribute('aria-label','Ask a question by voice');}
+  if(mic){mic.disabled=send;mic.setAttribute('aria-busy','false');mic.setAttribute('aria-pressed','false');mic.setAttribute('aria-label','Ask a question by voice');}
+  if(active&&!closed){api.state=send?'processing-recording':'waiting';status.textContent=send?'Sending…':'Mic stopped';
+    inputFeedback(send?'Finishing your recording…':'Recording stopped. You can try again or type a question.',{open:false,kind:send?'processing':'idle'});}
 }
 async function sendRecording(blob){
   const body=new FormData();body.append('audio',blob,blob.type.includes('mp4')?'question.m4a':'question.webm');
@@ -196,7 +230,8 @@ async function checkConversation(){
 }
 async function sendQuestion(fetchOptions){
   playAttempt++;starting=false;audio.pause();
-  api.state='thinking';status.textContent='One moment…';mic.disabled=true;
+  api.state='thinking';status.textContent='Sending…';mic.disabled=true;
+  inputFeedback('Sending your question…');
   if(textForm){textForm.querySelector('[type="submit"]').disabled=true;cancelButton.hidden=false;}
   requestController=new AbortController();
   const controller=requestController;
@@ -218,8 +253,8 @@ async function sendQuestion(fetchOptions){
     while(data.jobId&&!(data.audioUrl||data.result?.audioUrl)&&data.phase!=='error'&&data.status!=='error'){
       if(controller.signal.aborted)throw new DOMException('Aborted','AbortError');
       if(performance.now()-startedWaiting>600000)throw new Error('Response took too long');
-      const phase=data.phase||data.status||'thinking';api.state=phase;
-      status.textContent=({transcribing:'Listening…',thinking:'Thinking…',speaking:'Preparing voice…',synthesizing:'Preparing voice…'})[phase]||'One moment…';
+      const phase=data.phase||data.status||'thinking';api.state=phase;phaseFeedback(phase);
+      status.textContent=({transcribing:'Transcribing…',thinking:'Thinking…',speaking:'Preparing voice…',synthesizing:'Preparing voice…'})[phase]||'One moment…';
       await new Promise(resolve=>setTimeout(resolve,1200));
       const jobUrl=data.jobUrl||`/api/jobs/${encodeURIComponent(data.jobId)}`;
       const poll=await fetch(jobUrl,{signal:controller.signal});
@@ -232,7 +267,7 @@ async function sendQuestion(fetchOptions){
     if(closed)return;
     api.lastUserText=data.userText||'';api.lastReplyText=data.text||'';
     await playSpeech({url:data.audioUrl,cues:data.cues||[],text:data.text||''});
-  }catch(error){cancelRequestToken(controller);if(!closed&&requestController===controller){if(error.name!=='AbortError')api.errors.push('conversation:'+error.message);api.state='waiting';status.textContent=error.name==='AbortError'?'Tap to hear':'Please try again';}}
+  }catch(error){cancelRequestToken(controller);if(!closed&&requestController===controller){if(error.name!=='AbortError'){api.errors.push('conversation:'+error.message);inputFeedback('The reply could not finish. Try the microphone again or type another question.',{kind:'error'});}api.state='waiting';status.textContent=error.name==='AbortError'?'Tap to hear':'Please try again';}}
   finally{if(requestController===controller){requestController=null;currentJobId=null;if(mic&&!closed){mic.disabled=false;textForm.querySelector('[type="submit"]').disabled=false;cancelButton.hidden=true;}}}
 }
 function updateCaption(){const line=sentenceCues.find(([a,b])=>audio.currentTime>=a&&audio.currentTime<b);caption.textContent=line?line[2]:transcript;}
@@ -329,9 +364,9 @@ async function loadModel(){
 async function init(){
   if(storageClosed()){closed=true;api.state='closed';api.renderer='not-loaded';ready();return;}
   root=document.createElement('aside');root.className='nl3d';root.id='nl3d';root.setAttribute('aria-label','NadLan computer-made character');
-  root.innerHTML=`<button class="nl3d-face" aria-label="Hear greeting"><img class="nl3d-fallback" alt="" draggable="false"><canvas class="nl3d-canvas" aria-hidden="true"></canvas><span class="nl3d-status">Tap to hear</span></button><button class="nl3d-close" aria-label="Close character"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><p class="nl3d-disclosure">Computer-made character</p><button class="nl3d-mic" hidden aria-label="Ask a question by voice" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="2" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9v1a6 6 0 0 0 12 0V9M10 16v3M6.5 19h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><button class="nl3d-cc" aria-label="Show greeting captions" aria-pressed="false" aria-controls="nl3d-caption"><span aria-hidden="true">CC</span></button><div id="nl3d-caption" class="nl3d-caption" hidden><p class="nl3d-caption-text"></p><form class="nl3d-text-form" hidden><label for="nl3d-question">Or type your question</label><input id="nl3d-question" name="question" type="text" maxlength="500" autocomplete="off" placeholder="Ask in English" required><button type="submit">Send</button><button type="button" class="nl3d-cancel" hidden>Cancel response</button></form></div>`;
+  root.innerHTML=`<button class="nl3d-face" aria-label="Hear greeting"><img class="nl3d-fallback" alt="" draggable="false"><canvas class="nl3d-canvas" aria-hidden="true"></canvas><span class="nl3d-status">Tap to hear</span></button><button class="nl3d-close" aria-label="Close character"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><p class="nl3d-disclosure">Computer-made character</p><button class="nl3d-mic" hidden aria-label="Ask a question by voice" aria-pressed="false" aria-busy="false" aria-describedby="nl3d-feedback"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="2" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9v1a6 6 0 0 0 12 0V9M10 16v3M6.5 19h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="nl3d-mic-stop" aria-hidden="true"></span></button><button class="nl3d-cc" aria-label="Show greeting captions" aria-pressed="false" aria-controls="nl3d-caption"><span aria-hidden="true">CC</span></button><div id="nl3d-caption" class="nl3d-caption" hidden><p id="nl3d-feedback" class="nl3d-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></p><p class="nl3d-caption-text"></p><form class="nl3d-text-form" hidden><label for="nl3d-question">Or type your question</label><input id="nl3d-question" name="question" type="text" maxlength="500" autocomplete="off" placeholder="Ask in English" required><button type="submit">Send</button><button type="button" class="nl3d-cancel" hidden>Cancel response</button></form></div>`;
   document.body.appendChild(root);
-  face=root.querySelector('.nl3d-face');captionPanel=root.querySelector('.nl3d-caption');caption=root.querySelector('.nl3d-caption-text');textForm=root.querySelector('.nl3d-text-form');textInput=root.querySelector('input');cancelButton=root.querySelector('.nl3d-cancel');cc=root.querySelector('.nl3d-cc');mic=root.querySelector('.nl3d-mic');status=root.querySelector('.nl3d-status');fallback=root.querySelector('img');canvas=root.querySelector('canvas');
+  face=root.querySelector('.nl3d-face');captionPanel=root.querySelector('.nl3d-caption');caption=root.querySelector('.nl3d-caption-text');feedback=root.querySelector('.nl3d-feedback');textForm=root.querySelector('.nl3d-text-form');textInput=root.querySelector('input');cancelButton=root.querySelector('.nl3d-cancel');cc=root.querySelector('.nl3d-cc');mic=root.querySelector('.nl3d-mic');status=root.querySelector('.nl3d-status');fallback=root.querySelector('img');canvas=root.querySelector('canvas');
   mic.hidden=!cfg.conversationEndpoint;listen(mic,'click',e=>{e.stopPropagation();startRecording();});
   textForm.hidden=!cfg.conversationEndpoint;
   if(cfg.conversationEndpoint)cc.setAttribute('aria-label','Show captions and text question');

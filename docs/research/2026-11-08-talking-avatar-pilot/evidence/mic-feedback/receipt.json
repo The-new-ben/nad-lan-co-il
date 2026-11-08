@@ -1,0 +1,3053 @@
+{
+  "scope": "Phone-size Chrome microphone feedback with native WAV-backed fake device.\n\nPermission delay/denial and backend phases are controlled fixtures. MediaRecorder,\ndevice capture, WebM production, touch events and track cleanup are native Chrome.\nNo physical handset, iOS, actual owner microphone, STT, Qwen or TTS is tested.\n",
+  "speechInference": false,
+  "publicMutation": false,
+  "sourceHashes": {
+    "widget.js": "02b4941cbb1d3fc6ef7f3f57e8037bd411cd0f511e14fc1b9e646232d1ae8246",
+    "widget-stream.js": "680e847e37b0b58e8842a408c3bb284ddd0f6c297c7de67734f5621ce3057d2e",
+    "widget.css": "6a453ee35e67a7f9e4ec388eb6fe9df0a308ff4bb0d611921c5a2c9860728ff9"
+  },
+  "checks": [
+    {
+      "name": "widget / permission-listen-stop: immediate readable permission feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "microphone-permission",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 16,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Allow microphone access in your browser to start listening.",
+        "feedbackHidden": false,
+        "kind": "permission",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "true",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / permission-listen-stop: accessible status and typing fallback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / permission-listen-stop: real listening has clear stop control",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "listening",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 47,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Listening. Tap the microphone again to send your question.",
+        "feedbackHidden": false,
+        "kind": "listening",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "true",
+        "micLabel": "Stop recording and send question",
+        "micDisabled": false,
+        "stopIcon": true,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [
+          [
+            "live"
+          ]
+        ],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / permission-listen-stop: outside tap does not start greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / permission-listen-stop: stopped native recording submits once with processing feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "transcribing",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 75,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Recording received. Turning your speech into text\u2026",
+        "feedbackHidden": false,
+        "kind": "processing",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 350.375,
+          "width": 260,
+          "height": 175.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [
+          [
+            "ended"
+          ]
+        ],
+        "data": [
+          {
+            "bytes": 12554,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / permission-listen-stop: speech processing is distinct from listening",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / permission-listen-stop: response failure stays visible with typing available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / permission-listen-stop: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 377.53125,
+        "width": 260,
+        "height": 148.46875,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget / permission-listen-stop: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget / denied: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 23,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [
+            "microphone:NotAllowedError"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Try microphone again",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / denied: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / denied: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / denied: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget / denied: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget / unsupported: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 20,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Voice recording is unavailable in this browser. You can type your question below.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 0,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / unsupported: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / unsupported: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / unsupported: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget / unsupported: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget / close-pending: immediate readable permission feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "microphone-permission",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 18,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Allow microphone access in your browser to start listening.",
+        "feedbackHidden": false,
+        "kind": "permission",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "true",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget / close-pending: accessible status and typing fallback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / close-pending: late native stream stops without recording or upload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget / close-pending: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: immediate readable permission feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "microphone-permission",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 19,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Allow microphone access in your browser to start listening.",
+        "feedbackHidden": false,
+        "kind": "permission",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "true",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: accessible status and typing fallback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: real listening has clear stop control",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "listening",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 24,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Listening. Tap the microphone again to send your question.",
+        "feedbackHidden": false,
+        "kind": "listening",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "true",
+        "micLabel": "Stop recording and send question",
+        "micDisabled": false,
+        "stopIcon": true,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [
+          [
+            "live"
+          ]
+        ],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: outside tap does not start greeting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: stopped native recording submits once with processing feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "transcribing",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 51,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Recording received. Turning your speech into text\u2026",
+        "feedbackHidden": false,
+        "kind": "processing",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 350.375,
+          "width": 260,
+          "height": 175.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [
+          [
+            "ended"
+          ]
+        ],
+        "data": [
+          {
+            "bytes": 12554,
+            "type": "audio/webm;codecs=opus"
+          }
+        ],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: speech processing is distinct from listening",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: response failure stays visible with typing available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / permission-listen-stop: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / denied: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 23,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "microphone:NotAllowedError"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Try microphone again",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / denied: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / denied: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / denied: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / denied: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / unsupported: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 23,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Voice recording is unavailable in this browser. You can type your question below.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 0,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / unsupported: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / unsupported: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / unsupported: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / unsupported: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / close-pending: immediate readable permission feedback",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "microphone-permission",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 22,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Allow microphone access in your browser to start listening.",
+        "feedbackHidden": false,
+        "kind": "permission",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "true",
+        "pressed": "false",
+        "micLabel": "Ask a question by voice",
+        "micDisabled": true,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": false
+      }
+    },
+    {
+      "name": "widget-stream / close-pending: accessible status and typing fallback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / close-pending: late native stream stops without recording or upload",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / close-pending: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / model-error: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "fallback",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 2,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": null,
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "model:Failed to fetch",
+            "microphone:NotAllowedError"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Try microphone again",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": true
+      }
+    },
+    {
+      "name": "widget-stream / model-error: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / model-error: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / model-error: portrait fallback remains visible",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / model-error: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / model-error: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / no-webgl: failure reason and text input visible",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "fallback",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 0,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": null,
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "model:Error creating WebGL context.",
+            "microphone:NotAllowedError"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+        "feedbackHidden": false,
+        "kind": "error",
+        "panelHidden": false,
+        "role": "status",
+        "live": "polite",
+        "atomic": "true",
+        "micBusy": "false",
+        "pressed": "false",
+        "micLabel": "Try microphone again",
+        "micDisabled": false,
+        "stopIcon": false,
+        "formVisible": true,
+        "captionHidden": true,
+        "panel": {
+          "x": 118,
+          "y": 396.375,
+          "width": 260,
+          "height": 129.625,
+          "right": 378,
+          "bottom": 526
+        },
+        "inside": true,
+        "overlaps": [],
+        "streams": [],
+        "data": [],
+        "gumCalls": 1,
+        "roots": 1,
+        "launchers": 0,
+        "fallbackVisible": true
+      }
+    },
+    {
+      "name": "widget-stream / no-webgl: no upload or unintended native capture",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / no-webgl: later outside tap remains silent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / no-webgl: portrait fallback remains visible",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / no-webgl: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / no-webgl: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "widget-stream / persisted-reopen: saved close exposes Talk",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / persisted-reopen: reopened mic records with one guide",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "widget-stream / persisted-reopen: phone panel remains inside viewport and clears site controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "width": 260,
+        "height": 129.625,
+        "right": 378,
+        "bottom": 526
+      }
+    },
+    {
+      "name": "widget-stream / persisted-reopen: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "cases": [
+    {
+      "variant": "widget",
+      "scenario": "permission-listen-stop",
+      "uploads": [
+        {
+          "bytes": 12754,
+          "type": "multipart/form-data; boundary=----WebKitFormBoundary5Fx9TkS9bCa3XnyP"
+        }
+      ],
+      "states": {
+        "pending": {
+          "diag": {
+            "state": "microphone-permission",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 16,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "true",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "listening": {
+          "diag": {
+            "state": "listening",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 47,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Listening. Tap the microphone again to send your question.",
+          "feedbackHidden": false,
+          "kind": "listening",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "true",
+          "micLabel": "Stop recording and send question",
+          "micDisabled": false,
+          "stopIcon": true,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "live"
+            ]
+          ],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "processing": {
+          "diag": {
+            "state": "transcribing",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 75,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Recording received. Turning your speech into text\u2026",
+          "feedbackHidden": false,
+          "kind": "processing",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 350.375,
+            "width": 260,
+            "height": 175.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [
+            {
+              "bytes": 12554,
+              "type": "audio/webm;codecs=opus"
+            }
+          ],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "error": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 149,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [
+              "conversation:Controlled response unavailable"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "The reply could not finish. Try the microphone again or type another question.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 377.53125,
+            "width": 260,
+            "height": 148.46875,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [
+            {
+              "bytes": 12554,
+              "type": "audio/webm;codecs=opus"
+            }
+          ],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget",
+      "scenario": "denied",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 23,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Try microphone again",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget",
+      "scenario": "unsupported",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 20,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Voice recording is unavailable in this browser. You can type your question below.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 0,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget",
+      "scenario": "close-pending",
+      "uploads": [],
+      "states": {
+        "pending": {
+          "diag": {
+            "state": "microphone-permission",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 18,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "true",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 25,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "permission-listen-stop",
+      "uploads": [
+        {
+          "bytes": 12867,
+          "type": "multipart/form-data; boundary=----WebKitFormBoundary8O6nWRLLSqARHXjB"
+        }
+      ],
+      "states": {
+        "pending": {
+          "diag": {
+            "state": "microphone-permission",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 19,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "true",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "listening": {
+          "diag": {
+            "state": "listening",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 24,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Listening. Tap the microphone again to send your question.",
+          "feedbackHidden": false,
+          "kind": "listening",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "true",
+          "micLabel": "Stop recording and send question",
+          "micDisabled": false,
+          "stopIcon": true,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "live"
+            ]
+          ],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "processing": {
+          "diag": {
+            "state": "transcribing",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 51,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Recording received. Turning your speech into text\u2026",
+          "feedbackHidden": false,
+          "kind": "processing",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 350.375,
+            "width": 260,
+            "height": 175.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [
+            {
+              "bytes": 12554,
+              "type": "audio/webm;codecs=opus"
+            }
+          ],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "error": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 60,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "conversation:Controlled response unavailable"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "The reply could not finish. Please try asking again.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [
+            {
+              "bytes": 12554,
+              "type": "audio/webm;codecs=opus"
+            }
+          ],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "denied",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 23,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Try microphone again",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "unsupported",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 23,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Voice recording is unavailable in this browser. You can type your question below.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 0,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "close-pending",
+      "uploads": [],
+      "states": {
+        "pending": {
+          "diag": {
+            "state": "microphone-permission",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 22,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "true",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": true,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        },
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 40,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "feedback": "Allow microphone access in your browser to start listening.",
+          "feedbackHidden": false,
+          "kind": "permission",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Ask a question by voice",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "ended"
+            ]
+          ],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 1,
+          "fallbackVisible": false
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "model-error",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "fallback",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 2,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": null,
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "model:Failed to fetch",
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Try microphone again",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": true
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "no-webgl",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "fallback",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 0,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": null,
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "model:Error creating WebGL context.",
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "kind": "error",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "false",
+          "micLabel": "Try microphone again",
+          "micDisabled": false,
+          "stopIcon": false,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": true
+        }
+      }
+    },
+    {
+      "variant": "widget-stream",
+      "scenario": "persisted-reopen",
+      "uploads": [],
+      "states": {
+        "result": {
+          "diag": {
+            "state": "listening",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 23,
+            "mouth": 0.034507774558400865,
+            "blink": 0,
+            "startedAt": 459.6000000014901,
+            "firstInteractionAt": 334.19999999552965,
+            "audio": {
+              "paused": true,
+              "currentTime": 0.390463,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "feedback": "Listening. Tap the microphone again to send your question.",
+          "feedbackHidden": false,
+          "kind": "listening",
+          "panelHidden": false,
+          "role": "status",
+          "live": "polite",
+          "atomic": "true",
+          "micBusy": "false",
+          "pressed": "true",
+          "micLabel": "Stop recording and send question",
+          "micDisabled": false,
+          "stopIcon": true,
+          "formVisible": true,
+          "captionHidden": true,
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "width": 260,
+            "height": 129.625,
+            "right": 378,
+            "bottom": 526
+          },
+          "inside": true,
+          "overlaps": [],
+          "streams": [
+            [
+              "live"
+            ]
+          ],
+          "data": [],
+          "gumCalls": 1,
+          "roots": 1,
+          "launchers": 0,
+          "fallbackVisible": false
+        }
+      }
+    }
+  ],
+  "finishedAt": 1794134847.2070599
+}

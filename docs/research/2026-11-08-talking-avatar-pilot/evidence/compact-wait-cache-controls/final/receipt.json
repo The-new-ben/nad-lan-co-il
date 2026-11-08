@@ -1,0 +1,164 @@
+{
+  "scope": "Controlled model/voice routing; existing identity-02 audio copied only into isolated test cache. No inference.",
+  "modelInference": false,
+  "serverRestarted": false,
+  "publicChanges": false,
+  "actualCachePrimed": false,
+  "checks": [
+    {
+      "name": "recovery_correct_result",
+      "passed": true
+    },
+    {
+      "name": "recovery_bounded_polling",
+      "passed": true
+    },
+    {
+      "name": "recovery_wait_recorded",
+      "passed": true
+    },
+    {
+      "name": "exhaustion_correct_result",
+      "passed": true
+    },
+    {
+      "name": "exhaustion_bounded_polling",
+      "passed": true
+    },
+    {
+      "name": "exhaustion_wait_recorded",
+      "passed": true
+    },
+    {
+      "name": "full_wait_bound_is_thirty_seconds",
+      "passed": true
+    },
+    {
+      "name": "cancel_correct_result",
+      "passed": true
+    },
+    {
+      "name": "cancel_bounded_polling",
+      "passed": true
+    },
+    {
+      "name": "cancel_wait_recorded",
+      "passed": true
+    },
+    {
+      "name": "stage_deadline_correct_result",
+      "passed": true
+    },
+    {
+      "name": "stage_deadline_bounded_polling",
+      "passed": true
+    },
+    {
+      "name": "stage_deadline_wait_recorded",
+      "passed": true
+    },
+    {
+      "name": "job_deadline_correct_result",
+      "passed": true
+    },
+    {
+      "name": "job_deadline_bounded_polling",
+      "passed": true
+    },
+    {
+      "name": "job_deadline_wait_recorded",
+      "passed": true
+    },
+    {
+      "name": "no_wait_while_process_active",
+      "passed": true
+    },
+    {
+      "name": "fail_first_never_cached",
+      "passed": true
+    },
+    {
+      "name": "cancel_first_never_cached",
+      "passed": true
+    },
+    {
+      "name": "cancel_full_never_cached",
+      "passed": true
+    },
+    {
+      "name": "cleanup_failure_never_publishes_transient_done",
+      "passed": true
+    },
+    {
+      "name": "cleanup_failure_never_caches_or_succeeds",
+      "passed": true
+    },
+    {
+      "name": "cancel_during_cleanup_never_publishes_transient_done",
+      "passed": true
+    },
+    {
+      "name": "cancel_during_cleanup_never_caches_or_succeeds",
+      "passed": true
+    },
+    {
+      "name": "successful_stream_commits_complete_cache",
+      "passed": true
+    },
+    {
+      "name": "cache_hit_still_answers_current_question",
+      "passed": true
+    },
+    {
+      "name": "stream_cache_hit_has_full_audio_no_chunks",
+      "passed": true
+    },
+    {
+      "name": "cache_audio_exact_complete_pcm",
+      "passed": true
+    },
+    {
+      "name": "changed_text_is_cache_miss",
+      "passed": true
+    },
+    {
+      "name": "whole_watermark_is_separate_cache",
+      "passed": true
+    },
+    {
+      "name": "settings_are_in_cache_identity",
+      "passed": true
+    },
+    {
+      "name": "referenceSha256_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "ortSeedBeforeConstruction_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "torchSeedAfterConstruction_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "modelRevision_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "text_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "streamedBySentence_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "cancelled_final_checkpoint_never_commits",
+      "passed": true
+    }
+  ],
+  "passed": 38,
+  "total": 38,
+  "sourceSha256": "94c6dafbd96aabf0c18a2a272e0c1c38b5d1b0db0228d875e6072547bdfbf821"
+}

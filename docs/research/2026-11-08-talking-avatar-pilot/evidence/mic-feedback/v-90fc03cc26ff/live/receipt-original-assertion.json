@@ -1,0 +1,1176 @@
+{
+  "scope": "Anonymous live release UI checks with native Chromium permission denial.\n\nNo API response fixtures, model inference, or physical handset claims. An abort-only\nguard prevents accidental question/prewarm POSTs; any attempt fails this test.\n",
+  "release": "v-90fc03cc26ff",
+  "url": "https://nad-lan.co.il/en/buy-property-in-israel/?guide=20261108-mic#talk",
+  "startedAt": "2026-11-08T10:55:02.157258+00:00",
+  "checks": [
+    {
+      "name": "phone: correct live release",
+      "pass": true,
+      "detail": [
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "name": "phone: immediate visible at initialization",
+      "pass": false,
+      "detail": {
+        "firstRootAt": 1532.6999999955297,
+        "firstVisibleAt": 1550.0999999940395,
+        "visibleAtInsertion": false
+      }
+    },
+    {
+      "name": "phone: saved dismissal recovered silently by #talk",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "phone: single guide clears live site controls",
+      "pass": true,
+      "detail": [
+        {
+          "id": "nla11y",
+          "box": {
+            "x": 14,
+            "y": 778,
+            "right": 66,
+            "bottom": 830,
+            "width": 52,
+            "height": 52
+          }
+        },
+        {
+          "id": "nlcta",
+          "box": {
+            "x": 98,
+            "y": 716,
+            "right": 378,
+            "bottom": 766,
+            "width": 280,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "phone: native browser microphone permission is denied",
+      "pass": true,
+      "detail": "denied"
+    },
+    {
+      "name": "phone: native denial shows readable guidance and typing fallback",
+      "pass": true,
+      "detail": "Microphone access was not allowed. Allow it in your browser, or type your question."
+    },
+    {
+      "name": "phone: accessible error is silent and clears controls",
+      "pass": true,
+      "detail": {
+        "x": 118,
+        "y": 396.375,
+        "right": 378,
+        "bottom": 526,
+        "width": 260,
+        "height": 129.625
+      }
+    },
+    {
+      "name": "phone: one-click close persists with one Talk control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "phone: reload honors closure without repeated #talk",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "phone: no question or prewarm POST attempted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "phone: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "desktop: correct live release",
+      "pass": true,
+      "detail": [
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "name": "desktop: immediate visible at initialization",
+      "pass": false,
+      "detail": {
+        "firstRootAt": 1457.9000000059605,
+        "firstVisibleAt": 1472.3000000044703,
+        "visibleAtInsertion": false
+      }
+    },
+    {
+      "name": "desktop: saved dismissal recovered silently by #talk",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "desktop: single guide clears live site controls",
+      "pass": true,
+      "detail": [
+        {
+          "id": "nla11y",
+          "box": {
+            "x": 20,
+            "y": 828,
+            "right": 72,
+            "bottom": 880,
+            "width": 52,
+            "height": 52
+          }
+        },
+        {
+          "id": "nlcta",
+          "box": {
+            "x": 1045.515625,
+            "y": 826,
+            "right": 1346,
+            "bottom": 880,
+            "width": 300.484375,
+            "height": 54
+          }
+        }
+      ]
+    },
+    {
+      "name": "desktop: native browser microphone permission is denied",
+      "pass": true,
+      "detail": "denied"
+    },
+    {
+      "name": "desktop: native denial shows readable guidance and typing fallback",
+      "pass": true,
+      "detail": "Microphone access was not allowed. Allow it in your browser, or type your question."
+    },
+    {
+      "name": "desktop: accessible error is silent and clears controls",
+      "pass": true,
+      "detail": {
+        "x": 1082,
+        "y": 474.375,
+        "right": 1342,
+        "bottom": 604,
+        "width": 260,
+        "height": 129.625
+      }
+    },
+    {
+      "name": "desktop: one-click close persists with one Talk control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "desktop: reload honors closure without repeated #talk",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "desktop: no question or prewarm POST attempted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "desktop: no uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "cases": [
+    {
+      "viewport": "phone",
+      "states": {
+        "initial": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": false,
+            "visible": true,
+            "frames": 18,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 0,
+          "hash": "",
+          "closedKey": null,
+          "foreignKey": "preserve",
+          "feedback": "",
+          "feedbackHidden": true,
+          "feedbackKind": null,
+          "live": "polite",
+          "role": "status",
+          "panelHidden": true,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": null,
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 14,
+                "y": 778,
+                "right": 66,
+                "bottom": 830,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 98,
+                "y": 716,
+                "right": 378,
+                "bottom": 766,
+                "width": 280,
+                "height": 50
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1532.6999999955297,
+            "firstVisibleAt": 1550.0999999940395,
+            "visibleAtInsertion": false
+          }
+        },
+        "denied": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 25,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 0,
+          "hash": "",
+          "closedKey": null,
+          "foreignKey": "preserve",
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "feedbackKind": "error",
+          "live": "polite",
+          "role": "status",
+          "panelHidden": false,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": {
+            "x": 118,
+            "y": 396.375,
+            "right": 378,
+            "bottom": 526,
+            "width": 260,
+            "height": 129.625
+          },
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 14,
+                "y": 778,
+                "right": 66,
+                "bottom": 830,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 98,
+                "y": 716,
+                "right": 378,
+                "bottom": 766,
+                "width": 280,
+                "height": 50
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1532.6999999955297,
+            "firstVisibleAt": 1550.0999999940395,
+            "visibleAtInsertion": false
+          }
+        },
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 34,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 1,
+          "hash": "",
+          "closedKey": "1",
+          "foreignKey": "preserve",
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "feedbackKind": "error",
+          "live": "polite",
+          "role": "status",
+          "panelHidden": false,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 14,
+                "y": 778,
+                "right": 66,
+                "bottom": 830,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 98,
+                "y": 716,
+                "right": 378,
+                "bottom": 766,
+                "width": 280,
+                "height": 50
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1532.6999999955297,
+            "firstVisibleAt": 1550.0999999940395,
+            "visibleAtInsertion": false
+          }
+        },
+        "reload": {
+          "diag": {
+            "state": "closed",
+            "renderer": "not-loaded",
+            "closed": true,
+            "started": false,
+            "visible": false,
+            "frames": 0,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": null
+            },
+            "modelStats": null,
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 0,
+          "launchers": 1,
+          "hash": "",
+          "closedKey": "1",
+          "foreignKey": "preserve",
+          "feedback": null,
+          "feedbackHidden": null,
+          "feedbackKind": null,
+          "live": null,
+          "role": null,
+          "panelHidden": null,
+          "formVisible": false,
+          "micDisabled": null,
+          "micPressed": null,
+          "panel": null,
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 14,
+                "y": 778,
+                "right": 66,
+                "bottom": 830,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 98,
+                "y": 716,
+                "right": 378,
+                "bottom": 766,
+                "width": 280,
+                "height": 50
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": null,
+            "firstVisibleAt": null,
+            "visibleAtInsertion": null
+          }
+        }
+      },
+      "blockedInferencePosts": [],
+      "pageErrors": [],
+      "assetResponses": [
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "states": {
+        "initial": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": false,
+            "visible": true,
+            "frames": 15,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 1166,
+              "y": 614,
+              "width": 176,
+              "height": 198,
+              "top": 614,
+              "right": 1342,
+              "bottom": 812,
+              "left": 1166
+            }
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 0,
+          "hash": "",
+          "closedKey": null,
+          "foreignKey": "preserve",
+          "feedback": "",
+          "feedbackHidden": true,
+          "feedbackKind": null,
+          "live": "polite",
+          "role": "status",
+          "panelHidden": true,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": null,
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 20,
+                "y": 828,
+                "right": 72,
+                "bottom": 880,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 1045.515625,
+                "y": 826,
+                "right": 1346,
+                "bottom": 880,
+                "width": 300.484375,
+                "height": 54
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1457.9000000059605,
+            "firstVisibleAt": 1472.3000000044703,
+            "visibleAtInsertion": false
+          }
+        },
+        "denied": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 21,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 1166,
+              "y": 614,
+              "width": 176,
+              "height": 198,
+              "top": 614,
+              "right": 1342,
+              "bottom": 812,
+              "left": 1166
+            }
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 0,
+          "hash": "",
+          "closedKey": null,
+          "foreignKey": "preserve",
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "feedbackKind": "error",
+          "live": "polite",
+          "role": "status",
+          "panelHidden": false,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": {
+            "x": 1082,
+            "y": 474.375,
+            "right": 1342,
+            "bottom": 604,
+            "width": 260,
+            "height": 129.625
+          },
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 20,
+                "y": 828,
+                "right": 72,
+                "bottom": 880,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 1045.515625,
+                "y": 826,
+                "right": 1346,
+                "bottom": 880,
+                "width": 300.484375,
+                "height": 54
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1457.9000000059605,
+            "firstVisibleAt": 1472.3000000044703,
+            "visibleAtInsertion": false
+          }
+        },
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 28,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "microphone:NotAllowedError"
+            ],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 1,
+          "launchers": 1,
+          "hash": "",
+          "closedKey": "1",
+          "foreignKey": "preserve",
+          "feedback": "Microphone access was not allowed. Allow it in your browser, or type your question.",
+          "feedbackHidden": false,
+          "feedbackKind": "error",
+          "live": "polite",
+          "role": "status",
+          "panelHidden": false,
+          "formVisible": true,
+          "micDisabled": false,
+          "micPressed": "false",
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 20,
+                "y": 828,
+                "right": 72,
+                "bottom": 880,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 1045.515625,
+                "y": 826,
+                "right": 1346,
+                "bottom": 880,
+                "width": 300.484375,
+                "height": 54
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": 1457.9000000059605,
+            "firstVisibleAt": 1472.3000000044703,
+            "visibleAtInsertion": false
+          }
+        },
+        "reload": {
+          "diag": {
+            "state": "closed",
+            "renderer": "not-loaded",
+            "closed": true,
+            "started": false,
+            "visible": false,
+            "frames": 0,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": null,
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "config": {
+            "fallbackUrl": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/portrait-cutout-v2.webp",
+            "storageKey": "nlag-closed",
+            "revealDelay": 0,
+            "apiBase": "/wp-json/nadlan-talk/v1",
+            "conversationEndpoint": "/wp-json/nadlan-talk/v1/converse",
+            "sessionEndpoint": "/wp-json/nadlan-talk/v1/session",
+            "healthEndpoint": "/wp-json/nadlan-talk/v1/health",
+            "pollInterval": 1000
+          },
+          "release": "v-90fc03cc26ff",
+          "roots": 0,
+          "launchers": 1,
+          "hash": "",
+          "closedKey": "1",
+          "foreignKey": "preserve",
+          "feedback": null,
+          "feedbackHidden": null,
+          "feedbackKind": null,
+          "live": null,
+          "role": null,
+          "panelHidden": null,
+          "formVisible": false,
+          "micDisabled": null,
+          "micPressed": null,
+          "panel": null,
+          "obstacles": [
+            {
+              "id": "nla11y",
+              "box": {
+                "x": 20,
+                "y": 828,
+                "right": 72,
+                "bottom": 880,
+                "width": 52,
+                "height": 52
+              }
+            },
+            {
+              "id": "nlcta",
+              "box": {
+                "x": 1045.5,
+                "y": 826,
+                "right": 1346,
+                "bottom": 880,
+                "width": 300.5,
+                "height": 54
+              }
+            }
+          ],
+          "panelInside": true,
+          "panelOverlaps": [],
+          "guideOverlaps": [],
+          "audit": {
+            "firstRootAt": null,
+            "firstVisibleAt": null,
+            "visibleAtInsertion": null
+          }
+        }
+      },
+      "blockedInferencePosts": [],
+      "pageErrors": [],
+      "assetResponses": [
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.css",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "text/css"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/widget.js",
+          "status": 200,
+          "cacheControl": "max-age=31536000",
+          "contentType": "application/javascript"
+        },
+        {
+          "url": "https://nad-lan.co.il/wp-content/uploads/nadlan-avatar/v-90fc03cc26ff/assets/greet-en.mp3",
+          "status": 206,
+          "cacheControl": null,
+          "contentType": "audio/mpeg"
+        }
+      ]
+    }
+  ],
+  "ownedBrowserClosed": true,
+  "finishedAt": "2026-11-08T10:55:11.272690+00:00",
+  "passed": 20,
+  "total": 22
+}

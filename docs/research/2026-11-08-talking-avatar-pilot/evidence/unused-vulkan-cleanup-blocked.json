@@ -1,0 +1,10 @@
+{
+  "timeUtc": "2026-11-08T11:35:41.9265343Z",
+  "scope": "Unused task-owned portable Vulkan runtime",
+  "action": "Deletion rejected by automatic policy review",
+  "reason": "blocked by policy; no further reason provided",
+  "runtimeRemains": true,
+  "ownerAppsClosed": false,
+  "ownerFilesDeleted": false,
+  "cleanupCompleted": false
+}

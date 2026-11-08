@@ -1,0 +1,28 @@
+{
+  "frozenAtUTC": "2026-11-08T11:38:46.6036968Z",
+  "modelInference": false,
+  "serverRestarted": false,
+  "publicChanges": false,
+  "activeCachePrimed": false,
+  "newControls": 38,
+  "priorControls": 34,
+  "helperDryRunVerified": true,
+  "files": [
+    {
+      "path": "server.py",
+      "sha256": "94c6dafbd96aabf0c18a2a272e0c1c38b5d1b0db0228d875e6072547bdfbf821"
+    },
+    {
+      "path": "onnx_voice_worker.py",
+      "sha256": "2ac4d0c888a8c390c7583fbe5c4d0ecf275cb13082805d7c36fad653dadafe4e"
+    },
+    {
+      "path": "research/prime_completed_voice_cache.py",
+      "sha256": "5ee720ab2ca31f5be696054744639f3d0325555a8ea682f0ea40242a95f06c60"
+    },
+    {
+      "path": "research/verify_compact_wait_cache.py",
+      "sha256": "dd71ddea0d89b22109d506dddded003edc08c8d740f7e0a2db93287c4f392e52"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "preparedOnly": false,
+  "existingCompleteVoiceVerified": true,
+  "cacheWritten": true,
+  "source": "identity-02",
+  "sourceJobId": "e0586b54fe9d4c518d5128a348b7273f",
+  "cacheKey": "10d30de8921d2479df1344f4fba19e420b2659bad673825f5ff93f7b32ccd3d8",
+  "waveSha256": "9f0e7a95ebc8aa13b7175d8ff6fafaf1352e912425aec38c150cbd5569fa681e",
+  "pcmSha256": "1ae2f8bd85759116a3a63a7ac9968dcf3ef9548eb3eb2e450213a41eca8e3ad2",
+  "watermarkMode": "per-sentence",
+  "newModelInference": false,
+  "newSpeechSynthesis": false,
+  "publicRequest": false,
+  "adopted": {
+    "cacheKey": "10d30de8921d2479df1344f4fba19e420b2659bad673825f5ff93f7b32ccd3d8",
+    "audioSha256": "9f0e7a95ebc8aa13b7175d8ff6fafaf1352e912425aec38c150cbd5569fa681e"
+  }
+}

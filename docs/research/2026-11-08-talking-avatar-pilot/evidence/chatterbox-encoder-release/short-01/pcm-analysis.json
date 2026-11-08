@@ -1,0 +1,133 @@
+{
+  "method": "File/PCM numerical analysis only; NumPy, no inference or model imports. Correlation is not voice or text equivalence.",
+  "files": {
+    "candidate": {
+      "path": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\chatterbox-encoder-release\\short-01\\candidate.wav",
+      "rate": 24000,
+      "samples": 61920,
+      "seconds": 2.58,
+      "fileSha256": "c2c1b291cf33431258cf4eacdbd56b1292876cd99b4a19fd72de410453f44322",
+      "rms": 0.061227756975077804,
+      "peak": 0.367034912109375,
+      "dc": 0.00036956925108759287
+    },
+    "historicalWarm": {
+      "path": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\chatterbox-onnx-q4\\warm-next-question.wav",
+      "rate": 24000,
+      "samples": 61920,
+      "seconds": 2.58,
+      "fileSha256": "836fd0691cc9130c1f6f167db88560dd6f717b9f8d63d2358c1926a766b3dce9",
+      "rms": 0.060487971498437376,
+      "peak": 0.353790283203125,
+      "dc": 0.0004509105238803597
+    },
+    "historicalCold": {
+      "path": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\.runtime\\chatterbox-onnx-test\\candidate.wav",
+      "rate": 24000,
+      "samples": 61920,
+      "seconds": 2.58,
+      "fileSha256": "152365761d703f3aad24bfad98a6831e9793be27f21aee8c6c2c0454b9a57943",
+      "rms": 0.06601978851741085,
+      "peak": 0.385833740234375,
+      "dc": 0.0005229511310271823
+    }
+  },
+  "comparisons": {
+    "candidateVshistoricalWarm": {
+      "zeroLag": {
+        "samplesCompared": 61920,
+        "equalSamples": 774,
+        "differingSamples": 61146,
+        "maxAbsoluteError": 0.463714599609375,
+        "maxAbsoluteErrorPCM16LSB": 15195.0,
+        "rmsError": 0.06122907620890055,
+        "meanAbsoluteError": 0.03527457609349135,
+        "pearson": 0.49391465634091986,
+        "snrAgainstSecondDb": -0.10577373336434642
+      },
+      "bestLagSamplesCandidateRelativeToSecond": 0,
+      "bestLagMilliseconds": 0.0,
+      "searchRangeMilliseconds": 100,
+      "aligned": {
+        "samplesCompared": 61920,
+        "equalSamples": 774,
+        "differingSamples": 61146,
+        "maxAbsoluteError": 0.463714599609375,
+        "maxAbsoluteErrorPCM16LSB": 15195.0,
+        "rmsError": 0.06122907620890055,
+        "meanAbsoluteError": 0.03527457609349135,
+        "pearson": 0.49391465634091986,
+        "snrAgainstSecondDb": -0.10577373336434642
+      },
+      "tenMillisecondEnvelopeCorrelation": 0.9789682533382359
+    },
+    "candidateVshistoricalCold": {
+      "zeroLag": {
+        "samplesCompared": 61920,
+        "equalSamples": 917,
+        "differingSamples": 61003,
+        "maxAbsoluteError": 0.4656982421875,
+        "maxAbsoluteErrorPCM16LSB": 15260.0,
+        "rmsError": 0.07669886926150454,
+        "meanAbsoluteError": 0.04310623927941926,
+        "pearson": 0.275151396986939,
+        "snrAgainstSecondDb": -1.3022966513463863
+      },
+      "bestLagSamplesCandidateRelativeToSecond": 0,
+      "bestLagMilliseconds": 0.0,
+      "searchRangeMilliseconds": 100,
+      "aligned": {
+        "samplesCompared": 61920,
+        "equalSamples": 917,
+        "differingSamples": 61003,
+        "maxAbsoluteError": 0.4656982421875,
+        "maxAbsoluteErrorPCM16LSB": 15260.0,
+        "rmsError": 0.07669886926150454,
+        "meanAbsoluteError": 0.04310623927941926,
+        "pearson": 0.275151396986939,
+        "snrAgainstSecondDb": -1.3022966513463863
+      },
+      "tenMillisecondEnvelopeCorrelation": 0.9746929104092288
+    },
+    "historicalColdVshistoricalWarm": {
+      "zeroLag": {
+        "samplesCompared": 61920,
+        "equalSamples": 1086,
+        "differingSamples": 60834,
+        "maxAbsoluteError": 0.484893798828125,
+        "maxAbsoluteErrorPCM16LSB": 15889.0,
+        "rmsError": 0.07323562339040948,
+        "meanAbsoluteError": 0.041411528476448946,
+        "pearson": 0.33225246172096096,
+        "snrAgainstSecondDb": -1.6610672452115518
+      },
+      "bestLagSamplesCandidateRelativeToSecond": -5,
+      "bestLagMilliseconds": -0.20833333333333334,
+      "searchRangeMilliseconds": 100,
+      "aligned": {
+        "samplesCompared": 61915,
+        "equalSamples": 995,
+        "differingSamples": 60920,
+        "maxAbsoluteError": 0.6005859375,
+        "maxAbsoluteErrorPCM16LSB": 19680.0,
+        "rmsError": 0.07112174884916382,
+        "meanAbsoluteError": 0.03963927113643074,
+        "pearson": 0.3705130473365628,
+        "snrAgainstSecondDb": -1.4063174312596003
+      },
+      "tenMillisecondEnvelopeCorrelation": 0.9754990884626317
+    }
+  },
+  "candidateWatermarkEffect": {
+    "samplesCompared": 61920,
+    "equalSamples": 0,
+    "differingSamples": 61920,
+    "maxAbsoluteError": 0.07099912688136101,
+    "maxAbsoluteErrorPCM16LSB": 2326.4993896484375,
+    "rmsError": 0.009970010920017595,
+    "meanAbsoluteError": 0.006287330891637044,
+    "pearson": 0.9881997294760331,
+    "snrAgainstSecondDb": 15.162778062614501
+  },
+  "noNewInference": true
+}

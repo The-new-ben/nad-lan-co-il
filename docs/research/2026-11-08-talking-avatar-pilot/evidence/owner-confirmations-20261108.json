@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-08",
+  "source": "Explicit pending-question replies in current conversation",
+  "missingAvatarDevice": "phone",
+  "microphoneSymptom": "No visible listening indicator",
+  "keepOpen": [
+    "Claude Desktop",
+    "Grok Bot"
+  ],
+  "voiceApproved": "Second sample: Chatterbox Turbo ONNX q4 with original reference",
+  "propertyConfirmed": {
+    "pageId": 7812,
+    "listing": "Meital Katzir Kochav HaTzafon mini-penthouse advertised at NIS18000000"
+  },
+  "publicPageScope": 5154,
+  "newPaidServicesAuthorized": false
+}

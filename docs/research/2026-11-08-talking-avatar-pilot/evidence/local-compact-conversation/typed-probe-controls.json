@@ -1,0 +1,79 @@
+{
+  "scope": "Offline argument/payload and unchanged-guard controls only",
+  "publicRequests": false,
+  "localRequests": false,
+  "modelInference": false,
+  "probeSha256": "86222c8cd5212ca9b6993929b542eea1fad0cc5aa9207dba98c6f002740cd959",
+  "checks": [
+    {
+      "name": "typed_exact_payload_has_no_audio",
+      "passed": true
+    },
+    {
+      "name": "default_payload_preserves_original_wav",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_../escape",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_nested/path",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_C:\\escape",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_con",
+      "passed": true
+    },
+    {
+      "name": "unsafe_label_lpt1",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_0",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_1201",
+      "passed": true
+    },
+    {
+      "name": "invalid_question_3",
+      "passed": true
+    },
+    {
+      "name": "request_cancel_unchanged",
+      "passed": true
+    },
+    {
+      "name": "cancel_own_unchanged",
+      "passed": true
+    },
+    {
+      "name": "all_memory_network_and_cancel_loops_unchanged",
+      "passed": true
+    },
+    {
+      "name": "default_preview",
+      "passed": true
+    },
+    {
+      "name": "default_preview_preserves_floors",
+      "passed": true
+    },
+    {
+      "name": "typed_preview",
+      "passed": true
+    },
+    {
+      "name": "typed_preview_preserves_floors",
+      "passed": true
+    }
+  ],
+  "passed": 17,
+  "total": 17
+}

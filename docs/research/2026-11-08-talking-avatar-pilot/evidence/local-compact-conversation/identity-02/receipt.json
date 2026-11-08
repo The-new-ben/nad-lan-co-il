@@ -1,0 +1,1646 @@
+{
+  "status": "real_local_reply_received_review_pending",
+  "testType": "REAL_LOCAL_HTTP_MULTIPART_WINDOWS_SYNTHESIZED_QUESTION",
+  "question": "Who are you, and how can you help me?",
+  "requestToken": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+  "serverPID": 24000,
+  "base": "http://127.0.0.1:8770",
+  "controlledInput": {
+    "path": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\prototype-3d\\evidence\\public-relay\\real-reply-recovery\\controlled-identity-question.wav",
+    "sha256": "8753b7990e0c80d0a5ff0574e5e8614fbaf604105be163fefff311c50a0a15f7",
+    "source": "Existing Windows-synthesized English fixture; not a person or physical microphone.",
+    "wave": {
+      "channels": 1,
+      "sampleRate": 22050,
+      "sampleWidth": 2,
+      "frames": 66790,
+      "seconds": 3.0290249433106577,
+      "fileSha256": "8753b7990e0c80d0a5ff0574e5e8614fbaf604105be163fefff311c50a0a15f7",
+      "pcmSha256": "0428bae67dcd1f614131b0dd0b3d284309c802b58ff4b6f0b78612b1ddc733d2"
+    }
+  },
+  "modelsMocked": false,
+  "browserOrPlaybackTested": false,
+  "physicalMicrophoneTested": false,
+  "publicRequests": false,
+  "privateCredentialsLoaded": false,
+  "maximumSeconds": 240,
+  "abortPhysicalGiB": 0.75,
+  "abortCommitGiB": 1.0,
+  "cancellationScope": "Only this fresh cookie session and request token/job. No process is killed by this probe.",
+  "phases": [
+    {
+      "kind": "phase",
+      "atEpoch": 1794136877.6189604,
+      "elapsedSeconds": 0.141,
+      "job": {
+        "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+        "phase": "transcribing",
+        "timings": {},
+        "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4"
+      }
+    },
+    {
+      "kind": "phase",
+      "atEpoch": 1794136885.3592925,
+      "elapsedSeconds": 7.891,
+      "job": {
+        "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+        "phase": "thinking",
+        "timings": {
+          "audio decode": 0.125,
+          "transcription": 7.484
+        },
+        "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4"
+      }
+    },
+    {
+      "kind": "phase",
+      "atEpoch": 1794136893.184848,
+      "elapsedSeconds": 15.719,
+      "job": {
+        "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+        "phase": "synthesizing",
+        "timings": {
+          "audio decode": 0.125,
+          "transcription": 7.484,
+          "answer": 7.828
+        },
+        "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+        "streaming": true,
+        "chunks": [],
+        "userText": "Who are you, and how can you help me?",
+        "responseText": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+        "completed": false
+      }
+    },
+    {
+      "kind": "phase",
+      "atEpoch": 1794136929.28274,
+      "elapsedSeconds": 51.813,
+      "job": {
+        "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+        "phase": "streaming",
+        "timings": {
+          "audio decode": 0.125,
+          "transcription": 7.484,
+          "answer": 7.828,
+          "voice worker load": 26.282,
+          "firstChunkReadySeconds": 51.453
+        },
+        "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+        "streaming": true,
+        "chunks": [
+          {
+            "index": 0,
+            "text": "I'm a fictional, computer-made guide.",
+            "duration": 2.68,
+            "cues": [
+              {
+                "start": 0.0,
+                "end": 0.08,
+                "value": "X"
+              },
+              {
+                "start": 0.08,
+                "end": 0.32,
+                "value": "B"
+              },
+              {
+                "start": 0.32,
+                "end": 0.4,
+                "value": "X"
+              },
+              {
+                "start": 0.4,
+                "end": 0.96,
+                "value": "B"
+              },
+              {
+                "start": 0.96,
+                "end": 1.04,
+                "value": "X"
+              },
+              {
+                "start": 1.04,
+                "end": 1.76,
+                "value": "B"
+              },
+              {
+                "start": 1.76,
+                "end": 1.84,
+                "value": "X"
+              },
+              {
+                "start": 1.84,
+                "end": 2.24,
+                "value": "B"
+              },
+              {
+                "start": 2.24,
+                "end": 2.68,
+                "value": "X"
+              }
+            ],
+            "generatedAtEpoch": 1794136929.0204523,
+            "audioWrittenAtEpoch": 1794136929.0297084,
+            "isLast": false,
+            "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+            "publishedAtEpoch": 1794136929.0297084
+          }
+        ],
+        "userText": "Who are you, and how can you help me?",
+        "responseText": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+        "completed": false
+      }
+    },
+    {
+      "kind": "phase",
+      "atEpoch": 1794136940.8025374,
+      "elapsedSeconds": 63.328,
+      "job": {
+        "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+        "phase": "done",
+        "timings": {
+          "audio decode": 0.125,
+          "transcription": 7.484,
+          "answer": 7.828,
+          "voice worker load": 26.282,
+          "firstChunkReadySeconds": 51.453,
+          "voice": 47.735,
+          "total": 63.218
+        },
+        "result": {
+          "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f.wav",
+          "text": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+          "userText": "Who are you, and how can you help me?",
+          "cues": [
+            {
+              "start": 0.0,
+              "end": 0.08,
+              "value": "X"
+            },
+            {
+              "start": 0.08,
+              "end": 0.32,
+              "value": "B"
+            },
+            {
+              "start": 0.32,
+              "end": 0.4,
+              "value": "X"
+            },
+            {
+              "start": 0.4,
+              "end": 0.96,
+              "value": "B"
+            },
+            {
+              "start": 0.96,
+              "end": 1.04,
+              "value": "X"
+            },
+            {
+              "start": 1.04,
+              "end": 1.76,
+              "value": "B"
+            },
+            {
+              "start": 1.76,
+              "end": 1.84,
+              "value": "X"
+            },
+            {
+              "start": 1.84,
+              "end": 2.24,
+              "value": "B"
+            },
+            {
+              "start": 2.24,
+              "end": 2.72,
+              "value": "X"
+            },
+            {
+              "start": 2.72,
+              "end": 3.12,
+              "value": "B"
+            },
+            {
+              "start": 3.12,
+              "end": 3.2,
+              "value": "X"
+            },
+            {
+              "start": 3.2,
+              "end": 3.68,
+              "value": "B"
+            },
+            {
+              "start": 3.68,
+              "end": 3.76,
+              "value": "X"
+            },
+            {
+              "start": 3.76,
+              "end": 6.4,
+              "value": "B"
+            },
+            {
+              "start": 6.4,
+              "end": 6.62,
+              "value": "X"
+            }
+          ],
+          "duration": 6.62,
+          "mode": "language_model",
+          "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+          "languageModelInference": true,
+          "modelAttempted": true,
+          "cueMethod": "80 ms PCM amplitude, not phoneme recognition",
+          "voiceCacheHit": false,
+          "voiceEngine": "onnx-q4",
+          "voiceCandidate": true,
+          "voiceWorkerWarm": false,
+          "brainWarm": false,
+          "persistentBrain": false
+        },
+        "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+        "streaming": true,
+        "chunks": [
+          {
+            "index": 0,
+            "text": "I'm a fictional, computer-made guide.",
+            "duration": 2.68,
+            "cues": [
+              {
+                "start": 0.0,
+                "end": 0.08,
+                "value": "X"
+              },
+              {
+                "start": 0.08,
+                "end": 0.32,
+                "value": "B"
+              },
+              {
+                "start": 0.32,
+                "end": 0.4,
+                "value": "X"
+              },
+              {
+                "start": 0.4,
+                "end": 0.96,
+                "value": "B"
+              },
+              {
+                "start": 0.96,
+                "end": 1.04,
+                "value": "X"
+              },
+              {
+                "start": 1.04,
+                "end": 1.76,
+                "value": "B"
+              },
+              {
+                "start": 1.76,
+                "end": 1.84,
+                "value": "X"
+              },
+              {
+                "start": 1.84,
+                "end": 2.24,
+                "value": "B"
+              },
+              {
+                "start": 2.24,
+                "end": 2.68,
+                "value": "X"
+              }
+            ],
+            "generatedAtEpoch": 1794136929.0204523,
+            "audioWrittenAtEpoch": 1794136929.0297084,
+            "isLast": false,
+            "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+            "publishedAtEpoch": 1794136929.0297084
+          },
+          {
+            "index": 1,
+            "text": "Are you looking to buy a property and need assistance preparing questions?",
+            "duration": 3.94,
+            "cues": [
+              {
+                "start": 0.0,
+                "end": 2.56,
+                "value": "B"
+              },
+              {
+                "start": 2.56,
+                "end": 2.64,
+                "value": "X"
+              },
+              {
+                "start": 2.64,
+                "end": 3.68,
+                "value": "B"
+              },
+              {
+                "start": 3.68,
+                "end": 3.94,
+                "value": "X"
+              }
+            ],
+            "generatedAtEpoch": 1794136940.7600095,
+            "audioWrittenAtEpoch": 1794136940.7680097,
+            "isLast": true,
+            "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-1.wav",
+            "publishedAtEpoch": 1794136940.7690089
+          }
+        ],
+        "userText": "Who are you, and how can you help me?",
+        "responseText": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+        "completed": true
+      }
+    }
+  ],
+  "chunks": [
+    {
+      "kind": "chunk",
+      "atEpoch": 1794136929.3046272,
+      "elapsedSeconds": 51.828,
+      "index": 0,
+      "phaseWhenFetched": "streaming",
+      "audio": {
+        "channels": 1,
+        "sampleRate": 24000,
+        "sampleWidth": 2,
+        "frames": 64320,
+        "seconds": 2.68,
+        "fileSha256": "52902343ed0719eb0aef01b623589ae894af41e21caef864c6ec2c945bf07a72",
+        "pcmSha256": "2b589c8624f0c6b14ac61caec189f6bd526010c2b61ebf1ee5c67518ae59c704"
+      },
+      "combinedFileAlreadyExists": false,
+      "metadata": {
+        "index": 0,
+        "text": "I'm a fictional, computer-made guide.",
+        "duration": 2.68,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 0.08,
+            "value": "X"
+          },
+          {
+            "start": 0.08,
+            "end": 0.32,
+            "value": "B"
+          },
+          {
+            "start": 0.32,
+            "end": 0.4,
+            "value": "X"
+          },
+          {
+            "start": 0.4,
+            "end": 0.96,
+            "value": "B"
+          },
+          {
+            "start": 0.96,
+            "end": 1.04,
+            "value": "X"
+          },
+          {
+            "start": 1.04,
+            "end": 1.76,
+            "value": "B"
+          },
+          {
+            "start": 1.76,
+            "end": 1.84,
+            "value": "X"
+          },
+          {
+            "start": 1.84,
+            "end": 2.24,
+            "value": "B"
+          },
+          {
+            "start": 2.24,
+            "end": 2.68,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136929.0204523,
+        "audioWrittenAtEpoch": 1794136929.0297084,
+        "isLast": false,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+        "publishedAtEpoch": 1794136929.0297084
+      }
+    },
+    {
+      "kind": "chunk",
+      "atEpoch": 1794136940.8195674,
+      "elapsedSeconds": 63.344,
+      "index": 1,
+      "phaseWhenFetched": "done",
+      "audio": {
+        "channels": 1,
+        "sampleRate": 24000,
+        "sampleWidth": 2,
+        "frames": 94560,
+        "seconds": 3.94,
+        "fileSha256": "92bfb9ed0184cfd9bb96dba32556295855edf66e2861b1894abe6328505dc5b5",
+        "pcmSha256": "72cf3352211cfb9455fc60be38fe9d9dcbc7993934592b34e3bfe9ebe104e378"
+      },
+      "combinedFileAlreadyExists": true,
+      "metadata": {
+        "index": 1,
+        "text": "Are you looking to buy a property and need assistance preparing questions?",
+        "duration": 3.94,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 2.56,
+            "value": "B"
+          },
+          {
+            "start": 2.56,
+            "end": 2.64,
+            "value": "X"
+          },
+          {
+            "start": 2.64,
+            "end": 3.68,
+            "value": "B"
+          },
+          {
+            "start": 3.68,
+            "end": 3.94,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136940.7600095,
+        "audioWrittenAtEpoch": 1794136940.7680097,
+        "isLast": true,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-1.wav",
+        "publishedAtEpoch": 1794136940.7690089
+      }
+    }
+  ],
+  "cancellationAttempts": [],
+  "before": {
+    "at": 1794136877.4770849,
+    "availableGiB": 2.5664,
+    "commitCapacityAvailableGiB": 3.1275
+  },
+  "minimumPhysicalGiB": 1.2674,
+  "minimumCommitGiB": 1.0193,
+  "submissionAttempted": true,
+  "idleSupportProcesses": [
+    {
+      "pid": 24000,
+      "name": "python.exe"
+    },
+    {
+      "pid": 16672,
+      "name": "conhost.exe"
+    }
+  ],
+  "health": {
+    "available": true,
+    "localOnly": true,
+    "offline": true,
+    "missing": [],
+    "readiness": "local file checks, models load on demand",
+    "queued": 0,
+    "activeJobs": 0,
+    "maxRecordingSeconds": 20,
+    "requestCancellation": true,
+    "voiceEngine": "onnx-q4",
+    "voiceCandidate": true,
+    "streaming": true,
+    "prewarmAvailable": false,
+    "persistentBrain": false,
+    "sttEngine": "faster-small-en",
+    "sequentialModels": true,
+    "brainModel": "q4",
+    "brainModelFile": "Qwen3-1.7B-Q4_K_M.gguf",
+    "noRepack": true,
+    "memoryProfile": "compact",
+    "resourceAdmission": {
+      "physicalGiB": 2.3,
+      "commitGiB": 2.5
+    },
+    "memoryThresholds": {
+      "entryPhysicalGiB": 2.3,
+      "entryCommitGiB": 2.5,
+      "runtimePhysicalFloorGiB": 0.75,
+      "runtimeCommitFloorGiB": 1.0,
+      "pollIntervalSeconds": 0.1,
+      "provisionalForLongVoice": true
+    },
+    "voiceImplementation": "encoder-release-seeded",
+    "reviewedPropertyFacts": true,
+    "conciseFirst": false
+  },
+  "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+  "submitReceipt": {
+    "kind": "submitted",
+    "atEpoch": 1794136877.5898178,
+    "elapsedSeconds": 0.11,
+    "job": {
+      "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+      "phase": "queued",
+      "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4"
+    }
+  },
+  "lastJob": {
+    "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+    "phase": "done",
+    "timings": {
+      "audio decode": 0.125,
+      "transcription": 7.484,
+      "answer": 7.828,
+      "voice worker load": 26.282,
+      "firstChunkReadySeconds": 51.453,
+      "voice": 47.735,
+      "total": 63.218
+    },
+    "result": {
+      "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f.wav",
+      "text": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+      "userText": "Who are you, and how can you help me?",
+      "cues": [
+        {
+          "start": 0.0,
+          "end": 0.08,
+          "value": "X"
+        },
+        {
+          "start": 0.08,
+          "end": 0.32,
+          "value": "B"
+        },
+        {
+          "start": 0.32,
+          "end": 0.4,
+          "value": "X"
+        },
+        {
+          "start": 0.4,
+          "end": 0.96,
+          "value": "B"
+        },
+        {
+          "start": 0.96,
+          "end": 1.04,
+          "value": "X"
+        },
+        {
+          "start": 1.04,
+          "end": 1.76,
+          "value": "B"
+        },
+        {
+          "start": 1.76,
+          "end": 1.84,
+          "value": "X"
+        },
+        {
+          "start": 1.84,
+          "end": 2.24,
+          "value": "B"
+        },
+        {
+          "start": 2.24,
+          "end": 2.72,
+          "value": "X"
+        },
+        {
+          "start": 2.72,
+          "end": 3.12,
+          "value": "B"
+        },
+        {
+          "start": 3.12,
+          "end": 3.2,
+          "value": "X"
+        },
+        {
+          "start": 3.2,
+          "end": 3.68,
+          "value": "B"
+        },
+        {
+          "start": 3.68,
+          "end": 3.76,
+          "value": "X"
+        },
+        {
+          "start": 3.76,
+          "end": 6.4,
+          "value": "B"
+        },
+        {
+          "start": 6.4,
+          "end": 6.62,
+          "value": "X"
+        }
+      ],
+      "duration": 6.62,
+      "mode": "language_model",
+      "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+      "languageModelInference": true,
+      "modelAttempted": true,
+      "cueMethod": "80 ms PCM amplitude, not phoneme recognition",
+      "voiceCacheHit": false,
+      "voiceEngine": "onnx-q4",
+      "voiceCandidate": true,
+      "voiceWorkerWarm": false,
+      "brainWarm": false,
+      "persistentBrain": false
+    },
+    "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+    "streaming": true,
+    "chunks": [
+      {
+        "index": 0,
+        "text": "I'm a fictional, computer-made guide.",
+        "duration": 2.68,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 0.08,
+            "value": "X"
+          },
+          {
+            "start": 0.08,
+            "end": 0.32,
+            "value": "B"
+          },
+          {
+            "start": 0.32,
+            "end": 0.4,
+            "value": "X"
+          },
+          {
+            "start": 0.4,
+            "end": 0.96,
+            "value": "B"
+          },
+          {
+            "start": 0.96,
+            "end": 1.04,
+            "value": "X"
+          },
+          {
+            "start": 1.04,
+            "end": 1.76,
+            "value": "B"
+          },
+          {
+            "start": 1.76,
+            "end": 1.84,
+            "value": "X"
+          },
+          {
+            "start": 1.84,
+            "end": 2.24,
+            "value": "B"
+          },
+          {
+            "start": 2.24,
+            "end": 2.68,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136929.0204523,
+        "audioWrittenAtEpoch": 1794136929.0297084,
+        "isLast": false,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+        "publishedAtEpoch": 1794136929.0297084
+      },
+      {
+        "index": 1,
+        "text": "Are you looking to buy a property and need assistance preparing questions?",
+        "duration": 3.94,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 2.56,
+            "value": "B"
+          },
+          {
+            "start": 2.56,
+            "end": 2.64,
+            "value": "X"
+          },
+          {
+            "start": 2.64,
+            "end": 3.68,
+            "value": "B"
+          },
+          {
+            "start": 3.68,
+            "end": 3.94,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136940.7600095,
+        "audioWrittenAtEpoch": 1794136940.7680097,
+        "isLast": true,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-1.wav",
+        "publishedAtEpoch": 1794136940.7690089
+      }
+    ],
+    "userText": "Who are you, and how can you help me?",
+    "responseText": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+    "completed": true
+  },
+  "terminalJob": {
+    "jobId": "e0586b54fe9d4c518d5128a348b7273f",
+    "phase": "done",
+    "timings": {
+      "audio decode": 0.125,
+      "transcription": 7.484,
+      "answer": 7.828,
+      "voice worker load": 26.282,
+      "firstChunkReadySeconds": 51.453,
+      "voice": 47.735,
+      "total": 63.218
+    },
+    "result": {
+      "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f.wav",
+      "text": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+      "userText": "Who are you, and how can you help me?",
+      "cues": [
+        {
+          "start": 0.0,
+          "end": 0.08,
+          "value": "X"
+        },
+        {
+          "start": 0.08,
+          "end": 0.32,
+          "value": "B"
+        },
+        {
+          "start": 0.32,
+          "end": 0.4,
+          "value": "X"
+        },
+        {
+          "start": 0.4,
+          "end": 0.96,
+          "value": "B"
+        },
+        {
+          "start": 0.96,
+          "end": 1.04,
+          "value": "X"
+        },
+        {
+          "start": 1.04,
+          "end": 1.76,
+          "value": "B"
+        },
+        {
+          "start": 1.76,
+          "end": 1.84,
+          "value": "X"
+        },
+        {
+          "start": 1.84,
+          "end": 2.24,
+          "value": "B"
+        },
+        {
+          "start": 2.24,
+          "end": 2.72,
+          "value": "X"
+        },
+        {
+          "start": 2.72,
+          "end": 3.12,
+          "value": "B"
+        },
+        {
+          "start": 3.12,
+          "end": 3.2,
+          "value": "X"
+        },
+        {
+          "start": 3.2,
+          "end": 3.68,
+          "value": "B"
+        },
+        {
+          "start": 3.68,
+          "end": 3.76,
+          "value": "X"
+        },
+        {
+          "start": 3.76,
+          "end": 6.4,
+          "value": "B"
+        },
+        {
+          "start": 6.4,
+          "end": 6.62,
+          "value": "X"
+        }
+      ],
+      "duration": 6.62,
+      "mode": "language_model",
+      "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+      "languageModelInference": true,
+      "modelAttempted": true,
+      "cueMethod": "80 ms PCM amplitude, not phoneme recognition",
+      "voiceCacheHit": false,
+      "voiceEngine": "onnx-q4",
+      "voiceCandidate": true,
+      "voiceWorkerWarm": false,
+      "brainWarm": false,
+      "persistentBrain": false
+    },
+    "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+    "streaming": true,
+    "chunks": [
+      {
+        "index": 0,
+        "text": "I'm a fictional, computer-made guide.",
+        "duration": 2.68,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 0.08,
+            "value": "X"
+          },
+          {
+            "start": 0.08,
+            "end": 0.32,
+            "value": "B"
+          },
+          {
+            "start": 0.32,
+            "end": 0.4,
+            "value": "X"
+          },
+          {
+            "start": 0.4,
+            "end": 0.96,
+            "value": "B"
+          },
+          {
+            "start": 0.96,
+            "end": 1.04,
+            "value": "X"
+          },
+          {
+            "start": 1.04,
+            "end": 1.76,
+            "value": "B"
+          },
+          {
+            "start": 1.76,
+            "end": 1.84,
+            "value": "X"
+          },
+          {
+            "start": 1.84,
+            "end": 2.24,
+            "value": "B"
+          },
+          {
+            "start": 2.24,
+            "end": 2.68,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136929.0204523,
+        "audioWrittenAtEpoch": 1794136929.0297084,
+        "isLast": false,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+        "publishedAtEpoch": 1794136929.0297084
+      },
+      {
+        "index": 1,
+        "text": "Are you looking to buy a property and need assistance preparing questions?",
+        "duration": 3.94,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 2.56,
+            "value": "B"
+          },
+          {
+            "start": 2.56,
+            "end": 2.64,
+            "value": "X"
+          },
+          {
+            "start": 2.64,
+            "end": 3.68,
+            "value": "B"
+          },
+          {
+            "start": 3.68,
+            "end": 3.94,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136940.7600095,
+        "audioWrittenAtEpoch": 1794136940.7680097,
+        "isLast": true,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-1.wav",
+        "publishedAtEpoch": 1794136940.7690089
+      }
+    ],
+    "userText": "Who are you, and how can you help me?",
+    "responseText": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+    "completed": true
+  },
+  "terminalObservedSeconds": 63.344,
+  "fullAudio": {
+    "kind": "full_audio",
+    "atEpoch": 1794136940.834582,
+    "elapsedSeconds": 63.36,
+    "audio": {
+      "channels": 1,
+      "sampleRate": 24000,
+      "sampleWidth": 2,
+      "frames": 158880,
+      "seconds": 6.62,
+      "fileSha256": "9f0e7a95ebc8aa13b7175d8ff6fafaf1352e912425aec38c150cbd5569fa681e",
+      "pcmSha256": "1ae2f8bd85759116a3a63a7ac9968dcf3ef9548eb3eb2e450213a41eca8e3ad2"
+    }
+  },
+  "networkThreadFinished": true,
+  "cancellationThreadFinished": true,
+  "observedServerDescendantsStopped": true,
+  "processPeaks": [
+    {
+      "pid": 24000,
+      "name": "python.exe",
+      "workingMiB": 30.359,
+      "privateCommittedMiB": 20.582,
+      "peakWorkingMiB": 31.691,
+      "peakCommitMiB": 21.969
+    },
+    {
+      "pid": 16672,
+      "name": "conhost.exe",
+      "workingMiB": 10.148,
+      "privateCommittedMiB": 1.738,
+      "peakWorkingMiB": 10.168,
+      "peakCommitMiB": 1.84
+    },
+    {
+      "pid": 26192,
+      "name": "ffmpeg.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 17.086,
+      "peakCommitMiB": 14.34
+    },
+    {
+      "pid": 26156,
+      "name": "conhost.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 7.863,
+      "peakCommitMiB": 1.191
+    },
+    {
+      "pid": 15424,
+      "name": "python.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 4.379,
+      "peakCommitMiB": 0.82
+    },
+    {
+      "pid": 24088,
+      "name": "conhost.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 8.016,
+      "peakCommitMiB": 1.203
+    },
+    {
+      "pid": 24472,
+      "name": "python.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 694.129,
+      "peakCommitMiB": 787.148
+    },
+    {
+      "pid": 5208,
+      "name": "llama-completion.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 1359.352,
+      "peakCommitMiB": 418.027
+    },
+    {
+      "pid": 20996,
+      "name": "conhost.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 7.875,
+      "peakCommitMiB": 1.203
+    },
+    {
+      "pid": 19596,
+      "name": "python.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 1103.195,
+      "peakCommitMiB": 1171.008
+    },
+    {
+      "pid": 25380,
+      "name": "conhost.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 7.59,
+      "peakCommitMiB": 1.215
+    },
+    {
+      "pid": 22188,
+      "name": "python.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 4.16,
+      "peakCommitMiB": 0.797
+    }
+  ],
+  "maxSingleDescendantPeakWorkingMiB": 1359.352,
+  "maxSingleDescendantPeakCommitMiB": 1171.008,
+  "serverJobReceipt": {
+    "id": "e0586b54fe9d4c518d5128a348b7273f",
+    "phase": "done",
+    "text": "Who are you, and how can you help me?",
+    "created": 1794136877.5771646,
+    "timings": {
+      "audio decode": 0.125,
+      "transcription": 7.484,
+      "answer": 7.828,
+      "voice worker load": 26.282,
+      "firstChunkReadySeconds": 51.453,
+      "voice": 47.735,
+      "total": 63.218
+    },
+    "result": {
+      "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f.wav",
+      "text": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+      "userText": "Who are you, and how can you help me?",
+      "cues": [
+        {
+          "start": 0.0,
+          "end": 0.08,
+          "value": "X"
+        },
+        {
+          "start": 0.08,
+          "end": 0.32,
+          "value": "B"
+        },
+        {
+          "start": 0.32,
+          "end": 0.4,
+          "value": "X"
+        },
+        {
+          "start": 0.4,
+          "end": 0.96,
+          "value": "B"
+        },
+        {
+          "start": 0.96,
+          "end": 1.04,
+          "value": "X"
+        },
+        {
+          "start": 1.04,
+          "end": 1.76,
+          "value": "B"
+        },
+        {
+          "start": 1.76,
+          "end": 1.84,
+          "value": "X"
+        },
+        {
+          "start": 1.84,
+          "end": 2.24,
+          "value": "B"
+        },
+        {
+          "start": 2.24,
+          "end": 2.72,
+          "value": "X"
+        },
+        {
+          "start": 2.72,
+          "end": 3.12,
+          "value": "B"
+        },
+        {
+          "start": 3.12,
+          "end": 3.2,
+          "value": "X"
+        },
+        {
+          "start": 3.2,
+          "end": 3.68,
+          "value": "B"
+        },
+        {
+          "start": 3.68,
+          "end": 3.76,
+          "value": "X"
+        },
+        {
+          "start": 3.76,
+          "end": 6.4,
+          "value": "B"
+        },
+        {
+          "start": 6.4,
+          "end": 6.62,
+          "value": "X"
+        }
+      ],
+      "duration": 6.62,
+      "mode": "language_model",
+      "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+      "languageModelInference": true,
+      "modelAttempted": true,
+      "cueMethod": "80 ms PCM amplitude, not phoneme recognition",
+      "voiceCacheHit": false,
+      "voiceEngine": "onnx-q4",
+      "voiceCandidate": true,
+      "voiceWorkerWarm": false,
+      "brainWarm": false,
+      "persistentBrain": false
+    },
+    "retrieval": [
+      {
+        "heading": "Appoint independent help and define document questions",
+        "text": "Local help is most useful when roles are clear. Before appointing someone, ask whom they represent, who pays them, whether they receive referral compensation, what conflicts may arise and what their written scope excludes. A helpful introduction does not settle those questions."
+      },
+      {
+        "heading": "Appoint independent help and define document questions",
+        "text": "Agree how questions will be handled across time zones and in which language important conclusions will be delivered. Specify who receives reports and who may instruct additional paid work. Distinguish acknowledgement of a message from approval to act, so a hurried reply from one participant is not mistaken for a family decision."
+      },
+      {
+        "heading": "Agree the family decision and use plan",
+        "text": "A shared family intention needs a shared operating plan. \u201cWe will all use it\u201d leaves open who pays, who decides, who books popular dates and who deals with problems. Discuss these matters while the choice is still open, rather than after one person has become attached to a particular apartment."
+      },
+      {
+        "heading": "Complete a family-purpose worksheet",
+        "text": "Keep ownership questions distinct from informal expectations. Tell counsel who would contribute money, who would be registered, who expects to use the property and what should happen if circumstances change. Ask for advice on documenting the chosen arrangement rather than assuming an internal spreadsheet settles legal rights."
+      }
+    ],
+    "streaming": true,
+    "chunks": [
+      {
+        "index": 0,
+        "text": "I'm a fictional, computer-made guide.",
+        "duration": 2.68,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 0.08,
+            "value": "X"
+          },
+          {
+            "start": 0.08,
+            "end": 0.32,
+            "value": "B"
+          },
+          {
+            "start": 0.32,
+            "end": 0.4,
+            "value": "X"
+          },
+          {
+            "start": 0.4,
+            "end": 0.96,
+            "value": "B"
+          },
+          {
+            "start": 0.96,
+            "end": 1.04,
+            "value": "X"
+          },
+          {
+            "start": 1.04,
+            "end": 1.76,
+            "value": "B"
+          },
+          {
+            "start": 1.76,
+            "end": 1.84,
+            "value": "X"
+          },
+          {
+            "start": 1.84,
+            "end": 2.24,
+            "value": "B"
+          },
+          {
+            "start": 2.24,
+            "end": 2.68,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136929.0204523,
+        "audioWrittenAtEpoch": 1794136929.0297084,
+        "isLast": false,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-0.wav",
+        "publishedAtEpoch": 1794136929.0297084
+      },
+      {
+        "index": 1,
+        "text": "Are you looking to buy a property and need assistance preparing questions?",
+        "duration": 3.94,
+        "cues": [
+          {
+            "start": 0.0,
+            "end": 2.56,
+            "value": "B"
+          },
+          {
+            "start": 2.56,
+            "end": 2.64,
+            "value": "X"
+          },
+          {
+            "start": 2.64,
+            "end": 3.68,
+            "value": "B"
+          },
+          {
+            "start": 3.68,
+            "end": 3.94,
+            "value": "X"
+          }
+        ],
+        "generatedAtEpoch": 1794136940.7600095,
+        "audioWrittenAtEpoch": 1794136940.7680097,
+        "isLast": true,
+        "audioUrl": "/responses/e0586b54fe9d4c518d5128a348b7273f/chunk-1.wav",
+        "publishedAtEpoch": 1794136940.7690089
+      }
+    ],
+    "streamingEvents": [
+      {
+        "event": "chunk-published",
+        "index": 0,
+        "atEpoch": 1794136929.0297084,
+        "elapsedSeconds": 51.453
+      },
+      {
+        "event": "chunk-published",
+        "index": 1,
+        "atEpoch": 1794136940.7690089,
+        "elapsedSeconds": 63.187
+      }
+    ],
+    "voiceWorkerPid": 22188,
+    "availableMemoryAtStartGiB": 2.565,
+    "resourceRequirementGiB": 2.3,
+    "requestId": "compact_f1f4d02457c34d5eae9c79b12ef9ade4",
+    "decodedAudioDuration": 3.0290625,
+    "answerProvenance": {
+      "mode": "language_model",
+      "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+      "languageModelInference": true,
+      "modelAttempted": true
+    },
+    "resourceAdmission": [
+      {
+        "stage": "request",
+        "physicalGiB": 2.5646400451660156,
+        "commitGiB": 3.1246070861816406,
+        "atEpoch": 1794136877.58458
+      },
+      {
+        "stage": "audio decode",
+        "physicalGiB": 2.5646400451660156,
+        "commitGiB": 3.1246070861816406,
+        "atEpoch": 1794136877.58458
+      },
+      {
+        "stage": "transcription",
+        "physicalGiB": 2.5544090270996094,
+        "commitGiB": 3.1121482849121094,
+        "atEpoch": 1794136877.7040303
+      },
+      {
+        "stage": "answer",
+        "physicalGiB": 2.5910987854003906,
+        "commitGiB": 3.074909210205078,
+        "atEpoch": 1794136885.205188
+      },
+      {
+        "stage": "voice",
+        "physicalGiB": 3.2492599487304688,
+        "commitGiB": 3.10809326171875,
+        "atEpoch": 1794136893.0563478
+      }
+    ],
+    "minimumPhysicalGiB": 1.2673988342285156,
+    "minimumCommitGiB": 1.0178184509277344,
+    "offline": true,
+    "providerCharge": 0,
+    "voiceEngine": "onnx-q4",
+    "sttEngine": "faster-small-en",
+    "persistentBrain": false,
+    "sequentialModels": true,
+    "brainModel": "q4",
+    "brainModelFile": "Qwen3-1.7B-Q4_K_M.gguf",
+    "noRepack": true,
+    "memoryProfile": "compact",
+    "memoryThresholds": {
+      "entryPhysicalGiB": 2.3,
+      "entryCommitGiB": 2.5,
+      "runtimePhysicalFloorGiB": 0.75,
+      "runtimeCommitFloorGiB": 1.0,
+      "pollIntervalSeconds": 0.1,
+      "provisionalForLongVoice": true
+    },
+    "voiceImplementation": "encoder-release-seeded",
+    "sequentialStages": [
+      "faster-whisper small.en int8 if audio",
+      "Qwen3 1.7B Q4_K_M",
+      "Chatterbox Turbo ONNX q4 candidate"
+    ],
+    "warmVoiceMayRemainResident": false
+  },
+  "transcription": {
+    "engine": "faster-whisper small.en int8 CPU isolated candidate",
+    "model": "Systran/faster-whisper-small.en",
+    "modelRevision": "d1d751a5f8271d482d14ca55d9e2deeebbae577f",
+    "duration": 3.0290625,
+    "inferenceSeconds": 2.9607606000063242,
+    "initializationSeconds": 3.846864600003755,
+    "warm": false,
+    "turnIndex": 0,
+    "threads": 4,
+    "computeType": "int8",
+    "beamSize": 1,
+    "language": "en",
+    "vad": false,
+    "prompt": null,
+    "providerCharge": 0,
+    "segments": [
+      {
+        "text": " Who are you, and how can you help me?",
+        "start": 0.0,
+        "end": 3.02,
+        "noSpeechProbability": 0.004053719807416201
+      }
+    ],
+    "text": "Who are you, and how can you help me?",
+    "workerTotalSeconds": 7.172,
+    "workerPersistent": false,
+    "networkDisabledForInference": true
+  },
+  "voiceMetadata": {
+    "engine": "Chatterbox Turbo ONNX q4 CPU, isolated candidate",
+    "version": "1.31.1",
+    "modelRevision": "d21799bd0354adb85e348b8a0442a8405110a2cf",
+    "sampleRate": 24000,
+    "stopTokenFound": true,
+    "generationStartedAtEpoch": 1794136919.4671896,
+    "generationSeconds": 21.283,
+    "watermarkSeconds": 1.027,
+    "audioSeconds": 6.62,
+    "segments": [
+      {
+        "engine": "Chatterbox Turbo ONNX q4 CPU, isolated candidate",
+        "version": "1.31.1",
+        "modelRevision": "d21799bd0354adb85e348b8a0442a8405110a2cf",
+        "sampleRate": 24000,
+        "index": 0,
+        "text": "I'm a fictional, computer-made guide.",
+        "isLast": false,
+        "stopTokenFound": true,
+        "generationStartedAtEpoch": 1794136919.4671896,
+        "generatedAtEpoch": 1794136929.0204523,
+        "generationSeconds": 9.554,
+        "watermarkSeconds": 0.979,
+        "audioSeconds": 2.46,
+        "segments": [
+          {
+            "text": "I'm a fictional, computer-made guide.",
+            "stopTokenFound": true,
+            "tokens": 59,
+            "tokenSeconds": 4.349,
+            "decodeSeconds": 4.226,
+            "audioSeconds": 2.46
+          }
+        ],
+        "reference": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\kit\\ref-female.wav",
+        "referenceSha256": "bf0e02b74ba5fe4193c1496566ce8782724b18d4d12de63442813468c6ad2efd",
+        "warm": false,
+        "initializationSeconds": 25.88,
+        "loadTimings": {
+          "speech_encoder": 2.729,
+          "referenceEncoding": 1.52,
+          "embed_tokens": 0.006,
+          "language_model": 1.134,
+          "conditional_decoder": 11.887,
+          "watermarkerImportAndLoad": 8.375
+        },
+        "turnIndex": 0,
+        "threads": 4,
+        "method": "Greedy plus repetition penalty1.2; sentence streaming; same reference; no edge trimming; each sentence watermarked; no appended gap",
+        "providerCharge": 0,
+        "publishedAtEpoch": 1794136929.0297084,
+        "nextSentenceMayStartAtEpoch": 1794136929.0297084
+      },
+      {
+        "engine": "Chatterbox Turbo ONNX q4 CPU, isolated candidate",
+        "version": "1.31.1",
+        "modelRevision": "d21799bd0354adb85e348b8a0442a8405110a2cf",
+        "sampleRate": 24000,
+        "index": 1,
+        "text": "Are you looking to buy a property and need assistance preparing questions?",
+        "isLast": true,
+        "stopTokenFound": true,
+        "generationStartedAtEpoch": 1794136929.0297084,
+        "generatedAtEpoch": 1794136940.7600095,
+        "generationSeconds": 11.729,
+        "watermarkSeconds": 0.048,
+        "audioSeconds": 3.94,
+        "segments": [
+          {
+            "text": "Are you looking to buy a property and need assistance preparing questions?",
+            "stopTokenFound": true,
+            "tokens": 96,
+            "tokenSeconds": 6.337,
+            "decodeSeconds": 5.345,
+            "audioSeconds": 3.94
+          }
+        ],
+        "reference": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\kit\\ref-female.wav",
+        "referenceSha256": "bf0e02b74ba5fe4193c1496566ce8782724b18d4d12de63442813468c6ad2efd",
+        "warm": false,
+        "initializationSeconds": 25.88,
+        "loadTimings": {
+          "speech_encoder": 2.729,
+          "referenceEncoding": 1.52,
+          "embed_tokens": 0.006,
+          "language_model": 1.134,
+          "conditional_decoder": 11.887,
+          "watermarkerImportAndLoad": 8.375
+        },
+        "turnIndex": 0,
+        "threads": 4,
+        "method": "Greedy plus repetition penalty1.2; sentence streaming; same reference; no edge trimming; each sentence watermarked; no appended gap",
+        "providerCharge": 0,
+        "publishedAtEpoch": 1794136940.7690089,
+        "nextSentenceMayStartAtEpoch": 1794136940.7690089
+      }
+    ],
+    "reference": "C:\\Users\\777\\Documents\\agent-tools\\talking-agent\\kit\\ref-female.wav",
+    "referenceSha256": "bf0e02b74ba5fe4193c1496566ce8782724b18d4d12de63442813468c6ad2efd",
+    "warm": false,
+    "initializationSeconds": 25.88,
+    "loadTimings": {
+      "speech_encoder": 2.729,
+      "referenceEncoding": 1.52,
+      "embed_tokens": 0.006,
+      "language_model": 1.134,
+      "conditional_decoder": 11.887,
+      "watermarkerImportAndLoad": 8.375
+    },
+    "turnIndex": 0,
+    "threads": 4,
+    "method": "Each new sentence watermarked and published before generating the next; 220 ms gap on nonfinal chunks",
+    "providerCharge": 0,
+    "text": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+    "streamedBySentence": true,
+    "streamingElapsedSeconds": 21.297,
+    "allSentencesGeneratedAtEpoch": 1794136940.7600095,
+    "voiceImplementation": "encoder-release-seeded",
+    "referenceEncoderReleased": true,
+    "ortSeedBeforeConstruction": 682,
+    "torchSeedAfterConstruction": 682,
+    "duration": 6.62,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 0.08,
+        "value": "X"
+      },
+      {
+        "start": 0.08,
+        "end": 0.32,
+        "value": "B"
+      },
+      {
+        "start": 0.32,
+        "end": 0.4,
+        "value": "X"
+      },
+      {
+        "start": 0.4,
+        "end": 0.96,
+        "value": "B"
+      },
+      {
+        "start": 0.96,
+        "end": 1.04,
+        "value": "X"
+      },
+      {
+        "start": 1.04,
+        "end": 1.76,
+        "value": "B"
+      },
+      {
+        "start": 1.76,
+        "end": 1.84,
+        "value": "X"
+      },
+      {
+        "start": 1.84,
+        "end": 2.24,
+        "value": "B"
+      },
+      {
+        "start": 2.24,
+        "end": 2.72,
+        "value": "X"
+      },
+      {
+        "start": 2.72,
+        "end": 3.12,
+        "value": "B"
+      },
+      {
+        "start": 3.12,
+        "end": 3.2,
+        "value": "X"
+      },
+      {
+        "start": 3.2,
+        "end": 3.68,
+        "value": "B"
+      },
+      {
+        "start": 3.68,
+        "end": 3.76,
+        "value": "X"
+      },
+      {
+        "start": 3.76,
+        "end": 6.4,
+        "value": "B"
+      },
+      {
+        "start": 6.4,
+        "end": 6.62,
+        "value": "X"
+      }
+    ],
+    "cueMethod": "80 ms PCM amplitude, not phoneme recognition",
+    "workerTurnSeconds": 21.313
+  },
+  "transcript": "Who are you, and how can you help me?",
+  "answer": "I'm a fictional, computer-made guide. Are you looking to buy a property and need assistance preparing questions?",
+  "transcriptExactWords": true,
+  "answerContentReviewPending": true,
+  "cacheFlags": {
+    "voiceCacheHit": false,
+    "voiceWorkerWarm": false,
+    "brainWarm": false,
+    "persistentBrain": false
+  },
+  "answerProvenance": {
+    "mode": "language_model",
+    "sourceUrl": "https://nad-lan.co.il/en/buy-property-in-israel/",
+    "sourcePage": null,
+    "sourceDate": null,
+    "languageModelInference": true,
+    "modelAttempted": true
+  },
+  "chunkConcatenation": {
+    "allFormatsSame": true,
+    "pcmSha256": "1ae2f8bd85759116a3a63a7ac9968dcf3ef9548eb3eb2e450213a41eca8e3ad2",
+    "exactFullPCM": true
+  },
+  "after": {
+    "at": 1794136941.4503076,
+    "availableGiB": 2.7013,
+    "commitCapacityAvailableGiB": 1.9904
+  },
+  "elapsedSeconds": 63.985
+}

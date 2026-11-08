@@ -1,0 +1,65 @@
+{
+  "status": "generated_review_pending",
+  "text": "What city and budget do you have in mind?",
+  "before": {
+    "at": 1794135075.159122,
+    "availableGiB": 2.1776,
+    "commitCapacityAvailableGiB": 2.8947
+  },
+  "preflightPhysicalGiB": 1.8,
+  "preflightCommitGiB": 2.2,
+  "physicalAbortFloorGiB": 0.75,
+  "commitAbortFloorGiB": 1.0,
+  "guardBasis": "Provisional short-sentence-only estimate, not a measured encoder-release requirement.",
+  "inferenceTimeoutSeconds": 120,
+  "totalTimeoutSeconds": 180,
+  "pollSeconds": 0.1,
+  "publicOrDefaultChange": false,
+  "ownerApplicationsClosed": false,
+  "inferenceStarted": true,
+  "minimumPhysicalGiB": 1.0771,
+  "minimumCommitGiB": 1.317,
+  "beforeLaunch": {
+    "at": 1794135077.076714,
+    "availableGiB": 2.176,
+    "commitCapacityAvailableGiB": 2.8775
+  },
+  "ownedLauncherPid": 24024,
+  "exitCode": 0,
+  "processPeaks": [
+    {
+      "pid": 24024,
+      "name": "python.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 4.355,
+      "peakCommitMiB": 0.801
+    },
+    {
+      "pid": 24152,
+      "name": "conhost.exe",
+      "workingMiB": 0.031,
+      "privateCommittedMiB": 0.074,
+      "peakWorkingMiB": 7.992,
+      "peakCommitMiB": 1.203
+    },
+    {
+      "pid": 300,
+      "name": "python.exe",
+      "workingMiB": 0.035,
+      "privateCommittedMiB": 0.078,
+      "peakWorkingMiB": 1040.98,
+      "peakCommitMiB": 1169.023
+    }
+  ],
+  "ownedProcessesStopped": true,
+  "remainingObservedOwnedPids": [],
+  "peakWorkingMiB": 1040.98,
+  "peakCommitMiB": 1169.023,
+  "after": {
+    "at": 1794135121.753219,
+    "availableGiB": 1.9432,
+    "commitCapacityAvailableGiB": 2.3348
+  },
+  "wallSeconds": 46.594
+}

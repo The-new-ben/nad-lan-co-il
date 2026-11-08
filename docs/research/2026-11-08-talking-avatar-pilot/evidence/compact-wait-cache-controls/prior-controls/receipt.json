@@ -1,0 +1,151 @@
+{
+  "scope": "Controlled raw-model/voice fixtures and real owned sleeping processes; no model inference.",
+  "modelInference": false,
+  "browserUsed": false,
+  "publicChanges": false,
+  "checks": [
+    {
+      "name": "Q4_candidate_adds_only_no_repack",
+      "passed": true
+    },
+    {
+      "name": "default_command_unchanged",
+      "passed": true
+    },
+    {
+      "name": "physical_entry_independently_rejected",
+      "passed": true
+    },
+    {
+      "name": "commit_entry_independently_rejected",
+      "passed": true
+    },
+    {
+      "name": "exact_entry_thresholds_accepted",
+      "passed": true
+    },
+    {
+      "name": "reviewed_fact_bypasses_model",
+      "passed": true
+    },
+    {
+      "name": "reviewed_fact_attributed_not_inference",
+      "passed": true
+    },
+    {
+      "name": "figure_rejection_speaks_editorial_boundary",
+      "passed": true
+    },
+    {
+      "name": "figure_raw_never_public_or_spoken",
+      "passed": true
+    },
+    {
+      "name": "figure_raw_rejection_private",
+      "passed": true
+    },
+    {
+      "name": "role_rejection_speaks_editorial_boundary",
+      "passed": true
+    },
+    {
+      "name": "role_raw_never_public_or_spoken",
+      "passed": true
+    },
+    {
+      "name": "role_raw_rejection_private",
+      "passed": true
+    },
+    {
+      "name": "identity_rejection_speaks_editorial_boundary",
+      "passed": true
+    },
+    {
+      "name": "identity_raw_never_public_or_spoken",
+      "passed": true
+    },
+    {
+      "name": "identity_raw_rejection_private",
+      "passed": true
+    },
+    {
+      "name": "transport_has_no_success_fallback",
+      "passed": true
+    },
+    {
+      "name": "timeout_has_no_success_fallback",
+      "passed": true
+    },
+    {
+      "name": "empty_has_no_success_fallback",
+      "passed": true
+    },
+    {
+      "name": "original_validator_behavior_preserved",
+      "passed": true
+    },
+    {
+      "name": "original_does_not_use_new_property_lookup",
+      "passed": true
+    },
+    {
+      "name": "physical_runtime_floor_stops_owned_process",
+      "passed": true
+    },
+    {
+      "name": "commit_runtime_floor_stops_owned_process",
+      "passed": true
+    },
+    {
+      "name": "runtime_guard_does_not_touch_idle_or_other_processes",
+      "passed": true
+    },
+    {
+      "name": "health_reports_exact_compact_admission",
+      "passed": true
+    },
+    {
+      "name": "original_has_no_new_local_guard",
+      "passed": true
+    },
+    {
+      "name": "legacy_candidate_guard_stays_three",
+      "passed": true
+    },
+    {
+      "name": "optimized_worker_adapter_and_seed_order",
+      "passed": true
+    },
+    {
+      "name": "optimized_worker_ready_metadata",
+      "passed": true
+    },
+    {
+      "name": "original_no_repack_rejected_before_launch",
+      "passed": true
+    },
+    {
+      "name": "candidate_q8_no_repack_rejected_before_launch",
+      "passed": true
+    },
+    {
+      "name": "compact_without_no_repack_rejected_before_launch",
+      "passed": true
+    },
+    {
+      "name": "compact_without_sequential_rejected_before_launch",
+      "passed": true
+    },
+    {
+      "name": "persistent_q4_no_repack_rejected_before_launch",
+      "passed": true
+    }
+  ],
+  "passed": 34,
+  "total": 34,
+  "sourceHashes": {
+    "server.py": "94c6dafbd96aabf0c18a2a272e0c1c38b5d1b0db0228d875e6072547bdfbf821",
+    "onnx_voice_worker.py": "2ac4d0c888a8c390c7583fbe5c4d0ecf275cb13082805d7c36fad653dadafe4e",
+    "property_context.py": "995f92bf864fb0bc4fbacd09397720ed9793aeadb2dbebc253ee3bddc77084e7"
+  }
+}

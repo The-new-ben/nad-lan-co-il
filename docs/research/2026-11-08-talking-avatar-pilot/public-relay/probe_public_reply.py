@@ -4,7 +4,7 @@ Session/CSRF values stay in memory and are never saved or printed.
 This proves public inference and returned audio, not browser playback or microphone input.
 """
 from pathlib import Path
-import argparse, hashlib, http.cookiejar, io, json, time, urllib.error, urllib.request, uuid, wave
+import argparse, hashlib, http.cookiejar, io, json, re, time, urllib.error, urllib.request, uuid, wave
 from urllib.parse import urlsplit
 from worker import memory_gib
 
@@ -12,21 +12,51 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE='https://nad-lan.co.il'
 PAGE=BASE+'/en/buy-property-in-israel/'
 API='/wp-json/nadlan-talk/v1'
+
+def safe_label(value):
+    reserved={'con','prn','aux','nul',*(f'com{i}' for i in range(1,10)),*(f'lpt{i}' for i in range(1,10))}
+    if not re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,63}',value) or value in reserved:
+        raise argparse.ArgumentTypeError('Use a safe lowercase label with letters, numbers, hyphens or underscores.')
+    return value
+
+def typed_question(value):
+    value=value.strip()
+    if not value or len(value)>1200 or '\x00' in value:
+        raise argparse.ArgumentTypeError('Use one nonempty question of at most 1200 characters.')
+    return value
+
+def selected_question(options):
+    return options.question if options.question is not None else ('Who are you, and how can you help me?' if options.audio else 'Who are you?')
+
+def prepare_output_directory(out,labeled):
+    if labeled:
+        # Explicit runs never reuse or overwrite an earlier evidence directory.
+        out.mkdir(parents=True,exist_ok=False)
+        return
+    out.mkdir(parents=True,exist_ok=True)
+    for name,prefix in (('receipt.json','previous-'),('reply.wav','previous-reply-')):
+        current=out/name
+        if current.exists():
+            previous=current.read_bytes()
+            archive=out/(prefix+hashlib.sha256(previous).hexdigest()[:12]+current.suffix)
+            if not archive.exists():archive.write_bytes(previous)
+
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--go',action='store_true')
-parser.add_argument('--audio',type=Path,help='Explicit controlled WAV fixture; not a claim of a physical microphone test.')
+input_options=parser.add_mutually_exclusive_group()
+input_options.add_argument('--audio',type=Path,help='Explicit controlled WAV fixture; not a claim of a physical microphone test.')
+input_options.add_argument('--question',type=typed_question,help='One typed public question; not a microphone or browser test.')
+parser.add_argument('--label',type=safe_label,help='New evidence subdirectory under evidence/public-relay; existing labeled runs are never reused.')
 args=parser.parse_args()
+question=selected_question(args)
+OUT=ROOT/'evidence/public-relay'/(args.label or 'real-reply-recovery')
 if not args.go:
-    print(json.dumps({'prepared':True,'question':'Who are you?','publicRequests':False}))
+    print(json.dumps({'prepared':True,'question':question,'inputMode':'controlled_wav' if args.audio else 'typed_text',
+        'evidenceDirectory':str(OUT),'publicRequests':False}))
     raise SystemExit(0)
-OUT=ROOT/'evidence/public-relay/real-reply-recovery'
-OUT.mkdir(parents=True,exist_ok=True)
-if (OUT/'receipt.json').exists():
-    previous=(OUT/'receipt.json').read_bytes()
-    archive=OUT/('previous-'+hashlib.sha256(previous).hexdigest()[:12]+'.json')
-    if not archive.exists():archive.write_bytes(previous)
+prepare_output_directory(OUT,args.label is not None)
 report={'startedUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'testType':'GENUINE_PUBLIC_HTTP_WAV_QUESTION' if args.audio else 'GENUINE_PUBLIC_HTTP_TEXT_QUESTION',
-        'question':'Who are you, and how can you help me?' if args.audio else 'Who are you?','modelsMocked':False,'browserPlaybackTested':False,'microphoneTested':False,
+        'question':question,'modelsMocked':False,'browserPlaybackTested':False,'microphoneTested':False,
         'privateCredentialsLoaded':False,'phases':[],'outcome':'not_submitted'}
 jar=http.cookiejar.CookieJar()
 class NoRedirect(urllib.request.HTTPRedirectHandler):

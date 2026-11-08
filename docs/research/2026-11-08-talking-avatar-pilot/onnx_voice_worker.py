@@ -113,13 +113,22 @@ def main():
     sys.stdout.reconfigure(encoding='utf-8')
     started = time.monotonic()
     sys.path.insert(0, str(CANDIDATE))
+    sys.path.insert(0, str(CANDIDATE/'ort-1.31.1'))
     with contextlib.redirect_stdout(sys.stderr):
-        # API adapted to the independently benchmarked engine, not a second model implementation.
-        from onnx_engine import CPUVoiceEngine
-        engine = CPUVoiceEngine(model_dir=CANDIDATE,
-                                runtime_path=CANDIDATE/'ort-1.31.1', threads=4)
+        # Match the independently checked seeded pair. The frozen adapter retains
+        # the approved token/decoder/watermark operations and releases the encoder.
+        import onnxruntime as ort
+        if ort.__version__ != '1.31.1':
+            raise RuntimeError('Unexpected isolated ONNX runtime.')
+        ort.set_seed(682)
+        from research.onnx_encoder_release_candidate import EncoderReleasedVoice
+        engine = EncoderReleasedVoice(model_dir=CANDIDATE,
+                                      runtime_path=CANDIDATE/'ort-1.31.1', threads=4)
+        import torch
+        torch.manual_seed(682)
     emit({'type': 'ready', 'loadSeconds': round(time.monotonic()-started, 3),
-          'engine': 'Chatterbox Turbo ONNX q4, optional comparison'})
+          'engine': 'Chatterbox Turbo ONNX q4', 'voiceImplementation': 'encoder-release-seeded',
+          'ortSeedBeforeConstruction': 682, 'torchSeedAfterConstruction': 682})
     for line in sys.stdin:
         request = {}
         try:
@@ -147,6 +156,8 @@ def main():
                     raise RuntimeError('The voice candidate did not finish its answer.')
                 sf.write(target, samples, sample_rate, subtype='PCM_16')
             payload = {**metadata, 'engine': metadata.get('engine', 'Chatterbox Turbo ONNX q4, optional comparison'),
+                       'voiceImplementation': 'encoder-release-seeded', 'referenceEncoderReleased': True,
+                       'ortSeedBeforeConstruction': 682, 'torchSeedAfterConstruction': 682,
                        'duration': len(samples)/sample_rate, 'cues': amplitude_cues(samples, sample_rate),
                        'cueMethod': '80 ms PCM amplitude, not phoneme recognition',
                        'workerTurnSeconds': round(time.monotonic()-turn_start, 3)}
