@@ -1,0 +1,2467 @@
+{
+  "releaseId": "v-6dff055c6784",
+  "scope": "Controlled loopback API, actual packaged Chrome client and prerecorded audio",
+  "publicApiCalls": false,
+  "speechModelsRun": false,
+  "browserLipAnalysis": "Actual existing local learned adapter",
+  "audio": "Existing evidence/latency/chunk-fixture.wav; no claim its words answer the controlled questions",
+  "widgetSha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+  "checks": [
+    {
+      "name": "busy-once: retries only accepted job GET",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34460.703,
+          "wallAt": 1794118286.0810947,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34461.765,
+          "wallAt": 1794118287.1463265,
+          "status": 200,
+          "code": null
+        }
+      ]
+    },
+    {
+      "name": "busy-once: plays correct fixture once and finishes",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "ended",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 120,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 2913.3000000044703,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 1.8,
+            "duration": 1.8
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": {
+            "source": "local-learned-visemes",
+            "worker": true,
+            "events": 24,
+            "duration": 1.8,
+            "analysisMs": 107.20000000298023,
+            "maxChunkMs": 17.899999998509884
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 2879.5,
+              "startedAt": 2913.3000000044703,
+              "endedAt": 4734
+            }
+          ],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [
+          {
+            "index": 0,
+            "text": "job-1 controlled audio fixture",
+            "readyAt": 2879.5,
+            "startedAt": 2913.3000000044703,
+            "endedAt": 4734
+          }
+        ],
+        "faceDisabled": false,
+        "sendDisabled": false,
+        "caption": "job-1 controlled audio fixture",
+        "plays": [
+          {
+            "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+            "at": 2885.39999999851
+          }
+        ],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "busy-once: honors bounded backoff timing",
+      "pass": true,
+      "detail": [
+        1.0619999999980791
+      ]
+    },
+    {
+      "name": "busy-once: no cancellation on successful contention recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "busy-once: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "busy-twice: retries only accepted job GET",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34465.406,
+          "wallAt": 1794118290.785171,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34466.468,
+          "wallAt": 1794118291.8526602,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 3,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34468.531,
+          "wallAt": 1794118293.9037933,
+          "status": 200,
+          "code": null
+        }
+      ]
+    },
+    {
+      "name": "busy-twice: plays correct fixture once and finishes",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "ended",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 182,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 4723.5,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 1.8,
+            "duration": 1.8
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": {
+            "source": "local-learned-visemes",
+            "worker": true,
+            "events": 24,
+            "duration": 1.8,
+            "analysisMs": 148.20000000298023,
+            "maxChunkMs": 29.899999998509884
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 4704.39999999851,
+              "startedAt": 4723.39999999851,
+              "endedAt": 6553.20000000298
+            }
+          ],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [
+          {
+            "index": 0,
+            "text": "job-1 controlled audio fixture",
+            "readyAt": 4704.39999999851,
+            "startedAt": 4723.39999999851,
+            "endedAt": 6553.20000000298
+          }
+        ],
+        "faceDisabled": false,
+        "sendDisabled": false,
+        "caption": "job-1 controlled audio fixture",
+        "plays": [
+          {
+            "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+            "at": 4710.29999999702
+          }
+        ],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "busy-twice: honors bounded backoff timing",
+      "pass": true,
+      "detail": [
+        1.0619999999980791,
+        2.063000000001921
+      ]
+    },
+    {
+      "name": "busy-twice: no cancellation on successful contention recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "busy-twice: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "retry-after: retries only accepted job GET",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34472.171,
+          "wallAt": 1794118297.5556943,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34474.234,
+          "wallAt": 1794118299.6097095,
+          "status": 200,
+          "code": null
+        }
+      ]
+    },
+    {
+      "name": "retry-after: plays correct fixture once and finishes",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "ended",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 151,
+          "mouth": 0,
+          "blink": 0.4407687574736076,
+          "startedAt": 3673.5,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 1.8,
+            "duration": 1.8
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": {
+            "source": "local-learned-visemes",
+            "worker": true,
+            "events": 24,
+            "duration": 1.8,
+            "analysisMs": 149.39999999850988,
+            "maxChunkMs": 23.69999999552965
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 3633.5,
+              "startedAt": 3673.39999999851,
+              "endedAt": 5491.19999999553
+            }
+          ],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [
+          {
+            "index": 0,
+            "text": "job-1 controlled audio fixture",
+            "readyAt": 3633.5,
+            "startedAt": 3673.39999999851,
+            "endedAt": 5491.19999999553
+          }
+        ],
+        "faceDisabled": false,
+        "sendDisabled": false,
+        "caption": "job-1 controlled audio fixture",
+        "plays": [
+          {
+            "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+            "at": 3639.5
+          }
+        ],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "retry-after: honors bounded backoff timing",
+      "pass": true,
+      "detail": [
+        2.062999999994645
+      ]
+    },
+    {
+      "name": "retry-after: no cancellation on successful contention recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "retry-after: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "retry-after-date: retries only accepted job GET",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34477.953,
+          "wallAt": 1794118303.3349895,
+          "retryAfterEpoch": 1794118306.0,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34480.671,
+          "wallAt": 1794118306.0523431,
+          "status": 200,
+          "code": null
+        }
+      ]
+    },
+    {
+      "name": "retry-after-date: plays correct fixture once and finishes",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "ended",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 171,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 4344.79999999702,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 1.8,
+            "duration": 1.8
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": {
+            "source": "local-learned-visemes",
+            "worker": true,
+            "events": 24,
+            "duration": 1.8,
+            "analysisMs": 134.80000000447035,
+            "maxChunkMs": 23.5
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 4325,
+              "startedAt": 4344.79999999702,
+              "endedAt": 6177.60000000149
+            }
+          ],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [
+          {
+            "index": 0,
+            "text": "job-1 controlled audio fixture",
+            "readyAt": 4325,
+            "startedAt": 4344.79999999702,
+            "endedAt": 6177.60000000149
+          }
+        ],
+        "faceDisabled": false,
+        "sendDisabled": false,
+        "caption": "job-1 controlled audio fixture",
+        "plays": [
+          {
+            "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+            "at": 4331.39999999851
+          }
+        ],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "retry-after-date: honors bounded backoff timing",
+      "pass": true,
+      "detail": [
+        2.7180000000007567
+      ]
+    },
+    {
+      "name": "HTTP-date retry does not occur before requested time",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34477.953,
+          "wallAt": 1794118303.3349895,
+          "retryAfterEpoch": 1794118306.0,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34480.671,
+          "wallAt": 1794118306.0523431,
+          "status": 200,
+          "code": null
+        }
+      ]
+    },
+    {
+      "name": "retry-after-date: no cancellation on successful contention recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "retry-after-date: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "persistent-busy: bounded GET attempts and no POST retry",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34484.843,
+          "wallAt": 1794118310.2265728,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34485.906,
+          "wallAt": 1794118311.2909462,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 3,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34487.968,
+          "wallAt": 1794118313.3530717,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 4,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34492.031,
+          "wallAt": 1794118317.4117265,
+          "status": 429,
+          "code": "busy"
+        }
+      ]
+    },
+    {
+      "name": "persistent-busy: error stops audio and cancels accepted job",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 278,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "conversation:Please try again shortly"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [],
+        "faceDisabled": true,
+        "sendDisabled": false,
+        "caption": "The reply could not finish. Please try asking again.",
+        "plays": [],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "persistent-busy: no fixture audio played",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Persistent busy uses 1/2/4 second backoffs",
+      "pass": true,
+      "detail": [
+        1.0630000000019209,
+        2.061999999998079,
+        4.063000000001921
+      ]
+    },
+    {
+      "name": "persistent-busy: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "rate-429: bounded GET attempts and no POST retry",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34494.968,
+          "wallAt": 1794118320.3476384,
+          "status": 429,
+          "code": "rate"
+        }
+      ]
+    },
+    {
+      "name": "rate-429: error stops audio and cancels accepted job",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 64,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "conversation:Controlled rate limit"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [],
+        "faceDisabled": true,
+        "sendDisabled": false,
+        "caption": "The reply could not finish. Please try asking again.",
+        "plays": [],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "rate-429: no fixture audio played",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "rate-429: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "auth-401: bounded GET attempts and no POST retry",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34497.906,
+          "wallAt": 1794118323.2855685,
+          "status": 401,
+          "code": "unauthorized"
+        }
+      ]
+    },
+    {
+      "name": "auth-401: error stops audio and cancels accepted job",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 65,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "conversation:Controlled authentication failure"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [],
+        "faceDisabled": true,
+        "sendDisabled": false,
+        "caption": "The reply could not finish. Please try asking again.",
+        "plays": [],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "auth-401: no fixture audio played",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "auth-401: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "auth-403: bounded GET attempts and no POST retry",
+      "pass": true,
+      "detail": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34500.953,
+          "wallAt": 1794118326.3352933,
+          "status": 403,
+          "code": "unauthorized"
+        }
+      ]
+    },
+    {
+      "name": "auth-403: error stops audio and cancels accepted job",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "waiting",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 67,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": null,
+          "firstInteractionAt": null,
+          "audio": {
+            "paused": true,
+            "currentTime": 0,
+            "duration": 11.805333
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": null,
+          "stream": [],
+          "errors": [
+            "conversation:Controlled authentication failure"
+          ],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [],
+        "faceDisabled": true,
+        "sendDisabled": false,
+        "caption": "The reply could not finish. Please try asking again.",
+        "plays": [],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "auth-403: no fixture audio played",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "auth-403: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "close-backoff: close cancels backoff and accepted job",
+      "pass": true,
+      "detail": {
+        "name": "close-backoff",
+        "posts": [
+          {
+            "at": 34503.828,
+            "job": "job-1",
+            "body": "{\"text\":\"Controlled first question\"}",
+            "token": "5606e826-6522-480b-b31f-99740632bc37"
+          }
+        ],
+        "polls": [
+          {
+            "job": "job-1",
+            "number": 1,
+            "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+            "at": 34503.875,
+            "wallAt": 1794118329.256362,
+            "status": 429,
+            "code": "busy"
+          }
+        ],
+        "cancels": [
+          {
+            "at": 34504.015,
+            "path": "/qa/requests/5606e826-6522-480b-b31f-99740632bc37/cancel"
+          },
+          {
+            "at": 34504.015,
+            "path": "/qa/jobs/job-1/cancel"
+          }
+        ],
+        "sessions": 1,
+        "states": {
+          "closed": {
+            "diag": {
+              "state": "closed",
+              "renderer": "webgl",
+              "closed": true,
+              "started": true,
+              "visible": true,
+              "frames": 32,
+              "mouth": 0,
+              "blink": 0,
+              "startedAt": null,
+              "firstInteractionAt": null,
+              "audio": {
+                "paused": true,
+                "currentTime": 0,
+                "duration": 11.805333
+              },
+              "modelStats": {
+                "size": [
+                  1.2611666917800903,
+                  1.4825167655944824,
+                  0.6714037954807281
+                ],
+                "vertices": 3826,
+                "triangles": 7162,
+                "morphTargets": [
+                  [
+                    "mouthOpen",
+                    "blink"
+                  ]
+                ]
+              },
+              "lipAnalysis": null,
+              "stream": [],
+              "errors": [],
+              "reducedMotion": false,
+              "bounds": null
+            },
+            "stream": [],
+            "faceDisabled": false,
+            "sendDisabled": true,
+            "caption": "Hi, welcome to NadLan.",
+            "plays": [],
+            "rootCount": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "close-backoff: no late fixture playback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "close-backoff: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "new-question-after-close: close cancels backoff and accepted job",
+      "pass": true,
+      "detail": {
+        "name": "new-question-after-close",
+        "posts": [
+          {
+            "at": 34507.031,
+            "job": "job-1",
+            "body": "{\"text\":\"Controlled first question\"}",
+            "token": "725d73c5-8ad9-4380-9e56-22e9ecd6e4b9"
+          },
+          {
+            "at": 34509.203,
+            "job": "job-2",
+            "body": "{\"text\":\"Controlled second question\"}",
+            "token": "57261daa-435e-400c-aa1f-07f5aa2f0187"
+          }
+        ],
+        "polls": [
+          {
+            "job": "job-1",
+            "number": 1,
+            "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+            "at": 34507.078,
+            "wallAt": 1794118332.461471,
+            "status": 429,
+            "code": "busy"
+          },
+          {
+            "job": "job-2",
+            "number": 1,
+            "url": "http://127.0.0.1:55132/qa/jobs/job-2?accepted=1",
+            "at": 34509.281,
+            "wallAt": 1794118334.6589181,
+            "status": 200,
+            "code": null
+          }
+        ],
+        "cancels": [
+          {
+            "at": 34507.218,
+            "path": "/qa/requests/725d73c5-8ad9-4380-9e56-22e9ecd6e4b9/cancel"
+          },
+          {
+            "at": 34507.234,
+            "path": "/qa/jobs/job-1/cancel"
+          }
+        ],
+        "sessions": 1,
+        "states": {
+          "closed": {
+            "diag": {
+              "state": "closed",
+              "renderer": "webgl",
+              "closed": true,
+              "started": true,
+              "visible": true,
+              "frames": 31,
+              "mouth": 0,
+              "blink": 0,
+              "startedAt": null,
+              "firstInteractionAt": null,
+              "audio": {
+                "paused": true,
+                "currentTime": 0,
+                "duration": 11.805333
+              },
+              "modelStats": {
+                "size": [
+                  1.2611666917800903,
+                  1.4825167655944824,
+                  0.6714037954807281
+                ],
+                "vertices": 3826,
+                "triangles": 7162,
+                "morphTargets": [
+                  [
+                    "mouthOpen",
+                    "blink"
+                  ]
+                ]
+              },
+              "lipAnalysis": null,
+              "stream": [],
+              "errors": [],
+              "reducedMotion": false,
+              "bounds": null
+            },
+            "stream": [],
+            "faceDisabled": false,
+            "sendDisabled": true,
+            "caption": "Hi, welcome to NadLan.",
+            "plays": [],
+            "rootCount": 1
+          },
+          "new-complete": {
+            "diag": {
+              "state": "ended",
+              "renderer": "webgl",
+              "closed": false,
+              "started": true,
+              "visible": true,
+              "frames": 153,
+              "mouth": 0,
+              "blink": 0,
+              "startedAt": 3909.89999999851,
+              "firstInteractionAt": 3058.0999999940395,
+              "audio": {
+                "paused": true,
+                "currentTime": 1.8,
+                "duration": 1.8
+              },
+              "modelStats": {
+                "size": [
+                  1.2611666917800903,
+                  1.4825167655944824,
+                  0.6714037954807281
+                ],
+                "vertices": 3826,
+                "triangles": 7162,
+                "morphTargets": [
+                  [
+                    "mouthOpen",
+                    "blink"
+                  ]
+                ]
+              },
+              "lipAnalysis": {
+                "source": "local-learned-visemes",
+                "worker": true,
+                "events": 24,
+                "duration": 1.8,
+                "analysisMs": 148.20000000298023,
+                "maxChunkMs": 28.5
+              },
+              "stream": [
+                {
+                  "index": 0,
+                  "text": "job-2 controlled audio fixture",
+                  "readyAt": 3859.1999999955297,
+                  "startedAt": 3909.89999999851,
+                  "endedAt": 5730.19999999553
+                }
+              ],
+              "errors": [],
+              "reducedMotion": false,
+              "bounds": {
+                "x": 234,
+                "y": 536,
+                "width": 144,
+                "height": 166,
+                "top": 536,
+                "right": 378,
+                "bottom": 702,
+                "left": 234
+              }
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-2 controlled audio fixture",
+                "readyAt": 3859.1999999955297,
+                "startedAt": 3909.89999999851,
+                "endedAt": 5730.19999999553
+              }
+            ],
+            "faceDisabled": false,
+            "sendDisabled": false,
+            "caption": "job-2 controlled audio fixture",
+            "plays": [
+              {
+                "src": "http://127.0.0.1:55132/public-package/assets/greet-en.mp3",
+                "at": 3061.5999999940395
+              },
+              {
+                "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-2",
+                "at": 3868.39999999851
+              }
+            ],
+            "rootCount": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "new-question-after-close: no late fixture playback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "New question after close uses new token and job only",
+      "pass": true,
+      "detail": [
+        {
+          "at": 34507.031,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "725d73c5-8ad9-4380-9e56-22e9ecd6e4b9"
+        },
+        {
+          "at": 34509.203,
+          "job": "job-2",
+          "body": "{\"text\":\"Controlled second question\"}",
+          "token": "57261daa-435e-400c-aa1f-07f5aa2f0187"
+        }
+      ]
+    },
+    {
+      "name": "New question has no old response or duplicate guide leak",
+      "pass": true,
+      "detail": {
+        "diag": {
+          "state": "ended",
+          "renderer": "webgl",
+          "closed": false,
+          "started": true,
+          "visible": true,
+          "frames": 153,
+          "mouth": 0,
+          "blink": 0,
+          "startedAt": 3909.89999999851,
+          "firstInteractionAt": 3058.0999999940395,
+          "audio": {
+            "paused": true,
+            "currentTime": 1.8,
+            "duration": 1.8
+          },
+          "modelStats": {
+            "size": [
+              1.2611666917800903,
+              1.4825167655944824,
+              0.6714037954807281
+            ],
+            "vertices": 3826,
+            "triangles": 7162,
+            "morphTargets": [
+              [
+                "mouthOpen",
+                "blink"
+              ]
+            ]
+          },
+          "lipAnalysis": {
+            "source": "local-learned-visemes",
+            "worker": true,
+            "events": 24,
+            "duration": 1.8,
+            "analysisMs": 148.20000000298023,
+            "maxChunkMs": 28.5
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-2 controlled audio fixture",
+              "readyAt": 3859.1999999955297,
+              "startedAt": 3909.89999999851,
+              "endedAt": 5730.19999999553
+            }
+          ],
+          "errors": [],
+          "reducedMotion": false,
+          "bounds": {
+            "x": 234,
+            "y": 536,
+            "width": 144,
+            "height": 166,
+            "top": 536,
+            "right": 378,
+            "bottom": 702,
+            "left": 234
+          }
+        },
+        "stream": [
+          {
+            "index": 0,
+            "text": "job-2 controlled audio fixture",
+            "readyAt": 3859.1999999955297,
+            "startedAt": 3909.89999999851,
+            "endedAt": 5730.19999999553
+          }
+        ],
+        "faceDisabled": false,
+        "sendDisabled": false,
+        "caption": "job-2 controlled audio fixture",
+        "plays": [
+          {
+            "src": "http://127.0.0.1:55132/public-package/assets/greet-en.mp3",
+            "at": 3061.5999999940395
+          },
+          {
+            "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-2",
+            "at": 3868.39999999851
+          }
+        ],
+        "rootCount": 1
+      }
+    },
+    {
+      "name": "new-question-after-close: no uncaught exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Package remained unchanged throughout test",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "cases": [
+    {
+      "name": "busy-once",
+      "posts": [
+        {
+          "at": 34460.656,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "3a01af54-7534-40fb-a480-86617a64cc8a"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34460.703,
+          "wallAt": 1794118286.0810947,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34461.765,
+          "wallAt": 1794118287.1463265,
+          "status": 200,
+          "code": null
+        }
+      ],
+      "cancels": [],
+      "sessions": 1,
+      "states": {
+        "complete": {
+          "diag": {
+            "state": "ended",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 120,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": 2913.3000000044703,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 1.8,
+              "duration": 1.8
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": {
+              "source": "local-learned-visemes",
+              "worker": true,
+              "events": 24,
+              "duration": 1.8,
+              "analysisMs": 107.20000000298023,
+              "maxChunkMs": 17.899999998509884
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-1 controlled audio fixture",
+                "readyAt": 2879.5,
+                "startedAt": 2913.3000000044703,
+                "endedAt": 4734
+              }
+            ],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 2879.5,
+              "startedAt": 2913.3000000044703,
+              "endedAt": 4734
+            }
+          ],
+          "faceDisabled": false,
+          "sendDisabled": false,
+          "caption": "job-1 controlled audio fixture",
+          "plays": [
+            {
+              "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+              "at": 2885.39999999851
+            }
+          ],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "busy-twice",
+      "posts": [
+        {
+          "at": 34465.343,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "08f5cc8e-059b-4c7b-8e05-93a5cf9556e7"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34465.406,
+          "wallAt": 1794118290.785171,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34466.468,
+          "wallAt": 1794118291.8526602,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 3,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34468.531,
+          "wallAt": 1794118293.9037933,
+          "status": 200,
+          "code": null
+        }
+      ],
+      "cancels": [],
+      "sessions": 1,
+      "states": {
+        "complete": {
+          "diag": {
+            "state": "ended",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 182,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": 4723.5,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 1.8,
+              "duration": 1.8
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": {
+              "source": "local-learned-visemes",
+              "worker": true,
+              "events": 24,
+              "duration": 1.8,
+              "analysisMs": 148.20000000298023,
+              "maxChunkMs": 29.899999998509884
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-1 controlled audio fixture",
+                "readyAt": 4704.39999999851,
+                "startedAt": 4723.39999999851,
+                "endedAt": 6553.20000000298
+              }
+            ],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 4704.39999999851,
+              "startedAt": 4723.39999999851,
+              "endedAt": 6553.20000000298
+            }
+          ],
+          "faceDisabled": false,
+          "sendDisabled": false,
+          "caption": "job-1 controlled audio fixture",
+          "plays": [
+            {
+              "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+              "at": 4710.29999999702
+            }
+          ],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "retry-after",
+      "posts": [
+        {
+          "at": 34472.125,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "b4333acb-1605-4d2c-b26b-0f1c77f05159"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34472.171,
+          "wallAt": 1794118297.5556943,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34474.234,
+          "wallAt": 1794118299.6097095,
+          "status": 200,
+          "code": null
+        }
+      ],
+      "cancels": [],
+      "sessions": 1,
+      "states": {
+        "complete": {
+          "diag": {
+            "state": "ended",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 151,
+            "mouth": 0,
+            "blink": 0.4407687574736076,
+            "startedAt": 3673.5,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 1.8,
+              "duration": 1.8
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": {
+              "source": "local-learned-visemes",
+              "worker": true,
+              "events": 24,
+              "duration": 1.8,
+              "analysisMs": 149.39999999850988,
+              "maxChunkMs": 23.69999999552965
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-1 controlled audio fixture",
+                "readyAt": 3633.5,
+                "startedAt": 3673.39999999851,
+                "endedAt": 5491.19999999553
+              }
+            ],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 3633.5,
+              "startedAt": 3673.39999999851,
+              "endedAt": 5491.19999999553
+            }
+          ],
+          "faceDisabled": false,
+          "sendDisabled": false,
+          "caption": "job-1 controlled audio fixture",
+          "plays": [
+            {
+              "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+              "at": 3639.5
+            }
+          ],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "retry-after-date",
+      "posts": [
+        {
+          "at": 34477.89,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "954b63aa-4f8a-4500-8984-68ee008eb25c"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34477.953,
+          "wallAt": 1794118303.3349895,
+          "retryAfterEpoch": 1794118306.0,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34480.671,
+          "wallAt": 1794118306.0523431,
+          "status": 200,
+          "code": null
+        }
+      ],
+      "cancels": [],
+      "sessions": 1,
+      "states": {
+        "complete": {
+          "diag": {
+            "state": "ended",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 171,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": 4344.79999999702,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 1.8,
+              "duration": 1.8
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": {
+              "source": "local-learned-visemes",
+              "worker": true,
+              "events": 24,
+              "duration": 1.8,
+              "analysisMs": 134.80000000447035,
+              "maxChunkMs": 23.5
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-1 controlled audio fixture",
+                "readyAt": 4325,
+                "startedAt": 4344.79999999702,
+                "endedAt": 6177.60000000149
+              }
+            ],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-1 controlled audio fixture",
+              "readyAt": 4325,
+              "startedAt": 4344.79999999702,
+              "endedAt": 6177.60000000149
+            }
+          ],
+          "faceDisabled": false,
+          "sendDisabled": false,
+          "caption": "job-1 controlled audio fixture",
+          "plays": [
+            {
+              "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-1",
+              "at": 4331.39999999851
+            }
+          ],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "persistent-busy",
+      "posts": [
+        {
+          "at": 34484.781,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "f578a9b2-0ab0-4ca3-84b2-25a4f61852c0"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34484.843,
+          "wallAt": 1794118310.2265728,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 2,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34485.906,
+          "wallAt": 1794118311.2909462,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 3,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34487.968,
+          "wallAt": 1794118313.3530717,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-1",
+          "number": 4,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34492.031,
+          "wallAt": 1794118317.4117265,
+          "status": 429,
+          "code": "busy"
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34492.031,
+          "path": "/qa/requests/f578a9b2-0ab0-4ca3-84b2-25a4f61852c0/cancel"
+        },
+        {
+          "at": 34492.046,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "failed": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 278,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "conversation:Please try again shortly"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [],
+          "faceDisabled": true,
+          "sendDisabled": false,
+          "caption": "The reply could not finish. Please try asking again.",
+          "plays": [],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "rate-429",
+      "posts": [
+        {
+          "at": 34494.906,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "37fa0861-9852-4f0a-bb9f-fc921c065574"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34494.968,
+          "wallAt": 1794118320.3476384,
+          "status": 429,
+          "code": "rate"
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34494.968,
+          "path": "/qa/requests/37fa0861-9852-4f0a-bb9f-fc921c065574/cancel"
+        },
+        {
+          "at": 34494.968,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "failed": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 64,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "conversation:Controlled rate limit"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [],
+          "faceDisabled": true,
+          "sendDisabled": false,
+          "caption": "The reply could not finish. Please try asking again.",
+          "plays": [],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "auth-401",
+      "posts": [
+        {
+          "at": 34497.843,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "2973915b-d13c-424d-8afe-3a34635e8e19"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34497.906,
+          "wallAt": 1794118323.2855685,
+          "status": 401,
+          "code": "unauthorized"
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34497.906,
+          "path": "/qa/requests/2973915b-d13c-424d-8afe-3a34635e8e19/cancel"
+        },
+        {
+          "at": 34497.906,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "failed": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 65,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "conversation:Controlled authentication failure"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [],
+          "faceDisabled": true,
+          "sendDisabled": false,
+          "caption": "The reply could not finish. Please try asking again.",
+          "plays": [],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "auth-403",
+      "posts": [
+        {
+          "at": 34500.89,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "397d18ee-38ed-40b7-8c73-7e316dd12896"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34500.953,
+          "wallAt": 1794118326.3352933,
+          "status": 403,
+          "code": "unauthorized"
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34500.968,
+          "path": "/qa/requests/397d18ee-38ed-40b7-8c73-7e316dd12896/cancel"
+        },
+        {
+          "at": 34500.968,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "failed": {
+          "diag": {
+            "state": "waiting",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 67,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [
+              "conversation:Controlled authentication failure"
+            ],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [],
+          "faceDisabled": true,
+          "sendDisabled": false,
+          "caption": "The reply could not finish. Please try asking again.",
+          "plays": [],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "close-backoff",
+      "posts": [
+        {
+          "at": 34503.828,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "5606e826-6522-480b-b31f-99740632bc37"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34503.875,
+          "wallAt": 1794118329.256362,
+          "status": 429,
+          "code": "busy"
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34504.015,
+          "path": "/qa/requests/5606e826-6522-480b-b31f-99740632bc37/cancel"
+        },
+        {
+          "at": 34504.015,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 32,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "stream": [],
+          "faceDisabled": false,
+          "sendDisabled": true,
+          "caption": "Hi, welcome to NadLan.",
+          "plays": [],
+          "rootCount": 1
+        }
+      }
+    },
+    {
+      "name": "new-question-after-close",
+      "posts": [
+        {
+          "at": 34507.031,
+          "job": "job-1",
+          "body": "{\"text\":\"Controlled first question\"}",
+          "token": "725d73c5-8ad9-4380-9e56-22e9ecd6e4b9"
+        },
+        {
+          "at": 34509.203,
+          "job": "job-2",
+          "body": "{\"text\":\"Controlled second question\"}",
+          "token": "57261daa-435e-400c-aa1f-07f5aa2f0187"
+        }
+      ],
+      "polls": [
+        {
+          "job": "job-1",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-1?accepted=1",
+          "at": 34507.078,
+          "wallAt": 1794118332.461471,
+          "status": 429,
+          "code": "busy"
+        },
+        {
+          "job": "job-2",
+          "number": 1,
+          "url": "http://127.0.0.1:55132/qa/jobs/job-2?accepted=1",
+          "at": 34509.281,
+          "wallAt": 1794118334.6589181,
+          "status": 200,
+          "code": null
+        }
+      ],
+      "cancels": [
+        {
+          "at": 34507.218,
+          "path": "/qa/requests/725d73c5-8ad9-4380-9e56-22e9ecd6e4b9/cancel"
+        },
+        {
+          "at": 34507.234,
+          "path": "/qa/jobs/job-1/cancel"
+        }
+      ],
+      "sessions": 1,
+      "states": {
+        "closed": {
+          "diag": {
+            "state": "closed",
+            "renderer": "webgl",
+            "closed": true,
+            "started": true,
+            "visible": true,
+            "frames": 31,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": null,
+            "firstInteractionAt": null,
+            "audio": {
+              "paused": true,
+              "currentTime": 0,
+              "duration": 11.805333
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": null,
+            "stream": [],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": null
+          },
+          "stream": [],
+          "faceDisabled": false,
+          "sendDisabled": true,
+          "caption": "Hi, welcome to NadLan.",
+          "plays": [],
+          "rootCount": 1
+        },
+        "new-complete": {
+          "diag": {
+            "state": "ended",
+            "renderer": "webgl",
+            "closed": false,
+            "started": true,
+            "visible": true,
+            "frames": 153,
+            "mouth": 0,
+            "blink": 0,
+            "startedAt": 3909.89999999851,
+            "firstInteractionAt": 3058.0999999940395,
+            "audio": {
+              "paused": true,
+              "currentTime": 1.8,
+              "duration": 1.8
+            },
+            "modelStats": {
+              "size": [
+                1.2611666917800903,
+                1.4825167655944824,
+                0.6714037954807281
+              ],
+              "vertices": 3826,
+              "triangles": 7162,
+              "morphTargets": [
+                [
+                  "mouthOpen",
+                  "blink"
+                ]
+              ]
+            },
+            "lipAnalysis": {
+              "source": "local-learned-visemes",
+              "worker": true,
+              "events": 24,
+              "duration": 1.8,
+              "analysisMs": 148.20000000298023,
+              "maxChunkMs": 28.5
+            },
+            "stream": [
+              {
+                "index": 0,
+                "text": "job-2 controlled audio fixture",
+                "readyAt": 3859.1999999955297,
+                "startedAt": 3909.89999999851,
+                "endedAt": 5730.19999999553
+              }
+            ],
+            "errors": [],
+            "reducedMotion": false,
+            "bounds": {
+              "x": 234,
+              "y": 536,
+              "width": 144,
+              "height": 166,
+              "top": 536,
+              "right": 378,
+              "bottom": 702,
+              "left": 234
+            }
+          },
+          "stream": [
+            {
+              "index": 0,
+              "text": "job-2 controlled audio fixture",
+              "readyAt": 3859.1999999955297,
+              "startedAt": 3909.89999999851,
+              "endedAt": 5730.19999999553
+            }
+          ],
+          "faceDisabled": false,
+          "sendDisabled": false,
+          "caption": "job-2 controlled audio fixture",
+          "plays": [
+            {
+              "src": "http://127.0.0.1:55132/public-package/assets/greet-en.mp3",
+              "at": 3061.5999999940395
+            },
+            {
+              "src": "http://127.0.0.1:55132/evidence/latency/chunk-fixture.wav?job=job-2",
+              "at": 3868.39999999851
+            }
+          ],
+          "rootCount": 1
+        }
+      }
+    }
+  ],
+  "startedAt": 1794118283.620999,
+  "finishedAt": 1794118338.477129
+}

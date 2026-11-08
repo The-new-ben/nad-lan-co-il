@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-08",
+  "page": "https://nad-lan.co.il/en/buy-property-in-israel/",
+  "release": "v-6dff055c6784",
+  "liveGreetingAndControlsVerified": true,
+  "liveGeneratedReplyVerified": false,
+  "lastLiveQuestion": {
+    "outcome": "cancelled_critical_memory",
+    "transcriptionCompleted": true,
+    "answerGenerated": true,
+    "spokenAnswerCompleted": false,
+    "input": "Agent-created WAV uploaded through public HTTP endpoint; not browser microphone"
+  },
+  "publicWorkerPidAtHandoff": 23712,
+  "email": {
+    "sent": true,
+    "messageId": "1a1b825c08004693",
+    "links": "public page and two static review videos",
+    "limitationDisclosed": true,
+    "recoveryMessageId": "1a1b9bae4582228e"
+  },
+  "sharedSkillValidated": true,
+  "portablePackage": "C:/Users/777/Documents/agent-tools/talking-agent/talking-avatar-studio-portable.zip",
+  "pr": "https://github.com/The-new-ben/nad-lan-co-il/pull/498",
+  "newCharactersGenerated": 0,
+  "newPaidServices": 0,
+  "nextDependency": "Approve or reject the candidate voice sample; enough measured physical/commit reserve for guarded isolated tests. Keep Claude Desktop and Grok Bot open.",
+  "lastMemorySnapshot": {
+    "at": 1794120882.315255,
+    "availableGiB": 3.4084,
+    "commitCapacityAvailableGiB": 2.7264
+  },
+  "requiredOriginalVoiceStartupReserveGiB": {
+    "physical": 7.1,
+    "commit": 9.1
+  },
+  "ownerApplications": {
+    "keepOpen": [
+      "Claude Desktop",
+      "Grok Bot"
+    ],
+    "closedByThisRecovery": []
+  },
+  "voiceCandidate": {
+    "engine": "Chatterbox Turbo ONNX Q4",
+    "publicSubstitution": false,
+    "ownerListeningApproval": "pending"
+  },
+  "sameOriginalVoiceLoader": {
+    "prepared": true,
+    "execution": "not_started_resource_preflight"
+  },
+  "brainQ4Candidate": {
+    "downloadVerified": true,
+    "inferenceStarted": false,
+    "productionDefaultChanged": false
+  }
+}

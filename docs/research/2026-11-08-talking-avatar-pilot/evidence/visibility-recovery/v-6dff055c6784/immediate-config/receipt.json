@@ -1,0 +1,264 @@
+{
+  "releaseId": "v-6dff055c6784",
+  "scope": "Controlled local revealDelay=0 configuration with actual packaged widget and saved host page",
+  "speechInference": false,
+  "publicMutation": false,
+  "checks": [
+    {
+      "name": "Zero-delay configuration reveals on initial load",
+      "pass": true,
+      "detail": {
+        "observedRootToRevealMs": 52.30000000447035,
+        "note": "Local observed DOM reveal timing, not a physical-phone or full-network performance promise."
+      }
+    },
+    {
+      "name": "Initial reveal does not start audio",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Actual portrait renders without a tap",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Zero delay preserves saved close and shows Talk only",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Trusted Talk click starts greeting exactly once",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Packaged widget unchanged",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "states": {
+    "firstReveal": {
+      "config": {
+        "fallbackUrl": "/public-package/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-package-proof",
+        "revealDelay": 0
+      },
+      "diag": {
+        "state": "waiting",
+        "renderer": "pending",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 3,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 546,
+          "width": 144,
+          "height": 166,
+          "top": 546,
+          "right": 378,
+          "bottom": 712,
+          "left": 234
+        }
+      },
+      "timing": {
+        "rootSeenAt": 704.7999999970198,
+        "visibleAt": 757.1000000014901,
+        "portraitLoadedAt": 766
+      },
+      "plays": [],
+      "roots": 1,
+      "launchers": 0,
+      "portraitLoaded": true,
+      "storage": null
+    },
+    "loaded": {
+      "config": {
+        "fallbackUrl": "/public-package/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-package-proof",
+        "revealDelay": 0
+      },
+      "diag": {
+        "state": "waiting",
+        "renderer": "webgl",
+        "closed": false,
+        "started": false,
+        "visible": true,
+        "frames": 24,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 536,
+          "width": 144,
+          "height": 166,
+          "top": 536,
+          "right": 378,
+          "bottom": 702,
+          "left": 234
+        }
+      },
+      "timing": {
+        "rootSeenAt": 704.7999999970198,
+        "visibleAt": 757.1000000014901,
+        "portraitLoadedAt": 766
+      },
+      "plays": [],
+      "roots": 1,
+      "launchers": 0,
+      "portraitLoaded": true,
+      "storage": null
+    },
+    "closedReload": {
+      "config": {
+        "fallbackUrl": "/public-package/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-package-proof",
+        "revealDelay": 0
+      },
+      "diag": {
+        "state": "closed",
+        "renderer": "not-loaded",
+        "closed": true,
+        "started": false,
+        "visible": false,
+        "frames": 0,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": null,
+        "firstInteractionAt": null,
+        "audio": {
+          "paused": true,
+          "currentTime": 0,
+          "duration": 11.805333
+        },
+        "modelStats": null,
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": null
+      },
+      "timing": {},
+      "plays": [],
+      "roots": 0,
+      "launchers": 1,
+      "portraitLoaded": false,
+      "storage": "1"
+    },
+    "trustedReopen": {
+      "config": {
+        "fallbackUrl": "/public-package/assets/portrait-cutout-v2.webp",
+        "storageKey": "nlag-package-proof",
+        "revealDelay": 0
+      },
+      "diag": {
+        "state": "speaking",
+        "renderer": "webgl",
+        "closed": false,
+        "started": true,
+        "visible": true,
+        "frames": 8,
+        "mouth": 0,
+        "blink": 0,
+        "startedAt": 339.80000000447035,
+        "firstInteractionAt": 234.60000000149012,
+        "audio": {
+          "paused": false,
+          "currentTime": 0.004268,
+          "duration": 11.805333
+        },
+        "modelStats": {
+          "size": [
+            1.2611666917800903,
+            1.4825167655944824,
+            0.6714037954807281
+          ],
+          "vertices": 3826,
+          "triangles": 7162,
+          "morphTargets": [
+            [
+              "mouthOpen",
+              "blink"
+            ]
+          ]
+        },
+        "lipAnalysis": null,
+        "stream": [],
+        "errors": [],
+        "reducedMotion": false,
+        "bounds": {
+          "x": 234,
+          "y": 540.2355346679688,
+          "width": 144,
+          "height": 166,
+          "top": 540.2355346679688,
+          "right": 378,
+          "bottom": 706.2355346679688,
+          "left": 234
+        }
+      },
+      "timing": {
+        "rootSeenAt": 239.10000000149012,
+        "visibleAt": 239.10000000149012,
+        "portraitLoadedAt": 270.20000000298023
+      },
+      "plays": [
+        239
+      ],
+      "roots": 1,
+      "launchers": 0,
+      "portraitLoaded": true,
+      "storage": null
+    }
+  },
+  "widgetSha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729",
+  "finishedAt": 1794118463.6468275
+}

@@ -268,6 +268,15 @@ async function sendQuestion(fetchOptions){
   requestController=new AbortController();
   const controller=requestController;
   let queue=null;
+  let pollBusyRetries=0;
+  function waitForPoll(ms){
+    return new Promise((resolve,reject)=>{
+      const cancel=()=>{clearTimeout(timer);controller.signal.removeEventListener('abort',cancel);reject(new DOMException('Cancelled','AbortError'));};
+      const timer=setTimeout(()=>{controller.signal.removeEventListener('abort',cancel);resolve();},ms);
+      if(controller.signal.aborted){cancel();return;}
+      controller.signal.addEventListener('abort',cancel,{once:true});
+    });
+  }
   api.streamTelemetry=[];
   function receiveChunks(data){
     if(!data.chunks?.length)return;
@@ -337,10 +346,21 @@ async function sendQuestion(fetchOptions){
       if(performance.now()-startedWaiting>600000)throw new Error('Response took too long');
       const phase=data.phase||data.status||'thinking';
       if(!activeChunk){api.state=phase;status.textContent=({transcribing:'Listening…',thinking:'Thinking…',speaking:'Preparing voice…',synthesizing:'Preparing voice…',streaming:'Preparing voice…'})[phase]||'One moment…';}
-      await new Promise(resolve=>setTimeout(resolve,cfg.pollInterval||300));
+      await waitForPoll(cfg.pollInterval||300);
       const jobUrl=data.jobUrl||apiPath(`jobs/${encodeURIComponent(data.jobId)}`);
       const poll=await fetch(jobUrl,{signal:controller.signal});
-      const next=await poll.json();if(!poll.ok){invalidateExpiredSession(poll,next);throw replyError(next);}
+      const next=await poll.json();
+      // A transient queue lock did not change this accepted job. Retry only its GET.
+      if(poll.status===429&&next.code==='busy'&&pollBusyRetries<3){
+        const retryHeader=poll.headers.get('Retry-After'),retrySeconds=Number(retryHeader);
+        const retryAfter=Number.isFinite(retrySeconds)?Math.max(0,retrySeconds*1000):Math.max(0,Date.parse(retryHeader)-Date.now())||0;
+        const delay=Math.max(1000*2**pollBusyRetries,retryAfter);
+        pollBusyRetries++;
+        if(performance.now()-startedWaiting+delay>600000)throw new Error('Response took too long');
+        await waitForPoll(delay);continue;
+      }
+      if(!poll.ok){invalidateExpiredSession(poll,next);throw replyError(next);}
+      pollBusyRetries=0;
       data={jobId:data.jobId,...next};
       receiveChunks(data);
       if(data.phase==='done')break;

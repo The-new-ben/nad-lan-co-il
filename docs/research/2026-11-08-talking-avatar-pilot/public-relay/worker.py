@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import base64
 from collections import OrderedDict
+import copy
 import ctypes
 import http.cookiejar
 import io
@@ -31,6 +32,8 @@ HELPER_STOP = 's, h, _ = req("GET", "/wp-json/nadlan/v1/health")'
 INPUT_LIMIT = 15 * 1024 * 1024
 OUTPUT_LIMIT = 4 * 1024 * 1024
 MIN_MEMORY_GIB = 3.0
+ORIGINAL_MIN_MEMORY_GIB = 7.1
+ORIGINAL_MIN_COMMIT_GIB = 9.1
 BUSY = 'This computer is busy. Please try again shortly.'
 
 
@@ -44,12 +47,33 @@ class TurnCancelled(Exception):
     pass
 
 
+def failure_fields(error):
+    """Only controlled identifiers, never response bodies, credentials or paths."""
+    allowed = {
+        'audio', 'busy', 'changed', 'csrf', 'event', 'index', 'input_expired',
+        'lease', 'not_found', 'origin', 'page', 'phase', 'rate', 'request_id',
+        'session_required', 'storage', 'text', 'unavailable', 'upload_size',
+        'worker_auth', 'worker_id', 'cancelled', 'resource_busy', 'reply_failed',
+        'transport_failed', 'relay_rejected', 'invalid_relay_response',
+        'local_session_failed', 'local_session_missing', 'invalid_local_path',
+        'local_unavailable', 'local_audio_failed', 'invalid_local_response',
+        'local_rejected', 'invalid_audio', 'invalid_audio_type', 'invalid_text',
+        'invalid_owner', 'reply_too_large', 'invalid_reply_audio', 'invalid_claim',
+        'invalid_local_job', 'invalid_chunk_order', 'invalid_local_phase',
+        'invalid_request_id', 'request_pending', 'upload_timeout', 'failed',
+    }
+    if not isinstance(error, RelayError):
+        return {'failureStatus': 0, 'failureCode': 'internal_error'}
+    return {'failureStatus': error.status if isinstance(error.status, int) and 0 <= error.status <= 599 else 0,
+            'failureCode': error.code if isinstance(error.code, str) and error.code in allowed else 'unrecognized_error'}
+
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         return None
 
 
-def memory_gib():
+def memory_capacity_gib():
     class Memory(ctypes.Structure):
         _fields_ = [('length', ctypes.c_ulong), ('load', ctypes.c_ulong)] + [
             (name, ctypes.c_uint64) for name in ('totalPhysical', 'availablePhysical',
@@ -57,8 +81,18 @@ def memory_gib():
     state = Memory()
     state.length = ctypes.sizeof(state)
     if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(state)):
-        return 0.0
-    return state.availablePhysical / 1024**3
+        return {'physical': 0.0, 'commit': 0.0}
+    # availablePage is remaining commit capacity, not free pagefile disk space.
+    return {'physical': state.availablePhysical / 1024**3,
+            'commit': state.availablePage / 1024**3}
+
+
+def memory_gib():
+    return memory_capacity_gib()['physical']
+
+
+def commit_gib():
+    return memory_capacity_gib()['commit']
 
 
 def load_private_request():
@@ -79,17 +113,35 @@ def load_private_request():
 
 
 class RelayAPI:
-    def __init__(self, private_request):
+    def __init__(self, private_request, cancel_check=None):
         self.request = private_request
+        self.cancel_check = cancel_check
+
+    def with_cancel_check(self, check):
+        # Keep instrumentation/subclass behavior, without sharing a mutable turn guard.
+        scoped = copy.copy(self)
+        scoped.cancel_check = check
+        return scoped
 
     def call(self, method, path, body=None, lease=None):
         if not re.fullmatch(r'/worker/(claim|jobs/[a-f0-9]{32}(/update)?)', path):
             raise ValueError('Unexpected relay path.')
-        try:
-            status, value, _ = self.request(method, NAMESPACE+path, body,
-                timeout=10, headers={'X-NL-Lease': lease} if lease else None)
-        except Exception:
-            raise RelayError() from None
+        for attempt, delay in enumerate((0, .3, .9)):
+            if delay:
+                time.sleep(delay)
+            if self.cancel_check:
+                self.cancel_check()
+            try:
+                status, value, _ = self.request(method, NAMESPACE+path, body,
+                    timeout=10, headers={'X-NL-Lease': lease} if lease else None)
+            except Exception:
+                # An uncertain transport may have executed the mutation. Never replay it.
+                raise RelayError() from None
+            # This exact WordPress lock refusal occurs before the route callback.
+            # A rate limit or any other status/code is never retried.
+            if status == 429 and isinstance(value, dict) and value.get('code') == 'busy' and attempt < 2:
+                continue
+            break
         if status not in (200, 201, 202):
             raise RelayError(status, str(value.get('code', 'relay_rejected')) if isinstance(value, dict) else 'relay_rejected')
         if not isinstance(value, dict):
@@ -223,12 +275,15 @@ def wav_fields(data):
 
 class RelayWorker:
     def __init__(self, api, local_base, *, memory=memory_gib, minimum_memory=MIN_MEMORY_GIB,
-                 worker_id=None, poll=.3, monitor_interval=1.0, stop_file=None):
+                 commit_memory=commit_gib, worker_id=None, poll=.3, monitor_interval=1.0, stop_file=None):
         parsed = urlsplit(local_base)
         if parsed.scheme != 'http' or parsed.hostname != '127.0.0.1' or parsed.path not in ('', '/') or parsed.query or parsed.fragment or parsed.username:
             raise ValueError('The voice service must remain on IPv4 loopback.')
         self.api, self.local_base = api, local_base.rstrip('/')
-        self.memory, self.minimum_memory = memory, minimum_memory
+        self.memory, self.commit_memory = memory, commit_memory
+        original = parsed.port == 8769
+        self.minimum_memory = max(minimum_memory, ORIGINAL_MIN_MEMORY_GIB) if original else minimum_memory
+        self.minimum_commit = ORIGINAL_MIN_COMMIT_GIB if original else 0.0
         self.worker_id = worker_id or 'local_'+uuid.uuid4().hex
         self.sessions = OwnerSessions(self.local_base)
         self.stop = threading.Event()
@@ -250,6 +305,8 @@ class RelayWorker:
             if health.get('queued', 0) or health.get('activeJobs', 0):
                 return False, 'resource_busy'
             if self.memory() < self.minimum_memory:
+                return False, 'resource_busy'
+            if self.minimum_commit and self.commit_memory() < self.minimum_commit:
                 return False, 'resource_busy'
             return True, None
         except Exception:
@@ -273,9 +330,9 @@ class RelayWorker:
                 raise RelayError(code='invalid_claim')
         try:
             session = self.sessions.get(job.get('ownerKey'))
-        except RelayError:
+        except RelayError as error:
             self.api.update(job, 'error', errorCode='failed')
-            return {'outcome': 'failed', 'submitted': False, 'chunks': 0}
+            return {'outcome': 'failed', 'submitted': False, 'chunks': 0, **failure_fields(error)}
         cancelled, finished = threading.Event(), threading.Event()
         local_job = {'id': None}
         deadline = min(float(job.get('deadlineAt', 0)), time.time()+600)
@@ -292,6 +349,9 @@ class RelayWorker:
             if cancelled.is_set() or self.stopping() or time.time() >= deadline:
                 raise TurnCancelled()
 
+        turn_api = self.api.with_cancel_check(check)
+        failure = {}
+
         def monitor():
             next_heartbeat = 0.0
             while not finished.is_set():
@@ -299,7 +359,7 @@ class RelayWorker:
                     abort()
                     return
                 try:
-                    status = self.api.status(job)
+                    status = turn_api.status(job)
                     if status.get('cancelled') or status.get('phase') in ('error', 'cancelled'):
                         abort()
                         return
@@ -309,15 +369,19 @@ class RelayWorker:
                         abort()
                         return
                     if time.monotonic() >= next_heartbeat:
-                        self.api.update(job, 'heartbeat')
+                        turn_api.update(job, 'heartbeat')
                         next_heartbeat = time.monotonic()+10
+                except TurnCancelled:
+                    abort()
+                    return
                 except RelayError as error:
                     if error.status == 409:
                         try:
-                            if self.api.status(job).get('phase') == 'done':
+                            if turn_api.status(job).get('phase') == 'done':
                                 return
-                        except RelayError:
+                        except (RelayError, TurnCancelled):
                             pass
+                    failure.update(failure_fields(error))
                     # Lease uncertainty stops local work instead of producing orphan audio.
                     abort()
                     return
@@ -350,7 +414,7 @@ class RelayWorker:
                                     'synthesizing':'synthesizing', 'streaming':'streaming'}.get(phase)
                 progress = (translated_phase, data.get('userText'), data.get('responseText'))
                 if translated_phase and progress != last_progress:
-                    self.api.update(job, 'progress', phase=translated_phase,
+                    turn_api.update(job, 'progress', phase=translated_phase,
                                     userText=data.get('userText', ''), responseText=data.get('responseText', ''),
                                     inputConsumed=phase not in ('queued', 'transcribing'))
                     last_progress = progress
@@ -363,7 +427,7 @@ class RelayWorker:
                     check()
                     audio = session.request('GET', chunk['audioUrl'], binary=True)
                     check()
-                    self.api.update(job, 'chunk', index=index, text=chunk.get('text', ''),
+                    turn_api.update(job, 'chunk', index=index, text=chunk.get('text', ''),
                                     **wav_fields(audio))
                     sent.add(index)
                     result['chunks'] = len(sent)
@@ -371,7 +435,7 @@ class RelayWorker:
                     final = data.get('result', {})
                     audio = session.request('GET', final['audioUrl'], binary=True)
                     check()
-                    self.api.update(job, 'done', text=final.get('text', ''),
+                    turn_api.update(job, 'done', text=final.get('text', ''),
                                     userText=data.get('userText', final.get('userText', '')),
                                     voiceEngine=final.get('voiceEngine', 'mtl'),
                                     voiceCacheHit=bool(final.get('voiceCacheHit', False)), **wav_fields(audio))
@@ -385,6 +449,7 @@ class RelayWorker:
             result['outcome'] = 'cancelled'
             return result
         except Exception as error:
+            failure.update(failure_fields(error))
             if isinstance(error, RelayError) and error.status in (404, 409):
                 try:
                     remote = self.api.status(job)
@@ -405,6 +470,7 @@ class RelayWorker:
             if not completed:
                 abort()
             monitor_thread.join(timeout=12)
+            result.update(failure)
             self.current = None
 
     def shutdown(self):
@@ -441,8 +507,8 @@ def main():
                 outcome = worker.run_once()
                 if outcome['outcome'] not in ('idle', 'resource_busy', 'local_unavailable'):
                     print(json.dumps(outcome), flush=True)
-            except RelayError:
-                print(json.dumps({'outcome': 'relay_unavailable'}), flush=True)
+            except RelayError as error:
+                print(json.dumps({'outcome': 'relay_unavailable', **failure_fields(error)}), flush=True)
             if args.once:
                 break
             worker.stop.wait(3)

@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "widget.js",
-      "bytes": 592711,
-      "sha256": "10a12e3cb62ede9aed5b8b74ae51ca510da0d86dfb041b48b130281a69c98567"
+      "bytes": 593279,
+      "sha256": "4fbca951c5d9aa2e8301f2399feb40014bf489f061956e0b1d84e527e6139729"
     },
     {
       "path": "dynamic-lips.js",
@@ -75,6 +75,6 @@
       "sha256": "32007a2d12b12ed1836a05e5df7b43127aa2f23ef8ec7f8c64715ffd66951cba"
     }
   ],
-  "totalBytes": 4913436,
-  "releaseId": "v-2d37e9a1a8ad"
+  "totalBytes": 4914004,
+  "releaseId": "v-6dff055c6784"
 }

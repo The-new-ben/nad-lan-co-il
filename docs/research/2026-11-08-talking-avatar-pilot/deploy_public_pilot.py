@@ -37,7 +37,7 @@ release=manifest['releaseId']
 assert re.fullmatch(r'v-[a-f0-9]{12}',release)
 subdir='nadlan-avatar/'+release
 base=URL.split('/en/')[0]+'/wp-content/uploads/'+subdir+'/'
-config={'fallbackUrl':base+'assets/portrait-cutout-v2.webp','storageKey':'nlag-closed'}
+config={'fallbackUrl':base+'assets/portrait-cutout-v2.webp','storageKey':'nlag-closed','revealDelay':0}
 if args.conversation:
     api='/wp-json/nadlan-talk/v1'
     config.update(apiBase=api,conversationEndpoint=api+'/converse',sessionEndpoint=api+'/session',healthEndpoint=api+'/health',pollInterval=1000)

@@ -1,0 +1,340 @@
+{
+  "includesUserTextOrAudio": false,
+  "jobs": [
+    {
+      "localJobId": "1c96fb05d632428cad40e07f7ce2da19",
+      "createdUtc": "2026-11-08T06:04:47.899720+00:00",
+      "phase": "error",
+      "cancelled": true,
+      "errorCode": "cancelled",
+      "timings": {
+        "answer": 13.735,
+        "voice": 22.875,
+        "total": 36.875
+      },
+      "voiceEngine": "mtl",
+      "sttEngine": "whisper-small",
+      "hasTranscriptFile": false,
+      "hasAnswerFile": true,
+      "files": [
+        {
+          "name": "answer.stderr.log",
+          "bytes": 0
+        },
+        {
+          "name": "answer.stdout.log",
+          "bytes": 122
+        },
+        {
+          "name": "answer.txt",
+          "bytes": 102
+        },
+        {
+          "name": "prompt.txt",
+          "bytes": 3558
+        },
+        {
+          "name": "receipt.json",
+          "bytes": 2368
+        },
+        {
+          "name": "voice.stderr.log",
+          "bytes": 0
+        },
+        {
+          "name": "voice.stdout.log",
+          "bytes": 0
+        }
+      ],
+      "errors": [
+        {
+          "stage": "answer",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": false
+        },
+        {
+          "stage": "voice",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": false
+        }
+      ]
+    },
+    {
+      "localJobId": "a3cae2a09a2141bba0df477845994ba1",
+      "createdUtc": "2026-11-08T06:05:54.561712+00:00",
+      "phase": "error",
+      "cancelled": true,
+      "errorCode": "cancelled",
+      "timings": {
+        "audio decode": 1.047,
+        "transcription": 3.094,
+        "total": 4.141
+      },
+      "voiceEngine": "mtl",
+      "sttEngine": "whisper-small",
+      "hasTranscriptFile": false,
+      "hasAnswerFile": false,
+      "files": [
+        {
+          "name": "audio decode.stderr.log",
+          "bytes": 0
+        },
+        {
+          "name": "audio decode.stdout.log",
+          "bytes": 0
+        },
+        {
+          "name": "question.wav",
+          "bytes": 3886
+        },
+        {
+          "name": "receipt.json",
+          "bytes": 818
+        },
+        {
+          "name": "transcription.stderr.log",
+          "bytes": 500
+        },
+        {
+          "name": "transcription.stdout.log",
+          "bytes": 0
+        },
+        {
+          "name": "upload.audio",
+          "bytes": 48109
+        }
+      ],
+      "errors": [
+        {
+          "stage": "audio decode",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": false
+        },
+        {
+          "stage": "transcription",
+          "exceptionTypes": [
+            "ValueError"
+          ],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": true,
+          "hasErrorOutput": true
+        }
+      ],
+      "decodedAudio": {
+        "duration": 0.119,
+        "rate": 16000,
+        "channels": 1
+      }
+    },
+    {
+      "localJobId": "57b2fd18c2f74388b651d0505381b88e",
+      "createdUtc": "2026-11-08T06:06:14.510107+00:00",
+      "phase": "error",
+      "cancelled": true,
+      "errorCode": "cancelled",
+      "timings": {
+        "audio decode": 0.125,
+        "transcription": 9.703,
+        "answer": 14.36,
+        "voice": 89.813,
+        "total": 114.031
+      },
+      "voiceEngine": "mtl",
+      "sttEngine": "whisper-small",
+      "hasTranscriptFile": true,
+      "hasAnswerFile": true,
+      "files": [
+        {
+          "name": "answer.stderr.log",
+          "bytes": 0
+        },
+        {
+          "name": "answer.stdout.log",
+          "bytes": 140
+        },
+        {
+          "name": "answer.txt",
+          "bytes": 120
+        },
+        {
+          "name": "audio decode.stderr.log",
+          "bytes": 0
+        },
+        {
+          "name": "audio decode.stdout.log",
+          "bytes": 0
+        },
+        {
+          "name": "prompt.txt",
+          "bytes": 3368
+        },
+        {
+          "name": "question.wav",
+          "bytes": 128718
+        },
+        {
+          "name": "receipt.json",
+          "bytes": 2364
+        },
+        {
+          "name": "transcript.json",
+          "bytes": 144
+        },
+        {
+          "name": "transcription.stderr.log",
+          "bytes": 196
+        },
+        {
+          "name": "transcription.stdout.log",
+          "bytes": 0
+        },
+        {
+          "name": "upload.audio",
+          "bytes": 50435
+        },
+        {
+          "name": "voice.stderr.log",
+          "bytes": 7611
+        },
+        {
+          "name": "voice.stdout.log",
+          "bytes": 44
+        }
+      ],
+      "errors": [
+        {
+          "stage": "answer",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": false
+        },
+        {
+          "stage": "audio decode",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": false
+        },
+        {
+          "stage": "transcription",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": true
+        },
+        {
+          "stage": "voice",
+          "exceptionTypes": [],
+          "missingModulesOrNames": [],
+          "windowsErrorNumbers": [],
+          "memoryFailure": false,
+          "containsTraceback": false,
+          "hasErrorOutput": true
+        }
+      ],
+      "decodedAudio": {
+        "duration": 4.02,
+        "rate": 16000,
+        "channels": 1
+      }
+    }
+  ],
+  "uploadContainerMetadata": [
+    {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "opus",
+          "sample_rate": "48000",
+          "channels": 1,
+          "start_time": "0.000000"
+        }
+      ],
+      "format": {
+        "start_time": "0.000000",
+        "duration": "237.457500",
+        "size": "48109"
+      },
+      "jobId": "a3cae2a09a2141bba0df477845994ba1",
+      "packetCount": 58,
+      "firstPacket": {
+        "pts_time": "0.000000",
+        "duration_time": "0.060000"
+      },
+      "lastPacket": {
+        "pts_time": "237.457000",
+        "duration_time": "0.060000"
+      },
+      "timestampGapsOver200ms": [
+        {
+          "beforePacketIndex": 2,
+          "gapSeconds": 234.095
+        }
+      ],
+      "sumEncodedPacketDurations": 3.48
+    },
+    {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "opus",
+          "sample_rate": "48000",
+          "channels": 1,
+          "start_time": "0.000000"
+        }
+      ],
+      "format": {
+        "start_time": "0.000000",
+        "duration": "17.339123",
+        "size": "50435"
+      },
+      "jobId": "57b2fd18c2f74388b651d0505381b88e",
+      "packetCount": 67,
+      "firstPacket": {
+        "pts_time": "0.000000",
+        "duration_time": "0.060000"
+      },
+      "lastPacket": {
+        "pts_time": "17.339000",
+        "duration_time": "0.060000"
+      },
+      "timestampGapsOver200ms": [
+        {
+          "beforePacketIndex": 1,
+          "gapSeconds": 13.439
+        }
+      ],
+      "sumEncodedPacketDurations": 4.02
+    }
+  ],
+  "findings": {
+    "shortDecodedClipReason": "First WebM contains a long timestamp gap. Timeline cutoff at20.1s leaves0.119s decoded audio, rejected by0.25s STT minimum.",
+    "laterMicReached": "Whisper completed, Qwen completed, original MTL generation started; canceled before final audio.",
+    "laterCancellationSource": "Not recoverable from old collapsed worker logs. Do not attribute to429 without public-session evidence.",
+    "languageMode": "Whisper forced English; no automatic language classification was recorded.",
+    "publicMetadataAccess": "No general admin job-list route exists. Visitor cookie or original in-memory worker lease is required; no new live diagnostic endpoint was added."
+  }
+}
