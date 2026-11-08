@@ -41,10 +41,11 @@ add_action( 'user_register', function ( $user_id ) {
  * promises, no nagging ladder. */
 add_action( 'wp_after_insert_post', function ( $post_id, $post, $update ) {
 	if ( $update || ! $post || 'nadlan_lead' !== $post->post_type ) { return; }
-	wp_schedule_single_event( time() + 120, 'nadlan_lead_rich_alert', array( (int) $post_id ) );
+	wp_schedule_single_event( time() + 60, 'nadlan_lead_rich_alert', array( (int) $post_id ) );  // 1.72.613 (HAD-687): 60 s (was 120 s), well inside the 5-minute window of the lead-response research
 }, 20, 3 );
 
 add_action( 'nadlan_lead_rich_alert', function ( $lead_id ) {
+	if ( function_exists( 'nadlan_omx_lead_alert' ) ) { nadlan_omx_lead_alert( (int) $lead_id ); return; }  // 1.72.613 (HAD-687): the OwnerMail card (owner-mail.php), once per lead, with signed actions
 	global $wpdb;
 	$l = get_post( $lead_id );
 	if ( ! $l || 'nadlan_lead' !== $l->post_type ) { return; }
@@ -164,5 +165,7 @@ add_action( 'nadlan_owner_digest', function () {
 	}
 } );
 
+/* 1.72.613 (HAD-687, Ben 8.11.2026: "שיהיה אפשר לבצע פעולות דרך המייל"): one lead card, signed actions, mutes, the morning numbers */
+require_once __DIR__ . '/owner-mail.php';
 /* 1.72.507 (Ben 22.10.2026, "make the emails efficient; alert me when people view properties"): one morning email + hot alerts */
 require_once __DIR__ . '/owner-morning.php';
