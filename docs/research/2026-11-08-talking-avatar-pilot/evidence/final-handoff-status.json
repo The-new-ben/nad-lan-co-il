@@ -87,7 +87,12 @@
     "messageId": "1a1b825c08004693",
     "links": "public page and two static review videos",
     "limitationDisclosed": true,
-    "recoveryMessageId": "1a1b9bae4582228e"
+    "recoveryMessageId": "1a1b9bae4582228e",
+    "latestMessageId": "1a1baff13d02fc0b",
+    "latestSent": true,
+    "latestLinks": "Fresh pilot link, two dated review videos, exact local identity WAV and shared skill ZIP",
+    "currentPublicUnavailabilityDisclosed": true,
+    "localLatencyDisclosed": true
   },
   "nextDependency": "Resolve the explicit activation rejection; then verify a completed public spoken turn and sustained availability without closing owner apps.",
   "limitations": [
@@ -95,5 +100,12 @@
     "Current portrait is frontal photo-textured Blender geometry, not a full volumetric360-degree head.",
     "No physical phone or physical microphone validation in these controlled runs.",
     "No world-best, perfect or scientific-breakthrough claim."
-  ]
+  ],
+  "handoffCommit": "f1a27c2199f3ba5deb880cfdb4d0044f30337d54",
+  "tracking": {
+    "linear": "HAD-682",
+    "lastCommentId": "763c458c-4191-4520-a08a-69c20dde1ea4",
+    "notionRowUpdated": true,
+    "notionHQUpdated": true
+  }
 }
