@@ -1,0 +1,1088 @@
+<!-- @dsCard group="Cards" height=2200 width=1320 subtitle="חלון עדכוני מחירים: שימו לב, חץ למטה, טלפון ומייל (גרסה 106)" -->
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PriceAlert 106</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&amp;display=swap"><style>body{margin:0;padding:22px;background:#eef2f4;font-family:Assistant,sans-serif;color:#14212b}h1{font:800 24px Assistant;margin:0 0 4px}p.lead{margin:0 0 22px;color:#3b4753;font-size:15px}h2{font:800 17px Assistant;margin:0 0 12px}</style></head><body><h1>PriceAlert 106: חלון עדכוני מחירים</h1><p class="lead">לוח מחירים כהה עם חץ ירידה אדום שמהבהב 3 פעמים (פחות מ־5 שניות), ואז הרשמה בשני צעדים. בטלפון: גיליון תחתון בלי רקע חוסם, אפשר להחליק למטה. במחשב: חלון במרכז עם רקע מעומעם. התצוגה בנויה מהקוד האמיתי של האתר; כאן החץ מהבהב בלי הפסקה רק כדי שיהיה אפשר לראות אותו.</p><h2>טלפון, 390 על 844</h2><div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin:0 0 30px"><figure style="margin:0"><iframe title="תצוגה" style="width:390px;height:844px;border:0;border-radius:30px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:210px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:4730,&amp;quot;t&amp;quot;:&amp;quot;nadlan_project&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:1,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;1&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;span class=&quot;nlpa-city&quot;&gt;תל אביב&lt;/span&gt;&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head is-down&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;המחירים באזור זה במגמת שינוי&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;span class=&quot;nlpa-tick&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים בתל אביב, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים בתל אביב זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-4730%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">צעד 1: שימו לב, החץ, ושאלה אחת<br><span style="font-weight:400;color:#3b4753">תל אביב: מדד מחוז תל אביב ירד ב־12 חודשים, ולכן החץ עומד ליד השורה.</span></figcaption></figure><figure style="margin:0"><iframe title="תצוגה" style="width:390px;height:844px;border:0;border-radius:30px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:210px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:4730,&amp;quot;t&amp;quot;:&amp;quot;nadlan_project&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:1,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;2&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;span class=&quot;nlpa-city&quot;&gt;תל אביב&lt;/span&gt;&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head is-down&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;המחירים באזור זה במגמת שינוי&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;span class=&quot;nlpa-tick&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים בתל אביב, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; value=&quot;052-7654321&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; value=&quot;dana@gmial.com&quot; aria-invalid=&quot;false&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-fix&quot;&gt;התכוונתם ל־&lt;bdi&gt;dana@gmail.com&lt;/bdi&gt;?&lt;/button&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים בתל אביב זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-4730%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">צעד 2: טלפון ומייל, שניהם חובה<br><span style="font-weight:400;color:#3b4753">סיבה ליד הטלפון, תיקון טעות במייל, אישור נפרד לא מסומן, הודעת פרטיות.</span></figcaption></figure><figure style="margin:0"><iframe title="תצוגה" style="width:390px;height:844px;border:0;border-radius:30px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:210px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:4730,&amp;quot;t&amp;quot;:&amp;quot;nadlan_project&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:1,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;3&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;span class=&quot;nlpa-city&quot;&gt;תל אביב&lt;/span&gt;&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head is-down&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;המחירים באזור זה במגמת שינוי&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;span class=&quot;nlpa-tick&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים בתל אביב, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים בתל אביב זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-4730%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">צעד 3: מה קורה עכשיו<br><span style="font-weight:400;color:#3b4753">אישור, מה יקרה הלאה, וואטסאפ למי שרוצה תשובה מיד.</span></figcaption></figure></div><div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin:0 0 30px"><figure style="margin:0"><iframe title="תצוגה" style="width:390px;height:844px;border:0;border-radius:30px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:210px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:9001,&amp;quot;t&amp;quot;:&amp;quot;nadlan_property&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:0,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;1&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;span class=&quot;nlpa-city&quot;&gt;קריית אתא&lt;/span&gt;&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;מחירי השכירות באזור זה משתנים&lt;/p&gt;
+			&lt;/div&gt;
+					&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים בקריית אתא, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;&lt;span class=&quot;nlpa-point&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים בקריית אתא זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-9001%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">מודעת השכרה<br><span style="font-weight:400;color:#3b4753">"מחירי השכירות באזור זה משתנים", בלי חץ ליד השורה; החץ מצביע אל השאלה.</span></figcaption></figure><figure style="margin:0"><iframe title="תצוגה" style="width:390px;height:844px;border:0;border-radius:30px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:210px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:9002,&amp;quot;t&amp;quot;:&amp;quot;nadlan_intl&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:0,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;1&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;המחירים באזור זה משתנים&lt;/p&gt;
+			&lt;/div&gt;
+					&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים באזור, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;&lt;span class=&quot;nlpa-point&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים באזור זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-9002%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">פרויקט בחו״ל<br><span style="font-weight:400;color:#3b4753">אין מדד ישראלי, ולכן "משתנים" בלי חץ ליד השורה.</span></figcaption></figure></div><h2>מחשב, 1280 על 760</h2><div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin:0 0 30px"><figure style="margin:0"><iframe title="תצוגה" style="width:1280px;height:760px;border:0;border-radius:14px;box-shadow:0 10px 30px rgba(16,38,47,.18);background:#fff;flex:none" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;he&quot; dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;amp;display=swap&quot;&gt;&lt;style&gt;html,body{margin:0;background:#f7f6f2}/* nadlan-config - PRICE ALERT window (HAD-684, Claude Design v106 PriceAlert).
+ * Palette from a market price board: nlb-abyss board #10262f, sa-surf sheet, sa-ink / sa-ink2 text, sa-sea action, and one
+ * signal red for the down-tick and the attention mark (tick-down #ff5a4f: 5.1:1 on the board). Faces: Assistant (the site&#039;s
+ * Hebrew UI face) for everything, 800 for the line. No cream, gold, terracotta, gradient or emoji. */
+#nlnu{--pa-board:#10262f;--pa-champ:#cfe3ea;--pa-tick:#ff5a4f;--pa-ink:#14212b;--pa-ink2:#3b4753;--pa-mute:#5f6b75;--pa-sea:#2f6f86;--pa-seah:#255c70;--pa-foam:#e8f1f3;--pa-line:#e3e1da;--pa-field:#fbfaf7;--pa-edge:#7d8790;--pa-bad:#b3261e;--pa-wa:#0f7a63;
+	position:fixed;z-index:99990;inset-inline:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--nlpa-kb,0px));font-family:Assistant,Heebo,&quot;Segoe UI&quot;,Arial,sans-serif;color:var(--pa-ink);pointer-events:none}
+#nlnu[hidden]{display:none!important}
+#nlnu *{box-sizing:border-box}
+#nlnu p{margin:0}
+#nlnu .nlpa{pointer-events:auto;position:relative;max-width:460px;margin-inline:auto;max-height:calc(var(--nlpa-vh,100dvh) - 16px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:20px;box-shadow:0 22px 48px rgba(16,38,47,.28),0 4px 12px rgba(16,38,47,.10);transform:translateY(calc(100% + 30px));opacity:0;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s;outline:none}
+#nlnu.is-in .nlpa{transform:translateY(0);opacity:1}
+#nlnu .nlpa.is-drag{transition:none}
+
+/* the board */
+#nlnu .nlpa-board{position:relative;background:var(--pa-board);color:#fff;padding:8px 16px 15px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nlnu .nlpa-grab{display:block;width:40px;height:4px;margin:0 auto 6px;border-radius:999px;background:rgba(207,227,234,.35)}
+#nlnu .nlpa-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#nlnu .nlpa-kick{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 12.5px/1.3 Assistant,Heebo,sans-serif;letter-spacing:.02em;color:var(--pa-champ)}
+#nlnu .nlpa-live{position:relative;width:8px;height:8px;border-radius:50%;background:var(--pa-tick);flex:none}
+#nlnu .nlpa-live::after{content:&quot;&quot;;position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--pa-tick);opacity:0}
+#nlnu.is-in .nlpa-live::after{animation:nlpaPing 1.6s ease-out 3}
+#nlnu .nlpa-city{display:inline-flex;align-items:center;min-height:22px;padding:0 9px;border-radius:999px;border:1px solid rgba(207,227,234,.38);color:#fff;font-weight:700}
+#nlnu .nlpa-x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -12px -6px 0;border:0;border-radius:999px;background:transparent;color:var(--pa-champ);cursor:pointer;padding:0}
+#nlnu .nlpa-x svg{width:20px;height:20px}
+#nlnu .nlpa-x:hover{background:rgba(207,227,234,.12)}
+#nlnu .nlpa-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;margin-top:8px}
+#nlnu .nlpa-head.is-down{grid-template-columns:auto 1fr auto}
+#nlnu .nlpa-warn{width:34px;height:31px;color:var(--pa-tick);flex:none}
+#nlnu.is-in .nlpa-warn{animation:nlpaPulse 1.6s ease-in-out 3}
+#nlnu .nlpa-att{font:800 12.5px/1.2 Assistant,Heebo,sans-serif;letter-spacing:.06em;color:var(--pa-tick);margin-bottom:2px}
+#nlnu .nlpa-h{font:800 22px/1.18 Assistant,Heebo,sans-serif;color:#fff;letter-spacing:-.005em;text-wrap:balance}
+#nlnu .nlpa-tick{display:grid;justify-items:center;width:34px;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-tick svg{width:30px;height:17px;display:block}
+#nlnu .nlpa-tick svg+svg{margin-top:-5px}
+#nlnu.is-in .nlpa-tick svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu.is-in .nlpa-tick svg+svg{animation-delay:.18s}
+
+/* the body */
+#nlnu .nlpa-body{padding:14px 16px 10px;display:grid;gap:12px;background:#fff}
+#nlnu .nlpa-sub{font-size:15px;line-height:1.5;color:var(--pa-ink2)}
+#nlnu .nlpa-q,#nlnu .nlpa-q2{display:flex;align-items:center;gap:6px;font:800 15px/1.3 Assistant,Heebo,sans-serif;color:var(--pa-ink);margin-bottom:8px}
+#nlnu .nlpa-point{display:inline-grid;color:var(--pa-tick);line-height:0}
+#nlnu .nlpa-point svg{width:20px;height:12px}
+#nlnu.is-in .nlpa-point svg{animation:nlpaTick 1.6s ease-in-out 3 both}
+#nlnu .nlpa-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#nlnu .nlpa-chip{min-height:52px;padding:6px 8px;border:1.5px solid var(--pa-sea);border-radius:14px;background:#fff;color:var(--pa-sea);font:800 14.5px/1.2 Assistant,Heebo,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+#nlnu .nlpa-chip:hover{background:var(--pa-foam)}
+#nlnu .nlpa-chip[aria-pressed=&quot;true&quot;]{background:var(--pa-sea);color:#fff}
+#nlnu .nlpa-later{justify-self:center;min-height:44px;padding:0 16px;border:0;background:transparent;font:700 14px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(59,71,83,.35)}
+#nlnu .nlpa-s1{display:grid}
+#nlnu .nlpa-hint{font-size:12.5px;line-height:1.35;color:var(--pa-mute);margin-top:-2px}
+
+/* step 2 */
+#nlnu .nlpa-s2{display:grid;gap:10px}
+#nlnu .nlpa-q2{margin-bottom:0}
+#nlnu .nlpa-f{display:grid;gap:5px}
+#nlnu .nlpa-f label{font:700 13.5px/1.2 Assistant,Heebo,sans-serif;color:var(--pa-ink)}
+#nlnu .nlpa-f input{width:100%;height:50px;padding:0 14px;border:1.5px solid var(--pa-edge);border-radius:12px;background:var(--pa-field);font:600 17px/1 Assistant,Heebo,sans-serif;color:var(--pa-ink);text-align:right;-webkit-appearance:none;appearance:none}
+#nlnu .nlpa-f input::placeholder{color:#8a949c;font-weight:400}
+#nlnu .nlpa-f input:focus{border-color:var(--pa-sea);outline:2px solid var(--pa-sea);outline-offset:1px;background:#fff}
+#nlnu .nlpa-f input[aria-invalid=&quot;true&quot;]{border-color:var(--pa-bad)}
+#nlnu .nlpa-e{font:600 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-bad);min-height:0}
+#nlnu .nlpa-e:empty{display:none}
+#nlnu .nlpa-fix{border:0;background:none;padding:2px 0;font:700 13px/1.35 Assistant,Heebo,sans-serif;color:var(--pa-sea);text-decoration:underline;cursor:pointer}
+#nlnu .nlpa-ok{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.45;color:var(--pa-ink2);cursor:pointer}
+#nlnu .nlpa-ok input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--pa-sea);cursor:pointer}
+#nlnu .nlpa-hp{position:absolute!important;inset-inline-start:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+#nlnu .nlpa-go{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;width:100%;border:0;border-radius:14px;background:var(--pa-sea);color:#fff;font:800 17px/1.1 Assistant,Heebo,sans-serif;cursor:pointer;box-shadow:0 10px 22px rgba(47,111,134,.28)}
+#nlnu .nlpa-go:hover{background:var(--pa-seah)}
+#nlnu .nlpa-go svg{width:20px;height:20px}
+#nlnu .nlpa.is-sending .nlpa-go{opacity:.7;cursor:progress}
+#nlnu .nlpa.is-sending .nlpa-go svg{animation:nlpaSpin .9s linear infinite}
+#nlnu .nlpa-fine{font-size:11.5px;line-height:1.5;color:var(--pa-mute)}
+#nlnu .nlpa-fine a{color:var(--pa-sea);text-decoration:underline}
+#nlnu .nlpa-nw{white-space:nowrap}
+
+/* step 3 */
+#nlnu .nlpa-s3{display:grid;justify-items:center;gap:8px;text-align:center;padding:4px 0}
+#nlnu .nlpa-check{width:44px;height:44px}
+#nlnu .nlpa-done{font:800 20px/1.25 Assistant,Heebo,sans-serif;color:var(--pa-ink);outline:none}
+#nlnu .nlpa-sub2{font-size:15px;line-height:1.5;color:var(--pa-ink2);max-width:34ch}
+html body #nlnu a.nlpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;width:100%;border-radius:999px;background:var(--pa-wa);color:#fff!important;font:800 16px/1.1 Assistant,Heebo,sans-serif;text-decoration:none!important;margin-top:4px}
+#nlnu a.nlpa-wa svg{width:20px;height:20px;flex:none}
+
+#nlnu .nlpa-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px;border-top:1px solid var(--pa-line)}
+#nlnu .nlpa-ind{font-size:11.5px;line-height:1.4;color:var(--pa-mute)}
+#nlnu .nlpa-foot .nlpa-later{flex:none;margin-inline-end:-10px}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot .nlpa-later{display:none}
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-foot{justify-content:center}
+
+/* the steps */
+#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;1&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-s3,
+#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s1,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-s2,#nlnu .nlpa[data-step=&quot;3&quot;] .nlpa-sub{display:none}
+@media(max-width:759px){
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-sub,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-att,#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-q2{display:none}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-board{padding-bottom:10px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-head{margin-top:4px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-h{font-size:18px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-warn{width:24px;height:22px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-tick svg{width:24px;height:14px}
+	#nlnu .nlpa[data-step=&quot;2&quot;] .nlpa-body{gap:10px;padding-top:12px}
+}
+@media(max-width:370px){#nlnu .nlpa-chip{font-size:13.5px}#nlnu .nlpa-h{font-size:20px}}
+
+/* desktop: a centred modal with a scrim */
+@media(min-width:760px){
+	#nlnu.is-desk{inset:0;bottom:0;display:grid;place-items:center;padding:24px;pointer-events:auto;background:rgba(16,38,47,0);transition:background .3s}
+	#nlnu.is-desk.is-in{background:rgba(16,38,47,.55)}
+	#nlnu.is-desk .nlpa{width:440px;max-height:calc(100vh - 48px);transform:translateY(14px) scale(.97)}
+	#nlnu.is-desk.is-in .nlpa{transform:none}
+	#nlnu.is-desk .nlpa-grab{display:none}
+	#nlnu.is-desk .nlpa-board{padding:14px 20px 18px;touch-action:auto}
+	#nlnu.is-desk .nlpa-body{padding:16px 20px 12px}
+	#nlnu.is-desk .nlpa-h{font-size:24px}
+}
+
+/* focus */
+#nlnu button:focus-visible,#nlnu a:focus-visible,#nlnu input[type=checkbox]:focus-visible{outline:2px solid var(--pa-sea);outline-offset:3px}
+#nlnu .nlpa-board button:focus-visible{outline-color:var(--pa-champ)}
+
+/* one contact element per screen: the floating bar steps aside while the window is up */
+html body.nlnu-on #nlcta{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important;transition:opacity .2s,transform .3s}
+@media(max-width:759px){html body.nlnu-on #nla11y{bottom:calc(var(--nlnu-h,320px) + 22px + env(safe-area-inset-bottom,0px))!important;transition:bottom .3s}}
+
+@keyframes nlpaTick{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.25;transform:translateY(4px)}}
+@keyframes nlpaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes nlpaPing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+@keyframes nlpaSpin{to{transform:rotate(-360deg)}}
+@media(prefers-reduced-motion:reduce){
+	#nlnu .nlpa,#nlnu.is-desk{transition:none}
+	#nlnu.is-in .nlpa-tick svg,#nlnu.is-in .nlpa-point svg,#nlnu.is-in .nlpa-warn,#nlnu.is-in .nlpa-live::after{animation:none}
+}
+@media print{#nlnu{display:none!important}}
+ #nlnu .nlpa-tick svg,#nlnu .nlpa-point svg,#nlnu .nlpa-warn{animation-iteration-count:infinite!important}&lt;/style&gt;&lt;/head&gt;&lt;body class=&quot;nlnu-on&quot;&gt;&lt;header style=&quot;height:56px;background:#fff;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 18px;font:800 18px Assistant;color:#1f4b5c&quot;&gt;נדל״ן&lt;/header&gt;&lt;main style=&quot;padding:18px;max-width:900px;margin:0 auto;color:#3b4753;font:16px/1.6 Assistant&quot;&gt;&lt;h1 style=&quot;font:800 26px/1.25 Assistant;color:#14212b;margin:6px 0 10px&quot;&gt;פרויקט מגורים חדש בצפון תל אביב&lt;/h1&gt;&lt;p style=&quot;margin:0 0 14px&quot;&gt;דירות 3 עד 6 חדרים, מרחק הליכה מהפארק ומהים. כאן מופיעים פרטי הפרויקט, המיקום, המחירים שפורסמו ושלבי הבנייה.&lt;/p&gt;&lt;div style=&quot;height:260px;border-radius:16px;background:#dfe7ea&quot;&gt;&lt;/div&gt;&lt;div style=&quot;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px&quot;&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;div style=&quot;height:64px;border-radius:12px;background:#fff;border:1px solid #e3e1da&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&quot;margin:14px 0&quot;&gt;הסבר על הפרויקט, ההיתרים והלוח. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. טקסט לדוגמה בגוף העמוד. &lt;/p&gt;&lt;/main&gt;&lt;div id=&quot;nlnu&quot; class=&quot;nlpa-root is-in is-desk&quot; dir=&quot;rtl&quot; data-c=&quot;{&amp;quot;id&amp;quot;:4730,&amp;quot;t&amp;quot;:&amp;quot;nadlan_project&amp;quot;,&amp;quot;api&amp;quot;:&amp;quot;https://nad-lan.co.il/wp-json/nadlan/v1/price-alert&amp;quot;,&amp;quot;d&amp;quot;:12,&amp;quot;dp&amp;quot;:0.25,&amp;quot;q&amp;quot;:3,&amp;quot;qi&amp;quot;:1,&amp;quot;h&amp;quot;:10,&amp;quot;down&amp;quot;:1,&amp;quot;v&amp;quot;:&amp;quot;pa1-2026-11-08&amp;quot;}&quot;&gt;
+&lt;div class=&quot;nlpa&quot; role=&quot;dialog&quot; aria-modal=&quot;false&quot; aria-labelledby=&quot;nlpa-h&quot; aria-describedby=&quot;nlpa-sub&quot; tabindex=&quot;-1&quot; data-step=&quot;1&quot;&gt;
+	&lt;div class=&quot;nlpa-board&quot;&gt;
+		&lt;span class=&quot;nlpa-grab&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;div class=&quot;nlpa-top&quot;&gt;
+			&lt;p class=&quot;nlpa-kick&quot;&gt;&lt;span class=&quot;nlpa-live&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;נדל״ן · nad-lan.co.il&lt;span class=&quot;nlpa-city&quot;&gt;תל אביב&lt;/span&gt;&lt;/p&gt;
+			&lt;button type=&quot;button&quot; class=&quot;nlpa-x&quot; aria-label=&quot;סגירה&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-head is-down&quot;&gt;
+			&lt;svg class=&quot;nlpa-warn&quot; viewBox=&quot;0 0 32 29&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M13.4 2.2a3 3 0 0 1 5.2 0l12 20.8a3 3 0 0 1-2.6 4.5H4a3 3 0 0 1-2.6-4.5z&quot; fill=&quot;currentColor&quot;/&gt;&lt;path d=&quot;M16 9.5v8&quot; stroke=&quot;#10262f&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;16&quot; cy=&quot;22.4&quot; r=&quot;2&quot; fill=&quot;#10262f&quot;/&gt;&lt;/svg&gt;
+			&lt;div class=&quot;nlpa-htxt&quot;&gt;
+				&lt;p class=&quot;nlpa-att&quot;&gt;שימו לב&lt;/p&gt;
+				&lt;p class=&quot;nlpa-h&quot; id=&quot;nlpa-h&quot; role=&quot;heading&quot; aria-level=&quot;2&quot;&gt;המחירים באזור זה במגמת שינוי&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;span class=&quot;nlpa-tick&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;svg viewBox=&quot;0 0 28 16&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M3 3l11 10L25 3&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;nlpa-body&quot;&gt;
+		&lt;p class=&quot;nlpa-sub&quot; id=&quot;nlpa-sub&quot;&gt;בשוק שזז, מחיר של לפני כמה חודשים כבר לא המחיר. הירשמו לעדכוני מחירים בתל אביב, ותדעו על כל שינוי לפני שאתם מחליטים.&lt;/p&gt;
+		&lt;div class=&quot;nlpa-s1&quot;&gt;
+			&lt;p class=&quot;nlpa-q&quot; id=&quot;nlpa-q&quot;&gt;על מה לעדכן אתכם?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-chips&quot; role=&quot;group&quot; aria-labelledby=&quot;nlpa-q&quot;&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;buy&quot;&gt;קנייה באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;own&quot;&gt;יש לי נכס באזור&lt;/button&gt;
+				&lt;button type=&quot;button&quot; class=&quot;nlpa-chip&quot; data-i=&quot;invest&quot;&gt;השקעה&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;form class=&quot;nlpa-s2&quot; novalidate&gt;
+			&lt;p class=&quot;nlpa-q2&quot;&gt;לאן לשלוח את העדכונים?&lt;/p&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-tel&quot;&gt;טלפון נייד&lt;/label&gt;&lt;p class=&quot;nlpa-hint&quot; id=&quot;nlpa-tel-h&quot;&gt;לעדכון מהיר בוואטסאפ כשיש שינוי. המספר לא עובר לאף אחד.&lt;/p&gt;&lt;input id=&quot;nlpa-tel&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel-national&quot; dir=&quot;ltr&quot; placeholder=&quot;050-1234567&quot; maxlength=&quot;20&quot; required aria-describedby=&quot;nlpa-tel-h nlpa-tel-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-tel-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;div class=&quot;nlpa-f&quot;&gt;&lt;label for=&quot;nlpa-mail&quot;&gt;אימייל&lt;/label&gt;&lt;input id=&quot;nlpa-mail&quot; name=&quot;email&quot; type=&quot;email&quot; inputmode=&quot;email&quot; autocomplete=&quot;email&quot; dir=&quot;ltr&quot; placeholder=&quot;name@gmail.com&quot; maxlength=&quot;100&quot; required aria-describedby=&quot;nlpa-mail-e&quot;&gt;&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-mail-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+			&lt;label class=&quot;nlpa-ok&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;consent&quot; value=&quot;1&quot; required aria-describedby=&quot;nlpa-ok-e&quot;&gt;&lt;span&gt;אני רוצה לקבל מנדל״ן עדכוני מחירים ופרסומים בנושא נדל״ן, במייל, בטלפון ובוואטסאפ. אפשר להסיר בכל רגע.&lt;/span&gt;&lt;/label&gt;
+			&lt;p class=&quot;nlpa-e&quot; id=&quot;nlpa-ok-e&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;input class=&quot;nlpa-hp&quot; type=&quot;text&quot; name=&quot;company&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; aria-hidden=&quot;true&quot;&gt;
+			&lt;button type=&quot;submit&quot; class=&quot;nlpa-go&quot;&gt;&lt;span&gt;כן, עדכנו אותי&lt;/span&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M15 5l-7 7 7 7&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+			&lt;p class=&quot;nlpa-e nlpa-e--form&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+			&lt;p class=&quot;nlpa-fine&quot;&gt;מסירת הפרטים רשות, ובלעדיהם לא נוכל לשלוח עדכונים. הם נשמרים אצל נדל״ן (&lt;bdi class=&quot;nlpa-nw&quot;&gt;nad-lan.co.il&lt;/bdi&gt;) רק כדי לשלוח לכם עדכונים, ולא יועברו ליזם, למתווך או לכל גורם אחר בלי הסכמה נפרדת. לעיון, לתיקון או למחיקה: &lt;bdi class=&quot;nlpa-nw&quot;&gt;info@nad-lan.co.il&lt;/bdi&gt;. &lt;a href=&quot;https://nad-lan.co.il/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;מדיניות הפרטיות&lt;/a&gt;&lt;/p&gt;
+		&lt;/form&gt;
+		&lt;div class=&quot;nlpa-s3&quot;&gt;
+			&lt;svg class=&quot;nlpa-check&quot; viewBox=&quot;0 0 40 40&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;18&quot; fill=&quot;#eaf4ef&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12.5 20.5l5 5 10-11&quot; fill=&quot;none&quot; stroke=&quot;#2e7d5b&quot; stroke-width=&quot;3.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+			&lt;p class=&quot;nlpa-done&quot; tabindex=&quot;-1&quot;&gt;נרשמתם לעדכוני המחירים&lt;/p&gt;
+			&lt;p class=&quot;nlpa-sub2&quot;&gt;נעדכן אתכם כשהמחירים בתל אביב זזים. רוצים תשובה כבר עכשיו?&lt;/p&gt;
+			&lt;a class=&quot;nlpa-wa&quot; href=&quot;https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%A0%D7%99%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%20%D7%A9%D7%90%D7%9C%D7%94.%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%3A%20https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdemo-4730%2F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path fill=&quot;currentColor&quot; d=&quot;M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z&quot;/&gt;&lt;/svg&gt;דברו איתנו בוואטסאפ&lt;/a&gt;			&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;סגירה&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nlpa-foot&quot;&gt;&lt;p class=&quot;nlpa-ind&quot;&gt;אתר מידע עצמאי, לא מטעם יזם או מתווך.&lt;/p&gt;&lt;button type=&quot;button&quot; class=&quot;nlpa-later&quot;&gt;לא עכשיו&lt;/button&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	&lt;/body&gt;&lt;/html&gt;"></iframe><figcaption style="font:700 13px/1.4 Assistant;color:#14212b;margin-top:8px;max-width:390px">חלון במרכז, רקע מעומעם<br><span style="font-weight:400;color:#3b4753">עולה בעזיבת העכבר דרך החלק העליון או אחרי 12 שניות וקריאה של מסך; Esc, הרקע או × סוגרים.</span></figcaption></figure></div></body></html>
