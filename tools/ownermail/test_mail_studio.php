@@ -21,6 +21,7 @@ function get_the_post_thumbnail_url( $id, $s ) { return ''; }
 function url_to_postid( $u ) { return preg_match( '/[?&]p=(\d+)/', $u, $m ) ? (int) $m[1] : 0; }
 function get_site_icon_url( $s ) { return 'https://nad-lan.co.il/wp-content/uploads/site-icon-96.png'; }
 function home_url( $p = '' ) { return 'https://nad-lan.co.il' . $p; }
+function nadlan_ms_db_stub() {}
 function rest_url( $p ) { return 'https://nad-lan.co.il/wp-json/' . $p; }
 function add_query_arg( $a, $u ) { return $u . '?' . http_build_query( $a ); }
 function wp_salt( $s ) { return 'test-salt'; }
@@ -88,5 +89,18 @@ foreach ( $looks as $k => $f ) {
 }
 $pl = nadlan_ms_plain( $looks['listings'], 'דנה', 'https://x/unsub' );
 ok( false !== strpos( $pl, 'להסרה מרשימת התפוצה: https://x/unsub' ) && false !== strpos( $pl, '2,890,000 ₪' ), 'the plain-text twin carries the listings and the refusal link' );
+// 6. businesses: the one invitation (no pitch, no film), then the offer with the film after a "yes"
+$fi = nadlan_ms_fields( array( 'kind' => 'invite', 'seg' => 'developer', 'subject' => 'שאלה קצרה מנדל״ן', 'greeting' => 'שלום {שם},', 'body' => "האם תשמחו לקבל הצעות לחשיפת הפרויקטים של {חברה}?", 'film' => 1, 'items' => '801', 'cta_text' => 'x', 'cta_url' => 'https://x' ) );
+ok( 'invite' === $fi['kind'] && ! $fi['ad'] && ! $fi['film'] && ! $fi['items'] && '' === $fi['cta_text'] && 0 !== mb_strpos( $fi['subject'], 'פרסומת' ), 'an invitation carries no film, no listings, no button and no ad prefix' );
+$hi = nadlan_ms_render( $fi, 'רון', 'https://x/unsub', array( 'company' => 'אלון בנייה (דוגמה)', 'yes' => 'https://x/yes', 'no' => 'https://x/no' ) );
+ok( false !== strpos( $hi, 'https://x/yes' ) && false !== strpos( $hi, 'https://x/no' ) && false !== strpos( $hi, 'פעם אחת בלבד' ) && false === strpos( $hi, '>פרסומת<' ), 'the invitation: two answers, sent once, no ad label' );
+ok( false !== strpos( $hi, 'אלון בנייה (דוגמה)' ) && false !== strpos( $hi, 'שלום רון,' ), 'the company fills {חברה} and the name the greeting' );
+file_put_contents( __DIR__ . '/studio-invite.html', $hi );
+$fp = nadlan_ms_fields( array( 'kind' => 'dist', 'seg' => 'developer', 'look' => 'letter', 'subject' => 'קונים שכבר בחרו דירה', 'title' => 'קונים שכבר בחרו דירה', 'greeting' => 'שלום {שם},', 'body' => "תודה שאישרת.\n\nזה לא ליד: זה קונה שכבר יודע מה הוא קונה.", 'film' => 1, 'film_url' => 'https://nad-lan.co.il/marketing/#film', 'film_poster' => 'https://nad-lan.co.il/wp-content/uploads/2026/11/developer-film-v3-poster.jpg', 'film_cap' => 'בסרטון: איך קונה עובר באתר מהאזור לדירה', 'cta_text' => 'קביעת שיחה של 15 דקות', 'cta_url' => 'https://nad-lan.co.il/marketing/', 'sign' => 1 ) );
+$hp = nadlan_ms_render( $fp, 'רון', 'https://x/unsub', array( 'company' => 'אלון בנייה (דוגמה)' ) );
+ok( false !== strpos( $hp, 'developer-film-v3-poster.jpg' ) && false !== strpos( $hp, 'לצפייה בסרטון' ) && false !== strpos( $hp, '>פרסומת<' ) && 0 === mb_strpos( $fp['subject'], 'פרסומת: ' ), 'the offer: the film poster and button, the ad label and prefix' );
+file_put_contents( __DIR__ . '/studio-pitch.html', $hp );
+ok( nadlan_ms_ans_sig( 'yes', 'a@b.co' ) !== nadlan_ms_ans_sig( 'no', 'a@b.co' ) && nadlan_ms_ans_sig( 'yes', 'a@b.co' ) === nadlan_ms_ans_sig( 'yes', 'A@B.co ' ), 'yes and no are signed apart, the address case-blind' );
+ok( false === strpos( nadlan_ms_render( $fi, 'רון', '', array( 'company' => 'אלון', 'yes' => 'y', 'no' => 'n' ) ), '{חברה}' ) && false !== strpos( nadlan_ms_plain( $fi, 'רון', 'u', array( 'company' => 'אלון', 'yes' => 'https://y', 'no' => 'https://n' ) ), 'https://y' ), 'no placeholder is left in the mail or its preview line; the plain text carries the answers' );
 echo $fail ? "\n$fail FAILED\n" : "\nALL PASSED\n";
 exit( $fail ? 1 : 0 );

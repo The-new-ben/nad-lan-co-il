@@ -19,12 +19,32 @@
 			return o;
 		};
 		var sync = function () {
-			var d = data(), dist = d.kind === 'dist';
-			$('.nlms-personal', form).hidden = dist;
+			var d = data(), dist = d.kind === 'dist', inv = d.kind === 'invite';
+			$('.nlms-personal', form).hidden = dist || inv;
 			$('.nlms-dist-note', form).hidden = !dist;
-			$('.nlms-update', form).hidden = d.look !== 'update';
-			$('#nlms-send').textContent = dist ? 'שליחה לרשימה' : 'שליחה';
+			$('.nlms-invite-note', form).hidden = !inv;
+			$('.nlms-seg', form).hidden = !(dist || inv);
+			$('.nlms-update', form).hidden = d.look !== 'update' || inv;
+			$('.nlms-items', form).hidden = inv;
+			$('.nlms-filmbox', form).hidden = inv;
+			$('#nlms-send').textContent = inv ? 'שליחת ההזמנות' : (dist ? 'שליחה לרשימה' : 'שליחה');
 		};
+		/* the recommended wording: an invitation asks only for consent (no pitch, no film); the offer goes after a "yes" */
+		var INVITE = {
+			developer: ['שאלה קצרה מנדל״ן', 'האם תשמחו לקבל מאיתנו הצעות לחשיפת הפרויקטים של {חברה}?', 'שלום {שם},', 'אני בן מנדל״ן (nad-lan.co.il), אתר מידע על פרויקטים חדשים ונדל״ן בישראל.\n\nהאם תשמחו שאשלח אליכם מדי פעם עדכונים והצעות לחשיפת הפרויקטים של {חברה} באתר?\n\nלחיצה על "כן, אשמח לקבל" מאשרת קבלת עדכונים, הצעות ופרסומים מנדל״ן במייל. אפשר להסיר בכל רגע.'],
+			broker: ['שאלה קצרה מנדל״ן', 'האם תשמח/י לקבל מאיתנו הצעות לשיתוף פעולה?', 'שלום {שם},', 'אני בן מנדל״ן (nad-lan.co.il), אתר מידע על נדל״ן בישראל.\n\nהאם תשמח/י שאשלח מדי פעם עדכונים והצעות לחשיפת הנכסים שלך באתר ולשיתוף פעולה?\n\nלחיצה על "כן, אשמח לקבל" מאשרת קבלת עדכונים, הצעות ופרסומים מנדל״ן במייל. אפשר להסיר בכל רגע.'],
+			pro: ['שאלה קצרה מנדל״ן', 'האם תשמח/י לקבל מאיתנו הצעות לחשיפת השירות שלך?', 'שלום {שם},', 'אני בן מנדל״ן (nad-lan.co.il), אתר מידע על נדל״ן בישראל, שקונים ומוכרים בודקים בו לפני עסקה.\n\nהאם תשמח/י שאשלח מדי פעם עדכונים והצעות לחשיפת השירות שלך באתר?\n\nלחיצה על "כן, אשמח לקבל" מאשרת קבלת עדכונים, הצעות ופרסומים מנדל״ן במייל. אפשר להסיר בכל רגע.']
+		};
+		var fill = $('#nlms-fill');
+		if (fill) {
+			fill.addEventListener('click', function () {
+				var seg = $('[name=seg]', form).value, t = INVITE[seg] || INVITE.developer;
+				if (!INVITE[seg]) { $('[name=seg]', form).value = 'developer'; }
+				$('[name=subject]', form).value = t[0]; $('[name=pre]', form).value = t[1]; $('[name=title]', form).value = '';
+				$('[name=greeting]', form).value = t[2]; $('[name=body]', form).value = t[3];
+				sync(); preview();
+			});
+		}
 		var preview = function () {
 			clearTimeout(timer);
 			timer = setTimeout(function () {
@@ -50,14 +70,14 @@
 		$('#nlms-send').addEventListener('click', function () {
 			var d = data();
 			if (!d.subject) { say(msg, 'חסר נושא', true); return; }
-			if (d.kind === 'dist') {
+			if (d.kind === 'dist' || d.kind === 'invite') {
 				var n = last ? last.audience : 0;
-				if (!window.confirm('לשלוח את "' + (last ? last.subject : d.subject) + '" אל ' + n + ' אנשים ברשימת התפוצה? אי אפשר לבטל אחרי השליחה.')) { return; }
+				if (!window.confirm((d.kind === 'invite' ? 'לשלוח הזמנה אחת אל ' + n + ' עסקים שעוד לא הוזמנו?' : 'לשלוח את "' + (last ? last.subject : d.subject) + '" אל ' + n + ' אנשים ברשימת התפוצה?') + ' אי אפשר לבטל אחרי השליחה.')) { return; }
 				d.confirm = 1;
 			} else if (!window.confirm('לשלוח אל ' + d.to + '?')) { return; }
 			say(msg, 'שולח...');
 			call('ms/send', d).then(function (j) {
-				if (d.kind !== 'dist') { say(msg, j.ok ? 'נשלח אל ' + d.to : 'לא נשלח: ' + j.err, !j.ok); return; }
+				if (d.kind === 'personal') { say(msg, j.ok ? 'נשלח אל ' + d.to : 'לא נשלח: ' + j.err, !j.ok); return; }
 				say(msg, 'ההפצה יצאה לדרך: ' + j.total + ' נמענים. אפשר לראות את ההתקדמות בלשונית "נשלחו".');
 				var left = j.total - j.first_batch, tick = function () {
 					if (left <= 0) { return; }
@@ -84,7 +104,7 @@
 		$('#nlms-import-go').addEventListener('click', function () {
 			var m = $('#nlms-import-msg'), o = {};
 			new FormData(imp).forEach(function (v, k) { o[k] = v; });
-			if (!o.consent_ok) { say(m, 'צריך לאשר שיש לכולם הסכמה מתועדת', true); return; }
+			if (o.basis === 'business' ? !o.business_ok : !o.consent_ok) { say(m, o.basis === 'business' ? 'צריך לאשר שאלה כתובות של עסקים' : 'צריך לאשר שיש לכולם הסכמה מתועדת', true); return; }
 			say(m, 'מייבא...');
 			call('ms/import', o).then(function (j) { say(m, 'חדשים: ' + j.new + ' · עודכנו: ' + j.up + ' · כבר ברשימה: ' + j.same + ' · לא תקינים: ' + j.bad); setTimeout(function () { location.reload(); }, 1800); })
 				.catch(function (e) { say(m, e.message, true); });

@@ -4833,3 +4833,9 @@ RELEASE ROLLED BACK 1.72.621 run 1 (HAD-687): OUTAGE about 10:41-10:46, every UR
 
 RELEASE LOCK 1.72.621 run 2 (HAD-687: NEW inc/mail-studio.php + assets/mail-studio/studio.js + .css written first; then swaps inc/mailer.php + inc/alerts.php (require guarded by file_exists); nadlan-config.php version only). Claude [owner-emails-v2, Opus 5.5] 9.11.2026 10:47.
 RELEASE DONE 1.72.621 run 2 (HAD-687): released and verified by deploy621.py (deploy-result-621.json): health 1.72.621; new files first (mail-studio.php, studio.js, studio.css), then mailer.php + alerts.php (guarded require); 1,120 page rows OK; home HTTP 200 throughout (watched every 8 s); bridge removed. Lock released. Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:04.
+
+RELEASE LOCK 1.72.622 (HAD-687 businesses: swaps inc/mail-studio.php + assets/mail-studio/studio.js; nadlan-config.php version only; no post, page, option or meta). Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:12.
+RELEASE DONE 1.72.622 (HAD-687 businesses): released and verified by deploy622.py (deploy-result-622.json): health 1.72.622; mail-studio.php + studio.js written; 1,122 page rows OK incl. the forged ms-answer link; home HTTP 200 throughout; bridge removed. Lock released. Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:26.
+
+RELEASE LOCK 1.72.623 (HAD-687 fixes from the live test: swaps inc/mail-studio.php; nadlan-config.php version only). Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:30.
+RELEASE DONE 1.72.623 (HAD-687 fixes from the live test): released and verified by deploy623.py (deploy-result-623.json): health 1.72.623; mail-studio.php written; 1,122 page rows OK; home HTTP 200 throughout; bridge removed. Lock released. Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:48.
