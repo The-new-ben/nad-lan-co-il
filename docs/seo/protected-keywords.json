@@ -1,6 +1,6 @@
 {
  "built": "2026-10-26",
- "sources": "DataForSEO keyword_overview, Israel, Hebrew (monthly searches, KD, CPC USD) + Search Console 26.7 to 24.10.2026",
+ "sources": "DataForSEO keyword_overview, Israel, Hebrew (monthly searches, KD, CPC USD) + Search Console 26.7 to 24.10.2026 | 9.11.2026: terms added from Ben's Gemini list (HAD-690), owners from the live site",
  "terms": [
   {
    "term": "מחיר למשתכן",
@@ -577,6 +577,96 @@
    "cpc": 41.61,
    "ours": "/projects/ @41.8 (187 impressions, 90 days)",
    "tier": "C"
+  },
+  {
+   "term": "יועץ משכנתאות",
+   "owner": "/mortgage-advisor/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "השקעות נדל\"ן",
+   "owner": "/investment/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "השקעות נדל\"ן בחו\"ל",
+   "owner": "/investment/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "בתים פרטיים למכירה",
+   "owner": "/properties/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "וילות למכירה",
+   "owner": "/properties/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "מגרשים למכירה",
+   "owner": "/investment/residential-land-investment/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "קרקע להשקעה",
+   "owner": "/investment/residential-land-investment/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "עורך דין קניית דירה",
+   "owner": "/real-estate-lawyer/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "נדל\"ן מסחרי למכירה",
+   "owner": "/commercial-real-estate/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
+  },
+  {
+   "term": "משרדים למכירה",
+   "owner": "/commercial-real-estate/",
+   "volume": null,
+   "kd": null,
+   "cpc": null,
+   "ours": "added 9.11.2026 from Ben's Gemini list (volume to measure)",
+   "tier": "B"
   }
  ]
 }
