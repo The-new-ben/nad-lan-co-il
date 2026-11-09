@@ -75,7 +75,17 @@ Still LOSE, and why:
 
 ## 5. Phone speed, measured (tools/lcp_probe.mjs: 390 x 844, 150 ms RTT, 1.6 Mbps, CPU x4; median of 3)
 
-See section 7 for the after numbers and the cause of the LCP move.
+| | Phone CLS | Phone LCP | Desktop CLS | Desktop LCP |
+|---|---|---|---|---|
+| Before (9.11 00:15, 3 runs) | 0.179 in 3 of 3 | 3.7 to 3.9 s (the lead) | 0.019 | 1.6 to 2.0 s |
+| After 1.72.616 (9.11 04:20 to 04:50, 7 phone and 9 desktop runs) | **0 or 0.01 in 5 of 7**; 0.179 in 2 of 7 (the font still late) | 13 to 16 s in the runs without the jump; 3.3 to 4.8 s in the runs with it | 0.019 in 7 of 9; 0.283 in 2 runs right after the release, not seen again | 1.8 to 2.2 s |
+
+Why the phone LCP moved: with the fonts on time, the lead paints at its final size (66,424 px2), smaller than the site's WhatsApp bar text
+(69,978 px2). The bar is drawn only at ~12 to 15 s on this slow phone profile, so it becomes the "largest" element. Stripe is NOT the
+cause: with Stripe and the membership scripts blocked the bar still came at 12.2 s. The bar is sitewide and Ben's; drawing it with the
+first paint would give both numbers (CLS about 0, LCP about 3.5 to 4 s). That is a decision for Ben. On real phones the bar comes much
+earlier than on this 4x-CPU, 1.6 Mbps lab profile, and a visitor who scrolls stops the LCP clock; the jump of the text (CLS) is what
+real readers felt.
 
 ## 6. Authority plan (links from Israeli sites)
 
