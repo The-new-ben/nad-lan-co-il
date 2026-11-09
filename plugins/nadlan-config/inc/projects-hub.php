@@ -765,7 +765,7 @@ add_filter( 'nadlan_nli_page_ids', function ( $ids ) {
 /* F2 (our-page.md): og:title and the CollectionPage name were Yoast's archive default "ארכיון NadLan Projects - נדלן". The
  * <title> itself is untouched (inc/directory.php owns it); sharing and the schema now carry the same words. */
 if ( ! function_exists( 'nadlan_ph_share_title' ) ) {
-	function nadlan_ph_share_title() { return 'פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן'; }
+	function nadlan_ph_share_title() { return 'פרויקטים חדשים ודירות חדשות למכירה בישראל - מעודכן ל-2026 | נדלן'; } // HAD-689: = the <title>
 }
 add_filter( 'wpseo_opengraph_title', function ( $t ) { return is_post_type_archive( 'nadlan_project' ) ? nadlan_ph_share_title() : $t; }, 20 );
 add_filter( 'wpseo_twitter_title', function ( $t ) { return is_post_type_archive( 'nadlan_project' ) ? nadlan_ph_share_title() : $t; }, 20 );

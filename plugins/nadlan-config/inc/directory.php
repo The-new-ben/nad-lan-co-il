@@ -1022,7 +1022,7 @@ add_action( 'rest_api_init', function () {
 } );
 
 add_filter( 'get_the_archive_title', function ( $t ) {
-	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים חדשים בישראל'; }
+	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים חדשים ודירות חדשות בישראל'; } // HAD-689: the words of Google's page 1 for פרויקטים חדשים
 	if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות ונכסים'; }
 	return $t;
 } );
@@ -1030,7 +1030,9 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_project' ) ) {
 		/* de-cannibalized 2026-07-11: the head terms התחדשות עירונית / תמ״א /
 		   פינוי בינוי moved to their P0 owner, the /urban-renewal/ pillar */
-		return 'פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן';
+		/* HAD-689 (Ben 9.11.2026): the title copies the words Google's page 1 uses for פרויקטים חדשים (Yad2 #1 "פרויקטים ודירות
+		   חדשות ... - מעודכן ל-2026", Madlan #2 "דירות ופרויקטים חדשים בישראל", nadlan.com "דירות חדשות, פרויקטים חדשים") */
+		return 'פרויקטים חדשים ודירות חדשות למכירה בישראל - מעודכן ל-2026 | נדלן';
 	}
 	return $t;
 }, 20 );
@@ -1088,7 +1090,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	data-state="<?php echo esc_attr( wp_json_encode( $state ) ); ?>">
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
-		<h1>פרויקטים חדשים בישראל</h1>
+		<h1>פרויקטים חדשים ודירות חדשות בישראל</h1>
 		<?php /* ProjectCard v49: the catalog's true make-up from the live counts (942 of 975 are urban-renewal compounds in planning) */
 		$nlpc_nouns = array( 'pinui_binui' => 'מתחמי פינוי בינוי', 'new_build' => 'פרויקטים בבנייה חדשה', 'tama38' => 'פרויקטי תמ״א 38', 'urban' => 'פרויקטי התחדשות עירונית' );
 		$nlpc_parts = array(); $nlpc_types = (array) ( $facets['types'] ?? array() ); arsort( $nlpc_types );
