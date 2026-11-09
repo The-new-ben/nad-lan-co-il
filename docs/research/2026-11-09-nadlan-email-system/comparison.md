@@ -40,7 +40,7 @@ Every row below was checked against the built system, and every claim is backed 
 | E15 | Dark mode | ½ | the color-scheme meta and Apple dark CSS; Gmail dark untested |
 | E16 | Success measured by clicks | ½ | the Brevo log shows clicks once the key works; the screen does not |
 | E17 | A stable sender | ✓ | the settings name, Reply-To to Ben |
-| E18 | SPF, DKIM and DMARC | ½ | **live Gmail headers: SPF pass, DMARC pass**; DKIM comes with Brevo once a valid key is saved |
+| E18 | SPF, DKIM and DMARC | ✓ | **live Gmail headers 9.11 21:51, through Brevo: DKIM pass (d=nad-lan.co.il, s=brevo1), SPF pass, DMARC pass, inbox** |
 | E19 | One-click unsubscribe plus a visible link | ✓ | List-Unsubscribe + List-Unsubscribe-Post seen in the received message; the confirm page; immediate |
 | E20 | Spam-rate monitoring | ✗ | Google Postmaster Tools is not set up yet |
 | E21 | Israeli advertisement rules | ✓ | "פרסומת:" forced first in every distribution subject, a tag in the body, the sender line, refusal |
@@ -60,7 +60,7 @@ Every row below was checked against the built system, and every claim is backed 
 | L5 | Sender and refusal in the invitation | ✓ | a footer with the sender line and "להסרה" |
 | L6 | Refusal honoured at once | ✓ | "לא" and the refusal link set unsub_at immediately |
 | L7 | Proof for existing customers | ½ | price-window consents imported with their wording; brokers have no ad consent yet |
-| L8 | A named person, an authenticated domain | ½ | signature and Reply-To to Ben; DKIM after the Brevo key |
+| L8 | A named person, an authenticated domain | ✓ | signature and Reply-To to Ben; DKIM pass for nad-lan.co.il through Brevo (9.11) |
 | L9 | 50 to 100 words in the first touch | ✓ | the recommended invitation is about 55 words |
 | L10 | A short subject | ✓ | "שאלה קצרה מנדל״ן" |
 | L11 | Real personalisation | ✓ | {שם} and {חברה} per recipient |
@@ -75,8 +75,17 @@ Every row below was checked against the built system, and every claim is backed 
 ## Score
 | | Met in full | Partly | Open |
 |---|---|---|---|
-| Design and delivery (24 rows) | 17 | 6 | 1 |
-| Reaching businesses (18 rows) | 12 | 4 | 2 |
+| Design and delivery (24 rows) | 18 | 5 | 1 |
+| Reaching businesses (18 rows) | 13 | 3 | 2 |
+
+**Brevo, 9.11.2026 21:50.** The site's settings had an empty Login, so Brevo refused every key. With the Login filled in from Brevo's SMTP page, Brevo accepted the saved key. Two live sends then reached the Gmail inbox through Brevo (gx.d.sender-sib.com):
+- the plain check;
+- a distribution test.
+
+The distribution kept the site's own `List-Unsubscribe` (ms-unsub) and One-Click header. Brevo does add three things of its own:
+- open tracking;
+- click redirects on the links;
+- on mail without a `List-Unsubscribe` of the site's own (owner alerts, service mail), a `List-Unsubscribe` of its own.
 
 **Compared with others:**
 - **Israeli competitors** (Madlan, Yad2, Homeless, OnMap, the developers): none of their mails could be seen. Their sites answered 403, and nothing is public. A fair counted comparison needs a test inbox signed up to their alerts, and that is Ben's decision.
