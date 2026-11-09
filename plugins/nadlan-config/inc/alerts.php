@@ -167,5 +167,7 @@ add_action( 'nadlan_owner_digest', function () {
 
 /* 1.72.613 (HAD-687, Ben 8.11.2026: "שיהיה אפשר לבצע פעולות דרך המייל"): one lead card, signed actions, mutes, the morning numbers */
 require_once __DIR__ . '/owner-mail.php';
+/* 1.72.621 (HAD-687 part 2, Ben 9.11.2026): the mail studio "דיוור נדל״ן": client mail in three looks, consent-only distributions */
+if ( file_exists( __DIR__ . '/mail-studio.php' ) ) { require_once __DIR__ . '/mail-studio.php'; } // guarded: a missing file must never take the site down (outage 9.11 10:41)
 /* 1.72.507 (Ben 22.10.2026, "make the emails efficient; alert me when people view properties"): one morning email + hot alerts */
 require_once __DIR__ . '/owner-morning.php';

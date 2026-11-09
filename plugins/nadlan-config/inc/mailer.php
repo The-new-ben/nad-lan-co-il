@@ -44,7 +44,8 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	}
 
 	$host = (string) get_option( 'nadlan_smtp_host', '' );
-	if ( '' === $host || '' === (string) get_option( 'nadlan_smtp_pass', '' ) ) { return; }  // 1.72.509: no key yet = keep sending through the server, never an SMTP without a key
+	if ( '' === $host || '' === (string) get_option( 'nadlan_smtp_pass', '' ) ) { return; }  // 1.72.509: no key yet = keep sending through the server, never an SMTP without
+	if ( ! nadlan_smtp_check() ) { return; } // 1.72.621 (HAD-687): a key Brevo refuses never stops the site's mail; it keeps going through the host a key
 	$phpmailer->isSMTP();
 	$phpmailer->Host       = $host;
 	$phpmailer->Port       = (int) get_option( 'nadlan_smtp_port', 587 );
@@ -53,7 +54,38 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	$phpmailer->Password   = (string) get_option( 'nadlan_smtp_pass', '' );
 	$secure                = (string) get_option( 'nadlan_smtp_secure', 'tls' );
 	$phpmailer->SMTPSecure = in_array( $secure, array( 'tls', 'ssl' ), true ) ? $secure : 'tls';
-} );
+}, PHP_INT_MAX );  // 1.72.619 (HAD-687): last, so WP Mail SMTP in "Default (none)" (it sets Mailer = 'mail' at priority 10) no longer sends the mail through the host instead of Brevo
+
+/**
+ * 1.72.621 (HAD-687): does the SMTP server accept the saved login and key? A real connect + TLS + AUTH, no message sent. The answer is
+ * cached for a day (an hour after a refusal) and redone at once on every save of the settings screen. The key itself is never printed
+ * or logged; only the server's answer is kept, for the screen.
+ */
+function nadlan_smtp_check( $force = false ) {
+	$host   = (string) get_option( 'nadlan_smtp_host', '' );
+	$user   = (string) get_option( 'nadlan_smtp_user', '' );
+	$pass   = (string) get_option( 'nadlan_smtp_pass', '' );
+	$port   = (int) get_option( 'nadlan_smtp_port', 587 );
+	$secure = (string) get_option( 'nadlan_smtp_secure', 'tls' );
+	if ( '' === $host || '' === $pass ) { return false; }
+	$sig = md5( $host . '|' . $port . '|' . $secure . '|' . $user . '|' . $pass );
+	$st  = (array) get_option( 'nadlan_smtp_state', array() );
+	if ( ! $force && ( $st['sig'] ?? '' ) === $sig && (int) ( $st['t'] ?? 0 ) > time() - ( ! empty( $st['ok'] ) ? DAY_IN_SECONDS : HOUR_IN_SECONDS ) ) { return ! empty( $st['ok'] ); }
+	if ( ! class_exists( 'PHPMailer\\PHPMailer\\SMTP' ) ) { require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php'; require_once ABSPATH . WPINC . '/PHPMailer/Exception.php'; }
+	$ok = false; $err = '';
+	try {
+		$smtp = new PHPMailer\PHPMailer\SMTP();
+		$me   = (string) wp_parse_url( home_url(), PHP_URL_HOST );
+		if ( $smtp->connect( ( 'ssl' === $secure ? 'ssl://' : '' ) . $host, $port, 10 ) && $smtp->hello( $me ) ) {
+			if ( 'tls' === $secure && ! ( $smtp->startTLS() && $smtp->hello( $me ) ) ) { $err = 'TLS'; }
+			else { $ok = (bool) $smtp->authenticate( $user, $pass ); }
+		} else { $err = 'connect'; }
+		if ( ! $ok && '' === $err ) { $e = (array) $smtp->getError(); $err = trim( (string) ( $e['smtp_code'] ?? '' ) . ' ' . (string) ( $e['error'] ?? '' ) . ' ' . (string) ( $e['detail'] ?? '' ) ); }
+		$smtp->quit(); $smtp->close();
+	} catch ( Exception $x ) { $err = $x->getMessage(); }
+	update_option( 'nadlan_smtp_state', array( 'sig' => $sig, 't' => time(), 'ok' => $ok, 'err' => mb_substr( preg_replace( '/[^\p{L}\p{N}\s.,:;()\-\/]/u', '', $err ), 0, 160 ) ), false );
+	return $ok;
+}
 
 /* One-time server-side DKIM key generation + the exact DNS record to publish.
  * Admin-only. Never returns the private key. */
@@ -162,6 +194,10 @@ add_action( 'admin_menu', function () {
 			update_option( 'nadlan_mail_from', sanitize_email( wp_unslash( $_POST['mail_from'] ?? '' ) ), false );
 			update_option( 'nadlan_mail_from_name', sanitize_text_field( wp_unslash( $_POST['mail_from_name'] ?? '' ) ), false );
 			$msg = 'נשמר.';
+			if ( '' !== $host && '' !== (string) get_option( 'nadlan_smtp_pass', '' ) ) {
+				$msg .= nadlan_smtp_check( true ) ? ' Brevo אישר את ה־Login ואת המפתח. מעכשיו המיילים של האתר יוצאים דרך Brevo.'
+					: ' Brevo לא אישר את ה־Login והמפתח (' . (string) ( get_option( 'nadlan_smtp_state' )['err'] ?? '' ) . '). המיילים ממשיכים לצאת דרך שרת האחסון, כך ששום מייל לא הולך לאיבוד. ב־Brevo: Generate a new SMTP key, ולהעתיק את המפתח המלא מהחלון שנפתח מיד אחרי היצירה (רק שם הוא מופיע במלואו), ולהדביק כאן.';
+			}
 			if ( ! empty( $_POST['send_test'] ) ) {
 				$err = null; add_action( 'wp_mail_failed', function ( $e ) use ( &$err ) { $err = $e->get_error_message(); } );
 				$ok = wp_mail( get_option( 'admin_email' ), '[נדלן] בדיקת שליחה דרך ' . ( $host ? $host : 'השרת' ), 'אם המייל הזה הגיע לתיבה הראשית, השליחה עובדת. ' . wp_date( 'j.n.Y H:i' ) );
@@ -180,6 +216,8 @@ add_action( 'admin_menu', function () {
 		echo '<tr><th>כתובת השולח</th><td><input name="mail_from" class="regular-text" dir="ltr" value="' . $v( 'nadlan_mail_from' ) . '" placeholder="info@nad-lan.co.il"><p class="description">כתובת בדומיין שאומת בברבו.</p></td></tr>';
 		echo '<tr><th>שם השולח</th><td><input name="mail_from_name" class="regular-text" value="' . $v( 'nadlan_mail_from_name', 'נדלן' ) . '"></td></tr>';
 		echo '</table><p><button class="button button-primary">שמירה</button> <button class="button" name="send_test" value="1">שמירה ושליחת מייל בדיקה</button></p></form>';
-		echo '<p>מצב עכשיו: ' . ( '' !== (string) get_option( 'nadlan_smtp_host', '' ) && $has_key ? 'שולח דרך ' . esc_html( (string) get_option( 'nadlan_smtp_host' ) ) : 'שולח דרך שרת האחסון' ) . '.</p></div>';
+		$st = (array) get_option( 'nadlan_smtp_state', array() );
+		$live = '' !== (string) get_option( 'nadlan_smtp_host', '' ) && $has_key && ! empty( $st['ok'] );
+		echo '<p style="font-size:15px">מצב עכשיו: <b style="color:' . ( $live ? '#0F7A63' : '#B42318' ) . '">' . ( $live ? 'שולח דרך ' . esc_html( (string) get_option( 'nadlan_smtp_host' ) ) . ' (המפתח אושר ' . esc_html( wp_date( 'j.n H:i', (int) ( $st['t'] ?? 0 ) ) ) . ')' : 'שולח דרך שרת האחסון' . ( $has_key && ! empty( $st['t'] ) ? '. Brevo לא אישר את המפתח השמור' : '' ) ) . '</b>.</p></div>';
 	} );
 } );

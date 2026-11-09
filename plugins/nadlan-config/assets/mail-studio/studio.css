@@ -1,0 +1,26 @@
+/* Mail studio, "דיוור נדל״ן" (HAD-687): the admin screen. Slate ink, survey teal, the mail's own palette. */
+.nlms{max-width:1500px}
+.nlms h1{font-size:26px;font-weight:800;color:#12202A}
+.nlms-grid{display:grid;grid-template-columns:minmax(340px,520px) 1fr;gap:24px;margin-top:16px;align-items:start}
+@media (max-width:1100px){.nlms-grid{grid-template-columns:1fr}}
+.nlms-form{background:#fff;border:1px solid #D3DCE2;border-radius:10px;padding:18px 20px}
+.nlms-form label{display:block;margin:0 0 12px;font-weight:600;color:#12202A}
+.nlms-form label small{font-weight:400;color:#5E6A75}
+.nlms-form input[type=text],.nlms-form input:not([type]),.nlms-form input[type=email],.nlms-form input[type=number],.nlms-form textarea{display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid #C5CFD7;border-radius:6px;font-size:15px;background:#fff;color:#12202A}
+.nlms-form textarea{line-height:1.6}
+.nlms-form fieldset{border:1px solid #E3E8EC;border-radius:8px;padding:8px 12px 4px;margin:0 0 12px}
+.nlms-form fieldset label{display:inline-block;margin:0 0 6px 16px;font-weight:500}
+.nlms-form legend{font-weight:700;padding:0 4px}
+.nlms-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nlms-check{font-weight:500!important}
+.nlms-dist-note{background:#F6F8F9;border:1px solid #D3DCE2;border-radius:8px;padding:10px 12px;color:#3E4C58}
+.nlms-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px}
+#nlms-msg,.nlms-ok,.nlms-bad{font-weight:600}
+.nlms-ok{color:#0F7A63}.nlms-bad{color:#B42318}
+.nlms-preview{position:sticky;top:40px;background:#EEF2F4;border:1px solid #D3DCE2;border-radius:10px;padding:12px}
+.nlms-pv-bar{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+#nlms-meta{color:#5E6A75;font-size:13px}
+#nlms-frame{display:block;width:640px;max-width:100%;height:78vh;border:1px solid #C5CFD7;border-radius:12px;background:#EEF2F4;margin:0 auto}
+.nlms-box{background:#fff;border:1px solid #D3DCE2;border-radius:10px;padding:14px 18px;margin:16px 0}
+.nlms-box h2,.nlms-settings h2{font-size:18px;margin:6px 0 10px}
+.nlms-settings{max-width:620px;margin-top:16px}

@@ -1,0 +1,22 @@
+{
+  "released": "1.72.621",
+  "from": "1.72.619",
+  "live_before": {
+    "inc/mailer.php": "3c1314b85171b2554646a218a8a0af41",
+    "inc/alerts.php": "bc2cae4cbf24fec75224c49b2508c941",
+    "nadlan-config.php": "a372f06675c0f0fc2fb86c1dd2781abf"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-09 11:03:27",
+  "files": {
+    "inc/mail-studio.php": "c90a5f81f53df57e1ba8df6713276c4f",
+    "assets/mail-studio/studio.js": "43ae5e6873b05d313b2d846d950c5853",
+    "assets/mail-studio/studio.css": "94772c696e38c5929f41ee5bef9be606",
+    "inc/mailer.php": "51de22e81d0acdff37c25128b3edebb2",
+    "inc/alerts.php": "4a734eb9b5094b4d75ea5041846dca8b",
+    "nadlan-config.php": "0a294288b482fa662907e6bfc0bbd42d"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.621, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
