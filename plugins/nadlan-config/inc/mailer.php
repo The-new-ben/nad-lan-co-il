@@ -28,6 +28,7 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	if ( '' === $from ) { $from = 'wordpress@nad-lan.co.il'; }
 	$phpmailer->setFrom( $from, (string) get_option( 'nadlan_mail_from_name', 'נדלן' ), false );
 	$phpmailer->Sender = $from;
+	nadlan_mail_owner_lu( $phpmailer ); // 1.72.627 (HAD-687): the owner's own mail never carries Brevo's one-tap unsubscribe
 
 	/* Server-side DKIM: key generated on this server (selector "nadlan").
 	 * Signing stays OFF until the DNS TXT is published and verified via
@@ -55,6 +56,32 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	$secure                = (string) get_option( 'nadlan_smtp_secure', 'tls' );
 	$phpmailer->SMTPSecure = in_array( $secure, array( 'tls', 'ssl' ), true ) ? $secure : 'tls';
 }, PHP_INT_MAX );  // 1.72.619 (HAD-687): last, so WP Mail SMTP in "Default (none)" (it sets Mailer = 'mail' at priority 10) no longer sends the mail through the host instead of Brevo
+
+/**
+ * 1.72.627 (HAD-687): Brevo adds a List-Unsubscribe of its own to every mail that carries none (seen in Gmail 9.11). On the owner's
+ * own mail (lead alerts, the morning mail, the site's notices) one tap on Gmail's "unsubscribe" would then block the owner's address
+ * at Brevo: no leads, no morning mail. Mail whose every recipient is a site administrator carries the site's own header instead: the
+ * dashboard (sign-in needed; the widget "מיילים לבעלים" mutes a kind, with undo), and no List-Unsubscribe-Post, so one tap changes
+ * nothing. A header the caller set (the mail studio's refusal link) is never touched. $force is for the admin test route only.
+ */
+function nadlan_mail_owner_lu( $phpmailer, $force = false ) {
+	foreach ( (array) $phpmailer->getCustomHeaders() as $h ) {
+		if ( 0 === strcasecmp( trim( (string) ( $h[0] ?? '' ) ), 'List-Unsubscribe' ) ) { return false; }
+	}
+	if ( ! $force ) {
+		static $owners = null;
+		if ( null === $owners ) {
+			$owners = array( strtolower( trim( (string) get_option( 'admin_email' ) ) ) );
+			foreach ( (array) get_users( array( 'role' => 'administrator', 'fields' => array( 'user_email' ) ) ) as $u ) { $owners[] = strtolower( trim( (string) $u->user_email ) ); }
+			$owners = array_values( array_filter( array_unique( (array) apply_filters( 'nadlan_owner_addresses', $owners ) ) ) );
+		}
+		$to = array();
+		foreach ( array_merge( (array) $phpmailer->getToAddresses(), (array) $phpmailer->getCcAddresses(), (array) $phpmailer->getBccAddresses() ) as $a ) { $to[] = strtolower( trim( (string) ( $a[0] ?? '' ) ) ); }
+		if ( ! $to || array_diff( $to, $owners ) ) { return false; }
+	}
+	$phpmailer->addCustomHeader( 'List-Unsubscribe', '<' . admin_url( 'index.php' ) . '>' );
+	return true;
+}
 
 /**
  * 1.72.621 (HAD-687): does the SMTP server accept the saved login and key? A real connect + TLS + AUTH, no message sent. The answer is
@@ -159,14 +186,20 @@ add_action( 'rest_api_init', function () {
 			if ( ! $to ) { $to = (string) get_option( 'admin_email' ); }
 			$err = null;
 			add_action( 'wp_mail_failed', function ( $e ) use ( &$err ) { $err = $e->get_error_message(); } );
+			// 1.72.627: as_owner=1 gives this one test the owner's header (to prove it in a test inbox); the reply names the headers sent
+			$force = ! empty( $request->get_param( 'as_owner' ) ); $seen = array();
+			$look  = function ( $pm ) use ( $force, &$seen ) { if ( $force ) { nadlan_mail_owner_lu( $pm, true ); } foreach ( (array) $pm->getCustomHeaders() as $h ) { $seen[] = (string) $h[0]; } };
+			add_action( 'phpmailer_init', $look, PHP_INT_MAX );
 			$sent = wp_mail(
 				$to,
 				'[נדלן] בדיקת ערוץ מייל ' . gmdate( 'H:i:s' ),
 				"בדיקת מסירה מהאתר.\nאם ההודעה הזאת הגיעה לתיבה הראשית (לא ספאם) - הערוץ תקין.\nזמן: " . gmdate( 'c' )
 			);
+			remove_action( 'phpmailer_init', $look, PHP_INT_MAX );
 			return array(
 				'sent'      => (bool) $sent,
 				'error'     => $err,
+				'headers'   => array_values( array_unique( $seen ) ),
 				'transport' => ( '' !== (string) get_option( 'nadlan_smtp_host', '' ) ) ? 'smtp' : 'php-mail',
 				'smtp_host' => (string) get_option( 'nadlan_smtp_host', '' ),
 				'from'      => (string) get_option( 'nadlan_mail_from', '' ),
