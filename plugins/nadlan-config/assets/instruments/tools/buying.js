@@ -204,11 +204,11 @@
   }
   function panel(root, kicker, fallback) {
     U.css(); css();
-    var t0 = root.querySelector('.nli__title'), title = t0 ? t0.textContent : fallback;
+    var t0 = root.querySelector('.nli__title'), title = t0 ? t0.textContent : fallback, hx = t0 && t0.tagName === 'H3' ? 'h3' : 'h2';  // HAD-686: [nadlan_tool ... h="3"] keeps its h3
     if (!root.closest('.nli')) root.classList.add('nli');
     root.setAttribute('dir', 'rtl'); root.innerHTML = '';
     var p = U.el('div', 'nli__panel nlph nlbh'); root.appendChild(p);
-    p.appendChild(U.el('p', 'nli__kicker', esc(kicker))); p.appendChild(U.el('h2', 'nli__title', esc(title)));
+    p.appendChild(U.el('p', 'nli__kicker', esc(kicker))); p.appendChild(U.el(hx, 'nli__title', esc(title)));
     return p;
   }
   function tabs(label, opts, cur, on, sea) {

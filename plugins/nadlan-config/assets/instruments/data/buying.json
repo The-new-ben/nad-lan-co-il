@@ -1,7 +1,7 @@
 {
  "key": "buying",
  "built": "2026-11-07",
- "note": "HAD-683 (Ben 7.11.2026): the content of the buying hub tools on /buying-apartment/ (bplan, bequity, bladder, boffer). No number lives here: every rule number is read at runtime from ptax.json, nrm.json, zakaut.json, orechdin.json, boi-mortgage.json, cbs-200010.json, prices-hub.json and value.json, each with its own source and date. {a.b.c} in a text is filled from those files. Statuses: the 12 buyer statuses seen in Google autocomplete on 7.11.2026 (docs/research/2026-11-07-prices-buying/buying-deep/autocomplete.md). Phase 2 (8.11.2026): visit (T21 questions), who (T11 rows: only rules with an official source; contract-only items in who_contract), help (T19 programmes from zakaut.json and ptax.json), help_out (what was left out and why), toggles.",
+ "note": "HAD-683 (Ben 7.11.2026): the content of the buying hub tools on /buying-apartment/ (bplan, bequity, bladder, boffer). No number lives here: every rule number is read at runtime from ptax.json, nrm.json, zakaut.json, orechdin.json, boi-mortgage.json, cbs-200010.json, prices-hub.json and value.json, each with its own source and date. {a.b.c} in a text is filled from those files. Statuses: the 12 buyer statuses seen in Google autocomplete on 7.11.2026 (docs/research/2026-11-07-prices-buying/buying-deep/autocomplete.md). Phase 2 (8.11.2026): visit (T21 questions), who (T11 rows: only rules with an official source; contract-only items in who_contract), help (T19 programmes from zakaut.json and ptax.json), help_out (what was left out and why), toggles. Phase 3 (9.11.2026, HAD-686): pay (bpay, the five payments of a second-hand deal; the advance rule is the who row whose src is tax15, with that row's source and date), sign (bsign, the three lists of the signing day), keys (bkeys: meters, counts and the transfers after the handover; each transfer's how and src are left empty until the content team copies the official wording and its page, and an empty value is hidden), reg (breg, the steps from the signing to an extract in the buyer's name; due: declare or pay gives a date from the signing date), memo (bmemo, six yes or no questions about a memorandum; never saved). laws.land8: the writing requirement, read 9.11.2026.",
  "statuses": [
   {
    "id": "first",
@@ -602,6 +602,27 @@
   "brokers": {
    "label": "חוק המתווכים במקרקעין, התשנ״ו-1996, סעיף 9",
    "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%9E%D7%AA%D7%95%D7%95%D7%9B%D7%99%D7%9D_%D7%91%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F"
+  },
+  "land8": {
+   "label": "חוק המקרקעין, התשכ״ט-1969, סעיף 8",
+   "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F",
+   "text": "התחייבות לעשות עסקה במקרקעין טעונה מסמך בכתב.",
+   "date": "2026-11-09"
+  },
+  "move_kz": {
+   "label": "כל זכות, מדריך למעבר דירה",
+   "url": "https://www.kolzchut.org.il/he/%D7%9E%D7%93%D7%A8%D7%99%D7%9A_%D7%9C%D7%9E%D7%A2%D7%91%D7%A8_%D7%93%D7%99%D7%A8%D7%94",
+   "date": "2026-11-09"
+  },
+  "m_notice": {
+   "label": "פקודת העיריות, סעיפים 325 ו־326",
+   "url": "https://he.wikisource.org/wiki/%D7%A4%D7%A7%D7%95%D7%93%D7%AA_%D7%94%D7%A2%D7%99%D7%A8%D7%99%D7%95%D7%AA",
+   "date": "2026-11-09"
+  },
+  "water_kz": {
+   "label": "כל זכות, דיווח לתאגיד המים על מספר הנפשות",
+   "url": "https://www.kolzchut.org.il/he/%D7%93%D7%99%D7%95%D7%95%D7%97_%D7%9C%D7%AA%D7%90%D7%92%D7%99%D7%93_%D7%94%D7%9E%D7%99%D7%9D_%D7%A2%D7%9C_%D7%9E%D7%A1%D7%A4%D7%A8_%D7%94%D7%A0%D7%A4%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%AA%D7%92%D7%95%D7%A8%D7%A8%D7%95%D7%AA_%D7%91%D7%93%D7%99%D7%A8%D7%94",
+   "date": "2026-11-09"
   }
  },
  "who": [
@@ -775,5 +796,297 @@
    "href": "/dira-behanacha/"
   }
  ],
- "help_out": "לא נכנסו, כי לא אימתנו אותם היום במקור הרשמי: מענק של עד 50,000 ₪ לדירה יד שנייה (דף המדריך ב־gov.il לא נפתח לקריאה ב־8.11.2026, ולא מצאנו שההגרלה פתוחה), מענקי הביטוח הלאומי לנכים, וסיוע אגף השיקום של משרד הביטחון."
+ "help_out": "לא נכנסו, כי לא אימתנו אותם היום במקור הרשמי: מענק של עד 50,000 ₪ לדירה יד שנייה (דף המדריך ב־gov.il לא נפתח לקריאה ב־8.11.2026, ולא מצאנו שההגרלה פתוחה), מענקי הביטוח הלאומי לנכים, וסיוע אגף השיקום של משרד הביטחון.",
+ "pay": {
+  "first_help": "נקבע בחוזה, בהסכמה בין הצדדים. הערך שכאן הוא נקודת פתיחה לשינוי: הקלידו את מה שסוכם אצלכם.",
+  "seller_help": "אם אין משכנתא על הדירה, השאירו 0. את הסכום המדויק מקבלים ממכתב הכוונות של הבנק של המוכר.",
+  "adv_src": "tax15",
+  "items": [
+   {
+    "id": "first",
+    "t": "התשלום הראשון",
+    "when": "ביום החתימה",
+    "to": "לחשבון הנאמנות של עורך הדין של המוכר",
+    "safe": "הכסף נשאר בנאמנות ולא עובר למוכר עד שהערת האזהרה נרשמת לטובתכם"
+   },
+   {
+    "id": "seller",
+    "t": "סילוק המשכנתא של המוכר",
+    "when": "אחרי שהערת האזהרה נרשמה",
+    "to": "ישירות לבנק של המוכר, לא למוכר",
+    "safe": "מכתב הכוונות של הבנק של המוכר: הבנק מתחייב בו למחוק את המשכנתא כשהיתרה מגיעה אליו",
+    "none": "אין משכנתא על הדירה של המוכר, ולכן אין תשלום כזה. בודקים בנסח שאין שעבוד רשום."
+   },
+   {
+    "id": "loan",
+    "t": "כספי המשכנתא שלכם",
+    "when": "כשהבנק שלכם משחרר את ההלוואה",
+    "to": "מהבנק שלכם ישירות למוכר",
+    "safe": "הכסף עובר מבנק לבנק ולא דרככם, ושעבוד לטובת הבנק שלכם נרשם על הדירה במקביל",
+    "none": "בלי משכנתא: את כל המחיר משלמים מכספכם."
+   },
+   {
+    "id": "adv",
+    "t": "המקדמה על מס השבח של המוכר",
+    "when": "מהתשלום שבו עוברים {orechdin.cgt_advance.afterx}% מהמחיר",
+    "to": "נשמרת בנאמנות עד שהמוכר מציג את אישור רשות המסים",
+    "none": "המוכר הציג אישור של רשות המסים, ולכן אין מקדמה לעכב."
+   },
+   {
+    "id": "last",
+    "t": "התשלום האחרון",
+    "when": "ביום המסירה",
+    "to": "למוכר, מול המפתחות והמסמכים",
+    "safe": "גב אל גב: הכסף עובר רק כשאתם מקבלים את המפתחות, את החזקה בדירה ואת המסמכים",
+    "none": "לא נשאר תשלום ליום המסירה. שאלו את עורך הדין מה מבטיח את המסירה כשכל הכסף כבר שולם."
+   }
+  ]
+ },
+ "sign": {
+  "bring": [
+   {
+    "t": "תעודות הזהות של כל הקונים, עם הספח",
+    "d": "הספח מראה את המצב המשפחתי; אם יש בן או בת זוג, גם התעודה שלהם"
+   },
+   {
+    "t": "התשלום הראשון, כפי שסוכם בחוזה",
+    "d": "בדרך שנקבעה בחוזה, לחשבון הנאמנות של עורך הדין של המוכר"
+   },
+   {
+    "t": "האישור העקרוני למשכנתא",
+    "d": "מהבנק שבו תיקחו את המשכנתא"
+   },
+   {
+    "t": "פרטי חשבון הבנק למשכנתא",
+    "d": "הבנק, הסניף ומספר החשבון, לטופסי המשכנתא"
+   },
+   {
+    "t": "הזמנת שירותי התיווך החתומה, אם יש מתווך",
+    "d": "מתווך זכאי לדמי תיווך רק ממי שחתם לו על הזמנה בכתב",
+    "src": "brokers"
+   }
+  ],
+  "sign": [
+   {
+    "t": "החוזה וכל הנספחים שלו",
+    "d": "כל עמוד, ובנספחים גם רשימת מה שנשאר בדירה, אם יש"
+   },
+   {
+    "t": "הבקשה לרישום הערת אזהרה לטובתכם",
+    "d": "עורך הדין מגיש אותה מיד אחרי החתימה"
+   },
+   {
+    "t": "ייפוי הכוח לעורכי הדין, אם משתמשים בו",
+    "d": "לרישום ההערה, המשכנתא והבעלות על שמכם"
+   },
+   {
+    "t": "טופסי הדיווח לרשות המסים שעורך הדין מכין",
+    "d": "הצהרת הרוכש שלכם; המוכר מגיש הצהרה משלו"
+   }
+  ],
+  "leave": [
+   {
+    "t": "עותק חתום של כל מסמך",
+    "d": "החוזה, הנספחים וייפוי הכוח"
+   },
+   {
+    "t": "קבלה על התשלום הראשון",
+    "d": "או אישור של עורך הדין שהכסף הגיע לנאמנות"
+   },
+   {
+    "t": "התאריכים שרצים מהיום",
+    "d": "הצהרה לרשות המסים בתוך {ptax.pay.declare_days} יום ותשלום מס הרכישה בתוך {ptax.pay.pay_days} יום",
+    "dates": 1
+   }
+  ]
+ },
+ "keys": {
+  "meters": [
+   {
+    "id": "elec",
+    "t": "מונה חשמל",
+    "u": "קוט״ש"
+   },
+   {
+    "id": "water",
+    "t": "מונה מים",
+    "u": "מ״ק"
+   },
+   {
+    "id": "gas",
+    "t": "מונה גז",
+    "u": "מ״ק"
+   }
+  ],
+  "counts": [
+   {
+    "id": "keys",
+    "t": "מפתחות",
+    "u": "יח׳"
+   },
+   {
+    "id": "remotes",
+    "t": "שלטים",
+    "u": "יח׳"
+   }
+  ],
+  "transfers": [
+   {
+    "id": "elec",
+    "t": "חשבון החשמל עובר לשמכם",
+    "how": "בטופס החלפת שם לקוח בנכס של חברת החשמל, באתר החברה או במוקד הטלפוני שלה, עם מספר החוזה וקריאת מונה עדכנית; החשבון הסופי והחוב הקודם נשארים על המוכר",
+    "src": "move_kz"
+   },
+   {
+    "id": "arnona",
+    "t": "הודעה לעירייה על החלפת המחזיק בארנונה",
+    "how": "המוכר מודיע לעירייה בכתב על המכירה, ועד ההודעה הוא נשאר חייב; אתם חייבים מהיום שבו אתם הבעלים או המחזיקים",
+    "src": "m_notice"
+   },
+   {
+    "id": "water",
+    "t": "חשבון המים עובר לשמכם",
+    "how": "מודיעים לתאגיד המים על המעבר ומדווחים על מספר הנפשות; בלי דיווח החיוב לפי שתי נפשות, בתעריף הגבוה",
+    "src": "water_kz"
+   },
+   {
+    "id": "gas",
+    "t": "חשבון הגז עובר לשמכם",
+    "how": "",
+    "src": ""
+   },
+   {
+    "id": "vaad",
+    "t": "ועד הבית יודע שאתם הדיירים החדשים",
+    "how": "",
+    "src": ""
+   }
+  ],
+  "fill": "For the content team: how = the official wording of how to make that transfer, copied from the provider's or the municipality's own page; src = {\"label\": the page title, \"url\": the page, \"date\": the reading date YYYY-MM-DD}, or the key of a laws entry. An empty how or src is hidden in the tool, the print view and the summary. Never a phone number or a procedure without its page."
+ },
+ "reg": [
+  {
+   "id": "warn",
+   "t": "הערת האזהרה נרשמה ונבדקה בנסח חדש",
+   "who": "עורך הדין שלכם",
+   "doc": "נסח חדש שמראה את ההערה לטובתכם"
+  },
+  {
+   "id": "declare",
+   "t": "הצהרה לרשות המסים",
+   "who": "עורך הדין שלכם",
+   "doc": "אישור על הגשת ההצהרה",
+   "due": "declare"
+  },
+  {
+   "id": "ptax",
+   "t": "מס הרכישה שולם",
+   "who": "אתם",
+   "doc": "קבלה על תשלום השובר",
+   "due": "pay"
+  },
+  {
+   "id": "adv",
+   "t": "המקדמה על מס השבח טופלה",
+   "who": "עורכי הדין של שני הצדדים",
+   "doc": "אישור רשות המסים של המוכר, או אישור על העברת המקדמה"
+  },
+  {
+   "id": "seller",
+   "t": "המשכנתא של המוכר סולקה",
+   "who": "המוכר והבנק שלו",
+   "doc": "מכתב סילוק מהבנק, ואחריו נסח בלי המשכנתא"
+  },
+  {
+   "id": "m324",
+   "t": "אישור העירייה לפי סעיף 324",
+   "who": "המוכר ועורך הדין שלו",
+   "doc": "אישור שאין חובות לעירייה על הדירה",
+   "src": "m324"
+  },
+  {
+   "id": "taxcert",
+   "t": "אישורי המסים של המוכר",
+   "who": "המוכר ועורך הדין שלו",
+   "doc": "אישור רשות המסים לרישום, אחרי שמס השבח שולם או שנקבע פטור"
+  },
+  {
+   "id": "mort",
+   "t": "המשכנתא שלכם נרשמה לטובת הבנק",
+   "who": "הבנק שלכם ועורך הדין",
+   "doc": "נסח שמראה את המשכנתא לטובת הבנק"
+  },
+  {
+   "id": "deed",
+   "t": "שטר המכר נחתם והוגש לרישום",
+   "who": "עורכי הדין",
+   "doc": "אישור הגשה מלשכת רישום המקרקעין"
+  },
+  {
+   "id": "extract",
+   "t": "נסח על שמכם נבדק",
+   "who": "אתם ועורך הדין",
+   "doc": "נסח חדש שבו השמות ומספרי הזהות שלכם כתובים נכון"
+  }
+ ],
+ "reg_note": "דירה שרשומה ברשות מקרקעי ישראל או בחברה משכנת נרשמת שם, בהליך שלהם, ולא בלשכת רישום המקרקעין. השלבים דומים, והמסמך שמוכיח הוא אישור הזכויות שלהם.",
+ "memo": {
+  "q": [
+   {
+    "id": "price",
+    "t": "כתוב בו מחיר מוסכם?",
+    "y": "יש מחיר מוסכם",
+    "n": "אין מחיר מוסכם"
+   },
+   {
+    "id": "flat",
+    "t": "הדירה מזוהה בו, בכתובת או בגוש וחלקה?",
+    "y": "הדירה מזוהה",
+    "n": "הדירה לא מזוהה"
+   },
+   {
+    "id": "dates",
+    "t": "נקבעו בו מועדים לתשלום או למסירה?",
+    "y": "יש מועדים",
+    "n": "אין מועדים"
+   },
+   {
+    "id": "paid",
+    "t": "שולם כסף, כמקדמה או כדמי רצינות?",
+    "y": "שולם כסף",
+    "n": "לא שולם כסף"
+   },
+   {
+    "id": "subj",
+    "t": "כתוב בו \"בכפוף לחוזה\" או \"לא מחייב\"?",
+    "y": "כתוב בו שהוא בכפוף לחוזה או לא מחייב: סימן שלא התכוונו להתחייב עדיין, אבל לא תמיד מכריע",
+    "n": "לא כתוב שהוא בכפוף לחוזה"
+   },
+   {
+    "id": "both",
+    "t": "חתמו עליו שני הצדדים?",
+    "y": "שני הצדדים חתמו",
+    "n": "לא שני הצדדים חתמו"
+   }
+  ],
+  "levels": {
+   "high": {
+    "t": "סיכון גבוה",
+    "d": "במסמך יש את מה שחוזה צריך: מחיר וזיהוי של הדירה, וגם חתימות או תשלום. כששני הצדדים חתמו על מסמך כתוב עם הפרטים המהותיים, בתי המשפט עשויים לראות בו חוזה מחייב, לפי דרישת הכתב שבסעיף 8 לחוק המקרקעין.",
+    "next": "לא משלמים ולא חותמים על שום דבר נוסף לפני שעורך דין קורא את המסמך."
+   },
+   "mid": {
+    "t": "סיכון בינוני",
+    "d": "חלק ממה שחוזה צריך כבר כתוב או נעשה. לא ברור אם המסמך מחייב, וזו בדיוק השאלה לעורך הדין.",
+    "next": "לא משלמים עוד ולא חותמים על דבר נוסף לפני שעורך דין קורא את המסמך."
+   },
+   "low": {
+    "t": "סיכון נמוך",
+    "d": "חסרים במסמך פרטים מהותיים או חתימות, ויש בו מעט סימנים להתחייבות סופית.",
+    "next": "גם כך, לפני שמשלמים או חותמים על משהו נוסף, עורך דין קורא את המסמך."
+   }
+  },
+  "law": "land8",
+  "disc": "זה לא ייעוץ משפטי; זו רשימה של מה לשאול את עורך הדין."
+ }
 }

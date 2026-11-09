@@ -24,7 +24,7 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 PAGE = os.path.join(REPO, "docs", "research", "2026-11-07-prices-buying", "page-9-new.html")
 BASE = "../../plugins/nadlan-config/"
 FONTS = "https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-TOOLS = ["prices-common", "buying", "buying2"]
+TOOLS = ["prices-common", "buying", "buying2", "buying3"]  # buying3 (HAD-686): the five Phase 3 tools and the reading layer
 
 
 def render():
@@ -37,7 +37,7 @@ def render():
 
 
 def head_tags(ld):
-    return ('<link rel="stylesheet" href="' + FONTS + '">\n<link rel="stylesheet" href="' + BASE + 'assets/instruments/core.css">\n'
+    return ('<link rel="stylesheet" href="' + FONTS + '">\n<link rel="stylesheet" href="' + BASE + 'assets/instruments/core.css">\n<link rel="stylesheet" href="' + BASE + 'assets/instruments/tools/buying3.css">\n'
             '<script type="application/ld+json" id="nadlan-nli-ld">' + re.sub(r"\s+", " ", ld) + '</script>\n')
 
 

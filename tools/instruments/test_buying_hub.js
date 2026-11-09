@@ -9,7 +9,7 @@ const J = f => JSON.parse(fs.readFileSync(path.join(INS, 'data', f), 'utf8'));
 const ctx = { window: {}, document: {}, Intl, Math, JSON, console };
 ctx.window.NadLanInstruments = { register() {}, fmt: {}, esc: s => String(s) };
 vm.createContext(ctx);
-['prices-common.js', 'buying.js', 'buying2.js'].forEach(f => vm.runInContext(fs.readFileSync(path.join(INS, 'tools', f), 'utf8'), ctx, { filename: f }));
+['prices-common.js', 'buying.js', 'buying2.js', 'buying3.js'].forEach(f => vm.runInContext(fs.readFileSync(path.join(INS, 'tools', f), 'utf8'), ctx, { filename: f }));
 const B = ctx.window.NLBH, X = ctx.window.NLBH2;
 const BU = J('buying.json'), PT = J('ptax.json'), NR = J('nrm.json'), Z = J('zakaut.json'), O = J('orechdin.json'), BM = J('boi-mortgage.json'), CO = J('cost.json'), C = J('cbs-200010.json'), PH = J('prices-hub.json'), V = J('value.json');
 const M = B.model({ buying: BU, ptax: PT, nrm: NR, zakaut: Z, orechdin: O, boim: BM, cost: CO, phub: PH, value: V, d9: C });
@@ -144,6 +144,63 @@ t('visit count', JSON.stringify(X.visitCount({ a: { '0.0': 'y', '0.1': 'n', '1.0
 const related = (fs.readFileSync(path.join(ROOT, 'plugins', 'nadlan-config', 'inc', 'buying-hub.php'), 'utf8').match(/'(\/[a-z0-9\-\/]+\/)' =>/g) || []).map(x => x.slice(1, -4));
 t('every related link of the registry is a live URL' + (paths ? '' : ' (shape only)'), related.length >= 30 && related.every(h => paths ? paths.has(h) : true), related.filter(h => paths && !paths.has(h)));
 
+/* ---- Phase 3 (buying3.js, HAD-686): bpay, bsign, bkeys, breg, bmemo and the reading layer ---- */
+const X3 = ctx.window.NLBH3, G3 = ctx.window.NLBG, OA = O.cgt_advance, PY = BU.pay;
+t('buying3: pure logic loaded (NLBH3, NLBG)', !!X3 && typeof X3.pay === 'function' && typeof X3.memo === 'function' && !!G3 && typeof G3.norm === 'function');
+const noNum = s => !/\d{3}/.test(String(s).replace(/סעיף \d+|m324/g, '').replace(/\d{1,2}\.\d{1,2}\.\d{4}/g, ''));
+t('pay: five payments in order, each with when, to and a protection (the advance carries the law)', JSON.stringify(PY.items.map(x => x.id)) === '["first","seller","loan","adv","last"]' && PY.items.every(x => x.t && x.when && x.to && (x.id === 'adv' || x.safe)));
+const advRow = BU.who.filter(r => r.src === PY.adv_src);
+t('pay: the advance rule is the bwho row with the same source (tax15)', advRow.length === 1 && B.fill(advRow[0].d, M).indexOf('7.5%') === 0 && B.fill(advRow[0].d, M).indexOf('15%') > 0 && B.fill(advRow[0].d, M).indexOf('40%') > 0);
+t('pay, sign, keys, reg, memo: no number written into the content (placeholders, sections and dates only)', [PY, BU.sign, BU.keys.transfers, BU.reg, BU.memo.q, BU.memo.levels].every(o => noNum(JSON.stringify(o))));
+t('sign: 5 to bring, 4 to sign, 3 to leave with; every placeholder fills', BU.sign.bring.length === 5 && BU.sign.sign.length === 4 && BU.sign.leave.length === 3 && !/\{[a-z]/.test(B.fill(JSON.stringify(BU.sign), M)) && B.fill(BU.sign.leave[2].d, M).indexOf('30 יום') > 0 && B.fill(BU.sign.leave[2].d, M).indexOf('60 יום') > 0);
+t('sign: a src names a law that exists', ['bring', 'sign', 'leave'].every(g => BU.sign[g].every(x => !x.src || BU.laws[x.src])));
+t('keys: 3 meters, 2 counts, 5 transfers; how and src are strings or a dated source (never a phone number)', BU.keys.meters.length === 3 && BU.keys.counts.length === 2 && BU.keys.transfers.length === 5 && BU.keys.transfers.every(x => typeof x.how === 'string' && (x.src === '' || (typeof x.src === 'string' && BU.laws[x.src]) || (x.src && x.src.label && x.src.url && /^\d{4}-\d{2}-\d{2}$/.test(x.src.date))) && !/\d{3}/.test(x.how)));
+t('reg: 10 steps, unique ids, each with who and the proof; the dated ones are the declaration and the tax payment', BU.reg.length === 10 && new Set(BU.reg.map(x => x.id)).size === 10 && BU.reg.every(x => x.t && x.who && x.doc) && JSON.stringify(BU.reg.filter(x => x.due).map(x => x.due)) === '["declare","pay"]' && BU.reg.every(x => !x.src || BU.laws[x.src]));
+t('memo: six questions with the ids the scoring reads, three levels, the section 8 source dated', JSON.stringify(BU.memo.q.map(q => q.id)) === JSON.stringify(X3.MEMO) && ['low', 'mid', 'high'].every(k => BU.memo.levels[k].t && BU.memo.levels[k].d && BU.memo.levels[k].next) && BU.laws[BU.memo.law].label.indexOf('סעיף 8') > 0 && /^\d{4}-\d{2}-\d{2}$/.test(BU.laws[BU.memo.law].date));
+/* bpay arithmetic */
+const LT = NR.ltv_by_status, payo = o => X3.pay(Object.assign({ O: OA, PT: PT.pay, ltv: LT }, o));
+const sum = r => r.rows.reduce((a, x) => a + x.amt, 0);
+let sums = [], cnt = 0;
+[1200000, 2028800, 2450000, 3333333, 7654321].forEach(P => [0, 0.4, 0.6, 0.75].forEach(lr => [0, 0.05, 0.2, 0.45].forEach(sr => [0, 5, 10, 20, 30].forEach(pct => ['std', 'old', 'none'].forEach(adv => {
+  const r = payo({ P, L: Math.round(P * lr), S: Math.round(P * sr), pct, adv });
+  if (!r.ok) return; cnt++;
+  const own = r.rows.reduce((a, x) => a + x.own, 0), loan = r.rows.reduce((a, x) => a + x.loan, 0);
+  if (sum(r) !== P || own !== P - Math.round(P * lr) || loan !== Math.round(P * lr) || r.rows.some(x => x.amt < 0 || x.own < 0 || x.loan < 0 || x.own + x.loan !== x.amt) || r.rows.length !== 5) sums.push([P, lr, sr, pct, adv]);
+})))));
+t('pay: in every valid case (' + cnt + ') the five payments add up to the price, own money + mortgage split exactly, nothing negative', cnt > 600 && !sums.length, sums.slice(0, 3));
+const pv = payo({ P: 2450000, L: 1500000, S: 420000, pct: 10, adv: 'std' });
+t('pay: the design case 2,450,000 / 1,500,000 / 420,000 / 10%: 245,000, 420,000, 1,500,000, 183,750, 101,250', pv.ok && JSON.stringify(pv.rows.map(x => x.amt)) === '[245000,420000,1500000,183750,101250]' && pv.own === 950000, pv.rows && pv.rows.map(x => x.amt));
+t('pay: the advance is 7.5% of the price, 15% before 7.11.2001, none with a certificate', payo({ P: 2e6, L: 1e6, S: 0, pct: 10, adv: 'std' }).A === 150000 && payo({ P: 2e6, L: 1e6, S: 0, pct: 10, adv: 'old' }).A === 300000 && payo({ P: 2e6, L: 1e6, S: 0, pct: 10, adv: 'none' }).A === 0 && OA.old_before === '2001-11-07');
+t('pay: the 40% point is crossed by the mortgage payment in the design case', pv.cross === 2 && payo({ P: 2e6, L: 0, S: 0, pct: 50, adv: 'std' }).cross === 0 && payo({ P: 2e6, L: 0, S: 0, pct: 50, adv: 'std' }).warns.some(w => w.k === 'cross1'));
+const sp = payo({ P: 2000000, L: 1400000, S: 900000, pct: 10, adv: 'std' });
+t('pay: a seller balance larger than your money left: the mortgage pays the rest of it to his bank, nothing is left for the handover', sp.ok && JSON.stringify(sp.rows.map(x => x.amt)) === '[200000,900000,750000,150000,0]' && sp.rows[1].loan === 500000 && sp.rows[3].loan === 150000 && sp.warns.some(w => w.k === 'split') && sp.warns.some(w => w.k === 'nolast') && sum(sp) === 2000000, sp.rows && sp.rows.map(x => x.amt));
+const ek = o => payo(o).errs.map(e => e.k).join(',');
+t('pay validation: no price', ek({ P: 0, L: 0, S: 0, pct: 10, adv: 'std' }) === 'price');
+t('pay validation: a mortgage above the price', ek({ P: 1e6, L: 1.2e6, S: 0, pct: 10, adv: 'std' }) === 'loan' && /גדולה ממחיר הדירה/.test(payo({ P: 1e6, L: 1.2e6, S: 0, pct: 10, adv: 'std' }).errs[0].t));
+t('pay validation: a first payment above 100% or above your own money', ek({ P: 1e6, L: 0, S: 0, pct: 120, adv: 'std' }) === 'pct' && ek({ P: 1e6, L: 950000, S: 0, pct: 10, adv: 'std' }) === 'first');
+t('pay validation: the seller balance larger than what is left of the price after the first payment and the advance', ek({ P: 1e6, L: 7e5, S: 830000, pct: 10, adv: 'std' }) === 'seller' && payo({ P: 1e6, L: 7e5, S: 825000, pct: 10, adv: 'std' }).ok);
+t('pay validation: the first payment and the advance together above the price', ek({ P: 1e6, L: 0, S: 0, pct: 95, adv: 'std' }) === 'over');
+t('pay validation: a handover before the signing', ek({ P: 1e6, L: 5e5, S: 0, pct: 10, adv: 'std', sign: '2026-11-08', hand: '2026-10-01' }) === 'dates');
+const pd = payo({ P: 2e6, L: 1e6, S: 0, pct: 10, adv: 'std', sign: '2026-11-08', hand: '2027-02-01' }), bd = X.dates(M, '2026-11-08', 'used', B.status(BU, 'first'));
+t('pay dates: the 30 and 60 day deadlines as bdates gives them, the days to the handover', pd.dates.declare === '2026-12-08' && pd.dates.pay === '2027-01-07' && pd.dates.declare === bd.filter(x => x.id === 'declare')[0].d && pd.dates.pay === bd.filter(x => x.id === 'paytax')[0].d && pd.dates.handDays === 85 && X3.addDays('2026-11-08', 30) === X.addDays('2026-11-08', 30));
+t('pay: an LTV above the single-home rule is flagged, at the rule it is not', payo({ P: 2e6, L: 1.6e6, S: 0, pct: 10, adv: 'std' }).warns.some(w => w.k === 'ltv') && !payo({ P: 2e6, L: 1.5e6, S: 0, pct: 10, adv: 'std' }).warns.some(w => w.k === 'ltv'));
+/* bmemo scoring */
+const yes = { price: true, flat: true, dates: true, paid: true, subj: true, both: true }, mm = o => X3.memo(Object.assign({}, yes, o)).level;
+t('memo: unanswered questions give no level, and say how many are left', X3.memo({ price: true }).level === null && X3.memo({ price: true }).left === 5 && X3.memo({}).left === 6);
+t('memo: essentials + both signed + no "subject to contract" = high', mm({ subj: false, paid: false }) === 'high' && mm({ subj: false, paid: false, dates: false }) === 'high');
+t('memo: essentials + money paid = high, even with "subject to contract"', mm({ both: false }) === 'high' && mm({}) === 'high');
+t('memo: essentials + both signed + "subject to contract", no money = mid', mm({ paid: false }) === 'mid');
+t('memo: signed or paid without the essentials = mid; essentials alone = mid', mm({ price: false, paid: false }) === 'mid' && mm({ flat: false, both: false }) === 'mid' && mm({ paid: false, both: false }) === 'mid');
+t('memo: no essentials, nothing signed by both, nothing paid = low', mm({ price: false, flat: false, paid: false, both: false }) === 'low' && X3.memo({ price: false, flat: false, dates: false, paid: false, subj: false, both: false }).level === 'low');
+/* breg and bsign helpers */
+t('reg: the due dates come from the signing date (declaration 30 days, tax 60 days), none without it', X3.regDue(BU.reg[1], '2026-11-08', PT.pay) === '2026-12-08' && X3.regDue(BU.reg[2], '2026-11-08', PT.pay) === '2027-01-07' && X3.regDue(BU.reg[0], '2026-11-08', PT.pay) === null && X3.regDue(BU.reg[1], '', PT.pay) === null);
+t('reg: status count', JSON.stringify(X3.regCount(BU.reg, { warn: 2, declare: 1, ptax: 2 })) === '[7,1,2]');
+t('sign: tick count across the three lists', JSON.stringify(X3.ticks({ b: BU.sign.bring, s: BU.sign.sign, l: BU.sign.leave }, { b: { 0: 1, 2: 1 }, l: { 1: 1 } })) === '{"n":3,"all":12}');
+/* the reading layer */
+t('glossary search key: niqqud, gershayim and maqaf do not matter', G3.norm('רמ״י') === G3.norm('רמ"י') && G3.norm('הַלְוָאָה') === 'הלואה' && G3.norm('ל־30') === 'ל 30' && G3.norm('  נסח   טאבו ') === 'נסח טאבו');
+t('glossary count wording', G3.count(1) === 'מונח אחד' && G3.count(60) === '60 מונחים');
+t('map: a chapter is read at 60% past the middle of the screen', G3.READ === 0.6 && G3.passed(0, 1000, 600) === 0.6 && G3.passed(500, 1000, 400) === 0 && G3.passed(-2000, 1000, 400) === 1 && G3.passed(0, 0, 400) === 0);
+
 /* ---- the PHP summaries: same numbers ---- */
 let php = null;
 try {
@@ -167,6 +224,13 @@ if (php) {
   t('PHP bequity handover cash = JS', php.bequity.indexOf('עוד ' + B.n0(s4.cash) + ' ₪ מכספכם') > 0, B.n0(s4.cash));
   t('PHP FAQ parser: questions and multi-paragraph answers of that section only', php.faq.length === 2 && php.faq[1].acceptedAnswer.text === 'ת2עוד');
   t('PHP: no unfilled placeholder', !/\{[a-z_.]+\}/.test(php.bplan));
+  /* Phase 3 */
+  t('PHP: fifteen summaries, each with its marker', ['bplan', 'bequity', 'bladder', 'boffer', 'bsell', 'bdates', 'bcompare', 'bvisit', 'bwho', 'bhelp', 'bpay', 'bsign', 'bkeys', 'breg', 'bmemo'].every(i => php[i] && php[i].indexOf('data-bhub-sum="' + i + '"') > 0));
+  t('PHP bpay: the five payments with their protections, the advance rule with its source, the 30 and 60 days', (php.bpay.match(/<li>/g) || []).length === 5 && (php.bpay.match(/מה מגן עליכם:/g) || []).length === 4 && php.bpay.indexOf('7.5% מהמחיר') > 0 && php.bpay.indexOf('סעיף 15') > 0 && php.bpay.indexOf('בתוך 30 יום') > 0 && php.bpay.indexOf('בתוך 60 יום') > 0);
+  t('PHP bsign: the three lists in full (12 items), the dates filled', (php.bsign.match(/<li>/g) || []).length === 12 && php.bsign.indexOf('בתוך 30 יום') > 0);
+  t('PHP bkeys: the five transfers, an empty how or src is not printed', (php.bkeys.match(/<li>/g) || []).length === 5 && !/: <\/li>|\(מקור: \)/.test(php.bkeys));
+  t('PHP breg: the steps table, 10 rows with column labels', (php.breg.match(/<tr><td data-l=/g) || []).length === 10);
+  t('PHP bmemo: the six questions and the dated section 8', (php.bmemo.match(/<li>/g) || []).length === 6 && php.bmemo.indexOf('סעיף 8') > 0 && php.bmemo.indexOf('9.11.2026') > 0);
 }
 
 if (process.argv.includes('--facts')) {

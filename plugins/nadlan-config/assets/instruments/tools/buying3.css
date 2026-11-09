@@ -1,0 +1,135 @@
+/* NadLan Instruments · buying3.css (HAD-686, BuyingGuide v109): the reading layer of the /buying-apartment/ guide, enqueued only
+   where the buying tools are (inc/buying-hub.php). Palette and faces are the instruments' own, taken from an Israeli planning
+   sheet and the documents a buyer reads: survey-grid paper #F6F8F9, ink #12202A, sea #2F6F86 (links, actions), survey red #C42550
+   (legal stops), housing yellow #F2D15A (the marker under an official figure), open-space green #4F9A5C (a chapter read), civic
+   purple #8E7CC3 (the authority a step happens at); Karantina for heads, IBM Plex Sans Hebrew for text, IBM Plex Mono for
+   numbers, dates and labels. Not the default look: no cream, no brass, no side bars, no soft card shadows.
+   Every rule carries html body .entry-content (or html body .nli) because the theme forces fonts, table display and paragraph
+   sizes with !important; where page 9's own .nlbp-art rules tie, a [class] or [id] raises the rule by one step. Phone first; 44px touch targets, 48px on phones; visible focus; reduced motion respected. */
+:where(.nlbg-map,.nlbg-ch,.nlbg-gloss,.nlbg-gloss-find,.nlbg-note,.nlbg-tw,.nlbg-todo,.nlbg-who,.nlbg-src,.nlbg-back,.nlbg-kick,.nlbg-ans){
+  --nlbg-ground:#F6F8F9;--nlbg-surface:#FFFFFF;--nlbg-ink:#12202A;--nlbg-ink2:#3E4C58;--nlbg-mute:#5E6A75;--nlbg-line:#D3DCE2;
+  --nlbg-sea:#2F6F86;--nlbg-deep:#1F4B5C;--nlbg-red:#C42550;--nlbg-yel:#F2D15A;--nlbg-yel-edge:#C9A92B;--nlbg-grn:#4F9A5C;
+  --nlbg-civ:#8E7CC3;--nlbg-civ-ink:#5B4A99;
+  --nlbg-disp:"Karantina","IBM Plex Sans Hebrew",system-ui,sans-serif;--nlbg-sans:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;
+  --nlbg-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  --nlbg-label:"IBM Plex Mono","IBM Plex Sans Hebrew",ui-monospace,monospace}  /* labels: Plex Mono for the digits and Latin, Plex Hebrew for the letters (Plex Mono has no Hebrew) */
+.nlbg-vh{position:absolute !important;width:1px !important;height:1px !important;overflow:hidden !important;clip:rect(0 0 0 0) !important;white-space:nowrap !important;margin:-1px !important;padding:0 !important;border:0 !important}
+
+/* ---- the guide map: nav#nlbg-map.nlbg-map > h2, p(.nlbg-map__lede), .nlbg-map__phases > .nlbg-map__phase > h3 + (ol|ul).nlbg-map__chips > li > a[href="#nlbg-cN"][data-ch] > b + text (+ i, the dot; buying3.js adds it). Any number of phases: one column on phones, two from 640px, all in one row from 1000px */
+html body .entry-content .nlbg-map{position:relative;display:block;box-sizing:border-box;background:var(--nlbg-ground);border:1px solid var(--nlbg-line);border-radius:6px;padding:16px;margin:28px 0;max-width:none;direction:rtl;color:var(--nlbg-ink2);font-family:var(--nlbg-sans)}
+html body .entry-content .nlbg-map *{box-sizing:border-box}
+html body .entry-content .nlbg-map::before{content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;background-image:linear-gradient(var(--nlbg-line) 1px,transparent 1px),linear-gradient(90deg,var(--nlbg-line) 1px,transparent 1px);background-size:24px 24px;opacity:.35}
+html body .entry-content .nlbg-map[class] h2{position:relative;font:700 40px/40px var(--nlbg-disp) !important;color:var(--nlbg-ink) !important;margin:0 0 4px !important;padding:0 !important;border:0 !important;letter-spacing:0;text-align:start;max-width:none}
+html body .entry-content .nlbg-map[class]>p,html body .entry-content .nlbg-map[class] .nlbg-map__lede{position:relative;font:400 15px/24px var(--nlbg-sans) !important;color:var(--nlbg-ink2) !important;margin:0 0 14px !important;max-width:72ch}
+html body .entry-content .nlbg-map .nlbg-map__phases{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+html body .entry-content .nlbg-map .nlbg-map__phase{min-width:0;margin:0}
+html body .entry-content .nlbg-map .nlbg-map__phase h3,html body .entry-content .nlbg-map .nlbg-map__ph{font:600 13px/18px var(--nlbg-label) !important;letter-spacing:.04em;color:var(--nlbg-deep) !important;margin:0 0 8px !important;padding:0 !important;border:0 !important;text-transform:none}
+html body .entry-content .nlbg-map .nlbg-map__chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;list-style:none;margin:0 !important;padding:0 !important}
+html body .entry-content .nlbg-map .nlbg-map__chips>li{margin:0 !important;padding:0 !important;list-style:none;font-size:inherit !important;line-height:inherit !important;min-width:0}
+html body .entry-content .nlbg-map .nlbg-map__chips>li::before,html body .entry-content .nlbg-map .nlbg-map__chips>li::marker{content:none}
+html body .entry-content .nlbg-map .nlbg-map__chips a{display:flex;gap:8px;align-items:center;min-height:48px;padding:8px 10px;background:var(--nlbg-surface);border:1px solid var(--nlbg-line);border-radius:2px;text-decoration:none !important;color:var(--nlbg-ink) !important;font:500 14px/18px var(--nlbg-sans) !important;min-width:0;overflow-wrap:anywhere}
+html body .entry-content .nlbg-map .nlbg-map__chips a b{font:500 13px/1 var(--nlbg-mono) !important;color:var(--nlbg-sea) !important;min-width:22px;flex:none}
+html body .entry-content .nlbg-map .nlbg-map__chips a i{display:block;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--nlbg-line);margin-inline-start:auto;flex:none;font-style:normal}
+html body .entry-content .nlbg-map .nlbg-map__chips a.is-read i{background:var(--nlbg-grn);border-color:var(--nlbg-grn)}
+html body .entry-content .nlbg-map .nlbg-map__chips a.is-now{border-color:var(--nlbg-sea);box-shadow:inset 0 0 0 1px var(--nlbg-sea)}
+html body .entry-content .nlbg-map .nlbg-map__chips a:hover{border-color:var(--nlbg-sea)}
+html body .entry-content .nlbg-map p.nlbg-map__prog{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:14px 0 0 !important;font:500 12.5px/18px var(--nlbg-label) !important;color:var(--nlbg-ink2) !important}
+html body .entry-content .nlbg-map p.nlbg-map__prog[hidden]{display:none !important}
+html body .entry-content .nlbg-map .nlbg-map__prog button{min-height:48px;padding:8px 14px;border:1px solid var(--nlbg-line);border-radius:999px;background:var(--nlbg-surface);color:var(--nlbg-ink) !important;font:500 13.5px/18px var(--nlbg-sans) !important;cursor:pointer;margin:0;box-shadow:none;text-transform:none;letter-spacing:0}
+@media (min-width:640px){html body .entry-content .nlbg-map{padding:20px}html body .entry-content .nlbg-map .nlbg-map__phases{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media (min-width:1000px){html body .entry-content .nlbg-map .nlbg-map__phases{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}html body .entry-content .nlbg-map .nlbg-map__chips{grid-template-columns:minmax(0,1fr)}
+  html body .entry-content .nlbg-map .nlbg-map__chips a,html body .entry-content .nlbg-map .nlbg-map__prog button{min-height:44px}}
+
+/* ---- a chapter: section.nlbg-ch#nlbg-cN > p.nlbg-kick, h2, p.nlbg-ans, .nlbg-who, .nlbg-todo, text, notes, tables, p.nlbg-back */
+html body .entry-content .nlbg-ch{display:block;margin:40px 0 0;padding:14px 0 0;border-top:3px solid var(--nlbg-ink);scroll-margin-top:90px;direction:rtl;color:var(--nlbg-ink2);font-family:var(--nlbg-sans);max-width:880px}
+html body .entry-content .nlbg-ch p.nlbg-kick,html body .entry-content p.nlbg-kick{font:500 13px/18px var(--nlbg-label) !important;color:var(--nlbg-sea) !important;letter-spacing:.03em;margin:0 0 6px !important;padding:0 !important;border:0 !important}
+html body .entry-content .nlbg-ch[id]>h2{font:700 42px/42px var(--nlbg-disp) !important;color:var(--nlbg-ink) !important;margin:0 0 12px !important;padding:0 !important;border:0 !important;letter-spacing:0;text-wrap:balance;text-align:start;max-width:none}
+html body .entry-content .nlbg-ch[id] h3:not(.nli h3){font:600 20px/28px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:24px 0 8px !important;padding:0 !important;border:0 !important;letter-spacing:0;text-align:start}
+html body .entry-content .nlbg-ch p.nlbg-ans,html body .entry-content p.nlbg-ans{font:600 17px/28px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:0 0 14px !important;max-width:72ch}
+html body .entry-content .nlbg-ch>p:not([class]),html body .entry-content .nlbg-ch>ul:not([class])>li,html body .entry-content .nlbg-ch>ol:not([class])>li{font:400 16.5px/28px var(--nlbg-sans) !important;color:var(--nlbg-ink2) !important}
+html body .entry-content .nlbg-ch>p:not([class]){margin:0 0 14px !important;max-width:72ch}
+html body .entry-content .nlbg-ch a{color:var(--nlbg-sea) !important;text-decoration:underline;text-underline-offset:3px}
+html body .entry-content .nlbg-ch strong{color:var(--nlbg-ink);font-weight:600}
+@media (max-width:600px){html body .entry-content .nlbg-ch[id]>h2{font-size:36px !important;line-height:36px !important}html body .entry-content .nlbg-map[class] h2{font-size:36px !important;line-height:36px !important}}
+
+/* authority chips: where a step happens (never a button) */
+html body .entry-content .nlbg-who{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px;padding:0;list-style:none}
+html body .entry-content .nlbg-who[class] span,html body .entry-content .nlbg-who[class] li{display:inline-block;font:500 13px/18px var(--nlbg-sans) !important;color:var(--nlbg-civ-ink) !important;border:1px solid var(--nlbg-civ);border-radius:2px;padding:3px 8px;background:var(--nlbg-surface);margin:0;list-style:none}
+
+/* "what you do at this stage": a title (p.nlbg-todo__t, or h3, h4, .nlbg-todo__h) + ol, and one line .nlbg-todo__tool with a link to the tool */
+html body .entry-content .nlbg-todo{border:1px solid var(--nlbg-line);border-radius:2px;padding:12px 14px;margin:14px 0;background:var(--nlbg-ground)}
+html body .entry-content .nlbg-todo[class]>h3,html body .entry-content .nlbg-todo[class]>h4,html body .entry-content .nlbg-todo .nlbg-todo__h,html body .entry-content .nlbg-todo .nlbg-todo__t{font:600 15px/22px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:0 0 6px !important;padding:0 !important;border:0 !important;letter-spacing:0}
+html body .entry-content .nlbg-todo ol,html body .entry-content .nlbg-todo ul{margin:0 !important;padding:0 20px 0 0 !important}
+html body .entry-content .nlbg-todo[class] li{font:400 15px/25px var(--nlbg-sans) !important;color:var(--nlbg-ink2) !important;margin:0 0 2px !important}
+html body .entry-content .nlbg-todo .nlbg-todo__tool{margin:6px 0 0 !important;font:500 15px/22px var(--nlbg-sans) !important}
+html body .entry-content .nlbg-todo .nlbg-todo__tool a{display:inline-flex;align-items:center;min-height:48px;color:var(--nlbg-sea) !important;text-decoration:underline;text-underline-offset:3px}
+@media (min-width:601px){html body .entry-content .nlbg-todo .nlbg-todo__tool a{min-height:44px}}
+
+/* notes: .nlbg-note.nlbg-note--stop | --field | --fig > .nlbg-note__lab (the word) + p (+ p.nlbg-src). A square marker, hairlines, no side bar, no shadow */
+html body .entry-content .nlbg-note{display:grid;grid-template-columns:12px minmax(0,1fr);column-gap:10px;row-gap:4px;margin:16px 0;padding:12px 0;border:0;border-top:1px solid var(--nlbg-line);border-bottom:1px solid var(--nlbg-line);border-radius:0;background:none;box-shadow:none;--nlbg-mk:var(--nlbg-sea);--nlbg-mkt:var(--nlbg-sea)}
+html body .entry-content .nlbg-note::before{content:"";grid-column:1;grid-row:1;width:12px;height:12px;margin-top:6px;border-radius:1px;background:var(--nlbg-mk)}
+html body .entry-content .nlbg-note>*{grid-column:2;min-width:0}
+html body .entry-content .nlbg-note>.nlbg-note__lab{grid-row:1;display:block;font:600 13px/24px var(--nlbg-label) !important;letter-spacing:.04em;color:var(--nlbg-mkt) !important;margin:0 !important}
+html body .entry-content .nlbg-note[class]>p{font:400 15.5px/26px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:0 !important;max-width:72ch}
+html body .entry-content .nlbg-note--stop{--nlbg-mk:var(--nlbg-red);--nlbg-mkt:var(--nlbg-red)}
+html body .entry-content .nlbg-note--field{--nlbg-mk:var(--nlbg-sea);--nlbg-mkt:var(--nlbg-sea)}
+html body .entry-content .nlbg-note--fig{--nlbg-mk:var(--nlbg-yel);--nlbg-mkt:var(--nlbg-ink)}
+html body .entry-content .nlbg-note--fig::before{outline:1px solid var(--nlbg-yel-edge)}
+html body .entry-content .nlbg-note--fig b,html body .entry-content .nlbg-note--fig strong{font:500 24px/32px var(--nlbg-mono) !important;color:var(--nlbg-ink) !important;background:linear-gradient(transparent 55%,var(--nlbg-yel) 55%);padding:0 2px;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+/* the source line under a figure or a table: "מקור: <the official page> · נבדק D.M.YYYY" */
+html body .entry-content p.nlbg-src[class],html body .entry-content .nlbg-src[class]{font:400 13px/20px var(--nlbg-sans) !important;color:var(--nlbg-mute) !important;margin:4px 0 0 !important}
+html body .entry-content .nlbg-src a{color:var(--nlbg-sea) !important;text-decoration:underline;text-underline-offset:2px}
+
+/* tables: div.nlbg-tw > table.nlbg-tbl, every td with data-l (its column label). Wide: a table. Phone: each row a labelled card */
+html body .entry-content .nlbg-tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;max-width:100%;border:0;padding:0}
+html body .entry-content table.nlbg-tbl{display:table !important;width:100% !important;border-collapse:collapse;margin:0 !important;font:400 14.5px/21px var(--nlbg-sans);border:0 !important;background:none !important}
+html body .entry-content table.nlbg-tbl caption{display:table-caption !important;caption-side:top;text-align:start;font:500 13px/19px var(--nlbg-sans) !important;color:var(--nlbg-mute) !important;padding:0 0 8px !important}
+html body .entry-content table.nlbg-tbl thead{display:table-header-group !important}
+html body .entry-content table.nlbg-tbl tbody{display:table-row-group !important}
+html body .entry-content table.nlbg-tbl tr{display:table-row !important;border:0 !important;border-radius:0 !important;margin:0 !important;padding:0 !important;background:none !important}
+html body .entry-content table.nlbg-tbl th,html body .entry-content table.nlbg-tbl td{display:table-cell !important;width:auto !important;padding:9px 8px !important;border:0 !important;border-bottom:1px solid var(--nlbg-line) !important;text-align:start;vertical-align:top;background:none !important;color:var(--nlbg-ink) !important;font:400 14.5px/21px var(--nlbg-sans) !important;letter-spacing:0}
+html body .entry-content table.nlbg-tbl thead th{font:600 13px/18px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;border-bottom:2px solid var(--nlbg-ink) !important;vertical-align:bottom}
+html body .entry-content table.nlbg-tbl tbody th{font-weight:600 !important}
+html body .entry-content table.nlbg-tbl td.n{font:500 14px/21px var(--nlbg-mono) !important;white-space:nowrap;font-variant-numeric:tabular-nums}
+html body .entry-content table.nlbg-tbl td::before{content:none}
+@media (max-width:600px){
+  html body .entry-content .nlbg-tw{overflow:visible}
+  html body .entry-content table.nlbg-tbl,html body .entry-content table.nlbg-tbl tbody{display:block !important;width:100% !important}
+  html body .entry-content table.nlbg-tbl caption{display:block !important}
+  html body .entry-content table.nlbg-tbl thead{display:none !important}
+  html body .entry-content table.nlbg-tbl tr{display:grid !important;gap:6px;padding:10px 0 !important;border-bottom:1px solid var(--nlbg-line) !important}
+  html body .entry-content table.nlbg-tbl th,html body .entry-content table.nlbg-tbl td{display:block !important;width:auto !important;padding:0 !important;border:0 !important}
+  html body .entry-content table.nlbg-tbl tr>:first-child{font-weight:600 !important}
+  html body .entry-content table.nlbg-tbl td[data-l]::before,html body .entry-content table.nlbg-tbl th[data-l]::before{content:attr(data-l);display:block;font:500 12px/16px var(--nlbg-label);color:var(--nlbg-mute);letter-spacing:.02em;font-weight:500}
+  html body .entry-content table.nlbg-tbl td.n{white-space:normal}}
+
+/* the glossary: (section.nlbg-glossary > h2 +) dl#nlbg-gloss.nlbg-gloss > (dt + dd)+ or > div > dt + dd. buying3.js puts .nlbg-gloss-find (label, search, count) right above the dl */
+html body .entry-content .nlbg-glossary{display:block;margin:40px 0 0;scroll-margin-top:90px}
+html body .entry-content dl.nlbg-gloss{display:grid;grid-template-columns:minmax(0,1fr);margin:10px 0 0 !important;padding:0 !important;direction:rtl}
+html body .entry-content dl.nlbg-gloss>div{display:contents}
+html body .entry-content dl.nlbg-gloss dt{font:600 15.5px/22px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:0 !important;padding:10px 0 2px !important;border-top:1px solid var(--nlbg-line)}
+html body .entry-content dl.nlbg-gloss dd{font:400 14.5px/23px var(--nlbg-sans) !important;color:var(--nlbg-ink2) !important;margin:0 !important;padding:0 0 10px !important}
+html body .entry-content dl.nlbg-gloss dd a{color:var(--nlbg-sea) !important;text-decoration:underline;text-underline-offset:2px}
+html body .entry-content dl.nlbg-gloss [hidden]{display:none !important}
+@media (min-width:760px){html body .entry-content dl.nlbg-gloss{grid-template-columns:minmax(150px,15em) minmax(0,1fr);column-gap:24px}
+  html body .entry-content dl.nlbg-gloss dt{padding:10px 0 !important}html body .entry-content dl.nlbg-gloss dd{padding:10px 0 !important;border-top:1px solid var(--nlbg-line)}}
+html body .entry-content .nlbg-gloss-find{display:grid;gap:6px;margin:12px 0 0;direction:rtl;max-width:560px}
+html body .entry-content .nlbg-gloss-find label{font:500 13px/18px var(--nlbg-sans) !important;color:var(--nlbg-ink) !important;margin:0}
+html body .entry-content .nlbg-gloss-find input[type=search]{display:block;width:100% !important;min-height:48px;margin:0 !important;padding:10px 12px !important;border:1px solid var(--nlbg-line) !important;border-radius:2px !important;background:var(--nlbg-surface) !important;box-shadow:none !important;color:var(--nlbg-ink) !important;font:400 16px/24px var(--nlbg-sans) !important;-webkit-appearance:none;appearance:none}
+html body .entry-content .nlbg-gloss-find input[type=search]:focus{border-color:var(--nlbg-sea) !important;box-shadow:0 0 0 1px var(--nlbg-sea) !important;outline:0}
+html body .entry-content .nlbg-gloss-find p.nlbg-gloss-find__n{font:500 12.5px/18px var(--nlbg-label) !important;color:var(--nlbg-mute) !important;margin:0 !important}
+
+/* back to the map */
+html body .entry-content p.nlbg-back[class],html body .entry-content .nlbg-back[class]{margin:12px 0 0 !important;font:500 14.5px/20px var(--nlbg-sans) !important}
+html body .entry-content .nlbg-back a,html body .entry-content a.nlbg-back{display:inline-flex;align-items:center;min-height:48px;color:var(--nlbg-sea) !important;text-decoration:underline;text-underline-offset:3px}
+@media (min-width:601px){html body .entry-content .nlbg-back a,html body .entry-content a.nlbg-back{min-height:44px}}
+
+/* focus and motion */
+html body .entry-content :is(.nlbg-map,.nlbg-ch,.nlbg-gloss,.nlbg-gloss-find,.nlbg-back,.nlbg-todo) :is(a,button,input):focus-visible,html body .entry-content a.nlbg-back:focus-visible{outline:2px solid var(--nlbg-sea) !important;outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html body .entry-content .nlbg-map .nlbg-map__chips a{transition:border-color .15s,box-shadow .15s}html body .entry-content .nlbg-map .nlbg-map__chips a i{transition:background-color .2s,border-color .2s}}
+@media (prefers-reduced-motion:reduce){html body .entry-content .nlbg-map .nlbg-map__chips a,html body .entry-content .nlbg-map .nlbg-map__chips a i{transition:none !important}}
+@media print{html body .entry-content .nlbg-gloss-find,html body .entry-content .nlbg-map__prog{display:none !important}}
+
+/* a tool placed inside a chapter keeps its heading level: [nadlan_tool id="bpay" h="3"] prints h3.nli__title (buying.js keeps it) */
+html body .nli .nli__panel>h3.nli__title{font:700 40px/40px var(--nli-display) !important;color:var(--nli-ink) !important;margin:0 0 8px !important;padding:0 !important;border:0 !important;text-wrap:balance;position:relative;letter-spacing:0;text-transform:none}
+@media (max-width:520px){html body .nli .nli__panel>h3.nli__title{font-size:36px !important;line-height:36px !important}}

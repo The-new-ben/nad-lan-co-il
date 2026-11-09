@@ -7,6 +7,10 @@
  *   bequity "קניית דירה ללא הון עצמי" (equity sources and their monthly cost; the handover stress test of a low-down-payment offer)
  *   bladder "איך לקנות דירה בארץ עם 100 אלף..." (equity + status -> maximum price by the LTV rule -> cities and rooms that fit)
  *   boffer  "הצעת מחיר לרכישת דירה" (asking price against the median deals, neighbourhood share, an opening range with its basis)
+ * Phase 2 (8.11.2026, tools/buying2.js): bsell, bdates, bcompare, bvisit, bwho, bhelp. Phase 3 (9.11.2026, HAD-686, tools/buying3.js):
+ *   bpay (the payment schedule of a second-hand deal), bsign (the signing day), bkeys (the handover protocol), breg (from the signing
+ *   to an extract in your name), bmemo (the memorandum check); buying3.css is the guide's reading layer (.nlbg-*), and a tool inside a
+ *   chapter may take h="3" ([nadlan_tool id="bpay" h="3"]; id first, so the engine finds the tool).
  * Data: buying.json (content only) + ptax, nrm, zakaut, orechdin, boi-mortgage, cost, cbs-200010, prices-hub, value (all dated).
  * This file: the registry entries (filter nadlan_nli_tools), the plain server summaries with the real numbers (nadlan_bhub_summary,
  * the same math as buying.js), and the FAQPage of the page's "קניית דירה: השאלות שלא שואלים את עורך הדין" section.
@@ -18,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 
-	function nadlan_bhub_tool_ids() { return array( 'bplan', 'bequity', 'bladder', 'boffer', 'bsell', 'bdates', 'bcompare', 'bvisit', 'bwho', 'bhelp' ); }
+	function nadlan_bhub_tool_ids() { return array( 'bplan', 'bequity', 'bladder', 'boffer', 'bsell', 'bdates', 'bcompare', 'bvisit', 'bwho', 'bhelp', 'bpay', 'bsign', 'bkeys', 'breg', 'bmemo' ); }
 
 	add_filter( 'nadlan_nli_tools', function ( $tools ) {
 		$tools['bplan'] = array( 'file' => 'buying', 'deps' => array( 'prices-common' ),
@@ -67,6 +71,28 @@ if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 			'desc' => 'הלוואת זכאות, תוספות שירות ומילואים, עולים, נכות, אזורי עדיפות, יישובי הנגב, הורה עצמאי ותוכנית 10 פלוס: לפי המצב שלכם, כל הטבה עם הדף שלה ב־gov.il ותאריך העדכון.',
 			'data' => array( 'buying.json', 'ptax.json', 'zakaut.json' ),
 			'related' => array( '/dira-behanacha/' => 'דירה בהנחה', '/mortgage-calculator/' => 'מחשבון משכנתא' ) );
+		/* Phase 3 (9.11.2026, HAD-686): five tools of the long guide in tools/buying3.js, on buying.js and buying2.js */
+		$b3 = array( 'file' => 'buying3', 'deps' => array( 'prices-common', 'buying', 'buying2' ) );
+		$tools['bpay'] = $b3 + array( 'name' => 'לוח התשלומים שלכם בעסקת יד שנייה', 'cat' => 'FinanceApplication', 'kicker' => 'לוח תשלומים · עסקת יד שנייה',
+			'desc' => 'המחיר, המשכנתא, יתרת המשכנתא של המוכר והתשלום הראשון שסוכם נותנים את חמשת התשלומים לפי הסדר: מתי, כמה, למי ומה מגן עליכם ברגע של כל תשלום (נאמנות עד הערת האזהרה, מכתב כוונות של הבנק, שעבוד לבנק שלכם, מקדמה על מס שבח לפי סעיף 15, מפתחות מול התשלום האחרון), עם המועדים לרשות המסים מתאריך החתימה.',
+			'data' => array( 'buying.json', 'ptax.json', 'nrm.json', 'orechdin.json', 'prices-hub.json' ),
+			'related' => array( '/real-estate-lawyer/apartment-sale-contract/' => 'חוזה מכר דירה', '/real-estate-tax-advisor/capital-gains-tax-guide/' => 'מס שבח', '/tabu-extract-check/' => 'בדיקת נסח טאבו וזכויות בנכס' ) );
+		$tools['bsign'] = $b3 + array( 'name' => 'יום החתימה: מה מביאים, על מה חותמים, עם מה יוצאים', 'cat' => 'UtilitiesApplication', 'kicker' => 'רשימה · יום החתימה',
+			'desc' => 'שלוש רשימות ליום החתימה על חוזה לדירה יד שנייה: מה מביאים, על מה חותמים ועם מה יוצאים, כולל המועדים לרשות המסים. הסימון נשמר בדפדפן, ואפשר להדפיס או לשמור כ־PDF.',
+			'data' => array( 'buying.json', 'ptax.json' ),
+			'related' => array( '/real-estate-lawyer/apartment-sale-contract/' => 'חוזה מכר דירה', '/mortgage-calculator/mortgage-pre-approval/' => 'אישור עקרוני למשכנתא', '/real-estate-broker/' => 'מתווך נדל״ן: מה בודקים' ) );
+		$tools['bkeys'] = $b3 + array( 'name' => 'פרוטוקול מסירה וקריאת מונים', 'cat' => 'UtilitiesApplication', 'kicker' => 'פרוטוקול · יום המסירה',
+			'desc' => 'פרוטוקול ליום המסירה: קריאת מוני חשמל, מים וגז, מפתחות ושלטים, ליקויים ומה שנשאר בדירה, ורשימת ההעברות על שמכם. נשמר בדפדפן ומודפס עם מקום לחתימת שני הצדדים.',
+			'data' => array( 'buying.json' ),
+			'related' => array( '/home-inspection/' => 'בדק בית', '/real-estate-lawyer/condo-documents/' => 'מסמכי הבית המשותף' ) );
+		$tools['breg'] = $b3 + array( 'name' => 'מעקב רישום: מהחתימה ועד נסח על שמכם', 'cat' => 'UtilitiesApplication', 'kicker' => 'מעקב · אחרי החתימה',
+			'desc' => 'עשרת השלבים שאחרי החתימה, מהערת האזהרה ועד נסח על שמכם: מי עושה כל שלב, איזה מסמך מוכיח אותו, סטטוס שנשמר בדפדפן, ותאריכי היעד לרשות המסים מתאריך החתימה.',
+			'data' => array( 'buying.json', 'ptax.json' ),
+			'related' => array( '/tabu-extract-check/' => 'בדיקת נסח טאבו וזכויות בנכס', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/real-estate-lawyer/' => 'עורך דין מקרקעין' ) );
+		$tools['bmemo'] = $b3 + array( 'name' => 'חתמתם על זיכרון דברים? בודקים בדקה', 'cat' => 'ReferenceApplication', 'kicker' => 'בדיקה · זיכרון דברים',
+			'desc' => 'שש שאלות של כן או לא על זיכרון דברים שנחתם או שמבקשים לחתום עליו, ותוצאה במילים פשוטות: סיכון נמוך, בינוני או גבוה, והצעד הבא לפני כל תשלום. התשובות לא נשמרות. זה לא ייעוץ משפטי.',
+			'data' => array( 'buying.json' ),
+			'related' => array( '/real-estate-lawyer/apartment-memorandum/' => 'זיכרון דברים', '/real-estate-lawyer/' => 'עורך דין מקרקעין' ) );
 		return $tools;
 	} );
 
@@ -167,6 +193,51 @@ if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 			return $wrap( $h );
 		}
 		if ( ! is_array( $Z ) || ! is_array( $O ) ) { return ''; }
+		/* Phase 3: the five tools of buying3.js; every list is the same buying.json the tools read */
+		if ( in_array( $id, array( 'bpay', 'bsign', 'bkeys', 'breg', 'bmemo' ), true ) ) {
+			$Pp = $PT['pay'];
+			$srct = function ( $s ) use ( $BU, $dt ) {
+				if ( is_string( $s ) && '' !== $s ) { return isset( $BU['laws'][ $s ] ) ? $BU['laws'][ $s ]['label'] . ( ! empty( $BU['laws'][ $s ]['date'] ) ? ', נבדק ' . $dt( $BU['laws'][ $s ]['date'] ) : '' ) : ''; }
+				return is_array( $s ) && ! empty( $s['label'] ) ? $s['label'] . ( ! empty( $s['date'] ) ? ', נבדק ' . $dt( $s['date'] ) : '' ) : '';
+			};
+			if ( 'bpay' === $id ) {
+				$adv = null; foreach ( $BU['who'] as $r ) { if ( $BU['pay']['adv_src'] === $r['src'] ) { $adv = $r; } }
+				$h = '<p>בעסקת יד שנייה המחיר לא עובר בבת אחת. לוח התשלומים קובע מתי משלמים, כמה ולמי, ומה מגן עליכם ברגע של כל תשלום. בכלי מקלידים את המחיר, את המשכנתא, את יתרת המשכנתא של המוכר ואת התשלום הראשון שסוכם, ומקבלים את הסכומים ואת המועדים.</p><ol>';
+				foreach ( $BU['pay']['items'] as $it ) {
+					$h .= '<li><strong>' . esc_html( $it['t'] ) . '</strong> (' . esc_html( $fill2( $it['when'] ) ) . '): ' . esc_html( $it['to'] ) . '. '
+						. esc_html( 'adv' === $it['id'] ? ( $adv ? 'לפי החוק: ' . $fill2( $adv['d'] ) . '.' : '' ) : 'מה מגן עליכם: ' . $it['safe'] . '.' ) . '</li>';
+				}
+				return $wrap( $h . '</ol><p>' . esc_html( 'מקור כלל המקדמה: ' . $O['sources']['TAX']['label'] . ', נבדק ' . $dt( $O['checked'] ) . '. מתאריך החתימה: הצהרה לרשות המסים בתוך ' . (int) $Pp['declare_days'] . ' יום ותשלום מס הרכישה בתוך ' . (int) $Pp['pay_days'] . ' יום (' . $Pp['label'] . '). הלוח בפועל נקבע בחוזה.' ) . '</p>' );
+			}
+			if ( 'bsign' === $id ) {
+				$h = '<p>שלוש רשימות ליום החתימה על חוזה לדירה יד שנייה. בכלי מסמנים מה כבר מוכן, והסימון נשמר בדפדפן; אפשר להדפיס או לשמור כ־PDF.</p>';
+				foreach ( array( 'bring' => 'מביאים', 'sign' => 'חותמים', 'leave' => 'יוצאים עם' ) as $k => $lab ) {
+					$h .= '<p><strong>' . esc_html( $lab ) . '</strong></p><ul>';
+					foreach ( $BU['sign'][ $k ] as $x ) { $s = ! empty( $x['src'] ) ? $srct( $x['src'] ) : ''; $h .= '<li>' . esc_html( $x['t'] . ( ! empty( $x['d'] ) ? ': ' . $fill2( $x['d'] ) : '' ) . ( $s ? ' (' . $s . ')' : '' ) ) . '</li>'; }
+					$h .= '</ul>';
+				}
+				return $wrap( $h );
+			}
+			if ( 'bkeys' === $id ) {
+				$K = $BU['keys']; $m = array(); foreach ( $K['meters'] as $x ) { $m[] = $x['t']; } $c = array(); foreach ( $K['counts'] as $x ) { $c[] = $x['t']; }
+				$h = '<p>ביום המסירה רושמים את הקריאה של כל מונה (' . esc_html( implode( ', ', $m ) ) . '), סופרים ' . esc_html( implode( ' ו', $c ) ) . ', וכותבים מה נשאר בדירה ומה צריך תיקון. בכלי הכול נשמר בדפדפן, והפרוטוקול המודפס מוכן לחתימת שני הצדדים.</p><p><strong>ההעברות על שמכם אחרי המסירה</strong></p><ul>';
+				foreach ( $K['transfers'] as $x ) { $s = $srct( $x['src'] ); $h .= '<li>' . esc_html( $x['t'] . ( '' !== trim( (string) $x['how'] ) ? ': ' . $x['how'] : '' ) . ( $s ? ' (מקור: ' . $s . ')' : '' ) ) . '</li>'; }
+				return $wrap( $h . '</ul>' );
+			}
+			if ( 'breg' === $id ) {
+				$h = '<p>אחרי החתימה הדירה עוברת לשמכם בשלבים. בכלי מסמנים ליד כל שלב טרם, נשלח או התקבל, והסטטוס נשמר בדפדפן; עם תאריך החתימה מופיעים גם המועדים לרשות המסים.</p>'
+					. '<table><caption>מהחתימה ועד נסח על שמכם: השלבים לפי הסדר</caption><thead><tr><th>שלב</th><th>מי עושה</th><th>המסמך שמוכיח</th></tr></thead><tbody>';
+				foreach ( $BU['reg'] as $x ) {
+					$due = empty( $x['due'] ) ? '' : ' (בתוך ' . (int) ( 'declare' === $x['due'] ? $Pp['declare_days'] : $Pp['pay_days'] ) . ' יום מהחתימה)';
+					$h .= '<tr><td data-l="שלב">' . esc_html( $x['t'] . $due ) . '</td><td data-l="מי עושה">' . esc_html( $x['who'] ) . '</td><td data-l="המסמך שמוכיח">' . esc_html( $x['doc'] ) . '</td></tr>';
+				}
+				return $wrap( $h . '</tbody></table><p>' . esc_html( $BU['reg_note'] . ' מקור המועדים: ' . $Pp['label'] . '.' ) . '</p>' );
+			}
+			$l8 = $BU['laws'][ $BU['memo']['law'] ];
+			$h = '<p>שש שאלות של כן או לא על זיכרון דברים שכבר נחתם, או שמבקשים מכם לחתום עליו. בכלי התשובות נותנות סיכון נמוך, בינוני או גבוה ואת הצעד הבא; הן לא נשמרות.</p><ol>';
+			foreach ( $BU['memo']['q'] as $q ) { $h .= '<li>' . esc_html( $q['t'] ) . '</li>'; }
+			return $wrap( $h . '</ol><p>' . esc_html( 'מסמך כתוב עם הפרטים המהותיים, מחיר וזיהוי של הדירה, ששני הצדדים חתמו עליו, עלול להיחשב חוזה מחייב לפי דרישת הכתב שבסעיף 8 לחוק המקרקעין. ' . $BU['memo']['levels']['high']['next'] ) . '</p><p>' . esc_html( $l8['label'] . ': "' . $l8['text'] . '" (נבדק ' . $dt( $l8['date'] ) . '). ' . $BU['memo']['disc'] ) . '</p>' );
+		}
 		if ( 'bwho' === $id ) {
 			$S = array( 'ptax' => $PT['source'], 'ptaxpay' => $PT['pay']['label'], 'guide' => $PT['guide']['label'], 'tax15' => $O['sources']['TAX']['label'], 'eth' => $O['sources']['ETH']['label'] );
 			foreach ( $BU['laws'] as $k => $l ) { $S[ $k ] = $l['label']; }
@@ -211,11 +282,26 @@ if ( ! function_exists( 'nadlan_bhub_tool_ids' ) ) {
 
 	/* Until the engine branch exists: put the summary inside the tool's panel, after its title, once. */
 	add_filter( 'do_shortcode_tag', function ( $out, $tag, $attr ) {
-		if ( 'nadlan_tool' !== $tag || ! is_array( $attr ) || empty( $attr['id'] ) || ! in_array( $attr['id'], nadlan_bhub_tool_ids(), true ) || false !== strpos( (string) $out, 'data-bhub-sum' ) ) { return $out; }
-		$sum = nadlan_bhub_summary( $attr['id'] );
-		$at  = strpos( (string) $out, '</h2></div></div>' );
-		return ( $sum && false !== $at ) ? substr( $out, 0, $at + 5 ) . $sum . substr( $out, $at + 5 ) : $out;
+		if ( 'nadlan_tool' !== $tag || ! is_array( $attr ) || empty( $attr['id'] ) || ! in_array( $attr['id'], nadlan_bhub_tool_ids(), true ) ) { return $out; }
+		if ( false === strpos( (string) $out, 'data-bhub-sum' ) ) {
+			$sum = nadlan_bhub_summary( $attr['id'] );
+			$at  = strpos( (string) $out, '</h2></div></div>' );
+			if ( $sum && false !== $at ) { $out = substr( $out, 0, $at + 5 ) . $sum . substr( $out, $at + 5 ); }
+		}
+		/* HAD-686: a tool placed inside a chapter of the guide, [nadlan_tool id="bpay" h="3"], titles itself with an h3 (buying.js keeps the
+		   level when it draws the tool; buying3.css styles h3.nli__title). Without h, or with any other value, nothing changes. */
+		if ( isset( $attr['h'] ) && '3' === (string) $attr['h'] ) { $out = preg_replace( '/<h2 class="nli__title">(.*?)<\/h2>/s', '<h3 class="nli__title">$1</h3>', (string) $out, 1 ); }
+		return $out;
 	}, 10, 3 );
+
+	/* HAD-686: the guide's reading layer (buying3.css) and its behaviour (buying3.js: the guide map and the glossary filter) on every page
+	   with a buying tool. The engine already loads buying3.js when one of its five tools is on the page; the handle is the same. */
+	add_action( 'wp_enqueue_scripts', function () {
+		if ( ! function_exists( 'nadlan_nli_page_ids' ) || ! function_exists( 'nadlan_nli_url' ) || ! array_intersect( nadlan_nli_page_ids(), nadlan_bhub_tool_ids() ) ) { return; }
+		$v = function_exists( 'nadlan_nli_ver' ) ? nadlan_nli_ver() : '1';
+		wp_enqueue_style( 'nadlan-nli-buying3', nadlan_nli_url( 'tools/buying3.css' ), array( 'nadlan-nli' ), $v );
+		if ( ! wp_script_is( 'nadlan-nli-buying3', 'enqueued' ) ) { wp_enqueue_script( 'nadlan-nli-buying3', nadlan_nli_url( 'tools/buying3.js' ), array( 'nadlan-nli' ), $v, true ); }
+	}, 21 );
 
 	/** FAQPage from the page's own "קניית דירה: השאלות שלא שואלים את עורך הדין" section (h3 question, then its paragraphs). */
 	function nadlan_bhub_faq( $html ) {

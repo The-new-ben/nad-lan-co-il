@@ -1,0 +1,25 @@
+{
+  "released": "1.72.617",
+  "from": "1.72.616",
+  "live_before": {
+    "inc/buying-hub.php": "4779851ea13cf7a63097e7daa89dbeee",
+    "assets/instruments/tools/buying.js": "f7965676d47052550c7454af79111e06",
+    "assets/instruments/tools/buying2.js": "426b0e5b00d7bd54fbe456e554d46df0",
+    "assets/instruments/data/buying.json": "44c0fa9d84ced3a640694ea8a125c55c",
+    "nadlan-config.php": "e00ff219d42e84f85654497add625668"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-09 04:35:00",
+  "files": {
+    "inc/buying-hub.php": "aae3128ca9c7cc8e611771e30730a7a7",
+    "assets/instruments/tools/buying.js": "24a6df652341ad3fec2a7c0a0af77e5f",
+    "assets/instruments/tools/buying2.js": "94e21951c25b22e40c82666a0bf5df89",
+    "assets/instruments/data/buying.json": "2f574c5f4a7c993c72f13db061b38d99",
+    "assets/instruments/tools/buying3.js": "74ec3d8bafcbf59534b67ae30a42254e",
+    "assets/instruments/tools/buying3.css": "f9c4f975d90bedfdd3d1ff5134e489a5",
+    "nadlan-config.php": "026ab10b4896bbc034ea9a8b64c0dc1a"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.617, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

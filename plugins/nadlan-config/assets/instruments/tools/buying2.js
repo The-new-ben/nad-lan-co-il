@@ -138,10 +138,11 @@
   NI.register('bdates', { custom: function (root, D0) {
     var o = setup(root, 'יומן · מועדים בחוק', 'לוח זמנים לקניית דירה: המועדים שלכם ביומן', D0), M = o.M, p = o.p, BU = M.buying;
     p.appendChild(U.el('p', 'nlph-sub', esc('מקלידים את תאריך החתימה ומקבלים את התאריכים שהחוק קובע אחריה, כל אחד עם המקור שלו, וקובץ שנכנס ליומן בטלפון עם תזכורת 3 ימים לפני. מועד שלא מצאנו לו מקור רשמי לא נכנס.')));
-    var st = { sign: today(), ty: 'used', s: H.load().s || 'first' };
+    var ISO = /^\d{4}-\d{2}-\d{2}$/, st = { sign: ISO.test(H.load().sign || '') ? H.load().sign : today(), ty: 'used', s: H.load().s || 'first' };  // HAD-686: one signing date for bdates, bpay and breg
     var f = U.el('div', 'nlbh-form'); p.appendChild(f);
     var df = U.el('div', 'nli__f'), dl = U.el('label', '', 'תאריך החתימה'), dib = U.el('div', 'nli__in'), di = document.createElement('input'); di.type = 'date'; di.id = 'nlbh-sign-' + Math.random().toString(36).slice(2, 7); dl.htmlFor = di.id; di.value = st.sign;
-    di.addEventListener('change', function () { if (/^\d{4}-\d{2}-\d{2}$/.test(di.value)) { st.sign = di.value; draw(); } }); dib.appendChild(di); df.appendChild(dl); df.appendChild(dib); f.appendChild(df);
+    di.addEventListener('change', function () { if (ISO.test(di.value)) { st.sign = di.value; var so = H.load(); so.sign = di.value; H.save(so); try { document.dispatchEvent(new CustomEvent('nlbh:sign', { detail: di.value })); } catch (e) {} draw(); } }); dib.appendChild(di); df.appendChild(dl); df.appendChild(dib); f.appendChild(df);
+    document.addEventListener('nlbh:sign', function (e) { if (ISO.test(e.detail || '') && e.detail !== st.sign) { st.sign = di.value = e.detail; draw(); } });
     f.appendChild(H.statusSelect(BU, st.s, function (v) { st.s = v; draw(); }));
     p.appendChild(H.tabs('דירה', [['used', 'יד שנייה'], ['new', 'מקבלן']], st.ty, function (v) { st.ty = v; draw(); }));
     var out = U.el('div', ''); out.setAttribute('aria-live', 'polite'); p.appendChild(out); var items = [];
