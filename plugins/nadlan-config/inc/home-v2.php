@@ -110,7 +110,7 @@ add_action( 'admin_init', function () {
    NOT a live snippet - the one-shot snippet approach took the site down on
    2026-07-02 and is banned. */
 add_filter( 'wpseo_title', function ( $title ) {
-	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+	return is_front_page() ? 'נדלן - מידע נדל״ן בישראל: עסקאות, מחירים ופרויקטים' : $title; // HAD-689 (Ben 9.11): the home owns נדלן; פרויקטים חדשים, דירות למכירה and מחירי דירות stay with their owner pages
 }, 20 );
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	return is_front_page() ? 'דירות למכירה ולהשכרה, פרויקטים חדשים עם בחירת דירה מתוך הבניין, מחירי עסקאות אמיתיים, מחשבונים ובעלי מקצוע מאומתים. הכל במקום אחד - נדלן.' : $desc;
@@ -119,7 +119,7 @@ add_filter( 'wpseo_metadesc', function ( $desc ) {
    install (Yoast serves the page's stored custom title). pre_get_document_title
    at a late priority wins over every generator for the actual tag. */
 add_filter( 'pre_get_document_title', function ( $title ) {
-	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+	return is_front_page() ? 'נדלן - מידע נדל״ן בישראל: עסקאות, מחירים ופרויקטים' : $title; // HAD-689 (Ben 9.11): the home owns נדלן; פרויקטים חדשים, דירות למכירה and מחירי דירות stay with their owner pages
 }, 9999 );
 
 /* The catalog in the home's language (1.72.519, Ben 25.10.2026): /en|ru|fr/projects/ when published, else the Hebrew /projects/. */

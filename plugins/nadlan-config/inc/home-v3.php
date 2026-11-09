@@ -216,7 +216,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 			array( 'אנשי מקצוע', '/professionals/', '' ),
 		);
 		$pop    = array(
-			array( 'פרויקטים חדשים בתל אביב', '/new-projects/new-projects-tel-aviv/' ),
+			array( 'פרויקטים חדשים בתל אביב', '/projects/' ), // HAD-689: the old TLV URL answers 301; link the owner directly
 			array( 'פרויקטים חדשים בשדה דב', '/sde-dov/' ),
 			array( 'מחירי דירות בתל אביב', '/tel-aviv-apartment-prices/' ),
 			array( 'דירות למכירה', '/properties/?listing_type=sale' ),
@@ -240,7 +240,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 	</picture>
 	<div class="nlhp-hero__body">
 		<p class="nlhp-hero__kicker">פורטל הנדל״ן של ישראל</p>
-		<h1>נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות</h1>
+		<h1>מידע נדל״ן בישראל</h1>
 		<p class="nlhp-hero__lead"><span class="nlhp-n"><?php echo esc_html( $n ); ?></span> פרויקטים של בנייה חדשה והתחדשות עירונית, דירות למכירה ולהשכרה, מחירי דירות מעסקאות שנמכרו, מחשבונים ומגזין נדל״ן.</p>
 		<form class="nlhp-search nlhv2-search" action="<?php echo esc_url( home_url( '/projects/' ) ); ?>" method="get" role="search">
 			<div class="nlhp-search__tabs nlhv2-tabs" role="tablist" aria-label="מה מחפשים">
@@ -370,7 +370,7 @@ if ( ! function_exists( 'nadlan_hp_band_projects' ) ) {
 		}
 		$links .= '<a href="' . esc_url( home_url( '/projects/?project_type=pinui_binui' ) ) . '">פינוי־בינוי</a><a href="' . esc_url( home_url( '/projects/?project_type=tama38' ) ) . '">תמ״א 38</a>';
 		return '<section class="nlhp-band nlhp-projects" aria-labelledby="nlhp-proj-h">'
-			. nadlan_hp_head( 'פרויקטים חדשים', 'פרויקטים חדשים בתל אביב', 'nlhp-proj-h', 'לכל ' . number_format( (int) $c['projects'] ) . ' הפרויקטים בקטלוג', home_url( '/projects/' ) )
+			. nadlan_hp_head( 'בנייה חדשה', 'מגדלי מגורים בתל אביב', 'nlhp-proj-h', 'פרויקטים חדשים בכל הארץ', home_url( '/projects/' ) ) // HAD-689: the head phrase is /projects/'s; the home links it, never heads with it
 			. '<div class="nlhp-proj">' . $cards . '</div><nav class="nlhp-links" aria-label="פרויקטים חדשים לפי עיר">' . $links . '</nav></section>';
 	}
 }
@@ -748,7 +748,7 @@ if ( ! function_exists( 'nadlan_hp_band_portal' ) ) {
 		return '<section class="nlhp-seo" aria-label="על NadLan"><div><h2>נדל״ן בישראל, במקום אחד</h2><p>NadLan הוא פורטל נדל״ן ישראלי: <a href="' . $u( '/projects/' ) . '">' . number_format( (int) $c['projects'] ) . ' פרויקטים של בנייה חדשה והתחדשות עירונית</a>, '
 			. '<a href="' . $u( '/properties/?listing_type=sale' ) . '">דירות למכירה</a> ו<a href="' . $u( '/properties/?listing_type=rent' ) . '">דירות להשכרה</a> לפי עיר, <a href="' . $u( '/apartment-prices/' ) . '">מחירי דירות</a> מעסקאות שנמכרו לפי עיר, שכונה ורחוב, '
 			. '<a href="' . $u( '/mortgage-calculator/' ) . '">מחשבון משכנתא</a> ו<a href="' . $u( '/purchase-tax-calculator/' ) . '">מחשבון מס רכישה</a>, <a href="' . $u( '/guides/' ) . '">מגזין נדל״ן</a> ומאגר של ' . number_format( (int) $c['pros'] ) . ' <a href="' . $u( '/professionals/' ) . '">אנשי מקצוע</a>.</p></div>'
-			. ( '' !== $list ? '<div><h2>פרויקטים חדשים לפי עיר</h2><p>לכל פרויקט חדש יש עמוד משלו, עם הפרטים הידועים עליו: היזם, המיקום והשלב (תכנון, היתר, בנייה או אכלוס). הפרויקטים לפי עיר: ' . $list . '.</p></div>' : '' )
+			. ( '' !== $list ? '<div><h2>בנייה חדשה לפי עיר</h2><p>לכל פרויקט חדש יש עמוד משלו, עם הפרטים הידועים עליו: היזם, המיקום והשלב (תכנון, היתר, בנייה או אכלוס). הפרויקטים לפי עיר: ' . $list . '.</p></div>' : '' )
 			. '</section>';
 	}
 }
@@ -867,7 +867,7 @@ add_filter( 'wpseo_schema_webpage', function ( $data ) {
    the tab already shows) and the honest description. */
 if ( ! function_exists( 'nadlan_revenue_home_seo_title' ) ) {
 	function nadlan_revenue_home_seo_title() {
-		return 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל';
+		return 'נדלן - מידע נדל״ן בישראל: עסקאות, מחירים ופרויקטים'; // HAD-689 (Ben 9.11): the home owns נדלן
 	}
 }
 if ( ! function_exists( 'nadlan_revenue_home_seo_description' ) ) {

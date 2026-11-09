@@ -1,0 +1,19 @@
+{
+  "released": "1.72.625",
+  "from": "1.72.623",
+  "live_before": {
+    "inc/home-v2.php": "41ce63dcf4de0ffe8f4bb911fd0df0d7",
+    "inc/home-v3.php": "a1e69e7df8f4faee7eb36826ed919358",
+    "nadlan-config.php": "8a264dd4fa267e4c226220fe78f56ebb"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-09 17:40:07",
+  "files": {
+    "inc/home-v2.php": "9c28bf0a0c332d1fa8bda33be7abd343",
+    "inc/home-v3.php": "b9d89ed3ee6590fceada187c8cf5c111",
+    "nadlan-config.php": "3e32dfe7633df571183170e5e8d3aff0"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.625, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
