@@ -1,0 +1,639 @@
+{
+ "v": 3,
+ "layout": "files",
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-09-24T12:23:44Z"
+ },
+ "title": "NadLan",
+ "namespace": "NadLan",
+ "libraries": [],
+ "sections": {},
+ "groups": [
+  "Logos",
+  "Icons",
+  "Professions",
+  "Symbols",
+  "Photography"
+ ],
+ "assetGroups": {
+  "Logos": {
+   "name": "Logos",
+   "tile": "l",
+   "order": [
+    "nadlan-mark-sea-tile.svg",
+    "nadlan-glyph-deep.svg",
+    "nadlan-glyph-paper.svg",
+    "site-icon-512.png",
+    "site-icon-192.png",
+    "site-icon-180.png",
+    "site-icon-32.png",
+    "site-icon-16.png",
+    "icon-512-flat.png",
+    "og-default-1200x630.jpg",
+    "brand-kit-sheet.png"
+   ],
+   "files": {
+    "nadlan-mark-sea-tile.svg": {
+     "name": "nadlan-mark-sea-tile.svg",
+     "blob": "e1f39fb7fa19eed12430995d274ea757",
+     "size": 421,
+     "type": "image/svg+xml"
+    },
+    "nadlan-glyph-deep.svg": {
+     "name": "nadlan-glyph-deep.svg",
+     "blob": "8ddaa94a06d11eb4a1ad622a83e46042",
+     "size": 392,
+     "type": "image/svg+xml"
+    },
+    "nadlan-glyph-paper.svg": {
+     "name": "nadlan-glyph-paper.svg",
+     "blob": "45194eb4f08fa3fdb9d2278509f0937f",
+     "size": 411,
+     "type": "image/svg+xml"
+    },
+    "site-icon-512.png": {
+     "name": "site-icon-512.png",
+     "blob": "94d8d6a46c57743060f6c63ebb7d33b9",
+     "size": 9211,
+     "type": "image/png"
+    },
+    "site-icon-192.png": {
+     "name": "site-icon-192.png",
+     "blob": "a90cc14654f56a0bb0aaa9f5fdc30a9d",
+     "size": 7005,
+     "type": "image/png"
+    },
+    "site-icon-180.png": {
+     "name": "site-icon-180.png",
+     "blob": "e4759e8a74af84b25b3b774d2ac51604",
+     "size": 6393,
+     "type": "image/png"
+    },
+    "site-icon-32.png": {
+     "name": "site-icon-32.png",
+     "blob": "7069078077f3a53f3aeba4605538dfed",
+     "size": 1243,
+     "type": "image/png"
+    },
+    "site-icon-16.png": {
+     "name": "site-icon-16.png",
+     "blob": "5014afacd38eea1a0136f802a3bae4dd",
+     "size": 659,
+     "type": "image/png"
+    },
+    "icon-512-flat.png": {
+     "name": "icon-512-flat.png",
+     "blob": "93d694b3551216d3d53b7d1020308553",
+     "size": 8134,
+     "type": "image/png"
+    },
+    "og-default-1200x630.jpg": {
+     "name": "og-default-1200x630.jpg",
+     "blob": "1aca9b6415c5af140cff25aa74f59f09",
+     "size": 41274,
+     "type": "image/jpeg"
+    },
+    "brand-kit-sheet.png": {
+     "name": "brand-kit-sheet.png",
+     "blob": "2dff7e77a77dfd2964551e4330fff970",
+     "size": 69115,
+     "type": "image/png"
+    }
+   }
+  },
+  "Icons": {
+   "name": "Icons",
+   "tile": "s",
+   "order": [
+    "chip-clear.svg",
+    "close.svg",
+    "help.svg",
+    "info.svg",
+    "upload.svg",
+    "delete-overlay.svg",
+    "save.svg",
+    "preview-external.svg",
+    "fab-contact.svg",
+    "filter.svg",
+    "sort.svg",
+    "call.svg",
+    "quote.svg",
+    "whatsapp.svg",
+    "claim.svg",
+    "listing-rooms.svg",
+    "listing-area.svg",
+    "listing-balcony.svg",
+    "listing-floor.svg",
+    "listing-parking.svg",
+    "listing-storage.svg",
+    "listing-shield.svg",
+    "listing-lift.svg",
+    "listing-key.svg",
+    "listing-sea.svg",
+    "listing-arrow.svg",
+    "listing-phone.svg",
+    "listing-wa.svg",
+    "card-pin.svg",
+    "card-registry.svg",
+    "card-phone.svg",
+    "card-units.svg",
+    "card-status.svg",
+    "card-person.svg",
+    "tool-prices.svg",
+    "tool-mortgage.svg",
+    "tool-purchase-tax.svg",
+    "tool-valuation.svg"
+   ],
+   "files": {
+    "chip-clear.svg": {
+     "name": "chip-clear.svg",
+     "blob": "e6cb711bcde5fcc7984c2853c2fb6553",
+     "size": 391,
+     "type": "image/svg+xml"
+    },
+    "close.svg": {
+     "name": "close.svg",
+     "blob": "ee879b37fbc7deba040d7f579496ff9c",
+     "size": 261,
+     "type": "image/svg+xml"
+    },
+    "help.svg": {
+     "name": "help.svg",
+     "blob": "ab413c980f5ddf399a5d3e171406c28c",
+     "size": 575,
+     "type": "image/svg+xml"
+    },
+    "info.svg": {
+     "name": "info.svg",
+     "blob": "ce8a9272126aff50c4e989f385cf2f7c",
+     "size": 482,
+     "type": "image/svg+xml"
+    },
+    "upload.svg": {
+     "name": "upload.svg",
+     "blob": "854b4c3778c6e07dbd3fc18e8ce21a82",
+     "size": 456,
+     "type": "image/svg+xml"
+    },
+    "delete-overlay.svg": {
+     "name": "delete-overlay.svg",
+     "blob": "7da8166c76630ad367c6cbf38bd64d3d",
+     "size": 631,
+     "type": "image/svg+xml"
+    },
+    "save.svg": {
+     "name": "save.svg",
+     "blob": "3ea92c31f9a463c9ceb6608a84e058ad",
+     "size": 417,
+     "type": "image/svg+xml"
+    },
+    "preview-external.svg": {
+     "name": "preview-external.svg",
+     "blob": "a645b910cfc35d0e91dfdee8ab31a1db",
+     "size": 474,
+     "type": "image/svg+xml"
+    },
+    "fab-contact.svg": {
+     "name": "fab-contact.svg",
+     "blob": "f71635c0e851808996487a32fe6593da",
+     "size": 425,
+     "type": "image/svg+xml"
+    },
+    "filter.svg": {
+     "name": "filter.svg",
+     "blob": "0b2903afd3a7697c40a37f587c50c3a2",
+     "size": 480,
+     "type": "image/svg+xml"
+    },
+    "sort.svg": {
+     "name": "sort.svg",
+     "blob": "309cc6d934d6b9c816bcb7fc180390d8",
+     "size": 290,
+     "type": "image/svg+xml"
+    },
+    "call.svg": {
+     "name": "call.svg",
+     "blob": "be5c5e07a13bf8661a23ade68a7b3b87",
+     "size": 390,
+     "type": "image/svg+xml"
+    },
+    "quote.svg": {
+     "name": "quote.svg",
+     "blob": "64bdad409028f66c31a06bc5d9fef704",
+     "size": 404,
+     "type": "image/svg+xml"
+    },
+    "whatsapp.svg": {
+     "name": "whatsapp.svg",
+     "blob": "c5e7bf1454ef861e9135905f5a03234b",
+     "size": 619,
+     "type": "image/svg+xml"
+    },
+    "claim.svg": {
+     "name": "claim.svg",
+     "blob": "dc93becfad098ee2514274ec6fc05ce3",
+     "size": 459,
+     "type": "image/svg+xml"
+    },
+    "listing-rooms.svg": {
+     "name": "listing-rooms.svg",
+     "blob": "348caa0366bb9f1eac88fbb2ac51bba7",
+     "size": 299,
+     "type": "image/svg+xml"
+    },
+    "listing-area.svg": {
+     "name": "listing-area.svg",
+     "blob": "27c24b630e3c8c5f2566466828aea3ff",
+     "size": 332,
+     "type": "image/svg+xml"
+    },
+    "listing-balcony.svg": {
+     "name": "listing-balcony.svg",
+     "blob": "1232e149d8de9e7079b49a3a6ed70cb5",
+     "size": 314,
+     "type": "image/svg+xml"
+    },
+    "listing-floor.svg": {
+     "name": "listing-floor.svg",
+     "blob": "7438b1d1b61dda0c48f37926e807b130",
+     "size": 276,
+     "type": "image/svg+xml"
+    },
+    "listing-parking.svg": {
+     "name": "listing-parking.svg",
+     "blob": "dc1d026bee741bf847c6f36691556aa7",
+     "size": 340,
+     "type": "image/svg+xml"
+    },
+    "listing-storage.svg": {
+     "name": "listing-storage.svg",
+     "blob": "9f6a9e27ee3298c89102506838258291",
+     "size": 331,
+     "type": "image/svg+xml"
+    },
+    "listing-shield.svg": {
+     "name": "listing-shield.svg",
+     "blob": "c98f55960f8db46885a9be997dbb5918",
+     "size": 317,
+     "type": "image/svg+xml"
+    },
+    "listing-lift.svg": {
+     "name": "listing-lift.svg",
+     "blob": "7abc5a4dd52cc35c3b28932c393c95e5",
+     "size": 359,
+     "type": "image/svg+xml"
+    },
+    "listing-key.svg": {
+     "name": "listing-key.svg",
+     "blob": "6d1b5bd3721d09dd3f81887afd536546",
+     "size": 322,
+     "type": "image/svg+xml"
+    },
+    "listing-sea.svg": {
+     "name": "listing-sea.svg",
+     "blob": "a1dc0dfb1c9cf3250dc73c94a50c8516",
+     "size": 357,
+     "type": "image/svg+xml"
+    },
+    "listing-arrow.svg": {
+     "name": "listing-arrow.svg",
+     "blob": "5864b292805d88d24886d27813a1fcb8",
+     "size": 276,
+     "type": "image/svg+xml"
+    },
+    "listing-phone.svg": {
+     "name": "listing-phone.svg",
+     "blob": "c339b07e5886dd0deeeccb3fe108333b",
+     "size": 338,
+     "type": "image/svg+xml"
+    },
+    "listing-wa.svg": {
+     "name": "listing-wa.svg",
+     "blob": "47a2a1cc633a8d1cca02c5a791092b50",
+     "size": 726,
+     "type": "image/svg+xml"
+    },
+    "card-pin.svg": {
+     "name": "card-pin.svg",
+     "blob": "ce3dd93edd2f56be2f3220fa98a000fd",
+     "size": 354,
+     "type": "image/svg+xml"
+    },
+    "card-registry.svg": {
+     "name": "card-registry.svg",
+     "blob": "d372ef74979e4475f212fdb9b538d60c",
+     "size": 381,
+     "type": "image/svg+xml"
+    },
+    "card-phone.svg": {
+     "name": "card-phone.svg",
+     "blob": "3e8c35f0cd798684b870e015d8f06e73",
+     "size": 412,
+     "type": "image/svg+xml"
+    },
+    "card-units.svg": {
+     "name": "card-units.svg",
+     "blob": "8b19c772d2e7c3cc4a574b2fc5c7b9ef",
+     "size": 226,
+     "type": "image/svg+xml"
+    },
+    "card-status.svg": {
+     "name": "card-status.svg",
+     "blob": "eb9bc50c9d0c00e1416680402d8d4ed3",
+     "size": 310,
+     "type": "image/svg+xml"
+    },
+    "card-person.svg": {
+     "name": "card-person.svg",
+     "blob": "955bd1bfc008b55053871b19c371fec5",
+     "size": 314,
+     "type": "image/svg+xml"
+    },
+    "tool-prices.svg": {
+     "name": "tool-prices.svg",
+     "blob": "2a430d9b373e80021374e427d1669e53",
+     "size": 257,
+     "type": "image/svg+xml"
+    },
+    "tool-mortgage.svg": {
+     "name": "tool-mortgage.svg",
+     "blob": "f9bcbaecf56de64b2d35a505cf22b77f",
+     "size": 267,
+     "type": "image/svg+xml"
+    },
+    "tool-purchase-tax.svg": {
+     "name": "tool-purchase-tax.svg",
+     "blob": "a25a0f3f0ecf0db2d87c1a7cc759e856",
+     "size": 244,
+     "type": "image/svg+xml"
+    },
+    "tool-valuation.svg": {
+     "name": "tool-valuation.svg",
+     "blob": "bb3918484397e1aa3c19c616e523fa08",
+     "size": 253,
+     "type": "image/svg+xml"
+    }
+   }
+  },
+  "Professions": {
+   "name": "Professions",
+   "tile": "m",
+   "order": [
+    "profession-contractor.svg",
+    "profession-appraiser.svg",
+    "profession-inspector.svg",
+    "profession-mortgage.svg",
+    "profession-architect.svg",
+    "profession-lawyer.svg",
+    "profession-broker.svg",
+    "profession-developer.svg",
+    "category-project.svg",
+    "category-property.svg"
+   ],
+   "files": {
+    "profession-contractor.svg": {
+     "name": "profession-contractor.svg",
+     "blob": "1699910081219eac343e991f3888e094",
+     "size": 484,
+     "type": "image/svg+xml"
+    },
+    "profession-appraiser.svg": {
+     "name": "profession-appraiser.svg",
+     "blob": "2be7cb97e30b32089dc0037c2fed0873",
+     "size": 501,
+     "type": "image/svg+xml"
+    },
+    "profession-inspector.svg": {
+     "name": "profession-inspector.svg",
+     "blob": "de4205aa416ec4eef7c66779d631eed6",
+     "size": 610,
+     "type": "image/svg+xml"
+    },
+    "profession-mortgage.svg": {
+     "name": "profession-mortgage.svg",
+     "blob": "73042fa5f73edf95f41e9a3390ada68e",
+     "size": 475,
+     "type": "image/svg+xml"
+    },
+    "profession-architect.svg": {
+     "name": "profession-architect.svg",
+     "blob": "cf8da1cd5ef9b5911579fb18e3223038",
+     "size": 513,
+     "type": "image/svg+xml"
+    },
+    "profession-lawyer.svg": {
+     "name": "profession-lawyer.svg",
+     "blob": "0556372757993e1baca34529af46e726",
+     "size": 493,
+     "type": "image/svg+xml"
+    },
+    "profession-broker.svg": {
+     "name": "profession-broker.svg",
+     "blob": "651f20e98bae2bae47933cee3edf1c36",
+     "size": 488,
+     "type": "image/svg+xml"
+    },
+    "profession-developer.svg": {
+     "name": "profession-developer.svg",
+     "blob": "a2935e3840829d65e462e56f599febb8",
+     "size": 516,
+     "type": "image/svg+xml"
+    },
+    "category-project.svg": {
+     "name": "category-project.svg",
+     "blob": "869631bf610a45213b9ccc84157d5596",
+     "size": 390,
+     "type": "image/svg+xml"
+    },
+    "category-property.svg": {
+     "name": "category-property.svg",
+     "blob": "a8b43fff6107d00829bfab4ef646c2ce",
+     "size": 361,
+     "type": "image/svg+xml"
+    }
+   }
+  },
+  "Symbols": {
+   "name": "Symbols",
+   "tile": "m",
+   "order": [
+    "tier-free.svg",
+    "tier-pro.svg",
+    "tier-premier.svg",
+    "tier-project-premier.svg",
+    "tier-property-pro.svg",
+    "paid-order.svg",
+    "billing-card.svg",
+    "attach-card.svg",
+    "campaign-calendar.svg",
+    "campaign-expired.svg",
+    "exposure-chart.svg",
+    "lead-inbox.svg",
+    "completion-meter.svg",
+    "gallery-media.svg",
+    "map-pin-premium.svg",
+    "verified-shield.svg",
+    "ai-copy.svg",
+    "empty-search.svg",
+    "project-fallback.svg",
+    "sponsored-spot.svg",
+    "upload-empty.svg"
+   ],
+   "files": {
+    "tier-free.svg": {
+     "name": "tier-free.svg",
+     "blob": "c8477f6efeb260feeeca54ada60d5ade",
+     "size": 405,
+     "type": "image/svg+xml"
+    },
+    "tier-pro.svg": {
+     "name": "tier-pro.svg",
+     "blob": "b0109c85ea9ded4f77887539d2294889",
+     "size": 432,
+     "type": "image/svg+xml"
+    },
+    "tier-premier.svg": {
+     "name": "tier-premier.svg",
+     "blob": "476b9767d6aaa498a8a91b624edc7d4e",
+     "size": 400,
+     "type": "image/svg+xml"
+    },
+    "tier-project-premier.svg": {
+     "name": "tier-project-premier.svg",
+     "blob": "bc36fdd6f1469411fae87006e291b34f",
+     "size": 438,
+     "type": "image/svg+xml"
+    },
+    "tier-property-pro.svg": {
+     "name": "tier-property-pro.svg",
+     "blob": "910e342c3234b47a4d7d21a65cf5dfe9",
+     "size": 407,
+     "type": "image/svg+xml"
+    },
+    "paid-order.svg": {
+     "name": "paid-order.svg",
+     "blob": "b6c3a1cff710d065ab8edcbbdee246ab",
+     "size": 548,
+     "type": "image/svg+xml"
+    },
+    "billing-card.svg": {
+     "name": "billing-card.svg",
+     "blob": "ea2f23963c3f17fe5aad8a2e046fd08f",
+     "size": 403,
+     "type": "image/svg+xml"
+    },
+    "attach-card.svg": {
+     "name": "attach-card.svg",
+     "blob": "ce31a44a30666364dab9900c77be7f1a",
+     "size": 570,
+     "type": "image/svg+xml"
+    },
+    "campaign-calendar.svg": {
+     "name": "campaign-calendar.svg",
+     "blob": "5b73b2eba76e8237171e1b960b5dbbb4",
+     "size": 426,
+     "type": "image/svg+xml"
+    },
+    "campaign-expired.svg": {
+     "name": "campaign-expired.svg",
+     "blob": "ba179554d22754b44497345af8702d63",
+     "size": 428,
+     "type": "image/svg+xml"
+    },
+    "exposure-chart.svg": {
+     "name": "exposure-chart.svg",
+     "blob": "54bf2cb764504ac6b636cc956ca05ef8",
+     "size": 402,
+     "type": "image/svg+xml"
+    },
+    "lead-inbox.svg": {
+     "name": "lead-inbox.svg",
+     "blob": "bf4d98b94bed1efbf18ce86c1baf8d92",
+     "size": 399,
+     "type": "image/svg+xml"
+    },
+    "completion-meter.svg": {
+     "name": "completion-meter.svg",
+     "blob": "dde79685ea6163f8498d0b4aa731c241",
+     "size": 530,
+     "type": "image/svg+xml"
+    },
+    "gallery-media.svg": {
+     "name": "gallery-media.svg",
+     "blob": "2e23d64c49b90a2c8eb17bf0b004c617",
+     "size": 483,
+     "type": "image/svg+xml"
+    },
+    "map-pin-premium.svg": {
+     "name": "map-pin-premium.svg",
+     "blob": "0e8f5c03d267bb36443c967f0db95606",
+     "size": 419,
+     "type": "image/svg+xml"
+    },
+    "verified-shield.svg": {
+     "name": "verified-shield.svg",
+     "blob": "bd9be79e19c2991070e5a22a25291acc",
+     "size": 441,
+     "type": "image/svg+xml"
+    },
+    "ai-copy.svg": {
+     "name": "ai-copy.svg",
+     "blob": "c889afbdb698f2b5290c4115f65b5a03",
+     "size": 605,
+     "type": "image/svg+xml"
+    },
+    "empty-search.svg": {
+     "name": "empty-search.svg",
+     "blob": "31058050809471605a68d5b365421b31",
+     "size": 660,
+     "type": "image/svg+xml"
+    },
+    "project-fallback.svg": {
+     "name": "project-fallback.svg",
+     "blob": "0c58bf9bf748b1012c12978912c6de4b",
+     "size": 744,
+     "type": "image/svg+xml"
+    },
+    "sponsored-spot.svg": {
+     "name": "sponsored-spot.svg",
+     "blob": "68d38bac1728c905363bed486326b97f",
+     "size": 686,
+     "type": "image/svg+xml"
+    },
+    "upload-empty.svg": {
+     "name": "upload-empty.svg",
+     "blob": "287b62d7671b1e8b05a7cf33b8b2aa2e",
+     "size": 650,
+     "type": "image/svg+xml"
+    }
+   }
+  },
+  "Photography": {
+   "name": "Photography",
+   "tile": "l",
+   "order": [
+    "hero-tel-aviv-coast.jpg"
+   ],
+   "files": {
+    "hero-tel-aviv-coast.jpg": {
+     "name": "hero-tel-aviv-coast.jpg",
+     "blob": "044e2bfc0dac183621da174bd8a421e3",
+     "size": 309112,
+     "type": "image/jpeg"
+    }
+   }
+  }
+ },
+ "blobs": {},
+ "docs": {
+  "readme": "project/README.md",
+  "sections": []
+ },
+ "lastChange": {
+  "by": "Ben (nad-lan.co.il)",
+  "at": "2026-11-09T01:12:00Z",
+  "via": "Claude Code",
+  "note": "v108: MortgageMillion (how much a 1M ILS mortgage costs, month by month, by bank; cite box + CSV), HAD-675"
+ }
+}

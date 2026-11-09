@@ -85,6 +85,142 @@ if ( ! function_exists( 'nadlan_mm_data' ) ) {
 			. ' הריבית הכוללת החזויה במערכת: <bdi>' . nadlan_mm_nf( $irr, 2 ) . '%</bdi>. מקור: בנק ישראל, ריביות ממוצעות במשכנתאות חדשות לפי בנק.</p>';
 	}
 
+	/**
+	 * 1.72.615 (HAD-675, Ben 9.11.2026: "the best in the world", authority plan): the first payment on 1,000,000 ILS over 25 years,
+	 * month by month, at the average mix and rates of every bank (Bank of Israel TamInt010, the same nadlan_mm_pay() as the table above).
+	 * Rows: one per month in by_bank.months, oldest first: array( 'ym', system, hapoalim, leumi, discount, mizrahi, fibi, mercantile, jerusalem, irr ).
+	 */
+	function nadlan_mm_million_rows( $d ) {
+		$bb = $d['by_bank'] ?? array(); $out = array();
+		if ( empty( $bb['months'] ) ) { return $out; }
+		$keys = array( 'system', 'hapoalim', 'leumi', 'discount', 'mizrahi', 'fibi', 'mercantile', 'jerusalem' );
+		foreach ( $bb['months'] as $k => $ym ) {
+			$r = array( 'ym' => (string) $ym );
+			foreach ( $keys as $b ) { $r[ $b ] = isset( $bb['rate'][ $b ] ) ? round( nadlan_mm_pay( $d, $b, $k ) ) : 0; }
+			$r['irr'] = (float) ( $bb['rate']['system']['irr'][ $k ] ?? 0 );
+			$out[] = $r;
+		}
+		return $out;
+	}
+
+	/** "9.26" style short month label for the chart axis. */
+	function nadlan_mm_short_month( $ym ) {
+		$p = explode( '-', (string) $ym );
+		return 2 === count( $p ) ? (int) $p[1] . '.' . substr( $p[0], 2 ) : (string) $ym;
+	}
+
+	/** The plain sentence a journalist can quote, from the newest month (also the copy text of the cite box). */
+	function nadlan_mm_million_sentence( $d, $names ) {
+		$rows = nadlan_mm_million_rows( $d ); $n = count( $rows );
+		if ( $n < 2 ) { return ''; }
+		$now = $rows[ $n - 1 ]; $prev = $n > 12 ? $rows[ $n - 13 ] : null;
+		$big5 = array( 'hapoalim', 'leumi', 'discount', 'mizrahi', 'fibi' ); $lo = 'hapoalim';
+		foreach ( $big5 as $b ) { if ( $now[ $b ] > 0 && $now[ $b ] < $now[ $lo ] ) { $lo = $b; } }
+		$s = 'משכנתא של מיליון שקל ל־25 שנה, בתמהיל ובריביות הממוצעים של כל הבנקים, עלתה ב' . nadlan_mm_month( $now['ym'] ) . ' ' . nadlan_mm_nf( $now['system'] ) . ' ₪ בחודש הראשון';
+		if ( $prev ) {
+			$diff = $now['system'] - $prev['system'];
+			$s .= ', ' . nadlan_mm_nf( abs( $diff ) ) . ' ₪ ' . ( $diff <= 0 ? 'פחות' : 'יותר' ) . ' מאשר ב' . nadlan_mm_month( $prev['ym'] );
+		}
+		return $s . '. הזול מבין חמשת הבנקים הגדולים: ' . ( $names[ $lo ] ?? $lo ) . ', ' . nadlan_mm_nf( $now[ $lo ] ) . ' ₪.';
+	}
+
+	/** The block itself: answer, a line chart of every month, the last 13 months by bank, the cite box and the CSV. */
+	function nadlan_mm_million_html( $d, $names ) {
+		$rows = nadlan_mm_million_rows( $d ); $n = count( $rows );
+		if ( $n < 3 ) { return ''; }
+		$bdi = function ( $t ) { return '<bdi>' . $t . '</bdi>'; };
+		$now = $rows[ $n - 1 ]; $prev = $n > 12 ? $rows[ $n - 13 ] : null;
+		$hi = 0; $lo = 0; foreach ( $rows as $k => $r ) { if ( $r['system'] > $rows[ $hi ]['system'] ) { $hi = $k; } if ( $r['system'] < $rows[ $lo ]['system'] ) { $lo = $k; } }
+		$csv = rest_url( 'nadlan/v1/mortgage-million' );
+		$url = get_permalink() ? get_permalink() . '#million' : home_url( '/mortgage-calculator/#million' );
+		$sent = nadlan_mm_million_sentence( $d, $names );
+
+		$h  = '<div class="nlmm__mil" id="million">';
+		$h .= '<h3>כמה עולה משכנתא של מיליון שקל, חודש אחר חודש</h3>';
+		$h .= '<p>ב' . esc_html( nadlan_mm_month( $now['ym'] ) ) . ' ההחזר הראשון על משכנתא של ' . $bdi( '1,000,000 ₪' ) . ' ל־25 שנה, בתמהיל ובריביות הממוצעים של כל הבנקים, היה ' . $bdi( nadlan_mm_nf( $now['system'] ) . ' ₪' )
+			. ( $prev ? '. שנה קודם, ב' . esc_html( nadlan_mm_month( $prev['ym'] ) ) . ': ' . $bdi( nadlan_mm_nf( $prev['system'] ) . ' ₪' ) : '' )
+			. '. הגבוה ב־' . $n . ' החודשים שבטבלה: ' . $bdi( nadlan_mm_nf( $rows[ $hi ]['system'] ) . ' ₪' ) . ' ב' . esc_html( nadlan_mm_month( $rows[ $hi ]['ym'] ) )
+			. ', והנמוך: ' . $bdi( nadlan_mm_nf( $rows[ $lo ]['system'] ) . ' ₪' ) . ' ב' . esc_html( nadlan_mm_month( $rows[ $lo ]['ym'] ) ) . '.</p>';
+
+		// line chart, time runs left to right as in Bank of Israel charts; the y axis is padded 40 ILS each side
+		$w = 640; $hgt = 200; $pl = 66; $pr = 14; $pt = 22; $pb = 30;
+		$vals = array_map( function ( $r ) { return $r['system']; }, $rows );
+		$ymin = floor( ( min( $vals ) - 40 ) / 50 ) * 50; $ymax = ceil( ( max( $vals ) + 40 ) / 50 ) * 50; if ( $ymax <= $ymin ) { $ymax = $ymin + 100; }
+		$x = function ( $k ) use ( $n, $w, $pl, $pr ) { return round( $pl + ( $w - $pl - $pr ) * $k / max( 1, $n - 1 ), 1 ); };
+		$y = function ( $v ) use ( $ymin, $ymax, $hgt, $pt, $pb ) { return round( $pt + ( $hgt - $pt - $pb ) * ( $ymax - $v ) / ( $ymax - $ymin ), 1 ); };
+		$pts = array(); foreach ( $rows as $k => $r ) { $pts[] = $x( $k ) . ',' . $y( $r['system'] ); }
+		$lbl = 'קו: ההחזר הראשון על מיליון ₪ ל־25 שנה בתמהיל הממוצע של כל הבנקים, מ' . nadlan_mm_month( $rows[0]['ym'] ) . ' עד ' . nadlan_mm_month( $now['ym'] ) . ', בין ' . nadlan_mm_nf( $rows[ $lo ]['system'] ) . ' ל־' . nadlan_mm_nf( $rows[ $hi ]['system'] ) . ' ₪';
+		$h .= '<figure class="nlmm__fig"><svg viewBox="0 0 ' . $w . ' ' . $hgt . '" width="' . $w . '" height="' . $hgt . '" role="img" aria-label="' . esc_attr( $lbl ) . '" dir="ltr">';
+		for ( $g = $ymin; $g <= $ymax; $g += ( $ymax - $ymin > 300 ? 100 : 50 ) ) {
+			$h .= '<line x1="' . $pl . '" x2="' . ( $w - $pr ) . '" y1="' . $y( $g ) . '" y2="' . $y( $g ) . '" class="g"/><text x="' . ( $pl - 6 ) . '" y="' . ( $y( $g ) + 4 ) . '" class="ya">' . nadlan_mm_nf( $g ) . '</text>';
+		}
+		foreach ( $rows as $k => $r ) {
+			if ( 0 === $k % 3 || $k === $n - 1 ) { $h .= '<text x="' . $x( $k ) . '" y="' . ( $hgt - 8 ) . '" class="xa' . ( 0 === $k % 6 || $k === $n - 1 ? ' x6' : '' ) . ( $k === $n - 1 ? ' xe' : '' ) . '">' . esc_html( nadlan_mm_short_month( $r['ym'] ) ) . '</text>'; }
+		}
+		$h .= '<polyline points="' . implode( ' ', $pts ) . '" class="ln"/>';
+		foreach ( array_unique( array( $hi, $lo, $n - 1 ) ) as $k ) {
+			$under = ( $k === $lo && $k !== $n - 1 && $n - 1 - $k <= 3 );  // a low next to the last point: its label goes under the point
+			$h .= '<circle cx="' . $x( $k ) . '" cy="' . $y( $rows[ $k ]['system'] ) . '" r="4" class="pt"/><text x="' . $x( $k ) . '" y="' . ( $y( $rows[ $k ]['system'] ) + ( $under ? 24 : -10 ) ) . '" class="pv' . ( $k === $n - 1 ? ' pe' : '' ) . '">' . nadlan_mm_nf( $rows[ $k ]['system'] ) . '</text>';
+		}
+		$h .= '</svg><figcaption>ההחזר החודשי הראשון על ' . $bdi( '1,000,000 ₪' ) . ' ל־25 שנה, לוח שפיצר, בתמהיל ובריביות הממוצעים של כל הבנקים בכל חודש. חישוב שלנו מנתוני בנק ישראל.</figcaption></figure>';
+
+		// the last 13 months by bank
+		$cols = array( 'system', 'hapoalim', 'leumi', 'discount', 'mizrahi', 'fibi' );
+		$h .= '<div class="nlmm__scroll"><table class="nlmm__t"><caption>ההחזר הראשון על מיליון ₪ ל־25 שנה, לפי חודש ובנק, בתמהיל הממוצע של כל בנק</caption><thead><tr><th scope="col">חודש</th>';
+		foreach ( $cols as $b ) { $h .= '<th scope="col">' . esc_html( $names[ $b ] ?? $b ) . '</th>'; }
+		$h .= '<th scope="col">שינוי מהחודש הקודם</th></tr></thead><tbody>';
+		for ( $k = $n - 1; $k >= max( 0, $n - 13 ); $k-- ) {
+			$r = $rows[ $k ]; $ch = $k > 0 ? $r['system'] - $rows[ $k - 1 ]['system'] : 0;
+			$h .= '<tr' . ( $k === $n - 1 ? ' class="is-sys"' : '' ) . '><th scope="row">' . esc_html( nadlan_mm_month( $r['ym'] ) ) . '</th>';
+			foreach ( $cols as $b ) { $h .= '<td class="n">' . $bdi( nadlan_mm_nf( $r[ $b ] ) . ' ₪' ) . '</td>'; }
+			$h .= '<td class="n">' . ( $k > 0 ? $bdi( ( $ch > 0 ? '+' : ( $ch < 0 ? '−' : '' ) ) . nadlan_mm_nf( abs( $ch ) ) . ' ₪' ) : '' ) . '</td></tr>';
+		}
+		$h .= '</tbody></table></div>';
+
+		// cite box: the reader copies the sentence; the CSV holds every month and every bank
+		$cite = $sent . ' מקור: נדל״ן (nad-lan.co.il), לפי נתוני בנק ישראל. ' . $url;
+		$h .= '<div class="nlmm__cite"><p class="nlmm__cite-h">לציטוט</p><blockquote><p>' . esc_html( $sent ) . '</p></blockquote>'
+			. '<p class="nlmm__cite-src">מקור: נדל״ן (nad-lan.co.il), לפי נתוני בנק ישראל, השוואת ריביות בהלוואות לדיור לפי בנק. הנתון מתעדכן בכל חודש, כשבנק ישראל מפרסם את הקובץ, בסביבות ה־20 בחודש.</p>'
+			. '<p class="nlmm__cite-act"><button type="button" class="nlmm__copy" data-copy="' . esc_attr( $cite ) . '">העתקת הציטוט</button> <a class="nlmm__csv" href="' . esc_url( $csv ) . '">הורדת כל החודשים (CSV)</a></p></div>';
+		$h .= '<script>(function(){if(window.nlmmCopy)return;window.nlmmCopy=1;document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".nlmm__copy");if(!b)return;var t=b.getAttribute("data-copy");var done=function(){var o=b.textContent;b.textContent="הועתק";setTimeout(function(){b.textContent=o;},2000);};var old=function(){var a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{if(document.execCommand("copy")){done();}}catch(x){}a.remove();};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,old);}else{old();}});})();</script>';
+		return $h . '</div>';
+	}
+
+	/** The CSS for the block (appended to the section style). */
+	function nadlan_mm_million_css() {
+		return '<style>.nlmm__mil{margin:28px 0 0}.nlmm__fig{margin:12px 0;background:#fff;border:1px solid #D3DCE2;border-radius:6px;padding:10px 10px 6px}.nlmm__fig svg{display:block;width:100%;height:auto;aspect-ratio:640/200;direction:ltr}.nlmm__fig svg text{direction:ltr;unicode-bidi:plaintext}'
+			. '.nlmm__fig .g{stroke:#E3E9ED;stroke-width:1}.nlmm__fig .ln{fill:none;stroke:#1F4B5C;stroke-width:2.5;stroke-linejoin:round}.nlmm__fig .pt{fill:#fff;stroke:#1F4B5C;stroke-width:2}'
+			. '.nlmm__fig text{font:500 12px "IBM Plex Mono",ui-monospace,monospace;fill:#5E6A75}.nlmm__fig .ya{text-anchor:end}.nlmm__fig .xa{text-anchor:middle}.nlmm__fig .xa.xe{text-anchor:end}.nlmm__fig .pv{text-anchor:middle;fill:#12202A;font-size:13px}.nlmm__fig .pv.pe{text-anchor:end}@media (max-width:600px){.nlmm__fig text{font-size:20px}.nlmm__fig .pv{font-size:22px}.nlmm__fig .xa:not(.x6){display:none}}'
+			. '.nlmm__fig figcaption{font-size:13px;line-height:1.5;color:#5E6A75;margin:6px 2px 0}'
+			. '.nlmm__cite{margin:14px 0 0;border:1px solid #D3DCE2;border-inline-start:4px solid #2F6F86;border-radius:6px;background:#fff;padding:14px 16px}'
+			. '.nlmm__cite-h{font:500 13px/18px "IBM Plex Mono",ui-monospace,monospace!important;color:#5E6A75!important;margin:0 0 6px!important}'
+			. '.nlmm__cite blockquote{margin:0;padding:0;border:0}.nlmm__cite blockquote p{font-size:17px!important;line-height:1.7!important;color:#12202A!important;margin:0 0 8px!important}'
+			. '.nlmm__cite-src{font-size:13px!important;line-height:1.5!important;color:#5E6A75!important}'
+			. '.nlmm__cite-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 0!important}'
+			. 'html body .nlmm .nlmm__copy{min-height:44px;padding:0 16px;border:1px solid #2F6F86;background:#2F6F86;color:#fff!important;border-radius:6px;font:500 15px "IBM Plex Sans Hebrew",system-ui,sans-serif;cursor:pointer}'
+			. 'html body .nlmm a.nlmm__csv{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid #D3DCE2;border-radius:6px;color:#1F4B5C!important;text-decoration:none;font-weight:500}'
+			. '.nlmm__copy:focus-visible,.nlmm__csv:focus-visible{outline:3px solid #12202A;outline-offset:2px}</style>';
+	}
+
+	/** CSV of every month and bank (BOM first, so Excel opens Hebrew correctly). */
+	function nadlan_mm_million_csv() {
+		$d = nadlan_mm_data(); $rows = $d ? nadlan_mm_million_rows( $d ) : array();
+		$names = array(); foreach ( (array) ( $d['by_bank']['banks'] ?? array() ) as $b ) { $names[ $b['k'] ] = $b['he']; }
+		$names['system'] = 'כל הבנקים';
+		$keys = array( 'system', 'hapoalim', 'leumi', 'discount', 'mizrahi', 'fibi', 'mercantile', 'jerusalem' );
+		$q = function ( $s ) { return '"' . str_replace( '"', '""', (string) $s ) . '"'; };
+		$out = "\xEF\xBB\xBF" . $q( 'חודש' );
+		foreach ( $keys as $b ) { $out .= ',' . $q( 'החזר ראשון על מיליון ל־25 שנה, ' . ( $names[ $b ] ?? $b ) . ' (₪)' ); }
+		$out .= ',' . $q( 'ריבית כוללת חזויה, כל הבנקים (%)' ) . "\r\n";
+		foreach ( $rows as $r ) {
+			$out .= $q( $r['ym'] );
+			foreach ( $keys as $b ) { $out .= ',' . (int) $r[ $b ]; }
+			$out .= ',' . number_format( $r['irr'], 2, '.', '' ) . "\r\n";
+		}
+		$out .= $q( 'מקור: נדל״ן (nad-lan.co.il), חישוב לוח שפיצר לפי התמהיל והריבית האפקטיבית הממוצעים של כל בנק, מתוך בנק ישראל, השוואת ריביות בהלוואות לדיור (TamInt010). ממוצע ואינו הצעה.' ) . "\r\n";
+		return $out;
+	}
+
 	/** The section itself. */
 	function nadlan_mm_render( $lang = 'he' ) {
 		if ( 'en' === $lang ) { return nadlan_mm_render_en(); }
@@ -146,6 +282,7 @@ if ( ! function_exists( 'nadlan_mm_data' ) ) {
 		$h .= '</tbody></table></div>';
 		$gap = nadlan_mm_pay( $d, $hi, $i ) - nadlan_mm_pay( $d, $lo, $i );
 		$h .= '<p class="nlmm__note">בין הבנק הזול לבנק היקר מבין חמשת הגדולים, לפי התמהיל הממוצע של כל אחד: ' . $bdi( nadlan_mm_nf( abs( $gap ) ) . ' ₪' ) . ' בחודש על כל מיליון. ממוצע של בנק תלוי בתמהיל ובלקוחות שלו ואינו הצעה; ההצעה שלכם נבדקת בכלי ההשוואה בראש הדף.</p>';
+		$h .= nadlan_mm_million_html( $d, $names );  // 1.72.615 (HAD-675): the month-by-month million series, cite box, CSV
 
 		// by city, 4 rooms
 		$pay1m = nadlan_mm_pay( $d, 'system', $i ); $ltv = (float) ( $d['homes']['payments']['ltv'] ?? 0.75 );
@@ -164,7 +301,7 @@ if ( ! function_exists( 'nadlan_mm_data' ) ) {
 			$h .= '</tbody></table></div>';
 		}
 		$h .= '<p class="nlmm__src">מקורות: בנק ישראל, הפיקוח על הבנקים, השוואת ריביות בהלוואות לדיור לפי בנק (קובץ TamInt010, ריבית שנתית אפקטיבית ותמהיל המסלולים, ' . esc_html( $mon ) . '); בנק ישראל, סדרות המשכנתאות החדשות BIR_MRTG_99 (' . esc_html( $fm ) . ') ויתרת ההלוואות לדיור; רשות המסים, חציוני מחירי העסקאות לפי עיר ומספר חדרים. ההחזר מחושב בלוח שפיצר, חמשת המסלולים לפי חלקם בתמהיל, ריבית חודשית מהריבית האפקטיבית, ובמסלולים הצמודים בלי שינוי במדד. הריבית הכוללת החזויה היא ממוצע של כל ההלוואות בבנק לפי נוסחת הוראה 451, לא הצעה.</p>';
-		$h .= nadlan_mm_css();
+		$h .= nadlan_mm_css() . nadlan_mm_million_css();
 		return $h . '</section>';
 	}
 
@@ -278,6 +415,23 @@ add_shortcode( 'nadlan_mortgage_market', function ( $atts = array() ) {
 	return nadlan_mm_render( $l );
 } );
 
+/* 1.72.615 (HAD-675): the million series as CSV, every month and bank, for readers, journalists and the Dataset distribution. */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/mortgage-million', array(
+		'methods' => 'GET', 'permission_callback' => '__return_true',
+		'callback' => function () {
+			$csv = nadlan_mm_million_csv();
+			if ( ! headers_sent() ) {
+				header( 'Content-Type: text/csv; charset=utf-8' );
+				header( 'Content-Disposition: inline; filename="nadlan-mortgage-1m-by-month.csv"' );
+				header( 'Cache-Control: public, max-age=3600' );
+			}
+			echo $csv;  // phpcs:ignore WordPress.Security.EscapeOutput -- CSV body, every cell quoted or numeric
+			exit;
+		},
+	) );
+} );
+
 /* A Dataset JSON-LD for the tables, on a page that holds the shortcode. */
 add_action( 'wp_head', function () {
 	if ( ! is_singular() ) { return; }
@@ -316,7 +470,82 @@ add_action( 'wp_head', function () {
 		'variableMeasured' => array( 'ריבית קבועה לא צמודה', 'ריבית במסלול הפריים', 'ריבית משתנה לא צמודה', 'ריבית משתנה צמודה', 'ריבית קבועה צמודה', 'ריבית כוללת חזויה (IRR)', 'חלק כל מסלול בתמהיל', 'החזר חודשי ראשון', 'מספר המשכנתאות החדשות', 'היקף המשכנתאות החדשות', 'שיעור המימון' ),
 		'isBasedOn' => array( 'https://www.boi.org.il/boi_files/Pikuah/TamInt010.xls', 'https://edge.boi.gov.il/FusionEdgeServer/sdmx/v2/data/dataflow/BOI.STATISTICS/BIR_MRTG_99/1.0/', 'https://data.nadlan.gov.il/' ),
 		'creator' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ),
-		'distribution' => array( array( '@type' => 'DataDownload', 'encodingFormat' => 'application/json', 'contentUrl' => plugins_url( 'assets/instruments/data/boi-mortgage.json', dirname( __DIR__ ) . '/nadlan-config.php' ) ) ),
+		'distribution' => array( array( '@type' => 'DataDownload', 'encodingFormat' => 'application/json', 'contentUrl' => plugins_url( 'assets/instruments/data/boi-mortgage.json', dirname( __DIR__ ) . '/nadlan-config.php' ) ),
+			array( '@type' => 'DataDownload', 'encodingFormat' => 'text/csv', 'name' => 'ההחזר הראשון על מיליון ₪ לפי חודש ובנק', 'contentUrl' => rest_url( 'nadlan/v1/mortgage-million' ) ) ),
 	);
 	echo "\n<script type=\"application/ld+json\" id=\"nadlan-mm-dataset\">" . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
+	// 1.72.615 (HAD-675): the million series as its own Dataset, and the page's calculators as one WebApplication
+	$rows = nadlan_mm_million_rows( $d ); $pg = get_permalink( $p );
+	if ( count( $rows ) > 2 ) {
+		$mil = array(
+			'@context' => 'https://schema.org', '@type' => 'Dataset', '@id' => $pg . '#million',
+			'name' => 'כמה עולה משכנתא של מיליון שקל, חודש אחר חודש',
+			'description' => 'ההחזר החודשי הראשון על משכנתא של 1,000,000 ₪ ל־25 שנה, בלוח שפיצר, בתמהיל ובריביות האפקטיביות הממוצעים של כל הבנקים ושל כל בנק בנפרד, לכל חודש מ' . nadlan_mm_month( $rows[0]['ym'] ) . ' עד ' . nadlan_mm_month( end( $rows )['ym'] ) . '. חישוב של נדל״ן מנתוני בנק ישראל, מתעדכן בכל חודש.',
+			'url' => $pg . '#million', 'inLanguage' => 'he', 'isAccessibleForFree' => true,
+			'temporalCoverage' => $rows[0]['ym'] . '/' . end( $rows )['ym'], 'spatialCoverage' => array( '@type' => 'Place', 'name' => 'Israel' ),
+			'dateModified' => (string) ( $d['built'] ?? '' ),
+			'variableMeasured' => array( 'החזר חודשי ראשון על מיליון ₪ ל־25 שנה, כל הבנקים', 'החזר חודשי ראשון לפי בנק', 'ריבית כוללת חזויה (IRR)' ),
+			'isBasedOn' => 'https://www.boi.org.il/boi_files/Pikuah/TamInt010.xls',
+			'creator' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ),
+			'distribution' => array( array( '@type' => 'DataDownload', 'encodingFormat' => 'text/csv', 'contentUrl' => rest_url( 'nadlan/v1/mortgage-million' ) ) ),
+		);
+		echo '<script type="application/ld+json" id="nadlan-mm-million">' . wp_json_encode( $mil, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
+	}
+	$feat = array();
+	if ( function_exists( 'nadlan_nli_page_ids' ) && function_exists( 'nadlan_nli_tools' ) && function_exists( 'nadlan_nli_t' ) ) {
+		$tools = nadlan_nli_tools();
+		foreach ( (array) nadlan_nli_page_ids() as $tid ) { if ( isset( $tools[ $tid ] ) ) { $t = nadlan_nli_t( $tools[ $tid ], 'he' ); if ( ! empty( $t['name'] ) ) { $feat[] = $t['name']; } } }
+	}
+	if ( count( $feat ) >= 3 ) {
+		$app = array(
+			'@context' => 'https://schema.org', '@type' => 'WebApplication', '@id' => $pg . '#calculators',
+			'name' => 'מחשבון משכנתא', 'url' => $pg, 'inLanguage' => 'he', 'applicationCategory' => 'FinanceApplication', 'operatingSystem' => 'Any',
+			'browserRequirements' => 'Requires JavaScript', 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
+			'featureList' => array_values( array_unique( $feat ) ), 'dateModified' => (string) ( $d['built'] ?? '' ),
+			'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ),
+		);
+		echo '<script type="application/ld+json" id="nadlan-mm-webapp">' . wp_json_encode( $app, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
+	}
 }, 31 );
+
+/* 1.72.615 (HAD-675): phone speed on the pages that hold the market section: the H1 and text fonts are fetched first, so the
+   first paint already has the final line breaks (CLS 0.179 -> 0.07 on a slow phone, scratchpad probe 9.11.2026). */
+if ( ! function_exists( 'nadlan_mm_speed_page' ) ) {
+	function nadlan_mm_speed_page() {
+		static $on = null;
+		if ( null !== $on ) { return $on; }
+		$p = is_singular() ? get_post() : null;
+		$on = $p && false !== strpos( (string) $p->post_content, '[nadlan_mortgage_market' );
+		return $on;
+	}
+
+	/** The two Hebrew variable font files the first screen paints with (H1: Noto Serif Hebrew, text: Assistant). */
+	function nadlan_mm_font_preload() {
+		$urls = get_transient( 'nadlan_mm_font_preload_v3' );
+		if ( is_array( $urls ) && 3 === count( $urls ) ) { return $urls; }
+		$urls = array(  // read from Google with a phone browser on 9.11.2026
+			'https://fonts.gstatic.com/s/notoserifhebrew/v30/k3k5o9MMPvpLmixYH7euCwmkS9DohjX1-kRyiqyBqIxnoLbD-VBM2jVkL3Lr.woff2',
+			'https://fonts.gstatic.com/s/assistant/v24/2sDcZGJYnIjSi6H75xkzamW5Kb8VZBHR.woff2',
+			'https://fonts.gstatic.com/s/assistant/v24/2sDcZGJYnIjSi6H75xkzaGW5Kb8VZA.woff2',
+		);
+		$ttl = DAY_IN_SECONDS;
+		$res = wp_remote_get( 'https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&family=Assistant:wght@300;400;600;700&display=swap',
+			array( 'timeout' => 3, 'user-agent' => 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Mobile Safari/537.36' ) );  // phones and Mac get these files; Windows gets hinted ones
+		if ( ! is_wp_error( $res ) && 200 === (int) wp_remote_retrieve_response_code( $res ) ) {
+			$css = (string) wp_remote_retrieve_body( $res ); $found = array();
+			foreach ( array( array( 'hebrew', 'Noto Serif Hebrew' ), array( 'hebrew', 'Assistant' ), array( 'latin', 'Assistant' ) ) as $sf ) {
+				if ( preg_match( "#/\\* " . $sf[0] . " \\*/\\s*@font-face\\s*\\{[^}]*font-family:\\s*'" . preg_quote( $sf[1], '#' ) . "'[^}]*src:\\s*url\\((https://fonts\\.gstatic\\.com/[^)]+\\.woff2)\\)#", $css, $m ) ) { $found[] = $m[1]; }
+			}
+			if ( 3 === count( $found ) ) { $urls = $found; $ttl = WEEK_IN_SECONDS; }
+		}
+		set_transient( 'nadlan_mm_font_preload_v3', $urls, $ttl );
+		return $urls;
+	}
+
+	add_action( 'wp_head', function () {
+		if ( ! nadlan_mm_speed_page() ) { return; }
+		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+		foreach ( nadlan_mm_font_preload() as $u ) { echo '<link rel="preload" href="' . esc_url( $u ) . '" as="font" type="font/woff2" media="(max-width: 600px)" crossorigin>' . "\n"; }
+	}, 2 );
+
+}

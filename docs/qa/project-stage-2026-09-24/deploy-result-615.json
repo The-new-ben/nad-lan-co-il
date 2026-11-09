@@ -1,0 +1,17 @@
+{
+  "released": "1.72.615",
+  "from": "1.72.614",
+  "live_before": {
+    "inc/mortgage-market.php": "d2dc5feda65868abde7b7f21ed04aa13",
+    "nadlan-config.php": "25cca5f82d2b91e7a4e939e8660b9972"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-09 03:43:27",
+  "files": {
+    "inc/mortgage-market.php": "63ea7dff9671f0700e8bc6b2695426b0",
+    "nadlan-config.php": "628c78bc1848c95fbbbfe1dc74b990e6"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (4 files at ?ver=1.72.615, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
