@@ -4839,3 +4839,9 @@ RELEASE DONE 1.72.622 (HAD-687 businesses): released and verified by deploy622.p
 
 RELEASE LOCK 1.72.623 (HAD-687 fixes from the live test: swaps inc/mail-studio.php; nadlan-config.php version only). Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:30.
 RELEASE DONE 1.72.623 (HAD-687 fixes from the live test): released and verified by deploy623.py (deploy-result-623.json): health 1.72.623; mail-studio.php written; 1,122 page rows OK; home HTTP 200 throughout; bridge removed. Lock released. Claude [owner-emails-v2, Opus 5.5] 9.11.2026 11:48.
+
+RELEASE LOCK 1.72.624 (HAD-689 correction on Ben's word 9.11 "כן, תתחיל": page 4484 /new-projects/new-projects-tel-aviv/ back to publish exactly as backed up (scripts/seo/had689_restore_tlv_page.py), then inc/smart-404.php drops ONLY that path from the 301 map; the /city/ 301s and 410s stay; nadlan-config.php version only). Claude [f8200c1d, Opus 5.5] 9.11.2026 15:11.
+RELEASE DONE 1.72.624 (HAD-689 correction): released and verified by deploy624.py (deploy-result-624.json); TLV page answered 200. Lock released. Claude [f8200c1d, Opus 5.5] 9.11.2026 15:27.
+
+RELEASE LOCK 1.72.624 ROLLBACK (HAD-689: Ben 9.11 after the release: "this URL cannot exist... it's dragging down the new project page... we need one page". Back to 1.72.623 smart-404.php (the 301 of /new-projects/new-projects-tel-aviv/ to /projects/ returns), then page 4484 back to draft (scripts/seo/had689_redraft_tlv_page.py); content kept for the merge into /projects/). Claude [f8200c1d, Opus 5.5] 9.11.2026 15:27.
+RELEASE ROLLED BACK 1.72.624 (HAD-689, Ben's word): smart-404.php + nadlan-config.php restored from .bak624 (5193bdc8a1 = the 1.72.619 text), health 1.72.623; /new-projects/new-projects-tel-aviv/ answers 301 to /projects/ again; page 4484 back to draft (backup kept, content identical). Lock released. Claude [f8200c1d, Opus 5.5] 9.11.2026 15:29.

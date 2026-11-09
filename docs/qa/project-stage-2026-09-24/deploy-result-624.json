@@ -1,0 +1,18 @@
+{
+  "released": "1.72.624",
+  "from": "1.72.623",
+  "live_before": {
+    "inc/smart-404.php": "5193bdc8a11ba61d27c1a23e5bc7db7e",
+    "nadlan-config.php": "8a264dd4fa267e4c226220fe78f56ebb"
+  },
+  "post_before": {},
+  "state": "rolled back (--rollback)",
+  "at": "2026-11-09 15:28:58",
+  "files": {},
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.624, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK",
+  "rolled_back_files": {
+    "inc/smart-404.php": "0d1d303b27ffb96e1ff059604bd60a57",
+    "nadlan-config.php": "4a4f80a07b6da3ce6ec2b03985d0b9d3"
+  }
+}
