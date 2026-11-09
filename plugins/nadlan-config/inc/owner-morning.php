@@ -131,11 +131,13 @@ if ( ! function_exists( 'nadlan_om_table' ) ) {
 	}
 
 	/* ---------- 3. the morning email ---------- */
-	add_action( 'init', function () {
-		if ( ! wp_next_scheduled( 'nadlan_om_morning' ) ) {
-			$d = new DateTime( 'tomorrow 08:00', wp_timezone() );
-			wp_schedule_event( $d->getTimestamp(), 'daily', 'nadlan_om_morning' );
-		}
+	add_action( 'init', function () { // 1.72.618 (HAD-687): 08:00 Israel time all year; a daily recurrence drifts an hour at each clock change
+		$n = wp_next_scheduled( 'nadlan_om_morning' );
+		if ( $n && '08:00' === wp_date( 'H:i', $n ) ) { return; }
+		if ( $n ) { wp_clear_scheduled_hook( 'nadlan_om_morning' ); }
+		$d = new DateTime( 'today 08:00', wp_timezone() );
+		if ( $d->getTimestamp() <= time() ) { $d->modify( '+1 day' ); }
+		wp_schedule_event( $d->getTimestamp(), 'daily', 'nadlan_om_morning' );
 	} );
 	add_action( 'nadlan_om_morning', 'nadlan_om_send' );
 
@@ -205,6 +207,7 @@ if ( ! function_exists( 'nadlan_om_table' ) ) {
 			return '';
 		}
 		$fp = md5( wp_json_encode( array( array_keys( $urgent ), array_map( function ( $r ) { return array( $r[1], $r[2] ); }, $kp ), $rows, $pend, $q ) ) );
+		if ( $send && $mark && get_option( 'nadlan_omx_morning_day' ) === $today ) { nadlan_omx_log( 'morning', 'בוקר ' . $today, 'skipped_repeat' ); return ''; } // one morning mail a day
 		if ( $send && $mark && get_option( 'nadlan_omx_morning_fp' ) === $fp ) { nadlan_omx_log( 'morning', 'בוקר ' . $today, 'skipped_repeat' ); return ''; }
 		$out = '';
 		if ( $urgent ) {
@@ -225,7 +228,7 @@ if ( ! function_exists( 'nadlan_om_table' ) ) {
 		if ( $rows ) {
 			$out .= nadlan_om_h( 'מי ראה נכסים אתמול', '"קראו" = לפחות 15 שניות בעמוד. "חזרו" = היו בנכס גם ביום אחר השבוע. הכניסות שלך ושל רובוטים לא נספרות.' )
 				. '<tr><td style="padding:0 18px 8px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px;line-height:19px">'
-				. '<tr style="color:#5E6A75;font-size:12px"><td style="padding:4px 0">נכס</td><td align="center">צפו</td><td align="center">קראו</td><td align="center">חזרו</td><td align="center">וואטסאפ/טלפון</td><td align="left">פעולה</td></tr>';
+				. '<tr style="color:#5E6A75;font-size:12px;line-height:16px"><td style="padding:4px 0">נכס</td><td align="center" style="padding:4px 5px">צפו</td><td align="center" style="padding:4px 5px">קראו</td><td align="center" style="padding:4px 5px">חזרו</td><td align="center" style="padding:4px 5px">וואטסאפ / טלפון</td><td align="left" style="padding:4px 0 4px 0">פעולה</td></tr>';
 			foreach ( $rows as $r ) {
 				$ret  = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM (SELECT vid FROM $t WHERE post_id=%d AND ev='view' AND day>=%s GROUP BY vid HAVING COUNT(DISTINCT day)>=2 AND MAX(day)=%s) x", $r->post_id, $w7, $y ) );
 				$from = array_filter( array( $r->g ? 'גוגל ' . $r->g : '', $r->w ? 'וואטסאפ ' . $r->w : '', $r->s ? 'רשתות ' . $r->s : '' ) );
@@ -264,6 +267,7 @@ if ( ! function_exists( 'nadlan_om_table' ) ) {
 				foreach ( array_keys( $urgent ) as $id ) { if ( 'ביקשת תזכורת להיום' === $urgent[ $id ] ) { delete_post_meta( $id, 'lead_omx_snooze' ); } }
 				update_option( 'nadlan_om_queue', array(), false );
 				update_option( 'nadlan_omx_morning_fp', $fp, false );
+				update_option( 'nadlan_omx_morning_day', $today, false );
 			}
 		}
 		return $html;

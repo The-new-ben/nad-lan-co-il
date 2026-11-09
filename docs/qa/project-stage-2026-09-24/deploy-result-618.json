@@ -1,0 +1,19 @@
+{
+  "released": "1.72.618",
+  "from": "1.72.617",
+  "live_before": {
+    "inc/owner-mail.php": "3727756f8d8b6b48aa4e60ad7c6eec23",
+    "inc/owner-morning.php": "7240875e9b748ca29dfb71f7d2e06ef7",
+    "nadlan-config.php": "026ab10b4896bbc034ea9a8b64c0dc1a"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-09 09:15:53",
+  "files": {
+    "inc/owner-mail.php": "0fb6f43f5b7d8e9f34707615ee3e19aa",
+    "inc/owner-morning.php": "552e2f31e7872fc3c8e6cd261dc5169d",
+    "nadlan-config.php": "17fd8d1966324b7153bd630af6f3e44e"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.618, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

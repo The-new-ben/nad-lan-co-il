@@ -240,11 +240,13 @@ if ( ! function_exists( 'nadlan_omx_sig' ) ) {
 		$wh    = nadlan_omx_where( $lid );
 		$when  = (int) get_post_time( 'U', true, $lid );
 		$c     = nadlan_omx_heat_color( $h['level'] );
+		$at    = wp_date( wp_date( 'Y-m-d', $when ) === wp_date( 'Y-m-d' ) ? 'H:i' : 'j.n.Y H:i', $when );
 		$rows  = nadlan_omx_card( $lid, true )
-			. '<tr><td style="padding:8px 18px 4px;font-size:13px;line-height:20px;color:#3E4C58">התקבל ב־' . esc_html( wp_date( 'H:i', $when ) ) . ' (' . esc_html( $kinds[ $k ] ) . '). כדאי לחזור בתוך 5 דקות: אז הסיכוי לתפוס את הפונה הכי גבוה.</td></tr>';
+			. '<tr><td style="padding:8px 18px 4px;font-size:13px;line-height:20px;color:#3E4C58">התקבל ב־' . esc_html( $at ) . ' (' . esc_html( $kinds[ $k ] ) . ').'
+			. ( time() - $when < HOUR_IN_SECONDS ? ' כדאי לחזור בתוך 5 דקות: אז הסיכוי לתפוס את הפונה הכי גבוה.' : '' ) . '</td></tr>';
 		$foot = 'קיבלת את המייל כי השאירו פרטים באתר. ליד מגיע מיד, כל השאר מחכה למייל הבוקר ב־08:00.<br>'
 			. nadlan_omx_mute_link( $k ) . ' · <a href="' . esc_url( admin_url( 'post.php?post=' . (int) $lid . '&action=edit' ) ) . '" style="color:#5E6A75">פתיחה בניהול</a>';
-		$html = nadlan_omx_doc( trim( $name . ' · ' . $pretty . ' · ' . $wh . ' · ' . $c[1] . ' ' . $h['score'] ), nadlan_omx_strip( 'נדל״ן · ' . esc_html( $title ) . ' · ' . esc_html( wp_date( 'H:i', $when ) ), nadlan_omx_chip( $h ) ), $rows, $foot );
+		$html = nadlan_omx_doc( trim( $name . ' · ' . $pretty . ' · ' . $wh . ' · ' . $c[1] . ' ' . $h['score'] ), nadlan_omx_strip( 'נדל״ן · ' . esc_html( $title ) . ' · ' . esc_html( $at ), nadlan_omx_chip( $h ) ), $rows, $foot );
 		$text = implode( "\n", array_filter( array(
 			$title . ' · ' . $c[1] . ' ' . $h['score'] . '/100',
 			$name, $pretty,
@@ -555,6 +557,7 @@ if ( ! function_exists( 'nadlan_omx_sig' ) ) {
 		} ) );
 	} );
 	add_filter( 'nadlan_hardening_public_post_routes', function ( $r ) { $r[] = '#^/nadlan/v1/om-act$#'; return $r; } );
+	add_filter( 'nadlan_hardening_public_post_limit', function ( $l, $route = '' ) { return '/nadlan/v1/om-act' === (string) $route ? max( (int) $l, 30 ) : $l; }, 10, 2 );
 
 	/* ---------- the dashboard widget: what was sent, held, muted ---------- */
 	add_action( 'wp_dashboard_setup', function () {
