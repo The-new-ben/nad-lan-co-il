@@ -42,6 +42,32 @@ if ( ! function_exists( 'nadlan_smart404_city_map' ) ) {
 	}
 }
 
+/* HAD-689 (Ben, 9.11.2026, in writing: "כן, 301 לאלה"): his explicit order, overriding the 14.10 no-redirect law for THESE
+ * URLs only. The retired city pages (/city/<city>/, /city/<city>/projects/, /city/<city>/contractors/, /city/, /cities/) and
+ * the Tel Aviv immediate-occupancy page (/new-projects/new-projects-tel-aviv/) answer 301 to the one owner of the new-projects
+ * family, /projects/, filtered to the same city where the old URL named one. Every other /city/ path keeps its 410. */
+if ( ! function_exists( 'nadlan_h689_target' ) ) {
+	function nadlan_h689_target( $path ) {
+		$path = rtrim( (string) $path, '/' ) . '/';
+		if ( '/new-projects/new-projects-tel-aviv/' === $path || '/city/' === $path || '/cities/' === $path ) { return home_url( '/projects/' ); }
+		if ( preg_match( '#^/city/([^/]+)/(?:(?:projects|contractors)/)?$#u', $path, $m ) ) {
+			$city = trim( preg_replace( '/\s+/u', ' ', str_replace( '-', ' ', $m[1] ) ) );
+			if ( 'תל אביב יפו' === $city ) { $city = 'תל אביב'; }
+			if ( '' === $city ) { return home_url( '/projects/' ); }
+			return home_url( '/projects/' ) . '?city=' . rawurlencode( $city );
+		}
+		return '';
+	}
+}
+add_action( 'template_redirect', function () {
+	if ( is_admin() ) { return; }
+	$req  = isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '';
+	$to   = nadlan_h689_target( urldecode( (string) parse_url( $req, PHP_URL_PATH ) ) );
+	if ( '' === $to ) { return; }
+	wp_redirect( $to, 301, 'nad-lan' );
+	exit;
+}, 4 );
+
 /* City-layer teardown (owner order 2026-08-25): the whole /city/ page tree and
  * the /cities/ taxonomy archives are permanently retired. The prefix answers
  * 410 Gone so engines drop it fast (NO redirects - owner law). Taxonomy DATA
