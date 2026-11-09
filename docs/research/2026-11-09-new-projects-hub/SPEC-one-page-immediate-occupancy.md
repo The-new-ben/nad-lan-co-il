@@ -29,7 +29,22 @@ Evidence:
 - **Where the forms go:** headings, the answer paragraph, filter labels, table headers, alt text, FAQ and schema. Always as natural sentences, never as a keyword list.
 
 ## 3. Rendered order (phones first; intent-first law)
-1. **H1:** פרויקטים חדשים ודירות מקבלן: לאכלוס מיידי, בבנייה ועל הנייר
+1. **H1 (corrected on Ben's word, 9.11, built only from the words in Google's page-1 titles for "פרויקטים חדשים"):** פרויקטים חדשים ודירות חדשות בישראל.
+   - **Where the words come from:**
+     - Yad2 #1: "פרויקטים ודירות חדשות בתל אביב יפו - מעודכן ל-2026".
+     - Madlan #2: "דירות ופרויקטים חדשים בישראל".
+     - The municipality: "פרויקטים חדשים".
+     - nadlan.com: "לוח דירות חדשות, פרויקטים חדשים ודירות קבלן".
+   - **Title:** פרויקטים חדשים ודירות חדשות למכירה בישראל - מעודכן ל-2026.
+   - **Each section's H2 comes from that sub-phrase's own SERP:**
+     - דירות חדשות לאכלוס מיידי: Ashtrom's title and the related search;
+     - לאכלוס קרוב: Yad2;
+     - פרויקטים חדשים בשיווק: Dimri and the related search;
+     - פרויקטים חדשים על הנייר: Galim and the related search;
+     - פרויקטים חדשים במבצע: Yad2's deals hub;
+     - פרויקטים חדשים עד 2 מיליון: the related search;
+     - דירות חדשות למכירה מקבלן: nadlanmaster.
+   - The first H1 I proposed was invented, and Ben rejected it.
 2. **Answer paragraph, printed from live data with a "נבדק ב" date:**
    - how many projects are on the market, split by stage: לאכלוס מיידי · אכלוס קרוב · בבנייה · על הנייר ופריסייל;
    - how many show a "החל מ" price;
