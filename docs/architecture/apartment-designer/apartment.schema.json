@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nad-lan.co.il/schemas/nadlan-apartment-1.json",
+  "title": "nadlan-apartment v1",
+  "description": "The facts of one apartment layout, written once by the developer's data or by our staff and never changed by a buyer. Frame: centimetres, origin at the plan's top-left, x to the right, y down, rotation in degrees clockwise. The 2D plan and the 3D interior are both drawn from this one document plus the buyer's nadlan-unit-design.",
+  "type": "object",
+  "required": ["schema", "v", "id", "geometry_revision", "source", "unit", "units", "levels", "nodes", "walls", "openings", "rooms"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "nadlan-apartment" },
+    "v": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+    "geometry_revision": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{1,80}$", "description": "Changes whenever any node, wall or opening changes. A buyer's design is valid only for the revision it was made on." },
+    "source": {
+      "type": "object",
+      "required": ["kind", "label_he"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["sales-plan", "derived", "schematic", "example"], "description": "sales-plan = redrawn from a plan the developer published; derived = drawn by us from published facts; schematic = generated from room count and area; example = an invented layout. The label is shown on every screen and every export." },
+        "label_he": { "type": "string", "maxLength": 80 },
+        "note": { "type": "string", "maxLength": 400 },
+        "ref": { "type": "string", "maxLength": 300, "description": "Where the plan came from (a URL or a private file reference). Never shown to buyers." },
+        "date": { "type": "string", "format": "date" }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "required": ["project", "unit_id", "type", "rooms"],
+      "additionalProperties": false,
+      "properties": {
+        "project": { "type": ["string", "null"], "description": "The project slug, or null for a layout that belongs to no project." },
+        "unit_id": { "type": ["string", "null"], "pattern": "^[A-Za-z0-9_-]{1,96}$" },
+        "tower": { "type": ["string", "null"] },
+        "floor": { "type": ["integer", "null"] },
+        "type": { "type": "string", "maxLength": 40 },
+        "rooms": { "type": "number", "minimum": 1, "maximum": 12 }
+      }
+    },
+    "units": { "const": "cm" },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "origin": { "const": "plan-top-left" }, "x": { "const": "right" }, "y": { "const": "down" }, "rot": { "const": "deg-cw" } }
+    },
+    "north_deg": { "type": "number", "minimum": 0, "exclusiveMaximum": 360, "description": "Compass bearing of the sheet's up direction (-y). 0 means up is north." },
+    "levels": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "object", "required": ["id", "height"], "additionalProperties": false, "properties": { "id": { "type": "string" }, "height": { "type": "number", "minimum": 200, "maximum": 700 }, "slab": { "type": "number" } } }
+    },
+    "nodes": {
+      "type": "object", "minProperties": 3,
+      "additionalProperties": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }], "minItems": 2, "maxItems": 2 },
+      "description": "Wall corners and junctions, by id."
+    },
+    "walls": {
+      "type": "array", "minItems": 3,
+      "items": {
+        "type": "object", "required": ["id", "a", "b", "t", "kind"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" }, "a": { "type": "string" }, "b": { "type": "string" },
+          "t": { "type": "number", "minimum": 0, "maximum": 80, "description": "Thickness in cm. 0 for a divider." },
+          "kind": { "enum": ["facade", "structural", "mamad", "shaft", "partition", "divider", "rail"], "description": "Only a partition may ever move. A divider is the line between two open spaces, with no wall." },
+          "h": { "type": ["number", "null"], "description": "Height in cm when it differs from the level height (a rail, a low wall)." }
+        }
+      }
+    },
+    "openings": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "wall", "type", "at", "w"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" }, "wall": { "type": "string" },
+          "type": { "enum": ["door", "window", "slider", "open"] },
+          "at": { "type": "number", "minimum": 0, "description": "Distance in cm from the wall's a-end to the start of the opening." },
+          "w": { "type": "number", "exclusiveMinimum": 0 },
+          "sill": { "type": "number", "minimum": 0 }, "head": { "type": "number", "exclusiveMinimum": 0 },
+          "swing": { "enum": [-1, 1] }
+        }
+      }
+    },
+    "rooms": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["id", "type", "name_he", "at"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" },
+          "type": { "enum": ["living", "kitchen", "bedroom", "mamad", "wet", "hall", "balcony", "storage", "other"] },
+          "name_he": { "type": "string", "maxLength": 60 },
+          "names": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Names in the site's other languages (en, fr, ru, ar)." },
+          "at": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }], "minItems": 2, "maxItems": 2, "description": "A point inside the room. The room is whichever closed space of the wall graph contains it, so room outlines and areas are always computed, never typed." },
+          "floor": { "type": "string", "description": "The finish key of the base specification for this room." }
+        }
+      }
+    },
+    "fixed": {
+      "type": "array",
+      "description": "Things the buyer cannot move: columns, shafts, drains, the electrical board.",
+      "items": { "type": "object", "required": ["id", "kind", "at"], "properties": { "id": { "type": "string" }, "kind": { "enum": ["column", "shaft", "drain", "board", "ac"] }, "at": { "type": "array", "minItems": 2, "maxItems": 2 }, "w": { "type": "number" }, "d": { "type": "number" } } }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["code", "applies", "value", "source"], "additionalProperties": false,
+        "properties": { "code": { "enum": ["room.min_width", "room.min_area", "wet.max_distance_to_drain", "door.clear_width"] }, "applies": { "type": "array", "items": { "type": "string" } }, "value": { "type": "number" }, "source": { "type": "string", "description": "The regulation, the standard or the developer policy the value comes from. A rule without a verified source is not shown to buyers as a legal fact." } }
+      }
+    },
+    "view": {
+      "type": "object",
+      "description": "What the windows see: the rendered city view for this tower, floor and side.",
+      "additionalProperties": false,
+      "properties": { "facing_deg": { "type": "number" }, "image": { "type": "string" }, "label_he": { "type": "string" } }
+    }
+  }
+}

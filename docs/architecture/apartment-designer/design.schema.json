@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nad-lan.co.il/schemas/nadlan-unit-design-2.json",
+  "title": "nadlan-unit-design v2",
+  "description": "Everything one buyer changed in one apartment: moved partitions, finishes, pieces, notes and the log of decisions. It holds no geometry of its own, only changes against a nadlan-apartment of the same geometry_revision. Version 1 (inc/rfp.php, two unrelated layers in two frames) stays readable; version 2 has one frame.",
+  "type": "object",
+  "required": ["schema", "v", "project", "unit_id", "geometry_revision", "frame", "geometry", "finishes", "items", "notes", "log", "rev"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "nadlan-unit-design" },
+    "v": { "const": 2 },
+    "project": { "type": ["string", "null"] },
+    "unit_id": { "type": ["string", "null"] },
+    "geometry_revision": { "type": "string", "pattern": "^[A-Za-z0-9._:-]{1,80}$" },
+    "frame": {
+      "type": "object", "required": ["units", "origin", "rot"], "additionalProperties": false,
+      "properties": { "units": { "const": "cm" }, "origin": { "const": "plan-top-left" }, "rot": { "const": "deg-cw" } }
+    },
+    "geometry": {
+      "type": "object", "required": ["walls"], "additionalProperties": false,
+      "properties": {
+        "walls": { "type": "object", "additionalProperties": { "type": "number", "minimum": -1000, "maximum": 1000 }, "description": "wall id -> how far the partition stands from its place in the base plan, in cm along the wall's normal. An absolute value, so applying it twice changes nothing." }
+      }
+    },
+    "finishes": {
+      "type": "object",
+      "propertyNames": { "pattern": "^(floor|wall|ceiling|front|top):[A-Za-z0-9_:-]{1,60}$" },
+      "additionalProperties": { "type": "string", "maxLength": 80 },
+      "description": "surface key -> catalogue finish key. Only surfaces that differ from the base specification appear here."
+    },
+    "items": {
+      "type": "array", "maxItems": 200,
+      "items": {
+        "type": "object", "required": ["id", "sku", "x", "y", "rot"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" },
+          "sku": { "type": "string", "maxLength": 80 },
+          "x": { "type": "number" }, "y": { "type": "number" },
+          "rot": { "type": "number", "minimum": 0, "exclusiveMaximum": 360 },
+          "room": { "type": ["string", "null"], "description": "Computed by the model from x and y, stored for the spec sheet." },
+          "status": { "enum": ["base", "upgrade", "credit", "decor", "ai"], "description": "The honesty badge: part of the base price, a paid change, a credit for something dropped, decoration that is not included, or a suggestion made by AI." },
+          "note": { "type": "string", "maxLength": 200 }
+        }
+      }
+    },
+    "notes": {
+      "type": "array", "maxItems": 80,
+      "items": { "type": "object", "required": ["target", "text"], "additionalProperties": false, "properties": { "target": { "type": "object", "properties": { "kind": { "enum": ["room", "wall", "item", "general"] }, "id": { "type": "string" } } }, "text": { "type": "string", "maxLength": 400 }, "by": { "type": "string" } } }
+    },
+    "log": {
+      "type": "array",
+      "description": "The decision log: one line per finished gesture, with who did it. It travels with the spec sheet.",
+      "items": {
+        "type": "object", "required": ["n", "t", "by", "op"], "additionalProperties": false,
+        "properties": { "n": { "type": "integer" }, "t": { "type": "string", "format": "date-time" }, "by": { "type": "string", "maxLength": 40 }, "gesture": { "type": ["string", "null"] }, "op": { "$ref": "#/$defs/op" } }
+      }
+    },
+    "rev": { "type": "integer", "minimum": 0 }
+  },
+  "$defs": {
+    "op": {
+      "description": "The only way a design changes, locally, by undo or over the video call.",
+      "oneOf": [
+        { "type": "object", "required": ["op", "item"], "properties": { "op": { "const": "item.add" }, "item": { "type": "object" } } },
+        { "type": "object", "required": ["op", "id", "x", "y"], "properties": { "op": { "const": "item.move" }, "id": { "type": "string" }, "x": { "type": "number" }, "y": { "type": "number" } } },
+        { "type": "object", "required": ["op", "id", "rot"], "properties": { "op": { "const": "item.rot" }, "id": { "type": "string" }, "rot": { "type": "number" } } },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "item.remove" }, "id": { "type": "string" } } },
+        { "type": "object", "required": ["op", "key", "value"], "properties": { "op": { "const": "finish.set" }, "key": { "type": "string" }, "value": { "type": ["string", "null"] } } },
+        { "type": "object", "required": ["op", "id", "d"], "properties": { "op": { "const": "wall.shift" }, "id": { "type": "string" }, "d": { "type": "number" } } }
+      ]
+    }
+  }
+}

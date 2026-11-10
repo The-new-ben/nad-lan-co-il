@@ -1,0 +1,314 @@
+{
+  "when": "2026-11-10T22:17:50.360Z",
+  "gl_mode": "gpu",
+  "runs": {
+    "phone_cold": {
+      "fcp_ms": 352,
+      "plan_drawn_ms": 266,
+      "space_mounted_ms": 1690,
+      "first_3d_frame_ms": 1704,
+      "requests": 17,
+      "transferred_kb": 345,
+      "draw": {
+        "calls": 58,
+        "triangles": 1169,
+        "geometries": 58,
+        "textures": 4
+      }
+    },
+    "phone_slow4g_cold": {
+      "fcp_ms": 532,
+      "plan_drawn_ms": 894,
+      "space_mounted_ms": 2829,
+      "first_3d_frame_ms": 2847,
+      "requests": 16,
+      "transferred_kb": 344
+    },
+    "desktop_cold": {
+      "fcp_ms": 312,
+      "plan_drawn_ms": 119,
+      "space_mounted_ms": 696,
+      "first_3d_frame_ms": 712,
+      "requests": 16,
+      "transferred_kb": 368
+    }
+  },
+  "checks": [
+    {
+      "name": "no horizontal scroll at 390",
+      "ok": true
+    },
+    {
+      "name": "plan drawn before the 3D library",
+      "ok": true,
+      "detail": {
+        "fcp_ms": 352,
+        "plan_drawn_ms": 266,
+        "space_mounted_ms": 1690,
+        "first_3d_frame_ms": 1704,
+        "requests": 17,
+        "transferred_kb": 345,
+        "draw": {
+          "calls": 58,
+          "triangles": 1169,
+          "geometries": 58,
+          "textures": 4
+        }
+      }
+    },
+    {
+      "name": "plan drag moved the sofa in the model",
+      "ok": true,
+      "detail": {
+        "before": [
+          330,
+          210
+        ],
+        "after": [
+          220,
+          360
+        ]
+      }
+    },
+    {
+      "name": "3D piece stands where the model says (plan -> 3D)",
+      "ok": true,
+      "detail": {
+        "model": [
+          220,
+          360
+        ],
+        "three": [
+          220,
+          360,
+          270
+        ],
+        "log": 1,
+        "room": "living"
+      }
+    },
+    {
+      "name": "one drag is one line in the decision log",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "partition moved, master bedroom grew",
+      "ok": true,
+      "detail": {
+        "shift": 35,
+        "master": 14.5,
+        "bed2": 9.7,
+        "label": "12.4 מ״ר|30.4 מ״ר|14.5 מ״ר|9.7 מ״ר|7.2 מ״ר|10.6 מ״ר|6.1 מ״ר|3.8 מ״ר|9.2 מ״ר|12.6 מ״ר|3.2 מ״ר"
+      }
+    },
+    {
+      "name": "plan label shows the new area",
+      "ok": true,
+      "detail": "12.4 מ״ר|30.4 מ״ר|14.5 מ״ר|9.7 מ״ר|7.2 מ״ר|10.6 מ״ר|6.1 מ״ר|3.8 מ״ר|9.2 מ״ר|12.6 מ״ר|3.2 מ״ר"
+    },
+    {
+      "name": "rule stops the partition with a reason in Hebrew",
+      "ok": true,
+      "detail": {
+        "shown": true,
+        "text": "חדר שינה: החדר יהיה צר מ-2.60 מ׳.",
+        "shift": 35,
+        "clear": 268
+      }
+    },
+    {
+      "name": "mamad wall refuses with its reason",
+      "ok": true,
+      "detail": "קירות הממ״ד (המרחב המוגן) קבועים."
+    },
+    {
+      "name": "room tap opens the floor sheet",
+      "ok": true,
+      "detail": "ריצוף: סלון ופינת אוכל · 30.4 מ״ר"
+    },
+    {
+      "name": "floor finish: model, 3D material and quantities agree",
+      "ok": true,
+      "detail": {
+        "model": "oak-plank",
+        "three": "oak-plank",
+        "boq": 30.4,
+        "living": 30.4
+      }
+    },
+    {
+      "name": "3D drag moved the table in the model",
+      "ok": true,
+      "detail": {
+        "before": [
+          200,
+          430
+        ],
+        "after": [
+          295,
+          370
+        ]
+      }
+    },
+    {
+      "name": "plan follows the 3D drag (3D -> plan)",
+      "ok": true,
+      "detail": "translate(295 370) rotate(0)"
+    },
+    {
+      "name": "tap on the floor walks there",
+      "ok": true,
+      "detail": {
+        "from": [
+          500,
+          790
+        ],
+        "to": [
+          374,
+          453
+        ]
+      }
+    },
+    {
+      "name": "camera marker on the plan is where you stand",
+      "ok": true,
+      "detail": "translate(374.1 452.7) rotate(-110.5)"
+    },
+    {
+      "name": "undo returns sofa, wall and floor in both views",
+      "ok": true,
+      "detail": {
+        "i2": [
+          330,
+          210
+        ],
+        "i2three": [
+          330,
+          210,
+          270
+        ],
+        "wall": 0,
+        "floor": "porcelain-80",
+        "floor3": "porcelain-80"
+      }
+    },
+    {
+      "name": "2D -> 3D: work under 8 ms at p95 (half of a 60 Hz frame)",
+      "ok": true,
+      "detail": {
+        "n": 120,
+        "work_p50": 1.7,
+        "work_p95": 1.9,
+        "work_max": 3,
+        "shown_p50": 33.3,
+        "shown_p95": 33.6,
+        "display_frame_ms": 33.4
+      }
+    },
+    {
+      "name": "2D -> 3D: every change is on screen by the next display frame",
+      "ok": true,
+      "detail": {
+        "n": 120,
+        "work_p50": 1.7,
+        "work_p95": 1.9,
+        "work_max": 3,
+        "shown_p50": 33.3,
+        "shown_p95": 33.6,
+        "display_frame_ms": 33.4
+      }
+    },
+    {
+      "name": "a wall move rebuilds rooms, walls and floors under 16.7 ms at p95",
+      "ok": true,
+      "detail": {
+        "n": 40,
+        "p50": 5,
+        "p95": 6.1
+      }
+    },
+    {
+      "name": "orbit: render work under 8 ms at p95",
+      "ok": true,
+      "detail": {
+        "frames": 92,
+        "median_ms": 33.4,
+        "p95_ms": 33.5,
+        "render_cpu_ms": {
+          "n": 300,
+          "p50": 1.4,
+          "p95": 2.7
+        },
+        "draw": {
+          "calls": 59,
+          "triangles": 1169,
+          "geometries": 60,
+          "textures": 5
+        }
+      }
+    },
+    {
+      "name": "no page errors on the phone run",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "desktop: mouse drag on the plan moves the bed in 3D",
+      "ok": true,
+      "detail": {
+        "model": [
+          825,
+          200
+        ],
+        "three": [
+          825,
+          200,
+          270
+        ]
+      }
+    },
+    {
+      "name": "desktop: side by side, no horizontal scroll",
+      "ok": true
+    },
+    {
+      "name": "no page errors on the desktop run",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "gl_renderer": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "sync_2d_to_3d_ms": {
+    "n": 120,
+    "work_p50": 1.7,
+    "work_p95": 1.9,
+    "work_max": 3,
+    "shown_p50": 33.3,
+    "shown_p95": 33.6,
+    "display_frame_ms": 33.4
+  },
+  "wall_move_rebuild_ms": {
+    "n": 40,
+    "p50": 5,
+    "p95": 6.1
+  },
+  "orbit_frame_ms": {
+    "frames": 92,
+    "median_ms": 33.4,
+    "p95_ms": 33.5,
+    "render_cpu_ms": {
+      "n": 300,
+      "p50": 1.4,
+      "p95": 2.7
+    },
+    "draw": {
+      "calls": 59,
+      "triangles": 1169,
+      "geometries": 60,
+      "textures": 5
+    }
+  },
+  "passed": 24,
+  "failed": 0
+}
