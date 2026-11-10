@@ -130,9 +130,79 @@ if ( ! function_exists( 'nadlan_ph_stage_counts' ) ) {
 add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_ph_stages_v1' ); } );
 
 /* ------------------------------------------------------------------------------------------------ the FAQ (markup + schema) */
+if ( ! function_exists( 'nadlan_ph_faq_facts' ) ) {
+	/** Counts for the short questions on Google's related searches, printed from the data file (never typed by hand). */
+	function nadlan_ph_faq_facts() {
+		static $f = null;
+		if ( null !== $f ) { return $f; }
+		$f = array( 'all' => 0, 'priced' => 0, 'u12' => 0, 'u15' => 0, 'u15south' => 0, 'deal' => 0, 'd2080' => 0, 'presale' => 0, 'presale_tlv' => 0, 'marketing' => 0, 'construction' => 0,
+			'tlv' => 0, 'dan' => 0, 'sharon' => 0, 'center' => 0, 'ramat_aviv' => 0, 'cities' => 0 );
+		$cities = array();
+		foreach ( nadlan_ph_market()['projects'] as $p ) {
+			$f['all']++;
+			$city = (string) ( $p['city'] ?? '' ); $reg = nadlan_ph_region( $city ); $st = (string) ( $p['status'] ?? '' );
+			if ( '' !== $city ) { $cities[ str_replace( array( '-', '–' ), ' ', $city ) ] = 1; }
+			if ( isset( $f[ $reg ] ) && in_array( $reg, array( 'tlv', 'dan', 'sharon', 'center' ), true ) ) { $f[ $reg ]++; }
+			if ( isset( $f[ $st ] ) && in_array( $st, array( 'presale', 'marketing', 'construction' ), true ) ) { $f[ $st ]++; }
+			if ( 'presale' === $st && 'tlv' === $reg ) { $f['presale_tlv']++; }
+			$pr = (float) ( $p['price_from'] ?? 0 );
+			if ( $pr > 0 ) {
+				$f['priced']++;
+				if ( $pr <= 1200000 ) { $f['u12']++; }
+				if ( $pr <= 1500000 ) { $f['u15']++; if ( 'south' === $reg ) { $f['u15south']++; } }
+			}
+			$deal = (string) ( $p['deal'] ?? '' );
+			if ( '' !== $deal ) { $f['deal']++; if ( preg_match( '~(?:80|90|85)\s*[/\-]\s*(?:20|10|15)|(?:20|10|15)\s*[/\-]\s*(?:80|90|85)~u', $deal ) ) { $f['d2080']++; } }
+			if ( false !== mb_strpos( (string) ( $p['name'] ?? '' ) . ' ' . (string) ( $p['neighbourhood'] ?? '' ), 'רמת אביב' ) ) { $f['ramat_aviv']++; }
+		}
+		$f['cities'] = count( $cities );
+		return $f;
+	}
+}
+if ( ! function_exists( 'nadlan_ph_faq_related' ) ) {
+	/** HAD-697 (Ben, 10.11.2026): every search Google shows beside "פרויקטים חדשים" gets a short answer on the page, in passing:
+	 * a question in Google's own wording, one or two lines, a link where a page of ours owns the topic. Not an article, not the
+	 * focus. The questions that were already here (עד 1.2 מיליון, עד 2 מיליון, פריסייל בתל אביב, הטבות יזמים) stay as they are. */
+	function nadlan_ph_faq_related() {
+		$f = nadlan_ph_faq_facts();
+		if ( $f['all'] < 1 ) { return array(); }
+		$n = function ( $k ) use ( $f ) { return number_format( (int) $f[ $k ] ); };
+		$q = array();
+		if ( $f['u15'] > 0 ) {
+			$q[] = array( 'יש דירות חדשות עד 1.5 מיליון שקל?', 'כן. בטבלת הפרויקטים בשיווק יש ' . $n( 'u15' ) . ' פרויקטים עם מחיר שמתחיל עד 1.5 מיליון ₪'
+				. ( $f['u12'] > 0 ? ', ' . ( 1 === $f['u12'] ? 'אחד מהם' : $n( 'u12' ) . ' מהם' ) . ' עד 1.2 מיליון ₪' : '' )
+				. ( $f['u15south'] * 2 > $f['u15'] ? '. רובם בערי הדרום' : '' ) . '. בסינון המחיר של הטבלה בוחרים "עד 1.5 מיליון ₪" או "עד 1.2 מיליון ₪" ורואים רק אותם.' );
+		}
+		if ( $f['deal'] > 0 ) {
+			$q[] = array( 'איפה רואים מבצעי קבלנים על דירות חדשות?', $n( 'deal' ) . ' פרויקטים בטבלת הפרויקטים בשיווק מפרסמים מבצע או תנאי תשלום מיוחדים'
+				. ( $f['d2080'] > 0 ? ', ' . $n( 'd2080' ) . ' מהם בתנאי 20/80, 10/90 או דומים' : '' ) . '. התנאים מופיעים בעמודה "תנאי תשלום", בלשון היזם. המדריך למבצעי קבלנים מסביר כמה כל מבצע שווה בכסף.', '/developer-deals/', 'מבצעי קבלנים 2026: 20/80, 10/90 והלוואת קבלן' );
+		}
+		$q[] = array( 'מה זה פרויקט 20/80?', 'בפרויקט 20/80 משלמים 20% ממחיר הדירה בחתימה על החוזה ואת 80% הנותרים סמוך למסירה. יש גם מבצעי 10/90 ו־15/85. לפני שחותמים בודקים אם היתרה מוצמדת למדד תשומות הבנייה, ואם יהיה אפשר לקבל משכנתא במועד המסירה.', '/developer-deals/', '20/80, 10/90 ו־15/85: רמות הסיכון' );
+		$q[] = array( 'מה זה הלוואת קבלן?', 'הלוואת קבלן היא הלוואה שהרוכש לוקח מהבנק שמלווה את הפרויקט כדי לדחות את רוב התשלום למסירה, והיזם משלם את הריבית עליה בתקופת הבנייה. החוב עצמו נשאר של הרוכש, ובדרך כלל הוא נפרע במשכנתא במועד האכלוס.', '/developer-deals/', 'הלוואת קבלן: היזם משלם את הריבית, החוב נשאר שלכם' );
+		$q[] = array( 'אילו פרויקטים חדשים בשיווק יש עכשיו?', $n( 'marketing' ) . ' פרויקטים חדשים בשיווק, ' . $n( 'construction' ) . ' פרויקטים בבנייה ו־' . $n( 'presale' ) . ' בפריסייל, מתוך ' . $n( 'all' ) . ' הפרויקטים החדשים שבעמוד הזה. בטבלת הפרויקטים בשיווק מסננים לפי שלב, אזור ומחיר.' );
+		$q[] = array( 'מה ההבדל בין פרויקט בשיווק לפרויקט בבנייה?', 'פרויקט בשיווק כבר מוכר דירות, לפעמים עוד לפני שהבנייה התחילה. בפרויקט בבנייה העבודות בשטח כבר מתקדמות, ולכן המפתח קרוב יותר. בטבלה בעמוד הזה בוחרים בשלב "בבנייה", ומועד המסירה מופיע כשהיזם פרסם אותו.' );
+		$q[] = array( 'אילו פרויקטים חדשים על הנייר יש?', 'דירה על הנייר היא דירה שנמכרת לפני שהבנייה הסתיימה. בעמוד הזה ' . $n( 'presale' ) . ' פרויקטים בפריסייל'
+			. ( $f['presale_tlv'] > 0 ? ', ' . $n( 'presale_tlv' ) . ' מהם בתל אביב יפו' : '' ) . ', ועוד ' . $n( 'construction' ) . ' פרויקטים בבנייה. בטבלת הפרויקטים בשיווק מסננים לפי שלב.', '/new-projects/presale-apartment/', 'דירת פריסייל: מחיר אמיתי ובדיקות לפני חתימה' );
+		$centre = $f['tlv'] + $f['dan'] + $f['sharon'] + $f['center'];
+		if ( $centre > 0 ) {
+			$q[] = array( 'יש פרויקטים חדשים במרכז?', 'כן. ' . number_format( $centre ) . ' מהפרויקטים החדשים שבעמוד נמצאים במרכז הארץ: ' . $n( 'tlv' ) . ' בתל אביב יפו, ' . $n( 'dan' ) . ' בגוש דן, ' . $n( 'sharon' ) . ' בשרון ו־' . $n( 'center' ) . ' בערי המרכז והשפלה. בטבלה בוחרים אזור ורואים רק אותם.' );
+		}
+		if ( $f['ramat_aviv'] > 0 ) {
+			$q[] = array( 'אילו פרויקטים חדשים יש ברמת אביב?', 'בעמוד הזה ' . $n( 'ramat_aviv' ) . ' פרויקטים חדשים ברמת אביב. בטבלת הפרויקטים בשיווק בוחרים "תל אביב" ורואים אותם עם המחיר שהיזם פרסם, החדרים והשלב.', '/new-projects/north-tel-aviv-new-projects/', 'פרויקטים חדשים בצפון תל אביב' );
+		}
+		$q[] = array( 'יש בית פרטי חדש מקבלן?', 'רוב הפרויקטים החדשים שבעמוד הם דירות בבנייני מגורים. פרויקטים של בתים פרטיים וצמודי קרקע מקבלן מופיעים בטבלה כשהיזם מפרסם אותם. גם בבית פרטי חדש מקבלן חלים חוק המכר, הערבות על הכסף ותקופות הבדק והאחריות.' );
+		$q[] = array( 'איפה יש דירות חדשות למכירה?', 'בעמוד הזה ' . $n( 'all' ) . ' פרויקטים חדשים עם דירות חדשות למכירה ישירות מהיזם, ב־' . $n( 'cities' ) . ' ערים ויישובים. ' . $n( 'priced' ) . ' מהם מפרסמים מחיר התחלתי, והוא מופיע בטבלה לצד מחירי העסקאות בעיר.' );
+		return $q;
+	}
+}
 if ( ! function_exists( 'nadlan_ph_faq' ) ) {
 	/** [question, answer (plain text, also the schema answer), optional link path, optional link label] */
 	function nadlan_ph_faq() {
+		return array_merge( nadlan_ph_faq_core(), function_exists( 'nadlan_ph_faq_related' ) ? nadlan_ph_faq_related() : array() );
+	}
+}
+if ( ! function_exists( 'nadlan_ph_faq_core' ) ) {
+	function nadlan_ph_faq_core() {
 		return array(
 			array( 'מה נחשב פרויקט חדש מקבלן?', 'פרויקט מגורים שבו הדירות נמכרות לראשונה על ידי יזם או חברה קבלנית: בנייה חדשה על מגרש פנוי, או דירות חדשות בפרויקט התחדשות עירונית כמו פינוי בינוי ותמ"א 38. בקטלוג של נדל"ן מופיעים שני הסוגים, עם סוג הפרויקט, העיר, מספר יחידות הדיור והשלב התכנוני של כל אחד.' ),
 			array( 'איפה אפשר למצוא פרויקטים חדשים בתל אביב?', 'בעמוד הזה: בקטלוג הפרויקטים מסננים לפי "תל אביב יפו", ובטבלת הפרויקטים בשיווק בוחרים "תל אביב" ורואים את המחיר שהיזם פרסם, החדרים ושלב השיווק. מרבית הבנייה החדשה בעיר מתרכזת ברובע שדה דב ובצפון העיר, בפרויקטי התחדשות עירונית במרכז ובמזרח, ובמתחמים חדשים בדרום וביפו.', '/sde-dov/', 'רובע שדה דב: פרויקטים ומחירים' ),
@@ -230,7 +300,7 @@ if ( ! function_exists( 'nadlan_ph_market_html' ) ) {
 		<div class="nlph-chips" role="group" aria-label="סינון לפי אזור"><?php echo $chips; // phpcs:ignore ?></div>
 		<div class="nlph-sel">
 			<label>שלב <select data-f="st"><option value="">הכל</option><option value="presale">פריסייל</option><option value="marketing">בשיווק</option><option value="construction">בבנייה</option><option value="near">אכלוס קרוב או מיידי</option></select></label>
-			<label>מחיר <select data-f="max"><option value="">כל המחירים</option><option value="2000000">עד 2 מיליון ₪</option><option value="3000000">עד 3 מיליון ₪</option><option value="4000000">עד 4 מיליון ₪</option><option value="6000000">עד 6 מיליון ₪</option></select></label>
+			<label>מחיר <select data-f="max"><option value="">כל המחירים</option><option value="1200000">עד 1.2 מיליון ₪</option><option value="1500000">עד 1.5 מיליון ₪</option><option value="2000000">עד 2 מיליון ₪</option><option value="3000000">עד 3 מיליון ₪</option><option value="4000000">עד 4 מיליון ₪</option><option value="6000000">עד 6 מיליון ₪</option></select></label>
 			<label>מיון <select data-f="sort"><option value="rec">תל אביב והמרכז תחילה</option><option value="asc">מחיר: מהנמוך</option><option value="desc">מחיר: מהגבוה</option></select></label>
 		</div>
 	</div>

@@ -61,6 +61,18 @@ ok( strpos( $top, 'id="nlph-ready"' ) < strpos( $top, 'id="nlph-market"' ), 'rea
 $body = nadlan_ph_body( array() );
 ok( false === strpos( $body, 'id="nlph-market"' ) && false === strpos( $body, '<style id="nlph-css">' ) && false !== strpos( $body, '<script id="nlph-js">' ), 'body skips the table and the css, keeps the js' );
 ok( false !== strpos( $body, 'id="nlph-faq"' ), 'body keeps the FAQ' );
+// HAD-697 (Ben 10.11.2026): Google's related searches answered in passing, in the FAQ, with numbers printed from the data
+$core = nadlan_ph_faq_core(); $rel = nadlan_ph_faq_related(); $faq = nadlan_ph_faq(); $ff = nadlan_ph_faq_facts();
+ok( 24 === count( $core ) && 11 === count( $rel ) && 35 === count( $faq ), 'faq: core ' . count( $core ) . ' + related ' . count( $rel ) );
+ok( $faq[0][0] === $core[0][0] && $faq[34][0] === $rel[10][0], 'faq order: the old questions first, the new ones after them' );
+ok( 564 === $ff['all'] && 1 === $ff['u12'] && 9 === $ff['u15'] && 64 === $ff['deal'] && 25 === $ff['d2080'] && 39 === $ff['presale'] && 12 === $ff['presale_tlv'] && 392 === $ff['marketing'] && 52 === $ff['construction'] && 344 === $ff['priced'], 'faq facts ' . json_encode( $ff ) );
+$qs = array_column( $faq, 0 ); ok( count( $qs ) === count( array_unique( $qs ) ), 'no question twice' );
+$relq = implode( ' | ', array_column( $rel, 0 ) ) . ' ' . implode( ' ', array_column( $rel, 1 ) );
+foreach ( array( 'דירות חדשות עד 1.5 מיליון', 'עד 1.2 מיליון', 'מבצעי קבלנים', '20/80', 'הלוואת קבלן', 'פרויקטים חדשים בשיווק', 'פרויקטים בבנייה', 'פרויקטים חדשים על הנייר', 'פרויקטים חדשים במרכז', 'ברמת אביב', 'בית פרטי חדש מקבלן', 'דירות חדשות למכירה', 'פריסייל' ) as $ph ) { ok( false !== mb_strpos( $relq, $ph ), "related phrase missing: $ph" ); }
+foreach ( $rel as $qa ) { ok( mb_strlen( $qa[1] ) <= 330 && ! preg_match( '~[–—]|  ~u', $qa[0] . $qa[1] ) && ( empty( $qa[2] ) || ! empty( $qa[3] ) ), 'short answer, no long dash: ' . $qa[0] . ' (' . mb_strlen( $qa[1] ) . ')' ); }
+ok( 1 === substr_count( $top, '<option value="1200000">עד 1.2 מיליון ₪</option><option value="1500000">עד 1.5 מיליון ₪</option>' ), 'the table price filter carries 1.2 and 1.5' );
+ok( 35 === substr_count( nadlan_ph_faq_html(), '<details>' ), 'faq html: 35 questions' );
+if ( getenv( 'PRINTFAQ' ) ) { foreach ( $rel as $qa ) { echo "Q: {$qa[0]}\nA: {$qa[1]}" . ( ! empty( $qa[2] ) ? "\n   -> {$qa[2]} | {$qa[3]}" : '' ) . "\n\n"; } }
 
 if ( ! empty( $argv[1] ) ) { file_put_contents( $argv[1], '<!doctype html><html lang="he" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap"><body style="margin:0;background:#F4F6FA">' . $a . $top . '</body></html>' ); }
 echo ( $bad ? "FAILED $bad" : 'all passed' ), ' | section ', strlen( $h ), " bytes\n";
