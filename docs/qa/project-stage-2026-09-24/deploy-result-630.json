@@ -1,0 +1,19 @@
+{
+  "released": "1.72.630",
+  "from": "1.72.628",
+  "live_before": {
+    "inc/projects-hub.php": "0faad77ed23b97fd36fcf60f5a79e97e",
+    "inc/directory.php": "93b9d89b0d71354664dd1cecea9357bf",
+    "nadlan-config.php": "4dc435e783ac79f9cc7bfb3763564d43"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-10 12:46:00",
+  "files": {
+    "inc/projects-hub.php": "b138dab085a28b2789afa64a5e1f80b6",
+    "inc/directory.php": "97afddd552cbf82436828a060c8fb64c",
+    "nadlan-config.php": "143fb506fbb8216fd799b163e5ffafa5"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.630, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

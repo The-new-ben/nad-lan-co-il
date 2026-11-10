@@ -13,7 +13,11 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if ( ! defined( 'NADLAN_PH_UPDATED' ) ) { define( 'NADLAN_PH_UPDATED', '2026-10-25' ); }
+if ( ! defined( 'NADLAN_PH_UPDATED' ) ) { define( 'NADLAN_PH_UPDATED', '2026-10-25' ); } // the language hubs (en, ru, fr) print this date: it changes only when THEY change
+/* the Hebrew hub's own date (HAD-689): the immediate-occupancy section and the Tel Aviv-first order went live on 10.11.2026 */
+if ( ! defined( 'NADLAN_PH_UPDATED_HE' ) ) { define( 'NADLAN_PH_UPDATED_HE', '2026-11-10' ); }
+/* HAD-689 step 2: the top block shipped behind ?nlready=1 (1.72.628), was pressed live on a phone and a desktop on 10.11.2026, and is on for everyone from 1.72.629. */
+if ( ! defined( 'NADLAN_PH_READY_LIVE' ) ) { define( 'NADLAN_PH_READY_LIVE', true ); }
 
 if ( ! function_exists( 'nadlan_ph_json' ) ) {
 	/** A JSON file of the plugin as an array (empty on any problem). */
@@ -186,6 +190,9 @@ if ( ! function_exists( 'nadlan_ph_market_html' ) ) {
 			$seen[ $ck ] = 1; $sel[] = $p;
 		}
 		$all_n = count( $rows ); $rows = $sel;
+		/* Ben, 10.11.2026: the table opens on Tel Aviv, then the centre; usort is not stable on old PHP, so the price order is kept by hand */
+		foreach ( $rows as $k => $p ) { $rows[ $k ]['_o'] = $k; }
+		usort( $rows, function ( $a, $b ) { $ra = nadlan_ph_region_rank( $a['city'] ?? '' ); $rb = nadlan_ph_region_rank( $b['city'] ?? '' ); return $ra !== $rb ? $ra - $rb : $a['_o'] - $b['_o']; } );
 		$tr = '';
 		foreach ( $rows as $i => $p ) {
 			$reg = nadlan_ph_region( $p['city'] ?? '' );
@@ -224,7 +231,7 @@ if ( ! function_exists( 'nadlan_ph_market_html' ) ) {
 		<div class="nlph-sel">
 			<label>שלב <select data-f="st"><option value="">הכל</option><option value="presale">פריסייל</option><option value="marketing">בשיווק</option><option value="construction">בבנייה</option><option value="near">אכלוס קרוב או מיידי</option></select></label>
 			<label>מחיר <select data-f="max"><option value="">כל המחירים</option><option value="2000000">עד 2 מיליון ₪</option><option value="3000000">עד 3 מיליון ₪</option><option value="4000000">עד 4 מיליון ₪</option><option value="6000000">עד 6 מיליון ₪</option></select></label>
-			<label>מיון <select data-f="sort"><option value="asc">מחיר: מהנמוך</option><option value="desc">מחיר: מהגבוה</option></select></label>
+			<label>מיון <select data-f="sort"><option value="rec">תל אביב והמרכז תחילה</option><option value="asc">מחיר: מהנמוך</option><option value="desc">מחיר: מהגבוה</option></select></label>
 		</div>
 	</div>
 	<div class="nlph-tw"><table class="nlph-mt">
@@ -616,7 +623,202 @@ if ( ! function_exists( 'nadlan_ph_sources_html' ) ) {
 			'https://www.gov.il/apps/moch/rasham/home' => 'משרד הבינוי והשיכון: פנקס הקבלנים',
 		);
 		$li = ''; foreach ( $s as $u => $l ) { $li .= '<li><a href="' . esc_url( $u ) . '" target="_blank" rel="noopener">' . esc_html( $l ) . '</a></li>'; }
-		return '<section class="nlph-sec nlph-sec--src" id="nlph-sources" aria-labelledby="nlph-sources-h"><h2 id="nlph-sources-h">מקורות רשמיים</h2><ul class="nlph-srcs">' . $li . '</ul><p class="nlph-src">עודכן ב־' . esc_html( date_i18n( 'j.n.Y', strtotime( NADLAN_PH_UPDATED ) ) ) . '. נדל"ן הוא אתר עצמאי. שמות פרויקטים ויזמים מופיעים לזיהוי בלבד.</p></section>';
+		return '<section class="nlph-sec nlph-sec--src" id="nlph-sources" aria-labelledby="nlph-sources-h"><h2 id="nlph-sources-h">מקורות רשמיים</h2><ul class="nlph-srcs">' . $li . '</ul><p class="nlph-src">עודכן ב־' . esc_html( date_i18n( 'j.n.Y', strtotime( NADLAN_PH_UPDATED_HE ) ) ) . '. נדל"ן הוא אתר עצמאי. שמות פרויקטים ויזמים מופיעים לזיהוי בלבד.</p></section>';
+	}
+}
+
+/* ------------------------------------------------------------------------------------------------ HAD-689 step 2 (Ben, 9-10.11.2026)
+ * "דירות חדשות לאכלוס מיידי" on the ONE page of the new-projects intent, above the catalog, next to every other project.
+ * The rows are the immediate / near-occupancy rows of data/projects-market.json, each checked by hand on 9.11.2026 against the
+ * developer's page or the developer's listing (docs/research/2026-11-09-new-projects-hub/ready-verify/). Headings use the words
+ * of Google's page 1 for the sub-intent (Ashtrom: "דירות חדשות לאכלוס מיידי"; Yad2: "לאכלוס קרוב"); the body carries the forms
+ * people type (autocomplete 9.11): דירות מוכנות מקבלן, לכניסה מיידית, פרויקטים מאוכלסים. Unknown facts are omitted, never announced. */
+if ( ! function_exists( 'nadlan_ph_market_counts' ) ) {
+	/** Projects on the market by stage, from the data file. */
+	function nadlan_ph_market_counts() {
+		$c = array( 'all' => 0, 'immediate' => 0, 'near_occupancy' => 0, 'construction' => 0, 'marketing' => 0, 'presale' => 0 );
+		foreach ( nadlan_ph_market()['projects'] as $p ) { $c['all']++; $k = (string) ( $p['status'] ?? '' ); if ( isset( $c[ $k ] ) ) { $c[ $k ]++; } }
+		return $c;
+	}
+}
+if ( ! function_exists( 'nadlan_ph_region_rank' ) ) {
+	/** Ben, 10.11.2026: the lists open on Tel Aviv, then the centre of the country, then everything else (the variety stays, lower). */
+	function nadlan_ph_region_rank( $city ) {
+		$r = array( 'tlv' => 0, 'dan' => 1, 'sharon' => 2, 'center' => 3, 'jlm' => 4, 'north' => 5, 'south' => 6, 'other' => 7 );
+		return $r[ nadlan_ph_region( $city ) ] ?? 7;
+	}
+}
+if ( ! function_exists( 'nadlan_ph_ready_rows' ) ) {
+	/** Tel Aviv first, then the centre; inside each area immediate before near occupancy, priced rows first from the lowest price. */
+	function nadlan_ph_ready_rows() {
+		$rows = array();
+		foreach ( nadlan_ph_market()['projects'] as $p ) { if ( in_array( (string) ( $p['status'] ?? '' ), array( 'immediate', 'near_occupancy' ), true ) ) { $rows[] = $p; } }
+		usort( $rows, function ( $a, $b ) {
+			$ra = nadlan_ph_region_rank( $a['city'] ?? '' ); $rb = nadlan_ph_region_rank( $b['city'] ?? '' );
+			if ( $ra !== $rb ) { return $ra - $rb; }
+			$sa = 'immediate' === $a['status'] ? 0 : 1; $sb = 'immediate' === $b['status'] ? 0 : 1;
+			if ( $sa !== $sb ) { return $sa - $sb; }
+			$pa = (int) ( $a['price_from'] ?? 0 ); $pb = (int) ( $b['price_from'] ?? 0 );
+			if ( ! $pa !== ! $pb ) { return $pa ? -1 : 1; }
+			return $pa - $pb;
+		} );
+		return $rows;
+	}
+}
+if ( ! function_exists( 'nadlan_ph_checked_date' ) ) {
+	function nadlan_ph_checked_date() {
+		$m = nadlan_ph_market(); $d = (string) ( $m['ready_checked'] ?? ( $m['read'] ?? '' ) );
+		return '' !== $d ? date_i18n( 'j.n.Y', strtotime( $d ) ) : '';
+	}
+}
+if ( ! function_exists( 'nadlan_ph_answer_html' ) ) {
+	/** The answer paragraph under the H1: what is on the market today, by stage, printed from the data. */
+	function nadlan_ph_answer_html() {
+		$c = nadlan_ph_market_counts(); if ( $c['all'] < 1 ) { return ''; }
+		$parts = array();
+		if ( $c['immediate'] )      { $parts[] = '<a href="#nlph-ready"><b>' . (int) $c['immediate'] . '</b> לאכלוס מיידי</a>'; }
+		if ( $c['near_occupancy'] ) { $parts[] = '<b>' . (int) $c['near_occupancy'] . '</b> באכלוס קרוב'; }
+		if ( $c['construction'] )   { $parts[] = '<b>' . (int) $c['construction'] . '</b> בבנייה'; }
+		if ( $c['marketing'] )      { $parts[] = '<b>' . (int) $c['marketing'] . '</b> בשיווק'; }
+		if ( $c['presale'] )        { $parts[] = '<b>' . (int) $c['presale'] . '</b> בפריסייל'; }
+		$last = count( $parts ) > 1 ? array_pop( $parts ) : '';
+		$d = nadlan_ph_checked_date();
+		return '<p class="nldir-lead nldir-answer"><strong>' . number_format( (int) $c['all'] ) . '</strong> פרויקטים חדשים ודירות חדשות מקבלן למכירה עכשיו: '
+			. implode( ', ', $parts ) . ( '' !== $last ? ' ו־' . $last : '' ) . '. ליד המחיר שפרסם היזם מוצג מחיר העסקאות בעיר לפי רשות המסים.'
+			. ( '' !== $d ? ' <span class="nldir-asof">נבדק ב־' . esc_html( $d ) . '</span>' : '' ) . '</p>';
+	}
+}
+if ( ! function_exists( 'nadlan_ph_ready_html' ) ) {
+	function nadlan_ph_ready_html() {
+		$rows = nadlan_ph_ready_rows(); if ( ! $rows ) { return ''; }
+		$n_im = 0; $n_nr = 0; $cities = array();
+		foreach ( $rows as $p ) {
+			if ( 'immediate' === $p['status'] ) { $n_im++; } else { $n_nr++; }
+			$ck = trim( str_replace( '-', ' ', (string) ( $p['city'] ?? '' ) ) ); if ( '' !== $ck ) { $cities[ $ck ] = ( $cities[ $ck ] ?? 0 ) + 1; }
+		}
+		arsort( $cities );
+		$open = isset( $cities['תל אביב יפו'] ) ? 'תל אביב יפו' : ''; // the city the section opens on
+		$date = nadlan_ph_checked_date();
+		$cards = ''; $i = 0;
+		foreach ( $rows as $p ) {
+			$st    = (string) $p['status'];
+			$city  = trim( str_replace( '-', ' ', (string) ( $p['city'] ?? '' ) ) );
+			$place = trim( ( $p['neighbourhood'] ?? '' ) . ( ! empty( $p['neighbourhood'] ) && '' !== $city ? ', ' : '' ) . $city );
+			$price = (int) ( $p['price_from'] ?? 0 );
+			$dl    = trim( (string) ( $p['delivery'] ?? '' ) );
+			/* a published month that has already passed is not shown next to "אכלוס קרוב" (the developer's page still calls it near): unknown is omitted */
+			if ( 'near_occupancy' === $st && preg_match( '#^(\d{2})/(\d{4})$#', $dl, $dm ) && ( $dm[2] . '-' . $dm[1] ) < substr( (string) ( nadlan_ph_market()['ready_checked'] ?? gmdate( 'Y-m-d' ) ), 0, 7 ) ) { $dl = ''; }
+			$badge = 'immediate' === $st ? ( '' !== $dl ? $dl : 'אכלוס מיידי' ) : 'אכלוס קרוב' . ( '' !== $dl ? ' · ' . $dl : '' );
+			preg_match_all( '/\d+(?:\.\d)?/', (string) ( $p['rooms'] ?? '' ), $rm );
+			$rmin = $rm[0] ? min( array_map( 'floatval', $rm[0] ) ) : 0; $rmax = $rm[0] ? max( array_map( 'floatval', $rm[0] ) ) : 0;
+			$name = esc_html( $p['name'] ?? '' );
+			if ( ! empty( $p['url'] ) ) { $name = '<a href="' . esc_url( home_url( $p['url'] ) ) . '">' . $name . '</a>'; }
+			$ctx = '';
+			if ( function_exists( 'nadlan_cp_city_data' ) ) {
+				$row = nadlan_cp_city_data( $city );
+				if ( $row && ! empty( $row['psqm_all'] ) ) { $ctx = 'מחיר למ"ר ב' . esc_html( $row['key'] ?? $city ) . ' לפי עסקאות: <b>' . esc_html( nadlan_ph_nis( $row['psqm_all'] ) ) . '</b>'; }
+			}
+			$src = '';
+			$su  = (string) ( $p['src_url'] ?? '' ); $host = $su ? (string) wp_parse_url( $su, PHP_URL_HOST ) : '';
+			if ( '' !== $host && ! preg_match( '/yad2|madlan|nadlan\.com|bizportal|ynet|globes|calcalist/i', $host ) ) {
+				$src = '<a href="' . esc_url( $su ) . '" target="_blank" rel="nofollow noopener">אתר היזם</a>';
+			} elseif ( '' !== $host ) {
+				$src = 'פרסום היזם';
+			}
+			$in = ( '' === $open || $city === $open );
+			$cards .= '<article class="nlrd-card' . ( $in ? ( $i >= 9 ? ' nlrd-more' : '' ) : ' is-off' ) . '" data-st="' . esc_attr( $st ) . '" data-city="' . esc_attr( $city ) . '" data-price="' . (int) $price . '" data-rmin="' . esc_attr( $rmin ) . '" data-rmax="' . esc_attr( $rmax ) . '">'
+				. '<p class="nlrd-top"><span class="nlrd-badge nlrd-badge--' . esc_attr( $st ) . '">' . esc_html( $badge ) . '</span><span class="nlrd-place">' . esc_html( $place ) . '</span></p>'
+				. '<h3>' . $name . '</h3>'
+				. '<p class="nlrd-dev">' . esc_html( $p['developer'] ?? '' ) . ( ! empty( $p['rooms'] ) ? ' · ' . esc_html( $p['rooms'] ) . ' חדרים' : '' ) . '</p>'
+				. ( $price ? '<p class="nlrd-price"><span>החל מ</span> <b>' . esc_html( nadlan_ph_nis( $price ) ) . '</b>' . ( ! empty( $p['price_note'] ) ? ' <small>' . esc_html( $p['price_note'] ) . '</small>' : '' ) . '</p>' : '' )
+				. ( ! empty( $p['deal'] ) ? '<p class="nlrd-deal">תנאים שפרסם היזם: ' . esc_html( $p['deal'] ) . '</p>' : '' )
+				. ( '' !== $ctx ? '<p class="nlrd-ctx">' . $ctx . '</p>' : '' )
+				. ( '' !== $src || '' !== $date ? '<p class="nlrd-src">' . ( '' !== $date ? 'נבדק ב־' . esc_html( $date ) : '' ) . ( '' !== $src ? ( '' !== $date ? ' · ' : '' ) . $src : '' ) . '</p>' : '' )
+				. '</article>';
+			if ( $in ) { $i++; }
+		}
+		$copt = '<option value="">כל הארץ (' . count( $cities ) . ' ערים)</option>';
+		foreach ( $cities as $ck => $n ) { $copt .= '<option value="' . esc_attr( $ck ) . '"' . ( $ck === $open ? ' selected' : '' ) . '>' . esc_html( $ck ) . ' (' . (int) $n . ')</option>'; }
+		$total = count( $rows ); $shown = '' !== $open ? (int) $cities[ $open ] : $total;
+		ob_start(); ?>
+<section class="nlph-sec nlrd" id="nlph-ready" aria-labelledby="nlph-ready-h">
+	<p class="nlph-kick">דירות מוכנות מקבלן<?php echo $date ? ' · נבדק מול פרסומי היזמים ב־' . esc_html( $date ) : ''; ?></p>
+	<h2 id="nlph-ready-h">דירות חדשות לאכלוס מיידי: <?php echo (int) $n_im; ?> פרויקטים<?php echo $n_nr ? ', ועוד ' . (int) $n_nr . ' לאכלוס קרוב' : ''; ?></h2>
+	<p class="nlph-lede">דירות חדשות מקבלן שאפשר להיכנס אליהן עכשיו או בקרוב, ב־<?php echo count( $cities ); ?> ערים: דירות מוכנות לכניסה מיידית בפרויקטים מאוכלסים, ודירות לקראת מסירה. דירה גמורה רואים בעיניים לפני החתימה, נכנסים אליה בלי שנים של המתנה, ומשלמים בלי הצמדה ארוכה למדד תשומות הבנייה. לכל פרויקט: היזם, החדרים, המחיר שהיזם פרסם ומועד המסירה.</p>
+	<div class="nlph-tools">
+		<div class="nlph-chips" role="group" aria-label="מתי נכנסים">
+			<button type="button" class="is-on" data-st="">הכל <i><?php echo (int) $total; ?></i></button>
+			<button type="button" data-st="immediate">לאכלוס מיידי <i><?php echo (int) $n_im; ?></i></button>
+			<?php if ( $n_nr ) : ?><button type="button" data-st="near_occupancy">אכלוס קרוב <i><?php echo (int) $n_nr; ?></i></button><?php endif; ?>
+		</div>
+		<div class="nlph-sel">
+			<label>עיר <select data-f="city"><?php echo $copt; // phpcs:ignore ?></select></label>
+			<label>מחיר <select data-f="max"><option value="">כל המחירים</option><option value="2000000">עד 2 מיליון ₪</option><option value="3000000">עד 3 מיליון ₪</option><option value="4000000">עד 4 מיליון ₪</option><option value="5000000">עד 5 מיליון ₪</option></select></label>
+			<label>חדרים <select data-f="rooms"><option value="">הכל</option><option value="3">3 חדרים</option><option value="4">4 חדרים</option><option value="5">5 חדרים ומעלה</option></select></label>
+		</div>
+	</div>
+	<div class="nlrd-grid"><?php echo $cards; // phpcs:ignore ?></div>
+	<p class="nlph-empty nlrd-empty" hidden>אין פרויקט שמתאים לסינון הזה. נסו עיר אחרת או טווח מחירים רחב יותר.</p>
+	<?php if ( $shown > 9 ) : ?><button type="button" class="nlph-btn nlph-btn--ghost" id="nlrd-all">הצגת כל <?php echo (int) $shown; ?> הפרויקטים<?php echo '' !== $open ? ' ב' . esc_html( $open ) : ''; ?></button><?php endif; ?>
+	<?php if ( '' !== $open ) : ?><button type="button" class="nlph-btn nlph-btn--ghost" id="nlrd-land">כל הארץ: <?php echo (int) $total; ?> פרויקטים לאכלוס מיידי וקרוב</button><?php endif; ?>
+	<p class="nlph-src">המחירים, החדרים, התנאים ומועדי המסירה כפי שפרסמו היזמים<?php echo $date ? ', נבדקו אחד אחד ב־' . esc_html( $date ) : ''; ?>. פרויקט שפורסם כ"אכלוס מיידי" ומועד המסירה שפורסם לו עוד לא הגיע מופיע כאן כאכלוס קרוב. מחיר למ"ר בעיר: עסקאות שדווחו לרשות המסים. מה שלא פורסם לא מופיע. גם בדירה גמורה חלים חוק המכר, תקופות הבדק והאחריות: <a href="#nlph-checks">מה בודקים לפני שחותמים</a>.</p>
+</section>
+		<?php
+		return ob_get_clean();
+	}
+}
+if ( ! function_exists( 'nadlan_ph_top_wanted' ) ) {
+	/** The top block (immediate occupancy + the marketing table, above the catalog) shows on the clean first page of the catalog.
+	 *  A pure test of the request, so the template (inc/directory.php, which prints the block) and the body (built earlier by the
+	 *  catalog snippet, which then skips the table and the CSS) always agree, whatever the order they run in. */
+	function nadlan_ph_top_wanted() {
+		static $w = null; if ( null !== $w ) { return $w; }
+		if ( ! is_post_type_archive( 'nadlan_project' ) ) { return $w = false; }
+		if ( ! NADLAN_PH_READY_LIVE && '1' !== (string) ( $_GET['nlready'] ?? '' ) ) { return $w = false; }
+		if ( max( (int) get_query_var( 'paged' ), (int) ( $_GET['paged'] ?? 0 ) ) > 1 ) { return $w = false; }
+		foreach ( array( 'city', 'q', 'project_type', 'status' ) as $k ) { if ( ! empty( $_GET[ $k ] ) ) { return $w = false; } }
+		return $w = ! empty( nadlan_ph_market()['projects'] );
+	}
+}
+if ( ! function_exists( 'nadlan_ph_top_html' ) ) {
+	/** Above the catalog, on the clean first page only: the page CSS, the immediate-occupancy section, the marketing table. Printed by inc/directory.php right after the hero. */
+	function nadlan_ph_top_html() {
+		if ( ! nadlan_ph_top_wanted() ) { return ''; }
+		$ready = ''; $market = '';
+		try { $ready = nadlan_ph_ready_html(); } catch ( \Throwable $e ) { $ready = ''; }
+		try { $market = nadlan_ph_market_html(); } catch ( \Throwable $e ) { $market = ''; }
+		$css = nadlan_ph_assets_part( 'css' );
+		return $css . '<style id="nlrd-css">'
+			. '.nlph--top{margin-top:18px}'
+			. '.nlrd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:14px 0}'
+			. '.nlrd-card{border:1px solid var(--li);border-radius:6px;padding:14px;background:#fff;display:flex;flex-direction:column;gap:6px;min-width:0}'
+			. '.nlrd-card.nlrd-more,.nlrd-card.is-off{display:none}.nlrd.is-all .nlrd-card.nlrd-more:not(.is-off){display:flex}'
+			. '.nlrd-card p{margin:0!important;font-size:14.5px!important;line-height:1.5!important;max-width:none}'
+			. '.nlrd-card h3{margin:0!important;font-size:18px!important}.nlrd-card h3 a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}'
+			. '.nlrd-top{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}.nlrd-place{color:var(--mu);font-size:13px}'
+			. '.nlrd-badge{font-weight:600;font-size:13px;padding:3px 9px;border-radius:6px;border:1px solid var(--li)}'
+			. '.nlrd-badge--immediate{background:#E3F1E5;border-color:#4F9A5C;color:#1F5A2A}.nlrd-badge--near_occupancy{background:#FBF1C7;border-color:#D9B530;color:#4A3B00}'
+			. '.nlrd-dev{color:#24323E}.nlrd-price span{color:var(--mu);font-size:13px}.nlrd-price b{font:600 19px "IBM Plex Mono",ui-monospace,monospace;color:var(--ink)}.nlrd-price small{color:var(--mu);font-size:12.5px}'
+			. '.nlrd-deal{background:#FBF1C7;border-radius:6px;padding:6px 9px;color:#12202A}.nlrd-ctx{color:var(--mu);font-size:13.5px!important}.nlrd-ctx b{color:var(--ink);font-variant-numeric:tabular-nums}'
+			. '.nlrd-src{margin-top:auto!important;padding-top:6px;border-top:1px dashed var(--li);color:var(--mu);font-size:12.5px!important}'
+			. '.nldir-answer b{font-variant-numeric:tabular-nums}.nldir-asof{white-space:nowrap;font-size:.85em;opacity:.8}'
+			. '@media(max-width:640px){.nlrd-grid{grid-template-columns:1fr}}'
+			. '</style>'
+			. '<div class="nlph nlph--top" dir="rtl">' . $ready . $market . '</div>'
+			. '<script id="nlrd-js">(function(){var s=document.getElementById("nlph-ready");if(!s)return;var cards=[].slice.call(s.querySelectorAll(".nlrd-card")),chips=[].slice.call(s.querySelectorAll(".nlph-chips button")),all=document.getElementById("nlrd-all"),empty=s.querySelector(".nlrd-empty"),st="";'
+			. 'function v(k){var e=s.querySelector("[data-f="+k+"]");return e?e.value:"";}'
+			. 'function f(){var c=v("city"),mx=+v("max")||0,r=+v("rooms")||0,n=0;cards.forEach(function(a){var p=+a.dataset.price,lo=+a.dataset.rmin,hi=+a.dataset.rmax;'
+			. 'var ok=(!st||a.dataset.st===st)&&(!c||a.dataset.city===c)&&(!mx||(p&&p<=mx))&&(!r||(hi&&(r>=5?hi>=5:(lo<=r&&hi>=r))));a.classList.toggle("is-off",!ok);if(ok)n++;});'
+			. 'if(st||c||mx||r)s.classList.add("is-all");if(empty)empty.hidden=n>0;if(all)all.hidden=s.classList.contains("is-all");}'
+			. 'chips.forEach(function(b){b.addEventListener("click",function(){st=b.dataset.st;chips.forEach(function(x){x.classList.toggle("is-on",x===b);});f();});});'
+			. '[].slice.call(s.querySelectorAll("select")).forEach(function(e){e.addEventListener("change",f);});'
+			. 'if(all)all.addEventListener("click",function(){s.classList.add("is-all");all.hidden=true;});'
+			. 'var land=document.getElementById("nlrd-land");if(land)land.addEventListener("click",function(){var c=s.querySelector("[data-f=city]");c.value="";s.classList.add("is-all");f();land.hidden=true;});'
+			/* the catalog search sits above these sections: after the visitor searches or filters the catalog, bring its results into view */
+			. 'var hero=document.querySelector(".nldir-hero"),res=document.getElementById("nldir-results"),want=0;'
+			. 'if(hero&&res&&window.MutationObserver){["submit","change"].forEach(function(t){hero.addEventListener(t,function(){want=1;},true);});hero.addEventListener("click",function(e){if(e.target.closest&&e.target.closest(".nldir-pill,button[type=submit],.nlcp-go"))want=1;},true);'
+			. 'new MutationObserver(function(){if(!want)return;want=0;var m=document.querySelector(".nldir-main");if(m&&m.getBoundingClientRect().top>window.innerHeight*0.6)m.scrollIntoView({behavior:"smooth",block:"start"});}).observe(res,{childList:true});}'
+			. '})();</script>';
 	}
 }
 
@@ -630,7 +832,7 @@ if ( ! function_exists( 'nadlan_ph_body' ) ) {
 			return '<div class="nlph" dir="rtl">' . nadlan_ph_cities_html( $facets ) . nadlan_ph_guides_html() . nadlan_ph_faq_html() . '</div>' . nadlan_ph_assets();
 		}
 		foreach ( array(
-			function () { return nadlan_ph_market_html(); },
+			function () { return nadlan_ph_top_wanted() ? '' : nadlan_ph_market_html(); }, // HAD-689: on the clean first page the table sits above the catalog (nadlan_ph_top_html)
 			function () use ( $facets ) { return nadlan_ph_tlv_html( $facets ); },
 			function () use ( $facets ) { return nadlan_ph_prices_html( $facets ); },
 			function () use ( $facets ) { return nadlan_ph_catalog_html( $facets ); },
@@ -655,8 +857,20 @@ if ( ! function_exists( 'nadlan_cp_body_html' ) ) {
 	function nadlan_cp_body_html( $facets ) { return nadlan_ph_body( $facets ); }
 }
 
+if ( ! function_exists( 'nadlan_ph_assets_part' ) ) {
+	/** 'css' = the <style> of the hub, 'js' = its script. The top block prints the CSS early (HAD-689), so nothing above the catalog shows unstyled. */
+	function nadlan_ph_assets_part( $which ) {
+		$a = nadlan_ph_assets_raw(); $p = strpos( $a, '</style>' );
+		if ( false === $p ) { return 'css' === $which ? '' : $a; }
+		$p += 8;
+		return 'css' === $which ? substr( $a, 0, $p ) : substr( $a, $p );
+	}
+}
 if ( ! function_exists( 'nadlan_ph_assets' ) ) {
-	function nadlan_ph_assets() {
+	function nadlan_ph_assets() { return nadlan_ph_top_wanted() ? nadlan_ph_assets_part( 'js' ) : nadlan_ph_assets_raw(); }
+}
+if ( ! function_exists( 'nadlan_ph_assets_raw' ) ) {
+	function nadlan_ph_assets_raw() {
 		return '<style id="nlph-css">'
 			. '.nlph{--ink:#14213D;--tx:#12202A;--mu:#4A5866;--li:#D3DCE2;--bg:#F4F6FA;--ac:#1F4B5C;--ac2:#2F6F86;--ok:#0F7A63;--warn:#9A5B00;'
 			. 'max-width:1240px;margin:28px auto 0;padding:0 max(16px,env(safe-area-inset-left,0px));font-family:"IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;color:var(--tx)}'
@@ -742,7 +956,7 @@ if ( ! function_exists( 'nadlan_ph_assets' ) ) {
 			. 'tr.innerHTML="<th scope=\\"row\\">"+n+"<small>"+E(pl)+"</small></th><td data-l=\\"יזם\\">"+E(p.developer)+"</td><td data-l=\\"חדרים\\">"+E(p.rooms)+"</td><td data-l=\\"החל מ\\" class=\\"nlph-p\\">"+pc+"</td><td data-l=\\"תנאים\\">"+E(p.deal)+"</td><td data-l=\\"שלב\\">"+(ST[p.status]?"<span class=\\"nlph-st nlph-st--"+E(p.status)+"\\">"+ST[p.status]+"</span>":"")+(p.delivery?"<small>מסירה: "+E(p.delivery)+"</small>":"")+"</td>";return tr;}'
 			. 'function load(cb){if(full||busy){if(full)cb();return;}busy=1;sec.classList.add("is-busy");fetch(sec.dataset.src).then(function(r){return r.json();}).then(function(d){var ps=(d&&d.projects)||[];if(ps.length){tb.innerHTML="";rows=ps.map(ROW);rows.forEach(function(r){tb.appendChild(r);});}full=1;busy=0;sec.classList.remove("is-busy");cb();}).catch(function(){full=1;busy=0;sec.classList.remove("is-busy");cb();});}'
 			. 'function f(){var st=sec.querySelector("[data-f=st]").value,mx=+sec.querySelector("[data-f=max]").value||0,so=sec.querySelector("[data-f=sort]").value,shown=0;'
-			. 'rows.sort(function(a,b){var pa=+a.dataset.price||9e12,pb=+b.dataset.price||9e12;return so==="desc"?((+b.dataset.price||0)-(+a.dataset.price||0)):pa-pb;});rows.forEach(function(r){tb.appendChild(r);});'
+			. 'var RK={tlv:0,dan:1,sharon:2,center:3,jlm:4,north:5,south:6,other:7};rows.sort(function(a,b){var pa=+a.dataset.price||9e12,pb=+b.dataset.price||9e12;if(so==="desc")return (+b.dataset.price||0)-(+a.dataset.price||0);if(so==="rec"){var ra=RK[a.dataset.reg],rb=RK[b.dataset.reg];if(ra!==rb)return ra-rb;}return pa-pb;});rows.forEach(function(r){tb.appendChild(r);});'
 			. 'var cap=!(reg||st||mx)&&mt.dataset.all!=="1";rows.forEach(function(r){var ok=(!reg||r.dataset.reg===reg)&&(!st||(st==="near"?(r.dataset.st==="near_occupancy"||r.dataset.st==="immediate"):r.dataset.st===st))&&(!mx||(+r.dataset.price&&+r.dataset.price<=mx));r.classList.toggle("is-off",!ok);if(ok)shown++;r.classList.toggle("nlph-more",ok&&cap&&shown>16);});'
 			. 'if(more)more.hidden=!cap||shown<=16;if(empty)empty.hidden=shown>0;}'
 			. 'sec.querySelectorAll(".nlph-chips button").forEach(function(b){b.addEventListener("click",function(){sec.querySelectorAll(".nlph-chips button").forEach(function(x){x.classList.toggle("is-on",x===b);});reg=b.dataset.reg;load(f);});});'
@@ -773,7 +987,7 @@ add_filter( 'wpseo_schema_webpage', function ( $d ) {
 	if ( ! is_array( $d ) || ! is_post_type_archive( 'nadlan_project' ) ) { return $d; }
 	$d['name'] = nadlan_ph_share_title();
 	$d['description'] = 'פרויקטים חדשים ודירות מקבלן בישראל: קטלוג לפי עיר ויזם, פרויקטים בשיווק עם המחיר שפרסם היזם, פרויקטים חדשים בתל אביב, מחירי עסקאות לפי עיר, לוח זמנים מהיתר למפתח, מחשבונים ובדיקות לפני חתימה.';
-	$d['dateModified'] = NADLAN_PH_UPDATED . 'T08:00:00+03:00';
+	$d['dateModified'] = NADLAN_PH_UPDATED_HE . 'T08:00:00+02:00'; // winter time from 25.10
 	return $d;
 }, 25 );
 

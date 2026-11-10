@@ -1097,10 +1097,14 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		foreach ( $nlpc_types as $nlpc_k => $nlpc_n ) { if ( isset( $nlpc_nouns[ $nlpc_k ] ) && (int) $nlpc_n > 0 ) { $nlpc_parts[] = number_format( (int) $nlpc_n ) . ' ' . $nlpc_nouns[ $nlpc_k ]; } }
 		$nlpc_last = count( $nlpc_parts ) > 1 ? array_pop( $nlpc_parts ) : '';
 		$nlpc_mix  = $nlpc_parts ? ': ' . implode( ', ', $nlpc_parts ) . ( '' !== $nlpc_last ? ' ו־' . $nlpc_last : '' ) : ''; ?>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים בקטלוג<?php echo esc_html( $nlpc_mix ); ?>, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<?php $nlph_answer = ( function_exists( 'nadlan_ph_answer_html' ) && function_exists( 'nadlan_ph_top_wanted' ) && nadlan_ph_top_wanted() ) ? nadlan_ph_answer_html() : ''; // HAD-689: what is on the market today, by stage
+		echo $nlph_answer; // phpcs:ignore
+		ob_start(); ?>
+		<p class="nldir-lead nldir-catlead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים בקטלוג<?php echo esc_html( $nlpc_mix ); ?>, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<?php $nlph_catlead = ob_get_clean(); if ( '' === $nlph_answer ) { echo $nlph_catlead; $nlph_catlead = ''; } // phpcs:ignore ?>
 		<?php if ( function_exists( 'nadlan_ph_body' ) && function_exists( 'nadlan_cp_is_catalog' ) && (int) $state['paged'] < 2 ) : /* 1.72.513 the hub: the answer first, then a way into every section below the grid */ ?>
-		<p class="nldir-lead nldir-intro">מחפשים פרויקט חדש או דירה חדשה מקבלן? כאן רואים את כל הפרויקטים החדשים בישראל לפי עיר, יזם ושלב. מתחת לקטלוג: פרויקטים בשיווק עם המחיר שפרסם היזם, פרויקטים חדשים בתל אביב לפי אזור, מחירי עסקאות בכל עיר, לוח הזמנים מהיתר הבנייה ועד המפתח, מחשבונים ותשע בדיקות לפני שחותמים. עודכן ב־<?php echo esc_html( date_i18n( 'j.n.Y', strtotime( NADLAN_PH_UPDATED ) ) ); ?>.</p>
-		<nav class="nldir-jump" aria-label="בעמוד הזה"><?php echo function_exists( 'nadlan_ph_market' ) && ! empty( nadlan_ph_market()['projects'] ) ? '<a href="#nlph-market">בשיווק עכשיו</a>' : ''; ?><a href="#nlph-tlv">פרויקטים בתל אביב</a><a href="#nlph-prices">מחירים לפי עיר</a><a href="#nlph-timeline">מהיתר למפתח</a><a href="#nlph-pay">תשלומים והצמדה</a><a href="#nlph-tools">מחשבונים</a><a href="#nlph-checks">בדיקות לפני חתימה</a><a href="#nlph-faq">שאלות נפוצות</a></nav>
+		<p class="nldir-lead nldir-intro">מחפשים פרויקט חדש או דירה חדשה מקבלן? כאן רואים את כל הפרויקטים החדשים בישראל לפי עיר, יזם ושלב. <?php echo '' !== $nlph_answer ? 'בעמוד הזה: דירות חדשות לאכלוס מיידי,' : 'מתחת לקטלוג:'; ?> פרויקטים בשיווק עם המחיר שפרסם היזם, פרויקטים חדשים בתל אביב לפי אזור, מחירי עסקאות בכל עיר, לוח הזמנים מהיתר הבנייה ועד המפתח, מחשבונים ותשע בדיקות לפני שחותמים. עודכן ב־<?php echo esc_html( date_i18n( 'j.n.Y', strtotime( defined( 'NADLAN_PH_UPDATED_HE' ) ? NADLAN_PH_UPDATED_HE : NADLAN_PH_UPDATED ) ) ); ?>.</p>
+		<nav class="nldir-jump" aria-label="בעמוד הזה"><?php echo '' !== $nlph_answer ? '<a href="#nlph-ready">לאכלוס מיידי</a>' : ''; ?><?php echo function_exists( 'nadlan_ph_market' ) && ! empty( nadlan_ph_market()['projects'] ) ? '<a href="#nlph-market">בשיווק עכשיו</a>' : ''; ?><a href="#nlph-tlv">פרויקטים בתל אביב</a><a href="#nlph-prices">מחירים לפי עיר</a><a href="#nlph-timeline">מהיתר למפתח</a><a href="#nlph-pay">תשלומים והצמדה</a><a href="#nlph-tools">מחשבונים</a><a href="#nlph-checks">בדיקות לפני חתימה</a><a href="#nlph-faq">שאלות נפוצות</a></nav>
 		<?php echo function_exists( 'nadlan_phl_langs' ) ? nadlan_phl_langs( 'he' ) : ''; // the same catalog in English, Russian, French ?>
 		<style>.nldir-jump{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:2px 0 12px;padding-bottom:2px}.nldir-jump::-webkit-scrollbar{display:none}.nldir-jump a{flex:0 0 auto;font:500 14px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;color:#14213D;text-decoration:none;border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:9px 13px}.nldir-jump a:hover{border-color:#14213D}html{scroll-padding-top:90px}</style>
 		<?php else : ?>
@@ -1123,6 +1127,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			<?php endforeach; ?>
 		</div>
 	</header>
+<?php echo function_exists( 'nadlan_ph_top_html' ) ? nadlan_ph_top_html() : ''; // phpcs:ignore HAD-689: דירות חדשות לאכלוס מיידי + the marketing table, above the catalog ?>
 <?php echo function_exists( 'nadlan_drone_map_band' ) ? nadlan_drone_map_band() : ''; // phpcs:ignore ?>
 
 	<div class="nldir-body">
@@ -1136,6 +1141,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			</div>
 		</aside>
 		<main class="nldir-main">
+			<?php echo isset( $nlph_catlead ) ? str_replace( 'class="nldir-lead nldir-catlead"', 'class="nldir-lead nldir-catlead" style="font-size:15px;line-height:1.6;margin:0 0 12px"', $nlph_catlead ) : ''; // phpcs:ignore HAD-689: the catalogue's make-up, next to the catalogue ?>
 			<div class="nldir-bar">
 				<h2 class="nldir-count" style="font:inherit;font-size:15px;margin:0;color:inherit;line-height:inherit"><strong id="nldir-total"><?php echo number_format( $total ); ?></strong> פרויקטים בקטלוג</h2><?php /* 1.72.513 (F8): an H2 above the grid */ ?>
 				<div class="nldir-chips" id="nldir-chips"></div>
