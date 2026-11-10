@@ -1,0 +1,17 @@
+{
+  "released": "1.72.629",
+  "from": "1.72.628",
+  "live_before": {
+    "inc/projects-hub.php": "0faad77ed23b97fd36fcf60f5a79e97e",
+    "nadlan-config.php": "4dc435e783ac79f9cc7bfb3763564d43"
+  },
+  "post_before": {},
+  "state": "rolled back after the checks: /en/projects/?t629l=1, /ru/projects/?t629l=1, /fr/projects/?t629l=1",
+  "at": "2026-11-10 12:31:57",
+  "files": {},
+  "post_after": {},
+  "rolled_back_files": {
+    "inc/projects-hub.php": "92ebd2c52af0b60da3ce2ceb21de7366",
+    "nadlan-config.php": "ab38865a25574736c242df231590f045"
+  }
+}
