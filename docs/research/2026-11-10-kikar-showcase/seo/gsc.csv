@@ -1,0 +1,80 @@
+set,query,page,clicks,impressions,ctr,position
+page_total,"(all queries, incl. anonymised)",/projects/hamedina/,4,750,0.0053,15.6
+page_total,"(all queries, incl. anonymised)",/projects/hamedina-fr/,2,27,0.0741,8.5
+page_total,"(all queries, incl. anonymised)",/projects/hamedina-en/,1,67,0.0149,8.2
+page_total,"(all queries, incl. anonymised)",/projects/hamedina-ru/,0,14,0.0,9.6
+a_hamedina_pages,kikar hamedina towers,/projects/hamedina/,0,60,0.0,29.7
+a_hamedina_pages,מגדלים תל אביב,/projects/hamedina/,0,57,0.0,27.5
+a_hamedina_pages,מגדלים בתל אביב,/projects/hamedina/,0,51,0.0,35.5
+a_hamedina_pages,מגדלי מגורים בתל אביב,/projects/hamedina/,0,39,0.0,20.7
+a_hamedina_pages,מגדלי כיכר המדינה למכירה,/projects/hamedina/,0,28,0.0,12.8
+a_hamedina_pages,מגדלי כיכר המדינה,/projects/hamedina/,0,20,0.0,18.7
+a_hamedina_pages,kikar hamedina towers,/projects/hamedina-en/,0,14,0.0,17.3
+a_hamedina_pages,דירות למכירה בכיכר המדינה,/projects/hamedina/,0,9,0.0,26.3
+a_hamedina_pages,מגדלים חדשים בתל אביב,/projects/hamedina/,0,9,0.0,31.0
+a_hamedina_pages,כיכר המדינה,/projects/hamedina/,0,7,0.0,37.3
+a_hamedina_pages,תל אביב מגדלים,/projects/hamedina/,0,6,0.0,26.2
+a_hamedina_pages,אני רוצה שתחפש לי פרויקטים חדשים בתל אביב באזור כיכר המדינה - תציע לי את הפרויקטים הכי טובים בעיניך,/projects/hamedina/,0,4,0.0,3.5
+a_hamedina_pages,כמה עולה דירה,/projects/hamedina/,0,4,0.0,3.2
+a_hamedina_pages,כן,/projects/hamedina/,0,4,0.0,6.0
+a_hamedina_pages,מחירי הדירות,/projects/hamedina/,0,4,0.0,4.0
+a_hamedina_pages,מגדלי יוקרה,/projects/hamedina/,0,3,0.0,36.0
+a_hamedina_pages,פרויקט כיכר המדינה,/projects/hamedina/,0,3,0.0,57.7
+a_hamedina_pages,כן,/projects/hamedina-en/,0,2,0.0,8.5
+a_hamedina_pages,מגדלים בכיכר המדינה,/projects/hamedina/,0,2,0.0,26.5
+a_hamedina_pages,hamedina square,/projects/hamedina/,0,1,0.0,28.0
+a_hamedina_pages,how much is a 3 bedroom?,/projects/hamedina/,0,1,0.0,2.0
+a_hamedina_pages,prix des appartements,/projects/hamedina-fr/,0,1,0.0,1.0
+a_hamedina_pages,кикар,/projects/hamedina-ru/,0,1,0.0,15.0
+a_hamedina_pages,лисин,/projects/hamedina-ru/,0,1,0.0,63.0
+a_hamedina_pages,стоимость,/projects/hamedina-ru/,0,1,0.0,2.0
+a_hamedina_pages,איך קונים,/projects/hamedina/,0,1,0.0,3.0
+a_hamedina_pages,אני רוצה לקנות דירה חדשה ליד כיכר המדינה. תן לי את כל הפרויקטים הכי טובים שם,/projects/hamedina/,0,1,0.0,1.0
+a_hamedina_pages,בניינים כיכר המדינה,/projects/hamedina/,0,1,0.0,50.0
+a_hamedina_pages,המגדלים בכיכר המדינה,/projects/hamedina/,0,1,0.0,46.0
+a_hamedina_pages,כיכר המדינה תל אביב,/projects/hamedina/,0,1,0.0,29.0
+a_hamedina_pages,כמה עולה דירה?,/projects/hamedina/,0,1,0.0,5.0
+a_hamedina_pages,כמה עולה שם דירה,/projects/hamedina/,0,1,0.0,2.0
+a_hamedina_pages,כתובת,/projects/hamedina/,0,1,0.0,6.0
+a_hamedina_pages,למד תל אביב,/projects/hamedina/,0,1,0.0,44.0
+a_hamedina_pages,מגדל כיכר המדינה,/projects/hamedina/,0,1,0.0,12.0
+a_hamedina_pages,מגדל תל אביב,/projects/hamedina/,0,1,0.0,17.0
+a_hamedina_pages,מגדלי יוקרה בתל אביב,/projects/hamedina/,0,1,0.0,58.0
+a_hamedina_pages,מגדלי מגורים,/projects/hamedina/,0,1,0.0,25.0
+a_hamedina_pages,מגדלים בבניה בתל אביב,/projects/hamedina/,0,1,0.0,38.0
+a_hamedina_pages,מה מחירי הדירות,/projects/hamedina/,0,1,0.0,4.0
+a_hamedina_pages,סטטוס?,/projects/hamedina/,0,1,0.0,3.0
+a_hamedina_pages,פרויקט כיכר המדינה מחירים,/projects/hamedina/,0,1,0.0,11.0
+a_hamedina_pages,שכונת למד,/projects/hamedina/,0,1,0.0,46.0
+a_hamedina_pages,שלושה חדרים,/projects/hamedina/,0,1,0.0,4.0
+a_hamedina_pages,תוכנית דירה,/projects/hamedina/,0,1,0.0,3.0
+b_sitewide_kikar_words,kikar hamedina towers,/projects/hamedina/,0,60,0.0,29.7
+b_sitewide_kikar_words,מגדלי כיכר המדינה למכירה,/projects/hamedina/,0,28,0.0,12.8
+b_sitewide_kikar_words,מגדלי כיכר המדינה,/projects/hamedina/,0,20,0.0,18.7
+b_sitewide_kikar_words,kikar hamedina towers,/projects/hamedina-en/,0,14,0.0,17.3
+b_sitewide_kikar_words,דירות למכירה בכיכר המדינה,/projects/hamedina/,0,9,0.0,26.3
+b_sitewide_kikar_words,כיכר המדינה,/projects/hamedina/,0,7,0.0,37.3
+b_sitewide_kikar_words,אני רוצה שתחפש לי פרויקטים חדשים בתל אביב באזור כיכר המדינה - תציע לי את הפרויקטים הכי טובים בעיניך,/projects/hamedina/,0,4,0.0,3.5
+b_sitewide_kikar_words,פרויקט כיכר המדינה,/projects/hamedina/,0,3,0.0,57.7
+b_sitewide_kikar_words,מגדלים בכיכר המדינה,/projects/hamedina/,0,2,0.0,26.5
+b_sitewide_kikar_words,hamedina square,/projects/hamedina/,0,1,0.0,28.0
+b_sitewide_kikar_words,אני רוצה לקנות דירה חדשה ליד כיכר המדינה. תן לי את כל הפרויקטים הכי טובים שם,/projects/hamedina/,0,1,0.0,1.0
+b_sitewide_kikar_words,אתר הנדל ן של המדינה,/,0,1,0.0,39.0
+b_sitewide_kikar_words,בניינים כיכר המדינה,/projects/hamedina/,0,1,0.0,50.0
+b_sitewide_kikar_words,המגדלים בכיכר המדינה,/projects/hamedina/,0,1,0.0,46.0
+b_sitewide_kikar_words,כיכר המדינה תל אביב,/projects/hamedina/,0,1,0.0,29.0
+b_sitewide_kikar_words,כיכר העיר,/projects/,0,1,0.0,73.0
+b_sitewide_kikar_words,כיכר העיר נשר,/projects/,0,1,0.0,69.0
+b_sitewide_kikar_words,מגדל כיכר המדינה,/projects/hamedina/,0,1,0.0,12.0
+b_sitewide_kikar_words,מגדלי כיכר המדינה מחיר,/,0,1,0.0,68.0
+b_sitewide_kikar_words,פרויקט כיכר המדינה מחירים,/projects/hamedina/,0,1,0.0,11.0
+page_by_country,isr,/projects/hamedina-en/,0,16,0.0,16.2
+page_by_country,fra,/projects/hamedina-fr/,0,1,0.0,1.0
+page_by_country,isr,/projects/hamedina-ru/,0,2,0.0,8.5
+page_by_country,rus,/projects/hamedina-ru/,0,1,0.0,63.0
+page_by_country,deu,/projects/hamedina/,0,2,0.0,47.0
+page_by_country,esp,/projects/hamedina/,0,1,0.0,12.0
+page_by_country,grc,/projects/hamedina/,0,1,0.0,20.0
+page_by_country,isr,/projects/hamedina/,0,321,0.0,25.8
+page_by_country,pse,/projects/hamedina/,0,1,0.0,4.0
+page_by_country,usa,/projects/hamedina/,0,6,0.0,8.5

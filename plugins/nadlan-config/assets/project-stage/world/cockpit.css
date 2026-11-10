@@ -1,0 +1,117 @@
+/*
+ * The apartment cockpit (HAD-699, 10.11.2026; design: https://claude.ai/artifact/FzvFDybiyBoi8bspoPV9Zp).
+ * One panel for the chosen apartment: the view, price and cost, the plan, inside, around, decide. A bottom sheet on phones,
+ * a docked drawer on the reading-start side on desktops. Stacked sections that open and close (no tabs: Baymard, 27% vs 8%
+ * missed), the section index always visible, targets 44 px, numbers isolated left to right (docs/research/2026-11-10-
+ * kikar-showcase/ux/rules.md R7-R14, R21-R23, R33). Palette: the site's design system (ink, sea, white); the 3D stage's night
+ * blue and the chosen apartment's glass cyan. Everything here is scoped to .nlck or body.nlck-next (the gate).
+ */
+.nlck {
+  --ck-ink: #14212b; --ck-ink2: #3b4753; --ck-mute: #5b6670; --ck-line: #e3e7ea; --ck-sea: #2f6f86; --ck-seah: #255c70;
+  --ck-deep: #1f4b5c; --ck-night: #10262f; --ck-glass: #7fd3e6; --ck-paper: #f2f5f7; --ck-wa: #0f7a63;
+  position: fixed; z-index: 99990; inset-inline: 0; bottom: 0; direction: rtl; color: var(--ck-ink); background: #fff;
+  font-family: 'Assistant', 'Segoe UI', Arial, sans-serif; font-size: 15px; line-height: 1.45;
+  border-radius: 22px 22px 0 0; box-shadow: 0 -8px 32px rgba(16, 38, 47, 0.22);
+  display: flex; flex-direction: column; max-height: 92svh; height: 58svh; transition: height .22s ease;
+  -webkit-tap-highlight-color: transparent; overscroll-behavior: contain;
+}
+.nlck[hidden] { display: none; }
+.nlck[data-size='peek'] { height: 176px; }
+.nlck[data-size='full'] { height: 92svh; }
+.nlck *, .nlck *::before, .nlck *::after { box-sizing: border-box; }
+.nlck button, .nlck a, .nlck input { font-family: inherit; }
+.nlck bdi { unicode-bidi: isolate; direction: ltr; font-variant-numeric: tabular-nums; }
+.nlck__grab { display: block; width: 100%; height: 22px; border: 0; background: transparent; cursor: grab; padding: 0; touch-action: none; }
+.nlck__grab::before { content: ''; display: block; width: 44px; height: 5px; border-radius: 3px; background: #c9d2d8; margin: 8px auto 0; }
+.nlck__head { display: flex; align-items: flex-start; gap: 8px; padding: 2px 16px 0; }
+.nlck__titles { flex: 1; min-width: 0; }
+.nlck__title { margin: 0; font: 600 19px/1.25 'Noto Serif Hebrew', Georgia, serif; letter-spacing: -0.005em; color: var(--ck-ink); outline: none; }
+.nlck__sum { margin: 2px 0 0; font-size: 13px; color: var(--ck-ink2); }
+.nlck__tag { flex: none; font-size: 12px; color: var(--ck-deep); background: #e3eff3; border-radius: 999px; padding: 3px 9px; margin-top: 3px; }
+.nlck__x { flex: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--ck-line); background: #fff; display: grid; place-items: center; cursor: pointer; margin-top: -4px; }
+.nlck__x svg { width: 18px; height: 18px; }
+.nlck__nav { display: flex; gap: 6px; padding: 10px 16px 8px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid #eef1f3; flex: none; }
+.nlck__nav::-webkit-scrollbar { display: none; }
+.nlck__nav a { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ck-line); color: var(--ck-ink); background: #fff; display: inline-flex; align-items: center; font-size: 14px; text-decoration: none !important; }
+.nlck__nav a[aria-current='true'] { background: var(--ck-ink); border-color: var(--ck-ink); color: #fff; font-weight: 700; }
+.nlck__body { flex: 1; overflow-y: auto; padding: 0 16px 12px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.nlck-sec { border-bottom: 1px solid #eef1f3; scroll-margin-top: 4px; }
+.nlck-sec__h { width: 100%; min-height: 56px; border: 0; background: transparent; padding: 8px 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: right; color: var(--ck-ink); cursor: pointer; }
+.nlck-sec__h b { display: block; font-size: 16px; }
+.nlck-sec__h span.s { display: block; font-size: 13px; color: var(--ck-ink2); }
+.nlck-sec__h svg { flex: none; width: 18px; height: 18px; transition: transform .2s; }
+.nlck-sec__h[aria-expanded='true'] svg { transform: rotate(180deg); }
+.nlck-sec__b { padding-bottom: 14px; display: flex; flex-direction: column; gap: 10px; }
+.nlck-sec__b[hidden] { display: none; }
+.nlck-pic { position: relative; border-radius: 12px; overflow: hidden; background: var(--ck-night); }
+.nlck-pic img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.nlck-pic .cap { position: absolute; top: 8px; inset-inline-start: 8px; background: rgba(20, 33, 43, .72); color: #f7f9fa; font-size: 11.5px; padding: 3px 7px; border-radius: 6px; }
+.nlck-pic .tods { position: absolute; bottom: 8px; inset-inline: 8px; display: flex; gap: 6px; }
+.nlck-pic .tods button { flex: 1; min-height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,.45); background: rgba(16,38,47,.8); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; }
+.nlck-pic .tods button[aria-pressed='true'] { background: var(--ck-glass); border-color: var(--ck-glass); color: var(--ck-night); }
+.nlck-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.nlck-chip { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ck-line); background: #fff; color: var(--ck-ink); font-size: 14px; cursor: pointer; }
+.nlck-chip[aria-pressed='true'] { background: var(--ck-ink); border-color: var(--ck-ink); color: #fff; font-weight: 700; }
+.nlck-btn { min-height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ck-sea); background: #fff; color: var(--ck-sea) !important; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none !important; }
+.nlck-btn svg { width: 20px; height: 20px; flex: none; }
+.nlck-btn--solid { background: var(--ck-sea); color: #fff !important; border-color: var(--ck-sea); }
+.nlck-btn--solid:hover { background: var(--ck-seah); }
+.nlck-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.nlck-facts div { border: 1px solid var(--ck-line); border-radius: 12px; padding: 6px 8px; }
+.nlck-facts small { display: block; font-size: 11.5px; color: var(--ck-ink2); }
+.nlck-facts b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+.nlck-note { margin: 0; font-size: 12px; color: var(--ck-ink2); }
+.nlck-floors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.nlck-floors button { padding: 4px; border-radius: 12px; border: 1px solid var(--ck-line); background: #fff; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--ck-ink); }
+.nlck-floors button[aria-pressed='true'] { border: 2px solid var(--ck-sea); }
+.nlck-floors img { display: block; width: 100%; height: 54px; object-fit: cover; border-radius: 8px; margin-bottom: 3px; }
+.nlck table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.nlck caption { text-align: right; font-weight: 700; padding-bottom: 4px; }
+.nlck th { text-align: right; font-weight: 600; color: var(--ck-ink2); padding: 4px 0; }
+.nlck td { padding: 7px 0; border-top: 1px solid var(--ck-line); }
+.nlck-calc { background: var(--ck-paper); border-radius: 12px; padding: 10px 12px; display: grid; gap: 8px; }
+.nlck-calc label { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 14px; min-height: 44px; }
+.nlck-calc input[type='number'] { width: 9.5em; min-height: 40px; border: 1px solid #c9d2d8; border-radius: 10px; padding: 0 10px; font-size: 15px; direction: ltr; text-align: left; background: #fff; color: var(--ck-ink); }
+.nlck-calc input[type='checkbox'] { width: 22px; height: 22px; accent-color: var(--ck-sea); }
+.nlck-out { display: grid; gap: 4px; font-size: 14px; }
+.nlck-out div { display: flex; justify-content: space-between; gap: 10px; }
+.nlck-out b { font-variant-numeric: tabular-nums; }
+.nlck-out .tot { font-size: 16px; border-top: 1px solid #c9d2d8; padding-top: 6px; }
+.nlck-places { display: grid; gap: 0; }
+.nlck-places .grp { font-size: 12.5px; font-weight: 700; color: var(--ck-deep); padding-top: 8px; }
+.nlck-places button { width: 100%; min-height: 44px; border: 0; border-bottom: 1px solid #eef1f3; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: right; cursor: pointer; font-size: 14px; color: var(--ck-ink); padding: 0; }
+.nlck-places button small { color: var(--ck-ink2); font-size: 12px; }
+.nlck-places button b { color: var(--ck-sea); font-variant-numeric: tabular-nums; flex: none; }
+.nlck-cmp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; font-size: 13px; }
+.nlck-cmp > div { border: 1px solid var(--ck-line); border-radius: 12px; padding: 8px; }
+.nlck-cmp > div.on { border: 2px solid var(--ck-glass); }
+.nlck-share { background: var(--ck-paper); border-radius: 12px; padding: 8px 12px; display: grid; gap: 2px; font-size: 14px; }
+.nlck-share label { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.nlck-share input { width: 22px; height: 22px; accent-color: var(--ck-sea); }
+.nlck__bar { flex: none; display: flex; gap: 8px; align-items: center; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--ck-line); background: #fff; }
+.nlck__bar .nlck-btn--solid { flex: 1; min-height: 52px; font-size: 16px; font-weight: 700; }
+/* the site's accessibility button keeps its corner (inline-start, bottom): the bar leaves it room instead of hiding under it */
+body:has(#nla11y) .nlck__bar { padding-inline-start: 76px; }
+.nlck__icon { width: 52px; height: 52px; flex: none; border-radius: 999px; border: 1px solid var(--ck-line); background: #fff; display: grid; place-items: center; cursor: pointer; color: var(--ck-ink); }
+.nlck__icon--wa { border-color: var(--ck-wa); color: var(--ck-wa); }
+.nlck__icon svg { width: 22px; height: 22px; }
+.nlck__toast { position: absolute; bottom: 84px; inset-inline: 16px; background: var(--ck-ink); color: #fff; border-radius: 12px; padding: 10px 14px; font-size: 14px; text-align: center; }
+.nlck__toast[hidden] { display: none; }
+.nlck svg { stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nlck :focus-visible { outline: 2px solid var(--ck-sea); outline-offset: 2px; }
+body.nlck-on #nlcta { display: none !important; }
+@media (min-width: 1024px) {
+  .nlck { inset-inline: auto; inset-inline-start: 16px; top: 88px; bottom: 16px; width: 440px; height: auto !important; max-height: none; border-radius: 22px; box-shadow: 0 12px 40px rgba(16, 38, 47, .25); }
+  .nlck__grab { display: none; }
+  .nlck__head { padding-top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .nlck, .nlck-sec__h svg { transition: none; } }
+
+/* the gate (?kikar=next): the world's own chrome takes the design system's colours: ink, sea, white (no cream, no gold) */
+body.nlck-next .nlw, body.nlck-next .nlw-dock {
+  --nlw-paper: #ffffff; --nlw-card: rgba(255, 255, 255, 0.96); --nlw-ink: #14212b; --nlw-ink-2: #3b4753; --nlw-ink-3: #5b6670;
+  --nlw-gold: #2f6f86; --nlw-terra: #2f6f86; --nlw-hair: #e3e7ea; --nlw-shadow: 0 2px 14px rgba(16, 38, 47, 0.12);
+}
+body.nlck-next .nlw-chip, body.nlck-next .nlw-btn, body.nlck-next .nlw-seg, body.nlck-next .nlw-face { background: #ffffff; }
+body.nlck-next .nlw-face[aria-pressed='true'] { background: #e9f4f7; }
+body.nlck-next .nlw-face .nlw-sunb i { background: #2f6f86; }

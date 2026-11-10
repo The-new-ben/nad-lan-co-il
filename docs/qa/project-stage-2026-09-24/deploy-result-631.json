@@ -1,0 +1,26 @@
+{
+  "released": "1.72.631",
+  "from": "1.72.630",
+  "live_before": {
+    "assets/project-stage/world/world.js": "bd3ad630ebb1197b6e8fbfa3fce893b5",
+    "nadlan-config.php": "143fb506fbb8216fd799b163e5ffafa5",
+    "inc/project-stage.php": "30581167034dca40acdd1a83b7e02ca7"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-10 18:42:17",
+  "files": {
+    "assets/project-stage/world/world.js": "41b4bd00ae6a71d9ca35bb1b7e41539a",
+    "assets/project-stage/world/cockpit.js": "466a40e3306e53a9e2db231261623233",
+    "assets/project-stage/world/cockpit.css": "eb9eb22443c2bdaf0a44ee4a5ffe7f78",
+    "assets/project-stage/hamedina/cockpit.json": "ce57f1764c90ddc839ee77d37e710e52",
+    "assets/project-stage/hamedina/aerial-1600.webp": "20609b7c3a76778c54bcbd6e99e4fdf2",
+    "assets/project-stage/hamedina/aerial-1600.jpg": "c08d1260532486bb1377a55e399919b0",
+    "assets/project-stage/hamedina/aerial-tall-800.webp": "5d6a469c2c3f0e779c8d260b7fd028b9",
+    "assets/project-stage/hamedina/plan-floor30-towerC.webp": "b997bdc2740b20e82deba33b405a68d7",
+    "nadlan-config.php": "2383d7662fe5591b47e2da9967ee981b",
+    "inc/project-stage.php": "50cefd045708262aa0ee6fd75cc5cc3d"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.631, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

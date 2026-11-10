@@ -752,6 +752,9 @@ const plateRadius = (half, n, phi) => half / Math.pow(Math.pow(Math.abs(Math.cos
 // ================================================================================================= mountWorld
 export function mountWorld(host, opts = {}) {
   const o = { ...DEFAULTS, ...opts };
+  // HAD-699 (10.11.2026): a page may hand the scene its own colour table (the gate ?kikar=next: a daylight city, no cream or
+  // gold); keys not given keep the house values above. One world per page, so the shared table is set once, before any build.
+  if (o.colors && typeof o.colors === 'object') for (const k of Object.keys(C)) { if (typeof o.colors[k] === 'string' && /^#[0-9a-f]{6}$/i.test(o.colors[k])) C[k] = o.colors[k]; }
   // P8 (1.72.370): five languages (he, en, fr, ru, ar); any other code gets the English words
   const lang0 = String(o.lang || 'he').slice(0, 2);
   const lang = I18N[lang0] ? lang0 : 'en';
