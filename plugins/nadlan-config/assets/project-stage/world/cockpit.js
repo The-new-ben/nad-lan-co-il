@@ -285,7 +285,8 @@ function onClick(e) {
     const lines = [`מגדלי כיכר המדינה, תל אביב · ${label(cur)}`];
     if (withView) lines.push(`${sectorOf(cur.bearing)} · גובה העיניים כ-${eyeH(cur.floor).toFixed(0)} מ׳`);
     if (withPrice) { const tax = taxOf(calc.price, calc.extra ? D.tax.additional : D.tax.only); lines.push(`דוגמה: מחיר ${num(calc.price)} ₪, מס רכישה ${num(tax)} ₪`); }
-    const url = `${location.origin}${location.pathname}#dira=${cur.tower}${cur.floor}-${Math.round(cur.bearing)}`;
+    const q = new URLSearchParams(location.search); q.delete('room'); const qs = q.toString(); // keeps ?kikar=next while the cockpit is gated
+    const url = `${location.origin}${location.pathname}${qs ? '?' + qs : ''}#dira=${cur.tower}${cur.floor}-${Math.round(cur.bearing)}`;
     ga('cockpit_share', { view: !!withView, price: !!withPrice });
     if (navigator.share) { navigator.share({ title: 'מגדלי כיכר המדינה', text: lines.join('\n'), url }).catch(() => {}); return; }
     (navigator.clipboard ? navigator.clipboard.writeText(lines.join('\n') + '\n' + url) : Promise.reject()).then(() => toast('הקישור הועתק. אפשר להדביק בכל הודעה.'), () => toast(url));
