@@ -146,6 +146,18 @@ if ( ! function_exists( 'nadlan_dir_use_paid_placement_boost' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_dir_own_project_slugs' ) ) {
+	/** The projects we present ourselves, in the order they lead the catalog: every project with our own stage and 3D page
+	 *  (read from the stage config, so a new one joins by itself), then the flagship pages that are built differently. */
+	function nadlan_dir_own_project_slugs() {
+		$lead  = array( 'rainbow-tel-aviv', 'duo-tel-aviv', 'ashira-sde-dov', 'dimri-yama-sde-dov', 'h-infinity-somail-tel-aviv', 'hamedina', 'einstein-tower' );
+		$stage = function_exists( 'nadlan_ps_config' ) ? array_keys( (array) nadlan_ps_config() ) : array();
+		$out   = array();
+		foreach ( array_merge( $lead, $stage ) as $s ) { $s = sanitize_title( (string) $s ); if ( '' !== $s && ! in_array( $s, $out, true ) ) { $out[] = $s; } }
+		return (array) apply_filters( 'nadlan_dir_own_project_slugs', $out );
+	}
+}
+
 if ( ! function_exists( 'nadlan_dir_paid_placement_clauses' ) ) {
 	function nadlan_dir_paid_placement_clauses( $clauses, $query ) {
 		if ( ! $query->get( 'nadlan_paid_placement_boost' ) ) {
@@ -160,7 +172,30 @@ if ( ! function_exists( 'nadlan_dir_paid_placement_clauses' ) ) {
 				'paid_tier'
 			);
 		}
-		$clauses['orderby'] = "CASE {$alias}.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC, {$wpdb->posts}.menu_order ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
+		$paid = "CASE {$alias}.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC";
+		if ( 'nadlan_project' === $query->get( 'post_type' ) ) {
+			/* HAD-689 (Ben, 10.11.2026: "הפרויקטים שלנו, התלת מימד שלנו, הפרויקטים החזקים שלנו... הם בעדיפות", and the results open
+			 * with pictures). After the paid tiers the projects catalog now puts: the projects we present ourselves (our own stage and
+			 * 3D pages), then projects that have a picture of their own, then Tel Aviv, then the newest. Before this the order was by
+			 * date alone, so the renewal compounds added last pushed Ashira, Dimri Yama, H Infinity and Einstein to the third page. */
+			$own = function_exists( 'nadlan_dir_own_project_slugs' ) ? nadlan_dir_own_project_slugs() : array();
+			$own_sql = '';
+			if ( $own ) {
+				$in = "'" . implode( "','", array_map( 'esc_sql', $own ) ) . "'";
+				$own_sql = "CASE WHEN FIELD({$wpdb->posts}.post_name,{$in}) = 0 THEN 9999 ELSE FIELD({$wpdb->posts}.post_name,{$in}) END ASC, ";
+			}
+			foreach ( array( 'nadlan_thumb_pm' => '_thumbnail_id', 'nadlan_city_pm' => 'city' ) as $a => $k ) {
+				if ( strpos( $clauses['join'], " AS {$a} " ) === false ) {
+					$clauses['join'] .= $wpdb->prepare( " LEFT JOIN {$wpdb->postmeta} AS {$a} ON ({$wpdb->posts}.ID = {$a}.post_id AND {$a}.meta_key = %s)", $k );
+				}
+			}
+			$clauses['orderby'] = $paid . ', ' . $own_sql
+				. "CASE WHEN COALESCE(nadlan_thumb_pm.meta_value,'') IN ('','0') THEN 1 ELSE 0 END ASC, "
+				. "CASE WHEN nadlan_city_pm.meta_value LIKE 'תל אביב%' THEN 0 ELSE 1 END ASC, "
+				. "{$wpdb->posts}.menu_order ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
+			return $clauses;
+		}
+		$clauses['orderby'] = $paid . ", {$wpdb->posts}.menu_order ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
 		return $clauses;
 	}
 }
@@ -860,6 +895,73 @@ if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
 	}
 }
 
+/* HAD-700 (10.11.2026): the catalog query (several joins on postmeta, a CASE order, SQL_CALC_FOUND_ROWS) took 2.4 to 3 seconds
+ * and ran twice in one page view (the grid and the ItemList schema): 5.4 of the page's 7.5 seconds, measured on the server.
+ * Identical SQL now runs once. Its raw result (the ids in order, and the total) is kept for the request and for five minutes in a
+ * transient, and every stored result is dropped when a project is saved. On a hit WordPress continues exactly as after a real
+ * run (the same filters see the same posts), so the order, the totals and the pages are the query's own. Searches are not kept. */
+if ( ! defined( 'NADLAN_DIR_CATALOG_CACHE_LIVE' ) ) { define( 'NADLAN_DIR_CATALOG_CACHE_LIVE', true ); } // on since 1.72.638: a hit and the same order and totals were both measured live behind ?nldc=1 on 1.72.637
+if ( ! function_exists( 'nadlan_dir_catalog_cache_ver' ) ) {
+	function nadlan_dir_catalog_cache_ver() { return (int) get_option( 'nadlan_dir_catalog_cache_ver', 1 ); }
+	function nadlan_dir_catalog_cache_key( $q ) {
+		if ( ! NADLAN_DIR_CATALOG_CACHE_LIVE && '1' !== (string) ( $_GET['nldc'] ?? '' ) ) { return ''; } // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( is_admin() || ! $q->get( 'nadlan_no_lang_siblings' ) || 'nadlan_project' !== $q->get( 'post_type' ) ) { return ''; }
+		if ( $q->get( 's' ) || $q->get( 'no_found_rows' ) || $q->get( 'suppress_filters' ) || in_array( (string) $q->get( 'fields' ), array( 'ids', 'id=>parent' ), true ) ) { return ''; }
+		$sql = (string) $q->request;
+		if ( '' === $sql || false !== stripos( $sql, 'RAND(' ) ) { return ''; }
+		/* the placement rules put the current second inside the SQL ("promo_until >= <now>"), so the text was never the same twice, not even
+		 * inside one page view (measured live behind ?nldc=1 on 10.11.2026: no hit at all). A time within a day of now counts as one
+		 * five-minute step in the key. */
+		$now = time();
+		$sql = (string) preg_replace_callback( '/\b\d{10}\b/', function ( $m ) use ( $now ) { return abs( (int) $m[0] - $now ) < DAY_IN_SECONDS ? 'T' . (int) floor( $now / 300 ) : $m[0]; }, $sql );
+		return 'nldc_' . md5( nadlan_dir_catalog_cache_ver() . '|' . (int) $q->get( 'posts_per_page' ) . '|' . $sql );
+	}
+	add_action( 'save_post_nadlan_project', function () { update_option( 'nadlan_dir_catalog_cache_ver', nadlan_dir_catalog_cache_ver() + 1, true ); } );
+	add_filter( 'posts_pre_query', function ( $posts, $q ) {
+		if ( null !== $posts ) { return $posts; }
+		$k = nadlan_dir_catalog_cache_key( $q );
+		if ( '' === $k ) { return $posts; }
+		$hit = isset( $GLOBALS['nadlan_dir_catalog_mem'][ $k ] ) ? $GLOBALS['nadlan_dir_catalog_mem'][ $k ] : get_transient( $k );
+		if ( ! is_array( $hit ) || ! isset( $hit['ids'], $hit['found'] ) || ! is_array( $hit['ids'] ) ) { $q->nadlan_dir_catalog_store = $k; return $posts; }
+		$GLOBALS['nadlan_dir_catalog_mem'][ $k ] = $hit;
+		$ids = array_map( 'intval', $hit['ids'] );
+		if ( $ids ) { _prime_post_caches( $ids, true, true ); }
+		$per = (int) $q->get( 'posts_per_page' );
+		$q->found_posts   = (int) $hit['found'];
+		$q->max_num_pages = $per > 0 ? (int) ceil( $q->found_posts / $per ) : ( $q->found_posts ? 1 : 0 );
+		return $ids;
+	}, 5, 2 );
+	add_filter( 'posts_results', function ( $posts, $q ) {
+		if ( empty( $q->nadlan_dir_catalog_store ) || ! is_array( $posts ) ) { return $posts; }
+		$k = (string) $q->nadlan_dir_catalog_store; $q->nadlan_dir_catalog_store = '';
+		$ids = array(); foreach ( $posts as $p ) { $ids[] = (int) ( is_object( $p ) ? $p->ID : $p ); }
+		$hit = array( 'ids' => $ids, 'found' => (int) $q->found_posts );
+		$GLOBALS['nadlan_dir_catalog_mem'][ $k ] = $hit;
+		set_transient( $k, $hit, 5 * MINUTE_IN_SECONDS );
+		return $posts;
+	}, -99999, 2 );
+}
+
+/* HAD-700 (10.11.2026): inc/tiers.php adds "paid_tier EXISTS OR paid_tier NOT EXISTS" to the main query of every catalog archive.
+ * The clause is always true, so it filters nothing, but it adds two postmeta joins (one without a key) and a GROUP BY; on the project
+ * archive the main query and the members plugin's copy of it (pmsc_exclude_post_from_query) took 0.5 s each (measured live with the
+ * 1.72.633 profiler). The grid has its own query; this drops only that always-true clause from the project archive's main query. */
+add_action( 'pre_get_posts', function ( $q ) {
+	if ( is_admin() || ! $q->is_main_query() || ! $q->is_post_type_archive( 'nadlan_project' ) ) { return; }
+	$mq = $q->get( 'meta_query' );
+	if ( ! is_array( $mq ) || ! $mq ) { return; }
+	$out = array();
+	foreach ( $mq as $k => $c ) {
+		if ( is_array( $c ) && 3 === count( $c ) && 'OR' === strtoupper( (string) ( $c['relation'] ?? '' ) ) && isset( $c[0], $c[1] ) && is_array( $c[0] ) && is_array( $c[1] )
+			&& 'paid_tier' === ( $c[0]['key'] ?? '' ) && 'paid_tier' === ( $c[1]['key'] ?? '' ) && ! isset( $c[0]['value'] ) && ! isset( $c[1]['value'] )
+			&& 'EXISTS' === strtoupper( (string) ( $c[0]['compare'] ?? '' ) ) && 'NOT EXISTS' === strtoupper( (string) ( $c[1]['compare'] ?? '' ) ) ) {
+			continue;
+		}
+		$out[ $k ] = $c;
+	}
+	if ( count( $out ) !== count( $mq ) ) { $q->set( 'meta_query', $out ); }
+}, 10 );
+
 /* Exclude hreflang language siblings from any query that opts in. */
 add_filter( 'posts_where', function ( $where, $q ) {
 	if ( $q->get( 'nadlan_no_lang_siblings' ) ) {
@@ -927,21 +1029,42 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			}
 		}
 		$floors = (int) get_post_meta( $id, 'floors', true );
+		/* HAD-694 (card per the approved canvas PhoneV2 + Fit, 10.11.2026): the picture box is 8:5; a 4:3 plate fills it from the top
+		 * (its drawn strip of facts falls below the box, and the same facts stay as text on the card), a square plate stays whole.
+		 * The stage and deal come only from a market row that links to this very page (no name guessing). */
+		$slug   = (string) get_post_field( 'post_name', $id );
+		$own    = function_exists( 'nadlan_dir_own_project_slugs' ) && in_array( $slug, nadlan_dir_own_project_slugs(), true );
+		$mrow   = function_exists( 'nadlan_dir_market_row' ) ? nadlan_dir_market_row( $slug ) : null;
+		$img_w  = 0; $img_h = 0;
+		if ( $is_real_photo && has_post_thumbnail( $id ) ) {
+			$src = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large' );
+			if ( is_array( $src ) ) { $img_w = (int) $src[1]; $img_h = (int) $src[2]; }
+		}
+		$fill = $img_w > 0 && $img_h > 0 && ( $img_w / $img_h ) > 1.25;
+		$tags = array();
+		if ( $mrow ) {
+			$mst = array( 'immediate' => array( 'לאכלוס מיידי', 'is-ready' ), 'near_occupancy' => array( 'אכלוס קרוב', 'is-ready' ), 'construction' => array( 'בבנייה', 'is-build' ), 'marketing' => array( 'בשיווק', 'is-sale' ), 'presale' => array( 'פריסייל', 'is-sale' ) );
+			if ( isset( $mst[ (string) ( $mrow['status'] ?? '' ) ] ) ) { $tags[] = $mst[ (string) $mrow['status'] ]; }
+			if ( ! empty( $mrow['deal'] ) ) { $tags[] = array( 'במבצע', 'is-deal' ); }
+		}
+		$rooms = '';
+		if ( $mrow && ! empty( $mrow['rooms'] ) && preg_match( '/^\s*(\d+(?:\.5)?)\s*-\s*(\d+(?:\.5)?)/', (string) $mrow['rooms'], $rm ) ) { $rooms = $rm[1] . ' עד ' . $rm[2] . ' חדרים'; }
 		// Magazine card (v1.69.69): Lovable MagazineCard design ported to the live
 		// "Quiet Luxury" tokens. Stat row uses only real, present meta - never fake data.
 		$stats = array();
 		if ( $units > 0 )  { $stats[] = array( 'יח״ד', number_format( $units ) ); }
 		if ( $floors > 0 ) { $stats[] = array( 'קומות', (string) $floors ); }
-		if ( $status )     { $stats[] = array( 'סטטוס', $status ); }
-		if ( $dev && count( $stats ) < 3 ) { $stats[] = array( 'יזם', $dev ); }
+		if ( $status && ! $tags ) { $stats[] = array( 'סטטוס', $status ); }
+		if ( '' !== $rooms && count( $stats ) < 3 ) { $stats[] = array( 'חדרים', $rooms ); }
 		if ( ( $distance !== null && $distance !== '' ) && count( $stats ) < 3 ) { $stats[] = array( 'מרחק', number_format_i18n( (float) $distance, 1 ) . ' ק״מ' ); }
 		$stats = array_slice( $stats, 0, 3 );
 		ob_start(); ?>
-<a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?>">
-		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async">
+<a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?><?php echo $own ? ' is-own' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?><?php echo $fill ? ' is-fill' : ''; ?>">
+		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async"<?php echo $img_w > 0 ? ' width="' . (int) $img_w . '" height="' . (int) $img_h . '"' : ''; ?>>
 		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
 		<?php if ( $pm['label'] !== 'אחר' ) : /* "other" is a machine fallback, not a badge a buyer should read */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
+		<?php if ( $tags ) : ?><span class="nldcp-tags"><?php foreach ( $tags as $t ) : ?><b class="nldcp-tag <?php echo esc_attr( $t[1] ); ?>"><?php echo esc_html( $t[0] ); ?></b><?php endforeach; ?></span><?php endif; ?>
 	</div>
 	<div class="nldcp-body">
 		<div class="nldcp-head">
@@ -950,7 +1073,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		</div>
 		<?php if ( $stats ) : ?>
 		<dl class="nldcp-stats">
-			<?php foreach ( $stats as $s ) : ?><div><dt><?php echo esc_html( $s[0] ); ?></dt><dd><?php echo esc_html( $s[1] ); ?></dd></div><?php endforeach; ?>
+			<?php foreach ( $stats as $s ) : ?><div<?php echo in_array( $s[0], array( 'סטטוס', 'חדרים' ), true ) ? ' class="is-word"' : ''; ?>><dt><?php echo esc_html( $s[0] ); ?></dt><dd><?php echo esc_html( $s[1] ); ?></dd></div><?php endforeach; ?>
 		</dl>
 		<?php endif; ?>
 		<?php if ( function_exists( 'nadlan_fc_for_project' ) && ( $fac_keys = nadlan_fc_for_project( $id ) ) ) :
@@ -960,12 +1083,122 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		<?php echo nadlan_fc_chips_html( $fac_keys, array( 'limit' => 4, 'link' => false, 'class' => 'nlfc-oncard' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<?php endif; ?>
 		<div class="nldcp-foot">
-			<span class="nldcp-cta">לצפייה בפרויקט</span>
+			<span class="nldcp-cta"><?php echo $own ? 'לסיור בפרויקט' : 'לפרטי הפרויקט'; ?></span>
 		</div>
 	</div>
 </a>
 <?php
 		return ob_get_clean();
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_quickfilter_html' ) ) {
+	/** HAD-694 (canvas PhoneV2, approved 10.11.2026): on a phone the long search form (353 px) and the map thumbnail (300 px) put the
+	 * first project card at 1,468 px. A short row of filter chips replaces them on narrow screens; "כל הסינונים" opens the same full
+	 * form and the map, so nothing is lost. The chips drive the form's own fields, so the results, the address and the totals are the
+	 * form's. Desktop keeps the form as it is. Also the card look of the canvas (8:5 picture, tags, fact chips). */
+	function nadlan_dir_quickfilter_html( $facets ) {
+		$tlv = 0;
+		foreach ( (array) ( $facets['cities'] ?? array() ) as $c ) { if ( isset( $c['name'] ) && false !== mb_strpos( (string) $c['name'], 'תל אביב' ) ) { $tlv = (int) $c['n']; $tlv_name = (string) $c['name']; break; } }
+		$nb = (int) ( $facets['types']['new_build'] ?? 0 );
+		$chips = array();
+		if ( $tlv > 0 ) { $chips[] = '<button type="button" data-k="city" data-v="' . esc_attr( $tlv_name ) . '">תל אביב יפו · ' . number_format( $tlv ) . '</button>'; }
+		$chips[] = '<button type="button" data-k="status" data-v="marketing">בשיווק</button>';
+		$chips[] = '<button type="button" data-k="status" data-v="construction">בבנייה</button>';
+		if ( $nb > 0 ) { $chips[] = '<button type="button" data-k="project_type" data-v="new_build">בנייה חדשה · ' . number_format( $nb ) . '</button>'; }
+		$chips[] = '<button type="button" data-a="near">קרוב אליי</button>';
+		$chips[] = '<button type="button" data-a="map">מפה</button>';
+		$chips[] = '<button type="button" data-a="all" class="nlqf-all" aria-expanded="false">כל הסינונים</button>';
+		$css = '<style id="nlqf-css">'
+			. '.nlqf{display:none}.nldir[data-mode="projects"] .nldir-jump{min-width:0;max-width:100%}'
+			. '@media (max-width:760px){'
+			. '.nldir[data-mode="projects"] .nlqf{min-width:0;max-width:calc(100% + 32px);display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:2px -16px 6px;padding:2px 16px 4px}'
+			. '.nldir .nlqf::-webkit-scrollbar{display:none}'
+			. '.nldir .nlqf button{flex:0 0 auto;min-height:44px!important;padding:0 14px!important;margin:0!important;border-radius:22px!important;border:1px solid #C9D3DA!important;background:#fff!important;color:#0F1D26!important;font:500 15px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif!important;box-shadow:none!important;text-transform:none!important;letter-spacing:0!important;white-space:nowrap}'
+			. '.nldir .nlqf button.is-on{background:#0E4C63!important;border-color:#0E4C63!important;color:#fff!important;font-weight:600!important}'
+			. '.nldir .nlqf button.nlqf-all{border-color:#0E4C63!important;color:#0E4C63!important;font-weight:600!important}'
+			. '.nldir[data-mode="projects"]:not(.is-qf-open) .nlcp-herogrid,.nldir[data-mode="projects"]:not(.is-qf-open) .nldir-pills{display:none!important}'
+			. '.nldir[data-mode="projects"] .nlcp-note:empty{display:none}'
+			. '.nldir[data-mode="projects"] .nldir-main{display:flex!important;flex-direction:column!important}'
+			. '.nldir[data-mode="projects"] .nldir-main>.nldir-catlead{order:3;margin:16px 0 0!important}'
+			. '}'
+			. '.nldir-results .nldc-project .nldc-media{aspect-ratio:8/5!important}'
+			. '.nldir-results .nldc-project .nldc-media.is-fill{background:#E3EEF2}'
+			. '.nldir-results .nldc-project .nldc-media.is-fill img{object-fit:cover!important;object-position:50% 0!important;padding:0!important}'
+			. '.nldc-project .nldcp-tags{position:absolute;inset-block-start:10px;inset-inline-end:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:70%}'
+			. '.nldc-project .nldcp-tag{font:600 13px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;padding:6px 10px;border-radius:6px;color:#fff;background:#0E4C63}'
+			. '.nldc-project .nldcp-tag.is-ready{background:#1B6B3C}.nldc-project .nldcp-tag.is-sale{background:#0F1D26}'
+			. '.nldc-project .nldcp-tag.is-deal{background:#E9E9F7;color:#2B2A72;box-shadow:inset 0 0 0 1px #3B3A8F}'
+			. '.nldir-results .nldc-project .nldcp-stats{display:flex;flex-wrap:wrap;gap:6px;grid-template-columns:none;margin:10px 0 0;padding-top:0;border-top:0}'
+			. '.nldir-results .nldc-project .nldcp-stats>div{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px;align-items:baseline;background:#E3EEF2;color:#0A3A4C;border-radius:6px;padding:5px 10px}'
+			. '.nldir-results .nldc-project .nldcp-stats dt,.nldir-results .nldc-project .nldcp-stats dd{margin:0;font-size:13px;font-weight:600;color:#0A3A4C;white-space:nowrap}'
+			. '.nldir-results .nldc-project .nldcp-stats dt{font-weight:500}'
+			. '.nldir-results .nldc-project .nldcp-stats>div.is-word dt{display:none}'
+			. '.nldir-results .nldc-project .nldcp-cta{min-height:44px;display:flex;align-items:center;justify-content:center;font-size:15px;border-radius:10px;background:#0F1D26}'
+			. '</style>';
+		$js = '<script id="nlqf-js">(function(){var r=document.querySelector(\'.nldir[data-mode="projects"]\'),q=r&&r.querySelector(".nlqf");if(!q)return;'
+			. 'function bar(){return document.getElementById("nlcp-bar");}'
+			. 'function mark(){var b=bar();q.querySelectorAll("button[data-k]").forEach(function(c){var el=b&&b.elements[c.dataset.k];c.classList.toggle("is-on",!!el&&el.value===c.dataset.v);c.setAttribute("aria-pressed",c.classList.contains("is-on")?"true":"false");});}'
+			. 'function open(on){r.classList.toggle("is-qf-open",on);var a=q.querySelector(".nlqf-all");if(a){a.classList.toggle("is-on",on);a.setAttribute("aria-expanded",on?"true":"false");}}'
+			. 'q.addEventListener("click",function(e){var c=e.target.closest("button");if(!c)return;var b=bar();'
+			. 'if(c.dataset.k){var el=b&&b.elements[c.dataset.k];if(!el){open(true);return;}el.value=(el.value===c.dataset.v)?"":c.dataset.v;el.dispatchEvent(new Event("change",{bubbles:true}));mark();return;}'
+			. 'if(c.dataset.a==="near"){var n=document.getElementById("nlcp-near");if(n){n.click();}return;}'
+			. 'if(c.dataset.a==="map"){var m=document.querySelector(".nlcp-mapthumb");if(m){m.click();}else{open(true);}return;}'
+			. 'if(c.dataset.a==="all"){var on=!r.classList.contains("is-qf-open");open(on);if(on&&b){b.scrollIntoView({block:"start",behavior:"smooth"});}}});'
+			. 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",mark);}else{mark();}'
+			. 'document.addEventListener("change",function(e){if(e.target.closest&&e.target.closest("#nlcp-bar"))setTimeout(mark,0);});})();</script>';
+		return $css . '<div class="nlqf" role="group" aria-label="סינון הפרויקטים">' . implode( '', $chips ) . '</div>' . $js;
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_itemlist_item' ) ) {
+	/** HAD-698: one ListItem of the catalog's ItemList, typed as an ApartmentComplex, carrying only what the card itself shows:
+	 * the name, the picture, the address or neighbourhood and city, the number of homes, the developer, the stage, and a price only
+	 * when the developer's published "from" price is on the market row that links to this page. Called by snippet 661. */
+	function nadlan_dir_itemlist_item( $id, $position ) {
+		$id   = (int) $id;
+		$url  = get_permalink( $id );
+		$item = array( '@type' => 'ApartmentComplex', 'name' => wp_strip_all_tags( get_the_title( $id ) ), 'url' => $url );
+		$img  = get_the_post_thumbnail_url( $id, 'large' ); if ( $img ) { $item['image'] = $img; }
+		$city = function_exists( 'nadlan_meta_norm' ) ? nadlan_meta_norm( get_post_meta( $id, 'city', true ) ) : trim( (string) get_post_meta( $id, 'city', true ) );
+		$addr = trim( (string) get_post_meta( $id, 'address', true ) );
+		$hood = trim( (string) get_post_meta( $id, 'neighborhood', true ) );
+		if ( '' !== $city || '' !== $addr ) {
+			$pa = array( '@type' => 'PostalAddress', 'addressCountry' => 'IL' );
+			if ( '' !== $city ) { $pa['addressLocality'] = $city; }
+			if ( '' !== $addr ) { $pa['streetAddress'] = $addr; } elseif ( '' !== $hood ) { $pa['streetAddress'] = $hood; }
+			$item['address'] = $pa;
+		}
+		$units = (int) get_post_meta( $id, 'num_units', true );
+		if ( $units > 0 ) { $item['numberOfAccommodationUnits'] = $units; }
+		$props = array();
+		$dev = trim( (string) get_post_meta( $id, 'developer_name', true ) );
+		if ( '' !== $dev ) { $props[] = array( '@type' => 'PropertyValue', 'name' => 'יזם', 'value' => $dev ); }
+		$slug = (string) get_post_field( 'post_name', $id );
+		$row  = function_exists( 'nadlan_dir_market_row' ) ? nadlan_dir_market_row( $slug ) : null;
+		$sth  = array( 'immediate' => 'לאכלוס מיידי', 'near_occupancy' => 'אכלוס קרוב', 'construction' => 'בבנייה', 'marketing' => 'בשיווק', 'presale' => 'פריסייל' );
+		$stage = $row && isset( $sth[ (string) ( $row['status'] ?? '' ) ] ) ? $sth[ (string) $row['status'] ] : ( function_exists( 'nadlan_dir_status_he' ) ? nadlan_dir_status_he( nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) ) ) : '' );
+		if ( '' !== (string) $stage ) { $props[] = array( '@type' => 'PropertyValue', 'name' => 'שלב', 'value' => (string) $stage ); }
+		if ( $props ) { $item['additionalProperty'] = $props; }
+		if ( $row && (int) ( $row['price_from'] ?? 0 ) > 0 ) {
+			$item['offers'] = array( '@type' => 'Offer', 'price' => (int) $row['price_from'], 'priceCurrency' => 'ILS', 'url' => $url, 'description' => 'החל מ' );
+		}
+		return array( '@type' => 'ListItem', 'position' => (int) $position, 'item' => $item );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_market_row' ) ) {
+	/** HAD-694: the market row (data/projects-market.json) whose own link is /projects/<slug>/, or null. Exact links only. */
+	function nadlan_dir_market_row( $slug ) {
+		static $map = null;
+		if ( null === $map ) {
+			$map = array();
+			$m = function_exists( 'nadlan_ph_market' ) ? nadlan_ph_market() : array();
+			foreach ( (array) ( $m['projects'] ?? array() ) as $r ) {
+				if ( is_array( $r ) && preg_match( '~^/projects/([^/?#]+)/$~', (string) ( $r['url'] ?? '' ), $mm ) ) { $map[ rawurldecode( $mm[1] ) ] = $r; }
+			}
+		}
+		return isset( $map[ (string) $slug ] ) ? $map[ (string) $slug ] : null;
 	}
 }
 
@@ -1103,13 +1336,16 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		<p class="nldir-lead nldir-catlead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים בקטלוג<?php echo esc_html( $nlpc_mix ); ?>, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
 		<?php $nlph_catlead = ob_get_clean(); if ( '' === $nlph_answer ) { echo $nlph_catlead; $nlph_catlead = ''; } // phpcs:ignore ?>
 		<?php if ( function_exists( 'nadlan_ph_body' ) && function_exists( 'nadlan_cp_is_catalog' ) && (int) $state['paged'] < 2 ) : /* 1.72.513 the hub: the answer first, then a way into every section below the grid */ ?>
+		<?php ob_start(); ?>
 		<p class="nldir-lead nldir-intro">מחפשים פרויקט חדש או דירה חדשה מקבלן? כאן רואים את כל הפרויקטים החדשים בישראל לפי עיר, יזם ושלב. <?php echo '' !== $nlph_answer ? 'בעמוד הזה: דירות חדשות לאכלוס מיידי,' : 'מתחת לקטלוג:'; ?> פרויקטים בשיווק עם המחיר שפרסם היזם, פרויקטים חדשים בתל אביב לפי אזור, מחירי עסקאות בכל עיר, לוח הזמנים מהיתר הבנייה ועד המפתח, מחשבונים ותשע בדיקות לפני שחותמים. עודכן ב־<?php echo esc_html( date_i18n( 'j.n.Y', strtotime( defined( 'NADLAN_PH_UPDATED_HE' ) ? NADLAN_PH_UPDATED_HE : NADLAN_PH_UPDATED ) ) ); ?>.</p>
+		<?php $nlph_intro = ob_get_clean(); if ( '' === $nlph_answer ) { echo $nlph_intro; $nlph_intro = ''; } // phpcs:ignore HAD-689 (Ben 10.11.2026): on the main view the cards come first; this paragraph opens the sections under them ?>
 		<nav class="nldir-jump" aria-label="בעמוד הזה"><?php echo '' !== $nlph_answer ? '<a href="#nlph-ready">לאכלוס מיידי</a>' : ''; ?><?php echo function_exists( 'nadlan_ph_market' ) && ! empty( nadlan_ph_market()['projects'] ) ? '<a href="#nlph-market">בשיווק עכשיו</a>' : ''; ?><a href="#nlph-tlv">פרויקטים בתל אביב</a><a href="#nlph-prices">מחירים לפי עיר</a><a href="#nlph-timeline">מהיתר למפתח</a><a href="#nlph-pay">תשלומים והצמדה</a><a href="#nlph-tools">מחשבונים</a><a href="#nlph-checks">בדיקות לפני חתימה</a><a href="#nlph-faq">שאלות נפוצות</a></nav>
 		<?php echo function_exists( 'nadlan_phl_langs' ) ? nadlan_phl_langs( 'he' ) : ''; // the same catalog in English, Russian, French ?>
 		<style>.nldir-jump{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:2px 0 12px;padding-bottom:2px}.nldir-jump::-webkit-scrollbar{display:none}.nldir-jump a{flex:0 0 auto;font:500 14px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;color:#14213D;text-decoration:none;border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:9px 13px}.nldir-jump a:hover{border-color:#14213D}html{scroll-padding-top:90px}</style>
 		<?php else : ?>
 		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום וכל מה שחשוב לדעת לפני שמתקדמים.</p>
 		<?php endif; ?>
+		<?php echo function_exists( 'nadlan_dir_quickfilter_html' ) ? nadlan_dir_quickfilter_html( $facets ) : ''; // phpcs:ignore HAD-694: the short filter row on phones ?>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
@@ -1127,7 +1363,6 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			<?php endforeach; ?>
 		</div>
 	</header>
-<?php echo function_exists( 'nadlan_ph_top_html' ) ? nadlan_ph_top_html() : ''; // phpcs:ignore HAD-689: דירות חדשות לאכלוס מיידי + the marketing table, above the catalog ?>
 <?php echo function_exists( 'nadlan_drone_map_band' ) ? nadlan_drone_map_band() : ''; // phpcs:ignore ?>
 
 	<div class="nldir-body">
@@ -1158,6 +1393,9 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			<div class="nldir-more-wrap"><button type="button" class="nldir-more" id="nldir-more"<?php echo $wq->max_num_pages > 1 ? '' : ' style="display:none"'; ?>>הצגת עוד</button></div>
 		</main>
 	</div>
+<?php /* HAD-689 (Ben 10.11.2026): the project cards with their pictures open the page; דירות חדשות לאכלוס מיידי and the marketing table follow them */
+echo ! empty( $nlph_intro ) ? '<div class="nldir-after" style="max-width:1180px;margin:18px auto 0;padding:0 16px">' . $nlph_intro . '</div>' : ''; // phpcs:ignore
+echo function_exists( 'nadlan_ph_top_html' ) ? nadlan_ph_top_html() : ''; // phpcs:ignore ?>
 </div>
 <?php echo nadlan_dir_js(); ?>
 		<?php

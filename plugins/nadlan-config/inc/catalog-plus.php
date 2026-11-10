@@ -344,7 +344,8 @@ if ( ! function_exists( 'nadlan_cp_schema' ) ) {
 			$wq = nadlan_dir_project_query( array( 'per_page' => 24, 'paged' => 1, 'sort' => 'featured' ) );
 			$i = 0;
 			foreach ( (array) $wq->posts as $p ) {
-				$i++; $it = array( '@type' => 'ListItem', 'position' => $i, 'url' => get_permalink( $p ), 'name' => get_the_title( $p ) );
+				$i++; if ( function_exists( 'nadlan_dir_itemlist_item' ) ) { $items[] = nadlan_dir_itemlist_item( $p->ID, $i ); continue; } // HAD-698: typed items
+				$it = array( '@type' => 'ListItem', 'position' => $i, 'url' => get_permalink( $p ), 'name' => get_the_title( $p ) );
 				$img = get_the_post_thumbnail_url( $p, 'large' ); if ( $img ) { $it['image'] = $img; }
 				$items[] = $it;
 			}

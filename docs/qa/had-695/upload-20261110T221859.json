@@ -1,0 +1,63 @@
+{
+ "at": "2026-11-10 22:18:35",
+ "pics": {
+  "moma-tel-aviv": {
+   "name": "MOMA Tel Aviv",
+   "card_id": 8879,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/moma-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)"
+  },
+  "port-tlv-residence-tel-aviv": {
+   "name": "Port TLV Residence",
+   "card_id": 8880,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/port-tlv-residence-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)"
+  },
+  "recanati-residence-tel-aviv": {
+   "name": "Recanati Residence",
+   "card_id": 8881,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/recanati-residence-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)",
+   "full_id": 8882,
+   "full_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/recanati-residence-tel-aviv-1440x1080-1.webp",
+   "project": 4877,
+   "slug": "recanati-residence"
+  },
+  "remez-36-tel-aviv": {
+   "name": "REMEZ 36",
+   "card_id": 8883,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/remez-36-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)"
+  },
+  "zichron-weizman-tel-aviv": {
+   "name": "זיכרון ויצמן בנייני בוטיק בצפון הישן",
+   "card_id": 8884,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/zichron-weizman-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)"
+  },
+  "bloch-22-tel-aviv": {
+   "name": "בלוך 22",
+   "card_id": 8885,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/bloch-22-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)"
+  },
+  "einstein-ramat-aviv-tel-aviv": {
+   "name": "איינשטיין רמת אביב",
+   "card_id": 8886,
+   "card_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/einstein-ramat-aviv-tel-aviv-card-960x600-1.webp",
+   "how": "uploaded (meta 200)",
+   "full_id": 8887,
+   "full_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/einstein-ramat-aviv-tel-aviv-1440x1080-1.webp",
+   "project": 4875,
+   "slug": "ashdar-einstein"
+  }
+ },
+ "featured_before": {
+  "4877": 5042,
+  "4875": 5089
+ },
+ "featured_after": {
+  "4877": 8882,
+  "4875": 8887
+ }
+}
