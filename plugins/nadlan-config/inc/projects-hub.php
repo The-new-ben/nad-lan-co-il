@@ -1061,6 +1061,44 @@ add_filter( 'wpseo_schema_webpage', function ( $d ) {
 	return $d;
 }, 25 );
 
+/* HAD-700 (10.11.2026): where the server time of a page goes. Nothing runs and nothing is printed without the private key in
+ * ?nlprof= (only its hash is here); with it, one HTML comment before </body> lists the phases, the WP_Query runs and the slowest
+ * SQL of that one request. Measurement only: no visitor and no crawler sees any difference. */
+if ( isset( $_GET['nlprof'] ) && is_string( $_GET['nlprof'] ) && hash_equals( 'b3c49f2a20285bfa3801f9c6719b372132f3b552f673bbaefe2cc8352bebd7d2', hash( 'sha256', $_GET['nlprof'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( ! defined( 'SAVEQUERIES' ) ) { define( 'SAVEQUERIES', true ); }
+	$GLOBALS['nlprof'] = array( 't0' => (float) ( $_SERVER['REQUEST_TIME_FLOAT'] ?? microtime( true ) ), 'load' => microtime( true ), 'marks' => array(), 'wq' => array() );
+	foreach ( array( 'init', 'wp_loaded', 'parse_request', 'wp', 'template_redirect', 'get_header', 'wp_head', 'wp_body_open', 'loop_start', 'get_footer', 'wp_footer' ) as $nlprof_h ) {
+		add_action( $nlprof_h, function () use ( $nlprof_h ) { if ( ! isset( $GLOBALS['nlprof']['marks'][ $nlprof_h ] ) ) { $GLOBALS['nlprof']['marks'][ $nlprof_h ] = microtime( true ); } }, -99999 );
+	}
+	add_filter( 'posts_request', function ( $sql, $q ) {
+		$pt = $q->get( 'post_type' );
+		$GLOBALS['nlprof']['wq'][] = '@' . (int) round( 1000 * ( microtime( true ) - $GLOBALS['nlprof']['t0'] ) ) . ' ' . ( is_array( $pt ) ? implode( '+', $pt ) : (string) $pt ) . ' main=' . ( $q->is_main_query() ? 1 : 0 )
+			. ' boost=' . ( $q->get( 'nadlan_paid_placement_boost' ) ? 1 : 0 ) . ' ppp=' . (int) $q->get( 'posts_per_page' ) . ' fields=' . (string) $q->get( 'fields' ) . ' sqllen=' . strlen( (string) $sql );
+		return $sql;
+	}, 99999, 2 );
+	add_action( 'wp_footer', function () {
+		global $wpdb;
+		$p = $GLOBALS['nlprof']; $now = microtime( true );
+		$ms = function ( $x ) { return (int) round( 1000 * $x ); };
+		$o = array( 'total_ms' => $ms( $now - $p['t0'] ), 'before_this_file_ms' => $ms( $p['load'] - $p['t0'] ), 'mem_mb' => round( memory_get_peak_usage() / 1048576, 1 ), 'savequeries' => ( defined( 'SAVEQUERIES' ) && SAVEQUERIES ) ? 1 : 0 );
+		$prev = $p['load']; $ph = array();
+		foreach ( $p['marks'] as $k => $t ) { $ph[] = $k . '+' . $ms( $t - $prev ); $prev = $t; }
+		$ph[] = 'footer_end+' . $ms( $now - $prev );
+		$o['phases_ms'] = implode( ' ', $ph );
+		$qs = ( isset( $wpdb->queries ) && is_array( $wpdb->queries ) ) ? $wpdb->queries : array(); $tot = 0.0; $rows = array();
+		foreach ( $qs as $q ) { $tot += (float) $q[1]; $rows[] = array( (float) $q[1], (string) $q[0], (string) ( $q[2] ?? '' ), (float) ( $q[3] ?? 0 ) ); }
+		usort( $rows, function ( $a, $b ) { return $b[0] <=> $a[0]; } );
+		$o['sql_count'] = count( $qs ); $o['sql_ms'] = $ms( $tot );
+		$lines = array();
+		foreach ( array_slice( $rows, 0, 14 ) as $r ) {
+			$caller = implode( ' < ', array_slice( array_reverse( array_map( 'trim', explode( ',', $r[2] ) ) ), 0, 5 ) );
+			$lines[] = $ms( $r[0] ) . 'ms @' . $ms( $r[3] - $p['t0'] ) . ' | ' . substr( (string) preg_replace( '/\s+/', ' ', $r[1] ), 0, 420 ) . ' | ' . $caller;
+		}
+		$txt = 'nlprof ' . wp_json_encode( $o ) . "\nWP_Query runs (" . count( $p['wq'] ) . "):\n" . implode( "\n", $p['wq'] ) . "\nslowest SQL:\n" . implode( "\n", $lines );
+		echo "\n<!-- " . str_replace( array( '--', '<', '>' ), array( '- -', '(', ')' ), $txt ) . " -->\n"; // phpcs:ignore
+	}, 99999 );
+}
+
 /* 1.72.514: the hub in English, Russian and French (/en|ru|fr/projects/). Loaded only when the file is there, so a rollback that
  * removes it never leaves this file requiring a missing one (the 25.10 incident). */
 if ( file_exists( __DIR__ . '/projects-hub-lang.php' ) ) { require_once __DIR__ . '/projects-hub-lang.php'; }
