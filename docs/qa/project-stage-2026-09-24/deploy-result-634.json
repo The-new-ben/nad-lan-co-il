@@ -1,0 +1,17 @@
+{
+  "released": "1.72.634",
+  "from": "1.72.633",
+  "live_before": {
+    "inc/directory.php": "97afddd552cbf82436828a060c8fb64c",
+    "nadlan-config.php": "94deda137b8f58c96323111c4bbc58ca"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-10 19:54:40",
+  "files": {
+    "inc/directory.php": "7b3bb3c1f96567bfc660b4a1f4f40772",
+    "nadlan-config.php": "039b886cb5937a562796706ae5359eed"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.634, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

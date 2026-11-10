@@ -301,7 +301,7 @@ if ( ! function_exists( 'nadlan_ph_market_html' ) ) {
 		<div class="nlph-sel">
 			<label>שלב <select data-f="st"><option value="">הכל</option><option value="presale">פריסייל</option><option value="marketing">בשיווק</option><option value="construction">בבנייה</option><option value="near">אכלוס קרוב או מיידי</option></select></label>
 			<label>מחיר <select data-f="max"><option value="">כל המחירים</option><option value="1200000">עד 1.2 מיליון ₪</option><option value="1500000">עד 1.5 מיליון ₪</option><option value="2000000">עד 2 מיליון ₪</option><option value="3000000">עד 3 מיליון ₪</option><option value="4000000">עד 4 מיליון ₪</option><option value="6000000">עד 6 מיליון ₪</option></select></label>
-			<label>מיון <select data-f="sort"><option value="rec">תל אביב והמרכז תחילה</option><option value="asc">מחיר: מהנמוך</option><option value="desc">מחיר: מהגבוה</option></select></label>
+			<label>מיון <select data-f="sort"><option value="rec">מומלצים</option><option value="asc">מחיר: מהנמוך</option><option value="desc">מחיר: מהגבוה</option></select></label>
 		</div>
 	</div>
 	<div class="nlph-tw"><table class="nlph-mt">
