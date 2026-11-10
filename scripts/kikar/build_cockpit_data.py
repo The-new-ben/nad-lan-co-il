@@ -48,6 +48,8 @@ extra = [{"tower": "C", "floor": 30, "bearing": 265.61, "tod": "sunset", "img": 
          {"tower": "C", "floor": 30, "bearing": 265.61, "tod": "evening", "img": "tour/living-c30w-evening-card.webp", "what": "living"}]
 views += [x for x in extra if os.path.exists(os.path.join(HAM, x["img"]))]
 vj = os.path.join(HAM, "views", "views.json")
+sj = os.path.join(HAM, "views", "sun.json")
+SUN = json.load(open(sj, encoding="utf-8")) if os.path.exists(sj) else {}
 if os.path.exists(vj):
     for k, v in json.load(open(vj, encoding="utf-8")).items():
         if os.path.exists(os.path.join(HAM, "views", k + "-640.webp")):

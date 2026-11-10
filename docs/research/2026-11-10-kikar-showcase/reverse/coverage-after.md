@@ -28,3 +28,19 @@ Same 221 features as features.csv. Only features the cockpit implements AND that
 | F218 | Section anchor tabs | partial → present | the section index is always visible in the cockpit and jumps to each section |
 
 Honest limit: about half of the enumerated features are still partial or missing. The largest remaining gaps: real floor plans with room sizes, current listings with dated asking prices on the tower, photographed (not rendered) views, noise and environment data, travel time to the buyer's own places, an empty apartment and a ruler in the 360 (the walk lab has a laser measure, not live).
+
+## Cockpit v2 (the same evening, after Ben's "the cockpit of his life")
+
+The panel became a full-screen apartment app: the rendered view from that apartment on top, nine tiles (the view across floors
+and directions, inside in 360 with four styles, the designer opened for that unit, the plan, the facilities in 360, price and
+cost, the neighbourhood with walking directions, the project film, compare and send), the video call fixed at the thumb. The
+journey (tower, floor, view) ends in it. Checked in headless Chrome on the local harness (phone 390x844, desktop 1440x900: every
+tile opens and comes back, 0 script errors) and on the real gated page with these files served in place (phone 390x844, 0 errors).
+
+| id | feature | before → after | why |
+|---|---|---|---|
+| F018 | Media chips on the hero (photos, video, 3D, plan, street view) | partial → present | the apartment's home screen opens view, 360, plan, facilities 360 and film from one grid |
+
+Not counted, on purpose: F029 (finish packages with their price): the designer is linked per unit, but it shows no package
+prices; F019 (video per residence line): the film is for the whole project. Coverage moves from 51.7% to 51.9% (partial = half);
+the honest gaps listed above are unchanged.

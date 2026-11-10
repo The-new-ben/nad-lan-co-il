@@ -1187,6 +1187,13 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 					'avail'  => function_exists( 'rest_url' ) ? rest_url( 'nadlan/v1/room/available' ) : '',
 					'wa'     => $link,
 				),
+				'journey' => array( // HAD-699 (1.72.636): the full-screen path, tower, floor, view, into the apartment cockpit
+					'js'     => plugins_url( 'assets/project-stage/world/journey.js', dirname( __FILE__ ) ) . $v,
+					'data'   => plugins_url( $base . 'cockpit.json', dirname( __FILE__ ) ) . $v,
+					'aerial' => plugins_url( $base . 'aerial.json', dirname( __FILE__ ) ) . $v,
+					'base'   => plugins_url( $base, dirname( __FILE__ ) ),
+					'ver'    => nadlan_ps_ver(),
+				),
 			);
 		}
 		$hero = '';
@@ -1269,6 +1276,20 @@ let c = {};
 try { c = JSON.parse((root && root.dataset.cfg) || '{}'); } catch (e) { c = {}; }
 // HAD-699: the showcase behind ?kikar=next (the cockpit's styles first, so its first paint is styled)
 if (c.next && c.next.cockpit) { document.body.classList.add('nlck-next'); const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = c.next.cockpit.css; document.head.appendChild(l); }
+// HAD-699 (1.72.636, Ben: "a person presses and enters the cockpit of his life"): the apartment cockpit and the journey load with
+// the page (a shared #dira= link opens the apartment at once); the journey's entry leads the page (before the page's grid, never a
+// cell in it); on phones the tour button opens the journey, and the 3D world does not mount there
+const jyPhone = () => innerWidth < 900;
+if (c.next && c.next.journey) {
+  window.__nlCockpitCfg = c.next.cockpit; window.__nlJourneyCfg = c.next.journey;
+  import(c.next.cockpit.js).catch((e) => console.warn('[cockpit]', e));
+  import(c.next.journey.js).then((m) => { const at = document.querySelector('.nlps-page') || document.querySelector('.nlps-stagebox'); if (at) m.mountJourney(at); }).catch((e) => console.warn('[journey]', e));
+  document.addEventListener('click', (e) => {
+    const a = e.target && e.target.closest ? e.target.closest('[data-nlps-ev="hero-world"]') : null;
+    if (!a || !jyPhone() || !window.__nlJourney) return;
+    e.preventDefault(); e.stopImmediatePropagation(); window.__nlJourney.open(2);
+  }, true);
+}
 const ga = (n, p) => { try { if (window.nadlanGA) window.nadlanGA(n, Object.assign({ project: c.name || '' }, p || {})); } catch (e) { /* none */ } };
 let P = null;
 function mount() {
@@ -1290,7 +1311,8 @@ if (root && host && c.world) {
   const later = () => ('requestIdleCallback' in window ? requestIdleCallback(mount, { timeout: 2000 }) : setTimeout(mount, 200));
   // v104.51 (HAD-421, A/B): ?nlwboot=early mounts once the document is parsed (this module runs before DOMContentLoaded)
   // instead of after window load; without the switch the default below is unchanged until the A/B is measured
-  if (/[?&]nlwboot=early(&|$)/.test(location.search)) { if ('requestIdleCallback' in window) requestIdleCallback(mount, { timeout: 600 }); else setTimeout(mount, 0); }
+  if (c.next && c.next.journey && jyPhone()) { /* HAD-699: on phones under the gate the journey replaces the 3D world */ }
+  else if (/[?&]nlwboot=early(&|$)/.test(location.search)) { if ('requestIdleCallback' in window) requestIdleCallback(mount, { timeout: 600 }); else setTimeout(mount, 0); }
   else if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
   document.addEventListener('click', (e) => {
     const a = e.target && e.target.closest ? e.target.closest('[data-nlps-ev="hero-world"],[data-nlps-ev="hero-sale"]') : null;
