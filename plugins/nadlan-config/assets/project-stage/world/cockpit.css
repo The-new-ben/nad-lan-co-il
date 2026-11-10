@@ -51,7 +51,7 @@
 .nlck-subtop span { font-size: 13px; color: #fff; background: rgba(13,33,41,.86); padding: 6px 10px; border-radius: 999px; }
 .nlck-back { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 0; background: rgba(13,33,41,.86); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; }
 .nlck[data-screen='view'] .nlck-subtop, .nlck[data-screen='inside'] .nlck-subtop, .nlck[data-screen='fac'] .nlck-subtop { position: absolute; inset-inline: 0; background: transparent; }
-.nlck[data-screen='inside'] .nlck-body, .nlck[data-screen='fac'] .nlck-body, .nlck[data-screen='design'] .nlck-body, .nlck[data-screen='film'] .nlck-body { overflow: hidden; padding-bottom: 0; display: flex; flex-direction: column; }
+.nlck[data-screen='inside'] .nlck-body, .nlck[data-screen='fac'] .nlck-body, .nlck[data-screen='film'] .nlck-body { overflow: hidden; padding-bottom: 0; display: flex; flex-direction: column; }
 .nlck-pan { height: min(64svh, 560px); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; background: #10262f; touch-action: pan-x; }
 .nlck-pan::-webkit-scrollbar { display: none; }
 .nlck-pan img { height: 100%; width: auto; max-width: none; display: block; }
@@ -70,8 +70,6 @@
 .nlck-float::-webkit-scrollbar { display: none; }
 .nlck-float button { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 0; background: rgba(13,33,41,.84); color: #fff; font-size: 14px; cursor: pointer; }
 .nlck-float button[aria-pressed='true'] { background: #fff; color: var(--ck-night); font-weight: 700; }
-.nlck-frame { flex: 1; width: 100%; min-height: 0; border: 0; background: #fff; display: block; }
-.nlck-ext { display: block; text-align: center; padding: 8px; font-size: 13px; color: var(--ck-mist) !important; }
 .nlck-video { flex: 1; width: 100%; min-height: 0; background: #000; }
 .nlck-pad { padding: 16px; color: var(--ck-mist); }
 
@@ -134,10 +132,10 @@ body.nlck-on #nlcta { display: none !important; }
 @media (max-width: 430px) { body:has(#nla11y) .nlck-bar .nlck-ic[data-act='save'] { display: none; } }
 
 /* desktops: the home and the reading screens dock on the reading-start side, the 3D world stays beside them; the pictures
-   (view, 360, designer, film) take the whole window */
+   (view, 360, film) take the whole window */
 @media (min-width: 1024px) {
   .nlck { inset: 16px auto 16px 16px; inset-inline-start: 16px; inset-inline-end: auto; width: 470px; border-radius: 22px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.35); }
-  .nlck[data-screen='view'], .nlck[data-screen='inside'], .nlck[data-screen='fac'], .nlck[data-screen='design'], .nlck[data-screen='film'] { width: auto; inset-inline-end: 16px; }
+  .nlck[data-screen='view'], .nlck[data-screen='inside'], .nlck[data-screen='fac'], .nlck[data-screen='film'] { width: auto; inset-inline-end: 16px; }
   .nlck { --ck-tile: 120px; }
 }
 @media (max-height: 720px) { .nlck { --ck-tile: 104px; } }

@@ -1,0 +1,21 @@
+{
+  "released": "1.72.639",
+  "from": "1.72.638",
+  "live_before": {
+    "assets/project-stage/world/cockpit.js": "3a2ace9827eca8201ee5640a9ea8bccd",
+    "assets/project-stage/world/cockpit.css": "484f61a8944daee541c98d002e1704c9",
+    "nadlan-config.php": "a6a4baddd707881be9c1226e7facf41d",
+    "inc/project-stage.php": "565729db35832500e33f913dc9edf748"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-10 23:22:45",
+  "files": {
+    "assets/project-stage/world/cockpit.js": "f22be1a48654d2bf53a25492bf9eab52",
+    "assets/project-stage/world/cockpit.css": "d1b37efe74053b7765219396bdeb63c2",
+    "nadlan-config.php": "8aaa6b6412326c59389b20134f7d8136",
+    "inc/project-stage.php": "23d2552d68e7b3e41d79021352d41699"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.639, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

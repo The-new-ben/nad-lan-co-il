@@ -4,7 +4,7 @@
  * https://claude.ai/artifact/FzvFDybiyBoi8bspoPV9Zp, row "הקוקפיט של הדירה".
  * A full-screen app for the chosen apartment: the real view from it at the top, nine tiles below, each opening full screen and
  * coming back to the apartment: the view (every rendered floor and direction), inside in 360 (the example apartment, four
- * styles), the designer (/tour/designer/ opened for THIS unit, as on Ashira, Rainbow and DUO), the plan, the facilities in 360,
+ * styles), another apartment (back to the journey; the old designer left on Ben's word, 10.11 night), the plan, the facilities in 360,
  * price and cost, the neighbourhood, the film, compare and send. The video call is always at the bottom (the site's shared room
  * when a representative is available, else the booking band). The choice lives in the address (#dira=A30-262).
  *
@@ -91,7 +91,7 @@ function home(c) {
     <div class="nlck-grid">
       ${t('view', 'הנוף', v ? A(v.img) : '')}
       ${t('inside', 'בפנים · 360°', A('tour/living-c30w-day-card.jpg'))}
-      ${t('design', 'עצבו את הדירה', A('tour/bedroom-c30nw-day-card.jpg'))}
+      ${t('other', 'דירה אחרת', A('aerial-tall-800.webp'))}
       ${t('plan', 'התוכנית', D.plan ? A(D.plan) : '')}
       ${t('fac', 'המתקנים · 360°', firstFac)}
       ${t('price', 'מחיר ועלות', '', `${bdi(num(Math.min(...D.deals.map((d) => d.price)) / 1e6, 2) + '–' + num(Math.max(...D.deals.map((d) => d.price)) / 1e6, 2))}<small>מיליון ₪, עסקאות שפורסמו</small>`)}
@@ -121,11 +121,6 @@ function scrFac() {
   return `${subTop('המתקנים · 360°')}<div class="nlck-360" data-360="${esc(A('tour/' + FACS[sub.fac][0] + '-2k.webp'))}" role="img" aria-label="${esc(FACS[sub.fac][1])}, 360"></div>
     <span class="nlck-cap" style="top:64px;bottom:auto">${esc(FACS[sub.fac][1])} · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>
     <div class="nlck-float">${FACS.map((f, i) => `<button type="button" data-fac="${i}" aria-pressed="${i === sub.fac}">${esc(f[1])}</button>`).join('')}</div>`;
-}
-function scrDesign(c) {
-  const u = `/tour/designer/?project=hamedina&unit=${encodeURIComponent(unitId(c))}&pn=${encodeURIComponent('מגדלי כיכר המדינה')}&ul=${encodeURIComponent(label(c))}`;
-  return `${subTop('עיצוב הדירה')}<iframe class="nlck-frame" src="${esc(u)}" title="עיצוב הדירה: ${esc(label(c))}" allow="fullscreen; xr-spatial-tracking"></iframe>
-    <a class="nlck-ext" href="${esc(u)}" target="_blank" rel="noopener">לפתוח במסך נפרד</a>`;
 }
 function scrPlan() {
   return `${subTop('התוכנית')}<div class="nlck-white"><div class="nlck-zoom" data-zoom><img src="${esc(A(D.plan))}" alt="תוכנית קומה טיפוסית: ארבע דירות פינתיות סביב גרעין עגול"></div>
@@ -217,7 +212,7 @@ function render() {
   if (PV) { PV.destroy(); PV = null; }
   const body = $('.nlck-body', el);
   const c = cur;
-  const h = { view: () => scrView(c), inside: scrInside, fac: scrFac, design: () => scrDesign(c), plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
+  const h = { view: () => scrView(c), inside: scrInside, fac: scrFac, plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
   body.innerHTML = h ? h() : home(c);
   body.dataset.screen = el.dataset.screen = open || 'home';
   body.scrollTop = 0;
@@ -268,6 +263,7 @@ function onInput(e) {
 }
 function onClick(e) {
   const o = e.target.closest('[data-open]');
+  if (o && o.dataset.open === 'other') { ga('cockpit_tile', { tile: 'other' }); viaJourney = false; close(); if (window.__nlJourney && window.__nlJourney.open) window.__nlJourney.open(2); else { const s = document.getElementById('nlps'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
   if (o && el.contains(o)) { const k = o.dataset.open; if (!k && !open) return close(); open = k || null; if (k !== 'view') sub.view = null; render(); ga('cockpit_tile', { tile: k || 'home' }); return; }
   const v = e.target.closest('[data-v]'); if (v) { sub.view = rendered().find((x) => x.img === v.dataset.v) || null; if (sub.view && v.dataset.vk === 'side') { cur.bearing = sub.view.bearing; } return render(); }
   const p = e.target.closest('[data-pano]'); if (p) { sub.pano = +p.dataset.pano; return render(); }

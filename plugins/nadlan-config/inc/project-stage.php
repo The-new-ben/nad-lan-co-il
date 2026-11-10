@@ -1114,11 +1114,12 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 	}
 }
 if ( ! function_exists( 'nadlan_ps_kikar_next' ) ) {
-	/** HAD-699 (Ben, 10.11.2026): the Kikar HaMedina showcase behind ?kikar=next on the Hebrew page: the Blender aerial as the first
-	 *  picture, a daylight colour table for the world (no cream, no gold) and the apartment cockpit (assets/project-stage/world/
-	 *  cockpit.js). The public page is unchanged until Ben's word. */
+	/** HAD-699 (Ben, 10.11.2026): the Kikar HaMedina showcase on the Hebrew page: the Blender aerial as the first picture, a
+	 *  daylight colour table for the world (no cream, no gold), the journey and the apartment cockpit (assets/project-stage/world/).
+	 *  Built behind ?kikar=next (1.72.631, 1.72.636); open to every visitor since 1.72.639 on Ben's word (10.11.2026 night:
+	 *  "תשלים... תן לי לראות בדף החי את הכל"). The other languages are unchanged. */
 	function nadlan_ps_kikar_next( $ps ) {
-		return 'hamedina' === (string) ( $ps['dir'] ?? '' ) && 'he' === (string) ( $ps['lang'] ?? 'he' ) && isset( $_GET['kikar'] ) && 'next' === (string) $_GET['kikar']; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		return 'hamedina' === (string) ( $ps['dir'] ?? '' ) && 'he' === (string) ( $ps['lang'] ?? 'he' ); // HAD-699 (1.72.639): every visitor; ?kikar=next stays harmless
 	}
 }
 if ( ! function_exists( 'nadlan_ps_world_media' ) ) {
