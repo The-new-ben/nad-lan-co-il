@@ -11,6 +11,7 @@ import { createStore, emptyDesign, quantities, WALL_KINDS } from './core.js';
 import { mountPlan } from './plan.js';
 import * as catalog from './catalog.js';
 import { strings } from './strings.js';
+import { estimate, itemRange, span, tidy } from './budget.js';
 
 const BASE = new URL('.', import.meta.url).href;
 const FONTS = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;600;700&display=swap';
@@ -53,7 +54,9 @@ export async function mount(host, opts = {}) {
   const $ = (k) => root.querySelector('[data-nd="' + k + '"]');
   await new Promise((r) => { if (css.sheet) r(); else { css.addEventListener('load', r, { once: true }); css.addEventListener('error', r, { once: true }); } });
 
-  let sel = null, sheet = null, space = null, toastT = 0, alive = true;
+  let sel = null, sheet = null, space = null, toastT = 0, alive = true, prices = null;
+  const nf = new Intl.NumberFormat('he-IL');
+  const money = (r) => (!r ? '' : r.hi == null ? nf.format(r.lo) + ' ' + T.shekel + T.andUp : nf.format(r.lo) + T.to + nf.format(r.hi) + ' ' + T.shekel);
   const subs = new Set(), timings = {};
   const toast = (msg, kind) => { $('toast').textContent = msg; $('toast').className = 'toast' + (kind === 'stop' ? ' stop' : ''); $('toast').hidden = false; clearTimeout(toastT); toastT = setTimeout(() => ($('toast').hidden = true), 3200); };
   const select = (s) => { sel = s; plan.setSelection(s); if (space) space.setSelection(s); paintSel(); if (s && s.type === 'room' && sheet !== 'floor') open('floor'); else if (sheet) open(sheet, true); };
@@ -84,7 +87,8 @@ export async function mount(host, opts = {}) {
       const g = document.createElement('div'); g.className = 'grid'; el.appendChild(g);
       for (const sku in catalog.ITEMS) {
         const c = catalog.ITEMS[sku], b = document.createElement('button'); b.className = 'opt';
-        b.innerHTML = '<span>' + esc(c.he) + '</span><small><span class="mono">' + c.w + '×' + c.d + '</span> ' + T.cm + '</small>';
+        const pr = tidy(itemRange(c, prices));
+        b.innerHTML = '<span>' + esc(c.he) + '</span><small><span class="mono">' + c.w + '×' + c.d + '</span> ' + T.cm + '</small><small class="pr">' + (pr ? money(pr) : prices ? T.noPrice : '') + '</small>';
         b.onclick = () => {
           const id = 'i' + Date.now().toString(36), f = (sel && sel.type === 'room' && dv.faceBy[sel.id]) || dv.faceBy.living || dv.faces[0];
           const r = store.apply({ op: 'item.add', item: { id, sku, x: Math.round((f.bb.x0 + f.bb.x1) / 2), y: Math.round((f.bb.y0 + f.bb.y1) / 2), rot: 0, status: 'decor' } });
@@ -100,15 +104,21 @@ export async function mount(host, opts = {}) {
       const g = document.createElement('div'); g.className = 'grid'; el.appendChild(g);
       for (const key of catalog.FLOOR_CHOICES) {
         const f = catalog.FINISHES[key], b = document.createElement('button'); b.className = 'opt'; b.setAttribute('aria-pressed', store.floorOf(room.id) === key);
-        b.innerHTML = '<span>' + esc(f.he) + '</span><small><span class="tag ' + f.status + '">' + (f.status === 'base' ? T.base : T.upgrade) + '</span></small>';
+        const fp = f.status === 'base' ? null : tidy(span(prices && prices[f.price]));
+        b.innerHTML = '<span>' + esc(f.he) + '</span><small><span class="tag ' + f.status + '">' + (f.status === 'base' ? T.base : T.upgrade) + '</span></small>' + (f.status === 'base' ? '' : '<small class="pr">' + (fp ? money(fp) + ' ' + esc(prices[f.price].unit_he) : prices ? T.noPrice : '') + '</small>');
         b.onclick = () => store.apply({ op: 'finish.set', key: 'floor:' + room.id, value: key === room.room.floor ? null : key });
         g.appendChild(b);
       }
     }
     if (name === 'boq') {
       const q = quantities(store);
-      h.textContent = T.boqHead;
-      let html = '<table><thead><tr><th>' + T.boqFloor + '</th><th class="n">' + T.boqArea + '</th></tr></thead><tbody>';
+      h.textContent = T.budHead;
+      const bud = estimate(store, catalog, prices);
+      let html = bud.ready ? '<p class="total" data-nd="total">' + money({ lo: bud.lo, hi: bud.open ? null : bud.hi }) + '</p><p class="fine" style="margin-top:2px">' + T.budWhat + '</p>' +
+        '<table style="margin-top:8px"><thead><tr><th>' + T.budLine + '</th><th class="n">' + T.budQty + '</th><th class="n">' + T.budRange + '</th></tr></thead><tbody>' +
+        bud.rows.map((r) => '<tr><td>' + esc(r.label) + (r.where ? ' · ' + esc(r.where) : '') + (r.rough ? ' <span class="tag decor">' + T.rough + '</span>' : '') + '</td><td class="n">' + (r.kind === 'floor' ? '<span class="mono">' + r.qty.toFixed(1) + '</span> ' + T.sqm : '<span class="mono">' + r.qty + '</span>') + '</td><td class="n">' + money(r) + '</td></tr>').join('') +
+        '</tbody></table>' + (bud.missing.length ? '<p class="fine">' + T.budMissing + esc([...new Set(bud.missing)].join(', ')) + '</p>' : '') + '<p class="fine">' + T.budFine + '</p><h3 style="margin-top:14px">' + T.boqHead + '</h3>' : '<p class="fine">' + T.budLoading + '</p><h3 style="margin-top:10px">' + T.boqHead + '</h3>';
+      html += '<table><thead><tr><th>' + T.boqFloor + '</th><th class="n">' + T.boqArea + '</th></tr></thead><tbody>';
       for (const k in q.floors) html += '<tr><td>' + esc(catalog.FINISHES[k].he) + ' <span class="tag ' + catalog.FINISHES[k].status + '">' + (catalog.FINISHES[k].status === 'base' ? T.base : T.upgrade) + '</span></td><td class="n"><span class="mono">' + q.floors[k].toFixed(1) + '</span> ' + T.sqm + '</td></tr>';
       html += '</tbody></table><table style="margin-top:10px"><thead><tr><th>' + T.boqRoom + '</th><th class="n">' + T.boqSize + '</th><th class="n">' + T.boqArea + '</th></tr></thead><tbody>';
       for (const r of q.rooms) html += '<tr><td>' + esc(r.name) + '</td><td class="n mono">' + r.w + '×' + r.d + '</td><td class="n mono">' + r.net.toFixed(1) + '</td></tr>';
@@ -151,6 +161,9 @@ export async function mount(host, opts = {}) {
     destroy() { alive = false; if (space && space.destroy) space.destroy(); shadow.textContent = ''; subs.clear(); },
   };
   head(); paintSel();
+  // price ranges are a small separate file: the designer works without it and fills the prices in when it arrives
+  api.readyPrices = fetch(BASE + 'data/price-ranges.json').then((r) => (r.ok ? r.json() : null)).then((d) => { if (d && alive) { prices = d.items; api.prices = prices; if (sheet) open(sheet, true); } return prices; }).catch(() => null);
+  api.budget = () => estimate(store, catalog, prices);
 
   // the plan is on screen; only now ask for the 3D library
   api.ready3d = import('./space.js').then(({ mountSpace }) => {
