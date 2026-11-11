@@ -12,7 +12,7 @@
  * Every picture says "הדמיה להמחשה"; the inside is the example apartment (tower C, floor 30) and says so.
  */
 const C = window.__nlJourneyCfg || {};
-const SHOWROOM = new URLSearchParams(location.search).get('kikar') === 'show';
+const SHOWROOM = new URLSearchParams(location.search).get('kikar') !== 'journey'; // HAD-712 (1.72.644): the showroom is the page for every visitor, on Ben's word (11.11.2026); ?kikar=journey keeps the earlier path for comparison
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const bdi = (s) => `<bdi>${esc(s)}</bdi>`;
 const A = (p) => (C.base || '') + p + (C.ver ? (p.includes('?') ? '&' : '?') + 'ver=' + C.ver : '');
@@ -170,7 +170,7 @@ function close(toCockpitNext) { if (!el) return; el.hidden = true; document.docu
 
 // the entry: the square at sunset fills the first screen of the stage, with one button
 export function mountJourney(stage) {
-  if (SHOWROOM) { // HAD-712: the showroom stage (each tower a turntable, the floor chosen on the tower, the map with the beam) behind ?kikar=show
+  if (SHOWROOM) { // HAD-712: the showroom stage (each tower a turntable, the floor chosen on the tower, the map with the beam)
     document.body.classList.add('nljy-on');
     import(new URL('showroom.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href).then((m) => m.mountShowroom(stage)).catch((e) => console.warn('[showroom]', e));
     return { open };

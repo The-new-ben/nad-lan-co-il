@@ -1,0 +1,17 @@
+{
+  "released": "1.72.644",
+  "from": "1.72.643",
+  "live_before": {
+    "assets/project-stage/world/journey.js": "5114ff05d589d507500d9fb06a937b8d",
+    "nadlan-config.php": "e3f5dbd3c7f5dd5f102270a0509ba15d"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 13:37:09",
+  "files": {
+    "assets/project-stage/world/journey.js": "df879a38c98415f8fd6246ea5c8c1c89",
+    "nadlan-config.php": "9424cffd5ccf15bd6ce0ed32859699ee"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.644, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
