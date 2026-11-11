@@ -58,7 +58,8 @@ No DOM and no three.js: it runs in the browser, in node tests and on the server 
 
 - `derive(apartment, design)`: effective corners, walls, openings and rooms. A window or door keeps its place in the building when the corner beside it moves.
 - `createStore(apartment, design)`: `apply(op, {by, gesture})`, `undo()`, `redo()`, `on(listener)`. A drag is one gesture: one undo step and one log line, however many moves it sent.
-- Operations today: `item.add`, `item.move`, `item.rot`, `item.remove`, `finish.set`, `wall.shift`. Next: `opening.move` (interior doors), `partition.add`, `partition.remove`, `note.add`, `item.swap`.
+- Operations today: `item.add`, `item.move`, `item.rot`, `item.remove`, `finish.set`, `wall.shift`, `point.add`, `point.move`, `point.remove`, `point.restore` (services points: socket, switch, data, tv, ac on a wall face; light on the ceiling), `partition.add`, `partition.remove`, `partition.restore`, `room.name` (11.11.2026, HAD-701; tests in docs/design-lab/apartment-designer/test-core.mjs). Next: `opening.move` (interior doors), `note.add`, `item.swap`.
+- An added partition end that lies on a wall splits that wall for the room finder only (the drawn wall, its openings and points stay whole). A clear width and depth are reported only for axis-aligned rectangular rooms; the bedroom width rule therefore applies to rectangles only, the area rule to every room.
 - **Rules run before the change** and answer with a code and one Hebrew sentence the buyer sees:
   - a wall that is not a partition never moves (the sentence names why: façade, structure, safe room);
   - a partition slides only along the walls it meets, never out of a corner;

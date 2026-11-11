@@ -2,6 +2,7 @@
 // Frame: X = plan x, Z = plan y, Y up, metres. Renders on demand only (a still picture costs no battery).
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { POINT_KINDS } from './core.js';
 
 const M = 0.01, CUT = 118, EYE = 160;
 
@@ -37,7 +38,7 @@ export function mountSpace(host, store, cat, hooks = {}) {
   sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -11, right: 11, top: 11, bottom: -11, near: 1, far: 40 }); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.03;
   scene.add(sun, sun.target);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.ShadowMaterial({ opacity: 0.16 })); ground.rotation.x = -Math.PI / 2; ground.position.set(mid.x, -0.02, mid.z); ground.receiveShadow = true; scene.add(ground);
-  const gFloor = new THREE.Group(), gWall = new THREE.Group(), gItem = new THREE.Group(); scene.add(gFloor, gWall, gItem);
+  const gFloor = new THREE.Group(), gWall = new THREE.Group(), gItem = new THREE.Group(), gPoint = new THREE.Group(); scene.add(gFloor, gWall, gItem, gPoint);
   const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshBasicMaterial({ color: 0xF4F5F3 })); ceiling.rotation.x = Math.PI / 2; ceiling.position.set(mid.x, H * M, mid.z); ceiling.visible = false; scene.add(ceiling);
 
   const mat = {
@@ -74,7 +75,7 @@ export function mountSpace(host, store, cat, hooks = {}) {
       if (w.kind === 'divider' || w.L < 1) continue;
       if (w.kind === 'rail') { box(w, 0, w.L, 0, Math.min(105, top), w.t, mat.rail); continue; }
       const t = Math.max(w.t, 4), e = t / 2;
-      const m = mode === 'walk' ? null : store.slides(w.id) ? CAP.free : w.kind === 'partition' ? CAP.part : CAP.ink; // the cut top is drawn like the plan's ink
+      const m = mode === 'walk' ? null : store.slides(w.id) || w.added ? CAP.free : w.kind === 'partition' ? CAP.part : CAP.ink; // the cut top is drawn like the plan's ink
       let c = -e;
       for (const o of w.openings) {
         box(w, c, o.at, 0, top, t, m);
@@ -89,6 +90,27 @@ export function mountSpace(host, store, cat, hooks = {}) {
     g.setAttribute('position', new THREE.Float32BufferAttribute(acc.pos, 3)); g.setAttribute('normal', new THREE.Float32BufferAttribute(acc.nor, 3)); g.setAttribute('color', new THREE.Float32BufferAttribute(acc.col, 3)); g.setIndex(acc.idx);
     const all = new THREE.Mesh(g, mat.wall); all.castShadow = all.receiveShadow = true; gWall.add(all);
     gWall.scale.y = grow;
+  }
+  // ---- services points: small plates on the wall face at their height, lights as discs on the ceiling (walk view only).
+  // One small shared geometry per kind and three shared materials: thirty points cost almost nothing.
+  const PG = {
+    socket: new THREE.BoxGeometry(8 * M, 8 * M, 1.4 * M), switch: new THREE.BoxGeometry(8 * M, 8 * M, 1.4 * M), data: new THREE.BoxGeometry(8 * M, 8 * M, 1.4 * M),
+    tv: new THREE.BoxGeometry(12 * M, 8 * M, 1.4 * M), ac: new THREE.BoxGeometry(80 * M, 28 * M, 20 * M), light: new THREE.CylinderGeometry(9 * M, 9 * M, 1.5 * M, 20),
+  };
+  const PM = { base: new THREE.MeshStandardMaterial({ color: 0x0F2233, roughness: 0.6 }), mine: new THREE.MeshStandardMaterial({ color: 0x1F5FA8, roughness: 0.5 }), on: new THREE.MeshStandardMaterial({ color: 0x1F5FA8, emissive: 0x1F5FA8, emissiveIntensity: 0.7, roughness: 0.4 }) };
+  function buildPoints() {
+    for (const c of [...gPoint.children]) gPoint.remove(c); // the geometries are shared: nothing to dispose
+    for (const p of store.derived.points) {
+      if (p.state === 'removed' || p.lost) continue;
+      const ceiling = POINT_KINDS[p.kind].ceiling, on = sel && sel.type === 'point' && sel.id === p.id;
+      if (ceiling ? mode !== 'walk' : mode !== 'walk' && p.h >= CUT) continue; // from above the walls are cut at 118 cm
+      const m = new THREE.Mesh(PG[p.kind], on ? PM.on : p.state === 'base' ? PM.base : PM.mine);
+      if (ceiling) m.position.set(p.x * M, (H - 1) * M, p.y * M);
+      else { const out = p.kind === 'ac' ? 10.5 : 0.8; m.position.set((p.fx + p.ns[0] * out) * M, p.h * M, (p.fy + p.ns[1] * out) * M); m.rotation.y = Math.atan2(p.ns[0], p.ns[1]); }
+      if (on) m.scale.setScalar(1.6);
+      m.userData.point = p.id; gPoint.add(m);
+    }
+    gPoint.scale.y = gWall.scale.y;
   }
   function buildFloors() {
     clear(gFloor);
@@ -164,7 +186,7 @@ export function mountSpace(host, store, cat, hooks = {}) {
       const r = (Math.hypot(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys)) * M) / 2, hv = (camera.fov * Math.PI) / 360, hh = Math.atan(Math.tan(hv) * camera.aspect), dist = (r / Math.sin(Math.min(hv, hh))) * 0.9;
       camera.position.set(mid.x + dist * 0.05, dist * 0.8, mid.z + dist * 0.6); controls.update();
     }
-    buildWalls(); place(); touch();
+    buildWalls(); buildPoints(); place(); touch();
   }
   function getView() {
     const dir = camera.getWorldDirection(new THREE.Vector3());
@@ -183,8 +205,9 @@ export function mountSpace(host, store, cat, hooks = {}) {
   let down = null;
   renderer.domElement.addEventListener('pointerdown', (ev) => {
     aim(ev);
-    const h = ray.intersectObjects(gItem.children, true)[0], p = onFloor(ev);
-    down = { x: ev.clientX, y: ev.clientY, moved: false, item: h ? h.object.userData.item : null, yaw: walk.yaw, pitch: walk.pitch };
+    const h = ray.intersectObjects(gItem.children, true)[0], hp = ray.intersectObjects(gPoint.children, false)[0], p = onFloor(ev);
+    down = { x: ev.clientX, y: ev.clientY, moved: false, item: h ? h.object.userData.item : null, point: hp && (!h || hp.distance < h.distance) ? hp.object.userData.point : null, yaw: walk.yaw, pitch: walk.pitch };
+    if (down.point) down.item = null;
     if (down.item && mode === 'doll' && p) {
       const it = store.item(down.item); controls.enabled = false; try { renderer.domElement.setPointerCapture(ev.pointerId); } catch (e) { /* synthetic pointer */ }
       down.off = [it.x - p[0], it.y - p[1]]; down.g = 'g' + Date.now(); hooks.select && hooks.select({ type: 'item', id: it.id });
@@ -201,7 +224,8 @@ export function mountSpace(host, store, cat, hooks = {}) {
     if (!down.moved && !down.off) {
       aim(ev);
       const f = ray.intersectObjects(gFloor.children, false)[0];
-      if (down.item) hooks.select && hooks.select({ type: 'item', id: down.item });
+      if (down.point) hooks.select && hooks.select({ type: 'point', id: down.point });
+      else if (down.item) hooks.select && hooks.select({ type: 'item', id: down.item });
       else if (f && mode === 'walk') walk.to = { x: f.point.x / M, y: f.point.z / M };
       else hooks.select && hooks.select(f ? { type: 'room', id: f.object.userData.room } : null);
     }
@@ -231,7 +255,7 @@ export function mountSpace(host, store, cat, hooks = {}) {
   function tick() {
     if (dead) return;
     requestAnimationFrame(tick);
-    if (grow < 1) { grow = Math.min(1, grow + 0.035); gWall.scale.y = 1 - Math.pow(1 - grow, 3); touch(); } // the plan stands up
+    if (grow < 1) { grow = Math.min(1, grow + 0.035); gWall.scale.y = gPoint.scale.y = 1 - Math.pow(1 - grow, 3); touch(); } // the plan stands up
     if (walk.to && mode === 'walk') {
       const dx = walk.to.x - walk.x, dy = walk.to.y - walk.y, l = Math.hypot(dx, dy), nx = walk.x + (dx / (l || 1)) * Math.min(l, 9), ny = walk.y + (dy / (l || 1)) * Math.min(l, 9);
       if (l < 6 || blockedStep(walk.x, walk.y, nx, ny)) walk.to = null; else { walk.x = nx; walk.y = ny; }
@@ -246,12 +270,13 @@ export function mountSpace(host, store, cat, hooks = {}) {
     if (k !== lastCam) { lastCam = k; hooks.camera && hooks.camera(v); }
   }
 
-  const reload = () => { for (const id of [...itemObj.keys()]) { const g = itemObj.get(id); gItem.remove(g); itemObj.delete(id); } buildWalls(); buildFloors(); for (const it of store.design.items) syncItem(it.id); showSel(); touch(); };
+  const reload = () => { for (const id of [...itemObj.keys()]) { const g = itemObj.get(id); gItem.remove(g); itemObj.delete(id); } buildWalls(); buildFloors(); buildPoints(); for (const it of store.design.items) syncItem(it.id); showSel(); touch(); };
   store.on((e) => {
     if (e.type !== 'change') return;
     if (e.touched.all) { reload(); return; }
     if (pending == null) pending = e.t0;
     if (e.touched.geometry) { buildWalls(); buildFloors(); }
+    if (e.touched.geometry || (e.touched.points && e.touched.points.length)) buildPoints();
     if (e.touched.finishes.length) showSel();
     for (const id of e.touched.items) syncItem(id);
     if (sel && sel.type === 'item') showSel();
@@ -262,10 +287,11 @@ export function mountSpace(host, store, cat, hooks = {}) {
   grow = 0.01; setMode('doll'); tick();
   return {
     el: renderer.domElement, setMode, getView, setView, get mode() { return mode; },
-    setSelection(s) { sel = s; showSel(); },
+    setSelection(s) { const pts = (sel && sel.type === 'point') || (s && s.type === 'point'); sel = s; showSel(); if (pts) buildPoints(); },
     walkTo(p) { if (mode === 'walk') walk.to = { x: p[0], y: p[1] }; },
     // for checks: where a plan point lands on the screen, and where a piece really stands in the 3D scene
     screenOf(x, y, h = 0) { const v = new THREE.Vector3(x * M, h * M, y * M).project(camera), r = renderer.domElement.getBoundingClientRect(); return [r.left + ((v.x + 1) / 2) * r.width, r.top + ((1 - v.y) / 2) * r.height]; },
+    pointMesh(id) { const m = gPoint.children.find((c) => c.userData.point === id); return m ? { x: Math.round(m.position.x / M), y: Math.round(m.position.z / M), h: Math.round(m.position.y / M), mine: m.material !== PM.base } : null; },
     placed(id) { const g = itemObj.get(id); return g ? [Math.round(g.position.x / M), Math.round(g.position.z / M), Math.round((-g.rotation.y * 180) / Math.PI)] : null; },
     floorKey(room) { const f = gFloor.children.find((c) => c.userData.room === room); return f ? Object.keys(mat.floors).find((k) => mat.floors[k] === f.material) : null; },
     renders, useModels, reload,

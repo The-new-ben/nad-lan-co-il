@@ -84,8 +84,40 @@
     { "id": "mamad", "type": "mamad", "name_he": "ממ״ד", "at": [1160, 700], "floor": "porcelain-80" },
     { "id": "balcony", "type": "balcony", "name_he": "מרפסת", "at": [310, -110], "floor": "deck" }
   ],
+  "points": [
+    { "id": "s-liv-1", "kind": "socket", "wall": "w2", "at": 80, "room": "living" },
+    { "id": "tv-liv", "kind": "tv", "wall": "c1", "at": 200, "room": "living" },
+    { "id": "d-liv", "kind": "data", "wall": "c1", "at": 245, "room": "living" },
+    { "id": "ac-liv", "kind": "ac", "wall": "f1", "at": 555, "room": "living" },
+    { "id": "l-liv", "kind": "light", "x": 430, "y": 130 },
+    { "id": "s-kit-1", "kind": "socket", "wall": "s4", "at": 90, "room": "kitchen" },
+    { "id": "s-kit-2", "kind": "socket", "wall": "s4", "at": 260, "room": "kitchen" },
+    { "id": "l-kit", "kind": "light", "x": 180, "y": 610 },
+    { "id": "sw-hall", "kind": "switch", "wall": "s3", "at": 195, "room": "hall" },
+    { "id": "l-hall", "kind": "light", "x": 490, "y": 610 },
+    { "id": "s-mst", "kind": "socket", "wall": "p4", "at": 260, "room": "master" },
+    { "id": "sw-mst", "kind": "switch", "wall": "p4", "at": 125, "room": "master" },
+    { "id": "tv-mst", "kind": "tv", "wall": "p6", "at": 200, "room": "master" },
+    { "id": "d-mst", "kind": "data", "wall": "p6", "at": 250, "room": "master" },
+    { "id": "ac-mst", "kind": "ac", "wall": "f2", "at": 300, "room": "master" },
+    { "id": "l-mst", "kind": "light", "x": 810, "y": 110 },
+    { "id": "s-b2", "kind": "socket", "wall": "e1", "at": 60, "room": "bed2" },
+    { "id": "sw-b2", "kind": "switch", "wall": "p5", "at": 195, "room": "bed2" },
+    { "id": "tv-b2", "kind": "tv", "wall": "p5", "at": 80, "room": "bed2" },
+    { "id": "d-b2", "kind": "data", "wall": "p5", "at": 120, "room": "bed2" },
+    { "id": "ac-b2", "kind": "ac", "wall": "e1", "at": 200, "room": "bed2" },
+    { "id": "l-b2", "kind": "light", "x": 1160, "y": 110 },
+    { "id": "l-cor", "kind": "light", "x": 760, "y": 440 },
+    { "id": "l-wc", "kind": "light", "x": 790, "y": 530 },
+    { "id": "s-lau", "kind": "socket", "wall": "s2", "at": 100, "room": "laundry" },
+    { "id": "l-lau", "kind": "light", "x": 790, "y": 720 },
+    { "id": "l-bath", "kind": "light", "x": 910, "y": 570 },
+    { "id": "s-mmd", "kind": "socket", "wall": "m2", "at": 160, "room": "mamad" },
+    { "id": "l-mmd", "kind": "light", "x": 1160, "y": 580 }
+  ],
   "rules": [
     { "code": "room.min_width", "applies": ["bedroom"], "value": 260, "source": "spike value, to be verified against the Planning and Building Regulations before any public use" },
-    { "code": "room.min_area", "applies": ["bedroom"], "value": 8, "source": "spike value, to be verified against the Planning and Building Regulations before any public use" }
+    { "code": "room.min_area", "applies": ["bedroom"], "value": 8, "source": "spike value, to be verified against the Planning and Building Regulations before any public use" },
+    { "code": "mamad.no_chasing", "applies": ["mamad"], "value": 0, "source": "placeholder, TO BE VERIFIED against the Home Front Command safe-room specifications before any public use: no new chase, drilling or fixing in the safe room's walls and ceiling without the approved detail" }
   ]
 }

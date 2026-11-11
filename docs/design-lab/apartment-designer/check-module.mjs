@@ -88,6 +88,58 @@ try {
   c = await p.ev(mid('[data-nd="reset"]')); await p.tap(c[0], c[1]); await sleep(500);
   const reset = await p.ev('({floor:window.__d.store.floorOf("living"),sofa:window.__d.store.item("i2").x,three:window.__d.space.placed("i2"),floor3:window.__d.space.floorKey("living")})');
   check('"start over" returns the apartment as it was, in the model and in 3D', reset.floor === 'porcelain-80' && reset.sofa === b0[0] && reset.three[0] === b0[0] && reset.floor3 === 'porcelain-80', reset);
+  // ---- services points: the "חשמל" sheet, a socket placed by touch, dragged, undone; the safe-room refusal ----
+  const D = 'window.__d', scr = (x, y) => p.ev(`${D}.plan.screenOf(${x},${y})`);
+  const tapSel = async (sel) => { const q = await p.ev(mid(sel)); await p.tap(q[0], q[1]); };
+  const lab = await p.ev(`(()=>{const R0=${R};const t=[...R0.querySelectorAll('.L-labels text')],g=[],nm=[];for(const e of t){if(e.classList.contains('rl')){g.push([]);nm.push(e.textContent);}g[g.length-1].push(e.getBoundingClientRect());}
+    const box=(rs)=>({x0:Math.min(...rs.map(r=>r.left)),x1:Math.max(...rs.map(r=>r.right)),y0:Math.min(...rs.map(r=>r.top)),y1:Math.max(...rs.map(r=>r.bottom))});
+    const B=g.map(box),hit=(a,b)=>a.x0<b.x1-1&&b.x0<a.x1-1&&a.y0<b.y1-1&&b.y0<a.y1-1,pts=[...R0.querySelectorAll('.L-points .pt')].map(e=>{const r=e.getBoundingClientRect();return {id:e.dataset.point,x0:r.left,x1:r.right,y0:r.top,y1:r.bottom}});
+    let ll=0,lp=0;const w=[];for(let i=0;i<B.length;i++){for(let j=i+1;j<B.length;j++)if(hit(B[i],B[j])){ll++;w.push(nm[i]+'/'+nm[j]);}for(const q of pts)if(hit(B[i],q)){lp++;w.push(nm[i]+'/'+q.id);}}return {labels:B.length,points:pts.length,labelOverLabel:ll,labelOverPoint:lp,where:w}})()`);
+  check('phone plan: no room label over another, none over a point symbol', lab.labels === 11 && lab.points === 29 && lab.labelOverLabel === 0 && lab.labelOverPoint === 0, lab);
+  await tapSel('nav button[data-sheet="points"]'); await sleep(250);
+  const sh =await p.ev(`(()=>{const s=${R}.querySelector('[data-nd="sheet"]'),r=s.getBoundingClientRect(),b=[...s.querySelectorAll('.opt.kind')].map(e=>e.getBoundingClientRect());return {kinds:b.length,top:Math.round(r.top),bottom:Math.round(r.bottom),inside:b.every(q=>q.top>=r.top&&q.bottom<=r.bottom&&q.left>=0&&q.right<=innerWidth&&q.height>=44),count:(s.querySelector('[data-nd="pcount"]')||{}).textContent,fine:s.textContent.includes('אישור של היזם'),navClip:[...${R}.querySelectorAll('nav button')].filter(n=>n.scrollWidth>n.clientWidth+1).map(n=>n.textContent)}})()`);
+  check('the "חשמל" sheet: six kinds, 44 px or more, not clipped, counts and the approval sentence; six tools fit the phone', sh.kinds === 6 && sh.inside && /במפרט 29/.test(sh.count) && sh.fine && sh.navClip.length === 0, sh);
+  await p.shot('m4-phone-points-sheet');
+  await tapSel('.sheet .opt.kind[data-kind="socket"]'); await sleep(150);
+  c = await scr(40, 380); await p.tap(c[0], c[1]); await sleep(200);
+  const placed = await p.ev(`(()=>{const a=${D}.store.design.points.added;const q=a[0]&&${D}.store.point(a[0].id);return {n:a.length,id:a[0]&&a[0].id,wall:q&&q.wall,at:q&&q.at,room:q&&q.room,state:q&&q.state,sel:${D}.selection,bar:${R}.querySelector('[data-nd="selname"]').textContent,three:q&&${D}.space.pointMesh(q.id)}})()`);
+  check('a socket placed from the sheet with one tap lands on the nearest wall, on the living-room side, and in 3D', placed.n === 1 && placed.wall === 'w2' && placed.at === 140 && placed.room === 'living' && placed.state === 'added' && placed.sel && placed.sel.id === placed.id && placed.bar.includes('שקע חשמל') && placed.three && placed.three.mine && placed.three.h === 30, placed);
+  c = await p.ev(`${D}.plan.pointScreen(${JSON.stringify(placed.id)})`); const c2 = await scr(40, 300);
+  await p.drag(c[0], c[1], c2[0], c2[1], 10);
+  const dragged = await p.ev(`(()=>{const q=${D}.store.point(${JSON.stringify(placed.id)});return {at:q.at,wall:q.wall,three:${D}.space.pointMesh(q.id)}})()`);
+  check('a finger drag slides the socket along the wall (model and 3D)', dragged.wall === 'w2' && dragged.at === 220 && dragged.three && dragged.three.y === 300, dragged);
+  await tapSel('[data-nd="undo"]'); await sleep(200);
+  const undone = await p.ev(`(()=>{const q=${D}.store.point(${JSON.stringify(placed.id)});return {at:q&&q.at,n:${D}.store.design.points.added.length}})()`);
+  check('undo takes the whole drag back in one step (the socket stays, at its first place)', undone.at === 140 && undone.n === 1, undone);
+  await sleep(3300);
+  await tapSel('nav button[data-sheet="points"]'); await sleep(200); await tapSel('.sheet .opt.kind[data-kind="socket"]'); await sleep(150);
+  c = await scr(1290, 580); await p.tap(c[0], c[1]); await sleep(150); // the safe-room facade wall m1, clear of its window (650 to 750)
+  const mm = await p.ev(`({toast:${R}.querySelector('[data-nd="toast"]').textContent,stop:${R}.querySelector('[data-nd="toast"]').classList.contains('stop'),n:${D}.store.design.points.added.length})`);
+  check('a socket on the safe-room wall is refused with the approved-detail sentence', mm.stop && mm.toast.includes('ממ״ד') && mm.toast.includes('פרט מאושר') && mm.n === 1, mm);
+  await sleep(3300);
+  // ---- a new partition across the living room, then removed, then undone; p11 removed and the wet rooms merge ----
+  await tapSel('[data-nd="part"]'); await sleep(150);
+  const pa = await scr(5, 300), pb = await scr(612, 300);
+  await p.drag(pa[0], pa[1], pb[0], pb[1], 16); await sleep(300);
+  const np = await p.ev(`(()=>{const d=${D}.store.derived,f=d.faces.find(f=>f.room&&f.room.fresh),a=${D}.store.design.geometry.added[0];return {n:${D}.store.design.geometry.added.length,a:a&&[a.a,a.b],fresh:f&&f.net,living:d.faceBy.living.net,label:[...${R}.querySelectorAll('.rl')].some(t=>t.textContent==='חלל חדש'),bar:${R}.querySelector('[data-nd="del"]').textContent,barShown:!${R}.querySelector('[data-nd="selbar"]').hidden}})()`);
+  check('drawing a partition across the living room by touch makes a new space with its area', np.n === 1 && np.fresh > 12 && np.living < 18 && np.label && np.barShown && np.bar === 'הסרת המחיצה', np);
+  await p.shot('m5-phone-new-partition');
+  await tapSel('[data-nd="del"]'); await sleep(200);
+  const gone = await p.ev(`({n:${D}.store.design.geometry.added.length,living:${D}.store.derived.faceBy.living.net})`);
+  await tapSel('[data-nd="undo"]'); await sleep(200);
+  const back1 = await p.ev(`${D}.store.design.geometry.added.length`);
+  await tapSel('[data-nd="undo"]'); await sleep(200);
+  const back0 = await p.ev(`({n:${D}.store.design.geometry.added.length,living:${D}.store.derived.faceBy.living.net})`);
+  check('"הסרת המחיצה" removes it, undo brings it back, undo again takes the drawing back', gone.n === 0 && gone.living === 30.4 && back1 === 1 && back0.n === 0 && back0.living === 30.4, { gone, back1, back0 });
+  await sleep(3300);
+  c = await p.ev(mid('.grip rect[data-wall="p11"]')); await p.tap(c[0], c[1]); await sleep(150);
+  const p11bar = await p.ev(`${R}.querySelector('[data-nd="del"]').textContent`);
+  await tapSel('[data-nd="del"]'); await sleep(250);
+  const wet = await p.ev(`(()=>{const d=${D}.store.derived,l=[...${R}.querySelectorAll('.rl')].map(t=>t.textContent);return {removed:${D}.store.design.geometry.removed,merged:d.faceBy.wc&&d.faceBy.wc.merged,net:d.faceBy.wc&&d.faceBy.wc.net,laundryLabel:l.includes('שירות'),wcLabel:l.includes('שירותים'),ghost:!!${R}.querySelector('.ghost'),toast:${R}.querySelector('[data-nd="toast"]').textContent}})()`);
+  check('removing partition p11 merges the two wet rooms, warns about the wet room, and leaves a ghost line', p11bar === 'הסרת המחיצה' && wet.removed.includes('p11') && wet.merged.includes('laundry') && wet.net > 7 && wet.wcLabel && !wet.laundryLabel && wet.ghost && wet.toast.includes('חדר רטוב'), wet);
+  await p.shot('m6-phone-wet-merge');
+  await tapSel('[data-nd="undo"]'); await sleep(200);
+  check('undo brings p11 and the laundry back', await p.ev(`!${D}.store.design.geometry.removed.length && !!${D}.store.derived.faceBy.laundry`));
   check('no page errors (phone)', p.errors.length === 0, p.errors);
   await p.close();
 

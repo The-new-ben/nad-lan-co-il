@@ -51,10 +51,34 @@ header>div{min-width:0;flex:1}
 .item .back{stroke:var(--ink2);stroke-width:6}
 .item.rug rect{fill:none;stroke-dasharray:10 8;stroke-width:2}
 .item.on rect{stroke:var(--blue);stroke-width:7;fill:var(--blue2)}
+.wall.partition.added{fill:var(--blue2);stroke:var(--blue);stroke-width:3}
+.wall.partition.added.on{stroke-width:6}
+.ghost{stroke:var(--ink2);stroke-width:2.5;stroke-dasharray:10 9;fill:none}.ghost.on{stroke:var(--blue);stroke-width:5}
+.room.fresh{fill:var(--blue2)}.rl.fresh{fill:var(--blue)}
+.draft{stroke:var(--blue);stroke-width:10;stroke-dasharray:16 10;stroke-linecap:round}
+.rd.live{font-weight:700}
+.nd-plan.placing{cursor:crosshair}
+/* services points: drafting symbols, the shape tells the kind; ink = in the specification, blueprint blue = added or moved */
+.L-points{pointer-events:none}
+.pt *{vector-effect:non-scaling-stroke;stroke:var(--ink);stroke-width:1.8px;fill:#fff;stroke-linejoin:round}
+.pt .in{fill:none;stroke-width:1.4px}.pt .dot{fill:var(--ink);stroke:none}
+.pt.added *,.pt.moved *{stroke:var(--blue);fill:var(--blue2)}.pt.added .in,.pt.moved .in{fill:none}.pt.added .dot,.pt.moved .dot{fill:var(--blue)}
+.pt.removed *{stroke:var(--ink2);stroke-dasharray:3 2;fill:none}.pt.removed .dot{fill:var(--ink2)}
+.pt.on *{stroke-width:2.6px}.pt .halo{fill:var(--blue2);fill-opacity:.7;stroke:var(--blue);stroke-width:2px;stroke-dasharray:none}
+.ptools{display:flex;align-items:center;gap:6px;padding:4px 6px 0;background:var(--sheet)}
+.ptools .hint{flex:1;min-width:0;padding:0;text-align:start;background:none}
+.ptool{flex:none;min-height:44px;padding:0 12px;border:2px solid var(--ink);background:var(--card);font-size:13px;font-weight:600}
+.ptool[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.plan.busy .hint{color:var(--blue);font-weight:600}
+.grid.kinds{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt.kind{flex-direction:row;align-items:center;gap:8px;min-height:52px;padding:4px 8px}
+.opt.kind span{font-weight:600;font-size:14px}
+.sym{flex:none;overflow:visible}.sym .wl{stroke:var(--ink2);stroke-width:2.5}.sym .pt *{vector-effect:none;stroke-width:1.8}
+.count{margin-top:10px;font-size:13px;font-weight:600}
 .cam .dot{fill:var(--dim);stroke:#fff;stroke-width:5}.cam .cone{fill:rgba(181,48,42,.16);stroke:var(--dim);stroke-width:2.5;stroke-dasharray:9 7}
 .cam .hit{cursor:default;pointer-events:none}.cam.walk .hit{pointer-events:auto;cursor:grab}
 nav{display:flex;border-top:2px solid var(--ink);background:var(--card);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;min-width:0;min-height:54px;padding:0 4px;font-weight:600;font-size:13px;line-height:1.15;border-inline-start:1px solid var(--line)}
+nav button{flex:1;min-width:0;min-height:54px;padding:0 2px;font-weight:600;font-size:13px;line-height:1.15;border-inline-start:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 nav button:first-child{border:0}
 nav button[aria-expanded=true]{background:var(--ink);color:#fff}
 nav button.go{background:var(--blue);color:#fff;font-weight:700;border:0}
@@ -74,7 +98,7 @@ td.n,th.n{text-align:end;white-space:nowrap;padding-inline-start:12px}
 .fine{font-size:12px;color:var(--ink2);margin-top:10px}
 .selbar{position:absolute;inset-inline:8px;bottom:calc(64px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;align-items:center;background:var(--ink);color:#fff;padding:6px 10px;z-index:4}
 .selbar b{flex:1;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.selbar button{min-height:40px;padding:0 12px;border:1.5px solid #fff;font-size:13px;font-weight:600}
+.selbar button{min-height:44px;padding:0 10px;border:1.5px solid #fff;font-size:13px;font-weight:600;flex:none}
 .toast.stop{background:var(--dim)}
 .toast{position:absolute;inset-inline:10px;top:62px;background:var(--ink);color:#fff;padding:10px 12px;font-weight:600;font-size:14px;z-index:9;border:2px solid #fff}
 .x{position:absolute;top:6px;inset-inline-end:8px;min-width:44px;min-height:44px;border:2px solid var(--ink);background:var(--card);font-weight:700;z-index:3}

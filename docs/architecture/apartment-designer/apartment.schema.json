@@ -92,6 +92,41 @@
         }
       }
     },
+    "points": {
+      "type": "array",
+      "description": "The services points of the specification: electrical, lighting, communication and air conditioning. A wall point sits on one face of a wall; a ceiling light stands at a plan position. A buyer's design moves, adds or removes them (nadlan-unit-design.points).",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object", "required": ["id", "kind", "wall", "at", "room"], "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" },
+              "kind": { "enum": ["socket", "switch", "data", "tv", "ac"] },
+              "wall": { "type": "string" },
+              "at": { "type": "number", "minimum": 0, "description": "cm from the wall's a-end (in the base plan; when a corner beside it slides the point keeps its place in the building, like an opening)." },
+              "room": { "type": "string", "description": "The room on whose side of the wall the point is." },
+              "h": { "type": "number", "minimum": 0, "maximum": 400, "description": "Height above the floor in cm. Defaults: socket 30, switch 110, data 30, tv 110, ac 220." }
+            }
+          },
+          {
+            "type": "object", "required": ["id", "kind", "x", "y"], "additionalProperties": false,
+            "properties": { "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" }, "kind": { "const": "light" }, "x": { "type": "number" }, "y": { "type": "number" } }
+          }
+        ]
+      }
+    },
+    "starter": {
+      "type": "array", "maxItems": 200,
+      "description": "Furniture the designer opens with for this layout (illustration only, never part of the price). Same frame and fields as nadlan-unit-design items.",
+      "items": {
+        "type": "object", "required": ["id", "sku", "x", "y", "rot"], "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" }, "sku": { "type": "string", "maxLength": 80 },
+          "x": { "type": "number" }, "y": { "type": "number" }, "rot": { "type": "number", "minimum": 0, "exclusiveMaximum": 360 },
+          "status": { "enum": ["base", "upgrade", "credit", "decor", "ai"] }
+        }
+      }
+    },
     "fixed": {
       "type": "array",
       "description": "Things the buyer cannot move: columns, shafts, drains, the electrical board.",
@@ -101,7 +136,7 @@
       "type": "array",
       "items": {
         "type": "object", "required": ["code", "applies", "value", "source"], "additionalProperties": false,
-        "properties": { "code": { "enum": ["room.min_width", "room.min_area", "wet.max_distance_to_drain", "door.clear_width"] }, "applies": { "type": "array", "items": { "type": "string" } }, "value": { "type": "number" }, "source": { "type": "string", "description": "The regulation, the standard or the developer policy the value comes from. A rule without a verified source is not shown to buyers as a legal fact." } }
+        "properties": { "code": { "enum": ["room.min_width", "room.min_area", "wet.max_distance_to_drain", "door.clear_width", "mamad.no_chasing"], "description": "room.min_width is applied to axis-aligned rectangular rooms only (the only rooms with a true clear width); room.min_area to every room. mamad.no_chasing: no new point and no partition fixed to the safe room's walls or ceiling without the approved detail (placeholder, source to be verified)." }, "applies": { "type": "array", "items": { "type": "string" } }, "value": { "type": "number" }, "source": { "type": "string", "description": "The regulation, the standard or the developer policy the value comes from. A rule without a verified source is not shown to buyers as a legal fact." } }
       }
     },
     "view": {

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nad-lan.co.il/schemas/nadlan-unit-design-2.json",
   "title": "nadlan-unit-design v2",
-  "description": "Everything one buyer changed in one apartment: moved partitions, finishes, pieces, notes and the log of decisions. It holds no geometry of its own, only changes against a nadlan-apartment of the same geometry_revision. Version 1 (inc/rfp.php, two unrelated layers in two frames) stays readable; version 2 has one frame.",
+  "description": "Everything one buyer changed in one apartment: moved, added and removed partitions, room names, services points, finishes, pieces, notes and the log of decisions. It holds no geometry of its own, only changes against a nadlan-apartment of the same geometry_revision. Version 1 (inc/rfp.php, two unrelated layers in two frames) stays readable; version 2 has one frame.",
   "type": "object",
   "required": ["schema", "v", "project", "unit_id", "geometry_revision", "frame", "geometry", "finishes", "items", "notes", "log", "rev"],
   "additionalProperties": false,
@@ -19,7 +19,48 @@
     "geometry": {
       "type": "object", "required": ["walls"], "additionalProperties": false,
       "properties": {
-        "walls": { "type": "object", "additionalProperties": { "type": "number", "minimum": -1000, "maximum": 1000 }, "description": "wall id -> how far the partition stands from its place in the base plan, in cm along the wall's normal. An absolute value, so applying it twice changes nothing." }
+        "walls": { "type": "object", "additionalProperties": { "type": "number", "minimum": -1000, "maximum": 1000 }, "description": "wall id -> how far the partition stands from its place in the base plan, in cm along the wall's normal. An absolute value, so applying it twice changes nothing." },
+        "added": {
+          "type": "array", "maxItems": 40,
+          "description": "New partitions, sorted by id. An end that lies on a wall splits that wall for the room finder only (the wall, its openings and points stay where they are); an end in open space is a free end. Optional: a design stored before it existed loads with an empty list.",
+          "items": {
+            "type": "object", "required": ["id", "a", "b"], "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" },
+              "a": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }], "minItems": 2, "maxItems": 2 },
+              "b": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }], "minItems": 2, "maxItems": 2 },
+              "t": { "type": "number", "minimum": 5, "maximum": 20, "default": 10 }
+            }
+          }
+        },
+        "removed": { "type": "array", "items": { "type": "string" }, "uniqueItems": true, "description": "Ids of base partitions the buyer removed (only kind partition), sorted. Optional." },
+        "rooms": {
+          "type": "array", "maxItems": 40,
+          "description": "Names the buyer gave to new spaces, from a short fixed list. id = the space's id when it was named; at = a point inside it. Sorted by id. Optional.",
+          "items": {
+            "type": "object", "required": ["id", "at", "name_he", "type"], "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" }, "at": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }], "minItems": 2, "maxItems": 2 },
+              "name_he": { "enum": ["חדר שינה", "חדר עבודה", "חדר ארונות", "מחסן", "פינת משפחה"] },
+              "type": { "enum": ["bedroom", "other", "storage", "living"] }
+            }
+          }
+        }
+      }
+    },
+    "points": {
+      "type": "object", "additionalProperties": false,
+      "description": "Changes to the services points of the specification. Optional: a design stored before it existed loads with empty lists.",
+      "properties": {
+        "added": { "type": "array", "maxItems": 200, "items": { "$ref": "#/$defs/point" }, "description": "New points, sorted by id." },
+        "moved": {
+          "type": "object", "description": "base point id -> its new place: { wall, at, room } for a wall point, { x, y } for a light. A point moved back onto its base place is dropped from here.",
+          "additionalProperties": { "oneOf": [
+            { "type": "object", "required": ["wall", "at"], "additionalProperties": false, "properties": { "wall": { "type": "string" }, "at": { "type": "number" }, "room": { "type": ["string", "null"] } } },
+            { "type": "object", "required": ["x", "y"], "additionalProperties": false, "properties": { "x": { "type": "number" }, "y": { "type": "number" } } }
+          ] }
+        },
+        "removed": { "type": "array", "items": { "type": "string" }, "uniqueItems": true, "description": "Base point ids the buyer removed, sorted. A removed point has no entry in moved." }
       }
     },
     "finishes": {
@@ -66,7 +107,21 @@
         { "type": "object", "required": ["op", "id", "rot"], "properties": { "op": { "const": "item.rot" }, "id": { "type": "string" }, "rot": { "type": "number" } } },
         { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "item.remove" }, "id": { "type": "string" } } },
         { "type": "object", "required": ["op", "key", "value"], "properties": { "op": { "const": "finish.set" }, "key": { "type": "string" }, "value": { "type": ["string", "null"] } } },
-        { "type": "object", "required": ["op", "id", "d"], "properties": { "op": { "const": "wall.shift" }, "id": { "type": "string" }, "d": { "type": "number" } } }
+        { "type": "object", "required": ["op", "id", "d"], "properties": { "op": { "const": "wall.shift" }, "id": { "type": "string" }, "d": { "type": "number" } } },
+        { "type": "object", "required": ["op", "point"], "properties": { "op": { "const": "point.add" }, "point": { "$ref": "#/$defs/point" } } },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "point.move" }, "id": { "type": "string" }, "wall": { "type": "string" }, "at": { "type": "number" }, "room": { "type": ["string", "null"] }, "x": { "type": "number" }, "y": { "type": "number" } }, "description": "{ id, wall, at, room } for a wall point, { id, x, y } for a light." },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "point.remove" }, "id": { "type": "string" } } },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "point.restore" }, "id": { "type": "string" }, "to": { "type": "object", "description": "Used by undo: the moved place to come back to; without it the point returns to the specification." } } },
+        { "type": "object", "required": ["op", "wall"], "properties": { "op": { "const": "partition.add" }, "wall": { "type": "object", "required": ["id", "a", "b"] } } },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "partition.remove" }, "id": { "type": "string" } } },
+        { "type": "object", "required": ["op", "id"], "properties": { "op": { "const": "partition.restore" }, "id": { "type": "string" } } },
+        { "type": "object", "required": ["op", "at", "name_he"], "properties": { "op": { "const": "room.name" }, "at": { "type": "array" }, "name_he": { "type": ["string", "null"] }, "type": { "type": "string" } }, "description": "name_he null clears the name." }
+      ]
+    },
+    "point": {
+      "oneOf": [
+        { "type": "object", "required": ["id", "kind", "wall", "at"], "additionalProperties": false, "properties": { "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" }, "kind": { "enum": ["socket", "switch", "data", "tv", "ac"] }, "wall": { "type": "string" }, "at": { "type": "number" }, "room": { "type": ["string", "null"] }, "h": { "type": "number" } } },
+        { "type": "object", "required": ["id", "kind", "x", "y"], "additionalProperties": false, "properties": { "id": { "type": "string", "pattern": "^[a-z0-9_-]{1,40}$" }, "kind": { "const": "light" }, "x": { "type": "number" }, "y": { "type": "number" } } }
       ]
     }
   }

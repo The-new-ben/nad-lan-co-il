@@ -1,12 +1,12 @@
 {
-  "when": "2026-11-11T10:07:57.366Z",
+  "when": "2026-11-11T10:44:36.785Z",
   "checks": [
     {
       "name": "opens from the page button: plan first, then 3D",
       "ok": true,
       "detail": {
-        "plan_ms": 598,
-        "first_3d_frame_ms": 2351
+        "plan_ms": 164,
+        "first_3d_frame_ms": 1664
       }
     },
     {
@@ -79,7 +79,7 @@
         "floor": "oak-plank",
         "sofa": 225,
         "keys": 1,
-        "bytes": 1712,
+        "bytes": 1999,
         "personal": false
       }
     },
@@ -96,6 +96,142 @@
         ],
         "floor3": "porcelain-80"
       }
+    },
+    {
+      "name": "phone plan: no room label over another, none over a point symbol",
+      "ok": true,
+      "detail": {
+        "labels": 11,
+        "points": 29,
+        "labelOverLabel": 0,
+        "labelOverPoint": 0,
+        "where": []
+      }
+    },
+    {
+      "name": "the \"חשמל\" sheet: six kinds, 44 px or more, not clipped, counts and the approval sentence; six tools fit the phone",
+      "ok": true,
+      "detail": {
+        "kinds": 6,
+        "top": 552,
+        "bottom": 788,
+        "inside": true,
+        "count": "במפרט 29 · נוספו 0 · הוזזו 0 · הוסרו 0",
+        "fine": true,
+        "navClip": []
+      }
+    },
+    {
+      "name": "a socket placed from the sheet with one tap lands on the nearest wall, on the living-room side, and in 3D",
+      "ok": true,
+      "detail": {
+        "n": 1,
+        "id": "ptmwbzskld1",
+        "wall": "w2",
+        "at": 140,
+        "room": "living",
+        "state": "added",
+        "sel": {
+          "type": "point",
+          "id": "ptmwbzskld1"
+        },
+        "bar": "שקע חשמל · תוספת",
+        "three": {
+          "x": 13,
+          "y": 380,
+          "h": 30,
+          "mine": true
+        }
+      }
+    },
+    {
+      "name": "a finger drag slides the socket along the wall (model and 3D)",
+      "ok": true,
+      "detail": {
+        "at": 220,
+        "wall": "w2",
+        "three": {
+          "x": 13,
+          "y": 300,
+          "h": 30,
+          "mine": true
+        }
+      }
+    },
+    {
+      "name": "undo takes the whole drag back in one step (the socket stays, at its first place)",
+      "ok": true,
+      "detail": {
+        "at": 140,
+        "n": 1
+      }
+    },
+    {
+      "name": "a socket on the safe-room wall is refused with the approved-detail sentence",
+      "ok": true,
+      "detail": {
+        "toast": "בממ״ד (המרחב המוגן) אסור לחצוב או לקדוח בקירות ובתקרה בלי פרט מאושר, ולכן אי אפשר להוסיף או להזיז בו נקודות.",
+        "stop": true,
+        "n": 1
+      }
+    },
+    {
+      "name": "drawing a partition across the living room by touch makes a new space with its area",
+      "ok": true,
+      "detail": {
+        "n": 1,
+        "a": [
+          [
+            0,
+            300
+          ],
+          [
+            620,
+            300
+          ]
+        ],
+        "fresh": 13,
+        "living": 16.8,
+        "label": true,
+        "bar": "הסרת המחיצה",
+        "barShown": true
+      }
+    },
+    {
+      "name": "\"הסרת המחיצה\" removes it, undo brings it back, undo again takes the drawing back",
+      "ok": true,
+      "detail": {
+        "gone": {
+          "n": 0,
+          "living": 30.4
+        },
+        "back1": 1,
+        "back0": {
+          "n": 0,
+          "living": 30.4
+        }
+      }
+    },
+    {
+      "name": "removing partition p11 merges the two wet rooms, warns about the wet room, and leaves a ghost line",
+      "ok": true,
+      "detail": {
+        "removed": [
+          "p11"
+        ],
+        "merged": [
+          "laundry"
+        ],
+        "net": 7.3,
+        "laundryLabel": false,
+        "wcLabel": true,
+        "ghost": true,
+        "toast": "שימו לב: זו מחיצה של חדר רטוב. הסרה שלה צריכה איטום חדש ובדיקה של הצנרת."
+      }
+    },
+    {
+      "name": "undo brings p11 and the laundry back",
+      "ok": true
     },
     {
       "name": "no page errors (phone)",
@@ -121,6 +257,6 @@
       "detail": []
     }
   ],
-  "passed": 13,
+  "passed": 23,
   "failed": 0
 }
