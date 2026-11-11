@@ -1,0 +1,78 @@
+{
+ "plans": [
+  {
+   "id": "example-3r",
+   "file": "example-3r.json",
+   "project": null,
+   "type": "3R",
+   "rooms": 3,
+   "label_he": "דירה לדוגמה",
+   "source_kind": "example"
+  },
+  {
+   "id": "example-4r",
+   "file": "example-4r.json",
+   "project": null,
+   "type": "4R",
+   "rooms": 4,
+   "label_he": "דירה לדוגמה",
+   "source_kind": "example"
+  },
+  {
+   "id": "example-5r",
+   "file": "example-5r.json",
+   "project": null,
+   "type": "5R",
+   "rooms": 5,
+   "label_he": "דירה לדוגמה",
+   "source_kind": "example"
+  },
+  {
+   "id": "ashira-e-4a",
+   "file": "ashira/E-4A.json",
+   "project": "ashira",
+   "type": "E-4A",
+   "rooms": 4,
+   "label_he": "לפי תוכנית המכר שפורסמה",
+   "source_kind": "sales-plan"
+  },
+  {
+   "id": "ashira-e-3b",
+   "file": "ashira/E-3B.json",
+   "project": "ashira",
+   "type": "E-3B",
+   "rooms": 3,
+   "label_he": "לפי תוכנית המכר שפורסמה",
+   "source_kind": "sales-plan"
+  },
+  {
+   "id": "ashira-e-5e",
+   "file": "ashira/E-5E.json",
+   "project": "ashira",
+   "type": "E-5E",
+   "rooms": 5,
+   "label_he": "לפי תוכנית המכר שפורסמה",
+   "source_kind": "sales-plan"
+  },
+  {
+   "id": "ashira-e-5f",
+   "file": "ashira/E-5F.json",
+   "project": "ashira",
+   "type": "E-5F",
+   "rooms": 5,
+   "label_he": "לפי תוכנית המכר שפורסמה",
+   "source_kind": "sales-plan"
+  }
+ ],
+ "projects": {
+  "ashira": {
+   "types": [
+    "E-4A",
+    "E-3B",
+    "E-5E",
+    "E-5F"
+   ],
+   "default": "E-4A"
+  }
+ }
+}
