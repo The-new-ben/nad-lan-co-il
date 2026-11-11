@@ -20,7 +20,7 @@ if ( ! function_exists( 'nadlan_bk_on' ) ) {
 	function nadlan_bk_on() {
 		if ( '0' === (string) get_option( 'nadlan_basket', '1' ) || is_admin() ) { return false; }
 		$ps = function_exists( 'nadlan_ps_current' ) ? nadlan_ps_current() : null;
-		return $ps && 'he' === ( $ps['lang'] ?? 'he' ); // Hebrew-only for now (HAD-361)
+		return $ps && ( 'he' === ( $ps['lang'] ?? 'he' ) || ( 'en' === ( $ps['lang'] ?? '' ) && 'hamedina' === (string) ( $ps['dir'] ?? '' ) ) ); // Hebrew; 1.72.658 (HAD-712): and the English Kikar page
 	}
 }
 
@@ -118,6 +118,7 @@ add_action( 'wp_footer', function () {
 	foreach ( (array) ( $ps['sectors'] ?? array() ) as $s ) { $sec[] = array( (float) $s[0], (float) $s[1], (string) $s[2] ); }
 	$cfg  = array(
 		'slug'    => (string) $ps['slug'],
+		'lang'    => (string) ( $ps['lang'] ?? 'he' ), // 1.72.658: the basket's words and direction
 		'name'    => (string) $ps['name'],
 		'city'    => (string) get_post_meta( $id, 'city', true ),
 		'wa'      => $wa,

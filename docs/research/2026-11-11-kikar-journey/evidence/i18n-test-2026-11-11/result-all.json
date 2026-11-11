@@ -1,0 +1,277 @@
+{
+ "started": "2026-11-11T21:28:50.821Z",
+ "he": {
+  "390": {
+   "compared": 18,
+   "diffs": [
+    {
+     "k": "1-all",
+     "what": "html",
+     "at": 1506,
+     "live": "c=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/aerial-tall-800.webp?ver=1.72.656\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"></svg><div class=\"nlsr-handles\"><button type=\"button\" class=\"nlsr-",
+     "local": "c=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/aerial-tall-800.webp?ver=1.72.657\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"></svg><div class=\"nlsr-handles\"><button type=\"button\" class=\"nlsr-"
+    },
+    {
+     "k": "2-tower",
+     "what": "html",
+     "at": 1471,
+     "live": "nc\" src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/turn/A-18.webp?ver=1.72.656\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"></svg><div class=\"nlsr-handles\"></div><span class=\"nlsr-tag\" hidde",
+     "local": "nc\" src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/turn/A-18.webp?ver=1.72.657\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"></svg><div class=\"nlsr-handles\"></div><span class=\"nlsr-tag\" hidde"
+    },
+    {
+     "k": "3-floor",
+     "what": "html",
+     "at": 1470,
+     "live": "nc\" src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/turn/A-18.webp?ver=1.72.656\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><polygon class=\"nlsr-band\" points=\"376,465.9230769230769 620,465.9",
+     "local": "nc\" src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/turn/A-18.webp?ver=1.72.657\"><svg class=\"nlsr-ov\" viewBox=\"0 0 1000 1000\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><polygon class=\"nlsr-band\" points=\"376,465.9230769230769 620,465.9"
+    },
+    {
+     "k": "4-cockpit",
+     "what": "html",
+     "at": 315,
+     "live": "src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/views/A20-270.webp?ver=1.72.656\" alt=\"הנוף מהדירה: מגדל A · קומה 22 · פונה מערבה\">\n      <div class=\"nlck-top\"><button type=\"button\" class=\"nlck-back\" data-open=\"\">› חזרה</button><span class",
+     "local": "src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/views/A20-270.webp?ver=1.72.657\" alt=\"הנוף מהדירה: מגדל A · קומה 22 · פונה מערבה\">\n      <div class=\"nlck-top\"><button type=\"button\" class=\"nlck-back\" data-open=\"\">› חזרה</button><span class"
+    },
+    {
+     "k": "5-view",
+     "what": "html",
+     "at": 468,
+     "live": "src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/views/A20-270.webp?ver=1.72.656\" alt=\"הנוף מקומה 20, מערבה\"></div>\n    <span class=\"nlck-cap\">הדמיה להמחשה · קומה 20 · מערבה</span>\n    <div class=\"nlck-under\"><div class=\"nlck-hint\">גררו לצ",
+     "local": "src=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/views/A20-270.webp?ver=1.72.657\" alt=\"הנוף מקומה 20, מערבה\"></div>\n    <span class=\"nlck-cap\">הדמיה להמחשה · קומה 20 · מערבה</span>\n    <div class=\"nlck-under\"><div class=\"nlck-hint\">גררו לצ"
+    },
+    {
+     "k": "5-inside",
+     "what": "html",
+     "at": 441,
+     "live": "a-360=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/apt/A20-270.webp?ver=1.72.656\" data-doors=\"1\" role=\"img\" aria-label=\"סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם\"><button type=\"button\" class=\"nlck-door\" data-room=\"bed\" hidden=\"\">לחדר הש",
+     "local": "a-360=\"https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/apt/A20-270.webp?ver=1.72.657\" data-doors=\"1\" role=\"img\" aria-label=\"סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם\"><button type=\"button\" class=\"nlck-door\" data-room=\"bed\" hidden=\"\">לחדר הש"
+    },
+    {
+     "k": "5-inside-bed",
+     "what": "html",
+     "at": 455,
+     "live": "/nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/tour/bedroom-c30nw-day-2k.webp?ver=1.72.656\" role=\"img\" aria-label=\"חדר השינה, סיור 360 בדירה לדוגמה\"></div>\n    <span class=\"nlck-cap\">חדר השינה · דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה · גררו כדי ",
+     "local": "/nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/tour/bedroom-c30nw-day-2k.webp?ver=1.72.657\" role=\"img\" aria-label=\"חדר השינה, סיור 360 בדירה לדוגמה\"></div>\n    <span class=\"nlck-cap\">חדר השינה · דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה · גררו כדי "
+    },
+    {
+     "k": "5-plan",
+     "what": "html",
+     "at": 478,
+     "live": "ttps://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/plan-floor30-towerC.webp?ver=1.72.656\" alt=\"תוכנית קומה טיפוסית: ארבע דירות פינתיות סביב גרעין עגול\"></div>\n    <p class=\"nlck-note\">הקישו על התוכנית כדי להגדיל. תוכנית להמחשה של קומה טיפוסית: ארב",
+     "local": "ttps://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/plan-floor30-towerC.webp?ver=1.72.657\" alt=\"תוכנית קומה טיפוסית: ארבע דירות פינתיות סביב גרעין עגול\"></div>\n    <p class=\"nlck-note\">הקישו על התוכנית כדי להגדיל. תוכנית להמחשה של קומה טיפוסית: ארב"
+    },
+    {
+     "k": "5-fac",
+     "what": "html",
+     "at": 444,
+     "live": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/tour/fac-pool-c-2k.webp?ver=1.72.656\" role=\"img\" aria-label=\"הבריכה, 360\"></div>\n    <span class=\"nlck-cap\">הבריכה · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>\n    <div class=\"nlck-float\"><butto",
+     "local": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/tour/fac-pool-c-2k.webp?ver=1.72.657\" role=\"img\" aria-label=\"הבריכה, 360\"></div>\n    <span class=\"nlck-cap\">הבריכה · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>\n    <div class=\"nlck-float\"><butto"
+    }
+   ],
+   "live": {
+    "errs": [],
+    "warns": []
+   },
+   "local": {
+    "errs": [],
+    "warns": [],
+    "served": [
+     "basket/basket.css",
+     "basket/basket.js",
+     "project-stage/world/cockpit.js",
+     "project-stage/world/journey.js",
+     "project-stage/world/cockpit.css",
+     "project-stage/world/showroom-i18n.js",
+     "project-stage/world/showroom.js",
+     "project-stage/world/showroom.css"
+    ]
+   }
+  },
+  "1440": {
+   "compared": 18,
+   "diffs": [],
+   "live": {
+    "errs": [],
+    "warns": []
+   },
+   "local": {
+    "errs": [],
+    "warns": [],
+    "served": [
+     "basket/basket.css",
+     "basket/basket.js",
+     "project-stage/world/cockpit.js",
+     "project-stage/world/journey.js",
+     "project-stage/world/cockpit.css",
+     "project-stage/world/showroom-i18n.js",
+     "project-stage/world/showroom.js",
+     "project-stage/world/showroom.css"
+    ]
+   }
+  }
+ },
+ "en": {
+  "390": {
+   "mounted": true,
+   "legacyShown": "Example apartment · Floor 24 · Tower B",
+   "stagebox": "none",
+   "picked": true,
+   "cardWa": "Hello, I would like more details on an apartment on floor 22 of Tower A at Kikar Hamedina Towers, facing west (nad-lan.co.il)",
+   "basketLinks": [
+    "Hello, I would like more details on a recommendation for an interior designer for Kikar Hamedina Towers (nad-lan.co.il)",
+    "Hello, I would like more details on a recommendation for a real-estate lawyer for Kikar Hamedina Towers (nad-lan.co.il)"
+   ],
+   "pan": {
+    "left": 285,
+    "half": 285,
+    "dir": "ltr"
+   },
+   "hebCount": 0,
+   "heb": {},
+   "dirs": {
+    "1-all": "ltr/en",
+    "2-tower": "ltr/en",
+    "3-floor": "ltr/en",
+    "4-cockpit": "ltr/en",
+    "5-view": "ltr/en",
+    "5-inside": "ltr/en",
+    "5-inside-bed": "ltr/en",
+    "5-plan": "ltr/en",
+    "5-price": "ltr/en",
+    "5-area": "ltr/en",
+    "5-save": "ltr/en",
+    "5-fac": "ltr/en",
+    "6-basket": "ltr/en",
+    "7-basket-price": "ltr/en"
+   },
+   "errs": [],
+   "warns": [],
+   "served": [
+    "basket/basket.css",
+    "project-stage/world/cockpit.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/showroom.css"
+   ],
+   "sample": {
+    "floor": "Tower A, on its own\nThe map shows which way the apartment faces\n✓\nTower & floor\n2\nView & map\n3\nInside\n4\nFinishes\n5\nMy selection\n1\nFloor 22\nIllustrative visualisation\n‹ All three towers\nTower A · Floor 22\nFaces west · the sea and the city\n−\n+\nAnother direction on this floor ›\nStep inside the apartment\nPlans & prices for this apartment\nSea\nNorth ↑\nThis apartment faces west: the sea and the city\nVideo call with a NadLan advisor",
+    "cockpit": "‹ Back\nIllustrative visualisation · view from floor 20\nTower A · Floor 22\n\nFaces west · the sea and the city\n\nEye level about 86 m above the street\n\nWhat would you like to see?\n\nThe view\nInside · 360°\nAnother apartment\nFloor plan\nAmenities · 360°\n₪9.58–10.63m\npublished deals\nPrice & costs\nThe area\nThe film\n0\nsaved\nCompare & share\nVideo call about this apartment",
+    "price": "‹ Back to the apartment\nPrice & costs\nPublished deals in the towers\nFloor 38 · 4 rooms · 140 m² · 12.2024\n₪10.63m\nFloor 39 · 4 rooms · 140 m² · 5.2024\n₪9.59m\nFloor 38 · 4 rooms · 140 m² · 4.2024\n₪9.58m\nSource: Globes · The tower of each deal was not published\nExample apartment price (₪)\nAdditional home\nFinancing (%)\nTerm (years)\nInterest rate (%)\nArea for municipal tax (m²)\nMaintenance fee (₪ per month)\nPurchase tax\n₪480,286\nPrice and tax combined\n₪10,060,286\nMortgage per month, example\n₪26,952\nMunicipal tax (arnona) per month\n₪1,318\nMaintenance per month\n₪4,500\nMonthly total\n₪32,770\n\nExample only; the default is the lowest published deal. Purchase tax: 2026 brackets, in force until 15.1.2028. Municipal tax: Tel Aviv-Yafo municipal tax order for 2026, zone 1. Interest: Bank of Israel average, fixed rate, not index-linked. Maintenance: per Maariv, the project’s maintenance fee, about ₪4,0",
+    "area": "‹ Back to the apartment\nThe area\n\nFrom the middle of the square, on foot. Tap a place for walking directions. Source: Tel Aviv-Yafo Municipality and OpenStreetMap.\n\nEducation\nHerzliya Gymnasium Library · Library\n388 m · 3 min\nHerzliya Hebrew \"Gymnasium\" · School\n431 m · 6 min\nYitzchak Rabin New High School · School\n570 m · 6 min\nIroni Dalet High School · School\n707 m · 6 min\nFood & coffee\nOpen · Restaurant\n149 m · 1 min\nNuchi · Restaurant\n161 m · 1 min\nEsterica · Restaurant\n297 m · 2 min\nDallal ",
+    "basket": "Kikar Hamedina Towers\n\nMy selection\n×\n✓\nBuilding\n(selected)\n✓\nApartment\n(selected)\n3\nDesign\n4\nTeam\n✓\nPrice\n(selected)\nApartment\n22\nExample apartment · Floor 22 · Tower A\nApartments, plans and prices come from a NadLan advisor\nChange\nDesign\n\nA design idea shown in the example apartment, not the developer’s specification.\n\nThe inside of the apartment is not available for this project yet.\n\nYour team\n\nAsk NadLan for a recommended professional for each role. No referral fee.\n\n+\nInterior designer\nNot chosen yet\nAsk NadLan for a recommendation\n+\nReal-estate lawyer\nNot chosen yet\nAsk NadLan for a recommendation\n+\nAppraiser\nNot chosen yet\nAsk NadLan for a recommendation\n+\nMortgage advisor\nNot chosen yet\nAsk NadLan for a recommendation\n+\nReal-estate tax accountant\nNot chosen yet\nAsk NadLan for a recommendation\n+\nEngineer or building inspector\nNot chosen yet\nAsk NadLan for a recommendation\n\nProfessionals: Join the directory\n\nThe full price\n\nEvery line shows its source. Nothing unknown is estimated.\n\nApartment price (₪)\nOnly home\nAdditional home\nNon-resident\nApartment price\nAs you entered it\n₪9,580,000\nPurchase tax\nPer Israel Tax Authority brackets from 16.1.2025, frozen until January 2028\n₪480,286\nLawyer’s fee\nPer the quote you will receive\nTotal, before mortgage\n₪10,060,286\nLawyer’s fee in % (optional)\n\nMonthly payment in the mortgage calculator · Estimate only, not tax advice. The brac"
+   }
+  },
+  "1440": {
+   "mounted": true,
+   "legacyShown": "Example apartment · Floor 30",
+   "stagebox": "grid",
+   "picked": true,
+   "cardWa": "Hello, I would like more details on an apartment on floor 22 of Tower A at Kikar Hamedina Towers, facing west (nad-lan.co.il)",
+   "basketLinks": [
+    "Hello, I would like more details on a recommendation for an interior designer for Kikar Hamedina Towers (nad-lan.co.il)",
+    "Hello, I would like more details on a recommendation for a real-estate lawyer for Kikar Hamedina Towers (nad-lan.co.il)"
+   ],
+   "pan": {
+    "left": 0,
+    "half": 0,
+    "dir": "ltr"
+   },
+   "hebCount": 0,
+   "heb": {},
+   "dirs": {
+    "1-all": "ltr/en",
+    "2-tower": "ltr/en",
+    "3-floor": "ltr/en",
+    "4-cockpit": "ltr/en",
+    "5-view": "ltr/en",
+    "5-inside": "ltr/en",
+    "5-inside-bed": "ltr/en",
+    "5-plan": "ltr/en",
+    "5-price": "ltr/en",
+    "5-area": "ltr/en",
+    "5-save": "ltr/en",
+    "5-fac": "ltr/en",
+    "6-basket": "ltr/en",
+    "7-basket-price": "ltr/en"
+   },
+   "errs": [],
+   "warns": [],
+   "served": [
+    "basket/basket.css",
+    "project-stage/world/cockpit.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/showroom.css"
+   ],
+   "sample": {
+    "floor": "Tower A, on its own\nThe map shows which way the apartment faces\n✓\nTower & floor\n2\nView & map\n3\nInside\n4\nFinishes\n5\nMy selection\n1\nFloor 22\nIllustrative visualisation\n‹ All three towers\nTower A · Floor 22\nFaces west · the sea and the city\n−\n+\nAnother direction on this floor ›\nStep inside the apartment\nPlans & prices for this apartment\nSea\nNorth ↑\nThis apartment faces west: the sea and the city\nVideo call with a NadLan advisor",
+    "cockpit": "‹ Back\nIllustrative visualisation · view from floor 20\nTower A · Floor 22\n\nFaces west · the sea and the city\n\nEye level about 86 m above the street\n\nWhat would you like to see?\n\nThe view\nInside · 360°\nAnother apartment\nFloor plan\nAmenities · 360°\n₪9.58–10.63m\npublished deals\nPrice & costs\nThe area\nThe film\n0\nsaved\nCompare & share\nVideo call about this apartment",
+    "price": "‹ Back to the apartment\nPrice & costs\nPublished deals in the towers\nFloor 38 · 4 rooms · 140 m² · 12.2024\n₪10.63m\nFloor 39 · 4 rooms · 140 m² · 5.2024\n₪9.59m\nFloor 38 · 4 rooms · 140 m² · 4.2024\n₪9.58m\nSource: Globes · The tower of each deal was not published\nExample apartment price (₪)\nAdditional home\nFinancing (%)\nTerm (years)\nInterest rate (%)\nArea for municipal tax (m²)\nMaintenance fee (₪ per month)\nPurchase tax\n₪480,286\nPrice and tax combined\n₪10,060,286\nMortgage per month, example\n₪26,952\nMunicipal tax (arnona) per month\n₪1,318\nMaintenance per month\n₪4,500\nMonthly total\n₪32,770\n\nExample only; the default is the lowest published deal. Purchase tax: 2026 brackets, in force until 15.1.2028. Municipal tax: Tel Aviv-Yafo municipal tax order for 2026, zone 1. Interest: Bank of Israel average, fixed rate, not index-linked. Maintenance: per Maariv, the project’s maintenance fee, about ₪4,0",
+    "area": "‹ Back to the apartment\nThe area\n\nFrom the middle of the square, on foot. Tap a place for walking directions. Source: Tel Aviv-Yafo Municipality and OpenStreetMap.\n\nEducation\nHerzliya Gymnasium Library · Library\n388 m · 3 min\nHerzliya Hebrew \"Gymnasium\" · School\n431 m · 6 min\nYitzchak Rabin New High School · School\n570 m · 6 min\nIroni Dalet High School · School\n707 m · 6 min\nFood & coffee\nOpen · Restaurant\n149 m · 1 min\nNuchi · Restaurant\n161 m · 1 min\nEsterica · Restaurant\n297 m · 2 min\nDallal ",
+    "basket": "Kikar Hamedina Towers\n\nMy selection\n×\n✓\nBuilding\n(selected)\n✓\nApartment\n(selected)\n3\nDesign\n4\nTeam\n✓\nPrice\n(selected)\nApartment\n22\nExample apartment · Floor 22 · Tower A\nApartments, plans and prices come from a NadLan advisor\nChange\nDesign\n\nA design idea shown in the example apartment, not the developer’s specification.\n\nStep inside and choose a style\nYour team\n\nAsk NadLan for a recommended professional for each role. No referral fee.\n\n+\nInterior designer\nNot chosen yet\nAsk NadLan for a recommendation\n+\nReal-estate lawyer\nNot chosen yet\nAsk NadLan for a recommendation\n+\nAppraiser\nNot chosen yet\nAsk NadLan for a recommendation\n+\nMortgage advisor\nNot chosen yet\nAsk NadLan for a recommendation\n+\nReal-estate tax accountant\nNot chosen yet\nAsk NadLan for a recommendation\n+\nEngineer or building inspector\nNot chosen yet\nAsk NadLan for a recommendation\n\nProfessionals: Join the directory\n\nThe full price\n\nEvery line shows its source. Nothing unknown is estimated.\n\nApartment price (₪)\nOnly home\nAdditional home\nNon-resident\nApartment price\nAs you entered it\n₪9,580,000\nPurchase tax\nPer Israel Tax Authority brackets from 16.1.2025, frozen until January 2028\n₪480,286\nLawyer’s fee\nPer the quote you will receive\nTotal, before mortgage\n₪10,060,286\nLawyer’s fee in % (optional)\n\nMonthly payment in the mortgage calculator · Estimate only, not tax advice. The brackets at the Tax Authority\n\nSend my se"
+   }
+  }
+ },
+ "fr": {
+  "390": {
+   "mounted": true,
+   "legacyShown": "Appartement témoin · Étage 24 · Tour B",
+   "stagebox": "none",
+   "picked": true,
+   "cardWa": "Hello, I would like more details on l’étage 22 de la tour A, les tours Kikar Hamedina, orientation ouest (nad-lan.co.il)",
+   "basketLinks": [
+    "Hello, I would like more details on une recommandation pour un architecte d’intérieur, les tours Kikar Hamedina (nad-lan.co.il)",
+    "Hello, I would like more details on une recommandation pour un avocat en droit immobilier, les tours Kikar Hamedina (nad-lan.co.il)"
+   ],
+   "pan": {
+    "left": 285,
+    "half": 285,
+    "dir": "ltr"
+   },
+   "hebCount": 0,
+   "heb": {},
+   "dirs": {
+    "1-all": "ltr/fr",
+    "2-tower": "ltr/fr",
+    "3-floor": "ltr/fr",
+    "4-cockpit": "ltr/fr",
+    "5-view": "ltr/fr",
+    "5-inside": "ltr/fr",
+    "5-inside-bed": "ltr/fr",
+    "5-plan": "ltr/fr",
+    "5-price": "ltr/fr",
+    "5-area": "ltr/fr",
+    "5-save": "ltr/fr",
+    "5-fac": "ltr/fr",
+    "6-basket": "ltr/fr",
+    "7-basket-price": "ltr/fr"
+   },
+   "errs": [],
+   "warns": [],
+   "served": [
+    "basket/basket.css",
+    "project-stage/world/cockpit.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/showroom.css"
+   ],
+   "sample": {
+    "floor": "La tour A, seule\nLa carte montre l’orientation de l’appartement\n✓\nTour et étage\n2\nVue et carte\n3\nL’intérieur\n4\nFinitions\n5\nMa sélection\n1\nÉtage 22\nVisualisation illustrative\n‹ Les trois tours\nTour A · Étage 22\nOrientation ouest · la mer et la ville\n−\n+\nUne autre orientation au même étage ›\nEntrer dans l’appartement\nPlans et prix de cet appartement\nMer\nNord ↑\nL’appartement est orienté ouest : la mer et la ville\nAppel vidéo avec un conseiller NadLan",
+    "cockpit": "‹ Retour\nVisualisation illustrative · vue depuis l’étage 20\nTour A · Étage 22\n\nOrientation ouest · la mer et la ville\n\nYeux à environ 86 m au-dessus de la rue\n\nQue souhaitez-vous voir ?\n\nLa vue\nL’intérieur · 360°\nUn autre appartement\nLe plan\nLes équipements · 360°\n9,58–10,63 M₪\ntransactions publiées\nPrix et coûts\nLe quartier\nLe film\n0\nenregistrés\nComparer et partager\nAppel vidéo sur cet appartement",
+    "price": "‹ Retour à l’appartement\nPrix et coûts\nTransactions publiées dans les tours\nÉtage 38 · 4 pièces · 140 m² · 12.2024\n10,63 M₪\nÉtage 39 · 4 pièces · 140 m² · 5.2024\n9,59 M₪\nÉtage 38 · 4 pièces · 140 m² · 4.2024\n9,58 M₪\nSource : Globes · La tour de chaque transaction n’a pas été publiée\nPrix de l’appartement exemple (₪)\nLogement supplémentaire\nFinancement (%)\nDurée (ans)\nTaux d’intérêt (%)\nSurface pour la taxe municipale (m²)\nCharges (₪ par mois)\nTaxe d’acquisition\n480 286 ₪\nPrix et taxe ensemble\n10 060 286 ₪\nCrédit par mois, exemple\n26 952 ₪\nTaxe municipale (arnona) par mois\n1 318 ₪\nCharges par mois\n4 500 ₪\nPar mois, tout compris\n32 770 ₪\n\nExemple seulement ; par défaut, la transaction publiée la plus basse. Taxe d’acquisition : barème 2026, en vigueur jusqu’au 15.1.2028. Taxe municipale : arrêté de taxe municipale de Tel Aviv-Jaffa pour 2026, zone 1. Taux : moyenne de la Banque d’Israël, t",
+    "area": "‹ Retour à l’appartement\nLe quartier\n\nDepuis le centre de la place, à pied. Touchez un lieu pour l’itinéraire. Source : municipalité de Tel Aviv-Jaffa et OpenStreetMap.\n\nÉducation\nHerzliya Gymnasium Library · Bibliothèque\n388 m · 3 min\nHerzliya Hebrew \"Gymnasium\" · École\n431 m · 6 min\nYitzchak Rabin New High School · École\n570 m · 6 min\nIroni Dalet High School · École\n707 m · 6 min\nRestaurants et cafés\nOpen · Restaurant\n149 m · 1 min\nNuchi · Restaurant\n161 m · 1 min\nEsterica · Restaurant\n297 m ·",
+    "basket": "les tours Kikar Hamedina\n\nMa sélection\n×\n✓\nL’immeuble\n(choisi)\n✓\nL’appartement\n(choisi)\n3\nLe design\n4\nL’équipe\n✓\nLe prix\n(choisi)\nL’appartement\n22\nAppartement témoin · Étage 22 · Tour A\nAppartements, plans et prix auprès d’un conseiller NadLan\nChanger\nLe design\n\nUne idée de décoration montrée dans l’appartement témoin, pas le descriptif du promoteur.\n\nL’intérieur de l’appartement n’est pas encore disponible pour ce projet.\n\nVotre équipe\n\nDemandez à NadLan un professionnel recommandé pour chaque rôle. Sans commission.\n\n+\nArchitecte d’intérieur\nPas encore choisi\nDemander une recommandation à NadLan\n+\nAvocat en droit immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nExpert immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nConseiller en crédit immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nExpert-comptable en fiscalité immobilière\nPas encore choisi\nDemander une recommandation à NadLan\n+\nIngénieur ou inspecteur du bâtiment\nPas encore choisi\nDemander une recommandation à NadLan\n\nProfessionnels : Rejoindre l’annuaire\n\nLe prix complet\n\nChaque ligne avec sa source. Ce qui n’est pas connu n’est pas estimé.\n\nPrix de l’appartement (₪)\nLogement unique\nLogement supplémentaire\nNon-résident(e)\nPrix de l’appartement\nTel que saisi\n9 580 000 ₪\nTaxe d’acquisition\nSelon le barème de l’administration fiscale depuis le 16.1.2025, gelé jusqu’en "
+   }
+  }
+ },
+ "finished": "2026-11-11T21:34:51.573Z"
+}

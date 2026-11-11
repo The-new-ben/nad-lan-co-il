@@ -1,0 +1,52 @@
+{
+ "started": "2026-11-11T21:35:16.491Z",
+ "he": {
+  "390": {
+   "compared": 18,
+   "diffs": [],
+   "live": {
+    "errs": [],
+    "warns": []
+   },
+   "local": {
+    "errs": [],
+    "warns": [],
+    "served": [
+     "basket/basket.css",
+     "basket/basket.js",
+     "project-stage/world/cockpit.js",
+     "project-stage/world/journey.js",
+     "project-stage/world/cockpit.css",
+     "project-stage/world/showroom-i18n.js",
+     "project-stage/world/showroom.js",
+     "project-stage/world/showroom.css"
+    ]
+   }
+  },
+  "1440": {
+   "compared": 18,
+   "diffs": [],
+   "live": {
+    "errs": [],
+    "warns": []
+   },
+   "local": {
+    "errs": [],
+    "warns": [],
+    "served": [
+     "basket/basket.css",
+     "basket/basket.js",
+     "project-stage/world/cockpit.js",
+     "project-stage/world/journey.js",
+     "project-stage/world/cockpit.css",
+     "project-stage/world/showroom-i18n.js",
+     "project-stage/world/showroom.js",
+     "project-stage/world/showroom.css"
+    ]
+   }
+  }
+ },
+ "en": {},
+ "fr": {},
+ "finished": "2026-11-11T21:38:22.824Z"
+}

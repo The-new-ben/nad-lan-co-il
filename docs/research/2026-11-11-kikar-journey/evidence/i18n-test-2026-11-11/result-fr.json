@@ -1,0 +1,61 @@
+{
+ "started": "2026-11-11T21:38:36.428Z",
+ "he": {},
+ "en": {},
+ "fr": {
+  "390": {
+   "mounted": true,
+   "legacyShown": "Appartement témoin · Étage 24 · Tour B",
+   "stagebox": "none",
+   "picked": true,
+   "cardWa": "Hello, I would like more details on l’étage 22 de la tour A, les tours Kikar Hamedina, orientation ouest (nad-lan.co.il)",
+   "basketLinks": [
+    "Hello, I would like more details on une recommandation pour un architecte d’intérieur, les tours Kikar Hamedina (nad-lan.co.il)",
+    "Hello, I would like more details on une recommandation pour un avocat en droit immobilier, les tours Kikar Hamedina (nad-lan.co.il)"
+   ],
+   "pan": {
+    "left": 285,
+    "half": 285,
+    "dir": "ltr"
+   },
+   "hebCount": 0,
+   "heb": {},
+   "dirs": {
+    "1-all": "ltr/fr",
+    "2-tower": "ltr/fr",
+    "3-floor": "ltr/fr",
+    "4-cockpit": "ltr/fr",
+    "5-view": "ltr/fr",
+    "5-inside": "ltr/fr",
+    "5-inside-bed": "ltr/fr",
+    "5-plan": "ltr/fr",
+    "5-price": "ltr/fr",
+    "5-area": "ltr/fr",
+    "5-save": "ltr/fr",
+    "5-fac": "ltr/fr",
+    "6-basket": "ltr/fr",
+    "7-basket-price": "ltr/fr"
+   },
+   "errs": [],
+   "warns": [],
+   "served": [
+    "project-stage/world/cockpit.css",
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/showroom.css"
+   ],
+   "sample": {
+    "floor": "La tour A, seule\nLa carte montre l’orientation de l’appartement\n✓\nTour et étage\n2\nVue et carte\n3\nL’intérieur\n4\nFinitions\n5\nMa sélection\n1\nÉtage 22\nVisualisation illustrative\n‹ Les trois tours\nTour A · Étage 22\nOrientation ouest · la mer et la ville\n−\n+\nUne autre orientation au même étage ›\nEntrer dans l’appartement\nPlans et prix de cet appartement\nMer\nNord ↑\nL’appartement est orienté ouest : la mer et la ville\nAppel vidéo avec un conseiller NadLan",
+    "cockpit": "‹ Retour\nVisualisation illustrative · vue depuis l’étage 20\nTour A · Étage 22\n\nOrientation ouest · la mer et la ville\n\nYeux à environ 86 m au-dessus de la rue\n\nQue souhaitez-vous voir ?\n\nLa vue\nL’intérieur · 360°\nUn autre appartement\nLe plan\nLes équipements · 360°\n9,58–10,63 M₪\ntransactions publiées\nPrix et coûts\nLe quartier\nLe film\n0\nenregistrés\nComparer et partager\nAppel vidéo sur cet appartement",
+    "price": "‹ Retour à l’appartement\nPrix et coûts\nTransactions publiées dans les tours\nÉtage 38 · 4 pièces · 140 m² · 12.2024\n10,63 M₪\nÉtage 39 · 4 pièces · 140 m² · 5.2024\n9,59 M₪\nÉtage 38 · 4 pièces · 140 m² · 4.2024\n9,58 M₪\nSource : Globes · La tour de chaque transaction n’a pas été publiée\nPrix de l’appartement exemple (₪)\nLogement supplémentaire\nFinancement (%)\nDurée (ans)\nTaux d’intérêt (%)\nSurface pour la taxe municipale (m²)\nCharges (₪ par mois)\nTaxe d’acquisition\n480 286 ₪\nPrix et taxe ensemble\n10 060 286 ₪\nCrédit par mois, exemple\n26 952 ₪\nTaxe municipale (arnona) par mois\n1 318 ₪\nCharges par mois\n4 500 ₪\nPar mois, tout compris\n32 770 ₪\n\nExemple seulement ; par défaut, la transaction publiée la plus basse. Taxe d’acquisition : barème 2026, en vigueur jusqu’au 15.1.2028. Taxe municipale : arrêté de taxe municipale de Tel Aviv-Jaffa pour 2026, zone 1. Taux : moyenne de la Banque d’Israël, t",
+    "area": "‹ Retour à l’appartement\nLe quartier\n\nDepuis le centre de la place, à pied. Touchez un lieu pour l’itinéraire. Source : municipalité de Tel Aviv-Jaffa et OpenStreetMap.\n\nÉducation\nHerzliya Gymnasium Library · Bibliothèque\n388 m · 3 min\nHerzliya Hebrew \"Gymnasium\" · École\n431 m · 6 min\nYitzchak Rabin New High School · École\n570 m · 6 min\nIroni Dalet High School · École\n707 m · 6 min\nRestaurants et cafés\nOpen · Restaurant\n149 m · 1 min\nNuchi · Restaurant\n161 m · 1 min\nEsterica · Restaurant\n297 m ·",
+    "basket": "Tours Kikar Hamedina\n\nMa sélection\n×\n✓\nL’immeuble\n(choisi)\n✓\nL’appartement\n(choisi)\n3\nLe design\n4\nL’équipe\n✓\nLe prix\n(choisi)\nL’appartement\n22\nAppartement témoin · Étage 22 · Tour A\nAppartements, plans et prix auprès d’un conseiller NadLan\nChanger\nLe design\n\nUne idée de décoration montrée dans l’appartement témoin, pas le descriptif du promoteur.\n\nL’intérieur de l’appartement n’est pas encore disponible pour ce projet.\n\nVotre équipe\n\nDemandez à NadLan un professionnel recommandé pour chaque rôle. Sans commission.\n\n+\nArchitecte d’intérieur\nPas encore choisi\nDemander une recommandation à NadLan\n+\nAvocat en droit immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nExpert immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nConseiller en crédit immobilier\nPas encore choisi\nDemander une recommandation à NadLan\n+\nExpert-comptable en fiscalité immobilière\nPas encore choisi\nDemander une recommandation à NadLan\n+\nIngénieur ou inspecteur du bâtiment\nPas encore choisi\nDemander une recommandation à NadLan\n\nProfessionnels : Rejoindre l’annuaire\n\nLe prix complet\n\nChaque ligne avec sa source. Ce qui n’est pas connu n’est pas estimé.\n\nPrix de l’appartement (₪)\nLogement unique\nLogement supplémentaire\nNon-résident(e)\nPrix de l’appartement\nTel que saisi\n9 580 000 ₪\nTaxe d’acquisition\nSelon le barème de l’administration fiscale depuis le 16.1.2025, gelé jusqu’en janv"
+   }
+  }
+ },
+ "finished": "2026-11-11T21:39:32.681Z"
+}

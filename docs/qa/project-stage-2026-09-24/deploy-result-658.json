@@ -1,0 +1,32 @@
+{
+  "released": "1.72.658",
+  "from": "1.72.657",
+  "live_before": {
+    "assets/project-stage/world/showroom.js": "cc382cebe63fd9d56dfed56c6c35afc7",
+    "assets/project-stage/world/showroom.css": "9bd0bbdffb9fa6120ab0e3228d2a1e1b",
+    "assets/project-stage/world/cockpit.js": "7901dc6072055fdac980cb1a8def7aa9",
+    "assets/project-stage/world/cockpit.css": "e66a32d8df5060ea85fd26258795c848",
+    "assets/project-stage/world/journey.js": "df879a38c98415f8fd6246ea5c8c1c89",
+    "assets/basket/basket.js": "90b0400a2120ca696170a88ef0970f96",
+    "nadlan-config.php": "c27c0a440631e1fda45c4f70eeb63bad",
+    "inc/project-stage.php": "fc61f8e4b57891299b27bc5fdffd99a5",
+    "inc/basket.php": "6c0b55168ea08a6a26dd080908386a63"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 00:34:16",
+  "files": {
+    "assets/project-stage/world/showroom.js": "56027e75436e4d1ff2f049c304e03211",
+    "assets/project-stage/world/showroom.css": "665fb248dd202a6f9a945afd9974c807",
+    "assets/project-stage/world/cockpit.js": "bea7daf4f5acb543bd7801a5eb6f80e6",
+    "assets/project-stage/world/cockpit.css": "e487d97981ca9d1392858db14946fda4",
+    "assets/project-stage/world/journey.js": "e14f5228199976dfda3c1c89c9ab42dc",
+    "assets/project-stage/world/showroom-i18n.js": "5553cbf4b39c52c801ded42e7f931121",
+    "assets/basket/basket.js": "a745e8a20e3d1258ecd4fc7c62d546d8",
+    "nadlan-config.php": "e57489dd52eda774a482148f807a4302",
+    "inc/project-stage.php": "b272d436f36308f1c38d7f7aaf74b5d6",
+    "inc/basket.php": "4e9fc59d78e9d11c2c28a27a4eb2738e"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.658, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

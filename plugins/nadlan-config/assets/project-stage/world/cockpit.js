@@ -1,3 +1,4 @@
+/* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /*
  * The apartment cockpit, version 2 (HAD-699, Ben 10.11.2026: "a person presses, he enters the cockpit of his life... from there
  * everything: the view, information, plans, designing the apartment, everything, on the phone"). Design: the canvas
@@ -15,24 +16,24 @@
  * "הדמיה להמחשה"; the inside is the example apartment and says so; no new WhatsApp wording (the page's own link).
  */
 const C = window.__nlCockpitCfg || {};
+const { t, lang, dir, isRtl, nf, dw, placeName } = await import(new URL('showroom-i18n.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href); // HAD-712: he, en, fr
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const num = (n, d = 0) => (n == null || !isFinite(n) ? '' : Number(n).toLocaleString('he-IL', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const num = (n, d = 0) => nf(n, d); // he-IL, en-GB or fr-FR by the page language
 const bdi = (s) => `<bdi>${esc(s)}</bdi>`;
-const ils = (n, d = 0) => `${bdi(num(n, d))} ₪`;
+const ils = (n, d = 0) => t('money', { n: bdi(num(n, d)) });
 const A = (p) => (C.base || '') + p + (C.ver ? (p.includes('?') ? '&' : '?') + 'ver=' + C.ver : '');
 const ga = (n, p) => { try { if (window.nadlanGA) window.nadlanGA(n, Object.assign({ project: 'hamedina' }, p || {})); } catch (e) { /* none */ } };
 const store = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } } };
 const angDiff = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
-const DIRS = ['צפונה', 'צפון-מזרחה', 'מזרחה', 'דרום-מזרחה', 'דרומה', 'דרום-מערבה', 'מערבה', 'צפון-מערבה'];
-const dirWord = (b) => DIRS[Math.round((((b % 360) + 360) % 360) / 45) % 8];
-const SECTORS = [[245, 300, 'הים והעיר'], [300, 345, 'הים והירקון'], [345, 30, 'הירקון והצפון'], [30, 75, 'רמת אביב והאוניברסיטה'], [75, 120, 'רמת גן והבורסה'], [120, 200, 'מגדלי העיר'], [200, 245, 'הצפון הישן ומרכז העיר']];
-const sectorOf = (b) => { b = ((b % 360) + 360) % 360; const s = SECTORS.find(([lo, hi]) => (lo < hi ? b >= lo && b < hi : b >= lo || b < hi)); return s ? s[2] : ''; };
+const DIRS = ['dir_to_n', 'dir_to_ne', 'dir_to_e', 'dir_to_se', 'dir_to_s', 'dir_to_sw', 'dir_to_w', 'dir_to_nw']; // keys of showroom-i18n.js
+const dirWord = (b, L) => t(DIRS[Math.round((((b % 360) + 360) % 360) / 45) % 8], null, L); // L 'he': the analytics keep their Hebrew value
+const SECTORS = [[245, 300, 'sec_sea_city'], [300, 345, 'sec_sea_yarkon'], [345, 30, 'sec_yarkon_north'], [30, 75, 'sec_ramat_aviv'], [75, 120, 'sec_ramat_gan'], [120, 200, 'sec_city_towers'], [200, 245, 'sec_old_north']];
+const sectorOf = (b) => { b = ((b % 360) + 360) % 360; const s = SECTORS.find(([lo, hi]) => (lo < hi ? b >= lo && b < hi : b >= lo || b < hi)); return s ? t(s[2]) : ''; };
 const eyeH = (f) => (f - 1) * 4 + 1.6;
-const GROUPS = { education: 'חינוך', food: 'אוכל וקפה', essentials: 'קניות ושירותים', transport: 'תחבורה', outdoors: 'גנים וספורט', health: 'בריאות', community: 'קהילה ותרבות' };
-const KINDS = { school: 'בית ספר', kindergarten: 'גן ילדים', college: 'מכללה', daycare: 'מעון', park: 'גן', dog_park: 'גינת כלבים', gym: 'חדר כושר', bus_stop: 'תחנת אוטובוס', restaurant: 'מסעדה', cafe: 'בית קפה', bakery: 'מאפייה', shopping: 'חנות', supermarket: 'סופרמרקט', bank: 'בנק', pharmacy: 'בית מרקחת', clinic: 'מרפאה', hospital: 'בית חולים', health: 'בריאות', community: 'מרכז קהילתי', worship: 'בית כנסת', culture: 'תרבות', light_rail: 'רכבת קלה', rail: 'רכבת', playground: 'גן שעשועים', library: 'ספרייה' };
-const PANOS = [['living360-c30w-sunset', 'העיצוב המקורי'], ['living360-c30w-sunset-warm', 'עץ חם'], ['living360-c30w-sunset-light', 'בהיר'], ['living360-c30w-sunset-stone', 'אבן']];
-const FACS = [['fac-pool-c', 'הבריכה'], ['fac-gym-c', 'חדר הכושר'], ['fac-spa-c', 'הספא'], ['fac-lobby-c', 'הלובי'], ['fac-parking-c', 'החניון']];
+const GROUPS = ['education', 'food', 'essentials', 'transport', 'outdoors', 'health', 'community']; // words: ck_grp_<group>; place kinds: ck_kind_<kind>
+const PANOS = [['living360-c30w-sunset', 'ck_pano_original'], ['living360-c30w-sunset-warm', 'style_warm'], ['living360-c30w-sunset-light', 'style_light'], ['living360-c30w-sunset-stone', 'style_stone']];
+const FACS = [['fac-pool-c', 'ck_fac_pool'], ['fac-gym-c', 'ck_fac_gym'], ['fac-spa-c', 'ck_fac_spa'], ['fac-lobby-c', 'ck_fac_lobby'], ['fac-parking-c', 'ck_fac_parking']];
 const ICON = {
   video: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>',
   wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1.2-1.2 2 1-.5 1.7c-3.5.4-8-4-7.6-7.6L10.3 7l1 2z"/></svg>',
@@ -79,101 +80,102 @@ function insideOf(c) { // the living room 360 nearest to this apartment (HAD-710
   return L[0] || null;
 }
 function unitId(c) { const s = ['n', 'e', 's', 'w'][Math.round((((c.bearing % 360) + 360) % 360) / 90) % 4]; return `${c.tower}-${c.floor}-${s}`; }
-function label(c) { return `מגדל ${c.tower} · קומה ${c.floor} · פונה ${dirWord(c.bearing)}`; }
+function label(c) { return t('ck_label', { tower: c.tower, floor: c.floor, dir: dirWord(c.bearing) }); }
 
 /* ---------------------------------------------------------------- the screens */
 function home(c) {
   const v = viewOf(c);
   const hero = v ? A(v.big) : A('aerial-1600.webp');
-  const t = (k, lab, img, big) => `<button type="button" class="nlck-tile" data-open="${k}">${img ? `<img src="${esc(img)}" alt="" loading="lazy">` : ''}${big ? `<span class="big">${big}</span>` : ''}<span class="lab">${lab}</span></button>`;
+  const tile = (k, lab, img, big) => `<button type="button" class="nlck-tile" data-open="${k}">${img ? `<img src="${esc(img)}" alt="" loading="lazy">` : ''}${big ? `<span class="big">${big}</span>` : ''}<span class="lab">${lab}</span></button>`;
   const firstFac = A('tour/' + FACS[0][0] + '-card.jpg');
-  return `<div class="nlck-hero"><img src="${esc(hero)}" alt="${esc('הנוף מהדירה: ' + label(c))}">
-      <div class="nlck-top"><button type="button" class="nlck-back" data-open="">› חזרה</button><span class="nlck-cap">הדמיה להמחשה${v && v.floor !== c.floor ? ` · הנוף מקומה ${v.floor}` : ''}</span></div>
-      <div class="nlck-ht"><h2 class="nlck-title" tabindex="-1">מגדל ${esc(c.tower)} · קומה ${bdi(c.floor)}</h2><p>פונה ${esc(dirWord(c.bearing))} · ${esc(sectorOf(c.bearing))}</p>
-      <div class="nlck-chips"><span>גובה העיניים כ-${bdi(eyeH(c.floor).toFixed(0))} מ׳ מעל הרחוב</span></div></div></div>
-    <p class="nlck-ask">מה תרצו לראות?</p>
+  return `<div class="nlck-hero"><img src="${esc(hero)}" alt="${esc(t('ck_alt_hero', { label: label(c) }))}">
+      <div class="nlck-top"><button type="button" class="nlck-back" data-open="">${esc(t('ck_back'))}</button><span class="nlck-cap">${esc(t('sim'))}${v && v.floor !== c.floor ? t('ck_cap_view_from', { floor: v.floor }) : ''}</span></div>
+      <div class="nlck-ht"><h2 class="nlck-title" tabindex="-1">${t('apt_title', { tower: esc(c.tower), floor: esc(c.floor) })}</h2><p>${t('faces_line', { dir: esc(dirWord(c.bearing)), sector: esc(sectorOf(c.bearing)) })}</p>
+      <div class="nlck-chips"><span>${t('ck_eye_street', { m: bdi(nf(eyeH(c.floor), 0)) })}</span></div></div></div>
+    <p class="nlck-ask">${esc(t('ck_ask'))}</p>
     <div class="nlck-grid">
-      ${t('view', 'הנוף', v ? A(v.img) : '')}
-      ${t('inside', 'בפנים · 360°', insideOf(c) ? A(insideOf(c).card) : A('tour/living-c30w-day-card.jpg'))}
-      ${t('other', 'דירה אחרת', A('aerial-tall-800.webp'))}
-      ${t('plan', 'התוכנית', D.plan ? A(D.plan) : '')}
-      ${t('fac', 'המתקנים · 360°', firstFac)}
-      ${t('price', 'מחיר ועלות', '', `${bdi(num(Math.min(...D.deals.map((d) => d.price)) / 1e6, 2) + '–' + num(Math.max(...D.deals.map((d) => d.price)) / 1e6, 2))}<small>מיליון ₪, עסקאות שפורסמו</small>`)}
-      ${t('area', 'השכונה', A('aerial-800.webp'))}
-      ${film() ? t('film', 'הסרט', film().poster || A('aerial-tall-800.webp')) : ''}
-      ${t('save', 'השוואה ושליחה', '', `${bdi(String(cmpList().length))}<small>שמורות</small>`)}
+      ${tile('view', t('ck_tile_view'), v ? A(v.img) : '')}
+      ${tile('inside', t('ck_tile_inside'), insideOf(c) ? A(insideOf(c).card) : A('tour/living-c30w-day-card.jpg'))}
+      ${tile('other', t('ck_tile_other'), A('aerial-tall-800.webp'))}
+      ${tile('plan', t('ck_tile_plan'), D.plan ? A(D.plan) : '')}
+      ${tile('fac', t('ck_tile_fac'), firstFac)}
+      ${tile('price', t('ck_tile_price'), '', `${bdi(t('ck_price_range', { lo: num(Math.min(...D.deals.map((d) => d.price)) / 1e6, 2), hi: num(Math.max(...D.deals.map((d) => d.price)) / 1e6, 2) }))}<small>${esc(t('ck_tile_price_sub'))}</small>`)}
+      ${tile('area', t('ck_tile_area'), A('aerial-800.webp'))}
+      ${film() ? tile('film', t('ck_tile_film'), film().poster || A('aerial-tall-800.webp')) : ''}
+      ${tile('save', t('ck_tile_save'), '', `${bdi(String(cmpList().length))}<small>${esc(t('ck_tile_saved'))}</small>`)}
     </div>`;
 }
-function subTop(title) { return `<div class="nlck-subtop"><button type="button" class="nlck-back" data-open="">› לדירה</button><span>${esc(title)}</span></div>`; }
+function subTop(title) { return `<div class="nlck-subtop"><button type="button" class="nlck-back" data-open="">${esc(t('ck_back_apt'))}</button><span>${esc(title)}</span></div>`; }
 function scrView(c) {
   const v = sub.view || viewOf(c);
-  if (!v) return subTop('הנוף') + '<p class="nlck-pad">אין עדיין תמונה מהקומה הזאת.</p>';
+  if (!v) return subTop(t('ck_tile_view')) + `<p class="nlck-pad">${esc(t('ck_view_none'))}</p>`;
   const fl = floorsOf(c), sd = sidesOf(c);
-  return `${subTop(label(c))}<div class="nlck-pan" data-pan><img src="${esc(A(v.big))}" alt="${esc('הנוף מקומה ' + v.floor + ', ' + dirWord(v.bearing))}"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">הדמיה להמחשה · קומה ${v.floor} · ${esc(dirWord(v.bearing))}</span>
-    <div class="nlck-under"><div class="nlck-hint">גררו לצדדים כדי לראות את כל הנוף</div>
-      ${fl.length > 1 ? `<div class="nlck-row-t">אותו כיוון, קומות אחרות</div><div class="nlck-strip">${fl.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="floor" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>קומה ${bdi(x.floor)}</b></button>`).join('')}</div>` : ''}
-      ${sd.length > 1 ? `<div class="nlck-row-t">אותה קומה, כיוונים אחרים</div><div class="nlck-strip">${sd.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="side" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${esc(dirWord(x.bearing))}</b></button>`).join('')}</div>` : ''}
+  return `${subTop(label(c))}<div class="nlck-pan" data-pan><img src="${esc(A(v.big))}" alt="${esc(t('ck_alt_view', { floor: v.floor, dir: dirWord(v.bearing) }))}"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${t('ck_cap_view', { floor: v.floor, dir: esc(dirWord(v.bearing)) })}</span>
+    <div class="nlck-under"><div class="nlck-hint">${esc(t('ck_view_drag'))}</div>
+      ${fl.length > 1 ? `<div class="nlck-row-t">${esc(t('ck_row_floors'))}</div><div class="nlck-strip">${fl.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="floor" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${t('floor_n', { floor: bdi(x.floor) })}</b></button>`).join('')}</div>` : ''}
+      ${sd.length > 1 ? `<div class="nlck-row-t">${esc(t('ck_row_sides'))}</div><div class="nlck-strip">${sd.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="side" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${esc(dirWord(x.bearing))}</b></button>`).join('')}</div>` : ''}
     </div>`;
 }
 /* room to room (HAD-712, Ben: "there is a door, you want to pass from room to room"): the living room's doors carry a button each;
    the bedroom and the balcony are the C30 example apartment's own pictures, and say so */
-const ROOMS = { bed: ['tour/bedroom-c30nw-day-2k.webp', 'חדר השינה'], balcony: ['tour/balcony-c30w-sunset-2k.webp', 'המרפסת'] };
-const DOORS = [{ lon: 69, lat: -3, to: 'bed', label: 'לחדר השינה' }, { lon: 197, lat: -6, to: 'balcony', label: 'למרפסת' }];
-function roomsRow(room) { return `<div class="nlck-rooms" role="group" aria-label="מעבר בין החדרים">${[['living', 'הסלון'], ['bed', ROOMS.bed[1]], ['balcony', ROOMS.balcony[1]]].map(([k, l]) => `<button type="button" data-room="${k}" aria-pressed="${k === room}">${l}</button>`).join('')}</div>`; }
+const ROOMS = { bed: ['tour/bedroom-c30nw-day-2k.webp', 'ck_room_bed'], balcony: ['tour/balcony-c30w-sunset-2k.webp', 'ck_room_balcony'] }; // [picture, word key]
+const DOORS = [{ lon: 69, lat: -3, to: 'bed', label: 'ck_door_bed_go' }, { lon: 197, lat: -6, to: 'balcony', label: 'ck_door_balcony_go' }]; // the label carries the language's forward arrow
+function roomsRow(room) { return `<div class="nlck-rooms" role="group" aria-label="${esc(t('ck_aria_rooms'))}">${[['living', 'ck_room_living'], ['bed', ROOMS.bed[1]], ['balcony', ROOMS.balcony[1]]].map(([k, l]) => `<button type="button" data-room="${k}" aria-pressed="${k === room}">${esc(t(l))}</button>`).join('')}</div>`; }
 function scrInside(c) { // this apartment's living room with its own window view first (HAD-710); the finishes of the C30 example after it
   if (sub.room && ROOMS[sub.room]) { const R = ROOMS[sub.room];
-    return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(A(R[0]))}" role="img" aria-label="${esc(R[1] + ', סיור 360 בדירה לדוגמה')}"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">${R[1]} · דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>${roomsRow(sub.room)}`; }
+    return `${subTop(t('ck_tile_inside'))}<div class="nlck-360" data-360="${esc(A(R[0]))}" role="img" aria-label="${esc(t('ck_aria_room_tour', { room: t(R[1]) }))}"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${t('ck_cap_room', { room: esc(t(R[1])) })}</span>${roomsRow(sub.room)}`; }
   const io = insideOf(c), own = !!io && sub.pano === 0, P = PANOS[io ? Math.max(1, sub.pano) : sub.pano];
   const url = own ? A(io.img) : A('tour/' + P[0] + '-2k.webp');
-  const chips = io ? [['הדירה הזאת', 0]].concat(PANOS.slice(1).map((p, i) => [p[1], i + 1])) : PANOS.map((p, i) => [p[1], i]);
-  const cap = own ? `הנוף מקומה ${io.floor}${io.floor !== c.floor ? ` (הקרובה ל-${c.floor})` : ''}, ${dirWord(io.bearing)} · הסלון לדוגמה · הדמיה להמחשה` : `${io ? 'גימור ' + P[1] + ' · ' : ''}דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה`;
-  return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(url)}" data-doors="1" role="img" aria-label="${esc(own ? 'סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם' : 'סיור 360 בסלון של הדירה לדוגמה')}"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">${cap} · גררו כדי להסתכל מסביב</span>
+  const chips = io ? [[t('ck_pano_this'), 0]].concat(PANOS.slice(1).map((p, i) => [t(p[1]), i + 1])) : PANOS.map((p, i) => [t(p[1]), i]);
+  const cap = own ? t('ck_cap_own', { floor: io.floor, near: io.floor !== c.floor ? t('ck_cap_own_near', { floor: c.floor }) : '', dir: dirWord(io.bearing) }) : `${io ? t('ck_cap_finish', { finish: t(P[1]) }) : ''}${t('ck_cap_example')}`;
+  return `${subTop(t('ck_tile_inside'))}<div class="nlck-360" data-360="${esc(url)}" data-doors="1" role="img" aria-label="${esc(t(own ? 'ck_aria_own_tour' : 'ck_aria_example_tour'))}"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${t('ck_cap_drag', { cap })}</span>
     <div class="nlck-float">${chips.map(([lab, i]) => `<button type="button" data-pano="${i}" aria-pressed="${i === (io ? (own ? 0 : Math.max(1, sub.pano)) : sub.pano)}">${esc(lab)}</button>`).join('')}</div>${roomsRow('living')}`;
 }
 function scrFac() {
-  return `${subTop('המתקנים · 360°')}<div class="nlck-360" data-360="${esc(A('tour/' + FACS[sub.fac][0] + '-2k.webp'))}" role="img" aria-label="${esc(FACS[sub.fac][1])}, 360"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">${esc(FACS[sub.fac][1])} · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>
-    <div class="nlck-float">${FACS.map((f, i) => `<button type="button" data-fac="${i}" aria-pressed="${i === sub.fac}">${esc(f[1])}</button>`).join('')}</div>`;
+  return `${subTop(t('ck_tile_fac'))}<div class="nlck-360" data-360="${esc(A('tour/' + FACS[sub.fac][0] + '-2k.webp'))}" role="img" aria-label="${esc(t(FACS[sub.fac][1]))}, 360"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${t('ck_cap_fac', { facility: esc(t(FACS[sub.fac][1])) })}</span>
+    <div class="nlck-float">${FACS.map((f, i) => `<button type="button" data-fac="${i}" aria-pressed="${i === sub.fac}">${esc(t(f[1]))}</button>`).join('')}</div>`;
 }
 function scrPlan() {
-  return `${subTop('התוכנית')}<div class="nlck-white"><div class="nlck-zoom" data-zoom><img src="${esc(A(D.plan))}" alt="תוכנית קומה טיפוסית: ארבע דירות פינתיות סביב גרעין עגול"></div>
-    <p class="nlck-note">הקישו על התוכנית כדי להגדיל. תוכנית להמחשה של קומה טיפוסית: ארבע דירות פינתיות, לפי 453 דירות ב-117 קומות ולפי שטח הקומה. אינה תוכנית מכר.</p>
-    <p class="nlck-note">תוכניות מכר אמיתיות נשלחות בשיחה עם הנציג.</p></div>`;
+  return `${subTop(t('ck_tile_plan'))}<div class="nlck-white"><div class="nlck-zoom" data-zoom><img src="${esc(A(D.plan))}" alt="${esc(t('ck_alt_plan'))}"></div>
+    <p class="nlck-note">${esc(t('ck_plan_note'))}</p>
+    <p class="nlck-note">${esc(t('ck_plan_note2'))}</p></div>`;
 }
 function scrPrice() {
-  const deals = D.deals.map((d) => `<div class="r"><span>קומה ${bdi(d.floor)} · ${esc(d.apt)} · ${bdi(d.date)}</span><b>${bdi(num(d.price / 1e6, 2))} מ׳ ₪</b></div>`).join('');
+  const deals = D.deals.map((d) => `<div class="r"><span>${t('ck_deal_row', { floor: bdi(d.floor), apt: esc(dw(d.apt)), date: bdi(d.date) })}</span><b>${t('ck_deal_price', { m: bdi(num(d.price / 1e6, 2)) })}</b></div>`).join('');
   const tax = taxOf(calc.price, calc.extra ? D.tax.additional : D.tax.only);
   const arn = (calc.size > 140 ? D.arnona.gt140 : D.arnona.le140) * calc.size;
   const pm = monthly(calc.price * calc.share / 100, calc.rate, calc.years);
   const src = D.deals[0];
-  return `${subTop('מחיר ועלות')}<div class="nlck-white" data-calc>
-    <div class="nlck-box"><b>עסקאות שפורסמו במגדלים</b>${deals}<small>מקור: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.src)}</a> · המגדל של כל עסקה לא פורסם</small></div>
+  const feeClause = D.fee ? t('ck_price_note_fee', { url: esc(D.fee.url), feeSrc: esc(dw(D.fee.src)), feeNote: esc(dw(D.fee.note)) }) : ''; // dw: cockpit.json's Hebrew labels in the page language
+  return `${subTop(t('ck_tile_price'))}<div class="nlck-white" data-calc>
+    <div class="nlck-box"><b>${esc(t('ck_deals_title'))}</b>${deals}<small>${esc(t('source_prefix'))} <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(dw(src.src))}</a> · ${esc(t('ck_deals_tower_unknown'))}</small></div>
     <div class="nlck-box nlck-calc">
-      <label>מחיר הדירה לדוגמה (₪)<input type="number" inputmode="numeric" step="10000" name="price" value="${calc.price}"></label>
-      <label>דירה נוספת<input type="checkbox" name="extra" ${calc.extra ? 'checked' : ''}></label>
-      <label>מימון (%)<input type="number" inputmode="numeric" min="0" max="75" step="5" name="share" value="${calc.share}"></label>
-      <label>שנים<input type="number" inputmode="numeric" min="4" max="30" name="years" value="${calc.years}"></label>
-      <label>ריבית (%)<input type="number" inputmode="decimal" step="0.05" name="rate" value="${calc.rate}"></label>
-      <label>שטח לארנונה (מ״ר)<input type="number" inputmode="numeric" name="size" value="${calc.size}"></label>
-      ${D.fee ? `<label>דמי תחזוקה (₪ בחודש)<input type="number" inputmode="numeric" step="100" name="fee" value="${calc.fee}"></label>` : ''}
+      <label>${esc(t('ck_calc_price'))}<input type="number" inputmode="numeric" step="10000" name="price" value="${calc.price}"></label>
+      <label>${esc(t('tax_additional_home'))}<input type="checkbox" name="extra" ${calc.extra ? 'checked' : ''}></label>
+      <label>${esc(t('ck_calc_share'))}<input type="number" inputmode="numeric" min="0" max="75" step="5" name="share" value="${calc.share}"></label>
+      <label>${esc(t('ck_calc_years'))}<input type="number" inputmode="numeric" min="4" max="30" name="years" value="${calc.years}"></label>
+      <label>${esc(t('ck_calc_rate'))}<input type="number" inputmode="decimal" step="0.05" name="rate" value="${calc.rate}"></label>
+      <label>${esc(t('ck_calc_size'))}<input type="number" inputmode="numeric" name="size" value="${calc.size}"></label>
+      ${D.fee ? `<label>${esc(t('ck_calc_fee'))}<input type="number" inputmode="numeric" step="100" name="fee" value="${calc.fee}"></label>` : ''}
     </div>
-    <div class="nlck-box"><div class="r"><span>מס רכישה</span><b>${ils(tax)}</b></div><div class="r tot"><span>המחיר והמס יחד</span><b>${ils(calc.price + tax)}</b></div>
-      <div class="r"><span>משכנתא בחודש, לדוגמה</span><b>${ils(Math.round(pm))}</b></div><div class="r"><span>ארנונה בחודש</span><b>${ils(Math.round(arn / 12))}</b></div>
-      ${D.fee ? `<div class="r"><span>תחזוקה בחודש</span><b>${ils(calc.fee)}</b></div>` : ''}<div class="r tot"><span>בחודש, הכול יחד</span><b>${ils(Math.round(pm + arn / 12 + (D.fee ? calc.fee : 0)))}</b></div></div>
-    <p class="nlck-note">דוגמה בלבד; ברירת המחדל היא העסקה הנמוכה שפורסמה. מס רכישה: ${esc(D.tax.asof)}. ארנונה: ${esc(D.arnona.asof)}, אזור ${D.arnona.zone}. ריבית: ממוצע ${esc(D.mortgage.src)}, ${esc(D.mortgage.label)}. ${D.fee ? `תחזוקה: לפי <a href="${esc(D.fee.url)}" target="_blank" rel="noopener">${esc(D.fee.src)}</a>, ${esc(D.fee.note)}.` : ''} שכר טרחה ותיווך לא כלולים.</p></div>`;
+    <div class="nlck-box"><div class="r"><span>${esc(t('purchase_tax'))}</span><b>${ils(tax)}</b></div><div class="r tot"><span>${esc(t('ck_price_tax_total'))}</span><b>${ils(calc.price + tax)}</b></div>
+      <div class="r"><span>${esc(t('ck_mortgage_month'))}</span><b>${ils(Math.round(pm))}</b></div><div class="r"><span>${esc(t('ck_arnona_month'))}</span><b>${ils(Math.round(arn / 12))}</b></div>
+      ${D.fee ? `<div class="r"><span>${esc(t('ck_fee_month'))}</span><b>${ils(calc.fee)}</b></div>` : ''}<div class="r tot"><span>${esc(t('ck_month_total'))}</span><b>${ils(Math.round(pm + arn / 12 + (D.fee ? calc.fee : 0)))}</b></div></div>
+    <p class="nlck-note">${t('ck_price_note', { taxAsof: esc(dw(D.tax.asof)), arnonaAsof: esc(dw(D.arnona.asof)), zone: D.arnona.zone, mortgageSrc: esc(dw(D.mortgage.src)), mortgageLabel: esc(dw(D.mortgage.label)), feeClause })}</p></div>`;
 }
 function scrArea() {
-  if (!PL) return `${subTop('השכונה')}<p class="nlck-pad">טוען…</p>`;
+  if (!PL) return `${subTop(t('ck_tile_area'))}<p class="nlck-pad">${esc(t('loading'))}</p>`;
   const out = [];
-  for (const g of Object.keys(GROUPS)) {
-    const near = PL.places.filter((p) => p.g === g && !p.generic && p.name).sort((a, b) => a.dist - b.dist).slice(0, 4);
+  for (const g of GROUPS) { // HAD-712: on the en/fr page a place shows only with a name in that language or English (placeName), never in Hebrew
+    const near = PL.places.filter((p) => p.g === g && !p.generic && placeName(p)).sort((a, b) => a.dist - b.dist).slice(0, 4);
     if (!near.length) continue;
-    out.push(`<div class="nlck-grp">${GROUPS[g]}</div>` + near.map((p) => `<a class="nlck-place" href="https://www.google.com/maps/dir/?api=1&amp;destination=${p.lat},${p.lng}&amp;travelmode=walking" target="_blank" rel="noopener"><span>${esc(p.name)} <small>· ${esc(KINDS[p.k] || '')}</small></span><b>${bdi(num(p.dist))} מ׳${p.walk ? ` · ${bdi(p.walk)} דק׳` : ''}</b></a>`).join(''));
+    out.push(`<div class="nlck-grp">${esc(t('ck_grp_' + g))}</div>` + near.map((p) => `<a class="nlck-place" href="https://www.google.com/maps/dir/?api=1&amp;destination=${p.lat},${p.lng}&amp;travelmode=walking" target="_blank" rel="noopener"><span>${esc(placeName(p))} <small>· ${esc(t('ck_kind_' + p.k))}</small></span><b>${t('ck_dist_m', { dist: bdi(num(p.dist)) })}${p.walk ? t('ck_walk_min', { min: bdi(p.walk) }) : ''}</b></a>`).join(''));
   }
-  return `${subTop('השכונה')}<div class="nlck-white"><p class="nlck-note">ממרכז הכיכר, ברגל. לחיצה פותחת ניווט. מקור: עיריית תל אביב-יפו ו-OpenStreetMap.</p>${out.join('')}</div>`;
+  return `${subTop(t('ck_tile_area'))}<div class="nlck-white"><p class="nlck-note">${esc(t('ck_area_note'))}</p>${out.join('')}</div>`;
 }
 function film() { // the page's own Kikar film (ProjectFilm): the tall cut on phones, the wide one on screens
   const src = (v) => { const s = v.querySelector('source'); return (s ? s.getAttribute('src') : v.getAttribute('src')) || ''; };
@@ -182,23 +184,23 @@ function film() { // the page's own Kikar film (ProjectFilm): the tall cut on ph
   const v = vs.find((x) => x.classList.contains(innerWidth < 700 ? 'nlws-film__v--tall' : 'nlws-film__v--wide')) || vs[0];
   return { src: src(v), poster: v.getAttribute('data-nlposter') || v.getAttribute('poster') || '' };
 }
-function scrFilm() { const f = film() || {}; return `${subTop('הסרט')}<video class="nlck-video" src="${esc(f.src)}" poster="${esc(f.poster)}" controls playsinline preload="metadata" autoplay></video>`; }
+function scrFilm() { const f = film() || {}; return `${subTop(t('ck_tile_film'))}<video class="nlck-video" src="${esc(f.src)}" poster="${esc(f.poster)}" controls playsinline preload="metadata" autoplay></video>`; }
 function cmpList() { return store.get('nlck-cmp', []); }
 function isSaved() { if (!cur) return false; const b = Math.round(cur.bearing); return cmpList().some((x) => x.tower === cur.tower && x.floor === cur.floor && x.bearing === b); }
 function scrSave(c) {
   const L = cmpList();
   const me = { tower: c.tower, floor: c.floor, bearing: Math.round(c.bearing) };
   const has = L.some((x) => x.tower === me.tower && x.floor === me.floor && x.bearing === me.bearing);
-  const card = (x) => { const v = viewOf({ ...x, heightM: eyeH(x.floor) }); return `<div class="nlck-cmp-c">${v ? `<img src="${esc(A(v.img))}" alt="">` : ''}<b>מגדל ${esc(x.tower)} · קומה ${bdi(x.floor)}</b><span>פונה ${esc(dirWord(x.bearing))} · ${esc(sectorOf(x.bearing))}</span><span>גובה העיניים כ-${bdi(eyeH(x.floor).toFixed(0))} מ׳</span></div>`; };
-  return `${subTop('השוואה ושליחה')}<div class="nlck-white">
-    <div class="nlck-row"><button type="button" class="nlck-btn" data-act="save">${has ? 'הדירה שמורה' : 'שמירת הדירה הזאת'}</button></div>
-    ${L.length ? `<div class="nlck-cmp">${[me, ...L.filter((x) => !(x.tower === me.tower && x.floor === me.floor && x.bearing === me.bearing))].slice(0, 3).map(card).join('')}</div>` : '<p class="nlck-note">שמרו את הדירה, בחרו דירה אחרת, והן יופיעו כאן זו לצד זו.</p>'}
-    <div class="nlck-box"><b>שלחו למשפחה את מה שבחרתם</b>
-      <label class="ck"><input type="checkbox" checked disabled>הדירה, הקומה והכיוון</label>
-      <label class="ck"><input type="checkbox" name="sh-view" checked>הנוף וגובה הקומה</label>
-      <label class="ck"><input type="checkbox" name="sh-price">המחיר והעלויות לדוגמה</label>
-      <small>הקישור לא כולל שם, טלפון או פרטים אישיים.</small></div>
-    <div class="nlck-row"><button type="button" class="nlck-btn nlck-btn--solid" data-act="share">שליחת הבחירה</button></div></div>`;
+  const card = (x) => { const v = viewOf({ ...x, heightM: eyeH(x.floor) }); return `<div class="nlck-cmp-c">${v ? `<img src="${esc(A(v.img))}" alt="">` : ''}<b>${t('apt_title', { tower: esc(x.tower), floor: esc(x.floor) })}</b><span>${t('faces_line', { dir: esc(dirWord(x.bearing)), sector: esc(sectorOf(x.bearing)) })}</span><span>${t('eye_height', { m: bdi(nf(eyeH(x.floor), 0)) })}</span></div>`; };
+  return `${subTop(t('ck_tile_save'))}<div class="nlck-white">
+    <div class="nlck-row"><button type="button" class="nlck-btn" data-act="save">${esc(t(has ? 'ck_saved' : 'ck_save_this'))}</button></div>
+    ${L.length ? `<div class="nlck-cmp">${[me, ...L.filter((x) => !(x.tower === me.tower && x.floor === me.floor && x.bearing === me.bearing))].slice(0, 3).map(card).join('')}</div>` : `<p class="nlck-note">${esc(t('ck_cmp_empty'))}</p>`}
+    <div class="nlck-box"><b>${esc(t('ck_share_title'))}</b>
+      <label class="ck"><input type="checkbox" checked disabled>${esc(t('ck_share_unit'))}</label>
+      <label class="ck"><input type="checkbox" name="sh-view" checked>${esc(t('ck_share_view'))}</label>
+      <label class="ck"><input type="checkbox" name="sh-price">${esc(t('ck_share_price'))}</label>
+      <small>${esc(t('ck_share_privacy'))}</small></div>
+    <div class="nlck-row"><button type="button" class="nlck-btn nlck-btn--solid" data-act="share">${esc(t('ck_share_btn'))}</button></div></div>`;
 }
 
 /* ---------------------------------------------------------------- the 360 viewer (three.js from the page's import map) */
@@ -214,7 +216,7 @@ async function pano(host, url, doors) {
   const geo = new THREE.SphereGeometry(10, 64, 32); geo.scale(-1, 1, 1); scene.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map: tex })));
   let lon = 180, lat = 0, x0 = null, y0 = 0, l0 = 0, a0 = 0, run = true;
   const dir = (lo, la) => { const p = THREE.MathUtils.degToRad(90 - la), t = THREE.MathUtils.degToRad(lo); return new THREE.Vector3(Math.sin(p) * Math.cos(t), Math.cos(p), Math.sin(p) * Math.sin(t)); };
-  const hot = (doors || []).map((d) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'nlck-door'; b.dataset.room = d.to; b.textContent = d.label + ' ‹'; b.hidden = true; host.appendChild(b); return { b, v: dir(d.lon, d.lat).multiplyScalar(9) }; });
+  const hot = (doors || []).map((d) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'nlck-door'; b.dataset.room = d.to; b.textContent = t(d.label); b.hidden = true; host.appendChild(b); return { b, v: dir(d.lon, d.lat).multiplyScalar(9) }; });
   const draw = () => { if (!run) return; cam.lookAt(dir(lon, lat)); cam.updateMatrixWorld(); r.render(scene, cam);
     for (const h of hot) { const q = h.v.clone().project(cam), on = q.z < 1 && Math.abs(q.x) < 0.9 && Math.abs(q.y) < 0.8; h.b.hidden = !on; if (on) { h.b.style.left = ((q.x * 0.5 + 0.5) * 100).toFixed(1) + '%'; h.b.style.top = ((-q.y * 0.5 + 0.5) * 100).toFixed(1) + '%'; } }
     requestAnimationFrame(draw); };
@@ -238,22 +240,22 @@ function render() {
   try { dispatchEvent(new CustomEvent('nl:cockpit', { detail: { screen: open || 'home' } })); } catch (e) { /* none */ } // HAD-712: the showroom's steps follow
   body.scrollTop = 0;
   const p3 = $('[data-360]', body); if (p3) pano(p3, p3.dataset['360'], p3.dataset.doors ? DOORS : null);
-  const pan = $('[data-pan]', body); if (pan) { const im = $('img', pan); const ctr = () => { pan.scrollLeft = -(pan.scrollWidth - pan.clientWidth) / 2; }; if (im) { if (im.complete) ctr(); else im.addEventListener('load', ctr, { once: true }); } }
+  const pan = $('[data-pan]', body); if (pan) { const im = $('img', pan); const ctr = () => { pan.scrollLeft = (isRtl() ? -1 : 1) * (pan.scrollWidth - pan.clientWidth) / 2; }; /* HAD-712: RTL scrolls with negative values */ if (im) { if (im.complete) ctr(); else im.addEventListener('load', ctr, { once: true }); } }
   if (open === 'area' && !PL) loadPlaces().then(() => { if (open === 'area') render(); });
   paintBar();
 }
 function paintBar() {
   const bar = el && $('.nlck-bar', el); if (!bar) return;
   const room = avail ? `${location.pathname}${location.search ? location.search + '&' : '?'}room=new${location.hash}` : '#nlsch';
-  bar.innerHTML = `<a class="nlck-call" data-act="call" href="${esc(room)}">${ICON.video}${avail ? 'שיחת וידאו עכשיו, על הדירה' : 'שיחת וידאו על הדירה'}</a>
-    ${C.wa ? `<a class="nlck-ic nlck-ic--wa" href="${esc(C.wa)}" target="_blank" rel="noopener" aria-label="וואטסאפ" data-act="wa">${ICON.wa}</a>` : ''}
-    <button type="button" class="nlck-ic" data-act="save" aria-label="שמירת הדירה" aria-pressed="${isSaved()}">${ICON.heart}</button>`;
+  bar.innerHTML = `<a class="nlck-call" data-act="call" href="${esc(room)}">${ICON.video}${esc(t(avail ? 'ck_call_now' : 'ck_call'))}</a>
+    ${C.wa ? `<a class="nlck-ic nlck-ic--wa" href="${esc(C.wa)}" target="_blank" rel="noopener" aria-label="${esc(t('ck_aria_wa'))}" data-act="wa">${ICON.wa}</a>` : ''}
+    <button type="button" class="nlck-ic" data-act="save" aria-label="${esc(t('ck_aria_save'))}" aria-pressed="${isSaved()}">${ICON.heart}</button>`;
 }
 function toast(msg) { const t = el && $('.nlck-toast', el); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => { t.hidden = true; }, 2600); }
 function mount() {
   el = document.createElement('div');
-  el.className = 'nlck'; el.id = 'nlck'; el.dir = 'rtl'; el.lang = 'he'; el.hidden = true;
-  el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'הדירה שבחרתם');
+  el.className = 'nlck'; el.id = 'nlck'; el.dir = dir(); el.lang = lang(); el.hidden = true;
+  el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', t('ck_aria_dialog'));
   el.innerHTML = '<div class="nlck-body"></div><div class="nlck-bar"></div><div class="nlck-toast" role="status" aria-live="polite" hidden></div>';
   document.body.appendChild(el);
   el.addEventListener('click', onClick);
@@ -269,7 +271,7 @@ function show(c, from, screen) { // screen (HAD-712): open straight on one of th
     el.hidden = false; document.documentElement.style.overflow = 'hidden'; document.body.classList.add('nlck-on');
     render(); askAvail();
     const h = $('.nlck-title', el); if (h) h.focus({ preventScroll: true });
-    ga('cockpit_open', { tower: cur.tower, floor: cur.floor, facing: dirWord(cur.bearing) });
+    ga('cockpit_open', { tower: cur.tower, floor: cur.floor, facing: dirWord(cur.bearing, 'he') });
   });
 }
 function close() {
@@ -296,18 +298,18 @@ function onClick(e) {
   if (act === 'save') {
     const me = { tower: cur.tower, floor: cur.floor, bearing: Math.round(cur.bearing) };
     const L = cmpList().filter((x) => !(x.tower === me.tower && x.floor === me.floor && x.bearing === me.bearing)); L.unshift(me); store.set('nlck-cmp', L.slice(0, 4));
-    toast('הדירה נשמרה. בחרו דירה אחרת, והן יופיעו זו לצד זו.'); ga('cockpit_save', {}); if (open === 'save' || !open) render(); else paintBar(); return;
+    toast(t('ck_toast_saved')); ga('cockpit_save', {}); if (open === 'save' || !open) render(); else paintBar(); return;
   }
   if (act === 'share') {
     const withView = $('[name="sh-view"]', el) && $('[name="sh-view"]', el).checked, withPrice = $('[name="sh-price"]', el) && $('[name="sh-price"]', el).checked;
-    const lines = [`מגדלי כיכר המדינה, תל אביב · ${label(cur)}`];
-    if (withView) lines.push(`${sectorOf(cur.bearing)} · גובה העיניים כ-${eyeH(cur.floor).toFixed(0)} מ׳`);
-    if (withPrice) { const tax = taxOf(calc.price, calc.extra ? D.tax.additional : D.tax.only); lines.push(`דוגמה: מחיר ${num(calc.price)} ₪, מס רכישה ${num(tax)} ₪`); }
+    const lines = [t('ck_share_line1', { label: label(cur) })];
+    if (withView) lines.push(t('ck_share_line2', { sector: sectorOf(cur.bearing), m: nf(eyeH(cur.floor), 0) }));
+    if (withPrice) { const tax = taxOf(calc.price, calc.extra ? D.tax.additional : D.tax.only); lines.push(t('ck_share_line3', { price: num(calc.price), tax: num(tax) })); }
     const q = new URLSearchParams(location.search); q.delete('room'); const qs = q.toString(); // keeps ?kikar=next while the cockpit is gated
     const url = `${location.origin}${location.pathname}${qs ? '?' + qs : ''}#dira=${cur.tower}${cur.floor}-${Math.round(cur.bearing)}`;
     ga('cockpit_share', { view: !!withView, price: !!withPrice });
-    if (navigator.share) { navigator.share({ title: 'מגדלי כיכר המדינה', text: lines.join('\n'), url }).catch(() => {}); return; }
-    (navigator.clipboard ? navigator.clipboard.writeText(lines.join('\n') + '\n' + url) : Promise.reject()).then(() => toast('הקישור הועתק. אפשר להדביק בכל הודעה.'), () => toast(url));
+    if (navigator.share) { navigator.share({ title: t('project_title'), text: lines.join('\n'), url }).catch(() => {}); return; }
+    (navigator.clipboard ? navigator.clipboard.writeText(lines.join('\n') + '\n' + url) : Promise.reject()).then(() => toast(t('ck_toast_copied')), () => toast(url));
     return;
   }
   if (act === 'call') { ga('cockpit_call', { now: !!avail }); if (!avail) { e.preventDefault(); close(); const s = document.getElementById('nlsch'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }

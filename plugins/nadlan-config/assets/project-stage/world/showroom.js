@@ -1,3 +1,4 @@
+/* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /* Kikar HaMedina: the showroom stage (HAD-712, Ben 11.11.2026: "each building turns on its own, you choose the apartment on the
  * building, the map under it answers with a beam, and a pulse shows the next thing to tap").
  *
@@ -12,19 +13,21 @@
  * Every picture is "הדמיה להמחשה". No sun, no fake urgency, no price that was not published. */
 const C = window.__nlJourneyCfg || {};
 const CK = window.__nlCockpitCfg || {};
+const { t, lang, dir } = await import(new URL('showroom-i18n.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href); // HAD-712: he, en, fr
 const A = (p) => (C.base || '') + p + (C.ver ? (p.includes('?') ? '&' : '?') + 'ver=' + C.ver : '');
 const WORLD = (C.js || '').replace(/journey\.js.*$/, '');
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const ga = (n, p) => { try { if (window.nadlanGA) window.nadlanGA(n, Object.assign({ project: 'hamedina' }, p || {})); } catch (e) { /* none */ } };
 const norm = (b) => ((b % 360) + 360) % 360;
 const angDiff = (a, b) => Math.abs(((a - b) % 360 + 540) % 360 - 180);
-const DIRS = ['צפונה', 'צפון-מזרחה', 'מזרחה', 'דרום-מזרחה', 'דרומה', 'דרום-מערבה', 'מערבה', 'צפון-מערבה'];
-const DIRN = ['צפון', 'צפון-מזרח', 'מזרח', 'דרום-מזרח', 'דרום', 'דרום-מערב', 'מערב', 'צפון-מערב'];
+const DIRS = ['dir_to_n', 'dir_to_ne', 'dir_to_e', 'dir_to_se', 'dir_to_s', 'dir_to_sw', 'dir_to_w', 'dir_to_nw']; // "faces north" (keys of showroom-i18n.js)
+const DIRN = ['dir_n', 'dir_ne', 'dir_e', 'dir_se', 'dir_s', 'dir_sw', 'dir_w', 'dir_nw']; // "from the north"
 const dirIx = (b) => Math.round(norm(b) / 45) % 8;
-const SECTORS = [[245, 300, 'הים והעיר'], [300, 345, 'הים והירקון'], [345, 30, 'הירקון והצפון'], [30, 75, 'רמת אביב והאוניברסיטה'], [75, 120, 'רמת גן והבורסה'], [120, 200, 'מגדלי העיר'], [200, 245, 'הצפון הישן ומרכז העיר']];
-const sectorOf = (b) => { b = norm(b); const s = SECTORS.find(([lo, hi]) => (lo < hi ? b >= lo && b < hi : b >= lo || b < hi)); return s ? s[2] : ''; };
+const dirTo = (b, L) => t(DIRS[dirIx(b)], null, L), dirFrom = (b, L) => t(DIRN[dirIx(b)], null, L); // L 'he': the analytics keep their Hebrew values
+const SECTORS = [[245, 300, 'sec_sea_city'], [300, 345, 'sec_sea_yarkon'], [345, 30, 'sec_yarkon_north'], [30, 75, 'sec_ramat_aviv'], [75, 120, 'sec_ramat_gan'], [120, 200, 'sec_city_towers'], [200, 245, 'sec_old_north']];
+const sectorOf = (b) => { b = norm(b); const s = SECTORS.find(([lo, hi]) => (lo < hi ? b >= lo && b < hi : b >= lo || b < hi)); return s ? t(s[2]) : ''; };
 const eyeH = (f) => (f - 1) * 4 + 1.6;
-const STEPS = [['tower', 'מגדל וקומה'], ['view', 'הנוף והמפה'], ['inside', 'בפנים'], ['design', 'גימורים'], ['basket', 'סל הדירה']];
+const STEPS = [['tower', 'sr_step_tower'], ['view', 'sr_step_view'], ['inside', 'sr_step_inside'], ['design', 'sr_step_design'], ['basket', 'basket_name']];
 const START = 270; // each tower first shows the side that looks west, to the sea
 
 let T = null, AER = null, VIEWS = null, el = null, box = null;
@@ -65,15 +68,15 @@ function place() {
 }
 function paintPic() {
   const img = el.querySelector('.nlsr-pic');
-  if (!S.tower) { img.src = A('aerial-tall-800.webp'); img.alt = 'שלושת מגדלי כיכר המדינה מהאוויר, הדמיה'; }
-  else { img.src = frameUrl(S.tower, S.frame); img.alt = `מגדל ${S.tower} לבדו, מכיוון ${DIRN[dirIx(turn().frames[S.frame].b)]}, הדמיה`; }
+  if (!S.tower) { img.src = A('aerial-tall-800.webp'); img.alt = t('sr_alt_aerial'); }
+  else { img.src = frameUrl(S.tower, S.frame); img.alt = t('sr_alt_tower', { tower: S.tower, dir: dirFrom(turn().frames[S.frame].b) }); }
   place(); paintBand(); paintMap();
 }
 function paintHandles() {
   const hs = el.querySelector('.nlsr-handles');
   if (S.tower) { hs.innerHTML = ''; return; }
   const tw = (AER.tall && AER.tall.towers) || {};
-  hs.innerHTML = Object.keys(tw).sort().map((k) => { const p = tw[k][Math.floor(tw[k].length * 0.72)]; return `<button type="button" class="nlsr-h nlsr-pulse" data-tower="${k}" style="left:${(p[0] * 100).toFixed(2)}%;top:${(p[1] * 100).toFixed(2)}%" aria-label="מגדל ${k}: לסובב ולבחור בו דירה">${k}</button>`; }).join('');
+  hs.innerHTML = Object.keys(tw).sort().map((k) => { const p = tw[k][Math.floor(tw[k].length * 0.72)]; return `<button type="button" class="nlsr-h nlsr-pulse" data-tower="${k}" style="left:${(p[0] * 100).toFixed(2)}%;top:${(p[1] * 100).toFixed(2)}%" aria-label="${esc(t('sr_aria_tower_handle', { tower: k }))}">${k}</button>`; }).join('');
 }
 function bandOf(i, f) { // the floor's band on frame i, as picture thousandths
   const F = turn().frames[i].f, r = F[f - 1], n = F.length, hh = Math.abs(F[0][1] - F[n - 1][1]) / (n - 1) / 2;
@@ -84,7 +87,7 @@ function paintBand() {
   if (!S.tower || !S.floor) { g.innerHTML = ''; tag.hidden = true; return; }
   const { r, hh } = bandOf(S.frame, S.floor);
   g.innerHTML = `<polygon class="nlsr-band" points="${r[0]},${r[1] - hh} ${r[2]},${r[3] - hh} ${r[2]},${r[3] + hh} ${r[0]},${r[1] + hh}"/>`;
-  tag.hidden = false; tag.textContent = `קומה ${S.floor}`; tag.style.left = (r[2] / 10 + 1.5) + '%'; tag.style.top = ((r[1] + r[3]) / 20) + '%';
+  tag.hidden = false; tag.textContent = t('floor_n', { floor: S.floor }); tag.style.left = (r[2] / 10 + 1.5) + '%'; tag.style.top = ((r[1] + r[3]) / 20) + '%';
 }
 
 /* ---------------------------------------------------------------- the map under the model: the towers, where you stand, the beam */
@@ -98,57 +101,60 @@ function paintMap() {
     if (S.side != null && S.floor) {
       const b = sideBearing(S.tower, S.floor, S.side), R = 3200, a1 = (b - 26) * Math.PI / 180, a2 = (b + 26) * Math.PI / 180;
       h = `<path class="nlsr-beam" d="M${P(x, y)} L${P(x + R * Math.sin(a1), y + R * Math.cos(a1))} L${P(x + R * Math.sin(a2), y + R * Math.cos(a2))} Z"/>` + h;
-      line.innerHTML = `הדירה פונה <b>${esc(DIRS[dirIx(b)])}</b>: ${esc(sectorOf(b))}`;
+      line.innerHTML = t('sr_map_facing', { dir: esc(dirTo(b)), sector: esc(sectorOf(b)) });
     } else {
       const cb = turn().frames[S.frame].b * Math.PI / 180, ex = x + 210 * Math.sin(cb), ey = y + 210 * Math.cos(cb);
       h += `<path class="nlsr-eyeline" d="M${P(ex, ey)} L${P(x, y)}"/><circle class="nlsr-eye" cx="${ex.toFixed(0)}" cy="${(-ey).toFixed(0)}" r="34"/>`;
-      line.innerHTML = `אתם מסתכלים על מגדל ${esc(S.tower)} מ${esc(DIRN[dirIx(turn().frames[S.frame].b)])}. הקישו על קומה, והמפה תראה לאן היא פונה.`;
+      line.innerHTML = t('sr_map_looking', { tower: esc(S.tower), dir: esc(dirFrom(turn().frames[S.frame].b)) });
     }
-  } else line.innerHTML = 'המפה: הכיכר, העיר והים. בחרו מגדל וקומה, והמפה תראה לאן הדירה פונה.';
+  } else line.innerHTML = t('sr_map_intro');
   sv.innerHTML = h;
 }
 
 /* ---------------------------------------------------------------- the card, the steps, the hint: what to tap next */
-function facingText() { const b = sideBearing(S.tower, S.floor, S.side); return `פונה ${DIRS[dirIx(b)]} · ${sectorOf(b)}`; }
+function facingText() { const b = sideBearing(S.tower, S.floor, S.side); return t('faces_line', { dir: dirTo(b), sector: sectorOf(b) }); }
 function waHref() {
   if (!CK.wa) return '';
   try { const u = new URL(CK.wa, location.href), b = sideBearing(S.tower, S.floor, S.side);
-    u.searchParams.set('text', `שלום, אשמח לקבל תוכניות ומחירים לדירה בקומה ${S.floor} במגדל ${S.tower} במגדלי כיכר המדינה, לכיוון ${DIRN[dirIx(b)]} (nad-lan.co.il)`); return u.toString(); } catch (e) { return CK.wa; }
+    const w = { floor: S.floor, tower: S.tower, dir: dirFrom(b), dirTo: dirTo(b) }; // en/fr AWAITING BEN: the English page's sentence, the apartment in the page language
+    u.searchParams.set('text', t('sr_wa_text', Object.assign(w, { apt: t('sr_wa_apt', w) }))); return u.toString(); } catch (e) { return CK.wa; }
 }
 function paintCard() {
   const c = el.querySelector('.nlsr-card');
   if (!S.tower || !S.floor) { c.hidden = true; return; }
   const b = sideBearing(S.tower, S.floor, S.side), v = viewOf(S.tower, S.floor, b), wa = waHref();
   c.hidden = false;
-  c.innerHTML = `<div class="nlsr-crow">${v ? `<img class="nlsr-cview" src="${esc(A(v.img))}" alt="הנוף מהכיוון הזה, הדמיה">` : ''}
-      <div class="nlsr-cid"><div class="nlsr-ct">מגדל ${esc(S.tower)} · קומה <bdi>${S.floor}</bdi></div><div class="nlsr-cf">${esc(facingText())}</div></div>
-      <div class="nlsr-cstep"><button type="button" data-fl="-1" aria-label="קומה אחת למטה">−</button><button type="button" data-fl="1" aria-label="קומה אחת למעלה">+</button></div></div>
-    <button type="button" class="nlsr-cside" data-side="next">לכיוון אחר באותה קומה ‹</button>
-    <div class="nlsr-cact"><button type="button" class="nlsr-go${S.done.view ? '' : ' nlsr-pulse'}" data-go="home">להיכנס לדירה</button>
-      ${wa ? `<a class="nlsr-ask" href="${esc(wa)}" target="_blank" rel="noopener" data-ev="ask">תוכניות ומחירים לדירה</a>` : ''}</div>`;
+  c.innerHTML = `<div class="nlsr-crow">${v ? `<img class="nlsr-cview" src="${esc(A(v.img))}" alt="${esc(t('sr_alt_card_view'))}">` : ''}
+      <div class="nlsr-cid"><div class="nlsr-ct">${t('apt_title', { tower: esc(S.tower), floor: S.floor })}</div><div class="nlsr-cf">${esc(facingText())}</div></div>
+      <div class="nlsr-cstep"><button type="button" data-fl="-1" aria-label="${esc(t('sr_aria_floor_down'))}">−</button><button type="button" data-fl="1" aria-label="${esc(t('sr_aria_floor_up'))}">+</button></div></div>
+    <button type="button" class="nlsr-cside" data-side="next">${esc(t('sr_card_other_side'))}</button>
+    <div class="nlsr-cact"><button type="button" class="nlsr-go${S.done.view ? '' : ' nlsr-pulse'}" data-go="home">${esc(t('sr_card_enter'))}</button>
+      ${wa ? `<a class="nlsr-ask" href="${esc(wa)}" target="_blank" rel="noopener" data-ev="ask">${esc(t('sr_card_ask'))}</a>` : ''}</div>`;
 }
 function nextStep() { if (!S.floor) return 'tower'; for (const [k] of STEPS.slice(1)) if (!S.done[k]) return k; return null; }
 function paintSteps() {
   const nx = nextStep();
   el.querySelector('.nlsr-steps').innerHTML = STEPS.map(([k, lab], i) => { const done = k === 'tower' ? !!S.floor : !!S.done[k], on = k === nx;
-    return `<li><button type="button" class="nlsr-st${done ? ' is-done' : ''}${on ? ' is-on' : ''}" data-step="${k}"${on ? ' aria-current="step"' : ''}><span class="nlsr-sn${on ? ' nlsr-pulse-b' : ''}">${done ? '✓' : i + 1}</span><span class="nlsr-sl">${lab}${k === 'basket' ? `<i class="nlsr-bk" hidden></i>` : ''}</span></button></li>`; }).join('');
+    return `<li><button type="button" class="nlsr-st${done ? ' is-done' : ''}${on ? ' is-on' : ''}" data-step="${k}"${on ? ' aria-current="step"' : ''}><span class="nlsr-sn${on ? ' nlsr-pulse-b' : ''}">${done ? '✓' : i + 1}</span><span class="nlsr-sl">${t(lab)}${k === 'basket' ? `<i class="nlsr-bk" hidden></i>` : ''}</span></button></li>`; }).join('');
   const n = window.__nlBasket && window.__nlBasket.state && window.__nlBasket.state.unit ? 1 : 0, i = el.querySelector('.nlsr-bk'); if (i && n) { i.hidden = false; i.textContent = n; }
 }
 function paintHint() {
   const hint = el.querySelector('.nlsr-hint'), tn = el.querySelector('.nlsr-turn'), back = el.querySelector('.nlsr-back');
   back.hidden = !S.tower;
-  hint.hidden = !!S.floor; hint.querySelector('b').textContent = S.tower ? 'הקישו על קומה במגדל' : 'הקישו על מגדל';
+  hint.hidden = !!S.floor; hint.querySelector('b').textContent = t(S.tower ? 'sr_hint_floor' : 'sr_hint_tower');
   tn.hidden = !S.tower || !!S.floor || S.touched;
   el.dataset.mode = S.tower ? 'tower' : 'all'; el.dataset.picked = S.floor ? '1' : '0';
-  const tt = el.querySelector('.nlsr-t'); tt.textContent = S.tower ? `מגדל ${S.tower}, לבדו` : 'בחרו דירה במגדלי כיכר המדינה';
-  el.querySelector('.nlsr-s').textContent = S.tower ? (S.floor ? 'המפה מראה לאן הדירה פונה' : 'מסובבים את המגדל, ומקישים על קומה') : 'מקישים על מגדל, מסובבים אותו ובוחרים קומה';
+  const tt = el.querySelector('.nlsr-t'); tt.textContent = S.tower ? t('sr_title_tower', { tower: S.tower }) : t('sr_title_all');
+  el.querySelector('.nlsr-s').textContent = t(S.tower ? (S.floor ? 'sr_sub_picked' : 'sr_sub_tower') : 'sr_sub_all');
 }
 function paint() { paintHandles(); paintCard(); paintPic(); paintSteps(); paintHint(); }
 
 /* ---------------------------------------------------------------- the moves */
 function announce() { // the basket and the page hear the choice; the apartment screen opens only when asked (quiet)
   const b = sideBearing(S.tower, S.floor, S.side);
-  window.dispatchEvent(new CustomEvent('nl:facing', { detail: { tower: S.tower, floor: S.floor, bearing: Math.round(b), heightM: +eyeH(S.floor).toFixed(1), facing: DIRS[dirIx(b)], label: `מגדל ${S.tower}`, source: 'showroom', quiet: true } }));
+  // HAD-712: tower, floor, bearing and side are the choice (the basket renders its own words); facing and label stay the Hebrew
+  // values the visit trail already records, the same in every language, so the reports do not split
+  window.dispatchEvent(new CustomEvent('nl:facing', { detail: { tower: S.tower, floor: S.floor, bearing: Math.round(b), side: S.side, heightM: +eyeH(S.floor).toFixed(1), facing: dirTo(b, 'he'), label: t('tower_n', { tower: S.tower }, 'he'), source: 'showroom', quiet: true } }));
   try { history.replaceState(history.state, '', `${location.pathname}${location.search}#dira=${S.tower}${S.floor}-${Math.round(b)}`); } catch (e) { /* file: */ }
 }
 function openTower(k, quietly) {
@@ -162,7 +168,7 @@ function pick(f, side, how) {
   S.floor = Math.min(Math.max(f, 1), turn().floors);
   if (side != null) S.side = side; else if (S.side == null) S.side = 0;
   S.touched = true; paintCard(); place(); paintBand(); paintMap(); paintSteps(); paintHint(); announce();
-  ga('showroom_pick', { tower: S.tower, floor: S.floor, facing: DIRN[dirIx(sideBearing(S.tower, S.floor, S.side))], how: how || 'tap' });
+  ga('showroom_pick', { tower: S.tower, floor: S.floor, facing: dirFrom(sideBearing(S.tower, S.floor, S.side), 'he'), how: how || 'tap' });
 }
 function sideFacing(f, normal) { let best = 0, d = 999; for (let s = 0; s < 4; s++) { const x = angDiff(sideBearing(S.tower, f, s), normal); if (x < d) { d = x; best = s; } } return best; }
 function tapAt(cx, cy) { // a tap on the picture: the floor under the finger, and the side of the plate that faces out there
@@ -223,25 +229,25 @@ function wire() {
 }
 function callRow() {
   const now = !!CK.availNow, room = now ? `${location.pathname}${location.search ? location.search + '&' : '?'}room=new` : '#nlsch';
-  return `<a class="nlsr-call" href="${esc(room)}" data-ev="call">שיחת וידאו עם נציג</a>`;
+  return `<a class="nlsr-call" href="${esc(room)}" data-ev="call">${esc(t(now ? 'sr_call_now' : 'sr_call'))}</a>`;
 }
 
 export function mountShowroom(at) {
   if (!at || document.querySelector('.nlsr')) return { open };
   const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = WORLD + 'showroom.css' + (C.ver ? '?ver=' + C.ver : ''); document.head.appendChild(css);
-  el = document.createElement('section'); el.className = 'nlsr'; el.id = 'nlsr'; el.dir = 'rtl'; el.lang = 'he'; el.setAttribute('aria-label', 'אולם התצוגה: בחירת דירה במגדלי כיכר המדינה');
-  el.innerHTML = `<div class="nlsr-head"><div class="nlsr-t">בחרו דירה במגדלי כיכר המדינה</div><div class="nlsr-s"></div></div>
-    <ol class="nlsr-steps" aria-label="שלבי הבחירה"></ol>
-    <div class="nlsr-stage" tabindex="0" aria-label="המגדלים: מקישים על מגדל, מסובבים אותו בחצים או בגרירה, ומקישים על קומה">
+  el = document.createElement('section'); el.className = 'nlsr'; el.id = 'nlsr'; el.dir = dir(); el.lang = lang(); el.setAttribute('aria-label', t('sr_aria_section'));
+  el.innerHTML = `<div class="nlsr-head"><div class="nlsr-t">${esc(t('sr_title_all'))}</div><div class="nlsr-s"></div></div>
+    <ol class="nlsr-steps" aria-label="${esc(t('sr_aria_steps'))}"></ol>
+    <div class="nlsr-stage" tabindex="0" aria-label="${esc(t('sr_aria_stage'))}">
       <div class="nlsr-img"><img class="nlsr-pic" alt="" draggable="false" decoding="async"><svg class="nlsr-ov" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg><div class="nlsr-handles"></div><span class="nlsr-tag" hidden></span></div>
-      <span class="nlsr-cap">הדמיה להמחשה</span>
-      <button type="button" class="nlsr-back" data-act="all" hidden>› שלושת המגדלים</button>
+      <span class="nlsr-cap">${esc(t('sim'))}</span>
+      <button type="button" class="nlsr-back" data-act="all" hidden>${esc(t('sr_back_all'))}</button>
       <div class="nlsr-hint"><i class="nlsr-pulse-b"></i><b></b></div>
-      <div class="nlsr-turn" hidden><span aria-hidden="true">↔</span> גררו לצדדים כדי לסובב את המגדל</div>
+      <div class="nlsr-turn" hidden><span aria-hidden="true">↔</span> ${esc(t('sr_turn_hint'))}</div>
       <div class="nlsr-card" hidden></div>
     </div>
-    <div class="nlsr-map"><img src="${esc(A('turn/map.webp'))}" alt="מפת הסביבה: כיכר המדינה מימין, הים משמאל, צפון למעלה" loading="lazy" decoding="async">
-      <svg class="nlsr-mapov" aria-hidden="true"></svg><span class="nlsr-ml nlsr-ml--sea">הים</span><span class="nlsr-ml nlsr-ml--n">צפון ↑</span></div>
+    <div class="nlsr-map"><img src="${esc(A('turn/map.webp'))}" alt="${esc(t('sr_alt_map'))}" loading="lazy" decoding="async">
+      <svg class="nlsr-mapov" aria-hidden="true"></svg><span class="nlsr-ml nlsr-ml--sea">${esc(t('sr_map_sea'))}</span><span class="nlsr-ml nlsr-ml--n">${esc(t('sr_map_north'))}</span></div>
     <div class="nlsr-mapline" aria-live="polite"></div>
     <div class="nlsr-row">${callRow()}</div>`;
   at.parentNode.insertBefore(el, at);
@@ -253,7 +259,7 @@ export function mountShowroom(at) {
     wire(); paint(); restore();
     setTimeout(() => Object.keys(T.towers).forEach((k) => preload(k, nearestFrame(k, START))), 1200);
   }).catch((e) => { console.warn('[showroom]', e); el.remove(); });
-  if (CK.avail) fetch(CK.avail, { credentials: 'omit', cache: 'no-store' }).then((r) => r.json()).then((j) => { if (j && j.now === true) { CK.availNow = true; const r = el.querySelector('.nlsr-row'); if (r) r.innerHTML = callRow().replace('שיחת וידאו עם נציג', 'שיחת וידאו עכשיו, עם נציג'); } }).catch(() => {});
+  if (CK.avail) fetch(CK.avail, { credentials: 'omit', cache: 'no-store' }).then((r) => r.json()).then((j) => { if (j && j.now === true) { CK.availNow = true; const a = el.querySelector('.nlsr-row a.nlsr-call[data-ev="call"]'); if (a) a.outerHTML = callRow(); } }).catch(() => {});
   window.__nlJourney = { open };
   return { open };
 }

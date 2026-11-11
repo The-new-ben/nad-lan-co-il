@@ -1119,7 +1119,7 @@ if ( ! function_exists( 'nadlan_ps_kikar_next' ) ) {
 	 *  Built behind ?kikar=next (1.72.631, 1.72.636); open to every visitor since 1.72.639 on Ben's word (10.11.2026 night:
 	 *  "תשלים... תן לי לראות בדף החי את הכל"). The other languages are unchanged. */
 	function nadlan_ps_kikar_next( $ps ) {
-		return 'hamedina' === (string) ( $ps['dir'] ?? '' ) && 'he' === (string) ( $ps['lang'] ?? 'he' ); // HAD-699 (1.72.639): every visitor; ?kikar=next stays harmless
+		return 'hamedina' === (string) ( $ps['dir'] ?? '' ) && in_array( (string) ( $ps['lang'] ?? 'he' ), array( 'he', 'en' ), true ); // HAD-699 (1.72.639): every visitor; 1.72.658 (HAD-712): the English page too
 	}
 }
 if ( ! function_exists( 'nadlan_ps_world_media' ) ) {
@@ -1176,6 +1176,7 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 		);
 		if ( nadlan_ps_kikar_next( $ps ) ) { // HAD-699: the showcase behind ?kikar=next
 			$alt = 'הדמיה של מגדלי כיכר המדינה מהאוויר: שלושת המגדלים, הפארק בתוך טבעת הכיכר, הירקון והים';
+			if ( 'he' !== $tl ) { $alt = 'Kikar Hamedina Towers from the air: the three towers, the park inside the ring of the square, the Yarkon and the sea, illustrative visualisation'; } // 1.72.658
 			$cfg['next'] = array(
 				'colors'  => array( 'paper' => '#FFFFFF', 'ink' => '#14212B', 'gold' => '#2F9FBF', 'hair' => '#E3E7EA', 'sky0' => '#BCD3E3', 'sky1' => '#EAF2F8', 'ground' => '#CDD2D4', 'street' => '#A9AEB2', 'block' => '#E6EAED', 'blockPublic' => '#DFE4E8', 'blockRing' => '#EBEEF0', 'blockSite' => '#D5DADD', 'green' => '#9CB487', 'park' => '#8EAD71', 'water' => '#6E9EB7', 'lot' => '#E2E0D8', 'lotSoft' => '#B7C6A2', 'tree' => '#6D8E56', 'slab' => '#FFFFFF', 'edge' => '#14212B' ),
 				'cockpit' => array(
@@ -1186,12 +1187,14 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 					'base'   => plugins_url( $base, dirname( __FILE__ ) ),
 					'ver'    => nadlan_ps_ver(),
 					'avail'  => function_exists( 'rest_url' ) ? rest_url( 'nadlan/v1/room/available' ) : '',
+					'lang'   => $tl, // 1.72.658 (HAD-712): the cockpit's words and direction
 					'wa'     => $link,
 				),
 				'journey' => array( // HAD-699 (1.72.636): the full-screen path, tower, floor, view, into the apartment cockpit
 					'js'     => plugins_url( 'assets/project-stage/world/journey.js', dirname( __FILE__ ) ) . $v,
 					'data'   => plugins_url( $base . 'cockpit.json', dirname( __FILE__ ) ) . $v,
 					'aerial' => plugins_url( $base . 'aerial.json', dirname( __FILE__ ) ) . $v,
+					'lang'   => $tl, // 1.72.658 (HAD-712): the showroom's words and direction
 					'base'   => plugins_url( $base, dirname( __FILE__ ) ),
 					'ver'    => nadlan_ps_ver(),
 				),

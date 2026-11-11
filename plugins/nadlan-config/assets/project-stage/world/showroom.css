@@ -1,9 +1,10 @@
+/* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language (the element's dir; logical sides). */
 /* Kikar HaMedina: the showroom stage (HAD-712). Palette from the towers' own world: ink #14212b, sea blue #2f6f86 for every action,
    glass cyan #7fd3e6 for the chosen floor and the pulse, night #0d2129 behind the pictures, paper #f2f5f7; Noto Serif Hebrew for the
    title, Assistant for the rest. No cream, no gold. The site forces button radii and link colours with !important (skin-a,
    premium-sitewide): the scoped !important rules here win them back. */
 .nlsr{--sr-ink:#14212b;--sr-sea:#2f6f86;--sr-glass:#7fd3e6;--sr-night:#0d2129;--sr-paper:#f2f5f7;--sr-line:#c9d2d8;
-  position:relative;margin:0 0 18px;color:var(--sr-ink);font-family:'Assistant','Segoe UI',Arial,sans-serif;direction:rtl;text-align:right}
+  position:relative;margin:0 0 18px;color:var(--sr-ink);font-family:'Assistant','Segoe UI',Arial,sans-serif;text-align:start}
 .nlsr *{box-sizing:border-box}
 .nlsr-head{padding:2px 2px 6px}
 .nlsr-t{font:600 23px/1.15 'Noto Serif Hebrew',Georgia,serif!important;color:var(--sr-ink)!important}
@@ -23,12 +24,12 @@
 .nlsr .nlsr-h{position:absolute;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:999px!important;border:2px solid #fff;background:rgba(13,33,41,.8);color:#fff;font:700 18px/1 'Assistant',sans-serif;padding:0;cursor:pointer}
 .nlsr-tag{position:absolute;transform:translateY(-50%);height:32px;padding:0 11px;border-radius:999px;background:#fff;color:var(--sr-ink);font-size:15px;font-weight:700;display:flex;align-items:center;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 10px rgba(13,33,41,.35);pointer-events:none}
 .nlsr-tag[hidden]{display:none}
-.nlsr-cap{position:absolute;top:12px;left:12px;font-size:12px;color:#fff;background:rgba(20,33,43,.72);padding:3px 8px;border-radius:6px;pointer-events:none}
-.nlsr-hint{position:absolute;top:10px;right:10px;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:#fff;font-size:15px;box-shadow:0 2px 12px rgba(13,33,41,.3);pointer-events:none}
+.nlsr-cap{position:absolute;top:12px;inset-inline-end:12px;font-size:12px;color:#fff;background:rgba(20,33,43,.72);padding:3px 8px;border-radius:6px;pointer-events:none}
+.nlsr-hint{position:absolute;top:10px;inset-inline-start:10px;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:#fff;font-size:15px;box-shadow:0 2px 12px rgba(13,33,41,.3);pointer-events:none}
 .nlsr-hint[hidden],.nlsr-turn[hidden],.nlsr-card[hidden],.nlsr .nlsr-back[hidden]{display:none}
 .nlsr-hint i{width:10px;height:10px;border-radius:999px;background:var(--sr-sea);display:block}
 .nlsr-hint.is-nudge{animation:nlsrShake .5s ease-in-out 2}
-.nlsr .nlsr-back{position:absolute;top:58px;right:10px;min-height:40px;padding:0 14px;border-radius:999px!important;border:0;background:rgba(13,33,41,.84);color:#fff;font:600 14px/1 'Assistant',sans-serif;cursor:pointer}
+.nlsr .nlsr-back{position:absolute;top:58px;inset-inline-start:10px;min-height:40px;padding:0 14px;border-radius:999px!important;border:0;background:rgba(13,33,41,.84);color:#fff;font:600 14px/1 'Assistant',sans-serif;cursor:pointer}
 .nlsr-turn{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:999px;background:rgba(13,33,41,.84);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;pointer-events:none;animation:nlsrSway 1.8s ease-in-out 4}
 
 /* the floor card, at the thumb */
@@ -96,7 +97,8 @@
   .nlsr-t{font-size:30px!important}
   .nlsr a.nlsr-call{max-width:320px}
 }
-/* 1.72.646 (the page walk of 11.11.2026): the showroom replaces the earlier stage at every width, not only on a phone; without that box the page title, the opening lines and the buttons take the full row */
-body:has(.nlsr) .nlps-stagebox{display:none!important}
+/* 1.72.646 (the page walk of 11.11.2026): the showroom replaces the earlier stage at every width, not only on a phone; without that box the page title, the opening lines and the buttons take the full row.
+   HAD-712: on the Hebrew showroom only; Ben keeps the earlier 3D window view on the English page for now */
+body:has(.nlsr[lang="he"]) .nlps-stagebox{display:none!important}
 .nlsr{scroll-margin-top:84px}
-@media(min-width:900px){body:has(.nlsr) .nlps-page--world>.nlps-herowrap,body:has(.nlsr) .nlps-page--world>.nl-lead,body:has(.nlsr) .nlps-page--world>.nlps-ctawrap{grid-column:1/-1!important}body:has(.nlsr) .nlps-page--world>.nl-lead{max-width:82ch!important}}
+@media(min-width:900px){body:has(.nlsr[lang="he"]) .nlps-page--world>.nlps-herowrap,body:has(.nlsr[lang="he"]) .nlps-page--world>.nl-lead,body:has(.nlsr[lang="he"]) .nlps-page--world>.nlps-ctawrap{grid-column:1/-1!important}body:has(.nlsr[lang="he"]) .nlps-page--world>.nl-lead{max-width:82ch!important}}
