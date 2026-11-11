@@ -730,6 +730,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'en' === $lang ) { return nadlan_nli_summary_en( $id ); }
 		if ( 'nlcamp' === $id ) { return function_exists( 'nadlan_cb_summary' ) ? nadlan_cb_summary( 'he' ) : ''; }  // 7.11.2026: inc/campaign-brief.php
 		if ( 'nlbudget' === $id ) { return function_exists( 'nadlan_nlb_summary' ) ? nadlan_nlb_summary( 'he' ) : ''; }  // 7.11.2026 (HAD-678)
+		if ( 0 === strpos( (string) $id, 'dsg' ) ) { return function_exists( 'nadlan_dsg_summary' ) ? nadlan_dsg_summary( $id ) : ''; }  // 11.11.2026 (HAD-707): inc/design-tools.php
 		if ( in_array( $id, array( 'pmarket', 'pcity', 'panatomy' ), true ) ) { return function_exists( 'nadlan_phub_summary' ) ? nadlan_phub_summary( $id ) : ''; }  // 7.11.2026 (HAD-681)
 		if ( 'mhivun' === $id ) {  // HAD-675 (6.11.2026): the averages of today's fee files and a worked example (the steps of NLMR.feeExisting)
 			$x = nadlan_nli_mrates(); $d = $x['d'];
@@ -1728,3 +1729,6 @@ if ( file_exists( __DIR__ . '/garden-tools.php' ) ) { require_once __DIR__ . '/g
 
 /* 1.72.578 (HAD-670): the environmental-hazards map tools (hzmap, hzant, hzcompare, hzcity, hzplan); loaded only if present */
 if ( file_exists( __DIR__ . '/hazards-tools.php' ) ) { require_once __DIR__ . '/hazards-tools.php'; }
+
+/* 1.72.645 (HAD-707): the apartment-design tools (dsgfee ... dsgcurtain, tools/design.js on data/design.json); loaded only if present */
+if ( file_exists( __DIR__ . '/design-tools.php' ) ) { require_once __DIR__ . '/design-tools.php'; }

@@ -1,0 +1,43 @@
+{
+  "released": "1.72.645",
+  "from": "1.72.644",
+  "live_before": {
+    "nadlan-config.php": "9424cffd5ccf15bd6ce0ed32859699ee",
+    "inc/home-v3.php": "b9d89ed3ee6590fceada187c8cf5c111",
+    "inc/instruments.php": "bf55cd7f8090fac193e62c52cd98bbc2"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 16:10:30",
+  "files": {
+    "assets/designer/designer.js": "0825caac43efdda63c1fa6841471fc7a",
+    "assets/designer/core.js": "1ec55027b32368aa7ae4b2e86174d590",
+    "assets/designer/plan.js": "d410d4b6fbf6d04e9763d90603701c83",
+    "assets/designer/space.js": "9cae1f62f2bf8ed4c2606f61710dc6ae",
+    "assets/designer/catalog.js": "0c74a1c373799cf34cac75484b979e8f",
+    "assets/designer/strings.js": "d7592f965e34600b675e147d8ad9e75a",
+    "assets/designer/budget.js": "5b84806b221c9145b52d79c9ad758750",
+    "assets/designer/designer.css": "b21d7c83f61bc7995d4ae847e9e369ba",
+    "assets/designer/data/price-ranges.json": "61d63e7e8dd3f502418b425a7db1addf",
+    "assets/designer/data/designers.json": "90660b2a482e37c416f05e6b33f8bc0d",
+    "assets/designer/plans/example-3r.json": "16196abac2cf4155ba2bc4f5f3fa3ae0",
+    "assets/designer/plans/example-4r.json": "29deef8b832a744addb90246c7c1fa5e",
+    "assets/designer/plans/example-5r.json": "ed1b5025d4a8c24091528030d52baf28",
+    "assets/designer/models/models.json": "78f365aab284a358ebcf1c04afa5cca0",
+    "assets/designer/models/sofa3.glb": "0138d57faeee6949ba48652c89fe069b",
+    "assets/designer/models/bed160.glb": "43c60628dad8631b2e61bcbda3da0f13",
+    "assets/designer/models/dining-chair.glb": "20169522472887fb918bad075ffa6d81",
+    "assets/designer/models/bed120.glb": "753b1c0ec790e6e983c613e7a50f35c3",
+    "assets/designer/models/wardrobe200.glb": "1f61681368c99c1582d16079bfd8dbf3",
+    "assets/instruments/tools/design.js": "e14ebdb17df2fa31cc99fa4f0c71edbb",
+    "assets/instruments/data/design.json": "31848206d81c8fb816858c096cf8446f",
+    "inc/designer.php": "7d9f2e01cbeea0c1659baf460e01a2c8",
+    "inc/design-tools.php": "65d2d96333b25de7e0d656b1051a9061",
+    "inc/design-pages.php": "94003ade02e6ec6e710bbe9d6bf8fb71",
+    "nadlan-config.php": "021a986a1bf5483235c85cd1036c2dcc",
+    "inc/home-v3.php": "bae4952947e6f96ae9da7d3c8233e7f5",
+    "inc/instruments.php": "f869d5ca08a33a027553ea7dad9d58da"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.645, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

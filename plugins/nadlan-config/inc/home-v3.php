@@ -163,7 +163,7 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 			array( array( 'מחשבונים', array( array( 'מחשבון משכנתא', $u( '/mortgage-calculator/' ) ), array( 'מחשבון מס רכישה', $u( '/purchase-tax-calculator/' ) ), array( 'עלות עסקה מלאה', $u( '/apartment-purchase-cost-calculator/' ) ), array( 'כמה שווה הדירה שלי', $u( '/property-value-estimator/' ) ) ) ) ),
 		) );
 		$menus .= nadlan_hp_panel( 'סיורים וירטואליים', array(
-			array( array( 'סיורים וירטואליים', array( array( 'כל הסיורים', $u( '/tours/' ) ), array( 'סיור רובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור מתחם סומייל', $u( '/tour/somail/' ) ), array( 'סיור במגדלי כיכר המדינה', $u( '/projects/hamedina/' ) ), array( 'מעצב הדירות', $u( '/tour/designer/' ) ) ) ) ), // v104.29: + Kikar
+			array( array( 'סיורים וירטואליים', array( array( 'כל הסיורים', $u( '/tours/' ) ), array( 'סיור רובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור מתחם סומייל', $u( '/tour/somail/' ) ), array( 'סיור במגדלי כיכר המדינה', $u( '/projects/hamedina/' ) ), array( 'עיצוב דירה אונליין', $u( '/design-studio/' ) ) ) ) ), // v104.29: + Kikar
 			array( array( 'מהאוויר', array( array( 'הליקופטר שדה דב · צילום אמיתי', $u( '/earth/sde-dov/' ) ), array( 'הליקופטר סומייל', $u( '/earth/somail/' ) ), array( 'קטלוג הסיורים הווירטואליים', $u( '/premium/' ) ) ) ) ),
 		), $promo );
 		$menus .= nadlan_hp_panel( 'מגזין נדל״ן', array(

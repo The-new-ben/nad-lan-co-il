@@ -1,0 +1,29 @@
+{
+ "slug": "design-studio",
+ "parent_path": "",
+ "path": "/design-studio/",
+ "wp_title": "עיצוב דירה אונליין",
+ "seo_title": "עיצוב דירה אונליין בתלת מימד | מעצבת פנים אונליין",
+ "seo_desc": "עיצוב דירה אונליין בחינם ובעברית: פותחים דירה לדוגמה, מעמידים רהיטים לפי מידות ורואים כל חדר בתלת מימד. ולצד זה 16 מחשבונים ומדריך לייעוץ עם מעצבת פנים אונליין.",
+ "tools": [
+  "dsgwho",
+  "dsgfee",
+  "dsgbudget",
+  "dsgfurnish",
+  "dsgkitchen",
+  "dsgfloor",
+  "dsgpaint",
+  "dsgcurtain",
+  "dsgsofa",
+  "dsgrug",
+  "dsgdining",
+  "dsglight",
+  "dsgpoints",
+  "dsgstyle",
+  "dsgbed",
+  "dsgtime"
+ ],
+ "words": 6968,
+ "faq": 11,
+ "built": "2026-11-11"
+}

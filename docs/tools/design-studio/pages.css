@@ -1,0 +1,155 @@
+/* HAD-707 · the three design pages (/design-studio/, /design-studio/designer-cost/, /profession/מעצב-פנים/).
+   Identity "the working drawing" (Claude Design canvas, boards 8-13): drafting white, plan ink, blueprint blue for what
+   you can press, dimension red for measurements and stops only, green for "included / free" only. IBM Plex Sans Hebrew
+   for text, IBM Plex Mono for every number. Square corners, 2px ink rules, a hard grid. Not the default look: no cream,
+   no gradient, no soft rounded cards, no serif. The theme forces colours and sizes with !important, so do these rules. */
+.nlds-pg{--paper:#F2F5F7;--sheet:#FFFFFF;--ink:#0F2233;--blue:#1F5FA8;--tint:#D6E5F6;--red:#B5302A;--green:#1C7A4E;--b2:#33475A;--lab:#46596A;--hair:#B9C6CF;--grid:#DCE4E9;--panel:#E6ECF0;
+  --sans:"IBM Plex Sans Hebrew","Assistant","Heebo",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  container-type:inline-size;container-name:nldspg;display:block;box-sizing:border-box;
+  width:100vw!important;max-width:100vw!important;margin-inline:calc(50% - 50vw)!important;margin-block:0!important;padding:0 16px 64px!important;
+  background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--sans);text-align:start;overflow-wrap:anywhere}
+.nlds-pg *,.nlds-pg *::before,.nlds-pg *::after{box-sizing:border-box}
+/* this style rides inside the page's own content, so it reaches only these three pages: the sheet's ground behind the whole page */
+html body,html body main.nlpc-page-main{background:#F2F5F7!important}
+.nlds-pg>*{max-width:1312px;margin-inline:auto}
+html body .nlds-pg :is(p,li,td,th,dd,dt,caption){font-family:var(--sans)!important;color:var(--ink)}
+html body .nlds-pg p{font-size:17px!important;line-height:1.62!important;margin:0 0 16px!important;max-width:74ch}
+html body .nlds-pg a{color:var(--blue)!important;text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px}
+html body .nlds-pg a:hover{color:var(--ink)!important}
+html body .nlds-pg strong,html body .nlds-pg b{font-weight:600;color:inherit}
+.nlds-pg bdi,.nlds-pg .n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---- sheet head: crumbs, title, answer, two buttons */
+.nlds-pg>header{counter-reset:nlsec;position:relative;padding:20px 0 32px!important;border-bottom:2px solid var(--ink);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;background-position:0 0}
+.nlds-pg>header::after{content:"";position:absolute;inset-inline:0;bottom:-8px;height:4px;border-inline:2px solid var(--red);border-bottom:1px solid var(--red);pointer-events:none}
+html body .nlds-pg .nlds-crumbs{font:500 12.5px/1.4 var(--sans)!important;letter-spacing:.04em;color:var(--lab)!important;margin:0 0 20px!important;max-width:none}
+html body .nlds-pg .nlds-crumbs a{color:var(--lab)!important;text-decoration:none!important}
+html body .nlds-pg .nlds-crumbs a:hover{color:var(--blue)!important;text-decoration:underline!important}
+html body .nlds-pg .nlds-crumbs span[aria-hidden]{margin-inline:6px;color:var(--hair)}
+html body .nlds-pg .nlds-sheet{display:inline-block;font:500 12px/1 var(--mono)!important;letter-spacing:.02em;color:var(--sheet)!important;background:var(--ink);padding:7px 10px;margin:0 0 16px!important}
+html body .nlds-pg h1{font:700 clamp(34px,7.2cqi,66px)/1.06 var(--sans)!important;letter-spacing:-.015em!important;color:var(--ink)!important;margin:0 0 20px!important;max-width:18ch;text-wrap:balance;background:none!important;padding:0!important;text-align:start!important}
+html body .nlds-pg p.answer{font-size:clamp(18px,2.1cqi,20px)!important;line-height:1.62!important;color:var(--ink)!important;max-width:62ch;margin:0 0 24px!important;background:var(--paper);padding:2px 0}
+html body .nlds-pg .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:0!important;max-width:none}
+html body .nlds-pg a.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px!important;font:600 17px/1.2 var(--sans)!important;text-decoration:none!important;border-radius:0!important;border:2px solid var(--ink)!important;box-shadow:none!important;transition:background .12s,color .12s}
+html body .nlds-pg a.btn-primary{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
+html body .nlds-pg a.btn-secondary{background:var(--sheet)!important;color:var(--ink)!important}
+html body .nlds-pg a.btn:hover,html body .nlds-pg a.btn:focus-visible{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}
+.nlds-pg :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* ---- sections: a 2px ink rule, a numbered bubble like a section mark on a drawing */
+.nlds-pg>section{padding:48px 0 8px!important;border-top:2px solid var(--ink);margin-top:40px}
+.nlds-pg>header+section{border-top:0;margin-top:0}
+.nlds-pg>section.engine{padding-top:32px!important}
+html body .nlds-pg h2{counter-increment:nlsec;display:flex;align-items:center;gap:14px;font:700 clamp(27px,3.6cqi,40px)/1.12 var(--sans)!important;letter-spacing:-.01em!important;color:var(--ink)!important;margin:0 0 24px!important;padding:0!important;background:none!important;border:0!important;text-align:start!important;text-wrap:balance}
+html body .nlds-pg h2::before{content:counter(nlsec,decimal-leading-zero);flex:none;display:grid;place-items:center;width:48px;height:48px;border:2px solid var(--ink);border-radius:50%;font:500 15px/1 var(--mono);letter-spacing:0;color:var(--ink);background:linear-gradient(var(--ink),var(--ink)) center 72%/60% 1px no-repeat var(--sheet);padding-bottom:9px}
+html body .nlds-pg h3{font:700 clamp(19px,2.3cqi,22px)/1.3 var(--sans)!important;color:var(--ink)!important;margin:36px 0 12px!important;padding:0!important;background:none!important;border:0!important;text-align:start!important}
+html body .nlds-pg h4{font:600 18px/1.35 var(--sans)!important;color:var(--ink)!important;margin:28px 0 10px!important}
+html body .nlds-pg ul,html body .nlds-pg ol{margin:0 0 20px!important;padding-inline-start:22px!important;max-width:74ch}
+html body .nlds-pg li{font-size:17px!important;line-height:1.62!important;margin:0 0 8px!important}
+html body .nlds-pg ul li::marker{color:var(--blue)}
+
+/* numbered notes, like the general notes on a drawing sheet */
+html body .nlds-pg ol.steps{list-style:none!important;counter-reset:nlstep;padding:0!important;margin:20px 0 28px!important;max-width:none;display:grid;gap:0;border-top:1px solid var(--hair)}
+html body .nlds-pg ol.steps>li{counter-increment:nlstep;position:relative;padding:14px 0!important;padding-inline-start:52px!important;margin:0!important;border-bottom:1px solid var(--hair)}
+html body .nlds-pg ol.steps>li::before{content:counter(nlstep,decimal-leading-zero);position:absolute;inset-inline-start:0;top:14px;font:500 17px/1.62 var(--mono);color:var(--blue)}
+
+/* small print, notes, definitions */
+html body .nlds-pg p.small,html body .nlds-pg p.note,html body .nlds-pg .small{font-size:15.5px!important;line-height:1.55!important;color:var(--b2)!important}
+html body .nlds-pg p.note{border-inline-start:2px solid var(--hair);padding-inline-start:12px;margin-top:16px!important}
+html body .nlds-pg p.definition{background:var(--sheet);border:1px solid var(--hair);border-inline-start:4px solid var(--ink);padding:16px 18px!important;max-width:74ch}
+html body .nlds-pg p.list-rules{background:var(--sheet);border:1px solid var(--hair);border-inline-start:4px solid var(--red);padding:16px 18px!important;font-size:15.5px!important;line-height:1.6!important;color:var(--b2)!important;max-width:none}
+
+/* schedule tables: ink head, hairline rows, scroll inside their own frame on phones */
+.nlds-pg .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0 28px;border:2px solid var(--ink);background:var(--sheet);max-width:100%}
+html body .nlds-pg table{width:max-content;min-width:100%;max-width:none;border-collapse:collapse!important;margin:0!important;border:0!important;background:var(--sheet);font-size:15.5px;overflow-wrap:normal;word-break:normal}
+html body .nlds-pg td,html body .nlds-pg th{overflow-wrap:normal;word-break:normal;min-width:96px;max-width:300px}
+html body .nlds-pg td:first-child,html body .nlds-pg tbody th:first-child{min-width:150px;font-weight:500}
+html body .nlds-pg caption{caption-side:top;text-align:start;font:600 12.5px/1.4 var(--sans)!important;letter-spacing:.04em;color:var(--lab)!important;padding:10px 14px;border-bottom:1px solid var(--hair);background:var(--panel)}
+html body .nlds-pg th{background:var(--ink)!important;color:#fff!important;font:600 14px/1.35 var(--sans)!important;text-align:start!important;padding:11px 14px!important;border:0!important;white-space:nowrap}
+html body .nlds-pg td{padding:11px 14px!important;border:0!important;border-top:1px solid var(--grid)!important;font-size:15.5px!important;line-height:1.5!important;vertical-align:top;background:transparent!important;text-align:start!important}
+html body .nlds-pg tbody tr:nth-child(even) td{background:#F8FAFB!important}
+html body .nlds-pg td:not(:first-child){font-family:var(--mono)!important;font-size:14.5px!important;font-variant-numeric:tabular-nums}
+html body .nlds-pg tbody th{background:var(--panel)!important;color:var(--ink)!important}
+
+/* ---- the designer block: a drawing frame with a title strip and the plan chooser */
+.nlds-pg section.engine{max-width:none;padding-bottom:0!important}
+.nlds-pg section.engine>*{max-width:1312px;margin-inline:auto}
+.nlds-pg .nlds-titleblock{display:flex;flex-wrap:wrap;align-items:stretch;border:2px solid var(--ink);border-bottom:0;background:var(--sheet);margin:0 auto!important}
+.nlds-pg .nlds-titleblock>span{flex:1 1 auto;font:500 12.5px/1.3 var(--sans);color:var(--ink);padding:9px 12px;border-inline-end:1px solid var(--hair);border-bottom:1px solid var(--hair);white-space:nowrap}
+.nlds-pg .nlds-titleblock>span:first-child{background:var(--ink);color:#fff;font-family:var(--sans);font-weight:600;letter-spacing:.02em}
+.nlds-pg .nlds-titleblock>span.free{color:var(--green);font-family:var(--sans);font-weight:600}
+.nlds-pg .nadlan-designer-pick{display:flex;flex-wrap:nowrap;gap:0;align-items:center;border:2px solid var(--ink);border-bottom:0;background:var(--panel);padding:8px;margin:0 auto!important}
+.nlds-pg .nadlan-designer-pick[hidden]{display:none}
+.nlds-pg .nadlan-designer-pick::before{content:"דירה לדוגמה";flex:none;font:600 12.5px/1.2 var(--sans);letter-spacing:.04em;color:var(--lab);margin-inline:4px 10px}
+html body .nlds-pg .nadlan-designer-pick button{flex:1 1 0;min-height:44px;min-width:0;max-width:140px;padding:0 6px!important;white-space:nowrap;margin:0 -2px 0 0!important;border:2px solid var(--ink)!important;border-radius:0!important;background:var(--sheet)!important;color:var(--ink)!important;font:600 15px/1 var(--sans)!important;cursor:pointer;box-shadow:none!important}
+html body .nlds-pg .nadlan-designer-pick button[aria-pressed="true"]{background:var(--ink)!important;color:#fff!important}
+html body .nlds-pg .nadlan-designer-pick button:hover{background:var(--tint)!important;color:var(--ink)!important}
+html body .nlds-pg .nadlan-designer-pick button[aria-pressed="true"]:hover{background:var(--ink)!important;color:#fff!important}
+.nlds-pg .nadlan-designer{border:2px solid var(--ink);background:var(--sheet);height:clamp(520px,calc(100vh - 170px),860px)!important;height:clamp(520px,calc(100svh - 170px),860px)!important;min-height:0!important;overflow:hidden}
+.nlds-pg :is(section,h3,.nlds-titleblock)[id],.nlds-pg section,.nlds-pg h3[id]{scroll-margin-top:84px}
+.nlds-pg section.engine>p.note{margin-top:12px!important}
+
+/* ---- the tools sit on the sheet as instruments; their own look stays (core.css + design.js) */
+.nlds-pg .nli{--nli-ground:#F2F5F7;--nli-ink:#0F2233;--nli-ink2:#33475A;--nli-mute:#46596A;--nli-line:#B9C6CF;--nli-sea:#1F5FA8;--nli-sea-deep:#0F2233;--nli-focus:#1F5FA8;--nli-r-s:0px;--nli-r-m:0px;margin:20px 0 32px!important;max-width:980px}
+html body .nlds-pg .nli,html body .nlds-pg .nli *{border-radius:0!important}
+html body .nlds-pg .nli .nli-host{border:1px solid var(--hair)!important;border-top:2px solid var(--ink)!important;box-shadow:none!important}
+html body .nlds-pg .nli p.nli__kicker{color:var(--lab)!important;font:600 12.5px/1.4 var(--sans)!important;letter-spacing:.04em}
+html body .nlds-pg .nli :is(h2,h3,h4).nli__title{display:block;counter-increment:none;font:700 clamp(19px,2.3cqi,22px)/1.3 var(--sans)!important;margin:0 0 8px!important;letter-spacing:0!important}
+html body .nlds-pg .nli h2.nli__title::before{content:none}
+html body .nlds-pg .nli table{min-width:0;width:100%}
+html body .nlds-pg .nli td,html body .nlds-pg .nli th{min-width:0;max-width:none}
+
+/* ---- questions */
+.nlds-pg section#faq h3{border-top:1px solid var(--hair);padding-top:20px!important;margin-top:24px!important}
+.nlds-pg section#faq h3:first-of-type{border-top:0;padding-top:0!important}
+
+/* ---- the next pages */
+.nlds-pg .nlds-next{display:grid;gap:12px;grid-template-columns:1fr;margin:8px 0 0;max-width:none;padding:0!important;list-style:none!important}
+html body .nlds-pg .nlds-next li{margin:0!important}
+html body .nlds-pg .nlds-next a{display:block;background:var(--sheet);border:2px solid var(--ink);padding:18px 20px;text-decoration:none!important;color:var(--ink)!important;font:600 18px/1.3 var(--sans)!important}
+html body .nlds-pg .nlds-next a span{display:block;font:400 15px/1.5 var(--sans);color:var(--b2);margin-top:6px}
+html body .nlds-pg .nlds-next a::after{content:"←";float:inline-end;font-family:var(--mono);color:var(--blue)}
+html body .nlds-pg .nlds-next a:hover{background:var(--ink);color:#fff!important}
+html body .nlds-pg .nlds-next a:hover span,html body .nlds-pg .nlds-next a:hover::after{color:#fff}
+
+/* ---- the neutral list of studios (designers page) */
+.nlds-pg .nlds-dir{margin:24px 0 32px;max-width:none}
+.nlds-pg .nlds-dir__f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.nlds-pg .nlds-dir__fl{font:600 12.5px/1 var(--sans);letter-spacing:.04em;color:var(--lab);min-width:44px}
+html body .nlds-pg button.nlds-chip{min-height:44px;padding:0 14px!important;border:1px solid var(--ink)!important;border-radius:0!important;background:var(--sheet)!important;color:var(--ink)!important;font:500 15px/1 var(--sans)!important;cursor:pointer;box-shadow:none!important;margin:0!important}
+html body .nlds-pg button.nlds-chip b{font:500 12.5px/1 var(--mono);color:var(--lab);margin-inline-start:6px}
+html body .nlds-pg button.nlds-chip[aria-pressed="true"]{background:var(--ink)!important;color:#fff!important}
+html body .nlds-pg button.nlds-chip[aria-pressed="true"] b{color:#fff}
+html body .nlds-pg button.nlds-chip:hover{background:var(--tint)!important;color:var(--ink)!important}
+html body .nlds-pg p.nlds-dir__count{font:500 13px/1.4 var(--sans)!important;color:var(--lab)!important;margin:16px 0 12px!important;max-width:none}
+html body .nlds-pg p.nlds-dir__count b{font-family:var(--mono);color:var(--ink)}
+html body .nlds-pg ol.nlds-dir__list{list-style:none!important;padding:0!important;margin:0!important;max-width:none;display:grid;grid-template-columns:1fr;gap:12px}
+html body .nlds-pg li.nlds-rec{position:relative;background:var(--sheet);border:1px solid var(--hair);border-top:2px solid var(--ink);padding:16px 16px 12px!important;margin:0!important;display:grid;grid-template-columns:1fr;gap:6px;align-content:start}
+html body .nlds-pg li.nlds-rec[hidden]{display:none}
+.nlds-pg .nlds-rec__n{position:absolute;inset-block-start:14px;inset-inline-end:14px;font:500 13px/1 var(--mono);color:var(--lab)}
+html body .nlds-pg p.nlds-rec__name{font:700 19px/1.3 var(--sans)!important;margin:0!important;padding-inline-end:40px;max-width:none}
+html body .nlds-pg p.nlds-rec__place{font:500 13px/1.4 var(--sans)!important;letter-spacing:.02em;color:var(--lab)!important;margin:0!important}
+html body .nlds-pg ul.nlds-rec__tags{list-style:none!important;display:flex;flex-wrap:wrap;gap:6px;padding:0!important;margin:6px 0 2px!important;max-width:none}
+html body .nlds-pg ul.nlds-rec__tags li{font:500 12.5px/1 var(--sans)!important;border:1px solid var(--hair);background:var(--paper);padding:6px 8px;margin:0!important;color:var(--b2)}
+html body .nlds-pg p.nlds-rec__line{font-size:15.5px!important;line-height:1.5!important;color:var(--b2)!important;margin:4px 0 0!important;max-width:none}
+html body .nlds-pg p.nlds-rec__go{margin:8px 0 0!important}
+html body .nlds-pg p.nlds-rec__go a{display:inline-flex;align-items:center;min-height:44px;font:600 15.5px/1 var(--sans)!important;text-decoration:none!important;border-bottom:2px solid var(--blue)}
+html body .nlds-pg p.nlds-rec__foot{font-size:12.5px!important;line-height:1.5!important;color:var(--lab)!important;border-top:1px solid var(--grid);padding-top:10px;margin:8px 0 0!important;max-width:none}
+html body .nlds-pg p.nlds-rec__foot a{color:var(--lab)!important;white-space:nowrap}
+html body .nlds-pg p.nlds-dir__none{border:1px dashed var(--hair);padding:20px;color:var(--b2)!important;max-width:none}
+html body .nlds-pg .join-designers{background:var(--sheet);border:2px solid var(--ink);padding:20px!important;margin:24px 0}
+
+@container nldspg (min-width:960px){
+  .nlds-pg>header{padding:32px 0 56px!important}
+  html body .nlds-pg ol.steps{grid-template-columns:repeat(2,1fr);column-gap:48px}
+  html body .nlds-pg ol.nlds-dir__list{grid-template-columns:repeat(3,1fr);gap:16px}
+  .nlds-pg .nlds-next{grid-template-columns:repeat(2,1fr)}
+  .nlds-pg>section{padding-top:72px!important;margin-top:56px}
+  .nlds-pg>header+section{padding-top:48px!important}
+}
+@container nldspg (min-width:640px) and (max-width:959px){html body .nlds-pg ol.nlds-dir__list{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.nlds-pg{padding-inline:48px!important}}
+@media (max-width:520px){html body .nlds-pg .cta-row a.btn{flex:1 1 100%}}
+@media (max-width:700px){.nlds-pg .nadlan-designer{height:clamp(480px,calc(100vh - 196px),860px)!important;height:clamp(480px,calc(100svh - 196px),860px)!important}.nlds-pg section,.nlds-pg h3[id]{scroll-margin-top:72px}}
+@media (prefers-reduced-motion:reduce){html body .nlds-pg a.btn{transition:none}}
