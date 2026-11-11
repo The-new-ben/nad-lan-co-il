@@ -1,0 +1,85 @@
+[
+  {
+    "id": "higharc-intro-long",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 12118,
+    "reqs": 1209,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://app.higharc.com/showroom/intro?builderId=G3de6WX90K7nylNm&planId=X1BPz26zwx2yA7Qp&planType=master_plans&embedSource=script",
+        "kb": 1771,
+        "reqs": 119
+      },
+      {
+        "ts": 2504,
+        "step": "timeUntil",
+        "label": "loading text gone",
+        "ok": true,
+        "ms": 3369
+      },
+      {
+        "ts": 10886,
+        "step": "shot",
+        "name": "higharc-14-intro-loaded",
+        "kb": 6728,
+        "reqs": 1048
+      },
+      {
+        "ts": 26354,
+        "step": "eval",
+        "label": "prices+sections",
+        "value": "{\"kbNote\":\"see log\",\"dollarLines\":[],\"headings\":[],\"buttons\":[\"Reset to original\",\"Share\",\"Save\",\"Zoom in\",\"Reset zoom\",\"Zoom out\",\"Search options (ctrl+K)\"],\"lineCount\":9}"
+      },
+      {
+        "ts": 26357,
+        "step": "drag"
+      },
+      {
+        "ts": 36388,
+        "step": "shot",
+        "name": "higharc-15-intro-orbit",
+        "kb": 12118,
+        "reqs": 1209
+      }
+    ]
+  },
+  {
+    "id": "higharc-intro-mobile",
+    "mode": "mobile",
+    "date": "2026-11-10",
+    "totalKB": 6632,
+    "reqs": 1047,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://app.higharc.com/showroom/intro?builderId=G3de6WX90K7nylNm&planId=X1BPz26zwx2yA7Qp&planType=master_plans&embedSource=script",
+        "kb": 11,
+        "reqs": 6
+      },
+      {
+        "ts": 2481,
+        "step": "timeUntil",
+        "label": "loading text gone",
+        "ok": true,
+        "ms": 98
+      },
+      {
+        "ts": 7579,
+        "step": "shot",
+        "name": "higharc-16-intro-mobile",
+        "kb": 5884,
+        "reqs": 1007
+      },
+      {
+        "ts": 15042,
+        "step": "eval",
+        "label": "mobile ui",
+        "value": "{\"vw\":390,\"small\":5,\"total\":5}"
+      }
+    ]
+  }
+]

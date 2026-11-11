@@ -1,0 +1,64 @@
+{
+ "url": "https://he.wikipedia.org/wiki/עיצוב_פנים",
+ "slug": "https_he_wikipedia_org_wiki__0a5aac",
+ "status": 200,
+ "final_url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%A4%D7%A0%D7%99%D7%9D",
+ "title": "עיצוב פנים – ויקיפדיה",
+ "meta_description": null,
+ "canonical": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%A4%D7%A0%D7%99%D7%9D",
+ "robots": "max-image-preview:standard",
+ "headings": [
+  {
+   "level": 2,
+   "text": "תוכן עניינים"
+  },
+  {
+   "level": 1,
+   "text": "עיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "רקע"
+  },
+  {
+   "level": 2,
+   "text": "בישראל"
+  },
+  {
+   "level": 2,
+   "text": "שילוב הפנג שווי בעיצוב"
+  },
+  {
+   "level": 2,
+   "text": "ראו גם"
+  },
+  {
+   "level": 2,
+   "text": "קישורים חיצוניים"
+  },
+  {
+   "level": 2,
+   "text": "הערות שוליים"
+  }
+ ],
+ "word_count": 739,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 0,
+  "3d_or_planner": 0,
+  "video": 0,
+  "price_table": 3,
+  "form_lead": 2,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 3,
+ "price_snippets": [],
+ "schema_types": [
+  "Article",
+  "ImageObject",
+  "Organization"
+ ]
+}

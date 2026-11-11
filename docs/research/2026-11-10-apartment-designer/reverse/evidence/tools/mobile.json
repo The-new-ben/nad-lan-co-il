@@ -1,0 +1,13 @@
+[
+{"id":"planner5d-home-mobile","url":"https://planner5d.com/","mode":"mobile","wait":4000},
+{"id":"homestyler-home-mobile","url":"https://www.homestyler.com/","mode":"mobile","wait":4000},
+{"id":"coohom-home-mobile","url":"https://www.coohom.com/","mode":"mobile","wait":4000},
+{"id":"roomsketcher-home-mobile","url":"https://www.roomsketcher.com/","mode":"mobile","wait":4000},
+{"id":"floorplanner-home-mobile","url":"https://floorplanner.com/","mode":"mobile","wait":4000},
+{"id":"higharc-home-mobile","url":"https://www.higharc.com/","mode":"mobile","wait":4000},
+{"id":"gbuilder-home-mobile","url":"https://www.gbuilder.com/","mode":"mobile","wait":4000},
+{"id":"gbuilder-home-desktop","url":"https://www.gbuilder.com/","mode":"desktop","wait":4000},
+{"id":"higharc-demo-home-mobile","url":"https://demo.higharc.com/","mode":"mobile","wait":5000},
+{"id":"roomle-room-demo-desktop","url":"https://www.roomle.com/t/cp/?configuratorId=mocdemo&id=3fx5c6u9bwyveh010jzuu2dsnbjxaqu&api=false&catalogRootTag=rubens_room_demo_root&locale=en&startInDetail=false&state.mode=catalog","mode":"desktop","wait":8000,"canvasWait":40000},
+{"id":"roomle-room-demo-mobile","url":"https://www.roomle.com/t/cp/?configuratorId=mocdemo&id=3fx5c6u9bwyveh010jzuu2dsnbjxaqu&api=false&catalogRootTag=rubens_room_demo_root&locale=en&startInDetail=false&state.mode=catalog","mode":"mobile","wait":8000,"canvasWait":40000}
+]

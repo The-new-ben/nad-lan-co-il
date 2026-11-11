@@ -1,0 +1,204 @@
+[
+  {
+    "id": "floorplanner-demo-deep",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 26115,
+    "reqs": 279,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://floorplanner.com/demo",
+        "kb": 2136,
+        "reqs": 56
+      },
+      {
+        "ts": 3365,
+        "step": "timeUntil",
+        "label": "editor canvas >300px",
+        "ok": true,
+        "ms": 1660
+      },
+      {
+        "ts": 9040,
+        "step": "eval",
+        "label": "ctx+canvas",
+        "value": "{\"ctx\":[\"2d\",\"webgl\",\"webgl2\"],\"canv\":[[1366,840],[300,150]],\"lang\":\"en\",\"dir\":\"ltr\"}"
+      },
+      {
+        "ts": 9044,
+        "step": "shot",
+        "name": "floorplanner-01-2d",
+        "kb": 9035,
+        "reqs": 118
+      },
+      {
+        "ts": 9182,
+        "step": "clickXY",
+        "x": 900,
+        "y": 450
+      },
+      {
+        "ts": 11292,
+        "step": "shot",
+        "name": "floorplanner-02-room-selected",
+        "kb": 9037,
+        "reqs": 119
+      },
+      {
+        "ts": 11564,
+        "step": "eval",
+        "label": "room panel text",
+        "value": "Project\nExample House\n2D\n3D\nback\nRoom\nLiving\nRoom\n40.2 m²\nRoomtype\nLiving\nFloor Finish\nWood Planks Bare 0335\nWall Finish\nMixed: Luna Landscape 6, Moroccan Sands 3\nStyleboard\nNot Set\nSettings\nItems In Room\nm\nft"
+      },
+      {
+        "ts": 11603,
+        "step": "click",
+        "text": "Objects",
+        "found": null
+      },
+      {
+        "ts": 14669,
+        "step": "shot",
+        "name": "floorplanner-03-objects",
+        "kb": 9037,
+        "reqs": 119
+      },
+      {
+        "ts": 14820,
+        "step": "eval",
+        "label": "objects panel text",
+        "value": "Project\nExample House\n2D\n3D\nback\nRoom\nLiving\nRoom\n40.2 m²\nRoomtype\nLiving\nFloor Finish\nWood Planks Bare 0335\nWall Finish\nMixed: Luna Landscape 6, Moroccan Sands 3\nStyleboard\nNot Set\nSettings\nItems In Room\nm\nft"
+      },
+      {
+        "ts": 14827,
+        "step": "click",
+        "text": "Finishes",
+        "found": null
+      },
+      {
+        "ts": 17879,
+        "step": "shot",
+        "name": "floorplanner-04-finishes",
+        "kb": 9037,
+        "reqs": 119
+      },
+      {
+        "ts": 18123,
+        "step": "click",
+        "text": "Styleboards",
+        "found": null
+      },
+      {
+        "ts": 21195,
+        "step": "shot",
+        "name": "floorplanner-05-styleboards",
+        "kb": 9037,
+        "reqs": 119
+      },
+      {
+        "ts": 21429,
+        "step": "click",
+        "text": "3D",
+        "found": {
+          "x": 1312,
+          "y": 102,
+          "t": "3D"
+        }
+      },
+      {
+        "ts": 24671,
+        "step": "shot",
+        "name": "floorplanner-06-3d-2s",
+        "kb": 21559,
+        "reqs": 276
+      },
+      {
+        "ts": 39625,
+        "step": "shot",
+        "name": "floorplanner-07-3d-8s",
+        "kb": 26115,
+        "reqs": 279
+      },
+      {
+        "ts": 39786,
+        "step": "eval",
+        "label": "3d ui text",
+        "value": "Camera 7\n2D\n3D\nCamera\nCamera\nCamera 7\nCamera\nLight & Scene\nCamera Type\nNone\nDollhouse\nFirst Person\nFirst Person\nCamera Height\ncm\nFloor\nField Of View °\n°\nSun Position"
+      },
+      {
+        "ts": 39796,
+        "step": "drag"
+      },
+      {
+        "ts": 48710,
+        "step": "shot",
+        "name": "floorplanner-08-3d-orbit",
+        "kb": 26115,
+        "reqs": 279
+      },
+      {
+        "ts": 48853,
+        "step": "eval",
+        "label": "walk/firstperson controls",
+        "value": "[\"Undo\",\"Redo\",\"Camera 7\",\"Play viewpoints\",\"Dollhouse\",\"First Person\",\"View settings\",\"2D\",\"3D\",\"Previous camera\",\"Next camera\",\"Camera\",\"Light & Scene\",\"Zoom in\",\"Zoom out\",\"Recenter\"]"
+      },
+      {
+        "ts": 48859,
+        "step": "click",
+        "text": "Info",
+        "found": null
+      },
+      {
+        "ts": 51866,
+        "step": "shot",
+        "name": "floorplanner-09-info",
+        "kb": 26115,
+        "reqs": 279
+      },
+      {
+        "ts": 52024,
+        "step": "eval",
+        "label": "info text",
+        "value": "Camera 7\n2D\n3D\nCamera\nCamera\nCamera 7\nCamera\nLight & Scene\nCamera Type\nNone\nDollhouse\nFirst Person\nFirst Person\nCamera Height\ncm\nFloor\nField Of View °\n°\nSun Position"
+      }
+    ]
+  },
+  {
+    "id": "floorplanner-demo-mobile",
+    "mode": "mobile",
+    "date": "2026-11-10",
+    "totalKB": 8985,
+    "reqs": 116,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://floorplanner.com/demo",
+        "kb": 2134,
+        "reqs": 55
+      },
+      {
+        "ts": 3283,
+        "step": "timeUntil",
+        "label": "editor canvas",
+        "ok": true,
+        "ms": 1311
+      },
+      {
+        "ts": 8642,
+        "step": "shot",
+        "name": "floorplanner-10-mobile",
+        "kb": 8985,
+        "reqs": 116
+      },
+      {
+        "ts": 9008,
+        "step": "eval",
+        "label": "mobile ui",
+        "value": "{\"vw\":390,\"txt\":\"2D\\n3D\\nExample House\\nSettings\",\"small\":5,\"total\":6}"
+      }
+    ]
+  }
+]

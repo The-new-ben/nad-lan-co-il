@@ -1,0 +1,49 @@
+{
+ "url": "https://rollinom.com/he/what-is-a-virtual-tour-he/",
+ "slug": "https_rollinom_com_he_what_is_a_virtual_tour_he__94547e",
+ "status": 200,
+ "final_url": "https://rollinom.com/he/what-is-a-virtual-tour-he/",
+ "title": "עיצוב הבית בעזרת תוכנת הדמיה תלת מימד | רולינום",
+ "meta_description": "עיצוב הבית בעזרת תוכנת הדמיה תלת מימד",
+ "canonical": "https://rollinom.com/he/what-is-a-virtual-tour-he/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 1,
+   "text": "עיצוב הבית בעזרת תוכנת הדמיה תלת מימד"
+  },
+  {
+   "level": 2,
+   "text": "דף תשלום"
+  }
+ ],
+ "word_count": 389,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 159,
+  "3d_or_planner": 166,
+  "video": 2,
+  "price_table": 0,
+  "form_lead": 2,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "Article",
+  "BreadcrumbList",
+  "CommentAction",
+  "EntryPoint",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "Person",
+  "ReadAction",
+  "SearchAction",
+  "WebPage",
+  "WebSite"
+ ]
+}

@@ -1,0 +1,12 @@
+[
+{"id":"planner5d-editor-desktop","url":"https://planner5d.com/editor","mode":"desktop","wait":6000,"canvasWait":60000},
+{"id":"floorplanner-demo-desktop","url":"https://floorplanner.com/demo","mode":"desktop","wait":6000,"canvasWait":45000},
+{"id":"homestyler-floorplan-desktop","url":"https://www.homestyler.com/floorplan","mode":"desktop","wait":6000,"canvasWait":45000},
+{"id":"coohom-floorplanner-desktop","url":"https://www.coohom.com/floor-planner","mode":"desktop","wait":4000,"canvasWait":15000},
+{"id":"roomsketcher-live3d-desktop","url":"https://www.roomsketcher.com/features/live-3d/","mode":"desktop","wait":5000,"canvasWait":15000},
+{"id":"higharc-demo-plan-desktop","url":"https://demo.higharc.com/new-homes/ga/atlanta/floorplans/allison/","mode":"desktop","wait":8000,"canvasWait":45000},
+{"id":"homebyme-start-desktop","url":"https://home.by.me/en/start","mode":"desktop","wait":5000,"canvasWait":20000},
+{"id":"ikea-kreativ-app-desktop","url":"https://www.ikea.com/us/en/home-design/app/","mode":"desktop","wait":6000,"canvasWait":30000},
+{"id":"roomle-configurator-desktop","url":"https://www.roomle.com/en/configurator","mode":"desktop","wait":6000,"canvasWait":30000},
+{"id":"rayon-app-desktop","url":"https://app.rayon.design/","mode":"desktop","wait":5000,"canvasWait":15000}
+]

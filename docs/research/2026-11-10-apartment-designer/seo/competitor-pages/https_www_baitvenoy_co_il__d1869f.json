@@ -1,0 +1,112 @@
+{
+ "url": "https://www.baitvenoy.co.il/עיצוב",
+ "slug": "https_www_baitvenoy_co_il__d1869f",
+ "status": 200,
+ "final_url": "https://www.baitvenoy.co.il/%D7%A2%D7%99%D7%A6%D7%95%D7%91",
+ "title": "עיצוב פנים מקבל כיוון דרך חדרים, חומרים וסיפורי בתים שונים",
+ "meta_description": "רוצים לשנות חדר או להבין מה מחבר את הבית? פתחו את מפת הנושאים, עברו בין תכנון, חומרים וחיי היום יום, והמשיכו למדריכים, לכתבות ולמדורים המתאימים.",
+ "canonical": "https://www.baitvenoy.co.il/%D7%A2%D7%99%D7%A6%D7%95%D7%91",
+ "robots": "index, follow, max-image-preview:large",
+ "headings": [
+  {
+   "level": 1,
+   "text": "עיצוב פנים דרך מדריכים, כתבות ומדורי המגזין"
+  },
+  {
+   "level": 2,
+   "text": "מסלול בין החדרים"
+  },
+  {
+   "level": 3,
+   "text": "משולש העבודה במטבח"
+  },
+  {
+   "level": 3,
+   "text": "הסלון מתחיל בשטיח"
+  },
+  {
+   "level": 3,
+   "text": "חושך בבוקר בחדר השינה"
+  },
+  {
+   "level": 3,
+   "text": "אוויר שזורם בחדר הרחצה"
+  },
+  {
+   "level": 3,
+   "text": "חדר ילדים לשנים ארוכות"
+  },
+  {
+   "level": 2,
+   "text": "התכנון הפנימי מקדים את לוח החומרים"
+  },
+  {
+   "level": 2,
+   "text": "רושמים על אותה תכנית"
+  },
+  {
+   "level": 2,
+   "text": "מבהירים את היקף הליווי"
+  },
+  {
+   "level": 3,
+   "text": "מתי די בריענון החפצים הקיימים?"
+  },
+  {
+   "level": 3,
+   "text": "איך מחברים בין שימוש למראה?"
+  },
+  {
+   "level": 3,
+   "text": "מה להביא לפגישה על דירה שקיבלתם?"
+  },
+  {
+   "level": 3,
+   "text": "מידע וקטגוריות"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב בתים ודירות"
+  },
+  {
+   "level": 3,
+   "text": "אדריכלות ותכנון"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב מסחר ועסקים"
+  },
+  {
+   "level": 3,
+   "text": "עקבו אחרינו"
+  }
+ ],
+ "word_count": 615,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 0,
+  "3d_or_planner": 12,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 1,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [
+  "יצוב מודרני מי צריך לטוס לחופשה כשאפשר לגור בה? בבית שתכננה שירלי דן במגרש פינתי ליד חוף אשקלון, הגבול בין פנים לחוץ כמעט נעלם"
+ ],
+ "schema_types": [
+  "BreadcrumbList",
+  "CollectionPage",
+  "ContactPoint",
+  "ImageObject",
+  "ItemList",
+  "ListItem",
+  "Organization",
+  "Thing",
+  "WebSite"
+ ]
+}

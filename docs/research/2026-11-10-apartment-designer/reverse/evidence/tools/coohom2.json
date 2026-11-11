@@ -1,0 +1,19 @@
+[
+{"id":"coohom-aiwalking-deep","mode":"desktop","steps":[
+ {"do":"goto","url":"https://www.coohom.com/pub/tool/panorama/aiwalking?obsPlanId=3FO43N7KQ0C1&locale=en_US","ms":3000},
+ {"do":"timeUntil","label":"walk canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":40000},
+ {"do":"wait","ms":8000},
+ {"do":"click","text":"Product List","exact":true,"ms":4000},
+ {"do":"shot","name":"coohom-15-product-list"},
+ {"do":"eval","label":"product list text","expr":"(document.body.innerText||'').split('\n').filter(Boolean).slice(0,80).join(' | ')"},
+ {"do":"key","key":"Escape","code":"Escape","vk":27,"ms":1500},
+ {"do":"click","text":"Floor Plan","exact":true,"ms":4000},
+ {"do":"shot","name":"coohom-16-floor-plan"},
+ {"do":"click","text":"Room Select","exact":true,"ms":3000},
+ {"do":"shot","name":"coohom-17-room-select"},
+ {"do":"eval","label":"room select text","expr":"(document.body.innerText||'').split('\n').filter(Boolean).slice(0,60).join(' | ')"},
+ {"do":"click","text":"More","exact":true,"ms":3000},
+ {"do":"shot","name":"coohom-18-more"},
+ {"do":"eval","label":"more text","expr":"(document.body.innerText||'').split('\n').filter(Boolean).slice(0,60).join(' | ')"}
+]}
+]

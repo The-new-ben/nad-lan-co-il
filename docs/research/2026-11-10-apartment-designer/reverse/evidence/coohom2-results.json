@@ -1,0 +1,113 @@
+[
+  {
+    "id": "coohom-aiwalking-deep",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 13271,
+    "reqs": 230,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.coohom.com/pub/tool/panorama/aiwalking?obsPlanId=3FO43N7KQ0C1&locale=en_US",
+        "kb": 3777,
+        "reqs": 29
+      },
+      {
+        "ts": 3948,
+        "step": "timeUntil",
+        "label": "walk canvas",
+        "ok": true,
+        "ms": 4630
+      },
+      {
+        "ts": 16599,
+        "step": "click",
+        "text": "Product List",
+        "found": {
+          "x": 1107.4921875,
+          "y": 876.5,
+          "t": "Product List"
+        }
+      },
+      {
+        "ts": 21489,
+        "step": "shot",
+        "name": "coohom-15-product-list",
+        "kb": 12995,
+        "reqs": 201
+      },
+      {
+        "ts": 22311,
+        "step": "eval",
+        "label": "product list text"
+      },
+      {
+        "ts": 22326,
+        "step": "key",
+        "key": "Escape"
+      },
+      {
+        "ts": 23940,
+        "step": "click",
+        "text": "Floor Plan",
+        "found": {
+          "x": 1200.5,
+          "y": 876.5,
+          "t": "Floor Plan"
+        }
+      },
+      {
+        "ts": 28102,
+        "step": "shot",
+        "name": "coohom-16-floor-plan",
+        "kb": 13111,
+        "reqs": 209
+      },
+      {
+        "ts": 28629,
+        "step": "click",
+        "text": "Room Select",
+        "found": {
+          "x": 1014.4921875,
+          "y": 876.5,
+          "t": "Room Select"
+        }
+      },
+      {
+        "ts": 32133,
+        "step": "shot",
+        "name": "coohom-17-room-select",
+        "kb": 13271,
+        "reqs": 230
+      },
+      {
+        "ts": 32813,
+        "step": "eval",
+        "label": "room select text"
+      },
+      {
+        "ts": 32816,
+        "step": "click",
+        "text": "More",
+        "found": {
+          "x": 1293.4921875,
+          "y": 876.5,
+          "t": "More"
+        }
+      },
+      {
+        "ts": 35894,
+        "step": "shot",
+        "name": "coohom-18-more",
+        "kb": 13271,
+        "reqs": 230
+      },
+      {
+        "ts": 36684,
+        "step": "eval",
+        "label": "more text"
+      }
+    ]
+  }
+]

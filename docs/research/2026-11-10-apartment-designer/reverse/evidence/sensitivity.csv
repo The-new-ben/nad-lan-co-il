@@ -1,0 +1,5 @@
+"verified, buyer weights, all 78",coohom=29.9,higharc_showroom=25.7,gbuilder_ref=22.7,homestyler=20.3,planner5d=19.8,floorplanner=19.1,roomsketcher=17.1
+"verified, equal weights, all 78",coohom=32.7,higharc_showroom=26.4,gbuilder_ref=23.6,homestyler=22.9,planner5d=21.7,floorplanner=21.5,roomsketcher=19.5
+"verified, buyer weights, neutral subset",coohom=41.9,roomsketcher=33.3,floorplanner=31.6,higharc_showroom=26.8,homestyler=24.5,planner5d=22.3,gbuilder_ref=22.1
+"verified, buyer weights, target-fit subset",higharc_showroom=24.9,gbuilder_ref=23.2,coohom=20.7,planner5d=17.8,homestyler=17.0,floorplanner=9.6,roomsketcher=4.7
+"P(rank 1) under +-1 weight noise, 10k draws",planner5d=0.0%,homestyler=0.0%,coohom=100.0%,roomsketcher=0.0%,floorplanner=0.0%,higharc_showroom=0.0%,gbuilder_ref=0.0%

@@ -1,0 +1,204 @@
+[
+ {
+  "name": "20-aurelia-studio2d-1440",
+  "url": "https://nad-lan.co.il/projects/aurelia/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 10640,
+  "requests": 73,
+  "kb": 2550,
+  "failed": [],
+  "errors": [
+   "click .nl-studio-launch -> ok"
+  ],
+  "evalResult": "{\"studio\":true,\"txt\":\"סטודיו עיצוב הדירה\\nדירה קו A · קומה 6 · קומה 6 · 92 מ״ר\\nתרשים הדירה לפי מידותיה וחלוקתה.\\n✕\\nרהיטים ותבניות (מידות אמיתיות)\\n🛋\\nספה זוגית\\n160×90 ס\\\"מ\\n🛋\\nספה תלת מושבית\\n220×95 ס\\\"מ\\n🛏\\nמיטה זוגית\\n160×200 ס\\\"מ\\n🛏\\nמיטת יחיד\\n90×200 ס\\\"מ\\n🍽\\nשולחן אוכל 4\\n120×80 ס\\\"מ\\n🍽\\nשולחן אוכל 6\\n180×90 ס\\\"מ\\nארון קיר\\n240×60 ס\\\"מ\\n❄\\nמקרר\\n70×70 ס\\\"מ\\nמכונת כביסה\\n60×60 ס\\\"מ\\nשולחן עבודה\\n120×60 ס\\\"מ\\nמיטת תינוק\\n70×130 ס\\\"מ\\nאמבטיה\\n170×75 ס\\\"מ\\nמזנון טלוויזיה\\n180×45 ס\\\"מ\\nכורסה\\n85×85 ס\\\"מ\\n🗄\\nשידה\\n120×50 ס\\\"מ\\n▭\\nשטיח\\n200×140 ס\\\"מ\\nעציץ\\n45×45 ס\\\"מ\\nספסל פינת אוכל\\n140×40 ס\\\"מ\\nרדיוס סיבוב כיסא גלגלים 150\\n150×150 ס\\\"מ\\nפתח דלת נגיש 80\\n80×12 ס\\\"מ\\nהערות ובקשות\"}",
+  "file_kept": true
+ },
+ {
+  "name": "21-aurelia-studio2d-390",
+  "url": "https://nad-lan.co.il/projects/aurelia/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 9971,
+  "requests": 74,
+  "kb": 147,
+  "failed": [],
+  "errors": [
+   "click .nl-studio-launch -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "22-aurelia-top-1440",
+  "url": "https://nad-lan.co.il/projects/aurelia/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 8743,
+  "requests": 62,
+  "kb": 90,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "23-property-plan-390",
+  "url": "https://nad-lan.co.il/properties/balfour-batyam-35r-demo/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 6942,
+  "requests": 62,
+  "kb": 417,
+  "failed": [],
+  "errors": [
+   "click #nlps-building [data-view=\"in\"] -> ok"
+  ],
+  "evalResult": true,
+  "file_kept": true
+ },
+ {
+  "name": "24-property-fp-390",
+  "url": "https://nad-lan.co.il/properties/balfour-batyam-35r-demo/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 2146,
+  "requests": 66,
+  "kb": 78,
+  "failed": [],
+  "errors": [
+   "click #nlps-building [data-view=\"fp\"] -> ok"
+  ],
+  "evalResult": true,
+  "file_kept": false
+ },
+ {
+  "name": "25-property-plan-1440",
+  "url": "https://nad-lan.co.il/properties/balfour-batyam-35r-demo/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 5707,
+  "requests": 68,
+  "kb": 302,
+  "failed": [],
+  "errors": [
+   "click #nlps-building [data-view=\"in\"] -> ok"
+  ],
+  "evalResult": true,
+  "file_kept": true
+ },
+ {
+  "name": "26-lab-walk-1440",
+  "url": "http://127.0.0.1:47951/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 8274,
+  "requests": 12,
+  "kb": 1666,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "27-lab-dollhouse-1440",
+  "url": "http://127.0.0.1:47951/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 1591,
+  "requests": 12,
+  "kb": 1376,
+  "failed": [],
+  "errors": [
+   "click [data-cam=\"dollhouse\"] -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "28-lab-measure-1440",
+  "url": "http://127.0.0.1:47951/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 5505,
+  "requests": 12,
+  "kb": 1376,
+  "failed": [],
+  "errors": [
+   "click [data-action=\"measure\"] -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "29-lab-walk-390",
+  "url": "http://127.0.0.1:47951/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 696,
+  "requests": 12,
+  "kb": 1376,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "30-ashira-stage-1440",
+  "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 3955,
+  "requests": 71,
+  "kb": 1306,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "31-ashira-inside360-1440",
+  "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 3321,
+  "requests": 83,
+  "kb": 1575,
+  "failed": [],
+  "errors": [
+   "click [data-nlps-step=\"inside\"] -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "32-ashira-inside360-390",
+  "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 3900,
+  "requests": 83,
+  "kb": 257,
+  "failed": [],
+  "errors": [
+   "click [data-nlps-step=\"inside\"] -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "33-hamedina-kikar-next-390",
+  "url": "https://nad-lan.co.il/projects/hamedina/?kikar=next",
+  "w": 390,
+  "h": 844,
+  "loadMs": 3720,
+  "requests": 67,
+  "kb": 1079,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "34-rainbow-stage-390",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 4327,
+  "requests": 87,
+  "kb": 560,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ }
+]

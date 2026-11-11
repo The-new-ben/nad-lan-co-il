@@ -1,0 +1,9 @@
+[
+{"id":"higharc-intro-desktop","mode":"desktop","steps":[
+ {"do":"goto","url":"https://app.higharc.com/showroom/intro?builderId=G3de6WX90K7nylNm&planId=X1BPz26zwx2yA7Qp&planType=master_plans&embedSource=script","ms":2000},
+ {"do":"timeUntil","label":"canvas","expr":"[...document.querySelectorAll('canvas')].some(function(c){var r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":60000},
+ {"do":"wait","ms":15000},
+ {"do":"shot","name":"higharc-13-intro"},
+ {"do":"eval","label":"text","expr":"JSON.stringify({ctx:window.__probe?[...new Set(window.__probe.ctx)]:null,txt:(document.body?document.body.innerText:'').split(String.fromCharCode(10)).filter(Boolean).slice(0,120).join(' | ')})"}
+]}
+]

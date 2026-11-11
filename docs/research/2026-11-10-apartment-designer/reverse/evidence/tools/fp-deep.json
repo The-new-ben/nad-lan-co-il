@@ -1,0 +1,38 @@
+[
+{"id":"floorplanner-demo-deep","mode":"desktop","steps":[
+ {"do":"goto","url":"https://floorplanner.com/demo","ms":3000},
+ {"do":"timeUntil","label":"editor canvas >300px","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":40000},
+ {"do":"wait","ms":4000},
+ {"do":"eval","label":"ctx+canvas","expr":"JSON.stringify({ctx:[...new Set(window.__probe.ctx)],canv:[...document.querySelectorAll('canvas')].map(c=>[c.width,c.height]),lang:document.documentElement.lang,dir:getComputedStyle(document.body).direction})"},
+ {"do":"shot","name":"floorplanner-01-2d"},
+ {"do":"clickXY","x":900,"y":450,"ms":2000},
+ {"do":"shot","name":"floorplanner-02-room-selected"},
+ {"do":"eval","label":"room panel text","expr":"document.body.innerText.slice(0,1500)"},
+ {"do":"click","text":"Objects","exact":true,"ms":3000},
+ {"do":"shot","name":"floorplanner-03-objects"},
+ {"do":"eval","label":"objects panel text","expr":"document.body.innerText.slice(0,1200)"},
+ {"do":"click","text":"Finishes","exact":true,"ms":3000},
+ {"do":"shot","name":"floorplanner-04-finishes"},
+ {"do":"click","text":"Styleboards","exact":true,"ms":3000},
+ {"do":"shot","name":"floorplanner-05-styleboards"},
+ {"do":"click","text":"3D","exact":true,"ms":500},
+ {"do":"wait","ms":2500},
+ {"do":"shot","name":"floorplanner-06-3d-2s"},
+ {"do":"wait","ms":6000},
+ {"do":"shot","name":"floorplanner-07-3d-8s"},
+ {"do":"eval","label":"3d ui text","expr":"document.body.innerText.slice(0,1500)"},
+ {"do":"drag","from":[900,500],"to":[700,450],"ms":2500},
+ {"do":"shot","name":"floorplanner-08-3d-orbit"},
+ {"do":"eval","label":"walk/firstperson controls","expr":"JSON.stringify([...document.querySelectorAll('button,[role=button],[title],[aria-label]')].map(e=>(e.getAttribute('aria-label')||e.title||e.innerText||'').trim()).filter(t=>t&&t.length<40).slice(0,120))"},
+ {"do":"click","text":"Info","exact":true,"ms":3000},
+ {"do":"shot","name":"floorplanner-09-info"},
+ {"do":"eval","label":"info text","expr":"document.body.innerText.slice(0,2000)"}
+]},
+{"id":"floorplanner-demo-mobile","mode":"mobile","steps":[
+ {"do":"goto","url":"https://floorplanner.com/demo","ms":3000},
+ {"do":"timeUntil","label":"editor canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>200&&r.height>200})","ms":40000},
+ {"do":"wait","ms":4000},
+ {"do":"shot","name":"floorplanner-10-mobile"},
+ {"do":"eval","label":"mobile ui","expr":"JSON.stringify({vw:innerWidth,txt:document.body.innerText.slice(0,600),small:[...document.querySelectorAll('button,a,[role=button]')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight&&Math.min(r.width,r.height)<44}).length,total:[...document.querySelectorAll('button,a,[role=button]')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight}).length})"}
+]}
+]

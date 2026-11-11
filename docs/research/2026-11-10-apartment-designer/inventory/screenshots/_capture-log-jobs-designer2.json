@@ -1,0 +1,95 @@
+[
+ {
+  "name": "10-designer-390-entered",
+  "url": "https://nad-lan.co.il/tour/designer/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 1211,
+  "requests": 11,
+  "kb": 341,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "11-designer-1440-entered",
+  "url": "https://nad-lan.co.il/tour/designer/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 464,
+  "requests": 10,
+  "kb": 0,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "12-designer-ctx-390-entered",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w",
+  "w": 390,
+  "h": 844,
+  "loadMs": 1066,
+  "requests": 10,
+  "kb": 49,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok"
+  ],
+  "evalResult": "{\"brand\":\"נד״לן\\nדירת דוגמה · רובע שדה דב\",\"ribbon\":\"\",\"title\":\"מעצבים את הבית — דירת דוגמה ברובע שדה דב | nad-lan.co.il\"}",
+  "file_kept": true
+ },
+ {
+  "name": "13-designer-ctx-1440-entered",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 364,
+  "requests": 10,
+  "kb": 0,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok"
+  ],
+  "file_kept": false
+ },
+ {
+  "name": "14-designer-1440-palette",
+  "url": "https://nad-lan.co.il/tour/designer/?room=living",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 12226,
+  "requests": 18,
+  "kb": 49,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok",
+   "click #furnBtn -> ok"
+  ],
+  "file_kept": true
+ },
+ {
+  "name": "15-designer-390-summary",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w",
+  "w": 390,
+  "h": 844,
+  "loadMs": 8693,
+  "requests": 16,
+  "kb": 0,
+  "failed": [],
+  "errors": [
+   "click #enterBtn -> ok",
+   "click #skipChip -> ok",
+   "click #styleBtn -> ok"
+  ],
+  "file_kept": true
+ }
+]

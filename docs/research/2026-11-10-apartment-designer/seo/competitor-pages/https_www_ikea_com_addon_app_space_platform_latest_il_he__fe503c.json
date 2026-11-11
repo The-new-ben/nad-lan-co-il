@@ -1,0 +1,27 @@
+{
+ "url": "https://www.ikea.com/addon-app/space/platform/latest/il/he/",
+ "slug": "https_www_ikea_com_addon_app_space_platform_latest_il_he__fe503c",
+ "status": 200,
+ "final_url": "https://www.ikea.com/addon-app/space/platform/latest/il/he/",
+ "title": "IKEA",
+ "meta_description": null,
+ "canonical": null,
+ "robots": null,
+ "headings": [],
+ "word_count": 1,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 0,
+  "3d_or_planner": 0,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 0,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": []
+}

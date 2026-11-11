@@ -1,0 +1,51 @@
+{
+ "url": "https://netalinoy.com/",
+ "slug": "https_netalinoy_com__b93556",
+ "status": 200,
+ "final_url": "https://netalinoy.com/",
+ "title": "Neta-li & Tal Noy - עיצוב פנים ואדריכלות ברמה מתקדמת",
+ "meta_description": "נטע-לי וטל נוי - עיצוב פנים מתמחים בתכנון, עיצוב וניהול פרויקטים של דירות יוקרה, משרדים, פנטהאוזים, וילות ודירות קבלן. אנו מעניקים חוויית עיצוב שלמה ומוקפדת, החל משלב התכנון הראשוני ועד ליישום מושלם בשטח. לפרטים נוספים צרו קשר דרך האתר.",
+ "canonical": "https://netalinoy.com/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 1,
+   "text": "אדריכלות | עיצוב פנים | ניהול פרויקטים"
+  },
+  {
+   "level": 2,
+   "text": "פרויקטים נבחרים"
+  },
+  {
+   "level": 3,
+   "text": "מדיניות הפרטיות"
+  }
+ ],
+ "word_count": 133,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 6,
+  "3d_or_planner": 1,
+  "video": 5,
+  "price_table": 0,
+  "form_lead": 2,
+  "ai_generator": 1,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "BreadcrumbList",
+  "EntryPoint",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "PropertyValueSpecification",
+  "ReadAction",
+  "SearchAction",
+  "WebPage",
+  "WebSite"
+ ]
+}

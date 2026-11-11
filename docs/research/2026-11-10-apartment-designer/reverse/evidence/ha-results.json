@@ -1,0 +1,54 @@
+[
+  {
+    "id": "higharc-showroom-deep",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 5894,
+    "reqs": 70,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://demo.higharc.com/floorplans/belmont/",
+        "kb": 5894,
+        "reqs": 70
+      },
+      {
+        "ts": 12187,
+        "step": "eval",
+        "label": "scroll",
+        "value": "<a class=\"btn btn-outline-primary\" data-higharc-plan-id=\"X1BPz26zwx2yA7Qp\" data-higharc-plan-type=\"master_plans\">Design in 3D</a>"
+      },
+      {
+        "ts": 13703,
+        "step": "click",
+        "text": "Design in 3D",
+        "found": {
+          "x": 1008,
+          "y": 481,
+          "t": "Design in 3D"
+        }
+      },
+      {
+        "ts": 14945,
+        "step": "timeUntil",
+        "label": "3D canvas after click",
+        "ok": false,
+        "ms": 45195
+      },
+      {
+        "ts": 75152,
+        "step": "shot",
+        "name": "higharc-12-showroom-open",
+        "kb": 5894,
+        "reqs": 70
+      },
+      {
+        "ts": 75259,
+        "step": "eval",
+        "label": "after open",
+        "value": "{\"url\":\"https://demo.higharc.com/floorplans/belmont/\",\"opened\":[],\"iframes\":[\" 0x0\",\" 0x0\",\" 0x0\"],\"txt\":\"Demo Site: This website was created by Higharc and ONeil Interactive. See how it works | Find Your Home | About Us | Contact Us |  Search | Call or Message |  New Homes  | The Belmont | 4 Photos | Available in 6 Communities | The Belmont |  3 |  2.5 |  2830 Ft2 | Design in 3D |  About This Floorplan | The Belmont delivers exceptional flexibility through a two-story design that adapts to how homeowners want to live. With options for the primary suite on either level, this plan supports changing needs over time. A range of elevation styles, customizable kitchens and baths, optional basements, outdoor living enhancements, and flexible garage configurations allow buyers to personalize the home while maintaining a polished, timeless feel. | Design Your Home | See layouts, finishes, and features come together so you know exactly what to expect. | Design in 3D  | Available Elevations | Modern Farmhouse | Craftsman | Transitional | Texas Contemporary | Photo | Gallery | Available in 6 Communities | Find This Home | The Hill Country\"}"
+      }
+    ]
+  }
+]

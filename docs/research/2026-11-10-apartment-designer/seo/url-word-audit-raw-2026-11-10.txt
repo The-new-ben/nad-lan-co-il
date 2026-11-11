@@ -1,0 +1,129 @@
+=== --token apartment
+urls analyzed: 4665
+
+=== URLs holding token "apartment" (106) ===
+  /buying-new-apartment-developer-2026-negotiation/
+  /3-room-apartment-690k-israel-2026/
+  /investment-apartment/
+  /selling-apartment/real-estate-auction-sale/
+  /mortgage-calculator/bridge-loan-apartment/
+  /real-estate-lawyer/apartment-memorandum/
+  /real-estate-lawyer/breach-apartment-sale-contract/
+  /investment/modiin-investment-apartment/
+  /investment/hod-hasharon-investment-apartment/
+  /investment/kiryat-ono-investment-apartment/
+  /investment/rehovot-investment-apartment/
+  /investment/ashdod-investment-apartment/
+  /investment/jerusalem-investment-apartment/
+  /investment/raanana-investment-apartment/
+  /investment/ramat-hasharon-investment-apartment/
+  /investment/givatayim-investment-apartment/
+  /investment/ramat-gan-investment-apartment/
+  /investment/holon-investment-apartment/
+  /investment/petah-tikva-investment-apartment/
+  /investment/netanya-investment-apartment/
+  /investment/beer-sheva-investment-apartment/
+  /investment/haifa-investment-apartment/
+=== --token design
+urls analyzed: 4665
+
+=== URLs holding token "design" (3) ===
+  /interior-design-trends-2026-israel/
+  /professionals/demo-dana-barak-design/
+  /glossary-category/interior-design/
+=== --token interior
+urls analyzed: 4665
+
+=== URLs holding token "interior" (2) ===
+  /interior-design-trends-2026-israel/
+  /glossary-category/interior-design/
+=== --token designer
+urls analyzed: 4665
+
+=== URLs holding token "designer" (2) ===
+  /en/brokers/meital-katzir/bsr-sarona-designer-4-5-room-apartment-for-rent/
+  /properties/bsr-sarona-designer-4-5-rooms-for-rent/
+=== --token planner
+urls analyzed: 4665
+
+=== URLs holding token "planner" (2) ===
+  /glossary/last-planner-system/
+  /professionals/demo-amit-ron-planner/
+=== --token home
+urls analyzed: 4665
+
+=== URLs holding token "home" (3) ===
+  /mortgage-home-insurance/
+  /real-estate-tax-advisor/purchase-tax-first-home/
+  /home-inspection/
+=== --token studio
+urls analyzed: 4665
+
+=== URLs holding token "studio" (0) ===
+=== --token 3d
+urls analyzed: 4665
+
+=== URLs holding token "3d" (0) ===
+=== --token styling
+urls analyzed: 4665
+
+=== URLs holding token "styling" (0) ===
+=== --token consultation
+urls analyzed: 4665
+
+=== URLs holding token "consultation" (0) ===
+=== --token cost
+urls analyzed: 4665
+
+=== URLs holding token "cost" (2) ===
+  /commercial-real-estate/office-fit-out-cost-tel-aviv/
+  /apartment-purchase-cost-calculator/
+=== --token price
+urls analyzed: 4665
+
+=== URLs holding token "price" (1) ===
+  /price-list-dubai/
+=== --token renovation
+urls analyzed: 4665
+
+=== URLs holding token "renovation" (1) ===
+  /renovation-contractor/
+=== --token decor
+urls analyzed: 4665
+
+=== URLs holding token "decor" (0) ===
+=== --token plan
+urls analyzed: 4665
+
+=== URLs holding token "plan" (1) ===
+  /tel-aviv-plans/neve-avivim-plan/
+=== --token room
+urls analyzed: 4665
+
+=== URLs holding token "room" (8) ===
+  /3-room-apartment-690k-israel-2026/
+  /en/brokers/meital-katzir/migdalei-neeman-4-5-room-apartment-for-sale/
+  /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/
+  /en/brokers/meital-katzir/bsr-sarona-designer-4-5-room-apartment-for-rent/
+  /en/brokers/meital-katzir/bsr-sarona-5-room-sea-view-apartment-for-rent/
+  /en/brokers/meital-katzir/nofei-yam-5-room-mini-penthouse-for-rent/
+  /en/brokers/meital-katzir/nofei-yam-3-room-apartment-for-rent/
+  /en/brokers/meital-katzir/ramat-aviv-5-room-apartment-pool-complex-for-rent/
+=== --token kitchen
+urls analyzed: 4665
+
+=== URLs holding token "kitchen" (0) ===
+=== --token living
+urls analyzed: 4665
+
+=== URLs holding token "living" (0) ===
+=== --token ai
+urls analyzed: 4665
+
+=== URLs holding token "ai" (0) ===
+=== --token visualization
+urls analyzed: 4665
+
+=== URLs holding token "visualization" (0) ===
+
+[exited with code 0]

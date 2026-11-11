@@ -1,0 +1,79 @@
+[
+ {
+  "name": "24-property-fp-390",
+  "url": "https://nad-lan.co.il/properties/balfour-batyam-35r-demo/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 2618,
+  "requests": 58,
+  "kb": 672,
+  "failed": [
+   "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js?ver=1.0.6 "
+  ],
+  "errors": [
+   "click #nlps-building [data-view=\"fp\"] -> ok"
+  ],
+  "evalResult": "nlps-view nlps-view-fp is-on",
+  "file_kept": false
+ },
+ {
+  "name": "40-link-feature-bar-390",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 3699,
+  "requests": 82,
+  "kb": 828,
+  "failed": [
+   "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js?ver=1.0.6 "
+  ],
+  "errors": [],
+  "evalResult": true,
+  "file_kept": false
+ },
+ {
+  "name": "41-link-stage-steps-1440",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 4062,
+  "requests": 80,
+  "kb": 553,
+  "failed": [
+   "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js?ver=1.0.6 "
+  ],
+  "errors": [],
+  "evalResult": true,
+  "file_kept": true
+ },
+ {
+  "name": "42-link-tours-hub-card-1440",
+  "url": "https://nad-lan.co.il/tours/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 2004,
+  "requests": 42,
+  "kb": 424,
+  "failed": [
+   "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js?ver=1.0.6 "
+  ],
+  "errors": [],
+  "evalResult": true,
+  "file_kept": false
+ },
+ {
+  "name": "43-link-header-menu-1440",
+  "url": "https://nad-lan.co.il/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 3477,
+  "requests": 47,
+  "kb": 655,
+  "failed": [
+   "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js?ver=1.0.6 "
+  ],
+  "errors": [],
+  "evalResult": true,
+  "file_kept": false
+ }
+]

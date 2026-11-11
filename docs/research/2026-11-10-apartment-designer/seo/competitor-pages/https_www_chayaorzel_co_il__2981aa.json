@@ -1,0 +1,91 @@
+{
+ "url": "https://www.chayaorzel.co.il/",
+ "slug": "https_www_chayaorzel_co_il__2981aa",
+ "status": 200,
+ "final_url": "https://www.chayaorzel.co.il/",
+ "title": "חיה אורצל מעצבת פנים - עיצוב פנים לדירות ולעסקים",
+ "meta_description": "שמי חיה אורצל בעלת סטודיו לעיצוב פנים באלעד אני מאמינה בחיבורים נכונים ומעבירה את הלקוח תהליך עיצוב מותאם בשבילו מוזמנים להכנס ולהתרשם!",
+ "canonical": "https://www.chayaorzel.co.il/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 2,
+   "text": "עיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "נעים מאד! חיה אורצל."
+  },
+  {
+   "level": 2,
+   "text": "פרוייקטים נבחרים"
+  },
+  {
+   "level": 3,
+   "text": "דירה בעיצוב מודרני קלאסי"
+  },
+  {
+   "level": 3,
+   "text": "דירה בעיצוב מודרני חמים"
+  },
+  {
+   "level": 3,
+   "text": "דופלקס בעיצוב יוקרתי"
+  },
+  {
+   "level": 3,
+   "text": "דיור מוגן בית דקל תלפיות"
+  },
+  {
+   "level": 2,
+   "text": "לקוחות ממליצים"
+  },
+  {
+   "level": 2,
+   "text": "אז מה תרצו לעצב דירה או עסק? השאירו פרטים ואחזור אליכם >"
+  },
+  {
+   "level": 2,
+   "text": "Ⓒ כל הזכויות שמורות לחיה אורצל אדריכלות ועיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב ובניית אתר:"
+  },
+  {
+   "level": 2,
+   "text": "לפני שאתם מתחילים לחשוב על לשבור קירות..."
+  },
+  {
+   "level": 2,
+   "text": "השאירו לי שם, מייל וטלפון ואשלח לכם מדריך - מאחורי הקיר, שייתן לכם את כל המידע והטיפים לפני שאתם יוצאים למשימת עיצוב דירת חלומותיכם. ידע שווה כוח והמון כסף!"
+  }
+ ],
+ "word_count": 1406,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 65,
+  "3d_or_planner": 6,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 4,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "BreadcrumbList",
+  "EntryPoint",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "PropertyValueSpecification",
+  "ReadAction",
+  "SearchAction",
+  "WebPage",
+  "WebSite"
+ ]
+}

@@ -1,0 +1,10 @@
+[
+{"id":"homestyler-project2","mode":"desktop","steps":[
+ {"do":"goto","url":"https://www.homestyler.com/projectDetail/65951b8b3ddddc1283e656ba?lang=en_US","ms":12000},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,txt:(document.body?document.body.innerText:'').split(String.fromCharCode(10)).filter(Boolean).slice(0,60).join(' | '),iframes:[...document.querySelectorAll('iframe')].map(f=>f.src).slice(0,5)})"}
+]},
+{"id":"higharc-belmont2","mode":"desktop","steps":[
+ {"do":"goto","url":"https://demo.higharc.com/floorplans/belmont/","ms":14000},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,txt:(document.body?document.body.innerText:'').split(String.fromCharCode(10)).filter(Boolean).slice(0,80).join(' | '),iframes:[...document.querySelectorAll('iframe')].map(f=>f.src).slice(0,8),btns:[...document.querySelectorAll('a,button')].map(e=>(e.innerText||'').trim()+' -> '+(e.href||'')).filter(t=>/3d|design|personal|showroom|interactive|tour|customi|build|option/i.test(t)).slice(0,25)})"}
+]}
+]

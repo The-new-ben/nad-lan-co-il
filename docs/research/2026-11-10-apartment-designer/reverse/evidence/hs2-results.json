@@ -1,0 +1,46 @@
+[
+  {
+    "id": "homestyler-project2",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 6427,
+    "reqs": 107,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.homestyler.com/projectDetail/65951b8b3ddddc1283e656ba?lang=en_US",
+        "kb": 2399,
+        "reqs": 76
+      },
+      {
+        "ts": 13428,
+        "step": "eval",
+        "label": "ui",
+        "value": "{\"url\":\"https://www.homestyler.com/ai-interior-design-detail/wabi-sabi-coastal-home-web-65951b8b3ddddc1283e656ba?lang=en_US\",\"txt\":\"Products | Pricing | SALE | Community | Learn | Business | AI | NEW | Design Service | Log In | EN | GET STARTED FOR FREE | 1 /10 | All(10) | Living Room(1) | Floor Plan(1) | Other(8) | Type | Wabi-sabi Coastal Home | 3 January 2024 | My Dream Garden | Coastal | Wabi-sabi | # | Coastal | # | Homestyler | # | wabi-sabi | # | GiveMeAdvice | # | 2024DesignWorks | More designs by Homestyler Mobile | See more  | 🔔New 3D Room Feature: Beta Testing & Coming Soon | 253 | 📣 Join our 3D Room Test to win 400 coins 🎁 | 427 | Video Feature Launched: Create Dynamic Designs! 📷 | 667 | USE YOUR TALENT FOR A CAUSE | 792 | 📣 Please Help Us Name Our Community! | 159 | How to redeem and earn gold coins?💰 | 463 | 🧐 Short on coins? Want to learn HS PC design? | 412 | 🎉Incontriamoci a Milano! | 288 | Homestyler Official Contest | 174 | Orange Mood Contest Winners | 72 | More Recommendations | The Winter Blues | Arwen Arianus🎨🎸🏰 | Vote | 335\",\"iframes\":[\"\"]}"
+      }
+    ]
+  },
+  {
+    "id": "higharc-belmont2",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 5894,
+    "reqs": 70,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://demo.higharc.com/floorplans/belmont/",
+        "kb": 5894,
+        "reqs": 70
+      },
+      {
+        "ts": 14208,
+        "step": "eval",
+        "label": "ui",
+        "value": "{\"url\":\"https://demo.higharc.com/floorplans/belmont/\",\"txt\":\"Demo Site: This website was created by Higharc and ONeil Interactive. See how it works | Find Your Home | About Us | Contact Us |  Search | Call or Message |  New Homes  | The Belmont | 4 Photos | Available in 6 Communities | The Belmont |  3 |  2.5 |  2830 Ft2 | Design in 3D |  About This Floorplan | The Belmont delivers exceptional flexibility through a two-story design that adapts to how homeowners want to live. With options for the primary suite on either level, this plan supports changing needs over time. A range of elevation styles, customizable kitchens and baths, optional basements, outdoor living enhancements, and flexible garage configurations allow buyers to personalize the home while maintaining a polished, timeless feel. | Design Your Home | See layouts, finishes, and features come together so you know exactly what to expect. | Design in 3D  | Available Elevations | Modern Farmhouse | Craftsman | Transitional | Texas Contemporary | Photo | Gallery | Available in 6 Communities | Find This Home | The Hill Country | DALLAS, TX 76226 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2 | STARTING AT | $405,000 | View Community | Hudson Estates | CLEVELAND, OH 44113 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2 | STARTING AT | $409,500 | View Community | The Shoreline | CLEVELAND, OH 44113 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2 | STARTING AT | $343,500 | View Community | Denton Estates | FORT WORTH, TX 76006 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2 | STARTING AT | $509,000 | View Community | Dunwoody Estates | ATLANTA, GA 30349 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2 | STARTING AT | $524,000 | View Community | The Highlands | ATLANTA, GA 30349 |  3-4 |  2.5-3.5 |  2-3 |  2,129+ Ft2\",\"iframes\":[\"https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly9kZW1vLmhpZ2hhcmMuY29tOjQ0Mw..&hl=en&v=0lEGiwO4Qwx5R9ArxUy0mBpf&size=invisible&badge=inline&anchor-ms=20000&execute-ms=30000&ovv=CADq00gF&cb=lvirmw6c4fge\",\"\",\"\",\"https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly9kZW1vLmhpZ2hhcmMuY29tOjQ0Mw..&hl=en&v=0lEGiwO4Qwx5R9ArxUy0mBpf&size=invisible&badge=inline&anchor-ms=20000&execute-ms=30000&ovv=CADq00gF&cb=4ksim513thc\",\"\",\"https://www.google.com/recaptcha/enterprise/bframe?hl=en&v=0lEGiwO4Qwx5R9ArxUy0mBpf&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&bft=0dAFcWeA5KCk60gKRMGb2bhQhuaGRxYhGeT8HlKtLhWwNmF504r47k0Bh2z4G1oubcaoDorv77NveLgsqJzhZ5v8Be-iBDN1LVVg\",\"https://www.google.com/recaptcha/enterprise/bframe?hl=en&v=0lEGiwO4Qwx5R9ArxUy0mBpf&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&bft=0dAFcWeA6m-sKBE9QdMAPSwftLCW-RqAmc_l8rMUMym5N1uvD-Qy9Sq5bHVVVYDSCFFGj3bpVHPCmUWpohRvXqySGm_AnpaFDWZA\"],\"btns\":[\"Design in 3D -> \",\"Design in 3D -> \",\"Powered by Homefiniti® -> https://oneilinteractive.com/solutions/homefiniti/\",\"ONeil Interactive -> https://oneilinteractive.com/\"]}"
+      }
+    ]
+  }
+]

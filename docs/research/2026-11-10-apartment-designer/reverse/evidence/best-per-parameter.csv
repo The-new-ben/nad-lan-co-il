@@ -1,0 +1,79 @@
+id,parameter,weight,best_claimed_score_any_deep_product
+V01,"Real-time 3D interior in the browser, no install",5,75
+V02,First-person walk at eye height,5,75
+V03,Maximum photoreal still or panorama resolution,3,100
+V04,360 panorama with shareable interactive viewer,3,100
+V05,Sun position or time-of-day control,3,50
+V06,Visual realism of the default buyer-facing view,4,100
+V07,VR headset viewing,1,50
+V08,AR placement on phone,1,100
+V09,Video fly-through export,2,100
+P01,Import plan file as underlay,3,100
+P02,"Automatic wall, door and window recognition",3,100
+P03,Recognition accuracy (wall-length and room-area error),4,
+P04,Dimension display and numeric editing,3,75
+P05,Room and total area calculation,4,75
+P06,"Structural constraints enforced (load-bearing walls, shafts, safe room)",5,50
+P07,Phone room scan (LiDAR or photos),1,100
+L01,Single model: a 2D edit appears in 3D without export,5,100
+L02,Synced split view (plan + 3D with camera marker),4,100
+L03,2D to 3D switch latency and added download,3,25
+L04,Plan as navigator (click plan to place the 3D camera),4,100
+L05,Edit inside the 3D view,4,100
+C01,Catalogue size,2,75
+C02,Items tied to real purchasable SKUs,4,100
+C03,Price visible in context on every selectable item,5,100
+C04,"Israeli catalogue: ILS prices, Israeli suppliers, VAT basis",5,0
+C05,"Price provenance shown (supplier, date, VAT incl./excl.)",4,0
+C06,"Buy, quote or contract action from the design",3,100
+G01,One-action style apply producing an editable 3D design,3,100
+G02,Text or voice instruction edits the 3D model,2,100
+G03,"Generation respects structure lock, allowed options and budget",4,0
+G04,Design variants compared side by side with cost delta,3,50
+K01,Anonymous share link opens on a phone,4,100
+K02,Real-time co-editing with presence,4,100
+K03,Comments pinned to locations in the model,3,50
+K04,Built-in video and audio call inside the design session,5,0
+K05,Follow-me camera and control handover between participants,5,0
+K06,Roles and formal approval of selections,4,100
+K07,"Decision log (who changed what, when) exportable",3,0
+S01,Itemised BOM export,4,100
+S02,Live cost total that updates on each change,5,100
+S03,Spec sheet (mifrat-style) document per room,5,50
+S04,Delta against the developer base specification (upgrades and credits),5,50
+S05,"Cost basis disclosed (VAT, labour/installation, currency, validity date)",4,0
+S06,Contractor-grade drawings or CAD export,2,100
+M01,Full editing in the mobile browser (no app),5,100
+M02,Primary call to action in the thumb zone,3,40
+M03,Tap targets at least 44 px,3,78
+M04,First-screen clarity,4,100
+M05,One-thumb 3D navigation,4,50
+M06,Mobile bytes before the first interactive design view,3,50
+F01,"Landing LCP (desktop, cold)",2,100
+F02,Landing transfer size (desktop),2,75
+F03,Landing layout stability (CLS),1,100
+F04,Time to first interactive design canvas from a cold link,4,50
+F05,Bytes to first 3D interior frame,3,25
+F06,Requests to first 3D view,1,50
+F07,Third-party hosts contacted by landing,1,75
+A01,Hebrew user interface,5,0
+A02,Right-to-left layout support,4,50
+A03,Bidi-correct Hebrew labels on plan and in 3D,4,
+A04,Unnamed interactive controls (landing),2,100
+A05,Images with alt attribute (landing),1,100
+A06,Pinch-zoom not blocked on mobile,2,100
+A07,Accessibility statement published,2,0
+A08,Keyboard operability of the design surface,2,50
+I01,Starts from the developer real unit plan,5,100
+I02,"Unit picker: building, floor, apartment with availability and price",4,100
+I03,Developer-controlled option catalogue with upgrade prices,5,100
+I04,Buildability rules engine validating buyer choices,4,100
+I05,Selections flow to developer CRM/ERP with the lead,3,100
+I06,Embeddable in a project page with own branding,4,100
+I07,Tenant-change window and construction-stage awareness,3,0
+T01,Included / upgrade / decor-only labels on every visual element,5,50
+T02,Visualisation / AI disclaimer on renders and shares,4,0
+T03,Plan accuracy disclosure next to dimensions,3,50
+T04,Data consistency across surfaces,4,50
+T05,Site-true orientation and window view,3,75
+T06,Share-link privacy controls,2,100

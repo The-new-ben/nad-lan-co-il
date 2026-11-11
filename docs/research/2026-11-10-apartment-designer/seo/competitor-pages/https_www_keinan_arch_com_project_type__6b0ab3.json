@@ -1,0 +1,61 @@
+{
+ "url": "https://www.keinan-arch.com/project_type/עיצוב-פנים/עיצוב-דירות/",
+ "slug": "https_www_keinan_arch_com_project_type__6b0ab3",
+ "status": 200,
+ "final_url": "https://www.keinan-arch.com/project_type/%D7%A2%D7%99%D7%A6%D7%95%D7%91-%D7%A4%D7%A0%D7%99%D7%9D/%D7%A2%D7%99%D7%A6%D7%95%D7%91-%D7%93%D7%99%D7%A8%D7%95%D7%AA/",
+ "title": "עיצוב דירות | עיצוב פנים לדירה עם מעצבי פנים מומחים - קינן אדריכלים",
+ "meta_description": "עיצוב דירה בכל גודל! צפו במבחר פרויקטים של עיצוב דירות על ידי הצוות המקצועי שלנו. אנו נלווה אתכם לאורך כל הפרויקט החל מהתכנון ועד לגמר הביצוע ברמת שלמות >>",
+ "canonical": "https://www.keinan-arch.com/project_type/עיצוב-פנים/עיצוב-דירות/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 1,
+   "text": "עיצוב דירות"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב דירה בהתאם לצורך הייחודי של הלקוח"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב דירות – האם כדאי לנסות לעשות את זה לבד?"
+  },
+  {
+   "level": 2,
+   "text": "איך תמצאו משרד שיתן הרבה מרחב לרצון של הלקוח?"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב דירות לכל מטרה – מה חשוב לדעת?"
+  }
+ ],
+ "word_count": 633,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 1,
+  "3d_or_planner": 1,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 1,
+  "ai_generator": 0,
+  "faq_schema": 1,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "Answer",
+  "BreadcrumbList",
+  "CollectionPage",
+  "EntryPoint",
+  "FAQPage",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "PropertyValueSpecification",
+  "Question",
+  "SearchAction",
+  "WebSite"
+ ]
+}

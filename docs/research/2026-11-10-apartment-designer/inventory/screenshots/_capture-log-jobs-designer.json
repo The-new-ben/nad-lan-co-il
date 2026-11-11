@@ -1,0 +1,114 @@
+[
+ {
+  "name": "01-designer-390-poster",
+  "url": "https://nad-lan.co.il/tour/designer/",
+  "w": 390,
+  "h": 844,
+  "loadMs": 991,
+  "requests": 11,
+  "kb": 341,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "02-designer-390-inside",
+  "url": "https://nad-lan.co.il/tour/designer/?room=living",
+  "w": 390,
+  "h": 844,
+  "loadMs": 1071,
+  "requests": 10,
+  "kb": 49,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "03-designer-1440-poster",
+  "url": "https://nad-lan.co.il/tour/designer/",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 228,
+  "requests": 10,
+  "kb": 0,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "04-designer-1440-inside",
+  "url": "https://nad-lan.co.il/tour/designer/?room=living",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 342,
+  "requests": 10,
+  "kb": 0,
+  "failed": [],
+  "errors": [],
+  "file_kept": true
+ },
+ {
+  "name": "05-designer-ctx-390",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w",
+  "w": 390,
+  "h": 844,
+  "loadMs": 869,
+  "requests": 10,
+  "kb": 49,
+  "failed": [],
+  "errors": [],
+  "file_kept": false
+ },
+ {
+  "name": "06-designer-ctx-390-inside",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w&room=living",
+  "w": 390,
+  "h": 844,
+  "loadMs": 1008,
+  "requests": 16,
+  "kb": 49,
+  "failed": [],
+  "errors": [
+   "click #styleBtn -> ok"
+  ],
+  "file_kept": false
+ },
+ {
+  "name": "07-designer-ctx-1440",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 272,
+  "requests": 10,
+  "kb": 0,
+  "failed": [],
+  "errors": [],
+  "file_kept": false
+ },
+ {
+  "name": "08-designer-ctx-1440-inside",
+  "url": "https://nad-lan.co.il/tour/designer/?project=hamedina&unit=C-30-w&room=kitchen",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 988,
+  "requests": 10,
+  "kb": 49,
+  "failed": [],
+  "errors": [],
+  "file_kept": false
+ },
+ {
+  "name": "09-designer-1440-furniture",
+  "url": "https://nad-lan.co.il/tour/designer/?room=bedroom",
+  "w": 1440,
+  "h": 900,
+  "loadMs": 1036,
+  "requests": 18,
+  "kb": 49,
+  "failed": [],
+  "errors": [
+   "click #furnBtn -> ok"
+  ],
+  "file_kept": false
+ }
+]

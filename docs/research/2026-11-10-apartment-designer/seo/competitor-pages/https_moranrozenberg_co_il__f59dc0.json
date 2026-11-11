@@ -1,0 +1,87 @@
+{
+ "url": "https://moranrozenberg.co.il/",
+ "slug": "https_moranrozenberg_co_il__f59dc0",
+ "status": 200,
+ "final_url": "https://moranrozenberg.co.il/",
+ "title": "מעצבת פנים | מורן רוזנברג מעצבת פנים לבתים בשלבי בנייה ושיפוץ",
+ "meta_description": "מעצבת פנים מורן רוזנברג || סטודיו לעיצוב פנים מזכרת בתיה || מעצבת פנים לבתים פרטיים, וילות בנחלאות ודירות יוקרה",
+ "canonical": "https://moranrozenberg.co.il/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 2,
+   "text": "תכנון ועיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "הום סטיילינג"
+  },
+  {
+   "level": 2,
+   "text": "מסלולי ייעוץ"
+  },
+  {
+   "level": 1,
+   "text": "מורן רוזנברג, עיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "תכנון ועיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "הום סטיילינג"
+  },
+  {
+   "level": 2,
+   "text": "מסלולי ייעוץ"
+  },
+  {
+   "level": 2,
+   "text": "מוזמנים ליצור קשר 054-6966711"
+  },
+  {
+   "level": 2,
+   "text": "או השאירו פרטים ואחזור אליכם בהקדם"
+  },
+  {
+   "level": 2,
+   "text": "או השאירו פרטים ואחזור אליכם בהקדם"
+  },
+  {
+   "level": 2,
+   "text": "\""
+  },
+  {
+   "level": 2,
+   "text": "\""
+  }
+ ],
+ "word_count": 1928,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 231,
+  "3d_or_planner": 27,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 4,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "BreadcrumbList",
+  "EntryPoint",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "PropertyValueSpecification",
+  "ReadAction",
+  "SearchAction",
+  "WebPage",
+  "WebSite"
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "url": "https://www.mako.co.il/living-architecture/local/Article-8482bea0a7fb1a1026.htm",
+ "slug": "https_www_mako_co_il_living_architecture_local_Article_8482bea0a7fb1a1026_htm_0393a0",
+ "status": 200,
+ "final_url": "https://www.mako.co.il/living-architecture/local/Article-8482bea0a7fb1a1026.htm",
+ "title": "צפון ת\"א: האחים קנו דירה יחד וזה מה שהם עשו",
+ "meta_description": "אח ואחות תושבי צרפת ביקשו דירה שאפשר לנחות בה בכל ביקור בישראל, בלי להתארגן מראש ובלי לוותר על הנוחות של בית. כך הפך דופלקס קטן לשני מפלסים גמישים, עם פתרונות לינה משתנים, שתי מרפסות ומפגש בין חומרים טבעיים ותע",
+ "canonical": "https://www.mako.co.il/living-architecture/local/Article-8482bea0a7fb1a1026.htm",
+ "robots": "index, follow, max-image-preview:large",
+ "headings": [
+  {
+   "level": 1,
+   "text": "צפון תל אביב: אח ואחות, שני סגנונות שונים ודירה אחת"
+  },
+  {
+   "level": 3,
+   "text": "לכל הכתבות בערוץ living"
+  }
+ ],
+ "word_count": 1326,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 1,
+  "3d_or_planner": 15,
+  "video": 0,
+  "price_table": 0,
+  "form_lead": 0,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [
+  "פרסומת התהליך נמשך כחצי שנה, מתחילתו ועד סופו, ועלותו הייתה כמיליון שקל, שכללו תכנון, ייעוץ הנדסי, החלפה של כל המערכות והתשתיות בבית, עבודות נגרות ורכישת ריהוט ו",
+  "מעלות צילום: גדעון לוין, 181 מעלות פרסומת רשימת מכולת מעמד לכיור מנירוסטה - מסגרות, 4,000 שקל שידת מדיה - Zara Home, 3,500 שקל צמחייה מלאכותית - Silk TLV, 2,000 שקל צמחייה - רנגו, 3,0",
+  "00 שקל וילונות - אבי לנציאנו, 10,000 שקל ולחן - פרט ליבינג, 17,500 שקל ארבעה כיסאות - אדישן ביי, 13,000 שקל"
+ ],
+ "schema_types": [
+  "BreadcrumbList",
+  "ListItem",
+  "NewsArticle",
+  "NewsMediaOrganization",
+  "Person",
+  "SpeakableSpecification",
+  "ViewAction",
+  "WebPage"
+ ]
+}

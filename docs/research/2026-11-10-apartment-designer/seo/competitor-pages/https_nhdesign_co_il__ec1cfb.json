@@ -1,0 +1,106 @@
+{
+ "url": "https://nhdesign.co.il/",
+ "slug": "https_nhdesign_co_il__ec1cfb",
+ "status": 200,
+ "final_url": "https://nhdesign.co.il/",
+ "title": "מעצב פנים ניצן הורוביץ - עיצוב פנים דירות יוקרה | עיצוב בתי יוקרה",
+ "meta_description": "סטודיו ומשרד עיצוב הפנים ניצן הורוביץ מספק שירותי עיצוב פנים בתחום הפרטי והמסחרי, בדגש על עיצוב בתי יוקרה פרטיים, דירות יוקרה ומשרדים.",
+ "canonical": "https://nhdesign.co.il/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 1,
+   "text": "מעצב הפנים ניצן הורוביץ"
+  },
+  {
+   "level": 2,
+   "text": "הקו שמפריד"
+  },
+  {
+   "level": 2,
+   "text": "בין בית לאמנות"
+  },
+  {
+   "level": 2,
+   "text": "מעצבים חוויות מרחב ייחודיות תוך שילוב יצירתיות, פונקציונליות ודיוק בכל פרט ופרט."
+  },
+  {
+   "level": 2,
+   "text": "צילום: יאיר גלזר לחברת נאנו"
+  },
+  {
+   "level": 2,
+   "text": "מה אנחנו עושים"
+  },
+  {
+   "level": 2,
+   "text": "מה אנחנו עושים"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב פנים"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב מסחרי"
+  },
+  {
+   "level": 3,
+   "text": "אדריכלות"
+  },
+  {
+   "level": 2,
+   "text": "מה אנחנו עושים"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב פנים מסחרי"
+  },
+  {
+   "level": 2,
+   "text": "אדריכלות"
+  },
+  {
+   "level": 2,
+   "text": "אנחנו בסושיאל"
+  },
+  {
+   "level": 2,
+   "text": "\"יחד ולחוד\""
+  }
+ ],
+ "word_count": 1017,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 135,
+  "3d_or_planner": 71,
+  "video": 1,
+  "price_table": 0,
+  "form_lead": 1,
+  "ai_generator": 0,
+  "faq_schema": 1,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "Answer",
+  "BreadcrumbList",
+  "EntryPoint",
+  "FAQPage",
+  "ImageObject",
+  "ListItem",
+  "Organization",
+  "PropertyValueSpecification",
+  "Question",
+  "ReadAction",
+  "SearchAction",
+  "WebPage",
+  "WebSite"
+ ]
+}

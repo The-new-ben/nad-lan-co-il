@@ -1,0 +1,62 @@
+{
+ "url": "https://www.design-inbal.co.il/",
+ "slug": "https_www_design_inbal_co_il__99000b",
+ "status": 200,
+ "final_url": "https://www.design-inbal.co.il/",
+ "title": "עיצוב פנים ואדריכלות [פרוייקטים 2026] מעצבת פנים ענבל ברקוביץ",
+ "meta_description": "סטודיו לעיצוב פנים ענבל ברקוביץ הינו משרד בוטיק של עיצוב פנים ואדריכלות. שנות העבודה הרבות והנסיון שצברתי, הובילו אותי להתמחות במגזר הפרטי, בתכנון, עיצוב והלבשת בתי יוקרה. ענבל נושמת את התחום ונותנים את הקו העיצוב שלה. אני כאן כדי לדייק את זה.",
+ "canonical": "https://www.design-inbal.co.il/",
+ "robots": null,
+ "headings": [
+  {
+   "level": 1,
+   "text": "עיצוב פנים ענבל ברקוביץ"
+  },
+  {
+   "level": 2,
+   "text": "הבתים היפים בישראל - עם ענבל ברקוביץ"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב פנים בהתאמה אישית"
+  },
+  {
+   "level": 2,
+   "text": "שלבי ביצוע – עיצוב פנים"
+  },
+  {
+   "level": 3,
+   "text": "פרוייקטים נבחרים"
+  },
+  {
+   "level": 3,
+   "text": "כל בית מקבל חותם משלו"
+  },
+  {
+   "level": 3,
+   "text": "המומחיות של ענבל ברקוביץ"
+  }
+ ],
+ "word_count": 407,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 0,
+  "3d_or_planner": 0,
+  "video": 2,
+  "price_table": 0,
+  "form_lead": 2,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 0,
+ "price_snippets": [],
+ "schema_types": [
+  "ContactPoint",
+  "HomeAndConstructionBusiness",
+  "LocalBusiness",
+  "OpeningHoursSpecification",
+  "PostalAddress"
+ ]
+}

@@ -1,0 +1,18 @@
+[
+{"id":"higharc-intro-long","mode":"desktop","steps":[
+ {"do":"goto","url":"https://app.higharc.com/showroom/intro?builderId=G3de6WX90K7nylNm&planId=X1BPz26zwx2yA7Qp&planType=master_plans&embedSource=script","ms":2000},
+ {"do":"timeUntil","label":"loading text gone","expr":"(document.body.innerText||'').indexOf('Loading your 3d home')<0","ms":150000},
+ {"do":"wait","ms":5000},
+ {"do":"shot","name":"higharc-14-intro-loaded"},
+ {"do":"eval","label":"prices+sections","expr":"(function(){var t=document.body.innerText||'';var lines=t.split(String.fromCharCode(10)).filter(Boolean);return JSON.stringify({kbNote:'see log',dollarLines:lines.filter(function(l){return l.indexOf('$')>=0}).slice(0,40),headings:[...document.querySelectorAll('h1,h2,h3,h4,[role=tab]')].map(function(h){return (h.innerText||'').trim()}).filter(Boolean).slice(0,80),buttons:[...document.querySelectorAll('button,[role=button]')].map(function(b){return (b.getAttribute('aria-label')||b.innerText||'').trim()}).filter(function(x){return x&&x.length<40}).slice(0,80),lineCount:lines.length})})()"},
+ {"do":"drag","from":[400,450],"to":[250,420],"ms":3000},
+ {"do":"shot","name":"higharc-15-intro-orbit"}
+]},
+{"id":"higharc-intro-mobile","mode":"mobile","steps":[
+ {"do":"goto","url":"https://app.higharc.com/showroom/intro?builderId=G3de6WX90K7nylNm&planId=X1BPz26zwx2yA7Qp&planType=master_plans&embedSource=script","ms":2000},
+ {"do":"timeUntil","label":"loading text gone","expr":"(document.body.innerText||'').indexOf('Loading your 3d home')<0","ms":150000},
+ {"do":"wait","ms":5000},
+ {"do":"shot","name":"higharc-16-intro-mobile"},
+ {"do":"eval","label":"mobile ui","expr":"JSON.stringify({vw:innerWidth,small:[...document.querySelectorAll('button,a,[role=button]')].filter(function(e){var r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight&&r.bottom>0&&Math.min(r.width,r.height)<44}).length,total:[...document.querySelectorAll('button,a,[role=button]')].filter(function(e){var r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight&&r.bottom>0}).length})"}
+]}
+]

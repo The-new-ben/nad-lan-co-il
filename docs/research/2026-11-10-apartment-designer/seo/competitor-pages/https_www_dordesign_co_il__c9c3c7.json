@@ -1,0 +1,137 @@
+{
+ "url": "https://www.dordesign.co.il/",
+ "slug": "https_www_dordesign_co_il__c9c3c7",
+ "status": 200,
+ "final_url": "https://www.dordesign.co.il/",
+ "title": "מעצבת פנים הדר דור (Dordesign) – עיצוב פנים מרהיב, מעל 20 שנות ניסיון",
+ "meta_description": "Dordesign — סטודיו לעיצוב פנים של הדר דור, מעצבת פנים עם מעל 20 שנות ניסיון בעיצוב בתים פרטיים, פנטהאוזים ודירות באזור השרון, תל אביב והמרכז.",
+ "canonical": "https://www.dordesign.co.il/",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "headings": [
+  {
+   "level": 1,
+   "text": "מעצבת פנים הדר דור - Dordesign"
+  },
+  {
+   "level": 2,
+   "text": "עיצוב פנים לבתים פרטיים, פנטהאוזים ודירות - תכנון מקצועי ועיצוב מרהיב"
+  },
+  {
+   "level": 2,
+   "text": "כיצד לבחור מעצבת פנים ואיך עובדים איתה?"
+  },
+  {
+   "level": 2,
+   "text": "פרויקטים נבחרים"
+  },
+  {
+   "level": 3,
+   "text": "לפני אחרי בעיצוב פנים"
+  },
+  {
+   "level": 2,
+   "text": "מדוע לבחור בי בתור מעצבת פנים שלכם?"
+  },
+  {
+   "level": 2,
+   "text": "תקשורת ופרסום"
+  },
+  {
+   "level": 3,
+   "text": "זכייה בפרס חביבת הקהל"
+  },
+  {
+   "level": 3,
+   "text": "הדר דור בתכנית הבוקר"
+  },
+  {
+   "level": 3,
+   "text": "הדר דור במגזין בניין ודיור"
+  },
+  {
+   "level": 3,
+   "text": "הדר דור בפרסומת של פנדור"
+  },
+  {
+   "level": 3,
+   "text": "הדר דור במגזין לאשה"
+  },
+  {
+   "level": 3,
+   "text": "הדר דור בערוץ החיים הטובים"
+  },
+  {
+   "level": 2,
+   "text": "לקוחות ממליצים"
+  },
+  {
+   "level": 3,
+   "text": "המלצות נוספות >>"
+  },
+  {
+   "level": 2,
+   "text": "קטגוריות עיצוב פנים"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב בתים"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב פנטהאוזים"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב דירות"
+  },
+  {
+   "level": 3,
+   "text": "עיצוב משרדים ומרפאות"
+  },
+  {
+   "level": 2,
+   "text": "תהליך העבודה בסטודיו — איך אנחנו מובילים אתכם לעיצוב מושלם"
+  },
+  {
+   "level": 2,
+   "text": "תהליך העבודה בסטודיו — איך אנחנו מובילים אתכם לעיצוב מושלם"
+  }
+ ],
+ "word_count": 922,
+ "tools": {
+  "calculator": 0,
+  "quiz": 0,
+  "gallery": 4,
+  "3d_or_planner": 7,
+  "video": 0,
+  "price_table": 1,
+  "form_lead": 1,
+  "ai_generator": 0,
+  "faq_schema": 0,
+  "howto_schema": 0
+ },
+ "tables": 1,
+ "price_snippets": [],
+ "schema_types": [
+  "Article",
+  "BreadcrumbList",
+  "CreativeWork",
+  "EntryPoint",
+  "GeoCoordinates",
+  "ImageObject",
+  "ListItem",
+  "Offer",
+  "Organization",
+  "Person",
+  "Place",
+  "PostalAddress",
+  "PropertyValue",
+  "PropertyValueSpecification",
+  "QuantitativeValue",
+  "ReadAction",
+  "SearchAction",
+  "Service",
+  "WebPage",
+  "WebSite"
+ ]
+}

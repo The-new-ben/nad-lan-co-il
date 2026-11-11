@@ -1,0 +1,12 @@
+[
+{"id":"higharc-showroom-deep","mode":"desktop","steps":[
+ {"do":"goto","url":"https://demo.higharc.com/floorplans/belmont/","ms":12000},
+ {"do":"eval","label":"scroll","expr":"(function(){var e=[...document.querySelectorAll('a,button')].filter(function(x){return (x.innerText||'').trim()==='Design in 3D'})[0]; if(!e) return 'none'; e.scrollIntoView({block:'center'}); var o=window.open; window.__opened=[]; window.open=function(u){window.__opened.push(u); return o.apply(window,arguments)}; return e.outerHTML.slice(0,400)})()"},
+ {"do":"wait","ms":1500},
+ {"do":"click","text":"Design in 3D","exact":true,"ms":1000},
+ {"do":"timeUntil","label":"3D canvas after click","expr":"(function(){var a=[...document.querySelectorAll('canvas')].some(function(c){var r=c.getBoundingClientRect();return r.width>300&&r.height>200});var f=[...document.querySelectorAll('iframe')].some(function(i){var r=i.getBoundingClientRect();return r.width>300&&r.height>300&&i.src&&i.src.indexOf('recaptcha')<0});return a||f})()","ms":45000},
+ {"do":"wait","ms":15000},
+ {"do":"shot","name":"higharc-12-showroom-open"},
+ {"do":"eval","label":"after open","expr":"JSON.stringify({url:location.href,opened:window.__opened,iframes:[...document.querySelectorAll('iframe')].map(function(f){var r=f.getBoundingClientRect();return f.src+' '+Math.round(r.width)+'x'+Math.round(r.height)}).filter(function(s){return s.indexOf('recaptcha')<0}),txt:(document.body?document.body.innerText:'').split(String.fromCharCode(10)).filter(Boolean).slice(0,30).join(' | ')})"}
+]}
+]

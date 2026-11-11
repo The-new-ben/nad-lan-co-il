@@ -1,0 +1,92 @@
+scope,product,verified_score,claimed_score,live_tested_weight_share_pct
+ALL,planner5d,19.8,29.9,14
+ALL,homestyler,20.3,30.7,14
+ALL,coohom,29.9,39.5,46
+ALL,roomsketcher,17.1,23.7,12
+ALL,floorplanner,19.1,20.8,77
+ALL,higharc_showroom,25.7,32.8,52
+ALL,gbuilder_ref,22.7,35.2,9
+visualisation,planner5d,21.1,36.1,0
+visualisation,homestyler,32.8,54.6,0
+visualisation,coohom,56.1,65.7,67
+visualisation,roomsketcher,23.3,38.9,0
+visualisation,floorplanner,45.4,50.9,63
+visualisation,higharc_showroom,12.1,20.2,0
+visualisation,gbuilder_ref,17.3,28.8,0
+plan accuracy,planner5d,11.1,18.5,0
+plan accuracy,homestyler,16.3,27.2,0
+plan accuracy,coohom,21.5,35.9,0
+plan accuracy,roomsketcher,24.8,41.3,0
+plan accuracy,floorplanner,19.5,19.5,65
+plan accuracy,higharc_showroom,38.9,50.0,44
+plan accuracy,gbuilder_ref,30.0,50.0,0
+2D-3D link,planner5d,27.0,45.0,0
+2D-3D link,homestyler,27.0,45.0,0
+2D-3D link,coohom,52.0,70.0,40
+2D-3D link,roomsketcher,47.0,65.0,0
+2D-3D link,floorplanner,27.5,27.5,80
+2D-3D link,higharc_showroom,40.0,50.0,40
+2D-3D link,gbuilder_ref,9.0,15.0,0
+catalogue and pricing,planner5d,15.7,26.1,0
+catalogue and pricing,homestyler,9.1,15.2,0
+catalogue and pricing,coohom,16.5,21.7,78
+catalogue and pricing,roomsketcher,0.0,0.0,0
+catalogue and pricing,floorplanner,0.0,0.0,91
+catalogue and pricing,higharc_showroom,15.7,26.1,61
+catalogue and pricing,gbuilder_ref,31.3,52.2,0
+generation,planner5d,21.2,35.4,0
+generation,homestyler,23.3,41.7,0
+generation,coohom,17.5,29.2,0
+generation,roomsketcher,0.0,0.0,0
+generation,floorplanner,20.0,25.0,75
+generation,higharc_showroom,12.5,12.5,75
+generation,gbuilder_ref,15.0,25.0,0
+collaboration and video,planner5d,23.2,33.9,14
+collaboration and video,homestyler,17.1,28.6,0
+collaboration and video,coohom,27.1,35.7,50
+collaboration and video,roomsketcher,17.1,28.6,0
+collaboration and video,floorplanner,18.6,21.4,75
+collaboration and video,higharc_showroom,15.0,17.9,50
+collaboration and video,gbuilder_ref,12.9,21.4,0
+"spec, BOM and cost",planner5d,27.6,46.0,0
+"spec, BOM and cost",homestyler,20.4,34.0,0
+"spec, BOM and cost",coohom,26.4,44.0,0
+"spec, BOM and cost",roomsketcher,2.4,4.0,0
+"spec, BOM and cost",floorplanner,1.2,2.0,92
+"spec, BOM and cost",higharc_showroom,26.4,44.0,36
+"spec, BOM and cost",gbuilder_ref,24.0,40.0,0
+mobile UX,planner5d,26.2,30.7,45
+mobile UX,homestyler,31.3,35.8,45
+mobile UX,coohom,37.0,39.3,77
+mobile UX,roomsketcher,35.0,39.5,45
+mobile UX,floorplanner,15.1,15.1,100
+mobile UX,higharc_showroom,12.2,12.2,68
+mobile UX,gbuilder_ref,23.3,32.4,45
+performance,planner5d,19.6,19.6,43
+performance,homestyler,10.7,10.7,43
+performance,coohom,42.9,42.9,100
+performance,roomsketcher,30.4,30.4,43
+performance,floorplanner,44.6,44.6,100
+performance,higharc_showroom,32.1,32.1,79
+performance,gbuilder_ref,28.6,28.6,43
+accessibility and RTL,planner5d,15.9,15.9,73
+accessibility and RTL,homestyler,17.0,17.0,73
+accessibility and RTL,coohom,15.9,15.9,73
+accessibility and RTL,roomsketcher,22.7,22.7,73
+accessibility and RTL,floorplanner,20.5,20.5,73
+accessibility and RTL,higharc_showroom,22.7,22.7,82
+accessibility and RTL,gbuilder_ref,18.2,18.2,32
+integration with project plans,planner5d,22.5,37.5,0
+integration with project plans,homestyler,22.5,37.5,0
+integration with project plans,coohom,27.9,46.4,0
+integration with project plans,roomsketcher,4.3,7.1,0
+integration with project plans,floorplanner,17.9,22.3,57
+integration with project plans,higharc_showroom,65.0,82.1,46
+integration with project plans,gbuilder_ref,45.0,75.0,0
+trust and honesty labels,planner5d,4.3,7.1,0
+trust and honesty labels,homestyler,11.7,13.1,19
+trust and honesty labels,coohom,15.2,19.0,76
+trust and honesty labels,roomsketcher,2.1,3.6,0
+trust and honesty labels,floorplanner,7.1,7.1,71
+trust and honesty labels,higharc_showroom,13.9,13.9,72
+trust and honesty labels,gbuilder_ref,15.8,26.4,0

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "planner5d-gallery",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 6711,
+    "reqs": 154,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://planner5d.com/gallery/floorplans/ZOTaeZ/floorplans-apartment-3d",
+        "kb": 6587,
+        "reqs": 132
+      },
+      {
+        "ts": 8377,
+        "step": "shot",
+        "name": "planner5d-11-gallery-project",
+        "kb": 6587,
+        "reqs": 132
+      },
+      {
+        "ts": 8523,
+        "step": "eval",
+        "label": "text"
+      },
+      {
+        "ts": 8527,
+        "step": "click",
+        "text": "Open in 3D",
+        "found": {
+          "x": 1099.5,
+          "y": 268,
+          "t": "Open in 3D"
+        }
+      },
+      {
+        "ts": 9573,
+        "step": "timeUntil",
+        "label": "3D canvas",
+        "ok": false,
+        "ms": 40100
+      },
+      {
+        "ts": 57682,
+        "step": "shot",
+        "name": "planner5d-12-open-in-3d",
+        "kb": 6711,
+        "reqs": 154
+      },
+      {
+        "ts": 57827,
+        "step": "eval",
+        "label": "after 3d"
+      }
+    ]
+  },
+  {
+    "id": "coohom-panorama",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 17305,
+    "reqs": 227,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.coohom.com/pub/tool/panorama/show?obsPlanId=3FO43N7KQ0C1",
+        "kb": 3585,
+        "reqs": 10
+      },
+      {
+        "ts": 4408,
+        "step": "timeUntil",
+        "label": "pano canvas",
+        "ok": true,
+        "ms": 10645
+      },
+      {
+        "ts": 21251,
+        "step": "shot",
+        "name": "coohom-11-panorama",
+        "kb": 15603,
+        "reqs": 182
+      },
+      {
+        "ts": 34236,
+        "step": "eval",
+        "label": "ui"
+      },
+      {
+        "ts": 39395,
+        "step": "drag"
+      },
+      {
+        "ts": 43382,
+        "step": "shot",
+        "name": "coohom-12-panorama-rotated",
+        "kb": 17305,
+        "reqs": 227
+      }
+    ]
+  },
+  {
+    "id": "coohom-panorama-mobile",
+    "mode": "mobile",
+    "date": "2026-11-10",
+    "totalKB": 16703,
+    "reqs": 207,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.coohom.com/pub/tool/panorama/show?obsPlanId=3FO43N7KQ0C1",
+        "kb": 3769,
+        "reqs": 26
+      },
+      {
+        "ts": 3868,
+        "step": "timeUntil",
+        "label": "pano canvas",
+        "ok": true,
+        "ms": 7230
+      },
+      {
+        "ts": 17239,
+        "step": "shot",
+        "name": "coohom-13-panorama-mobile",
+        "kb": 16110,
+        "reqs": 193
+      },
+      {
+        "ts": 32864,
+        "step": "eval",
+        "label": "mobile ui"
+      }
+    ]
+  },
+  {
+    "id": "coohom-aiwalking",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 12433,
+    "reqs": 153,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.coohom.com/pub/tool/panorama/aiwalking?obsPlanId=3FO43N7KQ0C1&locale=en_US",
+        "kb": 3773,
+        "reqs": 25
+      },
+      {
+        "ts": 3638,
+        "step": "timeUntil",
+        "label": "walk canvas",
+        "ok": true,
+        "ms": 7068
+      },
+      {
+        "ts": 18756,
+        "step": "shot",
+        "name": "coohom-14-aiwalking",
+        "kb": 12433,
+        "reqs": 151
+      },
+      {
+        "ts": 23377,
+        "step": "eval",
+        "label": "ui"
+      }
+    ]
+  },
+  {
+    "id": "homestyler-project",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 11747,
+    "reqs": 414,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://www.homestyler.com/projectDetail/65951b8b3ddddc1283e656ba?lang=en_US",
+        "kb": 2177,
+        "reqs": 49
+      },
+      {
+        "ts": 12426,
+        "step": "shot",
+        "name": "homestyler-11-project-detail",
+        "kb": 9266,
+        "reqs": 234
+      },
+      {
+        "ts": 30997,
+        "step": "eval",
+        "label": "ui"
+      }
+    ]
+  },
+  {
+    "id": "higharc-belmont",
+    "mode": "desktop",
+    "date": "2026-11-10",
+    "totalKB": 5895,
+    "reqs": 70,
+    "log": [
+      {
+        "ts": 0,
+        "step": "goto",
+        "url": "https://demo.higharc.com/floorplans/belmont/",
+        "kb": 5895,
+        "reqs": 70
+      },
+      {
+        "ts": 15312,
+        "step": "shot",
+        "name": "higharc-11-belmont",
+        "kb": 5895,
+        "reqs": 70
+      },
+      {
+        "ts": 16311,
+        "step": "eval",
+        "label": "ui"
+      }
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+[
+{"id":"planner5d-gallery","mode":"desktop","steps":[
+ {"do":"goto","url":"https://planner5d.com/gallery/floorplans/ZOTaeZ/floorplans-apartment-3d","ms":8000},
+ {"do":"shot","name":"planner5d-11-gallery-project"},
+ {"do":"eval","label":"text","expr":"document.body.innerText.replace(/\n+/g,' | ').slice(0,1200)"},
+ {"do":"click","text":"Open in 3D","ms":1000},
+ {"do":"timeUntil","label":"3D canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":40000},
+ {"do":"wait","ms":8000},
+ {"do":"shot","name":"planner5d-12-open-in-3d"},
+ {"do":"eval","label":"after 3d","expr":"JSON.stringify({url:location.href,ctx:[...new Set(window.__probe.ctx)],txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,800)})"}
+]},
+{"id":"coohom-panorama","mode":"desktop","steps":[
+ {"do":"goto","url":"https://www.coohom.com/pub/tool/panorama/show?obsPlanId=3FO43N7KQ0C1","ms":3000},
+ {"do":"timeUntil","label":"pano canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":40000},
+ {"do":"wait","ms":6000},
+ {"do":"shot","name":"coohom-11-panorama"},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,ctx:[...new Set(window.__probe.ctx)],txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,1000),controls:[...document.querySelectorAll('button,[role=button],[title],[aria-label]')].map(e=>(e.getAttribute('aria-label')||e.title||e.innerText||'').trim()).filter(t=>t&&t.length<40).slice(0,60)})"},
+ {"do":"drag","from":[900,450],"to":[500,450],"ms":3000},
+ {"do":"shot","name":"coohom-12-panorama-rotated"}
+]},
+{"id":"coohom-panorama-mobile","mode":"mobile","steps":[
+ {"do":"goto","url":"https://www.coohom.com/pub/tool/panorama/show?obsPlanId=3FO43N7KQ0C1","ms":3000},
+ {"do":"timeUntil","label":"pano canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>200&&r.height>200})","ms":40000},
+ {"do":"wait","ms":6000},
+ {"do":"shot","name":"coohom-13-panorama-mobile"},
+ {"do":"eval","label":"mobile ui","expr":"JSON.stringify({vw:innerWidth,txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,600),small:[...document.querySelectorAll('button,a,[role=button]')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight&&Math.min(r.width,r.height)<44}).length,total:[...document.querySelectorAll('button,a,[role=button]')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.top<innerHeight}).length})"}
+]},
+{"id":"coohom-aiwalking","mode":"desktop","steps":[
+ {"do":"goto","url":"https://www.coohom.com/pub/tool/panorama/aiwalking?obsPlanId=3FO43N7KQ0C1&locale=en_US","ms":3000},
+ {"do":"timeUntil","label":"walk canvas","expr":"[...document.querySelectorAll('canvas')].some(c=>{const r=c.getBoundingClientRect();return r.width>300&&r.height>200})","ms":40000},
+ {"do":"wait","ms":8000},
+ {"do":"shot","name":"coohom-14-aiwalking"},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,ctx:[...new Set(window.__probe.ctx)],txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,1000)})"}
+]},
+{"id":"homestyler-project","mode":"desktop","steps":[
+ {"do":"goto","url":"https://www.homestyler.com/projectDetail/65951b8b3ddddc1283e656ba?lang=en_US","ms":10000},
+ {"do":"shot","name":"homestyler-11-project-detail"},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,ctx:[...new Set(window.__probe.ctx)],txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,1500),iframes:[...document.querySelectorAll('iframe')].map(f=>f.src).slice(0,5)})"}
+]},
+{"id":"higharc-belmont","mode":"desktop","steps":[
+ {"do":"goto","url":"https://demo.higharc.com/floorplans/belmont/","ms":12000},
+ {"do":"shot","name":"higharc-11-belmont"},
+ {"do":"eval","label":"ui","expr":"JSON.stringify({url:location.href,ctx:[...new Set(window.__probe.ctx)],txt:document.body.innerText.replace(/\n+/g,' | ').slice(0,1800),iframes:[...document.querySelectorAll('iframe')].map(f=>f.src).slice(0,8),btns:[...document.querySelectorAll('a,button')].map(e=>(e.innerText||'').trim()+' -> '+(e.href||'')).filter(t=>/3d|design|personal|showroom|interactive|tour|customi|build/i.test(t)).slice(0,20)})"}
+]}
+]
