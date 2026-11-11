@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>בדיקת שיחה במעצב הדירה</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+/* the same hostile site rules as module-harness.html: the designer and its call dock must not change */
+body{margin:0;font-family:Assistant,Arial,sans-serif;background:#fff;color:#222}
+button{border-radius:12px!important;background:#e33!important;color:#fff!important;font-family:serif!important}
+h2{color:#e33!important;font-family:serif!important;font-size:40px!important}
+*{letter-spacing:.02em}
+#app{position:fixed;inset:0}
+</style>
+</head>
+<body>
+<!-- Local check only. Joins the MOCK transport (BroadcastChannel between tabs of one browser): no server, no LiveKit, no room on the site.
+     ?room=<name>&id=<identity>&name=<first name>&role=buyer|rep|designer|family&lang=he|en -->
+<div id="app"></div>
+<script type="module">
+import { mount } from '../../../plugins/nadlan-config/assets/designer/designer.js';
+import { joinCall } from '../../../plugins/nadlan-config/assets/designer/call.js';
+import { mockTransport } from '../../../plugins/nadlan-config/assets/designer/call-mock.js';
+const q = new URLSearchParams(location.search);
+const room = q.get('room') || 'local', identity = q.get('id') || 'p' + Math.random().toString(36).slice(2, 7);
+const name = q.get('name') || '', role = q.get('role') || 'buyer', lang = q.get('lang') || 'he';
+const el = document.getElementById('app');
+window.__d = await mount(el, { lang, save: false, unitLabel: 'פרויקט לדוגמה · דירה 12', onCall: () => {} });
+await window.__d.ready3d;
+const container = document.createElement('div'); container.className = 'ndc-host';
+el.shadowRoot.appendChild(container);
+window.__left = false;
+window.__call = await joinCall(window.__d, {
+  container, room, identity, name, role, lang,
+  transport: (window.__tr = mockTransport({ room, identity, name, role, loss: +(q.get('loss') || 0) })),
+  camera: q.get('cam') !== '0', mic: q.get('mic') !== '0',
+  inviteBase: location.origin + '/projects/example/',
+  onLeave: () => { window.__left = true; },
+});
+await window.__call.ready;
+window.__ready = true;
+</script>
+</body>
+</html>
