@@ -229,7 +229,7 @@ function callRow() {
 export function mountShowroom(at) {
   if (!at || document.querySelector('.nlsr')) return { open };
   const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = WORLD + 'showroom.css' + (C.ver ? '?ver=' + C.ver : ''); document.head.appendChild(css);
-  el = document.createElement('section'); el.className = 'nlsr'; el.dir = 'rtl'; el.lang = 'he'; el.setAttribute('aria-label', 'אולם התצוגה: בחירת דירה במגדלי כיכר המדינה');
+  el = document.createElement('section'); el.className = 'nlsr'; el.id = 'nlsr'; el.dir = 'rtl'; el.lang = 'he'; el.setAttribute('aria-label', 'אולם התצוגה: בחירת דירה במגדלי כיכר המדינה');
   el.innerHTML = `<div class="nlsr-head"><div class="nlsr-t">בחרו דירה במגדלי כיכר המדינה</div><div class="nlsr-s"></div></div>
     <ol class="nlsr-steps" aria-label="שלבי הבחירה"></ol>
     <div class="nlsr-stage" tabindex="0" aria-label="המגדלים: מקישים על מגדל, מסובבים אותו בחצים או בגרירה, ומקישים על קומה">
@@ -245,6 +245,8 @@ export function mountShowroom(at) {
     <div class="nlsr-mapline" aria-live="polite"></div>
     <div class="nlsr-row">${callRow()}</div>`;
   at.parentNode.insertBefore(el, at);
+  // 1.72.646: the page's own "virtual tour" links pointed at the earlier stage's heading, which the showroom replaces
+  document.querySelectorAll('a[href="#nlps-t"]').forEach((x) => x.setAttribute('href', '#nlsr'));
   box = el.querySelector('.nlsr-stage');
   load().then(() => {
     const m = T.map; el.querySelector('.nlsr-mapov').setAttribute('viewBox', `${m.x0} ${-m.y1} ${m.x1 - m.x0} ${m.y1 - m.y0}`);

@@ -1,0 +1,21 @@
+{
+  "released": "1.72.646",
+  "from": "1.72.645",
+  "live_before": {
+    "assets/project-stage/world/showroom.js": "ea0330d08663424bacab6bee3efd9990",
+    "assets/project-stage/world/showroom.css": "2a2bd61428da476714550d937ed302ea",
+    "nadlan-config.php": "021a986a1bf5483235c85cd1036c2dcc",
+    "inc/project-stage.php": "5dad346d5f4efe6595a4897a2a5d9f34"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 17:04:07",
+  "files": {
+    "assets/project-stage/world/showroom.js": "cc382cebe63fd9d56dfed56c6c35afc7",
+    "assets/project-stage/world/showroom.css": "9bd0bbdffb9fa6120ab0e3228d2a1e1b",
+    "nadlan-config.php": "0e3a0345426ccba59154bdfbea71fadc",
+    "inc/project-stage.php": "764b4b771dcca97889ffb01b51fb7026"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.646, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

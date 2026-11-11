@@ -2592,16 +2592,17 @@ if ( ! function_exists( 'nadlan_ps_world_film' ) ) {
 		};
 		return '<section class="nlws-film" id="nlws-film" dir="' . $t[3] . '" lang="' . esc_attr( $lang ) . '" aria-labelledby="nlws-film-h">'
 			. '<h2 id="nlws-film-h">' . esc_html( $t[0] ) . '</h2><p class="nlws-film__p">' . esc_html( $t[1] ) . '</p>'
-			. nadlan_ps_world_film_v2( $k, $t[2] ) // v104.40: the narrated v2 film leads (Ben, 3.10 evening)
-			. '<h3 class="nlws-film__v1h">' . esc_html( array( 'he' => 'הגרסה הראשונה', 'en' => 'The first version', 'fr' => 'La première version', 'ru' => 'Первая версия', 'ar' => 'النسخة الأولى' )[ $lang ] ?? 'הגרסה הראשונה' ) . '</h3>'
-			. '<figure class="nlws-film__fig">' . $v( '16x9', 'wide' ) . $v( '9x16', 'tall' ) . '<figcaption>' . esc_html( $t[2] ) . '</figcaption></figure>'
+			. nadlan_ps_world_film_v2( $k, $t[2] ) // v104.40: the narrated v2 film. 1.72.646 (Ben, 11.11.2026: "the film is there twice"): the first version left the page, one film and the facilities clip
 			. nadlan_ps_world_facilities_clip( $lang, $k ) . '</section>' // v104.36: the facilities clip, labelled before play (option B)
 			. '<style id="nlws-film-css">:root body .nlps-page>.nlws-film{grid-column:1/-1;width:100%;box-sizing:border-box}.nlws-film{max-width:1100px;margin:40px auto 8px;padding:0 16px}.nlws-film h2{margin:0 0 6px}'
 			. '.nlws-film__p{margin:0 0 14px;max-width:62ch;color:#4A5560}.nlws-film__fig{margin:0}'
 			. '.nlws-film__v{display:block;width:100%;height:auto;border-radius:16px;background:#14130F}'
 			. '.nlws-film__v--tall{display:none;max-width:420px;margin:0 auto}.nlws-film__v--wide{aspect-ratio:auto 16/9}.nlws-film__v--tall{aspect-ratio:auto 9/16}'
 			. '@media(max-width:700px){.nlws-film__v--wide{display:none}.nlws-film__v--tall{display:block}}'
-			. '.nlws-film figcaption{margin-top:8px;font-size:13px;color:#6B6558}</style>'
+			. '.nlws-film figcaption{margin-top:8px;font-size:13px;color:#6B6558}'
+			// 1.72.646: the page walk of 11.11.2026. A card with a heading and nothing under it is not shown; on a phone the comparison rows say what each number is
+			. '#nlpjx-finance:not(:has(.nlpjx-fin>*)){display:none}'
+			. '@media(max-width:782px){.nlpjx-comps td:nth-child(2)::before{content:"מחיר מוערך למ״ר: ";color:#5b6770;font-size:12.5px}.nlpjx-comps td:nth-child(2)::after{content:" ₪"}.nlpjx-comps td:nth-child(3)::before{content:"מרחק מהמגדלים: ";color:#5b6770;font-size:12.5px}}</style>'
 			. '<script id="nlws-film-lazy">(function(){var vs=document.querySelectorAll("video[data-nlposter]");if(!vs.length)return;var set=function(v){if(!v.getAttribute("poster")){v.setAttribute("poster",v.getAttribute("data-nlposter"));}};if(!("IntersectionObserver" in window)){for(var i=0;i<vs.length;i++){set(vs[i]);}return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){set(e.target);io.unobserve(e.target);}});},{rootMargin:"800px 0px"});for(var j=0;j<vs.length;j++){io.observe(vs[j]);}})();</script>'; // v104.44 lazy posters (HAD-421)
 	}
 }

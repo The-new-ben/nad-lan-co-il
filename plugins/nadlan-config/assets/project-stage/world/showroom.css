@@ -96,3 +96,7 @@
   .nlsr-t{font-size:30px!important}
   .nlsr a.nlsr-call{max-width:320px}
 }
+/* 1.72.646 (the page walk of 11.11.2026): the showroom replaces the earlier stage at every width, not only on a phone; without that box the page title, the opening lines and the buttons take the full row */
+body:has(.nlsr) .nlps-stagebox{display:none!important}
+.nlsr{scroll-margin-top:84px}
+@media(min-width:900px){body:has(.nlsr) .nlps-page--world>.nlps-herowrap,body:has(.nlsr) .nlps-page--world>.nl-lead,body:has(.nlsr) .nlps-page--world>.nlps-ctawrap{grid-column:1/-1!important}body:has(.nlsr) .nlps-page--world>.nl-lead{max-width:82ch!important}}

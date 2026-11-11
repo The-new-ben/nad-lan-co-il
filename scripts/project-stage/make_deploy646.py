@@ -1,0 +1,161 @@
+# -*- coding: utf-8 -*-
+"""make deploy646.py from deploy645.py: 1.72.646 = HAD-712, Ben 11.11.2026: "the page does not look good, the film is there twice, you
+did not go over the page". The whole live page was walked (58 phone screens, 36 desktop screens); this release fixes what the walk found:
+  HUNK on the LIVE inc/project-stage.php (the 1.72.643 text, md5 5dad346d5f: deploy-result-643.json), two places (k646_hunks.py):
+       the Kikar film block drops the first-version film in all five languages (the narrated v2 film and the facilities clip stay);
+       its style block hides the "finance" card when it has a heading and nothing under it, and on a phone labels the comparison rows.
+  SWAP assets/project-stage/world/showroom.css: the showroom replaces the earlier stage at every width (it still showed under the
+       showroom above 900 px), and the title, the opening lines and the buttons take the full row.
+       assets/project-stage/world/showroom.js: the section has id="nlsr" and the page's "virtual tour" links point at it (they pointed
+       at the hidden stage's heading).
+nadlan-config.php, on its LIVE text: the version only."""
+import ast, hashlib, json, os, re, subprocess, sys
+H = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(H))
+PLUG = os.path.join(REPO, "plugins", "nadlan-config")
+QA = os.path.join(REPO, "docs", "qa", "project-stage-2026-09-24")
+PREV, NEWV = 645, 646
+md5 = lambda b: hashlib.md5(b).hexdigest()
+W = "assets/project-stage/world/"
+FILES = [W + "showroom.js", W + "showroom.css"]
+NEWFILES = set()
+for r in FILES:
+    assert b"\r\n" not in open(os.path.join(PLUG, *r.split("/")), "rb").read(), "CRLF " + r
+o = subprocess.run(["node", "--check", os.path.join(PLUG, *(W + "showroom.js").split("/"))], capture_output=True, text=True)
+assert o.returncode == 0, o.stderr[-300:]
+sh = open(os.path.join(PLUG, *(W + "showroom.js").split("/")), encoding="utf-8").read()
+sc = open(os.path.join(PLUG, *(W + "showroom.css").split("/")), encoding="utf-8").read()
+assert "el.id = 'nlsr'" in sh and "a[href=\"#nlps-t\"]" in sh and "export function mountShowroom(at)" in sh
+assert sc.count("body:has(.nlsr) .nlps-stagebox{display:none!important}") == 1
+PIN = {r: md5(open(os.path.join(PLUG, *r.split("/")), "rb").read()) for r in FILES}
+rp = json.load(open(os.path.join(QA, "deploy-result-%d.json" % PREV), encoding="utf-8"))
+assert str(rp.get("state", "")).startswith("released"), "1.72.%d must be released first (state: %s)" % (PREV, rp.get("state"))
+last = {}
+for n in range(636, PREV + 1):
+    for k, v in (json.load(open(os.path.join(QA, "deploy-result-%d.json" % n), encoding="utf-8")).get("files") or {}).items():
+        last[k] = (n, v)
+REL = "inc/project-stage.php"
+assert last[REL][0] == 643 and last[W + "showroom.js"][0] == 643 and last[W + "showroom.css"][0] == 643, {k: last[k][0] for k in (REL, W + "showroom.js", W + "showroom.css")}
+sys.path.insert(0, H)
+import k646_hunks as KH  # noqa: E402
+LIVE_MD5 = last[REL][1]
+assert LIVE_MD5 == KH.LIVE_MD5
+_base = os.path.join(PLUG, "inc", "project-stage.php")
+_bt = open(_base, "rb").read()
+if md5(_bt) != LIVE_MD5:  # a second run: rebuild from git (the 643 commit holds the live text)
+    _g = subprocess.run(["git", "-C", REPO, "show", "947b1b21:plugins/nadlan-config/inc/project-stage.php"], capture_output=True)
+    assert _g.returncode == 0 and md5(_g.stdout) == LIVE_MD5, "no copy of the 1.72.643 project-stage.php to hunk"
+    _bt = _g.stdout
+live_txt = _bt.decode("utf-8")
+assert "\r\n" not in live_txt
+new_txt = KH.apply(live_txt)
+_php = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Microsoft", "WinGet", "Packages")
+_php = next((os.path.join(_php, d, "php.exe") for d in sorted(os.listdir(_php)) if d.startswith("PHP.PHP.8.1_")), "php") if os.path.isdir(_php) else "php"
+_tmp = os.path.join(H, "_tmp_646_project-stage.php")
+open(_tmp, "w", encoding="utf-8", newline="\n").write(new_txt)
+_o = subprocess.run([_php, "-l", _tmp], capture_output=True, text=True, encoding="utf-8", errors="replace")
+os.remove(_tmp)
+assert _o.returncode == 0, "php -l: " + _o.stdout + _o.stderr
+print("[lint] live project-stage.php + the 646 hunks: php -l ok")
+open(_base, "w", encoding="utf-8", newline="\n").write(new_txt)
+
+src = open(os.path.join(H, "deploy%d.py" % PREV), encoding="utf-8").read()
+_m = re.search(r"^    import (\w+) as PX  # noqa: E402 \(.*$", src, re.M)
+assert _m and _m.group(1) == "designer_645", "no PX import"
+_ns = {}
+exec(compile(open(os.path.join(H, "designer_645.py"), encoding="utf-8").read(), "designer_645", "exec"), _ns)
+LIST = _ns.get("MAIN_NEW") or _ns["MAIN_LIST"]
+BUY = _ns["BUY"]
+assert "'price-nudge'" in LIST and "'designer'" in LIST and BUY == "'drone-map', 'buying-hub', 'i18n', "
+MOD = ('# -*- coding: utf-8 -*-\n"""Release 1.72.646 (HAD-712, the Kikar page walk: one film, no empty card, labelled comparison rows): TWO hunks on the LIVE '
+       'inc/project-stage.php (proven by its md5 below), and NO module-list hunk. Generated by make_deploy646.py."""\n'
+       "RELS = [%r]\nLIVE_MD5 = {%r: %r}\nPROOF = {%r: 'deploy-result-643.json (the 1.72.643 file; 644 and 645 did not write it)'}\n"
+       "HUNKS = %r\nMAIN_LIST = %r\nMAIN_NEW = MAIN_LIST\nBUY = %r\n\n\n"
+       "def apply(rel, txt):\n"
+       "    if rel != %r:\n        raise SystemExit('kikar_646: no hunk on ' + rel)\n"
+       "    for a, b in HUNKS:\n        if txt.count(a) != 1:\n            raise SystemExit('kikar_646: FATAL anchor x%%d in %%s: %%r' %% (txt.count(a), rel, a[:60]))\n"
+       "        txt = txt.replace(a, b)\n"
+       "    if 'nlws-film__v1h\">' in txt or txt.count('#nlpjx-finance:not(:has(.nlpjx-fin>*))') != 1:\n"
+       "        raise SystemExit('kikar_646: FATAL the film block is not as expected after the hunks')\n"
+       "    print('[hunk] inc/project-stage.php: one film, the empty card hidden, the comparison rows labelled, %%d hunks' %% len(HUNKS))\n    return txt\n\n\n"
+       "def apply_main(txt):\n"
+       "    \"\"\"the module list stays as the previous release left it\"\"\"\n"
+       "    if txt.count(MAIN_LIST) != 1 or \"'designer'\" not in MAIN_LIST:\n"
+       "        raise SystemExit('kikar_646: FATAL: the live module list tail is not the one the previous release left')\n"
+       "    if txt.count(BUY) != 1 or txt.count(\"'buying-hub'\") != 1:\n"
+       "        raise SystemExit('kikar_646: FATAL: buying-hub is not once before i18n in the live nadlan-config.php; read it before releasing')\n"
+       "    print(\"[hunk] nadlan-config.php: no module change ('designer' loaded, 'buying-hub' once before 'i18n', proven)\")\n"
+       "    return txt\n") % (REL, REL, LIVE_MD5, REL, KH.HUNKS, LIST, BUY, REL)
+open(os.path.join(H, "kikar_646.py"), "w", encoding="utf-8", newline="\n").write(MOD)
+import kikar_646 as _K  # noqa: E402
+assert _K.apply(REL, live_txt) == new_txt
+
+P, N, PP = str(PREV), str(NEWV), str(PREV - 1)
+assert src.count('WANT_LIVE = "1.72.%s"' % PP) == 1, "deploy645.py is not built on 1.72.644"
+src = src.replace('WANT_LIVE = "1.72.%s"' % PP, 'WANT_LIVE = "@@WANT@@"')
+for a, b in [("1.72." + P, "1.72." + N), ("ps" + P, "ps" + N), ("bak" + P, "bak" + N), ("make_deploy" + P, "make_deploy" + N),
+             ("deploy-result-" + P, "deploy-result-" + N), ("speed-" + P, "speed-" + N), ("posts-before-" + P, "posts-before-" + N),
+             ("deploy-result-" + PP, "deploy-result-" + P)]:
+    src = src.replace(a, b)
+src = src.replace('WANT_LIVE = "@@WANT@@"', 'WANT_LIVE = "1.72.%s"' % P)
+BS = chr(92)
+src = re.sub(r"\?t" + P + r"([a-z]*)=1", "?t" + N + BS + "1=1", src)
+src = re.sub(r"&t" + P + r"([a-z]*)=1", "&t" + N + BS + "1=1", src)
+src, n = re.subn(r"for n in range\(\d+, 329, -1\)", "for n in range(%s, 329, -1)" % P, src); assert n == 1, n
+src, n = re.subn(r"^    import designer_645 as PX  # noqa: E402 \(.*$", "    import kikar_646 as PX  # noqa: E402 (1.72.646: two hunks on the live project-stage.php; the module list unchanged, proven)", src, flags=re.M); assert n == 1, n
+src, n = re.subn(r'print\("RELEASE 1\.72\.646 LIVE: [^"]*"\)', 'print("RELEASE 1.72.646 LIVE: the Kikar page after the full walk: one film, the earlier stage gone at every width, no empty card, labelled comparison rows")', src); assert n == 1, n
+# the rows that still expect the first-version film: its files and its captions leave the lists, and the film rows forbid its heading
+lines = src.split("\n"); fixed = 0
+V1 = ("-preview.mp4", "-preview-poster", "film-cc/v1-")
+HEADS = ("הגרסה הראשונה", "The first version", "La première version", "Первая версия", "النسخة الأولى")  # the first run's checks failed on five rows that still asked for this heading; the runner rolled back
+for k, l in enumerate(lines):
+    s = l.strip()
+    if not (s.startswith('("/projects/hamedina') and any(x in s for x in V1 + HEADS)):
+        continue
+    end = s.rindex(")") + 1
+    t = list(ast.literal_eval(s[:end]))
+    need = [x for x in t[1] if not any(v in x for v in V1) and x not in HEADS]
+    if len(need) == len(t[1]):
+        continue
+    gone = [x for x in t[1] if x in HEADS]
+    t[1] = need
+    if 'id="nlws-film"' in need:
+        t[2] = list(t[2]) + ['class="nlws-film__v1h"']
+    if gone:
+        t[2] = list(t[2]) + gone
+    lines[k] = "    " + repr(tuple(t)) + s[end:] + "  # 1.72.646: the first-version film left the page"
+    fixed += 1
+assert fixed == 18, fixed
+for _l in lines:
+    _s = _l.strip()
+    if _s.startswith(('("/projects/hamedina', "('/projects/hamedina")):
+        _t = ast.literal_eval(_s[:_s.rindex(")") + 1])
+        if isinstance(_t, tuple) and len(_t) > 1 and isinstance(_t[1], list):
+            assert not any(any(h in x for h in HEADS + V1) for x in _t[1]), "a row still needs the first-version film: " + _t[0]
+src = "\n".join(lines)
+A = "/wp-content/plugins/nadlan-config/"
+ROWS = ("    ('" + A + W + "showroom.css?t646a=1', ['body:has(.nlsr) .nlps-stagebox{display:none!important}', '.nlsr-stage{'], [], []),\n"
+        "    ('" + A + W + "showroom.js?t646a=1', [\"el.id = 'nlsr'\", 'a[href=\"#nlps-t\"]', 'export function mountShowroom(at)'], [], ['/tour/designer/']),\n"
+        "    ('/projects/hamedina/?t646a=1', ['id=\"nlws-film-v2\"', 'id=\"nlws-facilities\"', '#nlpjx-finance:not(:has(.nlpjx-fin>*)){display:none}', 'מרחק מהמגדלים: ', '<h1 id=\"nl-project-page-title\" class=\"nlps-h1\">'], ['Fatal error', 'Warning</b>', 'class=\"nlws-film__v1h\"', 'הגרסה הראשונה', 'kikar-hamedina-film-he-16x9-preview.mp4'], []),\n"
+        "    ('/projects/hamedina-en/?t646a=1', ['id=\"nlws-film-v2\"', 'kikar-hamedina-film-v2-en-16x9-1.mp4'], ['Fatal error', 'Warning</b>', 'The first version', 'kikar-hamedina-film-en-16x9-preview.mp4'], []),\n"
+        "    ('/projects/hamedina-fr/?t646a=1', ['id=\"nlws-film-v2\"'], ['Fatal error', 'La première version'], []),\n")
+assert src.count("CHECKS = [\n") == 1
+src = src.replace("CHECKS = [\n", "CHECKS = [\n" + ROWS, 1)
+assert src.count("int(m.group(3)) + 1}") == 1, "the version bump is not +1 in deploy645.py"
+lines = src.split("\n")
+seen = set()
+for k, l in enumerate(lines):
+    if l.startswith("PIN = {"):
+        lines[k] = "PIN = " + repr(PIN); seen.add("PIN")
+    elif l.startswith("NEWFILES = "):
+        lines[k] = "NEWFILES = set()  # 1.72.646: two swaps (from .bak646), no new file"; seen.add("NEWFILES")
+    elif l.startswith("FILES = ["):
+        lines[k] = "FILES = " + repr(FILES); seen.add("FILES")
+    elif l.startswith("PHP_RELS = ["):
+        lines[k] = "PHP_RELS = ['inc/project-stage.php']  # 1.72.646: the hunked live file; restored from .bak646 on rollback with nadlan-config.php"; seen.add("PHP_RELS")
+assert seen == {"PIN", "NEWFILES", "FILES", "PHP_RELS"}, seen
+src = "\n".join(lines)
+assert "designer_645 as PX" not in src and ("t" + P + "a=1") not in src
+assert src.count('WANT_LIVE = "1.72.645"') == 1 and src.count('BAK = ".bak646"') == 1 and src.count("range(645, 329, -1)") == 1
+assert src.count('if new != "1.72.646":') == 1
+open(os.path.join(H, "deploy646.py"), "w", encoding="utf-8", newline="\n").write(src)
+print("deploy646.py + kikar_646.py written | 2 swaps + 2 hunks on project-stage.php | %d old film rows rewritten, 5 new check rows" % fixed)
