@@ -43,6 +43,7 @@ export async function mount(host, opts = {}) {
   const root = document.createElement('div'); root.className = 'nd'; root.dir = T.dir; root.lang = opts.lang || 'he';
   root.innerHTML =
     '<header><div><h2>' + esc(opts.title || T.title) + '</h2><p data-nd="sub"></p></div>' +
+    (opts.onEditPlan ? '<button class="hb" data-nd="editplan" style="width:auto;padding:0 10px;font-size:13px;font-weight:600;white-space:nowrap">' + esc(T.pm.editPlan) + '</button>' : '') +
     '<button class="hb" data-nd="undo" aria-label="' + T.undo + '" title="' + T.undo + '" disabled><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l-6 6 6 6M3 12h12a6 6 0 0 1 6 6"/></svg></button>' +
     '<button class="hb" data-nd="redo" aria-label="' + T.redo + '" title="' + T.redo + '" disabled><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l6 6-6 6M21 12H9a6 6 0 0 0-6 6"/></svg></button>' +
     (opts.onClose ? '<button class="hb" data-nd="close" aria-label="' + T.close + '" title="' + T.close + '"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' : '') + '</header>' +
@@ -199,9 +200,10 @@ export async function mount(host, opts = {}) {
   $('part').onclick = () => { const on = plan.mode !== 'part'; plan.setPartMode(on); if (on) { open(null); select(null); } modeDone(); $('part').setAttribute('aria-pressed', on); paintSel(); };
   $('m-doll').onclick = () => setMode('doll'); $('m-walk').onclick = () => setMode('walk');
   if (opts.onClose) $('close').onclick = () => opts.onClose(api);
+  if (opts.onEditPlan) $('editplan').onclick = () => opts.onEditPlan(api);
   if (opts.onCall) $('call').onclick = () => opts.onCall(api);
   if (opts.onSend) $('send').onclick = () => opts.onSend(api);
-  let saveT = 0;
+  let saveT = 0, ownWarned = false;
   const saveNow = () => { if (!saveKey || !alive) return; try { const d = store.design; localStorage.setItem(saveKey, JSON.stringify({ ...d, log: d.log.slice(-200) })); timings.saved_at = Date.now(); } catch (e) { /* storage full or blocked: the design still works */ } };
   store.on((e) => {
     if (e.type !== 'change') return;
@@ -209,6 +211,8 @@ export async function mount(host, opts = {}) {
     else if (sel && sel.type === 'point' && !store.point(sel.id)) select(null); // an undone point is no longer there
     else if (sel) paintSel();
     if (e.warn && (e.remote || e.replay)) toast(why(e.warn));
+    // a plan the person loaded themselves says nothing about load-bearing walls: said once per opening, at the first wall change
+    if (!ownWarned && apt.source && apt.source.kind === 'own' && !e.remote && !e.replay && /^(wall\.shift|partition\.)/.test(e.op.op)) { ownWarned = true; toast(T.pm.ownWalls); }
     head(); if (sheet) open(sheet, true); clearTimeout(saveT); saveT = setTimeout(saveNow, 400); subs.forEach((f) => f(e)); });
 
   // the divider between the two views: drag it, or use the arrow keys

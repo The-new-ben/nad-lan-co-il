@@ -66,6 +66,7 @@
  ],
  "projects": {
   "ashira": {
+   "slug": "ashira-sde-dov",
    "types": [
     "E-4A",
     "E-3B",

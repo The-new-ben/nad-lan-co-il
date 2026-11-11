@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>בדיקת התוכנית שלי</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+/* the site's hostile rules again: the tool must not change */
+body{margin:0;font-family:Assistant,Arial,sans-serif;background:#fff;color:#222}
+button{border-radius:12px!important;background:#e33!important;color:#fff!important;font-family:serif!important}
+#app{position:fixed;inset:0;z-index:999;background:#fff}
+</style>
+</head>
+<body>
+<div id="app" aria-label="התוכנית שלי"></div>
+<script type="module">
+import { mountPlanMaker, loadMyPlan } from '../../../plugins/nadlan-config/assets/designer/planmaker.js';
+import { mount } from '../../../plugins/nadlan-config/assets/designer/designer.js';
+const q = new URLSearchParams(location.search), host = document.getElementById('app'), lang = q.get('lang') || 'he';
+window.__blobs = [];
+const oc = URL.createObjectURL.bind(URL);
+URL.createObjectURL = (b) => { window.__blobs.push(b); return oc(b); }; // the test reads the saved file from here
+async function maker(draft) {
+  window.__d = null;
+  window.__pm = await mountPlanMaker(host, {
+    lang, project: 'local-test', helpUrl: '#where-is-the-plan', draft,
+    onDone: async (plan, d) => { window.__done = { plan, draft: d }; window.__pm.destroy(); window.__pm = null; await designer(plan, d); },
+    onCancel: () => { window.__cancelled = (window.__cancelled || 0) + 1; },
+  });
+}
+async function designer(plan, d) {
+  window.__d = await mount(host, { plan, lang, onEditPlan: (api) => { api.destroy(); maker(d); } });
+}
+if (q.get('designer') === '1' && loadMyPlan()) await designer(loadMyPlan(), null); else await maker();
+window.__ready = true;
+</script>
+</body>
+</html>

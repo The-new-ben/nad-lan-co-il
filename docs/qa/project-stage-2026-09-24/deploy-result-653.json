@@ -1,0 +1,32 @@
+{
+  "released": "1.72.653",
+  "from": "1.72.652",
+  "live_before": {
+    "assets/tours/designer-tour.html": "4a65c5a4b76247f34af781574bc759b1",
+    "assets/designer/designer.js": "0825caac43efdda63c1fa6841471fc7a",
+    "assets/designer/strings.js": "d7592f965e34600b675e147d8ad9e75a",
+    "nadlan-config.php": "b8fb62c3fb2452c0df00481bf4a46380",
+    "inc/designer.php": "7d9f2e01cbeea0c1659baf460e01a2c8"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 20:16:42",
+  "files": {
+    "assets/tours/designer-tour.html": "651069b28a86500f3a88b51e8460db87",
+    "assets/designer/designer.js": "a582022a2891adaf72af82bbe1b77c5e",
+    "assets/designer/strings.js": "18a98c629ba57121c841cef8f74cd9cc",
+    "assets/designer/studio.js": "3903469157833deaa911e4243a0d8bea",
+    "assets/designer/planmaker.js": "d5721a3d9607f19a4b9e46e44d6ab937",
+    "assets/designer/planbuild.js": "692ec1ec3a881123162b540c579ab0de",
+    "assets/designer/planmaker.css": "b65453c554aaf4074f71f29ec763bc2e",
+    "assets/designer/plans/index.json": "c2390f482db8d4e82ebc4d35927fa3fd",
+    "assets/designer/plans/ashira/E-3B.json": "b86b8dd63bf2230a8e054a2b05777259",
+    "assets/designer/plans/ashira/E-4A.json": "7293dbf5409a2dc0b856be4baa871037",
+    "assets/designer/plans/ashira/E-5E.json": "0931f071b1b4148e2506a365cac5486a",
+    "assets/designer/plans/ashira/E-5F.json": "e26dd5d9f7b25632004e85d9bd9779d9",
+    "nadlan-config.php": "8049f525f71d42b0baba472587235905",
+    "inc/designer.php": "9bce3e2766c46f960412ecdcde15cffd"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.653, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

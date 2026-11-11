@@ -657,7 +657,30 @@ if ( ! function_exists( 'nadlan_dsg_print_importmap' ) ) {
 	function nadlan_dsg_print_importmap() {
 		if ( ! empty( $GLOBALS['nadlan_dsg_map_done'] ) || nadlan_dsg_stage_has_map() ) { return ''; }
 		$GLOBALS['nadlan_dsg_map_done'] = true;
-		return NADLAN_DSG_IMPORTMAP . "\n";
+		return nadlan_dsg_importmap_html() . "\n";
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_importmap_html' ) ) {
+	/**
+	 * The page's import map: three.js exactly as NADLAN_DSG_IMPORTMAP names it, plus one entry per designer module that adds
+	 * the plugin version to its address. A module asks for './core.js'; the browser resolves that to the full address, finds
+	 * it here and loads core.js?v=<version>. Without these entries a returning visitor could run the new designer.js on the
+	 * core.js his browser kept from the release before.
+	 */
+	function nadlan_dsg_importmap_html() {
+		$m = array(
+			'three'         => 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js',
+			'three/addons/' => 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/',
+		);
+		$v    = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '0';
+		$base = plugins_url( 'assets/designer/', dirname( __FILE__ ) );
+		$list = glob( dirname( __DIR__ ) . '/assets/designer/*.js' );
+		foreach ( ( is_array( $list ) ? $list : array() ) as $f ) {
+			$n = basename( (string) $f );
+			if ( 1 === preg_match( '/^[a-z0-9-]+\.js$/', $n ) ) { $m[ $base . $n ] = $base . $n . '?v=' . rawurlencode( $v ); }
+		}
+		return '<script type="importmap" id="nadlan-ps-importmap">' . wp_json_encode( array( 'imports' => $m ), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG ) . '</script>';
 	}
 }
 
@@ -697,7 +720,7 @@ if ( ! function_exists( 'nadlan_dsg_shortcode' ) ) {
 	function nadlan_dsg_shortcode( $atts ) {
 		if ( ! nadlan_dsg_on() ) { return ''; }
 		if ( ! empty( $GLOBALS['nadlan_dsg_n'] ) ) { return ''; } // one designer per page: two would share ?design= and the browser's saved design
-		$atts = shortcode_atts( array( 'project' => '', 'type' => '', 'plan' => '', 'plans' => '', 'height' => '' ), $atts, 'nadlan_designer' );
+		$atts = shortcode_atts( array( 'project' => '', 'type' => '', 'plan' => '', 'plans' => '', 'height' => '', 'help' => '', 'mine' => '1' ), $atts, 'nadlan_designer' );
 		$cfg  = nadlan_dsg_embed_config( $atts );
 
 		// plans="example-3r,example-4r,example-5r": the visitor picks one of several plans with buttons above the designer.
@@ -743,6 +766,9 @@ if ( ! function_exists( 'nadlan_dsg_shortcode' ) ) {
 		$js   = array(
 			'host'    => $host,
 			'module'  => nadlan_dsg_asset_url( 'designer.js' ),
+			'studio'  => nadlan_dsg_asset_url( 'studio.js' ), // the plan chooser: examples, a project's plans and "my plan" (the visitor's own apartment)
+			'mine'    => '0' !== (string) $atts['mine'] && is_readable( dirname( __DIR__ ) . '/assets/designer/planmaker.js' ),
+			'help'    => 1 === preg_match( '/^(#[A-Za-z][A-Za-z0-9_-]{0,40}|\/[a-z0-9\/_-]{1,80}(#[A-Za-z][A-Za-z0-9_-]{0,40})?)$/', (string) $atts['help'] ) ? (string) $atts['help'] : '',
 			'planUrl' => $url,
 			'rest'    => rest_url( 'nadlan/v1/designer/' ),
 			'test'    => '1' !== (string) get_option( 'nadlan_designer_save', '0' ), // while the save is closed for the public, REST calls carry ?designer=next
@@ -754,7 +780,7 @@ if ( ! function_exists( 'nadlan_dsg_shortcode' ) ) {
 		$json = wp_json_encode( $js, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
 		$out  = nadlan_dsg_print_importmap();
-		$out .= '<div class="nadlan-designer-pick" id="' . esc_attr( $host ) . '-pick" role="group" aria-label="גודל הדירה לדוגמה" hidden></div>' . "\n";
+		$out .= '<div class="nadlan-designer-pick" id="' . esc_attr( $host ) . '-pick" role="group" aria-label="על איזו דירה מעצבים" hidden></div>' . "\n";
 		$out .= '<div class="nadlan-designer" id="' . esc_attr( $host ) . '" style="position:relative;width:100%;height:' . esc_attr( $h ) . ';min-height:520px"></div>' . "\n";
 		$out .= '<script type="module">' . nadlan_dsg_inline_js( $json ) . '</script>' . "\n";
 		return $out;
@@ -782,12 +808,6 @@ if ( ! function_exists( 'nadlan_dsg_inline_js' ) ) {
 'if(C.save&&q&&/^[a-z2-7]{26}$/.test(q)){try{const r=await fetch(api("design/"+q),{credentials:"omit",cache:"no-store"});' .
 'if(r.ok){const j=await r.json();const d=j&&j.design;' .
 'if(d&&(d.project||"")===(C.project||"")){design=d;cur={id:q,rev:j.rev};}}}catch(e){}}' .
-'const getPlan=(u)=>fetch(u).then((r)=>r.ok?r.json():null).catch(()=>null);' .
-'const PK="nl-dsg-plan";let planUrl=C.planUrl;' .
-'if(C.plans.length&&!design){try{const w=localStorage.getItem(PK);if(w&&C.plans.some((x)=>x.url.split("?")[0]===w))planUrl=C.plans.find((x)=>x.url.split("?")[0]===w).url;}catch(e){}}' .
-'const [{mount},plan0]=await Promise.all([import(C.module),getPlan(planUrl)]);let plan=plan0;' .
-'if(!plan){host.hidden=true;return;}' .
-'if(design&&design.geometry_revision!==plan.geometry_revision){design=null;cur={id:null,rev:null};}' .
 'const save=async(dz)=>{const k=cur.id&&keys()[cur.id];const body={design:dz};if(k){body.id=cur.id;body.key=k;body.base_rev=cur.rev;}' .
 'let r=await fetch(api("save"),{method:"POST",credentials:"omit",headers:{"Content-Type":"application/json","X-NL-Designer":"1"},body:JSON.stringify(body)});' .
 'if(k&&(r.status===409||r.status===403||r.status===404)){r=await fetch(api("save"),{method:"POST",credentials:"omit",headers:{"Content-Type":"application/json","X-NL-Designer":"1"},body:JSON.stringify({design:dz})});}' .
@@ -797,16 +817,12 @@ if ( ! function_exists( 'nadlan_dsg_inline_js' ) ) {
 'const url=link(j.id);try{const h=new URL(location.href);h.searchParams.set("design",j.id);history.replaceState(history.state,"",h.href);}catch(e){}' .
 'if(C.send!=="share"){const fn=C.send.split(".").reduce((o,k)=>o&&o[k],window);if(typeof fn==="function"){fn(d,Object.assign({url},j));return;}}' .
 'try{await navigator.clipboard.writeText(url);}catch(e){}d.toast(S.saved+" "+url);};' .
-'const mk=(pl,pu)=>{const o={plan:pl,planUrl:pu,lang:C.lang,version:C.version};if(C.save)o.onSend=onSend;if(C.unitLabel)o.unitLabel=C.unitLabel;if(C.title)o.title=C.title;return o;};' .
-'const opts=mk(plan,planUrl);if(design)opts.design=design;' .
-'let inst=null;try{inst=await mount(host,opts);}catch(e){host.hidden=true;return;}' .
-'const pick=document.getElementById(C.host+"-pick");' .
-'if(pick&&C.plans.length){let busy=false;C.plans.forEach((x)=>{const b=document.createElement("button");b.type="button";b.textContent=x.label;b.setAttribute("aria-pressed",String(x.url===planUrl));' .
-'b.addEventListener("click",async()=>{if(busy||x.url===planUrl)return;busy=true;const pl=await getPlan(x.url);if(!pl){busy=false;return;}' .
-'try{if(inst&&inst.destroy)inst.destroy();}catch(e){}host.innerHTML="";planUrl=x.url;plan=pl;cur={id:null,rev:null};' .
-'try{localStorage.setItem(PK,x.url.split("?")[0]);}catch(e){}' .
-'pick.querySelectorAll("button").forEach((o)=>o.setAttribute("aria-pressed",String(o===b)));' .
-'try{inst=await mount(host,mk(pl,x.url));}catch(e){host.hidden=true;}busy=false;});pick.appendChild(b);});pick.hidden=false;}' .
+'const mk=(pl,pu,x)=>{const o={plan:pl,planUrl:pu,lang:C.lang,version:C.version};if(C.save&&!(x&&x.mine))o.onSend=onSend;if(!(x&&x.mine)){if(C.unitLabel)o.unitLabel=C.unitLabel;if(C.title)o.title=C.title;}return o;};' .
+'const pick=document.getElementById(C.host+"-pick");let st=null;' .
+'try{const {mountStudio}=await import(C.studio);' .
+'st=await mountStudio(host,pick,{plans:C.plans.map((x)=>({k:x.url.split("?")[0],url:x.url,label:x.label})),planUrl:C.planUrl,mk,design,lang:C.lang,version:C.version,project:C.project||null,helpUrl:C.help,mine:C.mine,' .
+'onChange:(kind,s,first)=>{if(!first||!s.designKept)cur={id:null,rev:null};}});}catch(e){st=null;}' .
+'if(!st)host.hidden=true;' .
 '})();';
 	}
 }

@@ -16,7 +16,7 @@
       "required": ["kind", "label_he"],
       "additionalProperties": false,
       "properties": {
-        "kind": { "enum": ["sales-plan", "derived", "schematic", "example"], "description": "sales-plan = redrawn from a plan the developer published; derived = drawn by us from published facts; schematic = generated from room count and area; example = an invented layout. The label is shown on every screen and every export." },
+        "kind": { "enum": ["sales-plan", "derived", "schematic", "example", "own"], "description": "sales-plan = redrawn from a plan the developer published; derived = drawn by us from published facts; schematic = generated from room count and area; example = an invented layout. The label is shown on every screen and every export." },
         "label_he": { "type": "string", "maxLength": 80 },
         "note": { "type": "string", "maxLength": 400 },
         "ref": { "type": "string", "maxLength": 300, "description": "Where the plan came from (a URL or a private file reference). Never shown to buyers." },
