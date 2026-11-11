@@ -125,6 +125,22 @@ Detail streams in after the first frame: plain colours, then textures, then furn
 
 From `reverse/features.csv`: the 2D-3D link group (L01 to L05), P06 structural rules, K02, K05 and K07 (co-editing, control, decision log), S02 to S04 (bill of quantities, spec, difference from the base), T01 and T04 (honesty badges, one data source), F04, F05 and M06 (first 3D view, weight, phone), A01 to A03 (Hebrew, right to left). Our own product is scored only by live tests (rubric section 5), so each of these needs its test before it counts.
 
+## 10b. What the full feature inventory changed (11.11.2026)
+
+Source: `docs/research/2026-11-10-apartment-designer/features-all/` (251 user-facing features across 32 products; competitor counts are lower bounds because most editors sit behind an account).
+
+Where we stand, judged strictly: the best product has 75 features in full and 11 in part; our local prototype has 36 and 19. If HAD-703 to HAD-708 ship as written we reach about 154, and 88 features that some product has would still have no task. So the sentence "no product has a feature we lack" cannot be written today, and could not after the current plan. `features-all/backlog.md` is the list that closes it; `fairness-declaration-draft.md` is the only wording allowed until then.
+
+Corrections to this document and to the research it used:
+
+- **Hebrew is not ours alone.** Three tools already have a Hebrew interface. No sentence may say that no product offers Hebrew.
+- **A services layer is missing from the model.** `nadlan-apartment` and the operations need electrical, communication, plumbing and air-conditioning points (`points[]` with kind, wall or ceiling, position, base or added), because moving a socket is the most common tenant change and the spec sheet needs those lines.
+- **Wet-zone rules are missing.** Add `wet.max_distance_to_drain` enforcement next to the partition rules: a toilet, shower or sink may move only within reach of its drain.
+- **Saving must not need contact details.** Add an anonymous save by design id (no personal data stored) beside the lead and request path; twelve products let a visitor save and return.
+- **A 360 panorama export** joins the still picture and the film in HAD-704: eleven products share designs that way.
+- **Smaller additions:** `partition.add` and `partition.remove` move up (two products have them); a kitchen built from runs, not one block; a mirror transform for mirrored unit types; the Israeli area table (net, gross, balcony) in `quantities()`.
+- **Confirmed:** painting the plan first and loading a light 3D view after it is the right bet; 13 things our prototype does appear in full in no product (the structural and safe-room rules, the shared selection between plan and 3D, a first 3D view under 5 MB).
+
 ## 11. Open points
 
 - Real-phone measurements (an Android and an iPhone in hand).
