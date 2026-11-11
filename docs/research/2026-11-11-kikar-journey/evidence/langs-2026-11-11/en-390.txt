@@ -1,0 +1,9 @@
+height 54563 screens 64.6
+{"figs":7,"imgs":18,"broken":[],"figw":["334x255","334x199","334x234"],"faqLd":1,"faqN":18,"faqVis":18,"notVisible":[],"answerMismatch":[],"tables":11,"overflowCells":0,"calc":true,"fin":true,"mm":true,"docW":390}
+calc before ["p=₪8.46-9.74 million","tt=about ₪9.54 million","eq=about ₪2.72 million","lp=75","ln=about ₪6.83 million","mo=about ₪37,000","inc=about ₪93,000","fm=9.2026"]
+more clicked
+calc more ["p=₪8.46-9.74 million","tt=about ₪9.89 million","eq=about ₪5.34 million","lp=50","ln=about ₪4.55 million","mo=about ₪25,000","inc=about ₪62,000","fm=9.2026"]
+range 300
+calc top floor ["p=₪18.13-20.86 million","tt=about ₪21.33 million","eq=about ₪11.58 million","lp=50","ln=about ₪9.75 million","mo=about ₪53,000","inc=about ₪132,000","fm=9.2026"]
+errors 0 []
+http>=400 or failed 0 []
