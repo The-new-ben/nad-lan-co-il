@@ -116,8 +116,24 @@ def faq_meta(lang, KD, req, added=5):
     return {"id": pid, "before": before, "before_md5": md5(before.encode("ascii")), "after": after, "n": n}
 
 
-def build_meta_only(PREV, NEWV, lang, LIVE_MD5):
-    """a release that writes only the language page's FAQ meta: no file, no hunk (RELS empty), the version bump only"""
+YOAST_BLOCK = (
+    "        for _ym in YOAST_META:  # @@N@@: a Yoast meta the owner approved, guarded by the md5 of the text it replaces\n"
+    "            for _pk in _ym.get(\"peek\", []):  # read only: the share titles, reported, never written here\n"
+    "                print(f\"[yoast] {_ym['id']} {_pk}: md5 {ops({'pmeta': {'id': _ym['id'], 'key': _pk, 'get': 1}}, 'yoast peek')['pmeta']['md5']} (empty = d41d8cd98f)\")\n"
+    "            _g = ops({\"pmeta\": {\"id\": _ym[\"id\"], \"key\": _ym[\"key\"], \"get\": 1}}, \"yoast get %d\" % _ym[\"id\"])[\"pmeta\"]\n"
+    "            if _g[\"md5\"] != _ym[\"before_md5\"]:\n"
+    "                raise SystemExit(f\"FATAL yoast {_ym['id']} {_ym['key']}: live {_g['md5'][:10]} is not the expected {_ym['before_md5'][:10]}; nothing written\")\n"
+    "            UNDO.append((\"meta\", {\"id\": _ym[\"id\"], \"key\": _ym[\"key\"], \"before\": _ym[\"before\"].encode(\"utf-8\"), \"before_md5\": _ym[\"before_md5\"]}))\n"
+    "            _w = ops({\"pmeta\": {\"id\": _ym[\"id\"], \"key\": _ym[\"key\"], \"expect\": _ym[\"before_md5\"], \"b64\": base64.b64encode(_ym[\"after\"].encode(\"utf-8\")).decode(), \"md5\": md5(_ym[\"after\"].encode(\"utf-8\"))}}, \"yoast %d\" % _ym[\"id\"])[\"pmeta\"]\n"
+    "            if _w[\"md5\"] != md5(_ym[\"after\"].encode(\"utf-8\")):\n"
+    "                raise SystemExit(f\"FATAL yoast {_ym['id']}: read back {_w['md5'][:10]}\")\n"
+    "            print(f\"[yoast] {_ym['id']} {_ym['key']}: written and read back\")\n")
+
+
+def build_meta_only(PREV, NEWV, lang, LIVE_MD5, yoast=None, msg=None):
+    """a release that writes only post metas (a language page's FAQ meta, and/or an owner-approved Yoast meta): no file, no hunk
+    (RELS empty), the version bump only. yoast = {"id", "key", "before", "after", "peek": [...], "path"}"""
+    label = lang or "Hebrew page title"
     P, N, PP = str(PREV), str(NEWV), str(PREV - 1)
     src = open(os.path.join(H, "deploy%d.py" % PREV), encoding="utf-8").read()
     _m = re.search(r"^    import (\w+) as PX  # noqa: E402 \(.*$", src, re.M)  # the previous release may come from another session (myplan_653)
@@ -138,7 +154,7 @@ def build_meta_only(PREV, NEWV, lang, LIVE_MD5):
            "    if txt.count(BUY) != 1 or txt.count(\"'buying-hub'\") != 1:\n"
            "        raise SystemExit('kikar_%d: FATAL: buying-hub is not once before i18n in the live nadlan-config.php; read it before releasing')\n"
            "    print(\"[hunk] nadlan-config.php: no module change (proven); the FAQ meta only\")\n"
-           "    return txt\n") % (NEWV, lang, PREV, LIVE_MD5[:10], NEWV, LIST, BUY, NEWV, NEWV, NEWV)
+           "    return txt\n") % (NEWV, label, PREV, LIVE_MD5[:10], NEWV, LIST, BUY, NEWV, NEWV, NEWV)
     open(os.path.join(H, "kikar_%d.py" % NEWV), "w", encoding="utf-8", newline="\n").write(MOD)
     assert src.count('WANT_LIVE = "1.72.%s"' % PP) == 1
     src = src.replace('WANT_LIVE = "1.72.%s"' % PP, 'WANT_LIVE = "@@WANT@@"')
@@ -154,14 +170,29 @@ def build_meta_only(PREV, NEWV, lang, LIVE_MD5):
     # the designer's tour page (/tour/designer/) is a static file stamped with the version it was built for (1.72.653): its rows
     # must not follow the version rename (the first run of 1.72.654 failed on them); they ask for "<module>.js?v=" without a number
     src = "\n".join(re.sub(r"(\.js\?v=)1\.72\.\d+", r"\1", l) if "/tour/designer/" in l else l for l in src.split("\n"))
-    src, n = re.subn(r"^    import %s as PX  # noqa: E402 \(.*$" % PXN, "    import kikar_%s as PX  # noqa: E402 (1.72.%s: no hunk; the %s FAQ meta only)" % (N, N, lang), src, flags=re.M); assert n == 1, n
+    src, n = re.subn(r"^    import %s as PX  # noqa: E402 \(.*$" % PXN, "    import kikar_%s as PX  # noqa: E402 (1.72.%s: no hunk; post metas only: %s)" % (N, N, label), src, flags=re.M); assert n == 1, n
     assert src.count("        for _fm in FAQ_META:") == 1 and src.count("'_nl_faq_schema' === $key && in_array( $pid, array( 8114, 8116, 8117, 8118 ), true )") == 1, "the FAQ meta path is not in deploy%s.py" % P
-    src, n = re.subn(r'print\("RELEASE 1\.72\.%s LIVE: [^"]*"\)' % N, 'print("RELEASE 1.72.%s LIVE: the Kikar %s page FAQ schema follows the reworded article")' % (N, lang), src); assert n == 1, n
+    src, n = re.subn(r'print\("RELEASE 1\.72\.%s LIVE: [^"]*"\)' % N, 'print("RELEASE 1.72.%s LIVE: %s")' % (N, msg or ("the Kikar %s page FAQ schema follows the reworded article" % lang)), src); assert n == 1, n
     _src = open(os.path.join(REPO, "scripts", "skin-a", "deployskin.py"), encoding="utf-8").read(); _rq = {"__name__": "mkl"}
     exec(compile(_src[:_src.index('s, h, _ = req("GET", "/wp-json/nadlan/v1/health")')], "h", "exec"), _rq)
     sys.path.insert(0, H)
     import hamedina_page_data as KD  # noqa: E402
-    FM = [faq_meta(lang, KD, _rq["req"], 0)]
+    FM = [faq_meta(lang, KD, _rq["req"], 0)] if lang else []
+    YM = []
+    if yoast:
+        y = dict(yoast)
+        y["before_md5"] = md5(y["before"].encode("utf-8"))
+        YM = [y]
+        # the rows that ask for the old title now ask for the new one (a release that left them would roll itself back)
+        old_t, new_t = y["before"] + "</title>", y["after"] + "</title>"
+        assert src.count(old_t) >= 1, "no check row names the old title"
+        src = src.replace(old_t, new_t)
+        assert y["before"] not in src.split("CHECKS = [", 1)[1], "another check row still names the old title"
+        _anchor = "            print(f\"[faq] {_fm['id']}: _nl_faq_schema written and read back ({_fm['n']} questions)\")\n"
+        assert src.count(_anchor) == 1, "the FAQ loop is not where it should be"
+        src = src.replace(_anchor, _anchor + YOAST_BLOCK.replace("@@N@@", "1.72." + N), 1)
+        assert src.count("\nUNDO = []") == 1
+        src = src.replace("\nUNDO = []", "\nYOAST_META = " + repr(YM) + "  # 1.72.%s\nUNDO = []" % N, 1)
     lines = src.split("\n")
     seen = set()
     for k, l in enumerate(lines):
@@ -177,11 +208,16 @@ def build_meta_only(PREV, NEWV, lang, LIVE_MD5):
             lines[k] = "FAQ_META = " + repr(FM) + "  # 1.72.%s: before = the live meta (proven), after = the %s FAQ as reworded" % (N, lang); seen.add("FAQ_META")
     assert seen == {"PIN", "NEWFILES", "FILES", "PHP_RELS", "FAQ_META"}, seen
     src = "\n".join(lines)
-    ROWS = "    ('/projects/hamedina-%s/?t%sm=1', %r, ['Fatal error', 'Warning</b>'], []),\n" % (lang, N, NEED_META[lang])
+    ROWS = ""
+    if lang:
+        ROWS += "    ('/projects/hamedina-%s/?t%sm=1', %r, ['Fatal error', 'Warning</b>'], []),\n" % (lang, N, NEED_META[lang])
+    if YM:
+        ROWS += "    (%r, %r, ['Fatal error', 'Warning</b>'], %r),\n" % (YM[0]["path"] + "?t%sy=1" % N, ["<title>" + YM[0]["after"] + "</title>"], ["<title>" + YM[0]["before"] + "</title>"])
     src = src.replace("CHECKS = [\n", "CHECKS = [\n" + ROWS, 1)
     assert src.count('if new != "1.72.%s":' % N) == 1 and src.count('BAK = ".bak%s"' % N) == 1
     open(os.path.join(H, "deploy%s.py" % N), "w", encoding="utf-8", newline="\n").write(src)
-    print("deploy%s.py + kikar_%s.py written | no file, no hunk | FAQ meta %d (%d questions) | 1 new check row" % (N, N, FM[0]["id"], FM[0]["n"]))
+    print("deploy%s.py + kikar_%s.py written | no file, no hunk | FAQ meta %s | Yoast %s | %d new check row(s)" % (
+        N, N, [(f["id"], f["n"]) for f in FM], [(y["id"], y["key"]) for y in YM], ROWS.count("\n")))
 
 
 # what a meta-only release requires on the page: the reworded answers inside the schema

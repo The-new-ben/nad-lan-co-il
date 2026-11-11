@@ -1,0 +1,15 @@
+{
+  "released": "1.72.656",
+  "from": "1.72.655",
+  "live_before": {
+    "nadlan-config.php": "bbc2d5487e3bb87d249a887411ee14a7"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 21:46:57",
+  "files": {
+    "nadlan-config.php": "92944935da68e126012e2744513b5d31"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.656, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

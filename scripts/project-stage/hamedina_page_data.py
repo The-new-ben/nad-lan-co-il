@@ -23,7 +23,7 @@ POSTS = {
         "slug": "hamedina",
         "title": "מגדלי כיכר המדינה, תל אביב",
         "file": "post-he.html",
-        "seo_title": "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד",
+        "seo_title": "מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס",  # 1.72.656 (Ben, 11.11.2026)
         "seo_desc": "מגדלי כיכר המדינה בתל אביב: 3 מגדלים מסתובבים ו-453 דירות, עסקאות ב-9.58 עד 10.63 מיליון ₪, מועדי האכלוס, הפארק והאגם, והנוף מכל קומה.",
         "faq_h2": "שאלות נפוצות",
         "meta": {
@@ -146,7 +146,7 @@ POSTS = {
     },
 }
 for _l, _p in POSTS.items():
-    assert len(_p["seo_title"]) <= 66, (_l, len(_p["seo_title"]))
+    assert len(_p["seo_title"]) <= 70, (_l, len(_p["seo_title"]))  # 1.72.656: 70 = tools/source_audit.py limit; Ben's Hebrew title of 11.11.2026 is 67
     assert len(_p["seo_desc"]) <= 155, (_l, len(_p["seo_desc"]))
     for _k, _v in _p["meta"].items():
         assert '"' not in str(_v), ("ASCII quote in meta", _l, _k)
