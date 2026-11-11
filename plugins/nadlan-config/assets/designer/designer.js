@@ -159,6 +159,8 @@ export async function mount(host, opts = {}) {
     timings.space_ms = performance.now() - t0;
     requestAnimationFrame(() => requestAnimationFrame(() => { timings.first_3d_frame_ms = performance.now() - t0; }));
     if (sel) space.setSelection(sel);
+    // real furniture models stream in after the first picture; without the list the true-size boxes stay
+    if (opts.models !== false) fetch(BASE + 'models/models.json').then((r) => (r.ok ? r.json() : null)).then((list) => { if (list && alive && space) space.useModels(BASE + 'models/', list); }).catch(() => {});
     return space;
   });
   return api;

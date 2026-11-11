@@ -110,12 +110,34 @@ export function mountSpace(host, store, cat, hooks = {}) {
     else part(g, w, h, d, 0, 0, 0, h > 150 ? tone.white : tone.wood);
     return g;
   }
+  // ---- real furniture models: each replaces its true-size box when it arrives; a missing or broken file leaves the box ----
+  let models = null; const glb = new Map();
+  function loadModel(id) {
+    if (!glb.has(id)) glb.set(id, import('three/addons/loaders/GLTFLoader.js').then(({ GLTFLoader }) => new Promise((res) => new GLTFLoader().load(models.base + models.by[id].file, (g) => res(g.scene), undefined, () => res(null)))));
+    return glb.get(id);
+  }
+  function dress(itemId) {
+    const it = store.item(itemId), g = itemObj.get(itemId), c = it && cat.ITEMS[it.sku];
+    if (!models || !g || !c || !c.model || !models.by[c.model] || g.userData.model) return;
+    g.userData.model = 'loading';
+    loadModel(c.model).then((scene) => {
+      if (dead || !scene || itemObj.get(itemId) !== g) { g.userData.model = scene ? g.userData.model : 'failed'; return; }
+      const m = scene.clone(true), mm = models.by[c.model], fit = [c.w / mm.w, c.h / mm.h, c.d / mm.d];
+      if (fit.some((f) => f < 0.75 || f > 1.3)) { g.userData.model = 'misfit'; return; } // never stretch a model far from its real shape: the true-size box stays
+      m.scale.set(fit[0], fit[1], fit[2]);
+      m.traverse((o) => { o.userData.item = itemId; if (o.isMesh) { o.castShadow = o.receiveShadow = true; } });
+      for (const ch of [...g.children]) { g.remove(ch); if (ch.geometry) ch.geometry.dispose(); }
+      g.add(m); g.userData.model = c.model; if (sel && sel.type === 'item') showSel(); touch();
+    });
+  }
+  function useModels(base, list) { models = { base, by: Object.fromEntries(list.map((x) => [x.id, x])) }; for (const id of itemObj.keys()) dress(id); }
   const itemObj = new Map(), ring = new THREE.Box3Helper(new THREE.Box3(), 0x1F5FA8); ring.visible = false; scene.add(ring);
   function syncItem(id) {
     const it = store.item(id); let g = itemObj.get(id);
     if (!it) { if (g) { gItem.remove(g); itemObj.delete(id); } return; }
     if (!g) { g = furniture(cat.ITEMS[it.sku]); g.userData.item = id; g.traverse((o) => (o.userData.item = id)); gItem.add(g); itemObj.set(id, g); }
     g.position.set(it.x * M, 0, it.y * M); g.rotation.y = (-it.rot * Math.PI) / 180;
+    dress(id);
   }
   function showSel() {
     const g = sel && sel.type === 'item' && itemObj.get(sel.id);
@@ -244,7 +266,8 @@ export function mountSpace(host, store, cat, hooks = {}) {
     screenOf(x, y, h = 0) { const v = new THREE.Vector3(x * M, h * M, y * M).project(camera), r = renderer.domElement.getBoundingClientRect(); return [r.left + ((v.x + 1) / 2) * r.width, r.top + ((1 - v.y) / 2) * r.height]; },
     placed(id) { const g = itemObj.get(id); return g ? [Math.round(g.position.x / M), Math.round(g.position.z / M), Math.round((-g.rotation.y * 180) / Math.PI)] : null; },
     floorKey(room) { const f = gFloor.children.find((c) => c.userData.room === room); return f ? Object.keys(mat.floors).find((k) => mat.floors[k] === f.material) : null; },
-    renders,
+    renders, useModels,
+    modelState: (id) => (itemObj.get(id) ? itemObj.get(id).userData.model || 'box' : null),
     destroy() { dead = true; ro.disconnect(); controls.dispose(); scene.traverse((o) => { if (o.geometry) o.geometry.dispose(); }); renderer.dispose(); renderer.domElement.remove(); },
     /** turns the camera around the apartment for ms and returns the time between frames (the device's real frame rate) */
     spin(ms) {

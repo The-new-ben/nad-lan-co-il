@@ -1,12 +1,12 @@
 {
-  "when": "2026-11-11T08:36:31.396Z",
+  "when": "2026-11-11T08:49:53.641Z",
   "checks": [
     {
       "name": "opens from the page button: plan first, then 3D",
       "ok": true,
       "detail": {
-        "plan_ms": 48,
-        "first_3d_frame_ms": 702
+        "plan_ms": 46,
+        "first_3d_frame_ms": 807
       }
     },
     {
