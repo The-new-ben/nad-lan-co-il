@@ -130,6 +130,7 @@ export function mountPlan(host, store, cat, hooks = {}) {
 
   store.on((e) => {
     if (e.type !== 'change') return;
+    if (e.touched.all) { drawGeometry(); drawItems(); return; }
     if (e.touched.geometry || e.touched.finishes.length) drawGeometry();
     for (const id of e.touched.items) drawItem(id);
   });

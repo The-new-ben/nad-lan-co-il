@@ -25,9 +25,16 @@ function ensureFonts() { // a font must be declared in the document itself; a sh
 export async function mount(host, opts = {}) {
   const T = strings(opts.lang || 'he'), t0 = performance.now();
   const apt = opts.plan || (await (await fetch(opts.planUrl || BASE + 'plans/example-4r.json')).json());
-  const design = opts.design || emptyDesign(apt);
-  if (!opts.design) design.items = (apt.starter || catalog.STARTER).map((i) => ({ ...i }));
-  const store = createStore(apt, design);
+  const fresh = () => { const d = emptyDesign(apt); d.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku]).map((i) => ({ ...i })); return d; };
+  // the design is kept in THIS browser only, per apartment layout, with no personal details: come back and it is still here
+  const saveKey = opts.save === false ? null : 'nd-design:' + (apt.unit.project || '-') + ':' + (apt.unit.unit_id || apt.id) + ':' + apt.geometry_revision;
+  let restored = false, design = opts.design || null;
+  if (!design && saveKey) try {
+    const s = JSON.parse(localStorage.getItem(saveKey) || 'null');
+    if (s && s.schema === 'nadlan-unit-design' && s.v === 2 && s.geometry_revision === apt.geometry_revision && Array.isArray(s.items)) { s.items = s.items.filter((i) => catalog.ITEMS[i.sku]); design = s; restored = true; }
+  } catch (e) { /* storage blocked or an unreadable draft: start fresh */ }
+  let store;
+  try { store = createStore(apt, design || fresh()); } catch (e) { restored = false; store = createStore(apt, fresh()); }
   ensureFonts();
 
   const shadow = host.shadowRoot || host.attachShadow({ mode: 'open' });
@@ -124,7 +131,8 @@ export async function mount(host, opts = {}) {
       for (const r of q.rooms) html += '<tr><td>' + esc(r.name) + '</td><td class="n mono">' + r.w + '×' + r.d + '</td><td class="n mono">' + r.net.toFixed(1) + '</td></tr>';
       html += '</tbody></table><table style="margin-top:10px"><thead><tr><th>' + T.boqItems + '</th><th class="n">' + T.boqCount + '</th></tr></thead><tbody>';
       for (const k in q.items) html += '<tr><td>' + esc(catalog.ITEMS[k].he) + '</td><td class="n mono">' + q.items[k] + '</td></tr>';
-      el.insertAdjacentHTML('beforeend', html + '</tbody></table><p class="fine">' + T.boqFine + '</p>');
+      el.insertAdjacentHTML('beforeend', html + '</tbody></table><p class="fine">' + T.boqFine + '</p>' + (saveKey ? '<p class="fine">' + T.savedHere + '</p><button class="opt" data-nd="reset" style="margin-top:8px;width:100%">' + T.startOver + '</button>' : ''));
+      const rb = $('reset'); if (rb) rb.onclick = () => { store.load(fresh()); select(null); open(null); toast(T.startedOver); };
     }
   }
   const setMode = (m) => { if (!space) return; space.setMode(m); $('m-doll').setAttribute('aria-pressed', m === 'doll'); $('m-walk').setAttribute('aria-pressed', m === 'walk'); paintSel(); };
@@ -137,7 +145,9 @@ export async function mount(host, opts = {}) {
   if (opts.onClose) $('close').onclick = () => opts.onClose(api);
   if (opts.onCall) $('call').onclick = () => opts.onCall(api);
   if (opts.onSend) $('send').onclick = () => opts.onSend(api);
-  store.on((e) => { if (e.type !== 'change') return; head(); if (sheet) open(sheet, true); subs.forEach((f) => f(e)); });
+  let saveT = 0;
+  const saveNow = () => { if (!saveKey || !alive) return; try { const d = store.design; localStorage.setItem(saveKey, JSON.stringify({ ...d, log: d.log.slice(-200) })); timings.saved_at = Date.now(); } catch (e) { /* storage full or blocked: the design still works */ } };
+  store.on((e) => { if (e.type !== 'change') return; if (e.touched.all) { plan.setSelection(null); if (space) space.reload(); } head(); if (sheet) open(sheet, true); clearTimeout(saveT); saveT = setTimeout(saveNow, 400); subs.forEach((f) => f(e)); });
 
   // the divider between the two views: drag it, or use the arrow keys
   const wide = () => root.clientWidth >= 900;
@@ -158,9 +168,11 @@ export async function mount(host, opts = {}) {
     on: (f) => { subs.add(f); return () => subs.delete(f); },
     select, setMode, toast,
     ready3d: null,
-    destroy() { alive = false; if (space && space.destroy) space.destroy(); shadow.textContent = ''; subs.clear(); },
+    saveNow, restored,
+    destroy() { clearTimeout(saveT); saveNow(); alive = false; if (space && space.destroy) space.destroy(); shadow.textContent = ''; subs.clear(); },
   };
   head(); paintSel();
+  if (restored) toast(T.restored);
   // price ranges are a small separate file: the designer works without it and fills the prices in when it arrives
   api.readyPrices = fetch(BASE + 'data/price-ranges.json').then((r) => (r.ok ? r.json() : null)).then((d) => { if (d && alive) { prices = d.items; api.prices = prices; if (sheet) open(sheet, true); } return prices; }).catch(() => null);
   api.budget = () => estimate(store, catalog, prices);

@@ -155,6 +155,7 @@ export function createStore(apt, design0) {
   let design = JSON.parse(JSON.stringify(design0 || emptyDesign(apt)));
   let dv = derive(apt, design);
   const subs = new Set(), undo = [], redo = [], slideCache = {};
+  let guard = null; // who may change the design right now (the shared call sets it: only the pen holder edits)
   const emit = (e) => subs.forEach((f) => f(e));
   const item = (id) => design.items.find((i) => i.id === id);
   const roomAt = (x, y) => { const f = dv.faces.find((q) => pip([x, y], q.poly)); return f ? f.id : null; };
@@ -199,19 +200,23 @@ export function createStore(apt, design0) {
   /** meta: { by, gesture, replay }. One drag is one gesture: one undo step and one line in the decision log. */
   function apply(op, meta = {}) {
     const t0 = typeof performance !== 'undefined' ? performance.now() : 0;
-    const err = check(op);
+    // meta.remote: a change that arrived from another person in the call: it is logged with its author, never put on MY undo stack,
+    // and never asked of the guard (the sender's side already was). meta.replay: my own undo or redo.
+    const err = (guard && !meta.remote ? guard(op, meta) : null) || check(op);
     if (err) { emit({ type: 'reject', op, ...err }); return { ok: false, ...err }; }
     const inv = inverse(op), touched = mutate(op);
     design.rev += 1;
-    if (!meta.replay) {
+    if (!meta.replay && !meta.remote) {
       const top = undo[undo.length - 1];
       if (meta.gesture && top && top.gesture === meta.gesture) top.redo = op;
       else { undo.push({ inv, redo: op, gesture: meta.gesture || null }); redo.length = 0; }
+    }
+    if (!meta.replay) {
       const last = design.log[design.log.length - 1], entry = { n: design.rev, t: new Date().toISOString(), by: meta.by || 'buyer', op };
       if (meta.gesture && last && last.gesture === meta.gesture) Object.assign(last, entry, { gesture: meta.gesture });
       else design.log.push({ ...entry, gesture: meta.gesture || null });
     }
-    emit({ type: 'change', op, touched, t0, by: meta.by || 'buyer' });
+    emit({ type: 'change', op, touched, t0, by: meta.by || 'buyer', remote: !!meta.remote, replay: !!meta.replay, gesture: meta.gesture || null });
     if (t0) api.lastApplyMs = performance.now() - t0; // the model change plus both views patching themselves
     return { ok: true };
   }
@@ -223,6 +228,10 @@ export function createStore(apt, design0) {
   }
   const api = {
     lastApplyMs: 0, apt, apply, check,
+    /** fn(op, meta) returns null to allow, or { code, reason } to refuse with one sentence the person reads */
+    setGuard(fn) { guard = fn || null; },
+    /** replaces the whole design (a saved design opened again, or the full design a late joiner of a call receives) */
+    load(next) { design = JSON.parse(JSON.stringify(next)); dv = derive(apt, design); undo.length = 0; redo.length = 0; emit({ type: 'change', op: { op: 'design.load' }, touched: { items: design.items.map((i) => i.id), finishes: ['*'], geometry: true, all: true }, t0: 0, by: 'load', remote: true, replay: false, gesture: null }); },
     get design() { return design; }, get derived() { return dv; },
     item, roomAt,
     slides: (id) => (id in slideCache ? slideCache[id] : (slideCache[id] = canSlide(apt, id))),

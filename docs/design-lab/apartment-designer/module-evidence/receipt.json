@@ -1,12 +1,12 @@
 {
-  "when": "2026-11-11T08:49:53.641Z",
+  "when": "2026-11-11T10:07:57.366Z",
   "checks": [
     {
       "name": "opens from the page button: plan first, then 3D",
       "ok": true,
       "detail": {
-        "plan_ms": 46,
-        "first_3d_frame_ms": 807
+        "plan_ms": 598,
+        "first_3d_frame_ms": 2351
       }
     },
     {
@@ -72,6 +72,32 @@
       "ok": true
     },
     {
+      "name": "the design is still there on return (saved on the device, no personal details)",
+      "ok": true,
+      "detail": {
+        "restored": true,
+        "floor": "oak-plank",
+        "sofa": 225,
+        "keys": 1,
+        "bytes": 1712,
+        "personal": false
+      }
+    },
+    {
+      "name": "\"start over\" returns the apartment as it was, in the model and in 3D",
+      "ok": true,
+      "detail": {
+        "floor": "porcelain-80",
+        "sofa": 330,
+        "three": [
+          330,
+          210,
+          270
+        ],
+        "floor3": "porcelain-80"
+      }
+    },
+    {
       "name": "no page errors (phone)",
       "ok": true,
       "detail": []
@@ -95,6 +121,6 @@
       "detail": []
     }
   ],
-  "passed": 11,
+  "passed": 13,
   "failed": 0
 }

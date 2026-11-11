@@ -246,8 +246,10 @@ export function mountSpace(host, store, cat, hooks = {}) {
     if (k !== lastCam) { lastCam = k; hooks.camera && hooks.camera(v); }
   }
 
+  const reload = () => { for (const id of [...itemObj.keys()]) { const g = itemObj.get(id); gItem.remove(g); itemObj.delete(id); } buildWalls(); buildFloors(); for (const it of store.design.items) syncItem(it.id); showSel(); touch(); };
   store.on((e) => {
     if (e.type !== 'change') return;
+    if (e.touched.all) { reload(); return; }
     if (pending == null) pending = e.t0;
     if (e.touched.geometry) { buildWalls(); buildFloors(); }
     if (e.touched.finishes.length) showSel();
@@ -266,7 +268,7 @@ export function mountSpace(host, store, cat, hooks = {}) {
     screenOf(x, y, h = 0) { const v = new THREE.Vector3(x * M, h * M, y * M).project(camera), r = renderer.domElement.getBoundingClientRect(); return [r.left + ((v.x + 1) / 2) * r.width, r.top + ((1 - v.y) / 2) * r.height]; },
     placed(id) { const g = itemObj.get(id); return g ? [Math.round(g.position.x / M), Math.round(g.position.z / M), Math.round((-g.rotation.y * 180) / Math.PI)] : null; },
     floorKey(room) { const f = gFloor.children.find((c) => c.userData.room === room); return f ? Object.keys(mat.floors).find((k) => mat.floors[k] === f.material) : null; },
-    renders, useModels,
+    renders, useModels, reload,
     modelState: (id) => (itemObj.get(id) ? itemObj.get(id).userData.model || 'box' : null),
     destroy() { dead = true; ro.disconnect(); controls.dispose(); scene.traverse((o) => { if (o.geometry) o.geometry.dispose(); }); renderer.dispose(); renderer.domElement.remove(); },
     /** turns the camera around the apartment for ms and returns the time between frames (the device's real frame rate) */

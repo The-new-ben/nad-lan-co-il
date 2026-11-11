@@ -76,6 +76,18 @@ try {
   await p.shot('m2-phone-floor-sent');
   c = await p.ev(mid('[data-nd="close"]')); await p.tap(c[0], c[1]);
   check('close removes the designer and frees the page', await p.ev('document.getElementById("sheet").hidden && document.getElementById("sheet").shadowRoot.childNodes.length===0 && window.__d===null'));
+  // save and return: open again in the same browser, the design is still there, with no personal details in what was stored
+  c = await p.ev('(()=>{const r=document.getElementById("open").getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]})()');
+  await p.tap(c[0], c[1]);
+  for (let i = 0; i < 120; i++) { if (await p.ev('!!(window.__d && window.__d.timings.first_3d_frame_ms)').catch(() => false)) break; await sleep(250); }
+  await sleep(600);
+  const back = await p.ev(`(()=>{const k=Object.keys(localStorage).filter(k=>k.startsWith('nd-design:'));const raw=localStorage.getItem(k[0])||'';return {restored:window.__d.restored,floor:window.__d.store.floorOf('living'),sofa:window.__d.store.item('i2').x,keys:k.length,bytes:raw.length,personal:/name|phone|email|@/i.test(raw.replace(/"name_he"/g,''))}})()`);
+  check('the design is still there on return (saved on the device, no personal details)', back.restored === true && back.floor === 'oak-plank' && back.sofa === a0.model[0] && back.keys === 1 && !back.personal, back);
+  await p.ev(`${R}.querySelector('nav button[data-sheet="boq"]').click()`); await sleep(300);
+  await p.ev(`${R}.querySelector('[data-nd="reset"]').scrollIntoView({block:'center'})`); await sleep(250); // the button sits at the end of the sheet: scroll to it as a person would
+  c = await p.ev(mid('[data-nd="reset"]')); await p.tap(c[0], c[1]); await sleep(500);
+  const reset = await p.ev('({floor:window.__d.store.floorOf("living"),sofa:window.__d.store.item("i2").x,three:window.__d.space.placed("i2"),floor3:window.__d.space.floorKey("living")})');
+  check('"start over" returns the apartment as it was, in the model and in 3D', reset.floor === 'porcelain-80' && reset.sofa === b0[0] && reset.three[0] === b0[0] && reset.floor3 === 'porcelain-80', reset);
   check('no page errors (phone)', p.errors.length === 0, p.errors);
   await p.close();
 
