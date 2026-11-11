@@ -74,6 +74,10 @@ function sidesOf(c) { // the other directions on the nearest rendered floor of t
 function floorsOf(c) { // the same direction on the other rendered floors
   return rendered().filter((v) => v.tower === c.tower && angDiff(v.bearing, c.bearing) <= 30).sort((a, b) => a.floor - b.floor);
 }
+function insideOf(c) { // the living room 360 nearest to this apartment (HAD-710): same tower and direction, nearest rendered floor
+  const L = (D.inside || []).filter((v) => v.tower === c.tower && angDiff(v.bearing, c.bearing) <= 45).sort((a, b) => Math.abs(a.floor - c.floor) - Math.abs(b.floor - c.floor));
+  return L[0] || null;
+}
 function unitId(c) { const s = ['n', 'e', 's', 'w'][Math.round((((c.bearing % 360) + 360) % 360) / 90) % 4]; return `${c.tower}-${c.floor}-${s}`; }
 function label(c) { return `מגדל ${c.tower} · קומה ${c.floor} · פונה ${dirWord(c.bearing)}`; }
 
@@ -90,7 +94,7 @@ function home(c) {
     <p class="nlck-ask">מה תרצו לראות?</p>
     <div class="nlck-grid">
       ${t('view', 'הנוף', v ? A(v.img) : '')}
-      ${t('inside', 'בפנים · 360°', A('tour/living-c30w-day-card.jpg'))}
+      ${t('inside', 'בפנים · 360°', insideOf(c) ? A(insideOf(c).card) : A('tour/living-c30w-day-card.jpg'))}
       ${t('other', 'דירה אחרת', A('aerial-tall-800.webp'))}
       ${t('plan', 'התוכנית', D.plan ? A(D.plan) : '')}
       ${t('fac', 'המתקנים · 360°', firstFac)}
@@ -112,10 +116,14 @@ function scrView(c) {
       ${sd.length > 1 ? `<div class="nlck-row-t">אותה קומה, כיוונים אחרים</div><div class="nlck-strip">${sd.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="side" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${esc(dirWord(x.bearing))}</b></button>`).join('')}</div>` : ''}
     </div>`;
 }
-function scrInside() {
-  return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(A('tour/' + PANOS[sub.pano][0] + '-2k.webp'))}" role="img" aria-label="סיור 360 בסלון של הדירה לדוגמה"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">דירה לדוגמה, מגדל C קומה 30 · גררו כדי להסתכל מסביב</span>
-    <div class="nlck-float">${PANOS.map((p, i) => `<button type="button" data-pano="${i}" aria-pressed="${i === sub.pano}">${esc(p[1])}</button>`).join('')}</div>`;
+function scrInside(c) { // this apartment's living room with its own window view first (HAD-710); the finishes of the C30 example after it
+  const io = insideOf(c), own = !!io && sub.pano === 0, P = PANOS[io ? Math.max(1, sub.pano) : sub.pano];
+  const url = own ? A(io.img) : A('tour/' + P[0] + '-2k.webp');
+  const chips = io ? [['הדירה הזאת', 0]].concat(PANOS.slice(1).map((p, i) => [p[1], i + 1])) : PANOS.map((p, i) => [p[1], i]);
+  const cap = own ? `הנוף מקומה ${io.floor}${io.floor !== c.floor ? ` (הקרובה ל-${c.floor})` : ''}, ${dirWord(io.bearing)} · הסלון לדוגמה · הדמיה להמחשה` : `${io ? 'גימור ' + P[1] + ' · ' : ''}דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה`;
+  return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(url)}" role="img" aria-label="${esc(own ? 'סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם' : 'סיור 360 בסלון של הדירה לדוגמה')}"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${cap} · גררו כדי להסתכל מסביב</span>
+    <div class="nlck-float">${chips.map(([lab, i]) => `<button type="button" data-pano="${i}" aria-pressed="${i === (io ? (own ? 0 : Math.max(1, sub.pano)) : sub.pano)}">${esc(lab)}</button>`).join('')}</div>`;
 }
 function scrFac() {
   return `${subTop('המתקנים · 360°')}<div class="nlck-360" data-360="${esc(A('tour/' + FACS[sub.fac][0] + '-2k.webp'))}" role="img" aria-label="${esc(FACS[sub.fac][1])}, 360"></div>
@@ -212,7 +220,7 @@ function render() {
   if (PV) { PV.destroy(); PV = null; }
   const body = $('.nlck-body', el);
   const c = cur;
-  const h = { view: () => scrView(c), inside: scrInside, fac: scrFac, plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
+  const h = { view: () => scrView(c), inside: () => scrInside(c), fac: scrFac, plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
   body.innerHTML = h ? h() : home(c);
   body.dataset.screen = el.dataset.screen = open || 'home';
   body.scrollTop = 0;
@@ -241,7 +249,7 @@ function mount() {
 }
 function show(c, from) {
   cur = { tower: c.tower, floor: +c.floor, bearing: +c.bearing, heightM: c.heightM || eyeH(+c.floor) };
-  viaJourney = from === 'journey'; open = null; sub.view = null;
+  viaJourney = from === 'journey'; open = null; sub.view = null; sub.pano = 0;
   try { history.replaceState(history.state, '', `${location.pathname}${location.search}#dira=${cur.tower}${cur.floor}-${Math.round(cur.bearing)}`); } catch (e) { /* file: */ }
   if (!el) mount();
   load().then(() => {

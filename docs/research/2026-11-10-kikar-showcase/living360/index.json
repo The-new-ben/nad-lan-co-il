@@ -1,0 +1,434 @@
+{
+ "A30-270": {
+  "tower": "A",
+  "floor": 30,
+  "side": 270,
+  "info": [
+   "APARTMENT tower A floor 30 plate 352.40 faces 262.40; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (-52.7, -67.7, 117.97) m; facing 262.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A10-0": {
+  "tower": "A",
+  "floor": 10,
+  "side": 0,
+  "info": [
+   "APARTMENT tower A floor 10 plate 17.40 faces 17.40; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (-37.7, -55.8, 37.97) m; facing 17.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A10-90": {
+  "tower": "A",
+  "floor": 10,
+  "side": 90,
+  "info": [
+   "APARTMENT tower A floor 10 plate 17.40 faces 107.40; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (-30.7, -70.3, 37.97) m; facing 107.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A10-180": {
+  "tower": "A",
+  "floor": 10,
+  "side": 180,
+  "info": [
+   "APARTMENT tower A floor 10 plate 17.40 faces 197.40; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (-45.1, -77.2, 37.97) m; facing 197.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A10-270": {
+  "tower": "A",
+  "floor": 10,
+  "side": 270,
+  "info": [
+   "APARTMENT tower A floor 10 plate 17.40 faces 287.40; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (-52.1, -62.8, 37.97) m; facing 287.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A20-0": {
+  "tower": "A",
+  "floor": 20,
+  "side": 0,
+  "info": [
+   "APARTMENT tower A floor 20 plate 4.90 faces 4.90; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (-40.1, -55.3, 77.97) m; facing 4.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A20-90": {
+  "tower": "A",
+  "floor": 20,
+  "side": 90,
+  "info": [
+   "APARTMENT tower A floor 20 plate 4.90 faces 94.90; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (-30.1, -67.8, 77.97) m; facing 94.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A20-180": {
+  "tower": "A",
+  "floor": 20,
+  "side": 180,
+  "info": [
+   "APARTMENT tower A floor 20 plate 4.90 faces 184.90; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (-42.7, -77.8, 77.97) m; facing 184.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A20-270": {
+  "tower": "A",
+  "floor": 20,
+  "side": 270,
+  "info": [
+   "APARTMENT tower A floor 20 plate 4.90 faces 274.90; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (-52.7, -65.2, 77.97) m; facing 274.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A30-0": {
+  "tower": "A",
+  "floor": 30,
+  "side": 0,
+  "info": [
+   "APARTMENT tower A floor 30 plate 352.40 faces 352.40; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (-42.6, -55.2, 117.97) m; facing 352.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A30-90": {
+  "tower": "A",
+  "floor": 30,
+  "side": 90,
+  "info": [
+   "APARTMENT tower A floor 30 plate 352.40 faces 82.40; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (-30.1, -65.4, 117.97) m; facing 82.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A30-180": {
+  "tower": "A",
+  "floor": 30,
+  "side": 180,
+  "info": [
+   "APARTMENT tower A floor 30 plate 352.40 faces 172.40; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (-40.3, -77.8, 117.97) m; facing 172.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A38-0": {
+  "tower": "A",
+  "floor": 38,
+  "side": 0,
+  "info": [
+   "APARTMENT tower A floor 38 plate 342.40 faces 342.40; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (-44.5, -55.6, 149.97) m; facing 342.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A38-90": {
+  "tower": "A",
+  "floor": 38,
+  "side": 90,
+  "info": [
+   "APARTMENT tower A floor 38 plate 342.40 faces 72.40; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (-30.5, -63.4, 149.97) m; facing 72.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A38-180": {
+  "tower": "A",
+  "floor": 38,
+  "side": 180,
+  "info": [
+   "APARTMENT tower A floor 38 plate 342.40 faces 162.40; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (-38.3, -77.4, 149.97) m; facing 162.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "A38-270": {
+  "tower": "A",
+  "floor": 38,
+  "side": 270,
+  "info": [
+   "APARTMENT tower A floor 38 plate 342.40 faces 252.40; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (-52.3, -69.6, 149.97) m; facing 252.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B10-0": {
+  "tower": "B",
+  "floor": 10,
+  "side": 0,
+  "info": [
+   "APARTMENT tower B floor 10 plate 18.38 faces 18.38; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (67.0, -34.7, 37.97) m; facing 18.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B10-90": {
+  "tower": "B",
+  "floor": 10,
+  "side": 90,
+  "info": [
+   "APARTMENT tower B floor 10 plate 18.38 faces 108.38; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (73.9, -49.6, 37.97) m; facing 108.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B10-180": {
+  "tower": "B",
+  "floor": 10,
+  "side": 180,
+  "info": [
+   "APARTMENT tower B floor 10 plate 18.38 faces 198.38; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (59.0, -56.5, 37.97) m; facing 198.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B10-270": {
+  "tower": "B",
+  "floor": 10,
+  "side": 270,
+  "info": [
+   "APARTMENT tower B floor 10 plate 18.38 faces 288.38; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (52.1, -41.6, 37.97) m; facing 288.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B20-0": {
+  "tower": "B",
+  "floor": 20,
+  "side": 0,
+  "info": [
+   "APARTMENT tower B floor 20 plate 5.88 faces 5.88; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (64.5, -34.1, 77.97) m; facing 5.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B20-90": {
+  "tower": "B",
+  "floor": 20,
+  "side": 90,
+  "info": [
+   "APARTMENT tower B floor 20 plate 5.88 faces 95.88; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (74.5, -47.1, 77.97) m; facing 95.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B20-180": {
+  "tower": "B",
+  "floor": 20,
+  "side": 180,
+  "info": [
+   "APARTMENT tower B floor 20 plate 5.88 faces 185.88; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (61.5, -57.1, 77.97) m; facing 185.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B20-270": {
+  "tower": "B",
+  "floor": 20,
+  "side": 270,
+  "info": [
+   "APARTMENT tower B floor 20 plate 5.88 faces 275.88; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (51.5, -44.1, 77.97) m; facing 275.9 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B30-0": {
+  "tower": "B",
+  "floor": 30,
+  "side": 0,
+  "info": [
+   "APARTMENT tower B floor 30 plate 353.38 faces 353.38; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (62.0, -34.1, 117.97) m; facing 353.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B30-90": {
+  "tower": "B",
+  "floor": 30,
+  "side": 90,
+  "info": [
+   "APARTMENT tower B floor 30 plate 353.38 faces 83.38; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (74.6, -44.6, 117.97) m; facing 83.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B30-180": {
+  "tower": "B",
+  "floor": 30,
+  "side": 180,
+  "info": [
+   "APARTMENT tower B floor 30 plate 353.38 faces 173.38; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (64.0, -57.2, 117.97) m; facing 173.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B30-270": {
+  "tower": "B",
+  "floor": 30,
+  "side": 270,
+  "info": [
+   "APARTMENT tower B floor 30 plate 353.38 faces 263.38; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (51.5, -46.6, 117.97) m; facing 263.4 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B37-0": {
+  "tower": "B",
+  "floor": 37,
+  "side": 0,
+  "info": [
+   "APARTMENT tower B floor 37 plate 344.63 faces 344.63; floor finish 144.47 m; world eye 145.6 m",
+   "CAMERA living360 world (60.3, -34.3, 145.97) m; facing 344.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B37-90": {
+  "tower": "B",
+  "floor": 37,
+  "side": 90,
+  "info": [
+   "APARTMENT tower B floor 37 plate 344.63 faces 74.63; floor finish 144.47 m; world eye 145.6 m",
+   "CAMERA living360 world (74.3, -42.9, 145.97) m; facing 74.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B37-180": {
+  "tower": "B",
+  "floor": 37,
+  "side": 180,
+  "info": [
+   "APARTMENT tower B floor 37 plate 344.63 faces 164.63; floor finish 144.47 m; world eye 145.6 m",
+   "CAMERA living360 world (65.7, -56.9, 145.97) m; facing 164.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "B37-270": {
+  "tower": "B",
+  "floor": 37,
+  "side": 270,
+  "info": [
+   "APARTMENT tower B floor 37 plate 344.63 faces 254.63; floor finish 144.47 m; world eye 145.6 m",
+   "CAMERA living360 world (51.7, -48.3, 145.97) m; facing 254.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C10-0": {
+  "tower": "C",
+  "floor": 10,
+  "side": 0,
+  "info": [
+   "APARTMENT tower C floor 10 plate 20.61 faces 20.61; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (44.4, 73.9, 37.97) m; facing 20.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C10-90": {
+  "tower": "C",
+  "floor": 10,
+  "side": 90,
+  "info": [
+   "APARTMENT tower C floor 10 plate 20.61 faces 110.61; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (50.5, 59.4, 37.97) m; facing 110.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C10-180": {
+  "tower": "C",
+  "floor": 10,
+  "side": 180,
+  "info": [
+   "APARTMENT tower C floor 10 plate 20.61 faces 200.61; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (35.9, 53.3, 37.97) m; facing 200.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C10-270": {
+  "tower": "C",
+  "floor": 10,
+  "side": 270,
+  "info": [
+   "APARTMENT tower C floor 10 plate 20.61 faces 290.61; floor finish 36.47 m; world eye 37.6 m",
+   "CAMERA living360 world (29.9, 67.9, 37.97) m; facing 290.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C20-0": {
+  "tower": "C",
+  "floor": 20,
+  "side": 0,
+  "info": [
+   "APARTMENT tower C floor 20 plate 8.11 faces 8.11; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (42.1, 74.6, 77.97) m; facing 8.1 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C20-90": {
+  "tower": "C",
+  "floor": 20,
+  "side": 90,
+  "info": [
+   "APARTMENT tower C floor 20 plate 8.11 faces 98.11; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (51.2, 61.7, 77.97) m; facing 98.1 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C20-180": {
+  "tower": "C",
+  "floor": 20,
+  "side": 180,
+  "info": [
+   "APARTMENT tower C floor 20 plate 8.11 faces 188.11; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (38.3, 52.6, 77.97) m; facing 188.1 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C20-270": {
+  "tower": "C",
+  "floor": 20,
+  "side": 270,
+  "info": [
+   "APARTMENT tower C floor 20 plate 8.11 faces 278.11; floor finish 76.47 m; world eye 77.6 m",
+   "CAMERA living360 world (29.2, 65.5, 77.97) m; facing 278.1 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C30-0": {
+  "tower": "C",
+  "floor": 30,
+  "side": 0,
+  "info": [
+   "APARTMENT tower C floor 30 plate 355.61 faces 355.61; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (39.7, 74.8, 117.97) m; facing 355.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C30-90": {
+  "tower": "C",
+  "floor": 30,
+  "side": 90,
+  "info": [
+   "APARTMENT tower C floor 30 plate 355.61 faces 85.61; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (51.3, 64.1, 117.97) m; facing 85.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C30-180": {
+  "tower": "C",
+  "floor": 30,
+  "side": 180,
+  "info": [
+   "APARTMENT tower C floor 30 plate 355.61 faces 175.61; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (40.7, 52.5, 117.97) m; facing 175.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C30-270": {
+  "tower": "C",
+  "floor": 30,
+  "side": 270,
+  "info": [
+   "APARTMENT tower C floor 30 plate 355.61 faces 265.61; floor finish 116.47 m; world eye 117.6 m",
+   "CAMERA living360 world (29.0, 63.1, 117.97) m; facing 265.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C38-0": {
+  "tower": "C",
+  "floor": 38,
+  "side": 0,
+  "info": [
+   "APARTMENT tower C floor 38 plate 345.61 faces 345.61; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (37.7, 74.5, 149.97) m; facing 345.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C38-90": {
+  "tower": "C",
+  "floor": 38,
+  "side": 90,
+  "info": [
+   "APARTMENT tower C floor 38 plate 345.61 faces 75.61; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (51.1, 66.1, 149.97) m; facing 75.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C38-180": {
+  "tower": "C",
+  "floor": 38,
+  "side": 180,
+  "info": [
+   "APARTMENT tower C floor 38 plate 345.61 faces 165.61; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (42.6, 52.7, 149.97) m; facing 165.6 deg; day 21.9 · 14:30"
+  ]
+ },
+ "C38-270": {
+  "tower": "C",
+  "floor": 38,
+  "side": 270,
+  "info": [
+   "APARTMENT tower C floor 38 plate 345.61 faces 255.61; floor finish 148.47 m; world eye 149.6 m",
+   "CAMERA living360 world (29.3, 61.2, 149.97) m; facing 255.6 deg; day 21.9 · 14:30"
+  ]
+ }
+}

@@ -57,6 +57,16 @@ if os.path.exists(vj):
             views.append({"tower": v["tower"], "floor": v["floor"], "side": v["side"], "bearing": float(m.group(1)) if m else None, "tod": "day",
                           "img": "views/" + k + "-640.webp", "big": "views/" + k + ".webp"})
 
+# the living room in 360 from every apartment (HAD-710): render_kikar_360s.py's index (Blender's APARTMENT line gives the true
+# facing) and the web pictures of build_apt360.py; the cockpit opens the one nearest to the chosen apartment
+inside = []
+lj = os.path.join(REPO, "docs", "research", "2026-11-10-kikar-showcase", "living360", "index.json")
+if os.path.exists(lj):
+    for k, v in sorted(json.load(open(lj, encoding="utf-8")).items()):
+        m = re.search(r"faces ([\d.]+)", " ".join(v.get("info") or []))
+        if m and os.path.exists(os.path.join(HAM, "apt", k + ".webp")) and os.path.exists(os.path.join(HAM, "apt", k + "-card.webp")):
+            inside.append({"tower": v["tower"], "floor": v["floor"], "bearing": float(m.group(1)), "img": "apt/" + k + ".webp", "card": "apt/" + k + "-card.webp"})
+
 data = {
     "v": 1,
     "built": datetime.date.today().isoformat(),
@@ -71,7 +81,8 @@ data = {
             "note": "דמי התחזוקה בפרויקט, כ-4,000 עד 5,000 ₪ לדירה לפי השטח"},
     "defaults": {"price": min(d["price"] for d in deals), "size": 140, "share": 50, "years": 25, "fee": 4500},
     "views": views,
+    "inside": inside,
     "plan": "plan-floor30-towerC.webp" if os.path.exists(os.path.join(HAM, "plan-floor30-towerC.webp")) else None,
 }
 json.dump(data, open(OUT, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, separators=(",", ":"))
-print("wrote", OUT, os.path.getsize(OUT), "bytes;", len(deals), "deals,", len(views), "views; arnona", data["arnona"]["le140"], data["arnona"]["gt140"], "; rate", fx["rate"])
+print("wrote", OUT, os.path.getsize(OUT), "bytes;", len(deals), "deals,", len(views), "views,", len(inside), "living rooms in 360; arnona", data["arnona"]["le140"], data["arnona"]["gt140"], "; rate", fx["rate"])
