@@ -70,6 +70,14 @@
 .nlck-float::-webkit-scrollbar { display: none; }
 .nlck-float button { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 0; background: rgba(13,33,41,.84); color: #fff; font-size: 14px; cursor: pointer; }
 .nlck-float button[aria-pressed='true'] { background: #fff; color: var(--ck-night); font-weight: 700; }
+/* room to room (HAD-712): the rooms row, and a button on each door of the living room */
+.nlck-rooms { position: absolute; z-index: 3; top: 122px; inset-inline: 12px; display: flex; gap: 6px; }
+.nlck .nlck-rooms button { flex: none; min-height: 40px; padding: 0 14px; border-radius: 999px !important; border: 0; background: rgba(13,33,41,.84); color: #fff; font: 600 14px/1 'Assistant', sans-serif; cursor: pointer; }
+.nlck .nlck-rooms button[aria-pressed='true'] { background: var(--ck-glass); color: var(--ck-night); font-weight: 700; }
+.nlck .nlck-door { position: absolute; z-index: 2; transform: translate(-50%, -50%); min-height: 44px; padding: 0 14px; border-radius: 999px !important; border: 2px solid #fff; background: rgba(13,33,41,.84); color: #fff; font: 700 14.5px/1 'Assistant', sans-serif; white-space: nowrap; cursor: pointer; animation: nlckDoor 1.6s ease-out infinite; }
+.nlck .nlck-door[hidden] { display: none; }
+@keyframes nlckDoor { 0% { box-shadow: 0 0 0 0 rgba(127,211,230,.9); } 70% { box-shadow: 0 0 0 16px rgba(127,211,230,0); } 100% { box-shadow: 0 0 0 0 rgba(127,211,230,0); } }
+@media (prefers-reduced-motion: reduce) { .nlck .nlck-door { animation: none; } }
 .nlck-video { flex: 1; width: 100%; min-height: 0; background: #000; }
 .nlck-pad { padding: 16px; color: var(--ck-mist); }
 

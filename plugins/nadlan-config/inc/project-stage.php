@@ -2807,3 +2807,19 @@ add_action( 'wp_footer', function () {
 	if ( is_readable( $js ) ) { echo '<script id="nadlan-stage-i18n-js">' . str_replace( '</', '<\/', (string) file_get_contents( $js ) ) . '</script>' . "
 "; } // phpcs:ignore -- inline: '</' escaped so nothing closes the script early
 }, 5 );
+
+/* HAD-712 (1.72.643): a visitor who opens a video room reaches the owner. nadlan_together_room_created (inc/together.php) had no
+ * listener, so nobody knew a visitor was waiting. Now the owner gets one mail at once, through the owner-mail sender, with the room's
+ * link: opened while signed in to the site, it joins the room as the representative. A room the representative opens sends nothing. */
+add_action( 'nadlan_together_room_created', function ( $room, $pid = 0, $by = '' ) {
+	if ( 'buyer' !== (string) $by || ! function_exists( 'nadlan_omx_send' ) ) { return; }
+	$pid  = (int) $pid;
+	$name = wp_strip_all_tags( (string) get_the_title( $pid ) );
+	$url  = add_query_arg( 'room', rawurlencode( (string) $room ), (string) get_permalink( $pid ) );
+	$subj = 'שיחת וידאו עכשיו · ' . $name . ' · מבקר מחכה בחדר';
+	$html = '<div dir="rtl" style="font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#14212b"><p><b>מבקר פתח עכשיו חדר וידאו בעמוד ' . esc_html( $name ) . '.</b></p>'
+		. '<p><a href="' . esc_url( $url ) . '" style="display:inline-block;background:#2f6f86;color:#ffffff;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:bold">להיכנס לשיחה</a></p>'
+		. '<p>הקישור נפתח כנציג כשאתם מחוברים לאתר. המבקר רואה בינתיים שהנציג עוד לא בחדר.</p></div>';
+	$text = 'מבקר פתח עכשיו חדר וידאו בעמוד ' . $name . ".\nלהיכנס לשיחה: " . $url;
+	nadlan_omx_send( $subj, $html, $text, 'room' );
+}, 10, 3 );

@@ -116,14 +116,22 @@ function scrView(c) {
       ${sd.length > 1 ? `<div class="nlck-row-t">אותה קומה, כיוונים אחרים</div><div class="nlck-strip">${sd.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="side" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${esc(dirWord(x.bearing))}</b></button>`).join('')}</div>` : ''}
     </div>`;
 }
+/* room to room (HAD-712, Ben: "there is a door, you want to pass from room to room"): the living room's doors carry a button each;
+   the bedroom and the balcony are the C30 example apartment's own pictures, and say so */
+const ROOMS = { bed: ['tour/bedroom-c30nw-day-2k.webp', 'חדר השינה'], balcony: ['tour/balcony-c30w-sunset-2k.webp', 'המרפסת'] };
+const DOORS = [{ lon: 69, lat: -3, to: 'bed', label: 'לחדר השינה' }, { lon: 197, lat: -6, to: 'balcony', label: 'למרפסת' }];
+function roomsRow(room) { return `<div class="nlck-rooms" role="group" aria-label="מעבר בין החדרים">${[['living', 'הסלון'], ['bed', ROOMS.bed[1]], ['balcony', ROOMS.balcony[1]]].map(([k, l]) => `<button type="button" data-room="${k}" aria-pressed="${k === room}">${l}</button>`).join('')}</div>`; }
 function scrInside(c) { // this apartment's living room with its own window view first (HAD-710); the finishes of the C30 example after it
+  if (sub.room && ROOMS[sub.room]) { const R = ROOMS[sub.room];
+    return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(A(R[0]))}" role="img" aria-label="${esc(R[1] + ', סיור 360 בדירה לדוגמה')}"></div>
+    <span class="nlck-cap" style="top:64px;bottom:auto">${R[1]} · דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה · גררו כדי להסתכל מסביב</span>${roomsRow(sub.room)}`; }
   const io = insideOf(c), own = !!io && sub.pano === 0, P = PANOS[io ? Math.max(1, sub.pano) : sub.pano];
   const url = own ? A(io.img) : A('tour/' + P[0] + '-2k.webp');
   const chips = io ? [['הדירה הזאת', 0]].concat(PANOS.slice(1).map((p, i) => [p[1], i + 1])) : PANOS.map((p, i) => [p[1], i]);
   const cap = own ? `הנוף מקומה ${io.floor}${io.floor !== c.floor ? ` (הקרובה ל-${c.floor})` : ''}, ${dirWord(io.bearing)} · הסלון לדוגמה · הדמיה להמחשה` : `${io ? 'גימור ' + P[1] + ' · ' : ''}דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה`;
-  return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(url)}" role="img" aria-label="${esc(own ? 'סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם' : 'סיור 360 בסלון של הדירה לדוגמה')}"></div>
+  return `${subTop('בפנים · 360°')}<div class="nlck-360" data-360="${esc(url)}" data-doors="1" role="img" aria-label="${esc(own ? 'סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם' : 'סיור 360 בסלון של הדירה לדוגמה')}"></div>
     <span class="nlck-cap" style="top:64px;bottom:auto">${cap} · גררו כדי להסתכל מסביב</span>
-    <div class="nlck-float">${chips.map(([lab, i]) => `<button type="button" data-pano="${i}" aria-pressed="${i === (io ? (own ? 0 : Math.max(1, sub.pano)) : sub.pano)}">${esc(lab)}</button>`).join('')}</div>`;
+    <div class="nlck-float">${chips.map(([lab, i]) => `<button type="button" data-pano="${i}" aria-pressed="${i === (io ? (own ? 0 : Math.max(1, sub.pano)) : sub.pano)}">${esc(lab)}</button>`).join('')}</div>${roomsRow('living')}`;
 }
 function scrFac() {
   return `${subTop('המתקנים · 360°')}<div class="nlck-360" data-360="${esc(A('tour/' + FACS[sub.fac][0] + '-2k.webp'))}" role="img" aria-label="${esc(FACS[sub.fac][1])}, 360"></div>
@@ -195,7 +203,7 @@ function scrSave(c) {
 
 /* ---------------------------------------------------------------- the 360 viewer (three.js from the page's import map) */
 let PV = null;
-async function pano(host, url) {
+async function pano(host, url, doors) {
   if (PV) { PV.destroy(); PV = null; }
   let THREE;
   try { THREE = await import('three'); } catch (e) { host.innerHTML = `<div class="nlck-pan" data-pan><img src="${esc(url)}" alt=""></div>`; return; }
@@ -205,13 +213,17 @@ async function pano(host, url) {
   const tex = await new THREE.TextureLoader().loadAsync(url); tex.colorSpace = THREE.SRGBColorSpace;
   const geo = new THREE.SphereGeometry(10, 64, 32); geo.scale(-1, 1, 1); scene.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map: tex })));
   let lon = 180, lat = 0, x0 = null, y0 = 0, l0 = 0, a0 = 0, run = true;
-  const draw = () => { if (!run) return; const p = THREE.MathUtils.degToRad(90 - lat), t = THREE.MathUtils.degToRad(lon); cam.lookAt(Math.sin(p) * Math.cos(t), Math.cos(p), Math.sin(p) * Math.sin(t)); r.render(scene, cam); requestAnimationFrame(draw); };
-  host.addEventListener('pointerdown', (e) => { x0 = e.clientX; y0 = e.clientY; l0 = lon; a0 = lat; host.setPointerCapture(e.pointerId); });
+  const dir = (lo, la) => { const p = THREE.MathUtils.degToRad(90 - la), t = THREE.MathUtils.degToRad(lo); return new THREE.Vector3(Math.sin(p) * Math.cos(t), Math.cos(p), Math.sin(p) * Math.sin(t)); };
+  const hot = (doors || []).map((d) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'nlck-door'; b.dataset.room = d.to; b.textContent = d.label + ' ‹'; b.hidden = true; host.appendChild(b); return { b, v: dir(d.lon, d.lat).multiplyScalar(9) }; });
+  const draw = () => { if (!run) return; cam.lookAt(dir(lon, lat)); cam.updateMatrixWorld(); r.render(scene, cam);
+    for (const h of hot) { const q = h.v.clone().project(cam), on = q.z < 1 && Math.abs(q.x) < 0.9 && Math.abs(q.y) < 0.8; h.b.hidden = !on; if (on) { h.b.style.left = ((q.x * 0.5 + 0.5) * 100).toFixed(1) + '%'; h.b.style.top = ((-q.y * 0.5 + 0.5) * 100).toFixed(1) + '%'; } }
+    requestAnimationFrame(draw); };
+  host.addEventListener('pointerdown', (e) => { if (e.target.closest('button')) return; x0 = e.clientX; y0 = e.clientY; l0 = lon; a0 = lat; host.setPointerCapture(e.pointerId); });
   host.addEventListener('pointermove', (e) => { if (x0 == null) return; lon = l0 - (e.clientX - x0) * 0.16; lat = Math.max(-75, Math.min(75, a0 + (e.clientY - y0) * 0.16)); });
   host.addEventListener('pointerup', () => { x0 = null; });
   const rs = () => { r.setSize(W(), H()); cam.aspect = W() / H(); cam.updateProjectionMatrix(); }; addEventListener('resize', rs);
   draw();
-  PV = { destroy() { run = false; removeEventListener('resize', rs); geo.dispose(); tex.dispose(); r.dispose(); r.domElement.remove(); } };
+  PV = { destroy() { run = false; removeEventListener('resize', rs); hot.forEach((h) => h.b.remove()); geo.dispose(); tex.dispose(); r.dispose(); r.domElement.remove(); } };
 }
 
 /* ---------------------------------------------------------------- the app */
@@ -223,8 +235,9 @@ function render() {
   const h = { view: () => scrView(c), inside: () => scrInside(c), fac: scrFac, plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
   body.innerHTML = h ? h() : home(c);
   body.dataset.screen = el.dataset.screen = open || 'home';
+  try { dispatchEvent(new CustomEvent('nl:cockpit', { detail: { screen: open || 'home' } })); } catch (e) { /* none */ } // HAD-712: the showroom's steps follow
   body.scrollTop = 0;
-  const p3 = $('[data-360]', body); if (p3) pano(p3, p3.dataset['360']);
+  const p3 = $('[data-360]', body); if (p3) pano(p3, p3.dataset['360'], p3.dataset.doors ? DOORS : null);
   const pan = $('[data-pan]', body); if (pan) { const im = $('img', pan); const ctr = () => { pan.scrollLeft = -(pan.scrollWidth - pan.clientWidth) / 2; }; if (im) { if (im.complete) ctr(); else im.addEventListener('load', ctr, { once: true }); } }
   if (open === 'area' && !PL) loadPlaces().then(() => { if (open === 'area') render(); });
   paintBar();
@@ -247,9 +260,9 @@ function mount() {
   el.addEventListener('change', onInput);
   el.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (open) { open = null; render(); } else close(); } });
 }
-function show(c, from) {
+function show(c, from, screen) { // screen (HAD-712): open straight on one of the screens, e.g. 'view' or 'inside'
   cur = { tower: c.tower, floor: +c.floor, bearing: +c.bearing, heightM: c.heightM || eyeH(+c.floor) };
-  viaJourney = from === 'journey'; open = null; sub.view = null; sub.pano = 0;
+  viaJourney = from === 'journey'; open = ['view', 'inside', 'fac', 'plan', 'price', 'area', 'film', 'save'].includes(screen) ? screen : null; sub.view = null; sub.pano = 0; sub.room = null;
   try { history.replaceState(history.state, '', `${location.pathname}${location.search}#dira=${cur.tower}${cur.floor}-${Math.round(cur.bearing)}`); } catch (e) { /* file: */ }
   if (!el) mount();
   load().then(() => {
@@ -274,6 +287,7 @@ function onClick(e) {
   if (o && o.dataset.open === 'other') { ga('cockpit_tile', { tile: 'other' }); viaJourney = false; close(); if (window.__nlJourney && window.__nlJourney.open) window.__nlJourney.open(2); else { const s = document.getElementById('nlps'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
   if (o && el.contains(o)) { const k = o.dataset.open; if (!k && !open) return close(); open = k || null; if (k !== 'view') sub.view = null; render(); ga('cockpit_tile', { tile: k || 'home' }); return; }
   const v = e.target.closest('[data-v]'); if (v) { sub.view = rendered().find((x) => x.img === v.dataset.v) || null; if (sub.view && v.dataset.vk === 'side') { cur.bearing = sub.view.bearing; } return render(); }
+  const rm = e.target.closest('[data-room]'); if (rm) { sub.room = rm.dataset.room === 'living' ? null : rm.dataset.room; ga('cockpit_room', { room: rm.dataset.room }); return render(); }
   const p = e.target.closest('[data-pano]'); if (p) { sub.pano = +p.dataset.pano; return render(); }
   const f = e.target.closest('[data-fac]'); if (f) { sub.fac = +f.dataset.fac; return render(); }
   const z = e.target.closest('[data-zoom]'); if (z) { z.classList.toggle('on'); return; }
@@ -300,8 +314,8 @@ function onClick(e) {
   if (act === 'wa') ga('cockpit_wa', {});
 }
 
-window.__nlCockpit = { open: (d, from) => show(d, from) };
-addEventListener('nl:facing', (e) => { const d = e.detail || {}; if (d.tower && d.floor && d.bearing != null) show(d, d.source); });
+window.__nlCockpit = { open: (d, from, screen) => show(d, from, screen) };
+addEventListener('nl:facing', (e) => { const d = e.detail || {}; if (!d.quiet && d.tower && d.floor && d.bearing != null) show(d, d.source); }); // quiet (HAD-712): the showroom reports a choice without opening this screen
 function reopen() { // a link that reopens a choice: #dira=A30-262
   const m = /^#dira=([ABC])(\d{1,2})-(\d{1,3})$/.exec(location.hash || '');
   if (m && !(cur && el && !el.hidden && cur.tower === m[1] && cur.floor === +m[2] && Math.round(cur.bearing) === +m[3])) show({ tower: m[1], floor: +m[2], bearing: +m[3] }, 'link');
