@@ -1,0 +1,12 @@
+import { open, sleep } from './lib.mjs';
+const [slug, out] = [process.argv[2], process.argv[3]];
+const p = await open(`https://nad-lan.co.il/projects/${slug}/?jr=1`, { out });
+await sleep(4000);
+await p.shot('00-landing');
+console.log('FOLD', await p.ev(`(()=>{const vis=(e)=>{const r=e.getBoundingClientRect();return r.width>20&&r.height>14&&r.top<innerHeight&&r.bottom>0&&getComputedStyle(e).visibility!=='hidden'}; return JSON.stringify([...document.querySelectorAll('a,button')].filter(vis).map(e=>(e.textContent||e.getAttribute('aria-label')||'').trim().replace(/\s+/g,' ').slice(0,40)).filter(Boolean).slice(0,20))})()`));
+console.log('STAGE at', await p.scrollTo('.nlps-stagebox, #nlps'));
+await sleep(5000); await p.shot('01-stage');
+console.log('STAGE DOM', await p.ev(`(()=>{const root=document.querySelector('.nlps-stagebox')||document.getElementById('nlps'); if(!root) return 'no stage'; const r=root.getBoundingClientRect(); const cls={}; root.querySelectorAll('*').forEach(e=>{(e.className&&e.className.baseVal!==undefined?e.className.baseVal:String(e.className||'')).split(/\s+/).filter(Boolean).forEach(c=>cls[c]=(cls[c]||0)+1)}); const anim=[...root.querySelectorAll('*')].filter(e=>{const a=getComputedStyle(e).animationName; return a&&a!=='none'}).slice(0,25).map(e=>(e.className.baseVal!==undefined?e.className.baseVal:e.className)+' ~ '+getComputedStyle(e).animationName+' | '+(e.textContent||'').trim().slice(0,30)); const btn=[...root.querySelectorAll('button,a,[role=button]')].filter(e=>e.getBoundingClientRect().width>0).slice(0,60).map(e=>(e.className.baseVal!==undefined?e.className.baseVal:e.className).slice(0,40)+' :: '+(e.textContent||e.getAttribute('aria-label')||'').trim().replace(/\s+/g,' ').slice(0,36)); return JSON.stringify({box:[Math.round(r.width),Math.round(r.height)], canvas:root.querySelectorAll('canvas').length, svg:root.querySelectorAll('svg').length, classes:Object.entries(cls).sort((a,b)=>b[1]-a[1]).slice(0,70).map(x=>x[0]+':'+x[1]).join(' '), anim, btn},null,0)})()`));
+console.log('MAP', await p.ev(`(()=>{const m=document.querySelector('#nlpjx-map, .nlpjx-map, [id*=map]'); const all=[...document.querySelectorAll('[id*=map],[class*=map]')].slice(0,14).map(e=>e.tagName+'#'+e.id+'.'+(e.className.baseVal!==undefined?e.className.baseVal:e.className).toString().slice(0,50)+' y'+Math.round(e.getBoundingClientRect().top+scrollY)+' h'+Math.round(e.getBoundingClientRect().height)); return JSON.stringify(all)})()`));
+console.log('ERRS', p.errs.length, p.errs.slice(0, 3));
+await p.close();

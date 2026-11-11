@@ -1,0 +1,23 @@
+import { open, sleep } from './lib.mjs';
+const slug = process.argv[2] || 'ashira-sde-dov', out = 'shots/' + slug;
+const p = await open(`https://nad-lan.co.il/projects/${slug}/?jr=4`, { out });
+await sleep(3500); await p.scrollTo('.nlps-stagebox'); await sleep(2000);
+await p.ev(`document.querySelector('.rbs-open').click()`); await sleep(7000);
+const cv = JSON.parse(await p.ev(`(()=>{const e=document.querySelector('.nlps-stagebox canvas'); const r=e.getBoundingClientRect(); return JSON.stringify({x:r.left,y:r.top,w:r.width,h:r.height})})()`));
+const mouse = async (x, y) => { await p.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y }); await sleep(120); await p.send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', clickCount: 1 }); await sleep(70); await p.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 }); };
+await mouse(cv.x + cv.w * 0.47, cv.y + cv.h * 0.45); await sleep(2600);
+console.log('picked', await p.ev(`document.querySelector('.rbs-label-title').textContent+' | '+document.querySelector('.rbs-label-facing').textContent`));
+console.log('view', await p.ev(`(()=>{const b=document.querySelector('.rbs-act[data-act="view"]'); b.click(); return 'clicked'})()`));
+await sleep(5000); await p.shot('08-view', 300);
+console.log('where', await p.ev(`(()=>{const v=document.getElementById('nlps-view')||document.querySelector('.nlps-view'); const m=document.getElementById('nlps-view-map'); const r=m&&m.getBoundingClientRect(); return JSON.stringify({scrollY:Math.round(scrollY), view: v? [v.id, Math.round(v.getBoundingClientRect().top), Math.round(v.getBoundingClientRect().height)]:null, map: r?[Math.round(r.top),Math.round(r.height)]:null, mapHtml: m? m.innerHTML.replace(/\s+/g,' ').slice(0,900):null, viewText: v? v.innerText.replace(/\s+/g,' ').slice(0,500):null})})()`));
+await p.scrollTo('#nlps-view-map', 300); await p.shot('09-view-map', 1500);
+console.log('beam', await p.ev(`(()=>{const m=document.getElementById('nlps-view-map'); if(!m) return 'no map'; const kinds={}; m.querySelectorAll('*').forEach(e=>{const k=e.tagName.toLowerCase()+(e.getAttribute('class')?'.'+e.getAttribute('class').split(' ')[0]:''); kinds[k]=(kinds[k]||0)+1}); return JSON.stringify(kinds).slice(0,900)})()`));
+// change the side on the ring: the card said "tap the ring"
+await p.scrollTo('.nlps-stagebox'); await sleep(1200);
+console.log('ring', await p.ev(`(()=>{const L=[...document.querySelectorAll('.rbs [class*=ring], .rbs [class*=side], .rbs [class*=compass], .rbs [class*=facing]')].map(e=>e.tagName+'.'+(e.getAttribute('class')||'')+' '+Math.round(e.getBoundingClientRect().width)+'x'+Math.round(e.getBoundingClientRect().height)); return L.join(' | ').slice(0,600)})()`));
+console.log('steps', await p.ev(`[...document.querySelectorAll('.nlps-step')].map(e=>e.className+':'+e.textContent.trim().slice(0,14)).join(' | ')`));
+console.log('basket html', await p.ev(`(()=>{const b=document.querySelector('.nlbk-step'); b&&b.click(); return 'clicked basket'})()`));
+await sleep(2500); await p.shot('10-basket', 300);
+console.log('basket', await p.ev(`(()=>{const e=document.querySelector('[class*=nlbk-panel],[class*=nlbk-sheet],[id*=nlbk],.nlbk'); const all=[...document.querySelectorAll('[class*=nlbk]')].filter(x=>x.getBoundingClientRect().height>60).map(x=>x.className+' h'+Math.round(x.getBoundingClientRect().height)).slice(0,8); const big=[...document.querySelectorAll('[class*=nlbk]')].sort((a,b)=>b.getBoundingClientRect().height-a.getBoundingClientRect().height)[0]; return JSON.stringify({all, text: big? big.innerText.replace(/\s+/g,' ').slice(0,900):null})})()`));
+console.log('ERRS', p.errs.length, p.errs.slice(0, 3));
+await p.close();

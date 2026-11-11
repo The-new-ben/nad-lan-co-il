@@ -1,0 +1,20 @@
+import { open, sleep } from './lib.mjs';
+const slug = process.argv[2] || 'ashira-sde-dov', out = 'shots/' + slug;
+const p = await open(`https://nad-lan.co.il/projects/${slug}/?jr=5`, { out });
+await sleep(3500); await p.scrollTo('.nlps-stagebox'); await sleep(2000);
+await p.ev(`document.querySelector('.rbs-open').click()`); await sleep(7000);
+const cv = JSON.parse(await p.ev(`(()=>{const e=document.querySelector('.nlps-stagebox canvas'); const r=e.getBoundingClientRect(); return JSON.stringify({x:r.left,y:r.top,w:r.width,h:r.height})})()`));
+const mouse = async (x, y) => { await p.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y }); await sleep(120); await p.send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', clickCount: 1 }); await sleep(70); await p.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 }); };
+await mouse(cv.x + cv.w * 0.47, cv.y + cv.h * 0.45); await sleep(2600);
+await p.ev(`document.querySelector('.nlbk-step').click()`); await sleep(2000);
+console.log('BASKET TEXT', await p.ev(`document.querySelector('.nlbk__sheet').innerText.replace(/\n+/g,' / ').replace(/\s+/g,' ').slice(0,2600)`));
+console.log('BASKET BUTTONS', await p.ev(`JSON.stringify([...document.querySelectorAll('.nlbk__sheet a, .nlbk__sheet button')].map(e=>(e.textContent||'').trim().replace(/\s+/g,' ').slice(0,40)+' -> '+(e.getAttribute('href')||e.getAttribute('data-act')||e.className).toString().slice(0,90)))`));
+await p.ev(`(()=>{const b=document.querySelector('.nlbk__body'); b.scrollTop=b.scrollHeight})()`); await p.shot('11-basket-bottom', 800);
+// the specific-apartment CTA on the label card
+await p.ev(`(()=>{const x=document.querySelector('.nlbk__sheet [aria-label*="סגירה"], .nlbk__close, .nlbk__head button'); x&&x.click()})()`); await sleep(800);
+console.log('CTA', await p.ev(`(()=>{const b=document.querySelector('.rbs-label-cta'); const before=location.href; let opened=null; const o=window.open; window.open=(u)=>{opened=u; return null}; b.click(); window.open=o; return JSON.stringify({opened, href: location.href!==before? location.href:null})})()`));
+await sleep(2500); await p.shot('12-after-cta', 300);
+console.log('AFTER CTA', await p.ev(`(()=>{const vis=[...document.querySelectorAll('[class*=sheet],[class*=modal],[role=dialog],[class*=nlcta]')].filter(e=>e.getBoundingClientRect().height>120&&getComputedStyle(e).display!=='none'&&getComputedStyle(e).visibility!=='hidden').map(e=>e.className.toString().slice(0,50)+' :: '+e.innerText.replace(/\s+/g,' ').slice(0,420)); return JSON.stringify(vis.slice(0,3))})()`));
+console.log('WA links', await p.ev(`JSON.stringify([...new Set([...document.querySelectorAll('a[href*="wa.me"],a[href*="whatsapp"]')].map(a=>decodeURIComponent(a.href).replace(/\d{9,}/,'<phone>').slice(0,260)))].slice(0,4))`));
+console.log('ERRS', p.errs.length, p.errs.slice(0, 3));
+await p.close();
