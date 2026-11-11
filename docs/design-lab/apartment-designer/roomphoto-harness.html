@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>בדיקה מקומית: הריצוף והצבע בחדר שלכם</title>
+<style>
+/* A stand-in page with the site's most hostile rules. The tool must not change. */
+html,body{margin:0;height:100%}
+body{font-family:Assistant,Arial,sans-serif;background:#fff;color:#222}
+button{border-radius:12px!important;background:#e33!important;color:#fff!important;font-family:serif!important}
+h2{color:#e33!important;font-family:serif!important;font-size:40px!important}
+*{letter-spacing:.02em}
+#host{position:fixed;inset:0}
+</style>
+</head>
+<body>
+<div id="host" aria-label="הריצוף והצבע בחדר שלכם"></div>
+<script type="module">
+import { mountRoomPhoto, paintRoom } from '../../../plugins/nadlan-config/assets/designer/roomphoto.js';
+const q = new URLSearchParams(location.search);
+window.__paintRoom = paintRoom;
+window.__rp = await mountRoomPhoto(document.getElementById('host'), { lang: q.get('lang') || 'he', version: 'test' + Date.now() });
+window.__ready = true;
+</script>
+</body>
+</html>

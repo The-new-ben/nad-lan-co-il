@@ -22,10 +22,11 @@ const q = new URLSearchParams(location.search), host = document.getElementById('
 window.__blobs = [];
 const oc = URL.createObjectURL.bind(URL);
 URL.createObjectURL = (b) => { window.__blobs.push(b); return oc(b); }; // the test reads the saved file from here
-async function maker(draft) {
+async function maker(draft, more) {
   window.__d = null;
+  if (window.__pm) window.__pm.destroy();
   window.__pm = await mountPlanMaker(host, {
-    lang, project: 'local-test', helpUrl: '#where-is-the-plan', draft,
+    lang, project: 'local-test', helpUrl: '#where-is-the-plan', draft, ...(more || {}),
     onDone: async (plan, d) => { window.__done = { plan, draft: d }; window.__pm.destroy(); window.__pm = null; await designer(plan, d); },
     onCancel: () => { window.__cancelled = (window.__cancelled || 0) + 1; },
   });
@@ -33,6 +34,7 @@ async function maker(draft) {
 async function designer(plan, d) {
   window.__d = await mount(host, { plan, lang, onEditPlan: (api) => { api.destroy(); maker(d); } });
 }
+window.__maker = maker; // the check remounts with a handed-in draft or extra ways in
 if (q.get('designer') === '1' && loadMyPlan()) await designer(loadMyPlan(), null); else await maker();
 window.__ready = true;
 </script>

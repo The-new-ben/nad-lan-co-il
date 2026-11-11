@@ -247,5 +247,51 @@ const base = {
   check('12 rails stay rails; the wall between a room and its balcony stays an inner wall', b.walls.filter((w) => w.kind === 'rail').length === 3 && b.walls.some((w) => w.kind === 'partition' && plan.nodes && b.nodes[w.a][1] === 310 && b.nodes[w.b][1] === 310 && Math.min(b.nodes[w.a][0], b.nodes[w.b][0]) === 310));
 }
 
+// ---- 13. counting tiles instead of a tape ----
+{
+  const { tileLength } = await import(pathToFileURL(lib + 'planbuild.js'));
+  check('13 tile 60 with a 0.3 joint: 6.5 tiles = 6.5 x 60.3 = 392 cm', tileLength(6.5, 60) === Math.round(6.5 * 60.3) && tileLength(6.5, 60) === 392);
+  check('13 tile 80: 5 tiles = 401.5 -> 402 (rounded); 33 x 12 = 399.6 -> 400', tileLength(5, 80) === 402 && tileLength(12, 33) === 400);
+  check('13 half tiles count as halves; nothing counted gives 0', tileLength(0.5, 120) === 60 && tileLength(0, 60) === 0 && tileLength(3, 0) === 0);
+}
+
+// ---- 14. the contract area, and setting the scale from it (picture route) ----
+{
+  const { contractArea, calibrateScale } = await import(pathToFileURL(lib + 'planbuild.js'));
+  const plan = buildPlan(base), ca = contractArea(plan);
+  check('14 contract area of the 1000 x 800 plan with 25 cm outer walls: 1025 x 825 = 84.56 m2', Math.abs(ca - 84.5625) < 0.01, ca);
+  const L = buildPlan({ cmPerPx: 1, segments: [[0, 0], [600, 0], [600, 300], [300, 300], [300, 600], [0, 600]].map((p, i, a) => F(p, a[(i + 1) % a.length])), rooms: [{ at: [150, 150], key: 'living' }] });
+  check('14 an L: the outer outline (625 x 325 + 325 x 300) = 30.06 m2', Math.abs(contractArea(L) - (625 * 325 + 325 * 300) / 1e4) < 0.01, contractArea(L));
+  const bal = buildPlan({ cmPerPx: 1, segments: [...rect(0, 0, 900, 600), S([0, 600], [0, 760], 'rail'), S([0, 760], [500, 760], 'rail'), S([500, 760], [500, 600], 'rail')], rooms: [{ at: [450, 300], key: 'living' }, { at: [250, 680], key: 'balcony' }] });
+  check('14 a balcony is not in the contract area (925 x 625)', Math.abs(contractArea(bal) - 925 * 625 / 1e4) < 0.01, contractArea(bal));
+  // the same plan traced off a picture at 2 px per cm, but the scale was marked 4% wrong
+  const px = { cmPerPx: 0.52, segments: base.segments.map((s) => ({ ...s, a: [s.a[0] * 2, s.a[1] * 2], b: [s.b[0] * 2, s.b[1] * 2] })), openings: [], rooms: base.rooms.map((r) => ({ ...r, at: [r.at[0] * 2, r.at[1] * 2] })) };
+  const c = calibrateScale(px, 84.5625);
+  check('14 from the contract area the scale comes back to 0.5 cm per pixel (within 0.3%)', c.ok && Math.abs(c.k - 0.5) / 0.5 < 0.003 && Math.abs(c.after - 84.5625) < 0.05, c);
+  check('14 the correction is reported in percent (about -3.8%)', c.pct < -3.5 && c.pct > -4.2, c.pct);
+  const far = calibrateScale(px, 50);
+  check('14 a correction over 15% is refused and nothing is given to apply', !far.ok && far.code === 'too.big', far);
+}
+
+// ---- 15. a page photographed at an angle: its proportions come back ----
+{
+  const { rectifySize } = await import(pathToFileURL(lib + 'planbuild.js'));
+  const shoot = (Wp, Hp, ax, ay, f, cx, cy, D) => { // a pinhole camera looking at a tilted page
+    const a = (ax * Math.PI) / 180, b = (ay * Math.PI) / 180;
+    return [[-Wp / 2, -Hp / 2], [Wp / 2, -Hp / 2], [Wp / 2, Hp / 2], [-Wp / 2, Hp / 2]].map(([x, y]) => {
+      let Y = y * Math.cos(a), Z = y * Math.sin(a), X = x;
+      const X2 = X * Math.cos(b) + Z * Math.sin(b), Z2 = -X * Math.sin(b) + Z * Math.cos(b);
+      return [cx + (f * X2) / (Z2 + D), cy + (f * Y) / (Z2 + D)];
+    });
+  };
+  for (const [ax, ay] of [[25, 10], [-30, 0], [15, -20]]) {
+    const r = rectifySize(shoot(1230, 900, ax, ay, 1400, 800, 600, 2200), 800, 600);
+    const tol = r.how === 'camera' ? 0.005 : 0.02; // one-axis tilt: the lens is a usual phone lens, not measured
+    check('15 tilted ' + ax + '/' + ay + ' degrees: the proportions 1230:900 come back (' + r.how + ', within ' + tol * 100 + '%)', r.how.startsWith('camera') && Math.abs(r.aspect / (1230 / 900) - 1) < tol, r);
+  }
+  const flat = rectifySize([[100, 100], [1330, 100], [1330, 1000], [100, 1000]], 700, 550);
+  check('15 a page shot straight on keeps its sides', Math.abs(flat.W - 1230) < 1e-6 && Math.abs(flat.H - 900) < 1e-6);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

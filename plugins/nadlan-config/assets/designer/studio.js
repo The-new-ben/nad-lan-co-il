@@ -10,14 +10,29 @@
 import { mount } from './designer.js';
 
 const S = {
-  he: { mine: 'התוכנית שלי', group: 'על איזו דירה מעצבים', plan: 'דירה לדוגמה' },
-  en: { mine: 'My plan', group: 'Which apartment to design', plan: 'Example apartment' },
+  he: { mine: 'התוכנית שלי', group: 'על איזו דירה מעצבים', plan: 'דירה לדוגמה',
+    scanTitle: 'למדוד במצלמה', scanSub: 'מסתובבים בדירה עם הטלפון ומסמנים את הפינות. התוכנית נבנית במידות אמיתיות', scanBtn: 'מדידה במצלמה' },
+  en: { mine: 'My plan', group: 'Which apartment to design', plan: 'Example apartment',
+    scanTitle: 'Measure with the camera', scanSub: 'Walk through the apartment with the phone and mark the corners. The plan is built in real sizes', scanBtn: 'Measure with the camera' },
 };
 const base = (u) => String(u || '').split('?')[0];
 
 export async function mountStudio(host, pick, cfg = {}) {
   const T = S[cfg.lang] || S.he, KEY = 'nl-dsg-plan' + (cfg.scope ? ':' + cfg.scope : '');
   const withMine = cfg.mine !== false;
+  // measuring with the camera (roomscan.js) is offered inside "my plan" only where the browser can do it, and only when the
+  // page opened it for everyone (cfg.scan) or this visitor turned the trial switch on (?scan=on, kept in this browser)
+  const scanOn = (() => {
+    let on = cfg.scan === true;
+    try {
+      const q = new URLSearchParams(location.search).get('scan');
+      if (q === 'on') localStorage.setItem('nl-dsg-scan', '1');
+      if (q === 'off') localStorage.removeItem('nl-dsg-scan');
+      on = on || localStorage.getItem('nl-dsg-scan') === '1';
+    } catch (e) { /* storage blocked: only the page's own setting counts */ }
+    return on;
+  })();
+  let scanMod = null; // the module once it is known that this browser can measure; false when it cannot
   let plans = (Array.isArray(cfg.plans) ? cfg.plans : []).filter((x) => x && x.url).map((x) => ({ ...x, k: x.k || base(x.url) }));
   if (!plans.length && cfg.planUrl) plans = [{ k: base(cfg.planUrl), url: cfg.planUrl, label: cfg.planLabel || T.plan }];
   const getPlan = (u) => fetch(u).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -67,14 +82,31 @@ export async function mountStudio(host, pick, cfg = {}) {
     remember('mine'); tell('mine');
     return true;
   }
-  async function openMine(edit) {
+  async function scanWays() {
+    if (!scanOn) return [];
+    if (scanMod === null) {
+      try { const rs = await import('./roomscan.js'); scanMod = (await rs.scanSupported()).ok ? rs : false; } catch (e) { scanMod = false; }
+    }
+    return scanMod ? [{ title: T.scanTitle, sub: T.scanSub, btn: T.scanBtn, run: () => go(() => openScan()) }] : [];
+  }
+  async function openScan() { // the camera fills the frame; what it measured comes back as a draft the visitor checks in the drawing
+    drop(); cur = 'pm'; paint();
+    inst = await scanMod.mountRoomScan(host, {
+      lang: cfg.lang || 'he', version: cfg.version,
+      onDone: (res) => go(() => openMine(true, res && res.draft ? res.draft : null)),
+      onCancel: () => go(() => openMine(true)),
+    });
+    return true;
+  }
+  async function openMine(edit, draft) {
     if (!withMine) return false;
     pm = pm || (await import('./planmaker.js'));
     const own = edit ? null : pm.loadMyPlan();
     if (own) return showMine(own);
+    const extraWays = await scanWays();
     drop(); cur = 'pm'; paint(); tell('maker');
     inst = await pm.mountPlanMaker(host, {
-      lang: cfg.lang || 'he', version: cfg.version, project: cfg.project || null, helpUrl: cfg.helpUrl || '',
+      lang: cfg.lang || 'he', version: cfg.version, project: cfg.project || null, helpUrl: cfg.helpUrl || '', extraWays, draft: draft || undefined,
       onDone: (plan) => go(() => showMine(plan)),
       onCancel: () => go(() => (last ? openPlan(last) : plans[0] ? openPlan(plans[0]) : false)),
     });

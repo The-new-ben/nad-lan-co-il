@@ -340,6 +340,93 @@ export function analyzeDraft(draft, meta = {}) {
   return { plan, faces: out, problems, frame: { toDraft, toPlan, th, k }, free: free.map((n) => toDraft(nodes[n])) };
 }
 
+/** Measuring with no tape: floor tiles counted along a wall (halves count as halves), each tile plus its joint. cm, whole. */
+export function tileLength(count, tileCm, jointCm = 0.3) {
+  if (!(count > 0) || !(tileCm > 0)) return 0;
+  return Math.round(count * (tileCm + (jointCm > 0 ? jointCm : 0)));
+}
+
+/** The area a sales contract states: to the OUTER face of the outer walls, without the balconies (and without spaces
+ *  marked "not part of the apartment"). m2. Centre-line area of the rooms plus half of every wall that has a room on one
+ *  side only, plus the corner squares where two such walls turn outward. */
+export function contractArea(plan) {
+  if (!plan) return 0;
+  const dv = derive(plan, emptyDesign(plan)), inc = dv.faces.filter((f) => f.room && f.room.type !== 'balcony');
+  let a = inc.reduce((m, f) => m + Math.abs(polyArea(f.poly)), 0);
+  const inside = (p) => inc.some((f) => pip(p, f.poly)), edge = {};
+  for (const w of plan.walls) {
+    if (!(w.t > 0) || w.kind === 'divider') continue;
+    const A = plan.nodes[w.a], B = plan.nodes[w.b], L = hyp(sub(B, A)); if (!L) continue;
+    const m = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2], n = [-(B[1] - A[1]) / L, (B[0] - A[0]) / L], e = w.t / 2 + 2;
+    if (inside([m[0] + n[0] * e, m[1] + n[1] * e]) === inside([m[0] - n[0] * e, m[1] - n[1] * e])) continue;
+    a += (L * w.t) / 2;
+    for (const k of [w.a, w.b]) (edge[k] = edge[k] || []).push(w);
+  }
+  for (const k in edge) { // an outward corner: two outline walls square to each other, with the room inside the corner
+    const ws = edge[k]; if (ws.length !== 2) continue;
+    const P = plan.nodes[k], d = ws.map((w) => { const o = plan.nodes[w.a === k ? w.b : w.a], L = hyp(sub(o, P)); return [(o[0] - P[0]) / L, (o[1] - P[1]) / L]; });
+    if (Math.abs(crs(d[0], d[1])) < 0.7) continue;
+    const sq = (ws[0].t / 2) * (ws[1].t / 2), c = [d[0][0] + d[1][0], d[0][1] + d[1][1]];
+    if (inside([P[0] + c[0] * 20, P[1] + c[1] * 20])) a += sq; // outward corner: the square outside both half walls
+    else if (inside([P[0] - c[0] * 20, P[1] - c[1] * 20])) a -= sq; // inward corner: the two half walls overlap there
+  }
+  return a / 1e4;
+}
+
+/** The scale that makes the drawing's contract area equal the area in the contract. Walls keep their real thickness, so
+ *  this is solved in a few steps. ok is false (nothing to apply) when the change of scale is over `limit` percent. */
+export function calibrateScale(draft, sqm, limit = 15) {
+  const k0 = draft && draft.cmPerPx;
+  if (!(k0 > 0) || !(sqm > 0)) return { ok: false, code: 'input' };
+  const area = (k) => { const a = analyzeDraft({ ...draft, cmPerPx: k }); return a.plan ? contractArea(a.plan) : 0; };
+  const before = area(k0);
+  if (!before) return { ok: false, code: 'no.room' };
+  let k = k0, after = before;
+  for (let i = 0; i < 6 && Math.abs(after - sqm) / sqm > 1e-4; i++) { k *= Math.sqrt(sqm / after); after = area(k); }
+  const pct = (k / k0 - 1) * 100;
+  return { ok: Math.abs(pct) <= limit, code: Math.abs(pct) <= limit ? null : 'too.big', k, pct, before, after };
+}
+
+// ---- a page photographed at an angle: the four corners become a straight rectangle of the right proportions ----
+export function solveLinear(A, b) {
+  const n = b.length, M = A.map((r, i) => [...r, b[i]]);
+  for (let i = 0; i < n; i++) {
+    let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
+    [M[i], M[p]] = [M[p], M[i]];
+    for (let r = 0; r < n; r++) { if (r === i) continue; const f = M[r][i] / M[i][i]; for (let c = i; c <= n; c++) M[r][c] -= f * M[i][c]; }
+  }
+  return M.map((r, i) => r[n] / r[i]);
+}
+/** the 3x3 homography (row-major, h33 = 1) that takes four src points to four dst points */
+export function homography(src, dst) {
+  const A = [], b = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = dst[i]; A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v); }
+  return [...solveLinear(A, b), 1];
+}
+export const hApply = (H, p) => { const w = H[6] * p[0] + H[7] * p[1] + H[8]; return [(H[0] * p[0] + H[1] * p[1] + H[2]) / w, (H[3] * p[0] + H[4] * p[1] + H[5]) / w]; };
+/** The width and height (pixels) a page photographed at an angle had. q = top-left, top-right, bottom-right, bottom-left in
+ *  the photo; (u0, v0) = the photo's centre. The proportions come from the two vanishing points with a pinhole camera
+ *  (the method used to scan whiteboards); a photo taken almost straight on falls back to the mean side lengths. */
+export function rectifySize(q, u0, v0) {
+  const top = hyp(sub(q[1], q[0])), bot = hyp(sub(q[2], q[3])), lef = hyp(sub(q[3], q[0])), rig = hyp(sub(q[2], q[1]));
+  const W = Math.max(top, bot), fallback = { W, H: Math.max(lef, rig), aspect: (top + bot) / (lef + rig), how: 'sides' };
+  const h = (p) => [p[0], p[1], 1], X = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]], D = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const m1 = h(q[0]), m2 = h(q[1]), m3 = h(q[3]), m4 = h(q[2]);
+  const k2 = D(X(m1, m4), m3) / D(X(m2, m4), m3), k3 = D(X(m1, m4), m2) / D(X(m3, m4), m2);
+  const n2 = m2.map((v, i) => k2 * v - m1[i]), n3 = m3.map((v, i) => k3 * v - m1[i]);
+  const den = n2[2] * n3[2], scale = Math.hypot(...n2, ...n3) || 1;
+  if (Math.abs(n2[2]) + Math.abs(n3[2]) < 1e-9 * scale) return fallback; // both edge pairs parallel: shot straight on
+  let f2 = Math.abs(den) > 1e-12 * scale * scale ? -((n2[0] * n3[0] - (n2[0] * n3[2] + n2[2] * n3[0]) * u0 + n2[2] * n3[2] * u0 * u0) + (n2[1] * n3[1] - (n2[1] * n3[2] + n2[2] * n3[1]) * v0 + n2[2] * n3[2] * v0 * v0)) / den : NaN;
+  let how = 'camera';
+  // tilted on one axis only, one vanishing point is at infinity and the lens cannot be found: take a phone's usual lens
+  // (about 0.85 of the long side of the picture)
+  if (!(f2 > 0) || !Number.isFinite(f2)) { f2 = (0.85 * 2 * Math.max(u0, v0)) ** 2; how = 'camera-guess'; }
+  const f = Math.sqrt(f2), nn = (n) => ((n[0] - u0 * n[2]) / f) ** 2 + ((n[1] - v0 * n[2]) / f) ** 2 + n[2] ** 2;
+  const aspect = Math.sqrt(nn(n2) / nn(n3));
+  if (!(aspect > 0.1 && aspect < 10)) return fallback;
+  return { W, H: W / aspect, aspect, how, f };
+}
+
 /** The apartment document from a draft. Throws when the walls close no room at all. */
 export function buildPlan(draft, meta = {}) {
   const r = analyzeDraft(draft, meta);

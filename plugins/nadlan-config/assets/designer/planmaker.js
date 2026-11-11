@@ -7,7 +7,7 @@
 //   pm.getDraft(); pm.propose({ segments, cmPerPx }); pm.destroy();
 //
 // It draws inside the host's shadow root (the same one the designer uses) with the designer's own look (designer.css).
-import { analyzeDraft, cleanGraph, roomChoices, OPEN_TYPES, WALL_T, DRAW_KINDS, segDist, pip, planAxis, innerLengths } from './planbuild.js';
+import { analyzeDraft, cleanGraph, roomChoices, OPEN_TYPES, WALL_T, DRAW_KINDS, segDist, pip, planAxis, innerLengths, tileLength, calibrateScale, homography, rectifySize } from './planbuild.js';
 import { strings } from './strings.js';
 import { createStore, emptyDesign } from './core.js';
 
@@ -83,24 +83,11 @@ async function pdfPageCanvas(doc, n) {
   await page.render({ canvasContext: x, viewport: v }).promise;
   return c;
 }
-// a photo of a page taken at an angle: the four corners the person marks become a straight rectangle
-function solve(A, b) {
-  const n = b.length, M = A.map((r, i) => [...r, b[i]]);
-  for (let i = 0; i < n; i++) {
-    let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
-    [M[i], M[p]] = [M[p], M[i]];
-    for (let r = 0; r < n; r++) { if (r === i) continue; const f = M[r][i] / M[i][i]; for (let c = i; c <= n; c++) M[r][c] -= f * M[i][c]; }
-  }
-  return M.map((r, i) => r[n] / r[i]);
-}
-function homography(src, dst) {
-  const A = [], b = [];
-  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = dst[i]; A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v); }
-  return [...solve(A, b), 1];
-}
-const hApply = (H, p) => { const w = H[6] * p[0] + H[7] * p[1] + H[8]; return [(H[0] * p[0] + H[1] * p[1] + H[2]) / w, (H[3] * p[0] + H[4] * p[1] + H[5]) / w]; };
+// a photo of a page taken at an angle: the four corners the person marks become a straight rectangle of the page's own
+// proportions (rectifySize finds them from the perspective; planbuild.js)
 function warp(photo, q) { // q: top-left, top-right, bottom-right, bottom-left, in picture pixels
-  let W = Math.max(dist(q[0], q[1]), dist(q[3], q[2])), H = Math.max(dist(q[0], q[3]), dist(q[1], q[2]));
+  const rs = rectifySize(q, photo.width / 2, photo.height / 2);
+  let W = rs.W, H = rs.H;
   const s = Math.min(1, MAXPX / Math.max(W, H)); W = Math.max(8, Math.round(W * s)); H = Math.max(8, Math.round(H * s));
   const dst = [[0, 0], [W, 0], [W, H], [0, H]], back = homography(dst, q), fwd = homography(q, dst);
   const sw = photo.width, sh = photo.height, sd = photo.getContext('2d').getImageData(0, 0, sw, sh).data;
@@ -118,7 +105,7 @@ function warp(photo, q) { // q: top-left, top-right, bottom-right, bottom-left, 
     od[o + 3] = 255;
   }
   cx.putImageData(out, 0, 0);
-  return { canvas: c, map: (p) => hApply(fwd, p) };
+  return { canvas: c, map: (p) => { const w = fwd[6] * p[0] + fwd[7] * p[1] + fwd[8]; return [(fwd[0] * p[0] + fwd[1] * p[1] + fwd[2]) / w, (fwd[3] * p[0] + fwd[4] * p[1] + fwd[5]) / w]; } };
 }
 
 function newDraft(mode) {
@@ -126,6 +113,24 @@ function newDraft(mode) {
     nodes: {}, segs: [], openings: [], rooms: [], opacity: 0.6, step: mode === 'measure' ? 'walls' : 'scale' };
 }
 const okDraft = (d) => d && d.schema === 'nadlan-myplan-draft' && d.v === 1 && d.nodes && Array.isArray(d.segs);
+/** a draft from outside: either form (corners and walls, or loose segments), in cm (measure) or in picture pixels */
+function fromOutside(d) {
+  if (!d || typeof d !== 'object') return null;
+  let x = clone(d);
+  if (!x.nodes && Array.isArray(x.segments)) {
+    const pts = [], segs = [];
+    for (const s of x.segments) if (s && Array.isArray(s.a) && Array.isArray(s.b)) { pts.push(s.a, s.b); segs.push({ a: pts.length - 2, b: pts.length - 1, kind: DRAW_KINDS.includes(s.kind) ? s.kind : WALL_T[s.kind] != null ? s.kind : 'partition' }); }
+    const gr = cleanGraph(pts, segs, 0.5 / (x.cmPerPx || 1));
+    x.nodes = {}; gr.pts.forEach((p, i) => (x.nodes['n' + i] = [p[0], p[1]]));
+    x.segs = gr.segs.map((s, i) => ({ id: 's' + i, a: 'n' + s.a, b: 'n' + s.b, kind: s.kind }));
+    delete x.segments;
+  }
+  if (!x.nodes || !Array.isArray(x.segs)) return null;
+  x = { ...newDraft(x.mode === 'image' ? 'image' : 'measure'), ...x, schema: 'nadlan-myplan-draft', v: 1 };
+  x.openings = Array.isArray(x.openings) ? x.openings : []; x.rooms = Array.isArray(x.rooms) ? x.rooms : [];
+  if (x.mode === 'measure') { if (!(x.cmPerPx > 0)) x.cmPerPx = 1; if (typeof x.axis !== 'number') x.axis = 0; }
+  return x;
+}
 
 export async function mountPlanMaker(host, opts = {}) {
   const lang = opts.lang || 'he', T = strings(lang), P = T.pm, RTL = T.dir === 'rtl';
@@ -141,6 +146,7 @@ export async function mountPlanMaker(host, opts = {}) {
     '<button class="hb" data-act="close" aria-label="' + esc(P.close) + '" title="' + esc(P.close) + '"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>' +
     '<ol class="pm-steps" data-pm="steps" aria-label="' + esc(P.stepsLabel) + '" hidden></ol>' +
     '<div class="pm-body" data-pm="body"></div>' +
+    '<div class="pm-tiles" data-pm="tiles" role="dialog" aria-label="' + esc(P.tilesHead) + '" hidden></div>' +
     '<div class="toast" data-pm="toast" role="status" hidden></div>' +
     '<input type="file" data-pm="file" accept="image/*,application/pdf,.pdf" hidden>' +
     '<input type="file" data-pm="cam" accept="image/*" capture="environment" hidden>' +
@@ -154,7 +160,7 @@ export async function mountPlanMaker(host, opts = {}) {
   let cv = null, ctx = null, loupe = null, lctx = null, stage = null, ro = null, raf = 0, dpr = 1;
   const V = { z: 1, x: 0, y: 0, fit: 1 };
   let tool = 'line', kind = 'facade', otype = 'door', chain = null, rectA = null, pending = null, scaleTmp = null, straight = null;
-  let selOpen = null, selFace = null, hover = null, g = null, labelBoxes = [], sureReset = 0, pdfDoc = null, chainStart = null, needFit = false;
+  let selOpen = null, selFace = null, hover = null, g = null, labelBoxes = [], sureReset = 0, pdfDoc = null, chainStart = null, needFit = false, tiles = null, cal = null, sureT = 0, clearDims = false, fitted = false;
   const undo = [], redo = [], ptr = new Map();
 
   const toast = (msg) => { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), 3400); };
@@ -254,7 +260,7 @@ export async function mountPlanMaker(host, opts = {}) {
   function fit() {
     if (!stage) return;
     const W = stage.clientWidth, H = stage.clientHeight; if (!W || !H) { needFit = true; return; }
-    needFit = false;
+    needFit = false; fitted = true;
     let b;
     if (photo && draft.mode === 'image') b = [0, 0, photo.width, photo.height];
     else {
@@ -420,15 +426,25 @@ export async function mountPlanMaker(host, opts = {}) {
     const q = ps.map(toS); ctx.strokeStyle = C.blue; ctx.lineWidth = 2.5; ctx.setLineDash(dashed ? [10, 7] : []);
     ctx.beginPath(); q.forEach((p, i) => (i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
   }
+  /** half the thickness of the thickest wall square to direction d that ends at or passes through p (cm) */
+  function endOff(p, d) {
+    let t = 0;
+    for (const s of draft.segs) {
+      const [A, B] = ends(s), r = segDist(p, A, B); if (r.d * k() > 0.5) continue;
+      const L = dist(A, B) || 1, e = [(B[0] - A[0]) / L, (B[1] - A[1]) / L];
+      if (Math.abs(d[0] * e[1] - d[1] * e[0]) > 0.7) t = Math.max(t, WALL_T[s.kind] || 0);
+    }
+    return t / 2;
+  }
   function drawPreview() {
     const cur = g && g.kind === 'pick' ? g.cur : hover;
     if (draft.step === 'walls') {
       if (tool === 'line' && chain) {
         const a = toS(chain); ctx.fillStyle = C.blue; ctx.beginPath(); ctx.arc(a[0], a[1], 5, 0, 7); ctx.fill();
         if (cur) { const b = toS(cur.p); ctx.strokeStyle = C.blue; ctx.lineWidth = 3; ctx.setLineDash([10, 7]); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.setLineDash([]);
-          if (draft.cmPerPx && dist(a, b) > 30) tag(String(cm(dist(chain, cur.p))), (a[0] + b[0]) / 2, (a[1] + b[1]) / 2 - 16, C.dim, null, true); }
+          if (draft.cmPerPx && dist(a, b) > 30) { const L = dist(chain, cur.p), d = [(cur.p[0] - chain[0]) / L, (cur.p[1] - chain[1]) / L]; tag(String(Math.max(0, Math.round(L * k() - endOff(chain, d) - endOff(cur.p, d)))), (a[0] + b[0]) / 2, (a[1] + b[1]) / 2 - 16, C.dim, null, true); } }
       }
-      if (tool === 'rect' && rectA) { const b = cur ? cur.p : rectA; poly(rectCorners(rectA, b), true); if (cur && draft.cmPerPx) { const q = sub(toAxis(b), toAxis(rectA)); const s = toS(b); tag(Math.abs(cm(q[0])) + ' × ' + Math.abs(cm(q[1])), s[0], s[1] - 26, C.dim, null, true); } }
+      if (tool === 'rect' && rectA) { const b = cur ? cur.p : rectA; poly(rectCorners(rectA, b), true); if (cur && draft.cmPerPx) { const q = sub(toAxis(b), toAxis(rectA)); const s = toS(b); const t = WALL_T[kind] || 0; tag(Math.max(0, Math.round(Math.abs(q[0]) * k() - t)) + ' × ' + Math.max(0, Math.round(Math.abs(q[1]) * k() - t)), s[0], s[1] - 26, C.dim, null, true); } }
       if (tool === 'rect' && pending && cur) poly(pendingCorners(cur.p), true);
     }
     if (draft.step === 'scale' && cur && !straight) { const s = toS(cur.p); ctx.strokeStyle = C.dim; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s[0], s[1], 7, 0, 7); ctx.stroke(); }
@@ -498,7 +514,7 @@ export async function mountPlanMaker(host, opts = {}) {
   function moveGesture(s) {
     if (!g) return;
     const p = toD(s);
-    if (g.kind === 'pan') { V.x = g.v0.x + s[0] - g.s[0]; V.y = g.v0.y + s[1] - g.s[1]; paint(); return; }
+    if (g.kind === 'pan') { V.x = g.v0.x + s[0] - g.s[0]; V.y = g.v0.y + s[1] - g.s[1]; fitted = false; paint(); return; }
     if (g.kind === 'pick') {
       if (!g.touch && dist(s, g.s0) > 6) { g = { kind: 'pan', s: g.s0, v0: { ...V } }; moveGesture(s); return; }
       g.s = s; g.cur = pickPoint(p); g.loupe = g.cur.p; paint(); return;
@@ -576,7 +592,7 @@ export async function mountPlanMaker(host, opts = {}) {
       selFace = best >= 0 ? best : null;
       if (selFace != null) { // keep the room in sight above the names sheet
         const s = toS(a.faces[selFace].at), H = stage.clientHeight, top = H * 0.36;
-        if (s[1] > top) V.y -= s[1] - top * 0.7;
+        if (s[1] > top) { V.y -= s[1] - top * 0.7; fitted = false; }
       }
       panel(); paint(); return;
     }
@@ -593,7 +609,7 @@ export async function mountPlanMaker(host, opts = {}) {
   }
   function addTypedRoom(Wcm, Dcm) {
     const t = WALL_T[kind] || 0;
-    pending = { w: (Wcm + t) / k(), d: (Dcm + t) / k() };
+    pending = { w: (Wcm + t) / k(), d: (Dcm + t) / k() }; clearDims = true;
     if (!draft.segs.length) { // the first room goes to the top corner of the sheet; the next ones where the person taps
       placePending(fromAxis(RTL ? [pending.w, 0] : [0, 0])); fit(); paint(); return;
     }
@@ -630,7 +646,8 @@ export async function mountPlanMaker(host, opts = {}) {
 
   // ---------- the screens ----------
   const btn = (act, label, extra = '') => '<button data-act="' + act + '" ' + extra + '>' + esc(label) + '</button>';
-  const field = (id, label, val) => '<label class="pm-field"><span>' + esc(label) + '</span><input data-pm="' + id + '" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" value="' + (val == null ? '' : esc(val)) + '"></label>';
+  const field = (id, label, val, o = {}) => (o.tiles ? '<div class="pm-fieldw">' : '') + '<label class="pm-field"><span>' + esc(label) + '</span><input data-pm="' + id + '" type="text" inputmode="' + (o.decimal ? 'decimal' : 'numeric') + '"' + (o.decimal ? '' : ' pattern="[0-9]*"') + ' autocomplete="off" value="' + (val == null ? '' : esc(val)) + '"></label>' +
+    (o.tiles ? '<button type="button" class="pm-tl" data-act="tiles" data-for="' + id + '">' + esc(P.tilesLink) + '</button></div>' : '');
   function steps() {
     const ol = $('steps'), list = draft && draft.mode === 'measure' ? ['walls', 'open', 'rooms'] : ['scale', 'walls', 'open', 'rooms'], idx = { scale: 0, walls: 1, open: 2, rooms: 3 };
     ol.hidden = !draft || draft.step === 'start';
@@ -651,6 +668,7 @@ export async function mountPlanMaker(host, opts = {}) {
       '<section class="pm-opt"><b class="pm-n mono">1</b><div><h4>' + esc(P.optHave) + '</h4><p>' + esc(P.optHaveSub) + '</p><div class="pm-row">' + btn('pick', P.pickFile, 'class="pm-go"') + (touchy ? btn('camera', P.camera) : '') + '</div></div></section>' +
       '<section class="pm-opt"><b class="pm-n mono">2</b><div><h4>' + esc(P.optNone) + '</h4><p>' + esc(P.optNoneSub) + '</p><div class="pm-row">' + btn('measure', P.byMeasure) + '</div></div></section>' +
       '<section class="pm-opt"><b class="pm-n mono">3</b><div><h4>' + esc(P.optSaved) + '</h4><p>' + esc(P.optSavedSub) + '</p><div class="pm-row">' + btn('loadfile', P.loadFile) + '</div></div></section>' +
+      (Array.isArray(opts.extraWays) ? opts.extraWays : []).map((w, i) => '<section class="pm-opt pm-extra"><b class="pm-n mono">' + (4 + i) + '</b><div><h4>' + esc(w.title || '') + '</h4>' + (w.sub ? '<p>' + esc(w.sub) + '</p>' : '') + '<div class="pm-row">' + btn('extra', w.btn || w.title || '', 'data-v="' + i + '"') + '</div></div></section>').join('') +
       '<p class="pm-privacy">' + esc(P.privacy) + '</p>' +
       (opts.helpUrl ? '<a class="pm-help" href="' + esc(opts.helpUrl) + '" target="_blank" rel="noopener">' + esc(P.help) + '</a>' : '') +
       '</div></div>';
@@ -658,12 +676,12 @@ export async function mountPlanMaker(host, opts = {}) {
   function workArea() {
     if (stage && stage.isConnected) return;
     $('body').innerHTML = '<div class="pm-work"><div class="pm-stage" data-pm="stage"><canvas data-pm="cv" aria-label="' + esc(P.title) + '"></canvas><canvas class="pm-loupe" data-pm="loupe" hidden aria-hidden="true"></canvas>' +
-      '<form class="pm-edit" data-pm="edit" hidden><label><span>' + esc(P.lenEdit) + '</span><input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off"></label><button type="submit">' + esc(P.lenSet) + '</button></form>' +
+      '<form class="pm-edit" data-pm="edit" hidden><label><span>' + esc(P.lenEdit) + '</span><input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off"></label><button type="submit">' + esc(P.lenSet) + '</button><button type="button" class="pm-tl" data-act="tiles" data-for="edit">' + esc(P.tilesLink) + '</button></form>' +
       '<div class="pm-names" data-pm="names" hidden></div></div><div class="pm-panel" data-pm="panel"></div></div>';
     stage = $('stage'); cv = $('cv'); ctx = cv.getContext('2d'); loupe = $('loupe'); lctx = loupe.getContext('2d');
     bindStage();
     if (ro) ro.disconnect();
-    ro = new ResizeObserver(() => { resize(); if (needFit) fit(); paint(); });
+    ro = new ResizeObserver(() => { resize(); if (needFit || fitted) fit(); paint(); });
     ro.observe(stage);
   }
   function panel() {
@@ -677,14 +695,14 @@ export async function mountPlanMaker(host, opts = {}) {
       if (straight) h += '<button class="pm-go" data-act="straight-apply">' + esc(P.straightApply) + '</button>';
       else {
         const v = scaleTmp && scaleTmp.cm ? scaleTmp.cm : draft.scale && !scaleTmp ? draft.scale.cm : '';
-        h += '<div class="pm-row pm-scale">' + field('in-len', P.lenCm, v) + '<div class="pm-door"><small>' + esc(P.doorHint) + '</small><div class="pm-row">' + [70, 80, 90].map((v) => btn('door', String(v), 'data-v="' + v + '" aria-pressed="' + !!(scaleTmp && scaleTmp.door === v) + '"')).join('') + '</div></div></div>';
+        h += '<div class="pm-row pm-scale">' + field('in-len', P.lenCm, v, { tiles: true }) + '<div class="pm-door"><small>' + esc(P.doorHint) + '</small><div class="pm-row">' + [70, 80, 90].map((v) => btn('door', String(v), 'data-v="' + v + '" aria-pressed="' + !!(scaleTmp && scaleTmp.door === v) + '"')).join('') + '</div></div></div>';
         h += '<button class="pm-go" data-act="scale-ok">' + esc(P.scaleOk) + '</button>';
       }
     }
     if (st === 'walls') {
       h += '<div class="pm-seg" role="group" aria-label="' + esc(P.toolsLabel) + '">' + [['line', P.tLine], ['rect', P.tRect], ['move', P.tMove], ['del', P.tDel]].map(([t, l]) => btn('tool', l, 'data-v="' + t + '" aria-pressed="' + (tool === t) + '"')).join('') + '</div>';
       h += '<div class="pm-seg pm-kinds" role="group" aria-label="' + esc(P.kindsLabel) + '">' + DRAW_KINDS.map((kd) => '<button data-act="kind" data-v="' + kd + '" aria-pressed="' + (kind === kd) + '"><i class="pm-sw ' + kd + '"></i><span>' + esc(P.kinds[kd]) + '</span></button>').join('') + '</div>';
-      if (tool === 'rect') h += '<div class="pm-row pm-dims">' + field('in-w', P.rectW, '') + field('in-d', P.rectD, '') + btn('rect-add', P.rectAdd) + '</div>';
+      if (tool === 'rect') h += '<div class="pm-row pm-dims">' + field('in-w', P.rectW, '', { tiles: true }) + field('in-d', P.rectD, '', { tiles: true }) + btn('rect-add', P.rectAdd) + '</div>';
       h += ur + opa;
       h += '<button class="pm-go" data-act="go" data-step="open">' + esc(P.next) + '</button>';
     }
@@ -706,12 +724,32 @@ export async function mountPlanMaker(host, opts = {}) {
       const probs = a.problems;
       if (probs.length) h += '<ul class="pm-probs" data-pm="probs">' + probs.map((x) => { const f = P.problems[x.code]; return '<li>' + esc(typeof f === 'function' ? f(x.n || 1) : f || x.code) + '</li>'; }).join('') + '</ul>';
       if (draft.scale && draft.scale.door) h += '<p class="pm-msg" data-pm="bydoor">' + esc(P.byDoor) + '</p>';
+      if (draft.mode === 'image' && a.plan) {
+        h += '<div class="pm-row pm-cal">' + field('in-sqm', P.contractSqm, cal && cal.val, { decimal: true }) + btn('calib', P.calibrate) + '</div><p class="pm-fine">' + esc(P.contractNote) + '</p>';
+        if (cal && cal.msg) h += '<div class="pm-row pm-calmsg"><p class="pm-msg" data-pm="calmsg">' + esc(cal.msg) + '</p>' + (cal.applied ? btn('calib-undo', P.calibUndo) : '') + '</div>';
+      }
       h += (draft.mode === 'image' ? '<p class="pm-fine">' + esc(P.areaOff) + '</p>' : '') + '<p class="pm-fine" data-pm="note">' + esc(P.note) + '</p>';
       h += opa + '<button class="pm-go" data-act="done"' + (a.plan ? '' : ' disabled') + '>' + esc(P.open3d) + '</button>';
     }
     h += '<button class="pm-reset" data-act="reset">' + esc(sureReset > Date.now() ? P.startOverSure : P.startOver) + '</button>';
+    const keep = {}; el.querySelectorAll('input[data-pm]').forEach((i) => { if (i.type !== 'range' && !(clearDims && (i.dataset.pm === 'in-w' || i.dataset.pm === 'in-d'))) keep[i.dataset.pm] = i.value; });
+    clearDims = false;
     el.innerHTML = h;
+    el.querySelectorAll('input[data-pm]').forEach((i) => { if (i.type !== 'range' && keep[i.dataset.pm] && !i.value) i.value = keep[i.dataset.pm]; });
     names();
+  }
+  function tilesPanel() { // counting floor tiles along a wall, for a person with no tape measure
+    const el = $('tiles'); if (!el) return;
+    if (!tiles) { el.hidden = true; return; }
+    const size = tiles.size === 'other' ? +tiles.other || 0 : tiles.size, n = tileLength(tiles.count, size);
+    el.hidden = false;
+    el.innerHTML = '<div class="pm-names-h"><h3>' + esc(P.tilesHead) + '</h3>' + btn('tiles-x', '', 'class="hb" aria-label="' + esc(P.close) + '"') + '</div>' +
+      '<p class="pm-tl-l">' + esc(P.tileSize) + '</p><div class="pm-seg pm-sizes">' + [33, 45, 60, 80, 100, 120].map((v) => btn('tsize', String(v), 'data-v="' + v + '" aria-pressed="' + (tiles.size === v) + '"')).join('') + btn('tsize', P.tileOther, 'data-v="other" aria-pressed="' + (tiles.size === 'other') + '"') + '</div>' +
+      (tiles.size === 'other' ? '<div class="pm-row">' + field('t-other', P.tileSize, tiles.other) + '</div>' : '') +
+      '<p class="pm-tl-l">' + esc(P.tileCount) + '</p><div class="pm-count">' + btn('tminus', '\u2212', 'aria-label="' + esc(P.tileLess) + '"' + (tiles.count <= 0.5 ? ' disabled' : '')) + '<b class="mono" data-pm="tcount">' + tiles.count + '</b>' + btn('tplus', '+', 'aria-label="' + esc(P.tileMore) + '"') + '</div>' +
+      '<p class="pm-fine">' + esc(P.tileNote) + '</p><p class="pm-tres" data-pm="tres">' + (n ? esc(P.tileAbout(n)) : '') + '</p>' +
+      '<button class="pm-go" data-act="tuse"' + (n ? '' : ' disabled') + '>' + esc(P.tileUse) + '</button>';
+    el.querySelector('[data-act="tiles-x"]').innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   }
   function names() {
     const box = $('names'); if (!box) return;
@@ -730,7 +768,7 @@ export async function mountPlanMaker(host, opts = {}) {
   function go(st) {
     if (!draft) return;
     if (st !== 'scale' && draft.mode === 'image' && !draft.cmPerPx) { toast(P.scaleFirst); st = 'scale'; }
-    chain = null; rectA = null; pending = null; straight = null; selFace = null; selOpen = null; hover = null; $('edit') && ($('edit').hidden = true);
+    chain = null; rectA = null; pending = null; straight = null; selFace = null; selOpen = null; hover = null; tiles = null; cal = null; tilesPanel(); $('edit') && ($('edit').hidden = true);
     if (st === 'scale') scaleTmp = draft.scale ? { ...draft.scale } : null;
     draft.step = st; save(); screen(); fit(); paint(); // the whole drawing in sight on every step
   }
@@ -853,14 +891,37 @@ export async function mountPlanMaker(host, opts = {}) {
       if (opts.onDone) opts.onDone(r.plan, clone(draft));
       return;
     }
+    if (a === 'extra') { const w = (opts.extraWays || [])[+v]; if (w && typeof w.run === 'function') w.run(); return; }
+    if (a === 'tiles') { const fr = b.dataset.for, i = fr === 'edit' ? $('edit').querySelector('input') : $(fr); tiles = { for: fr, size: (tiles && tiles.size) || 60, other: (tiles && tiles.other) || '', count: (tiles && tiles.for === fr && tiles.count) || 5, prev: i ? i.value : '' }; tilesPanel(); return; }
+    if (a === 'tiles-x') { tiles = null; tilesPanel(); return; }
+    if (a === 'tsize') { tiles.size = v === 'other' ? 'other' : +v; tilesPanel(); if (v === 'other') { const i = $('t-other'); if (i) i.focus(); } return; }
+    if (a === 'tminus') { tiles.count = Math.max(0.5, tiles.count - 0.5); tilesPanel(); return; }
+    if (a === 'tplus') { tiles.count += 0.5; tilesPanel(); return; }
+    if (a === 'tuse') {
+      const size = tiles.size === 'other' ? +tiles.other || 0 : tiles.size, n = tileLength(tiles.count, size), fr = tiles.for;
+      const i = fr === 'edit' ? $('edit').querySelector('input') : $(fr);
+      tiles = null; tilesPanel();
+      if (i && n) { i.value = String(n); i.dispatchEvent(new Event('input', { bubbles: true, composed: true })); }
+      return;
+    }
+    if (a === 'calib') {
+      const val = String(($('in-sqm') || {}).value || '').replace(',', '.'), sqm = +val;
+      const r = calibrateScale(draft, sqm);
+      if (!r.ok) { cal = { val, msg: r.code === 'too.big' ? P.calibTooBig : P.contractSqm, applied: false }; panel(); return; }
+      commit(() => { draft.cmPerPx = r.k; if (draft.scale) { draft.scale.cm = Math.round(dist(draft.scale.a, draft.scale.b) * r.k); draft.scale.door = false; draft.scale.byArea = true; } });
+      cal = { val, msg: P.calibDone('\u2066' + (r.pct > 0 ? '+' : '') + r.pct.toFixed(1) + '%\u2069') /* the signed number kept left to right inside the sentence */, applied: true }; panel(); paint(); return;
+    }
+    if (a === 'calib-undo') { doUndo(); cal = { val: cal && cal.val, msg: null, applied: false }; panel(); paint(); return; }
     if (a === 'reset') {
-      if (sureReset < Date.now()) { sureReset = Date.now() + 4000; panel(); setTimeout(() => alive && draft && panel(), 4100); return; }
-      sureReset = 0; draft = null; photo = null; dropImage(); const o = readStore() || {}; delete o.draft; writeStore(o); undo.length = redo.length = 0; screen(); return;
+      if (sureReset < Date.now()) { sureReset = Date.now() + 4000; panel(); clearTimeout(sureT); sureT = setTimeout(() => alive && draft && panel(), 4100); return; }
+      sureReset = 0; clearTimeout(sureT); draft = null; photo = null; dropImage(); const o = readStore() || {}; delete o.draft; writeStore(o); undo.length = redo.length = 0; screen(); return;
     }
   });
   root.addEventListener('input', (e) => {
     const t = e.target;
     if (t.dataset.pm === 'opa') { draft.opacity = +t.value / 100; save(); paint(); }
+    if (t.dataset.pm === 't-other' && tiles) { tiles.other = t.value; const size = +t.value || 0, n = tileLength(tiles.count, size), r = $('tres'), u = root.querySelector('[data-act="tuse"]'); if (r) r.textContent = n ? P.tileAbout(n) : ''; if (u) u.disabled = !n; }
+    if (t.dataset.pm === 'in-sqm') { cal = { val: t.value, msg: null, applied: false }; }
     if (t.dataset.pm === 'in-len') { if (scaleTmp) { scaleTmp.cm = +t.value || null; scaleTmp.door = null; } paint(); }
   });
   root.addEventListener('change', (e) => {
@@ -902,7 +963,7 @@ export async function mountPlanMaker(host, opts = {}) {
         if (ptr.size < 2) return;
         const [a, b] = [...ptr.values()], m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], z = Math.max(V.fit * 0.25, Math.min(V.fit * 16, g.v0.z * (dist(a, b) / (g.d0 || 1))));
         const p0 = [(g.m0[0] - g.v0.x) / g.v0.z, (g.m0[1] - g.v0.y) / g.v0.z];
-        V.z = z; V.x = m[0] - p0[0] * z; V.y = m[1] - p0[1] * z; paint(); return;
+        V.z = z; V.x = m[0] - p0[0] * z; V.y = m[1] - p0[1] * z; fitted = false; paint(); return;
       }
       if (g) { moveGesture(s); return; }
       if (e.pointerType === 'mouse' && draft && draft.step !== 'start') { hover = pickPoint(toD(s)); paint(); }
@@ -918,7 +979,7 @@ export async function mountPlanMaker(host, opts = {}) {
     cv.addEventListener('wheel', (e) => {
       e.preventDefault();
       const s = local(e), z = Math.max(V.fit * 0.25, Math.min(V.fit * 16, V.z * Math.exp(-e.deltaY * 0.0015))), p = toD(s);
-      V.z = z; V.x = s[0] - p[0] * z; V.y = s[1] - p[1] * z; paint();
+      V.z = z; V.x = s[0] - p[0] * z; V.y = s[1] - p[1] * z; fitted = false; paint();
     }, { passive: false });
     cv.addEventListener('contextmenu', (e) => e.preventDefault());
     // a tap that opens the names sheet must not also "click" the button that appears under the finger
@@ -931,7 +992,13 @@ export async function mountPlanMaker(host, opts = {}) {
 
   // ---------- start ----------
   const stored = readStore();
-  if (opts.draft && okDraft(opts.draft)) { draft = clone(opts.draft); if (!draft.step || draft.step === 'start') draft.step = 'rooms'; await resumeImage(); }
+  const handed = fromOutside(opts.draft);
+  if (handed) { // the walls step while a wall is still open or nothing is closed; the rooms step when the drawing is whole
+    draft = handed; await resumeImage();
+    const wallIssues = analyzeDraft(draft).problems.some((x) => ['no.walls', 'open.end', 'no.room', 'apart'].includes(x.code));
+    draft.step = draft.mode === 'image' && !draft.cmPerPx ? 'scale' : wallIssues ? 'walls' : 'rooms';
+    if (draft.step === 'walls' && draft.mode === 'measure') { tool = 'line'; kind = 'partition'; }
+  }
   else if (stored && okDraft(stored.draft) && stored.draft.step && stored.draft.step !== 'start' && (stored.draft.segs.length || stored.draft.mode === 'image')) {
     draft = stored.draft; await resumeImage();
     if (draft.mode === 'image' && !photo && !draft.segs.length) draft = null; // the picture is gone and nothing was drawn

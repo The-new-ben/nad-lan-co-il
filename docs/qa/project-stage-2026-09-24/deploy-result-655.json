@@ -1,0 +1,35 @@
+{
+  "released": "1.72.655",
+  "from": "1.72.654",
+  "live_before": {
+    "assets/tours/designer-tour.html": "651069b28a86500f3a88b51e8460db87",
+    "assets/designer/strings.js": "18a98c629ba57121c841cef8f74cd9cc",
+    "assets/designer/studio.js": "3903469157833deaa911e4243a0d8bea",
+    "assets/designer/planmaker.js": "d5721a3d9607f19a4b9e46e44d6ab937",
+    "assets/designer/planbuild.js": "692ec1ec3a881123162b540c579ab0de",
+    "assets/designer/planmaker.css": "b65453c554aaf4074f71f29ec763bc2e",
+    "nadlan-config.php": "151aa807a8123d74f2133fc64be789d9",
+    "inc/designer.php": "9bce3e2766c46f960412ecdcde15cffd"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 21:31:44",
+  "files": {
+    "assets/tours/designer-tour.html": "5a1f9301de9ae58c5fb553ccddd191b9",
+    "assets/designer/strings.js": "5d4344582b489027f3d216d394931c8f",
+    "assets/designer/studio.js": "887ada0e6188b9a4936d91728787ad98",
+    "assets/designer/planmaker.js": "af0b42e2393dcfa332fc22f7424226f7",
+    "assets/designer/planbuild.js": "417ff774af45e5f254938c61e798b447",
+    "assets/designer/planmaker.css": "00edaba5c4130f2fd5a1f13dea9b59a0",
+    "assets/designer/roomphoto.js": "63b070801f0cf99d493eea6a3f5ce1f4",
+    "assets/designer/photowarp.js": "04e3685074e6dac2f4e78135af3b175d",
+    "assets/designer/roomphoto.css": "aa3871cd67085f90e0a00ecd143d4f88",
+    "assets/designer/roomscan.js": "9cd0e0318f78f12fd8bb07d1753654c0",
+    "assets/designer/roomgeom.js": "443059f34120abb5ac720655bfc8cbe1",
+    "assets/designer/roomscan.css": "71d7d2b9727db8de25038245de8a820d",
+    "nadlan-config.php": "bbc2d5487e3bb87d249a887411ee14a7",
+    "inc/designer.php": "8ae61ff3925589d161d8eaa12a2e7812"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.655, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

@@ -79,6 +79,8 @@ def check(key, meta, link):
     if key == "hub":
         c["the designer host"] = 'class="nadlan-designer"' in body and 'type="importmap"' in live and "assets/designer/designer.js" in body
         c["the plan chooser"] = body.count("plans/example-") >= 3
+        if "[nadlan_room_photo]" in io.open(os.path.join(H, key, "body.html"), encoding="utf-8").read():
+            c["the room photo tool"] = 'class="nadlan-room-photo"' in body and "roomphoto.js?v=" in body and "mountRoomPhoto" in body
     if key == "designers":
         c["the list"] = body.count('class="nlds-rec"') >= 50 and '"@type":"ItemList"' in body
     for k, v in c.items():

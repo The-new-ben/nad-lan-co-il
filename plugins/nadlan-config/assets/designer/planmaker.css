@@ -83,6 +83,20 @@
 .pm-grid button[aria-pressed=true]{background:var(--blue2);color:var(--ink);border-color:var(--blue)}
 .pm-grid .pm-out{border-style:dashed}
 .pm-pages{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
+/* counting tiles: a link under a cm field, and a small panel */
+.pm-fieldw{flex:1 1 90px;min-width:0;display:flex;flex-direction:column}
+.pm-fieldw .pm-field{flex:none}
+.pm .pm-tl{border:0;background:none;min-height:44px;padding:0 2px;color:var(--blue);font-size:12.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:start;align-self:flex-start}
+.pm-edit{flex-wrap:wrap}.pm-edit .pm-tl{flex-basis:100%}
+.pm-tiles{position:absolute;inset-inline:0;bottom:0;z-index:8;max-height:92%;overflow:auto;background:var(--card);border-top:2px solid var(--ink);padding:8px 12px calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.pm-tl-l{font-size:13px;font-weight:600}
+.pm-sizes button{font-family:"IBM Plex Mono",monospace;font-size:14px}
+.pm-count{display:flex;align-items:center;gap:12px}
+.pm-count button{width:64px;font-size:24px!important;line-height:1}
+.pm-count b{min-width:80px;text-align:center;font-size:26px}
+.pm-tres{font:700 22px "IBM Plex Mono",monospace;color:var(--dim);min-height:30px}
+.pm-cal{align-items:flex-end}.pm-cal>button{flex:0 1 auto}
+.pm-calmsg{align-items:center}.pm-calmsg p{flex:1 1 160px}
 @media (max-width:899px){.pm-panel.pm-under{display:none}}
 @media (min-width:900px){
   .pm-work{flex-direction:row}
@@ -91,5 +105,6 @@
   .pm-steps button{font-size:13.5px;padding:2px 12px}
   .pm-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .pm-names{inset-inline:auto 12px;bottom:12px;width:440px;border:2px solid var(--ink)}
+  .pm-tiles{inset-inline:auto 16px;bottom:16px;width:440px;border:2px solid var(--ink)}
   .pm-h{font-size:28px}
 }

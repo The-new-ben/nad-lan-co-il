@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>roomscan harness</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+  html,body{margin:0;height:100%;background:#1d252c}
+  #host{position:fixed;inset:0}
+  /* hostile site CSS, like the theme on the real pages */
+  button{border-radius:14px!important;background:#e33!important;letter-spacing:2px;text-transform:uppercase}
+  h2{color:#e33!important;font-size:40px!important}
+  p{font-family:serif;font-size:22px}
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script type="module">
+  import { installXrMock } from './roomscan-xrmock.js';
+  const q = new URLSearchParams(location.search);
+  window.__mock = installXrMock({ mode: q.get('mode') || 'ok' });
+  const { mountRoomScan, scanSupported } = await import('../../../plugins/nadlan-config/assets/designer/roomscan.js');
+  window.__supported = await scanSupported();
+  window.__scan = await mountRoomScan(document.getElementById('host'), {
+    lang: q.get('lang') || 'he', version: String(Date.now()),
+    onDone(r) { window.__result = r; }, onCancel() { window.__cancel = true; },
+  });
+  window.__ready = true;
+</script>
+</body>
+</html>

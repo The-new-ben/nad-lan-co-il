@@ -155,8 +155,8 @@ def build(PREV, NEWV, STAMP):
     # the July demonstration's own check row names words that leave with it; the new page's words take its place
     old = re.search(r"^    \('/tour/designer/\?t366=1', \[.*$", src, re.M)
     assert old and "PAY_DEMO" in old.group(0), "the old designer row is not where it was"
-    src = src.replace(old.group(0), "    ('/tour/designer/?t366=1', ['mountStudio', 'id=\"pick\"', 'שליחת העיצוב לנציג בוואטסאפ', '<meta name=\"robots\" content=\"noindex\">', 'designer.js?v=" + V + "'], ['PAY_DEMO', 'Fatal error']),  # " + V + ": the new designer replaced the July demonstration")
-    ROWS = ("    ('/tour/designer/?" + T + "=1', ['studio.js?v=" + V + "', 'planmaker.js?v=" + V + "', 'core.js?v=" + V + "', 'https://wa.me/972525101555'], ['Fatal error']),\n"
+    src = src.replace(old.group(0), "    ('/tour/designer/?t366=1', ['mountStudio', 'id=\"pick\"', 'שליחת העיצוב לנציג בוואטסאפ', '<meta name=\"robots\" content=\"noindex\">', 'designer.js?v='], ['PAY_DEMO', 'Fatal error']),  # " + V + ": the new designer replaced the July demonstration")
+    ROWS = ("    ('/tour/designer/?" + T + "=1', ['studio.js?v=', 'planmaker.js?v=', 'core.js?v=', 'https://wa.me/972525101555'], ['Fatal error']),\n"
             "    ('/tour/designer/?project=ashira-sde-dov&" + T + "=1', ['mountStudio', 'plans/index.json'], ['Fatal error']),\n"
             "    ('" + A + D + "studio.js?" + T + "=1', ['export async function mountStudio('], [], []),\n"
             "    ('" + A + D + "planmaker.js?" + T + "=1', ['export async function mountPlanMaker(', 'export function loadMyPlan('], [], []),\n"

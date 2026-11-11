@@ -18,6 +18,8 @@ fs.mkdirSync(shots, { recursive: true });
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe', PORT = 9300 + Math.floor(Math.random() * 500), profile = path.join(os.tmpdir(), 'nd-pm-' + PORT);
 const chrome = spawn(CHROME, ['--headless=new', '--remote-debugging-port=' + PORT, '--user-data-dir=' + profile, '--no-first-run', '--disable-extensions', '--ignore-gpu-blocklist', '--enable-gpu', '--use-angle=d3d11', '--lang=he-IL'], { stdio: 'ignore' });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// whatever happens (a thrown check, a crash), Chrome is closed and its temporary profile removed: the disk is nearly full
+process.on('exit', () => { try { chrome.kill(); } catch {} try { fs.rmSync(profile, { recursive: true, force: true }); } catch {} });
 for (let i = 0; i < 80; i++) { try { if ((await fetch('http://127.0.0.1:' + PORT + '/json/version')).ok) break; } catch {} await sleep(250); }
 const receipt = { when: new Date().toISOString(), checks: [] }; let fails = 0;
 const check = (name, ok, detail) => { receipt.checks.push({ name, ok: !!ok, detail }); if (!ok) fails++; console.log((ok ? 'ok   ' : 'FAIL ') + name + (detail !== undefined ? '  ' + (typeof detail === 'string' ? detail : JSON.stringify(detail)) : '')); };
@@ -41,6 +43,15 @@ pg.insert_text(fitz.Point(ox + 400*s, oy - 18), "900", fontsize=14)
 doc.save(sys.argv[1])
 `, pdfPath]);
 
+const DRAW_PLAN = `(()=>{const c=document.createElement('canvas');c.width=${Math.round(900 * PXCM + 2 * M)};c.height=${Math.round(600 * PXCM + 2 * M)};const x=c.getContext('2d');x.fillStyle='#fbfbf8';x.fillRect(0,0,c.width,c.height);
+    const P=(a,b)=>[${M}+a*${PXCM},${M}+b*${PXCM}];x.strokeStyle='#111';x.lineCap='square';
+    const L=(a,b,c2,d,w)=>{x.lineWidth=w*${PXCM};x.beginPath();x.moveTo(...P(a,b));x.lineTo(...P(c2,d));x.stroke();};
+    L(0,0,900,0,25);L(900,0,900,600,25);L(900,600,0,600,25);L(0,600,0,0,25);L(500,0,500,600,10);L(500,300,900,300,10);
+    x.fillStyle='#111';x.font='22px Arial';x.fillText('900',P(430,-60)[0],P(0,-60)[1]);x.fillText('600',P(-90,300)[0],P(0,300)[1]);return c;})()`;
+// the photo at an angle: the plan sheet seen by a pinhole camera (f 1400, centre of a 1600 x 1200 photo), tilted 25 and 10 degrees
+const PAGE = [Math.round(900 * PXCM + 2 * M), Math.round(600 * PXCM + 2 * M)];
+const SHOT = (() => { const a = (25 * Math.PI) / 180, b = (10 * Math.PI) / 180, f = 1400, D = 2200;
+  return [[0, 0], [PAGE[0], 0], [PAGE[0], PAGE[1]], [0, PAGE[1]]].map(([x0, y0]) => { const x = x0 - PAGE[0] / 2, y = y0 - PAGE[1] / 2, Y = y * Math.cos(a), Z = y * Math.sin(a), X2 = x * Math.cos(b) + Z * Math.sin(b), Z2 = -x * Math.sin(b) + Z * Math.cos(b); return [800 + (f * X2) / (Z2 + D), 600 + (f * Y) / (Z2 + D)]; }); })();
 async function page(w, h, dpr, mobile) {
   const t = await (await fetch('http://127.0.0.1:' + PORT + '/json/new?about:blank', { method: 'PUT' })).json();
   const ws = new WebSocket(t.webSocketDebuggerUrl); let id = 0; const pend = new Map(), errors = [];
@@ -51,7 +62,7 @@ async function page(w, h, dpr, mobile) {
   await send('Page.enable'); await send('Runtime.enable'); await send('Log.enable'); await send('DOM.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: dpr, mobile });
   if (mobile) await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 });
-  const go = async (q = '') => { await send('Page.navigate', { url: URL0 + '?t=' + Date.now() + q }); await sleep(300); for (let i = 0; i < 160; i++) { if (await ev('!!window.__ready').catch(() => false)) break; await sleep(200); } await sleep(500); await ev(`window.__see=(e)=>{const sc=e.closest('.pm-panel,.pm-names,.pm-start,.sheet');if(!sc)return;const r=e.getBoundingClientRect(),s=sc.getBoundingClientRect();if(r.bottom>s.bottom)sc.scrollTop+=r.bottom-s.bottom+4;if(r.top<s.top)sc.scrollTop-=s.top-r.top+4;}`); };
+  const go = async (q = '') => { await send('Page.navigate', { url: URL0 + '?t=' + Date.now() + q }); await sleep(300); for (let i = 0; i < 160; i++) { if (await ev('!!window.__ready').catch(() => false)) break; await sleep(200); } await sleep(500); await ev(`window.__see=(e)=>{const sc=e.closest('.pm-panel,.pm-names,.pm-start,.pm-tiles,.sheet');if(!sc)return;const r=e.getBoundingClientRect(),s=sc.getBoundingClientRect();if(r.bottom>s.bottom)sc.scrollTop+=r.bottom-s.bottom+4;if(r.top<s.top)sc.scrollTop-=s.top-r.top+4;}`); };
   const touch = (type, x, y) => send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y, id: 1 }] });
   const mouse = (type, x, y) => send('Input.dispatchMouseEvent', { type, x, y, button: 'left', buttons: type === 'mouseReleased' ? 0 : 1, clickCount: 1 });
   return {
@@ -80,7 +91,7 @@ async function flow(p, tag, mobile) {
     const clip=[...r.querySelectorAll('button,h2,h3,h4,p,span,small,b,label')].filter(e=>{const q=e.getBoundingClientRect();return q.width>0&&!e.closest('[hidden]')&&e.scrollWidth>e.clientWidth+1&&getComputedStyle(e).overflow!=='visible'}).map(e=>e.textContent.trim().slice(0,30));
     return {small,out,clip,scroll:document.documentElement.scrollWidth<=innerWidth}})()`).then((l) => { check(tag + ' ' + label + ': nothing cut or off the screen, every control 44 px or more', l.scroll && !l.out.length && !l.clip.length && !l.small.length, l); return l; });
 
-  const helper = `window.__see=(e)=>{const sc=e.closest('.pm-panel,.pm-names,.pm-start,.sheet');if(!sc)return;const r=e.getBoundingClientRect(),s=sc.getBoundingClientRect();if(r.bottom>s.bottom)sc.scrollTop+=r.bottom-s.bottom+4;if(r.top<s.top)sc.scrollTop-=s.top-r.top+4;}`;
+  const helper = `window.__see=(e)=>{const sc=e.closest('.pm-panel,.pm-names,.pm-start,.pm-tiles,.sheet');if(!sc)return;const r=e.getBoundingClientRect(),s=sc.getBoundingClientRect();if(r.bottom>s.bottom)sc.scrollTop+=r.bottom-s.bottom+4;if(r.top<s.top)sc.scrollTop-=s.top-r.top+4;}`;
   // ---- a clean device ----
   await p.go(); await p.ev(helper);
   await p.ev('localStorage.clear(); new Promise(r=>{const q=indexedDB.deleteDatabase("nd-myplan");q.onsuccess=q.onerror=q.onblocked=()=>r(1)})');
@@ -93,11 +104,7 @@ async function flow(p, tag, mobile) {
   await p.shot(tag + '-01-start');
 
   // ---- 1. load the picture as a file ----
-  await p.ev(`(async()=>{const c=document.createElement('canvas');c.width=${Math.round(900 * PXCM + 2 * M)};c.height=${Math.round(600 * PXCM + 2 * M)};const x=c.getContext('2d');x.fillStyle='#fbfbf8';x.fillRect(0,0,c.width,c.height);
-    const P=(a,b)=>[${M}+a*${PXCM},${M}+b*${PXCM}];x.strokeStyle='#111';x.lineCap='square';
-    const L=(a,b,c2,d,w)=>{x.lineWidth=w*${PXCM};x.beginPath();x.moveTo(...P(a,b));x.lineTo(...P(c2,d));x.stroke();};
-    L(0,0,900,0,25);L(900,0,900,600,25);L(900,600,0,600,25);L(0,600,0,0,25);L(500,0,500,600,10);L(500,300,900,300,10);
-    x.fillStyle='#111';x.font='22px Arial';x.fillText('900',P(430,-60)[0],P(0,-60)[1]);x.fillText('600',P(-90,300)[0],P(0,300)[1]);
+  await p.ev(`(async()=>{const c=${DRAW_PLAN};
     const b=await new Promise(r=>c.toBlob(r,'image/png'));const f=new File([b],'plan.png',{type:'image/png'});const dt=new DataTransfer();dt.items.add(f);
     const i=${R}.querySelector('[data-pm="file"]');i.files=dt.files;i.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   for (let i = 0; i < 40 && (await p.ev(`${PM}.step`)) !== 'scale'; i++) await sleep(150);
@@ -178,6 +185,21 @@ async function flow(p, tag, mobile) {
   await layout('rooms');
   await p.shot(tag + '-10-rooms');
 
+  // ---- the contract area sets the scale (picture route): +4.65% area -> about +2.3% scale, then undone; 90 m2 refused ----
+  const k0 = await p.ev(`${PM}.getDraft().cmPerPx`);
+  check(tag + ' the contract area field and its sentence are on the rooms step', await p.ev(`!!${R}.querySelector('[data-pm="in-sqm"]') && ${R}.textContent.includes('בחוזה השטח נמדד עד הצד החיצוני של קירות החוץ.')`));
+  const ca0 = 925 * 625 / 1e4; // the outer outline of the synthetic plan
+  await type('[data-pm="in-sqm"]', String((ca0 * 1.0465).toFixed(2))); await pressText('לכוון לפי השטח'); await sleep(250);
+  const cal1 = await p.ev(`({k:${PM}.getDraft().cmPerPx,msg:((${R}.querySelector('[data-pm="calmsg"]')||{}).textContent||'').replace(/[\u2066\u2069]/g,'')})`);
+  check(tag + ' "לכוון לפי השטח": the scale grows by about 2.3% and says so', Math.abs(cal1.k / k0 - 1.025) < 0.004 && /^קנה המידה תוקן ב־\+2\.[3-7]%$/.test(cal1.msg), { k0, ...cal1 });
+  await layout('contract area');
+  await p.shot(tag + '-10b-contract-area');
+  await pressText('ביטול התיקון'); await sleep(200);
+  const k1 = await p.ev(`${PM}.getDraft().cmPerPx`);
+  await type('[data-pm="in-sqm"]', '90'); await pressText('לכוון לפי השטח'); await sleep(250);
+  const cal2 = await p.ev(`({k:${PM}.getDraft().cmPerPx,msg:(${R}.querySelector('[data-pm="calmsg"]')||{}).textContent})`);
+  check(tag + ' the correction can be undone; a difference over 15% changes nothing and says why', k1 === k0 && cal2.k === k0 && cal2.msg === 'ההפרש גדול מדי. בדקו את קנה המידה או את הקירות.', { k1, cal2 });
+
   // ---- save as a file (before opening, the draft is the same) ----
   await press('[data-act="save"]'); await sleep(200);
   const file = await p.ev(`(async()=>{const b=window.__blobs[window.__blobs.length-1];return b?await b.text():null})()`);
@@ -194,8 +216,8 @@ async function flow(p, tag, mobile) {
   check(tag + ' the designer\'s area within 2% of the truth', Math.abs(d3.net - TRUTH) / TRUTH <= 0.02, { net: d3.net, truth: +TRUTH.toFixed(2) });
   check(tag + ' 3D is drawn and the header has "עריכת התוכנית"', d3.canvas && d3.edit === 'עריכת התוכנית', d3);
   await p.shot(tag + '-11-designer');
-  const own = await p.ev(`(async()=>{const d=window.__d,w=d.store.derived.walls.find(w=>w.kind==='partition');const r=d.store.apply({op:'partition.remove',id:w.id});await new Promise(r=>setTimeout(r,50));const t1=${R}.querySelector('[data-nd="toast"]').textContent;d.store.undo();const r2=d.store.apply({op:'partition.remove',id:w.id});await new Promise(r=>setTimeout(r,50));const t2=${R}.querySelector('[data-nd="toast"]').textContent;d.store.undo();return {ok:r.ok,t1,t2,ok2:r2.ok}})()`);
-  check(tag + ' an own plan: the first wall change says once that load-bearing walls are unknown', own.ok && own.t1 === 'בתוכנית שטענתם לבד אין מידע על קירות נושאים. לפני שינוי קיר מתייעצים עם מהנדס.', own);
+  const own = await p.ev(`(async()=>{const d=window.__d,w=d.store.derived.walls.find(w=>w.kind==='partition');const r=d.store.apply({op:'partition.remove',id:w.id});await new Promise(r=>setTimeout(r,50));const t1=${R}.querySelector('[data-nd="toast"]').textContent;d.store.undo();${R}.querySelector('[data-nd="toast"]').textContent='';const r2=d.store.apply({op:'partition.remove',id:w.id});await new Promise(r=>setTimeout(r,50));const t2=${R}.querySelector('[data-nd="toast"]').textContent;d.store.undo();return {ok:r.ok,t1,t2,ok2:r2.ok}})()`);
+  check(tag + ' an own plan: the first wall change says that load-bearing walls are unknown, the second change does not say it again', own.ok && own.ok2 && own.t1 === 'בתוכנית שטענתם לבד אין מידע על קירות נושאים. לפני שינוי קיר מתייעצים עם מהנדס.' && own.t2 === '', own);
   await press('[data-nd="editplan"]'); await sleep(600);
   const back = await p.ev(`({step:${PM}&&${PM}.step,segs:${PM}&&${PM}.getDraft().segs.length})`);
   check(tag + ' "עריכת התוכנית" goes back to the drawing, on the rooms step', back.step === 'rooms' && back.segs === 10, back);
@@ -218,6 +240,14 @@ async function flow(p, tag, mobile) {
   await pressText('להתחיל לפי מידות'); await sleep(300);
   const m0 = await p.ev(`({step:${PM}.step,steps:[...${R}.querySelectorAll('.pm-steps button span')].map(e=>e.textContent),hint:${R}.querySelector('header p').textContent,rect:${R}.querySelector('[data-act="tool"][data-v="rect"]').getAttribute('aria-pressed')})`);
   check(tag + ' "from sizes": no scale step, the rectangle tool is ready', m0.step === 'walls' && m0.steps.join('|') === 'קירות|דלתות וחלונות|חדרים' && m0.rect === 'true', m0);
+  await press('[data-act="tiles"][data-for="in-w"]'); await sleep(150);
+  await press('[data-act="tsize"][data-v="60"]'); for (let i = 0; i < 3; i++) { await press('[data-act="tplus"]'); }
+  const tl = await p.ev(`({n:${R}.querySelector('[data-pm="tcount"]').textContent,res:${R}.querySelector('[data-pm="tres"]').textContent,note:${R}.querySelector('.pm-tiles').textContent.includes('חצי אריח נספר כחצי. המידה כוללת את הפוגות.'),sizes:[...${R}.querySelectorAll('[data-act="tsize"]')].map(b=>b.textContent)})`);
+  check(tag + ' "אין מטר? ספרו אריחים": tile 60, 6.5 tiles reads about 392 cm, with the joints sentence', tl.n === '6.5' && tl.res === 'בערך 392 ס״מ' && tl.note && tl.sizes.join(',') === '33,45,60,80,100,120,אחר', tl);
+  await layout('counting tiles');
+  await p.shot(tag + '-12a-tiles');
+  await pressText('להשתמש במידה'); await sleep(150);
+  check(tag + ' "להשתמש במידה" fills the width field', (await p.ev(`${R}.querySelector('[data-pm="in-w"]').value`)) === '392' && (await p.ev(`${R}.querySelector('[data-pm="tiles"]').hidden`)));
   await type('[data-pm="in-w"]', '400'); await type('[data-pm="in-d"]', '300'); await pressText('הוספת חדר'); await sleep(250);
   await type('[data-pm="in-w"]', '300'); await type('[data-pm="in-d"]', '300'); await pressText('הוספת חדר'); await sleep(200);
   { const s = await at(0, 0); await p.tap(s[0], s[1]); } // the second room's top corner on the first room's corner
@@ -253,6 +283,68 @@ async function flow(p, tag, mobile) {
   const pdf = await p.ev(`(()=>{const c=${R}.querySelector('[data-pm="cv"]'),x=c.getContext('2d'),r=c.getBoundingClientRect();const d=${PM}.getDraft();let dark=0;const im=x.getImageData(0,0,c.width,c.height).data;for(let i=0;i<im.length;i+=16)if(im[i]<80&&im[i+1]<80&&im[i+2]<80)dark++;return {step:${PM}.step,photo:${PM}.hasPhoto,img:d.img,dark}})()`);
   check(tag + ' a one-page PDF opens on the device and its drawing is shown', pdf.step === 'scale' && pdf.photo && pdf.img && pdf.img.w > 1000 && pdf.dark > 200, pdf);
   await p.shot(tag + '-14-pdf');
+  { const s1 = await at(...IMG(0, 0)), s2 = await at(...IMG(80, 0)); await p.tap(s1[0], s1[1]); await p.tap(s2[0], s2[1]); }
+  await press('[data-act="door"][data-v="80"]');
+  const dv = await p.ev(`${R}.querySelector('[data-pm="in-len"]').value`);
+  await pressText('אישור קנה המידה'); await sleep(200);
+  await press('[data-act="go"][data-step="rooms"]'); await sleep(250);
+  check(tag + ' a scale set with the "80" door button: the rooms step says the scale came from a door', dv === '80' && (await p.ev(`(${R}.querySelector('[data-pm="bydoor"]')||{}).textContent`)) === 'קנה המידה נקבע לפי דלת. אם יש לכם מידה של קיר, חזרו וסמנו אותה.');
+
+  // ---- more ways in from other modules; a draft handed in; a proposal of walls ----
+  await p.ev("localStorage.removeItem('nd-myplan')");
+  await p.ev("window.__maker(undefined,{extraWays:[{title:'מדידה במצלמה',sub:'בדיקה מקומית',btn:'לפתוח את המצלמה',run:()=>{window.__ran=(window.__ran||0)+1}}]})"); await sleep(400);
+  const xw = await p.ev(`({n:[...${R}.querySelectorAll('.pm-opt .pm-n')].map(e=>e.textContent).join(','),h:(${R}.querySelector('.pm-extra h4')||{}).textContent})`);
+  await pressText('לפתוח את המצלמה');
+  check(tag + ' an extra way in shows as option 4 and its button runs it', xw.n === '1,2,3,4' && xw.h === 'מדידה במצלמה' && (await p.ev('window.__ran')) === 1, xw);
+  await layout('extra way in');
+  const room = (x0, y0, x1, y1, k) => [[x0, y0, x1, y0], [x1, y0, x1, y1], [x1, y1, x0, y1], [x0, y1, x0, y0]].map(([a, b, c, d]) => ({ a: [a, b], b: [c, d], kind: k }));
+  const whole = { mode: 'measure', cmPerPx: 1, segments: [...room(0, 0, 410, 310, 'partition'), ...room(410, 0, 720, 310, 'partition')], openings: [{ id: 'd1', p: [410, 150], w: 80, type: 'door' }], rooms: [{ at: [200, 150], key: 'bedroom' }, { at: [560, 150], key: 'study' }] };
+  await p.ev('window.__maker(' + JSON.stringify(whole) + ')'); await sleep(400);
+  const hw = await p.ev(`(()=>{const a=${PM}.analyze();return {step:${PM}.step,faces:a.faces.length,plan:!!a.plan,open:${PM}.getDraft().openings.length,net:a.faces.map(f=>f.net).sort((x,y)=>x-y)}})()`);
+  check(tag + ' a whole draft in cm handed in opens straight on the rooms step, with its door and names', hw.step === 'rooms' && hw.faces === 2 && hw.plan && hw.open === 1 && Math.abs(hw.net[0] - 9) < 0.1 && Math.abs(hw.net[1] - 12) < 0.12, hw);
+  const broken = { mode: 'measure', cmPerPx: 1, segments: room(0, 0, 410, 310, 'partition').slice(0, 3), openings: [], rooms: [] };
+  await p.ev('window.__maker(' + JSON.stringify(broken) + ')'); await sleep(400);
+  check(tag + ' a handed draft with a wall not closed opens on the walls step', (await p.ev(`${PM}.step`)) === 'walls');
+  await p.ev("localStorage.removeItem('nd-myplan'); window.__maker()"); await sleep(400);
+  const pr = await p.ev(`(()=>{const ok=${PM}.propose({segments:${JSON.stringify([...room(0, 0, 500, 400, 'facade'), { a: [300, 0], b: [300, 400], kind: 'partition' }])},cmPerPx:1});const a=${PM}.analyze();return {ok,step:${PM}.step,faces:a.faces.length,segs:${PM}.getDraft().segs.length}})()`);
+  check(tag + ' propose(): proposed walls become the draft to correct, on the walls step', pr.ok && pr.step === 'walls' && pr.faces === 2 && pr.segs === 7, pr);
+
+  // ---- a photo of the page taken at an angle: straighten it, then trace it (phone) ----
+  if (mobile) {
+    await p.ev("localStorage.removeItem('nd-myplan'); window.__maker()"); await sleep(400);
+    await p.ev(`(async()=>{const pb=await import('/plugins/nadlan-config/assets/designer/planbuild.js');const pg=${DRAW_PLAN},pd=pg.getContext('2d').getImageData(0,0,pg.width,pg.height).data;
+      const Q=${JSON.stringify(SHOT)},H=pb.homography(Q,[[0,0],[pg.width,0],[pg.width,pg.height],[0,pg.height]]);
+      const c=document.createElement('canvas');c.width=1600;c.height=1200;const x=c.getContext('2d'),im=x.createImageData(1600,1200),o=im.data;
+      for(let v=0;v<1200;v++)for(let u=0;u<1600;u++){const q=pb.hApply(H,[u+0.5,v+0.5]),i=(v*1600+u)*4;const X=Math.floor(q[0]),Y=Math.floor(q[1]);if(X<0||Y<0||X>=pg.width||Y>=pg.height){o[i]=o[i+1]=o[i+2]=118;o[i+3]=255;continue;}const j=(Y*pg.width+X)*4;o[i]=pd[j];o[i+1]=pd[j+1];o[i+2]=pd[j+2];o[i+3]=255;}
+      x.putImageData(im,0,0);const b=await new Promise(r=>c.toBlob(r,'image/png'));const dt=new DataTransfer();dt.items.add(new File([b],'photo.png',{type:'image/png'}));const i=${R}.querySelector('[data-pm="file"]');i.files=dt.files;i.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+    for (let i = 0; i < 40 && (await p.ev(`${PM}.step`)) !== 'scale'; i++) await sleep(150);
+    await sleep(300);
+    await pressText('הצילום עקום? יישרו אותו'); await sleep(150);
+    const start = [[0.08, 0.08], [0.92, 0.08], [0.92, 0.92], [0.08, 0.92]].map(([a, b]) => [1600 * a, 1200 * b]);
+    for (let i = 0; i < 4; i++) {
+      const s0 = await at(...start[i]), s1 = await at(...SHOT[i]);
+      await p.touch('touchStart', s0[0], s0[1]); await sleep(40);
+      for (let j = 1; j <= 8; j++) { await p.touch('touchMove', s0[0] + ((s1[0] - s0[0]) * j) / 8, s0[1] + ((s1[1] - s0[1]) * j) / 8); await sleep(25); }
+      await p.touch('touchEnd'); await sleep(120);
+    }
+    await p.shot(tag + '-15-angled-corners');
+    await pressText('יישור הצילום'); await sleep(900);
+    const img = await p.ev(`${PM}.getDraft().img`), sx = img.w / PAGE[0], sy = img.h / PAGE[1];
+    check(tag + ' straightening the angled photo gives the page its own proportions back (within 2%)', Math.abs(sx / sy - 1) < 0.02, { img, sx, sy });
+    await p.shot(tag + '-16-straightened');
+    const RI = (x, y) => [(M + x * PXCM) * sx, (M + y * PXCM) * sy];
+    { const a = await at(...RI(0, 0)), b = await at(...RI(900, 0)); await p.tap(a[0], a[1]); await p.tap(b[0], b[1]); }
+    await type('[data-pm="in-len"]', '900'); await pressText('אישור קנה המידה'); await sleep(250);
+    await press('[data-act="tool"][data-v="rect"]'); await press('[data-act="kind"][data-v="facade"]');
+    { const a = await at(...RI(0, 0)), b = await at(...RI(900, 600)); await p.tap(a[0], a[1]); await p.tap(b[0], b[1]); }
+    await press('[data-act="go"][data-step="rooms"]'); await sleep(200);
+    const pre = await p.ev(`(()=>{const d=${PM}.getDraft(),a=${PM}.analyze();return {step:d.step,k:d.cmPerPx,segs:d.segs.length,faces:a.faces.length,probs:a.problems.map(x=>x.code)}})()`);
+    check(tag + ' the angled photo: scale set and the outline drawn with the rectangle tool', pre.step === 'rooms' && pre.faces === 1, pre);
+    if (pre.faces === 1) { const a = await at(...RI(450, 300)); await p.tap(a[0], a[1]); await sleep(150); await pressText('סלון'); await sleep(150); }
+    const ang = await p.ev(`(()=>{const a=${PM}.analyze();return {faces:a.faces.length,net:a.faces.reduce((m,f)=>m+f.net,0)}})()`), truth = (875 * 575) / 1e4;
+    check(tag + ' traced after straightening: the area within 3% of the truth (' + truth.toFixed(2) + ' m2)', ang.faces === 1 && Math.abs(ang.net - truth) / truth <= 0.03, ang);
+    await p.shot(tag + '-17-angled-traced');
+  }
   check(tag + ' no page errors', p.errors.length === 0, p.errors);
   void W;
 }
@@ -268,5 +360,6 @@ try {
 receipt.passed = receipt.checks.filter((c) => c.ok).length; receipt.failed = fails;
 fs.writeFileSync(path.join(shots, 'receipt.json'), JSON.stringify(receipt, null, 2));
 console.log('\n' + receipt.passed + ' passed, ' + fails + ' failed');
-chrome.kill(); await sleep(300); try { fs.rmSync(profile, { recursive: true, force: true }); fs.rmSync(pdfPath, { force: true }); } catch {}
+chrome.kill(); await sleep(800);
+for (const t of [profile, pdfPath]) { try { fs.rmSync(t, { recursive: true, force: true, maxRetries: 8, retryDelay: 300 }); } catch (e) { console.log('could not remove ' + t + ': ' + e.message); } }
 process.exit(fails ? 1 : 0);

@@ -689,7 +689,7 @@ if ( ! function_exists( 'nadlan_dsg_importmap_html' ) ) {
 add_action( 'wp_head', function () {
 	if ( ! is_singular() || ! nadlan_dsg_on() ) { return; }
 	$post = get_post();
-	if ( ! $post || ! has_shortcode( (string) $post->post_content, 'nadlan_designer' ) ) { return; }
+	if ( ! $post || ! ( has_shortcode( (string) $post->post_content, 'nadlan_designer' ) || has_shortcode( (string) $post->post_content, 'nadlan_room_photo' ) ) ) { return; }
 	echo nadlan_dsg_print_importmap(); // phpcs:ignore WordPress.Security.EscapeOutput -- a fixed constant
 }, 30 );
 
@@ -768,6 +768,7 @@ if ( ! function_exists( 'nadlan_dsg_shortcode' ) ) {
 			'module'  => nadlan_dsg_asset_url( 'designer.js' ),
 			'studio'  => nadlan_dsg_asset_url( 'studio.js' ), // the plan chooser: examples, a project's plans and "my plan" (the visitor's own apartment)
 			'mine'    => '0' !== (string) $atts['mine'] && is_readable( dirname( __DIR__ ) . '/assets/designer/planmaker.js' ),
+			'scan'    => '1' === (string) get_option( 'nadlan_designer_scan', '0' ), // measuring with the camera for every visitor; until the owner opens it, only ?scan=on shows it
 			'help'    => 1 === preg_match( '/^(#[A-Za-z][A-Za-z0-9_-]{0,40}|\/[a-z0-9\/_-]{1,80}(#[A-Za-z][A-Za-z0-9_-]{0,40})?)$/', (string) $atts['help'] ) ? (string) $atts['help'] : '',
 			'planUrl' => $url,
 			'rest'    => rest_url( 'nadlan/v1/designer/' ),
@@ -820,15 +821,41 @@ if ( ! function_exists( 'nadlan_dsg_inline_js' ) ) {
 'const mk=(pl,pu,x)=>{const o={plan:pl,planUrl:pu,lang:C.lang,version:C.version};if(C.save&&!(x&&x.mine))o.onSend=onSend;if(!(x&&x.mine)){if(C.unitLabel)o.unitLabel=C.unitLabel;if(C.title)o.title=C.title;}return o;};' .
 'const pick=document.getElementById(C.host+"-pick");let st=null;' .
 'try{const {mountStudio}=await import(C.studio);' .
-'st=await mountStudio(host,pick,{plans:C.plans.map((x)=>({k:x.url.split("?")[0],url:x.url,label:x.label})),planUrl:C.planUrl,mk,design,lang:C.lang,version:C.version,project:C.project||null,helpUrl:C.help,mine:C.mine,' .
+'st=await mountStudio(host,pick,{plans:C.plans.map((x)=>({k:x.url.split("?")[0],url:x.url,label:x.label})),planUrl:C.planUrl,mk,design,lang:C.lang,version:C.version,project:C.project||null,helpUrl:C.help,mine:C.mine,scan:C.scan,' .
 'onChange:(kind,s,first)=>{if(!first||!s.designKept)cur={id:null,rev:null};}});}catch(e){st=null;}' .
 'if(!st)host.hidden=true;' .
 '})();';
 	}
 }
 
+if ( ! function_exists( 'nadlan_dsg_room_photo_shortcode' ) ) {
+	/**
+	 * [nadlan_room_photo]: the floor and the paint on a photo of the visitor's own room (assets/designer/roomphoto.js).
+	 * The photo is read and drawn in the browser only. Nothing is uploaded, so there is no REST route behind this.
+	 */
+	function nadlan_dsg_room_photo_shortcode( $atts ) {
+		if ( ! nadlan_dsg_on() || ! empty( $GLOBALS['nadlan_dsg_rp'] ) ) { return ''; } // one per page
+		if ( ! is_readable( dirname( __DIR__ ) . '/assets/designer/roomphoto.js' ) ) { return ''; }
+		$atts = shortcode_atts( array( 'lang' => 'he' ), $atts, 'nadlan_room_photo' );
+		$GLOBALS['nadlan_dsg_rp'] = 1;
+		$js   = array(
+			'host'    => 'nlrp-1',
+			'module'  => nadlan_dsg_asset_url( 'roomphoto.js' ),
+			'lang'    => in_array( $atts['lang'], array( 'he', 'en' ), true ) ? (string) $atts['lang'] : 'he',
+			'version' => defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '0',
+		);
+		$json = wp_json_encode( $js, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES );
+		$out  = nadlan_dsg_print_importmap();
+		$out .= '<div class="nadlan-room-photo" id="nlrp-1" style="position:relative;width:100%;height:86vh;min-height:560px"></div>' . "\n";
+		$out .= '<script type="module">const C=' . $json . ';(async()=>{const h=document.getElementById(C.host);if(!h)return;' .
+			'try{const m=await import(C.module);await m.mountRoomPhoto(h,{lang:C.lang,version:C.version});}catch(e){h.hidden=true;}})();</script>' . "\n";
+		return $out;
+	}
+}
+
 add_action( 'init', function () {
 	add_shortcode( 'nadlan_designer', 'nadlan_dsg_shortcode' );
+	add_shortcode( 'nadlan_room_photo', 'nadlan_dsg_room_photo_shortcode' );
 } );
 
 /* 11.11.2026 (HAD-707): the design pages (the neutral designers list and the designers page address); loaded only if present */

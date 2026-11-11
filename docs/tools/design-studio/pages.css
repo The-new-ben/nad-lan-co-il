@@ -93,6 +93,7 @@ html body .nlds-pg .nadlan-designer-pick button[aria-pressed="true"]{background:
 html body .nlds-pg .nadlan-designer-pick button:hover{background:var(--tint)!important;color:var(--ink)!important}
 html body .nlds-pg .nadlan-designer-pick button[aria-pressed="true"]:hover{background:var(--ink)!important;color:#fff!important}
 .nlds-pg .nadlan-designer{border:2px solid var(--ink);background:var(--sheet);height:clamp(520px,calc(100vh - 170px),860px)!important;height:clamp(520px,calc(100svh - 170px),860px)!important;min-height:0!important;overflow:hidden}
+.nlds-pg .nadlan-room-photo{border:2px solid var(--ink);background:var(--sheet);height:clamp(560px,calc(100vh - 150px),880px)!important;height:clamp(560px,calc(100svh - 150px),880px)!important;min-height:0!important;overflow:hidden;margin:18px auto!important}
 .nlds-pg :is(section,h3,.nlds-titleblock)[id],.nlds-pg section,.nlds-pg h3[id]{scroll-margin-top:84px}
 .nlds-pg section.engine>p.note{margin-top:12px!important}
 
@@ -157,5 +158,5 @@ html body .nlds-pg .join-designers{background:var(--sheet);border:2px solid var(
 @container nldspg (min-width:640px) and (max-width:959px){html body .nlds-pg ol.nlds-dir__list{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){.nlds-pg{padding-inline:48px!important}}
 @media (max-width:520px){html body .nlds-pg .cta-row a.btn{flex:1 1 100%}}
-@media (max-width:700px){.nlds-pg .nadlan-designer{height:clamp(480px,calc(100vh - 196px),860px)!important;height:clamp(480px,calc(100svh - 196px),860px)!important}.nlds-pg section,.nlds-pg h3[id]{scroll-margin-top:72px}}
+@media (max-width:700px){.nlds-pg .nadlan-designer{height:clamp(470px,calc(100vh - 252px),860px)!important;height:clamp(470px,calc(100svh - 252px),860px)!important}.nlds-pg .nadlan-room-photo{height:clamp(540px,calc(100vh - 176px),880px)!important;height:clamp(540px,calc(100svh - 176px),880px)!important}.nlds-pg section,.nlds-pg h3[id]{scroll-margin-top:72px}}
 @media (prefers-reduced-motion:reduce){html body .nlds-pg a.btn{transition:none}}

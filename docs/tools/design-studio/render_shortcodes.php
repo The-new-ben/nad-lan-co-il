@@ -24,6 +24,8 @@ function esc_html( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES, 'UTF
 function esc_url( $s, $p = null ) { return htmlspecialchars( (string) $s, ENT_QUOTES, 'UTF-8' ); }
 function antispambot( $s ) { return $s; }
 function is_admin() { return false; }
+function has_shortcode( $c, $t ) { return false !== strpos( (string) $c, '[' . $t ); }
+function is_singular() { return true; } function get_post() { return null; }
 function shortcode_atts( $pairs, $atts, $sc = '' ) { $atts = (array) $atts; $o = array(); foreach ( $pairs as $k => $v ) { $o[ $k ] = array_key_exists( $k, $atts ) ? $atts[ $k ] : $v; } return $o; }
 function add_filter( $t, $cb, $p = 10, $n = 1 ) { $GLOBALS['F'][ $t ][] = $cb; }
 function apply_filters( $t, $v, ...$a ) { foreach ( $GLOBALS['F'][ $t ] ?? array() as $cb ) { $v = $cb( $v, ...$a ); } return $v; }
@@ -37,6 +39,7 @@ $html = stream_get_contents( STDIN );
 $atts = function ( $s ) { preg_match_all( '/([a-z]+)="([^"]*)"/', $s, $m, PREG_SET_ORDER ); $o = array(); foreach ( $m as $x ) { $o[ $x[1] ] = $x[2]; } return $o; };
 $html = preg_replace_callback( '/\[nadlan_designer(?![a-z])([^\]]*)\]/', function ( $m ) use ( $atts ) { return nadlan_dsg_shortcode( $atts( $m[1] ) ); }, $html );
 $html = preg_replace_callback( '/\[nadlan_designers\]/', function () { return nadlan_dpg_designers_shortcode(); }, $html );
+$html = preg_replace_callback( '/\[nadlan_room_photo\]/', function () { return nadlan_dsg_room_photo_shortcode( array() ); }, $html );
 $tools = apply_filters( 'nadlan_nli_tools', array() );
 $html  = preg_replace_callback( '/\[nadlan_tool([^\]]*)\]/', function ( $m ) use ( $atts, $tools ) {
 	$a = $atts( $m[1] ); $id = $a['id'] ?? '';

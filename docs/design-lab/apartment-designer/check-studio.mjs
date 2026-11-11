@@ -43,7 +43,7 @@ async function session(w, h, mobile) {
     else { await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: r[0], y: r[1], button: 'left', clickCount: 1 }); await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: r[0], y: r[1], button: 'left', clickCount: 1 }); }
     return true;
   };
-  return { ev, go, shot, tap, errors, close: () => { ws.close(); chrome.kill(); } };
+  return { ev, go, shot, tap, errors, close: async () => { ws.close(); chrome.kill(); await sleep(1200); try { fs.rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 400 }); } catch (e) { /* the profile folder stays; nothing depends on it */ } } };
 }
 const SR = "document.getElementById('host').shadowRoot";
 const state = `JSON.stringify({pick:[...document.querySelectorAll('#pick button')].map(b=>b.textContent+'|'+b.getAttribute('aria-pressed')),` +
@@ -115,7 +115,7 @@ const Q = '?project=rainbow-tel-aviv&unit=S1-5-w&pn=' + encodeURIComponent('פר
   ok('phone: opened from a project page, the way back is that page', v.back === '/projects/duo-tel-aviv/', v.back);
   ok('phone: another project starts on an example, not on the first project\'s choice', v.pick.some((x) => x === '4 חדרים|true'), v.pick);
   ok('phone: no errors in the console', s.errors.length === 0, s.errors.slice(0, 4));
-  s.close();
+  await s.close();
 }
 // ------------------------------------------------------------------ the desktop, a project whose plans we hold
 {
@@ -132,7 +132,7 @@ const Q = '?project=rainbow-tel-aviv&unit=S1-5-w&pn=' + encodeURIComponent('פר
   v = await st(s);
   ok('desktop: with no project, the examples and the way back to the design page', v.pick.length === 4 && v.back === '/design-studio/' && v.h2 === 'דירה לדוגמה', [v.pick, v.back, v.h2]);
   ok('desktop: no errors in the console', s.errors.length === 0, s.errors.slice(0, 4));
-  s.close();
+  await s.close();
 }
 console.log('\n' + pass + ' passed, ' + fail + ' failed | shots: ' + SHOTS);
 process.exit(fail ? 1 : 0);
