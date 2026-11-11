@@ -1,0 +1,25 @@
+{
+  "released": "1.72.657",
+  "from": "1.72.656",
+  "live_before": {
+    "assets/tours/designer-tour.html": "5a1f9301de9ae58c5fb553ccddd191b9",
+    "assets/designer/strings.js": "5d4344582b489027f3d216d394931c8f",
+    "assets/designer/studio.js": "887ada0e6188b9a4936d91728787ad98",
+    "nadlan-config.php": "92944935da68e126012e2744513b5d31",
+    "inc/designer.php": "8ae61ff3925589d161d8eaa12a2e7812"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 23:42:48",
+  "files": {
+    "assets/tours/designer-tour.html": "fa0084abb849c0a9b06c6ad4b9d664b9",
+    "assets/designer/strings.js": "3b6fe57890a7e6b03652aa3e8575dc9a",
+    "assets/designer/studio.js": "5e7315b32e4ca68a93a54d0c06c8ba14",
+    "assets/designer/call.js": "004d8593403f794dc8861986195713e8",
+    "assets/designer/call.css": "428ad0dc1816d9d67a883f1443788068",
+    "nadlan-config.php": "c27c0a440631e1fda45c4f70eeb63bad",
+    "inc/designer.php": "151986eaac49b80fcf9d28843663bf82"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.657, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

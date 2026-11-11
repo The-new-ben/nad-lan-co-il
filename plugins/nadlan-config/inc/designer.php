@@ -11,6 +11,7 @@
  *  - POST /nadlan/v1/designer/save      anonymous save and update, no personal details
  *  - GET  /nadlan/v1/designer/design/<id>  the saved design for whoever holds the share id
  *  - nadlan_dsg_plan_url( $p, $t )      a plan file from assets/designer/plans/index.json, '' when unknown
+ *  - POST /nadlan/v1/designer/call and /designer/call/token  the video call inside the designer (LiveKit, HAD-706)
  *  - [nadlan_designer project="" type="" plan="" height=""]  the embed
  *
  * WHAT IS STORED (privacy): one private post per saved design (post type nadlan_design) holding the cleaned design JSON,
@@ -571,7 +572,176 @@ if ( ! function_exists( 'nadlan_dsg_rest_read' ) ) {
 	}
 }
 
+/* ------------------------------------------------------------------ the video call (HAD-706) */
+/*
+ * POST /nadlan/v1/designer/call         { page, name? }          -> { ok, room }      opens a call room of the designer
+ * POST /nadlan/v1/designer/call/token   { room, name, role, identity? } -> { url, token, identity }
+ * A room is a transient (12 random characters, created time, the identities that took a token), alive six hours.
+ * The plan and the design never come here: they travel between the people in the call on LiveKit's data channel.
+ * Nothing personal is stored: the name a visitor typed goes into his own token and into the one owner mail, never into a
+ * stored row. LiveKit's settings are together.php's (nadlan_tr_opt lk_url, lk_key, lk_secret), read only at request time,
+ * so the order in which the two modules load does not matter; without them both routes answer 503 { error: 'off' }.
+ */
+
+if ( ! function_exists( 'nadlan_dsg_call_on' ) ) {
+	/** the call's own switch: option nadlan_designer_call, '1' unless the owner set it to '0' */
+	function nadlan_dsg_call_on() {
+		return nadlan_dsg_on() && '0' !== (string) get_option( 'nadlan_designer_call', '1' );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_lk' ) ) {
+	/** LiveKit's address, key and secret from together.php, or null when that module or its settings are missing */
+	function nadlan_dsg_call_lk() {
+		if ( ! function_exists( 'nadlan_tr_opt' ) || ! function_exists( 'nadlan_tr_lk_ready' ) || ! function_exists( 'nadlan_tr_jwt' ) ) { return null; }
+		if ( ! nadlan_tr_lk_ready() ) { return null; }
+		return array( 'url' => (string) nadlan_tr_opt( 'lk_url' ), 'key' => (string) nadlan_tr_opt( 'lk_key' ), 'secret' => (string) nadlan_tr_opt( 'lk_secret' ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_rand' ) ) {
+	/** $n random characters of a-z and 2-7 (the room and identity alphabet) */
+	function nadlan_dsg_call_rand( $n ) {
+		$alpha = 'abcdefghijklmnopqrstuvwxyz234567';
+		$out   = '';
+		foreach ( str_split( random_bytes( (int) $n ) ) as $b ) { $out .= $alpha[ ord( $b ) & 31 ]; }
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_valid' ) ) {
+	function nadlan_dsg_call_valid( $id ) { return is_string( $id ) && 1 === preg_match( '/^[a-z2-7]{12}$/', $id ); }
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_key' ) ) {
+	function nadlan_dsg_call_key( $room ) { return 'nldsg_call_' . $room; }
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_page' ) ) {
+	/** the page a call was opened on: a path under /design-studio/ or /tour/designer/ only; anything else is the design page */
+	function nadlan_dsg_call_page( $p ) {
+		$p = is_string( $p ) ? trim( $p ) : '';
+		if ( 1 === preg_match( '~^/(design-studio|tour/designer)(/[a-z0-9_-]{1,60})*/?$~', $p ) && false === strpos( $p, '..' ) ) {
+			return '/' === substr( $p, -1 ) ? $p : $p . '/';
+		}
+		return '/design-studio/';
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_name' ) ) {
+	/** the name a visitor typed: plain text, one line, at most 40 characters */
+	function nadlan_dsg_call_name( $v ) {
+		$s = trim( (string) preg_replace( '/\s+/u', ' ', nadlan_dsg_text( $v, 200 ) ) );
+		return trim( mb_substr( $s, 0, 40, 'UTF-8' ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_guard' ) ) {
+	/** the same write guard as the save (custom header, JSON body, same site), for both call routes; '' when the request may go on */
+	function nadlan_dsg_call_guard( WP_REST_Request $req ) {
+		$h = array();
+		foreach ( array( 'x_nl_designer', 'content_type', 'sec_fetch_site', 'origin' ) as $n ) { $h[ $n ] = (string) $req->get_header( $n ); }
+		return nadlan_dsg_write_refusal( $h, strlen( (string) $req->get_body() ), (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_mail' ) ) {
+	/** one short mail to the site owner with the link that joins the call at once; the visitor's typed name only */
+	function nadlan_dsg_call_mail( $room, $page, $name ) {
+		$link  = home_url( $page ) . '?room=' . rawurlencode( $room );
+		$lines = array(
+			'מבקר פתח שיחת וידאו במעצב הדירות.',
+			'' !== $name ? 'השם שהקליד: ' . $name : 'השם עוד לא הוקלד.',
+			'להצטרפות לשיחה עכשיו: ' . $link,
+			'הקישור פעיל כשש שעות.',
+		);
+		if ( function_exists( 'nadlan_alert_mail' ) ) { nadlan_alert_mail( 'מבקר פתח שיחת וידאו במעצב הדירות', $lines ); return true; }
+		$to = (string) get_option( 'admin_email' );
+		if ( '' === $to || ! function_exists( 'wp_mail' ) ) { return false; }
+		return (bool) wp_mail( $to, '[נדלן] מבקר פתח שיחת וידאו במעצב הדירות', implode( "\n", $lines ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_rest_call' ) ) {
+	/** POST /nadlan/v1/designer/call  body { page, name? }: a new call room, six hours */
+	function nadlan_dsg_rest_call( WP_REST_Request $req ) {
+		if ( ! nadlan_dsg_call_on() || null === nadlan_dsg_call_lk() ) { return nadlan_dsg_no_store( array( 'error' => 'off' ), 503 ); }
+		$why = nadlan_dsg_call_guard( $req );
+		if ( '' !== $why ) { return nadlan_dsg_no_store( array( 'error' => $why ), 'size' === $why ? 413 : 403 ); }
+		if ( ! nadlan_dsg_rl( 'call', 6, HOUR_IN_SECONDS ) ) { return nadlan_dsg_no_store( array( 'error' => 'rate' ), 429 ); }
+		$day_k = 'nldsg_callday_' . gmdate( 'Ymd' );
+		$day_n = (int) get_transient( $day_k );
+		$cap   = (int) get_option( 'nadlan_designer_call_day_cap', 80 );
+		if ( $day_n >= ( $cap > 0 ? $cap : 80 ) ) { return nadlan_dsg_no_store( array( 'error' => 'rate' ), 429 ); }
+		set_transient( $day_k, $day_n + 1, DAY_IN_SECONDS );
+		$p    = $req->get_json_params();
+		$p    = is_array( $p ) ? $p : array();
+		$room = nadlan_dsg_call_rand( 12 );
+		set_transient( nadlan_dsg_call_key( $room ), array( 't' => time(), 'n' => 0, 'ids' => array() ), 6 * HOUR_IN_SECONDS );
+		nadlan_dsg_call_mail( $room, nadlan_dsg_call_page( $p['page'] ?? '' ), nadlan_dsg_call_name( $p['name'] ?? '' ) );
+		return nadlan_dsg_no_store( array( 'ok' => true, 'room' => $room ), 201 );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_token_jwt' ) ) {
+	/** a LiveKit access token for one person in one designer call room: join, send and receive video, sound and data; two hours */
+	function nadlan_dsg_call_token_jwt( $room, $identity, $name, $role, array $lk ) {
+		$now = time();
+		return nadlan_tr_jwt( array(
+			'iss'        => $lk['key'],
+			'sub'        => (string) $identity,
+			'name'       => (string) $name,
+			'nbf'        => $now - 5,
+			'exp'        => $now + 2 * HOUR_IN_SECONDS,
+			'video'      => array( 'room' => 'nadlan-dsg-' . $room, 'roomJoin' => true, 'canPublish' => true, 'canSubscribe' => true, 'canPublishData' => true ),
+			'metadata'   => wp_json_encode( array( 'role' => (string) $role ) ),
+			'attributes' => array( 'role' => (string) $role ),
+		), $lk['secret'] );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_rest_call_token' ) ) {
+	/** POST /nadlan/v1/designer/call/token  body { room, name, role: host|guest, identity? }: up to 8 people a room */
+	function nadlan_dsg_rest_call_token( WP_REST_Request $req ) {
+		$lk = nadlan_dsg_call_on() ? nadlan_dsg_call_lk() : null;
+		if ( null === $lk ) { return nadlan_dsg_no_store( array( 'error' => 'off' ), 503 ); }
+		$why = nadlan_dsg_call_guard( $req );
+		if ( '' !== $why ) { return nadlan_dsg_no_store( array( 'error' => $why ), 'size' === $why ? 413 : 403 ); }
+		if ( ! nadlan_dsg_rl( 'calltoken', 20, 600 ) ) { return nadlan_dsg_no_store( array( 'error' => 'rate' ), 429 ); }
+		$p    = $req->get_json_params();
+		$p    = is_array( $p ) ? $p : array();
+		$room = isset( $p['room'] ) && is_string( $p['room'] ) ? strtolower( $p['room'] ) : '';
+		if ( ! nadlan_dsg_call_valid( $room ) ) { return nadlan_dsg_no_store( array( 'error' => 'room' ), 400 ); }
+		$live = get_transient( nadlan_dsg_call_key( $room ) );
+		if ( ! is_array( $live ) ) { return nadlan_dsg_no_store( array( 'error' => 'gone' ), 404 ); }
+		$role = isset( $p['role'] ) && in_array( $p['role'], array( 'host', 'guest' ), true ) ? $p['role'] : '';
+		if ( '' === $role ) { return nadlan_dsg_no_store( array( 'error' => 'role' ), 400 ); }
+		$name = nadlan_dsg_call_name( $p['name'] ?? '' );
+		if ( '' === $name ) { return nadlan_dsg_no_store( array( 'error' => 'name' ), 400 ); }
+		// the same browser asking again (a reconnect) keeps its place; a new person takes one of the eight
+		$ids = is_array( $live['ids'] ?? null ) ? $live['ids'] : array();
+		foreach ( $ids as $k => $t ) { if ( time() - (int) $t > 2 * HOUR_IN_SECONDS ) { unset( $ids[ $k ] ); } }
+		$me = isset( $p['identity'] ) && is_string( $p['identity'] ) && 1 === preg_match( '/^[a-z2-7]{10}$/', $p['identity'] ) && isset( $ids[ $p['identity'] ] ) ? $p['identity'] : '';
+		if ( '' === $me ) {
+			if ( count( $ids ) >= 8 ) { return nadlan_dsg_no_store( array( 'error' => 'full' ), 409 ); }
+			$me = nadlan_dsg_call_rand( 10 );
+		}
+		$ids[ $me ]  = time();
+		$live['ids'] = $ids;
+		$live['n']   = count( $ids );
+		$left        = 6 * HOUR_IN_SECONDS - ( time() - (int) ( $live['t'] ?? time() ) );
+		set_transient( nadlan_dsg_call_key( $room ), $live, max( 60, $left ) );
+		return nadlan_dsg_no_store( array( 'url' => $lk['url'], 'token' => nadlan_dsg_call_token_jwt( $room, $me, $name, $role, $lk ), 'identity' => $me ) );
+	}
+}
+
 add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/designer/call', array(
+		'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => 'nadlan_dsg_rest_call',
+	) );
+	register_rest_route( 'nadlan/v1', '/designer/call/token', array(
+		'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => 'nadlan_dsg_rest_call_token',
+	) );
 	register_rest_route( 'nadlan/v1', '/designer/save', array(
 		'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => 'nadlan_dsg_rest_save',
 	) );
@@ -777,6 +947,7 @@ if ( ! function_exists( 'nadlan_dsg_shortcode' ) ) {
 			'plans'   => count( $choices ) > 1 ? $choices : array(),
 			'version' => defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '0',
 			'send'    => $send,
+			'call'    => nadlan_dsg_call_on() && null !== nadlan_dsg_call_lk(), // the video call button (HAD-706)
 		) + $cfg;
 		$json = wp_json_encode( $js, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
@@ -821,7 +992,7 @@ if ( ! function_exists( 'nadlan_dsg_inline_js' ) ) {
 'const mk=(pl,pu,x)=>{const o={plan:pl,planUrl:pu,lang:C.lang,version:C.version};if(C.save&&!(x&&x.mine))o.onSend=onSend;if(!(x&&x.mine)){if(C.unitLabel)o.unitLabel=C.unitLabel;if(C.title)o.title=C.title;}return o;};' .
 'const pick=document.getElementById(C.host+"-pick");let st=null;' .
 'try{const {mountStudio}=await import(C.studio);' .
-'st=await mountStudio(host,pick,{plans:C.plans.map((x)=>({k:x.url.split("?")[0],url:x.url,label:x.label})),planUrl:C.planUrl,mk,design,lang:C.lang,version:C.version,project:C.project||null,helpUrl:C.help,mine:C.mine,scan:C.scan,' .
+'st=await mountStudio(host,pick,{plans:C.plans.map((x)=>({k:x.url.split("?")[0],url:x.url,label:x.label})),planUrl:C.planUrl,mk,design,lang:C.lang,version:C.version,project:C.project||null,helpUrl:C.help,mine:C.mine,scan:C.scan,rest:C.rest,call:C.call,' .
 'onChange:(kind,s,first)=>{if(!first||!s.designKept)cur={id:null,rev:null};}});}catch(e){st=null;}' .
 'if(!st)host.hidden=true;' .
 '})();';

@@ -13,7 +13,7 @@ if len(sys.argv) < 2 or not re.match(r"^\d+\.\d+\.\d+$", sys.argv[1]):
     raise SystemExit("usage: python build_tour.py <version like 1.72.653>")
 V = sys.argv[1]
 B = "/wp-content/plugins/nadlan-config/assets/designer/"
-SHIP = ("budget.js", "catalog.js", "core.js", "designer.js", "plan.js", "planbuild.js", "planmaker.js", "space.js", "strings.js", "studio.js")
+SHIP = ("budget.js", "call.js", "catalog.js", "core.js", "designer.js", "plan.js", "planbuild.js", "planmaker.js", "space.js", "strings.js", "studio.js")
 EXTRA = tuple(a for a in sys.argv[2:] if a.endswith(".js"))  # modules a later release adds: python build_tour.py <version> roomscan.js ...
 mods = sorted(f for f in SHIP + EXTRA if os.path.isfile(os.path.join(DSG, f)))
 assert len(mods) == len(SHIP) + len(EXTRA), "a module of the page is missing on disk"
@@ -148,7 +148,7 @@ const roomsWanted = Number((ul.match(/(\d)(?:[.,]5)?\s*חדרים/) || [])[1] ||
   try {
     const { mountStudio } = await import(B + 'studio.js?v=' + V);
     $('wait').remove();
-    st = await mountStudio(host, pick, { plans, planUrl: dflt, mk, lang: 'he', version: V, project: slug || null, scope: slug || '', helpUrl: '/design-studio/#get-plan',
+    st = await mountStudio(host, pick, { plans, planUrl: dflt, mk, lang: 'he', version: V, project: slug || null, scope: slug || '', helpUrl: '/design-studio/#get-plan', rest: '/wp-json/nadlan/v1/designer/', // the video call (HAD-706): rooms and tokens from the site, the apartment travels in the call
       start: q.get('plan') === 'mine' ? 'mine' : '', onChange: (kind) => { if (kind !== 'plan') hideTip(); } });
   } catch (e) { st = null; if (window.console) console.error(e); }
   if (!st) { host.innerHTML = '<div class="wait">המעצב לא נטען. <a href="/design-studio/">לדף עיצוב הדירה</a></div>'; return; }

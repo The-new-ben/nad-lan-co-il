@@ -33,7 +33,7 @@ const container = document.createElement('div'); container.className = 'ndc-host
 el.shadowRoot.appendChild(container);
 window.__left = false;
 window.__call = await joinCall(window.__d, {
-  container, room, identity, name, role, lang,
+  container, room, identity, name, role, lang, mode: q.get('mode') || 'pen', // the pen rule this check was written for; the open rule is checked live (check-call-live.mjs)
   transport: (window.__tr = mockTransport({ room, identity, name, role, loss: +(q.get('loss') || 0) })),
   camera: q.get('cam') !== '0', mic: q.get('mic') !== '0',
   inviteBase: location.origin + '/projects/example/',

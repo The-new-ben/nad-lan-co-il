@@ -106,3 +106,24 @@
 .ndc-side .ndc-toast{top:auto;bottom:12px}
 .ndc-side .ndc-tile.ndc-big{inset:12px 312px auto 12px;height:70vh}
 @media (prefers-reduced-motion:reduce){.ndc *{transition:none!important;animation:none!important}}
+
+/* HAD-706 round 2: the open call (invite button, WhatsApp) and the sheet that starts or joins a call */
+.ndc-ctl .ndc-inv{font-size:13px}
+.ndc-sub{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:0 0 10px}
+.ndc-panel .ndc-wa{display:flex;width:100%;margin-top:8px;text-decoration:none;font-weight:700}
+.ndc-pen.ndc-flash{outline:3px solid var(--dim);outline-offset:2px}
+.ndc.ndc-sheet{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(15,34,51,.55);border:0}
+.ndc-card{position:relative;width:min(100%,420px);max-height:100%;overflow:auto;background:var(--card);border:2px solid var(--ink);padding:18px 16px 16px}
+.ndc-card h2{font-size:19px;line-height:1.25;font-weight:700;margin:0 0 6px;padding-inline-end:48px;color:var(--ink)}
+.ndc-card .ndc-x{position:absolute;top:6px;inset-inline-end:6px;border:0}
+.ndc-card form{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.ndc-lbl{font-size:13px;font-weight:600;color:var(--ink)}
+.ndc-card input{min-height:48px;border:2px solid var(--ink);padding:0 12px;font:inherit;font-size:16px;background:#fff;color:var(--ink);width:100%}
+.ndc-card input:focus{outline:3px solid var(--blue);outline-offset:1px}
+.ndc-b.ndc-big{min-height:52px;font-size:15.5px;font-weight:700;width:100%}
+.ndc-b:disabled{opacity:.55;cursor:default}
+.ndc-card .ndc-fine{margin-top:10px}
+.ndc-msg{font-size:13.5px;font-weight:600;color:var(--blue);margin-top:6px;min-height:1px}
+.ndc-msg:empty{display:none}
+.ndc-msg.ndc-bad{color:var(--dim)}
+.ndc .ndc-no{width:100%;margin-top:10px;border:2px solid var(--ink)}.ndc .ndc-row .ndc-b{border:2px solid var(--ink)}

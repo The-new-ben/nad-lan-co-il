@@ -12,7 +12,7 @@ class WP_Error { public $code; public $message; public $data; function __constru
 function is_wp_error( $x ) { return $x instanceof WP_Error; }
 function get_option( $k, $d = false ) { return array_key_exists( $k, $GLOBALS['OPT'] ) ? $GLOBALS['OPT'][ $k ] : $d; }
 function get_transient( $k ) { return $GLOBALS['TR'][ $k ] ?? false; }
-function set_transient( $k, $v, $t = 0 ) { $GLOBALS['TR'][ $k ] = $v; return true; }
+function set_transient( $k, $v, $t = 0 ) { $GLOBALS['TR'][ $k ] = $v; $GLOBALS['TTL'][ $k ] = $t; return true; }
 function wp_salt( $s = '' ) { return 'test-salt-' . $s; }
 function wp_unslash( $v ) { return $v; }
 function wp_json_encode( $d, $o = 0 ) { return json_encode( $d, $o ); }
@@ -27,6 +27,15 @@ function add_filter( $t, $cb, $p = 10, $n = 1 ) { $GLOBALS['FILTERS'][ $t ][] = 
 function apply_filters( $t, $v, ...$a ) { foreach ( $GLOBALS['FILTERS'][ $t ] ?? array() as $cb ) { $v = $cb( $v, ...$a ); } return $v; }
 function add_action() {} function add_shortcode() {}
 function nadlan_ps_current() { return $GLOBALS['STAGE']; }
+function delete_transient( $k ) { unset( $GLOBALS['TR'][ $k ] ); return true; }
+function wp_mail( $to, $subject, $body ) { $GLOBALS['MAIL'][] = array( $to, $subject, $body ); return true; }
+class WP_REST_Request { public $h; public $b; function __construct( $h = array(), $b = null ) { $this->h = $h; $this->b = $b; } function get_header( $k ) { return $this->h[ $k ] ?? null; } function get_body() { return json_encode( $this->b ); } function get_json_params() { return $this->b; } }
+class WP_REST_Response { public $data; public $status; public $headers = array(); function __construct( $d = null, $s = 200 ) { $this->data = $d; $this->status = $s; } function header( $k, $v ) { $this->headers[ $k ] = $v; } }
+// together.php's LiveKit helpers as the live site has them (settings come from $GLOBALS['LK'])
+function nadlan_tr_opt( $k, $d = '' ) { return $GLOBALS['LK'][ $k ] ?? $d; }
+function nadlan_tr_lk_ready() { return '' !== (string) nadlan_tr_opt( 'lk_url' ) && '' !== (string) nadlan_tr_opt( 'lk_key' ) && '' !== (string) nadlan_tr_opt( 'lk_secret' ); }
+function nadlan_tr_b64u( $s ) { return rtrim( strtr( base64_encode( $s ), '+/', '-_' ), '=' ); }
+function nadlan_tr_jwt( array $claims, $secret ) { $h = nadlan_tr_b64u( wp_json_encode( array( 'alg' => 'HS256', 'typ' => 'JWT' ) ) ); $p = nadlan_tr_b64u( wp_json_encode( $claims, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ); return $h . '.' . $p . '.' . nadlan_tr_b64u( hash_hmac( 'sha256', $h . '.' . $p, (string) $secret, true ) ); }
 
 $PLUG = dirname( __DIR__, 4 ) . '/plugins/nadlan-config';
 require $PLUG . '/inc/designer.php';
@@ -274,6 +283,69 @@ $chk = @shell_exec( 'node --version' ) ? (string) @shell_exec( 'node --check ' .
 if ( null === $chk ) { echo "ok " . ( ++$n ) . " - inline module parses # SKIP node not found\n"; }
 else { t( 'inline module parses (node --check)', 'NODE_OK' === trim( $chk ), $chk ); }
 $GLOBALS['STAGE'] = false; $_GET = array();
+
+/* ---------- the video call (HAD-706): rooms and LiveKit tokens ---------- */
+$GLOBALS['OPT'] = array( 'admin_email' => 'owner@example.test' ); $GLOBALS['TR'] = array(); $GLOBALS['LK'] = array(); $GLOBALS['MAIL'] = array(); $_GET = array();
+$creq = function ( $body, $h = null ) {
+	return new WP_REST_Request( null === $h ? array( 'x_nl_designer' => '1', 'content_type' => 'application/json', 'sec_fetch_site' => 'same-origin', 'origin' => 'https://nad-lan.co.il' ) : $h, $body );
+};
+$_SERVER['REMOTE_ADDR'] = '198.51.100.1';
+$r = nadlan_dsg_rest_call( $creq( array( 'page' => '/design-studio/' ) ) );
+t( 'call: LiveKit not set gives 503 off', 503 === $r->status && array( 'error' => 'off' ) === $r->data, json_encode( $r->data ) );
+$r = nadlan_dsg_rest_call_token( $creq( array( 'room' => 'abcdefghijkl', 'name' => 'x', 'role' => 'host' ) ) );
+t( 'call token: LiveKit not set gives 503 off', 503 === $r->status && 'off' === $r->data['error'] );
+$GLOBALS['LK'] = array( 'lk_url' => 'wss://example-test.livekit.cloud', 'lk_key' => 'APIkeytest', 'lk_secret' => 'the-test-secret-0123456789abcdef' );
+$GLOBALS['OPT']['nadlan_designer_call'] = '0';
+$r = nadlan_dsg_rest_call( $creq( array( 'page' => '/design-studio/' ) ) );
+t( 'call: the switch nadlan_designer_call = "0" gives 503 off', 503 === $r->status && 'off' === $r->data['error'] );
+unset( $GLOBALS['OPT']['nadlan_designer_call'] );
+$r = nadlan_dsg_rest_call( $creq( array( 'page' => '/design-studio/' ), array( 'content_type' => 'application/json' ) ) );
+t( 'call: without the X-NL-Designer header refused', 403 === $r->status );
+$r = nadlan_dsg_rest_call( $creq( array( 'page' => '/design-studio/' ), array( 'x_nl_designer' => '1', 'content_type' => 'application/json', 'origin' => 'https://evil.example' ) ) );
+t( 'call: a foreign origin refused', 403 === $r->status );
+$r = nadlan_dsg_rest_call( $creq( array( 'page' => '/tour/designer/', 'name' => "  דנה\n<b>כהן</b> " ) ) );
+$room = $r->data['room'] ?? '';
+t( 'call: opens a room of 12 random characters', 201 === $r->status && true === $r->data['ok'] && 1 === preg_match( '/^[a-z2-7]{12}$/', $room ), json_encode( $r->data ) );
+t( 'call: the room is a transient that lives six hours', is_array( $GLOBALS['TR'][ 'nldsg_call_' . $room ] ?? null ) && 6 * 3600 === ( $GLOBALS['TTL'][ 'nldsg_call_' . $room ] ?? 0 ) );
+$m = end( $GLOBALS['MAIL'] );
+t( 'call: one mail to the owner with the join link and the typed name only', 1 === count( $GLOBALS['MAIL'] ) && 'owner@example.test' === $m[0] && false !== strpos( $m[2], 'https://nad-lan.co.il/tour/designer/?room=' . $room ) && false !== strpos( $m[2], 'דנה כהן' ) && false === strpos( $m[2], '198.51.100.1' ) && false !== strpos( $m[1], 'מבקר פתח שיחת וידאו במעצב הדירות' ), json_encode( $m, JSON_UNESCAPED_UNICODE ) );
+t( 'call: a page outside the designer becomes the design page', '/design-studio/' === nadlan_dsg_call_page( '/evil/' ) && '/design-studio/' === nadlan_dsg_call_page( 'https://evil.example/design-studio/' ) && '/design-studio/' === nadlan_dsg_call_page( '/design-studio/../wp-admin/' ) && '/tour/designer/' === nadlan_dsg_call_page( '/tour/designer' ) && '/design-studio/designer-cost/' === nadlan_dsg_call_page( '/design-studio/designer-cost/' ) );
+$pass = 1; for ( $i = 0; $i < 8; $i++ ) { if ( 201 === nadlan_dsg_rest_call( $creq( array( 'page' => '/design-studio/' ) ) )->status ) { $pass++; } }
+t( 'call: 6 rooms an hour for one address, then 429', 6 === $pass );
+$GLOBALS['TR'] = array(); $GLOBALS['OPT']['nadlan_designer_call_day_cap'] = 3; $pass = 0;
+for ( $i = 0; $i < 5; $i++ ) { $_SERVER['REMOTE_ADDR'] = '198.51.100.' . ( 10 + $i ); if ( 201 === nadlan_dsg_rest_call( $creq( array() ) )->status ) { $pass++; } }
+t( 'call: the site-wide daily ceiling (option nadlan_designer_call_day_cap)', 3 === $pass );
+unset( $GLOBALS['OPT']['nadlan_designer_call_day_cap'] );
+$tk = implode( '|', array_keys( $GLOBALS['TR'] ) );
+t( 'call: no address in any transient name', false === strpos( $tk, '198.51.100' ) );
+
+$GLOBALS['TR'] = array(); $_SERVER['REMOTE_ADDR'] = '198.51.100.50';
+$room = nadlan_dsg_rest_call( $creq( array() ) )->data['room'];
+$tok  = function ( $b ) use ( $creq ) { return nadlan_dsg_rest_call_token( $creq( $b ) ); };
+t( 'call token: an unknown room gives 404', 404 === $tok( array( 'room' => 'abcdefghijkl', 'name' => 'נועה', 'role' => 'guest' ) )->status );
+t( 'call token: a malformed room gives 400', 400 === $tok( array( 'room' => '../x', 'name' => 'נועה', 'role' => 'guest' ) )->status );
+t( 'call token: a role other than host or guest gives 400', 400 === $tok( array( 'room' => $room, 'name' => 'נועה', 'role' => 'rep' ) )->status );
+t( 'call token: an empty name gives 400', 400 === $tok( array( 'room' => $room, 'name' => " <b></b> \n", 'role' => 'guest' ) )->status );
+$r = $tok( array( 'room' => $room, 'name' => str_repeat( 'אבגדהוזחטי', 6 ), 'role' => 'host' ) );
+t( 'call token: url, token and identity back', 200 === $r->status && 'wss://example-test.livekit.cloud' === $r->data['url'] && 1 === preg_match( '/^[a-z2-7]{10}$/', $r->data['identity'] ) && 3 === count( explode( '.', $r->data['token'] ) ), json_encode( array_keys( (array) $r->data ) ) );
+t( 'call token: never the secret or the key in the answer', false === strpos( json_encode( $r->data ), 'the-test-secret' ) && false === strpos( json_encode( $r->data ), 'APIkeytest' ) );
+list( $jh, $jp, $js ) = explode( '.', $r->data['token'] );
+$claims = json_decode( base64_decode( strtr( $jp, '-_', '+/' ) ), true );
+t( 'call token: signed with the LiveKit secret (HS256)', rtrim( strtr( base64_encode( hash_hmac( 'sha256', $jh . '.' . $jp, 'the-test-secret-0123456789abcdef', true ) ), '+/', '-_' ), '=' ) === $js );
+t( 'call token: room nadlan-dsg-<id>, join, publish, subscribe and data', 'nadlan-dsg-' . $room === $claims['video']['room'] && true === $claims['video']['roomJoin'] && true === $claims['video']['canPublish'] && true === $claims['video']['canSubscribe'] && true === $claims['video']['canPublishData'] && 'APIkeytest' === $claims['iss'] && $r->data['identity'] === $claims['sub'], json_encode( $claims ) );
+t( 'call token: two hours, the role in attributes and in metadata', 2 * 3600 + 5 === $claims['exp'] - $claims['nbf'] && 'host' === $claims['attributes']['role'] && 'host' === json_decode( $claims['metadata'], true )['role'] );
+t( 'call token: the name cut to 40 characters', 40 === mb_strlen( $claims['name'], 'UTF-8' ) );
+$again = $tok( array( 'room' => $room, 'name' => 'דנה', 'role' => 'host', 'identity' => $r->data['identity'] ) );
+t( 'call token: the same browser asking again keeps its identity', 200 === $again->status && $r->data['identity'] === $again->data['identity'] );
+$ok = 1; for ( $i = 0; $i < 9; $i++ ) { $_SERVER['REMOTE_ADDR'] = '198.51.100.' . ( 60 + $i ); if ( 200 === $tok( array( 'room' => $room, 'name' => 'אורח ' . $i, 'role' => 'guest' ) )->status ) { $ok++; } }
+$full = $tok( array( 'room' => $room, 'name' => 'עוד', 'role' => 'guest' ) );
+t( 'call token: up to 8 people a room, then 409 full', 8 === $ok && 409 === $full->status && 'full' === $full->data['error'], $ok . ' ' . $full->status );
+$_SERVER['REMOTE_ADDR'] = '198.51.100.99'; $GLOBALS['TR'][ 'nldsg_call_' . $room ]['ids'] = array(); $pass = 0;
+for ( $i = 0; $i < 25; $i++ ) { $GLOBALS['TR'][ 'nldsg_call_' . $room ]['ids'] = array(); if ( 200 === $tok( array( 'room' => $room, 'name' => 'x', 'role' => 'guest' ) )->status ) { $pass++; } }
+t( 'call token: 20 requests in 10 minutes for one address, then 429', 20 === $pass );
+unset( $GLOBALS['nadlan_dsg_n'], $GLOBALS['nadlan_dsg_map_done'] ); $sh = nadlan_dsg_shortcode( array() ); unset( $GLOBALS['nadlan_dsg_n'], $GLOBALS['nadlan_dsg_map_done'] );
+t( 'shortcode: the call button is on when LiveKit is set, and the studio gets the REST base', false !== strpos( $sh, '"call":true' ) && false !== strpos( $sh, 'rest:C.rest,call:C.call' ) );
+$GLOBALS['LK'] = array();
 
 /* ---------- source hygiene ---------- */
 $src = file_get_contents( $PLUG . '/inc/designer.php' );
