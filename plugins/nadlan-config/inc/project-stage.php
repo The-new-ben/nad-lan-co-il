@@ -405,16 +405,16 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					array( 'דירות', '453', 'בממוצע כ-150 מ״ר לדירה' ),
 					array( 'הסיבוב', '1.25 מעלות בכל קומה', 'כ-50 מעלות לאורך מגדל של 40 קומות' ),
 					array( 'הפארק', 'כ-40 דונם', 'עם אגם אקולוגי, בית ספר ומרכז קהילתי' ),
-					array( 'מצב', 'השלד הושלם', 'ב-23.4.2026' ),
+					array( 'מצב', 'הבנייה הושלמה', 'פורסם ב-10.2026 · גמר שלד ב-23.4.2026' ), // HAD-709 (1.72.642): the October 2026 publications
 				),
 				// ProjectProgress: the plan in force 24.6.2013, the permit 12.2022 (Globes), the frame 23.4.2026 (TLV GIS 499); the
 				// delivery is not one date: the statements are a dated table in the page's text (Ashtrom 2026 ... Bizportal end of 2028)
 				'progress'       => array(
 					array( 'תכנית', '6.2013', 'done' ),
 					array( 'היתר בנייה', '12.2022', 'done' ),
-					array( 'השלד הושלם', '4.2026', 'done' ),
-					array( 'בבנייה', 'עכשיו', 'now' ),
-					array( 'אכלוס', '2026 עד 2028', 'next' ),
+					array( 'הבנייה הושלמה', '10.2026', 'done' ),
+					array( 'טופס 4', 'סוף 2026 או תחילת 2027', 'now' ),
+					array( 'מסירת דירות', '1 עד 5.2027', 'next' ), // HAD-709: docs/qa/had-709/sources.md
 				),
 				// ProjectDeals: the three deals the press tied to a floor (Globes 2.5.2025, did=1001508911); which tower was not
 				// published, so no row opens a floor (n = 0). No buyer is named.
@@ -460,14 +460,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 							array( 'Apartments', '453', 'About 150 m² on average' ),
 							array( 'The twist', '1.25° per floor', 'About 50° over a 40-floor tower' ),
 							array( 'The park', 'About 40 dunams', 'With an ecological pond, a school and a community centre' ),
-							array( 'Status', 'Frame completed', 'On 23.4.2026' ),
+							array( 'Status', 'Construction completed', 'Reported 10.2026 · frame 23.4.2026' ),
 						),
 						'progress'   => array(
 							array( 'Plan', '6.2013', 'done' ),
 							array( 'Building permit', '12.2022', 'done' ),
-							array( 'Frame completed', '4.2026', 'done' ),
-							array( 'Construction', 'now', 'now' ),
-							array( 'Occupancy', '2026 to 2028', 'next' ),
+							array( 'Construction completed', '10.2026', 'done' ),
+							array( 'Form 4 (occupancy permit)', 'end 2026 or early 2027', 'now' ),
+							array( 'Handover', '1 to 5.2027', 'next' ),
 						),
 					),
 					// P8 (1.72.370): the French, Russian and Arabic pages (/projects/hamedina-fr/, -ru, -ar). The same facts as the
@@ -484,14 +484,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 							array( 'Appartements', '453', 'Environ 150 m² en moyenne' ),
 							array( 'La torsion', '1,25° par étage', 'Environ 50° sur une tour de 40 étages' ),
 							array( 'Le parc', 'Environ 4 hectares', 'Avec un étang écologique, une école et un centre communautaire' ),
-							array( 'Avancement', 'Gros œuvre achevé', 'Le 23 avril 2026' ),
+							array( 'Avancement', 'Construction achevée', 'Annoncée en 10/2026 · gros œuvre le 23 avril 2026' ),
 						),
 						'progress'   => array(
 							array( 'Plan', '06/2013', 'done' ),
 							array( 'Permis de construire', '12/2022', 'done' ),
-							array( 'Gros œuvre achevé', '04/2026', 'done' ),
-							array( 'En construction', 'aujourd’hui', 'now' ),
-							array( 'Livraison', 'de 2026 à 2028', 'next' ),
+							array( 'Construction achevée', '10/2026', 'done' ),
+							array( 'Formulaire 4', 'fin 2026 ou début 2027', 'now' ),
+							array( 'Livraison', '01 à 05/2027', 'next' ),
 						),
 					),
 					'ru' => array(
@@ -506,14 +506,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 							array( 'Квартиры', '453', 'В среднем около 150 м²' ),
 							array( 'Поворот', '1,25° на этаж', 'Около 50° на башню в 40 этажей' ),
 							array( 'Парк', 'Около 40 дунамов', 'С экологическим прудом, школой и общинным центром' ),
-							array( 'Статус', 'Каркас завершён', '23.04.2026' ),
+							array( 'Статус', 'Строительство завершено', 'Объявлено в 10.2026 · каркас 23.04.2026' ),
 						),
 						'progress'   => array(
 							array( 'План', '06.2013', 'done' ),
 							array( 'Разрешение на строительство', '12.2022', 'done' ),
-							array( 'Каркас завершён', '04.2026', 'done' ),
-							array( 'Строительство', 'сейчас', 'now' ),
-							array( 'Заселение', 'с 2026 по 2028 год', 'next' ),
+							array( 'Строительство завершено', '10.2026', 'done' ),
+							array( 'Форма 4', 'конец 2026 или начало 2027', 'now' ),
+							array( 'Заселение', '01–05.2027', 'next' ),
 						),
 					),
 					'ar' => array(
@@ -528,14 +528,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 							array( 'الشقق', '453', 'بمتوسط نحو 150 م² للشقة' ),
 							array( 'الدوران', '1.25 درجة في كل طابق', 'نحو 50 درجة على امتداد برج من 40 طابقاً' ),
 							array( 'الحديقة', 'نحو 40 دونماً', 'مع بركة بيئية ومدرسة ومركز جماهيري' ),
-							array( 'الوضع', 'اكتمل الهيكل', 'في 23.4.2026' ),
+							array( 'الوضع', 'اكتمل البناء', 'أُعلن في 10.2026 · الهيكل في 23.4.2026' ),
 						),
 						'progress'   => array(
 							array( 'المخطط', '6.2013', 'done' ),
 							array( 'رخصة البناء', '12.2022', 'done' ),
-							array( 'اكتمال الهيكل', '4.2026', 'done' ),
-							array( 'قيد البناء', 'الآن', 'now' ),
-							array( 'السكن', 'بين 2026 و2028', 'next' ),
+							array( 'اكتمال البناء', '10.2026', 'done' ),
+							array( 'استمارة 4', 'نهاية 2026 أو بداية 2027', 'now' ),
+							array( 'السكن', '1 إلى 5.2027', 'next' ),
 						),
 					),
 				),
