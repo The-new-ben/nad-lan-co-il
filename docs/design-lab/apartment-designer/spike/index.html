@@ -32,7 +32,11 @@ header .sp{flex:1}
 .chips{position:absolute;top:8px;right:8px;display:flex;border:2px solid var(--ink);background:var(--card)}
 .chips button{min-height:40px;padding:0 12px;font-size:13px;font-weight:600}
 .chips button[aria-pressed=true]{background:var(--ink);color:#fff}
-.lat{position:absolute;top:8px;left:8px;background:rgba(15,34,51,.86);color:#fff;font-size:11px;padding:4px 7px;line-height:1.35}
+.lat{position:absolute;top:8px;left:8px;background:rgba(15,34,51,.86);color:#fff;font-size:11px;padding:4px 7px;line-height:1.35;border:0;min-height:40px;cursor:pointer}
+.bench{position:fixed;inset:60px 10px auto 10px;z-index:20;background:#0F2233;color:#fff;border:2px solid #fff;padding:12px}
+.bench[hidden]{display:none}
+.bench h2{font-size:15px;margin-bottom:6px}.bench pre{font:12px/1.5 "IBM Plex Mono",monospace;white-space:pre-wrap;direction:ltr;text-align:left;unicode-bidi:isolate}
+.bench button{margin-top:10px;min-height:44px;width:100%;border:1.5px solid #fff;color:#fff;font-weight:700}
 .note{position:absolute;bottom:6px;right:8px;left:8px;font-size:11px;color:var(--ink2);text-align:center;pointer-events:none}
 .bar{background:var(--ink);cursor:row-resize;touch-action:none;display:flex;align-items:center;justify-content:center}
 .bar i{width:44px;height:3px;background:#fff;opacity:.8}
@@ -107,7 +111,7 @@ td.n,th.n{text-align:left}
     <div class="chips" role="group" aria-label="סוג המבט">
       <button id="m-doll" aria-pressed="true">מלמעלה</button><button id="m-walk" aria-pressed="false">הליכה בדירה</button>
     </div>
-    <div class="lat mono" id="lat" aria-hidden="true">2D→3D — ms</div>
+    <button class="lat mono" id="lat" aria-label="מדידת מהירות במכשיר הזה">מדידה · 2D→3D — ms</button>
     <p class="note" id="snote">הדמיה להמחשה. דירה לדוגמה, לא תוכנית של פרויקט.</p>
   </section>
   <div class="bar" id="bar" role="separator" aria-label="שינוי גודל בין התלת ממד לתוכנית" tabindex="0"><i></i></div>
@@ -121,6 +125,7 @@ td.n,th.n{text-align:left}
 <div class="sheet" id="sheet" hidden></div>
 <div class="selbar" id="selbar" hidden><b id="selname"></b><button id="rot">סיבוב</button><button id="del">הסרה</button></div>
 <div class="toast" id="toast" role="alert" hidden></div>
+<div class="bench" id="bench" role="dialog" aria-label="תוצאות המדידה" hidden><h2>מדידה במכשיר הזה. צלמו מסך ושלחו.</h2><pre></pre><button id="bench-x">סגירה</button></div>
 
 <script type="module">
 import { createStore, emptyDesign, quantities, WALL_KINDS } from './model.js';
@@ -144,7 +149,7 @@ const { mountSpace } = await import('./space3d.js');
 space = mountSpace($('space'), store, cat, {
   select,
   camera: (v) => plan.setCamera(v),
-  frame: (dt, rms) => { const work = store.lastApplyMs + rms; lat.push(dt); work_ms.push(work); if (lat.length > 400) { lat.shift(); work_ms.shift(); } $('lat').textContent = '2D→3D ' + work.toFixed(1) + ' ms · next frame'; },
+  frame: (dt, rms) => { const work = store.lastApplyMs + rms; lat.push(dt); work_ms.push(work); if (lat.length > 400) { lat.shift(); work_ms.shift(); } $('lat').textContent = 'מדידה · 2D→3D ' + work.toFixed(1) + ' ms'; },
 });
 const tSpace = performance.now();
 
@@ -222,6 +227,41 @@ $('bar').addEventListener('pointerup', () => (barDrag = false));
 $('bar').addEventListener('keydown', (ev) => { const cur = parseFloat(getComputedStyle($('app')).getPropertyValue('--split')) || 54; if (ev.key === 'ArrowUp') setSplit(cur - 5); if (ev.key === 'ArrowDown') setSplit(cur + 5); });
 
 head(); paintSel();
+
+// ---- the measurement a person runs on their own phone: tap the dark readout on the 3D view ----
+const q = (a, p) => { const s = [...a].sort((x, y) => x - y); return s.length ? s[Math.min(s.length - 1, Math.floor(s.length * p))] : 0; };
+async function measure() {
+  const box = $('bench'); box.hidden = false; box.querySelector('pre').textContent = 'מודד, כ-8 שניות...';
+  if (space.mode !== 'doll') setMode('doll');
+  const frame = () => new Promise((r) => requestAnimationFrame(r));
+  lat.length = 0; work_ms.length = 0;
+  const it = store.item('i2'), x0 = it.x, y0 = it.y;
+  for (let i = 0; i < 120; i++) { store.apply({ op: 'item.move', id: 'i2', x: x0 + (i % 40), y: y0 + (i % 25) }, { gesture: 'bench' }); await frame(); }
+  store.apply({ op: 'item.move', id: 'i2', x: x0, y: y0 }, { gesture: 'bench' }); await frame();
+  const wall = [];
+  for (let i = 0; i < 24; i++) { const t = performance.now(); store.apply({ op: 'wall.shift', id: 'p6', d: (i % 8) * 5 }, { gesture: 'benchw' }); wall.push(performance.now() - t); await frame(); }
+  store.apply({ op: 'wall.shift', id: 'p6', d: 0 }, { gesture: 'benchw' });
+  const spin = await space.spin(4000);
+  const nav = performance.getEntriesByType('resource'), kb = Math.round(nav.reduce((a, r) => a + (r.transferSize || 0), 0) / 1024);
+  const gap = q(spin.gaps, 0.5), st = space.stats();
+  const out = {
+    when: new Date().toISOString().slice(0, 16).replace('T', ' '),
+    screen: innerWidth + 'x' + innerHeight + ' @' + (window.devicePixelRatio || 1).toFixed(2),
+    gpu: space.gl(),
+    plan_drawn_s: (__nd.timings.plan_ms / 1000).toFixed(2),
+    first_3d_frame_s: (__nd.timings.first_3d_frame_ms / 1000).toFixed(2),
+    downloaded: nav.length + 1 + ' files, ' + kb + ' KB (0 = from cache)',
+    change_work_ms: 'p50 ' + q(work_ms, 0.5).toFixed(1) + ' / p95 ' + q(work_ms, 0.95).toFixed(1),
+    wall_move_ms: 'p50 ' + q(wall, 0.5).toFixed(1) + ' / p95 ' + q(wall, 0.95).toFixed(1),
+    frames_per_second: gap ? (1000 / gap).toFixed(0) + ' (slowest 5%: ' + (1000 / q(spin.gaps, 0.95)).toFixed(0) + ')' : 'n/a',
+    render_work_ms: 'p50 ' + q(spin.renders, 0.5).toFixed(1) + ' / p95 ' + q(spin.renders, 0.95).toFixed(1),
+    draw_calls: st.calls, ua: navigator.userAgent.replace(/^Mozilla\/5\.0 /, '').slice(0, 90),
+  };
+  window.__nd.bench = out;
+  box.querySelector('pre').textContent = Object.entries(out).map(([k, v]) => k + ': ' + v).join('\n');
+}
+$('lat').addEventListener('click', measure);
+$('bench-x').onclick = () => ($('bench').hidden = true);
 requestAnimationFrame(() => requestAnimationFrame(() => { window.__nd.timings.first_3d_frame_ms = performance.now(); }));
 window.__nd = { store, plan, space, quantities, lat, work_ms, timings: { plan_ms: tPlan, space_mounted_ms: tSpace } };
 </script>

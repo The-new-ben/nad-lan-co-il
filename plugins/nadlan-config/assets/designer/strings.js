@@ -1,0 +1,36 @@
+// Every visible word of the designer, per language. Hebrew is the source; other languages fall back to English, then Hebrew.
+export const STRINGS = {
+  he: {
+    dir: 'rtl', title: 'מעצבים את הדירה', undo: 'בטל', redo: 'החזר', close: 'סגירה',
+    viewTop: 'מלמעלה', viewWalk: 'הליכה בדירה', viewGroup: 'סוג המבט',
+    space: 'הדירה בתלת ממד', plan: 'תוכנית הדירה', split: 'שינוי גודל בין התלת ממד לתוכנית', tools: 'כלים',
+    note: 'הדמיה להמחשה. הרהיטים אינם כלולים במחיר הדירה.',
+    hintDrag: 'גררו רהיט או מחיצה כחולה. התלת ממד מתעדכן מיד.', hintWalk: 'געו ברצפה כדי ללכת. גררו את הנקודה האדומה בתוכנית.',
+    wallFree: ': גררו כדי להזיז', wallFixed: ': קבוע',
+    tItems: 'רהיטים', tFloor: 'ריצוף', tBoq: 'כתב כמויות', tCall: 'שיחת וידאו', tSend: 'שליחה',
+    rotate: 'סיבוב', remove: 'הסרה',
+    itemsHead: 'רהיטים בגודל אמיתי. בחרו, והרהיט יופיע בחדר.', cm: 'ס״מ', sqm: 'מ״ר',
+    floorHead: 'ריצוף', floorPick: 'געו בחדר בתוכנית או בתלת ממד, ואז בחרו ריצוף.',
+    base: 'כלול במפרט', upgrade: 'שינוי מהמפרט', decor: 'לא כלול במחיר הדירה',
+    boqHead: 'כתב כמויות: מחושב מאותה תוכנית, מתעדכן עם כל שינוי.', boqFloor: 'ריצוף', boqArea: 'שטח', boqRoom: 'חדר', boqSize: 'מידות נטו', boqItems: 'רהיטים להמחשה (לא כלולים)', boqCount: 'כמות',
+    boqFine: 'שטחים בקירוב, נמדדים בין הקירות.',
+    sub: (rooms, net, balcony) => rooms + ' חדרים · ' + net + ' מ״ר' + (balcony ? ' + מרפסת ' + balcony + ' מ״ר' : ''),
+  },
+  en: {
+    dir: 'ltr', title: 'Design the apartment', undo: 'Undo', redo: 'Redo', close: 'Close',
+    viewTop: 'From above', viewWalk: 'Walk inside', viewGroup: 'View',
+    space: 'The apartment in 3D', plan: 'Floor plan', split: 'Resize the 3D view and the plan', tools: 'Tools',
+    note: 'Illustration only. Furniture is not included in the apartment price.',
+    hintDrag: 'Drag a piece or a blue partition. The 3D view follows at once.', hintWalk: 'Tap the floor to walk. Drag the red dot on the plan.',
+    wallFree: ': drag to move', wallFixed: ': fixed',
+    tItems: 'Furniture', tFloor: 'Flooring', tBoq: 'Quantities', tCall: 'Video call', tSend: 'Send',
+    rotate: 'Rotate', remove: 'Remove',
+    itemsHead: 'Real-size furniture. Pick one and it appears in the room.', cm: 'cm', sqm: 'm²',
+    floorHead: 'Flooring', floorPick: 'Tap a room on the plan or in 3D, then pick a floor.',
+    base: 'In the specification', upgrade: 'A change from the specification', decor: 'Not included in the apartment price',
+    boqHead: 'Bill of quantities: computed from the same plan, updated with every change.', boqFloor: 'Flooring', boqArea: 'Area', boqRoom: 'Room', boqSize: 'Clear size', boqItems: 'Furniture for illustration (not included)', boqCount: 'Count',
+    boqFine: 'Approximate areas, measured between the walls.',
+    sub: (rooms, net, balcony) => rooms + ' rooms · ' + net + ' m²' + (balcony ? ' + balcony ' + balcony + ' m²' : ''),
+  },
+};
+export const strings = (lang) => ({ ...STRINGS.he, ...(STRINGS[lang] && lang !== 'he' ? STRINGS[lang] : lang && lang !== 'he' ? STRINGS.en : {}) });

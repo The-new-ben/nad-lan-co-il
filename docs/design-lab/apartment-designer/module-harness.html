@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>בדיקת מודול מעצב הדירה</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+/* A stand-in for a project page with the site's most hostile rules (see memory: the live theme forces these). The designer must not change. */
+body{margin:0;font-family:Assistant,Arial,sans-serif;background:#fff;color:#222}
+button{border-radius:12px!important;background:#e33!important;color:#fff!important;font-family:serif!important}
+h2{color:#e33!important;font-family:serif!important;font-size:40px!important}
+a{color:#e33}
+*{letter-spacing:.02em}
+main{max-width:760px;margin:0 auto;padding:16px}
+#open{min-height:48px;padding:0 20px;font-size:17px}
+#sheet{position:fixed;inset:0;z-index:999;background:#fff}
+#sheet[hidden]{display:none}
+#inline{height:640px;border:1px solid #ccc;margin-top:16px}
+</style>
+</head>
+<body>
+<main>
+  <h1>דף פרויקט לדוגמה (בדיקה מקומית)</h1>
+  <p>הדף הזה מחקה דף פרויקט עם כללי העיצוב הנוקשים של האתר. המעצב נפתח במסך מלא ולא מושפע מהם.</p>
+  <button id="open">מעצבים את הדירה</button>
+  <div id="inline" aria-label="המעצב בתוך הדף"></div>
+</main>
+<div id="sheet" hidden></div>
+<script type="module">
+import { mount } from '../../../plugins/nadlan-config/assets/designer/designer.js';
+const q = new URLSearchParams(location.search);
+const sent = [];
+const openSheet = async () => {
+  const el = document.getElementById('sheet'); el.hidden = false;
+  window.__d = await mount(el, {
+    lang: q.get('lang') || 'he', unitLabel: 'פרויקט לדוגמה · דירה 12',
+    onClose: (d) => { d.destroy(); el.hidden = true; window.__d = null; },
+    onSend: (d) => { sent.push(d.getDesign()); d.toast('נשלח (בדיקה מקומית בלבד)'); },
+    onCall: (d) => d.toast('שיחת וידאו (בדיקה מקומית בלבד)'),
+  });
+};
+document.getElementById('open').onclick = openSheet;
+window.__sent = sent;
+if (q.get('inline') !== '0') window.__i = await mount(document.getElementById('inline'), { lang: q.get('lang') || 'he' });
+if (q.get('open') === '1') await openSheet();
+window.__ready = true;
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "when": "2026-11-11T08:36:31.396Z",
+  "checks": [
+    {
+      "name": "opens from the page button: plan first, then 3D",
+      "ok": true,
+      "detail": {
+        "plan_ms": 48,
+        "first_3d_frame_ms": 702
+      }
+    },
+    {
+      "name": "the site CSS does not reach the designer (radius, colours, fonts)",
+      "ok": true,
+      "detail": {
+        "radius": "0px",
+        "bg": "rgb(255, 255, 255)",
+        "font": "\"IBM Plex Sans Hebrew\", Arial, sans-serif",
+        "h2color": "rgb(15, 34, 51)",
+        "h2size": "15px",
+        "spacing": "normal"
+      }
+    },
+    {
+      "name": "fills the phone screen, no horizontal scroll",
+      "ok": true
+    },
+    {
+      "name": "finger drag on the plan moves the piece in the model and in 3D",
+      "ok": true,
+      "detail": {
+        "before": [
+          330,
+          210
+        ],
+        "model": [
+          225,
+          345
+        ],
+        "three": [
+          225,
+          345,
+          270
+        ]
+      }
+    },
+    {
+      "name": "a fixed wall explains itself",
+      "ok": true
+    },
+    {
+      "name": "floor choice reaches the model, the 3D material and the quantities",
+      "ok": true,
+      "detail": {
+        "model": "oak-plank",
+        "three": "oak-plank",
+        "boq": 30.4
+      }
+    },
+    {
+      "name": "\"send\" hands the host a nadlan-unit-design v2 document",
+      "ok": true,
+      "detail": {
+        "n": 1,
+        "schema": "nadlan-unit-design",
+        "v": 2,
+        "floor": "oak-plank"
+      }
+    },
+    {
+      "name": "close removes the designer and frees the page",
+      "ok": true
+    },
+    {
+      "name": "no page errors (phone)",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "embeds inside a page block, English strings, left to right",
+      "ok": true,
+      "detail": {
+        "dir": "ltr",
+        "title": "Design the apartment",
+        "tool": "Furniture",
+        "box": [
+          760,
+          640
+        ]
+      }
+    },
+    {
+      "name": "no page errors (desktop)",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": 11,
+  "failed": 0
+}

@@ -244,6 +244,20 @@ export function mountSpace(host, store, cat, hooks = {}) {
     placed(id) { const g = itemObj.get(id); return g ? [Math.round(g.position.x / M), Math.round(g.position.z / M), Math.round((-g.rotation.y * 180) / Math.PI)] : null; },
     floorKey(room) { const f = gFloor.children.find((c) => c.userData.room === room); return f ? Object.keys(mat.floors).find((k) => mat.floors[k] === f.material) : null; },
     renders,
+    /** turns the camera around the apartment for ms and returns the time between frames (the device's real frame rate) */
+    spin(ms) {
+      return new Promise((done) => {
+        const t0 = performance.now(), gaps = []; let last = t0; const r0 = renders.length;
+        const step = (now) => {
+          gaps.push(now - last); last = now;
+          const a = 0.012, dx = camera.position.x - controls.target.x, dz = camera.position.z - controls.target.z;
+          camera.position.x = controls.target.x + dx * Math.cos(a) - dz * Math.sin(a); camera.position.z = controls.target.z + dx * Math.sin(a) + dz * Math.cos(a);
+          controls.update(); touch(false);
+          if (now - t0 < ms) requestAnimationFrame(step); else done({ gaps: gaps.slice(1), renders: renders.slice(-Math.min(300, gaps.length)) });
+        };
+        requestAnimationFrame(step);
+      });
+    },
     gl: () => { const g = renderer.getContext(), e = g.getExtension('WEBGL_debug_renderer_info'); return e ? g.getParameter(e.UNMASKED_RENDERER_WEBGL) : 'unknown'; },
     stats: () => ({ calls: renderer.info.render.calls, triangles: renderer.info.render.triangles, geometries: renderer.info.memory.geometries, textures: renderer.info.memory.textures }),
   };
