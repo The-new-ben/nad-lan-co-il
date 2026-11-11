@@ -1,0 +1,35 @@
+{
+  "released": "1.72.648",
+  "from": "1.72.647",
+  "live_before": {
+    "nadlan-config.php": "14bcfdaa279a18703ae07e101a5c9c1b",
+    "inc/project-stage.php": "595cce7bcf873a21c0ddfc9a03b0920d"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-11 18:27:19",
+  "files": {
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-balcony.webp": "b8a1984ee54791ddfc2fcd1c8d4970af",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-bedroom.webp": "a00286c3d94d8a80fdf5fb3bf892663f",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-floor-30-east.webp": "1102f958362c4e830854b744d596ea69",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-floor-30-north.webp": "320d59ef6927fcd17413c1ed682e008f",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-floor-30-south.webp": "03a9bfa108d8cad267e4846044b350fe",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-floor-30-west.webp": "addf0b3fbffa9a88203bff1a45a0e200",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-gym.jpg": "26d1c0a6884011e5ab0192a870331532",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-living-room.webp": "0cd48d66c66f357b1076bf94426105bb",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-lobby.jpg": "bae28a492dcb17ee33dbee5212c97466",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-pool.jpg": "11fc7631c1a3d48b52078d5d585908e9",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-spa.jpg": "f5ebc57f3f637be09329846db16ce945",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-tower-a.webp": "032e74a0546de47b8c57c73d27384977",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-tower-b.webp": "e03f1886c3e3f4a924d5a672b351e454",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-tower-c.webp": "ab89c5779476089ab75118b5c7cb4865",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-towers-aerial.webp": "20609b7c3a76778c54bcbd6e99e4fdf2",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-view-floor-20.webp": "09385a107b073217ec625698cf8ad80e",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-view-floor-30.webp": "f7aadead3070c7581160c459f6071e1a",
+    "assets/project-stage/hamedina/gallery/kikar-hamedina-view-floor-38.webp": "d14ff3adc2c54293eed0ca8c688a7fce",
+    "nadlan-config.php": "0a06512ff9be04ce2b7d9140c18edb28",
+    "inc/project-stage.php": "4bcb8dcf52b0f3f3a3521db96bd15570"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.648, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
