@@ -1023,7 +1023,7 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 			foreach ( $secs[1] as $sec ) {
 				$qa = array();
 				if ( preg_match_all( '#<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>#su', $sec, $pairs, PREG_SET_ORDER ) ) {
-					foreach ( array_slice( $pairs, 0, 12 ) as $pr ) {
+					foreach ( array_slice( $pairs, 0, 20 ) as $pr ) { // 1.72.647: 20, not 12 (the Kikar page has 18 visible questions)
 						$q   = trim( wp_strip_all_tags( $pr[1] ) );
 						$ans = trim( wp_strip_all_tags( $pr[2] ) );
 						if ( '' !== $q && '' !== $ans ) { $qa[] = array( '@type' => 'Question', 'name' => $q, 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $ans ) ); }
@@ -2590,7 +2590,15 @@ if ( ! function_exists( 'nadlan_ps_world_film' ) ) {
 				. '<source src="' . esc_url( $u . $k . '-' . $f . '-preview.mp4' ) . '" type="video/mp4">'
 				. '<track kind="captions" srclang="' . $k . '" label="' . ( 'he' === $k ? 'עברית' : 'English' ) . '" src="' . esc_url( rest_url( 'nadlan/v1/film-cc/v1-' . $k ) ) . '"></video>'; // v104.42
 		};
-		return '<section class="nlws-film" id="nlws-film" dir="' . $t[3] . '" lang="' . esc_attr( $lang ) . '" aria-labelledby="nlws-film-h">'
+		// 1.72.647: a VideoObject for the narrated film, so it can appear in video results (88.6 s, measured; on the site since 3.10.2026)
+		$vf  = 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-' . $k . '-';
+		$vld = '<script type="application/ld+json" id="nadlan-ps-film-v2">' . wp_json_encode( array(
+			'@context' => 'https://schema.org', '@type' => 'VideoObject', 'name' => $t[0], 'description' => $t[1],
+			'thumbnailUrl' => array( $vf . '16x9-poster.jpg', $vf . '9x16-poster.jpg' ), 'uploadDate' => '2026-10-03T21:44:00+03:00',
+			'duration' => 'PT89S', 'contentUrl' => $vf . '16x9-1.mp4', 'inLanguage' => $k,
+			'publisher' => array( '@type' => 'Organization', 'name' => 'נדל״ן', 'url' => home_url( '/' ) ),
+		), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>';
+		return $vld . '<section class="nlws-film" id="nlws-film" dir="' . $t[3] . '" lang="' . esc_attr( $lang ) . '" aria-labelledby="nlws-film-h">'
 			. '<h2 id="nlws-film-h">' . esc_html( $t[0] ) . '</h2><p class="nlws-film__p">' . esc_html( $t[1] ) . '</p>'
 			. nadlan_ps_world_film_v2( $k, $t[2] ) // v104.40: the narrated v2 film. 1.72.646 (Ben, 11.11.2026: "the film is there twice"): the first version left the page, one film and the facilities clip
 			. nadlan_ps_world_facilities_clip( $lang, $k ) . '</section>' // v104.36: the facilities clip, labelled before play (option B)
