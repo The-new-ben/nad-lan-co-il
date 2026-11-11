@@ -151,6 +151,9 @@ def build_meta_only(PREV, NEWV, lang, LIVE_MD5):
     src = re.sub(r"\?t" + P + r"([a-z]*)=1", "?t" + N + BS + "1=1", src)
     src = re.sub(r"&t" + P + r"([a-z]*)=1", "&t" + N + BS + "1=1", src)
     src, n = re.subn(r"for n in range\(\d+, 329, -1\)", "for n in range(%s, 329, -1)" % P, src); assert n == 1, n
+    # the designer's tour page (/tour/designer/) is a static file stamped with the version it was built for (1.72.653): its rows
+    # must not follow the version rename (the first run of 1.72.654 failed on them); they ask for "<module>.js?v=" without a number
+    src = "\n".join(re.sub(r"(\.js\?v=)1\.72\.\d+", r"\1", l) if "/tour/designer/" in l else l for l in src.split("\n"))
     src, n = re.subn(r"^    import %s as PX  # noqa: E402 \(.*$" % PXN, "    import kikar_%s as PX  # noqa: E402 (1.72.%s: no hunk; the %s FAQ meta only)" % (N, N, lang), src, flags=re.M); assert n == 1, n
     assert src.count("        for _fm in FAQ_META:") == 1 and src.count("'_nl_faq_schema' === $key && in_array( $pid, array( 8114, 8116, 8117, 8118 ), true )") == 1, "the FAQ meta path is not in deploy%s.py" % P
     src, n = re.subn(r'print\("RELEASE 1\.72\.%s LIVE: [^"]*"\)' % N, 'print("RELEASE 1.72.%s LIVE: the Kikar %s page FAQ schema follows the reworded article")' % (N, lang), src); assert n == 1, n
@@ -190,6 +193,8 @@ def build(PREV, NEWV, lang, prev_commit, meta_only=False):
     """meta_only: no PHP hunk (the calculator block is already live); only the FAQ meta follows a rewording of the article"""
     rp = json.load(open(os.path.join(QA, "deploy-result-%d.json" % PREV), encoding="utf-8"))
     assert str(rp.get("state", "")).startswith("released"), "1.72.%d must be released first (state: %s)" % (PREV, rp.get("state"))
+    if meta_only:  # the previous release may not have written inc/project-stage.php (1.72.653 was the designer's)
+        return build_meta_only(PREV, NEWV, lang, rp["files"].get(REL) or "unchanged since its last release")
     LIVE_MD5 = rp["files"][REL]
     _base = os.path.join(PLUG, "inc", "project-stage.php")
     _bt = open(_base, "rb").read()
