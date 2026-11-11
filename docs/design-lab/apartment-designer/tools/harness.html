@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>כלי עיצוב הדירה · בדיקה מקומית</title>
+<!-- HAD-707 local harness: the Instruments engine + design.js, every tool in the markup the [nadlan_tool] shortcode prints.
+     Serve the repo root: python -m http.server 47961 --bind 127.0.0.1, then open
+     http://127.0.0.1:47961/docs/design-lab/apartment-designer/tools/harness.html  (?only=dsgsofa shows one tool). -->
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../plugins/nadlan-config/assets/instruments/core.css">
+<style>
+  /* a hostile stand-in for the site theme: the engine must hold its own */
+  body{margin:0;background:#fff;font-family:system-ui;color:#333}
+  h2{color:#e33 !important}
+  button{border-radius:12px;background:#e33;color:#fff}
+  .w{max-width:1160px;margin:0 auto;padding:0 16px}
+  .bar{position:sticky;top:0;z-index:5;background:#12202A;color:#fff;font:500 13px/18px "IBM Plex Sans Hebrew",sans-serif;padding:10px 16px}
+  .bar a{color:#F2D15A}
+</style></head>
+<body>
+<div class="bar">כלי עיצוב הדירה, בדיקה מקומית · <span id="count"></span></div>
+<div class="w" id="tools"></div>
+<script>
+  var DATA = '../../../../plugins/nadlan-config/assets/instruments/data/design.json';
+  var IDS = ['dsgfee', 'dsgquote', 'dsgbudget', 'dsgfurnish', 'dsgkitchen', 'dsgfloor', 'dsgpaint', 'dsgsofa', 'dsgrug', 'dsgdining', 'dsgbed', 'dsglight', 'dsgpoints', 'dsgwho', 'dsgtime', 'dsgstyle', 'dsgcurtain'];
+  var only = new URLSearchParams(location.search).get('only');
+  var list = only ? IDS.filter(function (x) { return x === only; }) : IDS;
+  var host = document.getElementById('tools');
+  list.forEach(function (id) {  // the same markup as the shortcode (inc/instruments.php), summary panel first
+    var s = document.createElement('section'); s.className = 'nli'; s.dir = 'rtl'; s.lang = 'he'; s.id = 'sec-' + id; s.setAttribute('aria-label', id);
+    s.innerHTML = '<div class="nli-host" data-nli="' + id + '" data-nli-data="' + DATA + '"><div class="nli__panel"><p class="nli__kicker">מחשבון</p><h2 class="nli__title">' + id + '</h2></div></div>';
+    host.appendChild(s);
+  });
+  document.getElementById('count').textContent = list.length + ' כלים';
+  window.__ready = false;
+  var t0 = Date.now();
+  (function wait() {
+    var hosts = document.querySelectorAll('[data-nli]');
+    var done = [].every.call(hosts, function (h) { return h.querySelector('.nli__answer') || h.querySelector('.nli__out .nli__note'); });
+    if (done && hosts.length) { window.__ready = true; window.__ms = Date.now() - t0; return; }
+    setTimeout(wait, 60);
+  })();
+</script>
+<script src="../../../../plugins/nadlan-config/assets/instruments/core.js"></script>
+<script src="../../../../plugins/nadlan-config/assets/instruments/tools/design.js"></script>
+</body></html>
