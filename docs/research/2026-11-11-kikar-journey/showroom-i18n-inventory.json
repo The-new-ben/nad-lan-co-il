@@ -1,0 +1,3697 @@
+[
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "צפונה",
+  "key": "dir_to_n",
+  "role": "data-label",
+  "vars": [],
+  "en": "north",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "צפון-מזרחה",
+  "key": "dir_to_ne",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "מזרחה",
+  "key": "dir_to_e",
+  "role": "data-label",
+  "vars": [],
+  "en": "east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "דרום-מזרחה",
+  "key": "dir_to_se",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "דרומה",
+  "key": "dir_to_s",
+  "role": "data-label",
+  "vars": [],
+  "en": "south",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "דרום-מערבה",
+  "key": "dir_to_sw",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "מערבה",
+  "key": "dir_to_w",
+  "role": "data-label",
+  "vars": [],
+  "en": "west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 21,
+  "he": "צפון-מערבה",
+  "key": "dir_to_nw",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". Same table in showroom.js:21, cockpit.js:27, journey.js:22. Also leaves the module: nl:facing detail.facing (showroom.js:151)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "צפון",
+  "key": "dir_n",
+  "role": "data-label",
+  "vars": [],
+  "en": "north",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "צפון-מזרח",
+  "key": "dir_ne",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-east",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "מזרח",
+  "key": "dir_e",
+  "role": "data-label",
+  "vars": [],
+  "en": "east",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "דרום-מזרח",
+  "key": "dir_se",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-east",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "דרום",
+  "key": "dir_s",
+  "role": "data-label",
+  "vars": [],
+  "en": "south",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "דרום-מערב",
+  "key": "dir_sw",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-west",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "מערב",
+  "key": "dir_w",
+  "role": "data-label",
+  "vars": [],
+  "en": "west",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 22,
+  "he": "צפון-מערב",
+  "key": "dir_nw",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-west",
+  "notes": "Direction noun (\"the north\"), used after \"from\" (showroom.js:69,105) and \"facing\" in the WhatsApp text (116). Also used as an analytics value (showroom.js:165): keep analytics on a fixed code, not the translated word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "הים והעיר",
+  "key": "sec_sea_city",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the city",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "הים והירקון",
+  "key": "sec_sea_yarkon",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the Yarkon",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "הירקון והצפון",
+  "key": "sec_yarkon_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Yarkon and the north",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "רמת אביב והאוניברסיטה",
+  "key": "sec_ramat_aviv",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Aviv and Tel Aviv University",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "רמת גן והבורסה",
+  "key": "sec_ramat_gan",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Gan and the Diamond Exchange district",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "מגדלי העיר",
+  "key": "sec_city_towers",
+  "role": "data-label",
+  "vars": [],
+  "en": "the city's towers",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 24,
+  "he": "הצפון הישן ומרכז העיר",
+  "key": "sec_old_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Old North and central Tel Aviv",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 27,
+  "he": "מגדל וקומה",
+  "key": "sr_step_tower",
+  "role": "button",
+  "vars": [],
+  "en": "Tower & floor",
+  "notes": "Step label under the model (STEPS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 27,
+  "he": "הנוף והמפה",
+  "key": "sr_step_view",
+  "role": "button",
+  "vars": [],
+  "en": "View & map",
+  "notes": "Step label under the model (STEPS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 27,
+  "he": "בפנים",
+  "key": "sr_step_inside",
+  "role": "button",
+  "vars": [],
+  "en": "Inside",
+  "notes": "Step label under the model (STEPS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 27,
+  "he": "גימורים",
+  "key": "sr_step_design",
+  "role": "button",
+  "vars": [],
+  "en": "Finishes",
+  "notes": "Step label under the model (STEPS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 27,
+  "he": "סל הדירה",
+  "key": "basket_name",
+  "role": "button",
+  "vars": [],
+  "en": "My selection",
+  "notes": "Step label; the basket's own name (same Hebrew in basket.js:98, 404). \"Basket/cart\" avoided in English because the drawer states nothing is sold; literal alternative \"Apartment basket\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 68,
+  "he": "שלושת מגדלי כיכר המדינה מהאוויר, הדמיה",
+  "key": "sr_alt_aerial",
+  "role": "alt",
+  "vars": [],
+  "en": "The three Kikar HaMedina Towers from the air, artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 69,
+  "he": "מגדל ${S.tower} לבדו, מכיוון ${DIRN[dirIx(turn().frames[S.frame].b)]}, הדמיה",
+  "key": "sr_alt_tower",
+  "role": "alt",
+  "vars": [
+   "tower=S.tower",
+   "dir=DIRN[...]"
+  ],
+  "en": "Tower ${tower} on its own, seen from the ${dir}, artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 76,
+  "he": "מגדל ${k}: לסובב ולבחור בו דירה",
+  "key": "sr_aria_tower_handle",
+  "role": "aria-label",
+  "vars": [
+   "tower=k"
+  ],
+  "en": "Tower ${tower}: turn it and choose an apartment",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 87,
+  "he": "קומה ${S.floor}",
+  "key": "floor_n",
+  "role": "other",
+  "vars": [
+   "floor=S.floor"
+  ],
+  "en": "Floor ${floor}",
+  "notes": "Floor tag on the picture. Same text as cockpit.js:115 and basket.js:38 (prefix)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 101,
+  "he": "הדירה פונה <b>${esc(DIRS[dirIx(b)])}</b>: ${esc(sectorOf(b))}",
+  "key": "sr_map_facing",
+  "role": "other",
+  "vars": [
+   "dir=DIRS[...]",
+   "sector=sectorOf(b)"
+  ],
+  "en": "This apartment faces <b>${dir}</b>: ${sector}",
+  "notes": "Map line under the map (aria-live)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 105,
+  "he": "אתם מסתכלים על מגדל ${esc(S.tower)} מ${esc(DIRN[dirIx(turn().frames[S.frame].b)])}. הקישו על קומה, והמפה תראה לאן היא פונה.",
+  "key": "sr_map_looking",
+  "role": "other",
+  "vars": [
+   "tower=S.tower",
+   "dir=DIRN[...]"
+  ],
+  "en": "You are looking at Tower ${tower} from the ${dir}. Tap a floor and the map shows which way it faces.",
+  "notes": "Map line. Hebrew glues the prefix letter מ (\"from\") straight onto the variable: a template per language is needed, not concatenation."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 107,
+  "he": "המפה: הכיכר, העיר והים. בחרו מגדל וקומה, והמפה תראה לאן הדירה פונה.",
+  "key": "sr_map_intro",
+  "role": "other",
+  "vars": [],
+  "en": "The map: the square, the city and the sea. Choose a tower and a floor, and the map shows which way the apartment faces.",
+  "notes": "Map line before any choice."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 112,
+  "he": "פונה ${DIRS[dirIx(b)]} · ${sectorOf(b)}",
+  "key": "faces_line",
+  "role": "other",
+  "vars": [
+   "dir=DIRS[...]",
+   "sector=sectorOf(b)"
+  ],
+  "en": "Faces ${dir} · ${sector}",
+  "notes": "Floor card subline. Same text as cockpit.js:92 and :192."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 116,
+  "he": "שלום, אשמח לקבל תוכניות ומחירים לדירה בקומה ${S.floor} במגדל ${S.tower} במגדלי כיכר המדינה, לכיוון ${DIRN[dirIx(b)]} (nad-lan.co.il)",
+  "key": "sr_wa_text",
+  "role": "whatsapp-text",
+  "vars": [
+   "floor=S.floor",
+   "tower=S.tower",
+   "dir=DIRN[...]"
+  ],
+  "en": "Hello, I'd like to receive plans and prices for an apartment on floor ${floor} of Tower ${tower} at Kikar HaMedina Towers, facing ${dir} (nad-lan.co.il)",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Replaces the text= of the page link CK.wa (built in PHP from nadlan_ps_world_words wa_tx, project-stage.php:1155)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 123,
+  "he": "הנוף מהכיוון הזה, הדמיה",
+  "key": "sr_alt_card_view",
+  "role": "alt",
+  "vars": [],
+  "en": "The view in this direction, artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 124,
+  "he": "מגדל ${esc(S.tower)} · קומה <bdi>${S.floor}</bdi>",
+  "key": "apt_title",
+  "role": "heading",
+  "vars": [
+   "tower=S.tower",
+   "floor=S.floor"
+  ],
+  "en": "Tower ${tower} · Floor <bdi>${floor}</bdi>",
+  "notes": "Floor card title (div). Same text as cockpit.js:92 (h2) and :192."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 125,
+  "he": "קומה אחת למטה",
+  "key": "sr_aria_floor_down",
+  "role": "aria-label",
+  "vars": [],
+  "en": "One floor down",
+  "notes": "Stepper button \"−\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 125,
+  "he": "קומה אחת למעלה",
+  "key": "sr_aria_floor_up",
+  "role": "aria-label",
+  "vars": [],
+  "en": "One floor up",
+  "notes": "Stepper button \"+\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 126,
+  "he": "לכיוון אחר באותה קומה ‹",
+  "key": "sr_card_other_side",
+  "role": "button",
+  "vars": [],
+  "en": "Another direction on this floor ›",
+  "notes": "Trailing arrow glyph points to the reading end: ‹ in RTL, › in LTR. Keep the glyph out of the string (CSS ::after or a dir-aware helper)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 127,
+  "he": "להיכנס לדירה",
+  "key": "sr_card_enter",
+  "role": "button",
+  "vars": [],
+  "en": "Step inside the apartment",
+  "notes": "Primary button; opens the cockpit home."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 128,
+  "he": "תוכניות ומחירים לדירה",
+  "key": "sr_card_ask",
+  "role": "button",
+  "vars": [],
+  "en": "Plans & prices for this apartment",
+  "notes": "Link styled as a button; opens WhatsApp with sr_wa_text."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 140,
+  "he": "הקישו על קומה במגדל",
+  "key": "sr_hint_floor",
+  "role": "other",
+  "vars": [],
+  "en": "Tap a floor on the tower",
+  "notes": "Hint bubble."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 140,
+  "he": "הקישו על מגדל",
+  "key": "sr_hint_tower",
+  "role": "other",
+  "vars": [],
+  "en": "Tap a tower",
+  "notes": "Hint bubble."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 143,
+  "he": "מגדל ${S.tower}, לבדו",
+  "key": "sr_title_tower",
+  "role": "heading",
+  "vars": [
+   "tower=S.tower"
+  ],
+  "en": "Tower ${tower}, on its own",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 143,
+  "he": "בחרו דירה במגדלי כיכר המדינה",
+  "key": "sr_title_all",
+  "role": "heading",
+  "vars": [],
+  "en": "Choose an apartment at Kikar HaMedina Towers",
+  "notes": "Same text as showroom.js:233 (first paint)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 144,
+  "he": "המפה מראה לאן הדירה פונה",
+  "key": "sr_sub_picked",
+  "role": "other",
+  "vars": [],
+  "en": "The map shows which way the apartment faces",
+  "notes": "Subtitle under the heading."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 144,
+  "he": "מסובבים את המגדל, ומקישים על קומה",
+  "key": "sr_sub_tower",
+  "role": "other",
+  "vars": [],
+  "en": "Turn the tower, then tap a floor",
+  "notes": "Subtitle."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 144,
+  "he": "מקישים על מגדל, מסובבים אותו ובוחרים קומה",
+  "key": "sr_sub_all",
+  "role": "other",
+  "vars": [],
+  "en": "Tap a tower, turn it and choose a floor",
+  "notes": "Subtitle."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 151,
+  "he": "מגדל ${S.tower}",
+  "key": "tower_n",
+  "role": "data-label",
+  "vars": [
+   "tower=S.tower"
+  ],
+  "en": "Tower ${tower}",
+  "notes": "Leaves the module as nl:facing detail.label: basket.js:51 stores it in localStorage and prints it (unitLine, basket.js:38) and sends it in the WhatsApp message (basket.js:322). A label saved in one language stays in that language after a switch."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 226,
+  "he": "שיחת וידאו עם נציג",
+  "key": "sr_call",
+  "role": "button",
+  "vars": [],
+  "en": "Video call with a representative",
+  "notes": "Link styled as a button. The same Hebrew is the search key of a .replace() at showroom.js:256: switch that to a key lookup."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 232,
+  "he": "אולם התצוגה: בחירת דירה במגדלי כיכר המדינה",
+  "key": "sr_aria_section",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Showroom: choose an apartment at Kikar HaMedina Towers",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 233,
+  "he": "בחרו דירה במגדלי כיכר המדינה",
+  "key": "sr_title_all",
+  "role": "heading",
+  "vars": [],
+  "en": "Choose an apartment at Kikar HaMedina Towers",
+  "notes": "First paint; repainted by paintHint (showroom.js:143)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 234,
+  "he": "שלבי הבחירה",
+  "key": "sr_aria_steps",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Selection steps",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 235,
+  "he": "המגדלים: מקישים על מגדל, מסובבים אותו בחצים או בגרירה, ומקישים על קומה",
+  "key": "sr_aria_stage",
+  "role": "aria-label",
+  "vars": [],
+  "en": "The towers: tap a tower, turn it with the arrow keys or by dragging, then tap a floor",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 237,
+  "he": "הדמיה להמחשה",
+  "key": "sim",
+  "role": "other",
+  "vars": [],
+  "en": "Artist's impression",
+  "notes": "Picture caption required on every render (site honesty law). One shared key across all four files."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 238,
+  "he": "› שלושת המגדלים",
+  "key": "sr_back_all",
+  "role": "button",
+  "vars": [],
+  "en": "‹ All three towers",
+  "notes": "Leading arrow is the \"back\" glyph: › in RTL, ‹ in LTR. Keep the glyph out of the string."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 240,
+  "he": "גררו לצדדים כדי לסובב את המגדל",
+  "key": "sr_turn_hint",
+  "role": "other",
+  "vars": [],
+  "en": "Drag sideways to turn the tower",
+  "notes": "Hint pill; the ↔ glyph before it is symmetric."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 243,
+  "he": "מפת הסביבה: כיכר המדינה מימין, הים משמאל, צפון למעלה",
+  "key": "sr_alt_map",
+  "role": "alt",
+  "vars": [],
+  "en": "Area map: Kikar HaMedina on the right, the sea on the left, north at the top",
+  "notes": "Geographic, true in every language (the map image is never mirrored)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 244,
+  "he": "הים",
+  "key": "sr_map_sea",
+  "role": "other",
+  "vars": [],
+  "en": "Sea",
+  "notes": "Map label pinned left by CSS (showroom.css:59): geographic, must not flip in RTL/LTR."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 244,
+  "he": "צפון ↑",
+  "key": "sr_map_north",
+  "role": "other",
+  "vars": [],
+  "en": "North ↑",
+  "notes": "Map label pinned right by CSS (showroom.css:60): geographic, must not flip."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 256,
+  "he": "שיחת וידאו עם נציג",
+  "key": "sr_call",
+  "role": "other",
+  "vars": [],
+  "en": "Video call with a representative",
+  "notes": "Search key of .replace() on the rendered callRow() HTML: breaks in any other language. Pass the label into callRow(now) instead."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/showroom.js",
+  "line": 256,
+  "he": "שיחת וידאו עכשיו, עם נציג",
+  "key": "sr_call_now",
+  "role": "button",
+  "vars": [],
+  "en": "Video call now with a representative",
+  "notes": "Shown when the room endpoint reports a representative available."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "צפונה",
+  "key": "dir_to_n",
+  "role": "data-label",
+  "vars": [],
+  "en": "north",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "צפון-מזרחה",
+  "key": "dir_to_ne",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "מזרחה",
+  "key": "dir_to_e",
+  "role": "data-label",
+  "vars": [],
+  "en": "east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "דרום-מזרחה",
+  "key": "dir_to_se",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "דרומה",
+  "key": "dir_to_s",
+  "role": "data-label",
+  "vars": [],
+  "en": "south",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "דרום-מערבה",
+  "key": "dir_to_sw",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "מערבה",
+  "key": "dir_to_w",
+  "role": "data-label",
+  "vars": [],
+  "en": "west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 27,
+  "he": "צפון-מערבה",
+  "key": "dir_to_nw",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord(); also the analytics value at cockpit.js:272 (keep analytics on a fixed code)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "הים והעיר",
+  "key": "sec_sea_city",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the city",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "הים והירקון",
+  "key": "sec_sea_yarkon",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the Yarkon",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "הירקון והצפון",
+  "key": "sec_yarkon_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Yarkon and the north",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "רמת אביב והאוניברסיטה",
+  "key": "sec_ramat_aviv",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Aviv and Tel Aviv University",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "רמת גן והבורסה",
+  "key": "sec_ramat_gan",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Gan and the Diamond Exchange district",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "מגדלי העיר",
+  "key": "sec_city_towers",
+  "role": "data-label",
+  "vars": [],
+  "en": "the city's towers",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 29,
+  "he": "הצפון הישן ומרכז העיר",
+  "key": "sec_old_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Old North and central Tel Aviv",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "חינוך",
+  "key": "ck_grp_education",
+  "role": "heading",
+  "vars": [],
+  "en": "Education",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "אוכל וקפה",
+  "key": "ck_grp_food",
+  "role": "heading",
+  "vars": [],
+  "en": "Food & coffee",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "קניות ושירותים",
+  "key": "ck_grp_essentials",
+  "role": "heading",
+  "vars": [],
+  "en": "Shops & services",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "תחבורה",
+  "key": "ck_grp_transport",
+  "role": "heading",
+  "vars": [],
+  "en": "Transport",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "גנים וספורט",
+  "key": "ck_grp_outdoors",
+  "role": "heading",
+  "vars": [],
+  "en": "Parks & sport",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "בריאות",
+  "key": "ck_grp_health",
+  "role": "heading",
+  "vars": [],
+  "en": "Health",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 32,
+  "he": "קהילה ותרבות",
+  "key": "ck_grp_community",
+  "role": "heading",
+  "vars": [],
+  "en": "Community & culture",
+  "notes": "Group heading on the area screen (GROUPS). world.js already has this table for en/fr/ru/ar (I18N.<lang>.cats, world.js:213, 318, 419, 520): reuse it."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בית ספר",
+  "key": "ck_kind_school",
+  "role": "data-label",
+  "vars": [],
+  "en": "School",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "גן ילדים",
+  "key": "ck_kind_kindergarten",
+  "role": "data-label",
+  "vars": [],
+  "en": "Kindergarten",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מכללה",
+  "key": "ck_kind_college",
+  "role": "data-label",
+  "vars": [],
+  "en": "College",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מעון",
+  "key": "ck_kind_daycare",
+  "role": "data-label",
+  "vars": [],
+  "en": "Daycare",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "גן",
+  "key": "ck_kind_park",
+  "role": "data-label",
+  "vars": [],
+  "en": "Park",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "גינת כלבים",
+  "key": "ck_kind_dog_park",
+  "role": "data-label",
+  "vars": [],
+  "en": "Dog park",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "חדר כושר",
+  "key": "ck_kind_gym",
+  "role": "data-label",
+  "vars": [],
+  "en": "Gym",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "תחנת אוטובוס",
+  "key": "ck_kind_bus_stop",
+  "role": "data-label",
+  "vars": [],
+  "en": "Bus stop",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מסעדה",
+  "key": "ck_kind_restaurant",
+  "role": "data-label",
+  "vars": [],
+  "en": "Restaurant",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בית קפה",
+  "key": "ck_kind_cafe",
+  "role": "data-label",
+  "vars": [],
+  "en": "Café",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מאפייה",
+  "key": "ck_kind_bakery",
+  "role": "data-label",
+  "vars": [],
+  "en": "Bakery",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "חנות",
+  "key": "ck_kind_shopping",
+  "role": "data-label",
+  "vars": [],
+  "en": "Shop",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "סופרמרקט",
+  "key": "ck_kind_supermarket",
+  "role": "data-label",
+  "vars": [],
+  "en": "Supermarket",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בנק",
+  "key": "ck_kind_bank",
+  "role": "data-label",
+  "vars": [],
+  "en": "Bank",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בית מרקחת",
+  "key": "ck_kind_pharmacy",
+  "role": "data-label",
+  "vars": [],
+  "en": "Pharmacy",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מרפאה",
+  "key": "ck_kind_clinic",
+  "role": "data-label",
+  "vars": [],
+  "en": "Clinic",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בית חולים",
+  "key": "ck_kind_hospital",
+  "role": "data-label",
+  "vars": [],
+  "en": "Hospital",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בריאות",
+  "key": "ck_kind_health",
+  "role": "data-label",
+  "vars": [],
+  "en": "Health services",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "מרכז קהילתי",
+  "key": "ck_kind_community",
+  "role": "data-label",
+  "vars": [],
+  "en": "Community centre",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "בית כנסת",
+  "key": "ck_kind_worship",
+  "role": "data-label",
+  "vars": [],
+  "en": "Synagogue",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "תרבות",
+  "key": "ck_kind_culture",
+  "role": "data-label",
+  "vars": [],
+  "en": "Culture",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "רכבת קלה",
+  "key": "ck_kind_light_rail",
+  "role": "data-label",
+  "vars": [],
+  "en": "Light rail",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "רכבת",
+  "key": "ck_kind_rail",
+  "role": "data-label",
+  "vars": [],
+  "en": "Train",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "גן שעשועים",
+  "key": "ck_kind_playground",
+  "role": "data-label",
+  "vars": [],
+  "en": "Playground",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 33,
+  "he": "ספרייה",
+  "key": "ck_kind_library",
+  "role": "data-label",
+  "vars": [],
+  "en": "Library",
+  "notes": "Place kind beside a place name (KINDS). world.js has most of these per language (I18N.<lang>.kinds, world.js:243 for en): reuse; light_rail and rail are missing there."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 34,
+  "he": "העיצוב המקורי",
+  "key": "ck_pano_original",
+  "role": "button",
+  "vars": [],
+  "en": "Original design",
+  "notes": "Finish chip (PANOS) in the 360 screen."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 34,
+  "he": "עץ חם",
+  "key": "style_warm",
+  "role": "button",
+  "vars": [],
+  "en": "Warm wood",
+  "notes": "Finish chip. Same Hebrew as basket.js:21 STYLES.warm: one key."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 34,
+  "he": "בהיר",
+  "key": "style_light",
+  "role": "button",
+  "vars": [],
+  "en": "Light",
+  "notes": "Finish chip. Same as basket.js:21 STYLES.light."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 34,
+  "he": "אבן",
+  "key": "style_stone",
+  "role": "button",
+  "vars": [],
+  "en": "Stone",
+  "notes": "Finish chip. Same as basket.js:21 STYLES.stone."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 35,
+  "he": "הבריכה",
+  "key": "ck_fac_pool",
+  "role": "button",
+  "vars": [],
+  "en": "Pool",
+  "notes": "Amenity chip (FACS); also the 360 aria-label (cockpit.js:137) and the caption (138)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 35,
+  "he": "חדר הכושר",
+  "key": "ck_fac_gym",
+  "role": "button",
+  "vars": [],
+  "en": "Gym",
+  "notes": "Amenity chip (FACS); also the 360 aria-label (cockpit.js:137) and the caption (138)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 35,
+  "he": "הספא",
+  "key": "ck_fac_spa",
+  "role": "button",
+  "vars": [],
+  "en": "Spa",
+  "notes": "Amenity chip (FACS); also the 360 aria-label (cockpit.js:137) and the caption (138)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 35,
+  "he": "הלובי",
+  "key": "ck_fac_lobby",
+  "role": "button",
+  "vars": [],
+  "en": "Lobby",
+  "notes": "Amenity chip (FACS); also the 360 aria-label (cockpit.js:137) and the caption (138)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 35,
+  "he": "החניון",
+  "key": "ck_fac_parking",
+  "role": "button",
+  "vars": [],
+  "en": "Parking",
+  "notes": "Amenity chip (FACS); also the 360 aria-label (cockpit.js:137) and the caption (138)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 82,
+  "he": "מגדל ${c.tower} · קומה ${c.floor} · פונה ${dirWord(c.bearing)}",
+  "key": "ck_label",
+  "role": "other",
+  "vars": [
+   "tower=c.tower",
+   "floor=c.floor",
+   "dir=dirWord(c.bearing)"
+  ],
+  "en": "Tower ${tower} · Floor ${floor} · faces ${dir}",
+  "notes": "label(): used in the hero alt (90), the view screen title (112) and the shared text (303)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 90,
+  "he": "הנוף מהדירה: ",
+  "key": "ck_alt_hero",
+  "role": "alt",
+  "vars": [],
+  "en": "View from the apartment: ",
+  "notes": "Concatenated with label(c)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 91,
+  "he": "› חזרה",
+  "key": "ck_back",
+  "role": "button",
+  "vars": [],
+  "en": "‹ Back",
+  "notes": "Leading back glyph: › in RTL, ‹ in LTR."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 91,
+  "he": "הדמיה להמחשה",
+  "key": "sim",
+  "role": "other",
+  "vars": [],
+  "en": "Artist's impression",
+  "notes": "Hero caption."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 91,
+  "he": " · הנוף מקומה ${v.floor}",
+  "key": "ck_cap_view_from",
+  "role": "other",
+  "vars": [
+   "floor=v.floor"
+  ],
+  "en": " · view from floor ${floor}",
+  "notes": "Nested in the hero caption when the nearest rendered floor differs."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 92,
+  "he": "מגדל ${esc(c.tower)} · קומה ${bdi(c.floor)}",
+  "key": "apt_title",
+  "role": "heading",
+  "vars": [
+   "tower=c.tower",
+   "floor=c.floor"
+  ],
+  "en": "Tower ${tower} · Floor ${floor}",
+  "notes": "h2 of the cockpit home."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 92,
+  "he": "פונה ${esc(dirWord(c.bearing))} · ${esc(sectorOf(c.bearing))}",
+  "key": "faces_line",
+  "role": "other",
+  "vars": [
+   "dir",
+   "sector"
+  ],
+  "en": "Faces ${dir} · ${sector}",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 93,
+  "he": "גובה העיניים כ-${bdi(eyeH(c.floor).toFixed(0))} מ׳ מעל הרחוב",
+  "key": "ck_eye_street",
+  "role": "number-format",
+  "vars": [
+   "m=eyeH(c.floor)"
+  ],
+  "en": "Eye level about ${m} m above the street",
+  "notes": "מ׳ = metres here."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 94,
+  "he": "מה תרצו לראות?",
+  "key": "ck_ask",
+  "role": "heading",
+  "vars": [],
+  "en": "What would you like to see?",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 96,
+  "he": "הנוף",
+  "key": "ck_tile_view",
+  "role": "button",
+  "vars": [],
+  "en": "The view",
+  "notes": "Tile; also the view screen title (110)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 97,
+  "he": "בפנים · 360°",
+  "key": "ck_tile_inside",
+  "role": "button",
+  "vars": [],
+  "en": "Inside · 360°",
+  "notes": "Tile; also screen title (126, 132)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 98,
+  "he": "דירה אחרת",
+  "key": "ck_tile_other",
+  "role": "button",
+  "vars": [],
+  "en": "Another apartment",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 99,
+  "he": "התוכנית",
+  "key": "ck_tile_plan",
+  "role": "button",
+  "vars": [],
+  "en": "Floor plan",
+  "notes": "Tile; also screen title (142)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 100,
+  "he": "המתקנים · 360°",
+  "key": "ck_tile_fac",
+  "role": "button",
+  "vars": [],
+  "en": "Amenities · 360°",
+  "notes": "Tile; also screen title (137)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 101,
+  "he": "מחיר ועלות",
+  "key": "ck_tile_price",
+  "role": "button",
+  "vars": [],
+  "en": "Price & costs",
+  "notes": "Tile; also screen title (152)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 101,
+  "he": "מיליון ₪, עסקאות שפורסמו",
+  "key": "ck_tile_price_sub",
+  "role": "number-format",
+  "vars": [],
+  "en": "million ₪, published deals",
+  "notes": "Under a range like \"9.58–10.63\" built with num() in he-IL. In English the natural form is \"₪9.58M–₪10.63M\": consider a template with the range as a variable."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 102,
+  "he": "השכונה",
+  "key": "ck_tile_area",
+  "role": "button",
+  "vars": [],
+  "en": "The area",
+  "notes": "Tile; also screen title (169, 176)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 103,
+  "he": "הסרט",
+  "key": "ck_tile_film",
+  "role": "button",
+  "vars": [],
+  "en": "The film",
+  "notes": "Tile; also screen title (185). The film is picked from the page's own <video> (cockpit.js:180): the English page must carry its English cut."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 104,
+  "he": "השוואה ושליחה",
+  "key": "ck_tile_save",
+  "role": "button",
+  "vars": [],
+  "en": "Compare & share",
+  "notes": "Tile; also screen title (193)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 104,
+  "he": "שמורות",
+  "key": "ck_tile_saved",
+  "role": "number-format",
+  "vars": [],
+  "en": "saved",
+  "notes": "Under a count. Arabic needs plural forms (world.js has arN() for that, world.js:48)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 107,
+  "he": "› לדירה",
+  "key": "ck_back_apt",
+  "role": "button",
+  "vars": [],
+  "en": "‹ Back to the apartment",
+  "notes": "Leading back glyph flips with direction."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 110,
+  "he": "הנוף",
+  "key": "ck_tile_view",
+  "role": "heading",
+  "vars": [],
+  "en": "The view",
+  "notes": "Screen title via subTop()."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 110,
+  "he": "אין עדיין תמונה מהקומה הזאת.",
+  "key": "ck_view_none",
+  "role": "other",
+  "vars": [],
+  "en": "No picture from this floor yet.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 112,
+  "he": "הנוף מקומה ",
+  "key": "ck_alt_view",
+  "role": "alt",
+  "vars": [],
+  "en": "View from floor ",
+  "notes": "Concatenated: + v.floor + ', ' + dirWord(...). Make it a template: \"View from floor ${floor}, ${dir}\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 113,
+  "he": "הדמיה להמחשה · קומה ${v.floor} · ${esc(dirWord(v.bearing))}",
+  "key": "ck_cap_view",
+  "role": "other",
+  "vars": [
+   "floor=v.floor",
+   "dir"
+  ],
+  "en": "Artist's impression · Floor ${floor} · ${dir}",
+  "notes": "Caption on the view screen."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 114,
+  "he": "גררו לצדדים כדי לראות את כל הנוף",
+  "key": "ck_view_drag",
+  "role": "other",
+  "vars": [],
+  "en": "Drag sideways to see the whole view",
+  "notes": "Hint. The panorama is centred by scrollLeft = -(...)/2 (cockpit.js:241): a negative scrollLeft is the RTL convention; in LTR it must be positive."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 115,
+  "he": "אותו כיוון, קומות אחרות",
+  "key": "ck_row_floors",
+  "role": "heading",
+  "vars": [],
+  "en": "Same direction, other floors",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 115,
+  "he": "קומה ${bdi(x.floor)}",
+  "key": "floor_n",
+  "role": "button",
+  "vars": [
+   "floor=x.floor"
+  ],
+  "en": "Floor ${floor}",
+  "notes": "Strip button text."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 116,
+  "he": "אותה קומה, כיוונים אחרים",
+  "key": "ck_row_sides",
+  "role": "heading",
+  "vars": [],
+  "en": "Same floor, other directions",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 121,
+  "he": "חדר השינה",
+  "key": "ck_room_bed",
+  "role": "button",
+  "vars": [],
+  "en": "Bedroom",
+  "notes": "Room chip and caption (ROOMS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 121,
+  "he": "המרפסת",
+  "key": "ck_room_balcony",
+  "role": "button",
+  "vars": [],
+  "en": "Balcony",
+  "notes": "Room chip and caption (ROOMS)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 122,
+  "he": "לחדר השינה",
+  "key": "ck_door_bed",
+  "role": "button",
+  "vars": [],
+  "en": "To the bedroom",
+  "notes": "Door hotspot in the 360; cockpit.js:217 appends ' ‹' (reading-end arrow: › in LTR)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 122,
+  "he": "למרפסת",
+  "key": "ck_door_balcony",
+  "role": "button",
+  "vars": [],
+  "en": "To the balcony",
+  "notes": "Door hotspot; same arrow note."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 123,
+  "he": "מעבר בין החדרים",
+  "key": "ck_aria_rooms",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Move between rooms",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 123,
+  "he": "הסלון",
+  "key": "ck_room_living",
+  "role": "button",
+  "vars": [],
+  "en": "Living room",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 126,
+  "he": "בפנים · 360°",
+  "key": "ck_tile_inside",
+  "role": "heading",
+  "vars": [],
+  "en": "Inside · 360°",
+  "notes": "Screen title (room view)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 126,
+  "he": ", סיור 360 בדירה לדוגמה",
+  "key": "ck_aria_room_tour",
+  "role": "aria-label",
+  "vars": [],
+  "en": ", 360° tour of the example apartment",
+  "notes": "Concatenated after the room name: make it \"${room}, 360° tour of the example apartment\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 127,
+  "he": "${R[1]} · דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה · גררו כדי להסתכל מסביב",
+  "key": "ck_cap_room",
+  "role": "other",
+  "vars": [
+   "room=R[1]"
+  ],
+  "en": "${room} · Example apartment, Tower C, floor 30 · Artist's impression · Drag to look around",
+  "notes": "Caption of the bedroom/balcony 360."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 130,
+  "he": "הדירה הזאת",
+  "key": "ck_pano_this",
+  "role": "button",
+  "vars": [],
+  "en": "This apartment",
+  "notes": "First finish chip when the chosen apartment has its own living-room 360."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 131,
+  "he": "הנוף מקומה ${io.floor}${near}, ${dirWord(io.bearing)} · הסלון לדוגמה · הדמיה להמחשה",
+  "key": "ck_cap_own",
+  "role": "other",
+  "vars": [
+   "floor=io.floor",
+   "near=(next entry)",
+   "dir=dirWord(io.bearing)"
+  ],
+  "en": "View from floor ${floor}${near}, ${dir} · Example living room · Artist's impression",
+  "notes": "In code the ${near} slot is the inline conditional `${io.floor !== c.floor ? ` (...)` : ''}`; its Hebrew is the next entry (listed once there)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 131,
+  "he": " (הקרובה ל-${c.floor})",
+  "key": "ck_cap_own_near",
+  "role": "other",
+  "vars": [
+   "floor=c.floor"
+  ],
+  "en": " (nearest to ${floor})",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 131,
+  "he": "גימור ",
+  "key": "ck_cap_finish",
+  "role": "other",
+  "vars": [],
+  "en": "Finish: ",
+  "notes": "Concatenated: 'גימור ' + P[1] + ' · '. Template: \"${finish} finish · \"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 131,
+  "he": "דירה לדוגמה, מגדל C קומה 30 · הדמיה להמחשה",
+  "key": "ck_cap_example",
+  "role": "other",
+  "vars": [],
+  "en": "Example apartment, Tower C, floor 30 · Artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 132,
+  "he": "בפנים · 360°",
+  "key": "ck_tile_inside",
+  "role": "heading",
+  "vars": [],
+  "en": "Inside · 360°",
+  "notes": "Screen title (living room)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 132,
+  "he": "סיור 360 בסלון לדוגמה, עם הנוף מהדירה שבחרתם",
+  "key": "ck_aria_own_tour",
+  "role": "aria-label",
+  "vars": [],
+  "en": "360° tour of the example living room, with the view from the apartment you chose",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 132,
+  "he": "סיור 360 בסלון של הדירה לדוגמה",
+  "key": "ck_aria_example_tour",
+  "role": "aria-label",
+  "vars": [],
+  "en": "360° tour of the example apartment's living room",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 133,
+  "he": "${cap} · גררו כדי להסתכל מסביב",
+  "key": "ck_cap_drag",
+  "role": "other",
+  "vars": [
+   "cap"
+  ],
+  "en": "${cap} · Drag to look around",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 137,
+  "he": "המתקנים · 360°",
+  "key": "ck_tile_fac",
+  "role": "heading",
+  "vars": [],
+  "en": "Amenities · 360°",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 138,
+  "he": "${esc(FACS[sub.fac][1])} · הדמיה להמחשה · גררו כדי להסתכל מסביב",
+  "key": "ck_cap_fac",
+  "role": "other",
+  "vars": [
+   "facility=FACS[sub.fac][1]"
+  ],
+  "en": "${facility} · Artist's impression · Drag to look around",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 142,
+  "he": "התוכנית",
+  "key": "ck_tile_plan",
+  "role": "heading",
+  "vars": [],
+  "en": "Floor plan",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 142,
+  "he": "תוכנית קומה טיפוסית: ארבע דירות פינתיות סביב גרעין עגול",
+  "key": "ck_alt_plan",
+  "role": "alt",
+  "vars": [],
+  "en": "Typical floor plan: four corner apartments around a round core",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 143,
+  "he": "הקישו על התוכנית כדי להגדיל. תוכנית להמחשה של קומה טיפוסית: ארבע דירות פינתיות, לפי 453 דירות ב-117 קומות ולפי שטח הקומה. אינה תוכנית מכר.",
+  "key": "ck_plan_note",
+  "role": "other",
+  "vars": [],
+  "en": "Tap the plan to zoom in. An illustrative plan of a typical floor: four corner apartments, based on 453 apartments over 117 floors and the floor area. Not a sales plan.",
+  "notes": "Numbers are facts in the string; keep them."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 144,
+  "he": "תוכניות מכר אמיתיות נשלחות בשיחה עם הנציג.",
+  "key": "ck_plan_note2",
+  "role": "other",
+  "vars": [],
+  "en": "Actual sales plans are sent during a call with the representative.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 147,
+  "he": "קומה ${bdi(d.floor)} · ${esc(d.apt)} · ${bdi(d.date)}",
+  "key": "ck_deal_row",
+  "role": "other",
+  "vars": [
+   "floor=d.floor",
+   "apt=d.apt",
+   "date=d.date"
+  ],
+  "en": "Floor ${floor} · ${apt} · ${date}",
+  "notes": "d.apt is Hebrew in cockpit.json (\"4 חדרים · 140 מ״ר\"); d.date is \"M.YYYY\" (e.g. 12.2024), ambiguous for some readers."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 147,
+  "he": "${bdi(num(d.price / 1e6, 2))} מ׳ ₪",
+  "key": "ck_deal_price",
+  "role": "number-format",
+  "vars": [
+   "m=num(price/1e6,2)"
+  ],
+  "en": "₪${m}M",
+  "notes": "Here מ׳ means MILLION (elsewhere in these files מ׳ means metres). num() formats with he-IL (cockpit.js:20)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 152,
+  "he": "מחיר ועלות",
+  "key": "ck_tile_price",
+  "role": "heading",
+  "vars": [],
+  "en": "Price & costs",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 153,
+  "he": "עסקאות שפורסמו במגדלים",
+  "key": "ck_deals_title",
+  "role": "heading",
+  "vars": [],
+  "en": "Published deals in the towers",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 153,
+  "he": "מקור:",
+  "key": "source_prefix",
+  "role": "other",
+  "vars": [],
+  "en": "Source:",
+  "notes": "Followed by a link whose text is D.deals[0].src (Hebrew \"גלובס\" in cockpit.json)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 153,
+  "he": "המגדל של כל עסקה לא פורסם",
+  "key": "ck_deals_tower_unknown",
+  "role": "other",
+  "vars": [],
+  "en": "The tower of each deal wasn't published",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 155,
+  "he": "מחיר הדירה לדוגמה (₪)",
+  "key": "ck_calc_price",
+  "role": "other",
+  "vars": [],
+  "en": "Example apartment price (₪)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 156,
+  "he": "דירה נוספת",
+  "key": "tax_additional_home",
+  "role": "other",
+  "vars": [],
+  "en": "Additional home",
+  "notes": "Form label (checkbox). Same Hebrew as basket.js:18 buyer type. Israeli purchase-tax category."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 157,
+  "he": "מימון (%)",
+  "key": "ck_calc_share",
+  "role": "other",
+  "vars": [],
+  "en": "Financing (%)",
+  "notes": "Form label: mortgage share of the price."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 158,
+  "he": "שנים",
+  "key": "ck_calc_years",
+  "role": "other",
+  "vars": [],
+  "en": "Term (years)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 159,
+  "he": "ריבית (%)",
+  "key": "ck_calc_rate",
+  "role": "other",
+  "vars": [],
+  "en": "Interest rate (%)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 160,
+  "he": "שטח לארנונה (מ״ר)",
+  "key": "ck_calc_size",
+  "role": "other",
+  "vars": [],
+  "en": "Area for municipal tax (m²)",
+  "notes": "Form label. Arnona = Israeli municipal property tax."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 161,
+  "he": "דמי תחזוקה (₪ בחודש)",
+  "key": "ck_calc_fee",
+  "role": "other",
+  "vars": [],
+  "en": "Maintenance fee (₪ per month)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 163,
+  "he": "מס רכישה",
+  "key": "purchase_tax",
+  "role": "other",
+  "vars": [],
+  "en": "Purchase tax",
+  "notes": "Result row. Same Hebrew as basket.js:296."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 163,
+  "he": "המחיר והמס יחד",
+  "key": "ck_price_tax_total",
+  "role": "other",
+  "vars": [],
+  "en": "Price and tax combined",
+  "notes": "Result row."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 164,
+  "he": "משכנתא בחודש, לדוגמה",
+  "key": "ck_mortgage_month",
+  "role": "other",
+  "vars": [],
+  "en": "Mortgage per month, example",
+  "notes": "Result row."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 164,
+  "he": "ארנונה בחודש",
+  "key": "ck_arnona_month",
+  "role": "other",
+  "vars": [],
+  "en": "Municipal tax (arnona) per month",
+  "notes": "Result row."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 165,
+  "he": "תחזוקה בחודש",
+  "key": "ck_fee_month",
+  "role": "other",
+  "vars": [],
+  "en": "Maintenance per month",
+  "notes": "Result row."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 165,
+  "he": "בחודש, הכול יחד",
+  "key": "ck_month_total",
+  "role": "other",
+  "vars": [],
+  "en": "Monthly total",
+  "notes": "Result row."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 166,
+  "he": "דוגמה בלבד; ברירת המחדל היא העסקה הנמוכה שפורסמה. מס רכישה: ${esc(D.tax.asof)}. ארנונה: ${esc(D.arnona.asof)}, אזור ${D.arnona.zone}. ריבית: ממוצע ${esc(D.mortgage.src)}, ${esc(D.mortgage.label)}. ${feeClause} שכר טרחה ותיווך לא כלולים.",
+  "key": "ck_price_note",
+  "role": "other",
+  "vars": [
+   "taxAsof=D.tax.asof",
+   "arnonaAsof=D.arnona.asof",
+   "zone=D.arnona.zone",
+   "mortgageSrc=D.mortgage.src",
+   "mortgageLabel=D.mortgage.label",
+   "feeClause=(next entry)"
+  ],
+  "en": "Example only; the default is the lowest published deal. Purchase tax: ${taxAsof}. Municipal tax: ${arnonaAsof}, zone ${zone}. Interest: ${mortgageSrc} average, ${mortgageLabel}. ${feeClause} Legal and brokerage fees not included.",
+  "notes": "All five data values are Hebrew in cockpit.json. In code ${feeClause} is the inline conditional `${D.fee ? `...` : ''}`; its Hebrew is the next entry."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 166,
+  "he": "תחזוקה: לפי <a href=\"${esc(D.fee.url)}\" target=\"_blank\" rel=\"noopener\">${esc(D.fee.src)}</a>, ${esc(D.fee.note)}.",
+  "key": "ck_price_note_fee",
+  "role": "other",
+  "vars": [
+   "url=D.fee.url",
+   "feeSrc=D.fee.src",
+   "feeNote=D.fee.note"
+  ],
+  "en": "Maintenance: per <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">${feeSrc}</a>, ${feeNote}.",
+  "notes": "D.fee.src (\"מעריב\") and D.fee.note are Hebrew in cockpit.json."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 169,
+  "he": "השכונה",
+  "key": "ck_tile_area",
+  "role": "heading",
+  "vars": [],
+  "en": "The area",
+  "notes": "Screen title (loading state)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 169,
+  "he": "טוען…",
+  "key": "loading",
+  "role": "other",
+  "vars": [],
+  "en": "Loading…",
+  "notes": "Same Hebrew as basket.js:231."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 174,
+  "he": "${bdi(num(p.dist))} מ׳",
+  "key": "ck_dist_m",
+  "role": "number-format",
+  "vars": [
+   "dist=num(p.dist)"
+  ],
+  "en": "${dist} m",
+  "notes": "מ׳ = metres. num() uses he-IL."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 174,
+  "he": " · ${bdi(p.walk)} דק׳",
+  "key": "ck_walk_min",
+  "role": "number-format",
+  "vars": [
+   "min=p.walk"
+  ],
+  "en": " · ${min} min",
+  "notes": "Walking minutes."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 176,
+  "he": "השכונה",
+  "key": "ck_tile_area",
+  "role": "heading",
+  "vars": [],
+  "en": "The area",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 176,
+  "he": "ממרכז הכיכר, ברגל. לחיצה פותחת ניווט. מקור: עיריית תל אביב-יפו ו-OpenStreetMap.",
+  "key": "ck_area_note",
+  "role": "other",
+  "vars": [],
+  "en": "From the middle of the square, on foot. Tap a place for walking directions. Source: Tel Aviv-Yafo Municipality and OpenStreetMap.",
+  "notes": "The place names printed under it are p.name from places.json (Hebrew; only 370 of 1,245 places carry names.en/ar)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 185,
+  "he": "הסרט",
+  "key": "ck_tile_film",
+  "role": "heading",
+  "vars": [],
+  "en": "The film",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 192,
+  "he": "מגדל ${esc(x.tower)} · קומה ${bdi(x.floor)}",
+  "key": "apt_title",
+  "role": "heading",
+  "vars": [
+   "tower=x.tower",
+   "floor=x.floor"
+  ],
+  "en": "Tower ${tower} · Floor ${floor}",
+  "notes": "Compare card title (b)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 192,
+  "he": "פונה ${esc(dirWord(x.bearing))} · ${esc(sectorOf(x.bearing))}",
+  "key": "faces_line",
+  "role": "other",
+  "vars": [
+   "dir",
+   "sector"
+  ],
+  "en": "Faces ${dir} · ${sector}",
+  "notes": "Compare card."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 192,
+  "he": "גובה העיניים כ-${bdi(eyeH(x.floor).toFixed(0))} מ׳",
+  "key": "eye_height",
+  "role": "number-format",
+  "vars": [
+   "m=eyeH(x.floor)"
+  ],
+  "en": "Eye level about ${m} m",
+  "notes": "Compare card. מ׳ = metres."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 193,
+  "he": "השוואה ושליחה",
+  "key": "ck_tile_save",
+  "role": "heading",
+  "vars": [],
+  "en": "Compare & share",
+  "notes": "Screen title."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 194,
+  "he": "הדירה שמורה",
+  "key": "ck_saved",
+  "role": "button",
+  "vars": [],
+  "en": "Apartment saved",
+  "notes": "Save button state."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 194,
+  "he": "שמירת הדירה הזאת",
+  "key": "ck_save_this",
+  "role": "button",
+  "vars": [],
+  "en": "Save this apartment",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 195,
+  "he": "שמרו את הדירה, בחרו דירה אחרת, והן יופיעו כאן זו לצד זו.",
+  "key": "ck_cmp_empty",
+  "role": "other",
+  "vars": [],
+  "en": "Save this apartment, choose another, and they'll appear here side by side.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 196,
+  "he": "שלחו למשפחה את מה שבחרתם",
+  "key": "ck_share_title",
+  "role": "heading",
+  "vars": [],
+  "en": "Share your choice with family",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 197,
+  "he": "הדירה, הקומה והכיוון",
+  "key": "ck_share_unit",
+  "role": "other",
+  "vars": [],
+  "en": "The apartment, floor and direction",
+  "notes": "Checkbox label (always on)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 198,
+  "he": "הנוף וגובה הקומה",
+  "key": "ck_share_view",
+  "role": "other",
+  "vars": [],
+  "en": "The view and floor height",
+  "notes": "Checkbox label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 199,
+  "he": "המחיר והעלויות לדוגמה",
+  "key": "ck_share_price",
+  "role": "other",
+  "vars": [],
+  "en": "Example price and costs",
+  "notes": "Checkbox label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 200,
+  "he": "הקישור לא כולל שם, טלפון או פרטים אישיים.",
+  "key": "ck_share_privacy",
+  "role": "other",
+  "vars": [],
+  "en": "The link doesn't include your name, phone number or any personal details.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 201,
+  "he": "שליחת הבחירה",
+  "key": "ck_share_btn",
+  "role": "button",
+  "vars": [],
+  "en": "Share my choice",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 248,
+  "he": "שיחת וידאו עכשיו, על הדירה",
+  "key": "ck_call_now",
+  "role": "button",
+  "vars": [],
+  "en": "Video call now about this apartment",
+  "notes": "Bottom bar, when a representative is available."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 248,
+  "he": "שיחת וידאו על הדירה",
+  "key": "ck_call",
+  "role": "button",
+  "vars": [],
+  "en": "Video call about this apartment",
+  "notes": "Bottom bar."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 249,
+  "he": "וואטסאפ",
+  "key": "ck_aria_wa",
+  "role": "aria-label",
+  "vars": [],
+  "en": "WhatsApp",
+  "notes": "The link itself is C.wa, the page's own WhatsApp link built in PHP (already per language)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 250,
+  "he": "שמירת הדירה",
+  "key": "ck_aria_save",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Save apartment",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 256,
+  "he": "הדירה שבחרתם",
+  "key": "ck_aria_dialog",
+  "role": "aria-label",
+  "vars": [],
+  "en": "The apartment you chose",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 299,
+  "he": "הדירה נשמרה. בחרו דירה אחרת, והן יופיעו זו לצד זו.",
+  "key": "ck_toast_saved",
+  "role": "toast",
+  "vars": [],
+  "en": "Apartment saved. Choose another, and they'll appear side by side.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 303,
+  "he": "מגדלי כיכר המדינה, תל אביב · ${label(cur)}",
+  "key": "ck_share_line1",
+  "role": "other",
+  "vars": [
+   "label=label(cur)"
+  ],
+  "en": "Kikar HaMedina Towers, Tel Aviv · ${label}",
+  "notes": "Share text (navigator.share / clipboard), sent by the buyer to family. Not WhatsApp wording, but message text: Ben may want to review."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 304,
+  "he": "${sectorOf(cur.bearing)} · גובה העיניים כ-${eyeH(cur.floor).toFixed(0)} מ׳",
+  "key": "ck_share_line2",
+  "role": "other",
+  "vars": [
+   "sector",
+   "m"
+  ],
+  "en": "${sector} · Eye level about ${m} m",
+  "notes": "Share text line."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 305,
+  "he": "דוגמה: מחיר ${num(calc.price)} ₪, מס רכישה ${num(tax)} ₪",
+  "key": "ck_share_line3",
+  "role": "number-format",
+  "vars": [
+   "price=num(calc.price)",
+   "tax=num(tax)"
+  ],
+  "en": "Example: price ₪${price}, purchase tax ₪${tax}",
+  "notes": "Share text line; num() is he-IL."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 309,
+  "he": "מגדלי כיכר המדינה",
+  "key": "project_name",
+  "role": "other",
+  "vars": [],
+  "en": "Kikar HaMedina Towers",
+  "notes": "navigator.share title. Proper name; world-i18n.json and places.json use \"Kikar HaMedina\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/cockpit.js",
+  "line": 310,
+  "he": "הקישור הועתק. אפשר להדביק בכל הודעה.",
+  "key": "ck_toast_copied",
+  "role": "toast",
+  "vars": [],
+  "en": "Link copied. Paste it into any message.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "צפונה",
+  "key": "dir_to_n",
+  "role": "data-label",
+  "vars": [],
+  "en": "north",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "צפון-מזרחה",
+  "key": "dir_to_ne",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "מזרחה",
+  "key": "dir_to_e",
+  "role": "data-label",
+  "vars": [],
+  "en": "east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "דרום-מזרחה",
+  "key": "dir_to_se",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-east",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "דרומה",
+  "key": "dir_to_s",
+  "role": "data-label",
+  "vars": [],
+  "en": "south",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "דרום-מערבה",
+  "key": "dir_to_sw",
+  "role": "data-label",
+  "vars": [],
+  "en": "south-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "מערבה",
+  "key": "dir_to_w",
+  "role": "data-label",
+  "vars": [],
+  "en": "west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 22,
+  "he": "צפון-מערבה",
+  "key": "dir_to_nw",
+  "role": "data-label",
+  "vars": [],
+  "en": "north-west",
+  "notes": "Direction word (\"towards\"), read after \"faces\". dirWord() in the earlier path (?kikar=journey) and the view cards."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "הים והעיר",
+  "key": "sec_sea_city",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the city",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "הים והירקון",
+  "key": "sec_sea_yarkon",
+  "role": "data-label",
+  "vars": [],
+  "en": "the sea and the Yarkon",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "הירקון והצפון",
+  "key": "sec_yarkon_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Yarkon and the north",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "רמת אביב והאוניברסיטה",
+  "key": "sec_ramat_aviv",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Aviv and Tel Aviv University",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "רמת גן והבורסה",
+  "key": "sec_ramat_gan",
+  "role": "data-label",
+  "vars": [],
+  "en": "Ramat Gan and the Diamond Exchange district",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "מגדלי העיר",
+  "key": "sec_city_towers",
+  "role": "data-label",
+  "vars": [],
+  "en": "the city's towers",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 25,
+  "he": "הצפון הישן ומרכז העיר",
+  "key": "sec_old_north",
+  "role": "data-label",
+  "vars": [],
+  "en": "the Old North and central Tel Aviv",
+  "notes": "What lies that way from the square (bearing sectors). Same table in showroom.js:24, cockpit.js:29, journey.js:25: one shared dictionary entry. Lower-case so it reads after a colon or a dot."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 98,
+  "he": "חזרה",
+  "key": "aria_back",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Back",
+  "notes": "Button text is the glyph › (back in RTL; ‹ in LTR)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 98,
+  "he": "סגירה",
+  "key": "aria_close",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Close",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 106,
+  "he": "הכיכר והמגדלים בשקיעה, לבחירת מגדל",
+  "key": "jy_alt_square",
+  "role": "alt",
+  "vars": [],
+  "en": "The square and the towers at sunset, for choosing a tower",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 107,
+  "he": "בחרו מגדל",
+  "key": "jy_choose_tower",
+  "role": "heading",
+  "vars": [],
+  "en": "Choose a tower",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 107,
+  "he": "לחצו על המגדל שמעניין אתכם",
+  "key": "jy_choose_tower_sub",
+  "role": "other",
+  "vars": [],
+  "en": "Tap the tower you're interested in",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 108,
+  "he": "מגדל ${k}, ${tw[k].length} קומות",
+  "key": "jy_aria_tower",
+  "role": "aria-label",
+  "vars": [
+   "tower=k",
+   "n=tw[k].length"
+  ],
+  "en": "Tower ${tower}, ${n} floors",
+  "notes": "Arabic needs plural forms."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 109,
+  "he": "הדמיה להמחשה",
+  "key": "sim",
+  "role": "other",
+  "vars": [],
+  "en": "Artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 116,
+  "he": "מגדל ${S.tower} מקרוב",
+  "key": "jy_alt_tower_close",
+  "role": "alt",
+  "vars": [
+   "tower=S.tower"
+  ],
+  "en": "Tower ${tower} close up",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 118,
+  "he": "מגדל ${S.tower}: בחרו קומה",
+  "key": "jy_choose_floor",
+  "role": "heading",
+  "vars": [
+   "tower=S.tower"
+  ],
+  "en": "Tower ${tower}: choose a floor",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 118,
+  "he": "גללו את הסרגל. הנוף מתחלף איתכם.",
+  "key": "jy_choose_floor_sub",
+  "role": "other",
+  "vars": [],
+  "en": "Slide the bar. The view changes as you go.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 119,
+  "he": "קומה במגדל ${S.tower}",
+  "key": "jy_aria_floor",
+  "role": "aria-label",
+  "vars": [
+   "tower=S.tower"
+  ],
+  "en": "Floor in Tower ${tower}",
+  "notes": "Vertical range input (writing-mode:vertical-lr; direction:rtl at journey.js:50)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 119,
+  "he": "קומה",
+  "key": "floor_word",
+  "role": "other",
+  "vars": [],
+  "en": "Floor",
+  "notes": "Small label under the ladder."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 120,
+  "he": "הנוף מקומה ${bdi(vv.floor)}",
+  "key": "jy_view_from",
+  "role": "other",
+  "vars": [
+   "floor=vv.floor"
+  ],
+  "en": "View from floor ${floor}",
+  "notes": "Peek card title; repainted at journey.js:156."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 120,
+  "he": ", הקרובה שצוירה",
+  "key": "jy_nearest",
+  "role": "other",
+  "vars": [],
+  "en": ", the nearest rendered floor",
+  "notes": "Nested conditional, appended when the rendered floor differs."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 120,
+  "he": "גובה העיניים כ-${bdi(eyeH(f).toFixed(1))} מ׳ · ${vv.list.length} כיוונים",
+  "key": "jy_peek_sub",
+  "role": "number-format",
+  "vars": [
+   "m=eyeH(f)",
+   "n=vv.list.length"
+  ],
+  "en": "Eye level about ${m} m · ${n} directions",
+  "notes": "מ׳ = metres. Arabic needs plural forms."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 121,
+  "he": "לבחירת הנוף מקומה ${bdi(f)}",
+  "key": "jy_next_view",
+  "role": "button",
+  "vars": [
+   "floor=f"
+  ],
+  "en": "Choose the view from floor ${floor}",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 124,
+  "he": "איזה נוף אתם רוצים?",
+  "key": "jy_views_title",
+  "role": "heading",
+  "vars": [],
+  "en": "Which view would you like?",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 124,
+  "he": "מגדל ${S.tower} · קומה ${bdi(S.floor)} · ארבע דירות, ארבעה נופים",
+  "key": "jy_views_sub",
+  "role": "other",
+  "vars": [
+   "tower=S.tower",
+   "floor=S.floor"
+  ],
+  "en": "Tower ${tower} · Floor ${floor} · four apartments, four views",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 124,
+  "he": " (התמונות מקומה ${bdi(vv.floor)}, הקרובה שצוירה)",
+  "key": "jy_views_nearest",
+  "role": "other",
+  "vars": [
+   "floor=vv.floor"
+  ],
+  "en": " (pictures from floor ${floor}, the nearest rendered)",
+  "notes": "Nested conditional."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 125,
+  "he": "הנוף ${esc(dirWord(v.bearing))}",
+  "key": "jy_alt_view",
+  "role": "alt",
+  "vars": [
+   "dir=dirWord(v.bearing)"
+  ],
+  "en": "View to the ${dir}",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 155,
+  "he": "לבחירת הנוף מקומה ${bdi(f)}",
+  "key": "jy_next_view",
+  "role": "button",
+  "vars": [
+   "floor=f"
+  ],
+  "en": "Choose the view from floor ${floor}",
+  "notes": "Repaint on slider input."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 156,
+  "he": "הנוף מקומה ${bdi(vv.floor)}",
+  "key": "jy_view_from",
+  "role": "other",
+  "vars": [
+   "floor=vv.floor"
+  ],
+  "en": "View from floor ${floor}",
+  "notes": "Repaint on slider input."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 156,
+  "he": ", הקרובה שצוירה",
+  "key": "jy_nearest",
+  "role": "other",
+  "vars": [],
+  "en": ", the nearest rendered floor",
+  "notes": "Repaint; nested conditional."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 156,
+  "he": "גובה העיניים כ-${bdi(eyeH(f).toFixed(1))} מ׳ · ${vv.list.length} כיוונים",
+  "key": "jy_peek_sub",
+  "role": "number-format",
+  "vars": [
+   "m",
+   "n"
+  ],
+  "en": "Eye level about ${m} m · ${n} directions",
+  "notes": "Repaint on slider input."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 161,
+  "he": "בחירת דירה במגדלי כיכר המדינה",
+  "key": "jy_aria_dialog",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Choose an apartment at Kikar HaMedina Towers",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 189,
+  "he": "מגדלי כיכר המדינה בשקיעה, הפארק בתוך טבעת הכיכר, הירקון והים, הדמיה",
+  "key": "jy_alt_entry",
+  "role": "alt",
+  "vars": [],
+  "en": "Kikar HaMedina Towers at sunset, the park inside the square's ring, the Yarkon and the sea, artist's impression",
+  "notes": "Entry of the earlier path only (?kikar=journey)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 190,
+  "he": "הדמיה להמחשה",
+  "key": "sim",
+  "role": "other",
+  "vars": [],
+  "en": "Artist's impression",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 191,
+  "he": "בחרו דירה במגדלי כיכר המדינה, לפי הנוף שלה",
+  "key": "jy_entry_title",
+  "role": "heading",
+  "vars": [],
+  "en": "Choose an apartment at Kikar HaMedina Towers by its view",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 191,
+  "he": "שלושה מגדלים, כל קומה, ארבעה נופים · הכל מתמונות של העיר האמיתית",
+  "key": "jy_entry_sub",
+  "role": "other",
+  "vars": [],
+  "en": "Three towers, every floor, four views · all from pictures of the real city",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/project-stage/world/journey.js",
+  "line": 191,
+  "he": "בחרו את הדירה שלכם",
+  "key": "jy_entry_cta",
+  "role": "button",
+  "vars": [],
+  "en": "Choose your apartment",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 17,
+  "he": "דירה יחידה",
+  "key": "bk_buyer_single",
+  "role": "button",
+  "vars": [],
+  "en": "Only home",
+  "notes": "Buyer-type chip (radio). Israeli purchase-tax category (\"single apartment\")."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 18,
+  "he": "דירה נוספת",
+  "key": "tax_additional_home",
+  "role": "button",
+  "vars": [],
+  "en": "Additional home",
+  "notes": "Buyer-type chip; also printed in the WhatsApp message (basket.js:329)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 19,
+  "he": "תושב/ת חוץ",
+  "key": "bk_buyer_foreign",
+  "role": "button",
+  "vars": [],
+  "en": "Non-resident",
+  "notes": "Hebrew carries both genders (תושב/ת); English needs no slash."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 19,
+  "he": "תושב חוץ אינו זכאי למדרגות של דירה יחידה ומשלם לפי מדרגות דירה נוספת מהשקל הראשון.",
+  "key": "bk_buyer_foreign_note",
+  "role": "other",
+  "vars": [],
+  "en": "A non-resident is not eligible for the only-home brackets and pays the additional-home brackets from the first shekel.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 21,
+  "he": "כמו במסירה",
+  "key": "bk_style_bare",
+  "role": "data-label",
+  "vars": [],
+  "en": "As delivered",
+  "notes": "STYLES.bare; printed in the basket and the WhatsApp message."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 21,
+  "he": "עץ חם",
+  "key": "style_warm",
+  "role": "data-label",
+  "vars": [],
+  "en": "Warm wood",
+  "notes": "STYLES.warm; shared with cockpit.js:34."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 21,
+  "he": "בהיר",
+  "key": "style_light",
+  "role": "data-label",
+  "vars": [],
+  "en": "Light",
+  "notes": "STYLES.light."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 21,
+  "he": "אבן",
+  "key": "style_stone",
+  "role": "data-label",
+  "vars": [],
+  "en": "Stone",
+  "notes": "STYLES.stone."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 38,
+  "he": "קומה ",
+  "key": "floor_n",
+  "role": "data-label",
+  "vars": [],
+  "en": "Floor ",
+  "notes": "Concatenated: 'קומה ' + u.floor + ' · ' + (u.label || sector words). Make it the floor_n template. u.label comes from showroom.js:151 (tower_n) and sector words from C.sectors (PHP $ps['sectors'], Hebrew)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 98,
+  "he": "סל הדירה",
+  "key": "basket_name",
+  "role": "heading",
+  "vars": [],
+  "en": "My selection",
+  "notes": "Drawer h2."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 99,
+  "he": "סגירת הסל",
+  "key": "bk_aria_close",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Close my selection",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 110,
+  "he": "השלבים",
+  "key": "bk_aria_steps",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Steps",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 111,
+  "he": "הבניין",
+  "key": "bk_step_building",
+  "role": "other",
+  "vars": [],
+  "en": "Building",
+  "notes": "Step label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 111,
+  "he": "הדירה",
+  "key": "bk_apartment",
+  "role": "other",
+  "vars": [],
+  "en": "Apartment",
+  "notes": "Step label; same Hebrew as the section heading at basket.js:143."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 111,
+  "he": "העיצוב",
+  "key": "bk_design",
+  "role": "other",
+  "vars": [],
+  "en": "Design",
+  "notes": "Step label; same Hebrew as basket.js:165."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 111,
+  "he": "הצוות",
+  "key": "bk_step_team",
+  "role": "other",
+  "vars": [],
+  "en": "Team",
+  "notes": "Step label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 111,
+  "he": "המחיר",
+  "key": "bk_step_price",
+  "role": "other",
+  "vars": [],
+  "en": "Price",
+  "notes": "Step label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 116,
+  "he": " (נבחר)",
+  "key": "bk_sr_done",
+  "role": "other",
+  "vars": [],
+  "en": " (selected)",
+  "notes": "Screen-reader only text."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 143,
+  "he": "הדירה",
+  "key": "bk_apartment",
+  "role": "heading",
+  "vars": [],
+  "en": "Apartment",
+  "notes": "Section h3."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 148,
+  "he": "דירה לדוגמה · ",
+  "key": "bk_unit_example",
+  "role": "other",
+  "vars": [],
+  "en": "Example apartment · ",
+  "notes": "Concatenated with unitLine()."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 149,
+  "he": "הדירות, התוכניות והמחירים מהנציג",
+  "key": "bk_unit_from_rep",
+  "role": "other",
+  "vars": [],
+  "en": "Apartments, plans and prices come from the representative",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 149,
+  "he": "עוד לא נבחר כיוון בטבעת הקומה",
+  "key": "bk_unit_no_dir",
+  "role": "other",
+  "vars": [],
+  "en": "No direction on the floor ring chosen yet",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 151,
+  "he": "להחליף",
+  "key": "bk_change",
+  "role": "button",
+  "vars": [],
+  "en": "Change",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 156,
+  "he": "עוד לא נבחרה קומה.",
+  "key": "bk_no_floor",
+  "role": "other",
+  "vars": [],
+  "en": "No floor chosen yet.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 157,
+  "he": "לבחירת קומה על הבניין",
+  "key": "bk_pick_floor",
+  "role": "button",
+  "vars": [],
+  "en": "Choose a floor on the building",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 165,
+  "he": "העיצוב",
+  "key": "bk_design",
+  "role": "heading",
+  "vars": [],
+  "en": "Design",
+  "notes": "Section h3."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 165,
+  "he": "רעיון עיצוב להמחשה בדירה לדוגמה, לא המפרט של היזם.",
+  "key": "bk_design_sub",
+  "role": "other",
+  "vars": [],
+  "en": "A design idea shown in the example apartment, not the developer's specification.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 173,
+  "he": "נבחר בתוך הדירה ב־360°",
+  "key": "bk_style_chosen",
+  "role": "other",
+  "vars": [],
+  "en": "Chosen inside the apartment in 360°",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 175,
+  "he": "להחליף",
+  "key": "bk_change",
+  "role": "button",
+  "vars": [],
+  "en": "Change",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 178,
+  "he": "להיכנס לדירה ולבחור סגנון",
+  "key": "bk_go_inside",
+  "role": "button",
+  "vars": [],
+  "en": "Step inside and choose a style",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 182,
+  "he": "הדירה מבפנים עוד לא זמינה בפרויקט הזה.",
+  "key": "bk_inside_na",
+  "role": "other",
+  "vars": [],
+  "en": "The inside of the apartment isn't available for this project yet.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 192,
+  "he": "הצוות שלכם",
+  "key": "bk_team_title",
+  "role": "heading",
+  "vars": [],
+  "en": "Your team",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 192,
+  "he": "אנשי מקצוע מהמאגר, עם בדיקת רישיון כשיש. בלי עמלה על הפנייה.",
+  "key": "bk_team_sub",
+  "role": "other",
+  "vars": [],
+  "en": "Professionals from our directory, with a license check where one exists. No referral fee.",
+  "notes": "Slot labels (t.label) and the asked-for profession (t.ask) are Hebrew from PHP nadlan_bk_team() (basket.php:31-36)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 201,
+  "he": " · רישיון ",
+  "key": "bk_license",
+  "role": "other",
+  "vars": [],
+  "en": " · License ",
+  "notes": "Concatenated before the licence number. UK spelling of the noun: 'Licence'."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 201,
+  "he": "עוד לא נבחר",
+  "key": "bk_not_chosen",
+  "role": "other",
+  "vars": [],
+  "en": "Not chosen yet",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 204,
+  "he": "להסיר",
+  "key": "bk_remove",
+  "role": "button",
+  "vars": [],
+  "en": "Remove",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 204,
+  "he": "להסיר את ",
+  "key": "bk_aria_remove",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Remove ",
+  "notes": "Concatenated: + chosen.name. Template \"Remove ${name}\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 208,
+  "he": "לבחור",
+  "key": "bk_choose",
+  "role": "button",
+  "vars": [],
+  "en": "Choose",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 223,
+  "he": "אנשי מקצוע: ",
+  "key": "bk_join_prefix",
+  "role": "other",
+  "vars": [],
+  "en": "Professionals: ",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 224,
+  "he": "להצטרפות למאגר",
+  "key": "bk_join",
+  "role": "button",
+  "vars": [],
+  "en": "Join the directory",
+  "notes": "Link to C.join (/advertise/, a Hebrew page)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 231,
+  "he": "טוען…",
+  "key": "loading",
+  "role": "other",
+  "vars": [],
+  "en": "Loading…",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 235,
+  "he": "עוד אין במאגר ",
+  "key": "bk_pros_none",
+  "role": "other",
+  "vars": [],
+  "en": "No ",
+  "notes": "Concatenated: 'עוד אין במאגר ' + t.ask + ' באזור.'. Template: \"No ${profession} in the directory for this area yet.\" (word order differs)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 235,
+  "he": " באזור.",
+  "key": "bk_pros_none",
+  "role": "other",
+  "vars": [],
+  "en": " in the directory for this area yet.",
+  "notes": "Second part of bk_pros_none."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 236,
+  "he": "לבקש המלצה בוואטסאפ",
+  "key": "bk_ask_reco",
+  "role": "button",
+  "vars": [],
+  "en": "Ask for a recommendation on WhatsApp",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 236,
+  "he": "שלום, אני בונה סל דירה ב",
+  "key": "bk_wa_reco",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "Hello, I'm putting together an apartment selection at ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Part 1 of 3; one template: \"Hello, I'm putting together an apartment selection at ${project} on nad-lan.co.il and I'm looking for ${profession}. I'd appreciate a recommendation.\" Hebrew glues ב to the project name."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 236,
+  "he": " באתר nad-lan.co.il ומחפש/ת ",
+  "key": "bk_wa_reco",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": " on nad-lan.co.il and I'm looking for ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Part 2 of 3."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 236,
+  "he": ". אשמח להמלצה.",
+  "key": "bk_wa_reco",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": ". I'd appreciate a recommendation.",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Part 3 of 3."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 246,
+  "he": "רישיון ",
+  "key": "bk_license",
+  "role": "other",
+  "vars": [],
+  "en": "License ",
+  "notes": "Before the pro's licence number."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 248,
+  "he": "לצוות",
+  "key": "bk_add_team",
+  "role": "button",
+  "vars": [],
+  "en": "Add to team",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 248,
+  "he": "להוסיף את ",
+  "key": "bk_aria_add",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Add ",
+  "notes": "Concatenated: 'להוסיף את ' + p.name + ' לצוות'. Template \"Add ${name} to the team\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 248,
+  "he": " לצוות",
+  "key": "bk_aria_add",
+  "role": "aria-label",
+  "vars": [],
+  "en": " to the team",
+  "notes": "Second part of bk_aria_add."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 262,
+  "he": "המחיר המלא",
+  "key": "bk_price_title",
+  "role": "heading",
+  "vars": [],
+  "en": "The full price",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 262,
+  "he": "כל שורה עם המקור שלה. מה שלא ידוע לא מוערך.",
+  "key": "bk_price_sub",
+  "role": "other",
+  "vars": [],
+  "en": "Every line shows its source. Nothing unknown is estimated.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 265,
+  "he": "מחיר הדירה (₪)",
+  "key": "bk_price_label",
+  "role": "other",
+  "vars": [],
+  "en": "Apartment price (₪)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 266,
+  "he": "המחיר מהנציג",
+  "key": "bk_price_ph",
+  "role": "other",
+  "vars": [],
+  "en": "Price from the representative",
+  "notes": "Input placeholder. The typed value is re-formatted with he-IL grouping (basket.js:14, 267) and stripped by /[^\\d]/ (268): fine for Latin digits, drops Arabic-Indic digits."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 273,
+  "he": "סוג הרוכש",
+  "key": "bk_aria_buyer",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Buyer type",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 295,
+  "he": "מחיר הדירה",
+  "key": "bk_line_price",
+  "role": "other",
+  "vars": [],
+  "en": "Apartment price",
+  "notes": "Result line (dt)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 295,
+  "he": "כפי שהזנתם",
+  "key": "bk_line_price_src",
+  "role": "other",
+  "vars": [],
+  "en": "As you entered it",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 296,
+  "he": "מס רכישה",
+  "key": "purchase_tax",
+  "role": "other",
+  "vars": [],
+  "en": "Purchase tax",
+  "notes": "Result line."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 296,
+  "he": "לפי מדרגות רשות המסים מ־",
+  "key": "bk_tax_src",
+  "role": "other",
+  "vars": [],
+  "en": "Per Israel Tax Authority brackets from ",
+  "notes": "Concatenated: + C.tax.effective (\"16.1.2025\", D.M.YYYY, inc/calculators.php:36)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 296,
+  "he": ", קפואות עד ",
+  "key": "bk_tax_frozen",
+  "role": "other",
+  "vars": [],
+  "en": ", frozen until ",
+  "notes": "Concatenated: + C.tax.frozen, which is Hebrew text \"ינואר 2028\" (inc/calculators.php:37): needs its own translation."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 297,
+  "he": "שכר טרחת עו״ד",
+  "key": "bk_line_lawyer",
+  "role": "other",
+  "vars": [],
+  "en": "Lawyer's fee",
+  "notes": "Result line."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 297,
+  "he": "לפי ההצעה שתקבלו",
+  "key": "bk_lawyer_quote",
+  "role": "other",
+  "vars": [],
+  "en": "Per the quote you'll receive",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 297,
+  "he": "% מהמחיר, לפני מע״מ",
+  "key": "bk_lawyer_pct",
+  "role": "number-format",
+  "vars": [],
+  "en": "% of the price, before VAT",
+  "notes": "Concatenated after lawPct: template \"${pct}% of the price, before VAT\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 299,
+  "he": "סך הכול, לפני משכנתא",
+  "key": "bk_total",
+  "role": "other",
+  "vars": [],
+  "en": "Total, before mortgage",
+  "notes": "Total line (dt)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 303,
+  "he": "שכר טרחת עו״ד באחוזים (לא חובה)",
+  "key": "bk_lawyer_pct_label",
+  "role": "other",
+  "vars": [],
+  "en": "Lawyer's fee in % (optional)",
+  "notes": "Form label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 304,
+  "he": "למשל 0.5",
+  "key": "bk_lawyer_ph",
+  "role": "number-format",
+  "vars": [],
+  "en": "e.g. 0.5",
+  "notes": "Placeholder; decimal point kept for every language (input strips to [\\d.])."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 310,
+  "he": "ההחזר החודשי במחשבון המשכנתא",
+  "key": "bk_mortgage_link",
+  "role": "button",
+  "vars": [],
+  "en": "Monthly payment in the mortgage calculator",
+  "notes": "Link to C.mortgage = /mortgage-calculator/ (Hebrew page; basket.php points every language there)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 311,
+  "he": " · אומדן בלבד, לא חוות דעת מס. ",
+  "key": "bk_estimate",
+  "role": "other",
+  "vars": [],
+  "en": " · Estimate only, not tax advice. ",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 312,
+  "he": "המדרגות ברשות המסים",
+  "key": "bk_tax_link",
+  "role": "button",
+  "vars": [],
+  "en": "The brackets at the Tax Authority",
+  "notes": "Link to C.tax.source."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 315,
+  "he": "הזינו את המחיר שקיבלתם מהנציג כדי לראות את מס הרכישה והסכום המלא.",
+  "key": "bk_price_empty",
+  "role": "other",
+  "vars": [],
+  "en": "Enter the price you received from the representative to see the purchase tax and the full amount.",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 321,
+  "he": "שלום, בניתי סל דירה ב",
+  "key": "bk_wa_msg_intro",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "Hello, I've put together an apartment selection at ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Concatenated: + C.name (Hebrew project name from PHP $ps['name']) + next entry. Template: \"Hello, I've put together an apartment selection at ${project} on nad-lan.co.il:\"."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 321,
+  "he": " באתר nad-lan.co.il:",
+  "key": "bk_wa_msg_intro",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": " on nad-lan.co.il:",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. Second part of bk_wa_msg_intro."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 322,
+  "he": "• דירה לדוגמה: ",
+  "key": "bk_wa_msg_unit",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "• Example apartment: ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. + unitLine() (Hebrew floor word, tower label, sector words)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 323,
+  "he": "• עיצוב: ",
+  "key": "bk_wa_msg_style",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "• Design: ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. + STYLES[...]."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 325,
+  "he": "• הצוות: ",
+  "key": "bk_wa_msg_team",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "• Team: ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. + 't.label: name' pairs (t.label Hebrew from PHP)."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 329,
+  "he": "• המחיר שהזנתי: ",
+  "key": "bk_wa_msg_price",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "• Price I entered: ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word. + ils(amount) (he-IL) + buyer label."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 329,
+  "he": ", מס רכישה לפי המדרגות: ",
+  "key": "bk_wa_msg_tax",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": ", purchase tax per the brackets: ",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 331,
+  "he": "אשמח לתוכניות, למחירים ולזמינות. זו בקשה למידע, לא הזמנה.",
+  "key": "bk_wa_msg_close",
+  "role": "whatsapp-text",
+  "vars": [],
+  "en": "I'd like plans, prices and availability. This is a request for information, not an order.",
+  "notes": "AWAITING BEN: Ben owns WhatsApp wording; faithful draft only, do not ship without his word."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 338,
+  "he": "שליחת הסל לנציג בוואטסאפ",
+  "key": "bk_send_wa",
+  "role": "button",
+  "vars": [],
+  "en": "Send my selection to a representative on WhatsApp",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 344,
+  "he": "לחדר צפייה משותף עם נציג",
+  "key": "bk_room",
+  "role": "button",
+  "vars": [],
+  "en": "Shared viewing room with a representative",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 348,
+  "he": "הסל אינו רכישה והדירה לא נמכרת באתר. בקשת שריון והמחירים מול הנציג; כל תשלום על הדירה רק לחשבון הליווי של הפרויקט, מול ערבות לפי חוק המכר. נדל״ן אינו מתווך ואינו היזם. הסל נשמר רק בדפדפן הזה.",
+  "key": "bk_legal",
+  "role": "other",
+  "vars": [],
+  "en": "Your selection is not a purchase, and the apartment is not sold on this site. Reservation requests and prices are handled with the representative; any payment for the apartment goes only to the project's supervised (escrow) account, against a guarantee under the Sale (Apartments) Law. Nad-Lan is not a broker and not the developer. Your selection is saved only in this browser.",
+  "notes": "Legal notice: needs Ben's (or counsel's) review before any language goes live. חשבון הליווי = the project-finance supervised account; חוק המכר = Sale (Apartments) Law. Brand written נדל״ן; English site name to confirm."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 349,
+  "he": "לרוקן את הסל",
+  "key": "bk_clear",
+  "role": "button",
+  "vars": [],
+  "en": "Clear my selection",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 395,
+  "he": "פריטים בסל",
+  "key": "bk_aria_count",
+  "role": "aria-label",
+  "vars": [],
+  "en": "Items in my selection",
+  "notes": ""
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 404,
+  "he": "סל הדירה",
+  "key": "basket_name",
+  "role": "button",
+  "vars": [],
+  "en": "My selection",
+  "notes": "Entry added to the page's .nlps-steps list."
+ },
+ {
+  "file": "plugins/nadlan-config/assets/basket/basket.js",
+  "line": 408,
+  "he": "לסל הדירה",
+  "key": "bk_open",
+  "role": "button",
+  "vars": [],
+  "en": "View my selection",
+  "notes": "Entry button in #nlps-view-cta (opens the drawer, adds nothing)."
+ }
+]
