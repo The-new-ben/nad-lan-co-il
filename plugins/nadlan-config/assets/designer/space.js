@@ -295,6 +295,8 @@ export function mountSpace(host, store, cat, hooks = {}) {
     placed(id) { const g = itemObj.get(id); return g ? [Math.round(g.position.x / M), Math.round(g.position.z / M), Math.round((-g.rotation.y * 180) / Math.PI)] : null; },
     floorKey(room) { const f = gFloor.children.find((c) => c.userData.room === room); return f ? Object.keys(mat.floors).find((k) => mat.floors[k] === f.material) : null; },
     renders, useModels, reload,
+    /** the colour behind the apartment: the video call turns it to its ink surface, null returns the designer's own */
+    setStage(c) { scene.background.set(c == null ? 0xE6ECF0 : c); touch(false); },
     modelState: (id) => (itemObj.get(id) ? itemObj.get(id).userData.model || 'box' : null),
     destroy() { dead = true; ro.disconnect(); controls.dispose(); scene.traverse((o) => { if (o.geometry) o.geometry.dispose(); }); renderer.dispose(); renderer.domElement.remove(); },
     /** turns the camera around the apartment for ms and returns the time between frames (the device's real frame rate) */

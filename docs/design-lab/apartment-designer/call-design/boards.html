@@ -1,0 +1,964 @@
+<title>לוחות שיחת הדירה</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&display=swap">
+<style>
+/* Layout: a drafting set. Each board is one 1760x1240 sheet with a sheet number, a title block and phones drawn at 1:1.
+   Ink is the surface behind video and model; blueprint white and paper are the panels; blueprint blue is action and live;
+   dimension red is only for leaving and for measurements; every person draws with one technical-pen colour. */
+:root{
+  --ink:#0F2233; --ink-2:#16304A; --ink-3:#22405C; --graph:#46596A; --mute:#7A8B98;
+  --sheet:#F2F5F7; --paper:#FFFFFF; --rule:#C9D4DC; --grid:#E2E8EC;
+  --blue:#1F5FA8; --blue-2:#D6E5F6; --red:#B5302A;
+  --p1:#1F5FA8; --p2:#1C7A4E; --p3:#B0307A; --p4:#0F7C8A; --p5:#5B4BB7; --p6:#46596A;
+  --sans:"IBM Plex Sans Hebrew","Arial Hebrew",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:#D5DDE3;color:var(--ink)}
+body{font-family:var(--sans);margin:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.top{max-width:1760px;margin:0 auto 18px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between;direction:rtl}
+.top h1{font-size:22px;margin:0;font-weight:700}
+.top p{margin:0;color:var(--graph);font-size:14px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;direction:rtl;max-width:1760px;margin:0 auto 22px}
+.toc a{font:500 13px var(--sans);color:var(--ink);text-decoration:none;border:2px solid var(--ink);padding:6px 10px;background:var(--paper)}
+.toc a:hover,.toc a:focus-visible{background:var(--ink);color:#fff;outline:none}
+.wrap{max-width:1760px;margin:0 auto 28px;overflow:hidden}
+.shot .wrap{max-width:none;margin:0;overflow:visible}
+.shot body,body.shot{padding:0;background:#D5DDE3}
+
+/* the sheet */
+.board{position:relative;width:1760px;height:1240px;direction:rtl;transform-origin:top right;
+  background-color:var(--sheet);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:40px 40px;background-position:-1px -1px;border:2px solid var(--ink);overflow:hidden}
+.board::after{content:"";position:absolute;inset:14px;border:1px solid var(--ink);pointer-events:none}
+.bh{position:absolute;top:44px;right:52px;left:52px;display:flex;gap:22px;align-items:flex-start}
+.bn{flex:none;width:76px;height:76px;border:2px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--paper)}
+.bn b{font:600 34px/1 var(--mono)}
+.bn small{font:500 10px/1 var(--mono);color:var(--graph);margin-top:6px}
+.bh h2{font-size:40px;line-height:1.05;margin:2px 0 8px;font-weight:700;letter-spacing:-.2px;text-wrap:balance}
+.bh p{margin:0;font-size:17px;line-height:1.45;color:var(--graph);max-width:1100px}
+.tb{position:absolute;left:28px;bottom:28px;display:flex;border:2px solid var(--ink);background:var(--paper);font-size:11.5px;direction:rtl}
+.tb div{padding:7px 12px;border-inline-start:1px solid var(--ink);display:flex;flex-direction:column;gap:2px;justify-content:center}
+.tb div:first-child{border-inline-start:0}
+.tb small{font:500 9px/1 var(--mono);color:var(--mute);letter-spacing:.6px;text-transform:uppercase}
+.tb b{font-weight:600}
+.body{position:absolute;top:160px;right:52px;left:52px;bottom:90px;display:flex;gap:40px;align-items:flex-start}
+
+/* phones */
+.ph{margin:0;flex:none;display:flex;flex-direction:column;gap:12px;width:406px}
+.ph.z{zoom:.9}
+.dev{width:406px;height:860px;padding:8px;background:var(--ink);position:relative}
+.dev::before{content:"";position:absolute;top:-2px;left:50%;width:120px;height:6px;margin-left:-60px;background:var(--ink)}
+.scr{position:relative;width:390px;height:844px;overflow:hidden;background:var(--ink);color:#fff;direction:rtl;font-size:14px}
+.ph figcaption{font-size:14px;line-height:1.45;color:var(--ink)}
+.ph figcaption>b{display:flex;gap:8px;align-items:baseline;font-size:16px;margin-bottom:4px}
+.ph figcaption>b i{font:600 12px var(--mono);font-style:normal;color:var(--graph)}
+.ph ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px}
+.ph ol li{display:flex;gap:8px}
+.ph ol li span.n{flex:none;width:18px;height:18px;border:1.5px solid var(--ink);font:600 11px/15px var(--mono);text-align:center;margin-top:2px;background:var(--paper)}
+.mk{position:absolute;z-index:60;width:22px;height:22px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);font:600 12px/18px var(--mono);text-align:center;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+
+/* status bar + home */
+.sb{position:absolute;top:0;inset-inline:0;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;direction:ltr;font:600 15px var(--mono);z-index:40}
+.sb .r{display:flex;gap:6px;align-items:center}
+.sb.l{color:var(--ink)}
+.home{position:absolute;bottom:0;inset-inline:0;height:34px;z-index:40;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;background:var(--paper)}
+.home i{width:134px;height:5px;background:var(--ink);display:block}
+.home.d{background:var(--ink)} .home.d i{background:#fff}
+.home.t{background:transparent}
+
+/* call header */
+.hdr{position:absolute;top:44px;inset-inline:0;height:56px;display:flex;align-items:center;gap:8px;padding:0 8px 0 12px;z-index:30;background:var(--ink);border-bottom:1px solid var(--ink-3)}
+.hdr .bk{width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.hdr .tt{flex:1;min-width:0}
+.hdr .tt b{display:block;font-size:15px;font-weight:600;line-height:1.2}
+.hdr .tt small{display:block;font-size:12px;color:#A9B8C4;line-height:1.3}
+.live{display:flex;align-items:center;gap:8px;border:1.5px solid #3A5874;height:32px;padding:0 10px;font-size:13px}
+.live i{width:8px;height:8px;background:#5B9BE6;display:block;box-shadow:0 0 0 3px rgba(91,155,230,.25)}
+.live .mono{font-size:13px;font-weight:500}
+.live .pp{display:flex;gap:4px;align-items:center;border-inline-start:1px solid #3A5874;padding-inline-start:8px;font-family:var(--mono)}
+
+/* stage */
+.stage{position:absolute;top:100px;inset-inline:0;bottom:110px;overflow:hidden;background-color:var(--ink);
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px}
+.stage.full{bottom:34px}
+.stage.paper{background-color:var(--sheet);background-image:none}
+.stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.follow{position:absolute;inset:0;border:3px solid var(--c);pointer-events:none;z-index:20}
+.ftab{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:21;background:var(--c);color:#fff;height:34px;display:flex;align-items:center;gap:8px;padding:0 12px 0 14px;font-size:13.5px;font-weight:600;white-space:nowrap}
+.ftab .x{border-inline-start:1px solid rgba(255,255,255,.45);padding-inline-start:8px;font-weight:500}
+
+/* control bar */
+.bar{position:absolute;bottom:34px;inset-inline:0;height:76px;background:var(--paper);border-top:2px solid var(--ink);display:flex;align-items:center;padding:0 8px;gap:0;z-index:35;color:var(--ink)}
+.cells{flex:1;display:flex;height:60px}
+.cell{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10.5px;font-weight:500;white-space:nowrap;position:relative}
+.cell svg{width:24px;height:24px}
+.cell.on{background:var(--ink);color:#fff}
+.cell.act{background:var(--blue);color:#fff}
+.cell.blk{background:repeating-linear-gradient(-45deg,#fff 0 4px,#E3E9ED 4px 8px);color:var(--graph)}
+.cell .dot{position:absolute;top:2px;inset-inline-end:4px;min-width:16px;height:16px;padding:0 3px;background:var(--blue);color:#fff;font:600 10px/16px var(--mono);text-align:center}
+.cell .lv{position:absolute;bottom:22px;inset-inline-end:calc(50% - 16px);width:3px;height:14px;background:var(--rule)}
+.cell .lv i{position:absolute;bottom:0;left:0;right:0;background:var(--p2);display:block}
+.sep{width:2px;height:44px;background:var(--rule);margin:0 8px}
+.leave{width:56px;height:56px;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;font-weight:600;flex:none}
+.leave svg{width:24px;height:24px}
+.bar.hidden{transform:translateY(110px)}
+
+/* discs */
+.disc{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;flex:none}
+.dc{position:relative;border-radius:50%;overflow:hidden;background:#2A4256;box-shadow:0 0 0 2px var(--c),0 0 0 4px var(--ink)}
+.dc svg{width:100%;height:100%;display:block}
+.dc.sp{box-shadow:0 0 0 3px var(--c),0 0 0 6px var(--ink),0 0 0 8px color-mix(in srgb,var(--c) 55%,transparent)}
+.dc.off{background:#fff;display:flex;align-items:center;justify-content:center;color:var(--c);font-weight:700}
+.dc.dim{filter:grayscale(1) brightness(.75)}
+.dtag{display:flex;align-items:stretch;height:17px;font-size:10.5px;line-height:17px;font-weight:600;background:var(--ink);color:#fff;border:1px solid #3A5874;white-space:nowrap}
+.dtag i{width:4px;background:var(--c);display:block;font-style:normal}
+.dtag span{padding:0 5px}
+.badge{position:absolute;width:20px;height:20px;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;border:1.5px solid var(--ink)}
+.badge svg{width:13px;height:13px}
+.badge.q{background:var(--ink);color:#fff;border-color:#fff}
+.strip{position:absolute;top:12px;inset-inline:12px;display:flex;gap:14px;z-index:15;align-items:flex-start}
+.selfp{position:absolute;z-index:16}
+
+/* stamp: name + role as a drawing stamp */
+.stamp{display:inline-flex;border:1.5px solid currentColor;font-size:11px;line-height:1;white-space:nowrap;background:var(--ink);color:#fff}
+.stamp b{padding:5px 7px;border-inline-start:3px solid var(--c);font-weight:600}
+.stamp span{padding:5px 7px;border-inline-start:1px solid rgba(255,255,255,.4);font:500 10px/1 var(--sans);color:#C8D3DB}
+.stamp.lt{background:#fff;color:var(--ink)}
+.stamp.lt span{border-color:var(--ink);color:var(--graph)}
+
+/* chips, banners, sheets */
+.chip{position:absolute;z-index:22;display:flex;align-items:center;gap:7px;height:32px;padding:0 10px 0 4px;background:var(--c);color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+.chip .mini{width:24px;height:24px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px #fff;flex:none}
+.chip.lt{background:#fff;color:var(--ink);border:2px solid var(--c);padding-inline-start:4px}
+.pill{position:absolute;z-index:22;display:flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 12px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);font-size:13px;font-weight:600;white-space:nowrap}
+.pill .stack{display:flex}
+.pill .stack .mini{width:24px;height:24px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--c);margin-inline-start:-6px}
+.pill .stack .mini:first-child{margin-inline-start:0}
+.inset{position:absolute;z-index:21;background:var(--ink);border:2px solid var(--ink);box-shadow:0 0 0 2px #fff}
+.inset svg{width:100%;height:100%;display:block}
+.inset .sw{position:absolute;top:4px;inset-inline-start:4px;width:30px;height:30px;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.inset .sw svg{width:18px;height:18px}
+.inset .lb{position:absolute;bottom:4px;inset-inline-end:4px;background:rgba(15,34,51,.85);color:#fff;font-size:10.5px;padding:2px 6px}
+.seg{position:absolute;z-index:22;display:flex;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+.seg span{height:40px;min-width:56px;padding:0 10px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12.5px;font-weight:600;border-inline-start:1px solid var(--rule)}
+.seg span:first-child{border:0}
+.seg span.on{background:var(--ink);color:#fff}
+.seg svg{width:16px;height:16px}
+.banner{position:absolute;z-index:36;inset-inline:0;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:14px;font-weight:600}
+.toast{position:absolute;z-index:37;display:flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:2px solid var(--ink);padding:10px 12px;font-size:14px;font-weight:600;box-shadow:0 0 0 2px rgba(15,34,51,.25)}
+.toast.dk{background:var(--ink);color:#fff;border-color:#fff}
+.sheet{position:absolute;z-index:50;inset-inline:0;bottom:0;background:var(--paper);color:var(--ink);border-top:2px solid var(--ink);padding:18px 16px 48px}
+.sheet h3{margin:0 0 4px;font-size:20px;line-height:1.25}
+.sheet .sub{margin:0 0 14px;color:var(--graph);font-size:14px;line-height:1.45}
+.scrim{position:absolute;inset:0;z-index:45;background:rgba(15,34,51,.55)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;width:100%;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:16px;font-weight:600;padding:0 14px}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.dk{background:var(--ink);color:#fff}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.sm{min-height:44px;font-size:14px;width:auto}
+.btn svg{width:22px;height:22px}
+.row{display:flex;gap:8px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{font-size:13px;font-weight:600}
+.field .in{height:52px;border:2px solid var(--ink);display:flex;align-items:center;padding:0 12px;font-size:17px;background:#fff}
+.field .in.f{outline:3px solid var(--blue);outline-offset:1px}
+.tg{display:flex;align-items:center;gap:10px;height:56px;border-top:1px solid var(--rule);font-size:15px}
+.tg:last-of-type{border-bottom:1px solid var(--rule)}
+.tg svg{width:22px;height:22px}
+.tg .t{flex:1}
+.tg small{display:block;font-size:12px;color:var(--graph)}
+.sw2{width:48px;height:28px;border:2px solid var(--ink);position:relative;background:#fff;flex:none}
+.sw2::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;background:var(--ink)}
+.sw2.on{background:var(--blue);border-color:var(--blue)}
+.sw2.on::after{inset-inline-start:auto;inset-inline-end:3px;background:#fff}
+.fine{font-size:12.5px;color:var(--graph);line-height:1.45;margin:10px 0 0}
+.list{margin:0;padding:0;list-style:none}
+.list li{display:flex;align-items:center;gap:12px;min-height:60px;border-bottom:1px solid var(--rule)}
+.list li .t{flex:1;min-width:0}
+.list li .t b{display:block;font-size:15px}
+.list li .t small{display:block;font-size:12.5px;color:var(--graph)}
+.list svg{width:22px;height:22px;flex:none}
+.ico{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);flex:none}
+
+/* notes column */
+.notes{flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;padding-top:4px}
+.notes h4{margin:0;font-size:13px;font-weight:600;color:var(--graph);letter-spacing:.3px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.notes .blk{display:flex;flex-direction:column;gap:8px}
+.notes p{margin:0;font-size:15px;line-height:1.55}
+.notes dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;line-height:1.45}
+.notes dt{font-weight:600}
+.notes dd{margin:0;color:var(--ink)}
+.rule{font:500 12.5px var(--mono);color:var(--red)}
+.kv{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding:6px 0;font-size:14px}
+.kv .mono{color:var(--graph)}
+.dimh{position:absolute;height:14px;border-left:1.5px solid var(--red);border-right:1.5px solid var(--red);z-index:61}
+.dimh::before{content:"";position:absolute;top:6px;left:0;right:0;border-top:1.5px solid var(--red)}
+.dimh b{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font:600 11px var(--mono);color:var(--red);background:var(--sheet);padding:0 3px}
+.dimv{position:absolute;width:14px;border-top:1.5px solid var(--red);border-bottom:1.5px solid var(--red);z-index:61}
+.dimv::before{content:"";position:absolute;left:6px;top:0;bottom:0;border-left:1.5px solid var(--red)}
+.dimv b{position:absolute;left:18px;top:50%;transform:translateY(-50%);font:600 11px var(--mono);color:var(--red);background:var(--sheet);padding:0 3px;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="top"><h1>שיחת וידאו על הדירה · לוחות עיצוב</h1><p>12 לוחות, טלפון 390×844 קודם, מחשב 1440×900. גרסה א׳ לבחירת הבעלים, 11.11.2026</p></div>
+<nav class="toc" id="toc"></nav>
+<main id="canvas"></main>
+
+<script>
+(function(){
+const SHOT = !!window.SHOT;
+if (SHOT) document.documentElement.classList.add('shot'), document.body.classList.add('shot');
+
+/* ---------- people (fictional) ---------- */
+const P = {
+  yoav:  {n:'יואב', role:'נציג הפרויקט', c:'#1F5FA8', ini:'י', v:0, shirt:'#7F95A6'},
+  dana:  {n:'דנה',  role:'קונה',         c:'#B0307A', ini:'ד', v:1, shirt:'#A9B8C4'},
+  michal:{n:'מיכל', role:'מעצבת פנים',   c:'#1C7A4E', ini:'מ', v:2, shirt:'#5E7689'},
+  avi:   {n:'אבי',  role:'בן הזוג',      c:'#0F7C8A', ini:'א', v:3, shirt:'#93A5B3'},
+  noa:   {n:'נועה', role:'אחות',          c:'#5B4BB7', ini:'נ', v:4, shirt:'#8B9DAC'},
+};
+
+/* ---------- icons: 2px line, square ends ---------- */
+const IC = {
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',
+  micoff:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8M3 3l18 18"/>',
+  cam:'<rect x="2" y="6" width="13" height="12"/><path d="M15 10.5l7-4v11l-7-4z"/>',
+  camoff:'<rect x="2" y="6" width="13" height="12"/><path d="M15 10.5l7-4v11l-7-4zM2 3l19 19"/>',
+  eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  point:'<path d="M5 3l6 17 2.6-7.4L21 10z"/>',
+  invite:'<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6.5 7-6.5s7 2.5 7 6.5M19 7v7M15.5 10.5h7"/>',
+  more:'<rect x="4" y="11" width="3" height="3" fill="currentColor"/><rect x="10.5" y="11" width="3" height="3" fill="currentColor"/><rect x="17" y="11" width="3" height="3" fill="currentColor"/>',
+  leave:'<path d="M2.5 14.5c5.3-5 13.7-5 19 0l-2.3 3.3-4.2-1.3v-3c-2-.8-4-.8-6 0v3l-4.2 1.3z" fill="currentColor" stroke="none"/>',
+  copy:'<rect x="8" y="8" width="13" height="13"/><path d="M16 8V3H3v13h5"/>',
+  chat:'<path d="M3 4h18v12H9l-5 4v-4H3z"/>',
+  people:'<circle cx="8" cy="8" r="3.5"/><path d="M1.5 20c0-3.6 2.8-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="3"/><path d="M16.5 14c3.4 0 6 2 6 5.5"/>',
+  swap:'<path d="M4 8h15l-4-4M20 16H5l4 4"/>',
+  close:'<path d="M5 5l14 14M19 5L5 19"/>',
+  chev:'<path d="M9 5l7 7-7 7"/>',
+  back:'<path d="M15 5l-7 7 7 7"/>',
+  check:'<path d="M4 12.5l5 5L20 6.5"/>',
+  share:'<path d="M12 3v12M7 8l5-5 5 5M4 13v8h16v-8"/>',
+  plan:'<rect x="3" y="3" width="18" height="18"/><path d="M3 12h7v9M14 3v8h7"/>',
+  cube:'<path d="M12 2l9 5v10l-9 5-9-5V7z M12 12l9-5M12 12v10M12 12L3 7"/>',
+  faces:'<circle cx="8" cy="9" r="4"/><circle cx="16" cy="15" r="4"/>',
+  speaker:'<path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/>',
+  battery:'<rect x="2" y="7" width="18" height="10"/><path d="M22 10v4"/><rect x="4" y="9" width="3" height="6" fill="currentColor" stroke="none"/>',
+  signal:'<path d="M4 20v-3M9 20v-7M14 20V9M19 20V5"/>',
+  wifi:'<path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><rect x="11" y="19" width="2" height="2" fill="currentColor"/>',
+  refresh:'<path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5"/>',
+  undo:'<path d="M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3"/>',
+  pin:'<path d="M12 21s-7-6.5-7-11.5a7 7 0 0 1 14 0C19 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  hand:'<path d="M7 12V6a1.5 1.5 0 0 1 3 0v5M10 11V4a1.5 1.5 0 0 1 3 0v7M13 11V5a1.5 1.5 0 0 1 3 0v7M16 12V8a1.5 1.5 0 0 1 3 0v6c0 4-3 7-7 7-3 0-5-2-6.5-4L3 13a1.5 1.5 0 0 1 2.6-1.5L7 14"/>',
+  flip:'<path d="M3 7h13l-3-3M21 17H8l3 3"/><circle cx="12" cy="12" r="2"/>',
+  wave:'<path d="M2 12h3l2-5 3 10 3-14 3 14 2-5h4"/>',
+  qr:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/>',
+  lock:'<rect x="4" y="10" width="16" height="11"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+  note:'<path d="M4 3h16v13l-5 5H4z M15 21v-5h5"/>',
+  dots:'<circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
+  min:'<path d="M5 12h14"/>',
+  move:'<path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>',
+};
+const ic = (n, s=24, sw=2) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">${IC[n]}</svg>`;
+
+/* ---------- faces: neutral drawn figures, never photos ---------- */
+function faceSVG(p, o={}){
+  const hair = [
+    '<path d="M33 40c0-14 8-21 17-21s17 7 17 21c-4-7-10-10-17-10s-13 3-17 10z" fill="#5B6E7D"/>',
+    '<path d="M30 70V42c0-16 9-24 20-24s20 8 20 24v28l-8-2V44H38v24z" fill="#4A5D6C"/>',
+    '<circle cx="50" cy="20" r="8" fill="#4A5D6C"/><path d="M34 40c0-13 7-19 16-19s16 6 16 19c-5-6-10-8-16-8s-11 2-16 8z" fill="#4A5D6C"/>',
+    '<path d="M34 38c0-12 7-18 16-18s16 6 16 18c-3-5-9-7-16-7s-13 2-16 7z" fill="#6B7E8C"/><path d="M38 54c3 7 8 10 12 10s9-3 12-10v6c-3 6-8 9-12 9s-9-3-12-9z" fill="#6B7E8C"/>',
+    '<path d="M32 46c0-17 8-26 18-26s18 9 18 26l-4-2c0-10-6-14-14-14s-14 4-14 14z" fill="#3E5160"/>',
+  ][p.v % 5];
+  const back = o.light ? '#C9D4DC' : '#2A4256', win = o.light ? '#E3E9ED' : '#3E5A70';
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="${back}"/><rect x="62" y="8" width="26" height="40" fill="${win}"/><path d="M62 28h26M75 8v40" stroke="${back}" stroke-width="1.5"/>${p.v===1?hair:''}<path d="M12 104c2-22 18-33 38-33s36 11 38 33z" fill="${p.shirt}"/><rect x="44" y="56" width="12" height="16" fill="#C3CED6"/><ellipse cx="50" cy="44" rx="14.5" ry="17" fill="#D6DEE4"/>${p.v!==1?hair:''}</svg>`;
+}
+function disc(p, o={}){
+  const s = o.size||52;
+  const inner = o.off ? `<span style="font-size:${Math.round(s*.42)}px">${p.ini}</span>` : faceSVG(p, o);
+  let b = '';
+  if (o.mute) b += `<span class="badge" style="bottom:${o.tag===false?-2:20}px;inset-inline-start:-4px">${ic('micoff',13)}</span>`;
+  if (o.weak) b += `<span class="badge q" style="top:-4px;inset-inline-start:-4px">${ic('signal',13)}</span>`;
+  if (o.host) b += `<span class="badge" style="top:-4px;inset-inline-end:-4px;font:600 9px var(--mono)">מארח</span>`.replace('font:600 9px var(--mono)','font:700 8px var(--sans);width:auto;padding:0 3px');
+  const tag = o.tag===false ? '' : `<span class="dtag"><i></i><span>${o.label||p.n}</span></span>`;
+  return `<div class="disc" style="--c:${p.c}"><div class="dc ${o.sp?'sp':''} ${o.off?'off':''} ${o.dim?'dim':''}" style="width:${s}px;height:${s}px">${inner}</div>${tag}${b}</div>`;
+}
+const mini = (p) => `<span class="mini" style="--c:${p.c}">${faceSVG(p)}</span>`;
+const stamp = (p, lt) => `<span class="stamp ${lt?'lt':''}" style="--c:${p.c}"><b>${p.n}</b><span>${p.role}</span></span>`;
+
+/* ---------- the apartment (cm) ---------- */
+const E=22, I=12, M=30;
+const WALLS = [
+  [0,0,120,0,E],[520,0,1420,0,E],[1420,0,1420,960,E],[0,960,480,960,E],[570,960,1420,960,E],[0,0,0,960,E],
+  [640,0,640,480,I],[640,620,640,960,I],[1060,0,1060,500,I],[1060,590,1060,620,I],
+  [640,480,700,480,I],[790,480,1060,480,I],[0,540,260,540,I],[400,760,400,960,I],
+  [640,620,680,620,I],[760,620,900,620,I],[980,620,1140,620,I],[1140,620,1180,620,M],[1260,620,1420,620,M],
+  [860,620,860,960,I],[1140,620,1140,960,M],
+];
+const ROOMS = [
+  ['living','סלון ופינת אוכל',0,0,640,540],['kitchen','מטבח',0,540,400,420],['entry','כניסה',400,540,240,420],
+  ['master','יחידת הורים',640,0,420,480],['bed1','חדר שינה',1060,0,360,620],['hall','מסדרון',640,480,420,140],
+  ['bath','רחצה',640,620,220,340],['bed2','חדר שינה',860,620,280,340],['mamad','ממ״ד',1140,620,280,340],
+];
+const BALC = [0,-180,640,180];
+function furniture(state){
+  const F = [
+    {id:'sofa',k:'sofa',x:30,y:150,w:95,d:240,h:72,n:'ספה'},
+    {id:'ctable',k:'box',x:190,y:220,w:70,d:110,h:40},
+    {id:'rug',k:'rug',x:150,y:170,w:160,d:210,h:2},
+    {id:'dining',k:'table',x:400,y:110,w:170,d:95,h:75,n:'שולחן אוכל'},
+    {id:'c1',k:'box',x:415,y:62,w:42,d:42,h:46},{id:'c2',k:'box',x:510,y:62,w:42,d:42,h:46},
+    {id:'c3',k:'box',x:415,y:212,w:42,d:42,h:46},{id:'c4',k:'box',x:510,y:212,w:42,d:42,h:46},
+    {id:'tv',k:'box',x:600,y:180,w:30,d:180,h:55},
+    {id:'counter',k:'box',x:10,y:560,w:65,d:380,h:90},
+    {id:'island',k:'box',x:160,y:700,w:170,d:85,h:90,n:'אי'},
+    {id:'mbed',k:'bed',x:760,y:40,w:180,d:205,h:50},
+    {id:'mward',k:'box',x:660,y:390,w:220,d:62,h:120,n:'ארון'},
+    {id:'b1bed',k:'bed',x:1200,y:40,w:150,d:200,h:50},
+    {id:'b1desk',k:'box',x:1210,y:470,w:160,d:60,h:75},
+    {id:'b2bed',k:'bed',x:900,y:720,w:140,d:200,h:50},
+    {id:'msofa',k:'sofa',x:1190,y:860,w:200,d:80,h:62},
+    {id:'tub',k:'box',x:660,y:850,w:180,d:90,h:55},
+  ];
+  if (state && state.sofa){ const s=F[0]; Object.assign(s, state.sofa); }
+  return F;
+}
+
+/* fit a viewBox into a WxH stage, return map */
+function fitter(vb, W, H, mode){
+  const sc = mode==='slice' ? Math.max(W/vb[2], H/vb[3]) : Math.min(W/vb[2], H/vb[3]);
+  const ox = (W - vb[2]*sc)/2, oy = (H - vb[3]*sc)/2;
+  return (sx, sy) => [ox + (sx - vb[0])*sc, oy + (sy - vb[1])*sc];
+}
+
+/* ---------- 3D: axonometric massing model on ink ---------- */
+function iso(o){
+  const W=o.w, H=o.h, WH=o.wallH||130, CS=.866, SN=.5;
+  const pr = (x,y,z=0) => [(x-y)*CS, (x+y)*SN - z];
+  const pts = a => a.map(p => pr(...p).map(v=>v.toFixed(1)).join(',')).join(' ');
+  const items = [];
+  const F = furniture(o.state);
+  WALLS.forEach(([x1,y1,x2,y2,t]) => {
+    const hz = y1===y2, len = hz ? Math.abs(x2-x1) : Math.abs(y2-y1), n = Math.max(1, Math.ceil(len/40));
+    for (let i=0;i<n;i++){
+      const a = (hz?Math.min(x1,x2):Math.min(y1,y2)) + len*i/n, L = len/n;
+      const b = hz ? {x:a-(i===0?t/2:0), y:y1-t/2, w:L+(i===0?t/2:0)+(i===n-1?t/2:0), d:t} : {x:x1-t/2, y:a-(i===0?t/2:0), w:t, d:L+(i===0?t/2:0)+(i===n-1?t/2:0)};
+      items.push({...b, h:WH, wall:true});
+    }
+  });
+  F.forEach(f => { if (f.k!=='rug') items.push({...f}); });
+  items.sort((a,b) => (a.x+a.w/2 + a.y+a.d/2) - (b.x+b.w/2 + b.y+b.d/2));
+  const hold = o.hold, holdC = o.holdC;
+  let s = '';
+  // floors
+  s += `<polygon points="${pts([[BALC[0],BALC[1],0],[BALC[0]+BALC[2],BALC[1],0],[BALC[2],0,0],[0,0,0]])}" fill="#3A5874" stroke="#5E7A92" stroke-width=".8" vector-effect="non-scaling-stroke"/>`;
+  ROOMS.forEach(([id,,x,y,w,d]) => {
+    const fill = id==='bath'?'#B9C7D2':id==='kitchen'||id==='entry'||id==='hall'?'#CAD5DD':'#DCE4EA';
+    s += `<polygon points="${pts([[x,y,0],[x+w,y,0],[x+w,y+d,0],[x,y+d,0]])}" fill="${fill}"/>`;
+  });
+  // floor boards hint in living
+  for (let x=40;x<640;x+=40) s += `<polyline points="${pts([[x,0,0],[x,540,0]])}" stroke="#CFD9E0" stroke-width=".6" vector-effect="non-scaling-stroke"/>`;
+  F.filter(f=>f.k==='rug').forEach(f => s += `<polygon points="${pts([[f.x,f.y,1],[f.x+f.w,f.y,1],[f.x+f.w,f.y+f.d,1],[f.x,f.y+f.d,1]])}" fill="#BFCBD4"/>`);
+  // ghost of committed position
+  if (o.ghost){ const g=o.ghost; s += `<polygon points="${pts([[g.x,g.y,1],[g.x+g.w,g.y,1],[g.x+g.w,g.y+g.d,1],[g.x,g.y+g.d,1]])}" fill="none" stroke="${holdC}" stroke-width="1.6" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>`; }
+  // cones (where others look from)
+  (o.cones||[]).forEach(c => {
+    const a = c.a*Math.PI/180, L = c.L||170, sp = .5;
+    const p1=[c.x+Math.cos(a-sp)*L, c.y+Math.sin(a-sp)*L, 3], p2=[c.x+Math.cos(a+sp)*L, c.y+Math.sin(a+sp)*L, 3];
+    s += `<polygon points="${pts([[c.x,c.y,3],p1,p2])}" fill="${c.c}" fill-opacity=".28" stroke="${c.c}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>`;
+    const q = pr(c.x,c.y,3); s += `<rect x="${q[0]-9}" y="${q[1]-9}" width="18" height="18" fill="${c.c}" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke"/>`;
+  });
+  items.forEach(b => {
+    const {x,y,w,d,h} = b, held = hold && b.id===hold;
+    let top='#C7D2DA', fy='#9FB1BE', fx='#8299AA';
+    if (b.wall){ top='#FFFFFF'; fy='#B4C3CE'; fx='#93A7B6'; }
+    if (b.k==='bed'){ top='#E9EEF2'; }
+    if (held){ top=`color-mix(in srgb, ${holdC} 30%, #fff)`; fy=`color-mix(in srgb, ${holdC} 45%, #9FB1BE)`; fx=`color-mix(in srgb, ${holdC} 55%, #8299AA)`; }
+    const st = `stroke="#0F2233" stroke-width=".7" vector-effect="non-scaling-stroke" stroke-linejoin="round"`;
+    const ws = c => `stroke="${c}" stroke-width=".9" vector-effect="non-scaling-stroke" stroke-linejoin="round"`;
+    if (held) s += `<polygon points="${pts([[x-14,y-14,1],[x+w+14,y-14,1],[x+w+14,y+d+14,1],[x-14,y+d+14,1]])}" fill="${holdC}" fill-opacity=".22" stroke="${holdC}" stroke-width="3" vector-effect="non-scaling-stroke"/>`;
+    s += `<polygon points="${pts([[x,y+d,0],[x+w,y+d,0],[x+w,y+d,h],[x,y+d,h]])}" fill="${fy}" ${b.wall?ws(fy):st}/>`;
+    s += `<polygon points="${pts([[x+w,y,0],[x+w,y+d,0],[x+w,y+d,h],[x+w,y,h]])}" fill="${fx}" ${b.wall?ws(fx):st}/>`;
+    s += `<polygon points="${pts([[x,y,h],[x+w,y,h],[x+w,y+d,h],[x,y+d,h]])}" fill="${top}" ${b.wall?ws(top):st}/>`;
+    if (b.k==='sofa'){ const bx = b.w<b.d ? [[x,y,h],[x+22,y,h],[x+22,y+d,h],[x,y+d,h]] : [[x,y,h],[x+w,y,h],[x+w,y+22,h],[x,y+22,h]]; s += `<polygon points="${pts(bx.map(p=>[p[0],p[1],h+16]))}" fill="${held?`color-mix(in srgb, ${holdC} 20%, #fff)`:'#DCE4EA'}" ${st}/>`; }
+    if (b.k==='bed'){ s += `<polygon points="${pts([[x+12,y+10,h+6],[x+w-12,y+10,h+6],[x+w-12,y+50,h+6],[x+12,y+50,h+6]])}" fill="#FFFFFF" ${st}/>`; }
+    if (held && (o.focusPulse!==false)) s += `<polygon points="${pts([[x-14,y-14,h+2],[x+w+14,y-14,h+2],[x+w+14,y+d+14,h+2],[x-14,y+d+14,h+2]])}" fill="none" stroke="${holdC}" stroke-width="2" stroke-dasharray="6 4" vector-effect="non-scaling-stroke"/>`;
+  });
+  // crisp wall outlines drawn once per whole wall (nothing in the model is taller than the walls)
+  WALLS.forEach(([x1,y1,x2,y2,t]) => {
+    const a = y1===y2 ? [Math.min(x1,x2)-t/2, y1-t/2, Math.abs(x2-x1)+t, t] : [x1-t/2, Math.min(y1,y2)-t/2, t, Math.abs(y2-y1)+t];
+    const [x,y,w,d] = a;
+    s += `<polygon points="${pts([[x,y,WH],[x+w,y,WH],[x+w,y+d,WH],[x,y+d,WH]])}" fill="none" stroke="#0F2233" stroke-width="1" vector-effect="non-scaling-stroke"/>`;
+    s += `<polyline points="${pts([[x,y+d,WH],[x,y+d,0],[x+w,y+d,0],[x+w,y,0],[x+w,y,WH]])}" fill="none" stroke="#0F2233" stroke-width=".8" stroke-opacity=".55" vector-effect="non-scaling-stroke"/>`;
+    s += `<polyline points="${pts([[x+w,y+d,WH],[x+w,y+d,0]])}" fill="none" stroke="#0F2233" stroke-width=".8" vector-effect="non-scaling-stroke"/>`;
+  });
+  if (o.center){
+    const c = pr(...o.center), vw = W/o.scale, vh = H/o.scale;
+    const vb = [c[0]-vw/2, c[1]-vh/2, vw, vh], f = fitter(vb, W, H, 'meet');
+    return {svg:`<svg viewBox="${vb.map(v=>v.toFixed(1)).join(' ')}" preserveAspectRatio="xMidYMid meet">${s}</svg>`, at:(x,y,z=0)=>f(...pr(x,y,z))};
+  }
+  // view bounds
+  let bx = o.focus || [-20,-200,1440,980];
+  const cs = [[bx[0],bx[1],0],[bx[2],bx[1],0],[bx[2],bx[3],0],[bx[0],bx[3],0],[bx[0],bx[1],WH],[bx[2],bx[1],WH]].map(p=>pr(...p));
+  const xs = cs.map(c=>c[0]), ys = cs.map(c=>c[1]);
+  const pad = o.pad==null?40:o.pad;
+  const vb = [Math.min(...xs)-pad, Math.min(...ys)-pad, Math.max(...xs)-Math.min(...xs)+pad*2, Math.max(...ys)-Math.min(...ys)+pad*2];
+  const mode = o.fit||'meet';
+  const f = fitter(vb, W, H, mode);
+  return {svg:`<svg viewBox="${vb.map(v=>v.toFixed(1)).join(' ')}" preserveAspectRatio="xMidYMid ${mode}">${s}</svg>`, at:(x,y,z=0)=>f(...pr(x,y,z))};
+}
+
+/* ---------- plan: drafting sheet ---------- */
+function plan(o){
+  const W=o.w, H=o.h, F = furniture(o.state), hc = o.holdC;
+  let s = `<defs><pattern id="g${o.uid}" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="#DCE4EA" stroke-width="1.2"/></pattern><pattern id="h${o.uid}" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V14" stroke="#9FB1BE" stroke-width="2"/></pattern></defs>`;
+  s += `<rect x="-2000" y="-2000" width="5000" height="5000" fill="#F2F5F7"/><rect x="-2000" y="-2000" width="5000" height="5000" fill="url(#g${o.uid})"/>`;
+  s += `<rect x="${BALC[0]}" y="${BALC[1]}" width="${BALC[2]}" height="${BALC[3]}" fill="url(#h${o.uid})" stroke="#46596A" stroke-width="3"/>`;
+  ROOMS.forEach(([id,,x,y,w,d]) => s += `<rect x="${x}" y="${y}" width="${w}" height="${d}" fill="${id==='bath'?'#E6ECF0':'#FFFFFF'}"/>`);
+  if (o.ghost){ const g=o.ghost; s += `<rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.d}" fill="none" stroke="${hc}" stroke-width="3" stroke-dasharray="10 8"/>`; }
+  F.forEach(f => {
+    const held = o.hold===f.id, other = o.held2===f.id;
+    const stc = held?hc:other?o.held2C:'#0F2233', fill = held?`color-mix(in srgb, ${hc} 14%, #fff)`:other?`color-mix(in srgb, ${o.held2C} 14%, #fff)`:'#F7F9FA';
+    if (f.k==='rug'){ s += `<rect x="${f.x}" y="${f.y}" width="${f.w}" height="${f.d}" fill="none" stroke="#9FB1BE" stroke-width="2" stroke-dasharray="4 6"/>`; return; }
+    if (held||other) s += `<rect x="${f.x-16}" y="${f.y-16}" width="${f.w+32}" height="${f.d+32}" fill="${stc}" fill-opacity=".12" stroke="${stc}" stroke-width="4"/>`;
+    s += `<rect x="${f.x}" y="${f.y}" width="${f.w}" height="${f.d}" fill="${fill}" stroke="${stc}" stroke-width="${held?4:2.5}"/>`;
+    if (f.k==='sofa'){ s += f.w<f.d ? `<path d="M${f.x+24} ${f.y}V${f.y+f.d}M${f.x+24} ${f.y+f.d/2}H${f.x+f.w}" stroke="${stc}" stroke-width="2" fill="none"/>` : `<path d="M${f.x} ${f.y+24}H${f.x+f.w}M${f.x+f.w/2} ${f.y+24}V${f.y+f.d}" stroke="${stc}" stroke-width="2" fill="none"/>`; }
+    if (f.k==='bed'){ s += `<rect x="${f.x+12}" y="${f.y+10}" width="${f.w/2-18}" height="36" fill="#fff" stroke="${stc}" stroke-width="2"/><rect x="${f.x+f.w/2+6}" y="${f.y+10}" width="${f.w/2-18}" height="36" fill="#fff" stroke="${stc}" stroke-width="2"/><path d="M${f.x} ${f.y+62}H${f.x+f.w}" stroke="${stc}" stroke-width="2"/>`; }
+    if (held){ const cx=f.x+f.w/2; s += `<path d="M${cx} ${f.y-16}V${f.y-56}" stroke="${hc}" stroke-width="3"/><circle cx="${cx}" cy="${f.y-66}" r="11" fill="#fff" stroke="${hc}" stroke-width="4"/>`; }
+  });
+  WALLS.forEach(([x1,y1,x2,y2,t]) => s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#0F2233" stroke-width="${t}" stroke-linecap="square"/>`);
+  s += `<line x1="120" y1="0" x2="520" y2="0" stroke="#1F5FA8" stroke-width="5"/>`;
+  // door swings
+  [[700,480,90,1],[680,620,80,0],[900,620,80,0],[1180,620,80,0],[1060,500,90,2],[480,960,90,3]].forEach(([x,y,r,k])=>{
+    if(k===1) s+=`<path d="M${x} ${y}v${r} M${x} ${y+r}A${r} ${r} 0 0 0 ${x+r} ${y}" fill="none" stroke="#7A8B98" stroke-width="2"/>`;
+    if(k===0) s+=`<path d="M${x} ${y}v-${r} M${x} ${y-r}A${r} ${r} 0 0 1 ${x+r} ${y}" fill="none" stroke="#7A8B98" stroke-width="2"/>`;
+    if(k===2) s+=`<path d="M${x} ${y}h-${r} M${x-r} ${y}A${r} ${r} 0 0 0 ${x} ${y+r}" fill="none" stroke="#7A8B98" stroke-width="2"/>`;
+    if(k===3) s+=`<path d="M${x} ${y}v-${r} M${x} ${y-r}A${r} ${r} 0 0 1 ${x+r} ${y}" fill="none" stroke="#7A8B98" stroke-width="2"/>`;
+  });
+  const fs = o.fs||28;
+  ROOMS.forEach(([id,n,x,y,w,d]) => {
+    if (o.nolabels && o.nolabels.includes(id)) return;
+    const a = (w*d/1e4).toFixed(1); let cx=x+w/2, cy=y+d/2;
+    if (id==='living'){ cx=420; cy=330; }
+    if (id==='kitchen'){ cx=240; cy=880; }
+    if (id==='master'){ cx=860; cy=320; }
+    s += `<text x="${cx}" y="${cy}" text-anchor="middle" font-family="IBM Plex Sans Hebrew,Arial" font-weight="600" font-size="${fs}" fill="#0F2233" direction="rtl">${n}</text><text x="${cx}" y="${cy+fs*1.05}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="${fs*.78}" fill="#46596A">${a} m²</text>`;
+  });
+  s += `<text x="320" y="-80" text-anchor="middle" font-family="IBM Plex Sans Hebrew,Arial" font-weight="600" font-size="${fs}" fill="#0F2233">מרפסת</text>`;
+  // overall dimension (red)
+  if (o.dims!==false){
+    s += `<g stroke="#B5302A" stroke-width="2.5" fill="none"><path d="M0 -220H1420M0 -238V-202M1420 -238V-202"/><path d="M1490 0V960M1472 0H1508M1472 960H1508"/></g>`;
+    s += `<text x="${o.dimX||320}" y="-232" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="600" font-size="${fs*.85}" fill="#B5302A">14.20</text>`;
+  }
+  (o.extra||[]).forEach(e => s += e);
+  const vb = o.vb || [-80,-280,1620,1300];
+  const mode = o.fit||'meet', f = fitter(vb, W, H, mode);
+  return {svg:`<svg viewBox="${vb.join(' ')}" preserveAspectRatio="xMidYMid ${mode}">${s}</svg>`, at:(x,y)=>f(x,y)};
+}
+
+/* ---------- screen parts ---------- */
+const sb = (light) => `<div class="sb ${light?'l':''}"><span>21:40</span><span class="r">${ic('signal',16,2.4)}${ic('wifi',16,2.2)}${ic('battery',22,1.8)}</span></div>`;
+const hdr = (o={}) => `<div class="hdr"><span class="bk">${ic('chev',22)}</span><div class="tt"><b>${o.t||'שיחת וידאו על הדירה'}</b><small>${o.s||'דירת 5 חדרים · 136 מ״ר · קומה 7'}</small></div><span class="live"><i></i><span class="mono">${o.time||'18:42'}</span><span class="pp">${ic('people',15)}${o.n||4}</span></span></div>`;
+function bar(st={}){
+  const c = (cls, icon, lbl, extra='') => `<div class="cell ${cls}">${extra}${ic(icon,24)}<span>${lbl}</span></div>`;
+  const mic = st.mic==='muted' ? c('on','micoff','מושתק') : st.mic==='blocked' ? c('blk','micoff','חסום') : c('', 'mic','מיקרופון', st.level?`<span class="lv"><i style="height:${st.level}%"></i></span>`:'');
+  const cam = st.cam==='off' ? c('on','camoff','כבויה') : st.cam==='blocked' ? c('blk','camoff','חסומה') : c('','cam','מצלמה');
+  return `<div class="bar ${st.hidden?'hidden':''}"><div class="cells">${mic}${cam}${c(st.follow?'act':'','eye',st.follow?'עוקבים':'מעקב')}${c(st.point?'act':'','point','הצבעה')}${c('','invite','הזמנה')}${c(st.more?'on':'','more','עוד', st.unread?`<span class="dot">${st.unread}</span>`:'')}</div><span class="sep"></span><div class="leave">${ic('leave',24)}<span>יציאה</span></div></div>`;
+}
+const home = (k='') => `<div class="home ${k}"><i></i></div>`;
+const mk = (n,x,y) => `<span class="mk" style="left:${x}px;top:${y}px">${n}</span>`;
+const SW=390, SH=844, ST_TOP=100, ST_H = 844-100-110; // stage
+function call(o){ // in-call screen
+  return sb() + hdr(o.h||{}) + `<div class="stage ${o.paper?'paper':''} ${o.full?'full':''}">${o.stage||''}</div>` + (o.bar===false?'':bar(o.b||{})) + home(o.homeK||'') + (o.over||'');
+}
+function phone(screen, cap, z){
+  const notes = (cap.notes||[]).map((t,i)=>`<li><span class="n">${i+1}</span><span>${t}</span></li>`).join('');
+  return `<figure class="ph ${z?'z':''}"><div class="dev"><div class="scr">${screen}</div></div><figcaption><b>${cap.t}${cap.i?` <i>${cap.i}</i>`:''}</b><ol>${notes}</ol></figcaption></figure>`;
+}
+function board(n, title, sub, body, extra=''){
+  return `<div class="wrap" id="b${n}w"><section class="board" id="b${n}" aria-label="${title}">
+  <header class="bh"><div class="bn"><b>${n}</b><small>מתוך 12</small></div><div><h2>${title}</h2><p>${sub}</p></div></header>
+  <div class="body">${body}</div>${extra}
+  <div class="tb"><div><small>פרויקט</small><b>מעצב הדירות · נדל״ן</b></div><div><small>מוצר</small><b>שיחת וידאו על הדירה</b></div><div><small>לוח</small><b class="mono">${n} / 12</b></div><div><small>קנה מידה</small><b class="mono">1:1 · 390×844</b></div><div><small>תאריך</small><b class="mono">11.11.2026</b></div><div><small>גרסה</small><b>א׳ לבחירה</b></div></div>
+  </section></div>`;
+}
+const notes = (blocks) => `<div class="notes">${blocks.map(b=>`<div class="blk"><h4>${b[0]}</h4>${b[1]}</div>`).join('')}</div>`;
+
+/* ---------- reusable stages ---------- */
+const MOVED = {x:140,y:400,w:240,d:95};
+const OLD = {x:30,y:150,w:95,d:240};
+
+/* ===================== BOARD 01 · cover ===================== */
+function b01(){
+  const m = iso({w:560,h:470,focus:[-20,-190,1440,980],pad:20,hold:'sofa',holdC:P.dana.c,
+    cones:[{x:900,y:560,a:200,c:P.yoav.c},{x:300,y:820,a:-80,c:P.michal.c}]});
+  const sw = (hex,name,role,dark) => `<div style="display:flex;flex-direction:column;gap:6px;width:150px"><div style="height:74px;background:${hex};border:2px solid var(--ink)"></div><b style="font-size:14px">${name}</b><span class="mono" style="font-size:12px;color:var(--graph);text-align:right">${hex}</span><span style="font-size:12.5px;color:var(--graph);line-height:1.35">${role}</span></div>`;
+  const pen = (hex,name) => `<div style="display:flex;align-items:center;gap:8px"><span style="width:30px;height:30px;border-radius:50%;box-shadow:0 0 0 3px ${hex},0 0 0 5px #fff,0 0 0 6.5px var(--ink);background:#2A4256"></span><span style="font-size:13px;font-weight:600">${name}<br><span class="mono" style="font-size:11px;color:var(--graph);font-weight:400">${hex}</span></span></div>`;
+  const nm = (n,t,why) => `<div style="flex:1;border:2px solid var(--ink);background:#fff;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px"><span class="mono" style="font-size:12px;color:var(--graph)">שם ${t}</span><b style="font-size:34px;line-height:1.05">${n}</b><span style="font-size:14px;line-height:1.5;color:var(--ink)">${why}</span></div>`;
+  return `<div class="wrap" id="b01w"><section class="board" id="b01" aria-label="שער">
+   <div style="position:absolute;top:56px;right:64px;width:900px;display:flex;flex-direction:column;gap:22px">
+     <div style="display:flex;gap:14px;align-items:center"><span class="bn" style="width:64px;height:64px"><b style="font-size:28px">01</b><small>מתוך 12</small></span><span style="font-size:15px;color:var(--graph);line-height:1.4">nad-lan.co.il · מעצב הדירות<br>לוחות עיצוב לשיחה, גרסה א׳</span></div>
+     <h1 style="margin:0;font-size:96px;line-height:.98;font-weight:700;letter-spacing:-1.5px">שיחת וידאו<br>על הדירה</h1>
+     <p style="margin:0;font-size:22px;line-height:1.5;max-width:780px">פגישת תכנון סביב שולחן השרטוט, בטלפון. כולם רואים את אותה דירה, מזיזים את אותם רהיטים ומדברים פנים מול פנים. הדירה היא הכוכבת, הפנים מסביב לה.</p>
+     <div style="border:2px solid var(--ink);background:#fff;padding:16px 18px;display:flex;gap:16px;align-items:flex-start;max-width:860px"><span class="mono" style="flex:none;font-size:11px;background:var(--ink);color:#fff;padding:4px 7px;margin-top:3px">זהות</span><p style="margin:0;font-size:16px;line-height:1.6">דיו #0F2233 מאחורי הווידאו והדגם, לבן שרטוט ודף ללוחות, כחול שרטוט לפעולה, אדום רק לניתוק ולמידות, ושישה צבעי עט טכני, אחד לכל משתתף. אותיות IBM Plex Sans Hebrew ו־IBM Plex Mono למספרים. זו לא ברירת המחדל כי הכול לקוח מהגיליון שעל שולחן השרטוט: דיו, נייר, עט ומידה, ולא מתבנית של אפליקציית שיחות.</p></div>
+     <div style="display:flex;gap:18px">${sw('#0F2233','דיו','משטח הווידאו והדגם')}${sw('#F2F5F7','לבן שרטוט','רקע הלוחות')}${sw('#FFFFFF','דף','לוחות, סרגל, טפסים')}${sw('#1F5FA8','כחול שרטוט','פעולה ומצב חי')}${sw('#B5302A','אדום מידה','ניתוק ומידות בלבד')}</div>
+     <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:600;color:var(--graph)">צבעי העט: טבעת הפנים, הילה סביב רהיט מוחזק, הסמן והקונוס במודל</span><div style="display:flex;gap:22px;flex-wrap:wrap">${pen('#1F5FA8','כחול שרטוט')}${pen('#1C7A4E','ירוק')}${pen('#B0307A','מגנטה')}${pen('#0F7C8A','טורקיז')}${pen('#5B4BB7','סגול')}${pen('#46596A','גרפיט')}</div></div>
+     <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:600;color:var(--graph)">רשימת הלוחות</span><div style="display:grid;grid-template-columns:repeat(6,1fr);border:2px solid var(--ink);background:#fff">${['שער','כניסה','סיור','סידור','שיחה','סרגל','מעקב והצבעה','הזמנה','תקלות','מחשב','סוף השיחה','רכיבים'].map((n,i)=>`<div style="padding:6px 8px;border-inline-start:${i%6?1:0}px solid var(--rule);border-top:${i>5?1:0}px solid var(--rule);display:flex;gap:8px;align-items:baseline;font-size:13px"><span class="mono" style="font-size:11px;color:var(--graph)">${String(i+1).padStart(2,'0')}</span>${n}</div>`).join('')}</div></div>
+   </div>
+   <div style="position:absolute;top:56px;left:64px;width:600px;display:flex;flex-direction:column;gap:14px">
+     <div style="position:relative;height:470px;background:var(--ink);border:2px solid var(--ink);background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px">
+       <div style="position:absolute;inset:0">${m.svg}</div>
+       <div style="position:absolute;top:16px;right:16px;display:flex;gap:16px">${disc(P.yoav,{size:56,sp:true})}${disc(P.dana,{size:56})}${disc(P.michal,{size:56})}${disc(P.avi,{size:56,off:true})}</div>
+       <div class="chip" style="--c:${P.dana.c};left:${Math.round(m.at(125,390,0)[0])-40}px;top:${Math.round(m.at(125,390,0)[1])-30}px">${mini(P.dana)}דנה מזיזה את הספה</div>
+       <span class="mono" style="position:absolute;bottom:10px;left:12px;font-size:11px;color:#7F97AB">פרט A · סיור, 4 משתתפים</span>
+     </div>
+     <div style="display:flex;gap:28px;align-items:flex-end;border-top:2px solid var(--ink);padding-top:14px">
+       <div><span style="font-size:13px;color:var(--graph)">IBM Plex Sans Hebrew · ממשק</span><div style="font-size:46px;font-weight:700;line-height:1.1">אבגד הוזח</div><div style="font-size:16px">כותרות 600 עד 700, טקסט 400 עד 500</div></div>
+      <div><span style="font-size:13px;color:var(--graph)">IBM Plex Mono · מספרים וזמן</span><div class="mono" style="font-size:34px;font-weight:500;line-height:1.15;text-align:right;white-space:nowrap">18:42 · 14.20</div><div style="font-size:16px">טיימר, מידות, קישור</div></div>
+     </div>
+     <div style="border:2px solid var(--ink);background:var(--ink);color:#fff;padding:14px 16px;font-size:14.5px;line-height:1.55"><b style="display:block;font-size:13px;color:#9CC0EA;margin-bottom:4px">מה גילה המחקר</b>לאף אחת מארבע תוכנות השיחה הגדולות אין סרגל שיחה מימין לשמאל, ולאחת מהן אין ממשק בעברית בכלל. אצלנו העברית והכיוון מימין לשמאל הם ברירת המחדל: הסרגל מתחיל מימין, היציאה בקצה השמאלי.</div>
+   </div>
+   <div style="position:absolute;right:64px;left:64px;bottom:96px;display:flex;flex-direction:column;gap:12px">
+     <div style="display:flex;align-items:baseline;gap:14px"><b style="font-size:22px">שלושה שמות למוצר, לבחירת הבעלים</b><span style="font-size:15px;color:var(--graph)">עד ההחלטה הממשק אומר: שיחת וידאו על הדירה</span></div>
+     <div style="display:flex;gap:18px">${nm('שולחן משותף','1','כמו שולחן השרטוט שכולם עומדים סביבו. אומר שעובדים יחד על אותה תוכנית.')}${nm('בדירה יחד','2','הכי פשוט לקונה: נכנסים לדירה ביחד, גם כשכל אחד בבית אחר.')}${nm('חדר תכנון','3','המקום שבו מחליטים על הדירה. רציני, מתאים גם לנציג וגם למעצבת.')}</div>
+   </div>
+   <div class="tb"><div><small>פרויקט</small><b>מעצב הדירות · נדל״ן</b></div><div><small>מוצר</small><b>שיחת וידאו על הדירה</b></div><div><small>לוח</small><b class="mono">01 / 12</b></div><div><small>תאריך</small><b class="mono">11.11.2026</b></div><div><small>גרסה</small><b>א׳ לבחירה</b></div></div>
+  </section></div>`;
+}
+
+/* ===================== BOARD 02 · entry ===================== */
+function b02(){
+  // host start
+  const prev = iso({w:390,h:844,center:[420,360,0],scale:.42});
+  const s1 = sb() + `<div style="position:absolute;inset:0;opacity:.55">${prev.svg}</div><div class="scrim" style="background:rgba(15,34,51,.45)"></div>
+   <div class="sheet" style="padding-top:16px">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><h3>שיחת וידאו על הדירה</h3><span class="ico" style="border:0;margin:-10px -8px 0 0">${ic('close',22)}</span></div>
+     <p class="sub">מזמינים את מי שצריך ומעצבים יחד את דירת 5 החדרים. כולם רואים את אותה תוכנית בזמן אמת.</p>
+     <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px">
+       <div style="width:96px;height:96px;flex:none;border:2px solid var(--ink);position:relative;overflow:hidden">${faceSVG(P.yoav)}<span class="mono" style="position:absolute;bottom:0;inset-inline:0;background:rgba(15,34,51,.8);color:#fff;font-size:10px;text-align:center;padding:2px 0">התמונה שלך</span></div>
+       <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+         <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">${ic('mic',18)} מיקרופון עובד</div>
+         <div style="display:flex;gap:3px;align-items:flex-end;height:22px">${[6,10,16,22,18,12,20,14,9,5,4,3,3,3].map((h,i)=>`<span style="width:8px;height:${h}px;background:${i<9?'#1C7A4E':'#C9D4DC'}"></span>`).join('')}</div>
+         <span style="font-size:12px;color:var(--graph)">דברו, והקו זז. כך יודעים שישמעו אתכם.</span>
+       </div>
+     </div>
+     <div class="field"><label>איך לקרוא לך?</label><div class="in">יואב</div></div>
+     <div class="tg">${ic('cam',22)}<span class="t">מצלמה<small>אפשר לכבות בכל רגע בשיחה</small></span><span class="sw2 on"></span></div>
+     <div class="tg" style="margin-bottom:14px">${ic('mic',22)}<span class="t">מיקרופון</span><span class="sw2 on"></span></div>
+     <div class="btn pri">להתחיל שיחה</div>
+     <p class="fine">השיחה לא מוקלטת. הדפדפן יבקש רשות למצלמה ולמיקרופון רק כשתלחצו.</p>
+   </div>${home('t')}` + mk(1,300,520)+mk(2,16,690)+mk(3,16,744);
+  // guest: message
+  const s2 = sb(true) + `<div style="position:absolute;inset:0;background:#E3E9ED"></div>
+   <div style="position:absolute;top:44px;inset-inline:0;height:60px;background:#fff;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--ink)">${ic('back',22)}<span style="width:36px;height:36px;border-radius:50%;overflow:hidden">${faceSVG(P.yoav,{light:true})}</span><b style="font-size:16px">יואב</b></div>
+   <div style="position:absolute;top:130px;inset-inline-start:16px;width:300px;background:#fff;color:var(--ink);border:1px solid var(--rule)">
+     <div style="height:150px;background:var(--ink);position:relative;overflow:hidden">${iso({w:298,h:150,focus:[-20,-190,1440,980],pad:10}).svg}</div>
+     <div style="padding:10px 12px;border-bottom:1px solid var(--rule)"><b style="display:block;font-size:14.5px">שיחת וידאו על הדירה · דירת 5 חדרים</b><span class="mono" style="font-size:12px;color:var(--graph)">nad-lan.co.il/c/7KQ-4MD</span></div>
+     <p style="margin:0;padding:10px 12px;font-size:14.5px;line-height:1.5">היי, אנחנו עכשיו בשיחה על הדירה ומזיזים רהיטים. בואו להצטרף, זה נפתח בדפדפן בלי הרשמה.</p>
+     <span class="mono" style="display:block;text-align:left;padding:0 10px 6px;font-size:11px;color:var(--mute)">21:38</span>
+   </div>
+   <div style="position:absolute;top:470px;inset-inline:40px;text-align:center;font-size:13px;color:var(--graph)">נגיעה אחת בקישור פותחת את הדירה בדפדפן</div>
+   ${home('t')}` + `<span class="mk" style="left:330px;top:250px;background:var(--blue);color:#fff;border-color:var(--blue);width:auto;padding:0 6px">נגיעה 1</span>`;
+  // guest: entry card
+  const prev2 = iso({w:390,h:844,focus:[-20,-190,1440,980],fit:'meet',pad:30});
+  const s3 = sb() + `<div style="position:absolute;top:44px;inset-inline:0;height:420px;background:var(--ink)"><div style="position:absolute;inset:0">${iso({w:390,h:420,focus:[-20,-190,1440,980],pad:20}).svg}</div>
+     <div style="position:absolute;top:12px;right:12px;display:flex;gap:14px">${disc(P.yoav,{size:44,sp:true})}${disc(P.dana,{size:44})}</div>
+     <span style="position:absolute;bottom:12px;right:14px;font-size:13px;color:#C8D3DB">יואב ודנה כבר בפנים</span></div>
+   <div class="sheet" style="top:440px;padding-top:18px">
+     <h3>להצטרף לשיחה על הדירה</h3>
+     <p class="sub">יואב מזמין אותך. נכנסים עם מצלמה כבויה, ומפעילים כשרוצים.</p>
+     <div class="field"><label>איך לקרוא לך?</label><div class="in f">אבי</div></div>
+     <div style="display:flex;gap:8px;margin-bottom:12px"><span class="btn sm" style="flex:1">${ic('camoff',20)} מצלמה כבויה</span><span class="btn sm" style="flex:1">${ic('mic',20)} מיקרופון בכניסה</span></div>
+     <div class="btn pri">כניסה</div>
+   </div>${home('t')}` + `<span class="mk" style="left:300px;top:732px;background:var(--blue);color:#fff;border-color:var(--blue);width:auto;padding:0 6px">נגיעה 2</span>` + mk(1,16,610);
+  // refused permission -> listener
+  const m4 = iso({w:390,h:ST_H,center:[420,360,0],scale:.42});
+  const s4 = call({h:{n:3}, b:{mic:'blocked',cam:'blocked'}, stage: m4.svg + `<div class="strip">${disc(P.yoav,{size:44,sp:true})}${disc(P.dana,{size:44})}</div>`
+    + `<div class="toast" style="top:96px;inset-inline:12px;align-items:flex-start">${ic('speaker',22)}<span style="flex:1;line-height:1.4">נכנסת כמאזין. שומעים ורואים הכול, ואפשר להצביע ולהזיז רהיטים.<br><span style="font-weight:500;color:var(--blue);text-decoration:underline">איך לאשר מיקרופון</span></span></div>`,
+    over: `<div class="sheet" style="bottom:110px;padding-bottom:16px;border-bottom:2px solid var(--ink)"><h3 style="font-size:17px">לאשר מיקרופון בטלפון</h3><div style="display:flex;gap:10px;margin-top:8px">
+      <div style="flex:1;border:2px solid var(--ink);padding:10px"><b style="font-size:13px">אייפון</b><p style="margin:4px 0 0;font-size:12.5px;line-height:1.45">לוחצים על <span style="border:1.5px solid var(--ink);padding:0 4px">Aא</span> בשורת הכתובת, הגדרות האתר, מיקרופון: לאפשר.</p></div>
+      <div style="flex:1;border:2px solid var(--ink);padding:10px"><b style="font-size:13px">אנדרואיד</b><p style="margin:4px 0 0;font-size:12.5px;line-height:1.45">לוחצים על ${ic('lock',13)} ליד הכתובת, הרשאות, מיקרופון: לאפשר.</p></div></div>
+      <div class="row" style="margin-top:10px"><span class="btn sm pri" style="flex:1">ניסיתי, לבדוק שוב</span><span class="btn sm" style="flex:1">להמשיך כמאזין</span></div></div>`})
+    + mk(1,340,150) + mk(2,14,760);
+  return board('02','כניסה לשיחה','מי שפותח שיחה רואה את עצמו ושומע שהמיקרופון עובד. מי שהוזמן בוואטסאפ נכנס בשתי נגיעות, בלי הרשמה ובלי דף בדיקות. מי שסירב להרשאה עדיין נכנס, כמאזין.',
+    phone(s1,{t:'פותח השיחה',i:'נציג או קונה',notes:['תצוגה מקדימה קטנה ומד מיקרופון שזז. בלי מסך בדיקות נפרד.','השם ממולא מראש מהחשבון או מהשיחה הקודמת.','"להתחיל שיחה" באזור האגודל. ההרשאה מתבקשת רק בלחיצה.']},true)
+   +phone(s2,{t:'מוזמן, נגיעה 1',i:'הודעה בוואטסאפ',notes:['כרטיס הקישור מראה את הדירה, לא פנים ולא לוגו של תוכנה.','הכתובת קצרה וניתנת לקריאה בקול: c/7KQ-4MD.']},true)
+   +phone(s3,{t:'מוזמן, נגיעה 2',i:'כרטיס כניסה מעל הדירה',notes:['שדה אחד בלבד. המצלמה כבויה כברירת מחדל, המיקרופון מתבקש בכניסה.','רואים מי כבר בפנים ואת הדירה החיה מאחורי הכרטיס.']},true)
+   +phone(s4,{t:'סירב להרשאה',i:'נכנס כמאזין',notes:['אף פעם לא מבוי סתום: שומעים, רואים, מצביעים ומזיזים.','הסבר עם תמונת הכפתור המדויק לאייפון ולאנדרואיד.']},true));
+}
+
+/* ===================== BOARD 03 · Tour ===================== */
+function b03(){
+  const W=390, Hs=ST_H;
+  const m1 = iso({w:W,h:Hs,center:[380,400,0],scale:.42,cones:[{x:420,y:470,a:225,c:P.yoav.c,L:150}]});
+  const s1 = call({b:{follow:true}, h:{}, stage: m1.svg + `<div class="follow" style="--c:${P.yoav.c}"></div><div class="ftab" style="--c:${P.yoav.c};top:auto;bottom:0">עוקבים אחרי יואב<span class="x">הקישו לעצור</span></div>`
+    + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true,mute:true})}</div>`
+    + `<div class="selfp" style="left:12px;top:14px">${disc(P.dana,{size:40,label:'אני'})}</div>`
+    + `<div class="seg" style="left:12px;bottom:46px;flex-direction:column"><span class="on">${ic('cube',16)}סיור</span><span>${ic('plan',16)}סידור</span><span>${ic('faces',16)}שיחה</span></div>`})
+    + mk(1,300,92)+mk(2,8,120)+mk(3,180,690)+mk(4,80,560);
+  const m2 = iso({w:W,h:Hs,center:[820,380,0],scale:.42,cones:[{x:200,y:300,a:-20,c:P.yoav.c,L:170},{x:980,y:560,a:250,c:P.michal.c,L:150}]});
+  const yc = m2.at(200,300,3), mc = m2.at(980,560,3);
+  const s2 = call({b:{}, stage: m2.svg
+    + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true,mute:true})}</div>`
+    + `<div class="chip lt" style="--c:${P.yoav.c};top:${Math.round(yc[1])+16}px;left:${Math.round(yc[0])-30}px;height:26px;font-size:12px">יואב מסתכל מכאן</div>`
+    + `<div class="chip lt" style="--c:${P.michal.c};top:${Math.round(mc[1])+16}px;left:${Math.round(mc[0])-40}px;height:26px;font-size:12px">מיכל</div>`
+    + `<div class="chip" style="--c:${P.yoav.c};bottom:14px;right:50%;transform:translateX(50%);height:44px;font-size:14px;padding-inline-end:14px">${mini(P.yoav)}חזרה ליואב</div>`
+    + `<div class="seg" style="left:12px;top:100px;flex-direction:column"><span>${ic('cube',16)}סיור</span><span>${ic('plan',16)}סידור</span><span>${ic('faces',16)}שיחה</span></div>`.replace('<span>'+ic('cube',16),'<span class="on">'+ic('cube',16))})
+    + mk(1,150,640)+mk(2,250,330);
+  const m3 = iso({w:W,h:Hs+76,center:[420,420,0],scale:.4});
+  const s3 = sb() + hdr({}) + `<div class="stage" style="bottom:34px">${m3.svg}<div class="strip" style="top:14px">${disc(P.yoav,{size:52,host:true})}${disc(P.michal,{size:52,sp:true})}${disc(P.avi,{size:52,off:true,mute:true})}</div>
+     <div class="toast dk" style="bottom:20px;inset-inline:60px;justify-content:center;font-weight:500;font-size:13px;opacity:.92">הקישו על המסך כדי להחזיר את הכפתורים</div></div>${home('d')}` + mk(1,180,740);
+  return board('03','פריסת סיור','ברירת המחדל כשמישהו מוביל. הדגם ממלא את המסך מהכותרת ועד הסרגל, הפנים צפות מעליו כעיגולי פרט, והדובר מקבל טבעת בצבע העט שלו. הסדר של הפנים לא משתנה אף פעם.',
+    phone(s1,{t:'עוקבים אחרי המוביל',i:'פריסה A',notes:['עיגולי פנים 52 על הדגם. טבעת דיבור כפולה בצבע העט, תוך 300 מ״ש מהדיבור.','התמונה שלי קטנה, נגררת לכל פינה, ומתקפלת לגלולה "אני" אחרי 10 שניות.','מסגרת בצבע של יואב ושורה "עוקבים אחרי יואב". כל נגיעה בדגם עוצרת.','מעבר ידני בין שלוש הפריסות, תמיד באותו מקום.']})
+   +phone(s2,{t:'מסתובבים לבד',i:'פריסה A, חופשי',notes:['אחרי נגיעה: "חזרה ליואב" באזור האגודל, נגיעה אחת מחזירה למבט שלו.','קונוס בצבע כל משתתף מראה מאיפה הוא מסתכל. לא מסתיר רהיטים.']})
+   +phone(s3,{t:'הכפתורים נעלמו',i:'אחרי 4 שניות בלי נגיעה',notes:['הסרגל יורד ומפנה את כל המסך לדגם. נגיעה אחת מחזירה אותו. לא נעלם בזמן גרירה.']})
+   + notes([['מתי סיור',`<p>כשהנציג מוביל, כשמישהו עוקב אחרי מישהו, ובכל כניסה לשיחה. עוברים ממנה לסידור מעצמה כשמישהו נוגע ברהיט.</p>`],
+     ['הפנים',`<dl><dt>גודל</dt><dd>52 פיקסלים, 44 כשיש יותר מ־4</dd><dt>טבעת</dt><dd>2 px בצבע העט, דיבור 3+2</dd><dt>סדר</dt><dd>לפי סדר הכניסה, קבוע</dd><dt>מעל 4</dt><dd>גלילה לצד, ועיגול "עוד 3"</dd></dl>`],
+     ['נגיעה בפנים',`<p>נגיעה בעיגול: מעקב אחרי המבט שלו. נגיעה ארוכה: תמונה גדולה ל־5 שניות.</p>`]]));
+}
+
+/* ===================== BOARD 04 · Arrange ===================== */
+function b04(){
+  const W=390, Hs=ST_H;
+  const vb = [-60,-120,860,1180];
+  const extra = [
+    `<g stroke="#B5302A" stroke-width="2.5" fill="none"><path d="M0 447H140M0 435V459M140 435V459"/><path d="M260 495V540M248 495H272M248 540H272"/></g><text x="70" y="430" text-anchor="middle" font-family="IBM Plex Mono" font-weight="600" font-size="24" fill="#B5302A">1.40</text><text x="282" y="526" font-family="IBM Plex Mono" font-weight="600" font-size="24" fill="#B5302A">0.45</text>`,
+  ];
+  const p1 = plan({uid:'a',w:W,h:Hs,vb,fit:'slice',state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c,ghost:OLD,extra,fs:30,dims:false});
+  const sc = p1.at(260,447);
+  const s1 = call({paper:true, b:{}, stage: p1.svg
+    + `<div class="pill" style="top:12px;right:12px"><span class="stack">${mini(P.dana)}${mini(P.yoav)}${mini(P.michal)}${mini(P.avi)}</span>4 בשיחה · מיכל מדברת</div>`
+    + `<div class="chip" style="--c:${P.dana.c};top:${Math.round(p1.at(0,540)[1])+16}px;left:${Math.round(p1.at(150,0)[0])}px">${mini(P.dana)}דנה מזיזה את הספה</div>`
+    + `<div style="position:absolute;top:${Math.round(sc[1])-24}px;left:${Math.round(sc[0])+30}px;z-index:23">${disc(P.dana,{size:28,tag:false})}</div>`
+    + `<div class="inset" style="left:12px;bottom:12px;width:150px;height:128px">${iso({w:150,h:128,focus:[-20,-180,700,600],pad:10,state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c}).svg}<span class="sw">${ic('swap',18)}</span><span class="lb">תלת ממד</span></div>`})
+    + mk(1,236,118)+mk(2,Math.round(sc[0])+64,Math.round(sc[1])-40)+mk(3,170,604);
+  // refused hold + phone who holds
+  const p2 = plan({uid:'b',w:W,h:Hs,vb:[560,-140,880,1180],fit:'slice',hold:'mward',holdC:P.yoav.c,held2:null,fs:30,dims:false,nolabels:['hall'],
+    extra:[`<rect x="1196" y="456" width="188" height="88" fill="none" stroke="#0F2233" stroke-width="3" stroke-dasharray="6 6"/>`]});
+  const wc = p2.at(770,390), dc = p2.at(1290,500);
+  const s2 = call({paper:true, b:{}, stage: p2.svg
+    + `<div class="pill" style="top:12px;right:12px"><span class="stack">${mini(P.avi)}${mini(P.yoav)}${mini(P.michal)}${mini(P.dana)}</span>4 בשיחה · יואב מדבר</div>`
+    + `<div class="chip" style="--c:${P.yoav.c};top:${Math.round(p2.at(0,500)[1])}px;left:${Math.round(p2.at(690,0)[0])}px">${mini(P.yoav)}יואב מזיז את הארון</div>`
+    + `<div class="toast" style="top:${Math.round(p2.at(0,640)[1])}px;inset-inline:24px;font-size:13.5px;border-color:${P.yoav.c}">${ic('hand',20)}<span>יואב מחזיק את הארון. נסו שוב בעוד רגע.</span></div>`
+    + `<div class="toast" style="bottom:12px;left:12px;font-size:13px;padding:8px 10px">${ic('undo',18)}בטל את שלי</div>`
+    + `<div class="inset" style="right:12px;bottom:12px;width:120px;height:100px">${iso({w:120,h:100,focus:[600,-20,1440,640],pad:8,hold:'mward',holdC:P.yoav.c}).svg}<span class="sw">${ic('swap',18)}</span></div>`})
+    + mk(1,12,Math.round(p2.at(0,640)[1])+4)+mk(2,Math.round(p2.at(890,0)[0]),Math.round(p2.at(0,380)[1])-26)+mk(3,150,690);
+  // 3D big while arranging (swapped)
+  const m3 = iso({w:W,h:Hs,center:[300,420,0],scale:.55,state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c,ghost:OLD});
+  const hp = m3.at(260,447,80);
+  const s3 = call({b:{}, stage: m3.svg
+    + `<div class="pill" style="top:12px;right:12px"><span class="stack">${mini(P.yoav)}${mini(P.dana)}${mini(P.michal)}${mini(P.avi)}</span>4 בשיחה · דנה מדברת</div>`
+    + `<div class="chip" style="--c:${P.dana.c};top:${Math.round(hp[1])-70}px;left:${Math.round(hp[0])-70}px">${mini(P.dana)}דנה מזיזה את הספה</div>`
+    + `<div class="inset" style="left:12px;bottom:12px;width:150px;height:150px;background:#F2F5F7">${plan({uid:'c',w:150,h:150,vb:[-60,-60,800,800],fit:'slice',state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c,fs:40,dims:false,nolabels:['living','kitchen','entry','master']}).svg}<span class="sw">${ic('swap',18)}</span><span class="lb">תוכנית</span></div>`});
+  return board('04','פריסת סידור','מהנגיעה הראשונה ברהיט ועד 5 שניות אחרי שהונח. התוכנית ממלאת את המסך כי שם מזיזים בדיוק, התלת ממד בחלון קטן שמתחלף בנגיעה, והפנים מתכנסות לגלולה אחת. רהיט מוחזק זוהר בצבע של מי שמחזיק.',
+    phone(s1,{t:'מזיזים בתוכנית',i:'פריסה B, מהטלפון של אבי',notes:['גלולה אחת במקום הפנים: מי בשיחה ומי מדבר. נגיעה פותחת את הפנים.','הספה בהילת מגנטה של דנה, העיגול שלה על הרהיט, קו מקווקו במקום הקודם, מידות באדום.','התלת ממד בחלון של 30 אחוז, נגיעה מחליפה בינו לבין התוכנית.']})
+   +phone(s2,{t:'מישהו כבר מחזיק',i:'אחיזה רכה',notes:['ניסיון לגעת בארון של יואב: הרהיט רועד קלות והודעה קצרה. בלי חלון שגיאה.','רק אחד מחזיק רהיט בכל רגע. האחיזה משתחררת בהרמת האצבע או אחרי 6 שניות בלי סימן.','"בטל את שלי" מבטל רק את מה שאני הזזתי.']})
+   +phone(s3,{t:'מזיזים בתלת ממד',i:'אחרי החלפת החלונות',notes:['אותה אחיזה ואותו צבע בשני המבטים. בתלת ממד מזיזים רק על הרצפה, בלחיצה ארוכה.']})
+   + notes([['מתי סידור',`<p>נכנסים מעצמם כשמישהו נוגע ברהיט, אצלי או אצל אחר. חוזרים לסיור 5 שניות אחרי שהרהיט האחרון הונח.</p>`],
+     ['כללי אחיזה',`<dl><dt>תשובה</dt><dd class="mono" style="text-align:right">≤ 200 ms</dd><dt>סימן חיים</dt><dd class="mono" style="text-align:right">כל 2 s</dd><dt>שחרור</dt><dd class="mono" style="text-align:right">6 s בלי סימן</dd><dt>תנועה</dt><dd class="mono" style="text-align:right">20 Hz</dd></dl>`],
+     ['מה לא קורה',`<p>הספה לא קופצת מתחת לאצבע. השינוי שלי מוצג מיד ונשאר עד שהשרת מאשר.</p>`]]));
+}
+
+/* ===================== BOARD 05 · Talk ===================== */
+function b05(){
+  const tile = (p,o={}) => `<div style="position:relative;overflow:hidden;background:#2A4256;${o.sp?`box-shadow:inset 0 0 0 3px ${p.c}`:''}">${o.wide?`<div style="position:absolute;inset:0;display:flex;justify-content:center"><div style="height:100%;aspect-ratio:1">${faceSVG(p)}</div></div>`:o.off?`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:88px;height:88px;border-radius:50%;background:#fff;color:${p.c};font-size:40px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px ${p.c}">${p.ini}</span></div>`:faceSVG(p)}${o.sp?`<span style="position:absolute;inset:0;border:3px solid ${p.c}"></span>`:''}<span style="position:absolute;bottom:8px;right:8px">${stamp(p)}</span>${o.mute?`<span class="badge" style="top:8px;left:8px">${ic('micoff',13)}</span>`:''}${o.wave?`<span style="position:absolute;top:8px;left:8px;color:#fff">${ic('wave',20)}</span>`:''}</div>`;
+  const still = (h) => `<div style="position:absolute;bottom:0;inset-inline:0;height:${h}px;border-top:2px solid #fff">${iso({w:390,h:h,focus:[-20,-190,1440,980],pad:16,state:{sofa:MOVED}}).svg}<div class="chip lt" style="--c:#0F2233;bottom:10px;right:10px;height:40px;font-size:13px;padding-inline-start:10px">${ic('cube',18)}חזרה לדגם</div><span class="mono" style="position:absolute;top:8px;right:10px;font-size:11px;color:#9FB1BE">הדגם נשמר כמו שהוא</span></div>`;
+  const s1 = call({b:{}, stage: `<div style="position:absolute;top:0;inset-inline:0;height:380px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:#fff">${tile(P.yoav,{sp:true,wave:true})}${tile(P.dana)}${tile(P.michal)}${tile(P.avi,{off:true,mute:true})}</div>${still(254)}`}) + mk(1,186,160)+mk(2,20,560);
+  const s2 = call({h:{n:2}, b:{}, stage: `<div style="position:absolute;top:0;inset-inline:0;height:380px;display:grid;grid-template-rows:1fr 1fr;gap:2px;background:#fff">${tile(P.yoav,{sp:true,wave:true,wide:true})}${tile(P.dana,{wide:true})}</div>${still(254)}`
+    + `<div class="toast dk" style="top:330px;left:12px;font-size:12.5px;padding:6px 10px;font-weight:500">${ic('swap',16)} לסדר זה לצד זה</div>`});
+  const disc2 = (p,o) => `<div style="display:flex;flex-direction:column;align-items:center;gap:8px">${disc(p,{size:96,off:true,tag:false,...o})}${stamp(p)}</div>`;
+  const s3 = call({b:{cam:'off'}, h:{s:'קול בלבד · הדירה ממשיכה לעבוד'}, stage: `<div style="position:absolute;top:0;inset-inline:0;height:380px;display:grid;grid-template-columns:1fr 1fr;align-items:center;justify-items:center;padding:16px 10px">${disc2(P.yoav,{sp:true})}${disc2(P.dana)}${disc2(P.michal)}${disc2(P.avi,{mute:true})}</div>${still(254)}`}) + mk(1,8,112);
+  return board('05','פריסת שיחה','כשמחליטים: כסף, שאלות, "זה מתאים לנו". הפנים גדלות לחצי העליון, והדגם נשאר בחצי התחתון כמו שהוא, בלי לאבד אף שינוי. נגיעה בדגם מחזירה לסיור.',
+    phone(s1,{t:'ארבעה משתתפים',i:'פריסה C',notes:['ארבע תמונות בחצי העליון. המדבר מקבל מסגרת בצבע העט שלו. שם ותפקיד כחותמת שרטוט.','הדגם לא זז ולא מתאפס. "חזרה לדגם" באזור האגודל.']})
+   +phone(s2,{t:'שני משתתפים',i:'זה מעל זה',notes:['בשניים התמונות זו מעל זו, כמו שולחן משותף בין שני צדדים. אפשר להחליף לסידור זה לצד זה.']})
+   +phone(s3,{t:'קול בלבד',i:'במצב חיסכון',notes:['במקום וידאו, עיגולי פרט עם האות הראשונה בצבע העט. טבעת הדיבור נשארת.']})
+   + notes([['מתי שיחה',`<p>בלחיצה על "שיחה" בבורר הפריסות. או מעצמה: אף אחד לא נגע בדגם 60 שניות ומישהו מדבר. במצב "קול בלבד" הפנים הופכות לאותיות.</p>`],
+     ['מה הדגם עושה',`<p>נשאר חי בחצי התחתון. שינויים של אחרים ממשיכים להופיע בו. נגיעה מחזירה לסיור באותו מבט.</p>`],
+     ['חוק המסך',`<p>הדגם אף פעם לא זז כדי לפנות מקום לפנים. רק הפריסה מחליטה מי גדול.</p>`]]));
+}
+
+/* ===================== BOARD 06 · control bar ===================== */
+function b06(){
+  const m = iso({w:390,h:ST_H,center:[380,400,0],scale:.42});
+  const more = `<div class="scrim" style="bottom:110px"></div><div class="sheet" style="bottom:110px;padding-bottom:12px;border-bottom:2px solid var(--ink)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><h3 style="font-size:17px">עוד</h3><span class="mono" style="font-size:11px;color:var(--graph)">יואב · מארח</span></div>
+    <ul class="list">
+     <li>${ic('chat')}<span class="t"><b>הודעות</b><small>2 חדשות · נשמרות עם העיצוב</small></span></li>
+     <li>${ic('people')}<span class="t"><b>משתתפים</b><small>4 בשיחה</small></span></li>
+     <li>${ic('speaker')}<span class="t"><b>קול בלבד</b><small>הווידאו נעצר, הדירה ממשיכה</small></span><span class="sw2"></span></li>
+     <li>${ic('flip')}<span class="t"><b>החלפת מצלמה</b><small>להראות חדר אמיתי מהמצלמה האחורית</small></span></li>
+     <li>${ic('user')}<span class="t"><b>להסתיר את התמונה שלי</b></span><span class="sw2 on"></span></li>
+     <li>${ic('undo')}<span class="t"><b>בטל את שלי</b><small>רק מה שאני הזזתי</small></span></li>
+     <li style="border:0">${ic('move')}<span class="t"><b>מי מזיז</b></span><span class="seg" style="position:static;border-width:1.5px"><span class="on" style="height:34px;min-width:0;font-size:12px">חופשי</span><span style="height:34px;min-width:0;font-size:12px">מודרך</span><span style="height:34px;min-width:0;font-size:12px">הצגה</span></span></li>
+    </ul></div>`;
+  const s1 = call({b:{more:true,unread:2}, stage: m.svg, over: more}) + mk(1,350,232)+mk(2,350,592);
+  const s2 = call({b:{mic:'muted'}, stage: m.svg + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true})}</div>`,
+     over:`<div class="toast dk" style="bottom:122px;right:10px;width:250px;font-size:13.5px;flex-direction:column;align-items:flex-start;gap:6px"><span style="display:flex;gap:8px;align-items:center">${ic('micoff',18)}אתם מושתקים. מדברים?</span><span style="display:flex;gap:6px"><span style="background:#fff;color:var(--ink);padding:6px 10px;font-size:13px">להפעיל מיקרופון</span><span style="border:1.5px solid #fff;padding:5px 10px;font-size:13px;font-weight:500">לא</span></span></div><span style="position:absolute;bottom:111px;right:40px;width:0;height:0;border:8px solid transparent;border-top-color:var(--ink);z-index:38"></span>`}) + mk(1,240,700);
+  // large bar spec
+  const big = (st,label,note) => `<div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:15px">${label}</b><span style="font-size:13px;color:var(--graph)">${note}</span></div><div style="position:relative;width:390px;height:76px;zoom:1.5;border:1px solid var(--ink)">${bar(st).replace('class="bar','style="bottom:0" class="bar')}</div></div>`;
+  return board('06','סרגל השליטה','שישה כפתורים ויציאה. ההתחלה מימין: מיקרופון ומצלמה, אחר כך מה שעושים על הדירה, ובקצה השמאלי, אחרי קו מפריד, יציאה באדום. כל מטרה 48 פיקסלים ומעלה ועם מילה מתחת לסמל.',
+    phone(s1,{t:'מה מתחבא בעוד',i:'גיליון מלמטה',notes:['הודעות ומשתתפים, קול בלבד, החלפת מצלמה, הסתרת התמונה שלי, "בטל את שלי".','למארח בלבד: מי מזיז. חופשי, מודרך (רק המארח ומי שהוא מאשר), הצגה (כולם עוקבים).']},true)
+   +phone(s2,{t:'אתם מושתקים',i:'תזכורת אחת',notes:['מופיעה רק אחרי דקה של שתיקה, כשמזהים דיבור. פעם בדקה לכל היותר, נסגרת בנגיעה.']},true)
+   + `<div style="display:flex;flex-direction:column;gap:26px;flex:1;min-width:0">
+      ${big({level:60},'רגיל','מד קול קטן ליד המיקרופון')}
+      ${big({mic:'muted',cam:'off'},'מושתק, מצלמה כבויה','מילוי דיו, המילה משתנה')}
+      ${big({follow:true,point:true},'עוקבים ומצביעים','מילוי כחול שרטוט = פעיל')}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;font-size:14px;line-height:1.5;margin-top:6px">
+       <div class="kv"><span>גובה הסרגל</span><span class="mono">76 + 34 px</span></div><div class="kv"><span>תא כפתור</span><span class="mono">≥ 50 × 60 px</span></div>
+       <div class="kv"><span>כפתור יציאה</span><span class="mono">56 × 56 px</span></div><div class="kv"><span>מרווח לפני יציאה</span><span class="mono">8 + 2 + 8 px</span></div>
+       <div class="kv"><span>נעלם אחרי</span><span class="mono">4 s, לא בגרירה</span></div><div class="kv"><span>אות ליד סמל</span><span class="mono">10.5 px / 500</span></div>
+      </div>
+      <p style="margin:0;font-size:14px;line-height:1.55;color:var(--graph)">יציאה של משתתף: נגיעה ואישור קצר. יציאה של המארח פותחת בחירה: "לצאת, השיחה ממשיכה" או "לסיים לכולם" (לוח 11). המארח יכול להשתיק, לעולם לא להפעיל מיקרופון של אחר.</p>
+    </div>`);
+}
+
+/* ===================== BOARD 07 · follow, everyone to me, pointer ===================== */
+function b07(){
+  const W=390;
+  const m1 = iso({w:W,h:ST_H,center:[380,400,0],scale:.42});
+  const s1 = call({b:{}, stage: m1.svg + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true})}</div>`,
+    over:`<div class="sheet" style="bottom:110px;padding:14px 16px 14px;border-bottom:2px solid var(--ink)"><div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">${disc(P.michal,{size:52,tag:false})}<span style="flex:1">${stamp(P.michal,true)}<br><span style="font-size:13px;color:var(--graph)">בחדר שינה · מסתכלת על הארון</span></span></div>
+      <div class="btn pri" style="margin-bottom:8px">${ic('eye',20)} לעקוב אחרי מיכל</div><div class="row"><span class="btn sm" style="flex:1">לקפוץ אליה פעם אחת</span><span class="btn sm" style="flex:1">תמונה גדולה</span></div></div>`}) + mk(1,280,92);
+  const s2 = call({b:{}, stage: iso({w:W,h:ST_H,center:[820,380,0],scale:.42}).svg + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.dana,{size:52})}</div>`,
+    over:`<div class="scrim"></div><div style="position:absolute;z-index:52;top:240px;inset-inline:24px;background:#fff;color:var(--ink);border:2px solid var(--ink);padding:20px 18px 18px">
+      <div style="display:flex;gap:14px;align-items:center;margin-bottom:12px"><div style="position:relative;width:64px;height:64px;flex:none"><svg viewBox="0 0 64 64" width="64" height="64" style="position:absolute;inset:0"><circle cx="32" cy="32" r="29" fill="none" stroke="#E3E9ED" stroke-width="5"/><circle cx="32" cy="32" r="29" fill="none" stroke="#1F5FA8" stroke-width="5" stroke-dasharray="182" stroke-dashoffset="60" transform="rotate(-90 32 32)"/></svg><span class="mono" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600">3</span></div><div><b style="font-size:18px;line-height:1.3;display:block">יואב רוצה להראות לכולם את המטבח</b><span style="font-size:13.5px;color:var(--graph)">עוברים למבט שלו בעוד 3 שניות</span></div></div>
+      <div class="row"><span class="btn sm pri" style="flex:1">לעבור עכשיו</span><span class="btn sm" style="flex:1">לא עכשיו</span></div></div>`}) + mk(1,8,214);
+  const p3 = plan({uid:'l',w:W,h:ST_H,vb:[-60,-120,860,1180],fit:'slice',fs:30,dims:false,extra:[
+    `<path d="M520 300 C 470 340, 400 360, 360 420 S 300 520, 250 470" fill="none" stroke="#1C7A4E" stroke-width="10" stroke-linecap="round" stroke-opacity=".25"/>`,
+    `<path d="M360 420 S 300 520, 250 470" fill="none" stroke="#1C7A4E" stroke-width="10" stroke-linecap="round" stroke-opacity=".7"/>`,
+    `<circle cx="250" cy="470" r="22" fill="#1C7A4E"/><circle cx="250" cy="470" r="44" fill="none" stroke="#1C7A4E" stroke-width="5" stroke-opacity=".6"/><circle cx="250" cy="470" r="70" fill="none" stroke="#1C7A4E" stroke-width="4" stroke-opacity=".25"/>`,
+    `<circle cx="1100" cy="300" r="16" fill="#1F5FA8" fill-opacity=".9"/>`]});
+  const lp = p3.at(250,470);
+  const s3 = call({paper:true, b:{point:true}, stage: p3.svg + `<div class="pill" style="top:12px;right:12px"><span class="stack">${mini(P.michal)}${mini(P.yoav)}${mini(P.dana)}${mini(P.avi)}</span>4 בשיחה · מיכל מדברת</div>`
+    + `<div class="chip" style="--c:${P.michal.c};top:${Math.round(lp[1])+44}px;left:${Math.round(lp[0])-60}px">${mini(P.michal)}מיכל: כאן</div>`
+    + `<div class="toast dk" style="bottom:12px;inset-inline:30px;justify-content:center;font-size:13px;font-weight:500">לחיצה ארוכה על התוכנית או על קיר מצביעה. הקו נעלם לבד.</div>`}) + mk(1,140,420)+mk(2,330,690);
+  return board('07','מעקב, "כולם אליי" והצבעה','לעקוב אחרי מישהו זה לראות בדיוק מה שהוא רואה, עם מסגרת בצבע שלו ויציאה בנגיעה. המארח יכול לקרוא לכולם אליו, ולכל אחד יש שלוש שניות לסרב. הצבעה משאירה קו בצבע העט שדועך מעצמו.',
+    phone(s1,{t:'נגיעה בעיגול',i:'בחירת מעקב',notes:['נגיעה בפנים פותחת שלוש אפשרויות: לעקוב, לקפוץ אליה פעם אחת, או תמונה גדולה. אחרי הבחירה מופיעה מסגרת המעקב (לוח 3).']},true)
+   +phone(s2,{t:'כולם אליי',i:'מה שהאורחים רואים',notes:['עיגול ספירה בכחול שרטוט, שלוש שניות. "לא עכשיו" שווה ל"לעבור עכשיו", לא כפתור קטן ומוסתר.']},true)
+   +phone(s3,{t:'הצבעה',i:'דועכת אחרי 1.2 שניות',notes:['לחיצה ארוכה: דופק "כאן" בצבע העט. הקו נשאר בזמן ההצבעה ונעלם יחד 1.2 שניות אחרי שהאצבע עולה.','גם מאזינים בלי מיקרופון יכולים להצביע.']},true)
+   + notes([['כללי מעקב',`<dl><dt>פער</dt><dd class="mono" style="text-align:right">≤ 150 ms</dd><dt>עוצר</dt><dd>כל סיבוב, גרירה או צביטה</dd><dt>מבט</dt><dd>מיקום ויעד של המוביל, שדה הראייה שלי</dd><dt>תנועה</dt><dd>מתקרב ברכות, נצמד מתחת ל־2 px</dd></dl>`],
+     ['כולם אליי',`<p>רק למארח, מתוך "עוד" או מהעיגול שלו. מי שאמר "לא עכשיו" מקבל שבב "יואב מראה את המטבח" ויכול להצטרף כשירצה. ליואב מוצג "3 צופים".</p>`],
+     ['הצבעה',`<p>לא משנה כלום בעיצוב, לא נשמרת. מה שצריך לזכור נשמר כהערה על רהיט.</p>`]]));
+}
+
+/* ===================== BOARD 08 · invite ===================== */
+function qr(n=25, px=6){ let s=''; let seed=7; const r=()=> (seed = (seed*9301+49297)%233280)/233280;
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){ const f=(x<7&&y<7)||(x>n-8&&y<7)||(x<7&&y>n-8); if(f) continue; if(r()>.52) s+=`<rect x="${x*px}" y="${y*px}" width="${px}" height="${px}"/>`; }
+  const fin=(X,Y)=>`<rect x="${X*px}" y="${Y*px}" width="${7*px}" height="${7*px}" fill="none" stroke="#0F2233" stroke-width="${px}" transform="translate(${px/2} ${px/2})" style="transform:none"/><rect x="${(X+.5)*px}" y="${(Y+.5)*px}" width="${6*px}" height="${6*px}" fill="none" stroke="#0F2233" stroke-width="${px}"/><rect x="${(X+2)*px}" y="${(Y+2)*px}" width="${3*px}" height="${3*px}"/>`;
+  return `<svg viewBox="0 0 ${n*px} ${n*px}" width="${n*px}" height="${n*px}" fill="#0F2233">${s}${fin(0,0)}${fin(n-7,0)}${fin(0,n-7)}</svg>`; }
+function b08(){
+  const m = iso({w:390,h:ST_H,center:[380,400,0],scale:.42});
+  const s1 = call({b:{}, stage:m.svg, over:`<div class="scrim" style="bottom:110px"></div><div class="sheet" style="bottom:110px;padding-bottom:14px;border-bottom:2px solid var(--ink)">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start"><h3>להזמין לשיחה</h3><span class="ico" style="border:0;margin:-10px -8px 0 0">${ic('close',22)}</span></div>
+     <p class="sub">מי שמקבל את הקישור נכנס מהדפדפן, בלי הרשמה. הקישור עובד רק לשיחה הזאת.</p>
+     <div class="btn pri" style="margin-bottom:8px">${ic('chat',20)} הזמנה בוואטסאפ</div>
+     <div style="display:flex;border:2px solid var(--ink);height:52px;margin-bottom:12px"><span class="mono" style="flex:1;display:flex;align-items:center;padding:0 12px;font-size:14px;justify-content:flex-end">nad-lan.co.il/c/7KQ-4MD</span><span style="width:118px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600;font-size:14px">${ic('check',18)}הועתק</span></div>
+     <div style="display:flex;gap:14px;align-items:center;border-top:1px solid var(--rule);padding-top:12px"><div style="padding:6px;border:2px solid var(--ink)">${qr(25,4)}</div><div><b style="font-size:15px;display:block">טלפון שני באותו חדר</b><span style="font-size:13px;color:var(--graph);line-height:1.45">סורקים מהמצלמה ונכנסים. נוח כשבני הזוג יושבים יחד.</span></div></div>
+   </div>`}) + mk(1,350,345)+mk(2,350,405)+mk(3,350,480);
+  const row = (p,sub,o={}) => `<li><span style="width:44px;display:flex;justify-content:center">${disc(p,{size:40,tag:false,off:o.off})}</span><span class="t"><b style="display:flex;gap:6px;align-items:center">${p.n}${o.host?'<span style="font-size:10.5px;border:1.5px solid var(--ink);padding:0 4px;font-weight:600">מארח</span>':''}${o.me?'<span style="font-size:12px;color:var(--graph);font-weight:500">(אני)</span>':''}</b><small>${p.role} · ${sub}</small></span>${o.act||''}</li>`;
+  const s2 = call({b:{}, stage:m.svg, over:`<div class="sheet" style="top:100px;bottom:110px;padding-top:14px;overflow:hidden">
+     <div style="display:flex;justify-content:space-between;align-items:center"><h3>בשיחה <span class="mono" style="font-size:16px;color:var(--graph)">4</span></h3><span class="btn sm" style="padding:0 12px">${ic('invite',18)}להזמין</span></div>
+     <ul class="list" style="margin-top:8px">
+      ${row(P.yoav,'מדבר עכשיו',{host:true,me:true})}
+      ${row(P.dana,'מזיזה את הספה',{act:`<span class="ico">${ic('more',20)}</span>`})}
+      ${row(P.michal,'בחדר שינה',{act:`<span class="ico">${ic('more',20)}</span>`})}
+      ${row(P.avi,'מאזין, בלי מיקרופון',{off:true,act:`<span class="ico" style="background:var(--ink);color:#fff">${ic('more',20)}</span>`})}
+     </ul>
+     <div style="border:2px solid var(--ink);margin-top:10px;padding:12px;background:var(--sheet)"><b style="font-size:15px">להוציא את אבי מהשיחה?</b><p style="margin:4px 0 10px;font-size:13px;color:var(--graph);line-height:1.45">הוא יוכל לחזור רק בקישור חדש. מה שהזיז נשאר בעיצוב.</p><div class="row"><span class="btn sm red" style="flex:1">להוציא</span><span class="btn sm" style="flex:1">ביטול</span></div></div>
+     <div class="row" style="margin-top:8px"><span class="btn sm" style="flex:1">${ic('micoff',18)}להשתיק</span><span class="btn sm" style="flex:1">${ic('eye',18)}לעקוב</span></div>
+   </div>`}) + mk(1,16,180)+mk(2,350,520);
+  const s3 = sb(true) + `<div style="position:absolute;inset:0;background:#E3E9ED"></div>
+   <div style="position:absolute;top:44px;inset-inline:0;height:60px;background:#fff;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--ink)">${ic('back',22)}<b style="font-size:16px">שיתוף אל</b></div>
+   <div style="position:absolute;top:120px;inset-inline:16px;display:flex;flex-direction:column;gap:12px;color:var(--ink)">
+     <div style="background:#fff;border:1px solid var(--rule);padding:12px 14px;font-size:14.5px;line-height:1.55">יואב מזמין אותך לשיחת וידאו על דירת 5 חדרים בקומה 7. רואים את הדירה ומעצבים יחד, בדפדפן, בלי הרשמה.<br><span class="mono" style="font-size:13px;color:var(--blue)">nad-lan.co.il/c/7KQ-4MD</span></div>
+     <span style="font-size:13px;color:var(--graph)">הטקסט מוכן מראש. השולח רק בוחר למי.</span>
+   </div>
+   <div style="position:absolute;bottom:34px;inset-inline:0;background:#fff;border-top:2px solid var(--ink);padding:16px;color:var(--ink)"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-size:12.5px">${['אבי','אמא','נועה','מיכל'].map((n,i)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:56px;height:56px;border-radius:50%;background:#C9D4DC;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px">${n[0]}</span>${n}</div>`).join('')}</div></div>${home('')}`;
+  return board('08','הזמנת משתתפים','מזמינים באמצע השיחה בנגיעה אחת: וואטסאפ קודם, כי כך מדברים בישראל, אחר כך העתקת קישור, וקוד לסריקה לטלפון שני באותו חדר. המארח רואה מי בשיחה ויכול להשתיק או להוציא, באישור.',
+    phone(s1,{t:'גיליון הזמנה',i:'מכפתור "הזמנה"',notes:['וואטסאפ ראשון ובולט. הטקסט נכתב מראש וכולל את הדירה.','העתקה: הכפתור עצמו הופך ל"הועתק" לשתי שניות. בלי חלון נוסף.','קוד לסריקה לבן הזוג שיושב ליד.']},true)
+   +phone(s2,{t:'מי בשיחה',i:'מארח',notes:['כל אחד עם הצבע שלו, התפקיד ומה הוא עושה עכשיו.','הוצאה רק באישור, באדום. המארח לא יכול להפעיל מיקרופון של אחר.']},true)
+   +phone(s3,{t:'השיתוף',i:'גיליון השיתוף של הטלפון',notes:['ההודעה מוכנה. אם הדפדפן לא תומך בשיתוף, נפתח וואטסאפ עם הטקסט.']},true)
+   + notes([['כללים',`<p>קישור לשיחה אחת, פג אחרי שהשיחה נגמרת. בלי חדר המתנה בשיחה רגילה: מי שיש לו קישור נכנס, והמארח מקבל שורה "אבי הצטרף".</p>`],
+     ['עד 8 משתתפים',`<p>בשמיני הכפתור נשאר, עם השורה "השיחה מלאה, 8 מתוך 8".</p>`]]));
+}
+
+/* ===================== BOARD 09 · trouble ===================== */
+function b09(){
+  const m = (f) => iso({w:390,h:ST_H,focus:f||[-30,-160,560,560],fit:'slice',pad:0});
+  const s1 = call({b:{cam:'off'}, stage: m().svg + `<div class="strip" style="top:58px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.dana,{size:52,weak:true,label:'אני'})}</div>`
+    + `<div class="banner" style="top:0;height:46px;background:#fff;color:var(--ink);border-bottom:2px solid var(--ink)">${ic('signal',20)}<span style="flex:1;font-size:13.5px">החיבור חלש. עברנו לקול בלבד כדי שהשיחה תמשיך.</span><span style="color:var(--blue);font-size:13px;text-decoration:underline">להחזיר וידאו</span></div>`}) + mk(1,8,152)+mk(2,120,158);
+  const s2 = call({b:{}, stage: m().svg + `<div class="strip" style="top:58px">${disc(P.yoav,{size:52,dim:true,host:true})}${disc(P.michal,{size:52,dim:true})}${disc(P.avi,{size:52,off:true,dim:true})}</div>`
+    + `<div class="banner" style="top:0;height:46px;background:var(--ink);border-bottom:2px solid #5B9BE6"><span style="width:18px;height:18px;border:2.5px solid #5B9BE6;border-top-color:transparent;border-radius:50%"></span><span style="flex:1;font-size:13.5px">מתחברים מחדש…</span><span class="mono" style="font-size:12px;color:#9FB1BE">00:04</span></div>`
+    + `<div class="toast" style="bottom:14px;inset-inline:24px;font-size:13px;font-weight:500">${ic('check',18)}הדירה ממשיכה לעבוד. השינויים שלכם יישלחו כשנחזור.</div>`}) + mk(1,8,152)+mk(2,20,650);
+  const s3 = call({b:{}, stage: m([300,-60,1100,700]).svg + `<div class="strip" style="top:70px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true})}</div>`
+    + `<div class="banner" style="top:0;height:60px;background:var(--blue);color:#fff;justify-content:center;font-size:16px">${ic('speaker',24)}הקישו כדי לשמוע</div>`}) + mk(1,8,166);
+  const s4 = call({b:{}, stage: m().svg + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,sp:true,host:true})}${disc(P.michal,{size:52})}${disc(P.avi,{size:52,off:true})}</div>`,
+    over:`<div class="sheet" style="bottom:110px;padding-bottom:14px;border-bottom:2px solid var(--ink)"><div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px"><span style="color:var(--ink);flex:none;margin-top:2px">${ic('battery',30)}</span><div><h3 style="font-size:18px">הסוללה ב־<span class="mono">15%</span></h3><p class="sub" style="margin:2px 0 0">לעבור לקול בלבד? כך השיחה תחזיק יותר. הדירה ממשיכה לעבוד כרגיל.</p></div></div><div class="row"><span class="btn sm pri" style="flex:1">${ic('speaker',18)}קול בלבד</span><span class="btn sm" style="flex:1">להמשיך עם וידאו</span></div></div>`}) + mk(1,8,604);
+  return board('09','מצבי תקלה','השיחה לא נשברת בשקט. מזהירים לפני שזה קורה, ממשיכים לנסות, ושומרים על הדירה. הדגם נשאר חי בכל מצב, כי כל טלפון מצייר אותו בעצמו.',
+    phone(s1,{t:'חיבור חלש',i:'אחרי 10 שניות באיכות נמוכה',notes:['פס לבן מעל הדגם, לא חלון. כפתור אחד להחזיר וידאו.','סימן קליטה רק על העיגול של מי שהחיבור שלו חלש. כשהכול טוב, אין סימן.']},true)
+   +phone(s2,{t:'מתחברים מחדש',i:'בתוך שנייה מהניתוק',notes:['פס כהה עם שעון. הפנים קופאות באפור, בלי הודעות "יצא ונכנס" לפערים של פחות מ־10 שניות.','אפשר להמשיך להזיז. אחרי 30 שניות: כפתור "להתחבר שוב".']},true)
+   +phone(s3,{t:'הקישו כדי לשמוע',i:'אייפון חוסם צליל',notes:['רצועה ברוחב מלא בכחול שרטוט. נעלמת אחרי הנגיעה. בלי זה השיחה שקטה ואף אחד לא יודע למה.']},true)
+   +phone(s4,{t:'סוללה',i:'מתחת ל־20 אחוז',notes:['הצעה, לא החלטה. מופיעה פעם אחת לשיחה.']},true));
+}
+
+/* ===================== BOARD 10 · desktop ===================== */
+function b10(){
+  const DW=1440, DH=900, side=340, top=56, strip=120, barH=80;
+  const cw = DW-side, chh = DH-top-strip-barH;
+  const pw = Math.round(cw*.42), mw = cw-pw;
+  const p = plan({uid:'d',w:pw,h:chh,vb:[-80,-260,1620,1300],fit:'meet',state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c,ghost:OLD,fs:30});
+  const m = iso({w:mw,h:chh,focus:[-20,-190,1440,980],pad:30,state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c,ghost:OLD,cones:[{x:1000,y:550,a:200,c:P.michal.c}]});
+  const sp = p.at(260,447), hp = m.at(260,447,90);
+  const fdisc = (pp,o={}) => `<div style="display:flex;flex-direction:column;align-items:center;gap:8px">${disc(pp,{size:72,tag:false,...o})}${stamp(pp)}</div>`;
+  const msg = (pp,t,time) => `<li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)"><span style="width:4px;background:${pp.c};flex:none"></span><span style="flex:1"><b style="font-size:13px">${pp.n}</b> <span class="mono" style="font-size:11px;color:var(--mute)">${time}</span><br><span style="font-size:14px;line-height:1.45">${t}</span></span></li>`;
+  const dbtn = (icn,l,cls='') => `<div class="cell ${cls}" style="flex:none;width:78px;height:60px;font-size:12px">${ic(icn,24)}<span>${l}</span></div>`;
+  const scr = `<div style="position:relative;width:${DW}px;height:${DH}px;background:var(--ink);color:#fff;direction:rtl;overflow:hidden">
+    <div style="position:absolute;top:0;inset-inline:0;height:${top}px;display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid var(--ink-3)">
+      <span style="color:#fff">${ic('chev',22)}</span><div style="flex:1"><b style="font-size:16px">שיחת וידאו על הדירה</b><span style="font-size:13px;color:#A9B8C4;margin-inline-start:12px">דירת 5 חדרים · 136 מ״ר · קומה 7</span></div>
+      <span class="seg" style="position:static;border-color:#fff"><span>${ic('cube',16)}סיור</span><span class="on">${ic('plan',16)}סידור</span><span>${ic('faces',16)}שיחה</span></span>
+      <span class="live"><i></i><span class="mono">18:42</span><span class="pp">${ic('people',15)}4</span></span>
+    </div>
+    <div style="position:absolute;top:${top}px;right:0;width:${cw}px;height:${strip}px;display:flex;gap:30px;align-items:center;justify-content:center;border-bottom:1px solid var(--ink-3)">
+      ${fdisc(P.yoav,{host:true})}${fdisc(P.dana,{sp:true})}${fdisc(P.michal)}${fdisc(P.avi,{off:true,mute:true})}
+      <span style="position:absolute;left:16px;top:12px;width:150px;height:96px;border:2px solid #fff;overflow:hidden">${faceSVG(P.yoav)}<span style="position:absolute;bottom:4px;right:4px;font-size:11px;background:rgba(15,34,51,.85);padding:1px 6px">אני · נגררת</span></span>
+    </div>
+    <div style="position:absolute;top:${top+strip}px;right:0;width:${pw}px;height:${chh}px;background:#F2F5F7">${p.svg}
+      <div style="position:absolute;top:${Math.round(sp[1])-130}px;left:${Math.round(sp[0])-20}px;display:flex;align-items:center;gap:8px;z-index:3"><span style="width:56px;height:56px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px ${P.dana.c},0 0 0 5px #fff">${faceSVG(P.dana)}</span><span class="chip" style="position:static;--c:${P.dana.c}">דנה מזיזה את הספה</span></div>
+      <span style="position:absolute;top:10px;right:12px;color:var(--ink);font-size:13px;font-weight:600">תוכנית</span></div>
+    <div style="position:absolute;top:${top+strip}px;left:${side}px;width:${mw}px;height:${chh}px;border-inline-start:2px solid #fff;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px">${m.svg}
+      <div class="chip" style="--c:${P.dana.c};top:${Math.round(hp[1])-60}px;left:${Math.round(hp[0])-60}px">${mini(P.dana)}דנה מזיזה את הספה</div>
+      <span style="position:absolute;top:10px;right:12px;font-size:13px;font-weight:600">תלת ממד</span></div>
+    <div style="position:absolute;bottom:0;right:0;width:${cw}px;height:${barH}px;background:#fff;color:var(--ink);border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:center;gap:6px">
+      ${dbtn('mic','מיקרופון')}${dbtn('cam','מצלמה')}<span class="sep"></span>${dbtn('eye','מעקב')}${dbtn('point','הצבעה')}${dbtn('invite','הזמנה')}${dbtn('more','עוד')}<span class="sep" style="margin:0 18px"></span>
+      <div class="leave" style="width:auto;flex-direction:row;padding:0 18px;gap:8px;font-size:14px;height:52px">${ic('leave',24)}יציאה</div>
+    </div>
+    <aside style="position:absolute;top:${top}px;left:0;bottom:0;width:${side}px;background:#fff;color:var(--ink);border-inline-start:2px solid var(--ink);display:flex;flex-direction:column">
+      <div style="display:flex;border-bottom:2px solid var(--ink)"><span style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600;background:var(--ink);color:#fff">משתתפים <span class="mono">4</span></span><span style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600">הודעות <span class="mono" style="background:var(--blue);color:#fff;padding:0 5px;font-size:12px">2</span></span></div>
+      <ul class="list" style="padding:4px 16px">
+       ${[[P.yoav,'מארח · מדבר'],[P.dana,'מזיזה את הספה'],[P.michal,'בחדר שינה'],[P.avi,'מאזין']].map(([pp,t],i)=>`<li style="min-height:56px">${disc(pp,{size:34,tag:false,off:i===3})}<span class="t"><b style="font-size:14px">${pp.n} <span style="font-weight:400;color:var(--graph);font-size:12.5px">${pp.role}</span></b><small>${t}</small></span><span style="color:var(--graph)">${ic(i===3?'micoff':'mic',18)}</span></li>`).join('')}
+      </ul>
+      <div style="padding:6px 16px 0;font-size:13px;font-weight:600;color:var(--graph);border-top:2px solid var(--ink);margin-top:6px;padding-top:12px">הודעות · נשמרות עם העיצוב</div>
+      <ul class="list" style="padding:0 16px;flex:1">${msg(P.michal,'הספה מול החלון משאירה 90 ס״מ מעבר. זה טוב.','21:31')}${msg(P.avi,'ואם נזיז את השולחן קרוב למטבח?','21:33')}${msg(P.yoav,'שלחתי את המחיר של הגרסה עם המחסן.','21:36')}</ul>
+      <div style="display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid var(--rule)"><span style="flex:1;height:44px;border:2px solid var(--ink);display:flex;align-items:center;padding:0 12px;color:var(--mute);font-size:14px">כתבו הודעה</span><span class="ico" style="background:var(--blue);border-color:var(--blue);color:#fff">${ic('back',20)}</span></div>
+    </aside>
+  </div>`;
+  return `<div class="wrap" id="b10w"><section class="board" id="b10" aria-label="מחשב">
+  <header class="bh"><div class="bn"><b>10</b><small>מתוך 12</small></div><div><h2>מחשב 1440×900</h2><p>על מסך רחב רואים תוכנית ותלת ממד יחד במרכז, רצועת פנים מעליהם וצ׳אט עם רשימת משתתפים בצד שמאל. מי שמזיז רהיט מקבל עיגול פנים שנוסע איתו על התוכנית.</p></div></header>
+  <div style="position:absolute;top:160px;right:52px;padding:8px;background:var(--ink)">${scr}</div>
+  <div style="position:absolute;top:160px;left:52px;width:192px;display:flex;flex-direction:column;gap:16px;font-size:14px;line-height:1.5">
+    <div><b style="display:block;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px">רצועת פנים</b>72 פיקסלים, חותמת שם ותפקיד מתחת. התמונה שלי בפינה, נגררת ונסגרת.</div>
+    <div><b style="display:block;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px">מרכז</b>תוכנית 42 אחוז, תלת ממד 58. הבורר עובר בין סיור, סידור ושיחה, כמו בטלפון.</div>
+    <div><b style="display:block;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px">פנים על הרהיט</b>מי שגורר מקבל עיגול 56 שנוסע עם הרהיט. רק במחשב.</div>
+    <div><b style="display:block;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px">צד</b>340 פיקסלים: משתתפים והודעות. הודעות נשמרות, גם מי שמצטרף מאוחר רואה.</div>
+    <div><b style="display:block;border-bottom:2px solid var(--ink);padding-bottom:4px;margin-bottom:6px">מקלדת</b>M, V, F, ורווח לדבר כשמושתקים.</div>
+  </div>
+  <div class="tb"><div><small>לוח</small><b class="mono">10 / 12</b></div><div><small>קנה מידה</small><b class="mono">1:1 · 1440×900</b></div><div><small>תאריך</small><b class="mono">11.11.2026</b></div></div>
+  </section></div>`;
+}
+
+/* ===================== BOARD 11 · end ===================== */
+function b11(){
+  const before = plan({uid:'e1',w:160,h:130,vb:[-60,-60,800,700],fit:'slice',fs:40,dims:false,nolabels:['living','kitchen','entry','master'],ghost:null}).svg;
+  const after = plan({uid:'e2',w:160,h:130,vb:[-60,-60,800,700],fit:'slice',fs:40,dims:false,nolabels:['living','kitchen','entry','master'],state:{sofa:MOVED},hold:'sofa',holdC:P.dana.c}).svg;
+  const ch = (pp,t) => `<li style="min-height:auto;padding:8px 0;align-items:flex-start;gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:${pp.c};margin-top:6px;flex:none"></span><span class="t"><b style="font-size:14px;font-weight:500">${t}</b><small>${pp.n}</small></span></li>`;
+  const s1 = sb(true) + `<div style="position:absolute;inset:0;background:var(--sheet);color:var(--ink)"></div>
+   <div style="position:absolute;top:44px;inset-inline:0;bottom:34px;padding:16px;color:var(--ink);display:flex;flex-direction:column;gap:12px">
+    <div><span class="mono" style="font-size:12px;color:var(--graph)">21:52 · 24 דק׳ · 4 משתתפים</span><h3 style="margin:4px 0 0;font-size:24px;line-height:1.2">השיחה הסתיימה.<br>העיצוב שמור אצלכם.</h3></div>
+    <div style="display:flex;gap:10px"><div style="flex:1;border:2px solid var(--ink);background:#fff"><div style="height:130px">${before}</div><span style="display:block;font-size:12px;padding:4px 8px;border-top:1px solid var(--rule)">לפני</span></div><div style="flex:1;border:2px solid var(--ink);background:#fff"><div style="height:130px">${after}</div><span style="display:block;font-size:12px;padding:4px 8px;border-top:1px solid var(--rule);font-weight:600">אחרי</span></div></div>
+    <div style="background:#fff;border:2px solid var(--ink);padding:4px 14px"><ul class="list">${ch(P.dana,'הספה זזה אל מול החלון, 1.40 מהקיר')}${ch(P.michal,'שולחן כתיבה נוסף בחדר השינה')}${ch(P.avi,'הערה על הספה: "לא גדולה מדי לסלון?"')}</ul></div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:auto">
+     <div class="btn pri">${ic('chat',20)} לשלוח את הסיכום בוואטסאפ</div>
+     <div class="btn">להמשיך לעצב לבד</div>
+     <p class="fine" style="margin:2px 0 0;text-align:center">השיחה לא הוקלטה. נשמרו רק התוכנית, השינויים וההודעות.</p>
+    </div>
+   </div>${home('t')}` + mk(1,350,180)+mk(2,350,410)+mk(3,350,690);
+  const m = iso({w:390,h:ST_H,center:[380,400,0],scale:.42,state:{sofa:MOVED}});
+  const s2 = call({b:{}, stage: m.svg + `<div class="strip" style="top:14px">${disc(P.yoav,{size:52,host:true})}${disc(P.michal,{size:52,sp:true})}${disc(P.avi,{size:52,off:true})}</div>`,
+    over:`<div class="scrim" style="bottom:110px"></div><div class="sheet" style="bottom:110px;padding-bottom:14px;border-bottom:2px solid var(--ink)"><h3>לצאת מהשיחה?</h3><p class="sub">אתם המארחים. אפשר לצאת ולתת לאחרים להמשיך, או לסיים לכולם.</p>
+      <div class="btn" style="margin-bottom:8px;justify-content:space-between"><span>לצאת, השיחה ממשיכה</span><span style="font-size:12.5px;color:var(--graph);font-weight:500">מיכל תהיה המארחת</span></div>
+      <div class="btn red" style="margin-bottom:8px">לסיים לכולם</div><div class="btn" style="border-color:transparent">ביטול</div></div>`}) + mk(1,350,600)+mk(2,350,660);
+  const pp = plan({uid:'e3',w:390,h:844-44-56-34-120,vb:[-60,-120,860,1180],fit:'slice',state:{sofa:MOVED},fs:30,dims:false});
+  const s3 = sb() + `<div style="position:absolute;top:44px;inset-inline:0;height:56px;background:#fff;border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:10px;padding:0 12px;color:var(--ink)">${ic('chev',22)}<div style="flex:1"><b style="font-size:15px">עיצוב הדירה</b><small style="display:block;font-size:12px;color:var(--graph)">5 חדרים · שמור לפני רגע</small></div><span class="btn sm" style="padding:0 10px">${ic('cam',18)}שיחה</span></div>
+   <div style="position:absolute;top:100px;inset-inline:0;bottom:154px;background:var(--sheet)">${pp.svg}</div>
+   <div class="toast dk" style="top:116px;inset-inline:16px;font-size:13.5px">${ic('check',20)}<span style="flex:1">השיחה הסתיימה. כל השינויים נשמרו בעיצוב שלכם.</span></div>
+   <div style="position:absolute;bottom:34px;inset-inline:0;height:120px;background:#fff;border-top:2px solid var(--ink);color:var(--ink);display:grid;grid-template-columns:repeat(5,1fr);align-items:center;text-align:center;font-size:13px;font-weight:600">${['רהיטים','ריצוף','חשמל','תקציב','שיחת וידאו'].map((t,i)=>`<span style="padding:16px 0;${i===4?'color:var(--blue)':''}">${t}</span>`).join('')}</div>${home('')}` + mk(1,350,130);
+  return board('11','סוף השיחה','כשהשיחה נגמרת לא נשאר מסך ריק. כל אחד רואה מה השתנה, שולח את הסיכום בוואטסאפ, או חוזר לעצב לבד מאותה נקודה. המארח בוחר בין לצאת לבין לסיים לכולם.',
+    phone(s1,{t:'מה נשאר',i:'תוך 5 שניות מהיציאה',notes:['לפני ואחרי, באותה זווית. ברור במבט אחד מה זז.','רשימת שינויים לפי מי עשה, בצבע העט שלו. הערות על רהיטים נשמרות.','שליחה בוואטסאפ ראשונה, ומיד מתחת "להמשיך לעצב לבד".']},true)
+   +phone(s2,{t:'יציאת המארח',i:'שתי בחירות',notes:['"לצאת, השיחה ממשיכה" מעביר את המארח הבא לפי הסדר: מעצבת, אחר כך קונה.','"לסיים לכולם" באדום. אורח רגיל רואה רק "לצאת".']},true)
+   +phone(s3,{t:'ממשיכים לבד',i:'חזרה למעצב',notes:['חוזרים בדיוק לתוכנית מהשיחה. "שיחה" בכותרת פותח שיחה חדשה עם אותו קישור.']},true)
+   + notes([['מה נשמר',`<p>התוכנית, כל הזזה, ההערות וההודעות. לא נשמרים וידאו וקול.</p>`],
+     ['שאלה אחת',`<p>למחרת, פעם אחת: "השיחה עזרה לכם?" עם שני כפתורים. בלי שאלון.</p>`]]));
+}
+
+/* ===================== BOARD 12 · components ===================== */
+function b12(){
+  const box = (title, inner, w) => `<div style="border:2px solid var(--ink);background:#fff;${w?`width:${w}px;`:''}display:flex;flex-direction:column"><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--ink);padding:8px 12px"><b style="font-size:14px">${title}</b></div><div style="padding:14px;position:relative;flex:1">${inner}</div></div>`;
+  const dk = (inner,h,extra='') => `<div style="background:var(--ink);padding:18px 16px 14px;position:relative;${h?`height:${h}px;`:''}${extra}">${inner}</div>`;
+  const lab = (t) => `<span style="font-size:11.5px;color:var(--graph);text-align:center;display:block;line-height:1.3">${t}</span>`;
+  const col = (a,b) => `<div style="display:flex;flex-direction:column;align-items:center;gap:8px">${a}${lab(b)}</div>`;
+  const discs = box('עיגול פנים · מצבים', dk(`<div style="display:flex;gap:26px;align-items:flex-start;justify-content:space-between">
+     ${col(disc(P.yoav,{size:52}),'<span style="color:#C8D3DB">רגיל</span>')}
+     ${col(disc(P.dana,{size:52,sp:true}),'<span style="color:#C8D3DB">מדבר</span>')}
+     ${col(disc(P.michal,{size:52,mute:true}),'<span style="color:#C8D3DB">מושתק</span>')}
+     ${col(disc(P.avi,{size:52,off:true}),'<span style="color:#C8D3DB">מצלמה כבויה</span>')}
+     ${col(disc(P.noa,{size:52,weak:true}),'<span style="color:#C8D3DB">חיבור חלש</span>')}
+     ${col(disc(P.yoav,{size:52,dim:true}),'<span style="color:#C8D3DB">מתחבר</span>')}</div>`)
+    + `<div style="display:flex;gap:28px;align-items:flex-end;margin-top:22px;position:relative">
+       ${[28,44,52,72].map(s=>`<div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative"><span style="position:relative">${disc(P.dana,{size:s,tag:false})}<span class="dimh" style="left:0;width:${s}px;top:${-22}px"><b>${s}</b></span></span>${lab(s===28?'על רהיט':s===44?'5 ומעלה':s===52?'טלפון':'מחשב')}</div>`).join('')}
+       <div style="flex:1;font-size:13px;line-height:1.55;border-inline-start:2px solid var(--ink);padding-inline-start:14px">טבעת: 2 בצבע העט, 2 דיו. מדבר: 3 צבע, 3 דיו, 2 צבע ב־55 אחוז. מופיעה תוך 300 מ״ש, דועכת אחרי 800.</div></div>`, 860);
+  const stamps = box('חותמת שם ותפקיד', `<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">${dk(stamp(P.yoav)+'&nbsp;&nbsp;'+stamp(P.michal),0,'width:100%')}<div>${stamp(P.dana,true)}&nbsp;&nbsp;${stamp(P.avi,true)}</div><div style="font-size:13px;line-height:1.55">גובה 22, קו 1.5, פס צבע 3 בצד הפותח. שם 11/600, תפקיד 10/500. תג קטן על הדגם: 17.</div></div>`, 430);
+  const pens = box('צבעי עט · סדר הקצאה', `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${[['#1F5FA8','כחול שרטוט','1 · המארח'],['#1C7A4E','ירוק','2'],['#B0307A','מגנטה','3'],['#0F7C8A','טורקיז','4'],['#5B4BB7','סגול','5'],['#46596A','גרפיט','6, ואז שוב']].map(([h,n,o])=>`<div style="display:flex;gap:10px;align-items:center"><span style="width:34px;height:34px;background:${h};flex:none"></span><span style="font-size:13px;line-height:1.3"><b>${n}</b><br><span class="mono" style="font-size:11px;color:var(--graph)">${h}</span> · ${o}</span></div>`).join('')}</div><p style="font-size:12.5px;margin:10px 0 0;line-height:1.5;color:var(--graph)">7 ו־8 מקבלים צבע חוזר עם קו מקווקו בטבעת.</p>`, 420);
+  const chips = box('שבבים, פסים והודעות', `<div style="display:flex;flex-direction:column;gap:12px">
+     <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;position:relative;height:44px"><span class="chip" style="position:relative;--c:${P.dana.c}">${mini(P.dana)}דנה מזיזה את הספה</span><span class="chip lt" style="position:relative;--c:${P.yoav.c}">${mini(P.yoav)}חזרה ליואב</span><span class="ftab" style="position:relative;left:auto;transform:none;--c:${P.michal.c}">עוקבים אחרי מיכל<span class="x">הקישו לעצור</span></span></div>
+     <div style="display:flex;gap:12px;align-items:center;position:relative;height:44px"><span class="pill" style="position:relative"><span class="stack">${mini(P.dana)}${mini(P.yoav)}${mini(P.michal)}</span>4 בשיחה · מיכל מדברת</span><span class="toast" style="position:relative;font-size:13px">${ic('hand',18)}יואב מחזיק את הארון</span></div>
+     <div style="display:flex;gap:0;flex-direction:column;border:2px solid var(--ink)"><div class="banner" style="position:relative;height:40px;background:var(--ink);color:#fff;font-size:13px">מתחברים מחדש…</div><div class="banner" style="position:relative;height:40px;background:var(--blue);color:#fff;justify-content:center;font-size:13px">${ic('speaker',18)}הקישו כדי לשמוע</div><div class="banner" style="position:relative;height:40px;background:#fff;color:var(--ink);font-size:13px">${ic('signal',18)}החיבור חלש. עברנו לקול בלבד.</div></div>
+     <span style="font-size:12.5px;color:var(--graph)">שבב 32 גובה, עיגול 24 בפנים. גלולה 40. פס 40 עד 60. בלי פינות מעוגלות ובלי צל רך.</span></div>`, 640);
+  const bars = box('כפתור בסרגל · מצבים', `<div style="display:flex;gap:10px;align-items:flex-end">
+     ${[['','mic','מיקרופון','רגיל'],['on','micoff','מושתק','כבוי'],['act','eye','עוקבים','פעיל'],['blk','micoff','חסום','חסום']].map(([c,i,l,t])=>`<div style="display:flex;flex-direction:column;gap:6px;align-items:center"><div class="cell ${c}" style="width:64px;height:60px;flex:none;border:1px solid var(--rule)">${ic(i,24)}<span>${l}</span></div>${lab(t)}</div>`).join('')}
+     <div style="display:flex;flex-direction:column;gap:6px;align-items:center;position:relative"><div class="leave">${ic('leave',24)}<span>יציאה</span></div>${lab('יציאה')}<span class="dimv" style="top:0;height:56px;left:-24px"><b style="left:-34px">56</b></span></div>
+     <div style="flex:1;font-size:12.5px;line-height:1.55;padding-inline-start:16px">מטרת מגע 50×60 לפחות. נגיעה: מילוי דיו ב־12 אחוז, 80 מ״ש. פוקוס: מסגרת כחולה 3.</div></div>`, 600);
+  const btns = box('כפתורים ושדות', `<div style="display:flex;flex-direction:column;gap:8px"><div class="row"><span class="btn pri" style="flex:1">להתחיל שיחה</span><span class="btn" style="flex:1">ביטול</span></div><div class="row"><span class="btn red" style="flex:1">לסיים לכולם</span><span class="btn dk" style="flex:1">להמשיך</span></div><div class="field" style="margin:0"><div class="in f">אבי</div></div><span style="font-size:12.5px;color:var(--graph)">גובה 52, משני 44. קו 2. טקסט 16/600. שדה 52, טקסט 17 כדי שאייפון לא יגדיל.</span></div>`, 400);
+  const type = box('אותיות ומרווחים', `<div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+     ${[['כותרת גיליון','20 / 700'],['כותרת שיחה','15 / 600'],['גוף','14 / 400'],['שבב','13 / 600'],['תווית כפתור','10.5 / 500']].map(([a,b])=>`<div class="kv" style="padding:4px 0"><span>${a}</span><span class="mono">${b}</span></div>`).join('')}
+     <div class="kv" style="padding:4px 0"><span>טיימר, מידות</span><span class="mono">Plex Mono 13 / 500</span></div>
+     <div class="kv" style="padding:4px 0"><span>רשת</span><span class="mono">4 · 8 · 12 · 16</span></div></div>`, 360);
+  const motion = box('תזמון', `<div style="display:flex;flex-direction:column;gap:4px;font-size:13px">${[['טבעת דיבור','300 ms'],['כפתורים נעלמים','4 s'],['תמונה שלי מתקפלת','10 s'],['סירוב ל"כולם אליי"','3 s'],['קו הצבעה דועך','1.2 s'],['אחיזה משתחררת','6 s'],['חזרה מסידור לסיור','5 s'],['מעבר לשיחה כשאין נגיעה','60 s'],['פס חיבור מחדש','≤ 1 s']].map(([a,b])=>`<div class="kv" style="padding:4px 0"><span>${a}</span><span class="mono">${b}</span></div>`).join('')}</div>`, 360);
+  return `<div class="wrap" id="b12w"><section class="board" id="b12" aria-label="רכיבים">
+  <header class="bh"><div class="bn"><b>12</b><small>מתוך 12</small></div><div><h2>רכיבים ומידות</h2><p>כל רכיב עם המידות, הצבעים והמצבים שלו, כמפרט לבונה. המספרים בפיקסלים של CSS. המפרט המלא, כולל המחרוזות בעברית ובאנגלית, בקובץ call-design.md.</p></div></header>
+  <div style="position:absolute;top:160px;right:52px;left:52px;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;gap:18px;align-items:stretch">${discs}${stamps}${pens.replace('width:420px;','flex:1;')}</div>
+    <div style="display:flex;gap:18px;align-items:stretch">${chips}${bars}${btns.replace('width:400px;','flex:1;')}</div>
+    <div style="display:flex;gap:18px;align-items:stretch">${type}${motion}
+      ${box('שכבות מסך בטלפון', `<div style="display:flex;gap:16px;align-items:flex-start"><div style="position:relative;width:120px;height:260px;border:2px solid var(--ink);background:var(--ink);flex:none">
+        <div style="position:absolute;top:0;inset-inline:0;height:14px;background:#22405C"></div><div style="position:absolute;top:14px;inset-inline:0;height:17px;background:#16304A;border-bottom:1px solid #3A5874"></div>
+        <div style="position:absolute;top:31px;inset-inline:0;bottom:34px;border:1.5px dashed #5B9BE6"></div><div style="position:absolute;bottom:10px;inset-inline:0;height:24px;background:#fff"></div><div style="position:absolute;bottom:0;inset-inline:0;height:10px;background:#E3E9ED"></div>
+        <span class="dimv" style="left:-26px;top:0;height:31px"><b style="left:-34px">100</b></span><span class="dimv" style="left:-26px;top:31px;height:195px"><b style="left:-34px">634</b></span><span class="dimv" style="left:-26px;top:226px;height:34px"><b style="left:-34px">110</b></span></div>
+        <div style="font-size:13px;line-height:1.6;padding-inline-start:56px;flex:1">${[['0','מצב הטלפון 44'],['44','כותרת שיחה 56'],['100','במה: דגם או תוכנית'],['744','סרגל 76'],['810','אזור בית 34']].map(([a,b])=>`<div class="kv" style="padding:3px 0"><span>${b}</span><span class="mono">y ${a}</span></div>`).join('')}<p style="margin:8px 0 0;color:var(--graph)">שכבות: דגם 0, פנים 15, שבבים 22, כותרת 30, סרגל 35, פסים 36, גיליונות 50.</p></div></div>`).replace('display:flex;flex-direction:column"><div','flex:1;display:flex;flex-direction:column"><div')}
+    </div>
+  </div>
+  <div class="tb" style="top:44px;bottom:auto"><div><small>לוח</small><b class="mono">12 / 12</b></div><div><small>יחידות</small><b class="mono">CSS px</b></div><div><small>תאריך</small><b class="mono">11.11.2026</b></div></div>
+  </section></div>`;
+}
+
+const html = [b01(),b02(),b03(),b04(),b05(),b06(),b07(),b08(),b09(),b10(),b11(),b12()].join('');
+document.getElementById('canvas').innerHTML = html;
+const names = ['שער','כניסה','סיור','סידור','שיחה','סרגל','מעקב','הזמנה','תקלות','מחשב','סוף','רכיבים'];
+document.getElementById('toc').innerHTML = names.map((n,i)=>`<a href="#b${String(i+1).padStart(2,'0')}w">${String(i+1).padStart(2,'0')} ${n}</a>`).join('');
+function fit(){
+  if (SHOT) return;
+  document.querySelectorAll('.wrap').forEach(w => {
+    const b = w.querySelector('.board'); const s = Math.min(1, w.clientWidth/1760);
+    b.style.transform = `scale(${s})`; b.style.transformOrigin = 'top right'; w.style.height = (1240*s)+'px';
+    b.style.marginInlineStart = '0';
+  });
+}
+fit(); addEventListener('resize', fit);
+(document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(()=>{ fit(); window.__ready = true; });
+})();
+</script>

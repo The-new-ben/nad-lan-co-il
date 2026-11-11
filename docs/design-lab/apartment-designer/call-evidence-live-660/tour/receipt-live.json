@@ -1,0 +1,574 @@
+{
+  "when": "2026-11-11T23:24:55.009Z",
+  "task": "HAD-706 live",
+  "mode": "live site, real routes",
+  "base": "https://nad-lan.co.il",
+  "page": "/tour/designer/",
+  "server": "LiveKit of nad-lan.co.il (real)",
+  "checks": [
+    {
+      "name": "A: the designer loads with the video call button",
+      "ok": true
+    },
+    {
+      "name": "A: the button says \"שיחת וידאו\"",
+      "ok": true,
+      "detail": "שיחת וידאו"
+    },
+    {
+      "name": "A: the start sheet opens",
+      "ok": true
+    },
+    {
+      "name": "A: the sheet words as designed, a 14-bar mic meter, camera and mic switches OFF",
+      "ok": true,
+      "detail": {
+        "h": "שיחת וידאו על הדירה",
+        "go": "להתחיל שיחה",
+        "fine": "השיחה לא מוקלטת. הדפדפן יבקש רשות למצלמה ולמיקרופון רק כשתלחצו.",
+        "label": "איך לקרוא לך?",
+        "meter": 14,
+        "cam": false,
+        "mic": false,
+        "sub": "מזמינים את מי שצריך ומעצבים יחד את דירת 5 החדרים. כולם רואים את אותה תוכנית בזמן אמת."
+      }
+    },
+    {
+      "name": "A: switching the camera on shows her own preview; the mic meter moves with the (fake) sound",
+      "ok": true,
+      "detail": {
+        "preview_ms": 630,
+        "lit_bars": 2
+      }
+    },
+    {
+      "name": "1. A is connected to LiveKit (room state connected, server host ends with .livekit.cloud)",
+      "ok": true,
+      "detail": {
+        "state": "connected",
+        "me": true
+      }
+    },
+    {
+      "name": "1. A sees her own camera in the call (she switched it on)",
+      "ok": true,
+      "detail": {
+        "click_to_own_video_ms": 4750
+      }
+    },
+    {
+      "name": "1. A entered with the microphone OFF (she did not switch it on)",
+      "ok": true,
+      "detail": {
+        "mic": false,
+        "cam": true
+      }
+    },
+    {
+      "name": "6. the invite sheet: \"להזמין לשיחה\", the page link with ?room=, no name in the link",
+      "ok": true,
+      "detail": {
+        "link": "https://nad-lan.co.il/tour/designer/?ul=5+%D7%97%D7%93%D7%A8%D7%99%D7%9D&room=<room>"
+      }
+    },
+    {
+      "name": "6. \"הזמנה בוואטסאפ\" first: wa.me with the written message and the link",
+      "ok": true,
+      "detail": {
+        "text": "דנה מזמין אותך לשיחת וידאו על דירת 5 חדרים. רואים את הדירה ומעצבים יחד, בדפדפן, בלי הרשמה. https://nad-lan.co.il/tour/designer/?ul=5+%D7%97%D7%93%D7%A8%D7%99%D7%9D&room=<room>"
+      }
+    },
+    {
+      "name": "6. copy turns into \"הועתק\"",
+      "ok": true,
+      "detail": "הועתק"
+    },
+    {
+      "name": "B: the invite link shows the join sheet at once",
+      "ok": true
+    },
+    {
+      "name": "B: \"להצטרף לשיחה על הדירה\", one name field, \"כניסה\", both switches off; no designer before the apartment arrives",
+      "ok": true,
+      "detail": {
+        "h": "להצטרף לשיחה על הדירה",
+        "go": "כניסה",
+        "designer": false,
+        "cam": false,
+        "mic": false
+      }
+    },
+    {
+      "name": "2. B received the plan and the design on the data channel and opened the SAME apartment",
+      "ok": true,
+      "detail": {
+        "items": [
+          64,
+          64
+        ],
+        "identical": true,
+        "plan_message": {
+          "ms": 96,
+          "bytes": 21722,
+          "items": 64
+        }
+      }
+    },
+    {
+      "name": "5. the big apartment (over 15 KB) arrived whole, in parts",
+      "ok": true,
+      "detail": {
+        "bytes": 21722,
+        "ms": 96
+      }
+    },
+    {
+      "name": "camera and microphone are OFF on entry (B switched nothing on)",
+      "ok": true,
+      "detail": {
+        "mic": false,
+        "cam": false
+      }
+    },
+    {
+      "name": "the host is the one who opened the room (first in), the same on both",
+      "ok": true,
+      "detail": [
+        "A",
+        "A"
+      ]
+    },
+    {
+      "name": "3. each sees the other's video after B pressed \"מצלמה\" (label reads \"מצלמה\" when on)",
+      "ok": true,
+      "detail": {
+        "camLabel": "מצלמה",
+        "a_sees_b": 162,
+        "b_sees_a": 2
+      }
+    },
+    {
+      "name": "phone: the control bar sits at the bottom edge and covers neither the designer's tool bar, the 3D nor the header",
+      "ok": true,
+      "detail": {
+        "bar": {
+          "l": 0,
+          "t": 766,
+          "r": 390,
+          "b": 842,
+          "w": 390,
+          "h": 76
+        },
+        "nav": {
+          "l": 0,
+          "t": 710,
+          "r": 390,
+          "b": 766,
+          "w": 390,
+          "h": 56
+        },
+        "space": {
+          "l": 0,
+          "t": 54,
+          "r": 390,
+          "b": 710,
+          "w": 390,
+          "h": 656
+        },
+        "head": {
+          "l": 0,
+          "t": -2,
+          "r": 390,
+          "b": 54,
+          "w": 390,
+          "h": 56
+        },
+        "host": {
+          "t": 0,
+          "b": 844,
+          "l": 0,
+          "r": 390
+        }
+      }
+    },
+    {
+      "name": "phone: right to left: mic, camera, follow, point, invite, more, then leave apart; a word under every icon",
+      "ok": true,
+      "detail": {
+        "rtl": [
+          "mic",
+          "cam",
+          "follow",
+          "point",
+          "invite",
+          "more",
+          "leave"
+        ],
+        "labels": [
+          "מושתק",
+          "מצלמה",
+          "מעקב",
+          "הצבעה",
+          "הזמנה",
+          "עוד",
+          "יציאה"
+        ]
+      }
+    },
+    {
+      "name": "phone and desktop: every call target at least 44 x 44; bar cells at least 50 x 60",
+      "ok": true,
+      "detail": {
+        "phone": [],
+        "desktop": [],
+        "cells": [
+          [
+            "mic",
+            50,
+            60
+          ],
+          [
+            "cam",
+            50,
+            60
+          ],
+          [
+            "follow",
+            50,
+            60
+          ],
+          [
+            "point",
+            50,
+            60
+          ],
+          [
+            "invite",
+            50,
+            60
+          ],
+          [
+            "more",
+            50,
+            60
+          ]
+        ]
+      }
+    },
+    {
+      "name": "desktop: header on top, side panel, the bar under the centre; the designer's tool bar uncovered",
+      "ok": true,
+      "detail": {
+        "bar": {
+          "l": 340,
+          "t": 820,
+          "r": 1440,
+          "b": 900,
+          "w": 1100,
+          "h": 80
+        },
+        "nav": {
+          "l": 340,
+          "t": 764,
+          "r": 1440,
+          "b": 820,
+          "w": 1100,
+          "h": 56
+        },
+        "plan": {
+          "l": 340,
+          "t": 228,
+          "r": 823,
+          "b": 764,
+          "w": 483,
+          "h": 536
+        }
+      }
+    },
+    {
+      "name": "phone: the controls hide after 4 s and come back with a tap; the first time a hint says how",
+      "ok": true,
+      "detail": {
+        "hidden": true,
+        "back": true,
+        "hint": "הקישו על המסך כדי להחזיר את הכפתורים"
+      }
+    },
+    {
+      "name": "4. \"סידור\": the plan fills the stage, the 3D shrinks to a 150 x 128 inset",
+      "ok": true,
+      "detail": {
+        "layout": "b",
+        "plan": [
+          390,
+          656
+        ],
+        "space": [
+          150,
+          128
+        ]
+      }
+    },
+    {
+      "name": "4. A drags a piece with her finger: it moved on A and is in the same place on B within 2 s (the final position goes reliable)",
+      "ok": true,
+      "detail": {
+        "id": "x2_s1",
+        "from": [
+          351,
+          345
+        ],
+        "to": [
+          465,
+          425
+        ],
+        "arrived_ms": 1
+      }
+    },
+    {
+      "name": "hold: while A's finger is on the piece, B sees it held in her pen colour with \"דנה מזיז/ה את …\"",
+      "ok": true,
+      "detail": {
+        "held_after_ms": 2,
+        "holdBox": {
+          "chip": "דנה מזיז/ה את הספה",
+          "pen": "#1F5FA8"
+        },
+        "sku": "gen.sofa3"
+      }
+    },
+    {
+      "name": "hold: B's change to that piece is refused (code call.hold) and a drag shows \"דנה מחזיק/ה את … נסו שוב בעוד רגע.\"",
+      "ok": true,
+      "detail": {
+        "api": {
+          "ok": false,
+          "code": "call.hold",
+          "reason": "דנה מחזיק/ה את הספה. נסו שוב בעוד רגע."
+        },
+        "toast": "דנה מחזיק/ה את הספה. נסו שוב בעוד רגע."
+      }
+    },
+    {
+      "name": "hold: lifting the finger lets go at once",
+      "ok": true,
+      "detail": {
+        "freed_ms": 2
+      }
+    },
+    {
+      "name": "two people move two different pieces at the same time: both moved, and both are the same on both screens",
+      "ok": true,
+      "detail": {
+        "x": {
+          "a": [
+            415,
+            360
+          ],
+          "b": [
+            415,
+            360
+          ],
+          "from": [
+            520,
+            450
+          ]
+        },
+        "y": {
+          "a": [
+            445,
+            275
+          ],
+          "b": [
+            445,
+            275
+          ],
+          "from": [
+            344,
+            340
+          ]
+        }
+      }
+    },
+    {
+      "name": "\"בטל את שלי\" undoes A's own last move only; B's piece stays; B follows the undo",
+      "ok": true,
+      "detail": {
+        "undoVis": true,
+        "x": [
+          520,
+          450
+        ],
+        "y": [
+          445,
+          275
+        ]
+      }
+    },
+    {
+      "name": "follow: B taps A's face, \"לעקוב אחרי דנה\", and walks where A walks (frame + tab in her colour)",
+      "ok": true,
+      "detail": {
+        "folText": "לעקוב אחרי דנה",
+        "follow_ms": 126,
+        "frameB": true,
+        "tabB": "עוקבים אחרי דנה · הקישו לעצור",
+        "viewers": "1 צופים"
+      }
+    },
+    {
+      "name": "follow: one touch on the model stops following and shows \"חזרה לדנה\"",
+      "ok": true,
+      "detail": {
+        "stopped": false,
+        "chipB": "דחזרה לדנה"
+      }
+    },
+    {
+      "name": "follow: \"חזרה לדנה\" follows again",
+      "ok": true
+    },
+    {
+      "name": "\"כולם אליי\": B sees \"דנה רוצה להראות לכולם את …\" with 3 s; \"לא עכשיו\" stays, and the next time the 3 s run out and B follows",
+      "ok": true,
+      "detail": {
+        "card_ms": 23,
+        "cardText": "דנה רוצה להראות לכולם את הסלון ופינת אוכל",
+        "declined": true,
+        "auto_follow_after_ms": 3047
+      }
+    },
+    {
+      "name": "pointing: B sees A's line with \"דנה: כאן\", it fades by itself, and pointing changes nothing in the design",
+      "ok": true,
+      "detail": {
+        "laser_ms": 2,
+        "faded": true,
+        "own_chip": 1,
+        "at": [
+          117,
+          283.6
+        ]
+      }
+    },
+    {
+      "name": "\"שיחה\": faces fill the top, the live model below with \"חזרה לדגם\"",
+      "ok": true,
+      "detail": {
+        "faces": 427,
+        "space": 285,
+        "spaceTop": 483,
+        "facesBottom": 483,
+        "btn": true
+      }
+    },
+    {
+      "name": "reconnecting: the ink banner \"מתחברים מחדש…\" shows within 1 s, the model stays, and it clears when back",
+      "ok": true,
+      "detail": {
+        "banner_ms": 1,
+        "cleared_ms": 12
+      }
+    },
+    {
+      "name": "after the reconnect A caught up and both designs are the same",
+      "ok": true
+    },
+    {
+      "name": "weak connection for 10 s: voice only with \"החיבור חלש. עברנו לקול בלבד כדי שהשיחה תמשיך.\"; \"להחזיר וידאו\" brings the camera back",
+      "ok": true,
+      "detail": {
+        "weak_after_ms": 12003,
+        "weakT": "החיבור חלש. עברנו לקול בלבד כדי שהשיחה תמשיך.",
+        "camBack": true
+      }
+    },
+    {
+      "name": "leave asks first: the host gets \"לצאת, השיחה ממשיכה\" (who becomes host) / \"לסיים לכולם\" / \"ביטול\"; nothing left yet",
+      "ok": true,
+      "detail": {
+        "t": "לצאת מהשיחה?",
+        "keep": "לצאת, השיחה ממשיכה",
+        "sub": "אבי יהיה/תהיה המארח/ת",
+        "end": "לסיים לכולם",
+        "cancel": "ביטול",
+        "still": true
+      }
+    },
+    {
+      "name": "the end: \"השיחה הסתיימה. העיצוב שמור אצלכם.\" with before / after plans and the changes by person",
+      "ok": true,
+      "detail": {
+        "h": "השיחה הסתיימה. העיצוב שמור אצלכם.",
+        "lines": 2,
+        "share": "לשלוח את הסיכום בוואטסאפ",
+        "alone": "להמשיך לעצב לבד",
+        "thumbs": 2
+      }
+    },
+    {
+      "name": "7. B sees that A left, keeps the same design and is now the host",
+      "ok": true,
+      "detail": {
+        "toast": "דנה יצא/ה מהשיחה. העיצוב נשאר אצלך.",
+        "left_after_ms": 2
+      }
+    },
+    {
+      "name": "7. \"להמשיך לעצב לבד\" gives A the designer back",
+      "ok": true
+    },
+    {
+      "name": "a guest (or the last one) leaves after one short confirm \"יציאה\"",
+      "ok": true,
+      "detail": {
+        "keep": "יציאה",
+        "endall": false
+      }
+    },
+    {
+      "name": "8. no console errors from the designer or the call (A-phone)",
+      "ok": true,
+      "detail": {
+        "ours": [],
+        "other_page_errors": []
+      }
+    },
+    {
+      "name": "8. no console errors from the designer or the call (B-desktop)",
+      "ok": true,
+      "detail": {
+        "ours": [],
+        "other_page_errors": []
+      }
+    }
+  ],
+  "numbers": {
+    "five_room_button": "already",
+    "a_design": {
+      "n": 48,
+      "items": 64,
+      "geo": "example-5r:2026-11-11:a"
+    },
+    "a_click_to_connected_ms": 4025,
+    "a_click_to_own_video_ms": 4750,
+    "a_breakdown": {
+      "room_ms": 2083,
+      "token_ms": 1168,
+      "connect_and_media_ms": 907
+    },
+    "b_click_to_designer_in_call_ms": 3539,
+    "plan_message": {
+      "ms": 96,
+      "bytes": 21722,
+      "items": 64
+    },
+    "remote_video_ms": {
+      "a_sees_b": 162,
+      "b_sees_a": 2
+    },
+    "move_a_to_b_ms": 1
+  },
+  "passed": 46,
+  "failed": 0
+}

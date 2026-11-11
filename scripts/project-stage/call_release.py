@@ -23,7 +23,10 @@ CAND = ["assets/tours/designer-tour.html"] + [D + f for f in ("designer.js", "st
 NEW = [D + f for f in ("call.js", "call.css")]
 
 
-def build(PREV, NEWV, STAMP):
+def build(PREV, NEWV, STAMP, NEWLIST=None):
+    global NEW
+    if NEWLIST is not None:
+        NEW = list(NEWLIST)  # a follow-up release: the call files are already on the site
     LR = os.path.join(REPO, "docs", "qa", "live-read", STAMP)
     V = "1.72.%d" % NEWV
     rp = json.load(open(os.path.join(QA, "deploy-result-%d.json" % PREV), encoding="utf-8"))
@@ -37,7 +40,7 @@ def build(PREV, NEWV, STAMP):
         assert os.path.isfile(lp), "no live read of " + r
         if md5(open(lp, "rb").read()) != md5(rd(r)):
             SWAP.append(r)
-    assert "assets/tours/designer-tour.html" in SWAP and D + "studio.js" in SWAP, SWAP
+    assert "assets/tours/designer-tour.html" in SWAP, SWAP
     FILES = SWAP + NEW
     for r in FILES:
         assert b"\r\n" not in rd(r), "CRLF " + r

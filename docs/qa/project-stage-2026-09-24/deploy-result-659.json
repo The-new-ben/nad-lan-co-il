@@ -1,0 +1,19 @@
+{
+  "released": "1.72.659",
+  "from": "1.72.658",
+  "live_before": {
+    "assets/tours/designer-tour.html": "fa0084abb849c0a9b06c6ad4b9d664b9",
+    "nadlan-config.php": "e57489dd52eda774a482148f807a4302",
+    "inc/designer.php": "151986eaac49b80fcf9d28843663bf82"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 00:50:55",
+  "files": {
+    "assets/tours/designer-tour.html": "7bf9d25e4c2856d3ffb847bf9ce70d8f",
+    "nadlan-config.php": "a40f5abb3252501df1b1f380b536ec1d",
+    "inc/designer.php": "554a1a51bc48892bd970cc0d8735d54f"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.659, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

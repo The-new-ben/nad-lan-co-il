@@ -73,6 +73,9 @@ dialog::backdrop{background:rgba(15,34,51,.55)}
 .dl .go svg{width:20px;height:20px;fill:currentColor}
 .dl .no{display:block;width:100%;min-height:44px;margin-top:8px;background:none;border:2px solid var(--ink);font-weight:600}
 @media (max-width:520px){.top .send b{display:none}.top .send{padding:0 12px;gap:6px}.ttl{padding:4px 10px}}
+/* in a video call the page steps back: the plan chooser and the tip go (another apartment would end the call), and on a phone the page's own header too: the call has its own */
+body.in-call .pick,body.in-call .tip{display:none!important}body.in-call #host{border-top:0}
+@media (max-width:700px){body.in-call .top{display:none}}
 </style>
 </head>
 <body>
@@ -149,7 +152,8 @@ const roomsWanted = Number((ul.match(/(\d)(?:[.,]5)?\s*חדרים/) || [])[1] ||
     const { mountStudio } = await import(B + 'studio.js?v=' + V);
     $('wait').remove();
     st = await mountStudio(host, pick, { plans, planUrl: dflt, mk, lang: 'he', version: V, project: slug || null, scope: slug || '', helpUrl: '/design-studio/#get-plan', rest: '/wp-json/nadlan/v1/designer/', // the video call (HAD-706): rooms and tokens from the site, the apartment travels in the call
-      start: q.get('plan') === 'mine' ? 'mine' : '', onChange: (kind) => { if (kind !== 'plan') hideTip(); } });
+      start: q.get('plan') === 'mine' ? 'mine' : '', onChange: (kind) => { if (kind !== 'plan') hideTip(); },
+      onCall: (what) => document.body.classList.toggle('in-call', what === 'joined') });
   } catch (e) { st = null; if (window.console) console.error(e); }
   if (!st) { host.innerHTML = '<div class="wait">המעצב לא נטען. <a href="/design-studio/">לדף עיצוב הדירה</a></div>'; return; }
   let seen = false;

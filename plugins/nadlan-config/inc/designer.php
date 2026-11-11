@@ -595,7 +595,37 @@ if ( ! function_exists( 'nadlan_dsg_call_lk' ) ) {
 	function nadlan_dsg_call_lk() {
 		if ( ! function_exists( 'nadlan_tr_opt' ) || ! function_exists( 'nadlan_tr_lk_ready' ) || ! function_exists( 'nadlan_tr_jwt' ) ) { return null; }
 		if ( ! nadlan_tr_lk_ready() ) { return null; }
-		return array( 'url' => (string) nadlan_tr_opt( 'lk_url' ), 'key' => (string) nadlan_tr_opt( 'lk_key' ), 'secret' => (string) nadlan_tr_opt( 'lk_secret' ) );
+		$key = (string) nadlan_tr_opt( 'lk_key' );
+		if ( '' !== $key ) { return array( 'mode' => 'key', 'url' => (string) nadlan_tr_opt( 'lk_url' ), 'key' => $key, 'secret' => (string) nadlan_tr_opt( 'lk_secret' ) ); }
+		// the live site has no local key: its tokens come from the shared LiveKit project's edge function (together.php, 1.72.463)
+		$proxy = (string) nadlan_tr_opt( 'lk_proxy' );
+		$sec   = (string) nadlan_tr_opt( 'lk_proxy_secret' );
+		if ( '' === $proxy || 64 !== strlen( $sec ) ) { return null; }
+		return array( 'mode' => 'proxy', 'proxy' => $proxy, 'proxy_secret' => $sec );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dsg_call_grant' ) ) {
+	/**
+	 * The server address and the access token of one person in one designer call room, or null when LiveKit does not answer.
+	 * With a local key the token is signed here; otherwise the shared project's edge function signs it, asked exactly as
+	 * together.php asks (HMAC of room|identity|time; it serves rooms named 'nadlan-*' only, and ours are 'nadlan-dsg-<id>').
+	 */
+	function nadlan_dsg_call_grant( $room, $identity, $name, $role, array $lk ) {
+		if ( 'key' === ( $lk['mode'] ?? '' ) ) {
+			return array( 'url' => (string) $lk['url'], 'token' => nadlan_dsg_call_token_jwt( $room, $identity, $name, $role, $lk ) );
+		}
+		$lk_room = 'nadlan-dsg-' . $room;
+		$ts      = time();
+		$sig     = hash_hmac( 'sha256', $lk_room . '|' . $identity . '|' . $ts, (string) $lk['proxy_secret'] );
+		$res     = wp_remote_post( (string) $lk['proxy'], array(
+			'timeout' => 8,
+			'headers' => array( 'content-type' => 'application/json' ),
+			'body'    => wp_json_encode( array( 'room' => $lk_room, 'identity' => (string) $identity, 'name' => (string) $name, 'role' => 'host' === $role ? 'buyer' : 'friend', 'ts' => $ts, 'sig' => $sig ) ),
+		) );
+		$body = is_wp_error( $res ) ? null : json_decode( (string) wp_remote_retrieve_body( $res ), true );
+		if ( ! is_array( $body ) || empty( $body['token'] ) || empty( $body['url'] ) ) { return null; }
+		return array( 'url' => (string) $body['url'], 'token' => (string) $body['token'] );
 	}
 }
 
@@ -731,7 +761,9 @@ if ( ! function_exists( 'nadlan_dsg_rest_call_token' ) ) {
 		$live['n']   = count( $ids );
 		$left        = 6 * HOUR_IN_SECONDS - ( time() - (int) ( $live['t'] ?? time() ) );
 		set_transient( nadlan_dsg_call_key( $room ), $live, max( 60, $left ) );
-		return nadlan_dsg_no_store( array( 'url' => $lk['url'], 'token' => nadlan_dsg_call_token_jwt( $room, $me, $name, $role, $lk ), 'identity' => $me ) );
+		$grant = nadlan_dsg_call_grant( $room, $me, $name, $role, $lk );
+		if ( null === $grant || '' === $grant['url'] || '' === $grant['token'] ) { return nadlan_dsg_no_store( array( 'error' => 'off' ), 503 ); } // LiveKit did not answer: the page says the call could not start
+		return nadlan_dsg_no_store( array( 'url' => $grant['url'], 'token' => $grant['token'], 'identity' => $me ) );
 	}
 }
 

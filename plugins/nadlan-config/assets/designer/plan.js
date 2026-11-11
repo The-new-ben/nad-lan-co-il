@@ -122,6 +122,7 @@ export function mountPlan(host, store, cat, hooks = {}) {
     const c = cat.ITEMS[it.sku];
     if (!g) {
       g = E('g', { class: 'item', 'data-item': id }, L.items);
+      if (c && c.shape === 'rug') L.items.insertBefore(g, L.items.firstChild); // a rug lies under the furniture: a finger on a sofa takes the sofa, whatever the order in the plan
       E('rect', { x: -c.w / 2, y: -c.d / 2, width: c.w, height: c.d, rx: c.shape === 'plant' ? c.w / 2 : 6, 'data-item': id }, g);
       if (c.shape !== 'rug' && c.shape !== 'plant') E('line', { x1: -c.w / 2 + 8, y1: -c.d / 2 + 9, x2: c.w / 2 - 8, y2: -c.d / 2 + 9, class: 'back' }, g);
       itemEls.set(id, g);

@@ -1,0 +1,87 @@
+/* "Measure with the camera" (roomscan.js). The architect's working drawing: drafting white #F2F5F7, sheet #FFFFFF, plan ink
+   #0F2233, blueprint blue #1F5FA8, dimension red #B5302A for measurements only. IBM Plex Sans Hebrew, IBM Plex Mono for numbers.
+   Square corners, 2 px lines. Two places use this file: the shadow root of the explanation and result screens (.nlscan-page),
+   and the measuring controls under document.body (.nlscan-root), where the site's own CSS can reach, hence the !important. */
+
+/* ---------- the explanation and result screens (inside a shadow root) ---------- */
+:host{all:initial;display:block;width:100%;height:100%}
+.nlscan-host{display:block;width:100%;height:100%}
+.nlscan-page{--sheet:#F2F5F7;--ink:#0F2233;--ink2:#46596A;--blue:#1F5FA8;--blue2:#D6E5F6;--dim:#B5302A;--line:#B9C6CF;
+  display:flex;flex-direction:column;height:100%;min-height:100%;background:var(--sheet);color:var(--ink);
+  font:15px/1.45 "IBM Plex Sans Hebrew",Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+.nlscan-page *{box-sizing:border-box;margin:0;padding:0}
+.nlscan-page [hidden]{display:none!important}
+.nlscan-page button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.nlscan-page :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.nlscan-head{background:#fff;border-bottom:2px solid var(--ink);padding:14px 16px}
+.nlscan-head h2{font-size:19px;font-weight:700;line-height:1.25}
+.nlscan-body{flex:1;min-height:0;overflow:auto;padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px}
+.nlscan-steps{list-style:none;display:flex;flex-direction:column;gap:8px}
+.nlscan-steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;background:#fff;border:2px solid var(--ink);padding:8px 12px 8px 8px}
+.nlscan-page[dir=rtl] .nlscan-steps li{padding:8px 8px 8px 12px}
+.nlscan-steps svg{width:64px;height:64px;display:block;background:var(--sheet);border:1px solid var(--line)}
+.nlscan-steps span{font-size:15.5px;font-weight:600;line-height:1.35}
+.nlscan-n{display:inline-block;min-width:22px;margin-inline-end:6px;font-family:"IBM Plex Mono",monospace;color:var(--blue);font-weight:600}
+.i-ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:miter}
+.i-bl{fill:none;stroke:var(--blue);stroke-width:2.5}
+.i-dot{fill:var(--ink)}
+.nlscan-fine{font-size:13.5px;color:var(--ink2);line-height:1.45}
+.nlscan-why{background:var(--blue2);border:2px solid var(--ink);padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.nlscan-why b{font-size:15.5px}
+.nlscan-actions{display:flex;flex-direction:column;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#fff;border-top:2px solid var(--ink)}
+.nlscan-page .nlscan-btn{min-height:56px;border:2px solid var(--ink);background:#fff;font-size:16px;font-weight:600;padding:0 14px}
+.nlscan-page .nlscan-go{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700;font-size:17px}
+.nlscan-page .nlscan-btn:disabled{opacity:.5;cursor:default}
+.nlscan-sum{font-size:16px}
+.nlscan-mono{font-family:"IBM Plex Mono",monospace;direction:ltr;unicode-bidi:isolate}
+.nlscan-plan{background-color:#fff;background-image:linear-gradient(#E3EAEF 1px,transparent 1px),linear-gradient(90deg,#E3EAEF 1px,transparent 1px);background-size:16px 16px;border:2px solid var(--ink);padding:8px}
+.nlscan-plan svg{display:block;width:100%;height:auto;max-height:48vh}
+.p-room{fill:var(--blue2)}
+.p-w{fill:var(--ink)}
+.p-w.partition{fill:#fff;stroke:var(--ink);stroke-width:2px;vector-effect:non-scaling-stroke}
+.p-w.rail{fill:#9FB2C0}
+.p-gap{fill:#fff}
+.p-op{stroke-width:3px;vector-effect:non-scaling-stroke}
+.p-op.door{stroke:var(--ink)}.p-op.window{stroke:var(--blue);stroke-width:5px}
+.p-name,.p-area{text-anchor:middle;paint-order:stroke;stroke:var(--blue2);stroke-width:3px;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.p-name{font-family:"IBM Plex Sans Hebrew",Arial,sans-serif;font-weight:700;fill:var(--ink)}
+.p-area{font-family:"IBM Plex Mono",monospace;font-weight:600;fill:var(--dim)}
+.nlscan-truth{font-size:14px;font-weight:600;line-height:1.45;background:#fff;border:2px solid var(--ink);border-inline-start-width:6px;border-inline-start-color:var(--blue);padding:10px 12px}
+
+/* ---------- while measuring: the controls over the camera (the DOM overlay root, directly under body) ---------- */
+.nlscan-root{position:fixed!important;inset:0!important;z-index:2147483000!important;background:transparent!important;margin:0!important;padding:0!important;
+  font:15px/1.35 "IBM Plex Sans Hebrew",Arial,sans-serif!important;color:#0F2233!important;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.nlscan-root *{box-sizing:border-box!important;margin:0!important;letter-spacing:normal!important;text-transform:none!important}
+.nlscan-root [hidden]{display:none!important}
+.nlscan-root .nlscan-btn{appearance:none!important;-webkit-appearance:none!important;border-radius:0!important;box-shadow:none!important;text-shadow:none!important;
+  min-height:56px!important;padding:0 6px!important;border:2px solid #0F2233!important;background:#fff!important;color:#0F2233!important;
+  font:600 16px/1.15 "IBM Plex Sans Hebrew",Arial,sans-serif!important;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:auto!important;height:auto!important}
+.nlscan-root .nlscan-btn:disabled{opacity:.38!important;cursor:default}
+.nlscan-root .nlscan-btn[aria-pressed=true]{background:#0F2233!important;color:#fff!important}
+.nlscan-root .nlscan-btn:focus-visible{outline:3px solid #1F5FA8!important;outline-offset:2px}
+.nlscan-top{position:absolute!important;top:0;left:0;right:0;background:#fff!important;border-bottom:2px solid #0F2233!important;padding:6px 8px 6px!important;padding-top:calc(6px + env(safe-area-inset-top,0px))!important}
+.nlscan-line{display:flex!important;align-items:center;gap:8px}
+.nlscan-root .nlscan-exit{min-height:44px!important;min-width:64px;flex:none;font-size:14px!important}
+.nlscan-msg{flex:1;min-width:0;font-size:15px!important;font-weight:600!important;line-height:1.3!important;min-height:40px;display:flex;align-items:center;padding:0!important}
+.nlscan-sub{justify-content:space-between;min-height:30px;padding-top:2px!important}
+.nlscan-sub>span{font-size:13px;color:#46596A}
+.nlscan-dist{color:#B5302A!important;white-space:nowrap}
+.nlscan-num{font:600 26px/1 "IBM Plex Mono",monospace!important;direction:ltr;unicode-bidi:isolate}
+.nlscan-unit{font:700 18px/1 "IBM Plex Sans Hebrew",Arial,sans-serif!important}
+.nlscan-root .nlscan-main.nlscan-wait{background:#46596A!important;border-color:#46596A!important}
+.nlscan-side{position:absolute!important;top:calc(108px + env(safe-area-inset-top,0px));left:8px;right:8px;display:flex!important;justify-content:space-between;align-items:flex-start;pointer-events:none}
+.nlscan-side>*{pointer-events:auto}
+.nlscan-root .nlscan-chip{min-height:44px!important;font-size:14px!important;padding:0 10px!important}
+.nlscan-map{display:block!important;width:132px!important;height:132px!important;border:2px solid #0F2233!important;background:#fff!important}
+.nlscan-aim{position:absolute!important;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px!important;border:2px solid #fff;outline:2px solid #0F2233;border-radius:50%;pointer-events:none}
+.nlscan-aim::after{content:"";position:absolute;left:12px;top:12px;width:2px;height:2px;background:#0F2233;box-shadow:0 0 0 1px #fff}
+.nlscan-warn{position:absolute!important;left:12px;right:12px;top:calc(50% + 34px);background:#0F2233!important;color:#fff!important;border:2px solid #fff!important;padding:10px 12px!important;font-size:16px!important;font-weight:700!important;text-align:center}
+.nlscan-bar{position:absolute!important;left:0;right:0;bottom:0;background:#fff!important;border-top:2px solid #0F2233!important;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))!important;display:flex!important;flex-direction:column;gap:8px}
+.nlscan-row{display:flex!important;gap:8px}
+.nlscan-row .nlscan-btn{flex:1 1 0;min-width:0}
+.nlscan-root .nlscan-main{flex:1.5 1 0!important;min-height:64px!important;background:#1F5FA8!important;border-color:#1F5FA8!important;color:#fff!important;font-size:20px!important;font-weight:700!important}
+.nlscan-root .nlscan-fin{background:#0F2233!important;color:#fff!important}
+.nlscan-names{position:absolute!important;left:0;right:0;bottom:0;z-index:2;background:#fff!important;border-top:2px solid #0F2233!important;padding:10px 8px calc(10px + env(safe-area-inset-bottom,0px))!important}
+.nlscan-names p{font-size:16px;font-weight:700;padding:0 2px 8px!important}
+.nlscan-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (prefers-reduced-motion:reduce){.nlscan-root *,.nlscan-page *{transition:none!important;animation:none!important}}
