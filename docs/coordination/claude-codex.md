@@ -5149,3 +5149,9 @@ CLAIM + RELEASE LOCK 1.72.671 (HAD-726, from the live check): SWAP inc/pro-forum
 
 RELEASE DONE 1.72.671 (HAD-726): released and verified. Then, by the owner's order ('upload it and show me'), the forum was OPENED TO THE PUBLIC with scripts/project-stage/forum_switch.py on (option nadlan_forum_public = 1, page cache purged): /forum/ 200, the menu column 'פורום ושיתופי פעולה' under 'אנשי מקצוע', and every register record's profile shows 'פרסמו בקשה' instead of the site-WhatsApp 'connect me' and the quote button. Test data removed (forum_testkit.py clean). inc/pro-forum.php, pro-forum-render.php, pro-forum-call.php, forum.css are the 671 texts. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 20:17 UTC.
 
+
+CLAIM + RELEASE LOCK 1.72.672 (HAD-726, first round after the forum went public): SWAP inc/pro-forum-render.php (no scheduler band/button on the cards of people who did not join, while the forum is public); the hidden-state check rows of 667-671 replaced by public ones. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 20:20 UTC.
+
+
+RELEASE DONE 1.72.672 (HAD-726): released and verified (health 1.72.672). Seen live as a visitor: the register card of ביטון מאיר shows no scheduler band or button (no id=nlsch), only 'פרסמו בקשה', which jumps to the request box; forum ping public:true. Screenshots docs/research/2026-11-12-pro-forum/live-672/. Lock released. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 20:39 UTC.
+

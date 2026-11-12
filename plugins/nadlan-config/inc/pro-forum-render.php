@@ -417,6 +417,16 @@ function nlf_owner_box( $pro ) {
 	return ob_get_clean();
 }
 
+/* 1.72.672: a card whose person did not join has no one behind its calendar (the scheduler's host is the site admin), so while
+   the forum is public its "תיאום מועד ביומן" band and button stay off there; "פרסמו בקשה" is the way in. Joined members keep it. */
+add_action( 'wp', function () {
+	if ( is_admin() || ! is_singular( 'nadlan_professional' ) || ! nlf_public() ) { return; }
+	$pro = (int) get_queried_object_id();
+	if ( $pro > 0 && ! nlf_pro_member( $pro ) ) {
+		add_filter( 'pre_option_nadlan_feature_scheduler', function () { return '0'; } );
+	}
+} );
+
 /* placement on a professional's page: through the_content, late (priority 40, after the profile at 6 and its wpautop shield at 11),
    so inc/professional-profile.php is not edited */
 add_filter( 'the_content', function ( $content ) {
