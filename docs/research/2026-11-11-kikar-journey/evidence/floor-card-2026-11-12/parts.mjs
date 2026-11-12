@@ -1,0 +1,40 @@
+import { spawn } from 'node:child_process'; import fs from 'node:fs/promises'; import os from 'node:os'; import path from 'node:path';
+const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'; const URL_ = process.argv[2]; const OUT = process.argv[3]; const W = +(process.argv[4] || 390), H = +(process.argv[5] || 844);
+const PORT = 9300 + Math.floor(Math.random() * 400); const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'cd-')); const ch = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${PORT}`, `--user-data-dir=${dir}`, '--no-first-run', '--hide-scrollbars', '--enable-unsafe-swiftshader', 'about:blank'], { stdio: 'ignore' });
+for (let i = 0; i < 80; i++) { try { await (await fetch(`http://127.0.0.1:${PORT}/json/version`)).json(); break; } catch { await sleep(250); } }
+await fs.mkdir(OUT, { recursive: true });
+const t = await (await fetch(`http://127.0.0.1:${PORT}/json/new?about:blank`, { method: 'PUT' })).json();
+const ws = new WebSocket(t.webSocketDebuggerUrl); let id = 0; const P = new Map(); await new Promise((r) => (ws.onopen = r));
+const send = (m, p = {}) => new Promise((ok, no) => { const i = ++id; P.set(i, { ok, no }); ws.send(JSON.stringify({ id: i, method: m, params: p })); });
+ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && P.has(m.id)) { const q = P.get(m.id); P.delete(m.id); if (m.error) q.no(new Error(JSON.stringify(m.error))); else q.ok(m.result); } };
+await send('Page.enable'); await send('Runtime.enable');
+await send('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: 2, mobile: W < 900 });
+if (W < 900) await send('Emulation.setTouchEmulationEnabled', { enabled: true });
+await send('Page.navigate', { url: URL_ });
+const ev = async (x) => { const r = await send('Runtime.evaluate', { expression: x, awaitPromise: true, returnByValue: true }); return r.exceptionDetails ? 'EXC ' + JSON.stringify(r.exceptionDetails).slice(0, 400) : r.result.value; };
+for (let i = 0; i < 45 && !(await ev("!!document.querySelector('.nlsr .nlsr-h')")); i++) await sleep(1000);
+const shot = async (n) => { const r = await send('Page.captureScreenshot', { format: 'jpeg', quality: 72 }); await fs.writeFile(path.join(OUT, n + '.jpg'), Buffer.from(r.data, 'base64')); };
+const tap = async (x, y) => { if (W < 900) { await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y }] }); await sleep(60); await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); } else { await send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', clickCount: 1 }); await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 }); } };
+const GEO = `(()=>{const e=document.querySelector('.nlsr'); if(!e) return 'no showroom'; const R=(s)=>{const x=e.querySelector(s); if(!x||x.hidden||!x.offsetParent) return null; const r=x.getBoundingClientRect(); return [Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]};
+ const st=R('.nlsr-stage'), cd=R('.nlsr-card'); let cover=null; if(st&&cd){const top=Math.max(st[1],cd[1]), bot=Math.min(st[1]+st[3],cd[1]+cd[3]); cover=Math.max(0,bot-top)/st[3];}
+ const c=e.querySelector('.nlsr-card'); const btns=c?[...c.querySelectorAll('button,a')].filter(b=>b.offsetParent).map(b=>(b.innerText||b.getAttribute('aria-label')||'').trim().split(String.fromCharCode(10)).join(' ').slice(0,40)+'@'+Math.round(b.getBoundingClientRect().width)+'x'+Math.round(b.getBoundingClientRect().height)):[];
+ return JSON.stringify({lang:e.lang,dir:e.dir,vh:innerHeight,stage:st,card:cd,cover:cover==null?null:+cover.toFixed(2),cardPos:c?getComputedStyle(c).position:null,cardBtns:btns,hint:(e.querySelector('.nlsr-hint')||{}).innerText,back:R('.nlsr-back')||R('[data-act=all]'),map:R('.nlsr-map')})})()`;
+await ev(`(function(){var s=document.querySelector('.nlsr'); window.scrollTo(0, s.getBoundingClientRect().top+scrollY-60)})()`); await sleep(2500);
+console.log('S1', await ev(GEO)); await shot('1-landing');
+await ev(`document.querySelector('.nlsr-h[data-tower="B"]').click()`); await sleep(2500);
+console.log('S2', await ev(GEO)); await shot('2-tower');
+const st = JSON.parse(await ev(GEO)).stage; const x = st[0] + st[2] / 2, y = st[1] + st[3] * 0.42; await tap(x, y); await sleep(2500);
+console.log('S3', await ev(GEO)); await shot('3-floor-card');
+
+const vis = (root) => ev(`(()=>{const r=document.querySelector('${root}'); if(!r) return 'none:${root}'; return JSON.stringify([...r.querySelectorAll('button,a,[role=tab]')].filter(b=>b.offsetParent).map(b=>(b.innerText||b.getAttribute('aria-label')||'').trim().split(String.fromCharCode(10)).join(' ').slice(0,36)+(b.className&&String(b.className).includes('pulse')?' [PULSE]':'')).filter(Boolean).slice(0,40))})()`);
+console.log('pulsing now:', await ev(`JSON.stringify([...document.querySelectorAll('.nlsr-pulse,[class*=pulse]')].filter(b=>b.offsetParent).map(b=>(b.innerText||b.getAttribute('aria-label')||b.className).toString().trim().slice(0,40)))`));
+console.log('map under showroom:', await ev(`(()=>{const m=document.querySelector('.nlsr-map'); if(!m) return 'no map'; const r=m.getBoundingClientRect(); return JSON.stringify({rect:[Math.round(r.top),Math.round(r.height)],labels:[...m.querySelectorAll('*')].map(x=>x.childElementCount?'':x.textContent.trim()).filter(s=>s&&s.length<30).slice(0,30),svgPaths:m.querySelectorAll('path,polygon,line,circle').length, cone:[...m.querySelectorAll('[fill],[stroke]')].map(x=>x.getAttribute('fill')||'').filter(f=>/^#/.test(f)).slice(0,8)})})()`));
+await ev(`(function(){var s=document.querySelector('.nlsr-map'); s&&window.scrollTo(0, s.getBoundingClientRect().top+scrollY-300)})()`); await sleep(1500); await shot('8-map');
+await ev(`document.querySelector('.nlsr-card .nlsr-go').click()`); await sleep(3500);
+console.log('after Step inside, cockpit:', await vis('.nlck')); await shot('9-apartment-screen');
+const clickTxt = (re) => ev(`(()=>{const b=[...document.querySelectorAll('.nlck button,.nlck a,.nlck [role=tab]')].filter(b=>b.offsetParent).find(x=>${re}.test((x.innerText||x.getAttribute('aria-label')||'').trim())); if(!b) return 'no match'; b.click(); return 'clicked '+(b.innerText||'').trim().slice(0,30)})()`);
+console.log(await clickTxt('/^The view|view$/i')); await sleep(3500); console.log('view screen:', await vis('.nlck')); await shot('10-view');
+console.log(await clickTxt('/details/i')); await sleep(3000); console.log('details screen:', await vis('.nlck')); console.log('detail labels:', await ev(`JSON.stringify([...document.querySelectorAll('.nlck [class*=det] *,.nlck [class*=lab] *,.nlck [class*=tag]')].map(x=>x.childElementCount?'':x.textContent.trim()).filter(s=>s&&s.length<40).slice(0,20))`)); await shot('11-view-with-details');
+console.log('errors:', await ev('JSON.stringify((window.__errs||[]).slice(0,5))'));
+ws.close(); ch.kill(); await sleep(300); await fs.rm(dir, { recursive: true, force: true }).catch(() => {});
