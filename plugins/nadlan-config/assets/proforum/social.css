@@ -1,0 +1,100 @@
+/* nad-lan professionals' forum: the social layer (inc/pro-forum-social.php + social.js), Claude Design board 11
+   "עבודה שסיימתי, פרגון וריאקציות". The forum's identity: ink #101820, sea #2F6F86, raspberry #B0144F, confirmed #1B4D33 on
+   #EAF4EF, hairline #D5DBDF, Rubik for headings and numbers, Assistant for text. The theme forces colours on headings, buttons
+   and links with !important, so every colour here that must win on a button, a link or a dark surface carries !important too. */
+
+.nlfs-sr,.nlf .nlfs-sr{position:absolute !important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.nlf .nlfs-msg{font-size:14px;font-weight:700;color:#1B4D33;margin:0}
+.nlf .nlfs-msg:empty{display:none}
+.nlf .nlfs-msg.is-err{color:#B3261E}
+
+/* reactions: the button, the five pills (board 11), the stacked dots with the total */
+.nlf .nlfs-rx{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;position:relative}
+.nlf .nlfs-rx.is-open{flex:1 1 100%}
+.nlf .nlfs-rx-btn{color:#8C0F3E !important;font-family:var(--hf)}
+.nlf .nlfs-rx-btn.is-on{background:var(--nlfs-bg) !important;color:var(--nlfs-fg) !important;border-color:var(--nlfs-bg) !important}
+.nlf .nlfs-sum{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#3A4650}
+.nlf .nlfs-dots{display:flex}
+.nlf .nlfs-dots i{width:22px;height:22px;border-radius:50%;border:2px solid #FFFFFF;display:block;margin-inline-start:-7px}
+.nlf .nlfs-dots i:first-child{margin-inline-start:0}
+.nlf .nlfs-total{font-family:var(--hf);font-weight:500}
+.nlf .nlfs-pick{flex:0 1 auto;align-self:flex-start;display:flex;flex-wrap:wrap;gap:4px;max-width:100%;background:#FFFFFF;border:1px solid #D5DBDF;border-radius:26px;padding:6px;box-shadow:0 8px 20px rgba(16,24,32,.14)}
+.nlf .nlfs-pick[hidden]{display:none !important}
+.nlf .nlfs-pick button{min-height:44px;padding:0 12px;border-radius:999px;border:0 !important;background:var(--nlfs-bg) !important;color:var(--nlfs-fg) !important;font-family:var(--tf);font-weight:700;font-size:13px;line-height:1.1;white-space:nowrap}
+.nlf .nlfs-pick button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--nlfs-fg)}
+.nlf .nlfs-unh{font-size:13px}
+.nlf .nlfs-unh.is-on{background:#F2F4F5 !important;color:#101820 !important;border-color:#101820 !important;font-weight:700}
+.nlf .nlfs-acts-note{font-size:12px;color:#5B6770}
+
+/* the name line: a member's name opens his sheet; the response badge only when earned */
+.nlf .nlfs-who{cursor:pointer;text-decoration:underline;text-decoration-color:#D5DBDF;text-underline-offset:3px}
+.nlf .nlfs-who:hover{text-decoration-color:#101820}
+.nlf .nlfs-badge{display:inline-flex;align-items:center;gap:5px;align-self:flex-start;margin-top:3px;background:#EAF4EF;color:#1B4D33;font-weight:700;font-size:12.5px;line-height:1.2;padding:3px 8px;border-radius:6px}
+.nlf .nlfs-badge-lg{font-size:13.5px;padding:5px 10px}
+
+/* "עבדו יחד" under a finished work (board 11 chips in the member's trade tint) */
+.nlf .nlfs-team{border-top:1px solid #D5DBDF;border-bottom:1px solid #D5DBDF;padding:10px 0;display:flex;flex-direction:column;gap:8px}
+.nlf .nlfs-team-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.nlf .nlfs-team-t{color:#3A4650}
+.nlf .nlfs-chip{display:inline-flex;align-items:center;background:var(--nlfs-bg);color:var(--nlfs-fg);border-radius:999px;font-weight:700;font-size:13px}
+.nlf .nlfs-chip-b{min-height:36px;padding:4px 9px;border:0 !important;background:transparent !important;color:var(--nlfs-fg) !important;font-family:var(--tf);font-weight:700;font-size:13px;border-radius:999px}
+.nlf .nlfs-chip-x{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:0 !important;background:transparent !important;color:inherit !important;border-radius:50%;padding:0;margin-inline-start:-6px}
+.nlf .nlfs-team-add{min-height:36px;padding:0 12px;border-radius:999px;border:1px dashed #2F6F86 !important;background:#FFFFFF !important;color:#2F6F86 !important;font-weight:700;font-size:13px}
+.nlf .nlfs-find{display:flex;flex-direction:column;gap:6px}
+.nlf .nlfs-find label{font-size:14px;font-weight:700;color:#3A4650}
+.nlf .nlfs-find input{min-height:48px;border-radius:12px;border:1px solid #AAB4BC;background:#FFFFFF;padding:0 14px;color:#101820;width:100%}
+.nlf .nlfs-find input:focus{border:2px solid #2F6F86}
+.nlf .nlfs-found{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.nlf .nlfs-found-b{width:100%;min-height:44px;text-align:right;padding:0 12px;border-radius:10px;border:1px solid #D5DBDF !important;background:#FFFFFF !important;color:#101820 !important;font-weight:700;font-size:15px}
+
+/* פרגון: board 11's dark card */
+.nlf .nlfs-kudo{background:#101820;color:#FFFFFF;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlfs-kudo[data-hidden]{opacity:.55}
+.nlf .nlfs-kudo-tag{align-self:flex-start;background:#FF5C93;color:#101820;font-family:var(--hf);font-weight:800;font-size:13px;line-height:1.3;padding:4px 10px;border-radius:6px}
+.nlf .nlfs-kudo-q{margin:0;font-family:var(--hf);font-weight:700;font-size:19px;line-height:1.35;color:#FFFFFF !important}
+.nlf .nlfs-kudo-by{font-size:14px;line-height:1.45;color:#DCE3E8}
+.nlf .nlfs-kudo-b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlf .nlfs-kudo-wa,.nlf .nlfs-kudo-alt{min-height:48px;border-radius:12px;font-family:var(--hf);font-weight:700;font-size:15px;line-height:1.15;display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:4px 8px;text-decoration:none !important}
+.nlf .nlfs-kudo-wa{background:#FFFFFF !important;color:#101820 !important;border:0 !important}
+.nlf .nlfs-kudo-alt{background:#101820 !important;color:#FFFFFF !important;border:2px solid #FFFFFF !important}
+.nlf .nlfs-kudo :focus-visible{outline-color:#FF5C93 !important}
+
+/* skills (board 11): confirm in one tap, the count from 1 */
+.nlf .nlfs-skills{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlfs-h{margin:0 !important;padding:0 !important;font-family:var(--hf) !important;font-weight:700;font-size:17px;line-height:1.3;color:#101820 !important;background:none !important}
+.nlf .nlfs-sub{font-size:14px;line-height:1.45;color:#3A4650}
+.nlf .nlfs-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nlf .nlfs-skill{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border-radius:999px;border:1px solid #D5DBDF !important;background:#FFFFFF !important;color:#101820 !important;font-family:var(--tf);font-size:14px;font-weight:400;white-space:nowrap}
+.nlf .nlfs-skill.is-on{border:2px solid #1B4D33 !important;background:#EAF4EF !important;color:#1B4D33 !important;font-weight:700}
+.nlf .nlfs-skill.is-own{padding-inline-end:0}
+.nlf .nlfs-skill em{font-style:normal;font-size:12px;color:#8C0F3E;font-weight:700}
+.nlf .nlfs-skill-add{display:flex;gap:8px}
+.nlf .nlfs-skill-add input{flex-grow:1;min-width:0;min-height:48px;border-radius:12px;border:1px solid #AAB4BC;background:#FFFFFF;padding:0 14px;color:#101820}
+.nlf .nlfs-skill-add input:focus{border:2px solid #2F6F86}
+
+/* the member's block inside the professional card window, and the call to write a פרגון */
+.nlf .nlfs-mb{padding:12px 16px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #D5DBDF}
+.nlf .nlfs-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--hf);font-weight:700;font-size:16px;color:#101820}
+.nlf .nlfs-cta span{flex:1 1 180px}
+.nlf .nlfs-all{align-self:flex-start}
+
+/* notices on the forum home */
+.nlf .nlfs-notes{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.nlf .nlfs-notes-h{margin:6px 0 0 !important;font-family:var(--hf) !important;font-weight:700;font-size:15px;color:#101820 !important;background:none !important}
+.nlf .nlfs-notes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;width:100%}
+.nlf .nlfs-notes li{background:#FBE9F0;border-radius:10px;padding:4px 12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:14px;color:#101820}
+.nlf .nlfs-notes li>span{flex:1 1 200px}
+.nlf .nlfs-notes li a{color:#8C0F3E !important;font-weight:700}
+.nlf .nlfs-mine{padding:0}
+
+/* the member sheet */
+dialog.nlf.nlfs-sheet .nlfs-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:12px}
+dialog.nlf.nlfs-sheet .nlfs-kform{padding-top:14px}
+dialog.nlf.nlfs-sheet>[data-nlfs-sheetmsg]{padding:10px 16px 16px}
+.nlf .nlfs-head{display:flex;align-items:center;gap:12px}
+.nlf .nlfs-head-c{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nlf .nlfs-head-n{font-family:var(--hf);font-weight:700;font-size:18px;color:#101820}
+.nlf .nlfs-card-link{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:#2F6F86 !important;text-decoration:none !important}
+.nlf .nlfs-kform textarea{min-height:96px}
+
+@media (prefers-reduced-motion:reduce){.nlf .nlfs-pick{transition:none !important}}

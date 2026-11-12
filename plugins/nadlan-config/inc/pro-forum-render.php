@@ -134,6 +134,7 @@ function nlf_render_home() {
 		<h1 class="nlf-h1"><?php echo esc_html( nlf_home_h1() ); ?></h1>
 		<p class="nlf-lead">שואלים, עונים ופונים ישר לבעלי המקצוע שהצטרפו: קבלנים, עורכי דין, שמאים ויועצי משכנתאות.</p>
 		<?php echo nlf_member_bar( $me ); // phpcs:ignore -- escaped inside ?>
+		<?php echo apply_filters( 'nlf_home_notices', '', $me ); // phpcs:ignore -- HOOK (social module, inc/pro-forum-social.php): the member's own notices, escaped there ?>
 	</header>
 	<section class="nlf-start" aria-label="כתיבת הודעה">
 		<button type="button" class="nlf-askbtn" data-nlf-compose><span class="nlf-plus" aria-hidden="true">+</span><span>מה אתם צריכים? כתבו שאלה או בקשה</span></button>
@@ -245,7 +246,7 @@ function nlf_render_topic( $t ) {
 		<div class="nlf-meta"><?php echo nlf_cat_tag( $t['cat'] ) . nlf_kind_tag( $t['kind'] ); // phpcs:ignore ?></div>
 		<h1 class="nlf-h1 nlf-h1-t" id="nlf-title"><?php echo esc_html( $t['title'] ); ?></h1>
 		<div class="nlf-arow"><?php echo nlf_avatar( $op ); // phpcs:ignore ?>
-			<div class="nlf-acol"><?php echo nlf_author_line( $op ); // phpcs:ignore ?>
+			<div class="nlf-acol"><?php echo nlf_author_line( $op ) . apply_filters( 'nlf_name_extra', '', $mem[ (int) $t['member_id'] ] ?? null ); // phpcs:ignore -- HOOK (social module): badge after the name, escaped there ?>
 				<span class="nlf-sub"><?php echo esc_html( implode( ' · ', array_filter( array( $t['city'], wp_date( 'j.n.Y H:i', nlf_ts( $t['created_at'] ) ), nlf_count_words( $t['view_count'], 'צפייה אחת', 'צפיות' ) ) ) ) ); ?></span>
 			</div>
 		</div>
@@ -254,9 +255,11 @@ function nlf_render_topic( $t ) {
 		<?php endif; ?>
 		<?php if ( 'pending' === $t['status'] ) : ?><p class="nlf-note">ההודעה תעלה אחרי בדיקה קצרה</p><?php elseif ( 'live' !== $t['status'] ) : ?><p class="nlf-note">ההודעה מוסתרת עד בדיקה</p><?php endif; ?>
 		<?php if ( '' !== trim( $t['body'] ) ) : ?><p class="nlf-body nlf-body-op"><?php echo nlf_body_html( $t['body'] ); // phpcs:ignore -- escaped ?></p><?php endif; ?>
+		<?php echo apply_filters( 'nlf_topic_after_body', '', $t, $me ); // phpcs:ignore -- HOOK (social module): "עבדו יחד" chips of a finished work, escaped there ?>
 		<?php if ( 'live' === $t['status'] ) : $on = isset( $mine_thanks[ 'topic' . (int) $t['id'] ] ); ?>
 		<div class="nlf-acts">
-			<button type="button" class="nlf-pill nlf-thank<?php echo $on ? ' is-on' : ''; ?>" data-nlf-thank="topic" data-id="<?php echo (int) $t['id']; ?>" data-label="<?php echo esc_attr( $topic_thanks_label ); ?>" aria-pressed="<?php echo $on ? 'true' : 'false'; ?>"><?php echo nlf_svg( 'heart' ); // phpcs:ignore ?><span><?php echo esc_html( $topic_thanks_label . ( (int) $t['thanks_count'] > 0 ? ' · ' . (int) $t['thanks_count'] : '' ) ); ?></span></button>
+			<?php // HOOK (social module): the five reactions replace the single thanks button; without the module the button stays
+			echo apply_filters( 'nlf_topic_actions', '<button type="button" class="nlf-pill nlf-thank' . ( $on ? ' is-on' : '' ) . '" data-nlf-thank="topic" data-id="' . (int) $t['id'] . '" data-label="' . esc_attr( $topic_thanks_label ) . '" aria-pressed="' . ( $on ? 'true' : 'false' ) . '">' . nlf_svg( 'heart' ) . '<span>' . esc_html( $topic_thanks_label . ( (int) $t['thanks_count'] > 0 ? ' · ' . (int) $t['thanks_count'] : '' ) ) . '</span></button>', $t, $me ); // phpcs:ignore -- escaped parts ?>
 			<button type="button" class="nlf-pill nlf-mute nlf-push" data-nlf-report="topic" data-id="<?php echo (int) $t['id']; ?>">דיווח</button>
 		</div>
 		<?php endif; ?>
@@ -271,7 +274,7 @@ function nlf_render_topic( $t ) {
 			$on = isset( $mine_thanks[ 'reply' . (int) $r['id'] ] ); ?>
 		<article class="nlf-reply<?php echo $is_solved ? ' is-solved' : ''; ?>" id="r<?php echo (int) $r['id']; ?>" data-id="<?php echo (int) $r['id']; ?>" data-name="<?php echo esc_attr( $a['name'] ); ?>" data-text="<?php echo esc_attr( nlf_excerpt( $r['body'], 120 ) ); ?>">
 			<?php if ( $is_solved ) : ?><span class="nlf-chip-s nlf-ok nlf-solved-chip"><?php echo nlf_svg( 'check' ); // phpcs:ignore ?>התשובה שעזרה</span><?php endif; ?>
-			<div class="nlf-arow"><?php echo nlf_avatar( $a, true ); // phpcs:ignore ?><div class="nlf-acol"><?php echo nlf_author_line( $a ); // phpcs:ignore ?></div><?php echo nlf_when( $r['created_at'] ); // phpcs:ignore ?></div>
+			<div class="nlf-arow"><?php echo nlf_avatar( $a, true ); // phpcs:ignore ?><div class="nlf-acol"><?php echo nlf_author_line( $a ) . apply_filters( 'nlf_name_extra', '', $mem[ (int) $r['member_id'] ] ?? null ); // phpcs:ignore -- HOOK (social module) ?></div><?php echo nlf_when( $r['created_at'] ); // phpcs:ignore ?></div>
 			<?php if ( (int) $r['quote_id'] > 0 && isset( $byid[ (int) $r['quote_id'] ] ) && 'live' === $byid[ (int) $r['quote_id'] ]['status'] ) :
 				$qr = $byid[ (int) $r['quote_id'] ]; $qa = nlf_author( $mem[ (int) $qr['member_id'] ] ?? null ); ?>
 				<blockquote class="nlf-quote"><a href="#r<?php echo (int) $qr['id']; ?>"><?php echo esc_html( $qa['name'] . ' כתב/ה:' ); ?></a> "<?php echo esc_html( nlf_excerpt( $qr['body'], 140 ) ); ?>"</blockquote>
@@ -280,7 +283,8 @@ function nlf_render_topic( $t ) {
 			<?php if ( 'pending' === $r['status'] ) : ?><p class="nlf-note">ההודעה תעלה אחרי בדיקה קצרה</p><?php elseif ( 'hidden' === $r['status'] ) : ?><p class="nlf-note">ההודעה מוסתרת עד בדיקה</p><?php endif; ?>
 			<?php if ( 'live' === $r['status'] ) : ?>
 			<div class="nlf-acts">
-				<button type="button" class="nlf-pill nlf-thank<?php echo $on ? ' is-on' : ''; ?>" data-nlf-thank="reply" data-id="<?php echo (int) $r['id']; ?>" data-label="תודה" aria-pressed="<?php echo $on ? 'true' : 'false'; ?>"><span><?php echo esc_html( 'תודה' . ( (int) $r['thanks_count'] > 0 ? ' · ' . (int) $r['thanks_count'] : '' ) ); ?></span></button>
+				<?php // HOOK (social module): the five reactions and the private "לא עזר לי" replace the single thanks button
+				echo apply_filters( 'nlf_reply_actions', '<button type="button" class="nlf-pill nlf-thank' . ( $on ? ' is-on' : '' ) . '" data-nlf-thank="reply" data-id="' . (int) $r['id'] . '" data-label="תודה" aria-pressed="' . ( $on ? 'true' : 'false' ) . '"><span>' . esc_html( 'תודה' . ( (int) $r['thanks_count'] > 0 ? ' · ' . (int) $r['thanks_count'] : '' ) ) . '</span></button>', $r, $me, $t ); // phpcs:ignore -- escaped parts ?>
 				<button type="button" class="nlf-pill" data-nlf-quote>ציטוט</button>
 				<?php if ( $is_author && (int) $r['member_id'] !== (int) $me['id'] ) : ?><button type="button" class="nlf-pill nlf-solve" data-nlf-solve="<?php echo (int) $r['id']; ?>" aria-pressed="<?php echo $is_solved ? 'true' : 'false'; ?>"><?php echo $is_solved ? 'ביטול הסימון' : 'זו התשובה שעזרה'; ?></button><?php endif; ?>
 				<button type="button" class="nlf-pill nlf-mute nlf-push" data-nlf-report="reply" data-id="<?php echo (int) $r['id']; ?>">דיווח</button>
@@ -367,6 +371,7 @@ function nadlan_forum_card_window( $pro_post_id ) {
 		</div>
 	</form>
 	<?php if ( ! $ans_n && ! $ask_n ) : ?><a class="nlf-more" href="<?php echo esc_url( home_url( '/forum/' ) ); ?>">לפורום נדל"ן ←</a><?php endif; ?>
+	<?php echo apply_filters( 'nlf_card_member_block', '', $linked, $pro ); // phpcs:ignore -- HOOK (social module): kudos, skills and the response badge of the JOINED member, escaped there ?>
 	<?php echo nlf_phone_block( $a ); // phpcs:ignore ?>
 </section>
 	<?php
@@ -435,49 +440,86 @@ function nlf_pro_plural( $pro ) {
 	return '';
 }
 
-/** one discussion inside the card's forum: what it is, who opened it, the last answer (1.72.673) */
-function nlf_embed_item( $t, $mem, $last ) {
-	$op  = nlf_author( $mem[ (int) $t['member_id'] ] ?? null );
-	$url = home_url( '/forum/' . (int) $t['id'] . '/' );
-	$h   = '<article class="nlf-mini nlf-emb-item"><div class="nlf-meta">' . nlf_cat_tag( $t['cat'] ) . nlf_kind_tag( $t['kind'] )
-		. ( '' !== $t['city'] ? '<span>' . esc_html( $t['city'] ) . '</span>' : '' ) . '<span class="nlf-when">' . nlf_when( $t['last_at'] ) . '</span></div>'
-		. '<a class="nlf-mini-t" href="' . esc_url( $url ) . '">' . esc_html( $t['title'] ) . '</a>'
-		. ( '' !== trim( $t['body'] ) ? '<p>' . esc_html( nlf_excerpt( $t['body'], 150 ) ) . '</p>' : '' )
-		. '<div class="nlf-emb-who">' . nlf_avatar( $op ) . '<span>' . esc_html( $op['name'] . ( '' !== $op['label'] ? ' · ' . $op['label'] : '' ) ) . '</span></div>';
-	if ( $last ) {
-		$la = nlf_author( $mem[ (int) $last['member_id'] ] ?? null );
-		$h .= '<a class="nlf-emb-last" href="' . esc_url( $url . '#r' . (int) $last['id'] ) . '">' . nlf_avatar( $la ) . '<span><b>' . esc_html( $la['name'] ) . ':</b> ' . esc_html( nlf_excerpt( $last['body'], 120 ) ) . '</span></a>';
+/** the tint of a member in the card's forum: a linked card keeps its profession tint, a chosen trade gets its group's (1.72.674) */
+function nlf_emb_author( $m ) {
+	$a = nlf_author( $m );
+	if ( $m && ! $a['pro'] && 'pro' === (string) $m['role_label'] ) {
+		$tr = nlf_trade( (string) ( $m['trade'] ?? '' ) );
+		$g  = array( 'build' => array( '#DCE6F2', '#1D3B66' ), 'design' => array( '#E7E1FA', '#43308F' ), 'plan' => array( '#DCEFE3', '#1B4D33' ),
+			'systems' => array( '#DDE3FB', '#1E2F8F' ), 'deal' => array( '#D9EEF0', '#0E4A57' ), 'living' => array( '#E3E6E8', '#22303A' ) );
+		if ( $tr && isset( $g[ $tr['group'] ] ) ) { $a['tint'] = $g[ $tr['group'] ]; }
 	}
-	$foot = array();
-	if ( (int) $t['reply_count'] > 0 ) { $foot[] = '<span>' . esc_html( nlf_count_words( $t['reply_count'], 'תשובה אחת', 'תשובות' ) ) . '</span>'; }
-	if ( (int) $t['solved_reply_id'] > 0 ) { $foot[] = '<span class="nlf-chip-s nlf-ok">' . nlf_svg( 'check' ) . 'יש תשובה שעזרה</span>'; }
-	if ( 0 === (int) $t['reply_count'] ) { $foot[] = '<span class="nlf-chip-s nlf-new">מחכה לתשובה ראשונה</span>'; }
-	$foot[] = '<a class="nlf-emb-go" href="' . esc_url( $url ) . '">לדיון ←</a>';
-	return $h . '<div class="nlf-foot">' . implode( '', $foot ) . '</div></article>';
+	return $a;
+}
+
+function nlf_emb_meta( $t ) {
+	$cats  = nlf_categories();
+	$kinds = nlf_kinds();
+	$first = 'question' !== $t['kind'] && isset( $kinds[ $t['kind'] ] ) ? $kinds[ $t['kind'] ] : ( isset( $cats[ $t['cat'] ] ) ? $cats[ $t['cat'] ][0] : '' );
+	return array_filter( array( $first, (string) $t['city'] ) );
+}
+
+/** the leading discussion of a tab, shown as a conversation: the opening message and the latest answer (Design board 15) */
+function nlf_embed_feature( $t, $mem, $last ) {
+	$op    = nlf_emb_author( $mem[ (int) $t['member_id'] ] ?? null );
+	$url   = home_url( '/forum/' . (int) $t['id'] . '/' );
+	$fresh = time() - nlf_ts( $t['last_at'] ) < HOUR_IN_SECONDS;
+	$kinds = nlf_kinds();
+	$tag   = 'question' !== $t['kind'] && isset( $kinds[ $t['kind'] ] ) ? '<span class="nlf-emb-kind">' . esc_html( $kinds[ $t['kind'] ] ) . '</span>' : nlf_cat_tag( $t['cat'] );
+	$h  = '<article class="nlf-emb-feat"><div class="nlf-emb-meta">' . $tag . ( '' !== $t['city'] ? '<span>' . esc_html( $t['city'] ) . '</span>' : '' )
+		. '<span class="nlf-emb-when' . ( $fresh ? ' is-new' : '' ) . '">' . ( $fresh ? '<span class="nlf-dot" aria-hidden="true"></span>' : '' ) . nlf_when( $t['last_at'] ) . '</span></div>'
+		. '<a class="nlf-emb-title" href="' . esc_url( $url ) . '">' . esc_html( $t['title'] ) . '</a><div class="nlf-emb-talk">';
+	if ( '' !== trim( $t['body'] ) ) {
+		$h .= '<div class="nlf-emb-msg">' . nlf_avatar( $op ) . '<div class="nlf-emb-bub"><span class="nlf-emb-by">' . esc_html( $op['name'] . ( '' !== $op['label'] ? ' · ' . $op['label'] : '' ) ) . '</span>'
+			. '<span>' . esc_html( nlf_excerpt( $t['body'], 130 ) ) . '</span></div></div>';
+	}
+	if ( $last ) {
+		$la = nlf_emb_author( $mem[ (int) $last['member_id'] ] ?? null );
+		$h .= '<a class="nlf-emb-msg is-reply" href="' . esc_url( $url . '#r' . (int) $last['id'] ) . '">' . nlf_avatar( $la ) . '<span class="nlf-emb-bub"><span class="nlf-emb-by">' . esc_html( $la['name'] . ( '' !== $la['label'] ? ' · ' . $la['label'] : '' ) ) . '</span>'
+			. '<span>' . esc_html( nlf_excerpt( $last['body'], 130 ) ) . '</span></span></a>';
+	}
+	$n = (int) $t['reply_count'];
+	return $h . '</div><div class="nlf-emb-act"><span>' . esc_html( $n > 0 ? nlf_count_words( $n, 'תשובה אחת', 'תשובות' ) : 'מחכה לתשובה ראשונה' ) . ( (int) $t['solved_reply_id'] > 0 ? ' · יש תשובה שעזרה' : '' ) . '</span>'
+		. '<a class="nlf-emb-join" href="' . esc_url( $url ) . '">' . ( $n > 0 ? 'להצטרף לדיון' : 'לענות ראשונים' ) . '</a></div></article>';
+}
+
+/** the other discussions of a tab: the count in a tinted square, the title, one line of facts (Design board 15) */
+function nlf_embed_row( $t ) {
+	$cats = nlf_categories();
+	$n    = (int) $t['reply_count'];
+	$sol  = (int) $t['solved_reply_id'] > 0;
+	$tint = $sol ? array( '#EAF4EF', '#1B4D33' ) : ( $n < 1 ? array( '#FBE9F0', '#8C0F3E' ) : ( isset( $cats[ $t['cat'] ] ) ? array( $cats[ $t['cat'] ][1], $cats[ $t['cat'] ][2] ) : array( '#F2F4F5', '#3A4650' ) ) );
+	$box  = $n < 1 ? '<b class="is-word">חדש</b><span>בלי תשובה</span>' : '<b>' . (int) $n . '</b><span>' . ( 1 === $n ? 'תשובה' : 'תשובות' ) . '</span>';
+	$meta = nlf_emb_meta( $t );
+	$ago  = nlf_ago( nlf_ts( $t['last_at'] ), time() );
+	if ( '' !== $ago ) { $meta[] = $ago; }
+	return '<a class="nlf-emb-row" href="' . esc_url( home_url( '/forum/' . (int) $t['id'] . '/' ) ) . '"><span class="nlf-emb-num" style="' . nlf_tint_style( $tint ) . '">' . $box . '</span>'
+		. '<span class="nlf-emb-rt"><span class="nlf-emb-rtitle">' . esc_html( $t['title'] ) . '</span><span class="nlf-emb-rmeta">' . esc_html( implode( ' · ', $meta ) ) . ( $sol ? ' · <b>יש תשובה שעזרה</b>' : '' ) . '</span></span></a>';
 }
 
 /**
- * 1.72.673 (Ben, 12.11.2026: "בכל כרטיס שיהיה embedded forum... לא איזה כפתור בסוף הדף"): the forum itself, right under the
- * card's header on EVERY professional card. Discussions of the card's field, collaborations and open requests, the people who
- * take part, and the ask box. It never presents the card's person as a participant: when he did not join, one line says so.
+ * The forum itself, right under the card's header on EVERY professional card (Ben, 12.11.2026: "בכל כרטיס שיהיה embedded
+ * forum... לא איזה כפתור בסוף הדף"). 1.72.674: rebuilt on Claude Design board 15 (owner: only Claude Design): a dark masthead
+ * with the people who take part, the leading discussion as a conversation, the others as rows, open requests, and the ask box.
+ * It never presents the card's person as a participant: when he did not join, one line under the forum says so.
+ * Every number is counted from the tables; nothing is shown when it is zero.
  */
 function nlf_card_embed( $pro ) {
 	global $wpdb;
 	$pro  = (int) $pro;
 	$cat  = nlf_cat_for_profession( nlf_pro_profession( $pro ) );
 	$cats = nlf_categories();
-	$tt   = nlf_t( 'topics' );
-	$get  = function ( $w, $args, $order ) use ( $wpdb, $tt ) {
-		return (array) $wpdb->get_results( nlf_q( "SELECT * FROM $tt WHERE status = 'live' AND $w ORDER BY $order LIMIT 4", $args ), ARRAY_A );
+	$tt   = nlf_t( 'topics' ); $mt = nlf_t( 'members' );
+	$get  = function ( $w, $args, $order, $n = 4 ) use ( $wpdb, $tt ) {
+		return (array) $wpdb->get_results( nlf_q( "SELECT * FROM $tt WHERE status = 'live' AND $w ORDER BY $order LIMIT " . (int) $n, $args ), ARRAY_A );
 	};
 	$tabs = array();
-	if ( 'general' !== $cat ) { $tabs['t'] = array( $cats[ $cat ][0], $get( 'cat = %s', array( $cat ), 'last_at DESC' ) ); }
-	$tabs['c'] = array( 'שיתופי פעולה', $get( "kind = 'collab'", array(), 'last_at DESC' ) );
-	$tabs['r'] = array( 'בקשות פתוחות', $get( "kind = 'seek' AND status_seek = 'open'", array(), 'created_at DESC' ) );
-	$tabs['n'] = array( 'חדש בפורום', $get( '1 = 1', array(), 'last_at DESC' ) );
+	if ( 'general' !== $cat ) { $tabs['t'] = array( $cats[ $cat ][0], $get( 'cat = %s', array( $cat ), 'last_at DESC' ), nlf_home_url( array( 'c' => $cat ) ) ); }
+	$tabs['c'] = array( 'שיתופי פעולה', $get( "kind = 'collab'", array(), 'last_at DESC' ), home_url( '/forum/' ) );
+	$tabs['n'] = array( 'הכול', $get( '1 = 1', array(), 'last_at DESC' ), home_url( '/forum/' ) );
 	foreach ( $tabs as $k => $x ) { if ( ! $x[1] ) { unset( $tabs[ $k ] ); } }
-	if ( count( $tabs ) > 1 ) { unset( $tabs['n'] ); } // "new" only when nothing else has discussions
-	$ids = array(); $tids = array();
+	$reqs = $get( "kind = 'seek' AND status_seek = 'open'", array(), 'created_at DESC', 2 );
+	$ids  = array(); $tids = array();
 	foreach ( $tabs as $x ) { foreach ( $x[1] as $t ) { $ids[] = (int) $t['member_id']; $tids[ (int) $t['id'] ] = true; } }
 	$last = array();
 	if ( $tids ) {
@@ -487,15 +529,14 @@ function nlf_card_embed( $pro ) {
 			$last[ (int) $r['topic_id'] ] = $r; $ids[] = (int) $r['member_id'];
 		}
 	}
-	$people = (array) $wpdb->get_results( 'SELECT * FROM ' . nlf_t( 'members' ) . " WHERE status = 'ok' AND role_label = 'pro' ORDER BY last_seen DESC LIMIT 8", ARRAY_A );
 	$mem    = nlf_members( $ids );
-	$n_top  = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $tt WHERE status = 'live'" );
-	$n_pro  = (int) $wpdb->get_var( 'SELECT COUNT(*) FROM ' . nlf_t( 'members' ) . " WHERE status = 'ok' AND role_label = 'pro'" );
+	$people = (array) $wpdb->get_results( "SELECT * FROM $mt WHERE status = 'ok' AND role_label = 'pro' ORDER BY last_seen DESC LIMIT 5", ARRAY_A );
+	$n_pro  = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $mt WHERE status = 'ok' AND role_label = 'pro'" );
 	$latest = (string) $wpdb->get_var( "SELECT MAX(last_at) FROM $tt WHERE status = 'live'" );
-	$today  = '' !== $latest && nlf_ts( $latest ) > time() - DAY_IN_SECONDS;
+	$age    = '' !== $latest ? time() - nlf_ts( $latest ) : PHP_INT_MAX;
+	$live   = $age < HOUR_IN_SECONDS ? 'פעיל עכשיו' : ( $age < DAY_IN_SECONDS ? 'פעיל היום' : '' );
 	$pl     = nlf_pro_plural( $pro );
-	$title  = '' !== $pl ? 'פורום ' . $pl . ' ובעלי מקצוע' : 'פורום בעלי מקצוע';
-	$stats  = array_filter( array( nlf_count_words( $n_top, 'דיון אחד', 'דיונים' ), nlf_count_words( $n_pro, 'בעל מקצוע אחד', 'בעלי מקצוע בפורום' ) ) );
+	$title  = '' !== $pl ? $pl . ' מדברים כאן' : 'בעלי מקצוע מדברים כאן';
 	$joined = nlf_pro_member( $pro );
 	$person = function_exists( 'nadlan_prof_person_name' ) ? nadlan_prof_person_name( $pro ) : get_the_title( $pro );
 	$label  = nlf_pro_label( $pro );
@@ -503,43 +544,55 @@ function nlf_card_embed( $pro ) {
 	ob_start();
 	?>
 <section class="nlf nlf-win nlf-emb" dir="rtl" aria-labelledby="<?php echo esc_attr( $uid ); ?>-h" data-pro="0" data-pro-name="" data-cat="<?php echo esc_attr( $cat ); ?>">
-	<div class="nlf-win-h"><?php echo nlf_svg( 'chat' ); // phpcs:ignore ?><h2 class="nlf-h2" id="<?php echo esc_attr( $uid ); ?>-h"><?php echo esc_html( $title ); ?></h2><?php if ( $today ) : ?><span class="nlf-today"><span class="nlf-dot" aria-hidden="true"></span>פעיל היום</span><?php endif; ?></div>
-	<div class="nlf-emb-lead">
-		<p>שואלים, מציעים שיתופי פעולה ומוצאים בעל מקצוע. בעלי המקצוע עונים כאן בעצמם, ומכל דיון אפשר לפתוח שיחת וידאו בלחיצה.</p>
-		<?php if ( $stats ) : ?><span class="nlf-sub"><?php echo esc_html( implode( ' · ', $stats ) ); ?></span><?php endif; ?>
-	</div>
-	<?php if ( $tabs ) : ?>
-	<div class="nlf-tabs" role="tablist" aria-label="הדיונים בפורום">
-		<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>
-		<button type="button" role="tab" id="<?php echo esc_attr( $uid . $k ); ?>-t" aria-controls="<?php echo esc_attr( $uid . $k ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>"><?php echo esc_html( $tab[0] ); ?></button>
-		<?php $first = false; endforeach; ?>
-	</div>
-	<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>
-	<div class="nlf-panel" role="tabpanel" id="<?php echo esc_attr( $uid . $k ); ?>" aria-labelledby="<?php echo esc_attr( $uid . $k ); ?>-t"<?php echo $first ? '' : ' hidden'; ?>>
-		<?php foreach ( $tab[1] as $t ) { echo nlf_embed_item( $t, $mem, $last[ (int) $t['id'] ] ?? null ); } // phpcs:ignore -- escaped inside ?>
-		<a class="nlf-more" href="<?php echo esc_url( 'r' === $k ? nlf_home_url( array( 'v' => 'requests' ) ) : ( 't' === $k ? nlf_home_url( array( 'c' => $cat ) ) : home_url( '/forum/' ) ) ); ?>">לכל הדיונים ←</a>
-	</div>
-	<?php $first = false; endforeach; ?>
-	<?php else : ?>
-	<div class="nlf-panel"><p class="nlf-empty-s">עוד אין דיונים. כתבו את הראשון.</p></div>
-	<?php endif; ?>
-	<?php if ( $people ) : ?>
-	<div class="nlf-emb-people" aria-label="בעלי מקצוע בפורום">
-		<span class="nlf-label">בעלי מקצוע שכבר בפורום</span>
-		<ul><?php foreach ( $people as $p ) : $a = nlf_author( $p ); ?><li><?php echo nlf_avatar( $a ); // phpcs:ignore ?><span><b><?php echo esc_html( $a['name'] ); ?></b><?php echo '' !== $a['label'] ? '<i>' . esc_html( $a['label'] ) . '</i>' : ''; ?></span></li><?php endforeach; ?></ul>
-	</div>
-	<?php endif; ?>
-	<form class="nlf-win-ask" data-nlf-ask novalidate>
-		<label for="<?php echo esc_attr( $uid ); ?>-ask" class="nlf-label"><?php echo esc_html( 'שאלו את ' . nlf_pro_plural_phrase( $pro ) . ' בפורום' ); ?></label>
-		<div class="nlf-replyrow"><input id="<?php echo esc_attr( $uid ); ?>-ask" type="text" name="q" maxlength="140" placeholder="היי, אני מחפש..."><button type="submit" class="nlf-btn nlf-btn-hot">שליחה</button></div>
-		<div class="nlf-quick">
-			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#DCE6F2', '#1D3B66' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="seek" data-cat="<?php echo esc_attr( $cat ); ?>"><?php echo esc_html( 'מחפש ' . $label ); ?></button>
-			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#FBE9F0', '#8C0F3E' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="collab" data-cat="<?php echo esc_attr( $cat ); ?>">מציע שיתוף פעולה</button>
-			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#DCEFE3', '#1B4D33' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="question" data-cat="<?php echo esc_attr( $cat ); ?>">שאלה מקצועית</button>
+	<div class="nlf-emb-mast">
+		<div class="nlf-emb-top">
+			<div class="nlf-emb-hd"><span class="nlf-emb-kick">הפורום של נדל"ן</span><h2 class="nlf-emb-h" id="<?php echo esc_attr( $uid ); ?>-h"><?php echo esc_html( $title ); ?></h2></div>
+			<?php if ( '' !== $live ) : ?><span class="nlf-emb-live"><span aria-hidden="true"></span><?php echo esc_html( $live ); ?></span><?php endif; ?>
 		</div>
+		<?php if ( $people ) : ?>
+		<div class="nlf-emb-crowd">
+			<div class="nlf-emb-stack" aria-hidden="true"><?php foreach ( $people as $p ) { echo nlf_avatar( nlf_emb_author( $p ) ); } // phpcs:ignore ?><?php if ( $n_pro > count( $people ) ) : ?><span class="nlf-av nlf-emb-more">+<?php echo (int) ( $n_pro - count( $people ) ); ?></span><?php endif; ?></div>
+			<span><?php echo esc_html( ( 1 === $n_pro ? 'בעל מקצוע אחד עונה' : number_format( $n_pro ) . ' בעלי מקצוע עונים' ) . ' כאן בעצמם, ומכל דיון אפשר לעבור לשיחת וידאו' ); ?></span>
+		</div>
+		<?php endif; ?>
+		<?php if ( count( $tabs ) > 1 ) : ?>
+		<div class="nlf-tabs" role="tablist" aria-label="הדיונים בפורום">
+			<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>
+			<button type="button" role="tab" id="<?php echo esc_attr( $uid . $k ); ?>-t" aria-controls="<?php echo esc_attr( $uid . $k ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>"><?php echo esc_html( $tab[0] ); ?></button>
+			<?php $first = false; endforeach; ?>
+		</div>
+		<?php endif; ?>
+	</div>
+	<?php if ( $tabs ) : $first = true; foreach ( $tabs as $k => $tab ) : ?>
+	<div class="nlf-emb-panel" role="tabpanel" id="<?php echo esc_attr( $uid . $k ); ?>" aria-labelledby="<?php echo esc_attr( $uid . $k ); ?>-t"<?php echo $first ? '' : ' hidden'; ?>>
+		<?php foreach ( $tab[1] as $i => $t ) { echo 0 === $i ? nlf_embed_feature( $t, $mem, $last[ (int) $t['id'] ] ?? null ) : nlf_embed_row( $t ); } // phpcs:ignore -- escaped inside ?>
+		<a class="nlf-emb-all" href="<?php echo esc_url( $tab[2] ); ?>">לכל הדיונים ←</a>
+	</div>
+	<?php $first = false; endforeach; else : ?>
+	<div class="nlf-emb-panel"><p class="nlf-emb-none">עוד אין דיונים. כתבו את הראשון.</p></div>
+	<?php endif; ?>
+	<?php if ( $reqs ) : ?>
+	<div class="nlf-emb-reqs">
+		<div class="nlf-emb-reqh"><h3>בקשות פתוחות, מחכות להצעה</h3><a href="<?php echo esc_url( nlf_home_url( array( 'v' => 'requests' ) ) ); ?>">לכל הבקשות</a></div>
+		<div class="nlf-emb-grid"><?php foreach ( $reqs as $t ) : $n = (int) $t['reply_count']; $ct = isset( $cats[ $t['cat'] ] ) ? $cats[ $t['cat'] ] : $cats['general']; ?>
+			<a class="nlf-emb-req" href="<?php echo esc_url( home_url( '/forum/' . (int) $t['id'] . '/' ) ); ?>"><span class="nlf-emb-reqk" style="color:<?php echo esc_attr( $ct[2] ); ?>"><?php echo esc_html( implode( ' · ', array_filter( array( $ct[0], (string) $t['city'] ) ) ) ); ?></span>
+				<span class="nlf-emb-reqt"><?php echo esc_html( nlf_excerpt( $t['title'], 70 ) ); ?></span>
+				<span class="nlf-emb-reqm"><?php echo esc_html( $n > 0 ? nlf_count_words( $n, 'תשובה אחת', 'תשובות' ) : 'מחכה להצעה ראשונה' ); ?></span></a>
+		<?php endforeach; ?></div>
+	</div>
+	<?php endif; ?>
+	<form class="nlf-emb-ask" data-nlf-ask novalidate>
+		<label for="<?php echo esc_attr( $uid ); ?>-ask"><?php echo esc_html( 'מה אתם צריכים? כתבו ל' . ( '' !== $pl ? $pl : 'בעלי המקצוע' ) . ' בפורום' ); ?></label>
+		<div class="nlf-emb-askrow"><input id="<?php echo esc_attr( $uid ); ?>-ask" type="text" name="q" maxlength="140" placeholder="<?php echo esc_attr( 'למשל: מחפש ' . $label ); ?>"><button type="submit">שליחה</button></div>
+		<div class="nlf-emb-intents">
+			<button type="button" data-nlf-compose data-kind="seek" data-cat="<?php echo esc_attr( $cat ); ?>"><?php echo esc_html( 'מחפש ' . $label ); ?></button>
+			<button type="button" data-nlf-compose data-kind="collab" data-cat="<?php echo esc_attr( $cat ); ?>">מציע שיתוף פעולה</button>
+			<button type="button" data-nlf-compose data-kind="question" data-cat="<?php echo esc_attr( $cat ); ?>">שאלה מקצועית</button>
+		</div>
+		<span class="nlf-emb-fine">כניסה בצעד אחד: שם וקוד למייל. התשובות מגיעות אליכם, לא לאתר.</span>
 	</form>
-	<?php if ( ! $joined ) : ?><p class="nlf-emb-note"><?php echo esc_html( $person . ( nlf_pro_female( $pro ) ? ' עוד לא הצטרפה' : ' עוד לא הצטרף' ) . ' לפורום. התשובות כאן מבעלי מקצוע שהצטרפו בעצמם.' ); ?></p><?php endif; ?>
 </section>
+<?php if ( ! $joined ) : ?><p class="nlf-emb-note" dir="rtl"><?php echo esc_html( $person . ( nlf_pro_female( $pro ) ? ' עוד לא הצטרפה' : ' עוד לא הצטרף' ) . ' לפורום. עונים כאן בעלי מקצוע שהצטרפו בעצמם.' ); ?></p><?php endif; ?>
 	<?php
 	return ob_get_clean();
 }

@@ -1,0 +1,28 @@
+{
+  "released": "1.72.676",
+  "from": "1.72.675",
+  "live_before": {
+    "inc/pro-forum.php": "a772e1bd69e461c141b60dfc156bb37b",
+    "inc/pro-forum-render.php": "2eb4dcd8d9cf392e00668d4db8fb6534",
+    "assets/proforum/forum.css": "6db240227d138dad75fad9e06503dc32",
+    "assets/proforum/call.js": "6893afe8019f4a649c13cfe6cf09831e",
+    "nadlan-config.php": "90246a5724b912abe16c2fc129a05b37"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-13 01:00:35",
+  "files": {
+    "inc/pro-forum.php": "1509d59f20c6fa9441c01d34a12c717e",
+    "inc/pro-forum-render.php": "243cd1b0158958228b42f15411d78020",
+    "assets/proforum/forum.css": "0199b78c0b56a9bff56eee064fb27e42",
+    "assets/proforum/call.js": "09830c2239ec3c6ea2439eb7c43f2ea4",
+    "inc/pro-forum-social.php": "a0c06ee4c89c0ca35b18d374de297103",
+    "assets/proforum/social.js": "32e6f20b9dc56246a0007a83e852c8d5",
+    "assets/proforum/social.css": "38aabc4c47982069db54472f75c08240",
+    "assets/proforum/board.js": "0b725970f3bc6885d24e0a9a818a211a",
+    "assets/proforum/board.css": "b7d4fecf0005bf70546704d150ed706b",
+    "nadlan-config.php": "6eb709c14cdda708ee7abf126bbcfcd8"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.676, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

@@ -55,7 +55,10 @@ const ICON = {
 	end: '<path d="M3 14c5-5 13-5 18 0l-2 3-4-2v-2a10 10 0 0 0-6 0v2l-4 2z"/>',
 	video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
 	x: '<path d="M6 6l12 12M18 6L6 18"/>',
+	board: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 13l3-3 2 2 4-4M8 21l4-4 4 4"/>',
 };
+// the shared board (assets/proforum/board.js, 1.72.674, rebuilt to design boards 16 and 17), same version query as this file so a release reaches both
+const BOARD_URL = (() => { try { const u = new URL(import.meta.url); return new URL('board.js' + u.search, u).href; } catch (e) { return ''; } })();
 
 /* ---------------------------------------------------------------- small DOM helpers (text only through textContent) */
 
@@ -226,6 +229,21 @@ function stage(tr, tk, media, opener) {
 	const acts = h('div', { cls: 'nlfc-acts' }, photoB, inviteB);
 	const ctl = (k, label, lab, cls) => h('button', { type: 'button', cls: 'nlfc-c ' + (cls || ''), 'aria-label': label }, icon(k), h('small', { 'aria-hidden': 'true', text: lab }));
 	const bMic = ctl('micOff', T.micOn, T.lMic), bCam = ctl('camOff', T.camOn, T.lCam), bFlip = ctl('flip', T.flip, T.lFlip, 'nlfc-flip'), bMore = ctl('more', T.more, T.lMore), bEnd = ctl('end', T.end, T.lEnd, 'nlfc-end');
+	const bBoard = ctl('board', 'לוח משותף: ציור, תמונה או תוכנית והערות עליה', 'לוח', 'nlfc-board');
+	let board = null;
+	// the board shows its own copy of the call controls (design boards 16 and 17); they act only through these callbacks
+	if (BOARD_URL) import(BOARD_URL).then((m) => {
+		if (!S.alive || !m || !m.createBoard) return;
+		board = m.createBoard({
+			tr, title: tk.title || C.title || '', t0: S.t0,
+			face: (id) => { const p = tr.participants().find((x) => x.id === id); return p ? faceOf(p) : null; },
+			call: { mic: (on) => setMic(on), cam: (on) => setCam(on), leave: () => leave() },
+			onClose: () => { if (S.alive && !bBoard.hidden) bBoard.focus({ preventScroll: true }); },
+		});
+	}).catch(() => { bBoard.hidden = true; });
+	else bBoard.hidden = true;
+	bBoard.setAttribute('aria-pressed', 'false');
+	bBoard.addEventListener('click', () => { if (board) board.open(); });
 	bMic.setAttribute('aria-pressed', 'false'); bCam.setAttribute('aria-pressed', 'false'); bMore.setAttribute('aria-expanded', 'false');
 	const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 	bFlip.hidden = !coarse; bFlip.disabled = true;
@@ -233,7 +251,7 @@ function stage(tr, tk, media, opener) {
 	const menu = h('div', { cls: 'nlfc-menu', hidden: true, role: 'group', 'aria-label': T.more },
 		h('label', { cls: 'nlfc-swrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: T.voice })), voiceIn, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i'))),
 		h('p', { cls: 'nlfc-fine', text: T.norec }));
-	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bFlip, bMore, bEnd);
+	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bFlip, bBoard, bMore, bEnd);
 	const root = h('div', { cls: 'nlfc-stage', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.callAria, dir: 'rtl', lang: 'he' },
 		remote, waitP, top, who, strip, banner, audioB, h('div', { cls: 'nlfc-fill' }), self, acts, menu, bar, h('p', { cls: 'nlfc-norec', text: T.norec }));
 	document.documentElement.classList.add('nlfc-open');
@@ -329,6 +347,7 @@ function stage(tr, tk, media, opener) {
 	const onKey = (ev) => {
 		if (ev.key === 'Escape' && !menu.hidden) { menu.hidden = true; bMore.setAttribute('aria-expanded', 'false'); bMore.focus(); ev.stopPropagation(); return; }
 		if (document.querySelector('.nlfc-scrim')) return; // a sheet on top keeps the keys
+		if (board && board.shown) return; // the shared board on top keeps the keys too
 		trapTab(root, ev);
 	};
 	document.addEventListener('keydown', onKey, true);
@@ -339,6 +358,7 @@ function stage(tr, tk, media, opener) {
 		if (!S.alive) return;
 		S.alive = false; st.inCall = false;
 		S.timers.forEach(clearInterval); clearTimeout(bannerT);
+		if (board) { try { board.destroy(); } catch (e) { /* gone */ } board = null; }
 		document.removeEventListener('keydown', onKey, true); window.removeEventListener('pagehide', onHide);
 		try { await tr.disconnect(); } catch (e) { /* already apart */ }
 		root.remove(); document.documentElement.classList.remove('nlfc-open');

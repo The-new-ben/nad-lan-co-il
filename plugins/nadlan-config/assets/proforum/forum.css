@@ -311,3 +311,6 @@ dialog.nlf.nlf-sheet>.nlf-form:not([data-nlf-composeform]):not([data-nlf-reportf
 .nlf.nlf-emb .nlf-emb-mast h2.nlf-emb-h{color:#FFFFFF !important;font-family:var(--hf) !important;font-weight:800 !important;margin:0 !important;padding:0 !important}
 .nlf.nlf-emb .nlf-emb-reqh h3{font-family:var(--hf) !important;margin:0 !important}
 .nlf.nlf-emb a,.nlf.nlf-emb a span{text-decoration:none !important}
+/* next release, from the live look of 675: the send button in raspberry and a white field, as on board 15 (the base .nlf rules won) */
+.nlf.nlf-emb .nlf-emb-ask .nlf-emb-askrow button[type="submit"]{background:#B0144F !important;color:#FFFFFF !important}
+.nlf.nlf-emb .nlf-emb-ask .nlf-emb-askrow input[type="text"]{background:#FFFFFF !important;border:0 !important;color:#101820 !important}

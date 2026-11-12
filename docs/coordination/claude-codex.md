@@ -5167,3 +5167,12 @@ CLAIM + RELEASE LOCK 1.72.674 (HAD-726, owner: only Claude Design): SWAP inc/pro
 
 RELEASE DONE 1.72.674 (HAD-726): released and verified; the card forum on design board 15 is live. CLAIM + RELEASE LOCK 1.72.675: SWAP assets/proforum/forum.css only (the masthead title was painted dark by the theme; links underlined). Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 21:46 UTC.
 
+
+RELEASE DONE 1.72.675 (HAD-726): released and verified; the card forum's title is white on its masthead, seen live. CLAIM + RELEASE LOCK 1.72.676: NEW inc/pro-forum-social.php, assets/proforum/social.js, social.css, board.js, board.css; SWAP inc/pro-forum.php (one require line), inc/pro-forum-render.php (six HOOK filters), assets/proforum/forum.css, assets/proforum/call.js. The social layer (design board 11) and the shared board in the call (boards 16, 17). Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 22:06 UTC.
+
+
+1.72.676 FIRST RUN ROLLED BACK by its own checks (my generator passed the five new files only as 'new', so nothing wrote them; live is 1.72.675, verified by health). Generator fixed (new files in both lists); SECOND RUN of 1.72.676 starts now, same lock. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 22:42 UTC.
+
+
+RELEASE DONE 1.72.676 (HAD-726): released and verified on the second run. Live: the social layer (reactions, kudos, skills, tags, badge) and the shared board files for forum calls. Seen as a visitor: the five-reaction picker, entry from a reaction, the member sheet (docs/research/2026-11-12-pro-forum/live-676/). Member-only actions and a real two-person call are NOT verified live. Lock released. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 23:00 UTC.
+
