@@ -1,3 +1,4 @@
+/* HAD-712 (12.11.2026): waymarks, view with details, floor plan (the toggle, the live 3D button, the waymark line, My selection in the bar). */
 /* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language (the element's dir; logical sides). */
 /*
  * The apartment cockpit, version 2 (HAD-699, 10.11.2026; design: https://claude.ai/artifact/FzvFDybiyBoi8bspoPV9Zp, Home.dc.html).
@@ -159,3 +160,22 @@ body.nlck-next .nlw, body.nlck-next .nlw-dock {
 }
 body.nlck-next .nlw-chip, body.nlck-next .nlw-btn, body.nlck-next .nlw-seg, body.nlck-next .nlw-face { background: #ffffff; }
 body.nlck-next .nlw-face[aria-pressed='true'] { background: #e9f4f7; }
+
+/* HAD-712 (12.11.2026): "View with details" over the window view (world/viewdetails.js), the live 3D on a tap, the waymark line */
+.nlck-vdh { position: relative; height: 100%; width: max-content; }
+.nlck-vdt { position: absolute; z-index: 3; top: 64px; inset-inline-start: 12px; display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: rgba(13,33,41,.84); }
+.nlck .nlck-vdt button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px !important; background: transparent; color: #fff; font: 600 14px/1 'Assistant', sans-serif; cursor: pointer; white-space: nowrap; }
+.nlck .nlck-vdt button[aria-pressed='true'] { background: var(--ck-glass); color: var(--ck-night); font-weight: 700; }
+.nlck-vdnote { margin: 8px 0 0; font-size: 13px; color: var(--ck-mist); }
+.nlck-vdnote[hidden] { display: none; }
+.nlck .nlck-3d { display: flex; width: 100%; min-height: 52px; margin-top: 12px; align-items: center; justify-content: center; padding: 0 16px; border: 2px solid var(--ck-glass); border-radius: 999px !important; background: transparent; color: #fff; font: 700 16px/1.2 'Assistant', sans-serif; text-align: center; cursor: pointer; }
+.nlck-wl { position: absolute; z-index: 4; bottom: calc(var(--ck-bar) + 10px + env(safe-area-inset-bottom)); inset-inline: 14px; min-height: 40px; display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: #fff; color: var(--ck-ink); font-size: 15px; box-shadow: 0 6px 20px rgba(0,0,0,.28); pointer-events: none; }
+.nlck-wl[hidden] { display: none; }
+.nlck-wl i { width: 10px; height: 10px; flex: none; border-radius: 999px; background: var(--ck-sea); }
+.nlck-wl b { font-weight: 700; line-height: 1.25; }
+.nlck[data-way] .nlck-body { padding-bottom: 64px; }
+.nlck[data-way] .nlck-float { bottom: 66px; }
+.nlck[data-way] .nlck-door { animation: none; } /* one pulse at a time: the doors pulse again once the waymarks are done */
+.nlck-tile.nlsr-pulse, .nlck .nlck-ic.nlsr-pulse, .nlck-call.nlsr-pulse { outline: 2px solid var(--ck-glass); outline-offset: 2px; }
+.nlck-ic--bk { color: var(--ck-glass); border-color: var(--ck-glass); }
+@media (prefers-reduced-motion: reduce) { .nlck .nlsr-pulse { animation: none !important; } }

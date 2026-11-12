@@ -1,0 +1,567 @@
+{
+ "started": "2026-11-12T00:29:00.276Z",
+ "runs": [
+  {
+   "L": "en",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "1 tower",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-h"
+     ],
+     "label": "Tap a tower",
+     "expected": "Tap a tower",
+     "ok": true
+    },
+    {
+     "name": "2 floor on the tower",
+     "pulses": 1,
+     "what": [
+      "i."
+     ],
+     "label": "Tap a floor on the tower",
+     "expected": "Tap a floor on the tower",
+     "ok": true
+    },
+    {
+     "name": "3 after the floor tap: step inside (the side came with the tap, the plan step skipped)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "Next: step inside the apartment",
+     "expected": "Next: step inside the apartment",
+     "ok": true
+    },
+    {
+     "name": "3b expanded (the pulse stays on step inside)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "Next: step inside the apartment",
+     "expected": "Next: step inside the apartment",
+     "ok": true
+    },
+    {
+     "name": "3c plan apartment tapped",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "Next: step inside the apartment",
+     "expected": "Next: step inside the apartment",
+     "ok": true
+    },
+    {
+     "name": "4 apartment screen: the view",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[view]"
+     ],
+     "label": "Tap “The view”: names and distances on it",
+     "expected": "Tap “The view”: names and distances on it",
+     "ok": true,
+     "heroDetails": 0
+    },
+    {
+     "name": "5 view screen (details on): back to the apartment",
+     "pulses": 1,
+     "what": [
+      "button.nlck-back"
+     ],
+     "label": "Next: back to the apartment",
+     "expected": "Next: back to the apartment",
+     "ok": true
+    },
+    {
+     "name": "6 apartment screen: inside",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[inside]"
+     ],
+     "label": "Next: the inside, in 360°",
+     "expected": "Next: the inside, in 360°",
+     "ok": true
+    },
+    {
+     "name": "7 inside: a finish",
+     "pulses": 1,
+     "what": [
+      "button.[pano 1]"
+     ],
+     "label": "Tap a finish to try it",
+     "expected": "Tap a finish to try it",
+     "ok": true
+    },
+    {
+     "name": "8 My selection",
+     "pulses": 1,
+     "what": [
+      "button.nlck-ic.nlck-ic--bk[basket]"
+     ],
+     "label": "Next: open My selection",
+     "expected": "Next: open My selection",
+     "ok": true
+    },
+    {
+     "name": "9 the video call",
+     "pulses": 1,
+     "what": [
+      "a.nlck-call[call]"
+     ],
+     "label": "Next: a video call with a NadLan advisor",
+     "expected": "Next: a video call with a NadLan advisor",
+     "ok": true,
+     "callHref": "#nlsch"
+    },
+    {
+     "name": "10 all done: no pulse",
+     "pulses": 0,
+     "what": [],
+     "label": "",
+     "expected": "",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "worldOnLoad": [
+     "build/three.module.js",
+     "world/world.js?ver=1.72.661"
+    ],
+    "peek": {
+     "stageH": 472,
+     "stageW": 366,
+     "cardH": 70,
+     "share": 0.148,
+     "parentIsStage": true,
+     "titleOneLine": "Tower B · Floor 20 · west",
+     "band": {
+      "top": 369.9731750488281,
+      "bottom": 382.24456787109375,
+      "cx": 193.74034118652344,
+      "stageTop": 182.71875,
+      "stageBottom": 654.71875,
+      "cardTop": 584.71875,
+      "visible": true
+     },
+     "small": []
+    },
+    "basketDesign": {
+     "goInside": true,
+     "notAvailable": false
+    },
+    "reach": {
+     "lowest": {
+      "y": 582,
+      "tower": "B",
+      "floor": 1,
+      "bearing": 300
+     },
+     "highest": {
+      "y": 186,
+      "tower": "B",
+      "floor": 37,
+      "bearing": 255
+     },
+     "floors": 37,
+     "peekShareAfter": 0.148,
+     "bandAfter": {
+      "top": 245.17953491210938,
+      "bottom": 262.5287170410156,
+      "cx": 196.22840118408203,
+      "stageTop": 182.71875,
+      "stageBottom": 654.71875,
+      "cardTop": 584.71875,
+      "visible": true
+     }
+    },
+    "expanded": {
+     "state": "open",
+     "cardH": 204,
+     "share": 0.433,
+     "band": {
+      "top": 326.7471923828125,
+      "bottom": 338.8597412109375,
+      "cx": 193.718994140625,
+      "stageTop": 182.71875,
+      "stageBottom": 654.71875,
+      "cardTop": 450.328125,
+      "visible": true
+     },
+     "plan": true,
+     "small": [],
+     "ariaExpanded": "true",
+     "labels": [
+      "North",
+      "East",
+      "South",
+      "West",
+      "core",
+      "N"
+     ]
+    },
+    "plan": {
+     "tapped": "North",
+     "before": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 275
+     },
+     "after": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 5
+     },
+     "changed": true,
+     "facingEvents": 1,
+     "lastFacing": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 5,
+      "side": 0,
+      "heightM": 81.6,
+      "facing": "צפונה",
+      "label": "מגדל B",
+      "source": "showroom",
+      "quiet": true
+     },
+     "pressed": [
+      "North"
+     ],
+     "mapline": "This apartment faces north: the Yarkon and the north",
+     "sheet": "open"
+    },
+    "fold": {
+     "handle": "peek",
+     "esc": "peek",
+     "stage": "peek",
+     "swipe": "peek",
+     "swipePageScroll": 0,
+     "map": "peek",
+     "ga": {
+      "floor_change_after_card:tap": 3,
+      "floor_change_after_card:stepper": 16,
+      "sheet_expand:handle": 5,
+      "sheet_collapse:handle": 1,
+      "sheet_collapse:esc": 1,
+      "sheet_collapse:stage": 2,
+      "sheet_collapse:swipe": 1
+     }
+    },
+    "hscrollShowroom": false,
+    "viewDetails": {
+     "labels": 6,
+     "tries": [
+      {
+       "cap": "Illustrative visualisation · Floor 30 · north",
+       "labels": 6
+      }
+     ],
+     "names": [
+      "Sportek | about 1.3 km",
+      "Reading lighthouse | about 2.3 km",
+      "Reading power station | about 2.3 km",
+      "Ramat Aviv | about 2.5 km",
+      "Tel Aviv University | about 3.2 km",
+      "Gan Polak | 2 min walk"
+     ],
+     "toggleOff": {
+      "off": true,
+      "pressed": "true"
+     },
+     "toggleOn": {
+      "on": 6
+     },
+     "threeDButton": "Open the live 3D view of this floor",
+     "small": []
+    },
+    "worldBefore3d": 1,
+    "threeBeforeInside": 1,
+    "basketAfter": {
+     "open": true,
+     "notAvailable": false,
+     "style": "warm"
+    },
+    "hscrollCockpit": false,
+    "smallCockpit": [],
+    "hebrew": [],
+    "threeD": {
+     "wanted": "B|30|353.38",
+     "worldRequestedBeforeTap": 1,
+     "worldRequestedAfterTap": 1,
+     "mounted": true,
+     "stagebox": {
+      "display": "block",
+      "top": 198,
+      "h": 1593
+     },
+     "state": {
+      "mode": "tower",
+      "tower": "B",
+      "floor": 30,
+      "facing": 353.38,
+      "season": 9,
+      "hour": 10,
+      "tod": "day",
+      "view": "window",
+      "cat": "transport"
+     },
+     "cockpitHidden": true
+    },
+    "hscrollEnd": false
+   },
+   "patched": [],
+   "errs": [],
+   "failed": [],
+   "served": [],
+   "ok": true
+  },
+  {
+   "L": "en",
+   "w": 1440,
+   "h": 900,
+   "steps": [
+    {
+     "name": "1 tower",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-h"
+     ],
+     "label": "Tap a tower",
+     "expected": "Tap a tower",
+     "ok": true
+    },
+    {
+     "name": "2 floor on the tower",
+     "pulses": 1,
+     "what": [
+      "i."
+     ],
+     "label": "Tap a floor on the tower",
+     "expected": "Tap a floor on the tower",
+     "ok": true
+    },
+    {
+     "name": "3 after the floor tap: step inside (the side came with the tap, the plan step skipped)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "Next: step inside the apartment",
+     "expected": "Next: step inside the apartment",
+     "ok": true
+    },
+    {
+     "name": "3c plan apartment tapped",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "Next: step inside the apartment",
+     "expected": "Next: step inside the apartment",
+     "ok": true
+    },
+    {
+     "name": "4 apartment screen: the view",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[view]"
+     ],
+     "label": "Tap “The view”: names and distances on it",
+     "expected": "Tap “The view”: names and distances on it",
+     "ok": true,
+     "heroDetails": 0
+    },
+    {
+     "name": "5 view screen (details on): back to the apartment",
+     "pulses": 1,
+     "what": [
+      "button.nlck-back"
+     ],
+     "label": "Next: back to the apartment",
+     "expected": "Next: back to the apartment",
+     "ok": true
+    },
+    {
+     "name": "6 apartment screen: inside",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[inside]"
+     ],
+     "label": "Next: the inside, in 360°",
+     "expected": "Next: the inside, in 360°",
+     "ok": true
+    },
+    {
+     "name": "7 inside: a finish",
+     "pulses": 1,
+     "what": [
+      "button.[pano 1]"
+     ],
+     "label": "Tap a finish to try it",
+     "expected": "Tap a finish to try it",
+     "ok": true
+    },
+    {
+     "name": "8 My selection",
+     "pulses": 1,
+     "what": [
+      "button.nlck-ic.nlck-ic--bk[basket]"
+     ],
+     "label": "Next: open My selection",
+     "expected": "Next: open My selection",
+     "ok": true
+    },
+    {
+     "name": "9 the video call",
+     "pulses": 1,
+     "what": [
+      "a.nlck-call[call]"
+     ],
+     "label": "Next: a video call with a NadLan advisor",
+     "expected": "Next: a video call with a NadLan advisor",
+     "ok": true,
+     "callHref": "#nlsch"
+    },
+    {
+     "name": "10 all done: no pulse",
+     "pulses": 0,
+     "what": [],
+     "label": "",
+     "expected": "",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "worldOnLoad": [
+     "build/three.module.js",
+     "world/world.js?ver=1.72.661"
+    ],
+    "peek": {
+     "stageH": 680,
+     "stageW": 520,
+     "cardH": 306,
+     "share": 0.45,
+     "parentIsStage": false,
+     "titleOneLine": "Tower B · Floor 20 · west",
+     "band": {
+      "top": 475.7219543457031,
+      "bottom": 493.67401123046875,
+      "cx": 1158.1799926757812,
+      "stageTop": 106.1875,
+      "stageBottom": 786.1875,
+      "cardTop": 786.1875,
+      "visible": true
+     },
+     "small": []
+    },
+    "basketDesign": {
+     "goInside": true,
+     "notAvailable": false
+    },
+    "desktop": {
+     "cardBesideTower": true,
+     "side": "left",
+     "expectSide": "left",
+     "plan": true,
+     "small": [],
+     "band": {
+      "top": 475.7219543457031,
+      "bottom": 493.67401123046875,
+      "cx": 1158.1799926757812,
+      "stageTop": 106.1875,
+      "stageBottom": 786.1875,
+      "cardTop": 786.1875,
+      "visible": true
+     }
+    },
+    "plan": {
+     "tapped": "North",
+     "before": {
+      "tower": "B",
+      "floor": 20,
+      "bearing": 276
+     },
+     "after": {
+      "tower": "B",
+      "floor": 20,
+      "bearing": 6
+     },
+     "changed": true,
+     "mapline": "This apartment faces north: the Yarkon and the north"
+    },
+    "hscrollShowroom": false,
+    "viewDetails": {
+     "labels": 6,
+     "tries": [
+      {
+       "cap": "Illustrative visualisation · Floor 20 · north",
+       "labels": 6
+      }
+     ],
+     "names": [
+      "Sportek | about 1.3 km",
+      "Reading power station | about 2.3 km",
+      "Ramat Aviv | about 2.5 km",
+      "Tel Aviv University | about 3.2 km",
+      "Gan Polak | 2 min walk",
+      "Tel-Aviv Theater | 3 min walk"
+     ],
+     "toggleOff": {
+      "off": true,
+      "pressed": "true"
+     },
+     "toggleOn": {
+      "on": 6
+     },
+     "threeDButton": "Open the live 3D view of this floor",
+     "small": []
+    },
+    "worldBefore3d": 1,
+    "threeBeforeInside": 1,
+    "basketAfter": {
+     "open": true,
+     "notAvailable": false,
+     "style": "warm"
+    },
+    "hscrollCockpit": false,
+    "smallCockpit": [],
+    "hebrew": [],
+    "threeD": {
+     "wanted": "B|20|5.88",
+     "worldRequestedBeforeTap": 1,
+     "worldRequestedAfterTap": 1,
+     "mounted": true,
+     "stagebox": {
+      "display": "block",
+      "top": 198,
+      "h": 1128
+     },
+     "state": {
+      "mode": "tower",
+      "tower": "B",
+      "floor": 20,
+      "facing": 5.8799999999999955,
+      "season": 9,
+      "hour": 10,
+      "tod": "day",
+      "view": "window",
+      "cat": "transport"
+     },
+     "cockpitHidden": true
+    },
+    "hscrollEnd": false
+   },
+   "patched": [],
+   "errs": [],
+   "failed": [],
+   "served": [],
+   "ok": true
+  }
+ ],
+ "finished": "2026-11-12T00:31:23.849Z"
+}

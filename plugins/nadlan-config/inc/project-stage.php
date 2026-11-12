@@ -1265,6 +1265,8 @@ if ( ! function_exists( 'nadlan_ps_world_head' ) ) {
 		$v    = '?ver=' . nadlan_ps_ver();
 		$base = 'assets/project-stage/' . $ps['dir'] . '/';
 		$pw   = (array) $ps['world'];
+		// HAD-712 (12.11.2026): the Hebrew Kikar page shows the showroom; its earlier 3D stage loads only on "the live 3D of this floor"
+		if ( nadlan_ps_kikar_next( $ps ) && 'he' === (string) ( $ps['lang'] ?? 'he' ) ) { return; }
 		echo '<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin fetchpriority="low">' . "\n";
 		echo '<link rel="modulepreload" href="' . esc_url( plugins_url( 'assets/project-stage/world/world.js', dirname( __FILE__ ) ) . $v ) . '" fetchpriority="low">' . "\n";
 		echo '<link rel="preload" as="fetch" href="' . esc_url( plugins_url( $base . (string) ( $pw['data'] ?? 'world.json' ), dirname( __FILE__ ) ) . $v ) . '" crossorigin fetchpriority="low">' . "\n";
@@ -1311,11 +1313,14 @@ function mount() {
   }).catch((e) => { console.warn('[world]', e); P = null; return null; });
   return P;
 }
+window.__nlpsMount = mount; // HAD-712 (12.11.2026): the showroom's "live 3D of this floor" mounts the world on the tap
+const heShowroom = !!(c.next && c.next.journey && c.lang === 'he'); // HAD-712: the Hebrew showroom hides this stage until that tap
 if (root && host && c.world) {
   const later = () => ('requestIdleCallback' in window ? requestIdleCallback(mount, { timeout: 2000 }) : setTimeout(mount, 200));
   // v104.51 (HAD-421, A/B): ?nlwboot=early mounts once the document is parsed (this module runs before DOMContentLoaded)
   // instead of after window load; without the switch the default below is unchanged until the A/B is measured
   if (c.next && c.next.journey && jyPhone()) { /* HAD-699: on phones under the gate the journey replaces the 3D world */ }
+  else if (heShowroom) { /* HAD-712 (12.11.2026): the Hebrew showroom; the 3D world mounts only on its tap (window.__nlpsMount) */ }
   else if (/[?&]nlwboot=early(&|$)/.test(location.search)) { if ('requestIdleCallback' in window) requestIdleCallback(mount, { timeout: 600 }); else setTimeout(mount, 0); }
   else if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
   document.addEventListener('click', (e) => {
@@ -1324,6 +1329,7 @@ if (root && host && c.world) {
     const ev = a.getAttribute('data-nlps-ev');
     ga('stage_step', { step: ev });
     if (ev !== 'hero-world') return;
+    if (heShowroom && !document.body.classList.contains('nlsr-3d')) return; // HAD-712: the tour link leads to the showroom (#nlsr)
     // the whole world in view, its foot at the screen's foot (clear of the site's sticky header), then the walk
     e.preventDefault();
     root.scrollIntoView({ block: 'end', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
@@ -2863,3 +2869,13 @@ add_action( 'nadlan_together_room_created', function ( $room, $pid = 0, $by = ''
 	$text = 'מבקר פתח עכשיו חדר וידאו בעמוד ' . $name . ".\nלהיכנס לשיחה: " . $url;
 	nadlan_omx_send( $subj, $html, $text, 'room' );
 }, 10, 3 );
+// 1.72.661 (HAD-712): the area map attached under the Kikar showroom, with the beam on the chosen floor and side (world/kikarmap.js)
+add_action( 'wp_footer', function () {
+	if ( is_admin() || ! function_exists( 'nadlan_ps_current' ) || ! function_exists( 'nadlan_ps_kikar_next' ) ) { return; }
+	$ps = nadlan_ps_current();
+	if ( ! $ps || ! nadlan_ps_kikar_next( $ps ) ) { return; }
+	$base = plugins_url( 'assets/project-stage/', dirname( __FILE__ ) );
+	$v    = '?ver=' . nadlan_ps_ver();
+	echo '<script id="nlkm-cfg">window.__nlKikarMap=' . wp_json_encode( array( 'data' => $base . 'hamedina/details.json' . $v ) ) . ';</script>'
+		. '<script defer id="nlkm-js" src="' . esc_url( $base . 'world/kikarmap.js' . $v ) . '"></script>';
+}, 60 );

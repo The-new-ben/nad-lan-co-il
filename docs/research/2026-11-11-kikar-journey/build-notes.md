@@ -72,3 +72,28 @@ designer session, 8 French.
   area map from nl:facing, reusing bridge.js's drawing, and moves #nlpjx-map right under the showroom; never edit engine.js.
 - Next after 658: one release wiring waymarks + view with details + the plan into showroom.js/cockpit.js; then the map; then video
   (live together.php hunk); then the buying journey (buyflow.js + rfp.php Kikar branch); then French.
+
+## Step 0 (Ben, 12.11.2026, blocking): the apartment card must never trap the tower
+Ben: "לוחצים על קומה, קופץ הכרטיס ... שמסתיר את המודל ... אי אפשר לעשות לו דיסמיס ... תעשה אותם מהבהבים כדי שאנשים ידעו שיש
+אפשרות לקפל". Measured 390x844 tower B: the card covers 47% of the stage (en), 37% (he); no Esc, no swipe, no close.
+The card becomes a sheet with two heights:
+1. Opens at PEEK: one row at the bottom of the stage, <= 72 px (~15%): small picture, "Tower B · Floor 23 · west" on one line, − +,
+   the primary button, a grab handle with a chevron. The whole tower stays tappable above it.
+2. The chosen floor's band is never under the sheet: the tower picture shifts up when needed (peek and expanded).
+3. Expand: tap the handle or the row, or swipe up. Expanded = today's card content, <= 45% of the stage, same height in he/en/fr
+   (title on one line; short labels "Step inside", "Plans & prices").
+4. Collapse by every one of: swipe down, tap the handle (real 44 px button, aria-expanded), tap the tower or the map, Escape.
+   Swipe never the only way (WCAG 2.5.7). The drag does not scroll the page; the page scroll never sticks on it.
+5. Collapse by intent, not a clock: touching or dragging the tower or the map drops an expanded sheet to peek. No timer (WCAG 2.2.1).
+6. First appearance in a visit: the handle nudges once (down and back); grabber and chevron always visible. The continuous pulse stays
+   on the next step only ("Step inside"). Reduced motion: no nudge.
+7. "‹ All three towers" and the tower hotspots reachable in every state; another tower or floor works without closing anything.
+8. Desktop: the card docks beside the tower on the reading-start side (right in he, left in en/fr), never over it.
+9. All targets >= 44 px. Same component in he, en, fr.
+10. Events: sheet_expand, sheet_collapse {how: swipe|handle|stage|esc}, floor_change_after_card, tower_change_after_card.
+Acceptance (Kikar session runs it live): 390x844 he and en: sheet <= 0.15 of the stage after a floor tap; lowest and highest floors
+tappable in peek; each of the four ways collapses; no sideways scroll; targets >= 44 px; chosen band visible in both states; desktop
+1440x900 card beside the tower. Board: one screen in the S row and one in the E row (peek + expanded), picture in boards/, then code.
+Release order now (updated): 1.72.659 designer (released);
+1.72.660 = the designer session's designed call screen (assets only; swapped 11.11 ~23:00 UTC so nobody waits); 1.72.661 = mine: step 0 + the additions (make_deploy661.py, from deploy660.py);
+1.72.662 = Kikar video (make_deploy662.py, built from deploy661.py).

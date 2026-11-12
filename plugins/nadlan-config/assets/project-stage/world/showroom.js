@@ -1,3 +1,4 @@
+/* HAD-712 (12.11.2026): waymarks, view with details, floor plan; the card is a sheet (peek / expanded), docked beside the tower on desktops. */
 /* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /* Kikar HaMedina: the showroom stage (HAD-712, Ben 11.11.2026: "each building turns on its own, you choose the apartment on the
  * building, the map under it answers with a beam, and a pulse shows the next thing to tap").
@@ -14,6 +15,7 @@
 const C = window.__nlJourneyCfg || {};
 const CK = window.__nlCockpitCfg || {};
 const { t, lang, dir } = await import(new URL('showroom-i18n.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href); // HAD-712: he, en, fr
+const { planFloor } = await import(new URL('planfloor.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href); // HAD-712 (12.11): the floor's four apartments
 const A = (p) => (C.base || '') + p + (C.ver ? (p.includes('?') ? '&' : '?') + 'ver=' + C.ver : '');
 const WORLD = (C.js || '').replace(/journey\.js.*$/, '');
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -29,9 +31,20 @@ const sectorOf = (b) => { b = norm(b); const s = SECTORS.find(([lo, hi]) => (lo 
 const eyeH = (f) => (f - 1) * 4 + 1.6;
 const STEPS = [['tower', 'sr_step_tower'], ['view', 'sr_step_view'], ['inside', 'sr_step_inside'], ['design', 'sr_step_design'], ['basket', 'basket_name']];
 const START = 270; // each tower first shows the side that looks west, to the sea
+const reduced = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
+const wide = () => innerWidth >= 900; // the card docks beside the tower (desktop), else it is a sheet over the stage's foot
+const cap1 = (s) => (lang() === 'he' ? s : s.charAt(0).toUpperCase() + s.slice(1));
+const shortDir = (b) => (lang() === 'fr' ? dirTo(b) : dirFrom(b)); // the noun: "מערב", "west", "ouest" (fr's nouns carry an article)
+/* HAD-712 (12.11.2026): the waymarks' progress, per page, in this tab only (shared with cockpit.js under the same key) */
+const WK = 'nlsr-way:' + location.pathname;
+const way = {
+  get() { try { return JSON.parse(sessionStorage.getItem(WK) || '{}') || {}; } catch (e) { return {}; } },
+  set(k) { const o = way.get(); if (o[k]) return; o[k] = 1; try { sessionStorage.setItem(WK, JSON.stringify(o)); } catch (e) { /* private mode */ } },
+};
+const CK_WAY = ['ck_view', 'ck_inside', 'ck_design', 'ck_basket', 'ck_call']; // the apartment screen's order (cockpit.js paints them)
 
-let T = null, AER = null, VIEWS = null, el = null, box = null;
-const S = { tower: null, frame: 0, floor: null, side: null, done: {}, touched: false };
+let T = null, AER = null, VIEWS = null, el = null, box = null, plan = null;
+const S = { tower: null, frame: 0, floor: null, side: null, touched: false, sideChosen: false, sheet: 'peek' }; // sheet: 'peek' | 'open'
 const pre = {};
 
 const turn = () => (S.tower ? T.towers[S.tower] : null);
@@ -58,12 +71,24 @@ function viewOf(k, f, b) { const L = (VIEWS || []).filter((v) => v.tower === k &
 const PIC = { all: [800, 1067, 0.56], tower: [756, 1080, 0.525] }; // width, height, the height share kept at the box's middle
 function place() {
   if (!box) return;
-  const [pw, ph, mid] = S.tower ? PIC.tower : PIC.all, W = box.clientWidth, H = box.clientHeight, sc = Math.max(W / pw, H / ph), w = pw * sc, h = ph * sc;
-  let top = Math.min(0, Math.max(H - h, H / 2 - h * mid)); const left = (W - w) / 2;
-  if (S.tower && S.floor) { // the chosen floor stays in sight, in the middle of what the card leaves free
-    const card = el.querySelector('.nlsr-card'), free = H - (card.hidden ? 0 : card.offsetHeight), r = turn().frames[S.frame].f[S.floor - 1];
-    top = Math.min(0, Math.max(H - h, free * 0.56 - h * ((r[1] + r[3]) / 2000)));
+  const [pw, ph, mid] = S.tower ? PIC.tower : PIC.all, W = box.clientWidth, H = box.clientHeight;
+  let sc = Math.max(W / pw, H / ph), w = pw * sc, h = ph * sc;
+  let top = Math.min(0, Math.max(H - h, H / 2 - h * mid));
+  if (S.tower && S.floor) {
+    // HAD-712 (12.11, Ben: "the card hides the model"): the chosen floor's band is never under the sheet, and with the sheet at
+    // peek the whole tower (lowest to highest floor) stays above it, the picture a little smaller when it must be
+    const card = el.querySelector('.nlsr-card'), over = card && !card.hidden && card.parentNode === box, free = H - (over ? card.offsetHeight : 0);
+    const F = turn().frames[S.frame].f, n = F.length, hb = bandOf(S.frame, S.floor).hh / 1000, r = F[S.floor - 1];
+    const lo1 = Math.max(F[0][1], F[0][3]) / 1000 + hb, hiN = Math.min(F[n - 1][1], F[n - 1][3]) / 1000 - hb, yb = (r[1] + r[3]) / 2000;
+    const pad = 8, hint = el.querySelector('.nlsr-hint'), pt = hint && !hint.hidden ? hint.offsetTop + hint.offsetHeight + 4 : pad;
+    if (over && S.sheet !== 'open') { const fit = (free - 2 * pad) / ((lo1 - hiN) * ph); if (fit < sc) { sc = Math.max(fit, sc * 0.78); w = pw * sc; h = ph * sc; } }
+    top = free * 0.56 - yb * h;
+    const a = pad - hiN * h, b = free - pad - lo1 * h; // the whole tower inside the free part, when it fits
+    if (a <= b + 1) top = Math.min(Math.max(a, b), Math.max(a, top));
+    top = Math.min(top, 0); top = Math.max(top, Math.min(0, free - h)); // no gap above the picture, none above the sheet
+    top = Math.min(free - pad - (yb + hb) * h, Math.max(pt - (yb - hb) * h, top)); // the chosen band wins: always in sight
   }
+  const left = (W - w) / 2;
   const im = el.querySelector('.nlsr-img'); im.style.cssText = `left:${left}px;top:${top}px;width:${w}px;height:${h}px`;
 }
 function paintPic() {
@@ -76,7 +101,7 @@ function paintHandles() {
   const hs = el.querySelector('.nlsr-handles');
   if (S.tower) { hs.innerHTML = ''; return; }
   const tw = (AER.tall && AER.tall.towers) || {};
-  hs.innerHTML = Object.keys(tw).sort().map((k) => { const p = tw[k][Math.floor(tw[k].length * 0.72)]; return `<button type="button" class="nlsr-h nlsr-pulse" data-tower="${k}" style="left:${(p[0] * 100).toFixed(2)}%;top:${(p[1] * 100).toFixed(2)}%" aria-label="${esc(t('sr_aria_tower_handle', { tower: k }))}">${k}</button>`; }).join('');
+  hs.innerHTML = Object.keys(tw).sort().map((k) => { const p = tw[k][Math.floor(tw[k].length * 0.72)]; return `<button type="button" class="nlsr-h" data-tower="${k}" style="left:${(p[0] * 100).toFixed(2)}%;top:${(p[1] * 100).toFixed(2)}%" aria-label="${esc(t('sr_aria_tower_handle', { tower: k }))}">${k}</button>`; }).join('');
 }
 function bandOf(i, f) { // the floor's band on frame i, as picture thousandths
   const F = turn().frames[i].f, r = F[f - 1], n = F.length, hh = Math.abs(F[0][1] - F[n - 1][1]) / (n - 1) / 2;
@@ -121,33 +146,96 @@ function waHref() {
 }
 function paintCard() {
   const c = el.querySelector('.nlsr-card');
+  if (plan) { plan.destroy(); plan = null; }
   if (!S.tower || !S.floor) { c.hidden = true; return; }
-  const b = sideBearing(S.tower, S.floor, S.side), v = viewOf(S.tower, S.floor, b), wa = waHref();
-  c.hidden = false;
-  c.innerHTML = `<div class="nlsr-crow">${v ? `<img class="nlsr-cview" src="${esc(A(v.img))}" alt="${esc(t('sr_alt_card_view'))}">` : ''}
-      <div class="nlsr-cid"><div class="nlsr-ct">${t('apt_title', { tower: esc(S.tower), floor: S.floor })}</div><div class="nlsr-cf">${esc(facingText())}</div></div>
-      <div class="nlsr-cstep"><button type="button" data-fl="-1" aria-label="${esc(t('sr_aria_floor_down'))}">−</button><button type="button" data-fl="1" aria-label="${esc(t('sr_aria_floor_up'))}">+</button></div></div>
-    <button type="button" class="nlsr-cside" data-side="next">${esc(t('sr_card_other_side'))}</button>
-    <div class="nlsr-cact"><button type="button" class="nlsr-go${S.done.view ? '' : ' nlsr-pulse'}" data-go="home">${esc(t('sr_card_enter'))}</button>
-      ${wa ? `<a class="nlsr-ask" href="${esc(wa)}" target="_blank" rel="noopener" data-ev="ask">${esc(t('sr_card_ask'))}</a>` : ''}</div>`;
+  dock(c);
+  const b = sideBearing(S.tower, S.floor, S.side), v = viewOf(S.tower, S.floor, b), wa = waHref(), open = wide() || S.sheet === 'open';
+  const first = c.hidden; c.hidden = false; c.dataset.sheet = open ? 'open' : 'peek';
+  // HAD-712 (12.11.2026, Ben: "the card hides the model, it cannot be dismissed"): one row at the stage's foot (peek), the rest on
+  // the handle, the row or a swipe up; the same markup docks beside the tower on a desktop, always open there
+  const title = t('sr_peek_title', { tower: esc(S.tower), floor: S.floor, dir: esc(shortDir(b)) });
+  c.innerHTML = `<div class="nlsr-peek">${v ? `<img class="nlsr-cview" src="${esc(A(v.img))}" alt="${esc(t('sr_alt_card_view'))}">` : ''}
+      <div class="nlsr-ct" title="${esc(title.replace(/<\/?bdi>/g, ''))}">${title}</div>
+      <div class="nlsr-pctl"><div class="nlsr-cstep"><button type="button" data-fl="-1" aria-label="${esc(t('sr_aria_floor_down'))}">−</button><button type="button" data-fl="1" aria-label="${esc(t('sr_aria_floor_up'))}">+</button></div>
+        <button type="button" class="nlsr-go" data-go="home">${esc(t('sr_card_enter'))}</button></div>
+      <button type="button" class="nlsr-grab" data-sheet-t aria-expanded="${open}" aria-controls="nlsr-more" aria-label="${esc(t(open ? 'sr_sheet_less' : 'sr_sheet_more'))}"><i aria-hidden="true"></i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></button></div>
+    <div class="nlsr-more" id="nlsr-more"${open ? '' : ' hidden'}><div class="nlsr-plan"></div>
+      <div class="nlsr-mcol"><div class="nlsr-cf">${esc(facingText())}</div><small class="nlsr-pill">${esc(t('sr_plan_ill'))}</small>
+        <button type="button" class="nlsr-cside" data-side="next">${esc(t('sr_card_other_side'))}</button>
+        ${wa ? `<a class="nlsr-ask" href="${esc(wa)}" target="_blank" rel="noopener" data-ev="ask">${esc(t('sr_card_ask'))}</a>` : ''}</div></div>`;
+  if (open) { // the floor plan: the four apartments, the chosen one lit; a tap there moves the side as the old control does
+    plan = planFloor(c.querySelector('.nlsr-plan'), { lang: lang(), plate: plateAt(S.tower, S.floor), names: (bb) => cap1(shortDir(bb)),
+      pick: (s) => { S.sideChosen = true; way.set('plan'); if (s === S.side) { paintWay(); return; } pick(S.floor, s, 'plan'); turnTo(nearestFrame(S.tower, sideBearing(S.tower, S.floor, s))); } });
+    plan.set({ side: S.side, pulse: false });
+  }
+  if (first && !wide()) { // the handle nudges once a visit (down and back), never with reduced motion
+    let seen = false; try { seen = !!sessionStorage.getItem('nlsr-sheet-nudge'); sessionStorage.setItem('nlsr-sheet-nudge', '1'); } catch (e) { /* none */ }
+    if (!seen && !reduced()) { const g = c.querySelector('.nlsr-grab'); g.classList.add('is-nudge'); setTimeout(() => { const x = el.querySelector('.nlsr-grab'); if (x) x.classList.remove('is-nudge'); }, 1300); }
+  }
+  paintWay();
 }
-function nextStep() { if (!S.floor) return 'tower'; for (const [k] of STEPS.slice(1)) if (!S.done[k]) return k; return null; }
+function dock(c) { // a desktop: the card sits in the reading column beside the tower; a phone: over the stage's foot
+  const want = wide() ? el : box, before = wide() ? el.querySelector('.nlsr-map') : null;
+  if (c.parentNode !== want) want.insertBefore(c, before);
+}
+function setSheet(v, how) { // 'open' | 'peek'; how: handle, row, swipe, stage, esc
+  if (wide() || !S.floor || S.sheet === v) return;
+  S.sheet = v; paintCard(); place(); paintBand();
+  ga(v === 'open' ? 'sheet_expand' : 'sheet_collapse', { how, tower: S.tower, floor: S.floor });
+}
+/* ---------------------------------------------------------------- the waymarks (HAD-712, Ben 11.11.2026: "every next step blinks
+   so people understand where to tap; a short line beside it says what to do; it stops on the tap"): exactly one element pulses,
+   the next step; the label is the hint pill; the step bar shows the state without pulsing; the apartment screen paints its own */
+function nextWay() {
+  if (!S.tower) return 'tower';
+  if (!S.floor) return 'floor';
+  const d = way.get();
+  if (!S.sideChosen && !d.plan) return 'plan'; // a floor tapped on the tower already chose its side: skipped then
+  if (!d.enter || CK_WAY.some((k) => !d[k])) return 'enter'; // the rest happens in the apartment screen
+  return null;
+}
+const cockpitOpen = () => { const c = document.getElementById('nlck'); return !!(c && !c.hidden); };
+let cyc = null;
+function paintWay() {
+  if (!el) return;
+  clearInterval(cyc); cyc = null;
+  el.querySelectorAll('.nlsr-pulse,.nlsr-pulse-b').forEach((x) => x.classList.remove('nlsr-pulse', 'nlsr-pulse-b'));
+  const hint = el.querySelector('.nlsr-hint'), k = cockpitOpen() ? null : nextWay();
+  el.dataset.way = k || '';
+  hint.hidden = !k;
+  const cap = el.querySelector('.nlsr-cap'), back = el.querySelector('.nlsr-back');
+  if (k) {
+    hint.querySelector('b').textContent = t({ tower: 'sr_hint_tower', floor: 'sr_hint_floor', plan: 'way_plan', enter: 'way_enter' }[k]);
+    if (box && box.clientWidth) hint.style.maxWidth = Math.max(170, box.clientWidth - cap.offsetWidth - 34) + 'px'; // beside the caption, never over it
+  }
+  back.style.top = Math.max(58, k ? hint.offsetTop + hint.offsetHeight + 8 : 0) + 'px'; // "‹ All three towers" stays under the line
+  if (!k) return;
+  let tg = null;
+  if (k === 'tower') {
+    const hs = [...el.querySelectorAll('.nlsr-h')]; tg = hs[0] || null;
+    if (hs.length > 1 && !reduced()) { let i = 0; cyc = setInterval(() => { if (!hs[i].isConnected) { clearInterval(cyc); return; } hs[i].classList.remove('nlsr-pulse'); i = (i + 1) % hs.length; hs[i].classList.add('nlsr-pulse'); }, 1600); }
+  } else if (k === 'floor') tg = hint.querySelector('i'); // the target is the picture itself: the pill's dot marks it, the line says it
+  else if (k === 'plan') tg = el.querySelector('.nlsr-more:not([hidden]) .nlsr-plan') || el.querySelector('.nlsr-grab');
+  else tg = el.querySelector('.nlsr-go');
+  if (tg) tg.classList.add(k === 'floor' ? 'nlsr-pulse-b' : 'nlsr-pulse');
+}
 function paintSteps() {
-  const nx = nextStep();
-  el.querySelector('.nlsr-steps').innerHTML = STEPS.map(([k, lab], i) => { const done = k === 'tower' ? !!S.floor : !!S.done[k], on = k === nx;
-    return `<li><button type="button" class="nlsr-st${done ? ' is-done' : ''}${on ? ' is-on' : ''}" data-step="${k}"${on ? ' aria-current="step"' : ''}><span class="nlsr-sn${on ? ' nlsr-pulse-b' : ''}">${done ? '✓' : i + 1}</span><span class="nlsr-sl">${t(lab)}${k === 'basket' ? `<i class="nlsr-bk" hidden></i>` : ''}</span></button></li>`; }).join('');
+  const d = way.get(), done = { tower: !!S.floor, view: !!d.ck_view, inside: !!d.ck_inside, design: !!d.ck_design, basket: !!d.ck_basket };
+  const nx = !S.floor ? 'tower' : (STEPS.slice(1).find(([k]) => !done[k]) || [null])[0];
+  el.querySelector('.nlsr-steps').innerHTML = STEPS.map(([k, lab], i) => { const on = k === nx; // the bar shows the state; only the next target pulses
+    return `<li><button type="button" class="nlsr-st${done[k] ? ' is-done' : ''}${on ? ' is-on' : ''}" data-step="${k}"${on ? ' aria-current="step"' : ''}><span class="nlsr-sn">${done[k] ? '✓' : i + 1}</span><span class="nlsr-sl">${t(lab)}${k === 'basket' ? `<i class="nlsr-bk" hidden></i>` : ''}</span></button></li>`; }).join('');
   const n = window.__nlBasket && window.__nlBasket.state && window.__nlBasket.state.unit ? 1 : 0, i = el.querySelector('.nlsr-bk'); if (i && n) { i.hidden = false; i.textContent = n; }
 }
 function paintHint() {
-  const hint = el.querySelector('.nlsr-hint'), tn = el.querySelector('.nlsr-turn'), back = el.querySelector('.nlsr-back');
+  const tn = el.querySelector('.nlsr-turn'), back = el.querySelector('.nlsr-back');
   back.hidden = !S.tower;
-  hint.hidden = !!S.floor; hint.querySelector('b').textContent = t(S.tower ? 'sr_hint_floor' : 'sr_hint_tower');
   tn.hidden = !S.tower || !!S.floor || S.touched;
   el.dataset.mode = S.tower ? 'tower' : 'all'; el.dataset.picked = S.floor ? '1' : '0';
   const tt = el.querySelector('.nlsr-t'); tt.textContent = S.tower ? t('sr_title_tower', { tower: S.tower }) : t('sr_title_all');
   el.querySelector('.nlsr-s').textContent = t(S.tower ? (S.floor ? 'sr_sub_picked' : 'sr_sub_tower') : 'sr_sub_all');
+  paintWay();
 }
-function paint() { paintHandles(); paintCard(); paintPic(); paintSteps(); paintHint(); }
+function paint() { paintHandles(); paintHint(); paintCard(); paintPic(); paintSteps(); }
 
 /* ---------------------------------------------------------------- the moves */
 function announce() { // the basket and the page hear the choice; the apartment screen opens only when asked (quiet)
@@ -158,15 +246,19 @@ function announce() { // the basket and the page hear the choice; the apartment 
   try { history.replaceState(history.state, '', `${location.pathname}${location.search}#dira=${S.tower}${S.floor}-${Math.round(b)}`); } catch (e) { /* file: */ }
 }
 function openTower(k, quietly) {
-  S.tower = k; S.floor = null; S.side = null; S.touched = false; S.frame = nearestFrame(k, START);
+  if (S.floor && !quietly) ga('tower_change_after_card', { from: S.tower, to: k }); // HAD-712 (12.11): another tower with the card up
+  S.tower = k; S.floor = null; S.side = null; S.touched = false; S.sideChosen = false; S.sheet = 'peek'; S.frame = nearestFrame(k, START);
   preload(k, S.frame); preloadAround(k, S.frame); loadViews();
   const im = el.querySelector('.nlsr-img'); im.classList.add('is-in'); setTimeout(() => im.classList.remove('is-in'), 520);
   paint(); if (!quietly) ga('showroom_tower', { tower: k });
 }
-function toAll() { S.tower = null; S.floor = null; S.side = null; paint(); }
+function toAll() { if (S.floor) ga('tower_change_after_card', { from: S.tower, to: 'all' }); S.tower = null; S.floor = null; S.side = null; S.sideChosen = false; S.sheet = 'peek'; paint(); }
 function pick(f, side, how) {
+  const had = S.floor;
   S.floor = Math.min(Math.max(f, 1), turn().floors);
   if (side != null) S.side = side; else if (S.side == null) S.side = 0;
+  if (how === 'tap' || how === 'side' || how === 'plan') S.sideChosen = true; // a floor tapped on the tower names its side too
+  if (had && had !== S.floor) ga('floor_change_after_card', { tower: S.tower, from: had, to: S.floor, how: how || 'tap' });
   S.touched = true; paintCard(); place(); paintBand(); paintMap(); paintSteps(); paintHint(); announce();
   ga('showroom_pick', { tower: S.tower, floor: S.floor, facing: dirFrom(sideBearing(S.tower, S.floor, S.side), 'he'), how: how || 'tap' });
 }
@@ -192,7 +284,7 @@ function turnTo(target) { // turn the tower, picture by picture, the short way r
 }
 function go(where) {
   if (!S.floor) { nudge(); return; }
-  if (where === 'basket') { S.done.basket = 1; paintSteps(); if (window.__nlBasket) window.__nlBasket.open(el.querySelector('[data-step="basket"]')); ga('showroom_step', { step: 'basket' }); return; }
+  if (where === 'basket') { way.set('ck_basket'); paintSteps(); paintWay(); if (window.__nlBasket) window.__nlBasket.open(el.querySelector('[data-step="basket"]')); ga('showroom_step', { step: 'basket' }); return; }
   const b = sideBearing(S.tower, S.floor, S.side), detail = { tower: S.tower, floor: S.floor, bearing: Math.round(b), heightM: +eyeH(S.floor).toFixed(1) };
   if (!window.__nlCockpit) return;
   window.__nlCockpit.open(detail, 'showroom', where === 'home' ? null : (where === 'design' ? 'inside' : where));
@@ -204,7 +296,9 @@ function nudge() { const h = el.querySelector('.nlsr-hint'); h.classList.remove(
 function wire() {
   const st = el.querySelector('.nlsr-stage');
   let p0 = null;
-  st.addEventListener('pointerdown', (e) => { if (!S.tower || e.target.closest('button,a,.nlsr-card')) return; clearInterval(spin); p0 = { x: e.clientX, y: e.clientY, t: Date.now(), f: S.frame, moved: false }; });
+  // HAD-712 (12.11): touching or dragging the tower (or the map) drops an open sheet to peek: by intent, never by a clock
+  st.addEventListener('pointerdown', (e) => { if (!S.tower || e.target.closest('button,a,.nlsr-card')) return; clearInterval(spin); if (S.sheet === 'open') setSheet('peek', 'stage'); p0 = { x: e.clientX, y: e.clientY, t: Date.now(), f: S.frame, moved: false }; });
+  el.querySelector('.nlsr-map').addEventListener('pointerdown', () => { if (S.sheet === 'open') setSheet('peek', 'stage'); });
   st.addEventListener('pointermove', (e) => {
     if (!p0) return; const dx = e.clientX - p0.x, dy = e.clientY - p0.y;
     if (!p0.moved) { if (Math.abs(dx) < 9 || Math.abs(dx) < Math.abs(dy)) return; p0.moved = true; try { st.setPointerCapture(e.pointerId); } catch (x) { /* none */ } if (!S.touched) { S.touched = true; paintHint(); ga('showroom_turn', { tower: S.tower }); } }
@@ -213,8 +307,19 @@ function wire() {
   });
   const up = (e) => { if (!p0) return; const q = p0; p0 = null; if (!q.moved && Date.now() - q.t < 600 && Math.hypot(e.clientX - q.x, e.clientY - q.y) < 10) { if (!tapAt(e.clientX, e.clientY)) nudge(); } };
   st.addEventListener('pointerup', up); st.addEventListener('pointercancel', () => { p0 = null; });
+  // the sheet: a swipe up opens it, a swipe down folds it (the row and the handle; the page does not scroll under that drag)
+  let g0 = null, swiped = 0;
+  el.addEventListener('pointerdown', (e) => { const c = e.target.closest('.nlsr-card'); if (!c || wide() || c.parentNode !== box || e.target.closest('.nlsr-more')) return; g0 = { y: e.clientY, x: e.clientX, id: e.pointerId }; });
+  el.addEventListener('pointermove', (e) => { if (!g0 || e.pointerId !== g0.id) return; const dy = e.clientY - g0.y; if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(e.clientX - g0.x)) e.preventDefault(); });
+  const gUp = (e) => { if (!g0 || e.pointerId !== g0.id) return; const dy = e.clientY - g0.y, dx = e.clientX - g0.x; g0 = null;
+    if (Math.abs(dy) > 30 && Math.abs(dy) > Math.abs(dx)) { swiped = Date.now(); setSheet(dy < 0 ? 'open' : 'peek', 'swipe'); } };
+  el.addEventListener('pointerup', gUp); el.addEventListener('pointercancel', () => { g0 = null; });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && S.sheet === 'open' && !wide() && !cockpitOpen()) setSheet('peek', 'esc'); });
   el.addEventListener('click', (e) => {
-    const t = e.target.closest('[data-tower],[data-fl],[data-side],[data-go],[data-step],[data-act],[data-ev]'); if (!t) return;
+    if (Date.now() - swiped < 400) return; // the click that ends a swipe
+    const g = e.target.closest('[data-sheet-t]'); if (g) return setSheet(S.sheet === 'open' ? 'peek' : 'open', 'handle');
+    const t = e.target.closest('[data-tower],[data-fl],[data-side],[data-go],[data-step],[data-act],[data-ev]');
+    if (!t) { if (e.target.closest('.nlsr-peek') && S.sheet !== 'open') setSheet('open', 'row'); return; }
     if (t.dataset.tower) return openTower(t.dataset.tower);
     if (t.dataset.fl) return pick(S.floor + +t.dataset.fl, null, 'stepper');
     if (t.dataset.side) { const s = (S.side + 1) % 4; pick(S.floor, s, 'side'); return turnTo(nearestFrame(S.tower, sideBearing(S.tower, S.floor, s))); }
@@ -224,8 +329,13 @@ function wire() {
     if (t.dataset.ev) ga('showroom_' + t.dataset.ev, { tower: S.tower, floor: S.floor });
   });
   st.addEventListener('keydown', (e) => { if (!S.tower) return; if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { S.frame = stepFrame(S.tower, S.frame, e.key === 'ArrowRight' ? 1 : -1); paintPic(); e.preventDefault(); } if (S.floor && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) { pick(S.floor + (e.key === 'ArrowUp' ? 1 : -1), null, 'keys'); e.preventDefault(); } });
-  addEventListener('resize', place);
-  addEventListener('nl:cockpit', (e) => { const k = e.detail && e.detail.screen; if (k === 'view' || k === 'home') S.done.view = 1; if (k === 'inside') { S.done.inside = 1; S.done.design = 1; } if (el) { paintSteps(); paintCard(); } });
+  let wasWide = wide();
+  addEventListener('resize', () => { if (wide() !== wasWide) { wasWide = wide(); paintCard(); } place(); paintBand(); });
+  // the apartment screen opened (the step "inside" is taken) or closed: the waymarks move on
+  addEventListener('nl:cockpit', (e) => { if (e.detail && e.detail.screen) way.set('enter'); if (el) { paintSteps(); paintWay(); } });
+  // HAD-712 (12.11): the basket's "Step inside and choose a style" opens this apartment's inside in the apartment screen (basket.js reads
+  // this before world.js's own __nlInsideGo, which the earlier 3D stage sets for its example apartment once it loads)
+  window.__nlShowroomInside = () => go('inside');
 }
 function callRow() {
   const now = !!CK.availNow, room = now ? `${location.pathname}${location.search ? location.search + '&' : '?'}room=new` : '#nlsch';
@@ -242,7 +352,7 @@ export function mountShowroom(at) {
       <div class="nlsr-img"><img class="nlsr-pic" alt="" draggable="false" decoding="async"><svg class="nlsr-ov" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg><div class="nlsr-handles"></div><span class="nlsr-tag" hidden></span></div>
       <span class="nlsr-cap">${esc(t('sim'))}</span>
       <button type="button" class="nlsr-back" data-act="all" hidden>${esc(t('sr_back_all'))}</button>
-      <div class="nlsr-hint"><i class="nlsr-pulse-b"></i><b></b></div>
+      <div class="nlsr-hint" role="status"><i></i><b></b></div>
       <div class="nlsr-turn" hidden><span aria-hidden="true">↔</span> ${esc(t('sr_turn_hint'))}</div>
       <div class="nlsr-card" hidden></div>
     </div>
@@ -266,6 +376,6 @@ export function mountShowroom(at) {
 function restore() { // a shared link (#dira=B24-262) opens on that apartment
   const m = /^#dira=([ABC])(\d+)-(\d+)/.exec(location.hash || ''); if (!m || !T.towers[m[1]]) return;
   openTower(m[1], true); const f = +m[2]; S.side = sideFacing(f, +m[3]); S.floor = Math.min(Math.max(f, 1), turn().floors); S.touched = true;
-  S.frame = nearestFrame(m[1], sideBearing(m[1], S.floor, S.side)); paint();
+  S.sideChosen = true; S.frame = nearestFrame(m[1], sideBearing(m[1], S.floor, S.side)); paint();
 }
 function open() { if (!el) return; toAll(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }

@@ -1,0 +1,561 @@
+{
+ "started": "2026-11-12T00:26:35.339Z",
+ "runs": [
+  {
+   "L": "he",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "1 tower",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-h"
+     ],
+     "label": "הקישו על מגדל",
+     "expected": "הקישו על מגדל",
+     "ok": true
+    },
+    {
+     "name": "2 floor on the tower",
+     "pulses": 1,
+     "what": [
+      "i."
+     ],
+     "label": "הקישו על קומה במגדל",
+     "expected": "הקישו על קומה במגדל",
+     "ok": true
+    },
+    {
+     "name": "3 after the floor tap: step inside (the side came with the tap, the plan step skipped)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "הצעד הבא: להיכנס לדירה",
+     "expected": "הצעד הבא: להיכנס לדירה",
+     "ok": true
+    },
+    {
+     "name": "3b expanded (the pulse stays on step inside)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "הצעד הבא: להיכנס לדירה",
+     "expected": "הצעד הבא: להיכנס לדירה",
+     "ok": true
+    },
+    {
+     "name": "3c plan apartment tapped",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "הצעד הבא: להיכנס לדירה",
+     "expected": "הצעד הבא: להיכנס לדירה",
+     "ok": true
+    },
+    {
+     "name": "4 apartment screen: the view",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[view]"
+     ],
+     "label": "כאן מקישים על הנוף, עם פירוט",
+     "expected": "כאן מקישים על הנוף, עם פירוט",
+     "ok": true,
+     "heroDetails": 0
+    },
+    {
+     "name": "5 view screen (details on): back to the apartment",
+     "pulses": 1,
+     "what": [
+      "button.nlck-back"
+     ],
+     "label": "הצעד הבא: חזרה לדירה",
+     "expected": "הצעד הבא: חזרה לדירה",
+     "ok": true
+    },
+    {
+     "name": "6 apartment screen: inside",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[inside]"
+     ],
+     "label": "הצעד הבא: הדירה מבפנים, ב־360°",
+     "expected": "הצעד הבא: הדירה מבפנים, ב־360°",
+     "ok": true
+    },
+    {
+     "name": "7 inside: a finish",
+     "pulses": 1,
+     "what": [
+      "button.[pano 1]"
+     ],
+     "label": "כאן בוחרים גימור",
+     "expected": "כאן בוחרים גימור",
+     "ok": true
+    },
+    {
+     "name": "8 My selection",
+     "pulses": 1,
+     "what": [
+      "button.nlck-ic.nlck-ic--bk[basket]"
+     ],
+     "label": "הצעד הבא: סל הדירה שלכם",
+     "expected": "הצעד הבא: סל הדירה שלכם",
+     "ok": true
+    },
+    {
+     "name": "9 the video call",
+     "pulses": 1,
+     "what": [
+      "a.nlck-call[call]"
+     ],
+     "label": "הצעד הבא: שיחת וידאו עם נציג נדל״ן",
+     "expected": "הצעד הבא: שיחת וידאו עם נציג נדל״ן",
+     "ok": true,
+     "callHref": "#nlsch"
+    },
+    {
+     "name": "10 all done: no pulse",
+     "pulses": 0,
+     "what": [],
+     "label": "",
+     "expected": "",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "worldOnLoad": [],
+    "peek": {
+     "stageH": 472,
+     "stageW": 366,
+     "cardH": 70,
+     "share": 0.148,
+     "parentIsStage": true,
+     "titleOneLine": "מגדל B · קומה 20 · מערב",
+     "band": {
+      "top": 370.2231750488281,
+      "bottom": 382.49456787109375,
+      "cx": 193.74034118652344,
+      "stageTop": 182.96875,
+      "stageBottom": 654.96875,
+      "cardTop": 584.96875,
+      "visible": true
+     },
+     "small": []
+    },
+    "basketDesign": {
+     "goInside": true,
+     "notAvailable": false
+    },
+    "reach": {
+     "lowest": {
+      "y": 582,
+      "tower": "B",
+      "floor": 1,
+      "bearing": 300
+     },
+     "highest": {
+      "y": 186,
+      "tower": "B",
+      "floor": 37,
+      "bearing": 255
+     },
+     "floors": 37,
+     "peekShareAfter": 0.148,
+     "bandAfter": {
+      "top": 233.42953491210938,
+      "bottom": 250.77871704101562,
+      "cx": 196.22840118408203,
+      "stageTop": 182.96875,
+      "stageBottom": 654.96875,
+      "cardTop": 584.96875,
+      "visible": true
+     }
+    },
+    "expanded": {
+     "state": "open",
+     "cardH": 204,
+     "share": 0.433,
+     "band": {
+      "top": 326.9971923828125,
+      "bottom": 339.1097412109375,
+      "cx": 193.718994140625,
+      "stageTop": 182.96875,
+      "stageBottom": 654.96875,
+      "cardTop": 450.578125,
+      "visible": true
+     },
+     "plan": true,
+     "small": [],
+     "ariaExpanded": "true",
+     "labels": [
+      "צפון",
+      "מזרח",
+      "דרום",
+      "מערב",
+      "ליבה",
+      "צ"
+     ]
+    },
+    "plan": {
+     "tapped": "צפון",
+     "before": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 275
+     },
+     "after": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 5
+     },
+     "changed": true,
+     "facingEvents": 1,
+     "lastFacing": {
+      "tower": "B",
+      "floor": 21,
+      "bearing": 5,
+      "side": 0,
+      "heightM": 81.6,
+      "facing": "צפונה",
+      "label": "מגדל B",
+      "source": "showroom",
+      "quiet": true
+     },
+     "pressed": [
+      "צפון"
+     ],
+     "mapline": "הדירה פונה צפונה: הירקון והצפון",
+     "sheet": "open"
+    },
+    "fold": {
+     "handle": "peek",
+     "esc": "peek",
+     "stage": "peek",
+     "swipe": "peek",
+     "swipePageScroll": 0,
+     "map": "peek",
+     "ga": {
+      "floor_change_after_card:tap": 3,
+      "floor_change_after_card:stepper": 16,
+      "sheet_expand:handle": 5,
+      "sheet_collapse:handle": 1,
+      "sheet_collapse:esc": 1,
+      "sheet_collapse:stage": 2,
+      "sheet_collapse:swipe": 1
+     }
+    },
+    "hscrollShowroom": false,
+    "viewDetails": {
+     "labels": 6,
+     "tries": [
+      {
+       "cap": "הדמיה להמחשה · קומה 30 · צפונה",
+       "labels": 6
+      }
+     ],
+     "names": [
+      "ספורטק | כ-1.3 ק״מ",
+      "מגדלור רידינג | כ-2.3 ק״מ",
+      "תחנת הכוח רידינג | כ-2.3 ק״מ",
+      "רמת אביב | כ-2.5 ק״מ",
+      "אוניברסיטת תל אביב | כ-3.2 ק״מ",
+      "פולק | 2 דק׳ הליכה"
+     ],
+     "toggleOff": {
+      "off": true,
+      "pressed": "true"
+     },
+     "toggleOn": {
+      "on": 6
+     },
+     "threeDButton": "לפתוח את נוף התלת ממד של הקומה",
+     "small": []
+    },
+    "worldBefore3d": 0,
+    "threeBeforeInside": 0,
+    "basketAfter": {
+     "open": true,
+     "notAvailable": false,
+     "style": "warm"
+    },
+    "hscrollCockpit": false,
+    "smallCockpit": [],
+    "hebrew": "n/a",
+    "threeD": {
+     "wanted": "B|30|353.38",
+     "worldRequestedBeforeTap": 0,
+     "worldRequestedAfterTap": 1,
+     "mounted": true,
+     "stagebox": {
+      "display": "block",
+      "top": 198,
+      "h": 1583
+     },
+     "state": {
+      "mode": "tower",
+      "tower": "B",
+      "floor": 30,
+      "facing": 353.38,
+      "season": 9,
+      "hour": 10,
+      "tod": "day",
+      "view": "window",
+      "cat": "transport"
+     },
+     "cockpitHidden": true
+    },
+    "hscrollEnd": false
+   },
+   "patched": [],
+   "errs": [],
+   "failed": [],
+   "served": [],
+   "ok": true
+  },
+  {
+   "L": "he",
+   "w": 1440,
+   "h": 900,
+   "steps": [
+    {
+     "name": "1 tower",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-h"
+     ],
+     "label": "הקישו על מגדל",
+     "expected": "הקישו על מגדל",
+     "ok": true
+    },
+    {
+     "name": "2 floor on the tower",
+     "pulses": 1,
+     "what": [
+      "i."
+     ],
+     "label": "הקישו על קומה במגדל",
+     "expected": "הקישו על קומה במגדל",
+     "ok": true
+    },
+    {
+     "name": "3 after the floor tap: step inside (the side came with the tap, the plan step skipped)",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "הצעד הבא: להיכנס לדירה",
+     "expected": "הצעד הבא: להיכנס לדירה",
+     "ok": true
+    },
+    {
+     "name": "3c plan apartment tapped",
+     "pulses": 1,
+     "what": [
+      "button.nlsr-go"
+     ],
+     "label": "הצעד הבא: להיכנס לדירה",
+     "expected": "הצעד הבא: להיכנס לדירה",
+     "ok": true
+    },
+    {
+     "name": "4 apartment screen: the view",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[view]"
+     ],
+     "label": "כאן מקישים על הנוף, עם פירוט",
+     "expected": "כאן מקישים על הנוף, עם פירוט",
+     "ok": true,
+     "heroDetails": 0
+    },
+    {
+     "name": "5 view screen (details on): back to the apartment",
+     "pulses": 1,
+     "what": [
+      "button.nlck-back"
+     ],
+     "label": "הצעד הבא: חזרה לדירה",
+     "expected": "הצעד הבא: חזרה לדירה",
+     "ok": true
+    },
+    {
+     "name": "6 apartment screen: inside",
+     "pulses": 1,
+     "what": [
+      "button.nlck-tile[inside]"
+     ],
+     "label": "הצעד הבא: הדירה מבפנים, ב־360°",
+     "expected": "הצעד הבא: הדירה מבפנים, ב־360°",
+     "ok": true
+    },
+    {
+     "name": "7 inside: a finish",
+     "pulses": 1,
+     "what": [
+      "button.[pano 1]"
+     ],
+     "label": "כאן בוחרים גימור",
+     "expected": "כאן בוחרים גימור",
+     "ok": true
+    },
+    {
+     "name": "8 My selection",
+     "pulses": 1,
+     "what": [
+      "button.nlck-ic.nlck-ic--bk[basket]"
+     ],
+     "label": "הצעד הבא: סל הדירה שלכם",
+     "expected": "הצעד הבא: סל הדירה שלכם",
+     "ok": true
+    },
+    {
+     "name": "9 the video call",
+     "pulses": 1,
+     "what": [
+      "a.nlck-call[call]"
+     ],
+     "label": "הצעד הבא: שיחת וידאו עם נציג נדל״ן",
+     "expected": "הצעד הבא: שיחת וידאו עם נציג נדל״ן",
+     "ok": true,
+     "callHref": "#nlsch"
+    },
+    {
+     "name": "10 all done: no pulse",
+     "pulses": 0,
+     "what": [],
+     "label": "",
+     "expected": "",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "worldOnLoad": [],
+    "peek": {
+     "stageH": 680,
+     "stageW": 520,
+     "cardH": 306,
+     "share": 0.45,
+     "parentIsStage": false,
+     "titleOneLine": "מגדל B · קומה 20 · מערב",
+     "band": {
+      "top": 475.7219543457031,
+      "bottom": 493.67401123046875,
+      "cx": 278.1800003051758,
+      "stageTop": 106.1875,
+      "stageBottom": 786.1875,
+      "cardTop": 786.1875,
+      "visible": true
+     },
+     "small": []
+    },
+    "basketDesign": {
+     "goInside": true,
+     "notAvailable": false
+    },
+    "desktop": {
+     "cardBesideTower": true,
+     "side": "right",
+     "expectSide": "right",
+     "plan": true,
+     "small": [],
+     "band": {
+      "top": 475.7219543457031,
+      "bottom": 493.67401123046875,
+      "cx": 278.1800003051758,
+      "stageTop": 106.1875,
+      "stageBottom": 786.1875,
+      "cardTop": 786.1875,
+      "visible": true
+     }
+    },
+    "plan": {
+     "tapped": "צפון",
+     "before": {
+      "tower": "B",
+      "floor": 20,
+      "bearing": 276
+     },
+     "after": {
+      "tower": "B",
+      "floor": 20,
+      "bearing": 6
+     },
+     "changed": true,
+     "mapline": "הדירה פונה צפונה: הירקון והצפון"
+    },
+    "hscrollShowroom": false,
+    "viewDetails": {
+     "labels": 6,
+     "tries": [
+      {
+       "cap": "הדמיה להמחשה · קומה 20 · צפונה",
+       "labels": 6
+      }
+     ],
+     "names": [
+      "ספורטק | כ-1.3 ק״מ",
+      "תחנת הכוח רידינג | כ-2.3 ק״מ",
+      "רמת אביב | כ-2.5 ק״מ",
+      "אוניברסיטת תל אביב | כ-3.2 ק״מ",
+      "פולק | 2 דק׳ הליכה",
+      "תיאטרון תל אביב | 3 דק׳ הליכה"
+     ],
+     "toggleOff": {
+      "off": true,
+      "pressed": "true"
+     },
+     "toggleOn": {
+      "on": 6
+     },
+     "threeDButton": "לפתוח את נוף התלת ממד של הקומה",
+     "small": []
+    },
+    "worldBefore3d": 0,
+    "threeBeforeInside": 0,
+    "basketAfter": {
+     "open": true,
+     "notAvailable": false,
+     "style": "warm"
+    },
+    "hscrollCockpit": false,
+    "smallCockpit": [],
+    "hebrew": "n/a",
+    "threeD": {
+     "wanted": "B|20|5.88",
+     "worldRequestedBeforeTap": 0,
+     "worldRequestedAfterTap": 1,
+     "mounted": true,
+     "stagebox": {
+      "display": "block",
+      "top": 198,
+      "h": 1136
+     },
+     "state": {
+      "mode": "tower",
+      "tower": "B",
+      "floor": 20,
+      "facing": 5.8799999999999955,
+      "season": 9,
+      "hour": 10,
+      "tod": "day",
+      "view": "window",
+      "cat": "transport"
+     },
+     "cockpitHidden": true
+    },
+    "hscrollEnd": false
+   },
+   "patched": [],
+   "errs": [],
+   "failed": [],
+   "served": [],
+   "ok": true
+  }
+ ],
+ "finished": "2026-11-12T00:29:00.103Z"
+}

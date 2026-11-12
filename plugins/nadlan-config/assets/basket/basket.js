@@ -1,3 +1,4 @@
+/* HAD-712 (12.11.2026): waymarks, view with details, floor plan (the Kikar showroom's inside counts as the way inside: the Design section offers it). */
 /* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /* The apartment's basket (design system L9Nqz7Viv7K3MYeZrBc9s8 version 86, BasketOne; the journey: BuyJourney v78).
  * What the buyer picked on the project page, in one drawer: the example apartment (the stage's nl:floor / nl:facing), the
@@ -174,9 +175,14 @@
     if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   }
   // 1.72.392: a world page (the shared 3D world) offers its own way inside (window.__nlInsideGo: the example apartment's 360)
-  const insideOk = () => !!document.querySelector('.nlat__go') || typeof window.__nlInsideGo === 'function';
+  // HAD-712 (12.11.2026): the Kikar showroom (world/showroom.js) announces window.__nlShowroomInside, the apartment screen's inside
+  // in 360 with its finishes; the basket checked only the earlier stage's hooks, so Kikar read "not available yet". It comes first.
+  const showroomIn = () => typeof window.__nlShowroomInside === 'function';
+  const worldIn = () => showroomIn() || typeof window.__nlInsideGo === 'function';
+  const insideOk = () => showroomIn() || !!document.querySelector('.nlat__go') || typeof window.__nlInsideGo === 'function';
   function goInside() {
     close();
+    if (showroomIn()) { window.__nlShowroomInside(); return; }
     const b = document.querySelector('.nlat__go');
     if (b) b.click(); else if (typeof window.__nlInsideGo === 'function') window.__nlInsideGo();
   }
@@ -207,7 +213,7 @@
     const s = sec(T('bk_design', 'העיצוב'), T('bk_design_sub', 'רעיון עיצוב להמחשה בדירה לדוגמה, לא המפרט של היזם.'));
     const has = insideOk();
     // 1.72.392: on a world page "bare" is the original rendered design (furnished), not a design choice
-    if (S.style && !(S.style === 'bare' && typeof window.__nlInsideGo === 'function')) {
+    if (S.style && !(S.style === 'bare' && worldIn())) {
       const row = h('div', 'nlbk__item');
       row.appendChild(h('span', 'nlbk__sw nlbk__sw--' + S.style, null, { 'aria-hidden': 'true' }));
       const tx = h('div', 'nlbk__itx');

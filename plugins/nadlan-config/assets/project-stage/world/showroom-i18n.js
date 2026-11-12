@@ -1,4 +1,5 @@
-/* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language.
+/* HAD-712 (12.11.2026): waymarks, view with details, floor plan (and the card as a sheet: peek and expanded).
+ * HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language.
  * The words of the Kikar HaMedina showroom, the apartment screen (cockpit), the journey and the basket, in Hebrew, English and
  * French, keyed as in docs/research/2026-11-11-kikar-journey/showroom-i18n-inventory.json. The Hebrew values are the exact
  * strings the page printed before this file (same characters, ״ and ־, same arrows), so the Hebrew page renders identically.
@@ -52,7 +53,7 @@ const he = {
   sr_aria_floor_down: 'קומה אחת למטה', sr_aria_floor_up: 'קומה אחת למעלה',
   sr_card_other_side: 'לכיוון אחר באותה קומה ‹',
   sr_card_enter: 'להיכנס לדירה',
-  sr_card_ask: 'תוכניות ומחירים לדירה',
+  sr_card_ask: 'תוכניות ומחירים',
   sr_hint_floor: 'הקישו על קומה במגדל', sr_hint_tower: 'הקישו על מגדל',
   sr_title_tower: 'מגדל ${tower}, לבדו',
   sr_title_all: 'בחרו דירה במגדלי כיכר המדינה',
@@ -220,6 +221,23 @@ const he = {
   bk_legal: 'הסל אינו רכישה והדירה לא נמכרת באתר. בקשת שריון והמחירים מול הנציג; כל תשלום על הדירה רק לחשבון הליווי של הפרויקט, מול ערבות לפי חוק המכר. נדל״ן אינו מתווך ואינו היזם. הסל נשמר רק בדפדפן הזה.',
   bk_clear: 'לרוקן את הסל',
   bk_aria_count: 'פריטים בסל',
+  // HAD-712 (12.11.2026): the card as a sheet, the floor plan, the waymarks, the view with details
+  sr_peek_title: 'מגדל ${tower} · קומה <bdi>${floor}</bdi> · ${dir}',
+  sr_sheet_more: 'עוד על הדירה', sr_sheet_less: 'לקפל את הכרטיס',
+  sr_plan_ill: 'שרטוט להמחשה, לא תוכנית רשמית',
+  way_plan: 'כאן מקישים על דירה בתוכנית',
+  way_enter: 'הצעד הבא: להיכנס לדירה',
+  way_view: 'כאן מקישים על הנוף, עם פירוט',
+  way_inside: 'הצעד הבא: הדירה מבפנים, ב־360°',
+  way_design: 'כאן בוחרים גימור',
+  way_design_home: 'הצעד הבא: לבחור גימור בפנים',
+  way_basket: 'הצעד הבא: סל הדירה שלכם',
+  way_call: 'הצעד הבא: שיחת וידאו עם נציג נדל״ן',
+  way_back: 'הצעד הבא: חזרה לדירה',
+  vd_pic: 'תמונה', vd_details: 'נוף עם פירוט', vd_aria: 'איך להציג את הנוף',
+  vd_note: 'המרחקים בקו אווירי מהמגרש. כל שם עומד במקום שבו המקום נמצא באמת בכיוון הזה.',
+  vd_3d: 'לפתוח את נוף התלת ממד של הקומה',
+  vd_3d_note: 'נטען רק כשמקישים, כדי שהדף יישאר מהיר בטלפון.',
   bk_open: 'לסל הדירה',
 };
 
@@ -258,8 +276,8 @@ const en = {
   sr_alt_card_view: 'The view in this direction, illustrative visualisation',
   sr_aria_floor_down: 'One floor down', sr_aria_floor_up: 'One floor up',
   sr_card_other_side: 'Another direction on this floor ›',
-  sr_card_enter: 'Step inside the apartment',
-  sr_card_ask: 'Plans & prices for this apartment',
+  sr_card_enter: 'Step inside',
+  sr_card_ask: 'Plans & prices',
   sr_hint_floor: 'Tap a floor on the tower', sr_hint_tower: 'Tap a tower',
   sr_title_tower: 'Tower ${tower}, on its own',
   sr_title_all: 'Choose an apartment at Kikar Hamedina Towers',
@@ -424,6 +442,23 @@ const en = {
   bk_legal: 'Your selection is not a purchase, and the apartment is not sold on this site. Reservation requests and prices go through a NadLan advisor; any payment for the apartment goes only to the project’s supervised (escrow) account, against a guarantee under the Sale (Apartments) Law. NadLan is not a broker and not the developer. Your selection is saved only in this browser.',
   bk_clear: 'Clear my selection',
   bk_aria_count: 'Items in my selection',
+  // HAD-712 (12.11.2026): the card as a sheet, the floor plan, the waymarks, the view with details
+  sr_peek_title: 'Tower ${tower} · Floor ${floor} · ${dir}',
+  sr_sheet_more: 'More about this apartment', sr_sheet_less: 'Fold the card',
+  sr_plan_ill: 'Illustrative drawing, not an official plan',
+  way_plan: 'Tap an apartment on the plan',
+  way_enter: 'Next: step inside the apartment',
+  way_view: 'Tap “The view”: names and distances on it',
+  way_inside: 'Next: the inside, in 360°',
+  way_design: 'Tap a finish to try it',
+  way_design_home: 'Next: choose a finish inside',
+  way_basket: 'Next: open My selection',
+  way_call: 'Next: a video call with a NadLan advisor',
+  way_back: 'Next: back to the apartment',
+  vd_pic: 'Picture', vd_details: 'View with details', vd_aria: 'How to show the view',
+  vd_note: 'Distances are in a straight line from the plot. Each name sits where the place really is in this direction.',
+  vd_3d: 'Open the live 3D view of this floor',
+  vd_3d_note: 'Loads only when you tap it, so the page stays fast on a phone.',
   bk_open: 'View my selection',
 };
 
@@ -462,8 +497,8 @@ const fr = {
   sr_alt_card_view: 'La vue dans cette direction, visualisation illustrative',
   sr_aria_floor_down: 'Un étage plus bas', sr_aria_floor_up: 'Un étage plus haut',
   sr_card_other_side: 'Une autre orientation au même étage ›',
-  sr_card_enter: 'Entrer dans l’appartement',
-  sr_card_ask: 'Plans et prix de cet appartement',
+  sr_card_enter: 'Entrer',
+  sr_card_ask: 'Plans et prix',
   sr_hint_floor: 'Touchez un étage de la tour', sr_hint_tower: 'Touchez une tour',
   sr_title_tower: 'La tour ${tower}, seule',
   sr_title_all: 'Choisissez un appartement dans les tours Kikar Hamedina',
@@ -628,6 +663,23 @@ const fr = {
   bk_legal: 'Votre sélection n’est pas un achat, et l’appartement n’est pas vendu sur ce site. Les demandes de réservation et les prix passent par un conseiller NadLan ; tout paiement pour l’appartement va uniquement au compte séquestre du projet, contre une garantie selon la loi sur la vente (appartements). NadLan n’est ni courtier ni promoteur. Votre sélection est enregistrée uniquement dans ce navigateur.',
   bk_clear: 'Vider ma sélection',
   bk_aria_count: 'Éléments dans ma sélection',
+  // HAD-712 (12.11.2026): the card as a sheet, the floor plan, the waymarks, the view with details
+  sr_peek_title: 'Tour ${tower} · Étage ${floor} · ${dir}',
+  sr_sheet_more: 'En savoir plus sur cet appartement', sr_sheet_less: 'Replier la fiche',
+  sr_plan_ill: 'Dessin indicatif, pas un plan officiel',
+  way_plan: 'Touchez un appartement sur le plan',
+  way_enter: 'Étape suivante : entrer dans l’appartement',
+  way_view: 'Touchez « La vue » : les noms et les distances',
+  way_inside: 'Étape suivante : l’intérieur, en 360°',
+  way_design: 'Touchez une finition pour l’essayer',
+  way_design_home: 'Étape suivante : choisir une finition à l’intérieur',
+  way_basket: 'Étape suivante : ouvrir Ma sélection',
+  way_call: 'Étape suivante : un appel vidéo avec un conseiller NadLan',
+  way_back: 'Étape suivante : retour à l’appartement',
+  vd_pic: 'Image', vd_details: 'Vue avec détails', vd_aria: 'Affichage de la vue',
+  vd_note: 'Distances à vol d’oiseau depuis le terrain. Chaque nom est placé là où se trouve vraiment le lieu dans cette direction.',
+  vd_3d: 'Ouvrir la vue 3D en direct de cet étage',
+  vd_3d_note: 'Se charge seulement quand vous touchez, pour que la page reste rapide sur un téléphone.',
   bk_open: 'Voir ma sélection',
 };
 

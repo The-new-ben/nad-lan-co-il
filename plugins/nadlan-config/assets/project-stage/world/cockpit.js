@@ -1,3 +1,4 @@
+/* HAD-712 (12.11.2026): waymarks, view with details, floor plan (the apartment screen's waymarks, the view with details, the live 3D on a tap, My selection in the bar). */
 /* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /*
  * The apartment cockpit, version 2 (HAD-699, Ben 10.11.2026: "a person presses, he enters the cockpit of his life... from there
@@ -38,7 +39,19 @@ const ICON = {
   video: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>',
   wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1.2-1.2 2 1-.5 1.7c-3.5.4-8-4-7.6-7.6L10.3 7l1 2z"/></svg>',
   heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+  bag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
 };
+/* HAD-712 (12.11.2026): the waymarks of the apartment screen, in the order Ben gave: the view (with details), inside 360, a finish,
+   My selection, the video call. Exactly one element pulses (showroom.css .nlsr-pulse), a line above the bar says what to do; the
+   progress is shared with showroom.js (sessionStorage, this page, this tab) */
+const WK = 'nlsr-way:' + location.pathname;
+const way = {
+  get() { try { return JSON.parse(sessionStorage.getItem(WK) || '{}') || {}; } catch (e) { return {}; } },
+  set(k) { const o = way.get(); if (o[k]) return; o[k] = 1; try { sessionStorage.setItem(WK, JSON.stringify(o)); } catch (e) { /* private mode */ } },
+};
+const WAY = ['ck_view', 'ck_inside', 'ck_design', 'ck_basket', 'ck_call'];
+const PSTYLE = ['bare', 'warm', 'light', 'stone']; // PANOS index -> the basket's style key (nl:view)
+let vdOn = true, VD = null, from3d = false; const vds = []; // the view with details: on when the view first opens
 
 let D = null, PL = null, el = null, cur = null, avail = null, open = null, viaJourney = false;
 const calc = { price: null, extra: false, size: null, share: null, years: null, rate: null, fee: null };
@@ -88,6 +101,7 @@ function home(c) {
   const hero = v ? A(v.big) : A('aerial-1600.webp');
   const tile = (k, lab, img, big) => `<button type="button" class="nlck-tile" data-open="${k}">${img ? `<img src="${esc(img)}" alt="" loading="lazy">` : ''}${big ? `<span class="big">${big}</span>` : ''}<span class="lab">${lab}</span></button>`;
   const firstFac = A('tour/' + FACS[0][0] + '-card.jpg');
+  // HAD-712 (12.11): the names are drawn on the view screen (the tile "the view"), not on this small hero, where they covered the title
   return `<div class="nlck-hero"><img src="${esc(hero)}" alt="${esc(t('ck_alt_hero', { label: label(c) }))}">
       <div class="nlck-top"><button type="button" class="nlck-back" data-open="">${esc(t('ck_back'))}</button><span class="nlck-cap">${esc(t('sim'))}${v && v.floor !== c.floor ? t('ck_cap_view_from', { floor: v.floor }) : ''}</span></div>
       <div class="nlck-ht"><h2 class="nlck-title" tabindex="-1">${t('apt_title', { tower: esc(c.tower), floor: esc(c.floor) })}</h2><p>${t('faces_line', { dir: esc(dirWord(c.bearing)), sector: esc(sectorOf(c.bearing)) })}</p>
@@ -105,14 +119,19 @@ function home(c) {
       ${tile('save', t('ck_tile_save'), '', `${bdi(String(cmpList().length))}<small>${esc(t('ck_tile_saved'))}</small>`)}
     </div>`;
 }
+function vdAttr(v) { return ` data-vdimg="${esc(v.tower)}|${esc(v.floor)}|${esc(v.bearing)}"`; } // the picture's own tower, floor, bearing
+function vdToggle() { // "Picture" / "View with details" (never "the names"): two states, on by default
+  return `<div class="nlck-vdt" role="group" aria-label="${esc(t('vd_aria'))}"><button type="button" data-vdt="0" aria-pressed="${!vdOn}">${esc(t('vd_pic'))}</button><button type="button" data-vdt="1" aria-pressed="${vdOn}">${esc(t('vd_details'))}</button></div>`;
+}
 function subTop(title) { return `<div class="nlck-subtop"><button type="button" class="nlck-back" data-open="">${esc(t('ck_back_apt'))}</button><span>${esc(title)}</span></div>`; }
 function scrView(c) {
   const v = sub.view || viewOf(c);
   if (!v) return subTop(t('ck_tile_view')) + `<p class="nlck-pad">${esc(t('ck_view_none'))}</p>`;
   const fl = floorsOf(c), sd = sidesOf(c);
-  return `${subTop(label(c))}<div class="nlck-pan" data-pan><img src="${esc(A(v.big))}" alt="${esc(t('ck_alt_view', { floor: v.floor, dir: dirWord(v.bearing) }))}"></div>
-    <span class="nlck-cap" style="top:64px;bottom:auto">${t('ck_cap_view', { floor: v.floor, dir: esc(dirWord(v.bearing)) })}</span>
-    <div class="nlck-under"><div class="nlck-hint">${esc(t('ck_view_drag'))}</div>
+  return `${subTop(label(c))}<div class="nlck-pan" data-pan><div class="nlck-vdh"><img src="${esc(A(v.big))}" alt="${esc(t('ck_alt_view', { floor: v.floor, dir: dirWord(v.bearing) }))}"${vdAttr(v)}></div></div>
+    <span class="nlck-cap" style="top:112px;bottom:auto">${t('ck_cap_view', { floor: v.floor, dir: esc(dirWord(v.bearing)) })}</span>${vdToggle()}
+    <div class="nlck-under"><div class="nlck-hint">${esc(t('ck_view_drag'))}</div><p class="nlck-vdnote" data-vdn${vdOn ? '' : ' hidden'}>${esc(t('vd_note'))}</p>
+      <button type="button" class="nlck-3d" data-act="3d">${esc(t('vd_3d'))}</button><p class="nlck-vdnote">${esc(t('vd_3d_note'))}</p>
       ${fl.length > 1 ? `<div class="nlck-row-t">${esc(t('ck_row_floors'))}</div><div class="nlck-strip">${fl.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="floor" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${t('floor_n', { floor: bdi(x.floor) })}</b></button>`).join('')}</div>` : ''}
       ${sd.length > 1 ? `<div class="nlck-row-t">${esc(t('ck_row_sides'))}</div><div class="nlck-strip">${sd.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="side" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${esc(dirWord(x.bearing))}</b></button>`).join('')}</div>` : ''}
     </div>`;
@@ -235,8 +254,11 @@ function render() {
   const body = $('.nlck-body', el);
   const c = cur;
   const h = { view: () => scrView(c), inside: () => scrInside(c), fac: scrFac, plan: scrPlan, price: scrPrice, area: scrArea, film: scrFilm, save: () => scrSave(c) }[open];
+  vds.splice(0).forEach((d) => d.destroy());
   body.innerHTML = h ? h() : home(c);
   body.dataset.screen = el.dataset.screen = open || 'home';
+  if (open === 'view') way.set('ck_view'); if (open === 'inside') way.set('ck_inside');
+  body.querySelectorAll('img[data-vdimg]').forEach(mountVd);
   try { dispatchEvent(new CustomEvent('nl:cockpit', { detail: { screen: open || 'home' } })); } catch (e) { /* none */ } // HAD-712: the showroom's steps follow
   body.scrollTop = 0;
   const p3 = $('[data-360]', body); if (p3) pano(p3, p3.dataset['360'], p3.dataset.doors ? DOORS : null);
@@ -244,19 +266,54 @@ function render() {
   if (open === 'area' && !PL) loadPlaces().then(() => { if (open === 'area') render(); });
   paintBar();
 }
+function mountVd(img) { // HAD-712 (12.11): the names of the places over the rendered window view (world/viewdetails.js, loaded on first use)
+  const [tw, fl, br] = img.dataset.vdimg.split('|');
+  if (!VD) VD = import(new URL('viewdetails.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href);
+  VD.then((m) => m.viewDetails(img, { data: A('details.json'), lang: lang() })).then((d) => {
+    if (!img.isConnected) { d.destroy(); return; }
+    d.set({ tower: tw, floor: +fl, bearing: +br }); d.show(vdOn); vds.push(d);
+  }).catch((e) => console.warn('[cockpit] view details', e));
+}
+function setVd(on) {
+  vdOn = !!on; vds.forEach((d) => d.show(vdOn));
+  el.querySelectorAll('[data-vdt]').forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.vdt === '1') === vdOn)));
+  el.querySelectorAll('[data-vdn]').forEach((p) => { p.hidden = !vdOn; });
+  ga('cockpit_view_details', { on: vdOn });
+}
+function paintWay() { // exactly one pulse: the next step of the apartment screen, with its line above the bar
+  if (!el) return;
+  el.querySelectorAll('.nlsr-pulse').forEach((x) => x.classList.remove('nlsr-pulse'));
+  const wl = $('.nlck-wl', el);
+  const d = way.get(), k = el.hidden ? null : WAY.find((x) => !d[x] && !(x === 'ck_basket' && !window.__nlBasket));
+  if (!k) { delete el.dataset.way; if (wl) wl.hidden = true; return; }
+  const scr = open || 'home', tile = (x) => $(`.nlck-tile[data-open="${x}"]`, el), back = () => $('.nlck-subtop .nlck-back', el);
+  let tg = null, lab = '';
+  if (k === 'ck_view') { if (scr === 'home') { tg = tile('view'); lab = 'way_view'; } else { tg = back(); lab = 'way_back'; } }
+  else if (k === 'ck_inside') { if (scr === 'home') { tg = tile('inside'); lab = 'way_inside'; } else { tg = back(); lab = 'way_back'; } }
+  else if (k === 'ck_design') {
+    if (scr === 'inside') { tg = sub.room ? $('[data-room="living"]', el) : $('[data-pano][aria-pressed="false"]', el); lab = 'way_design'; }
+    else if (scr === 'home') { tg = tile('inside'); lab = 'way_design_home'; } else { tg = back(); lab = 'way_back'; }
+  } else if (k === 'ck_basket') { tg = $('[data-act="basket"]', el); lab = 'way_basket'; }
+  else { tg = $('.nlck-call', el); lab = 'way_call'; }
+  el.dataset.way = k;
+  if (tg) tg.classList.add('nlsr-pulse');
+  if (wl) { wl.hidden = !tg; $('b', wl).textContent = t(lab); }
+}
 function paintBar() {
   const bar = el && $('.nlck-bar', el); if (!bar) return;
   const room = avail ? `${location.pathname}${location.search ? location.search + '&' : '?'}room=new${location.hash}` : '#nlsch';
   bar.innerHTML = `<a class="nlck-call" data-act="call" href="${esc(room)}">${ICON.video}${esc(t(avail ? 'ck_call_now' : 'ck_call'))}</a>
     ${C.wa ? `<a class="nlck-ic nlck-ic--wa" href="${esc(C.wa)}" target="_blank" rel="noopener" aria-label="${esc(t('ck_aria_wa'))}" data-act="wa">${ICON.wa}</a>` : ''}
-    <button type="button" class="nlck-ic" data-act="save" aria-label="${esc(t('ck_aria_save'))}" aria-pressed="${isSaved()}">${ICON.heart}</button>`;
+    <button type="button" class="nlck-ic" data-act="save" aria-label="${esc(t('ck_aria_save'))}" aria-pressed="${isSaved()}">${ICON.heart}</button>
+    ${window.__nlBasket ? `<button type="button" class="nlck-ic nlck-ic--bk" data-act="basket" aria-label="${esc(t('basket_name'))}">${ICON.bag}</button>` : ''}`; // HAD-712 (12.11): My selection
+  paintWay();
 }
 function toast(msg) { const t = el && $('.nlck-toast', el); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => { t.hidden = true; }, 2600); }
 function mount() {
   el = document.createElement('div');
   el.className = 'nlck'; el.id = 'nlck'; el.dir = dir(); el.lang = lang(); el.hidden = true;
   el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', t('ck_aria_dialog'));
-  el.innerHTML = '<div class="nlck-body"></div><div class="nlck-bar"></div><div class="nlck-toast" role="status" aria-live="polite" hidden></div>';
+  el.innerHTML = '<div class="nlck-body"></div><div class="nlck-wl" role="status" hidden><i aria-hidden="true"></i><b></b></div><div class="nlck-bar"></div><div class="nlck-toast" role="status" aria-live="polite" hidden></div>';
   document.body.appendChild(el);
   el.addEventListener('click', onClick);
   el.addEventListener('change', onInput);
@@ -277,6 +334,8 @@ function show(c, from, screen) { // screen (HAD-712): open straight on one of th
 function close() {
   if (!el) return; if (PV) { PV.destroy(); PV = null; }
   el.hidden = true; document.documentElement.style.overflow = ''; document.body.classList.remove('nlck-on');
+  vds.splice(0).forEach((d) => d.destroy()); paintWay(); // no pulse left behind a closed screen
+  try { dispatchEvent(new CustomEvent('nl:cockpit', { detail: { screen: null, closed: true } })); } catch (e) { /* none */ } // HAD-712: the showroom's waymarks move on
   if (viaJourney && window.__nlJourney && window.__nlJourney.open) window.__nlJourney.open(4);
 }
 function onInput(e) {
@@ -285,12 +344,17 @@ function onInput(e) {
   render(); const n = $(`[name="${t.name}"]`, el); if (n && t.type !== 'checkbox') n.focus();
 }
 function onClick(e) {
+  const vt = e.target.closest('[data-vdt]'); if (vt) { setVd(vt.dataset.vdt === '1'); return; }
   const o = e.target.closest('[data-open]');
   if (o && o.dataset.open === 'other') { ga('cockpit_tile', { tile: 'other' }); viaJourney = false; close(); if (window.__nlJourney && window.__nlJourney.open) window.__nlJourney.open(2); else { const s = document.getElementById('nlps'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
   if (o && el.contains(o)) { const k = o.dataset.open; if (!k && !open) return close(); open = k || null; if (k !== 'view') sub.view = null; render(); ga('cockpit_tile', { tile: k || 'home' }); return; }
   const v = e.target.closest('[data-v]'); if (v) { sub.view = rendered().find((x) => x.img === v.dataset.v) || null; if (sub.view && v.dataset.vk === 'side') { cur.bearing = sub.view.bearing; } return render(); }
   const rm = e.target.closest('[data-room]'); if (rm) { sub.room = rm.dataset.room === 'living' ? null : rm.dataset.room; ga('cockpit_room', { room: rm.dataset.room }); return render(); }
-  const p = e.target.closest('[data-pano]'); if (p) { sub.pano = +p.dataset.pano; return render(); }
+  const p = e.target.closest('[data-pano]'); if (p) {
+    sub.pano = +p.dataset.pano; way.set('ck_design');
+    try { dispatchEvent(new CustomEvent('nl:view', { detail: { mode: 'inside', style: PSTYLE[sub.pano] || 'bare', source: 'cockpit' } })); } catch (x) { /* none */ } // the basket records the finish
+    return render();
+  }
   const f = e.target.closest('[data-fac]'); if (f) { sub.fac = +f.dataset.fac; return render(); }
   const z = e.target.closest('[data-zoom]'); if (z) { z.classList.toggle('on'); return; }
   const a = e.target.closest('[data-act]'); if (!a) return;
@@ -312,12 +376,38 @@ function onClick(e) {
     (navigator.clipboard ? navigator.clipboard.writeText(lines.join('\n') + '\n' + url) : Promise.reject()).then(() => toast(t('ck_toast_copied')), () => toast(url));
     return;
   }
-  if (act === 'call') { ga('cockpit_call', { now: !!avail }); if (!avail) { e.preventDefault(); close(); const s = document.getElementById('nlsch'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }
+  if (act === 'basket') { way.set('ck_basket'); paintWay(); ga('cockpit_basket', {}); if (window.__nlBasket) window.__nlBasket.open(a); return; }
+  if (act === '3d') { ga('cockpit_3d', { tower: cur.tower, floor: cur.floor }); return world3d(sub.view || viewOf(cur) || cur); }
+  if (act === 'call') { way.set('ck_call'); paintWay(); ga('cockpit_call', { now: !!avail }); if (!avail) { e.preventDefault(); close(); const s = document.getElementById('nlsch'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }
   if (act === 'wa') ga('cockpit_wa', {});
 }
 
 window.__nlCockpit = { open: (d, from, screen) => show(d, from, screen) };
-addEventListener('nl:facing', (e) => { const d = e.detail || {}; if (!d.quiet && d.tower && d.floor && d.bearing != null) show(d, d.source); }); // quiet (HAD-712): the showroom reports a choice without opening this screen
+addEventListener('nl:facing', (e) => { const d = e.detail || {}; if (from3d && d.source === 'api') return; if (!d.quiet && d.tower && d.floor && d.bearing != null) show(d, d.source); }); // HAD-712: the 3D set by our tap reports back as 'api'
+/* HAD-712 (12.11.2026): "the live 3D of this floor": the page's earlier 3D stage (world.js) loads only on this tap. On the Hebrew page
+   the stage is hidden (showroom.css) until body.nlsr-3d; the world is set to the picture's tower, floor and facing through its
+   handle (setMode, pickTower, setFloor, setFacing, setView: world.js's documented API) */
+function world3d(v) {
+  from3d = true; viaJourney = false; close();
+  document.body.classList.add('nlsr-3d');
+  const root = document.getElementById('nlps'), host = document.getElementById('nlps-stage'), box = document.getElementById('nlps-t') || document.querySelector('.nlps-stagebox') || root; // the heading keeps the site header's margin
+  if (!root || !host) return;
+  requestAnimationFrame(() => box.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
+  const go = (w) => { if (!w) return; try { w.setMode('tower'); w.pickTower(v.tower); w.setFloor(+v.floor); w.setFacing(+v.bearing); w.setView('window'); } catch (e) { console.warn('[cockpit] 3d', e); }
+    Promise.resolve(w.ready).then(() => setTimeout(() => box.scrollIntoView({ block: 'start' }), 400)).catch(() => {}); }; // the stage's top in sight once the world has laid out
+  if (window.__nlpsWorld) return go(window.__nlpsWorld);
+  if (typeof window.__nlpsMount === 'function') return Promise.resolve(window.__nlpsMount()).then(go); // inc/project-stage.php (HAD-712)
+  let c = {}; try { c = JSON.parse(root.dataset.cfg || '{}'); } catch (e) { c = {}; }
+  if (!c.world) return;
+  import(c.world).then((m) => { // the page's own mount, the same options (inc/project-stage.php nadlan_ps_world_script)
+    if (window.__nlpsWorld) return go(window.__nlpsWorld);
+    const w = m.mountWorld(host, { dataUrl: c.data, placesUrl: c.places || null, lang: c.lang, name: c.name, wa: c.wa || null, poster: c.poster,
+      intent: 'visible', mode: c.mode, season: c.season, hour: c.hour, pond: c.pond !== false, examples: c.examples || null, colors: (c.next && c.next.colors) || null });
+    window.__nlpsWorld = w;
+    const own = host.querySelector('.nlps-ssr-pic'); if (own) setTimeout(() => own.remove(), 1500);
+    go(w);
+  }).catch((e) => console.warn('[cockpit] 3d', e));
+} // quiet (HAD-712): the showroom reports a choice without opening this screen
 function reopen() { // a link that reopens a choice: #dira=A30-262
   const m = /^#dira=([ABC])(\d{1,2})-(\d{1,3})$/.exec(location.hash || '');
   if (m && !(cur && el && !el.hidden && cur.tower === m[1] && cur.floor === +m[2] && Math.round(cur.bearing) === +m[3])) show({ tower: m[1], floor: +m[2], bearing: +m[3] }, 'link');
