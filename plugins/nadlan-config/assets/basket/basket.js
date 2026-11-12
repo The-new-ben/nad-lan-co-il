@@ -1,3 +1,4 @@
+/* HAD-712 step 6 (12.11.2026): on Kikar, "Build me an offer" (project-stage/world/kikarbuy.js) above the WhatsApp button. */
 /* HAD-712 (12.11.2026): waymarks, view with details, floor plan (the Kikar showroom's inside counts as the way inside: the Design section offers it). */
 /* HAD-712 (11.11.2026): words from showroom-i18n.js; direction from the page language. */
 /* The apartment's basket (design system L9Nqz7Viv7K3MYeZrBc9s8 version 86, BasketOne; the journey: BuyJourney v78).
@@ -401,8 +402,22 @@
     return out.join('\n');
   }
 
+  // HAD-712 step 6 (12.11.2026): Kikar's "Build me an offer" (project-stage/world/kikarbuy.js): the selection becomes a request to
+  // the seller through the showroom engine's two calls (lead, then the request document); loaded on the tap only
+  const KIKAR = /^hamedina(-(en|fr))?$/.test(String(C.slug || ''));
+  function offer(btn) {
+    const go = (m) => { close(); m.open({ state: JSON.parse(JSON.stringify(S)), cfg: C, from: btn }); };
+    try { import(SELF.replace(/basket\/basket\.js(\?.*)?$/, 'project-stage/world/kikarbuy.js$1')).then(go).catch((e) => console.warn('[basket] offer', e)); } catch (e) { /* none */ }
+    ga('basket_offer', { items: count() });
+  }
+
   function renderActions() {
     const s = h('section', 'nlbk__sec nlbk__acts');
+    if (KIKAR && SELF) {
+      const o = h('button', 'nlbk__btn nlbk__btn--offer', T('kb_open', 'בנו לי הצעה'), { type: 'button' });
+      o.addEventListener('click', () => offer(o));
+      s.appendChild(o);
+    }
     if (C.wa) {
       const a = h('a', 'nlbk__btn nlbk__btn--wa', T('bk_send_wa', 'שליחת הסל לנציג בוואטסאפ'), { href: '#', target: '_blank', rel: 'noopener' });
       a.addEventListener('click', () => { a.href = waLink(message()); ga('basket_send', { items: count() }); });

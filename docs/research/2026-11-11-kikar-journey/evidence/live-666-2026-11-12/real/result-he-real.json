@@ -1,0 +1,392 @@
+{
+ "started": "2026-11-12T03:11:39.415Z",
+ "runs": [
+  {
+   "L": "he",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 1 מתוך 3",
+      "title": "בנו לי הצעה",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [
+       "הדירה = מגדל B, קומה 20, פונה מערבה",
+       "הגימור שבחרתם = עץ חם",
+       "מחיר הדירה = בהצעה מהמוכר",
+       "שדרוג גימור = אומדן בהצעה"
+      ],
+      "checked": [],
+      "primary": "המשך",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כתבו שם פרטי",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כדי לשלוח צריך לסמן את ההסכמה",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 document failed (intercepted 500)",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-FA5ILP5A",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/fa5ilp5aejtclskf1yizs69p",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בוואטסאפ או בטלפון",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-FA5ILP5A",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/fa5ilp5aejtclskf1yizs69p",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בוואטסאפ או בטלפון",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "בנו לי הצעה",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "rtl",
+     "lang": "he",
+     "step": "שלב 1 מתוך 3",
+     "title": "בנו לי הצעה",
+     "apt": "מגדל B · קומה 20 · מערב",
+     "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+     "rows": [
+      "הדירה = מגדל B, קומה 20, פונה מערבה",
+      "הגימור שבחרתם = עץ חם",
+      "מחיר הדירה = בהצעה מהמוכר",
+      "שדרוג גימור = אומדן בהצעה"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "המשך",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-FA5ILP5A",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/fa5ilp5aejtclskf1yizs69p",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בוואטסאפ או בטלפון",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 0
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": false,
+     "source": null,
+     "kind": null,
+     "project": null,
+     "unit": false,
+     "unitId": null,
+     "dira": "B20-276",
+     "finish": null,
+     "finishSent": null,
+     "basketStyle": "warm",
+     "extras": null,
+     "extrasSent": null,
+     "lang": null,
+     "leadId": null,
+     "consent": null,
+     "noRoomsSqmPrice": null
+    },
+    "confirmation": {
+     "ref": false,
+     "doc": false
+    }
+   },
+   "patched": [
+    "live: no patch"
+   ],
+   "payload": {
+    "leadCount": 0,
+    "rfpCount": 0,
+    "rfpAnswers": [],
+    "lead": null,
+    "leadMessage": null,
+    "rfp": null
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [],
+   "served": [],
+   "ok": false
+  }
+ ],
+ "finished": "2026-11-12T03:12:29.572Z"
+}

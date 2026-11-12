@@ -1,0 +1,2536 @@
+{
+ "started": "2026-11-12T02:44:43.259Z",
+ "runs": [
+  {
+   "page": "rainbow-tel-aviv",
+   "w": 390,
+   "h": 844,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "kikarOffer": false,
+     "buyflowJs": []
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  },
+  {
+   "page": "rainbow-tel-aviv",
+   "w": 1440,
+   "h": 900,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "kikarOffer": false,
+     "buyflowJs": []
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  },
+  {
+   "L": "he",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 1 מתוך 3",
+      "title": "בנו לי הצעה",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [
+       "הדירה = מגדל B, קומה 20, פונה מערבה",
+       "הגימור שבחרתם = עץ חם",
+       "מחיר הדירה = בהצעה מהמוכר",
+       "שדרוג גימור = אומדן בהצעה"
+      ],
+      "checked": [],
+      "primary": "המשך",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כתבו שם פרטי",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כדי לשלוח צריך לסמן את ההסכמה",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 document failed (intercepted 500)",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "הבקשה התקבלה, אבל מסמך הבקשה לא נוצר. לא ניצור בקשה נוספת.",
+      "ref": "",
+      "doc": "",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בדרך כלל באותו יום",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__doc.nlkb-pulse ליצור את המסמך שוב"
+      ],
+      "anyRunning": [
+       "button.nlkb__doc.nlkb-pulse ליצור את המסמך שוב"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בדרך כלל באותו יום",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "בנו לי הצעה",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "rtl",
+     "lang": "he",
+     "step": "שלב 1 מתוך 3",
+     "title": "בנו לי הצעה",
+     "apt": "מגדל B · קומה 20 · מערב",
+     "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+     "rows": [
+      "הדירה = מגדל B, קומה 20, פונה מערבה",
+      "הגימור שבחרתם = עץ חם",
+      "מחיר הדירה = בהצעה מהמוכר",
+      "שדרוג גימור = אומדן בהצעה"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "המשך",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בדרך כלל באותו יום",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [
+    "live already 1.72.661: no patch"
+   ],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 2,
+    "rfpAnswers": [
+     500,
+     200
+    ],
+    "lead": {
+     "name": "בדיקה",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"דירה לדוגמה · מגדל B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"he\",\"url\":\"https://nad-lan.co.il/projects/hamedina/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "מסכים/ה שנדל״ן תעביר את הפנייה למוכר וליועצים שבחרתי",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "דירה לדוגמה · מגדל B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "he",
+     "url": "https://nad-lan.co.il/projects/hamedina/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "he",
+     "name": "בדיקה",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 500
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  },
+  {
+   "L": "he",
+   "w": 1440,
+   "h": 900,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 1 מתוך 3",
+      "title": "בנו לי הצעה",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [
+       "הדירה = מגדל B, קומה 20, פונה מערבה",
+       "הגימור שבחרתם = עץ חם",
+       "מחיר הדירה = בהצעה מהמוכר",
+       "שדרוג גימור = אומדן בהצעה"
+      ],
+      "checked": [],
+      "primary": "המשך",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse המשך"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כתבו שם פרטי",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 2 מתוך 3",
+      "title": "לאן לשלוח?",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "שלחו את הבקשה",
+      "err": "כדי לשלוח צריך לסמן את ההסכמה",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse שלחו את הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 92x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בדרך כלל באותו יום",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse לפתוח את מסמך הבקשה"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": "n/a",
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "בנו לי הצעה",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "rtl",
+     "lang": "he",
+     "step": "שלב 1 מתוך 3",
+     "title": "בנו לי הצעה",
+     "apt": "מגדל B · קומה 20 · מערב",
+     "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+     "rows": [
+      "הדירה = מגדל B, קומה 20, פונה מערבה",
+      "הגימור שבחרתם = עץ חם",
+      "מחיר הדירה = בהצעה מהמוכר",
+      "שדרוג גימור = אומדן בהצעה"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "המשך",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "rtl",
+      "lang": "he",
+      "step": "שלב 3 מתוך 3",
+      "title": "הבקשה בדרך",
+      "apt": "מגדל B · קומה 20 · מערב",
+      "aptSub": "דירה לדוגמה, לפי המידע שפורסם",
+      "rows": [],
+      "checked": [],
+      "primary": "חזרה לדירה",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / הבקשה התקבלה / עכשיו",
+       "[ ] נציג נדל״ן מתאם מול המוכר / בדרך כלל באותו יום",
+       "[ ] הצעה מסודרת אליכם / בוואטסאפ ובמסמך"
+      ],
+      "now": [
+       "שיחת וידאו",
+       "וואטסאפ -> https://wa.me/972525101555?text=%D7%A9%D"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [
+    "live already 1.72.661: no patch"
+   ],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 1,
+    "rfpAnswers": [
+     200
+    ],
+    "lead": {
+     "name": "בדיקה",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"דירה לדוגמה · מגדל B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"he\",\"url\":\"https://nad-lan.co.il/projects/hamedina/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "מסכים/ה שנדל״ן תעביר את הפנייה למוכר וליועצים שבחרתי",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "דירה לדוגמה · מגדל B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "he",
+     "url": "https://nad-lan.co.il/projects/hamedina/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "he",
+     "name": "בדיקה",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  },
+  {
+   "L": "en",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 1 of 3",
+      "title": "Build me an offer",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [
+       "The apartment = Tower B, floor 20, facing west",
+       "Your finish = Warm wood",
+       "Apartment price = In the seller’s offer",
+       "Finish upgrade = Estimate in the offer"
+      ],
+      "checked": [],
+      "primary": "Continue",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Continue"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Continue"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "Please enter your first name",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "Tick the consent box to send",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 3 of 3",
+      "title": "Your request is on its way",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Back to the apartment",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Request received / Now",
+       "[ ] A NadLan advisor coordinates with the seller / Usually the same day",
+       "[ ] A clear offer to you / On WhatsApp and in the document"
+      ],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse Open your request document"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse Open your request document"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "Build me an offer",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "ltr",
+     "lang": "en",
+     "step": "Step 1 of 3",
+     "title": "Build me an offer",
+     "apt": "Tower B · Floor 20 · west",
+     "aptSub": "Example apartment, from the published information",
+     "rows": [
+      "The apartment = Tower B, floor 20, facing west",
+      "Your finish = Warm wood",
+      "Apartment price = In the seller’s offer",
+      "Finish upgrade = Estimate in the offer"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "Continue",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 3 of 3",
+      "title": "Your request is on its way",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Back to the apartment",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Request received / Now",
+       "[ ] A NadLan advisor coordinates with the seller / Usually the same day",
+       "[ ] A clear offer to you / On WhatsApp and in the document"
+      ],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 1,
+    "rfpAnswers": [
+     200
+    ],
+    "lead": {
+     "name": "Test",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"Example apartment · Tower B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"en\",\"url\":\"https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "I agree that NadLan passes my request to the seller and the advisors I chose",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "Example apartment · Tower B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "en",
+     "url": "https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "en",
+     "name": "Test",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  },
+  {
+   "L": "en",
+   "w": 1440,
+   "h": 900,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 1 of 3",
+      "title": "Build me an offer",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [
+       "The apartment = Tower B, floor 20, facing west",
+       "Your finish = Warm wood",
+       "Apartment price = In the seller’s offer",
+       "Finish upgrade = Estimate in the offer"
+      ],
+      "checked": [],
+      "primary": "Continue",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Continue"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Continue"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "Please enter your first name",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 2 of 3",
+      "title": "Where should we send it?",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Send the request",
+      "err": "Tick the consent box to send",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Send the request"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 86x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 3 of 3",
+      "title": "Your request is on its way",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Back to the apartment",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Request received / Now",
+       "[ ] A NadLan advisor coordinates with the seller / Usually the same day",
+       "[ ] A clear offer to you / On WhatsApp and in the document"
+      ],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse Open your request document"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse Open your request document"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "Build me an offer",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "ltr",
+     "lang": "en",
+     "step": "Step 1 of 3",
+     "title": "Build me an offer",
+     "apt": "Tower B · Floor 20 · west",
+     "aptSub": "Example apartment, from the published information",
+     "rows": [
+      "The apartment = Tower B, floor 20, facing west",
+      "Your finish = Warm wood",
+      "Apartment price = In the seller’s offer",
+      "Finish upgrade = Estimate in the offer"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "Continue",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "en",
+      "step": "Step 3 of 3",
+      "title": "Your request is on its way",
+      "apt": "Tower B · Floor 20 · west",
+      "aptSub": "Example apartment, from the published information",
+      "rows": [],
+      "checked": [],
+      "primary": "Back to the apartment",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Request received / Now",
+       "[ ] A NadLan advisor coordinates with the seller / Usually the same day",
+       "[ ] A clear offer to you / On WhatsApp and in the document"
+      ],
+      "now": [
+       "Video call",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 1,
+    "rfpAnswers": [
+     200
+    ],
+    "lead": {
+     "name": "Test",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"Example apartment · Tower B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"en\",\"url\":\"https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "I agree that NadLan passes my request to the seller and the advisors I chose",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "Example apartment · Tower B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "en",
+     "url": "https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "en",
+     "name": "Test",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  },
+  {
+   "L": "fr",
+   "w": 390,
+   "h": 844,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 1 sur 3",
+      "title": "Construisez-moi une offre",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [
+       "L’appartement = Tour B, étage 20, orientation ouest",
+       "Votre finition = Bois chaleureux",
+       "Prix de l’appartement = Dans l’offre du vendeur",
+       "Amélioration de la finition = Estimation dans l’offre"
+      ],
+      "checked": [],
+      "primary": "Continuer",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Continuer"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Continuer"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "Indiquez votre prénom",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "Cochez la case d’accord pour envoyer",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 3 sur 3",
+      "title": "Votre demande est en route",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Retour à l’appartement",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Demande reçue / À l’instant",
+       "[ ] Un conseiller NadLan se coordonne avec le vendeur / En général le jour même",
+       "[ ] Une offre claire pour vous / Sur WhatsApp et dans le document"
+      ],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse Ouvrir votre document de dem"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse Ouvrir votre document de dem"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "Construisez-moi une offre",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "ltr",
+     "lang": "fr",
+     "step": "Étape 1 sur 3",
+     "title": "Construisez-moi une offre",
+     "apt": "Tour B · Étage 20 · ouest",
+     "aptSub": "Appartement témoin, d’après les informations publiées",
+     "rows": [
+      "L’appartement = Tour B, étage 20, orientation ouest",
+      "Votre finition = Bois chaleureux",
+      "Prix de l’appartement = Dans l’offre du vendeur",
+      "Amélioration de la finition = Estimation dans l’offre"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "Continuer",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 3 sur 3",
+      "title": "Votre demande est en route",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Retour à l’appartement",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Demande reçue / À l’instant",
+       "[ ] Un conseiller NadLan se coordonne avec le vendeur / En général le jour même",
+       "[ ] Une offre claire pour vous / Sur WhatsApp et dans le document"
+      ],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [
+    "lang en->fr x4"
+   ],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 1,
+    "rfpAnswers": [
+     200
+    ],
+    "lead": {
+     "name": "Test",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"Appartement témoin · Tour B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"fr\",\"url\":\"https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "J’accepte que NadLan transmette ma demande au vendeur et aux conseillers choisis",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "Appartement témoin · Tour B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "fr",
+     "url": "https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "fr",
+     "name": "Test",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  },
+  {
+   "L": "fr",
+   "w": 1440,
+   "h": 900,
+   "steps": [
+    {
+     "name": "step 1 summary",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 1 sur 3",
+      "title": "Construisez-moi une offre",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [
+       "L’appartement = Tour B, étage 20, orientation ouest",
+       "Votre finition = Bois chaleureux",
+       "Prix de l’appartement = Dans l’offre du vendeur",
+       "Amélioration de la finition = Estimation dans l’offre"
+      ],
+      "checked": [],
+      "primary": "Continuer",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Continuer"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Continuer"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 contact",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    },
+    {
+     "name": "step 2 send empty -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "Indiquez votre prénom",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterEmpty": 0
+    },
+    {
+     "name": "step 2 no consent -> error",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 2 sur 3",
+      "title": "Où l’envoyer ?",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Envoyer la demande",
+      "err": "Cochez la case d’accord pour envoyer",
+      "ref": "",
+      "doc": "",
+      "timeline": [],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": false
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ],
+      "anyRunning": [
+       "button.nlkb__go.nlkb-pulse Envoyer la demande"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": [
+       "A 166x18"
+      ]
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true,
+     "postsAfterNoConsent": 0
+    },
+    {
+     "name": "step 3 confirmation",
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 3 sur 3",
+      "title": "Votre demande est en route",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Retour à l’appartement",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Demande reçue / À l’instant",
+       "[ ] Un conseiller NadLan se coordonne avec le vendeur / En général le jour même",
+       "[ ] Une offre claire pour vous / Sur WhatsApp et dans le document"
+      ],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "pulses": {
+      "n": 1,
+      "what": [
+       "a.nlkb__doc.nlkb-pulse Ouvrir votre document de dem"
+      ],
+      "anyRunning": [
+       "a.nlkb__doc.nlkb-pulse Ouvrir votre document de dem"
+      ]
+     },
+     "targets": {
+      "small": [],
+      "inlineLinks": []
+     },
+     "hscroll": false,
+     "hebrew": [],
+     "ok": true
+    }
+   ],
+   "checks": {
+    "dira": "#dira=B20-276",
+    "basket": {
+     "open": true,
+     "offerButton": "Construisez-moi une offre",
+     "state": {
+      "unit": {
+       "floor": 20,
+       "bearing": 276,
+       "unit": null,
+       "label": null,
+       "tower": "B",
+       "side": 3
+      },
+      "style": "warm",
+      "team": {},
+      "price": {
+       "amount": "",
+       "buyer": "single",
+       "lawyer": ""
+      }
+     }
+    },
+    "afterTick": {
+     "open": true,
+     "dir": "ltr",
+     "lang": "fr",
+     "step": "Étape 1 sur 3",
+     "title": "Construisez-moi une offre",
+     "apt": "Tour B · Étage 20 · ouest",
+     "aptSub": "Appartement témoin, d’après les informations publiées",
+     "rows": [
+      "L’appartement = Tour B, étage 20, orientation ouest",
+      "Votre finition = Bois chaleureux",
+      "Prix de l’appartement = Dans l’offre du vendeur",
+      "Amélioration de la finition = Estimation dans l’offre"
+     ],
+     "checked": [
+      "mortgage"
+     ],
+     "primary": "Continuer",
+     "err": "",
+     "ref": "",
+     "doc": "",
+     "timeline": [],
+     "now": [],
+     "bodyScroll": true
+    },
+    "afterHome": {
+     "closed": true,
+     "htmlClass": false,
+     "showroomTop": 161
+    },
+    "reopen": {
+     "state": {
+      "open": true,
+      "dir": "ltr",
+      "lang": "fr",
+      "step": "Étape 3 sur 3",
+      "title": "Votre demande est en route",
+      "apt": "Tour B · Étage 20 · ouest",
+      "aptSub": "Appartement témoin, d’après les informations publiées",
+      "rows": [],
+      "checked": [],
+      "primary": "Retour à l’appartement",
+      "err": "",
+      "ref": "RFP-TEST",
+      "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/rfp/xxxxxxxxxxxxxxxx",
+      "timeline": [
+       "[x] ✓ / Demande reçue / À l’instant",
+       "[ ] Un conseiller NadLan se coordonne avec le vendeur / En général le jour même",
+       "[ ] Une offre claire pour vous / Sur WhatsApp et dans le document"
+      ],
+      "now": [
+       "Appel vidéo",
+       "WhatsApp -> https://wa.me/972525101555?text=Hello%2C"
+      ],
+      "bodyScroll": true
+     },
+     "leadPosts": 1
+    },
+    "escClosed": true,
+    "payload": {
+     "leadOnce": true,
+     "source": true,
+     "kind": true,
+     "project": true,
+     "unit": true,
+     "unitId": "B20-276",
+     "dira": "B20-276",
+     "finish": true,
+     "finishSent": "warm",
+     "basketStyle": "warm",
+     "extras": true,
+     "extrasSent": [
+      "mortgage"
+     ],
+     "lang": true,
+     "leadId": true,
+     "consent": true,
+     "noRoomsSqmPrice": true
+    },
+    "confirmation": {
+     "ref": true,
+     "doc": true
+    }
+   },
+   "patched": [
+    "lang en->fr x4"
+   ],
+   "payload": {
+    "leadCount": 1,
+    "rfpCount": 1,
+    "rfpAnswers": [
+     200
+    ],
+    "lead": {
+     "name": "Test",
+     "phone": "0500000000",
+     "source": "rfp-v1",
+     "context": "hamedina B20-276",
+     "message": "{\"kind\":\"rfp-v1\",\"project\":\"hamedina\",\"unit\":\"B20-276\",\"label\":\"Appartement témoin · Tour B\",\"floor\":20,\"rooms\":\"\",\"sqm\":\"\",\"finish\":\"warm\",\"extras\":[\"mortgage\"],\"lang\":\"fr\",\"url\":\"https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276\",\"studio\":null}",
+     "consent": true,
+     "consent_text": "J’accepte que NadLan transmette ma demande au vendeur et aux conseillers choisis",
+     "project_slug": "hamedina",
+     "unit": "B20-276",
+     "floor": 20,
+     "building": "B",
+     "view_bearing": 276
+    },
+    "leadMessage": {
+     "kind": "rfp-v1",
+     "project": "hamedina",
+     "unit": "B20-276",
+     "label": "Appartement témoin · Tour B",
+     "floor": 20,
+     "rooms": "",
+     "sqm": "",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "fr",
+     "url": "https://nad-lan.co.il/projects/hamedina-en/#dira=B20-276",
+     "studio": null
+    },
+    "rfp": {
+     "project": "hamedina",
+     "unit": "B20-276",
+     "finish": "warm",
+     "extras": [
+      "mortgage"
+     ],
+     "lang": "fr",
+     "name": "Test",
+     "lead_id": 123
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "intercepted": [
+    {
+     "kind": "lead",
+     "method": "POST",
+     "answered": 200
+    },
+    {
+     "kind": "rfp",
+     "method": "POST",
+     "answered": 200
+    }
+   ],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js",
+    "project-stage/world/showroom-i18n.js",
+    "project-stage/world/cockpit.css",
+    "project-stage/world/cockpit.js",
+    "project-stage/world/journey.js",
+    "project-stage/world/showroom.js",
+    "project-stage/world/planfloor.js",
+    "project-stage/world/showroom.css",
+    "project-stage/hamedina/details.json",
+    "project-stage/world/kikarbuy.js"
+   ],
+   "ok": true
+  }
+ ],
+ "finished": "2026-11-12T02:49:28.413Z"
+}

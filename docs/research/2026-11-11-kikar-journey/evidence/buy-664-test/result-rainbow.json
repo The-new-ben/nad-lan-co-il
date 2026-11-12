@@ -1,0 +1,126 @@
+{
+ "started": "2026-11-12T02:49:55.676Z",
+ "runs": [
+  {
+   "page": "rainbow-tel-aviv",
+   "w": 390,
+   "h": 844,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "buyflowJs": []
+    },
+    "basket": {
+     "open": true,
+     "kikarOffer": false,
+     "actions": [
+      "nlbk__btn nlbk__btn--wa",
+      "nlbk__btn nlbk__btn--2",
+      "nlbk__legal",
+      "nlbk__link nlbk__clear"
+     ]
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  },
+  {
+   "page": "rainbow-tel-aviv",
+   "w": 1440,
+   "h": 900,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "buyflowJs": []
+    },
+    "basket": {
+     "open": true,
+     "kikarOffer": false,
+     "actions": [
+      "nlbk__btn nlbk__btn--wa",
+      "nlbk__btn nlbk__btn--2",
+      "nlbk__legal",
+      "nlbk__link nlbk__clear"
+     ]
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  },
+  {
+   "page": "duo-tel-aviv",
+   "w": 390,
+   "h": 844,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "buyflowJs": []
+    },
+    "basket": {
+     "open": true,
+     "kikarOffer": false,
+     "actions": [
+      "nlbk__btn nlbk__btn--wa",
+      "nlbk__btn nlbk__btn--2",
+      "nlbk__legal",
+      "nlbk__link nlbk__clear"
+     ]
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  },
+  {
+   "page": "duo-tel-aviv",
+   "w": 1440,
+   "h": 900,
+   "checks": {
+    "engine": {
+     "showroom": false,
+     "rfpButtons": 0,
+     "basket": true,
+     "buyflowJs": []
+    },
+    "basket": {
+     "open": true,
+     "kikarOffer": false,
+     "actions": [
+      "nlbk__btn nlbk__btn--wa",
+      "nlbk__btn nlbk__btn--2",
+      "nlbk__legal",
+      "nlbk__link nlbk__clear"
+     ]
+    }
+   },
+   "errs": [],
+   "failed": [],
+   "served": [
+    "basket/basket.css",
+    "basket/basket.js"
+   ],
+   "intercepted": []
+  }
+ ],
+ "finished": "2026-11-12T02:50:46.463Z"
+}

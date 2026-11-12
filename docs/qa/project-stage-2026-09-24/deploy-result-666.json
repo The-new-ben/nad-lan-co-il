@@ -1,0 +1,22 @@
+{
+  "released": "1.72.666",
+  "from": "1.72.665",
+  "live_before": {
+    "assets/basket/basket.js": "1fb09d83a35e899d5e82bcedd0b7a713",
+    "assets/project-stage/world/showroom-i18n.js": "1ec45f3b3846695372f1fe9900b76edd",
+    "nadlan-config.php": "de47e5f409b1e23c9ba080660ababbd0",
+    "inc/rfp.php": "36aba17a945a5d5975cbfbb7932ba007"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 05:07:52",
+  "files": {
+    "assets/project-stage/world/kikarbuy.js": "78f8854d807aeb42fe05a57616264e43",
+    "assets/basket/basket.js": "66aa9aabaccc0cb51525ad6398296eb9",
+    "assets/project-stage/world/showroom-i18n.js": "75ebc0ed6673c8d6791d70d9a01ee373",
+    "nadlan-config.php": "3de187242bd648feff18452d88bb877c",
+    "inc/rfp.php": "b8e131ed3156f8c74f0414c0a4deb239"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.666, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

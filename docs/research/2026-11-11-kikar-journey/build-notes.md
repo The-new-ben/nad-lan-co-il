@@ -111,3 +111,20 @@ Release order now (updated): 1.72.659 designer (released);
   Hunk the live texts only; Rainbow/DUO run them.
 - Still open: step 7 (wire the designer's call module per docs/design-lab/apartment-designer/CALL-CONTRACT.md), step 8 French
   showroom (nadlan_ps_kikar_next + basket gate take 'fr').
+
+## End state (12.11.2026, Ben: "תסיים מה שהתחלת ותעצור"; this session stopped after 1.72.666)
+Live, each released and verified by its runner, walked live in he and en at 390x844 and 1440x900:
+- 1.72.658 English showroom. 1.72.661 step 0 card sheet, waymarks, view with details, plan, area map with the cone.
+- 1.72.663 the showroom's small map (cone, names, edge chips, "in the window's direction"), view labels inside the picture.
+- 1.72.664 + 1.72.665 video: a tap opens a room on he/en/fr Kikar pages (8/day/address, 40/day site); the leave-a-time offer
+  a minute after joining. Real rooms tested: he by the Kikar session, en by this session (evidence/live-665-room-en).
+- 1.72.666 step 6 "Build me an offer" (world/kikarbuy.js, basket.js, showroom-i18n.js; live rfp.php hunks: French document,
+  Kikar example unit validated on the server, request number, no "0 rooms"). One REAL request: RFP-FA5ILP5A, named
+  "בדיקת Claude, לא לטפל" (evidence/live-666-2026-11-12/real). The Hebrew video buttons say "נציג נדל״ן" (in 666).
+Open (not started, on Ben's stop):
+- Step 8: the French showroom (nadlan_ps_kikar_next and the basket gate take 'fr'); the French page's rooms already open.
+- Step 7: the call module of the designer session (docs/design-lab/apartment-designer/CALL-CONTRACT.md); the room is still
+  the old TogetherRoom look; the request document keeps its old cream look.
+- Ben's decisions: a payment / reservation step (none built); the consent box is unticked by default (the board showed it
+  ticked); the French document now applies to every project's French page.
+- The test rooms and the test request RFP-FA5ILP5A can be deleted in wp-admin (RFP documents under Projects).

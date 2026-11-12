@@ -1,0 +1,46 @@
+{
+ "what": "HAD-712 step 6: the Kikar branch of nadlan/v1/rfp, as (old, new) hunks against the LIVE inc/rfp.php",
+ "target": "wp-content/plugins/nadlan-config/inc/rfp.php",
+ "live_before": {
+  "md5": "36aba17a945a5d5975cbfbb7932ba007",
+  "bytes": 17457,
+  "copy": "docs/qa/live-read/20261112T022923Z/inc/rfp.php"
+ },
+ "after": {
+  "md5": "b8e131ed3156f8c74f0414c0a4deb239",
+  "bytes": 23687
+ },
+ "rule": "apply in order; each old text occurs exactly once in the live file (checked); do NOT use the repo inc/rfp.php",
+ "hunks": [
+  {
+   "name": "lang table: French + Kikar styles",
+   "old": "\t\t);\n\t\tif ( isset( $T[ $lang ] ) ) { return $T[ $lang ]; }",
+   "new": "\t\t\t// HAD-712 (12.11.2026): the French page gets a French document (it read the English one until now)\n\t\t\t'fr' => array( 'dir' => 'ltr', 'doc' => 'Demande de proposition', 'for' => 'Pour', 'date' => 'Date', 'valid' => 'Valable 30 jours', 'unit' => 'Appartement demandé', 'project' => 'Projet', 'developer' => 'Promoteur', 'floor' => 'Étage', 'rooms' => 'Pièces', 'sqm' => 'Surface (m²)', 'dirn' => 'Orientation', 'config' => 'La demande', 'finish' => 'Niveau de finition', 'finish_std' => 'Prestations du promoteur', 'finish_up' => 'Amélioré', 'finish_prem' => 'Premium', 'extras' => 'Services ajoutés à la demande', 'none' => 'Sans option, mise en relation directe avec le promoteur', 'advisors' => 'Professionnels suggérés de l’annuaire', 'adv_none' => 'L’équipe NadLan proposera un conseiller adapté', 'status' => 'Statut de la demande', 'st1' => 'Demande reçue', 'st2' => 'Coordination avec le promoteur', 'st3' => 'Proposition consolidée à l’acheteur', 'disc' => 'Tous les chiffres de ce document sont des estimations, à titre d’information uniquement. Ce document n’est ni un devis, ni un engagement, ni un document de vente. Le prix final est fixé dans la proposition du promoteur, selon le descriptif de vente et le contrat d’achat.', 'ex_designer' => 'Architecte d’intérieur', 'ex_lawyer' => 'Avocat en droit immobilier', 'ex_mortgage' => 'Conseiller en crédit immobilier', 'ex_inspect' => 'Inspection du logement', 'ex_furniture' => 'Intérêt pour le mobilier', 'print' => 'Imprimer / enregistrer en PDF', 'back' => 'Retour à la page du projet' ),\n\t\t);\n\t\t// HAD-712 (12.11.2026): the Kikar showroom's design styles (an illustration in the example apartment, not the developer's spec)\n\t\t$S = array(\n\t\t\t'he' => array( 'finish_warm' => 'עיצוב עץ חם (רעיון להמחשה, לא מפרט היזם)', 'finish_light' => 'עיצוב בהיר (רעיון להמחשה, לא מפרט היזם)', 'finish_stone' => 'עיצוב אבן (רעיון להמחשה, לא מפרט היזם)' ),\n\t\t\t'en' => array( 'finish_warm' => 'Warm wood design (an illustration, not the developer’s spec)', 'finish_light' => 'Light design (an illustration, not the developer’s spec)', 'finish_stone' => 'Stone design (an illustration, not the developer’s spec)' ),\n\t\t\t'fr' => array( 'finish_warm' => 'Design bois chaleureux (illustration, pas le descriptif du promoteur)', 'finish_light' => 'Design clair (illustration, pas le descriptif du promoteur)', 'finish_stone' => 'Design pierre (illustration, pas le descriptif du promoteur)' ),\n\t\t);\n\t\tforeach ( $S as $sk => $sv ) { $T[ $sk ] = $T[ $sk ] + $sv; }\n\t\tif ( isset( $T[ $lang ] ) ) { return $T[ $lang ]; }"
+  },
+  {
+   "name": "Kikar unit function",
+   "old": "if ( ! function_exists( 'nadlan_rfp_create' ) ) {",
+   "new": "if ( ! function_exists( 'nadlan_rfp_kikar_unit' ) ) {\n\t/* HAD-712 (12.11.2026): Kikar HaMedina publishes no apartment list (no project_3d_units), so its showroom sends the example\n\t * apartment the buyer chose as \"<tower><floor>-<bearing>\" (B20-276: the page's own #dira= id). The server checks the tower and\n\t * the floor against the showroom's own data (assets/project-stage/hamedina/details.json, towers[*].floors) and keeps only\n\t * what that says: an example apartment, its tower, its floor and the direction it faces. No rooms, no area, no price: none is\n\t * published per apartment. Anything else returns null (the request is refused). */\n\tfunction nadlan_rfp_kikar_unit( $raw, $lang ) {\n\t\tif ( ! preg_match( '/^([ABC])(\\d{1,2})(?:-(\\d{1,3}))?$/', strtoupper( trim( (string) $raw ) ), $m ) ) { return null; }\n\t\t$floors = array( 'A' => 40, 'B' => 37, 'C' => 40 ); // details.json on 12.11.2026, used only if the file cannot be read\n\t\t$file   = dirname( __DIR__ ) . '/assets/project-stage/hamedina/details.json';\n\t\t$j      = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : null;\n\t\tif ( is_array( $j ) && ! empty( $j['towers'] ) && is_array( $j['towers'] ) ) {\n\t\t\t$floors = array();\n\t\t\tforeach ( $j['towers'] as $tk => $tv ) { if ( is_array( $tv ) && isset( $tv['floors'] ) ) { $floors[ strtoupper( (string) $tk ) ] = (int) $tv['floors']; } }\n\t\t}\n\t\t$tower = $m[1];\n\t\t$floor = (int) $m[2];\n\t\tif ( empty( $floors[ $tower ] ) || $floor < 1 || $floor > $floors[ $tower ] ) { return null; }\n\t\t$lng = in_array( $lang, array( 'he', 'fr' ), true ) ? $lang : 'en';\n\t\t$dir = '';\n\t\t$id  = $tower . $floor;\n\t\tif ( isset( $m[3] ) && '' !== $m[3] ) {\n\t\t\t$b = (int) $m[3];\n\t\t\tif ( $b > 359 ) { return null; }\n\t\t\t$W = array(\n\t\t\t\t'he' => array( 'צפון', 'צפון-מזרח', 'מזרח', 'דרום-מזרח', 'דרום', 'דרום-מערב', 'מערב', 'צפון-מערב' ),\n\t\t\t\t'en' => array( 'North', 'North-east', 'East', 'South-east', 'South', 'South-west', 'West', 'North-west' ),\n\t\t\t\t'fr' => array( 'Nord', 'Nord-est', 'Est', 'Sud-est', 'Sud', 'Sud-ouest', 'Ouest', 'Nord-ouest' ),\n\t\t\t);\n\t\t\t$dir = $W[ $lng ][ ( (int) round( $b / 45 ) ) % 8 ];\n\t\t\t$id .= '-' . $b;\n\t\t}\n\t\t$label = array( 'he' => 'דירה לדוגמה · מגדל %s', 'en' => 'Example apartment · Tower %s', 'fr' => 'Appartement témoin · Tour %s' );\n\t\treturn array( 'id' => $id, 'label' => sprintf( $label[ $lng ], $tower ), 'floor' => $floor, 'dir' => $dir );\n\t}\n}\n\nif ( ! function_exists( 'nadlan_rfp_create' ) ) {"
+  },
+  {
+   "name": "create: Kikar unit + finish",
+   "old": "\t\tforeach ( (array) $units as $u ) { if ( isset( $u['id'] ) && $u['id'] === $unit_id ) { $unit = $u; break; } }\n\t\t$finish = in_array( ( $p['finish'] ?? 'std' ), array( 'std', 'up', 'prem' ), true ) ? $p['finish'] : 'std';",
+   "new": "\t\tforeach ( (array) $units as $u ) { if ( isset( $u['id'] ) && $u['id'] === $unit_id ) { $unit = $u; break; } }\n\t\t// HAD-712 (12.11.2026): Kikar HaMedina's example apartment (nadlan_rfp_kikar_unit); a unit the server cannot verify is refused\n\t\t$kikar = null;\n\t\tif ( 'hamedina' === $slug && ! $unit ) {\n\t\t\t$kikar = nadlan_rfp_kikar_unit( (string) ( $p['unit'] ?? '' ), $lang );\n\t\t\tif ( ! $kikar ) { return new WP_Error( 'bad_request', 'unit not found', array( 'status' => 400 ) ); }\n\t\t\t$unit = $kikar;\n\t\t}\n\t\t$finish = in_array( ( $p['finish'] ?? 'std' ), $kikar ? array( 'std', 'warm', 'light', 'stone' ) : array( 'std', 'up', 'prem' ), true ) ? $p['finish'] : 'std';"
+  },
+  {
+   "name": "create: Kikar language page",
+   "old": "\t\t$rid = wp_insert_post( array(\n\t\t\t'post_type' => 'nadlan_rfp', 'post_status' => 'private',",
+   "new": "\t\tif ( $kikar && 'he' !== $lang ) { // HAD-712: the English / French document names the project in its language\n\t\t\t$lp = get_page_by_path( 'hamedina-' . $lang, OBJECT, 'nadlan_project' );\n\t\t\tif ( ! $lp || 'publish' !== $lp->post_status ) { $lp = get_page_by_path( 'hamedina-en', OBJECT, 'nadlan_project' ); }\n\t\t\tif ( $lp && 'publish' === $lp->post_status ) {\n\t\t\t\t$doc['project']['name']      = get_the_title( $lp->ID );\n\t\t\t\t$doc['project']['url']       = get_permalink( $lp->ID );\n\t\t\t\t$doc['project']['developer'] = (string) get_post_meta( $lp->ID, 'developer_name', true );\n\t\t\t}\n\t\t}\n\t\t$rid = wp_insert_post( array(\n\t\t\t'post_type' => 'nadlan_rfp', 'post_status' => 'private',"
+  },
+  {
+   "name": "create: ref in the answer",
+   "old": "\t\treturn rest_ensure_response( array( 'ok' => true, 'url' => rest_url( 'nadlan/v1/rfp/' . $token ) ) );",
+   "new": "\t\treturn rest_ensure_response( array( 'ok' => true, 'url' => rest_url( 'nadlan/v1/rfp/' . $token ), 'ref' => 'RFP-' . strtoupper( substr( $token, 0, 8 ) ) ) );"
+  },
+  {
+   "name": "render: rooms only when known",
+   "old": "\t\t<tr><td><?php echo esc_html( $T['rooms'] ); ?></td><td><?php echo esc_html( $u['rooms'] ); ?></td></tr>",
+   "new": "\t\t<?php if ( $u['rooms'] ) : ?><tr><td><?php echo esc_html( $T['rooms'] ); ?></td><td><?php echo esc_html( $u['rooms'] ); ?></td></tr><?php endif; ?>"
+  }
+ ]
+}
