@@ -1,0 +1,25 @@
+{
+  "released": "1.72.663",
+  "from": "1.72.662",
+  "live_before": {
+    "assets/project-stage/world/showroom.js": "1fce5306f3bc675eb347eea655247401",
+    "assets/project-stage/world/showroom.css": "61b2c7e05d07b1cb42399e551303148f",
+    "assets/project-stage/world/showroom-i18n.js": "48fa01897a6684c53d5d437e8e1a32c2",
+    "assets/project-stage/world/viewdetails.js": "056f76ba2e3e49d6dfe2160eedd22c5b",
+    "assets/project-stage/world/cockpit.js": "ed6edda123a63000f91ec2a4a6309e17",
+    "nadlan-config.php": "6446d1f704b94ee339187fe34b5d1aea"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 04:04:13",
+  "files": {
+    "assets/project-stage/world/showroom.js": "50ad6ce79c3df756f147d79b5a6a04ff",
+    "assets/project-stage/world/showroom.css": "7942ba4ae28e04f1e12529d236004426",
+    "assets/project-stage/world/showroom-i18n.js": "1ec45f3b3846695372f1fe9900b76edd",
+    "assets/project-stage/world/viewdetails.js": "e1d46b77dd2e2269b9f71f0c45a62ccc",
+    "assets/project-stage/world/cockpit.js": "f97f4cf5473547504a310d4d346c4928",
+    "nadlan-config.php": "40e6ca2ed97c01b3f84d79c24b75a563"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.663, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

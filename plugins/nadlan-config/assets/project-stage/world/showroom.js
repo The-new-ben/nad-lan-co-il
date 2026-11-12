@@ -43,8 +43,8 @@ const way = {
 };
 const CK_WAY = ['ck_view', 'ck_inside', 'ck_design', 'ck_basket', 'ck_call']; // the apartment screen's order (cockpit.js paints them)
 
-let T = null, AER = null, VIEWS = null, el = null, box = null, plan = null;
-const S = { tower: null, frame: 0, floor: null, side: null, touched: false, sideChosen: false, sheet: 'peek' }; // sheet: 'peek' | 'open'
+let T = null, AER = null, VIEWS = null, el = null, box = null, plan = null, DET = null;
+const S = { tower: null, frame: 0, floor: null, side: null, touched: false, sideChosen: false, sheet: 'peek', rechoose: false }; // sheet: 'peek' | 'open'
 const pre = {};
 
 const turn = () => (S.tower ? T.towers[S.tower] : null);
@@ -64,6 +64,7 @@ function load() {
   if (T) return Promise.resolve();
   return Promise.all([fetch(A('turn/turn.json'), { credentials: 'omit' }).then((r) => r.json()), fetch(C.aerial, { credentials: 'omit' }).then((r) => r.json())]).then(([t, a]) => { T = t; AER = a; });
 }
+function loadDetails() { if (DET) return; DET = { marks: [], places: [] }; fetch(A('details.json'), { credentials: 'omit' }).then((r) => r.json()).then((j) => { DET = j; if (el) paintMap(); }).catch(() => {}); }
 function loadViews() { if (VIEWS || !C.data) return; VIEWS = []; fetch(C.data, { credentials: 'omit' }).then((r) => r.json()).then((j) => { VIEWS = (j.views || []).filter((v) => v.tod === 'day' && v.bearing != null && v.side != null); paintCard(); }).catch(() => {}); }
 function viewOf(k, f, b) { const L = (VIEWS || []).filter((v) => v.tower === k && angDiff(v.bearing, b) <= 30).sort((x, y) => Math.abs(x.floor - f) - Math.abs(y.floor - f)); return L[0] || null; }
 
@@ -119,14 +120,17 @@ function paintBand() {
 function paintMap() {
   const m = T.map, sv = el.querySelector('.nlsr-mapov'), line = el.querySelector('.nlsr-mapline');
   const P = (x, y) => `${x.toFixed(0)},${(-y).toFixed(0)}`;
-  let h = '';
+  if (!DET) loadDetails();
+  let h = '', beamB = null, from = null;
   for (const k of Object.keys(m.towers).sort()) { const [x, y] = m.towers[k], on = k === S.tower; h += `<circle class="nlsr-tw${on ? ' is-on' : ''}" cx="${x}" cy="${-y}" r="${on ? 44 : 30}"/>`; }
   if (S.tower) {
-    const [x, y] = m.towers[S.tower];
+    const [x, y] = m.towers[S.tower]; from = [x, y];
     if (S.side != null && S.floor) {
       const b = sideBearing(S.tower, S.floor, S.side), R = 3200, a1 = (b - 26) * Math.PI / 180, a2 = (b + 26) * Math.PI / 180;
-      h = `<path class="nlsr-beam" d="M${P(x, y)} L${P(x + R * Math.sin(a1), y + R * Math.cos(a1))} L${P(x + R * Math.sin(a2), y + R * Math.cos(a2))} Z"/>` + h;
-      line.innerHTML = t('sr_map_facing', { dir: esc(dirTo(b)), sector: esc(sectorOf(b)) });
+      beamB = b;
+      h = `<path class="nlsr-beam${sv.querySelector('.nlsr-beam') ? ' is-still' : ''}" d="M${P(x, y)} L${P(x + R * Math.sin(a1), y + R * Math.cos(a1))} L${P(x + R * Math.sin(a2), y + R * Math.cos(a2))} Z"/>` + h;
+      const win = windowNames(from, b);
+      line.innerHTML = t('sr_map_facing', { dir: esc(dirTo(b)), sector: esc(sectorOf(b)) }) + (win ? '<br>' + t('sr_map_window', { names: esc(win) }) : '');
     } else {
       const cb = turn().frames[S.frame].b * Math.PI / 180, ex = x + 210 * Math.sin(cb), ey = y + 210 * Math.cos(cb);
       h += `<path class="nlsr-eyeline" d="M${P(ex, ey)} L${P(x, y)}"/><circle class="nlsr-eye" cx="${ex.toFixed(0)}" cy="${(-ey).toFixed(0)}" r="34"/>`;
@@ -134,6 +138,68 @@ function paintMap() {
     }
   } else line.innerHTML = t('sr_map_intro');
   sv.innerHTML = h;
+  mapLabels(from, beamB);
+}
+/* HAD-712 (12.11.2026, Ben: "many details on the map"; boards P3/Q3): the places and landmarks of hamedina/details.json (the same
+   positions view-with-details projects) named on the small map; those in the beam stand out, the beam's landmarks beyond the map's
+   edge get a chip at the edge on their true bearing, and the line under the map names them ("in the window's direction", never a
+   promise of the view itself) */
+const brg = (f, x, y) => ((Math.atan2(x - f[0], y - f[1]) * 180 / Math.PI) + 360) % 360;
+const nameOf = (q) => { const L = lang(); return q[L] || (L === 'fr' && q.fr_name) || q.en || ''; };
+function detailRows(f) {
+  if (!DET || !DET.places) return [];
+  return DET.marks.map((q) => ({ ...q, mark: 1 })).concat(DET.places).map((q) => ({ q, name: nameOf(q), X: q.x, Y: -q.z, d: Math.hypot(q.x - f[0], -q.z - f[1]) })).filter((r) => r.name && r.d > 60);
+}
+function windowNames(f, b) {
+  const rows = detailRows(f).filter((r) => angDiff(brg(f, r.X, r.Y), b) <= 26 && r.d <= (r.q.mark ? 4500 : 1500));
+  const pick = rows.filter((r) => r.q.mark).sort((a, c) => a.d - c.d).slice(0, 3);
+  for (const r of rows.filter((x) => !x.q.mark).sort((a, c) => a.d - c.d)) { if (pick.length >= 3) break; pick.push(r); }
+  if (!pick.length) return '';
+  const names = pick.sort((a, c) => a.d - c.d).map((r) => r.name);
+  try { return new Intl.ListFormat(lang(), { style: 'long', type: 'conjunction' }).format(names); } catch (e) { return names.join(', '); }
+}
+function mapLabels(from, b) {
+  const mb = el.querySelector('.nlsr-map'); if (!mb) return;
+  let lay = mb.querySelector('.nlsr-mlx'); if (!lay) { lay = document.createElement('div'); lay.className = 'nlsr-mlx'; lay.setAttribute('aria-hidden', 'true'); mb.appendChild(lay); }
+  lay.textContent = '';
+  const m = T.map, cw = mb.clientWidth, ch = mb.clientHeight; if (!cw || !ch || !DET || !DET.places) return;
+  const W = m.x1 - m.x0, H = m.y1 - m.y0, f = from || [0, 0];
+  const px = (x) => (x - m.x0) / W * cw, py = (y) => (m.y1 - y) / H * ch;
+  const o = mb.getBoundingClientRect();
+  const taken = [...mb.querySelectorAll('.nlsr-ml')].map((e) => { const r = e.getBoundingClientRect(); return { l: r.left - o.left, r: r.right - o.left, t: r.top - o.top, b: r.bottom - o.top }; });
+  const hit = (a) => taken.some((q) => a.l < q.r + 3 && a.r > q.l - 3 && a.t < q.b + 2 && a.b > q.t - 2);
+  const rows = detailRows(f).map((r) => ({ ...r, beam: b != null && angDiff(brg(f, r.X, r.Y), b) <= 26 }));
+  const inside = rows.filter((r) => r.X > m.x0 + W * 0.02 && r.X < m.x1 - W * 0.02 && r.Y > m.y0 + H * 0.05 && r.Y < m.y1 - H * 0.05)
+    .sort((a, c) => (c.beam - a.beam) || ((c.q.mark || 0) - (a.q.mark || 0)) || (a.d - c.d));
+  const cap = cw < 520 ? 4 : 7; let n = 0;
+  for (const r of inside) {
+    if (n >= cap) break;
+    const x = px(r.X), y = py(r.Y);
+    const s = document.createElement('span'); s.className = 'nlsr-pl' + (r.beam ? ' is-beam' : ''); s.textContent = r.name; s.style.visibility = 'hidden'; lay.appendChild(s);
+    const w = s.offsetWidth, hh = s.offsetHeight; if (!w || w > cw - 6) { s.remove(); continue; }
+    const l = Math.min(Math.max(x - w / 2, 3), cw - w - 3); let tp = y - hh - 5; if (tp < 2) tp = y + 5;
+    const a = { l, r: l + w, t: tp, b: tp + hh };
+    if (hit(a) || a.b > ch - 2) { s.remove(); continue; }
+    taken.push(a); n++;
+    s.style.left = (l / cw * 100).toFixed(2) + '%'; s.style.top = (tp / ch * 100).toFixed(2) + '%'; s.style.visibility = '';
+    const d = document.createElement('i'); d.className = 'nlsr-pd' + (r.beam ? ' is-beam' : ''); d.style.left = (x / cw * 100).toFixed(2) + '%'; d.style.top = (y / ch * 100).toFixed(2) + '%'; lay.appendChild(d);
+  }
+  if (b == null || !from) return;
+  const ARW = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
+  const far = rows.filter((r) => r.beam && r.q.mark && r.d <= 4500 && !inside.includes(r)).sort((a, c) => a.d - c.d).slice(0, 2);
+  for (const r of far) {
+    const br = brg(f, r.X, r.Y), dx = Math.sin(br * Math.PI / 180), dy = Math.cos(br * Math.PI / 180);
+    const xi = [m.x0 + W * 0.03, m.x1 - W * 0.03], yi = [m.y0 + H * 0.08, m.y1 - H * 0.08];
+    let k = Infinity;
+    if (Math.abs(dx) > 1e-6) k = Math.min(k, ((dx > 0 ? xi[1] : xi[0]) - f[0]) / dx);
+    if (Math.abs(dy) > 1e-6) k = Math.min(k, ((dy > 0 ? yi[1] : yi[0]) - f[1]) / dy);
+    const x = px(f[0] + dx * k), y = py(f[1] + dy * k);
+    const s = document.createElement('span'); s.className = 'nlsr-pe'; s.textContent = r.name + ' ' + ARW[Math.round(br / 45) % 8]; s.style.visibility = 'hidden'; lay.appendChild(s);
+    const w = s.offsetWidth, hh = s.offsetHeight; if (!w || w > cw - 6) { s.remove(); continue; }
+    const l = Math.min(Math.max(x - w / 2, 3), cw - w - 3), tp = Math.min(Math.max(y - hh / 2, 2), ch - hh - 2);
+    const a = { l, r: l + w, t: tp, b: tp + hh }; if (hit(a)) { s.remove(); continue; }
+    taken.push(a); s.style.left = (l / cw * 100).toFixed(2) + '%'; s.style.top = (tp / ch * 100).toFixed(2) + '%'; s.style.visibility = '';
+  }
 }
 
 /* ---------------------------------------------------------------- the card, the steps, the hint: what to tap next */
@@ -188,7 +254,7 @@ function setSheet(v, how) { // 'open' | 'peek'; how: handle, row, swipe, stage, 
    the next step; the label is the hint pill; the step bar shows the state without pulsing; the apartment screen paints its own */
 function nextWay() {
   if (!S.tower) return 'tower';
-  if (!S.floor) return 'floor';
+  if (!S.floor || S.rechoose) return 'floor'; // HAD-712 (12.11): the tower dragged again after a pick: "tap a floor" comes back
   const d = way.get();
   if (!S.sideChosen && !d.plan) return 'plan'; // a floor tapped on the tower already chose its side: skipped then
   if (!d.enter || CK_WAY.some((k) => !d[k])) return 'enter'; // the rest happens in the apartment screen
@@ -247,14 +313,15 @@ function announce() { // the basket and the page hear the choice; the apartment 
 }
 function openTower(k, quietly) {
   if (S.floor && !quietly) ga('tower_change_after_card', { from: S.tower, to: k }); // HAD-712 (12.11): another tower with the card up
-  S.tower = k; S.floor = null; S.side = null; S.touched = false; S.sideChosen = false; S.sheet = 'peek'; S.frame = nearestFrame(k, START);
-  preload(k, S.frame); preloadAround(k, S.frame); loadViews();
+  S.tower = k; S.floor = null; S.side = null; S.touched = false; S.sideChosen = false; S.sheet = 'peek'; S.rechoose = false; S.frame = nearestFrame(k, START);
+  preload(k, S.frame); preloadAround(k, S.frame); loadViews(); loadDetails();
   const im = el.querySelector('.nlsr-img'); im.classList.add('is-in'); setTimeout(() => im.classList.remove('is-in'), 520);
   paint(); if (!quietly) ga('showroom_tower', { tower: k });
 }
 function toAll() { if (S.floor) ga('tower_change_after_card', { from: S.tower, to: 'all' }); S.tower = null; S.floor = null; S.side = null; S.sideChosen = false; S.sheet = 'peek'; paint(); }
 function pick(f, side, how) {
   const had = S.floor;
+  S.rechoose = false;
   S.floor = Math.min(Math.max(f, 1), turn().floors);
   if (side != null) S.side = side; else if (S.side == null) S.side = 0;
   if (how === 'tap' || how === 'side' || how === 'plan') S.sideChosen = true; // a floor tapped on the tower names its side too
@@ -301,7 +368,7 @@ function wire() {
   el.querySelector('.nlsr-map').addEventListener('pointerdown', () => { if (S.sheet === 'open') setSheet('peek', 'stage'); });
   st.addEventListener('pointermove', (e) => {
     if (!p0) return; const dx = e.clientX - p0.x, dy = e.clientY - p0.y;
-    if (!p0.moved) { if (Math.abs(dx) < 9 || Math.abs(dx) < Math.abs(dy)) return; p0.moved = true; try { st.setPointerCapture(e.pointerId); } catch (x) { /* none */ } if (!S.touched) { S.touched = true; paintHint(); ga('showroom_turn', { tower: S.tower }); } }
+    if (!p0.moved) { if (Math.abs(dx) < 9 || Math.abs(dx) < Math.abs(dy)) return; p0.moved = true; try { st.setPointerCapture(e.pointerId); } catch (x) { /* none */ } if (!S.touched) { S.touched = true; paintHint(); ga('showroom_turn', { tower: S.tower }); } if (S.floor && !S.rechoose) { S.rechoose = true; paintWay(); } }
     const n = turn().frames.length, want = ((p0.f + Math.round(dx / (st.clientWidth / 9))) % n + n) % n;
     if (want !== S.frame && turn().frames[want].ok) { S.frame = want; paintPic(); }
   });

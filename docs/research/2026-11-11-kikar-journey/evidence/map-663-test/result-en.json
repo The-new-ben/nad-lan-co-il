@@ -1,0 +1,151 @@
+[
+ {
+  "L": "en",
+  "w": 390,
+  "mapAll": {
+   "names": [
+    "Gan Polak",
+    "Gan HaGat"
+   ],
+   "chips": [],
+   "outside": [],
+   "overlaps": [],
+   "beamFill": null,
+   "line": "The map: the square, the city and the sea. Choose a tower and a floor, and the map shows which way the apartment faces."
+  },
+  "mapPicked": {
+   "names": [
+    "Ibn Gabirol station, Purple Line*",
+    "Gan Polak"
+   ],
+   "chips": [],
+   "outside": [],
+   "overlaps": [],
+   "beamFill": "rgba(194, 86, 58, 0.34)",
+   "line": "This apartment faces west: the sea and the city\nIn the window’s direction: Ibn Gabirol station, Purple Line"
+  },
+  "sides": [
+   {
+    "names": [
+     "Gan Polak*",
+     "Gan HaGat"
+    ],
+    "chips": [],
+    "outside": [],
+    "overlaps": [],
+    "beamFill": "rgba(194, 86, 58, 0.34)",
+    "line": "This apartment faces north: the Yarkon and the north\nIn the window’s direction: Sportek, Ramat Aviv, and Tel Aviv University"
+   },
+   {
+    "names": [
+     "Gan HaGat",
+     "Gan Polak"
+    ],
+    "chips": [],
+    "outside": [],
+    "overlaps": [],
+    "beamFill": "rgba(194, 86, 58, 0.34)",
+    "line": "This apartment faces east: Ramat Gan and the Diamond Exchange district\nIn the window’s direction: Tel Aviv Savidor Center railway station, Aba Hilel Station, and Moshe Aviv Tower (Ramat Gan)"
+   },
+   {
+    "names": [
+     "Gan HaGat",
+     "Gan Polak"
+    ],
+    "chips": [],
+    "outside": [],
+    "overlaps": [],
+    "beamFill": "rgba(194, 86, 58, 0.34)",
+    "line": "This apartment faces south: the city’s towers\nIn the window’s direction: Ichilov (Tel Aviv Sourasky Medical Center), Azrieli Center (the three towers), and Azrieli Sarona Tower"
+   }
+  ],
+  "hintAfterDrag": {
+   "got": "Tap a floor on the tower",
+   "want": "Tap a floor on the tower",
+   "way": "floor"
+  },
+  "wayAfterRepick": "enter",
+  "views": [
+   {
+    "n": 3,
+    "cap": "Illustrative visualisation · Floor 15 · south",
+    "names": [
+     "Ichilov (Tel Aviv Sourasky Medical Center) | about 650 m",
+     "Ichilov station, Purple Line | 2 min walk",
+     "Weizman Centre | 8 min walk"
+    ],
+    "cut": [],
+    "clipped": [],
+    "under": [
+     "Ichilov (Tel Aviv Sourasky Medical Center)"
+    ]
+   },
+   {
+    "n": 3,
+    "cap": "Illustrative visualisation · Floor 15 · north",
+    "names": [
+     "Ramat Aviv | about 2.5 km",
+     "Tel Aviv University | about 3.2 km",
+     "Tel-Aviv Theater | 3 min walk"
+    ],
+    "cut": [],
+    "clipped": [],
+    "under": [
+     "Ramat Aviv",
+     "Tel Aviv University"
+    ]
+   },
+   {
+    "n": 2,
+    "cap": "Illustrative visualisation · Floor 15 · east",
+    "names": [
+     "Tel Aviv Savidor Center railway station | about 750 m",
+     "Moshe Aviv Tower (Ramat Gan) | about 1.3 km"
+    ],
+    "cut": [],
+    "clipped": [],
+    "under": [
+     "Moshe Aviv Tower (Ramat Gan)"
+    ]
+   },
+   {
+    "n": 3,
+    "cap": "Illustrative visualisation · Floor 15 · north",
+    "names": [
+     "Ramat Aviv | about 2.5 km",
+     "Tel Aviv University | about 3.2 km",
+     "Tel-Aviv Theater | 3 min walk"
+    ],
+    "cut": [],
+    "clipped": [],
+    "under": [
+     "Ramat Aviv",
+     "Tel Aviv University"
+    ]
+   }
+  ],
+  "viewNudged": {
+   "n": 3,
+   "cap": "Illustrative visualisation · Floor 15 · south",
+   "names": [
+    "Ichilov (Tel Aviv Sourasky Medical Center) | about 650 m",
+    "Ichilov station, Purple Line | 2 min walk",
+    "Weizman Centre | 8 min walk"
+   ],
+   "cut": [],
+   "clipped": [],
+   "under": [
+    "Ichilov (Tel Aviv Sourasky Medical Center)"
+   ]
+  },
+  "geo": "{\"layer\":[-288,0,672,540],\"ctl\":[[12,12,184,56],[194,19,378,49],[161,112,378,135],[12,64,226,114]],\"lab\":[[4,103,240,156],[227,248,386,286],[59,194,164,232]]}",
+  "errs": [],
+  "failed": [],
+  "served": [
+   "project-stage/world/showroom-i18n.js",
+   "project-stage/world/showroom.js",
+   "project-stage/world/showroom.css",
+   "project-stage/world/viewdetails.js"
+  ]
+ }
+]

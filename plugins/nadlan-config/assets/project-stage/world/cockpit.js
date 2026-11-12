@@ -269,7 +269,7 @@ function render() {
 function mountVd(img) { // HAD-712 (12.11): the names of the places over the rendered window view (world/viewdetails.js, loaded on first use)
   const [tw, fl, br] = img.dataset.vdimg.split('|');
   if (!VD) VD = import(new URL('viewdetails.js' + (C.ver ? '?ver=' + C.ver : ''), import.meta.url).href);
-  VD.then((m) => m.viewDetails(img, { data: A('details.json'), lang: lang() })).then((d) => {
+  VD.then((m) => m.viewDetails(img, { data: A('details.json'), lang: lang(), avoid: '.nlck-subtop > *, .nlck-cap, .nlck-vdt' })).then((d) => {
     if (!img.isConnected) { d.destroy(); return; }
     d.set({ tower: tw, floor: +fl, bearing: +br }); d.show(vdOn); vds.push(d);
   }).catch((e) => console.warn('[cockpit] view details', e));
