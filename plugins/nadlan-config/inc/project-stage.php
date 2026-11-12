@@ -1186,7 +1186,7 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 					'places' => $cfg['places'],
 					'base'   => plugins_url( $base, dirname( __FILE__ ) ),
 					'ver'    => nadlan_ps_ver(),
-					'avail'  => function_exists( 'rest_url' ) ? rest_url( 'nadlan/v1/room/available' ) : '',
+					'avail'  => function_exists( 'rest_url' ) ? add_query_arg( 'post', (int) ( $ps['id'] ?? 0 ), rest_url( 'nadlan/v1/room/available' ) ) : '', // 1.72.664 (HAD-712): the page id, so the Kikar pages answer yes
 					'lang'   => $tl, // 1.72.658 (HAD-712): the cockpit's words and direction
 					'wa'     => $link,
 				),

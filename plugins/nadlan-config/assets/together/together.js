@@ -49,7 +49,7 @@ const STR = {
     consent: 'השיחה אינה מוקלטת. ההערות נשמרות בתיק הדירה. השיחה היא עם צוות נדל״ן, פלטפורמה עצמאית, ואינה מטעם היזם. שינויים בדירה כפופים לאישור היזם.',
     followPill: 'כולם רואים את מה ש{name} מראה', followBack: 'חזרה למה ש{name} מראה', rep: 'הנציג',
     me: 'אני', leading: 'מוביל את המבט', inRoom: 'בחדר', away: 'לא בחדר עכשיו',
-    waRep: 'שיחה עם הנציג בוואטסאפ', waitRep: 'הנציג עוד לא בחדר. אפשר לשלוח לו הודעה בוואטסאפ עם הקישור לחדר.',
+    keepWait: 'להמשיך לחכות', waRep: 'שיחה עם הנציג בוואטסאפ', waitRep: 'הנציג עוד לא בחדר. אפשר לשלוח לו הודעה בוואטסאפ עם הקישור לחדר.',
     waCall: 'שלום, אני בחדר הצפייה המשותף של {project} ואשמח לשיחה עם נציג: {url}',
     joinP: 'נכנסים יחד לדירה לדוגמה: כולם רואים את אותו מבט, והנציג מוביל. כל משתתף יכול להצמיד הערה לנקודה בדירה, וההערות נשמרות בתיק הדירה.',
     nameLbl: 'השם שלכם', namePh: 'השם שיופיע לכולם', roleLbl: 'מי אתם בחדר', withCam: 'להצטרף עם מצלמה', withMic: 'עם מיקרופון',
@@ -86,18 +86,18 @@ const STR = {
     newNote: 'New note', notePh: 'What should we remember here? A socket, a measurement, a change', whereLbl: 'Where', save: 'Save the note', del: 'Delete',
     noNotes: 'No notes yet. Tap “Add a note”, then a point in the apartment.',
     file: 'Apartment file', notesN: '{n} notes', notes1: '1 note',
-    sendFile: 'Send the file to the representative and everyone on WhatsApp', sendFileRep: 'Send the file to everyone on WhatsApp', sendFileShort: 'Send the file', copy: 'Copy', copied: 'Copied',
+    sendFile: 'Send the file to the NadLan advisor and everyone on WhatsApp', sendFileRep: 'Send the file to everyone on WhatsApp', sendFileShort: 'Send the file', copy: 'Copy', copied: 'Copied',
     consent: 'The call is not recorded. The notes are kept in the apartment’s file. The call is with the NadLan team, an independent platform, and is not on behalf of the developer. Changes to the apartment are subject to the developer’s approval.',
-    followPill: 'Everyone sees what {name} shows', followBack: 'Back to what {name} shows', rep: 'the representative',
+    followPill: 'Everyone sees what {name} shows', followBack: 'Back to what {name} shows', rep: 'the NadLan advisor',
     me: 'Me', leading: 'Leading the view', inRoom: 'In the room', away: 'Not in the room now',
-    waRep: 'Call the representative on WhatsApp', waitRep: 'The representative is not in the room yet. You can send a WhatsApp message with the room link.',
-    waCall: 'Hello, I am in the shared viewing room of {project} and would like to talk with a representative: {url}',
-    joinP: 'Walk through the example apartment together: everyone sees the same view, and the representative leads. Anyone can pin a note to a point in the apartment; the notes are kept in the apartment’s file.',
+    keepWait: 'Keep waiting', waRep: 'Call the NadLan advisor on WhatsApp', waitRep: 'The NadLan advisor is not in the room yet. You can send a WhatsApp message with the room link.',
+    waCall: 'Hello, I am in the shared viewing room of {project} and would like to talk with a NadLan advisor: {url}',
+    joinP: 'Walk through the example apartment together: everyone sees the same view, and the NadLan advisor leads. Anyone can pin a note to a point in the apartment; the notes are kept in the apartment’s file.',
     nameLbl: 'Your name', namePh: 'The name everyone will see', roleLbl: 'Who are you in the room', withCam: 'Join with camera', withMic: 'with microphone',
     enter: 'Enter the room', enterBack: 'Back into the room', needName: 'Please write a name.', langLbl: 'Language',
     e_closed: 'This room has closed. You can book a new call.', e_room: 'We could not find this room. Please check the link.', e_full: 'The room is full right now.',
-    e_rate: 'Too many attempts. Please try again in a few minutes.', e_net: 'No connection to the server. Please try again.', e_role: 'This role is for NadLan representatives.',
-    e_no_rep: 'No representative is available for a shared room right now. Book a time, and the representative will send you the room link before the call.',
+    e_rate: 'Too many attempts. Please try again in a few minutes.', e_net: 'No connection to the server. Please try again.', e_role: 'This role is for NadLan advisors.',
+    e_no_rep: 'No NadLan advisor is available for a shared room right now. Book a time, and the NadLan advisor will send you the room link before the call.',
     book: 'Book a time', backToPage: 'Back to the project page',
     camDenied: 'The camera or microphone was not allowed. You can continue without them.', lkFail: 'Video did not connect. Continuing without video: the view and the notes stay in sync.',
     audio: 'Turn on sound', reconnecting: 'Connection lost. Reconnecting…',
@@ -131,7 +131,7 @@ const STR = {
     consent: 'L’appel n’est pas enregistré. Les notes sont conservées dans le dossier de l’appartement. L’appel est avec l’équipe NadLan, une plateforme indépendante, et non au nom du promoteur. Toute modification de l’appartement est soumise à l’accord du promoteur.',
     followPill: 'Tout le monde voit ce que montre {name}', followBack: 'Revenir à ce que montre {name}', rep: 'le conseiller',
     me: 'Moi', leading: 'Guide la visite', inRoom: 'Dans la salle', away: 'Absent pour l’instant',
-    waRep: 'Appeler le conseiller sur WhatsApp', waitRep: 'Le conseiller n’est pas encore dans la salle. Vous pouvez lui envoyer le lien sur WhatsApp.',
+    keepWait: 'Continuer d’attendre', waRep: 'Appeler le conseiller sur WhatsApp', waitRep: 'Le conseiller n’est pas encore dans la salle. Vous pouvez lui envoyer le lien sur WhatsApp.',
     waCall: 'Bonjour, je suis dans la salle de visite partagée de {project} et j’aimerais parler à un conseiller : {url}',
     joinP: 'Visitez ensemble l’appartement type : tout le monde voit la même vue, et le conseiller guide. Chacun peut attacher une note à un point de l’appartement ; les notes sont gardées dans le dossier.',
     nameLbl: 'Votre nom', namePh: 'Le nom visible par tous', roleLbl: 'Qui êtes-vous', withCam: 'Avec caméra', withMic: 'avec micro',
@@ -172,7 +172,7 @@ const STR = {
     consent: 'Звонок не записывается. Заметки сохраняются в папке квартиры. Звонок проводит команда NadLan, независимая платформа, не от имени застройщика. Изменения в квартире требуют согласия застройщика.',
     followPill: 'Все видят то, что показывает {name}', followBack: 'Вернуться к показу {name}', rep: 'представитель',
     me: 'Я', leading: 'Ведёт показ', inRoom: 'В комнате', away: 'Сейчас не в комнате',
-    waRep: 'Позвонить представителю в WhatsApp', waitRep: 'Представитель ещё не в комнате. Можно отправить ему ссылку в WhatsApp.',
+    keepWait: 'Продолжать ждать', waRep: 'Позвонить представителю в WhatsApp', waitRep: 'Представитель ещё не в комнате. Можно отправить ему ссылку в WhatsApp.',
     waCall: 'Здравствуйте, я в комнате общего просмотра {project} и хочу поговорить с представителем: {url}',
     joinP: 'Смотрим пример квартиры вместе: все видят одно и то же, ведёт представитель. Каждый может прикрепить заметку к точке в квартире; заметки хранятся в папке квартиры.',
     nameLbl: 'Ваше имя', namePh: 'Имя, которое увидят все', roleLbl: 'Кто вы в комнате', withCam: 'С камерой', withMic: 'с микрофоном',
@@ -213,7 +213,7 @@ const STR = {
     consent: 'المكالمة لا تُسجَّل. تُحفظ الملاحظات في ملف الشقة. المكالمة مع فريق NadLan، منصة مستقلة، وليست باسم المطوّر. أي تغيير في الشقة يخضع لموافقة المطوّر.',
     followPill: 'الجميع يرى ما يعرضه {name}', followBack: 'العودة إلى ما يعرضه {name}', rep: 'الممثل',
     me: 'أنا', leading: 'يقود العرض', inRoom: 'في الغرفة', away: 'ليس في الغرفة الآن',
-    waRep: 'مكالمة الممثل عبر واتساب', waitRep: 'الممثل ليس في الغرفة بعد. يمكن إرسال رابط الغرفة إليه عبر واتساب.',
+    keepWait: 'متابعة الانتظار', waRep: 'مكالمة الممثل عبر واتساب', waitRep: 'الممثل ليس في الغرفة بعد. يمكن إرسال رابط الغرفة إليه عبر واتساب.',
     waCall: 'مرحبًا، أنا في غرفة المشاهدة المشتركة لـ{project} وأرغب بالتحدث مع ممثل: {url}',
     joinP: 'ندخل معًا إلى الشقة النموذجية: الجميع يرى المشهد نفسه، والممثل يقود. يمكن لكل مشارك تثبيت ملاحظة على نقطة في الشقة، وتُحفظ الملاحظات في ملف الشقة.',
     nameLbl: 'اسمكم', namePh: 'الاسم الذي سيظهر للجميع', roleLbl: 'من أنتم في الغرفة', withCam: 'الانضمام بالكاميرا', withMic: 'بالميكروفون',
@@ -491,7 +491,7 @@ function showJoin(err) {
   R.textContent = '';
   applyDir();
   const saved = loadCreds();
-  let role = (saved && saved.role) || (CFG.canRep && ST.created ? 'rep' : 'buyer');
+  let role = (saved && saved.role) || (CFG.canRep ? 'rep' : 'buyer'); // HAD-712 (12.11.2026): a signed-in representative opening the link from the mail joins as the representative
   if (role === 'rep' && !CFG.canRep) role = 'buyer';
   const name = h('input', { class: 'nltg-in', id: 'nltg-name', type: 'text', maxlength: '40', autocomplete: 'given-name', placeholder: t('namePh') });
   name.value = (saved && saved.name) || (CFG.canRep ? (CFG.user || '') : '');
@@ -566,7 +566,26 @@ async function enter(r) {
   if (r.state && ST.leader && ST.leader !== ST.me.pid) applyState(r.state, 0);
   renderAll();
   if (ST.created && ST.me.role === 'rep') openInvite(); // the representative's console: the join link ready to share
+  if (ST.me.role !== 'rep') setTimeout(waitCheck, 60000); // HAD-712 (12.11.2026): no representative after a minute: offer a time
   requestAnimationFrame(frame);
+}
+
+/* HAD-712 (12.11.2026, Ben: "a tap opens live video"): the room opens at once; if no representative has joined after a minute, a small
+ * card offers to book a time (the page's booking band), to message on WhatsApp, or to keep waiting (it asks again a minute later). */
+function waitCheck() {
+  if (!ST.joined || !ST.me || ST.me.role === 'rep') return;
+  const list = T && T.peopleList ? T.peopleList() : ST.people;
+  if ((list || []).some((p) => p.role === 'rep')) return;
+  if (R.querySelector('.nltg-waitcard')) return;
+  const card = h('div', { class: 'nltg-card nltg-waitcard', role: 'dialog', 'aria-label': t('kicker') },
+    h('div', { class: 'p', text: t('waitRep') }),
+    h('div', { class: 'row' },
+      document.getElementById('nlsch') ? h('button', { type: 'button', class: 'nltg-btn teal', text: t('book'), onclick: () => leave(true, '#nlsch') }) : null,
+      CFG.wa ? h('a', { class: 'nltg-btn wa', href: waHref(t('waCall', { project: PN(), url: CFG.url }), true), target: '_blank', rel: 'noopener' }, icon('wa'), t('waRep')) : null,
+      h('button', { type: 'button', class: 'nltg-btn', text: t('keepWait'), onclick: () => { wrap.remove(); setTimeout(waitCheck, 60000); } })));
+  const wrap = h('div', { class: 'nltg-scrim nltg-waitscrim' }, card);
+  R.append(wrap);
+  const f = card.querySelector('button, a'); if (f) f.focus();
 }
 
 function nameOf(pid) {

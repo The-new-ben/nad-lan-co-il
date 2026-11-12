@@ -44,11 +44,27 @@ if ( ! function_exists( 'nadlan_tr_opt' ) ) {
 if ( ! function_exists( 'nadlan_tr_lk_ready' ) ) {
 	/** LiveKit is on when the server URL, the key and the secret are all set. */
 	function nadlan_tr_lk_ready() {
-		return '' !== (string) nadlan_tr_opt( 'lk_url' ) && '' !== (string) nadlan_tr_opt( 'lk_key' ) && '' !== (string) nadlan_tr_opt( 'lk_secret' );
+		if ( '' !== (string) nadlan_tr_opt( 'lk_url' ) && '' !== (string) nadlan_tr_opt( 'lk_key' ) && '' !== (string) nadlan_tr_opt( 'lk_secret' ) ) { return true; }
+		return '' !== (string) nadlan_tr_opt( 'lk_proxy' ) && 64 === strlen( (string) nadlan_tr_opt( 'lk_proxy_secret' ) ); // 1.72.463: the shared LiveKit project
 	}
 }
 if ( ! function_exists( 'nadlan_tr_rep_now' ) ) {
 	function nadlan_tr_rep_now() { return '1' === (string) nadlan_tr_opt( 'rep_now', '0' ); }
+}
+if ( ! function_exists( 'nadlan_tr_open_always' ) ) {
+	/** HAD-712 (Ben, 11.11.2026: "a tap on video opens live video"): the Kikar pages open a shared room at any time, without the
+	 *  "representative available" box; the owner gets the join link by mail (inc/project-stage.php, nadlan_together_room_created). */
+	function nadlan_tr_open_always( $pid ) {
+		return in_array( (string) get_post_field( 'post_name', (int) $pid ), array( 'hamedina', 'hamedina-en', 'hamedina-fr' ), true );
+	}
+	/** the site-wide daily cap for those always-open rooms (40 a day): true while under it, and counts this one */
+	function nadlan_tr_open_day() {
+		$k = 'nltr_open_day_' . gmdate( 'Ymd' );
+		$n = (int) get_transient( $k );
+		if ( $n >= 40 ) { return false; }
+		set_transient( $k, $n + 1, DAY_IN_SECONDS );
+		return true;
+	}
 }
 if ( ! function_exists( 'nadlan_tr_retention_days' ) ) {
 	function nadlan_tr_retention_days() {
@@ -370,7 +386,9 @@ add_action( 'rest_api_init', function () {
 			$pid = (int) ( $p['post'] ?? $p['post_id'] ?? 0 );
 			$rep = current_user_can( 'edit_posts' );
 			if ( ! nadlan_tr_project_ok( $pid ) ) { return nadlan_tr_err( 'project', 400 ); }
-			if ( ! $rep && ! nadlan_tr_rep_now() ) { return nadlan_tr_err( 'no_rep', 403 ); }
+			$always = ! $rep && ! nadlan_tr_rep_now() && nadlan_tr_open_always( $pid ); // 1.72.664 (HAD-712)
+			if ( ! $rep && ! nadlan_tr_rep_now() && ! $always ) { return nadlan_tr_err( 'no_rep', 403 ); }
+			if ( $always && ( ! nadlan_tr_rl( 'room_day', 8, DAY_IN_SECONDS ) || ! nadlan_tr_open_day() ) ) { return nadlan_tr_err( 'rate', 429 ); }
 			if ( ! nadlan_tr_rl( 'room', $rep ? 60 : 4, HOUR_IN_SECONDS ) ) { return nadlan_tr_err( 'rate', 429 ); }
 			$room = '';
 			for ( $i = 0; $i < 4 && '' === $room; $i++ ) {
@@ -440,8 +458,18 @@ add_action( 'rest_api_init', function () {
 			);
 			if ( nadlan_tr_lk_ready() ) {
 				$out['mode']  = 'livekit';
-				$out['url']   = (string) nadlan_tr_opt( 'lk_url' );
-				$out['token'] = nadlan_tr_lk_token( $room, $pid, $name, $role, nadlan_tr_opt( 'lk_key' ), nadlan_tr_opt( 'lk_secret' ) );
+				if ( '' !== (string) nadlan_tr_opt( 'lk_key' ) ) {
+					$out['url']   = (string) nadlan_tr_opt( 'lk_url' );
+					$out['token'] = nadlan_tr_lk_token( $room, $pid, $name, $role, nadlan_tr_opt( 'lk_key' ), nadlan_tr_opt( 'lk_secret' ) );
+				} else { // 1.72.463: a token from the shared LiveKit project's edge function (HMAC-signed, rooms 'nadlan-*' only)
+					$lk_room = 'nadlan-' . $room; $lk_ts = time();
+					$lk_sig  = hash_hmac( 'sha256', $lk_room . '|' . $pid . '|' . $lk_ts, (string) nadlan_tr_opt( 'lk_proxy_secret' ) );
+					$lk_res  = wp_remote_post( (string) nadlan_tr_opt( 'lk_proxy' ), array( 'timeout' => 8, 'headers' => array( 'content-type' => 'application/json' ),
+						'body' => wp_json_encode( array( 'room' => $lk_room, 'identity' => $pid, 'name' => $name, 'role' => $role, 'ts' => $lk_ts, 'sig' => $lk_sig ) ) ) );
+					$lk_body = is_wp_error( $lk_res ) ? null : json_decode( (string) wp_remote_retrieve_body( $lk_res ), true );
+					if ( is_array( $lk_body ) && ! empty( $lk_body['token'] ) && ! empty( $lk_body['url'] ) ) { $out['url'] = (string) $lk_body['url']; $out['token'] = (string) $lk_body['token']; }
+					else { $out['mode'] = 'fallback'; } // the room still works (state over REST) if the function does not answer
+				}
 			} else {
 				$out['mode'] = 'fallback';
 			}
@@ -593,8 +621,8 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( $ns, '/room/available', array(
 		'methods'             => 'GET',
 		'permission_callback' => '__return_true',
-		'callback'            => function () {
-			$r = new WP_REST_Response( array( 'ok' => true, 'now' => nadlan_tr_rep_now() ), 200 );
+		'callback'            => function ( WP_REST_Request $req ) {
+			$r = new WP_REST_Response( array( 'ok' => true, 'now' => nadlan_tr_rep_now() || nadlan_tr_open_always( (int) $req->get_param( 'post' ) ) ), 200 ); // 1.72.664
 			$r->header( 'Cache-Control', 'no-store' );
 			return $r;
 		},
@@ -706,7 +734,7 @@ add_action( 'wp_footer', function () {
 <script id="nadlan-together-chooser-js">
 (function(){
 	var S=<?php echo wp_json_encode( $s, JSON_UNESCAPED_UNICODE ); ?>,RTL=<?php echo $rtl ? 'true' : 'false'; ?>,box=null,opener=null,NOW=false;
-	var ask=function(){try{fetch(<?php echo wp_json_encode( esc_url_raw( rest_url( 'nadlan/v1/room/available' ) ) ); ?>,{credentials:'omit',cache:'no-store'}).then(function(r){return r.json()}).then(function(j){NOW=!!(j&&j.now)}).catch(function(){})}catch(e){}};
+	var ask=function(){try{fetch(<?php echo wp_json_encode( esc_url_raw( add_query_arg( 'post', (int) ( nadlan_ps_current()['id'] ?? 0 ), rest_url( 'nadlan/v1/room/available' ) ) ) ); ?>,{credentials:'omit',cache:'no-store'}).then(function(r){return r.json()}).then(function(j){NOW=!!(j&&j.now)}).catch(function(){})}catch(e){}};
 	if(document.querySelector('a[data-nlps-ev="hero-video"]')){if('requestIdleCallback' in window)requestIdleCallback(ask,{timeout:4000});else setTimeout(ask,2500);}
 	function close(){if(box){box.hidden=true;if(opener)opener.focus();}}
 	function open(a){
