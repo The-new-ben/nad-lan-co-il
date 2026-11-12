@@ -235,3 +235,25 @@ dialog.nlf.nlf-sheet>.nlf-form:not([data-nlf-composeform]):not([data-nlf-reportf
 .nlf .nlf-dir-cta{display:flex;flex-wrap:wrap;gap:8px}
 .nlf .nlf-dir-cta .nlf-btn{flex:1 1 160px;justify-content:center;text-decoration:none}
 .nlf .nlf-dir .nlf-btn-line{background:transparent !important;color:#FFFFFF !important;border-color:#FFFFFF !important}
+/* 1.72.673 the forum inside every professional card (Card board 4, under the card's header) */
+.nlf-card-zone{margin:18px 0}
+.nlf.nlf-emb{box-shadow:0 22px 44px -32px rgba(16,24,32,.6)}
+.nlf .nlf-emb-lead{padding:12px 16px 2px;display:flex;flex-direction:column;gap:4px}
+.nlf .nlf-emb-lead p{font-size:15px;line-height:1.55;color:#3A4650;margin:0}
+.nlf.nlf-emb .nlf-tabs [role="tab"]{font-size:14px;line-height:1.25;padding:6px 4px;white-space:normal}
+.nlf .nlf-emb-item .nlf-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:#5B6770}
+.nlf .nlf-emb-who{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#3A4650}
+.nlf .nlf-emb-item .nlf-av{width:28px;height:28px;font-size:12px}
+.nlf .nlf-emb-last{display:flex;gap:8px;align-items:flex-start;background:#F2F4F5;border-radius:12px;padding:8px 10px;font-size:14px;line-height:1.45;color:#3A4650 !important;text-decoration:none}
+.nlf .nlf-emb-last b{color:#101820;font-weight:700}
+.nlf .nlf-emb-item .nlf-foot{font-size:13.5px}
+.nlf .nlf-emb-go{margin-inline-start:auto;font-weight:700;color:#2F6F86 !important;text-decoration:none;white-space:nowrap}
+.nlf .nlf-emb-people{padding:12px 16px;border-top:1px solid #D5DBDF;display:flex;flex-direction:column;gap:8px}
+.nlf .nlf-emb-people ul{list-style:none;margin:0;padding:0 0 4px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nlf .nlf-emb-people li{flex:0 0 auto;display:flex;align-items:center;gap:8px;background:#F2F4F5;border-radius:999px;padding-block:4px;padding-inline:4px 14px;margin:0}
+.nlf .nlf-emb-people li .nlf-av{width:32px;height:32px;font-size:12px}
+.nlf .nlf-emb-people li span{display:flex;flex-direction:column;line-height:1.2;font-size:13px;color:#101820}
+.nlf .nlf-emb-people i{font-style:normal;color:#5B6770;font-size:12px}
+.nlf.nlf-emb .nlf-quick .nlf-chip{min-height:40px;font-size:13.5px}
+.nlf .nlf-emb-note{padding:10px 16px 14px;font-size:13px;line-height:1.5;color:#5B6770;margin:0;background:#F2F4F5;border-top:1px solid #D5DBDF}
+.nlf-card-end{margin-top:26px}

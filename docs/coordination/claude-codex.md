@@ -5155,3 +5155,9 @@ CLAIM + RELEASE LOCK 1.72.672 (HAD-726, first round after the forum went public)
 
 RELEASE DONE 1.72.672 (HAD-726): released and verified (health 1.72.672). Seen live as a visitor: the register card of ביטון מאיר shows no scheduler band or button (no id=nlsch), only 'פרסמו בקשה', which jumps to the request box; forum ping public:true. Screenshots docs/research/2026-11-12-pro-forum/live-672/. Lock released. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 20:39 UTC.
 
+
+CLAIM + RELEASE LOCK 1.72.673 (HAD-726, Ben: the forum embedded in every professional card, under the header): SWAP inc/pro-forum-render.php, inc/pro-forum.php (kind collab), assets/proforum/forum.css. Sample discussions by Ben's order written with scripts/project-stage/forum_seed.py (13 members on example.invalid, 8 discussions; 'unseed' removes them). Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 21:01 UTC.
+
+
+RELEASE DONE 1.72.673 (HAD-726): released and verified (health 1.72.673); the forum prints under the header of every professional card; seen live in Chrome on ביטון מאיר. 1.72.674 (shared board in the call) is NOT released: the owner rejected its look and ordered Claude Design first; boards 15-17 are on the canvas (docs/design-lab/pro-forum/README.md), code will follow them. Lock released. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 21:27 UTC.
+

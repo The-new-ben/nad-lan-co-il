@@ -427,24 +427,147 @@ add_action( 'wp', function () {
 	}
 } );
 
-/* placement on a professional's page: through the_content, late (priority 40, after the profile at 6 and its wpautop shield at 11),
-   so inc/professional-profile.php is not edited */
+/** the plural of a card's profession ("קבלנים"), '' when unknown */
+function nlf_pro_plural( $pro ) {
+	$p = nlf_pro_profession( $pro );
+	if ( function_exists( 'nadlan_pro_registry' ) ) { $r = nadlan_pro_registry(); if ( ! empty( $r[ $p ]['plural'] ) ) { return (string) $r[ $p ]['plural']; } }
+	if ( function_exists( 'nadlan_dir_prof_plural' ) ) { return (string) nadlan_dir_prof_plural( $p, '' ); }
+	return '';
+}
+
+/** one discussion inside the card's forum: what it is, who opened it, the last answer (1.72.673) */
+function nlf_embed_item( $t, $mem, $last ) {
+	$op  = nlf_author( $mem[ (int) $t['member_id'] ] ?? null );
+	$url = home_url( '/forum/' . (int) $t['id'] . '/' );
+	$h   = '<article class="nlf-mini nlf-emb-item"><div class="nlf-meta">' . nlf_cat_tag( $t['cat'] ) . nlf_kind_tag( $t['kind'] )
+		. ( '' !== $t['city'] ? '<span>' . esc_html( $t['city'] ) . '</span>' : '' ) . '<span class="nlf-when">' . nlf_when( $t['last_at'] ) . '</span></div>'
+		. '<a class="nlf-mini-t" href="' . esc_url( $url ) . '">' . esc_html( $t['title'] ) . '</a>'
+		. ( '' !== trim( $t['body'] ) ? '<p>' . esc_html( nlf_excerpt( $t['body'], 150 ) ) . '</p>' : '' )
+		. '<div class="nlf-emb-who">' . nlf_avatar( $op ) . '<span>' . esc_html( $op['name'] . ( '' !== $op['label'] ? ' · ' . $op['label'] : '' ) ) . '</span></div>';
+	if ( $last ) {
+		$la = nlf_author( $mem[ (int) $last['member_id'] ] ?? null );
+		$h .= '<a class="nlf-emb-last" href="' . esc_url( $url . '#r' . (int) $last['id'] ) . '">' . nlf_avatar( $la ) . '<span><b>' . esc_html( $la['name'] ) . ':</b> ' . esc_html( nlf_excerpt( $last['body'], 120 ) ) . '</span></a>';
+	}
+	$foot = array();
+	if ( (int) $t['reply_count'] > 0 ) { $foot[] = '<span>' . esc_html( nlf_count_words( $t['reply_count'], 'תשובה אחת', 'תשובות' ) ) . '</span>'; }
+	if ( (int) $t['solved_reply_id'] > 0 ) { $foot[] = '<span class="nlf-chip-s nlf-ok">' . nlf_svg( 'check' ) . 'יש תשובה שעזרה</span>'; }
+	if ( 0 === (int) $t['reply_count'] ) { $foot[] = '<span class="nlf-chip-s nlf-new">מחכה לתשובה ראשונה</span>'; }
+	$foot[] = '<a class="nlf-emb-go" href="' . esc_url( $url ) . '">לדיון ←</a>';
+	return $h . '<div class="nlf-foot">' . implode( '', $foot ) . '</div></article>';
+}
+
+/**
+ * 1.72.673 (Ben, 12.11.2026: "בכל כרטיס שיהיה embedded forum... לא איזה כפתור בסוף הדף"): the forum itself, right under the
+ * card's header on EVERY professional card. Discussions of the card's field, collaborations and open requests, the people who
+ * take part, and the ask box. It never presents the card's person as a participant: when he did not join, one line says so.
+ */
+function nlf_card_embed( $pro ) {
+	global $wpdb;
+	$pro  = (int) $pro;
+	$cat  = nlf_cat_for_profession( nlf_pro_profession( $pro ) );
+	$cats = nlf_categories();
+	$tt   = nlf_t( 'topics' );
+	$get  = function ( $w, $args, $order ) use ( $wpdb, $tt ) {
+		return (array) $wpdb->get_results( nlf_q( "SELECT * FROM $tt WHERE status = 'live' AND $w ORDER BY $order LIMIT 4", $args ), ARRAY_A );
+	};
+	$tabs = array();
+	if ( 'general' !== $cat ) { $tabs['t'] = array( $cats[ $cat ][0], $get( 'cat = %s', array( $cat ), 'last_at DESC' ) ); }
+	$tabs['c'] = array( 'שיתופי פעולה', $get( "kind = 'collab'", array(), 'last_at DESC' ) );
+	$tabs['r'] = array( 'בקשות פתוחות', $get( "kind = 'seek' AND status_seek = 'open'", array(), 'created_at DESC' ) );
+	$tabs['n'] = array( 'חדש בפורום', $get( '1 = 1', array(), 'last_at DESC' ) );
+	foreach ( $tabs as $k => $x ) { if ( ! $x[1] ) { unset( $tabs[ $k ] ); } }
+	if ( count( $tabs ) > 1 ) { unset( $tabs['n'] ); } // "new" only when nothing else has discussions
+	$ids = array(); $tids = array();
+	foreach ( $tabs as $x ) { foreach ( $x[1] as $t ) { $ids[] = (int) $t['member_id']; $tids[ (int) $t['id'] ] = true; } }
+	$last = array();
+	if ( $tids ) {
+		$rt = nlf_t( 'replies' );
+		$in = implode( ',', array_map( 'intval', array_keys( $tids ) ) );
+		foreach ( (array) $wpdb->get_results( "SELECT r.* FROM $rt r JOIN (SELECT topic_id, MAX(id) AS mid FROM $rt WHERE status = 'live' AND topic_id IN ($in) GROUP BY topic_id) x ON x.mid = r.id", ARRAY_A ) as $r ) { // phpcs:ignore -- integers only
+			$last[ (int) $r['topic_id'] ] = $r; $ids[] = (int) $r['member_id'];
+		}
+	}
+	$people = (array) $wpdb->get_results( 'SELECT * FROM ' . nlf_t( 'members' ) . " WHERE status = 'ok' AND role_label = 'pro' ORDER BY last_seen DESC LIMIT 8", ARRAY_A );
+	$mem    = nlf_members( $ids );
+	$n_top  = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $tt WHERE status = 'live'" );
+	$n_pro  = (int) $wpdb->get_var( 'SELECT COUNT(*) FROM ' . nlf_t( 'members' ) . " WHERE status = 'ok' AND role_label = 'pro'" );
+	$latest = (string) $wpdb->get_var( "SELECT MAX(last_at) FROM $tt WHERE status = 'live'" );
+	$today  = '' !== $latest && nlf_ts( $latest ) > time() - DAY_IN_SECONDS;
+	$pl     = nlf_pro_plural( $pro );
+	$title  = '' !== $pl ? 'פורום ' . $pl . ' ובעלי מקצוע' : 'פורום בעלי מקצוע';
+	$stats  = array_filter( array( nlf_count_words( $n_top, 'דיון אחד', 'דיונים' ), nlf_count_words( $n_pro, 'בעל מקצוע אחד', 'בעלי מקצוע בפורום' ) ) );
+	$joined = nlf_pro_member( $pro );
+	$person = function_exists( 'nadlan_prof_person_name' ) ? nadlan_prof_person_name( $pro ) : get_the_title( $pro );
+	$label  = nlf_pro_label( $pro );
+	$uid    = 'nlfe' . $pro;
+	ob_start();
+	?>
+<section class="nlf nlf-win nlf-emb" dir="rtl" aria-labelledby="<?php echo esc_attr( $uid ); ?>-h" data-pro="0" data-pro-name="" data-cat="<?php echo esc_attr( $cat ); ?>">
+	<div class="nlf-win-h"><?php echo nlf_svg( 'chat' ); // phpcs:ignore ?><h2 class="nlf-h2" id="<?php echo esc_attr( $uid ); ?>-h"><?php echo esc_html( $title ); ?></h2><?php if ( $today ) : ?><span class="nlf-today"><span class="nlf-dot" aria-hidden="true"></span>פעיל היום</span><?php endif; ?></div>
+	<div class="nlf-emb-lead">
+		<p>שואלים, מציעים שיתופי פעולה ומוצאים בעל מקצוע. בעלי המקצוע עונים כאן בעצמם, ומכל דיון אפשר לפתוח שיחת וידאו בלחיצה.</p>
+		<?php if ( $stats ) : ?><span class="nlf-sub"><?php echo esc_html( implode( ' · ', $stats ) ); ?></span><?php endif; ?>
+	</div>
+	<?php if ( $tabs ) : ?>
+	<div class="nlf-tabs" role="tablist" aria-label="הדיונים בפורום">
+		<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>
+		<button type="button" role="tab" id="<?php echo esc_attr( $uid . $k ); ?>-t" aria-controls="<?php echo esc_attr( $uid . $k ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>"><?php echo esc_html( $tab[0] ); ?></button>
+		<?php $first = false; endforeach; ?>
+	</div>
+	<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>
+	<div class="nlf-panel" role="tabpanel" id="<?php echo esc_attr( $uid . $k ); ?>" aria-labelledby="<?php echo esc_attr( $uid . $k ); ?>-t"<?php echo $first ? '' : ' hidden'; ?>>
+		<?php foreach ( $tab[1] as $t ) { echo nlf_embed_item( $t, $mem, $last[ (int) $t['id'] ] ?? null ); } // phpcs:ignore -- escaped inside ?>
+		<a class="nlf-more" href="<?php echo esc_url( 'r' === $k ? nlf_home_url( array( 'v' => 'requests' ) ) : ( 't' === $k ? nlf_home_url( array( 'c' => $cat ) ) : home_url( '/forum/' ) ) ); ?>">לכל הדיונים ←</a>
+	</div>
+	<?php $first = false; endforeach; ?>
+	<?php else : ?>
+	<div class="nlf-panel"><p class="nlf-empty-s">עוד אין דיונים. כתבו את הראשון.</p></div>
+	<?php endif; ?>
+	<?php if ( $people ) : ?>
+	<div class="nlf-emb-people" aria-label="בעלי מקצוע בפורום">
+		<span class="nlf-label">בעלי מקצוע שכבר בפורום</span>
+		<ul><?php foreach ( $people as $p ) : $a = nlf_author( $p ); ?><li><?php echo nlf_avatar( $a ); // phpcs:ignore ?><span><b><?php echo esc_html( $a['name'] ); ?></b><?php echo '' !== $a['label'] ? '<i>' . esc_html( $a['label'] ) . '</i>' : ''; ?></span></li><?php endforeach; ?></ul>
+	</div>
+	<?php endif; ?>
+	<form class="nlf-win-ask" data-nlf-ask novalidate>
+		<label for="<?php echo esc_attr( $uid ); ?>-ask" class="nlf-label"><?php echo esc_html( 'שאלו את ' . nlf_pro_plural_phrase( $pro ) . ' בפורום' ); ?></label>
+		<div class="nlf-replyrow"><input id="<?php echo esc_attr( $uid ); ?>-ask" type="text" name="q" maxlength="140" placeholder="היי, אני מחפש..."><button type="submit" class="nlf-btn nlf-btn-hot">שליחה</button></div>
+		<div class="nlf-quick">
+			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#DCE6F2', '#1D3B66' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="seek" data-cat="<?php echo esc_attr( $cat ); ?>"><?php echo esc_html( 'מחפש ' . $label ); ?></button>
+			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#FBE9F0', '#8C0F3E' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="collab" data-cat="<?php echo esc_attr( $cat ); ?>">מציע שיתוף פעולה</button>
+			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#DCEFE3', '#1B4D33' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="question" data-cat="<?php echo esc_attr( $cat ); ?>">שאלה מקצועית</button>
+		</div>
+	</form>
+	<?php if ( ! $joined ) : ?><p class="nlf-emb-note"><?php echo esc_html( $person . ( nlf_pro_female( $pro ) ? ' עוד לא הצטרפה' : ' עוד לא הצטרף' ) . ' לפורום. התשובות כאן מבעלי מקצוע שהצטרפו בעצמם.' ); ?></p><?php endif; ?>
+</section>
+	<?php
+	return ob_get_clean();
+}
+
+/* placement on a professional's page (1.72.673): the forum goes right under the card's header, where people look, and the
+   "זה הכרטיס שלכם?" box stays at the end. Through the_content, late (priority 40, after the profile at 6 and its wpautop shield
+   at 11), so inc/professional-profile.php is not edited; when the header is not found the forum opens the content. */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() || ! nlf_gate_open() ) { return $content; }
 	nlf_install();
 	$pro = (int) get_the_ID();
 	if ( $pro <= 0 || nlf_pro_removed( $pro ) ) { return $content; }
 	$me  = nlf_me();
+	$top = nlf_card_embed( $pro );
 	if ( $me && (int) $me['pro_id'] === $pro ) {
-		$html = nadlan_forum_card_window( $pro ) . nlf_owner_box( $pro );
+		$top = nadlan_forum_card_window( $pro ) . $top; $end = nlf_owner_box( $pro );
 	} elseif ( nlf_pro_member( $pro ) ) {
-		$html = nadlan_forum_card_window( $pro ) . nlf_claim_box( $pro );
+		$top = nadlan_forum_card_window( $pro ) . $top; $end = nlf_claim_box( $pro );
 	} else {
-		$html = nlf_neutral_box( $pro ) . nlf_claim_box( $pro );
+		$end = nlf_claim_box( $pro );
 	}
 	$GLOBALS['nlf_card_printed'] = true;
 	nlf_nocache();
-	return $content . '<div class="nlf-card-zone" id="nlf-card-zone">' . $html . '</div>';
+	$top = '<div class="nlf-card-zone" id="nlf-card-zone">' . $top . '</div>';
+	$h   = strpos( $content, 'class="nlpp-hero"' );
+	$e   = false !== $h ? strpos( $content, '</header>', $h ) : false;
+	$content = false !== $e ? substr( $content, 0, $e + 9 ) . $top . substr( $content, $e + 9 ) : $top . $content;
+	return $content . '<div class="nlf-card-zone nlf-card-end">' . $end . '</div>';
 }, 40 );
 
 /* ---------------------------------------------------------------- the sheets (once per forum surface) */

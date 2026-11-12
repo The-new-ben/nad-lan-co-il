@@ -20,6 +20,9 @@ Direct play links, one per board (checked in Chrome on 12.11.2026):
 | 12 Video call from a request | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-bb1592bc109b |
 | 13 Ben's control panel (desktop) | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-2e771e05cb9f |
 | 14 The forum on desktop | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-fd91350171f7 |
+| 15 The forum inside every professional card (12.11 night) | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-2d348d6ecb35 |
+| 16 Video call with a shared board on a plan, phone | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-a4cfe6e39e88 |
+| 17 The shared board on desktop, numbered notes | https://claude.ai/artifact/6pVfLsFgiNgMWDDWK6XhkC#play-657d7a78a665 |
 
 ## Identity: the building site's notice board
 
@@ -37,3 +40,11 @@ Direct play links, one per board (checked in Chrome on 12.11.2026):
 - `canvas-source/` : the `.dc.html` sources and `canvas.json` as published.
 
 Every name and number on the boards is sample content for the design and is marked "דוגמה לעיצוב". Nothing here is live.
+
+## The shared board (boards 16 and 17): a site drawing sheet
+
+- Drawing paper #F7F9FA with a fine grid, walls in ink #101820, a title block in the corner as on a real plan.
+- One colour per person on marks, cursor and video frame: raspberry #B0144F, sea #2F6F86, site green #2E7D5B, marking yellow #E8B400.
+- Faces: Rubik for numbers and measures, Assistant for text.
+- Why it is not the default look: the language comes from a work sheet and red-pen markups on a plan, not from a generic whiteboard.
+- Owner, 12.11.2026 night: only Claude Design, nothing that looks cheap. The first board.js screenshot (built before these boards) was rejected; code follows boards 15 to 17.

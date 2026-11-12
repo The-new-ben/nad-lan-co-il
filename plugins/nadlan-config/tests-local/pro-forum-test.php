@@ -21,7 +21,7 @@ t( 'category keys', array( 'law', 'build', 'loans', 'value', 'design', 'agents',
 t( 'law label', 'דיני מקרקעין' === $c['law'][0] && '#EBDDF0' === $c['law'][1] );
 t( 'abroad label', 'השקעות נדל"ן בחו"ל' === $c['abroad'][0] );
 t( 'cat_ok', nlf_cat_ok( 'loans' ) && ! nlf_cat_ok( 'nope' ) && ! nlf_cat_ok( array() ) );
-t( 'four kinds', array( 'question', 'seek', 'intro', 'work' ) === array_keys( nlf_kinds() ) );
+t( 'five kinds (collab since 1.72.673)', array( 'question', 'seek', 'collab', 'intro', 'work' ) === array_keys( nlf_kinds() ) );
 t( 'profession tint', array( '#DCE6F2', '#1D3B66' ) === nlf_prof_tint( 'kablan' ) && array( '#E3E6E8', '#22303A' ) === nlf_prof_tint( 'unknown' ) );
 
 /* text guard: links and phones */

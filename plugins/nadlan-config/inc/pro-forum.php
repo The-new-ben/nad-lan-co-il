@@ -51,7 +51,7 @@ function nlf_cat_ok( $key ) { return is_string( $key ) && isset( nlf_categories(
 
 /** kind => label (Compose board) */
 function nlf_kinds() {
-	return array( 'question' => 'שאלה', 'seek' => 'מחפש בעל מקצוע', 'intro' => 'היי, אני בעל מקצוע', 'work' => 'עבודה שסיימתי' );
+	return array( 'question' => 'שאלה', 'seek' => 'מחפש בעל מקצוע', 'collab' => 'שיתוף פעולה', 'intro' => 'היי, אני בעל מקצוע', 'work' => 'עבודה שסיימתי' );
 }
 
 /** the labels an ordinary member may choose; a chosen "בעל מקצוע" never carries a verified mark */
