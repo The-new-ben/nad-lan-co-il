@@ -80,13 +80,37 @@ export async function mountStudio(host, pick, cfg = {}) {
     return t;
   }
   const callBox = () => { const sh = host.shadowRoot || host.attachShadow({ mode: 'open' }), b = document.createElement('div'); b.className = 'ndc-host'; sh.appendChild(b); return b; };
-  async function enterCall(d, tok, room, name, role, box, tr) {
+  // On a narrow screen the call (and its entry sheet) takes the whole screen: inside a page the designer is a block in the text,
+  // and the page's own floating bars would sit on the call's buttons. The frame returns to its place when the call and its
+  // closing summary are gone.
+  let tookOver = null;
+  function takeOver(on) {
+    try {
+      if (on) {
+        if (tookOver || !(window.matchMedia && window.matchMedia('(max-width: 899px)').matches)) return;
+        tookOver = { css: host.style.cssText, over: document.documentElement.style.overflow, y: window.scrollY };
+        host.style.cssText += ';position:fixed!important;inset:0!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;z-index:2147483000!important;border:0!important';
+        document.documentElement.style.overflow = 'hidden';
+      } else if (tookOver) {
+        const t = tookOver; tookOver = null;
+        host.style.cssText = t.css; document.documentElement.style.overflow = t.over; window.scrollTo(0, t.y);
+      }
+    } catch (e) { tookOver = null; }
+  }
+  function giveBack() { // after the call: the closing summary sits in the frame, so the frame stays whole-screen until it is closed
+    const sh = host.shadowRoot, end = sh && sh.querySelector('.ndo-end');
+    if (!tookOver || !end) { takeOver(false); return; }
+    const mo = new MutationObserver(() => { if (!end.isConnected) { mo.disconnect(); takeOver(false); } });
+    mo.observe(sh, { childList: true });
+  }
+  async function enterCall(d, tok, room, name, role, box, tr, media) {
     const C = await import('./call.js');
     tr = tr || C.livekitTransport({ url: tok.url, token: tok.token });
     const call = await C.joinCall(d, {
       container: box, transport: tr, room, identity: tok.identity, name, role, lang: cfg.lang || 'he', mode: 'open',
+      mic: !!(media && media.mic), camera: !!(media && media.cam), blocked: media && media.blocked, // what the person switched on in the sheet (both off by default)
       share: () => ({ plan: curPlan, title: curMeta.title || '', unitLabel: curMeta.unitLabel || '', mine: !!curMeta.mine }),
-      onLeave: () => { if (active && active.call === call) active = null; box.remove(); if (cfg.onCall) { try { cfg.onCall('left', st); } catch (e) { /* the page's own */ } } },
+      onLeave: () => { if (active && active.call === call) active = null; box.remove(); giveBack(); if (cfg.onCall) { try { cfg.onCall('left', st); } catch (e) { /* the page's own */ } } },
     });
     active = { call, room, tr };
     if (cfg.onCall) { try { cfg.onCall('joined', st); } catch (e) { /* the page's own */ } }
@@ -96,9 +120,10 @@ export async function mountStudio(host, pick, cfg = {}) {
     if (active) { try { active.call.openPanel('invite'); } catch (e) { /* none */ } return; }
     if (!callOn || d !== inst) return;
     const box = callBox();
+    takeOver(true);
     import('./call.js').then((C) => C.callSheet(box, {
-      mode: 'start', lang: cfg.lang,
-      onClose: () => box.remove(),
+      mode: 'start', lang: cfg.lang, rooms: d.store && d.store.apt && d.store.apt.unit ? d.store.apt.unit.rooms : 0,
+      onClose: () => { box.remove(); if (!active) takeOver(false); },
       onGo: async (name, sheet) => {
         const t0 = performance.now();
         const { room } = await openRoom(name);
@@ -106,18 +131,19 @@ export async function mountStudio(host, pick, cfg = {}) {
         if (!ROOM_RE.test(String(room || ''))) { const e = new Error('call'); e.code = 'fail'; throw e; }
         const tok = await getToken(room, name, 'host');
         const t2 = performance.now();
-        await enterCall(d, tok, room, name, 'host', box);
+        await enterCall(d, tok, room, name, 'host', box, null, sheet.media);
         st.callTimes = { room_ms: Math.round(t1 - t0), token_ms: Math.round(t2 - t1), connect_and_media_ms: Math.round(performance.now() - t2) };
         sheet.close();
         st.callStartMs = Math.round(performance.now() - t0);
       },
-    })).catch(() => box.remove());
+    })).catch(() => { box.remove(); if (!active) takeOver(false); });
   }
   function joinFromLink(room) { // opened with ?room=: the sheet first, then the apartment of the people in the call
     const box = callBox();
+    takeOver(true);
     return import('./call.js').then((C) => C.callSheet(box, {
       mode: 'join', lang: cfg.lang,
-      onClose: () => { box.remove(); openDefault(); },
+      onClose: () => { box.remove(); if (!active) takeOver(false); openDefault(); },
       onGo: async (name, sheet) => {
         const t0 = performance.now();
         const tok = await getToken(room, name, 'guest');
@@ -134,7 +160,7 @@ export async function mountStudio(host, pick, cfg = {}) {
           drop(); cur = 'call'; paint();
           curPlan = got.plan; curMeta = { title: o.title, unitLabel: o.unitLabel, mine: got.mine };
           inst = await mount(host, o); // the sheet goes with the old content of the frame
-          const call = await enterCall(inst, tok, room, name, 'guest', callBox(), tr);
+          const call = await enterCall(inst, tok, room, name, 'guest', callBox(), tr, sheet.media);
           call.stats.planGot = { ms: got.ms, bytes: JSON.stringify(got.plan).length + JSON.stringify(got.design || {}).length, items: (o.design && o.design.items || []).length };
           st.callStartMs = Math.round(performance.now() - t0);
           tell('call');
