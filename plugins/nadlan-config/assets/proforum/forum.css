@@ -235,25 +235,79 @@ dialog.nlf.nlf-sheet>.nlf-form:not([data-nlf-composeform]):not([data-nlf-reportf
 .nlf .nlf-dir-cta{display:flex;flex-wrap:wrap;gap:8px}
 .nlf .nlf-dir-cta .nlf-btn{flex:1 1 160px;justify-content:center;text-decoration:none}
 .nlf .nlf-dir .nlf-btn-line{background:transparent !important;color:#FFFFFF !important;border-color:#FFFFFF !important}
-/* 1.72.673 the forum inside every professional card (Card board 4, under the card's header) */
+/* 1.72.674 the forum inside every professional card, on Claude Design board 15 (docs/design-lab/pro-forum): a dark masthead with a
+   pegboard dot pattern, the leading discussion as a conversation, the rest as rows with the count in a tinted square, open requests,
+   and the ask box on ink. Colours and faces are the forum's (ink #101820, sea #2F6F86, raspberry #B0144F, Rubik + Assistant). */
 .nlf-card-zone{margin:18px 0}
-.nlf.nlf-emb{box-shadow:0 22px 44px -32px rgba(16,24,32,.6)}
-.nlf .nlf-emb-lead{padding:12px 16px 2px;display:flex;flex-direction:column;gap:4px}
-.nlf .nlf-emb-lead p{font-size:15px;line-height:1.55;color:#3A4650;margin:0}
-.nlf.nlf-emb .nlf-tabs [role="tab"]{font-size:14px;line-height:1.25;padding:6px 4px;white-space:normal}
-.nlf .nlf-emb-item .nlf-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:#5B6770}
-.nlf .nlf-emb-who{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#3A4650}
-.nlf .nlf-emb-item .nlf-av{width:28px;height:28px;font-size:12px}
-.nlf .nlf-emb-last{display:flex;gap:8px;align-items:flex-start;background:#F2F4F5;border-radius:12px;padding:8px 10px;font-size:14px;line-height:1.45;color:#3A4650 !important;text-decoration:none}
-.nlf .nlf-emb-last b{color:#101820;font-weight:700}
-.nlf .nlf-emb-item .nlf-foot{font-size:13.5px}
-.nlf .nlf-emb-go{margin-inline-start:auto;font-weight:700;color:#2F6F86 !important;text-decoration:none;white-space:nowrap}
-.nlf .nlf-emb-people{padding:12px 16px;border-top:1px solid #D5DBDF;display:flex;flex-direction:column;gap:8px}
-.nlf .nlf-emb-people ul{list-style:none;margin:0;padding:0 0 4px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.nlf .nlf-emb-people li{flex:0 0 auto;display:flex;align-items:center;gap:8px;background:#F2F4F5;border-radius:999px;padding-block:4px;padding-inline:4px 14px;margin:0}
-.nlf .nlf-emb-people li .nlf-av{width:32px;height:32px;font-size:12px}
-.nlf .nlf-emb-people li span{display:flex;flex-direction:column;line-height:1.2;font-size:13px;color:#101820}
-.nlf .nlf-emb-people i{font-style:normal;color:#5B6770;font-size:12px}
-.nlf.nlf-emb .nlf-quick .nlf-chip{min-height:40px;font-size:13.5px}
-.nlf .nlf-emb-note{padding:10px 16px 14px;font-size:13px;line-height:1.5;color:#5B6770;margin:0;background:#F2F4F5;border-top:1px solid #D5DBDF}
 .nlf-card-end{margin-top:26px}
+.nlf.nlf-win.nlf-emb{border:0;border-radius:22px;background:#FFFFFF;box-shadow:0 24px 48px -30px rgba(16,24,32,.55),0 0 0 1.5px #101820;gap:0}
+.nlf .nlf-emb-mast{background-color:#101820;background-image:radial-gradient(rgba(255,255,255,.09) 1.2px,transparent 1.3px);background-size:14px 14px;color:#FFFFFF;padding:16px 16px 14px;display:flex;flex-direction:column;gap:12px}
+.nlf .nlf-emb-top{display:flex;align-items:flex-start;gap:10px}
+.nlf .nlf-emb-hd{display:flex;flex-direction:column;gap:2px;flex-grow:1;min-width:0}
+.nlf .nlf-emb-kick{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:#9FB4C2}
+.nlf .nlf-emb-h{margin:0;font-family:var(--hf);font-weight:800;font-size:25px;line-height:1.1;color:#FFFFFF !important}
+.nlf .nlf-emb-live{display:inline-flex;align-items:center;gap:6px;background:#B0144F;color:#FFFFFF;font-weight:700;font-size:12.5px;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.nlf .nlf-emb-live span{width:7px;height:7px;border-radius:50%;background:#FFFFFF;display:block}
+.nlf .nlf-emb-crowd{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.35;color:#DCE3E8}
+.nlf .nlf-emb-stack{display:flex;flex-shrink:0}
+.nlf .nlf-emb-stack .nlf-av{width:34px;height:34px;border-radius:11px;border:2px solid #101820;font-size:12px;margin-inline-start:-8px}
+.nlf .nlf-emb-stack .nlf-av:first-child{margin-inline-start:0}
+.nlf .nlf-emb-more{background:#E3E6E8;color:#22303A}
+.nlf.nlf-emb .nlf-tabs{display:flex;gap:6px;overflow-x:auto;border:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nlf.nlf-emb .nlf-tabs::-webkit-scrollbar{display:none}
+.nlf.nlf-emb .nlf-tabs [role="tab"]{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid #5B6770 !important;background:transparent !important;color:#FFFFFF !important;font-family:inherit;font-weight:700;font-size:14px;white-space:nowrap}
+.nlf.nlf-emb .nlf-tabs [role="tab"][aria-selected="true"]{background:#FFFFFF !important;color:#101820 !important;border-color:#FFFFFF !important}
+.nlf .nlf-emb-panel{display:flex;flex-direction:column}
+.nlf .nlf-emb-panel[hidden]{display:none}
+.nlf .nlf-emb-feat{padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid #D5DBDF}
+.nlf .nlf-emb-meta{display:flex;align-items:center;gap:8px;font-size:13px;color:#3A4650}
+.nlf .nlf-emb-kind{background:#FBE9F0;color:#8C0F3E;font-weight:700;padding:2px 9px;border-radius:6px}
+.nlf .nlf-emb-when{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px}
+.nlf .nlf-emb-when.is-new{color:#8C0F3E;font-weight:700}
+.nlf .nlf-emb-when .nlf-dot{width:7px;height:7px;background:#B0144F}
+.nlf .nlf-emb-title{font-family:var(--hf);font-weight:700;font-size:19px;line-height:1.28;color:#101820 !important;text-decoration:none}
+.nlf .nlf-emb-talk{display:flex;flex-direction:column;gap:8px}
+.nlf .nlf-emb-msg{display:flex;gap:8px;align-items:flex-end;text-decoration:none}
+.nlf .nlf-emb-msg.is-reply{flex-direction:row-reverse}
+.nlf .nlf-emb-msg .nlf-av{width:32px;height:32px;border-radius:10px;font-size:12px}
+.nlf .nlf-emb-bub{background:#F2F4F5;border-radius:16px 16px 4px 16px;padding:9px 12px;display:flex;flex-direction:column;gap:2px;max-width:calc(100% - 64px);font-size:15px;line-height:1.45;color:#101820}
+.nlf .nlf-emb-by{font-size:12.5px;font-weight:700;color:#1D3B66}
+.nlf .is-reply .nlf-emb-bub{background:#101820;color:#FFFFFF;border-radius:16px 16px 16px 4px}
+.nlf .is-reply .nlf-emb-by{color:#9FD8E4}
+.nlf .nlf-emb-act{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#3A4650}
+.nlf .nlf-emb-act span{flex-grow:1}
+.nlf .nlf-emb-join{min-height:44px;padding:0 16px;border-radius:12px;background:#2F6F86;color:#FFFFFF !important;text-decoration:none;font-family:var(--hf);font-weight:700;font-size:15px;display:inline-flex;align-items:center;white-space:nowrap}
+.nlf .nlf-emb-row{display:flex;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid #D5DBDF;text-decoration:none;color:#101820 !important}
+.nlf .nlf-emb-num{width:52px;height:52px;border-radius:14px;background:var(--nlf-bg);color:var(--nlf-fg);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.nlf .nlf-emb-num b{font-family:var(--hf);font-weight:800;font-size:19px;line-height:1}
+.nlf .nlf-emb-num b.is-word{font-size:15px;line-height:1.05}
+.nlf .nlf-emb-num span{font-size:10.5px;font-weight:700}
+.nlf .nlf-emb-rt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.nlf .nlf-emb-rtitle{font-family:var(--hf);font-weight:700;font-size:15.5px;line-height:1.3;color:#101820}
+.nlf .nlf-emb-rmeta{font-size:13px;color:#3A4650}
+.nlf .nlf-emb-rmeta b{color:#1B4D33}
+.nlf .nlf-emb-all{display:flex;align-items:center;min-height:46px;padding:0 16px;font-weight:700;font-size:14.5px;color:#2F6F86 !important;text-decoration:none}
+.nlf .nlf-emb-none{padding:18px 16px;margin:0;font-size:15px;color:#3A4650}
+.nlf .nlf-emb-reqs{background:#F2F4F5;border-top:1px solid #D5DBDF;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-emb-reqh{display:flex;align-items:baseline;gap:8px}
+.nlf .nlf-emb-reqh h3{margin:0;font-family:var(--hf);font-weight:700;font-size:16px;flex-grow:1;color:#101820 !important}
+.nlf .nlf-emb-reqh a{font-size:13.5px;font-weight:700;color:#2F6F86 !important}
+.nlf .nlf-emb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:8px}
+.nlf .nlf-emb-req{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:14px;padding:11px 12px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#101820 !important}
+.nlf .nlf-emb-reqk{font-size:12px;font-weight:700}
+.nlf .nlf-emb-reqt{font-family:var(--hf);font-weight:700;font-size:14.5px;line-height:1.3}
+.nlf .nlf-emb-reqm{font-size:12.5px;color:#3A4650}
+.nlf .nlf-emb-ask{margin:0;background:#101820;padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-emb-ask label{font-family:var(--hf);font-weight:700;font-size:17px;color:#FFFFFF}
+.nlf .nlf-emb-askrow{display:flex;gap:8px}
+.nlf .nlf-emb-askrow input{flex-grow:1;min-width:0;height:50px;border-radius:14px;border:0;background:#FFFFFF;padding:0 14px;font-size:16px;color:#101820}
+.nlf .nlf-emb-askrow button{height:50px;padding:0 18px;border-radius:14px;border:0 !important;background:#B0144F !important;color:#FFFFFF !important;font-family:var(--hf);font-weight:700;font-size:16px;white-space:nowrap}
+.nlf .nlf-emb-intents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.nlf .nlf-emb-intents button{min-height:44px;border-radius:12px;border:1px solid #5B6770 !important;background:transparent !important;color:#FFFFFF !important;font-family:inherit;font-weight:700;font-size:13.5px;line-height:1.25;padding:4px 6px}
+.nlf .nlf-emb-fine{font-size:13px;color:#C5D0D8}
+.nlf-emb-note{margin:12px 8px 0;font-size:13.5px;line-height:1.5;color:#3A4650}
+@media (min-width:760px){.nlf .nlf-emb-h{font-size:28px}.nlf .nlf-emb-bub{max-width:560px}.nlf .nlf-emb-intents{grid-template-columns:repeat(3,max-content)}.nlf .nlf-emb-intents button{padding:4px 16px}}
+/* 1.72.675 from the live look: the theme paints h2 dark and underlines links with !important */
+.nlf.nlf-emb .nlf-emb-mast h2.nlf-emb-h{color:#FFFFFF !important;font-family:var(--hf) !important;font-weight:800 !important;margin:0 !important;padding:0 !important}
+.nlf.nlf-emb .nlf-emb-reqh h3{font-family:var(--hf) !important;margin:0 !important}
+.nlf.nlf-emb a,.nlf.nlf-emb a span{text-decoration:none !important}

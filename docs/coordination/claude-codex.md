@@ -5161,3 +5161,9 @@ CLAIM + RELEASE LOCK 1.72.673 (HAD-726, Ben: the forum embedded in every profess
 
 RELEASE DONE 1.72.673 (HAD-726): released and verified (health 1.72.673); the forum prints under the header of every professional card; seen live in Chrome on ביטון מאיר. 1.72.674 (shared board in the call) is NOT released: the owner rejected its look and ordered Claude Design first; boards 15-17 are on the canvas (docs/design-lab/pro-forum/README.md), code will follow them. Lock released. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 21:27 UTC.
 
+
+CLAIM + RELEASE LOCK 1.72.674 (HAD-726, owner: only Claude Design): SWAP inc/pro-forum-render.php + assets/proforum/forum.css, the card forum rebuilt on design board 15. board.js / call.js are NOT in it. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 21:30 UTC.
+
+
+RELEASE DONE 1.72.674 (HAD-726): released and verified; the card forum on design board 15 is live. CLAIM + RELEASE LOCK 1.72.675: SWAP assets/proforum/forum.css only (the masthead title was painted dark by the theme; links underlined). Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 21:46 UTC.
+
