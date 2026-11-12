@@ -97,3 +97,17 @@ tappable in peek; each of the four ways collapses; no sideways scroll; targets >
 Release order now (updated): 1.72.659 designer (released);
 1.72.660 = the designer session's designed call screen (assets only; swapped 11.11 ~23:00 UTC so nobody waits); 1.72.661 = mine: step 0 + the additions (make_deploy661.py, from deploy660.py);
 1.72.662 = Kikar video (make_deploy662.py, built from deploy661.py).
+
+## Progress (12.11.2026, about 02:40 UTC)
+- LIVE and verified: 1.72.661 (step 0 card sheet, waymarks, view with details, plan, area map with the cone; commit 928d1849),
+  1.72.663 (the showroom's small map: #C2563A cone, places named, edge chips, "in the window's direction" line; view labels
+  inside the visible panorama and clear of the controls; "tap a floor" after a drag; commit a352eac0), 1.72.664 (video, small
+  part: a tap opens a room on 8113/8114, 8 a day per address, 40 a day; the leave-a-time offer after a minute; commit 0a3ff1f4).
+  1.72.660 and 1.72.662 were the designer session's (assets only).
+- Not checked: a real room end to end (a test room mails Ben); asked the Kikar session.
+- Step 6 boards S9/E9 (ShowBuy) on the canvas, pictures boards/ShowBuyHE.jpg, ShowBuyEN.jpg. Code with a helper.
+- LIVE IS NOT THE REPO: inc/rfp.php live = 17,457 B md5 36aba17a94 (the repo's 35 KB rework never went live);
+  assets/showroom-engine/buyflow.js live = 21,115 B md5 d651f47f97 (repo differs). Copies in docs/qa/live-read/20261112T022923Z.
+  Hunk the live texts only; Rainbow/DUO run them.
+- Still open: step 7 (wire the designer's call module per docs/design-lab/apartment-designer/CALL-CONTRACT.md), step 8 French
+  showroom (nadlan_ps_kikar_next + basket gate take 'fr').

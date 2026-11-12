@@ -549,6 +549,7 @@ async function enter(r) {
   ST.leader = r.leader || '';
   ST.leaderName = nameOf(ST.leader);
   ST.joined = true;
+  if (ST.me.role !== 'rep') setTimeout(waitCheck, 60000); // HAD-712 (12.11.2026): no NadLan advisor a minute after joining: offer a time (counted from the join, not from the video connection)
   document.documentElement.classList.add('nltg-in');
   buildRoom();
   ga('room_join', { role: r.role, transport: r.mode, project: CFG.name });
@@ -566,7 +567,6 @@ async function enter(r) {
   if (r.state && ST.leader && ST.leader !== ST.me.pid) applyState(r.state, 0);
   renderAll();
   if (ST.created && ST.me.role === 'rep') openInvite(); // the representative's console: the join link ready to share
-  if (ST.me.role !== 'rep') setTimeout(waitCheck, 60000); // HAD-712 (12.11.2026): no representative after a minute: offer a time
   requestAnimationFrame(frame);
 }
 

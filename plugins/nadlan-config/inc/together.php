@@ -150,8 +150,11 @@ if ( ! function_exists( 'nadlan_tr_project_ok' ) ) {
 		if ( $pid <= 0 || 'nadlan_project' !== get_post_type( $pid ) || 'publish' !== get_post_status( $pid ) ) { return false; }
 		if ( post_password_required( $pid ) || get_post_meta( $pid, '_nadlan_private_unit_journey', true ) ) { return false; }
 		if ( function_exists( 'nadlan_ps_config' ) ) {
-			$all = nadlan_ps_config();
-			return isset( $all[ (string) get_post_field( 'post_name', $pid ) ] );
+			$all  = nadlan_ps_config();
+			$slug = (string) get_post_field( 'post_name', $pid );
+			// 1.72.665 (HAD-712): the English and French Kikar pages share the Hebrew page's stage config (keyed hamedina)
+			if ( function_exists( 'nadlan_tr_open_always' ) && nadlan_tr_open_always( $pid ) ) { $slug = 'hamedina'; }
+			return isset( $all[ $slug ] );
 		}
 		return true;
 	}

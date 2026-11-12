@@ -1,0 +1,19 @@
+{
+  "released": "1.72.665",
+  "from": "1.72.664",
+  "live_before": {
+    "assets/together/together.js": "94ac70265029d6d443e1cfef2221aa94",
+    "nadlan-config.php": "2ad6f80c1c35aa6d282a94e5646efb12",
+    "inc/together.php": "de0ed3f0c195b5b44b44a1880b7865dc"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 04:51:56",
+  "files": {
+    "assets/together/together.js": "72334dd63a7367b76233c35507a33143",
+    "nadlan-config.php": "de47e5f409b1e23c9ba080660ababbd0",
+    "inc/together.php": "97908cb02d5a7226e1be885a04ad28eb"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.665, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
