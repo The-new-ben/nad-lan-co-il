@@ -1,0 +1,111 @@
+/* nad-lan forum video call (assets/proforum/call.js). Palette and faces from the approved board
+   docs/design-lab/pro-forum/canvas-source/Call.dc.html: site-night ink #101820, slate panels #1B2730 / #22303A / #3A4650,
+   the flip control in survey teal #2F6F86, end in signal red #B3261E, the request tag in the forum's build tint #DCE6F2 / #1D3B66,
+   Assistant for Hebrew text and Rubik for numerals and initials (both already loaded by the forum). Not the default look:
+   the colours come from the forum's own trade tints and a dark job-site screen, no cream, gold or gradient. */
+
+.nlfc-pill { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+.nlfc-pill svg { flex: none; }
+
+html.nlfc-open, html.nlfc-open body { overflow: hidden; }
+
+/* ---------------------------------------------------------------- sheets (entry, invite, switches) */
+.nlfc-scrim { position: fixed; inset: 0; z-index: 2147483000; background: rgba(16, 24, 32, .55); display: flex; align-items: flex-end; justify-content: center; }
+.nlfc-sheet { box-sizing: border-box; width: 100%; max-width: 460px; max-height: 92vh; overflow-y: auto; background: #FFFFFF; color: #101820;
+	font-family: Assistant, 'Segoe UI', Arial, sans-serif; border-radius: 20px 20px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 640px) { .nlfc-scrim { align-items: center; } .nlfc-sheet { border-radius: 20px; } }
+.nlfc-shh { display: flex; align-items: center; gap: 8px; }
+.nlfc-shh h2 { flex: 1; margin: 0; font-size: 20px; font-weight: 700; line-height: 1.3; color: #101820; }
+.nlfc-x { width: 44px; height: 44px; border: 0; border-radius: 12px; background: #EEF1F3; color: #101820; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.nlfc-req { margin: 0; display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
+.nlfc-sub, .nlfc-fine { margin: 0; font-size: 15px; line-height: 1.45; color: #3A4650; }
+.nlfc-fine { font-size: 13px; }
+.nlfc-tag { flex: none; background: #DCE6F2; color: #1D3B66; font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 6px; }
+.nlfc-prev { display: flex; gap: 12px; align-items: center; }
+.nlfc-pv { position: relative; flex: none; width: 96px; height: 128px; border-radius: 14px; background: #22303A; color: #DCE3E8; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; font-size: 12px; padding-bottom: 6px; box-sizing: border-box; }
+.nlfc-pv video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); display: none; }
+.nlfc-pv.is-on video { display: block; }
+.nlfc-pv span { position: relative; }
+.nlfc-pm { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #3A4650; }
+.nlfc-meter { display: flex; gap: 3px; height: 18px; align-items: flex-end; }
+.nlfc-meter i { width: 6px; height: 100%; border-radius: 2px; background: #DCE3E8; }
+.nlfc-meter i.is-lit { background: #2F6F86; }
+.nlfc-swrow { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; cursor: pointer; }
+.nlfc-swt { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.nlfc-swt b { font-size: 16px; }
+.nlfc-swt small { font-size: 13px; color: #3A4650; }
+.nlfc-swin { position: absolute; opacity: 0; width: 52px; height: 44px; inset-inline-end: 0; margin: 0; cursor: pointer; }
+.nlfc-sw { flex: none; width: 48px; height: 28px; border-radius: 999px; background: #C9D1D7; position: relative; transition: background .15s; }
+.nlfc-sw i { position: absolute; top: 3px; inset-inline-start: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; transition: inset-inline-start .15s; }
+.nlfc-swin:checked + .nlfc-sw { background: #2F6F86; }
+.nlfc-swin:checked + .nlfc-sw i { inset-inline-start: 23px; }
+.nlfc-swin:focus-visible + .nlfc-sw { outline: 3px solid #1D3B66; outline-offset: 2px; }
+.nlfc-btn { min-height: 48px; border-radius: 999px; padding: 0 18px; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; border: 0; }
+.nlfc-pri { background: #101820; color: #FFFFFF; }
+.nlfc-pri[disabled] { opacity: .6; cursor: progress; }
+.nlfc-plain { background: transparent; color: #22303A; text-decoration: underline; }
+.nlfc-line { background: #FFFFFF; color: #101820; border: 1px solid #8A98A3; }
+.nlfc-msg { margin: 0; min-height: 1.2em; font-size: 14px; color: #22303A; }
+.nlfc-msg.is-bad { color: #B3261E; font-weight: 700; }
+.nlfc-pick { display: flex; flex-direction: column; gap: 8px; }
+.nlfc-h3 { margin: 0 0 8px; font-size: 17px; }
+.nlfc-sheet :focus-visible, .nlfc-stage :focus-visible, .nlfc-toast :focus-visible { outline: 3px solid #2F6F86; outline-offset: 2px; }
+
+/* ---------------------------------------------------------------- the call, full screen */
+.nlfc-stage { position: fixed; inset: 0; z-index: 2147482000; background: #101820; color: #FFFFFF; font-family: Assistant, 'Segoe UI', Arial, sans-serif;
+	display: flex; flex-direction: column; overflow: hidden; padding-top: env(safe-area-inset-top); }
+.nlfc-remote { position: absolute; inset: 0; background: #1B2730; }
+.nlfc-remote video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nlfc-wait { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(300px, 80vw); margin: 0; border: 1px dashed #8A98A3; border-radius: 16px; padding: 18px; text-align: center; font-size: 15px; line-height: 1.45; color: #DCE3E8; }
+.nlfc-top, .nlfc-who, .nlfc-acts, .nlfc-banner, .nlfc-strip, .nlfc-self, .nlfc-menu, .nlfc-audio { position: relative; }
+.nlfc-top { margin: 12px 12px 0; background: rgba(16, 24, 32, .82); border: 1px solid #3A4650; border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+.nlfc-title { flex: 1; min-width: 0; font-weight: 700; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nlfc-time { font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 14px; color: #FFD3E2; font-variant-numeric: tabular-nums; direction: ltr; }
+.nlfc-who { align-self: flex-start; margin: 10px 12px 0; display: flex; align-items: center; gap: 8px; background: rgba(16, 24, 32, .82); border-radius: 999px; padding: 6px 12px 6px 6px; max-width: calc(100% - 24px); box-sizing: border-box; }
+.nlfc-ini { flex: none; width: 32px; height: 32px; border-radius: 10px; background: #DCE6F2; color: #1D3B66; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; }
+.nlfc-whot { font-size: 14px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nlfc-strip { display: flex; gap: 6px; margin: 8px 12px 0; }
+.nlfc-strip:empty { display: none; }
+.nlfc-disc { width: 40px; height: 40px; border-radius: 50%; background: #22303A; border: 2px solid #3A4650; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; }
+.nlfc-disc.is-speaking { border-color: #FFD3E2; }
+.nlfc-banner { align-self: center; margin: 10px 12px 0; background: #FFFFFF; color: #101820; border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px; }
+.nlfc-banner[hidden] { display: none; }
+.nlfc-audio { align-self: stretch; margin: 10px 12px 0; min-height: 48px; border: 0; border-radius: 14px; background: #FFFFFF; color: #101820; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; }
+.nlfc-audio[hidden] { display: none; }
+.nlfc-fill { flex: 1; }
+.nlfc-self { align-self: flex-end; margin: 0 12px 12px; width: 108px; height: 150px; border-radius: 14px; background: #3A4650; border: 2px solid #FFFFFF; overflow: hidden; box-sizing: border-box;
+	display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 12px; color: #DCE3E8; }
+.nlfc-self video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nlfc-self.is-mirror video { transform: scaleX(-1); }
+.nlfc-self.is-off video { display: none; }
+.nlfc-self span { position: relative; text-shadow: 0 1px 2px #101820; }
+.nlfc-acts { margin: 0 12px 10px; background: rgba(16, 24, 32, .82); border-radius: 14px; padding: 10px 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.nlfc-acts[hidden], .nlfc-act[hidden] { display: none; }
+.nlfc-act { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A98A3; background: transparent; color: #FFFFFF; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+.nlfc-act-w { border: 0; background: #FFFFFF; color: #101820; }
+.nlfc-menu { margin: 0 12px 10px; background: #FFFFFF; color: #101820; border-radius: 14px; padding: 8px 14px; }
+.nlfc-menu[hidden] { display: none; }
+.nlfc-ctl { position: relative; padding: 10px 16px 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; background: #101820; }
+.nlfc-c { min-height: 56px; border-radius: 16px; border: 0; background: #22303A; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font: inherit; cursor: pointer; }
+.nlfc-c small { font-size: 11px; color: #DCE3E8; }
+.nlfc-c[aria-pressed="true"] { background: #3A4650; }
+.nlfc-c[disabled] { opacity: .45; cursor: default; }
+.nlfc-c[hidden] { display: none; }
+.nlfc-flip { background: #2F6F86; }
+.nlfc-end { background: #B3261E; margin-inline-start: 6px; } /* set apart from mic and camera: the far edge, a gap, its own colour */
+.nlfc-norec { position: relative; margin: 0; padding: 0 16px calc(10px + env(safe-area-inset-bottom)); background: #101820; font-size: 12px; color: #DCE3E8; text-align: center; }
+@media (min-width: 900px) {
+	.nlfc-ctl { max-width: 520px; margin: 0 auto; width: 100%; box-sizing: border-box; background: transparent; }
+	.nlfc-self { width: 200px; height: 150px; }
+}
+
+/* ---------------------------------------------------------------- the in-forum notice */
+.nlfc-toasts { position: fixed; z-index: 2147481000; inset-inline: 12px; bottom: calc(84px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
+.nlfc-toast { pointer-events: auto; box-sizing: border-box; width: 100%; max-width: 440px; background: #101820; color: #FFFFFF; border-radius: 16px; padding: 12px 14px; font-family: Assistant, 'Segoe UI', Arial, sans-serif; box-shadow: 0 6px 24px rgba(16, 24, 32, .35); }
+.nlfc-toast p { margin: 0 0 8px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.nlfc-toastrow { display: flex; gap: 8px; flex-wrap: wrap; }
+.nlfc-toast .nlfc-pri { background: #FFFFFF; color: #101820; }
+.nlfc-toast .nlfc-plain { color: #FFFFFF; }
+.nlfc-preflink { margin-inline-start: 12px; min-height: 44px; }
+
+@media (prefers-reduced-motion: reduce) { .nlfc-sw, .nlfc-sw i { transition: none; } }

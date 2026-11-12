@@ -1,0 +1,237 @@
+/* nad-lan professionals' forum, version one (inc/pro-forum*.php). Design boards: Main, Thread, Compose, Card, Profile (12.11.2026).
+   Palette from the boards: ground #F2F4F5, surface #FFF, ink #101820, action #2F6F86, new #B0144F. Rubik for headings and numbers,
+   Assistant for text, system faces as fallback (font-display swap in the Google Fonts URL). Every rule lives under .nlf; the
+   site theme forces !important colours on buttons and h2, so only those colours carry !important here. */
+
+.nlf{--g:#F2F4F5;--s:#FFFFFF;--ink:#101820;--ink2:#3A4650;--mute:#5B6770;--line:#D5DBDF;--act:#2F6F86;--act2:#1F4B5C;--new:#B0144F;--newbg:#FBE9F0;--newtx:#8C0F3E;--ok:#1B4D33;--okbg:#EAF4EF;--okline:#2E7D5B;--danger:#B3261E;
+	--hf:Rubik,"Segoe UI",Arial,sans-serif;--tf:Assistant,"Segoe UI",Arial,sans-serif;
+	font-family:var(--tf);color:var(--ink);direction:rtl;text-align:right;box-sizing:border-box;line-height:1.45;font-size:16px;overflow-wrap:anywhere}
+.nlf *,.nlf *::before,.nlf *::after{box-sizing:border-box}
+.nlf a{color:var(--act)}
+.nlf a:hover{color:var(--act2)}
+.nlf p{margin:0}
+.nlf [hidden]{display:none !important}
+.nlf :focus-visible{outline:2px solid #2F6F86 !important;outline-offset:2px}
+.nlf button,.nlf input,.nlf select,.nlf textarea{font-family:inherit;font-size:16px}
+.nlf button{cursor:pointer}
+.nlf svg{flex-shrink:0}
+
+/* page frame */
+.nlf.nlf-page{background:var(--g);max-width:760px;margin:0 auto;padding:0 0 24px;overflow-wrap:anywhere}
+.nlf .nlf-top{background:var(--s);border-bottom:1px solid var(--line);padding:14px 16px 12px;display:flex;flex-direction:column;gap:6px}
+.nlf .nlf-kicker{font-size:12px;font-weight:700;color:var(--act);letter-spacing:.02em}
+.nlf .nlf-h1{margin:0;font-family:var(--hf);font-weight:800;font-size:26px;line-height:1.1;color:#101820 !important}
+.nlf .nlf-h1-t{font-size:23px;line-height:1.25}
+.nlf .nlf-h2{margin:0;font-family:var(--hf);font-weight:700;font-size:17px;line-height:1.3;color:#101820 !important;background:none !important}
+.nlf .nlf-lead{font-size:15px;color:var(--ink2)}
+.nlf .nlf-mebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--ink2)}
+.nlf .nlf-sub{font-size:13px;color:var(--mute)}
+.nlf .nlf-center{text-align:center}
+.nlf .nlf-live{font-size:14px;font-weight:700;color:var(--ok);padding:0 16px;min-height:0}
+.nlf .nlf-live:empty{display:none}
+
+/* buttons (colours carry !important against the theme) */
+.nlf .nlf-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:12px;font-family:var(--hf);font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;line-height:1.1;text-align:center}
+.nlf .nlf-btn-fill{background:#2F6F86 !important;color:#FFFFFF !important;border-color:#2F6F86 !important}
+.nlf .nlf-btn-line{background:#FFFFFF !important;color:#2F6F86 !important;border-color:#2F6F86 !important}
+.nlf .nlf-btn-hot{background:#B0144F !important;color:#FFFFFF !important;border-color:#B0144F !important;border-radius:14px}
+.nlf .nlf-btn-danger{background:#FFFFFF !important;color:#B3261E !important;border-color:#B3261E !important}
+.nlf .nlf-btn-danger-fill{background:#B3261E !important;color:#FFFFFF !important;border-color:#B3261E !important}
+.nlf .nlf-btn-big{min-height:56px;width:100%;font-size:18px}
+.nlf .nlf-btn[disabled],.nlf .nlf-btn[aria-busy="true"]{opacity:.6;cursor:progress}
+.nlf .nlf-pill{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #D5DBDF !important;background:#FFFFFF !important;color:#101820 !important;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.nlf .nlf-pill.is-on,.nlf .nlf-sort .nlf-pill.is-on{background:#101820 !important;color:#FFFFFF !important;border-color:#101820 !important}
+.nlf .nlf-thank.is-on{background:#FBE9F0 !important;color:#8C0F3E !important;border-color:#FBE9F0 !important}
+.nlf .nlf-follow{border-color:#2F6F86 !important;color:#2F6F86 !important}
+.nlf .nlf-follow.is-on{background:#2F6F86 !important;color:#FFFFFF !important}
+.nlf .nlf-mute{color:#5B6770 !important;font-weight:400}
+.nlf .nlf-pill-ink{border-color:#101820 !important}
+.nlf .nlf-link{background:none !important;border:0;padding:0 4px;min-height:44px;color:#2F6F86 !important;font-weight:700;text-decoration:underline;font-size:inherit}
+.nlf .nlf-ico{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;color:#101820 !important;background:transparent !important;border:0;text-decoration:none}
+.nlf .nlf-ico-box{border:1px solid #D5DBDF;background:#FFFFFF !important}
+.nlf .nlf-push{margin-inline-start:auto}
+
+/* start: ask + quick chips */
+.nlf .nlf-start{padding:12px 16px 0;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-askbtn{min-height:52px;border-radius:14px;border:2px solid #101820 !important;background:#FFFFFF !important;color:#3A4650 !important;display:flex;align-items:center;gap:10px;padding:0 14px;text-align:right;font-size:16px;width:100%}
+.nlf .nlf-plus{width:28px;height:28px;border-radius:8px;background:#2F6F86;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:700;font-size:18px}
+.nlf .nlf-quick{display:flex;gap:8px;flex-wrap:wrap}
+.nlf .nlf-chip{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(16,24,32,.12) !important;background:var(--nlf-bg) !important;color:var(--nlf-fg) !important;font-size:14px;font-weight:700}
+
+/* sort + categories */
+.nlf .nlf-sort{padding:14px 16px 0;display:flex;gap:6px;flex-wrap:wrap}
+.nlf .nlf-sort .nlf-pill{font-family:var(--hf);font-weight:500;font-size:14px}
+.nlf .nlf-hot{color:#B0144F;font-weight:700}
+.nlf .nlf-pill.is-on .nlf-hot{color:#FFD3E2}
+.nlf .nlf-cats{padding:10px 16px 0;display:flex;gap:6px;flex-wrap:wrap}
+.nlf .nlf-cat{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;background:var(--nlf-bg,#FFFFFF);color:var(--nlf-fg,#101820);font-size:14px;font-weight:700;text-decoration:none;border:2px solid transparent}
+.nlf .nlf-cat.is-on{border-color:#101820}
+.nlf .nlf-cats .nlf-cat:first-child{background:#FFFFFF;border:1px solid #D5DBDF;color:#101820}
+.nlf .nlf-cats .nlf-cat:first-child.is-on{border:2px solid #101820}
+
+/* the list */
+.nlf .nlf-list{padding:12px 16px 0;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-card{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:#5B6770}
+.nlf .nlf-tag{background:var(--nlf-bg);color:var(--nlf-fg);font-weight:700;padding:3px 9px;border-radius:6px}
+.nlf .nlf-tag-plain{--nlf-bg:#F2F4F5;--nlf-fg:#3A4650;font-weight:400}
+.nlf .nlf-when{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px}
+.nlf .nlf-when.is-new{color:#8C0F3E;font-weight:700}
+.nlf .nlf-dot{width:7px;height:7px;border-radius:50%;background:#B0144F;display:inline-block}
+.nlf .nlf-ttl{margin:0;font-family:var(--hf);font-weight:700;font-size:18px;line-height:1.3;background:none !important;color:#101820 !important}
+.nlf .nlf-ttl a{color:#101820 !important;text-decoration:none}
+.nlf .nlf-ttl a:hover{text-decoration:underline}
+.nlf .nlf-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:#3A4650}
+.nlf .nlf-foot .nlf-push{font-weight:700}
+.nlf .nlf-chip-s{display:inline-flex;align-items:center;gap:6px;font-weight:700;padding:4px 9px;border-radius:6px;font-size:13px}
+.nlf .nlf-ok{background:#EAF4EF;color:#1B4D33}
+.nlf .nlf-new{background:#FBE9F0;color:#8C0F3E}
+.nlf .nlf-wait{background:#F2F4F5;color:#3A4650}
+.nlf .nlf-ok svg{width:14px;height:14px;stroke-width:3}
+.nlf .nlf-empty{background:#FFFFFF;border:1px dashed #5B6770;border-radius:16px;padding:20px 16px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;font-size:17px}
+.nlf .nlf-empty-s{color:#3A4650;padding:4px 0}
+.nlf .nlf-pages{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 16px 0;font-size:14px;color:#3A4650}
+
+/* one discussion */
+.nlf .nlf-bar{background:#FFFFFF;border-bottom:1px solid #D5DBDF;padding:8px 12px;display:flex;align-items:center;gap:8px}
+.nlf .nlf-crumb{font-size:14px;color:#3A4650;flex-grow:1;min-width:0}
+.nlf .nlf-crumb a{color:#3A4650;text-decoration:none}
+.nlf .nlf-op{background:#FFFFFF;padding:16px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #D5DBDF}
+.nlf .nlf-arow{display:flex;align-items:center;gap:10px}
+.nlf .nlf-arow time{font-size:13px;color:#5B6770;margin-inline-start:auto}
+.nlf .nlf-acol{display:flex;flex-direction:column;font-size:14px;line-height:1.3;flex-grow:1;min-width:0}
+.nlf .nlf-who{font-weight:700;color:#101820;text-decoration:none;font-size:15px}
+.nlf a.nlf-who:hover{text-decoration:underline}
+.nlf .nlf-ver{color:#1B4D33;font-weight:700;display:inline-flex;align-items:center;gap:4px;font-size:13px}
+.nlf .nlf-ver svg{width:14px;height:14px;stroke-width:3}
+.nlf .nlf-av{width:40px;height:40px;border-radius:50%;background:var(--nlf-bg);color:var(--nlf-fg);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:700;font-size:15px;flex-shrink:0}
+.nlf .nlf-av-lg{width:44px;height:44px;font-size:16px}
+.nlf .nlf-av-sq{border-radius:12px}
+.nlf .nlf-body{font-size:16px;line-height:1.55;color:#101820}
+.nlf .nlf-body-op{font-size:17px}
+.nlf .nlf-note{background:#FBE9F0;color:#8C0F3E;font-weight:700;font-size:14px;padding:8px 12px;border-radius:10px}
+.nlf .nlf-to-line{font-size:14px;color:#3A4650}
+.nlf .nlf-acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nlf .nlf-acts svg{width:16px;height:16px}
+.nlf .nlf-rhead{padding:12px 16px 4px}
+.nlf .nlf-replies{padding:4px 16px 0;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-reply{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;scroll-margin-top:80px}
+.nlf .nlf-reply.is-solved{border:2px solid #2E7D5B}
+.nlf .nlf-solved-chip{align-self:flex-start}
+.nlf .nlf-quote{margin:0;padding:8px 12px;background:#F2F4F5;border-radius:10px;font-size:14px;color:#3A4650;border:0}
+.nlf .nlf-quote a{color:#3A4650;font-weight:700}
+.nlf .nlf-direct{border-top:1px solid #D5DBDF;padding-top:10px;display:flex;flex-direction:column;gap:8px}
+.nlf .nlf-direct-t{font-size:13px;color:#3A4650}
+.nlf .nlf-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlf .nlf-replyform{margin:12px 16px 0;background:#FFFFFF;border:1px solid #D5DBDF;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.nlf .nlf-label{font-size:14px;font-weight:700;color:#101820}
+.nlf .nlf-replyrow{display:flex;gap:8px;align-items:flex-end}
+.nlf .nlf-replyrow textarea,.nlf .nlf-replyrow input{flex-grow:1;min-width:0;min-height:48px;border-radius:14px;border:2px solid #101820;background:#FFFFFF;padding:11px 14px;color:#101820;line-height:1.4;resize:vertical}
+.nlf .nlf-replyrow .nlf-btn{min-height:48px}
+.nlf .nlf-quoting{display:flex;align-items:center;gap:8px;background:#F2F4F5;border-radius:10px;padding:0 0 0 4px;font-size:14px;color:#3A4650}
+.nlf .nlf-quoting span{padding:6px 10px;flex-grow:1}
+/* the trap field: clipped in place, never pushed off-screen (a large negative left offset scrolls a right-to-left page sideways) */
+.nlf .nlf-trap{position:absolute !important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* the professional's window (Card board) */
+.nlf-card-zone{margin:16px 0;display:flex;flex-direction:column;gap:12px}
+.nlf.nlf-win{background:#FFFFFF;border:2px solid #101820;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.nlf .nlf-win-h{background:#101820;color:#FFFFFF;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.nlf .nlf-win-h .nlf-h2{color:#FFFFFF !important;font-size:18px;flex-grow:1}
+.nlf .nlf-today{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#FFD3E2}
+.nlf .nlf-today .nlf-dot{background:#FF5C93;width:8px;height:8px}
+.nlf .nlf-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);border-bottom:1px solid #D5DBDF}
+.nlf .nlf-tabs [role="tab"]{min-height:48px;border:0;border-bottom:3px solid #FFFFFF;background:#FFFFFF !important;color:#3A4650 !important;font-family:var(--hf);font-weight:500;font-size:15px;border-radius:0}
+.nlf .nlf-tabs [role="tab"][aria-selected="true"]{border-bottom-color:#B0144F;color:#101820 !important;font-weight:700}
+.nlf .nlf-panel{padding:12px 16px;display:flex;flex-direction:column;gap:12px}
+.nlf .nlf-mini{display:flex;flex-direction:column;gap:4px;padding-bottom:12px;border-bottom:1px solid #D5DBDF}
+.nlf .nlf-mini:last-child{border-bottom:0;padding-bottom:0}
+.nlf .nlf-mini-t{font-family:var(--hf);font-weight:700;font-size:16px;line-height:1.3;color:#101820 !important;text-decoration:none;min-height:24px}
+.nlf .nlf-mini p{font-size:15px;line-height:1.5;color:#3A4650}
+.nlf .nlf-win-ask{background:#F2F4F5;border-top:1px solid #D5DBDF;padding:12px 16px 14px;display:flex;flex-direction:column;gap:8px;margin:0}
+.nlf .nlf-radios{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:#3A4650;border:0;margin:0;padding:0}
+.nlf .nlf-radios label{display:flex;align-items:center;gap:6px;min-height:44px}
+.nlf .nlf-radios input{width:20px;height:20px;margin:0;accent-color:#2F6F86}
+.nlf .nlf-radios-col{flex-direction:column;gap:0}
+.nlf .nlf-radios legend{font-size:14px;font-weight:700;color:#3A4650;padding:0;margin-bottom:4px}
+.nlf .nlf-more{display:flex;align-items:center;min-height:44px;padding:0 16px 8px;font-weight:700;font-size:15px}
+.nlf.nlf-win .nlf-direct{padding:10px 16px 14px}
+.nlf.nlf-neutral{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.nlf.nlf-neutral p{font-size:15px;color:#3A4650}
+.nlf.nlf-claim{background:#FFFFFF;border:1px dashed #5B6770;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.nlf .nlf-claim-t{display:flex;flex-direction:column;gap:2px;flex:1 1 200px;font-size:13px;color:#3A4650}
+.nlf .nlf-claim-h{font-weight:700;font-size:15px;color:#101820}
+.nlf .nlf-claim-b{display:flex;gap:8px;flex-wrap:wrap}
+
+/* owner controls (Profile board) */
+.nlf.nlf-owner{background:#FFFFFF;border:2px solid #101820;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.nlf.nlf-page .nlf-owner,.nlf.nlf-page>.nlf-owner{margin:16px}
+.nlf .nlf-own-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nlf .nlf-own-head .nlf-h2{flex-grow:1}
+.nlf .nlf-own-only{font-size:12px;color:#3A4650;background:#F2F4F5;padding:3px 8px;border-radius:6px}
+.nlf .nlf-switch{display:flex;align-items:center;gap:12px;min-height:48px;border-top:1px solid #D5DBDF;padding-top:10px;cursor:pointer}
+.nlf [data-nlf-owner-live] .nlf-switch:first-child{border-top:0;padding-top:0}
+.nlf .nlf-sw-t{display:flex;flex-direction:column;flex-grow:1;font-size:13px;color:#3A4650}
+.nlf .nlf-sw-t b{font-size:15px;color:#101820}
+.nlf .nlf-switch input{width:26px;height:26px;margin:0;accent-color:#2F6F86;flex-shrink:0}
+.nlf .nlf-danger-zone{border-top:1px solid #D5DBDF;padding-top:12px;display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.nlf .nlf-confirm{background:#FDECEA;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.nlf .nlf-removed p{font-size:16px;font-weight:700}
+
+/* sheets */
+dialog.nlf.nlf-sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:18px 18px 0 0;background:#F2F4F5;color:#101820}
+dialog.nlf.nlf-sheet::backdrop{background:rgba(16,24,32,.55)}
+@media (min-width:640px){dialog.nlf.nlf-sheet{margin:auto;border-radius:18px}}
+.nlf .nlf-sheet-h{position:sticky;top:0;z-index:1;background:#FFFFFF;border-bottom:1px solid #D5DBDF;padding:8px 12px;display:flex;align-items:center;gap:8px;margin:0 -16px}
+.nlf .nlf-sheet-h .nlf-h2{flex-grow:1;font-size:20px;font-weight:800}
+.nlf .nlf-draft{font-size:13px;color:#1B4D33;font-weight:700}
+dialog.nlf.nlf-sheet>.nlf-sheet-h{margin:0}
+dialog.nlf.nlf-sheet>.nlf-sub,dialog.nlf.nlf-sheet>.nlf-msg{padding:10px 16px 0}
+.nlf .nlf-form{padding:0 16px 16px;display:flex;flex-direction:column;gap:14px}
+dialog.nlf.nlf-sheet>.nlf-form:not([data-nlf-composeform]):not([data-nlf-reportform]):not([data-nlf-requestform]){padding-top:12px}
+.nlf .nlf-kinds{border:0;margin:0;padding:0}
+.nlf .nlf-kinds legend,.nlf .nlf-code legend{font-size:14px;font-weight:700;color:#3A4650;padding:0;margin-bottom:8px}
+.nlf .nlf-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlf .nlf-kinds button{min-height:52px;border-radius:12px;border:1px solid #D5DBDF !important;background:#FFFFFF !important;color:#101820 !important;font-family:var(--hf);font-weight:500;font-size:15px;padding:4px 8px;line-height:1.2}
+.nlf .nlf-kinds button[aria-pressed="true"]{border:2px solid #101820 !important;background:#101820 !important;color:#FFFFFF !important;font-weight:700}
+.nlf .nlf-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.nlf .nlf-field label{font-size:14px;font-weight:700;color:#3A4650}
+.nlf .nlf-field input,.nlf .nlf-field select,.nlf .nlf-field textarea{min-height:52px;border-radius:12px;border:1px solid #AAB4BC;background:#FFFFFF;padding:0 14px;color:#101820;width:100%;min-width:0}
+.nlf .nlf-field textarea{padding:12px 14px;line-height:1.5;resize:vertical}
+.nlf .nlf-field input:focus,.nlf .nlf-field textarea:focus,.nlf .nlf-field select:focus{border:2px solid #2F6F86}
+.nlf .nlf-similar{background:#FFFFFF;border:1px solid #D5DBDF;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:#5B6770}
+.nlf .nlf-similar ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.nlf .nlf-similar a{display:flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;line-height:1.35}
+.nlf .nlf-tobox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#FFFFFF;border:1px solid #2F6F86;border-radius:12px;padding:4px 12px;font-size:14px;font-weight:700}
+.nlf .nlf-msg{font-size:15px;font-weight:700;color:#1B4D33}
+.nlf .nlf-msg.is-err,.nlf .nlf-live.is-err{color:#B3261E}
+/* 1.72.671: the send button never breaks its word ("שליח / ה" on a phone, live check 12.11) */
+.nlf button[type="submit"],.nlf .nlf-btn{white-space:nowrap;flex-shrink:0}
+.nlf .nlf-msg:empty{display:none}
+.nlf .nlf-check{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.45;color:#3A4650;min-height:44px}
+.nlf .nlf-check input{width:22px;height:22px;margin:0;accent-color:#2F6F86;flex-shrink:0}
+.nlf .nlf-code{border:0;margin:0;padding:0}
+.nlf .nlf-digits{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.nlf .nlf-digits input{height:56px;border-radius:10px;border:1px solid #AAB4BC;text-align:center;font-family:var(--hf);font-weight:700;font-size:24px;min-width:0;width:100%;color:#101820;background:#FFFFFF;padding:0}
+.nlf .nlf-digits input:focus{border:2px solid #2F6F86}
+
+.nlf.nlf-act{padding:24px 16px;display:flex;flex-direction:column;gap:16px}
+
+@media (max-width:380px){
+	.nlf .nlf-h1{font-size:24px}
+	.nlf .nlf-h1-t{font-size:21px}
+	.nlf .nlf-pill{padding:0 11px}
+}
+@media (prefers-reduced-motion:reduce){
+	.nlf *,dialog.nlf{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}
+/* the whole directory, connected (12.11.2026) */
+.nlf .nlf-dir{margin:20px 0 8px;background:#101820;color:#FFFFFF;border-radius:18px;padding:18px 16px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlf-dir .nlf-dir-h{margin:0;font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:19px;line-height:1.3;color:#FFFFFF !important}
+.nlf .nlf-dir-line{margin:0;font-weight:700;font-size:16px;color:#FFD3E2}
+.nlf .nlf-dir-note{margin:0;font-size:14px;line-height:1.5;color:#DCE3E8}
+.nlf .nlf-dir-links{display:flex;flex-wrap:wrap;gap:8px}
+.nlf .nlf-dir-links .nlf-chip{--nlf-bg:#22303A;--nlf-fg:#FFFFFF;text-decoration:none;display:inline-flex;align-items:center}
+.nlf .nlf-dir-cta{display:flex;flex-wrap:wrap;gap:8px}
+.nlf .nlf-dir-cta .nlf-btn{flex:1 1 160px;justify-content:center;text-decoration:none}
+.nlf .nlf-dir .nlf-btn-line{background:transparent !important;color:#FFFFFF !important;border-color:#FFFFFF !important}

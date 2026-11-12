@@ -330,3 +330,6 @@ add_action( 'init', function () {
 		wp_schedule_single_event( time() + 30, 'nadlan_pro_trade_backfill' );
 	}
 }, 40 );
+
+// 1.72.667 (HAD-726): the professionals' forum, hidden behind ?forum=on until the owner opens it (option nadlan_forum_public)
+if ( file_exists( __DIR__ . '/pro-forum.php' ) ) { require_once __DIR__ . '/pro-forum.php'; }

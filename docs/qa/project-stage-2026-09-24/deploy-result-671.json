@@ -1,0 +1,21 @@
+{
+  "released": "1.72.671",
+  "from": "1.72.670",
+  "live_before": {
+    "inc/pro-forum.php": "09b1e0d4896a44e15dcfa6abd4365d0e",
+    "inc/pro-forum-call.php": "80f1da41758e282118c19e465df11156",
+    "assets/proforum/forum.css": "16547d27d664b196acf8e03ab10c8963",
+    "nadlan-config.php": "d6954adcff8ba58106c4eeada7cc4eb7"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-12 22:12:24",
+  "files": {
+    "inc/pro-forum.php": "c5c4423680db476c3278e727984f982c",
+    "inc/pro-forum-call.php": "d906bcd0d97ae68a2af7e791e56ebaea",
+    "assets/proforum/forum.css": "2eef46da34d2138698028c08a09e09d7",
+    "nadlan-config.php": "6f347efc8477388406790f207111aea8"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.671, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

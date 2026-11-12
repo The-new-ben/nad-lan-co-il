@@ -170,11 +170,13 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 			array( array( 'מגזין נדל״ן', array( array( 'כל הכתבות והמדריכים', $u( '/guides/' ) ), array( 'קניית דירה: המדריך', $u( '/buying-apartment/' ) ), array( 'בדיקת נסח טאבו', $u( '/tabu-extract-check/' ) ), array( 'נדל״ן להשקעה', $u( '/investment/' ) ), array( 'מילון מונחים', $u( '/glossary/' ) ) ) ) ),
 			array( array( 'כתבות אחרונות', $posts ) ),
 		) );
-		$menus .= nadlan_hp_panel( 'אנשי מקצוע', array(
+		$menus .= nadlan_hp_panel( 'אנשי מקצוע', array_values( array_filter( array(
 			array( array( 'אנשי מקצוע לנדל״ן', array_slice( $profs, 0, 5 ) ) ),
 			array( array( ' ', array_slice( $profs, 5 ) ) ),
 			array( array( 'המאגר', array( array( 'כל המאגר', $u( '/professionals/' ), $fmt( $c['pros'] ) ), array( 'מתווכים', $u( '/brokers/' ) ), array( 'הצטרפות למאגר', $u( '/advertise/' ) ) ) ) ),
-		) );
+			// 1.72.667 (HAD-726): the professionals' forum, only when it is public (while closed the panel is unchanged)
+			( function_exists( 'nlf_public' ) && nlf_public() ) ? array( array( 'פורום ושיתופי פעולה', array( array( 'פורום אנשי המקצוע', $u( '/forum/' ) ), array( 'בקשות פתוחות', $u( '/forum/?v=requests' ) ), array( 'הצטרפות לבעלי מקצוע', $u( '/forum/?join=1' ) ) ) ) ) : null,
+		) ) ) );
 		$menus .= '<a class="nlhp-nav__item nlhp-nav__plain" href="' . esc_url( $u( '/global/' ) ) . '">נדל״ן בחו״ל</a>';
 
 		$langs = function_exists( 'nadlan_lang_switcher' ) ? nadlan_lang_switcher() : '';

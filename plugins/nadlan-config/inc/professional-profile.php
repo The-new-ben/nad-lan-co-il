@@ -275,9 +275,9 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 				<a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', הגעתי מהכרטיס שלך ב-nad-lan ואשמח לדבר' ); ?>">וואטסאפ</a>
 				<a class="nlpp-btn nlpp-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">חיוג</a>
 			<?php else : ?>
-				<?php if ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>
+				<?php $nlf_req = function_exists( 'nlf_public' ) && nlf_public(); /* 1.72.668 (HAD-726, owner 12.11.2026): the forum request replaces the site's "connect me" WhatsApp */ ?><?php if ( $nlf_req ) : ?><a class="nlpp-btn nlpp-wa nlpp-req" href="#nlf-card-zone">פרסמו בקשה</a><?php elseif ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>
 				<?php if ( $phone ) : ?><a class="nlpp-btn nlpp-tel" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">התקשרו</a>
-				<?php elseif ( ! $is_broker ) : /* the quote request the directory header already runs (the old #nlcard-claim anchor led nowhere) */ ?><button type="button" class="nlpp-btn nlpp-tel" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $name ); ?>">קבלו הצעת מחיר</button><?php endif; ?>
+				<?php elseif ( ! $is_broker && empty( $nlf_req ) ) : /* the quote request the directory header already runs (the old #nlcard-claim anchor led nowhere) */ ?><button type="button" class="nlpp-btn nlpp-tel" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $name ); ?>">קבלו הצעת מחיר</button><?php endif; ?>
 			<?php endif; ?>
 			<?php if ( $premium && ( $meeting || ! $is_broker ) ) : ?>
 				<?php if ( $meeting ) : ?><a class="nlpp-btn nlpp-vid" target="_blank" rel="noopener" href="<?php echo esc_url( $meeting ); ?>">פגישת וידאו</a>
@@ -286,12 +286,14 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		</div>
 	</header>
 
+	<?php if ( ! $demo ) : /* a sample profile's years, projects and reply time are seeded figures, never shown (HAD-396) */ ?>
 	<div class="nlpp-stats">
 		<?php /* years_active holds a founding year on some cards ("1963+ שנות ניסיון" was printed) */ if ( $years > 1800 && $years <= (int) gmdate( 'Y' ) ) : ?><div><b><?php echo (int) $years; ?></b><span>פעילה מאז</span></div><?php elseif ( $years > 0 && $years < 120 ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
 		<?php if ( $projects_n ) : ?><div><b><?php echo number_format( $projects_n ); ?></b><span>פרויקטים</span></div><?php endif; ?>
 		<?php if ( $g( 'classification' ) && 'pinkas_hakablanim' !== (string) $g( 'source' ) ) : /* a register contractor's classification stands in the header (v43) */ ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
 		<?php if ( $g( 'response_time' ) ) : ?><div><b><?php echo esc_html( $g( 'response_time' ) ); ?></b><span>זמן מענה ממוצע</span></div><?php endif; ?>
 	</div>
+	<?php endif; ?>
 
 	<?php if ( $g( 'bio' ) ) : ?><p class="nlpp-bio"><?php echo esc_html( $g( 'bio' ) ); ?></p><?php endif; ?>
 

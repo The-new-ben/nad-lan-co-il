@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>כרטיס בעל מקצוע עם חלון הפורום</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#2F6F86}a:hover{color:#1F4B5C}
+button,input{font-family:inherit}
+button{cursor:pointer}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 970px; box-sizing: border-box; background: #F2F4F5; color: #101820; font-family: Assistant, 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; gap: 12px; padding: 16px; position: relative; overflow: hidden">
+
+  <span style="font-size: 14px; color: #3A4650">בעלי מקצוע › קבלנים › קרית מוצקין</span>
+
+  <section style="background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; gap: 12px; align-items: center">
+      <span style="width: 64px; height: 64px; border-radius: 16px; background: #DCE6F2; color: #1D3B66; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 22px; flex-shrink: 0">שק</span>
+      <div style="display: flex; flex-direction: column; gap: 3px">
+        <span style="align-self: flex-start; background: #DCE6F2; color: #1D3B66; font-weight: 700; font-size: 13px; padding: 2px 9px; border-radius: 6px">קבלן</span>
+        <h1 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 24px; line-height: 1.15">שם הקבלן</h1>
+        <span style="font-size: 14px; color: #1B4D33; font-weight: 700">✓ רשום בפנקס הקבלנים מאז 1999</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px">
+      <span style="background: #EAF4EF; color: #1B4D33; font-weight: 700; padding: 5px 10px; border-radius: 999px">עונה בדרך כלל תוך יום</span>
+      <span style="background: #F2F4F5; color: #3A4650; padding: 5px 10px; border-radius: 999px">12 תשובות בפורום</span>
+      <span style="background: #F2F4F5; color: #3A4650; padding: 5px 10px; border-radius: 999px">31 תודות</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <button style="height: 52px; border-radius: 12px; border: 0; background: #2F6F86; color: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 17px">וואטסאפ</button>
+      <button style="height: 52px; border-radius: 12px; border: 2px solid #2F6F86; background: #FFFFFF; color: #2F6F86; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 17px">חיוג</button>
+    </div>
+    <span style="font-size: 13px; color: #5B6770; text-align: center">הפנייה מגיעה ישר אל בעל המקצוע.</span>
+  </section>
+
+  <section aria-label="הפורום של בעל המקצוע" style="background: #FFFFFF; border: 2px solid #101820; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+    <div style="background: #101820; color: #FFFFFF; padding: 12px 16px; display: flex; align-items: center; gap: 10px">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"></path></svg>
+      <h2 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 18px; flex-grow: 1">בפורום</h2>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #FFD3E2"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF5C93; display: block"></span>פעיל היום</span>
+    </div>
+
+    <div role="tablist" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid #D5DBDF">
+      <button role="tab" aria-selected="true" style="height: 48px; border: 0; border-bottom: 3px solid #B0144F; background: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 15px; color: #101820">תשובות 12</button>
+      <button role="tab" aria-selected="false" style="height: 48px; border: 0; border-bottom: 3px solid #FFFFFF; background: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 15px; color: #3A4650">שאלו אותו 3</button>
+      <button role="tab" aria-selected="false" style="height: 48px; border: 0; border-bottom: 3px solid #FFFFFF; background: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 15px; color: #3A4650">המלצות 4</button>
+    </div>
+
+    <div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 12px">
+      <article style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid #D5DBDF">
+        <a href="Thread.dc.html" style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; line-height: 1.3; color: #101820; text-decoration: none">כמה זמן לוקח לקבל טופס 4 אחרי גמר בנייה?</a>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3A4650">"תלוי ברשות המקומית. אצלנו בפרויקט האחרון זה לקח כשלושה חודשים מרגע הגשת כל האישורים."</p>
+        <span style="font-size: 13px; color: #5B6770">אתמול · 8 תודות · 5 תשובות בדיון</span>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid #D5DBDF">
+        <a href="Thread.dc.html" style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; line-height: 1.3; color: #101820; text-decoration: none">מחפשת קבלן לתוספת בנייה בקריות</a>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3A4650">"אשמח לבוא לראות. שלחו תוכנית ואחזיר הערכה ראשונית."</p>
+        <span style="font-size: 13px; color: #5B6770">לפני 3 ימים · 2 תודות</span>
+      </article>
+      <a href="Main.dc.html" style="font-size: 15px; font-weight: 700; min-height: 44px; display: flex; align-items: center">לכל 12 התשובות ←</a>
+    </div>
+
+    <div style="background: #F2F4F5; border-top: 1px solid #D5DBDF; padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 8px">
+      <label for="ask" style="font-size: 14px; font-weight: 700; color: #101820">שאלו אותו, או את כל הקבלנים בפורום</label>
+      <div style="display: flex; gap: 8px">
+        <input id="ask" type="text" placeholder="היי, אני מחפש..." style="flex-grow: 1; height: 48px; border-radius: 12px; border: 2px solid #101820; background: #FFFFFF; padding: 0 14px; font-size: 16px; min-width: 0">
+        <a href="Compose.dc.html" style="height: 48px; padding: 0 16px; border-radius: 12px; background: #B0144F; color: #FFFFFF; text-decoration: none; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center">שליחה</a>
+      </div>
+      <div style="display: flex; gap: 14px; font-size: 14px; color: #3A4650">
+        <label style="display: flex; align-items: center; gap: 6px; min-height: 44px"><input type="radio" name="to" checked style="width: 20px; height: 20px; margin: 0; accent-color: #2F6F86">רק אליו</label>
+        <label style="display: flex; align-items: center; gap: 6px; min-height: 44px"><input type="radio" name="to" style="width: 20px; height: 20px; margin: 0; accent-color: #2F6F86">לכל הפורום</label>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px dashed #5B6770; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 10px">
+    <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+      <span style="font-weight: 700; font-size: 15px">זה הכרטיס שלכם?</span>
+      <span style="font-size: 13px; color: #3A4650">עריכה, מענה לשאלות או הסרה. הכול בלחיצה, אחרי קוד לטלפון.</span>
+    </div>
+    <a href="Profile.dc.html" style="height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid #101820; color: #101820; text-decoration: none; font-weight: 700; font-size: 14px; display: flex; align-items: center; white-space: nowrap">זה אני</a>
+  </section>
+
+  <span style="position: absolute; top: 4px; left: 8px; font-size: 10px; color: #5B6770; background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 4px; padding: 1px 5px">דוגמה לעיצוב</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":970}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

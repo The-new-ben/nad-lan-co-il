@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>פורום נדל"ן: כתיבה וכניסה</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#2F6F86}a:hover{color:#1F4B5C}
+button,input,textarea{font-family:inherit}
+button{cursor:pointer}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 1040px; box-sizing: border-box; background: #F2F4F5; color: #101820; font-family: Assistant, 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; position: relative; overflow: hidden">
+
+  <header style="background: #FFFFFF; border-bottom: 1px solid #D5DBDF; padding: 8px 12px; display: flex; align-items: center; gap: 8px">
+    <a href="Main.dc.html" aria-label="סגירה" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; text-decoration: none"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#101820" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+    <h1 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 20px; flex-grow: 1">הודעה חדשה</h1>
+    <span style="font-size: 13px; color: #1B4D33; font-weight: 700">הטיוטה נשמרה</span>
+  </header>
+
+  <main style="padding: 14px 16px 0; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+
+    <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+      <legend style="font-size: 14px; font-weight: 700; color: #3A4650; padding: 0; margin-bottom: 8px">מה תרצו לכתוב?</legend>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <button aria-pressed="true" style="height: 52px; border-radius: 12px; border: 2px solid #101820; background: #101820; color: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 15px">שאלה</button>
+        <button style="height: 52px; border-radius: 12px; border: 1px solid #D5DBDF; background: #FFFFFF; color: #101820; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 15px">מחפש בעל מקצוע</button>
+        <button style="height: 52px; border-radius: 12px; border: 1px solid #D5DBDF; background: #FFFFFF; color: #101820; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 15px">היי, אני בעל מקצוע</button>
+        <button style="height: 52px; border-radius: 12px; border: 1px solid #D5DBDF; background: #FFFFFF; color: #101820; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 15px">עבודה שסיימתי</button>
+      </div>
+    </fieldset>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="ttl" style="font-size: 14px; font-weight: 700; color: #3A4650">הכותרת, במשפט אחד</label>
+      <input id="ttl" type="text" value="כמה עולה שמאי לדירת 4 חדרים לפני קנייה?" style="height: 52px; border-radius: 12px; border: 2px solid #2F6F86; background: #FFFFFF; padding: 0 14px; font-size: 16px; color: #101820">
+      <div style="background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 13px; color: #5B6770">כבר שאלו משהו דומה:</span>
+        <a href="Thread.dc.html" style="font-size: 15px; font-weight: 700; line-height: 1.35">כמה עולה שמאי מקרקעין לפני רכישת דירה · 8 תשובות</a>
+        <a href="Thread.dc.html" style="font-size: 15px; font-weight: 700; line-height: 1.35">שמאי מטעם הבנק או שמאי פרטי · 5 תשובות</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="body" style="font-size: 14px; font-weight: 700; color: #3A4650">פרטים (לא חובה)</label>
+      <textarea id="body" rows="3" placeholder="עיר, סוג הנכס, מה כבר בדקתם" style="border-radius: 12px; border: 1px solid #AAB4BC; background: #FFFFFF; padding: 12px 14px; font-size: 16px; line-height: 1.5; resize: none; color: #101820"></textarea>
+      <div style="display: flex; gap: 8px; align-items: center">
+        <button style="height: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid #D5DBDF; background: #FFFFFF; font-size: 14px; color: #101820">תמונה</button>
+        <button style="height: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid #D5DBDF; background: #FFFFFF; font-size: 14px; color: #101820">סרטון קצר</button>
+        <button style="height: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid #D5DBDF; background: #FFFFFF; font-size: 14px; color: #101820">סקר</button>
+        <button style="height: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid #B8D9C5; background: #DCEFE3; font-size: 14px; font-weight: 700; color: #1B4D33; margin-inline-start: auto">שמאות ✓</button>
+      </div>
+    </div>
+
+    <section style="background: #FFFFFF; border: 2px solid #101820; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <h2 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 17px">צעד אחד ואתם בפנים</h2>
+        <span style="font-size: 14px; color: #3A4650">שם וטלפון או מייל. בלי סיסמה ובלי טופס הרשמה.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <label for="nm" style="font-size: 13px; font-weight: 700; color: #3A4650">שם</label>
+          <input id="nm" type="text" value="יעל" style="height: 48px; border-radius: 10px; border: 1px solid #AAB4BC; padding: 0 12px; font-size: 16px; min-width: 0; color: #101820">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <label for="ph" style="font-size: 13px; font-weight: 700; color: #3A4650">טלפון נייד</label>
+          <input id="ph" type="tel" dir="ltr" value="05X-XXXXXXX" style="height: 48px; border-radius: 10px; border: 1px solid #AAB4BC; padding: 0 12px; font-size: 16px; min-width: 0; text-align: left; color: #101820">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 13px; font-weight: 700; color: #3A4650">הקוד שקיבלתם בהודעה</span>
+        <div dir="ltr" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+          <input aria-label="ספרה 1" inputmode="numeric" value="4" style="height: 56px; border-radius: 10px; border: 2px solid #2F6F86; text-align: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 24px; min-width: 0; color: #101820">
+          <input aria-label="ספרה 2" inputmode="numeric" value="1" style="height: 56px; border-radius: 10px; border: 2px solid #2F6F86; text-align: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 24px; min-width: 0; color: #101820">
+          <input aria-label="ספרה 3" inputmode="numeric" value="7" style="height: 56px; border-radius: 10px; border: 2px solid #2F6F86; text-align: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 24px; min-width: 0; color: #101820">
+          <input aria-label="ספרה 4" inputmode="numeric" style="height: 56px; border-radius: 10px; border: 1px solid #AAB4BC; text-align: center; font-size: 24px; min-width: 0">
+          <input aria-label="ספרה 5" inputmode="numeric" style="height: 56px; border-radius: 10px; border: 1px solid #AAB4BC; text-align: center; font-size: 24px; min-width: 0">
+          <input aria-label="ספרה 6" inputmode="numeric" style="height: 56px; border-radius: 10px; border: 1px solid #AAB4BC; text-align: center; font-size: 24px; min-width: 0">
+        </div>
+        <span style="font-size: 13px; color: #5B6770">לא הגיע? <a href="#again">שליחה שוב בעוד 0:42</a> · <a href="#mail">קישור למייל במקום</a></span>
+      </div>
+      <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.45; color: #3A4650"><input type="checkbox" checked style="width: 20px; height: 20px; margin: 0; accent-color: #2F6F86; flex-shrink: 0"><span>קראתי את <a href="#rules">כללי הפורום</a> ואת <a href="#privacy">מדיניות הפרטיות</a>. הטלפון לא מוצג לאף אחד.</span></label>
+    </section>
+
+    <button style="height: 56px; border-radius: 14px; border: 0; background: #B0144F; color: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 18px">פרסום ההודעה</button>
+    <p style="margin: 0; font-size: 13px; line-height: 1.45; color: #5B6770; text-align: center">הודעה ראשונה עולה אחרי בדיקה קצרה. מהשנייה והלאה, מיד.</p>
+  </main>
+
+  <span style="position: absolute; top: 6px; left: 8px; font-size: 10px; color: #5B6770; background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 4px; padding: 1px 5px">דוגמה לעיצוב</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1040}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

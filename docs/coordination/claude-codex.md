@@ -5117,3 +5117,35 @@ CLAIM 1.72.666 (HAD-712 step 6, the Kikar buying journey "Build me an offer", bo
 RELEASE LOCK 1.72.666 (HAD-712 step 6: NEW world/kikarbuy.js; basket.js, showroom-i18n.js; the live inc/rfp.php hunks; dry run clean; built from deploy665.py). Claude [Kikar languages, Opus 5.5] 12.11.2026 02:54 UTC.
 
 RELEASE DONE 1.72.666 (HAD-712 step 6): released and verified by deploy666.py (deploy-result-666.json). Live: the Kikar buying journey "Build me an offer" from My selection (summary, where to send, the request document; no payment). inc/rfp.php is now the 666 text (md5 b8e131ed31; built on the LIVE 17 KB text, the repo's unreleased rework was not shipped): read it live before hunking. Walked live (evidence/live-666-2026-11-12): he and en at 390x844 and 1440x900, requests faked, every step ok, 0 script errors, 0 failed requests; one REAL request in Hebrew at 390 named "בדיקת Claude, לא לטפל": request RFP-FA5ILP5A, the document opens (example apartment, tower B, floor 20, west, the warm finish labelled illustrative, a real advisor, the timeline; no rooms, area or price); /rfp refuses B38-10 and D10-90 with 400. Lock released. This session stops here on Ben's word ("finish what you started and stop"): no further Kikar release from me. Claude [Kikar languages, Opus 5.5] 12.11.2026 03:13 UTC.
+
+CLAIM 1.72.667 (HAD-726, the professionals' forum, first version, hidden: it answers only with ?forum=on or to an administrator): NEW inc/pro-forum.php (and its split files), assets/proforum/forum.css, forum.js; ONE HUNK on the LIVE inc/pro-network.php (a require_once of the new module at its end; read live first); no module-list change, no other file. Generator scripts/project-stage/make_deploy667.py from deploy666.py (kl_release.build_release). Please do not write make_deploy667.py / deploy667.py / kikar_667.py. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 17:24 UTC.
+
+
+NOTE (HAD-726, the CLAIM 1.72.667 above): nothing was released and no make_deploy667.py exists yet. By the owner's order the work passes to an Opus 5.5 session, which continues under this same claim (stages HAD-727 then HAD-728). The owner corrected the plan: register records are not members; no forum window, no phone and no mail for anyone who did not join himself. If that session does not start a release within a day, it frees 1.72.667 here in writing. Plan: Notion, five documents under the control-centre row of HAD-726. Claude [pro forum HAD-726, Fable 5.2] 12.11.2026 17:34 UTC.
+
+
+RELEASE LOCK 1.72.667 (HAD-726: NEW inc/pro-forum.php, pro-forum-render.php, pro-forum-admin.php, pro-forum-trades.php, assets/proforum/forum.css, forum.js; HUNKS on the LIVE inc/pro-network.php (md5 0d0f76560f: the loader line at its end) and the LIVE inc/home-v3.php (md5 bae4952947: the forum column in the 'אנשי מקצוע' menu, printed only when the forum is public); no module-list change; dry run clean; built from deploy666.py). Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 18:07 UTC.
+
+
+RELEASE DONE 1.72.667 (HAD-726): released and verified by deploy667.py (deploy-result-667.json). The professionals' forum is on the site, HIDDEN: /forum/ and /forum/<n>/ answer 404 without ?forum=on, the forum API answers 400, GET /wp-json/nadlan/v1/forum/ping answers 200 {loaded:true,public:false}. inc/pro-network.php and inc/home-v3.php are now the 667 texts (read them live before hunking). Live check found the forum pages printing WordPress's fallback header (a second h1): fixed in 1.72.668. Lock released. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 18:23 UTC.
+
+CLAIM + RELEASE LOCK 1.72.668 (HAD-726 round 2, still hidden): NEW inc/pro-forum-call.php, assets/proforum/call.js, call.css (video calls); SWAP inc/pro-forum.php, inc/pro-forum-render.php; HUNKS on the LIVE inc/professional-profile.php (md5 9bfb9726b6): once the forum is public a register record's site-WhatsApp 'connect me' button and quote button become one 'פרסמו בקשה' (owner 12.11); byte-identical while hidden. Built from deploy667.py. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 18:23 UTC.
+
+
+RELEASE DONE 1.72.668 (HAD-726): released and verified by deploy668.py on its second run (run 1 rolled back on my own check row: it asked for the WhatsApp text, which the link carries %-encoded). Live: the forum's video-call module, the forum pages with the theme's own header, and the profile 'פרסמו בקשה' hunk (inactive while the forum is hidden; inc/professional-profile.php is now the 668 text). Lock released.
+
+CLAIM + RELEASE LOCK 1.72.669 (HAD-726 fix found live: the forum's sheets printed after forum.js so no button opened): SWAP inc/pro-forum-render.php only; no hunk, no new file; built from deploy668.py. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 19:23 UTC.
+
+
+RELEASE DONE 1.72.669 (HAD-726): released and verified by deploy669.py; the forum's sheets now open (seen live). Lock released.
+
+CLAIM + RELEASE LOCK 1.72.670 (HAD-726 fix found live: a member with no posts was told 'wait 15 seconds' before every first post, nlf_ts('') read as now): SWAP inc/pro-forum.php only; built from deploy669.py. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 19:39 UTC.
+
+
+RELEASE DONE 1.72.670 (HAD-726): released and verified; seen live: a discussion opened (/forum/1/, a test by 'בדיקת Claude'), a link refused for a new member, a first reply held for review, thanks and 'the answer that helped' work. Lock released.
+
+CLAIM + RELEASE LOCK 1.72.671 (HAD-726, from the live check): SWAP inc/pro-forum.php (a clean first message goes live by itself, option nadlan_forum_autoapprove, owner 12.11 'as little management as possible'), inc/pro-forum-call.php (call.css under its own handle: 'nlfc' belongs to facility-chips.php, so it never loaded), assets/proforum/forum.css (error messages red, buttons never break their word); built from deploy670.py. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 19:58 UTC.
+
+
+RELEASE DONE 1.72.671 (HAD-726): released and verified. Then, by the owner's order ('upload it and show me'), the forum was OPENED TO THE PUBLIC with scripts/project-stage/forum_switch.py on (option nadlan_forum_public = 1, page cache purged): /forum/ 200, the menu column 'פורום ושיתופי פעולה' under 'אנשי מקצוע', and every register record's profile shows 'פרסמו בקשה' instead of the site-WhatsApp 'connect me' and the quote button. Test data removed (forum_testkit.py clean). inc/pro-forum.php, pro-forum-render.php, pro-forum-call.php, forum.css are the 671 texts. Claude [pro forum HAD-726, Opus 5.5] 12.11.2026 20:17 UTC.
+
