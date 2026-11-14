@@ -1002,7 +1002,11 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			}
 		}
 		$is_real_photo = $photo_url !== '';
-		if ( ! $is_real_photo ) {
+		/* HAD-740: a project with no picture of its own: its Hebrew page's picture (language pages), else the default picture chosen in
+		 * Settings > Media. null (gate closed, no option, media gone) = the old behaviour below, exactly. */
+		$pd = ( ! $is_real_photo && function_exists( 'nadlan_pd_pick' ) ) ? nadlan_pd_pick( $id ) : null;
+		if ( $pd ) { $photo_url = (string) $pd['url']; }
+		if ( ! $is_real_photo && ! $pd ) {
 			// Rotate 5 real architectural photos from the theme (luxurious, varied)
 			// rather than 2 dark concept SVGs so the catalog grid never reads as
 			// identical empty blocks. Falls back to the bundled concept SVG if the
@@ -1040,6 +1044,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			$src = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large' );
 			if ( is_array( $src ) ) { $img_w = (int) $src[1]; $img_h = (int) $src[2]; }
 		}
+		if ( $pd ) { $img_w = (int) $pd['w']; $img_h = (int) $pd['h']; }
 		$fill = $img_w > 0 && $img_h > 0 && ( $img_w / $img_h ) > 1.25;
 		$tags = array();
 		if ( $mrow ) {
@@ -1060,10 +1065,10 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$stats = array_slice( $stats, 0, 3 );
 		ob_start(); ?>
 <a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?><?php echo $own ? ' is-own' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?><?php echo $fill ? ' is-fill' : ''; ?>">
-		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async"<?php echo $img_w > 0 ? ' width="' . (int) $img_w . '" height="' . (int) $img_h . '"' : ''; ?>>
+	<div class="nldc-media<?php echo $pd ? ( 'twin' === $pd['kind'] ? ' has-real-photo' : ' has-default-pic' ) : ( $is_real_photo ? ' has-real-photo' : ' has-concept-art' ); ?><?php echo $fill ? ' is-fill' : ''; ?>">
+		<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo $pd ? esc_attr( (string) $pd['alt'] ) : ''; ?>" loading="lazy" decoding="async"<?php echo $img_w > 0 ? ' width="' . (int) $img_w . '" height="' . (int) $img_h . '"' : ''; ?><?php echo ( $pd && '' !== (string) $pd['srcset'] ) ? ' srcset="' . esc_attr( (string) $pd['srcset'] ) . '" sizes="' . esc_attr( (string) $pd['sizes'] ) . '"' : ''; ?>>
 		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
-		<?php if ( $pm['label'] !== 'אחר' ) : /* "other" is a machine fallback, not a badge a buyer should read */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
+		<?php if ( $pm['label'] !== 'אחר' && ! ( $pd && 'default' === $pd['kind'] ) ) : /* "other" is a machine fallback, not a badge a buyer should read; HAD-740: nothing printed over the default picture (its type stays in the facts row as "סוג") */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
 		<?php if ( $tags ) : ?><span class="nldcp-tags"><?php foreach ( $tags as $t ) : ?><b class="nldcp-tag <?php echo esc_attr( $t[1] ); ?>"><?php echo esc_html( $t[0] ); ?></b><?php endforeach; ?></span><?php endif; ?>
 	</div>
 	<div class="nldcp-body">
@@ -1125,6 +1130,7 @@ if ( ! function_exists( 'nadlan_dir_quickfilter_html' ) ) {
 			. '.nldir-results .nldc-project .nldc-media{aspect-ratio:8/5!important}'
 			. '.nldir-results .nldc-project .nldc-media.is-fill{background:#E3EEF2}'
 			. '.nldir-results .nldc-project .nldc-media.is-fill img{object-fit:cover!important;object-position:50% 0!important;padding:0!important}'
+			. '.nldc-project .nldc-media.has-default-pic{background:#E3EEF2}.nldc-project .nldc-media.has-default-pic img{object-fit:cover;object-position:50% 50%;padding:0}'
 			. '.nldc-project .nldcp-tags{position:absolute;inset-block-start:10px;inset-inline-end:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:70%}'
 			. '.nldc-project .nldcp-tag{font:600 13px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;padding:6px 10px;border-radius:6px;color:#fff;background:#0E4C63}'
 			. '.nldc-project .nldcp-tag.is-ready{background:#1B6B3C}.nldc-project .nldcp-tag.is-sale{background:#0F1D26}'
@@ -1408,3 +1414,4 @@ echo function_exists( 'nadlan_ph_top_html' ) ? nadlan_ph_top_html() : ''; // php
 
 require __DIR__ . '/directory-assets.php';
 require_once __DIR__ . '/projects-hub.php'; // 1.72.513: the /projects/ hub (body after the grid, FAQ, tools)
+if ( is_readable( __DIR__ . '/project-default-image.php' ) ) { require_once __DIR__ . '/project-default-image.php'; } // 1.72.677 HAD-740: the default card picture (Settings > Media)
