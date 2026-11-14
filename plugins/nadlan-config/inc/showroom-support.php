@@ -53,6 +53,13 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_decimal' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_sanitize_decimal_or_empty' ) ) {
+	/** HAD-740: like nadlan_p3d_sanitize_decimal, but an empty or non-numeric value stays empty instead of becoming 0. */
+	function nadlan_p3d_sanitize_decimal_or_empty( $value ) {
+		return is_numeric( $value ) ? (float) $value : '';
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_clean_material_items' ) ) {
 	function nadlan_p3d_clean_material_items( $items ) {
 		if ( ! is_array( $items ) ) {
@@ -585,9 +592,9 @@ if ( ! function_exists( 'nadlan_p3d_showroom_fields' ) ) {
 		return array(
 			'project_3d_image'              => 'esc_url_raw',
 			'project_3d_viewbox'            => 'sanitize_text_field',
-			'project_3d_floor_height_m'     => 'nadlan_p3d_sanitize_decimal',
-			'project_3d_ground_elevation_m' => 'nadlan_p3d_sanitize_decimal',
-			'project_3d_avg_price_per_sqm'  => 'nadlan_p3d_sanitize_decimal',
+			'project_3d_floor_height_m'     => 'nadlan_p3d_sanitize_decimal_or_empty',
+			'project_3d_ground_elevation_m' => 'nadlan_p3d_sanitize_decimal_or_empty',
+			'project_3d_avg_price_per_sqm'  => 'nadlan_p3d_sanitize_decimal_or_empty',
 			'project_3d_price_source_note'  => 'sanitize_text_field',
 			'project_3d_model_type'         => 'nadlan_p3d_sanitize_model_type',
 			'project_model_glb'             => 'esc_url_raw',
@@ -880,9 +887,16 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 
 		$img    = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
 		$vb     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
-		$fh     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_floor_height_m', true ) );
-		$gm     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
-		$ap     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true ) );
+		/* HAD-740 (14.11.2026): an empty field used to be saved as 0, and a printed 0 under min="2.4" made the browser refuse every
+		 * later save ("Value must be greater than or equal to 2.4"). A stored value below the field's minimum prints as empty; a
+		 * stored value above its maximum keeps printing but no longer blocks (the max is dropped for that render). */
+		$fh_raw = get_post_meta( $post->ID, 'project_3d_floor_height_m', true );
+		$fh     = ( is_numeric( $fh_raw ) && (float) $fh_raw >= 2.4 ) ? esc_attr( (string) $fh_raw ) : '';
+		$fh_max = ( '' !== $fh && (float) $fh_raw > 5 ) ? '' : ' max="5"';
+		$gm_raw = get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true );
+		$gm     = ( is_numeric( $gm_raw ) && (float) $gm_raw >= -50 ) ? esc_attr( (string) $gm_raw ) : '';
+		$ap_raw = get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true );
+		$ap     = ( is_numeric( $ap_raw ) && (float) $ap_raw > 0 ) ? esc_attr( (string) $ap_raw ) : '';
 		$psn    = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_price_source_note', true ) );
 		$mt     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_model_type', true ) );
 		$glb    = esc_attr( (string) get_post_meta( $post->ID, 'project_model_glb', true ) );
@@ -978,7 +992,7 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 			<details class="nadlan-p3d-panel" open>
 				<summary>2. מחיר, גובה ומבט מהדירה</summary>
 				<div class="nadlan-p3d-panel-inner">
-					<label><span>גובה קומה במטרים</span><input type="number" step="0.01" min="2.4" max="5" name="project_3d_floor_height_m" value="<?php echo $fh; ?>" class="widefat" placeholder="3.05"></label>
+					<label><span>גובה קומה במטרים</span><input type="number" step="0.01" min="2.4"<?php echo $fh_max; // phpcs:ignore ?> name="project_3d_floor_height_m" value="<?php echo $fh; ?>" class="widefat" placeholder="3.05"></label>
 					<label><span>גובה קרקע משוער במטרים</span><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="<?php echo $gm; ?>" class="widefat" placeholder="0"></label>
 					<label><span>אומדן מחיר ממוצע למטר</span><input type="number" step="1" min="0" name="project_3d_avg_price_per_sqm" value="<?php echo $ap; ?>" class="widefat" placeholder="0"></label>
 					<label><span>הערה גלויה לאומדן</span><input type="text" name="project_3d_price_source_note" value="<?php echo $psn; ?>" class="widefat" placeholder="אומדן לא מחייב לפי מקור מאושר"></label>
@@ -1161,9 +1175,12 @@ add_action(
 
 		update_post_meta( $post_id, 'project_3d_image', esc_url_raw( wp_unslash( $_POST['project_3d_image'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_viewbox', sanitize_text_field( wp_unslash( $_POST['project_3d_viewbox'] ?? '' ) ) );
-		update_post_meta( $post_id, 'project_3d_floor_height_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_floor_height_m'] ?? '' ) ) );
-		update_post_meta( $post_id, 'project_3d_ground_elevation_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_ground_elevation_m'] ?? '' ) ) );
-		update_post_meta( $post_id, 'project_3d_avg_price_per_sqm', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_avg_price_per_sqm'] ?? '' ) ) );
+		/* HAD-740: an empty (or non-numeric) number field is never stored as 0: the meta is removed, and every reader falls back as it
+		 * does for a missing value (showroom-engine.php: floor height ?: 3.05). A typed number is stored as before. */
+		foreach ( array( 'project_3d_floor_height_m', 'project_3d_ground_elevation_m', 'project_3d_avg_price_per_sqm' ) as $nlp3d_k ) {
+			$nlp3d_v = trim( (string) wp_unslash( $_POST[ $nlp3d_k ] ?? '' ) );
+			if ( '' === $nlp3d_v || ! is_numeric( $nlp3d_v ) ) { delete_post_meta( $post_id, $nlp3d_k ); } else { update_post_meta( $post_id, $nlp3d_k, nadlan_p3d_sanitize_decimal( $nlp3d_v ) ); }
+		}
 		update_post_meta( $post_id, 'project_3d_price_source_note', sanitize_text_field( wp_unslash( $_POST['project_3d_price_source_note'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_model_type', nadlan_p3d_sanitize_model_type( wp_unslash( $_POST['project_3d_model_type'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_model_glb', esc_url_raw( wp_unslash( $_POST['project_model_glb'] ?? '' ) ) );
