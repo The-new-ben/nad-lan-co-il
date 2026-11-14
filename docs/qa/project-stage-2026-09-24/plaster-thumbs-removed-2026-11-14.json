@@ -1,0 +1,752 @@
+{
+ "at": "2026-11-14 22:21:13",
+ "rows": [
+  {
+   "id": 1232,
+   "slug": "%d7%94%d7%a8%d7%95%d7%aa%d7%9d-%d7%a4%d7%9c%d7%93%d7%95%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%95%d7%aa%d7%9d-%d7%a4%d7%9c%d7%93%d7%95%d7%aa/",
+   "expect": 7537,
+   "current": 7537,
+   "modified_gmt": "2026-10-31T22:13:57",
+   "will_remove": true
+  },
+  {
+   "id": 1071,
+   "slug": "%d7%9e%d7%92%d7%93%d7%9c-%d7%94%d7%99%d7%9d-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-2",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%92%d7%93%d7%9c-%d7%94%d7%99%d7%9d-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-2/",
+   "expect": 7534,
+   "current": 7534,
+   "modified_gmt": "2026-10-31T21:53:17",
+   "will_remove": true
+  },
+  {
+   "id": 5592,
+   "slug": "%d7%a9%d7%a2%d7%a8-%d7%a6%d7%a4%d7%95%d7%9f-%d7%9e%d7%a2%d7%a8-%d7%a8%d7%9e%d7%9c%d7%94",
+   "url": "https://nad-lan.co.il/projects/%d7%a9%d7%a2%d7%a8-%d7%a6%d7%a4%d7%95%d7%9f-%d7%9e%d7%a2%d7%a8-%d7%a8%d7%9e%d7%9c%d7%94/",
+   "expect": 7531,
+   "current": 7531,
+   "modified_gmt": "2026-10-31T22:49:24",
+   "will_remove": true
+  },
+  {
+   "id": 5591,
+   "slug": "%d7%94%d7%92%d7%a0%d7%94-%d7%a1%d7%9c%d7%95%d7%95%d7%93%d7%95%d7%a8",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%92%d7%a0%d7%94-%d7%a1%d7%9c%d7%95%d7%95%d7%93%d7%95%d7%a8/",
+   "expect": 7557,
+   "current": 7557,
+   "modified_gmt": "2026-10-31T22:19:31",
+   "will_remove": true
+  },
+  {
+   "id": 5590,
+   "slug": "%d7%90%d7%97%d7%93-%d7%94%d7%a2%d7%9d-33-35",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%97%d7%93-%d7%94%d7%a2%d7%9d-33-35/",
+   "expect": 7552,
+   "current": 7552,
+   "modified_gmt": "2026-10-31T22:39:45",
+   "will_remove": true
+  },
+  {
+   "id": 5589,
+   "slug": "%d7%a6%d7%90%d7%9c%d7%99%d7%9d-%d7%94%d7%90%d7%99%d7%9c%d7%a0%d7%95%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%a6%d7%90%d7%9c%d7%99%d7%9d-%d7%94%d7%90%d7%99%d7%9c%d7%a0%d7%95%d7%aa/",
+   "expect": 7549,
+   "current": 7549,
+   "modified_gmt": "2026-10-31T22:24:55",
+   "will_remove": true
+  },
+  {
+   "id": 5588,
+   "slug": "%d7%9e%d7%a2%d7%9c%d7%94-%d7%92%d7%a2%d7%aa%d7%95%d7%9f",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%a2%d7%9c%d7%94-%d7%92%d7%a2%d7%aa%d7%95%d7%9f/",
+   "expect": 7553,
+   "current": 7553,
+   "modified_gmt": "2026-10-31T22:40:14",
+   "will_remove": true
+  },
+  {
+   "id": 5587,
+   "slug": "%d7%a0%d7%aa%d7%99%d7%91-%d7%97%d7%91%d7%a6%d7%9c%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%a0%d7%aa%d7%99%d7%91-%d7%97%d7%91%d7%a6%d7%9c%d7%aa/",
+   "expect": 7551,
+   "current": 7551,
+   "modified_gmt": "2026-10-31T22:41:36",
+   "will_remove": true
+  },
+  {
+   "id": 5586,
+   "slug": "%d7%91%d7%99%d7%90%d7%9c%d7%99%d7%a7-%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%99%d7%90%d7%9c%d7%99%d7%a7-%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99/",
+   "expect": 7554,
+   "current": 7554,
+   "modified_gmt": "2026-10-31T22:15:19",
+   "will_remove": true
+  },
+  {
+   "id": 5585,
+   "slug": "%d7%91%d7%9f-%d7%a6%d7%91%d7%99-3",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%9f-%d7%a6%d7%91%d7%99-3/",
+   "expect": 7555,
+   "current": 7555,
+   "modified_gmt": "2026-10-31T22:48:39",
+   "will_remove": true
+  },
+  {
+   "id": 5584,
+   "slug": "%d7%94%d7%a1%d7%aa%d7%93%d7%a8%d7%95%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a1%d7%aa%d7%93%d7%a8%d7%95%d7%aa/",
+   "expect": 7550,
+   "current": 7550,
+   "modified_gmt": "2026-10-31T22:40:56",
+   "will_remove": true
+  },
+  {
+   "id": 5583,
+   "slug": "%d7%94%d7%a2%d7%a6%d7%9e%d7%90%d7%95%d7%aa-6",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a2%d7%a6%d7%9e%d7%90%d7%95%d7%aa-6/",
+   "expect": 7556,
+   "current": 7556,
+   "modified_gmt": "2026-10-31T22:45:08",
+   "will_remove": true
+  },
+  {
+   "id": 3556,
+   "slug": "%d7%9c%d7%91-%d7%94%d7%a2%d7%99%d7%a8-%d7%a1%d7%95%d7%a7%d7%95%d7%9c%d7%95%d7%91",
+   "url": "https://nad-lan.co.il/projects/%d7%9c%d7%91-%d7%94%d7%a2%d7%99%d7%a8-%d7%a1%d7%95%d7%a7%d7%95%d7%9c%d7%95%d7%91/",
+   "expect": 7558,
+   "current": 7558,
+   "modified_gmt": "2026-10-31T22:03:44",
+   "will_remove": true
+  },
+  {
+   "id": 3552,
+   "slug": "%d7%94%d7%93%d7%a8-%d7%99%d7%95%d7%a1%d7%a3",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a8-%d7%99%d7%95%d7%a1%d7%a3/",
+   "expect": 7570,
+   "current": 7570,
+   "modified_gmt": "2026-10-31T22:04:27",
+   "will_remove": true
+  },
+  {
+   "id": 3554,
+   "slug": "%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+   "expect": 7565,
+   "current": 7565,
+   "modified_gmt": "2026-10-31T22:04:06",
+   "will_remove": true
+  },
+  {
+   "id": 3551,
+   "slug": "%d7%a9%d7%91%d7%98%d7%99-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-30-34",
+   "url": "https://nad-lan.co.il/projects/%d7%a9%d7%91%d7%98%d7%99-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-30-34/",
+   "expect": 7571,
+   "current": 7571,
+   "modified_gmt": "2026-10-31T22:21:42",
+   "will_remove": true
+  },
+  {
+   "id": 3549,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-22-%d7%93%d7%a8%d7%95%d7%9d-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-%d7%9c%d7%99%d7%9f-%d7%a9%d7%93-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-21-33",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-22-%d7%93%d7%a8%d7%95%d7%9d-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-%d7%9c%d7%99%d7%9f-%d7%a9%d7%93-%d7%a8%d7%95%d7%98%d7%a9%d7%99%d7%9c%d7%93-21-33/",
+   "expect": 7575,
+   "current": 7575,
+   "modified_gmt": "2026-10-31T22:20:56",
+   "will_remove": true
+  },
+  {
+   "id": 3547,
+   "slug": "%d7%97%d7%99%d7%99%d7%9d-%d7%97%d7%91%d7%99%d7%91-1",
+   "url": "https://nad-lan.co.il/projects/%d7%97%d7%99%d7%99%d7%9d-%d7%97%d7%91%d7%99%d7%91-1/",
+   "expect": 7574,
+   "current": 7574,
+   "modified_gmt": "2026-10-31T22:30:48",
+   "will_remove": true
+  },
+  {
+   "id": 3545,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%99%d7%99%d7%a0%d7%a1",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%99%d7%99%d7%a0%d7%a1/",
+   "expect": 7576,
+   "current": 7576,
+   "modified_gmt": "2026-10-31T22:33:18",
+   "will_remove": true
+  },
+  {
+   "id": 3543,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d/",
+   "expect": 7577,
+   "current": 7577,
+   "modified_gmt": "2026-10-31T22:41:16",
+   "will_remove": true
+  },
+  {
+   "id": 3541,
+   "slug": "%d7%a0%d7%97%d7%9c-%d7%94%d7%91%d7%a9%d7%95%d7%a8",
+   "url": "https://nad-lan.co.il/projects/%d7%a0%d7%97%d7%9c-%d7%94%d7%91%d7%a9%d7%95%d7%a8/",
+   "expect": 7578,
+   "current": 7578,
+   "modified_gmt": "2026-10-31T22:05:34",
+   "will_remove": true
+  },
+  {
+   "id": 3538,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-7-%d7%95%d7%a8%d7%91%d7%a8",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-7-%d7%95%d7%a8%d7%91%d7%a8/",
+   "expect": 7579,
+   "current": 7579,
+   "modified_gmt": "2026-10-31T21:58:00",
+   "will_remove": true
+  },
+  {
+   "id": 3528,
+   "slug": "%d7%91%d7%99%d7%aa-%d7%94%d7%a2%d7%a8%d7%91%d7%94-22-24",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%99%d7%aa-%d7%94%d7%a2%d7%a8%d7%91%d7%94-22-24/",
+   "expect": 7580,
+   "current": 7580,
+   "modified_gmt": "2026-10-31T22:26:47",
+   "will_remove": true
+  },
+  {
+   "id": 3462,
+   "slug": "%d7%a6%d7%95%d7%a0%d7%93%d7%a7-51133130",
+   "url": "https://nad-lan.co.il/projects/%d7%a6%d7%95%d7%a0%d7%93%d7%a7-51133130/",
+   "expect": 7539,
+   "current": 7539,
+   "modified_gmt": "2026-10-31T22:35:00",
+   "will_remove": true
+  },
+  {
+   "id": 3429,
+   "slug": "%d7%91%d7%9f-%d7%92%d7%95%d7%a8%d7%99%d7%95%d7%9f-5",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%9f-%d7%92%d7%95%d7%a8%d7%99%d7%95%d7%9f-5/",
+   "expect": 7546,
+   "current": 7546,
+   "modified_gmt": "2026-10-31T21:54:46",
+   "will_remove": true
+  },
+  {
+   "id": 3328,
+   "slug": "%d7%9e%d7%98%d7%a8%d7%95-%d7%94%d7%a2%d7%99%d7%a8%d7%99%d7%99%d7%94",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%98%d7%a8%d7%95-%d7%94%d7%a2%d7%99%d7%a8%d7%99%d7%99%d7%94/",
+   "expect": 7567,
+   "current": 7567,
+   "modified_gmt": "2026-10-31T21:57:52",
+   "will_remove": true
+  },
+  {
+   "id": 3322,
+   "slug": "%d7%9e%d7%a2%d7%a8",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%a2%d7%a8/",
+   "expect": 7543,
+   "current": 7543,
+   "modified_gmt": "2026-10-31T22:46:54",
+   "will_remove": true
+  },
+  {
+   "id": 3195,
+   "slug": "%d7%94%d7%9e%d7%99%d7%99%d7%a1%d7%93%d7%99%d7%9d",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%99%d7%99%d7%a1%d7%93%d7%99%d7%9d/",
+   "expect": 7566,
+   "current": 7566,
+   "modified_gmt": "2026-10-31T22:38:16",
+   "will_remove": true
+  },
+  {
+   "id": 3180,
+   "slug": "%d7%9c%d7%95%d7%97%d7%9e%d7%99-%d7%94%d7%92%d7%98%d7%90%d7%95%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%9c%d7%95%d7%97%d7%9e%d7%99-%d7%94%d7%92%d7%98%d7%90%d7%95%d7%aa/",
+   "expect": 7542,
+   "current": 7542,
+   "modified_gmt": "2026-10-31T22:44:57",
+   "will_remove": true
+  },
+  {
+   "id": 3146,
+   "slug": "%d7%94%d7%9e%d7%91%d7%95%d7%90%d7%94-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%91%d7%95%d7%90%d7%94-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99%d7%aa/",
+   "expect": 7563,
+   "current": 7563,
+   "modified_gmt": "2026-10-31T21:52:32",
+   "will_remove": true
+  },
+  {
+   "id": 3148,
+   "slug": "%d7%9e%d7%98%d7%a8%d7%95-%d7%94%d7%91%d7%a0%d7%99%d7%9d-%d7%95%d7%99%d7%99%d7%a6%d7%9e%d7%9f",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%98%d7%a8%d7%95-%d7%94%d7%91%d7%a0%d7%99%d7%9d-%d7%95%d7%99%d7%99%d7%a6%d7%9e%d7%9f/",
+   "expect": 7540,
+   "current": 7540,
+   "modified_gmt": "2026-10-31T22:41:12",
+   "will_remove": true
+  },
+  {
+   "id": 3104,
+   "slug": "%d7%99%d7%93-%d7%94%d7%aa%d7%a9%d7%a2%d7%94",
+   "url": "https://nad-lan.co.il/projects/%d7%99%d7%93-%d7%94%d7%aa%d7%a9%d7%a2%d7%94/",
+   "expect": 7572,
+   "current": 7572,
+   "modified_gmt": "2026-10-31T21:55:08",
+   "will_remove": true
+  },
+  {
+   "id": 3088,
+   "slug": "%d7%a7%d7%93%d7%a9-%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d",
+   "url": "https://nad-lan.co.il/projects/%d7%a7%d7%93%d7%a9-%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d/",
+   "expect": 7535,
+   "current": 7535,
+   "modified_gmt": "2026-10-31T22:39:30",
+   "will_remove": true
+  },
+  {
+   "id": 3083,
+   "slug": "%d7%94%d7%aa%d7%97%d7%a0%d7%94",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%aa%d7%97%d7%a0%d7%94/",
+   "expect": 7569,
+   "current": 7569,
+   "modified_gmt": "2026-10-31T22:44:16",
+   "will_remove": true
+  },
+  {
+   "id": 2620,
+   "slug": "%d7%9e%d7%98%d7%a8%d7%95-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%98%d7%a8%d7%95-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+   "expect": 7568,
+   "current": 7568,
+   "modified_gmt": "2026-10-31T21:57:49",
+   "will_remove": true
+  },
+  {
+   "id": 2590,
+   "slug": "%d7%94%d7%9e%d7%a8%d7%9b%d7%96-%d7%94%d7%95%d7%95%d7%aa%d7%99%d7%a7",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%a8%d7%9b%d7%96-%d7%94%d7%95%d7%95%d7%aa%d7%99%d7%a7/",
+   "expect": 7559,
+   "current": 7559,
+   "modified_gmt": "2026-10-31T22:15:01",
+   "will_remove": true
+  },
+  {
+   "id": 2580,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%91%d7%99%d7%9f",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%91%d7%99%d7%9f/",
+   "expect": 7541,
+   "current": 7541,
+   "modified_gmt": "2026-10-31T21:54:34",
+   "will_remove": true
+  },
+  {
+   "id": 2472,
+   "slug": "%d7%91%d7%9f-%d7%96%d7%9b%d7%90%d7%99-31",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%9f-%d7%96%d7%9b%d7%90%d7%99-31/",
+   "expect": 7547,
+   "current": 7547,
+   "modified_gmt": "2026-10-31T22:26:54",
+   "will_remove": true
+  },
+  {
+   "id": 2429,
+   "slug": "%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%94%d7%a2%d7%99%d7%a8",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%94%d7%a2%d7%99%d7%a8/",
+   "expect": 7562,
+   "current": 7562,
+   "modified_gmt": "2026-10-31T22:39:01",
+   "will_remove": true
+  },
+  {
+   "id": 2423,
+   "slug": "%d7%a8%d7%92-1851-%d7%a4%d7%a0%d7%97%d7%a1-%d7%a8%d7%95%d7%98%d7%a0%d7%91%d7%a8%d7%92-79-81-83-85-%d7%94%d7%aa%d7%97%d7%93%d7%a9%d7%95%d7%aa-%d7%a2%d7%99%d7%a8%d7%95%d7%a0%d7%99%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%a8%d7%92-1851-%d7%a4%d7%a0%d7%97%d7%a1-%d7%a8%d7%95%d7%98%d7%a0%d7%91%d7%a8%d7%92-79-81-83-85-%d7%94%d7%aa%d7%97%d7%93%d7%a9%d7%95%d7%aa-%d7%a2%d7%99%d7%a8%d7%95%d7%a0%d7%99%d7%aa/",
+   "expect": 7536,
+   "current": 7536,
+   "modified_gmt": "2026-10-31T22:08:32",
+   "will_remove": true
+  },
+  {
+   "id": 2415,
+   "slug": "%d7%94%d7%92%d7%a4%d7%9f-8-10-%d7%a8%d7%92",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%92%d7%a4%d7%9f-8-10-%d7%a8%d7%92/",
+   "expect": 7532,
+   "current": 7532,
+   "modified_gmt": "2026-10-31T21:28:34",
+   "will_remove": true
+  },
+  {
+   "id": 1974,
+   "slug": "%d7%9e%d7%aa%d7%97%d7%9d-%d7%98%d7%95%d7%91%d7%99%d7%94%d7%95-%d7%94%d7%a6%d7%91%d7%99",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%98%d7%95%d7%91%d7%99%d7%94%d7%95-%d7%94%d7%a6%d7%91%d7%99/",
+   "expect": 7545,
+   "current": 7545,
+   "modified_gmt": "2026-10-31T22:15:46",
+   "will_remove": true
+  },
+  {
+   "id": 1961,
+   "slug": "%d7%a8%d7%92-1854-%d7%9e%d7%aa%d7%97%d7%9d-%d7%94%d7%a4%d7%95%d7%93%d7%99%d7%9d-11-13-%d7%a8%d7%a9%d7%99-21-23",
+   "url": "https://nad-lan.co.il/projects/%d7%a8%d7%92-1854-%d7%9e%d7%aa%d7%97%d7%9d-%d7%94%d7%a4%d7%95%d7%93%d7%99%d7%9d-11-13-%d7%a8%d7%a9%d7%99-21-23/",
+   "expect": 7548,
+   "current": 7548,
+   "modified_gmt": "2026-10-31T22:09:02",
+   "will_remove": true
+  },
+  {
+   "id": 1959,
+   "slug": "%d7%94%d7%a0%d7%a8%d7%a7%d7%99%d7%a1-%d7%94%d7%a8%d7%a7%d7%a4%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a0%d7%a8%d7%a7%d7%99%d7%a1-%d7%94%d7%a8%d7%a7%d7%a4%d7%aa/",
+   "expect": 7533,
+   "current": 7533,
+   "modified_gmt": "2026-10-31T22:23:52",
+   "will_remove": true
+  },
+  {
+   "id": 1945,
+   "slug": "%d7%9c%d7%95%d7%93-%d7%93%d7%a8%d7%95%d7%9d",
+   "url": "https://nad-lan.co.il/projects/%d7%9c%d7%95%d7%93-%d7%93%d7%a8%d7%95%d7%9d/",
+   "expect": 7561,
+   "current": 7561,
+   "modified_gmt": "2026-10-31T22:38:58",
+   "will_remove": true
+  },
+  {
+   "id": 1854,
+   "slug": "%d7%94%d7%a6%d7%93%d7%99%d7%a7-%d7%9e%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a6%d7%93%d7%99%d7%a7-%d7%9e%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d/",
+   "expect": 7538,
+   "current": 7538,
+   "modified_gmt": "2026-10-31T22:15:26",
+   "will_remove": true
+  },
+  {
+   "id": 1761,
+   "slug": "%d7%94%d7%a2%d7%99%d7%a8-%d7%94%d7%a2%d7%aa%d7%99%d7%a7%d7%94",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a2%d7%99%d7%a8-%d7%94%d7%a2%d7%aa%d7%99%d7%a7%d7%94/",
+   "expect": 7564,
+   "current": 7564,
+   "modified_gmt": "2026-10-31T22:38:40",
+   "will_remove": true
+  },
+  {
+   "id": 1747,
+   "slug": "%d7%94%d7%92%d7%a4%d7%9f-2",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%92%d7%a4%d7%9f-2/",
+   "expect": 7544,
+   "current": 7544,
+   "modified_gmt": "2026-10-31T22:16:23",
+   "will_remove": true
+  },
+  {
+   "id": 1415,
+   "slug": "%d7%94%d7%a9%d7%9b%d7%95%d7%a0%d7%95%d7%aa-%d7%94%d7%93%d7%a8%d7%95%d7%9e%d7%99%d7%95%d7%aa",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a9%d7%9b%d7%95%d7%a0%d7%95%d7%aa-%d7%94%d7%93%d7%a8%d7%95%d7%9e%d7%99%d7%95%d7%aa/",
+   "expect": 7560,
+   "current": 7560,
+   "modified_gmt": "2026-10-31T21:51:44",
+   "will_remove": true
+  }
+ ],
+ "runs": [
+  {
+   "at": "2026-11-14 22:21:31",
+   "mode": "apply",
+   "result": {
+    "rows": [
+     {
+      "id": 1232,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1071,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5592,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5591,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5590,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5589,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5588,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5587,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5586,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5585,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5584,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 5583,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3556,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3552,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3554,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3551,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3549,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3547,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3545,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3543,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3541,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3538,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3528,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3462,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3429,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3328,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3322,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3195,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3180,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3146,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3148,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3104,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3088,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 3083,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2620,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2590,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2580,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2472,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2429,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2423,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 2415,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1974,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1961,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1959,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1945,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1854,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1761,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1747,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     },
+     {
+      "id": 1415,
+      "done": true,
+      "now": 0,
+      "modified_same": true
+     }
+    ],
+    "public": "1",
+    "cache_ver": 23
+   }
+  }
+ ]
+}
