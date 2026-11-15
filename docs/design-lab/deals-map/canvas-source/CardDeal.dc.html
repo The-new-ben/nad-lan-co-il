@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>תווית מבצע על כרטיס וכפתור במבצע</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 920px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+  <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #22313B">בעמוד הפרויקטים: כפתור אדום "במבצע" בראש שורת הסינון, עם מספר המבצעים, שמוביל למפת המבצעים. כרטיס של פרויקט שיש לו מבצע על המפה מקבל מדבקה אדומה עם תמצית התנאים.</p>
+  <nav style="display: flex; gap: 8px; overflow: hidden; margin: 0 -16px; padding: 0 16px">
+    <a href="#" style="flex: 0 0 auto; display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 22px; background: #C8102E; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none"><span style="position: relative; width: 8px; height: 8px"><span style="position: absolute; inset: 0; border-radius: 50%; background: #FFFFFF"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: #FFFFFF; animation: ping 1.8s ease-out infinite"></span></span>במבצע · 17</a>
+    <span style="flex: 0 0 auto; display: flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #C9D3DA; background: #FFFFFF; font-size: 15px">תל אביב יפו · 111</span>
+    <span style="flex: 0 0 auto; display: flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #C9D3DA; background: #FFFFFF; font-size: 15px">בשיווק</span>
+  </nav>
+  <article style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; overflow: hidden">
+    <div style="position: relative; aspect-ratio: 8 / 5; background: linear-gradient(160deg, #C9D6DE, #8FA3B0)">
+      <span style="position: absolute; top: 10px; right: 10px; display: flex; align-items: stretch; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(200,16,46,.35)"><b style="background: #C8102E; color: #FFFFFF; font-size: 13px; padding: 5px 9px">במבצע</b><span style="background: #FFFFFF; color: #A10D25; font-size: 12px; font-weight: 600; padding: 5px 9px">מיליון ₪ ומפתח</span></span>
+    </div>
+    <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px">
+      <h3 style="margin: 0; font-size: 17px">H Infinity, מתחם סומייל</h3>
+      <span style="font-size: 13px; color: #4A5863">תל אביב יפו · קבוצת חג׳ג׳</span>
+      <span style="font-size: 12px; color: #4A5863">פורסם אוגוסט 2026, לפי פרסום. פרטים במפת המבצעים</span>
+    </div>
+  </article>
+  <p style="margin: 0; font-size: 13px; line-height: 1.55; color: #22313B">מול Zillow, שמראה על כרטיס "Price cut" עם סכום (מהידע שלי, לא נבדק היום): אצלנו המדבקה אומרת מה המבצע עצמו, והכרטיס מוביל לפרטים, למקור ולתאריך.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":920}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

@@ -339,7 +339,7 @@ if ( ! function_exists( 'nadlan_dm_render_en' ) ) {
 		<a class="nldm-btn" href="<?php echo esc_url( $waq( 'Hi, I would like to talk to a mortgage advisor about buying a new apartment in Israel' ) ); ?>" target="_blank" rel="noopener">Free mortgage advice</a>
 	</div>
 	<div class="nldm-cash">
-		<div class="nldm-cash-top"><label for="nldm-cash">Cash in hand today?</label><output id="nldm-cash-out" for="nldm-cash">₪600K</output></div>
+		<div class="nldm-cash-top"><label for="nldm-cash">Cash in hand today?</label><output id="nldm-cash-out" for="nldm-cash">₪600K<?php echo $fx ? ' (≈ $' . (int) round( 600000 / $fx[0] / 1000 ) . 'K)' : ''; ?></output></div>
 		<input id="nldm-cash" type="range" min="0" max="1500000" step="10000" value="600000">
 		<div class="nldm-legend" aria-live="polite"><span class="nldm-think" hidden><i></i><i></i><i></i> working</span><span class="nldm-lg is-fit">Fits you: <b data-n="fit">0</b></span><span class="nldm-lg is-no">Needs more: <b data-n="no">0</b></span><span class="nldm-lg is-unk">Ask for price: <b data-n="unk">0</b></span></div>
 	</div>

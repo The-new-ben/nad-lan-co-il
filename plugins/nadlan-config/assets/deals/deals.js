@@ -267,14 +267,16 @@
 			var box = document.getElementById('nldm-map'); box.innerHTML = '';
 			map = new maplibregl.Map({ container: box, style: D.style, center: [34.82, 32.07], zoom: 10.4, pitch: 52, bearing: -14,
 				attributionControl: { compact: true }, cooperativeGestures: window.innerWidth < 768, maxPitch: 70 });
+			/* the tags do not wait for the map tiles: a tile server that fails (seen once, a CORS error) must not hide the deals */
+			deals.forEach(function (d) {
+				markers[d.id] = new maplibregl.Marker({ element: tagEl(d), anchor: 'bottom' }).setLngLat([d.lng, d.lat]).addTo(map);
+			});
+			var center = deals.filter(function (d) { return d.lat > 31.85 && d.lat < 32.25 && d.lng < 35; });
+			var fitted = false, fitOnce = function () { if (!fitted) { fitted = true; fitTo(center.length ? center : deals); declutter(); } };
+			setTimeout(fitOnce, 2500);
 			map.on('load', function () {
 				addLayers();
-				deals.forEach(function (d) {
-					markers[d.id] = new maplibregl.Marker({ element: tagEl(d), anchor: 'bottom' }).setLngLat([d.lng, d.lat]).addTo(map);
-				});
-				var center = deals.filter(function (d) { return d.lat > 31.85 && d.lat < 32.25 && d.lng < 35; });
-				fitTo(center.length ? center : deals);
-				declutter();
+				fitOnce();
 				setTimeout(function () { var h = byId[D.hotId]; if (h && markers[h.id] && !RM) { var r = tagOf(h.id).getBoundingClientRect(); if (r.top > 0 && r.top < window.innerHeight) { burst(r.left + r.width / 2, r.top, h.color, true); } } }, 1500);
 			});
 			map.on('move', declutter);

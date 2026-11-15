@@ -190,3 +190,5 @@
 .nldm[dir=ltr] .nldm-list button{text-align:left!important}.nldm[dir=ltr] .nldm-li{text-align:left}
 .nldm[dir=ltr] .nldm-tag .hot{right:auto;left:-8px}
 .nldm[dir=ltr] .maplibregl-popup-content{direction:ltr;text-align:left}
+.nldm .nldm-mapbar{top:10px;bottom:auto;height:auto!important;justify-content:flex-start}
+.nldm .nldm-mapbar button{flex:0 0 auto!important;min-height:40px!important}
