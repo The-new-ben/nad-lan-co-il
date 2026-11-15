@@ -1,0 +1,1893 @@
+/*
+ * NadLan Premium Sitewide Theme Layer
+ * Theme-owned CSS only. No plugin code, no routes, no business logic.
+ */
+
+:root{
+	--nlx-ink:#0d0d0b;
+	--nlx-charcoal:#1a1915;
+	--nlx-warm:#6f675b;
+	--nlx-muted:#9b9285;
+	--nlx-line:#ded6c8;
+	--nlx-paper:#f6f1e8;
+	--nlx-paper-2:#eee7dc;
+	--nlx-card:#fffdf8;
+	--nlx-gold:#a77c35;
+	--nlx-gold-2:#d7bd82;
+	--nlx-teal:#092322;
+	--nlx-teal-2:#123b3a;
+	--nlx-radius:18px;
+	--nlx-radius-sm:12px;
+	--nlx-shadow:0 24px 70px rgba(13,13,11,.12);
+	--nlx-shadow-soft:0 14px 38px rgba(13,13,11,.08);
+	--nlx-hero:url("../premium-site/tel-aviv-skyline-blueprint.jpg");
+	--nlx-coast:url("../premium-site/tel-aviv-coast-skyline.jpg");
+	--nlx-model:url("../premium-site/architectural-model.jpg");
+	--nlx-interior:url("../premium-site/sea-view-interior.jpg");
+	--nlx-desk:url("../premium-site/blueprint-desk.jpg");
+}
+
+html{background:var(--nlx-paper)}
+*,
+*::before,
+*::after{box-sizing:border-box}
+body{
+	background:
+		radial-gradient(900px 420px at 80% 0%,rgba(215,189,130,.14),transparent 60%),
+		linear-gradient(180deg,#fbf8f1,var(--nlx-paper) 38%,#f8f4ec);
+	color:var(--nlx-ink);
+	letter-spacing:0!important;
+	overflow-x:clip;
+}
+body,
+button,
+input,
+select,
+textarea{
+	font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif!important;
+}
+h1,h2,h3,.wp-block-post-title{
+	letter-spacing:0!important;
+}
+a{text-underline-offset:.18em}
+img{max-width:100%;height:auto}
+
+/* Premium WordPress chrome */
+.wp-site-blocks{overflow-x:clip}
+header.wp-block-template-part{
+	position:sticky;
+	top:var(--wp-admin--admin-bar--height,0);
+	z-index:50;
+	background:rgba(251,248,241,.78)!important;
+	backdrop-filter:blur(18px) saturate(1.2);
+	border-bottom:1px solid rgba(13,13,11,.09);
+	box-shadow:0 10px 28px rgba(13,13,11,.045);
+}
+header.wp-block-template-part .wp-block-group,
+header.wp-block-template-part .nadlan-header{
+	background:transparent!important;
+	min-height:72px;
+}
+.wp-block-site-title a,
+header h1 a{
+	display:inline-flex!important;
+	align-items:center;
+	gap:12px;
+	text-decoration:none!important;
+	color:var(--nlx-ink)!important;
+	font-weight:900!important;
+}
+.wp-block-site-title a::before,
+header h1 a::before{
+	content:"";
+	width:38px;
+	height:38px;
+	border-radius:50%;
+	background:
+		linear-gradient(135deg,rgba(255,255,255,.28),transparent 42%),
+		linear-gradient(135deg,var(--nlx-ink),#3a3328 62%,var(--nlx-gold));
+	box-shadow:inset 0 0 0 1px rgba(215,189,130,.55),0 8px 20px rgba(13,13,11,.12);
+}
+.wp-block-site-title a::after,
+header h1 a::after{
+	content:"";
+	width:42px;
+	height:1px;
+	background:linear-gradient(90deg,var(--nlx-gold),transparent);
+	opacity:.75;
+}
+.wp-block-navigation a,
+.wp-block-navigation-item__content{
+	color:#2d2a24!important;
+	font-weight:700!important;
+	font-size:14px!important;
+	text-decoration:none!important;
+	border-radius:999px;
+	transition:background .18s,color .18s,transform .18s;
+}
+.wp-block-navigation a:hover,
+.wp-block-navigation-item__content:hover{
+	background:rgba(167,124,53,.1);
+	color:var(--nlx-ink)!important;
+	transform:translateY(-1px);
+}
+.wp-block-navigation__submenu-container{
+	border:1px solid rgba(13,13,11,.1)!important;
+	border-radius:14px!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+	padding:8px!important;
+	background:rgba(255,253,248,.96)!important;
+	backdrop-filter:blur(16px);
+}
+.wp-block-navigation__submenu-icon{
+	min-width:36px!important;
+	min-height:36px!important;
+	display:inline-grid!important;
+	place-items:center!important;
+	border-radius:50%!important;
+}
+
+/* Footer: kill the cheap light afterthought */
+footer.wp-block-template-part,
+.wp-block-template-part:has(footer){
+	background:linear-gradient(135deg,#11100d,#211d17 72%,#0b1717)!important;
+	color:#eee5d6!important;
+	border-top:1px solid rgba(215,189,130,.26);
+}
+footer.wp-block-template-part *,
+footer.wp-block-template-part a{
+	color:#eee5d6!important;
+}
+footer.wp-block-template-part a{
+	text-decoration:none!important;
+	opacity:.82;
+}
+footer.wp-block-template-part a:hover{opacity:1;color:#f5d99b!important}
+
+/* Explicit NadLan chrome. Keep this scoped so template parts do not depend on a saved WP menu. */
+.nl-site-header{
+	width:min(1440px,calc(100vw - 28px));
+	min-height:74px;
+	margin-inline:auto;
+	display:grid;
+	grid-template-columns:auto minmax(0,1fr) auto;
+	align-items:center;
+	gap:18px;
+	padding:12px 0;
+	direction:rtl;
+}
+.nl-site-brand{
+	display:inline-flex;
+	align-items:center;
+	gap:11px;
+	min-height:50px;
+	color:var(--nlx-ink)!important;
+	text-decoration:none!important;
+	white-space:nowrap;
+}
+.nl-site-brand strong{
+	display:block;
+	font-size:20px;
+	font-weight:900;
+	line-height:1.05;
+	color:inherit!important;
+}
+.nl-site-brand small{
+	display:block;
+	margin-top:3px;
+	font-size:12px;
+	font-weight:800;
+	color:var(--nlx-warm)!important;
+}
+.nl-site-mark{
+	width:42px;
+	height:42px;
+	display:grid;
+	place-items:center;
+	border-radius:50%;
+	background:
+		linear-gradient(135deg,rgba(255,255,255,.3),transparent 42%),
+		linear-gradient(135deg,var(--nlx-ink),#3a3328 62%,var(--nlx-gold));
+	color:#f8e7b5;
+	font-family:"Frank Ruhl Libre",serif;
+	font-size:20px;
+	font-weight:900;
+	box-shadow:inset 0 0 0 1px rgba(215,189,130,.58),0 10px 24px rgba(13,13,11,.12);
+}
+.nl-site-nav,
+.nl-site-actions,
+.nl-site-lang{
+	display:flex;
+	align-items:center;
+	flex-wrap:wrap;
+	gap:6px;
+}
+.nl-site-nav{
+	justify-content:center;
+}
+.nl-site-nav a,
+.nl-site-link,
+.nl-site-cta,
+.nl-site-lang a{
+	min-height:42px;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	border-radius:999px;
+	padding:0 13px;
+	color:#2d2a24!important;
+	text-decoration:none!important;
+	font-size:14px;
+	font-weight:900;
+	transition:background .18s,color .18s,transform .18s,border-color .18s;
+}
+.nl-site-nav a:hover,
+.nl-site-link:hover,
+.nl-site-lang a:hover{
+	background:rgba(167,124,53,.12);
+	color:var(--nlx-ink)!important;
+	transform:translateY(-1px);
+}
+.nl-site-cta{
+	border:1px solid rgba(13,13,11,.16);
+	background:var(--nlx-ink);
+	color:#f7df9f!important;
+	box-shadow:0 12px 28px rgba(13,13,11,.12);
+}
+.nl-site-cta:hover{
+	background:#2c251c;
+	color:#fff0bd!important;
+	transform:translateY(-1px);
+}
+.nl-site-lang{
+	gap:4px;
+	padding:4px;
+	border:1px solid rgba(13,13,11,.1);
+	border-radius:999px;
+	background:rgba(255,253,248,.72);
+}
+.nl-site-lang a{
+	min-width:34px;
+	min-height:34px;
+	padding:0 8px;
+	font-size:12px;
+	color:var(--nlx-warm)!important;
+}
+.nl-site-lang a[aria-current="page"]{
+	background:var(--nlx-ink);
+	color:#f7df9f!important;
+}
+.nl-site-footer{
+	width:min(1440px,calc(100vw - 28px));
+	margin-inline:auto;
+	padding:46px clamp(18px,3vw,34px) 26px;
+	border:1px solid rgba(215,189,130,.24);
+	border-radius:28px 28px 0 0;
+	background:linear-gradient(135deg,#11100d,#211d17 72%,#0b1717);
+	box-shadow:0 -18px 46px rgba(13,13,11,.12);
+	direction:rtl;
+}
+.nl-site-footer-grid{
+	display:grid;
+	grid-template-columns:minmax(260px,1.25fr) repeat(4,minmax(150px,1fr));
+	gap:28px;
+	align-items:start;
+}
+.nl-site-footer-brand p{
+	max-width:420px;
+	margin:16px 0 0;
+	color:rgba(238,229,214,.76)!important;
+	font-size:14px;
+	line-height:1.78;
+}
+.nl-site-brand.is-footer{
+	color:#fff4d3!important;
+}
+.nl-site-brand.is-footer small{
+	color:#d8c9a9!important;
+}
+.nl-site-footer nav{
+	display:grid;
+	gap:10px;
+}
+.nl-site-footer nav strong{
+	color:#f1d995!important;
+	font-size:13px;
+	font-weight:900;
+}
+.nl-site-footer nav a{
+	min-height:36px;
+	display:inline-flex;
+	align-items:center;
+	color:#eee5d6!important;
+	text-decoration:none!important;
+	font-size:14px;
+	font-weight:700;
+	opacity:.82;
+}
+.nl-site-footer nav a:hover{
+	color:#f5d99b!important;
+	opacity:1;
+}
+.nl-site-footer-bottom{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:16px;
+	margin-top:38px;
+	padding-top:18px;
+	border-top:1px solid rgba(215,189,130,.22);
+	color:rgba(238,229,214,.68)!important;
+	font-size:13px;
+}
+@media(max-width:1120px){
+	.nl-site-header{
+		grid-template-columns:1fr;
+		justify-items:start;
+	}
+	.nl-site-nav{
+		justify-content:start;
+	}
+	.nl-site-actions{
+		width:100%;
+		justify-content:space-between;
+	}
+	.nl-site-footer-grid{
+		grid-template-columns:repeat(2,minmax(0,1fr));
+	}
+	.nl-site-footer-brand{
+		grid-column:1 / -1;
+	}
+}
+@media(max-width:680px){
+	.nl-site-header{
+		width:min(100% - 20px,1440px);
+		gap:10px;
+		padding:10px 0;
+	}
+	.nl-site-brand small{
+		font-size:11px;
+	}
+	.nl-site-nav{
+		width:100%;
+		display:flex;
+		flex-wrap:nowrap;
+		justify-content:flex-start;
+		overflow-x:auto;
+		scrollbar-width:none;
+		gap:6px;
+		padding-bottom:2px;
+	}
+	.nl-site-nav::-webkit-scrollbar{
+		display:none;
+	}
+	.nl-site-nav a,
+	.nl-site-link,
+	.nl-site-cta{
+		flex:0 0 auto;
+		min-height:38px;
+		padding:0 11px;
+		font-size:13px;
+	}
+	.nl-site-actions{
+		display:flex;
+		flex-wrap:wrap;
+		align-items:center;
+		gap:8px;
+	}
+	.nl-site-lang{
+		justify-content:space-between;
+		flex:1 1 190px;
+	}
+	.nl-site-lang a{
+		flex:1;
+		min-height:38px;
+	}
+	.nl-site-footer{
+		width:min(100% - 24px,1440px);
+		padding-top:34px;
+	}
+	.nl-site-footer-grid{
+		grid-template-columns:1fr;
+		gap:22px;
+	}
+	.nl-site-footer-bottom{
+		align-items:flex-start;
+		flex-direction:column;
+	}
+}
+
+/* CMS-driven premium homepage */
+body.home main,
+body.front-page main{margin-top:0!important}
+body.home .wp-block-post-title{display:none!important}
+.nlux-home{
+	direction:rtl;
+	width:min(1440px,100%);
+	max-width:min(1440px,100%)!important; /* escape the theme's 680px is-layout-constrained cap */
+	margin-inline:auto!important;
+	padding:0 18px 70px;
+	box-sizing:border-box;
+}
+/* Front page: ensure the post-content wrapper is full width so the home block can fill it */
+body.home .entry-content.wp-block-post-content,
+body.home main .wp-block-post-content,
+body.home .wp-block-post-content > .nlux-home,
+body.home .entry-content > .nlux-home{
+	max-width:none!important;
+	width:100%!important;
+	margin-inline:auto!important;
+}
+.nlux-hero{
+	position:relative;
+	isolation:isolate;
+	min-height:min(760px,calc(100vh - 82px));
+	display:grid;
+	grid-template-columns:minmax(0,1fr) minmax(300px,420px);
+	align-items:end;
+	gap:28px;
+	margin:18px auto 34px;
+	padding:clamp(28px,5vw,72px);
+	border-radius:32px;
+	overflow:hidden;
+	color:#fff;
+	background:
+		linear-gradient(90deg,rgba(7,18,18,.88),rgba(7,18,18,.62) 46%,rgba(7,18,18,.12)),
+		var(--nlx-hero) center/cover no-repeat;
+	box-shadow:0 38px 90px rgba(13,13,11,.24);
+}
+.nlux-hero::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	background:
+		linear-gradient(180deg,rgba(255,255,255,.09),transparent 22%),
+		radial-gradient(600px 260px at 22% 12%,rgba(215,189,130,.28),transparent 60%);
+	z-index:-1;
+}
+.nlux-hero::after{
+	content:"";
+	position:absolute;
+	inset:auto 42px 42px auto;
+	width:min(40vw,520px);
+	aspect-ratio:1.35;
+	border:1px solid rgba(255,255,255,.22);
+	border-radius:30px;
+	background:rgba(255,255,255,.055);
+	backdrop-filter:blur(7px);
+	z-index:-1;
+}
+.nlux-hero-copy{max-width:760px}
+.nlux-kicker{
+	margin:0 0 12px;
+	color:#f2d89b;
+	font-size:12px;
+	font-weight:900;
+	letter-spacing:.16em!important;
+	text-transform:uppercase;
+}
+.nlux-hero h1{
+	max-width:760px;
+	margin:0;
+	color:#fff;
+	font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif!important;
+	font-size:clamp(42px,5.2vw,76px);
+	font-weight:800;
+	line-height:1.08;
+	text-wrap:balance;
+}
+.nlux-intro{
+	max-width:690px;
+	margin:24px 0 0;
+	color:rgba(255,255,255,.84);
+	font-size:clamp(17px,1.5vw,22px);
+	line-height:1.72;
+}
+.nlux-search{
+	display:grid;
+	grid-template-columns:minmax(220px,1fr) minmax(130px,.35fr) auto;
+	gap:8px;
+	max-width:820px;
+	margin-top:30px;
+	padding:8px;
+	border:1px solid rgba(255,255,255,.22);
+	border-radius:18px;
+	background:rgba(255,255,255,.92);
+	box-shadow:0 22px 60px rgba(0,0,0,.22);
+}
+.nlux-search input{
+	min-height:54px;
+	border:0!important;
+	background:#fff!important;
+	border-radius:12px!important;
+	padding:0 16px!important;
+	color:var(--nlx-ink)!important;
+	font-size:16px!important;
+}
+.nlux-search button,
+.nlux-actions a,
+.nlux-section-head a,
+.nlux-final-cta a{
+	min-height:54px;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	border:0;
+	border-radius:12px;
+	padding:0 24px;
+	background:linear-gradient(135deg,var(--nlx-ink),#332c22);
+	color:#fff!important;
+	text-decoration:none!important;
+	font-weight:900;
+	box-shadow:0 14px 34px rgba(13,13,11,.18);
+	transition:transform .18s,filter .18s,box-shadow .18s;
+}
+.nlux-search button:hover,
+.nlux-actions a:hover,
+.nlux-section-head a:hover,
+.nlux-final-cta a:hover{
+	transform:translateY(-2px);
+	filter:brightness(1.08);
+	box-shadow:0 18px 44px rgba(13,13,11,.25);
+}
+.nlux-actions{
+	display:flex;
+	flex-wrap:wrap;
+	gap:10px;
+	margin-top:18px;
+}
+.nlux-actions a:nth-child(2){
+	background:rgba(255,255,255,.14);
+	border:1px solid rgba(255,255,255,.26);
+	backdrop-filter:blur(10px);
+}
+.nlux-actions a:nth-child(3){
+	background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));
+	color:#15120e!important;
+}
+.nlux-hero-panel{
+	align-self:end;
+	display:grid;
+	gap:12px;
+	padding:18px;
+	border:1px solid rgba(255,255,255,.22);
+	border-radius:22px;
+	background:rgba(255,255,255,.12);
+	backdrop-filter:blur(12px);
+}
+.nlux-hero-panel div{
+	display:flex;
+	align-items:baseline;
+	justify-content:space-between;
+	gap:18px;
+	padding:14px 16px;
+	border-radius:15px;
+	background:rgba(255,255,255,.1);
+}
+.nlux-hero-panel b{
+	color:#f3d99d;
+	font-size:34px;
+	font-family:"Frank Ruhl Libre",serif;
+	line-height:1;
+}
+.nlux-hero-panel span{color:rgba(255,255,255,.78);font-weight:700}
+
+.nlux-paths,
+.nlux-project-grid,
+.nlux-tool-grid,
+.nlux-pro-grid{
+	display:grid;
+	gap:18px;
+}
+.nlux-paths{
+	grid-template-columns:repeat(4,minmax(0,1fr));
+	margin:34px 0 72px;
+}
+.nlux-path,
+.nlux-pro-card,
+.nlux-tool-grid a{
+	position:relative;
+	display:block;
+	min-height:210px;
+	padding:26px;
+	border:1px solid rgba(13,13,11,.1);
+	border-radius:22px;
+	background:linear-gradient(180deg,#fffdf8,#f7f1e7);
+	box-shadow:var(--nlx-shadow-soft);
+	color:var(--nlx-ink)!important;
+	text-decoration:none!important;
+	overflow:hidden;
+	transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.nlux-path::after,
+.nlux-pro-card::after,
+.nlux-tool-grid a::after{
+	content:"";
+	position:absolute;
+	inset:auto -30% -45% auto;
+	width:220px;
+	height:220px;
+	border-radius:50%;
+	background:radial-gradient(circle,rgba(167,124,53,.18),transparent 60%);
+}
+.nlux-path:hover,
+.nlux-pro-card:hover,
+.nlux-tool-grid a:hover,
+.nlux-project-card:hover{
+	transform:translateY(-5px);
+	border-color:rgba(167,124,53,.42);
+	box-shadow:0 24px 60px rgba(13,13,11,.13);
+}
+.nlux-path span{
+	color:var(--nlx-gold);
+	font-family:"Frank Ruhl Libre",serif;
+	font-size:34px;
+	font-style:italic;
+}
+.nlux-path h2,
+.nlux-section-head h2,
+.nlux-final-cta h2{
+	margin:8px 0 10px;
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:clamp(28px,3.5vw,52px);
+	line-height:1.08;
+	color:var(--nlx-ink);
+}
+.nlux-path h2{font-size:25px}
+.nlux-path p,
+.nlux-project-card p,
+.nlux-pro-card p,
+.nlux-final-cta p{
+	margin:0;
+	color:var(--nlx-warm);
+	line-height:1.7;
+}
+.nlux-showcase,
+.nlux-tools,
+.nlux-pros,
+.nlux-final-cta{
+	margin:72px 0;
+}
+.nlux-section-head{
+	display:flex;
+	align-items:end;
+	justify-content:space-between;
+	gap:20px;
+	margin-bottom:22px;
+}
+.nlux-section-head h2{margin:0}
+.nlux-section-head a{
+	background:#fff;
+	color:var(--nlx-ink)!important;
+	border:1px solid rgba(13,13,11,.12);
+	box-shadow:none;
+	white-space:nowrap;
+}
+.nlux-project-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nlux-project-card{
+	position:relative;
+	display:grid;
+	grid-template-rows:auto 1fr;
+	min-height:420px;
+	border:1px solid rgba(13,13,11,.1);
+	border-radius:24px;
+	overflow:hidden;
+	background:#fff;
+	color:inherit!important;
+	text-decoration:none!important;
+	box-shadow:var(--nlx-shadow-soft);
+	transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.nlux-project-card img{
+	width:100%;
+	aspect-ratio:16/11;
+	object-fit:cover;
+	display:block;
+	background:var(--nlx-teal);
+}
+.nlux-project-card div{padding:22px}
+.nlux-project-card h3,
+.nlux-pro-card h3{
+	margin:0 0 8px;
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:24px;
+	line-height:1.18;
+	color:var(--nlx-ink);
+}
+.nlux-card-chip{
+	position:absolute;
+	top:14px;
+	right:14px;
+	padding:7px 12px;
+	border-radius:999px;
+	background:rgba(255,253,248,.86);
+	backdrop-filter:blur(10px);
+	color:var(--nlx-ink);
+	font-weight:900;
+	font-size:12px;
+	box-shadow:0 8px 22px rgba(13,13,11,.14);
+}
+.nlux-data-band{
+	display:grid;
+	grid-template-columns:repeat(3,1fr);
+	gap:1px;
+	margin:72px auto;
+	overflow:hidden;
+	border-radius:24px;
+	background:rgba(215,189,130,.35);
+	box-shadow:var(--nlx-shadow);
+}
+.nlux-data-band div{
+	padding:30px;
+	background:
+		linear-gradient(135deg,rgba(255,255,255,.06),transparent),
+		linear-gradient(135deg,var(--nlx-ink),#272119);
+	color:#fff;
+}
+.nlux-data-band strong{
+	display:block;
+	font-family:"Frank Ruhl Libre",serif;
+	font-size:32px;
+	color:#f3d99d;
+}
+.nlux-data-band span{color:rgba(255,255,255,.74)}
+.nlux-tool-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.nlux-tool-grid a{
+	min-height:118px;
+	display:flex;
+	align-items:end;
+	font-weight:900;
+	font-size:17px;
+}
+.nlux-pro-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.nlux-pro-card{
+	min-height:230px;
+	padding-top:72px;
+}
+.nlux-pro-card span{
+	position:absolute;
+	top:22px;
+	right:22px;
+	width:44px;
+	height:44px;
+	display:grid;
+	place-items:center;
+	border-radius:50%;
+	background:linear-gradient(135deg,var(--nlx-ink),#31291f);
+	color:#f3d99d;
+	font-weight:900;
+}
+.nlux-final-cta{
+	display:grid;
+	grid-template-columns:minmax(0,1fr) auto;
+	align-items:center;
+	gap:30px;
+	padding:44px;
+	border-radius:28px;
+	background:
+		linear-gradient(90deg,rgba(13,13,11,.86),rgba(13,13,11,.58)),
+		var(--nlx-desk) center/cover no-repeat;
+	color:#fff;
+	box-shadow:var(--nlx-shadow);
+}
+.nlux-final-cta h2,
+.nlux-final-cta p{color:#fff}
+.nlux-final-cta .nlux-actions a:first-child{
+	background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));
+	color:#15120e!important;
+}
+
+/* Generic article/page surfaces */
+.wp-block-post-content,
+.entry-content{
+	color:var(--nlx-ink);
+}
+body:not(.home) .wp-block-post-content > *{
+	max-width:min(920px,calc(100vw - 32px));
+}
+body:not(.home) .wp-block-post-title{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:clamp(38px,6vw,74px)!important;
+	line-height:1.02!important;
+	max-width:980px;
+	margin-inline:auto!important;
+	text-align:center;
+}
+.wp-block-post-content h2,
+.entry-content h2{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:clamp(28px,4vw,48px);
+	line-height:1.1;
+	margin-top:2em;
+	color:var(--nlx-ink);
+}
+.wp-block-post-content p,
+.entry-content p,
+.wp-block-post-content li,
+.entry-content li{
+	font-size:18px;
+	line-height:1.88;
+}
+.wp-block-table,
+.wp-block-post-content table{
+	border-radius:18px;
+	overflow:hidden;
+	box-shadow:var(--nlx-shadow-soft);
+	border:1px solid var(--nlx-line);
+	background:#fff;
+}
+.wp-block-table table,
+.wp-block-post-content table{margin:0!important}
+.wp-block-table th,
+.wp-block-post-content th{
+	background:#f0e6d5!important;
+	color:var(--nlx-ink)!important;
+}
+.wp-block-table td,
+.wp-block-table th,
+.wp-block-post-content td,
+.wp-block-post-content th{
+	border-color:#ebe2d5!important;
+	padding:15px 18px!important;
+}
+.wp-block-button__link,
+.wp-element-button,
+button,
+input[type=submit]{
+	border-radius:12px!important;
+	font-weight:900!important;
+	letter-spacing:0!important;
+}
+input,
+select,
+textarea{
+	border-radius:12px!important;
+	border:1px solid rgba(13,13,11,.14)!important;
+	background:#fffdf8!important;
+}
+
+/* Existing homepage/plugin blocks, if they render anywhere */
+.nadlan-home-pillars,
+.nlhome,
+.nhp-grid,
+.nlhome-guides,
+.nlhome-pros,
+.nlhome-cities{
+	width:min(1220px,calc(100vw - 32px))!important;
+	margin-inline:auto!important;
+}
+.nhp-card,
+.nlhome-guide,
+.nlhome-pro,
+.nlhome-city,
+.nadlan-card{
+	border-radius:20px!important;
+	border-color:rgba(13,13,11,.1)!important;
+	background:linear-gradient(180deg,#fffdf8,#f7f1e7)!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+}
+
+/* Catalogs and listing pages, without touching the plugin */
+.nldir-wrap{
+	background:transparent!important;
+	padding-top:18px!important;
+	max-width:100vw!important;
+	overflow-x:clip!important;
+}
+.nldir-body{
+	width:min(1320px,calc(100vw - 28px))!important;
+	max-width:calc(100vw - 28px)!important;
+	margin-left:auto!important;
+	margin-right:auto!important;
+	display:grid!important;
+	grid-template-columns:minmax(190px,240px) minmax(0,1fr)!important;
+	gap:24px!important;
+	align-items:start!important;
+	overflow-x:clip!important;
+}
+.nldir-hero{
+	margin:16px auto 34px!important;
+	width:min(1320px,calc(100vw - 28px));
+	border-radius:32px!important;
+	min-height:410px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	background:
+		linear-gradient(90deg,rgba(7,18,18,.88),rgba(7,18,18,.42)),
+		var(--nlx-coast) center/cover no-repeat!important;
+	box-shadow:var(--nlx-shadow);
+}
+.nldir-hero h1{
+	font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif!important;
+	font-weight:800!important;
+	font-size:clamp(38px,4.8vw,64px)!important;
+	line-height:1.08!important;
+	max-width:820px;
+}
+.nldir-lead{
+	max-width:720px;
+	font-size:18px!important;
+	line-height:1.7!important;
+}
+.nldir-search{
+	width:min(780px,calc(100vw - 44px))!important;
+	border-radius:18px!important;
+	background:rgba(255,253,248,.94)!important;
+	border:1px solid rgba(255,255,255,.5)!important;
+	box-shadow:0 22px 60px rgba(0,0,0,.22)!important;
+}
+.nldir-search input{
+	min-height:52px!important;
+	background:#fff!important;
+}
+.nldir-search button{
+	min-height:52px!important;
+	border-radius:12px!important;
+	background:linear-gradient(135deg,var(--nlx-ink),#30271e)!important;
+}
+.nldir-pill{
+	border-radius:999px!important;
+	backdrop-filter:blur(10px);
+	box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.nldir-main{
+	width:100%!important;
+	max-width:100%!important;
+	margin:0!important;
+	gap:20px!important;
+	overflow-x:clip!important;
+}
+.nldir-side,
+.nldir-bar,
+.nldir-empty{
+	border-radius:20px!important;
+	border:1px solid rgba(13,13,11,.1)!important;
+	background:rgba(255,253,248,.86)!important;
+	backdrop-filter:blur(12px);
+	box-shadow:var(--nlx-shadow-soft)!important;
+}
+.nldir-results{
+	gap:20px!important;
+	grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important;
+	max-width:100%!important;
+}
+.nldc{
+	min-width:0!important;
+	border-radius:22px!important;
+	background:linear-gradient(180deg,#fffdf8,#f8f1e6)!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+}
+.nldc.has-media{
+	box-shadow:0 22px 54px rgba(13,13,11,.14)!important;
+}
+.nldc-media{
+	background:
+		linear-gradient(135deg,rgba(7,18,18,.16),rgba(167,124,53,.1)),
+		var(--nlx-model) center/cover no-repeat!important;
+}
+.nldc-name{
+	font-size:20px!important;
+}
+.nldc-av,
+.nlpf-av{
+	box-shadow:inset 0 0 0 1px rgba(167,124,53,.3),0 12px 24px rgba(13,13,11,.08)!important;
+}
+
+/* Single project/professional shell */
+.nlpf{
+	width:min(1120px,calc(100vw - 28px))!important;
+	margin:24px auto 44px!important;
+	border-radius:28px!important;
+	overflow:hidden;
+	background:#fffdf8!important;
+	border:1px solid rgba(13,13,11,.1)!important;
+	box-shadow:var(--nlx-shadow)!important;
+}
+.nlpf-banner{
+	min-height:240px!important;
+	background:
+		linear-gradient(90deg,rgba(7,18,18,.88),rgba(7,18,18,.34)),
+		var(--nlx-coast) center/cover no-repeat!important;
+}
+.nlpf-head{
+	padding:0 clamp(22px,4vw,46px) 34px!important;
+}
+.nlpf-name{
+	font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif!important;
+	font-weight:800!important;
+	font-size:clamp(32px,5vw,58px)!important;
+	line-height:1.05!important;
+}
+.nlcard,
+.nlrev,
+.nlpe,
+.nlcp{
+	width:min(1120px,calc(100vw - 28px))!important;
+	margin-inline:auto!important;
+	border-radius:22px!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+	background:#fffdf8!important;
+	border:1px solid rgba(13,13,11,.1)!important;
+}
+
+/* Internal customer systems */
+.nlst,
+.nlac{
+	width:min(1280px,calc(100vw - 28px))!important;
+	max-width:1280px!important;
+}
+.nlst-bar,
+.nlac-hero{
+	position:relative;
+	overflow:hidden;
+	border-radius:28px!important;
+	padding:clamp(28px,4vw,48px)!important;
+	border:1px solid rgba(215,189,130,.25)!important;
+	background:
+		linear-gradient(90deg,rgba(13,13,11,.9),rgba(13,13,11,.62)),
+		var(--nlx-desk) center/cover no-repeat!important;
+	color:#fff!important;
+	box-shadow:var(--nlx-shadow)!important;
+}
+.nlst-bar h1,
+.nlac h1{
+	color:#fff!important;
+	font-size:clamp(30px,5vw,58px)!important;
+}
+.nlac-hero p,
+.nlst-bar *{color:rgba(255,255,255,.82)!important}
+.nlst-section,
+.nlac-card,
+.nlac-metric,
+.nlac-product,
+.nlac-order,
+.nlac-step,
+.nlst-dropzone{
+	border-radius:22px!important;
+	border:1px solid rgba(13,13,11,.1)!important;
+	background:linear-gradient(180deg,#fffdf8,#f7f1e7)!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+}
+.nlst-dropzone{
+	background:
+		linear-gradient(180deg,rgba(255,253,248,.82),rgba(247,241,231,.92)),
+		var(--nlx-model) center/cover no-repeat!important;
+}
+.nlst-save,
+.nlst-pick,
+.nlst-ai,
+.nlac-btn,
+.nlpf-call,
+.nlpf-quote,
+.nlcp-btn,
+.nlfab-btn{
+	border-radius:12px!important;
+	min-height:48px!important;
+	font-weight:900!important;
+}
+
+/* Woo / packages */
+.woocommerce ul.products li.product,
+.wc-block-grid__product,
+.wp-block-woocommerce-product-template li{
+	border-radius:22px!important;
+	background:#fffdf8!important;
+	box-shadow:var(--nlx-shadow-soft)!important;
+	border:1px solid rgba(13,13,11,.1)!important;
+	overflow:hidden;
+}
+.woocommerce div.product,
+.woocommerce-cart .entry-content,
+.woocommerce-checkout .entry-content{
+	background:#fffdf8;
+	border-radius:24px;
+	box-shadow:var(--nlx-shadow-soft);
+	border:1px solid rgba(13,13,11,.1);
+	padding:clamp(18px,4vw,42px);
+}
+
+/* Floating controls */
+#nlcta,
+.nlfab{
+	filter:drop-shadow(0 18px 38px rgba(13,13,11,.22));
+}
+
+@media (max-width:1100px){
+	.nlux-paths,
+	.nlux-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.nlux-tool-grid,
+	.nlux-pro-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+	.nlux-hero{grid-template-columns:1fr;min-height:auto}
+	.nlux-hero-panel{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+	.nlux-home{padding-inline:10px}
+	.nlux-hero{
+		margin-top:10px;
+		padding:28px 18px;
+		border-radius:22px;
+		background-position:center;
+	}
+	.nlux-hero h1{font-size:34px;overflow-wrap:anywhere}
+	.nlux-search{grid-template-columns:1fr}
+	.nlux-actions a,
+	.nlux-search button{width:100%}
+	.nlux-paths,
+	.nlux-project-grid,
+	.nlux-tool-grid,
+	.nlux-pro-grid,
+	.nlux-data-band,
+	.nlux-final-cta{grid-template-columns:1fr}
+	.nlux-section-head{display:block}
+	.nlux-section-head a{margin-top:14px;width:100%}
+	.nlux-hero-panel{grid-template-columns:1fr}
+	.nlux-project-card{min-height:auto}
+	.nldir-hero{border-radius:22px!important;min-height:360px}
+	.nldir-body{display:block!important;width:min(100%,calc(100vw - 20px))!important;max-width:calc(100vw - 20px)!important}
+	.nldir-main{display:block!important}
+	.nldir-side{margin-bottom:18px}
+	.wp-block-navigation a,
+	.wp-block-navigation-item__content{min-height:44px!important}
+}
+@media (prefers-reduced-motion:reduce){
+	*{scroll-behavior:auto!important;transition:none!important}
+	.nlux-path:hover,
+	.nlux-pro-card:hover,
+	.nlux-tool-grid a:hover,
+	.nlux-project-card:hover{transform:none!important}
+}
+
+/* ============================================================================
+ * Homepage polish: dedupe, full width, and refinement
+ * ========================================================================= */
+
+/* Remove the older homepage pillars when the premium homepage is active. */
+body.home .nadlan-home-pillars,
+body.home .nhp-grid,
+body.home section.nadlan-home-pillars{display:none!important}
+
+/* (2) Hard full-width guarantee for the premium home (defensive, beyond #51). */
+body.home .entry-content.wp-block-post-content,
+body.home main .wp-block-post-content,
+body.home .wp-block-group.alignfull > .wp-block-post-content{max-width:none!important}
+body.home .nlux-home{max-width:min(1460px,100%)!important;width:100%!important;margin-inline:auto!important}
+
+/* ============================================================================
+ * Editorial luxury homepage refinement
+ * ========================================================================= */
+
+/* HERO: refine type + spacing, keep big image */
+.nlux-hero{min-height:min(620px,82vh)!important;border-radius:28px!important;padding:clamp(30px,4.5vw,66px)!important}
+.nlux-hero h1{font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;font-weight:700!important;font-size:clamp(36px,4.4vw,60px)!important;line-height:1.12!important;letter-spacing:-.01em!important}
+.nlux-kicker{font-size:12.5px!important;letter-spacing:.22em!important;opacity:.95}
+.nlux-intro{font-size:clamp(16px,1.25vw,19px)!important;max-width:620px!important;color:rgba(255,255,255,.82)!important}
+.nlux-hero-panel{padding:14px!important;border-radius:18px!important}
+.nlux-hero-panel div{padding:12px 14px!important}
+.nlux-hero-panel b{font-size:28px!important}
+.nlux-hero-panel span{font-size:13px!important;font-weight:600!important}
+
+/* SECTION HEADS: editorial eyebrow + serif title, generous but not hollow */
+.nlux-showcase,.nlux-tools,.nlux-pros,.nlux-paths,.nlux-final-cta{margin:clamp(48px,6vw,84px) 0!important}
+.nlux-section-head{align-items:flex-end!important;border-bottom:1px solid var(--nlx-line);padding-bottom:16px;margin-bottom:26px!important}
+.nlux-section-head .nlux-kicker{color:var(--nlx-gold)!important}
+.nlux-section-head h2{font-family:"Frank Ruhl Libre",serif!important;font-weight:700!important;font-size:clamp(26px,2.6vw,40px)!important;line-height:1.12!important}
+.nlux-section-head a{min-height:46px!important;font-size:14px!important;border-radius:999px!important;padding:0 22px!important}
+
+/* PATHS (01–04): magazine index, content-height, NOT hollow boxes */
+.nlux-paths{grid-template-columns:repeat(4,1fr)!important;gap:0!important;border-top:1px solid var(--nlx-line);margin-top:26px!important}
+.nlux-path{
+	min-height:0!important;border:0!important;border-inline-start:1px solid var(--nlx-line)!important;
+	border-radius:0!important;background:transparent!important;box-shadow:none!important;
+	padding:26px 24px 30px!important;
+}
+.nlux-paths .nlux-path:first-child{border-inline-start:0!important}
+.nlux-path::after{display:none!important}
+.nlux-path:hover{transform:none!important;background:linear-gradient(180deg,rgba(167,124,53,.06),transparent)!important;border-color:var(--nlx-line)!important;box-shadow:none!important}
+.nlux-path span{display:block;font-size:15px!important;font-style:normal!important;font-weight:800!important;letter-spacing:.06em;color:var(--nlx-gold)!important;font-family:Heebo,sans-serif!important;margin-bottom:14px}
+.nlux-path h2{font-size:20px!important;margin:0 0 8px!important;font-weight:700!important}
+.nlux-path p{font-size:14px!important;line-height:1.65!important}
+.nlux-path::before{content:"←";position:absolute;inset-block-end:24px;inset-inline-start:24px;color:var(--nlx-gold);font-weight:800;opacity:0;transition:opacity .2s,transform .2s}
+.nlux-path:hover::before{opacity:1;transform:translateX(-4px)}
+
+/* PROJECT CARDS: image-forward, consistent, luxury listing feel */
+.nlux-project-grid{grid-template-columns:repeat(4,1fr)!important;gap:16px!important}
+.nlux-project-card{min-height:0!important;border-radius:18px!important;grid-template-rows:auto!important;display:flex!important;flex-direction:column!important}
+.nlux-project-card img{aspect-ratio:4/3!important;height:auto!important}
+.nlux-project-card > div{padding:16px 18px 18px!important;display:flex;flex-direction:column;gap:4px}
+.nlux-project-card h3{font-family:"Frank Ruhl Libre",serif!important;font-size:17px!important;font-weight:700!important;line-height:1.25!important;margin:0!important;color:var(--nlx-ink)!important;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.nlux-project-card p{font-size:13px!important;color:var(--nlx-warm)!important;margin:0!important}
+.nlux-card-chip{font-size:11px!important;font-weight:800!important;letter-spacing:.04em;padding:6px 12px!important;border-radius:999px!important}
+
+/* TOOLS: compact refined link row, NOT tall hollow boxes */
+.nlux-tool-grid{grid-template-columns:repeat(3,1fr)!important;gap:12px!important}
+.nlux-tool-grid a{
+	min-height:0!important;display:flex!important;align-items:center;gap:12px;
+	padding:18px 20px!important;border-radius:14px!important;background:var(--nlx-card)!important;
+	border:1px solid var(--nlx-line)!important;font-weight:700;font-size:15px;
+}
+.nlux-tool-grid a::after{inset:auto!important;position:static!important;width:auto!important;height:auto!important;background:none!important;content:"←";margin-inline-start:auto;color:var(--nlx-gold);font-weight:800;transition:transform .2s}
+.nlux-tool-grid a::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));flex:none}
+.nlux-tool-grid a:hover{transform:translateY(-2px)!important}
+.nlux-tool-grid a:hover::after{transform:translateX(-4px)}
+
+/* PROS: compact cards, avatar + name inline */
+.nlux-pro-grid{grid-template-columns:repeat(3,1fr)!important;gap:14px!important}
+.nlux-pro-card{
+	min-height:0!important;display:grid!important;grid-template-columns:auto 1fr;gap:14px;align-items:center;
+	padding:18px 20px!important;border-radius:16px!important;
+}
+.nlux-pro-card::after{display:none!important}
+.nlux-pro-card > span{
+	grid-row:1/3;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;
+	background:linear-gradient(135deg,var(--nlx-teal),var(--nlx-teal-2));color:#f3d99d;
+	font-family:"Frank Ruhl Libre",serif;font-size:22px;font-weight:700;
+}
+.nlux-pro-card h3{font-family:"Frank Ruhl Libre",serif!important;font-size:16px!important;margin:0!important;font-weight:700!important;color:var(--nlx-ink)!important}
+.nlux-pro-card p{font-size:12.5px!important;line-height:1.5!important;color:var(--nlx-warm)!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* DATA BAND: refined dark ribbon */
+.nlux-data-band{grid-template-columns:repeat(3,1fr)!important;gap:0!important;border-radius:18px;overflow:hidden;margin:clamp(40px,5vw,64px) 0!important;background:linear-gradient(135deg,#11100d,#1c2b29 70%,#0b1717)}
+.nlux-data-band div{padding:26px 28px!important;border-inline-start:1px solid rgba(255,255,255,.08)}
+.nlux-data-band div:first-child{border:0}
+.nlux-data-band strong{color:#f3d99d!important;font-family:"Frank Ruhl Libre",serif;font-size:20px;display:block;margin-bottom:4px}
+.nlux-data-band span{color:rgba(255,255,255,.7)!important;font-size:13.5px}
+
+/* FINAL CTA: premium dark block */
+.nlux-final-cta{background:linear-gradient(135deg,#11100d,#211d17 72%,#0b1717)!important;border-radius:24px;padding:clamp(34px,5vw,64px)!important;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;color:#fff}
+.nlux-final-cta h2{color:#fff!important}
+.nlux-final-cta .nlux-kicker{color:#f3d99d!important}
+.nlux-final-cta p{color:rgba(255,255,255,.8)!important;max-width:560px}
+
+/* ELITE iteration 2: project-card luxury listing treatment */
+.nlux-project-card{position:relative!important}
+.nlux-project-card .nlux-card-chip{
+	position:absolute!important;inset-block-start:12px;inset-inline-start:12px;z-index:3;
+	background:rgba(17,16,13,.78)!important;color:#f3d99d!important;backdrop-filter:blur(8px);
+	border:1px solid rgba(243,217,157,.32);
+}
+.nlux-project-card::after{
+	content:"";position:absolute;inset-block-start:0;inset-inline:0;height:62%;z-index:1;pointer-events:none;
+	background:linear-gradient(180deg,rgba(11,17,17,.28),transparent 60%);
+}
+.nlux-project-card > div{position:relative;z-index:2;background:#fff}
+.nlux-project-card:hover img{transform:scale(1.04)}
+.nlux-project-card img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+
+/* Responsive homepage grid collapse. */
+@media (max-width:980px){
+	.nlux-project-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-tool-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-pro-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-paths{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-paths .nlux-path:nth-child(3){border-inline-start:0!important}
+	.nlux-data-band{grid-template-columns:repeat(3,1fr)!important}
+}
+@media (max-width:600px){
+	.nlux-hero{grid-template-columns:1fr!important;min-height:auto!important}
+	.nlux-hero-panel{margin-top:18px}
+	.nlux-project-grid{grid-template-columns:1fr!important}
+	.nlux-tool-grid{grid-template-columns:1fr!important}
+	.nlux-pro-grid{grid-template-columns:1fr!important}
+	.nlux-paths{grid-template-columns:1fr!important}
+	.nlux-paths .nlux-path{border-inline-start:0!important;border-bottom:1px solid var(--nlx-line)!important}
+	.nlux-data-band{grid-template-columns:1fr!important}
+	.nlux-data-band div{border-inline-start:0!important;border-top:1px solid rgba(255,255,255,.08)}
+	.nlux-data-band div:first-child{border-top:0}
+	.nlux-final-cta{grid-template-columns:1fr!important;text-align:center}
+	.nlux-final-cta .nlux-actions{justify-content:center}
+	.nlux-section-head{flex-direction:column;align-items:flex-start;gap:12px}
+	.nlux-section-head a{width:auto}
+}
+
+/* ============================================================================
+ * Professionals catalog cards with a premium no-photo state
+ * ========================================================================= */
+
+/* Professional cards without a media block get a refined top region and mark treatment. */
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media){
+	overflow:hidden!important;
+	border:1px solid var(--nlx-line)!important;
+	background:#fff!important;
+	border-radius:var(--nlx-radius)!important;
+	box-shadow:var(--nlx-shadow-soft);
+	transition:transform .25s, box-shadow .25s, border-color .25s;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media):hover{
+	transform:translateY(-4px);
+	box-shadow:0 22px 50px rgba(13,13,11,.12);
+	border-color:rgba(167,124,53,.45)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-top{
+	position:relative;
+	margin:-22px -22px 14px!important;
+	padding:24px 22px 18px!important;
+	background:
+		radial-gradient(120% 100% at 80% 0%,rgba(167,124,53,.16),transparent 55%),
+		linear-gradient(135deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	min-height:120px;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-av{
+	background:rgba(255,255,255,.06)!important;
+	border:1px solid rgba(243,217,157,.32)!important;
+	box-shadow:none!important;
+	width:64px!important;height:64px!important;
+	border-radius:18px!important;
+	color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-av .nl-mark{
+	width:36px;height:36px;color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-name{
+	color:#fff!important;
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:17px!important;
+	font-weight:700!important;
+	margin:0 0 6px!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-pill{
+	color:#e7d7ae!important;
+	border-bottom-color:#9C7A3C!important;
+	background:transparent!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-vf{
+	background:rgba(243,217,157,.16)!important;
+	color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-rate{
+	margin:2px 0 10px!important;color:var(--nlx-warm)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-meta{
+	gap:8px;font-size:13.5px;color:var(--nlx-ink)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-foot{
+	margin-top:auto;
+	padding-top:14px!important;
+	border-top:1px solid var(--nlx-line)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-reg{
+	font-size:11.5px;color:var(--nlx-warm)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-go{
+	color:var(--nlx-gold)!important;font-weight:800;
+}
+
+/* Singletons (profile pages): refine body type so it doesn't read as default WP */
+.single-nadlan_project .entry-content,
+.single-nadlan_professional .entry-content,
+.single-nadlan_property .entry-content,
+.single-post .entry-content,
+.single-nadlan_term .entry-content,
+.page .entry-content{
+	font-size:17px;
+	line-height:1.78;
+	color:var(--nlx-charcoal);
+}
+.single-nadlan_project .entry-content h2,
+.single-nadlan_professional .entry-content h2,
+.single-nadlan_property .entry-content h2,
+.single-post .entry-content h2,
+.page .entry-content h2{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:clamp(24px,2.2vw,32px)!important;
+	letter-spacing:-.01em;
+	margin:36px 0 14px!important;
+	color:var(--nlx-ink)!important;
+}
+.single-nadlan_project .entry-content h3,
+.single-nadlan_professional .entry-content h3,
+.single-nadlan_property .entry-content h3,
+.single-post .entry-content h3,
+.page .entry-content h3{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:600!important;
+	font-size:clamp(19px,1.6vw,24px)!important;
+	margin:28px 0 10px!important;
+}
+.single-nadlan_project .entry-content p,
+.single-nadlan_professional .entry-content p,
+.single-nadlan_property .entry-content p,
+.single-post .entry-content p,
+.page .entry-content p{
+	margin:0 0 18px;max-width:72ch;
+}
+.single-nadlan_project .entry-content a,
+.single-nadlan_professional .entry-content a,
+.single-post .entry-content a,
+.page .entry-content a{
+	color:var(--nlx-gold);
+	text-decoration:underline;
+	text-decoration-color:rgba(167,124,53,.4);
+	text-underline-offset:.22em;
+}
+.single-nadlan_project .entry-content a:hover,
+.single-nadlan_professional .entry-content a:hover,
+.single-post .entry-content a:hover,
+.page .entry-content a:hover{
+	text-decoration-color:var(--nlx-gold);
+}
+
+/* Hide leftover theme "MORE POSTS / More posts" on CPT singles */
+.single-nadlan_project .wp-block-latest-posts,
+.single-nadlan_professional .wp-block-latest-posts,
+.single-nadlan_property .wp-block-latest-posts,
+.single-nadlan_project h2:has(+ .wp-block-latest-posts),
+body[class*="single-nadlan_"] .wp-block-template-part .wp-block-post-navigation-link,
+body[class*="single-nadlan_"] .wp-block-template-part .wp-block-comments,
+body[class*="single-nadlan_"] section.comments-area{display:none!important}
+
+/* ============================================================================
+ * Cycle 3: /join-pro/ pricing + project profile hero + small polish
+ * ========================================================================= */
+
+/* /join-pro/ pricing: WP columns → premium pricing-cards row */
+.page-id-2 .wp-block-columns,
+body[class*="join-pro"] .wp-block-columns{
+	gap:18px!important;
+	align-items:stretch!important;
+}
+body[class*="join-pro"] .wp-block-column,
+.page:has(.price-tag) .wp-block-column{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:18px!important;
+	padding:28px 24px!important;
+	box-shadow:var(--nlx-shadow-soft);
+	transition:transform .22s, box-shadow .22s, border-color .22s;
+	position:relative;
+	overflow:hidden;
+}
+body[class*="join-pro"] .wp-block-column:hover,
+.page:has(.price-tag) .wp-block-column:hover{
+	transform:translateY(-3px);
+	border-color:rgba(167,124,53,.45)!important;
+	box-shadow:0 22px 50px rgba(13,13,11,.12);
+}
+/* Premium highlight on the recommended tier (the one with .price-tag styled, typically Pro) */
+body[class*="join-pro"] .wp-block-column:has(.price-tag){
+	background:linear-gradient(180deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	border-color:transparent!important;
+	box-shadow:0 26px 60px rgba(13,13,11,.22);
+}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) *{color:#fff!important}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) .price-tag{
+	font-family:"Frank Ruhl Libre",serif!important;
+	color:#f3d99d!important;
+	font-size:42px!important;
+	font-weight:700;
+	letter-spacing:-.01em;
+	display:block;
+	margin:10px 0 18px;
+}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) .wp-block-button .wp-block-button__link,
+body[class*="join-pro"] .wp-block-column:has(.price-tag) a.button{
+	background:linear-gradient(135deg,var(--nlx-gold),#d7bd82)!important;
+	color:#15120e!important;
+	border:0!important;font-weight:900!important;
+	padding:14px 22px!important;border-radius:12px!important;
+}
+body[class*="join-pro"] .price-tag{
+	font-family:"Frank Ruhl Libre",serif;
+	color:var(--nlx-gold);
+	font-size:36px;
+	font-weight:700;
+	display:block;
+	margin:6px 0 14px;
+}
+body[class*="join-pro"] .wp-block-heading{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	color:inherit!important;
+}
+body[class*="join-pro"] .wp-block-list{padding-inline-start:18px;line-height:1.85}
+body[class*="join-pro"] .wp-block-button .wp-block-button__link{
+	background:var(--nlx-ink)!important;color:#fff!important;
+	border-radius:12px!important;font-weight:800!important;
+	padding:13px 22px!important;
+}
+
+/* Project profile hero image treatment. */
+.single-nadlan_project .wp-block-post-featured-image,
+.single-nadlan_project .wp-block-post-featured-image img{
+	border-radius:22px!important;
+	overflow:hidden;
+}
+.single-nadlan_project .wp-block-post-featured-image img{
+	width:100%!important;
+	max-height:540px;
+	object-fit:cover;
+	box-shadow:var(--nlx-shadow);
+}
+.single-nadlan_project .nlpf-banner{min-height:120px!important}
+
+/* Single-project gallery rows breathe */
+.single-nadlan_project .nlcard-gallery{
+	display:grid!important;
+	grid-template-columns:repeat(auto-fill,minmax(220px,1fr))!important;
+	gap:14px!important;
+}
+.single-nadlan_project .nlcard-gallery a,
+.single-nadlan_project .nlcard-gallery img{
+	border-radius:14px;
+	overflow:hidden;
+}
+
+/* Lead form: don't look like a 2010 contact form on a luxury page */
+.nlcard-facts table,
+.entry-content table.nlcard-facts{
+	border-collapse:separate;
+	border-spacing:0;
+	width:100%;
+	border:1px solid var(--nlx-line);
+	border-radius:14px;
+	overflow:hidden;
+}
+.nlcard-facts th{
+	background:var(--nlx-paper-2)!important;
+	color:var(--nlx-ink)!important;
+	font-weight:700;
+	text-align:start;
+	padding:12px 14px!important;
+	border-bottom:1px solid var(--nlx-line);
+}
+.nlcard-facts td{
+	padding:12px 14px!important;
+	border-bottom:1px solid var(--nlx-line);
+	color:var(--nlx-charcoal);
+}
+.nlcard-facts tr:last-child td,
+.nlcard-facts tr:last-child th{border-bottom:0}
+
+/* Glossary tiles: already strong; lift them a touch (subtle, not invasive) */
+.post-type-archive-nadlan_term .wp-block-post-template > *,
+.tax-nadlan_term_cat .wp-block-post-template > *{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:16px!important;
+	padding:24px!important;
+	transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+.post-type-archive-nadlan_term .wp-block-post-template > *:hover{
+	transform:translateY(-4px);
+	box-shadow:var(--nlx-shadow-soft);
+	border-color:rgba(167,124,53,.45)!important;
+}
+.post-type-archive-nadlan_term .wp-block-post-title{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:22px!important;
+	margin-bottom:8px!important;
+}
+
+/* /join-pro/ pricing layout. */
+.page-id-491 .plan-row,
+body.page-id-491 .plan-row{
+	display:grid!important;
+	grid-template-columns:repeat(3,1fr)!important;
+	gap:18px!important;
+	max-width:1100px;
+	margin:24px auto!important;
+}
+.page-id-491 .plan{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:18px!important;
+	padding:32px 26px!important;
+	box-shadow:var(--nlx-shadow-soft);
+	display:flex;flex-direction:column;
+	transition:transform .22s, box-shadow .22s, border-color .22s;
+}
+.page-id-491 .plan:hover{
+	transform:translateY(-4px);
+	border-color:rgba(167,124,53,.45)!important;
+	box-shadow:0 24px 50px rgba(13,13,11,.14);
+}
+/* The middle plan is the recommended visual option. */
+.page-id-491 .plan-row > .plan:nth-child(2){
+	background:linear-gradient(180deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	border-color:transparent!important;
+	box-shadow:0 26px 60px rgba(13,13,11,.22);
+	position:relative;
+}
+.page-id-491 .plan-row > .plan:nth-child(2)::before{
+	content:"מומלץ";
+	position:absolute;inset-block-start:18px;inset-inline-end:18px;
+	background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));
+	color:#15120e;font-size:11px;font-weight:900;letter-spacing:.08em;
+	padding:5px 12px;border-radius:999px;
+}
+.page-id-491 .plan-row > .plan:nth-child(2) *{color:#fff!important}
+.page-id-491 .plan-row > .plan:nth-child(2) h3,
+.page-id-491 .plan-row > .plan:nth-child(2) .price-tag{color:#f3d99d!important}
+.page-id-491 .plan h3{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:22px!important;
+	margin:0 0 6px!important;
+}
+.page-id-491 .plan .price-tag{
+	font-family:"Frank Ruhl Libre",serif!important;
+	color:var(--nlx-gold)!important;
+	font-size:36px!important;
+	font-weight:700!important;
+	display:block;
+	margin:8px 0 18px;
+	line-height:1;
+}
+.page-id-491 .plan .price-tag small{
+	display:block;font-size:13px;font-weight:500;color:var(--nlx-warm)!important;margin-top:6px;
+}
+.page-id-491 .plan ul{
+	padding-inline-start:18px;
+	line-height:1.95;
+	margin:0 0 22px;
+	flex:1;
+}
+.page-id-491 .plan ul li{font-size:14.5px}
+.page-id-491 .plan .cta{margin-top:auto}
+.page-id-491 .plan .btn{
+	display:inline-block;
+	min-height:48px;
+	padding:12px 22px;
+	border-radius:12px!important;
+	background:var(--nlx-ink)!important;
+	color:#fff!important;
+	border:0!important;
+	font-weight:800!important;
+	text-decoration:none!important;
+	font-size:14.5px;
+	letter-spacing:.02em;
+	box-shadow:0 12px 26px rgba(13,13,11,.14);
+	transition:transform .15s, filter .2s;
+}
+.page-id-491 .plan .btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.page-id-491 .plan-row > .plan:nth-child(2) .btn{
+	background:linear-gradient(135deg,var(--nlx-gold),#d7bd82)!important;
+	color:#15120e!important;
+}
+.page-id-491 .plan .btn.secondary{
+	background:#fff!important;
+	color:var(--nlx-ink)!important;
+	border:1px solid var(--nlx-ink)!important;
+}
+.page-id-491 #plans > h2,
+.page-id-491 h1{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+}
+/* clean em-dash on H1 + replace with colon */
+.page-id-491 h1{font-size:clamp(28px,3vw,42px)!important;line-height:1.15!important}
+
+/* mobile */
+@media (max-width:780px){
+	.page-id-491 .plan-row{grid-template-columns:1fr!important}
+}
+
+/* Unified floating action rail: one launcher, expanded WhatsApp/call/AI/accessibility actions. */
+#nlrx-action-rail{
+	position:fixed;
+	left:calc(env(safe-area-inset-left,0px) + 18px);
+	right:auto;
+	bottom:calc(env(safe-area-inset-bottom,0px) + 18px);
+	z-index:2147483000;
+	display:flex;
+	flex-direction:column;
+	align-items:flex-start;
+	gap:10px;
+	direction:rtl;
+	font-family:var(--font-sans,Heebo,system-ui,sans-serif);
+}
+#nlrx-action-rail .nlrx-action-launcher{
+	border:0;
+	min-width:58px;
+	height:58px;
+	border-radius:999px;
+	padding:0 18px;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:10px;
+	background:linear-gradient(135deg,#9C7A3C,#d7bd82);
+	color:#11110F;
+	font:inherit;
+	font-weight:900;
+	box-shadow:0 18px 42px rgba(13,13,11,.28);
+	cursor:pointer;
+	transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+#nlrx-action-rail .nlrx-action-launcher:hover,
+#nlrx-action-rail .nlrx-action-launcher:focus-visible{
+	transform:translateY(-2px);
+	box-shadow:0 22px 52px rgba(13,13,11,.34);
+	outline:3px solid rgba(215,189,130,.45);
+	outline-offset:3px;
+}
+#nlrx-action-rail .nlrx-action-plus{
+	font-size:30px;
+	line-height:1;
+	font-weight:800;
+	transition:transform .18s ease;
+}
+#nlrx-action-rail.is-open .nlrx-action-plus{transform:rotate(45deg)}
+#nlrx-action-rail .nlrx-action-text{font-size:14px;white-space:nowrap}
+body.home #nlrx-action-rail:not(.is-open) .nlrx-action-text,
+body.front-page #nlrx-action-rail:not(.is-open) .nlrx-action-text{display:none}
+body.home #nlrx-action-rail:not(.is-open) .nlrx-action-launcher,
+body.front-page #nlrx-action-rail:not(.is-open) .nlrx-action-launcher{
+	min-width:58px;
+	padding:0;
+}
+#nlrx-action-rail .nlrx-action-items{
+	display:flex;
+	flex-direction:column;
+	align-items:flex-start;
+	gap:8px;
+	max-height:520px;
+	opacity:1;
+	transform:translateY(0);
+	transition:opacity .18s ease,transform .18s ease,max-height .18s ease;
+}
+#nlrx-action-rail:not(.is-open) .nlrx-action-items{
+	max-height:0;
+	opacity:0;
+	transform:translateY(10px);
+	pointer-events:none;
+	overflow:hidden;
+}
+#nlrx-action-rail .nlfab,
+#nlrx-action-rail #nlai,
+#nlrx-action-rail #nla-btn{
+	position:static!important;
+	inset:auto!important;
+	left:auto!important;
+	right:auto!important;
+	top:auto!important;
+	bottom:auto!important;
+	z-index:auto!important;
+	transform:none!important;
+	opacity:1!important;
+	filter:none!important;
+	box-shadow:none!important;
+}
+#nlrx-action-rail .nlfab{
+	width:auto!important;
+	max-width:none!important;
+	display:flex!important;
+	flex-direction:column!important;
+	gap:8px!important;
+	align-items:flex-start!important;
+	padding:0!important;
+	background:transparent!important;
+}
+#nlrx-action-rail .nlfab-btn,
+#nlrx-action-rail #nlai .nlai-fab,
+#nlrx-action-rail #nla-btn{
+	width:auto!important;
+	min-width:54px!important;
+	height:54px!important;
+	min-height:54px!important;
+	border-radius:16px!important;
+	padding:0 16px!important;
+	display:inline-flex!important;
+	align-items:center!important;
+	justify-content:center!important;
+	gap:9px!important;
+	background:rgba(10,24,23,.95)!important;
+	color:#fff4ca!important;
+	border:1px solid rgba(215,189,130,.3)!important;
+	box-shadow:0 14px 34px rgba(13,13,11,.22)!important;
+	font:inherit!important;
+	font-size:14px!important;
+	font-weight:900!important;
+	text-decoration:none!important;
+	text-indent:0!important;
+	white-space:nowrap!important;
+	cursor:pointer!important;
+}
+#nlrx-action-rail .nlfab-wa{background:#25D366!important;color:#082114!important;border-color:rgba(255,255,255,.38)!important}
+#nlrx-action-rail .nlfab-btn .t,
+#nlrx-action-rail #nlai .nlai-fab span{
+	position:static!important;
+	opacity:1!important;
+	transform:none!important;
+	max-width:none!important;
+	overflow:visible!important;
+	padding:0!important;
+	background:transparent!important;
+	color:inherit!important;
+	box-shadow:none!important;
+}
+#nlrx-action-rail #nla-btn::after{content:attr(data-nlrx-label)}
+#nlrx-action-rail #nla-btn svg{width:25px!important;height:25px!important;fill:currentColor!important}
+#nlrx-action-rail #nlai .nlai-fab svg{width:22px!important;height:22px!important;flex:0 0 auto}
+#nlrx-action-rail #nlai .nlai-panel{
+	position:fixed!important;
+	left:calc(env(safe-area-inset-left,0px) + 18px)!important;
+	right:auto!important;
+	bottom:calc(env(safe-area-inset-bottom,0px) + 92px)!important;
+	width:min(380px,calc(100vw - 28px))!important;
+	max-width:calc(100vw - 28px)!important;
+	max-height:min(560px,calc(100vh - 124px))!important;
+	z-index:2147483002!important;
+}
+body.nlrx-action-rail-ready #nla-panel{
+	left:calc(env(safe-area-inset-left,0px) + 18px)!important;
+	right:auto!important;
+	bottom:calc(env(safe-area-inset-bottom,0px) + 92px)!important;
+	z-index:2147483002!important;
+}
+@media(max-width:760px){
+	#nlrx-action-rail{
+		left:calc(env(safe-area-inset-left,0px) + 12px);
+	right:auto;
+		bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
+	}
+	#nlrx-action-rail .nlrx-action-launcher{height:56px;min-width:56px;padding:0 14px}
+	#nlrx-action-rail:not(.is-open) .nlrx-action-text{display:none}
+	#nlrx-action-rail .nlfab-btn,
+	#nlrx-action-rail #nlai .nlai-fab,
+	#nlrx-action-rail #nla-btn{
+		min-width:52px!important;
+		height:52px!important;
+		min-height:52px!important;
+		padding:0 13px!important;
+		font-size:13px!important;
+	}
+	#nlrx-action-rail #nlai .nlai-panel,
+	body.nlrx-action-rail-ready #nla-panel{
+		left:12px!important;
+	right:auto!important;
+		bottom:calc(env(safe-area-inset-bottom,0px) + 84px)!important;
+		max-width:calc(100vw - 24px)!important;
+	}
+}
+@media(prefers-reduced-motion:reduce){
+	#nlrx-action-rail,
+	#nlrx-action-rail *{transition:none!important;animation:none!important}
+}
+
+/* Unified floating action rail refinement: compact direct actions on mobile. */
+#nlrx-action-rail .nlrx-action-items > .nlfab-btn{
+	width:auto!important;
+	min-width:54px!important;
+	height:54px!important;
+	min-height:54px!important;
+	border-radius:16px!important;
+	padding:0 16px!important;
+	display:inline-flex!important;
+	align-items:center!important;
+	justify-content:center!important;
+	gap:9px!important;
+	background:rgba(10,24,23,.95)!important;
+	color:#fff4ca!important;
+	border:1px solid rgba(215,189,130,.3)!important;
+	box-shadow:0 14px 34px rgba(13,13,11,.22)!important;
+	font:inherit!important;
+	font-size:14px!important;
+	font-weight:900!important;
+	text-decoration:none!important;
+	white-space:nowrap!important;
+}
+#nlrx-action-rail .nlrx-action-items > .nlfab-wa{background:#25D366!important;color:#082114!important;border-color:rgba(255,255,255,.38)!important}
+#nlrx-action-rail .nlrx-action-items > .nlfab-btn .t{position:static!important;opacity:1!important;transform:none!important;max-width:none!important;overflow:visible!important;padding:0!important;background:transparent!important;color:inherit!important;box-shadow:none!important}
+@media(max-width:760px){
+	#nlrx-action-rail.is-open .nlrx-action-items{
+		display:grid;
+		grid-template-columns:repeat(2,minmax(0,1fr));
+		width:min(342px,calc(100vw - 24px));
+		align-items:stretch;
+	}
+	#nlrx-action-rail.is-open #nlai{grid-column:1 / -1;width:100%!important}
+	#nlrx-action-rail.is-open #nlai .nlai-fab,
+	#nlrx-action-rail.is-open #nla-btn,
+	#nlrx-action-rail.is-open .nlrx-action-items > .nlfab-btn{
+		width:100%!important;
+		min-width:0!important;
+		justify-content:center!important;
+	}
+}
