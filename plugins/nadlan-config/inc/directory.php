@@ -1066,6 +1066,11 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			if ( isset( $mst[ (string) ( $mrow['status'] ?? '' ) ] ) ) { $tags[] = $mst[ (string) $mrow['status'] ]; }
 			if ( ! empty( $mrow['deal'] ) ) { $tags[] = array( 'במבצע', 'is-deal' ); }
 		}
+		/* HAD-743: a project with a live deal on the deals map gets the red label with the deal in a few words (Hebrew cards) */
+		if ( function_exists( 'nadlan_dm_deal_for_post' ) && ( $nldm = nadlan_dm_deal_for_post( $id ) ) && ( ! function_exists( 'nadlan_pd_lang_of_slug' ) || 'he' === nadlan_pd_lang_of_slug( (string) get_post_field( 'post_name', $id ) ) ) ) {
+			$tags = array_values( array_filter( $tags, function ( $x ) { return 'is-deal' !== $x[1]; } ) );
+			array_unshift( $tags, array( 'במבצע · ' . $nldm['short'], 'is-deal is-live' ) );
+		}
 		$rooms = '';
 		if ( $mrow && ! empty( $mrow['rooms'] ) && preg_match( '/^\s*(\d+(?:\.5)?)\s*-\s*(\d+(?:\.5)?)/', (string) $mrow['rooms'], $rm ) ) { $rooms = $rm[1] . ' עד ' . $rm[2] . ' חדרים'; }
 		// Magazine card (v1.69.69): Lovable MagazineCard design ported to the live
@@ -1124,6 +1129,7 @@ if ( ! function_exists( 'nadlan_dir_quickfilter_html' ) ) {
 		foreach ( (array) ( $facets['cities'] ?? array() ) as $c ) { if ( isset( $c['name'] ) && false !== mb_strpos( (string) $c['name'], 'תל אביב' ) ) { $tlv = (int) $c['n']; $tlv_name = (string) $c['name']; break; } }
 		$nb = (int) ( $facets['types']['new_build'] ?? 0 );
 		$chips = array();
+		if ( function_exists( 'nadlan_dm_deals' ) ) { $chips[] = '<a class="nlqf-deal" href="/developer-deals/#nldm-map"><i aria-hidden="true"></i>במבצע · ' . count( nadlan_dm_deals() ) . '</a>'; } // HAD-743: to the deals map
 		if ( $tlv > 0 ) { $chips[] = '<button type="button" data-k="city" data-v="' . esc_attr( $tlv_name ) . '">תל אביב יפו · ' . number_format( $tlv ) . '</button>'; }
 		$chips[] = '<button type="button" data-k="status" data-v="marketing">בשיווק</button>';
 		$chips[] = '<button type="button" data-k="status" data-v="construction">בבנייה</button>';
@@ -1139,6 +1145,9 @@ if ( ! function_exists( 'nadlan_dir_quickfilter_html' ) ) {
 			. '.nldir .nlqf button{flex:0 0 auto;min-height:44px!important;padding:0 14px!important;margin:0!important;border-radius:22px!important;border:1px solid #C9D3DA!important;background:#fff!important;color:#0F1D26!important;font:500 15px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif!important;box-shadow:none!important;text-transform:none!important;letter-spacing:0!important;white-space:nowrap}'
 			. '.nldir .nlqf button.is-on{background:#0E4C63!important;border-color:#0E4C63!important;color:#fff!important;font-weight:600!important}'
 			. '.nldir .nlqf button.nlqf-all{border-color:#0E4C63!important;color:#0E4C63!important;font-weight:600!important}'
+			. '.nldir .nlqf a.nlqf-deal{flex:0 0 auto;display:flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border-radius:22px;background:#C8102E;color:#fff!important;font:600 15px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;text-decoration:none!important;white-space:nowrap;box-shadow:0 4px 12px rgba(200,16,46,.3)}'
+			. '.nldir .nlqf a.nlqf-deal i{position:relative;width:8px;height:8px;border-radius:50%;background:#fff}.nldir .nlqf a.nlqf-deal i:after{content:"";position:absolute;inset:0;border-radius:50%;background:#fff;animation:nlqf-ping 1.8s ease-out infinite}'
+			. '@keyframes nlqf-ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}@media (prefers-reduced-motion:reduce){.nldir .nlqf a.nlqf-deal i:after{animation:none}}'
 			. '.nldir[data-mode="projects"]:not(.is-qf-open) .nlcp-herogrid,.nldir[data-mode="projects"]:not(.is-qf-open) .nldir-pills{display:none!important}'
 			. '.nldir[data-mode="projects"] .nlcp-note:empty{display:none}'
 			. '.nldir[data-mode="projects"] .nldir-main{display:flex!important;flex-direction:column!important}'
@@ -1152,6 +1161,7 @@ if ( ! function_exists( 'nadlan_dir_quickfilter_html' ) ) {
 			. '.nldc-project .nldcp-tag{font:600 13px/1 "IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;padding:6px 10px;border-radius:6px;color:#fff;background:#0E4C63}'
 			. '.nldc-project .nldcp-tag.is-ready{background:#1B6B3C}.nldc-project .nldcp-tag.is-sale{background:#0F1D26}'
 			. '.nldc-project .nldcp-tag.is-deal{background:#E9E9F7;color:#2B2A72;box-shadow:inset 0 0 0 1px #3B3A8F}'
+			. '.nldc-project .nldcp-tag.is-deal.is-live{background:#C8102E;color:#fff;box-shadow:0 4px 12px rgba(200,16,46,.35)}'
 			. '.nldir-results .nldc-project .nldcp-stats{display:flex;flex-wrap:wrap;gap:6px;grid-template-columns:none;margin:10px 0 0;padding-top:0;border-top:0}'
 			. '.nldir-results .nldc-project .nldcp-stats>div{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px;align-items:baseline;background:#E3EEF2;color:#0A3A4C;border-radius:6px;padding:5px 10px}'
 			. '.nldir-results .nldc-project .nldcp-stats dt,.nldir-results .nldc-project .nldcp-stats dd{margin:0;font-size:13px;font-weight:600;color:#0A3A4C;white-space:nowrap}'

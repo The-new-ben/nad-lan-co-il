@@ -5209,3 +5209,5 @@ CLAIM + RELEASE LOCK 1.72.687 (HAD-743 accuracy: SWAP inc/deals-map.php, assets/
 RELEASE DONE 1.72.687 (HAD-743 accuracy round): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 21:00 UTC.
 CLAIM + RELEASE LOCK 1.72.688 (HAD-743: SWAP inc/deals-map.php + assets/deals/deals.js, no-schedule deals count only their benefit). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 21:00 UTC.
 RELEASE DONE 1.72.688 (HAD-743: no-schedule deals count only their published benefit): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 21:14 UTC.
+CLAIM + RELEASE LOCK 1.72.689 (HAD-743 English map + structured data + card label + deals button: SWAP inc/deals-map.php, inc/directory.php, assets/deals/deals.js + deals.css). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 22:04 UTC.
+RELEASE DONE 1.72.689 (HAD-743 English map, structured data, card label, deals button): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 22:24 UTC.

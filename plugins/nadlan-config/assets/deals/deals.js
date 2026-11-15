@@ -16,10 +16,16 @@
 	var $$ = function (sel, el) { return Array.prototype.slice.call((el || root).querySelectorAll(sel)); };
 	var tagOf = function (id) { return markers[id] ? markers[id].getElement().firstChild : null; };
 
+	var EN = D.lang === 'en';
+	/* every visible Hebrew string goes through t(): the Hebrew text is the key, D.t (English page) holds the translation */
+	function t(s) { return (D.t && D.t[s]) || s; }
 	function fmt(n) {
+		if (EN) { return n >= 1000000 ? '₪' + (Math.round(n / 10000) / 100) + 'M' : '₪' + Math.round(n / 1000).toLocaleString('en-US') + 'K'; }
 		if (n >= 1000000) { return (Math.round(n / 10000) / 100).toString() + ' מיליון ₪'; }
 		return Math.round(n / 1000).toLocaleString('he-IL') + ' אלף ₪';
 	}
+	/* approximate dollars next to the shekel on the English page (Bank of Israel rate with its date, Ben 25.10.2026) */
+	function usd(n) { if (!EN || !D.fx || !n) { return ''; } var v = n / D.fx[0]; return ' (≈ $' + (v >= 1000000 ? (Math.round(v / 10000) / 100) + 'M' : Math.round(v / 1000) + 'K') + ')'; }
 	function need(d) {
 		if (d.firstAbs != null) { return d.firstAbs; }
 		if (d.first != null && d.price) { return Math.round(d.price * d.first); }
@@ -27,7 +33,7 @@
 		return null;
 	}
 	function status(d) { var n = need(d); return n == null ? 'unk' : (n <= S.cash ? 'fit' : 'no'); }
-	function needText(d) { var n = need(d); return n == null ? 'בקשו מחיר ›' : (n === 0 ? '0 ₪ בחתימה' : fmt(n) + ' ביד'); }
+	function needText(d) { var n = need(d); return n == null ? t('בקשו מחיר ›') : (n === 0 ? t('0 ₪ בחתימה') : fmt(n) + t(' ביד')); }
 	function wa(t) { return 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent(t); }
 	function shown(d) { return S.kind === 'all' || d.k === S.kind; }
 
@@ -87,7 +93,7 @@
 				el.querySelector('.t2').textContent = needText(d);
 			}
 			var li = root.querySelector('.nldm-list li[data-id="' + d.id + '"] .nldm-need');
-			if (li) { li.className = 'nldm-need is-' + st; li.textContent = st === 'unk' ? 'בקשו מחיר' : needText(d).replace(' ביד', ''); }
+			if (li) { li.className = 'nldm-need is-' + st; li.textContent = st === 'unk' ? t('בקשו מחיר') : needText(d).replace(t(' ביד'), ''); }
 		});
 		var ol = $('.nldm-list ol'), order = { fit: 0, unk: 1, no: 2 };
 		$$('.nldm-list li').sort(function (a, b) { return order[status(byId[a.dataset.id])] - order[status(byId[b.dataset.id])]; }).forEach(function (li) { ol.appendChild(li); });
@@ -95,7 +101,7 @@
 	if (cashIn) {
 		cashIn.addEventListener('input', function () {
 			var v = Number(cashIn.value);
-			roll(cashOut, S.cash, v, fmt);
+			roll(cashOut, S.cash, v, function (x) { return fmt(x) + usd(x); });
 			cashOut.classList.add('is-bump'); setTimeout(function () { cashOut.classList.remove('is-bump'); }, 180);
 			S.cash = v;
 			if (think) { think.hidden = false; }
@@ -126,7 +132,7 @@
 		var d = byId[S.sel]; if (!d || !sheet) { return; }
 		var chip = sheet.querySelector('[data-f=init]');
 		chip.textContent = d.dev.slice(0, 2); chip.style.background = d.color;
-		setF('sub', d.devFull + ' · ' + d.city + (d.hot ? ' · מבצע חם' : ''));
+		setF('sub', d.devFull + ' · ' + d.city + (d.hot ? t(' · מבצע חם') : ''));
 		setF('project', d.project); setF('kind', d.kind); setF('terms', d.terms);
 		var bar = sheet.querySelector('[data-f=bar]'); bar.innerHTML = '';
 		d.bar.forEach(function (b, i) {
@@ -134,20 +140,20 @@
 			bar.appendChild(s);
 			setTimeout(function () { s.style.width = 'calc(' + b[0] + '% - 2px)'; }, RM ? 0 : 60 + i * 120);
 		});
-		setF('price', d.price ? fmt(d.price) : 'לא פורסם');
-		var n = need(d), st = status(d), needEl = setF('need', n == null ? 'לא פורסם' : fmt(n));
+		setF('price', d.price ? fmt(d.price) + usd(d.price) : t('לא פורסם'));
+		var n = need(d), st = status(d), needEl = setF('need', n == null ? t('לא פורסם') : fmt(n));
 		needEl.style.color = st === 'fit' ? '#17694A' : (st === 'no' ? '#A10D25' : '#4A5863');
 		var worthEl = sheet.querySelector('[data-f=worth]');
-		if (d.worth) { roll(worthEl, 0, d.worth, function (v) { return 'כ-' + fmt(v) + ' לפי פרסום'; }); } else { worthEl.textContent = 'לא פורסם'; }
+		if (d.worth) { roll(worthEl, 0, d.worth, function (v) { return t('כ-') + fmt(v) + t(' לפי פרסום'); }); } else { worthEl.textContent = t('לא פורסם'); }
 		var ch = sheet.querySelector('[data-f=check]');
 		ch.classList.toggle('is-ok', !!d.checked);
 		ch.innerHTML = '';
-		ch.appendChild(document.createTextNode(d.checked ? 'בדקנו שהמבצע עדיין מוצע ב-' + d.checked + '. ' : 'פורסם: ' + d.pub + '. עוד לא אישרנו שהוא עדיין בתוקף: לחצו ונבדוק מול היזם. '));
-		if (d.link) { var pl = document.createElement('a'); pl.href = d.link; pl.textContent = 'לעמוד הפרויקט'; ch.appendChild(pl); ch.appendChild(document.createTextNode(' · ')); }
-		if (d.src) { var a = document.createElement('a'); a.href = d.src; a.target = '_blank'; a.rel = 'noopener nofollow'; a.textContent = 'המקור'; ch.appendChild(a); }
+		ch.appendChild(document.createTextNode(d.checked ? t('בדקנו שהמבצע עדיין מוצע ב-') + d.checked + '. ' : t('פורסם: ') + d.pub + t('. עוד לא אישרנו שהוא עדיין בתוקף: לחצו ונבדוק מול היזם. ')));
+		if (d.link) { var pl = document.createElement('a'); pl.href = d.link; pl.textContent = t('לעמוד הפרויקט'); ch.appendChild(pl); ch.appendChild(document.createTextNode(' · ')); }
+		if (d.src) { var a = document.createElement('a'); a.href = d.src; a.target = '_blank'; a.rel = 'noopener nofollow'; a.textContent = t('המקור'); ch.appendChild(a); }
 		var w1 = sheet.querySelector('[data-f=wa1]'), w2 = sheet.querySelector('[data-f=wa2]');
-		w1.href = wa('היי, אשמח לבדוק אם המבצע ב' + d.project + ' (' + d.kind + ') עדיין בתוקף ולקבל מחירון ותוכניות');
-		w2.href = wa('היי, אשמח לייעוץ משכנתא והשלמת הון למבצע ב' + d.project);
+		w1.href = wa(t('היי, אשמח לבדוק אם המבצע ב') + d.project + ' (' + d.kind + t(') עדיין בתוקף ולקבל מחירון ותוכניות'));
+		w2.href = wa(t('היי, אשמח לייעוץ משכנתא והשלמת הון למבצע ב') + d.project);
 		$$('.nldm-list li').forEach(function (li) { li.classList.toggle('is-sel', li.dataset.id === d.id); });
 		if (anim && !RM) { sheet.classList.remove('is-swap'); void sheet.offsetWidth; sheet.classList.add('is-swap'); }
 	}
@@ -182,7 +188,7 @@
 		if (d.hot) {
 			var h = document.createElement('span'); h.className = 'hot';
 			h.innerHTML = '<svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 1.8 1 2.8 2 3.2C11 8.5 11 5 12 2z"/></svg>';
-			h.appendChild(document.createTextNode('מבצע חם'));
+			h.appendChild(document.createTextNode(t('מבצע חם')));
 			el.appendChild(h);
 			if (!RM) {
 				for (var i = 0; i < 5; i++) {
@@ -247,7 +253,7 @@
 				var box = document.createElement('div'), a = document.createElement('a');
 				a.href = f.properties.u; a.textContent = f.properties.t;
 				box.appendChild(a); box.appendChild(document.createElement('br'));
-				var s = document.createElement('span'); s.textContent = 'פרויקט חדש מהמאגר שלנו'; box.appendChild(s);
+				var s = document.createElement('span'); s.textContent = t('פרויקט חדש מהמאגר שלנו'); box.appendChild(s);
 				new maplibregl.Popup({ closeButton: false, offset: 8 }).setLngLat(f.geometry.coordinates).setDOMContent(box).addTo(map);
 			});
 			map.on('mouseenter', 'nldm-pts', function () { map.getCanvas().style.cursor = 'pointer'; });
@@ -279,7 +285,7 @@
 		b.addEventListener('click', function () {
 			if (!map) { return; }
 			var act = b.dataset.act;
-			if (act === 'tilt') { S.tilt = !S.tilt; map.easeTo({ pitch: S.tilt ? 52 : 0, bearing: S.tilt ? -14 : 0, duration: RM ? 0 : 800 }); b.textContent = S.tilt ? 'מבט מלמעלה' : 'תלת ממד'; }
+			if (act === 'tilt') { S.tilt = !S.tilt; map.easeTo({ pitch: S.tilt ? 52 : 0, bearing: S.tilt ? -14 : 0, duration: RM ? 0 : 800 }); b.textContent = S.tilt ? t('מבט מלמעלה') : t('תלת ממד'); }
 			if (act === 'all') { fitTo(deals.filter(shown)); }
 			if (act === 'near' && navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function (p) { map.easeTo({ center: [p.coords.longitude, p.coords.latitude], zoom: 12.5, duration: RM ? 0 : 1000 }); });
@@ -307,12 +313,12 @@
 		var tv = q.same ? 0 : reg0 - deal0, idx = q.same ? 0 : regI - dealI, total = tv + idx + rent + q.cut - q.prem;
 		return { tv: tv, idx: idx, rent: rent, cut: q.cut, prem: q.prem, total: total, pct: Math.round(1000 * total / q.P) / 10 };
 	}
-	function money(n) { var a = Math.abs(n), t = a >= 1000000 ? (Math.round(a / 10000) / 100) + ' מיליון ₪' : Math.round(a / 1000).toLocaleString('he-IL') + ' אלף ₪'; return (n < -500 ? '−' : '') + t; }
+	function money(n) { var a = Math.abs(n); return (n < -500 ? '−' : '') + fmt(a); }
 	var FIELDS = [
-		['P', 'מחיר הדירה', 800000, 12000000, 10000, money], ['s', 'משלמים בחתימה', 0, 60, 1, function (v) { return v + '%'; }],
-		['T', 'חודשים עד האכלוס', 6, 60, 1, function (v) { return v + ' חודשים'; }], ['i', 'מדד תשומות הבנייה לשנה', 0, 8, 0.5, function (v) { return v + '%'; }],
-		['r', 'ריבית אלטרנטיבית (משכנתא)', 2, 8, 0.25, function (v) { return v + '%'; }], ['R', 'שכר דירה מהיזם לחודש', 0, 15000, 500, money],
-		['M', 'לכמה חודשים', 0, 60, 1, String], ['cut', 'הנחה ישירה במחיר', 0, 800000, 10000, money], ['prem', 'תוספת למחיר בגלל המבצע', 0, 800000, 10000, money]
+		['P', t('מחיר הדירה'), 800000, 12000000, 10000, money], ['s', t('משלמים בחתימה'), 0, 60, 1, function (v) { return v + '%'; }],
+		['T', t('חודשים עד האכלוס'), 6, 60, 1, function (v) { return v + t(' חודשים'); }], ['i', t('מדד תשומות הבנייה לשנה'), 0, 8, 0.5, function (v) { return v + '%'; }],
+		['r', t('ריבית אלטרנטיבית (משכנתא)'), 2, 8, 0.25, function (v) { return v + '%'; }], ['R', t('שכר דירה מהיזם לחודש'), 0, 15000, 500, money],
+		['M', t('לכמה חודשים'), 0, 60, 1, String], ['cut', t('הנחה ישירה במחיר'), 0, 800000, 10000, money], ['prem', t('תוספת למחיר בגלל המבצע'), 0, 800000, 10000, money]
 	];
 	function renderCalc(anim) {
 		if (!calc || !C) { return; }
@@ -320,15 +326,15 @@
 		var tot = calc.querySelector('.nldm-calc-total'), gn = calc.querySelector('.nldm-gauge-n'), g1 = calc.querySelector('.g1');
 		roll(tot, Number(tot.dataset.v || 0), Math.round(R.total), money); tot.dataset.v = Math.round(R.total);
 		gn.textContent = R.pct + '%';
-		calc.querySelector('.nldm-calc-pct').textContent = 'שהם ' + R.pct + '% הנחה אמיתית ממחיר הדירה';
+		calc.querySelector('.nldm-calc-pct').textContent = t('שהם ') + R.pct + t('% הנחה אמיתית ממחיר הדירה');
 		g1.style.strokeDasharray = Math.max(0, Math.min(251, 251 * R.pct / 20)).toFixed(1) + ' 251';
 		calc.classList.toggle('is-neg', R.total < 0);
 		var parts = [
-			[C.tail || C.tailAll ? 'כסף שנשאר אצלכם, גם אחרי האכלוס' : 'כסף שנשאר אצלכם עד האכלוס', R.tv, C.tail || C.tailAll ? 'חלק מהמחיר משולם ' + Math.round(C.tailM / 12) + ' שנים אחרי האכלוס, בלי ריבית והצמדה' : 'משלמים מאוחר יותר, והכסף עובד בינתיים בריבית ' + C.r + '%', 'a'],
-			[R.idx >= 0 ? 'הצמדה למדד שנחסכה' : 'הצמדה נוספת בגלל הדחייה', R.idx, C.ex ? 'פטור מלא מהצמדה ליתרה' : 'בלי פטור, היתרה הדחויה צמודה עד האכלוס', 'b'],
-			['שכר דירה או הטבה חודשית מהיזם', R.rent, C.M ? C.M + ' חודשים של ' + (C.same ? 'עד ' : '') + money(C.R) + (C.same ? ', לפי פרסום. לוח התשלומים לא פורסם ולכן נספר כרגיל' : '') : 'אין במבצע הזה', 'c'],
-			['הנחה ישירה במחיר', R.cut, R.cut ? 'כפי שפורסם' : 'אין במבצע הזה', 'c'],
-			['תוספת למחיר בגלל המבצע', -R.prem, 'שאלו את היזם מחיר בלי המבצע', 'd']
+			[C.tail || C.tailAll ? t('כסף שנשאר אצלכם, גם אחרי האכלוס') : t('כסף שנשאר אצלכם עד האכלוס'), R.tv, C.tail || C.tailAll ? t('חלק מהמחיר משולם ') + Math.round(C.tailM / 12) + t(' שנים אחרי האכלוס, בלי ריבית והצמדה') : t('משלמים מאוחר יותר, והכסף עובד בינתיים בריבית ') + C.r + '%', 'a'],
+			[R.idx >= 0 ? t('הצמדה למדד שנחסכה') : t('הצמדה נוספת בגלל הדחייה'), R.idx, C.ex ? t('פטור מלא מהצמדה ליתרה') : t('בלי פטור, היתרה הדחויה צמודה עד האכלוס'), 'b'],
+			[t('שכר דירה או הטבה חודשית מהיזם'), R.rent, C.M ? C.M + t(' חודשים של ') + (C.same ? t('עד ') : '') + money(C.R) + (C.same ? t(', לפי פרסום. לוח התשלומים לא פורסם ולכן נספר כרגיל') : '') : t('אין במבצע הזה'), 'c'],
+			[t('הנחה ישירה במחיר'), R.cut, R.cut ? t('כפי שפורסם') : t('אין במבצע הזה'), 'c'],
+			[t('תוספת למחיר בגלל המבצע'), -R.prem, t('שאלו את היזם מחיר בלי המבצע'), 'd']
 		];
 		var max = Math.max.apply(null, parts.map(function (p) { return Math.abs(p[1]); }).concat([1]));
 		var box = calc.querySelector('.nldm-calc-parts'); box.innerHTML = '';
@@ -344,7 +350,7 @@
 			setTimeout(function () { bar.style.width = Math.max(2, Math.round(100 * Math.abs(p[1]) / max)) + '%'; }, RM || !anim ? 0 : 40 + n * 90);
 		});
 		FIELDS.forEach(function (f) { var o = calc.querySelector('[data-o="' + f[0] + '"]'); if (o) { o.textContent = f[5](C[f[0]]); } var inp = calc.querySelector('[data-k="' + f[0] + '"]'); if (inp && Number(inp.value) !== C[f[0]]) { inp.value = C[f[0]]; } });
-		var ex = calc.querySelector('.nldm-ex'); if (ex) { ex.textContent = C.ex ? 'פטור מהצמדה: כן' : 'פטור מהצמדה: לא'; ex.setAttribute('aria-pressed', C.ex ? 'true' : 'false'); }
+		var ex = calc.querySelector('.nldm-ex'); if (ex) { ex.textContent = C.ex ? t('פטור מהצמדה: כן') : t('פטור מהצמדה: לא'); ex.setAttribute('aria-pressed', C.ex ? 'true' : 'false'); }
 	}
 	function calcPick(id) {
 		C = calcFrom(byId[id] || null);
@@ -353,9 +359,9 @@
 	}
 	if (calc) {
 		var pre = calc.querySelector('.nldm-calc-pre');
-		deals.filter(function (d) { return d.calcOk && d.price; }).concat([{ id: 'mine', project: 'המבצע שלי' }]).forEach(function (d) {
+		deals.filter(function (d) { return d.calcOk && d.price; }).concat([{ id: 'mine', project: t('המבצע שלי') }]).forEach(function (d) {
 			var b = document.createElement('button'); b.type = 'button'; b.dataset.id = d.id;
-			b.textContent = d.id === 'mine' ? 'המבצע שלי' : d.dev + ' · ' + d.project.split(',')[0];
+			b.textContent = d.id === 'mine' ? t('המבצע שלי') : d.dev + ' · ' + d.project.split(',')[0];
 			b.addEventListener('click', function () { calcPick(d.id); });
 			pre.appendChild(b);
 		});

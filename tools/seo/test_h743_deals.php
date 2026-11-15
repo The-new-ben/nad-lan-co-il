@@ -11,6 +11,7 @@ function esc_attr( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
 function esc_html( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
 function esc_url( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
 function wp_json_encode( $d, $f = 0 ) { return json_encode( $d, $f ); }
+function home_url( $p = '/' ) { return 'https://nad-lan.co.il' . $p; }
 function is_page() { return true; }
 function in_the_loop() { return true; }
 function is_main_query() { return true; }
@@ -46,8 +47,16 @@ $o3 = nlrun( $art );
 $ok( 1 === substr_count( $o3, 'nldm-disc' ) - 0 + 0 || substr_count( $o3, 'id="nldm-disc-h"' ) === 1, 'discount section once' );
 $ok( strpos( $o3, 'id="nldm-disc-h"' ) > strpos( $o3, 'id="nldm-data"' ) && substr_count( substr( $o3, 0, strpos( $o3, 'class="nldm nldm-disc"' ) ), '<h2>X</h2>' ) === 5, 'discount section after 5 of the 10 article h2 (the middle)' );
 $ok( false !== strpos( $o3, 'href="/dira-behanacha/"' ) && false !== strpos( $o3, 'id="nldm-calc"' ), 'link to the state programme page; calculator present' );
+$ok( 1 === substr_count( $out, 'application/ld+json' ) && false !== strpos( $out, '"@type":"ApartmentComplex"' ) && false !== strpos( $out, '"@type":"Dataset"' ), 'Hebrew structured data' );
 $_SERVER['REQUEST_URI'] = '/en/developer-deals/';
-$ok( '<p>X</p>' === nlrun( '<p>X</p>' ), 'not on /en/' );
+$en = nlrun( '<h1>E</h1><h2>a</h2><h2>b</h2>' );
+$ok( 0 === strpos( $en, '<h1>E</h1><section id="nldm" class="nldm" dir="ltr" lang="en"' ), 'English map under the English h1' );
+$ok( false === strpos( $en, 'nldm-disc' ) && 1 === substr_count( $en, 'application/ld+json' ) && false !== strpos( $en, 'Israel developer deals map' ), 'English: no Hebrew programme section, its own structured data' );
+preg_match( '~<script type="application/json" id="nldm-data">(.*?)</script>~s', $en, $me ); $je = json_decode( $me[1] ?? '', true );
+$ok( is_array( $je ) && 'en' === $je['lang'] && 17 === count( $je['deals'] ) && 'LOVE Glil Yam, Herzliya' === $je['deals'][0]['project'] && ! preg_match( '/[\x{05D0}-\x{05EA}]/u', implode( ' ', array_map( function ( $d ) { return $d['project'] . $d['terms'] . $d['kind'] . $d['short'] . implode( '', array_column( $d['bar'], 1 ) ); }, $je['deals'] ) ) ), 'English deals: all 17, no Hebrew left in their text' );
+$ok( isset( $je['t']['בקשו מחיר'] ) && is_array( $je['fx'] ), 'English strings and dollar rate passed to the script' );
+$_SERVER['REQUEST_URI'] = '/fr/developer-deals/';
+$ok( '<p>X</p>' === nlrun( '<p>X</p>' ), 'not on /fr/' );
 $GLOBALS['__page'] = 'projects'; $_SERVER['REQUEST_URI'] = '/projects/';
 $ok( '<p>X</p>' === nlrun( '<p>X</p>' ), 'not on other pages' );
 echo $fails ? "$fails failed\n" : "all passed\n";

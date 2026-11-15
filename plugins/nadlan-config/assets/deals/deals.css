@@ -185,3 +185,8 @@
 .nldm-calc-note{margin:0;font-size:13px;line-height:1.55;color:var(--ink2);background:#F4F7F8;border-radius:10px;padding:8px 10px}
 .nldm-legal{margin:0;font-size:12px;line-height:1.6;color:var(--mut);border-top:1px solid var(--line);padding-top:10px}
 .nldm-sheet-legal{margin:-6px 0 0;font-size:11px;line-height:1.5;color:var(--mut)}
+/* English page (left to right) */
+.nldm[dir=ltr] .nldm-tag{direction:ltr!important}.nldm[dir=ltr] .nldm-tag .tx{text-align:left}
+.nldm[dir=ltr] .nldm-list button{text-align:left!important}.nldm[dir=ltr] .nldm-li{text-align:left}
+.nldm[dir=ltr] .nldm-tag .hot{right:auto;left:-8px}
+.nldm[dir=ltr] .maplibregl-popup-content{direction:ltr;text-align:left}
