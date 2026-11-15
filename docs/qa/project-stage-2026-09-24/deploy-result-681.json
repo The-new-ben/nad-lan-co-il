@@ -1,0 +1,21 @@
+{
+  "released": "1.72.681",
+  "from": "1.72.680",
+  "live_before": {
+    "inc/directory.php": "97197f8ec69bf287bb93b022d0ca1fc1",
+    "nadlan-config.php": "2c4dad66202e84ebab5b80cfa82b81d1"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-15 18:57:44",
+  "files": {
+    "inc/deals-map.php": "b8cc28bd67fcd1524329236ac8491e43",
+    "assets/deals/deals.js": "68e7a4231c341de6418ee1312ce758bb",
+    "assets/deals/deals.css": "e91828d5837fa892c1ed36f61a8f411b",
+    "assets/deals/projects.json": "873d18288919759da89cc8875f900527",
+    "inc/directory.php": "b4aa25e71a85e961404368b260d9f5b2",
+    "nadlan-config.php": "4d5b72bdfff86e69a2ad7e7dbb88f743"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.681, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

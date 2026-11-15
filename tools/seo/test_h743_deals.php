@@ -1,0 +1,46 @@
+<?php
+/* HAD-743 local test: deals-map.php renders without notices, every deal has its fields, the JSON parses, and the page check works. */
+error_reporting( E_ALL ); ini_set( 'display_errors', '1' );
+define( 'ABSPATH', __DIR__ . '/' );
+$GLOBALS['__filters'] = array(); $GLOBALS['__page'] = 'developer-deals';
+function add_filter( $h, $f, $p = 10 ) { $GLOBALS['__filters'][ $h ][] = $f; }
+function add_action( $h, $f, $p = 10 ) { $GLOBALS['__filters'][ $h ][] = $f; }
+function get_option( $k, $d = false ) { return $d; }
+function plugins_url( $p, $f ) { return 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/' . $p; }
+function esc_attr( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
+function esc_html( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
+function esc_url( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
+function wp_json_encode( $d, $f = 0 ) { return json_encode( $d, $f ); }
+function is_page() { return true; }
+function in_the_loop() { return true; }
+function is_main_query() { return true; }
+function get_queried_object() { return (object) array( 'post_name' => $GLOBALS['__page'] ); }
+require __DIR__ . '/../../plugins/nadlan-config/inc/deals-map.php';
+$fails = 0;
+$ok = function ( $c, $m ) use ( &$fails ) { if ( ! $c ) { $fails++; echo "FAIL: $m\n"; } };
+$deals = nadlan_dm_deals();
+$ok( count( $deals ) === 12, 'twelve deals' );
+$ids = array();
+foreach ( $deals as $d ) {
+	foreach ( array( 'id', 'dev', 'devFull', 'project', 'city', 'lat', 'lng', 'color', 'k', 'kind', 'short', 'terms', 'bar', 'pub' ) as $f ) { $ok( isset( $d[ $f ] ) && '' !== $d[ $f ], $d['id'] . ' has ' . $f ); }
+	$ok( $d['lat'] > 29.4 && $d['lat'] < 33.4 && $d['lng'] > 34.2 && $d['lng'] < 35.9, $d['id'] . ' inside Israel' );
+	$sum = 0; foreach ( $d['bar'] as $b ) { $sum += $b[0]; } $ok( 100 === $sum, $d['id'] . ' bar sums to 100' );
+	$ok( ! isset( $ids[ $d['id'] ] ), 'unique ' . $d['id'] ); $ids[ $d['id'] ] = 1;
+}
+$_SERVER['REQUEST_URI'] = '/developer-deals/';
+$out = $GLOBALS['__filters']['the_content'][0]( '<p>ARTICLE</p>' );
+$ok( 0 === strpos( $out, '<section id="nldm"' ), 'map section first' );
+$ok( false !== strpos( $out, '<p>ARTICLE</p>' ), 'article kept' );
+$ok( 1 === substr_count( $out, 'id="nldm-data"' ), 'one data block' );
+preg_match( '~<script type="application/json" id="nldm-data">(.*?)</script>~s', $out, $m );
+$j = json_decode( $m[1] ?? '', true );
+$ok( is_array( $j ) && 12 === count( $j['deals'] ) && 'glilyam' === $j['hotId'], 'json parses' );
+$ok( 12 === substr_count( $out, 'data-pick=' ), 'twelve list rows' );
+$ok( false === strpos( $out, '<h1' ), 'no second h1' );
+$ok( $GLOBALS['__filters']['the_content'][0]( $out ) === $out, 'no double insert' );
+$_SERVER['REQUEST_URI'] = '/en/developer-deals/';
+$ok( '<p>X</p>' === $GLOBALS['__filters']['the_content'][0]( '<p>X</p>' ), 'not on /en/' );
+$GLOBALS['__page'] = 'projects'; $_SERVER['REQUEST_URI'] = '/projects/';
+$ok( '<p>X</p>' === $GLOBALS['__filters']['the_content'][0]( '<p>X</p>' ), 'not on other pages' );
+echo $fails ? "$fails failed\n" : "all passed\n";
+exit( $fails ? 1 : 0 );

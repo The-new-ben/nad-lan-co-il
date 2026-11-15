@@ -1429,3 +1429,4 @@ echo function_exists( 'nadlan_ph_top_html' ) ? nadlan_ph_top_html() : ''; // php
 require __DIR__ . '/directory-assets.php';
 require_once __DIR__ . '/projects-hub.php'; // 1.72.513: the /projects/ hub (body after the grid, FAQ, tools)
 if ( is_readable( __DIR__ . '/project-default-image.php' ) ) { require_once __DIR__ . '/project-default-image.php'; } // 1.72.677 HAD-740: the default card picture (Settings > Media)
+if ( is_readable( __DIR__ . '/deals-map.php' ) ) { require_once __DIR__ . '/deals-map.php'; } // 1.72.681 HAD-743: the developer deals map on /developer-deals/
