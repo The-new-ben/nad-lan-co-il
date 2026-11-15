@@ -293,7 +293,7 @@
 		var c = (d && d.calc) || {};
 		var P = (d && d.price) || 2500000;
 		var s = d && d.firstAbs != null && d.price ? Math.round(100 * d.firstAbs / d.price) : (d && d.first != null ? Math.round(100 * d.first) : 20);
-		return { id: d ? d.id : 'mine', P: P, s: s, T: c.T || 30, i: 3, r: 5, R: c.R || 0, M: c.M || 0, prem: 0, cut: c.cut || 0, ex: !!c.ex, tail: c.tail || 0, tailM: c.tailM || 0, tailAll: !!c.tailAll };
+		return { id: d ? d.id : 'mine', P: P, s: s, T: c.T || 30, i: 3, r: 5, R: c.R || 0, M: c.M || 0, prem: 0, cut: c.cut || 0, ex: !!c.ex, tail: c.tail || 0, tailM: c.tailM || 0, tailAll: !!c.tailAll, same: !!c.same };
 	}
 	function solve(q) {
 		var m = q.r / 100 / 12, ig = Math.pow(1 + q.i / 100, 1 / 12) - 1, d = function (k) { return Math.pow(1 + m, -k); };
@@ -303,7 +303,8 @@
 		/* a tail is paid tailM months after occupancy, without interest or indexation (Gindi 20/50/30, Hagag: the balance 3 years after) */
 		var deal0 = first + mid * d(q.T) + tail * d(q.T + (q.tailM || 0)), dealI = q.ex ? 0 : mid * 0.5 * (Math.pow(1 + ig, q.T) - 1) * d(q.T);
 		var rent = 0; for (k = 1; k <= q.M; k++) { rent += q.R * d(k); }
-		var tv = reg0 - deal0, idx = regI - dealI, total = tv + idx + rent + q.cut - q.prem;
+		/* same: no payment schedule was published for this deal, so it is counted as a regular schedule and only its published benefit counts */
+		var tv = q.same ? 0 : reg0 - deal0, idx = q.same ? 0 : regI - dealI, total = tv + idx + rent + q.cut - q.prem;
 		return { tv: tv, idx: idx, rent: rent, cut: q.cut, prem: q.prem, total: total, pct: Math.round(1000 * total / q.P) / 10 };
 	}
 	function money(n) { var a = Math.abs(n), t = a >= 1000000 ? (Math.round(a / 10000) / 100) + ' מיליון ₪' : Math.round(a / 1000).toLocaleString('he-IL') + ' אלף ₪'; return (n < -500 ? '−' : '') + t; }
@@ -325,7 +326,7 @@
 		var parts = [
 			[C.tail || C.tailAll ? 'כסף שנשאר אצלכם, גם אחרי האכלוס' : 'כסף שנשאר אצלכם עד האכלוס', R.tv, C.tail || C.tailAll ? 'חלק מהמחיר משולם ' + Math.round(C.tailM / 12) + ' שנים אחרי האכלוס, בלי ריבית והצמדה' : 'משלמים מאוחר יותר, והכסף עובד בינתיים בריבית ' + C.r + '%', 'a'],
 			[R.idx >= 0 ? 'הצמדה למדד שנחסכה' : 'הצמדה נוספת בגלל הדחייה', R.idx, C.ex ? 'פטור מלא מהצמדה ליתרה' : 'בלי פטור, היתרה הדחויה צמודה עד האכלוס', 'b'],
-			['שכר דירה מהיזם', R.rent, C.M ? C.M + ' חודשים של ' + money(C.R) : 'אין במבצע הזה', 'c'],
+			['שכר דירה או הטבה חודשית מהיזם', R.rent, C.M ? C.M + ' חודשים של ' + (C.same ? 'עד ' : '') + money(C.R) + (C.same ? ', לפי פרסום. לוח התשלומים לא פורסם ולכן נספר כרגיל' : '') : 'אין במבצע הזה', 'c'],
 			['הנחה ישירה במחיר', R.cut, R.cut ? 'כפי שפורסם' : 'אין במבצע הזה', 'c'],
 			['תוספת למחיר בגלל המבצע', -R.prem, 'שאלו את היזם מחיר בלי המבצע', 'd']
 		];
