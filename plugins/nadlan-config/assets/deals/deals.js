@@ -142,7 +142,7 @@
 		var ch = sheet.querySelector('[data-f=check]');
 		ch.classList.toggle('is-ok', !!d.checked);
 		ch.innerHTML = '';
-		ch.appendChild(document.createTextNode(d.checked ? 'בדקנו שהמבצע עדיין מוצע ב-' + d.checked + '. ' : 'פורסם ב' + d.pub + '. עוד לא אישרנו שהוא עדיין בתוקף: לחצו ונבדוק מול היזם. '));
+		ch.appendChild(document.createTextNode(d.checked ? 'בדקנו שהמבצע עדיין מוצע ב-' + d.checked + '. ' : 'פורסם: ' + d.pub + '. עוד לא אישרנו שהוא עדיין בתוקף: לחצו ונבדוק מול היזם. '));
 		if (d.src) { var a = document.createElement('a'); a.href = d.src; a.target = '_blank'; a.rel = 'noopener nofollow'; a.textContent = 'המקור'; ch.appendChild(a); }
 		var w1 = sheet.querySelector('[data-f=wa1]'), w2 = sheet.querySelector('[data-f=wa2]');
 		w1.href = wa('היי, אשמח לבדוק אם המבצע ב' + d.project + ' (' + d.kind + ') עדיין בתוקף ולקבל מחירון ותוכניות');

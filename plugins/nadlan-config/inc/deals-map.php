@@ -157,7 +157,10 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 
 add_filter( 'the_content', function ( $content ) {
 	if ( ! in_the_loop() || ! is_main_query() || ! nadlan_dm_is_page() || false !== strpos( $content, 'id="nldm"' ) ) { return $content; }
-	return nadlan_dm_render() . $content;
+	$at = stripos( $content, '</h1>' );
+	if ( false === $at ) { return nadlan_dm_render() . $content; }
+	$at += 5; // the article opens with its own h1: the map goes right under it (H1 -> answer -> CTAs -> stage)
+	return substr( $content, 0, $at ) . nadlan_dm_render() . substr( $content, $at );
 }, 6 );
 
 add_action( 'wp_enqueue_scripts', function () {

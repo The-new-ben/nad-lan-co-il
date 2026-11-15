@@ -38,6 +38,8 @@ $ok( is_array( $j ) && 12 === count( $j['deals'] ) && 'glilyam' === $j['hotId'],
 $ok( 12 === substr_count( $out, 'data-pick=' ), 'twelve list rows' );
 $ok( false === strpos( $out, '<h1' ), 'no second h1' );
 $ok( $GLOBALS['__filters']['the_content'][0]( $out ) === $out, 'no double insert' );
+$o2 = $GLOBALS['__filters']['the_content'][0]( '<h1>H</h1><p>ARTICLE</p>' );
+$ok( 0 === strpos( $o2, '<h1>H</h1><section id="nldm"' ), 'map right under the article h1' );
 $_SERVER['REQUEST_URI'] = '/en/developer-deals/';
 $ok( '<p>X</p>' === $GLOBALS['__filters']['the_content'][0]( '<p>X</p>' ), 'not on /en/' );
 $GLOBALS['__page'] = 'projects'; $_SERVER['REQUEST_URI'] = '/projects/';
