@@ -143,6 +143,7 @@
 		ch.classList.toggle('is-ok', !!d.checked);
 		ch.innerHTML = '';
 		ch.appendChild(document.createTextNode(d.checked ? 'בדקנו שהמבצע עדיין מוצע ב-' + d.checked + '. ' : 'פורסם: ' + d.pub + '. עוד לא אישרנו שהוא עדיין בתוקף: לחצו ונבדוק מול היזם. '));
+		if (d.link) { var pl = document.createElement('a'); pl.href = d.link; pl.textContent = 'לעמוד הפרויקט'; ch.appendChild(pl); ch.appendChild(document.createTextNode(' · ')); }
 		if (d.src) { var a = document.createElement('a'); a.href = d.src; a.target = '_blank'; a.rel = 'noopener nofollow'; a.textContent = 'המקור'; ch.appendChild(a); }
 		var w1 = sheet.querySelector('[data-f=wa1]'), w2 = sheet.querySelector('[data-f=wa2]');
 		w1.href = wa('היי, אשמח לבדוק אם המבצע ב' + d.project + ' (' + d.kind + ') עדיין בתוקף ולקבל מחירון ותוכניות');
@@ -285,6 +286,97 @@
 			}
 		});
 	});
+	/* ---- the true-discount calculator: present value of the deal's payment schedule against a regular developer schedule ---- */
+	var calc = $('#nldm-calc');
+	var C = null;
+	function calcFrom(d) {
+		var c = (d && d.calc) || {};
+		var P = (d && d.price) || 2500000;
+		var s = d && d.firstAbs != null && d.price ? Math.round(100 * d.firstAbs / d.price) : (d && d.first != null ? Math.round(100 * d.first) : 20);
+		return { id: d ? d.id : 'mine', P: P, s: s, T: c.T || 30, i: 3, r: 5, R: c.R || 0, M: c.M || 0, prem: 0, cut: c.cut || 0, ex: !!c.ex, tail: c.tail || 0, tailM: c.tailM || 0, tailAll: !!c.tailAll };
+	}
+	function solve(q) {
+		var m = q.r / 100 / 12, ig = Math.pow(1 + q.i / 100, 1 / 12) - 1, d = function (k) { return Math.pow(1 + m, -k); };
+		var reg0 = 0.2 * q.P, regI = 0, k, pay = 0.8 * q.P / q.T;
+		for (k = 1; k <= q.T; k++) { reg0 += pay * d(k); regI += pay * 0.5 * (Math.pow(1 + ig, k) - 1) * d(k); }
+		var first = q.s / 100 * q.P, tail = q.tailAll ? q.P - first : (q.tail || 0) / 100 * q.P, mid = q.P - first - tail;
+		/* a tail is paid tailM months after occupancy, without interest or indexation (Gindi 20/50/30, Hagag: the balance 3 years after) */
+		var deal0 = first + mid * d(q.T) + tail * d(q.T + (q.tailM || 0)), dealI = q.ex ? 0 : mid * 0.5 * (Math.pow(1 + ig, q.T) - 1) * d(q.T);
+		var rent = 0; for (k = 1; k <= q.M; k++) { rent += q.R * d(k); }
+		var tv = reg0 - deal0, idx = regI - dealI, total = tv + idx + rent + q.cut - q.prem;
+		return { tv: tv, idx: idx, rent: rent, cut: q.cut, prem: q.prem, total: total, pct: Math.round(1000 * total / q.P) / 10 };
+	}
+	function money(n) { var a = Math.abs(n), t = a >= 1000000 ? (Math.round(a / 10000) / 100) + ' מיליון ₪' : Math.round(a / 1000).toLocaleString('he-IL') + ' אלף ₪'; return (n < -500 ? '−' : '') + t; }
+	var FIELDS = [
+		['P', 'מחיר הדירה', 800000, 12000000, 10000, money], ['s', 'משלמים בחתימה', 0, 60, 1, function (v) { return v + '%'; }],
+		['T', 'חודשים עד האכלוס', 6, 60, 1, function (v) { return v + ' חודשים'; }], ['i', 'מדד תשומות הבנייה לשנה', 0, 8, 0.5, function (v) { return v + '%'; }],
+		['r', 'ריבית אלטרנטיבית (משכנתא)', 2, 8, 0.25, function (v) { return v + '%'; }], ['R', 'שכר דירה מהיזם לחודש', 0, 15000, 500, money],
+		['M', 'לכמה חודשים', 0, 60, 1, String], ['cut', 'הנחה ישירה במחיר', 0, 800000, 10000, money], ['prem', 'תוספת למחיר בגלל המבצע', 0, 800000, 10000, money]
+	];
+	function renderCalc(anim) {
+		if (!calc || !C) { return; }
+		var R = solve(C);
+		var tot = calc.querySelector('.nldm-calc-total'), gn = calc.querySelector('.nldm-gauge-n'), g1 = calc.querySelector('.g1');
+		roll(tot, Number(tot.dataset.v || 0), Math.round(R.total), money); tot.dataset.v = Math.round(R.total);
+		gn.textContent = R.pct + '%';
+		calc.querySelector('.nldm-calc-pct').textContent = 'שהם ' + R.pct + '% הנחה אמיתית ממחיר הדירה';
+		g1.style.strokeDasharray = Math.max(0, Math.min(251, 251 * R.pct / 20)).toFixed(1) + ' 251';
+		calc.classList.toggle('is-neg', R.total < 0);
+		var parts = [
+			[C.tail || C.tailAll ? 'כסף שנשאר אצלכם, גם אחרי האכלוס' : 'כסף שנשאר אצלכם עד האכלוס', R.tv, C.tail || C.tailAll ? 'חלק מהמחיר משולם ' + Math.round(C.tailM / 12) + ' שנים אחרי האכלוס, בלי ריבית והצמדה' : 'משלמים מאוחר יותר, והכסף עובד בינתיים בריבית ' + C.r + '%', 'a'],
+			[R.idx >= 0 ? 'הצמדה למדד שנחסכה' : 'הצמדה נוספת בגלל הדחייה', R.idx, C.ex ? 'פטור מלא מהצמדה ליתרה' : 'בלי פטור, היתרה הדחויה צמודה עד האכלוס', 'b'],
+			['שכר דירה מהיזם', R.rent, C.M ? C.M + ' חודשים של ' + money(C.R) : 'אין במבצע הזה', 'c'],
+			['הנחה ישירה במחיר', R.cut, R.cut ? 'כפי שפורסם' : 'אין במבצע הזה', 'c'],
+			['תוספת למחיר בגלל המבצע', -R.prem, 'שאלו את היזם מחיר בלי המבצע', 'd']
+		];
+		var max = Math.max.apply(null, parts.map(function (p) { return Math.abs(p[1]); }).concat([1]));
+		var box = calc.querySelector('.nldm-calc-parts'); box.innerHTML = '';
+		parts.forEach(function (p, n) {
+			if (!p[1] && n >= 2) { return; }
+			var row = document.createElement('div'); row.className = 'nldm-part';
+			row.innerHTML = '<div class="l"><span></span><b></b></div><div class="t"><i class="' + p[3] + (p[1] < 0 ? ' is-neg' : '') + '"></i></div><small></small>';
+			row.querySelector('span').textContent = p[0]; row.querySelector('b').textContent = money(p[1]);
+			row.querySelector('b').className = p[1] < 0 ? 'is-neg' : '';
+			row.querySelector('small').textContent = p[2];
+			box.appendChild(row);
+			var bar = row.querySelector('i');
+			setTimeout(function () { bar.style.width = Math.max(2, Math.round(100 * Math.abs(p[1]) / max)) + '%'; }, RM || !anim ? 0 : 40 + n * 90);
+		});
+		FIELDS.forEach(function (f) { var o = calc.querySelector('[data-o="' + f[0] + '"]'); if (o) { o.textContent = f[5](C[f[0]]); } var inp = calc.querySelector('[data-k="' + f[0] + '"]'); if (inp && Number(inp.value) !== C[f[0]]) { inp.value = C[f[0]]; } });
+		var ex = calc.querySelector('.nldm-ex'); if (ex) { ex.textContent = C.ex ? 'פטור מהצמדה: כן' : 'פטור מהצמדה: לא'; ex.setAttribute('aria-pressed', C.ex ? 'true' : 'false'); }
+	}
+	function calcPick(id) {
+		C = calcFrom(byId[id] || null);
+		$$('.nldm-calc-pre button').forEach(function (b) { var on = b.dataset.id === id; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+		renderCalc(true);
+	}
+	if (calc) {
+		var pre = calc.querySelector('.nldm-calc-pre');
+		deals.filter(function (d) { return d.price; }).concat([{ id: 'mine', project: 'המבצע שלי' }]).forEach(function (d) {
+			var b = document.createElement('button'); b.type = 'button'; b.dataset.id = d.id;
+			b.textContent = d.id === 'mine' ? 'המבצע שלי' : d.dev + ' · ' + d.project.split(',')[0];
+			b.addEventListener('click', function () { calcPick(d.id); });
+			pre.appendChild(b);
+		});
+		var fl = calc.querySelector('.nldm-calc-fields');
+		FIELDS.forEach(function (f) {
+			var w = document.createElement('div'); w.className = 'nldm-field';
+			w.innerHTML = '<div><label></label><output></output></div><input type="range">';
+			var id = 'nldm-c-' + f[0];
+			w.querySelector('label').textContent = f[1]; w.querySelector('label').htmlFor = id;
+			w.querySelector('output').dataset.o = f[0];
+			var inp = w.querySelector('input'); inp.id = id; inp.min = f[2]; inp.max = f[3]; inp.step = f[4]; inp.dataset.k = f[0];
+			inp.addEventListener('input', function () { C[f[0]] = Number(inp.value); renderCalc(false); });
+			fl.appendChild(w);
+		});
+		var exb = document.createElement('button'); exb.type = 'button'; exb.className = 'nldm-ex';
+		exb.addEventListener('click', function () { C.ex = !C.ex; renderCalc(false); });
+		fl.appendChild(exb);
+		calcPick(D.hotId);
+	}
+	var toCalc = $('.nldm-tocalc');
+	if (toCalc) { toCalc.addEventListener('click', function () { calcPick(byId[S.sel] && byId[S.sel].price ? S.sel : 'mine'); calc.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); }); }
+
 	var mapBox = document.getElementById('nldm-map');
 	if ('IntersectionObserver' in window) {
 		var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); initMap(); } }, { rootMargin: '300px' });

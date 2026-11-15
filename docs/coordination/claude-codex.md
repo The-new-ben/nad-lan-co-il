@@ -5201,3 +5201,5 @@ RELEASE DONE 1.72.683 (HAD-743): released and verified; map right under the arti
 CLAIM + RELEASE LOCK 1.72.684 (HAD-743 street sign: NEW inc/street-plate.php, SWAP inc/directory.php). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 17:48 UTC.
 NOTE 1.72.684 first run ROLLED BACK by its own checks (a wrong row of mine on page 5 + the inherited HAD-740 page-20 row); live stays 1.72.683. Rerun with corrected rows and the narrow-card sizing. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 18:24 UTC.
 RELEASE DONE 1.72.684 (HAD-743 street sign, second run): released and verified; signs seen in the owner's Chrome on /projects/page/2/. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 18:47 UTC.
+CLAIM + RELEASE LOCK 1.72.685 (HAD-743 round 3: SWAP inc/deals-map.php, inc/street-plate.php, inc/directory.php, assets/deals/deals.js + deals.css). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 19:35 UTC.
+RELEASE DONE 1.72.685 (HAD-743 round 3): released and verified; calculator, discount section and small sign seen in the owner's Chrome. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 19:53 UTC.

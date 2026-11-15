@@ -1080,10 +1080,10 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		ob_start(); ?>
 <a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?><?php echo $own ? ' is-own' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 <?php $nlsp = ( $pd && 'default' === $pd['kind'] && function_exists( 'nadlan_sp_html' ) && ( ! function_exists( 'nadlan_pd_lang_of_slug' ) || 'he' === nadlan_pd_lang_of_slug( $slug ) ) ) ? nadlan_sp_html( $id, (string) $pm['label'] ) : ''; /* HAD-743: the street sign over the real projects around it replaces the shared default picture */ ?>
-	<div class="nldc-media<?php echo '' !== $nlsp ? ' has-plate' : ( $pd ? ( 'twin' === $pd['kind'] ? ' has-real-photo' : ' has-default-pic' ) : ( $is_real_photo ? ' has-real-photo' : ' has-concept-art' ) ); ?><?php echo ( $fill && '' === $nlsp ) ? ' is-fill' : ''; ?>">
-		<?php if ( '' !== $nlsp ) : echo nadlan_sp_assets() . $nlsp; else : // phpcs:ignore WordPress.Security.EscapeOutput ?>
+	<div class="nldc-media<?php echo '' !== $nlsp ? ' has-plate has-default-pic' : ( $pd ? ( 'twin' === $pd['kind'] ? ' has-real-photo' : ' has-default-pic' ) : ( $is_real_photo ? ' has-real-photo' : ' has-concept-art' ) ); ?><?php echo $fill ? ' is-fill' : ''; ?>">
+		<?php /* HAD-743 v3 (Ben 15.11.2026): the brand picture stays, the small sign hangs over it */ ?>
 		<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo $pd ? esc_attr( (string) $pd['alt'] ) : ''; ?>" loading="lazy" decoding="async"<?php echo $img_w > 0 ? ' width="' . (int) $img_w . '" height="' . (int) $img_h . '"' : ''; ?><?php echo ( $pd && '' !== (string) $pd['srcset'] ) ? ' srcset="' . esc_attr( (string) $pd['srcset'] ) . '" sizes="' . esc_attr( (string) $pd['sizes'] ) . '"' : ''; ?>>
-		<?php endif; ?>
+		<?php if ( '' !== $nlsp ) { echo nadlan_sp_assets() . $nlsp; } // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
 		<?php if ( $pm['label'] !== 'אחר' && ! ( $pd && 'default' === $pd['kind'] ) && '' === $nlsp ) : /* "other" is a machine fallback, not a badge a buyer should read; HAD-740: nothing printed over the default picture (its type stays in the facts row as "סוג") */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
 		<?php if ( $tags ) : ?><span class="nldcp-tags"><?php foreach ( $tags as $t ) : ?><b class="nldcp-tag <?php echo esc_attr( $t[1] ); ?>"><?php echo esc_html( $t[0] ); ?></b><?php endforeach; ?></span><?php endif; ?>

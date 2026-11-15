@@ -16,10 +16,11 @@ function in_the_loop() { return true; }
 function is_main_query() { return true; }
 function get_queried_object() { return (object) array( 'post_name' => $GLOBALS['__page'] ); }
 require __DIR__ . '/../../plugins/nadlan-config/inc/deals-map.php';
+function nlrun( $c ) { $f = $GLOBALS['__filters']['the_content']; $c = $f[1]( $c ); return $f[0]( $c ); } // priority 6 (map) then 7 (discount section)
 $fails = 0;
 $ok = function ( $c, $m ) use ( &$fails ) { if ( ! $c ) { $fails++; echo "FAIL: $m\n"; } };
 $deals = nadlan_dm_deals();
-$ok( count( $deals ) === 12, 'twelve deals' );
+$ok( count( $deals ) === 17, 'seventeen deals' );
 $ids = array();
 foreach ( $deals as $d ) {
 	foreach ( array( 'id', 'dev', 'devFull', 'project', 'city', 'lat', 'lng', 'color', 'k', 'kind', 'short', 'terms', 'bar', 'pub' ) as $f ) { $ok( isset( $d[ $f ] ) && '' !== $d[ $f ], $d['id'] . ' has ' . $f ); }
@@ -28,21 +29,26 @@ foreach ( $deals as $d ) {
 	$ok( ! isset( $ids[ $d['id'] ] ), 'unique ' . $d['id'] ); $ids[ $d['id'] ] = 1;
 }
 $_SERVER['REQUEST_URI'] = '/developer-deals/';
-$out = $GLOBALS['__filters']['the_content'][0]( '<p>ARTICLE</p>' );
+$out = nlrun( '<p>ARTICLE</p>' );
 $ok( 0 === strpos( $out, '<section id="nldm"' ), 'map section first' );
 $ok( false !== strpos( $out, '<p>ARTICLE</p>' ), 'article kept' );
 $ok( 1 === substr_count( $out, 'id="nldm-data"' ), 'one data block' );
 preg_match( '~<script type="application/json" id="nldm-data">(.*?)</script>~s', $out, $m );
 $j = json_decode( $m[1] ?? '', true );
-$ok( is_array( $j ) && 12 === count( $j['deals'] ) && 'glilyam' === $j['hotId'], 'json parses' );
-$ok( 12 === substr_count( $out, 'data-pick=' ), 'twelve list rows' );
+$ok( is_array( $j ) && 17 === count( $j['deals'] ) && 'gindi-love' === $j['hotId'], 'json parses' );
+$ok( 17 === substr_count( $out, 'data-pick=' ), 'seventeen list rows' );
 $ok( false === strpos( $out, '<h1' ), 'no second h1' );
-$ok( $GLOBALS['__filters']['the_content'][0]( $out ) === $out, 'no double insert' );
-$o2 = $GLOBALS['__filters']['the_content'][0]( '<h1>H</h1><p>ARTICLE</p>' );
+$ok( nlrun( $out ) === $out, 'no double insert' );
+$o2 = nlrun( '<h1>H</h1><p>ARTICLE</p>' );
 $ok( 0 === strpos( $o2, '<h1>H</h1><section id="nldm"' ), 'map right under the article h1' );
+$art = '<h1>H</h1>' . str_repeat( '<h2>X</h2><p>t</p>', 10 );
+$o3 = nlrun( $art );
+$ok( 1 === substr_count( $o3, 'nldm-disc' ) - 0 + 0 || substr_count( $o3, 'id="nldm-disc-h"' ) === 1, 'discount section once' );
+$ok( strpos( $o3, 'id="nldm-disc-h"' ) > strpos( $o3, 'id="nldm-data"' ) && substr_count( substr( $o3, 0, strpos( $o3, 'class="nldm nldm-disc"' ) ), '<h2>X</h2>' ) === 5, 'discount section after 5 of the 10 article h2 (the middle)' );
+$ok( false !== strpos( $o3, 'href="/dira-behanacha/"' ) && false !== strpos( $o3, 'id="nldm-calc"' ), 'link to the state programme page; calculator present' );
 $_SERVER['REQUEST_URI'] = '/en/developer-deals/';
-$ok( '<p>X</p>' === $GLOBALS['__filters']['the_content'][0]( '<p>X</p>' ), 'not on /en/' );
+$ok( '<p>X</p>' === nlrun( '<p>X</p>' ), 'not on /en/' );
 $GLOBALS['__page'] = 'projects'; $_SERVER['REQUEST_URI'] = '/projects/';
-$ok( '<p>X</p>' === $GLOBALS['__filters']['the_content'][0]( '<p>X</p>' ), 'not on other pages' );
+$ok( '<p>X</p>' === nlrun( '<p>X</p>' ), 'not on other pages' );
 echo $fails ? "$fails failed\n" : "all passed\n";
 exit( $fails ? 1 : 0 );

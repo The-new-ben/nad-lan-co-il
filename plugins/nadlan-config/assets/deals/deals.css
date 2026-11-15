@@ -132,3 +132,52 @@
 .nldm .maplibregl-popup-content a{font-weight:600;color:var(--teal)}
 @media (min-width:768px){.nldm-stage{margin:0}.nldm-map{border-radius:18px}.nldm-expert-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nldm-chips{margin:0;padding:2px 0 4px}}
 @media (prefers-reduced-motion:reduce){.nldm *,.nldm-tag{animation:none!important;transition:none!important}}
+/* the true-discount calculator */
+.nldm .nldm-tocalc{all:unset;box-sizing:border-box;cursor:pointer;display:flex!important;align-items:center;justify-content:center;min-height:46px!important;border-radius:12px!important;background:#E9F3EE!important;color:var(--fit)!important;font:600 14px/1.2 "IBM Plex Sans Hebrew",sans-serif!important;padding:0 12px!important;width:100%!important}
+.nldm-calc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:90px}
+.nldm .nldm-calc h2{margin:0!important;font-size:21px!important;line-height:1.25!important;font-weight:700!important;color:var(--ink)!important}
+.nldm-calc>p{margin:0;font-size:15px;line-height:1.6;color:var(--ink2)}
+.nldm-calc-pre{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px}
+.nldm-calc-pre::-webkit-scrollbar{display:none}
+.nldm .nldm-calc-pre button{flex:0 0 auto;min-height:44px!important;padding:0 14px!important;margin:0!important;border-radius:22px!important;border:1px solid #C3CED5!important;background:#fff!important;color:var(--ink)!important;font:600 14px/1 "IBM Plex Sans Hebrew",sans-serif!important;white-space:nowrap;box-shadow:none!important;text-transform:none!important;transition:transform .15s}
+.nldm .nldm-calc-pre button.is-on{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
+.nldm .nldm-calc-pre button:active{transform:scale(.95)}
+.nldm-calc-res{background:var(--ink);color:#fff;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center}
+.nldm-gauge{position:relative;width:96px;height:96px;flex:0 0 auto}
+.nldm-gauge svg{width:96px;height:96px;transform:rotate(-90deg)}
+.nldm-gauge circle{fill:none;stroke-width:9}.nldm-gauge .g0{stroke:rgba(255,255,255,.14)}
+.nldm-gauge .g1{stroke:#3DDC97;stroke-linecap:round;stroke-dasharray:0 251;transition:stroke-dasharray .7s cubic-bezier(.2,.8,.2,1)}
+.nldm-calc.is-neg .nldm-gauge .g1{stroke:#FF8A8A}.nldm-calc.is-neg .nldm-calc-total{color:#FF8A8A}
+.nldm-gauge-n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 18px "IBM Plex Mono",monospace}
+.nldm-calc-big{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nldm-calc-big span{font-size:13px;color:#B9C6CF}
+.nldm-calc-total{font:600 30px/1.1 "IBM Plex Mono",monospace;color:#3DDC97;white-space:nowrap}
+.nldm-calc-parts{display:flex;flex-direction:column;gap:10px}
+.nldm-part .l{display:flex;justify-content:space-between;gap:8px;font-size:14px}
+.nldm-part .l b{font-family:"IBM Plex Mono",monospace;color:var(--fit);white-space:nowrap}.nldm-part .l b.is-neg{color:var(--red2)}
+.nldm-part .t{height:10px;border-radius:5px;background:#EEF2F4;overflow:hidden;margin:4px 0 3px}
+.nldm-part .t i{display:block;height:100%;width:0;border-radius:5px;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.nldm-part .t i.a{background:var(--teal)}.nldm-part .t i.b{background:#5E8FA3}.nldm-part .t i.c{background:#3DDC97}.nldm-part .t i.d,.nldm-part .t i.is-neg{background:var(--red)}
+.nldm-part small{font-size:12px;color:var(--mut)}
+.nldm-calc-in{border:1px solid var(--line);border-radius:14px;padding:0 12px}
+.nldm-calc-in summary{min-height:46px;display:flex;align-items:center;font-weight:600;font-size:14px;cursor:pointer;list-style:none}
+.nldm-calc-in summary::-webkit-details-marker{display:none}
+.nldm-calc-in summary:after{content:"+";margin-inline-start:auto;font-size:20px;color:var(--teal)}
+.nldm-calc-in[open] summary:after{content:"−"}
+.nldm-calc-fields{display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.nldm-field>div{display:flex;justify-content:space-between;font-size:13px}
+.nldm-field output{font:600 13px "IBM Plex Mono",monospace;color:var(--teal)}
+.nldm-field input{width:100%;height:28px;margin:0;accent-color:var(--teal)}
+.nldm .nldm-ex{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px!important;border-radius:12px!important;border:1px solid #C3CED5!important;background:#fff!important;color:var(--ink)!important;font:600 14px/1 "IBM Plex Sans Hebrew",sans-serif!important;display:flex!important;align-items:center;justify-content:center;width:100%!important}
+.nldm .nldm-ex[aria-pressed=true]{background:#E9F3EE!important;color:var(--fit)!important;border-color:var(--fit)!important}
+.nldm-calc-how{margin:0;font-size:12px;line-height:1.55;color:var(--mut)}
+/* "דירות חדשות בהנחה" in the middle of the article */
+.nldm-disc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:24px 0}
+.nldm .nldm-disc h2,.nldm-disc h2{margin:0 0 8px!important;font-size:21px!important;line-height:1.25!important;font-weight:700!important;color:#0F1D26!important}
+.nldm-disc p{margin:0 0 10px;font-size:16px;line-height:1.65;color:#22313B}
+.nldm-disc-t{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:4px 0 12px;font-size:14px;line-height:1.45}
+.nldm-disc-t>div{display:grid;grid-template-columns:78px minmax(0,1fr) minmax(0,1fr)}
+.nldm-disc-t>div>span{padding:8px 9px;border-top:1px solid var(--line)}
+.nldm-disc-t>div.h>span{border-top:0;background:#0F1D26;color:#fff;font-weight:600}
+.nldm-disc-t [role=rowheader]{font-weight:600;background:#F4F7F8}
+.nldm-disc-t [role=cell]:last-child{background:#F3FAF6}
