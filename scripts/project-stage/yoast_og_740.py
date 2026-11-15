@@ -91,7 +91,7 @@ def run(rows):
 
 rec = json.load(io.open(SRC, encoding="utf-8"))
 plaster = json.load(io.open(os.path.join(REPO, "docs", "design", "project-defaults-2026-11", "fable", "audit", "featured.json"), encoding="utf-8"))
-names = sorted({plaster["media"][k]["slug"] for k in plaster["media"] if 7531 <= int(k) <= 7580})
+names = sorted({plaster["media"][k]["slug"] for k in plaster["media"] if 7531 <= int(k) <= 7580} | {os.path.splitext(plaster["media"][k]["src"].split("/")[-1])[0] for k in plaster["media"] if 7531 <= int(k) <= 7580})  # 15.11: slug and file name can differ (7575: slug -v1-2, file -v1-1)
 has_pl = lambda v: any(n in str(v or "") for n in names)
 if "--read" in sys.argv:
     res = run([{"id": r["id"]} for r in rec["rows"]])
@@ -108,7 +108,14 @@ elif "--apply" in sys.argv or "--rollback" in sys.argv:
     url = before["media_url"]; assert url.endswith(".webp"), url
     if "--apply" in sys.argv:
         targets = [r for r in before["rows"] if r["before"]["ix"] and has_pl(r["before"]["ix"]["open_graph_image"])]
-        io.open(RESTORE, "w", encoding="utf-8").write(json.dumps({"at": time.strftime("%Y-%m-%d %H:%M:%S"), "rows": [{"id": r["id"], "meta": r["before"]["meta"], "ix": r["before"]["ix"]} for r in targets]}, ensure_ascii=False, indent=1))
+        if "--only" in sys.argv:
+            only = {int(x) for x in sys.argv[sys.argv.index("--only") + 1].split(",")}
+            targets = [r for r in targets if r["id"] in only]
+            RESTORE2 = RESTORE.replace(".json", "-only-%s.json" % "-".join(str(x) for x in sorted(only)))
+        else:
+            RESTORE2 = RESTORE
+        io.open(RESTORE2, "w", encoding="utf-8").write(json.dumps({"at": time.strftime("%Y-%m-%d %H:%M:%S"), "rows": [{"id": r["id"], "meta": r["before"]["meta"], "ix": r["before"]["ix"]} for r in targets]}, ensure_ascii=False, indent=1))
+        print("targets", [r["id"] for r in targets], "| restore", os.path.basename(RESTORE2))
         rows = [{"id": r["id"], "set": {"_yoast_wpseo_opengraph-image": url, "_yoast_wpseo_opengraph-image-id": str(MEDIA)}} for r in targets]
     else:
         rs = json.load(io.open(RESTORE, encoding="utf-8"))
@@ -118,4 +125,4 @@ elif "--apply" in sys.argv or "--rollback" in sys.argv:
     ok = [r for r in out if r.get("built") == "rebuilt" and r["after"]["ix"] and not has_pl(r["after"]["ix"]["open_graph_image"]) and r["modified_same"]]
     print("pages changed", len(out), "| rebuilt + no plaster + date unchanged:", len(ok), "| problems:", [(r["id"], r.get("built"), (r["after"]["ix"] or {}).get("open_graph_image", "")[-50:], r["modified_same"]) for r in out if r not in ok][:6])
     print("example after:", json.dumps(out[0]["after"]["ix"], ensure_ascii=False)[:300] if out else "")
-    io.open(RESTORE.replace("restore", "result"), "w", encoding="utf-8").write(json.dumps(res, ensure_ascii=False, indent=1))
+    io.open((RESTORE2 if "--apply" in sys.argv else RESTORE).replace("restore", "result"), "w", encoding="utf-8").write(json.dumps(res, ensure_ascii=False, indent=1))

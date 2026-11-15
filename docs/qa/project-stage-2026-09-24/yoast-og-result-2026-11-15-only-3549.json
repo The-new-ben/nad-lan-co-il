@@ -1,0 +1,48 @@
+{
+ "rows": [
+  {
+   "id": 3549,
+   "before": {
+    "meta": {
+     "_yoast_wpseo_opengraph-image": "",
+     "_yoast_wpseo_opengraph-image-id": "",
+     "_yoast_wpseo_twitter-image": "",
+     "_yoast_wpseo_twitter-image-id": ""
+    },
+    "ix": {
+     "id": "2997",
+     "open_graph_image": "https://nad-lan.co.il/wp-content/uploads/2026/06/mitcham-22-darom-rothschild-lin-haifa-plate-capsules-v1-1.jpg",
+     "open_graph_image_id": "7575",
+     "open_graph_image_source": "featured-image",
+     "twitter_image": "https://nad-lan.co.il/wp-content/uploads/2026/06/mitcham-22-darom-rothschild-lin-haifa-plate-capsules-v1-1.jpg",
+     "twitter_image_id": "7575",
+     "twitter_image_source": "featured-image",
+     "object_last_modified": "2026-10-31 22:20:56"
+    },
+    "modified": "2026-10-31 22:20:56"
+   },
+   "built": "rebuilt",
+   "after": {
+    "meta": {
+     "_yoast_wpseo_opengraph-image": "https://nad-lan.co.il/wp-content/uploads/2026/11/nadlan-new-projects-israel-choose-apartment-on-the-building-1600x1000-2.webp",
+     "_yoast_wpseo_opengraph-image-id": "8914",
+     "_yoast_wpseo_twitter-image": "",
+     "_yoast_wpseo_twitter-image-id": ""
+    },
+    "ix": {
+     "id": "2997",
+     "open_graph_image": "https://nad-lan.co.il/wp-content/uploads/2026/11/nadlan-new-projects-israel-choose-apartment-on-the-building-1600x1000-2.webp",
+     "open_graph_image_id": "8914",
+     "open_graph_image_source": "set-by-user",
+     "twitter_image": null,
+     "twitter_image_id": null,
+     "twitter_image_source": null,
+     "object_last_modified": "2026-10-31 22:20:56"
+    },
+    "modified": "2026-10-31 22:20:56"
+   },
+   "modified_same": true
+  }
+ ],
+ "media_url": "https://nad-lan.co.il/wp-content/uploads/2026/11/nadlan-new-projects-israel-choose-apartment-on-the-building-1600x1000-2.webp"
+}
