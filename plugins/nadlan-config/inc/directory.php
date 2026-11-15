@@ -1079,10 +1079,13 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$stats = array_slice( $stats, 0, 3 );
 		ob_start(); ?>
 <a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?><?php echo $own ? ' is-own' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<div class="nldc-media<?php echo $pd ? ( 'twin' === $pd['kind'] ? ' has-real-photo' : ' has-default-pic' ) : ( $is_real_photo ? ' has-real-photo' : ' has-concept-art' ); ?><?php echo $fill ? ' is-fill' : ''; ?>">
+<?php $nlsp = ( $pd && 'default' === $pd['kind'] && function_exists( 'nadlan_sp_html' ) && ( ! function_exists( 'nadlan_pd_lang_of_slug' ) || 'he' === nadlan_pd_lang_of_slug( $slug ) ) ) ? nadlan_sp_html( $id, (string) $pm['label'] ) : ''; /* HAD-743: the street sign over the real projects around it replaces the shared default picture */ ?>
+	<div class="nldc-media<?php echo '' !== $nlsp ? ' has-plate' : ( $pd ? ( 'twin' === $pd['kind'] ? ' has-real-photo' : ' has-default-pic' ) : ( $is_real_photo ? ' has-real-photo' : ' has-concept-art' ) ); ?><?php echo ( $fill && '' === $nlsp ) ? ' is-fill' : ''; ?>">
+		<?php if ( '' !== $nlsp ) : echo nadlan_sp_assets() . $nlsp; else : // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo $pd ? esc_attr( (string) $pd['alt'] ) : ''; ?>" loading="lazy" decoding="async"<?php echo $img_w > 0 ? ' width="' . (int) $img_w . '" height="' . (int) $img_h . '"' : ''; ?><?php echo ( $pd && '' !== (string) $pd['srcset'] ) ? ' srcset="' . esc_attr( (string) $pd['srcset'] ) . '" sizes="' . esc_attr( (string) $pd['sizes'] ) . '"' : ''; ?>>
+		<?php endif; ?>
 		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
-		<?php if ( $pm['label'] !== 'אחר' && ! ( $pd && 'default' === $pd['kind'] ) ) : /* "other" is a machine fallback, not a badge a buyer should read; HAD-740: nothing printed over the default picture (its type stays in the facts row as "סוג") */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
+		<?php if ( $pm['label'] !== 'אחר' && ! ( $pd && 'default' === $pd['kind'] ) && '' === $nlsp ) : /* "other" is a machine fallback, not a badge a buyer should read; HAD-740: nothing printed over the default picture (its type stays in the facts row as "סוג") */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
 		<?php if ( $tags ) : ?><span class="nldcp-tags"><?php foreach ( $tags as $t ) : ?><b class="nldcp-tag <?php echo esc_attr( $t[1] ); ?>"><?php echo esc_html( $t[0] ); ?></b><?php endforeach; ?></span><?php endif; ?>
 	</div>
 	<div class="nldcp-body">
@@ -1430,3 +1433,4 @@ require __DIR__ . '/directory-assets.php';
 require_once __DIR__ . '/projects-hub.php'; // 1.72.513: the /projects/ hub (body after the grid, FAQ, tools)
 if ( is_readable( __DIR__ . '/project-default-image.php' ) ) { require_once __DIR__ . '/project-default-image.php'; } // 1.72.677 HAD-740: the default card picture (Settings > Media)
 if ( is_readable( __DIR__ . '/deals-map.php' ) ) { require_once __DIR__ . '/deals-map.php'; } // 1.72.681 HAD-743: the developer deals map on /developer-deals/
+if ( is_readable( __DIR__ . '/street-plate.php' ) ) { require_once __DIR__ . '/street-plate.php'; } // 1.72.684 HAD-743: the street sign on cards without a picture

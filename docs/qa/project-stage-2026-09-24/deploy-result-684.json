@@ -1,0 +1,18 @@
+{
+  "released": "1.72.684",
+  "from": "1.72.683",
+  "live_before": {
+    "inc/directory.php": "b4aa25e71a85e961404368b260d9f5b2",
+    "nadlan-config.php": "9c387205f4fbf521cd0edc2db5501df1"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-15 20:47:27",
+  "files": {
+    "inc/street-plate.php": "dc5d8c04d954ab702c28f5d212437531",
+    "inc/directory.php": "2e41038ffc43b7b97f11edcc50ee8883",
+    "nadlan-config.php": "a8154b9097636e0ad0735543ca8643f8"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.684, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

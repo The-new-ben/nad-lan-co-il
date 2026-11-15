@@ -67,12 +67,13 @@ ok( nadlan_dir_project_card( 1 ) === $closed[1], 'a card with its own picture is
 list( $c2, $i2 ) = media_of( nadlan_dir_project_card( 2 ) );
 ok( false !== strpos( $c2, 'has-real-photo' ) && false !== strpos( $i2, 'example.com/b.jpg' ), 'photos_csv wins' );
 list( $c3, $i3 ) = media_of( nadlan_dir_project_card( 3 ) );
-ok( false !== strpos( $c3, 'has-default-pic' ) && false === strpos( $c3, 'has-concept-art' ) && false !== strpos( $c3, 'is-fill' ), 'no picture: the default, own class, no concept-art class' );
-ok( false !== strpos( $i3, $DEF ) && false !== strpos( $i3, 'width="1024" height="640"' ) && false !== strpos( $i3, 'srcset="' ) && false !== strpos( $i3, 'sizes="' ), 'default: large size, 8:5, srcset' );
+$card3 = nadlan_dir_project_card( 3 );
+ok( false !== strpos( $card3, 'nldc-media has-plate' ) && false !== strpos( $card3, '<div class="nlsp" role="img" aria-label="' ) && false === strpos( $card3, 'has-concept-art' ), 'HAD-743: no picture on a Hebrew card -> the street sign, no concept-art class' );
+ok( false === strpos( $card3, $DEF ) && 0 === substr_count( $card3 . nadlan_dir_project_card( 3 ), 'id="nlsp-css"' ) /* already printed by the first sign on this page */, 'HAD-743: the sign requests no picture; its CSS prints once per page' );
 ok( false === strpos( nadlan_dir_project_card( 3 ), 'nldcp-type' ), 'nothing printed over the default picture (no type label)' );
 ok( false !== strpos( nadlan_dir_project_card( 4 ), 'nldcp-type' ), 'a twin picture keeps its type label' );
 unset( $_GET['pics'] ); ok( false !== strpos( nadlan_dir_project_card( 3 ), 'nldcp-type' ), 'gate closed: the type label stays as today' ); $_GET['pics'] = 'next';
-ok( false !== strpos( $i3, 'alt="נדל״ן: בחרו את הדירה שלכם על הבניין. מגדל מגורים עם קומה מסומנת, תוכנית הדירה ומפת הסביבה"' ), 'Hebrew alt' );
+ok( 'ערבי נחל' === nadlan_sp_street( 'ערבי נחל, גבעתיים: פינוי בינוי', '', 'גבעתיים' ) && 'שכונה' === nadlan_sp_street( 'GINDI VOGUE', 'שכונה', 'תל אביב' ) && 'חיפה' === nadlan_sp_street( 'X', '', 'חיפה' ) && 'איינשטיין 2.4.6.8' === nadlan_sp_street( 'איינשטיין 2.4.6.8: חן ואיתי גינדי וקבוצת שבירו', '', 'תל אביב' ), 'HAD-743: street from the title, else neighbourhood, else city' );
 list( $c4, $i4 ) = media_of( nadlan_dir_project_card( 4 ) );
 ok( false !== strpos( $c4, 'has-real-photo' ) && false !== strpos( $i4, 'a505-1024x640.webp' ) && false !== strpos( $i4, 'alt=""' ), 'language page: its Hebrew page picture (alt left to the enrichment)' );
 list( $c6, $i6 ) = media_of( nadlan_dir_project_card( 6 ) );
@@ -86,7 +87,7 @@ $GLOBALS['t_opt'] = array( 'nadlan_pd_attachment' => 9999 );
 ok( null === nadlan_pd_default( 'he' ) && nadlan_dir_project_card( 3 ) === $closed[3], 'media deleted: null and the old card' );
 // 4. the public switch
 unset( $_GET['pics'] ); $GLOBALS['t_opt'] = array( 'nadlan_pd_attachment' => 8913, 'nadlan_pd_public' => '1' );
-ok( false !== strpos( nadlan_dir_project_card( 3 ), 'has-default-pic' ), 'nadlan_pd_public=1 opens it without ?pics=next' );
+ok( false !== strpos( nadlan_dir_project_card( 3 ), 'has-plate' ), 'nadlan_pd_public=1 opens it without ?pics=next (the sign on a Hebrew card)' );
 // 4b. a photos_csv picture that is a plugin file (batch-01 sketch, 1440x1080) fills from the top; another address stays as it was
 $GLOBALS['t_meta'][8] = array( 'post_name' => 'sketch-csv', 'title' => 'F', 'city' => 'חיפה', 'photos_csv' => 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/01-hagana-salvador-haifa-sketch.webp,https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/01-hagana-salvador-haifa-photo.webp' );
 list( $c8, $i8 ) = media_of( nadlan_dir_project_card( 8 ) );
