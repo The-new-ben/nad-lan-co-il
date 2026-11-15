@@ -1,0 +1,1274 @@
+{
+ "wp": "7.1.4",
+ "files": 9990,
+ "hits": [
+  [
+   "plugin:code-snippets/code-snippets.php",
+   "wp-content/plugins/code-snippets/php/admin-menus/class-edit-menu.php:63",
+   "remove_submenu_page( $this->base_slug, $this->slug );"
+  ],
+  [
+   "plugin:code-snippets/code-snippets.php",
+   "wp-content/plugins/code-snippets/php/flat-files/classes/class-config-repository.php:6",
+   "const CONFIG_FILE_NAME = 'index.php';"
+  ],
+  [
+   "plugin:code-snippets/code-snippets.php",
+   "wp-content/plugins/code-snippets/php/class-upgrade.php:93",
+   "$role->remove_cap( apply_filters( 'code_snippets_cap', 'manage_snippets' ) );"
+  ],
+  [
+   "plugin:code-snippets/code-snippets.php",
+   "wp-content/plugins/code-snippets/php/class-upgrade.php:149",
+   "$user->remove_cap( $network_cap );"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_admin_menus.php:62",
+   "remove_submenu_page($parent_slug, $slug);"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_admin_menus.php:66",
+   "if (isset($submenu[$parent_slug])) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_admin_menus.php:67",
+   "foreach ($submenu[$parent_slug] as $key => $item) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_admin_menus.php:69",
+   "unset($submenu[$parent_slug][$key]);"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:490",
+   "if (isset($submenu['file_manager_advanced_ui'])) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:491",
+   "foreach ($submenu['file_manager_advanced_ui'] as $key => $item) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:493",
+   "unset($submenu['file_manager_advanced_ui'][$key]);"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:509",
+   "if (isset($submenu['file_manager_advanced_ui']) && is_array($submenu['file_manager_advanced_ui'])) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:514",
+   "foreach ($submenu['file_manager_advanced_ui'] as $key => $item) {"
+  ],
+  [
+   "plugin:file-manager-advanced/file_manager_advanced.php",
+   "wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:545",
+   "$submenu['file_manager_advanced_ui'] = $menu_items;"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Admin/Screens.php:205",
+   "$dashboard_index = array_search( 'index.php', $menu_order, true );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Admin/Screens.php:213",
+   "unset( $menu_order[ $key ] );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Clients/OAuth_Client_Base.php:350",
+   "return add_query_arg( 'oauth2callback', '1', admin_url( 'index.php' ) );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Authentication.php:566",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Authentication.php:584",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Authentication.php:832",
+   "return admin_url( 'update-core.php' );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Authentication.php:1303",
+   "return add_query_arg( $query_args, admin_url( 'index.php' ) );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Authentication.php:1342",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Google_Proxy.php:367",
+   "$return_uri             = admin_url( 'index.php' );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Google_Proxy.php:373",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Google_Proxy.php:379",
+   "'redirect_uri'           => add_query_arg( 'oauth2callback', 1, admin_url( 'index.php' ) ),"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Authentication/Google_Proxy.php:380",
+   "'action_uri'             => admin_url( 'index.php' ),"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Dashboard_Sharing/View_Only_Pointer.php:84",
+   "if ( 'index.php' !== $hook_suffix"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Email_Reporting/Email_Log.php:282",
+   "'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Email_Reporting/Email_Reporting_Pointer.php:119",
+   "if ( 'index.php' !== $hook_suffix ) {"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Golinks/Golinks.php:176",
+   "return network_admin_url( 'index.php' );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Golinks/Golinks.php:179",
+   "return admin_url( 'index.php' );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:207",
+   "'map_meta_cap',"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:209",
+   "return $this->map_meta_capabilities( $caps, $cap, $user_id, $args );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:240",
+   "'user_has_cap',"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:298",
+   "* checks ideally could be done within the `user_has_cap` filter. However, the `user_has_cap` filter is"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:312",
+   "private function map_meta_capabilities( array $caps, $cap, $user_id, $args ) {"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:324",
+   "'map_meta_cap',"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Util/Entity_Factory.php:611",
+   "$format  = $wp_rewrite->using_index_permalinks() && ! strpos( $base, 'index.php' ) ? 'index.php/' : '';"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Core/Util/Reset.php:68",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Modules/Analytics_4/Plain_Permalink_Top_Posts.php:152",
+   "if ( $url_parts['path'] !== $home_path && $url_parts['path'] !== $home_path . 'index.php' ) {"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Modules/Sign_In_With_Google/Authenticator.php:203",
+   "$redirect_to = $user->has_cap( 'read' ) ? admin_url( 'profile.php' ) : home_url();"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Modules/Sign_In_With_Google/Existing_User_Authenticator.php:138",
+   "$target  = $user_id ? get_edit_user_link( $user_id ) : admin_url( 'profile.php' );"
+  ],
+  [
+   "plugin:google-site-kit/google-site-kit.php",
+   "wp-content/plugins/google-site-kit/includes/Modules/Sign_In_With_Google.php:1084",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/admin-control.php:245",
+   "$operator->remove_cap( 'manage_options' );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/admin-control.php:246",
+   "$operator->remove_cap( 'edit_others_listings' );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/admin-control.php:254",
+   "if ( $admin ) { $admin->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/admin-control.php:256",
+   "if ( $operator ) { $operator->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/admin-control.php:270",
+   "if ( $role ) { $role->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/claim.php:14",
+   "*  - Owner editing is scoped to the owner's own single card via map_meta_cap."
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/claim.php:129",
+   "* to edit ONLY this card (see map_meta_cap below)."
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/claim.php:196",
+   "if ( ! function_exists( 'nadlan_claim_map_meta_cap' ) ) {"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/claim.php:197",
+   "function nadlan_claim_map_meta_cap( $caps, $cap, $user_id, $args ) {"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/claim.php:225",
+   "add_filter( 'map_meta_cap', 'nadlan_claim_map_meta_cap', 10, 4 );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/lead-inbox.php:56",
+   "add_menu_page( 'Lead Inbox', '💰 Lead Inbox' . $bubble, 'edit_posts', 'nadlan-inbox', 'nadlan_inbox_render', 'dashicons-email-alt', 2 );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/lead-ledger.php:56",
+   "'map_meta_cap'       => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/mailer.php:82",
+   "$phpmailer->addCustomHeader( 'List-Unsubscribe', '<' . admin_url( 'index.php' ) . '>' );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/offers.php:20",
+   "'supports' => array( 'title' ), 'capability_type' => 'post', 'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/rentals-manager.php:77",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/reviews.php:29",
+   "'map_meta_cap'       => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/rfp.php:295",
+   "'supports' => array( 'title' ), 'capability_type' => 'post', 'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/roles.php:133",
+   "$role->remove_cap( $cap );"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/studio-rest.php:14",
+   "* map_meta_cap, so owners can edit only their own listings."
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/urban-space.php:54",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/placements.php:31",
+   "'map_meta_cap'    => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/rentals/rest.php:101",
+   "@file_put_contents( $dir . 'index.php', \"<?php // Silence.\\n\" ); // phpcs:ignore"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/renewal-org.php:34",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/inc/campaign-brief.php:274",
+   "'supports' => array( 'title' ), 'capability_type' => 'post', 'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:nadlan-config/nadlan-config.php",
+   "wp-content/plugins/nadlan-config/nadlan-config.php:250",
+   "'map_meta_cap'    => true,"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:214",
+   "* Grants PMS granular capabilities dynamically through user_has_cap"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:220",
+   "function pms_role_permissions_filter_user_has_cap( $allcaps, $caps, $args, $user ) {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:230",
+   "// Build a capability-to-area lookup so user_has_cap can grant only PMS-owned caps."
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:259",
+   "add_filter( 'user_has_cap', 'pms_role_permissions_filter_user_has_cap', 10, 4 );"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:373",
+   "$args['map_meta_cap'] = true;"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:118",
+   "if ( isset($submenu['paid-member-subscriptions']) ) {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:120",
+   "foreach ($submenu['paid-member-subscriptions'] as $key => $value) {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:126",
+   "$discounts_value = $submenu['paid-member-subscriptions'][$discounts_key];"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:129",
+   "unset($submenu['paid-member-subscriptions'][$discounts_key]);"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:131",
+   "$array1 = array_slice($submenu['paid-member-subscriptions'], 0, $payments_key);"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:132",
+   "$array2 = array_slice($submenu['paid-member-subscriptions'], $payments_key);"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/index.php:135",
+   "$submenu['paid-member-subscriptions'] = array_merge($array1, $array2);"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/gateways/stripe/admin/functions-admin-connect.php:84",
+   "admin_url( 'index.php' )"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/libraries/action-scheduler/classes/data-stores/ActionScheduler_wpPostStore_PostTypeRegistrar.php:26",
+   "'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/class-form-handler.php:1410",
+   "$redirect_to = $user->has_cap( 'read' ) ? admin_url( 'profile.php' ) : home_url();"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:65",
+   "$menu[$menu_position][0] .= '<span class=\"update-plugins pms-update-plugins\"><span class=\"plugin-count\">' . $menu_count . '</span></span>';"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:78",
+   "if( ! empty( $submenu['paid-member-subscriptions'] ) ) {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:80",
+   "foreach( $submenu['paid-member-subscriptions'] as $menu_position => $menu_data ) {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:102",
+   "$submenu['paid-member-subscriptions'][$menu_position][0] .= '<span class=\"update-plugins pms-update-plugins\"><span class=\"plugin-count\">' . $menu_count . '</span></span>';"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/index.php:1180",
+   "add_action( 'admin_menu', array( $this, 'remove_submenu_page' ) );"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/index.php:1220",
+   "public function remove_submenu_page() {"
+  ],
+  [
+   "plugin:paid-member-subscriptions/index.php",
+   "wp-content/plugins/paid-member-subscriptions/index.php:1222",
+   "remove_submenu_page( 'paid-member-subscriptions', 'paid-member-subscriptions' );"
+  ],
+  [
+   "plugin:vibe-ai/vibe-ai.php",
+   "wp-content/plugins/vibe-ai/includes/class-wpvibe-content-ops.php:311",
+   "// get_post_meta() bypasses. edit_post_meta maps both via map_meta_cap."
+  ],
+  [
+   "plugin:vibe-ai/vibe-ai.php",
+   "wp-content/plugins/vibe-ai/includes/class-wpvibe-rest.php:748",
+   "'index.php', 'header.php', 'footer.php', 'functions.php', 'style.css',"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/helper/class-wc-helper.php:249",
+   "$subscription['update_url'] = admin_url( 'update-core.php' );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-exporters.php:77",
+   "if ( isset( $submenu[ $exporter['menu'] ] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-exporters.php:78",
+   "foreach ( $submenu[ $exporter['menu'] ] as $key => $menu ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-exporters.php:79",
+   "if ( $id === $menu[2] ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-exporters.php:80",
+   "unset( $submenu[ $exporter['menu'] ][ $key ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-importers.php:81",
+   "if ( isset( $submenu[ $importer['menu'] ] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-importers.php:82",
+   "foreach ( $submenu[ $importer['menu'] ] as $key => $menu ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-importers.php:83",
+   "if ( $id === $menu[2] ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-importers.php:84",
+   "unset( $submenu[ $importer['menu'] ][ $key ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:91",
+   "$menu[] = array( '', 'read', 'separator-woocommerce', '', 'wp-menu-separator woocommerce' ); // WPCS: override ok."
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:274",
+   "if ( isset( $submenu['woocommerce'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:276",
+   "unset( $submenu['woocommerce'][0] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:283",
+   "foreach ( $submenu['woocommerce'] as $key => $menu_item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:285",
+   "$submenu['woocommerce'][ $key ][0] .= ' <span class=\"menu-counter count-' . esc_attr( $order_count ) . '\"><span class=\"processing-count\">' . number_format_i18n( $order_count ) . '</span></span>'; // phpcs:ignore W"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:317",
+   "unset( $menu_order[ $woocommerce_separator ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:318",
+   "unset( $menu_order[ $woocommerce_product ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:532",
+   "if ( isset( $submenu['edit.php?post_type=product'][10] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:536",
+   "$submenu['edit.php?post_type=product'][10][2] = 'admin.php?page=wc-admin&path=/add-product';"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:550",
+   "* A false|array value is returned to be consistent with remove_submenu_page() function"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:559",
+   "if ( ! isset( $submenu[ $menu_slug ] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:563",
+   "foreach ( $submenu[ $menu_slug ] as $i => $item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/admin/class-wc-admin-menus.php:592",
+   "$submenu [ $parent_slug ][ $index ][4] = $css_classes;"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/class-wc-install.php:2334",
+   "$wp_roles->remove_cap( 'shop_manager', $cap );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/class-wc-install.php:2335",
+   "$wp_roles->remove_cap( 'administrator', $cap );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/class-wc-post-types.php:390",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/class-wc-post-types.php:450",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/class-wc-post-types.php:513",
+   "'map_meta_cap'        => true,"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-update-functions.php:1437",
+   "$role->remove_cap( 'unfiltered_html' );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-update-functions.php:1999",
+   "$wp_roles->remove_cap( 'shop_manager', 'edit_users' );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-user-functions.php:666",
+   "add_filter( 'user_has_cap', 'wc_customer_has_capability', 10, 3 );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-user-functions.php:683",
+   "// @see wc_modify_map_meta_cap, which limits editing to customers."
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-user-functions.php:689",
+   "add_filter( 'user_has_cap', 'wc_shop_manager_has_capability', 10, 4 );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-user-functions.php:725",
+   "function wc_modify_map_meta_cap( $caps, $cap, $user_id, $args ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/includes/wc-user-functions.php:752",
+   "add_filter( 'map_meta_cap', 'wc_modify_map_meta_cap', 10, 4 );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_wpPostStore_PostTypeRegistrar.php:26",
+   "'map_meta_cap' => true,"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/Features/OnboardingTasks/TaskLists.php:430",
+   "if ( ! $tasks_count || ! isset( $submenu['woocommerce'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/Features/OnboardingTasks/TaskLists.php:434",
+   "foreach ( $submenu['woocommerce'] as $key => $menu_item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/Features/OnboardingTasks/TaskLists.php:436",
+   "$submenu['woocommerce'][ $key ][0] .= ' <span class=\"menu-counter remaining-tasks-badge woocommerce-task-list-remaining-tasks-badge\"><span class=\"count-' . esc_attr( $tasks_count ) . '\">' . absint( $tasks_count ) . '"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/PageController.php:559",
+   "if ( ! current_user_can( 'manage_woocommerce' ) || empty( $submenu['woocommerce'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/PageController.php:564",
+   "foreach ( $submenu['woocommerce'] as $submenu_key => $submenu_item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Admin/PageController.php:576",
+   "unset( $submenu['woocommerce'][ $wc_admin_key ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Orders/PageController.php:280",
+   "remove_submenu_page( 'woocommerce', 'edit.php?post_type=' . $order_type );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Orders/PostsRedirectionController.php:214",
+   "if ( ! current_user_can( $post_type->cap->edit_posts ) || ! isset( $submenu[ 'edit.php?post_type=' . $post_type->name ] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Orders/PostsRedirectionController.php:218",
+   "$post_type_menu = &$submenu[ 'edit.php?post_type=' . $post_type->name ];"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Settings/PaymentsController.php:66",
+   "remove_menu_page( 'wc-admin&path=/payments/connect' );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Settings/PaymentsController.php:93",
+   "$menu[ $index ][0] .= $badge; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Suggestions/Incentives/Incentive.php:132",
+   "if ( ! $this->user_has_caps() ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Suggestions/Incentives/Incentive.php:299",
+   "protected function user_has_caps(): bool {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:236",
+   "unset( $menu[ $key ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:247",
+   "if ( ! current_user_can( 'manage_woocommerce' ) || empty( $submenu['woocommerce'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:252",
+   "foreach ( $submenu['woocommerce'] as $submenu_key => $submenu_item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:263",
+   "$menu = $submenu['woocommerce'][ $wc_admin_key ];"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:266",
+   "unset( $submenu['woocommerce'][ $wc_admin_key ] );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:267",
+   "array_unshift( $submenu['woocommerce'], $menu );"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Marketing.php:150",
+   "if ( ! isset( $submenu['woocommerce-marketing'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Marketing.php:154",
+   "foreach ( $submenu['woocommerce-marketing'] as &$item ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Marketing.php:171",
+   "if ( ! isset( $submenu['woocommerce-marketing'] ) ) {"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Marketing.php:175",
+   "$marketing_submenu = $submenu['woocommerce-marketing'];"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Admin/Marketing.php:220",
+   "$submenu['woocommerce-marketing'] = $new_menu_order;  //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/EmailEditor/Integration.php:210",
+   "'map_meta_cap'    => false,"
+  ],
+  [
+   "plugin:woocommerce/woocommerce.php",
+   "wp-content/plugins/woocommerce/src/Internal/Features/FeaturesController.php:1498",
+   "'<a href=\"' . self_admin_url( 'update-core.php' ) . '\" target=\"_blank\">',"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/capabilities/class-capability-manager-wp.php:47",
+   "$wp_role->remove_cap( $capability );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/capabilities/class-register-capabilities.php:22",
+   "add_action( 'user_has_cap', [ $this, 'filter_user_has_wpseo_manage_options_cap' ], 10, 4 );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/capabilities/class-register-capabilities.php:28",
+   "add_filter( 'map_meta_cap', [ $this, 'map_meta_cap_for_seo_manager' ], 10, 2 );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/capabilities/class-register-capabilities.php:91",
+   "public function map_meta_cap_for_seo_manager( $caps, $cap ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/class-admin-init.php:190",
+   "if ( in_array( $this->pagenow, [ 'user-edit.php', 'profile.php' ], true )"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/admin/class-admin.php:327",
+   "return $GLOBALS['pagenow'] === 'index.php';"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/inc/class-addon-manager.php:757",
+   "$quick = $quick || $pagenow === 'update-core.php';"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/inc/class-yoast-dynamic-rewrites.php:107",
+   "$query = add_query_arg( $query, 'index.php' );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/inc/wpseo-non-ajax-functions.php:57",
+   "add_filter( 'user_has_cap', 'allow_custom_field_edits', 0, 3 );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/bulk-editor/infrastructure/content-types/content-type-access-checker.php:30",
+   "if ( ! $post_type_object->map_meta_cap ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/bulk-editor/infrastructure/content-types/content-type-access-checker.php:52",
+   "if ( ! $post_type_object->map_meta_cap ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/bulk-editor/infrastructure/posts/post-editability-resolver.php:14",
+   "* example a post that a plugin blocks for the current user through map_meta_cap). It runs on the page only,"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/bulk-editor/user-interface/bulk-editor-integration.php:255",
+   "\\remove_submenu_page( 'wpseo_dashboard', self::PAGE );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/bulk-editor/user-interface/bulk-editor-integration.php:462",
+   "return \\self_admin_url( 'update-core.php' );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/conditionals/user-edit-conditional.php:18",
+   "if ( $pagenow !== 'profile.php' && $pagenow !== 'user-edit.php' ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/conditionals/user-profile-conditional.php:18",
+   "if ( $pagenow !== 'profile.php' ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/conditionals/yoast-admin-and-dashboard-conditional.php:33",
+   "'index.php',"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/conditionals/yoast-admin-and-dashboard-conditional.php:35",
+   "'update-core.php',"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/dashboard/user-interface/configuration/site-kit-capabilities-integration.php:21",
+   "\\add_filter( 'user_has_cap', [ $this, 'enable_site_kit_capabilities' ], 10, 2 );"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/helpers/first-time-configuration-notice-helper.php:116",
+   "if ( $pagenow === 'index.php' ) {"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/integrations/watchers/search-engines-discouraged-watcher.php:189",
+   "'index.php',"
+  ],
+  [
+   "plugin:wordpress-seo/wp-seo.php",
+   "wp-content/plugins/wordpress-seo/src/integrations/watchers/search-engines-discouraged-watcher.php:191",
+   "'update-core.php',"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1507",
+   "if ( ! isset( $submenu[ self::SLUG ] ) ) {"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1513",
+   "$submenu[ self::SLUG ],"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1527",
+   "if ( isset( $submenu[ self::SLUG ][ $upgrade_link_position ][4] ) ) {"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1528",
+   "$submenu[ self::SLUG ][ $upgrade_link_position ][4] .= ' wp-mail-smtp-sidebar-upgrade-pro';"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1530",
+   "$submenu[ self::SLUG ][ $upgrade_link_position ][] = 'wp-mail-smtp-sidebar-upgrade-pro';"
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Admin/Area.php:1539",
+   "$submenu[ self::SLUG ][ $upgrade_link_position ][2] ="
+  ],
+  [
+   "plugin:wp-mail-smtp/wp_mail_smtp.php",
+   "wp-content/plugins/wp-mail-smtp/src/Tasks/Tasks.php:128",
+   "remove_submenu_page( 'tools.php', 'action-scheduler' );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/offers.php:20",
+   "'supports' => array( 'title' ), 'capability_type' => 'post', 'map_meta_cap' => true,"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/studio-rest.php:14",
+   "* map_meta_cap, so owners can edit only their own listings."
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/lead-ledger.php:56",
+   "'map_meta_cap'       => true,"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/reviews.php:29",
+   "'map_meta_cap'       => true,"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/admin-control.php:245",
+   "$operator->remove_cap( 'manage_options' );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/admin-control.php:246",
+   "$operator->remove_cap( 'edit_others_listings' );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/admin-control.php:254",
+   "if ( $admin ) { $admin->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/admin-control.php:256",
+   "if ( $operator ) { $operator->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/admin-control.php:270",
+   "if ( $role ) { $role->remove_cap( NADLAN_ADMIN_CONTROL_CAP ); }"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/claim.php:14",
+   "*  - Owner editing is scoped to the owner's own single card via map_meta_cap."
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/claim.php:121",
+   "* to edit ONLY this card (see map_meta_cap below)."
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/claim.php:188",
+   "if ( ! function_exists( 'nadlan_claim_map_meta_cap' ) ) {"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/claim.php:189",
+   "function nadlan_claim_map_meta_cap( $caps, $cap, $user_id, $args ) {"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/claim.php:217",
+   "add_filter( 'map_meta_cap', 'nadlan_claim_map_meta_cap', 10, 4 );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/lead-inbox.php:56",
+   "add_menu_page( 'Lead Inbox', '💰 Lead Inbox' . $bubble, 'edit_posts', 'nadlan-inbox', 'nadlan_inbox_render', 'dashicons-email-alt', 2 );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/inc/roles.php:133",
+   "$role->remove_cap( $cap );"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/plugins/nadlan-config/nadlan-config.php:240",
+   "'map_meta_cap'    => true,"
+  ],
+  [
+   "theme:nadlan-revenue",
+   "wp-content/themes/nadlan-revenue/functions.php:448",
+   "'map_meta_cap'    => true,"
+  ]
+ ],
+ "snippets": [
+  [
+   450,
+   "x-einstein-flagship-20260814T124439Z-4527b2",
+   "global",
+   3755,
+   "if ( array_diff( $storage_entries, array( '.htaccess', 'index.php' ) ) ) {"
+  ],
+  [
+   450,
+   "x-einstein-flagship-20260814T124439Z-4527b2",
+   "global",
+   3760,
+   "if ( in_array( 'index.php', $storage_entries, true ) && ! $wp_filesystem->delete( $storage_root . '/index.php', false, 'f' ) ) {"
+  ],
+  [
+   687,
+   "x-broker-drop",
+   "global",
+   58,
+   "'map_meta_cap'    => true,"
+  ],
+  [
+   1859,
+   "tmp-scan403-1794737148",
+   "global",
+   10,
+   "$pat = '~(user_has_cap|map_meta_cap|remove_menu_page|remove_submenu_page|\\$menu\\s*\\[|\\$submenu\\s*\\[|unset\\s*\\(\\s*\\$menu|unset\\s*\\(\\s*\\$submenu|add_menu_page\\s*\\([^;]*,\\s*[\\'\"]?2[\\'\"]?\\s*\\)|[\\'\"]index\\.php[\\'\"]|[\\'\"]pr"
+  ],
+  [
+   1859,
+   "tmp-scan403-1794737148",
+   "global",
+   36,
+   "foreach ( array( 'user_has_cap', 'map_meta_cap', 'admin_menu', 'admin_init' ) as $h ) {"
+  ]
+ ],
+ "hooks": {
+  "user_has_cap": [
+   "0 allow_custom_field_edits @ wp-content/plugins/wordpress-seo/inc/wpseo-non-ajax-functions.php:34",
+   "1 wp_maybe_grant_install_languages_cap @ wp-includes/capabilities.php:1309",
+   "1 wp_maybe_grant_resume_extensions_caps @ wp-includes/capabilities.php:1325",
+   "1 wp_maybe_grant_site_health_caps @ wp-includes/capabilities.php:1356",
+   "10 pms_role_permissions_filter_user_has_cap @ wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin-role-permissions.php:220",
+   "10 wc_customer_has_capability @ wp-content/plugins/woocommerce/includes/wc-user-functions.php:610",
+   "10 wc_shop_manager_has_capability @ wp-content/plugins/woocommerce/includes/wc-user-functions.php:680",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:241",
+   "10 Yoast\\WP\\SEO\\Dashboard\\User_Interface\\Configuration\\Site_Kit_Capabilities_Integration::enable_site_kit_capabilities @ wp-content/plugins/wordpress-seo/src/dashboard/user-interface/configuration/site-kit-capabilities-integration.php:42"
+  ],
+  "map_meta_cap": [
+   "1 Automattic\\Jetpack\\Connection\\Manager::jetpack_connection_custom_caps @ wp-content/plugins/woocommerce/vendor/automattic/jetpack-connection/src/class-manager.php:1606",
+   "10 nadlan_claim_map_meta_cap @ wp-content/plugins/nadlan-config/inc/claim.php:197",
+   "10 wc_modify_map_meta_cap @ wp-content/plugins/woocommerce/includes/wc-user-functions.php:725",
+   "10 WPSEO_Register_Capabilities::map_meta_cap_for_seo_manager @ wp-content/plugins/wordpress-seo/admin/capabilities/class-register-capabilities.php:91",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Permissions/Permissions.php:208"
+  ],
+  "admin_menu": [
+   "1 Paid_Member_Subscriptions::add_menu_page @ wp-content/plugins/paid-member-subscriptions/index.php:1209",
+   "5 PMS_Submenu_Page_Dashboard::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "9 closure @ wp-content/plugins/nadlan-config/inc/lead-inbox.php:52",
+   "9 PMS_Submenu_Page_Export::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "9 PMS_Submenu_Page_Import::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "9 PMS_IN_Custom_Post_Type_Discount_Codes_Bulk_Add::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "9 PMS_Submenu_Page_Uninstall::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "9 PMS_Submenu_Page_Basic_Info::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "10 _add_post_type_submenus @ wp-includes/post.php:2278",
+   "10 FluentMail\\App\\Hooks\\Handlers\\AdminMenuHandler::addMenu @ wp-content/plugins/fluent-smtp/app/Hooks/Handlers/AdminMenuHandler.php:105",
+   "10 CAHL_Consent_Aware_Hotjar::register_settings_page @ wp-content/plugins/consent-aware-hotjar/consent-aware-hotjar.php:249",
+   "10 FS_DebugManager::_add_debug_section @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/managers/class-fs-debug-manager.php:18",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/mail-studio.php:542",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/mailer.php:215",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/ops-dashboard.php:16",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/lead-ledger.php:330",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/ai-concierge.php:513",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/conversion-cta.php:397",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/feature-flags.php:24",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/lead-e2e.php:559",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/preferred-partners.php:53",
+   "10 nadlan_gi_admin_menu @ wp-content/plugins/nadlan-config/inc/greeninvoice-recurring.php:410",
+   "10 nadlan_auction_admin_menu @ wp-content/plugins/nadlan-config/inc/placement-auction.php:376",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/lead-ai-qualify.php:627",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/lead-nurture.php:691",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/keys-hub.php:70",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/auth.php:502",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/together.php:777",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/price-nudge.php:230",
+   "10 Cozmoslabs_Plugin_Optin_PMS::add_submenu_page_optin @ wp-content/plugins/paid-member-subscriptions/includes/admin/plugin-optin/class-admin-plugin-optin.php:73",
+   "10 Paid_Member_Subscriptions::remove_submenu_page @ wp-content/plugins/paid-member-subscriptions/index.php:1220",
+   "10 Morning\\WC\\Admin::register_settings_page @ wp-content/plugins/wc-gateway-greeninvoice/includes/class-admin.php:93",
+   "10 WC_Helper_Compat::admin_menu @ wp-content/plugins/woocommerce/includes/admin/helper/class-wc-helper-compat.php:173",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsController::add_menu @ wp-content/plugins/woocommerce/src/Internal/Admin/Settings/PaymentsController.php:58",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\ProductReviews\\Reviews::add_reviews_page @ wp-content/plugins/woocommerce/src/Internal/Admin/ProductReviews/Reviews.php:80",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Admin/Screens.php:140",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\Analytics::register_pages @ wp-content/plugins/woocommerce/src/Internal/Admin/Analytics.php:628",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\Homescreen::register_page @ wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:178",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\Homescreen::possibly_remove_woocommerce_menu @ wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:224",
+   "10 Automattic\\WooCommerce\\Admin\\Features\\OnboardingTasks\\TaskLists::menu_task_count @ wp-content/plugins/woocommerce/src/Admin/Features/OnboardingTasks/TaskLists.php:425",
+   "10 PMS_Submenu_Page_Members::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "15 PMS_Submenu_Page_Subscriptions::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "20 Automattic\\WooCommerce\\Internal\\Admin\\Homescreen::update_link_structure @ wp-content/plugins/woocommerce/src/Internal/Admin/Homescreen.php:244",
+   "20 PMS_Submenu_Page_Payments::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "20 PMS_Submenu_Page_Reports::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "30 nadlan_admin_control_admin_menu @ wp-content/plugins/nadlan-config/inc/admin-control.php:875",
+   "30 closure @ wp-content/plugins/nadlan-config/inc/insights.php:158",
+   "30 closure @ wp-content/plugins/nadlan-config/inc/visit-trail.php:665",
+   "30 PMS_Submenu_Page_Settings::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "30 PMS_Submenu_Page_Addons::add_submenu_page @ wp-content/plugins/paid-member-subscriptions/includes/class-submenu-page.php:126",
+   "70 Automattic\\WooCommerce\\Internal\\Admin\\Marketplace::register_pages @ wp-content/plugins/woocommerce/src/Internal/Admin/Marketplace.php:41",
+   "100 class_fma_blocks::change_blocks_submenu @ wp-content/plugins/file-manager-advanced/application/class_fma_blocks.php:480",
+   "999999999 Freemius::_prepare_admin_menu @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:18484",
+   "9223372036854775807 WPMailSMTP\\Tasks\\Tasks::admin_hide_as_menu @ wp-content/plugins/wp-mail-smtp/src/Tasks/Tasks.php:107"
+  ],
+  "admin_init": [
+   "0 Google\\Site_Kit\\Core\\Util\\Migration_1_185_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_185_0.php:86",
+   "1 pms_add_ons_listing_process_actions @ wp-content/plugins/paid-member-subscriptions/assets/libs/pms-add-ons-listing/pms-add-ons-listing.php:334",
+   "5 pms_maybe_remove_hooks @ wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin.php:1201",
+   "5 Automattic\\WooCommerce\\Admin\\Features\\OnboardingTasks\\TaskLists::set_active_task @ wp-content/plugins/woocommerce/src/Admin/Features/OnboardingTasks/TaskLists.php:215",
+   "9 pms_admin_general_notices @ wp-content/plugins/paid-member-subscriptions/includes/functions-core.php:1197",
+   "9 pms_add_previous_paypal_profile_cancel_notice @ wp-content/plugins/paid-member-subscriptions/includes/functions-payment-profiles.php:246",
+   "9 pms_paypal_connect_add_deprecation_notice @ wp-content/plugins/paid-member-subscriptions/includes/gateways/paypal_connect/admin/functions-admin-filters.php:450",
+   "10 wp_schedule_update_user_counts @ wp-includes/user.php:1562",
+   "10 _wp_check_for_scheduled_split_terms @ wp-includes/taxonomy.php:4543",
+   "10 _wp_check_for_scheduled_update_comment_type @ wp-includes/comment.php:4502",
+   "10 wp_set_client_side_media_processing_flag @ wp-includes/media.php:6600",
+   "10 _wp_admin_bar_init @ wp-includes/admin-bar.php:23",
+   "10 wp_font_library_intercept_render @ wp-includes/build/pages/font-library/page.php:310",
+   "10 wp_options_connectors_intercept_render @ wp-includes/build/pages/options-connectors/page.php:310",
+   "10 _maybe_update_core @ wp-includes/update.php:1029",
+   "10 _maybe_update_plugins @ wp-includes/update.php:1051",
+   "10 _maybe_update_themes @ wp-includes/update.php:1072",
+   "10 FluentMail\\App\\Hooks\\Handlers\\AdminMenuHandler::initAdminWidget @ wp-content/plugins/fluent-smtp/app/Hooks/Handlers/AdminMenuHandler.php:338",
+   "10 Code_Snippets\\Settings\\register_plugin_settings @ wp-content/plugins/code-snippets/php/settings/settings.php:157",
+   "10 CAHL_Consent_Aware_Hotjar::register_settings @ wp-content/plugins/consent-aware-hotjar/consent-aware-hotjar.php:58",
+   "10 Freemius::_add_license_activation @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:13218",
+   "10 Freemius::_add_premium_version_upgrade_selection @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:13330",
+   "10 Freemius::_add_beta_mode_update_handler @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:13404",
+   "10 Freemius::_add_user_change_option @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:13281",
+   "10 Freemius::_add_email_address_update_option @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:12996",
+   "10 Freemius::_add_trial_notice @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:23950",
+   "10 Freemius::_add_affiliate_program_notice @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:24113",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Remote_Features/Remote_Features_Provider.php:104",
+   "10 nadlan_ms_db @ wp-content/plugins/nadlan-config/inc/mail-studio.php:48",
+   "10 nadlan_deals_maybe_install @ wp-content/plugins/nadlan-config/inc/avm-deals.php:30",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/project-default-image.php:93",
+   "10 nadlan_compound_seed @ wp-content/plugins/nadlan-config/inc/compounds.php:101",
+   "10 nadlan_roles_setup @ wp-content/plugins/nadlan-config/inc/roles.php:92",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/home-v2.php:98",
+   "10 nlrm_maybe_install @ wp-content/plugins/nadlan-config/inc/rentals/store.php:248",
+   "10 nadlan_insights_install @ wp-content/plugins/nadlan-config/inc/insights.php:27",
+   "10 nadlan_endorse_install @ wp-content/plugins/nadlan-config/inc/pro-network.php:110",
+   "10 nlf_install @ wp-content/plugins/nadlan-config/inc/pro-forum.php:486",
+   "10 nlfc_install @ wp-content/plugins/nadlan-config/inc/pro-forum-call.php:218",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/near-alerts.php:1061",
+   "10 closure @ wp-content/plugins/nadlan-config/inc/visit-trail.php:645",
+   "10 pms_dismiss_admin_notifications @ wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:11",
+   "10 pms_add_plugin_notification_new_add_on @ wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:132",
+   "10 PMS_Review_Request::dismiss_notification @ wp-content/plugins/paid-member-subscriptions/includes/class-review.php:110",
+   "10 PMS_Admin_Support_Chat::get_instance @ wp-content/plugins/paid-member-subscriptions/includes/admin/class-admin-support-chat.php:69",
+   "10 Cozmoslabs_Plugin_Optin_PMS::redirect_to_plugin_optin_page @ wp-content/plugins/paid-member-subscriptions/includes/admin/plugin-optin/class-admin-plugin-optin.php:37",
+   "10 Cozmoslabs_Plugin_Optin_PMS::process_optin_actions @ wp-content/plugins/paid-member-subscriptions/includes/admin/plugin-optin/class-admin-plugin-optin.php:84",
+   "10 pms_stripe_connect_platform_disconnect @ wp-content/plugins/paid-member-subscriptions/includes/gateways/stripe/admin/functions-admin-connect.php:117",
+   "10 pms_stripe_connect_dismiss_domain_registration_notice @ wp-content/plugins/paid-member-subscriptions/includes/gateways/stripe/admin/functions-admin-connect.php:137",
+   "10 pms_stripe_connect_register_domain @ wp-content/plugins/paid-member-subscriptions/includes/gateways/stripe/admin/functions-admin-connect.php:155",
+   "10 pms_reset_cron_jobs @ wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin.php:143",
+   "10 pms_register_serial_number_setting @ wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin.php:453",
+   "10 pms_payment_gateways_section_relocation_notice @ wp-content/plugins/paid-member-subscriptions/includes/admin/functions-admin.php:1347",
+   "10 Morning\\WC\\Config\\Settings::register_fields @ wp-content/plugins/wc-gateway-greeninvoice/includes/config/class-settings.php:80",
+   "10 Morning\\WC\\Config\\Settings::register_settings @ wp-content/plugins/wc-gateway-greeninvoice/includes/config/class-settings.php:315",
+   "10 Morning\\WC\\Notices\\Notices_Manager::load_notices @ wp-content/plugins/wc-gateway-greeninvoice/includes/notices/class-notices-manager.php:71",
+   "10 WC_Install::install_actions @ wp-content/plugins/woocommerce/includes/class-wc-install.php:586",
+   "10 WC_Install::newly_installed @ wp-content/plugins/woocommerce/includes/class-wc-install.php:402",
+   "10 WC_Privacy::add_privacy_message @ wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-privacy.php:83",
+   "10 WC_Tracks_Client::maybe_set_identity_cookie @ wp-content/plugins/woocommerce/includes/tracks/class-wc-tracks-client.php:62",
+   "10 WC_Helper_Updater::add_hook_for_modifying_update_notices @ wp-content/plugins/woocommerce/includes/admin/helper/class-wc-helper-updater.php:37",
+   "10 closure @ wp-content/plugins/woocommerce/src/Internal/ProductDownloads/ApprovedDirectories/Register.php:49",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\EmailImprovements\\EmailImprovements::add_email_improvements_modal_to_url @ wp-content/plugins/woocommerce/src/Internal/Admin/EmailImprovements/EmailImprovements.php:139",
+   "10 Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\WooPayments\\WooPaymentsController::handle_returns_from_wpcom @ wp-content/plugins/woocommerce/src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsController.php:58",
+   "10 WPMailSMTP\\Core::init_notifications @ wp-content/plugins/wp-mail-smtp/src/Core.php:501",
+   "10 Automattic\\Jetpack\\Connection\\Error_Handler::handle_verified_errors @ wp-content/plugins/woocommerce/vendor/automattic/jetpack-connection/src/class-error-handler.php:277",
+   "10 Classic_Editor::register_settings @ wp-content/plugins/classic-editor/classic-editor.php:360",
+   "10 Classic_Editor::on_admin_init @ wp-content/plugins/classic-editor/classic-editor.php:938",
+   "10 Automattic\\WooCommerce\\Admin\\Notes\\Notes::schedule_unsnooze_notes @ wp-content/plugins/woocommerce/src/Admin/Notes/Notes.php:262",
+   "10 Automattic\\WooCommerce\\Admin\\Notes\\Notes::possibly_delete_survey_notes @ wp-content/plugins/woocommerce/src/Admin/Notes/Notes.php:300",
+   "10 Automattic\\WooCommerce\\Admin\\PluginsInstaller::possibly_install_activate_plugins @ wp-content/plugins/woocommerce/src/Admin/PluginsInstaller.php:30",
+   "10 Automattic\\WooCommerce\\Admin\\ReportExporter::download_export_file @ wp-content/plugins/woocommerce/src/Admin/ReportExporter.php:177",
+   "10 closure @ wp-content/plugins/woocommerce/src/Blocks/Domain/Bootstrap.php:98",
+   "10 Automattic\\WooCommerce\\Blocks\\Domain\\Services\\DraftOrders::install @ wp-content/plugins/woocommerce/src/Blocks/Domain/Services/DraftOrders.php:62",
+   "10 WPMailSMTP\\Migrations::init_migrations_on_request @ wp-content/plugins/wp-mail-smtp/src/Migrations.php:40",
+   "10 WPMailSMTP\\DBRepair::fix_missing_db_tables @ wp-content/plugins/wp-mail-smtp/src/DBRepair.php:35",
+   "10 WPMailSMTP\\DBRepair::verify_db_tables_after_fixing @ wp-content/plugins/wp-mail-smtp/src/DBRepair.php:177",
+   "10 WPMailSMTP\\Providers\\Outlook\\Provider::maybe_display_basic_auth_notice @ wp-content/plugins/wp-mail-smtp/src/Providers/Outlook/Provider.php:30",
+   "10 WPMailSMTP\\Providers\\Sendlayer\\QuickConnect::handle_auth_complete @ wp-content/plugins/wp-mail-smtp/src/Providers/Sendlayer/QuickConnect.php:300",
+   "10 WPMailSMTP\\Providers\\Sendlayer\\QuickConnect::display_notice @ wp-content/plugins/wp-mail-smtp/src/Providers/Sendlayer/QuickConnect.php:474",
+   "10 WPMailSMTP\\Providers\\Sendlayer\\QuickConnect::handle_disconnect @ wp-content/plugins/wp-mail-smtp/src/Providers/Sendlayer/QuickConnect.php:547",
+   "10 WPSEO_Option_Wpseo::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 WPSEO_Option_Titles::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 WPSEO_Option_Social::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 WPSEO_Taxonomy_Meta::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 WPSEO_Option_Llmstxt::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 WPSEO_Option_Tracking_Only::register_setting @ wp-content/plugins/wordpress-seo/inc/options/class-wpseo-option.php:470",
+   "10 closure @ wp-content/plugins/wp-mail-smtp/src/Admin/DashboardWidget.php:59",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Util/Method_Proxy_Trait.php:24",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Util/Method_Proxy_Trait.php:24",
+   "10 Google\\Site_Kit\\Modules\\Analytics_4\\Synchronize_Property::maybe_schedule_synchronize_property @ wp-content/plugins/google-site-kit/includes/Modules/Analytics_4/Synchronize_Property.php:96",
+   "10 Google\\Site_Kit\\Modules\\Analytics_4\\Synchronize_AdSenseLinked::maybe_schedule_synchronize_adsense_linked @ wp-content/plugins/google-site-kit/includes/Modules/Analytics_4/Synchronize_AdSenseLinked.php:110",
+   "10 closure @ wp-content/plugins/google-site-kit/includes/Core/Util/Method_Proxy_Trait.php:24",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_3_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_3_0.php:86",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_8_1::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_8_1.php:106",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_123_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_123_0.php:103",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_129_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_129_0.php:102",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_150_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_150_0.php:100",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_163_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_163_0.php:90",
+   "10 Google\\Site_Kit\\Core\\Util\\Migration_1_177_0::migrate @ wp-content/plugins/google-site-kit/includes/Core/Util/Migration_1_177_0.php:90",
+   "10 PMS_Custom_Post_Type_Subscription::process_custom_bulk_actions @ wp-content/plugins/paid-member-subscriptions/includes/admin/class-admin-subscription-plans.php:1148",
+   "10 Automattic\\WooCommerce\\Admin\\RemoteInboxNotifications\\RemoteInboxNotificationsEngine::on_admin_init @ wp-content/plugins/woocommerce/src/Admin/RemoteInboxNotifications/RemoteInboxNotificationsEngine.php:105",
+   "10 Automattic\\WooCommerce\\Admin\\Features\\PaymentGatewaySuggestions\\PaymentGatewaysController::possibly_do_connection_return_action @ wp-content/plugins/woocommerce/src/Admin/Features/PaymentGatewaySuggestions/PaymentGatewaysController.php:87",
+   "10 YahnisElsts\\PluginUpdateChecker\\v5p6\\Scheduler::maybeCheckForUpdates @ wp-content/plugins/nadlan-config/lib/plugin-update-checker/Puc/v5p6/Scheduler.php:182",
+   "10 YahnisElsts\\PluginUpdateChecker\\v5p6\\Plugin\\Ui::onAdminInit @ wp-content/plugins/nadlan-config/lib/plugin-update-checker/Puc/v5p6/Plugin/Ui.php:22",
+   "10 PMS_Submenu_Page_Settings::register_settings @ wp-content/plugins/paid-member-subscriptions/includes/admin/class-admin-settings.php:338",
+   "10 PMS_Submenu_Page_Uninstall::process_data @ wp-content/plugins/paid-member-subscriptions/includes/admin/class-admin-uninstall.php:34",
+   "10 WC_Regenerate_Images::regenerating_notice @ wp-content/plugins/woocommerce/includes/class-wc-regenerate-images.php:144",
+   "10 closure @ wp-content/plugins/woocommerce/src/Internal/Orders/OrderAttributionController.php:209",
+   "10 Yoast\\WP\\SEO\\Alerts\\User_Interface\\Default_Seo_Data\\Default_SEO_Data_Cron_Scheduler::schedule_default_seo_data_detection @ wp-content/plugins/wordpress-seo/src/alerts/user-interface/default-seo-data/default-seo-data-cron-scheduler.php:36",
+   "10 Yoast\\WP\\SEO\\Expiring_Store\\User_Interface\\Expiring_Store_Cleanup_Integration::schedule_cleanup @ wp-content/plugins/wordpress-seo/src/expiring-store/user-interface/expiring-store-cleanup-integration.php:50",
+   "10 Yoast\\WP\\SEO\\Integrations\\Admin\\Background_Indexing_Integration::register_shutdown_indexing @ wp-content/plugins/wordpress-seo/src/integrations/admin/background-indexing-integration.php:144",
+   "10 Yoast\\WP\\SEO\\Integrations\\Watchers\\Auto_Update_Watcher::remove_notification @ wp-content/plugins/wordpress-seo/src/integrations/watchers/auto-update-watcher.php:55",
+   "10 Yoast\\WP\\SEO\\Integrations\\Watchers\\Search_Engines_Discouraged_Watcher::manage_search_engines_discouraged_notification @ wp-content/plugins/wordpress-seo/src/integrations/watchers/search-engines-discouraged-watcher.php:121",
+   "10 Yoast\\WP\\SEO\\Llms_Txt\\User_Interface\\File_Failure_Llms_Txt_Notification_Integration::maybe_show_notification @ wp-content/plugins/wordpress-seo/src/llms-txt/user-interface/file-failure-llms-txt-notification-integration.php:83",
+   "11 Yoast\\WP\\SEO\\Integrations\\Admin\\Background_Indexing_Integration::schedule_cron_indexing @ wp-content/plugins/wordpress-seo/src/integrations/admin/background-indexing-integration.php:197",
+   "20 handle_legacy_widget_preview_iframe @ wp-includes/blocks/legacy-widget.php:82",
+   "20 nlfs_install @ wp-content/plugins/nadlan-config/inc/pro-forum-social.php:197",
+   "20 Automattic\\WooCommerce\\Internal\\Features\\FeaturesController::change_feature_enable_from_query_params @ wp-content/plugins/woocommerce/src/Internal/Features/FeaturesController.php:2017",
+   "20 Google\\Site_Kit\\Core\\Util\\Plugin_Update::update_version @ wp-content/plugins/google-site-kit/includes/Core/Util/Plugin_Update.php:145",
+   "1000 pms_add_admin_menu_notification_counts @ wp-content/plugins/paid-member-subscriptions/includes/functions-plugin-notifications.php:31",
+   "999999999 Freemius::_redirect_on_clicked_menu_link @ wp-content/plugins/file-manager-advanced/vendor/freemius/includes/class-freemius.php:18573"
+  ]
+ },
+ "role_admin": {
+  "read": true,
+  "update_core": true
+ },
+ "me": {
+  "id": 1,
+  "roles": [
+   "administrator"
+  ],
+  "can_read": false,
+  "can_update_core": true,
+  "allcaps_read": true
+ },
+ "active_plugins": [
+  "fluent-smtp/fluent-smtp.php",
+  "classic-editor/classic-editor.php",
+  "code-snippets/code-snippets.php",
+  "consent-aware-hotjar/consent-aware-hotjar.php",
+  "file-manager-advanced/file_manager_advanced.php",
+  "google-site-kit/google-site-kit.php",
+  "nadlan-aurelia-prototype/nadlan-aurelia-prototype.php",
+  "nadlan-config/nadlan-config.php",
+  "paid-member-subscriptions/index.php",
+  "paid-memberships-pro-for-wp-courseware/wp-courseware-pmpro.php",
+  "tinymce-advanced/tinymce-advanced.php",
+  "vibe-ai/vibe-ai.php",
+  "wc-gateway-greeninvoice/wc-gateway-greeninvoice.php",
+  "woocommerce/woocommerce.php",
+  "wordpress-seo/wp-seo.php",
+  "wp-mail-smtp/wp_mail_smtp.php"
+ ]
+}

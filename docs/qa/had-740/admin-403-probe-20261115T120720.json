@@ -1,0 +1,142 @@
+{
+ "baseline": {
+  "read": false,
+  "edit_dashboard": true,
+  "update_core": true
+ },
+ "map_meta_cap_read": [
+  "do_not_allow"
+ ],
+ "without": [
+  [
+   "user_has_cap",
+   0,
+   "allow_custom_field_edits @ wpseo-non-ajax-functions.php:34",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   1,
+   "wp_maybe_grant_install_languages_cap @ capabilities.php:1309",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   1,
+   "wp_maybe_grant_resume_extensions_caps @ capabilities.php:1325",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   1,
+   "wp_maybe_grant_site_health_caps @ capabilities.php:1356",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   10,
+   "pms_role_permissions_filter_user_has_cap @ functions-admin-role-permissions.php:220",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   10,
+   "wc_customer_has_capability @ wc-user-functions.php:610",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   10,
+   "wc_shop_manager_has_capability @ wc-user-functions.php:680",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   10,
+   "closure @ Permissions.php:241",
+   "read without it: false"
+  ],
+  [
+   "user_has_cap",
+   10,
+   "Yoast\\WP\\SEO\\Dashboard\\User_Interface\\Configuration\\Site_Kit_Capabilities_Integration::enable_site_kit_capabilities @ site-kit-capabilities-integration.php:42",
+   "read without it: false"
+  ],
+  [
+   "map_meta_cap",
+   1,
+   "Automattic\\Jetpack\\Connection\\Manager::jetpack_connection_custom_caps @ class-manager.php:1606",
+   "read without it: false"
+  ],
+  [
+   "map_meta_cap",
+   10,
+   "nadlan_claim_map_meta_cap @ claim.php:197",
+   "read without it: false"
+  ],
+  [
+   "map_meta_cap",
+   10,
+   "wc_modify_map_meta_cap @ wc-user-functions.php:725",
+   "read without it: false"
+  ],
+  [
+   "map_meta_cap",
+   10,
+   "WPSEO_Register_Capabilities::map_meta_cap_for_seo_manager @ class-register-capabilities.php:91",
+   "read without it: false"
+  ],
+  [
+   "map_meta_cap",
+   10,
+   "closure @ Permissions.php:208",
+   "read without it: false"
+  ]
+ ],
+ "meta_caps_read": [
+  [
+   "read",
+   "read_post"
+  ]
+ ],
+ "types_mapping_read": [
+  [
+   "custom_css",
+   "read_post=read",
+   "map_meta_cap=0",
+   "capability_type=post",
+   "label=CSS מותאם"
+  ],
+  [
+   "nadlan_property",
+   "read_post=read",
+   "map_meta_cap=1",
+   "capability_type=listing",
+   "label=NadLan Properties"
+  ],
+  [
+   "nadlan_project",
+   "read_post=read",
+   "map_meta_cap=1",
+   "capability_type=listing",
+   "label=NadLan Projects"
+  ],
+  [
+   "nadlan_professional",
+   "read_post=read",
+   "map_meta_cap=1",
+   "capability_type=listing",
+   "label=NadLan Professionals"
+  ]
+ ],
+ "pms_code": "        $allowed = true;\n    elseif ( pms_role_permissions_current_user_has_legacy_access() )\n        $allowed = true;\n    elseif ( pms_role_permissions_current_user_has_granular_area_permission( $area_slug ) )\n        $allowed = true;\n    else\n        $allowed = false;\n\n    return (bool) apply_filters( 'pms_user_can_access_pms_area', $allowed, $area_slug, get_current_user_id() );\n\n}\n\n\n/**\n * Grants PMS granular capabilities dynamically through user_has_cap\n *\n * - keeps legacy pms_edit_capability external and unchanged\n * - grants only the PMS granular caps mapped to areas the user can access\n *\n */\nfunction pms_role_permissions_filter_user_has_cap( $allcaps, $caps, $args, $user ) {\n\n    if ( empty( $caps ) || empty( $user ) || ! ( $user instanceof WP_User ) )\n        return $allcaps;\n\n    if ( (int) $user->ID !== (int) get_current_user_id() )\n        return $allcaps;\n\n    $managed_capabilities = array();\n\n    // Build a capability-to-area lookup so user_has_cap can grant only PMS-owned caps.\n    foreach ( array_keys( pms_role_permissions_get_pages() ) as $area_slug ) {\n\n        $capability = pms_role_permissions_get_area_capability( $area_slug );\n\n        if ( ! empty( $capability ) )\n            $managed_capabilities[ $capability ] = $area_slug;\n\n    }\n\n    if ( empty( $managed_capabilities ) )\n        return $allcaps;\n\n    foreach ( $caps as $required_capability ) {\n\n        if ( ! isset( $managed_capabilities[ $required_capability ] ) )\n            continue;\n\n        if ( ! empty( $allcaps[ $required_capability ] ) )\n            continue;\n\n        if ( pms_role_permissions_current_user_can_access_area( $managed_capabilities[ $required_capability ] ) )\n            $allcaps[ $required_capability ] = true;\n\n    }\n\n    return $allcaps;\n\n}\nadd_filter( 'user_has_cap', 'pms_role_permissions_filter_user_has_cap', 10, 4 );\n\n\n/**\n * Whether the current user may run exports.\n *\n * @return bool\n */\nfunction pms_current_user_can_export() {\n    return (bool) apply_filters( 'pms_export_capability', current_user_can( 'manage_options' ) );\n}\n\n\n",
+ "pms_version": "3.1.4",
+ "pms_options": {
+  "pms_misc_settings": {
+   "plugin-optin": "no",
+   "payments": {
+    "use_action_scheduler_for_renewals": "1"
+   }
+  }
+ }
+}

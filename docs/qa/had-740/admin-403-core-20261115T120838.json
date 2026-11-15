@@ -1,0 +1,29 @@
+{
+ "wp": "7.1.4",
+ "db": "61833",
+ "auto_update": {
+  "type": "success",
+  "email": "benbetesh@gmail.com",
+  "version": "7.1.4",
+  "timestamp": 1793208904
+ },
+ "cap_file_mtime": "2026-08-19 22:26",
+ "version_file_mtime": "2026-10-28 17:34",
+ "hits": [
+  "38:  * @global array $post_type_meta_caps Used to get post type meta capabilities.",
+  "86: \t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );",
+  "193: \t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );",
+  "292: \t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );",
+  "385: \t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );",
+  "441: \t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );",
+  "841: \t\t\tglobal $post_type_meta_caps;",
+  "842: \t\t\tif ( isset( $post_type_meta_caps[ $cap ] ) ) {",
+  "843: \t\t\t\treturn map_meta_cap( $post_type_meta_caps[ $cap ], $user_id, ...$args );"
+ ],
+ "ctx": [
+  " *              and `update_https` capabilities.\n * @since 6.7.0 Added the `edit_block_binding` capability.\n *\n * @global array $post_type_meta_caps Used to get post type meta capabilities.\n *\n * @param string $cap     Capability being checked.\n * @param int    $user_id User ID.\n * @param mixed  ...$args Optional further parameters, typically starting with an object ID.\n * @return string[] Primitive capabilities required of the user.\n",
+  "\t\t\tif ( ! isset( $args[0] ) ) {\n\t\t\t\tif ( 'delete_post' === $cap ) {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );\n\t\t\t\t} else {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific page.' );\n\t\t\t\t}\n\n",
+  "\t\t\tif ( ! isset( $args[0] ) ) {\n\t\t\t\tif ( 'edit_post' === $cap ) {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );\n\t\t\t\t} else {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific page.' );\n\t\t\t\t}\n\n",
+  "\t\t\tif ( ! isset( $args[0] ) ) {\n\t\t\t\tif ( 'read_post' === $cap ) {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific post.' );\n\t\t\t\t} else {\n\t\t\t\t\t/* translators: %s: Capability name. */\n\t\t\t\t\t$message = __( 'When checking for the %s capability, you must always check it against a specific page.' );\n\t\t\t\t}\n\n"
+ ]
+}
