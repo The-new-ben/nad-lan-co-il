@@ -19,7 +19,6 @@ if ( ! function_exists( 'nadlan_listing_capabilities' ) ) {
 	function nadlan_listing_capabilities() {
 		return array(
 			'edit_post'              => 'edit_listing',
-			'read_post'              => 'read',
 			'delete_post'            => 'delete_listing',
 			'edit_posts'             => 'edit_listings',
 			'edit_others_posts'      => 'edit_others_listings',

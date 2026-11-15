@@ -36,6 +36,12 @@ add_action( 'rest_api_init', function () {
 					}
 				}
 			}
+			$own = get_posts( array( 'post_type' => array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ), 'post_status' => 'any', 'posts_per_page' => 1, 'fields' => 'ids',
+				'meta_query' => array( array( 'key' => 'claim_status', 'value' => 'verified' ), array( 'key' => 'owner_user_id', 'compare' => 'EXISTS' ) ) ) );
+			if ( $own ) {
+				$pid = (int) $own[0]; $oid = (int) get_post_meta( $pid, 'owner_user_id', true );
+				$out['owner_edit'] = array( 'post' => $pid, 'owner' => $oid, 'owner_roles' => $oid ? ( new WP_User( $oid ) )->roles : array(), 'map' => map_meta_cap( 'edit_post', $oid, $pid ), 'can_edit' => $oid ? user_can( $oid, 'edit_post', $pid ) : null, 'can_read' => $oid ? user_can( $oid, 'read' ) : null );
+			} else { $out['owner_edit'] = 'no verified owner card'; }
 			global $post_type_meta_caps;
 			$out['meta_caps_read'] = array();
 			foreach ( (array) $post_type_meta_caps as $k => $v ) { if ( 'read' === $k || 'read' === $v ) { $out['meta_caps_read'][] = array( $k, $v ); } }
@@ -76,5 +82,6 @@ io.open(out, "w", encoding="utf-8").write(json.dumps(res, ensure_ascii=False, in
 print("http", s, "| saved", os.path.relpath(out, REPO))
 if s == 200:
     print("baseline", res["baseline"], "| map_meta_cap('read') ->", res["map_meta_cap_read"], "| PMS", res.get("pms_version"))
+    print("owner edit:", res.get("owner_edit"))
     print("meta caps involving read:", res["meta_caps_read"])
     print("post types mapping a meta cap to read:", res["types_mapping_read"])

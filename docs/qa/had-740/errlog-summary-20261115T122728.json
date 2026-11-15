@@ -1,0 +1,16 @@
+{
+ "at": "2026-11-15 12:27:28",
+ "fma": {
+  "active": true,
+  "dir": true,
+  "adminer_tpl": false,
+  "templates": [],
+  "menus_mtime": "2026-07-01 19:09",
+  "dir_mtime": "2026-07-01 19:09",
+  "php": "8.5.12",
+  "plugins_fma": [
+   "file-manager-advanced/file_manager_advanced.php"
+  ]
+ },
+ "files": []
+}

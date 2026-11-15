@@ -21,7 +21,7 @@ add_action( 'rest_api_init', function () {
 			global $wpdb, $wp_filter, $wp_version;
 			$b = $req->get_json_params();
 			if ( ! is_array( $b ) || ! hash_equals( '__TOKEN__', (string) ( $b['token'] ?? '' ) ) ) { return new WP_Error( 'forbidden', 'token', array( 'status' => 403 ) ); }
-			$pat = '~(user_has_cap|map_meta_cap|remove_menu_page|remove_submenu_page|\$menu\s*\[|\$submenu\s*\[|unset\s*\(\s*\$menu|unset\s*\(\s*\$submenu|add_menu_page\s*\([^;]*,\s*[\'"]?2[\'"]?\s*\)|[\'"]index\.php[\'"]|[\'"]profile\.php[\'"]|[\'"]update-core\.php[\'"]|->remove_cap\s*\(|->add_cap\s*\(\s*[\'"]read)~';
+			$pat = ! empty( $b['pat'] ) ? (string) $b['pat'] : '~(user_has_cap|map_meta_cap|remove_menu_page|remove_submenu_page|\$menu\s*\[|\$submenu\s*\[|unset\s*\(\s*\$menu|unset\s*\(\s*\$submenu|add_menu_page\s*\([^;]*,\s*[\'"]?2[\'"]?\s*\)|[\'"]index\.php[\'"]|[\'"]profile\.php[\'"]|[\'"]update-core\.php[\'"]|->remove_cap\s*\(|->add_cap\s*\(\s*[\'"]read)~';
 			$roots = array();
 			foreach ( (array) get_option( 'active_plugins', array() ) as $p ) { $roots[ 'plugin:' . $p ] = WP_PLUGIN_DIR . '/' . dirname( $p ); if ( '.' === dirname( $p ) ) { $roots[ 'plugin:' . $p ] = WP_PLUGIN_DIR . '/' . $p; } }
 			if ( is_dir( WPMU_PLUGIN_DIR ) ) { $roots['mu-plugins'] = WPMU_PLUGIN_DIR; }
@@ -76,7 +76,7 @@ try:
     s2, _ = snip("PUT", "/%d/activate" % bid, {})
     assert s1 == 200 and s2 == 200, (s1, s2)
     time.sleep(2)
-    s, res, _ = req("POST", "/wp-json/nadlan-scan403/v1/run", {"token": tok}, timeout=300)
+    s, res, _ = req("POST", "/wp-json/nadlan-scan403/v1/run", {"token": tok, "pat": os.environ.get("SCAN_PAT", "")}, timeout=300)
 finally:
     a, _ = snip("PUT", "/%d/deactivate" % bid, {}); b, _ = snip("DELETE", "/%d" % bid, None)
     c, _, _ = req("POST", "/wp-json/nadlan-scan403/v1/run", {"token": "x"})
