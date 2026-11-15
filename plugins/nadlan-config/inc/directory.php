@@ -1045,6 +1045,20 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			if ( is_array( $src ) ) { $img_w = (int) $src[1]; $img_h = (int) $src[2]; }
 		}
 		if ( $pd ) { $img_w = (int) $pd['w']; $img_h = (int) $pd['h']; }
+		/* HAD-740 (15.11.2026): a photos_csv picture that is a file of this plugin (the batch-01 sketches) gets its real size from disk,
+		 * so a wide 4:3 plate fills the 8:5 box from the top like the pilot cards (Ben, HAD-694). Other addresses are untouched. */
+		if ( ! $pd && $is_real_photo && $img_w < 1 && ! has_post_thumbnail( $id ) ) {
+			$nlpd_m = '/wp-content/plugins/nadlan-config/';
+			$nlpd_i = strpos( (string) $photo_url, $nlpd_m );
+			if ( false !== $nlpd_i ) {
+				$nlpd_rel  = (string) strtok( substr( (string) $photo_url, $nlpd_i + strlen( $nlpd_m ) ), '?#' );
+				$nlpd_file = dirname( __DIR__ ) . '/' . $nlpd_rel;
+				if ( '' !== $nlpd_rel && false === strpos( $nlpd_rel, '..' ) && preg_match( '~\.(webp|jpe?g|png)$~i', $nlpd_rel ) && is_readable( $nlpd_file ) ) {
+					$nlpd_sz = @getimagesize( $nlpd_file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+					if ( is_array( $nlpd_sz ) && $nlpd_sz[0] > 0 && $nlpd_sz[1] > 0 ) { $img_w = (int) $nlpd_sz[0]; $img_h = (int) $nlpd_sz[1]; }
+				}
+			}
+		}
 		$fill = $img_w > 0 && $img_h > 0 && ( $img_w / $img_h ) > 1.25;
 		$tags = array();
 		if ( $mrow ) {

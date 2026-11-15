@@ -87,6 +87,14 @@ ok( null === nadlan_pd_default( 'he' ) && nadlan_dir_project_card( 3 ) === $clos
 // 4. the public switch
 unset( $_GET['pics'] ); $GLOBALS['t_opt'] = array( 'nadlan_pd_attachment' => 8913, 'nadlan_pd_public' => '1' );
 ok( false !== strpos( nadlan_dir_project_card( 3 ), 'has-default-pic' ), 'nadlan_pd_public=1 opens it without ?pics=next' );
+// 4b. a photos_csv picture that is a plugin file (batch-01 sketch, 1440x1080) fills from the top; another address stays as it was
+$GLOBALS['t_meta'][8] = array( 'post_name' => 'sketch-csv', 'title' => 'F', 'city' => 'חיפה', 'photos_csv' => 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/01-hagana-salvador-haifa-sketch.webp,https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/01-hagana-salvador-haifa-photo.webp' );
+list( $c8, $i8 ) = media_of( nadlan_dir_project_card( 8 ) );
+ok( false !== strpos( $c8, 'has-real-photo is-fill' ) && false !== strpos( $i8, 'width="1440" height="1080"' ) && false !== strpos( $i8, '01-hagana-salvador-haifa-sketch.webp' ), 'plugin sketch from photos_csv: real size, fills: ' . $c8 . ' ' . $i8 );
+list( $c2b, $i2b ) = media_of( nadlan_dir_project_card( 2 ) );
+ok( false === strpos( $c2b, 'is-fill' ) && false === strpos( $i2b, 'width=' ), 'photos_csv from another address: unchanged' );
+$GLOBALS['t_meta'][9] = array( 'post_name' => 'bad-csv', 'title' => 'G', 'city' => 'חיפה', 'photos_csv' => 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/../wp-config.php' );
+ok( false === strpos( nadlan_dir_project_card( 9 ), 'width=' ), 'no path tricks' );
 // 5. the enrichment hooks still match on every card kind
 foreach ( array( 1, 2, 3, 4, 6 ) as $i ) { ok( 1 === preg_match( '~^<a class="nldc nldc-project[^"]*" href="([^"]+)"~u', ltrim( nadlan_dir_project_card( $i ) ) ), 'enrichment marker ' . $i ); }
 $all = implode( '', array_map( 'nadlan_dir_project_card', array( 1, 2, 3, 4, 6 ) ) ) . file_get_contents( dirname( __DIR__, 2 ) . '/plugins/nadlan-config/inc/project-default-image.php' );
