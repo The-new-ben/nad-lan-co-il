@@ -14,6 +14,7 @@
 	var map = null, markers = {}, raf = 0;
 	var $ = function (sel, el) { return (el || root).querySelector(sel); };
 	var $$ = function (sel, el) { return Array.prototype.slice.call((el || root).querySelectorAll(sel)); };
+	var tagOf = function (id) { return markers[id] ? markers[id].getElement().firstChild : null; };
 
 	function fmt(n) {
 		if (n >= 1000000) { return (Math.round(n / 10000) / 100).toString() + ' מיליון ₪'; }
@@ -77,9 +78,8 @@
 	}
 	function paintStatus(flip) {
 		deals.forEach(function (d) {
-			var st = status(d), m = markers[d.id];
-			if (m) {
-				var el = m.getElement();
+			var st = status(d), el = tagOf(d.id);
+			if (el) {
 				if (el.getAttribute('data-st') !== st) {
 					el.setAttribute('data-st', st);
 					if (flip && !RM) { el.classList.remove('is-flip'); void el.offsetWidth; el.classList.add('is-flip'); }
@@ -152,7 +152,7 @@
 	}
 	function pick(id, fromList) {
 		S.sel = id;
-		Object.keys(markers).forEach(function (k) { markers[k].getElement().classList.toggle('is-sel', k === id); });
+		Object.keys(markers).forEach(function (k) { tagOf(k).classList.toggle('is-sel', k === id); markers[k].getElement().style.zIndex = k === id ? '5' : ''; });
 		renderSheet(true);
 		var d = byId[id];
 		if (map && d) { map.easeTo({ center: [d.lng, d.lat], zoom: Math.max(map.getZoom(), 12.4), duration: RM ? 0 : 900 }); }
@@ -166,7 +166,9 @@
 	function fitTo(list) {
 		var b = new maplibregl.LngLatBounds();
 		list.forEach(function (d) { b.extend([d.lng, d.lat]); });
-		map.fitBounds(b, { padding: { top: 70, bottom: 60, left: 40, right: 40 }, maxZoom: 13, duration: RM ? 0 : 1100, pitch: S.tilt ? 52 : 0 });
+		var cam = map.cameraForBounds(b, { padding: { top: 90, bottom: 60, left: 40, right: 40 }, maxZoom: 13 });
+		if (!cam) { return; }
+		map.easeTo({ center: cam.center, zoom: cam.zoom - (S.tilt ? 0.35 : 0), pitch: S.tilt ? 52 : 0, bearing: S.tilt ? -14 : 0, duration: RM ? 0 : 1100 });
 	}
 	function tagEl(d) {
 		var el = document.createElement('button');
@@ -199,7 +201,8 @@
 			burst(r.left + r.width / 2, r.top, d.color, !!d.hot);
 			pick(d.id, false);
 		});
-		return el;
+		var wrap = document.createElement('div'); wrap.className = 'nldm-mk'; wrap.appendChild(el);
+		return wrap;
 	}
 	/* keeps every tag readable: higher priority first, an overlapping tag folds to a dot in its colour */
 	function declutter() {
@@ -213,7 +216,7 @@
 			});
 			var kept = [];
 			list.forEach(function (d) {
-				var el = markers[d.id].getElement(), p = map.project([d.lng, d.lat]);
+				var el = tagOf(d.id), p = map.project([d.lng, d.lat]);
 				var w = 128, h = 44, box = [p.x - w / 2, p.y - h - 8, p.x + w / 2, p.y];
 				var hit = kept.some(function (k) { return !(box[2] < k[0] || box[0] > k[2] || box[3] < k[1] || box[1] > k[3]); });
 				el.classList.toggle('is-tuck', hit);
@@ -265,7 +268,7 @@
 				var center = deals.filter(function (d) { return d.lat > 31.85 && d.lat < 32.25 && d.lng < 35; });
 				fitTo(center.length ? center : deals);
 				declutter();
-				setTimeout(function () { var h = byId[D.hotId]; if (h && markers[h.id] && !RM) { var r = markers[h.id].getElement().getBoundingClientRect(); if (r.top > 0 && r.top < window.innerHeight) { burst(r.left + r.width / 2, r.top, h.color, true); } } }, 1500);
+				setTimeout(function () { var h = byId[D.hotId]; if (h && markers[h.id] && !RM) { var r = tagOf(h.id).getBoundingClientRect(); if (r.top > 0 && r.top < window.innerHeight) { burst(r.left + r.width / 2, r.top, h.color, true); } } }, 1500);
 			});
 			map.on('move', declutter);
 		};

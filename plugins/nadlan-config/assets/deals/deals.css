@@ -61,7 +61,9 @@
 .nldm-tag.is-tuck{padding:0;min-height:0;width:16px;height:16px;border-radius:50%;border:2px solid #fff!important;box-shadow:0 2px 6px rgba(15,29,38,.3)}
 .nldm-tag.is-tuck .tx,.nldm-tag.is-tuck .hot,.nldm-tag.is-tuck:after{display:none}
 .nldm-tag.is-tuck .bar{width:100%;height:100%;border-radius:50%}
-.nldm-tag.is-hidden{display:none!important}
+.nldm-mk.is-hidden{display:none!important}
+.nldm [hidden]{display:none!important}
+.nldm-mk{position:absolute}
 .nldm .nldm-tag{background:#fff!important;color:var(--ink)!important;padding:5px 9px 5px 7px!important;margin:0!important;min-height:38px!important;border-radius:10px!important;font:inherit!important;font-family:"IBM Plex Sans Hebrew",sans-serif!important;text-transform:none!important;letter-spacing:0!important;line-height:1.15!important;width:auto!important}
 .nldm .nldm-tag[data-st=fit]{border:2px solid var(--fit)!important}.nldm .nldm-tag[data-st=unk]{border:1.5px dashed var(--teal)!important}.nldm .nldm-tag[data-st=no]{border:1px solid #C3CED5!important}
 .nldm .nldm-tag.is-hot{border:2px solid var(--red)!important}
