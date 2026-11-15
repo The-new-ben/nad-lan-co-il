@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>התראה על מבצע באזור שלי</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E4C63}a:hover{color:#0A3646}
+button,input{font-family:inherit}
+button{cursor:pointer}
+input[type=range]{accent-color:#0E4C63}
+@keyframes nlring{0%{transform:translate(-50%,-50%) scale(.2);opacity:.9}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+@keyframes nldrop{0%{transform:translate(-50%,-160%);opacity:0}60%{transform:translate(-50%,-92%);opacity:1}100%{transform:translate(-50%,-100%);opacity:1}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 1180px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+
+  <a href="Main.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">‹ חזרה למפה</a>
+  <h1 style="margin: 0; font-size: 23px; line-height: 1.2; font-weight: 700">מבצע חדש באזור שלכם? תדעו ראשונים</h1>
+
+  <section aria-label="האזור שלכם" style="position: relative; height: 300px; border-radius: 18px; overflow: hidden; background: #E3EAEE">
+    <svg width="358" height="300" viewBox="0 0 358 300" aria-hidden="true" style="position: absolute; inset: 0">
+      <path d="M150 0 L130 80 L110 150 L95 210 L80 300 L0 300 L0 0 Z" fill="#CFE0EA"/>
+      <path d="M90 160 L180 166 L260 176 L358 186" stroke="#9FC3D4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M190 0 L170 120 L150 300" stroke="#FFFFFF" stroke-width="5" fill="none"/>
+      <path d="M120 70 L358 60" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+      <path d="M100 240 L358 230" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+      <path d="M200 120h0M222 140h0M240 100h0M260 150h0M180 200h0M210 210h0M280 120h0M300 200h0M160 90h0M230 60h0M250 240h0M140 230h0" stroke="#8D9AA3" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+    </svg>
+    <span style="{{circleStyle}}"></span>
+    <sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+      <span style="position: absolute; left: 215px; top: 140px; width: {{ringPx}}px; height: {{ringPx}}px; border-radius: 50%; border: 2px solid #C8102E; animation: nlring 2.2s ease-out infinite"></span>
+      <span style="position: absolute; left: 215px; top: 140px; width: {{ringPx}}px; height: {{ringPx}}px; border-radius: 50%; border: 2px solid #C8102E; animation: nlring 2.2s ease-out .73s infinite"></span>
+      <span style="position: absolute; left: 215px; top: 140px; width: {{ringPx}}px; height: {{ringPx}}px; border-radius: 50%; border: 2px solid #C8102E; animation: nlring 2.2s ease-out 1.46s infinite"></span>
+      <span style="position: absolute; left: 248px; top: 118px; transform: translate(-50%,-100%); animation: nldrop .7s cubic-bezier(.2,.9,.3,1.3) 1.2s both; display: flex; align-items: stretch; background: #FFFFFF; border: 2px solid #C8102E; border-radius: 9px; overflow: hidden; box-shadow: 0 8px 18px rgba(200,16,46,.25)">
+        <span style="background: #C8102E; color: #FFFFFF; font-weight: 700; font-size: 11px; padding: 5px 7px">חדש</span>
+        <span style="font-size: 12px; font-weight: 600; padding: 5px 8px; white-space: nowrap">מבצע 20/80 נכנס לאזור</span>
+      </span>
+    </sc-if>
+    <span style="position: absolute; left: 215px; top: 140px; transform: translate(-50%,-50%); width: 14px; height: 14px; border-radius: 50%; background: #0E4C63; border: 3px solid #FFFFFF; box-shadow: 0 2px 6px rgba(15,29,38,.35)"></span>
+    <span style="position: absolute; bottom: 10px; right: 12px; font-size: 12px; background: rgba(255,255,255,.9); padding: 4px 8px; border-radius: 6px">גררו את הנקודה למקום שמעניין אתכם</span>
+  </section>
+
+  <sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
+    <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <label for="km" style="font-weight: 600; font-size: 15px">עד כמה רחוק</label>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 18px; color: #0E4C63">{{km}} ק״מ</span>
+      </div>
+      <input id="km" type="range" min="1" max="15" step="1" value="{{km}}" onChange="{{onKm}}" style="width: 100%; height: 28px; margin: 0">
+      <span style="font-weight: 600; font-size: 15px">איזה מבצעים</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{kinds}}" as="k" hint-placeholder-count="5">
+          <button type="button" onClick="{{k.pick}}" style="{{k.style}}">{{k.label}}</button>
+        </sc-for>
+      </div>
+      <label for="ph" style="font-weight: 600; font-size: 15px">לאן לשלוח</label>
+      <input id="ph" type="tel" placeholder="מספר טלפון או מייל" style="min-height: 48px; border: 1px solid #C3CED5; border-radius: 12px; padding: 0 12px; font-size: 16px">
+      <button type="button" onClick="{{submit}}" style="min-height: 52px; border: 0; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 16px">הפעילו התראה</button>
+      <span style="font-size: 11px; line-height: 1.5; color: #4A5863">נשלח רק כשמבצע חדש נכנס לאזור שבחרתם, לכל היותר פעם בשבוע. הסרה בלחיצה אחת.</span>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+    <section style="background: #FFFFFF; border: 2px solid #17694A; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+      <b style="font-size: 18px; color: #17694A">ההתראה פועלת</b>
+      <span style="font-size: 14px; line-height: 1.5">ברגע שמבצע חדש נכנס לרדיוס של {{km}} ק״מ, תקבלו הודעה עם התנאים, הסכום שצריך ביד והקישור למחירון.</span>
+      <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 12px; background: #E6EFF2; color: #0E4C63; font-weight: 600; font-size: 15px; text-decoration: none">בינתיים: 3 מבצעים כבר באזור הזה</a>
+    </section>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { km: 4, done: false, on: { pay: true, index: true } }; }
+  renderVals() {
+    const S = this.state;
+    const px = 18 + S.km * 14;
+    const list = [['pay', '10/90 ו-20/80'], ['index', 'פטור ממדד'], ['loan', 'הלוואת קבלן'], ['rent', 'שכר דירה עד האכלוס'], ['price', 'הנחה במחיר']];
+    return {
+      km: S.km,
+      onKm: (e) => this.setState({ km: Number(e.target.value) }),
+      done: S.done, notDone: !S.done,
+      ringPx: px * 2,
+      circleStyle: 'position: absolute; left: 215px; top: 140px; width: ' + (px * 2) + 'px; height: ' + (px * 2) + 'px; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(14,76,99,.12); border: 2px dashed #0E4C63; transition: width .3s, height .3s',
+      kinds: list.map((k) => ({ label: k[1], pick: () => this.setState({ on: { ...S.on, [k[0]]: !S.on[k[0]] } }), style: 'min-height: 44px; padding: 0 12px; border-radius: 22px; font-size: 14px; font-weight: 600; ' + (S.on[k[0]] ? 'background: #0F1D26; color: #FFFFFF; border: 1px solid #0F1D26' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5') })),
+      submit: () => this.setState({ done: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

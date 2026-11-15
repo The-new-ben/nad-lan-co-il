@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>מפת מבצעי הקבלנים בטלפון</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E4C63}a:hover{color:#0A3646}
+button,input{font-family:inherit}
+button{cursor:pointer}
+input[type=range]{accent-color:#0E4C63}
+@keyframes nlpulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.6);opacity:0}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; min-height: 2240px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Heebo, Arial, sans-serif; display: flex; flex-direction: column; position: relative; overflow: hidden">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #FFFFFF; border-bottom: 1px solid #D3DBE0">
+    <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.3px">נדל״ן</span>
+    <nav aria-label="מיקום בעמוד" style="font-size: 13px; color: #4A5863"><a href="#" style="text-decoration: none; color: #4A5863">פרויקטים חדשים</a> › מבצעי קבלנים</nav>
+  </header>
+
+  <section style="padding: 18px 16px 6px; display: flex; flex-direction: column; gap: 10px">
+    <h1 style="margin: 0; font-size: 27px; line-height: 1.18; font-weight: 700; letter-spacing: -0.4px">מבצעי קבלנים 2026: מפת כל המבצעים בישראל</h1>
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #4A5863">
+      <span style="position: relative; width: 9px; height: 9px; display: inline-block">
+        <span style="position: absolute; inset: 0; border-radius: 50%; background: #C8102E"></span>
+        <span style="position: absolute; inset: 0; border-radius: 50%; background: #C8102E; animation: nlpulse 1.8s ease-out infinite"></span>
+      </span>
+      <span>מתעדכנת · <b style="font-family: 'IBM Plex Mono', monospace; color: #0F1D26">{{total}}</b> מבצעים · כל מבצע עם תאריך בדיקה</span>
+    </div>
+    <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #22313B">כל מבצעי הקבלנים הפעילים על מפה אחת: 20/80 ו-10/90, פטור ממדד תשומות הבנייה, הלוואת קבלן, שכר דירה עד האכלוס והנחות במחיר. לכל מבצע כתוב מה בדיוק פורסם, כמה צריך ביד ביום החתימה, כמה הוא שווה בשקלים ומתי בדקנו אותו לאחרונה.</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 2px">
+      <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none">בקשו מחירון מעודכן</a>
+      <a href="Alert.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 12px; background: #FFFFFF; border: 1px solid #0E4C63; color: #0E4C63; font-weight: 600; font-size: 15px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+        מבצע חדש באזור שלי
+      </a>
+    </div>
+  </section>
+
+  <section aria-label="כמה יש לכם ביד" style="margin: 12px 16px 0; background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <label for="cash" style="font-weight: 600; font-size: 15px">כמה יש לכם ביד היום?</label>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 22px; color: #0E4C63">{{cashLabel}}</span>
+    </div>
+    <input id="cash" type="range" min="0" max="1500000" step="10000" value="{{cash}}" onChange="{{onCash}}" style="width: 100%; height: 28px; margin: 0">
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; color: #22313B">
+      <span style="display: flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #17694A"></span>מתאים לכם: <b style="font-family: 'IBM Plex Mono', monospace">{{nFit}}</b></span>
+      <span style="display: flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #9AA6AE"></span>צריך יותר: <b style="font-family: 'IBM Plex Mono', monospace">{{nNo}}</b></span>
+      <span style="display: flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 3px; border: 1.5px dashed #4A5863"></span>לא פורסם: <b style="font-family: 'IBM Plex Mono', monospace">{{nUnk}}</b></span>
+    </div>
+  </section>
+
+  <nav aria-label="סוג המבצע" style="display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px 4px; scrollbar-width: none">
+    <sc-for list="{{chips}}" as="c" hint-placeholder-count="7">
+      <button type="button" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button>
+    </sc-for>
+  </nav>
+
+  <div style="display: flex; align-items: center; gap: 6px; padding: 6px 16px 0; overflow-x: auto; scrollbar-width: none">
+    <span style="font-size: 12px; color: #4A5863; white-space: nowrap">מחוץ למפה:</span>
+    <sc-for list="{{offMap}}" as="o" hint-placeholder-count="3">
+      <button type="button" onClick="{{o.pick}}" style="flex: 0 0 auto; display: flex; align-items: center; gap: 5px; min-height: 36px; padding: 0 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #C3CED5; font-size: 12px; color: #0F1D26; white-space: nowrap">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="{{o.arrow}}"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        {{o.city}} · <span style="font-family: 'IBM Plex Mono', monospace">{{o.km}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <section aria-label="מפת המבצעים" style="position: relative; margin: 8px 0 0; height: 470px; background: linear-gradient(#E3EAEE, #EEF2F4); overflow: hidden; perspective: 900px">
+    <div style="{{planeStyle}}">
+      <svg width="358" height="540" viewBox="0 0 358 540" aria-hidden="true" style="position: absolute; inset: 0">
+        <path d="M111 0 L102 60 L85 120 L77 160 L60 200 L48 230 L38 260 L26 290 L9 320 L-3 360 L-12 400 L-22 440 L-34 480 L-60 540 L-90 540 L-90 0 Z" fill="#CFE0EA"/>
+        <path d="M111 0 L102 60 L85 120 L77 160 L60 200 L48 230 L38 260 L26 290 L9 320 L-3 360 L-12 400 L-22 440 L-34 480 L-60 540" fill="none" stroke="#9FBCCB" stroke-width="1.5"/>
+        <path d="M60 198 L102 204 L153 200 L205 210 L256 220 L324 230" fill="none" stroke="#9FC3D4" stroke-width="3" stroke-linecap="round"/>
+        <path d="M133 60 L119 140 L94 200 L89 260 L80 320 L73 380 L85 460" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+        <path d="M103 241h0M215 279h0M201 284h0M77 435h0M120 473h0M218 28h0M106 153h0M96 173h0M134 185h0M261 224h0M107 344h0M126 220h0M160 277h0M257 341h0M3 347h0M4 377h0M213 290h0M212 281h0M211 286h0M30 367h0M118 430h0M144 263h0M202 138h0M114 226h0M136 243h0M237 19h0M113 234h0M157 65h0M25 362h0M154 283h0M71 229h0M24 370h0M130 215h0M140 300h0M221 16h0M297 258h0M296 245h0M143 245h0M125 295h0M47 270h0M6 358h0M101 282h0M28 386h0M5 358h0M140 254h0M168 162h0M145 240h0M140 222h0M194 143h0M20 337h0M176 73h0M3 350h0M8 342h0M181 249h0M181 245h0M15 391h0M173 167h0M35 369h0M31 373h0M159 74h0M5 340h0M129 260h0M209 343h0M41 285h0M34 358h0M129 305h0M35 384h0M145 233h0M24 385h0M164 84h0M32 359h0M172 91h0M113 269h0M176 95h0M117 240h0M125 299h0M10 357h0M265 511h0M209 286h0M212 304h0M138 217h0M204 268h0M109 278h0M217 337h0M185 73h0M159 513h0M122 277h0M137 215h0M61 366h0M213 294h0M119 281h0M127 256h0M117 222h0M85 282h0M132 216h0M116 153h0M108 310h0M213 336h0M231 220h0M214 34h0M121 220h0M142 216h0M137 302h0M135 303h0M127 299h0M131 301h0M216 229h0M26 366h0M267 85h0M160 214h0M213 298h0M259 332h0M243 503h0M262 493h0M47 315h0M10 355h0M256 343h0M183 339h0M121 231h0M235 226h0M16 369h0M236 217h0M256 246h0M103 534h0M95 532h0M200 351h0M130 174h0M183 48h0M93 179h0M109 273h0M21 334h0M137 217h0M203 529h0M209 279h0M131 223h0M253 211h0M229 229h0M13 331h0M118 304h0M254 256h0M65 366h0M211 530h0M210 293h0M133 215h0M233 218h0M92 271h0M214 539h0M134 222h0M218 345h0M216 342h0M122 294h0M221 219h0M182 247h0M255 83h0M113 526h0M238 211h0M62 358h0M277 21h0M301 256h0M245 207h0M175 161h0M60 302h0M125 242h0M126 222h0M252 334h0M249 224h0M156 213h0M121 530h0M272 49h0M167 114h0M91 238h0M18 369h0M7 336h0M18 341h0M178 100h0M9 337h0M83 281h0M91 282h0M121 272h0M166 74h0M307 59h0M72 293h0M173 78h0M24 392h0M35 372h0M122 254h0M246 498h0M270 339h0M259 504h0M183 236h0M273 496h0M39 373h0M38 347h0M36 334h0M55 343h0M256 515h0M265 506h0M174 125h0M189 133h0M220 534h0M86 428h0M78 426h0M86 425h0M290 505h0M189 80h0M199 532h0M276 49h0M119 350h0M128 361h0M263 248h0M298 40h0M62 346h0M69 368h0M110 353h0M292 244h0M77 354h0M214 26h0M179 92h0M42 380h0M67 358h0M42 366h0M117 268h0M56 315h0M119 262h0M105 252h0M231 95h0M256 507h0M280 213h0M95 285h0M238 512h0M108 269h0M30 335h0M186 64h0M131 248h0M261 329h0M255 331h0M42 360h0M41 353h0M147 270h0M252 83h0M186 69h0M44 347h0M266 339h0M248 208h0M136 222h0M137 278h0M122 222h0M152 250h0M123 219h0M150 279h0M155 273h0M261 495h0M105 469h0M164 87h0M108 271h0M264 81h0M237 216h0M222 219h0M106 221h0M121 459h0M128 476h0M138 242h0M36 339h0M59 316h0M235 222h0M105 479h0M225 219h0M298 53h0M342 38h0M216 525h0M289 52h0M112 238h0M177 66h0M107 247h0M201 536h0M69 361h0M230 227h0M115 266h0M168 513h0M103 307h0M68 306h0M147 281h0M235 230h0M130 275h0M133 255h0M133 253h0M90 184h0M122 250h0M128 301h0M144 234h0M247 219h0M167 77h0M144 467h0M107 244h0M154 261h0M134 237h0M19 385h0M126 296h0M344 35h0M296 52h0M274 46h0M146 239h0M237 219h0M162 73h0M197 45h0M169 68h0M120 358h0M76 369h0M127 217h0M274 81h0M116 231h0M6 386h0M30 355h0M21 384h0M13 347h0M108 461h0M120 238h0M116 258h0M144 256h0M49 322h0M139 231h0M83 371h0M182 69h0M4 361h0M138 214h0M153 271h0M142 247h0M114 279h0M118 221h0M149 258h0M108 236h0M162 524h0M252 227h0M217 348h0M257 495h0M152 270h0M134 488h0M254 329h0M149 395h0M274 234h0M113 260h0M13 333h0M89 432h0M204 296h0M42 320h0M15 329h0M30 323h0M118 527h0M75 231h0M168 107h0M76 194h0M76 172h0M81 189h0M76 191h0M78 194h0M74 179h0M76 188h0M80 153h0M83 177h0M92 173h0M100 173h0M99 215h0M90 219h0M95 72h0M57 274h0M96 219h0M73 229h0M72 186h0M153 193h0M94 253h0M73 225h0M40 263h0M85 226h0M81 196h0M77 177h0M83 175h0M99 179h0M79 181h0M93 187h0" fill="none" stroke="#8D9AA3" stroke-width="3.2" stroke-linecap="round" opacity="0.55"/>
+      </svg>
+      <svg width="358" height="540" viewBox="0 0 358 540" aria-hidden="true" style="position: absolute; inset: 0">
+        <path d="{{stems}}" fill="none" stroke="#0F1D26" stroke-width="1.2" opacity=".55"/>
+        <path d="{{pts}}" fill="none" stroke="#C8102E" stroke-width="7" stroke-linecap="round"/>
+        <path d="{{pts}}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <sc-for list="{{cities}}" as="t" hint-placeholder-count="8">
+        <span style="{{t.style}}">{{t.name}}</span>
+      </sc-for>
+      <sc-for list="{{onMap}}" as="d" hint-placeholder-count="12">
+        <button type="button" onClick="{{d.pick}}" aria-label="{{d.aria}}" style="{{d.tagStyle}}">
+          <span style="{{d.barStyle}}"></span>
+          <span style="display: flex; flex-direction: column; gap: 1px; text-align: right">
+            <span style="font-weight: 700; font-size: 12px; line-height: 1.15; white-space: nowrap">{{d.dev}} · <span style="font-family: 'IBM Plex Mono', monospace">{{d.short}}</span></span>
+            <span style="font-size: 11px; line-height: 1.15; white-space: nowrap; color: {{d.subColor}}">{{d.need}}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="position: absolute; bottom: 30px; left: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 40">
+      <button type="button" onClick="{{toggleTilt}}" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #C3CED5; background: #FFFFFF; font-weight: 600; font-size: 13px; color: #0F1D26">{{tiltLabel}}</button>
+      <button type="button" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #C3CED5; background: #FFFFFF; font-weight: 600; font-size: 13px; color: #0F1D26; display: flex; align-items: center; gap: 5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>קרוב אליי</button>
+    </div>
+    <div style="position: absolute; bottom: 8px; right: 12px; left: 12px; display: flex; justify-content: space-between; font-size: 11px; color: #4A5863">
+      <span>נקודה אפורה: פרויקט חדש מהמאגר שלנו</span>
+      <span>מיקומי המבצעים משוערים · דוגמה</span>
+    </div>
+  </section>
+
+  <sc-if value="{{hasSel}}" hint-placeholder-val="{{true}}">
+    <section aria-label="המבצע שנבחר" style="margin: -18px 10px 0; position: relative; background: #FFFFFF; border-radius: 20px 20px 16px 16px; box-shadow: 0 -6px 24px rgba(15,29,38,.12); padding: 10px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+      <span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #C3CED5"></span>
+      <div style="display: flex; gap: 10px; align-items: flex-start">
+        <span style="{{sel.chipStyle}}">{{sel.devInit}}</span>
+        <div style="display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0">
+          <span style="font-size: 13px; color: #4A5863">{{sel.devFull}} · {{sel.city}}</span>
+          <h2 style="margin: 0; font-size: 20px; line-height: 1.2; font-weight: 700">{{sel.project}}</h2>
+          <span style="align-self: flex-start; background: #FBE7EA; color: #A10D25; font-weight: 600; font-size: 12px; padding: 3px 8px; border-radius: 6px">{{sel.kind}}</span>
+        </div>
+      </div>
+      <blockquote style="margin: 0; padding: 10px 12px; background: #F4F7F8; border-radius: 10px; font-size: 14px; line-height: 1.5; color: #22313B">
+        <span style="display: block; font-size: 11px; color: #4A5863; margin-bottom: 3px">כפי שפורסם</span>
+        {{sel.terms}}
+      </blockquote>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 13px; font-weight: 600">מתי משלמים</span>
+        <div style="display: flex; height: 30px; border-radius: 8px; overflow: hidden; gap: 2px">
+          <sc-for list="{{sel.bar}}" as="b" hint-placeholder-count="3">
+            <span style="{{b.style}}">{{b.label}}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+        <div style="background: #F4F7F8; border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 11px; color: #4A5863">מחיר מ-</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 15px">{{sel.priceLabel}}</span>
+        </div>
+        <div style="background: #F4F7F8; border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 11px; color: #4A5863">ביד בחתימה</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 15px; color: {{sel.needColor}}">{{sel.needLabel}}</span>
+        </div>
+        <div style="background: #E9F3EE; border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 11px; color: #17694A">שווה בשקלים</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 15px; color: #17694A">{{sel.worthLabel}}</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #7A4B00; background: #FFF4DC; border-radius: 8px; padding: 7px 10px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>נבדק לפני <b style="font-family: 'IBM Plex Mono', monospace">{{sel.days}}</b> ימים, ב-20.8.2026. מבצע שלא נבדק 30 יום מסומן כך, ויורד מהמפה כשתאריך הסיום עובר.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 52px; gap: 8px">
+        <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none">מחירון מעודכן ותוכניות הדירות</a>
+        <a href="#" aria-label="שאלה בוואטסאפ" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 12px; background: #E9F3EE; color: #17694A; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 21l1.7-4.9A8.5 8.5 0 1 1 8 19.4z"/></svg></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 10px; border: 1px solid #D3DBE0; border-radius: 12px; text-decoration: none; color: #0F1D26"><b style="font-size: 13px">משכנתא לדירה הזאת</b><span style="font-size: 12px; color: #4A5863">ההחזר החודשי עם המבצע</span></a>
+        <a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 10px; border: 1px solid #D3DBE0; border-radius: 12px; text-decoration: none; color: #0F1D26"><b style="font-size: 13px">שמאי לפני חתימה</b><span style="font-size: 12px; color: #4A5863">האם המחיר אחרי ההנחה הוגן</span></a>
+        <a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 10px; border: 1px solid #D3DBE0; border-radius: 12px; text-decoration: none; color: #0F1D26"><b style="font-size: 13px">סדרו את הדירה בעצמכם</b><span style="font-size: 12px; color: #4A5863">מעצב הדירות שלנו, על התוכנית</span></a>
+        <a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 10px; border: 1px solid #D3DBE0; border-radius: 12px; text-decoration: none; color: #0F1D26"><b style="font-size: 13px">קונים להשקעה?</b><span style="font-size: 12px; color: #4A5863">ניהול השכירות עלינו</span></a>
+      </div>
+      <a href="Compare.dc.html" style="align-self: flex-start; font-size: 14px; font-weight: 600">השוואה למבצע אחר בשקל אחד ›</a>
+    </section>
+  </sc-if>
+
+  <section aria-label="כל המבצעים" style="padding: 18px 16px 0; display: flex; flex-direction: column; gap: 8px">
+    <h2 style="margin: 0; font-size: 19px; font-weight: 700">כל המבצעים, מהמתאים לכם ביותר</h2>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+      <button type="button" onClick="{{r.pick}}" style="display: flex; align-items: center; gap: 10px; width: 100%; min-height: 60px; padding: 8px 10px; background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 12px; text-align: right; color: #0F1D26">
+        <span style="{{r.dot}}"></span>
+        <span style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+          <b style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.project}}</b>
+          <span style="font-size: 12px; color: #4A5863">{{r.devFull}} · {{r.city}} · {{r.kind}}</span>
+        </span>
+        <span style="{{r.needStyle}}">{{r.need}}</span>
+      </button>
+    </sc-for>
+  </section>
+
+  <section style="padding: 22px 16px 120px; display: flex; flex-direction: column; gap: 10px">
+    <h2 style="margin: 0; font-size: 19px; font-weight: 700">מבצעי מימון של קבלנים: איך לקרוא מבצע לפני שחותמים</h2>
+    <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #22313B">מבצע 20/80 או 10/90 משנה מתי משלמים, לא בהכרח כמה. לכן לצד כל מבצע מופיע הסכום שצריך ביד ביום החתימה והערך שלו בשקלים: כמה חוסכים על מדד תשומות הבנייה, כמה שווה הלוואת הקבלן וכמה שווה שכר הדירה עד האכלוס.</p>
+    <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #22313B">מחפשים דירות חדשות מקבלן גם בלי מבצע? <a href="#">כל הפרויקטים החדשים בישראל</a>, עם מחירים, שלב בנייה ומפה.</p>
+  </section>
+
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 12px 14px; background: rgba(255,255,255,.96); border-top: 1px solid #D3DBE0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center">
+    <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none">קבלו את המחירים המעודכנים של {{selShort}}</a>
+    <span style="font-size: 11px; color: #4A5863; max-width: 72px; line-height: 1.3">תשובה מהיזם, בלי מתווך</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2240}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cash: 600000, sel: 'glilyam', kind: 'all', tilt: true };
+  }
+  renderVals() {
+    const S = this.state;
+    const T = 46;
+    const fmt = (n) => n >= 1000000 ? (Math.round(n / 10000) / 100).toString() + ' מ׳ ₪' : Math.round(n / 1000) + ' אלף ₪';
+    const DEALS = [
+      { id: 'glilyam', dev: 'גינדי', devFull: 'גינדי החזקות', project: 'גליל ים, הרצליה', city: 'הרצליה', x: 123, y: 86, color: '#14161A', kind: 'שכר דירה עד האכלוס', k: 'rent', short: '10%', terms: 'תשלום שכר דירה ל-3 שנים, 10% הון ראשוני ו-30% הלוואת קבלן. 5 חדרים מ-5.28 מיליון ₪.', price: 5280000, first: 0.10, worth: 360000, bar: [[10, 'חתימה', '#0E4C63'], [30, 'הלוואת קבלן', '#5E8FA3'], [60, 'באכלוס', '#C3CED5']] },
+      { id: 'benshemen', dev: 'אאורה', devFull: 'אאורה ישראל', project: 'בן שמן, לוד', city: 'לוד', x: 281, y: 492, color: '#0B63B6', kind: 'כניסה עם סכום קטן', k: 'pay', short: '550K', terms: 'כניסה עם 550 אלף ₪, היתרה לאחר שנה וחצי. מ-2.68 מיליון ₪.', price: 2680000, firstAbs: 550000, worth: null, bar: [[21, 'כניסה', '#0E4C63'], [79, 'אחרי שנה וחצי', '#C3CED5']] },
+      { id: 'biltmore', dev: 'י.ע.ז', devFull: 'י.ע.ז', project: 'Biltmore, תל אביב', city: 'תל אביב', x: 70, y: 242, color: '#8A1C5C', kind: '0% בחתימה', k: 'pay', short: '0%', terms: '0% בחתימה. 5 חדרים ב-7.65 מיליון ₪.', price: 7650000, first: 0, worth: null, bar: [[2, '', '#0E4C63'], [98, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'east', dev: 'EAST&TLV', devFull: 'EAST&TLV', project: 'EAST&TLV, תל אביב', city: 'תל אביב', x: 113, y: 262, color: '#5B3FA8', kind: '50/50', k: 'pay', short: '50/50', terms: '50% עכשיו, 50% בעוד שנתיים. מחיר לפי יחידה.', price: null, first: 0.5, worth: null, bar: [[50, 'עכשיו', '#0E4C63'], [50, 'בעוד שנתיים', '#C3CED5']] },
+      { id: 'ramhash', dev: 'אאורה', devFull: 'אאורה וחבר', project: 'רמת השרון', city: 'רמת השרון', x: 174, y: 112, color: '#0B63B6', kind: 'פטור מהצמדה', k: 'index', short: '15/85', terms: '15/85, פטור מלא מהצמדה, הנחות ומימון. המחירים המלאים לא פורסמו.', price: null, first: 0.15, worth: null, bar: [[15, 'חתימה', '#0E4C63'], [85, 'לקראת האכלוס', '#C3CED5']] },
+      { id: 'melisron', dev: 'אביב מליסרון', devFull: 'אביב מליסרון', project: 'אביב ברדינג, רמת אביב', city: 'תל אביב', x: 114, y: 168, color: '#0F7B6C', kind: 'הלוואת קבלן', k: 'loan', short: '0.99%', terms: 'ריבית 0.99% על עד 30% מהמחיר, עד 15 שנה. תקנון המבצע המקורי היה עד 31.5.2026.', price: null, first: null, worth: null, bar: [[30, 'הלוואה ב-0.99%', '#5E8FA3'], [70, 'משכנתא רגילה', '#C3CED5']] },
+      { id: 'tzahala', dev: 'דנקנר', devFull: 'דנקנר קנלוב', project: 'רמות צהלה, תל אביב', city: 'תל אביב', x: 159, y: 166, color: '#B4541A', kind: 'הנחה במחיר', k: 'price', short: '-250K', terms: 'חזרה למחיר פריסייל בשתי דירות: 7.65 במקום 7.9 מיליון ₪.', price: 7650000, first: null, worth: 250000, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'kata', dev: 'קטה', devFull: 'קטה גרופ', project: 'פתח תקווה', city: 'פתח תקווה', x: 235, y: 214, color: '#2F6F2A', kind: 'ריהוט ומתנות', k: 'gift', short: 'דמי ניהול', terms: 'פטור מדמי ניהול ל-3 שנים. מ-2.71 מיליון ₪.', price: 2710000, first: null, worth: 25000, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'sharet', dev: 'רוטשטיין', devFull: 'רוטשטיין', project: 'שרת, תל אביב', city: 'תל אביב', x: 84, y: 202, color: '#1D3F8F', kind: 'ריהוט ומתנות', k: 'gift', short: 'מרוהטת', terms: 'דירה מרוהטת. 4 חדרים מ-6.66 מיליון ₪.', price: 6660000, first: null, worth: null, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'ytown', dev: 'צרפתי', devFull: 'צרפתי צבי', project: 'YTOWN, ראשון לציון', city: 'ראשון לציון', x: 43, y: 430, color: '#00897B', kind: 'שכר דירה עד האכלוס', k: 'rent', short: '7,000/ח׳', terms: 'עד 7,000 ₪ בחודש, עד 4 שנים. 3 חדרים כ-2.9 מיליון ₪.', price: 2900000, first: null, worth: 336000, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'rayk', dev: 'רייק', devFull: 'רייק', project: 'לוד', city: 'לוד', x: 252, y: 504, color: '#6D4C41', kind: 'הנחה במחיר', k: 'price', short: 'ללוחמים', terms: 'הנחה נוספת ללוחמים. מ-1.95 מיליון ₪.', price: 1950000, first: null, worth: null, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'vogue', dev: 'גינדי', devFull: 'גינדי החזקות', project: 'GINDI VOGUE, שדה דב', city: 'תל אביב', x: 86, y: 173, color: '#14161A', kind: 'הנחה במחיר', k: 'price', short: '49K/מ״ר', terms: 'מחיר פתיחה של 49 אלף ₪ למ״ר (מבצע 2025).', price: null, first: null, worth: null, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'noga', dev: 'בראל', devFull: 'קבוצת בראל', project: 'NOGA, נוף הגליל', city: 'נוף הגליל', off: true, km: '95 ק״מ', dir: 0, color: '#2E5BFF', kind: '10/90 והלוואת קבלן', k: 'pay', short: '11/89', terms: '11% בחוזה והיתרה באכלוס, ו-50% הלוואת קבלן. מ-1.26 מיליון ₪.', price: 1260000, first: 0.11, worth: null, bar: [[11, 'חוזה', '#0E4C63'], [50, 'הלוואת קבלן', '#5E8FA3'], [39, 'באכלוס', '#C3CED5']] },
+      { id: 'dona', dev: 'דונה', devFull: 'דונה', project: 'חריש', city: 'חריש', off: true, km: '45 ק״מ', dir: 0, color: '#7A6A00', kind: 'ריהוט ומתנות', k: 'gift', short: 'מטבח', terms: 'מטבח משודרג, מיזוג מרכזי ומפרט משופר. לא פורסם מחיר אחיד.', price: null, first: null, worth: null, bar: [[100, 'לפי לוח תשלומים', '#C3CED5']] },
+      { id: 'isa', dev: 'ISA ומאגמה', devFull: 'ISA ומאגמה', project: 'מבשרת ציון', city: 'מבשרת ציון', off: true, km: '50 ק״מ', dir: 90, color: '#3E5C76', kind: 'שכירות שהופכת לקנייה', k: 'rent', short: 'Rent-to-Own', terms: 'Rent-to-Own: שכירות שהיא גם אופציה לקנייה. לא פורסם מחיר אחיד.', price: null, first: null, worth: null, bar: [[100, 'שכירות עם אופציה', '#C3CED5']] }
+    ];
+    const need = (d) => d.firstAbs != null ? d.firstAbs : (d.first != null && d.price ? Math.round(d.price * d.first) : null);
+    const status = (d) => { const n = need(d); if (n == null) return 'unk'; return n <= S.cash ? 'fit' : 'no'; };
+    const kinds = [['all', 'הכל'], ['pay', '10/90 ו-20/80'], ['index', 'פטור ממדד'], ['loan', 'הלוואת קבלן'], ['rent', 'שכר דירה עד האכלוס'], ['price', 'הנחה במחיר'], ['gift', 'ריהוט ומתנות']];
+    const shown = DEALS.filter((d) => S.kind === 'all' || d.k === S.kind);
+    const tiltDeg = S.tilt ? 50 : 0;
+    const TAGPOS = { glilyam: [100, 45], ramhash: [232, 72], vogue: [60, 118], tzahala: [290, 132], sharet: [60, 184], melisron: [186, 192], biltmore: [60, 250], kata: [292, 252], east: [190, 322], ytown: [72, 420], benshemen: [292, 470], rayk: [196, 528] };
+    const mapDeals = shown.filter((d) => !d.off);
+    const stems = mapDeals.map((d) => { const tp = TAGPOS[d.id] || [d.x, d.y]; return 'M' + d.x + ' ' + d.y + ' L' + tp[0] + ' ' + tp[1]; }).join(' ');
+    const pts = mapDeals.map((d) => 'M' + d.x + ' ' + d.y + 'h0').join('');
+    const tagFor = (d) => {
+      const st = status(d); const on = d.id === S.sel;
+      const bg = on ? '#0F1D26' : '#FFFFFF';
+      const fg = on ? '#FFFFFF' : '#0F1D26';
+      const border = st === 'fit' ? '2px solid #17694A' : (st === 'unk' ? '1.5px dashed #4A5863' : '1px solid #C3CED5');
+      const op = st === 'no' && !on ? '0.62' : '1';
+      const tp = TAGPOS[d.id] || [d.x, d.y];
+      return 'position: absolute; left: ' + tp[0] + 'px; top: ' + tp[1] + 'px; transform: translate(-50%, -100%) rotateX(-' + tiltDeg + 'deg); transform-origin: 50% 100%; display: flex; align-items: stretch; gap: 6px; padding: 5px 8px 5px 7px; min-height: 36px; border-radius: 9px; background: ' + bg + '; color: ' + fg + '; border: ' + border + '; opacity: ' + op + '; box-shadow: 0 6px 14px rgba(15,29,38,.18); z-index: ' + (on ? 30 : 10) + '; font-family: inherit';
+    };
+    const pick = (id) => () => this.setState({ sel: id });
+    const needLabel = (d) => { const n = need(d); return n == null ? 'בקשו מחיר ›' : (n === 0 ? '0 ₪ בחתימה' : fmt(n) + ' ביד'); };
+    const onMap = shown.filter((d) => !d.off).map((d) => ({
+      ...d, pick: pick(d.id), tagStyle: tagFor(d), need: needLabel(d), aria: d.project + ', ' + d.kind,
+      subColor: d.id === S.sel ? '#D6DEE3' : (status(d) === 'unk' ? '#0E4C63' : '#3A4650'),
+      barStyle: 'width: 4px; border-radius: 2px; background: ' + d.color
+    }));
+    const offMap = shown.filter((d) => d.off).map((d) => ({ ...d, pick: pick(d.id), arrow: 'transform: rotate(' + d.dir + 'deg)' }));
+    const cities = [['תל אביב', 85, 250], ['הרצליה', 162, 70], ['פתח תקווה', 247, 238], ['ראשון לציון', 85, 470], ['לוד', 264, 520], ['רמת גן', 140, 228], ['חולון', 68, 382], ['הים התיכון', 28, 150]].map((c) => ({
+      name: c[0], style: 'position: absolute; left: ' + c[1] + 'px; top: ' + c[2] + 'px; transform: translate(-50%, 0) rotateX(-' + tiltDeg + 'deg); font-size: 12px; font-weight: 600; color: ' + (c[0] === 'הים התיכון' ? '#5C8CA3' : '#5B6770') + '; letter-spacing: .2px; white-space: nowrap; pointer-events: none'
+    }));
+    const sel = DEALS.find((d) => d.id === S.sel) || DEALS[0];
+    const st = status(sel);
+    const selV = {
+      ...sel,
+      devInit: sel.dev.slice(0, 2),
+      chipStyle: 'width: 46px; height: 46px; border-radius: 12px; background: ' + sel.color + '; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0',
+      priceLabel: sel.price ? fmt(sel.price) : 'לא פורסם',
+      needLabel: need(sel) == null ? 'לא פורסם' : fmt(need(sel)),
+      needColor: st === 'fit' ? '#17694A' : (st === 'no' ? '#A10D25' : '#4A5863'),
+      worthLabel: sel.worth ? 'כ-' + fmt(sel.worth) : 'בחישוב',
+      days: 87,
+      bar: sel.bar.map((b) => ({ label: b[0] >= 18 ? b[1] : '', style: 'flex: 0 0 ' + b[0] + '%; background: ' + b[2] + '; color: ' + (b[2] === '#C3CED5' ? '#22313B' : '#FFFFFF') + '; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; white-space: nowrap; overflow: hidden' }))
+    };
+    const order = { fit: 0, unk: 1, no: 2 };
+    const rows = DEALS.slice().sort((a, b) => order[status(a)] - order[status(b)]).map((d) => {
+      const s2 = status(d);
+      return {
+        ...d, pick: pick(d.id), need: s2 === 'unk' ? 'בקשו מחיר' : needLabel(d).replace(' ביד', ''),
+        dot: 'width: 10px; align-self: stretch; border-radius: 4px; background: ' + d.color,
+        needStyle: 'flex-shrink: 0; font-family: ' + (s2 === 'unk' ? 'inherit' : "'IBM Plex Mono', monospace") + '; font-weight: 600; font-size: 13px; padding: 5px 8px; border-radius: 8px; ' + (s2 === 'fit' ? 'background: #E9F3EE; color: #17694A' : (s2 === 'no' ? 'background: #F1F3F4; color: #5B6770' : 'background: #E6EFF2; color: #0E4C63'))
+      };
+    });
+    return {
+      total: DEALS.length,
+      cash: S.cash,
+      cashLabel: fmt(S.cash),
+      onCash: (e) => this.setState({ cash: Number(e.target.value) }),
+      nFit: DEALS.filter((d) => status(d) === 'fit').length,
+      nNo: DEALS.filter((d) => status(d) === 'no').length,
+      nUnk: DEALS.filter((d) => status(d) === 'unk').length,
+      chips: kinds.map((c) => ({ label: c[1], pick: () => this.setState({ kind: c[0] }), style: 'flex: 0 0 auto; min-height: 44px; padding: 0 14px; border-radius: 22px; font-size: 14px; font-weight: 600; white-space: nowrap; ' + (S.kind === c[0] ? 'background: #0F1D26; color: #FFFFFF; border: 1px solid #0F1D26' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5') })),
+      planeStyle: 'position: absolute; left: 16px; top: ' + (S.tilt ? -40 : -40) + 'px; width: 358px; height: 540px; transform-style: preserve-3d; transform-origin: 50% 60%; transform: rotateX(' + tiltDeg + 'deg) scale(' + (S.tilt ? 1.04 : 0.86) + '); transition: transform .6s cubic-bezier(.2,.8,.2,1)',
+      toggleTilt: () => this.setState({ tilt: !S.tilt }),
+      tiltLabel: S.tilt ? 'מבט מלמעלה' : 'תלת ממד',
+      cities, onMap, offMap, rows, stems, pts,
+      hasSel: true, sel: selV,
+      selShort: sel.project.split(',')[0]
+    };
+  }
+}
+</script>
+</body>
+</html>

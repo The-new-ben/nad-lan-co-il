@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>יזם מבליט מבצע</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E4C63}a:hover{color:#0A3646}
+input,select{font-family:inherit}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 1240px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+
+  <span style="font-size: 13px; color: #4A5863">ליזמים ולמשרדי שיווק</span>
+  <h1 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700">המבצע שלכם, ראשון במפת המבצעים</h1>
+  <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #22313B">קונים שמחפשים מבצע כבר יודעים כמה יש להם ביד. הבלטה שמה את המבצע שלכם מולם: בראש המפה, על כרטיס הפרויקט, ובהתראה לכל מי שנרשם לאזור.</p>
+
+  <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+    <li style="background: #0F1D26; color: #FFFFFF; border-radius: 10px; padding: 8px; font-size: 12px; font-weight: 600; text-align: center">1 · המבצע</li>
+    <li style="background: #FFFFFF; border: 1px solid #C3CED5; border-radius: 10px; padding: 8px; font-size: 12px; font-weight: 600; text-align: center">2 · איפה מופיעים</li>
+    <li style="background: #FFFFFF; border: 1px solid #C3CED5; border-radius: 10px; padding: 8px; font-size: 12px; font-weight: 600; text-align: center">3 · תשלום</li>
+  </ol>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <label for="pr" style="font-weight: 600; font-size: 14px">הפרויקט</label>
+    <input id="pr" value="גליל ים, הרצליה" style="min-height: 46px; border: 1px solid #C3CED5; border-radius: 12px; padding: 0 12px; font-size: 15px">
+    <label for="kd" style="font-weight: 600; font-size: 14px">סוג המבצע</label>
+    <select id="kd" style="min-height: 46px; border: 1px solid #C3CED5; border-radius: 12px; padding: 0 12px; font-size: 15px; background: #FFFFFF"><option>שכר דירה עד האכלוס</option><option>10/90 או 20/80</option><option>פטור ממדד</option><option>הלוואת קבלן</option><option>הנחה במחיר</option></select>
+    <label for="tx" style="font-weight: 600; font-size: 14px">הנוסח, כמו בפרסום שלכם</label>
+    <textarea id="tx" rows="3" style="border: 1px solid #C3CED5; border-radius: 12px; padding: 10px 12px; font-size: 15px; font-family: inherit; resize: none">תשלום שכר דירה ל-3 שנים, 10% הון ראשוני ו-30% הלוואת קבלן.</textarea>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <div style="display: flex; flex-direction: column; gap: 4px"><label for="fp" style="font-size: 13px; font-weight: 600">מחיר החל מ-</label><input id="fp" value="5,280,000" style="min-height: 44px; border: 1px solid #C3CED5; border-radius: 10px; padding: 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 14px"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px"><label for="ed" style="font-size: 13px; font-weight: 600">בתוקף עד</label><input id="ed" value="31.12.2026" style="min-height: 44px; border: 1px solid #C3CED5; border-radius: 10px; padding: 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 14px"></div>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <b style="font-size: 14px">כך זה ייראה על המפה</b>
+    <div style="display: flex; justify-content: center; padding: 14px 0; background: #E3EAEE; border-radius: 12px">
+      <span style="display: flex; align-items: stretch; gap: 6px; padding: 6px 9px 6px 8px; border-radius: 10px; background: #0F1D26; color: #FFFFFF; box-shadow: 0 8px 18px rgba(15,29,38,.25)">
+        <span style="width: 4px; border-radius: 2px; background: #C8102E"></span>
+        <span style="display: flex; flex-direction: column; gap: 1px">
+          <b style="font-size: 13px">גינדי · <span style="font-family: 'IBM Plex Mono', monospace">10%</span> · מובלט</b>
+          <span style="font-size: 11px; opacity: .8">עודכן על ידי היזם היום</span>
+        </span>
+      </span>
+    </div>
+    <ul style="margin: 0; padding-inline-start: 18px; font-size: 13px; line-height: 1.6; color: #22313B">
+      <li>ראשונים במפה ובראש רשימת המבצעים</li>
+      <li>תווית אדומה על כרטיס הפרויקט ובעמוד הפרויקטים</li>
+      <li>הודעה לכל מי שנרשם להתראות באזור</li>
+      <li>הפניות ישירות אליכם, בלי מתווך</li>
+      <li>עדכון המבצע בעצמכם, מקישור אישי</li>
+    </ul>
+  </section>
+
+  <section style="background: #0F1D26; color: #FFFFFF; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <b style="font-size: 15px">הבלטה לשנה</b>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 20px">[מחיר לפי בן]</span>
+    </div>
+    <span style="font-size: 12px; opacity: .8">חשבונית מס מיידית · כרטיס אשראי, ביט, Google Pay ו-Apple Pay</span>
+    <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px; background: #FFFFFF; color: #0F1D26; font-weight: 700; font-size: 16px; text-decoration: none">לתשלום מאובטח</a>
+    <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,.4); color: #FFFFFF; font-weight: 600; font-size: 14px; text-decoration: none">מעדיפים לדבר? וואטסאפ לבן</a>
+  </section>
+
+  <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #4A5863">הבלטה בתשלום מסומנת "מובלט" ליד המבצע. היא לא משנה את המספרים: מה שכתוב נבדק כמו כל מבצע אחר.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
