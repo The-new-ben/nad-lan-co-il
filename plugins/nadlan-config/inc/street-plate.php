@@ -86,7 +86,7 @@ if ( ! function_exists( 'nadlan_sp_assets' ) ) {
 		$done = true;
 		$css = '.nldc-media.has-plate{position:relative;container-type:inline-size}'
 			. '.nlsp{position:absolute;inset:0;pointer-events:none;font-family:"IBM Plex Sans Hebrew",Heebo,system-ui,sans-serif;direction:rtl}'
-			. '.nlsp-hang{position:absolute;top:16px;right:12px;display:block;transform-origin:50% -12px;zoom:var(--sz,1)}'
+			. '.nlsp-hang{position:absolute;top:16px;left:12px;display:block;transform-origin:50% -12px;zoom:var(--sz,1)}'
 			. '.nlsp.is-in .nlsp-hang{animation:nlsp-swing 1.6s cubic-bezier(.25,.8,.3,1) both}'
 			. '.nlsp-rod{position:absolute;top:-12px;left:50%;width:3px;height:14px;margin-left:-1.5px;background:linear-gradient(#B9C3CA,#6F7E88);border-radius:1px}'
 			. '.nlsp-sign{position:relative;display:block;background:linear-gradient(180deg,#2A4FA8 0%,#1D3F8F 55%,#183679 100%);border-radius:7px;padding:3px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 14px rgba(15,29,38,.35);overflow:hidden}'

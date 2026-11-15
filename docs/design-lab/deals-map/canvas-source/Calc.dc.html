@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>המחשבון האמיתי של מבצע קבלן</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button,input{font-family:inherit}
+button{cursor:pointer}
+input[type=range]{accent-color:#0E4C63}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; min-height: 1500px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+  <h2 style="margin: 0; font-size: 22px; line-height: 1.25; font-weight: 700">כמה הנחה קיבלתם באמת?</h2>
+  <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #22313B">בחרו מבצע. המחשבון משווה אותו ללוח תשלומים רגיל של דירה מקבלן, עם ריבית, הצמדה למדד תשומות הבנייה ושכר דירה, ומחזיר מספר אחד בשקלים.</p>
+
+  <div style="display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px">
+    <sc-for list="{{presets}}" as="p" hint-placeholder-count="4">
+      <button type="button" onClick="{{p.pick}}" style="{{p.style}}">{{p.label}}</button>
+    </sc-for>
+  </div>
+
+  <section style="background: #0F1D26; color: #FFFFFF; border-radius: 20px; padding: 18px 16px; display: flex; gap: 14px; align-items: center">
+    <svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="{{pctLabel}}">
+      <circle cx="48" cy="48" r="40" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="9"/>
+      <circle cx="48" cy="48" r="40" fill="none" stroke="#3DDC97" stroke-width="9" stroke-linecap="round" stroke-dasharray="{{dash}}" transform="rotate(-90 48 48)" style="transition: stroke-dasharray .6s cubic-bezier(.2,.8,.2,1)"/>
+      <text x="48" y="53" text-anchor="middle" font-family="IBM Plex Mono" font-weight="600" font-size="18" fill="#FFFFFF">{{pct}}%</text>
+    </svg>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 13px; color: #B9C6CF">המבצע שווה לכם</span>
+      <b style="font-family: 'IBM Plex Mono', monospace; font-size: 30px; line-height: 1.1; color: #3DDC97">{{total}}</b>
+      <span style="font-size: 13px; color: #D6DEE3">שהם {{pct}}% הנחה אמיתית ממחיר הדירה</span>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <b style="font-size: 15px">ממה זה מורכב</b>
+    <sc-for list="{{parts}}" as="x" hint-placeholder-count="4">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="display: flex; justify-content: space-between; font-size: 13px"><span>{{x.label}}</span><b style="font-family: 'IBM Plex Mono', monospace; color: {{x.color}}">{{x.val}}</b></div>
+        <div style="height: 10px; border-radius: 5px; background: #EEF2F4; overflow: hidden"><div style="{{x.bar}}"></div></div>
+        <span style="font-size: 11px; color: #4A5863">{{x.how}}</span>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+    <b style="font-size: 15px">הנחות החישוב, אפשר לשנות</b>
+    <sc-for list="{{inputs}}" as="f" hint-placeholder-count="6">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="display: flex; justify-content: space-between; font-size: 13px"><label for="{{f.id}}">{{f.label}}</label><b style="font-family: 'IBM Plex Mono', monospace; color: #0E4C63">{{f.show}}</b></div>
+        <input id="{{f.id}}" type="range" min="{{f.min}}" max="{{f.max}}" step="{{f.step}}" value="{{f.v}}" onChange="{{f.on}}" style="width: 100%; height: 26px; margin: 0">
+      </div>
+    </sc-for>
+    <button type="button" onClick="{{toggleEx}}" style="{{exStyle}}">{{exLabel}}</button>
+  </section>
+
+  <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none">בקשו מהיזם מחיר עם המבצע ובלעדיו</a>
+  <a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 12px; background: #FFFFFF; border: 1px solid #0E4C63; color: #0E4C63; font-weight: 600; font-size: 15px; text-decoration: none">יועץ משכנתאות יבדוק את המספרים, חינם</a>
+  <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #4A5863">איך מחשבים: לוח רגיל הוא 20% בחתימה והיתרה בתשלומים חודשיים עד האכלוס, כשמחצית מכל תשלום צמודה למדד (כמו בחוק המכר). כל תשלום מהוון להיום לפי הריבית שבחרתם. ההפרש בין שני הלוחות, ועוד שכר הדירה מהיזם, פחות התוספת למחיר, הוא ההנחה האמיתית.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 'gindi', P: 5280000, s: 10, T: 36, i: 3, r: 5, R: 10000, M: 36, prem: 0, ex: false };
+  }
+  renderVals() {
+    const S = this.state;
+    const PRE = {
+      gindi: { label: 'גינדי, גליל ים', P: 5280000, s: 10, T: 36, R: 10000, M: 36, prem: 0, ex: false },
+      e2080: { label: '20/80 עם פטור ממדד', P: 3000000, s: 20, T: 36, R: 0, M: 0, prem: 0, ex: true },
+      barel: { label: 'בראל, 11/89', P: 1260000, s: 11, T: 30, R: 0, M: 0, prem: 0, ex: false },
+      mine: { label: 'המבצע שלי', P: 2500000, s: 15, T: 30, R: 0, M: 0, prem: 0, ex: false }
+    };
+    const fmt = (n) => { const a = Math.abs(n); const t = a >= 1000000 ? (Math.round(a / 10000) / 100) + ' מיליון ₪' : Math.round(a / 1000).toLocaleString('he-IL') + ' אלף ₪'; return (n < 0 ? '−' : '') + t; };
+    const m = S.r / 100 / 12, ig = Math.pow(1 + S.i / 100, 1 / 12) - 1, d = (k) => Math.pow(1 + m, -k);
+    let reg0 = 0.2 * S.P, regI = 0;
+    for (let k = 1; k <= S.T; k++) { const pay = 0.8 * S.P / S.T; reg0 += pay * d(k); regI += pay * 0.5 * (Math.pow(1 + ig, k) - 1) * d(k); }
+    const first = S.s / 100 * S.P, rest = S.P - first;
+    const deal0 = first + rest * d(S.T);
+    const dealI = S.ex ? 0 : rest * 0.5 * (Math.pow(1 + ig, S.T) - 1) * d(S.T);
+    let rent = 0; for (let k = 1; k <= S.M; k++) { rent += S.R * d(k); }
+    const tv = reg0 - deal0, idx = regI - dealI, total = tv + idx + rent - S.prem;
+    const pct = Math.round(1000 * total / S.P) / 10;
+    const max = Math.max(tv, idx, rent, S.prem, 1);
+    const part = (label, v, how, col) => ({ label, val: fmt(v), how, color: v < 0 ? '#A10D25' : '#17694A', bar: 'height: 100%; border-radius: 5px; width: ' + Math.max(2, Math.round(100 * Math.abs(v) / max)) + '%; background: ' + col + '; transition: width .6s cubic-bezier(.2,.8,.2,1)' });
+    const set = (k) => (e) => this.setState({ [k]: Number(e.target.value), sel: S.sel });
+    const inp = (id, label, k, min, max2, step, show) => ({ id, label, min, max: max2, step, v: S[k], on: set(k), show });
+    return {
+      presets: Object.keys(PRE).map((k) => ({ label: PRE[k].label, pick: () => this.setState(Object.assign({ sel: k }, PRE[k])), style: 'flex: 0 0 auto; min-height: 44px; padding: 0 14px; border-radius: 22px; font-size: 14px; font-weight: 600; white-space: nowrap; ' + (S.sel === k ? 'background: #0F1D26; color: #FFFFFF; border: 1px solid #0F1D26' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5') })),
+      total: fmt(total), pct, pctLabel: pct + ' אחוז הנחה אמיתית',
+      dash: Math.max(0, Math.min(251, 251 * pct / 20)).toFixed(1) + ' 251',
+      parts: [
+        part('כסף שנשאר אצלכם עד האכלוס', tv, 'משלמים מאוחר יותר, והכסף עובד בינתיים בריבית ' + S.r + '%', '#0E4C63'),
+        part('הצמדה למדד שנחסכה', idx, S.ex ? 'פטור מלא מהצמדה ליתרה' : 'פחות תשלומים צמודים בזמן הבנייה', '#5E8FA3'),
+        part('שכר דירה מהיזם', rent, S.M ? S.M + ' חודשים של ' + fmt(S.R) : 'אין במבצע הזה', '#3DDC97'),
+        part('תוספת למחיר מול מחיר בלי מבצע', -S.prem, 'אם היזם העלה את המחיר בגלל המבצע', '#C8102E')
+      ],
+      inputs: [
+        inp('cp', 'מחיר הדירה', 'P', 800000, 12000000, 10000, fmt(S.P)),
+        inp('cs', 'משלמים בחתימה', 's', 0, 50, 1, S.s + '%'),
+        inp('ct', 'חודשים עד האכלוס', 'T', 6, 60, 1, S.T + ' חודשים'),
+        inp('ci', 'מדד תשומות הבנייה לשנה', 'i', 0, 8, 0.5, S.i + '%'),
+        inp('cr', 'ריבית אלטרנטיבית (משכנתא)', 'r', 2, 8, 0.25, S.r + '%'),
+        inp('cR', 'שכר דירה מהיזם לחודש', 'R', 0, 15000, 500, fmt(S.R)),
+        inp('cM', 'לכמה חודשים', 'M', 0, 60, 1, S.M + ''),
+        inp('cq', 'תוספת למחיר בגלל המבצע', 'prem', 0, 600000, 10000, fmt(S.prem))
+      ],
+      toggleEx: () => this.setState({ ex: !S.ex }),
+      exLabel: S.ex ? 'פטור מהצמדה: כן' : 'פטור מהצמדה: לא',
+      exStyle: 'min-height: 44px; border-radius: 12px; font-size: 14px; font-weight: 600; ' + (S.ex ? 'background: #E9F3EE; color: #17694A; border: 1px solid #17694A' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5')
+    };
+  }
+}
+</script>
+</body>
+</html>
