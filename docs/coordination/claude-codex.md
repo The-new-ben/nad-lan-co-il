@@ -5205,3 +5205,5 @@ CLAIM + RELEASE LOCK 1.72.685 (HAD-743 round 3: SWAP inc/deals-map.php, inc/stre
 RELEASE DONE 1.72.685 (HAD-743 round 3): released and verified; calculator, discount section and small sign seen in the owner's Chrome. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 19:53 UTC.
 CLAIM + RELEASE LOCK 1.72.686 (HAD-743: SWAP inc/street-plate.php, sign to the top-left corner). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 19:54 UTC.
 RELEASE DONE 1.72.686 (HAD-743 sign to the top-left corner): released and verified, seen in the owner's Chrome. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 20:09 UTC.
+CLAIM + RELEASE LOCK 1.72.687 (HAD-743 accuracy: SWAP inc/deals-map.php, assets/deals/deals.js + deals.css). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 20:39 UTC.
+RELEASE DONE 1.72.687 (HAD-743 accuracy round): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 21:00 UTC.

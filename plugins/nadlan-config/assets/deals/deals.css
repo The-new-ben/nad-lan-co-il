@@ -181,3 +181,7 @@
 .nldm-disc-t>div.h>span{border-top:0;background:#0F1D26;color:#fff;font-weight:600}
 .nldm-disc-t [role=rowheader]{font-weight:600;background:#F4F7F8}
 .nldm-disc-t [role=cell]:last-child{background:#F3FAF6}
+.nldm-calc-est{margin:-4px 0 0;font-size:13px;line-height:1.5;color:#6B4200;background:#FFF4DC;border-radius:8px;padding:7px 10px}
+.nldm-calc-note{margin:0;font-size:13px;line-height:1.55;color:var(--ink2);background:#F4F7F8;border-radius:10px;padding:8px 10px}
+.nldm-legal{margin:0;font-size:12px;line-height:1.6;color:var(--mut);border-top:1px solid var(--line);padding-top:10px}
+.nldm-sheet-legal{margin:-6px 0 0;font-size:11px;line-height:1.5;color:var(--mut)}

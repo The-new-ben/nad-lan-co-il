@@ -138,7 +138,7 @@
 		var n = need(d), st = status(d), needEl = setF('need', n == null ? 'לא פורסם' : fmt(n));
 		needEl.style.color = st === 'fit' ? '#17694A' : (st === 'no' ? '#A10D25' : '#4A5863');
 		var worthEl = sheet.querySelector('[data-f=worth]');
-		if (d.worth) { roll(worthEl, 0, d.worth, function (v) { return 'כ-' + fmt(v); }); } else { worthEl.textContent = 'בחישוב'; }
+		if (d.worth) { roll(worthEl, 0, d.worth, function (v) { return 'כ-' + fmt(v) + ' לפי פרסום'; }); } else { worthEl.textContent = 'לא פורסם'; }
 		var ch = sheet.querySelector('[data-f=check]');
 		ch.classList.toggle('is-ok', !!d.checked);
 		ch.innerHTML = '';
@@ -352,7 +352,7 @@
 	}
 	if (calc) {
 		var pre = calc.querySelector('.nldm-calc-pre');
-		deals.filter(function (d) { return d.price; }).concat([{ id: 'mine', project: 'המבצע שלי' }]).forEach(function (d) {
+		deals.filter(function (d) { return d.calcOk && d.price; }).concat([{ id: 'mine', project: 'המבצע שלי' }]).forEach(function (d) {
 			var b = document.createElement('button'); b.type = 'button'; b.dataset.id = d.id;
 			b.textContent = d.id === 'mine' ? 'המבצע שלי' : d.dev + ' · ' + d.project.split(',')[0];
 			b.addEventListener('click', function () { calcPick(d.id); });
@@ -372,10 +372,10 @@
 		var exb = document.createElement('button'); exb.type = 'button'; exb.className = 'nldm-ex';
 		exb.addEventListener('click', function () { C.ex = !C.ex; renderCalc(false); });
 		fl.appendChild(exb);
-		calcPick(D.hotId);
+		calcPick((deals.filter(function (d) { return d.calcOk && d.price; })[0] || {}).id || 'mine');
 	}
 	var toCalc = $('.nldm-tocalc');
-	if (toCalc) { toCalc.addEventListener('click', function () { calcPick(byId[S.sel] && byId[S.sel].price ? S.sel : 'mine'); calc.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); }); }
+	if (toCalc) { toCalc.addEventListener('click', function () { calcPick(byId[S.sel] && byId[S.sel].calcOk && byId[S.sel].price ? S.sel : 'mine'); calc.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); }); }
 
 	var mapBox = document.getElementById('nldm-map');
 	if ('IntersectionObserver' in window) {
