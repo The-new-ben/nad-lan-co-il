@@ -1,0 +1,45 @@
+{
+ "at": "2026-11-15 09:20:33",
+ "rows": [
+  {
+   "id": 5591,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/01-hagana-salvador-haifa-photo.webp"
+  },
+  {
+   "id": 5590,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/02-ehad-haam-nahariya-photo.webp"
+  },
+  {
+   "id": 5588,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/03-maale-gaaton-nahariya-photo.webp"
+  },
+  {
+   "id": 5586,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/04-bialik-shimoni-beer-sheva-photo.webp"
+  },
+  {
+   "id": 5585,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/05-ben-zvi-ramla-photo.webp"
+  },
+  {
+   "id": 5583,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/06-haatzmaut-kiryat-bialik-photo.webp"
+  },
+  {
+   "id": 3556,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/07-lev-hair-ramat-hasharon-photo.webp"
+  },
+  {
+   "id": 3551,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/08-shvatei-israel-haifa-photo.webp"
+  },
+  {
+   "id": 3545,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/09-reines-jerusalem-photo.webp"
+  },
+  {
+   "id": 3543,
+   "photos_csv_before": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/batch-01/10-yerushalayim-ness-ziona-photo.webp"
+  }
+ ]
+}
