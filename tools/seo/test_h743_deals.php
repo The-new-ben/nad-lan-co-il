@@ -12,6 +12,7 @@ function esc_html( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
 function esc_url( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES ); }
 function wp_json_encode( $d, $f = 0 ) { return json_encode( $d, $f ); }
 function home_url( $p = '/' ) { return 'https://nad-lan.co.il' . $p; }
+function rest_url( $p = '' ) { return 'https://nad-lan.co.il/wp-json/' . $p; }
 function is_page() { return true; }
 function in_the_loop() { return true; }
 function is_main_query() { return true; }
@@ -47,6 +48,7 @@ $o3 = nlrun( $art );
 $ok( 1 === substr_count( $o3, 'nldm-disc' ) - 0 + 0 || substr_count( $o3, 'id="nldm-disc-h"' ) === 1, 'discount section once' );
 $ok( strpos( $o3, 'id="nldm-disc-h"' ) > strpos( $o3, 'id="nldm-data"' ) && substr_count( substr( $o3, 0, strpos( $o3, 'class="nldm nldm-disc"' ) ), '<h2>X</h2>' ) === 5, 'discount section after 5 of the 10 article h2 (the middle)' );
 $ok( false !== strpos( $o3, 'href="/dira-behanacha/"' ) && false !== strpos( $o3, 'id="nldm-calc"' ), 'link to the state programme page; calculator present' );
+$ok( false !== strpos( $out, 'id="nldm-alert"' ) && false !== strpos( $out, '"alertUrl":"https://nad-lan.co.il/wp-json/nadlan/v1/near-alerts"' ) && false !== strpos( $out, 'class="nldm-toalert"' ), 'area alert box, its endpoint and the button in the deal card' );
 $ok( 1 === substr_count( $out, 'application/ld+json' ) && false !== strpos( $out, '"@type":"ApartmentComplex"' ) && false !== strpos( $out, '"@type":"Dataset"' ), 'Hebrew structured data' );
 $_SERVER['REQUEST_URI'] = '/en/developer-deals/';
 $en = nlrun( '<h1>E</h1><h2>a</h2><h2>b</h2>' );

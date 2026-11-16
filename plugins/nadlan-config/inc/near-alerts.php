@@ -495,7 +495,7 @@ if ( ! function_exists( 'nadlan_na_rest' ) ) {
 		$elev  = ! empty( $p['elev'] );
 		$park  = ! empty( $p['park'] );
 		$balc  = ! empty( $p['balc'] );
-		$what  = array_values( array_intersect( array( 'new', 'drop', 'proj' ), array_map( 'strval', (array) ( $p['what'] ?? array() ) ) ) );
+		$what  = array_values( array_intersect( array( 'new', 'drop', 'proj', 'deal' ), array_map( 'strval', (array) ( $p['what'] ?? array() ) ) ) ); // 'deal': HAD-743 a new developer deal in the area (inc/deal-alerts.php)
 		if ( ! $what ) { return nadlan_na_rest( array( 'ok' => false, 'error' => 'what' ), 400 ); }
 		$freq   = in_array( (string) ( $p['freq'] ?? '' ), array( 'now', 'day', 'week' ), true ) ? (string) $p['freq'] : 'day';
 		$items  = in_array( 'drop', $what, true ) ? nadlan_na_clean_ids( $p['items'] ?? array(), 'nadlan_property' ) : array();
@@ -574,7 +574,7 @@ if ( ! function_exists( 'nadlan_na_rest' ) ) {
 		}
 		update_post_meta( $sid, 'nf_items', $items );
 		update_post_meta( $sid, 'nf_follow', $follow );
-		update_post_meta( $sid, 'nf_what', array_values( array_unique( array_intersect( array_map( 'strval', $what ), array( 'new', 'drop', 'proj' ) ) ) ) );
+		update_post_meta( $sid, 'nf_what', array_values( array_unique( array_intersect( array_map( 'strval', $what ), array( 'new', 'drop', 'proj', 'deal' ) ) ) ) );
 		return nadlan_na_rest( array( 'ok' => true, 'items' => count( $items ), 'follow' => count( $follow ) ) );
 	}
 
@@ -718,6 +718,7 @@ if ( ! function_exists( 'nadlan_na_collect' ) ) {
 				}
 			}
 		}
+		$out = apply_filters( 'nadlan_na_collect_more', $out, $s, $now, $floor ); // HAD-743: $out['deal'] (inc/deal-alerts.php)
 		$out['new']  = array_slice( $out['new'], 0, 8 );
 		$out['drop'] = array_slice( $out['drop'], 0, 10 );
 		$out['proj'] = array_slice( $out['proj'], 0, 10 );
@@ -729,7 +730,7 @@ if ( ! function_exists( 'nadlan_na_collect' ) ) {
 		$s = nadlan_na_get( $sid );
 		if ( ! $s['confirmed'] || ! is_email( $s['email'] ) ) { return 'skip'; }
 		$c = nadlan_na_collect( $s, $now );
-		if ( ! $c['new'] && ! $c['drop'] && ! $c['proj'] ) {
+		if ( ! $c['new'] && ! $c['drop'] && ! $c['proj'] && empty( $c['deal'] ) ) {
 			update_post_meta( $sid, 'last_run', $now );
 			return 'none';
 		}
@@ -738,6 +739,7 @@ if ( ! function_exists( 'nadlan_na_collect' ) ) {
 		update_post_meta( $sid, 'last_run', $now );
 		update_post_meta( $sid, 'nf_sent_at', $now );
 		update_post_meta( $sid, 'nf_seen', array_slice( array_values( array_unique( array_merge( $s['seen'], wp_list_pluck( $c['new'], 'id' ) ) ) ), -300 ) );
+		do_action( 'nadlan_na_sent', $sid, $c ); // HAD-743: the deals just sent are marked seen
 		return 'sent';
 	}
 
@@ -880,6 +882,7 @@ if ( ! function_exists( 'nadlan_na_send' ) ) {
 		if ( in_array( 'new', $s['what'], true ) ) { $li[] = 'נכס חדש באזור: ' . nadlan_na_filters_text( $s['p'] ); }
 		if ( in_array( 'drop', $s['what'], true ) ) { $n = count( $s['items'] ); $li[] = 'ירידת מחיר בנכס ששמרתם' . ( $n ? ' (' . ( 1 === $n ? 'נכס אחד' : $n . ' נכסים' ) . ')' : '' ); }
 		if ( in_array( 'proj', $s['what'], true ) ) { $n = count( $s['follow'] ); $li[] = 'עדכון בפרויקט שאתם עוקבים אחריו' . ( $n ? ' (' . ( 1 === $n ? 'פרויקט אחד' : $n . ' פרויקטים' ) . ')' : '' ); }
+		if ( in_array( 'deal', $s['what'], true ) ) { $li[] = 'מבצע קבלן חדש באזור (מפת מבצעי הקבלנים)'; }
 		$li[] = 'תדירות: ' . nadlan_na_freq_text( $s['freq'] );
 		$st = $mail ? ' style="margin:0 0 6px;font-size:15px;line-height:1.5;color:#12202A"' : '';
 		return '<ul' . ( $mail ? ' style="margin:0 0 4px;padding:0 20px 0 0"' : '' ) . '>' . implode( '', array_map( function ( $x ) use ( $st ) { return '<li' . $st . '>' . esc_html( $x ) . '</li>'; }, $li ) ) . '</ul>';
@@ -890,7 +893,7 @@ if ( ! function_exists( 'nadlan_na_send' ) ) {
 		$off   = $off ? $off : nadlan_na_url( 'off', $s['id'] );
 		$where = nadlan_na_where( $s['p'] );
 		$mono  = "font-family:'IBM Plex Mono',Arial,sans-serif;";
-		$b = ''; $t = '';
+		list( $b, $t ) = apply_filters( 'nadlan_na_mail_more', array( '', '' ), $s, $c ); // HAD-743: the new deals block comes first
 		if ( $c['drop'] ) {
 			$b .= nadlan_na_h2( 1 === count( $c['drop'] ) ? 'ירד המחיר בנכס ששמרתם' : 'ירד המחיר בנכסים ששמרתם' );
 			foreach ( $c['drop'] as $r ) {
@@ -948,9 +951,10 @@ if ( ! function_exists( 'nadlan_na_send' ) ) {
 		$nd = count( $c['drop'] ); $nn = count( $c['new'] ); $np = count( $c['proj'] );
 		if ( $nd ) { $subj = 1 === $nd ? 'ירד המחיר: ' . nadlan_na_cut( $c['drop'][0]['title'], 50 ) : 'ירד המחיר ב־' . $nd . ' נכסים ששמרתם'; }
 		elseif ( $nn ) { $subj = ( 1 === $nn ? 'נכס חדש ' . ( 'rent' === $c['new'][0]['deal'] ? 'להשכרה' : 'למכירה' ) : $nn . ' נכסים חדשים' ) . ': ' . $where; }
+		elseif ( ! $np && ! empty( $c['deal'] ) ) { $subj = 1 === count( $c['deal'] ) ? 'מבצע קבלן חדש: ' . nadlan_na_cut( $c['deal'][0]['project'], 50 ) : count( $c['deal'] ) . ' מבצעי קבלנים חדשים: ' . $where; }
 		else { $subj = 1 === $np ? 'עדכון בפרויקט ' . nadlan_na_cut( $c['proj'][0]['title'], 50 ) : 'עדכונים ב־' . $np . ' פרויקטים שאתם עוקבים אחריהם'; }
 		if ( ( $nd ? 1 : 0 ) + ( $nn ? 1 : 0 ) + ( $np ? 1 : 0 ) > 1 ) { $subj .= ', ועוד עדכונים'; }
-		$h1 = $nd ? 'ירד המחיר' : ( $nn ? ( 1 === $nn ? 'נכס חדש באזור' : 'נכסים חדשים באזור' ) : 'עדכון בפרויקט' );
+		$h1 = $nd ? 'ירד המחיר' : ( $nn ? ( 1 === $nn ? 'נכס חדש באזור' : 'נכסים חדשים באזור' ) : ( ! $np && ! empty( $c['deal'] ) ? 'מבצע קבלן חדש באזור' : 'עדכון בפרויקט' ) );
 		return array( 'subject' => $subj, 'html' => nadlan_na_frame( $subj, $h1, $b, nadlan_na_foot( $s, $off ) ),
 			'text' => $t . "לביטול ההתראות: " . $off . "\n" . nadlan_na_privacy_url() );
 	}

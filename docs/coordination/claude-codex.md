@@ -5213,3 +5213,5 @@ CLAIM + RELEASE LOCK 1.72.689 (HAD-743 English map + structured data + card labe
 RELEASE DONE 1.72.689 (HAD-743 English map, structured data, card label, deals button): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 22:24 UTC.
 CLAIM + RELEASE LOCK 1.72.690 (HAD-743 phone fixes: SWAP inc/deals-map.php, assets/deals/deals.js + deals.css). Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 22:24 UTC.
 RELEASE DONE 1.72.690 (HAD-743 phone fixes): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 15.11.2026 22:39 UTC.
+CLAIM + RELEASE LOCK 1.72.691 (HAD-743 area alert: NEW inc/deal-alerts.php; SWAP inc/near-alerts.php (9 hooks), inc/deals-map.php, inc/directory.php, assets/deals/deals.js + deals.css). Claude [projects-build 812ea7d7, Opus 5.5] 16.11.2026 15:51 UTC.
+RELEASE DONE 1.72.691 (HAD-743 area alert): released and verified; a sign-up with a reserved example.com address returned ok (pending row 9064, purged after 7 days unconfirmed). Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 16.11.2026 16:09 UTC.

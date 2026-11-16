@@ -126,6 +126,8 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 		$base  = plugins_url( 'assets/deals/', dirname( __FILE__ ) );
 		$data  = array(
 			'deals'     => $deals,
+			'alertUrl'  => rest_url( 'nadlan/v1/near-alerts' ),
+			'alertV'    => defined( 'NADLAN_NA_NOTICE' ) ? NADLAN_NA_NOTICE : '',
 			'hotId'     => 'gindi-love',
 			'wa'        => $wa,
 			'pointsUrl' => $base . 'projects.json?v=1',
@@ -181,6 +183,7 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 			<a class="nldm-btn" data-f="wa2" target="_blank" rel="noopener" href="#">משכנתא והשלמת הון למבצע הזה</a>
 		</div>
 		<button type="button" class="nldm-tocalc">חשבו כמה הנחה המבצע הזה נותן באמת ›</button>
+		<button type="button" class="nldm-toalert">התראה על מבצע חדש באזור הזה ›</button>
 		<div class="nldm-tools">
 			<a href="/mortgage-calculator/"><b>מחשבון משכנתא</b><span>ההחזר החודשי עם המבצע</span></a>
 			<a href="/purchase-tax-calculator/"><b>מחשבון מס רכישה</b><span>כמה מס על הדירה</span></a>
@@ -216,6 +219,25 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 			<li data-id="<?php echo esc_attr( $d['id'] ); ?>"><button type="button" data-pick="<?php echo esc_attr( $d['id'] ); ?>"><span class="nldm-dot" style="background:<?php echo esc_attr( $d['color'] ); ?>"></span><span class="nldm-li"><b><?php echo esc_html( $d['project'] ); ?></b><span><?php echo esc_html( $d['devFull'] . ' · ' . $d['kind'] . ' · פורסם ' . $d['pub'] ); ?></span><span class="nldm-li-terms"><?php echo esc_html( $d['terms'] ); ?></span></span><span class="nldm-need"></span></button></li>
 		<?php endforeach; ?>
 		</ol>
+	</section>
+
+	<section id="nldm-alert" class="nldm-alert" aria-labelledby="nldm-alert-h">
+		<h2 id="nldm-alert-h">מבצע קבלן חדש באזור שלכם? תדעו ראשונים</h2>
+		<p>בוחרים אזור ומרחק ומשאירים מייל. נשלח הודעה רק כשמבצע חדש נכנס לאזור, עם התנאים כפי שפורסמו, הסכום שצריך ביד והמקור.</p>
+		<div class="nldm-alert-places" role="group" aria-label="האזור">
+			<button type="button" data-near="1">קרוב אליי</button>
+			<?php foreach ( array( 'תל אביב' => array( 32.075, 34.79 ), 'ירושלים' => array( 31.778, 35.215 ), 'חיפה' => array( 32.8, 34.99 ), 'הרצליה' => array( 32.165, 34.835 ), 'רמת גן' => array( 32.08, 34.82 ), 'פתח תקווה' => array( 32.09, 34.885 ), 'ראשון לציון' => array( 31.97, 34.79 ), 'לוד' => array( 31.952, 34.895 ), 'נתניה' => array( 32.32, 34.855 ), 'באר שבע' => array( 31.25, 34.79 ) ) as $pn => $pl ) : ?><button type="button" data-lat="<?php echo esc_attr( $pl[0] ); ?>" data-lng="<?php echo esc_attr( $pl[1] ); ?>"<?php echo 'תל אביב' === $pn ? ' class="is-on" aria-pressed="true"' : ' aria-pressed="false"'; ?>><?php echo esc_html( $pn ); ?></button><?php endforeach; ?>
+		</div>
+		<div class="nldm-alert-stage" aria-hidden="true"><span class="z"></span><span class="r r1"></span><span class="r r2"></span><span class="r r3"></span><span class="dot"></span><span class="pop"><b>חדש</b>מבצע נכנס לאזור</span></div>
+		<form class="nldm-alert-form" novalidate>
+			<div class="nldm-alert-radius" role="group" aria-label="מרחק"><?php foreach ( array( 1, 2, 3, 5 ) as $km ) : ?><button type="button" data-r="<?php echo (int) $km; ?>"<?php echo 3 === $km ? ' class="is-on" aria-pressed="true"' : ' aria-pressed="false"'; ?>><?php echo (int) $km; ?> ק״מ</button><?php endforeach; ?></div>
+			<label for="nldm-alert-em">המייל שלכם</label>
+			<input id="nldm-alert-em" type="email" name="email" autocomplete="email" inputmode="email" required placeholder="name@example.com" dir="ltr">
+			<input type="text" name="company" tabindex="-1" autocomplete="off" class="nldm-hp" aria-hidden="true">
+			<button type="submit" class="nldm-btn is-main">שלחו לי התראה על מבצע חדש</button>
+			<p class="nldm-alert-msg" role="status" aria-live="polite"></p>
+			<p class="nldm-alert-fine">נשתמש במייל רק כדי לשלוח את ההתראות שבחרתם. קודם יגיע מייל לאישור, ובכל מייל יש קישור לביטול בלחיצה אחת. נשמור רק את המייל ואת האזור (מרכזו בעיגול של כ־100 מ׳), עד שתבטלו. המייל יוצא דרך ספק השליחה של האתר ולא נמסר לאף גורם אחר. מסירת המייל אינה חובה, אבל בלי מייל לא נוכל לשלוח התראות. את הפרטים מחזיק נדלן (nad-lan.co.il); לעיון, לתיקון או למחיקה: info@nad-lan.co.il. <a href="<?php echo esc_url( function_exists( 'nadlan_na_privacy_url' ) ? nadlan_na_privacy_url() : home_url( '/privacy/' ) ); ?>" target="_blank" rel="noopener">מדיניות הפרטיות</a></p>
+		</form>
 	</section>
 
 	<section class="nldm-expert" aria-label="התייעצות עם מומחה">

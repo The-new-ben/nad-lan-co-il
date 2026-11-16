@@ -386,6 +386,58 @@
 	var toCalc = $('.nldm-tocalc');
 	if (toCalc) { toCalc.addEventListener('click', function () { calcPick(byId[S.sel] && byId[S.sel].calcOk && byId[S.sel].price ? S.sel : 'mine'); calc.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); }); }
 
+	/* ---- area alert: an ordinary near-alerts request of kind 'deal' (double opt-in, unsubscribe, daily run are near-alerts') ---- */
+	var al = $('#nldm-alert');
+	if (al && D.alertUrl) {
+		var A = { lat: 32.075, lng: 34.79, r: 3, place: 'תל אביב' };
+		var stage = al.querySelector('.nldm-alert-stage');
+		var places = al.querySelector('.nldm-alert-places'), radius = al.querySelector('.nldm-alert-radius'), msg = al.querySelector('.nldm-alert-msg');
+		var zone = function () { stage.style.setProperty('--z', (36 + A.r * 32) + 'px'); };
+		var onOne = function (group, btn) { $$('button', group).forEach(function (x) { var on = x === btn; x.classList.toggle('is-on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); }); };
+		places.addEventListener('click', function (e) {
+			var b = e.target.closest('button'); if (!b) { return; }
+			onOne(places, b);
+			if (b.dataset.near) {
+				if (!navigator.geolocation) { msg.textContent = 'אין גישה למיקום. בחרו עיר.'; return; }
+				navigator.geolocation.getCurrentPosition(function (p) { A.lat = p.coords.latitude; A.lng = p.coords.longitude; A.place = ''; msg.textContent = ''; },
+					function () { msg.textContent = 'לא קיבלנו מיקום. בחרו עיר.'; }, { timeout: 8000, maximumAge: 600000 });
+				return;
+			}
+			A.lat = Number(b.dataset.lat); A.lng = Number(b.dataset.lng); A.place = b.textContent;
+		});
+		radius.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) { return; } onOne(radius, b); A.r = Number(b.dataset.r); zone(); });
+		zone();
+		al.querySelector('form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			var f = e.target, em = (f.email.value || '').trim(), btn = f.querySelector('button[type=submit]');
+			if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { msg.textContent = 'בדקו את כתובת המייל'; f.email.focus(); return; }
+			btn.disabled = true; msg.textContent = 'שולחים...';
+			fetch(D.alertUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email: em, lat: A.lat, lng: A.lng, r: A.r, what: ['deal'], freq: 'day', place: A.place, v: D.alertV, company: f.company.value }) })
+				.then(function (r) { return r.json().catch(function () { return {}; }); })
+				.then(function (j) {
+					btn.disabled = false;
+					if (j && j.ok) {
+						al.classList.add('is-done');
+						var r = stage.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, '#C8102E', false);
+						msg.textContent = 'כמעט סיימנו: שלחנו מייל לאישור. אחרי האישור נעדכן אתכם על כל מבצע קבלן חדש ברדיוס ' + A.r + ' ק״מ' + (A.place ? ' מ' + A.place : ' מהמקום שלכם') + '.';
+					} else {
+						msg.textContent = j && j.error === 'rate' ? 'נשלחו כבר כמה בקשות. נסו שוב בעוד שעה.' : (j && j.error === 'area' ? 'האזור מחוץ לישראל. בחרו עיר.' : (j && j.error === 'email' ? 'בדקו את כתובת המייל' : 'משהו לא עבד. נסו שוב.'));
+					}
+				})
+				.catch(function () { btn.disabled = false; msg.textContent = 'אין חיבור. נסו שוב.'; });
+		});
+		var toAl = $('.nldm-toalert');
+		if (toAl) {
+			toAl.addEventListener('click', function () {
+				var d = byId[S.sel];
+				if (d) { A.lat = d.lat; A.lng = d.lng; A.place = String(d.city).split(',')[0]; $$('button', places).forEach(function (x) { x.classList.remove('is-on'); x.setAttribute('aria-pressed', 'false'); }); }
+				al.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
+				setTimeout(function () { al.querySelector('input[type=email]').focus({ preventScroll: true }); }, 600);
+			});
+		}
+	}
+
 	var mapBox = document.getElementById('nldm-map');
 	if ('IntersectionObserver' in window) {
 		var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); initMap(); } }, { rootMargin: '300px' });

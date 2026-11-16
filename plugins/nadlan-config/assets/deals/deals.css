@@ -192,3 +192,33 @@
 .nldm[dir=ltr] .maplibregl-popup-content{direction:ltr;text-align:left}
 .nldm .nldm-mapbar{top:10px;bottom:auto;height:auto!important;justify-content:flex-start}
 .nldm .nldm-mapbar button{flex:0 0 auto!important;min-height:40px!important}
+/* area alert (HAD-743 board 11) */
+.nldm-alert{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:90px}
+.nldm .nldm-alert h2{margin:0!important;font-size:21px!important;line-height:1.25!important;font-weight:700!important;color:var(--ink)!important}
+.nldm-alert>p{margin:0;font-size:15px;line-height:1.6;color:var(--ink2)}
+.nldm-alert-places,.nldm-alert-radius{display:flex;gap:8px;flex-wrap:wrap}
+.nldm .nldm-alert-places button,.nldm .nldm-alert-radius button{min-height:44px!important;padding:0 14px!important;margin:0!important;border-radius:22px!important;border:1px solid #C3CED5!important;background:#fff!important;color:var(--ink)!important;font:600 14px/1 "IBM Plex Sans Hebrew",sans-serif!important;box-shadow:none!important;text-transform:none!important}
+.nldm .nldm-alert-places button.is-on,.nldm .nldm-alert-radius button.is-on{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
+.nldm .nldm-alert-radius button{flex:1}
+.nldm-alert-stage{position:relative;height:150px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 90% at 50% 50%,#F4F7F9,#DCE5EA);--z:132px}
+.nldm-alert-stage .z,.nldm-alert-stage .r{position:absolute;left:50%;top:50%;width:var(--z);height:var(--z);transform:translate(-50%,-50%);border-radius:50%}
+.nldm-alert-stage .z{background:rgba(14,76,99,.12);border:2px dashed var(--teal);transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1)}
+.nldm-alert-stage .r{border:2px solid var(--red);opacity:0}
+.nldm-alert.is-done .nldm-alert-stage .r{animation:nldm-ring 2.2s ease-out infinite}.nldm-alert.is-done .r2{animation-delay:.73s!important}.nldm-alert.is-done .r3{animation-delay:1.46s!important}
+@keyframes nldm-ring{0%{transform:translate(-50%,-50%) scale(.15);opacity:.9}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+.nldm-alert-stage .dot{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--teal);border:3px solid #fff;box-shadow:0 2px 6px rgba(15,29,38,.35)}
+.nldm-alert-stage .pop{position:absolute;left:62%;top:30%;display:flex;align-items:stretch;background:#fff;border:2px solid var(--red);border-radius:9px;overflow:hidden;font-size:12px;font-weight:600;opacity:0;transform:translateY(-14px)}
+.nldm-alert-stage .pop b{background:var(--red);color:#fff;padding:4px 7px;margin-inline-end:6px}
+.nldm-alert.is-done .nldm-alert-stage .pop{animation:nldm-drop .7s cubic-bezier(.2,.9,.3,1.3) 1.1s both;padding-inline-end:8px}
+@keyframes nldm-drop{0%{opacity:0;transform:translateY(-22px)}60%{opacity:1;transform:translateY(3px)}100%{opacity:1;transform:none}}
+.nldm-alert-form{display:flex;flex-direction:column;gap:10px}
+.nldm-alert-form label{font-weight:600;font-size:15px}
+.nldm-alert-form input[type=email]{min-height:48px;border:1px solid #C3CED5;border-radius:12px;padding:0 12px;font-size:16px;text-align:right}
+.nldm-alert-form .nldm-btn{border:0!important;cursor:pointer;font-family:inherit!important}
+.nldm .nldm-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+.nldm-alert-msg{margin:0;font-size:14px;line-height:1.5;color:var(--fit);font-weight:600;min-height:0}
+.nldm-alert-msg:empty{display:none}
+.nldm-alert-fine{margin:0;font-size:11px;line-height:1.55;color:var(--mut)}
+.nldm-alert-fine a{color:var(--teal)}
+.nldm .nldm-toalert{all:unset;box-sizing:border-box;cursor:pointer;display:flex!important;align-items:center;justify-content:center;min-height:44px!important;border-radius:12px!important;border:1px dashed var(--teal)!important;color:var(--teal)!important;font:600 14px/1.2 "IBM Plex Sans Hebrew",sans-serif!important;padding:0 12px!important;width:100%!important}
+@media (prefers-reduced-motion:reduce){.nldm-alert *{animation:none!important}}

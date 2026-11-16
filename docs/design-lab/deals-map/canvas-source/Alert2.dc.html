@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>התראה על מבצע חדש באזור, גרסה 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button,input{font-family:inherit}
+button{cursor:pointer}
+@keyframes ring{0%{transform:translate(-50%,-50%) scale(.15);opacity:.9}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+@keyframes drop{0%{transform:translate(-50%,-170%);opacity:0}60%{transform:translate(-50%,-92%);opacity:1}100%{transform:translate(-50%,-100%);opacity:1}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 1240px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+  <h2 style="margin: 0; font-size: 21px; line-height: 1.25">מבצע קבלן חדש באזור שלכם? תדעו ראשונים</h2>
+  <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #22313B">בוחרים אזור ומרחק, משאירים מייל, ומקבלים הודעה רק כשמבצע חדש נכנס לאזור: עם התנאים כפי שפורסמו, הסכום שצריך ביד והמקור.</p>
+
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <sc-for list="{{places}}" as="p" hint-placeholder-count="6">
+      <button type="button" onClick="{{p.pick}}" style="{{p.style}}">{{p.name}}</button>
+    </sc-for>
+  </div>
+
+  <section style="position: relative; height: 250px; border-radius: 18px; overflow: hidden; background: radial-gradient(120% 90% at 50% 50%, #F4F7F9, #DCE5EA)">
+    <svg width="358" height="250" viewBox="0 0 358 250" aria-hidden="true" style="position: absolute; inset: 0"><path d="M150 0 L125 90 L100 170 L80 250 L0 250 L0 0 Z" fill="#CFE0EA"/><path d="M195 0 L175 125 L160 250" stroke="#FFFFFF" stroke-width="5" fill="none"/><path d="M220 95h0M245 150h0M262 110h0M205 170h0M290 140h0M235 70h0" stroke="#8D9AA3" stroke-width="5" stroke-linecap="round" opacity=".6"/></svg>
+    <span style="{{zone}}"></span>
+    <sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+      <span style="{{ring1}}"></span><span style="{{ring2}}"></span><span style="{{ring3}}"></span>
+      <span style="position: absolute; left: 252px; top: 108px; transform: translate(-50%,-100%); animation: drop .7s cubic-bezier(.2,.9,.3,1.3) 1.1s both; display: flex; align-items: stretch; background: #FFFFFF; border: 2px solid #C8102E; border-radius: 9px; overflow: hidden; box-shadow: 0 8px 18px rgba(200,16,46,.25)"><span style="background: #C8102E; color: #FFFFFF; font-weight: 700; font-size: 11px; padding: 5px 7px">חדש</span><span style="font-size: 12px; font-weight: 600; padding: 5px 8px; white-space: nowrap">מבצע 20/80 נכנס לאזור</span></span>
+    </sc-if>
+    <span style="position: absolute; left: 215px; top: 128px; transform: translate(-50%,-50%); width: 14px; height: 14px; border-radius: 50%; background: #0E4C63; border: 3px solid #FFFFFF; box-shadow: 0 2px 6px rgba(15,29,38,.35)"></span>
+  </section>
+
+  <sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
+    <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-weight: 600; font-size: 15px">עד כמה רחוק</span>
+      <div style="display: flex; gap: 8px">
+        <sc-for list="{{radii}}" as="r" hint-placeholder-count="4">
+          <button type="button" onClick="{{r.pick}}" style="{{r.style}}">{{r.label}}</button>
+        </sc-for>
+      </div>
+      <label for="em" style="font-weight: 600; font-size: 15px">המייל שלכם</label>
+      <input id="em" type="email" placeholder="name@example.com" style="min-height: 48px; border: 1px solid #C3CED5; border-radius: 12px; padding: 0 12px; font-size: 16px; direction: ltr; text-align: right">
+      <button type="button" onClick="{{submit}}" style="min-height: 52px; border: 0; border-radius: 12px; background: #0E4C63; color: #FFFFFF; font-weight: 600; font-size: 16px">שלחו לי התראה על מבצע חדש</button>
+      <p style="margin: 0; font-size: 11px; line-height: 1.55; color: #4A5863">נשתמש במייל רק כדי לשלוח את ההתראות שבחרתם. קודם יגיע מייל לאישור, ובכל מייל יש קישור לביטול בלחיצה אחת. נשמור רק את המייל ואת האזור (מרכזו בעיגול של כ-100 מ׳), עד שתבטלו. מסירת המייל אינה חובה. את הפרטים מחזיק נדלן; לעיון, לתיקון או למחיקה: info@nad-lan.co.il. מדיניות הפרטיות.</p>
+    </section>
+  </sc-if>
+  <sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+    <section style="background: #FFFFFF; border: 2px solid #17694A; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+      <b style="font-size: 17px; color: #17694A">כמעט סיימנו: בדקו את המייל</b>
+      <span style="font-size: 14px; line-height: 1.5">שלחנו מייל לאישור. אחרי האישור, נעדכן אתכם על כל מבצע קבלן חדש ברדיוס של {{km}} ק״מ מ{{place}}.</span>
+    </section>
+  </sc-if>
+  <p style="margin: 0; font-size: 12px; line-height: 1.5; color: #4A5863">מתחבר למערכת ההתראות הקיימת של האתר (מאתר הנכסים): אישור במייל, ביטול בלחיצה, שליחה פעם ביום, רק מבצע חדש שעוד לא שלחנו.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { place: 'תל אביב', km: 3, done: false }; }
+  renderVals() {
+    const S = this.state;
+    const px = 12 + S.km * 16;
+    const ring = (d) => 'position: absolute; left: 215px; top: 128px; width: ' + px * 2 + 'px; height: ' + px * 2 + 'px; border-radius: 50%; border: 2px solid #C8102E; animation: ring 2.2s ease-out ' + d + 's infinite';
+    const chip = (on) => 'min-height: 44px; padding: 0 14px; border-radius: 22px; font-size: 14px; font-weight: 600; ' + (on ? 'background: #0F1D26; color: #FFFFFF; border: 1px solid #0F1D26' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5');
+    return {
+      places: ['קרוב אליי', 'תל אביב', 'הרצליה', 'רמת גן', 'לוד', 'ירושלים'].map((n) => ({ name: n, pick: () => this.setState({ place: n }), style: chip(S.place === n) })),
+      radii: [1, 2, 3, 5].map((k) => ({ label: k + ' ק״מ', pick: () => this.setState({ km: k }), style: chip(S.km === k) + '; flex: 1' })),
+      zone: 'position: absolute; left: 215px; top: 128px; width: ' + px * 2 + 'px; height: ' + px * 2 + 'px; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(14,76,99,.12); border: 2px dashed #0E4C63; transition: width .3s, height .3s',
+      ring1: ring(0), ring2: ring(.73), ring3: ring(1.46),
+      done: S.done, notDone: !S.done, km: S.km, place: S.place,
+      submit: () => this.setState({ done: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
