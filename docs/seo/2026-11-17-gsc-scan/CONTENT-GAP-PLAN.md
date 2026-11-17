@@ -130,3 +130,47 @@ No thresholds, rates or amounts are written in this plan on purpose: every numbe
 - Seer Interactive, AI Overviews, May 2026 (8,500 US/English keywords, 6,354 winning pages crawled): Reddit took 20.4% of first-citation slots; FAQ/HowTo-heavy sites underperformed about 10x; 5,000+ word guides took 4.4% of definitional slots; cited pages had about 69% more internal links and about twice the .gov/.edu outbound links.
 - Vendor "studies" on tables and AI citations (4.1x and similar) were not traceable to a source; not used.
 - Not read: Reddit and Moz (blocked to this session's tools, in search and in the built-in browser). Hebrew SEO forums: none with real experience threads found in the search; a Facebook-group pass would need Ben's Chrome.
+
+## H. Grok's skill "head-term-protection-titles", read 18.11.2026
+
+Source: `C:\Users\777\Desktop\head-term-protection-titles\SKILL.md` (Ben's PC; the original lives on Grok's box at `/home/box/agent-data/workflows/head-term-protection-titles/SKILL.md`). Related skills not read yet: surgical-wordpress-seo, seo-field-playbook. Evidence class for this section: code (the 17.11 crawl and Search Console exports), not eyes. What Google actually displays as the title was not checked.
+
+### H1. Where the skill and this plan agree
+- One owner page per head term; children never open with it. This is the TAMA 38 finding (8 titles open with the term) and the דמי תיווך finding.
+- Approval table before any edit, one page per step, low-traffic pages first, backup, change-log entry, live link, re-measure after 4 to 8 weeks. Same as section F and Ben's one-at-a-time order.
+- No bulk edits. No creative titles that lose the search wording.
+- "The hierarchy comes from links, not URL depth": this is exactly the פינוי בינוי case (1,081 links to the glossary, 969 to the owner).
+
+### H2. Four lines in the skill that break Ben's laws (to fix in the skill, on Ben's word)
+| Skill line | Law it breaks | Proposed wording |
+|---|---|---|
+| Step 7: "request recrawl in Search Console (URL inspection)" | 22.10.2026: never request indexing, on any site | "Resubmit the existing sitemap after the release. Read the index status only." |
+| Field evidence: "Prefer canonical and noindex over blocking in robots.txt" | 3.9.2026: no noindex, nofollow or Disallow without Ben's explicit order for that exact action | "Report filter and pagination findings. No noindex and no robots change without the owner's order." |
+| Field evidence: "Don't 301 just to make URLs deeper" (reads as if other 301s are fine) | 14.10.2026: no 301, not even as a proposal | "No 301s at all." |
+| Panel method: "fetch Google once per query 7 to 12 s apart" | 11.11.2026: searches are done by hand in Ben's Chrome by the session that changes the page, screenshots saved and sent | Keep the panel as background. Before each title, the acting session searches by hand and attaches the screenshots. |
+
+### H3. What the skill is missing for this site
+1. **A link step.** The steps cover titles, H1s and breadcrumbs only. On nad-lan the owner of "פינוי בינוי" loses to the glossary because of the automatic term link, with correct titles on both. Add: for each protected term, count internal links by anchor and by target; the owner must be the target of the exact-term anchors.
+2. **The existing owner map.** Step 1 builds a new map of protected terms. nad-lan already has one: `tools/seo/kw_guard.py` data and Ben's 50 phrases (HAD-691). Start from those; two maps that disagree would be worse than none.
+3. **Where the title lives.** On nad-lan some titles and H1s come from code in the plugin, not from the editor. A change saved in wp-admin can be overwritten by the next Claude release, and the other way round. Every title/H1 change needs the change-log line and a check after the next release.
+4. **The other open pages.** The 4 pages broken on 16.11 (HAD-773) stay out of any title batch until restored.
+
+### H4. The title-and-H1 rule measured on our site (crawl 17.11, 4,667 pages)
+- Every page has exactly one H1.
+- Title and H1 open with the same two words on 4,510 pages (96%). They open differently on 157 pages: 117 regular pages, 13 listings, the rest archives. A few differ only by the brand at the start (the home page). List: `crawl/title_h1_mismatch.csv`; the same list ranked by impressions is kept private in `Documents\GSC-Data\nad-lan.co.il\scan-2026-11-17-had769\crawl\title_h1_mismatch_ranked.csv`.
+- 98 of the 157 had impressions in the last 28 days: 8,755 impressions, 85 clicks. Highest: /sde-dov/, /projects/duo-tel-aviv/, /purchase-tax-calculator/ (583 impressions, position 57.6, title opens "מחשבון מס רכישה", H1 opens "חישוב מס רכישה"), the city price pages.
+- **City price pages (27):** every H1 opens "מחירי דירות ב{עיר}" or close to it. 11 titles open the same way (the 2026 template). 16 titles open differently, among them the place-first and the free-form ones from the August wave ("קריית אונו — המחירים שמשלמים השכנים"). So this cluster already holds a title-only change on 16 pages, the thing the skill now forbids, and 13 titles on the site carry a long dash.
+- Search Console, the two families (small numbers, different cities, 90 to 96% hidden queries: correlation only):
+
+| Family | Pages | 28 d clicks / impressions / CTR / position | 90 d clicks / impressions / CTR / position |
+|---|---|---|---|
+| Title opens like the H1 (template) | 11 | 4 / 1,000 / 0.40% / 11.5 | 8 / 3,734 / 0.21% / 9.1 |
+| Title opens differently from the H1 | 16 | 11 / 1,458 / 0.75% / 7.9 | 26 / 5,001 / 0.52% / 7.9 |
+
+  Our own numbers do not show that a title that differs from the H1 is punished. They are too small to prove the opposite. The open question is which title Google shows for these 16 pages; that needs a search by hand, with screenshots.
+
+### H5. Changes to this plan
+- **Item 10** (city price title test) becomes a title + H1 test on 3 low-traffic city price pages, changed together, with the before/after table approved by Ben. Before it starts: search by hand what title Google shows today for 3 template pages and 3 other-title pages.
+- **New item 11:** go through `crawl/title_h1_mismatch.csv` one page at a time, highest impressions first, only where Google is seen rewriting the title. Not a batch.
+- **Grok's 6 pages:** go ahead only as title + H1 pairs, one page per step, after the change-log line, and not on the HAD-773 pages. If the 6 are city price pages, they are the same test as item 10 and should not run twice.
+- **Section F, Grok's brief:** besides removing the redirect permission, remove the recrawl request and the noindex preference (H2).
