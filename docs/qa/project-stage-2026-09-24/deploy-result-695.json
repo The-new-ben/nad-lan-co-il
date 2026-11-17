@@ -1,0 +1,21 @@
+{
+  "released": "1.72.695",
+  "from": "1.72.694",
+  "live_before": {
+    "inc/forms-hub.php": "d835e6594b166374089a05184e49f6cc",
+    "assets/forms/forms.css": "a5773e0f3055362838c3170d161f9852",
+    "assets/forms/forms.json": "36b49fdf5077d0b6da18eee2fd616c91",
+    "nadlan-config.php": "c688bed9a38debaafdfc13b14d4a4bfd"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-17 22:26:18",
+  "files": {
+    "inc/forms-hub.php": "60d202819540b4ffcba61226f42a7528",
+    "assets/forms/forms.css": "babff7c578134fa03631de63911d488f",
+    "assets/forms/forms.json": "310080e479ba88457ac41cac27d74475",
+    "nadlan-config.php": "fc9f8ebca911780d12648a73f6d2dc91"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.695, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

@@ -1,0 +1,4182 @@
+[
+  {
+    "id": 1,
+    "form_number": "tabu-007",
+    "official_name_he": "שטר מכר-הגשה ידנית ומקוונת",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/bill_of_sale",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_007/he/forms_tabu-007.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-007.docx",
+    "size_bytes": 49529,
+    "sha256": "cbb21b3109b44e970b0bda6ad1de1e4345d946047b916258449c42e01cfd10de",
+    "http_last_modified": "Thu, 20 Oct 2022 07:11:12 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-007.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2020-02-24T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "השטר שבו רושמים בטאבו את העברת הבעלות מהמוכר לקונה. הקונה והמוכר חותמים עליו בפני עורך דין, והוא מוגש ללשכת רישום המקרקעין יחד עם אישורי המסים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 2,
+    "form_number": "tabu-009",
+    "official_name_he": "שטר מכר במקרקעי ישראל-הגשה ידנית ומקוונת",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/bill_of_sale",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_009/he/forms_tabu-009.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-009.docx",
+    "size_bytes": 50577,
+    "sha256": "4047fcd48d67432198e3236bcb168906884742d7e92f5f80c9e723cc6b151114",
+    "http_last_modified": "Thu, 20 Oct 2022 07:07:34 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-009.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2021-09-01T21:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "שטר המכר האחיד לנכס שהקרקע שלו בניהול רשות מקרקעי ישראל (חכירה). נחתם בפני עורך דין, ומוגש לטאבו בשלושה עותקים, אחד מהם לרמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 3,
+    "form_number": "tabu-003",
+    "official_name_he": "בקשה לרישום הערת אזהרה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/caveat_filling",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_003/he/forms_tabu-003.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-003.docx",
+    "size_bytes": 42952,
+    "sha256": "ea6994bb76d3ef2af5650f738598c7bcd1006721df72e966d38dc1dff49c16e7",
+    "http_last_modified": "Thu, 10 Jun 2021 07:18:08 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-003.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2016-01-26T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה לרשום בטאבו הערת אזהרה לטובת הקונה, כדי שהמוכר לא יוכל למכור או לשעבד את הנכס לאחר. בדרך כלל מגיש אותה עורך הדין של הקונה מיד אחרי החתימה על החוזה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 4,
+    "form_number": "tabu-004",
+    "official_name_he": "בקשה לרישום הערת אזהרה החתומה על ידי כל הצדדים להתחייבות לעשיית עסקה/הימנעות/התחייבות במסגרת תמ\"א 38/ רישום הערה על הצורך בהסכמה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/caveat_filling",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_004/he/forms_tabu-004.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-004.docx",
+    "size_bytes": 74589,
+    "sha256": "58ea61a06dd7327cfd22e45018c3865c03518b7caa9963dad639fa4d2762f3a4",
+    "http_last_modified": "Thu, 10 Jun 2021 07:19:44 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-004.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2019-11-06T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה לרישום הערת אזהרה כשכל הצדדים לעסקה חותמים עליה, וגם להערה במסגרת פרויקט תמ\"א 38 או הערה על הצורך בהסכמה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 5,
+    "form_number": "tabu-005",
+    "official_name_he": "טופס בקשה לרישום הערת אזהרה בגין התחייבות לרישום משכנתה בהסכמת כל הצדדים לטובת תאגיד בנקאי/ מוסדות פיננסיים/ גופים פרטיים",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "mortgage",
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/caveat_filling",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_005/he/forms_tabu-005.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-005.docx",
+    "size_bytes": 90297,
+    "sha256": "8814f345edd813076ea3e07cdfed6c6892a19581af037785681e96a936be727c",
+    "http_last_modified": "Thu, 10 Jun 2021 07:30:33 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-005.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2020-12-22T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה לרשום הערת אזהרה לטובת הבנק או הגוף המממן, על התחייבות הלווה לרשום לו משכנתה על הנכס. משמשת בעיקר כשהבנק נותן משכנתה לפני שאפשר לרשום את המשכנתה עצמה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 6,
+    "form_number": "tabu-006",
+    "official_name_he": "בקשה לביטול הערת אזהרה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "selling",
+      "buying",
+      "mortgage"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/caveat_filling",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_006/he/forms_tabu-006.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-006.docx",
+    "size_bytes": 43054,
+    "sha256": "3ca206f08c24aff99dba23ab74567835b721299692fec2c13bad2d4b7ae2cca8",
+    "http_last_modified": "Thu, 10 Jun 2021 07:32:54 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-006.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2012-02-12T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה למחוק מהטאבו הערת אזהרה שכבר אינה נחוצה, למשל אחרי שהעסקה נרשמה או בוטלה, או אחרי שהמשכנתה סולקה. חותם עליה מי שההערה רשומה לטובתו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 7,
+    "form_number": "tabu-013",
+    "official_name_he": "שטר משכנתה פרטית",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "mortgage"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/mortgage_registration",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_013/he/forms_tabu-013.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-013.docx",
+    "size_bytes": 41111,
+    "sha256": "ea29184ae44f3902695b3dfb14c3e969515e9516e441ab5b68cf1966f8abccac",
+    "http_last_modified": "Mon, 10 Nov 2025 08:35:58 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-013.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2025-11-09T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "השטר לרישום משכנתה בטאבו לטובת מלווה (בנק או גוף אחר) על נכס הרשום על שם הלווה. נחתם על ידי בעל המשכנתה והממשכן.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 8,
+    "form_number": "tabu-014",
+    "official_name_he": "שטר פדיון משכנתה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "mortgage",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/mortgage_registration",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_014/he/forms_tabu-014.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-014.docx",
+    "size_bytes": 48645,
+    "sha256": "1d23766c31544e18f0a6fd188e40f5de2a50189f029aaea9a6260c3bd7933cc9",
+    "http_last_modified": "Thu, 10 Jun 2021 08:29:18 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-014.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2017-04-19T21:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "השטר שבו מוחקים מהטאבו משכנתה אחרי שההלוואה נפרעה. הבנק או המלווה חותם עליו, ובעל הנכס מגיש אותו ללשכה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 9,
+    "form_number": "tabu-016",
+    "official_name_he": "בקשה לביטול משכנתה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "mortgage",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/mortgage_registration",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_016/he/forms_tabu-016.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-016.docx",
+    "size_bytes": 39079,
+    "sha256": "b47ed18b5733eaa66993dbb369a353f4afe9f42ded810b04d8ce6706f41b830e",
+    "http_last_modified": "Wed, 14 Aug 2024 08:18:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-016.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2024-08-13T21:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה לבטל רישום של משכנתה בפנקסי המקרקעין, בנוסף לשטר הפדיון או במקומו לפי המקרה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 10,
+    "form_number": "tabu-020",
+    "official_name_he": "בקשה לרישום במקרקעין",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "inheriting",
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/will_registration_property_registrar",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_020/he/forms_tabu-020.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-020.docx",
+    "size_bytes": 38361,
+    "sha256": "5e9d87fba7ae4887d9a8b758d0c530909738aaa2422698dba71500a94454463e",
+    "http_last_modified": "Sun, 23 Apr 2023 12:19:09 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-020.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2023-04-22T21:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "הטופס הכללי לבקשת רישום בטאבו. היורשים משתמשים בו כדי לרשום את הנכס על שמם לפי צו ירושה או צו קיום צוואה, ומשמש גם לפעולות רישום נוספות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 11,
+    "form_number": "tabu-002",
+    "official_name_he": "בקשה לקבלת העתקי מסמכים מתיק רישום",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/first_registration",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_002/he/forms_tabu-002.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-002.docx",
+    "size_bytes": 45589,
+    "sha256": "e95ae0f2108f8d88b599b3cdbd218a7a16058de85d9e1af09e1129cc585392cb",
+    "http_last_modified": "Tue, 21 Feb 2023 20:55:26 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-002.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": "2016-04-18T21:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/first_registration",
+      "note": "דף השירות מציע הגשת בקשה מקוונת (עם הזדהות לאומית או בלעדיה)"
+    },
+    "purpose_he": "בקשה לקבל העתקים של מסמכים מתיק רישום בטאבו, כמו שטר ישן או תשריט. דף השירות מפנה היום בעיקר לבקשה מקוונת, והטופס עדיין מופיע ברשימת הטפסים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 12,
+    "form_number": "tabu-018",
+    "official_name_he": "בקשה לעדכון פרטי זיהוי במקרקעין",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_018/he/forms_tabu-018.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-018.docx",
+    "size_bytes": 42587,
+    "sha256": "4da910e0e65cb271d88c3b60df3f4cd04d75b37b376334a5752913d68c8a3a6d",
+    "http_last_modified": "Thu, 10 Jun 2021 08:34:59 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-018.docx",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2014-11-03T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "בקשה לתקן או לעדכן בטאבו פרטים מזהים של בעל זכות, כמו שם או מספר זהות. נדרשת לעתים לפני מכירה כשהפרטים בנסח לא תואמים את התעודה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 13,
+    "form_number": "tabu-024",
+    "official_name_he": "תצהיר עו\"ד לעניין זיהוי הנכס באישור המס",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_024/he/forms_tabu-024.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_tabu-024.pdf",
+    "size_bytes": 222952,
+    "sha256": "f52d331521fc6cc6f269653fb4915cf2e359f907291e4dabac9fb3da15a1b994",
+    "http_last_modified": "Thu, 10 Jun 2021 10:22:44 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-024.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2020-03-17T22:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר שעורך הדין חותם עליו כשפרטי הנכס באישור מיסוי המקרקעין אינם זהים לרישום בטאבו, כדי לאשר שמדובר באותו נכס.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 14,
+    "form_number": "tabu-010",
+    "official_name_he": "שטר רישום שכירות לא במקרקעי ישראל - הגשה ידנית ומקוונת",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "renting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_010/he/forms_tabu-010.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-010.docx",
+    "size_bytes": 48788,
+    "sha256": "44ad40fa1c7a49b99f5ba33c62d3fd7d43b6c57d5d22b02d0f9161daa3d09d92",
+    "http_last_modified": "Thu, 20 Oct 2022 07:36:20 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-010.docx",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2020-02-24T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "שטר לרישום זכות שכירות (בדרך כלל שכירות ארוכה) בטאבו, בנכס שאינו מקרקעי ישראל. נחתם על ידי המשכיר והשוכר.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 15,
+    "form_number": "tabu-011",
+    "official_name_he": "שטר העברת זכות שכירות לא במקרקעי ישראל-הגשה ידנית ומקוונת",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "selling",
+      "renting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_011/he/forms_tabu-011.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-011.docx",
+    "size_bytes": 52355,
+    "sha256": "f22fec53a18dfdfd223ea7774e9f8286c13db924c9dbb22057488b8f0a78f2f5",
+    "http_last_modified": "Thu, 20 Oct 2022 06:56:25 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-011.docx",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2020-02-24T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://mekarkein-online.justice.gov.il/",
+      "note": "הגשה מקוונת לעורכי דין בעלי כרטיס חכם דרך 'מקרקעין ברשת' (מדריך: https://www.gov.il/he/Departments/Guides/tabu-online-services)"
+    },
+    "purpose_he": "שטר להעברת זכות שכירות רשומה מאדם לאדם, למשל במכירת דירה שרשומה בטאבו כשכירות לדורות, בנכס שאינו מקרקעי ישראל.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 16,
+    "form_number": "tabu-008",
+    "official_name_he": "שטר לפעולות שכירות במקרקעי ישראל",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "leasehold",
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_008/he/forms_tabu-008.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-008.docx",
+    "size_bytes": 54949,
+    "sha256": "fd1e5fde044c575c5c8229594fa4564a0c3309d5164d98fa47a61ad21132a729",
+    "http_last_modified": "Wed, 27 Mar 2024 14:04:06 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu-008.docx",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2021-09-01T21:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "שטר לרישום פעולות בזכות חכירה (שכירות) בקרקע שבניהול רמ\"י, כמו העברה או רישום חכירה. נחתם בפני עורך דין ומוגש לטאבו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 17,
+    "form_number": "tabu-61",
+    "official_name_he": "הוראות סעיף 2 א לחוק מקרקעי ישראל, תש\"ך- 1960 – הגבלה על קניה או העברה של זכויות במקרקעין לזרים",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_61/he/forms_tabu_61.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_tabu_61.pdf",
+    "size_bytes": 127489,
+    "sha256": "8a9ff9ddaedd4a2d725eeb9b155f9c53c87cae028ac4be48cb77c5a580027ac6",
+    "http_last_modified": "Wed, 11 Jun 2025 09:22:22 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/forms_tabu_61.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2025-06-10T21:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "דף הסבר רשמי על ההגבלה בחוק על העברת זכויות במקרקעי ישראל לזרים. רלוונטי לקונה שאינו אזרח או תושב ישראל ולעורך הדין שלו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 18,
+    "form_number": "tabu-026",
+    "official_name_he": "דוגמא לבקשה לרישום בית משותף - נספח א",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/guide-apartment-building-warrant",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_026/he/forms_tabu-026.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-026.docx",
+    "size_bytes": 56962,
+    "sha256": "038fcae2ac2f8af4a50579cfbc5e04218105a96d5cfc5fc18707ee2efa9bdddd",
+    "http_last_modified": "Thu, 12 May 2022 11:02:31 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-026.docx",
+    "gov_page_update_date": "29.10.2023",
+    "gov_listing_item_date": "2022-03-19T22:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח לדוגמה לבקשה לרשום בניין כבית משותף בטאבו, כדי שכל דירה תירשם כתת-חלקה. מגיש בדרך כלל היזם או בעלי הדירות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 19,
+    "form_number": "tabu-034",
+    "official_name_he": "דוגמא לבקשה לתיקון צו רישום בית משותף - נספח א",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/guide-apartment-building-warrant",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_034/he/forms_tabu-034.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-034.docx",
+    "size_bytes": 56212,
+    "sha256": "463e048384e7f4445ba1f7f7b15bd8f7eee385c57192efafe6643ba649f8ea2e",
+    "http_last_modified": "Mon, 04 Dec 2023 12:46:10 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-034.docx",
+    "gov_page_update_date": "29.10.2023",
+    "gov_listing_item_date": "2022-03-19T22:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח לדוגמה לבקשה לתקן צו בית משותף, למשל אחרי תוספת בנייה, הצמדה או פרויקט תמ\"א 38.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 20,
+    "form_number": "tabu-028",
+    "official_name_he": "דוגמא לנוסח תקנון מוסכם - נספח ג",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_028/he/forms_tabu-028.doc",
+    "file_type": "doc",
+    "original_filename": "forms_tabu-028.doc",
+    "size_bytes": 120320,
+    "sha256": "c0fa4812efe5d114b527dcfa1d00bcf719404b4d733552a7ade68c42a9d6d7af",
+    "http_last_modified": "Mon, 20 Mar 2023 11:43:02 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-028.doc",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2023-03-20T22:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח לדוגמה לתקנון מוסכם של בית משותף, שקובע את הכללים בין בעלי הדירות (הצמדות, חלוקת הוצאות, ניהול).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 21,
+    "form_number": "tabu-037",
+    "official_name_he": "נוסח התקנון המצוי בחוק המקרקעין, תשכ\"ט-1969",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium",
+      "renting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_037/he/forms_tabu-037.doc",
+    "file_type": "doc",
+    "original_filename": "forms_tabu-037.doc",
+    "size_bytes": 69120,
+    "sha256": "111e0c6e1b5fd2dae3611511a8ab90c53d54100b699d25e5acb39ee2b0bfd143",
+    "http_last_modified": "Thu, 10 Jun 2021 11:42:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-037.doc",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2015-06-17T21:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח התקנון שחל על בית משותף כשאין לו תקנון מוסכם. שימושי לכל דייר שרוצה לדעת מה כללי ההתנהלות בבניין.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 22,
+    "form_number": "tabu-029",
+    "official_name_he": "דוגמא לטופס הסכמה לשמש נציגות זמנית בבית משותף - נספח ד",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_029/he/forms_tabu-029.doc",
+    "file_type": "doc",
+    "original_filename": "forms_tabu-029.doc",
+    "size_bytes": 106496,
+    "sha256": "2c1ca1538d51e69449d26590376ba10a93bdf69b8194df5c964ca322d3d35ee5",
+    "http_last_modified": "Thu, 10 Jun 2021 11:12:16 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-029.doc",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": "2015-06-17T21:00:00Z",
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח לדוגמה שבו בעלי דירות מסכימים לשמש נציגות (ועד בית) זמנית, כחלק מתיק רישום הבית המשותף.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 23,
+    "form_number": "tabu-041",
+    "official_name_he": "דוגמא לכתב תביעה כספית - נציגות בית משותף",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין - המפקח על רישום מקרקעין",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_041/he/forms_tabu-041.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-041.docx",
+    "size_bytes": 46344,
+    "sha256": "8d08799e8d4b11d400722b6e29252c44046d844e68efda953c15284c3f803e5f",
+    "http_last_modified": "Sun, 13 Jun 2021 08:19:35 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-041.docx",
+    "gov_page_update_date": "09.02.2025",
+    "gov_listing_item_date": "2019-03-16T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+      "note": "דף השירות מציע 'הגשה באתר' ואתר לניסוח והגשת תביעות בנושא ועד בית"
+    },
+    "purpose_he": "נוסח לדוגמה לתביעה של ועד הבית נגד בעל דירה שלא שילם דמי ועד, המוגשת למפקח על רישום המקרקעין.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 24,
+    "form_number": "tabu-038",
+    "official_name_he": "דוגמא לכתב תביעה צו עשה או צו מניעה",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין - המפקח על רישום מקרקעין",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_038/he/forms_tabu-038.docx",
+    "file_type": "docx",
+    "original_filename": "forms_tabu-038.docx",
+    "size_bytes": 44341,
+    "sha256": "1686ad6953c6e165399cc618fd84bef87663cd13630369e14f003de6ef6b8997",
+    "http_last_modified": "Sun, 13 Jun 2021 07:57:53 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-038.docx",
+    "gov_page_update_date": "09.02.2025",
+    "gov_listing_item_date": "2021-02-10T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+      "note": "דף השירות מציע 'הגשה באתר'"
+    },
+    "purpose_he": "נוסח לדוגמה לתביעה בפני המפקח על רישום המקרקעין, שבה בעל דירה מבקש לחייב שכן לעשות פעולה או להימנע ממנה (למשל להסיר בנייה ברכוש המשותף).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 25,
+    "form_number": "tabu-040",
+    "official_name_he": "דוגמא לכתב תביעה כספית",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין - המפקח על רישום מקרקעין",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/land-registration-forms",
+    "service_page_url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+    "direct_file_url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/tabu_040/he/forms_tabu-040.doc",
+    "file_type": "doc",
+    "original_filename": "forms_tabu-040.doc",
+    "size_bytes": 106496,
+    "sha256": "db414c31844cf8dafa44e78238ce51371146245fe903fcca2e7299acb33bc813",
+    "http_last_modified": "Sun, 13 Jun 2021 08:18:30 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/forms_tabu-040.doc",
+    "gov_page_update_date": "09.02.2025",
+    "gov_listing_item_date": "2021-02-10T22:00:00Z",
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/condominiums-supervisor-claims",
+      "note": "דף השירות מציע 'הגשה באתר'"
+    },
+    "purpose_he": "נוסח לדוגמה לתביעה כספית בין בעלי דירות בבית משותף, המוגשת למפקח על רישום המקרקעין.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 26,
+    "form_number": null,
+    "official_name_he": "בקשה לחידוש רישום (טופס למילוי והדפסה)",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין (משרד המשפטים) - טאבו",
+    "local_folder": "tabu",
+    "life_situations": [
+      "inheriting",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/registration_renewal",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/registration_renewal/he/landregistry.docx",
+    "file_type": "docx",
+    "original_filename": "landregistry.docx",
+    "size_bytes": 34470,
+    "sha256": "9f2df0ed9510227d33e98e20d124478da6076616fb44d2a50d960246fb8abf11",
+    "http_last_modified": "Tue, 03 Aug 2021 08:39:53 GMT",
+    "download_status": "ok",
+    "local_path": "files/tabu/landregistry.docx",
+    "gov_page_update_date": "14.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "טופס לבקשת חידוש רישום של נכס בפנקסי המקרקעין, כשהרישום המקורי הושמד או טושטש. מגיש בעל הזכות או מי שיש לו עניין בנכס.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 27,
+    "form_number": "w3621a",
+    "official_name_he": "טופס בקשה להעברת זכויות במגזר העירוני",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold",
+      "inheriting"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-transfer-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_w3621a.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_w3621a.pdf",
+    "size_bytes": 548880,
+    "sha256": "712d9f89ceea9398b37d78bb5606be1d8cf28b09ff4a585f26722509e2d82e76",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_w3621a.pdf",
+    "gov_page_update_date": "03.03.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לאשר העברת זכויות בדירה או בנכס עירוני שהקרקע שלו בניהול רמ\"י. מגישים כל בעלי הזכויות, ובנכס לא מהוון משלמים דמי הסכמה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_w3621a.docx",
+        "file_type": "docx",
+        "original_filename": "forms_w3621a.docx",
+        "size_bytes": 199988,
+        "sha256": "bc1675fc6cba9c8b7e1dcf41057ee48577c2df0d9b346a989841529c8fce3cab",
+        "http_last_modified": "Thu, 02 Jul 2026 08:42:11 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_w3621a.docx"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "form_number": "forms_w3621a1",
+    "official_name_he": "פרטי מעבירי זכויות",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-transfer-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621a1.docx",
+    "file_type": "docx",
+    "original_filename": "forms_W3621a1.docx",
+    "size_bytes": 172171,
+    "sha256": "71a0cf20521be0166db14588d706ac920dedf1ef0ad05144513359e5e28ecc0e",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_W3621a1.docx",
+    "gov_page_update_date": "03.03.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נספח לבקשת העברת הזכויות שבו המוכרים (מעבירי הזכויות) ממלאים את פרטיהם.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 29,
+    "form_number": "forms_w3621a2",
+    "official_name_he": "פרטי מקבלי זכויות",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-transfer-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621a2.docx",
+    "file_type": "docx",
+    "original_filename": "forms_W3621a2.docx",
+    "size_bytes": 171628,
+    "sha256": "18a6874333d137a7f866445629dd5daa90cc45dde53c8c8d57f9f919c218479e",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:11 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_W3621a2.docx",
+    "gov_page_update_date": "03.03.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נספח לבקשת העברת הזכויות שבו הקונים (מקבלי הזכויות) ממלאים את פרטיהם.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 30,
+    "form_number": "w3621e",
+    "official_name_he": "תצהיר על היעדר חריגות בנייה לעמידה במועדי הבנייה בבקשה להעברת זכויות",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621e.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_W3621e.pdf",
+    "size_bytes": 247720,
+    "sha256": "ce033e48b49ef0e02d448e923c09678400aad73fac6e8b8dcac146454b9dc7f5",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_W3621e.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של המוכר לרמ\"י שאין בנכס בנייה חורגת ושהבנייה הושלמה במועד, כתנאי לאישור העברת הזכויות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621e.docx",
+        "file_type": "docx",
+        "original_filename": "forms_W3621e.docx",
+        "size_bytes": 74775,
+        "sha256": "9d4820cda854954b2e8ff7d440debcc1a17bfd2ea1472c3cdba989bf93406d7c",
+        "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_W3621e.docx"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "form_number": "wform_100",
+    "official_name_he": "שטר מכר במקרקעי ישראל-הגשה ידנית ומקוונת",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_wform100.docx",
+    "file_type": "docx",
+    "original_filename": "forms_wform100.docx",
+    "size_bytes": 51662,
+    "sha256": "f2d35f14386562e818cd07ad96efe8497ff23ba058eda02767382b4eea3a32df",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform100.docx",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "גרסת רמ\"י של שטר המכר האחיד במקרקעי ישראל. מוגש לטאבו בשלושה עותקים, אחד מהם לרמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 32,
+    "form_number": "w3621x",
+    "official_name_he": "כתב העברת זכות חכירה המיועד לשימוש גורם משכן/חברה משכנת",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621x.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_W3621x.pdf",
+    "size_bytes": 225772,
+    "sha256": "bf69c36e70f0d5aaed288eb37e11b56a36a19d71bb4df8541731f044eb3ea4cb",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_W3621x.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "כתב העברה לנכס שהזכויות בו מנוהלות אצל חברה משכנת (כמו עמידר או חברה קבלנית) ולא בטאבו. הצדדים חותמים, והחברה המשכנת מעבירה לרמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_W3621x.docx",
+        "file_type": "docx",
+        "original_filename": "forms_W3621x.docx",
+        "size_bytes": 160642,
+        "sha256": "abbf474fbf88389f8ae5aee61aa653bf97027bc1555ce14ab29d9796d13e0627",
+        "http_last_modified": "Thu, 02 Jul 2026 08:42:13 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_W3621x.docx"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "form_number": "wform-100-083",
+    "official_name_he": "כתב העברת זכות חכירה לא מהוונת שאינה רשומה בלשכת רישום המקרקעין",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_wform-100.083.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform-100.083.pdf",
+    "size_bytes": 271934,
+    "sha256": "69f48ddd78c014bad2a9007d6e7c3f6542bbdec46c0577c8076d008d57c82ae2",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform-100.083.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "כתב העברה לדירה בחכירה לא מהוונת שעדיין לא נרשמה בטאבו, ולכן ההעברה נרשמת אצל רמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_wform-100.083.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform-100.083.docx",
+        "size_bytes": 160898,
+        "sha256": "733da97c71aa6b3d9b07a37cb3fc1230c55a74c37a28421b4536867f5e1bb03b",
+        "http_last_modified": "Thu, 02 Jul 2026 08:42:13 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform-100.083.docx"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "form_number": "wform2-100-084",
+    "official_name_he": "כתב העברת זכות חכירה מהוונת שאינה רשומה בלשכת רישום המקרקעין",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_wform-100.084.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform-100.084.pdf",
+    "size_bytes": 278650,
+    "sha256": "9bac7af4092699e59814660198f981c87f8b4c813210506d981c74b44c6cb311",
+    "http_last_modified": "Thu, 02 Jul 2026 08:42:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform-100.084.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "כתב העברה לדירה בחכירה מהוונת שעדיין לא נרשמה בטאבו, ולכן ההעברה נרשמת אצל רמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9003b-procedure/he/forms_wform-100.084.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform-100.084.docx",
+        "size_bytes": 157378,
+        "sha256": "e321ad67bc31f442a4680aa1d2b21bd78d79c42b01df7c3a131a34e3f7f8e8a2",
+        "http_last_modified": "Thu, 02 Jul 2026 08:42:12 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform-100.084.docx"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "form_number": "wform351a",
+    "official_name_he": "טופס בקשה למתן כתב התחייבות לרישום משכנתא והוראה בלתי חוזרת",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "mortgage",
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-mortgage",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9002b-procedure/he/forms_wform351.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform351.pdf",
+    "size_bytes": 494682,
+    "sha256": "cd594c2b31371d35be399a61f8206bc7fafb121b1786695e87c2d1a36d630775",
+    "http_last_modified": "Wed, 12 Aug 2026 10:48:07 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform351.pdf",
+    "gov_page_update_date": "01.04.2024",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://my.land.gov.il/PersonalArea",
+      "note": "הפקה מקוונת באזור האישי 'רמ\"י שלי' עם הזדהות לאומית"
+    },
+    "purpose_he": "בקשה לרמ\"י להוציא לבנק כתב התחייבות לרישום משכנתא, בנכס בניהול רמ\"י שאינו רשום בטאבו. מגיש בעל הזכויות או מיופה כוחו, עם מכתב הפניה מהבנק.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9002b-procedure/he/forms_wform351.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform351.docx",
+        "size_bytes": 158102,
+        "sha256": "9c1126953ac46519a2b5470da5f39dce7c5716e7e777321b4c66dc785db691c5",
+        "http_last_modified": "Wed, 12 Aug 2026 10:48:06 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform351.docx"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "form_number": "wform37",
+    "official_name_he": "התחייבות לרישום משכנתא/ות בלשכת רישום המקרקעין",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "mortgage",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-register-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/2204b-procedure/he/forms_wform37.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform37.pdf",
+    "size_bytes": 105659,
+    "sha256": "02a49b48881accba694274c6e625e8ddd7eb2b09901224681f2cd2494bec7d8a",
+    "http_last_modified": "Tue, 03 Jan 2023 10:01:45 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform37.pdf",
+    "gov_page_update_date": "16.03.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "התחייבות שמוגשת לרמ\"י כחלק מרישום הנכס בטאבו, כדי שמשכנתאות שנרשמו אצל רמ\"י יירשמו גם בלשכת רישום המקרקעין.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/2204b-procedure/he/forms_wform37.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform37.docx",
+        "size_bytes": 67264,
+        "sha256": "cc835c3d90a11b9c2ab4de0f54f89f741868151bb88f8d5f56dda0dd190ce942",
+        "http_last_modified": "Tue, 03 Jan 2023 10:01:44 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform37.docx"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "form_number": "mashkanta-note",
+    "official_name_he": "הודעה לבנק על ביטול התחייבות לרישום משכנתא",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "mortgage",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/3513b-procedure/he/forms_mashkanta_note.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_mashkanta_note.pdf",
+    "size_bytes": 88461,
+    "sha256": "1a7f7c2df6617302cdbc1e8cb3915a85982fd55769c602ad26d049847dbed7b7",
+    "http_last_modified": "Thu, 19 Aug 2021 12:11:54 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_mashkanta_note.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "הודעה לבנק על ביטול התחייבות לרישום משכנתא שרמ\"י נתנה, למשל כשהעסקה בוטלה או ההלוואה לא נלקחה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 38,
+    "form_number": "wform352",
+    "official_name_he": "טופס בקשה למתן אישור זכויות/הודעה על רישום זכויות בנכס",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "mortgage",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/rights-approval-request",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9008b-procedure/he/forms_wform352.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform352.pdf",
+    "size_bytes": 364814,
+    "sha256": "7af1ac04a42dc2ff39f8dc4cc2f0aad6ee46f822c08133fa5694861202dffbcb",
+    "http_last_modified": "Tue, 14 Mar 2023 12:42:25 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform352.pdf",
+    "gov_page_update_date": "21.05.2024",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://my.land.gov.il/PersonalArea",
+      "note": "אישור זכויות מקוון באזור האישי 'רמ\"י שלי'"
+    },
+    "purpose_he": "בקשה לקבל מרמ\"י אישור זכויות בנכס, שמראה מי בעל הזכויות ומה רשום עליו. הקונה והבנק מבקשים אותו לפני עסקה בנכס שאינו רשום בטאבו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9008b-procedure/he/forms_wform352.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform352.docx",
+        "size_bytes": 97834,
+        "sha256": "7bfdafe70dbcced769cbd9d89826e8aceabca246e46585e61c2d0e863d2652fc",
+        "http_last_modified": "Tue, 14 Mar 2023 12:42:24 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform352.docx"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "form_number": "wform342",
+    "official_name_he": "טופס בקשה לביטול עסקה",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/3513b-procedure/he/forms_wform342.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform342.pdf",
+    "size_bytes": 243772,
+    "sha256": "12432ca57e25a3cf5211511f50338a011906dd9c28fa29e76a02ed5c68a2269a",
+    "http_last_modified": "Thu, 19 Aug 2021 12:11:54 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform342.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לבטל עסקה שדווחה לה, למשל כשהקונה והמוכר חזרו בהם לפני הרישום.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/3513b-procedure/he/forms_wform342.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform342.docx",
+        "size_bytes": 175710,
+        "sha256": "124af8ab02a70c804a652767a52d0b53a4607e25ab41f9f931dbdd863e39bb2d",
+        "http_last_modified": "Thu, 19 Aug 2021 12:11:53 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform342.docx"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "form_number": "wform316",
+    "official_name_he": "טופס בקשה להקניית בעלות/שדרוג זכות חכירה לחוכר הזכאי לכך עפ\"י החלטות מועצת מקרקעי ישראל",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-land-ownership",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9001b-procedure/he/forms_wform316.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform316.pdf",
+    "size_bytes": 403691,
+    "sha256": "132477ae6b422fe8cd9496ddf8f32c3f565a1c84cd68303204138e865b49a210",
+    "http_last_modified": "Mon, 09 Nov 2026 07:33:28 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform316.pdf",
+    "gov_page_update_date": "15.08.2024",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של בעל חכירה מהוונת בדירה או נכס עירוני לקבל את הבעלות בקרקע (או חכירה משודרגת) מרמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9001b-procedure/he/forms_wform316.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform316.docx",
+        "size_bytes": 140881,
+        "sha256": "f614db97b24079c4f47abf0c2c4554a2d0581b873736d85832723fd58e76fe96",
+        "http_last_modified": "Mon, 09 Nov 2026 07:33:28 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform316.docx"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "form_number": "wform3216",
+    "official_name_he": "טופס בקשה לחידוש חכירה במסגרת יובל חכירה והיוון חכירה במגזר העירוני",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "leasehold",
+      "selling"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-urban-leasing",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/9004b-procedure/he/forms_wform3216.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform3216.pdf",
+    "size_bytes": 494200,
+    "sha256": "e020b493a6f6ddb935aa6bddf415b45d75c90c4b7ff0c1792496b4ef06b8c137",
+    "http_last_modified": "Wed, 03 Jun 2026 12:41:09 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform3216.pdf",
+    "gov_page_update_date": "17.04.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לחדש חוזה חכירה שהסתיים או עומד להסתיים, או להוון אותו (לשלם מראש לכל התקופה). מגיש בעל הזכויות בנכס עירוני.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/9004b-procedure/he/forms_wform3216.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform3216.docx",
+        "size_bytes": 137730,
+        "sha256": "a3a4d025dca26cd2d8c4318de2ac7054c3c27c7ffe946d6dc5625e5d11a70459",
+        "http_last_modified": "Wed, 03 Jun 2026 12:41:08 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform3216.docx"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "form_number": "wform29",
+    "official_name_he": "בקשה לרישום במקרקעין",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-register-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/2204b-procedure/he/forms_wform29.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform29.pdf",
+    "size_bytes": 100758,
+    "sha256": "549eae2393cea32221e3470cb9c602bcc2941c792634bf75665fe84fb27d9c1e",
+    "http_last_modified": "Thu, 19 Aug 2021 12:17:49 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform29.pdf",
+    "gov_page_update_date": "16.03.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לבצע את הפעולות הדרושות כדי שזכויות בנכס בניהולה יירשמו או יעודכנו בטאבו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/2204b-procedure/he/forms_wform29.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform29.docx",
+        "size_bytes": 33155,
+        "sha256": "5c9fb5d4f6dece71b7b4986228781f20a3d1f27a2ede2e66bde466a605648c44",
+        "http_last_modified": "Thu, 19 Aug 2021 12:17:48 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform29.docx"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "form_number": "forms-2204b2",
+    "official_name_he": "רשימת מסמכי חובה בבקשה לביצוע פעולות ברמ\"י לצורך רישום או עדכון רישום בלשכת רישום המקרקעין",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-register-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/2204b-procedure/he/forms_22.04B2.docx",
+    "file_type": "docx",
+    "original_filename": "forms_22.04B2.docx",
+    "size_bytes": 180724,
+    "sha256": "288253a754c08a2db731411089846a04e22b1abdc54165f02bc6aeffa9af881d",
+    "http_last_modified": "Tue, 13 Aug 2024 09:29:39 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_22.04B2.docx",
+    "gov_page_update_date": "16.03.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "רשימת המסמכים שחובה לצרף לבקשה לרמ\"י לרישום או עדכון רישום בטאבו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 44,
+    "form_number": "wform28",
+    "official_name_he": "בקשה לרישום בית משותף",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "condominium",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-apartment-building-warrant",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/guide-apartment-building-warrant/he/forms_wform28.docx",
+    "file_type": "docx",
+    "original_filename": "forms_wform28.docx",
+    "size_bytes": 30192,
+    "sha256": "898bfc5cbbf04d1931b71d1823ce363e63276dd20ad63c3a9b03788a7facbe30",
+    "http_last_modified": "Sun, 17 Jul 2022 09:50:00 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform28.docx",
+    "gov_page_update_date": "29.10.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לרשום בניין על קרקע בניהולה כבית משותף, כדי שכל דירה תוכל להירשם בטאבו. מגיש בדרך כלל הגורם המשכן (היזם).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 45,
+    "form_number": "wform36",
+    "official_name_he": "כתב שיפוי לרישום בית משותף",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "condominium",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-apartment-building-warrant",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/2203b-procedure/he/forms_wform36.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform36.pdf",
+    "size_bytes": 97936,
+    "sha256": "e5314b8020c47c515857131350cff3b06acf9ed73c68b92d81df79ee64661faa",
+    "http_last_modified": "Thu, 19 Aug 2021 12:18:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform36.pdf",
+    "gov_page_update_date": "29.10.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "כתב שיפוי שהמבקש חותם עליו כלפי רמ\"י כחלק מבקשה לרישום בית משותף.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/2203b-procedure/he/forms_wform36.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform36.docx",
+        "size_bytes": 64142,
+        "sha256": "1edbec9fc2b96b8aa1c8db65229c63c4ed2803caab8cdb32801c94d8bc1d36a2",
+        "http_last_modified": "Thu, 19 Aug 2021 12:18:12 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform36.docx"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "form_number": "wform313",
+    "official_name_he": "טופס בקשה לתוספת בנייה במגורים (בהסכם חכירה והסכם פיתוח - בנייה נמוכה בלבד)",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/2103b-procedure/he/forms_wform313.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform313.pdf",
+    "size_bytes": 297546,
+    "sha256": "76253c50809a9c7ed4b82414f745f106e2c49271790fc92e99487b8459d194ae",
+    "http_last_modified": "Mon, 29 Dec 2025 08:34:45 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform313.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לאשר תוספת בנייה בבית מגורים צמוד קרקע (בנייה נמוכה) שהקרקע שלו בניהול רמ\"י.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/2103b-procedure/he/forms_wform313.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform313.docx",
+        "size_bytes": 150645,
+        "sha256": "f97159244594cf7f0b2f3b53d6f93df54457eedb18eae9e3ed5d79714040c7b6",
+        "http_last_modified": "Mon, 29 Dec 2025 08:34:43 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform313.docx"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "form_number": "standingorder",
+    "official_name_he": "טופס הוראת קבע לתשלום דמי חכירה",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/bills-online",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/bills-online/he/forms_standingorder.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_standingorder.pdf",
+    "size_bytes": 116068,
+    "sha256": "d0106bb67b02db321281feff88aaacf327c07941ed49064f7e882db9ad163e3f",
+    "http_last_modified": "Mon, 08 Jun 2026 07:02:21 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_standingorder.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "טופס לתשלום דמי החכירה השנתיים לרמ\"י בהוראת קבע מחשבון הבנק.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 48,
+    "form_number": "wform31",
+    "official_name_he": "אישור העברת זכויות בהתייחס להערה הרשומה בדבר הגבלה על העברת זכויות (\"זרים\")",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_wform31.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform31.pdf",
+    "size_bytes": 160918,
+    "sha256": "180ca3304d6250d5b88010416c18d5fad2d4de9e94211fbf8540232e2bca59ae",
+    "http_last_modified": "Mon, 26 Oct 2026 09:50:42 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform31.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "אישור שרמ\"י נותנת להעברת זכויות בנכס שרשומה עליו הערה על הגבלת העברה לזרים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_wform31.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform31.docx",
+        "size_bytes": 51672,
+        "sha256": "1ee4206b2159861c87deb3d9c5af9f34fe3286daf8c16ae20c8819b9a42a25e4",
+        "http_last_modified": "Mon, 26 Oct 2026 09:50:40 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform31.docx"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "form_number": "0502mt9",
+    "official_name_he": "בקשה להקניית זכויות לזר ביחידת מגורים אחת",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_05.02mt9.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_05.02mt9.pdf",
+    "size_bytes": 88881,
+    "sha256": "d5d4b8a32e709647cd82181b8ccc3db98a7e3dc3b8045c1cd9e09808d8b147e6",
+    "http_last_modified": "Mon, 26 Oct 2026 09:50:42 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_05.02mt9.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של קונה זר (שאינו אזרח או תושב) לאשר לו לרכוש דירת מגורים אחת במקרקעי ישראל.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_05.02mt9.docx",
+        "file_type": "docx",
+        "original_filename": "forms_05.02mt9.docx",
+        "size_bytes": 23112,
+        "sha256": "229e3fc494159d8b9537fdaf1fc2974f86b7e6c0cb5e0caedd5ddbca30c4d38c",
+        "http_last_modified": "Thu, 19 Aug 2021 12:19:58 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_05.02mt9.docx"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "form_number": "0502mt3",
+    "official_name_he": "תצהיר זר בדבר מטרת רכישה – לאדם פרטי",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_05.02mt3.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_05.02mt3.pdf",
+    "size_bytes": 111236,
+    "sha256": "7f99bb7c2b950d80d3ea464d33fc6c7056fb0633d1cfc996bd181d4f5f2f2aec",
+    "http_last_modified": "Mon, 26 Oct 2026 09:50:42 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_05.02mt3.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של קונה זר פרטי על מטרת הרכישה, המצורף לבקשה לאשר העברת זכויות אליו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/procedure-0502m/he/forms_05.02mt3.docx",
+        "file_type": "docx",
+        "original_filename": "forms_05.02mt3.docx",
+        "size_bytes": 33722,
+        "sha256": "01b91335bee7c4ad80a9e3ceb2240a4f71cbbf13ebd859d82a1909fc457479e0",
+        "http_last_modified": "Mon, 26 Oct 2026 09:50:41 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_05.02mt3.docx"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "form_number": "wform353",
+    "official_name_he": "טופס בקשה להעברת זכויות - מגזר חקלאי (נחלה, משק עזר, תעסוקה במשבצת, שטחי עיבוד)",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-agricultural-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/3702b-procedure/he/forms_wform353.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform353.pdf",
+    "size_bytes": 430736,
+    "sha256": "7ae688c26653feba013f05b78e10b96545db8c9fe64832e1197a811f6e3af6d0",
+    "http_last_modified": "Sun, 22 Mar 2026 21:14:46 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform353.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לרמ\"י לאשר העברת זכויות בנחלה או במשק עזר במושב, כולל העברה במכירה, במתנה או בירושה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/3702b-procedure/he/forms_wform353.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform353.docx",
+        "size_bytes": 242545,
+        "sha256": "030af8e95c0a77a01bf85c3a773d63a8525b99ae56a0b7ec954026ced9c1c6dc",
+        "http_last_modified": "Sun, 22 Mar 2026 21:14:45 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform353.docx"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "form_number": "wform-353h",
+    "official_name_he": "תצהיר – התחייבות להסדרת שימושים לצורך העברת זכויות עקב ירושה במגזר החקלאי",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "inheriting",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/guide-agricultural-rights",
+    "direct_file_url": "https://www.gov.il/BlobFolder/policy/3702b-procedure/he/forms_wform353h.pdf",
+    "file_type": "pdf",
+    "original_filename": "forms_wform353h.pdf",
+    "size_bytes": 158832,
+    "sha256": "9504b700996d2a5b93e5da24f00b6f4db2615271c5ad54558672370f85f40e78",
+    "http_last_modified": "Wed, 13 Mar 2024 11:30:11 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform353h.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של יורשים בנחלה שמתחייבים להסדיר שימושים חורגים, כדי שרמ\"י תאשר את העברת הזכויות בירושה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/policy/3702b-procedure/he/forms_wform353h.docx",
+        "file_type": "docx",
+        "original_filename": "forms_wform353h.docx",
+        "size_bytes": 70761,
+        "sha256": "b592636c71404dae8c80087297b357f4658e3adf0ad0b453e0e8a2674e081faf",
+        "http_last_modified": "Wed, 13 Mar 2024 11:30:11 GMT",
+        "download_status": "ok",
+        "local_path": "files/rmi/forms_wform353h.docx"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "form_number": "7000",
+    "official_name_he": "טופס הצהרה על מכירת ורכישת נכס מקרקעין (טופס 7000)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7000",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000/he/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000new.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_real-estate-tax-7000new.pdf",
+    "size_bytes": 865632,
+    "sha256": "b74f2f0f71d029d2eb86aea36590b6d50ed2dc95267b007a910290adb5f2f067",
+    "http_last_modified": "Mon, 19 May 2025 13:58:00 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000new.pdf",
+    "gov_page_update_date": "19.05.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/corona-statment-of-real-estate-transaction",
+      "note": "הגשה מקוונת היא ברירת המחדל: מיוצגים דרך עורך הדין במערכת המייצגים (https://secapp.taxes.gov.il/svnewmyazeg), לא מיוצגים בהצהרה מקוונת אחרי הזדהות. הגשה ידנית רק בחריגים (טופס 7100)"
+    },
+    "purpose_he": "ההצהרה של המוכר והקונה לרשות המסים על מכירת דירת מגורים מזכה שאין בה זכויות בנייה, כשהמוכר מבקש פטור מלא ממס שבח. הקונה מצהיר בה גם לצורך מס רכישה.",
+    "deadline": {
+      "text": "המוכר והקונה מגישים הצהרה בתוך 30 ימים מיום המכירה (סעיף 73(א) ו-73(ג) לחוק מיסוי מקרקעין)",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000/he/Service_Pages_Real_Estate_Taxation_itc7000-acc.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_itc7000-acc.pdf",
+        "size_bytes": 278155,
+        "sha256": "ee89cd6a36f589c69861a296402de80653c080989bb9aa8b8b24106f0a324c15",
+        "http_last_modified": "Mon, 19 May 2025 13:54:11 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_itc7000-acc.pdf"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "form_number": "7002",
+    "official_name_he": "טופס 7002 - הצהרה על מכירת זכות במקרקעין או פעולה באיגוד מקרקעין בכל מקרה אחר שלא מתאים להגשה בטפסי 7000 או 7000ב",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7000",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000/he/Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf",
+    "size_bytes": 813042,
+    "sha256": "ae52b12d26a62826f98391ce3b55e3ac68467cde7671c0b3325aaf570ada1e9a",
+    "http_last_modified": "Mon, 19 May 2025 13:58:00 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf",
+    "gov_page_update_date": "19.05.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/corona-statment-of-real-estate-transaction",
+      "note": "כמו טופס 7000: הגשה מקוונת היא ברירת המחדל (עורכי דין: https://secapp.taxes.gov.il/svnewmyazeg)"
+    },
+    "purpose_he": "ההצהרה הכללית על מכירת נכס כשהמכירה חייבת במס שבח או לא מתאימה לטופס 7000, כולל מתנה. המוכר מצרף שומה עצמית, והקונה מצהיר לצורך מס רכישה.",
+    "deadline": {
+      "text": "בתוך 30 ימים מיום המכירה (סעיף 73 לחוק מיסוי מקרקעין)",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real_eatate_tax7002/he/Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf",
+        "size_bytes": 677554,
+        "sha256": "4968407b802dbc4a0be29e6b750e06d66695107d11e56ea13ca48fde67e636aa",
+        "http_last_modified": "Mon, 16 Aug 2021 07:36:29 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/real_eatate_tax7002/Service_Pages_Real_Estate_Taxation_real-estate-tax-7002.pdf"
+      },
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000/he/Service_Pages_Real_Estate_Taxation_itc7002-acc.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_itc7002-acc.pdf",
+        "size_bytes": 164377,
+        "sha256": "68af7b3b28b59069bf42201219589160cbd0cbce73d64231738300a32b69f430",
+        "http_last_modified": "Mon, 19 May 2025 13:54:12 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_itc7002-acc.pdf"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "form_number": "7000ב",
+    "official_name_he": "טופס הצהרה על מכירת ורכישת זכויות מקרקעין (טופס 7000ב)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7000b",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000b/he/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.pdf",
+    "size_bytes": 550809,
+    "sha256": "4d71907a70f9776b688784f2b47bdb4b89b298d9752a7c936c91a118a8a1d53d",
+    "http_last_modified": "Tue, 31 Oct 2023 16:06:57 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.pdf",
+    "gov_page_update_date": "19.05.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/corona-statment-of-real-estate-transaction",
+      "note": "מיוצגים מגישים מקוון דרך עורך הדין (https://secapp.taxes.gov.il/svnewmyazeg)"
+    },
+    "purpose_he": "ההצהרה על מכירה של מלאי עסקי, בעיקר דירה חדשה מקבלן, כשהרווח ממוסה במס הכנסה ומבוקש פטור לפי סעיף 50. גם קונה דירה מקבלן מצהיר דרכה.",
+    "deadline": {
+      "text": "בתוך 30 ימים מיום המכירה (סעיף 73 לחוק מיסוי מקרקעין)",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7000"
+    },
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000b/he/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.docx",
+        "size_bytes": 33126,
+        "sha256": "0dd01a3a91b0bb2a21fa6aa325348593b50e8f6bb088d3a5c57107fe97e37b6b",
+        "http_last_modified": "Tue, 31 Oct 2023 16:06:54 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_real-estate-tax-7000b.docx"
+      },
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7000/he/real-estate-tax-7000b.pdf",
+        "file_type": "pdf",
+        "original_filename": "real-estate-tax-7000b.pdf",
+        "size_bytes": 550809,
+        "sha256": "4d71907a70f9776b688784f2b47bdb4b89b298d9752a7c936c91a118a8a1d53d",
+        "http_last_modified": "Thu, 22 Jun 2023 15:02:51 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/real-estate-tax-7000b.pdf"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "form_number": "7912",
+    "official_name_he": "הצהרת רוכשים משלימה להצהרה הראשית שמוגשת באופן לא מקוון ע\"י מורשה - (טופס 7912)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real_estate7912",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7912/he/Service_Pages_Real_Estate_Taxation_misui7912_new.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7912_new.pdf",
+    "size_bytes": 187030,
+    "sha256": "7d901b0f4fddc23e161863fc06c59a7ca31b5d619f1e22ab35c3a042405e43c5",
+    "http_last_modified": "Wed, 05 Jan 2022 07:04:53 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7912_new.pdf",
+    "gov_page_update_date": "26.03.2024",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "הצהרה משלימה של הקונים שהדירה שרכשו היא דירת המגורים היחידה שלהם, כדי לחשב מס רכישה במדרגות של דירה יחידה. מוגשת כשההצהרה הראשית מוגשת ידנית.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7912/he/Service_Pages_Real_Estate_Taxation_misui7912_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui7912_acc.docx",
+        "size_bytes": 27171,
+        "sha256": "ea7da9991e9970ea3f2b6e958469bbae5be10cb343f24bcea36edb734e133814",
+        "http_last_modified": "Wed, 05 Jan 2022 07:04:52 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7912_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "form_number": "7914",
+    "official_name_he": "הצהרה לצורך חיוב במס שבח מקרקעין במכירת דירת מגורים מזכה חייבת - (טופס 7914)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real_estate7914",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7914/he/Service_Pages_Real_Estate_Taxation_misui7914.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7914.pdf",
+    "size_bytes": 207061,
+    "sha256": "616914de5c4e27c54d1213213b4335d3a459a314a0a2d62038dbfbf4a7f5042d",
+    "http_last_modified": "Wed, 05 Jan 2022 07:04:45 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7914.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נספח לטופס 7002 שבו המוכר מראה שהדירה עומדת בהגדרת 'דירה מזכה', כדי לחשב את מס השבח בשיטת הלינאריות המוטבת.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7914/he/Service_Pages_Real_Estate_Taxation_misui7914_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui7914_acc.docx",
+        "size_bytes": 26711,
+        "sha256": "539442e512e36b3cdbbfada3f25f5788f44b21565901610613fc684599d8d808",
+        "http_last_modified": "Wed, 05 Jan 2022 07:04:44 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7914_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "form_number": "7003",
+    "official_name_he": "בקשה לחישוב מס שבח מקרקעין בפריסה לכמה שנים (טופס 7003)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate7003",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate7003/he/Service_Pages_Real_Estate_Taxation_misui7003.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7003.pdf",
+    "size_bytes": 29209,
+    "sha256": "cc5c795a6e151d72962a117a3d8333bca017ef3eb816af4b7fa083bdcee6837a",
+    "http_last_modified": "Wed, 05 Jan 2022 07:07:26 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7003.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של מוכר תושב ישראל לפרוס את מס השבח על עד ארבע שנים במקום שנת המכירה בלבד, כדי להפחית את שיעור המס לפי הכנסותיו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 59,
+    "form_number": "2988",
+    "official_name_he": "בקשה לפטור ממס שבח מקרקעין (למוכר נוסף)(טופס 2988)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-inst-2988",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-inst-2988/he/Service_Pages_Real_Estate_Taxation_misui2988.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui2988.pdf",
+    "size_bytes": 372449,
+    "sha256": "774a2f67bc5bb6238ab6a86a77fdc79e9e32e29acfcd979859e74e11949c3579",
+    "http_last_modified": "Thu, 06 Aug 2020 12:17:58 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui2988.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "טופס נלווה לטופס 7000, 7000ב או 7002, שבו כל מוכר נוסף בדירה (למשל בן זוג או אח בירושה) מבקש פטור ממס שבח על חלקו.",
+    "deadline": {
+      "text": "בתוך 30 ימים מיום העסקה",
+      "source": "https://www.gov.il/he/service/real-estate-tax-inst-2988"
+    },
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-inst-2988/he/Service_Pages_Real_Estate_Taxation_misui2988_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui2988_acc.docx",
+        "size_bytes": 37505,
+        "sha256": "a3470f78e6b87b4c1ee33e681b32ac529dad3752b188f47ca1d1bf2b345464e1",
+        "http_last_modified": "Thu, 06 Aug 2020 12:17:57 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui2988_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "form_number": "2973",
+    "official_name_he": "בקשה לפטור חלקי ממס רכישה לעולה (טופס 2973)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-2973b",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-2973b/he/Service_Pages_Real_Estate_Taxation_misui2973.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui2973.pdf",
+    "size_bytes": 274849,
+    "sha256": "6a1ab87140e66b2be69ca04a362282f39c699d285f8b58dd28c2a537d5d29ef8",
+    "http_last_modified": "Thu, 22 Oct 2026 18:54:49 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui2973.pdf",
+    "gov_page_update_date": "22.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של עולה חדש להקלה במס רכישה, פעם אחת על דירת מגורים ופעם אחת על בית עסק. אותו טופס משמש גם נכים, עיוורים, נפגעי פעולות איבה ומשפחות שכולות (דף שירות נפרד: https://www.gov.il/he/service/real-estate2973).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-2973b/he/Service_Pages_Real_Estate_Taxation_misui2973-acc.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui2973-acc.pdf",
+        "size_bytes": 416127,
+        "sha256": "80799091ed332906773ad18b31e9c0a39a7d853487fe99c86297ebaa95424b4f",
+        "http_last_modified": "Thu, 22 Oct 2026 18:54:49 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui2973-acc.pdf"
+      },
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate2973/he/Service_Pages_Real_Estate_Taxation_misui2973.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui2973.pdf",
+        "size_bytes": 274849,
+        "sha256": "6a1ab87140e66b2be69ca04a362282f39c699d285f8b58dd28c2a537d5d29ef8",
+        "http_last_modified": "Tue, 30 Jun 2026 14:44:53 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui2973.pdf"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "form_number": "704",
+    "official_name_he": "בקשה לשובר תשלום או אישור לרישום בפנקסי מקרקעין (טופס 704)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-704",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-704/he/Service_Pages_Real_Estate_Taxation_704misui.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_704misui.pdf",
+    "size_bytes": 26545,
+    "sha256": "c9f1f5d3385667384512e76fc589b8a44cf2f654c2726c91718214c82b3497ac",
+    "http_last_modified": "Wed, 05 Jan 2022 07:07:03 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_704misui.pdf",
+    "gov_page_update_date": "26.10.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה לקבל שובר לתשלום יתרת מס שבח או מס רכישה, או אישור מיסים לרישום הנכס בטאבו כשאין חוב מס.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-704/he/Service_Pages_Real_Estate_Taxation_itc704.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_itc704.pdf",
+        "size_bytes": 26545,
+        "sha256": "c9f1f5d3385667384512e76fc589b8a44cf2f654c2726c91718214c82b3497ac",
+        "http_last_modified": "Mon, 27 Oct 2025 15:53:54 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_itc704.pdf"
+      },
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-704/he/Service_Pages_Real_Estate_Taxation_itc704-acc.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_itc704-acc.pdf",
+        "size_bytes": 47169,
+        "sha256": "a7a4df6f8deb5fb58f265e168786020112f268ee374abf6d3a7f67303a772392",
+        "http_last_modified": "Mon, 27 Oct 2025 15:53:55 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_itc704-acc.pdf"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "form_number": "7160",
+    "official_name_he": "בקשה לקבלת אישור מקדמה למס רכישה לרישום בפנקסי המקרקעין (טופס 7160)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7160",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7160/he/Service_Pages_Real_Estate_Taxation_misui7160.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7160.pdf",
+    "size_bytes": 249355,
+    "sha256": "74fcfe5005050eea86e8545ca447ef14d2e5faa6e3eec030dc1a5c364214f211",
+    "http_last_modified": "Wed, 05 Jan 2022 07:06:51 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7160.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של הקונה לקבל אישור מס רכישה לטאבו על סמך מקדמה, עוד לפני שהמשרד האזורי ערך את השומה, כדי לא לעכב את רישום הנכס.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7160/he/Service_Pages_Real_Estate_Taxation_misui7160_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui7160_acc.docx",
+        "size_bytes": 73438,
+        "sha256": "52e2dae9153a76ad8fc7df4a15137d4857e1ebb96ff1ab88341b374887cafa62",
+        "http_last_modified": "Wed, 05 Jan 2022 07:06:50 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7160_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "form_number": "7161",
+    "official_name_he": "בקשה לקבלת אישור לרישום בפנקסי המקרקעין (טופס 7161)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-7161",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-7161/he/Service_Pages_Real_Estate_Taxation_misui7161.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7161.pdf",
+    "size_bytes": 234551,
+    "sha256": "b6b940d3a52e453600c4469bd648c972c712bd73079ba9337d4062a142759aa5",
+    "http_last_modified": "Wed, 05 Jan 2022 07:04:39 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7161.pdf",
+    "gov_page_update_date": "15.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של מוכר או קונה לקבל אישור מקדמה לרישום בטאבו, כדי להציגו לרשם בעת העברת הבעלות. מוגשת למשרד האזורי שערך את השומה.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-7161"
+    },
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-7161/he/Service_Pages_Real_Estate_Taxation_misui7161_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui7161_acc.docx",
+        "size_bytes": 37573,
+        "sha256": "02482f680e003c9f45060a47b9d10b5ee4c4192034779bfa0c1ffa432369441e",
+        "http_last_modified": "Wed, 05 Jan 2022 07:04:38 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7161_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "form_number": "7152",
+    "official_name_he": "בקשה להפקת שובר תשלום מקדמה על חשבון מס שבח (טופס 7152)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-payment-account-land-tax",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-payment-account-land-tax/he/Service_Pages_Real_Estate_Taxation_misui7152.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7152.pdf",
+    "size_bytes": 153727,
+    "sha256": "605cae39aa5003bacad0d2b0d850b28f32ecda943f8c36071d00eaf09f82ff5a",
+    "http_last_modified": "Wed, 05 Jan 2022 07:06:26 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7152.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של הקונה לשלם את המקדמה על חשבון מס השבח של המוכר. השובר ששולם משמש גם כאישור לרשם המקרקעין להעברת הבעלות לקונה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-payment-account-land-tax/he/Service_Pages_Real_Estate_Taxation_misui7152_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui7152_acc.docx",
+        "size_bytes": 44069,
+        "sha256": "652983c05afffe0e1ebe700989fca49f68fd2f53e5ce69cf230e55215d9f7d6f",
+        "http_last_modified": "Wed, 05 Jan 2022 07:06:24 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7152_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "form_number": "7013",
+    "official_name_he": "הגשת בקשת השגה (טופס 7013)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7013",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7013/he/7013.pdf",
+    "file_type": "pdf",
+    "original_filename": "7013.pdf",
+    "size_bytes": 197145,
+    "sha256": "6c7c0cf2af062f15789cf463df23cc3b49b32d6646784680f41d6473e7ad160a",
+    "http_last_modified": "Wed, 05 Jan 2022 07:03:37 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/7013.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "השגה של מוכר או קונה שחולק על שומת מס השבח או מס הרכישה שקיבל. אפשר להגיש בעצמו או דרך עורך דין.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7013"
+    },
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7013/he/Service_Pages_Income_tax_misui7013_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Income_tax_misui7013_acc.docx",
+        "size_bytes": 37386,
+        "sha256": "8c66e8e2823d829127482657df235fcb9ead78d6d03014cd7233bd8f2e02b636",
+        "http_last_modified": "Wed, 05 Jan 2022 07:03:35 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Income_tax_misui7013_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "form_number": "7085",
+    "official_name_he": "בקשה לתיקון שומה במיסוי מקרקעין (טופס 7085)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-inst-7085",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-inst-7085/he/7085.pdf",
+    "file_type": "pdf",
+    "original_filename": "7085.pdf",
+    "size_bytes": 145610,
+    "sha256": "141b27e63a202fe588a7b21f0d19c591bbd0c2dbb32ab73f198e346e988aeb89",
+    "http_last_modified": "Wed, 05 Jan 2022 07:09:16 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/7085.pdf",
+    "gov_page_update_date": "15.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של מוכר או קונה לתקן שומת מס שנערכה לו, כשהתגלו עובדות חדשות או טעות בשומה (סעיף 85 לחוק).",
+    "deadline": {
+      "text": "אחד התנאים להגשה: עברו עד ארבע שנים ממועד קבלת השומה",
+      "source": "https://www.gov.il/he/service/real-estate-tax-inst-7085"
+    },
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-inst-7085/he/7085.docx",
+        "file_type": "docx",
+        "original_filename": "7085.docx",
+        "size_bytes": 12601,
+        "sha256": "fc0502289bb9015b088ca31d205a005a2db9898590d6d100dc00e3f514cad351",
+        "http_last_modified": "Wed, 05 Jan 2022 07:09:15 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/7085.docx"
+      },
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-inst-7085/he/Service_Pages_Income_tax_7085.pdf",
+        "file_type": "pdf",
+        "original_filename": "Service_Pages_Income_tax_7085.pdf",
+        "size_bytes": null,
+        "sha256": null,
+        "http_last_modified": null,
+        "download_status": "failed: HTTP 200, content-type text/html; charset=utf-8, 0 bytes",
+        "local_path": null
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "form_number": "7067",
+    "official_name_he": "הגשת הודעה על נאמנות הנוגעת למיסוי מקרקעין (טופס 7067)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7067",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7067/he/Service_Pages_Real_Estate_Taxation_misui7067.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7067.pdf",
+    "size_bytes": 30492,
+    "sha256": "9072cfacb2e547f18e238bc21a7b3403908c253b624c1c3428838da154c4741e",
+    "http_last_modified": "Wed, 05 Jan 2022 07:09:54 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7067.pdf",
+    "gov_page_update_date": "15.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "הודעה של מי שקונה נכס או זכות באיגוד מקרקעין בעבור אדם אחר (כנאמן), כדי לדווח לרשות המסים על הנאמנות.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7067"
+    },
+    "additional_files": []
+  },
+  {
+    "id": 68,
+    "form_number": "7100",
+    "official_name_he": "בקשה לאישור חריג להגשת דיווח שאינו מקוון במיסוי מקרקעין - (טופס 7100)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate7100",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate7100/he/Service_Pages_Real_Estate_Taxation_misui7100.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7100.pdf",
+    "size_bytes": 123720,
+    "sha256": "52da36d35398101a3d5057e028a458e685ce046d6fae291f3236fdc4f8c85f95",
+    "http_last_modified": "Tue, 02 Aug 2022 08:23:07 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7100.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של מוכר או קונה שאינו מיוצג על ידי עורך דין להגיש את ההצהרה על העסקה בנייר, כשאינו יכול להגיע לעמדת מחשב בגלל מגבלה רפואית או שהייה בחו\"ל.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 69,
+    "form_number": "7157",
+    "official_name_he": "תחשיב הפטור במס שבח במכירת דירת מגורים מזכה שמחירה מושפע מזכויות בניה לפי סעיף 49ז לחוק מיסוי מקרקעין - (טופס 7157)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real_estate7157",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7157/he/Service_Pages_Real_Estate_Taxation_misui7157.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7157.pdf",
+    "size_bytes": 182688,
+    "sha256": "2afcc7143baa224b7156b4d9e6586dae23a7dd864b73feaf98b5e355996d1222",
+    "http_last_modified": "Wed, 05 Jan 2022 07:05:02 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7157.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תחשיב שהמוכר מצרף כשהוא מבקש פטור על דירה מזכה שמחירה מושפע מזכויות בנייה שלא נוצלו, כדי לפצל בין החלק הפטור לחלק החייב.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 70,
+    "form_number": "7158",
+    "official_name_he": "תחשיב החיוב במס שבח לפי ליניאריות מוטבת לדירת מגורים מזכה שמחירה מושפע מזכויות בניה (טופס 7158)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real_estate7158",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real_estate7158/he/Service_Pages_Real_Estate_Taxation_misui7158.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7158.pdf",
+    "size_bytes": 181749,
+    "sha256": "e54c2616e6de3f8f7badbb0e78e37b94db1a4ad37ac493b6b69e3da8fd5e5c78",
+    "http_last_modified": "Wed, 05 Aug 2020 12:21:35 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7158.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תחשיב מס השבח בשיטת הלינאריות המוטבת למכירת דירה מזכה שמחירה מושפע מזכויות בנייה שלא נוצלו.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 71,
+    "form_number": "4922",
+    "official_name_he": "טופס בקשה לפטור ממס שבח במכירת זכות במקרקעין במסגרת פרויקט פינוי בינוי (טופס 4922)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling",
+      "condominium"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/exemption-praise-tax-on-sale-right-in-real-estate",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/exemption-praise-tax-on-sale-right-in-real-estate/he/4922.pdf",
+    "file_type": "pdf",
+    "original_filename": "4922.pdf",
+    "size_bytes": 259717,
+    "sha256": "fd2ec3858a51073c4599d1724e83e2dce1fad77b5f1ecb6e75bb64788fab7165",
+    "http_last_modified": "Mon, 06 Jul 2026 09:22:05 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/4922.pdf",
+    "gov_page_update_date": "06.07.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "בקשה של בעל דירה שמכר את זכותו ליזם בפרויקט פינוי בינוי לבחור במסלול הפטור ממס שבח, כחלק מהשומה העצמית.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 72,
+    "form_number": "6130",
+    "official_name_he": "תצהיר על ביטול מכירת מקרקעין או הסכם להעברת מניות מקרקעין באיגוד (טופס 6130)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real_eatate_tax6130",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real_eatate_tax6130/he/real-estate-6130.pdf",
+    "file_type": "pdf",
+    "original_filename": "real-estate-6130.pdf",
+    "size_bytes": 293750,
+    "sha256": "72d3f3790a381c9d71158133594c9a918fec6b5eb50c2a7471ddaf2ffb52cb46",
+    "http_last_modified": "Wed, 05 Jan 2022 07:03:00 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/real-estate-6130.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של קונה ומוכר שביטלו עסקה שכבר דווחה לרשות המסים, כדי לבטל את שומות מס השבח ומס הרכישה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": [
+      {
+        "direct_file_url": "https://www.gov.il/BlobFolder/service/real_eatate_tax6130/he/Service_Pages_Real_Estate_Taxation_misui6130_acc.docx",
+        "file_type": "docx",
+        "original_filename": "Service_Pages_Real_Estate_Taxation_misui6130_acc.docx",
+        "size_bytes": 32551,
+        "sha256": "b78da34f4c37dee973a69633e8d1aac20049bd8814c0fe104033a62845cf49f7",
+        "http_last_modified": "Wed, 05 Jan 2022 07:02:58 GMT",
+        "download_status": "ok",
+        "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui6130_acc.docx"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "form_number": "7025",
+    "official_name_he": "תצהיר על מכירת אופציה מקרקעין (טופס 7025)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/real-estate-tax-7025",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/real-estate-tax-7025/he/Service_Pages_Real_Estate_Taxation_misui7025.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui7025.pdf",
+    "size_bytes": 27078,
+    "sha256": "e84ad0d06bd1feab0beadd03ddf5c1c715709ec0aaf8edc21cc7a6127f9bf412",
+    "http_last_modified": "Wed, 05 Jan 2022 07:08:37 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui7025.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של מי שמכר אופציה לרכישת מקרקעין, המצורף כנספח לטופס 7002.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/real-estate-tax-7025"
+    },
+    "additional_files": []
+  },
+  {
+    "id": 74,
+    "form_number": "7097",
+    "official_name_he": "הצהרה על מכירת משק חקלאי (טופס 7097)",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "selling",
+      "leasehold"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/itc7097",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/itc7097/he/misui7097.pdf",
+    "file_type": "pdf",
+    "original_filename": "misui7097.pdf",
+    "size_bytes": 30043,
+    "sha256": "6ea0894b7d322e02df3b1b657e9a401515fdc4b5d38b9b57ee743464ee3a5071",
+    "http_last_modified": "Wed, 05 Jan 2022 07:07:16 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/misui7097.pdf",
+    "gov_page_update_date": "02.01.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נספח לטופס 7002 במכירת משק חקלאי (נחלה), שבו המוכר מפרט את מרכיבי המשק: בתי מגורים, מבני משק וקרקע.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא עלות",
+      "source": "https://www.gov.il/he/service/itc7097"
+    },
+    "additional_files": []
+  },
+  {
+    "id": 75,
+    "form_number": "703",
+    "official_name_he": "טופס 703 - טופס בקשה לפעולות ושירותים",
+    "agency": "רשות המסים - מיסוי מקרקעין",
+    "local_folder": "tax",
+    "life_situations": [
+      "buying",
+      "selling",
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/land_property_taxation_fees",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/land_property_taxation_fees/he/Service_Pages_Real_Estate_Taxation_misui703.pdf",
+    "file_type": "pdf",
+    "original_filename": "Service_Pages_Real_Estate_Taxation_misui703.pdf",
+    "size_bytes": 58694,
+    "sha256": "d1c7b70c97abaf5cfa9257085e4cbf84b168090dcaf5810d8957bcde9a0abb76",
+    "http_last_modified": "Wed, 02 Mar 2022 14:07:22 GMT",
+    "download_status": "ok",
+    "local_path": "files/tax/Service_Pages_Real_Estate_Taxation_misui703.pdf",
+    "gov_page_update_date": "15.06.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://ecom.gov.il/Counter/general/Homepage.aspx?counter=68",
+      "note": "תשלום האגרה מקוון, אחרי שהטופס הוגש וקיבלתם מכתב עם שובר"
+    },
+    "purpose_he": "בקשה למשרד מיסוי מקרקעין לשירותים בתשלום, כמו עיון בתיק או פירוט נכסים הרשומים אצל מנהל מס שבח. האגרה משולמת רק אחרי הגשת הטופס.",
+    "deadline": null,
+    "fee": {
+      "text": "אגרה לפי תקנות מיסוי מקרקעין (שבח ורכישה) (קביעת אגרות בעד פעולות ושרותים) התשס\"ט-2009; הדף לא מציין סכום",
+      "source": "https://www.gov.il/he/service/land_property_taxation_fees"
+    },
+    "additional_files": []
+  },
+  {
+    "id": 76,
+    "form_number": null,
+    "official_name_he": "תצהיר ויתור על זכות לרכישת דירה לטובת בן הזוג לזכייה",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/transfer-lottery-winnings",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/transfer-lottery-winnings/he/waiver-affidavit.pdf",
+    "file_type": "pdf",
+    "original_filename": "waiver-affidavit.pdf",
+    "size_bytes": 105273,
+    "sha256": "427fe717639391e574c665aec85bdb9518d2e723996b21f3a41b453af7164d59",
+    "http_last_modified": "Sun, 15 Nov 2026 08:27:39 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/waiver-affidavit.pdf",
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של בן זוג גרוש או פרוד שזכה בהגרלת 'דירה בהנחה' (כמו מחיר למשתכן) ומוותר על הזכייה לטובת בן הזוג השני.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 77,
+    "form_number": "sb017",
+    "official_name_he": "טופס הצהרה של זוג בדבר היותם ידועים בציבור",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/yeduim_betzibur/he/documents_tfasim_sb017.pdf",
+    "file_type": "pdf",
+    "original_filename": "documents_tfasim_sb017.pdf",
+    "size_bytes": 435337,
+    "sha256": "eb84bef8c3eacd009aa7001b1bbee8cb6ffb64cfe701a7433da670542943ed78",
+    "http_last_modified": "Mon, 20 Jul 2026 13:04:48 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/documents_tfasim_sb017.pdf",
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://dira.milgam.co.il/",
+      "note": "בקשת אישור הזכאות עצמה מוגשת מקוון; הטופס מצורף לה"
+    },
+    "purpose_he": "הצהרה של בני זוג שאינם נשואים שהם ידועים בציבור, כדי שייחשבו זוג בבקשת אישור זכאות ל'דירה בהנחה'.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 78,
+    "form_number": null,
+    "official_name_he": "קבלת זכאות מותנית – עומדים להינשא (אישור רבנות)",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/tenaey_zkaut/he/documents_dira_behanacha_omdim_lehinase_rabanut.pdf",
+    "file_type": "pdf",
+    "original_filename": "documents_dira_behanacha_omdim_lehinase_rabanut.pdf",
+    "size_bytes": 131582,
+    "sha256": "9eb3e9e5c4fec3b7e5ab8924f3f0865bb4a6113d4349024ed0918482bb490f0c",
+    "http_last_modified": "Mon, 16 Nov 2026 12:44:15 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/documents_dira_behanacha_omdim_lehinase_rabanut.pdf",
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://dira.milgam.co.il/",
+      "note": "בקשת הזכאות מקוונת; המסמך מצורף לה"
+    },
+    "purpose_he": "מסמך לזוג שעומד להינשא ומבקש זכאות מותנית ל'דירה בהנחה', על סמך פתיחת תיק נישואין ברבנות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 79,
+    "form_number": null,
+    "official_name_he": "תצהיר עומדים להינשא",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/tenaey_zkaut/he/documents_dira_behanacha_omdim_lehinase_chevrat_harshama.pdf",
+    "file_type": "pdf",
+    "original_filename": "documents_dira_behanacha_omdim_lehinase_chevrat_harshama.pdf",
+    "size_bytes": 84058,
+    "sha256": "df247b569eb5894f669f1063e6a2cd323d45b621ba33dc7a2c476d0ce30e2233",
+    "http_last_modified": "Mon, 16 Nov 2026 12:44:15 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/documents_dira_behanacha_omdim_lehinase_chevrat_harshama.pdf",
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://dira.milgam.co.il/",
+      "note": "בקשת הזכאות מקוונת; התצהיר מצורף לה"
+    },
+    "purpose_he": "תצהיר של זוג שעומד להינשא, המוגש לחברת ההרשמה לצורך זכאות מותנית ל'דירה בהנחה'.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 80,
+    "form_number": null,
+    "official_name_he": "בקשת אישור זכאות לרכישת דירה בתוכניות \"דירה בהנחה\"",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://dira.milgam.co.il/",
+      "note": "שירות מקוון בלבד, אין טופס להורדה"
+    },
+    "purpose_he": "בקשה מקוונת לאישור זכאות ל'דירה בהנחה' ולמענק לרוכשי דירות יד שנייה. דף השירות מציג הודעה מ-5.10.2026 על שינוי בהנפקה ובחידוש של תעודות הזכאות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 81,
+    "form_number": null,
+    "official_name_he": "פנייה לוועדת חריגים לאישור מכירת דירה בתקופת איסור מכירה או להתאמת דירה לנכה",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "selling"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/request-for-exceptions-committee",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "25.10.2023",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://auth.govforms.gov.il/mw/forms/sales-exceptions@moch.gov.il",
+      "note": "טופס מקוון בלבד"
+    },
+    "purpose_he": "פנייה של מי שקנה דירה ב'דירה בהנחה' או מחיר למשתכן ורוצה למכור אותה בתקופה שבה המכירה אסורה, או להתאים אותה לנכה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 82,
+    "form_number": null,
+    "official_name_he": "בקשה לקבלת אישור \"חסר דירה\"",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying",
+      "renting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/certificate-of-homelessness",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "30.10.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://auth.govforms.gov.il/mw/forms/check-housing-assistance-eligibility@moch.gov.il",
+      "note": "טופס מקוון בלבד"
+    },
+    "purpose_he": "בקשה לאישור שהמבקש אינו בעל דירה, לצורך השתתפות בתוכניות סיוע של גופים ממשלתיים.",
+    "deadline": null,
+    "fee": {
+      "text": "דף השירות מציין שהגשת הבקשה כרוכה בתשלום (הסכום מופיע בהמשך הדף ולא נאסף כאן)",
+      "source": "https://www.gov.il/he/service/certificate-of-homelessness"
+    },
+    "additional_files": []
+  },
+  {
+    "id": 83,
+    "form_number": null,
+    "official_name_he": "השתתפות משרד הבינוי והשיכון בהחזרי משכנתה לאזרחים ותיקים",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "mortgage"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/mortgage_assistance_for_senior_person",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "07.05.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://govforms.gov.il/mw/forms/Pi-mortgage@moch.gov.il",
+      "note": "טופס מקוון בלבד"
+    },
+    "purpose_he": "בקשה של אזרחים ותיקים בני 70 ומעלה שמקבלים קצבת השלמת הכנסה, לסיוע מהמשרד בהחזרי המשכנתה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 84,
+    "form_number": null,
+    "official_name_he": "בקשה לעדכון פרטי חוזה שכירות לזכאי סיוע בשכר דירה",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "renting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/rental-contract-update",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "15.11.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://auth.govforms.gov.il/mw/forms/RenewalRentalAssistanceContract@moch.gov.il",
+      "note": "טופס מקוון; חלופה: שליחת החוזה לחברת ההרשמה"
+    },
+    "purpose_he": "עדכון חוזה שכירות חדש של מי שזכאי לסיוע בשכר דירה, כדי שהסיוע ימשיך להשתלם.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 85,
+    "form_number": null,
+    "official_name_he": "טופס בקשה לצו ירושה",
+    "agency": "האפוטרופוס הכללי והממונה על ענייני ירושה (הרשם לענייני ירושה)",
+    "local_folder": "other",
+    "life_situations": [
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/inheritance_order",
+    "direct_file_url": "https://www.gov.il/BlobFolder/servicequestionnaire/inheritance_order/he/inheritance_he.docx",
+    "file_type": "docx",
+    "original_filename": "inheritance_he.docx",
+    "size_bytes": 46879,
+    "sha256": "1d102719096a45dbc9fbb1645ddd99df33ef39e4ec25c6d3596130f87bbabf82",
+    "http_last_modified": "Sun, 11 Oct 2026 06:56:18 GMT",
+    "download_status": "ok",
+    "local_path": "files/other/inheritance_he.docx",
+    "gov_page_update_date": "11.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://inheritance.justice.gov.il/RashamYerusha/#/bakashot",
+      "note": "אפשר להגיש מקוון, כולל בקשה משולבת לצו ולרישומו בטאבו"
+    },
+    "purpose_he": "בקשה לרשם לענייני ירושה לקבוע מי היורשים כשהנפטר לא השאיר צוואה. בלי הצו אי אפשר לרשום את הנכס על שם היורשים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 86,
+    "form_number": null,
+    "official_name_he": "טופס בקשה לצו קיום צוואה",
+    "agency": "האפוטרופוס הכללי והממונה על ענייני ירושה (הרשם לענייני ירושה)",
+    "local_folder": "other",
+    "life_situations": [
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/probate_order",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/probate_order/he/media_probate_order.docx",
+    "file_type": "docx",
+    "original_filename": "media_probate_order.docx",
+    "size_bytes": 38453,
+    "sha256": "1e810a2de7d8456eae06826ca795a6f03fc5e00e8b1abd131410ccfa3a45e84f",
+    "http_last_modified": "Thu, 11 Dec 2025 15:47:37 GMT",
+    "download_status": "ok",
+    "local_path": "files/other/media_probate_order.docx",
+    "gov_page_update_date": "16.06.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://inheritance.justice.gov.il/RashamYerusha/#/forms/probate",
+      "note": "אפשר להגיש מקוון, כולל בקשה משולבת לצו ולרישומו בטאבו"
+    },
+    "purpose_he": "בקשה של הזוכים לפי צוואה לרשם לענייני ירושה כדי שהצוואה תיכנס לתוקף. הצו נדרש לרישום הנכס על שם היורשים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 87,
+    "form_number": null,
+    "official_name_he": "תצהיר בדבר הסתלקות עזבון",
+    "agency": "האפוטרופוס הכללי והממונה על ענייני ירושה (הרשם לענייני ירושה)",
+    "local_folder": "other",
+    "life_situations": [
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/inheritance_order",
+    "direct_file_url": "https://www.gov.il/BlobFolder/servicequestionnaire/inheritance_order/he/inheritance_ affidavit (2).docx",
+    "file_type": "docx",
+    "original_filename": "inheritance_ affidavit (2).docx",
+    "size_bytes": 44116,
+    "sha256": "6aa0a3ccc205ff67b86c5def85d15b60645dd554d09d6ab153294fde4b287fe9",
+    "http_last_modified": "Sun, 11 Oct 2026 06:56:18 GMT",
+    "download_status": "ok",
+    "local_path": "files/other/inheritance_ affidavit (2).docx",
+    "gov_page_update_date": "11.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תצהיר של יורש שמוותר על חלקו בעיזבון (לרוב לטובת יורש אחר), המצורף לבקשה לצו ירושה או לצו קיום צוואה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 88,
+    "form_number": null,
+    "official_name_he": "הודעה ליורש על פי דין",
+    "agency": "האפוטרופוס הכללי והממונה על ענייני ירושה (הרשם לענייני ירושה)",
+    "local_folder": "other",
+    "life_situations": [
+      "inheriting"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/inheritance_order",
+    "direct_file_url": "https://www.gov.il/BlobFolder/servicequestionnaire/inheritance_order/he/heir.pdf",
+    "file_type": "pdf",
+    "original_filename": "heir.pdf",
+    "size_bytes": 282785,
+    "sha256": "89af9c2ca30e07bf64f92f5fd9536237ada1d650cfc476f64f11cde1fce23462",
+    "http_last_modified": "Sun, 11 Oct 2026 06:56:17 GMT",
+    "download_status": "ok",
+    "local_path": "files/other/heir.pdf",
+    "gov_page_update_date": "11.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "הודעה שנשלחת ליורשים על פי דין כשמוגשת בקשה לצו ירושה, כדי שידעו על ההליך.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 89,
+    "form_number": "Licensing_construction_103",
+    "official_name_he": "אישור תחילת עבודות",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "service_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/licensing_authority_forms/he/Licensing_construction_103.pdf",
+    "file_type": "pdf",
+    "original_filename": "Licensing_construction_103.pdf",
+    "size_bytes": 131466,
+    "sha256": "abb3be738bd53fa6fb25242ca27df056ddbe848fb2e4758f9375e375168e7520",
+    "http_last_modified": "Thu, 14 Jun 2018 05:41:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Licensing_construction_103.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "האישור שרשות הרישוי נותנת לפני שמותר להתחיל לבנות לפי ההיתר, אחרי שהוגשו מינויי בעלי התפקידים והתנאים לתחילת עבודות.",
+    "deadline": null,
+    "fee": null,
+    "name_source": "כותרת הקובץ בתוצאות החיפוש של gov.il; דף הרשימה המקורי של התיקייה כבר לא קיים",
+    "additional_files": []
+  },
+  {
+    "id": 90,
+    "form_number": "Licensing_construction_102",
+    "official_name_he": "אישור תחילת עבודות (תקנה 77ג')",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "service_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/licensing_authority_forms/he/Licensing_construction_102.pdf",
+    "file_type": "pdf",
+    "original_filename": "Licensing_construction_102.pdf",
+    "size_bytes": 123042,
+    "sha256": "20073c1315a4bdf380b8a1dbdfd7194b4fdfb54fed4c367bdad85d56498a8f70",
+    "http_last_modified": "Thu, 14 Jun 2018 05:41:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Licensing_construction_102.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "נוסח של אישור תחילת עבודות לפי תקנה 77ג' לתקנות הרישוי, לשימוש רשות הרישוי.",
+    "deadline": null,
+    "fee": null,
+    "name_source": "כותרת הקובץ בתוצאות החיפוש של gov.il ('ג' 77 תקנה אישור תחילת עבודות')",
+    "additional_files": []
+  },
+  {
+    "id": 91,
+    "form_number": "Licensing_construction_204",
+    "official_name_he": "דיווח מפקח רשות רישוי על עריכת ביקורת באתר בנייה במהלך הביצוע",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "service_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/licensing_authority_forms/he/Licensing_construction_204.pdf",
+    "file_type": "pdf",
+    "original_filename": "Licensing_construction_204.pdf",
+    "size_bytes": 120572,
+    "sha256": "48d0447f7e21a05e4e0691b40232670a55394a0c1fa79057323abe03da0dc87d",
+    "http_last_modified": "Thu, 14 Jun 2018 05:41:39 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Licensing_construction_204.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "טופס שבו מפקח רשות הרישוי מדווח על ביקורת שערך באתר הבנייה במהלך הביצוע.",
+    "deadline": null,
+    "fee": null,
+    "name_source": "כותרת הקובץ בתוצאות החיפוש של gov.il",
+    "additional_files": []
+  },
+  {
+    "id": 92,
+    "form_number": "Licensing_construction_308",
+    "official_name_he": "תעודת גמר",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building",
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "service_page_url": "https://www.gov.il/he/departments/guides/licensing_authority_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/licensing_authority_forms/he/Licensing_construction_308.pdf",
+    "file_type": "pdf",
+    "original_filename": "Licensing_construction_308.pdf",
+    "size_bytes": 97426,
+    "sha256": "7c85dc7f95e93234b96884f87a695e8572e7dae196650260905d72a9f974ad66",
+    "http_last_modified": "Thu, 14 Jun 2018 05:41:39 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Licensing_construction_308.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "התעודה שרשות הרישוי נותנת כשהבניין הושלם לפי ההיתר. בלעדיה אין חיבור קבוע לחשמל ומים, ולכן היא שלב מרכזי לפני אכלוס דירה חדשה.",
+    "deadline": null,
+    "fee": null,
+    "name_source": "כותרת הקובץ בתוצאות החיפוש של gov.il",
+    "additional_files": []
+  },
+  {
+    "id": 93,
+    "form_number": null,
+    "official_name_he": "הודעה על מינוי אחראי לביקורת",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Responsible_ review.pdf",
+    "file_type": "pdf",
+    "original_filename": "Responsible_ review.pdf",
+    "size_bytes": 548689,
+    "sha256": "ad9cc21b2f0cdcf3fbe695906dd4073694b2f3db8abbc4e77799a742615a0f84",
+    "http_last_modified": "Wed, 08 May 2024 13:27:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Responsible_ review.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "הודעה לרשות הרישוי על מינוי בעל המקצוע שאחראי לביקורת על ביצוע הבנייה (בדרך כלל מהנדס או אדריכל), כתנאי לתחילת עבודות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 94,
+    "form_number": null,
+    "official_name_he": "תצהיר של אחראי לביצוע שלד הבניין",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/affidavit_responsible_execution_building.pdf",
+    "file_type": "pdf",
+    "original_filename": "affidavit_responsible_execution_building.pdf",
+    "size_bytes": 161707,
+    "sha256": "c41eaacb16b46a40fa6ed2edcc1c57b3707d44d87ecefefd1b8672dbcf86f6cf",
+    "http_last_modified": "Wed, 08 May 2024 13:27:43 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/affidavit_responsible_execution_building.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "תצהיר של מי שמונה לאחראי לביצוע שלד הבניין (בדרך כלל הקבלן הרשום או מהנדס הביצוע), שמתחייב לבנות את השלד לפי ההיתר והתכן.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 95,
+    "form_number": null,
+    "official_name_he": "תצהיר של האחראי לביצוע השלד - מקלט",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Responsible.pdf",
+    "file_type": "pdf",
+    "original_filename": "Responsible.pdf",
+    "size_bytes": 564584,
+    "sha256": "1312af4824397b4eeecc78ddccc71b7c4583497d81355401f581310a95a640c7",
+    "http_last_modified": "Wed, 08 May 2024 13:27:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Responsible.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "תצהיר של האחראי לביצוע השלד לגבי בניית המקלט או המרחב המוגן לפי הדרישות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 96,
+    "form_number": null,
+    "official_name_he": "טופס דיווח על עריכת ביקורת באתר בנייה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Building_site_review.pdf",
+    "file_type": "pdf",
+    "original_filename": "Building_site_review.pdf",
+    "size_bytes": 545803,
+    "sha256": "46f0667eaeb340831123933ff660c75fe832b1caae273f1184197eab7941877b",
+    "http_last_modified": "Wed, 08 May 2024 13:27:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Building_site_review.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "דיווח של האחראי לביקורת על ביקורת שערך באתר במהלך הבנייה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 97,
+    "form_number": "טופס 4",
+    "official_name_he": "בקשה לאישור לאספקת חשמל / מים (טופס 4)",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building",
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Electricity_water.pdf",
+    "file_type": "pdf",
+    "original_filename": "Electricity_water.pdf",
+    "size_bytes": 545229,
+    "sha256": "2843bf08d9ea463166ba67b183bfd1ac0d8774294638f8240a032732e4a20a61",
+    "http_last_modified": "Wed, 08 May 2024 13:27:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Electricity_water.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "הבקשה לרשות הרישוי לאשר חיבור קבוע של הבניין לחשמל ולמים (המוכרת כ'טופס 4'), שמאפשרת אכלוס. מגישים היזם או בעל ההיתר בסוף הבנייה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 98,
+    "form_number": null,
+    "official_name_he": "אישור אספקת חשמל / מים לצורך עבודות במקרקעין",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Real_estate_works.pdf",
+    "file_type": "pdf",
+    "original_filename": "Real_estate_works.pdf",
+    "size_bytes": 539464,
+    "sha256": "dee7ba1815e9cbf0cbab11d27667b5f3d74382ff702dd6e5c2c4c46e68262cee",
+    "http_last_modified": "Wed, 08 May 2024 13:27:41 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Real_estate_works.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "אישור לחיבור זמני של חשמל ומים לאתר לצורך ביצוע עבודות הבנייה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 99,
+    "form_number": null,
+    "official_name_he": "בקשה לאישור לאספקת חשמל מים טלפון לפי תקנות התכנון והבנייה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/app_approval_tel_water_electricity_supply.pdf",
+    "file_type": "pdf",
+    "original_filename": "app_approval_tel_water_electricity_supply.pdf",
+    "size_bytes": 126654,
+    "sha256": "875ca1c436a53de9b14f61a176f45785502b024c8950ab3dacffc94caacbfcb2",
+    "http_last_modified": "Wed, 08 May 2024 13:27:43 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/app_approval_tel_water_electricity_supply.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "בקשה לאישור חיבור חשמל, מים וטלפון לבניין לפי תקנות התכנון והבנייה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 100,
+    "form_number": null,
+    "official_name_he": "אישור לאספקת חשמל / מים / טלפון לפי תקנות התכנון והבנייה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Planning_Building_Regulations.pdf",
+    "file_type": "pdf",
+    "original_filename": "Planning_Building_Regulations.pdf",
+    "size_bytes": 557157,
+    "sha256": "8aab3919121f2ad843cfa32cca362ab5ec43189e3749cc7a05d9ffb260fb1187",
+    "http_last_modified": "Wed, 08 May 2024 13:27:42 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Planning_Building_Regulations.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "נוסח האישור שרשות הרישוי מוציאה לחברות החשמל, המים והטלפון כדי לחבר את הבניין.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 101,
+    "form_number": null,
+    "official_name_he": "תצהיר של בעלים / חוכר של דירה בבית משותף בבקשה להיתר בנייה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium",
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/affidavit_request_building_permit.pdf",
+    "file_type": "pdf",
+    "original_filename": "affidavit_request_building_permit.pdf",
+    "size_bytes": 559342,
+    "sha256": "91b75cf240af8664fae20a3ba386e729dfcb1e86d23bc6ca23264fcc7c773a0d",
+    "http_last_modified": "Thu, 18 Oct 2018 12:21:29 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/affidavit_request_building_permit.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "תצהיר של בעל דירה בבית משותף שמבקש היתר בנייה (למשל תוספת בנייה או סגירת מרפסת), על פרטי הבעלות וההסכמות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 102,
+    "form_number": null,
+    "official_name_he": "תצהיר של נציגות הבית המשותף בדבר הרכב הבעלות של הבית המשותף לגבי בקשה להיתר בנייה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium",
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Affidavit_condominium.pdf",
+    "file_type": "pdf",
+    "original_filename": "Affidavit_condominium.pdf",
+    "size_bytes": 566844,
+    "sha256": "2722b986d21dfa9a24eb0fd8f03097a5007a241f5b3bada4729d3e6c48e33870",
+    "http_last_modified": "Wed, 08 May 2024 13:27:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/condo/Affidavit_condominium.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "תצהיר של ועד הבית על הרכב הבעלים בבניין, המצורף לבקשה להיתר בנייה בבית משותף (למשל בתמ\"א 38 או בעבודה ברכוש המשותף).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 103,
+    "form_number": null,
+    "official_name_he": "תצהיר של דייר בבקשה לביצוע עבודה או שימוש שניתן להתירם על ידי בית דין לשכירות",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "renting",
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Affidavit_tenant.pdf",
+    "file_type": "pdf",
+    "original_filename": "Affidavit_tenant.pdf",
+    "size_bytes": 561890,
+    "sha256": "638f106f571b937a98181eb7ba9e5f6868b78fdf8df64e7bac89610e4007ea6b",
+    "http_last_modified": "Wed, 08 May 2024 13:27:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Affidavit_tenant.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "תצהיר של דייר (שוכר) שמבקש היתר לעבודה או לשימוש בנכס שבית הדין לשכירות רשאי להתיר.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 104,
+    "form_number": null,
+    "official_name_he": "התחייבות וערבות להבטחת תשלומים להיתר",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/database_forms",
+    "service_page_url": "https://www.gov.il/he/pages/database_forms",
+    "direct_file_url": "https://www.gov.il/BlobFolder/generalpage/database_forms/he/Payments_permit.pdf",
+    "file_type": "pdf",
+    "original_filename": "Payments_permit.pdf",
+    "size_bytes": 544206,
+    "sha256": "30722ad17ab2f57732c103ed18edf68375aa24c13da580cadf50ad17683e257b",
+    "http_last_modified": "Wed, 08 May 2024 13:27:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Payments_permit.pdf",
+    "gov_page_update_date": null,
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/rishuy_zamin",
+      "note": "רוב טפסי הרישוי מוגשים במערכת 'רישוי זמין' על ידי עורך הבקשה עם כרטיס חכם; הקובץ הוא הנוסח הרשמי"
+    },
+    "purpose_he": "התחייבות וערבות של מבקש ההיתר להבטיח תשלום היטלים ואגרות שנדרשים כתנאי להיתר הבנייה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 105,
+    "form_number": null,
+    "official_name_he": "רשימת טפסים להגשה כאשר בקרת תכן וביצוע אינה מבוצעת במכון בקרה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/Building_regulations_Forms_without_control_center_2.pdf",
+    "file_type": "pdf",
+    "original_filename": "Building_regulations_Forms_without_control_center_2.pdf",
+    "size_bytes": 99679,
+    "sha256": "d14da06e59250171a65c56e4a81c269e660d41a12cf7b1a2eb298ff2a8d7065f",
+    "http_last_modified": "Wed, 21 Oct 2026 10:52:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Building_regulations_Forms_without_control_center_2.pdf",
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "רשימה רשמית של כל הטפסים שעורך הבקשה והאחראי לביקורת מגישים בכל שלב רישוי, כשאין מכון בקרה בתהליך.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 106,
+    "form_number": null,
+    "official_name_he": "רשימת טפסים להגשה כאשר בקרת תכן וביצוע מבוצעת במכון בקרה",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/Building_regulations_Forms_with_control_center_2.pdf",
+    "file_type": "pdf",
+    "original_filename": "Building_regulations_Forms_with_control_center_2.pdf",
+    "size_bytes": 94307,
+    "sha256": "62a835c339289fd46d22c91fc7857a2b23c80ede0a82e7662ce625310baeff04",
+    "http_last_modified": "Wed, 21 Oct 2026 10:52:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/Building_regulations_Forms_with_control_center_2.pdf",
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "רשימה רשמית של הטפסים בכל שלב רישוי כשמכון בקרה בודק את התכן והביצוע.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 107,
+    "form_number": null,
+    "official_name_he": "טפסים להגשה להליך רישוי ללא מכון בקרה (קובץ ZIP)",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/regulations_Forms_without_control_center.zip",
+    "file_type": "zip",
+    "original_filename": "regulations_Forms_without_control_center.zip",
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "failed: HTTP 403, content-type text/html; charset=UTF-8, 5973 bytes",
+    "local_path": null,
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "חבילת הטפסים הרשמית להליך רישוי ללא מכון בקרה. נשמרה כקובץ ZIP כפי שהיא, ולא נפתחה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 108,
+    "form_number": null,
+    "official_name_he": "טפסים להגשה להליך רישוי עם מכון בקרה (קובץ ZIP)",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/regulations_Forms_with_control_center.zip",
+    "file_type": "zip",
+    "original_filename": "regulations_Forms_with_control_center.zip",
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "failed: HTTP 403, content-type text/html; charset=UTF-8, 5964 bytes",
+    "local_path": null,
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "חבילת הטפסים הרשמית להליך רישוי עם מכון בקרה. נשמרה כקובץ ZIP כפי שהיא, ולא נפתחה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 109,
+    "form_number": null,
+    "official_name_he": "בנייה חדשה למגורים - תנאים לתחילת עבודות",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/rz_new_residential_construction_conditions_beginning_work.pdf",
+    "file_type": "pdf",
+    "original_filename": "rz_new_residential_construction_conditions_beginning_work.pdf",
+    "size_bytes": 84463,
+    "sha256": "b0edaa2fd029a046e711aded6f477c5dcf27088efbce45ec99fac86d9a902661",
+    "http_last_modified": "Wed, 21 Oct 2026 10:52:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/rz_new_residential_construction_conditions_beginning_work.pdf",
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "טבלה מסכמת של התנאים שצריך למלא בבנייה חדשה למגורים לפני תחילת העבודות (מינויים, אישורים, סימון).",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 110,
+    "form_number": null,
+    "official_name_he": "בנייה חדשה למגורים - תנאים לתעודת גמר",
+    "agency": "מינהל התכנון (משרד הפנים)",
+    "local_folder": "planning",
+    "life_situations": [
+      "building",
+      "buying"
+    ],
+    "listing_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "service_page_url": "https://www.gov.il/he/pages/forms_licensing_process",
+    "direct_file_url": "https://www.gov.il/BlobFolder/guide/forms_licensing_process/he/rz_new_residential_construction_conditions_certificate_completion.pdf",
+    "file_type": "pdf",
+    "original_filename": "rz_new_residential_construction_conditions_certificate_completion.pdf",
+    "size_bytes": 111121,
+    "sha256": "7ec7f34e3ebe483cea75e229ce33706c9d9c86855a8af77e91a18c251f002533",
+    "http_last_modified": "Wed, 21 Oct 2026 10:52:13 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/rz_new_residential_construction_conditions_certificate_completion.pdf",
+    "gov_page_update_date": "21.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "טבלה מסכמת של התנאים לקבלת תעודת גמר בבנייה חדשה למגורים.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 111,
+    "form_number": null,
+    "official_name_he": "הודעה על התחלת עבודות בנייה או בנייה הנדסית",
+    "agency": "משרד העבודה - מינהל הבטיחות והבריאות התעסוקתית",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/notice-construction-activities-and-officials-on-the-site",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/notice-construction-activities-and-officials-on-the-site/he/safety-and-health_notice-construction-activities.pdf",
+    "file_type": "pdf",
+    "original_filename": "safety-and-health_notice-construction-activities.pdf",
+    "size_bytes": 287476,
+    "sha256": "44a89fcd524bd173bdffcd4895eb34d20d4d010f54461b6b9cd4768e28af1f47",
+    "http_last_modified": "Tue, 20 Oct 2026 12:11:05 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/safety-and-health_notice-construction-activities.pdf",
+    "gov_page_update_date": "20.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://auth.govforms.gov.il/mw/forms/InformConstructionSiteV3@labor.gov.il",
+      "note": "דיווח מקוון; הקובץ הוא התצהיר החתום"
+    },
+    "purpose_he": "הודעה של מבצע הבנייה ומזמין העבודה למינהל הבטיחות על תחילת בנייה ועל מינוי מנהל האתר, מנהל העבודה ובקר הבטיחות.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 112,
+    "form_number": null,
+    "official_name_he": "הודעה על סיום פעולות בניה",
+    "agency": "משרד העבודה - מינהל הבטיחות והבריאות התעסוקתית",
+    "local_folder": "planning",
+    "life_situations": [
+      "building"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/notice-completion-construction-activities",
+    "direct_file_url": "https://www.gov.il/BlobFolder/service/notice-completion-construction-activities/he/safety-and-health_notice-completion-construction.pdf",
+    "file_type": "pdf",
+    "original_filename": "safety-and-health_notice-completion-construction.pdf",
+    "size_bytes": 349627,
+    "sha256": "0709514d63147759bd173fbfe295802f1d3feb283613941bb552c617e696f44e",
+    "http_last_modified": "Thu, 15 Oct 2026 07:49:18 GMT",
+    "download_status": "ok",
+    "local_path": "files/planning/safety-and-health_notice-completion-construction.pdf",
+    "gov_page_update_date": "15.10.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://auth.govforms.gov.il/mw/forms/InformCompletionConstructionSiteWork@labor.gov.il",
+      "note": "דיווח מקוון; הקובץ הוא התצהיר החתום"
+    },
+    "purpose_he": "דיווח של מבצע הבנייה, בתיאום עם המזמין, על סיום העבודות באתר.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 113,
+    "form_number": "form15",
+    "official_name_he": "תצהיר על מועדי סיום בניית שלד וגג",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "building",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/filling-settlement-procedure-occupants",
+    "direct_file_url": "https://www.gov.il/BlobFolder/servicequestionnaire/filling-settlement-procedure-occupants/he/forms_wform15.docx",
+    "file_type": "docx",
+    "original_filename": "forms_wform15.docx",
+    "size_bytes": 87893,
+    "sha256": "48914e0ef2b78d220c1540b1c92ed531e4552d0aeece68fce8b602f7601a5ba6",
+    "http_last_modified": "Sun, 19 Oct 2025 10:11:38 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_wform15.docx",
+    "gov_page_update_date": "25.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/filling-settlement-procedure-occupants",
+      "note": "תהליך אכלוס המשתכנים מתבצע ביישום מקוון לקבלנים"
+    },
+    "purpose_he": "תצהיר של הקבלן לרמ\"י על המועדים שבהם הושלמו השלד והגג, כחלק מהליך אכלוס המשתכנים וחתימת חוזי החכירה שלהם.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 114,
+    "form_number": "rishum-mishtaknim",
+    "official_name_he": "רישום משתכנים למילוי על ידי החברה\\קבלן",
+    "agency": "רשות מקרקעי ישראל (רמ\"י)",
+    "local_folder": "rmi",
+    "life_situations": [
+      "building",
+      "buying",
+      "leasehold"
+    ],
+    "listing_page_url": "https://www.gov.il/he/departments/dynamiccollectors/formslist",
+    "service_page_url": "https://www.gov.il/he/service/filling-settlement-procedure-occupants",
+    "direct_file_url": "https://www.gov.il/BlobFolder/servicequestionnaire/filling-settlement-procedure-occupants/he/forms_RishumMishtaknim.docx",
+    "file_type": "docx",
+    "original_filename": "forms_RishumMishtaknim.docx",
+    "size_bytes": 100070,
+    "sha256": "f73507efd2718f480588e0ca5d9335130c20b3185a8429aab211e90d68915875",
+    "http_last_modified": "Tue, 01 Feb 2022 12:20:30 GMT",
+    "download_status": "ok",
+    "local_path": "files/rmi/forms_RishumMishtaknim.docx",
+    "gov_page_update_date": "25.12.2025",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "https://www.gov.il/he/service/filling-settlement-procedure-occupants",
+      "note": "יישום מקוון לקבלנים"
+    },
+    "purpose_he": "טבלה שהקבלן ממלא עם פרטי הקונים (המשתכנים) בכל דירה, כדי שרמ\"י תחתום איתם על חוזי חכירה.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 115,
+    "form_number": null,
+    "official_name_he": "צו מכר דירות (טופס של מפרט) (תיקון), התשע\"ה-2015",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying",
+      "building"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/pages/mecher_law",
+    "direct_file_url": "https://www.gov.il/BlobFolder/legalinfo/mecher_law/he/law_58_moch.pdf",
+    "file_type": "pdf",
+    "original_filename": "law_58_moch.pdf",
+    "size_bytes": 365857,
+    "sha256": "5791453847be72cf29d979835fe725b30be2b6006186bdcd58999c0e7201c8c6",
+    "http_last_modified": "Sun, 10 Jul 2022 07:01:03 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/law_58_moch.pdf",
+    "gov_page_update_date": "17.08.2017",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "נוסח הצו שקובע את טופס המפרט המחייב שקבלן מצרף לחוזה מכירת דירה חדשה. זה טקסט חקיקה ולא טופס למילוי.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 116,
+    "form_number": null,
+    "official_name_he": "צו מכר דירות (טופס של מפרט) (תיקון), התשס\"ח-2008",
+    "agency": "משרד הבינוי והשיכון",
+    "local_folder": "housing",
+    "life_situations": [
+      "buying",
+      "building"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/pages/mecher_law",
+    "direct_file_url": "https://www.gov.il/BlobFolder/legalinfo/mecher_law/he/law_34_moch.pdf",
+    "file_type": "pdf",
+    "original_filename": "law_34_moch.pdf",
+    "size_bytes": 104418,
+    "sha256": "a1a902a01031ee969679e40c1cb88a2e9e1d35f717984a8f9df915f03e000979",
+    "http_last_modified": "Sun, 10 Jul 2022 07:01:03 GMT",
+    "download_status": "ok",
+    "local_path": "files/housing/law_34_moch.pdf",
+    "gov_page_update_date": "17.08.2017",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": false,
+      "url": null,
+      "note": "לא נמצא מסלול מקוון בדף הרשמי"
+    },
+    "purpose_he": "תיקון קודם לצו טופס המפרט בדירה חדשה. טקסט חקיקה ולא טופס למילוי.",
+    "deadline": null,
+    "fee": null,
+    "additional_files": []
+  },
+  {
+    "id": 117,
+    "form_number": null,
+    "official_name_he": "בקשה למינוי ועד בית (נציגות חיצונית בשכר) לבית משותף",
+    "agency": "הרשות לרישום והסדר זכויות מקרקעין - המפקח על רישום מקרקעין",
+    "local_folder": "condo",
+    "life_situations": [
+      "condominium"
+    ],
+    "listing_page_url": null,
+    "service_page_url": "https://www.gov.il/he/service/external-appointment-representation",
+    "direct_file_url": null,
+    "file_type": null,
+    "original_filename": null,
+    "size_bytes": null,
+    "sha256": null,
+    "http_last_modified": null,
+    "download_status": "no file (online-only service)",
+    "local_path": null,
+    "gov_page_update_date": "11.01.2026",
+    "gov_listing_item_date": null,
+    "online_filing": {
+      "exists": true,
+      "url": "mailto:shiputi-ashdod@justice.gov.il",
+      "note": "אין טופס להורדה; הבקשה נשלחת בדואר אלקטרוני ללשכת המפקח (שיפוטי) שלוחת אשדוד"
+    },
+    "purpose_he": "בקשה של בעלי דירות מהמפקח על רישום המקרקעין למנות לבניין ועד בית חיצוני בשכר, כשאין נציגות שפועלת.",
+    "deadline": null,
+    "fee": {
+      "text": "השירות ניתן ללא תשלום",
+      "source": "https://www.gov.il/he/service/external-appointment-representation"
+    },
+    "additional_files": []
+  }
+]

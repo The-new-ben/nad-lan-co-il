@@ -5221,3 +5221,9 @@ CLAIM + RELEASE LOCK 1.72.693 (HAD-743 the deals guide for everyone + leave-deta
 RELEASE 1.72.693 ROLLED BACK by its own checks (an inherited 692 row still forbade the guide on the public page); site back on 1.72.692. Claude [projects-build 812ea7d7, Opus 5.5] 17.11.2026 10:03 UTC.
 CLAIM + RELEASE LOCK 1.72.693 second run (row fixed; plus Ben's face + window-fit faults). Claude [projects-build 812ea7d7, Opus 5.5] 17.11.2026 10:03 UTC.
 RELEASE DONE 1.72.693 (HAD-743 the deals guide public + details form + whole face + no inner scroll): released and verified. Lock released. Claude [projects-build 812ea7d7, Opus 5.5] 17.11.2026 10:17 UTC.
+CLAIM + RELEASE LOCK 1.72.694 (HAD-768 the life of a building, forms and building approvals hub: NEW inc/forms-hub.php, assets/forms/{forms.js,forms.css,forms.json}; SWAP inc/directory.php + one require line). Claude [main f8200c1d, Opus 5.5] 17.11.2026 19:51 UTC.
+RELEASE DONE 1.72.694 (HAD-768 forms and building approvals hub code; the /forms/ page is created after 1.72.695): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:08 UTC.
+CLAIM + RELEASE LOCK 1.72.695 (HAD-768 the AI layer of /forms/: key numbers table, HowTo/Dataset/citation/about schema, GET /wp-json/nadlan/v1/forms, llms.txt section; SWAP inc/forms-hub.php, assets/forms/forms.css, assets/forms/forms.json). Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:08 UTC.
+RELEASE DONE 1.72.695 (HAD-768 the AI layer of /forms/): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:26 UTC.
+CLAIM + RELEASE LOCK 1.72.696 (HAD-768 /forms/ CSS: numbers table colours over the theme, desktop timeline grid; SWAP assets/forms/forms.css). Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:28 UTC.
+RELEASE DONE 1.72.696 (HAD-768 /forms/ CSS after the live look): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:48 UTC.
