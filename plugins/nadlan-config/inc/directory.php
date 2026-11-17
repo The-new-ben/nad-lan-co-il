@@ -1447,3 +1447,4 @@ if ( is_readable( __DIR__ . '/street-plate.php' ) ) { require_once __DIR__ . '/s
 if ( is_readable( __DIR__ . '/deal-alerts.php' ) ) { require_once __DIR__ . '/deal-alerts.php'; } // 1.72.691 HAD-743: alerts on a new developer deal in the area (near-alerts kind 'deal')
 if ( is_readable( __DIR__ . '/deals-guide.php' ) ) { require_once __DIR__ . '/deals-guide.php'; } // 1.72.692 HAD-743: the guide of the deals map (talking face, ?guide=on)
 if ( is_readable( __DIR__ . '/forms-hub.php' ) ) { require_once __DIR__ . '/forms-hub.php'; } // 1.72.694 HAD-768: the real-estate forms hub on /forms/ ([nadlan_forms])
+if ( is_readable( __DIR__ . '/retired-redirects.php' ) ) { require_once __DIR__ . '/retired-redirects.php'; } // 1.72.697: 301 for pages the owner retired by name (Meital Katsir, Ben 17.11.2026)

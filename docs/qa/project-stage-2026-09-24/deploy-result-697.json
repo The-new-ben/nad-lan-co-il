@@ -1,0 +1,19 @@
+{
+  "released": "1.72.697",
+  "from": "1.72.696",
+  "live_before": {
+    "inc/directory.php": "1ee44a6b3c95b7f6af58767631906466",
+    "nadlan-config.php": "e2310e41e0354309dd4c96d3a76d13b5"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-18 00:17:14",
+  "files": {
+    "inc/retired-redirects.php": "3a118a87c934a460980e29dbff2af4b5",
+    "assets/redirects/retired.json": "a2262531bc3596598de16834242490f4",
+    "inc/directory.php": "09202f9d08c62a88e929cef287331fc7",
+    "nadlan-config.php": "d40c0a49c940a7757232e8193ab2d06a"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.697, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

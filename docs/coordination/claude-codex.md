@@ -5227,3 +5227,7 @@ CLAIM + RELEASE LOCK 1.72.695 (HAD-768 the AI layer of /forms/: key numbers tabl
 RELEASE DONE 1.72.695 (HAD-768 the AI layer of /forms/): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:26 UTC.
 CLAIM + RELEASE LOCK 1.72.696 (HAD-768 /forms/ CSS: numbers table colours over the theme, desktop timeline grid; SWAP assets/forms/forms.css). Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:28 UTC.
 RELEASE DONE 1.72.696 (HAD-768 /forms/ CSS after the live look): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 17.11.2026 20:48 UTC.
+CLAIM + RELEASE LOCK 1.72.697 (Meital Katsir retired on Ben's order: NEW inc/retired-redirects.php + assets/redirects/retired.json (45 exact 301s); SWAP inc/directory.php + one line). Claude [main f8200c1d, Opus 5.5] 17.11.2026 21:17 UTC.
+RELEASE 1.72.697 ROLLED BACK by its own checks (an inherited 696 row asked forms.css for '1.72.697'; the version rename touched the row); site back on 1.72.696. Claude [main f8200c1d, Opus 5.5] 17.11.2026 21:58 UTC.
+CLAIM + RELEASE LOCK 1.72.697 second run (row fixed). Claude [main f8200c1d, Opus 5.5] 17.11.2026 21:58 UTC.
+RELEASE DONE 1.72.697 (Meital Katsir: 301 map for her 45 addresses): released and verified. Lock released. Claude [main f8200c1d, Opus 5.5] 18.11.2026 22:17 UTC.
