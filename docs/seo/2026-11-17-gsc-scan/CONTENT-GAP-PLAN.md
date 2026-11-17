@@ -63,7 +63,7 @@ Grok's study could not finish 6 searches (Google captcha). Those 6 stay open; no
 
 ## C. Conflicts to clear first (no new URLs)
 
-**C0. Restore the 4 broken pages** (FINDINGS #1). Precondition for everything else; a joint Grok/Claude item.
+**C0. Restore the 4 broken source lists** (FINDINGS #1; not caused by Grok, see the 18.11 correction there; Grok's step F6, HAD-752, is the same job). Precondition for everything else; a joint Grok/Claude item.
 
 **B1a. פינוי בינוי rescue** (12,100/month; owner /urban-renewal/pinui-binui/, 0 impressions in 28 d).
 - The automatic term link "פינוי בינוי" points to /glossary/pinui-binui/ (1,081 inlinks). Point it to the owner. One template change, kw_guard first, verify on 5 compound pages and the source audit.
@@ -101,7 +101,7 @@ Every item below goes through the same pack. Evidence for the AI-answer parts: S
 
 | Order | Item | Owner URL | Tool | Conflict cleared first | New URL? |
 |---|---|---|---|---|---|
-| 0 | Restore 4 pages broken 16.11 | the 4 pages | n/a | n/a | no |
+| 0 | Restore the 4 broken source lists (same job as Grok's F6, HAD-752) | the 4 pages | n/a | n/a | no |
 | 1 | פינוי בינוי rescue | /urban-renewal/pinui-binui/ | "מה הבניין שלי מקבל" checker (exists on the page: verify) | glossary links + titles | no |
 | 2 | TAMA 38 consolidation | /urban-renewal/tama-38/ | building eligibility checker | 7 siblings + 2 glossary | no |
 | 3 | מס שבח calculator | /real-estate-tax-advisor/capital-gains-tax-guide/ | shevach calculator (exemptions, linear calculation) | sibling titles | no |
@@ -153,7 +153,7 @@ Source: `C:\Users\777\Desktop\head-term-protection-titles\SKILL.md` (Ben's PC; t
 1. **A link step.** The steps cover titles, H1s and breadcrumbs only. On nad-lan the owner of "פינוי בינוי" loses to the glossary because of the automatic term link, with correct titles on both. Add: for each protected term, count internal links by anchor and by target; the owner must be the target of the exact-term anchors.
 2. **The existing owner map.** Step 1 builds a new map of protected terms. nad-lan already has one: `tools/seo/kw_guard.py` data and Ben's 50 phrases (HAD-691). Start from those; two maps that disagree would be worse than none.
 3. **Where the title lives.** On nad-lan some titles and H1s come from code in the plugin, not from the editor. A change saved in wp-admin can be overwritten by the next Claude release, and the other way round. Every title/H1 change needs the change-log line and a check after the next release.
-4. **The other open pages.** The 4 pages broken on 16.11 (HAD-773) stay out of any title batch until restored.
+4. **The other open pages.** The 4 pages with broken source lists (HAD-752, HAD-773) stay out of any title batch until restored.
 
 ### H4. The title-and-H1 rule measured on our site (crawl 17.11, 4,667 pages)
 - Every page has exactly one H1.
@@ -174,3 +174,35 @@ Source: `C:\Users\777\Desktop\head-term-protection-titles\SKILL.md` (Ben's PC; t
 - **New item 11:** go through `crawl/title_h1_mismatch.csv` one page at a time, highest impressions first, only where Google is seen rewriting the title. Not a batch.
 - **Grok's 6 pages:** go ahead only as title + H1 pairs, one page per step, after the change-log line, and not on the HAD-773 pages. If the 6 are city price pages, they are the same test as item 10 and should not run twice.
 - **Section F, Grok's brief:** besides removing the redirect permission, remove the recrawl request and the noindex preference (H2).
+
+## I. Grok's own log, found 18.11.2026 (Notion + Linear), and what it changes
+
+Sources: Notion "nad-lan | יומן SEO ותוכנית תיקונים" (https://app.notion.com/p/41aab55be7a1812ebd65ec9e9c982888) and "חובה לקרוא לפני שינוי כותרת, H1 או פירורי לחם: שיטת הגנת מילות מפתח" (https://app.notion.com/p/41bab55be7a18116abfeeed05608158f, holds the full skill text, a table of 93 protected terms, the 30 worst collisions, templates per cluster and the content gaps). Linear: HAD-744 (Search Console clean-up, steps F0 to F14 = HAD-746 to HAD-760), HAD-770 (title round 1), HAD-771 (content gaps). So Grok does keep a log; it was not visible from this PC on 17.11. Section F's "one change log" already exists: it is that Notion page.
+
+### I1. Corrections to this scan
+- The broken source lists were **not** caused by Grok (see the 18.11 correction in FINDINGS). HAD-773 is the same job as Grok's HAD-752.
+- The "6 pages" are not city price pages. Round 1 ran on 17.11, 22:42 to 22:47 Israel time, with Ben's approval: /glossary/mefakeach-dayarim/, /glossary/tofes-4/, /bat-galim/, /investment/investment-via-company/, /short-term-rentals-abroad/short-term-rentals-greece/, /urban-renewal/pinui-binui-tenant-guide/. Title only first; H1 alignment approved by Ben on 18.11 at 00:38.
+- Tracking overlaps: HAD-771 (Grok) and HAD-772 (this plan) cover the same content gaps; HAD-770 and item 10 here cover titles. They are now linked in Linear; one of each pair should become the single home (Ben or the main session decides).
+
+### I2. Live check of the 6 pages, 18.11 (raw HTML, not logged in)
+| Page | Title and H1 open the same | Note |
+|---|---|---|
+| /glossary/mefakeach-dayarim/ | yes | The term's name is now the sentence "המפקח מטעם הדיירים: מי ממנה, מי משלם ומה בודק": in the breadcrumb and in the /glossary/ index |
+| /glossary/tofes-4/ | yes ("אישור אכלוס") | H1 and /glossary/ index entry are the new sentence; breadcrumb still "טופס 4" |
+| /bat-galim/ | yes, identical | |
+| /investment/investment-via-company/ | yes | |
+| /short-term-rentals-abroad/short-term-rentals-greece/ | yes | |
+| /urban-renewal/pinui-binui-tenant-guide/ | yes | No longer opens with "פינוי בינוי"; helps the owner page (C1). This page has 959 internal links, the owner 969, the glossary term 1,081 |
+
+All six: og:title equals the title, one H1, no broken source links.
+
+### I3. One side effect to settle: glossary terms renamed into sentences
+- In a glossary entry the H1 is the term's name. Renaming it to match a title turns a dictionary term into a headline, and that name is what the /glossary/ index lists and what other blocks print.
+- Repo code (`plugins/nadlan-config/inc/glossary-autolink.php`; the live file may differ) links a term from running text only where the **exact term name** appears. A sentence-long name can never match, so a renamed term stops gaining automatic links. Not confirmed live.
+- Checked live on 10 professional pages that linked to the two terms on 17.11: 9 still link (the "מונח במילון" block), 1 is a retired page. So no link loss seen so far.
+- Proposal: for glossary entries keep the term as the name ("טופס 4", "מפקח בנייה מטעם דיירים") and let the title open with the same term, or move the page's H1 to a separate field in code. Decide before round 2 touches more glossary terms. The glossary has 144 terms.
+
+### I4. Items in Grok's plan that touch Ben's laws (findings only, Ben decides)
+- F12 (HAD-758) "single 301s with a full match" and F11 (HAD-757) "decide on a redirects plugin", and the skill dominant-page-reverse-engineering ("301 merge plan"): the 14.10 law says no 301 at all, not even as a proposal.
+- "Request recrawl in Search Console" after the H1 change, recorded as approved by Ben on 18.11 at 00:38: the 22.10 law forbids indexing requests unless Ben says yes for a named page. If that approval was meant for these 6 pages it is within the law; it should not become the skill's default step.
+- F9 (HAD-755) "22 demo pages with noindex listed in the sitemap": any indexing change there needs Ben's explicit order (3.9 law).
