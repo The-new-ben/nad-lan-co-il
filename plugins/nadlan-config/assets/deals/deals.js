@@ -15,6 +15,8 @@
 	var $ = function (sel, el) { return (el || root).querySelector(sel); };
 	var $$ = function (sel, el) { return Array.prototype.slice.call((el || root).querySelectorAll(sel)); };
 	var tagOf = function (id) { return markers[id] ? markers[id].getElement().firstChild : null; };
+	/* what the visitor does is announced as page events, so the guide (guide.js) can react without reaching into this file */
+	var emit = function (n, det) { try { document.dispatchEvent(new CustomEvent('nldm:' + n, { detail: det || {} })); } catch (e) {} };
 
 	var EN = D.lang === 'en';
 	/* every visible Hebrew string goes through t(): the Hebrew text is the key, D.t (English page) holds the translation */
@@ -106,7 +108,7 @@
 			S.cash = v;
 			if (think) { think.hidden = false; }
 			clearTimeout(thinkT);
-			thinkT = setTimeout(function () { if (think) { think.hidden = true; } counts(); paintStatus(true); renderSheet(false); }, 380);
+			thinkT = setTimeout(function () { if (think) { think.hidden = true; } counts(); paintStatus(true); renderSheet(false); emit('cash', { cash: S.cash }); }, 380);
 		});
 	}
 
@@ -122,6 +124,7 @@
 			declutter();
 			var vis = deals.filter(shown);
 			if (map && vis.length) { fitTo(vis); }
+			emit('kind', { k: S.kind, quiet: !!b.__quiet }); b.__quiet = false;
 		});
 	});
 
@@ -157,8 +160,9 @@
 		$$('.nldm-list li').forEach(function (li) { li.classList.toggle('is-sel', li.dataset.id === d.id); });
 		if (anim && !RM) { sheet.classList.remove('is-swap'); void sheet.offsetWidth; sheet.classList.add('is-swap'); }
 	}
-	function pick(id, fromList) {
+	function pick(id, fromList, quiet) {
 		S.sel = id;
+		emit('pick', { id: id, quiet: !!quiet });
 		Object.keys(markers).forEach(function (k) { tagOf(k).classList.toggle('is-sel', k === id); markers[k].getElement().style.zIndex = k === id ? '5' : ''; });
 		renderSheet(true);
 		var d = byId[id];
@@ -265,6 +269,9 @@
 		var js = document.createElement('script'); js.src = D.mlJs; js.async = true;
 		js.onload = function () {
 			var box = document.getElementById('nldm-map'); box.innerHTML = '';
+			/* Hebrew (and Arabic) street and place names are drawn right to left only with the RTL text plugin, the same one every other
+			   map of the site loads; without it they come out reversed. Registered once, never twice ("already registered"). */
+			try { if (D.rtl && maplibregl.getRTLTextPluginStatus && maplibregl.getRTLTextPluginStatus() === 'unavailable') { var rp = maplibregl.setRTLTextPlugin(D.rtl, false); if (rp && rp.catch) { rp.catch(function () {}); } } } catch (e) { /* the labels stay as the map draws them */ }
 			map = new maplibregl.Map({ container: box, style: D.style, center: [34.82, 32.07], zoom: 10.4, pitch: 52, bearing: -14,
 				attributionControl: { compact: true }, cooperativeGestures: window.innerWidth < 768, maxPitch: 70 });
 			/* the tags do not wait for the map tiles: a tile server that fails (seen once, a CORS error) must not hide the deals */
@@ -444,4 +451,28 @@
 		io.observe(mapBox);
 	} else { initMap(); }
 	counts(); paintStatus(false); renderSheet(false);
+
+	/* a small, read-mostly handle for the guide: it can show a deal, set the cash, filter, open the calculator or the alert,
+	   always through the same functions a visitor's own tap uses ("quiet" so the guide does not answer itself) */
+	window.NLDM = {
+		deals: deals, byId: byId, need: need, fmt: fmt,
+		state: function () { return { cash: S.cash, kind: S.kind, sel: S.sel, map: !!map }; },
+		fits: function (cash) { return deals.filter(function (d) { var n = need(d); return n != null && n <= cash; }); },
+		show: function (id) {
+			if (!byId[id]) { return; }
+			pick(id, false, true);
+			var st = root.querySelector('.nldm-stage');
+			if (st) { var r = st.getBoundingClientRect(); if (r.top < -40 || r.top > window.innerHeight * 0.5) { st.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); } }
+			setTimeout(function () { var el = tagOf(id); if (el) { var r = el.getBoundingClientRect(); burst(r.left + r.width / 2, r.top, byId[id].color, !!byId[id].hot); } }, RM ? 0 : 950);
+		},
+		light: function (ids) {
+			Object.keys(markers).forEach(function (k) { var el = tagOf(k); if (el) { el.classList.toggle('is-lit', ids.indexOf(k) >= 0); } });
+			if (map && ids.length) { fitTo(ids.map(function (i) { return byId[i]; }).filter(Boolean)); }
+			setTimeout(function () { Object.keys(markers).forEach(function (k) { var el = tagOf(k); if (el) { el.classList.remove('is-lit'); } }); }, 6000);
+		},
+		kind: function (k) { var b = root.querySelector('.nldm-chips button[data-k="' + k + '"]'); if (b) { b.__quiet = true; b.click(); } },
+		calc: function (id) { if (!calc) { return; } calcPick(byId[id] && byId[id].calcOk && byId[id].price ? id : 'mine'); calc.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); },
+		alert: function (id) { if (id && byId[id]) { pick(id, false, true); } var b = $('.nldm-toalert'); if (b) { b.click(); } }
+	};
+	emit('ready', {});
 })();

@@ -1,0 +1,86 @@
+/* HAD-743 the guide of the deals map (canvas board 13). Ink #0F1D26, site teal #0E4C63, deal-sticker red #C8102E only for
+   "she is talking" and "worth checking", map paper #EEF2F4. The site's own face. Fixed layer between the WhatsApp bar (99980)
+   and the accessibility button (99998). */
+.nldg{--b:14px;--s:60px;position:fixed;right:14px;bottom:var(--b);z-index:99990;font-family:inherit;direction:rtl;pointer-events:none}
+.nldg *{box-sizing:border-box}
+.nldg-face{pointer-events:auto;position:relative;display:block;width:var(--s)!important;height:var(--s)!important;min-width:0!important;max-width:none!important;padding:0!important;margin:0;border-radius:22%!important;border:3px solid #FFFFFF!important;background:#D3DCE2!important;box-shadow:0 0 0 2px #0E4C63,0 10px 24px rgba(15,29,38,.32);cursor:pointer;overflow:visible;opacity:0;transform:translateY(26px) scale(.6);transition:opacity .45s,transform .55s cubic-bezier(.2,.9,.3,1.3),box-shadow .3s,width .3s,height .3s;min-height:0!important;line-height:0}
+.nldg.is-in .nldg-face{opacity:1;transform:none}
+.nldg-face:focus-visible{outline:3px solid #C8102E;outline-offset:3px}
+.nldg-img{position:absolute;inset:0;border-radius:inherit;overflow:hidden;display:block;background:#D3DCE2}
+.nldg-img img{position:absolute;display:block;max-width:none!important;height:auto;border:0;margin:0;padding:0}
+/* the whole 512 portrait fills the frame (1.72.694, Ben: "the face is cut"): forehead, hair and chin as photographed;
+   the mouth and blink patches sit on their measured boxes (meta.json: mouth 173,252 166x136, blink 150,140 212x96) */
+.nldg-img img:first-child{width:100%!important;height:100%!important;left:0;top:0}
+.nldg-img img.m{width:32.42%!important;height:26.56%!important;left:33.79%;top:49.22%;opacity:0;transition:opacity .06s linear}
+.nldg-img img.k{width:41.41%!important;height:18.75%!important;left:29.3%;top:27.34%;opacity:0;animation:nldg-blink 4.6s infinite}
+@keyframes nldg-blink{0%,93%,100%{opacity:0}95.5%{opacity:1}}
+.nldg.is-talk .nldg-face{box-shadow:0 0 0 2px #C8102E,0 0 0 7px rgba(200,16,46,.18),0 10px 24px rgba(15,29,38,.32)}
+.nldg-bars{position:absolute;left:-14px;bottom:6px;display:none;gap:2px;align-items:center;height:16px}
+.nldg-bars i{display:block;width:3px;height:16px;border-radius:2px;background:#C8102E;animation:nldg-bar .6s infinite}
+.nldg-bars i:nth-child(2){animation-delay:.15s}.nldg-bars i:nth-child(3){animation-delay:.3s}
+.nldg.is-talk .nldg-bars{display:flex}
+@keyframes nldg-bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.nldg-face.is-nod .nldg-img{animation:nldg-nod 1s ease-in-out 1}
+@keyframes nldg-nod{0%,100%{transform:none}30%{transform:translateY(2px) rotate(-2deg)}60%{transform:translateY(-1px) rotate(1deg)}}
+.nldg.is-mini .nldg-face{box-shadow:0 0 0 1px #8D9AA3,0 4px 12px rgba(15,29,38,.2);opacity:.86}
+.nldg.is-mini.is-in .nldg-face{opacity:.86}
+
+.nldg-bub{pointer-events:auto;position:absolute;right:-4px;bottom:calc(var(--s) + 12px);width:min(300px,calc(100vw - 24px));background:#FFFFFF;color:#0F1D26;border:1px solid #C3CED5;border-radius:16px;padding:12px 12px 10px;box-shadow:0 16px 36px rgba(15,29,38,.22);opacity:0;transform:translateY(8px);transition:opacity .25s,transform .3s}
+.nldg-bub.is-in{opacity:1;transform:none}
+.nldg-bub::after{content:"";position:absolute;bottom:-7px;right:calc(var(--s) / 2 - 2px);width:12px;height:12px;background:#FFFFFF;border-right:1px solid #C3CED5;border-bottom:1px solid #C3CED5;transform:rotate(45deg)}
+.nldg-say{margin:0 0 0 30px!important;font-size:15px!important;line-height:1.55!important;color:#0F1D26!important}
+.nldg-chk{margin:8px 0 0!important;font-size:13px!important;line-height:1.5!important;color:#22313B!important;background:#FFF4F5;border-right:3px solid #C8102E;padding:6px 8px;border-radius:6px}
+.nldg-chk b{color:#A10D25}
+.nldg-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.nldg-acts:empty{display:none}
+.nldg-act{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border-radius:19px;border:0;background:#0E4C63!important;color:#FFFFFF!important;font:inherit;font-size:13px!important;font-weight:600;text-decoration:none!important;cursor:pointer;line-height:1.2}
+.nldg-act:focus-visible{outline:3px solid #C8102E;outline-offset:2px}
+.nldg-meta{margin:8px 0 0!important;font-size:11px!important;line-height:1.4!important;color:#4A5863!important}
+.nldg-bx{position:absolute;top:4px;left:4px;width:32px;height:32px;min-height:0!important;padding:0;border:0;border-radius:50%;background:transparent!important;color:#4A5863!important;font-size:20px;line-height:1;cursor:pointer}
+
+.nldg-pan{pointer-events:auto;position:fixed;left:0;right:0;bottom:0;max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none;background:#0F1D26;color:#FFFFFF;border-radius:20px 20px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(15,29,38,.35);opacity:0;transform:translateY(24px);transition:opacity .25s,transform .3s;z-index:2}
+.nldg-pan.is-in{opacity:1;transform:none}
+@media (min-width:768px){.nldg-pan{left:auto;right:14px;bottom:calc(var(--b) + var(--s) + 14px);width:380px;border-radius:18px;max-height:calc(100dvh - var(--b) - var(--s) - 40px)}}
+.nldg-pan::-webkit-scrollbar{width:0;height:0}
+.nldg-ph{display:flex;flex-direction:column;gap:2px;padding-left:44px;position:relative;margin-bottom:8px}
+.nldg-ph b{font-size:17px;color:#FFFFFF}
+.nldg-ph span{font-size:12px;color:#B9C6CF}
+.nldg-pc{position:absolute;top:-4px;left:-4px;width:40px;height:40px;min-height:0!important;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.1)!important;color:#FFFFFF!important;font-size:22px;line-height:1;cursor:pointer}
+.nldg-ans{background:#FFFFFF;color:#0F1D26;border-radius:14px;padding:12px;margin-bottom:10px}
+.nldg-ans .nldg-say{margin:0!important}
+.nldg-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nldg-chip{text-align:right;min-height:44px;padding:8px 14px;border-radius:22px;border:1px solid rgba(255,255,255,.2)!important;background:rgba(255,255,255,.07)!important;color:#FFFFFF!important;font:inherit;font-size:14px!important;font-weight:500;cursor:pointer;line-height:1.35}
+.nldg-chip:hover{background:rgba(255,255,255,.14)!important}
+.nldg-ask{display:flex;gap:8px;margin-top:12px;align-items:center}
+.nldg-ask input{flex:1;min-width:0;min-height:46px;border-radius:12px;border:0;padding:0 12px;font:inherit;font-size:16px;color:#0F1D26;background:#FFFFFF}
+.nldg-mic,.nldg-go{flex:none;min-height:46px!important;padding:0 14px;border-radius:23px;border:0;font:inherit;font-size:14px!important;font-weight:700;cursor:pointer}
+.nldg-mic{background:#C8102E!important;color:#FFFFFF!important}
+.nldg-mic.is-on{animation:nldg-pulse 1.2s infinite}
+@keyframes nldg-pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,16,46,.5)}50%{box-shadow:0 0 0 8px rgba(200,16,46,0)}}
+.nldg-go{background:#FFFFFF!important;color:#0F1D26!important}
+.nldg-pf{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.nldg-pf button{min-height:36px!important;padding:0 12px;border-radius:18px;border:1px solid rgba(255,255,255,.25)!important;background:transparent!important;color:#E3EAEE!important;font:inherit;font-size:12px!important;cursor:pointer}
+.nldg-pf span{flex-basis:100%;font-size:11px;line-height:1.5;color:#B9C6CF}
+/* on a phone the site's accessibility button sits in the bottom corner: the panel's last row stays clear of it */
+@media (max-width:767px){.nldg-pan{padding-bottom:calc(78px + env(safe-area-inset-bottom))}}
+.nldg-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.nldg.is-open .nldg-bub{display:none}
+@media (prefers-reduced-motion:reduce){.nldg-face,.nldg-bub,.nldg-pan{transition:none}.nldg-img img.k,.nldg-bars i{animation:none}}
+
+/* leaving details (1.72.693): name and mobile, the site's consent line, into the Lead Inbox */
+.nldg-lead{display:flex;flex-direction:column;gap:4px;background:#FFFFFF;color:#0F1D26;border-radius:14px;padding:14px;margin-bottom:10px}
+.nldg-lead[hidden]{display:none!important}
+.nldg-lh{font-size:17px;color:#0F1D26!important}
+.nldg-lt{font-size:13px;line-height:1.45;color:#4A5863}
+.nldg-lead label{font-size:14px;font-weight:700;margin-top:4px;color:#0F1D26}
+.nldg-lead input{min-height:44px;border-radius:12px;border:1px solid #B9C7CF;padding:0 12px;font:inherit;font-size:16px;color:#0F1D26;background:#FFFFFF}
+.nldg-lead input[type=tel]{text-align:right}
+.nldg-lc{margin:6px 0 0!important;font-size:11px!important;line-height:1.55!important;color:#4A5863!important}
+.nldg-lm{margin:0!important;font-size:13px!important;color:#A10D25!important;min-height:0}
+.nldg-lm:empty{display:none}
+.nldg-ls{min-height:50px!important;border:0;border-radius:25px;background:#0E4C63!important;color:#FFFFFF!important;font:inherit;font-size:16px!important;font-weight:700;cursor:pointer;margin-top:4px}
+.nldg-ls:disabled{opacity:.6}
+.nldg-chips[hidden],.nldg-ask[hidden]{display:none!important}
+.nldg-pf .nldg-tolead{background:#FFFFFF!important;color:#0F1D26!important;border-color:#FFFFFF!important;font-weight:700}
+/* the details form stands alone: the window's subtitle and footer step aside so it fits without an inner scroll at 1280x720 */
+.nldg.is-lead .nldg-ph span,.nldg.is-lead .nldg-pf{display:none}

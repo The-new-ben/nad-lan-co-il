@@ -132,7 +132,7 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 			'wa'        => $wa,
 			'pointsUrl' => $base . 'projects.json?v=1',
 			'mlJs'      => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js',
-			'mlCss'     => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css',
+			'mlCss'     => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css', 'rtl' => 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js',
 			'style'     => 'https://tiles.openfreemap.org/styles/positron',
 		);
 		$kinds = array( 'all' => 'הכל', 'pay' => '10/90, 20/80 ותשלומים', 'rent' => 'שכר דירה עד האכלוס', 'price' => 'הנחה במחיר', 'gift' => 'מתנות ופטורים' );
@@ -347,7 +347,7 @@ if ( ! function_exists( 'nadlan_dm_render_en' ) ) {
 		$base = plugins_url( 'assets/deals/', dirname( __FILE__ ) );
 		$data = array( 'deals' => $deals, 'hotId' => 'gindi-love', 'wa' => $wa, 'lang' => 'en', 't' => nadlan_dm_t_en(), 'fx' => $fx,
 			'pointsUrl' => $base . 'projects.json?v=1', 'mlJs' => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js',
-			'mlCss' => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css', 'style' => 'https://tiles.openfreemap.org/styles/positron' );
+			'mlCss' => 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css', 'rtl' => 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js', 'style' => 'https://tiles.openfreemap.org/styles/positron' );
 		$kinds = array( 'all' => 'All', 'pay' => 'Payment plans (20/80, 10/90)', 'rent' => 'Rent until handover', 'price' => 'Price cuts', 'gift' => 'Gifts and waivers' );
 		$waq = function ( $t ) use ( $wa ) { return 'https://wa.me/' . $wa . '?text=' . rawurlencode( $t ); };
 		$fxl = $fx ? 'Dollar figures are approximate, at the Bank of Israel rate of ' . number_format( $fx[0], 3 ) . ' (' . $fx[1] . '); the shekel price is the price.' : '';

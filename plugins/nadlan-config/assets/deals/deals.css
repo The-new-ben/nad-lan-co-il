@@ -222,3 +222,6 @@
 .nldm-alert-fine a{color:var(--teal)}
 .nldm .nldm-toalert{all:unset;box-sizing:border-box;cursor:pointer;display:flex!important;align-items:center;justify-content:center;min-height:44px!important;border-radius:12px!important;border:1px dashed var(--teal)!important;color:var(--teal)!important;font:600 14px/1.2 "IBM Plex Sans Hebrew",sans-serif!important;padding:0 12px!important;width:100%!important}
 @media (prefers-reduced-motion:reduce){.nldm-alert *{animation:none!important}}
+
+/* the guide (guide.js) lights the deals she talks about for six seconds */
+.nldm-tag.is-lit{box-shadow:0 0 0 3px #C8102E,0 10px 22px rgba(200,16,46,.35)!important;z-index:4}

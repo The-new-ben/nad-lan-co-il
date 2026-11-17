@@ -1,0 +1,38 @@
+{
+ "rooms": [
+  {
+   "room": "mfqqcpqblwlv",
+   "created": "17.11.2026 00:17:51",
+   "by": "buyer",
+   "page": "מגדלי כיכר המדינה, תל אביב",
+   "slug": "hamedina",
+   "url": "https://nad-lan.co.il/projects/hamedina/",
+   "live_kept": false,
+   "people": [],
+   "rep_in": false,
+   "notes": 0,
+   "sel": ""
+  }
+ ],
+ "mails": [
+  {
+   "at": "17.11.2026 00:17:52",
+   "subject": "שיחת וידאו עכשיו · מגדלי כיכר המדינה, תל אביב · מבקר מחכה בחדר",
+   "result": "sent"
+  }
+ ],
+ "test_lead": {
+  "found": true,
+  "type": "nadlan_lead",
+  "status": "private",
+  "is_test": true,
+  "source": "deals_guide",
+  "goal": "מבצעי קבלנים",
+  "consent": "1",
+  "message": "מבצע: UPVIEW, נופי בן שמן, לוד (קבוצת אהרוני)\nהמבצע שנבחר במפה: UPVIEW, נופי בן שמן, לוד (קבוצת אהרוני)\nמהעמוד: /developer-deals/",
+  "in_inbox_query": true,
+  "deleted": true,
+  "after": "gone"
+ },
+ "now": "17.11.2026 12:17:47"
+}

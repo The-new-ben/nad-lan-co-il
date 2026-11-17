@@ -1445,3 +1445,4 @@ if ( is_readable( __DIR__ . '/project-default-image.php' ) ) { require_once __DI
 if ( is_readable( __DIR__ . '/deals-map.php' ) ) { require_once __DIR__ . '/deals-map.php'; } // 1.72.681 HAD-743: the developer deals map on /developer-deals/
 if ( is_readable( __DIR__ . '/street-plate.php' ) ) { require_once __DIR__ . '/street-plate.php'; } // 1.72.684 HAD-743: the street sign on cards without a picture
 if ( is_readable( __DIR__ . '/deal-alerts.php' ) ) { require_once __DIR__ . '/deal-alerts.php'; } // 1.72.691 HAD-743: alerts on a new developer deal in the area (near-alerts kind 'deal')
+if ( is_readable( __DIR__ . '/deals-guide.php' ) ) { require_once __DIR__ . '/deals-guide.php'; } // 1.72.692 HAD-743: the guide of the deals map (talking face, ?guide=on)

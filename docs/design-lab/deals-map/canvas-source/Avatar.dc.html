@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>המדריכה של מפת המבצעים</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{cursor:pointer;font-family:inherit}
+@keyframes lipB{0%,100%{opacity:0}18%{opacity:.55}34%{opacity:.1}52%{opacity:.55}70%{opacity:0}86%{opacity:.4}}
+@keyframes lipC{0%,100%{opacity:0}26%{opacity:.5}44%{opacity:0}78%{opacity:.45}}
+@keyframes blink{0%,94%,100%{opacity:0}96%{opacity:1}}
+@keyframes peek{0%{transform:translateY(24px) scale(.6);opacity:0}70%{transform:translateY(-3px) scale(1.04);opacity:1}100%{transform:none;opacity:1}}
+@keyframes bub{0%{transform:translateY(8px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(200,16,46,.0)}50%{box-shadow:0 0 0 6px rgba(200,16,46,.22)}}
+@keyframes nod{0%,100%{transform:none}30%{transform:translateY(2px) rotate(-2deg)}60%{transform:translateY(-1px) rotate(1deg)}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 2480px; box-sizing: border-box; background: #EEF2F4; color: #0F1D26; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+  <h2 style="margin: 0; font-size: 21px; line-height: 1.25">המדריכה של מפת המבצעים</h2>
+  <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #22313B">פרצוף קטן בפינה שרואה מה אתם עושים בעמוד, ולא מה אתם עושים בעולם: את הסכום שבחרתם, המבצע שלחצתם עליו, הרגע שעצרתם. היא אומרת עובדה חיובית אחת מתוך המבצע, מה שווה לבדוק, ושהיא לא ממליצה. ואז היא גם עושה: מזיזה את המפה, פותחת את המחשבון, מכינה התראה.</p>
+
+  <div style="display: flex; gap: 6px; flex-wrap: wrap">
+    <sc-for list="{{scenes}}" as="s" hint-placeholder-count="6">
+      <button type="button" onClick="{{s.pick}}" style="{{s.style}}">{{s.label}}</button>
+    </sc-for>
+  </div>
+
+  <section style="position: relative; height: 680px; border-radius: 28px; overflow: hidden; background: #FFFFFF; border: 8px solid #0F1D26; box-sizing: border-box">
+    <div style="padding: 14px 14px 0; display: flex; flex-direction: column; gap: 8px">
+      <b style="font-size: 17px; line-height: 1.3">מבצעי קבלנים 2026: מפת כל המבצעים בישראל</b>
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #4A5863">
+        <span>כמה יש לכם ביד</span>
+        <span style="flex: 1; height: 6px; border-radius: 3px; background: #D3DBE0; position: relative"><span style="{{fill}}"></span><span style="{{knob}}"></span></span>
+        <b style="font-family: 'IBM Plex Mono', monospace; color: #0F1D26">{{cash}}</b>
+      </div>
+    </div>
+    <div style="position: relative; height: 420px; margin: 10px 0 0; background: linear-gradient(170deg, #E8EEF1, #DCE5EA)">
+      <svg width="342" height="420" viewBox="0 0 342 420" aria-hidden="true" style="position: absolute; inset: 0"><path d="M120 0 L95 140 L70 280 L52 420 L0 420 L0 0 Z" fill="#CFE0EA"/><path d="M170 0 L150 210 L140 420" stroke="#FFFFFF" stroke-width="6" fill="none"/><path d="M60 120 L330 160" stroke="#FFFFFF" stroke-width="4" fill="none"/></svg>
+      <sc-for list="{{tags}}" as="t" hint-placeholder-count="6">
+        <span style="{{t.style}}"><span style="{{t.bar}}"></span><span><b>{{t.dev}}</b> · {{t.kind}}</span></span>
+      </sc-for>
+      <sc-if value="{{flyNote}}" hint-placeholder-val="{{false}}">
+        <span style="position: absolute; top: 10px; right: 10px; background: #0F1D26; color: #FFFFFF; font-size: 11px; padding: 4px 9px; border-radius: 999px">המפה זזה למבצע שהיא מדברת עליו</span>
+      </sc-if>
+    </div>
+
+    <span style="position: absolute; left: 12px; bottom: 76px; width: 230px; height: 46px; border-radius: 23px; background: #17694A; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center">ייעוץ חינם בוואטסאפ</span>
+    <span style="position: absolute; right: 12px; bottom: 14px; width: 48px; height: 48px; border-radius: 50%; background: #1D3F8F; color: #FFFFFF; font-size: 11px; display: flex; align-items: center; justify-content: center">נגישות</span>
+
+    <sc-if value="{{bubble}}" hint-placeholder-val="{{true}}">
+      <div style="position: absolute; right: 10px; bottom: 150px; width: 286px; background: #FFFFFF; border: 1px solid #C3CED5; border-radius: 16px; padding: 12px; box-shadow: 0 14px 34px rgba(15,29,38,.22); animation: bub .35s ease-out both; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 14px; line-height: 1.55">{{line}}</span>
+        <sc-if value="{{check}}" hint-placeholder-val="{{false}}">
+          <span style="font-size: 13px; line-height: 1.5; background: #FFF4F5; border-right: 3px solid #C8102E; padding: 6px 8px; border-radius: 6px"><b>מה שווה לבדוק:</b> {{check}}</span>
+        </sc-if>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap">
+          <sc-for list="{{acts}}" as="a" hint-placeholder-count="2">
+            <span style="min-height: 34px; display: inline-flex; align-items: center; padding: 0 11px; border-radius: 17px; background: #0E4C63; color: #FFFFFF; font-size: 12px; font-weight: 600">{{a}}</span>
+          </sc-for>
+        </div>
+        <span style="font-size: 11px; color: #4A5863">דמות ממוחשבת · לא ממליצה על מבצע מסוים · זה לא ייעוץ</span>
+        <span style="position: absolute; bottom: -7px; right: 30px; width: 12px; height: 12px; background: #FFFFFF; border-right: 1px solid #C3CED5; border-bottom: 1px solid #C3CED5; transform: rotate(45deg)"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{panel}}" hint-placeholder-val="{{false}}">
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 430px; background: #0F1D26; color: #FFFFFF; border-radius: 22px 22px 0 0; padding: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; animation: bub .35s ease-out both">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span style="position: relative; width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 3px solid #FFFFFF; flex: none; animation: glow 1.6s infinite">
+            <span style="position: absolute; left: -21px; top: -17px; width: 126px; height: 126px">
+              <img src="/_blob/9c3066d74fbfa410c73702be034c3cb7" alt="" style="width: 126px; height: 126px; display: block">
+              <img src="/_blob/346afab715c7a393072b836dbb7e71d2" alt="" style="position: absolute; left: 42.5px; top: 62px; width: 40.9px; height: 33.5px; animation: lipB .9s infinite">
+              <img src="/_blob/7581e71a428069ddb5f0807fe7fe5803" alt="" style="position: absolute; left: 42.5px; top: 62px; width: 40.9px; height: 33.5px; animation: lipC 1.3s infinite">
+            </span>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 16px">על מה לספר לכם?</b><span style="font-size: 12px; color: #B9C6CF">השאלות משתנות לפי מה שעשיתם בעמוד</span></span>
+        </div>
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="4">
+          <span style="min-height: 42px; display: flex; align-items: center; padding: 0 12px; border-radius: 12px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); font-size: 14px">{{c}}</span>
+        </sc-for>
+        <div style="display: flex; gap: 8px; margin-top: 2px">
+          <span style="flex: 1; min-height: 46px; display: flex; align-items: center; padding: 0 12px; border-radius: 12px; background: #FFFFFF; color: #8D9AA3; font-size: 14px">כתבו שאלה...</span>
+          <span style="width: 46px; height: 46px; border-radius: 50%; background: #C8102E; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700">דברו</span>
+        </div>
+        <span style="font-size: 11px; color: #B9C6CF">הדיבור הופך לטקסט בדפדפן שלכם. אנחנו לא שומרים הקלטה. סגירה בלחיצה אחת, והיא לא קופצת שוב.</span>
+      </div>
+    </sc-if>
+
+    <span style="{{faceBox}}">
+      <span style="position: absolute; left: -16px; top: -13px; width: 96px; height: 96px">
+        <img src="/_blob/9c3066d74fbfa410c73702be034c3cb7" alt="" style="width: 96px; height: 96px; display: block">
+        <img src="/_blob/346afab715c7a393072b836dbb7e71d2" alt="" style="{{lipB}}">
+        <img src="/_blob/7581e71a428069ddb5f0807fe7fe5803" alt="" style="{{lipC}}">
+        <img src="/_blob/459ed879b6418d16ac77f14f7c48e087" alt="" style="position: absolute; left: 28.1px; top: 26.25px; width: 39.75px; height: 18px; opacity: 0; animation: blink 4.2s infinite">
+      </span>
+    </span>
+    <sc-if value="{{talk}}" hint-placeholder-val="{{true}}">
+      <span style="position: absolute; right: 82px; bottom: 96px; display: flex; gap: 2px; align-items: center; height: 16px">
+        <span style="width: 3px; height: 16px; background: #C8102E; border-radius: 2px; animation: bar .6s infinite"></span>
+        <span style="width: 3px; height: 16px; background: #C8102E; border-radius: 2px; animation: bar .6s .15s infinite"></span>
+        <span style="width: 3px; height: 16px; background: #C8102E; border-radius: 2px; animation: bar .6s .3s infinite"></span>
+      </span>
+    </sc-if>
+  </section>
+  <span style="font-size: 11px; color: #4A5863; margin-top: -6px">המספרים בתוך הטלפון הם דוגמה. באתר הם מחושבים מהמפה עצמה, והתנאים נלקחים מהמבצע כפי שפורסם.</span>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <b style="font-size: 16px">מתי היא מדברת, ומתי לא</b>
+    <span style="font-size: 13px; line-height: 1.6">• קול רק אחרי שלחצתם על משהו בעמוד, כמו שהדפדפן דורש. עד אז כתוביות בלבד.<br>• לכל היותר משפט אחד שלא ביקשתם כל 40 שניות, ושלושה בכל הביקור.<br>• אף פעם לא תוך כדי גלילה, הקלדה או מילוי טופס.<br>• סגרתם? היא נשארת סגורה. נשאר כפתור קטן "שאלו אותה".<br>• היא לא מכסה את כפתור הוואטסאפ ואת כפתור הנגישות.<br>• היא זוכרת את הביקור הקודם רק במכשיר שלכם (מה ראיתם, מתי), ולא שולחת את זה לשום מקום.</span>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <b style="font-size: 16px">מה היא אף פעם לא עושה</b>
+    <span style="font-size: 13px; line-height: 1.6">לא מוכרת, לא ממליצה על מבצע, לא אומרת "כדאי" או "הזדמנות". לא ממציאה מספר: כל מספר בא מהמבצע כפי שפורסם, עם החודש והמקור. לא מתווכת: לא קובעת ביקור ולא מעבירה הצעה. כשאין לה תשובה בדוקה, היא אומרת את זה ומציעה וואטסאפ.</span>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D3DBE0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <b style="font-size: 16px">מול הטובים בעולם (נבדק 16.11.2026)</b>
+    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 1px; background: #D3DBE0; font-size: 11px; line-height: 1.35; border-radius: 8px; overflow: hidden">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+        <span style="{{r.h}}">{{r.a}}</span><span style="{{r.s}}">{{r.b}}</span><span style="{{r.s}}">{{r.c}}</span><span style="{{r.s}}">{{r.d}}</span>
+      </sc-for>
+    </div>
+    <span style="font-size: 11px; line-height: 1.5; color: #4A5863">Tavus ו-HeyGen לפי האתרים והתיעוד שלהם. זילו (AI mode) ובאיוט (BayutGPT) הם עוזרים כתובים בלי פרצוף. זמן התגובה שלנו נמדד בגרסה האנגלית (110 עד 212 אלפיות שנייה), והעברית תימדד מחדש לפני העלייה.</span>
+  </section>
+
+  <section style="background: #0F1D26; color: #FFFFFF; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <b style="font-size: 16px">הצהרת הגינות</b>
+    <span style="font-size: 13px; line-height: 1.65; color: #E3EAEE">לא מצאנו אווטאר שקורא את עמוד המבצעים עצמו, מגיב למה שהגולש עושה בו, מזיז את המפה ופותח את המחשבון, מדבר עברית, ואומר רק עובדות בדוקות עם מקור. בזה היא מעל כולם.<br>במה אחרים מעלינו, ולא נסתיר: Tavus ו-HeyGen נותנים פנים מצולמות שזזות כמו אדם ושיחה חופשית על כל נושא. אצלנו הפרצוף קטן ותנועת השפתיים עדינה בכוונה.<br>המחקר תומך בבחירה: סקירה של 25 ניסויים (Yee, Bailenson ו-Rickertsen, CHI 2007) מצאה שעצם הנוכחות של פנים חשובה יותר מכמה הן מציאותיות. מחקרי עוזרים יוזמים מראים שעזרה שלא ביקשו מרגיזה כשהיא לא בזמן ולא במקום, ולכן הכללים למעלה.</span>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2480}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sc: 0 }; }
+  renderVals() {
+    const S = this.state;
+    const names = ['נכנסתם', 'הזזתם סכום', 'לחצתם על מבצע', 'לחצתם עליה', 'חזרתם אחרי יומיים', 'עצרתם על המפה'];
+    const chip = (on) => 'min-height: 38px; padding: 0 11px; border-radius: 19px; font-size: 12px; font-weight: 600; ' + (on ? 'background: #0F1D26; color: #FFFFFF; border: 1px solid #0F1D26' : 'background: #FFFFFF; color: #0F1D26; border: 1px solid #C3CED5');
+    const L = [
+      { line: 'שלום. אני מכירה את 17 המבצעים שעל המפה, ומה שפורסם בכל אחד. הזיזו את הסכום שיש לכם ביד, ואראה לכם מה פתוח.', check: '', acts: ['לחצו לשמוע אותי'], talk: false },
+      { line: 'עם 300 אלף ביד נפתחים 6 מבצעים. הדלקתי אותם במפה. למשל UPVIEW בלוד: 0% הון עצמי עד המסירה, לפי הפרסום.', check: '', acts: ['הראי רק אותם', 'התראה כשנפתח עוד'], talk: true, lit: true },
+      { line: 'LOVE בגליל ים של גינדי: 20% בחתימה ו-50% במסירה. את היתרה לוקחים כהלוואה ומחזירים 10 שנים אחרי האכלוס, והחברה נושאת בריבית ובהצמדה. פורסם בנובמבר 2026.', check: 'המחיר שפורסם, מ-4.2 מיליון ₪, לא כולל את ההלוואה. שווה לבקש את המחיר המלא איתה, ולבדוק מול הבנק.', acts: ['פרטים במקור', 'התראה לאזור הזה'], talk: true, fly: true },
+      { panel: true, talk: true },
+      { line: 'טוב שחזרתם. מאז הביקור שלכם ב-14.11 נכנס מבצע חדש אחד, ומבצע אחד הסתיים ועבר לארכיון.', check: '', acts: ['הראי את החדש', 'מה הסתיים'], talk: true },
+      { line: 'אפשר להשאיר במפה רק מבצעים שבהם לא משלמים כלום עד המפתח.', check: '', acts: ['הראי'], talk: true, nod: true }
+    ];
+    const C = L[S.sc];
+    const tagsBase = [
+      { dev: 'גינדי', kind: '20/50/30', x: 210, y: 70, hot: true },
+      { dev: 'אהרוני', kind: '0% עד המסירה', x: 120, y: 250, fit: true },
+      { dev: 'RAYK', kind: '215 אלף ביד', x: 150, y: 300, fit: true },
+      { dev: 'בראל', kind: '11/89', x: 230, y: 30, fit: true },
+      { dev: 'מליסרון', kind: '0% הון עצמי', x: 200, y: 170, fit: true },
+      { dev: 'צרפתי', kind: 'עד 7,000 ₪', x: 90, y: 360 }
+    ];
+    const tags = tagsBase.map((t) => {
+      const lit = (C.lit && t.fit) || (C.fly && t.hot);
+      const dim = C.lit && !t.fit;
+      return {
+        dev: t.dev, kind: t.kind,
+        style: 'position: absolute; right: ' + t.x + 'px; top: ' + t.y + 'px; display: flex; gap: 6px; align-items: stretch; padding: 5px 9px 5px 7px; border-radius: 9px; font-size: 11px; white-space: nowrap; transition: all .3s; ' + (lit ? 'background: #0F1D26; color: #FFFFFF; transform: scale(1.08); box-shadow: 0 8px 18px rgba(200,16,46,.35)' : 'background: #FFFFFF; color: #0F1D26; box-shadow: 0 3px 10px rgba(15,29,38,.18)') + (dim ? '; opacity: .35' : ''),
+        bar: 'width: 4px; border-radius: 2px; background: ' + (t.hot ? '#C8102E' : '#0E4C63')
+      };
+    });
+    const hd = 'background: #F4F7F9; padding: 6px; font-weight: 600';
+    const cell = 'background: #FFFFFF; padding: 6px';
+    const rowsData = [
+      ['', 'נדלן', 'Tavus', 'HeyGen'],
+      ['מגיבה למה שעושים בעמוד', 'כן: סכום, מבצע, עצירה', 'רואה את הפנים במצלמה, לא את העמוד', 'לא'],
+      ['מזיזה את המפה, פותחת מחשבון', 'כן', 'רק אם מפתח בונה', 'לא'],
+      ['עברית מדוברת', 'כן', 'לא אומת', 'לא אומת (שאלה פתוחה בפורום שלהם)'],
+      ['עובדות רק מנתונים בדוקים', 'כן, עם מקור', 'נוצר על ידי מודל', 'נוצר על ידי מודל'],
+      ['זמן עד תשובה', '0.1 עד 0.2 שנ׳ (נמדד)', 'כ-0.6 שנ׳ (לפי החברה)', 'לא פורסם'],
+      ['עלות לדקת שיחה', '0', '0.26 עד 0.37 דולר', 'כ-3 דולר'],
+      ['פנים מצולמות שזזות', 'לא, עדין בכוונה', 'כן', 'כן'],
+      ['שיחה חופשית על הכל', 'חלקית, ואומרת כשלא יודעת', 'כן', 'כן']
+    ];
+    const rows = rowsData.map((r, i) => ({ a: r[0], b: r[1], c: r[2], d: r[3], h: i === 0 ? hd : hd.replace('#F4F7F9', '#FAFBFC'), s: i === 0 ? hd : cell + (r[1].indexOf('כן') === 0 || r[1] === '0' ? '; color: #17694A; font-weight: 600' : '') }));
+    const speaking = !!C.talk;
+    const cash = S.sc === 1 ? '300,000 ₪' : '150,000 ₪';
+    const pct = S.sc === 1 ? 46 : 22;
+    return {
+      scenes: names.map((n, i) => ({ label: n, pick: () => this.setState({ sc: i }), style: chip(S.sc === i) })),
+      line: C.line || '', check: C.check || '', acts: C.acts || [],
+      bubble: !C.panel, panel: !!C.panel, talk: speaking, flyNote: !!C.fly,
+      chips: ['מה זה 20/80, ומה בודקים מול הבנק?', 'איפה יש 0% הון עצמי?', 'מה ההבדל בין מבצע להנחה אמיתית?', 'מבצעים ליד רמת גן'],
+      tags: tags, rows: rows, cash: cash,
+      fill: 'position: absolute; right: 0; top: 0; bottom: 0; width: ' + pct + '%; background: #0E4C63; border-radius: 3px',
+      knob: 'position: absolute; top: 50%; right: ' + pct + '%; width: 18px; height: 18px; margin: -9px -9px 0 0; border-radius: 50%; background: #FFFFFF; border: 3px solid #0E4C63; box-sizing: border-box',
+      faceBox: 'position: absolute; right: 14px; bottom: 80px; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 3px solid #FFFFFF; box-shadow: 0 0 0 2px ' + (speaking ? '#C8102E' : '#0E4C63') + ', 0 8px 20px rgba(15,29,38,.35); background: #D3DCE2; animation: peek .6s cubic-bezier(.2,.9,.3,1.3) both' + (C.nod ? ', nod 1.2s .7s 2' : '') + (C.panel ? '; display: none' : ''),
+      lipB: 'position: absolute; left: 32.4px; top: 47.25px; width: 31.1px; height: 25.5px; opacity: 0' + (speaking ? '; animation: lipB .9s infinite' : ''),
+      lipC: 'position: absolute; left: 32.4px; top: 47.25px; width: 31.1px; height: 25.5px; opacity: 0' + (speaking ? '; animation: lipC 1.3s infinite' : '')
+    };
+  }
+}
+</script>
+</body>
+</html>
