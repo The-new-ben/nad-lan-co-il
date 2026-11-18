@@ -1,0 +1,1359 @@
+https://telegram.org/faq
+2026-11-18 21:19:02
+
+EN 
+English
+Bahasa Indonesia
+Bahasa Melayu
+Deutsch
+Español
+Français
+Italiano
+Nederlands
+O‘zbek
+Polski
+Português (Brasil)
+Türkçe
+Беларуская
+Русский
+Українська
+Қазақша
+العربية
+فارسی
+한국어
+ Follow on X
+Home
+FAQ
+Apps
+API
+Safety
+Telegram FAQ
+
+This FAQ provides answers to basic questions about Telegram.
+Check out our Advanced FAQ for more technical information.
+
+Telegram keeps evolving and adding new features, so this document may contain outdated information. We expect to finish updating the FAQ, Bot Manuals, and other documents within a few months.
+
+General
+
+What is Telegram?
+Who is it for?
+How is it different from WhatsApp?
+How old is Telegram?
+Is it available on my device?
+Who are the people behind Telegram?
+Where is Telegram based?
+How do you make money?
+What are your thoughts on internet privacy?
+What about GDPR?
+Do you process takedown requests?
+Do you process data requests?
+
+Telegram Basics
+
+Who can I message?
+Who can message me?
+Does Telegram send Verification Codes for other apps?
+Who has Telegram?
+Inviting friends
+What do the check marks mean in Telegram?
+Can I hide my 'last seen'?
+Who can see me 'online'?
+Can I delete my messages?
+Voice, Video and Group calls
+Using emoticons
+
+Groups and Channels
+
+What makes Telegram groups cool?
+How are channels and groups different?
+Creating a group
+Adding members and using Invite Links
+
+Usernames and t.me
+
+What are usernames? How do I get one?
+What are Collectible Usernames? How are they different from basic usernames?
+How does t.me work?
+What can I use as my username?
+Do I need a username?
+Will people know my number?
+How do I delete my username?
+What do I do if my username is taken?
+What if someone is pretending to be me?
+
+Security
+
+How secure is Telegram?
+How do you encrypt data?
+Why should I trust you?
+Do I need to trust Telegram for it to be secure?
+What if my hacker friend doubts you?
+Can Telegram protect me against everything?
+How does 2-Step Verification work?
+What is Cocoon?
+Do Telegram AI features upload data to third parties?
+What AI models does Telegram use?
+
+Secret Chats
+
+What is a secret chat?
+Starting a secret chat
+Using the self-destruct timer
+Screenshot alerts
+Encryption key picture
+Why not make all chats 'secret'?
+
+Your Account
+
+Who can see my phone number?
+I have a new phone number, what do I do?
+Log out of Telegram
+Change your phone number
+Delete your Telegram account
+How does account self-destruction work?
+My phone was stolen. What do I do?
+What does Profile Rating mean?
+What is a Passkey?
+
+Bots
+
+How do I create a bot?
+How do I get rid of a bot?
+Are bots safe?
+What are mini apps?
+
+Deeper Questions
+
+Can I get Telegram's server-side code?
+Can I use my own server?
+Can I use the Telegram API?
+Do you have a Privacy Policy?
+What does the iOS privacy sheet mean?
+Why do you have two apps in the Mac App Store?
+Can I translate Telegram?
+Can I help?
+
+Troubleshooting
+
+SMS, login, register
+Getting a login code via a phone call
+Getting codes via Telegram
+Notification problems
+Problems with contacts
+Deleting contacts on Android
+Secret Chats
+Can't send messages to non contacts
+Telegram uses the camera or microphone in the background
+
+Contact Telegram Support
+Follow Us on Twitter
+Facebook
+Advanced FAQ
+
+General Questions
+Q: What is Telegram? What do I do here?
+
+Telegram is a messaging app with a focus on speed and security, it’s super-fast, simple and free. You can use Telegram on all your devices at the same time — your messages stay in sync across any number of your phones, tablets, computers and even smartwatches. Telegram is one of the top 10 most downloaded apps in the world with over 1 billion active users.
+
+With Telegram, you can send messages, photos, videos and files of any type (doc, zip, mp3, etc), as well as create groups for up to 200,000 people or channels for broadcasting to unlimited audiences. You can write to your phone contacts and find people by their usernames. As a result, Telegram is like SMS and email combined — and can take care of all your personal or business messaging needs. We also support end-to-end encrypted voice and video calls, group calls for up to 200 participants, and voice chats in groups that members can join whenever they want.
+
+Follow our Tips Channel to learn more about Telegram features.
+
+Q: Who is Telegram for?
+
+Telegram is for everyone who wants fast, reliable and secure messaging and calls. Business users and teams may like the large groups, usernames, desktop apps, end-to-end encrypted conference calls with screen sharing, and powerful file sharing options.
+
+Telegram groups can have up to 200,000 members and support replies, mentions and hashtags to keep communication in large communities efficient. You can create forum-style topics in your group and appoint admins with advanced tools to help these communities prosper in peace. Public groups can be joined by anyone and are powerful platforms for discussions and collecting feedback.
+
+AI developers can bring their assistants to Telegram as bots, using a free Bot API with features made for AI: an AI bot can show its answer while it is being written, keep several conversation threads with the same user, reply with tables, headings and images and buttons, and answer in any chat where someone mentions it — even a group it is not a member of. Users can let an AI bot answer messages for them, guard their group or build other bots, and bots can charge for their services in Telegram Stars.
+
+In case you're more into sharing media, Telegram has animated gif search, a state of the art photo editor, and an open sticker platform. What's more, there is no need to worry about disk space on your device. With Telegram's cloud support and cache management options, Telegram can take up nearly zero space on your phone.
+
+Those looking for extra privacy should check out our advanced settings and rather revolutionary policy. And if you want secrecy, try our device-specific Secret Chats with self-destructing messages, photos, and videos — and lock your app with an additional passcode.
+
+Businesses can also use Telegram Business features — opening hours and location on the profile, quick replies, automatic greeting messages and chatbots — without any coding.
+
+We keep evolving — check out our Brief History of Telegram and follow us on X and Telegram for updates.
+
+Q: How is Telegram different from WhatsApp?
+
+Unlike WhatsApp, Telegram is a cloud-based messenger with seamless sync. As a result, you can access your messages from several devices at once, including tablets and computers, and share an unlimited number of photos, videos and files (doc, zip, mp3, etc.) of up to 2 GB each — or 4 GB each with Telegram Premium.
+
+Telegram needs less than 100 MB on your device – you can keep all your media in the cloud without deleting things – simply clear your cache to free up space.
+
+Thanks to Telegram's multi-data center infrastructure and encryption, it is faster and way more secure. On top of that, private messaging on Telegram is free and will stay free — no ads, no subscription fees, forever.
+
+Telegram's API and code is open, and developers are welcome to create their own Telegram apps. We also have a Bot API, a platform for developers that allows anyone to easily build specialized tools for Telegram, integrate AI and other services, or replace any website.
+
+And that's just the tip of the iceberg.
+
+Follow our Tips Channel to learn more about Telegram features.
+
+Q: How old is Telegram?
+
+Telegram for iOS was launched on August 14, 2013. The alpha version of Telegram for Android officially launched on October 20, 2013. More and more Telegram clients appear, built by independent developers using Telegram's open platform.
+
+Q: Which devices can I use?
+
+You can use Telegram on smartphones, tablets, and even computers. We have apps for iOS, Android, a native macOS app and a universal desktop app for Windows, macOS, and Linux. Telegram Web can also help to quickly do something on the go.
+
+There are also apps for Apple Watch and Android Wear OS smartwatches. On your watch you can read messages of any length, send text and voice messages, listen to voice messages, and view photos and videos.
+
+You can log in to Telegram from as many of your devices as you like — all at the same time. Just use your main mobile phone number to log in everywhere, your cloud chats will sync instantly.
+
+The Telegram API is open for developers, should you want to build your own applications for other platforms.
+
+Q: Who are the people behind Telegram?
+
+Telegram is supported by Pavel Durov and his brother Nikolai. Pavel supports Telegram financially and ideologically while Nikolai developed MTProto, the unique custom data protocol used by Telegram, which is open, secure and optimized for work with multiple data-centers. As a result, Telegram combines security, reliability and speed on any network.
+
+See also: articles about Telegram
+
+Q: Where is Telegram based?
+
+The Telegram development team is based in Dubai.
+
+Most of the developers behind Telegram originally come from St. Petersburg, the city famous for its unprecedented number of highly skilled engineers. The Telegram team had to leave Russia due to local IT regulations and has tried a number of locations as its base, including Berlin, London and Singapore. We’re currently happy with Dubai, although are ready to relocate again if local regulations change.
+
+Q: Will you have ads in my private chats and groups? Or sell my data? Or steal my beloved and enslave my children?
+
+No. See this post for details.
+
+Q: How does Telegram make money?
+
+We believe in fast, secure messaging that is also 100% free.
+
+Our founder and CEO Pavel Durov, who financed Telegram throughout most of its history, explained how Telegram would become self-sustaining in this post.
+
+Following this plan, Telegram has introduced sustainable forms of monetization that put users first:
+
+In 2021, Telegram launched Sponsored Messages – minimalist, privacy-conscious ads that may appear in large public channels, bots, public stories and public search, but never in your private chats or groups. Ads are never based on the content of your messages or your contacts, and your data is never shared with advertisers (see the Privacy Policy). Telegram Premium users don't see ads at all. Telegram shares 50% of the revenue with the owners of the channels where the ads appear.
+In 2022, Telegram launched a Premium subscription that users can purchase to unlock additional exclusive features.
+In 2024, Telegram launched Telegram Stars to enable payments for digital goods and services across the Telegram ecosystem. Users can buy stars through in-app purchases via Apple and Google or PremiumBot, then spend them on digital products and games, supporting content creators, buying Telegram Gifts and more.
+
+Thanks to these sources of income, Telegram reached profitability in 2024. This revenue pays for servers and developer salaries. However, making profits will never be an end goal for Telegram.
+
+Learn more about subscriptions in the Telegram Premium FAQ.
+
+Q: What are your thoughts on internet privacy?
+
+We think that the two most important components of Internet privacy should be:
+
+Protecting your private conversations from snooping third parties, such as officials, employers, etc.
+Protecting your personal data from third parties, such as marketers, advertisers, etc.
+
+Telegram's aim is to create a truly free messenger, with a revolutionary privacy policy.
+
+Q: What about GDPR?
+
+The General Data Protection Regulation (GDPR) came into force in Europe on May 25, 2018. Since taking back our right to privacy was the reason we made Telegram, there wasn't much we had to change.
+
+We don't use the content of your chats or your contact list for ad targeting, we don't sell your data to others, and we aren't controlled by You-Know-Who. Telegram only stores the data it needs to function as a feature-rich cloud service. For example, your cloud chats – so that you can access them from any devices without using third-party backups, or your contacts – so that you can rely on your existing social graph when messaging people on Telegram. See the Privacy Policy for details.
+
+You can use @EURegulation to:
+
+Request a copy of all your data that Telegram stores.
+Contact us about Data Privacy.
+Q: There's illegal content on Telegram. How do I take it down?
+
+All Telegram apps have 'Report' buttons that let you flag illegal content for our moderators — in just a few taps.
+
+On Telegram for Android, tap the message and select Report from the menu. On iOS, press and hold the message. On Telegram Desktop, Web or Telegram for macOS, right-click the message and select Report. Then choose an appropriate reason.
+
+You can also use our automated takedown email address abuse@telegram.org. If you're sending an email takedown request, please make sure to include links (like t.me/... or @...) to the content on Telegram which you think needs attention from our moderators.
+
+Users from the EU are welcome to study the User Guidance for the EU Digital Services Act for the relevant reporting options.
+
+Note: If a scammer is pretending to be you, contact @NoToScam
+
+For more information on safety, please see this page.
+
+Q: How do I send a request under EU Regulation 2021/784?
+
+The Regulation (EU) 2021/784 of the European Parliament and of the Council of 29 April 2021 on addressing the dissemination of terrorist content online (Terrorist Content Online Regulation, or TCO Regulation) allows authorities in EU countries to send removal requests for terrorist content, if it is discovered on Telegram's public platform. We have also designated a third party, European Digital Services Representative (EDSR), to assist us with TCO-related communications.
+
+Users whose publications were taken down in connection with the TCO Regulation can request details on why their publications were considered terrorist and how to challenge the removal:
+
+by writing to EDSR at Avenue Huart Hamoir 71, 1030 Brussels, Belgium, or
+by contacting the @EURegulation bot on Telegram and using the command /tco_ask.
+
+Requests can be accepted in English and French.
+
+Q: A bot or channel is infringing on my copyright. What do I do?
+
+Private groups and chats on Telegram are private amongst their participants. We do not process any requests related to them. However, Telegram also supports sticker sets, bots, channels and groups that are publicly available.
+
+If you see a bot, channel, sticker set, or other content that is a part of Telegram’s public platform and is infringing on your copyright, kindly submit a complaint to dmca@telegram.org. Please note that such requests should only be submitted by the copyright owner or an agent authorized to act on the owner’s behalf.
+
+Q: Do you process take-down requests from third parties?
+
+Our mission is to provide a secure means of communication that works everywhere on the planet. To do this in the places where it is most needed (and to continue distributing Telegram through the App Store and Google Play), we have to process legitimate requests to take down illegal public content (e.g., sticker sets, bots, groups and channels) within the app. For example, we can take down sticker sets that violate intellectual property rights or porn bots.
+
+Public content on Telegram, such as user-uploaded stickers sets, channels, and bots by third-party developers, is not part of the core Telegram UI. Whenever we receive a report regarding potentially illegal public content, we perform the necessary legal checks and take it down when deemed appropriate.
+
+Please note that this does not apply to local restrictions on freedom of speech. For example, if criticizing the government is illegal in some country, Telegram won't be a part of such politically motivated censorship. This goes against our founders' principles. While we do block terrorist (e.g. ISIS-related) bots and channels, we will not block anybody who peacefully expresses alternative opinions.
+
+Q: My bot or sticker set was banned unfairly, what do I do?
+
+If you think we banned your bot, channel, or sticker set for no apparent reasons, drop us a line at abuse@telegram.org.
+
+Q: Do you process data requests?
+
+Secret chats use end-to-end encryption, thanks to which we don't have any data to disclose.
+
+To protect the data that is not covered by end-to-end encryption, Telegram uses a distributed infrastructure. Cloud chat data is stored in multiple data centers around the globe that are controlled by different legal entities spread across different jurisdictions. The relevant decryption keys are split into parts and are never kept in the same place as the data they protect. As a result, several court orders from different jurisdictions are required to force us to give up any data.
+
+Thanks to this structure, we can ensure that no single government or block of like-minded countries can intrude on people's privacy and freedom of expression. Telegram can be forced to give up data only if an issue is grave and universal enough to pass the scrutiny of several different legal systems around the world.
+
+To this day, we have disclosed 0 bytes of user messages to third parties, including governments.
+
+For more information on how your data is protected, please see the Telegram Privacy Policy and this post by the Telegram CEO.
+
+Telegram Basics
+
+Follow our Tips Channel to learn more about Telegram features.
+
+Q: Who can I write to?
+
+You can write to people who are in your phone contacts and have Telegram. Another way of contacting people is to type their Telegram username into the search field – you don't need to know their phone number to do this.
+
+Q: Who can contact me?
+
+People can contact you on Telegram if they know your phone number or if you message them first.
+
+If they don't know your phone number, they can find you in these cases:
+
+When you both are members of the same group, or if you choose to post in public groups on Telegram.
+If you choose to set a public username. Others can use Global Search and find you by your username.
+
+You have several ways to control who can write to you:
+
+When someone outside your contacts writes to you for the first time, Telegram shows an info page about them — their country, when they joined Telegram and any groups you share — so you can spot scams before you reply. You can block and report them from the same screen.
+Telegram Premium users can limit new chats to 'My Contacts and Premium Users'. Other people can still reply if you message them first.
+Premium users can also charge Stars for messages from people who are not in their contacts.
+Q: Does Telegram send Verification Codes for other apps?
+
+Telegram allows third-party services to send verification codes to their users via Telegram. These codes only appear in the verified 'Verification Codes' chat, and let you tap to instantly copy the code.
+
+Services that do not specify a name or profile picture for their codes will appear with the default name and photo of 'Verification Codes'.
+
+If you receive a code in the 'Verification Codes' chat, it's probably because you requested to log in to a third-party service, like an external website, app or marketplace. It's also possible that someone else accidentally entered your phone number when logging in to another service. Either way, your Telegram account is completely safe — if you didn’t request a code, simply tap on it and select 'Report', no need to do anything else.
+
+Third-party services determine which way your verification codes are sent – and Telegram is not able to control this or make a service aware of your preferences. Unlike SMS codes that frequently fail to arrive and can be intercepted, verification codes sent via Telegram are delivered instantly and are securely encrypted – making them safer and more reliable for both users and services.
+
+The 'Verification Codes' chat is only used for codes from third-party services. Login codes for your Telegram account itself are sent to the verified service notifications chat named 'Telegram' in your chat list and should never be shared with anyone, including other services or apps.
+
+If you'd like to save money and increase efficiency by sending verification codes for your app or service via Telegram, check out the Telegram Gateway.
+
+Q: How do I know who in my contacts has Telegram?
+
+Your contacts, who have Telegram, are shown at the top of your Contacts. They also have pictures.
+
+Q: How do I invite my friends?
+
+The easiest way is to share your t.me link. Your friends can open it to start a chat with you, even if they don't have your phone number. You can also show them your QR code from Settings — they scan it with the camera in their Telegram app.
+
+If your friends don't have Telegram yet, send them the download link in any other app: https://telegram.org/dl/
+
+You can also use 'Invite Friends' in the app (*Android:* open the app menu > Invite Friends; iOS: open Contacts > Invite Friends) and choose which app to send the invitations with. On some phones these invitations are sent as SMS and may be charged by your carrier.
+
+Q: What do the check marks mean?
+
+One check — message delivered to the Telegram cloud and your friend has been notified if he allows notifications.
+Two checks — message read (your friend opened Telegram and opened the conversation with the message).
+
+In one-on-one chats and small groups, you can also see the exact time your message was read — tap the message to see it. To protect privacy, this information is kept for 7 days only. If you hide your last seen time from someone, your read time is hidden from them as well.
+
+We don't have a 'delivered to device' status for messages because Telegram can run on as many devices as you want. So which particular one would that check mean?
+
+Q: Can I hide my ‘last seen’ time?
+
+You can choose who sees this info in Privacy and Security settings.
+
+Remember that you won't see Last Seen timestamps for people with whom you don't share your own. You will, however, see an approximate last seen value. This keeps stalkers away but makes it possible to understand whether a person is reachable over Telegram. There are four possible approximate values:
+
+Last seen recently — covers anything between 1 second and 2-3 days
+Last seen within a week — between 2-3 and seven days
+Last seen within a month — between 6-7 days and a month
+Last seen a long time ago — more than a month (this is also always shown to blocked users)
+
+By default, if you hide your last seen time from someone, you will not see theirs either. Telegram Premium users can hide their last seen and read times and still see the times of people who share them.
+
+Q: Who can see me 'online'?
+
+The last seen rules apply to your online status as well. People can only see you online if you're sharing your last seen status with them.
+
+There are some exceptions because sometimes it is obvious that you are online. Regardless of the last seen settings, people will see you online for a brief period (~30 seconds) if you do the following:
+
+Send them a message in a one-on-one chat or in a group where you both are members.
+Read a message they sent you in a one-on-one chat.
+Broadcast a “typing…” status to their chat with you or to a group where you both are members.
+
+If you're not sharing your last seen timestamp with someone and don't do anything of the above, they'll never see you online. Another way of achieving this is to block that person.
+
+Q: Can I delete my messages?
+
+Yes. You can always delete any messages you sent or received for both sides in any one-on-one conversation (in groups, it's still your own messages only). You can also clear the entire chat history on both ends. On Telegram, deleted messages do not leave a mark in the chat.
+
+Together with privacy settings for forwarded messages, this makes exchanging Telegram messages similar to talking face to face (without a tape recorder). As a result, users no longer need to worry about the data accumulating in their chats over the years. Both parties in a conversation have full control over what does and what doesn't belong to their online identity.
+
+In one-on-one chats, you can also delete all messages from one day or a range of dates — tap the date bar in the chat. To make messages disappear by themselves, see Can messages delete automatically?
+
+Q: Can I edit a message after sending it?
+
+Yes. Tap and hold a message you sent and select 'Edit'. You can change the text, and you can add a photo, video or file to a message that did not have one — or replace the media it already has. Edited messages show an 'edited' label with the time of the last edit.
+
+You can edit your own messages in any chat. In channels, admins can edit posts.
+
+Q: Can messages delete automatically?
+
+Yes. Open the info page of any chat and choose 'Auto-Delete', then pick 24 hours, 7 days, 1 month or any other period. Messages sent after that are deleted for everyone in the chat when the time runs out.
+
+You can also turn on auto-delete for all new chats you start, in Settings > Privacy and Security.
+
+For photos, videos, voice and video messages, you can also set a self-destruct timer or send them so they can be viewed only once.
+
+Q: Can I send something that can be viewed only once?
+
+Yes. When you send a photo or video in a one-on-one chat, tap the timer icon and choose 'View Once'. The media is deleted from both devices after the other person opens it. We will try to send a notification if a screenshot is taken.
+
+Voice and video messages can also be sent in view-once mode: swipe up to lock the recording, then tap the view-once icon before sending.
+
+Q: Can I format text and write long posts?
+
+Yes. Select text in the message field to make it bold, italic, underlined, strikethrough, hidden under a spoiler, monospace, a link or a quote. Long quotes can be collapsed. The 'Date' option lets you insert a date and time that each reader sees in their own time zone and can tap to add to their calendar.
+
+For articles and long posts, Telegram Premium users have a rich text editor with headings, tables, lists, code blocks, and photos, videos or files placed inside the text. One message can hold up to 32,768 characters.
+
+To open the text editor, tap the ⛶ icon that appears after you type more than 3 lines of text. The 'Ai' icon next to it opens the AI editor, which can fix grammar, change the style of your text or translate it — with full privacy.
+
+Q: Can I translate messages?
+
+Yes. Tap and hold any message and select 'Translate' to translate it into your language. In Settings > Language you can turn on a 'Translate' button and choose languages that should not be translated.
+
+Telegram Premium users can translate an entire chat with one tap, including new messages as they arrive. Channel owners can turn on auto-translation for all readers, so every visitor sees posts in their own language.
+
+Before sending, you can also translate or rewrite your own text with the AI editor in the message field — it can fix grammar, shorten a message or change its style.
+
+The translations and the AI editor run on Cocoon and send nothing to third parties. See Do Telegram's AI features upload data to third parties?
+
+Q: Can I schedule messages or set reminders?
+
+Yes. Type a message, then hold the 'Send' button and choose:
+
+'Schedule Message' — to send it at a date and time you pick.
+'Send When Online' — to send it when the other person is next online (one-on-one chats only).
+'Send Without Sound' — to send it silently, without a notification sound. Scheduled messages can be sent silently too.
+
+A scheduled message can be set to repeat — every day, every week, twice a month and so on. If you schedule a message in your 'Saved Messages' chat, it becomes a reminder that pops up at the chosen time.
+
+Q: How do I organize my chats?
+Chat folders add tabs to your chat list, like Work, Family or News. Set them up in Settings > Chat Folders. You can share a folder as a link, so friends can join all its chats with one tap.
+Pinned chats always stay at the top of the list. Hold a chat and choose 'Pin'.
+Archived chats are hidden from the main list. Swipe a chat to archive it.
+Saved Messages is your personal space for notes, bookmarks and forwarded messages. You can view saved messages by chat and, with Premium, organize them with tags.
+In large groups, admins can split discussions into topics, shown as tabs.
+
+Telegram Premium doubles most of these limits — for example, up to 30 folders, 10 pinned chats and 1,000 channels.
+
+Sending Media and More
+Q: How do I send photos in full quality?
+
+Telegram makes photos smaller before sending so they load instantly and use less mobile data. You have three options:
+
+Standard — the default, good for most chats.
+High Definition — 4 times more pixels, while still using less than 0.5 MB. Tap the 'SD' button in the photo editor or choose 'Send in High Quality' in the attachment menu.
+As a file — the original photo with no compression at all. Choose the option to send as a file in the attachment menu.
+
+iOS Live Photos and Android Motion Photos can be sent as moving photos that play in any Telegram app — tap the 'Live' button in the media editor and pick a style.
+
+Q: Can I send voice and video messages?
+
+Yes. Tap and hold the microphone icon to record a voice message. Tap the icon once to switch to the camera and record a round video message. Swipe up while recording to lock it, so you don't need to keep holding the button.
+
+While recording, you can pause and continue, cut off the start or the end before sending, turn on the front flash in the dark, or make the message play only once.
+
+Telegram Premium users can convert voice and video messages to text with one tap. Members of boosted groups get this inside the group as well.
+
+With Premium, you can choose who is allowed to send you voice and video messages in Settings > Privacy and Security.
+
+Q: Can I share my location?
+
+Yes. Tap the attachment icon and select 'Location'. You can send your current location once, or share your live location for 15 minutes, 1 hour, 8 hours — or until you turn it off. While sharing, you can add more time at any moment.
+
+Live location works in one-on-one chats and in groups, so friends can follow your trip on a map. People you share with can set an alert to be notified when you get close.
+
+Q: Can I create polls and quizzes?
+
+Yes. Tap the attachment icon and select 'Poll'. A poll can have up to 12 options. Votes can be public or anonymous, you can allow several answers, or turn the poll into a quiz with correct answers.
+
+Polls can also include photos, videos or locations in questions and options, links in options, a description, a time limit, hidden results until the end, and an option that lets voters suggest new answers. In channels, admins can restrict voting to subscribers or to specific countries, and see a graph of votes over time once a poll has 100 votes.
+
+All past and active polls of a group or channel are collected in a 'Polls' tab on its profile.
+
+Q: What are checklists?
+
+Checklists are to-do lists you can send to any chat — a group, a one-on-one chat or your Saved Messages. People in the chat can tick items off, and you decide whether others may add new items.
+
+To create a checklist, open the attachment menu and tap 'Checklist'. Creating checklists is a Telegram Premium feature.
+
+Stickers, Emoji and Reactions
+Q: How do I send stickers, GIFs and emoji?
+
+Tap the smiley icon next to the message field to open the panel with emoji, stickers and GIFs.
+
+Emoji. Type one word to get emoji suggestions, or type : and a keyword — like :heart — to search emoji. You can suggest missing keywords for your language here.
+Stickers. Telegram has an open platform with millions of stickers made by users and artists. Type a keyword in the sticker panel to search over 100 million stickers and emoji in 36 languages. When you type a single emoji, matching stickers appear above the keyboard. To add a sticker set, tap any sticker you receive and choose 'Add'.
+GIFs. The GIF tab lets you search over 350 million GIFs. Hold a GIF to add a caption or edit it.
+Custom emoji are small animated emoji placed inside text. Anyone can see them, but sending them requires Telegram Premium — or a group emoji pack in a boosted group.
+
+Sticker, emoji and GIF search runs on Cocoon. Your searches are private and do not rely on third parties.
+
+Q: What are reactions?
+
+A reaction is a quick emoji reply to a message. Tap and hold a message and pick an emoji from the bar. The reaction appears under the message and the sender gets a notification. You can control these notifications in Settings > Notifications and Sounds > Reactions.
+
+Everyone can use the standard set of reactions. Telegram Premium users can react with any custom emoji and add up to 3 reactions to one message. You can also react to service messages — like someone joining a group or sending a gift.
+
+In channels, posts can have a Star reaction — a paid reaction that sends Telegram Stars to the channel owner. The post shows a list of top senders; you can stay anonymous, or react as one of your channels.
+
+Channel admins choose which reactions are allowed on their posts. Group admins can remove reactions from specific users. To see the exact number of each reaction, hold the counter.
+
+Q: What is an emoji status?
+
+An emoji status is an emoji shown next to your name — to tell people you are working, traveling, on vacation and so on. Open Settings and tap the status button next to your name to set one. Emoji statuses are a Telegram Premium feature.
+
+If you own a collectible gift, you can wear it as your status — your profile then takes the colors and symbol of the gift. Boosted groups and channels can set an emoji status too. Mini apps can set your status with your permission — for example, while you play a game.
+
+Q: What are message effects?
+
+In one-on-one chats you can send a message with an animated effect — like fireworks, flames or a screen full of kisses — that plays when the other person opens the chat. Hold the 'Send' button and pick an effect. Everyone gets 6 free effects — Telegram Premium unlocks hundreds more.
+
+Groups and Channels
+Q: What makes Telegram groups cool?
+
+Telegram groups can have up to 200,000 members each and are extremely powerful communication tools. Here are a few key features that make them stand out in the messaging world:
+
+Unified history
+Edit your messages after posting, delete them so that they disappear for everyone.
+
+Cross-platform availability
+Access your messages anytime, from any number of your mobile or desktop devices.
+
+Instant search
+Find the message you're looking for, even among millions. Filter by sender to make searching easier.
+
+Replies, mentions, hashtags
+Easily trace a conversation and keep communication efficient, no matter the group size. Chat-specific hashtags like #travel@groupname show only posts from your group.
+
+Smart notifications
+Mute the group to get notifications only when people mention you or reply to your messages.
+
+Pinned messages
+You can pin any message to be displayed at the top of the chat screen. All members will get a notification — even if they muted ordinary messages from your group.
+
+Moderation tools
+Appoint administrators that can mass-delete messages, control membership, and pin important messages. Set each admin's rights in detail. Several messages can be moderated at once, and Recent Actions shows what happened in the chat in the last 48 hours.
+
+Anti-spam tools
+In large groups, enable Aggressive Anti-Spam to use Telegram's full set of anti-spam tools in your chat. You can also require join requests for new members, and add AI bots as admins to screen them.
+
+Group permissions
+Set default permissions to restrict all members from posting specific kinds of content. Or even restrict members from sending messages altogether – and let the admins chat amongst themselves while everybody else is watching.
+
+Welcome messages
+Send welcome messages that only new members see — with media, several messages and rich formatting. Set them up in Edit > Welcome Message on the group's profile.
+
+File sharing
+Send and receive files of any type, up to 2 GB in size each (or 4 GB with Premium), access them instantly on your other devices.
+
+Member tags
+Members can add a short tag next to their name to show their role, job or interests. Admins decide whether members can set their own tags.
+
+Topics
+Split group discussions into topics — each with its own chat history, shared media and notification settings, like classic forums. Topics can be shown as tabs for quick switching.
+
+Public groups
+Get a short link for your group and make it public, like t.me/publictestgroup. This way, anybody can view the group's entire chat history and join to post messages.
+
+Hidden member lists
+In large groups, owners can hide the list of members to protect the privacy of the users, so that only admins can see it.
+
+Group boosts
+Members can boost a group with their Premium subscription to unlock features for everyone — like posting stories, custom emoji packs, voice-to-text and custom group appearance.
+
+Communities
+Link several groups, channels and bots into one community that members can browse and join without invite links.
+
+Customization via bots
+Create custom tools for any specific needs using our Bot API and Inline Bots.
+
+Leaving a group cleanly
+If you are the owner and want to leave the group, pick a new owner at the same time, so the group keeps running.
+
+Q: What's the difference between groups and channels?
+
+Telegram groups are ideal for sharing stuff with friends and family or collaboration in small teams. But groups can also grow very large and support communities of up to 200,000 members. You can make any group public, toggle persistent history to control whether or not new members have access to earlier messages, and appoint administrators with detailed rights. You can also pin important messages to the top of the screen so that all members can see them, including those who have just joined.
+
+Channels are a tool for broadcasting messages to large audiences. In fact, a channel can have an unlimited number of subscribers. When you post in a channel, the message is signed with the channel's name and photo and not your own. Each message in a channel has a view counter that gets updated when the message is viewed, including its forwarded copies. Channels can also post stories, receive direct messages and suggested posts from subscribers, run giveaways, and earn money from ads, paid content and gifts.
+
+Read more about channels in the Channels FAQ »
+
+Q: How do I create a group?
+
+iOS: Start a new message (tap the icon in the top right corner in Chats) > 'New Group'.
+Android: Tap the circular pencil icon in the chat list > 'New Group'.
+Telegram Desktop: Click the menu button in the top left corner > 'New Group'.
+
+Q: Can I assign administrators?
+
+You can add administrators to help you manage your group and set each admin's rights in detail. You can also add bots as admins — for example, AI guardians that check join requests before people get in.
+
+iOS: Go to Group Info (tap the photo in the top right corner on the group's chat screen) > Group Settings > Administrators.
+Android: Go to Group Info (tap the name in the header) > the pencil icon (in the top right corner) > Administrators.
+Telegram Desktop: When in the group, click '…' in the top right corner > Manage group > Administrators.
+
+Q: How do I add more members? What's an invite link?
+
+You can add your contacts, or using search by username.
+
+It is easy to migrate existing groups to Telegram by sending people an invite link. To create an invite link, go to Group Info > Add Member > Invite to Group via Link.
+
+Anyone who has Telegram installed will be able to join your group by following this link. If you choose to revoke the link, it will stop working immediately.
+
+Invite links can have a name, an expiry date and a limit on the number of people who can use them. You can also require admin approval for everyone who joins through a link. Channel owners can create paid links that require a monthly payment in Stars.
+
+Q: Can channels and subscribers talk to each other?
+
+Yes. Channel owners can turn on Direct Messages so subscribers can send them private messages — without the channel owner having to share their personal account.
+
+Subscribers can also suggest posts for the channel. The owner can review them, edit them, schedule them or reject them. This gives channels a clear way to crowdsource content or work with brands.
+
+Channel owners can set a fee in Stars for each direct message, to keep their inbox manageable. Channels can also add a discussion group — every post then gets a comments button. See the Channels FAQ for details.
+
+Q: What is a Community?
+
+A Community links several groups, channels and bots together around one topic — for example, a main chat, an announcements channel and a helper bot. Members of a community can see its other chats and join them without an invite link.
+
+Chats in a community can be Visible to all members, or Hidden from everyone except community admins and the members of that chat. By default, any member can add more chats to a community; admins can restrict this, in which case new chats are shown as suggestions.
+
+In your chat list, a community can be shown as one item that expands when you open it — this saves space.
+
+Q: What are boosts?
+
+Telegram Premium users get 4 boosts they can give to any group or channel they like. Each boost helps the chat reach a higher level, and every level unlocks features for the whole community — for example, stories posted by the chat, more stories per day, custom colors and wallpapers, an emoji status, a group emoji pack and voice-to-text for all members.
+
+The number of boosts needed for each level depends on the size of the chat. Admins can see the level and get the boost link in Profile > Statistics > Boosts (channels) or Profile > ⋮ / ⋯ > Boost Group (groups). You get 3 extra boosts for each Premium subscription you give as a gift, and giveaways bring in boosts from every subscription that is won.
+
+The full list of what each level unlocks is in the Premium FAQ, for channels and for groups.
+
+Q: How do giveaways work?
+
+Owners of channels and groups can run giveaways to reward their community and gain boosts. Prizes can be Telegram Premium subscriptions, Telegram Stars or real-world prizes chosen by the owner.
+
+Giveaways are paid in advance and fully transparent: winners are picked at random by Telegram, based on the rules the owner sets — for example, only subscribers from certain countries, or only people who joined after a certain date. To start one, go to Channel Settings > Statistics > Boosts (for groups: Group Info > Statistics > Boosts).
+
+Stories
+Q: What are stories?
+
+Stories are photos and videos that appear at the top of the chat list for your contacts, and disappear after a time you choose — 6, 12, 24 or 48 hours. You can also keep a story on your profile for as long as you want, in a grid of posts.
+
+When you post a story, you choose who can see it: Everyone, My Contacts, Close Friends, or a list of people you pick. You can hide your stories from specific people, edit a story after posting it, and see who viewed it.
+
+Channels and groups can post stories too, once they have enough boosts. Replies to a group's story go to the group chat.
+
+Stories you post are visible only to people you allow. Private stories never appear in search results.
+
+Q: How do I post a story?
+
+Swipe right on the chat list (on Android, tap the camera button) to open the story camera. You can:
+
+Take a photo or video — or use dual camera to record with the front and back cameras at the same time.
+Pick photos and videos from your gallery and post several stories at once. Videos longer than 60 seconds are split into several stories automatically.
+Combine up to 6 photos or videos in a collage.
+Add text, stickers, drawings, music from your chats or from your profile, a location, a weather widget, a link (Premium) and reaction stickers.
+Choose a cover frame for video stories, and set how long the story stays visible.
+
+Posts from channels and your collectible gifts can be shared to your story from their menu. On iOS, you can send photos from other apps straight to the story editor with the system Share button.
+
+Q: What is a Live Story?
+
+A Live Story is a live video broadcast inside your stories. Anyone who can see your stories can watch and send comments. Viewers can pay with Telegram Stars to highlight and pin their comment, or tap the Star icon to support the host.
+
+Live Stories have the same privacy options as normal stories. Groups and channels that have unlocked stories with boosts can host Live Stories too. If you stream with software like OBS or XSplit, you can use an RTMP key.
+
+To manage comments or set a price per comment while streaming, tap the top corner and select 'Live Settings'.
+
+Q: Can I find, save or repost stories?
+Find. Tap a #hashtag or a location tag in a story to see other public stories with the same tag or from the same place.
+Save. Stories you keep on your profile can be sorted into albums — open the 'Posts' tab on your profile and tap 'Add Album'. You can also pin up to 3 stories to the top of your profile.
+Repost. You can repost a story from a friend or a channel to your own page, and add your own comment or video message to it.
+Q: Can I watch stories without being seen?
+
+Yes, with Telegram Premium. Tap and hold a story in your chat list and select 'View Anonymously'. This opens the story without adding you to its list of viewers, and turns on Stealth Mode, which hides your recent views and your views for the next 25 minutes.
+
+Calls, Voice Chats and Live Streams
+Q: Can I make calls via Telegram?
+
+Yes. You can make end-to-end encrypted Voice Calls and Video Calls, and you can turn any call into a Group Call with up to 200 participants — also protected by end-to-end encryption, which you can verify at any time by comparing the 4 emoji shown on everyone's screens.
+
+Participants can send comments and reactions directly inside the call without interrupting the audio. In video calls you can also share your screen, with sound.
+
+To start a group call: call someone and tap 'Add Person', or open the Calls tab, tap 'New Call' and pick several people. You can also create a call link or QR code there and send it to anyone — they join whenever they are ready.
+
+Q: What is a Video Chat?
+
+If you want an ongoing video chat that members of a group can join whenever they want, you can also start a Video Chat in any group — useful as a virtual office or a casual hangout. Admins can start a video chat from the group's profile.
+
+Video Chats can have thousands of participants and an unlimited number of listeners. Participants can also send comments and reactions on the call screen (in groups with fewer than 1,000 participants).
+
+Admins can schedule a video chat, record it, let listeners raise a hand to speak, and share separate links for speakers and listeners.
+
+Q: What is a Live Stream?
+
+A Live Stream is a live video broadcast from a channel or group, with an unlimited number of viewers — for events, lectures, concerts or announcements. Admins start one from the chat's profile.
+
+You can stream from your phone, or use streaming software like OBS or XSplit for several cameras and graphics — Telegram gives you an RTMP key for this on all platforms. Streams can be recorded; the video is saved to your Saved Messages.
+
+Any user can also host a Live Story — a live broadcast inside their stories, where viewers can comment and send Stars.
+
+Usernames and t.me
+Q: What are usernames? How do I get one?
+
+You can set a public username on Telegram. It then becomes possible for other users to find you by that username – you will appear in search under 'global results'. Please note that people who find you will be able to send you messages, even if they don't know your number. If you are not comfortable with this, we advise against setting a username on Telegram.
+
+You can set up a username in Settings and use the universal search box in the chat list to search for chats, messages, and usernames.
+
+Q: What are Collectible Usernames? How are they different from basic usernames?
+
+Collectible usernames work just like basic usernames, they appear in Global Search results and have their own links that can be used outside of Telegram: username.t.me and t.me/username.
+
+They can be bought and sold through third-party platforms like Fragment, giving a simple and secure way to acquire and exchange valuable Telegram domains. Acquiring a collectible username gives permanent ownership, verified by the TON blockchain. Owners of collectible usernames can freely assign them to chats, sell them to others, or keep them for later use.
+
+A single user, group or channel can have several collectible usernames pointing to it at once. Each one has its own t.me/username link and username.t.me address.
+
+Q: How does t.me work?
+
+Once you've set a username, you can give people a t.me/username or a username.t.me link. Opening either of those links on their phone will automatically fire up their Telegram app and open a chat with you. You can share username links with friends, write them on business cards or put them up on your website.
+
+This way people can contact you on Telegram without knowing your phone number.
+
+If you don’t want to set up a public username and don’t mind sharing your number, you can also create a t.me link with your phone number in international format – for example, t.me/+123456789. This type of link can quickly open a chat with you from any app, however, it will only work if your privacy settings let others find you by your phone number.
+
+Q: What can I use as my username?
+
+You can use a-z, 0-9 and underscores. Usernames are case-insensitive, but Telegram will store your capitalization preferences (e.g. Telegram and TeleGram is the same user).
+
+Q: Do I need a username?
+
+You don't have to get one. Remember that Telegram usernames are public and choosing a username on Telegram makes it possible for people to find you in global search and send you messages even if they don't have your number. If you are not comfortable with this, we advise against setting up a username.
+
+Q: If someone finds me by username, messages and I reply — will they know my number?
+
+No. Neither party will see another's phone number (unless this is permitted by your privacy settings). This is similar to the case when you message a person who you've met in a Telegram group.
+
+Q: How do I delete my username?
+
+Go to Settings and save an empty username. This will remove your username; people will no longer be able to find you via search. This will not affect existing conversations.
+
+Q: What do I do if my username is taken?
+
+There are two types of username on Telegram, basic usernames and collectible usernames.
+
+Basic Usernames
+
+Telegram basic usernames are distributed on a first-come – first-serve basis.
+
+We understand that certain usernames are part of an online identity for some of us. If your desired username is already taken and it is not registered as a collectible, we can help you acquire it for your account or channel, provided that you have that same username on at least two of these services: Facebook, Twitter, Instagram.
+
+Due to the fact that one account can register multiple bot and channel usernames, we reserve the right to recall usernames assigned to unused bots and channels, as well as openly squatted usernames.
+To request a username, contact @Username_bot.
+
+Collectible Usernames
+If you want a collectible username but it is taken, you should check if it is available for sale. We cannot assign collectible usernames, they can only be managed by their respective owners.
+
+Q: What if someone is pretending to be me?
+
+If a scammer is pretending to be you, please contact @NoToScam.
+
+Stars, Gifts and Payments
+Q: What are Telegram Stars?
+
+Telegram Stars can be used for paying for digital goods and services inside Telegram. You can spend Stars on:
+
+items, games and subscriptions in bots and mini apps
+paid photos and videos and paid subscriptions in channels
+Star reactions to support channels you like
+gifts for friends and channels
+Star Messages to people who charge for messages from non-contacts
+Telegram Premium as a gift for someone else
+suggested posts in channels
+
+You can buy Stars with your normal payment method through the App Store or Google Play, or through @PremiumBot and Fragment — which is cheaper and allows larger amounts. Your balance is in Settings > My Stars, where you can also buy Stars as a gift for a friend.
+
+Read more in the Terms of Service for Telegram Stars.
+
+Q: What are gifts?
+
+Gifts are animated items you can send to another user — or to a channel — with a message, paid in Telegram Stars. To send one, open a profile and tap ⋮ / ⋯ > 'Send a Gift'. You can hide your name from other visitors of the recipient's profile.
+
+When you receive a gift, you can show it in the 'Gifts' tab of your profile, or convert it back into Stars. Many gifts can be upgraded into collectibles — either by you, or by the sender in advance.
+
+You control gifts in Settings > Privacy and Security > Gifts: who can send you gifts, which gifts appear on your profile automatically, and whether a 'Gift' button is shown in your chats. Premium users can also choose to accept only certain types of gifts.
+
+Add your birthday to your profile and your contacts will see a reminder to send you a gift. Friends can also suggest a birthday for your profile. Mini apps can send you gifts as rewards.
+
+Q: What are collectible gifts?
+
+A gift you receive can be upgraded to a collectible for a small number of Stars. A collectible gets a unique look — a model, a backdrop and a symbol drawn by Telegram artists — plus a number. Some combinations are rarer than others.
+
+With a collectible gift you can:
+
+Wear it as your emoji status, or pin up to 6 of them on your profile.
+Use it as a chat theme or for your profile colors. (Premium)
+Sort it into collections and post it to your story.
+Transfer it to another user, or move it to the TON blockchain — then it stays yours even if you delete your Telegram account.
+Sell it for Stars on the Gift Marketplace.
+Combine up to 4 of certain gifts in crafting to try for an Uncommon, Rare, Epic or Legendary version.
+
+The 'Value' field on a gift shows its approximate resale price. You can also pay for the upgrade of a gift on a friend's profile. New limited collections are released through auctions; some limited sets are available to Premium users only.
+
+A gift's description — who sent it and their message — can be removed for Stars. Gifts you keep on the blockchain can still be shown on your profile if you connect your account to Fragment.
+
+Q: How do I buy or sell collectible gifts?
+Buy. Open any profile, tap 'Send a Gift' and choose the 'Collectible' filter to browse the gift marketplace, where other users sell their gifts for Stars. Filters let you search by model, backdrop or symbol. You can add your signature and a comment to a gift you buy there.
+Sell. Open a collectible on your profile, tap 'Sell' and set a price in Stars. The gift gets a 'Sale' label; tap 'Unlist' to cancel.
+Make an offer. While viewing someone's gift, tap ⋮ / ⋯ > 'Offer to Buy' to propose a price with a time limit. Your payment is reserved, and refunded automatically if the owner declines or the offer expires.
+Auctions. New gift collections are sold through auctions with several rounds. Your place in the ranking decides the number of your gift; bids that don't win move to the next round, and unused bids are refunded. Auctions have t.me/auction links.
+Q: What are Star Messages?
+
+Star Messages let you set a fee in Telegram Stars for messages from people who are not in your contacts. This keeps your inbox free of spam, while people who really need to reach you still can. You can allow certain users or members of certain groups to write for free, and refund any message with one tap.
+
+To turn this on for your account, you need Telegram Premium: go to Settings > Privacy and Security > Messages. Group owners can enable 'Charge Stars for Messages' in the group's permissions and manage the group's Star balance from its profile. Channels can set a fee per direct message. You receive 85% of each fee; the rest covers Telegram's costs.
+
+If you are asked for Stars when writing to someone, see Can't send a message, I am being asked for Stars.
+
+Q: What does Profile Rating mean?
+
+Telegram profiles show a badge with a numerical rating based on the total volume of successful transactions that user has made with Telegram Stars.
+
+Your profile rating highlights your Telegram level and helps channel owners see that you can be trusted for Suggested Posts and other requests.
+
+Purchasing gifts, sending Star Messages and funding Suggested Posts with Stars increases your rating. However, if you refund Star purchases or convert gifts to Stars, your rating will decrease.
+
+Security
+
+If you are an advanced user, you may find our FAQ for the Technically Inclined useful as well.
+
+Q: How secure is Telegram?
+
+Telegram is more secure than mass market messengers like WhatsApp and Line. We are based on the MTProto protocol (see description and advanced FAQ), built upon time-tested algorithms to make security compatible with high-speed delivery and reliability on weak connections. We are continuously working with the community to improve the security of our protocol and clients.
+
+Q: What if I’m more paranoid than your regular user?
+
+We've got you covered. Telegram’s special secret chats use end-to-end encryption, leave no trace on our servers, support self-destructing messages and don’t allow forwarding. On top of this, secret chats are not part of the Telegram cloud and can only be accessed on their devices of origin.
+
+Q: So how do you encrypt data?
+
+We support two layers of secure encryption. Server-client encryption is used in Cloud Chats (private and group chats), Secret Chats use an additional layer of client-client encryption. All data, regardless of type, is encrypted in the same way — be it text, media or files.
+
+Our encryption is based on 256-bit symmetric AES encryption, 2048-bit RSA encryption, and Diffie–Hellman secure key exchange. You can find more info in the Advanced FAQ.
+
+See also: Do you process data requests?
+
+Q: Why should I trust you?
+
+Telegram is open, anyone can check our source code, protocol and API, see how everything works and make an informed decision. Telegram supports verifiable builds, which allow experts to independently verify that our code published on GitHub is the exact same code that is used to build the apps you download from App Store or Google Play.
+
+We welcome security experts to audit our system and appreciate any feedback at security@telegram.org.
+
+On top of that, Telegram's primary focus is not to bring a profit, so commercial interests will never interfere with our mission.
+
+See also: articles about Telegram
+
+Q: Do I need to trust Telegram for this to be secure?
+
+When it comes to secret chats, you don't — just make sure that the visualized key of your secret chat matches the one in your friend's secret chat settings. More about this below.
+
+Q: What if my hacker friend says they could decipher Telegram messages?
+
+See this page for the latest details about the Telegram Bug Bounty Program.
+
+Anyone who claims that Telegram messages can be deciphered is welcome to prove that claim in our competition and win $300,000. You can check out the Cracking Contest Description to learn more.
+
+Any comments on Telegram's security are welcome at security@telegram.org. All submissions which result in a change of code or configuration are eligible for bounties, ranging from $100 to $100,000 or more, depending on the severity of the issue. Please note that we can not offer bounties for issues that are disclosed to the public before they are fixed.
+
+Q: Can Telegram protect me against everything?
+
+Telegram can help when it comes to data transfer and secure communication. This means that all data (including media and files) that you send and receive via Telegram cannot be deciphered when intercepted by your internet service provider, owners of Wi-Fi routers you connect to, or other third parties.
+
+But please remember that we cannot protect you from your own mother if she takes your unlocked phone without a passcode. Or from your IT-department if they access your computer at work. Or from any other people that get physical or root access to your phones or computers running Telegram.
+
+If you have reasons to worry about your personal security, we strongly recommend using only Secret Chats in official or at least verifiable open-source apps for sensitive information, preferably with a self-destruct timer. We also recommend enabling 2-Step Verification and setting up a strong passcode to lock your app, you will find both options in Settings > Privacy and Security.
+
+Q: How does 2-Step Verification work?
+
+Logging in with an SMS code is an industry standard in messaging, but if you're looking for more security or have reasons to doubt your mobile carrier or government, we recommend protecting your cloud chats with an additional password.
+
+You can do this in Settings > Privacy and Security > 2-Step Verification. Once enabled, you will need both an SMS code and a password to log in. You can also set up a recovery email address that will help regain access, should you forget your password. If you do so, please remember that it's important that the recovery email account is also protected with a strong password and 2-Step Verification when possible.
+
+Check this out for tips on creating a strong password that is easy to remember.
+
+You can also set up a Passkey to log in without an SMS code at all, using your device's PIN, fingerprint or face scan.
+
+Q: Why can jailbroken and rooted devices be dangerous?
+
+Using a rooted or jailbroken device makes it easier for a potential attacker to gain full administrative control over your device — root access.
+
+A user with root access can easily bypass security features built into the operating system, read process memory or access restricted areas, such as the internal storage. Once an attacker has root access, any efforts to mitigate threats become futile. No application can be called safe under these circumstances, no matter how strong the encryption.
+
+Q: What is Cocoon?
+
+Cocoon is a secure, open-source and decentralized AI platform that allows privacy-conscious applications like Telegram to utilize the latest AI models.
+
+Telegram developed Cocoon and uses it to securely power its AI features without relying on third parties, ensuring your data remains protected and inaccessible.
+
+Q: Do Telegram's AI features upload data to third parties?
+
+No. Telegram's AI features — including translation, custom tones, AI summaries of long channel posts and Instant View articles, and AI-powered sticker search — run on Cocoon and never send any data to third parties.
+
+When you use an AI feature provided by Telegram, the processing happens within a highly secure, isolated and encrypted environment – your data remains inaccessible.
+
+If you use AI through a third-party bot or mini app, you are using a third-party service, not Telegram. Check that bot's privacy policy for details.
+
+Q: What AI model does Telegram use?
+
+Telegram's AI features like translation and custom tones are powered by Cocoon. Cocoon is a secure, open source and decentralized AI platform that allows privacy-conscious applications like Telegram to utilize the latest AI models.
+
+When you use an AI feature provided by Telegram, the processing happens within a highly secure, isolated and encrypted environment – your data remains inaccessible.
+
+If you use AI through a third-party bot or mini app, you are using a third-party service, not Telegram. Check that bot's privacy policy for details.
+
+Secret Chats
+Q: How are secret chats different?
+
+Secret chats are meant for people who want more secrecy than the average fella. All messages in secret chats use end-to-end encryption. This means only you and the recipient can read those messages — nobody else can decipher them, including us here at Telegram (more on this here). On top of this, Messages cannot be forwarded from secret chats. And when you delete messages on your side of the conversation, the app on the other side of the secret chat will be ordered to delete them as well.
+
+You can order your messages, photos, videos and files to self-destruct in a set amount of time after they have been read or opened by the recipient. The message will then disappear from both your and your friend's devices.
+
+All secret chats in Telegram are device-specific and are not part of the Telegram cloud. This means you can only access messages in a secret chat from their device of origin. They are safe for as long as your device is safe in your pocket.
+
+Q: How do I start a secret chat?
+
+Open the profile of the user you want to contact. Tap on ‘…’, then ‘Start Secret Chat’.
+
+Remember that Telegram secret chats are device-specific. If you start a secret chat with a friend on one of your devices, this chat will only be available on that device. If you log out, you will lose all your secret chats. You can create as many different secret chats with the same contact as you like.
+
+Q: How do self-destructing messages work?
+
+The Self-Destruct Timer is available for all messages in Secret Chats and for media in private cloud chats.
+
+To set the timer, simply tap the clock icon (in the input field on iOS, top bar on Android), and then choose the desired time limit. The clock starts ticking the moment the message is displayed on the recipient's screen (gets two check marks). As soon as the time runs out, the message disappears from both devices. We will try to send a notification if a screenshot is taken.
+
+Please note that the timer in Secret Chats only applies to messages that were sent after the timer was set. It has no effect on earlier messages.
+
+Q: Can I be certain that my conversation partner doesn't take a screenshot?
+
+Unfortunately, there is no bulletproof way of detecting screenshots on certain systems (most notably, some Android and Windows Phone devices). We will make every effort to alert you about screenshots taken in your Secret Chats, but it may still be possible to bypass such notifications and take screenshots silently. We advise to share sensitive information only with people you trust. After all, nobody can stop a person from taking a picture of their screen with a different device or an old school camera.
+
+Q: What is this 'Encryption Key' thing?
+
+When a secret chat is created, the participating devices exchange encryption keys using the so-called Diffie-Hellman key exchange. After the secure end-to-end connection has been established, we generate a picture that visualizes the encryption key for your chat. You can then compare this image with the one your friend has — if the two images are the same, you can be sure that the secret chat is secure, and no man-in-the-middle attack can succeed.
+
+Newer versions of Telegram apps will show a larger picture along with a textual representation of the key (this is not the key itself, of course!) when both participants are using an updated app.
+
+Always compare visualizations using a channel that is known to be secure — it's safest if you do this in person, in an offline meeting with the conversation partner.
+
+Q: Why not just make all chats 'secret'?
+
+All Telegram messages are always securely encrypted. Messages in Secret Chats use client-client encryption, while Cloud Chats use client-server/server-client encryption and are stored encrypted in the Telegram Cloud (more here). This enables your cloud messages to be both secure and immediately accessible from any of your devices – even if you lose your device altogether.
+
+The problem of restoring access to your chat history on a newly connected device (e.g. when you lose your phone) does not have an elegant solution in the end-to-end encryption paradigm. At the same time, reliable backups are an essential feature for any mass-market messenger. To solve this problem, some applications (like Whatsapp and Viber) allow decryptable backups that put their users' privacy at risk – even if they do not enable backups themselves. Other apps ignore the need for backups altogether and leave their users vulnerable to data loss.
+
+We opted for a third approach by offering two distinct types of chats. Telegram disables default system backups and provides all users with an integrated security-focused backup solution in the form of Cloud Chats. Meanwhile, the separate entity of Secret Chats gives you full control over the data you do not want to be stored.
+
+This allows Telegram to be widely adopted in broad circles, not just by activists and dissidents, so that the simple fact of using Telegram does not mark users as targets for heightened surveillance in certain countries. We are convinced that the separation of conversations into Cloud and Secret chats represents the most secure solution currently possible for a massively popular messaging application.
+
+See also: Why Telegram isn't End-to-End Encrypted “by Default”
+
+Your Account
+Q: Who can see my phone number?
+
+On Telegram, you can send messages in private chats and groups without making your phone number visible. By default, your number is only visible to people who you've added to your address book as contacts. You can further modify this in Settings > Privacy and Security > Phone Number.
+
+Note that people will always see your number if they know it already and saved it in their address book.
+
+Q: I have a new phone number, what do I do?
+
+Each phone number is a separate account on Telegram. You have several options if you are using multiple phone numbers:
+
+If you will no longer use the old number (e.g., you moved to a new country or changed your number for good), simply go to Settings and change the number connected to your Telegram account to the new number. Important: make sure you have access to your connected phone number – otherwise you risk losing access to your account.
+If you will use the new number for a limited time (e.g., you're on a trip or vacation), there's no need to do anything.
+If you want to keep using both numbers (e.g., you have a work phone and personal phone), choose one as your Telegram number. You may create another Telegram account on the second number as well, for example, if you want to keep work and personal chats separated. It is possible to log in to one Telegram app with several different accounts at once.
+Q: How do I log out?
+
+Most users don't need to log out of Telegram:
+
+You can use Telegram on many devices at the same time. Just use the same phone number to log in on all devices.
+You can go to Settings > Data and Storage > Storage Usage> Clear cache to free up space on your device without logging out.
+If you use Telegram with multiple phone numbers, you can switch between accounts without logging out.
+If you use Telegram on a shared device, you can set up a passcode in Settings > Privacy and Security to make sure only you have access to your account.
+
+If you do want to log out for some reason, here's how you do that:
+
+iOS: Go to Settings > Edit > Log out.
+Android, Telegram Desktop: Go to Settings > … (in the top right corner) > Log out.
+
+If you log out, you will keep all your cloud messages. However, you will lose all your Secret Chats and all messages inside those secret chats when you log out.
+
+Note that logging out does not trigger remote deletion of your secret chat messages on your partner's device — to do that, choose 'Clear History' first.
+
+Q: How do I change my phone number?
+
+You can change your number in Telegram and keep everything, including all your contacts, messages, and media from the Telegram cloud, as well as all your Secret Chats on all devices.
+
+To change your number, go to Settings, then tap on your phone number (just above the username), then 'Change Number'. If you already have a different Telegram account on the target number, you'll need to delete that account first.
+
+Q: How do I delete my account?
+
+If you would like to delete your account, you can do this on the deactivation page. Deleting your account permanently removes all your messages and contacts. All groups and channels that you've created are orphaned and left without a creator but admins retain their rights.
+
+This action must be confirmed via your Telegram account and cannot be undone.
+
+We recommend using a non-mobile browser for this process.
+Note that you'll receive the code via Telegram, not SMS.
+
+Q: What happens if I delete my account?
+
+As was just mentioned above, all your data will be flushed from our system: all messages, groups, and contacts associated with your account will be deleted. That said, your contacts will still be able to chat in the groups that you have created, and they will still have their copy of the messages you sent them. So if you want to send messages that can vanish without a trace, try using our self-destruct timer instead.
+
+Termination of a Telegram account is irreversible. If you sign up again, you will appear as a new user and will not get your history, contacts or groups back. People, who have your phone number in their contacts, will be notified. The new user will be displayed as a separate conversation in their messages list and their conversation history with this new user will be empty.
+
+Q: How does account self-destruction work?
+
+Telegram is not a commercial organization, and we value our disk space greatly. If you stop using Telegram and don't come online for at least 18 months, your account will be deleted along with all messages, media, contacts and every other piece of data you store in the Telegram cloud. You can change the exact period after which your inactive account will self-destruct in Settings.
+
+Q: Can I delete my data without deleting my account?
+
+You can delete most of your data without deleting your Telegram account.
+
+To delete individual messages or entire chats for both parties at any time, simply tap on a message (or hold to select any number of chats) and tap on the delete icon, then check the option to delete for both parties.
+
+Many relevant settings are available in Settings > Privacy & Security (on iOS, there is one more step > Data Settings), for example:
+
+To delete your Synced Contacts, choose Delete Synced Contacts.
+To delete your Cloud Drafts, choose Delete All Cloud Drafts (on Android, this option is in Settings > Data and Storage).
+To delete suggestion metadata about contacts and bots you message frequently, turn off Suggest Frequent Contacts.
+
+For other data:
+
+To delete your profile pictures, open your profile > tap on your profile picture >  > Delete.
+To delete the stories you posted go to My Stories, then hold to select and tap on the delete icon in the top right corner.
+To delete your call history go to Calls >  /  > Delete All Calls.
+Q: My phone was stolen, what do I do?
+
+First of all, sorry about your phone. Unfortunately, the phone number is the only way for us to identify a Telegram user at the moment. We don't collect additional information about you, so whoever has the number, has the account. This means we can't help you unless you have access either to the phone number or to Telegram itself on any of your devices.
+
+I have access to Telegram on another device
+Go to Telegram Settings > Privacy and Security and turn on Two-Step Verification. This way the phone number alone will not be enough to log in to your account.
+Go to Settings > Devices (or Privacy & Security > Active Sessions) and terminate your Telegram session on the old device. Whoever has your phone will not be able to log in again, since they don't know your password.
+Contact your phone provider, so that they block your old SIM and issue a new one with your number.
+If you decide to switch to a new phone number, don't forget to go to Settings, tap on your phone number and change your Telegram number to the new one.
+I don't have access to Telegram on any other devices
+First and foremost, you need to contact your phone provider, so that they block your old SIM and issue a new one with your number.
+Wait till you receive your new SIM with the old number, log in to Telegram, then go to Settings > Devices (or Privacy & Security > Active Sessions) and terminate your Telegram session on the old device.
+Removing sensitive data
+
+Common thieves usually throw out the SIM card immediately (the phone is harder to locate this way), then wipe the devices and sell them, so there isn't much risk for the data in case of regular petty theft. But if you have reasons to worry about the data on the device and are unable to log out the other device, it is best that you wipe it remotely. You can read more about it here: Apple iOS, Android. Unfortunately, this requires you to have prepared in advance for this scenario.
+
+You can delete your Telegram account if you are logged in on at least one of your other devices (mobile or desktop). Note that inactive Telegram accounts self-destruct automatically after a period of time — 18 months being the default setting.
+
+Q: What is a Passkey?
+
+If you are already logged in to Telegram on a device, you can create a passkey that allows you to enter your Telegram account the same way you unlock your device. With a passkey, you can log in to your device simply by entering a PIN code or biometric data like your Face ID or fingerprint scan.
+
+Passkeys are an additional login method that can be used instead of SMS to instantly enter your account – even if you are traveling or don't have SMS service. Passkeys are also more secure than SMS codes, helping protect users from unauthorized access to their account.
+
+Your passkeys can be managed in Settings > Privacy and Security > Passkeys from any app — which shows detailed info for each of your passkeys, like their creation date and when they were last used to log in.
+
+If you have a password manager like iCloud Keychain, Google Password Manager or another third-party service, you can use it to back up your passkey in case you upgrade or lose access to your device.
+
+With a passkey, you can still request an SMS code in order to log in – so always make sure your account uses an up-to-date phone number that is controlled by you. For even more security, you can add an extra password to your account that is required each time you log in.
+
+Q: What is a Frozen Account?
+
+If your account has been restricted because of reports from other users, your account is frozen. While frozen, you can still read your chats, but you cannot send messages or post content.
+
+You can appeal the restriction directly from the app. Telegram's moderators will review your case. If the restriction was a mistake, your account will be unfrozen.
+
+Bots and Mini Apps
+
+If you're a developer, you may find our Bots FAQ more useful.
+
+Q: What are bots?
+
+Bots are small programs that run inside Telegram. They are made by outside developers using the Telegram Bot API.
+
+Modern bots can do a lot more than reply to messages. They can open full mini apps with their own interface, run AI assistants with several conversation threads and streaming replies, send richly formatted messages with tables and images, put buttons inside messages – and much more.
+
+Some bots work as guest bots: mention their @username in any private or group chat and they reply right there, even if they are not a member. A guest bot sees only the message it was tagged in and the replies to it — not the other messages or the list of members. In groups, bots can also send replies that only you see.
+
+Q: How do I create a bot?
+
+Open @BotFather — Telegram's official tool for creating bots, now with a mini app for managing names, icons, descriptions and settings. To make the bot do something, you will need some programming skills; our Introduction for Developers is a good place to start.
+
+If you are not a developer, you can use AI bots that create and manage other bots for you — no coding required. And you will find plenty of ready-made bots created by other people to play with.
+
+Q: What are mini apps?
+
+Mini apps are full applications that run inside Telegram, built by outside developers on top of the Bot platform. They can look and feel like normal apps, with their own interface, payments, subscriptions and more — from games and shops to AI tools.
+
+You can open a mini app from a bot's profile or a link, run it in full-screen mode, minimize it into a bar at the bottom of the screen while you reply to messages, and add a shortcut to your phone's home screen. The 'Apps' tab in Search shows popular mini apps.
+
+Mini apps can sell digital goods and subscriptions for Telegram Stars, send you gifts as rewards, and create stories or media for you to share. Some mini apps offer affiliate programs — when you share them with friends, you can earn Stars.
+
+Mini apps are made by outside developers, not by Telegram. When you open one, its developer receives your name, username, profile picture, language and whether you have Premium — and, like any website, sees your IP address. Your phone number, your location and your messages are shared only if you choose to share them. If you give it permission, a mini app can use your location or set your emoji status. See the Terms of Service for Mini Apps.
+
+Q: Can a bot answer my messages for me?
+
+Yes. Any user can connect a bot to their profile in Settings > Chat Automation. The bot — for example an AI assistant — then replies to messages on your behalf. You choose which chats it can access: for example, only new chats, or everything except chats with your contacts. You can disconnect the bot at any time.
+
+Telegram Business users get more: their chatbots can manage messages, the profile, stories and the Star balance, with a separate permission for each action.
+
+Q: A bot is sending me messages, how do I make it stop?
+
+If you don't want a bot to send you messages, feel free to block it – same as you would block a human user. Some Telegram clients have a 'Stop Bot' button right in the bot's profile.
+
+That said, most bot developers offer commands that silence the bot, check its /help for clues.
+
+Q: Are bots safe?
+
+Bots can see your public name, username and profile picture, the messages you send them, your interface language and the groups you share with them. If you open a link a bot sends you, the website behind it sees your IP address. Bots cannot see your last seen time, your phone number or your other chats unless you share them.
+
+Naturally, any bot should be treated as a stranger — don't give them your passwords, Telegram codes or bank account numbers, even if they ask nicely. Also, be careful when opening files sent by bots, same as you would deal with ordinary humans. Example: If a bot sent us a file called OpenMe.exe, we probably wouldn't open it.
+
+A guest bot you mention in a chat only sees the message you tagged it in. Mini apps must ask your permission before they can use your location, and you decide this for each app separately. Every bot and mini app must have a privacy policy, and its developer must delete your data if you ask them to — if the developer has not published their own policy, Telegram's Standard Bot Privacy Policy applies.
+
+Q: If I add a bot to my group, can it read my messages?
+
+Bots can work in two modes when you add them to groups. By default, bots only see messages that are meant for them. In this case, you'll see 'has no access to messages' in the group members list next to the bot.
+
+Some bots need more information to work, so developers may disable the privacy mode. In this case, the bot will see all messages sent to the group, and you will see 'has access to messages' in the members list next to the bot.
+
+Learn more about privacy mode for bots »
+
+If your group contains very sensitive information, maybe it's better to avoid adding bots you don't trust 100%.
+
+Q: Are bots made by Telegram?
+
+No. While we have some official bots for specific purposes (like @gif or @Stickers, we don't usually make bots. Bots are made by third-party developers using the Telegram Bot API and platform.
+
+Deeper questions
+Q: Can I get Telegram's server-side code?
+
+All Telegram client apps are fully open source. We offer verifiable builds both for iOS and Android – this technology allows to independently verify that the application you download from the app stores was built using the exact same code that we publish.
+
+By contrast, publishing the server code doesn’t provide security guarantees neither for Secret Chats nor for Cloud Chats. This is because – unlike with the client-side code – there’s no way to verify that the same code is run on the servers.
+
+As for Secret Chats, you don’t need the server-side code to check their integrity – the point of end-to-end encryption is that it must be solid regardless of how the servers function.
+
+In a post on his channel, Pavel Durov explained why Telegram hasn't published the server code, even as a publicity stunt.
+
+The encryption and API used on Telegram's servers are fully documented and open for review by security experts. We welcome any comments at security@telegram.org
+
+Q: Can I run Telegram using my own server?
+
+Our architecture does not support federation yet. Telegram is a unified cloud service, so creating forks where two users might end up on two different Telegram clouds is unacceptable. To enable you to run your own Telegram server while retaining both speed and security is a task in itself. At the moment, we are undecided on whether or not Telegram should go in this direction.
+
+Q: Can I use the Telegram API?
+
+Yes. Developers for all platforms are welcome to use our protocol, API and even source code. Check out the Getting started section of the docs.
+
+Don't forget about our Bot API that lets you build cool stuff on our platform.
+
+Q: Do you have a Privacy Policy?
+
+Sure. Check this out.
+
+Q: What does the iOS privacy sheet mean?
+
+Apple created privacy sheets to inform users about what data apps may collect, but information there is vague and can be misleading. You can see a detailed explanation of Telegram's sheet here.
+
+Q: Why do you have two apps in the Mac App Store?
+
+One is our app for macOS, the other is Telegram Lite, the macOS version of our multi-platform client. Both apps are official. Both started out as unofficial applications by two different developers and vary in design and functionality.
+
+Telegram for macOS supports many platform-specific features, such as the MacBook Pro Touch Bar, gesture navigation, integration with the Mac's Share menu and more. It has every feature from the iOS version of the app including Secret Chats.
+
+Telegram Lite is a lightning-fast app, optimized for work-related tasks and handling large communities. It offers a three-column interface, perfect for multitasking and quick access to media, files and links shared in your chats.
+
+Q: Can I translate Telegram?
+
+Telegram is officially available in many languages on most platforms — and we keep adding more.
+
+If you do not like how something in Telegram's interface is translated in your language, or want to help us improve the translation, see our localization platform. Anyone can suggest translations and vote for the best ones, so Telegram localization is run by the community.
+
+If you're looking to go beyond suggestions for individual phrases and would like to help us maintain the official translation to your language on a continuous basis, you can contact @TelegramAuditions. Please include a hashtag with the English name of your language (e.g. #Albanian) and a few links to phrases on this platform with your translation suggestions or comments. Be sure to read the Style Guide carefully before you apply.
+
+Q: Can I help?
+
+Yes, we are always looking for volunteers to help us with user support. If you would be interested in answering questions about Telegram to users from your country, contact our auditions account.
+
+Before you apply, please check out the Telegram Support Initiative.
+
+Passport
+
+Telegram Passport is a unified authorization method for services that require personal identification. With Telegram Passport, you can upload your documents once, then instantly share your data with services that require real-world ID (finance, ICOs, etc.).
+
+Your identity documents and personal data will be stored in the Telegram cloud using End-to-End Encryption. To Telegram, this data is just random gibberish, and we have no access to the information you store in your Telegram Passport. When you share data, it goes directly to the recipient.
+
+You can find more information about Telegram Passport on our blog.
+
+If you're a developer or owner of a service that requires real-life ID, kindly take a look at this manual. You can also try requesting Telegram Passport data using this page.
+
+Troubleshooting
+Login and SMS
+
+Please make sure you are entering your mobile phone number in the international format.
+I.e.: +(country code)(city or carrier code)(your number)
+
+If you are having registration or login problems, please contact us using this form.
+
+Getting a code via a phone call
+
+For security reasons, login codes dictated via a phone call may be unavailable for particular carriers or require two-step verification enabled (Settings > Privacy & Security > Two-Step Verification).
+
+Please also note that Telegram accounts can only be connected to a mobile number. We currently don't support landline numbers.
+
+Getting a code via Telegram
+
+If you have recently used one of our apps on another device (it could also be a different app on the same device), we may send the login code via Telegram instead of SMS.
+
+To receive such a code, just check Telegram from any of your connected devices. You will find it in the chat with Telegram, a verified profile with a blue check:
+
+Login code sent via Telegram
+
+WARNING! Please note that getting codes via Telegram should not be considered an alternative to using an up-to-date phone number. In case of a change in numbers, always make sure Telegram is connected to a phone number you control, otherwise you risk losing access to your account forever.
+
+Notification problems
+
+If the tips below don't help, check out this detailed guide on Troubleshooting Notification Issues.
+
+ANDROID
+
+Go to Telegram Settings — Notifications and Sounds, make sure that notifications are ON and Importance is set to “High” or greater.
+Check whether contact or group is muted.
+Make sure Google Play Services are installed on your phone.
+Check notification priority for Telegram in Android settings, it can be called Importance or Behaviour depending on your device.
+If your phone uses some battery saving software, make sure that Telegram is whitelisted in that application.
+
+NOTE: Huawei and Xiaomi devices have evil task killer services that interfere with the Telegram notification service. For our notifications to work, you need to add Telegram to allowed apps in those devices' security settings. Huawei: Phone Manager App > Protected Apps > Add Telegram to the list. Xiaomi: Services > Security > Permissions > Autostart, find Telegram and enable autostart.
+
+iOS
+
+Go to Telegram Settings — Notifications and Sounds, make sure that notifications are ON in Telegram.
+Check that notifications are ON in phone Settings.
+Check, whether contact or group is muted.
+Shut down Telegram (go to home screen, double tap home button, swipe upwards on Telegram), then go to phone settings, set the alert style for Telegram to NONE. Relaunch Telegram, go to phone settings, set alert style back to banners.
+Problems with contacts
+
+If you know your friends have Telegram, but you can't see them — or they appear as numbers instead of names.
+
+Android:
+
+Make sure you are using the latest version of the app.
+Relaunch the app (by terminating it from processes list and launching again).
+Temporarily change the name of the contact in phone contacts (add a few symbols, then change back again).
+If that didn't help, re-login. Remember that logging out kills your Secret Chats.
+
+iOS:
+
+Force quit the app (double tap home button, then swipe up on Telegram), then relaunch and check if it helped.
+If that doesn't help, temporarily change the name of the contact in phone contacts (add a few symbols, then change back again).
+If that doesn’t work, re-login: Settings > Edit > Log Out. Remember that logging out kills all your Secret Chats. Then log in again.
+Deleting contacts on Android
+
+To delete a contact, open a chat with the person, tap the title in the top area of the chat screen to open their profile, then tap on (⋮) in the top right corner > 'Delete contact'.
+
+If you want to delete the contact completely, make sure you also delete them from your phone contacts. Telegram stays in sync and will add the contact back if you don't.
+
+Where did my Secret Chat messages go?
+
+Secret Chats are established between the two devices they were created on. This means that all those messages are not available in the cloud and cannot be accessed on other devices.
+
+Moreover, Secret Chats are also tied to your current login session on the device. If you log out and in again, you will lose all your Secret Chats.
+
+Can't send messages to non-contacts
+
+When users report unwanted messages from a Telegram account, we apply a limit: Reported accounts can only send messages to people who have their number saved as a contact.
+
+This means that if you randomly contact people you don't know and send them annoying messages, you may lose the ability to do so in the future.
+
+If you think that this limit was applied to your account wrongly, please visit this page.
+
+Can't send a message, I am being asked for Stars
+
+Some users charge a small fee — paid in Telegram Stars — for messages from people who are not in their contacts. This is called a Star Message, and it helps people reduce spam in their inbox.
+
+You will see how many Stars are needed before you send the message. If the recipient replies, they may choose to refund the fee.
+
+If you do not want to pay, you can wait for the other person to message you first, or ask them to add you to their contacts.
+
+Telegram uses the camera or microphone in the background!
+
+Telegram can use the microphone in the background if you minimize the app when making a call, recording a video, or recording a voice/video message.
+
+Permission monitors on Samsung and Xiaomi can inadvertently flag and notify you that Telegram requested access to camera in the background. This happens when the app requests info about the camera — it isn’t using the camera. Unfortunately it may look the same to the Samsung and Xiaomi permission monitors.
+
+Camera info is requested by the app when you tap on the attachment button, or start recording a video or a video message. If you do this and quickly close the app, the already initiated request may try to run asynchronously when the app is already in the background, or be sent when the system wakes up the app to show a notification about a new message. In any case, these requests are only for the camera info, the app never uses the camera itself in the background.
+
+Anyone can check Telegram’s open source code and confirm that the app is not doing anything behind their back. We also offer reproducible builds that can help you prove that the version you downloaded from App Store or Google Play is built from the exact same source code we publish.
+
+Telegram Support
+
+If you have any other questions, please contact Telegram Support (in Telegram go to Settings — Ask a question). Note that we rely on volunteers for support.
+
+If you can't log in to your account, please use this form.
+
+For media requests, please contact @PressBot on Telegram.
+
+Service Notifications on Telegram
+
+You may receive important notifications from us in either of these verified service notification chats: 'Telegram' (phone number 42777) or @AbuseNotifications (phone number 4240005).
+
+Telegram will never ask you for your 2-Step Verification Password or any verification codes.
+
+X, Tiktok?
+
+Follow us at your own risk on X and TikTok. We have no idea who gave these people permission to post on our behalf.
+
+@SmsTelegram, login help on X
+
+We have a special account that can help you with login problems, @smstelegram. This account is official. Don't be afraid to DM it the number you use for Telegram, we need this info to investigate issues.
+
+Be careful, we don't have any other support accounts on any social media platforms.
+
+Facebook or other platforms?
+
+If anyone on Facebook or any other platform is telling you they're us, they are not.
+
+Telegram
+Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.
+About
+FAQ
+Privacy
+Press
+Mobile Apps
+iPhone/iPad
+Android
+Mobile Web
+Desktop Apps
+PC/Mac/Linux
+macOS
+Web-browser
+Platform
+API
+Translations
+Instant View
+Go up

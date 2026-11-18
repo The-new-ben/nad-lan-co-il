@@ -1,0 +1,219 @@
+https://support.google.com/meet/answer/9308979?hl=en
+2026-11-18 21:18:45
+
+Learn how to use Chat with Google Meet
+
+With continuous meeting chat, you can send messages to meeting participants before, during and after a meeting in Google Chat. Continuous meeting chat is available to all Business and Enterprise users.
+
+If continuous meeting chat is enabled: You can use additional Google Chat features such as text formatting, @mentions, and reactions. Your messages sync with Google Chat, and you can access the meeting chat before, during, and after the meeting.
+If you're a guest from outside the host's organization, or not signed in, messages are only available while you are in the meeting. When the meeting ends, all your messages disappear.
+If continuous meeting chat is disabled or not available: Messages are only available while you are in the call and disappear as soon as the meeting ends. Learn more about the chat experience with continuous meeting chat disabled.
+
+If you join a meeting on the web:
+
+Internal guests on the Google Calendar Invite: Your conversations are saved in your Chat conversations list and you can access the entire chat history of a meeting, even if you join late.
+Internal guests who aren't on the Calendar invite and guests from outside the host's organization: Your chat history disappears when the meeting ends and you can only access messages while you're in the meeting.
+
+If you join a meeting on a mobile device:
+
+Internal guests on the Google Calendar invite: You'll be directed to the Google Chat app or Gmail app to send or read a chat message in a Google Meet event. The conversation is saved in your Chat conversations list, and you can access the entire chat history of a meeting, even if you join late. You'll also have access to all rich features like @mentions and reactions.
+Internal guests who aren't on the Calendar invite and guests from outside the host's organization: Your chat history disappears when the meeting ends, and you can only access messages that are sent during the time you're in the meeting. However, internal guests who were included on the Calendar invite will be able to view chats sent during the meeting, even after the meeting.
+Learn who can use continuous meeting chat
+
+You can use continuous meeting chat in Google Meet with these Google Workspace editions:
+
+Enterprise Essentials, Enterprise Essentials Plus
+Enterprise Starter, Enterprise Standard, Enterprise Plus
+Business Starter, Business Standard, Business Plus
+Frontline Starter, Frontline Standard, Frontline Plus
+Understand why continuous meeting chat is unavailable
+Important: If you can't use continuous chat in Meet, you still have access to Meet's in-meeting chat.
+
+Continuous meeting chat allows participants to communicate through Google Chat before, during, and after a meeting.
+
+If continuous meeting chat is enabled:
+
+You can't set up a live stream in the meeting.
+Chat messages aren't saved to the organizer's drive with the recording of the meeting.
+Viewers can send chat messages.
+
+If chat is limited to in-meeting, it stops when the call ends. If a participant only has the in-meeting experience, this can be because of:
+
+Meeting type
+Host configuration
+User or device limitation
+Organization or policy restriction
+Workspace admin settings
+Learn about meetings & configuration
+
+Certain meeting types or host configurations don't support continuous meeting chats:
+
+Meeting types:
+Live streams
+Instant meetings
+Client Side Encryption (CSE) meetings
+Breakout rooms
+Meetings with waiting rooms
+Huddles
+Events without a Meet ID
+Conference types: Messages in Breakout rooms or when Waiting room is enabled.
+Disabled chats: An administrator can disable Google Chat service for specific users.
+Host controls: If a host turns off chat in the Calendar event's call option before the meeting, the host can't change the setting until the meeting ends.
+Guest list visibility: The meeting organizer turned off the "See guest list" setting for the event in Calendar.
+Meeting size: Participants can only use continuous meeting chat for new meetings created in Google Calendar with up to 200 invited guests, including Google Groups.
+Meetings with encryption: The meeting uses CSE in Meet settings.
+
+Tip: All messages follow your organization's Google Chat retention policies. Learn how to retain Google Chat messages in Vault.
+
+Learn about user & device limitations
+
+These specific participants or devices may be restricted from access to the full chat history:
+
+User type:
+Drop-in or temporary users: Users with short-term, non-permanent access.
+External or non-Workspace users: Users outside host organizations who need temporary or limited access.
+Anonymous endpoints: Users who don't sign in and can only access public content.
+Hardware & software:
+Devices: Endpoints such as Zoom Rooms or Cisco Webex Rooms.
+Mobile: Devices with an outdated operating system, an old version of the Chat app, or no Chat app installed.
+Accessibility: If you use Voice Over software, you get a sound notification when you get a message but the message isn't voiced over. To hear the message, open the chat panel.
+Learn about organization & policy restrictions
+
+Administrative settings on your domain or another participant's domain can restrict functionality with:
+
+External chat policies: If an organizer's domain prohibits chats with external users, guests outside the organization can't send messages.
+Chat history: To use continuous chat, turn on History. If a user's policy forces "Chat history off" while the meeting requires "Chat history on," that user gets a view-only experience. They can read messages but can't reply.
+Invited guests: If their admin disables Google chat for invited guests, the meeting won't support continuous meeting chat.
+Manage meeting conversations in Google Chat
+
+To help you organize your meeting chats, you can have your meeting conversations added automatically to a dedicated “Meeting” section in Google Chat.
+
+On your computer, open Google Chat or Gmail.
+In Gmail: On the left, click Chat.
+In the left panel, find the "Direct messages" section.
+Next to "Direct messages," click Section actions   Create meeting section .
+In the pop-up message, click Create.
+Start a new Meeting Conversation
+
+A Meeting Conversation can be created by selecting “Chat with Guests” from a Calendar invite, accessing the group chat within your Chat list of conversations, or by sending the first message using the embedded chat in Meet.
+
+For recurring events in Calendar, a separate Meeting Conversation is created for each individual instance and is located under the “Direct Messages” section of your Chat conversations list.
+
+The Meeting Conversation name will combine the event name and date. For example, "Sales Team Weekly - Nov 8" and "Sales Team Weekly - Nov 15.” The date in the title uses the format and language of your current language settings in your account. Learn more about how to change your language on the web.
+
+Important:
+
+External guests invited to a meeting via the "Chat with Guests" feature in Calendar aren't automatically added to the Meeting Conversation.
+A new Meeting Conversation won't be created or displayed in your Chat conversations list if no message is sent before or during the meeting.
+Meeting Conversations have the same retention policies as Google Chat spaces. Learn about message history for conversations with work or school accounts.
+Meeting conversations (which are group direct messages) created via Meet or Calendar cannot be converted into Google Chat spaces.
+External guests will only have access to the chat during the time they are in the meeting. They will not see the conversation history from before or after they join. Internal attendees will see clear 'external' indicators and banners when guests are present in the conversation. There will be an external warning in the header of chat and a compose warning.
+Send a chat message in a video meeting
+On your computer
+On your computer, join a Meet video meeting.
+At the bottom right, click Chat .
+Enter a message.
+Click Send .
+Messages are visible to everyone in the call and internal guests on the calendar invite, even if they're not in the call).
+Chat features such as text formatting, @mentions, and reactions are only available if continuous chat is on for Google Workspace Business or Enterprise users.
+On your phone or tablet
+On your device, join a Meet video meeting.
+At the bottom, tap More controls   Chat with everyone .
+Enter a message.
+Tap Send .
+Learn how continuous meeting chat works if you're outside the host's organization or not on the calendar invite
+
+When a meeting starts, messages sent in Google Chat are visible to all participants in the meeting. When the Google Meet call starts, a banner is displayed in Google Chat to notify users that the meeting associated with this chat is in-progress.
+
+If you're not part of the hosts organization, not signed in, or not on the calendar invite for the meeting, you can only:
+
+Send messages to other participants while you're in the meeting
+Read messages sent by other participants after you join the meeting
+
+Additionally, when an external user joins the Google Meet call, all internal users are notified and an "External" badge is visible at all times in Google Chat.
+
+Important: Messages sent before you join the meeting won't be visible to you and you won't see any messages after the meeting ends. Some rich media messages, such as images, video files, or custom domain GIFs, sent by internal users may be unavailable for external participants to view.
+
+Learn how the Calendar event guest list affects meeting chats
+
+As the event organizer, you control if people invited to your event can view the guest list. When you turn off "See guest list," it affects how your meeting chat works.
+
+If you turn off "See guest list" before the meeting chat is created:
+"Chat with guests " isn't available in the Calendar event for you or your guests.
+Continuous meeting chat will not be available.
+If you turn off "See guest list" after the meeting chat is created:
+The chat continues to exist in Google Chat for its members.
+The guest list in the chat no longer syncs with the guest list in the event.
+For example, if you remove someone from the guest list in the event, it does not remove them from the chat.
+Prevent participants from sending chat messages in a video meeting
+Manage chat for live stream viewers
+
+Important: This is only available on iPhones and iPads.
+
+Meeting hosts can:
+
+Control chat messages for Google Meet live stream participants
+Allow or prevent viewers from finding and sending chat messages
+Control chat messages for live stream viewers
+On your iPhone or iPad, join a Google Meet video meeting with an active live stream.
+At the bottom, tap More controls   Settings   Host controls .
+Under "Let live stream viewers," turn these options on or off.
+See chat messages: Control live stream viewers from finding chat messages.
+Send chat messages: Control live stream viewers from sending chat messages.
+Learn what hosts can let live stream viewers find
+If a host turns “See chat messages” on or off, live stream viewers find a message that indicates:
+Off: Chat is unavailable or off.
+On: After viewers leave the call, they can’t access the messages.
+If a host turns on “See chat messages” but turns off “Send chat messages:” Live stream viewers can find existing messages but can’t send new ones.
+If a host turns on both “See chat messages” and “Send chat messages:” Live stream viewers can find and send messages.
+Turn continuous meeting chat off
+
+Before a scheduled meeting begins, continuous meeting chats are on by default. If you're the meeting host and want to turn off continuous meeting chat, you can edit video call options within the Calendar event . After the meeting begins, this setting can't be changed.
+
+Open Google Calendar.
+Open an event.
+Next to the Meet video link, click Video call options .
+In the "Chat moderation" section, select an option for Continuous meeting chat:
+Off: Participants can send messages from the time they join the meeting. After the meeting ends, the messages disappear.
+On: Participants in the same organization as the host can access their complete Google Chat history from before, during, and after the meeting.
+Chat with others during a video meeting without continuous meeting chat
+
+When continuous meeting chat is off, or the host doesn't have the necessary requirements to use continuous meeting chat, you can only view and send messages from a computer or mobile device while you are in the meeting.
+
+Important:
+
+If you join a conference room using Google meeting room hardware, you can find the messages, but not send them.
+Messages are visible to everyone in the call.
+Except for pinned messages, you can only find the chat messages that are sent while you're in a video meeting.
+Messages that are sent before you join the meeting don't display and all messages disappear when you leave.
+Pinned messages aren't available on mobile devices. If you join a meeting on your mobile device, the pinned messages don't display.
+If you use Meet with a Voice Over software, when a chat message is sent, you get a sound notification but the messages aren't voiced over. To hear the message, open the chat panel.
+When meetings are recorded the chat conversation log is also saved.
+Pin a chat message during a video meeting
+
+Important:
+
+If you join a meeting with your computer: You can find pinned messages in the chat. This includes pinned messages that are created before you join the meeting.
+If you join a meeting with your mobile device: The pinned messages don't display.
+You can pin and unpin your own messages. Hosts may unpin anyone's messages.
+
+To pin a chat message:
+
+On your computer, hover over a chat message.
+At the top right, click Pin .
+Give feedback about this article
+Need more help?
+Try these next steps:
+Post to the help community
+Get answers from community members
+Basic features in Google Meet
+Change backgrounds & effects in Google Meet
+Learn how to use Chat with Google Meet
+Present during a video meeting
+Raise your hand in Google Meet
+Use Reactions in Google Meet
+Use On-the-Go for meetings
+Use picture-in-picture with Google Meet
+Get the new Meet app in the play store or app store
+
+Google Meet is your one app for video calling and meetings across all devices. Use video calling features like fun filters and effects or schedule time to connect when everyone can join.

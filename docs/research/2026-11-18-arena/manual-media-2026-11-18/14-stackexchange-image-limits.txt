@@ -1,0 +1,131 @@
+https://meta.stackexchange.com/questions/75491/ask-image-upload-limits
+2026-11-18 21:19:19
+
+162
+
+Sometimes I need to upload, embed, or display inline an image in a question or answer. How can I do that?
+
+Return to FAQ index
+
+supportfaqimagesimage-uploader
+Share
+Improve this question
+Follow
+edited Jul 7, 2024 at 19:02
+community wiki
+
+
+9 revs, 6 users 50%
+sayyad
+After adding you might want to resize it. – 
+cachius
+ 
+Commented
+Apr 25, 2025 at 10:31 
+Add a comment
+1 Answer
+Sorted by:
+Highest score (default)
+Date modified (newest first)
+Date created (oldest first)
+126
+
+Note: Some sites require 10 reputation to embed images in posts. On those sites, you can still upload images using the below tool, but you won't be able to embed those images; you can only link them. Another user with the required reputation can edit image links into embedded images.
+
+How can I add an image to a post?
+
+As explained when image hosting was introduced:
+
+adding a picture to a question or answer is now as easy as …
+
+Clicking the Insert Image  toolbar button
+
+Selecting an image from your computer, or the web
+
+Clicking Upload
+
+After that, replace the default "enter image description here" with something meaningful. For the screen readers of visually impaired, for browsers that don't show images, and for search engine indexes: please enter a good description - you will be warned if your post doesn't contain a custom description.
+
+Even when pasting a URL from the web, the image will be copied to the Stack Exchange image host, and hence will stay even if the original image link is broken.
+
+Note that in addition to using the image upload toolbar button, you can also drag and drop images directly into the editor, and if your clipboard contains image data, you can paste it into the editor - in both cases, the image uploader will pop up automatically and give you the option to upload the image.
+
+What if I just want to link to an image?
+
+If you don't have the required reputation to embed an image on a site that requires it, or you just want to link to an image for another reason:
+
+Use the steps above
+Remove the leading exclamation point from the result: [click for my image][5]
+Can I embed images from other sources?
+
+It is highly recommended that you upload images to Stack Exchange servers, to prevent the post from being broken if the linked image is removed or changed by the image host.
+
+If you really want to hardlink images from another source, without copying them to Stack Exchange servers:
+
+Use the link tool to make a regular link to the image.
+Type the image description in the link label field: [Image description][6].
+Prepend the link with an exclamation point: ![Image description][6].
+
+Be aware that the image will disappear if the link gets broken.
+
+Note that the image must come from an HTTPS source in order to be able to be embedded. Images from HTTP sources cannot be embedded and can only be linked, to prevent "mixed content" warnings. All images uploaded to the Stack Exchange image server in the manners above are from an HTTPS source and will display properly.
+
+Anything else I should know about images in posts?
+To make it easier to find relevant information using search engines, be sure to copy important text into your post too. (Messages from popup dialogs can often simply be copied using Ctrl-C or Command-C.)
+Whenever possible, use the Stack Exchange provided hosting as described above. This ensures images are never lost. Images on many other free image hosts will expire if not requested every now and then, and the post should be useful for future visitors. Also, this is necessary if your image is from an HTTP source, as such images cannot be embedded for security reasons (see above).
+Your image/picture can be placed anywhere within your post. The easiest way is to place your cursor where the image should appear, before you click the Picture button.
+Share
+Improve this answer
+Follow
+edited Jul 7, 2024 at 18:39
+community wiki
+
+
+25 revs, 10 users 40%
+unknown
+1
+The icon is not present in the new toolbar... – 
+FriendlyFire
+ 
+Commented
+Oct 24, 2021 at 8:29
+You didn't answer the question. What site do you use to embed images into a post? – 
+user1540346
+ 
+Commented
+Nov 11, 2025 at 23:39 
+@user1540346, you don't need any third-party site; Stack Exchange takes care of those details when you add an image to a post. – 
+Arjan
+ 
+Commented
+Nov 28, 2025 at 20:28
+@Arjan Okay, thanks, but still, I would like to know which 'third-party sites' are suitable candidates for sharing links to images, etc? For instance, imgur.com and sstatic.net do not work for me anymore. Any recommendations? – 
+user1540346
+ 
+Commented
+Nov 28, 2025 at 21:10
+@user1540346, care to explain why you even want that? The post above clearly says: "Even when pasting a URL from the web, the image will be copied to the Stack Exchange image host, and hence will stay even if the original image link is broken." Image rot is very real. So please don't link to third-party sites? – 
+Arjan
+ 
+Commented
+Dec 2, 2025 at 21:30
+@Arjan "you don't need any third-party site; Stack Exchange takes care of those details when you add an image to a post." How does SE take care of the details? For me it doesn't, that is why I would even want that. – 
+user1540346
+ 
+Commented
+Dec 3, 2025 at 1:06
+Add a comment
+You must log in to answer this question.
+Protected question. To answer this question, you need to have at least 10 reputation on this site (not counting the association bonus). The reputation requirement helps protect this question from spam and non-answer activity.
+
+Start asking to get answers
+
+Find the answer to your question by asking.
+
+Ask question
+
+Explore related questions
+
+supportfaqimagesimage-uploader
+
+See similar questions with these tags.

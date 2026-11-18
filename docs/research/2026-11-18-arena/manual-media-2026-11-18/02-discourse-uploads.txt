@@ -1,0 +1,357 @@
+https://meta.discourse.org/t/understanding-uploads-images-and-attachments/275735
+2026-11-18 21:18:26
+
+Back to Forum
+​
+USERS
+User statuses
+Configure invites
+Change user’s email
+Sign-up flow
+Merge accounts
+Export users
+Bulk invites
+Welcome messages
+Custom fields
+Poll result grouping
+API fields
+Multiple accounts
+Color palette selection
+Default notifications
+Find user by external ID
+Promoting staff
+Impersonate user
+Staff recognition
+Recover user
+Reset bounce score
+Message all users
+Helpful flags
+Admin page access
+Delete account
+GROUPS
+Create group
+Invite to group
+Group owners
+Email domain groups
+Group mentions
+Group flair
+User title link
+Primary group
+Group notifications
+Private group
+Custom field automation
+Bulk group additions
+BADGES
+About badges
+Manual badge grant
+Custom badge queries
+CONTENT SETTINGS
+Onebox configuration
+Topic templates
+Page publishing
+Embed selectors
+CUSTOMIZATION
+Theme guide
+Install theme
+Theme components
+Private repo theme
+Light and dark modes
+CSS changes
+Change font
+Disable likes
+Custom emoji
+Syntax highlighting
+Create banner
+Customize Discobot
+Subcategory style
+Customize text
+Translation keys
+Update policies
+Customize header
+User cards
+Site branding
+FAQs and guidelines
+Post notices
+REPORTING AND DATA
+Dashboard reference
+Site statistics
+User metrics
+Search logs
+LOCALIZATION
+Automatic translations with Discourse AI
+CJK search
+Multilingual structure
+Translation glossary
+PRIVACY AND SECURITY
+Content security policy
+Cookie consent
+Permissions settings
+MANAGING FILES
+Uploads overview
+Broken uploads
+SITE PROMOTION
+Discourse Discover
+SEO overview
+Search indexing
+Google verification
+Web crawlers
+House ads
+AUTOMATION
+Last checked
+Last edited
+Auto responder
+New user trigger
+AI triage
+AI triage using an agent
+Periodic summary reports
+DISCOURSE AI
+AI plugin
+AI bot
+AI agents
+Agents - Chat and PM
+Agents - Custom tools
+Agents - MCP client
+Forum Researcher guide
+AI search
+Helper
+Helper - Image captions
+Helper - Chat thread titles
+Helper - Smart dates
+Related topics
+Sentiment
+Summarize
+Summarize - Gists
+LLM settings
+Decision models
+AI usage
+LLM quotas
+LLM cost estimation
+Picking an LLM
+Web artifacts
+AI spam detection
+Ask Discourse
+PDF support with RAG
+Native PDF support
+Embeddings
+AI credentials
+Tag topics using AI
+Auto-categorize topics using AI
+EMAIL
+Incoming email
+Email template
+Email customization
+Interpolation keys
+Email filtering
+Mailing list mirror
+Email troubleshooting
+GENERAL CONFIGURATION
+Admin interface
+Setup wizard
+Safe mode
+Admin login
+Activity summary
+Private community
+Accessibility
+Mailing list
+Anonymous mode
+Read-only modes
+Release channels
+TOPICS AND POSTS
+Move posts
+Whisper posts
+Wiki posts
+Post ownership
+Rebuild HTML
+Bulk actions
+Auto-bumping
+Topic timer
+Topic states
+CATEGORIES
+Create category
+Category settings
+Subcategory boxes
+Anonymous posting
+Category order
+Delete category
+TAGS
+Tags guide
+Structured tagging
+MODERATION
+Getting started
+Managing users
+Managing content
+Composer messages
+Flag priorities
+Watched words
+Regex watched words
+Spam prevention
+Spam detection
+NSFW detection
+Toxicity detection
+Nofollow links
+Meta Branded
+​
+Understanding Uploads, Images, and Attachments
+Documentation
+Site Management
+explanation
+,
+file-management
+Uploading Files and Images
+Allowed File Types
+Allowed File Sizes
+Large Files
+Deleting Uploads
+File Uploads and S3 Storage
+S3 Uploads and Site Backups
+S3 Uploads and CDNs
+Secure Uploads
+Jump to end
+Timeline
+post by Discourse on Aug 18, 2023
+5
+Aug 2023
+
+ This guide will provide administrators with comprehensive instructions on how to upload images and attachments on their Discourse site.
+
+ Required user level: Administrator
+
+Discourse provides robust support for uploads, images, and attachments, allowing users to enrich their posts and share files with others. Understanding how uploads, images, and attachments work in Discourse can help you to better manage your community and provide a better user experience.
+
+Uploading Files and Images
+
+In Discourse, users can upload files and images directly to their posts using the upload button in the post editor.
+
+The upload button’s icon changes depending on the allowed types of uploads. If only image file types are allowed, the upload icon will appear as an image icon.
+
+However, if other file types are allowed, the upload icon will appear as a general upload icon.
+
+Discourse also supports uploading embedding images from other websites, and when an image is uploaded, Discourse creates multiple sizes of the image, which are used in different contexts around the site.
+
+image
+1735×350 24.6 KB
+
+Every time a user uploads a new file to the forum, Discourse saves the file in the server’s /var/discourse/shared/standalone/uploads/default/ folder.
+
+Allowed File Types
+
+By default, Discourse allows image file types (jpg, jpeg, png, gif, heic, heif, webp, avif, and svg).
+
+Admins can also add more file extensions to the authorized extensions and authorized extensions for staff site settings to allow other types of files, such as .pdf, .docx, .mp3, etc.
+
+image
+1049×302 15.3 KB
+
+ Removing all file types from the list of authorized extensions will disable uploads on your site. If you don’t want to store uploads on your site’s server, you can disable them, tell your users to only publish uploads to external sites, and then share the links to the uploads on your site.
+
+Allowed File Sizes
+
+The default maximum size for images is set to 10240 kB (10 MB). This limit can be adjusted by changing the max image size kb site setting based on the needs of your community.
+
+The default maximum size for non-image uploads is set to 10240 kB (10 MB). This limit can be adjusted by modifying the max attachment size kb site setting.
+
+image
+1058×327 17.1 KB
+
+ The maximum value for max image size kb is 102400 kB (100 MB). The maximum value for max attachment size kb is 1024000 kB (~1000 MB).
+
+If you are a hosted customer, the maximum for both settings is 30MB. Enterprise customers have more flexibility. Please reach out to the support team if you have an Enterprise plan and need to explore your options.
+
+Large Files
+
+If you are sharing many files or very large files regularly, we recommend that you use Google Drive, Dropbox or another cloud file sharing service. You can also use a streaming service like YouTube or SoundCloud to host your large media files. You can then get a link from there and paste it into your post. Insert the link on its own line, surrounded by empty lines, to display the file in a media player if supported, or a summary preview.
+
+Deleting Uploads
+
+There is no file management interface provided in Discourse. To remove files, delete the posts that contain them or edit the posts to remove the attachment links. Orphaned files will be removed automatically after a 48 hour grace period.
+
+See Cleaning up Uploads and Purging Uploads from S3  for additional details about deleting uploads on your site.
+
+File Uploads and S3 Storage
+
+ The following section is only applicable for #self-hosted installations
+
+Discourse allows you to configure S3 compatible Object Storage providers to store uploads.
+
+You can follow these guides on how to set up file and image uploads to S3 or configure an S3 compatible object storage provider for uploads: Setting up file and image uploads to S3 and Configure an S3 compatible object storage provider for uploads.
+
+S3 Uploads and Site Backups
+
+If you’re using S3 for uploads, you might want to consider how this affects your backup strategy. Discourse allows you to configure automatic backups, and you can choose to store these backups on S3. However, if you’re using S3 for uploads and backups, you might need to consider the impact on bandwidth and storage costs. For more information, check out this topic: Configure automatic backups for Discourse.
+
+S3 Uploads and CDNs
+
+If you’re using a CDN in conjunction with S3 uploads, you’ll need to ensure that this is correctly configured. Discourse has a guide on how to enable a CDN for your Discourse, which covers the use of S3: Enable a CDN for your Discourse.
+
+Secure Uploads
+
+Discourse has a feature called “Secure Uploads” which restricts access to uploaded files so that only users with the necessary permissions can view or download the files. This is particularly useful for private communities or for content that should not be publicly accessible.
+
+image
+1508×336 54.8 KB
+
+To use this feature, you must have S3 uploads enabled on your site and your S3 bucket should not have a public bucket policy. All existing uploads should have a public-read S3 ACL.
+
+However, enabling secure uploads can increase the complexity of your setup, potentially impact site performance, and increase the size of your backups.
+
+To learn more about enabling secure uploads on your site, see: Secure Uploads
+
+Additional Topics
+
+Include assets (e.g. images, fonts) in themes and components 
+Set up image uploads to Google Cloud Storage.
+
+Last edited by @tshenry  March 26, 2026 11:27 AM
+
+
+
+11
+1 Reply
+​
+​
+​
+Discobot Profile Picture Upload "Failed"
+A plug-in that would upload a video (which a user had attached to a Discourse posting) to my company’s YouTube channel
+Question necromancy: migrating from mattermost
+Restrictive upload identification code makes it tricky to write theme components that use uploaded assets
+Discourse won't delete attachment after period hours
+1 more
+Show 5 comments
+Ad
+Did you know Discourse offers hosting? - Plans start at $0!
+Reply
+
+
+Related topics
+Topic list, column headers with buttons are sortable.
+Topic	Replies	Views	Activity
+
+Can I increase the 1024000 kb limit on attachment?
+Self-hosting
+	18	1.8k	
+Aug 2021
+
+
+Understanding how uploading images and files work
+Product Support
+	5	2.4k	
+Sep 2019
+
+
+Best practices for managing image uploads in product-heavy community discussions
+General
+uploads
+	1	126	
+Dec 2025
+
+
+How to disable file uploads except Avatars
+Product Support
+	5	1.2k	
+Dec 2019
+
+
+Large image uploads by users
+Product Support
+	2	567	
+Apr 2020

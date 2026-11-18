@@ -149,6 +149,27 @@
       "w": 390,
       "h": 1730,
       "title": "20 · כוכבים ודרגות: מוניטין שנצבר מעזרה אמיתית"
+    },
+    "Media.dc.html": {
+      "x": 1410,
+      "y": 7140,
+      "w": 390,
+      "h": 2330,
+      "title": "21 · תמונות, תוכניות וקבצים בהודעות, ותמונה לכל חבר"
+    },
+    "VideoChat.dc.html": {
+      "x": 1880,
+      "y": 7140,
+      "w": 390,
+      "h": 1720,
+      "title": "22 · צ'אט בתוך חדר הווידאו, ו\"מה סוכם\" שנכנס לדיון"
+    },
+    "HomeTalk.dc.html": {
+      "x": 2350,
+      "y": 7140,
+      "w": 390,
+      "h": 2060,
+      "title": "23 · דירה שמדברים עליה: מציגים דירה, והקהל ואנשי המקצוע מעריכים"
     }
   },
   "order": [
@@ -171,7 +192,10 @@
     "CallBoardDesk.dc.html",
     "MyCard.dc.html",
     "VideoRoom.dc.html",
-    "Reputation.dc.html"
+    "Reputation.dc.html",
+    "Media.dc.html",
+    "VideoChat.dc.html",
+    "HomeTalk.dc.html"
   ],
   "notes": {
     "head": {

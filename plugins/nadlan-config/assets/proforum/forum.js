@@ -62,7 +62,7 @@
 		return ready.then(function () { return st.ch ? null : loadState(); }).then(function () {
 			var trap = form && form.querySelector('[name="website"]');
 			return solve(st.ch).then(function (n) {
-				var d = Object.assign({}, data, { ch: st.ch, n: n, ts: st.ts, website: trap ? trap.value : '' });
+				var d = Object.assign({}, data, form && form.nlfExtra ? form.nlfExtra(path) : null, { ch: st.ch, n: n, ts: st.ts, website: trap ? trap.value : '' }); // HOOK (media module, media.js): the attached files and the point
 				return req('POST', path, d);
 			});
 		}).catch(function (e) {

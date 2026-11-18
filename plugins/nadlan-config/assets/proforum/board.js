@@ -674,5 +674,5 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 		root.remove(); nudge.remove(); style.remove();
 	}
 	paintBg(); paintBlock(); paintFollow();
-	return { open, close, destroy, saveImage, get shown() { return S.shown; }, get size() { return S.objs.size; } };
+	return { open, close, destroy, saveImage, takeImage, get shown() { return S.shown; }, get size() { return S.objs.size; } }; // takeImage: the media module (media.js) hands the board a picture (a Blob) as its sheet
 }

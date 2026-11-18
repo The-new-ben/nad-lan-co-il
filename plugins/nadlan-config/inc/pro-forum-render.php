@@ -37,7 +37,7 @@ function nlf_kind_tag( $kind ) {
 
 function nlf_avatar( $a, $big = false ) {
 	$cls = 'nlf-av' . ( $a['pro'] ? ' nlf-av-sq' : '' ) . ( $big ? ' nlf-av-lg' : '' );
-	return '<span class="' . $cls . '" style="' . nlf_tint_style( $a['tint'] ) . '" aria-hidden="true">' . esc_html( nlf_initials( $a['name'] ) ) . '</span>';
+	return apply_filters( 'nlf_avatar_html', '<span class="' . $cls . '" style="' . nlf_tint_style( $a['tint'] ) . '" aria-hidden="true">' . esc_html( nlf_initials( $a['name'] ) ) . '</span>', $a, $big ); // HOOK (media module, inc/pro-forum-media.php): the member's picture, escaped there
 }
 
 /** the author's name line: name · label (a link to the profile only for a joined professional with a public card) */
@@ -282,6 +282,7 @@ function nlf_render_topic( $t ) {
 				<blockquote class="nlf-quote"><a href="#r<?php echo (int) $qr['id']; ?>"><?php echo esc_html( $qa['name'] . ' כתב/ה:' ); ?></a> "<?php echo esc_html( nlf_excerpt( $qr['body'], 140 ) ); ?>"</blockquote>
 			<?php endif; ?>
 			<p class="nlf-body"><?php echo nlf_body_html( $r['body'] ); // phpcs:ignore -- escaped ?></p>
+			<?php echo apply_filters( 'nlf_reply_after_body', '', $r, $me, $t ); // phpcs:ignore -- HOOK (media module, inc/pro-forum-media.php): the answer's pictures and plans, escaped there ?>
 			<?php if ( 'pending' === $r['status'] ) : ?><p class="nlf-note">ההודעה תעלה אחרי בדיקה קצרה</p><?php elseif ( 'hidden' === $r['status'] ) : ?><p class="nlf-note">ההודעה מוסתרת עד בדיקה</p><?php endif; ?>
 			<?php if ( 'live' === $r['status'] ) : ?>
 			<div class="nlf-acts">

@@ -1,0 +1,148 @@
+https://slack.com/help/articles/201330736-Add-files-to-Slack
+2026-11-18 21:18:36
+
+Using Slack
+
+From channels to search, learn how Slack works from top to bottom.
+
+Slack Help CenterUsing SlackShare files & conversations
+Add files to Slack
+
+Who can use this feature?
+
+All members (limits apply for Frontline Members)
+Available on all plans
+
+To help you work with your team in Slack, you can add files to your workspace. Files are searchable and shareable across Slack, making it easier for everyone to find the information they need and work together.
+
+Note: Uploading and sharing files may be restricted for Slack Connect conversations and Frontline Members, and certain file types can't be added at all. If you can't add files to these conversations, find an owner or admin and ask for help.
+
+
+Add files
+
+Members and guests can add files up to 1GB in size.
+
+DesktopMobile
+ Drag and drop up to 10 files into the Slack message field, or click the
+  plus icon next to the message field and choose files to add.
+ If you'd like, you can include a message, drag and drop the file previews to reorder them, and if you're adding an image, you can also include a description.
+ Send the message.
+
+Slack will include a preview of a file as part of your message. If you share an image, the preview will only display inline if it's smaller than 25,000 pixels on the longest side, and less than 45 million pixels total. Microsoft Office files that are larger than 50 MB will not display a preview.
+
+Note: Files you add to Slack will be scanned for viruses and other malware, and won't be uploaded if any are detected. If we incorrectly block a file upload, contact us and we can help.
+
+
+Browse files
+All files in Slack
+
+You can browse files added to any public channels, plus the private channels and direct messages (DMs) you're a part of. 
+
+DesktopMobile
+Click   Files in your sidebar. If you don't see this option, click   More to find it. 
+Browse your recently viewed files, or select Canvases or Lists in the left sidebar.  
+To filter by file type (like documents or PDFs), click the   Types drop-down menu below the search bar.
+
+Tip: Press Cmd (Mac) or Ctrl (Windows/Linux) and click to open the   Files browser in a new window.
+
+
+Files in a channel or DM
+
+Open the   Files & links tab in any channel or DM to view all of the files shared in a conversation.
+
+DesktopMobile
+Open a channel or DM.
+Click the   Files & links tab at the top of the conversation.
+Search for a file, or browse the images, videos, and files shared in the channel or DM.
+
+Organize files into sections
+
+If you use Slack on a paid plan, you can keep track of your files by organizing them into sections in the  Files tab.
+
+Create a file section
+From your desktop, click   Files in the sidebar. If you don’t see this option, click   More to find it.
+Click the  plus button in the top-left corner, then select  Sidebar section. 
+Enter a name for your sidebar section, then click the  emoji icon to select an emoji, if you'd like.
+Click Save.
+
+To organize your files, drag and drop them into your sections, or right-click a file and select  Move to section. 
+
+
+Manage file sections
+
+You can rename a file section or update the associated emoji at any time. If you no longer need a file section, you can delete it.
+
+From your desktop, click   Files in the sidebar. If you don’t see this option, click   More to find it.
+Click the  three dots icon next to a file section. 
+Select  Rename or  Delete section.
+
+Share files
+
+You can easily share a file that's been added to Slack in another channel or DM, or share it outside of Slack by creating an external link.
+
+Share files in Slack
+DesktopMobile
+Hover over the file you'd like to share.
+Click the   Share icon.
+Choose where to share the file and add a message, if you'd like.
+Click Share.
+
+Tip: You can also copy a link to a file or message. Click the
+  Share icon, then click Copy Link.
+
+
+Share files outside of Slack
+
+If your workspace is on a paid plan, you can create links to share files outside of Slack.
+
+Create an external linkRevoke an external link
+
+In a public channel, any member can create an external link for a file. In a private channel, only the person who uploaded the file can create an external link for it.
+
+From your desktop, hover over the file you'd like to create a link for.
+Click the  three dots icon in the top right.
+Select Create external link.
+Copy the link to your clipboard, then click Done.
+
+Note: If you don’t see the option to create an external link, find an owner or admin to ask for help.
+
+
+Download files
+
+If you’d like to save files added to Slack to your desktop, you can download them. On your mobile device, you can only download image files.
+
+DesktopMobile
+Single file
+From your desktop, find the file you’d like to download.
+Click the    download icon.
+Multiple files
+If a message has multiple files attached that you'd like to download, hover over the message and click the   three dots icon in the top right.
+Click Download [number] files in the menu.
+
+Tip: If you'd like, you may be able to adjust your default download location.
+
+
+Delete files
+
+Any member or guest can delete a file they've uploaded to Slack. Workspace Owners and Admins can delete files that have been added to public channels and any private channels or DMs they're in.
+
+DesktopMobile
+Find the file you'd like to delete.
+Click the  three dots icon in the top right.
+Select Delete file, then click Yes, delete this file to confirm.
+
+Note: Files must be deleted individually, but we offer API methods to help you manage files in your workspace or Enterprise organization.
+
+Was this article helpful?
+Yes, thanks!
+Not really
+	
+
+IN THIS ARTICLE
+
+Add files
+Browse files
+Organize files
+Share files
+Download files
+Delete files

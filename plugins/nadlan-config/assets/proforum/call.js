@@ -265,6 +265,7 @@ function stage(tr, tk, media, opener) {
 			call: { mic: (on) => setMic(on), cam: (on) => setCam(on), leave: () => leave() },
 			onClose: () => { if (S.alive && !bBoard.hidden) bBoard.focus({ preventScroll: true }); },
 		});
+		document.dispatchEvent(new CustomEvent('nlf:board', { detail: board })); // HOOK (media module, media.js): a picture or plan pressed in the discussion becomes the board's sheet
 	}).catch(() => { bBoard.hidden = true; });
 	else bBoard.hidden = true;
 	bBoard.setAttribute('aria-pressed', 'false');

@@ -1,0 +1,149 @@
+https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack
+2026-11-18 21:18:41
+
+Using Slack
+
+From channels to search, learn how Slack works from top to bottom.
+
+Slack Help CenterUsing SlackAudio & video
+Use huddles in Slack
+
+Who can use this feature?
+
+All members and guests (limits apply for Frontline Members)
+Available on all plans
+
+Recreate the quick, informal discussions you’d have in the office right in Slack with huddles. You can start a huddle in any channel or direct message (DM) to work in real time alongside your coworkers with video, multi-person screen sharing, a dedicated thread for notes, and more.
+
+What to expect
+On the free plan, huddles can have a maximum of two participants. On paid plans, huddles can have up to 50 participants, but only 25 can enable video at a time.  
+Huddles are available on the Slack desktop and mobile apps, Google Chrome (Mac/Windows/Linux), and Firefox (Mac/Windows).
+
+Start, join, or invite people to a huddle
+Start a new huddle
+
+When you start a huddle, anyone in the conversation will be able to join. 
+
+DesktopMobile
+Open a channel or DM.
+Click the  headphones icon at the top of the conversation. 
+Click the  camera icon at the bottom of the huddle window to turn your video on.
+
+Note: Frontline Members can't start huddles, but can join them.
+
+
+Join a huddle
+
+If you’re invited to a huddle or it starts in a DM, click Join from the pop-up window. When a huddle starts in a channel you belong to, you'll see a  headphones icon next to the channel name in your sidebar. Here's how to join:
+
+DesktopMobile
+Open the channel or DM where the huddle is taking place. 
+Click the  headphones icon at the top of the conversation. 
+Click the  camera icon at the bottom of the huddle window to turn your video on.
+
+Tip: If you click a link to a huddle in a private channel or DM you don’t belong to, click Request Access to join. Anyone in the huddle can approve your request to let you in.
+
+
+Invite people to a huddle
+
+Once you’re in a huddle, you can invite anyone to participate — even if they’re not a part of the channel or DM where the huddle is taking place. People you invite who are not members of the channel or DM won’t be able to see the messages in the conversation or the huddle thread.
+
+DesktopMobile
+From a huddle, click the   Invite people icon at the bottom of the huddle window. 
+Click Invite people and select those you’d like to invite, or search for their names
+Click Send Invite.
+
+Share links for huddles
+
+All huddles have links people can use to join from anywhere (like a calendar invitation or a message in Slack). Here’s how to find and share links for huddles:
+
+DesktopMobile
+From a channel or DM, click the   arrow next to the   headphones icon at the top of the conversation.
+Select   Copy huddle link, then share it wherever you’d like. The huddle will start when someone clicks the link to join.
+
+Tip: To share a link to a huddle you’re currently in, click the   three dots icon at the bottom of the huddle window and select Copy huddle link.
+
+
+Take notes during a huddle
+
+When you’re in a huddle, you’ll see a dedicated message thread to share notes, links, and files during the discussion.
+
+Take notes in a thread
+DesktopMobile
+Click the   arrow icon or the   thread icon in the huddle window to show or hide the thread associated with the huddle.
+To update the heading that will display along with your thread in the conversation, click the   gear icon and select Add topic.
+
+Take notes in a canvas
+
+Each huddle includes a canvas for taking meeting notes. Participants can open the canvas to take notes or view those added by others.
+
+From a huddle on desktop, click the   canvas icon in the bottom right corner. 
+When the huddle ends, you can access the canvas from its tab at the top of the conversation. 
+
+Tip: Use AI to take notes during a huddle so you and your team can focus on the conversation.
+
+
+Share your screen
+DesktopMobile
+
+Up to two people in a huddle can share their screen at a time. Shared screens will appear in the huddle window, and anyone in the huddle can click on one to expand it or click the  pencil icon to draw on it. Drawing on screens is currently supported on the Slack desktop app for Mac and Windows.
+
+Click the  share screen icon.
+Select a screen, window, or application to share.
+Click Share system audio, if you'd like.
+Select Share to start sharing your screen. 
+
+Add reactions
+
+You can add emoji reactions, effects, stickers, or GIFs to send a signal to your coworkers without interrupting the conversation. Reactions, effects, and GIFs will appear to everyone in the huddle temporarily, while stickers (like ✋ Raise hand or ☕ Be right back) will remain until you remove them.
+
+DesktopMobile
+Click the  emoji icon.
+Click the Reactions, Effects, Stickers, or GIFs tab, then make a selection.
+
+Note: GIFs must be allowed in Slack to add them as reactions in huddles. 
+
+
+Take other actions in a huddle
+DesktopMobile
+
+Once you’re in a huddle, you can click the   three dots icon (from the huddle window in your sidebar) or   gear icon (from the expanded huddle window) to access more actions and settings:
+
+Add a topic
+Choose a huddle theme for all participants*
+Play music
+Turn on live captions**
+Change your background
+Manage video and microphone settings
+Preview your video
+
+*Only available in the expanded huddle window 
+
+**Captions are currently only available in English and will not be saved once the huddle ends
+
+Note: You can change your huddles notification sound and set other defaults in your huddles preferences.
+
+
+Leave a huddle
+
+Anyone can leave a huddle at any time, including the person who started it. Huddles will automatically end when the last person leaves.
+
+DesktopMobile
+From a huddle, click Leave.
+
+ 
+
+Was this article helpful?
+Yes, thanks!
+Not really
+	
+
+IN THIS ARTICLE
+
+Start or join a huddle
+Share links
+Take notes
+Share your screen
+Add reactions
+Take other actions
+Leave a huddle

@@ -1,0 +1,137 @@
+[
+ {
+  "n": 1,
+  "name": "discord-attachments",
+  "url": "https://support.discord.com/hc/en-us/articles/25444343291031-File-Attachments-FAQ",
+  "at": "2026-11-18 21:18:21",
+  "status": 403,
+  "chars": 194,
+  "title": "Just a moment..."
+ },
+ {
+  "n": 2,
+  "name": "discourse-uploads",
+  "url": "https://meta.discourse.org/t/understanding-uploads-images-and-attachments/275735",
+  "at": "2026-11-18 21:18:26",
+  "status": 200,
+  "chars": 9855,
+  "title": "Understanding Uploads, Images, and Attachments - Documentation / Site Management - Discourse Meta"
+ },
+ {
+  "n": 3,
+  "name": "github-attaching-files",
+  "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/attaching-files",
+  "at": "2026-11-18 21:18:31",
+  "status": 200,
+  "chars": 3445,
+  "title": "Attaching files - GitHub Docs"
+ },
+ {
+  "n": 4,
+  "name": "slack-add-files",
+  "url": "https://slack.com/help/articles/201330736-Add-files-to-Slack",
+  "at": "2026-11-18 21:18:36",
+  "status": 200,
+  "chars": 5666,
+  "title": "Add files to Slack | Slack"
+ },
+ {
+  "n": 5,
+  "name": "slack-huddles",
+  "url": "https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack",
+  "at": "2026-11-18 21:18:41",
+  "status": 200,
+  "chars": 5843,
+  "title": "Use huddles in Slack | Slack"
+ },
+ {
+  "n": 6,
+  "name": "google-meet-chat",
+  "url": "https://support.google.com/meet/answer/9308979?hl=en",
+  "at": "2026-11-18 21:18:45",
+  "status": 200,
+  "chars": 14387,
+  "title": "Learn how to use Chat with Google Meet - Google Meet Help"
+ },
+ {
+  "n": 7,
+  "name": "zoom-files-in-meeting",
+  "url": "https://it.cornell.edu/zoom/transfer-files-during-zoom-meetings",
+  "at": "2026-11-18 21:18:50",
+  "status": 403,
+  "chars": 189,
+  "title": "Just a moment..."
+ },
+ {
+  "n": 8,
+  "name": "reddit-gallery-modnews",
+  "url": "https://old.reddit.com/r/modnews/comments/hisodw/image_gallery_support_is_coming_soon/",
+  "at": "2026-11-18 21:18:54",
+  "status": 403,
+  "chars": 143,
+  "title": ""
+ },
+ {
+  "n": 9,
+  "name": "reddit-gallery-tnw",
+  "url": "https://thenextweb.com/news/reddit-now-supports-up-to-20-gifs-or-images-in-a-single-post",
+  "at": "2026-11-18 21:18:58",
+  "status": 200,
+  "chars": 2412,
+  "title": "Reddit now supports up to 20 GIFs or images in a single post"
+ },
+ {
+  "n": 10,
+  "name": "telegram-faq",
+  "url": "https://telegram.org/faq",
+  "at": "2026-11-18 21:19:02",
+  "status": 200,
+  "chars": 96889,
+  "title": "Telegram FAQ"
+ },
+ {
+  "n": 11,
+  "name": "discord-forum-channels",
+  "url": "https://support.discord.com/hc/en-us/articles/6208479917079-Forum-Channels-FAQ",
+  "at": "2026-11-18 21:19:07",
+  "status": 403,
+  "chars": 194,
+  "title": "Just a moment..."
+ },
+ {
+  "n": 12,
+  "name": "x-images",
+  "url": "https://help.x.com/en/using-x/tweeting-gifs-and-pictures",
+  "at": "2026-11-18 21:19:10",
+  "status": 403,
+  "chars": 185,
+  "title": "Just a moment..."
+ },
+ {
+  "n": 13,
+  "name": "whatsapp-hd-photos",
+  "url": "https://faq.whatsapp.com/1150891302346785",
+  "at": "2026-11-18 21:19:14",
+  "status": 200,
+  "chars": 267,
+  "title": "Page not found"
+ },
+ {
+  "n": 14,
+  "name": "stackexchange-image-limits",
+  "url": "https://meta.stackexchange.com/questions/75491/ask-image-upload-limits",
+  "at": "2026-11-18 21:19:19",
+  "status": 403,
+  "chars": 5666,
+  "title": "How to upload an image to a post? - Meta Stack Exchange"
+ },
+ {
+  "n": 15,
+  "name": "airbnb-photos",
+  "url": "https://www.airbnb.com/resources/hosting-homes/a/how-to-take-great-photos-of-your-space-18",
+  "at": "2026-11-18 21:19:23",
+  "status": 200,
+  "chars": 1458,
+  "title": "Home - Resource Center - Airbnb"
+ }
+]

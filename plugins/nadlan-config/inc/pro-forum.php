@@ -768,6 +768,7 @@ function nlf_members( array $ids ) {
 function nlf_author( $m ) {
 	$a = array( 'name' => 'משתמש', 'label' => '', 'verified' => '', 'tint' => array( '#E3E6E8', '#22303A' ), 'url' => '', 'pro' => 0, 'phone' => null, 'female' => false );
 	if ( ! $m ) { return $a; }
+	$a['mid'] = (int) $m['id']; // HOOK (media module, inc/pro-forum-media.php): nlf_avatar() finds the member's picture by this id
 	$a['name'] = '' !== (string) $m['display_name'] ? (string) $m['display_name'] : 'משתמש';
 	$pro = (int) $m['pro_id'];
 	if ( $pro > 0 && 'nadlan_professional' === get_post_type( $pro ) ) {
@@ -965,6 +966,7 @@ function nlf_moderate( $type, $id, $to ) {
 	} elseif ( 'reply' === $type ) {
 		nlf_recount_topic( (int) $row['topic_id'] );
 	}
+	do_action( 'nlf_moderated', $type, (int) $id, $to, $from ); // HOOK (media module, inc/pro-forum-media.php): the post's files follow it; removed = files deleted
 	return true;
 }
 
@@ -1241,6 +1243,7 @@ add_action( 'rest_api_init', function () {
 		}
 		$e = nlf_post_limits( $m, true, $title . "\n" . $body . "\n" . $city );
 		if ( '' !== $e ) { return nlf_err( $e ); }
+		$e = (string) apply_filters( 'nlf_post_check', '', 'topic', $m, $q, null ); if ( '' !== $e ) { return nlf_err( $e ); } // HOOK (media module, inc/pro-forum-media.php): the attached files are checked
 		global $wpdb;
 		$status = nlf_first_status( $m['approved_posts'], $title . "\n" . $body, '0' !== (string) get_option( 'nadlan_forum_autoapprove', '1' ) );
 		$now    = nlf_now_sql();
@@ -1255,6 +1258,7 @@ add_action( 'rest_api_init', function () {
 		$wpdb->insert( nlf_t( 'topics' ), $row );
 		$id = (int) $wpdb->insert_id;
 		if ( $id <= 0 ) { return nlf_err( 'משהו השתבש. נסו שוב.' ); }
+		do_action( 'nlf_post_created', 'topic', $id, $m, $q, $status, $id ); // HOOK (media module, inc/pro-forum-media.php): the files go on the new discussion
 		nlf_write_counted( $m ); // counts this write in the hour of the IP and of the member
 		nlf_follow( (int) $m['id'], $id, true ); // the author follows their own discussion (one click to stop, in every mail)
 		if ( 'live' === $status ) { nlf_on_topic_live( $id ); } else { nlf_mail_admin_pending( 'topic', $id ); }
@@ -1278,12 +1282,14 @@ add_action( 'rest_api_init', function () {
 		}
 		$e = nlf_post_limits( $m, false, $body );
 		if ( '' !== $e ) { return nlf_err( $e ); }
+		$e = (string) apply_filters( 'nlf_post_check', '', 'reply', $m, $q, $t ); if ( '' !== $e ) { return nlf_err( $e ); } // HOOK (media module, inc/pro-forum-media.php): the attached files and the marked point are checked
 		global $wpdb;
 		$status = nlf_first_status( $m['approved_posts'], $body, '0' !== (string) get_option( 'nadlan_forum_autoapprove', '1' ) );
 		$wpdb->insert( nlf_t( 'replies' ), array( 'topic_id' => (int) $t['id'], 'member_id' => (int) $m['id'], 'body' => $body, 'quote_id' => $quote > 0 ? $quote : null,
 			'status' => $status, 'body_hash' => nlf_dup_key( $body ), 'ip_hash' => nlf_ip_hash(), 'created_at' => nlf_now_sql() ) );
 		$id = (int) $wpdb->insert_id;
 		if ( $id <= 0 ) { return nlf_err( 'משהו השתבש. נסו שוב.' ); }
+		do_action( 'nlf_post_created', 'reply', $id, $m, $q, $status, (int) $t['id'] ); // HOOK (media module, inc/pro-forum-media.php): the files and the point go on the new answer
 		nlf_write_counted( $m );
 		if ( 'live' === $status ) { nlf_on_reply_live( $id ); } else { nlf_mail_admin_pending( 'reply', $id ); }
 		$au = nlf_author( $m );
@@ -1603,7 +1609,7 @@ add_action( 'wp_head', function () {
 	echo '<meta name="description" content="' . esc_attr( nlf_doc_desc() ) . '">' . "\n";
 	echo '<link rel="canonical" href="' . esc_url( nlf_canonical() ) . '">' . "\n";
 	if ( 'topic' === nlf_rendering() && ! empty( $GLOBALS['nlf_topic'] ) && 'live' === $GLOBALS['nlf_topic']['status'] ) {
-		$ld = nlf_jsonld( $GLOBALS['nlf_topic'] );
+		$ld = apply_filters( 'nlf_jsonld', nlf_jsonld( $GLOBALS['nlf_topic'] ), $GLOBALS['nlf_topic'] ); // HOOK (media module, inc/pro-forum-media.php): the first picture as `image`
 		if ( $ld ) { echo '<script type="application/ld+json">' . nlf_json_script( $ld ) . "</script>\n"; } // phpcs:ignore -- < and > are < / >
 	}
 }, 2 );
@@ -1696,3 +1702,5 @@ if ( file_exists( __DIR__ . '/pro-forum-social.php' ) ) { require_once __DIR__ .
 if ( file_exists( __DIR__ . '/pro-forum-card.php' ) ) { require_once __DIR__ . '/pro-forum-card.php'; }
 // reputation (board 20): points, five star levels, the month's leaders, public rules; counted from existing rows, no table
 if ( file_exists( __DIR__ . '/pro-forum-rep.php' ) ) { require_once __DIR__ . '/pro-forum-rep.php'; }
+// images, plans and files in posts, the full-screen gallery, a point marked on a picture, the member's picture (board 21)
+if ( file_exists( __DIR__ . '/pro-forum-media.php' ) ) { require_once __DIR__ . '/pro-forum-media.php'; }
