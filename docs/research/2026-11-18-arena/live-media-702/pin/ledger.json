@@ -1,0 +1,36 @@
+{
+ "topic": 18,
+ "at": "2026-11-18 22:38:05",
+ "ledger": [
+  {
+   "step": "test picture 1 carries a GPS block before upload",
+   "ok": true,
+   "detail": "182229"
+  },
+  {
+   "step": "the answer form opens with the marked crop",
+   "ok": false,
+   "detail": ""
+  },
+  {
+   "step": "the answer with the point was sent",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"id\": 33, \"status\": \"live\", \"author\": \"בדיקת Claude א · רוכש דירה\", \"message\": \"התשובה פורסמה.\", \"ch\": \"f61e19169571b927f3dd03e5.14.1795034254.e0d7894"
+  },
+  {
+   "step": "the member picture was saved",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"media\": {\"id\": 6, \"kind\": \"avatar\", \"w\": 256, \"h\": 256, \"bytes\": 3044, \"url\": \"https://nad-lan.co.il/wp-content/uploads/nlf-media/2026/11/4c79a3586d9"
+  },
+  {
+   "step": "guest sees the answer with the marked crop",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the member picture replaces the initials next to the answer",
+   "ok": true,
+   "detail": "1"
+  }
+ ]
+}

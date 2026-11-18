@@ -1,0 +1,91 @@
+{
+ "topic": 19,
+ "at": "2026-11-18 23:12:35",
+ "ledger": [
+  {
+   "step": "test discussion published",
+   "ok": true,
+   "detail": "19"
+  },
+  {
+   "step": "B (host, phone) entered the room",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B has the invite link",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the chat button is in B's control bar",
+   "ok": true,
+   "detail": "צ'אט החדר"
+  },
+  {
+   "step": "A (desktop) entered the room",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B's chat opens as a sheet",
+   "ok": true,
+   "detail": "flex/false/464.1875"
+  },
+  {
+   "step": "A sees the new message pop over the video",
+   "ok": true,
+   "detail": "בC\nבדיקת Claude ב בדיקת Claude: שלום מהטלפון, רואים את הכתם ליד החלון?"
+  },
+  {
+   "step": "A's chat button shows an unread counter",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "step": "A sees B's message in the chat",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B receives A's answer live",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B sees A's reaction on the message",
+   "ok": true,
+   "detail": "הכתם ליד החלון? מועיל 1 23:11 בC בדיקת Claude א · רוכש דירה · 23:12 בדיקת Claude: כן, נראה כמו רטיבות מהמרזב. מועיל תודה"
+  },
+  {
+   "step": "the pinned bar shows on A",
+   "ok": true,
+   "detail": "נעוץ:\nבדיקת Claude: שלום מהטלפון, רואים את הכתם ליד החלון?"
+  },
+  {
+   "step": "C (late, phone) entered the room",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "C (late) sees the earlier messages and the divider",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B gets the end sheet with the attach question",
+   "ok": true,
+   "detail": "השיחה הסתיימה · דקה אחת מה לצרף לדיון \"בדיקת Claude: צ'אט בחדר הווידאו\"? בדיקת Claude: שלום מהטלפון, רואים את הכתם ליד ה"
+  },
+  {
+   "step": "the summary was attached",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"id\": 34, \"status\": \"live\", \"url\": \"https://nad-lan.co.il/forum/19/#r34\", \"message\": \"הסיכום צורף לדיון.\"}"
+  },
+  {
+   "step": "guest sees the answer 'מה סוכם בשיחה' with the pinned line",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

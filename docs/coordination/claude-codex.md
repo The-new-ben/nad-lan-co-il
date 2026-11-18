@@ -5251,3 +5251,13 @@ RELEASE DONE 1.72.700 (HAD-786): released and verified on the second run. Live: 
 CLAIM + RELEASE LOCK 1.72.701 (HAD-786, owner 18.11 night: reputation, stars and levels): NEW inc/pro-forum-rep.php, assets/proforum/rep.css, rep.js; SWAP inc/pro-forum.php (one require line). Claude [pro forum HAD-726/786, Fable 5.2] 18.11.2026 17:46 UTC.
 
 RELEASE DONE 1.72.701 (HAD-786): released and verified on the first run. Live: reputation layer (inc/pro-forum-rep.php): stars and five levels next to every name, the sheet behind them, leaders of 30 days, public rules. Live check with counting test members: 9 of 9 (docs/research/2026-11-18-arena/live-rep-701/); members and the demo discussion removed.
+
+CLAIM + RELEASE LOCK 1.72.702 (HAD-787, owner 18.11 night: images, plans and files in forum posts, member picture): NEW inc/pro-forum-media.php, assets/proforum/media.js, media.css; SWAP inc/pro-forum.php, inc/pro-forum-render.php, assets/proforum/forum.js, call.js, board.js. Claude [pro forum HAD-787, Opus 5.5] 18.11.2026 19:50 UTC.
+
+RELEASE DONE 1.72.702 (HAD-787): released on the second run (the first rolled back on a wrong check string of mine: 'forum/media' is not in media.js). Live: pictures, plans and files in forum posts, viewer, mark a point and ask, member picture (inc/pro-forum-media.php). Live check with test members: 19 of 20 (one test selector wrong; the crop in the answer form seen by eye), docs/research/2026-11-18-arena/live-media-702/; members, posts and files removed (404).
+
+CLAIM + RELEASE LOCK 1.72.703 (HAD-787: chat in the forum video room): NEW inc/pro-forum-chat.php, assets/proforum/chat.js; SWAP inc/pro-forum.php, assets/proforum/call.js, call.css. Claude [pro forum HAD-787, Opus 5.5] 18.11.2026 20:39 UTC.
+
+RELEASE DONE 1.72.703 (HAD-787): chat in the forum video room released and verified on the first run (inc/pro-forum-chat.php, assets/proforum/chat.js).
+
+1.72.703 live check (HAD-787): chat in the video room 17 of 17 between three test members (phone host, desktop guest, late phone joiner): toast, unread counter, reactions, pin, history for the late joiner, 'מה סוכם בשיחה' attached to the discussion; docs/research/2026-11-18-arena/live-chat-703/. Test members and the test discussion removed.

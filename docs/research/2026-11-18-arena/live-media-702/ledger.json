@@ -1,0 +1,96 @@
+{
+ "topic": 18,
+ "at": "2026-11-18 22:36:50",
+ "ledger": [
+  {
+   "step": "test picture 1 carries a GPS block before upload",
+   "ok": true,
+   "detail": "182229"
+  },
+  {
+   "step": "the composer shows camera, pictures and plan buttons",
+   "ok": true,
+   "detail": "['מצלמה', 'תמונות', 'תוכנית / PDF']"
+  },
+  {
+   "step": "4 files uploaded with thumbnails",
+   "ok": true,
+   "detail": "4"
+  },
+  {
+   "step": "the chip says the location was removed",
+   "ok": true,
+   "detail": "המיקום הוסר מהתמונות"
+  },
+  {
+   "step": "the discussion was published",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"id\": 18, \"url\": \"https://nad-lan.co.il/forum/18/\", \"status\": \"live\", \"message\": \"ההודעה פורסמה.\", \"ch\": \"dde30a7dafad4bd7d7f034a2.14.1795034118.0678f8198735590cbefc370de60686ba\", \"ts\": \"179"
+  },
+  {
+   "step": "guest sees the gallery with 3 pictures",
+   "ok": true,
+   "detail": "3"
+  },
+  {
+   "step": "pictures have alt text and load",
+   "ok": true,
+   "detail": "[{'src': 'https://nad-lan.co.il/wp-content/uploads/nlf-media/2026/11/c03626b65cab9ff622584933ef9bbf29.jpg', 'alt': 'תמונה מהדיון', 'w': 257}]"
+  },
+  {
+   "step": "guest sees the plan card with page count and both buttons",
+   "ok": true,
+   "detail": "קיר בדיקה, סלון PDF · 2 עמודים · 1KB לשרטט עליה ביחד הורדה"
+  },
+  {
+   "step": "the page's structured data carries the first picture",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the full-screen viewer opens on picture 1",
+   "ok": true,
+   "detail": "1 / 3"
+  },
+  {
+   "step": "the viewer moves to picture 2",
+   "ok": true,
+   "detail": "2 / 3"
+  },
+  {
+   "step": "the stored picture has no location and no camera name",
+   "ok": true,
+   "detail": "loads/nlf-media/2026/11/c03626b65cab9ff622584933ef9bbf29.jpg 54787 bytes, size (2048, 1366)"
+  },
+  {
+   "step": "the stored picture was shrunk to 2048 on the long side or less",
+   "ok": true,
+   "detail": "(2048, 1366)"
+  },
+  {
+   "step": "the answer form opens with the marked crop",
+   "ok": false,
+   "detail": ""
+  },
+  {
+   "step": "member marks a point and asks",
+   "ok": false,
+   "detail": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"form[data-nlf-replyform]\").first.locator(\"button[type=submit]\").first\n    - locator resolved to <button type=\"submit\" class=\"nlf-btn nlf-btn-hot\">שליחה</button>\n  - attempting click action\n    2 × waiting for element to be v"
+  },
+  {
+   "step": "the member picture was saved",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"media\": {\"id\": 5, \"kind\": \"avatar\", \"w\": 256, \"h\": 256, \"bytes\": 3044, \"url\": \"https://nad-lan.co.il/wp-content/uploads/nlf-media/2026/11/7a5ca55e4aa"
+  },
+  {
+   "step": "guest sees the answer with the marked crop",
+   "ok": false,
+   "detail": ""
+  },
+  {
+   "step": "the member picture replaces the initials next to the answer",
+   "ok": false,
+   "detail": "0"
+  }
+ ]
+}

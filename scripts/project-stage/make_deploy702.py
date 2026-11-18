@@ -20,7 +20,7 @@ ROWS = ("    ('/forum/?t702f=1', ['nlf-dir', 'assets/proforum/media.js', 'assets
         "    ('/forum/6/?t702f=1', ['nlf-thread', 'assets/proforum/media.js', '\"topic\":6', 'nlfc-roomrow'], ['Fatal error', 'Warning</b>', 'Notice</b>'], []),\n"
         "    ('/forum/11/?t702f=1', ['nlf-thread', 'assets/proforum/media.js'], ['Fatal error', 'Warning</b>', 'Notice</b>'], []),\n"
         "    ('/wp-json/nadlan/v1/forum/ping?t702f=1', ['\"loaded\":true', '\"public\":true'], [], []),\n"
-        "    ('%smedia.js?t702f=1', ['forum/media', 'nlfmd-lb'], ['Fatal error'], []),\n"
+        "    ('%smedia.js?t702f=1', ['nlfmd-lb', 'nlfExtra'], ['Fatal error'], []),\n"
         "    ('%smedia.css?t702f=1', ['.nlfmd-gal', '.nlfmd-lb'], ['Fatal error'], []),\n"
         "    ('%sforum.js?t702f=1', ['form.nlfExtra ? form.nlfExtra(path)'], ['Fatal error'], []),\n"
         "    ('%sboard.js?t702f=1', ['takeImage', 'nlfsb-svg'], ['Fatal error'], []),\n") % (A, A, A, A)
