@@ -1704,3 +1704,5 @@ if ( file_exists( __DIR__ . '/pro-forum-card.php' ) ) { require_once __DIR__ . '
 if ( file_exists( __DIR__ . '/pro-forum-rep.php' ) ) { require_once __DIR__ . '/pro-forum-rep.php'; }
 // images, plans and files in posts, the full-screen gallery, a point marked on a picture, the member's picture (board 21)
 if ( file_exists( __DIR__ . '/pro-forum-media.php' ) ) { require_once __DIR__ . '/pro-forum-media.php'; }
+// the chat inside a video room: history per room, pin, word reactions, "מה סוכם בשיחה" into the discussion (board 22)
+if ( file_exists( __DIR__ . '/pro-forum-chat.php' ) ) { require_once __DIR__ . '/pro-forum-chat.php'; }

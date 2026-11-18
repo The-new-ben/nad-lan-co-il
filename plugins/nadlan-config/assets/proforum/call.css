@@ -196,3 +196,109 @@ html.nlfc-open, html.nlfc-open body { overflow: hidden; }
 .nlfc-ctl { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } /* any number of controls, one row */
 .nlfc-c.nlfc-inv { background: #FFFFFF; color: #101820; }
 .nlfc-c.nlfc-inv small { color: #101820; }
+
+/* ---------------------------------------------------------------- board 22: the chat inside the video room (assets/proforum/chat.js)
+   forum-design/project/VideoChat.dc.html. Ground #F2F4F5, surface #FFFFFF, ink #101820, raspberry #B0144F only for what is new or
+   pinned (the unread count, the pinned bar), sea #2F6F86 for actions and my own messages, muted #3A4650, line #D5DBDF; Rubik for
+   numbers and headings, Assistant for text. Not the default look: a white job-site sheet with a hard ink edge over the dark call
+   screen, the pinned line in the forum's raspberry tint, no cream, gold or gradient. Every class here starts with nlfch- (checked
+   against assets/skin-a/skin-a.css); the theme forces heading fonts and colours with !important, so the heading answers in kind. */
+.nlfc-self .nlfc-c.nlfc-flip { position: absolute; z-index: 1; top: 6px; inset-inline-start: 6px; width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; background: #2F6F86; box-shadow: 0 0 0 2px #FFFFFF; }
+.nlfc-self .nlfc-c.nlfc-flip small { display: none; }
+.nlfc-self .nlfc-c.nlfc-flip[disabled] { display: none; } /* the camera is off: nothing to flip */
+.nlfc-c.nlfch-btn { position: relative; }
+.nlfc-c.nlfch-btn[aria-expanded="true"] { background: #FFFFFF; color: #101820; }
+.nlfc-c.nlfch-btn[aria-expanded="true"] small { color: #101820; }
+.nlfc-stage .nlfch-badge { position: absolute; top: -4px; inset-inline-end: 6px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 10px; background: #B0144F; color: #FFFFFF;
+	font-family: Rubik, Arial, sans-serif !important; font-weight: 700; font-size: 12px; line-height: 20px; text-align: center; font-variant-numeric: tabular-nums; box-shadow: 0 0 0 2px #101820; }
+.nlfc-stage .nlfch-badge[hidden] { display: none; }
+
+/* the new message over the video, four seconds (part א) */
+.nlfch-toastw { position: absolute; z-index: 4; inset-inline-start: 12px; inset-inline-end: 132px; bottom: calc(132px + env(safe-area-inset-bottom)); }
+.nlfch-toastw:empty { display: none; }
+.nlfch-toast { width: 100%; min-height: 44px; display: flex; gap: 8px; align-items: flex-start; text-align: start; border: 0; border-radius: 14px; padding: 9px 11px; background: rgba(255, 255, 255, .96); color: #101820;
+	font: inherit; font-size: 13.5px; line-height: 1.35; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); cursor: pointer; }
+.nlfch-tt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.nlfch-tt b { font-weight: 700; }
+
+/* the chat: half the screen on a phone over the video, a side panel from 900px (part ב) */
+.nlfch-panel { position: absolute; z-index: 5; inset-inline: 0; bottom: 0; height: 55%; min-height: 300px; max-height: calc(100% - 60px); box-sizing: border-box; display: flex; flex-direction: column;
+	background: #FFFFFF; color: #101820; border-radius: 22px 22px 0 0; box-shadow: 0 0 0 1.5px #101820; overflow: hidden; font-family: Assistant, 'Segoe UI', Arial, sans-serif; padding-bottom: env(safe-area-inset-bottom); }
+.nlfch-panel[hidden] { display: none; }
+.nlfch-head { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-bottom: 1px solid #D5DBDF; }
+.nlfc-stage .nlfch-panel h2.nlfch-h { margin: 0 !important; padding: 0 !important; font-family: Rubik, Arial, sans-serif !important; font-weight: 700 !important; font-size: 16px !important; line-height: 1.2 !important; color: #101820 !important; background: none !important; border: 0 !important; letter-spacing: 0 !important; text-transform: none !important; }
+.nlfch-count { font-size: 13px; color: #3A4650; }
+.nlfch-x { margin-inline-start: auto; flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #EEF2F4; color: #101820; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.nlfch-pin { flex: none; display: flex; gap: 6px; padding: 8px 14px; background: #FBE7EF; color: #8A0F3D; font-size: 13px; line-height: 1.4; }
+.nlfch-pin[hidden] { display: none; }
+.nlfch-pin b { flex: none; font-weight: 700; }
+.nlfch-pintext { min-width: 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow-wrap: anywhere; }
+.nlfch-empty { margin: 0; padding: 16px 14px 0; font-size: 14px; color: #3A4650; text-align: center; }
+.nlfch-empty[hidden] { display: none; }
+.nlfch-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; font-size: 14.5px; line-height: 1.45; }
+.nlfch-div { align-self: center; font-size: 12px; color: #3A4650; background: #EEF2F4; padding: 3px 10px; border-radius: 999px; }
+.nlfch-m { display: flex; gap: 8px; align-items: flex-start; }
+.nlfch-m.is-mine { flex-direction: column; align-items: flex-start; gap: 2px; }
+.nlfc-stage .nlfch-av { flex: none; width: 30px; height: 30px; border-radius: 50%; background: #E3E6E8; color: #22303A; display: flex; align-items: center; justify-content: center; overflow: hidden;
+	font-family: Rubik, Arial, sans-serif !important; font-weight: 700; font-size: 11px; }
+.nlfch-toast .nlfch-av { width: 28px; height: 28px; }
+.nlfch-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nlfch-mb { min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.nlfch-meta { font-size: 12.5px; color: #3A4650; }
+.nlfch-meta b { color: #101820; font-weight: 700; }
+.nlfch-stars { color: #B0144F; letter-spacing: 1px; }
+.nlfch-text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.nlfch-bub { max-width: 80%; box-sizing: border-box; background: #2F6F86; color: #FFFFFF; border-radius: 14px 14px 14px 4px; padding: 8px 11px; display: flex; flex-direction: column; gap: 6px; }
+.nlfch-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.nlfch-media { display: block; }
+.nlfc-stage a.nlfch-thumb { display: block; width: 150px; height: 104px; border-radius: 12px; overflow: hidden; background: #9AA9B4; text-decoration: none !important; }
+.nlfch-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.nlfc-stage a.nlfch-pdf { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px 6px 8px; border-radius: 12px; border: 1px solid #D5DBDF; background: #FFFFFF; color: #101820 !important; text-decoration: none !important; font-size: 13.5px; font-weight: 600; }
+.nlfch-pdf-ic { flex: none; width: 32px; height: 32px; border-radius: 8px; background: #FBE7EF; color: #B0144F; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 10.5px; }
+.nlfch-rx { display: flex; gap: 2px 5px; align-items: center; flex-wrap: wrap; }
+.nlfch-rxb { min-height: 44px; min-width: 44px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; display: inline-flex; align-items: center; }
+.nlfch-pill { height: 24px; padding: 0 8px; border-radius: 999px; background: #EEF2F4; color: #101820; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; white-space: nowrap; }
+.nlfch-pill.is-on { background: #2F6F86; color: #FFFFFF; }
+.nlfch-mtime { font-family: Rubik, Arial, sans-serif; font-size: 11.5px; color: #3A4650; font-variant-numeric: tabular-nums; }
+.nlfch-more { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #3A4650; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.nlfch-more[aria-expanded="true"] { background: #EEF2F4; color: #101820; }
+.nlfch-acts { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.nlfch-acth { width: 100%; font-size: 13px; }
+.nlfch-act { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1.5px solid #2F6F86; background: #FFFFFF; color: #2F6F86; font: inherit; font-weight: 700; font-size: 13.5px; cursor: pointer; }
+.nlfch-act.is-bad { border-color: #B3261E; color: #B3261E; }
+.nlfch-att { flex: none; display: flex; gap: 8px; align-items: center; padding: 6px 10px 0; font-size: 13px; color: #3A4650; }
+.nlfch-att[hidden] { display: none; }
+.nlfch-att img, .nlfch-att-ic { flex: none; width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: #FBE7EF; color: #B0144F; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 11px; }
+.nlfch-att-t { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nlfch-attx { margin-inline-start: 0; }
+.nlfch-status { flex: none; margin: 0; padding: 0 12px; min-height: 0; font-size: 13px; color: #22303A; }
+.nlfch-status:not(:empty) { padding: 4px 12px; }
+.nlfch-status.is-bad { color: #B3261E; font-weight: 700; }
+.nlfch-form { flex: none; border-top: 1px solid #D5DBDF; padding: 10px; display: flex; gap: 8px; align-items: flex-end; }
+.nlfch-add { flex: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid #D5DBDF; background: #FFFFFF; color: #2F6F86; font: inherit; font-size: 22px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.nlfch-in { flex: 1 1 auto; min-width: 0; min-height: 44px; max-height: 120px; box-sizing: border-box; resize: none; border-radius: 12px; border: 1.5px solid #101820; padding: 10px 12px; background: #FFFFFF; color: #101820; font: inherit; font-size: 16px; line-height: 1.35; }
+.nlfch-in::placeholder { color: #3A4650; opacity: 1; }
+.nlfch-send { flex: none; height: 44px; padding: 0 14px; border-radius: 12px; border: 0; background: #2F6F86; color: #FFFFFF; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; }
+.nlfch-send[disabled] { opacity: .6; cursor: progress; }
+.nlfch-panel :focus-visible, .nlfch-toast:focus-visible { outline: 3px solid #2F6F86; outline-offset: 2px; }
+.nlfch-in:focus-visible { outline-offset: 0; }
+@media (min-width: 900px) {
+	/* desktop: a side panel at the end of the screen; the call keeps the rest */
+	.nlfch-panel { top: 0; bottom: 0; inset-inline-start: auto; inset-inline-end: 0; width: 380px; height: auto; max-height: none; border-radius: 0; box-shadow: -1.5px 0 0 #101820; }
+	.nlfc-stage.nlfch-on { padding-inline-end: 380px; }
+	.nlfc-stage.nlfch-on .nlfc-remote { inset-inline-end: 380px; }
+	.nlfc-stage.nlfch-on .nlfc-wait { left: calc(50% + 190px); }
+	.nlfch-toastw { inset-inline-start: auto; inset-inline-end: 236px; width: min(420px, calc(100% - 260px)); }
+}
+
+/* the host's end-of-call sheet (part ג) */
+.nlfc-sheet.nlfch-endsheet { gap: 10px; }
+.nlfc-sheet.is-room.nlfch-endsheet .nlfc-shh h2 { font-size: 17px !important; font-weight: 700 !important; }
+.nlfch-endsheet .nlfc-sub { font-size: 14px; color: #3A4650; }
+.nlfch-end { display: flex; flex-direction: column; gap: 4px; }
+.nlfch-endrow { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 8px 0; box-sizing: border-box; font-size: 14.5px; line-height: 1.4; color: #101820; cursor: pointer; }
+.nlfch-endrow.is-muted { color: #3A4650; }
+.nlfch-cb { flex: none; width: 22px; height: 22px; margin: 0; accent-color: #2F6F86; cursor: pointer; }
+.nlfc-sheet.nlfch-endsheet .nlfc-pri { min-height: 46px; border-radius: 12px; background: #2F6F86; color: #FFFFFF; font-size: 15px; }
+.nlfc-sheet.nlfch-endsheet .nlfc-fine { font-size: 12.5px; }
+@media (prefers-reduced-motion: reduce) { .nlfch-panel, .nlfch-toast { transition: none; animation: none; } }

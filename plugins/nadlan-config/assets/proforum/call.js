@@ -58,6 +58,8 @@ const T = {
 	linkNote: 'מי שמקבל קישור נכנס מהדפדפן, עם שם ומייל. הקישור תקף לשיחה הזו בלבד.',
 	lockedToast: 'החדר נעול. בקשו ממי ששלח את הקישור לפתוח את הנעילה.', fullToast: 'החדר מלא. בחדר וידאו יש מקום לעד 6 אנשים.',
 	goneToast: 'השיחה או החדר בקישור הזה כבר נסגרו.', newRoom: 'פתיחת חדר חדש', lInvite: 'הזמנה', inviteAria: 'מי מצטרף: קישור, וואטסאפ והזמנה מהדיון',
+	// board 22: the room's chat (assets/proforum/chat.js)
+	lChat: "צ'אט", chatAria: "צ'אט החדר",
 };
 const ERR = 'משהו השתבש. נסו שוב.';
 
@@ -73,9 +75,12 @@ const ICON = {
 	x: '<path d="M6 6l12 12M18 6L6 18"/>',
 	board: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 13l3-3 2 2 4-4M8 21l4-4 4 4"/>',
 	invite: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-7 7-7s7 3 7 7M19 8v6M16 11h6"/>',
+	chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
 };
 // the shared board (assets/proforum/board.js, 1.72.674, rebuilt to design boards 16 and 17), same version query as this file so a release reaches both
 const BOARD_URL = (() => { try { const u = new URL(import.meta.url); return new URL('board.js' + u.search, u).href; } catch (e) { return ''; } })();
+// the room's chat (assets/proforum/chat.js + inc/pro-forum-chat.php, design board 22), same version query as this file
+const CHAT_URL = (() => { try { const u = new URL(import.meta.url); return new URL('chat.js' + u.search, u).href; } catch (e) { return ''; } })();
 
 /* ---------------------------------------------------------------- small DOM helpers (text only through textContent) */
 
@@ -169,7 +174,7 @@ function sheet(o) {
 		return h('label', { cls: 'nlfc-swrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: label }), h('small', { text: sub })), inp, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i')));
 	};
 	const go = h('button', { type: 'button', cls: 'nlfc-btn nlfc-pri' + (o.hot ? ' nlfc-hot' : ''), text: o.go });
-	const no = h('button', { type: 'button', cls: 'nlfc-btn nlfc-plain', text: T.notNow });
+	const no = h('button', { type: 'button', cls: 'nlfc-btn nlfc-plain', text: o.no || T.notNow }); // o.no: a "not now" with its own words on a sheet without media (the chat's end-of-call sheet)
 	const x = h('button', { type: 'button', cls: 'nlfc-x', 'aria-label': T.close, title: T.close }, icon('x'));
 	const hid = 'nlfc-h-' + Math.random().toString(36).slice(2, 8);
 	// board 19, part ה: the person who sent the link heads the sheet (initials, "<name> מזמין אתכם לחדר וידאו", trade and how many are in)
@@ -177,7 +182,7 @@ function sheet(o) {
 		? h('div', { cls: 'nlfc-shh' }, h('div', { cls: 'nlfc-host' }, h('span', { cls: 'nlfc-ini', 'aria-hidden': 'true', text: initials(o.host.name) }),
 			h('div', null, h('h2', { id: hid, text: o.heading }), o.host.sub ? h('span', { text: o.host.sub }) : null)), x)
 		: h('div', { cls: 'nlfc-shh' }, h('h2', { id: hid, text: o.heading }), x);
-	const card = h('section', { cls: 'nlfc-sheet' + (o.room ? ' is-room' : ''), role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': hid, dir: 'rtl', lang: 'he' },
+	const card = h('section', { cls: 'nlfc-sheet' + (o.room ? ' is-room' : '') + (o.cls ? ' ' + o.cls : ''), role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': hid, dir: 'rtl', lang: 'he' },
 		head,
 		o.request ? h('p', { cls: 'nlfc-req' }, h('span', { cls: 'nlfc-tag', text: o.tag || T.tag }), h('span', { text: o.request })) : null,
 		o.sub ? h('p', { cls: 'nlfc-sub', text: o.sub }) : null,
@@ -187,7 +192,7 @@ function sheet(o) {
 		o.extra || null,
 		go,
 		o.fine ? h('p', { cls: 'nlfc-fine', text: o.fine }) : (o.media === false ? null : h('p', { cls: 'nlfc-fine', text: T.note })),
-		msg, o.media === false ? null : no);
+		msg, o.media === false && !o.no ? null : no);
 	const scrim = h('div', { cls: 'nlfc-scrim' }, card);
 	const api = {
 		media, say,
@@ -255,6 +260,9 @@ function stage(tr, tk, media, opener) {
 	const bBoard = ctl('board', 'לוח משותף: ציור, תמונה או תוכנית והערות עליה', 'לוח', 'nlfc-board');
 	const bInv = ctl('invite', T.inviteAria, T.lInvite, 'nlfc-inv'); // board 19, part ד: "הזמנה" in the bar of an open room
 	bInv.hidden = !open;
+	const bChat = ctl('chat', T.chatAria, T.lChat); // board 22: between the camera and the board; shown once chat.js is in
+	bChat.hidden = true;
+	let chat = null;
 	let board = null;
 	// the board shows its own copy of the call controls (design boards 16 and 17); they act only through these callbacks
 	if (BOARD_URL) import(BOARD_URL).then((m) => {
@@ -294,12 +302,23 @@ function stage(tr, tk, media, opener) {
 		h('label', { cls: 'nlfc-swrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: T.voice })), voiceIn, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i'))),
 		host ? lockRow() : null,
 		h('p', { cls: 'nlfc-fine', text: T.norec }));
-	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bFlip, bBoard, bInv, bMore, bEnd);
+	// board 22 adds "צ'אט" to the bar; the camera flip moves onto my own picture (it works only while my camera is on), so a phone's
+	// bar keeps at most seven controls and each stays 44px wide on a 390px screen
+	self.appendChild(bFlip);
+	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bChat, bBoard, bInv, bMore, bEnd);
 	const root = h('div', { cls: 'nlfc-stage', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.callAria, dir: 'rtl', lang: 'he' },
 		remote, waitP, top, who, strip, banner, audioB, h('div', { cls: 'nlfc-fill' }), self, acts, menu, bar, h('p', { cls: 'nlfc-norec', text: T.norec }));
 	document.documentElement.classList.add('nlfc-open');
 	document.body.appendChild(root);
 	setTimeout(() => bMic.focus({ preventScroll: true }), 30);
+	// board 22: the chat of this room (history, live messages on the data topic 'chat', the host's "מה סוכם בשיחה")
+	if (CHAT_URL) import(CHAT_URL).then((m) => {
+		if (!S.alive || !m || !m.createChat) return;
+		chat = m.createChat({ tr, tk, req, nonce: () => st.nonce, rest: C.rest, root, button: bChat, sheet, host: !!tk.host });
+		bChat.hidden = false;
+	}).catch(() => { bChat.hidden = true; });
+	bChat.addEventListener('click', () => { if (chat) chat.toggle(); });
+	const minutes = () => Math.max(1, Math.round((Date.now() - S.t0) / 60000));
 
 	let bannerT = 0;
 	const say = (t, ms) => { clearTimeout(bannerT); banner.textContent = t || ''; banner.hidden = !t; if (t && ms) bannerT = setTimeout(() => { banner.hidden = true; }, ms); };
@@ -389,6 +408,9 @@ function stage(tr, tk, media, opener) {
 		}
 		for (const [id, v] of S.vids) if (!rs.find((p) => p.id === id)) { v.remove(); S.vids.delete(id); say(T.left(S.names.get(id) || firstOther.name), 6000); S.names.delete(id); }
 		if (rs.length) S.hadRemote = true;
+		// board 22, part ג: the room emptied around its host, the end-of-call sheet offers "מה סוכם בשיחה" (the host may stay)
+		if (!rs.length && (S.peers | 0) > 0 && chat && tk.host) chat.endSheet(minutes()).then((j) => { if (j && S.alive) say(j.message, 6000); });
+		S.peers = rs.length;
 		// the large picture: whoever speaks, else the one already shown, else the first
 		const speaking = rs.find((p) => p.speaking);
 		const main = speaking || rs.find((p) => p.id === S.main) || rs[0] || null;
@@ -455,6 +477,7 @@ function stage(tr, tk, media, opener) {
 		if (ev.key === 'Escape' && !menu.hidden) { menu.hidden = true; bMore.setAttribute('aria-expanded', 'false'); bMore.focus(); ev.stopPropagation(); return; }
 		if (document.querySelector('.nlfc-scrim')) return; // a sheet on top keeps the keys
 		if (board && board.shown) return; // the shared board on top keeps the keys too
+		if (document.querySelector('dialog.nlfmd-lb[open]')) return; // a chat picture in the media module's full-screen view
 		trapTab(root, ev);
 	};
 	document.addEventListener('keydown', onKey, true);
@@ -466,13 +489,28 @@ function stage(tr, tk, media, opener) {
 		S.alive = false; st.inCall = false;
 		S.timers.forEach(clearInterval); clearTimeout(bannerT);
 		if (board) { try { board.destroy(); } catch (e) { /* gone */ } board = null; }
+		const ch = chat, mins = minutes(); // board 22: the chat goes with the screen; its end-of-call sheet still opens for the host
+		chat = null;
+		if (ch) { try { ch.destroy(); } catch (e) { /* gone */ } }
 		document.removeEventListener('keydown', onKey, true); window.removeEventListener('pagehide', onHide);
 		try { await tr.disconnect(); } catch (e) { /* already apart */ }
 		root.remove(); document.documentElement.classList.remove('nlfc-open');
 		if (/^#call=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
-		if (!open && (tk.topic | 0) !== (C.topic | 0) && tk.topic_url) { location.assign(tk.topic_url); return; } // back to the discussion (an open room stays on its page)
-		const back = opener && document.contains(opener) ? opener : document.querySelector('.nlf-thread h1, .nlf-page h1');
-		if (back) { if (!back.hasAttribute('tabindex') && back.tagName === 'H1') back.setAttribute('tabindex', '-1'); back.focus(); }
+		const after = () => {
+			if (!open && (tk.topic | 0) !== (C.topic | 0) && tk.topic_url) { location.assign(tk.topic_url); return; } // back to the discussion (an open room stays on its page)
+			const back = opener && document.contains(opener) ? opener : document.querySelector('.nlf-thread h1, .nlf-page h1');
+			if (back) { if (!back.hasAttribute('tabindex') && back.tagName === 'H1') back.setAttribute('tabindex', '-1'); back.focus(); }
+		};
+		if (!ch || !tk.host) { after(); return; }
+		// the host pressed the end: "השיחה הסתיימה" and what to attach; once attached, the discussion opens at the new answer
+		const j = await ch.endSheet(mins);
+		if (j && j.url) { goReply(j.url); return; }
+		after();
+	}
+	function goReply(url) {
+		let same = false;
+		try { same = new URL(url, location.href).pathname === location.pathname; } catch (e) { same = false; }
+		if (same) { history.replaceState(null, '', url); location.reload(); } else location.assign(url);
 	}
 	bEnd.addEventListener('click', leave);
 

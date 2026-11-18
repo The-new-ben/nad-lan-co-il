@@ -103,6 +103,8 @@ add_action( 'rest_api_init', function () {
 				}
 				if ( function_exists( 'nlfc_table' ) ) { $gone['callpref'] = (int) $wpdb->query( 'DELETE FROM ' . nlfc_table() . " WHERE member_id IN ($in)" ); }
 				$tids = $wpdb->get_col( 'SELECT id FROM ' . nlf_t( 'topics' ) . " WHERE member_id IN ($in)" );
+				// 18.11.2026 (chat module, inc/pro-forum-chat.php): their messages in video rooms, with the reports on them and their never-attached files
+				if ( function_exists( 'nlfch_purge_members' ) ) { $gone['chat'] = (int) nlfch_purge_members( $ids ); }
 				// 18.11.2026 (media module, inc/pro-forum-media.php): their pictures, plans, profile pictures and points, rows AND files, before the replies go
 				if ( function_exists( 'nlfmd_purge_members' ) ) { $gone['media'] = (int) nlfmd_purge_members( $ids, (array) $tids ); }
 				foreach ( array( 'replies' => 'member_id', 'thanks' => 'member_id', 'flags' => 'member_id', 'follows' => 'member_id' ) as $tb => $col ) {
