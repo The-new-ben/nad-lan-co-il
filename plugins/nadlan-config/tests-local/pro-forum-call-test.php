@@ -108,6 +108,33 @@ t( 'invites: newest first, one per room, old and bad dropped', array( 'ccccccccc
 $many = array(); for ( $i = 0; $i < 9; $i++ ) { $many[] = array( 'room' => nlfc_rand( 12 ), 't' => $now - $i ); }
 t( 'invites: at most 5', 5 === count( nlfc_invites_prune( $many, $now ) ) );
 
+/* board 19: the open video room */
+t( 'room holds 6, a direct call 4', 6 === NLFC_ROOM_PEOPLE && 4 === NLFC_MAX_PEOPLE );
+$or = nlfc_room_new_open( 7, 0, $now );
+t( 'new open room: opener in, open, unlocked, no card', array( 't' => $now, 'topic' => 0, 'card' => 0, 'by' => 7, 'ok' => array( 7 => '' ), 'open' => 1, 'lock' => 0 ) === $or );
+t( 'new open room keeps a discussion id', 12 === nlfc_room_new_open( '7', '12', $now )['topic'] && 0 === nlfc_room_new_open( 7, -3, $now )['topic'] );
+t( 'home room: open with no discussion and no card', nlfc_room_is_home( $or ) && ! nlfc_room_is_home( nlfc_room_new_open( 7, 12, $now ) ) );
+t( 'a direct call is never a home room', ! nlfc_room_is_home( array( 'topic' => 0, 'card' => 0, 'ok' => array() ) ) );
+t( 'room max: open 6, direct 4', 6 === nlfc_room_max( $or ) && 4 === nlfc_room_max( array( 'ok' => array() ) ) );
+t( 'join: the opener is already in', '' === nlfc_can_join( $or, 7, 6 ) );
+t( 'join: anyone with the link', '' === nlfc_can_join( $or, 8, 6 ) );
+t( 'join: a direct call refuses', 'notin' === nlfc_can_join( array( 'ok' => array( 1 => '', 2 => '' ) ), 3, 4 ) );
+t( 'join: a direct call lets its own people in', '' === nlfc_can_join( array( 'ok' => array( 1 => '', 2 => '' ) ), 2, 4 ) );
+$lk = $or; $lk['lock'] = 1;
+t( 'join: locked refuses a newcomer', 'locked' === nlfc_can_join( $lk, 8, 6 ) );
+t( 'join: locked still lets someone already in back', '' === nlfc_can_join( $lk, 7, 6 ) );
+$full = $or; $full['ok'] = array( 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 7 => 'abcdefghij' );
+t( 'join: six in = full', 'full' === nlfc_can_join( $full, 8, 6 ) && '' === nlfc_can_join( $full, 3, 6 ) );
+t( 'join: five in = room for one more', '' === nlfc_can_join( array_merge( $or, array( 'ok' => array( 1 => '', 2 => '', 3 => '', 4 => '', 7 => '' ) ) ), 8, 6 ) );
+t( 'join: lock checked before full', 'locked' === nlfc_can_join( array_merge( $full, array( 'lock' => 1 ) ), 8, 6 ) );
+t( 'join: string member id', '' === nlfc_can_join( $or, '7', 6 ) );
+t( 'join: no member', 'notin' === nlfc_can_join( array( 'ok' => array() ), 0, 4 ) );
+t( 'message locked', 'החדר נעול. בקשו ממי שפתח אותו לפתוח את הנעילה.' === nlfc_msg( 'locked' ) );
+t( 'room wording for full and gone', 'החדר הזה כבר נסגר.' === nlfc_msg( 'gone', true ) && 0 === strpos( nlfc_msg( 'full', true ), 'החדר מלא.' ) );
+t( 'direct-call wording kept', 'השיחה הזו כבר הסתיימה.' === nlfc_msg( 'gone' ) && 'השיחה מלאה.' === nlfc_msg( 'full' ) );
+t( 'room wording falls back for other codes', nlfc_msg( 'locked', true ) === nlfc_msg( 'locked' ) && nlfc_msg( 'rate_member', true ) === nlfc_msg( 'rate_member' ) );
+foreach ( array( 'locked', 'host', 'rate_join' ) as $c ) { t( "message for $c is Hebrew", 1 === preg_match( '/\p{Hebrew}/u', nlfc_msg( $c ) ) ); }
+
 /* house rules on the new files */
 $js  = (string) file_get_contents( __DIR__ . '/../assets/proforum/call.js' );
 $php = (string) file_get_contents( __DIR__ . '/../inc/pro-forum-call.php' );
@@ -122,6 +149,13 @@ t( 'js: no emoji', 0 === preg_match( '/[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]/u'
 t( 'js: no wheel or touch capture', 0 === preg_match( "/addEventListener\\(\\s*'(wheel|touchmove|touchstart)'/", $js ) );
 t( 'css: 44px targets on the call controls', false !== strpos( $css, 'min-height: 56px' ) && false !== strpos( $css, 'min-height: 44px' ) );
 t( 'no secret read outside the designer/together helpers', 0 === preg_match( "/get_option\\(\\s*'nadlan_tr_/", $php ) );
+t( 'board 19 routes registered', false !== strpos( $php, "\$reg( '/room', 'POST'" ) && false !== strpos( $php, "\$reg( '/join', 'POST'" ) && false !== strpos( $php, "\$reg( '/lock', 'POST'" ) );
+t( 'board 19 routes are member writes', 6 === substr_count( $php, 'nlfc_member( $q, true )' ) ); // open, token, pref + room, join, lock
+t( 'board 19 wording on the band and rows', false !== strpos( $php, 'פתיחת חדר וידאו' ) && false !== strpos( $php, 'שיחת וידאו על הדיון הזה' ) && false !== strpos( $php, 'בדפדפן, בלי התקנה ובלי תשלום. השיחה לא מוקלטת.' ) );
+t( 'card row never names the person', 1 === preg_match( "/nlf_card_after_mast'.*?\n\}, 10, 1 \);/s", $php, $cm ) && false === strpos( $cm[0], 'person_name' ) && false === strpos( $cm[0], 'get_the_title' ) );
+t( 'js: WhatsApp opens in a new tab with noopener', false !== strpos( $js, "'https://wa.me/?text=' + encodeURIComponent(" ) && false !== strpos( $js, "rel: 'noopener'" ) );
+t( 'js: room pending travels through sessionStorage', false !== strpos( $js, 'room: target.room ? 1 : 0' ) );
+t( 'no long dashes in the new wording', false === strpos( $js . $php . $css, '—' ) );
 
 echo "\n$pass passed, $fail failed\n";
 exit( $fail ? 1 : 0 );

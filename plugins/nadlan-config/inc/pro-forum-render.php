@@ -145,6 +145,7 @@ function nlf_render_home() {
 			<button type="button" class="nlf-chip" style="<?php echo nlf_tint_style( array( '#DCEFE3', '#1B4D33' ) ); // phpcs:ignore ?>" data-nlf-compose data-kind="seek" data-cat="value">צריך שמאי</button>
 		</div>
 	</section>
+	<?php echo apply_filters( 'nlf_home_after_start', '', $me ); // phpcs:ignore -- HOOK (call module, inc/pro-forum-call.php): the open video room band of board 19, escaped there ?>
 	<nav class="nlf-sort" aria-label="מיון">
 		<?php foreach ( $sort as $k => $label ) :
 			$on  = $k === $a['v'] || ( '' === $k && 'new' === $a['v'] );
@@ -558,6 +559,7 @@ function nlf_card_embed( $pro ) {
 			<span><?php echo esc_html( ( 1 === $n_pro ? 'בעל מקצוע אחד עונה' : number_format( $n_pro ) . ' בעלי מקצוע עונים' ) . ' כאן בעצמם, ומכל דיון אפשר לעבור לשיחת וידאו' ); ?></span>
 		</div>
 		<?php endif; ?>
+		<?php echo apply_filters( 'nlf_card_after_mast', '', $pro ); // phpcs:ignore -- HOOK (call module, inc/pro-forum-call.php): the open video room row of board 19, escaped there ?>
 		<?php if ( count( $tabs ) > 1 ) : ?>
 		<div class="nlf-tabs" role="tablist" aria-label="הדיונים בפורום">
 			<?php $first = true; foreach ( $tabs as $k => $tab ) : ?>

@@ -109,3 +109,90 @@ html.nlfc-open, html.nlfc-open body { overflow: hidden; }
 .nlfc-preflink { margin-inline-start: 12px; min-height: 44px; }
 
 @media (prefers-reduced-motion: reduce) { .nlfc-sw, .nlfc-sw i { transition: none; } }
+
+/* ---------------------------------------------------------------- board 19: the open video room every visitor sees
+   docs/design-lab/pro-forum/canvas-source/VideoRoom.dc.html. Ground #F2F4F5, surface #FFFFFF, ink #101820, raspberry #B0144F
+   (the forum's own "new" accent, used once per surface for the one action), sea #2F6F86 for sending, muted #3A4650, line #D5DBDF;
+   Rubik for headings and numbers, Assistant for text. Not the default look: a job-site camera mark in raspberry on white with a hard
+   ink outline, no cream, gold or gradient. The theme forces heading colour and font, button colours and link underline with
+   !important (forum.css, 1.72.675), so every heading and button here answers with the same strength. */
+.nlf .nlfc-roomband { box-sizing: border-box; margin: 12px 16px 0; background: #FFFFFF; border-radius: 20px; box-shadow: 0 0 0 2px #101820; padding: 16px; display: flex; flex-direction: column; gap: 12px; color: #101820; font-family: var(--tf, Assistant, 'Segoe UI', Arial, sans-serif); }
+.nlf .nlfc-rb-id { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.nlf .nlfc-rb-mark { width: 52px; height: 52px; border-radius: 50%; background: #B0144F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 0 6px rgba(176, 20, 79, .16); }
+.nlf .nlfc-rb-tx { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nlf .nlfc-roomband h2.nlfc-rb-h { margin: 0 !important; padding: 0 !important; font-family: var(--hf, Rubik, Arial, sans-serif) !important; font-weight: 800 !important; font-size: 21px !important; line-height: 1.15 !important; color: #101820 !important; background: none !important; border: 0 !important; text-transform: none !important; letter-spacing: 0 !important; }
+.nlf .nlfc-rb-p { margin: 0; font-size: 14.5px; line-height: 1.4; color: #3A4650; }
+.nlf .nlfc-rb-steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.nlf .nlfc-rb-steps li { margin: 0; background: #F2F4F5; border-radius: 12px; padding: 8px 8px 9px; display: flex; flex-direction: column; gap: 2px; list-style: none; }
+.nlf .nlfc-rb-steps li::before, .nlf .nlfc-rb-steps li::marker { content: none; }
+.nlf .nlfc-rb-n { font-family: var(--hf, Rubik, Arial, sans-serif); font-weight: 800; font-size: 18px; line-height: 1.1; color: #B0144F; }
+.nlf .nlfc-rb-s { font-size: 13.5px; font-weight: 700; line-height: 1.25; color: #101820; }
+.nlf .nlfc-rb-go { display: flex; flex-direction: column; gap: 8px; }
+.nlf .nlfc-roomband button.nlfc-rb-btn { width: 100%; min-height: 54px; border-radius: 14px !important; border: 0 !important; background: #B0144F !important; color: #FFFFFF !important; font-family: var(--hf, Rubik, Arial, sans-serif) !important; font-weight: 700 !important; font-size: 17px !important; line-height: 1.1 !important; padding: 0 20px !important; cursor: pointer; box-shadow: none !important; text-transform: none !important; letter-spacing: 0 !important; }
+.nlf .nlfc-roomband button.nlfc-rb-btn:hover { background: #8C0F3E !important; }
+.nlf .nlfc-rb-fine { margin: 0; font-size: 13px; line-height: 1.4; color: #3A4650; text-align: center; }
+@media (min-width: 768px) {
+	/* desktop: one line, the mark and the words, the three steps, the button at the end */
+	.nlf .nlfc-roomband { flex-direction: row; align-items: center; gap: 14px; padding: 16px; }
+	.nlf .nlfc-rb-id { flex: 0 0 236px; }
+	.nlf .nlfc-rb-p { font-size: 13.5px; }
+	.nlf .nlfc-rb-steps { flex: 1 1 0; min-width: 0; }
+	.nlf .nlfc-rb-steps li { padding: 8px 9px; }
+	.nlf .nlfc-rb-s { font-size: 13px; }
+	.nlf .nlfc-rb-go { flex: 0 0 176px; }
+	.nlf .nlfc-roomband button.nlfc-rb-btn { padding: 0 12px !important; font-size: 16px !important; }
+	.nlf .nlfc-rb-fine { font-size: 12px; line-height: 1.35; }
+}
+
+.nlf .nlfc-roomrow { box-sizing: border-box; background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 18px; padding: 12px 14px; display: flex; gap: 12px; align-items: center; color: #101820; font-family: var(--tf, Assistant, 'Segoe UI', Arial, sans-serif); text-align: right; }
+.nlf .nlfc-rr-mark { width: 44px; height: 44px; border-radius: 50%; background: #FBE7EF; color: #B0144F; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nlf .nlfc-rr-tx { display: flex; flex-direction: column; gap: 1px; flex: 1 1 auto; min-width: 0; }
+.nlf .nlfc-rr-t { font-weight: 700; font-size: 15.5px; line-height: 1.3; color: #101820; }
+.nlf .nlfc-rr-s { font-size: 13px; color: #3A4650; line-height: 1.35; }
+.nlf .nlfc-roomrow button.nlfc-rr-btn { flex: none; min-height: 44px; padding: 0 18px !important; border-radius: 999px !important; border: 0 !important; background: #B0144F !important; color: #FFFFFF !important; font-family: var(--tf, Assistant, 'Segoe UI', Arial, sans-serif) !important; font-weight: 700 !important; font-size: 14.5px !important; line-height: 1.1 !important; white-space: nowrap; cursor: pointer; box-shadow: none !important; text-transform: none !important; }
+.nlf .nlfc-roomrow button.nlfc-rr-btn:hover { background: #8C0F3E !important; }
+.nlf .nlf-emb-mast .nlfc-roomrow { border-color: #FFFFFF; } /* on the card's dark masthead: a white row, the same form */
+.nlf .nlfc-roomband button:focus-visible, .nlf .nlfc-roomrow button:focus-visible { outline: 3px solid #2F6F86 !important; outline-offset: 3px; }
+
+/* ---------------------------------------------------------------- board 19, parts ג to ה: the room's sheets */
+.nlfc-sheet .nlfc-pri.nlfc-hot { background: #B0144F; min-height: 54px; border-radius: 14px; font-family: Rubik, Arial, sans-serif; font-size: 17px; }
+.nlfc-sheet .nlfc-tag { white-space: nowrap; }
+.nlfc-host { display: flex; gap: 12px; align-items: center; }
+.nlfc-host .nlfc-ini { width: 52px; height: 52px; border-radius: 14px; font-size: 19px; font-weight: 800; }
+.nlfc-host div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nlfc-host h2 { margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 19px; line-height: 1.2; color: #101820; }
+.nlfc-host span { font-size: 13.5px; color: #3A4650; }
+.nlfc-linkrow { display: flex; gap: 6px; align-items: center; border: 2px solid #101820; border-radius: 12px; padding: 0 12px 0 6px; min-height: 50px; }
+.nlfc-linkrow input { flex: 1 1 auto; min-width: 0; border: 0; background: transparent; font-family: Rubik, Arial, sans-serif; font-weight: 500; font-size: 13.5px; color: #101820; direction: ltr; text-align: left; padding: 0; height: 44px; }
+.nlfc-linkrow input:focus { outline: none; }
+.nlfc-linkrow:focus-within { outline: 3px solid #2F6F86; outline-offset: 2px; }
+.nlfc-linkrow button { flex: none; min-height: 44px; padding: 0 14px; border-radius: 9px; border: 0; background: #101820; color: #FFFFFF; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+.nlfc-send { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.nlfc-send button { min-height: 50px; border-radius: 14px; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; cursor: pointer; }
+.nlfc-send .nlfc-wa { border: 0; background: #2F6F86; color: #FFFFFF; }
+.nlfc-send .nlfc-share { border: 2px solid #2F6F86; background: #FFFFFF; color: #2F6F86; }
+.nlfc-send .nlfc-share[hidden] { display: none; }
+.nlfc-send.is-one { grid-template-columns: 1fr; }
+.nlfc-from { display: flex; flex-direction: column; gap: 6px; }
+.nlfc-from[hidden] { display: none; }
+.nlfc-from > b { font-size: 14px; }
+.nlfc-person { display: flex; gap: 10px; align-items: center; min-height: 52px; border: 1px solid #D5DBDF; border-radius: 12px; padding: 0 10px; }
+.nlfc-person .nlfc-ini { width: 36px; height: 36px; }
+.nlfc-person > span:nth-child(2) { flex: 1 1 auto; min-width: 0; font-size: 14.5px; font-weight: 600; }
+.nlfc-person button { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid #B0144F; background: #FFFFFF; color: #B0144F; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+.nlfc-person button[disabled] { opacity: .6; }
+.nlfc-lockrow { background: #F2F4F5; border-radius: 12px; padding: 0 12px; }
+.nlfc-tag.is-room { background: #B0144F; color: #FFFFFF; border-radius: 999px; }
+.nlfc-menu .nlfc-lockrow { background: transparent; padding: 0; }
+.nlfc-sheet.is-room h2 { font-family: Rubik, Arial, sans-serif !important; color: #101820 !important; background: none !important; margin: 0 !important; padding: 0 !important; }
+.nlfc-sheet.is-room .nlfc-shh h2 { font-size: 19px !important; font-weight: 700 !important; }
+.nlfc-sheet.is-room .nlfc-host h2 { font-size: 19px !important; font-weight: 800 !important; }
+.nlfc-sheet.is-room .nlfc-x { border-radius: 50%; background: #F2F4F5; color: #3A4650; }
+.nlfc-sheet.is-room .nlfc-swrow:not(.nlfc-lockrow) { border: 1px solid #D5DBDF; border-radius: 12px; padding: 0 12px; }
+.nlfc-sheet.is-room .nlfc-swrow:not(.nlfc-lockrow) .nlfc-swin { inset-inline-end: 12px; }
+.nlfc-sheet.is-room .nlfc-pv { width: 132px; height: 100px; background-color: #101820; background-image: radial-gradient(rgba(255, 255, 255, .09) 1.2px, transparent 1.3px); background-size: 14px 14px; color: #FFFFFF; font-weight: 700; }
+.nlfc-send .nlfc-wa { display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 14px; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; text-decoration: none !important; color: #FFFFFF !important; background: #2F6F86; }
+.nlfc-who[hidden] { display: none; }
+.nlfc-ctl { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } /* any number of controls, one row */
+.nlfc-c.nlfc-inv { background: #FFFFFF; color: #101820; }
+.nlfc-c.nlfc-inv small { color: #101820; }

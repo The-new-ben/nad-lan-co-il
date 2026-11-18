@@ -43,6 +43,21 @@ const T = {
 	tagCard: 'כרטיס',
 	prefMail: 'לשלוח לי מייל כשמזמינים אותי לשיחה', prefMailSub: 'מייל אחד לכל הזמנה. אפשר לכבות בכל רגע.',
 	callAria: 'שיחת וידאו',
+	// board 19: the open video room
+	roomH: 'חדר וידאו', roomGo: 'פתיחת החדר', tagTopic: 'הדיון', roomTag: 'חדר וידאו',
+	roomNeedH: 'כדי לפתוח חדר וידאו צריך להיכנס לפורום', roomNeedSub: 'זה צעד אחד: שם, מייל וקוד. אחר כך החדר נפתח כאן.',
+	joinRoomNeedH: 'כדי להצטרף לחדר צריך להיכנס לפורום', joinRoomNeedSub: 'זה צעד אחד: שם, מייל וקוד. אחר כך החדר נפתח כאן.',
+	joinRoomH: (n) => (n || 'חבר הפורום') + ' מזמין אתכם לחדר וידאו', inRoom: (k) => k + ' כבר בחדר', joinRoomGo: 'כניסה לחדר',
+	joinRoomNote: 'נכנסים עם מצלמה ומיקרופון כבויים, ומדליקים כשרוצים.',
+	roomWait: 'החדר פתוח. שלחו את הקישור למי שרוצים שיצטרף.',
+	whoH: 'מי מצטרף?', linkLabel: 'הקישור לחדר', copy: 'העתקה', copied: 'הקישור הועתק', copySel: 'הקישור מסומן. העתיקו אותו מהשדה.',
+	wa: 'שליחה בוואטסאפ', share: 'שיתוף אחר', waText: (t) => 'שיחת וידאו בנדל"ן: ' + t,
+	fromHere: 'מהדיון הזה', fromHereSub: 'מופיע כאן רק מי שכתב בדיון ואישר שיחות וידאו. הוא מקבל הודעה בפורום ומייל.', inviteOne: 'הזמנה', invitedOne: 'הוזמן',
+	lock: 'נעילת החדר', lockSub: 'אחרי שכולם בפנים, אף אחד לא נכנס עוד',
+	lockOn: 'החדר נעול. אף אחד חדש לא נכנס.', lockOff: 'החדר פתוח שוב לכל מי שיש לו את הקישור.',
+	linkNote: 'מי שמקבל קישור נכנס מהדפדפן, עם שם ומייל. הקישור תקף לשיחה הזו בלבד.',
+	lockedToast: 'החדר נעול. בקשו ממי ששלח את הקישור לפתוח את הנעילה.', fullToast: 'החדר מלא. בחדר וידאו יש מקום לעד 6 אנשים.',
+	goneToast: 'השיחה או החדר בקישור הזה כבר נסגרו.', newRoom: 'פתיחת חדר חדש', lInvite: 'הזמנה', inviteAria: 'מי מצטרף: קישור, וואטסאפ והזמנה מהדיון',
 };
 const ERR = 'משהו השתבש. נסו שוב.';
 
@@ -57,6 +72,7 @@ const ICON = {
 	video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
 	x: '<path d="M6 6l12 12M18 6L6 18"/>',
 	board: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 13l3-3 2 2 4-4M8 21l4-4 4 4"/>',
+	invite: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-7 7-7s7 3 7 7M19 8v6M16 11h6"/>',
 };
 // the shared board (assets/proforum/board.js, 1.72.674, rebuilt to design boards 16 and 17), same version query as this file so a release reaches both
 const BOARD_URL = (() => { try { const u = new URL(import.meta.url); return new URL('board.js' + u.search, u).href; } catch (e) { return ''; } })();
@@ -152,20 +168,25 @@ function sheet(o) {
 		});
 		return h('label', { cls: 'nlfc-swrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: label }), h('small', { text: sub })), inp, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i')));
 	};
-	const go = h('button', { type: 'button', cls: 'nlfc-btn nlfc-pri', text: o.go });
+	const go = h('button', { type: 'button', cls: 'nlfc-btn nlfc-pri' + (o.hot ? ' nlfc-hot' : ''), text: o.go });
 	const no = h('button', { type: 'button', cls: 'nlfc-btn nlfc-plain', text: T.notNow });
 	const x = h('button', { type: 'button', cls: 'nlfc-x', 'aria-label': T.close, title: T.close }, icon('x'));
 	const hid = 'nlfc-h-' + Math.random().toString(36).slice(2, 8);
-	const card = h('section', { cls: 'nlfc-sheet', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': hid, dir: 'rtl', lang: 'he' },
-		h('div', { cls: 'nlfc-shh' }, h('h2', { id: hid, text: o.heading }), x),
-		o.request ? h('p', { cls: 'nlfc-req' }, h('span', { cls: 'nlfc-tag', text: T.tag }), h('span', { text: o.request })) : null,
+	// board 19, part ה: the person who sent the link heads the sheet (initials, "<name> מזמין אתכם לחדר וידאו", trade and how many are in)
+	const head = o.host
+		? h('div', { cls: 'nlfc-shh' }, h('div', { cls: 'nlfc-host' }, h('span', { cls: 'nlfc-ini', 'aria-hidden': 'true', text: initials(o.host.name) }),
+			h('div', null, h('h2', { id: hid, text: o.heading }), o.host.sub ? h('span', { text: o.host.sub }) : null)), x)
+		: h('div', { cls: 'nlfc-shh' }, h('h2', { id: hid, text: o.heading }), x);
+	const card = h('section', { cls: 'nlfc-sheet' + (o.room ? ' is-room' : ''), role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': hid, dir: 'rtl', lang: 'he' },
+		head,
+		o.request ? h('p', { cls: 'nlfc-req' }, h('span', { cls: 'nlfc-tag', text: o.tag || T.tag }), h('span', { text: o.request })) : null,
 		o.sub ? h('p', { cls: 'nlfc-sub', text: o.sub }) : null,
 		o.media === false ? null : h('div', { cls: 'nlfc-prev' }, pv, h('div', { cls: 'nlfc-pm' }, meter, h('small', { text: T.meter }))),
 		o.media === false ? null : sw('cam', T.cam, T.camSub),
 		o.media === false ? null : sw('mic', T.mic, T.micSub),
 		o.extra || null,
 		go,
-		o.media === false ? null : h('p', { cls: 'nlfc-fine', text: T.note }),
+		o.fine ? h('p', { cls: 'nlfc-fine', text: o.fine }) : (o.media === false ? null : h('p', { cls: 'nlfc-fine', text: T.note })),
 		msg, o.media === false ? null : no);
 	const scrim = h('div', { cls: 'nlfc-scrim' }, card);
 	const api = {
@@ -203,7 +224,8 @@ async function joinRoom(room, media, sh, opener) {
 
 function stage(tr, tk, media, opener) {
 	st.inCall = true;
-	const S = { mic: false, cam: false, voice: false, facing: 'user', t0: Date.now(), timers: [], vids: new Map(), main: '', hadRemote: false, names: new Map(), others: (tk.others || []).slice(), alive: true };
+	const open = !!tk.open, host = open && !!tk.host; // board 19: an open video room, and whether I opened it
+	const S = { mic: false, cam: false, voice: false, facing: 'user', t0: Date.now(), timers: [], vids: new Map(), main: '', hadRemote: false, names: new Map(), others: (tk.others || []).slice(), alive: true, locked: !!tk.locked, asked: new Set() };
 	const faceOf = (p) => {
 		const byId = S.others.find((o) => o.identity && o.identity === p.id);
 		if (byId) return byId;
@@ -216,7 +238,7 @@ function stage(tr, tk, media, opener) {
 	const remote = h('div', { cls: 'nlfc-remote' });
 	const waitP = h('p', { cls: 'nlfc-wait', text: T.waitFor(firstOther.name) });
 	const timer = h('span', { cls: 'nlfc-time', role: 'timer', 'aria-label': 'משך השיחה', text: '00:00' });
-	const top = h('div', { cls: 'nlfc-top' }, h('span', { cls: 'nlfc-tag', text: tk.card ? T.tagCard : T.tag }), h('span', { cls: 'nlfc-title', text: tk.title || C.title || '' }), timer);
+	const top = h('div', { cls: 'nlfc-top' }, h('span', { cls: 'nlfc-tag' + (open ? ' is-room' : ''), text: open ? T.roomTag : (tk.card ? T.tagCard : T.tag) }), h('span', { cls: 'nlfc-title', text: open && !tk.topic ? '' : (tk.title || C.title || '') }), timer);
 	const ini = h('span', { cls: 'nlfc-ini', 'aria-hidden': 'true', text: initials(firstOther.name) });
 	const whoT = h('span', { cls: 'nlfc-whot', text: face(firstOther) });
 	const who = h('div', { cls: 'nlfc-who' }, ini, whoT);
@@ -231,6 +253,8 @@ function stage(tr, tk, media, opener) {
 	const ctl = (k, label, lab, cls) => h('button', { type: 'button', cls: 'nlfc-c ' + (cls || ''), 'aria-label': label }, icon(k), h('small', { 'aria-hidden': 'true', text: lab }));
 	const bMic = ctl('micOff', T.micOn, T.lMic), bCam = ctl('camOff', T.camOn, T.lCam), bFlip = ctl('flip', T.flip, T.lFlip, 'nlfc-flip'), bMore = ctl('more', T.more, T.lMore), bEnd = ctl('end', T.end, T.lEnd, 'nlfc-end');
 	const bBoard = ctl('board', 'לוח משותף: ציור, תמונה או תוכנית והערות עליה', 'לוח', 'nlfc-board');
+	const bInv = ctl('invite', T.inviteAria, T.lInvite, 'nlfc-inv'); // board 19, part ד: "הזמנה" in the bar of an open room
+	bInv.hidden = !open;
 	let board = null;
 	// the board shows its own copy of the call controls (design boards 16 and 17); they act only through these callbacks
 	if (BOARD_URL) import(BOARD_URL).then((m) => {
@@ -249,10 +273,27 @@ function stage(tr, tk, media, opener) {
 	const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 	bFlip.hidden = !coarse; bFlip.disabled = true;
 	const voiceIn = h('input', { type: 'checkbox', role: 'switch', cls: 'nlfc-swin' });
+	// the host's lock switch: in the "מי מצטרף?" sheet and in "עוד"; every copy shows the same state
+	const lockIns = [];
+	const lockRow = () => {
+		for (let i = lockIns.length - 1; i >= 0; i--) if (!lockIns[i].isConnected) lockIns.splice(i, 1); // copies in sheets already closed
+		const inp = h('input', { type: 'checkbox', role: 'switch', cls: 'nlfc-swin' });
+		inp.checked = S.locked;
+		lockIns.push(inp);
+		inp.addEventListener('change', async () => {
+			const want = inp.checked;
+			lockIns.forEach((i) => { i.disabled = true; });
+			try { const j = await req('POST', 'call/lock', { room: tk.room, lock: want ? 1 : 0 }); S.locked = !!j.lock; say(S.locked ? T.lockOn : T.lockOff, 4000); }
+			catch (e) { say(e.message, 5000); }
+			lockIns.forEach((i) => { i.disabled = false; i.checked = S.locked; });
+		});
+		return h('label', { cls: 'nlfc-swrow nlfc-lockrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: T.lock }), h('small', { text: T.lockSub })), inp, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i')));
+	};
 	const menu = h('div', { cls: 'nlfc-menu', hidden: true, role: 'group', 'aria-label': T.more },
 		h('label', { cls: 'nlfc-swrow' }, h('span', { cls: 'nlfc-swt' }, h('b', { text: T.voice })), voiceIn, h('span', { cls: 'nlfc-sw', 'aria-hidden': 'true' }, h('i'))),
+		host ? lockRow() : null,
 		h('p', { cls: 'nlfc-fine', text: T.norec }));
-	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bFlip, bBoard, bMore, bEnd);
+	const bar = h('div', { cls: 'nlfc-ctl' }, bMic, bCam, bFlip, bBoard, bInv, bMore, bEnd);
 	const root = h('div', { cls: 'nlfc-stage', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.callAria, dir: 'rtl', lang: 'he' },
 		remote, waitP, top, who, strip, banner, audioB, h('div', { cls: 'nlfc-fill' }), self, acts, menu, bar, h('p', { cls: 'nlfc-norec', text: T.norec }));
 	document.documentElement.classList.add('nlfc-open');
@@ -268,8 +309,70 @@ function stage(tr, tk, media, opener) {
 		const inRoom = new Set(S.others.map((o) => o.id | 0));
 		return (C.targets || []).filter((t) => !inRoom.has(t.with | 0));
 	};
-	const paintInvite = () => { inviteB.hidden = !candidates().length; acts.hidden = inviteB.hidden && photoB.hidden; };
+	const paintInvite = () => { inviteB.hidden = open || !candidates().length; acts.hidden = inviteB.hidden && photoB.hidden; }; // an open room invites from the bar
 	paintInvite();
+
+	// board 19: a person who came in by the link is not in tk.others; ask the room once for the names of who is inside
+	let peopleT = 0;
+	const askPeople = (id) => {
+		if (!open || S.asked.has(id)) return;
+		S.asked.add(id);
+		clearTimeout(peopleT);
+		peopleT = setTimeout(async () => {
+			try {
+				const s = await req('GET', 'call/status', { room: tk.room });
+				for (const p of s.people || []) {
+					if (!p.identity || p.identity === tk.identity) continue;
+					const o = S.others.find((x) => (x.id | 0) === (p.id | 0));
+					if (o) o.identity = p.identity; else S.others.push({ id: p.id, identity: p.identity, name: p.name, label: p.label });
+				}
+				S.names.forEach((n, k) => { const f = S.others.find((o) => o.identity === k); if (f) S.names.set(k, f.name); });
+				paint();
+			} catch (e) { /* the LiveKit name stays */ }
+		}, 700);
+	};
+
+	// board 19, part ד: "מי מצטרף?" the link, WhatsApp, other share, people of this discussion, and the host's lock
+	function whoSheet() {
+		const link = tk.link || location.href;
+		const title = tk.title || C.title || T.roomH;
+		const box = h('div', { cls: 'nlfc-pick' });
+		const field = h('input', { type: 'text', readonly: true, value: link, 'aria-label': T.linkLabel, dir: 'ltr', spellcheck: 'false' });
+		const copyB = h('button', { type: 'button', text: T.copy });
+		box.appendChild(h('div', { cls: 'nlfc-linkrow' }, field, copyB));
+		const wa = h('a', { cls: 'nlfc-wa', href: 'https://wa.me/?text=' + encodeURIComponent(T.waText(title) + '\n' + link), target: '_blank', rel: 'noopener', text: T.wa });
+		const shareB = h('button', { type: 'button', cls: 'nlfc-share', text: T.share, hidden: typeof navigator.share !== 'function' });
+		box.appendChild(h('div', { cls: 'nlfc-send' + (shareB.hidden ? ' is-one' : '') }, wa, shareB));
+		const list = candidates();
+		if (list.length) {
+			const from = h('div', { cls: 'nlfc-from' }, h('b', { text: T.fromHere }));
+			for (const t of list) {
+				const b = h('button', { type: 'button', text: T.inviteOne, 'aria-label': T.inviteOne + ': ' + t.name });
+				b.addEventListener('click', async () => {
+					b.disabled = true;
+					try {
+						await req('POST', 'call/open', { topic: tk.topic, with: t.with, room: tk.room });
+						S.others.push({ id: t.with, identity: '', name: t.name, label: t.label });
+						b.textContent = T.invitedOne; sh.say(T.invited(t.name));
+					} catch (e) { b.disabled = false; sh.say(e.message, true); }
+				});
+				from.appendChild(h('div', { cls: 'nlfc-person' }, h('span', { cls: 'nlfc-ini', 'aria-hidden': 'true', text: initials(t.name) }), h('span', { text: face(t) }), b));
+			}
+			from.appendChild(h('p', { cls: 'nlfc-fine', text: T.fromHereSub }));
+			box.appendChild(from);
+		}
+		if (host) box.appendChild(lockRow());
+		box.appendChild(h('p', { cls: 'nlfc-fine', text: T.linkNote }));
+		const sh = sheet({ heading: T.whoH, go: T.close, media: false, extra: box, room: true, onGo: async (api) => api.close() });
+		copyB.addEventListener('click', async () => {
+			try { await navigator.clipboard.writeText(link); sh.say(T.copied); }
+			catch (e) { field.focus(); field.select(); sh.say(T.copySel); }
+		});
+		field.addEventListener('focus', () => field.select());
+		shareB.addEventListener('click', () => { navigator.share({ title: T.waText(title), text: T.waText(title), url: link }).catch(() => {}); });
+		return sh;
+	}
+	bInv.addEventListener('click', () => whoSheet());
 
 	S.timers.push(setInterval(() => { const s = Math.floor((Date.now() - S.t0) / 1000); timer.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }, 1000));
 
@@ -279,7 +382,8 @@ function stage(tr, tk, media, opener) {
 		// one video element per person in the room, created once
 		for (const p of rs) {
 			if (!S.vids.has(p.id)) { const v = h('video', { playsinline: true, autoplay: true }); S.vids.set(p.id, v); remote.appendChild(v); }
-			if (!S.names.has(p.id)) { S.names.set(p.id, faceOf(p).name); if (S.hadRemote || rs.length > 1) say(T.joined(faceOf(p).name), 3000); }
+			if (open && !S.others.find((o) => o.identity && o.identity === p.id)) askPeople(p.id);
+			if (!S.names.has(p.id)) { S.names.set(p.id, faceOf(p).name); if (open || S.hadRemote || rs.length > 1) say(T.joined(faceOf(p).name), 3000); }
 			if (p.cam && !S.voice) tr.attach(p.id, 'camera', S.vids.get(p.id));
 		}
 		for (const [id, v] of S.vids) if (!rs.find((p) => p.id === id)) { v.remove(); S.vids.delete(id); say(T.left(S.names.get(id) || firstOther.name), 6000); S.names.delete(id); }
@@ -291,8 +395,9 @@ function stage(tr, tk, media, opener) {
 		for (const [id, v] of S.vids) v.hidden = id !== S.main || !main.cam || S.voice; // no frozen last frame when the camera goes off
 		const f = main ? faceOf(main) : firstOther;
 		ini.textContent = initials(f.name); whoT.textContent = face(f);
+		who.hidden = open && !main; // an open room with nobody else in: no empty name pill
 		waitP.hidden = !!(main && main.cam && !S.voice);
-		waitP.textContent = !main ? (S.hadRemote ? T.left(f.name) : T.waitFor(f.name)) : (S.voice ? T.voiceOn : T.noCam(f.name));
+		waitP.textContent = !main ? (open ? T.roomWait : (S.hadRemote ? T.left(f.name) : T.waitFor(f.name))) : (S.voice ? T.voiceOn : T.noCam(f.name));
 		// the others (a third or fourth person) as small name discs
 		strip.replaceChildren(...rs.filter((p) => p.id !== S.main).map((p) => h('span', { cls: 'nlfc-disc' + (p.speaking ? ' is-speaking' : ''), title: faceOf(p).name, text: initials(faceOf(p).name) })));
 		// myself
@@ -364,7 +469,7 @@ function stage(tr, tk, media, opener) {
 		try { await tr.disconnect(); } catch (e) { /* already apart */ }
 		root.remove(); document.documentElement.classList.remove('nlfc-open');
 		if (/^#call=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
-		if ((tk.topic | 0) !== (C.topic | 0) && tk.topic_url) { location.assign(tk.topic_url); return; } // back to the discussion
+		if (!open && (tk.topic | 0) !== (C.topic | 0) && tk.topic_url) { location.assign(tk.topic_url); return; } // back to the discussion (an open room stays on its page)
 		const back = opener && document.contains(opener) ? opener : document.querySelector('.nlf-thread h1, .nlf-page h1');
 		if (back) { if (!back.hasAttribute('tabindex') && back.tagName === 'H1') back.setAttribute('tabindex', '-1'); back.focus(); }
 	}
@@ -373,28 +478,64 @@ function stage(tr, tk, media, opener) {
 	paint();
 	if (media && media.mic) setMic(true);
 	if (media && media.cam) setCam(true);
+	// board 19: the host who comes into an empty room gets "מי מצטרף?" once, by itself
+	if (host && !tr.participants().some((p) => !p.local)) setTimeout(() => { if (S.alive && !document.querySelector('.nlfc-scrim')) whoSheet(); }, 400);
 }
 
 /* ---------------------------------------------------------------- the three ways in */
 
-function needEntry(heading) {
+function needEntry(heading, sub) {
 	const enter = h('button', { type: 'button', cls: 'nlfc-btn nlfc-line', 'data-nlf-enter': true, text: T.enter }); // forum.js opens its entry on this attribute
-	const sh = sheet({ heading, sub: T.needSub, go: T.close, media: false, extra: enter, onGo: async (api) => api.close() });
+	const sh = sheet({ heading, sub: sub || T.needSub, go: T.close, media: false, extra: enter, onGo: async (api) => api.close() });
 	enter.addEventListener('click', () => sh.close(false));
 }
 
-// a guest who pressed a call button: after the forum's entry (which reloads the page) the call sheet opens by itself
+// a guest who pressed a call button: after the forum's entry (which reloads the page, the #fragment kept) the call sheet opens by itself.
+// board 19: the same for the open room ({room: 1, topic}): the lobby opens by itself on the same page.
 const PENDING = 'nlfc_pending';
 function savePending(target) {
-	try { sessionStorage.setItem(PENDING, JSON.stringify({ topic: target.topic | 0, card: target.card | 0, with: target.with | 0, name: String(target.name || ''), label: String(target.label || ''), t: Date.now() })); } catch (e) { /* private mode: the member presses again */ }
+	try { sessionStorage.setItem(PENDING, JSON.stringify({ room: target.room ? 1 : 0, topic: target.topic | 0, card: target.card | 0, with: target.with | 0, name: String(target.name || ''), label: String(target.label || ''), t: Date.now() })); } catch (e) { /* private mode: the member presses again */ }
 }
 function takePending() {
 	let p = null;
 	try { p = JSON.parse(sessionStorage.getItem(PENDING) || 'null'); sessionStorage.removeItem(PENDING); } catch (e) { p = null; }
-	if (!p || !p.with || Date.now() - (p.t | 0) > 15 * 60 * 1000) return null;
+	if (!p || Date.now() - (p.t | 0) > 15 * 60 * 1000) return null;
+	if (p.room) return (p.topic | 0) === (C.topic | 0) && (p.card | 0) === (C.card | 0) ? p : null; // only on the page it was pressed on
+	if (!p.with) return null;
 	if (p.card ? (p.card | 0) !== (C.card | 0) : (p.topic | 0) !== (C.topic | 0)) return null; // only on the page it was pressed on
 	return p;
 }
+
+/* ---------------------------------------------------------------- board 19: the open video room */
+
+// part ג: the lobby (camera and microphone check), then the room opens; a guest enters the forum first
+function roomLobby(topic, opener) {
+	topic = topic | 0;
+	if (!st.member) { savePending({ room: 1, topic, card: C.card }); needEntry(T.roomNeedH, T.roomNeedSub); return; }
+	sheet({
+		heading: T.roomH, tag: T.tagTopic, request: topic && topic === (C.topic | 0) ? (C.title || '') : '', go: T.roomGo, hot: true, room: true,
+		onGo: async (sh) => {
+			const o = await req('POST', 'call/room', topic ? { topic } : {});
+			await joinRoom(o.room, sh.media, sh, opener);
+		},
+	});
+}
+
+// part ה: what the person who got the link sees
+function roomJoin(room, s, opener) {
+	const from = s.from || {};
+	const sub = [from.label || '', (s.joined | 0) > 0 ? T.inRoom(s.joined | 0) : ''].filter(Boolean).join(' · ');
+	sheet({
+		heading: T.joinRoomH(from.name), host: { name: from.name || '', sub }, tag: T.tagTopic, request: (s.topic | 0) ? (s.title || '') : '',
+		go: T.joinRoomGo, hot: true, room: true, media: false, fine: T.joinRoomNote,
+		onGo: async (sh) => {
+			if (!s.in) await req('POST', 'call/join', { room });
+			await joinRoom(room, sh.media, sh, opener);
+		},
+	});
+}
+
+const clearHash = () => { if (/^#call=/.test(location.hash || '')) history.replaceState(null, '', location.pathname + location.search); };
 
 function startWith(target, opener) {
 	if (!st.member) { savePending(target); needEntry(T.needH); return; }
@@ -418,10 +559,23 @@ function joinInvite(room, info, opener) {
 async function fromHash() {
 	const m = /^#call=([a-z2-7]{12})$/.exec(location.hash || '');
 	if (!m) return;
-	if (!st.member) { needEntry(T.needH); return; }
+	// a guest cannot ask which kind of link this is; on the forum home only an open room's link lands, so the wording says "חדר"
+	if (!st.member) { if (!(C.topic | 0) && !(C.card | 0)) needEntry(T.joinRoomNeedH, T.joinRoomNeedSub); else needEntry(T.needH); return; }
+	if (st.inCall) return;
 	try {
 		const s = await req('GET', 'call/status', { room: m[1] });
-		if (!s.exists) { toast(T.gone); history.replaceState(null, '', location.pathname + location.search); return; }
+		if (!s.exists) {
+			clearHash();
+			const btn = document.querySelector('[data-nlf-room]');
+			toast(T.goneToast, btn ? [{ label: T.newRoom, primary: true, fn: () => roomLobby(btn.getAttribute('data-nlf-room'), btn) }, { label: T.close }] : null);
+			return;
+		}
+		if (s.open) { // board 19: an open room
+			if (!s.in && s.locked) { clearHash(); toast(T.lockedToast, [{ label: T.close }]); return; }
+			if (!s.in && s.full) { clearHash(); toast(T.fullToast, [{ label: T.close }]); return; }
+			roomJoin(m[1], s);
+			return;
+		}
 		joinInvite(m[1], { title: s.title, from: s.from && s.from.name, label: s.from && s.from.label });
 	} catch (e) { toast(e.message); }
 }
@@ -508,6 +662,8 @@ function injectButtons() {
 }
 
 function onPress(ev) {
+	const rb = ev.target.closest('[data-nlf-room]'); // board 19: the open video room's buttons (home band, discussion row, card row)
+	if (rb) { ev.preventDefault(); if (!st.inCall) roomLobby(parseInt(rb.getAttribute('data-nlf-room'), 10) || 0, rb); return; }
 	const b = ev.target.closest('[data-nlf-call],[data-nlf-callcard]');
 	if (!b) return;
 	ev.preventDefault();
@@ -526,7 +682,8 @@ async function boot() {
 	try { await loadState(); } catch (e) { return; } // the forum is closed for this visitor: nothing to show
 	mountPref();
 	const pend = st.member && !/^#call=/.test(location.hash || '') ? takePending() : null;
-	if (pend) startWith(pend, document.querySelector(pend.card ? '[data-nlf-callcard]' : '[data-nlf-with="' + (pend.with | 0) + '"]'));
+	if (pend && pend.room) roomLobby(pend.topic, document.querySelector('[data-nlf-room]'));
+	else if (pend) startWith(pend, document.querySelector(pend.card ? '[data-nlf-callcard]' : '[data-nlf-with="' + (pend.with | 0) + '"]'));
 	fromHash();
 	window.addEventListener('hashchange', fromHash);
 	if (st.member) {

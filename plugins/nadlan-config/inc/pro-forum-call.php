@@ -13,6 +13,11 @@
  *   POST call/token   {room}                -> {url, token, identity, ...}       my LiveKit token for a room I belong to
  *   GET  call/status  {room?}               -> {invites, pref} or {exists, ...}  the in-forum notification (polled) and a room's state
  *   POST call/pref    {video, mail}         -> {pref}                            my own two switches
+ *   POST call/room    {topic?}              -> {room, topic, card, title, topic_url, link, max, open, locked}   a new OPEN video room (board 19)
+ *   POST call/join    {room}                -> the same fields                   come into an open room by its link
+ *   POST call/lock    {room, lock}          -> {room, lock}                      the host locks or opens his open room
+ * Board 19 (18.11.2026): an open room is the button every visitor sees (forum home, every live discussion, every card page);
+ * whoever holds its link and is a forum member may come in, up to NLFC_ROOM_PEOPLE, unless the host locked it.
  * Rules: only a signed-in forum member; only with a member who switched video calls on. 18.11.2026 (board 18): any member in good
  * standing may call such a member from that member's card (POST call/open {card}; the room carries the card instead of a
  * discussion) or from any LIVE discussion that member wrote in; the first rule (author and answerer) stays as one more path.
@@ -34,6 +39,7 @@ if ( ! defined( 'ABSPATH' ) && ! defined( 'NLFC_PURE_ONLY' ) ) { exit; }
 if ( ! defined( 'NLFC_PREFIX' ) ) { define( 'NLFC_PREFIX', 'nadlan-frm-' ); }
 if ( ! defined( 'NLFC_ROOM_TTL' ) ) { define( 'NLFC_ROOM_TTL', 6 * 3600 ); }
 if ( ! defined( 'NLFC_MAX_PEOPLE' ) ) { define( 'NLFC_MAX_PEOPLE', 4 ); } // the two who talk, plus up to two more they invite
+if ( ! defined( 'NLFC_ROOM_PEOPLE' ) ) { define( 'NLFC_ROOM_PEOPLE', 6 ); } // an OPEN video room (board 19): whoever has the link, up to six
 
 /** $n characters of a-z and 2-7 (the alphabet of the designer's and together's rooms); $bytes only for the tests */
 function nlfc_rand( $n, $bytes = null ) {
@@ -173,6 +179,30 @@ function nlfc_page_pills( array $topic, array $replies, $viewer, array $video_on
 	return $out;
 }
 
+/**
+ * An OPEN video room (board 19, 18.11.2026): opened by one member, from the forum home (topic 0), a live discussion (topic id)
+ * or a card page (also topic 0: the room never names the card's person). ok = member id => LiveKit identity ('' until a token).
+ */
+function nlfc_room_new_open( $mid, $topic, $now ) {
+	return array( 't' => (int) $now, 'topic' => max( 0, (int) $topic ), 'card' => 0, 'by' => (int) $mid, 'ok' => array( (int) $mid => '' ), 'open' => 1, 'lock' => 0 );
+}
+
+/** an open room with no discussion and no card: the "home room", its place is the forum home */
+function nlfc_room_is_home( array $r ) { return ! empty( $r['open'] ) && (int) ( $r['topic'] ?? 0 ) <= 0 && (int) ( $r['card'] ?? 0 ) <= 0; }
+
+/** how many people a room holds: an open room 6, a direct call 4 */
+function nlfc_room_max( array $r ) { return ! empty( $r['open'] ) ? NLFC_ROOM_PEOPLE : NLFC_MAX_PEOPLE; }
+
+/** May $mid come into $room by its link? '' = yes (or already in), else 'notin' | 'locked' | 'full' */
+function nlfc_can_join( array $room, $mid, $max ) {
+	$ok = isset( $room['ok'] ) && is_array( $room['ok'] ) ? $room['ok'] : array();
+	if ( (int) $mid > 0 && array_key_exists( (int) $mid, $ok ) ) { return ''; }
+	if ( empty( $room['open'] ) ) { return 'notin'; } // a direct call is by invitation only
+	if ( ! empty( $room['lock'] ) ) { return 'locked'; }
+	if ( count( $ok ) >= (int) $max ) { return 'full'; }
+	return '';
+}
+
 /** '' or the reason a write request is refused: the browser's own fetch-site and origin headers (when sent) must be this site */
 function nlfc_fetch_refusal( array $h, $home_host ) {
 	$sfs = strtolower( trim( (string) ( $h['sec_fetch_site'] ?? '' ) ) );
@@ -185,9 +215,21 @@ function nlfc_fetch_refusal( array $h, $home_host ) {
 	return '';
 }
 
-/** the Hebrew message of every refusal (all answered as HTTP 400) */
-function nlfc_msg( $code ) {
+/** the Hebrew message of every refusal (all answered as HTTP 400); $room = an open video room, where 'full' and 'gone' read as a room */
+function nlfc_msg( $code, $room = false ) {
+	if ( $room ) {
+		$r = array(
+			'full'  => 'החדר מלא. בחדר וידאו יש מקום לעד 6 אנשים.',
+			'gone'  => 'החדר הזה כבר נסגר.',
+			'notin' => 'אין לכם גישה לחדר הזה.',
+			'rate'  => 'נסו שוב בעוד כמה דקות.',
+		);
+		if ( isset( $r[ $code ] ) ) { return $r[ $code ]; }
+	}
 	$m = array(
+		'locked'      => 'החדר נעול. בקשו ממי שפתח אותו לפתוח את הנעילה.',
+		'host'        => 'רק מי שפתח את החדר יכול לנעול אותו.',
+		'rate_join'   => 'נכנסתם היום להרבה חדרים. אפשר שוב מחר.',
 		'closed'      => 'הדף לא נמצא.',
 		'off'         => 'שיחות וידאו לא זמינות כרגע.',
 		'need_entry'  => 'כדי לפתוח שיחה צריך להיכנס לפורום. זה צעד אחד.',
@@ -263,9 +305,9 @@ function nlfc_on() {
 	return function_exists( 'nlf_gate_open' ) && function_exists( 'nlf_me' ) && '0' !== (string) get_option( 'nadlan_forum_call', '1' );
 }
 
-function nlfc_err( $code ) {
+function nlfc_err( $code, $room = false ) {
 	if ( function_exists( 'nlf_nocache' ) ) { nlf_nocache(); }
-	return new WP_Error( 'nlfc_' . $code, nlfc_msg( $code ), array( 'status' => 400 ) );
+	return new WP_Error( 'nlfc_' . $code, nlfc_msg( $code, $room ), array( 'status' => 400 ) );
 }
 
 function nlfc_ok( array $data ) {
@@ -454,6 +496,7 @@ function nlfc_card_url( $card, $room = '' ) {
 
 /** a room's context: its discussion or its card. array( topic, card, title, url ) or null when that place is gone */
 function nlfc_ctx( array $r ) {
+	if ( nlfc_room_is_home( $r ) ) { return array( 'topic' => 0, 'card' => 0, 'title' => 'חדר וידאו', 'url' => nlfc_home_room_url() ); }
 	if ( ! empty( $r['card'] ) ) {
 		if ( ! nlfc_card_member( (int) $r['card'] ) ) { return null; }
 		return array( 'topic' => 0, 'card' => (int) $r['card'], 'title' => nlfc_card_title( (int) $r['card'] ), 'url' => nlfc_card_url( (int) $r['card'] ) );
@@ -463,8 +506,61 @@ function nlfc_ctx( array $r ) {
 	return array( 'topic' => (int) $t['id'], 'card' => 0, 'title' => (string) $t['title'], 'url' => nlf_topic_url( (int) $t['id'] ) );
 }
 
+/** the forum home, the place of a home room (the gate opens while the forum is hidden, as nlf_topic_url does), room in the #fragment */
+function nlfc_home_room_url( $room = '' ) {
+	$u = home_url( '/forum/' );
+	if ( function_exists( 'nlf_public' ) && ! nlf_public() ) { $u = add_query_arg( 'forum', 'on', $u ); }
+	return $u . ( '' !== $room ? '#call=' . $room : '' );
+}
+
 /** the join link of a room in its context */
-function nlfc_ctx_link( array $ctx, $room ) { return ! empty( $ctx['card'] ) ? nlfc_card_url( (int) $ctx['card'], $room ) : nlfc_link( (int) $ctx['topic'], $room ); }
+function nlfc_ctx_link( array $ctx, $room ) {
+	if ( ! empty( $ctx['card'] ) ) { return nlfc_card_url( (int) $ctx['card'], $room ); }
+	if ( (int) ( $ctx['topic'] ?? 0 ) <= 0 ) { return nlfc_home_room_url( $room ); }
+	return nlfc_link( (int) $ctx['topic'], $room );
+}
+
+/** the fields every room answer carries: its place, the join link, the size */
+function nlfc_room_fields( array $r, array $ctx, $room ) {
+	return array( 'room' => $room, 'topic' => (int) $ctx['topic'], 'card' => (int) $ctx['card'], 'title' => (string) $ctx['title'], 'topic_url' => (string) $ctx['url'],
+		'link' => nlfc_ctx_link( $ctx, $room ), 'max' => nlfc_room_max( $r ), 'open' => empty( $r['open'] ) ? 0 : 1, 'locked' => empty( $r['lock'] ) ? 0 : 1 );
+}
+
+/** the three daily limits of a NEW room (member, hashed IP, the whole forum): '' or the refusal code */
+function nlfc_room_limits( $mid ) {
+	return nlfc_limits_verdict( array(
+		'member' => nlfc_rl_peek( 'room', 'm' . (int) $mid, DAY_IN_SECONDS ),
+		'ip'     => nlfc_rl_peek( 'room', nlf_ip_hash(), DAY_IN_SECONDS ),
+		'forum'  => nlfc_rl_peek( 'room', 'all', DAY_IN_SECONDS ),
+	), array( 'forum' => max( 1, (int) get_option( 'nadlan_forum_call_day_cap', 40 ) ) ) );
+}
+
+/** a free room id, or '' */
+function nlfc_room_free_id() {
+	for ( $i = 0; $i < 4; $i++ ) { $try = nlfc_rand( 12 ); if ( ! nlfc_room_get( $try ) ) { return $try; } }
+	return '';
+}
+
+/** counts one new room against the three daily limits */
+function nlfc_room_hits( $mid ) {
+	nlfc_rl_hit( 'room', 'm' . (int) $mid, DAY_IN_SECONDS );
+	nlfc_rl_hit( 'room', nlf_ip_hash(), DAY_IN_SECONDS );
+	nlfc_rl_hit( 'room', 'all', DAY_IN_SECONDS );
+}
+
+/** the people in a room for the call screen (members who took a token): name, label, identity */
+function nlfc_room_people( array $r ) {
+	$out = array();
+	$ok  = isset( $r['ok'] ) && is_array( $r['ok'] ) ? $r['ok'] : array();
+	if ( ! $ok ) { return $out; }
+	foreach ( nlf_members( array_keys( $ok ) ) as $om ) {
+		$idt = (string) ( $ok[ (int) $om['id'] ] ?? '' );
+		if ( '' === $idt ) { continue; }
+		$f     = nlfc_face( $om );
+		$out[] = array( 'id' => $f['id'], 'name' => $f['name'], 'label' => $f['label'], 'identity' => $idt );
+	}
+	return $out;
+}
 
 /** the in-forum notice (polled by call.js) and, only when the member switched it on, one mail. $ctx from nlfc_ctx(). */
 function nlfc_invite( $to_member, $from_member, array $ctx, $room ) {
@@ -523,27 +619,21 @@ add_action( 'rest_api_init', function () {
 			$ctx = array( 'topic' => (int) $t['id'], 'card' => 0, 'title' => (string) $t['title'], 'url' => nlf_topic_url( (int) $t['id'] ) );
 		}
 		if ( '' !== $room ) { // "הזמינו עוד מישהו": into a room I am in, for the same discussion
-			$r = nlfc_room_get( $room );
-			if ( ! $r || ! empty( $r['card'] ) || (int) $r['topic'] !== (int) $ctx['topic'] ) { return nlfc_err( 'gone' ); }
-			if ( ! isset( $r['ok'][ $mid ] ) ) { return nlfc_err( 'notin' ); }
+			$r     = nlfc_room_get( $room );
+			$open  = $r && ! empty( $r['open'] );
+			if ( ! $r || ! empty( $r['card'] ) || (int) $r['topic'] !== (int) $ctx['topic'] ) { return nlfc_err( 'gone', $open ); }
+			if ( ! isset( $r['ok'][ $mid ] ) ) { return nlfc_err( 'notin', $open ); }
 			if ( isset( $r['ok'][ $with ] ) ) { return nlfc_err( 'already' ); }
-			if ( count( $r['ok'] ) >= NLFC_MAX_PEOPLE ) { return nlfc_err( 'full' ); }
+			if ( count( $r['ok'] ) >= nlfc_room_max( $r ) ) { return nlfc_err( 'full', $open ); } // an open room holds 6, a direct call 4
 			if ( ! nlfc_rl( 'inv', 'm' . $mid, 20, DAY_IN_SECONDS ) ) { return nlfc_err( 'rate' ); }
 			$r['ok'][ $with ] = '';
 			nlfc_room_put( $room, $r );
 		} else {
-			$v = nlfc_limits_verdict( array(
-				'member' => nlfc_rl_peek( 'room', 'm' . $mid, DAY_IN_SECONDS ),
-				'ip'     => nlfc_rl_peek( 'room', nlf_ip_hash(), DAY_IN_SECONDS ),
-				'forum'  => nlfc_rl_peek( 'room', 'all', DAY_IN_SECONDS ),
-			), array( 'forum' => max( 1, (int) get_option( 'nadlan_forum_call_day_cap', 40 ) ) ) );
+			$v = nlfc_room_limits( $mid );
 			if ( '' !== $v ) { return nlfc_err( $v ); }
-			$room = '';
-			for ( $i = 0; $i < 4 && '' === $room; $i++ ) { $try = nlfc_rand( 12 ); if ( ! nlfc_room_get( $try ) ) { $room = $try; } }
+			$room = nlfc_room_free_id();
 			if ( '' === $room ) { return nlfc_err( 'rate' ); }
-			nlfc_rl_hit( 'room', 'm' . $mid, DAY_IN_SECONDS );
-			nlfc_rl_hit( 'room', nlf_ip_hash(), DAY_IN_SECONDS );
-			nlfc_rl_hit( 'room', 'all', DAY_IN_SECONDS );
+			nlfc_room_hits( $mid );
 			nlfc_rl_hit( 'pair', 'm' . $mid . 'w' . $with, DAY_IN_SECONDS ); // at most 3 a day from one caller to the same person
 			// ok: member id => LiveKit identity ('' until that member takes a token); by: who opened it; topic OR card (18.11.2026)
 			nlfc_room_put( $room, array( 't' => time(), 'topic' => (int) $ctx['topic'], 'card' => (int) $ctx['card'], 'by' => $mid, 'ok' => array( $mid => '', $with => '' ) ) );
@@ -582,8 +672,10 @@ add_action( 'rest_api_init', function () {
 			$f['identity'] = (string) $r['ok'][ (int) $om['id'] ]; // '' until that member takes a token
 			$others[]      = $f; // id is the forum member id the page already prints on its call buttons
 		}
+		// board 19: open, locked, host, link, max for the open room's screen (the invite sheet and the lock switch)
 		return nlfc_ok( array( 'url' => $grant['url'], 'token' => $grant['token'], 'identity' => $id, 'room' => $room, 'topic' => (int) $ctx['topic'], 'card' => (int) $ctx['card'],
-			'title' => (string) $ctx['title'], 'topic_url' => (string) $ctx['url'], 'me' => array( 'name' => $me['name'], 'label' => $me['label'] ), 'others' => $others ) );
+			'title' => (string) $ctx['title'], 'topic_url' => (string) $ctx['url'], 'me' => array( 'name' => $me['name'], 'label' => $me['label'] ), 'others' => $others,
+			'open' => empty( $r['open'] ) ? 0 : 1, 'locked' => empty( $r['lock'] ) ? 0 : 1, 'host' => (int) $r['by'] === $mid ? 1 : 0, 'link' => nlfc_ctx_link( $ctx, $room ), 'max' => nlfc_room_max( $r ) ) );
 	} );
 
 	// the in-forum notification (my invites) and my switches; with ?room=, that room's state for me
@@ -594,14 +686,21 @@ add_action( 'rest_api_init', function () {
 		if ( ! nlfc_rl( 'st', 'm' . $mid, 300, HOUR_IN_SECONDS ) ) { return nlfc_err( 'rate' ); }
 		$room = strtolower( (string) $q->get_param( 'room' ) );
 		if ( '' !== $room ) {
-			$r = nlfc_room_get( $room );
-			if ( ! $r || ! isset( $r['ok'][ $mid ] ) ) { return nlfc_ok( array( 'exists' => 0 ) ); }
+			$r    = nlfc_room_get( $room );
+			$open = $r && ! empty( $r['open'] );
+			$in   = $r && isset( $r['ok'][ $mid ] );
+			if ( ! $r || ( ! $in && ! $open ) ) { return nlfc_ok( array( 'exists' => 0 ) ); } // a direct call stays invisible to anyone not invited
 			$ctx = nlfc_ctx( $r );
 			$joined = 0;
 			foreach ( $r['ok'] as $idt ) { if ( '' !== (string) $idt ) { $joined++; } }
-			$by = nlf_members( array( (int) $r['by'] ) );
-			return nlfc_ok( array( 'exists' => $ctx ? 1 : 0, 'joined' => $joined, 'topic' => $ctx ? (int) $ctx['topic'] : 0, 'card' => $ctx ? (int) $ctx['card'] : 0, 'title' => $ctx ? (string) $ctx['title'] : '',
-				'topic_url' => $ctx ? (string) $ctx['url'] : '', 'from' => nlfc_face( $by[ (int) $r['by'] ] ?? null ), 'mine' => (int) $r['by'] === $mid ? 1 : 0 ) );
+			$by  = nlf_members( array( (int) $r['by'] ) );
+			$out = array( 'exists' => $ctx ? 1 : 0, 'joined' => $joined, 'topic' => $ctx ? (int) $ctx['topic'] : 0, 'card' => $ctx ? (int) $ctx['card'] : 0, 'title' => $ctx ? (string) $ctx['title'] : '',
+				'topic_url' => $ctx ? (string) $ctx['url'] : '', 'from' => nlfc_face( $by[ (int) $r['by'] ] ?? null ), 'mine' => (int) $r['by'] === $mid ? 1 : 0 );
+			if ( $open && $ctx ) { // board 19: an open room, for anyone holding its link
+				$out += array( 'open' => 1, 'locked' => empty( $r['lock'] ) ? 0 : 1, 'in' => $in ? 1 : 0, 'max' => nlfc_room_max( $r ), 'full' => count( (array) $r['ok'] ) >= nlfc_room_max( $r ) ? 1 : 0 );
+				if ( $in ) { $out['people'] = nlfc_room_people( $r ); } // the names on the call screen, only for those inside
+			}
+			return nlfc_ok( $out );
 		}
 		$list = get_transient( 'nlfc_inv_' . $mid );
 		$list = nlfc_invites_prune( is_array( $list ) ? $list : array(), time() );
@@ -610,10 +709,71 @@ add_action( 'rest_api_init', function () {
 			if ( ! nlfc_room_get( (string) $i['room'] ) ) { continue; }
 			$card  = (int) ( $i['card'] ?? 0 );
 			$out[] = array( 'room' => (string) $i['room'], 'topic' => (int) $i['topic'], 'card' => $card, 'title' => (string) $i['title'], 'from' => (string) $i['from'], 'label' => (string) $i['label'],
-				'url' => $card > 0 ? nlfc_card_url( $card, (string) $i['room'] ) : nlfc_link( (int) $i['topic'], (string) $i['room'] ) );
+				'url' => nlfc_ctx_link( array( 'topic' => (int) $i['topic'], 'card' => $card ), (string) $i['room'] ) );
 		}
 		$p = nlfc_prefs( array( $mid ) );
 		return nlfc_ok( array( 'invites' => $out, 'pref' => $p[ $mid ] ) );
+	} );
+
+	// board 19: a new OPEN video room, from the forum home or a card (topic 0) or a live discussion (topic id). Same three daily
+	// limits as a new call (member 8, hashed IP 8, forum 40 or the owner's option), counted in the same buckets.
+	$reg( '/room', 'POST', function ( WP_REST_Request $q ) {
+		$m = nlfc_member( $q, true );
+		if ( is_wp_error( $m ) ) { return $m; }
+		if ( null === nlfc_lk() ) { return nlfc_err( 'off' ); }
+		$mid   = (int) $m['id'];
+		$topic = max( 0, (int) $q->get_param( 'topic' ) );
+		if ( $topic > 0 ) {
+			$t = nlf_topic( $topic );
+			if ( ! $t || 'live' !== (string) $t['status'] ) { return nlfc_err( 'topic' ); }
+			$topic = (int) $t['id'];
+		}
+		$v = nlfc_room_limits( $mid );
+		if ( '' !== $v ) { return nlfc_err( $v ); }
+		$room = nlfc_room_free_id();
+		if ( '' === $room ) { return nlfc_err( 'rate' ); }
+		$r   = nlfc_room_new_open( $mid, $topic, time() );
+		$ctx = nlfc_ctx( $r );
+		if ( ! $ctx ) { return nlfc_err( 'topic' ); }
+		nlfc_room_hits( $mid );
+		nlfc_room_put( $room, $r );
+		return nlfc_ok( nlfc_room_fields( $r, $ctx, $room ) );
+	} );
+
+	// board 19: come into an open room by its link (a member of the forum in good standing; not locked; at most 6 people)
+	$reg( '/join', 'POST', function ( WP_REST_Request $q ) {
+		$m = nlfc_member( $q, true );
+		if ( is_wp_error( $m ) ) { return $m; }
+		if ( null === nlfc_lk() ) { return nlfc_err( 'off' ); }
+		$mid  = (int) $m['id'];
+		$room = strtolower( (string) $q->get_param( 'room' ) );
+		$r    = nlfc_room_get( $room );
+		if ( ! $r ) { return nlfc_err( 'gone', true ); }
+		$ctx = nlfc_ctx( $r );
+		if ( ! $ctx ) { return nlfc_err( 'gone', true ); }
+		$why = nlfc_can_join( $r, $mid, nlfc_room_max( $r ) );
+		if ( '' !== $why ) { return nlfc_err( $why, true ); }
+		if ( ! isset( $r['ok'][ $mid ] ) ) {
+			if ( ! nlfc_rl( 'join', 'm' . $mid, 30, DAY_IN_SECONDS ) ) { return nlfc_err( 'rate_join' ); }
+			$r['ok'][ $mid ] = '';
+			nlfc_room_put( $room, $r );
+		}
+		return nlfc_ok( nlfc_room_fields( $r, $ctx, $room ) );
+	} );
+
+	// board 19: the host locks or opens his open room (nobody new comes in by the link while it is locked)
+	$reg( '/lock', 'POST', function ( WP_REST_Request $q ) {
+		$m = nlfc_member( $q, true );
+		if ( is_wp_error( $m ) ) { return $m; }
+		$mid  = (int) $m['id'];
+		$room = strtolower( (string) $q->get_param( 'room' ) );
+		$r    = nlfc_room_get( $room );
+		if ( ! $r || empty( $r['open'] ) ) { return nlfc_err( 'gone', true ); }
+		if ( (int) $r['by'] !== $mid ) { return nlfc_err( 'host' ); }
+		if ( ! nlfc_rl( 'lock', 'm' . $mid, 60, HOUR_IN_SECONDS ) ) { return nlfc_err( 'rate' ); }
+		$r['lock'] = '1' === (string) (int) $q->get_param( 'lock' ) ? 1 : 0;
+		nlfc_room_put( $room, $r );
+		return nlfc_ok( array( 'room' => $room, 'lock' => (int) $r['lock'] ) );
 	} );
 
 	// my own two switches: calls allowed, and the invitation mail
@@ -675,6 +835,59 @@ function nlfc_page_targets( $t, $me ) {
 	}
 	return $out;
 }
+
+/* ---------------------------------------------------------------- board 19: the open video room's buttons, printed for guests too */
+
+/** the buttons show only when the module is on and LiveKit is set up (a press must lead to a working room) */
+function nlfc_rooms_ready() {
+	static $ready = null;
+	if ( null === $ready ) { $ready = nlfc_on() && null !== nlfc_lk(); }
+	return $ready;
+}
+
+/** the camera mark (a constant of this file, never text from a person) */
+function nlfc_cam_svg( $size ) {
+	$s = (int) $size;
+	return '<svg aria-hidden="true" focusable="false" width="' . $s . '" height="' . $s . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>';
+}
+
+/** part א: the band on the forum home, right under the writing row */
+function nlfc_room_band_html() {
+	$steps = array( 'פותחים חדר', 'שולחים קישור בוואטסאפ', 'מדברים, עד ' . (int) NLFC_ROOM_PEOPLE . ' אנשים' );
+	$li    = '';
+	foreach ( $steps as $i => $s ) { $li .= '<li><span class="nlfc-rb-n">' . (int) ( $i + 1 ) . '</span><span class="nlfc-rb-s">' . esc_html( $s ) . '</span></li>'; }
+	return '<section class="nlfc-roomband" aria-labelledby="nlfc-rb-h" dir="rtl">'
+		. '<div class="nlfc-rb-id"><span class="nlfc-rb-mark">' . nlfc_cam_svg( 26 ) . '</span><div class="nlfc-rb-tx"><h2 class="nlfc-rb-h" id="nlfc-rb-h">' . esc_html( 'חדר וידאו' ) . '</h2>'
+		. '<p class="nlfc-rb-p">' . esc_html( 'מדברים פנים אל פנים, מראים תוכנית או תמונה ומסמנים עליה יחד.' ) . '</p></div></div>'
+		. '<ol class="nlfc-rb-steps">' . $li . '</ol>'
+		. '<div class="nlfc-rb-go"><button type="button" class="nlfc-rb-btn" data-nlf-room="0">' . esc_html( 'פתיחת חדר וידאו' ) . '</button>'
+		. '<p class="nlfc-rb-fine">' . esc_html( 'בדפדפן, בלי התקנה ובלי תשלום. השיחה לא מוקלטת.' ) . '</p></div>'
+		. '</section>';
+}
+
+/** part ב: one row, in every live discussion ($topic id) and on every card ($topic 0; never the card owner's name) */
+function nlfc_room_row_html( $topic, $title, $sub, $btn ) {
+	return '<div class="nlfc-roomrow" dir="rtl"><span class="nlfc-rr-mark">' . nlfc_cam_svg( 22 ) . '</span>'
+		. '<div class="nlfc-rr-tx"><span class="nlfc-rr-t">' . esc_html( $title ) . '</span><span class="nlfc-rr-s">' . esc_html( $sub ) . '</span></div>'
+		. '<button type="button" class="nlfc-rr-btn" data-nlf-room="' . (int) $topic . '">' . esc_html( $btn ) . '</button></div>';
+}
+
+// HOOK nlf_home_after_start (inc/pro-forum-render.php, nlf_render_home): the band, for every visitor
+add_filter( 'nlf_home_after_start', function ( $html ) {
+	return nlfc_rooms_ready() ? $html . nlfc_room_band_html() : $html;
+}, 10, 1 );
+
+// HOOK nlf_topic_after_body (shared with the social module, which runs at 10): the row of a LIVE discussion, after its output
+add_filter( 'nlf_topic_after_body', function ( $html, $t ) {
+	if ( ! is_array( $t ) || 'live' !== (string) ( $t['status'] ?? '' ) || ! nlfc_rooms_ready() ) { return $html; }
+	return $html . nlfc_room_row_html( (int) $t['id'], 'שיחת וידאו על הדיון הזה', 'עם מי שכתב כאן, או עם כל מי שתשלחו לו קישור', 'פתיחה' );
+}, 20, 2 );
+
+// HOOK nlf_card_after_mast (inc/pro-forum-render.php, nlf_card_embed): the row on every card, before the tabs. A home room: most
+// cards belong to people from public registers who did not join, so the row never names the card's person.
+add_filter( 'nlf_card_after_mast', function ( $html ) {
+	return nlfc_rooms_ready() ? $html . nlfc_room_row_html( 0, 'חדר וידאו', 'פותחים חדר, שולחים קישור, מדברים ומסמנים על תוכנית יחד', 'פתיחה' ) : $html;
+}, 10, 1 );
 
 add_action( 'wp_enqueue_scripts', function () {
 	if ( ! nlfc_on() || ! function_exists( 'nlf_surface' ) || ! nlf_surface() ) { return; }
