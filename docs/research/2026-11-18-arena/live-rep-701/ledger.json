@@ -1,0 +1,51 @@
+{
+ "at": "2026-11-18 20:05:00",
+ "topic": 10,
+ "ledger": [
+  {
+   "step": "guest sees the stars next to the answerer's name",
+   "ok": true,
+   "detail": "★ יסודות | דרגת יסודות, 1 מתוך 5 כוכבים, 30 נקודות"
+  },
+  {
+   "step": "the asker (1 point) shows no stars",
+   "ok": true,
+   "detail": "['חדש בזירה']"
+  },
+  {
+   "step": "the sheet opens with the right total",
+   "ok": true,
+   "detail": "בC בדיקת Claude ב קבלן שיפוצים · חבר מאז נובמבר 2026 ★★★★★ יסודות 30 נקודות דרגת יסודות, 1 מתוך 5 כוכבים, 30 נקודות עוד 20 נקודות לדרגת שלד תשובות שהשואל סימן \"עזרה לי\" 1 15 נק' תגובות חיוביות מחברים "
+  },
+  {
+   "step": "the sheet lists where the points came from",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the rules open: five levels and the point table",
+   "ok": true,
+   "detail": "איך צוברים כוכבים כוכבים באים מעזרה שמישהו אחר אישר. אי אפשר לקנות אותם, ואין נקודות שליליות. ★ יסודות כוכב אחד, מ- 10 נקודות ★★ שלד שני כוכבים, מ- 50 נקודות ★★"
+  },
+  {
+   "step": "the forum home shows the stars block",
+   "ok": true,
+   "detail": "המובילים החודש איך צוברים כוכבים 1 בC בדיקת Claude ב קבלן שיפוצים ★ +30 2 א אלונה בעל מקצוע +2 3 טח טאהר חסן אדריכל +1 4 בC בדיקת Claude א רוכש דירה +1 הרשימה מתחלפת כל יום, לפי 30 הימים האחרונים. היא"
+  },
+  {
+   "step": "no sample member (example.invalid) is on it",
+   "ok": true,
+   "detail": "enforced in SQL; names shown: המובילים החודש איך צוברים כוכבים 1 בC בדיקת Claude ב קבלן שיפוצים ★ +30 2 א אלונה בעל מקצוע +2 3 טח טאהר חסן אדריכל +1 4"
+  },
+  {
+   "step": "the member sees his own stars line",
+   "ok": true,
+   "detail": "הכוכבים שלי ★ יסודות · 30 נקודות עוד 20 לשלד"
+  },
+  {
+   "step": "the public route returns the same numbers",
+   "ok": true,
+   "detail": "{\"s\":200,\"rep\":{\"points\":30,\"stars\":1,\"level\":\"יסודות\",\"pct\":50,\"next\":\"שלד\",\"text\":\"עוד 20 נקודות לדרגת שלד\",\"label\":\"דרגת יסודות, 1 מתוך 5 כוכבים, 30 נקודות\"},\"rows\":[[null,null],[null,null],[null,null],[null,null],[null,null]]}"
+  }
+ ]
+}

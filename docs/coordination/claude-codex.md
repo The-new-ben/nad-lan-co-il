@@ -5247,3 +5247,7 @@ CLAIM + RELEASE LOCK 1.72.700 (HAD-786): SWAP inc/pro-forum.php (viewport meta o
 1.72.700 FIRST RUN ROLLED BACK by one INHERITED row (from 676) that asked board.css for the old prefix .nlfb, the very thing this release renames. Row corrected in make_deploy700.py; second run started 17:16 UTC.
 
 RELEASE DONE 1.72.700 (HAD-786): released and verified on the second run. Live: viewport meta on the forum pages, shared board prefix nlfsb. Live two-browser check after the fix: 21 of 21 (docs/research/2026-11-18-arena/live-room-700/). Test members and the test card removed (forum_testkit.py clean).
+
+CLAIM + RELEASE LOCK 1.72.701 (HAD-786, owner 18.11 night: reputation, stars and levels): NEW inc/pro-forum-rep.php, assets/proforum/rep.css, rep.js; SWAP inc/pro-forum.php (one require line). Claude [pro forum HAD-726/786, Fable 5.2] 18.11.2026 17:46 UTC.
+
+RELEASE DONE 1.72.701 (HAD-786): released and verified on the first run. Live: reputation layer (inc/pro-forum-rep.php): stars and five levels next to every name, the sheet behind them, leaders of 30 days, public rules. Live check with counting test members: 9 of 9 (docs/research/2026-11-18-arena/live-rep-701/); members and the demo discussion removed.

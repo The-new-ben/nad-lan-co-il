@@ -1,0 +1,129 @@
+/* nad-lan professionals' forum: reputation (inc/pro-forum-rep.php), Claude Design board 20 "כוכבים ודרגות"
+   (docs/design-lab/pro-forum/canvas-source/Reputation.dc.html). The forum's own palette: ink #101820, sea #2F6F86, raspberry
+   #B0144F for every star (never gold or yellow), ground #F2F4F5; Rubik for headings and numbers, Assistant for text. The site
+   theme forces heading colour and font, button colours and link underline with !important (forum.css 1.72.675 note), so every
+   heading, button and link here carries its own colours, face and decoration with !important under a .nlf scope. */
+
+.nlf .nlfr-sr{position:absolute !important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.nlf .nlfr-st{color:#B0144F;letter-spacing:1px;line-height:1;white-space:nowrap}
+.nlf h2.nlfr-h{margin:0 !important;padding:0 !important;font-family:Rubik,Arial,sans-serif !important;font-weight:800 !important;font-size:18px !important;line-height:1.2 !important;color:#101820 !important;background:none !important;border:0 !important;text-transform:none !important;letter-spacing:0 !important}
+
+/* א: the chip after a name (26px high in a text row; a 44px hit area through ::after) */
+.nlf .nlf-acol .nlfr-chip,.nlf .nlfr-cardrow .nlfr-chip{align-self:flex-start;margin-top:3px}
+.nlf button.nlfr-chip{position:relative;display:inline-flex;align-items:center;gap:5px;height:26px;min-height:26px;padding:0 9px;border-radius:999px;border:1px solid #F1C4D5 !important;background:#FBE7EF !important;color:#8A0F3D !important;font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-weight:700;font-size:12.5px;line-height:1;white-space:nowrap;text-decoration:none !important;box-shadow:none !important;cursor:pointer}
+.nlf button.nlfr-chip::after{content:"";position:absolute;inset:-9px -4px}
+.nlf button.nlfr-chip .nlfr-st{font-size:13px;color:#B0144F !important}
+.nlf button.nlfr-chip:hover{background:#F6D3E1 !important}
+.nlf .nlfr-chip-new{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#F2F4F5;color:#3A4650;font-size:12.5px;font-weight:400;line-height:1;white-space:nowrap}
+.nlf .nlfr-cardrow{display:flex;align-items:center;gap:8px;padding:10px 0 2px;font-size:14px;color:#3A4650}
+.nlf .nlfr-cardrow .nlfr-chip{margin-top:0}
+
+/* buttons and links of this layer */
+.nlf button.nlfr-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:12px;border:2px solid #2F6F86 !important;background:#FFFFFF !important;color:#2F6F86 !important;font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-weight:700;font-size:15px;line-height:1.1;white-space:nowrap;text-decoration:none !important;box-shadow:none !important}
+.nlf button.nlfr-btn:hover{background:#EAF3F6 !important}
+.nlf button.nlfr-link{background:none !important;border:0 !important;padding:0 4px;min-height:44px;color:#2F6F86 !important;font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-weight:700;font-size:13.5px;text-decoration:underline !important;text-underline-offset:3px;white-space:nowrap;box-shadow:none !important}
+
+/* ג: the month's leaders on the forum home */
+.nlf .nlfr-leaders{margin:12px 16px 0;background:#FFFFFF;border:1px solid #D5DBDF;border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.nlf .nlfr-lh{display:flex;align-items:center;gap:8px}
+.nlf .nlfr-lh h2.nlfr-h{flex-grow:1}
+.nlf .nlfr-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.nlf .nlfr-list li{margin:0;padding:0}
+.nlf .nlfr-list li::marker{content:none}
+.nlf button.nlfr-row{width:100%;display:flex;align-items:center;gap:10px;min-height:50px;padding:0 10px;border-radius:12px;border:1px solid #E6EAED !important;background:#FFFFFF !important;color:#101820 !important;font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-size:14.5px;text-align:right;text-decoration:none !important;box-shadow:none !important}
+.nlf button.nlfr-row.is-first{background:#FBE7EF !important;border-color:#FBE7EF !important}
+.nlf button.nlfr-row:hover{border-color:#B0144F !important}
+.nlf .nlfr-rank{font-family:Rubik,Arial,sans-serif;font-weight:800;font-size:18px;color:#3A4650;width:18px;flex-shrink:0;text-align:center}
+.nlf .is-first .nlfr-rank{color:#B0144F}
+.nlf .nlfr-av{width:34px;height:34px;border-radius:50%;font-size:12.5px}
+.nlf .nlfr-av.nlf-av-sq{border-radius:10px}
+.nlf .nlfr-who{flex-grow:1;min-width:0;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap;line-height:1.25}
+.nlf .nlfr-who b{font-weight:700;font-size:14.5px;color:#101820}
+.nlf .nlfr-who small{font-weight:400;font-size:13px;color:#3A4650}
+.nlf .nlfr-who small::before{content:"· "}
+.nlf .nlfr-row .nlfr-st{font-size:12px;color:#B0144F}
+.nlf .nlfr-plus{font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:14px;color:#101820;direction:ltr;min-width:30px;text-align:left}
+.nlf .nlfr-fine{margin:0;font-size:12.5px;line-height:1.4;color:#3A4650}
+/* the compact invitation while fewer than three members have points */
+.nlf .nlfr-invite{flex-direction:row;align-items:center;flex-wrap:wrap;gap:10px 14px}
+.nlf .nlfr-inv-t{flex:1 1 220px;display:flex;flex-direction:column;gap:4px}
+.nlf .nlfr-inv-t p{margin:0;font-size:14px;line-height:1.45;color:#3A4650}
+.nlf .nlfr-invite .nlfr-btn{flex:0 0 auto}
+
+/* ה: "הכוכבים שלי" in the member's bar, and the level-up notice */
+.nlf button.nlfr-mine{flex:1 1 100%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:46px;padding:8px 14px;border-radius:16px;border:1px solid #D5DBDF !important;background:#FFFFFF !important;color:#101820 !important;font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-size:14px;font-weight:400;text-align:right;text-decoration:none !important;box-shadow:none !important}
+.nlf button.nlfr-mine:hover{border-color:#B0144F !important}
+.nlf .nlfr-mine-t{font-weight:700}
+.nlf .nlfr-mine .nlfr-st{font-size:14px}
+.nlf .nlfr-mine-n{margin-inline-start:auto;color:#3A4650;font-size:13px}
+.nlf .nlfr-up{background:#101820;color:#FFFFFF;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.nlf .nlfr-up-i{width:40px;height:40px;border-radius:50%;background:#B0144F;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.nlf .nlfr-up-t{display:flex;flex-direction:column;gap:1px}
+.nlf .nlfr-up-t b{font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:16px;color:#FFFFFF}
+.nlf .nlfr-up-t span{font-size:13px;color:#DCE3E8}
+
+/* ב and ד: the two sheets (a bottom sheet on a phone, a centred dialog from 640px, forum.css) */
+dialog.nlf.nlf-sheet.nlfr-sheet{background:#FFFFFF;padding:16px;display:none;flex-direction:column;gap:14px;border-radius:22px 22px 0 0;box-shadow:0 0 0 1.5px #101820}
+dialog.nlf.nlf-sheet.nlfr-sheet[open]{display:flex}
+dialog.nlf.nlf-sheet.nlfr-rules{box-shadow:0 0 0 2px #101820;gap:12px}
+@media (min-width:640px){dialog.nlf.nlf-sheet.nlfr-sheet{border-radius:22px;max-width:480px}}
+.nlf .nlfr-mh{display:flex;align-items:center;gap:12px}
+.nlf .nlfr-mh-t{display:flex;flex-direction:column;gap:2px;min-width:0;flex-grow:1}
+.nlf .nlfr-mh h2.nlfr-h{font-size:20px !important;line-height:1.15 !important}
+.nlf .nlfr-rules .nlfr-mh h2.nlfr-h{flex-grow:1}
+.nlf .nlfr-mh-s{font-size:13.5px;color:#3A4650}
+.nlf .nlfr-mh-s:empty{display:none}
+.nlf .nlfr-av-lg{width:56px;height:56px;border-radius:50%;font-size:20px;font-weight:800}
+.nlf .nlfr-av-lg.nlf-av-sq{border-radius:16px}
+.nlf .nlfr-av-lg:empty{display:none}
+.nlf button.nlfr-x{margin-inline-start:auto;align-self:flex-start;color:#101820 !important;background:transparent !important;border:0 !important;box-shadow:none !important}
+.nlf .nlfr-body{display:flex;flex-direction:column;gap:14px}
+.nlf .nlfr-body:empty{display:none}
+.nlf .nlfr-btn-wide{width:100%}
+.nlf .nlfr-wait{margin:0;font-size:14px;color:#3A4650}
+/* the dark stars block (the forum's pegboard dots) */
+.nlf .nlfr-dark{background-color:#101820;background-image:radial-gradient(rgba(255,255,255,.08) 1.2px,transparent 1.3px);background-size:14px 14px;border-radius:16px;padding:14px;color:#FFFFFF;display:flex;flex-direction:column;gap:10px}
+.nlf .nlfr-dark-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.nlf .nlfr-dark .nlfr-big{font-size:24px;letter-spacing:3px;color:#FF7FAE}
+.nlf .nlfr-dark .nlfr-big i{font-style:normal;color:#4A5660}
+.nlf .nlfr-dark-lv{font-family:Rubik,Arial,sans-serif;font-weight:800;font-size:22px;color:#FFFFFF}
+.nlf .nlfr-dark-pt{margin-inline-start:auto;font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:18px;color:#FFFFFF}
+.nlf .nlfr-dark-pt small{font-size:12.5px;font-weight:500;color:#C5D0D8}
+.nlf .nlfr-bar{height:10px;border-radius:999px;background:#26323C;overflow:hidden}
+.nlf .nlfr-bar i{display:block;height:100%;background:#B0144F;border-radius:999px;transition:width .5s ease}
+.nlf .nlfr-dark-tx{font-size:13px;color:#DCE3E8}
+/* the breakdown rows */
+.nlf .nlfr-rows{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;font-size:14.5px}
+.nlf .nlfr-rows li{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px solid #E6EAED;margin:0}
+.nlf .nlfr-rows li:last-child{border-bottom:0}
+.nlf .nlfr-rows li span:first-child{flex-grow:1}
+.nlf .nlfr-rows b{font-family:Rubik,Arial,sans-serif;font-weight:700}
+.nlf .nlfr-rows .nlfr-pts-c{width:64px;text-align:left;color:#3A4650}
+/* ד: the rules */
+.nlf .nlfr-lead{margin:0;font-size:14.5px;line-height:1.5;color:#3A4650}
+.nlf .nlfr-tiles{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;text-align:center}
+.nlf .nlfr-tiles li{margin:0;background:#F2F4F5;border-radius:10px;padding:8px 2px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nlf .nlfr-tiles li.is-on{background:#FBE7EF;box-shadow:inset 0 0 0 1.5px #B0144F}
+.nlf .nlfr-tiles .nlfr-st{font-size:12px;letter-spacing:0}
+.nlf .nlfr-tiles li[data-nlfr-tile="4"] .nlfr-st{font-size:11px}
+.nlf .nlfr-tiles li[data-nlfr-tile="5"] .nlfr-st{font-size:10px}
+.nlf .nlfr-tiles b{font-size:13px;font-weight:700;color:#101820}
+.nlf .nlfr-tiles small{font-size:11.5px;color:#3A4650}
+.nlf .nlfr-pts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;font-size:14.5px}
+.nlf .nlfr-pts li{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px solid #E6EAED;margin:0}
+.nlf .nlfr-pts li:last-child{border-bottom:0}
+.nlf .nlfr-pts li>span{flex-grow:1}
+.nlf .nlfr-pts b{font-family:Rubik,Arial,sans-serif;font-weight:700;color:#B0144F}
+.nlf .nlfr-rules .nlfr-fine{font-size:13px;line-height:1.5}
+
+/* desktop: the leaders become a row of up to five tiles */
+@media (min-width:900px){
+	.nlf .nlfr-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+	.nlf button.nlfr-row{flex-direction:column;justify-content:flex-start;gap:6px;min-height:150px;padding:12px 8px;text-align:center}
+	.nlf .nlfr-rank{width:auto}
+	.nlf .nlfr-av{width:40px;height:40px;font-size:14px}
+	.nlf .nlfr-who{flex-grow:0;flex-direction:column;align-items:center;gap:1px}
+	.nlf .nlfr-who small::before{content:none}
+	.nlf .nlfr-plus{min-width:0;text-align:center;margin-top:auto}
+}
+@media (prefers-reduced-motion:reduce){.nlf .nlfr-bar i{transition:none}}

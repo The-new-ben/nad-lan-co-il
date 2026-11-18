@@ -1694,3 +1694,5 @@ require_once __DIR__ . '/pro-forum-render.php';
 if ( is_admin() ) { require_once __DIR__ . '/pro-forum-admin.php'; }
 if ( file_exists( __DIR__ . '/pro-forum-social.php' ) ) { require_once __DIR__ . '/pro-forum-social.php'; }
 if ( file_exists( __DIR__ . '/pro-forum-card.php' ) ) { require_once __DIR__ . '/pro-forum-card.php'; }
+// reputation (board 20): points, five star levels, the month's leaders, public rules; counted from existing rows, no table
+if ( file_exists( __DIR__ . '/pro-forum-rep.php' ) ) { require_once __DIR__ . '/pro-forum-rep.php'; }
