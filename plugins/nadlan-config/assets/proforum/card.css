@@ -1,0 +1,106 @@
+/* nad-lan professionals' forum: a member's own card (inc/pro-forum-card.php), Claude Design board 18 "MyCard".
+   Identity: ink #101820, sea #2F6F86, raspberry #B0144F; Rubik for headings and buttons, Assistant for text.
+   The theme forces heading colours and faces, button colours and link underlines with !important, so the values the design
+   needs are set with !important here. Every rule is scoped (.nlfm-*, #nlfm-form, body.nlfm-member-card). */
+
+/* ---------------------------------------------------------------- A. the invitation */
+.nlfm-inv{box-sizing:border-box;background-color:#101820 !important;background-image:radial-gradient(rgba(255,255,255,.09) 1.2px,transparent 1.3px) !important;background-size:14px 14px !important;color:#FFFFFF !important;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;margin:14px 0;font-family:Assistant,'Segoe UI',Arial,sans-serif;text-align:right}
+.nlfm-inv .nlfm-free{align-self:flex-start;background:#B0144F !important;color:#FFFFFF !important;font-weight:700;font-size:12.5px;line-height:1.4;padding:4px 10px;border-radius:999px}
+.nlfm-inv .nlfm-inv-h{margin:0 !important;font-family:Rubik,Arial,sans-serif !important;font-weight:800 !important;font-size:22px !important;line-height:1.15 !important;color:#FFFFFF !important;letter-spacing:0}
+.nlfm-inv .nlfm-inv-p{margin:0 !important;font-size:15px;line-height:1.5;color:#DCE3E8 !important}
+.nlfm-inv .nlfm-inv-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nlfm-inv .nlfm-inv-btn{height:50px;padding:0 20px;border-radius:14px;border:0 !important;background:#FFFFFF !important;color:#101820 !important;font-family:Rubik,Arial,sans-serif !important;font-weight:700;font-size:16px;cursor:pointer;box-shadow:none !important;text-decoration:none !important}
+.nlfm-inv .nlfm-inv-btn:hover{background:#EEF5F7 !important}
+.nlfm-inv .nlfm-inv-btn:focus-visible{outline:3px solid #FFD3E2;outline-offset:2px}
+.nlfm-inv .nlfm-inv-fine{font-size:13px;color:#C5D0D8 !important}
+.nlf .nlf-mebar .nlfm-iam{font-weight:700;color:#2F6F86 !important}
+
+/* ---------------------------------------------------------------- B. the form sheet */
+dialog.nlf.nlf-sheet.nlfm-sheet{background:#FFFFFF;border-radius:22px 22px 0 0;box-shadow:0 0 0 1.5px #101820;max-width:520px;font-family:Assistant,'Segoe UI',Arial,sans-serif;color:#101820}
+@media (min-width:640px){dialog.nlf.nlf-sheet.nlfm-sheet{border-radius:22px 22px 18px 18px}}
+#nlfm-form .nlfm-form{margin:0;padding:0 0 16px;display:flex;flex-direction:column;gap:14px}
+#nlfm-form .nlfm-fh{position:sticky;top:0;z-index:1;background:#FFFFFF;border-radius:22px 22px 0 0;padding:14px 16px;border-bottom:1px solid #D5DBDF;display:flex;align-items:center;gap:10px}
+#nlfm-form .nlfm-fh-h{margin:0 !important;font-family:Rubik,Arial,sans-serif !important;font-weight:700 !important;font-size:19px !important;line-height:1.2 !important;color:#101820 !important;flex-grow:1}
+#nlfm-form .nlfm-fh-s{font-size:13px;color:#3A4650}
+#nlfm-form .nlfm-x{width:44px;height:44px;margin:-8px -8px -8px 0;border:0 !important;background:transparent !important;color:#101820 !important;display:flex;align-items:center;justify-content:center;border-radius:12px;cursor:pointer;box-shadow:none !important}
+#nlfm-form .nlfm-fb{padding:0 16px;display:flex;flex-direction:column;gap:12px}
+#nlfm-form .nlfm-f{display:flex;flex-direction:column;gap:5px;min-width:0}
+#nlfm-form label,#nlfm-form legend{font-weight:700;font-size:14px;color:#101820}
+#nlfm-form .nlfm-f input,#nlfm-form .nlfm-f select,#nlfm-form .nlfm-f textarea{box-sizing:border-box;width:100%;min-width:0;height:48px;border-radius:12px;border:2px solid #101820 !important;background:#FFFFFF !important;color:#101820 !important;padding:0 12px;font-size:16px;font-family:inherit;box-shadow:none !important}
+#nlfm-form .nlfm-f select{padding:0 10px}
+#nlfm-form .nlfm-f textarea{height:auto;min-height:96px;padding:10px 12px;line-height:1.45;resize:vertical}
+#nlfm-form .nlfm-f input:focus,#nlfm-form .nlfm-f select:focus,#nlfm-form .nlfm-f textarea:focus{outline:3px solid rgba(47,111,134,.35);outline-offset:1px;border-color:#2F6F86 !important}
+#nlfm-form .nlfm-f input::placeholder{color:#5B6770}
+#nlfm-form .nlfm-g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#nlfm-form .nlfm-count{font-size:12.5px;color:#5B6770;min-height:1em}
+#nlfm-form fieldset{margin:0;padding:0;border:0;min-width:0}
+#nlfm-form legend{padding:0;margin-bottom:6px}
+#nlfm-form .nlfm-chips{display:flex;gap:8px;flex-wrap:wrap}
+#nlfm-form .nlfm-chips label{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #D5DBDF;background:#FFFFFF;font-weight:700;font-size:15px;cursor:pointer}
+#nlfm-form .nlfm-chips input{position:absolute;opacity:0;width:1px;height:1px}
+#nlfm-form .nlfm-chips label:has(input:checked){border:2px solid #2F6F86;background:#EEF5F7;color:#101820}
+#nlfm-form .nlfm-chips label:has(input:focus-visible){outline:3px solid rgba(47,111,134,.35)}
+#nlfm-form .nlfm-how{display:flex;flex-direction:column;gap:6px}
+#nlfm-form .nlfm-how label{display:flex;align-items:center;gap:10px;min-height:48px;border:1px solid #D5DBDF;border-radius:12px;padding:0 12px;font-size:15px;font-weight:400;cursor:pointer;background:#FFFFFF}
+#nlfm-form .nlfm-how label.is-on,#nlfm-form .nlfm-how label:has(input:checked){border:2px solid #2F6F86;background:#EEF5F7;font-weight:700;padding:0 11px}
+#nlfm-form input[type="radio"],#nlfm-form input[type="checkbox"]{width:20px;height:20px;margin:0;accent-color:#2F6F86;flex-shrink:0}
+#nlfm-form .nlfm-vid{display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px;cursor:pointer}
+#nlfm-form .nlfm-go{height:54px;border-radius:14px;border:0 !important;background:#B0144F !important;color:#FFFFFF !important;font-family:Rubik,Arial,sans-serif !important;font-weight:700;font-size:17px;cursor:pointer;box-shadow:none !important}
+#nlfm-form .nlfm-go:hover{background:#8C0F3E !important}
+#nlfm-form .nlfm-go:disabled{opacity:.7;cursor:progress}
+#nlfm-form .nlfm-go:focus-visible{outline:3px solid #101820;outline-offset:2px}
+#nlfm-form .nlfm-msg{margin:0;font-size:14px;font-weight:700;color:#1B4D33;min-height:0}
+#nlfm-form .nlfm-msg:empty{display:none}
+#nlfm-form .nlfm-msg.is-err{color:#B3261E}
+#nlfm-form .nlfm-fine{font-size:13px;line-height:1.5;color:#3A4650}
+@media (max-width:360px){#nlfm-form .nlfm-g2{grid-template-columns:1fr}}
+
+/* ---------------------------------------------------------------- C. the opened card */
+.nlfm-card{box-sizing:border-box;background:#FFFFFF !important;border:1px solid #D5DBDF;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;margin:0 0 18px;color:#101820;font-family:Assistant,'Segoe UI',Arial,sans-serif;text-align:right}
+.nlfm-card .nlfm-head{display:flex;gap:12px;align-items:center;margin:0;padding:0;background:none;border:0}
+.nlfm-card .nlfm-av{width:60px;height:60px;border-radius:16px;background:var(--nlf-bg) !important;color:var(--nlf-fg) !important;display:flex;align-items:center;justify-content:center;font-family:Rubik,Arial,sans-serif;font-weight:800;font-size:22px;flex-shrink:0}
+.nlfm-card .nlfm-id{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nlfm-card .nlfm-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;color:#3A4650}
+.nlfm-card .nlfm-pill{background:var(--nlf-bg) !important;color:var(--nlf-fg) !important;font-weight:700;padding:1px 8px;border-radius:6px}
+.nlfm-card .nlfm-name{margin:0 !important;font-family:Rubik,Arial,sans-serif !important;font-weight:800 !important;font-size:26px !important;line-height:1.1 !important;color:#101820 !important;letter-spacing:0}
+.nlfm-card .nlfm-since{font-size:13.5px;color:#3A4650;font-weight:600}
+.nlfm-card .nlfm-bio{margin:0 !important;font-size:15px;line-height:1.5;color:#101820}
+.nlfm-card .nlfm-call{position:relative;width:100%;min-height:64px;border-radius:16px;border:0 !important;background:#B0144F !important;color:#FFFFFF !important;text-decoration:none !important;display:flex;align-items:center;gap:12px;padding:10px 16px;box-shadow:0 0 0 5px rgba(176,20,79,.18);cursor:pointer;text-align:right;font-family:inherit;animation:nlfm-ring 2.4s ease-out infinite}
+.nlfm-card .nlfm-call:hover{background:#8C0F3E !important}
+.nlfm-card .nlfm-call:focus-visible{outline:3px solid #101820;outline-offset:4px}
+.nlfm-card .nlfm-call-ic{width:40px;height:40px;border-radius:50%;background:#FFFFFF;color:#B0144F;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nlfm-card .nlfm-call-t{display:flex;flex-direction:column;gap:1px}
+.nlfm-card .nlfm-call-h{font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:18px;line-height:1.15;color:#FFFFFF}
+.nlfm-card .nlfm-call-s{font-size:13px;line-height:1.35;color:#FFD3E2}
+.nlfm-card .nlfm-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlfm-card .nlfm-wa,.nlfm-card .nlfm-tel{box-sizing:border-box;height:50px;border-radius:14px;text-decoration:none !important;font-family:Rubik,Arial,sans-serif;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
+.nlfm-card .nlfm-wa{background:#2F6F86 !important;color:#FFFFFF !important;border:0}
+.nlfm-card .nlfm-tel{border:2px solid #2F6F86;color:#2F6F86 !important;background:#FFFFFF !important}
+.nlfm-card .nlfm-wa:hover{background:#1F4B5C !important}
+.nlfm-card .nlfm-tel:hover{background:#EEF5F7 !important}
+.nlfm-card .nlfm-direct{font-size:13px;color:#3A4650;text-align:center}
+.nlfm-card .nlfm-edit{align-self:flex-start;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #101820 !important;background:#FFFFFF !important;color:#101820 !important;font-weight:700;font-size:14px;cursor:pointer;box-shadow:none !important}
+@media (min-width:760px){.nlfm-card{padding:22px}.nlfm-card .nlfm-name{font-size:32px !important}.nlfm-card .nlfm-call{max-width:520px}.nlfm-card .nlfm-two{max-width:520px}.nlfm-card .nlfm-direct{text-align:right}}
+
+/* ---------------------------------------------------------------- D. the same video pill by an answer */
+.nlf .nlf-arow .nlfm-vpill{height:44px;min-height:44px;padding:0 14px;border-radius:999px;border:0 !important;background:#B0144F !important;color:#FFFFFF !important;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;text-decoration:none !important;cursor:pointer;animation:nlfm-ring-s 2.4s ease-out infinite}
+.nlf .nlf-arow .nlfm-vpill:hover{background:#8C0F3E !important}
+.nlf .nlf-arow .nlfm-vpill svg{flex:none}
+.nlf .nlf-arow .nlfm-vpill + time{margin-inline-start:8px}
+.nlf .nlf-arow .nlf-acol{flex-grow:1;min-width:0}
+.nlf .nlf-acol .nlfm-sub{display:block;font-size:13px;color:#3A4650;font-weight:400}
+@media (max-width:380px){.nlf .nlf-arow .nlfm-vpill{padding:0 11px}}
+/* on a phone the row is the name and the pill only (board 18 part D); the time is left out there */
+@media (max-width:480px){.nlf .nlf-arow:has(.nlfm-vpill) > time{display:none}}
+
+/* the gentle pulse ring (CSS only), off when the person asks for less motion */
+@keyframes nlfm-ring{0%{box-shadow:0 0 0 5px rgba(176,20,79,.18)}60%{box-shadow:0 0 0 11px rgba(176,20,79,0)}100%{box-shadow:0 0 0 5px rgba(176,20,79,.18)}}
+@keyframes nlfm-ring-s{0%{box-shadow:0 0 0 0 rgba(176,20,79,.28)}60%{box-shadow:0 0 0 8px rgba(176,20,79,0)}100%{box-shadow:0 0 0 0 rgba(176,20,79,0)}}
+@media (prefers-reduced-motion:reduce){.nlfm-card .nlfm-call,.nlf .nlf-arow .nlfm-vpill{animation:none}}
+
+/* ---------------------------------------------------------------- the card page of a member-made card */
+/* the hero's "פרסמו בקשה" (when the header could not be replaced), the profile's own copy of the bio (part C prints it) and the
+   forum window's phone block (part C has the buttons) are not shown there */
+body.nlfm-member-card .nlpp-req,
+body.nlfm-member-card .nlpp-bio,
+body.nlfm-member-card .nlf-win:not(.nlf-emb) .nlf-direct{display:none !important}

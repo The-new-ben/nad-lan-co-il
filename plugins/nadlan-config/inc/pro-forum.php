@@ -1684,3 +1684,4 @@ if ( file_exists( __DIR__ . '/pro-forum-call.php' ) ) { require_once __DIR__ . '
 require_once __DIR__ . '/pro-forum-render.php';
 if ( is_admin() ) { require_once __DIR__ . '/pro-forum-admin.php'; }
 if ( file_exists( __DIR__ . '/pro-forum-social.php' ) ) { require_once __DIR__ . '/pro-forum-social.php'; }
+if ( file_exists( __DIR__ . '/pro-forum-card.php' ) ) { require_once __DIR__ . '/pro-forum-card.php'; }

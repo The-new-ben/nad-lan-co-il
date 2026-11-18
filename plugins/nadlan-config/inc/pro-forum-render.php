@@ -82,7 +82,8 @@ function nlf_consent_html() {
 function nlf_member_bar( $me ) {
 	if ( ! $me ) { return ''; }
 	$a = nlf_author( $me );
-	return '<div class="nlf-mebar"><span>נכנסתם בתור <b>' . esc_html( $a['name'] ) . '</b></span><button type="button" class="nlf-link" data-nlf-leave>יציאה</button></div>';
+	return '<div class="nlf-mebar"><span>נכנסתם בתור <b>' . esc_html( $a['name'] ) . '</b></span><button type="button" class="nlf-link" data-nlf-leave>יציאה</button>'
+		. apply_filters( 'nlf_member_bar_extra', '', $me ) . '</div>'; // HOOK (card module, inc/pro-forum-card.php): "אני בעל מקצוע", escaped there
 }
 
 /* ---------------------------------------------------------------- the forum home */
@@ -295,6 +296,7 @@ function nlf_render_topic( $t ) {
 		<?php endforeach; ?>
 	</div>
 	<?php if ( 'live' === $t['status'] ) : ?>
+	<?php echo apply_filters( 'nlf_before_replyform', '', $t, $me ); // phpcs:ignore -- HOOK (card module, inc/pro-forum-card.php): the invitation to open a card, escaped there ?>
 	<form class="nlf-replyform" data-nlf-replyform novalidate>
 		<label for="nlf-reply-body" class="nlf-label">כתבו תשובה</label>
 		<div class="nlf-quoting" hidden><span></span><button type="button" class="nlf-link" data-nlf-unquote>ביטול הציטוט</button></div>
@@ -415,6 +417,7 @@ function nlf_owner_box( $pro ) {
 			</div>
 		</div>
 	</div>
+	<?php echo apply_filters( 'nlf_owner_box_extra', '', $pro, $me ); // phpcs:ignore -- HOOK (card module, inc/pro-forum-card.php): "עריכת הכרטיס", escaped there ?>
 	<p class="nlf-live" role="status" aria-live="polite"></p>
 	<button type="button" class="nlf-link" data-nlf-leave>יציאה</button>
 </section>
@@ -606,6 +609,7 @@ add_filter( 'the_content', function ( $content ) {
 	$pro = (int) get_the_ID();
 	if ( $pro <= 0 || nlf_pro_removed( $pro ) ) { return $content; }
 	$me  = nlf_me();
+	$content = (string) apply_filters( 'nlf_card_content', $content, $pro, $me ); // HOOK (card module, inc/pro-forum-card.php): a member-made card takes the header's place
 	$top = nlf_card_embed( $pro );
 	if ( $me && (int) $me['pro_id'] === $pro ) {
 		$top = nadlan_forum_card_window( $pro ) . $top; $end = nlf_owner_box( $pro );
@@ -616,6 +620,7 @@ add_filter( 'the_content', function ( $content ) {
 	}
 	$GLOBALS['nlf_card_printed'] = true;
 	nlf_nocache();
+	$top = (string) apply_filters( 'nlf_card_top', $top, $pro, $me ); // HOOK (card module, inc/pro-forum-card.php): part C of board 18 first, escaped there
 	$top = '<div class="nlf-card-zone" id="nlf-card-zone">' . $top . '</div>';
 	$h   = strpos( $content, 'class="nlpp-hero"' );
 	$e   = false !== $h ? strpos( $content, '</header>', $h ) : false;

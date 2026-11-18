@@ -6,13 +6,14 @@ register card (pro_id stays empty), and `unseed` removes them and everything the
 
   python scripts/project-stage/forum_seed.py seed      write the members, the discussions and the answers (idempotent: unseed first)
   python scripts/project-stage/forum_seed.py unseed    remove all of it
+  python scripts/project-stage/forum_seed.py video-off|video-on   the sample members' "call me by video" switch (off since 18.11.2026)
   python scripts/project-stage/forum_seed.py cookies   new session cookies for two sample members (for the two-browser video test)"""
 import json, os, secrets, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 MODE = (sys.argv[1] if len(sys.argv) > 1 else "").lower()
-if MODE not in ("seed", "unseed", "cookies"):
-    raise SystemExit("usage: forum_seed.py seed|unseed|cookies")
+if MODE not in ("seed", "unseed", "cookies", "video-off", "video-on"):
+    raise SystemExit("usage: forum_seed.py seed|unseed|cookies|video-off|video-on")
 _src = open(os.path.join(REPO, "scripts", "skin-a", "deployskin.py"), encoding="utf-8").read()
 _ns = {"__name__": "forum_seed_helpers"}
 exec(compile(_src[:_src.index('s, h, _ = req("GET", "/wp-json/nadlan/v1/health")')], "deployskin-helpers", "exec"), _ns)
@@ -101,6 +102,12 @@ add_action( 'rest_api_init', function () {
 			$mt = nlf_t( 'members' ); $tt = nlf_t( 'topics' ); $rt = nlf_t( 'replies' );
 			$ids = array_map( 'intval', $wpdb->get_col( "SELECT id FROM $mt WHERE contact LIKE 'seed-%@example.invalid'" ) );
 			$mode = (string) $b['mode'];
+			if ( 'video-off' === $mode || 'video-on' === $mode ) { // 18.11.2026: since 1.72.698 a call pill shows next to every member who allowed video; nobody answers for a sample member
+				$n = 0;
+				if ( function_exists( 'nlfc_pref_set' ) ) { foreach ( $ids as $id ) { nlfc_pref_set( $id, 'video-on' === $mode ? 1 : 0, 0 ); $n++; } }
+				do_action( 'litespeed_purge_all' );
+				return array( 'video' => $mode, 'members' => $n );
+			}
 			if ( 'cookies' === $mode ) {
 				$out = array();
 				foreach ( array( 'avi', 'yossi' ) as $k ) {
@@ -113,6 +120,10 @@ add_action( 'rest_api_init', function () {
 			$gone = array();
 			if ( $ids ) {
 				$in = implode( ',', $ids );
+				// 18.11.2026: real members answered sample discussions. Their answers are never deleted with the samples:
+				// the run stops and names them, until the owner decides what happens to those answers.
+				$real = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $rt WHERE member_id NOT IN ($in) AND topic_id IN (SELECT id FROM $tt WHERE member_id IN ($in))" );
+				if ( $real > 0 ) { return array( 'err' => 'stopped: ' . $real . ' answers by real members sit on sample discussions; nothing was deleted' ); }
 				$tids = array_map( 'intval', $wpdb->get_col( "SELECT id FROM $tt WHERE member_id IN ($in)" ) );
 				foreach ( array( 'replies', 'thanks', 'flags', 'follows' ) as $tb ) { $gone[ $tb ] = (int) $wpdb->query( 'DELETE FROM ' . nlf_t( $tb ) . " WHERE member_id IN ($in)" ); }
 				if ( $tids ) { $tin = implode( ',', $tids ); $gone['replies_on_their_topics'] = (int) $wpdb->query( "DELETE FROM $rt WHERE topic_id IN ($tin)" ); }

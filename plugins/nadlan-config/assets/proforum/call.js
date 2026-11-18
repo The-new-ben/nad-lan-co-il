@@ -39,7 +39,8 @@ const T = {
 	reconnecting: 'החיבור נקטע, מתחברים שוב…', lost: 'השיחה נותקה.',
 	denied: 'אין גישה למצלמה או למיקרופון. אפשר לאשר בהגדרות הדפדפן.',
 	inviteToast: (n, t) => n + ' מזמין אתכם לשיחת וידאו על ' + t,
-	prefH: 'שיחות וידאו', prefVideo: 'אפשר לפנות אליי בשיחת וידאו מתוך דיון', prefVideoSub: 'רק מי שפתח דיון שעניתם בו, או מי שענה לדיון שלכם.',
+	prefH: 'שיחות וידאו', prefVideo: 'אפשר לפנות אליי בשיחת וידאו', prefVideoSub: 'חברי הפורום יוכלו להתקשר אליכם מהכרטיס שלכם ומדיון שכתבתם בו.',
+	tagCard: 'כרטיס',
 	prefMail: 'לשלוח לי מייל כשמזמינים אותי לשיחה', prefMailSub: 'מייל אחד לכל הזמנה. אפשר לכבות בכל רגע.',
 	callAria: 'שיחת וידאו',
 };
@@ -215,7 +216,7 @@ function stage(tr, tk, media, opener) {
 	const remote = h('div', { cls: 'nlfc-remote' });
 	const waitP = h('p', { cls: 'nlfc-wait', text: T.waitFor(firstOther.name) });
 	const timer = h('span', { cls: 'nlfc-time', role: 'timer', 'aria-label': 'משך השיחה', text: '00:00' });
-	const top = h('div', { cls: 'nlfc-top' }, h('span', { cls: 'nlfc-tag', text: T.tag }), h('span', { cls: 'nlfc-title', text: tk.title || C.title || '' }), timer);
+	const top = h('div', { cls: 'nlfc-top' }, h('span', { cls: 'nlfc-tag', text: tk.card ? T.tagCard : T.tag }), h('span', { cls: 'nlfc-title', text: tk.title || C.title || '' }), timer);
 	const ini = h('span', { cls: 'nlfc-ini', 'aria-hidden': 'true', text: initials(firstOther.name) });
 	const whoT = h('span', { cls: 'nlfc-whot', text: face(firstOther) });
 	const who = h('div', { cls: 'nlfc-who' }, ini, whoT);
@@ -263,7 +264,7 @@ function stage(tr, tk, media, opener) {
 
 	// the invite button: only people of this discussion who are not in the room yet
 	const candidates = () => {
-		if ((tk.topic | 0) !== (C.topic | 0)) return [];
+		if (tk.card || !tk.topic || (tk.topic | 0) !== (C.topic | 0)) return []; // a call from a card has no discussion to invite from
 		const inRoom = new Set(S.others.map((o) => o.id | 0));
 		return (C.targets || []).filter((t) => !inRoom.has(t.with | 0));
 	};
@@ -382,12 +383,26 @@ function needEntry(heading) {
 	enter.addEventListener('click', () => sh.close(false));
 }
 
+// a guest who pressed a call button: after the forum's entry (which reloads the page) the call sheet opens by itself
+const PENDING = 'nlfc_pending';
+function savePending(target) {
+	try { sessionStorage.setItem(PENDING, JSON.stringify({ topic: target.topic | 0, card: target.card | 0, with: target.with | 0, name: String(target.name || ''), label: String(target.label || ''), t: Date.now() })); } catch (e) { /* private mode: the member presses again */ }
+}
+function takePending() {
+	let p = null;
+	try { p = JSON.parse(sessionStorage.getItem(PENDING) || 'null'); sessionStorage.removeItem(PENDING); } catch (e) { p = null; }
+	if (!p || !p.with || Date.now() - (p.t | 0) > 15 * 60 * 1000) return null;
+	if (p.card ? (p.card | 0) !== (C.card | 0) : (p.topic | 0) !== (C.topic | 0)) return null; // only on the page it was pressed on
+	return p;
+}
+
 function startWith(target, opener) {
-	if (!st.member) { needEntry(T.needH); return; }
+	if (!st.member) { savePending(target); needEntry(T.needH); return; }
+	const card = target.card | 0;
 	sheet({
-		heading: T.startH(target.name), request: C.title || '', sub: target.label || '', go: T.startGo,
+		heading: T.startH(target.name), request: card ? '' : (C.title || ''), sub: target.label || '', go: T.startGo,
 		onGo: async (sh) => {
-			const o = await req('POST', 'call/open', { topic: target.topic, with: target.with });
+			const o = await req('POST', 'call/open', card ? { card, with: target.with } : { topic: target.topic, with: target.with });
 			await joinRoom(o.room, sh.media, sh, opener);
 		},
 	});
@@ -476,34 +491,42 @@ function mountPref() {
 	bar.appendChild(link);
 }
 
-/* the pills on the cards (only when the forum did not print its own buttons) */
+/* the pills (board 18, part D): on the author row of EVERY answer whose author switched video on, and of the opening message
+   when its author did; shown to guests too (the press asks them to enter first). A row that already has one is left alone. */
 function injectButtons() {
-	if (!st.member || !C.topic || !Array.isArray(C.targets) || !C.targets.length || document.querySelector('[data-nlf-call]')) return;
+	if (!C.topic || !Array.isArray(C.targets) || !C.targets.length) return;
 	for (const t of C.targets) {
-		const host = t.reply ? document.querySelector('#r' + (t.reply | 0) + ' .nlf-acts') : document.querySelector('.nlf-op .nlf-acts');
-		if (!host) continue;
-		const b = h('button', { type: 'button', cls: 'nlf-pill nlfc-pill', 'data-nlf-call': C.topic | 0, 'data-nlf-with': t.with | 0, 'aria-label': T.btnWith(t.name) }, icon('video', 18), h('span', { text: T.btn }));
-		host.insertBefore(b, host.querySelector('.nlf-push'));
+		const rows = [];
+		if (t.op) rows.push(document.querySelector('.nlf-op .nlf-arow'));
+		for (const id of (Array.isArray(t.replies) ? t.replies : (t.reply ? [t.reply] : []))) rows.push(document.querySelector('#r' + (id | 0) + ' .nlf-arow'));
+		for (const row of rows) {
+			if (!row || row.querySelector('[data-nlf-call]')) continue;
+			const b = h('button', { type: 'button', cls: 'nlf-pill nlfc-pill nlfm-vpill', 'data-nlf-call': C.topic | 0, 'data-nlf-with': t.with | 0, 'aria-label': T.btnWith(t.name) }, icon('video', 17), h('span', { text: T.btn }));
+			row.insertBefore(b, row.querySelector(':scope > time'));
+		}
 	}
 }
 
 function onPress(ev) {
-	const b = ev.target.closest('[data-nlf-call]');
+	const b = ev.target.closest('[data-nlf-call],[data-nlf-callcard]');
 	if (!b) return;
 	ev.preventDefault();
+	const card = parseInt(b.getAttribute('data-nlf-callcard'), 10) || 0;
 	const topic = parseInt(b.getAttribute('data-nlf-call'), 10) || 0, w = parseInt(b.getAttribute('data-nlf-with'), 10) || 0;
-	if (!topic || !w || st.inCall) return;
+	if ((!topic && !card) || !w || st.inCall) return;
 	const known = (C.targets || []).find((t) => (t.with | 0) === w) || {};
-	startWith({ topic, with: w, name: known.name || b.getAttribute('data-nlf-name') || '', label: known.label || b.getAttribute('data-nlf-label') || '' }, b);
+	startWith({ topic, card, with: w, name: known.name || b.getAttribute('data-nlf-name') || '', label: known.label || b.getAttribute('data-nlf-label') || '' }, b);
 }
 
 async function boot() {
 	if (!C || !C.rest || typeof fetch !== 'function' || window.__nlfcall) return;
 	window.__nlfcall = true;
 	document.addEventListener('click', onPress);
+	injectButtons(); // the pills need no state: a guest sees them too
 	try { await loadState(); } catch (e) { return; } // the forum is closed for this visitor: nothing to show
-	injectButtons();
 	mountPref();
+	const pend = st.member && !/^#call=/.test(location.hash || '') ? takePending() : null;
+	if (pend) startWith(pend, document.querySelector(pend.card ? '[data-nlf-callcard]' : '[data-nlf-with="' + (pend.with | 0) + '"]'));
 	fromHash();
 	window.addEventListener('hashchange', fromHash);
 	if (st.member) {
