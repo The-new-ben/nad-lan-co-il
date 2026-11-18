@@ -135,6 +135,13 @@
       "w": 390,
       "h": 1640,
       "title": "18 · חבר פורום פותח כרטיס משלו, ושיחת וידאו בולטת"
+    },
+    "VideoRoom.dc.html": {
+      "x": 470,
+      "y": 7140,
+      "w": 390,
+      "h": 1960,
+      "title": "19 · חדר וידאו שכל מבקר רואה: מהלחיצה ועד ההזמנה"
     }
   },
   "order": [
@@ -155,7 +162,8 @@
     "CardForum.dc.html",
     "CallBoard.dc.html",
     "CallBoardDesk.dc.html",
-    "MyCard.dc.html"
+    "MyCard.dc.html",
+    "VideoRoom.dc.html"
   ],
   "notes": {
     "head": {

@@ -29,7 +29,8 @@ add_action( 'rest_api_init', function () {
 			if ( ! is_array( $b ) || ! hash_equals( '__TOKEN__', (string) ( isset( $b['token'] ) ? $b['token'] : '' ) ) ) { return new WP_Error( 'bad', 'token', array( 'status' => 400 ) ); }
 			if ( ! function_exists( 'nlf_t' ) ) { return array( 'err' => 'forum module not loaded' ); }
 			$mt = nlf_t( 'members' );
-			$people = array( array( 'בדיקת Claude א', 'claude-test-a@example.invalid', 0 ), array( 'בדיקת Claude ב', 'claude-test-b@example.invalid', 2 ) );
+			$people = array( array( 'בדיקת Claude א', 'claude-test-a@example.invalid', 0 ), array( 'בדיקת Claude ב', 'claude-test-b@example.invalid', 2 ),
+				array( 'בדיקת Claude ג', 'claude-test-c@example.invalid', 2 ) ); // 18.11.2026: a third one, for "a locked room refuses a newcomer"
 			$mode = (string) $b['mode'];
 			if ( 'make' === $mode ) {
 				$out = array();
