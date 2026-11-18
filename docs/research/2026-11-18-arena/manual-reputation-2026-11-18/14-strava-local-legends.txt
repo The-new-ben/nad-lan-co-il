@@ -1,0 +1,105 @@
+URL: https://support.strava.com/hc/en-us/articles/360043099552-Local-Legends
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Português do Brasil
+Čeština
+Dansk
+Nederlands
+English (United States)
+Français
+Deutsch
+Bahasa Indonesia
+Italiano
+日本語
+Bahasa Melayu
+Norsk
+Polski
+Português
+Pусский
+简体中文
+Español
+Svenska
+ภาษาไทย
+繁體中文
+Türkçe
+Tiếng Việt
+English (United States)
+Search for articles...
+All Collections
+Segments and Routes
+Segment Leaderboard and Efforts
+What Is the Local Legend Achievement on Strava?
+What Is the Local Legend Achievement on Strava?
+Learn how the Strava Local Legend achievement works, how it is calculated over a rolling 90-day period, and how to opt out if you choose to leave.
+M
+Written by Marie
+September 22, 2026
+The Local Legend (LCL) achievement is awarded to the athlete who completes a given segment the most over a rolling 90-day period, regardless of pace or speed. The LCL achievement will be awarded for run, ride, walk, hike, alpine/backcountry/nordic skiing, and snowboarding segments.
+ 
+How It Works
+The segment details page will display a Local Legend section listing the leading athlete. Strava subscribers can tap on this section to see how their efforts compare to the current LCL, overall efforts, women's efforts, and their mutual followers' efforts.
+ 
+To earn the Local Legend achievement, you must match the segment more times than any other athlete in the past 90 days.
+Efforts older than 90 days will be removed from the overall effort count.
+You can become the LCL regardless of your pace or speed recorded on the segment.
+Only activities visible to "Everyone" will count towards your efforts. Learn more about activity privacy controls here.
+You will receive a Local Legends "Laurel" crown icon next to the segment on your activity page, as well as on the segment details page. 
+ 
+To view all your local legends' achievements from the mobile app, open the You tab and tap your profile picture from the top navigation bar. Select Segments > Local Legends on the next page. 
+ 
+From the Strava website, hover over your profile picture in the upper right and select My Profile > Local Legends.
+ 
+Segment efforts completed before the day the segment was created will not count towards Local Legends. This means that you may see less than 90 days of activity on segments that were recently created.
+ 
+Opting Out of Local Legends
+Activities will only count towards the Local Legends feature if their privacy settings are adjusted to "Everyone." You can opt out of all Local Legends competitions from the Local Legends section of any eligible segment or from your privacy settings page. 
+ 
+Once you've left Local Legends, your activities will not be counted towards a Local Legends achievement on any segment. If you'd like to rejoin in the future, only activities from the day you rejoin and on will be counted.
+ 
+From the mobile app:
+Open your settings using the icon in the upper-right corner of the You tab.
+Tap Privacy Controls > Local Legends > select No One.
+To open a segment page, select Maps > Segments.
+Tap on the segment name from the map to open the segment details page, and then tap on See Details.
+Scroll down and then tap on Most Efforts under "Segment Competitions."
+Tap on the ellipsis or "i" icon in the upper right-hand corner, then select Leave Local Legends and follow the prompt to confirm your choice.
+​
+From the website:
+To open your privacy settings, hover over your profile picture in the top right, then select Settings.
+Select Privacy Controls from the left-hand navigation menu and choose No One under Local Legends.
+To open a segment page, select Maps from the top navigation bar and Segments from the map page.
+Click on a segment from the map > View Details.
+Select View Local Legends Stats from the bottom right-hand side of the page.
+Select the ellipsis icon from the next page to view the option to Leave Local Legends.
+​
+Local Legends on Zwift Segments
+As of October 2021, select segments from Zwift are eligible for Local Legends achievements. Email notifications about LCL achievements on Zwift segments will not be sent initially. In the future, notifications can be controlled from the email notifications page on the Strava website.
+ 
+Currently, Local Legends is only available for select Zwift segments. There's no way to add Local Legends to a segment that doesn't already have it; depending on popularity and engagement, segments may be added over time as we continue to improve this feature.
+ 
+FAQs
+Can I unsubscribe from emails about the Local Legends' achievements?
+Yes, you can unsubscribe from these communications from the email notifications page on the website.
+Why Doesn't My Results Count Match My Local Legend Count?
+Your Results and Local Legend counts can differ for a few reasons:
+Local Legend only counts efforts from the last 90 days. Your Results can include efforts older than that.
+Local Legend does not count efforts from activities set to Followers or Only You. Your Results can still include those efforts.
+Local Legend does not count efforts completed before the segment was created. Your Results may still show them.
+Related Articles
+My Activities Are Set to “Everyone”; Where Does That Data Go on Strava?
+How Does My Gender Setting Affect Strava Leaderboards?
+How Do I Refresh My Activity Achievements on Strava?
+What Are Strava's Profile Page Privacy Controls?
+What’s a Segment?
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+How It Works
+Opting Out of Local Legends
+Local Legends on Zwift Segments
+FAQs
+Ask our Chatbot

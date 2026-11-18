@@ -1,0 +1,65 @@
+URL: https://www.ebay.com/help/account/changing-account-settings/feedback-scores-stars-reputation?id=4204
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Home
+Account
+Settings
+Feedback profiles
+3 min article
+Feedback profiles
+On this page
+Viewing a feedback profile
+Making your feedback public or private
+Frequently asked questions
+You can see how eBay members have been rated by other eBay users by viewing their feedback profile.
+Are you looking to leave feedback? Please see our articles:
+Leaving feedback for sellers
+Leaving feedback for buyers
+Each time you buy or sell something, you have an opportunity to leave feedback about your experience. Feedback consists of a positive, negative, or neutral rating, along with a short comment and the option to upload up to 5 images. Feedback helps buyers and sellers build their reputation on eBay and this is why "verified purchase" is displayed next to feedback. This information is available in each member's feedback profile, and helps eBay users buy and sell with confidence.
+If you’ve recently left feedback and you’d like to change it, you can find out how to add follow-up comments or request a feedback revision in our article on viewing and changing feedback left for sellers.
+Viewing a feedback profile
+You can view a member’s feedback profile - including your own - by selecting the number in brackets next to their username. This number is their current feedback score.
+On the feedback profile page, you'll see a member’s:
+Overall feedback score
+Percentage of positive ratings
+Recently received feedback (including comments and images)
+Detailed seller ratings
+eBay registration date
+You can also find a link to contact the member, and if the member is a seller, a link to view other items they are selling.
+Tip
+Once you reach a feedback score of 10, you’ll earn a yellow star which is displayed on your profile. As your feedback score increases, the star changes color, all the way to a silver shooting star for a score above 1,000,000.
+Making your feedback public or private
+We strongly encourage everyone to keep all their feedback information public. It helps you earn the trust of other eBay members, increasing the likelihood that they’ll trade with you.
+If you want to sell on eBay, your feedback must be visible to everyone.
+If you choose to make your feedback private, you won’t be able to sell items on eBay and the feedback you’ve left and received will be hidden from other members. However, your overall number of positive, neutral, and negative feedback ratings will still be displayed.
+Here’s how to change who can see your feedback:
+Go to your feedback profile- opens in new window or tab.
+Scroll down to the All received Feedback section and set the toggle to either Visible to everyone or Hide.
+Frequently asked questions
+My trading partner won't leave me feedback. What should I do?
+I received negative feedback that I don't think is fair. What can I do?
+I received feedback that violates eBay policies. What should I do?
+Can I change feedback I left for someone else?
+Top Takeaway
+To sell on eBay, all your feedback information must be public.
+Was this article helpful for you?
+Related help topics
+See other articles in:
+Account
+Settings
+You might also be interested in:
+Push Notifications
+You can keep track of your eBay activity without having to be on the eBay site by setting up notifications.
+2 min article
+Changing the address on your eBay account
+Your primary shipping address is the default we’ll provide to sellers when you buy an item. However, you can always select a different address, or add a new one, during checkout.
+2 min article
+Closing your account
+If you close your eBay account, you’ll no longer be able to sell on the site or access My eBay. You’ll also lose your feedback as well as your purchase and sales history.
+2 min article
+Changing your username
+Your username or user ID is the unique name you chose when you created your eBay account. It’s the name other eBay members see when you’re buying or selling with them.
+1 min article
+Need more help?
+Get the help you need from our automated assistant, or contact an agent
+Contact us

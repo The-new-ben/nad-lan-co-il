@@ -1,0 +1,49 @@
+URL: https://support.google.com/maps/answer/6225851?hl=en
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Local Guides points, levels & badging
+As a Local Guide, you earn points when you share reviews, photos, and knowledge on Google Maps. Those points lead to higher levels of the program, as well as benefits like early access to Google features and invites to special events. At Level 4, you also unlock your first Local Guides badge, which helps your contributions to places get noticed.
+To make sure you’re signed up for updates, review the email preferences on your Local Guides settings page.
+Local Guides points
+View your contributions
+Earn points by contributing content to Google Maps. Score a place with ratings, describe your experience with reviews, share photographs and videos, provide insights with answers, respond to questions about a place, update information with place edits, add missing places, or verify information by checking facts.
+Maps contribution	Points earned
+Review	10 points per review
+Review with more than 200 characters	10 bonus points per review
+Rating	1 point per rating
+Photo	5 points per photo
+Photo tags	3 points per tag
+Video	7 points per video
+Caption (In photo update)	10 points per caption
+Answer	1 point per answer
+Respond to Q&As	3 points per response
+Edit	5 points per edit
+Place added	15 points per place added
+Road added	15 points per road added
+Fact checked	1 point per fact checked
+Reported incorrect	1 point per item reported incorrect
+Local Guides levels
+Reach higher levels as you earn points for your contributions. The Local Guides badge  shown on a user's contributions indicates they made enough contributions to reach Level 4 with at least 250 points.
+Level	Points
+Level 1	0 points
+Level 2	15 points
+Level 3	75 points
+Level 4	250 points
+Level 5	500 points
+Level 6	1,500 points
+Level 7	5,000 points
+Level 8	15,000 points
+Level 9	50,000 points
+Level 10	100,000 points
+Please note your points and level can take up to 24 hours to update. Points do not expire, though they may decrease if content is removed for violating our policies. Remain an active contributor on Google Maps to be eligible for rewards and early access to new features.
+Computer Android phone & tabletiPhone & iPad
+Program requirements
+Find your Local Guides level
+Learn more about rewards
+Earn the Local Guides badge
+Add to Google Maps and earn badges
+Private reviews, edits, or photos
+My points went down. What happened?
+Do my points expire?
+Give feedback about this article
+Was this helpful?YesNo

@@ -1,0 +1,353 @@
+URL: https://stackoverflow.com/help/badges
+Retrieved: 2026-11-18 17:24 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Stack Overflow
+Help center
+Badges
+Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
+All
+Earned
+Unearned
+Gold
+Silver
+Bronze
+Question Badges
+ Altruist
+First bounty you manually award on another person's question
+11.4k awarded
+ Benefactor
+First bounty you manually award on your own question
+55.3k awarded
+ Curious
+Ask a well-received question on 5 separate days, and maintain a positive question record
+425k awarded
+ Inquisitive
+Ask a well-received question on 30 separate days, and maintain a positive question record
+43k awarded
+ Socratic
+Ask a well-received question on 100 separate days, and maintain a positive question record
+5.9k awarded
+ Favorite Question
+Question saved by 25 users
+70.5k awarded
+ Stellar Question
+Question saved by 100 users
+10.6k awarded
+ Investor
+First bounty you offer on another person's question
+24.5k awarded
+ Nice Question
+Question score of 10 or more
+870.4k awarded
+ Good Question
+Question score of 25 or more
+306.1k awarded
+ Great Question
+Question score of 100 or more
+60.3k awarded
+ Popular Question
+Question with 1,000 views
+8.6m awarded
+ Notable Question
+Question with 2,500 views
+4.3m awarded
+ Famous Question
+Question with 10,000 views
+1.2m awarded
+ Promoter
+First bounty you offer on your own question
+104.9k awarded
+ Scholar
+Ask a question and accept an answer
+2.6m awarded
+ Student
+First question with score of 1 or more
+3.3m awarded
+Answer Badges
+ Enlightened
+First to answer and accepted with score of 10 or more
+550.5k awarded
+ Explainer
+Edit and answer 1 question (both actions within 12 hours, answer score > 0)
+78k awarded
+ Refiner
+Edit and answer 50 questions (both actions within 12 hours, answer score > 0)
+2.7k awarded
+ Illuminator
+Edit and answer 500 questions (both actions within 12 hours, answer score > 0)
+194 awarded
+ Favorite Answer
+Answer saved by 25 users
+1.9k awarded
+ Stellar Answer
+Answer saved by 100 users
+101 awarded
+ Generalist
+Provide non-wiki answers of 15 total score in 20 of top 40 tags
+2.6k awarded
+ Guru
+Accepted answer and score of 40 or more
+191.8k awarded
+ Lifejacket
+Answer score of 5 or more to a question score of -2 or less that goes on to receive a score of 2 or more
+16.3k awarded
+ Lifeboat
+Answer score of 20 or more to a question score of -3 or less that goes on to receive a score of 3 or more
+1.6k awarded
+ Nice Answer
+Answer score of 10 or more
+1.8m awarded
+ Good Answer
+Answer score of 25 or more
+645.5k awarded
+ Great Answer
+Answer score of 100 or more
+125k awarded
+ Populist
+Highest scoring answer that outscored an accepted answer with score of more than 10 by more than 2x
+32k awarded
+ Revival
+Answer more than 30 days after a question was asked as first answer scoring 2 or more
+640.3k awarded
+ Necromancer
+Answer a question more than 60 days later with score of 5 or more
+1.0m awarded
+ Self-Learner
+Answer your own question with score of 3 or more
+225.1k awarded
+ Teacher
+Answer a question with score of 1 or more
+2.1m awarded
+ Tenacious
+Zero score accepted answers: more than 5 and 20% of total
+68.9k awarded
+ Unsung Hero
+Zero score accepted answers: more than 10 and 25% of total
+28k awarded
+Participation Badges
+ Autobiographer
+Complete "About Me" section of user profile
+3.7m awarded
+ Caucus
+Visit an election during any phase of an active election and have enough reputation to cast a vote
+1.0m awarded
+ Constituent
+Vote for a candidate in the final phase of an election
+322.9k awarded
+ Commentator
+Leave 10 comments
+1.2m awarded
+ Pundit
+Leave 10 comments with score of 5 or more
+14.4k awarded
+ Enthusiast
+Visit the site each day for 30 consecutive days. (Days are counted in UTC.)
+328.6k awarded
+ Fanatic
+Visit the site each day for 100 consecutive days. (Days are counted in UTC.)
+44.8k awarded
+ Mortarboard
+Earn at least 200 reputation (the daily maximum) in a single day
+44k awarded
+ Epic
+Earn 200 daily reputation 50 times
+776 awarded
+ Legendary
+Earn 200 daily reputation 150 times
+313 awarded
+ Precognitive
+Followed the Area 51 proposal for this site before it entered the commitment phase
+ Beta
+Voted 10 times, added 3 posts score > 0, and visited the site on 3 separate days during the private beta
+2.5k awarded
+ Quorum
+One post with score of 2 on meta
+30.5k awarded
+ Convention
+10 posts with score of 2 on meta
+2.4k awarded
+ Talkative
+Post 10 messages, with 1 or more starred, in chat
+12.3k awarded
+ Outspoken
+Post 10 messages in chat starred by 10 different users
+1.5k awarded
+ Yearling
+Active member for a year, earning at least 200 reputation
+3.9m awarded
+Tag Badges
+ Bronze Badge
+You must have a total score of 100 in at least 20 non-community wiki answers to achieve this badge.
+192.5k awarded
+ Silver Badge
+You must have a total score of 400 in at least 80 non-community wiki answers to achieve this badge.
+38.9k awarded
+ Gold Badge
+You must have a total score of 1000 in at least 200 non-community wiki answers to achieve this badge.
+12.4k awarded
+Moderation Badges
+ Citizen Patrol
+First flagged post
+263.4k awarded
+ Deputy
+Raise 80 helpful flags
+14.7k awarded
+ Marshal
+Raise 500 helpful flags
+3.7k awarded
+ Civic Duty
+Vote 300 or more times
+135.9k awarded
+ Cleanup
+First rollback
+69.2k awarded
+ Constable
+Served as a pro-tem moderator for at least 1 year or through site graduation
+ Sheriff
+Served as an elected moderator for at least 1 year
+58 awarded
+ Critic
+First down vote
+605.9k awarded
+ Custodian
+Complete at least one review task. This badge is awarded once per review type
+1.2m awarded
+ Reviewer
+Complete at least 250 review tasks. This badge is awarded once per review type
+46.3k awarded
+ Steward
+Complete at least 1,000 review tasks. This badge is awarded multiple times per review type
+24.4k awarded
+ Disciplined
+Delete own post with score of 3 or higher
+16k awarded
+ Editor
+First edit
+3.6m awarded
+ Strunk & White
+Edit 80 posts
+20.4k awarded
+ Copy Editor
+Edit 500 posts (excluding own or deleted posts and tag edits)
+4.1k awarded
+ Electorate
+Vote on 600 questions and 25% or more of total votes are on questions
+30.6k awarded
+ Excavator
+Edit first post that was inactive for 6 months
+187.5k awarded
+ Archaeologist
+Edit 100 posts that were inactive for 6 months
+3.1k awarded
+ Organizer
+First retag
+150.8k awarded
+ Peer Pressure
+Delete own post with score of -3 or lower
+364.9k awarded
+ Proofreader
+Approve or reject 100 suggested edits
+20.9k awarded
+ Sportsmanship
+Up vote 100 answers on questions where an answer of yours has a positive score
+3.4k awarded
+ Suffrage
+Use 30 votes in a day
+62.1k awarded
+ Supporter
+First up vote
+2.2m awarded
+ Synonymizer
+First approved tag synonym
+1.3k awarded
+ Tag Editor
+First tag wiki edit
+27k awarded
+ Research Assistant
+Edit 50 tag wikis
+352 awarded
+ Taxonomist
+Create a tag used by 50 questions
+15.9k awarded
+ Vox Populi
+Use the maximum 40 votes in a day
+42k awarded
+Staging Ground Badges
+ Daily Practice
+Reach the daily goal of 50 Staging Ground questions reviewed
+488 awarded
+ Eager Learner
+Leave 2 comments in Staging Ground as an asker
+10.7k awarded
+ First Review
+Review your first post in Staging Ground
+6.1k awarded
+ Graduate
+Ask one question successfully on the main site from Staging Ground
+14.5k awarded
+ Guide
+Review 10 posts in Staging Ground
+1.4k awarded
+ Instructor
+Review 250 posts in Staging Ground
+138 awarded
+ Champion Reviewer
+Review 1,000 posts in Staging Ground
+97 awarded
+ Polisher
+Post 2 questions on the main site from Staging Ground after making minor edits to your draft
+8 awarded
+ Steadfast Reviewer
+Review at least one question per day for 7 consecutive days in Staging Ground
+2.2k awarded
+ Swift Editor
+Edit to your own Staging Ground question within 5 hours of receiving feedback
+18.8k awarded
+ Variety Reviewer
+Review questions from 50 distinct tags in Staging Ground
+4.3k awarded
+Other Badges
+ Announcer
+Share a link to a post later visited by 25 unique IP addresses
+341.2k awarded
+ Booster
+Share a link to a post later visited by 300 unique IP addresses
+50.6k awarded
+ Publicist
+Share a link to a post later visited by 1000 unique IP addresses
+14.6k awarded
+ Code Scientist
+Completed the joint Kaggle - Stack Overflow coding challenge
+47 awarded
+ Informed
+Read the entire tour page
+3.9m awarded
+ Not a Robot
+Met a Stack Overflow employee at an event where Stack Overflow was an organizer or participant with 50 or more attendees
+1.1k awarded
+ Staging Ground Beta
+Reviewed at least one question and gave feedback during a Staging Ground Beta test round
+79 awarded
+Community Badges
+ Challenge Coder
+Won 1 coding challenge
+482 awarded
+ Challenge Creator
+Authored a coding challenge
+9 awarded
+ Challenge Hacker
+Won 10 coding challenges
+4 awarded
+ Challenge Virtuoso
+Won 20 coding challenges
+Retired Badges
+ Analytical
+Visited every section of the FAQ
+43.4k awarded
+ Census
+Completed the annual Stack Overflow survey; your responses are anonymous
+187.4k awarded
+ Documentation Beta
+Contributed 3+ substantive pieces of documentation during the private beta
+290 awarded
+ Documentation Pio

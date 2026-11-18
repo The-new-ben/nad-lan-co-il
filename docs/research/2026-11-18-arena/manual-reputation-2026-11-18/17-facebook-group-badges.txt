@@ -1,0 +1,86 @@
+URL: https://www.facebook.com/help/337881706729661
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Help Center
+English (US)
+Using Facebook
+Creating an Account
+Your Profile
+Friending
+Facebook Dating
+Your Home Page
+Messaging
+Reels
+Facebook stories
+Photos
+Videos
+Gaming
+Pages
+Interact with Pages
+Create and manage a Facebook Page
+Manage Page settings
+Customize a Page
+Publishing
+Blocking and moderation
+Messaging
+Channels
+Insights
+Troubleshooting
+Groups
+Join and Choose Your Settings
+Post, Participate and Privacy
+Create, Engage and Manage Settings
+Manage People and Content
+Pages in Groups
+Fix a Problem
+Events
+Fundraisers and Donations
+Meta Pay
+Marketplace
+Apps
+Facebook Mobile Apps
+Accessibility
+Login, Recovery and Security
+Managing Your Account
+Privacy and Safety
+Policies
+Reporting
+Using Facebook
+Pages
+Differences between Profiles, Pages and Groups on Facebook
+Copy link
+More
+Android App Help
+Basic Mobile Browser Help
+Computer Help
+iPad App Help
+iPhone App Help
+Mobile Browser Help
+Facebook Lite App Help
+More
+Profiles
+A profile is a place on Facebook where you can share information about yourself, such as your interests, photos, videos, current city and hometown.
+Profiles can also be places where creators connect with their fans by turning on pro mode. When a creator turns on pro mode, anyone can follow their profile and see the creator’s public content in their Feed. If you’re a creator with pro mode on your profile, you can still share information and posts to your friends only or to a public audience. To see your profile, click or tap your name or profile picture at the top of Facebook.
+Pages
+You must have a profile to create a Page or help manage one. Pages are places on Facebook where artists, public figures, businesses, brands, organizations and nonprofits can connect with their fans or customers. When someone likes or follows a Page on Facebook, they can start seeing updates from that Page in their Feed.
+Groups
+You must have a profile to create a group or help manage one. Groups are a place to communicate about shared interests with certain people. You can create a group for anything — your family reunion, your after-work sports team, your book club — and customize the group's privacy settings depending on who you want to be able to join and see the group. When you join a group on Facebook, you start seeing content from that group in your Feed.
+Related Articles
+How additional profiles work in Facebook groups
+How to switch between your Facebook Page and profile
+About additional Facebook profiles
+About additional Facebook profiles
+Merge 2 Facebook Pages
+About
+Privacy
+Terms and Policies
+Ad Choices
+Careers
+Cookies
+Create Ad
+Create Page
+© 2026 Meta
+Was this helpful?
+Yes
+No
+Feedback

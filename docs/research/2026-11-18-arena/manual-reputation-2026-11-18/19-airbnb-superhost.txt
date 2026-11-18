@@ -1,0 +1,98 @@
+URL: https://www.airbnb.com/help/article/829
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Help Center
+Search
+Suggestions will show after typing in the search input. Use the up and down arrows to review. Use enter to select. If the selection is a phrase, that phrase will be submitted to search. If the suggestion is a link, the browser will navigate to that page.
+Home
+All topics
+About hosting
+Ways to host
+Superhosts
+What's required to be a Superhost
+How-to • Home host
+What's required to be a Superhost
+Our top-performing hosts are called Superhosts. In addition to benefits like added visibility and access to exclusive rewards, their listings and profile feature a unique badge that lets others know about their exceptional hosting.
+In this article
+Requirements to be a Superhost
+When Superhost status is evaluated
+If you meet the Superhost requirements
+If you lose your Superhost status
+Co-hosts and hosts of experiences and services aren't evaluated for Superhost status
+Requirements to be a Superhost
+To be a Superhost, hosts must be the listing owner of a home listing with an account in good standing and need to have met the following criteria:
+Hosted at least 10 reservations, or 3 reservations that total at least 100 nights.
+Respond to 90% of new messages, and accept or decline new reservation requests, within 24 hours. Keep in mind declining new reservation requests doesn’t affect your Superhost status.
+Maintained a less than 1% cancellation rate, with exceptions for cancellations due to Major Disruptive Events or other valid reasons
+Maintained a 4.8 or higher overall rating (A review counts towards Superhost status when either both the guest and the host have submitted a review, or the 14-day window for reviews is over, whichever comes first).
+Note: This criteria only applies to listings where the host is the listing owner. Listings where the host is a co-host don’t count toward Superhost eligibility. Airbnb may suspend or withhold Superhost status for hosts with high review removal rates or high host-initiated cancellation rates.
+When Superhost status is evaluated
+Every 3 months, we evaluate your performance as a host over the past 12 months for all listings on your account. (However, you don’t have to host for the entire 12 months to qualify.) Each quarterly assessment is a 7-day period beginning on:
+January 1st
+April 1st
+July 1st
+October 1st
+What happens with guest ratings during assessment periods
+If a guest’s reservation happens during your performance evaluation and their review was published after your performance evaluation ended, their rating will count toward your average overall rating for the next period.
+If you meet the Superhost requirements
+If you meet the program requirements by the assessment date, you’ll automatically become a Superhost—no need to apply. We’ll notify you of your status at the end of each assessment period. It may take up to a week for your Superhost badge to show on your listing.
+Superhost status is only awarded 4 times a year. If you meet all of the Superhost requirements between assessment periods, it’ll be granted at the next assessment date as long as you’re still eligible at that time. 
+If you lose your Superhost status
+To earn Superhost status again, you can:
+Meet the Superhost program criteria at the next quarterly assessment
+Keep focusing on reliable, high-quality guest experiences
+Follow Airbnb’s Reviews Policy and Host Cancellation Policy
+Superhost status is reassessed every quarter.
+Co-hosts and hosts of experiences and services aren't evaluated for Superhost status
+To be evaluated for Superhost status, a host must be the listing owner of one or more home listings. Co-hosts, experience hosts, and service hosts aren’t included in this evaluation.
+Even if a co-host manages a home listing as the primary host, they can’t be considered for Superhost status based on that co-host role. However, if a co-host is also the listing owner of another home listing, they can be evaluated for Superhost status based on its performance. The performance of any listing in which they’re a co-host won’t contribute to their Superhost eligibility.
+Similarly, hosts of experiences and services aren’t eligible for Superhost status. If an experience or service host is also the listing owner of a home listing, they can qualify for Superhost status based on that home listing's performance. The performance of any of their experience or service listings won’t contribute to their Superhost eligibility.
+Did this help?
+Related articles
+How-to
+Understand the Superhost program
+Superhost listings include a badge, which hosts earn by going above and beyond to meet certain criteria.
+How-to • Home host
+Maintain Superhost status
+To maintain high standards, we check in every few months to ensure Superhosts still meet the program requirements.
+How-to • Home host
+Track your Superhost status
+Want to see how you’re doing on each of the Superhost requirements? Head to your host dashboard.
+Get help with your reservations, account, and more.
+Log in or sign up
+Site Footer
+Support
+Help Center
+Get help with a safety issue
+AirCover
+Travel insurance
+Anti-discrimination
+Disability support
+Cancellation options
+Report neighborhood concern
+Hosting
+Airbnb your home
+Airbnb your hotel
+Airbnb your experience
+Airbnb your service
+AirCover for Hosts
+Earnings Protection
+Hosting resources
+Community Center
+Hosting responsibly
+Airbnb-friendly apartments
+Join a free hosting class
+Find a co‑host
+Refer a host
+Airbnb
+2026 Summer Release
+Newsroom
+Careers
+Investors
+Gift cards
+Airbnb.org emergency stays
+Footer section
+© 2026 Airbnb, Inc.·Privacy·Terms·Your Privacy Choices
+English (US)
+₪
+ILS

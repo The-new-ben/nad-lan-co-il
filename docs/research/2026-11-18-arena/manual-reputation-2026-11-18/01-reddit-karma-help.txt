@@ -1,0 +1,34 @@
+URL: https://support.reddithelp.com/hc/en-us/articles/204511829-What-is-karma
+Retrieved: 2026-11-18 17:24 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Reddit Help Getting Started Basics
+What is karma?
+Updated 7 months ago
+Upvoting and downvoting on Reddit not only influences what content people see, it also impacts how much karma people have.
+Your karma is a reflection of the upvotes and downvotes you receive on posts and comments you've made. As people upvote your content, you'll notice an increase to your karma! 
+You can earn karma by participating in communities that you have an interest in and making posts and comments people enjoy and upvote. The more upvotes you get, the more karma you’ll receive. 
+Some things to keep in mind…
+Since it’s just an approximate reflection, upvotes and karma don’t have a 1:1 relationship.  
+Don't set out to accumulate karma; just set out to be a good contributor, and let your karma simply be a reflection of your legacy. (And please note: Reddit makes no guarantees about attaining Nirvana).
+Karma requirements
+If you’re new to Reddit and posting to a community for the first time, you might run into some issues such as your post not showing up. This could be due to a number of reasons, one reason being, some communities require a certain amount of karma before allowing you to post there.
+This measure is taken to prevent spamming within the community. If you need help building up some karma, check out r/NewToReddit’s list of communities that are especially welcoming. These communities are new user friendly and don't have high karma restrictions.
+Please note: r/NewToReddit is an unofficial help community and not an admin one. Learn more about our admin-run communities.
+ 
+How do I see how much karma I have?
+You can view your total karma on your profile at any time:
+On reddit.com
+Click your avatar in the top right corner, then View Profile. You’ll be able to see your post and comment karma in the profile card on the right if you hover over the total karma. 
+On iOS and Android
+Head over to your profile page and tap the About tab. From there, you’ll see a breakdown of your post and comment karma. 
+If you have more questions that aren’t covered in these FAQs, check out r/help. Someone may have had the same question, or you can ask a new one and a Reddit administrator or another member of the community will help you out.
+✕
+Was this article helpful?
+Yes No
+Get in touch
+Still have questions? If you didn't find what you need, contact us or visit r/modsupport or r/help for more help.
+Submit a request
+Still need help as a user?
+Come check out r/help and see if other Reddit users can help you out. Although this isn't an official Reddit community, you'll find admins here as well.
+Still need help as a moderator?
+Come check out r/modsupport! Here you can post mod tool-related questions for Reddit admins.

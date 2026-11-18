@@ -1,0 +1,86 @@
+URL: https://help.twitch.tv/s/article/channel-points-guide
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Skip to Navigation
+Skip to Main Content
+Search...
+Search
+Login
+Home
+Topics
+Topic Catalog
+Preferred Language
+English (US)
+AFFILIATE PROGRAM
+Channel Points Guide for Creators
+Channel Points is a customizable points program that lets streamers reward members of their community with perks, including a taste of benefits typically reserved for subscribers. It’s available to all monetized streamers.
+Channel Points comes with built-in, automated rewards that streamers can customize. Streamers can also create custom rewards that they fulfill on their own, such as “choose the next channel I raid", “set my background music”, or “make me dance on stream”.
+For viewers, Channel Points are a way to be recognized for all the ways they’re already supporting the community, from watching a channel to being part of a raid. The points they earn are specific to the channel and the points accumulate automatically when they’re logged in and watch. The more support they give, the more they’ll earn.
+Channel Points is a great way to get the community involved and we’re just getting started.
+If you are a viewer, please check out our Channel Point article for viewers.
+On this page:
+Channel Points Setup & Management
+Customizing your Channel Points
+Managing Channel Point Rewards
+Mods Can Help
+Frequently Asked Questions
+Channel Points Setup & Management
+Everyone loves points and rewards! Your loyal fans will now be able to earn points from doing what they’re already doing in your channel such as watching, following, or participating in a raid. The Channel Points program will add another layer of entertainment by letting your viewers spend their points on fun rewards, some of which give them a taste of benefits typically reserved for subscribers, that seamlessly add to their community experience.
+For details about the terms and conditions that apply to the Channel Points program, please see the Points Acceptable Use Policy.
+Channel Points is available to all monetized streamers. You can manage your program in the Creator Dashboard. If you do not wish to have Channel Points enabled on your channel, you may disable the feature completely by toggling the Enable Channel Points option.
+Currently, you'll only be able to set up 50 rewards.
+ 
+Customizing your Channel Points
+Channel Points may be customized by heading to your dashboard, clicking the Hamburger icon in the top left-hand corner and proceeding to Channel Points under the Viewer Rewards section.
+On this page you may customize the name of your Channel Points to reflect your brand and community. You’ll also see an option to upload a custom icon for your Channel Points that will be reflected on your channel page at the bottom of the chat window.
+ 
+Managing Channel Point Rewards
+Rewards can be customized via the Manage Rewards section under Channel Points in the Creator Dashboard. On this page you will see the option to add custom rewards, modify default rewards, and enable / disable both default and any custom rewards you have added.
+Default Rewards
+A default reward is a predefined reward such as allowing a user to choose an emote they wish to unlock or highlight a message in chat. Streamers do not need to do any additional work to fulfill these rewards, Twitch will do the heavy lifting!
+When editing a default reward you may upload a reward icon and the background color of the reward panel which will be shown to the user on the reward redemption menu.
+We included recommended costs for each default reward, but you can also turn on Smart Costs to automatically adjust your default rewards costs based on the size of your audience and the redemption rate of your rewards. This way, you won’t have to worry about updating your rewards costs as your audience grows. You can set your own cost or turn off Smart Costs anytime.
+Custom Rewards
+A custom reward is a reward which you fulfill yourself, whether it’s something as simple as giving the redeemer a shoutout, letting them join your next game or letting them choose who you raid next. For details about what can and cannot be offered as a custom reward, please see the Points Acceptable Use Policy.
+Custom rewards can be added via the Manage Rewards section under Channel Points in the Creator Dashboard. Once there you will see an option to Add New Custom Reward.
+Be sure to add a descriptive title and description of the custom reward so that it is clear to your community what they are redeeming. Similar to default rewards you may customize the reward icon and background color of the icon that will be displayed in the reward redemption menu on your channel page.
+With custom rewards you may also require the redeemer to enter text should they need to provide additional information to you (such as who to host or what their in-game name is to invite them for example). Responses will be shown in chat, so don’t ask for or provide any personal information.
+Custom rewards can also be set to have limits, allowing you to control how many claims you get during a stream. You can set a cooldown between redemptions (minimum of 1 minute, maximum of 7 days) and limit redemptions per stream or per user. You can enable all three limits for any custom reward on your channel. This is only available for rewards that are redeemable while your channel is live.
+We have some icons you can get started with, as well as other Channel Points best practices in our Making the Most of Channel Points article
+When a custom reward is redeemed, it will be visible in your Activity Feed on your Live Dashboard. Custom rewards redemptions are also directly integrated with Chat and Activity Feed, giving you a quick and easy way to scan what was requested in your community.
+From the activity feed, you can also access your rewards queue by selecting the pop-out icon. You can use this queue to view and manage all your custom reward requests.
+Mark as Complete when you’ve redeemed the request. If you choose to Reject, the points will be returned to the viewer. From here you can also Pause redemptions if you find you’re overwhelmed with requests, or you want to take a break when you’re live.
+ 
+Mods Can Help
+Mods can do things like: mark rewards as complete, reject rewards, refund points, report rewards as abusive, and pause redemptions for the channel(s) they moderate.
+To assist streamers with Channel Points, mods need to work from the rewards queue. Open the queue in a new window by:
+Clicking on the Channel Points reward balloon in chat.
+Typing in /requests in chat on desktop and web.
+Clicking on the rewards queue in chat settings under tasks.
+ 
+Was this article helpful?
+Trending Articles
+How to Create, Edit, and Share Clips
+On-Demand Content on Twitch
+About Auto Clips Alpha Testing
+Stream Recaps
+Clip Promotion Through Recaps Spotlight
+Follow us on X
+Contact Support
+About
+Careers
+Blog
+Press
+Brand
+Developers
+Platforms
+Prime
+Bits
+Extensions
+Advertise
+Music
+Partners
+Affiliates
+Mobile
+Legal
+Channel Points Guide for Creators

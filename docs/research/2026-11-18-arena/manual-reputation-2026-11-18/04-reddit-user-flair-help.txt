@@ -1,0 +1,130 @@
+URL: https://support.reddithelp.com/hc/en-us/articles/15484503095060-User-Flair
+Retrieved: 2026-11-18 17:24 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Reddit Help Moderation Tools Moderation tools
+User Flair
+Updated 7 days ago
+Reddit
+Account Status
+Getting Started
+Features & Experiences
+Rules & Reporting
+Privacy & Security
+Reddit Mobile App
+Getting Started
+Moderation Tools
+Moderation tools
+Accessing communities you moderate
+Mod Mode
+Moderation Tools - overview
+Moderation Queue
+Scheduled and Recurring Posts
+Temporary events
+User Management - banning and muting
+User Management - moderators and permissions
+User Management - approved users
+User Management - recruiting
+Mod Insights
+Rules
+Saved Responses
+Moderation Log
+What is the Contributor Quality Score?
+Safety Filters
+Ban evasion filter
+Crowd Control
+Reputation filter
+Adult content promoters filter
+Harassment filter
+Mature content filter
+Hidden reports
+Automations: Post & Comment Guidance Set-Up
+Reddit wikis for your communities
+Post Flair
+User Flair
+Grant User Flair
+Community settings
+Changing your Community Type
+Community Guide
+Mod Guide & Training Queue
+Community Status
+Custom Emojis
+Community Achievements
+Mod Distinguishing
+User profile panel
+Community highlights (sticky posts)
+Post Actions - Lock, NSFW, and Spoiler
+Community styling
+Mod mail
+Automoderator
+Beta tools and programs
+Community Engagement
+Advice & Resources
+Mod Programs and Initiatives
+Reddit.com iOS and Android Old Reddit
+User flair background and text color settings remain available on desktop web. We’re exploring ways to make flair easier to read while preserving customization. Future updates will be shared here when available.
+User flair is a special tagging system that moderators can enable in their community. It creates a visual flag next to a community member's username. Flair can help distinguish trusted members, highlight specialized areas of knowledge, or add fun, creative touches that fit your community. You can add up to 350 custom user flair templates.
+Jump to:
+Accessing user flair
+User flair settings
+Adding new user flair
+Editing and deleting user flair
+Granting flair
+Accessing user flair
+With the Manage flair permission:
+Go to your mod tools.
+Scroll down to the Settings section.
+Click Look and Feel.
+Select User flair.
+Back to top
+ 
+User flair settings
+When setting up user flair, you'll find these options:
+Flair - Allows you to activate the user flair tagging system for your community. Reddit users can choose whether or not their flair will appear in your community.
+Let users assign and edit - Allows community members to choose their own flair.
+Flair order for members - Customize the order of flair when members assign it themselves. Click into this option, hold down on the drag icon (), and move it to the correct spot. 
+Back to top
+Adding new user flair
+To add new flair:
+Select the Create button on the top right of your screen.
+When adding new user flair you can configure:
+Setup
+Flair text: Enter the text for the user flair and add any emojis you'd like to display inside the flair by clicking on the smiley face icon.
+Ensure emojis are enabled in the emoji management tool before setting up flairs with emojis.
+Note: Emojis set to mod-only won’t be available unless the flair template is also set to mod-only.
+Color
+Background color - Enable and select the color behind your flair text.
+Note: Background colors do not display on the Reddit mobile app. 
+Text color - Choose between dark or light text, depending on which is more visible on the background color.
+Options
+For mods only: Enable this if the flair should only be applied by moderators. Users won't be able to edit mod-only flair even if it is assigned to them.
+Allow user to edit: Enable if you'd like users to be able to modify the flair's text, emojis, or both. You can also limit the number of emojis that can be used.
+ 
+Back to top
+Editing and deleting user flair
+Editing user flair:
+Hover over the flair you want to edit.
+Select the edit icon () to the far right. 
+Deleting user flair:
+Hover over the flair you want to remove.
+Select the trash can icon () to the far right. 
+Back to top
+Granting flair
+You can grant flair to a user by:
+Using the grant user flair tool.
+Hovering over their username and selecting  Edit user flair from the hovercard options.
+Back to top
+Looking for more ways to personalize your community? Learn more about using personalization mod features and tools at Reddit for Community.
+Prev
+Post Flair
+Next
+Grant User Flair
+✕
+Was this article helpful?
+Yes No
+Get in touch
+Still have questions? If you didn't find what you need, contact us or visit r/modsupport or r/help for more help.
+Submit a request
+Still need help as a user?
+Come check out r/help and see if other Reddit users can help you out. Although this isn't an official Reddit community, you'll find admins here as well.
+Still need help as a moderator?
+Come check out r/modsupport! Here you can post mod tool-related questions for Reddit admins.

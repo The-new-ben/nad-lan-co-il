@@ -1,0 +1,157 @@
+URL: https://en.wikipedia.org/wiki/Wikipedia:Barnstars
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Wikipedia:Barnstars
+80 languages
+Project page
+Talk
+Read
+Edit source
+View history
+Tools
+Appearance hide
+Text
+Small
+Standard
+Large
+Width
+Standard
+Wide
+Color
+Automatic
+Light
+Dark
+From Wikipedia, the free encyclopedia
+For more background about the word "barnstar", see barnstar.
+Several terms redirect here. For other uses, see WP:BS (disambiguation) and WP:STAR (disambiguation).
+	This page in a nutshell: A barnstar is an award intended to show appreciation for an editor or for their contributions to Wikipedia, given by their fellow editors.	
+Shortcuts
+WP:*
+WP:BARN
+WP:STAR
+WP:BS
+Part of a Wikipedia help series on
+Wikipedia Awards
+Awarded by co-founder Jimmy Wales
+ Order of the Day
+ Wikimedian of the Year
+Awards by WikiProject
+ WikiCup
+ Editor of the Week
+ W Awards
+ Four Award
+ Triple Crown
+ Million Award
+ Impact •  Precious
+Barnstars and other personal awards
+ Barnstar awards (by topic)
+ Personal user awards
+ Personal greetings and cheers
+   Awards by country (2.0)
+ Ribbons
+Awards by number of edits
+ Service awards
+ Incremental service awards
+ Administrative service awards
+See also
+ WikiLove
+ Thanks!
+Reward board
+Contests
+ Merchandise giveaways
+ WikiProject Wikipedia Awards
+ Kindness Campaign
+vte
+On Wikipedia, the barnstar is an award intended to show appreciation for an editor or for their contributions to Wikipedia, given by their fellow editors.
+Some Wiki-based communities give their users an award called a "barnstar" as a continuation of the "barn raising" metaphor and the historic usage of barnstars, using a star anchor to represent the concept of the shared work experience. The concept of the barnstar as a Wiki award was created by SunirShah on MeatballWiki.[1][2] Web designers were invited to incorporate a similar barn star design into their project as Easter eggs.[3]
+Wiki barnstars were introduced to Wikipedia in December 2003 by MartinHarper;[4] since then, the concept has become ingrained in Wikipedia culture. These awards are also part of the Kindness Campaign and are meant to promote civility and WikiLove. They are meant as a form of warm fuzzy: they are free to give and are intended to bring joy to the recipient.
+Please remember that there are also other ways of showing simple appreciation to someone, such as a comment on the user's talk page, a "thank" notification from an article's history page, as well as alternative awards displayed in Personal user awards.
+How to give a barnstaredit
+To award someone a barnstar, just place it on their talk page, and explain why it was given. If you are sure the barnstar is appropriate, don't be shy!
+You can use the following text (in wiki markup):
+{{subst:barnstarname|1=message ~~~~|2=alt}}
+The barnstarname parameter should be replaced with the name of the barnstar you want to give.
+The message parameter should be replaced with the message you want to accompany the barnstar.
+The 2 parameter, when set to the value alt (2=alt), makes the barnstar appear as a Barnstar 2.0. If the parameter is omitted, the barnstar will appear as a Barnstar 1.0.
+See the Barnstars section for examples of barnstars.
+Adding a barnstar to this listedit
+For guidelines on how to create a Barnstar 2.0, see Wikipedia:Barnstars 2.0/Guidelines.
+If you don't feel any of these barnstar awards covers the topics you are concerned with, you can always design your own (using these as examples, if you like).
+If you have any questions concerning barnstars, or would like a barnstar to be added to this list, please see WikiProject Wikipedia Awards - a group of volunteers who help guide these pages.
+Barnstars are listed in chronological order, that is, in the order in which they were introduced to the English Wikipedia. Any new barnstars should be added to the bottom of the appropriate section. Note: Barnstars added without consensus may be removed.
+Barnstarsedit
+For barnstars awarded for editing certain article topics, see Wikipedia:Barnstars/Topical.
+These lists can be sorted by title by clicking the button next to "Title and description".
+When awarding a barnstar, please remember to provide relevant text as to why you are awarding it.
+General barnstarsedit
+These are barnstars which are not for any specific contribution or task. (For barnstars for specific types of contributions, see #Specific editing contributions, below.)
+Image	What to type	Title and description
+Barnstar 1.0	Barnstar 2.0 or alternate version
+	
+	{{subst:The Original Barnstar|1=message ~~~~}}
+{{subst:The Original Barnstar|1=message ~~~~|2=alt}}
+	The Original Barnstar
+The Original Barnstar, the first on Wikipedia, is given to recognize particularly fine contributions to Wikipedia, to let people know that their hard work is seen and appreciated.
+Introduced by MartinHarper on December 19, 2003, and later modified by Silsor on February 17, 2004.
+	
+	{{subst:The Editor's Barnstar|1=message ~~~~}}
+{{subst:The Editor's Barnstar|1=message ~~~~|2=alt}}
+	The Editor's Barnstar
+The Editor's Barnstar is awarded to individuals who display particularly fine decisions in general editing. This is occasionally known as the Exclusionists' Barnstar. Sometimes, expert text removal is the most effective editing.
+Introduced by Guanaco on June 18, 2004.
+	
+	{{subst:The Working Wikipedian's Barnstar|1=message ~~~~|2=gender}}
+{{subst:The Working Wikipedian's Barnstar|1=message ~~~~|2=gender|3=alt}}
+	The Working Wikipedian's Barnstar
+The Working Wikipedian's Barnstar may be awarded to those who work tirelessly and endlessly on the more laborious or repetitive of Wikipedia tasks.
+This barnstar's name can now be gender-specific by supplying 'm' for "Working man's", 'w' for "Working Woman's", 'n' for "Hard worker's" and 'wiki' for "Wikipedian's" in place of the gender option. Leaving this option blank will first determine if the user has a gender set, and if not, use the default "Wikipedian's".
+Introduced by Blankfaze on July 6, 2004.
+	
+	{{subst:The Minor Barnstar|1=message ~~~~}}
+{{subst:The Minor Barnstar|1=message ~~~~|2=alt}}
+	The Minor Barnstar
+Minor edits are often-overlooked, but essential, contributions to Wikipedia. The Minor Barnstar is awarded for making minor edits of the utmost quality.
+Introduced by Spencer195 on July 13, 2004, and slightly modified by MattTM.
+	
+	{{subst:The Random Acts of Kindness Barnstar|1=message ~~~~}}
+{{subst:The Random Acts of Kindness Barnstar|1=message ~~~~|2=alt}}
+	The Random Acts of Kindness Barnstar
+The Random Acts of Kindness Barnstar may be awarded to those that show a pattern of going the extra mile to be nice, without being asked.
+Introduced by TheCustomOfLife on August 2, 2004.
+	
+	{{subst:The Barnstar of Diligence|1=message ~~~~}}
+{{subst:The Barnstar of Diligence|1=message ~~~~|2=alt}}
+	The Barnstar of Diligence
+The Barnstar of Diligence may be awarded in recognition of a combination of extraordinary scrutiny, precision and community service.
+Introduced by Pedant on August 13, 2004, and touched up by Wapcaplet at the request of Neutrality.
+	
+	{{subst:The Surreal Barnstar|1=message ~~~~}}
+{{subst:The Surreal Barnstar|1=message ~~~~|2=alt}}
+	The Surreal Barnstar
+The Surreal Barnstar may be awarded to any Wikipedian who adds "special flavor" to the community by acting as a sort of wildcard.
+Introduced by Merovingian on August 14, 2004.
+	
+	{{subst:The Tireless Contributor Barnstar|1=message ~~~~}}
+{{subst:The Tireless Contributor Barnstar|1=message ~~~~|2=alt}}
+	The Tireless Contributor Barnstar
+The Tireless Contributor Barnstar may be awarded to especially tireless Wikipedians who contribute an especially large body of work without sacrificing quality.
+Introduced by Trainspotter on October 26, 2004.
+	
+	{{subst:The Barnstar of Good Humor|1=message ~~~~}}
+{{subst:The Barnstar of Good Humor|1=message ~~~~|2=alt}}
+	The Barnstar of Good Humor
+The Barnstar of Good Humor may be awarded to particularly light-spirited Wikipedians who, by their unshakably good humor, consistently and reliably lighten the mood, defuse conflicts, and generally make Wikipedia a better place to be.
+Introduced by Sango123 on April 26, 2005.
+ 	 	{{subst:The Left Half of the Half Barnstar|1=message ~~~~}}
+{{subst:The Right Half of the Half Barnstar|1=message ~~~~}}
+{{subst:The Left Half of the Half Barnstar|1=message ~~~~|2=alt}}
+{{subst:The Right Half of the Half Barnstar|1=message ~~~~|2=alt}}
+	The Half Barnstar
+The Half Barnstar is awarded for excellence in cooperation, especially for productive editing together with someone who holds diametrically opposed viewpoints. Both users get one half of the star; when cooperating they hold a full one.
+It was thought of in September 2006 by Radiant!, but not actually handed out until April 2007.
+	
+	{{subst:The Special Barnstar|1=message ~~~~}}
+{{subst:The Special Barnstar|1=message ~~~~|2=alt}}
+	The Special Barnstar
+The Special Barnstar may be awarded to a user as a gesture of appreciation for a specific reason, when there is no other barnstar that would feel appropriate.
+Introduced by Rhanyeia on May 14, 2007. Co-created with Suvi Y

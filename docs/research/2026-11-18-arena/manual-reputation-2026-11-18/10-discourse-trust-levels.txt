@@ -1,0 +1,119 @@
+URL: https://blog.discourse.org/2018/06/understanding-discourse-trust-levels/
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Blog
+/
+culture
+Understanding Discourse Trust Levels
+Jeff Atwood
+Jun 25, 2018 • 9 min read
+Originally published June 2018 by Jeff Atwood. Updated December 2025.
+💡
+This post has remained one of our most-visited resources for good reason: trust levels form the foundation of how Discourse communities scale healthy participation. While the core philosophy stays constant, we've made improvements to how communities can apply these principles. This updated guide covers trust levels, the trust philosophy and recent architectural changes that give community builders more flexibility.
+The user trust system is a fundamental cornerstone of Discourse. Trust levels are a way of…
+Sandboxing new users in your community so that they cannot accidentally hurt themselves, or other users while they are learning what to do.
+Granting experienced users more rights over time, so that they can help everyone maintain and moderate the community they generously contribute so much of their time to.
+As documented in Community Building on the Web, there is a natural progression for participants in any community.
+This seemed like a great starting point for our user trust system. Thus, Discourse offers five user trust levels. Your current trust level is visible on your user page, and a summary of all trust levels within your community is presented on your dashboard.
+The Big Shift: Group-Based Permissions
+Between 2023 and 2025, Discourse made a significant architectural change. While trust levels themselves remain unchanged, many features that previously required specific trust levels now use group-based permissions instead.
+The migration affects over 30 settings, transforming restrictions like "anonymous posting min trust level" into "anonymous posting allowed groups." This means admins can now grant specific permissions to custom groups without elevating users' entire trust level.
+Why This Matters:
+You can give a user access to shared drafts without making them TL4
+Custom groups (like "content_team" or "beta_testers") can have specific permissions
+Trust level groups are automatically generated, so TL-based access still works
+All existing settings were automatically migrated during the transition
+Read More:
+Changes coming to settings for giving access to features (from trust levels to groups)
+Many features in Discourse rely on a setting to give access by trust level. This has proven to be too inflexible over the years, so we are moving to a new practice of giving access to members of specific groups instead. We will now begin moving existing settings relying on trust levels so they instead rely on groups - see the list below that we are targeting. Some settings will remain trust level based where it makes sense. As we move along we will update the list and add replies here. Do let u…
+Discourse Meta
+tobiaseigen
+How do users learn about the trust system?
+Every new user gets a welcome PM mentioning the trust system and linking to this blog post, explaining that new users may be temporarily limited for safety reasons. They are also invited to start an optional interactive training conversation with discobot.
+Upon transition to trust level 1, users are sent a congratulatory PM which also links to this blog post and invites the user to fill out their user profile, or start a new topic.
+Upon transition to trust level 2, users a sent another congratulatory PM which also links to this blog post, as well as the tips and tricks blog post.
+Upon transition to trust level 3, users are sent a longer form PM describing their new abilities and inviting them to the lounge category to meet their fellow TL3 community members. This PM also links here to this blog post.
+(It's also worth mentioning that Discourse starts in "bootstrap mode" where the first 50 users who sign up are automatically granted TL1, and daily digests, to promote growth of the community via early adopters.)
+Trust Level 0 -- New
+By default, all new users start out at trust level 0, meaning trust has yet to be earned. These are visitors who just created an account, and are still learning the community norms and the way your community works. New users’ abilities are restricted for safety – both theirs and yours.
+(We also want to hide any “advanced” functionality from new users to make the UI less confusing for them as they gain more experience.)
+Users at trust level 0 cannot …
+Send personal messages to other users
+“Reply as new topic” via Link button (UI removed)
+Flag posts
+Post more than 1 image
+Post any attachments
+Post more than 2 hyperlinks in a post
+Have actual links in the ‘about me’ field of their profile (will be silently and temporarily converted to plain text)
+Mention more than 2 users in a post
+Post more than 3 topics
+Post more than 10 replies
+Edit their own posts after more than 24 hours
+Admins can change these limitations by searching for newuser and first_day in site settings.
+Trust Level 1 -- Basic
+At Discourse, we believe reading is the most fundamental and healthy action in any community. If a new user is willing to spend a little time reading, they will quickly be promoted to the first trust level.
+Get to trust level 1 by…
+Entering at least 5 topics
+Reading at least 30 posts
+Spend a total of 10 minutes reading posts
+Users at trust level 1 can…
+Use all core Discourse functions; all new user restrictions are removed
+Send PMs
+Upload images and attachments if enabled
+Edit wiki posts
+Flag posts
+Mute other users
+Admins can change these thresholds by searching for tl1 in site settings.
+Trust Level 2 -- Member
+Members keep coming back to your community over a series of weeks; they have not only read, but actively participated long and consistently enough to be trusted with full citizenship.
+Get to trust level 2 by…
+Visiting at least 15 days, not sequentially
+Casting at least 1 like
+Receiving at least 1 like
+Replying to at least 3 different topics
+Entering at least 20 topics
+Reading at least 100 posts
+Spend a total of 60 minutes reading posts
+Users at trust level 2 can…
+Use the “Invite others to this topic” button for one-click onboarding of new users to participate in topics
+Invite outside users to PMs making a group PM
+Daily like, edit, and flag limits increased by 1.5×
+Ignore other users
+Edit their own posts for up to 30 days after posting
+Admins can change these thresholds by searching for tl2 in site settings.
+Trust Level 3 -- Regular
+Regulars are the backbone of your community, the most active readers and reliable contributors over a period of months, even years. Because they're always around, they can be further trusted to help tidy up and organize the community.
+To get to trust level 3, in the last 100 days…
+Must have visited at least 50% of days
+Must have replied to at least 10 different non-PM topics
+Of topics created in the last 100 days, must have viewed 25% (capped at 500)
+Of posts created in the last 100 days, must have read 25% (capped at 20k)
+Must have received 20 likes, and given 30 likes.*
+Must not have received more than 5 spam or offensive flags (with unique posts and unique users for each, confirmed by a moderator)
+Must not have been suspended or silenced in the last 6 months
+* These likes must be across a minimum number of different users (1/5 the number), across a minimum number of different days (1/4 the number). Likes cannot be from PMs.
+All of the above criteria must be true to achieve trust level 3. Furthermore, unlike other trust levels, you can lose trust level 3 status. If you dip below these requirements in the last 100 days, you will be demoted back to Member. However, in order to avoid constant promotion/demotion situations, there is a 2-week grace period immediately after gaining Trust Level 3 during which you will not be demoted.
+Users at trust level 3 can…
+Recategorize and rename topics
+Access a secure category only visible to users at trust level 3 and higher
+Have all their links followed (we remove automatic nofollow)
+TL3 spam flags cast on TL0 user posts immediately hide the post
+TL3 flags cast on TL0 user posts in sufficient diversity will auto-silence the user and hide all their posts
+Make their own posts wiki (that is, editable by any TL1+ users)
+Daily like, edit, and flag limits increased by 2×
+Admins can change these thresholds by searching for TL3 in site settings.
+Trust Level 4 -- Leader
+Leaders are regulars who have been around forever and seen everything. They set a positive example for the community through their actions and their posts. If you need advice, these are the folks you turn to first, and they've earned the highest level of community trust, such that they are almost moderators within the community already.
+Get to trust level 4 by…
+Manual promotion by staff only
+(Possibly via a to-be-developed election system in the future)
+Users at trust level 4 can…
+Edit all posts
+Pin/unpin topic
+Close topics
+Archive topics
+Make topics unlisted
+Split and merge topics
+Reset topic bump date
+Daily like, edit, and flag limits increased by 3×
+Any TL4 flag cast on any p

@@ -142,6 +142,13 @@
       "w": 390,
       "h": 1960,
       "title": "19 · חדר וידאו שכל מבקר רואה: מהלחיצה ועד ההזמנה"
+    },
+    "Reputation.dc.html": {
+      "x": 940,
+      "y": 7140,
+      "w": 390,
+      "h": 1730,
+      "title": "20 · כוכבים ודרגות: מוניטין שנצבר מעזרה אמיתית"
     }
   },
   "order": [
@@ -163,7 +170,8 @@
     "CallBoard.dc.html",
     "CallBoardDesk.dc.html",
     "MyCard.dc.html",
-    "VideoRoom.dc.html"
+    "VideoRoom.dc.html",
+    "Reputation.dc.html"
   ],
   "notes": {
     "head": {

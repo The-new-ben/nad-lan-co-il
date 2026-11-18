@@ -1,0 +1,248 @@
+URL: https://meta.discourse.org/badges
+Retrieved: 2026-11-18 17:24 UTC, HTTP 403, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Skip to main content
+​
+​
+Sign Up
+Log In
+EN
+Home
+Topics
+Boards
+Badges
+More
+CATEGORIES
+News and Events
+Community Building
+General
+Product Support
+Contribute
+Customization
+Documentation
+Wiki
+Marketplace
+All categories
+TAGS
+official
+release-notes
+All tags
+Meta Branded
+​
+Badges
+Getting Started
+Autobiographer
+Filled out profile information
+3.5k awarded
+Certified
+Completed our new user tutorial
+2.1k awarded
+Editor
+First post edit
+9.2k awarded
+First Emoji
+Used an Emoji in a Post
+7.6k awarded
+First Flag
+Flagged a post
+470 awarded
+First Like
+Liked a post
+15.6k awarded
+First Link
+Added a link to another topic
+3.6k awarded
+First Mention
+Mentioned a user in a post
+5.1k awarded
+First Onebox
+Posted a link that was oneboxed
+5.1k awarded
+First Quote
+Quoted a post
+4.9k awarded
+First Reaction
+Reacted to the post
+1.7k awarded
+First Reply By Email
+Replied to a post via email
+780 awarded
+First Share
+Shared a post
+3.6k awarded
+Read Guidelines
+Read the community guidelines
+3.9k awarded
+Reader
+Read every reply in a topic with more than 100 replies
+1.6k awarded
+Wiki Editor
+First wiki edit
+355 awarded
+Licensed
+Completed our advanced user tutorial
+455 awarded
+Community
+Appreciated
+Received 1 like on 20 posts
+2.0k awarded
+Daydreamer
+Receive a vote on your topic
+836 awarded
+Enthusiast
+Visited 10 consecutive days
+4.4k awarded
+Out of Love
+Used 50 likes in a day
+113 awarded
+Promoter
+Invited a user
+214 awarded
+Scribe
+Wrote an article in the Community wiki
+238 awarded
+Solved!
+Have a reply marked as a Solution
+517 awarded
+Thank You
+Has 20 liked posts and gave 10 likes
+1.7k awarded
+Welcome
+Received a like
+14.3k awarded
+Aficionado
+Visited 100 consecutive days
+315 awarded
+Anniversary
+Active member for a year, posted at least once
+26.3k awarded
+Brainstormer
+Receive 5 votes on your topic
+45 awarded
+Campaigner
+Invited 3 basic users
+90 awarded
+Ghostwriter
+Had a topic moved from the Community wiki to Documentation
+3 awarded
+Gives Back
+Has 100 liked posts and gave 100 likes
+433 awarded
+Guidance Counsellor
+Have 10 replies marked as Solutions
+94 awarded
+Higher Love
+Used 50 likes in a day 5 times
+35 awarded
+Innovator
+Receive 15 votes on your topic
+4 awarded
+Respected
+Received 2 likes on 100 posts
+284 awarded
+Admired
+Received 5 likes on 300 posts
+45 awarded
+Champion
+Invited 5 members
+33 awarded
+Crazy in Love
+Used 50 likes in a day 20 times
+18 awarded
+Devotee
+Visited 365 consecutive days
+55 awarded
+Empathetic
+Has 500 liked posts and gave 1000 likes
+100 awarded
+Know-it-All
+Have 50 replies marked as Solutions
+41 awarded
+Solution Institution
+Have 150 replies marked as Solutions
+19 awarded
+Visionary
+Receive 25 votes on your topic
+1 awarded
+Posting
+Nice Reply
+Received 10 likes on a reply
+5.6k awarded
+Nice Topic
+Received 10 likes on a topic
+3.4k awarded
+Popular Link
+Posted an external link with 50 clicks
+2.8k awarded
+Good Reply
+Received 25 likes on a reply
+217 awarded
+Good Topic
+Received 25 likes on a topic
+1.2k awarded
+Hot Link
+Posted an external link with 300 clicks
+358 awarded
+Famous Link
+Posted an external link with 1000 clicks
+69 awarded
+Great Reply
+Received 50 likes on a reply
+9 awarded
+Great Topic
+Received 50 likes on a topic
+320 awarded
+Trust Level
+Basic
+Granted all essential community functions
+36.0k awarded
+Member
+Granted invitations, group messaging, more likes
+5.2k awarded
+Regular
+Granted recategorize, rename, followed links, wiki, more likes
+75 awarded
+Leader
+Granted global edit, pin, close, archive, split and merge, more likes
+26 awarded
+Testing
+Bug Reporter
+Reported a bug that was liked or fixed by the Discourse team
+5.2k awarded
+Tester
+Reported 10 bugs that were liked or fixed by the Discourse team
+135 awarded
+Senior Tester
+Reported 25 bugs that were liked or fixed by the Discourse team
+61 awarded
+Development
+Contributor
+Contributed an accepted pull request
+611 awarded
+Great Contributor
+Contributed 25 accepted pull requests
+41 awarded
+Plugin Author
+Developed a plugin for Discourse
+182 awarded
+Theme Author
+Developed a theme for Discourse
+148 awarded
+Amazing Contributor
+Contributed 250 accepted pull requests
+2 awarded
+Archaeologist
+Resolved the oldest feature request on Meta: https://meta.discourse.org/t/add-stop-impersonating-link-to-user-avatar-dropdown-when-impersonating/13806
+1 awarded
+Support
+Support Enthusiast
+Discourse-certified Support Enthusiast
+8 awarded
+Support Advocate
+Discourse-certified Support Advocate
+6 awarded
+Support Expert
+Discourse-certified Support Expert
+4 awarded
+ 
+ 

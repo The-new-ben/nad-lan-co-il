@@ -1,0 +1,129 @@
+URL: https://www.tripadvisorsupport.com/en-US/hc/traveler/articles/388
+Retrieved: 2026-11-18 17:26 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Manage My Booking
+English (US)
+English (GB)
+Dansk
+Deutsch
+Ελληνικά
+Español
+Español (Latinoamérica)
+Français
+Bahasa Indonesia
+Italiano
+日本語
+한국어
+Nederlands
+Norsk
+Português
+Português do Brasil
+Русский
+svenska
+ไทย
+Tiếng Việt
+简体中文
+繁體中文
+For Travelers
+For Business owners
+Topics for Travelers
+My Tripadvisor account
+Posting reviews, photos, and other content
+Community & messages
+Manage my booking
+Payments
+Making a booking
+Help with sign in
+Refunds & cancellations
+Traveler
+>
+Managing your business listing
+>
+Tripadvisor
+Listing my business in a bigger, nearby location
+Tripadvisor strives to list businesses in the most accurate location possible to be a reliable source of information for travelers. It would not be accurate for a property located in a neighboring town or village to be in the same list as a property centrally located in a larger nearby town or city, if the neighboring town or village does not fall under the jurisdiction of that larger town or city.
+If you think that your business qualifies to be listed within a larger nearby location, you can reach out to us via chat through the Help button in the bottom-right corner of your Management Center. Our support staff may reply to you and ask you to send official documentation issued by the larger city/town government which states that the smaller location is within their jurisdiction. 
+We are happy to consider the following forms of documentation:
+A business license
+A tax bill
+A letter from the city authority clarifying the relationship between the two places
+Please note that such documentation does not guarantee a change of location. Furthermore, postal codes cannot be used to determine the proper placement of a small village or similar area.
+What will happen to my request?
+Your request will be analyzed by our Geography team, who ensures that our policy is applied consistently to all businesses listed on Tripadvisor. They may be able to make a decision based on online evidence or ask you to send one of the supporting documents listed above. You will receive a response in the next 3-5 business days.
+Was this helpful?
+Related articles
+Updating my business opening hours
+You can easily update the hours of operations of your business by following these steps: 
+Log into your Management Center
+Click Business Info in the navigation bar
+Select the Hours section and make any changes:
+Edit existing opening/closing times
+Click Add hours to enter new opening/closing times 
+Click the X icon to remove hours
+Click Save at the bottom of the page after making any changes
+If your business operates all night, you can select Open 24 hours. 
+Any changes made to your opening hours will reflect on your business listing in 2 days.
+If you need any further assistance, please log in to the Management Center and click Help in the bottom-right corner to access our chat service.
+Managing your business listing
+Updating my business amenities
+As an owner or business representative, you can make updates to the amenity details that appear on your listing in the Tripadvisor Management Center. 
+Accommodations
+Log into the Management Center
+Click Business Info in the navigation bar
+Click into the Amenities section
+Amenities are separated into five main categories across the top of the page. Select a category: 
+Property amenities
+Accessibility
+Languages
+Room features
+Room types
+Under each category selected, there are sub-categories you can click to display specific amenities. Check or uncheck the boxes next to the amenities you want to add/remove
+Click Save
+Restaurants
+Log into the Management Center
+Click Business Info in the navigation bar
+Select the Cuisines & Amenities section
+Select the cuisine and amenity information you wish to appear on your listing 
+Click Save
+Attractions
+For Attractions with bookable services on Tripadvisor, owners will need to contact Viator to update any details or booking inventory on their listing. 
+Attractions that are not bookable directly on Tripadvisor do not have an “Amenities” section, but can edit certain details such the attraction type and recommended length of visit within the Attraction Details section in Management Center: 
+Log into the Management Center
+Click Business Info in the navigation bar
+Click Attraction Details
+Select or fill out the details you wish to appear on your listing 
+Click Save
+Changes to amenities or business details may take up to 2 days to appear on the listing.
+Flagged Amenities
+If you receive a notification of “Flagged Amenities” or see a notice in your Management Center, it means that during the review process guests mentioned some of your amenities are unavailable. Tripadvisor removes any flagged amenities from listings if we do not hear from owners to confirm the amenities are indeed offered. 
+If your business does offer the amenities that have been flagged and you would like to keep them on your listing, follow these steps: 
+Log into the Management Center
+Access the Amenities section (follow the instructions above per your property type) 
+Find your flagged amenities 
+A red flag will display for restaurants and an exclamation mark for accommodations
+Select or fill out the details you wish to appear on your listing 
+Click Save
+If you need any further assistance, please log in to the Management Center and click Help in the bottom-right corner to access our chat service.
+Managing your business listing
+Report a duplicate listing
+Tripadvisor strives to prevent the same property from being listed more than once. However, duplicate listings may occasionally occur.
+If you notice a listing that appears to be a duplicate of a property you manage: 
+Contact our Customer Care via chat using the Help button in the bottom-right corner of your Management Center. 
+Our team will investigate and if the listings are confirmed as duplicates, we will take appropriate actions. Updates will reflect on the live site within 1-2 days. 
+If you want to report a duplicate of a listing you don’t manage, please click Improve this listing on the property page.
+Locate the button based on the property type:  
+Accommodations: below the “Hotel links” section.
+Restaurants: below the “At a glance” section.
+Attractions: in the “About” section. 
+Managing your business listing
+© 2021 TripAdvisor LLC All rights reserved.
+Terms of Use
+Privacy and Cookies Statement
+Cookie Consent
+Site Map
+How the Site Works
+This is the version of our website addressed to speakers of English in the United States. If you are a resident of another country or region, please select the appropriate version of Tripadvisor for your country or region in the drop-down menu.
+TripAdvisor LLC makes no guarantees for availability of prices advertised on our sites and applications. Listed prices may require a stay of a particular length or have blackout dates, qualifications or other applicable restrictions. TripAdvisor LLC is not responsible for any content on external web sites that are not owned or operated by Tripadvisor.
+Indicative hotel prices displayed on our “Explore” pages are estimates extrapolated from historic pricing data.
+TripAdvisor LLC is not a booking agent or tour operator. When you book with one of our partners, please be sure to check their site for a full disclosure of all applicable fees.
+...more

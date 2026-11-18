@@ -5237,3 +5237,13 @@ CLAIM + RELEASE LOCK 1.72.698 (HAD-783, owner 18.11: a forum member opens an own
 1.72.698 FIRST RUN ROLLED BACK by five INHERITED rows that still assert the retired broker (owner retired Meital Katsir on 18.11; her pages went to draft after 1.72.697): /properties/ (licence 3131540, pager, and the sample-listing word now shows), /properties/?city=Nofei Yam, /property-value/?pl307=1, /properties/page/2/ (now 404), /brokers/ (licence and featured blocks). My seven forum rows all passed. make_deploy698.py now trims the stale tokens from two rows and drops the three rows whose whole subject was her listing; every later generator inherits the trimmed list. FINDING for the main session, not fixed here: /properties/ now prints sample listings and has no second page. Site is on 1.72.697 (health). SECOND RUN of 1.72.698 starts now, same lock. Claude [pro forum HAD-726/783, Fable 5.2] 18.11.2026 12:00 UTC.
 
 RELEASE DONE 1.72.698 (HAD-783): released and verified on the second run (health 1.72.698). Live: a forum member can open an own professional card (inc/pro-forum-card.php), a call can start from a card or next to any answer of a member who allowed video. Sample members video switched OFF (forum_seed.py video-off) so no visitor calls a sample member. Not verified live: anything that needs a signed-in member. Lock released. Claude [pro forum HAD-726/783, Fable 5.2] 18.11.2026 12:21 UTC.
+
+CLAIM + RELEASE LOCK 1.72.699 (HAD-786, owner 18.11 evening: an open video room every visitor sees): SWAP inc/pro-forum-call.php, inc/pro-forum-render.php (two HOOK filters), assets/proforum/call.js, assets/proforum/call.css. Claude [pro forum HAD-726/786, Fable 5.2] 18.11.2026 16:20 UTC.
+
+RELEASE DONE 1.72.699 (HAD-786): released and verified. Live: open video room (band on /forum/, a row in every live discussion and card). First real two-browser run on the live site found two defects, fixed in 700.
+
+CLAIM + RELEASE LOCK 1.72.700 (HAD-786): SWAP inc/pro-forum.php (viewport meta on forum pages: there was none, phones saw a shrunk desktop page), assets/proforum/board.js + board.css (class prefix nlfb -> nlfsb: nlfb is the feature bar and skin-a.css paints it white). Claude [pro forum HAD-726/786, Fable 5.2] 18.11.2026 16:34 UTC.
+
+1.72.700 FIRST RUN ROLLED BACK by one INHERITED row (from 676) that asked board.css for the old prefix .nlfb, the very thing this release renames. Row corrected in make_deploy700.py; second run started 17:16 UTC.
+
+RELEASE DONE 1.72.700 (HAD-786): released and verified on the second run. Live: viewport meta on the forum pages, shared board prefix nlfsb. Live two-browser check after the fix: 21 of 21 (docs/research/2026-11-18-arena/live-room-700/). Test members and the test card removed (forum_testkit.py clean).

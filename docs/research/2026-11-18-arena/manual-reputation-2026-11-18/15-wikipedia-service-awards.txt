@@ -1,0 +1,118 @@
+URL: https://en.wikipedia.org/wiki/Wikipedia:Service_awards
+Retrieved: 2026-11-18 17:25 UTC, HTTP 200, by the session itself (the PC's Chrome through Playwright, not logged in)
+
+Wikipedia:Service awards
+23 languages
+Project page
+Talk
+Read
+Edit source
+View history
+Tools
+Appearance hide
+Text
+Small
+Standard
+Large
+Width
+Standard
+Wide
+Color
+Automatic
+Light
+Dark
+From Wikipedia, the free encyclopedia
+	
+This is an information page.
+It is not a Wikipedia policy or guideline; rather, its purpose is to explain certain aspects of Wikipedia's norms, customs, technicalities, or practices. It may reflect varying levels of consensus.
+	
+Shortcuts
+WP:SVC
+WP:SERVE
+WP:SERVICE
+	This page in a nutshell: Some editors choose to acknowledge their service to Wikipedia by displaying a service award which denotes time served and number of edits made. These awards are unofficial – displaying the wrong one carries no penalty (except possible disapproval from other editors) and displaying the right one does not indicate authority or competence.
+Part of a Wikipedia help series on
+Wikipedia Awards
+Awarded by co-founder Jimmy Wales
+ Order of the Day
+ Wikimedian of the Year
+Awards by WikiProject
+ WikiCup
+ Editor of the Week
+ W Awards
+ Four Award
+ Triple Crown
+ Million Award
+ Impact •  Precious
+Barnstars and other personal awards
+ Barnstar awards (by topic)
+ Personal user awards
+ Personal greetings and cheers
+   Awards by country (2.0)
+ Ribbons
+Awards by number of edits
+ Service awards
+ Incremental service awards
+ Administrative service awards
+See also
+ WikiLove
+ Thanks!
+Reward board
+Contests
+ Merchandise giveaways
+ WikiProject Wikipedia Awards
+ Kindness Campaign
+vte
+Service awards are a simple way of acknowledging an editor's level of contribution based on two specific benchmarks: the number of contributions that the editor has made to Wikipedia and the length of time registered. One academic has described Wikipedia's service award schema as a way to award the self.[1] One may also think of them as auto-attained milestones.
+This award is unlike other awards given from one editor to another in a show of appreciation; it is intended to be given to yourself, although it can also be given by a second party. It is achieved by a strictly mechanical count of time registered and number of edits. There is no process for receiving these awards; Wikipedians determine the grade to which they are entitled, then display it on their user page.
+Please remember that neither the number of edits nor the length of time from when an account was created is a good indicator of the quality of an editor's contributions or diplomatic ability. Hence, service awards do not indicate any level of authority whatsoever; "master" editors are not bestowed with more authority through this award than "novice" editors.
+Award levelsedit
+Overviewedit
+Wikipedia was launched 25 years ago, in January 2001. Since adjustments made in 2011, a new level has been added to these service awards on a biannual basis. There are 23 award levels, as established in the most recent update. The first level serves as a base level. The "Signator-to-Ephoros" track is a humorous alternative for those who find the more formal titles too staid.
+Signator is from the Latin signātōrius, which means someone who has made a mark.
+Burba means "recruit" in Venetian.
+Novato is Spanish and Portuguese for "newcomer".
+Grognard (French for "grumbler") was Napoleon's pet name for his Old Guard.
+Ephoros (ἔφορος) refers to the title given to the five highest-ranked Spartan magistrates.
+Tutnum, Labutnum, Looshpah, Togneme, and Gom are made-up words that are intended to sound impressive.
+For the first five levels, there are also incremental service awards to use between the major service awards. There are 20 incremental service awards, with four levels of incremental service award for each of the first five service awards.
+For the sake of variety, three badge variants are provided for each level: a medal, a book, and a ribbon (thanks to Wikipedia:Ribbons). To keep the validity and status of the major service awards, a ribbon is the only variant for incremental service awards. Editors may display the badge of their preference, a combination of badges, or none at all.
+To learn your edit count and the date of your first logged edit, click Preferences where this information will appear under View your global account info. A more detailed edit counter is the User Analysis Tool (a replacement for X!'s edit counter); there are also other edit counters and analysis tools. These tools do not always provide equal numbers because they rely on different methods of calculation.
+Requirementsedit
+The requirements for each award level. Both the length of service and total number of edits must be met for each award level.
+°	Award	Alternative Award	Minimum number of edits	Length of service
+1	Registered Editor	Signator	1	1 day
+2	Novice Editor	Burba	200	1 month
+3	Apprentice Editor	Novato	1,000	3 months
+4	Journeyman Editor	Grognard	2,000	6 months
+5	Yeoman Editor	Grognard Extraordinaire	4,000	1 year
+6	Experienced Editor	Grognard Mirabilaire	6,000	1.5 years
+7	Veteran Editor	Tutnum	8,000	2 years
+8	Veteran Editor II	Grand Tutnum	12,000	2.5 years
+9	Veteran Editor III	Most Perfect Tutnum	16,000	3 years
+10	Veteran Editor IV	Tutnum of the Encyclopedia	20,000	3.5 years
+11	Senior Editor	Labutnum	24,000	4 years
+12	Senior Editor II	Most Pluperfect Labutnum	28,500	4.5 years
+13	Senior Editor III	Labutnum of the Encyclopedia	33,000	5 years
+14	Master Editor	Illustrious Looshpah	42,000	6 years
+15	Master Editor II	Auspicious Looshpah	51,000	7 years
+16	Master Editor III	Most Plusquamperfect Looshpah Laureate	60,000	8 years
+17	Master Editor IV	Looshpah Laureate of the Encyclopedia	78,000	10 years
+18	Grandmaster Editor	Grand High Togneme Vicarus[i]	96,000	12 years
+19	Grandmaster Editor First-Class	Grand High Togneme Laureate[i]	114,000	14 years
+20	Vanguard Editor	Grand Gom, the Highest Togneme of the Encyclopedia[i]	132,000	16 years
+21	Senior Vanguard Editor	Supreme Gom, the Most Exalted Togneme of the Encyclopedia	150,000	18 years
+22	Ultimate Vanguard Editor	Cardinal Gom, the August Togneme of the Encyclopedia	175,000	20 years
+23	Sagacious Editor	Ephoros of the Encyclopedia	205,000	22 years
+24	Most Sagacious Editor	High Ephoros of the Encyclopedia	235,000	24 years
+Jump up to:
+ Before December 2019, these Alternative Awards used "Lord" instead of "Grand", and uses of the original terms may still be seen in the wild. See Wikipedia talk:Service awards/Archive 7#Inclusivity? (or, Gender-Neutral Service Award Titles).
+Exposition on the requirementsedit
+What is counted?edit
+How to count your edits is up to you. It is generally assumed that all edits, even including edits by bots and deleted edits, are okay to count. If you want to count edits on other Wikimedia projects, that is okay too. If you began as an anonymous IP editor and want to count from the time of your first IP edit, that is also okay. If you run or ran more than one account, you may choose to include the edits for your other user accounts as well. If you are or were an administrator, you can count your administrative actions as edits if you want. You may also begin counting the amount of time you have been an editor from an older account or IP address of yours. It is all based on the honor system, so do what you think gives you the most fair and accurate award level.
+However, you are meant to have reached both the edit count and the time thresholds in order to claim a given level. For example, a user might have been active on Wikipedia for 10 years, and made one edit a day on average (3650 edits total). This user would not qualify for the Master Editor IV Award, but instead qualifies for a Journeyman Editor Award. In other words, these awards are heavily weighted towards activity, not presence. The corresponding set of templates for editors with years (or even decades) of service who edit lightly would be the set of societies starting with the Wikipedia:Five Year Society, where edit count is not a factor.
+Rationale for the requirementsedit
+The edit count requirements for the levels are based on what, in the opinion of the editors who formulated the requirements, could be achieved by a human editor working with considerable regularity and diligence using the default tools and a fairly typical editing pattern. The awards for the first two years require a considerably lower edit rate than those for the later years.
+In practice, you need to belong to the top 1% of active editors to meet the edit count requirements for any given service length.[under discussion]
+Bots and editors using certain tools or editing patterns may achieve higher rates, while editors using certain editing patterns (such as mainly posting completed articles with a single edit and so forth) may have lower rates, and of course editors who do not edit regularly may have lower rates.
+Thus, not all editors will see a good match between service time and edit counts (some editors may be eligible for a high level by service time but not by edit count, while other editors may be eligible for a high level by edit count, but not by service t
