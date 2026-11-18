@@ -1,0 +1,45 @@
+/* nad-lan forum: the forum inside a place page (inc/pro-forum-place.php, Claude Design board 24). Every rule under .nlf with the
+   nlfpl- prefix. Palette of the board: ground #F2F4F5, surface #FFFFFF, ink #101820, raspberry #B0144F, sea #2F6F86, muted
+   #3A4650, line #D5DBDF. Rubik for headings, Assistant for text (forum.css --hf / --tf). Phones first; every press target is
+   44px or more. The theme forces !important on buttons and headings, so the few rules that meet them say !important too. */
+
+/* part א: the block at the end of the place page */
+.nlf.nlf-win.nlfpl{border:0;border-radius:22px;background:#FFFFFF;box-shadow:0 0 0 2px #101820;padding:16px;gap:12px;margin:32px auto 8px;max-width:760px;width:100%;overflow:visible;clear:both}
+.nlf .nlfpl-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nlf .nlfpl-kick{font-size:12.5px;font-weight:700;color:#B0144F}
+.nlf .nlfpl-live{margin-inline-start:auto;display:flex;align-items:center;gap:5px;font-size:12.5px;color:#3A4650}
+.nlf .nlfpl-live i{width:8px;height:8px;border-radius:50%;background:#B0144F;display:block}
+.nlf .nlfpl-h{margin:0 !important;padding:0 !important;border:0 !important;background:none !important;font-family:var(--hf) !important;font-weight:800 !important;font-size:21px !important;line-height:1.25 !important;color:#101820 !important;text-align:right;letter-spacing:0}
+.nlf .nlfpl-ask{margin:0}
+.nlf .nlfpl-sr{position:absolute !important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.nlf .nlfpl-askrow{display:flex;align-items:center;gap:8px;border:1.5px solid #101820;border-radius:14px;padding:4px;background:#FFFFFF}
+.nlf .nlfpl-askrow:focus-within{box-shadow:0 0 0 2px #2F6F86}
+.nlf .nlfpl-askrow input{flex-grow:1;min-width:0;height:44px;margin:0;padding:0 8px;border:0 !important;border-radius:10px;background:transparent !important;box-shadow:none !important;color:#101820 !important;font-size:16px}
+.nlf .nlfpl-askrow input::placeholder{color:#3A4650;opacity:1}
+.nlf .nlfpl-askrow input:focus-visible{outline:0 !important}
+.nlf .nlfpl-askrow button{flex-shrink:0;min-height:44px;height:44px;margin:0;padding:0 16px;border-radius:10px;border:0 !important;background:#2F6F86 !important;color:#FFFFFF !important;font-family:var(--hf);font-weight:700;font-size:16px;line-height:1;white-space:nowrap;box-shadow:none !important}
+.nlf .nlfpl-askrow button:hover{background:#1F4B5C !important}
+.nlf .nlfpl-list{display:flex;flex-direction:column}
+.nlf .nlfpl-row{display:flex;align-items:flex-start;gap:10px;min-height:44px;padding:11px 0;border-bottom:1px solid #E6EAED;color:#101820 !important;text-decoration:none !important}
+.nlf .nlfpl-row:last-child{border-bottom:0}
+.nlf .nlfpl-num{width:34px;height:34px;border-radius:10px;background:var(--nlf-bg);color:var(--nlf-fg);font-family:var(--hf);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nlf .nlfpl-rt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nlf .nlfpl-rtitle{font-size:15px;font-weight:700;line-height:1.35;color:#101820}
+.nlf .nlfpl-rmeta{font-size:12.5px;color:#3A4650}
+.nlf .nlfpl-row:hover .nlfpl-rtitle{color:#1F4B5C;text-decoration:underline}
+.nlf .nlfpl-none{font-size:15px;color:#3A4650}
+.nlf .nlfpl-all{display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 12px;border:2px solid #2F6F86;border-radius:12px;color:#2F6F86 !important;font-weight:700;font-size:15px;text-align:center;text-decoration:none !important}
+.nlf .nlfpl-all:hover{background:#E6F0F4;color:#1F4B5C !important}
+@media (min-width:768px){
+	.nlf.nlf-win.nlfpl{padding:20px 22px;gap:14px}
+	.nlf .nlfpl-h{font-size:24px !important}
+}
+
+/* part ב: the forum's own pages */
+.nlf .nlfpl-chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:#101820;color:#FFFFFF;font-size:12.5px;font-weight:700}
+.nlf .nlfpl-backp{margin:4px 0 0}
+.nlf .nlfpl-back{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:#2F6F86 !important;text-decoration:underline}
+.nlf .nlfpl-filter{padding:12px 16px 0;display:flex}
+.nlf .nlfpl-fchip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:#101820;color:#FFFFFF !important;font-weight:700;font-size:15px;text-decoration:none !important}
+.nlf .nlfpl-fchip:hover{background:#3A4650}
+.nlf .nlfpl-on{border-color:#D5DBDF}

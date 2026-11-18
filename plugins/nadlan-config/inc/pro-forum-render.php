@@ -106,6 +106,8 @@ function nlf_render_home() {
 	if ( 'open' === $a['v'] ) { $where[] = 'reply_count = 0'; }
 	if ( 'requests' === $a['v'] ) { $where[] = "kind = 'seek'"; $where[] = "status_seek = 'open'"; } // the open-requests board
 	if ( 'hot' === $a['v'] ) { $where[] = 'last_at >= %s'; $args[] = gmdate( 'Y-m-d H:i:s', time() - 7 * DAY_IN_SECONDS ); }
+	$xw    = (string) apply_filters( 'nlf_home_where_sql', '', $a ); // HOOK (place module, inc/pro-forum-place.php): ?place= as a prepared condition on topics.id
+	if ( '' !== $xw ) { $where[] = $xw; }
 	$w     = implode( ' AND ', $where );
 	$order = 'hot' === $a['v'] ? '(reply_count * 3 + thanks_count * 2 + view_count / 20) DESC, last_at DESC' : ( 'open' === $a['v'] ? 'created_at DESC' : 'last_at DESC' );
 	$per   = 20;
@@ -113,6 +115,7 @@ function nlf_render_home() {
 	$rows  = $total ? $wpdb->get_results( nlf_q( "SELECT * FROM $tt WHERE $w ORDER BY $order LIMIT " . (int) $per . ' OFFSET ' . (int) ( ( $a['pg'] - 1 ) * $per ), $args ), ARRAY_A ) : array();
 	$open_args = array(); $open_w = "status = 'live' AND reply_count = 0";
 	if ( '' !== $a['c'] ) { $open_w .= ' AND cat = %s'; $open_args[] = $a['c']; }
+	if ( '' !== $xw ) { $open_w .= ' AND ' . $xw; }
 	$open_n = (int) $wpdb->get_var( nlf_q( "SELECT COUNT(*) FROM $tt WHERE $open_w", $open_args ) );
 
 	// how many joined professionals offered themselves on each "seek" request in the list (real counts only)
@@ -245,7 +248,7 @@ function nlf_render_topic( $t ) {
 		<a class="nlf-ico nlf-ico-box" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener" aria-label="שיתוף בוואטסאפ"><?php echo nlf_svg( 'share' ); // phpcs:ignore ?></a>
 	</div>
 	<section class="nlf-op" aria-labelledby="nlf-title">
-		<div class="nlf-meta"><?php echo nlf_cat_tag( $t['cat'] ) . nlf_kind_tag( $t['kind'] ); // phpcs:ignore ?></div>
+		<div class="nlf-meta"><?php echo apply_filters( 'nlf_topic_meta_tags', '', $t ) . nlf_cat_tag( $t['cat'] ) . nlf_kind_tag( $t['kind'] ); // phpcs:ignore -- HOOK (place module, inc/pro-forum-place.php): the place chip, escaped there ?></div>
 		<h1 class="nlf-h1 nlf-h1-t" id="nlf-title"><?php echo esc_html( $t['title'] ); ?></h1>
 		<div class="nlf-arow"><?php echo nlf_avatar( $op ); // phpcs:ignore ?>
 			<div class="nlf-acol"><?php echo nlf_author_line( $op ) . apply_filters( 'nlf_name_extra', '', $mem[ (int) $t['member_id'] ] ?? null ); // phpcs:ignore -- HOOK (social module): badge after the name, escaped there ?>

@@ -903,7 +903,8 @@ function nlf_topic_url( $id, $hash = '' ) {
 }
 
 function nlf_home_url( $args = array() ) {
-	$args = array_filter( (array) $args, function ( $v ) { return '' !== (string) $v && null !== $v; } );
+	$args = (array) apply_filters( 'nlf_home_url_args', (array) $args ); // HOOK (place module, inc/pro-forum-place.php): the filtered list's links keep its place
+	$args = array_filter( $args, function ( $v ) { return '' !== (string) $v && null !== $v; } );
 	return $args ? add_query_arg( array_map( 'rawurlencode', $args ), home_url( '/forum/' ) ) : home_url( '/forum/' );
 }
 
@@ -1547,7 +1548,7 @@ function nlf_filter_args() {
 	$c  = isset( $_GET['c'] ) ? sanitize_key( wp_unslash( $_GET['c'] ) ) : ''; // phpcs:ignore -- a list filter
 	$v  = isset( $_GET['v'] ) ? sanitize_key( wp_unslash( $_GET['v'] ) ) : ''; // phpcs:ignore
 	$pg = isset( $_GET['pg'] ) ? max( 1, (int) $_GET['pg'] ) : 1; // phpcs:ignore
-	return array( 'c' => nlf_cat_ok( $c ) ? $c : '', 'v' => in_array( $v, array( 'new', 'requests', 'hot', 'open', 'mine' ), true ) ? $v : '', 'pg' => $pg );
+	return (array) apply_filters( 'nlf_filter_args', array( 'c' => nlf_cat_ok( $c ) ? $c : '', 'v' => in_array( $v, array( 'new', 'requests', 'hot', 'open', 'mine' ), true ) ? $v : '', 'pg' => $pg ) ); // HOOK (place module, inc/pro-forum-place.php): 'place' => a registered key or ''
 }
 
 function nlf_doc_title() {
@@ -1577,7 +1578,7 @@ function nlf_canonical() {
 	if ( 'home' === nlf_rendering() ) {
 		$a = nlf_filter_args();
 		$last = isset( $GLOBALS['nlf_pages'] ) ? (int) $GLOBALS['nlf_pages'] : 0;
-		if ( '' === $a['c'] && '' === $a['v'] && $a['pg'] > 1 && $a['pg'] <= $last ) { return add_query_arg( 'pg', $a['pg'], home_url( '/forum/' ) ); }
+		if ( '' === $a['c'] && '' === $a['v'] && empty( $a['place'] ) && $a['pg'] > 1 && $a['pg'] <= $last ) { return add_query_arg( 'pg', $a['pg'], home_url( '/forum/' ) ); }
 		return home_url( '/forum/' );
 	}
 	return '';
@@ -1708,3 +1709,4 @@ if ( file_exists( __DIR__ . '/pro-forum-media.php' ) ) { require_once __DIR__ . 
 // the chat inside a video room: history per room, pin, word reactions, "מה סוכם בשיחה" into the discussion (board 22)
 if ( file_exists( __DIR__ . '/pro-forum-chat.php' ) ) { require_once __DIR__ . '/pro-forum-chat.php'; }
 if ( file_exists( __DIR__ . '/pro-forum-home.php' ) ) { require_once __DIR__ . '/pro-forum-home.php'; } // board 23 "הדירה שמדברים עליה": an apartment, a one-tap price vote, estimates, public averages
+if ( file_exists( __DIR__ . '/pro-forum-place.php' ) ) { require_once __DIR__ . '/pro-forum-place.php'; } // board 24: the forum at the end of a place page (/sde-dov/, /projects/hamedina/), /forum/?place=, the thread's place chip

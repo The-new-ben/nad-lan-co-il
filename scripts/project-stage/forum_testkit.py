@@ -109,6 +109,8 @@ add_action( 'rest_api_init', function () {
 				if ( function_exists( 'nlfmd_purge_members' ) ) { $gone['media'] = (int) nlfmd_purge_members( $ids, (array) $tids ); }
 				// 18.11.2026 (home module, inc/pro-forum-home.php): the apartment rows, votes and estimates of their discussions, and the votes and estimates they gave
 				if ( function_exists( 'nlfh_purge_members' ) ) { $gone['homes'] = (int) nlfh_purge_members( $ids, (array) $tids ); }
+				// 19.11.2026 (place module, inc/pro-forum-place.php): the place rows of the discussions they opened
+				if ( function_exists( 'nlfp2_purge_topics' ) ) { $gone['places'] = (int) nlfp2_purge_topics( (array) $tids ); }
 				foreach ( array( 'replies' => 'member_id', 'thanks' => 'member_id', 'flags' => 'member_id', 'follows' => 'member_id' ) as $tb => $col ) {
 					$gone[ $tb ] = (int) $wpdb->query( 'DELETE FROM ' . nlf_t( $tb ) . " WHERE $col IN ($in)" );
 				}
