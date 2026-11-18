@@ -1,0 +1,36 @@
+{
+ "topic": 20,
+ "at": "2026-11-19 00:34:26",
+ "ledger": [
+  {
+   "step": "guest sees the invitation on the forum home",
+   "ok": true,
+   "detail": "כמה הדירה שלכם שווה? תשאלו את הפורום"
+  },
+  {
+   "step": "A answers with an estimate",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"id\": 35, \"status\": \"live\", \"author\": \"בדיקת Claude א · רוכש דירה\", \"message\": \"התשובה פורסמה.\", \"ch\": \"72b709c7696bff0cb5a81251.1"
+  },
+  {
+   "step": "C answers with an estimate",
+   "ok": true,
+   "detail": "{\"ok\": 1, \"id\": 36, \"status\": \"live\", \"author\": \"בדיקת Claude ג · רוכש דירה\", \"message\": \"התשובה פורסמה.\", \"ch\": \"056486fc5b240e75c1c47043.1"
+  },
+  {
+   "step": "the estimate chips show on the answers",
+   "ok": true,
+   "detail": "['ההערכה שלי: ₪3,250,000', 'ההערכה שלי: ₪3,300,000']"
+  },
+  {
+   "step": "the estimates box waits for a third estimate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the forum home shows the apartment card (may wait for its 10-minute cache)",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

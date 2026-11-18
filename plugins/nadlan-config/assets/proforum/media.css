@@ -69,6 +69,8 @@
 .nlf a.nlfmd-pdf-card:hover{border-color:#2F6F86}
 .nlf .nlfmd-pdf-th{display:block;width:58px;height:72px;flex-shrink:0;overflow:hidden;border-radius:6px;border:1.5px solid #101820;background:#F7F9FA;background-image:linear-gradient(#DCE3E8 1px,transparent 1px),linear-gradient(90deg,#DCE3E8 1px,transparent 1px);background-size:8px 8px}
 .nlf .nlfmd-pdf-th img{display:block;width:100%;height:100%;object-fit:cover}
+.nlf .nlfmd-pdf-th{background-color:#F7F9FA!important;background-image:linear-gradient(#DCE3E8 1px,transparent 1px),linear-gradient(90deg,#DCE3E8 1px,transparent 1px)!important;background-size:8px 8px!important;display:flex!important;align-items:center;justify-content:center}
+.nlf .nlfmd-pdf-lbl{font-family:Rubik,Arial,sans-serif!important;font-weight:800;font-size:15px;color:#101820!important;background:#FFFFFF;padding:1px 5px;border-radius:4px}
 .nlf .nlfmd-pdf-tx{display:flex;flex-direction:column;gap:3px;flex-grow:1;min-width:0}
 .nlf .nlfmd-pdf-tx b{font-weight:700;font-size:14.5px;color:#101820}
 .nlf .nlfmd-pdf-tx span{font-size:12.5px;color:#3A4650}

@@ -415,16 +415,17 @@ add_action( 'admin_init', 'nlfh_install', 25 );
 function nlfh_data( $kind, $id ) {
 	$url = nlfh_data_url( $kind, $id );
 	if ( '' === $url ) { return null; }
-	$tk = 'nlfh_' . ( 'settlement' === $kind ? 's' : 'n' ) . '_' . (int) $id;
+	$tk = 'nlfh2_' . ( 'settlement' === $kind ? 's' : 'n' ) . '_' . (int) $id; // "2": 1.72.705, the failures cached by 704 are left behind
 	$c  = get_transient( $tk );
 	if ( is_array( $c ) ) { return empty( $c['fail'] ) ? $c : null; }
-	$r = wp_remote_get( $url, array( 'timeout' => 6, 'redirection' => 0, 'headers' => array( 'Accept' => 'application/json' ) ) );
+	// 19.11.2026: the public files refuse WordPress's default user agent ("WordPress/x; site"); the site names itself honestly
+	$r = wp_remote_get( $url, array( 'timeout' => 6, 'redirection' => 0, 'user-agent' => 'NadLanForum/1.0 (+https://nad-lan.co.il/forum/)', 'headers' => array( 'Accept' => 'application/json' ) ) );
 	$p = null;
 	if ( ! is_wp_error( $r ) && 200 === (int) wp_remote_retrieve_response_code( $r ) ) {
 		$body = (string) wp_remote_retrieve_body( $r );
 		$p    = 'settlement' === $kind ? nlfh_settlement_parse( $body ) : nlfh_nbhd_parse( $body );
 	}
-	if ( ! $p ) { set_transient( $tk, array( 'fail' => 1 ), HOUR_IN_SECONDS ); return null; }
+	if ( ! $p ) { set_transient( $tk, array( 'fail' => 1 ), 10 * MINUTE_IN_SECONDS ); return null; }
 	set_transient( $tk, $p, 7 * DAY_IN_SECONDS );
 	return $p;
 }

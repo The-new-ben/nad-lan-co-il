@@ -717,7 +717,7 @@ function nlfmd_pdf_html( array $pdf, $topic, $rooms ) {
 		$title = '' !== trim( (string) $r['caption'] ) ? (string) $r['caption'] : 'קובץ PDF';
 		$prev  = ! empty( $r['preview'] );
 		$h .= '<div class="nlfmd-pdf"><a class="nlfmd-pdf-card" href="' . esc_url( $url ) . '" target="_blank" rel="noopener">'
-			. '<span class="nlfmd-pdf-th" aria-hidden="true">' . ( $prev ? '<img src="' . esc_url( nlfmd_url( nlfmd_variant( $rel, '-480' ) ) ) . '" alt="" width="58" height="72" loading="lazy" decoding="async">' : '' ) . '</span>'
+			. '<span class="nlfmd-pdf-th" aria-hidden="true">' . ( $prev ? '<img src="' . esc_url( nlfmd_url( nlfmd_variant( $rel, '-480' ) ) ) . '" alt="" width="58" height="72" loading="lazy" decoding="async">' : '<b class="nlfmd-pdf-lbl">PDF</b>' ) . '</span>' // 1.72.705: no blank box when the host cannot draw page 1
 			. '<span class="nlfmd-pdf-tx"><b>' . esc_html( $title ) . '</b><span>' . esc_html( nlfmd_pdf_meta( (int) $r['pages'], (int) $r['bytes'] ) ) . '</span></span></a>'
 			. '<div class="nlfmd-pdf-acts">'
 			. ( $rooms && $topic > 0 ? '<button type="button" class="nlfmd-btn nlfmd-btn-ink" data-nlf-room="' . (int) $topic . '"' . ( $prev ? ' data-nlfmd-board="' . esc_url( nlfmd_url( nlfmd_variant( $rel, '-p' ) ) ) . '"' : '' ) . '>לשרטט עליה ביחד</button>' : '' )

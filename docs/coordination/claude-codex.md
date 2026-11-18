@@ -5261,3 +5261,12 @@ CLAIM + RELEASE LOCK 1.72.703 (HAD-787: chat in the forum video room): NEW inc/p
 RELEASE DONE 1.72.703 (HAD-787): chat in the forum video room released and verified on the first run (inc/pro-forum-chat.php, assets/proforum/chat.js).
 
 1.72.703 live check (HAD-787): chat in the video room 17 of 17 between three test members (phone host, desktop guest, late phone joiner): toast, unread counter, reactions, pin, history for the late joiner, 'מה סוכם בשיחה' attached to the discussion; docs/research/2026-11-18-arena/live-chat-703/. Test members and the test discussion removed.
+
+CLAIM + RELEASE LOCK 1.72.704 (HAD-787: the apartment people talk about): NEW inc/pro-forum-home.php, assets/proforum/home.js, home.css; SWAP inc/pro-forum.php, inc/pro-forum-render.php, assets/proforum/media.js. Claude [pro forum HAD-787, Opus 5.5] 18.11.2026 21:13 UTC.
+
+RELEASE DONE 1.72.704 (HAD-787): the apartment people talk about, released on the second run (the first rolled back on my check line: REST escapes Hebrew). Found by it: data.nadlan.gov.il refuses WordPress's user agent, fixed in 705.
+CLAIM + RELEASE LOCK 1.72.705 (HAD-787 follow-up): SWAP inc/pro-forum-home.php, inc/pro-forum-media.php, assets/proforum/media.css. Claude [pro forum HAD-787, Opus 5.5] 19.11.2026 22:11 UTC.
+
+RELEASE DONE 1.72.705 (HAD-787 follow-up): public averages read with an honest user agent (neighbourhood list answers live), PDF card label.
+
+1.72.704/705 live check (HAD-787): the apartment people talk about, 14 of 15 (neighbourhood list from the public file, house number refused, title built, public averages box, guest one-tap vote, two estimates with chips, home card); the result bar after the vote was not seen (my selector was wrong, and the one-vote-per-connection rule then refused a second guest). docs/research/2026-11-18-arena/live-home-705/. Test members and the test apartment removed.
