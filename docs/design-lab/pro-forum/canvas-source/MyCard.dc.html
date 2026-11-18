@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>חבר פורום פותח כרטיס משלו, ושיחת וידאו בולטת</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#2F6F86}a:hover{color:#1F4B5C}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; height: 1640px; box-sizing: border-box; background: #F2F4F5; color: #101820; font-family: Assistant, 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; gap: 22px; padding: 16px 8px 20px; position: relative; overflow: hidden">
+
+  <span style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; color: #3A4650; padding: 0 8px">א. ההזמנה, בפורום ובדיון, לחבר שסימן "בעל מקצוע" ואין לו כרטיס</span>
+
+  <section aria-labelledby="mc-inv" style="background-color: #101820; background-image: radial-gradient(rgba(255,255,255,.09) 1.2px, transparent 1.3px); background-size: 14px 14px; color: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+    <span style="align-self: flex-start; background: #B0144F; color: #FFFFFF; font-weight: 700; font-size: 12.5px; padding: 4px 10px; border-radius: 999px">חינם כרגע</span>
+    <h2 id="mc-inv" style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15">רוצים שהפרטים שלכם יופיעו ושיפנו אליכם?</h2>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #DCE3E8">פתחו כרטיס בעל מקצוע: שם, מקצוע, עיר וטלפון. הכרטיס מופיע ליד כל תשובה שלכם בפורום.</p>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <button style="height: 50px; padding: 0 20px; border-radius: 14px; border: 0; background: #FFFFFF; color: #101820; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px">פתיחת כרטיס</button>
+      <span style="font-size: 13px; color: #C5D0D8">דקה אחת, בלי תשלום ובלי סיסמה</span>
+    </div>
+  </section>
+
+  <span style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; color: #3A4650; padding: 0 8px">ב. הטופס, בחלון אחד</span>
+
+  <form style="margin: 0; background: #FFFFFF; border-radius: 22px 22px 18px 18px; box-shadow: 0 0 0 1.5px #101820; padding: 0 0 16px; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+    <div style="padding: 14px 16px; border-bottom: 1px solid #D5DBDF; display: flex; align-items: center; gap: 10px">
+      <h2 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 19px; flex-grow: 1">הכרטיס שלי</h2>
+      <span style="font-size: 13px; color: #3A4650">אפשר לשנות בכל רגע</span>
+    </div>
+    <div style="padding: 0 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 5px"><label for="mc-name" style="font-weight: 700; font-size: 14px">השם שיופיע</label><input id="mc-name" type="text" value="אלונה מור" style="height: 48px; border-radius: 12px; border: 2px solid #101820; padding: 0 12px; font-size: 16px"></div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <div style="display: flex; flex-direction: column; gap: 5px"><label for="mc-trade" style="font-weight: 700; font-size: 14px">מקצוע</label><select id="mc-trade" style="height: 48px; border-radius: 12px; border: 2px solid #101820; padding: 0 10px; font-size: 16px; background: #FFFFFF"><option>מעצבת פנים</option></select></div>
+        <div style="display: flex; flex-direction: column; gap: 5px"><label for="mc-city" style="font-weight: 700; font-size: 14px">עיר או אזור</label><input id="mc-city" type="text" value="המרכז" style="height: 48px; border-radius: 12px; border: 2px solid #101820; padding: 0 12px; font-size: 16px; min-width: 0"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px"><label for="mc-bio" style="font-weight: 700; font-size: 14px">מה אתם עושים, בשתי שורות</label><textarea id="mc-bio" rows="3" style="border-radius: 12px; border: 2px solid #101820; padding: 10px 12px; font-size: 16px; line-height: 1.45; resize: vertical">מתכננת ומעצבת פנים, הנדסאית עם 15 שנות ניסיון. עובדת עם מגוון קבלנים ועושה מכרז לביצוע.</textarea></div>
+      <div style="display: flex; flex-direction: column; gap: 5px"><label for="mc-tel" style="font-weight: 700; font-size: 14px">טלפון (לא חובה)</label><input id="mc-tel" type="tel" placeholder="050-0000000" style="height: 48px; border-radius: 12px; border: 2px solid #101820; padding: 0 12px; font-size: 16px"></div>
+      <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 6px">
+        <legend style="font-weight: 700; font-size: 14px; padding: 0; margin-bottom: 6px">איך פונים אליכם</legend>
+        <label style="display: flex; align-items: center; gap: 10px; min-height: 48px; border: 2px solid #2F6F86; background: #EEF5F7; border-radius: 12px; padding: 0 12px; font-size: 15px; font-weight: 700"><input type="radio" name="mc-how" checked style="width: 20px; height: 20px; margin: 0; accent-color: #2F6F86">טלפון, וואטסאפ ושיחת וידאו</label>
+        <label style="display: flex; align-items: center; gap: 10px; min-height: 48px; border: 1px solid #D5DBDF; border-radius: 12px; padding: 0 12px; font-size: 15px"><input type="radio" name="mc-how" style="width: 20px; height: 20px; margin: 0; accent-color: #2F6F86">רק בהודעה ובשיחת וידאו דרך הפורום</label>
+      </fieldset>
+      <button type="button" style="height: 54px; border-radius: 14px; border: 0; background: #B0144F; color: #FFFFFF; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 17px">פתיחת הכרטיס</button>
+      <span style="font-size: 13px; line-height: 1.5; color: #3A4650">הכרטיס יסומן "חבר בפורום". סימן "נבדק" מגיע רק אחרי בדיקה, ואף פעם לא בתשלום. אפשר להסתיר או למחוק את הכרטיס בלחיצה.</span>
+    </div>
+  </form>
+
+  <span style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; color: #3A4650; padding: 0 8px">ג. הכרטיס שנפתח, עם שיחת וידאו בולטת</span>
+
+  <section style="background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+    <header style="display: flex; gap: 12px; align-items: center">
+      <span aria-hidden="true" style="width: 60px; height: 60px; border-radius: 16px; background: #E7E1FA; color: #43308F; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 22px; flex-shrink: 0">אמ</span>
+      <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+        <div style="display: flex; gap: 6px; align-items: center; font-size: 13px"><span style="background: #E7E1FA; color: #43308F; font-weight: 700; padding: 1px 8px; border-radius: 6px">מעצבת פנים</span><span style="color: #3A4650">המרכז</span></div>
+        <h1 style="margin: 0; font-family: Rubik, Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">אלונה מור</h1>
+        <span style="font-size: 13.5px; color: #3A4650; font-weight: 600">חברה בפורום מאז נובמבר 2026 · הפרטים נמסרו על ידה</span>
+      </div>
+    </header>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #101820">מתכננת ומעצבת פנים, הנדסאית עם 15 שנות ניסיון. עובדת עם מגוון קבלנים ועושה מכרז לביצוע.</p>
+
+    <a href="CallBoard.dc.html" style="min-height: 64px; border-radius: 16px; background: #B0144F; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 12px; padding: 0 16px; box-shadow: 0 0 0 5px rgba(176,20,79,.18)">
+      <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: #FFFFFF; color: #B0144F; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"></rect><path d="M16 10l5-3v10l-5-3z"></path></svg></span>
+      <span style="display: flex; flex-direction: column; gap: 1px"><span style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.15">שיחת וידאו עם אלונה</span><span style="font-size: 13px; color: #FFD3E2">בדפדפן, בלי התקנה. אפשר להראות תוכנית ולסמן עליה יחד.</span></span>
+    </a>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <a href="#wa" style="height: 50px; border-radius: 14px; background: #2F6F86; color: #FFFFFF; text-decoration: none; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center">וואטסאפ</a>
+      <a href="#tel" style="height: 50px; border-radius: 14px; border: 2px solid #2F6F86; color: #2F6F86; text-decoration: none; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; box-sizing: border-box">חיוג</a>
+    </div>
+    <span style="font-size: 13px; color: #3A4650; text-align: center">הפנייה מגיעה ישר אל אלונה, לא לאתר.</span>
+  </section>
+
+  <section style="background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 13px; color: #3A4650">ד. אותו כפתור ליד כל תשובה שלה בדיון</span>
+    <div style="display: flex; gap: 10px; align-items: center">
+      <span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 12px; background: #E7E1FA; color: #43308F; display: flex; align-items: center; justify-content: center; font-family: Rubik, Arial, sans-serif; font-weight: 700; font-size: 15px; flex-shrink: 0">אמ</span>
+      <div style="display: flex; flex-direction: column; gap: 1px; flex-grow: 1; min-width: 0"><a href="#card" style="font-weight: 700; font-size: 15.5px; color: #101820; text-decoration: none">אלונה מור · מעצבת פנים</a><span style="font-size: 13px; color: #3A4650">חברה בפורום · המרכז</span></div>
+      <a href="CallBoard.dc.html" style="height: 44px; padding: 0 14px; border-radius: 999px; background: #B0144F; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 6px; white-space: nowrap"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"></rect><path d="M16 10l5-3v10l-5-3z"></path></svg>שיחת וידאו</a>
+    </div>
+  </section>
+
+  <span style="position: absolute; top: 2px; left: 8px; font-size: 10px; color: #3A4650; background: #FFFFFF; border: 1px solid #D5DBDF; border-radius: 4px; padding: 1px 5px">דוגמה לעיצוב</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1640}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
