@@ -51,7 +51,8 @@ function nlf_cat_ok( $key ) { return is_string( $key ) && isset( nlf_categories(
 
 /** kind => label (Compose board) */
 function nlf_kinds() {
-	return array( 'question' => 'שאלה', 'seek' => 'מחפש בעל מקצוע', 'collab' => 'שיתוף פעולה', 'intro' => 'היי, אני בעל מקצוע', 'work' => 'עבודה שסיימתי' );
+	$k = array( 'question' => 'שאלה', 'seek' => 'מחפש בעל מקצוע', 'collab' => 'שיתוף פעולה', 'intro' => 'היי, אני בעל מקצוע', 'work' => 'עבודה שסיימתי' );
+	return function_exists( 'apply_filters' ) ? (array) apply_filters( 'nlf_kinds', $k ) : $k; // HOOK (home module, inc/pro-forum-home.php): 'home' => 'דירה לדיון'
 }
 
 /** the labels an ordinary member may choose; a chosen "בעל מקצוע" never carries a verified mark */
@@ -1704,3 +1705,4 @@ if ( file_exists( __DIR__ . '/pro-forum-card.php' ) ) { require_once __DIR__ . '
 if ( file_exists( __DIR__ . '/pro-forum-rep.php' ) ) { require_once __DIR__ . '/pro-forum-rep.php'; }
 // images, plans and files in posts, the full-screen gallery, a point marked on a picture, the member's picture (board 21)
 if ( file_exists( __DIR__ . '/pro-forum-media.php' ) ) { require_once __DIR__ . '/pro-forum-media.php'; }
+if ( file_exists( __DIR__ . '/pro-forum-home.php' ) ) { require_once __DIR__ . '/pro-forum-home.php'; } // board 23 "הדירה שמדברים עליה": an apartment, a one-tap price vote, estimates, public averages

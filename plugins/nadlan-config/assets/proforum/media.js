@@ -477,6 +477,7 @@
 	var cf = $('[data-nlf-composeform]'), rf = $('[data-nlf-replyform]');
 	if (cf) { composer(cf, 'topic'); }
 	if (rf) { composer(rf, 'reply'); }
+	$$('form[data-nlfmd-compose]').forEach(function (f) { if (!f.__nlfmd) { composer(f, 'topic'); } }); // HOOK (home module, home.js): the apartment sheet reads form.nlfExtra('topic')
 
 	/* ---------------- the full-screen view (board 21 part ג) ---------------- */
 	var PINS = [];

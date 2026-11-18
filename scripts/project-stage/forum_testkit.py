@@ -105,6 +105,8 @@ add_action( 'rest_api_init', function () {
 				$tids = $wpdb->get_col( 'SELECT id FROM ' . nlf_t( 'topics' ) . " WHERE member_id IN ($in)" );
 				// 18.11.2026 (media module, inc/pro-forum-media.php): their pictures, plans, profile pictures and points, rows AND files, before the replies go
 				if ( function_exists( 'nlfmd_purge_members' ) ) { $gone['media'] = (int) nlfmd_purge_members( $ids, (array) $tids ); }
+				// 18.11.2026 (home module, inc/pro-forum-home.php): the apartment rows, votes and estimates of their discussions, and the votes and estimates they gave
+				if ( function_exists( 'nlfh_purge_members' ) ) { $gone['homes'] = (int) nlfh_purge_members( $ids, (array) $tids ); }
 				foreach ( array( 'replies' => 'member_id', 'thanks' => 'member_id', 'flags' => 'member_id', 'follows' => 'member_id' ) as $tb => $col ) {
 					$gone[ $tb ] = (int) $wpdb->query( 'DELETE FROM ' . nlf_t( $tb ) . " WHERE $col IN ($in)" );
 				}

@@ -281,6 +281,7 @@ function nlf_render_topic( $t ) {
 				$qr = $byid[ (int) $r['quote_id'] ]; $qa = nlf_author( $mem[ (int) $qr['member_id'] ] ?? null ); ?>
 				<blockquote class="nlf-quote"><a href="#r<?php echo (int) $qr['id']; ?>"><?php echo esc_html( $qa['name'] . ' כתב/ה:' ); ?></a> "<?php echo esc_html( nlf_excerpt( $qr['body'], 140 ) ); ?>"</blockquote>
 			<?php endif; ?>
+			<?php echo apply_filters( 'nlf_reply_before_body', '', $r, $t ); // phpcs:ignore -- HOOK (home module, inc/pro-forum-home.php): the answer's price estimate chip, escaped there ?>
 			<p class="nlf-body"><?php echo nlf_body_html( $r['body'] ); // phpcs:ignore -- escaped ?></p>
 			<?php echo apply_filters( 'nlf_reply_after_body', '', $r, $me, $t ); // phpcs:ignore -- HOOK (media module, inc/pro-forum-media.php): the answer's pictures and plans, escaped there ?>
 			<?php if ( 'pending' === $r['status'] ) : ?><p class="nlf-note">ההודעה תעלה אחרי בדיקה קצרה</p><?php elseif ( 'hidden' === $r['status'] ) : ?><p class="nlf-note">ההודעה מוסתרת עד בדיקה</p><?php endif; ?>
