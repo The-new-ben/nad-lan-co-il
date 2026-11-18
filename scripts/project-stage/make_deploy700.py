@@ -22,3 +22,13 @@ ROWS = ("    ('%sboard.js?t700f=1', ['nlfsb-svg', 'createBoard'], ['Fatal error'
 kl_release.build_release(699, 700, ["inc/pro-forum.php", "assets/proforum/board.js", "assets/proforum/board.css"], [], {}, {}, ROWS,
                          "the forum pages get the phone viewport tag; the shared board keeps its dark frame (its class no longer collides with the feature bar)",
                          "HAD-786 forum round: phone viewport on forum pages, shared board class collision fixed")
+
+# 18.11.2026, after the first run rolled back: one INHERITED row (from 1.72.676) still asked board.css for the old prefix
+# '.nlfb'. The prefix is the very thing this release renames, so that row now asks for the new one.
+D = os.path.join(os.path.dirname(os.path.abspath(__file__)), "deploy700.py")
+src = open(D, encoding="utf-8").read()
+OLD = "proforum/board.css?t700f=1', ['.nlfb'], ['Fatal error'], []),"
+NEW = "proforum/board.css?t700f=1', ['.nlfsb'], ['Fatal error'], []),"
+assert src.count(OLD) == 1, src.count(OLD)
+open(D, "w", encoding="utf-8", newline="\n").write(src.replace(OLD, NEW))
+print("inherited board.css row now asks for the new prefix; deploy700.py rewritten")
