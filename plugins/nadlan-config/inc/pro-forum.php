@@ -1588,6 +1588,15 @@ add_filter( 'wpseo_opengraph_url', function ( $c ) { $x = nlf_canonical(); retur
 /* Yoast would describe our address as the site's home page in its graph; the forum prints its own structured data instead */
 add_filter( 'wpseo_json_ld_output', function ( $d ) { return '' !== nlf_rendering() ? false : $d; }, PHP_INT_MAX );
 
+/* 1.72.700 (found 18.11.2026 by the first phone-width run on the live site): the forum's own pages are printed through
+   get_header(), and in this block theme that prints NO viewport meta (the block template canvas prints it for ordinary pages,
+   and the directory adds its own on its archives, inc/directory.php). Without it a phone lays the forum out as a 980px desktop
+   page, shrunk. The one-click pages (?nlfs_act=, ?nlfm_act=, ?nlfc_stop=) go the same way. */
+add_action( 'wp_head', function () {
+	if ( '' === nlf_rendering() && empty( $GLOBALS['nlf_act_page'] ) ) { return; }
+	echo "\n" . '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+}, 0 );
+
 add_action( 'wp_head', function () {
 	if ( '' === nlf_rendering() ) { return; }
 	// always the forum's own description and canonical (Yoast's are switched off on forum pages above)

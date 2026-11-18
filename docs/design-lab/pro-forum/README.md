@@ -48,3 +48,9 @@ Every name and number on the boards is sample content for the design and is mark
 - Faces: Rubik for numbers and measures, Assistant for text.
 - Why it is not the default look: the language comes from a work sheet and red-pen markups on a plan, not from a generic whiteboard.
 - Owner, 12.11.2026 night: only Claude Design, nothing that looks cheap. The first board.js screenshot (built before these boards) was rejected; code follows boards 15 to 17.
+
+## Boards 18 and 19 (18.11.2026)
+
+- Board 18, "a forum member opens an own card, and a visible video call": `canvas-source/MyCard.dc.html`, image `boards/board-18-*.png`. Built in 1.72.698 (inc/pro-forum-card.php). Checked on the live site with two test members: 9 of 9 (`docs/research/2026-11-18-arena/live-card-698/`).
+- Board 19, "a video room every visitor sees, from the press to the invitation": `canvas-source/VideoRoom.dc.html`, image `boards/board-19-video-room-everyone-sees.png`. Parts: the band on the forum home, the row in every discussion and card, the lobby, "מי מצטרף?" (link, WhatsApp, share, discussion members, lock), what the invited person sees. Built in 1.72.699. Same palette and faces as the rest (ground #F2F4F5, ink #101820, raspberry #B0144F for what is live, sea #2F6F86 for actions; Rubik and Assistant). Why it is not the default look: the room is drawn as a notice on the building site's board with numbered steps in the site's own raspberry, not as a generic meeting tile.
+- Lesson of 18.11: the first run on the live site showed the shared board white with invisible buttons, because its class `nlfb` belonged to the feature bar and the site skin paints that class. The prefix is `nlfsb` since 1.72.700. A board is checked on the live site, never only in a local lab.

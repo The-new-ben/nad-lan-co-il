@@ -10,7 +10,7 @@
 // lengths, finite numbers, id pattern, caps). A person can remove only his own marks; notes can be marked agreed by anyone.
 
 const NS = 'http://www.w3.org/2000/svg';
-const TOPIC = 'nlfb';
+const TOPIC = 'nlfsb';
 const PENS = ['#B0144F', '#2F6F86', '#2E7D5B', '#E8B400'];
 const DARK = { '#B0144F': '#8C0F3E', '#2F6F86': '#1F5566', '#2E7D5B': '#1B4D33', '#E8B400': '#5E4A00' };
 const CNAME = { '#B0144F': 'פטל', '#2F6F86': 'כחול ים', '#2E7D5B': 'ירוק', '#E8B400': 'צהוב' };
@@ -126,55 +126,55 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 	const mq = window.matchMedia ? window.matchMedia('(min-width:900px)') : { matches: false };
 
 	/* ---------------- the DOM, built once ---------------- */
-	const svg = sv('svg', { class: 'nlfb-svg', role: 'img', 'aria-label': T.sheetA });
-	const defs = sv('defs'), pat = sv('pattern', { id: 'nlfb-grid', width: 20, height: 20, patternUnits: 'userSpaceOnUse' }), patP = sv('path', { fill: 'none', stroke: '#E3E8EB', 'stroke-width': 1 });
+	const svg = sv('svg', { class: 'nlfsb-svg', role: 'img', 'aria-label': T.sheetA });
+	const defs = sv('defs'), pat = sv('pattern', { id: 'nlfsb-grid', width: 20, height: 20, patternUnits: 'userSpaceOnUse' }), patP = sv('path', { fill: 'none', stroke: '#E3E8EB', 'stroke-width': 1 });
 	pat.appendChild(patP); defs.appendChild(pat);
-	const gBg = sv('g'), gObj = sv('g'), gPin = sv('g'), gLive = sv('g', { class: 'nlfb-live', 'pointer-events': 'none' });
+	const gBg = sv('g'), gObj = sv('g'), gPin = sv('g'), gLive = sv('g', { class: 'nlfsb-live', 'pointer-events': 'none' });
 	svg.append(defs, gBg, gObj, gPin, gLive);
-	const backB = btn('nlfb-back', T.back, ico('back', 20, 2.2));
-	const titleT = el('b', { text: title || T.board }), subT = el('small', { text: T.sub }), timerT = el('span', { cls: 'nlfb-time', role: 'timer', 'aria-label': T.timer, text: '00:00' });
-	const hPhoto = btn('nlfb-hb', null, el('span', { text: T.photoD })), hClear = btn('nlfb-hb', null, el('span', { text: T.clear })), hSave = btn('nlfb-hb', null, el('span', { text: T.save }));
-	const head = el('div', { cls: 'nlfb-head' }, backB, el('div', { cls: 'nlfb-tt' }, titleT, subT), timerT, el('div', { cls: 'nlfb-hbs' }, hPhoto, hClear, hSave));
+	const backB = btn('nlfsb-back', T.back, ico('back', 20, 2.2));
+	const titleT = el('b', { text: title || T.board }), subT = el('small', { text: T.sub }), timerT = el('span', { cls: 'nlfsb-time', role: 'timer', 'aria-label': T.timer, text: '00:00' });
+	const hPhoto = btn('nlfsb-hb', null, el('span', { text: T.photoD })), hClear = btn('nlfsb-hb', null, el('span', { text: T.clear })), hSave = btn('nlfsb-hb', null, el('span', { text: T.save }));
+	const head = el('div', { cls: 'nlfsb-head' }, backB, el('div', { cls: 'nlfsb-tt' }, titleT, subT), timerT, el('div', { cls: 'nlfsb-hbs' }, hPhoto, hClear, hSave));
 	// the tool dock (phone) / rail (desktop)
 	const toolB = {};
-	const toolsBox = el('div', { cls: 'nlfb-tools' });
-	for (const k of ['pen', 'mark', 'arrow', 'shape', 'note', 'measure', 'laser', 'erase', 'hand']) { const b = btn('nlfb-tb', T.tn[k], ico(k === 'shape' ? 'shape' : k)); b.setAttribute('aria-pressed', 'false'); b.dataset.k = k; toolB[k] = b; toolsBox.appendChild(b); }
-	const meDot = el('span', { cls: 'nlfb-dot' }), meB = btn('nlfb-tb nlfb-meb', '', meDot);
-	const undoB = btn('nlfb-tb nlfb-undo', T.undo, ico('undo'));
-	const dock = el('div', { cls: 'nlfb-dock', role: 'toolbar', 'aria-label': T.tools }, toolsBox, el('span', { cls: 'nlfb-sep', 'aria-hidden': 'true' }), meB, undoB);
+	const toolsBox = el('div', { cls: 'nlfsb-tools' });
+	for (const k of ['pen', 'mark', 'arrow', 'shape', 'note', 'measure', 'laser', 'erase', 'hand']) { const b = btn('nlfsb-tb', T.tn[k], ico(k === 'shape' ? 'shape' : k)); b.setAttribute('aria-pressed', 'false'); b.dataset.k = k; toolB[k] = b; toolsBox.appendChild(b); }
+	const meDot = el('span', { cls: 'nlfsb-dot' }), meB = btn('nlfsb-tb nlfsb-meb', '', meDot);
+	const undoB = btn('nlfsb-tb nlfsb-undo', T.undo, ico('undo'));
+	const dock = el('div', { cls: 'nlfsb-dock', role: 'toolbar', 'aria-label': T.tools }, toolsBox, el('span', { cls: 'nlfsb-sep', 'aria-hidden': 'true' }), meB, undoB);
 	// the sheet
-	const tilesBox = el('div', { cls: 'nlfb-tiles' });
-	const followB = btn('nlfb-follow', null, ico('eye', 16, 2.2), el('span'));
-	const row = el('div', { cls: 'nlfb-row' }, tilesBox, followB);
-	const blockSheet = el('span', { cls: 'nlfb-v' }), blockScale = el('span', { cls: 'nlfb-v' });
-	const block = el('div', { cls: 'nlfb-block' }, el('span', { cls: 'nlfb-k', text: T.sheet }), blockSheet, el('span', { cls: 'nlfb-k', text: T.scale }), blockScale);
-	const zIn = btn('nlfb-zb', T.zin, ico('plus', 20, 2.4)), zOut = btn('nlfb-zb', T.zout, ico('minus', 20, 2.4)), zRecal = btn('nlfb-zb nlfb-zr', T.recalA, el('span', { text: T.recal }));
-	const zoomBox = el('div', { cls: 'nlfb-zoom' }, zIn, zOut, zRecal);
-	const toast = el('p', { cls: 'nlfb-toast', role: 'status', 'aria-live': 'polite', hidden: true });
-	const callout = el('div', { cls: 'nlfb-call', hidden: true });
-	const sheet = el('div', { cls: 'nlfb-sheet' }, svg, row, callout, block, zoomBox, toast);
+	const tilesBox = el('div', { cls: 'nlfsb-tiles' });
+	const followB = btn('nlfsb-follow', null, ico('eye', 16, 2.2), el('span'));
+	const row = el('div', { cls: 'nlfsb-row' }, tilesBox, followB);
+	const blockSheet = el('span', { cls: 'nlfsb-v' }), blockScale = el('span', { cls: 'nlfsb-v' });
+	const block = el('div', { cls: 'nlfsb-block' }, el('span', { cls: 'nlfsb-k', text: T.sheet }), blockSheet, el('span', { cls: 'nlfsb-k', text: T.scale }), blockScale);
+	const zIn = btn('nlfsb-zb', T.zin, ico('plus', 20, 2.4)), zOut = btn('nlfsb-zb', T.zout, ico('minus', 20, 2.4)), zRecal = btn('nlfsb-zb nlfsb-zr', T.recalA, el('span', { text: T.recal }));
+	const zoomBox = el('div', { cls: 'nlfsb-zoom' }, zIn, zOut, zRecal);
+	const toast = el('p', { cls: 'nlfsb-toast', role: 'status', 'aria-live': 'polite', hidden: true });
+	const callout = el('div', { cls: 'nlfsb-call', hidden: true });
+	const sheet = el('div', { cls: 'nlfsb-sheet' }, svg, row, callout, block, zoomBox, toast);
 	// notes (desktop side column; the same list opens in a sheet on a phone)
-	const notesCount = el('span', { cls: 'nlfb-cnt' }), notesList = el('ol', { cls: 'nlfb-list' });
-	const deskIn = el('input', { id: 'nlfb-din', type: 'text', maxlength: 160, autocomplete: 'off', placeholder: T.deskIn });
-	const notesPanel = el('section', { cls: 'nlfb-notes', 'aria-labelledby': 'nlfb-nh' }, el('div', { cls: 'nlfb-nhd' }, el('h2', { id: 'nlfb-nh', text: T.notesH }), notesCount), notesList,
-		el('div', { cls: 'nlfb-nin' }, el('label', { for: 'nlfb-din', cls: 'nlfb-sr', text: T.deskInL }), deskIn));
-	const deskTiles = el('div', { cls: 'nlfb-dtiles' });
+	const notesCount = el('span', { cls: 'nlfsb-cnt' }), notesList = el('ol', { cls: 'nlfsb-list' });
+	const deskIn = el('input', { id: 'nlfsb-din', type: 'text', maxlength: 160, autocomplete: 'off', placeholder: T.deskIn });
+	const notesPanel = el('section', { cls: 'nlfsb-notes', 'aria-labelledby': 'nlfsb-nh' }, el('div', { cls: 'nlfsb-nhd' }, el('h2', { id: 'nlfsb-nh', text: T.notesH }), notesCount), notesList,
+		el('div', { cls: 'nlfsb-nin' }, el('label', { for: 'nlfsb-din', cls: 'nlfsb-sr', text: T.deskInL }), deskIn));
+	const deskTiles = el('div', { cls: 'nlfsb-dtiles' });
 	// call controls
-	const cMic = btn('nlfb-cb', ''), cCam = btn('nlfb-cb', ''), cBoard = btn('nlfb-cbb', T.boardOn, ico('board', 20), el('span', { text: T.lBoard })), cEnd = btn('nlfb-cend', T.end, ico('end', 24));
+	const cMic = btn('nlfsb-cb', ''), cCam = btn('nlfsb-cb', ''), cBoard = btn('nlfsb-cbb', T.boardOn, ico('board', 20), el('span', { text: T.lBoard })), cEnd = btn('nlfsb-cend', T.end, ico('end', 24));
 	cBoard.setAttribute('aria-pressed', 'true');
 	cMic.hidden = typeof call.mic !== 'function'; cCam.hidden = typeof call.cam !== 'function'; cEnd.hidden = typeof call.leave !== 'function';
-	const ctl = el('div', { cls: 'nlfb-ctl' }, cMic, cCam, cBoard, cEnd);
-	const aside = el('aside', { cls: 'nlfb-aside' }, deskTiles, notesPanel);
-	const main = el('div', { cls: 'nlfb-main' }, dock, sheet, aside);
-	const pPhoto = btn('nlfb-ob', null, ico('camera', 19), el('span', { text: T.photo })), pNotes = btn('nlfb-ob', null, ico('list', 19), el('span', { text: T.notes }), el('b', { cls: 'nlfb-badge', hidden: true }));
-	const pMore = btn('nlfb-ob nlfb-om', T.more, ico('more', 20));
-	const acts = el('div', { cls: 'nlfb-acts' }, pPhoto, pNotes, pMore);
-	const ctlHome = el('div', { cls: 'nlfb-ctlh' }, ctl);
+	const ctl = el('div', { cls: 'nlfsb-ctl' }, cMic, cCam, cBoard, cEnd);
+	const aside = el('aside', { cls: 'nlfsb-aside' }, deskTiles, notesPanel);
+	const main = el('div', { cls: 'nlfsb-main' }, dock, sheet, aside);
+	const pPhoto = btn('nlfsb-ob', null, ico('camera', 19), el('span', { text: T.photo })), pNotes = btn('nlfsb-ob', null, ico('list', 19), el('span', { text: T.notes }), el('b', { cls: 'nlfsb-badge', hidden: true }));
+	const pMore = btn('nlfsb-ob nlfsb-om', T.more, ico('more', 20));
+	const acts = el('div', { cls: 'nlfsb-acts' }, pPhoto, pNotes, pMore);
+	const ctlHome = el('div', { cls: 'nlfsb-ctlh' }, ctl);
 	const camIn = el('input', { type: 'file', accept: 'image/*', capture: 'environment', hidden: true, tabindex: '-1' }), fileIn = el('input', { type: 'file', accept: 'image/*', hidden: true, tabindex: '-1' });
-	const modal = el('div', { cls: 'nlfb-mod', hidden: true });
-	const root = el('div', { cls: 'nlfb', dir: 'rtl', lang: 'he', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.board, hidden: true }, head, main, acts, ctlHome, camIn, fileIn, modal);
-	const nudgeT = el('span'), nudgeDot = el('i', { cls: 'nlfb-ndot', 'aria-hidden': 'true' }), nudgeGo = btn('nlfb-ngo', null, el('span', { text: T.see })), nudgeX = btn('nlfb-nx', T.close, ico('x', 18));
-	const nudge = el('div', { cls: 'nlfb-nudge', dir: 'rtl', lang: 'he', role: 'status', hidden: true }, nudgeDot, nudgeT, nudgeGo, nudgeX);
+	const modal = el('div', { cls: 'nlfsb-mod', hidden: true });
+	const root = el('div', { cls: 'nlfsb', dir: 'rtl', lang: 'he', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.board, hidden: true }, head, main, acts, ctlHome, camIn, fileIn, modal);
+	const nudgeT = el('span'), nudgeDot = el('i', { cls: 'nlfsb-ndot', 'aria-hidden': 'true' }), nudgeGo = btn('nlfsb-ngo', null, el('span', { text: T.see })), nudgeX = btn('nlfsb-nx', T.close, ico('x', 18));
+	const nudge = el('div', { cls: 'nlfsb-nudge', dir: 'rtl', lang: 'he', role: 'status', hidden: true }, nudgeDot, nudgeT, nudgeGo, nudgeX);
 	const style = el('link', { rel: 'stylesheet', href: CSS_URL });
 	if (CSS_URL && !document.querySelector('link[href="' + CSS_URL + '"]')) document.head.appendChild(style);
 	document.body.append(root, nudge);
@@ -222,7 +222,7 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 	/* ---------------- drawing ---------------- */
 	function paintBg() {
 		const big = { x: -1e5, y: -1e5, width: 2e5, height: 2e5 };
-		gBg.replaceChildren(sv('rect', { ...big, fill: '#F7F9FA' }), sv('rect', { ...big, fill: 'url(#nlfb-grid)' }));
+		gBg.replaceChildren(sv('rect', { ...big, fill: '#F7F9FA' }), sv('rect', { ...big, fill: 'url(#nlfsb-grid)' }));
 		if (S.bg) {
 			const im = sv('image', { x: 0, y: 0, width: S.W, height: S.H, preserveAspectRatio: 'none' }); im.setAttribute('href', S.bg.src);
 			gBg.append(sv('rect', { x: 0, y: 0, width: S.W, height: S.H, fill: '#FFFFFF' }), im, sv('rect', { x: 0, y: 0, width: S.W, height: S.H, fill: 'none', stroke: '#101820', 'stroke-width': 1.5, 'vector-effect': 'non-scaling-stroke' }));
@@ -303,7 +303,7 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 		if (p.pts.length > 1) { p.trail.setAttribute('d', pathD(p.pts)); p.trail.setAttribute('stroke-width', n1(5 * k)); }
 	}
 	const lasers = [];
-	function laser(c, p) { if (p.length < 2) return; const path = sv('path', { class: 'nlfb-las', d: pathD(p), fill: 'none', stroke: c, 'stroke-width': n1(5 * pxU()), 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-opacity': 0.9 }); gLive.appendChild(path); lasers.push({ path, t: Date.now() }); }
+	function laser(c, p) { if (p.length < 2) return; const path = sv('path', { class: 'nlfsb-las', d: pathD(p), fill: 'none', stroke: c, 'stroke-width': n1(5 * pxU()), 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-opacity': 0.9 }); gLive.appendChild(path); lasers.push({ path, t: Date.now() }); }
 	const tick = setInterval(() => {
 		const now = Date.now();
 		for (let i = lasers.length - 1; i >= 0; i--) { const a = (now - lasers[i].t) / 1400; if (a >= 1) { lasers[i].path.remove(); lasers.splice(i, 1); } else lasers[i].path.setAttribute('stroke-opacity', String(n3(0.9 * (1 - a)))); }
@@ -344,7 +344,7 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 
 	/* ---------------- the pointer ---------------- */
 	const pts = new Map(); let G = null, pinch = null, lastCur = 0, notMineT = 0;
-	function drawDraft(o) { gLive.querySelectorAll('.nlfb-draft').forEach((n) => n.remove()); if (!o) return; const g = shape(o); g.setAttribute('class', 'nlfb-draft'); gLive.appendChild(g); }
+	function drawDraft(o) { gLive.querySelectorAll('.nlfsb-draft').forEach((n) => n.remove()); if (!o) return; const g = shape(o); g.setAttribute('class', 'nlfsb-draft'); gLive.appendChild(g); }
 	function hitObj(x, y, list) {
 		const tol = 10 * pxU(), p = [x, y];
 		for (let i = list.length - 1; i >= 0; i--) {
@@ -421,7 +421,7 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 	let modalBack = null, modalDone = null;
 	function openModal(nodes, done, label) {
 		closeModal(); modalBack = document.activeElement; modalDone = done || null;
-		const card = el('div', { cls: 'nlfb-card', role: 'dialog', 'aria-modal': 'true', 'aria-label': label || null }, ...nodes);
+		const card = el('div', { cls: 'nlfsb-card', role: 'dialog', 'aria-modal': 'true', 'aria-label': label || null }, ...nodes);
 		modal.replaceChildren(card); modal.hidden = false;
 		setTimeout(() => { const f = card.querySelector('input,button'); if (f) f.focus({ preventScroll: true }); }, 30);
 		return card;
@@ -430,61 +430,61 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 	modal.addEventListener('click', (ev) => { if (ev.target === modal) closeModal(); });
 	function askText(q, ph, go, check) {
 		return new Promise((res) => {
-			const inp = el('input', { type: 'text', maxlength: 160, autocomplete: 'off', placeholder: ph, id: 'nlfb-ask' }), err = el('p', { cls: 'nlfb-err', role: 'alert' });
-			const f = el('form', { cls: 'nlfb-form' }, el('label', { for: 'nlfb-ask', cls: 'nlfb-q', text: q }), inp, err,
-				el('div', { cls: 'nlfb-2' }, el('button', { type: 'submit', cls: 'nlfb-pri', text: go }), el('button', { type: 'button', cls: 'nlfb-sec', text: T.cancel })));
+			const inp = el('input', { type: 'text', maxlength: 160, autocomplete: 'off', placeholder: ph, id: 'nlfsb-ask' }), err = el('p', { cls: 'nlfsb-err', role: 'alert' });
+			const f = el('form', { cls: 'nlfsb-form' }, el('label', { for: 'nlfsb-ask', cls: 'nlfsb-q', text: q }), inp, err,
+				el('div', { cls: 'nlfsb-2' }, el('button', { type: 'submit', cls: 'nlfsb-pri', text: go }), el('button', { type: 'button', cls: 'nlfsb-sec', text: T.cancel })));
 			f.addEventListener('submit', (ev) => { ev.preventDefault(); const v = inp.value.trim(); if (check) { const r = check(v); if (r === false) { err.textContent = T.lenBad; inp.focus(); return; } closeModal(r); } else closeModal(v); });
-			f.querySelector('.nlfb-sec').addEventListener('click', () => closeModal(check ? null : ''));
+			f.querySelector('.nlfsb-sec').addEventListener('click', () => closeModal(check ? null : ''));
 			openModal([f], (v) => res(v == null ? (check ? null : '') : v), q);
 		});
 	}
 	const askLen = () => askText(T.lenQ, T.lenPh, T.set, (v) => (v ? parseLen(v) || false : 0)); // empty = a line without a number
 	function confirmBox(q, yes) {
 		return new Promise((res) => {
-			const y = el('button', { type: 'button', cls: 'nlfb-pri nlfb-danger', text: yes }), n = el('button', { type: 'button', cls: 'nlfb-sec', text: T.cancel });
+			const y = el('button', { type: 'button', cls: 'nlfsb-pri nlfsb-danger', text: yes }), n = el('button', { type: 'button', cls: 'nlfsb-sec', text: T.cancel });
 			y.addEventListener('click', () => closeModal(true)); n.addEventListener('click', () => closeModal(false));
-			openModal([el('p', { cls: 'nlfb-q', text: q }), el('div', { cls: 'nlfb-2' }, y, n)], (v) => res(v === true), q);
+			openModal([el('p', { cls: 'nlfsb-q', text: q }), el('div', { cls: 'nlfsb-2' }, y, n)], (v) => res(v === true), q);
 		});
 	}
 	function menu(head, items) {
-		const list = items.filter(Boolean).map((it) => { const b = el('button', { type: 'button', cls: 'nlfb-mi' + (it.danger ? ' is-danger' : '') }, ico(it.i, 20), el('span', { text: it.l })); b.addEventListener('click', () => { closeModal(); it.f(); }); return b; });
-		const x = el('button', { type: 'button', cls: 'nlfb-sec', text: T.close }); x.addEventListener('click', () => closeModal());
-		openModal([el('h2', { cls: 'nlfb-mh', text: head }), ...list, x], null, head);
+		const list = items.filter(Boolean).map((it) => { const b = el('button', { type: 'button', cls: 'nlfsb-mi' + (it.danger ? ' is-danger' : '') }, ico(it.i, 20), el('span', { text: it.l })); b.addEventListener('click', () => { closeModal(); it.f(); }); return b; });
+		const x = el('button', { type: 'button', cls: 'nlfsb-sec', text: T.close }); x.addEventListener('click', () => closeModal());
+		openModal([el('h2', { cls: 'nlfsb-mh', text: head }), ...list, x], null, head);
 	}
 
 	/* ---------------- notes: list, callout, agreed, delete ---------------- */
 	function noteRow(o, inSheet) {
 		const c = o.c, f = { name: o.n, label: o.l }, isMine = o.by === meId();
-		const dB = el('button', { type: 'button', cls: 'nlfb-lk', 'aria-pressed': o.d ? 'true' : 'false', text: o.d ? T.reopen : T.done });
+		const dB = el('button', { type: 'button', cls: 'nlfsb-lk', 'aria-pressed': o.d ? 'true' : 'false', text: o.d ? T.reopen : T.done });
 		dB.addEventListener('click', () => setDone(o.id, !o.d));
-		const tools = el('div', { cls: 'nlfb-nts' }, dB);
-		if (isMine) { const x = el('button', { type: 'button', cls: 'nlfb-lk is-danger', text: T.del }); x.addEventListener('click', () => delNote(o.id)); tools.appendChild(x); }
-		const body = el('div', { cls: 'nlfb-nb' }, el('div', { cls: 'nlfb-nah' }, el('span', { cls: 'nlfb-na', style: 'color:' + DARK[c], text: [f.name, f.label].filter(Boolean).join(' · ') }), tools), el('span', { cls: 'nlfb-nt' + (o.d ? ' is-done' : ''), text: o.t }));
-		if (o.d) body.appendChild(el('span', { cls: 'nlfb-ndone' }, ico('check', 14, 3), el('span', { text: T.doneTag })));
-		const num = el('button', { type: 'button', cls: 'nlfb-num', style: 'background-color:' + c + ' !important;color:' + ink(c) + ' !important', 'aria-label': 'הערה ' + S.nums.get(o.id) + ' על התוכנית', text: String(S.nums.get(o.id)) });
+		const tools = el('div', { cls: 'nlfsb-nts' }, dB);
+		if (isMine) { const x = el('button', { type: 'button', cls: 'nlfsb-lk is-danger', text: T.del }); x.addEventListener('click', () => delNote(o.id)); tools.appendChild(x); }
+		const body = el('div', { cls: 'nlfsb-nb' }, el('div', { cls: 'nlfsb-nah' }, el('span', { cls: 'nlfsb-na', style: 'color:' + DARK[c], text: [f.name, f.label].filter(Boolean).join(' · ') }), tools), el('span', { cls: 'nlfsb-nt' + (o.d ? ' is-done' : ''), text: o.t }));
+		if (o.d) body.appendChild(el('span', { cls: 'nlfsb-ndone' }, ico('check', 14, 3), el('span', { text: T.doneTag })));
+		const num = el('button', { type: 'button', cls: 'nlfsb-num', style: 'background-color:' + c + ' !important;color:' + ink(c) + ' !important', 'aria-label': 'הערה ' + S.nums.get(o.id) + ' על התוכנית', text: String(S.nums.get(o.id)) });
 		num.addEventListener('click', () => { if (inSheet) closeModal(); goPin(o.id); });
-		return el('li', { cls: 'nlfb-ni' }, num, body);
+		return el('li', { cls: 'nlfsb-ni' }, num, body);
 	}
 	function paintNotes() {
 		const ns = notes(), d = ns.filter((o) => o.d).length;
 		notesCount.textContent = ns.length ? T.count(ns.length, d) : '';
-		notesList.replaceChildren(...(ns.length ? ns.map((o) => noteRow(o)) : [el('li', { cls: 'nlfb-none', text: T.none })]));
-		const open = ns.length - d, badge = pNotes.querySelector('.nlfb-badge'); badge.textContent = String(open); badge.hidden = !open;
+		notesList.replaceChildren(...(ns.length ? ns.map((o) => noteRow(o)) : [el('li', { cls: 'nlfsb-none', text: T.none })]));
+		const open = ns.length - d, badge = pNotes.querySelector('.nlfsb-badge'); badge.textContent = String(open); badge.hidden = !open;
 		pNotes.setAttribute('aria-label', T.notes + (ns.length ? ', ' + T.count(ns.length, d) : ''));
 	}
-	function notesSheet() { const ns = notes(); openModal([el('h2', { cls: 'nlfb-mh', text: T.notesH }), el('p', { cls: 'nlfb-cnt', text: ns.length ? T.count(ns.length, ns.filter((o) => o.d).length) : '' }), el('ol', { cls: 'nlfb-list' }, ...(ns.length ? ns.map((o) => noteRow(o, true)) : [el('li', { cls: 'nlfb-none', text: T.none })])), (() => { const x = el('button', { type: 'button', cls: 'nlfb-sec', text: T.close }); x.addEventListener('click', () => closeModal()); return x; })()], null, T.notesH); }
+	function notesSheet() { const ns = notes(); openModal([el('h2', { cls: 'nlfsb-mh', text: T.notesH }), el('p', { cls: 'nlfsb-cnt', text: ns.length ? T.count(ns.length, ns.filter((o) => o.d).length) : '' }), el('ol', { cls: 'nlfsb-list' }, ...(ns.length ? ns.map((o) => noteRow(o, true)) : [el('li', { cls: 'nlfsb-none', text: T.none })])), (() => { const x = el('button', { type: 'button', cls: 'nlfsb-sec', text: T.close }); x.addEventListener('click', () => closeModal()); return x; })()], null, T.notesH); }
 	function setDone(id, v) { const o = S.objs.get(id); if (!o || o.k !== 'note') return; o.d = v; paintObjs(); send({ t: 'done', id, v }); if (!modal.hidden && !S.desk) notesSheet(); if (S.callout === id) openCallout(id); }
 	function delNote(id) { const o = S.objs.get(id); if (!o || o.by !== meId()) return; delObj(id, o.by); send({ t: 'del', id }); if (!modal.hidden && !S.desk) notesSheet(); }
 	function goPin(id) { const o = S.objs.get(id); if (!o || !S.view) return; if (S.follow) stopFollow(); S.view = { ...S.view, x: o.a[0] - S.view.w / 2, y: o.a[1] - S.view.h / 2 }; applyView(); openCallout(id); }
 	function openCallout(id) {
 		const o = S.objs.get(id); if (!o || o.k !== 'note') return; S.callout = id;
-		const c = o.c, x = btn('nlfb-cx', T.close, ico('x', 16, 2.4)); x.addEventListener('click', closeCallout);
-		const dB = el('button', { type: 'button', cls: 'nlfb-lk', 'aria-pressed': o.d ? 'true' : 'false', text: o.d ? T.reopen : T.done }); dB.addEventListener('click', () => setDone(id, !o.d));
-		const tools = el('div', { cls: 'nlfb-nts' }, dB);
-		if (o.by === meId()) { const d = el('button', { type: 'button', cls: 'nlfb-lk is-danger', text: T.del }); d.addEventListener('click', () => delNote(id)); tools.appendChild(d); }
+		const c = o.c, x = btn('nlfsb-cx', T.close, ico('x', 16, 2.4)); x.addEventListener('click', closeCallout);
+		const dB = el('button', { type: 'button', cls: 'nlfsb-lk', 'aria-pressed': o.d ? 'true' : 'false', text: o.d ? T.reopen : T.done }); dB.addEventListener('click', () => setDone(id, !o.d));
+		const tools = el('div', { cls: 'nlfsb-nts' }, dB);
+		if (o.by === meId()) { const d = el('button', { type: 'button', cls: 'nlfsb-lk is-danger', text: T.del }); d.addEventListener('click', () => delNote(id)); tools.appendChild(d); }
 		callout.style.setProperty('--c', c);
-		callout.replaceChildren(el('span', { cls: 'nlfb-ch', style: 'color:' + DARK[c] }, el('span', { cls: 'nlfb-cn', style: 'background:' + c + ';color:' + ink(c), text: String(S.nums.get(id)) }), el('span', { text: [first(o.n), o.l].filter(Boolean).join(' · ') })),
-			el('span', { cls: 'nlfb-ct' + (o.d ? ' is-done' : ''), text: o.t }), tools, x);
+		callout.replaceChildren(el('span', { cls: 'nlfsb-ch', style: 'color:' + DARK[c] }, el('span', { cls: 'nlfsb-cn', style: 'background:' + c + ';color:' + ink(c), text: String(S.nums.get(id)) }), el('span', { text: [first(o.n), o.l].filter(Boolean).join(' · ') })),
+			el('span', { cls: 'nlfsb-ct' + (o.d ? ' is-done' : ''), text: o.t }), tools, x);
 		callout.hidden = false; placeCallout();
 	}
 	function closeCallout() { S.callout = ''; callout.hidden = true; }
@@ -523,8 +523,8 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 		else v.dataset.on = '';
 		v.hidden = !p.cam || v.dataset.on !== '1';
 		const lab = (S.desk ? [f.name, f.label].filter(Boolean).join(' · ') : first(f.name)) + (p.speaking ? ' · ' + T.speaking : '');
-		const t = el('div', { cls: 'nlfb-tile' + (big ? ' is-big' : '') + (p.speaking ? ' is-sp' : ''), style: '--c:' + c + ';--i:' + ink(c), role: 'img', 'aria-label': lab },
-			el('span', { cls: 'nlfb-ini', 'aria-hidden': 'true', text: initials(f.name) }), v, el('span', { cls: 'nlfb-tn', 'aria-hidden': 'true', text: lab }));
+		const t = el('div', { cls: 'nlfsb-tile' + (big ? ' is-big' : '') + (p.speaking ? ' is-sp' : ''), style: '--c:' + c + ';--i:' + ink(c), role: 'img', 'aria-label': lab },
+			el('span', { cls: 'nlfsb-ini', 'aria-hidden': 'true', text: initials(f.name) }), v, el('span', { cls: 'nlfsb-tn', 'aria-hidden': 'true', text: lab }));
 		if (!v.hidden && v.paused) v.play().catch(() => {});
 		return t;
 	}
@@ -602,7 +602,7 @@ export function createBoard({ tr, title = '', t0 = Date.now(), face, call = {}, 
 			else { let b = null; try { b = gObj.getBBox(); const p = gPin.getBBox(); if (p.width || p.height) b = b.width || b.height ? { x: Math.min(b.x, p.x), y: Math.min(b.y, p.y), width: Math.max(b.x + b.width, p.x + p.width) - Math.min(b.x, p.x), height: Math.max(b.y + b.height, p.y + p.height) - Math.min(b.y, p.y) } : p; } catch (e) { b = null; }
 				const x0 = Math.min(0, b && b.width ? b.x - 40 : 0), y0 = Math.min(0, b && b.width ? b.y - 40 : 0); a = { x: x0, y: y0, w: Math.max(S.W, b && b.width ? b.x + b.width + 40 : 0) - x0, h: Math.max(S.H, b && b.width ? b.y + b.height + 40 : 0) - y0 }; }
 			const k = 1600 / Math.max(a.w, a.h), cw = Math.round(a.w * k), ch = Math.round(a.h * k);
-			const out = svg.cloneNode(true); out.querySelectorAll('.nlfb-live').forEach((n) => n.remove());
+			const out = svg.cloneNode(true); out.querySelectorAll('.nlfsb-live').forEach((n) => n.remove());
 			out.setAttribute('viewBox', [a.x, a.y, a.w, a.h].join(' ')); out.setAttribute('width', cw); out.setAttribute('height', ch); out.setAttribute('xmlns', NS);
 			const op = out.querySelector('pattern'); if (op) { const gs = n1(18 / k * Math.pow(2, Math.round(Math.log2(k)))); op.setAttribute('width', gs); op.setAttribute('height', gs); op.firstChild.setAttribute('d', 'M' + gs + ' 0H0V' + gs); op.firstChild.setAttribute('stroke-width', n3(1 / k)); }
 			const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(out)], { type: 'image/svg+xml' }));

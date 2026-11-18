@@ -42,7 +42,7 @@ def shot(page, name):
 
 def vids(page):
     # how many <video> elements on the call screen really carry a moving picture
-    return page.evaluate("""() => [...document.querySelectorAll('.nlfc-stage video, .nlfb-dock video, .nlfb-dtiles video')].filter(v => v.srcObject && v.videoWidth > 0 && !v.paused).length""")
+    return page.evaluate("""() => [...document.querySelectorAll('.nlfc-stage video, .nlfsb-dock video, .nlfsb-dtiles video')].filter(v => v.srcObject && v.videoWidth > 0 && !v.paused).length""")
 
 
 def remote_vids(page):
@@ -107,6 +107,11 @@ with sync_playwright() as p:
         b.locator(".nlfc-sheet .nlfc-pri").click()
         b.locator(".nlfc-stage").wait_for(state="visible", timeout=40000)
         note("B: entered the room", True)
+        try:
+            b.get_by_label("להפעיל את המצלמה").first.click(timeout=6000)
+            note("B switches the camera on inside the room", True)
+        except Exception as e:
+            note("B switches the camera on inside the room", False, e)
         # close A's invite sheet if it is still open, then wait for the pictures
         try:
             a.locator(".nlfc-sheet .nlfc-x").click(timeout=3000)
@@ -124,27 +129,46 @@ with sync_playwright() as p:
         shot(b, "b2-in-call")
 
         # ---------------------------------------------------------------- the shared board
+        COUNT = "() => { const s = document.querySelector('.nlfsb-svg'); return s ? s.querySelectorAll('*').length : -1; }"
+        BOX = "() => { const r = document.querySelector('.nlfsb-svg').getBoundingClientRect(); return {x: r.x, y: r.y, w: r.width, h: r.height}; }"
         try:
             a.locator(".nlfc-board").click()
-            a.locator(".nlfb, [class^='nlfb-']").first.wait_for(state="visible", timeout=15000)
+            a.locator(".nlfsb-svg").wait_for(state="visible", timeout=15000)
             b.locator(".nlfc-board").click()
-            b.locator(".nlfb, [class^='nlfb-']").first.wait_for(state="visible", timeout=15000)
-            count = "() => document.querySelectorAll('[class^=\"nlfb\"] svg path, [class^=\"nlfb\"] svg polyline, [class^=\"nlfb\"] svg line').length"
-            before = b.evaluate(count)
-            vp = a.viewport_size
-            a.mouse.move(vp["width"] * 0.3, vp["height"] * 0.45)
-            a.mouse.down()
-            for i in range(12):
-                a.mouse.move(vp["width"] * (0.3 + i * 0.03), vp["height"] * (0.45 + (i % 3) * 0.02))
-            a.mouse.up()
+            b.locator(".nlfsb-svg").wait_for(state="visible", timeout=15000)
+            head = b.evaluate("() => { const r = document.querySelector('.nlfsb'); const h = document.querySelector('.nlfsb-head'); return getComputedStyle(r).backgroundColor + ' | ' + getComputedStyle(h).color; }")
+            note("board: dark frame, light header text (no clash with the site's skin)", head.startswith("rgb(16, 24, 32)"), head)
+            a0, b0 = a.evaluate(COUNT), b.evaluate(COUNT)
+            bx = b.evaluate(BOX)
+            b.mouse.move(bx["x"] + bx["w"] * 0.3, bx["y"] + bx["h"] * 0.4)
+            b.mouse.down()
+            for i in range(15):
+                b.mouse.move(bx["x"] + bx["w"] * (0.3 + i * 0.02), bx["y"] + bx["h"] * (0.4 + (i % 4) * 0.02), steps=3)
+            b.mouse.up()
+            a.wait_for_timeout(2500)
+            a1 = a.evaluate(COUNT)
+            note("board: a line drawn on the desktop reaches the phone", a1 > a0, "%d -> %d marks on the phone" % (a0, a1))
+            # a finger on the phone (real touch events through the browser's own input pipeline)
+            ax = a.evaluate(BOX)
+            cdp = a.context.new_cdp_session(a)
+            pts = [(ax["x"] + ax["w"] * (0.25 + i * 0.03), ax["y"] + ax["h"] * (0.6 + (i % 3) * 0.015)) for i in range(14)]
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": [{"x": pts[0][0], "y": pts[0][1]}]})
+            for x, y in pts[1:]:
+                cdp.send("Input.dispatchTouchEvent", {"type": "touchMove", "touchPoints": [{"x": x, "y": y}]})
+                a.wait_for_timeout(30)
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
             b.wait_for_timeout(2500)
-            after = b.evaluate(count)
-            note("board: A's line reaches B", after > before, "%d -> %d marks on B" % (before, after))
+            b1 = b.evaluate(COUNT)
+            note("board: a line drawn with a finger on the phone reaches the desktop", b1 > b0 + 1, "%d -> %d marks on the desktop" % (b0, b1))
             shot(a, "a4-board")
             shot(b, "b3-board")
+            for pg in (a, b):
+                pg.locator(".nlfsb-back").first.click(timeout=5000)
+                pg.wait_for_timeout(600)
         except Exception as e:
-            note("board: A's line reaches B", False, e)
+            note("board: lines travel both ways", False, e)
             shot(a, "a4-board-fail")
+            shot(b, "b3-board-fail")
 
         # ---------------------------------------------------------------- lock: C is refused
         try:
@@ -171,8 +195,6 @@ with sync_playwright() as p:
         # ---------------------------------------------------------------- leave
         for pg, nm in ((b, "B"), (a, "A")):
             try:
-                if pg.locator("[class^='nlfb'] .nlfb-x, .nlfb-close").count():
-                    pg.keyboard.press("Escape")
                 pg.locator(".nlfc-end").first.click(timeout=5000, force=True)
                 pg.wait_for_timeout(1500)
                 note(nm + " leaves: the call screen is gone", pg.locator(".nlfc-stage").count() == 0)

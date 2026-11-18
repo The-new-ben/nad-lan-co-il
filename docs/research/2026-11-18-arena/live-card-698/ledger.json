@@ -1,0 +1,50 @@
+{
+ "at": "2026-11-18 18:18:48",
+ "ledger": [
+  {
+   "step": "member sees the way to open a card",
+   "ok": true,
+   "detail": "אני בעל מקצוע"
+  },
+  {
+   "step": "the card is saved and opens at once",
+   "ok": true,
+   "detail": "https://nad-lan.co.il/professionals/%d7%91%d7%93%d7%99%d7%a7%d7%aa-claude-%d7%91/"
+  },
+  {
+   "step": "own card page: the member-made top is there",
+   "ok": true,
+   "detail": "בדיקת Claude ב"
+  },
+  {
+   "step": "another member sees the video-call button on the card",
+   "ok": true,
+   "detail": "שיחת וידאו עם בדיקת בדפדפן, בלי התקנה. אפשר להראות | 520x64 at y=369"
+  },
+  {
+   "step": "the caller is in the call screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the card owner gets the invitation notice",
+   "ok": true,
+   "detail": "בדיקת Claude א · רוכש דירה מזמין אתכם לשיחת וידאו על בדיקת Claude ב"
+  },
+  {
+   "step": "the card owner joined the call",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the caller receives the owner's live video",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the owner receives the caller's live video",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

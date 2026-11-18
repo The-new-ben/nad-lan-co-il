@@ -63,6 +63,12 @@ add_action( 'rest_api_init', function () {
 			$gone = array();
 			if ( $ids ) {
 				$in = implode( ',', array_map( 'intval', $ids ) );
+				// 18.11.2026: a card a test member opened for himself goes to the trash with him (only a card he made: source forum_member + his id)
+				foreach ( $wpdb->get_results( "SELECT id, pro_id FROM $mt WHERE id IN ($in) AND pro_id IS NOT NULL AND pro_id > 0", ARRAY_A ) as $row ) {
+					$pid = (int) $row['pro_id'];
+					if ( 'forum_member' === (string) get_post_meta( $pid, 'source', true ) && (int) get_post_meta( $pid, 'nl_forum_member', true ) === (int) $row['id'] ) { wp_trash_post( $pid ); $gone['cards_to_trash'][] = $pid; }
+				}
+				if ( function_exists( 'nlfc_table' ) ) { $gone['callpref'] = (int) $wpdb->query( 'DELETE FROM ' . nlfc_table() . " WHERE member_id IN ($in)" ); }
 				$tids = $wpdb->get_col( 'SELECT id FROM ' . nlf_t( 'topics' ) . " WHERE member_id IN ($in)" );
 				foreach ( array( 'replies' => 'member_id', 'thanks' => 'member_id', 'flags' => 'member_id', 'follows' => 'member_id' ) as $tb => $col ) {
 					$gone[ $tb ] = (int) $wpdb->query( 'DELETE FROM ' . nlf_t( $tb ) . " WHERE $col IN ($in)" );

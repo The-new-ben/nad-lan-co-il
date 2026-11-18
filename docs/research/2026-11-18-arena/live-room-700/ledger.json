@@ -1,0 +1,112 @@
+{
+ "at": "2026-11-18 18:36:47",
+ "base": "https://nad-lan.co.il",
+ "topic": "6",
+ "ledger": [
+  {
+   "step": "guest sees the room button: home",
+   "ok": true,
+   "detail": "326x54 at y=562"
+  },
+  {
+   "step": "guest sees the room button: discussion",
+   "ok": true,
+   "detail": "73x44 at y=499"
+  },
+  {
+   "step": "guest sees the room button: card",
+   "ok": true,
+   "detail": "73x44 at y=710"
+  },
+  {
+   "step": "guest press asks to enter the forum first",
+   "ok": true,
+   "detail": "כדי לפתוח חדר וידאו צריך להיכנס לפורום"
+  },
+  {
+   "step": "A: the lobby opens",
+   "ok": true,
+   "detail": "חדר וידאו"
+  },
+  {
+   "step": "A: camera preview is live in the lobby",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "A: the room opened (call screen)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "A: the invite sheet shows the link",
+   "ok": true,
+   "detail": "https://nad-lan.co.il/forum/6/#call=…"
+  },
+  {
+   "step": "A: the WhatsApp button is there",
+   "ok": true,
+   "detail": "https://wa.me/?text=%D7%A9%D7%99%D7%97%D7%AA%20%D7%95%D7%99%"
+  },
+  {
+   "step": "B: the link opens the join sheet",
+   "ok": true,
+   "detail": "בדיקת Claude ב מזמין אתכם לחדר וידאו"
+  },
+  {
+   "step": "B: entered the room",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B switches the camera on inside the room",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "A receives B's live video",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "B receives A's live video",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "board: dark frame, light header text (no clash with the site's skin)",
+   "ok": true,
+   "detail": "rgb(16, 24, 32) | rgb(255, 255, 255)"
+  },
+  {
+   "step": "board: a line drawn on the desktop reaches the phone",
+   "ok": true,
+   "detail": "9 -> 17 marks on the phone"
+  },
+  {
+   "step": "board: a line drawn with a finger on the phone reaches the desktop",
+   "ok": true,
+   "detail": "9 -> 19 marks on the desktop"
+  },
+  {
+   "step": "A locks the room",
+   "ok": true,
+   "detail": "200 {\"ok\":1,\"room\":\"z7srqsfoojzu\",\"lock\":1}"
+  },
+  {
+   "step": "C is refused: the room is locked",
+   "ok": true,
+   "detail": "החדר נעול. בקשו ממי ששלח את הקישור לפתוח את הנעילה.  סגירה"
+  },
+  {
+   "step": "B leaves: the call screen is gone",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "A leaves: the call screen is gone",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}
