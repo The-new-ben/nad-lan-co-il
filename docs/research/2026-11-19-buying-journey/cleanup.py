@@ -12,4 +12,5 @@ for u in uids:
     s, r = req("GET", "/wp-json/wp/v2/users/%d?context=edit&_fields=id,roles,username" % u)
     assert s == 200 and r.get("roles") == ["nadlan_lawyer"] and str(r.get("username", "")).startswith("nl-lawyer-test-"), (s, r)
     print("delete user", u, req("DELETE", "/wp-json/wp/v2/users/%d?force=true&reassign=%d" % (u, me["id"]))[0])
-print("gate on", req("POST", "/wp-json/wp/v2/settings", body={"nadlan_cart_gate": "1"}))
+_g = req("POST", "/wp-json/wp/v2/settings", body={"nadlan_cart_gate": "1"})
+print("gate on", _g[0], {k: v for k, v in (_g[1] or {}).items() if k.startswith("nadlan_cart")})

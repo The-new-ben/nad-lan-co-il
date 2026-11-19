@@ -1,21 +1,26 @@
 # -*- coding: utf-8 -*-
-"""make deploy715.py from deploy714.py: 1.72.715 = HAD-790 follow-up, found by the live press test of 1.72.711 (19.11.2026):
-  SWAP inc/home-v3.php: on the French and Russian homes the header's last items ran into the language button (long labels; the bar
-       is capped at 1,440 px): from 1061 px the language header's items are tighter, its box may take 1,600 px, the "post a listing"
-       button steps aside below 1,366 px, and the two plain links (the areas in demand, abroad) move into the first panel as a
-       group of their own (no link lost: 57 in the panels). Measured with the CSS injected on the live en/fr/ru/ar homes at
-       1080/1180/1280/1366/1440/1600/1920: 0 overlaps."""
+"""make deploy715.py from deploy714.py: 1.72.715 = HAD-796 follow-up (package 4), found by the live press test of 1.72.710:
+  SWAP assets/cart/cart.js: the Kikar showroom announces the apartment of its shared link (#dira=B24-262) before the deferred
+       basket listens, so the basket said "chosen with the developer"; the basket now reads the page's own link when it opens.
+  SWAP inc/cart.php: the owner's purge route finds orders by reference with a title match (WordPress search does not reach
+       private posts of a non-public type); the terms version is printed in the reader's language."""
 import os, sys, json
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+H = r"C:\Users\777\nad-lan\nad-lan-co-il\scripts\project-stage"
+sys.path.insert(0, H)
 import kl_release  # noqa: E402
 
-PREV = 714
+PREV, NEWV = 714, 715
 rp = json.load(open(os.path.join(kl_release.QA, "deploy-result-%d.json" % PREV), encoding="utf-8"))
 assert str(rp.get("state", "")).startswith("released"), rp.get("state")
-E = ['Fatal error', 'Warning</b>', 'Notice</b>']
-ROWS = ("    ('/fr/?t715a=1', ['nlhp-top--lang', '>Immobilier international<', '.nlhp-top--lang .nlhp-nav__item{padding:0 7px'], %r + ['class=\"nlhp-nav__item nlhp-nav__plain\"'], []),\n"
-        "    ('/ru/?t715a=1', ['nlhp-top--lang', '.nlhp-top--lang .nlhp-post{display:none}'], %r + ['class=\"nlhp-nav__item nlhp-nav__plain\"'], []),\n"
-        "    ('/?t715a=1', ['id=\"nlhp-top\"', 'class=\"nlhp-nav__item nlhp-nav__plain\"'], %r, []),\n") % (E, E, E)
-kl_release.build_release(PREV, 715, ["inc/home-v3.php"], [], {}, {}, ROWS,
-                         "the language homes' header fits at every width (the plain links in the first panel)",
-                         "HAD-790 follow-up: the language header fits")
+T = "t%dc=1" % NEWV
+A = "/wp-content/plugins/nadlan-config/assets/cart/"
+NO = ["Fatal error", "Warning</b>", "Notice</b>"]
+rows = [
+    (A + "cart.js?" + T, ["function fromHash()", "#dira=", "window.NLCart = {"], [], []),
+    ("/projects/hamedina/?" + T, ['id="nadlan-cart-cfg"', "assets/cart/cart.js?ver=1.72.%d" % NEWV], NO, []),
+    ("/projects/rainbow-tel-aviv-fr/?" + T, ['id="nadlan-cart-cfg"', '"lang":"fr"'], NO, []),
+]
+ROWS = "".join("    %r,\n" % (r,) for r in rows)
+kl_release.build_release(PREV, NEWV, ["inc/cart.php", "assets/cart/cart.js"], [], {}, {}, ROWS,
+    "the basket reads the Kikar shared-apartment link; purge by reference; terms version in the reader's language",
+    "HAD-796 package 4 follow-up")
