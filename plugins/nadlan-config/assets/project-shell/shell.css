@@ -1,0 +1,42 @@
+/* ProjectShell row and sheets (HAD-794). Board: https://claude.ai/artifact/VdA956RZtEthDSgziFSJTW
+   Sea-chart palette: abyss #10262F, sea #2F6F86, foam #E8F1F3, live #0F7A63. The theme forces !important on buttons and
+   h2, so the row's own rules carry a longer selector and !important where the theme reaches. */
+:root body .nlsh{display:flex!important;flex-wrap:nowrap;gap:8px;align-items:center;margin:14px 0 6px!important;padding:2px 0 6px!important;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;font-family:Heebo,system-ui,sans-serif;max-width:100%}
+:root body .nlsh::-webkit-scrollbar{display:none}
+:root body .nlsh .nlsh-b{flex:0 0 auto;display:inline-flex!important;align-items:center;gap:8px;min-height:48px!important;height:48px;padding:0 16px!important;margin:0!important;border-radius:24px!important;border:1.5px solid transparent!important;background:#e8f1f3!important;color:#10262f!important;font:700 15px/1.2 Heebo,system-ui,sans-serif!important;text-decoration:none!important;white-space:nowrap;cursor:pointer;box-shadow:none!important;letter-spacing:0!important;text-transform:none!important}
+:root body .nlsh .nlsh-b:hover{border-color:#2f6f86!important}
+:root body .nlsh .nlsh-b:focus-visible{outline:2px solid #2f6f86!important;outline-offset:3px}
+:root body .nlsh .nlsh-b small{font-weight:400;font-size:12px;color:#3b4753}
+:root body .nlsh .nlsh-b--live{background:#0f7a63!important;color:#fff!important}
+:root body .nlsh .nlsh-b--live:hover{background:#0b6652!important;border-color:transparent!important}
+:root body .nlsh .nlsh-b[hidden]{display:none!important}
+.nlsh-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:nlsh-pulse 2s infinite}
+.nlsh-sheet .nlsh-dot{background:#0f7a63}
+@keyframes nlsh-pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.65)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.nlsh-play{display:inline-block;width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #10262f}
+.nlsh[dir="rtl"] .nlsh-play{transform:scaleX(-1)}
+:root body .nlsh .nlsh-slot{flex:0 0 auto;display:flex;align-items:center;min-height:48px}
+:root body .nlsh .nlsh-slot:empty{display:none}
+@media (min-width:900px){:root body .nlsh{flex-wrap:wrap;overflow:visible}}
+
+/* the call sheet and the film: a bottom sheet on a phone, a centred card on a wide screen */
+:root body .nlsh-sheet,:root body .nlsh-film{border:0;padding:24px 22px 22px;margin:auto auto 0;width:100%;max-width:100%;box-sizing:border-box;border-radius:22px 22px 0 0;background:#fff;color:#14212b;font-family:Heebo,system-ui,sans-serif;box-shadow:0 -10px 40px rgba(16,38,47,.25)}
+:root body .nlsh-sheet::backdrop,:root body .nlsh-film::backdrop{background:rgba(16,38,47,.62)}
+@media (min-width:700px){:root body .nlsh-sheet{margin:auto;max-width:440px;border-radius:20px}}
+:root body .nlsh-film{background:#10262f;padding:44px 10px 10px}
+@media (min-width:700px){:root body .nlsh-film{margin:auto;max-width:min(1100px,92vw);border-radius:18px}}
+.nlsh-film video{display:block;width:100%;max-height:78vh;background:#000;border-radius:10px}
+.nlsh-x{position:absolute;top:8px;inset-inline-end:8px;margin:0}
+:root body .nlsh-x button{width:44px!important;height:44px!important;min-height:44px!important;border-radius:22px!important;border:0!important;background:transparent!important;color:inherit!important;font:400 28px/1 Heebo,system-ui,sans-serif!important;cursor:pointer;padding:0!important}
+.nlsh-film .nlsh-x button{color:#e8f1f3!important}
+.nlsh-k{display:flex;align-items:center;gap:8px;margin:0 0 6px;font:500 12px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#0f7a63;letter-spacing:.02em}
+:root body .nlsh-sheet h2{margin:0 0 8px!important;font:800 22px/1.25 Heebo,system-ui,sans-serif!important;color:#10262f!important;padding:0 36px 0 0}
+:root body .nlsh-sheet[dir="ltr"] h2{padding:0 36px 0 0}
+:root body .nlsh-sheet[dir="rtl"] h2{padding:0 0 0 36px}
+.nlsh-p{margin:0 0 16px;font-size:15px;line-height:1.6;color:#3b4753}
+:root body .nlsh-go,:root body .nlsh-book{display:flex!important;align-items:center;justify-content:center;min-height:52px;border-radius:12px;font:700 16px Heebo,system-ui,sans-serif!important;text-decoration:none!important;margin:0 0 10px}
+:root body .nlsh-go{background:#0f7a63!important;color:#fff!important}
+:root body .nlsh-go:hover{background:#0b6652!important}
+:root body .nlsh-book{border:1.5px solid #10262f;color:#10262f!important;background:#fff!important}
+.nlsh-n{margin:4px 0 0;font-size:12.5px;color:#5f6b75}
+@media (prefers-reduced-motion:reduce){.nlsh-dot{animation:none}}

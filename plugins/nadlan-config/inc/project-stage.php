@@ -38,7 +38,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 	 * 59°, Yarkon Park about 100°, the Azrieli towers at 167°, the Old North about 197°, the port at 243°).
 	 */
 	function nadlan_ps_config() {
-		return array(
+		return apply_filters( 'nadlan_ps_config', array( // HAD-794: inc/project-shell.php adds the massing-stage projects
 			'rainbow-tel-aviv' => array(
 				'dir'            => 'rainbow',
 				'mount'          => 'mountRainbowStage',
@@ -540,9 +540,10 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					),
 				),
 			),
-		);
+		) );
 	}
 }
+require_once __DIR__ . '/project-shell.php'; // HAD-794 (1.72.708): every capability on every project page, in every language
 
 /* The stage's first picture in the page's own HTML (design system ProjectStage, version 29): a phone-sized file and the
    full one; the head's preload names the same set, and the stage's script adopts this very image as its poster. */
