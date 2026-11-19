@@ -1,0 +1,4 @@
+en 1080: items 6 overlap [] | 1180: items 6 overlap [] | 1280: items 6 overlap [] | 1366: items 6 overlap [] | 1440: items 6 overlap [] | 1600: items 6 overlap [] | 1920: items 6 overlap []
+fr 1080: items 6 overlap [] | 1180: items 6 overlap [] | 1280: items 6 overlap [] | 1366: items 6 overlap [] | 1440: items 6 overlap [] | 1600: items 6 overlap [] | 1920: items 6 overlap []
+ru 1080: items 6 overlap [] | 1180: items 6 overlap [] | 1280: items 6 overlap [] | 1366: items 6 overlap [] | 1440: items 6 overlap [] | 1600: items 6 overlap [] | 1920: items 6 overlap []
+ar 1080: items 6 overlap [] | 1180: items 6 overlap [] | 1280: items 6 overlap [] | 1366: items 6 overlap [] | 1440: items 6 overlap [] | 1600: items 6 overlap [] | 1920: items 6 overlap []
