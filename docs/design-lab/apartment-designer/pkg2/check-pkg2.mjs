@@ -16,7 +16,7 @@ const S = 'window.__nlStudio', D = S + '.designer', SH = 'document.getElementByI
 const b = await browser();
 async function open(q, { w = 390, h = 844, mobile = true } = {}) {
   const p = await b.page({ w, h, dpr: mobile ? 2 : 1, mobile });
-  await p.send('Page.addScriptToEvaluateOnNewDocument', { source: 'window.__nlCallHook = {}; window.__events = []; addEventListener("nadlan:design-order", (e) => __events.push(e.detail));' });
+  await p.send('Page.addScriptToEvaluateOnNewDocument', { source: 'try { localStorage.setItem("nl_vt_off", "1"); } catch (e) {} window.__nlCallHook = {}; window.__events = []; addEventListener("nadlan:design-order", (e) => __events.push(e.detail));' });
   await p.go(BASE + '/tour/designer/' + q);
   const ok = await p.wait(`!!(${D} && ${D}.space && ${D}.space.el)`, 40000);
   return { p, ok };
@@ -26,7 +26,7 @@ try {
   // ---------------- phone, Hebrew, a project with published plans ----------------
   let { p, ok } = await open('?project=ashira&t=' + Date.now());
   check('phone he: the designer opens on the project plan', ok);
-  await p.ev(`localStorage.clear()`); // a clean visitor
+  await p.ev(`localStorage.clear(); localStorage.setItem('nl_vt_off','1')`); // a clean visitor (the test never counts as a buyer in the developer report)
   await p.go(BASE + '/tour/designer/?project=ashira&t=' + Date.now()); await p.wait(`!!(${D} && ${D}.space && ${D}.space.el)`, 40000);
   let r0 = await p.ev(`${D}.space.riseValue`);
   if (r0 >= 1) { await p.ev(`${D}.space.rise()`); await sleep(400); r0 = await p.ev(`${D}.space.riseValue`); } // a slow load can finish the first rise before the check looks
