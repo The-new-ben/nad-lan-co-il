@@ -1,0 +1,1097 @@
+[
+ {
+  "id": "08",
+  "kind": "branch",
+  "title": {
+   "he": "חידוש, אופציה, העלאה והצמדה",
+   "en": "Renewal, option, raise"
+  },
+  "what": "Everything around the end of the period: the option windows, renewing, a raise and linkage.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "from 4 months before the end",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "08.01",
+  "kind": "branch",
+  "title": {
+   "he": "יומן המועדים לפני סוף החוזה",
+   "en": "Calendar before the lease ends"
+  },
+  "what": "The dates that decide whether the tenancy renews.",
+  "who": [
+   "landlord"
+  ],
+  "when": "from the day the lease is signed",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "08.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "יומן חלון אופציה של המשכיר: 90 יום",
+   "en": "Landlord option window: 90 days"
+  },
+  "what": "Set an alert 90 days before the end, the last day for the landlord to say he exercises his option.",
+  "who": [
+   "landlord"
+  ],
+  "when": "90 days before the end of the period",
+  "proof": "calendar alert",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(ב)",
+    "quote": "לא יאוחר מ־90 ימים לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord loses the chance to use his option on time.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: option window alert (att_option) in the attention list"
+  },
+  "thumb": {
+   "he": "קבע התראה",
+   "en": "Set alert",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "יומן חלון אופציה של השוכר: 60 יום",
+   "en": "Tenant option window: 60 days"
+  },
+  "what": "Mark the last day for the tenant to say he exercises his option, 60 days before the end.",
+  "who": [
+   "landlord"
+  ],
+  "when": "60 days before the end of the period",
+  "proof": "calendar alert",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(ג)",
+    "quote": "לא יאוחר מ־60 ימים לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord does not know in time whether the tenant stays.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: option window alert (att_option)"
+  },
+  "thumb": {
+   "he": "קבע התראה",
+   "en": "Set alert",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה זמן סביר לפני הסוף: רוצה להאריך?",
+   "en": "Reasonable-time notice: do I want to extend?"
+  },
+  "what": "Tell the tenant, in reasonable time before the end, whether the landlord wants to extend and on what terms.",
+  "who": [
+   "landlord"
+  ],
+  "when": "3 to 4 months before the end",
+  "proof": "message to the tenant",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(א)",
+    "quote": "זמן סביר לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept and the tenant plans blind.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: renew offer (act_renew); no timed notice"
+  },
+  "thumb": {
+   "he": "שלח הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה על מימוש אופציית המשכיר",
+   "en": "Notice that the landlord uses his option"
+  },
+  "what": "If the landlord holds an option and wants it, tell the tenant in writing within the window.",
+  "who": [
+   "landlord"
+  ],
+  "when": "not later than 90 days before the end",
+  "proof": "written notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(ב)",
+    "quote": "רשאי המשכיר לקיים את הברירה רק אם נקבעו בחוזה, מראש, תנאים לעניין תקופת ההארכה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "No notice in time and the option is lost; no preset extension terms and it cannot be used.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעת מימוש",
+   "en": "Send exercise notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלת הודעת השוכר על מימוש אופציה",
+   "en": "Receive the tenant's option notice"
+  },
+  "what": "Record the tenant's notice that he uses his option, with the date received.",
+  "who": [
+   "landlord"
+  ],
+  "when": "up to 60 days before the end",
+  "proof": "dated notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(ג)",
+    "quote": "יודיע למשכיר, לא יאוחר מ־60 ימים לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The date of notice is argued.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום הודעה",
+   "en": "Record notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "תזכורת כללית 4 חודשים לפני הסוף",
+   "en": "General reminder 4 months before the end"
+  },
+  "what": "Set a single reminder four months before the end to decide: renew, raise or end.",
+  "who": [
+   "landlord"
+  ],
+  "when": "4 months before the end",
+  "proof": "calendar alert",
+  "money": null,
+  "law": [],
+  "if_skipped": "The deadlines arrive without a plan.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: attention list shows option and lease end dates"
+  },
+  "thumb": {
+   "he": "קבע תזכורת",
+   "en": "Set reminder",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "רישום תשובת השוכר: מאריך או לא",
+   "en": "Record the tenant's answer: extends or not"
+  },
+  "what": "Write the tenant's answer to the renewal offer with the date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when answered",
+  "proof": "message in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום תשובה",
+   "en": "Record answer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.01.08",
+  "kind": "leaf",
+  "title": {
+   "he": "תיעוד שאין הודעה: האופציה נסגרה",
+   "en": "Record that no notice came: option closed"
+  },
+  "what": "When the window passes with no notice, write it with the date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the window closes",
+  "proof": "note in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: the text read does not say what follows a missed tenant notice; ask a lawyer.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן נסגר",
+   "en": "Mark closed",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02",
+  "kind": "branch",
+  "title": {
+   "he": "חידוש החוזה",
+   "en": "Renewing the lease"
+  },
+  "what": "Renewal as a new written lease or a signed addendum.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before the period ends",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "08.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "הצעת חידוש לשוכר",
+   "en": "Renewal offer to the tenant"
+  },
+  "what": "Send the tenant an offer: new period, rent, linkage and securities.",
+  "who": [
+   "landlord"
+  ],
+  "when": "3 months before the end",
+  "proof": "offer record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(א)",
+    "quote": "אם ברצונו להאריך את תקופת השכירות ובאילו תנאים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: renewal offer (act_renew) and renew form (renew_lease, renew_title)"
+  },
+  "thumb": {
+   "he": "שלח הצעה",
+   "en": "Send offer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "חידוש לתקופה חדשה",
+   "en": "Renew for a new period"
+  },
+  "what": "Open the new lease on the old one: tenants, guarantors and deposit carry over.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when both agree",
+  "proof": "new lease in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייערך בכתב וייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An agreement continuing by conduct has no new written terms.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: renew form closes the old lease the day before the new one (renew_lead)"
+  },
+  "thumb": {
+   "he": "חדש חוזה",
+   "en": "Renew lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "עדכון תאריכים ותקופה",
+   "en": "Update dates and period"
+  },
+  "what": "Write the new start and end dates.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when renewing",
+  "proof": "lease line",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (4)",
+    "quote": "תקופת השכירות, קיומה של ברירה להארכת התקופה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: renew form"
+  },
+  "thumb": {
+   "he": "עדכן תאריכים",
+   "en": "Update dates",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "תוספת כתובה לחוזה במקום חוזה חדש",
+   "en": "Written addendum instead of a new lease"
+  },
+  "what": "If only the period and the rent change, write and sign a short addendum.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when renewing",
+  "proof": "signed addendum",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייערך בכתב וייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Oral changes are hard to prove.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease builder; no addendum template"
+  },
+  "thumb": {
+   "he": "צור תוספת",
+   "en": "Create addendum",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.05",
+  "kind": "leaf",
+  "title": {
+   "he": "חתימה מחדש של שני הצדדים",
+   "en": "Both sides sign again"
+  },
+  "what": "Both parties sign the renewed text and each gets a copy.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when renewing",
+  "proof": "signed copies",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "העתק חתום מהחוזה יימסר לכל אחד מהצדדים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: personal link signing"
+  },
+  "thumb": {
+   "he": "שלח לחתימה",
+   "en": "Send to sign",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.06",
+  "kind": "leaf",
+  "title": {
+   "he": "עדכון הערובה לתקופה החדשה",
+   "en": "Update the security for the new period"
+  },
+  "what": "Check the deposit and guarantees cover the new period and are within the cap.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when renewing",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "לא יעלה גובהן המצטבר של הערובות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A security that expired leaves the new period uncovered.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: deposit passes to the new lease; no cap check"
+  },
+  "thumb": {
+   "he": "בדוק ערובה",
+   "en": "Check security",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.07",
+  "kind": "leaf",
+  "title": {
+   "he": "הארכת ערבות בנקאית",
+   "en": "Extend the bank guarantee"
+  },
+  "what": "Ask for a new or extended guarantee covering the new period.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before the old one expires",
+  "proof": "new guarantee copy",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "ערבות בנקאית",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The guarantee ends with the old period.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקש הארכה",
+   "en": "Ask extension",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.08",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לערב על שינוי בחיוב",
+   "en": "Tell the guarantor about the change"
+  },
+  "what": "Send the guarantor the changed terms and ask for his written agreement.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the terms change",
+  "proof": "guarantor's signed consent",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "5(ג)",
+    "quote": "חל בחיוב הנערב שינוי אחר, על פי הסכם בין החייב לבין הנושה",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "5(ב)",
+    "quote": "הוגדל החיוב הנערב, על פי הסכם בין החייב לבין הנושה, אין הדבר משנה בחיובו של הערב",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A guarantor may choose not to be bound by the changed terms; his duty also stays as before when the debt grows.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח לערב",
+   "en": "Send to guarantor",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.09",
+  "kind": "leaf",
+  "title": {
+   "he": "שיקים חדשים לתקופה החדשה",
+   "en": "New cheques for the new period"
+  },
+  "what": "Receive a new cheque series and return the old unused ones.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when renewing",
+  "proof": "cheque list",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום שיקים",
+   "en": "Record cheques",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.02.10",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת מצב הדירה לפני חידוש",
+   "en": "Check the home before renewing"
+  },
+  "what": "Walk through the home, photograph, list repairs the landlord owes.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before renewing",
+  "proof": "dated photos",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(ב)",
+    "quote": "יתקן על חשבונו כל ליקוי או פגם אחר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Disputes build up and surface at the exit.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: repairs list and photos per lease"
+  },
+  "thumb": {
+   "he": "בצע סיור",
+   "en": "Do walk-through",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03",
+  "kind": "branch",
+  "title": {
+   "he": "העלאת שכר והצמדה",
+   "en": "Rent raise and linkage"
+  },
+  "what": "How the rent changes on renewal and during the term.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before renewing",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "08.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת שכר השוק לפני העלאה",
+   "en": "Check the market rent before a raise"
+  },
+  "what": "Look at the CBS rent table and similar listings before naming a new rent.",
+  "who": [
+   "landlord"
+  ],
+  "when": "3 months before the end",
+  "proof": "note in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": "A raise out of line with the market loses the tenant.",
+  "product_today": {
+   "status": "partly",
+   "where": "rent-earn estimate files exist in the repo (rentals-earn.php), not wired to this step"
+  },
+  "thumb": {
+   "he": "בדוק שכר שוק",
+   "en": "Check market rent",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הצעת שכר חדש",
+   "en": "Propose a new rent"
+  },
+  "what": "Send the new rent as part of the renewal offer.",
+  "who": [
+   "landlord"
+  ],
+  "when": "with the renewal offer",
+  "proof": "offer record",
+  "money": "agreed between the parties",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (5)",
+    "quote": "דמי השכירות, מועד תשלומם ואופן התשלום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: renew form carries the new rent"
+  },
+  "thumb": {
+   "he": "שלח שכר חדש",
+   "en": "Send new rent",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "סעיף הצמדה למדד בחוזה",
+   "en": "Index linkage clause"
+  },
+  "what": "Write whether and how the rent is linked to the CPI: base index, update period, and the cap if any.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting or renewing",
+  "proof": "clause in the lease",
+  "money": "rent rises or falls by the contract formula",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Without a clause there is no linkage during the term. UNVERIFIED: the text read has no linkage rule of its own.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: CPI linkage up and down (money.php; f_linkage)"
+  },
+  "thumb": {
+   "he": "הגדר הצמדה",
+   "en": "Set linkage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "חישוב הצמדה לפי מדד ידוע",
+   "en": "Compute linkage by the known index"
+  },
+  "what": "Compute the new rent from the CPI published by the CBS at the time the clause names.",
+  "who": [
+   "landlord"
+  ],
+  "when": "each update date",
+  "proof": "calculation in the file",
+  "money": "by the clause formula",
+  "law": [],
+  "if_skipped": "Wrong rent is demanded or a right to a rise is lost.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: cpi_check_now and cpi_next in the CPI tab"
+  },
+  "thumb": {
+   "he": "חשב הצמדה",
+   "en": "Compute linkage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לשוכר על שכר מעודכן",
+   "en": "Tell the tenant the updated rent"
+  },
+  "what": "Send the tenant the new amount, how it was computed and the date it starts.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the update date",
+  "proof": "message sent",
+  "money": null,
+  "law": [],
+  "if_skipped": "A surprise rise ends in an argument over the transfer.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: portal shows the amount; no timed notice"
+  },
+  "thumb": {
+   "he": "שלח עדכון",
+   "en": "Send update",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.06",
+  "kind": "leaf",
+  "title": {
+   "he": "תקרת הערובה לפי שכר חדש",
+   "en": "Security cap with the new rent"
+  },
+  "what": "Re-check the total security against the cap when the rent rises.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the rent changes",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)(2)",
+    "quote": "סכום השווה לפי שלושה מדמי השכירות לחודש",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Security above the cap is against the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק תקרה",
+   "en": "Check cap",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.07",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת סף 20,000 ש\"ח לחודש",
+   "en": "Check the 20,000 NIS monthly threshold"
+  },
+  "what": "If the new rent passes the statutory monthly threshold, the residential chapter no longer applies to the lease.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the rent changes",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25טו(א)(4)",
+    "quote": "עולים על 20,000 שקלים חדשים או על סכום אחר שקבע שר המשפטים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The threshold is updated each 1 January by the CPI; the current figure must be read from the Registry notice (not opened).",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק סף",
+   "en": "Check threshold",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.08",
+  "kind": "leaf",
+  "title": {
+   "he": "הצמדה כלפי מטה: מדד שירד",
+   "en": "Linkage downward: an index that fell"
+  },
+  "what": "If the clause links both ways and the index fell, update the rent down.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the update date",
+  "proof": "calculation in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "UNVERIFIED: the text read has no rule on down-linkage; the contract formula decides.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: CPI linkage up and down (money.php)"
+  },
+  "thumb": {
+   "he": "עדכן מטה",
+   "en": "Update down",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.03.09",
+  "kind": "leaf",
+  "title": {
+   "he": "עדכון הרישום בספר השכר ובמס",
+   "en": "Update the rent record for tax"
+  },
+  "what": "Update the rent record that feeds the yearly tax summary.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the new rent starts",
+  "proof": "ledger entry",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: money ledger and CSV for the accountant"
+  },
+  "thumb": {
+   "he": "עדכן רישום",
+   "en": "Update record",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.04",
+  "kind": "branch",
+  "title": {
+   "he": "אי חידוש: המשך או סיום",
+   "en": "No renewal: continue or end"
+  },
+  "what": "What to do when the lease ends and nothing was signed.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at the end of the period",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "08.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לשוכר שלא מחדשים",
+   "en": "Tell the tenant there is no renewal"
+  },
+  "what": "Send written notice, in reasonable time, that the landlord does not renew.",
+  "who": [
+   "landlord"
+  ],
+  "when": "3 months before the end",
+  "proof": "written notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(א)",
+    "quote": "זמן סביר לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The tenant stays in the home without notice and plans blind.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "המשך בפועל בלי תקופה חדשה",
+   "en": "Continuing with no new period"
+  },
+  "what": "If both keep going after the period without a new period, either may end it by reasonable notice.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "after the period ends",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "19(א)",
+    "quote": "רשאי כל צד לסיים את השכירות על ידי מתן הודעה לצד השני זמן סביר מראש",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The terms of the extension are unclear.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום המשך",
+   "en": "Record continuation",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "שמירת כל ההודעות בתיק",
+   "en": "Keep every notice in the file"
+  },
+  "what": "Save each notice sent and received, with date and how it was delivered.",
+  "who": [
+   "landlord"
+  ],
+  "when": "each time a notice moves",
+  "proof": "file in the system",
+  "money": null,
+  "law": [],
+  "if_skipped": "Without a record the date of notice is argued.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: full evidence file per lease (/rm/evidence)"
+  },
+  "thumb": {
+   "he": "שמור בתיק",
+   "en": "Save to file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "08.04.04",
+  "kind": "leaf",
+  "title": {
+   "he": "העברה לתהליך יציאה",
+   "en": "Move to the exit process"
+  },
+  "what": "Open the exit tasks for the home.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when no renewal is agreed",
+  "proof": "exit list",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: end-of-lease flow (end_title)"
+  },
+  "thumb": {
+   "he": "פתח יציאה",
+   "en": "Open exit",
+   "taps": 1
+  }
+ }
+]

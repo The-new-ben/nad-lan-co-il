@@ -1,0 +1,1350 @@
+[
+ {
+  "id": "07",
+  "kind": "branch",
+  "title": {
+   "he": "הניירת של השנה",
+   "en": "The year's paperwork"
+  },
+  "what": "כל מה שקשור למס על הכנסה משכר דירה למגורים: שלושת המסלולים, הדיווח, הרשומות והתיק לרואה החשבון.",
+  "who": [
+   "landlord",
+   "professional",
+   "authority"
+  ],
+  "when": "כל שנה, אחרי תום שנת המס. במסלול 10% עד 31 בינואר של השנה העוקבת",
+  "proof": null,
+  "money": "לפי המסלול שנבחר לכל דירה",
+  "law": [],
+  "if_skipped": "ריבית והצמדה על חוב מס, ואי דיווח",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) tax estimate (tax_title) and yearly summary (rep_year_pick); no filing, no reminders"
+  }
+ },
+ {
+  "id": "07.01",
+  "kind": "branch",
+  "title": {
+   "he": "בחירת מסלול המס",
+   "en": "Choosing the tax track"
+  },
+  "what": "שלושה מסלולים למשכיר יחיד: פטור מלא או חלקי עד תקרה, מס מופחת 10%, או מדרגות המס הרגילות. אפשר לבחור מסלול נפרד לכל דירה, אבל ההכנסה מכל הדירות נספרת לתקרה.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "לפני הדיווח הראשון על שנת המס",
+  "proof": null,
+  "money": "ראו מסלולים",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פתיחת המדריך",
+    "quote": "שלושת המסלולים להקלות במס הכנסה ליחיד המשכיר דירה למגורים",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "ברירת מחדל שגויה ותשלום מס מיותר",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) he.json tax_lead ('three tracks: exemption up to the ceiling, 10%, or the regular track'); estimate only"
+  }
+ },
+ {
+  "id": "07.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו שהדירה עומדת בתנאי הפטור",
+   "en": "Check the exemption conditions"
+  },
+  "what": "לסמן שהדירה למגורים בלבד, לא רשומה בספרי עסק, מושכרת ליחיד, והשוכר משתמש בה למגורים בלבד, עם הצהרה כתובה או חוזה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני בחירת מסלול הפטור",
+  "proof": "חוזה שכירות או הצהרת שוכר",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "הדירה מיועדת לשמש למגורים בלבד",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "פטור שלא יוכר",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדקו תנאים",
+   "en": "Check conditions",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "חשבו את ההכנסה החודשית מכל הדירות",
+   "en": "Add up monthly rent from all homes"
+  },
+  "what": "לסכום את שכר הדירה החודשי מכל דירות המגורים שלכם, של בן זוגכם המתגורר איתכם ושל ילדיכם עד גיל 18.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני בחירת מסלול, ובכל שינוי בהכנסה",
+  "proof": "טבלת הכנסות חודשית",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "בן זוגו המתגורר עמו או של ילדיו עד גיל שמונה עשרה",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "חריגה מהתקרה שלא ידעתם עליה",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) yearly summary by property; no household-level sum"
+  },
+  "thumb": {
+   "he": "חשבו הכנסה",
+   "en": "Add up income",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו מול תקרת הפטור לשנת 2026",
+   "en": "Check against the 2026 exemption ceiling"
+  },
+  "what": "להשוות את ההכנסה החודשית לתקרה: לפי לוח העזר של רשות המסים לינואר 2026, 5,654 ש\"ח לחודש. הבדיקה בכל חודש בשנה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כל חודש של שנת 2026",
+  "proof": "לוח העזר של רשות המסים",
+  "money": "תקרת הפטור לחודש, 2026: 5,654 ש\"ח (לוח עזר של רשות המסים, ינואר 2026)",
+  "law": [
+   {
+    "source": "רשות המסים, לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה, ינואר 2026",
+    "section": "שורת תקרת הכנסה משכר דירה פטור ממס",
+    "quote": "5,654",
+    "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "אינו עולה בכל חודש במהלך השנה על סכום של 5,654",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "פטור שמתבטל בלי ידיעה",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) he.json tax_note shows the ceiling labelled 2025; update to the 2026 figure"
+  },
+  "thumb": {
+   "he": "בדקו תקרה",
+   "en": "Check ceiling",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "פטור חלקי: חשבו את הסכום החייב",
+   "en": "Partial exemption: compute the taxable amount"
+  },
+  "what": "כשההכנסה החודשית עוברת את התקרה אך אינה עוברת כפל תקרה (לפי המדריך, 11,308 ש\"ח לשנת 2025), מחשבים לפי הנוסחה במדריך. מדריך רשות המסים מראה דוגמה: 6,000 ש\"ח הכנסה, 692 ש\"ח חייבים.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "בכל חודש שההכנסה בין התקרה לכפלה",
+  "proof": "חישוב מצורף לדוח",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "אופן חישוב הפטור",
+    "quote": "פטור חלקי: כאשר סכום ההכנסה החודשית משכר דירה גבוה מתקרת הפטור",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "חיוב מס שלא חושב",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) he.json tax_exempt, tax_taxable (estimate)"
+  },
+  "thumb": {
+   "he": "חשבו פטור חלקי",
+   "en": "Compute partial",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "מעל כפל התקרה: בחרו 10% או מדרגות",
+   "en": "Above double the ceiling: pick 10% or brackets"
+  },
+  "what": "כשההכנסה החודשית עוברת כפל תקרה אין פטור, ויש לבחור במסלול 10% או במדרגות המס.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "כשההכנסה החודשית עוברת כפל תקרה",
+  "proof": "הודעה לרואה החשבון",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "אופן חישוב הפטור",
+    "quote": "לא יחול כל פטור וכל סכום ההכנסה החודשית משכר דירה יהיה חייב במס",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בחרו מסלול",
+   "en": "Choose track",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "בחרו מסלול לכל דירה בנפרד",
+   "en": "Choose a track per home"
+  },
+  "what": "אפשר לבחור מסלול שונה לכל דירה, אבל ההכנסה מכל דירות המגורים נספרת לתקרת הפטור.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "לפני הדיווח",
+  "proof": "טבלת בחירה לכל דירה",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "יילקחו בחשבון ההכנסות מכל דירות המגורים",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בחרו לכל דירה",
+   "en": "Choose per home",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "אל תשלבו פטור ו-10% על אותה דירה",
+   "en": "Don't combine exemption and 10% on one home"
+  },
+  "what": "לוודא שדירה אחת נמצאת בבחירה אחת בלבד.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בבחירת המסלול",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "לא ניתן לדרוש פטור מכוח",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "דרישה כפולה שתידחה",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדקו בחירה",
+   "en": "Check choice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.01.08",
+  "kind": "leaf",
+  "title": {
+   "he": "בני 60 ומעלה: מדרגה ראשונה 10%",
+   "en": "Age 60 or over: first bracket 10%"
+  },
+  "what": "במסלול המדרגות מדרגת המס הראשונה להכנסה משכר דירה היא 31%, ולמי שמלאו לו 60 בשנת המס היא 10%.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בשנה שבה ממלאים 60",
+  "proof": "תעודת זהות",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "מדרגת המס הראשונה היא 31%",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמנו גיל",
+   "en": "Mark age",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.02",
+  "kind": "branch",
+  "title": {
+   "he": "מסלול הפטור",
+   "en": "The exemption track"
+  },
+  "what": "פטור מלא עד התקרה והפטור החלקי מעליה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל חודש ובסוף השנה",
+  "proof": null,
+  "money": "בלי מס עד התקרה",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "פטור מלא יחול אם",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "דיווח לא נכון אחרי חריגה",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) tax_exempt estimate"
+  }
+ },
+ {
+  "id": "07.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו חוזה שמראה שהדירה למגורים בלבד",
+   "en": "Keep proof the home is residential-only"
+  },
+  "what": "לשמור חוזה שכירות או הצהרת שוכר בכתב.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "בחתימת החוזה",
+  "proof": "חוזה או הצהרה",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "ברשותו של המשכיר ישנה הצהרה בכתב",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) signed lease stored encrypted (lease.php)"
+  },
+  "thumb": {
+   "he": "צרפו חוזה",
+   "en": "Attach lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "חריגה מהתקרה בחודש: פתחו תיק ודווחו",
+   "en": "Over the ceiling in a month: open a file and report"
+  },
+  "what": "בפטור חלקי יש חובת הגשת דוח ופתיחת תיק לדיווח על השכרת נכסים במשרד השומה.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "אחרי חודש שבו ההכנסה עברה את התקרה",
+  "proof": "אישור פתיחת תיק",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "אופן חישוב הפטור",
+    "quote": "חלה חובת הגשת דוח ויש לפתוח תיק",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אי דיווח",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "פתחו תיק",
+   "en": "Open file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "פחת במסלול הפטור: נוהג שונה",
+   "en": "Depreciation under the exemption track"
+  },
+  "what": "במסלול הפטור לא חלות תקנות פחת לדירה מושכרת למגורים מ-1989, אבל אפשר לנכות פחת לפי תקנות פחת מ-1941. סכומים אצל רואה החשבון.",
+  "who": [
+   "professional"
+  ],
+  "when": "בהכנת הדוח",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "יוכל לנכות פחת",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבירו לרו\"ח",
+   "en": "Send to accountant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "זכרו: הפחת ישפיע על מס שבח במכירה",
+   "en": "Remember: depreciation affects betterment tax on sale"
+  },
+  "what": "בעת מכירה ינוכה משווי הרכישה הפחת שאפשר היה לדרוש. פרטים בענף 10.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "בעת מכירת הדירה",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "ינוכה משווי הרכישה הפחת",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמנו לענף 10",
+   "en": "Flag for branch 10",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03",
+  "kind": "branch",
+  "title": {
+   "he": "מסלול 10%",
+   "en": "The 10% track"
+  },
+  "what": "מס מופחת בשיעור 10% על הכנסה ברוטו מהשכרת דירת מגורים, לפי סעיף 122 לפקודת מס הכנסה, בלי ניכוי הוצאות.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לשלם עד 31 בינואר של השנה העוקבת, לפי שירות הדיווח של רשות המסים",
+  "proof": null,
+  "money": "10% מהכנסה ברוטו",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "סעיף 122 לפקודת מס הכנסה, קובע כי ניתן לשלם מס מופחת בשיעור של 10%",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "ריבית והצמדה על החוב",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) tax estimate only"
+  }
+ },
+ {
+  "id": "07.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו פתיחת תיק סוג 95",
+   "en": "Open a type-95 file"
+  },
+  "what": "במסלול 10% ללא ניכוי הוצאות פותחים תיק סוג 95 בשירות הדיווח של רשות המסים. יש לצרף חוזה שכירות לכל נכס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני התשלום הראשון",
+  "proof": "אישור פתיחת תיק",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "סוג תיק 95",
+    "quote": "מיועד למסלול לדיווח ותשלום מס בשיעור 10% ללא ניכוי הוצאות",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "פתחו תיק",
+   "en": "Open file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "דווחו ושלמו את מס ה-10% במערכת",
+   "en": "Report and pay the 10% tax"
+  },
+  "what": "לדווח ולשלם במערכת המקוונת. בעמוד השירות: לא יאוחר מ-31.1 של השנה העוקבת. במדריך: בתוך 30 יום מתום שנת המס. נוסח שונה, ולכן בודקים בעמוד הרשות בזמן התשלום.",
+  "who": [
+   "landlord"
+  ],
+  "when": "עד 31 בינואר, ובכל מקרה לפי מה שמופיע בעמוד הרשות ביום התשלום",
+  "proof": "אישור תשלום מהרשות",
+  "money": "10% מההכנסה ברוטו",
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מתי צריך לדווח במסלול 10%",
+    "quote": "בכל שנה נדרש לדווח עד 31 בינואר לשנה העוקבת",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "לשלם את המס לכל המאוחר תוך 30 יום מתום שנת המס",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "ריבית והצמדה על חוב המס",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלמו",
+   "en": "Pay",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "חשבו מס 10% על ההכנסה ברוטו",
+   "en": "Compute 10% of gross rent"
+  },
+  "what": "לסכם הכנסה ברוטו של השנה לפי תשלומים שנגבו. במסלול זה אין ניכוי הוצאות או פחת.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בתום שנת המס",
+  "proof": "סיכום שנתי",
+  "money": "10% מהברוטו",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "אינכם זכאים לנכות הוצאות",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) rep_year_pick; tax_title estimate"
+  },
+  "thumb": {
+   "he": "חשבו מס",
+   "en": "Compute tax",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "דמי שכירות מוטבים: אם גם אתם שוכרים",
+   "en": "Qualified rent: if you also rent a home"
+  },
+  "what": "יחיד שמשכיר דירה יחידה ושוכר דירה למגוריו או משלם לבית אבות, ינכה עד סכום הכנסתו או 90,000 ש\"ח בשנה, הנמוך. לפי סעיף 122(ו) מ-2023.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "בחישוב המס, אם יש שכירות משלכם",
+  "proof": "חוזה השכירות שלכם וקבלות",
+  "money": "עד 90,000 ש\"ח בשנה, או עד ההכנסה, הנמוך",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "עד לסכום של 90 אלף שקלים חדשים בשנה",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "הוסיפו שכירות",
+   "en": "Add own rent",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו אם עברתם את סף הדוח השנתי",
+   "en": "Check the annual-report threshold"
+  },
+  "what": "לפי המדריך, הכנסה שנתית שבגינה שולם 10% מעל 375,000 ש\"ח בשנת 2025 מחייבת דוח שנתי. הסף לשנת 2026 לא נקרא.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בתום שנת המס",
+  "proof": "סיכום שנתי",
+  "money": "2025: 375,000 ש\"ח. 2026: לא נקרא",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול 10%",
+    "quote": "עולה על 375,000 ₪ בשנת 2025",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדקו סף",
+   "en": "Check threshold",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.03.06",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו אישור תשלום של המס",
+   "en": "Keep the tax payment confirmation"
+  },
+  "what": "לשמור את האישור לתיק השנתי.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי כל תשלום",
+  "proof": "אישור תשלום",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) documents upload; no tax-payment kind"
+  },
+  "thumb": {
+   "he": "שמרו אישור",
+   "en": "Save confirmation",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.04",
+  "kind": "branch",
+  "title": {
+   "he": "מסלול מדרגות המס",
+   "en": "The regular marginal track"
+  },
+  "what": "מס לפי המדרגות עם ניכוי הוצאות שוטפות ופחת, ודוח שנתי.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "בהגשת הדוח השנתי",
+  "proof": null,
+  "money": "לפי מדרגות המס; מדרגה ראשונה להכנסה משכר דירה 31%",
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק חיוב לפי מדרגות",
+    "quote": "ניתן לדרוש הוצאות שוטפות שהוצאו בייצור ההכנסה",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "היעדר דוח",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) expenses are recorded in the ledger; no report filing"
+  }
+ },
+ {
+  "id": "07.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "הגישו דוח שנתי עם הכנסה משכר דירה",
+   "en": "File the annual report"
+  },
+  "what": "בחירה במסלול זה מחייבת דוח שנתי למס הכנסה, בדרך כלל דרך רואה חשבון.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "אחרי שנת המס",
+  "proof": "דוח שהוגש",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק חיוב לפי מדרגות",
+    "quote": "בחירה במסלול זה מחייבת בהגשת דו\"ח שנתי למס הכנסה",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אי הגשת דוח",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבירו לרו\"ח",
+   "en": "Send to accountant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו הוצאות שוטפות הקשורות להכנסה",
+   "en": "Record running expenses"
+  },
+  "what": "לשמור קבלות על שכר טרחת עורך דין לחוזה ותיקונים שוטפים ששולמו בשנה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל הוצאה",
+  "proof": "קבלה וחשבונית",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "אופן חישוב הפטור",
+    "quote": "שכר טרחת עורך דין שערך את חוזה השכירות ותיקונים שוטפים",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) expense entry and expense_note"
+  },
+  "thumb": {
+   "he": "הוסיפו הוצאה",
+   "en": "Add expense",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו מרואה החשבון לחשב פחת",
+   "en": "Ask the accountant to compute depreciation"
+  },
+  "what": "פחת לפי תקנות מס הכנסה (שיעור פחת לדירה מושכרת למגורים), התשמ\"ט-1989. שיעור הפחת לא נקרא.",
+  "who": [
+   "professional"
+  ],
+  "when": "בהכנת הדוח",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, מדריך המסלולים לתשלום ולהקלות במס על הכנסה מהשכרת דירה למגורים (עודכן 1.6.2026)",
+    "section": "פרק מסלול הפטור",
+    "quote": "תקנות מס הכנסה (שיעור פחת לדירה מושכרת למגורים), התשמ\"ט - 1989",
+    "url": "https://www.gov.il/he/pages/detail-tracks-payment-tax-relief-rental-apartments",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבירו לרו\"ח",
+   "en": "Send to accountant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.05",
+  "kind": "branch",
+  "title": {
+   "he": "חובות דיווח",
+   "en": "Reporting duties"
+  },
+  "what": "מי חייב לפתוח תיק ולדווח, ומה צריך לצרף.",
+  "who": [
+   "landlord",
+   "authority"
+  ],
+  "when": "לפי המסלול שנבחר",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מי נדרש לפתוח תיק",
+    "quote": "חייבים לדווח ולשלם מס על הכנסתם מדמי השכירות",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אי דיווח",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "07.05.01",
+  "kind": "leaf",
+  "title": {
+   "he": "פתחו תיק לדיווח על הכנסה מהשכרה",
+   "en": "Open a rental-income file"
+  },
+  "what": "יחידים או בני זוג שמשכירים דירות מעל תקרת הפטור חייבים לדווח ולשלם באחד מהמסלולים.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשההכנסה עוברת את התקרה",
+  "proof": "אישור פתיחת תיק",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מי נדרש לפתוח תיק",
+    "quote": "חייבים לדווח ולשלם מס על הכנסתם מדמי השכירות",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "פתחו תיק",
+   "en": "Open file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.05.02",
+  "kind": "leaf",
+  "title": {
+   "he": "צרפו חוזה שכירות לכל נכס",
+   "en": "Attach the lease for each property"
+  },
+  "what": "בבקשה לפתיחת תיק מצרפים חוזה שכירות או רכישה לכל נכס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בפתיחת התיק",
+  "proof": "קובץ חוזה",
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מה צריכים לצרף לבקשה",
+    "quote": "יש לצרף חוזה שכירות או רכישה",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) signed lease text stored"
+  },
+  "thumb": {
+   "he": "צרפו חוזה",
+   "en": "Attach lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.05.03",
+  "kind": "leaf",
+  "title": {
+   "he": "בני זוג פרודים: צרפו טופס 4440",
+   "en": "Separated spouses: attach form 4440"
+  },
+  "what": "אם מצהירים שהם פרודים בשלב המצב האישי, מצרפים גם טופס 4440.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בפתיחת התיק",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מה צריכים לצרף לבקשה",
+    "quote": "יש לצרף גם טופס 4440",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "צרפו טופס",
+   "en": "Attach form",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.05.04",
+  "kind": "leaf",
+  "title": {
+   "he": "השכרה שאינה למגורים: תיק סוג 94",
+   "en": "Non-residential rental: a type-94 file"
+  },
+  "what": "השכרת נכס שאינו למגורים מחייבת תיק סוג 94 ודוח.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "בהשכרה שאינה למגורים",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מסלול דיווח הכנסה מהשכרת דירה שאינה משמשת למגורים",
+    "quote": "נדרש לפתוח תיק סוג 94",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבירו לרו\"ח",
+   "en": "Send to accountant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.05.05",
+  "kind": "leaf",
+  "title": {
+   "he": "השכרה לעסק של השוכר: דווחו מכל שקל",
+   "en": "Rented for the tenant's business: report from the first shekel"
+  },
+  "what": "אם הנכס משמש לפעילות עסקית של השוכר, פותחים תיק ומדווחים מכל סכום.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בהשכרה לשימוש עסקי",
+  "proof": null,
+  "money": null,
+  "law": [
+   {
+    "source": "רשות המסים, שירות פתיחת תיק ודיווח על הכנסה מהשכרת נכסים",
+    "section": "מי נדרש לפתוח תיק",
+    "quote": "יש לפתוח תיק ולדווח על הכנסה מכל סכום של הכנסה",
+    "url": "https://www.gov.il/he/service/request-open-employee",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "פתחו תיק",
+   "en": "Open file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.06",
+  "kind": "branch",
+  "title": {
+   "he": "קבלות ורשומות",
+   "en": "Receipts and records"
+  },
+  "what": "מה לשמור כדי שכל הכנסה והוצאה תתועד.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לאורך השנה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": "אי יכולת להוכיח הכנסה או הוצאה",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) documents, bank statements and receipts; 'the books are never deleted'"
+  }
+ },
+ {
+  "id": "07.06.01",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו דפי בנק של השכירות",
+   "en": "Keep bank statements"
+  },
+  "what": "להעלות את דפי הבנק שבהם נכנס שכר הדירה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כל חודש",
+  "proof": "דף בנק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) document kind dk_bank"
+  },
+  "thumb": {
+   "he": "העלו דף בנק",
+   "en": "Upload statement",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.06.02",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו קבלות על הוצאות",
+   "en": "Keep expense receipts"
+  },
+  "what": "לצלם ולהעלות כל קבלה על תיקון או שירות.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי כל הוצאה",
+  "proof": "קבלה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) document kind dk_receipt"
+  },
+  "thumb": {
+   "he": "העלו קבלה",
+   "en": "Upload receipt",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.06.03",
+  "kind": "leaf",
+  "title": {
+   "he": "האישור שהמערכת מפיקה אינו קבלה לצורכי מס",
+   "en": "The product's confirmation is not a tax receipt"
+  },
+  "what": "להסביר לשוכר שהאישור הוא אישור תשלום בלבד.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשהשוכר מבקש קבלה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json receipt_note"
+  },
+  "thumb": {
+   "he": "הבינו מגבלה",
+   "en": "Note limit",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.06.04",
+  "kind": "leaf",
+  "title": {
+   "he": "בררו עם רואה החשבון כמה זמן לשמור",
+   "en": "Ask the accountant how long to keep records"
+  },
+  "what": "לא נקרא טקסט ראשוני שקובע תקופה, ולכן לא נכתבת כאן תקופה.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "פעם, בפתיחת התיק",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": "לא ידוע",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שאלו רו\"ח",
+   "en": "Ask accountant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.07",
+  "kind": "branch",
+  "title": {
+   "he": "תיק שנתי לרואה החשבון",
+   "en": "The accountant's yearly file"
+  },
+  "what": "חבילה אחת בסוף השנה: הכנסות, הוצאות, חוזים, ומסלול שנבחר.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "אחרי תום שנת המס, ולפני 31 בינואר אם במסלול 10%",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": "רואה החשבון עובד על נתונים חסרים",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) rep_year_pick, rep_csv, /rm/evidence"
+  }
+ },
+ {
+  "id": "07.07.01",
+  "kind": "leaf",
+  "title": {
+   "he": "הפיקו סיכום שנתי של הכנסות והוצאות",
+   "en": "Produce the yearly summary"
+  },
+  "what": "סיכום לפי נכס, לדיווח השנתי.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בינואר",
+  "proof": "קובץ סיכום",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) rep_year_lead"
+  },
+  "thumb": {
+   "he": "הפיקו סיכום",
+   "en": "Produce summary",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.07.02",
+  "kind": "leaf",
+  "title": {
+   "he": "ייצאו קובץ אקסל לרואה החשבון",
+   "en": "Export an Excel file"
+  },
+  "what": "קובץ בשפת הממשק שמתאים לרואה החשבון.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בינואר",
+  "proof": "CSV",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) rep_csv"
+  },
+  "thumb": {
+   "he": "ייצאו קובץ",
+   "en": "Export file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.07.03",
+  "kind": "leaf",
+  "title": {
+   "he": "ציינו את המסלול שנבחר לכל דירה",
+   "en": "State the track chosen per home"
+  },
+  "what": "לרשום ברשימה אחת לכל דירה: פטור, 10% או מדרגות.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני העברת התיק",
+  "proof": "טבלה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמנו מסלול",
+   "en": "Mark track",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.07.04",
+  "kind": "leaf",
+  "title": {
+   "he": "שלחו את תיק הראיות של החוזה",
+   "en": "Send the lease evidence file"
+  },
+  "what": "לשלוח את תיק הראיות לכל חוזה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "עם התיק השנתי",
+  "proof": "קובץ",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) /rm/evidence"
+  },
+  "thumb": {
+   "he": "שלחו תיק",
+   "en": "Send file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "07.07.05",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו את הדוח שהוגש ואישור הקבלה",
+   "en": "Keep the filed report and its receipt"
+  },
+  "what": "להעלות את הדוח ואת האישור לתיק.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי ההגשה",
+  "proof": "דוח ואישור",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) documents upload; no tax-report kind"
+  },
+  "thumb": {
+   "he": "העלו דוח",
+   "en": "Upload report",
+   "taps": 1
+  }
+ }
+]

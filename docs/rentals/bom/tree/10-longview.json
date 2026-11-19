@@ -1,0 +1,1514 @@
+[
+  {
+    "id": "10",
+    "kind": "branch",
+    "title": {
+      "he": "המבט הארוך של הבעלים",
+      "en": "The owner's long view"
+    },
+    "what": "Years of wear, renovation, a yearly reserve, selling with a tenant inside, the sale day, ending the business and handing the home on.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.01",
+    "kind": "branch",
+    "title": {
+      "he": "בלאי הדירה לאורך שנים",
+      "en": "Wear of the home over the years"
+    },
+    "what": "A habit of looking at the home once a year and writing down what ages, so a renovation is planned rather than forced.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.01.01",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו ביקור שנתי בדירה",
+      "en": "Set a yearly visit to the home"
+    },
+    "what": "Visit once a year with reasonable notice to the tenant, see the home and write down the state of each system.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "every year, at a time agreed with the tenant",
+    "proof": "a dated visit note with photos",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "17",
+        "quote": "ובלבד שהמשכיר יודיע לו על כך זמן סביר מראש",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Wear is found only when it becomes a breakdown.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "קבעו ביקור",
+      "en": "Schedule visit",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.01.02",
+    "kind": "leaf",
+    "title": {
+      "he": "צלמו את אותם מקומות כל שנה",
+      "en": "Photograph the same spots every year"
+    },
+    "what": "Take photos of the same walls, floors, ceilings, bathroom and kitchen each year, so the change over time is visible.",
+    "who": [
+      "landlord"
+    ],
+    "when": "at each yearly visit",
+    "proof": "the yearly photo set with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "No way to see slow wear.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): photos can be attached to a repair; no yearly photo set"
+    },
+    "thumb": {
+      "he": "צלמו",
+      "en": "Photograph",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.01.03",
+    "kind": "leaf",
+    "title": {
+      "he": "סווגו כל פגם: של השוכר או שלכם",
+      "en": "Classify each defect: the tenant's or yours"
+    },
+    "what": "For every defect decide whether it came from unreasonable use (the tenant repairs at his cost, unless agreed otherwise) or not (you repair, unless minor).",
+    "who": [
+      "landlord"
+    ],
+    "when": "when a defect appears",
+    "proof": "the classification noted on the repair record",
+    "money": "The tenant pays for a defect caused by unreasonable use; the landlord pays for the other defects that are not minor.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ח(א)",
+        "quote": "השוכר אחראי על כל ליקוי בדירה המושכרת, לרבות פגם, שנגרם עקב שימוש בלתי סביר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ח(ב)",
+        "quote": "המשכיר יתקן על חשבונו כל ליקוי או פגם אחר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Arguments on who pays and a refund claim on exit.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): repairs recorded with urgency and fix-by days (rm-drawers.js, store.php); no wear history view"
+    },
+    "thumb": {
+      "he": "סווגו פגם",
+      "en": "Classify defect",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.01.04",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו גיל של כל מערכת ומכשיר",
+      "en": "Record the age of every system and appliance"
+    },
+    "what": "Write the year each system and appliance was installed. Ask a professional how long that type usually lasts; the product does not invent a figure.",
+    "who": [
+      "landlord"
+    ],
+    "when": "once, then every yearly visit",
+    "proof": "a table of items and years",
+    "money": null,
+    "law": [],
+    "if_skipped": "A planned replacement becomes an emergency.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): appliances recorded by name; no install-year field verified"
+    },
+    "thumb": {
+      "he": "רשמו שנה",
+      "en": "Record year",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.01.05",
+    "kind": "leaf",
+    "title": {
+      "he": "שמרו היסטוריית תיקונים",
+      "en": "Keep the repair history"
+    },
+    "what": "Keep every repair, who did it and what it cost, in one list in the home's file.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after each repair",
+    "proof": "invoices linked to the list",
+    "money": null,
+    "law": [],
+    "if_skipped": "No view of what the home really costs.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): repairs recorded with urgency and fix-by days (rm-drawers.js, store.php); no wear history view"
+    },
+    "thumb": {
+      "he": "שמרו תיקון",
+      "en": "Save repair",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.01.06",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו מחזור צביעה",
+      "en": "Set a repainting cycle"
+    },
+    "what": "Choose how often you repaint (a professional's advice); write the date of the last paint and the next planned one.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after each repaint",
+    "proof": "the date of the last paint and the planned date",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "קבעו תאריך",
+      "en": "Set date",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02",
+    "kind": "branch",
+    "title": {
+      "he": "תוכנית שיפוץ ומתי",
+      "en": "A renovation plan and when"
+    },
+    "what": "List the work, do it between tenants, and keep records.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.02.01",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו רשימת שיפוץ לפי דחיפות",
+      "en": "Write a renovation list by urgency"
+    },
+    "what": "From the yearly visits list what must be done now, soon and later.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after each yearly visit",
+    "proof": "the list with the priority of each line",
+    "money": null,
+    "law": [],
+    "if_skipped": "Work is decided in a rush.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "רשמו רשימה",
+      "en": "Write the list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.02",
+    "kind": "leaf",
+    "title": {
+      "he": "תכננו עבודות בין שוכרים",
+      "en": "Plan work between tenants"
+    },
+    "what": "Schedule the larger work for the gap between two tenancies, since a tenant is entitled to use the home without disturbance from the landlord during the lease.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when a notice of exit arrives",
+    "proof": "the schedule with the dates",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "11",
+        "quote": "ללא הפרעה מצדו או מטעמו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Work during a lease may breach the tenant's right to use the home undisturbed.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "קבעו מועד",
+      "en": "Set a date",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.03",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו שלוש הצעות מחיר",
+      "en": "Ask for three quotes"
+    },
+    "what": "Ask for at least three written quotes for each large item.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before ordering the work",
+    "proof": "three quotes saved",
+    "money": "The quotes are the contractors' own figures; the product supplies none.",
+    "law": [],
+    "if_skipped": "You pay more than needed.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): documents table in inc/rentals/store.php can hold a file; no dedicated screen for this step"
+    },
+    "thumb": {
+      "he": "שלחו בקשה",
+      "en": "Send request",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.04",
+    "kind": "leaf",
+    "title": {
+      "he": "ענו בכתב כששוכר מבקש לשנות בדירה",
+      "en": "Answer in writing when a tenant asks to change the home"
+    },
+    "what": "A tenant may not change the home without the landlord's consent. Answer yes or no in writing, with conditions. Changes with consent may be restored or left at the tenant's choice, without payment.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "when the tenant asks",
+    "proof": "the written answer",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "16א(א)",
+        "quote": "השוכר אינו רשאי לבצע שינויים במושכר, אלא אם כן קיבל את הסכמת המשכיר לשינויים",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "20א(א)",
+        "quote": "אין הוא זכאי לתמורה בשל השינויים שביצע",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Changes without consent: the landlord may demand that the home be restored.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו תשובה",
+      "en": "Send answer",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.05",
+    "kind": "leaf",
+    "title": {
+      "he": "שמרו חשבוניות שיפוץ",
+      "en": "Keep the renovation invoices"
+    },
+    "what": "Keep every invoice and give copies to the accountant; how a renovation is treated in tax is the accountant's answer (branch 07).",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "after each job",
+    "proof": "scanned invoices",
+    "money": null,
+    "law": [],
+    "if_skipped": "Costs cannot be shown later.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): ledger records an expense and CSV for the accountant; no invoice upload"
+    },
+    "thumb": {
+      "he": "שמרו חשבונית",
+      "en": "Save invoice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.06",
+    "kind": "leaf",
+    "title": {
+      "he": "עדכנו תמונות ורשימת מכשירים אחרי שיפוץ",
+      "en": "Update photos and the appliance list after a renovation"
+    },
+    "what": "Re-photograph the home and update the appliance list and the warranty dates.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after each renovation",
+    "proof": "the new photo set and the list",
+    "money": null,
+    "law": [],
+    "if_skipped": "The next handover has an old baseline.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "צלמו ועדכנו",
+      "en": "Photograph and update",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.02.07",
+    "kind": "leaf",
+    "title": {
+      "he": "עדכנו את המבטח אחרי שיפוץ גדול",
+      "en": "Tell the insurer after a major renovation"
+    },
+    "what": "Tell the insurer in writing about a major renovation and ask whether the cover changes.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "after a major renovation",
+    "proof": "the insurer's written reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "The cover may not match the home. Terms differ by policy.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send notice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.03",
+    "kind": "branch",
+    "title": {
+      "he": "קרן בלאי שנתית",
+      "en": "The yearly wear reserve"
+    },
+    "what": "A habit: set money aside for the home each year. The owner chooses the rule; the product invents no percentage.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.03.01",
+    "kind": "leaf",
+    "title": {
+      "he": "בחרו כלל להפרשה",
+      "en": "Choose a rule for setting money aside"
+    },
+    "what": "Decide how you set money aside (a fixed sum per month, or a part of the rent) and write the rule.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the first tenancy starts",
+    "proof": "the rule written in the file",
+    "money": "The sum is the owner's choice; the product supplies none.",
+    "law": [],
+    "if_skipped": "Money is missing when a big repair comes.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו כלל",
+      "en": "Choose rule",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.03.02",
+    "kind": "leaf",
+    "title": {
+      "he": "פתחו הפרשה נפרדת בחשבון או בקופה",
+      "en": "Keep the reserve in a separate place"
+    },
+    "what": "Keep the reserve separate from your spending money so it is not used by mistake.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the first tenancy starts",
+    "proof": "a note of where the reserve sits",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הופרד",
+      "en": "Mark separated",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.03.03",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו תזכורת חודשית להפרשה",
+      "en": "Set a monthly reminder to set money aside"
+    },
+    "what": "Set a reminder after the rent arrives.",
+    "who": [
+      "landlord"
+    ],
+    "when": "each month",
+    "proof": "the reminder",
+    "money": null,
+    "law": [],
+    "if_skipped": "The habit lapses.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "קבעו תזכורת",
+      "en": "Set a reminder",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.03.04",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו כל הוצאה על הדירה בקטגוריה",
+      "en": "Record each spend on the home by category"
+    },
+    "what": "Mark each repair and replacement by category (plumbing, electric, appliance, paint).",
+    "who": [
+      "landlord"
+    ],
+    "when": "after each spend",
+    "proof": "the ledger line",
+    "money": null,
+    "law": [],
+    "if_skipped": "No view of where the money goes.",
+    "product_today": {
+      "status": "works",
+      "where": "v2 (admin only): ledger kind 'expense' with categories; repair categories in tickets"
+    },
+    "thumb": {
+      "he": "רשמו הוצאה",
+      "en": "Record spend",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.03.05",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו פעם בשנה אם ההפרשה מספיקה",
+      "en": "Once a year check if the reserve is enough"
+    },
+    "what": "Compare the year's spend with the reserve; change the rule if you went over or under.",
+    "who": [
+      "landlord"
+    ],
+    "when": "every year, after the yearly visit",
+    "proof": "a yearly note with the two figures",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "בדקו הפרשה",
+      "en": "Check reserve",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04",
+    "kind": "branch",
+    "title": {
+      "he": "למכור עם שוכר בפנים",
+      "en": "Selling with a tenant inside"
+    },
+    "what": "What the lease does to a buyer and what the seller does for the tenant. Read: חוק השכירות והשאילה, ss. 21 and 25יא, and חוק המקרקעין s. 79. Not legal advice; a lawyer goes over the sale.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.04.01",
+    "kind": "leaf",
+    "title": {
+      "he": "קראו את החוזה שנשאר: תקופה ואופציה",
+      "en": "Read the lease that stays: term and option"
+    },
+    "what": "Open the lease, note the end date, the option to extend and who holds it, and any right to cancel; the buyer will meet all of these.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before deciding to sell",
+    "proof": "a summary of the lease terms",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "21(א)",
+        "quote": "כוחה של הזכות יפה כלפי כל אדם",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The buyer finds terms you did not mention.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): lease builder keeps the signed text and an evidence file per lease (/rm/evidence)"
+    },
+    "thumb": {
+      "he": "פתחו חוזה",
+      "en": "Open lease",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו אם השכירות רשומה",
+      "en": "Check if the lease is registered"
+    },
+    "what": "A lease of up to five years does not need registration; one with an option that takes it over five years, or a lease that starts later, does. Check with the land registry what is registered on the home.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before listing the home for sale",
+    "proof": "the registry extract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המקרקעין, התשכ\"ט-1969",
+        "section": "79(א)",
+        "quote": "שכירות לתקופה שאינה עולה על חמש שנים אינה טעונה רישום",
+        "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A buyer is surprised by a registered right.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בדקו רישום",
+      "en": "Check registry",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.03",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תניחו שאפשר לסיים חוזה לפני המכירה",
+      "en": "Do not assume the lease can be ended for the sale"
+    },
+    "what": "A clause that lets the landlord cancel without a breach is void unless the tenant has a similar right; with it the landlord must give at least 90 days' notice. Sale is not named as a cause.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before listing the home",
+    "proof": "the clause check noted",
+    "money": "No figure.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יג(א)",
+        "quote": "תניה בחוזה שכירות למגורים המאפשרת למשכיר לבטל את החוזה שלא בשל הפרתו בטלה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יג(ב)",
+        "quote": "90 ימים מראש, לפחות",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "An attempt to cancel is void; the lease stays.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.04",
+    "kind": "leaf",
+    "title": {
+      "he": "הכינו לרוכש את תיק השכירות",
+      "en": "Prepare the tenancy file for the buyer"
+    },
+    "what": "Give the buyer a copy of the lease, the payment record, the security held and the list of open repairs.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "when a buyer is serious",
+    "proof": "a list of what was handed with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "The buyer cannot price the home with the tenant.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): evidence file per lease (/rm/evidence)"
+    },
+    "thumb": {
+      "he": "שלחו תיק",
+      "en": "Send file",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.05",
+    "kind": "leaf",
+    "title": {
+      "he": "סגרו תיקונים פתוחים לפני המכירה",
+      "en": "Close open repairs before the sale"
+    },
+    "what": "A claim the tenant has against the landlord for obligations not kept before the transfer also stands against the buyer. Fix what you can before signing.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before signing the sale",
+    "proof": "the repair records closed",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "21(ג)",
+        "quote": "תעמוד לו גם כלפי הרוכש",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The buyer inherits the claim and may ask you for compensation.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): repairs recorded with urgency and fix-by days (rm-drawers.js, store.php); no wear history view"
+    },
+    "thumb": {
+      "he": "סמנו טופל",
+      "en": "Mark done",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.06",
+    "kind": "leaf",
+    "title": {
+      "he": "הודיעו לשוכר בכתב על המכירה",
+      "en": "Tell the tenant in writing about the sale"
+    },
+    "what": "Notify the tenant in writing, before the date he must hand the home to the buyer, with the buyer's details and how to reach him.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "before the date of handing the home to the buyer",
+    "proof": "the notice with the date and delivery proof",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יא",
+        "quote": "יודיע על כך לשוכר בכתב, לפני המועד שבו עליו למסור את הדירה לרוכש הזכויות",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A breach of the duty to notify; the tenant does not know whom to pay.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send notice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.07",
+    "kind": "leaf",
+    "title": {
+      "he": "העבירו לרוכש את הערובה",
+      "en": "Pass the security to the buyer"
+    },
+    "what": "The buyer steps into the landlord's rights and duties under the lease, which includes returning the security at the end. Agree in the sale contract how the security reaches him.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "at the sale",
+    "proof": "the sale contract line and the transfer record",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "21(ב)",
+        "quote": "יבוא הרוכש במקומו של המשכיר לעניין הזכויות והחיובים של המשכיר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Both of you may be asked to return the security.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הועברה",
+      "en": "Mark passed",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.08",
+    "kind": "leaf",
+    "title": {
+      "he": "תאמו ביקורי רוכשים עם השוכר",
+      "en": "Agree buyer visits with the tenant"
+    },
+    "what": "Agree days and hours in writing with the tenant for potential buyers. The text I read covers inspection and repairs by the landlord; it does not name buyer visits, so the written agreement is what protects the tenant's undisturbed use.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "before the first buyer visit",
+    "proof": "the tenant's written reply",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "11",
+        "quote": "ללא הפרעה מצדו או מטעמו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A complaint on disturbance.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הצעה",
+      "en": "Send proposal",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.04.09",
+    "kind": "leaf",
+    "title": {
+      "he": "בררו אצל רואה חשבון מה המס על המכירה",
+      "en": "Ask the accountant about the tax on the sale"
+    },
+    "what": "Ask in writing what tax the sale of a rented home may bring and what must be reported. I did not read the Tax Authority's text on this, so no rate or deadline is claimed.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before signing the sale",
+    "proof": "the accountant's written reply",
+    "money": "Tax is the seller's; the amount is the accountant's computation.",
+    "law": [],
+    "if_skipped": "A surprise tax bill.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05",
+    "kind": "branch",
+    "title": {
+      "he": "משימות יום המכירה בדירה מושכרת",
+      "en": "Sale-day tasks for a rented home"
+    },
+    "what": "What is done on the day the home changes owner, with the tenant inside.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.05.01",
+    "kind": "leaf",
+    "title": {
+      "he": "קראו את מונים עם השוכר",
+      "en": "Read the meters with the tenant"
+    },
+    "what": "Read the water, electricity and gas meters with the tenant and photograph them; the tenant pays the consumption for his period.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "on the sale day",
+    "proof": "photos of the meters with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(א)(3)",
+        "quote": "תשלומים בעד צריכה של שירותים שוטפים הניתנים לשוכר בדירה למגורים",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A dispute on the consumption around the sale date.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "צלמו מונים",
+      "en": "Photograph meters",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו מהשוכר אישור על מצב התשלומים",
+      "en": "Ask the tenant to confirm the payments status"
+    },
+    "what": "Ask the tenant in writing to confirm the rent paid up to the sale date, the security held and any open repair.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "a week before the sale",
+    "proof": "the tenant's written reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "A later argument on what was paid.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): ledger records payments; no tenant confirmation step"
+    },
+    "thumb": {
+      "he": "שלחו בקשה",
+      "en": "Send request",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.03",
+    "kind": "leaf",
+    "title": {
+      "he": "ספרו לרוכש כל הסכם בעל פה",
+      "en": "Tell the buyer every oral arrangement"
+    },
+    "what": "Write down every promise or arrangement with the tenant that is not in the lease (a repair promised, a rent reduction) and give it to the buyer.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the sale",
+    "proof": "the list given to the buyer",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "21(ג)",
+        "quote": "תעמוד לו גם כלפי הרוכש",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A claim against the buyer, and then against you.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו רשימה",
+      "en": "Send list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.04",
+    "kind": "leaf",
+    "title": {
+      "he": "מסרו לשוכר את פרטי הרוכש ואת דרך התשלום",
+      "en": "Give the tenant the buyer's details and the way to pay"
+    },
+    "what": "Tell the tenant to whom the rent goes from the sale date and how to reach the buyer.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "on the sale day",
+    "proof": "the message with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יא",
+        "quote": "בהודעה יפרט המשכיר את פרטי הרוכש ואת דרכי ההתקשרות עמו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The tenant keeps paying you.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו פרטים",
+      "en": "Send details",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.05",
+    "kind": "leaf",
+    "title": {
+      "he": "בטלו או העבירו את ביטוח המבנה",
+      "en": "Cancel or transfer the building insurance"
+    },
+    "what": "Ask the insurer in writing what happens to the building policy on the sale date.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "on the sale day",
+    "proof": "the insurer's written reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "Premiums continue; or the buyer is left uninsured. Terms differ by policy.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו בקשה",
+      "en": "Send request",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.06",
+    "kind": "leaf",
+    "title": {
+      "he": "בררו עם עורך הדין על הודעה לרשויות",
+      "en": "Ask the lawyer about notices to the authorities"
+    },
+    "what": "Ask the sale lawyer what to report to the municipality, the water and the electricity companies and the house committee about the change of owner. No deadline is claimed here.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "at the sale",
+    "proof": "the lawyer's list",
+    "money": null,
+    "law": [],
+    "if_skipped": "Bills keep coming to your name.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.05.07",
+    "kind": "leaf",
+    "title": {
+      "he": "העבירו את מפתחות הרזרבה והמסמכים",
+      "en": "Hand over the spare keys and the documents"
+    },
+    "what": "Hand the buyer your spare keys, the appliance warranties and the home's instruction sheet; the tenant keeps his keys.",
+    "who": [
+      "landlord"
+    ],
+    "when": "on the sale day",
+    "proof": "a signed list of what was handed",
+    "money": null,
+    "law": [],
+    "if_skipped": "A missing warranty or key later.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נמסר",
+      "en": "Mark handed",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06",
+    "kind": "branch",
+    "title": {
+      "he": "סגירת עסק ההשכרה",
+      "en": "Ending the rental business"
+    },
+    "what": "Closing the file when the last home is sold or no longer rented.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.06.01",
+    "kind": "leaf",
+    "title": {
+      "he": "החזירו כל ערובה בתוך המועד",
+      "en": "Return every security within the time"
+    },
+    "what": "Return the security, or what is left after lawful use, within 60 days of the home being returned to you, or by the date the tenant's debts were paid, whichever is later.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "within 60 days of the return of the home",
+    "proof": "the transfer record and a receipt from the tenant",
+    "money": "The landlord returns it with its fruits; deductions only in the cases the law lists.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25י(ה)",
+        "quote": "בתוך 60 ימים ממועד השבת הדירה המושכרת לרשותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The tenant can demand it and its fruits.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): securities recorded per lease; no automatic reminder"
+    },
+    "thumb": {
+      "he": "סמנו הוחזרה",
+      "en": "Mark returned",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06.02",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שהדירה הוחזרה ריקה",
+      "en": "Make sure the home was returned empty"
+    },
+    "what": "On the last day check the home is empty of people and things, except what belongs to the landlord.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "on the last day",
+    "proof": "a signed return note with photos",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "20(א)",
+        "quote": "כשהוא פנוי מכל אדם או נכס",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Items stay in the home and a dispute follows.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הוחזרה",
+      "en": "Mark returned",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06.03",
+    "kind": "leaf",
+    "title": {
+      "he": "הכינו עם רואה חשבון את הדוח האחרון",
+      "en": "Prepare the last report with the accountant"
+    },
+    "what": "Send the accountant the full year's rent and expense records so he can report the end of the rental income. The tax rules and deadlines are his to state; I did not read the Tax Authority text here.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "at the end of the last tax year of rental",
+    "proof": "the accountant's confirmation",
+    "money": null,
+    "law": [],
+    "if_skipped": "An open tax file; the consequence depends on the tax track.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): CSV for the accountant and a yearly summary"
+    },
+    "thumb": {
+      "he": "שלחו לרואה חשבון",
+      "en": "Send to accountant",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06.04",
+    "kind": "leaf",
+    "title": {
+      "he": "אספו את תיק ההשכרה לארכיון",
+      "en": "Collect the tenancy file into an archive"
+    },
+    "what": "Gather the contracts, receipts, protocols and photos in one folder, with a note of where it is. Ask the accountant how long to keep tax papers; none is claimed here.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the tenancy ends",
+    "proof": "the archive folder with an index",
+    "money": null,
+    "law": [],
+    "if_skipped": "A document is missing when a claim comes.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): evidence file per lease"
+    },
+    "thumb": {
+      "he": "ארכבו תיק",
+      "en": "Archive file",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06.05",
+    "kind": "leaf",
+    "title": {
+      "he": "מחקו פרטים אישיים שאינם נחוצים",
+      "en": "Delete personal details no longer needed"
+    },
+    "what": "Delete tenants' personal details that you no longer need for a legal or tax purpose; keep the rest secure.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the file is archived",
+    "proof": "a deletion note with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "17(א)",
+        "quote": "אחראי לאבטחת המידע שבמאגר המידע",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Old sensitive details stay on your devices.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "מחקו פרטים",
+      "en": "Delete details",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.06.06",
+    "kind": "leaf",
+    "title": {
+      "he": "בטלו הוראות קבע ושירותים על שמכם",
+      "en": "Cancel standing orders and services in your name"
+    },
+    "what": "Cancel standing orders and any service you held for the home (house committee, water, gas, internet) once the tenancy ends.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the tenancy ends",
+    "proof": "a confirmation per service",
+    "money": null,
+    "law": [],
+    "if_skipped": "Payments continue for a home you no longer rent.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו בוטל",
+      "en": "Mark cancelled",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.07",
+    "kind": "branch",
+    "title": {
+      "he": "העברת הדירה ליורשים",
+      "en": "Handing the home to heirs"
+    },
+    "what": "At a high level only. This is not legal advice; a lawyer is needed for a will or an inheritance order.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "10.07.01",
+    "kind": "leaf",
+    "title": {
+      "he": "הכינו תיק \"מה יש ואיפה\" ליורשים",
+      "en": "Prepare a \"what there is and where\" file for the heirs"
+    },
+    "what": "Make a sheet with each home, its tenant, the lease end date, the security held, the insurance policies and where the papers are.",
+    "who": [
+      "landlord"
+    ],
+    "when": "once, and update each year",
+    "proof": "the sheet with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "Heirs and tenants do not know what exists.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): evidence file per lease; no heirs sheet"
+    },
+    "thumb": {
+      "he": "הכינו תיק",
+      "en": "Prepare file",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.07.02",
+    "kind": "leaf",
+    "title": {
+      "he": "ספרו לאדם קרוב איפה התיק",
+      "en": "Tell a close person where the file is"
+    },
+    "what": "Tell a family member or a lawyer where the file is and how to reach it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "once, and update each year",
+    "proof": "the person's written reply",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send message",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.07.03",
+    "kind": "leaf",
+    "title": {
+      "he": "הבינו שהשכירות נמשכת",
+      "en": "Understand the lease continues"
+    },
+    "what": "The estate passes to the heirs at death, and the tenant's right to use the home holds against anyone, so the lease continues with the heirs in the landlord's place. Confirm with a lawyer for your case.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when planning",
+    "proof": "a note in the heirs file",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הירושה, התשכ\"ה-1965",
+        "section": "1",
+        "quote": "במות אדם עובר עזבונו ליורשיו",
+        "url": "https://he.wikisource.org/wiki/חוק_הירושה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "21(א)",
+        "quote": "כוחה של הזכות יפה כלפי כל אדם",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הבנתי",
+      "en": "Mark understood",
+      "taps": 1
+    }
+  },
+  {
+    "id": "10.07.04",
+    "kind": "leaf",
+    "title": {
+      "he": "שוחחו עם עורך דין על צוואה",
+      "en": "Talk with a lawyer about a will"
+    },
+    "what": "Ask a lawyer how you want the homes to pass, by will or by law. The registrar for inheritance declares the heirs' rights by an inheritance order, or by a probate order when there is a will.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "when planning",
+    "proof": "the lawyer's note",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הירושה, התשכ\"ה-1965",
+        "section": "66(א)",
+        "quote": "הרשם לעניני ירושה רשאי להצהיר על זכויות היורשים",
+        "url": "https://he.wikisource.org/wiki/חוק_הירושה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The estate is split by the default rules. This product gives no legal advice.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "קבעו שיחה",
+      "en": "Book a call",
+      "taps": 1
+    }
+  }
+]

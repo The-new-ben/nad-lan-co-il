@@ -1,0 +1,2082 @@
+[
+ {
+  "id": "05",
+  "kind": "branch",
+  "title": {
+   "he": "השכירות השוטפת",
+   "en": "The running tenancy"
+  },
+  "what": "מה עושה בעל הדירה כל חודש וכל שנה בזמן שהשוכר גר: גבייה, הצמדה, חשבונות, ועד בית, ארנונה, ביטוח וקשר.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כל חודש, מהיום הראשון של השכירות ועד המסירה בסוף",
+  "proof": "יומן חודשי של התשלומים והמסמכים",
+  "money": null,
+  "law": [],
+  "if_skipped": "חובות שלא נרשמו, הצמדה שלא עודכנה ותשלומים לצד שלישי שנופלים בין הכיסאות",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only): money, cheques, linkage and attention list; v1: tenant, rent, linkage fields only"
+  }
+ },
+ {
+  "id": "05.01",
+  "kind": "branch",
+  "title": {
+   "he": "גביית שכר הדירה",
+   "en": "Collecting the rent"
+  },
+  "what": "קביעת יום גבייה, אמצעי התשלום (העברה, הוראת קבע, צ'קים דחויים) ורישום כל תשלום שנכנס.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "כל חודש, בתחילת התקופה שבה משלמים",
+  "proof": null,
+  "money": "השוכר משלם דמי שכירות לפי החוזה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(1)",
+    "quote": "דמי שכירות לפי חוזה השכירות למגורים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אין תיעוד של מה שהתקבל, ואי אפשר להוכיח חוב או תשלום",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) inc/rentals/money.php, drawer 'new_payment'"
+  }
+ },
+ {
+  "id": "05.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "קבעו יום גבייה בכל דירה",
+   "en": "Set the rent due day"
+  },
+  "what": "לרשום בחוזה ובמערכת באיזה יום בחודש שכר הדירה אמור להיכנס, ובאיזה אמצעי.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני החתימה, ואחר כך בכל שינוי בחוזה",
+  "proof": "סעיף שכר הדירה בחוזה החתום",
+  "money": "שכר הדירה לפי החוזה; סכום אחר אסור שיגבה בלי הסכמה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "14(א)",
+    "quote": "ישלם אותם השוכר בראשית כל תקופה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אין מועד שאפשר להצביע עליו כאיחור",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) lease builder (rm-lease.js) and the lease field pay_day (inc/rentals/lease.php, money.php)"
+  },
+  "thumb": {
+   "he": "שמרו יום גבייה",
+   "en": "Save the due day",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "שלחו לשוכר פרטי חשבון לתשלום",
+   "en": "Send the tenant the bank details"
+  },
+  "what": "לשלוח לשוכר בהודעה אחת בנק, סניף, חשבון ושם המוטב, כדי שההעברות יגיעו נכון.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם אחת בתחילת השכירות, ובכל שינוי חשבון",
+  "proof": "הודעה שנשלחה לשוכר",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json keys pay_bank, set_bank_hint (bank line is added to the rent reminder)"
+  },
+  "thumb": {
+   "he": "שלחו פרטי חשבון",
+   "en": "Send bank details",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו תשלום שהתקבל בהעברה",
+   "en": "Record a transfer received"
+  },
+  "what": "לסמן שכר דירה של חודש מסוים כשולם, עם סכום, תאריך ואסמכתת העברה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "ביום שהכסף נכנס לחשבון",
+  "proof": "שורה בספר התשלומים ודף הבנק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) money drawer 'new_payment', method m_transfer"
+  },
+  "thumb": {
+   "he": "רשמו תשלום",
+   "en": "Record payment",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו צ'קים דחויים שקיבלתם",
+   "en": "Log post-dated cheques received"
+  },
+  "what": "להזין את כל הצ'קים שקיבלתם מהשוכר: מספר, סכום ותאריך פירעון, כדי שלא יישכחו.",
+  "who": [
+   "landlord"
+  ],
+  "when": "ביום שהשוכר מוסר את הצ'קים",
+  "proof": "צילום כל צ'ק לפני ההפקדה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) mtab_cheques, cheques_title ('all cheques you hold, by date')"
+  },
+  "thumb": {
+   "he": "הוסיפו צ'קים",
+   "en": "Add cheques",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "תזכורת להפקיד את הצ'ק ביום שלו",
+   "en": "Reminder to deposit the cheque on its date"
+  },
+  "what": "לקבל תזכורת בתאריך הפירעון ולהפקיד בבנק.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בתאריך הפירעון של כל צ'ק",
+  "proof": "אישור הפקדה של הבנק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) attention list att_cheque, action 'cheque_deposited'"
+  },
+  "thumb": {
+   "he": "סמנו שהופקד",
+   "en": "Mark deposited",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו שהשוכר הקים הוראת קבע",
+   "en": "Log a standing order set up by the tenant"
+  },
+  "what": "לסמן שהחודשים הבאים משולמים בהוראת קבע, ולבדוק בדף הבנק שהחיוב נכנס בפועל.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "אחרי שהשוכר מאשר שהקים את ההוראה",
+  "proof": "אישור מהשוכר ושורה בדף הבנק",
+  "money": null,
+  "law": [],
+  "if_skipped": "לא מזהים הוראה שבוטלה עד שמגיעים לחוב",
+  "product_today": {
+   "status": "missing",
+   "where": "No standing-order method found in the payment methods (transfer, cheque and others listed in he.json); not checked beyond that"
+  },
+  "thumb": {
+   "he": "סמנו הוראת קבע",
+   "en": "Mark standing order",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "אשרו בדף הבנק שהכסף נכנס",
+   "en": "Confirm in the bank statement"
+  },
+  "what": "להשוות כל תשלום שנרשם לשורה בדף הבנק ולצרף את הדף לתיק.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם בחודש, אחרי יום הגבייה",
+  "proof": "דף בנק בתיק הדירה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) document kind dk_bank exists; no automatic bank matching"
+  },
+  "thumb": {
+   "he": "צרפו דף בנק",
+   "en": "Attach statement",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.01.08",
+  "kind": "leaf",
+  "title": {
+   "he": "שלחו לשוכר אישור תשלום",
+   "en": "Send the tenant a payment confirmation"
+  },
+  "what": "להוציא לשוכר אישור שהחודש שולם. זה אישור תשלום ולא קבלה לצורכי מס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי כל תשלום, אם השוכר מבקש",
+  "proof": "אישור שנשמר בתיק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json receipt_note ('payment confirmation from the landlord, not a tax receipt')"
+  },
+  "thumb": {
+   "he": "שלחו אישור",
+   "en": "Send confirmation",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02",
+  "kind": "branch",
+  "title": {
+   "he": "איחור בתשלום",
+   "en": "Late payment"
+  },
+  "what": "מה עושים כשהחודש עבר והכסף לא נכנס: לזהות, להזכיר, לתעד, לגבות לפי החוזה.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "ביום שאחרי יום הגבייה שבו התשלום לא נכנס",
+  "proof": null,
+  "money": "החוב נשאר על השוכר לפי החוזה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "בתוספת הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "החוב גדל, והטענה שהמשכיר הסכים בשתיקה מתחזקת",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) attention list att_late, money.php charges"
+  }
+ },
+ {
+  "id": "05.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "ראו מי באיחור",
+   "en": "See who is late"
+  },
+  "what": "לפתוח רשימה אחת של כל הדירות שבהן שכר הדירה באיחור, עם סכום החוב.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל בוקר או ביום אחרי יום הגבייה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) att_late: 'rent is late, debt {amount}'"
+  },
+  "thumb": {
+   "he": "רשימת איחורים",
+   "en": "Late list",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "שלחו תזכורת ידידותית בוואטסאפ",
+   "en": "Send a friendly WhatsApp reminder"
+  },
+  "what": "לפתוח הודעה מוכנה לשוכר עם החודש, הסכום ופרטי התשלום, ולשלוח.",
+  "who": [
+   "landlord"
+  ],
+  "when": "ביום או יומיים אחרי האיחור",
+  "proof": "ההודעה בהיסטוריית הוואטסאפ",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) act_remind and message rent_reminder (the landlord presses send; no automatic sending)"
+  },
+  "thumb": {
+   "he": "שלחו תזכורת",
+   "en": "Send reminder",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "תעדו הסכמה על דחייה",
+   "en": "Log an agreed postponement"
+  },
+  "what": "אם סיכמתם דחייה, לכתוב מתי ועד איזה סכום, ולבקש מהשוכר לאשר בכתב.",
+  "who": [
+   "both"
+  ],
+  "when": "ברגע שמסכמים",
+  "proof": "הודעה כתובה מהשוכר",
+  "money": null,
+  "law": [],
+  "if_skipped": "אפשר לטעון שוויתרתם על החוב או על המועד",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "תעדו דחייה",
+   "en": "Log postponement",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "חייבו הפרשי הצמדה או ריבית לפי החוזה",
+   "en": "Charge linkage or interest per the lease"
+  },
+  "what": "להוסיף חיוב נפרד על הפרשים רק אם החוזה קובע אותם, ולרשום את הבסיס לחיוב.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשהחוב נסגר, או כשהחוזה מאפשר",
+  "proof": "סעיף הריבית בחוזה והחיוב ברשומה",
+  "money": "לפי תנאי החוזה בלבד; החוק לא קובע כאן סכום",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "בתוספת הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "הפרשים שלא נרשמו לא יחושבו אחר כך",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) manual extra charge exists (charge_note); no automatic interest calculation found"
+  },
+  "thumb": {
+   "he": "הוסיפו חיוב",
+   "en": "Add charge",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.05",
+  "kind": "leaf",
+  "title": {
+   "he": "קזזו מהערובה רק לפי החוזה והחוק",
+   "en": "Draw on the security only as the lease and law allow"
+  },
+  "what": "לרשום קיזוז מהפיקדון או מהערובה על חוב שנוצר, ולעדכן את השוכר.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי שהחוב לא נפרע ולפי החוזה",
+  "proof": "הודעה לשוכר ורישום הקיזוז",
+  "money": "מתוך הערובה שבידיכם; גובהה המצטבר מוגבל בחוק",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "בתוספת הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "קיזוז בלי תיעוד יוביל לחלוקה על הפיקדון בסוף",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json dep_apply_lead ('set-off is recorded as a payment on the debt')"
+  },
+  "thumb": {
+   "he": "רשמו קיזוז",
+   "en": "Record set-off",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.06",
+  "kind": "leaf",
+  "title": {
+   "he": "העבירו את תיק החוב לעורך דין",
+   "en": "Hand the debt file to a lawyer"
+  },
+  "what": "להפיק תיק אחד עם חוזה, תשלומים והודעות, ולשלוח לעורך הדין.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "כשהחוב נמשך אחרי התזכורות",
+  "proof": "תיק ראיות",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) /rm/evidence file per lease exists; no send-to-lawyer step"
+  },
+  "thumb": {
+   "he": "הפיקו תיק",
+   "en": "Export file",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.02.07",
+  "kind": "leaf",
+  "title": {
+   "he": "סגרו חוב שלא ייגבה",
+   "en": "Write off a debt"
+  },
+  "what": "למחוק חוב מהספרים כשהחלטתם לוותר, בלי שייחשב כהכנסה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשהחלטתם לוותר על הסכום",
+  "proof": "רישום מחיקה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) writeoff_title: 'closes it in the books and is not counted as income'"
+  },
+  "thumb": {
+   "he": "מחקו חוב",
+   "en": "Write off",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.03",
+  "kind": "branch",
+  "title": {
+   "he": "צ'ק שחזר",
+   "en": "A bounced cheque"
+  },
+  "what": "מה עושים כשהבנק מחזיר צ'ק: לסמן, לחייב את העמלה, לבקש תשלום חלופי ולשמור ראיות.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "ביום שהבנק מודיע שהצ'ק חזר",
+  "proof": null,
+  "money": "עמלת הבנק על השוכר רק אם החוזה קובע זאת",
+  "law": [],
+  "if_skipped": "החודש נראה שולם בספרים כשהוא לא נכנס",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) money.php 'bounce' action"
+  }
+ },
+ {
+  "id": "05.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "סמנו שהצ'ק חזר",
+   "en": "Mark the cheque as bounced"
+  },
+  "what": "לסמן את הצ'ק כחוזר כדי שהחודש יחזור להיות פתוח והחוב ייראה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "מיד כשחוזר",
+  "proof": "הודעת הבנק על החזרה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) act_bounce; 'the payment is no longer counted'"
+  },
+  "thumb": {
+   "he": "צ'ק חזר",
+   "en": "Cheque bounced",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "חייבו את השוכר בעמלת הבנק",
+   "en": "Charge the bank fee"
+  },
+  "what": "להוסיף חיוב על העמלה שהבנק גבה, אם החוזה מאפשר.",
+  "who": [
+   "landlord"
+  ],
+  "when": "באותו יום",
+  "proof": "אישור העמלה מהבנק",
+  "money": "הסכום שהבנק גבה בפועל, אם החוזה מחייב את השוכר",
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) f_bounce_fee"
+  },
+  "thumb": {
+   "he": "חייבו עמלה",
+   "en": "Charge fee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו מהשוכר תשלום חלופי",
+   "en": "Ask for another payment"
+  },
+  "what": "לשלוח הודעה עם סכום ומועד לתשלום בהעברה, ולרשום תאריך.",
+  "who": [
+   "landlord"
+  ],
+  "when": "באותו יום או למחרת",
+  "proof": "ההודעה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) WhatsApp reminder template can be reused; no dedicated bounced-cheque message"
+  },
+  "thumb": {
+   "he": "שלחו בקשה",
+   "en": "Send request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו את הצ'ק שחזר ואת הודעת הבנק",
+   "en": "Keep the bounced cheque and bank notice"
+  },
+  "what": "לצלם את הצ'ק ואת הודעת ההחזרה ולצרף לתיק.",
+  "who": [
+   "landlord"
+  ],
+  "when": "באותו יום",
+  "proof": "קבצים בתיק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) document kind dk_cheque"
+  },
+  "thumb": {
+   "he": "צרפו צילום",
+   "en": "Attach photo",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו אם חשבון השוכר מוגבל",
+   "en": "Check whether the tenant's account is restricted"
+  },
+  "what": "לפתוח את הבדיקה באתר בנק ישראל ולתעד את התוצאה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי צ'ק שחזר, ובכל בדיקת שוכר חדש",
+  "proof": "צילום תוצאת הבדיקה",
+  "money": null,
+  "law": [],
+  "if_skipped": "תמשיכו לקבל צ'קים מחשבון שעלול לחזור שוב",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) he.json boi_check (a link to the Bank of Israel site); the statute behind restricted accounts was not read"
+  },
+  "thumb": {
+   "he": "לבדיקה באתר בנק ישראל",
+   "en": "Open Bank of Israel check",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04",
+  "kind": "branch",
+  "title": {
+   "he": "הצמדה למדד המחירים לצרכן",
+   "en": "CPI linkage"
+  },
+  "what": "איך שכר הדירה עולה לפי מדד המחירים לצרכן של הלמ\"ס, לפי מה שכתוב בחוזה: מדד בסיס, תדירות, אחוז ורצפה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפי התדירות שבחוזה, למשל כל כמה חודשים",
+  "proof": null,
+  "money": "הסכום החדש לפי נוסח החוזה בלבד",
+  "law": [
+   {
+    "source": "הלשכה המרכזית לסטטיסטיקה, הודעה לתקשורת: מדד המחירים לצרכן, דצמבר 2025",
+    "section": "פתיחת ההודעה",
+    "quote": "הבסיס: ממוצע 2024=100.0 נקודות",
+    "url": "https://www.cbs.gov.il/he/mediarelease/Madad/Pages/2026/מדדי-המחירים-לצרכן-דצמבר-2025.aspx",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "שכר הדירה נשאר על הסכום הישן והפער נצבר לחוב שאין עליו תיעוד",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) money.php nlrm_cpi_factor, rm-views cpi tab; v1 has linkage fields"
+  }
+ },
+ {
+  "id": "05.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "קראו בחוזה: מדד בסיס, תדירות, אחוז ורצפה",
+   "en": "Read the lease: base index, frequency, percent, floor"
+  },
+  "what": "לרשום מהחוזה ארבעה דברים: איזה מדד הוא הבסיס, כל כמה זמן מעדכנים, כמה אחוז מההצמדה, והאם הסכום לא יורד מתחת למקורי.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני החודש הראשון",
+  "proof": "סעיף ההצמדה בחוזה",
+  "money": null,
+  "law": [],
+  "if_skipped": "חישוב לפי נוסח לא נכון, ומחלוקת על הפרשים",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json linkage_full, f_link_every, f_link_pct"
+  },
+  "thumb": {
+   "he": "רשמו נתוני הצמדה",
+   "en": "Enter linkage terms",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו את מדד הבסיס ואת החודש שלו",
+   "en": "Record the base index and its month"
+  },
+  "what": "להזין את החודש שאליו מצמידים, כפי שהחוזה מגדיר אותו (למשל המדד הידוע ביום החתימה, אם כך כתוב).",
+  "who": [
+   "landlord"
+  ],
+  "when": "בהזנת החוזה",
+  "proof": "סעיף הצמדה בחוזה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) 'cpi_from' (the base index date)"
+  },
+  "thumb": {
+   "he": "רשמו מדד בסיס",
+   "en": "Enter base index",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "ודאו שהמדד באותו בסיס כמו בחוזה",
+   "en": "Check the index base matches"
+  },
+  "what": "להשוות בין בסיס המדד שבו משתמשים לבין החוזה. בהודעת הלמ\"ס של דצמבר 2025 הבסיס הוא ממוצע 2024 שווה 100.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל חישוב ראשון, ובכל פעם שהלמ\"ס מחליפה בסיס",
+  "proof": "הודעת הלמ\"ס",
+  "money": null,
+  "law": [
+   {
+    "source": "הלשכה המרכזית לסטטיסטיקה, הודעה לתקשורת: מדד המחירים לצרכן, דצמבר 2025",
+    "section": "פתיחת ההודעה",
+    "quote": "הבסיס: ממוצע 2024=100.0 נקודות",
+    "url": "https://www.cbs.gov.il/he/mediarelease/Madad/Pages/2026/מדדי-המחירים-לצרכן-דצמבר-2025.aspx",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "השוואה בין מדדים בבסיסים שונים נותנת אחוז לא נכון",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) calculator from CBS is used; no explicit base check in the product"
+  },
+  "thumb": {
+   "he": "בדקו בסיס",
+   "en": "Check base",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.04",
+  "kind": "leaf",
+  "title": {
+   "he": "הוסיפו ליומן את מועד פרסום המדד",
+   "en": "Calendar the index release"
+  },
+  "what": "לרשום תזכורת לתאריך שבו הלמ\"ס מפרסמת את המדד. הודעת דצמבר 2025 פורסמה ב-15 בינואר 2026; את מועדי שאר החודשים בודקים בלוח מועדי הפרסום של הלמ\"ס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כל חודש, לפי לוח מועדי הפרסום של הלמ\"ס",
+  "proof": "תזכורת ביומן",
+  "money": null,
+  "law": [
+   {
+    "source": "הלשכה המרכזית לסטטיסטיקה, הודעה לתקשורת: מדד המחירים לצרכן, דצמבר 2025",
+    "section": "כותרת ההודעה",
+    "quote": "יום חמישי, 15 בינואר 2026",
+    "url": "https://www.cbs.gov.il/he/mediarelease/Madad/Pages/2026/מדדי-המחירים-לצרכן-דצמבר-2025.aspx",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "מחשבים לפי מדד ישן ויוצרים הפרש",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) att_cpi_wait (charges waiting for the CBS figure are posted automatically when it arrives)"
+  },
+  "thumb": {
+   "he": "הוסיפו ליומן",
+   "en": "Add to calendar",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.05",
+  "kind": "leaf",
+  "title": {
+   "he": "חשבו את ההצמדה במחשבון הלמ\"ס",
+   "en": "Compute the linkage in the CBS calculator"
+  },
+  "what": "להזין תאריך בסיס ותאריך יעד, ולקבל את אחוז השינוי ממחשבון ההצמדה של הלמ\"ס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל מועד עדכון לפי החוזה",
+  "proof": "תוצאת המחשבון",
+  "money": null,
+  "law": [
+   {
+    "source": "הלשכה המרכזית לסטטיסטיקה, מחשבון הצמדה למדדים",
+    "section": "עמוד המחשבון",
+    "quote": "מחשבון הצמדה למדדים",
+    "url": "https://www.cbs.gov.il/he/CBSNewBrand/Pages/Calculator.aspx",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) cpi_check_now, cpi_source ('CBS linkage calculator')"
+  },
+  "thumb": {
+   "he": "חשבו הצמדה",
+   "en": "Calculate linkage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.06",
+  "kind": "leaf",
+  "title": {
+   "he": "החילו רצפה אם החוזה קובע",
+   "en": "Apply the floor if the lease has one"
+  },
+  "what": "אם בחוזה כתוב שהסכום לא ירד מתחת לסכום המקורי, לוודא שהמדד היורד לא מוריד את שכר הדירה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל עדכון, כשהמדד ירד",
+  "proof": "סעיף הרצפה בחוזה",
+  "money": null,
+  "law": [],
+  "if_skipped": "הורדת שכר דירה שלא נדרשה מהחוזה",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) money.php: floor applies unless the lease says otherwise ('if ! isset floor || floor')"
+  },
+  "thumb": {
+   "he": "הפעילו רצפה",
+   "en": "Turn floor on",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.07",
+  "kind": "leaf",
+  "title": {
+   "he": "הודיעו לשוכר על שכר הדירה המעודכן",
+   "en": "Tell the tenant the updated rent"
+  },
+  "what": "לשלוח הודעה עם המדד הישן והחדש, האחוז והסכום החדש.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני החודש שבו הסכום החדש חל",
+  "proof": "ההודעה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) cpi_lease_result text exists; sending is by the landlord"
+  },
+  "thumb": {
+   "he": "שלחו עדכון",
+   "en": "Send update",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.04.08",
+  "kind": "leaf",
+  "title": {
+   "he": "רשמו את התשלום המעודכן",
+   "en": "Record the updated payment"
+  },
+  "what": "לעדכן את סכום החיוב החודשי כך שהספרים יראו את ההפרש.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי כל עדכון הצמדה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) money.php posts the exact difference (never silent)"
+  },
+  "thumb": {
+   "he": "עדכנו סכום",
+   "en": "Update amount",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.05",
+  "kind": "branch",
+  "title": {
+   "he": "חשמל, מים וגז",
+   "en": "Electricity, water and gas"
+  },
+  "what": "על שם מי רשומים החשבונות, ומי משלם על הצריכה בזמן השכירות.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "בכניסה לדירה ובכל חודש שיש חשבון",
+  "proof": null,
+  "money": "הצריכה על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "ובכלל זה מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "חשבון שנשאר על שם בעל הדירה יצטבר בלי שליטה",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) categories electric, water, gas in the expense list; extra tenant charges (charge_note)"
+  }
+ },
+ {
+  "id": "05.05.01",
+  "kind": "leaf",
+  "title": {
+   "he": "העבירו את חשבון החשמל לשם השוכר",
+   "en": "Move the electricity account to the tenant"
+  },
+  "what": "לבקש מהשוכר להעביר את החוזה עם חברת החשמל לשמו, עם קריאת מונה מהמסירה.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "בימים הראשונים של השכירות",
+  "proof": "אישור מחברת החשמל על שם השוכר",
+  "money": "צריכת החשמל על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "ובכלל זה מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "לא ידוע: החוק שנקרא מטיל את הצריכה על השוכר, ולא קבע על שם מי רשום החשבון",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלחו בקשה",
+   "en": "Send request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.05.02",
+  "kind": "leaf",
+  "title": {
+   "he": "העבירו את חשבון המים לשם השוכר",
+   "en": "Move the water account to the tenant"
+  },
+  "what": "לוודא שחשבון המים עובר לשם השוכר, ולצרף קריאת מונה.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "בימים הראשונים של השכירות",
+  "proof": "אישור מתאגיד המים או מהוועד",
+  "money": "צריכת המים על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "ובכלל זה מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלחו בקשה",
+   "en": "Send request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.05.03",
+  "kind": "leaf",
+  "title": {
+   "he": "העבירו את חשבון הגז לשם השוכר",
+   "en": "Move the gas account to the tenant"
+  },
+  "what": "לוודא שחוזה הגז, אם יש, עובר לשם השוכר.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "בימים הראשונים של השכירות",
+  "proof": "אישור מספק הגז",
+  "money": "צריכת הגז על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "ובכלל זה מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלחו בקשה",
+   "en": "Send request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.05.04",
+  "kind": "leaf",
+  "title": {
+   "he": "חייבו את השוכר בחשבון שנשאר על שמכם",
+   "en": "Bill the tenant for an account still in your name"
+  },
+  "what": "אם חשבון נשאר על שמכם, להוסיף חיוב לשוכר על הצריכה לפי החוזה, עם צילום החשבון.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכל חשבון שמגיע",
+  "proof": "החשבון המקורי והחיוב",
+  "money": "לפי הצריכה בפועל, על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "ובכלל זה מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json charge_note ('extra charge on the tenant, for example water or electricity per the lease')"
+  },
+  "thumb": {
+   "he": "הוסיפו חיוב",
+   "en": "Add charge",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.05.05",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו מהשוכר צילום חשבון ששולם",
+   "en": "Ask for a paid bill"
+  },
+  "what": "לבקש מדי כמה חודשים צילום חשבון ששולם, כדי לוודא שאין חוב על שם הדירה.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "פעם ברבעון",
+  "proof": "צילום חשבון ששולם",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקשו צילום",
+   "en": "Ask for a copy",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06",
+  "kind": "branch",
+  "title": {
+   "he": "ועד בית",
+   "en": "House committee payments"
+  },
+  "what": "מי משלם לוועד הבית: התשלום השוטף על השוכר לפי חוק השכירות, והוצאות חריגות על הבעלים לפי חוק המקרקעין והתקנון.",
+  "who": [
+   "both",
+   "house-committee"
+  ],
+  "when": "כל חודש, ובכל דרישה חריגה מהוועד",
+  "proof": null,
+  "money": "שוטף: שוכר. רכישה והשבחה של מערכות קבועות, ודמי ביטוח מבנה: בעל הדירה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "תשלומים לצורך אחזקה שוטפת המשולמים לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "58(א)",
+    "quote": "בעל דירה חייב להשתתף בהוצאות הדרושות להחזקתו התקינה ולניהולו של הרכוש המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "הוועד פונה לבעל הדירה בחוב, ובעל דירה שלא משלם הוא הצד לסכסוך מול הבית",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) expense category cat_vaad only; no committee record or alerts"
+  }
+ },
+ {
+  "id": "05.06.01",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו מהוועד סכום חודשי ופרטי תשלום",
+   "en": "Ask the committee for the monthly amount and details"
+  },
+  "what": "לברר מי הנציגות, כמה משלמים בחודש, ולמי ובאיזה אופן.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני הכניסה של השוכר",
+  "proof": "הודעה או פנקס מהוועד",
+  "money": "הסכום שהאסיפה או הנציגות קבעו; לא נקרא סכום ממקור ראשוני",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "תשלומים לצורך אחזקה שוטפת המשולמים לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "68",
+    "quote": "דינו כדין הוצאה שבעלי הדירות חייבים להשתתף בה",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) category cat_vaad"
+  },
+  "thumb": {
+   "he": "רשמו סכום ועד",
+   "en": "Enter committee fee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הסכימו שהשוכר משלם את הוועד השוטף",
+   "en": "Agree the tenant pays the routine committee fee"
+  },
+  "what": "לוודא שהחוזה כותב שהתשלום השוטף לנציגות על השוכר, ולרשום את הסכום.",
+  "who": [
+   "both"
+  ],
+  "when": "בחתימת החוזה",
+  "proof": "סעיף בחוזה",
+  "money": "על השוכר: אחזקה שוטפת. לא על השוכר: רכישה או השבחה של מערכות קבועות",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "תשלומים לצורך אחזקה שוטפת המשולמים לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(1)",
+    "quote": "תשלום המיועד לרכישה או להשבחה של מערכות או מיתקנים קבועים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אי בהירות על מי משלם, ומחלוקת בסוף",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) lease builder text; not a dedicated field"
+  },
+  "thumb": {
+   "he": "רשמו תשלום ועד",
+   "en": "Note committee fee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.03",
+  "kind": "leaf",
+  "title": {
+   "he": "ודאו שהשוכר משלם לוועד בפועל",
+   "en": "Check the tenant really pays the committee"
+  },
+  "what": "לבקש אישור תשלום או לשאול את הוועד אם יש חוב על הדירה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם ברבעון",
+  "proof": "אישור מהוועד",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקשו אישור",
+   "en": "Ask for confirmation",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.04",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלו הודעה על הוצאה חריגה מהוועד",
+   "en": "Receive an extraordinary-works notice"
+  },
+  "what": "כשהוועד דורש תשלום חד-פעמי (שיפוץ, חידוש מעלית וכדומה), לרשום את הסכום ולבדוק על מי הוא חל.",
+  "who": [
+   "landlord",
+   "house-committee"
+  ],
+  "when": "כשהוועד מודיע",
+  "proof": "הודעת הוועד והחלטת האסיפה",
+  "money": "הוצאות הדרושות להחזקת הרכוש המשותף: חלק יחסי על בעל הדירה; רכישה והשבחה של מערכות קבועות אינן על השוכר",
+  "law": [
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "58(א)",
+    "quote": "בעל דירה חייב להשתתף בהוצאות הדרושות להחזקתו התקינה ולניהולו של הרכוש המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(1)",
+    "quote": "תשלום המיועד לרכישה או להשבחה של מערכות או מיתקנים קבועים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "חוב לוועד על שם הבעלים",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) expense entry exists; no committee-specific flow"
+  },
+  "thumb": {
+   "he": "הוסיפו הוצאה",
+   "en": "Add expense",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.05",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו בתקנון אם משלמים לפי שטח או חלוקה אחרת",
+   "en": "Check the building rules for the cost split"
+  },
+  "what": "לבקש את התקנון ולבדוק אם החלוקה לפי שטח הדירה או לפי שיעור אחר שנקבע.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשמגיעה דרישה חריגה",
+  "proof": "עותק התקנון",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "58(א)",
+    "quote": "נקבע בתקנון שיעור השתתפות אחר",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "אפשר לשלם לפי חלוקה שאינה נכונה",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקשו תקנון",
+   "en": "Ask for the rules",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.06",
+  "kind": "leaf",
+  "title": {
+   "he": "בניין עם כמה אגפים: בדקו מי משלם על האגף",
+   "en": "Multi-wing building: who pays for each wing"
+  },
+  "what": "אם הבית כולל כמה מבנים או אגפים עם כניסות נפרדות, לבדוק בתקנון אם ההוצאה חלה רק על בעלי האגף.",
+  "who": [
+   "landlord"
+  ],
+  "when": "כשמגיעה דרישה שקשורה לאגף",
+  "proof": "סעיף בתקנון",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "59(א)",
+    "quote": "מבנים אחדים או מאגפים אחדים אשר לכל אחד מהם כניסה נפרדת",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדקו בתקנון",
+   "en": "Check rules",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.07",
+  "kind": "leaf",
+  "title": {
+   "he": "הוסיפו ליומן את האסיפה השנתית של בעלי הדירות",
+   "en": "Calendar the annual owners' meeting"
+  },
+  "what": "לרשום את תאריך האסיפה הכללית. בתקנון המצוי בעלי הדירות מקיימים אחת לשנה אסיפה כללית.",
+  "who": [
+   "landlord",
+   "house-committee"
+  ],
+  "when": "פעם בשנה, כשהנציגות מזמינה",
+  "proof": "הזמנה לאסיפה",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק המקרקעין, התשכ\"ט-1969",
+    "section": "התוספת, תקנון מצוי, סעיף 5(א)",
+    "quote": "בעלי הדירות יקיימו אחת לשנה אסיפה כללית",
+    "url": "https://he.wikisource.org/wiki/חוק_המקרקעין",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "החלטות על הוצאות מתקבלות בלי הבעלים",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "הוסיפו ליומן",
+   "en": "Add to calendar",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.06.08",
+  "kind": "leaf",
+  "title": {
+   "he": "הצביעו באסיפה או מנו מי שיצביע במקומכם",
+   "en": "Vote or appoint a representative"
+  },
+  "what": "לעדכן את הנציגות שבעל הדירה הוא הצד, ולהצביע או למנות נציג.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני האסיפה",
+  "proof": "הודעה לנציגות",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "אשרו השתתפות",
+   "en": "Confirm attendance",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.07",
+  "kind": "branch",
+  "title": {
+   "he": "ארנונה",
+   "en": "Municipal tax (arnona)"
+  },
+  "what": "מי חייב בארנונה, ומה חובת ההודעה לעירייה על שוכר. לפי חוק השכירות השוכר נושא בארנונה, ולפי פקודת העיריות המשכיר חייב להודיע על שכירות לשנה או יותר.",
+  "who": [
+   "both",
+   "authority"
+  ],
+  "when": "בכניסת שוכר, וביציאתו",
+  "proof": null,
+  "money": "השוכר משלם לפי החוק, אבל מול העירייה האחריות נשארת על המשכיר עד שנמסרה הודעה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "פקודת העיריות [נוסח חדש]",
+    "section": "326",
+    "quote": "בהשכרה לתקופה הקצרה משנה אחת, יהיה המשכיר חייב בארנונה",
+    "url": "https://he.wikisource.org/wiki/פקודת_העיריות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "חוב ארנונה על שם בעל הדירה",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) expense category cat_arnona only"
+  }
+ },
+ {
+  "id": "05.07.01",
+  "kind": "leaf",
+  "title": {
+   "he": "בררו על שם מי רשומה הארנונה",
+   "en": "Check whose name the arnona account is in"
+  },
+  "what": "לברר בעירייה על שם מי הנכס רשום כמחזיק, ומה ההיסטוריה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני הכניסה של שוכר חדש",
+  "proof": "אישור או חשבון ארנונה",
+  "money": null,
+  "law": [],
+  "if_skipped": "חיוב על שם שאינו המחזיק האמיתי",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדקו בעירייה",
+   "en": "Check with the council",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.07.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הודיעו לעירייה על שוכר בשכירות של שנה או יותר",
+   "en": "Notify the council of a tenant on a lease of a year or more"
+  },
+  "what": "להודיע לעירייה על ההשכרה ולמסור את שם השוכר, כדי שהחיוב יעבור אליו.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בכניסת השוכר. הפקודה אינה קובעת מספר ימים",
+  "proof": "הודעה בכתב ואישור קבלה מהעירייה",
+  "money": null,
+  "law": [
+   {
+    "source": "פקודת העיריות [נוסח חדש]",
+    "section": "326",
+    "quote": "חייבים המשכיר או נציגו",
+    "url": "https://he.wikisource.org/wiki/פקודת_העיריות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "פקודת העיריות [נוסח חדש]",
+    "section": "326",
+    "quote": "כל עוד לא ניתנה הודעה כאמור, יהיו המוכר, המעביר או המשכיר חייבים בארנונה",
+    "url": "https://he.wikisource.org/wiki/פקודת_העיריות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "המשכיר נשאר חייב בארנונה כלפי העירייה עד שנמסרה הודעה",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלחו הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.07.03",
+  "kind": "leaf",
+  "title": {
+   "he": "שכירות קצרה משנה: צפו לחיוב על שמכם",
+   "en": "Lease under one year: expect the bill in your name"
+  },
+  "what": "להבין שבשכירות קצרה משנה המשכיר חייב כלפי העירייה, ולהסדיר בחוזה שהשוכר מחזיר לכם.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני חתימה על חוזה קצר משנה",
+  "proof": "סעיף בחוזה",
+  "money": "כלפי העירייה: המשכיר. ביניכם: השוכר, לפי חוק השכירות והחוזה",
+  "law": [
+   {
+    "source": "פקודת העיריות [נוסח חדש]",
+    "section": "326",
+    "quote": "בהשכרה לתקופה הקצרה משנה אחת, יהיה המשכיר חייב בארנונה",
+    "url": "https://he.wikisource.org/wiki/פקודת_העיריות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "תשלמו אתם ולא תגבו",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשמו תשלום חוזר",
+   "en": "Note pass-through",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.07.04",
+  "kind": "leaf",
+  "title": {
+   "he": "ודאו שהשוכר משלם את הארנונה",
+   "en": "Check the tenant pays arnona"
+  },
+  "what": "לבקש אישור שהארנונה שולמה, כדי שלא יצטבר חוב על הנכס.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם ברבעון",
+  "proof": "אישור תשלום מהעירייה",
+  "money": "על השוכר לפי חוק השכירות",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקשו אישור",
+   "en": "Ask for proof",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.07.05",
+  "kind": "leaf",
+  "title": {
+   "he": "הודיעו לעירייה שהשוכר עזב",
+   "en": "Tell the council the tenant left"
+  },
+  "what": "בסוף השכירות לוודא שנמסרה הודעה על חדילת ההחזקה, כדי שהחיוב ישוב לבעלים או יעבור לשוכר הבא.",
+  "who": [
+   "both"
+  ],
+  "when": "ביום המסירה בסוף השכירות. הפקודה אינה קובעת מספר ימים",
+  "proof": "הודעה בכתב ואישור קבלה",
+  "money": null,
+  "law": [
+   {
+    "source": "פקודת העיריות [נוסח חדש]",
+    "section": "325",
+    "quote": "ימסור הוא או נציגו הודעה על כך בכתב לעיריה",
+    "url": "https://he.wikisource.org/wiki/פקודת_העיריות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "החיוב ממשיך על מי שנרשם כמחזיק",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלחו הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.08",
+  "kind": "branch",
+  "title": {
+   "he": "ביטוח בזמן השכירות",
+   "en": "Insurance during the tenancy"
+  },
+  "what": "ביטוח מבנה על הבעלים, ביטוח תכולה על השוכר אם הוסכם, ושמירת הפוליסות.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "בתחילת השכירות ובכל חידוש שנתי",
+  "proof": null,
+  "money": "בעל הדירה משלם ביטוח מבנה",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(2)",
+    "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "נזק למבנה בלי כיסוי",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) category cat_insurance and document kind dk_insurance"
+  }
+ },
+ {
+  "id": "05.08.01",
+  "kind": "leaf",
+  "title": {
+   "he": "חדשו את ביטוח המבנה של הדירה",
+   "en": "Renew the building insurance"
+  },
+  "what": "לוודא שהפוליסה בתוקף לכל תקופת השכירות, ושהחברה יודעת שהדירה מושכרת.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני תום הפוליסה",
+  "proof": "פוליסה ואישור תשלום",
+  "money": "על בעל הדירה, לא על השוכר",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(2)",
+    "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "פגיעה במבנה בלי פיצוי",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) cat_insurance (record the cost); no renewal alert"
+  },
+  "thumb": {
+   "he": "רשמו חידוש",
+   "en": "Log renewal",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.08.02",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשו מהשוכר ביטוח תכולה",
+   "en": "Ask the tenant for contents insurance"
+  },
+  "what": "לבקש מהשוכר, אם הוסכם בחוזה, פוליסה על התכולה שלו, ולהעתיק לתיק. החוק שנקרא אינו מחייב ביטוח תכולה.",
+  "who": [
+   "tenant"
+  ],
+  "when": "בכניסה, ובכל חידוש",
+  "proof": "צילום פוליסת תכולה",
+  "money": null,
+  "law": [],
+  "if_skipped": "תכולת השוכר לא מבוטחת, ולא נקרא טקסט על האחריות",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקשו פוליסה",
+   "en": "Ask for policy",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.08.03",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו עותק של כל פוליסה",
+   "en": "Keep a copy of every policy"
+  },
+  "what": "להעלות את הפוליסות לתיק הדירה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי כל חידוש",
+  "proof": "קובץ בתיק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) document kind dk_insurance"
+  },
+  "thumb": {
+   "he": "העלו פוליסה",
+   "en": "Upload policy",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.08.04",
+  "kind": "leaf",
+  "title": {
+   "he": "תזכורת שנתית לחידוש הפוליסה",
+   "en": "Yearly renewal reminder"
+  },
+  "what": "להגדיר תזכורת חודש לפני סוף הפוליסה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "חודש לפני סוף הפוליסה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבעו תזכורת",
+   "en": "Set reminder",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.09",
+  "kind": "branch",
+  "title": {
+   "he": "התקשורת עם השוכר",
+   "en": "Communication with the tenant"
+  },
+  "what": "ערוץ אחד ברור: קישור אישי, דיווחי תקלות, הודעות כתובות ומועדי החוזה.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "לאורך כל השכירות",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": "הודעות נאבדות ואין תיעוד של מה סוכם",
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) portal (portal_invite) and repairs lead"
+  }
+ },
+ {
+  "id": "05.09.01",
+  "kind": "leaf",
+  "title": {
+   "he": "שלחו לשוכר את הקישור האישי",
+   "en": "Send the tenant the personal link"
+  },
+  "what": "לשלוח קישור שבו השוכר רואה חוזה, תשלומים ומדווח על תקלה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בתחילת השכירות",
+  "proof": "הודעה שנשלחה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json portal_invite"
+  },
+  "thumb": {
+   "he": "שלחו קישור",
+   "en": "Send link",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.09.02",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלו דיווח תקלה עם תמונה",
+   "en": "Receive a fault report with a photo"
+  },
+  "what": "השוכר כותב מה קרה ומצרף תמונה, ובעל הדירה מקבל דיווח עם מועד הטיפול.",
+  "who": [
+   "tenant"
+  ],
+  "when": "כשהשוכר מגלה ליקוי",
+  "proof": "הדיווח והתמונה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json p_repair_lead"
+  },
+  "thumb": {
+   "he": "פתחו דיווח",
+   "en": "Open report",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.09.03",
+  "kind": "leaf",
+  "title": {
+   "he": "הודיעו לשוכר מראש על ביקור",
+   "en": "Give notice of a visit"
+  },
+  "what": "לקבוע מועד ביקור ולשלוח לשוכר הודעה מראש.",
+  "who": [
+   "landlord"
+  ],
+  "when": "לפני כל ביקור",
+  "proof": "ההודעה",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) he.json f_visit ('visit date'); no tenant notice step checked"
+  },
+  "thumb": {
+   "he": "שלחו הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.09.04",
+  "kind": "leaf",
+  "title": {
+   "he": "שמרו כל הודעה חשובה כתובה",
+   "en": "Keep every important message in writing"
+  },
+  "what": "להעביר לתיק הודעות שקובעות דבר: דחייה, תיקון, הסכמה.",
+  "who": [
+   "both"
+  ],
+  "when": "אחרי כל הסכמה",
+  "proof": "קובץ בתיק",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) documents and an events log exist; no message capture"
+  },
+  "thumb": {
+   "he": "שמרו הודעה",
+   "en": "Save message",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.09.05",
+  "kind": "leaf",
+  "title": {
+   "he": "ראו את המועדים החשובים בחוזה",
+   "en": "See the key lease dates"
+  },
+  "what": "לפתוח את המועדים: הודעת בעל הדירה, הודעת השוכר, עדכון הצמדה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם בחודש",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) he.json deadlines, dl_landlord_notice, dl_tenant_notice, dl_cpi"
+  },
+  "thumb": {
+   "he": "הצג מועדים",
+   "en": "Show dates",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.10",
+  "kind": "branch",
+  "title": {
+   "he": "רשימת סיכום חודשית",
+   "en": "Monthly checklist"
+  },
+  "what": "חמש בדיקות קצרות שסוגרות חודש.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בסוף כל חודש",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": "טעויות קטנות מצטברות",
+  "product_today": {
+   "status": "partly",
+   "where": "v2 (administrators only) attention list is built from your data by risk (att_note)"
+  }
+ },
+ {
+  "id": "05.10.01",
+  "kind": "leaf",
+  "title": {
+   "he": "פתחו את רשימת הטיפול של החודש",
+   "en": "Open the month's attention list"
+  },
+  "what": "לראות מה דורש טיפול: חובות, מועדים בחוק, תקלות.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בתחילת החודש",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) att_note, att_late, att_repair"
+  },
+  "thumb": {
+   "he": "פתחו רשימה",
+   "en": "Open list",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.10.02",
+  "kind": "leaf",
+  "title": {
+   "he": "ודאו שכל שכר דירה נכנס ורשום",
+   "en": "Check every rent is in and recorded"
+  },
+  "what": "לעבור על הדירות ולוודא שכל חודש סומן.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי יום הגבייה",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) kpi_open (open balance)"
+  },
+  "thumb": {
+   "he": "בדקו חודשים",
+   "en": "Check months",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.10.03",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו אם יש עדכון הצמדה החודש",
+   "en": "Check for a linkage update"
+  },
+  "what": "לראות אם החודש הוא מועד עדכון לפי החוזה, ולהריץ בדיקת הצמדה.",
+  "who": [
+   "landlord"
+  ],
+  "when": "אחרי פרסום המדד",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) cpi_check_now"
+  },
+  "thumb": {
+   "he": "בדקו הצמדה",
+   "en": "Check linkage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.10.04",
+  "kind": "leaf",
+  "title": {
+   "he": "בדקו תקלות פתוחות ומועדי תיקון",
+   "en": "Check open repairs and fix-by dates"
+  },
+  "what": "לעבור על התקלות הפתוחות ולראות איזו עברה את המועד בחוק.",
+  "who": [
+   "landlord"
+  ],
+  "when": "פעם בחודש",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) att_repair, att_repair_over"
+  },
+  "thumb": {
+   "he": "הצג תקלות",
+   "en": "Show repairs",
+   "taps": 1
+  }
+ },
+ {
+  "id": "05.10.05",
+  "kind": "leaf",
+  "title": {
+   "he": "ייצאו דף חודשי לרואה החשבון",
+   "en": "Export a monthly sheet for the accountant"
+  },
+  "what": "להוריד קובץ אקסל של ההכנסות וההוצאות עד היום.",
+  "who": [
+   "landlord"
+  ],
+  "when": "בסוף החודש",
+  "proof": "קובץ CSV",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2 (administrators only) rep_csv ('file for Excel')"
+  },
+  "thumb": {
+   "he": "ייצאו קובץ",
+   "en": "Export file",
+   "taps": 1
+  }
+ }
+]

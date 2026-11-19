@@ -1,0 +1,1441 @@
+[
+ {
+  "id": "04",
+  "kind": "branch",
+  "title": {
+   "he": "מסירה: פרוטוקול, מונים, מפתחות, מצב הדירה",
+   "en": "Handover: protocol, meters, keys, condition of the home"
+  },
+  "what": "Everything done on and around the day the keys change hands.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before and on the handover day",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.01",
+  "kind": "branch",
+  "title": {
+   "he": "דירה ראויה למגורים לפני המסירה",
+   "en": "A home fit to live in before handover"
+  },
+  "what": "The home must be fit for residence: none of the six unfit conditions may exist.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "before handover",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "מערכת ניקוז וסילוק שפכים",
+   "en": "Drainage and sewage"
+  },
+  "what": "Check that the home has a drainage system that carries waste water away.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "photo or plumber's note",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (1)",
+    "quote": "היא אינה כוללת מערכת ניקוז, לרבות מערכת לסילוק סדיר של שפכים ודלוחין",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A home without it is unfit, and handing it over is a breach of the contract (25ו(ב)).",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "מערכת חשמל ותאורה",
+   "en": "Electrical and lighting system"
+  },
+  "what": "Check that the home has a working electrical system and lighting.",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "before handover",
+  "proof": "electrician's note",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (2)",
+    "quote": "היא אינה כוללת מערכת חשמל או מערכת תאורה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfit home; a breach of the contract.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "אוורור, אור טבעי, דלתות וחלונות",
+   "en": "Ventilation, daylight, doors and windows"
+  },
+  "what": "Check openings for ventilation and daylight, with doors and windows that close, including a front door that locks.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "photos",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (3)",
+    "quote": "דלת כניסה ראשית בעלת אמצעי נעילה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfit home; a breach of the contract.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "אספקת מי שתייה",
+   "en": "Drinking water supply"
+  },
+  "what": "Check the home has a drinking water supply.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "photo of a running tap",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (4)",
+    "quote": "היא אינה כוללת מערכת להספקת מי שתייה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfit home; a breach of the contract.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "מחיצה בין השירותים לדירה",
+   "en": "Partition between the toilet and the home"
+  },
+  "what": "Check that the toilet is separated from the rest of the home by a partition.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "photo",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (5)",
+    "quote": "היא אינה כוללת מחיצה בין השירותים ובין הדירה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfit home; a breach of the contract.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "סיכון בטיחות או בריאות",
+   "en": "Safety and health risk"
+  },
+  "what": "Check there is no unreasonable risk to the tenant's safety or health (gas, wiring, mould, structure).",
+  "who": [
+   "landlord",
+   "professional"
+  ],
+  "when": "before handover",
+  "proof": "professional's note",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת ראשונה (6)",
+    "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfit home; a breach of the contract.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: gas and safety hints in the tenant portal text"
+  },
+  "thumb": {
+   "he": "סמן תקין",
+   "en": "Mark OK",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "ניקיון והכנה למסירה",
+   "en": "Cleaning and preparation"
+  },
+  "what": "Clean the home and remove what must not stay.",
+  "who": [
+   "landlord"
+  ],
+  "when": "2 days before handover",
+  "proof": "photos after cleaning",
+  "money": null,
+  "law": [],
+  "if_skipped": "Disputes at the exit: nothing proves the starting state.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן נוקה",
+   "en": "Mark cleaned",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.01.08",
+  "kind": "leaf",
+  "title": {
+   "he": "דירה פנויה מכל אדם ונכס",
+   "en": "Vacant of people and property"
+  },
+  "what": "Empty the home of people and of things that are not agreed to stay.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "photos",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ז(ב)",
+    "quote": "כשהיא פנויה מכל אדם או נכס, למעט נכס שהוסכם כי יהיה בדירה בעת מסירתה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A breach of delivery; the tenant may claim.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן פנויה",
+   "en": "Mark vacant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.02",
+  "kind": "branch",
+  "title": {
+   "he": "תיאום מועד ומסמכי המסירה",
+   "en": "Handover date and documents"
+  },
+  "what": "Agree the date and give the tenant the instructions the law requires.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before handover",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "קביעת מועד המסירה",
+   "en": "Set the handover date"
+  },
+  "what": "Agree on the date; if only a period was agreed, set the date inside it and tell the tenant in reasonable time.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before handover",
+  "proof": "message to the tenant",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ז(א)",
+    "quote": "במועד שהצדדים הסכימו עליו",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "5(ב)",
+    "quote": "על המשכיר להודיע לשוכר זמן סביר מראש על מועד המסירה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The tenant is not obliged to accept on a date he was not told in reasonable time.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבע מועד",
+   "en": "Set date",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הוראות תחזוקה ושימוש",
+   "en": "Maintenance and use instructions"
+  },
+  "what": "Prepare the instructions for the home, its fittings and its items (boiler, A/C, alarm, gas).",
+  "who": [
+   "landlord"
+  ],
+  "when": "by the day of handover",
+  "proof": "instructions file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ז(ג)",
+    "quote": "הוראות תחזוקה ושימוש בקשר לדירה, למיתקניה ולנכסים שבה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "הכן הוראות",
+   "en": "Prepare instructions",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "מסירת ההוראות לשוכר",
+   "en": "Give the instructions to the tenant"
+  },
+  "what": "Give the instructions to the tenant at the latest on the handover date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "not later than handover",
+  "proof": "delivery record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ז(ג)",
+    "quote": "לא יאוחר ממועד מסירת הדירה המושכרת",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הוראות",
+   "en": "Send instructions",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "מסמכי מכשירים ואחריות",
+   "en": "Appliance manuals and warranties"
+  },
+  "what": "Hand over manuals and warranties of the appliances in the home.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at handover",
+  "proof": "list in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ז(ג)",
+    "quote": "ככל שאלה נדרשים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: appliances recorded with details; manuals not stored"
+  },
+  "thumb": {
+   "he": "צרף מסמכים",
+   "en": "Attach documents",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03",
+  "kind": "branch",
+  "title": {
+   "he": "פרוטוקול מסירה ותמונות",
+   "en": "Handover protocol and photos"
+  },
+  "what": "A written, photographed record of the state of the home on the day.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "פתיחת פרוטוקול מסירה",
+   "en": "Open the handover protocol"
+  },
+  "what": "Open the protocol for the home and the lease.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": "At the exit there is no agreed record of the starting state.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents section has kinds dk_protocol and dk_photo (file upload); no guided room-by-room form"
+  },
+  "thumb": {
+   "he": "פתח פרוטוקול",
+   "en": "Open protocol",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "צילום כל חדר",
+   "en": "Photograph every room"
+  },
+  "what": "Photograph each room, walls, floor, ceiling, doors, windows, with the date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "dated photos",
+  "money": null,
+  "law": [],
+  "if_skipped": "At the exit the landlord cannot show what changed.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: dk_photo files per lease; no room checklist"
+  },
+  "thumb": {
+   "he": "צלם חדר",
+   "en": "Photograph room",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "צילום נזקים קיימים",
+   "en": "Photograph existing damage"
+  },
+  "what": "Photograph each existing scratch, crack or stain, next to a note.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "dated photos",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "6(ג)(1)",
+    "quote": "השוכר ידע על אי־ההתאמה בעת כריתת חוזה השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A tenant who knew of a defect at signing cannot rely on it later; without a record, who knew is argued.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: dk_photo files per lease"
+  },
+  "thumb": {
+   "he": "צלם נזק",
+   "en": "Photograph damage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "רישום פגמים שהמשכיר מכיר",
+   "en": "Record defects the landlord knows"
+  },
+  "what": "Write in the protocol every defect the landlord knows at handover, so the tenant cannot say he was not told.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol line",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (7)",
+    "quote": "הידוע למשכיר בעת כריתת החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "8",
+    "quote": "ולא הודיע עליה לשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A clause that frees the landlord of a defect he knew and hid is void.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents section has kinds dk_protocol and dk_photo (file upload); no guided room-by-room form"
+  },
+  "thumb": {
+   "he": "רשום פגם",
+   "en": "Record defect",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "השוואת הריהוט לרשימה",
+   "en": "Compare furniture to the list"
+  },
+  "what": "Go over each item in the lease inventory and mark its state.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol with state marks",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (3)",
+    "quote": "תיאור הדירה המושכרת, הריהוט והאבזרים שבה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A dispute whether an item was handed over or its state.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents section has kinds dk_protocol and dk_photo (file upload); no guided room-by-room form"
+  },
+  "thumb": {
+   "he": "סמן מצב פריט",
+   "en": "Mark item state",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.06",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת מכשירים ומזגנים",
+   "en": "Test appliances and A/C"
+  },
+  "what": "Switch on and test each appliance and each A/C, record that it works.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol line",
+  "money": null,
+  "law": [],
+  "if_skipped": "A later 'it never worked' dispute.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: appliances recorded; no test log"
+  },
+  "thumb": {
+   "he": "סמן נבדק",
+   "en": "Mark tested",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.07",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת חדרים רטובים ודוד",
+   "en": "Test wet rooms and boiler"
+  },
+  "what": "Run the taps, flush, check the shower and the boiler.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol line",
+  "money": null,
+  "law": [],
+  "if_skipped": "A later leak or boiler dispute has no baseline.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן נבדק",
+   "en": "Mark tested",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.08",
+  "kind": "leaf",
+  "title": {
+   "he": "חתימת שני הצדדים על הפרוטוקול",
+   "en": "Both sides sign the protocol"
+  },
+  "what": "Both landlord and tenant sign the protocol on the day.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "signed protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": "The protocol is a one-sided claim.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents section has kinds dk_protocol and dk_photo (file upload); no guided room-by-room form"
+  },
+  "thumb": {
+   "he": "חתום על הפרוטוקול",
+   "en": "Sign protocol",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.03.09",
+  "kind": "leaf",
+  "title": {
+   "he": "העתק הפרוטוקול לשוכר",
+   "en": "Protocol copy to the tenant"
+  },
+  "what": "Send the tenant a copy of the signed protocol and photos.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "delivery record",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח העתק",
+   "en": "Send copy",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04",
+  "kind": "branch",
+  "title": {
+   "he": "מונים וחשבונות",
+   "en": "Meters and accounts"
+  },
+  "what": "Meter readings on the day, and the accounts that move to the tenant's name.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה חשמל",
+   "en": "Electricity meter reading"
+  },
+  "what": "Read the electricity meter and photograph the dial with the date.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "photo and number in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The tenant pays from his date of use; without a reading the first bill is argued.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: appliance kinds include water meter (ak_water_meter); no reading log"
+  },
+  "thumb": {
+   "he": "רשום קריאת חשמל",
+   "en": "Record electricity",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה מים",
+   "en": "Water meter reading"
+  },
+  "what": "Read the water meter and photograph it with the date.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "photo and number in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The same dispute over the first water bill.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: appliance kind ak_water_meter; no reading log"
+  },
+  "thumb": {
+   "he": "רשום קריאת מים",
+   "en": "Record water",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה גז",
+   "en": "Gas meter reading"
+  },
+  "what": "Read the gas meter if there is one, and photograph it.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "photo and number in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Dispute over the first gas bill.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום קריאת גז",
+   "en": "Record gas",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.04",
+  "kind": "leaf",
+  "title": {
+   "he": "מספרי המונים והחוזים",
+   "en": "Meter numbers and contract numbers"
+  },
+  "what": "Write the meter numbers and the consumer numbers for each service.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "protocol line",
+  "money": null,
+  "law": [],
+  "if_skipped": "The tenant cannot open accounts without them.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום מספרים",
+   "en": "Record numbers",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.05",
+  "kind": "leaf",
+  "title": {
+   "he": "העברת חשבון חשמל לשם השוכר",
+   "en": "Move the electricity account to the tenant"
+  },
+  "what": "Ask the utility to move the account to the tenant from the reading date.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "within days of handover",
+  "proof": "utility confirmation",
+  "money": "tenant by consumption",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord keeps paying a bill he can demand back only with proof.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקש העברה",
+   "en": "Request transfer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.06",
+  "kind": "leaf",
+  "title": {
+   "he": "העברת חשבון מים לשם השוכר",
+   "en": "Move the water account to the tenant"
+  },
+  "what": "Notify the water supplier or the committee of the change of consumer.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "within days of handover",
+  "proof": "supplier confirmation",
+  "money": "tenant by consumption",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The same.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקש העברה",
+   "en": "Request transfer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.07",
+  "kind": "leaf",
+  "title": {
+   "he": "העברת חשבון גז לשם השוכר",
+   "en": "Move the gas account to the tenant"
+  },
+  "what": "Notify the gas supplier of the new consumer.",
+  "who": [
+   "tenant",
+   "landlord"
+  ],
+  "when": "within days of handover",
+  "proof": "supplier confirmation",
+  "money": "tenant by consumption",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The same.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בקש העברה",
+   "en": "Request transfer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.08",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לעירייה על המחזיק החדש בארנונה",
+   "en": "Tell the municipality of the new arnona holder"
+  },
+  "what": "Send the municipality the tenant's name from the handover date, and the lease.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "within days of handover",
+  "proof": "municipality's confirmation",
+  "money": "tenant, for the rental period",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The bill stays in the landlord's name. UNVERIFIED: I did not open the municipal-tax regulations on notice of a change of holder.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעה לעירייה",
+   "en": "Send to municipality",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.09",
+  "kind": "leaf",
+  "title": {
+   "he": "עדכון נציגות הבית המשותף",
+   "en": "Update the house committee"
+  },
+  "what": "Tell the committee who lives in the home and its contact.",
+  "who": [
+   "landlord"
+  ],
+  "when": "within days of handover",
+  "proof": "message sent",
+  "money": "tenant, regular maintenance fee",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Notices and fees go to the wrong person.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "הודע לוועד",
+   "en": "Tell committee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.04.10",
+  "kind": "leaf",
+  "title": {
+   "he": "אינטרנט, טלוויזיה ותקשורת",
+   "en": "Internet, TV and telecom"
+  },
+  "what": "Agree who holds the internet or TV subscription and transfer or cancel it.",
+  "who": [
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "note in the protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום מנוי",
+   "en": "Record subscription",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.05",
+  "kind": "branch",
+  "title": {
+   "he": "מפתחות וגישה",
+   "en": "Keys and access"
+  },
+  "what": "Every key, code and remote handed over, counted and written.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.05.01",
+  "kind": "leaf",
+  "title": {
+   "he": "מסירת מפתחות וספירתם",
+   "en": "Hand over keys and count them"
+  },
+  "what": "Hand over the keys, count each type, write the number in the protocol.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "signed line in the protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": "At the exit nobody knows how many keys were given.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום מפתחות",
+   "en": "Record keys",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.05.02",
+  "kind": "leaf",
+  "title": {
+   "he": "שלטים לחניה ולשער",
+   "en": "Remotes for the gate and parking"
+  },
+  "what": "Hand over the remotes or tags for the gate and parking, with their numbers.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "line in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25א",
+    "quote": "לרבות חלקי הרכוש המשותף הצמודים לה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A lost remote is argued at the exit.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום שלטים",
+   "en": "Record remotes",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.05.03",
+  "kind": "leaf",
+  "title": {
+   "he": "קודי אינטרקום, אזעקה ומחסן",
+   "en": "Intercom, alarm and storage codes"
+  },
+  "what": "Give the codes and write that they were given (change the alarm code after the exit).",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "line in the protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום קודים",
+   "en": "Record codes",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.05.04",
+  "kind": "leaf",
+  "title": {
+   "he": "מפתח חירום בידי המשכיר",
+   "en": "Landlord's spare key"
+  },
+  "what": "Decide whether the landlord keeps a spare key and write it; entry is only on reasonable notice.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the handover day",
+  "proof": "line in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "17",
+    "quote": "זמן סביר מראש",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Entry without notice causes a dispute.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום מפתח חירום",
+   "en": "Record spare key",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.06",
+  "kind": "branch",
+  "title": {
+   "he": "אחרי המסירה",
+   "en": "After the handover"
+  },
+  "what": "Start of the tenancy and the first weeks.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "after handover",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "04.06.01",
+  "kind": "leaf",
+  "title": {
+   "he": "תחילת תקופת השכירות במסירה",
+   "en": "Rental period starts at handover"
+  },
+  "what": "Record the actual handover date as the start of the period.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "date in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "18",
+    "quote": "תקופת השכירות תתחיל עם מסירת המושכר לשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The period and the first payment date are unclear.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease holds start and end dates"
+  },
+  "thumb": {
+   "he": "רשום תחילה",
+   "en": "Record start",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.06.02",
+  "kind": "leaf",
+  "title": {
+   "he": "תקופת הודעה על חוסר התאמה",
+   "en": "Window for the tenant to report a mismatch"
+  },
+  "what": "Know that the tenant reports a mismatch in reasonable time and in reasonable detail; send him the contact for reports.",
+  "who": [
+   "landlord"
+  ],
+  "when": "first weeks",
+  "proof": "message to the tenant",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "6(ג)(2)",
+    "quote": "השוכר לא הודיע על אי־ההתאמה למשכיר זמן סביר לאחר שגילה אותה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A tenant who did not report in time may lose the right to rely on it, unless the landlord knew.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: tenant portal sends a repair report with the law's deadlines"
+  },
+  "thumb": {
+   "he": "שלח פרטי קשר",
+   "en": "Send contact",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.06.03",
+  "kind": "leaf",
+  "title": {
+   "he": "איש קשר לחירום",
+   "en": "Emergency contact"
+  },
+  "what": "Give the tenant a phone for urgent repairs.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the handover day",
+  "proof": "line in the protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(ב)",
+    "quote": "פגם שאינו מאפשר מגורים בדירה באופן סביר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An urgent defect must be fixed within three days of the demand.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: professionals list and urgent alerts to the landlord"
+  },
+  "thumb": {
+   "he": "שלח איש קשר",
+   "en": "Send contact",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.06.04",
+  "kind": "leaf",
+  "title": {
+   "he": "תיעוד פרטי המכשירים",
+   "en": "Log the appliances' details"
+  },
+  "what": "Record make, model and serial number of each appliance and put a pin on the home.",
+  "who": [
+   "landlord"
+  ],
+  "when": "first weeks",
+  "proof": "appliance cards",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: appliances add, edit, remove, with pins on the twin"
+  },
+  "thumb": {
+   "he": "הוסף מכשיר",
+   "en": "Add appliance",
+   "taps": 1
+  }
+ },
+ {
+  "id": "04.06.05",
+  "kind": "leaf",
+  "title": {
+   "he": "תזכורת: בדיקת ערובה ושיקים",
+   "en": "Reminder: check security and cheques"
+  },
+  "what": "Set a reminder to check that every security and cheque is held.",
+  "who": [
+   "landlord"
+  ],
+  "when": "week 1",
+  "proof": "calendar item",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבע תזכורת",
+   "en": "Set reminder",
+   "taps": 1
+  }
+ }
+]

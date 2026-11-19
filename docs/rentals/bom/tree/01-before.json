@@ -1,0 +1,2052 @@
+[
+  {
+    "id": "01",
+    "kind": "branch",
+    "title": {
+      "he": "לפני שמשכירים",
+      "en": "Before renting"
+    },
+    "what": "Everything the owner decides and prepares before the first viewing: worth, price, readiness, insurance, management, house rules.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.01",
+    "kind": "branch",
+    "title": {
+      "he": "האם זה משתלם",
+      "en": "Is renting worth it"
+    },
+    "what": "Put the home's rent against selling it or living in it, in words and with the owner's own inputs.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.01.01",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו מה הדירה שווה היום לדעתכם",
+      "en": "Write down what you think the home is worth today"
+    },
+    "what": "Record one value for the home, with the source you took it from (your own estimate, an appraiser, a comparable sale you looked up yourself).",
+    "who": [
+      "landlord"
+    ],
+    "when": "once, before deciding to rent",
+    "proof": "a dated line with the value and its source",
+    "money": "No figure is supplied by the product; the owner types his own.",
+    "law": [],
+    "if_skipped": "Every later comparison (yield, sell or rent) has no base.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו שווי",
+      "en": "Record value",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.02",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו כל הוצאה קבועה שנשארת עליכם",
+      "en": "List every running cost that stays with you"
+    },
+    "what": "Write the costs the law leaves with the landlord: building insurance, fixing defects that are not the tenant's fault, a broker's fee if the broker worked for you.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before computing the yield",
+    "proof": "a costs sheet with one line per cost",
+    "money": "The landlord pays these; the amounts are the owner's own quotes.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(ב)(2)",
+        "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ח(ב)",
+        "quote": "המשכיר יתקן על חשבונו כל ליקוי או פגם אחר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The yield looks higher than it is.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): expenses are recorded in the ledger (kinds expense/income); no 'before renting' costs sheet"
+    },
+    "thumb": {
+      "he": "רשמו הוצאות",
+      "en": "List costs",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.03",
+    "kind": "leaf",
+    "title": {
+      "he": "חשבו תשואה ברוטו במילים",
+      "en": "Work out gross yield in words"
+    },
+    "what": "Yearly rent you expect divided by the home's value from the first leaf, shown as a sentence the owner can read. Inputs: monthly rent, months you expect it to be rented, value.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before deciding to rent",
+    "proof": "the sentence with the three inputs",
+    "money": "No market figure is built in; only the owner's inputs.",
+    "law": [],
+    "if_skipped": "The owner compares options by feeling.",
+    "product_today": {
+      "status": "partly",
+      "where": "assets/rentals/earn/earn.js (not released): an earnings estimate; inputs and wording not yet matched to this leaf"
+    },
+    "thumb": {
+      "he": "חשבו תשואה",
+      "en": "Calculate yield",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.04",
+    "kind": "leaf",
+    "title": {
+      "he": "תכננו חודשים בלי שוכר",
+      "en": "Plan months with no tenant"
+    },
+    "what": "Decide how many empty months a year you allow in the calculation, so the yield is not computed on twelve full months.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before computing the yield",
+    "proof": "the number of empty months in the sheet",
+    "money": "An empty month is rent you do not receive; costs continue.",
+    "law": [],
+    "if_skipped": "The yield is overstated.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "קבעו חודשים ריקים",
+      "en": "Set empty months",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.05",
+    "kind": "leaf",
+    "title": {
+      "he": "חשבו תשואה נטו אחרי מס",
+      "en": "Work out net yield after tax"
+    },
+    "what": "Take the gross figure, subtract the costs and the tax track chosen with the accountant. The tax track is branch 07; here only ask the accountant before the first contract.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the first contract",
+    "proof": "the accountant's written answer on the tax track",
+    "money": "Tax is paid by the landlord; the rate is the accountant's answer, not a figure the product supplies.",
+    "law": [],
+    "if_skipped": "A surprise at the yearly tax report.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו לרואה חשבון",
+      "en": "Send to accountant",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.06",
+    "kind": "leaf",
+    "title": {
+      "he": "השוו לכסף של מכירה",
+      "en": "Compare with the money from selling"
+    },
+    "what": "Write what you would have if you sold: the value minus the sale costs and tax (asked from an accountant or lawyer), and what you would do with the money. Compare in one sentence with the rent option.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before deciding to rent",
+    "proof": "a dated comparison note",
+    "money": "Sale costs and tax: the professional's own figures.",
+    "law": [],
+    "if_skipped": "The decision to rent is made without the alternative in sight.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו השוואה",
+      "en": "Write comparison",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.07",
+    "kind": "leaf",
+    "title": {
+      "he": "השוו לגור בה בעצמכם או במשפחה",
+      "en": "Compare with living in it yourself or lending it to family"
+    },
+    "what": "Write what you or a relative would save or lose by living in the home instead of renting it out. A relative who rents is a rental in law; a free loan is a different contract (שאילה).",
+    "who": [
+      "landlord"
+    ],
+    "when": "before deciding to rent",
+    "proof": "a dated note",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "26",
+        "quote": "שאילה היא זכות להחזיק בנכס ולהשתמש בו שלא לצמיתות, כשהזכות הוקנתה שלא בתמורה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A family arrangement starts without an agreed form.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו השוואה",
+      "en": "Write comparison",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.08",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו אם שכר הדירה מעל תקרת סימן ו",
+      "en": "Check if the rent is above the ceiling of the residential-lease chapter"
+    },
+    "what": "The protections for a residential lease do not apply when the monthly rent is above a sum the law sets and updates each 1 January. Compare your planned rent with the current published sum.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before setting the price",
+    "proof": "the current sum and its source written next to the rent",
+    "money": "The text names 20,000 NIS as the base sum, updated each 1 January by the CPI; the Minister publishes the updated sum, which the owner must read.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25טו(א)(4)",
+        "quote": "דמי השכירות לפיו, לחודש, עולים על 20,000 שקלים חדשים או על סכום אחר שקבע שר המשפטים",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The owner assumes the chapter's rules apply (or do not apply) without checking.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בדקו תקרה",
+      "en": "Check ceiling",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.09",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו על אורך החוזה המתוכנן",
+      "en": "Decide the planned length of the lease"
+    },
+    "what": "Record the planned term. A lease of up to three months with no option to extend, and one over ten years that the landlord cannot end earlier, are outside the residential chapter.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before setting the price",
+    "proof": "the planned term in the file",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25טו(א)(2)",
+        "quote": "תקופת השכירות לפיו אינה עולה על שלושה חודשים",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25טו(א)(3)",
+        "quote": "תקופת השכירות לפיו עולה על עשר שנים",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The wrong rules are assumed for the contract.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו אורך חוזה",
+      "en": "Record lease length",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.01.10",
+    "kind": "leaf",
+    "title": {
+      "he": "ציינו אם השוכר קרוב משפחה",
+      "en": "Note if the tenant is a relative"
+    },
+    "what": "A lease to a relative keeps most of the chapter but one section (the ban on contracting out) does not apply between relatives. Record who the relative is.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before drafting",
+    "proof": "a line in the file naming the relationship",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25טו(ב)",
+        "quote": "בין משכיר ובין שוכר שהוא קרוב שלו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו קרוב משפחה",
+      "en": "Mark relative",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02",
+    "kind": "branch",
+    "title": {
+      "he": "לקבוע מחיר",
+      "en": "Setting the price"
+    },
+    "what": "Find the public sources for asking and actual rents, collect comparables by hand, and fix an asking price and a floor.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.02.01",
+    "kind": "leaf",
+    "title": {
+      "he": "פתחו את טבלת שכר הדירה הממוצע של הלמ\"ס",
+      "en": "Open the CBS average-rent table"
+    },
+    "what": "Open Table 4.9 of the Central Bureau of Statistics Price Statistics Monthly (copy in docs/research/2026-11-19-rent-earn/cbs/) and read the row for your district and number of rooms. Read the table's own definition before comparing it to a new lease.",
+    "who": [
+      "landlord",
+      "authority"
+    ],
+    "when": "before setting the price",
+    "proof": "the district, rooms and quarter written beside the price",
+    "money": "A CBS average is a statistic, not a promise; the product shows the CBS figure as published with its sampling error.",
+    "law": [],
+    "if_skipped": "The price is set from memory or from a friend.",
+    "product_today": {
+      "status": "partly",
+      "where": "assets/rentals/earn/cbs-rent-2026q3.json and earn.js exist but are not loaded anywhere (inc/rentals-earn.php is not in the module list)"
+    },
+    "thumb": {
+      "he": "פתחו את הטבלה",
+      "en": "Open the table",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.02",
+    "kind": "leaf",
+    "title": {
+      "he": "אספו שלוש מודעות דומות בסביבה",
+      "en": "Collect three similar ads nearby"
+    },
+    "what": "Find at least three live ads for a home like yours in the same area, by hand, and write down the asking rent of each, the rooms, the floor and the link.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before setting the price",
+    "proof": "three links with the asking figure of each",
+    "money": "An asking rent is what the owner of the other home asks, not what was signed.",
+    "law": [],
+    "if_skipped": "The price has no local anchor.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "הוסיפו מודעה",
+      "en": "Add an ad",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.03",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו אם מודעות דומות נעלמות מהר או נשארות",
+      "en": "See whether similar ads disappear fast or stay"
+    },
+    "what": "Look at the same three ads again after a week and write down which stayed and which went. This tells you if the asking figures are met.",
+    "who": [
+      "landlord"
+    ],
+    "when": "a week after collecting the ads",
+    "proof": "a note per ad: still up or gone, with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "An asking figure is taken as a market figure.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist or template for this step"
+    },
+    "thumb": {
+      "he": "בדקו שוב",
+      "en": "Check again",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.04",
+    "kind": "leaf",
+    "title": {
+      "he": "הבינו מאיפה מגיעים נתוני שכירות פומביים",
+      "en": "Know where public rent data comes from"
+    },
+    "what": "Write on the file which sources are public and primary (the CBS table) and which are only asking ads on listing sites. Whether the Tax Authority publishes rental contract data was not verified; do not claim it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before setting the price",
+    "proof": "a source list in the file",
+    "money": null,
+    "law": [],
+    "if_skipped": "Ads are mistaken for signed rents.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שמרו מקורות",
+      "en": "Save sources",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.05",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו מחיר מבוקש ומחיר רצפה",
+      "en": "Set an asking price and a floor"
+    },
+    "what": "Decide the figure you will publish and the lowest figure you accept, in writing, before the first call.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "two figures in the file with the date",
+    "money": "The monthly rent is agreed between the parties; no figure is supplied by the product.",
+    "law": [],
+    "if_skipped": "Negotiation happens with no limit decided.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שמרו מחירים",
+      "en": "Save prices",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.06",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו מה כלול ומה משלם השוכר מעבר לשכר",
+      "en": "Decide what is on top of the rent and who pays it"
+    },
+    "what": "List the extra payments: the law puts the tenant in charge of tax on the holder (arnona), utilities, and house-committee maintenance for the tenancy period. Decide how they are shown in the ad and the contract.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "a list of extra payments, each with who pays",
+    "money": "The tenant pays the items listed in section 25ט(א) for the tenancy period; the landlord pays building insurance.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(א)",
+        "quote": "השוכר יישא בתשלומים אלה לגבי תקופת השכירות",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת שנייה (6)",
+        "quote": "תשלומים נוספים החלים על השוכר שאינם דמי שכירות, אם ישנם, וגובהם",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A disagreement on who pays arnona, water or the house committee.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו תשלומים נוספים",
+      "en": "List extra payments",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.02.07",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו אם מצמידים את שכר הדירה למדד",
+      "en": "Decide whether to link the rent to the CPI"
+    },
+    "what": "Decide yes or no now so the ad and the contract say the same. The mechanics are branch 05.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "the decision written in the file",
+    "money": null,
+    "law": [],
+    "if_skipped": "The ad and the contract disagree.",
+    "product_today": {
+      "status": "works",
+      "where": "v2 (admin only): money.php supports CPI linkage up and down"
+    },
+    "thumb": {
+      "he": "בחרו הצמדה",
+      "en": "Choose linkage",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03",
+    "kind": "branch",
+    "title": {
+      "he": "הדירה מוכנה לשכירות",
+      "en": "The home is ready to rent"
+    },
+    "what": "The legal minimum of a home fit to live in, the safety checks, cleaning and painting, the appliances that stay, the instructions for the tenant.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.01",
+    "kind": "branch",
+    "title": {
+      "he": "המינימום החוקי: דירה ראויה למגורים",
+      "en": "The legal minimum: a home fit to live in"
+    },
+    "what": "The first schedule lists six conditions; if any one holds, the home is not fit to live in. Handing over such a home is a breach of the contract and this cannot be contracted out of.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.01.01",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שיש ניקוז וסילוק שפכים",
+      "en": "Check there is drainage and waste removal"
+    },
+    "what": "Run water in every sink, shower and toilet and look that it drains and that the waste leaves properly.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick and a photo of the working drain",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (1)",
+        "quote": "היא אינה כוללת מערכת ניקוז, לרבות מערכת לסילוק סדיר של שפכים ודלוחין",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in; handing it over is a breach of the contract.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.02",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שיש חשמל ותאורה",
+      "en": "Check there is electricity and lighting"
+    },
+    "what": "Test the electrical system and the lighting in every room; a licensed electrician checks the installation in the safety branch.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (2)",
+        "quote": "היא אינה כוללת מערכת חשמל או מערכת תאורה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.03",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו פתחי אוורור, אור טבעי, דלתות וחלונות, ונעילה בכניסה",
+      "en": "Check ventilation, natural light, doors and windows, and a lock on the entrance door"
+    },
+    "what": "Open every window and door, check each closes and that the main entrance door locks.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick and a photo of the entrance lock",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (3)",
+        "quote": "דלת כניסה ראשית בעלת אמצעי נעילה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.04",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שיש מי שתייה",
+      "en": "Check there is a supply of drinking water"
+    },
+    "what": "Open the taps and check that water runs on the cold and hot lines.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (4)",
+        "quote": "היא אינה כוללת מערכת להספקת מי שתייה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.05",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שיש מחיצה בין השירותים לדירה",
+      "en": "Check there is a partition between the toilet and the home"
+    },
+    "what": "Confirm the toilet is closed off from the rest of the home.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (5)",
+        "quote": "היא אינה כוללת מחיצה בין השירותים ובין הדירה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.06",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שאין סיכון בלתי סביר לבטיחות או לבריאות",
+      "en": "Check there is no unreasonable risk to safety or health"
+    },
+    "what": "Walk the home with a safety list (the checks below) and write down anything that is an unreasonable risk to the tenant's safety or health; fix it before handing over.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick and the repair invoices, if any",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (6)",
+        "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home does not count as fit to live in. What counts as unreasonable is not defined in the schedule.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.01.07",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תתנו לחוזה לוותר על דירה ראויה",
+      "en": "Do not let the contract waive a fit home"
+    },
+    "what": "A contract term cannot waive the fit-home rule, even if the tenant agrees. Check that no clause in your draft tries to.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when reading the draft contract",
+    "proof": "the clause list marked clean",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יד(1)",
+        "quote": "אין להתנות על הוראות סעיף 25ו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The clause is void and the home may still count as not fit.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.02",
+    "kind": "branch",
+    "title": {
+      "he": "מה בדיוק מוסרים",
+      "en": "What exactly is handed over"
+    },
+    "what": "The description of the home, the fittings and the defects the owner knows of, written before signing.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.02.01",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו את הריהוט והאבזרים שנשארים",
+      "en": "List the furniture and fittings that stay"
+    },
+    "what": "Write the fittings in the home, including the shared parts that go with it, since the contract must describe them.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before drafting the contract",
+    "proof": "a room-by-room list, signed with the contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת שנייה (3)",
+        "quote": "תיאור הדירה המושכרת, הריהוט והאבזרים שבה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A dispute on what was in the home.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): appliances table with add, edit, remove (rm-drawers.js); no full furniture list"
+    },
+    "thumb": {
+      "he": "רשמו רשימה",
+      "en": "Write the list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.02.02",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו כל ליקוי שאתם מכירים",
+      "en": "Write down every defect you know of"
+    },
+    "what": "The contract must name any defect that is not minor and any disturbance in or near the home that you know of. Write them all now.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the contract is signed",
+    "proof": "a list of known defects signed with the contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת שנייה (7)",
+        "quote": "הידוע למשכיר בעת כריתת החוזה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A clause that frees the landlord from a defect he knew and did not mention is void.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו ליקוי",
+      "en": "Record a defect",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.02.03",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תסתירו פגם שאתם מכירים",
+      "en": "Do not hide a defect you know of"
+    },
+    "what": "A clause freeing the landlord from responsibility for a mismatch or defect is void if he knew or should have known and did not say so. Tell the tenant before signing.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the contract is signed",
+    "proof": "a dated message to the tenant listing the defects",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "8",
+        "quote": "בטלה, אם המשכיר ידע או היה עליו לדעת על אי־ההתאמה או הפגם",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The waiver clause is void and the tenant can rely on the defect.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send notice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.02.04",
+    "kind": "leaf",
+    "title": {
+      "he": "פנו את הדירה ממה שלא נשאר",
+      "en": "Clear out what does not stay"
+    },
+    "what": "At handover the home must be empty of every person and of every thing except what was agreed to stay. Remove your own belongings that are not in the list.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before handover",
+    "proof": "photos of each empty room",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ז(ב)",
+        "quote": "פנויה מכל אדם או נכס, למעט נכס שהוסכם כי יהיה בדירה בעת מסירתה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home is not handed over as the law describes.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו פונתה",
+      "en": "Mark cleared",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.03",
+    "kind": "branch",
+    "title": {
+      "he": "בדיקות בטיחות",
+      "en": "Safety checks"
+    },
+    "what": "The owner asks licensed professionals to check the systems that can hurt the tenant. The product only records that each check happened.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.03.01",
+    "kind": "leaf",
+    "title": {
+      "he": "הזמינו בדיקת חשמלאי מוסמך",
+      "en": "Book a licensed electrician's check"
+    },
+    "what": "Ask an electrician to check the installation: panel, earth, sockets, wires. Keep his written confirmation.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the first viewing",
+    "proof": "the electrician's written note or invoice",
+    "money": "The landlord pays; the price is the electrician's own quote.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (6)",
+        "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A hidden electrical fault may count as an unreasonable safety risk.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "קבעו תור",
+      "en": "Book a visit",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.03.02",
+    "kind": "leaf",
+    "title": {
+      "he": "הזמינו בדיקת גז אצל בעל מקצוע מוסמך",
+      "en": "Book a gas check with a licensed professional"
+    },
+    "what": "If the home has a gas line or a gas appliance, ask a licensed gas fitter to check it and keep his note. I did not read a primary text that fixes a periodic gas check for a rented home, so nothing is claimed about a deadline.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the first viewing",
+    "proof": "the fitter's written note",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (6)",
+        "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A gas fault may count as an unreasonable safety risk.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "קבעו תור",
+      "en": "Book a visit",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.03.03",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו דוד מים, מזגן וצנרת",
+      "en": "Check the water heater, the AC and the pipes"
+    },
+    "what": "Ask a plumber or technician to check that the water heater, the AC and the pipes work and do not leak.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the first viewing",
+    "proof": "a note or photo per system",
+    "money": "The landlord pays for putting right a defect that is not the tenant's fault.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ח(ב)",
+        "quote": "המשכיר יתקן על חשבונו כל ליקוי או פגם אחר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A defect found later is yours to fix within the legal time.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): appliances and repairs are recorded; no pre-rental check list"
+    },
+    "thumb": {
+      "he": "קבעו תור",
+      "en": "Book a visit",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.03.04",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו נעילות, מעקות וחלונות",
+      "en": "Check locks, railings and windows"
+    },
+    "what": "Check every lock opens and closes, the balcony and stair railings are firm, and the windows close.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a dated tick and photos of any repair",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (6)",
+        "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A loose railing is a safety risk to the tenant.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.03.05",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו רטיבות ועובש",
+      "en": "Check for damp and mould"
+    },
+    "what": "Look at walls, ceilings and under sinks for damp or mould and fix the source before painting.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before painting",
+    "proof": "photos before and after the repair",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת ראשונה (6)",
+        "quote": "יש בה סיכון בלתי־סביר לבטיחות השוכר או לבריאותו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Damp may count as a health risk; painting over it hides it.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.04",
+    "kind": "branch",
+    "title": {
+      "he": "ניקיון, צבע ותיקונים קטנים",
+      "en": "Cleaning, painting and small repairs"
+    },
+    "what": "Bring the home to a clean, painted state and record how it looked.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.04.01",
+    "kind": "leaf",
+    "title": {
+      "he": "נקו את הדירה",
+      "en": "Clean the home"
+    },
+    "what": "Clean every room, the windows and the appliances before photographing.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "a receipt or a dated tick",
+    "money": "The landlord pays, in his own arrangement.",
+    "law": [],
+    "if_skipped": "The first impression and the baseline photos are weaker.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נוקתה",
+      "en": "Mark cleaned",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.04.02",
+    "kind": "leaf",
+    "title": {
+      "he": "צבעו או תקנו קירות",
+      "en": "Paint or patch the walls"
+    },
+    "what": "Paint where needed, after the damp check; keep the paint colour and brand for later touch-ups.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the first viewing",
+    "proof": "the invoice with the paint name and colour code",
+    "money": "The landlord pays.",
+    "law": [],
+    "if_skipped": "The exit comparison has no clean starting point.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נצבע",
+      "en": "Mark painted",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.04.03",
+    "kind": "leaf",
+    "title": {
+      "he": "צלמו כל חדר לפני הכניסה",
+      "en": "Photograph every room before move-in"
+    },
+    "what": "Take dated photos of every room, every fixture and every appliance, with a close-up of any existing mark.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after cleaning and before handover",
+    "proof": "the photo set with date and time",
+    "money": null,
+    "law": [],
+    "if_skipped": "A later dispute on damage has no baseline.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): photos can be attached to a repair; no pre-rental photo set"
+    },
+    "thumb": {
+      "he": "צלמו",
+      "en": "Photograph",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.05",
+    "kind": "branch",
+    "title": {
+      "he": "מכשירים שנשארים",
+      "en": "Appliances that stay"
+    },
+    "what": "Decide, test and list every appliance left in the home.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.03.05.01",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו איזה מכשיר נשאר",
+      "en": "Decide which appliance stays"
+    },
+    "what": "Choose appliance by appliance what stays (oven, fridge, washer, AC, water heater) and what you take.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before drafting the contract",
+    "proof": "the list in the file",
+    "money": null,
+    "law": [],
+    "if_skipped": "The tenant assumes something stays that you meant to take.",
+    "product_today": {
+      "status": "works",
+      "where": "v2 (admin only): appliances add, edit, remove"
+    },
+    "thumb": {
+      "he": "בחרו מכשירים",
+      "en": "Choose appliances",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.05.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו שכל מכשיר עובד וצלמו תווית",
+      "en": "Test each appliance and photograph its label"
+    },
+    "what": "Switch each on, check it works, photograph the model and serial label.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before handover",
+    "proof": "a photo of the label and a dated tick per appliance",
+    "money": null,
+    "law": [],
+    "if_skipped": "A breakdown early in the lease has no record of a working start.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): appliances kept with a name; no check step and no label photo field"
+    },
+    "thumb": {
+      "he": "צלמו תווית",
+      "en": "Photograph label",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.05.03",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו אחריות וחשבונית של כל מכשיר",
+      "en": "Keep the warranty and invoice of each appliance"
+    },
+    "what": "Store the invoice and warranty end date so a repair during the lease can be claimed.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when buying or listing the appliance",
+    "proof": "a scanned invoice",
+    "money": null,
+    "law": [],
+    "if_skipped": "A repair that was under warranty is paid by you.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): documents table in inc/rentals/store.php can hold a file; no dedicated screen for this step"
+    },
+    "thumb": {
+      "he": "שמרו אחריות",
+      "en": "Save warranty",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.05.04",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו בחוזה מי מתקן מכשיר שמקולקל",
+      "en": "Write who repairs a broken appliance"
+    },
+    "what": "Fix in writing that a tenant-caused fault is the tenant's to repair unless the parties agreed otherwise, and any other fault not minor is yours within the legal time.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when drafting the contract",
+    "proof": "the clause in the signed contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ח(א)",
+        "quote": "השוכר אחראי על כל ליקוי בדירה המושכרת, לרבות פגם, שנגרם עקב שימוש בלתי סביר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Each side blames the other at the first breakdown.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "הוסיפו סעיף",
+      "en": "Add the clause",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.06",
+    "kind": "leaf",
+    "title": {
+      "he": "הכינו הוראות תחזוקה ושימוש לשוכר",
+      "en": "Prepare maintenance and usage instructions for the tenant"
+    },
+    "what": "Write short instructions for the water heater, the AC, the alarm, the gas shut-off and the fuse board, and give them to the tenant at the latest at handover.",
+    "who": [
+      "landlord"
+    ],
+    "when": "at the latest at handover",
+    "proof": "the instructions with the date handed over",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ז(ג)",
+        "quote": "הוראות תחזוקה ושימוש בקשר לדירה, למיתקניה ולנכסים שבה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The duty to give instructions is not met.",
+    "product_today": {
+      "status": "partly",
+      "where": "assets/rentals/help (v2, admin only) has tenant help; no landlord instruction sheet"
+    },
+    "thumb": {
+      "he": "שלחו הוראות",
+      "en": "Send instructions",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.03.07",
+    "kind": "leaf",
+    "title": {
+      "he": "החליפו או שכפלו מפתחות",
+      "en": "Replace or copy the keys"
+    },
+    "what": "Make enough copies for the tenant and keep a set. Decide if you replace the lock cylinder.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before handover",
+    "proof": "a count of the keys in the file",
+    "money": "The landlord pays, at the locksmith's price.",
+    "law": [],
+    "if_skipped": "The tenant has a single key or an old one in unknown hands.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו מפתחות",
+      "en": "Mark keys ready",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04",
+    "kind": "branch",
+    "title": {
+      "he": "ביטוחים",
+      "en": "Insurance"
+    },
+    "what": "The product types the owner asks his insurer about. No prices.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.04.01",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו שיש ביטוח מבנה",
+      "en": "Check you have building insurance"
+    },
+    "what": "Check the home has building insurance. The tenant cannot be charged for it.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before handover",
+    "proof": "the policy and its end date",
+    "money": "The landlord pays building insurance; the tenant does not bear it.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(ב)(2)",
+        "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The home is uninsured against structural damage.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): ledger category 'insurance'; no policy record with an end date"
+    },
+    "thumb": {
+      "he": "סמנו קיים",
+      "en": "Mark in place",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04.02",
+    "kind": "leaf",
+    "title": {
+      "he": "שאלו את המבטח אם הפוליסה ממשיכה כשהדירה מושכרת",
+      "en": "Ask the insurer if the policy continues while the home is rented"
+    },
+    "what": "Tell the insurer that the home is let and ask in writing whether cover continues and on what terms.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before handover",
+    "proof": "the insurer's written reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "A claim may be refused for a change nobody reported. Terms differ by policy; ask.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04.03",
+    "kind": "leaf",
+    "title": {
+      "he": "שאלו על ביטוח אחריות כלפי צד שלישי",
+      "en": "Ask about third-party liability cover"
+    },
+    "what": "A product type that covers a claim from a person injured in or because of the home. Ask whether your policy has it.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before handover",
+    "proof": "the policy page that names the cover or the insurer's reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "Unknown: it depends on the policy.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04.04",
+    "kind": "leaf",
+    "title": {
+      "he": "שאלו על ביטוח תכולה למה שאתם משאירים",
+      "en": "Ask about contents cover for what you leave"
+    },
+    "what": "A product type for the furniture and appliances you own that stay in the home. Ask whether your policy has it.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before handover",
+    "proof": "the policy page or the insurer's reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "Appliances you leave are not covered if the policy does not include them.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04.05",
+    "kind": "leaf",
+    "title": {
+      "he": "שאלו על כיסוי לאובדן דמי שכירות",
+      "en": "Ask about rent-loss cover"
+    },
+    "what": "A product type that pays when rent stops for a reason the policy names. Ask whether the insurer offers it and its conditions; do not assume it exists.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the contract",
+    "proof": "the insurer's reply",
+    "money": null,
+    "law": [],
+    "if_skipped": "Unknown: the product may not be offered.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.04.06",
+    "kind": "leaf",
+    "title": {
+      "he": "שמרו את כל הפוליסות בתיק הדירה",
+      "en": "Keep every policy in the home's file"
+    },
+    "what": "Scan each policy with its end date and set a reminder for renewal.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after buying or renewing",
+    "proof": "the scanned policy and a reminder date",
+    "money": null,
+    "law": [],
+    "if_skipped": "A policy lapses unnoticed.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist or template for this step"
+    },
+    "thumb": {
+      "he": "שמרו פוליסה",
+      "en": "Save policy",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.05",
+    "kind": "branch",
+    "title": {
+      "he": "לנהל לבד או עם חברת ניהול",
+      "en": "Manage alone or with a management company"
+    },
+    "what": "Decide who does the work of renting and who holds the tenant's data.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.05.01",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו מה תעשו בעצמכם ומה אין לכם זמן",
+      "en": "List what you will do yourself and what you will not have time for"
+    },
+    "what": "Write the recurring jobs (collecting rent, calls about faults, yearly checks) next to how long each takes you.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before deciding",
+    "proof": "a job list with your own time estimate",
+    "money": null,
+    "law": [],
+    "if_skipped": "The decision is made without the workload in sight.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו משימות",
+      "en": "List jobs",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.05.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו הצעה בכתב מחברת ניהול",
+      "en": "Ask a management company for a written offer"
+    },
+    "what": "Ask for the services included, what costs extra, the length of the agreement and how to end it, in writing.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before deciding",
+    "proof": "the written offer",
+    "money": "The company's fee is set in its offer; the product supplies no figure.",
+    "law": [],
+    "if_skipped": "Hidden extras.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו בקשה",
+      "en": "Send request",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.05.03",
+    "kind": "leaf",
+    "title": {
+      "he": "אם החברה גם מתווכת, דרשו רישיון ותיווך בכתב",
+      "en": "If the company also brokers, ask for its licence and a written order"
+    },
+    "what": "Finding a tenant for a fee is brokering and needs a licence; ask to see the licence and sign a written order before any fee.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before signing with the company",
+    "proof": "the licence number and the signed order",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "2(א)",
+        "quote": "לא יעסוק אדם בתיווך במקרקעין, אלא אם כן הוא בעל רשיון בתוקף",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "9(א)",
+        "quote": "מתווך במקרקעין לא יהא זכאי לדמי תיווך, אלא אם כן חתם הלקוח על הזמנה בכתב",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The fee may not be due; an unlicensed broker may not practice.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בקשו רישיון",
+      "en": "Ask for licence",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.05.04",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שהחברה שומרת את פרטי השוכרים בבטחה",
+      "en": "Check the company keeps the tenants' details secure"
+    },
+    "what": "A company holding your tenants' details for you shares the duty to secure them. Ask in writing how it stores and protects them.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before signing with the company",
+    "proof": "the company's written answer",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "17(א)",
+        "quote": "בעל שליטה במאגר מידע ומחזיק במאגר מידע, כל אחד מהם אחראי לאבטחת המידע",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A leak of tenants' details is partly your responsibility. Whether a small owner's records count as a data base in law is a legal question.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.05.05",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו: לבד או עם חברה",
+      "en": "Decide: alone or with a company"
+    },
+    "what": "Record the decision and the date to review it (after the first year).",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the offers arrive",
+    "proof": "the decision and a review date",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist or template for this step"
+    },
+    "thumb": {
+      "he": "שמרו החלטה",
+      "en": "Save decision",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.06",
+    "kind": "branch",
+    "title": {
+      "he": "כללי הבית: חיות, עישון, שכירות משנה",
+      "en": "House rules: pets, smoking, subletting"
+    },
+    "what": "Decide what the tenant may do, then write it in the contract so no one argues later.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "01.06.01",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו אם מותרת חיית מחמד",
+      "en": "Decide if a pet is allowed"
+    },
+    "what": "Choose yes, no or yes with conditions (kind, number, a deposit for damage within the lawful security limit). I found no primary rule that fixes this for a rented home, so it is a matter of the contract.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "the rule in the ad and the contract",
+    "money": null,
+    "law": [],
+    "if_skipped": "Disputes later; the tenant may rely on silence.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): the applicant form has a 'I have a pet' field (he.json p_pets); no landlord rule setting"
+    },
+    "thumb": {
+      "he": "בחרו כלל",
+      "en": "Choose rule",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.06.02",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו אם מותר לעשן",
+      "en": "Decide if smoking is allowed"
+    },
+    "what": "Choose and write the rule. The public-places smoking law I read names the places where smoking is banned and does not set a rule for the inside of a rented apartment.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "the rule in the ad and the contract",
+    "money": null,
+    "law": [],
+    "if_skipped": "Disputes later.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו כלל",
+      "en": "Choose rule",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.06.03",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו אם מותרת שכירות משנה",
+      "en": "Decide if subletting is allowed"
+    },
+    "what": "By default the tenant may not pass the home on or sublet without the landlord's consent, given in advance and in writing. If you allow it, write the consent in the contract.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before drafting the contract",
+    "proof": "the clause in the contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "22(א)",
+        "quote": "אלא בהסכמת המשכיר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "22(ב)",
+        "quote": "תיעשה מראש ובכתב",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A refusal on unreasonable grounds lets the tenant go ahead or ask the court.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו כלל",
+      "en": "Choose rule",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.06.04",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו מה השוכר רשאי לשנות בדירה",
+      "en": "Decide what the tenant may change in the home"
+    },
+    "what": "A tenant may not make changes without the landlord's consent. Decide what you allow (hanging pictures, painting, a new fitting) and write it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before drafting the contract",
+    "proof": "the rule in the contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "16א(א)",
+        "quote": "השוכר אינו רשאי לבצע שינויים במושכר, אלא אם כן קיבל את הסכמת המשכיר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Changes happen without agreement and the tenant may be asked to restore the home.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו כלל",
+      "en": "Choose rule",
+      "taps": 1
+    }
+  },
+  {
+    "id": "01.06.05",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו שמשכירים למגורים ארוכי טווח בלבד",
+      "en": "Decide it is a long-term residential let only"
+    },
+    "what": "A home let for holidays or recreation is outside the residential chapter. Decide that this home is let only for living and write it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing the ad",
+    "proof": "the purpose clause in the contract",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25טו(א)(1)(א)",
+        "quote": "או דירה אחרת המושכרת למטרת נופש",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The tenant uses the home as holiday lets.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו שימוש",
+      "en": "Choose use",
+      "taps": 1
+    }
+  }
+]

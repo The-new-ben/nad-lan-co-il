@@ -1,0 +1,1752 @@
+[
+ {
+  "id": "03",
+  "kind": "branch",
+  "title": {
+   "he": "החוזה והערבויות",
+   "en": "The contract and the guarantees"
+  },
+  "what": "Everything that is agreed in writing before the keys are handed over, and the securities that stand behind it.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before signing and at signing",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "03.01",
+  "kind": "branch",
+  "title": {
+   "he": "חוזה בכתב: מה חייב להיות בו",
+   "en": "The written contract and its required particulars"
+  },
+  "what": "The residential lease must be in writing and carry the particulars of the second schedule.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before the keys are handed over",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "03.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "פתיחת חוזה שכירות חדש",
+   "en": "Start a new lease"
+  },
+  "what": "Open a lease for the home in the builder, so the required particulars are asked one by one.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before the tenant moves in",
+  "proof": "draft lease in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייערך בכתב וייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A lease that is not in writing is still valid by the law's own words, but the parties have nothing to prove the terms; the common-form lease fills the gaps only where a standard lease was set (not checked).",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "פתח חוזה",
+   "en": "Start lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "כתובת הדירה המושכרת",
+   "en": "Address of the rented home"
+  },
+  "what": "Write the exact address of the home, floor and apartment number.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (1)",
+    "quote": "כתובת הדירה המושכרת",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A required particular is missing from the lease.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הזן כתובת",
+   "en": "Enter address",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "שמות, ת.ז. ומען של המשכיר והשוכר",
+   "en": "Names, ID numbers and addresses of the parties"
+  },
+  "what": "Record the full name, ID number and address of the landlord and of every tenant.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (2)",
+    "quote": "שמות הצדדים לחוזה, מספרי תעודת הזהות שלהם ומענם",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A required particular is missing; later notices have no address to go to.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הזן פרטי הצדדים",
+   "en": "Enter parties",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "תיאור הדירה, הריהוט והאבזרים",
+   "en": "Description of the home, furniture and fixtures"
+  },
+  "what": "List the home, the furniture and the fixtures that come with it, and any attached common property that is rented.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "inventory annexed to the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (3)",
+    "quote": "תיאור הדירה המושכרת, הריהוט והאבזרים שבה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A dispute about what was handed over has no written list to settle it.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease form has furnished flag and extras line; no item-by-item inventory"
+  },
+  "thumb": {
+   "he": "הוסף רשימת ריהוט",
+   "en": "Add inventory",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "חניה ומחסן שצמודים לדירה",
+   "en": "Parking and storage attached to the home"
+  },
+  "what": "State which attached parking space or storage room is rented with the home.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25א",
+    "quote": "לרבות חלקי הרכוש המשותף הצמודים לה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Unclear whether the parking or storage is included.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease template flags parking and storage"
+  },
+  "thumb": {
+   "he": "סמן חניה/מחסן",
+   "en": "Mark parking/storage",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "תקופת השכירות",
+   "en": "Rental period"
+  },
+  "what": "Fix the start and end date of the tenancy.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (4)",
+    "quote": "תקופת השכירות, קיומה של ברירה להארכת התקופה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A required particular is missing.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "קבע תקופה",
+   "en": "Set period",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "אופציה להארכה ותנאיה",
+   "en": "Option to extend and its terms"
+  },
+  "what": "If anyone has an option to extend, write who holds it and its terms, including the extension rent.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(ב)",
+    "quote": "רשאי המשכיר לקיים את הברירה רק אם נקבעו בחוזה, מראש, תנאים לעניין תקופת ההארכה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A landlord's option cannot be used unless the extension terms were set in advance in the contract.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease form has option field and an alert for the option window (att_option)"
+  },
+  "thumb": {
+   "he": "הגדר אופציה",
+   "en": "Define option",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.08",
+  "kind": "leaf",
+  "title": {
+   "he": "זכות ביטול ותנאיה",
+   "en": "Cancellation right and its terms"
+  },
+  "what": "If the contract lets a party end it early, write the right and its conditions, equally for both sides.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(א)",
+    "quote": "תניה בחוזה שכירות למגורים המאפשרת למשכיר לבטל את החוזה שלא בשל הפרתו בטלה, אלא אם כן קיימת גם לשוכר זכות ביטול",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A cancel-without-cause clause for the landlord alone is void.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הוסף סעיף ביטול",
+   "en": "Add cancel clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.09",
+  "kind": "leaf",
+  "title": {
+   "he": "דמי השכירות, מועד ואופן התשלום",
+   "en": "Rent, due date and way of payment"
+  },
+  "what": "Write the monthly rent, the day it is paid and how (transfer, cheques).",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "amount agreed by the parties",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (5)",
+    "quote": "דמי השכירות, מועד תשלומם ואופן התשלום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A required particular is missing. Without an agreed date the law says rent is paid at the start of each period.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הזן שכר ומועד",
+   "en": "Enter rent and date",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.10",
+  "kind": "leaf",
+  "title": {
+   "he": "תשלומים נוספים על השוכר",
+   "en": "Extra payments on the tenant"
+  },
+  "what": "List any payment on the tenant that is not rent, with its amount, if there are any.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "tenant pays, as listed in the lease",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (6)",
+    "quote": "תשלומים נוספים החלים על השוכר שאינם דמי שכירות, אם ישנם, וגובהם",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A required particular is missing and a charge not listed may not be demandable (section 25ט(ב)).",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "רשום תשלומים נוספים",
+   "en": "List extra payments",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.11",
+  "kind": "leaf",
+  "title": {
+   "he": "פגמים ידועים בדירה",
+   "en": "Defects the landlord knows about"
+  },
+  "what": "Write every defect that is not minor, and every nuisance around the home, that the landlord knows of at signing.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (7)",
+    "quote": "פגם, או ליקוי אחר בדירה המושכרת שאינו קל ערך, הידוע למשכיר בעת כריתת החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "8",
+    "quote": "בטלה, אם המשכיר ידע או היה עליו לדעת על אי־ההתאמה או הפגם בעת כריתת החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A clause that frees the landlord from a defect he knew and did not tell about is void.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: no dedicated known-defects field"
+  },
+  "thumb": {
+   "he": "רשום פגמים ידועים",
+   "en": "List known defects",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.12",
+  "kind": "leaf",
+  "title": {
+   "he": "שימוש במגורים בלבד",
+   "en": "Residential use only"
+  },
+  "what": "Write that the home is for residence only, as agreed.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "16",
+    "quote": "השוכר לא ישתמש במושכר אלא לפי המוסכם",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The tenant may use the home for another use that does not harm it or burden the landlord more than agreed.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הוסף סעיף שימוש",
+   "en": "Add use clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.13",
+  "kind": "leaf",
+  "title": {
+   "he": "שינויים בדירה רק בהסכמה",
+   "en": "Changes to the home only by consent"
+  },
+  "what": "Write that the tenant may change the home only with the landlord's consent, and what is returned at the end.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "16א(א)",
+    "quote": "אלא אם כן קיבל את הסכמת המשכיר לשינויים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Unagreed changes: the landlord may demand return to the earlier state.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הוסף סעיף שינויים",
+   "en": "Add changes clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.14",
+  "kind": "leaf",
+  "title": {
+   "he": "השכרת משנה והעברה: הסכמה מראש ובכתב",
+   "en": "Sublet and transfer: prior written consent"
+  },
+  "what": "Decide and write how the tenant may sublet or hand over the home; consent is given in advance and in writing.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "22(א)",
+    "quote": "אלא בהסכמת המשכיר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "22(ב)",
+    "quote": "תיעשה מראש ובכתב",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A tenant may go ahead without consent if the landlord refused for unreasonable reasons (section 22(א)); a court may also allow it.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease template has pets and other flags; no sublet clause flag"
+  },
+  "thumb": {
+   "he": "הגדר השכרת משנה",
+   "en": "Set sublet rule",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.15",
+  "kind": "leaf",
+  "title": {
+   "he": "כניסת המשכיר לבדיקה ותיקון",
+   "en": "Landlord's entry to inspect and repair"
+  },
+  "what": "Write that the tenant allows entry at a reasonable time, on reasonable prior notice and with as little disturbance as possible.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "17",
+    "quote": "בכל עת סבירה, לבדוק את המושכר ולבצע בו תיקונים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Visits can turn into disputes about privacy and notice.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: no visit-notice clause or log"
+  },
+  "thumb": {
+   "he": "הוסף סעיף כניסה",
+   "en": "Add entry clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.16",
+  "kind": "leaf",
+  "title": {
+   "he": "שוכרים רבים: אחריות יחד ולחוד",
+   "en": "Several tenants: joint and several liability"
+  },
+  "what": "When more than one tenant signs, write that they are liable together and each for all.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [],
+  "if_skipped": "Without it, collecting from one of several tenants is harder (not checked in a primary text).",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease template intro says tenants are liable together and separately"
+  },
+  "thumb": {
+   "he": "הוסף אחריות יחד ולחוד",
+   "en": "Add joint liability",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.17",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקה אם פרק השכירות למגורים חל",
+   "en": "Check whether the residential chapter applies"
+  },
+  "what": "Check the exclusions: a stay of three months or less with no option, a lease over ten years, a rent above the statutory monthly threshold, hotel, holiday, sheltered housing, dorms.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before drafting",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25טו(א)(4)",
+    "quote": "דמי השכירות לפיו, לחודש, עולים על 20,000 שקלים חדשים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25טו(א)(2)",
+    "quote": "תקופת השכירות לפיו אינה עולה על שלושה חודשים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The wrong rule set is assumed; the 20,000 threshold is updated every 1 January by the CPI, so the current amount must be checked.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק תחולה",
+   "en": "Check scope",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.01.18",
+  "kind": "leaf",
+  "title": {
+   "he": "חוזה מצוי להשלמת פרטים חסרים",
+   "en": "Standard lease filling missing particulars"
+  },
+  "what": "Know that a standard lease, if the Minister set one, fills missing clauses unless the parties agreed otherwise.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when a clause is missing",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ד(ב)(2)",
+    "quote": "לא נכללה בחוזה שכירות למגורים הוראה שיש לכלול בו לפי סעיף 25ג",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "UNVERIFIED: I did not find or open any regulation that sets a standard lease; check before relying on it.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן הסדר חוזה מצוי",
+   "en": "Note standard lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02",
+  "kind": "branch",
+  "title": {
+   "he": "מי משלם מה: סעיפי התשלום",
+   "en": "Who pays what: payment clauses"
+  },
+  "what": "The payment clauses follow the law's list of what the tenant pays and what the tenant does not pay directly.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "03.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "שכר דירה על השוכר",
+   "en": "Rent is the tenant's"
+  },
+  "what": "Write the rent as the tenant's payment.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "tenant, per the lease",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(1)",
+    "quote": "דמי שכירות לפי חוזה השכירות למגורים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "אשר סעיף שכר",
+   "en": "Confirm rent clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "ארנונה על המחזיק",
+   "en": "Municipal tax (arnona) on the holder"
+  },
+  "what": "Write that arnona, which falls on the holder of the home, is paid by the tenant for the rental period.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "tenant, for the rental period",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The bills stay in the landlord's name and he pays a debt that is the tenant's.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "אשר סעיף ארנונה",
+   "en": "Confirm arnona clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "מים, חשמל, גז וחימום על השוכר",
+   "en": "Water, electricity, gas and heating on the tenant"
+  },
+  "what": "Write that the tenant pays for the services he consumes.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "tenant, by consumption",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "אשר סעיף צריכה",
+   "en": "Confirm utilities clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "ועד בית שוטף על השוכר",
+   "en": "Regular house committee fee on the tenant"
+  },
+  "what": "Write that the regular maintenance fee to the house committee is the tenant's.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": "tenant, regular maintenance only",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "תשלומים לצורך אחזקה שוטפת המשולמים לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Dispute at the first fee demand.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "אשר סעיף ועד בית",
+   "en": "Confirm committee clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.05",
+  "kind": "leaf",
+  "title": {
+   "he": "שדרוג מערכות קבועות לא על השוכר",
+   "en": "Upgrading fixed systems is not on the tenant"
+  },
+  "what": "Do not put on the tenant the purchase or improvement of fixed systems that serve the home (except special fittings he asked for).",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause check",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(1)",
+    "quote": "תשלום המיועד לרכישה או להשבחה של מערכות או מיתקנים קבועים המשרתים את הדירה המושכרת",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The clause cannot be waived against the tenant; it is void to the tenant's harm.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק סעיפי חוזה",
+   "en": "Check clauses",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.06",
+  "kind": "leaf",
+  "title": {
+   "he": "ביטוח מבנה לא על השוכר",
+   "en": "Building insurance is not on the tenant"
+  },
+  "what": "Do not charge the tenant for insuring the building of the home.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause check",
+  "money": "landlord",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(2)",
+    "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A charge that the law bars cannot be demanded from the tenant.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק סעיף ביטוח",
+   "en": "Check insurance clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.07",
+  "kind": "leaf",
+  "title": {
+   "he": "דמי תיווך של המשכיר לא על השוכר",
+   "en": "The landlord's broker fee is not on the tenant"
+  },
+  "what": "If a broker worked for the landlord, his fee is the landlord's, not the tenant's.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause check",
+  "money": "landlord, for a broker acting for him",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(ב)(3)",
+    "quote": "דמי תיווך למתווך אם המתווך פעל מטעם המשכיר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A demand for the fee from the tenant is not allowed by the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק סעיף תיווך",
+   "en": "Check broker clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.08",
+  "kind": "leaf",
+  "title": {
+   "he": "מועד תשלום שכר הדירה",
+   "en": "Rent due date"
+  },
+  "what": "If the lease sets fixed periodic rent, it is paid at the start of each period; write the day.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "line in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "14(א)",
+    "quote": "ישלם אותם השוכר בראשית כל תקופה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "קבע יום תשלום",
+   "en": "Set payment day",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.09",
+  "kind": "leaf",
+  "title": {
+   "he": "ליקוי שהשוכר גרם: על חשבונו",
+   "en": "Damage the tenant caused: at his cost"
+  },
+  "what": "Write that the tenant fixes at his cost a defect caused by unreasonable use.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": "tenant, unless agreed otherwise",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(א)",
+    "quote": "השוכר אחראי על כל ליקוי בדירה המושכרת, לרבות פגם, שנגרם עקב שימוש בלתי סביר בדירה המושכרת",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Dispute on who pays at the end.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: inc/rentals/lease.php + assets/rentals/rm-lease.js + i18n/lease.json builds and signs the lease"
+  },
+  "thumb": {
+   "he": "הוסף סעיף ליקויים",
+   "en": "Add damage clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.02.10",
+  "kind": "leaf",
+  "title": {
+   "he": "זמני תיקון של המשכיר: 30 ויום 3",
+   "en": "Landlord's repair times: 30 days and 3 days"
+  },
+  "what": "Write that the landlord fixes a non-minor defect within 30 days of a demand and an urgent one within three days.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": "landlord",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(ב)",
+    "quote": "ולא יאוחר מ־30 ימים מיום שקיבל דרישה לכך מאת השוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(ב)",
+    "quote": "ולא יאוחר משלושה ימים מיום שקיבל דרישה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Cannot be contracted away against the tenant; if missed, the tenant may fix and claim the costs or reduce the rent (section 9).",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: repairs carry urgency and a fix-by date by the law's days"
+  },
+  "thumb": {
+   "he": "אשר זמני תיקון",
+   "en": "Confirm repair times",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03",
+  "kind": "branch",
+  "title": {
+   "he": "ערבויות וביטחונות",
+   "en": "Guarantees and security"
+  },
+  "what": "The security for the tenant's debts: the legal cap, its kinds and the people who guarantee.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "before signing",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "03.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "חישוב תקרת הערובה",
+   "en": "Compute the security cap"
+  },
+  "what": "Compute the total security allowed: the lower of one third of the rent over the whole term, or three monthly rents.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before asking for any security",
+  "proof": "note in the file",
+  "money": "law fixes the cap: lower of one third of term rent and 3 monthly rents",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "על הנמוך מבין סכומים אלה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)(1)",
+    "quote": "בעד שליש מתקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)(2)",
+    "quote": "סכום השווה לפי שלושה מדמי השכירות לחודש",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Asking for more than the cap is against the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "חשב תקרה",
+   "en": "Compute cap",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "סיכום כל הערובות מול התקרה",
+   "en": "Total of all securities against the cap"
+  },
+  "what": "Add up every security together (cash, guarantee, cheque, guarantor) and check it stays under the cap.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before signing",
+  "proof": "line in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "לא יעלה גובהן המצטבר של הערובות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The combined security can pass the cap by accident.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: lease form holds security fields; no cap check"
+  },
+  "thumb": {
+   "he": "בדוק סכום מצטבר",
+   "en": "Check total",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "פיקדון במזומן",
+   "en": "Cash deposit"
+  },
+  "what": "Receive a cash deposit, give a receipt, write the amount in the lease.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "receipt and a line in the lease",
+  "money": "amount agreed, under the cap",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(א)",
+    "quote": "ערובה לשם הבטחת חיובי השוכר הנובעים מחוזה השכירות למגורים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "ערבות בנקאית, ערבות מנותן ערבות אחר או מזומן",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "No proof of what was received.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: deposit in/out records in the money ledger (rm-core.js)"
+  },
+  "thumb": {
+   "he": "רשום פיקדון",
+   "en": "Record deposit",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "ערבות בנקאית: קבלה ותאריך תפוגה",
+   "en": "Bank guarantee: receipt and expiry date"
+  },
+  "what": "Receive the bank guarantee, write its amount and its expiry date, and file a copy.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "copy of the guarantee",
+  "money": "bank fee on the tenant (his cost); cap applies",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ב)",
+    "quote": "ערבות בנקאית",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A guarantee that expires before the lease ends gives no cover.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: sec_bank field; no expiry reminder"
+  },
+  "thumb": {
+   "he": "רשום ערבות בנקאית",
+   "en": "Record bank guarantee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "ערבות מנותן ערבות אחר",
+   "en": "Guarantee from another permitted guarantor"
+  },
+  "what": "Accept a guarantee from a licensed credit provider or insurer, recorded like a bank guarantee.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "copy of the guarantee",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(א)",
+    "quote": "בעל רישיון למתן אשראי, בעל רישיון למתן שירותי פיקדון ואשראי, בעל רישיון נותן שירותי תשלום יציבותי או מבטח",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A guarantee from a provider not named in the definition is not covered by that text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום ערבות",
+   "en": "Record guarantee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.06",
+  "kind": "leaf",
+  "title": {
+   "he": "צ'ק ביטחון",
+   "en": "Security cheque"
+  },
+  "what": "Receive a security cheque, write its number, bank and amount, and keep the original safe.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "photo of the cheque",
+  "money": "amount agreed",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(א)",
+    "quote": "ערובה לשם הבטחת חיובי השוכר הנובעים מחוזה השכירות למגורים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "UNVERIFIED: the text read does not say whether a security cheque counts toward the cap; ask a lawyer.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: sec_cheque field"
+  },
+  "thumb": {
+   "he": "רשום צ'ק ביטחון",
+   "en": "Record security cheque",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.07",
+  "kind": "leaf",
+  "title": {
+   "he": "שטר חוב לביטחון",
+   "en": "Promissory note as security"
+  },
+  "what": "Receive a signed promissory note and note its amount and holder.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "copy of the note",
+  "money": "amount agreed",
+  "law": [],
+  "if_skipped": "UNVERIFIED: I did not open the Bills of Exchange text; no rule is cited. Check cap and use with a lawyer.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: sec_note field"
+  },
+  "thumb": {
+   "he": "רשום שטר",
+   "en": "Record note",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.08",
+  "kind": "leaf",
+  "title": {
+   "he": "שיקים דחויים לשכר דירה",
+   "en": "Post-dated rent cheques"
+  },
+  "what": "Receive the series of post-dated rent cheques and list their numbers and dates.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": "list of cheques",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: no primary text opened on cheques. A cheque that bounces is a missed rent payment under the lease.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: ledger records bounced cheques; no cheque-series list"
+  },
+  "thumb": {
+   "he": "רשום סדרת שיקים",
+   "en": "Record cheque series",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.09",
+  "kind": "leaf",
+  "title": {
+   "he": "ערב: פרטים ותעודת זהות",
+   "en": "Guarantor: details and ID"
+  },
+  "what": "Record the guarantor's name, ID number, address and phone, with a copy of the ID.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before signing",
+  "proof": "guarantor card",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: no rule cited for what to collect.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: guarantor as a contact card (seg_guarantor), not as a signing party"
+  },
+  "thumb": {
+   "he": "הוסף ערב",
+   "en": "Add guarantor",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.10",
+  "kind": "leaf",
+  "title": {
+   "he": "כתב ערבות חתום",
+   "en": "Signed guarantee form"
+  },
+  "what": "Have the guarantor sign a guarantee to the landlord for the tenant's obligations.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at signing",
+  "proof": "signed guarantee",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "3",
+    "quote": "הערבות נוצרת בהסכם בין הערב לבין הנושה או בהתחייבותו של הערב שהודעה עליה ניתנה לנושה",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "1(א)",
+    "quote": "ערבות היא התחייבותו של אדם לקיים חיובו של אדם אחר כלפי אדם שלישי",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The guarantor is not bound by a promise nobody told the landlord of.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: guarantors are contacts; guarantor signing needs a lawyer (open from HAD-401)"
+  },
+  "thumb": {
+   "he": "שלח כתב ערבות",
+   "en": "Send guarantee form",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.11",
+  "kind": "leaf",
+  "title": {
+   "he": "היקף הערבות: מה הערב חייב",
+   "en": "Guarantee scope: what the guarantor owes"
+  },
+  "what": "Write whether the guarantee covers the whole debt or a limited sum.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when drafting the guarantee",
+  "proof": "line in the guarantee",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "4(ג)",
+    "quote": "היה היקף הערבות מוגבל, אין הערב חב אלא בתחום ערבותו",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "4(ב)",
+    "quote": "הערב חב גם בריבית, בהוצאות ובדמי נזק",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The guarantor may owe less than the landlord assumed.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבע היקף ערבות",
+   "en": "Set guarantee scope",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.12",
+  "kind": "leaf",
+  "title": {
+   "he": "מינוי תקופת הערבות לתקופת החוזה",
+   "en": "Guarantee period matches the lease"
+  },
+  "what": "Make sure the guarantee and its security cover the whole lease, including any option.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before signing",
+  "proof": "line in the guarantee",
+  "money": null,
+  "law": [],
+  "if_skipped": "Debts that arise in an extension period may be uncovered.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "התאם תקופה",
+   "en": "Match period",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.13",
+  "kind": "leaf",
+  "title": {
+   "he": "יומן תפוגת ערבות בנקאית",
+   "en": "Bank guarantee expiry reminder"
+  },
+  "what": "Set a reminder before the guarantee expires, to ask for an extension.",
+  "who": [
+   "landlord"
+  ],
+  "when": "60 days before expiry",
+  "proof": "calendar item",
+  "money": null,
+  "law": [],
+  "if_skipped": "The cover lapses without notice.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבע תזכורת",
+   "en": "Set reminder",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.14",
+  "kind": "leaf",
+  "title": {
+   "he": "מימוש הערובה רק במקרים שבחוק",
+   "en": "Using the security only in the cases the law lists"
+  },
+  "what": "Write in the lease that the security is used only in the four cases the law lists, and up to the amounts it fixes.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when drafting",
+  "proof": "clause in the lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)",
+    "quote": "המשכיר רשאי לממש ערובה שנתן לו השוכר רק במקרים המפורטים להלן",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A broader clause cannot be waived against the tenant (section 25יד).",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "אשר סעיף מימוש",
+   "en": "Confirm use clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.03.15",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלה על הערובה",
+   "en": "Receipt for the security"
+  },
+  "what": "Give the tenant a signed receipt for any security the landlord holds.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when received",
+  "proof": "signed receipt",
+  "money": null,
+  "law": [],
+  "if_skipped": "No proof of what the landlord must return.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: deposit shown in the ledger"
+  },
+  "thumb": {
+   "he": "שלח קבלה",
+   "en": "Send receipt",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.04",
+  "kind": "branch",
+  "title": {
+   "he": "חתימה והעתקים",
+   "en": "Signing and copies"
+  },
+  "what": "Sign by both sides and give each a signed copy.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "at signing",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "03.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "שליחת החוזה לחתימת השוכר בקישור אישי",
+   "en": "Send the lease to the tenant by personal link"
+  },
+  "what": "Send the finished lease to the tenant to read and sign by a personal link.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the terms are agreed",
+  "proof": "signing record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "No signature of both parties.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: personal link signing in lease.php"
+  },
+  "thumb": {
+   "he": "שלח לחתימה",
+   "en": "Send to sign",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "חתימת המשכיר",
+   "en": "Landlord's signature"
+  },
+  "what": "The landlord signs the lease.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at signing",
+  "proof": "signed lease",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The lease is not signed by both parties (it stays valid by the law's words, but proof is weaker).",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: landlord's own signature is open from HAD-401"
+  },
+  "thumb": {
+   "he": "חתום",
+   "en": "Sign",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "העתק חתום לכל צד",
+   "en": "Signed copy to each party"
+  },
+  "what": "Hand or send each party a signed copy.",
+  "who": [
+   "landlord"
+  ],
+  "when": "right after signing",
+  "proof": "delivery record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "העתק חתום מהחוזה יימסר לכל אחד מהצדדים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: signed text kept encrypted; sending copy not confirmed"
+  },
+  "thumb": {
+   "he": "שלח העתק",
+   "en": "Send copy",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.04.04",
+  "kind": "leaf",
+  "title": {
+   "he": "נספחים: רשימת ריהוט, ערבות, פרוטוקול",
+   "en": "Annexes: inventory, guarantee, protocol"
+  },
+  "what": "Attach to the lease the inventory, the guarantee and, at handover, the protocol.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at signing and handover",
+  "proof": "annexes in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "תוספת שנייה (3)",
+    "quote": "תיאור הדירה המושכרת, הריהוט והאבזרים שבה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents section holds files per lease"
+  },
+  "thumb": {
+   "he": "צרף נספחים",
+   "en": "Attach annexes",
+   "taps": 1
+  }
+ },
+ {
+  "id": "03.04.05",
+  "kind": "leaf",
+  "title": {
+   "he": "שמירת החוזה בתיק הדירה",
+   "en": "Keep the lease in the home's file"
+  },
+  "what": "File the signed lease in the home's evidence file.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after signing",
+  "proof": "file in the system",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: full evidence file per lease (/rm/evidence)"
+  },
+  "thumb": {
+   "he": "שמור בתיק",
+   "en": "Save to file",
+   "taps": 1
+  }
+ }
+]

@@ -1,0 +1,1993 @@
+[
+ {
+  "id": "09",
+  "kind": "branch",
+  "title": {
+   "he": "יציאה: הודעה, בדיקה, ערובה, חובות, פינוי",
+   "en": "Exit: notice, inspection, security, debts, eviction"
+  },
+  "what": "Everything from the first notice that the tenancy ends to the last debt.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "from the notice until the last account is closed",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.01",
+  "kind": "branch",
+  "title": {
+   "he": "הודעות סיום",
+   "en": "Notices of ending"
+  },
+  "what": "Who tells whom, and by when, that the tenancy ends.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when someone wants out",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.01.01",
+  "kind": "leaf",
+  "title": {
+   "he": "רישום הודעת שוכר על אי חידוש",
+   "en": "Record the tenant's notice of no renewal"
+  },
+  "what": "Record the tenant's notice that he leaves at the end, with the date it arrived and how.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when received",
+  "proof": "dated notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יב(א)",
+    "quote": "זמן סביר לפני תום תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The date of notice is argued.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: tenant notices are recorded as events; no dedicated field"
+  },
+  "thumb": {
+   "he": "רשום הודעה",
+   "en": "Record notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעת ביטול של השוכר: 60 יום",
+   "en": "Tenant's cancellation notice: 60 days"
+  },
+  "what": "If the lease has a cancel clause and the tenant uses it, he must give at least 60 days; count from the notice.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the tenant uses the clause",
+  "proof": "dated notice and a count",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(ב)",
+    "quote": "השוכר יודיע למשכיר על ביטול החוזה בהתאם לתניה כאמור, 60 ימים מראש, לפחות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The end date is argued.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "חשב 60 יום",
+   "en": "Count 60 days",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.03",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעת ביטול של המשכיר: 90 יום",
+   "en": "Landlord's cancellation notice: 90 days"
+  },
+  "what": "If the lease has a cancel clause that works both ways and the landlord uses it, he gives at least 90 days.",
+  "who": [
+   "landlord"
+  ],
+  "when": "only if the clause exists and is mutual",
+  "proof": "written notice and a count",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(ב)",
+    "quote": "המשכיר יודיע לשוכר על ביטול חוזה שכירות למגורים בהתאם לתניה כאמור בסעיף קטן (א), 90 ימים מראש, לפחות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(א)",
+    "quote": "בטלה, אלא אם כן קיימת גם לשוכר זכות ביטול",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A cancel clause for the landlord alone is void, so the notice has no effect.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.04",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת תניית ביטול חד צדדית",
+   "en": "Check a one-sided cancel clause"
+  },
+  "what": "Check the lease: a landlord-only right to cancel without cause is void.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before sending any cancel notice",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(א)",
+    "quote": "תניה בחוזה שכירות למגורים המאפשרת למשכיר לבטל את החוזה שלא בשל הפרתו בטלה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A notice that rests on a void clause can fail.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק תניה",
+   "en": "Check clause",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.05",
+  "kind": "leaf",
+  "title": {
+   "he": "סיום חוזה ללא תקופה",
+   "en": "Ending a lease with no fixed period"
+  },
+  "what": "Where no period was agreed, either party ends it by reasonable notice.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when no period exists",
+  "proof": "written notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "19(א)",
+    "quote": "לא הוסכם על תקופת השכירות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The notice time is argued.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.06",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לשוכר על מכירת הדירה",
+   "en": "Tell the tenant the home was sold"
+  },
+  "what": "If the landlord sells his rights, tell the tenant in writing before he must hand the home to the buyer, with the buyer's details.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before the handover to the buyer",
+  "proof": "written notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יא",
+    "quote": "יודיע על כך לשוכר בכתב, לפני המועד שבו עליו למסור את הדירה לרוכש הזכויות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "21(ב)",
+    "quote": "יבוא הרוכש במקומו של המשכיר לעניין הזכויות והחיובים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A duty under the law is not kept; the buyer steps into the landlord's place.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעת מכירה",
+   "en": "Send sale notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.01.07",
+  "kind": "leaf",
+  "title": {
+   "he": "אזהרה בכתב על הפרה",
+   "en": "Written warning of a breach"
+  },
+  "what": "Send a written warning when the tenant breaches (rent, damage, use) and give a time to fix.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when a breach appears",
+  "proof": "warning letter",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "23",
+    "quote": "ולא לגרוע מהן",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "UNVERIFIED: the Contracts (Remedies) Law was not opened here; a lawyer sets the cancel steps.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח אזהרה",
+   "en": "Send warning",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02",
+  "kind": "branch",
+  "title": {
+   "he": "יציאה מוקדמת",
+   "en": "Early exit"
+  },
+  "what": "The tenant wants to leave before the period ends.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when the tenant asks",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.02.01",
+  "kind": "leaf",
+  "title": {
+   "he": "רישום בקשת שוכר לצאת מוקדם",
+   "en": "Record the tenant's early exit request"
+  },
+  "what": "Write the request, the wanted date and the reason.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when received",
+  "proof": "message in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום בקשה",
+   "en": "Record request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.02",
+  "kind": "leaf",
+  "title": {
+   "he": "בדיקת זכות ביטול בחוזה",
+   "en": "Check a cancel right in the lease"
+  },
+  "what": "Check whether the lease gives the tenant a cancel right; if it does, it needs 60 days notice.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the request comes",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25יג(ב)",
+    "quote": "60 ימים מראש, לפחות",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord may agree to a path the lease does not have.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק חוזה",
+   "en": "Check lease",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.03",
+  "kind": "leaf",
+  "title": {
+   "he": "אישור או דחיית שוכר חלופי",
+   "en": "Approve or decline a replacement tenant"
+  },
+  "what": "If the tenant brings a replacement who takes over the lease, decide; a refusal on unreasonable grounds lets the tenant go ahead.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when a replacement is proposed",
+  "proof": "written answer",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "22(א)",
+    "quote": "אולם אם לא הסכים המשכיר לעסקה מטעמים בלתי סבירים או התנה את הסכמתו בתנאים בלתי סבירים",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unreasonable refusal lets the tenant transfer without consent, or a court may allow it.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "השב לבקשה",
+   "en": "Answer request",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.04",
+  "kind": "leaf",
+  "title": {
+   "he": "הסכם סיום מוסכם בכתב",
+   "en": "Mutual termination in writing"
+  },
+  "what": "Sign a short agreement setting the exit date, rent to that date, deposit and keys.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when both agree",
+  "proof": "signed agreement",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ב",
+    "quote": "ייערך בכתב וייחתם בידי המשכיר והשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Oral exits are hard to prove.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "צור הסכם סיום",
+   "en": "Create exit deal",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.05",
+  "kind": "leaf",
+  "title": {
+   "he": "שכר דירה עד מועד היציאה",
+   "en": "Rent up to the exit date"
+  },
+  "what": "Compute the rent to the exit date and any due balance.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before the exit",
+  "proof": "balance statement",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "14(א)",
+    "quote": "בראשית כל תקופה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A wrong closing balance.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: money ledger shows balance"
+  },
+  "thumb": {
+   "he": "הצג יתרה",
+   "en": "Show balance",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.06",
+  "kind": "leaf",
+  "title": {
+   "he": "פטור משכר כשאי אפשר להשתמש בדירה",
+   "en": "Rent exemption when the home cannot be used"
+  },
+  "what": "When the tenant cannot use the home for reasons tied to it or its access, he is exempt from rent for that time.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when the tenant claims it",
+  "proof": "note in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "15(א)",
+    "quote": "פטור הוא מתשלום דמי השכירות בעד הזמן שהשימוש נמנע כאמור",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "An unfair demand for rent for a period the home was unusable.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום טענה",
+   "en": "Record claim",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.02.07",
+  "kind": "leaf",
+  "title": {
+   "he": "הפחתת שכר בשל פגם שלא תוקן",
+   "en": "Rent reduction for an unrepaired defect"
+  },
+  "what": "If a defect was demanded and not repaired in the time set, the tenant may reduce the rent in proportion.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at the closing of accounts",
+  "proof": "calculation in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "9(א)(2)",
+    "quote": "להפחית את דמי השכירות, כל עוד לא תוקן הפגם",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(ג)",
+    "quote": "לא תיקן המשכיר ליקוי או פגם, לפי דרישת השוכר, בתוך התקופה האמורה בסעיף קטן (ב)",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A tenant's reduction is met with a disputed claim.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: repairs carry fix-by days; no reduction calculator"
+  },
+  "thumb": {
+   "he": "חשב הפחתה",
+   "en": "Compute reduction",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03",
+  "kind": "branch",
+  "title": {
+   "he": "בדיקת יציאה והחזרת הדירה",
+   "en": "Exit inspection and return of the home"
+  },
+  "what": "The tenant hands the home back; the landlord compares it with the handover.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "in the last days of the tenancy",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.03.01",
+  "kind": "leaf",
+  "title": {
+   "he": "קביעת מועד בדיקת יציאה",
+   "en": "Set the exit inspection date"
+  },
+  "what": "Agree on the date and time for the exit walk-through.",
+  "who": [
+   "landlord"
+  ],
+  "when": "2 weeks before the exit",
+  "proof": "message to the tenant",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "17",
+    "quote": "זמן סביר מראש",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קבע בדיקה",
+   "en": "Set inspection",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה מראש על כניסה לבדיקה",
+   "en": "Prior notice of entry"
+  },
+  "what": "Give the tenant reasonable prior notice before any inspection visit, and disturb as little as possible.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before each visit",
+  "proof": "message sent",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "17",
+    "quote": "ובלבד שהמשכיר יודיע לו על כך זמן סביר מראש וימעיט ככל האפשר בהפרעה לשוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Entry without notice is a breach of the tenant's rights.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעת כניסה",
+   "en": "Send entry notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.03",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה חשמל ביציאה",
+   "en": "Electricity reading at exit"
+  },
+  "what": "Read and photograph the electricity meter.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the exit day",
+  "proof": "photo with date",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The last bill is argued.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום קריאה",
+   "en": "Record reading",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.04",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה מים ביציאה",
+   "en": "Water reading at exit"
+  },
+  "what": "Read and photograph the water meter.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the exit day",
+  "proof": "photo with date",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The same.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום קריאה",
+   "en": "Record reading",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.05",
+  "kind": "leaf",
+  "title": {
+   "he": "קריאת מונה גז ביציאה",
+   "en": "Gas reading at exit"
+  },
+  "what": "Read and photograph the gas meter if there is one.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the exit day",
+  "proof": "photo with date",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The same.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום קריאה",
+   "en": "Record reading",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.06",
+  "kind": "leaf",
+  "title": {
+   "he": "סיור והשוואה לפרוטוקול המסירה",
+   "en": "Walk-through against the handover protocol"
+  },
+  "what": "Go room by room with the handover protocol and photos open.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the exit day",
+  "proof": "exit protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": "A dispute without a baseline.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: documents hold the handover files; no side-by-side view"
+  },
+  "thumb": {
+   "he": "פתח סיור",
+   "en": "Open walk-through",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.07",
+  "kind": "leaf",
+  "title": {
+   "he": "צילום מצב הדירה ביציאה",
+   "en": "Photograph the home at exit"
+  },
+  "what": "Photograph each room as the tenant leaves it, with the date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the exit day",
+  "proof": "dated photos",
+  "money": null,
+  "law": [],
+  "if_skipped": "Nothing shows the state at return.",
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: dk_photo files"
+  },
+  "thumb": {
+   "he": "צלם",
+   "en": "Photograph",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.08",
+  "kind": "leaf",
+  "title": {
+   "he": "רשימת ליקויים",
+   "en": "List of defects"
+  },
+  "what": "Write each defect found, with a photo.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the exit day",
+  "proof": "list in the exit protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "partly",
+   "where": "v2, administrators only: repairs list"
+  },
+  "thumb": {
+   "he": "רשום ליקוי",
+   "en": "Record defect",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.09",
+  "kind": "leaf",
+  "title": {
+   "he": "הפרדה בין בלאי סביר לנזק משימוש לא סביר",
+   "en": "Normal wear versus unreasonable use"
+  },
+  "what": "For each defect decide whether it is normal wear or caused by unreasonable use, which is the tenant's to fix.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the exit day",
+  "proof": "decision line",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ח(א)",
+    "quote": "שנגרם עקב שימוש בלתי סביר בדירה המושכרת",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Charging the tenant for normal wear can fail.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סווג ליקוי",
+   "en": "Classify defect",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.10",
+  "kind": "leaf",
+  "title": {
+   "he": "שינויים שהשוכר ביצע",
+   "en": "Changes the tenant made"
+  },
+  "what": "If changes were agreed, the tenant chooses to leave them or restore; if unagreed, the landlord may demand restoration.",
+  "who": [
+   "landlord"
+  ],
+  "when": "at the exit walk-through",
+  "proof": "note in the exit protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "20א(א)",
+    "quote": "זכאי השוכר לבחור בין השבת המושכר כפי שהוא לאחר ביצוע השינויים ובין החזרת המושכר לקדמותו",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "20א(ב)",
+    "quote": "דרש המשכיר השבה של המושכר לקדמותו",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "Argument over changes nobody wrote down.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום שינוי",
+   "en": "Record change",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.11",
+  "kind": "leaf",
+  "title": {
+   "he": "הדירה פנויה מאדם ונכס",
+   "en": "The home is vacant of people and things"
+  },
+  "what": "Check that the home is empty of people and of the tenant's property; the landlord's own items that serve the home may stay.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the exit day",
+  "proof": "exit protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "20(א)",
+    "quote": "כשהוא פנוי מכל אדם או נכס, למעט נכס של המשכיר המשמש את המושכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The return is not complete; the security may be used for not vacating (25י(ג)(4)).",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סמן פנויה",
+   "en": "Mark vacant",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.12",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלת מפתחות וקודים",
+   "en": "Receive keys and codes"
+  },
+  "what": "Receive and count all keys, remotes and codes; change the alarm code.",
+  "who": [
+   "landlord"
+  ],
+  "when": "on the exit day",
+  "proof": "signed line in the protocol",
+  "money": null,
+  "law": [],
+  "if_skipped": "Disputes over lost keys.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "רשום מפתחות",
+   "en": "Record keys",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.03.13",
+  "kind": "leaf",
+  "title": {
+   "he": "קבלת הדירה וחתימה על פרוטוקול יציאה",
+   "en": "Accept the home and sign the exit protocol"
+  },
+  "what": "Accept the home and sign the exit protocol together; write what is left to settle.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "on the exit day",
+  "proof": "signed exit protocol",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "20(ב)",
+    "quote": "השיב השוכר את המושכר כאמור בסעיף קטן (א), יקבל המשכיר את המושכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The date of return, which starts the 60-day count, is argued.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: end-of-lease flow (end_title, end_lease) in the lease screen"
+  },
+  "thumb": {
+   "he": "חתום על פרוטוקול",
+   "en": "Sign exit protocol",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04",
+  "kind": "branch",
+  "title": {
+   "he": "החזרת הערובה וניכויים",
+   "en": "Returning the security and deductions"
+  },
+  "what": "The deposit and other security: what may be used, and the 60-day return.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the home is returned",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.04.01",
+  "kind": "leaf",
+  "title": {
+   "he": "חישוב יתרת הערובה",
+   "en": "Compute the security balance"
+  },
+  "what": "Put the security, accrued yield and each deduction in one statement.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the exit",
+  "proof": "statement",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ה)",
+    "quote": "את הערובה או את יתרתה לאחר המימוש לפי סעיף קטן (ג), לרבות פירותיה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A wrong return amount.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: money ledger: deposit in, applied, held, out (rm-core.js)"
+  },
+  "thumb": {
+   "he": "חשב יתרה",
+   "en": "Compute balance",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לשוכר על כוונה לממש ערובה",
+   "en": "Notice of intent to use the security"
+  },
+  "what": "Tell the tenant in reasonable time, before using the security, what for and how much.",
+  "who": [
+   "landlord"
+  ],
+  "when": "before using any part",
+  "proof": "written notice",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ד)",
+    "quote": "יודיע לשוכר זמן סביר מראש על כוונתו לממש את הערובה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A use without notice breaches the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח הודעה",
+   "en": "Send notice",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.03",
+  "kind": "leaf",
+  "title": {
+   "he": "מתן זמן לשוכר לתקן",
+   "en": "Give the tenant time to fix"
+  },
+  "what": "Let the tenant fix what needs fixing within a reasonable time before the security is used.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the notice",
+  "proof": "message sent",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ד)",
+    "quote": "ויאפשר לו לתקן את הטעון תיקון בתוך זמן סביר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A use without that chance breaches the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "אפשר תיקון",
+   "en": "Allow fixing",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.04",
+  "kind": "leaf",
+  "title": {
+   "he": "ניכוי: שכר דירה שלא שולם",
+   "en": "Deduction: unpaid rent"
+  },
+  "what": "Use the security for unpaid rent only, up to the unpaid amount plus linkage and interest per the contract.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after notice",
+  "proof": "line in the statement",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(1)",
+    "quote": "עד גובה דמי השכירות שלא שולמו בתוספת הפרשי הצמדה וריבית לפי תנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A deduction above the text can be returned in court.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: deposit applied against debt (money ledger)"
+  },
+  "thumb": {
+   "he": "נכה שכר",
+   "en": "Deduct rent",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.05",
+  "kind": "leaf",
+  "title": {
+   "he": "ניכוי: תיקון ליקויי שימוש בלתי סביר",
+   "en": "Deduction: repair of unreasonable-use damage"
+  },
+  "what": "Use the security up to the repair cost for damage the tenant caused and did not fix.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after notice and chance to fix",
+  "proof": "quotes or invoices",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(2)",
+    "quote": "עד גובה עלות התיקון",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A deduction without costs shown is argued.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "נכה תיקון",
+   "en": "Deduct repair",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.06",
+  "kind": "leaf",
+  "title": {
+   "he": "ניכוי: תשלומים שוטפים שלא שולמו",
+   "en": "Deduction: unpaid running payments"
+  },
+  "what": "Use the security for unpaid municipal tax, utilities and committee fees that are the tenant's.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after notice",
+  "proof": "bills in the file",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(3)",
+    "quote": "עד גובה התשלומים שלא שולמו",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A deduction above the unpaid bills breaches the text.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "נכה חשבון",
+   "en": "Deduct bill",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.07",
+  "kind": "leaf",
+  "title": {
+   "he": "ניכוי: אי פינוי בסוף התקופה",
+   "en": "Deduction: not vacating at the end"
+  },
+  "what": "If the tenant does not leave at the end, use the security in the amount the contract sets.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the period ends",
+  "proof": "clause and calculation",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ג)(4)",
+    "quote": "בסכום בהתאם לתנאי החוזה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A charge not in the contract cannot be used.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "נכה עיכוב",
+   "en": "Deduct delay",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.08",
+  "kind": "leaf",
+  "title": {
+   "he": "החזרת ערובה או יתרתה: תוך 60 יום",
+   "en": "Return the security or its balance: within 60 days"
+  },
+  "what": "Return the security or the balance, with its yield, within 60 days of getting the home back or of the debts being settled, whichever is later.",
+  "who": [
+   "landlord"
+  ],
+  "when": "60 days from the later date",
+  "proof": "transfer proof",
+  "money": "landlord pays back; yield with it",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25י(ה)",
+    "quote": "בתוך 60 ימים ממועד השבת הדירה המושכרת לרשותו או עד למועד שבו נפרעו חובות השוכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A breach of the law's return time; the tenant may sue.",
+  "product_today": {
+   "status": "works",
+   "where": "v2, administrators only: 60-day deposit return alert (att_deposit_due, att_deposit_over) in rm-core.js"
+  },
+  "thumb": {
+   "he": "החזר ערובה",
+   "en": "Return security",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.09",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעת החזר עם פירוט ניכויים",
+   "en": "Return notice with a breakdown"
+  },
+  "what": "Send the tenant a statement of what was deducted and why, with the transfer.",
+  "who": [
+   "landlord"
+  ],
+  "when": "with the return",
+  "proof": "statement",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח פירוט",
+   "en": "Send breakdown",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.10",
+  "kind": "leaf",
+  "title": {
+   "he": "שחרור ערבות בנקאית",
+   "en": "Release the bank guarantee"
+  },
+  "what": "Return the bank guarantee to the tenant or write a release to the bank.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when no debt remains",
+  "proof": "release letter",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שחרר ערבות",
+   "en": "Release guarantee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.11",
+  "kind": "leaf",
+  "title": {
+   "he": "החזרת שיקים ושטר חוב",
+   "en": "Return cheques and promissory note"
+  },
+  "what": "Return the unused cheques and the note to the tenant and record it.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when no debt remains",
+  "proof": "signed return line",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "החזר שיקים",
+   "en": "Return cheques",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.04.12",
+  "kind": "leaf",
+  "title": {
+   "he": "שחרור הערב",
+   "en": "Release the guarantor"
+  },
+  "what": "Tell the guarantor in writing that the guarantee is released.",
+  "who": [
+   "landlord"
+  ],
+  "when": "when no debt remains",
+  "proof": "release letter",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "1(א)",
+    "quote": "ערבות היא התחייבותו של אדם לקיים חיובו של אדם אחר כלפי אדם שלישי",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שחרר ערב",
+   "en": "Release guarantor",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05",
+  "kind": "branch",
+  "title": {
+   "he": "חובות אחרי היציאה",
+   "en": "Debts after the exit"
+  },
+  "what": "Accounts to close and debts that remain.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "within weeks of the exit",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.05.01",
+  "kind": "leaf",
+  "title": {
+   "he": "סגירת חשבונות חשמל, מים וגז",
+   "en": "Close electricity, water and gas accounts"
+  },
+  "what": "Check the tenant closed his accounts, or close them by the exit readings.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "within days of the exit",
+  "proof": "final bills",
+  "money": "tenant, by consumption",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(3)",
+    "quote": "מים, חשמל, גז וחימום",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord is billed for the tenant's consumption.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "סגור חשבון",
+   "en": "Close account",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.02",
+  "kind": "leaf",
+  "title": {
+   "he": "הודעה לעירייה על סיום תקופת המחזיק",
+   "en": "Tell the municipality the holding ended"
+  },
+  "what": "Tell the municipality the tenant left, with the exit date, so arnona moves back.",
+  "who": [
+   "landlord"
+  ],
+  "when": "within days of the exit",
+  "proof": "municipality's confirmation",
+  "money": "tenant, to the exit date",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(2)",
+    "quote": "מסים החלים על המחזיק בדירה, לרבות ארנונה",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The landlord is billed for arnona after the tenant left. UNVERIFIED: the municipal procedure was not opened.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח לעירייה",
+   "en": "Send to municipality",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.03",
+  "kind": "leaf",
+  "title": {
+   "he": "סגירת ועד הבית",
+   "en": "Close the house committee account"
+  },
+  "what": "Check the tenant paid the committee fees to the exit date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "within days of the exit",
+  "proof": "committee statement",
+  "money": "tenant, regular maintenance",
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25ט(א)(4)",
+    "quote": "תשלומים לצורך אחזקה שוטפת המשולמים לנציגות הבית המשותף",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The committee bills the landlord.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "בדוק ועד",
+   "en": "Check committee",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.04",
+  "kind": "leaf",
+  "title": {
+   "he": "דרישת חוב בכתב",
+   "en": "Written demand for a debt"
+  },
+  "what": "If a debt remains after the security, send a written demand with a statement.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the deductions",
+  "proof": "demand letter",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח דרישה",
+   "en": "Send demand",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.05",
+  "kind": "leaf",
+  "title": {
+   "he": "קיזוז חובות הדדיים",
+   "en": "Set off mutual debts"
+  },
+  "what": "Set off what each side owes the other because of the tenancy.",
+  "who": [
+   "landlord",
+   "tenant"
+  ],
+  "when": "when closing accounts",
+  "proof": "statement",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "25",
+    "quote": "חובות שהצדדים חבים זה לזה עקב השכירות ניתנים לקיזוז",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "A claim and a counter-claim are argued separately.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "קזז",
+   "en": "Set off",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.06",
+  "kind": "leaf",
+  "title": {
+   "he": "פנייה לערב",
+   "en": "Turn to the guarantor"
+  },
+  "what": "If the debt stays and there is a guarantee, send the guarantor a demand; he owes interest and costs too, unless limited.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the debt is set",
+  "proof": "demand letter",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "4(ב)",
+    "quote": "הערב חב גם בריבית, בהוצאות ובדמי נזק שנתחייב בהם החייב בשל החיוב הנערב",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   },
+   {
+    "source": "חוק הערבות, התשכ\"ז-1967",
+    "section": "4(א)",
+    "quote": "אין הערב חב ביותר מחיובו של החייב ולא בחמור ממנו",
+    "url": "https://he.wikisource.org/wiki/חוק_הערבות",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The guarantor is not asked in time.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח לערב",
+   "en": "Send to guarantor",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.07",
+  "kind": "leaf",
+  "title": {
+   "he": "הפקדת שיק או שטר שנותרו",
+   "en": "Deposit a remaining cheque or note"
+  },
+  "what": "If a security cheque or note was kept and a debt is set, a lawyer decides how to use it.",
+  "who": [
+   "landlord"
+  ],
+  "when": "only with a lawyer",
+  "proof": "lawyer's advice",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: no primary text opened on cheques and notes.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבר לעו\"ד",
+   "en": "Hand to lawyer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.05.08",
+  "kind": "leaf",
+  "title": {
+   "he": "תביעה כספית",
+   "en": "Money claim"
+  },
+  "what": "If the debt is not paid, hand it to a lawyer to claim in court.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after demands fail",
+  "proof": "lawyer's file",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: no court rules opened here.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבר לעו\"ד",
+   "en": "Hand to lawyer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06",
+  "kind": "branch",
+  "title": {
+   "he": "שוכר שלא מפנה: דרך הפינוי בקווים כלליים",
+   "en": "Tenant who does not leave: eviction path in outline"
+  },
+  "what": "High-level only; a lawyer files and runs it.",
+  "who": [
+   "landlord",
+   "professional",
+   "authority"
+  ],
+  "when": "after the period ends and the tenant stays",
+  "proof": null,
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  }
+ },
+ {
+  "id": "09.06.01",
+  "kind": "leaf",
+  "title": {
+   "he": "תיעוד שהשוכר נשאר",
+   "en": "Record that the tenant stayed"
+  },
+  "what": "Photograph and write the date the period ended and that the tenant is still inside.",
+  "who": [
+   "landlord"
+  ],
+  "when": "first day after the end",
+  "proof": "dated note",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק השכירות והשאילה, התשל\"א-1971",
+    "section": "20(א)",
+    "quote": "עם סיום תקופת השכירות ישיב השוכר למשכיר את המושכר",
+    "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "No proof of the delay.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "תעד",
+   "en": "Record",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.02",
+  "kind": "leaf",
+  "title": {
+   "he": "דרישת פינוי בכתב",
+   "en": "Written demand to vacate"
+  },
+  "what": "Send a written demand to vacate with a clear date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "right after the end",
+  "proof": "demand letter",
+  "money": null,
+  "law": [],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "שלח דרישה",
+   "en": "Send demand",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.03",
+  "kind": "leaf",
+  "title": {
+   "he": "העברה לעורך דין",
+   "en": "Hand to a lawyer"
+  },
+  "what": "Give the lawyer the lease, the notices and proof of the end date.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the demand",
+  "proof": "lawyer's file",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: the court route (claim and judgment) was not opened here.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "העבר לעו\"ד",
+   "en": "Hand to lawyer",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.04",
+  "kind": "leaf",
+  "title": {
+   "he": "פסק דין לפינוי",
+   "en": "Eviction judgment"
+  },
+  "what": "A court judgment for eviction is the base for the next step.",
+  "who": [
+   "professional",
+   "authority"
+  ],
+  "when": "after the court hears the claim",
+  "proof": "judgment",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק ההוצאה לפועל, התשכ\"ז-1967",
+    "section": "1",
+    "quote": "פסק דין לפינוי מושכר",
+    "url": "https://he.wikisource.org/wiki/חוק_ההוצאה_לפועל",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "No judgment, no execution.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "צרף פסק דין",
+   "en": "Attach judgment",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.05",
+  "kind": "leaf",
+  "title": {
+   "he": "בקשה לביצוע בהוצאה לפועל",
+   "en": "Execution application"
+  },
+  "what": "File the application to execute the eviction judgment at the execution office.",
+  "who": [
+   "professional"
+  ],
+  "when": "after the judgment",
+  "proof": "filed application",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק ההוצאה לפועל, התשכ\"ז-1967",
+    "section": "64(א)",
+    "quote": "ניתן פסק דין לפינוי מקרקעין, לרבות סילוק יד",
+    "url": "https://he.wikisource.org/wiki/חוק_ההוצאה_לפועל",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": "The judgment is not carried out.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "הגש בקשה",
+   "en": "File application",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.06",
+  "kind": "leaf",
+  "title": {
+   "he": "אזהרה לחייב: לא פחות מ־10 ימים לדירת מגורים",
+   "en": "Warning to the debtor: at least 10 days for a home"
+  },
+  "what": "The office warns the debtor to comply; for a residence the period is not under 10 days.",
+  "who": [
+   "authority"
+  ],
+  "when": "after the application",
+  "proof": "warning served",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק ההוצאה לפועל, התשכ\"ז-1967",
+    "section": "7(א)",
+    "quote": "ולעניין פינוי דירת מגורים, לא תפחת התקופה מ־10 ימים",
+    "url": "https://he.wikisource.org/wiki/חוק_ההוצאה_לפועל",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "עקוב",
+   "en": "Follow",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.07",
+  "kind": "leaf",
+  "title": {
+   "he": "כניסה ופינוי בידי לשכת ההוצאה לפועל",
+   "en": "Entry and eviction by the execution office"
+  },
+  "what": "If the tenant does not comply, the head of the office enters, evicts and hands the home over, within 14 days of the end of the warning period.",
+  "who": [
+   "authority"
+  ],
+  "when": "after the warning period",
+  "proof": "execution office record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק ההוצאה לפועל, התשכ\"ז-1967",
+    "section": "64(א1)",
+    "quote": "ייכנס מנהל לשכת ההוצאה לפועל למקרקעין האמורים, יפנה אותם וימסרם למי שזכאי לקבלם לפי פסק הדין",
+    "url": "https://he.wikisource.org/wiki/חוק_ההוצאה_לפועל",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "עקוב",
+   "en": "Follow",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.08",
+  "kind": "leaf",
+  "title": {
+   "he": "מיטלטלין שנשארו בדירה",
+   "en": "Belongings left in the home"
+  },
+  "what": "Belongings left at the eviction go to safekeeping by the office, which may sell them after a reasonable time.",
+  "who": [
+   "authority"
+  ],
+  "when": "at the eviction",
+  "proof": "office record",
+  "money": null,
+  "law": [
+   {
+    "source": "חוק ההוצאה לפועל, התשכ\"ז-1967",
+    "section": "64(ב)",
+    "quote": "ימסרם מנהל לשכת ההוצאה לפועל לשמירה",
+    "url": "https://he.wikisource.org/wiki/חוק_ההוצאה_לפועל",
+    "read_on": "2026-11-20"
+   }
+  ],
+  "if_skipped": null,
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "עקוב",
+   "en": "Follow",
+   "taps": 1
+  }
+ },
+ {
+  "id": "09.06.09",
+  "kind": "leaf",
+  "title": {
+   "he": "החלפת מנעול רק אחרי קבלת הדירה",
+   "en": "Change the locks only after the home is returned"
+  },
+  "what": "Change the lock and the codes only once the home is handed back.",
+  "who": [
+   "landlord"
+  ],
+  "when": "after the return",
+  "proof": "note in the file",
+  "money": null,
+  "law": [],
+  "if_skipped": "UNVERIFIED: I did not find a text that permits self-help; do not enter or change locks while the tenant is inside.",
+  "product_today": {
+   "status": "missing",
+   "where": null
+  },
+  "thumb": {
+   "he": "החלף מנעול",
+   "en": "Change lock",
+   "taps": 1
+  }
+ }
+]

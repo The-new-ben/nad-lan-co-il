@@ -1,0 +1,99 @@
+{
+ "total": {
+  "nodes": 681,
+  "leaves": 561,
+  "missing": 265,
+  "partly": 230,
+  "works": 66,
+  "law": 393
+ },
+ "leaves_missing_per_language": {
+  "he": 265,
+  "en": 265,
+  "fr": 561,
+  "ru": 561,
+  "ar": 561
+ },
+ "branches": {
+  "01": {
+   "nodes": 70,
+   "leaves": 58,
+   "works": 2,
+   "partly": 14,
+   "missing": 42,
+   "law": 30
+  },
+  "02": {
+   "nodes": 57,
+   "leaves": 48,
+   "works": 0,
+   "partly": 19,
+   "missing": 29,
+   "law": 31
+  },
+  "03": {
+   "nodes": 53,
+   "leaves": 48,
+   "works": 5,
+   "partly": 32,
+   "missing": 11,
+   "law": 40
+  },
+  "04": {
+   "nodes": 47,
+   "leaves": 40,
+   "works": 1,
+   "partly": 14,
+   "missing": 25,
+   "law": 27
+  },
+  "05": {
+   "nodes": 71,
+   "leaves": 60,
+   "works": 28,
+   "partly": 14,
+   "missing": 18,
+   "law": 28
+  },
+  "06": {
+   "nodes": 189,
+   "leaves": 141,
+   "works": 3,
+   "partly": 97,
+   "missing": 41,
+   "law": 125
+  },
+  "07": {
+   "nodes": 43,
+   "leaves": 35,
+   "works": 9,
+   "partly": 6,
+   "missing": 20,
+   "law": 30
+  },
+  "08": {
+   "nodes": 36,
+   "leaves": 31,
+   "works": 12,
+   "partly": 8,
+   "missing": 11,
+   "law": 21
+  },
+  "09": {
+   "nodes": 63,
+   "leaves": 56,
+   "works": 5,
+   "partly": 5,
+   "missing": 46,
+   "law": 42
+  },
+  "10": {
+   "nodes": 52,
+   "leaves": 44,
+   "works": 1,
+   "partly": 21,
+   "missing": 22,
+   "law": 19
+  }
+ }
+}

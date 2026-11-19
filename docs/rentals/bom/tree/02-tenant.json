@@ -1,0 +1,1729 @@
+[
+  {
+    "id": "02",
+    "kind": "branch",
+    "title": {
+      "he": "למצוא שוכר ולבדוק אותו",
+      "en": "Finding and checking a tenant"
+    },
+    "what": "From the ad to the decision: write the ad, show the home, collect the applicant's details lawfully, check them, choose, and say no kindly. The site is never a broker.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.01",
+    "kind": "branch",
+    "title": {
+      "he": "מודעה ותמונות",
+      "en": "The ad and the photos"
+    },
+    "what": "A truthful ad with good photos, and a record of where it was published.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.01.01",
+    "kind": "leaf",
+    "title": {
+      "he": "כתבו מודעה עם עובדות בלבד",
+      "en": "Write the ad with facts only"
+    },
+    "what": "Write rooms, floor, size, street or neighbourhood, available date, rent and what is included. Leave out anything you cannot prove.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing",
+    "proof": "the final text of the ad saved with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "6(א)",
+        "quote": "המשכיר ימסור את המושכר כשהוא מתאים למוסכם בינו ובין השוכר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A tenant arrives to a home that is not as described; the match claim in the contract suffers.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): publish action (act_publish) in rm-views.js on a vacant unit; ad text not generated or checked"
+    },
+    "thumb": {
+      "he": "שמרו טיוטה",
+      "en": "Save draft",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.02",
+    "kind": "leaf",
+    "title": {
+      "he": "כתבו בכותרת את מה שמחפשים",
+      "en": "Put in the headline what people search for"
+    },
+    "what": "Use the phrases people type for such a home (rooms, area). Before writing, do the manual Google search yourself (suggested keywords and the first results page) as the owner's search rule requires.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing",
+    "proof": "the screenshots of the manual search kept in the research folder",
+    "money": null,
+    "law": [],
+    "if_skipped": "The ad is hard to find.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שמרו כותרת",
+      "en": "Save headline",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.03",
+    "kind": "leaf",
+    "title": {
+      "he": "ציינו מי משלם מה מעבר לשכר",
+      "en": "State who pays what on top of the rent"
+    },
+    "what": "Name arnona, water, electricity, gas and house-committee payments and who pays them, as the law sets for the tenancy period.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing",
+    "proof": "the line in the ad",
+    "money": "The tenant pays the items in section 25ט(א) for the tenancy period unless the contract says another valid way.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(א)",
+        "quote": "השוכר יישא בתשלומים אלה לגבי תקופת השכירות",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Questions and disputes on extra payments.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "הוסיפו שורה",
+      "en": "Add the line",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.04",
+    "kind": "leaf",
+    "title": {
+      "he": "פרסמו רק מה שאתם יכולים להבטיח על המכשירים",
+      "en": "Promise only the appliances you can stand behind"
+    },
+    "what": "List in the ad only the appliances that stay and work.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing",
+    "proof": "the list matches the appliance list in the file",
+    "money": null,
+    "law": [],
+    "if_skipped": "A dispute at handover.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): appliances recorded; not linked to the ad text"
+    },
+    "thumb": {
+      "he": "סמנו רשימה",
+      "en": "Mark list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.05",
+    "kind": "leaf",
+    "title": {
+      "he": "צלמו כל חדר באור יום",
+      "en": "Photograph every room in daylight"
+    },
+    "what": "Take clear photos in daylight after cleaning: each room, the kitchen, the bathroom, the balcony, the entrance, the view.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after cleaning",
+    "proof": "the photo set",
+    "money": null,
+    "law": [],
+    "if_skipped": "Fewer enquiries; the ad looks like others.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "צלמו",
+      "en": "Photograph",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.06",
+    "kind": "leaf",
+    "title": {
+      "he": "ודאו שאין אדם בתמונות",
+      "en": "Check there is no person in the photos"
+    },
+    "what": "Photographing a person in his private domain without consent is an invasion of privacy. If the current tenant lives there, get consent or remove people and personal items from the frame.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing photos",
+    "proof": "a check mark with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "2(3)",
+        "quote": "צילום אדם כשהוא ברשות היחיד",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "An invasion of privacy claim by the person photographed.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.07",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תציינו עילות הפליה במודעה",
+      "en": "Keep discriminating wording out of the ad"
+    },
+    "what": "Do not write who you will not rent to by religion, origin, sex, sexual orientation, age, family status, parenthood or the other listed grounds. See branch 02.06 for what the text covers.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before publishing",
+    "proof": "a check mark with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק איסור הפליה במוצרים, בשירותים ובכניסה למקומות בידור ולמקומות ציבוריים, התשס\"א-2000",
+        "section": "4",
+        "quote": "לא יפרסם מודעה שיש בה משום הפליה אסורה",
+        "url": "https://he.wikisource.org/wiki/חוק_איסור_הפליה_במוצרים,_בשירותים_ובכניסה_למקומות_בידור_ולמקומות_ציבוריים",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "If the law applies to you, an ad with such wording is a civil wrong. Whether it applies to a private owner is not stated in the text I read.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.08",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו איפה פרסמתם ומתי",
+      "en": "Record where and when you published"
+    },
+    "what": "Keep the links and dates of every place the ad appears so you can take it down when the home is let.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when publishing",
+    "proof": "a list of links with dates",
+    "money": null,
+    "law": [],
+    "if_skipped": "An ad stays up after the home is let.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "שמרו קישור",
+      "en": "Save link",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.01.09",
+    "kind": "leaf",
+    "title": {
+      "he": "הסירו את המודעה כשהדירה הושכרה",
+      "en": "Take the ad down when the home is let"
+    },
+    "what": "Remove every ad you listed once a contract is signed.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the contract is signed",
+    "proof": "a tick per ad",
+    "money": null,
+    "law": [],
+    "if_skipped": "Calls and wasted viewings continue.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "סמנו הוסרה",
+      "en": "Mark removed",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02",
+    "kind": "branch",
+    "title": {
+      "he": "הצגת הדירה",
+      "en": "The viewing"
+    },
+    "what": "Plan and run the viewings and keep a short record of who came.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.02.01",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו חלונות צפייה",
+      "en": "Set viewing slots"
+    },
+    "what": "Offer fixed slots (one group or separate), and tell each person the slot by message.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the first enquiries",
+    "proof": "a message per person with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "Time is lost on scattered visits.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "שלחו מועד",
+      "en": "Send a slot",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02.02",
+    "kind": "leaf",
+    "title": {
+      "he": "הכינו תיק קצר לצפייה",
+      "en": "Prepare a short folder for the viewing"
+    },
+    "what": "Print or open: the appliance list, the known defects list, the extra payments list, the rent and the length of the lease.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before each viewing",
+    "proof": "the folder checklist ticked",
+    "money": null,
+    "law": [],
+    "if_skipped": "The same answers are given again and again, differently.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו מוכן",
+      "en": "Mark ready",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02.03",
+    "kind": "leaf",
+    "title": {
+      "he": "אם גר בה שוכר, תאמו מראש",
+      "en": "If a tenant lives there, agree the time in advance"
+    },
+    "what": "A tenant must let the landlord enter for inspection and repairs at a reasonable time with reasonable notice. Showing the home to a new tenant is not named in that section, so agree the visits in writing with the sitting tenant.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "before any viewing",
+    "proof": "the tenant's written reply",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "17",
+        "quote": "זמן סביר מראש וימעיט ככל האפשר בהפרעה לשוכר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "11",
+        "quote": "ללא הפרעה מצדו או מטעמו",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The sitting tenant objects and a complaint on disturbance follows.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send notice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02.04",
+    "kind": "leaf",
+    "title": {
+      "he": "הראו את הליקויים הידועים בעצמכם",
+      "en": "Show the known defects yourself"
+    },
+    "what": "Point out the known defects at the viewing. A tenant who knew of a defect at signing cannot rely on it later; it also protects you.",
+    "who": [
+      "landlord"
+    ],
+    "when": "at each viewing",
+    "proof": "the applicant's signature or reply on the defects list",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "6(ג)(1)",
+        "quote": "השוכר ידע על אי־ההתאמה בעת כריתת חוזה השכירות",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A later claim that the defect was hidden.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הוצג",
+      "en": "Mark shown",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02.05",
+    "kind": "leaf",
+    "title": {
+      "he": "רשמו מי הגיע",
+      "en": "Record who came"
+    },
+    "what": "Write the name and the date of each viewer only with his consent and for this purpose; do not copy ID cards at a viewing.",
+    "who": [
+      "landlord"
+    ],
+    "when": "at each viewing",
+    "proof": "a short list of names and dates",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "2(9)",
+        "quote": "שימוש בידיעה על עניניו הפרטיים של אדם או מסירתה לאחר, שלא למטרה שלשמה נמסרה",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Personal details are kept without a purpose.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): the apply link (act_apply_link, inc/rentals/portal.php purpose 'apply') creates a prospect contact; not live for everyone"
+    },
+    "thumb": {
+      "he": "רשמו מבקר",
+      "en": "Add visitor",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.02.06",
+    "kind": "leaf",
+    "title": {
+      "he": "שאלו מה חשוב לכל מבקר ושמרו תשובה",
+      "en": "Ask each visitor what matters to him"
+    },
+    "what": "After the viewing ask what he liked and what worried him; it helps your choice and your ad.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the viewing",
+    "proof": "a note per visitor",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו תשובה",
+      "en": "Save answer",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03",
+    "kind": "branch",
+    "title": {
+      "he": "איסוף פרטי המועמד בהסכמה",
+      "en": "Collecting the applicant's details with consent"
+    },
+    "what": "Collect only what you need, tell the applicant why, keep it safe and delete it when done. Text read: חוק הגנת הפרטיות (copy that includes amendment 13).",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.03.01",
+    "kind": "leaf",
+    "title": {
+      "he": "שלחו למועמד טופס עם הודעה על מטרת האיסוף",
+      "en": "Send the applicant a form with the notice of purpose"
+    },
+    "what": "When you ask a person for personal data to hold in a database, send with the request a notice that says: whether he must give it, the purpose, who controls the data, who will receive it and why, and his right to see and correct it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the applicant gives any detail",
+    "proof": "the form sent with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "11",
+        "quote": "פניה לאדם לקבלת מידע אישי לשם עיבודו במאגר מידע תלווה בהודעה",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The notice duty is not met; whether a small owner's list is a data base in law is a question for a lawyer.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): the apply link (act_apply_link, inc/rentals/portal.php purpose 'apply') creates a prospect contact; not live for everyone"
+    },
+    "thumb": {
+      "he": "שלחו טופס",
+      "en": "Send form",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו רק מה שצריך לבחירה",
+      "en": "Ask only for what the choice needs"
+    },
+    "what": "Write the list of details you will ask (name, contact, income evidence, previous landlord) and leave the rest out.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the form is sent",
+    "proof": "the list of requested items",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "2(9)",
+        "quote": "שימוש בידיעה על עניניו הפרטיים של אדם או מסירתה לאחר, שלא למטרה שלשמה נמסרה",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Details collected without a need can be used out of purpose.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "נעלו רשימה",
+      "en": "Lock the list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.03",
+    "kind": "leaf",
+    "title": {
+      "he": "הסבירו שמסירת הפרטים בהסכמה",
+      "en": "Make clear that giving the details is by consent"
+    },
+    "what": "Write on the form that the applicant gives the details by choice and what happens if he does not (he may not be chosen).",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the form is sent",
+    "proof": "the sentence on the form",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "11(1)",
+        "quote": "מסירת המידע תלויה ברצונו ובהסכמתו ומהי תוצאת אי־ההסכמה",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The notice is incomplete.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): the apply link (act_apply_link, inc/rentals/portal.php purpose 'apply') creates a prospect contact; not live for everyone"
+    },
+    "thumb": {
+      "he": "הוסיפו משפט",
+      "en": "Add the sentence",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.04",
+    "kind": "leaf",
+    "title": {
+      "he": "סמנו מסמכי שכר וחשבון בנק כמידע רגיש",
+      "en": "Mark pay and bank documents as sensitive"
+    },
+    "what": "Pay data and financial activity are in the law's list of specially sensitive information. Keep them in one protected place, not in chats and not in a shared folder.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when documents arrive",
+    "proof": "documents stored in the protected place",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "3 (הגדרת מידע בעל רגישות מיוחדת)",
+        "quote": "מידע אישי על נתוני שכר של אדם ועל פעילותו הפיננסית",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A leak is serious.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tenants' personal data encrypted at rest; no sensitivity mark on applicant documents"
+    },
+    "thumb": {
+      "he": "סמנו רגיש",
+      "en": "Mark sensitive",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.05",
+    "kind": "leaf",
+    "title": {
+      "he": "אבטחו את הפרטים",
+      "en": "Keep the details secure"
+    },
+    "what": "Keep applicants' documents in a place with a password; do not send them by open chat; limit who can see them.",
+    "who": [
+      "landlord"
+    ],
+    "when": "while the details are held",
+    "proof": "a note of where the details are kept",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "17(א)",
+        "quote": "אחראי לאבטחת המידע שבמאגר המידע",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Responsibility for a leak.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): encrypted tenant data"
+    },
+    "thumb": {
+      "he": "סמנו מאובטח",
+      "en": "Mark secured",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.06",
+    "kind": "leaf",
+    "title": {
+      "he": "ענו על בקשה לעיין בפרטים",
+      "en": "Answer a request to see the details"
+    },
+    "what": "A person may ask to see the personal data held about him and to correct or delete it if wrong. Keep the reply ready.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when an applicant asks",
+    "proof": "the reply with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "13(א)",
+        "quote": "כל אדם זכאי לעיין בעצמו",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "14(א)",
+        "quote": "בבקשה לתקן את המידע האישי או למוחקו",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A complaint to the Privacy Protection Authority.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו עותק",
+      "en": "Send a copy",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.03.07",
+    "kind": "leaf",
+    "title": {
+      "he": "מחקו פרטי מועמדים שלא נבחרו",
+      "en": "Delete the details of applicants not chosen"
+    },
+    "what": "Set a date after which you delete the details of those not chosen. I did not read a primary rule fixing how long; set your own short period and write it on the form.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the choice is made",
+    "proof": "a deletion note with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "Details are held with no purpose.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "מחקו פרטים",
+      "en": "Delete details",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04",
+    "kind": "branch",
+    "title": {
+      "he": "בדיקת המועמד",
+      "en": "Checking the applicant"
+    },
+    "what": "Identity, ability to pay, references, banking status. Every check is by the applicant's consent and by documents he gives you.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.04.01",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו תעודת זהות מול הפנים בפגישה",
+      "en": "Check the ID against the face at a meeting"
+    },
+    "what": "Look at the ID in person, check the name and the number against the form, and note that you did, without keeping a copy unless the contract needs it.",
+    "who": [
+      "landlord"
+    ],
+    "when": "at the first meeting",
+    "proof": "a tick with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "תוספת שנייה (2)",
+        "quote": "שמות הצדדים לחוזה, מספרי תעודת הזהות שלהם ומענם",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The contract names the wrong person; the ID number is required in the contract.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו תלושי שכר או הוכחת הכנסה אחרת",
+      "en": "Ask for payslips or another proof of income"
+    },
+    "what": "Ask the applicant to give payslips or other income evidence through the form with the privacy notice.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before choosing",
+    "proof": "the documents saved in the protected place",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "3 (הגדרת מידע בעל רגישות מיוחדת)",
+        "quote": "מידע אישי על נתוני שכר של אדם ועל פעילותו הפיננסית",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "No view of ability to pay.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): screening tips text asks the applicant to upload payslips through the request link (he.json screen_tips_body); no upload field verified"
+    },
+    "thumb": {
+      "he": "בקשו מסמכים",
+      "en": "Request documents",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.03",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו דוח נתוני אשראי שהמועמד מביא בעצמו",
+      "en": "Ask the applicant to bring his own credit report"
+    },
+    "what": "A customer may get a free credit data summary from the Bank of Israel once a year. Ask him to bring it and share it of his own will; do not pull a report on another person.",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "before choosing",
+    "proof": "the report he gave you, if he chose to",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק נתוני אשראי, התשע\"ו-2016",
+        "section": "38(ד)",
+        "quote": "דוח ריכוז נתונים יימסר ללקוח בלא תשלום, לפי בקשתו, אחת לשנה",
+        "url": "https://he.wikisource.org/wiki/חוק_נתוני_אשראי",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The applicant may decline; then use other evidence. The product's own text says pulling a report on another person is forbidden: I did not verify that claim in the primary text, section 4(א) bars collecting and passing credit data to others as a business.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): screening tips text mentions the free yearly report"
+    },
+    "thumb": {
+      "he": "בקשו דוח",
+      "en": "Request report",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.04",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו מול בנק ישראל אם החשבון מוגבל",
+      "en": "Check with the Bank of Israel if the account is restricted"
+    },
+    "what": "The Bank of Israel page on restricted accounts says it publishes the list of restricted accounts, subject to the Privacy Protection Law. Ask the applicant to confirm his own status, or use the public list only with his consent.",
+    "who": [
+      "landlord",
+      "authority"
+    ],
+    "when": "before accepting a cheque as security",
+    "proof": "a note of the result with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "בנק ישראל, עמוד \"חשבונות ולקוחות מוגבלים\"",
+        "section": "עמוד \"חשבונות ולקוחות מוגבלים\"",
+        "quote": "מפרסם בנק ישראל באתר האינטרנט את רשימת החשבונות המוגבלים",
+        "url": "https://www.boi.org.il/information/restricted_accounts/",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A cheque from a restricted account is not an acceptable security. I did not read the exact rule on what restriction means, only the page.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): link 'boi_check' opens the Bank of Israel page"
+    },
+    "thumb": {
+      "he": "פתחו את העמוד",
+      "en": "Open the page",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.05",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תבקשו תעודת יושר או רישום פלילי",
+      "en": "Do not ask for a criminal record"
+    },
+    "what": "Criminal information is confidential and may not be demanded by anyone except as the law allows, including through a declaration or a written questionnaire.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when writing the form",
+    "proof": "the form has no criminal-record question",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המידע הפלילי ותקנת השבים, התשע\"ט-2019",
+        "section": "3(ב)",
+        "quote": "לא ידרוש אדם מידע פלילי, במישרין או בעקיפין, שלא בהתאם להוראות חוק זה",
+        "url": "https://he.wikisource.org/wiki/חוק_המידע_הפלילי_ותקנת_השבים",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A demand that the law does not allow.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): screening tips text says it is forbidden to ask"
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.06",
+    "kind": "leaf",
+    "title": {
+      "he": "התקשרו למשכיר הקודם בהסכמת המועמד",
+      "en": "Call the previous landlord with the applicant's consent"
+    },
+    "what": "Ask the applicant for the previous landlord's contact and his OK to call. Ask only about rent paid on time, condition of the home and notice given.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before choosing",
+    "proof": "a note of the call with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "2(9)",
+        "quote": "שימוש בידיעה על עניניו הפרטיים של אדם או מסירתה לאחר, שלא למטרה שלשמה נמסרה",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A choice with no reference.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו שיחה",
+      "en": "Log call",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.07",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו אישור מעסיק רק אם המועמד מסכים",
+      "en": "Ask for an employer's letter only if the applicant agrees"
+    },
+    "what": "Ask for a short letter from the employer, given by the applicant.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before choosing",
+    "proof": "the letter saved in the protected place",
+    "money": null,
+    "law": [],
+    "if_skipped": "Less certainty on income.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בקשו מכתב",
+      "en": "Request letter",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.04.08",
+    "kind": "leaf",
+    "title": {
+      "he": "ספרו למועמד מוקדם איזו ערובה תבקשו",
+      "en": "Tell the applicant early what security you will ask"
+    },
+    "what": "If you ask for security that costs the tenant money (a bank guarantee, a guarantee from another guarantor, cash), the total may not exceed the lower of two limits. Tell him the type and the amount up front.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before choosing",
+    "proof": "the message with the planned security",
+    "money": "The limit is the lower of: the rent for one third of the lease period, or three monthly rents. The amount is computed from the contract's rent.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25י(ב)",
+        "quote": "לא יעלה גובהן המצטבר של הערובות על הנמוך מבין סכומים אלה",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A security above the limit is not allowed; the contract term against the tenant is void as it may not be varied against him.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send notice",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05",
+    "kind": "branch",
+    "title": {
+      "he": "מתווכים ודמי תיווך",
+      "en": "Brokers and the broker's fee"
+    },
+    "what": "If the owner uses a licensed broker: licence, written order, exclusivity, who pays. nad-lan is never a broker.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.05.01",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו אם מי שמציע לעזור הוא מתווך",
+      "en": "Check whether the one who offers help is a broker"
+    },
+    "what": "Introducing two sides for a fee, to make a deal in a right in land, is brokering. If someone does this for pay, he needs a valid licence.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before agreeing to any help",
+    "proof": "a note on the person and the answer",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "1",
+        "quote": "הפגשה בתמורה בין שני צדדים או יותר, לשם התקשרותם בעיסקה בזכות במקרקעין",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "2(א)",
+        "quote": "לא יעסוק אדם בתיווך במקרקעין, אלא אם כן הוא בעל רשיון בתוקף",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "You deal with an unlicensed person.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.02",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו שיש לו רישיון בתוקף בפנקס",
+      "en": "Check his licence is valid in the register"
+    },
+    "what": "The Registrar keeps a register of licence holders. Check the broker's name there before you sign.",
+    "who": [
+      "landlord",
+      "authority"
+    ],
+    "when": "before signing the order",
+    "proof": "a screenshot or note of the register entry",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "3(א)(2)",
+        "quote": "לנהל פנקס של בעלי רשיונות לתיווך במקרקעין",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The fee may not be due if he is not licensed. I did not open the register itself today.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): licensed brokers list mentioned in the leasing_law string; no register check"
+    },
+    "thumb": {
+      "he": "בדקו בפנקס",
+      "en": "Check the register",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.03",
+    "kind": "leaf",
+    "title": {
+      "he": "חתמו על הזמנת תיווך בכתב לפני כל דבר",
+      "en": "Sign a written broker's order before anything"
+    },
+    "what": "A broker is not entitled to a fee unless the client signed a written order for brokering, with the details the Minister set.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "before the broker works",
+    "proof": "the signed order",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "9(א)",
+        "quote": "מתווך במקרקעין לא יהא זכאי לדמי תיווך, אלא אם כן חתם הלקוח על הזמנה בכתב",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The broker is not entitled to the fee without the order.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שמרו הזמנה",
+      "en": "Save the order",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.04",
+    "kind": "leaf",
+    "title": {
+      "he": "אם נתתם בלעדיות, חתמו במסמך נפרד",
+      "en": "If you give exclusivity, sign it in a separate document"
+    },
+    "what": "Exclusivity must be approved by the client's signature on a separate paper. For a dwelling with no period written, it ends after 30 days.",
+    "who": [
+      "landlord",
+      "professional"
+    ],
+    "when": "when giving exclusivity",
+    "proof": "the separate signed paper with the period",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "9(ב)(1)",
+        "quote": "יאושרו בחתימת הלקוח על גבי מסמך נפרד",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "9(ג)",
+        "quote": "תסתיים תקופת הבלעדיות לאותו מתווך בתום 30 ימים",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "The exclusivity is not valid without a separate signed paper.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שמרו מסמך",
+      "en": "Save the paper",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.05",
+    "kind": "leaf",
+    "title": {
+      "he": "אם המתווך פעל מטעמכם, דמי התיווך עליכם",
+      "en": "If the broker acted for you, the fee is yours"
+    },
+    "what": "A tenant need not bear brokerage fees when the broker acted on behalf of the landlord. The contract may not shift it to the tenant against this.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the contract",
+    "proof": "the clause on the fee in the contract",
+    "money": "The landlord pays the fee of his own broker; the figure is in the signed order.",
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ט(ב)(3)",
+        "quote": "דמי תיווך למתווך אם המתווך פעל מטעם המשכיר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      },
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25יד(2)",
+        "quote": "אלא לטובת השוכר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A term that charges the tenant is not allowed except in his favour.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו מי משלם",
+      "en": "Record who pays",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.06",
+    "kind": "leaf",
+    "title": {
+      "he": "זכרו שמתווך לא עורך לכם חוזה",
+      "en": "Remember a broker may not draft your contract"
+    },
+    "what": "A broker may not draft or help draft legal documents for the deal or represent in legal negotiation; one who does loses the fee. Use a lawyer or the standard contract.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the contract",
+    "proof": "who drafted the contract is written in the file",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "12",
+        "quote": "מתווך המפר הוראת סעיף זה לא יהיה זכאי לדמי תיווך",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "He may lose the fee.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.05.07",
+    "kind": "leaf",
+    "title": {
+      "he": "תעדו שהאתר לא מתווך",
+      "en": "Record that the site does not broker"
+    },
+    "what": "Any person on the site who offers to find a tenant for a fee is outside the product. The product only records the owner's own steps.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when the owner asks the site for a tenant",
+    "proof": "the note stays in the file",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק המתווכים במקרקעין, התשנ\"ו-1996",
+        "section": "2(ב)",
+        "quote": "לא יפרסם אדם ברבים הודעה כי הוא מתווך במקרקעין",
+        "url": "https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו הבנתי",
+      "en": "Mark understood",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.06",
+    "kind": "branch",
+    "title": {
+      "he": "גבולות הפליה",
+      "en": "Limits on discrimination"
+    },
+    "what": "The only primary text found that applies is the law on discrimination in products, services and public places. Whether it binds a private owner who lets one apartment is not stated in its text.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.06.01",
+    "kind": "leaf",
+    "title": {
+      "he": "בדקו את השאלות מול רשימת העילות",
+      "en": "Check your questions against the list of grounds"
+    },
+    "what": "The law bans discrimination on race, religion, nationality, origin, sex, sexual orientation, view, party, age, personal status, parenthood and wearing security-force uniform. Do not ask or decide on those grounds.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first call",
+    "proof": "a question list with no such ground",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק איסור הפליה במוצרים, בשירותים ובכניסה למקומות בידור ולמקומות ציבוריים, התשס\"א-2000",
+        "section": "3(א)",
+        "quote": "מי שעיסוקו בהספקת מוצר או שירות ציבורי או בהפעלת מקום ציבורי, לא יפלה",
+        "url": "https://he.wikisource.org/wiki/חוק_איסור_הפליה_במוצרים,_בשירותים_ובכניסה_למקומות_בידור_ולמקומות_ציבוריים",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "If the law reaches you, a civil wrong with compensation up to 50,000 NIS (indexed) without proof of damage. Applicability to a private owner: unverified.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "סמנו נבדק",
+      "en": "Mark checked",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.06.02",
+    "kind": "leaf",
+    "title": {
+      "he": "קבעו מבחנים זהים לכל המועמדים",
+      "en": "Set the same tests for every applicant"
+    },
+    "what": "Write the tests (income evidence, reference, security) and apply them to everyone in the same way; asking one group for a condition the others are not asked is the kind of act the law presumes to be discrimination.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first call",
+    "proof": "the test list in the file",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק איסור הפליה במוצרים, בשירותים ובכניסה למקומות בידור ולמקומות ציבוריים, התשס\"א-2000",
+        "section": "6(3)",
+        "quote": "בקיום תנאי אשר לא נדרש ממי שאינם נמנים עם אותה קבוצה",
+        "url": "https://he.wikisource.org/wiki/חוק_איסור_הפליה_במוצרים,_בשירותים_ובכניסה_למקומות_בידור_ולמקומות_ציבוריים",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "A presumption against you if a claim is made under that law.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "נעלו מבחנים",
+      "en": "Lock the tests",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.06.03",
+    "kind": "leaf",
+    "title": {
+      "he": "אל תיתנו סיבה לסירוב על בסיס עילה",
+      "en": "Never give a refusal reason based on a ground"
+    },
+    "what": "When you refuse, say only the neutral reason (the home went to another applicant).",
+    "who": [
+      "landlord"
+    ],
+    "when": "when refusing",
+    "proof": "the message sent",
+    "money": null,
+    "law": [],
+    "if_skipped": "The refusal looks like a refusal on a banned ground.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "בחרו נוסח",
+      "en": "Choose wording",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.07",
+    "kind": "branch",
+    "title": {
+      "he": "בחירה בין מועמדים",
+      "en": "Choosing between applicants"
+    },
+    "what": "A written method, a comparison, a decision and a record.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.07.01",
+    "kind": "leaf",
+    "title": {
+      "he": "כתבו את הקריטריונים לפני הצפייה",
+      "en": "Write the criteria before viewings"
+    },
+    "what": "Write what you will weigh (ability to pay, reference, date of entry, length of stay) before you meet anyone.",
+    "who": [
+      "landlord"
+    ],
+    "when": "before the first viewing",
+    "proof": "the criteria with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": "A choice by feeling.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "נעלו קריטריונים",
+      "en": "Lock criteria",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.07.02",
+    "kind": "leaf",
+    "title": {
+      "he": "הציבו ציון לכל מועמד",
+      "en": "Score each applicant"
+    },
+    "what": "Give each applicant a mark per criterion from the evidence you collected.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the viewings",
+    "proof": "a table of marks",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "רשמו ציון",
+      "en": "Record a score",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.07.03",
+    "kind": "leaf",
+    "title": {
+      "he": "בקשו מהשניים הראשונים אישור סופי",
+      "en": "Ask the top two for a final yes"
+    },
+    "what": "Ask the two leading applicants whether they still want the home at the rent and the terms, before any contract.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the scoring",
+    "proof": "their replies",
+    "money": null,
+    "law": [],
+    "if_skipped": "A signing round with a person who walks away.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו שאלה",
+      "en": "Send question",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.07.04",
+    "kind": "leaf",
+    "title": {
+      "he": "החליטו ורשמו את הסיבה",
+      "en": "Decide and write the reason"
+    },
+    "what": "Write who you chose and why, in terms of your criteria only.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the replies",
+    "proof": "the decision note with the date",
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "שמרו החלטה",
+      "en": "Save decision",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.07.05",
+    "kind": "leaf",
+    "title": {
+      "he": "שלחו לנבחר טיוטת חוזה",
+      "en": "Send the chosen applicant a draft contract"
+    },
+    "what": "Send the draft before signing so he can read it; the contract must be in writing and a signed copy goes to each party (branch 03).",
+    "who": [
+      "landlord",
+      "tenant"
+    ],
+    "when": "after the decision",
+    "proof": "the draft sent with the date",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק השכירות והשאילה, התשל\"א-1971",
+        "section": "25ב",
+        "quote": "חוזה שכירות למגורים ייערך בכתב וייחתם בידי המשכיר והשוכר",
+        "url": "https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Signing is hasty; a contract not in writing is still valid but proof is weak.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): lease builder and a signing link (inc/rentals/lease.php, portal.php)"
+    },
+    "thumb": {
+      "he": "שלחו טיוטה",
+      "en": "Send draft",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.08",
+    "kind": "branch",
+    "title": {
+      "he": "להגיד לא בנימוס",
+      "en": "Saying no politely"
+    },
+    "what": "Close the contact kindly and delete what you no longer need.",
+    "who": [
+      "landlord"
+    ],
+    "when": null,
+    "proof": null,
+    "money": null,
+    "law": [],
+    "if_skipped": null,
+    "product_today": {
+      "status": "missing",
+      "where": null
+    }
+  },
+  {
+    "id": "02.08.01",
+    "kind": "leaf",
+    "title": {
+      "he": "שלחו הודעת דחייה קצרה",
+      "en": "Send a short polite no"
+    },
+    "what": "Thank them, say the home went to another applicant and wish them luck. No detail on the reason.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the choice is made",
+    "proof": "the sent message",
+    "money": null,
+    "law": [],
+    "if_skipped": "Applicants wait with no answer.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "שלחו הודעה",
+      "en": "Send message",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.08.02",
+    "kind": "leaf",
+    "title": {
+      "he": "הציעו לשמור קשר רק אם הם מבקשים",
+      "en": "Offer a waiting list only if they ask"
+    },
+    "what": "Keep a person on a waiting list only if he asks and agrees, and say what you keep and for how long.",
+    "who": [
+      "landlord"
+    ],
+    "when": "when a person asks",
+    "proof": "the person's written OK",
+    "money": null,
+    "law": [
+      {
+        "source": "חוק הגנת הפרטיות, התשמ\"א-1981 (נוסח הכולל תיקון 13)",
+        "section": "1",
+        "quote": "לא יפגע אדם בפרטיות של זולתו ללא הסכמתו",
+        "url": "https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+        "read_on": "2026-11-20"
+      }
+    ],
+    "if_skipped": "Details kept without consent.",
+    "product_today": {
+      "status": "missing",
+      "where": null
+    },
+    "thumb": {
+      "he": "הוסיפו לרשימה",
+      "en": "Add to list",
+      "taps": 1
+    }
+  },
+  {
+    "id": "02.08.03",
+    "kind": "leaf",
+    "title": {
+      "he": "מחקו את פרטיו אם לא ביקש להישאר",
+      "en": "Delete his details if he did not ask to stay"
+    },
+    "what": "After the refusal, delete his documents and contact unless he asked to stay on the list.",
+    "who": [
+      "landlord"
+    ],
+    "when": "after the refusal",
+    "proof": "the deletion note",
+    "money": null,
+    "law": [],
+    "if_skipped": "Sensitive documents stay with no purpose.",
+    "product_today": {
+      "status": "partly",
+      "where": "v2 (admin only): tasks table in inc/rentals/store.php can hold a reminder; no ready checklist for this step"
+    },
+    "thumb": {
+      "he": "מחקו פרטים",
+      "en": "Delete details",
+      "taps": 1
+    }
+  }
+]
