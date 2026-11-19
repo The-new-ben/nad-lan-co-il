@@ -1,0 +1,74 @@
+[
+ {
+  "device": "desktop1024",
+  "page": "/projects/hamedina/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "desktop1024-projects_hamedina.png"
+ },
+ {
+  "device": "desktop1024",
+  "page": "/projects/rainbow-tel-aviv/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "desktop1024-projects_rainbow-tel-aviv.png"
+ },
+ {
+  "device": "desktop1024",
+  "page": "/buying-apartment/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "desktop1024-buying-apartment.png"
+ },
+ {
+  "device": "desktop1024",
+  "page": "/en/",
+  "href": "https://nad-lan.co.il/en/",
+  "after": "https://nad-lan.co.il/en/?hd790s=1",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "desktop1024-en.png"
+ },
+ {
+  "device": "phone",
+  "page": "/projects/hamedina/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "phone-projects_hamedina.png"
+ },
+ {
+  "device": "phone",
+  "page": "/projects/rainbow-tel-aviv/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "phone-projects_rainbow-tel-aviv.png"
+ },
+ {
+  "device": "phone",
+  "page": "/buying-apartment/",
+  "href": "https://nad-lan.co.il/#nlhp-hero",
+  "after": "https://nad-lan.co.il/#nlhp-hero",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "phone-buying-apartment.png"
+ },
+ {
+  "device": "phone",
+  "page": "/en/",
+  "href": "https://nad-lan.co.il/en/",
+  "after": "https://nad-lan.co.il/en/?hd790s=1",
+  "focused": "INPUT:search",
+  "ok": true,
+  "shot": "phone-en.png"
+ }
+]

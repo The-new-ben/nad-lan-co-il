@@ -1,0 +1,47 @@
+[GREEN] https://nad-lan.co.il/
+    http 200 · 334,333b · 1015ms · sha 071936912bad · CHANGED
+    title(50): נדלן - מידע נדל״ן בישראל: עסקאות, מחירים ופרויקטים
+    h1x1 canonical x1 hreflang 16 favicon 4 jsonld 2 scripts 50 styles 32
+    DIFF vs 20261119T211602Z:
+      · bytes 334,334 -> 334,333
+[GREEN] https://nad-lan.co.il/projects/rainbow-tel-aviv/
+    http 200 · 481,655b · 975ms · sha d95f8c3daedd · CHANGED
+    title(66): ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 68 styles 44
+    DIFF vs 20261119T211602Z:
+      · bytes 481,622 -> 481,655
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+    http 200 · 484,557b · 1014ms · sha f4c975945031 · CHANGED
+    title(67): מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 64 styles 44
+    DIFF vs 20261119T211602Z:
+      · bytes 484,565 -> 484,557
+[GREEN] https://nad-lan.co.il/mortgage-calculator/
+    http 200 · 586,889b · 1309ms · sha 8c556810f684 · CHANGED
+    title(56): מחשבון משכנתא 2026: חישוב החזר חודשי, תמהיל ולוח סילוקין
+    h1x1 canonical x1 hreflang 15 favicon 4 jsonld 9 scripts 80 styles 41
+    DIFF vs 20261119T145615Z:
+      · bytes 586,126 -> 586,889
+[YELLOW] https://nad-lan.co.il/en/
+    http 200 · 289,064b · 1027ms · sha 9db3e3d7fecc · CHANGED
+    title(59): NadLan - apartments, new projects and real prices in Israel
+    h1x1 canonical x1 hreflang 21 favicon 4 jsonld 1 scripts 49 styles 31
+    FLAGS: YELLOW dashes x3
+    DIFF vs 20261119T155626Z:
+      · bytes 288,785 -> 289,064
+[YELLOW] https://nad-lan.co.il/ar/
+    http 200 · 294,824b · 1024ms · sha 0922ea92981a · CHANGED
+    title(57): شقق ومشاريع جديدة في إسرائيل — الأسعار والمشاريع | NadLan
+    h1x1 canonical x1 hreflang 21 favicon 4 jsonld 1 scripts 49 styles 31
+    FLAGS: YELLOW dashes x4
+    DIFF vs 20261119T155626Z:
+      · bytes 294,532 -> 294,824
+[YELLOW] https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/
+    http 200 · 380,677b · 970ms · sha 12b228e70534 · CHANGED
+    title(61): H Infinity מתחם סומייל תל אביב | קבוצת חג&#039;ג&#039; | נדלן
+    h1x1 canonical x1 hreflang 12 favicon 4 jsonld 4 scripts 66 styles 43
+    FLAGS: YELLOW desc 168ch
+    DIFF vs 20261119T211602Z:
+      · bytes 380,641 -> 380,677
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

@@ -168,7 +168,8 @@ if ( ! function_exists( 'nadlan_hp_header_lang' ) ) {
 			. '</nav><div class="nlhp-top__end">'
 			. ( $langs ? '<details class="nlhp-dd nlhp-lang"><summary>' . $globe . esc_html( $cur ) . ' <span class="nlhp-caret" aria-hidden="true"></span></summary><div class="nlhp-lang__menu">' . $langs . '</div></details>' : '' )
 			. '<a class="nlhp-post" href="' . esc_url( home_url( '/post-listing/' ) ) . '">' . esc_html( $s[3] ) . '</a>'
-			. '<a class="nlhp-ico nlhp-ico--search" href="#nlsa-q" aria-label="' . esc_attr( $s[4] ) . '"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></a>'
+			/* HAD-790 (20.11): the icon pointed at #nlsa-q, an id no page has; it leads to this language home (the click focuses its search) */
+			. '<a class="nlhp-ico nlhp-ico--search" href="' . esc_url( $home ) . '" aria-label="' . esc_attr( $s[4] ) . '"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></a>'
 			. '<button type="button" class="nlhp-ico nlhp-ico--menu" aria-controls="nlhp-nav" aria-expanded="false" aria-label="' . esc_attr( $s[2] ) . '"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>'
 			. '</div></div></header>';
 	}
@@ -271,7 +272,7 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 		<div class="nlhp-top__end">
 			<?php if ( $langs ) : ?><details class="nlhp-dd nlhp-lang"><summary><?php echo $globe; // phpcs:ignore ?>עברית <span class="nlhp-caret" aria-hidden="true"></span></summary><div class="nlhp-lang__menu"><?php echo $langs; // phpcs:ignore ?></div></details><?php endif; ?>
 			<a class="nlhp-post" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסום מודעה</a>
-			<a class="nlhp-ico nlhp-ico--search" href="#nlhp-hero" aria-label="חיפוש"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></a>
+			<?php /* HAD-790 (20.11): #nlhp-hero exists only on the home; elsewhere the icon leads to the home search */ ?><a class="nlhp-ico nlhp-ico--search" href="<?php echo esc_url( nadlan_hp_on() ? '#nlhp-hero' : home_url( '/' ) . '#nlhp-hero' ); ?>" aria-label="חיפוש"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></a>
 			<button type="button" class="nlhp-ico nlhp-ico--menu" aria-controls="nlhp-nav" aria-expanded="false" aria-label="פתיחת התפריט"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 		</div>
 	</div>
@@ -1233,7 +1234,8 @@ var btn=top.querySelector(".nlhp-ico--menu");function sheet(o){top.classList.tog
 if(btn)btn.addEventListener("click",function(){sheet(!top.classList.contains("is-open"));});
 var cl=top.querySelector("[data-nlhp-close]");if(cl)cl.addEventListener("click",function(){sheet(false);if(btn)btn.focus();});
 document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var o=dds.filter(function(d){return d.open;})[0];if(top.classList.contains("is-open")){sheet(false);if(btn)btn.focus();}else if(o){o.open=false;var s=o.querySelector("summary");if(s)s.focus();}});
-var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",function(e){var i=document.querySelector("#nlhp-hero input[name=q]")||document.querySelector("form.nlhv2-search input:not([type=hidden])");if(!i)return;e.preventDefault();i.scrollIntoView({block:"center"});setTimeout(function(){i.focus();},250);});
+var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",function(e){var i=document.querySelector("#nlhp-hero input[name=q]")||document.querySelector("form.nlhv2-search input:not([type=hidden])");if(!i||!i.getClientRects().length)return;e.preventDefault();i.scrollIntoView({block:"center"});setTimeout(function(){i.focus();},250);});
+if(location.hash==="#nlhp-hero"){var hq=document.querySelector("#nlhp-hero input[name=q]");if(hq)setTimeout(function(){try{hq.focus({preventScroll:true});}catch(e){}},300);}
 [].slice.call(document.querySelectorAll("#nlhp-hero .nlhp-search__tab")).forEach(function(b,i,all){b.addEventListener("click",function(){all.forEach(function(x){x.setAttribute("aria-selected",x===b?"true":"false");});});});
 })();
 (function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches)return;[].slice.call(document.querySelectorAll(".nlhp-film video")).forEach(function(v){v.removeAttribute("autoplay");try{v.pause();}catch(e){}v.controls=true;});})();
