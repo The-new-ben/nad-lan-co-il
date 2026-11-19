@@ -31,6 +31,35 @@ if ( ! function_exists( 'nadlan_rm_on' ) ) {
 	function nadlan_rm_on() { return get_option( 'nadlan_feature_rentals', '1' ) === '1'; }
 }
 
+/* ---------- v2 (HAD-383, 1.10.2026): the full product, he + en ----------
+   inc/rentals/*.php (store, rest, portal, lease, legacy, page) and
+   assets/rentals/rm-*.js. Switch back to v1 with option nadlan_rentals_v2 = '0'.
+   Companions load with @include_once (deploy rule 9: never require_once). */
+if ( ! defined( 'NLRM_DIR_ASSETS' ) ) { define( 'NLRM_DIR_ASSETS', plugin_dir_path( dirname( __FILE__ ) ) . 'assets/rentals/' ); }
+if ( ! defined( 'NLRM_URL_ASSETS' ) ) { define( 'NLRM_URL_ASSETS', plugins_url( 'assets/rentals/', dirname( __FILE__ ) ) ); }
+if ( ! defined( 'NLRM_PRIVACY_VERSION' ) ) { define( 'NLRM_PRIVACY_VERSION', '2026-10-01' ); }
+if ( ! function_exists( 'nadlan_rm_v2' ) ) {
+	/* nadlan_rentals_v2: 'admin' (default on the first release: only administrators, and the pilot
+	   landlords listed in nadlan_rentals_v2_pilot (user ids), see v2; everyone else keeps v1, so v2 is
+	   tested on the live server first), '1' (everyone), '0' (v1 for all). */
+	function nadlan_rm_v2() {
+		if ( ! function_exists( 'nlrm_render_page' ) ) { return false; }
+		$mode = (string) get_option( 'nadlan_rentals_v2', 'admin' );
+		if ( '1' === $mode ) { return true; }
+		if ( 'admin' === $mode ) {
+			if ( current_user_can( 'manage_options' ) ) { return true; }
+			/* a personal link (?l=1#t=...): the link page itself; the token decides what it may see */
+			if ( isset( $_GET['l'] ) && ! is_user_logged_in() && did_action( 'template_redirect' ) ) { return true; } // phpcs:ignore
+			$uid = get_current_user_id();
+			return $uid > 0 && in_array( $uid, array_map( 'intval', (array) get_option( 'nadlan_rentals_v2_pilot', array() ) ), true );
+		}
+		return false;
+	}
+}
+foreach ( array( 'store', 'money', 'billing', 'rest', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {
+	@include_once __DIR__ . '/rentals/' . $nlrm_part . '.php'; // phpcs:ignore
+}
+
 /* ---------- CPT ---------- */
 add_action( 'init', function () {
 	register_post_type( 'nadlan_rentalprop', array(
@@ -185,18 +214,18 @@ if ( ! function_exists( 'nadlan_rm_strings' ) ) {
 				'wa_btn' => 'WhatsApp reminder', 'wa_text' => 'Hi {name}, a friendly reminder about the rent for {month}. Thank you!',
 				'pro_btn' => 'Find a professional', 'list_btn' => 'List this apartment', 'studio_btn' => 'Plan the apartment (Studio)',
 				'sec_title' => 'Securities', 'sec_check' => 'Security check', 'sec_shtar' => 'Promissory note', 'sec_arev' => 'Guarantors', 'sec_bank' => 'Bank guarantee / cash deposit',
-				'sec_amount' => 'Deposit / guarantee amount (ILS)', 'sec_cap' => 'Legal cap for costly securities', 'sec_cap_f' => 'the lower of 3 months rent or one third of the total term rent',
-				'sec_over' => 'Above the legal cap - check with a lawyer',
+				'sec_amount' => 'Cash deposit or bank guarantee amount (ILS)', 'sec_cap' => 'Legal cap on securities that cost the tenant money (bank guarantee, a guarantee from an insurer or licensed credit provider, cash)', 'sec_cap_f' => 'the lower of 3 months rent or the rent for one third of the lease term; the cap does not apply, among others, to rent above ILS 20,000 a month (updated each 1 January), to a lease of up to 3 months with no option, and to the other leases listed in s.25טו of the law',
+				'sec_over' => 'Above the legal cap, if the cap applies to this lease. Check with a lawyer',
 				'cpi_title' => 'CPI adjustment calculator', 'cpi_base' => 'Base index (from the lease)', 'cpi_cur' => 'Current index (CBS)', 'cpi_pct' => 'Linked percent', 'cpi_floor' => 'Floor at base rent (per the lease)',
 				'cpi_res' => 'Adjusted rent', 'cpi_note' => 'Enter index values from the CBS. The formula: rent x (current / base). Calculation aid only - the lease wording governs.',
 				'tax_title' => 'Rent tax estimate ({year})', 'tax_total' => 'Total monthly residential rent (ALL your apartments, including ones not managed here)',
 				'tax_exempt' => 'Exempt', 'tax_taxable' => 'Taxable (ordinary route)', 'tax_ten' => '10% route (annual)', 'tax_paid_rent' => 'Rent you pay for your own home (annual, if you rent)',
 				'tax_deadline' => '10% route payment deadline for {year}: {date}', 'tax_note' => 'Estimates only, based on the {year} ceiling of ILS {ceiling}/month. Verify with the Tax Authority or an accountant before acting.',
-				'notice_l' => 'Landlord notice window: {d} days before end', 'notice_t' => 'Tenant notice: {d} days',
+				'notice_l' => 'If the landlord has an option to extend: notice no later than {d} days before the end. Without an option: a reasonable time before the end, whether you want to extend and on what terms', 'notice_t' => 'If the tenant has an option to extend: notice no later than {d} days before the end',
 				'act_late' => '{label}, {city}: rent is overdue', 'act_due' => '{label}: this month not marked yet', 'act_end' => '{label}: lease ends in {d} days',
 				'act_ended' => '{label}: lease ENDED - renew or close', 'act_opt' => '{label}: option window closes in {d} days',
-				'act_repair' => '{label}: urgent repair - statutory limit {d} days', 'act_repair_std' => '{label}: open repair approaching 30-day limit',
-				'act_docs' => '{label}: document file incomplete', 'act_tax' => '10% route: report and pay by {date}', 'act_sec' => '{label}: deposit above the legal cap',
+				'act_repair' => '{label}: urgent repair - statutory limit {d} days', 'act_repair_std' => '{label}: open repair nearing 30 days since it was logged (by law: 30 days from the tenant demand, for a defect that is not minor)',
+				'act_docs' => '{label}: document file incomplete', 'act_tax' => '10% route: report and pay by {date}', 'act_sec' => '{label}: deposit above the legal cap (if the cap applies to this lease)',
 				'export_btn' => 'Export evidence file', 'export_doc' => 'Rental evidence file', 'export_gen' => 'Generated', 'export_note' => 'Auto-generated summary of the data recorded in the NadLan rentals manager. Not a legal document.',
 			);
 		}
@@ -217,19 +246,19 @@ if ( ! function_exists( 'nadlan_rm_strings' ) ) {
 			'wa_btn' => 'תזכורת בוואטסאפ', 'wa_text' => 'היי {name}, תזכורת ידידותית לשכר הדירה של {month}. תודה!',
 			'pro_btn' => 'מציאת בעל מקצוע', 'list_btn' => 'פרסום הדירה', 'studio_btn' => 'תכנון הדירה (סטודיו)',
 			'sec_title' => 'בטוחות', 'sec_check' => 'צ\'ק ביטחון', 'sec_shtar' => 'שטר חוב', 'sec_arev' => 'ערבים', 'sec_bank' => 'ערבות בנקאית / פיקדון',
-			'sec_amount' => 'סכום הפיקדון / הערבות (₪)', 'sec_cap' => 'התקרה החוקית לבטוחות בעלות עלות', 'sec_cap_f' => 'הנמוך מבין 3 חודשי שכירות או שליש משכר הדירה לכל התקופה',
-			'sec_over' => 'מעל התקרה החוקית - בדקו עם עורך דין',
+			'sec_amount' => 'סכום הפיקדון במזומן או הערבות הבנקאית (₪)', 'sec_cap' => 'התקרה בחוק לערובות שכרוכות בהוצאה כספית לשוכר (ערבות בנקאית, ערבות של חברת ביטוח או גוף אשראי מורשה, מזומן)', 'sec_cap_f' => 'הנמוך מבין שכר דירה של 3 חודשים או שכר הדירה לשליש מתקופת השכירות. התקרה לא חלה בין השאר על שכר דירה מעל 20,000 ₪ לחודש (הסכום מתעדכן ב-1 בינואר), על חוזה עד 3 חודשים בלי אופציה, ועל שאר החוזים שמנויים בסעיף 25טו לחוק',
+			'sec_over' => 'מעל התקרה בחוק, אם התקרה חלה על החוזה הזה. בדקו עם עורך דין',
 			'cpi_title' => 'מחשבון הצמדה למדד', 'cpi_base' => 'מדד הבסיס (מהחוזה)', 'cpi_cur' => 'המדד הנוכחי (למ"ס)', 'cpi_pct' => 'אחוז ההצמדה', 'cpi_floor' => 'רצפה בגובה שכר הבסיס (לפי החוזה)',
 			'cpi_res' => 'שכר הדירה המעודכן', 'cpi_note' => 'מזינים ערכי מדד מהלמ"ס. הנוסחה: שכ"ד x (נוכחי / בסיס). עזר חישוב בלבד - נוסח החוזה קובע.',
 			'tax_title' => 'אומדן מס על שכר דירה ({year})', 'tax_total' => 'סך שכר הדירה החודשי למגורים (כל הדירות שלכם, כולל כאלה שלא מנוהלות כאן)',
 			'tax_exempt' => 'פטור', 'tax_taxable' => 'חייב (מסלול רגיל)', 'tax_ten' => 'מסלול 10% (שנתי)', 'tax_paid_rent' => 'שכר דירה שאתם משלמים על ביתכם (שנתי, אם אתם שוכרים)',
 			'tax_deadline' => 'מועד תשלום מסלול 10% עבור {year}: {date}', 'tax_note' => 'אומדנים בלבד, לפי תקרת {year} של {ceiling} ₪ לחודש. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',
-			'notice_l' => 'חלון הודעת משכיר: {d} ימים לפני הסיום', 'notice_t' => 'הודעת שוכר: {d} ימים',
+			'notice_l' => 'אם יש למשכיר אופציה להאריך: הודעה לא יאוחר מ-{d} ימים לפני הסיום. בלי אופציה: הודעה זמן סביר לפני הסיום, אם רוצים להאריך ובאילו תנאים', 'notice_t' => 'אם יש לשוכר אופציה להאריך: הודעה לא יאוחר מ-{d} ימים לפני הסיום',
 			'act_late' => '{label}, {city}: שכר הדירה בפיגור', 'act_due' => '{label}: החודש טרם סומן',
 			'act_end' => '{label}: החוזה מסתיים בעוד {d} ימים', 'act_ended' => '{label}: החוזה הסתיים - חידוש או סגירה',
 			'act_opt' => '{label}: חלון האופציה נסגר בעוד {d} ימים',
-			'act_repair' => '{label}: תיקון דחוף - המועד החוקי {d} ימים', 'act_repair_std' => '{label}: תקלה פתוחה מתקרבת למועד 30 הימים',
-			'act_docs' => '{label}: תיק המסמכים חסר', 'act_tax' => 'מסלול 10%: דיווח ותשלום עד {date}', 'act_sec' => '{label}: פיקדון מעל התקרה החוקית',
+			'act_repair' => '{label}: תיקון דחוף - המועד החוקי {d} ימים', 'act_repair_std' => '{label}: תקלה פתוחה קרובה ל-30 יום מהרישום (בחוק: 30 יום מדרישת השוכר, לליקוי שאינו קל ערך)',
+			'act_docs' => '{label}: תיק המסמכים חסר', 'act_tax' => 'מסלול 10%: דיווח ותשלום עד {date}', 'act_sec' => '{label}: פיקדון מעל התקרה בחוק (אם התקרה חלה על החוזה)',
 			'export_btn' => 'ייצוא תיק ראיות', 'export_doc' => 'תיק ראיות שכירות', 'export_gen' => 'הופק בתאריך', 'export_note' => 'סיכום אוטומטי של הנתונים שתועדו במערכת ניהול ההשכרות של נדלן. אינו מסמך משפטי.',
 		);
 	}
@@ -415,6 +444,11 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_my_rentals'; return $
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_my_rentals' ) ) { return; }
 	if ( ! nadlan_rm_on() ) { wp_safe_redirect( home_url( '/' ) ); exit; }
+	if ( nadlan_rm_v2() ) {
+		nlrm_maybe_install();
+		nlrm_render_page( is_user_logged_in() ? 'app' : 'landing', nlrm_lang() );
+		exit;
+	}
 	$lang = function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang() : 'he';
 	if ( 'ru' === $lang ) { $lang = 'en'; }
 	$has = is_user_logged_in() && nadlan_rm_my_props();
@@ -471,7 +505,8 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 			nocache_headers();
 			header( 'X-Robots-Tag: noindex, nofollow' );
 		}
-		get_header();
+		/* one H1: the block theme's compat header prints the site name as an h1 (directory.php demotes it) */
+		if ( function_exists( 'nadlan_dir_header_single_h1' ) ) { nadlan_dir_header_single_h1(); } else { get_header(); }
 		?>
 <div class="nlrm" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
 	<style>
@@ -560,6 +595,14 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		<?php nadlan_rm_mount( 'demo', $lang ); ?>
 	</section>
 	<div class="nlrm-honest"><?php echo $en ? 'Full honesty: the system tracks and reminds - it does not collect money or process payments. Rent keeps flowing as usual (bank transfer or checks). Tax reminders are reminders only - binding numbers are verified with the Israel Tax Authority.' : 'הגינות מלאה: המערכת עוקבת ומזכירה - היא לא גובה כסף ולא מבצעת סליקה. שכר הדירה ממשיך לעבור כרגיל (העברה בנקאית או צ\'קים). תזכורות המס הן תזכורות בלבד - את המספרים המחייבים בודקים מול רשות המסים.'; ?></div>
+	<?php
+	/* the public guide (HAD-383): what visitors see today, each chapter labelled with what is open to every landlord and what is an administrators-only preview */
+	$nlrm_gf = NLRM_DIR_ASSETS . 'guide/' . ( $en ? 'en' : 'he' ) . '.html';
+	if ( is_readable( $nlrm_gf ) ) {
+		echo '<link rel="stylesheet" href="' . esc_url( NLRM_URL_ASSETS . 'guide/guide.css?ver=' . rawurlencode( defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1' ) ) . '">' . "\n";
+		echo wp_kses_post( (string) file_get_contents( $nlrm_gf ) ); // phpcs:ignore
+	}
+	?>
 	<?php if ( is_user_logged_in() ) : ?>
 	<section class="nlrm-new" id="nlrm-new">
 		<h2 style="margin:0 0 10px;font-size:1.15rem"><?php echo $en ? 'Add your first property' : 'הוספת הנכס הראשון'; ?></h2>
@@ -629,5 +672,6 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 /* healthcheck visibility */
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['rentals'] = nadlan_rm_on();
+	$out['rentals_v2'] = function_exists( 'nadlan_rm_v2' ) && nadlan_rm_v2() ? ( defined( 'NLRM_DB_VERSION' ) ? NLRM_DB_VERSION : '1' ) : false;
 	return $out;
 } );

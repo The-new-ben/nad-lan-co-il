@@ -1,0 +1,21 @@
+{
+  "released": "1.72.718",
+  "from": "1.72.717",
+  "live_before": {
+    "assets/rentals/guide/he.html": "af1696520aa6f48cb954fedf81136984",
+    "assets/rentals/guide/en.html": "5b256cf5b37c9a1ec35e1b36d7ca834f",
+    "nadlan-config.php": "b66197334a93b6ca9dbbed6eeefcaa66",
+    "inc/rentals-manager.php": "936cef107b1a1b0aa2fbed2bf9186107"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 01:08:16",
+  "files": {
+    "assets/rentals/guide/he.html": "2a50a852ea1da807cc3f062c5b78d6ea",
+    "assets/rentals/guide/en.html": "d99905e85725f450070559e3fc26b1cc",
+    "nadlan-config.php": "0b1bf072c195d12747c3f516491a3ecd",
+    "inc/rentals-manager.php": "d474b7278e25814b4de6f584de33bd84"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.718, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
