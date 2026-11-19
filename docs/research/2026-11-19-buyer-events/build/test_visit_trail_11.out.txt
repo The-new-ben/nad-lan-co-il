@@ -83,7 +83,7 @@
   ok   delete: both tables and the lead's link
   ok   the daily clean-up deletes what is older than 12 months (365 days)  [365]
   ok   hooked: the lead (priority 5, before the routing and the alerts), the clean-up
-  ok   the healthcheck lines visit_trail 1.1.0 and dev_report 1.0.1
+  ok   the healthcheck lines visit_trail 1.1.0 and dev_report 1.0.2
   ok   the release bridge self-test: tables, 4 of 5 sample events kept, the phone dropped, the screen, the lead hook  [{"version":"1.1.0","db":1,"tables":1,"clean":4,"no_phone":1,"line":"בחר כיוון בקומה 23: מערב (268°), דירה 23-w","admin_bytes":1571,"admin_title":1,"route":false,"lead_hook":true,"on":true}]
   ok   the self-test line  [בחר כיוון בקומה 23: מערב (268°), דירה 23-w]
 6. the file

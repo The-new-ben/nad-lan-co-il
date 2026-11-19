@@ -22,7 +22,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( defined( 'NADLAN_DR_VERSION' ) ) { return; }
-define( 'NADLAN_DR_VERSION', '1.0.1' );
+define( 'NADLAN_DR_VERSION', '1.0.2' );
 
 /** 1.0.1: the anonymous journeys reach a developer's signed link only after the lawyer's OK on the privacy wording (HAD-797);
  *  until then the option nadlan_dr_journeys stays '0' and a developer sees the totals only. The admin preview always shows them. */

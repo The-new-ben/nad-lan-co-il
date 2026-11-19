@@ -278,7 +278,7 @@ $days = $pm ? round( ( time() - strtotime( $pm[1] . ' UTC' ) ) / 86400 ) : -1;
 ok( 365 == $days && false !== strpos( $pq, 'DELETE FROM wp_nadlan_visits WHERE last_at <' ), 'the daily clean-up deletes what is older than 12 months (365 days)', $days );
 ok( 5 === has_action( 'wp_after_insert_post', 'nadlan_vt_after_insert' ) && false !== has_action( 'nadlan_vt_prune', 'nadlan_vt_prune' ), 'hooked: the lead (priority 5, before the routing and the alerts), the clean-up' );
 $hc = run_hook( 'nadlan_config_healthcheck', array() );
-ok( '1.1.0' === $hc['visit_trail']['version'] && true === $hc['visit_trail']['on'] && '1.0.1' === $hc['dev_report']['version'], 'the healthcheck lines visit_trail 1.1.0 and dev_report 1.0.1' );
+ok( '1.1.0' === $hc['visit_trail']['version'] && true === $hc['visit_trail']['on'] && '1.0.2' === $hc['dev_report']['version'], 'the healthcheck lines visit_trail 1.1.0 and dev_report 1.0.2' );
 
 $db->var = 1; $db->results = array(); $db->row = array();
 $stt = nadlan_vt_selftest();
