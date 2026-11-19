@@ -1,0 +1,76 @@
+01.01 Is renting worth it / האם זה משתלם
+01.02 Setting the price / לקבוע מחיר
+01.03 The home is ready to rent / הדירה מוכנה לשכירות
+01.04 Insurance / ביטוחים
+01.05 Manage alone or with a management company / לנהל לבד או עם חברת ניהול
+01.06 House rules: pets, smoking, subletting / כללי הבית: חיות, עישון, שכירות משנה
+02.01 The ad and the photos / מודעה ותמונות
+02.02 The viewing / הצגת הדירה
+02.03 Collecting the applicant's details with consent / איסוף פרטי המועמד בהסכמה
+02.04 Checking the applicant / בדיקת המועמד
+02.05 Brokers and the broker's fee / מתווכים ודמי תיווך
+02.06 Limits on discrimination / גבולות הפליה
+02.07 Choosing between applicants / בחירה בין מועמדים
+02.08 Saying no politely / להגיד לא בנימוס
+03.01 The written contract and its required particulars / חוזה בכתב: מה חייב להיות בו
+03.02 Who pays what: payment clauses / מי משלם מה: סעיפי התשלום
+03.03 Guarantees and security / ערבויות וביטחונות
+03.04 Signing and copies / חתימה והעתקים
+04.01 A home fit to live in before handover / דירה ראויה למגורים לפני המסירה
+04.02 Handover date and documents / תיאום מועד ומסמכי המסירה
+04.03 Handover protocol and photos / פרוטוקול מסירה ותמונות
+04.04 Meters and accounts / מונים וחשבונות
+04.05 Keys and access / מפתחות וגישה
+04.06 After the handover / אחרי המסירה
+05.01 Collecting the rent / גביית שכר הדירה
+05.02 Late payment / איחור בתשלום
+05.03 A bounced cheque / צ'ק שחזר
+05.04 CPI linkage / הצמדה למדד המחירים לצרכן
+05.05 Electricity, water and gas / חשמל, מים וגז
+05.06 House committee payments / ועד בית
+05.07 Municipal tax (arnona) / ארנונה
+05.08 Insurance during the tenancy / ביטוח בזמן השכירות
+05.09 Communication with the tenant / התקשורת עם השוכר
+05.10 Monthly checklist / רשימת סיכום חודשית
+06.01 The home as an object: system profile / הבית כאובייקט: פרופיל המערכות
+06.02 Handling a tenant's repair demand / טיפול בדרישת תיקון מהשוכר
+06.03 Structure and envelope / מבנה ומעטפת הדירה
+06.04 Plumbing / אינסטלציה
+06.05 Hot water / מים חמים
+06.06 Electricity / חשמל
+06.07 Gas / גז
+06.08 Air conditioning / מיזוג אוויר
+06.09 Kitchen appliances supplied by the landlord / מטבח: מכשירים שהמשכיר סיפק
+06.10 Laundry / כביסה
+06.11 Protected room (mamad) / ממ"ד
+06.12 Fire and smoke safety / בטיחות אש ועשן
+06.13 Pests / מזיקים
+06.14 Common property and the house committee: only what touches the landlord / רכוש משותף וועד בית: רק מה שנוגע למשכיר
+06.15 Wear and tear vs tenant damage / בלאי מול נזק של השוכר
+06.16 Choosing and recording a professional / בחירה ותיעוד של איש מקצוע
+06.17 Warranty and invoices / אחריות וחשבוניות
+06.18 The yearly maintenance calendar / לוח התחזוקה השנתי
+07.01 Choosing the tax track / בחירת מסלול המס
+07.02 The exemption track / מסלול הפטור
+07.03 The 10% track / מסלול 10%
+07.04 The regular marginal track / מסלול מדרגות המס
+07.05 Reporting duties / חובות דיווח
+07.06 Receipts and records / קבלות ורשומות
+07.07 The accountant's yearly file / תיק שנתי לרואה החשבון
+08.01 Calendar before the lease ends / יומן המועדים לפני סוף החוזה
+08.02 Renewing the lease / חידוש החוזה
+08.03 Rent raise and linkage / העלאת שכר והצמדה
+08.04 No renewal: continue or end / אי חידוש: המשך או סיום
+09.01 Notices of ending / הודעות סיום
+09.02 Early exit / יציאה מוקדמת
+09.03 Exit inspection and return of the home / בדיקת יציאה והחזרת הדירה
+09.04 Returning the security and deductions / החזרת הערובה וניכויים
+09.05 Debts after the exit / חובות אחרי היציאה
+09.06 Tenant who does not leave: eviction path in outline / שוכר שלא מפנה: דרך הפינוי בקווים כלליים
+10.01 Wear of the home over the years / בלאי הדירה לאורך שנים
+10.02 A renovation plan and when / תוכנית שיפוץ ומתי
+10.03 The yearly wear reserve / קרן בלאי שנתית
+10.04 Selling with a tenant inside / למכור עם שוכר בפנים
+10.05 Sale-day tasks for a rented home / משימות יום המכירה בדירה מושכרת
+10.06 Ending the rental business / סגירת עסק ההשכרה
+10.07 Handing the home to heirs / העברת הדירה ליורשים

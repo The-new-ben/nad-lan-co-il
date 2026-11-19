@@ -1,0 +1,402 @@
+[
+ {
+  "id": 1,
+  "where": [
+   "guide/he.html:56,60-64",
+   "guide/en.html:56,60-64"
+  ],
+  "live_for": "visitors (public guide)",
+  "claim": "Security (cash deposit, bank guarantee) may not exceed the lower of 3 months' rent and one third of the rent for the lease term; most residential leases, with exceptions",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ב), s.25טו https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "לא יעלה גובהן המצטבר של הערובות על הנמוך מבין סכומים אלה: ... בעד שליש מתקופת השכירות ... שלושה מדמי השכירות לחודש",
+  "actual": "",
+  "fix": "None. The guide also says there are exceptions (s.25טו), which is correct."
+ },
+ {
+  "id": 2,
+  "where": [
+   "i18n/he.json:414-418,746",
+   "i18n/en.json:414-418,746",
+   "i18n/he.json:709,721",
+   "i18n/en.json:709,721",
+   "help/he.html:167-173,551-552",
+   "help/en.html:168-174,553",
+   "lease.json:56",
+   "rentals-manager.php:217,249 (he/en)",
+   "rental-manager.js:385-394"
+  ],
+  "live_for": "admins v2 (app and help); v1 for the php/js rows",
+  "claim": "Cap = lower of 3 months' rent and one third of the term's rent (cited s.25י(ב))",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "לא יעלה גובהן המצטבר של הערובות על הנמוך מבין סכומים אלה",
+  "actual": "Numbers and section match. See the scope rows below for what is missing.",
+  "fix": "Keep the formula; add the scope qualifiers in the next two rows."
+ },
+ {
+  "id": 3,
+  "where": [
+   "i18n/he.json:414-416,709,721,746",
+   "i18n/en.json:414-416,709,721,746",
+   "help/he.html:167-173,440,451,552",
+   "help/en.html:168-174,441,452,553",
+   "rentals-manager.php:217-218,249-250",
+   "rental-manager.js:134,184,385-394"
+  ],
+  "live_for": "admins v2 (app and help) / v1",
+  "claim": "The cap is shown as 'the legal cap for this lease' with no qualifier",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25טו(א) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "חוזה שכירות למגורים שדמי השכירות לפיו, לחודש, עולים על 20,000 שקלים חדשים ...; ... שתקופת השכירות לפיו אינה עולה על שלושה חודשים",
+  "actual": "The Fair Rental chapter does not apply to leases above 20,000 NIS/month (indexed each 1 January), leases of up to 3 months with no option, leases over 10 years, protected tenancies, hotels, dorms, sheltered housing. The app shows the cap for every lease.",
+  "fix": "Add 'does not apply to rent above 20,000 NIS a month (updated yearly) and some other leases'; do not show 'over the legal cap' warnings when monthly rent is above the current threshold."
+ },
+ {
+  "id": 4,
+  "where": [
+   "help/he.html:171,440",
+   "help/en.html:172,441",
+   "rental-manager.js:134,184 (deposit only)"
+  ],
+  "live_for": "admins v2 (app and help) / v1",
+  "claim": "A security cheque and a promissory note count toward the cap together with the cash deposit",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "ערובה, אחת או יותר, הכרוכה בהוצאה כספית לשוכר, ובכלל זה ערבות בנקאית, ערבות מנותן ערבות אחר או מזומן",
+  "actual": "The cap covers securities that involve a financial expense for the tenant (bank guarantee, other licensed guarantor, cash). The text does not name a security cheque, a promissory note or a personal guarantor.",
+  "fix": "Say 'cash deposit and bank or licensed guarantee'; do not add the cheque or note to the cap total; send the cheque question to a lawyer."
+ },
+ {
+  "id": 5,
+  "where": [
+   "guide/he.html:98",
+   "guide/en.html:98",
+   "i18n/he.json:263,532,533,643",
+   "i18n/en.json:263,532,533,643",
+   "triage.json:2",
+   "help/he.html:339",
+   "help/en.html:340",
+   "lease.json:42",
+   "rentals-manager.php:128-129,244,260 (and rental-manager.js:4-8,139,174,415)"
+  ],
+  "live_for": "visitors (public guide) / admins v2 (app and help) / v1",
+  "claim": "Defect that prevents reasonable living: repair within 3 days; other defect: 30 days (s.25ח(ב))",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25ח(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "בתוך זמן סביר ולא יאוחר מ־30 ימים מיום שקיבל דרישה ... לא יאוחר משלושה ימים מיום שקיבל דרישה כאמור",
+  "actual": "Numbers and section are right (urgent defect = 'פגם שאינו מאפשר מגורים בדירה באופן סביר').",
+  "fix": "See next row for two qualifiers."
+ },
+ {
+  "id": 6,
+  "where": [
+   "guide/he.html:98",
+   "guide/en.html:98",
+   "help/he.html:339",
+   "help/en.html:340",
+   "i18n/he.json:250,263,640",
+   "i18n/en.json:250,263,640",
+   "rentals-manager.php:260 (std 30 days)"
+  ],
+  "live_for": "visitors (public guide) / admins v2 (app and help) / v1",
+  "claim": "Every defect gets the 30-day deadline, counted from the day the repair was opened",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25ח(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "כל ליקוי או פגם אחר בדירה המושכרת שאינו כאמור בסעיף קטן (א) ואינו קל ערך",
+  "actual": "The duty covers defects that are not minor ('אינו קל ערך'), and the clock runs from the day the landlord receives the tenant's demand, not from when a ticket is opened in the app.",
+  "fix": "Write 'a defect that is not minor, within 30 days of the tenant's demand'; label the app date 'from the report'."
+ },
+ {
+  "id": 7,
+  "where": [
+   "guide/he.html:98",
+   "guide/en.html:98"
+  ],
+  "live_for": "visitors (public guide)",
+  "claim": "Damage from the tenant's unreasonable use is not the landlord's to repair",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25ח(א)(1) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "השוכר אחראי על כל ליקוי בדירה המושכרת, לרבות פגם, שנגרם עקב שימוש בלתי סביר בדירה המושכרת",
+  "actual": "",
+  "fix": "None."
+ },
+ {
+  "id": 8,
+  "where": [
+   "guide/he.html:118",
+   "guide/en.html:118"
+  ],
+  "live_for": "visitors (public guide)",
+  "claim": "Security returned by the later of 60 days from return of the apartment and the day the tenant paid the debts the security covers",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ה) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "בתוך 60 ימים ממועד השבת הדירה המושכרת לרשותו או עד למועד שבו נפרעו חובות השוכר ... לפי המאוחר",
+  "actual": "",
+  "fix": "None. The line 'the reminder is an aid only' is accurate."
+ },
+ {
+  "id": 9,
+  "where": [
+   "i18n/he.json:431,721,422-423,705-706,730",
+   "i18n/en.json:431,721,706",
+   "help/he.html:409,413,431,444,454",
+   "help/en.html:410,414,432,445,455"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Securities are returned within 60 days of the return of the apartment (help also: 'return by: 60 days after the end')",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ה) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "בתוך 60 ימים ממועד השבת הדירה המושכרת לרשותו או עד למועד שבו נפרעו חובות השוכר ... לפי המאוחר",
+  "actual": "The period is the later of 60 days from return of the apartment and the date the tenant's debts were paid. The app states only 60 days, and help line 409 counts it from the lease end rather than from the return.",
+  "fix": "Add 'or the date the tenant's debts were settled, whichever is later'; count from the return of the apartment."
+ },
+ {
+  "id": 10,
+  "where": [
+   "lease.json:57",
+   "lease.json:57 (en)"
+  ],
+  "live_for": "admins v2 (app and help) (lease template)",
+  "claim": "Clause cites s.25י(ה) for return within 60 days, less amounts lawfully realised",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ה) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "בתוך 60 ימים ממועד השבת הדירה המושכרת לרשותו או עד למועד שבו נפרעו חובות השוכר ... לפי המאוחר",
+  "actual": "A contract may be stricter, but the citation implies the law says 60 days flat; the law says the later of the two dates.",
+  "fix": "Cite '(and no later than the law allows, section 25י(ה))' or drop the citation."
+ },
+ {
+  "id": 11,
+  "where": [
+   "i18n/he.json:721",
+   "i18n/en.json:721",
+   "help/he.html:454",
+   "help/en.html:455"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Only unpaid rent, damage or bills may be deducted from the deposit",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ג)-(ד) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "השוכר לא פינה את הדירה המושכרת בתום תקופת השכירות ... המשכיר יודיע לשוכר זמן סביר מראש על כוונתו לממש את הערובה",
+  "actual": "Four cases: unpaid rent (plus linkage and interest), defects the tenant must fix (up to repair cost), current payments (arnona, utilities, building committee), and failure to vacate. The landlord must give the tenant reasonable advance notice and time to fix.",
+  "fix": "List all four cases and add the notice duty, or say 'the law lists specific cases'."
+ },
+ {
+  "id": 12,
+  "where": [
+   "i18n/he.json:431",
+   "i18n/en.json:431",
+   "help/he.html:406-407,413",
+   "help/en.html:405-414",
+   "lease.json:24",
+   "rentals-manager.php:130-131,224,256"
+  ],
+  "live_for": "admins v2 (app and help) / v1",
+  "claim": "Landlord gives notice 90 days before the end, tenant 60 days (s.25יב)",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25יב(א)-(ג) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "לא יאוחר מ־90 ימים לפני תום תקופת השכירות, אם ברצונו לקיים את הברירה",
+  "actual": "The 90 and 60 days apply only where a party has an option to extend, and each is the notice of exercising that party's own option. Otherwise the landlord must say 'a reasonable time before the end' whether he wants to extend. (A separate 90/60 rule applies to a no-cause cancellation clause, s.25יג(ב).) The lease clause 'landlord gives 90 days if he does not intend to extend, as the law requires' is not what s.25יב says.",
+  "fix": "Rewrite: 'If a party has an option to extend: landlord 90 days, tenant 60 days before the end (s.25יב)'; fix the lease clause."
+ },
+ {
+  "id": 13,
+  "where": [
+   "lease.json:35 (he/en)"
+  ],
+  "live_for": "admins v2 (app and help) (lease template)",
+  "claim": "Landlord bears building insurance, fixed systems and third-party payments incl. his brokerage fee (s.25ט(ב))",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25ט(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "דמי ביטוח בעד ביטוח הדירה המושכרת בביטוח מבנה ... דמי תיווך למתווך אם המתווך פעל מטעם המשכיר",
+  "actual": "",
+  "fix": "None."
+ },
+ {
+  "id": 14,
+  "where": [
+   "lease.json:56 (he/en)"
+  ],
+  "live_for": "admins v2 (app and help) (lease template)",
+  "claim": "Cap cited as s.25י(ב) inside the lease",
+  "verdict": "CONFIRMED",
+  "source": "Rental and Borrowing Law s.25י(ב) https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "לא יעלה גובהן המצטבר של הערובות על הנמוך מבין סכומים אלה",
+  "actual": "",
+  "fix": "None for the citation (scope notes in the cap rows apply)."
+ },
+ {
+  "id": 15,
+  "where": [
+   "lease.json:69 (he/en)"
+  ],
+  "live_for": "admins v2 (app and help) (lease template)",
+  "claim": "'Nothing here derogates from the residential chapter except in the tenant's favour (section 25טו)'",
+  "verdict": "NOT CONFIRMED",
+  "source": "Rental and Borrowing Law s.25יד(2), s.25טו https://he.wikisource.org/wiki/חוק_השכירות_והשאילה",
+  "quote": "אין להתנות על הוראות סעיפים 6, 8 עד 10, 15, 21(ב) ו־(ג), 23 עד 25ה, 25ח(א)(1), (ב) ו־(ג) ו־25ט עד 25יג, אלא לטובת השוכר",
+  "actual": "The no-contracting-out rule is s.25יד(2) and covers listed sections only. Section 25טו is the list of leases the chapter does not apply to. The rule is also lifted for a lease between relatives (s.25טו(ב)).",
+  "fix": "Change the citation to s.25יד(2)."
+ },
+ {
+  "id": 16,
+  "where": [
+   "guide/he.html:137",
+   "guide/en.html:137",
+   "i18n/he.json:249",
+   "i18n/en.json:249",
+   "rentals-manager.php:134,223,255",
+   "rental-manager.js:230"
+  ],
+  "live_for": "visitors (public guide) / admins v2 (app and help) / v1",
+  "claim": "Exemption ceiling for residential rent is 5,654 NIS a month (2025), measured on all residential apartments together",
+  "verdict": "COULD NOT CHECK",
+  "source": "Tax Authority guide on gov.il (returned HTTP 403 to automated fetch; not opened)",
+  "quote": "",
+  "actual": "Primary page would not open. Pointer only: Kol Zchut (kolzchut.org.il, fetched) lists 5,654 for 2024 to 2026, tests each month separately and combines all apartments, consistent with the product. Not marked confirmed.",
+  "fix": "Re-check by hand on gov.il (detail-tracks-payment-tax-relief-rental-apartments). Meanwhile keep the 'estimate only' wording."
+ },
+ {
+  "id": 17,
+  "where": [
+   "i18n/he.json:73,249",
+   "i18n/en.json:73,249",
+   "rentals-manager.php:623,630 (public landing + FAQ schema: 'January 30 on the 10 percent route')",
+   "rentals-manager.php:223,255"
+  ],
+  "live_for": "admins v2 (app and help) / v1 (public landing FAQ)",
+  "claim": "10% route: report and pay by 30 January",
+  "verdict": "COULD NOT CHECK",
+  "source": "Tax Authority on gov.il (HTTP 403)",
+  "quote": "",
+  "actual": "Not opened. Secondary pages disagree: Kol Zchut says 30.01.2026 for tax year 2025, a gov.il search snippet says 31 January. The Kol Zchut rent-exemption page states no deadline.",
+  "fix": "Replace the fixed date by 'by the end of January of the following year; check the Tax Authority' until verified on gov.il."
+ },
+ {
+  "id": 18,
+  "where": [
+   "guide/he.html:109,137",
+   "guide/en.html:109,137",
+   "help/he.html:333,440",
+   "help/en.html:441"
+  ],
+  "live_for": "visitors (public guide) / admins v2 (app and help)",
+  "claim": "A deposit and a written-off debt are not rental income; three tax routes exist",
+  "verdict": "COULD NOT CHECK",
+  "source": "Tax Authority on gov.il (HTTP 403)",
+  "quote": "",
+  "actual": "Not opened. Treat as accounting statements about the product's reports, not verified law.",
+  "fix": "Say 'the report does not count deposits as rent' (a product fact) and drop the legal implication."
+ },
+ {
+  "id": 19,
+  "where": [
+   "i18n/he.json:519",
+   "i18n/en.json:519"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 3a: pulling a credit report on someone else is forbidden (Credit Data Law)",
+  "verdict": "NOT CONFIRMED",
+  "source": "Credit Data Law s.26(א), s.27, s.32(א), s.25, s.110 https://he.wikisource.org/wiki/חוק_נתוני_אשראי",
+  "quote": "מי שאינו נותן אשראי יהיה רשאי לקבל מלשכת אשראי דוח אשראי, בתנאים שיקבע השר",
+  "actual": "No sentence bans a landlord outright. The law lets a credit bureau pass a credit report only to a credit provider, for a credit deal with that customer, with the customer's explicit consent (s.26(א)(1),(4)); a non-credit-provider may receive one only if the Minister so decides (s.32). Use for a different purpose is an offence (s.89(ב)(1)). Section 110 bans demanding credit data for employment (and from 26.1.2027 also for entering a deal for services or products).",
+  "fix": "Say what the sections say (see replacement below), without 'forbidden on someone else'."
+ },
+ {
+  "id": 20,
+  "where": [
+   "i18n/he.json:519",
+   "i18n/en.json:519"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 2: everyone gets a free credit data report from the Bank of Israel once a year",
+  "verdict": "CONFIRMED",
+  "source": "Credit Data Law s.38(ד) https://he.wikisource.org/wiki/חוק_נתוני_אשראי ; boi.org.il (credit data page)",
+  "quote": "דוח ריכוז נתונים יימסר ללקוח בלא תשלום, לפי בקשתו, אחת לשנה",
+  "actual": "Right is for a 'customer' (an adult individual), the report is called a data summary report (דוח ריכוז נתונים), extra reports in the same year are paid. BOI site: 'ניתן להפיק בחינם אחת לשנה'.",
+  "fix": "Use the statute's term and 'an adult individual'."
+ },
+ {
+  "id": 21,
+  "where": [
+   "i18n/he.json:519",
+   "i18n/en.json:519"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 2b: the person 'can share it by choice'",
+  "verdict": "NOT CONFIRMED",
+  "source": "Credit Data Law s.38, s.24א https://he.wikisource.org/wiki/חוק_נתוני_אשראי",
+  "quote": "נותן אשראי לא יבקש מלקוח דוח ריכוז נתונים לגביו או דוח אשראי שנמסר ללקוח מנותן אשראי אחר לפי חוק זה",
+  "actual": "The law is silent on a customer sharing his report with a landlord. The only related rule bans a credit provider (from 26.1.2027) from asking customers for such a report.",
+  "fix": "Delete the sentence."
+ },
+ {
+  "id": 22,
+  "where": [
+   "i18n/he.json:519-520",
+   "i18n/en.json:519-520"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 3: checking a restricted account on the Bank of Israel site is public",
+  "verdict": "CONFIRMED",
+  "source": "Bank of Israel, restricted accounts page https://www.boi.org.il/information/restricted_accounts/",
+  "quote": "מפרסם בנק ישראל באתר האינטרנט את רשימת החשבונות המוגבלים ואת מועד סיום ההגבלה",
+  "actual": "Published lists of restricted accounts and customers, under s.14 of the Dishonoured Cheques Law, subject to the Privacy Protection Law.",
+  "fix": "Keep 'published by the Bank of Israel'."
+ },
+ {
+  "id": 23,
+  "where": [
+   "i18n/he.json:519",
+   "i18n/en.json:519"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 3: the restricted-account check is free",
+  "verdict": "NOT CONFIRMED",
+  "source": "Bank of Israel press release of 5.5.2004 (boi.org.il); current page above",
+  "quote": "המידע, שיפורסם באתר האינטרנט יהיה חינם",
+  "actual": "Only a 2004 press release says the published information is free; the current restricted-accounts page does not say so.",
+  "fix": "Drop 'free'."
+ },
+ {
+  "id": 24,
+  "where": [
+   "i18n/he.json:519",
+   "i18n/en.json:519"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "Tip 4: asking for a criminal record is forbidden",
+  "verdict": "CONFIRMED",
+  "source": "Criminal Information and Rehabilitation Law s.3(ב), s.42(א) https://he.wikisource.org/wiki/חוק_המידע_הפלילי_ותקנת_השבים",
+  "quote": "לא ידרוש אדם מידע פלילי, במישרין או בעקיפין, שלא בהתאם להוראות חוק זה, לרבות בדרך של תצהיר, הצהרה או שאלון בכתב",
+  "actual": "The text says 'demand' (ידרוש), directly or indirectly, including by declaration or questionnaire, and the person's consent does not make the asker entitled. Breach carries up to one year in prison (s.42(א)).",
+  "fix": "Use 'demand', mention questionnaires and that consent does not help."
+ },
+ {
+  "id": 25,
+  "where": [
+   "i18n/he.json:670",
+   "i18n/en.json:670"
+  ],
+  "live_for": "admins v2 (app and help) (applicant portal, shown to applicants)",
+  "claim": "Applicant may ask to view, correct or delete the details; not obliged to give them",
+  "verdict": "CONFIRMED",
+  "source": "Privacy Protection Law s.11(1), s.13(א), s.14(א) https://he.wikisource.org/wiki/חוק_הגנת_הפרטיות",
+  "quote": "רשאי לפנות לבעל השליטה במאגר המידע ... בבקשה לתקן את המידע האישי או למוחקו",
+  "actual": "Deletion may be requested where the information is not correct, complete, clear or up to date. Section 11 requires the notice to state whether giving the data is voluntary.",
+  "fix": "Optional: 'delete or correct inaccurate details'."
+ },
+ {
+  "id": 26,
+  "where": [
+   "i18n/he.json:333"
+  ],
+  "live_for": "admins v2 (app and help)",
+  "claim": "A licensed broker works under a signed brokerage order",
+  "verdict": "CONFIRMED",
+  "source": "Brokers in Real Estate Law s.9(א), s.14(א) https://he.wikisource.org/wiki/חוק_המתווכים_במקרקעין",
+  "quote": "מתווך במקרקעין לא יהא זכאי לדמי תיווך, אלא אם כן חתם הלקוח על הזמנה בכתב",
+  "actual": "The law makes the fee depend on a signed written order and a licence; it does not say a broker may not work without one.",
+  "fix": "Say 'to be entitled to a fee, the broker needs a signed written order'."
+ }
+]
