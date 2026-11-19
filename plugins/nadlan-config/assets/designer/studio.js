@@ -17,8 +17,15 @@ const S = {
     scanTitle: 'למדוד במצלמה', scanSub: 'מסתובבים בדירה עם הטלפון ומסמנים את הפינות. התוכנית נבנית במידות אמיתיות', scanBtn: 'מדידה במצלמה' },
   en: { mine: 'My plan', group: 'Which apartment to design', plan: 'Example apartment',
     scanTitle: 'Measure with the camera', scanSub: 'Walk through the apartment with the phone and mark the corners. The plan is built in real sizes', scanBtn: 'Measure with the camera' },
+  fr: { mine: 'Mon plan', group: 'Quel appartement aménager', plan: 'Appartement exemple',
+    scanTitle: 'Mesurer avec l’appareil photo', scanSub: 'Parcourez l’appartement avec le téléphone et marquez les angles. Le plan se construit en dimensions réelles', scanBtn: 'Mesurer avec l’appareil photo' },
+  ru: { mine: 'Мой план', group: 'Какую квартиру обустраиваем', plan: 'Пример квартиры',
+    scanTitle: 'Измерить камерой', scanSub: 'Пройдите по квартире с телефоном и отметьте углы. План строится в реальных размерах', scanBtn: 'Измерить камерой' },
+  ar: { mine: 'مخططي', group: 'أي شقة تريد تصميمها', plan: 'شقة نموذجية',
+    scanTitle: 'القياس بالكاميرا', scanSub: 'تجوّل في الشقة بالهاتف وحدّد الزوايا. يُبنى المخطط بمقاسات حقيقية', scanBtn: 'القياس بالكاميرا' },
 };
 const base = (u) => String(u || '').split('?')[0];
+const track = (name, data) => { try { if (typeof window !== 'undefined' && window.nlTrack) window.nlTrack(name, data); } catch (e) { /* never in the way */ } };
 
 export async function mountStudio(host, pick, cfg = {}) {
   const T = S[cfg.lang] || S.he, KEY = 'nl-dsg-plan' + (cfg.scope ? ':' + cfg.scope : '');
@@ -113,12 +120,14 @@ export async function mountStudio(host, pick, cfg = {}) {
       onLeave: () => { if (active && active.call === call) active = null; box.remove(); giveBack(); if (cfg.onCall) { try { cfg.onCall('left', st); } catch (e) { /* the page's own */ } } },
     });
     active = { call, room, tr };
+    track('call_join', { project: cfg.project || 'example', k: 'video' });
     if (cfg.onCall) { try { cfg.onCall('joined', st); } catch (e) { /* the page's own */ } }
     return call;
   }
   function startCall(d) { // the designer's "video call" button
     if (active) { try { active.call.openPanel('invite'); } catch (e) { /* none */ } return; }
     if (!callOn || d !== inst) return;
+    track('call_open', { project: cfg.project || 'example', k: 'video' });
     const box = callBox();
     takeOver(true);
     import('./call.js').then((C) => C.callSheet(box, {
@@ -267,5 +276,11 @@ export async function mountStudio(host, pick, cfg = {}) {
   if (callOn && ROOM_RE.test(roomQ)) {
     try { await joinFromLink(roomQ); return st; } catch (e) { /* the call module did not load: the designer opens as always */ }
   }
-  return (await openDefault()) ? st : null;
+  const ok = await openDefault();
+  // ?call=1 (a project page's "video call" button, HAD-792 with package 3): the designer opens on the project's plan and the
+  // call sheet comes up at once; the visitor still types a name and presses start, nothing connects by itself
+  let callQ = false;
+  try { callQ = cfg.callNow === true || new URLSearchParams(location.search).get('call') === '1'; } catch (e) { callQ = false; }
+  if (ok && callOn && callQ && inst && cur !== 'pm') { try { await (inst.ready3d || Promise.resolve()); } catch (e) { /* the plan alone is enough */ } startCall(inst); st.callAsked = true; }
+  return ok ? st : null;
 }

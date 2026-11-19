@@ -39,8 +39,9 @@ export function mountPlan(host, store, cat, hooks = {}) {
   const hatch = E('pattern', { id: 'nd-mamad', width: 14, height: 14, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, defs);
   E('rect', { width: 14, height: 14, fill: '#0F2233' }, hatch); E('line', { x1: 0, y1: 0, x2: 0, y2: 14, stroke: '#F2F5F7', 'stroke-width': 3 }, hatch);
   const L = {};
-  for (const k of ['rooms', 'items', 'walls', 'open', 'ghost', 'labels', 'grips', 'points', 'draft', 'cam']) L[k] = E('g', { class: 'L-' + k }, svg);
-  let sel = null, liveDim = null, placing = null, partMode = false, seq = 0;
+  for (const k of ['rooms', 'items', 'walls', 'open', 'ghost', 'labels', 'grips', 'points', 'notes', 'draft', 'cam']) L[k] = E('g', { class: 'L-' + k }, svg);
+  let sel = null, liveDim = null, placing = null, partMode = false, notePlacing = false, seq = 0;
+  const rn = (he) => (hooks.roomName ? hooks.roomName(he) : he); // a room's name in the page language
   const scale = () => { const m = svg.getScreenCTM(); return m && m.a > 0 ? m.a : 0.3; }; // screen pixels per cm
   const labelCache = new Map(); // the label point of a room outline, kept while the outline does not change (a drag redraws often)
   const labelAt = (f) => {
@@ -58,7 +59,7 @@ export function mountPlan(host, store, cat, hooks = {}) {
       if (!f.room) continue;
       const fin = cat.FINISHES[store.floorOf(f.id)] || {};
       E('path', { d: P(f.poly), class: 'room' + (f.room.fresh ? ' fresh' : '') + (sel && sel.type === 'room' && sel.id === f.id ? ' on' : ''), fill: fin.a || '#fff', 'fill-opacity': 0.5, 'data-room': f.id }, L.rooms);
-      const small = f.bb.x1 - f.bb.x0 < 260, name = f.room.fresh && T.newSpace ? T.newSpace : f.room.name_he;
+      const small = f.bb.x1 - f.bb.x0 < 260, name = f.room.fresh && T.newSpace ? T.newSpace : rn(f.room.name_he);
       const dims = ((sel && sel.type === 'room' && sel.id === f.id) || (liveDim && f.walls.includes(liveDim))) && f.clearW != null; // a size only where it is true
       // the label stands at the point farthest from the walls (inside the room whatever its shape), then steps aside from
       // any point symbol and from the labels already placed
@@ -146,6 +147,18 @@ export function mountPlan(host, store, cat, hooks = {}) {
       symbol(g, p.kind, r);
     }
   }
+  // ---- notes to the builder (HAD-792): a red numbered tag, the redline of a drawing, the same size on any screen ----
+  function drawNotes() {
+    L.notes.textContent = '';
+    const k = scale(), s = 15 / k;
+    (store.design.notes || []).forEach((n, i) => {
+      const on = sel && sel.type === 'note' && sel.id === n.id, g = E('g', { class: 'nt' + (on ? ' on' : ''), transform: 'translate(' + n.x + ' ' + n.y + ')', 'data-note': n.id }, L.notes);
+      if (on) E('circle', { r: s * 2, class: 'halo', 'data-note': n.id }, g);
+      E('rect', { x: -s, y: -s, width: s * 2, height: s * 2, 'data-note': n.id }, g);
+      const t = E('text', { x: 0, y: s * 0.42, 'font-size': (s * 1.25).toFixed(1), 'data-note': n.id }, g); t.textContent = String(i + 1);
+      E('circle', { r: s * 2.4, class: 'nthit', 'data-note': n.id }, g);
+    });
+  }
   const nearestPoint = (p) => {
     const k = scale(), r = SYM / k; let best = null;
     for (const q of store.derived.points) { if (q.lost) continue; const c = centre(q, r), d = Math.hypot(c[0] - p[0], c[1] - p[1]) * k; if (d <= TOUCH && (!best || d < best.d)) best = { q, d }; }
@@ -221,7 +234,10 @@ export function mountPlan(host, store, cat, hooks = {}) {
   let drag = null;
   svg.addEventListener('pointerdown', (ev) => {
     const p = pt(ev), g = 'g' + Date.now();
+    if (notePlacing) { capture(ev); drag = { kind: 'note-place', at: p }; return; }
     if (placing) { capture(ev); drag = { kind: 'place', at: p }; return; }
+    const tn = ev.target.closest('[data-note]');
+    if (tn) { capture(ev); const n = store.note(tn.dataset.note); hooks.select && hooks.select({ type: 'note', id: n.id }); drag = { kind: 'note', id: n.id, off: [n.x - p[0], n.y - p[1]], p0: p, g, moved: false }; return; }
     if (partMode) { drag = startPart(p); if (drag) capture(ev); return; }
     const t = ev.target.closest('[data-item],[data-wall],[data-cam],[data-room]'), grip = ev.target.closest('.grip');
     const np = !grip && nearestPoint(p);
@@ -263,7 +279,12 @@ export function mountPlan(host, store, cat, hooks = {}) {
       const r = store.apply({ op: 'point.move', id: drag.id, ...to }, { gesture: drag.g });
       if (r.ok) drag.told = false; else if (!drag.told) { drag.told = true; hooks.blocked && hooks.blocked(r); }
     } else if (drag.kind === 'part') movePart(p);
-    else if (drag.kind === 'place') drag.at = p;
+    else if (drag.kind === 'place' || drag.kind === 'note-place') drag.at = p;
+    else if (drag.kind === 'note') {
+      if (!drag.moved && Math.hypot(p[0] - drag.p0[0], p[1] - drag.p0[1]) * scale() < 6) return;
+      drag.moved = true;
+      store.apply({ op: 'note.move', id: drag.id, x: snap(p[0] + drag.off[0], 5), y: snap(p[1] + drag.off[1], 5) }, { gesture: drag.g });
+    }
     else if (drag.kind === 'cam') hooks.camMove && hooks.camMove(p);
   });
   const end = () => {
@@ -271,27 +292,32 @@ export function mountPlan(host, store, cat, hooks = {}) {
     const d = drag; drag = null;
     if (d.kind === 'wall') { liveDim = null; drawGeometry(); }
     if (d.kind === 'place' && placing) placeAt(placing, d.at);
+    if (d.kind === 'note-place' && notePlacing) { notePlacing = false; svg.classList.remove('placing'); hooks.notePlace && hooks.notePlace([snap(d.at[0], 5), snap(d.at[1], 5)]); hooks.modeDone && hooks.modeDone(); }
     if (d.kind === 'part') { drag = d; endPart(); drag = null; }
   };
   svg.addEventListener('pointerup', end); svg.addEventListener('pointercancel', end);
 
   store.on((e) => {
     if (e.type !== 'change') return;
-    if (e.touched.all) { drawGeometry(); drawItems(); drawPoints(); return; }
+    if (e.touched.all) { drawGeometry(); drawItems(); drawPoints(); drawNotes(); return; }
+    if (e.touched.notes && e.touched.notes.length) drawNotes();
     if (e.touched.geometry || e.touched.finishes.length || (e.touched.points && e.touched.points.length)) drawGeometry(); // labels step aside from lights
     for (const id of e.touched.items) drawItem(id);
     if (e.touched.geometry || (e.touched.points && e.touched.points.length)) drawPoints();
   });
-  new ResizeObserver(() => drawPoints()).observe(svg); // the symbols keep their size on the screen
-  drawGeometry(); drawItems(); drawPoints();
+  new ResizeObserver(() => { drawPoints(); drawNotes(); }).observe(svg); // the symbols keep their size on the screen
+  drawGeometry(); drawItems(); drawPoints(); drawNotes();
   return {
     el: svg, setCamera, scale,
-    setSelection(s) { sel = s; drawGeometry(); drawItems(); drawPoints(); },
+    setSelection(s) { sel = s; drawGeometry(); drawItems(); drawPoints(); drawNotes(); },
     /** the next tap places a point of this kind (null: stop) */
-    setPlacing(kind) { placing = kind || null; partMode = false; svg.classList.toggle('placing', !!placing); },
+    setPlacing(kind) { placing = kind || null; partMode = false; notePlacing = false; svg.classList.toggle('placing', !!placing); },
     /** the next drag draws a new partition */
-    setPartMode(on) { partMode = !!on; placing = null; svg.classList.toggle('placing', partMode); },
-    get mode() { return placing ? 'place' : partMode ? 'part' : null; },
+    setPartMode(on) { partMode = !!on; placing = null; notePlacing = false; svg.classList.toggle('placing', partMode); },
+    /** the next tap pins a note to the builder there (hooks.notePlace receives the place) */
+    setNotePlacing(on) { notePlacing = !!on; placing = null; partMode = false; svg.classList.toggle('placing', notePlacing); },
+    get mode() { return placing ? 'place' : partMode ? 'part' : notePlacing ? 'note' : null; },
+    noteScreen(id) { const n = store.note(id); return n ? this.screenOf(n.x, n.y) : null; },
     /** for checks: where a plan point is on the screen */
     screenOf(x, y) { const q = new DOMPoint(x, y).matrixTransform(svg.getScreenCTM()); return [q.x, q.y]; },
     pointScreen(id) { const q = store.point(id); if (!q) return null; const c = centre(q, SYM / scale()); return this.screenOf(c[0], c[1]); },

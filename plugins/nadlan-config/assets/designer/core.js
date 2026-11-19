@@ -345,6 +345,9 @@ export function createStore(apt, design0) {
   let guard = null; // who may change the design right now (the shared call sets it: only the pen holder edits)
   const emit = (e) => subs.forEach((f) => f(e));
   const item = (id) => design.items.find((i) => i.id === id);
+  const note = (id) => design.notes.find((n) => n.id === id);
+  // a note to the builder: plain text, one paragraph, at most 400 characters (no markup, no control characters)
+  const noteText = (t) => (typeof t === 'string' ? t.replace(/[\u0000-\u001f\u007f<>]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400) : '');
   const roomAt = (x, y) => { const f = faceAt(dv, [x, y]) || dv.faces.find((q) => pip([x, y], q.poly)); return f ? f.id : null; };
   const basePt = (id) => (apt.points || []).find((p) => p.id === id);
   const addedPt = (id) => design.points.added.find((p) => p.id === id);
@@ -430,7 +433,18 @@ export function createStore(apt, design0) {
       case 'item.add': return item(op.item.id) ? rej('item.exists', 'הפריט כבר קיים.') : roomAt(op.item.x, op.item.y) ? null : rej('item.outside', 'הפריט מחוץ לדירה.');
       case 'item.move': return !item(op.id) ? rej('item.unknown', 'הפריט לא נמצא.') : roomAt(op.x, op.y) ? null : rej('item.outside', 'הפריט מחוץ לדירה.');
       case 'item.rot': case 'item.remove': return item(op.id) ? null : rej('item.unknown', 'הפריט לא נמצא.');
-      case 'finish.set': return /^floor:[a-z0-9_-]+$/.test(op.key) ? null : rej('finish.key', 'משטח לא מוכר.');
+      case 'finish.set': return /^(floor|wall):[a-z0-9_-]+$/.test(op.key) && (op.value == null || /^[a-z0-9_-]{1,40}$/.test(op.value)) ? null : rej('finish.key', 'משטח לא מוכר.');
+      case 'note.add': {
+        const n = op.note;
+        if (!n || typeof n.id !== 'string' || !/^[a-z0-9_-]{1,40}$/.test(n.id) || !num(n.x) || !num(n.y)) return rej('note.bad', 'הערה לא תקינה.');
+        if (note(n.id)) return rej('note.exists', 'ההערה כבר קיימת.');
+        if (design.notes.length >= 60) return rej('note.many', 'אפשר עד 60 הערות לדירה.');
+        if (!noteText(n.text)) return rej('note.empty', 'כתבו מה לבקש מהקבלן.');
+        return roomAt(n.x, n.y) ? null : rej('note.outside', 'ההערה מחוץ לדירה.');
+      }
+      case 'note.edit': return !note(op.id) ? rej('note.unknown', 'ההערה לא נמצאה.') : noteText(op.text) ? null : rej('note.empty', 'כתבו מה לבקש מהקבלן.');
+      case 'note.move': return !note(op.id) ? rej('note.unknown', 'ההערה לא נמצאה.') : num(op.x) && num(op.y) && roomAt(op.x, op.y) ? null : rej('note.outside', 'ההערה מחוץ לדירה.');
+      case 'note.remove': return note(op.id) ? null : rej('note.unknown', 'ההערה לא נמצאה.');
       case 'wall.shift': return checkShift(apt, design, dv, op.id, op.d);
       case 'point.add': {
         const p = op.point;
@@ -484,6 +498,10 @@ export function createStore(apt, design0) {
       case 'partition.add': return { op: 'partition.remove', id: op.wall.id };
       case 'partition.remove': { const a = addedPart(op.id); return a ? { op: 'partition.add', wall: clone(a) } : { op: 'partition.restore', id: op.id }; }
       case 'partition.restore': return { op: 'partition.remove', id: op.id };
+      case 'note.add': return { op: 'note.remove', id: op.note.id };
+      case 'note.remove': return { op: 'note.add', note: clone(note(op.id)) };
+      case 'note.edit': return { op: 'note.edit', id: op.id, text: note(op.id).text };
+      case 'note.move': return { op: 'note.move', id: op.id, x: note(op.id).x, y: note(op.id).y };
       case 'room.name': {
         const f = faceAt(dv, op.at), prev = f && G.rooms.find((r) => r.id === f.id);
         return prev ? { op: 'room.name', at: [...prev.at], name_he: prev.name_he, type: prev.type } : { op: 'room.name', at: [...op.at], name_he: null };
@@ -499,7 +517,7 @@ export function createStore(apt, design0) {
     G.added.sort(byId); G.removed.sort(); G.rooms.sort(byId); G.walls = sortKeys(G.walls);
   }
   function mutate(op) {
-    const t = { items: [], finishes: [], points: [], geometry: false }, P = design.points, G = design.geometry;
+    const t = { items: [], finishes: [], points: [], notes: [], geometry: false }, P = design.points, G = design.geometry;
     const regeo = () => { canon(); dv = derive(apt, design); t.geometry = true; placeItems(); };
     switch (op.op) {
       case 'item.add': design.items.push({ ...op.item, room: roomAt(op.item.x, op.item.y) }); t.items.push(op.item.id); break;
@@ -531,6 +549,10 @@ export function createStore(apt, design0) {
       case 'partition.add': G.added.push({ id: op.wall.id, a: [op.wall.a[0], op.wall.a[1]], b: [op.wall.b[0], op.wall.b[1]], t: op.wall.t || PART_T }); regeo(); break;
       case 'partition.remove': if (addedPart(op.id)) G.added = G.added.filter((a) => a.id !== op.id); else G.removed.push(op.id); regeo(); break;
       case 'partition.restore': G.removed = G.removed.filter((x) => x !== op.id); regeo(); break;
+      case 'note.add': { const n = op.note; design.notes.push({ id: n.id, x: Math.round(n.x), y: Math.round(n.y), text: noteText(n.text), room: roomAt(n.x, n.y), at: n.at || new Date().toISOString() }); design.notes.sort(byId); t.notes.push(n.id); break; }
+      case 'note.edit': { const n = note(op.id); n.text = noteText(op.text); t.notes.push(op.id); break; }
+      case 'note.move': { const n = note(op.id); n.x = Math.round(op.x); n.y = Math.round(op.y); n.room = roomAt(n.x, n.y); t.notes.push(op.id); break; }
+      case 'note.remove': design.notes = design.notes.filter((n) => n.id !== op.id); t.notes.push(op.id); break;
       case 'room.name': {
         const id = faceAt(dv, op.at).id;
         G.rooms = G.rooms.filter((r) => r.id !== id);
@@ -576,15 +598,16 @@ export function createStore(apt, design0) {
     /** fn(op, meta) returns null to allow, or { code, reason } to refuse with one sentence the person reads */
     setGuard(fn) { guard = fn || null; },
     /** replaces the whole design (a saved design opened again, or the full design a late joiner of a call receives) */
-    load(next) { design = normDesign(clone(next)); dv = derive(apt, design); placeItems(); undo.length = 0; redo.length = 0; emit({ type: 'change', op: { op: 'design.load' }, touched: { items: design.items.map((i) => i.id), finishes: ['*'], points: ['*'], geometry: true, all: true }, t0: 0, by: 'load', remote: true, replay: false, gesture: null }); },
+    load(next) { design = normDesign(clone(next)); dv = derive(apt, design); placeItems(); undo.length = 0; redo.length = 0; emit({ type: 'change', op: { op: 'design.load' }, touched: { items: design.items.map((i) => i.id), finishes: ['*'], points: ['*'], notes: ['*'], geometry: true, all: true }, t0: 0, by: 'load', remote: true, replay: false, gesture: null }); },
     get design() { return design; }, get derived() { return dv; },
-    item, roomAt,
+    item, roomAt, note,
     point: (id) => dv.pointBy[id] || null,
     isAdded: (id) => !!addedPart(id), isRemoved: (id) => design.geometry.removed.includes(id),
     slides: (id) => (addedPart(id) || design.geometry.removed.includes(id) ? false : id in slideCache ? slideCache[id] : (slideCache[id] = canSlide(apt, id))),
     on: (f) => { subs.add(f); return () => subs.delete(f); },
     undo: () => step(undo, redo, 'inv'), redo: () => step(redo, undo, 'redo'),
     canUndo: () => undo.length > 0, canRedo: () => redo.length > 0,
+    wallOf: (roomId) => design.finishes['wall:' + roomId] || null,
     floorOf: (roomId) => design.finishes['floor:' + roomId] || (dv.faceBy[roomId] && dv.faceBy[roomId].room && dv.faceBy[roomId].room.floor) || null,
   };
   return api;

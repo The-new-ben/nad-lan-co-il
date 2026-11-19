@@ -26,6 +26,8 @@ const LK_LIB = 'https://cdn.jsdelivr.net/npm/livekit-client@2.22.3/dist/livekit-
 const BASE = new URL('.', import.meta.url).href;
 const now = () => performance.timeOrigin + performance.now(); // one clock across the tabs of one browser (the local checks)
 const ROLES = ['buyer', 'rep', 'designer', 'family', 'host', 'guest'];
+const LANGS = ['he', 'en', 'fr', 'ru', 'ar'];
+const pickLang = (l) => (LANGS.includes(l) ? l : 'he');
 const OPEN_MS = 1500; // open mode: whoever changed something in the last 1.5 s keeps the turn; after that anyone may change
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -86,6 +88,90 @@ const STR = {
     audio: 'Tap here to turn on sound', people: 'In the call', sharing: (n) => n + ' is showing a screen', denied: 'No access to the camera or microphone. You can allow it in the browser settings.',
     callBar: 'Video call', tiles: 'Participants',
   },
+  fr: {
+    dir: 'ltr',
+    roles: { buyer: 'Acheteur', rep: 'Conseiller commercial', designer: 'Architecte d’intérieur', family: 'Famille', host: 'A ouvert l’appel', guest: 'Invité' },
+    editing: (n) => n + ' modifie en ce moment', busy: (n) => n + ' modifie en ce moment. Vous pourrez changer dans un instant.',
+    joined: (n) => n + ' a rejoint l’appel', left: (n) => n + ' a quitté l’appel. L’aménagement reste chez vous.',
+    inviteBtn: 'Inviter des participants', inviteH: 'Inviter des participants à l’appel', inviteSub: 'Toute personne qui ouvre le lien rejoint l’appel et voit le même appartement.',
+    wa: 'Partager sur WhatsApp', waText: 'Rejoignez-moi pour un appel vidéo sur l’appartement :',
+    you: 'vous', youTag: 'Moi',
+    penMine: 'Vous avez le stylo : vos changements s’affichent chez tout le monde.',
+    penOf: (n) => n + ' a le stylo',
+    refuse: (n) => n + ' a le stylo en ce moment, et seule la personne qui le tient modifie l’aménagement.',
+    ask: 'Demander le stylo', asked: 'Vous avez demandé le stylo. En attente d’une réponse.', take: 'Prendre le stylo',
+    give: 'Passer le stylo', giveTo: (n) => 'Passer à ' + n, asks: (n) => n + ' demande le stylo', notNow: 'Pas maintenant',
+    gotPen: 'Vous avez le stylo. Vous pouvez modifier l’aménagement.', penMoved: (n) => 'Le stylo est passé à ' + n + '.',
+    mic: 'Micro', micOff: 'Couper le micro', micOn: 'Activer le micro',
+    cam: 'Caméra', camOff: 'Couper la caméra', camOn: 'Activer la caméra',
+    flip: 'Basculer entre la caméra avant et arrière', share: 'Partager mon écran', shareStop: 'Arrêter le partage d’écran',
+    more: 'Plus', moreLabel: 'Plus d’options', leave: 'Terminer l’appel', leaveLabel: 'Terminer l’appel',
+    follow: (n) => 'Vous voyez ce que voit ' + n, alone: 'Vous regardez de votre côté', back: (n) => 'Revenir à la vue de ' + n, backShort: 'Revenir',
+    hand: 'Lever la main', handDown: 'Baisser la main', handUp: (n) => n + ' a levé la main',
+    chat: 'Messages', chatPh: 'Écrire à tout le monde', send: 'Envoyer',
+    invite: 'Inviter un architecte d’intérieur ou un proche', copy: 'Copier le lien', copied: 'Lien copié. Il ne contient aucune donnée personnelle.',
+    noRec: 'L’appel n’est pas enregistré.',
+    connecting: 'Connexion…', reconnecting: 'Connexion interrompue, reconnexion…', connected: 'Connecté', lost: 'L’appel a été coupé.',
+    q: { excellent: 'Bon réseau', good: 'Réseau moyen', poor: 'Réseau faible', lost: 'Pas de réseau', unknown: 'Vérification du réseau' },
+    audio: 'Touchez ici pour activer le son', people: 'Dans l’appel', sharing: (n) => n + ' partage son écran', denied: 'Pas d’accès à la caméra ou au micro. Vous pouvez l’autoriser dans les réglages du navigateur.',
+    callBar: 'Appel vidéo', tiles: 'Participants',
+  },
+  ru: {
+    dir: 'ltr',
+    roles: { buyer: 'Покупатель', rep: 'Представитель отдела продаж', designer: 'Дизайнер интерьера', family: 'Семья', host: 'Начал(а) звонок', guest: 'Гость' },
+    editing: (n) => n + ' сейчас редактирует', busy: (n) => n + ' сейчас редактирует. Изменить можно будет через мгновение.',
+    joined: (n) => n + ' теперь в звонке', left: (n) => n + ' вышел(а) из звонка. Дизайн остаётся у вас.',
+    inviteBtn: 'Пригласить участников', inviteH: 'Пригласить участников в звонок', inviteSub: 'Кто откроет ссылку, сразу попадёт в звонок и увидит ту же квартиру.',
+    wa: 'Поделиться в WhatsApp', waText: 'Присоединяйтесь к моему видеозвонку о квартире:',
+    you: 'вы', youTag: 'Я',
+    penMine: 'Карандаш у вас: ваши изменения видят все.',
+    penOf: (n) => 'Карандаш держит ' + n,
+    refuse: (n) => 'Карандаш сейчас держит ' + n + ', а менять дизайн может только тот, у кого он в руках.',
+    ask: 'Попросить карандаш', asked: 'Вы попросили карандаш. Ждём ответа.', take: 'Взять карандаш',
+    give: 'Передать карандаш', giveTo: (n) => 'Передать: ' + n, asks: (n) => n + ' просит карандаш', notNow: 'Не сейчас',
+    gotPen: 'Теперь карандаш у вас. Можно менять дизайн.', penMoved: (n) => 'Карандаш теперь держит ' + n + '.',
+    mic: 'Микрофон', micOff: 'Выключить микрофон', micOn: 'Включить микрофон',
+    cam: 'Камера', camOff: 'Выключить камеру', camOn: 'Включить камеру',
+    flip: 'Переключить фронтальную и основную камеру', share: 'Показать экран', shareStop: 'Перестать показывать экран',
+    more: 'Ещё', moreLabel: 'Другие действия', leave: 'Завершить звонок', leaveLabel: 'Завершить звонок',
+    follow: (n) => 'Вы видите то, что видит ' + n, alone: 'Свободный просмотр', back: (n) => 'Снова смотреть как ' + n, backShort: 'Вернуться',
+    hand: 'Поднять руку', handDown: 'Опустить руку', handUp: (n) => n + ' поднял(а) руку',
+    chat: 'Сообщения', chatPh: 'Написать всем', send: 'Отправить',
+    invite: 'Пригласить дизайнера интерьера или кого-то из семьи', copy: 'Скопировать ссылку', copied: 'Ссылка скопирована. Личных данных в ней нет.',
+    noRec: 'Звонок не записывается.',
+    connecting: 'Подключаемся…', reconnecting: 'Связь прервалась, подключаемся снова…', connected: 'Подключено', lost: 'Звонок прервался.',
+    q: { excellent: 'Хорошая связь', good: 'Нормальная связь', poor: 'Слабая связь', lost: 'Нет связи', unknown: 'Проверяем связь' },
+    audio: 'Нажмите здесь, чтобы включить звук', people: 'В звонке', sharing: (n) => n + ' показывает экран', denied: 'Нет доступа к камере или микрофону. Его можно разрешить в настройках браузера.',
+    callBar: 'Видеозвонок', tiles: 'Участники',
+  },
+  ar: {
+    dir: 'rtl',
+    roles: { buyer: 'المشتري', rep: 'ممثل المبيعات', designer: 'مصمم الديكور الداخلي', family: 'العائلة', host: 'بدأ المكالمة', guest: 'مدعو' },
+    editing: (n) => n + ' يعدّل الآن', busy: (n) => n + ' يعدّل الآن. يمكنك التغيير بعد لحظة.',
+    joined: (n) => n + ' انضم إلى المكالمة', left: (n) => n + ' غادر المكالمة. التصميم يبقى عندك.',
+    inviteBtn: 'دعوة مشاركين', inviteH: 'دعوة مشاركين إلى المكالمة', inviteSub: 'كل من يفتح الرابط ينضم إلى المكالمة ويرى الشقة نفسها.',
+    wa: 'مشاركة عبر واتساب', waText: 'انضموا إليّ في مكالمة فيديو عن الشقة:',
+    you: 'أنت', youTag: 'أنا',
+    penMine: 'القلم معك: تغييراتك تظهر عند الجميع.',
+    penOf: (n) => 'القلم مع ' + n,
+    refuse: (n) => 'القلم مع ' + n + ' حاليًا، ولا يغيّر التصميم إلا من يمسك القلم.',
+    ask: 'طلب القلم', asked: 'طلبت القلم. بانتظار الرد.', take: 'أخذ القلم',
+    give: 'تمرير القلم', giveTo: (n) => 'تمرير إلى ' + n, asks: (n) => n + ' يطلب القلم', notNow: 'ليس الآن',
+    gotPen: 'القلم معك الآن. يمكنك تغيير التصميم.', penMoved: (n) => 'انتقل القلم إلى ' + n + '.',
+    mic: 'الميكروفون', micOff: 'كتم الصوت', micOn: 'تشغيل الميكروفون',
+    cam: 'الكاميرا', camOff: 'إيقاف الكاميرا', camOn: 'تشغيل الكاميرا',
+    flip: 'التبديل بين الكاميرا الأمامية والخلفية', share: 'عرض شاشتي', shareStop: 'إيقاف عرض الشاشة',
+    more: 'المزيد', moreLabel: 'خيارات أخرى', leave: 'إنهاء المكالمة', leaveLabel: 'إنهاء المكالمة',
+    follow: (n) => 'ترى ما يراه ' + n, alone: 'تتجول وحدك', back: (n) => 'العودة إلى عرض ' + n, backShort: 'عودة',
+    hand: 'رفع اليد', handDown: 'إنزال اليد', handUp: (n) => n + ' رفع يده',
+    chat: 'الرسائل', chatPh: 'اكتب رسالة للجميع', send: 'إرسال',
+    invite: 'دعوة مصمم ديكور أو أحد أفراد العائلة', copy: 'نسخ الرابط', copied: 'تم نسخ الرابط. لا يحتوي على أي بيانات شخصية.',
+    noRec: 'المكالمة غير مسجّلة.',
+    connecting: 'جارٍ الاتصال…', reconnecting: 'انقطع الاتصال، جارٍ إعادة الاتصال…', connected: 'متصل', lost: 'انقطعت المكالمة.',
+    q: { excellent: 'إشارة جيدة', good: 'إشارة مقبولة', poor: 'إشارة ضعيفة', lost: 'لا توجد إشارة', unknown: 'جارٍ فحص الإشارة' },
+    audio: 'اضغط هنا لتشغيل الصوت', people: 'في المكالمة', sharing: (n) => n + ' يعرض شاشته', denied: 'لا يوجد إذن للوصول إلى الكاميرا أو الميكروفون. يمكنك السماح بذلك من إعدادات المتصفح.',
+    callBar: 'مكالمة فيديو', tiles: 'المشاركون',
+  },
 };
 
 const ICON = {
@@ -115,7 +201,7 @@ const pct = (arr, p) => { if (!arr.length) return null; const s = [...arr].sort(
 /** Joins the call inside a mounted designer. Resolves once connected; the pen settles a moment later (call.ready). */
 export async function joinCall(designer, opts = {}) {
   if (opts.mode !== 'pen') return joinOpen(designer, opts); // the open call (the studio's): the designed interface below
-  const T = STR[opts.lang === 'en' ? 'en' : 'he'], tr = opts.transport, me = String(opts.identity), myRole = ROLES.includes(opts.role) ? opts.role : 'buyer';
+  const T = STR[pickLang(opts.lang)], tr = opts.transport, me = String(opts.identity), myRole = ROLES.includes(opts.role) ? opts.role : 'buyer';
   if (!tr) throw new Error('joinCall: a transport is required');
   // 'open' (the default since HAD-706 round 2): anyone changes the design at once, unless someone else changed something in the
   // last 1.5 s ("X is editing now"); everybody looks around on his own. 'pen': the older rule, one pen holder edits and presents.
@@ -148,7 +234,7 @@ export async function joinCall(designer, opts = {}) {
 
   /* ---------------- the dock ---------------- */
   const dock = document.createElement('section');
-  dock.className = 'ndc'; dock.dir = T.dir; dock.lang = opts.lang === 'en' ? 'en' : 'he';
+  dock.className = 'ndc'; dock.dir = T.dir; dock.lang = pickLang(opts.lang);
   dock.setAttribute('aria-label', T.callBar);
   dock.innerHTML =
     '<div class="ndc-top"><div class="ndc-tiles" data-ndc="tiles" role="list" aria-label="' + T.tiles + '"></div>' +
@@ -627,6 +713,12 @@ const PENS = ['#1F5FA8', '#1C7A4E', '#B0307A', '#0F7C8A', '#5B4BB7', '#46596A'];
 const HOLD_MS = 6000, BEAT_MS = 2000, BACK_MS = 5000, HIDE_MS = 4000, SELF_MS = 10000, SUMMON_S = 3;
 const EN_SKU = { sofa3: 'sofa', armchair: 'armchair', coffee: 'coffee table', dining6: 'dining table', chair: 'chair', tv: 'TV console', rug: 'rug', bed160: 'bed', bedset: 'bed', bedside: 'bedside table', bed120: 'bed', wardrobe: 'wardrobe', wardrobe2: 'wardrobe', desk: 'desk', lamp: 'lamp', kitchen: 'kitchen', island: 'island', plant: 'plant' };
 const HE_FIX = { 'שידת': 'שידה', 'מנורת': 'מנורה' };
+const SKU_NAMES = {
+  en: EN_SKU,
+  fr: { sofa3: 'le canapé', armchair: 'le fauteuil', coffee: 'la table basse', dining6: 'la table à manger', chair: 'la chaise', tv: 'le meuble TV', rug: 'le tapis', bed160: 'le lit', bedset: 'le lit', bedside: 'la table de chevet', bed120: 'le lit', wardrobe: 'l’armoire', wardrobe2: 'l’armoire', desk: 'le bureau', lamp: 'la lampe', kitchen: 'la cuisine', island: 'l’îlot', plant: 'la plante' },
+  ru: { sofa3: 'диван', armchair: 'кресло', coffee: 'журнальный столик', dining6: 'обеденный стол', chair: 'стул', tv: 'тумба под телевизор', rug: 'ковёр', bed160: 'кровать', bedset: 'кровать', bedside: 'прикроватная тумбочка', bed120: 'кровать', wardrobe: 'шкаф', wardrobe2: 'шкаф', desk: 'письменный стол', lamp: 'лампа', kitchen: 'кухня', island: 'кухонный остров', plant: 'растение' },
+  ar: { sofa3: 'الكنبة', armchair: 'الكرسي بذراعين', coffee: 'طاولة القهوة', dining6: 'طاولة الطعام', chair: 'الكرسي', tv: 'طاولة التلفزيون', rug: 'السجادة', bed160: 'السرير', bedset: 'السرير', bedside: 'الطاولة الجانبية للسرير', bed120: 'السرير', wardrobe: 'الخزانة', wardrobe2: 'الخزانة', desk: 'المكتب', lamp: 'المصباح', kitchen: 'المطبخ', island: 'جزيرة المطبخ', plant: 'النبتة' },
+};
 
 const UI = {
   he: {
@@ -713,6 +805,132 @@ const UI = {
     joined: (n) => n + ' joined the call', left: (n) => n + ' left the call. The design stays with you.', guest: 'Guest',
     obj: { wall: 'wall', point: 'electric point', floor: 'flooring', room: 'room name', thing: 'piece' },
   },
+  fr: {
+    dir: 'ltr', product: 'Appel vidéo sur l’appartement',
+    sub: (n, m2, f) => [n ? 'Appartement ' + n + ' pièces' : '', m2 ? m2 + ' m²' : '', f != null && f !== '' ? 'étage ' + f : ''].filter(Boolean).join(' · '),
+    mic: 'Micro', muted: 'Coupé', micBlocked: 'Bloqué', cam: 'Caméra', camOff: 'Coupée', camBlocked: 'Bloquée',
+    follow: 'Suivre', following: 'Suivi', point: 'Pointer', invite: 'Inviter', more: 'Plus', leave: 'Quitter',
+    tour: 'Visite', arrange: 'Aménager', talk: 'Discuter', layouts: 'Disposition',
+    followFrame: (n) => 'Vous suivez ' + n + ' · touchez pour arrêter', back: (n) => 'Revenir à ' + n,
+    followOne: (n) => 'Suivre ' + n, jumpOnce: 'Aller à sa vue une fois', bigPic: 'Grande image',
+    holdChip: (n, o) => n + ' déplace ' + o, holdRefused: (n, o) => n + ' tient ' + o + '. Réessayez dans un instant.',
+    undoMine: 'Annuler mon changement', undoOther: (n) => n + ' l’a déjà modifié, donc rien n’a été annulé.', undoNone: 'Plus aucun changement à vous à annuler.',
+    pill: (n, s) => n + ' dans l’appel' + (s ? ' · ' + s + ' parle' : ''),
+    pointChip: (n) => n + ' : ici', pointHint: 'Appui long sur le plan ou sur un mur pour pointer. Le trait disparaît tout seul.',
+    summonBtn: 'Tous avec moi', summonTitle: (n, r) => n + ' veut montrer ' + r + ' à tout le monde', summonSub: (s) => 'Passage à sa vue dans ' + s + ' secondes',
+    summonGo: 'Y aller maintenant', summonNo: 'Pas maintenant', theFlat: 'l’appartement', viewers: (n) => 'Vu par ' + n,
+    controlsHint: 'Touchez l’écran pour faire revenir les boutons',
+    listen: 'Vous avez rejoint l’appel en écoute. Vous entendez et voyez tout, et vous pouvez pointer et déplacer les meubles.', permLink: 'Comment autoriser le micro',
+    permTitle: 'Autoriser le micro sur le téléphone', iphone: 'iPhone', android: 'Android',
+    permIos: 'Touchez Aa dans la barre d’adresse, Réglages du site web, Micro : Autoriser.', permAndroid: 'Touchez le cadenas à côté de l’adresse, Autorisations, Micro : Autoriser.',
+    permRetry: 'J’ai essayé, vérifier à nouveau', permListen: 'Continuer en écoute',
+    inviteTitle: 'Inviter à l’appel', inviteSub: 'La personne qui reçoit le lien entre depuis le navigateur, sans inscription. Le lien ne fonctionne que pour cet appel.',
+    wa: 'Inviter sur WhatsApp', copy: 'Copier', copied: 'Copié', full: 'L’appel est complet, 8 sur 8',
+    inviteMsg: (h, n, f, url) => (h ? h + ' vous invite' : 'Invitation') + ' à un appel vidéo sur ' + (n ? 'un appartement ' + n + ' pièces' : 'l’appartement') + (f != null && f !== '' ? ', étage ' + f : '') + '. On visite l’appartement et on l’aménage ensemble, dans le navigateur, sans inscription. ' + url,
+    peopleTitle: 'Dans l’appel', followP: 'Suivre', host: 'Hôte', me: 'Moi', you: 'Moi',
+    doing: { talk: 'parle', listen: 'écoute, sans micro', hold: (o) => 'déplace ' + o },
+    chat: 'Messages', chatIn: 'Écrire un message', sendMsg: 'Envoyer', people: 'Participants',
+    voice: 'Audio seul', voiceSub: 'La vidéo est en pause, l’appartement continue', flip: 'Changer de caméra', hideSelf: 'Masquer mon image', endAll: 'Terminer pour tous',
+    weak: 'La connexion est faible. Nous sommes passés en audio seul pour que l’appel continue.', weakVideo: 'Rétablir la vidéo',
+    reconnect: 'Reconnexion…', reconnectToast: 'L’appartement continue de fonctionner. Vos changements seront envoyés au retour de la connexion.', retry: 'Se reconnecter', lost: 'L’appel a été coupé.',
+    audio: 'Touchez pour entendre',
+    battery: (p) => 'Batterie à ' + p + ' %', batterySub: 'Passer en audio seul ? L’appel tiendra plus longtemps. L’appartement continue de fonctionner normalement.', batteryVoice: 'Audio seul', batteryKeep: 'Garder la vidéo',
+    leaveTitle: 'Quitter l’appel ?', leaveHostSub: 'Vous êtes l’hôte. Vous pouvez partir et laisser les autres continuer, ou terminer l’appel pour tous.',
+    leaveKeep: 'Partir, l’appel continue', leaveKeepSub: (n) => n + ' devient l’hôte', leaveEnd: 'Terminer pour tous', cancel: 'Annuler',
+    endTitle: 'L’appel est terminé. Votre aménagement est enregistré.', before: 'Avant', after: 'Après', endShare: 'Envoyer le résumé sur WhatsApp', endAlone: 'Continuer l’aménagement seul',
+    endFine: 'L’appel n’a pas été enregistré. Seuls le plan, les changements et les messages ont été conservés.', endToast: 'L’appel est terminé. Tous les changements sont enregistrés dans votre aménagement.',
+    endMeta: (t, len, n) => t + ' · ' + len + ' min · ' + n + ' participants', noChanges: 'Rien n’a été modifié pendant l’appel.',
+    chg: { 'item.move': 'Déplacement', 'item.rot': 'Rotation', 'item.add': 'Ajout', 'item.remove': 'Retrait', 'finish.set': 'Revêtement de sol', 'wall.shift': 'Mur déplacé', 'partition.add': 'Nouveau mur', 'partition.remove': 'Mur retiré', 'partition.restore': 'Mur rétabli', 'point.add': 'Nouveau point', 'point.move': 'Point déplacé', 'point.remove': 'Point retiré', 'point.restore': 'Point rétabli', 'room.name': 'Nom de la pièce' },
+    endSummary: 'Résumé de l’appel sur l’appartement :',
+    modelKept: 'Le modèle 3D reste tel quel', modelBack: 'Retour au modèle 3D', swap: 'Inverser le plan et la 3D',
+    backToDesigner: 'Retour à l’outil d’aménagement, l’appel continue', backToCall: 'Retour à l’appel', close: 'Fermer',
+    joined: (n) => n + ' a rejoint l’appel', left: (n) => n + ' a quitté l’appel. L’aménagement reste chez vous.', guest: 'Invité',
+    obj: { wall: 'le mur', point: 'la prise électrique', floor: 'le sol', room: 'le nom de la pièce', thing: 'l’objet' },
+  },
+  ru: {
+    dir: 'ltr', product: 'Видеозвонок о квартире',
+    sub: (n, m2, f) => [n ? n + '-комнатная квартира' : '', m2 ? m2 + ' м²' : '', f != null && f !== '' ? 'этаж ' + f : ''].filter(Boolean).join(' · '),
+    mic: 'Микрофон', muted: 'Выключен', micBlocked: 'Заблокирован', cam: 'Камера', camOff: 'Выключена', camBlocked: 'Заблокирована',
+    follow: 'Следить', following: 'Следим', point: 'Указать', invite: 'Пригласить', more: 'Ещё', leave: 'Выйти',
+    tour: 'Обзор', arrange: 'Расстановка', talk: 'Разговор', layouts: 'Вид',
+    followFrame: (n) => 'Смотрите как ' + n + ' · нажмите, чтобы остановить', back: (n) => 'Снова смотреть как ' + n,
+    followOne: (n) => 'Смотреть как ' + n, jumpOnce: 'Перейти туда один раз', bigPic: 'Крупно',
+    holdChip: (n, o) => n + ' двигает: ' + o, holdRefused: (n, o) => n + ' сейчас держит: ' + o + '. Попробуйте ещё раз через мгновение.',
+    undoMine: 'Отменить моё', undoOther: (n) => n + ' уже изменил(а) это, поэтому отмены не было.', undoNone: 'Больше нечего отменять.',
+    pill: (n, s) => 'В звонке: ' + n + (s ? ' · говорит ' + s : ''),
+    pointChip: (n) => n + ': здесь', pointHint: 'Долгое нажатие на план или на стену, чтобы указать. Линия исчезнет сама.',
+    summonBtn: 'Все ко мне', summonTitle: (n, r) => n + ' хочет показать всем ' + r, summonSub: (s) => 'Переход к его виду через ' + s + ' сек.',
+    summonGo: 'Перейти сейчас', summonNo: 'Не сейчас', theFlat: 'квартиру', viewers: (n) => 'Смотрят: ' + n,
+    controlsHint: 'Нажмите на экран, чтобы вернуть кнопки',
+    listen: 'Вы вошли как слушатель. Вы всё слышите и видите, можете указывать и двигать мебель.', permLink: 'Как разрешить микрофон',
+    permTitle: 'Разрешить микрофон на телефоне', iphone: 'iPhone', android: 'Android',
+    permIos: 'Нажмите Aa в адресной строке, Настройки веб-сайта, Микрофон: Разрешить.', permAndroid: 'Нажмите на замок рядом с адресом, Разрешения, Микрофон: Разрешить.',
+    permRetry: 'Я попробовал(а), проверить снова', permListen: 'Продолжить как слушатель',
+    inviteTitle: 'Пригласить в звонок', inviteSub: 'Кто получит ссылку, войдёт прямо из браузера, без регистрации. Ссылка работает только для этого звонка.',
+    wa: 'Пригласить в WhatsApp', copy: 'Копировать', copied: 'Скопировано', full: 'Звонок заполнен, 8 из 8',
+    inviteMsg: (h, n, f, url) => (h ? h + ' приглашает вас' : 'Приглашение') + ' на видеозвонок о ' + (n ? n + '-комнатной квартире' : 'квартире') + (f != null && f !== '' ? ', этаж ' + f : '') + '. Смотрим квартиру и вместе продумываем дизайн, в браузере, без регистрации. ' + url,
+    peopleTitle: 'В звонке', followP: 'Следить', host: 'Организатор', me: 'Я', you: 'Я',
+    doing: { talk: 'говорит', listen: 'слушает, без микрофона', hold: (o) => 'двигает: ' + o },
+    chat: 'Сообщения', chatIn: 'Написать сообщение', sendMsg: 'Отправить', people: 'Участники',
+    voice: 'Только голос', voiceSub: 'Видео на паузе, квартира работает дальше', flip: 'Сменить камеру', hideSelf: 'Скрыть моё изображение', endAll: 'Завершить для всех',
+    weak: 'Связь слабая. Мы перешли на голос, чтобы звонок продолжался.', weakVideo: 'Вернуть видео',
+    reconnect: 'Переподключаемся…', reconnectToast: 'Квартира продолжает работать. Ваши изменения отправятся, когда связь вернётся.', retry: 'Подключиться снова', lost: 'Звонок прервался.',
+    audio: 'Нажмите, чтобы слышать',
+    battery: (p) => 'Заряд батареи ' + p + '%', batterySub: 'Перейти на голос? Так звонок продлится дольше. Квартира работает как обычно.', batteryVoice: 'Только голос', batteryKeep: 'Оставить видео',
+    leaveTitle: 'Выйти из звонка?', leaveHostSub: 'Вы организатор. Можно выйти и оставить остальных продолжать, или завершить звонок для всех.',
+    leaveKeep: 'Выйти, звонок продолжится', leaveKeepSub: (n) => n + ' станет организатором', leaveEnd: 'Завершить для всех', cancel: 'Отмена',
+    endTitle: 'Звонок завершён. Ваш дизайн сохранён.', before: 'До', after: 'После', endShare: 'Отправить итоги в WhatsApp', endAlone: 'Продолжить дизайн самостоятельно',
+    endFine: 'Звонок не записывался. Сохранены только план, изменения и сообщения.', endToast: 'Звонок завершён. Все изменения сохранены в вашем дизайне.',
+    endMeta: (t, len, n) => t + ' · ' + len + ' мин · участников: ' + n, noChanges: 'Во время звонка ничего не изменилось.',
+    chg: { 'item.move': 'Перемещение', 'item.rot': 'Поворот', 'item.add': 'Добавление', 'item.remove': 'Удаление', 'finish.set': 'Покрытие пола', 'wall.shift': 'Сдвиг стены', 'partition.add': 'Новая стена', 'partition.remove': 'Стена убрана', 'partition.restore': 'Стена возвращена', 'point.add': 'Новая точка', 'point.move': 'Точка перемещена', 'point.remove': 'Точка убрана', 'point.restore': 'Точка возвращена', 'room.name': 'Название комнаты' },
+    endSummary: 'Итоги звонка о квартире:',
+    modelKept: 'Модель сохранена как есть', modelBack: 'Вернуться к модели', swap: 'Поменять местами план и 3D',
+    backToDesigner: 'Назад в редактор, звонок продолжается', backToCall: 'Назад к звонку', close: 'Закрыть',
+    joined: (n) => n + ' теперь в звонке', left: (n) => n + ' вышел(а) из звонка. Дизайн остаётся у вас.', guest: 'Гость',
+    obj: { wall: 'стена', point: 'электроточка', floor: 'напольное покрытие', room: 'название комнаты', thing: 'предмет' },
+  },
+  ar: {
+    dir: 'rtl', product: 'مكالمة فيديو عن الشقة',
+    sub: (n, m2, f) => [n ? 'شقة ' + n + ' غرف' : '', m2 ? m2 + ' م²' : '', f != null && f !== '' ? 'الطابق ' + f : ''].filter(Boolean).join(' · '),
+    mic: 'الميكروفون', muted: 'مكتوم', micBlocked: 'محظور', cam: 'الكاميرا', camOff: 'مطفأة', camBlocked: 'محظورة',
+    follow: 'متابعة', following: 'تتابع', point: 'إشارة', invite: 'دعوة', more: 'المزيد', leave: 'خروج',
+    tour: 'جولة', arrange: 'ترتيب', talk: 'محادثة', layouts: 'التخطيط',
+    followFrame: (n) => 'تتابع ' + n + ' · اضغط للإيقاف', back: (n) => 'العودة إلى ' + n,
+    followOne: (n) => 'متابعة ' + n, jumpOnce: 'الانتقال إلى عرضه مرة واحدة', bigPic: 'صورة كبيرة',
+    holdChip: (n, o) => n + ' يحرّك ' + o, holdRefused: (n, o) => n + ' يمسك ' + o + ' حاليًا. حاول مرة أخرى بعد لحظة.',
+    undoMine: 'تراجع عن تغييري', undoOther: (n) => n + ' غيّر ذلك بالفعل، لذا لم يتم التراجع.', undoNone: 'لا يوجد تغيير آخر لك للتراجع عنه.',
+    pill: (n, s) => n + ' في المكالمة' + (s ? ' · ' + s + ' يتحدث' : ''),
+    pointChip: (n) => n + ': هنا', pointHint: 'اضغط مطولًا على المخطط أو على جدار للإشارة. يختفي الخط تلقائيًا.',
+    summonBtn: 'الجميع إليّ', summonTitle: (n, r) => n + ' يريد أن يُري الجميع ' + r, summonSub: (s) => 'الانتقال إلى عرضه خلال ' + s + ' ثوانٍ',
+    summonGo: 'الانتقال الآن', summonNo: 'ليس الآن', theFlat: 'الشقة', viewers: (n) => 'المشاهدون: ' + n,
+    controlsHint: 'اضغط على الشاشة لإعادة الأزرار',
+    listen: 'دخلت كمستمع. تسمع وترى كل شيء، ويمكنك الإشارة وتحريك الأثاث.', permLink: 'كيف تسمح بالميكروفون',
+    permTitle: 'السماح بالميكروفون على الهاتف', iphone: 'آيفون', android: 'أندرويد',
+    permIos: 'اضغط على Aa في شريط العنوان، ثم إعدادات موقع الويب، ثم الميكروفون: سماح.', permAndroid: 'اضغط على القفل بجانب العنوان، ثم الأذونات، ثم الميكروفون: سماح.',
+    permRetry: 'جرّبت، تحقق مرة أخرى', permListen: 'المتابعة كمستمع',
+    inviteTitle: 'دعوة إلى المكالمة', inviteSub: 'من يستلم الرابط يدخل من المتصفح، دون تسجيل. الرابط يعمل لهذه المكالمة فقط.',
+    wa: 'دعوة عبر واتساب', copy: 'نسخ', copied: 'تم النسخ', full: 'المكالمة ممتلئة، 8 من 8',
+    inviteMsg: (h, n, f, url) => (h ? h + ' يدعوك' : 'دعوة') + ' إلى مكالمة فيديو عن ' + (n ? 'شقة ' + n + ' غرف' : 'الشقة') + (f != null && f !== '' ? ' في الطابق ' + f : '') + '. نشاهد الشقة ونصممها معًا، في المتصفح، دون تسجيل. ' + url,
+    peopleTitle: 'في المكالمة', followP: 'متابعة', host: 'المضيف', me: 'أنا', you: 'أنا',
+    doing: { talk: 'يتحدث', listen: 'يستمع، دون ميكروفون', hold: (o) => 'يحرّك ' + o },
+    chat: 'الرسائل', chatIn: 'اكتب رسالة', sendMsg: 'إرسال', people: 'المشاركون',
+    voice: 'صوت فقط', voiceSub: 'يتوقف الفيديو، وتبقى الشقة تعمل', flip: 'تبديل الكاميرا', hideSelf: 'إخفاء صورتي', endAll: 'إنهاء للجميع',
+    weak: 'الاتصال ضعيف. انتقلنا إلى الصوت فقط لتستمر المكالمة.', weakVideo: 'إعادة الفيديو',
+    reconnect: 'جارٍ إعادة الاتصال…', reconnectToast: 'الشقة تواصل العمل. ستُرسل تغييراتك عند عودة الاتصال.', retry: 'إعادة الاتصال', lost: 'انقطعت المكالمة.',
+    audio: 'اضغط لسماع الصوت',
+    battery: (p) => 'البطارية ' + p + '%', batterySub: 'الانتقال إلى الصوت فقط؟ هكذا تدوم المكالمة أطول. الشقة تعمل كالمعتاد.', batteryVoice: 'صوت فقط', batteryKeep: 'متابعة بالفيديو',
+    leaveTitle: 'الخروج من المكالمة؟', leaveHostSub: 'أنت المضيف. يمكنك الخروج وترك الآخرين يكملون، أو إنهاء المكالمة للجميع.',
+    leaveKeep: 'خروج، والمكالمة مستمرة', leaveKeepSub: (n) => n + ' سيصبح المضيف', leaveEnd: 'إنهاء للجميع', cancel: 'إلغاء',
+    endTitle: 'انتهت المكالمة. تصميمك محفوظ.', before: 'قبل', after: 'بعد', endShare: 'إرسال الملخص عبر واتساب', endAlone: 'متابعة التصميم وحدك',
+    endFine: 'لم تُسجَّل المكالمة. حُفظ فقط المخطط والتغييرات والرسائل.', endToast: 'انتهت المكالمة. حُفظت كل التغييرات في تصميمك.',
+    endMeta: (t, len, n) => t + ' · ' + len + ' دقيقة · المشاركون: ' + n, noChanges: 'لم يتغير شيء خلال المكالمة.',
+    chg: { 'item.move': 'نقل', 'item.rot': 'تدوير', 'item.add': 'إضافة', 'item.remove': 'إزالة', 'finish.set': 'الأرضية', 'wall.shift': 'نقل جدار', 'partition.add': 'جدار جديد', 'partition.remove': 'إزالة جدار', 'partition.restore': 'إعادة جدار', 'point.add': 'نقطة جديدة', 'point.move': 'نقل نقطة', 'point.remove': 'إزالة نقطة', 'point.restore': 'إعادة نقطة', 'room.name': 'اسم الغرفة' },
+    endSummary: 'ملخص المكالمة عن الشقة:',
+    modelKept: 'النموذج محفوظ كما هو', modelBack: 'العودة إلى النموذج', swap: 'التبديل بين المخطط والعرض ثلاثي الأبعاد',
+    backToDesigner: 'العودة إلى أداة التصميم، المكالمة مستمرة', backToCall: 'العودة إلى المكالمة', close: 'إغلاق',
+    joined: (n) => n + ' انضم إلى المكالمة', left: (n) => n + ' غادر المكالمة. التصميم يبقى عندك.', guest: 'ضيف',
+    obj: { wall: 'الجدار', point: 'نقطة الكهرباء', floor: 'الأرضية', room: 'اسم الغرفة', thing: 'القطعة' },
+  },
 };
 
 // our own line set: 24 px, 2 px stroke, square caps
@@ -762,7 +980,7 @@ const keyOf = (op) => {
 };
 
 async function joinOpen(designer, opts) {
-  const lang = opts.lang === 'en' ? 'en' : 'he', T = UI[lang], tr = opts.transport, me = String(opts.identity);
+  const lang = pickLang(opts.lang), T = UI[lang], tr = opts.transport, me = String(opts.identity);
   if (!tr) throw new Error('joinCall: a transport is required');
   const store = designer.store, container = opts.container, shadow = container.getRootNode(), host = shadow.host || document.body;
   await ensureCss(shadow);
@@ -802,7 +1020,7 @@ async function joinOpen(designer, opts) {
     if (k === 'i') {
       const it = store.item(id), c = it && CAT && CAT.ITEMS[it.sku];
       if (!c) return T.obj.thing;
-      if (lang === 'en') return EN_SKU[String(it.sku).replace(/^gen\./, '')] || T.obj.thing;
+      if (lang !== 'he') return (SKU_NAMES[lang] || EN_SKU)[String(it.sku).replace(/^gen\./, '')] || T.obj.thing;
       if (it.sku === 'gen.kitchen') return 'ארונות המטבח';
       const w = c.he.split(' ')[0]; return 'ה' + (HE_FIX[w] || w);
     }
@@ -1834,18 +2052,45 @@ const SHEET = {
     noName: 'Write a name so the others know who is in the call.', wait: 'Connecting…', waitPlan: 'Receiving the apartment from the call…', empty: 'Nobody is in the call yet. Waiting for the person who invited you…',
     fail: 'Could not connect to the call. Please try again shortly.', off: 'Video calls are not available right now.', full: 'The call is full, 8 of 8', gone: 'This call has already ended.', rate: 'Many calls were opened in a short time. Please try again in a few minutes.',
     noPlan: 'The apartment did not arrive from the call. Please open the link again.' },
+  fr: { dir: 'ltr', startH: 'Appel vidéo sur l’appartement',
+    startSub: (n) => 'Invitez qui vous voulez et aménagez ensemble ' + (n ? 'l’appartement ' + n + ' pièces' : 'l’appartement') + '. Tout le monde voit le même plan en temps réel.',
+    joinH: 'Rejoindre l’appel sur l’appartement', joinSub: (h) => (h ? h + ' vous invite. ' : '') + 'Vous entrez caméra coupée, et vous l’activez quand vous voulez.',
+    name: 'Comment vous appeler ?', start: 'Démarrer l’appel', join: 'Entrer', note: 'L’appel n’est pas enregistré. Le navigateur demandera l’accès à la caméra et au micro seulement quand vous toucherez le bouton.', close: 'Fermer', notNow: 'Pas maintenant',
+    cam: 'Caméra', camSub: 'Vous pouvez la couper à tout moment', mic: 'Micro', micSub: 'Vous pouvez le couper à tout moment', meter: 'Parlez, et la ligne bouge. C’est ainsi que vous savez qu’on vous entendra.', you: 'Votre image',
+    blocked: 'Le navigateur n’a pas donné l’accès. Vous pouvez entrer en écoute et autoriser plus tard.',
+    noName: 'Écrivez un nom pour que les autres sachent qui est dans l’appel.', wait: 'Connexion à l’appel…', waitPlan: 'Réception de l’appartement depuis l’appel…', empty: 'Personne n’est encore dans l’appel. En attente de la personne qui vous a invité…',
+    fail: 'Impossible de se connecter à l’appel. Réessayez dans un instant.', off: 'Les appels vidéo ne sont pas disponibles pour le moment.', full: 'L’appel est complet, 8 sur 8', gone: 'Cet appel est déjà terminé.', rate: 'Beaucoup d’appels ont été ouverts en peu de temps. Réessayez dans quelques minutes.',
+    noPlan: 'L’appartement n’est pas arrivé depuis l’appel. Rouvrez le lien pour réessayer.' },
+  ru: { dir: 'ltr', startH: 'Видеозвонок о квартире',
+    startSub: (n) => 'Пригласите кого нужно и вместе продумайте дизайн ' + (n ? n + '-комнатной квартиры' : 'квартиры') + '. Все видят один и тот же план в реальном времени.',
+    joinH: 'Присоединиться к звонку о квартире', joinSub: (h) => (h ? h + ' приглашает вас. ' : '') + 'Вы входите с выключенной камерой и включаете её, когда захотите.',
+    name: 'Как вас зовут?', start: 'Начать звонок', join: 'Войти', note: 'Звонок не записывается. Браузер попросит доступ к камере и микрофону только после вашего нажатия.', close: 'Закрыть', notNow: 'Не сейчас',
+    cam: 'Камера', camSub: 'Можно выключить в любой момент', mic: 'Микрофон', micSub: 'Можно выключить в любой момент', meter: 'Говорите, и полоска двигается. Значит, вас услышат.', you: 'Ваше изображение',
+    blocked: 'Браузер не дал доступ. Можно войти как слушатель и разрешить позже.',
+    noName: 'Напишите имя, чтобы другие знали, кто в звонке.', wait: 'Подключаемся к звонку…', waitPlan: 'Получаем квартиру от участников звонка…', empty: 'В звонке пока никого нет. Ждём того, кто вас пригласил…',
+    fail: 'Не удалось подключиться к звонку. Попробуйте ещё раз чуть позже.', off: 'Видеозвонки сейчас недоступны.', full: 'Звонок заполнен, 8 из 8', gone: 'Этот звонок уже завершён.', rate: 'За короткое время открыто много звонков. Попробуйте снова через несколько минут.',
+    noPlan: 'Квартира не пришла от участников звонка. Попробуйте снова открыть ссылку.' },
+  ar: { dir: 'rtl', startH: 'مكالمة فيديو عن الشقة',
+    startSub: (n) => 'ادعُ من تحتاج وصمّموا معًا ' + (n ? 'الشقة ذات ' + n + ' غرف' : 'الشقة') + '. الجميع يرى المخطط نفسه مباشرة.',
+    joinH: 'الانضمام إلى المكالمة عن الشقة', joinSub: (h) => (h ? h + ' يدعوك. ' : '') + 'تدخل والكاميرا مطفأة، وتشغّلها متى شئت.',
+    name: 'ما الاسم الذي نناديك به؟', start: 'بدء المكالمة', join: 'دخول', note: 'المكالمة غير مسجّلة. سيطلب المتصفح إذن الكاميرا والميكروفون فقط عندما تضغط.', close: 'إغلاق', notNow: 'ليس الآن',
+    cam: 'الكاميرا', camSub: 'يمكن إيقافها في أي لحظة', mic: 'الميكروفون', micSub: 'يمكن كتمه في أي لحظة', meter: 'تحدّث وسيتحرك الخط. هكذا تعرف أنهم سيسمعونك.', you: 'صورتك',
+    blocked: 'لم يمنح المتصفح الإذن. يمكنك الدخول كمستمع والسماح لاحقًا.',
+    noName: 'اكتب اسمًا ليعرف الآخرون من في المكالمة.', wait: 'جارٍ الاتصال بالمكالمة…', waitPlan: 'جارٍ استلام الشقة من المكالمة…', empty: 'لا أحد في المكالمة بعد. بانتظار من دعاك…',
+    fail: 'تعذّر الاتصال بالمكالمة. حاول مرة أخرى بعد قليل.', off: 'مكالمات الفيديو غير متاحة حاليًا.', full: 'المكالمة ممتلئة، 8 من 8', gone: 'هذه المكالمة انتهت بالفعل.', rate: 'فُتحت مكالمات كثيرة خلال وقت قصير. حاول مرة أخرى بعد بضع دقائق.',
+    noPlan: 'لم تصل الشقة من المكالمة. حاول فتح الرابط مرة أخرى.' },
 };
 const NAME_KEY = 'nl-call-name';
 
 /** The sheet that starts a call (mode 'start') or joins one from a link (mode 'join'). container sits in a shadow root.
  *  api.media = { mic, cam, blocked: { mic, cam } }: what the person switched on (both OFF by default). */
 export async function callSheet(container, o = {}) {
-  const T = SHEET[o.lang === 'en' ? 'en' : 'he'], shadow = container.getRootNode();
+  const T = SHEET[pickLang(o.lang)], shadow = container.getRootNode();
   import(o.lib || LK_LIB).catch(() => {}); // the call library starts loading while the visitor types a name (it was asked for: the call button)
   if (shadow && shadow.querySelector && shadow !== document) await ensureCss(shadow);
   const el = document.createElement('section');
   const join = o.mode === 'join';
-  el.className = 'ndo-sheetwrap ndc-sheet'; el.dir = T.dir; el.lang = o.lang === 'en' ? 'en' : 'he'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'ndc-sheet-h');
+  el.className = 'ndo-sheetwrap ndc-sheet'; el.dir = T.dir; el.lang = pickLang(o.lang); el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'ndc-sheet-h');
   const sw = (k, ic, label, sub) => '<label class="ndo-swrow"><span class="ndo-ric">' + oi(ic, 22) + '</span><span class="ndo-rt"><b>' + label + '</b><small>' + sub + '</small></span>' +
     '<input type="checkbox" role="switch" class="ndo-swin" data-ndc="' + k + '"><span class="ndo-sw" aria-hidden="true"><i></i></span></label>';
   el.innerHTML = '<div class="ndo-card ndo-entry"><div class="ndo-shh"><h2 id="ndc-sheet-h">' + (join ? T.joinH : T.startH) + '</h2>' +

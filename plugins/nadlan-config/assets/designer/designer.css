@@ -78,7 +78,8 @@ header>div{min-width:0;flex:1}
 .cam .dot{fill:var(--dim);stroke:#fff;stroke-width:5}.cam .cone{fill:rgba(181,48,42,.16);stroke:var(--dim);stroke-width:2.5;stroke-dasharray:9 7}
 .cam .hit{cursor:default;pointer-events:none}.cam.walk .hit{pointer-events:auto;cursor:grab}
 nav{display:flex;border-top:2px solid var(--ink);background:var(--card);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;min-width:0;min-height:54px;padding:0 2px;font-weight:600;font-size:13px;line-height:1.15;border-inline-start:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+nav button{flex:1;min-width:0;min-height:54px;padding:0 3px;font-weight:600;font-size:12.5px;line-height:1.15;border-inline-start:1px solid var(--line);overflow:hidden;overflow-wrap:anywhere}
+nav button.red{color:var(--dim)}nav button.red[aria-expanded=true]{background:var(--dim);color:#fff}
 nav button:first-child{border:0}
 nav button[aria-expanded=true]{background:var(--ink);color:#fff}
 nav button.go{background:var(--blue);color:#fff;font-weight:700;border:0}
@@ -102,6 +103,39 @@ td.n,th.n{text-align:end;white-space:nowrap;padding-inline-start:12px}
 .toast.stop{background:var(--dim)}
 .toast{position:absolute;inset-inline:10px;top:62px;background:var(--ink);color:#fff;padding:10px 12px;font-weight:600;font-size:14px;z-index:9;border:2px solid #fff}
 .x{position:absolute;top:6px;inset-inline-end:8px;min-width:44px;min-height:44px;border:2px solid var(--ink);background:var(--card);font-weight:700;z-index:3}
+/* HAD-792: notes to the builder (redline tags), the walk's room row, finishes with wall paint, the design order */
+.nt rect{fill:var(--dim);stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke;cursor:grab}
+.nt text{fill:#fff;font-family:"IBM Plex Mono",monospace;font-weight:600;text-anchor:middle;pointer-events:none;direction:ltr}
+.nt .halo{fill:rgba(181,48,42,.18);stroke:var(--dim);stroke-width:2;vector-effect:non-scaling-stroke}
+.nt .nthit{fill:transparent;stroke:none}
+.walkbar{position:absolute;inset-inline:8px;bottom:22px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;z-index:2}
+.walkbar::-webkit-scrollbar{display:none}
+.walkbar button{flex:none;min-height:40px;padding:0 12px;border:2px solid var(--ink);background:var(--card);font-size:13px;font-weight:600;white-space:nowrap}
+.walkbar button.tour{background:var(--ink);color:#fff}.walkbar button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.chips button.rise{border-inline-start:2px solid var(--ink)}
+.swatch{display:flex;flex-direction:row;align-items:center;gap:8px}
+.swatch i{flex:none;width:26px;height:26px;border:2px solid var(--ink)}
+.notebox{display:flex;flex-direction:column;gap:8px}
+.notebox textarea{font:inherit;font-size:15px;border:2px solid var(--ink);padding:8px;min-height:72px;resize:vertical;width:100%;background:#fff;color:var(--ink)}
+.notebox .row{display:flex;gap:8px}.notebox .row button{min-height:44px;padding:0 14px;border:2px solid var(--ink);font-weight:600}
+.notebox .row .save{flex:1;background:var(--ink);color:#fff}
+.nlist{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.nlist button{display:flex;gap:8px;align-items:flex-start;text-align:start;width:100%;min-height:44px;padding:6px 8px;border:1.5px solid var(--line)}
+.ntag{flex:none;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;background:var(--dim);color:#fff;font:600 13px "IBM Plex Mono",monospace}
+.primary{display:block;width:100%;min-height:48px;margin-top:10px;background:var(--blue);color:#fff;font-weight:700;border:0}
+.order h4{font-size:13.5px;margin:14px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--ink)}
+.order h4.red{border-color:var(--dim);color:var(--dim)}
+.order .line{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.order .line b{font-weight:600;text-align:end}
+.order .meta{font:12px "IBM Plex Mono",monospace;color:var(--ink2)}
+.order label{display:flex;gap:8px;align-items:center;min-height:40px;font-size:14px}
+.order label input{width:20px;height:20px;accent-color:var(--blue)}
+.order .acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px;position:sticky;bottom:-14px;background:var(--card);padding:8px 0 10px;border-top:2px solid var(--ink);z-index:1}
+.order .acts button{min-height:48px;font-weight:700;border:2px solid var(--ink)}
+.order .acts .go{background:var(--blue);border-color:var(--blue);color:#fff}
+.sheet.wide{max-height:72%}
+.nd[lang=ru],.nd[lang=fr],.nd[lang=en]{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",Arial,sans-serif}
+.nd[lang=ar]{font-family:"IBM Plex Sans Arabic","IBM Plex Sans Hebrew",Arial,sans-serif}
 @media (min-width:900px){
   .nd{grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1.25fr) 14px minmax(0,1fr)}
   header,nav{grid-column:1/-1}
