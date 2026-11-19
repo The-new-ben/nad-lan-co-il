@@ -1,0 +1,28 @@
+{
+ "state_before": [
+  200,
+  "reserve_review"
+ ],
+ "anon_deposit": [
+  409,
+  "gate"
+ ],
+ "admin_approve": [
+  405,
+  null
+ ],
+ "lawyer_user": 17,
+ "lawyer_no_tick": [
+  400,
+  "confirm"
+ ],
+ "lawyer_approve": [
+  200,
+  "reserve_approved"
+ ],
+ "state_after": [
+  200,
+  "reserve_approved",
+  "עו״ד בדיקה (חבילה 4)"
+ ]
+}

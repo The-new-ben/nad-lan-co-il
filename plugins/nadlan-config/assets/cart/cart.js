@@ -381,7 +381,17 @@
       document.head.appendChild(l);
     }
   }
+  // the Kikar showroom keeps the apartment on screen in its own link (#dira=B24-262); it announces it before this script listens
+  function fromHash() {
+    const m = /^#dira=([A-Z])(\d{1,3})-(\d{1,3})/.exec(location.hash || '');
+    if (!m || !P) return;
+    const p = S.projects[P.slug], u = p && p.unit;
+    if (u && u.tower === m[1] && u.floor === Number(m[2]) && u.bearing === Number(m[3])) return;
+    setUnit({ floor: Number(m[2]), tower: m[1], bearing: Number(m[3]) }, 'link');
+  }
+  window.addEventListener('hashchange', fromHash);
   function open(view, slug, from) {
+    fromHash();
     if (!root) build();
     scanDesigns(); scanOrders(); scanRent();
     opener = from || document.activeElement;
@@ -402,6 +412,7 @@
   function go(view, slug) { if (!root || root.hidden) { open(view, slug); return; } V.view = view; if (slug) V.slug = slug; render(); body.scrollTop = 0; }
   function add(openIt, from) {
     if (!P) { if (openIt) open('basket', null, from); return; }
+    fromHash();
     const p = proj(P.slug, true);
     if (!p.in) { p.in = true; p.added = Date.now(); track('basket_add', { project: P.slug, unit: (p.unit && (p.unit.id || p.unit.floor)) || '', v: inCart().length }); }
     S.order = [P.slug].concat(S.order.filter((x) => x !== P.slug));

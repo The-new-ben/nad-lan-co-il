@@ -13,8 +13,8 @@ const rect = (sel) => p.ev(`(()=>{const e=document.querySelector(${JSON.stringif
 async function press(sel, label) {
   const j = await rect(sel);
   if (!j) throw new Error('missing ' + (label || sel));
-  await sleep(250);
-  const r = JSON.parse(await rect(sel));
+  await sleep(750); // the site scrolls smoothly: read the place once the scroll has settled
+  const r = JSON.parse(await p.ev(`(()=>{const e=document.querySelector(${JSON.stringify(sel)}); const b=e.getBoundingClientRect(); return JSON.stringify({x:b.left+b.width/2,y:b.top+b.height/2})})()`));
   if (MOB) await p.tap(r.x, r.y);
   else { await p.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: r.x, y: r.y }); await sleep(60); await p.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: r.x, y: r.y, button: 'left', clickCount: 1 }); await sleep(50); await p.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: r.x, y: r.y, button: 'left', clickCount: 1 }); }
   await sleep(450);
@@ -24,9 +24,11 @@ await sleep(6500);
 await step('page', 200);
 // the way in: the shell slot, the stage's step, or the chip
 await sleep(MOB ? 600 : 300);
-const entry = JSON.parse(await p.ev(`JSON.stringify([...document.querySelectorAll('.nlc-slotbtn,.nlc-addbtn,.nlc-stepbtn,.nlc-chip-fixed')].filter(e=>e.offsetParent!==null||e.classList.contains('nlc-chip-fixed')).map(e=>e.className.split(' ').find(c=>c.startsWith('nlc-'))))`));
+const entry = JSON.parse(await p.ev(`JSON.stringify([...document.querySelectorAll('.nlc-slotbtn,.nlc-addbtn,.nlc-stepbtn,.nlc-chip-fixed')].filter(e=>{const r=e.getBoundingClientRect(); return r.width>0&&r.height>0}).map(e=>e.className.split(' ').find(c=>c.startsWith('nlc-'))))`));
 R.entries = entry;
-const first = entry.includes('nlc-addbtn') ? '.nlc-addbtn' : entry.includes('nlc-slotbtn') ? '.nlc-slotbtn' : entry.includes('nlc-stepbtn') ? '.nlc-stepbtn' : '.nlc-chip-fixed';
+const ck = await p.ev(`(()=>{const b=document.querySelector('.nlck-ic--bk'); return !!(b && b.getBoundingClientRect().width)})()`);
+R.entry_used = ck ? 'cockpit bag' : '';
+const first = ck ? '.nlck-ic--bk' : entry.includes('nlc-addbtn') ? '.nlc-addbtn' : entry.includes('nlc-slotbtn') ? '.nlc-slotbtn' : entry.includes('nlc-stepbtn') ? '.nlc-stepbtn' : '.nlc-chip-fixed';
 await press(first, 'entry');
 await sleep(500);
 if (await p.ev(`!!document.querySelector('.nlc [data-add]')`)) await press('.nlc [data-add]', 'add');

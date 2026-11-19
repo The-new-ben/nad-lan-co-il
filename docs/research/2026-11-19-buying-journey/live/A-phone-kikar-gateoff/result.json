@@ -1,0 +1,30 @@
+{
+ "tag": "A-phone-kikar-gateoff",
+ "url": "https://nad-lan.co.il/projects/hamedina/#dira=B24-262",
+ "width": 390,
+ "steps": [
+  "page",
+  "basket",
+  "call",
+  "price",
+  "summary",
+  "request",
+  "request-filled",
+  "sent",
+  "doc",
+  "doc-reserve",
+  "after-reserve",
+  "certificate",
+  "doc-top"
+ ],
+ "at": "2026-11-19T14:58:17.549Z",
+ "entries": [
+  "nlc-slotbtn"
+ ],
+ "entry_used": "cockpit bag",
+ "ref": "NL-WBQ6-F99E",
+ "token": "wbq6f99esfb8b2p1ebpupcaxwrju",
+ "doc": "https://nad-lan.co.il/wp-json/nadlan/v1/cart/doc/wbq6f99esfb8b2p1ebpupcaxwrju",
+ "errors": [],
+ "after_reserve": "deposit-open"
+}

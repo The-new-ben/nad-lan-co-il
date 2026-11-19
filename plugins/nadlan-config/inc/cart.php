@@ -79,7 +79,7 @@ if ( ! function_exists( 'nadlan_cart_words' ) ) {
 				'status' => 'מה קרה עד עכשיו', 'st_rfp' => 'הבקשה להצעה נקלטה', 'st_reserve' => 'בקשת השריון נקלטה', 'st_wait' => 'ממתין לבדיקת עורך דין',
 				'st_ok' => 'עורך דין אישר', 'st_ok_off' => 'אושר ללא בדיקת עורך דין (שלב לדוגמה)', 'st_returned' => 'עורך הדין החזיר את הבקשה עם הערה',
 				'st_dep' => 'פיקדון לדוגמה: לא חויב כסף', 'st_next' => 'היזם והצוות חוזרים אליך', 'reserve' => 'שריון הדירה', 'draft' => 'טיוטה לבדיקת עורך דין',
-				'terms' => 'תנאי השריון', 'accept' => 'קראתי את תנאי הטיוטה', 'ask' => 'בקשת שריון', 'deposit' => 'פיקדון שריון', 'sim' => 'לדוגמה בלבד · לא יחויב כסף',
+				'terms' => 'תנאי השריון', 'terms_v' => 'טיוטה 1, 19.11.2026', 'accept' => 'קראתי את תנאי הטיוטה', 'ask' => 'בקשת שריון', 'deposit' => 'פיקדון שריון', 'sim' => 'לדוגמה בלבד · לא יחויב כסף',
 				'amount_tbd' => 'הסכום ייקבע בתנאי השריון של היזם', 'pay_sim' => 'לפיקדון לדוגמה', 'cert' => 'אישור שריון לדוגמה',
 				'cert_note' => 'זהו שריון לדוגמה שמראה את הדרך. אין לו תוקף מול היזם ולא חויב כסף, עד שייפתח חיוב אמיתי עם תנאים חתומים.',
 				'approved_by' => 'אישר', 'licence' => 'רישיון', 'lawyer_note' => 'הערת עורך הדין', 'wait_note' => 'ברגע שעורך הדין יאשר, הכפתור לפיקדון ייפתח כאן. אפשר לסגור את הדף ולחזור בקישור הזה.',
@@ -99,7 +99,7 @@ if ( ! function_exists( 'nadlan_cart_words' ) ) {
 				'status' => 'What has happened so far', 'st_rfp' => 'Request for proposal received', 'st_reserve' => 'Reservation request received', 'st_wait' => 'Waiting for a lawyer to review',
 				'st_ok' => 'A lawyer approved', 'st_ok_off' => 'Approved without a lawyer review (example run)', 'st_returned' => 'The lawyer returned the request with a note',
 				'st_dep' => 'Example deposit: no money charged', 'st_next' => 'The developer and the team get back to you', 'reserve' => 'Reserve the apartment', 'draft' => 'Draft for a lawyer',
-				'terms' => 'Reservation conditions', 'accept' => 'I have read the draft conditions', 'ask' => 'Request a reservation', 'deposit' => 'Reservation deposit', 'sim' => 'Example only · no money is charged',
+				'terms' => 'Reservation conditions', 'terms_v' => 'draft 1, 19.11.2026', 'accept' => 'I have read the draft conditions', 'ask' => 'Request a reservation', 'deposit' => 'Reservation deposit', 'sim' => 'Example only · no money is charged',
 				'amount_tbd' => 'The amount will be set in the developer\'s reservation terms', 'pay_sim' => 'Go to the example deposit', 'cert' => 'Example reservation confirmation',
 				'cert_note' => 'This is an example reservation that shows the way. It binds no developer and no money was charged, until real charging opens with signed terms.',
 				'approved_by' => 'Approved by', 'licence' => 'Licence', 'lawyer_note' => 'Lawyer\'s note', 'wait_note' => 'Once the lawyer approves, the deposit button opens here. You can close this page and come back with this link.',
@@ -119,7 +119,7 @@ if ( ! function_exists( 'nadlan_cart_words' ) ) {
 				'status' => 'Ce qui s’est passé', 'st_rfp' => 'Demande de proposition reçue', 'st_reserve' => 'Demande de réservation reçue', 'st_wait' => 'En attente de l’avocat',
 				'st_ok' => 'Un avocat a approuvé', 'st_ok_off' => 'Approuvé sans avocat (parcours exemple)', 'st_returned' => 'L’avocat a renvoyé la demande avec une note',
 				'st_dep' => 'Dépôt exemple : aucun débit', 'st_next' => 'Le promoteur et l’équipe vous recontactent', 'reserve' => 'Réserver l’appartement', 'draft' => 'Projet pour avocat',
-				'terms' => 'Conditions de réservation', 'accept' => 'J’ai lu les conditions provisoires', 'ask' => 'Demander la réservation', 'deposit' => 'Dépôt de réservation', 'sim' => 'Exemple uniquement · aucun débit',
+				'terms' => 'Conditions de réservation', 'terms_v' => 'projet 1, 19.11.2026', 'accept' => 'J’ai lu les conditions provisoires', 'ask' => 'Demander la réservation', 'deposit' => 'Dépôt de réservation', 'sim' => 'Exemple uniquement · aucun débit',
 				'amount_tbd' => 'Le montant sera fixé dans les conditions du promoteur', 'pay_sim' => 'Vers le dépôt exemple', 'cert' => 'Confirmation de réservation (exemple)',
 				'cert_note' => 'Réservation exemple qui montre le parcours. Elle n’engage aucun promoteur et rien n’a été débité, tant qu’un vrai paiement n’est pas ouvert avec des conditions signées.',
 				'approved_by' => 'Approuvé par', 'licence' => 'Numéro d’inscription', 'lawyer_note' => 'Note de l’avocat', 'wait_note' => 'Dès que l’avocat approuve, le bouton du dépôt s’ouvre ici. Vous pouvez revenir avec ce lien.',
@@ -139,7 +139,7 @@ if ( ! function_exists( 'nadlan_cart_words' ) ) {
 				'status' => 'Что уже произошло', 'st_rfp' => 'Запрос предложения получен', 'st_reserve' => 'Запрос на бронь получен', 'st_wait' => 'Ожидает проверки юриста',
 				'st_ok' => 'Юрист одобрил', 'st_ok_off' => 'Одобрено без юриста (пробный путь)', 'st_returned' => 'Юрист вернул запрос с замечанием',
 				'st_dep' => 'Пробный депозит: деньги не списаны', 'st_next' => 'Застройщик и команда свяжутся с вами', 'reserve' => 'Бронирование квартиры', 'draft' => 'Черновик для юриста',
-				'terms' => 'Условия бронирования', 'accept' => 'Я прочитал(а) черновик условий', 'ask' => 'Запросить бронь', 'deposit' => 'Депозит за бронь', 'sim' => 'Только пример · деньги не списываются',
+				'terms' => 'Условия бронирования', 'terms_v' => 'черновик 1, 19.11.2026', 'accept' => 'Я прочитал(а) черновик условий', 'ask' => 'Запросить бронь', 'deposit' => 'Депозит за бронь', 'sim' => 'Только пример · деньги не списываются',
 				'amount_tbd' => 'Сумма будет указана в условиях застройщика', 'pay_sim' => 'К пробному депозиту', 'cert' => 'Подтверждение брони (пример)',
 				'cert_note' => 'Это пример брони, показывающий путь. Он не обязывает застройщика, деньги не списаны, пока не откроется настоящая оплата с подписанными условиями.',
 				'approved_by' => 'Одобрил', 'licence' => 'Лицензия', 'lawyer_note' => 'Замечание юриста', 'wait_note' => 'Как только юрист одобрит, кнопка депозита откроется здесь. Можно вернуться по этой ссылке.',
@@ -159,7 +159,7 @@ if ( ! function_exists( 'nadlan_cart_words' ) ) {
 				'status' => 'ما حدث حتى الآن', 'st_rfp' => 'تم استلام طلب العرض', 'st_reserve' => 'تم استلام طلب الحجز', 'st_wait' => 'بانتظار مراجعة المحامي',
 				'st_ok' => 'وافق محامٍ', 'st_ok_off' => 'تمت الموافقة دون محامٍ (مسار تجريبي)', 'st_returned' => 'أعاد المحامي الطلب مع ملاحظة',
 				'st_dep' => 'عربون تجريبي: لم يُخصم أي مبلغ', 'st_next' => 'يتواصل معك المطوّر والفريق', 'reserve' => 'حجز الشقة', 'draft' => 'مسودة للمحامي',
-				'terms' => 'شروط الحجز', 'accept' => 'قرأت مسودة الشروط', 'ask' => 'طلب الحجز', 'deposit' => 'عربون الحجز', 'sim' => 'مثال فقط · لن يُخصم أي مبلغ',
+				'terms' => 'شروط الحجز', 'terms_v' => 'المسودة 1، 19.11.2026', 'accept' => 'قرأت مسودة الشروط', 'ask' => 'طلب الحجز', 'deposit' => 'عربون الحجز', 'sim' => 'مثال فقط · لن يُخصم أي مبلغ',
 				'amount_tbd' => 'يُحدَّد المبلغ في شروط الحجز لدى المطوّر', 'pay_sim' => 'إلى العربون التجريبي', 'cert' => 'تأكيد حجز نموذجي',
 				'cert_note' => 'هذا حجز نموذجي يوضح الطريق. لا يُلزم أي مطوّر ولم يُخصم أي مبلغ، إلى أن يُفتح دفع حقيقي بشروط موقّعة.',
 				'approved_by' => 'وافق', 'licence' => 'رقم الترخيص', 'lawyer_note' => 'ملاحظة المحامي', 'wait_note' => 'حين يوافق المحامي يُفتح زر العربون هنا. يمكنك العودة عبر هذا الرابط.',
@@ -520,8 +520,8 @@ add_action( 'rest_api_init', function () {
 			foreach ( array_slice( (array) ( $req->get_json_params()['refs'] ?? array() ), 0, 50 ) as $ref ) {
 				$ref = preg_replace( '/[^A-Z0-9-]/', '', strtoupper( (string) $ref ) );
 				if ( ! preg_match( '/^NL-[A-Z0-9]{4}-[A-Z0-9]{4}$/', $ref ) ) { continue; }
-				$q = get_posts( array( 'post_type' => 'nadlan_cart_order', 'post_status' => array( 'private', 'draft', 'publish' ), 'numberposts' => 3, 's' => $ref, 'fields' => 'ids', 'suppress_filters' => true ) );
-				$q = array_filter( $q, function ( $oid ) use ( $ref ) { return 0 === strpos( (string) get_the_title( $oid ), $ref . ' ' ); } );
+				global $wpdb; // the title is "<ref> <project>"; WordPress search does not reach private posts of a non-public type
+				$q = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'nadlan_cart_order' AND post_title LIKE %s LIMIT 3", $wpdb->esc_like( $ref . ' ' ) . '%' ) );
 				foreach ( $q as $oid ) {
 					$lid = (int) get_post_meta( $oid, 'cart_lead_id', true );
 					if ( $lid && 'nadlan_lead' === get_post_type( $lid ) ) { wp_delete_post( $lid, true ); }
@@ -672,7 +672,7 @@ if ( ! function_exists( 'nadlan_cart_render' ) ) {
 			$html .= '<p class="note">' . $e( $W['cert_note'] ) . '</p>';
 		} else {
 			$terms = ! empty( $doc['reserve']['terms_text'] ) ? $doc['reserve']['terms_text'] : nadlan_cart_terms( $lang );
-			$html .= '<p><span class="stamp dr">' . $e( $W['draft'] ) . '</span> <span class="k">' . $e( $W['terms'] . ' · ' . nadlan_cart_terms_version() ) . '</span></p><ol>';
+			$html .= '<p><span class="stamp dr">' . $e( $W['draft'] ) . '</span> <span class="k">' . $e( $W['terms'] . ' · ' . $W['terms_v'] ) . '</span></p><ol>';
 			foreach ( $terms as $t ) { $html .= '<li>' . $e( $t ) . '</li>'; }
 			$html .= '</ol>';
 			$amt = (int) preg_replace( '/\D/', '', (string) get_option( 'nadlan_cart_deposit_ils', '' ) );
