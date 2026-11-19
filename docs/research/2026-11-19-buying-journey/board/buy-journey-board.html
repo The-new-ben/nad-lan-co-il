@@ -1,0 +1,271 @@
+<title>הסל שלי, לוח עיצוב</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Arabic:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;500;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: a contract file on a light-table. Phone screens in journey order, then the lawyer's desk, then the language row.
+   Palette from a signed deed and a land-registry extract: white paper, blue-black ink, registry grey, a red DRAFT stamp, a green APPROVED stamp.
+   Not the default AI look: no cream, no brown or gold, no gradient, no Inter. One family (IBM Plex) drawn for Hebrew, Latin, Cyrillic and Arabic, so the five languages look like one document. */
+:root{
+  --paper:#FFFFFF; --table:#E9EDF2; --sheet:#F4F6F9; --ink:#0F2438; --ink2:#43566B; --rule:#C7D0DA;
+  --ok:#0A7D5A; --okbg:#E3F3EC; --draft:#B3122E; --draftbg:#FBE8EB; --focus:#2B6FD8;
+  --f:"IBM Plex Sans Hebrew","IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--table:#0B1622;--ink2:#9FB0C2;color-scheme:dark}}
+:root[data-theme="dark"]{--table:#0B1622;--ink2:#9FB0C2;color-scheme:dark}
+body{background:var(--table);color:var(--ink);font-family:var(--f);direction:rtl;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 60px}
+.hd{max-width:1180px;margin:0 auto 26px;display:grid;gap:10px}
+.hd h1{margin:0;font-size:28px;font-weight:700;text-wrap:balance;color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hd h1,:root:not([data-theme="light"]) .hd p,:root:not([data-theme="light"]) .rowt{color:#E8EEF5}}
+:root[data-theme="dark"] .hd h1,:root[data-theme="dark"] .hd p,:root[data-theme="dark"] .rowt{color:#E8EEF5}
+.hd p{margin:0;max-width:760px;line-height:1.6;color:var(--ink2)}
+.decl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:6px;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:4px 8px;font-size:12px;color:var(--ink)}
+.sw i{width:14px;height:14px;border-radius:2px;display:inline-block;border:1px solid var(--rule)}
+.rowt{max-width:1180px;margin:30px auto 12px;font-size:13px;letter-spacing:.06em;font-weight:700;color:var(--ink2)}
+.row{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.ph{width:340px;max-width:100%;background:var(--paper);border:1px solid var(--rule);border-radius:22px;overflow:hidden;box-shadow:0 1px 0 var(--rule)}
+.cap{font-size:12px;color:var(--ink2);padding:8px 14px;border-bottom:1px solid var(--rule);background:var(--sheet);display:flex;justify-content:space-between;gap:8px}
+.cap b{color:var(--ink)}
+.scr{padding:14px;display:grid;gap:12px;font-size:14px;line-height:1.45;color:var(--ink)}
+.page{height:110px;background:linear-gradient(var(--sheet),var(--sheet));border-radius:8px;display:grid;place-items:center;color:var(--ink2);font-size:12px}
+.sheet{border-top:1px solid var(--rule);margin:0 -14px -14px;padding:10px 14px 14px;display:grid;gap:10px;background:var(--paper)}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--rule);margin:0 auto}
+.t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.t h2{margin:0;font-size:19px}
+.t small{color:var(--ink2);font-size:12px}
+.proj{border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.proj>header{background:var(--ink);color:#fff;padding:9px 12px;display:flex;justify-content:space-between;font-size:13px}
+.proj>header b{font-weight:600}
+.ln{display:grid;grid-template-columns:76px 1fr auto;gap:8px;padding:9px 12px;border-top:1px solid var(--rule);align-items:start}
+.ln:first-of-type{border-top:0}
+.k{font-size:12px;color:var(--ink2);padding-top:2px}
+.v{min-width:0}
+.ed{font-size:12px;color:var(--focus);text-decoration:underline;text-underline-offset:3px}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--rule);border-radius:3px;padding:0 5px;margin-inline-start:4px;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--rule);border-radius:999px;padding:5px 10px;font-size:12px;min-height:30px;display:inline-flex;align-items:center;gap:5px}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn{display:flex;justify-content:center;align-items:center;min-height:48px;border-radius:8px;font-weight:700;font-size:15px;background:var(--ink);color:#fff;border:0}
+.btn2{display:flex;justify-content:center;align-items:center;min-height:44px;border-radius:8px;font-weight:600;font-size:14px;background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;font-size:12px}
+.steps span{border-top:3px solid var(--rule);padding-top:5px;color:var(--ink2)}
+.steps span.on{border-color:var(--ink);color:var(--ink);font-weight:700}
+.steps span.done{border-color:var(--ok);color:var(--ok)}
+.sum{display:grid;gap:0;border:1px solid var(--rule);border-radius:10px}
+.sum .ln{grid-template-columns:1fr auto}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+.note{background:var(--sheet);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--ink2)}
+.f{display:grid;gap:4px;font-size:12px;color:var(--ink2)}
+.f div{border:1px solid var(--rule);border-radius:6px;min-height:44px;display:flex;align-items:center;padding:0 10px;color:var(--ink);font-size:14px}
+.priv{font-size:11.5px;line-height:1.5;color:var(--ink2);border-inline-start:3px solid var(--ink);padding-inline-start:8px}
+.ck{display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.ck i{flex:none;width:20px;height:20px;border:1.5px solid var(--ink);border-radius:3px;display:grid;place-items:center;font-style:normal;font-size:13px}
+.ck i.on{background:var(--ink);color:#fff}
+.ref{font-family:var(--mono);font-size:18px;letter-spacing:.04em;direction:ltr;unicode-bidi:isolate}
+.tl{display:grid;gap:8px;font-size:13px}
+.tl div{display:flex;gap:8px;align-items:flex-start}
+.dot{flex:none;width:12px;height:12px;border-radius:50%;border:2px solid var(--rule);margin-top:4px}
+.dot.ok{background:var(--ok);border-color:var(--ok)}
+.dot.wait{border-color:var(--ink);box-shadow:0 0 0 4px var(--sheet)}
+.stamp{display:inline-block;transform:rotate(-3deg);border:2px solid currentColor;border-radius:4px;padding:3px 9px;font-weight:700;font-size:12px;letter-spacing:.04em}
+.stamp.dr{color:var(--draft);background:var(--draftbg)}
+.stamp.ok{color:var(--ok);background:var(--okbg)}
+.terms{border:1px solid var(--rule);border-radius:10px;padding:10px 12px;display:grid;gap:7px;font-size:12.5px;line-height:1.5}
+.terms ol{margin:0;padding-inline-start:18px;display:grid;gap:5px}
+.dep{border:1.5px dashed var(--ink);border-radius:10px;padding:10px 12px;display:grid;gap:4px}
+.dep b{font-size:15px}
+.desk{width:720px;max-width:100%;background:var(--paper);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.desk .bar{background:var(--ink);color:#fff;padding:10px 14px;font-size:13px;display:flex;justify-content:space-between}
+.desk .in{display:grid;grid-template-columns:240px 1fr;min-height:330px}
+@media (max-width:640px){.desk .in{grid-template-columns:1fr}}
+.q{border-inline-end:1px solid var(--rule);font-size:13px}
+.q div{padding:10px 12px;border-bottom:1px solid var(--rule);display:grid;gap:2px}
+.q div.sel{background:var(--sheet);border-inline-start:3px solid var(--ink)}
+.q small{color:var(--ink2)}
+.dt{padding:14px;display:grid;gap:10px;font-size:13px;align-content:start}
+.ltr{direction:ltr;text-align:left}
+.ar{font-family:"IBM Plex Sans Arabic",var(--f)}
+.mini{width:250px}
+.mini .scr{font-size:13px}
+.k2{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px}
+</style>
+
+<header class="hd">
+  <h1>הסל שלי: מהדירה ועד שריון, בשלושה צעדים</h1>
+  <p>לוח עיצוב לחבילה 4 (HAD-788). סל אחד לכל הפרויקטים ולחמש השפות, סיכום כמו הזמנה, בקשה להצעה, ושריון שעוצר לבדיקת עורך דין. הכל בטלפון קודם; במחשב הסל נפתח כלוח צד.</p>
+  <div class="decl">
+    <span class="sw"><i style="background:#0F2438"></i>דיו של חוזה #0F2438</span>
+    <span class="sw"><i style="background:#FFFFFF"></i>נייר #FFFFFF</span>
+    <span class="sw"><i style="background:#F4F6F9"></i>אפור נסח טאבו #F4F6F9</span>
+    <span class="sw"><i style="background:#B3122E"></i>חותמת טיוטה #B3122E</span>
+    <span class="sw"><i style="background:#0A7D5A"></i>חותמת אישור #0A7D5A</span>
+    <span class="sw">גופן: IBM Plex Sans Hebrew / Sans / Sans Arabic, מספרי הזמנה ב-IBM Plex Mono</span>
+  </div>
+  <p><b>למה זה לא המראה הרגיל של בינה מלאכותית:</b> הפלטה והטיפוגרפיה לקוחות מעולם החוזה ונסח הטאבו (נייר לבן, דיו כחול כהה, חותמת אדומה לטיוטה וירוקה לאישור, מספר הזמנה במונו), בלי קרם, בלי חום או זהב, בלי מעברי צבע ובלי Inter; משפחה אחת שנבנתה לעברית, לטינית, קירילית וערבית כדי שחמש השפות ייראו מסמך אחד.</p>
+</header>
+
+<div class="rowt">שורה א · הקונה בטלפון</div>
+<div class="row">
+
+  <section class="ph" aria-label="מסך 1">
+    <div class="cap"><b>1. הסל נפתח מדף הפרויקט</b><span>390</span></div>
+    <div class="scr">
+      <div class="page">דף הפרויקט: כותרת, פסקה, מגדל, קומה 24 נבחרה</div>
+      <div class="chips"><span class="btn2" style="flex:1">הוספת הדירה לסל</span><span class="btn2" style="min-width:110px">הסל שלי <span class="tag num">2</span></span></div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <div class="t"><h2>הסל שלי</h2><small>נשמר בדפדפן הזה</small></div>
+        <div class="proj">
+          <header><b>מגדלי כיכר המדינה</b><span>תל אביב</span></header>
+          <div class="ln"><span class="k">הדירה</span><span class="v">קומה 24 · מגדל B · פונה למערב <span class="tag">דירה לדוגמה</span></span><a class="ed">שינוי</a></div>
+          <div class="ln"><span class="k">התכנון שלי</span><span class="v">4 חדרים · פרקט אלון · מחיצה הוסרה בין המטבח לסלון · 2 הערות לקבלן</span><a class="ed">למעצב</a></div>
+          <div class="ln"><span class="k">שירותים</span><span class="v chips"><span class="chip on">משכנתא</span><span class="chip on">עורך דין</span><span class="chip">עיצוב פנים</span><span class="chip">בדק בית</span><span class="chip">הובלה</span><span class="chip">ניהול השכרה</span></span><span></span></div>
+          <div class="ln"><span class="k">שיחה</span><span class="v">שלישי 24.11 · 18:00 עד 20:00 · וידאו</span><a class="ed">שינוי</a></div>
+        </div>
+        <div class="proj"><header><b>DUO</b><span>תל אביב</span></header><div class="ln"><span class="k">הדירה</span><span class="v">דירה 3B · קומה 31</span><a class="ed">הסרה</a></div></div>
+        <span class="btn">לסיכום ההזמנה</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 2">
+    <div class="cap"><b>2. סיכום כמו הזמנה</b><span>צעד 1 מתוך 3</span></div>
+    <div class="scr">
+      <div class="steps"><span class="on">1 · סיכום</span><span>2 · בקשה להצעה</span><span>3 · שריון</span></div>
+      <div class="t"><h2>מגדלי כיכר המדינה</h2><small>תל אביב</small></div>
+      <div class="sum">
+        <div class="ln"><span>דירה לדוגמה: קומה 24 · מגדל B · פונה למערב</span><a class="ed">עריכה</a></div>
+        <div class="ln"><span>התכנון: 4 חדרים, פרקט אלון, מחיצה הוסרה, 2 הערות לקבלן</span><a class="ed">עריכה</a></div>
+        <div class="ln"><span>שירותים: משכנתא, עורך דין מקרקעין</span><a class="ed">עריכה</a></div>
+        <div class="ln"><span>שיחה: שלישי 24.11, 18:00 עד 20:00, וידאו</span><a class="ed">עריכה</a></div>
+        <div class="ln"><span>מחיר שקיבלת מהנציג</span><span class="num">₪ 6,200,000</span></div>
+        <div class="ln"><span>מס רכישה משוער, דירה יחידה</span><span class="num">₪ 197,515</span></div>
+      </div>
+      <div class="note">המחיר, המפרט והחוזה נקבעים מול היזם. נדל״ן מעבירה את הבקשה ליזם ולאנשי המקצוע שבחרת, ואינה צד לעסקה. הסכומים כאן הם אומדן שלך.</div>
+      <span class="btn">המשך לבקשה להצעה</span>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 3">
+    <div class="cap"><b>3. בקשה להצעה</b><span>צעד 2 מתוך 3</span></div>
+    <div class="scr">
+      <div class="steps"><span class="done">1 · סיכום</span><span class="on">2 · בקשה להצעה</span><span>3 · שריון</span></div>
+      <label class="f">שם מלא<div>דנה לוי</div></label>
+      <label class="f">נייד או וואטסאפ<div class="num" style="justify-content:flex-end">050-0000000</div></label>
+      <label class="f">אימייל (לא חובה)<div></div></label>
+      <p class="priv">מסירת הפרטים היא לבחירתך; בלעדיהם לא נוכל להעביר את הבקשה. הפרטים יועברו אל היזם של מגדלי כיכר המדינה ואל אנשי המקצוע שבחרת, כדי לענות לבקשה הזו בלבד. המפעיל: נדל״ן, nad-lan.co.il. זכותך לעיין בפרטים, לתקן ולבקש מחיקה. מדיניות הפרטיות</p>
+      <div class="ck"><i class="on">✓</i><span>אני מסכים/ה שהבקשה תועבר ליזם ולאנשי המקצוע שבחרתי</span></div>
+      <span class="btn">שליחת הבקשה להצעה</span>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 4">
+    <div class="cap"><b>4. הבקשה נשלחה</b><span>מסמך עם מספר</span></div>
+    <div class="scr">
+      <div class="t"><h2>הבקשה נשלחה</h2></div>
+      <div class="ref">NL-7Q4K-2M9X</div>
+      <div class="tl">
+        <div><span class="dot ok"></span><span>הבקשה נקלטה · 19.11.2026 · 14:32</span></div>
+        <div><span class="dot wait"></span><span>היזם והצוות חוזרים אליך בחלון שבחרת</span></div>
+        <div><span class="dot"></span><span>הצעה מסודרת לדירה הזו</span></div>
+      </div>
+      <span class="btn2">מסמך הבקשה (להדפסה ולשמירה)</span>
+      <span class="btn">להמשך: שריון הדירה</span>
+      <div class="note">המסמך פתוח רק למי שמחזיק בקישור, 30 יום.</div>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 5">
+    <div class="cap"><b>5. שריון: תנאים ופיקדון</b><span>צעד 3 מתוך 3</span></div>
+    <div class="scr">
+      <div class="steps"><span class="done">1 · סיכום</span><span class="done">2 · בקשה להצעה</span><span class="on">3 · שריון</span></div>
+      <span class="stamp dr">טיוטה לבדיקת עורך דין</span>
+      <div class="terms"><b>תנאי השריון</b>
+        <ol>
+          <li>השריון הוא בקשה ליזם לעכב את הדירה הזו בשבילך לזמן קצוב.</li>
+          <li>הפיקדון, כשיופעל, ישולם ליזם לחשבון הליווי של הפרויקט בלבד, ויוחזר במלואו אם לא ייחתם חוזה.</li>
+          <li>השריון אינו חוזה מכר ואינו מחייב לרכוש.</li>
+          <li>המחיר והתנאים הסופיים נקבעים בחוזה מול היזם, בליווי עורך הדין שלך.</li>
+        </ol>
+      </div>
+      <div class="dep"><span class="stamp dr" style="justify-self:start">לדוגמה בלבד · לא יחויב כסף</span><b>פיקדון שריון</b><span>הסכום ייקבע בתנאי השריון של היזם</span></div>
+      <div class="ck"><i class="on">✓</i><span>קראתי את תנאי הטיוטה</span></div>
+      <span class="btn">בקשת שריון</span>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 6">
+    <div class="cap"><b>6. עוצר לעורך דין</b><span>שער</span></div>
+    <div class="scr">
+      <div class="t"><h2>ממתין לבדיקת עורך דין</h2></div>
+      <div class="tl">
+        <div><span class="dot ok"></span><span>הבקשה להצעה נשלחה · NL-7Q4K-2M9X</span></div>
+        <div><span class="dot ok"></span><span>בקשת השריון נקלטה · 19.11 · 14:40</span></div>
+        <div><span class="dot wait"></span><span>עורך דין בודק את התנאים ואת הבקשה</span></div>
+        <div><span class="dot"></span><span>פיקדון לדוגמה</span></div>
+        <div><span class="dot"></span><span>אישור שריון</span></div>
+      </div>
+      <div class="note">ברגע שעורך הדין יאשר, הכפתור לפיקדון ייפתח כאן ובקישור ששמרת.</div>
+      <span class="btn" style="opacity:.35">לפיקדון לדוגמה</span>
+    </div>
+  </section>
+
+  <section class="ph" aria-label="מסך 7">
+    <div class="cap"><b>7. שריון לדוגמה</b><span>אחרי אישור</span></div>
+    <div class="scr">
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="stamp ok">אושר על ידי עורך דין</span><span class="stamp dr">לדוגמה · ללא חיוב</span></div>
+      <div class="t"><h2>אישור שריון</h2></div>
+      <div class="sum">
+        <div class="ln"><span>מספר</span><span class="ref" style="font-size:14px">NL-7Q4K-2M9X</span></div>
+        <div class="ln"><span>הדירה</span><span>קומה 24 · מגדל B</span></div>
+        <div class="ln"><span>אישר</span><span>עו״ד בודק · רישיון 00000</span></div>
+        <div class="ln"><span>פיקדון</span><span>לדוגמה, אין חיוב</span></div>
+      </div>
+      <div class="note">זהו שריון לדוגמה שנועד להראות את הדרך. אין לו תוקף מול היזם עד שבן יפתח חיוב אמיתי ותנאים חתומים.</div>
+    </div>
+  </section>
+</div>
+
+<div class="rowt">שורה ב · שולחן עורך הדין (במערכת, משתמש עם תפקיד עורך דין)</div>
+<div class="row">
+  <section class="desk" aria-label="שולחן עורך הדין">
+    <div class="bar"><b>בקשות שריון לבדיקה</b><span>2 ממתינות</span></div>
+    <div class="in">
+      <div class="q">
+        <div class="sel"><b>NL-7Q4K-2M9X</b><small>מגדלי כיכר המדינה · קומה 24 · לפני 6 דק׳</small></div>
+        <div><b>NL-3HD2-8RQA</b><small>DUO · דירה 3B · לפני שעה</small></div>
+      </div>
+      <div class="dt">
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap"><b style="font-size:16px">NL-7Q4K-2M9X</b><span class="stamp dr">ממתין לך</span></div>
+        <div class="k2"><span>פרויקט: מגדלי כיכר המדינה</span><span>יזם: לפי דף הפרויקט</span><span>דירה: קומה 24 · מגדל B</span><span>קונה: דנה ל׳</span><span>תנאים: טיוטה 1 (19.11.2026)</span><span>פיקדון לדוגמה</span></div>
+        <div class="terms" style="max-height:120px;overflow:auto"><b>הטיוטה שהקונה קרא</b><span>1. השריון הוא בקשה ליזם לעכב את הדירה... 2. הפיקדון, כשיופעל...</span></div>
+        <label class="f">מספר רישיון<div class="num" style="justify-content:flex-end">00000</div></label>
+        <label class="f">הערה לקונה (לא חובה)<div></div></label>
+        <div class="ck"><i class="on">✓</i><span><b>אני עורך דין ומאשר</b> את המשך התהליך לבקשה הזו</span></div>
+        <div style="display:flex;gap:8px"><span class="btn" style="flex:1">אישור</span><span class="btn2" style="flex:1">החזרה לקונה עם הערה</span></div>
+        <div class="note">מנהל האתר רואה את התור אבל אינו יכול לאשר. אישור נרשם עם שם המשתמש, הרישיון והשעה.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="rowt">שורה ג · חמש השפות: אותו מסמך</div>
+<div class="row">
+  <section class="ph mini ltr" aria-label="English">
+    <div class="cap"><b>EN</b><span>LTR</span></div>
+    <div class="scr"><div class="t"><h2>My basket</h2></div><div class="steps"><span class="on">1 · Summary</span><span>2 · Request</span><span>3 · Reserve</span></div><span class="stamp dr" style="justify-self:start">Draft for a lawyer</span><span class="btn">Send request for proposal</span></div>
+  </section>
+  <section class="ph mini ltr" aria-label="Français">
+    <div class="cap"><b>FR</b><span>LTR</span></div>
+    <div class="scr"><div class="t"><h2>Mon panier</h2></div><div class="steps"><span class="on">1 · Résumé</span><span>2 · Demande</span><span>3 · Réservation</span></div><span class="stamp dr" style="justify-self:start">Projet pour avocat</span><span class="btn">Envoyer la demande</span></div>
+  </section>
+  <section class="ph mini ltr" aria-label="Русский">
+    <div class="cap"><b>RU</b><span>LTR</span></div>
+    <div class="scr"><div class="t"><h2>Моя корзина</h2></div><div class="steps"><span class="on">1 · Итог</span><span>2 · Запрос</span><span>3 · Бронь</span></div><span class="stamp dr" style="justify-self:start">Черновик для юриста</span><span class="btn">Отправить запрос</span></div>
+  </section>
+  <section class="ph mini ar" aria-label="العربية">
+    <div class="cap"><b>AR</b><span>RTL</span></div>
+    <div class="scr"><div class="t"><h2>سلتي</h2></div><div class="steps"><span class="on">1 · الملخص</span><span>2 · طلب عرض</span><span>3 · الحجز</span></div><span class="stamp dr" style="justify-self:start">مسودة للمحامي</span><span class="btn">إرسال طلب العرض</span></div>
+  </section>
+</div>

@@ -1,0 +1,47 @@
+// Package 4: inject the local cart.js/css into a LIVE page (read-only; lead/order calls are mocked in the page). Phone then desktop.
+import { open, sleep } from '../2026-11-11-kikar-journey/evidence/lib.mjs';
+import fs from 'node:fs/promises';
+const PLUG = '../../../plugins/nadlan-config/assets/cart/';
+const js = await fs.readFile(PLUG + 'cart.js', 'utf8'), css = await fs.readFile(PLUG + 'cart.css', 'utf8');
+const url = process.argv[2] || 'https://nad-lan.co.il/projects/hamedina/';
+const lang = process.argv[3] || 'he', slug = process.argv[4] || 'hamedina', w = Number(process.argv[5] || 390), tag = process.argv[6] || 'he';
+const p = await open(url, { w, h: w < 900 ? 844 : 900, out: 'harness' });
+await sleep(4000);
+const cfg = { v: 'test', lang, rest: 'https://nad-lan.co.il/wp-json/nadlan/v1/', gate: true, privacy: 'https://nad-lan.co.il/privacy/', mortgage: '/mortgage-calculator/', rentals: '/my-rentals/', designer: '/tour/designer/', wa: '972500000000',
+  tax: { single: [[1978745, 0], [2347040, 0.035], [6055070, 0.05], [20183565, 0.08], [null, 0.1]], additional: [[6055070, 0.08], [null, 0.1]] }, deposit: 0, terms: 'draft-1 (19.11.2026)',
+  project: { slug, id: 1, name: await p.ev('document.querySelector("h1") ? document.querySelector("h1").innerText.slice(0,40) : "P"'), city: 'תל אביב', url, img: '', sectors: [], hint: '', engine: !!(await p.ev('!!window.NADLAN_SHOWROOM')) } };
+console.log('engine', cfg.project.engine, 'old basket', await p.ev('!!window.__nlBasket'));
+await p.ev(`(()=>{ try{localStorage.removeItem('nl-cart:v1')}catch(e){}; delete window.__nlBasket; document.querySelectorAll('.nlbk-step,.nlbk-add').forEach(e=>e.remove());
+ const s=document.createElement('script'); s.type='application/json'; s.id='nadlan-cart-cfg'; s.textContent=${JSON.stringify(JSON.stringify(cfg))}; document.body.appendChild(s);
+ const st=document.createElement('style'); st.textContent=${JSON.stringify(css)}; document.head.appendChild(st);
+ window.__ev=[]; window.nlTrack=(n,d)=>window.__ev.push(n+':'+JSON.stringify(d));
+ const of=window.fetch; window.fetch=(u,o)=>{ u=String(u); if(u.endsWith('/lead')) return Promise.resolve(new Response(JSON.stringify({ok:true,lead_id:123}),{status:200})); if(u.endsWith('/cart/order')) return Promise.resolve(new Response(JSON.stringify({ok:true,token:'abcdefghijklmnopqrstuvwxyz12',ref:'NL-ABCD-EFGH',url:'https://nad-lan.co.il/wp-json/nadlan/v1/cart/doc/x',status:'rfp_sent'}),{status:200})); return of(u,o); };
+ localStorage.setItem('nl-design-order:v1', JSON.stringify({orders:{'${slug}|A1':{schema:'nadlan-design-order',v:1,id:'do-${slug}-A1',rev:3,created:new Date().toISOString(),updated:new Date().toISOString(),lang:'${lang}',project:{slug:'${slug}',title:'T'},unit:{id:'A1',label:'4 חדרים'},source:'project',rooms:[{id:'l',name:'סלון',type:'living',area_m2:31}],finishes:[{room:'l',roomName:'סלון',surface:'floor',id:'oak',label:'פרקט אלון'}],changes:[{kind:'partition-remove',label:'הסרת מחיצה',qty:1}],items:[{id:'sofa',label:'ספה',count:1,roomName:'סלון'}],notes:[{id:'n1',room:'l',roomName:'סלון',x:1,y:1,text:'שקע נוסף ליד הספה',at:new Date().toISOString()}],services:[{id:'designer',label:'מעצב/ת'}],budget:{min:42000,max:61000,currency:'ILS'},link:'/tour/designer/?project=${slug}&unit=A1'}},last:'${slug}|A1'})); localStorage.setItem('nl-cart-design-unused', JSON.stringify({schema:'nadlan-cart-design',v:1,project:'${slug}',unit_id:'A1',lang:'${lang}',updated_at:new Date().toISOString(),rooms:[{key:'l',name:'סלון',area_m2:32},{key:'k',name:'מטבח'}],finishes:[{label:'פרקט אלון'}],changes:[{kind:'partition_removed',label:'מחיצה הוסרה בין המטבח לסלון'}],notes:[{text:'שקע נוסף ליד המיטה',at:new Date().toISOString(),by:'buyer'},{text:'הכנה למזגן בחדר הילדים',at:new Date().toISOString(),by:'buyer'}],budget:null,share_url:null}));
+ (0,eval)(${JSON.stringify(js)}); return 'ok' })()`);
+await sleep(600);
+await p.ev(`window.dispatchEvent(new CustomEvent('nl:facing',{detail:{floor:24,bearing:270,tower:'B',source:'showroom'}}))`);
+await sleep(4600);
+console.log('entries', await p.ev(`JSON.stringify([...document.querySelectorAll('.nlc-slotbtn,.nlc-stepbtn,.nlc-addbtn,.nlc-chip-fixed')].map(b=>b.className+' | '+b.innerText.replace(/\\s+/g,' ')))`));
+await p.shot(tag + '-' + w + '-00-page', 300);
+await p.ev(`NLCart.open()`); await sleep(700); await p.shot(tag + '-' + w + '-01-basket-empty');
+await p.ev(`document.querySelector('.nlc [data-add]') && document.querySelector('.nlc [data-add]').click()`); await sleep(500);
+await p.ev(`document.querySelector('.nlc [data-svc="mortgage"]').click()`); await sleep(200);
+await p.ev(`document.querySelector('.nlc [data-svc="lawyer"]').click()`); await sleep(200);
+await p.ev(`document.querySelector('.nlc [data-toggle$=":call"]').click()`); await sleep(200);
+await p.ev(`document.querySelectorAll('.nlc [data-day]')[1].click()`); await sleep(200);
+await p.ev(`document.querySelector('.nlc [data-win="18"]') && document.querySelector('.nlc [data-win="18"]').click()`); await sleep(200);
+await p.ev(`document.querySelector('.nlc [data-ch="video"]').click()`); await sleep(200);
+await p.ev(`document.querySelector('.nlc [data-toggle$=":price"]').click()`); await sleep(200);
+await p.ev(`(()=>{const i=document.querySelector('.nlc [data-amt]'); i.value='6200000'; i.dispatchEvent(new Event('input',{bubbles:true})); i.dispatchEvent(new Event('change',{bubbles:true}));})()`); await sleep(400);
+await p.shot(tag + '-' + w + '-02-basket-filled');
+await p.ev(`document.querySelector('.nlc__body').scrollTop=9999`); await p.shot(tag + '-' + w + '-03-basket-bottom');
+await p.ev(`document.querySelector('.nlc [data-go="summary"]').click()`); await sleep(400); await p.shot(tag + '-' + w + '-04-summary');
+await p.ev(`document.querySelector('.nlc [data-go="request"]').click()`); await sleep(400);
+await p.ev(`document.querySelector('.nlc [data-send]').click()`); await sleep(300); await p.shot(tag + '-' + w + '-05-request-need');
+await p.ev(`(()=>{const f=(id,v)=>{const i=document.getElementById(id); i.value=v; i.dispatchEvent(new Event('input',{bubbles:true}))}; f('nlc-name','בדיקת מערכת'); f('nlc-phone','0500000000'); const c=document.getElementById('nlc-consent'); c.click();})()`); await sleep(200);
+await p.shot(tag + '-' + w + '-06-request-filled');
+await p.ev(`document.querySelector('.nlc [data-send]').click()`); await sleep(900); await p.shot(tag + '-' + w + '-07-sent');
+console.log('events', await p.ev('JSON.stringify(window.__ev)'));
+console.log('store', await p.ev(`localStorage.getItem('nl-cart:v1').slice(0,600)`));
+console.log('errors', JSON.stringify(p.errs));
+await p.close();
