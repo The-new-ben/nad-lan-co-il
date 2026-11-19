@@ -20,6 +20,9 @@
    payment + the typed costs, with only the typed parts in the breakdown, in all three modes; the copied text adds the line. A note
    names the Capital Market Authority's comparison calculators (life.cma.gov.il, dira.cma.gov.il; both checked 6.11.2026). Pure part:
    NLMQ.fullCost(pay, ins, arn) (node test). Everything else is v4. */
+/* v6 (HAD-793, 19.11.2026, gap 23 of the long film): French and Russian twins (/fr/mortgage-calculator/, /ru/mortgage-calculator/).
+   The section's own lang (fr | ru, printed by inc/instruments.php) picks a third and fourth dictionary: every word, the number format
+   (fr-FR, ru-RU: "5 428 ₪"), months, quarters, bank and city names. LTR like English. Hebrew and English output unchanged. */
 (function () {
   'use strict';
   var TR = ['fixed_nl', 'prime', 'var_nl_other', 'var_cpi', 'fixed_cpi'];
@@ -58,10 +61,18 @@
     cs.sort(function (a, b) { return en ? (a.en || a.he).localeCompare(b.en || b.he, 'en') : a.he.localeCompare(b.he, 'he'); });
     return out.concat(cs);
   }
+  var CITY_FR = { 'ישראל': 'Tout Israël', 'באר שבע': 'Beer-Sheva', 'ירושלים': 'Jérusalem', 'חיפה': 'Haïfa', 'פתח תקווה': 'Petah-Tikva', 'תל אביב יפו': 'Tel-Aviv-Jaffa', 'מודיעין מכבים רעות': "Modiin-Maccabim-Re'ut" };
+  var CITY_RU = {
+    'ישראל': 'Весь Израиль', 'אילת': 'Эйлат', 'אשדוד': 'Ашдод', 'אשקלון': 'Ашкелон', 'באר שבע': 'Беэр-Шева', 'בני ברק': 'Бней-Брак', 'בת ים': 'Бат-Ям',
+    'גבעתיים': 'Гиватаим', 'הוד השרון': 'Ход-ха-Шарон', 'הרצליה': 'Герцлия', 'חולון': 'Холон', 'חיפה': 'Хайфа', 'יבנה': 'Явне', 'ירושלים': 'Иерусалим',
+    'כפר סבא': 'Кфар-Саба', 'מודיעין מכבים רעות': 'Модиин-Маккабим-Реут', 'נתניה': 'Нетания', 'פתח תקווה': 'Петах-Тиква', 'קריית אונו': 'Кирьят-Оно',
+    'ראשון לציון': 'Ришон-ле-Цион', 'רחובות': 'Реховот', 'רמת גן': 'Рамат-Ган', 'רמת השרון': 'Рамат-ха-Шарон', 'רעננה': 'Раанана', 'תל אביב יפו': 'Тель-Авив-Яффо'
+  };
+  function quarterX(q, l) { var m = /^(1-3|4-6|7-9|10-12)\.(\d{4})$/.exec(String(q)); if (!m) return String(q); var k = { '1-3': 1, '4-6': 2, '7-9': 3, '10-12': 4 }[m[1]]; return l === 'ru' ? ['I', 'II', 'III', 'IV'][k - 1] + ' кв. ' + m[2] : 'T' + k + ' ' + m[2]; }
   function quarterEn(q) { var m = /^(1-3|4-6|7-9|10-12)\.(\d{4})$/.exec(String(q)); return m ? { '1-3': 'Q1', '4-6': 'Q2', '7-9': 'Q3', '10-12': 'Q4' }[m[1]] + ' ' + m[2] : String(q); }
   /* v5: the full monthly cost; a part that was not typed (0, empty or not a number) stays out of the sum and of the breakdown */
   function fullCost(pay, ins, arn) { var a = ins > 0 ? ins : 0, b = arn > 0 ? arn : 0; return { total: (pay > 0 ? pay : 0) + a + b, ins: a, arn: b, any: a + b > 0 }; }
-  window.NLMQ = { payPer1: payPer1, solve: solve, TR: TR, cityList: cityList, quarterEn: quarterEn, CITY_EN: CITY_EN, fullCost: fullCost };
+  window.NLMQ = { payPer1: payPer1, solve: solve, TR: TR, cityList: cityList, quarterEn: quarterEn, quarterX: quarterX, CITY_EN: CITY_EN, CITY_RU: CITY_RU, fullCost: fullCost };
   if (!window.NadLanInstruments) return;
 
   /* 1.72.588: the tools switcher on the mortgage page. Without scripts every panel shows (readers, search engines, AI answers);
@@ -91,9 +102,59 @@
   function ilsEn(x) { return '₪' + nfEn.format(Math.round(x || 0)); }
   var ENM = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   function monthEn(ym) { var p = String(ym).split('-'); return p.length === 2 ? (ENM[+p[1] - 1] || p[1]) + ' ' + p[0] : ym; }
-  var CSS_EN = '#nlmq[lang="en"]{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",system-ui,sans-serif}'
-    + '#nlmq[lang="en"] h2.nlmq__h{font-family:"IBM Plex Sans",system-ui,sans-serif!important}'
-    + '#nlmq[lang="en"] .nlmq__in input{text-align:left}#nlmq[lang="en"] .nlmq__src{direction:ltr}';
+ var nfFr = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }), nfRu = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
+  function ilsFr(x) { return nfFr.format(Math.round(x || 0)) + '\u00a0₪'; }
+  function ilsRu(x) { return nfRu.format(Math.round(x || 0)) + '\u00a0₪'; }
+  var FRM = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var RUM = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+  function monthL(ym, M) { var p = String(ym).split('-'); return p.length === 2 ? (M[+p[1] - 1] || p[1]) + ' ' + p[0] : ym; }
+  var CMA = '<a href="https://life.cma.gov.il/" target="_blank" rel="noopener">', CMB = '<a href="https://dira.cma.gov.il/" target="_blank" rel="noopener">';
+  /* v6: the French and Russian dictionaries; the sentence builders take the computed numbers already formatted */
+  var XL = {
+    fr: {
+      T: { all: 'Toutes les banques', who_all: 'toutes les banques', h: 'Simulateur de crédit immobilier', amount: 'Montant du prêt', price: 'Prix du logement', equity: 'Apport personnel',
+        pay: 'La mensualité qui vous convient', ml: 'Vous pouvez aussi calculer', m_amount: 'Par montant', m_price: 'Par prix et apport', m_pay: 'Par mensualité',
+        tl: 'Durée', yr: ' ans', bl: 'Taux et répartition moyens de', principal: 'Capital', interest: 'Intérêts',
+        cta: '<a class="nlmq__btn is-main" href="#regles">Les règles de la Banque d’Israël</a><a class="nlmq__btn" href="#questions">Questions fréquentes</a>',
+        copy: 'Copier le résultat', copied: 'Copié', prompt: 'Copiez le résultat', city: 'Ville (prix médian, 4 pièces)', nocity: 'Choisir une ville',
+        xl: 'Autres coûts mensuels, si vous les connaissez', ins: 'Assurance vie et habitation', arn: 'Arnona et charges de l’immeuble',
+        tl2: 'Coût mensuel total du logement', tp: 'mensualité', ti: 'assurances', ta: 'arnona et charges',
+        xn: 'La banque exige une assurance vie et une assurance du bâtiment, et c’est vous qui choisissez l’assureur. Comparez les prix auprès de l’Autorité des marchés de capitaux (en hébreu) : ' + CMA + 'assurance vie du prêt</a> · ' + CMB + 'assurance du bâtiment</a>.',
+        cl: 'Coût mensuel total avec les coûts saisis : ' },
+      IL: ilsFr, NF: nfFr, MO: function (ym) { return monthL(ym, FRM); }, bank: function (n) { return 'la banque ' + n; },
+      banks: { hapoalim: 'Hapoalim', leumi: 'Leumi', discount: 'Discount', mizrahi: 'Mizrahi-Tefahot', fibi: 'Banque internationale (FIBI)', mercantile: 'Mercantile', jerusalem: 'Banque de Jérusalem' },
+      city: function (c) { return CITY_FR[c.he] || c.en || c.he; }, cq: function (c) { return 'Médiane, ' + quarterX(c.quarter, 'fr') + ', Autorité fiscale israélienne'; },
+      olPay: 'Le prêt que cette mensualité permet', olFirst: 'Première mensualité',
+      sub: function (pay, tot, int, withPay) { return (withPay ? 'Mensualité <bdi>' + pay + '</bdi> · ' : '') + 'Total remboursé <bdi>' + tot + '</bdi> · dont intérêts <bdi>' + int + '</bdi>'; },
+      ltv: function (pct, over) { return 'Quotité de financement <bdi>' + pct + '\u00a0%</bdi>' + (over ? ' : au-dessus de 75\u00a0%, le maximum de la Banque d’Israël pour un logement unique (70\u00a0% pour un logement de remplacement, 50\u00a0% pour un logement supplémentaire).' : ' (jusqu’à 75\u00a0% pour un logement unique, 70\u00a0% pour un logement de remplacement, 50\u00a0% pour un logement supplémentaire).'); },
+      src: function (who, mon, link) { return 'Amortissement à mensualités constantes (Spitzer) ; les cinq tranches à la répartition et aux taux effectifs moyens de ' + who + ' en ' + mon + ', tranches indexées sans variation de l’indice. Source : ' + (link ? '<a href="' + link + '" target="_blank" rel="noopener">Banque d’Israël, comparaison des taux des prêts au logement</a>' : 'Banque d’Israël') + '. Une moyenne, pas une offre personnelle.'; },
+      copyTx: function (loan, yrs, who, mon, pay, tot) { return 'Un prêt de ' + loan + ' sur ' + yrs + ' ans à la répartition moyenne de ' + who + ' en ' + mon + ' : première mensualité ' + pay + ', total remboursé ' + tot + '.'; },
+      cityTx: function (c) { return ' Prix du logement : la médiane des ventes de 4 pièces à ' + (CITY_FR[c.he] || c.en || c.he) + ', ' + quarterX(c.quarter, 'fr') + ', Autorité fiscale israélienne.'; }
+    },
+    ru: {
+      T: { all: 'Все банки', who_all: 'всех банков', h: 'Ипотечный калькулятор', amount: 'Сумма ипотеки', price: 'Цена квартиры', equity: 'Собственные средства',
+        pay: 'Комфортный ежемесячный платёж', ml: 'Можно рассчитать и', m_amount: 'По сумме', m_price: 'По цене и взносу', m_pay: 'По платежу',
+        tl: 'Срок', yr: ' лет', bl: 'Средние ставки и состав', principal: 'Основной долг', interest: 'Проценты',
+        cta: '<a class="nlmq__btn is-main" href="#pravila">Правила Банка Израиля</a><a class="nlmq__btn" href="#voprosy">Частые вопросы</a>',
+        copy: 'Скопировать результат', copied: 'Скопировано', prompt: 'Скопируйте результат', city: 'Город (медианная цена, 4 комнаты)', nocity: 'Выберите город',
+        xl: 'Другие ежемесячные расходы, если вы их знаете', ins: 'Страхование жизни и строения', arn: 'Арнона и ваад байт',
+        tl2: 'Полная ежемесячная стоимость жилья', tp: 'платёж', ti: 'страховки', ta: 'арнона и ваад байт',
+        xn: 'Банк требует страхование жизни и страхование строения, а страховую компанию выбираете вы. Сравнить цены можно на сайте Управления рынка капитала (на иврите): ' + CMA + 'страхование жизни по ипотеке</a> · ' + CMB + 'страхование строения</a>.',
+        cl: 'Полная ежемесячная стоимость с введёнными расходами: ' },
+      IL: ilsRu, NF: nfRu, MO: function (ym) { return monthL(ym, RUM); }, bank: function (n) { return 'банка ' + n; },
+      banks: { hapoalim: 'Апоалим', leumi: 'Леуми', discount: 'Дисконт', mizrahi: 'Мизрахи-Тфахот', fibi: 'Первый международный', mercantile: 'Меркантиль', jerusalem: 'Банк Иерусалим' },
+      city: function (c) { return CITY_RU[c.he] || c.en || c.he; }, cq: function (c) { return 'Медиана, ' + quarterX(c.quarter, 'ru') + ', Налоговое управление Израиля'; },
+      olPay: 'Ипотека, которую покрывает этот платёж', olFirst: 'Первый ежемесячный платёж',
+      sub: function (pay, tot, int, withPay) { return (withPay ? 'Платёж <bdi>' + pay + '</bdi> · ' : '') + 'Всего выплат <bdi>' + tot + '</bdi> · из них проценты <bdi>' + int + '</bdi>'; },
+      ltv: function (pct, over) { return 'Доля финансирования <bdi>' + pct + '%</bdi>' + (over ? ': выше 75%, максимума Банка Израиля для единственного жилья (70% при замене жилья, 50% для дополнительного жилья).' : ' (до 75% для единственного жилья, 70% при замене жилья, 50% для дополнительного жилья).'); },
+      src: function (who, mon, link) { return 'Аннуитетный график (Шпицер); пять треков по среднему составу и эффективным ставкам ' + who + ' за ' + mon + ', индексируемые треки без изменения индекса. Источник: ' + (link ? '<a href="' + link + '" target="_blank" rel="noopener">Банк Израиля, сравнение ставок по жилищным кредитам</a>' : 'Банк Израиля') + '. Это среднее значение, а не персональное предложение.'; },
+      copyTx: function (loan, yrs, who, mon, pay, tot) { return 'Ипотека ' + loan + ' на ' + yrs + ' лет по среднему составу ' + who + ' за ' + mon + ': первый платёж ' + pay + ', всего выплат ' + tot + '.'; },
+      cityTx: function (c) { return ' Цена квартиры: медиана сделок с 4 комнатами, ' + (CITY_RU[c.he] || c.en || c.he) + ', ' + quarterX(c.quarter, 'ru') + ', Налоговое управление Израиля.'; }
+    }
+  };
+  var CSS_EN = '#nlmq[dir="ltr"]{font-family:"IBM Plex Sans","IBM Plex Sans Hebrew",system-ui,sans-serif}'
+    + '#nlmq[dir="ltr"] h2.nlmq__h{font-family:"IBM Plex Sans",system-ui,sans-serif!important}'
+    + '#nlmq[dir="ltr"] .nlmq__in input{text-align:left}#nlmq[dir="ltr"] .nlmq__src{direction:ltr}';
   var CSS = '.nlmq{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif;color:#12202A;background:#fff;border:1px solid #D3DCE2;border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:16px;margin:8px 0 16px}'
     + '.nlmq *{box-sizing:border-box}.nlmq .nlmq__h{margin:0!important;font:600 18px/26px "IBM Plex Sans Hebrew",system-ui,sans-serif!important;color:#12202A!important}'
     + '.nlmq__lab{display:block;font-size:13px;line-height:18px;font-weight:500;color:#3E4C58;margin:0 0 8px}'
@@ -137,7 +198,7 @@
     + '#nlmq .nlmq__tl{font-size:13px;line-height:18px;color:#3E4C58}#nlmq .nlmq__tf{font:500 26px/32px "IBM Plex Mono",ui-monospace,monospace;color:#12202A}#nlmq .nlmq__tb{font:400 12px/18px "IBM Plex Mono","IBM Plex Sans Hebrew",ui-monospace,monospace;color:#5E6A75}'
     + '#nlmq p.nlmq__xn{margin:0!important;font-size:12px!important;line-height:18px!important;color:#5E6A75!important}#nlmq p.nlmq__xn a{color:#2F6F86!important}'
     /* v5: the source sentence in the text face (the mono face fell back to a Courier-like font for running Hebrew and Latin text) */
-    + '#nlmq p.nlmq__src{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif!important}#nlmq[lang="en"] p.nlmq__src{font-family:"IBM Plex Sans",system-ui,sans-serif!important}';
+    + '#nlmq p.nlmq__src{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif!important}#nlmq[dir="ltr"] p.nlmq__src{font-family:"IBM Plex Sans",system-ui,sans-serif!important}';
 
   NI.register('mquick', {
     custom: function (root, data) {
@@ -145,9 +206,11 @@
       if (!bb || !bb.months) return;
       ensureCss();
       var EN = !!(NI.langOf && NI.langOf(root) === 'en');  // v3: English on /en/ (the section's lang); Hebrew otherwise, unchanged
-      if (EN && !document.getElementById('nlmq-css-en')) { var st2 = document.createElement('style'); st2.id = 'nlmq-css-en'; st2.textContent = CSS_EN; document.head.appendChild(st2); }
-      var IL = EN ? ilsEn : ils, NF = EN ? nfEn : nf, MO = EN ? monthEn : month;
-      var T = EN ? {
+      var LS = root.closest ? root.closest('[lang]') : null, LX = LS ? String(LS.getAttribute('lang') || '').toLowerCase().slice(0, 2) : '';
+      var X = !EN && XL[LX] ? XL[LX] : null, LTR = EN || !!X;  // v6: French or Russian
+      if (LTR && !document.getElementById('nlmq-css-en')) { var st2 = document.createElement('style'); st2.id = 'nlmq-css-en'; st2.textContent = CSS_EN; document.head.appendChild(st2); }
+      var IL = X ? X.IL : EN ? ilsEn : ils, NF = X ? X.NF : EN ? nfEn : nf, MO = X ? X.MO : EN ? monthEn : month;
+      var T = X ? X.T : EN ? {
         all: 'All banks', who_all: 'all banks', h: 'Quick mortgage calculator', amount: 'Mortgage amount', price: 'Home price', equity: 'Your equity (down payment)',
         pay: 'The monthly payment that suits you', ml: 'You can also calculate', m_amount: 'By amount', m_price: 'By price and equity', m_pay: 'By monthly payment',
         tl: 'Term (years)', yr: '', bl: 'Average rate and mix of', principal: 'Principal', interest: 'Interest',
@@ -172,18 +235,18 @@
       };
       /* v4: the city select of the price mode; a city name without an English name stays Hebrew inside lang="he" */
       var CITIES = cityList(D, EN), cityBy = {}; CITIES.forEach(function (c) { cityBy[c.k] = c; });
-      function cityName(c) { return EN ? (c.en || c.he) : c.he; }
-      function cityQ(c) { return EN ? 'Median, ' + quarterEn(c.quarter) + ', Israel Tax Authority' : 'חציון ' + c.quarter + ', רשות המסים'; }
+      function cityName(c) { return X ? X.city(c) : EN ? (c.en || c.he) : c.he; }
+      function cityQ(c) { return X ? X.cq(c) : EN ? 'Median, ' + quarterEn(c.quarter) + ', Israel Tax Authority' : 'חציון ' + c.quarter + ', רשות המסים'; }
       var citySel = CITIES.length ? '<div class="nlmq__city" data-f="price" hidden><label class="nlmq__lab" for="nlmq-c">' + T.city + '</label><div class="nlmq__in nlmq__sel"><select id="nlmq-c"><option value="">' + T.nocity + '</option>'
-        + CITIES.map(function (c) { return '<option value="' + esc(c.k) + '"' + (EN && !c.en ? ' lang="he"' : '') + '>' + esc(cityName(c)) + '</option>'; }).join('')
+        + CITIES.map(function (c) { return '<option value="' + esc(c.k) + '"' + (LTR && cityName(c) === c.he ? ' lang="he"' : '') + '>' + esc(cityName(c)) + '</option>'; }).join('')
         + '</select></div><span class="nlmq__cq" hidden></span></div>' : '';
       // one money field; in English the shekel sign stands before the number (LTR), in Hebrew after it (as before)
       function fld(id, k, lab) { var inp = '<input id="' + id + '" inputmode="numeric" autocomplete="off" data-k="' + k + '">'; return '<div><label class="nlmq__lab" for="' + id + '">' + lab + '</label><div class="nlmq__in">' + (EN ? '<span>₪</span>' + inp : inp + '<span>₪</span>') + '</div></div>'; }
-      var names = {}; (bb.banks || []).forEach(function (b) { names[b.k] = EN ? ({ hapoalim: 'Hapoalim', leumi: 'Leumi', discount: 'Discount', mizrahi: 'Mizrahi-Tefahot', fibi: 'First International', mercantile: 'Mercantile', jerusalem: 'Jerusalem' }[b.k] || b.en || b.he) : b.he; }); names.system = T.all;
+      var names = {}; (bb.banks || []).forEach(function (b) { names[b.k] = X ? (X.banks[b.k] || b.en || b.he) : EN ? ({ hapoalim: 'Hapoalim', leumi: 'Leumi', discount: 'Discount', mizrahi: 'Mizrahi-Tefahot', fibi: 'First International', mercantile: 'Mercantile', jerusalem: 'Jerusalem' }[b.k] || b.en || b.he) : b.he; }); names.system = T.all;
       var order = ['system'].concat(Object.keys(bb.rate).filter(function (k) { return k !== 'system'; }));
       var v = { mode: 'amount', amount: 1000000, price: 1600000, equity: 400000, pay: 6000, years: 25, bank: 'system', city: null, ins: 0, arn: 0 };
       var src = bb.src || {};
-      var h = '<div class="nlmq" id="nlmq" dir="' + (EN ? 'ltr' : 'rtl') + '" lang="' + (EN ? 'en' : 'he') + '">'
+      var h = '<div class="nlmq" id="nlmq" dir="' + (LTR ? 'ltr' : 'rtl') + '" lang="' + (X ? LX : EN ? 'en' : 'he') + '">'
         + '<h2 class="nlmq__h">' + T.h + '</h2>'
         + '<div class="nlmq__row" data-f="amount">' + fld('nlmq-a', 'amount', T.amount) + '</div>'
         + citySel
@@ -217,15 +280,15 @@
         qa('[data-y]').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-y') === v.years)); });
         qa('[data-b]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-b') === v.bank)); });
         var r = solve(v, bb); last = r;
-        var who = v.bank === 'system' ? T.who_all : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
+        var who = v.bank === 'system' ? T.who_all : X ? X.bank(names[v.bank] || v.bank) : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
         if (v.mode === 'pay') {
-          q('.nlmq__ol').textContent = EN ? 'The mortgage this payment carries' : 'המשכנתא שההחזר הזה נושא';
+          q('.nlmq__ol').textContent = X ? X.olPay : EN ? 'The mortgage this payment carries' : 'המשכנתא שההחזר הזה נושא';
           q('.nlmq__fig').innerHTML = '<bdi>' + IL(r.loan) + '</bdi>';
         } else {
-          q('.nlmq__ol').textContent = EN ? 'First monthly payment' : 'ההחזר החודשי הראשון';
+          q('.nlmq__ol').textContent = X ? X.olFirst : EN ? 'First monthly payment' : 'ההחזר החודשי הראשון';
           q('.nlmq__fig').innerHTML = '<bdi>' + IL(r.pay) + '</bdi>';
         }
-        q('.nlmq__sub').innerHTML = EN
+        q('.nlmq__sub').innerHTML = X ? X.sub(IL(r.pay), IL(r.total), IL(r.interest), v.mode === 'pay') : EN
           ? (v.mode === 'pay' ? 'Payment <bdi>' + IL(r.pay) + '</bdi> · ' : '') + 'Total repaid <bdi>' + IL(r.total) + '</bdi> · of which interest <bdi>' + IL(r.interest) + '</bdi>'
           : (v.mode === 'pay' ? 'החזר <bdi>' + ils(r.pay) + '</bdi> · ' : '') + 'סך ההחזרים <bdi>' + ils(r.total) + '</bdi> · מזה ריבית <bdi>' + ils(r.interest) + '</bdi>';
         var tot = r.total > 0 ? r.total : 1;
@@ -235,11 +298,11 @@
         if (r.ltv != null) {
           var over = r.ltv > 0.75;
           lt.hidden = false; lt.className = 'nlmq__ltv' + (over ? ' is-over' : '');
-          lt.innerHTML = EN
+          lt.innerHTML = X ? X.ltv(NF.format ? new Intl.NumberFormat(LX === 'fr' ? 'fr-FR' : 'ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(r.ltv * 100) : (r.ltv * 100).toFixed(1), over) : EN
             ? 'Loan to value <bdi>' + (r.ltv * 100).toFixed(1) + '%</bdi>' + (over ? ': above 75%, the Bank of Israel maximum for a single home (70% for a replacement home, 50% for an additional home).' : ' (up to 75% for a single home, 70% for a replacement home, 50% for an additional home).')
             : 'שיעור המימון <bdi>' + (r.ltv * 100).toFixed(1) + '%</bdi>' + (over ? ': מעל 75%, המימון המרבי של בנק ישראל לדירה יחידה (70% לדירה חלופית, 50% לדירה נוספת).' : ' (עד 75% לדירה יחידה, 70% לדירה חלופית, 50% לדירה נוספת).');
         } else { lt.hidden = true; }
-        q('.nlmq__src').innerHTML = EN
+        q('.nlmq__src').innerHTML = X ? X.src(esc(who), esc(MO(r.month)), (src.page_en || src.page) ? esc(src.page_en || src.page) : '') : EN
           ? 'Spitzer schedule; the five tracks at the average mix and effective rates of ' + esc(who) + ' in ' + esc(MO(r.month))
             + ', CPI-linked tracks with the index unchanged. Source: ' + ((src.page_en || src.page) ? '<a href="' + esc(src.page_en || src.page) + '" target="_blank" rel="noopener">Bank of Israel, interest rate comparisons for housing loans</a>' : 'Bank of Israel') + '. An average, not a personal offer.'
           : 'לוח שפיצר, חמשת המסלולים לפי התמהיל והריבית האפקטיבית הממוצעים של ' + esc(who) + ' ב' + esc(month(r.month))
@@ -276,10 +339,10 @@
         else if (b.hasAttribute('data-y')) { v.years = +b.getAttribute('data-y'); paint(); }
         else if (b.hasAttribute('data-b')) { v.bank = b.getAttribute('data-b'); paint(); }
         else if (b.classList.contains('nlmq__copy') && last) {
-          var who = v.bank === 'system' ? T.who_all : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
+          var who = v.bank === 'system' ? T.who_all : X ? X.bank(names[v.bank] || v.bank) : (EN ? '' : 'בנק ') + (names[v.bank] || v.bank);
           var cc = v.mode === 'price' && v.city ? cityBy[v.city] : null;  // v4: the city's median, when one was chosen
-          var ct = !cc ? '' : EN ? ' Home price: the median 4-room deal in ' + cityName(cc) + ', ' + quarterEn(cc.quarter) + ', Israel Tax Authority.' : ' מחיר הדירה: חציון העסקאות של 4 חדרים ב' + cc.he + ', ' + cc.quarter + ', רשות המסים.';
-          var tx = EN
+          var ct = !cc ? '' : X ? X.cityTx(cc) : EN ? ' Home price: the median 4-room deal in ' + cityName(cc) + ', ' + quarterEn(cc.quarter) + ', Israel Tax Authority.' : ' מחיר הדירה: חציון העסקאות של 4 חדרים ב' + cc.he + ', ' + cc.quarter + ', רשות המסים.';
+          var tx = X ? X.copyTx(IL(last.loan), v.years, who, MO(last.month), IL(last.pay), IL(last.total)) + ct + '\n' + location.origin + location.pathname : EN
             ? 'A ' + IL(last.loan) + ' mortgage over ' + v.years + ' years at the average mix of ' + who + ' in ' + MO(last.month) + ': first payment ' + IL(last.pay) + ', total repaid ' + IL(last.total) + '.' + ct + '\n' + location.origin + location.pathname
             : 'משכנתא של ' + ils(last.loan) + ' ל־' + v.years + ' שנה, בתמהיל הממוצע של ' + who + ' ב' + month(last.month) + ': החזר ראשון ' + ils(last.pay) + ', סך ההחזרים ' + ils(last.total) + '.' + ct + '\n' + location.origin + location.pathname;
           var fx = fullCost(last.pay, v.ins, v.arn); if (fx.any) tx = tx.replace('\n' + location.origin, ' ' + T.cl + IL(fx.total) + '.\n' + location.origin);  // v5

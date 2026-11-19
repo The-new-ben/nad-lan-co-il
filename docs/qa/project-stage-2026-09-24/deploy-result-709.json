@@ -1,0 +1,31 @@
+{
+  "released": "1.72.709",
+  "from": "1.72.708",
+  "live_before": {
+    "inc/page-lang.php": "ffa6c02c9d4f37e3a5fef5e386de8f19",
+    "inc/near-finder.php": "c7fffca3f06350211193fa0ded50295c",
+    "assets/near-finder/finder.js": "018e8c8fcf6bc4e2bb25c906807c7a8c",
+    "assets/near-finder/finder.css": "27ca84714938ddab173eca0c4e1e2f0c",
+    "assets/instruments/tools/mquick.js": "ca0443a029748d9acc7475cf40ebec0f",
+    "assets/project-stage/bridge.js": "2a2dbb028e2bfca6a2086c701783f3cc",
+    "assets/tours/sde-dov-tour.html": "8e313d99e19da85b5e1d4a9ad0712883",
+    "nadlan-config.php": "64be613342833655e7c90c663bda31a4",
+    "inc/instruments.php": "f869d5ca08a33a027553ea7dad9d58da"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-19 15:55:37",
+  "files": {
+    "inc/page-lang.php": "a68d09a483d87644457ff13d5e20a929",
+    "inc/near-finder.php": "b1c96e316c2e5e867be3d0af7deaff72",
+    "assets/near-finder/finder.js": "0b187ee867e461c56bb06f49e43381f4",
+    "assets/near-finder/finder.css": "b7b2d3f59f5b03055fef563bdb0dc5d1",
+    "assets/instruments/tools/mquick.js": "d3ffe4ce0cecec927d738462e7b46c0b",
+    "assets/project-stage/bridge.js": "8380c0bd90f9f17e3beba01c1d95b4f0",
+    "assets/tours/sde-dov-tour.html": "1b8064de15c9882005fd491118eb3269",
+    "nadlan-config.php": "1f4c0412484e95c7be745fe28362bc0c",
+    "inc/instruments.php": "35c9bb0bcef53b9c7251639eaf302e99"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.709, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

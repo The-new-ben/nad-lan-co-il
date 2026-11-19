@@ -202,6 +202,7 @@
 		+ (SAVE ? '<div class="nlnf__savedgo" id="nlnf-savedgo" hidden><button type="button" class="nlnf-link" data-saved="go"></button></div>' : '')
 		+ '<ol class="nlnf__list" id="nlnf-list"></ol>'
 		+ '<div class="nlnf__empty" id="nlnf-empty" hidden></div>'
+		+ '<div class="nlnf__few" id="nlnf-few" hidden></div>'
 		+ '<button type="button" class="nlnf__more" id="nlnf-more" hidden>הציגו עוד</button>'
 		+ (SAVE ? '<section class="nlnf__visit nlnf__saved" id="nlnf-saved" aria-labelledby="nlnf-saved-h" hidden></section>' : '')
 		+ '<section class="nlnf__visit" id="nlnf-visit" aria-labelledby="nlnf-visit-h" hidden></section>'
@@ -219,7 +220,7 @@
 		list: $('nlnf-list'), empty: $('nlnf-empty'), more: $('nlnf-more'), visit: $('nlnf-visit'), card: $('nlnf-card'),
 		alrow: $('nlnf-alrow'), al: $('nlnf-al'), saved: $('nlnf-saved'), savedgo: $('nlnf-savedgo'),
 		draw: $('nlnf-draw'), pad: $('nlnf-pad'), padL: $('nlnf-pad-l'), drw: $('nlnf-drw'), drwT: $('nlnf-drw-t'), drwX: $('nlnf-drw-x'),
-		grab: $('nlnf-grab'), sh: $('nlnf-sh'), tools: $('nlnf-tools'), fs: $('nlnf-fs')
+		grab: $('nlnf-grab'), sh: $('nlnf-sh'), tools: $('nlnf-tools'), fs: $('nlnf-fs'), few: $('nlnf-few')
 	};
 	// the owners' quiet line (printed by the server next to the app, portal pages only) moves into the list's footer
 	var holder = root.closest('.nlnf');
@@ -243,6 +244,9 @@
 			o.t = 'p'; o.key = 'p' + x.id; o.has = isFinite(x.lat) && isFinite(x.lng); o.near = !x.exact;
 			return o;
 		});
+		/* v4 (HAD-793, 19.11.2026): the city medians the server sends (Tax Authority closed deals, the site's own value.json) */
+		S.A = BROKER ? [] : (d.areas || []).filter(function (a) { return a && a.n && isFinite(a.lat) && isFinite(a.lng) && a.r4 > 0; });
+		S.asrc = d.areas_src || null;
 		S.byKey = {};
 		S.L.concat(S.P).forEach(function (x) { S.byKey[x.key] = x; });
 		S.visit = S.visit.filter(function (k) { return !!S.byKey[k]; });
@@ -356,6 +360,27 @@
 		return '';
 	}
 
+	/* v4 (HAD-793, gap 25/31 of the long film): while the site holds only a few listings, the map of the whole country looked empty.
+	   With FEW or fewer listings of the open tab (before any filter) the map also shows what the site really has: the new projects as a
+	   quiet background layer, the median deal price of a 4-room home per city (sale tab), and the list ends with "what else is here".
+	   Nothing is invented: every label is a real project or a published median, and the block counts only real items. */
+	var FEW = 8;
+	function few() { return !BROKER && S.loaded && S.tab !== 'new' && pool().length <= FEW; }
+	var QM = { '1-3': 'ינואר עד מרץ', '4-6': 'אפריל עד יוני', '7-9': 'יולי עד ספטמבר', '10-12': 'אוקטובר עד דצמבר' };
+	function qText(q) { var m = /^(\d{1,2}-\d{1,2})\.(\d{4})$/.exec(String(q || '')); return m && QM[m[1]] ? QM[m[1]] + ' ' + m[2] : String(q || ''); }
+	function projOnMap() { return S.P.filter(function (x) { return x.has; }); }
+	function renderFew() {
+		if (!el.few) { return; }
+		if (!few()) { el.few.hidden = true; el.few.innerHTML = ''; return; }
+		var np = projOnMap().length, q = S.A.length ? qText(S.A[0].q) : '';
+		var h = '<p class="nlnf-few__h">המודעות באתר רק מתחילות. בינתיים, מה עוד יש על המפה</p><ul class="nlnf-few__l">';
+		if (np) { h += '<li><button type="button" class="nlnf-few__go" data-few="new"><span>פרויקטים חדשים על המפה</span><b class="nlnf-few__n">' + grp(np) + '</b></button></li>'; }
+		if (S.tab === 'sale' && S.A.length) { h += '<li><a class="nlnf-few__go" href="/apartment-prices/"><span>מחירי דירות לפי עיר</span><small>חציון 4 חדרים, ' + esc(q) + '</small></a></li>'; }
+		if (NA) { h += '<li><button type="button" class="nlnf-few__go" data-al="open" aria-haspopup="dialog"><span>התריעו לי כשתעלה כאן דירה</span>' + bell(16) + '</button></li>'; }
+		h += '<li><a class="nlnf-few__go is-pri" href="/post-listing/"><span>יש לכם דירה? פרסמו בחינם</span></a></li></ul>';
+		if (S.tab === 'sale' && S.A.length && S.asrc) { h += '<p class="nlnf-few__src">המחירים על המפה: ' + esc(S.asrc) + '.</p>'; }
+		el.few.innerHTML = h; el.few.hidden = false;
+	}
 	function renderList() {
 		var r = results();
 		el.panel.setAttribute('aria-labelledby', 'nlnf-t-' + S.tab);
@@ -374,6 +399,7 @@
 			el.list.innerHTML = '';
 			el.more.hidden = true;
 			el.empty.hidden = false;
+			renderFew();
 			el.empty.innerHTML = (S.tab === 'new' || BROKER)
 				? '<p>לא מצאנו כאן התאמה. הרחיבו את האזור או נקו את הסינון.</p><div class="nlnf-empty__go"><button type="button" class="nlnf-btn" data-empty="wide">הרחיבו את האזור</button></div>'
 				: '<p>לא מצאנו כאן התאמה. הרחיבו את האזור או עברו לפרויקטים חדשים.</p><div class="nlnf-empty__go"><button type="button" class="nlnf-btn" data-empty="wide">הרחיבו את האזור</button><button type="button" class="nlnf-btn" data-empty="new">לפרויקטים חדשים</button></div>';
@@ -390,6 +416,7 @@
 		});
 		el.list.innerHTML = h;
 		el.more.hidden = r.length <= S.shown;
+		renderFew();
 		return r;
 	}
 
@@ -446,6 +473,10 @@
 		var h = S.tab === 'new' ? '<span><i class="nlnf-lg nlnf-lg--new"></i>פרויקט חדש</span>'
 			: (S.tab === 'rent' ? '<span><i class="nlnf-lg nlnf-lg--rent"></i>להשכרה</span>' : '<span><i class="nlnf-lg nlnf-lg--sale"></i>למכירה</span>')
 			+ '<span><i class="nlnf-lg nlnf-lg--area"></i>המיקום לפי השכונה</span>';
+		if (few()) {
+			h += '<span><i class="nlnf-lg nlnf-lg--ctx"></i>פרויקט חדש</span>';
+			if (S.tab === 'sale' && S.A.length) { h += '<span><i class="nlnf-lg nlnf-lg--med"></i>חציון 4 חד׳ בעיר</span>'; }
+		}
 		if (firstAnchor()) { h += '<span><i class="nlnf-lg nlnf-lg--anc"></i>המקומות שלכם</span>'; }
 		if (S.zone) { h += '<span><i class="nlnf-lg nlnf-lg--zone"></i>האזור שציירתם</span>'; }
 		if (S.iso) { h += '<span><i class="nlnf-lg nlnf-lg--iso"></i>' + (S.iso.est ? 'זמן נסיעה, הערכה' : 'זמן נסיעה') + '</span>'; }
@@ -875,6 +906,30 @@
 				m.addSource('nf-meas', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
 				m.addLayer({ id: 'nf-meas-l', type: 'line', source: 'nf-meas', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#12202A', 'line-width': 2, 'line-dasharray': [2, 1.5] } });
 				m.addLayer({ id: 'nf-meas-p', type: 'circle', source: 'nf-meas', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#12202A', 'circle-stroke-width': 2 } });
+				/* v4: the context layers of the few-listings state (under the pins, which are DOM markers) */
+				m.addSource('nf-ctx-p', { type: 'geojson', data: EMPTY });
+				m.addLayer({ id: 'nf-ctx-p', type: 'circle', source: 'nf-ctx-p', paint: {
+					'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 2, 9, 3, 12, 4.5, 15, 6], 'circle-color': '#F2D15A',
+					'circle-stroke-color': '#12202A', 'circle-stroke-width': 1, 'circle-stroke-opacity': 0.7 } });
+				m.addSource('nf-ctx-a', { type: 'geojson', data: EMPTY });
+				m.addLayer({ id: 'nf-ctx-a', type: 'symbol', source: 'nf-ctx-a', layout: {
+					'text-field': ['format', ['get', 'n'], { 'font-scale': 0.92 }, '\n', {}, ['get', 'p'], { 'font-scale': 1.08, 'text-font': ['literal', ['DIN Pro Bold', 'Arial Unicode MS Bold']] }],
+					'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'], 'text-size': 13, 'text-line-height': 1.15, 'text-padding': 4,
+					'text-variable-anchor': ['bottom', 'top', 'right', 'left'], 'text-radial-offset': 0.55, 'text-justify': 'auto',
+					'symbol-sort-key': ['get', 'rank'], 'text-allow-overlap': false, 'text-ignore-placement': false },
+					paint: { 'text-color': '#12202A', 'text-halo-color': '#FFFFFF', 'text-halo-width': 2.6 } });
+				['nf-ctx-p', 'nf-ctx-a'].forEach(function (id) {
+					m.on('mouseenter', id, function () { m.getCanvas().style.cursor = 'pointer'; });
+					m.on('mouseleave', id, function () { m.getCanvas().style.cursor = ''; });
+				});
+				m.on('click', 'nf-ctx-p', function (e) {
+					var f = e.features && e.features[0], x = f && S.byKey[f.properties.key];
+					if (x && !S.picking && !S.measure) { openCard(x, null); ev('few', { go: 'project' }); }
+				});
+				m.on('click', 'nf-ctx-a', function (e) {
+					var f = e.features && e.features[0];
+					if (f && f.properties.u && !S.picking && !S.measure) { ev('few', { go: 'prices' }); window.location.href = f.properties.u; }
+				});
 				m.addSource('nf-pts', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, cluster: true, clusterMaxZoom: 14, clusterRadius: 60, clusterProperties: { n: ['+', ['get', 'n']] } });
 				m.addLayer({ id: 'nf-pts-h', type: 'circle', source: 'nf-pts', paint: { 'circle-radius': 1, 'circle-opacity': 0 } });
 				S.mapState = 'on';
@@ -925,9 +980,24 @@
 			S.map.getSource('nf-pts').setData({ type: 'FeatureCollection', features: f.pts });
 			S.map.getSource('nf-area').setData({ type: 'FeatureCollection', features: S.tab === 'new' ? [] : f.areas });
 		} catch (e) { return; }
+		drawCtx();
 		clearMarkers();
 		if ((first || LAST.fit) && S.loaded) { fitTo(base); LAST.fit = false; }
 		setTimeout(sync, 60);
+	}
+	function drawCtx() {
+		if (!S.map || S.mapState !== 'on') { return; }
+		var on = few(), P = [], A = [];
+		if (on) {
+			projOnMap().forEach(function (x) { P.push({ type: 'Feature', properties: { key: x.key }, geometry: { type: 'Point', coordinates: [x.lng, x.lat] } }); });
+			if (S.tab === 'sale') {
+				var rk = S.A.slice().sort(function (a, b) { return (b.big || 0) - (a.big || 0); });
+				rk.forEach(function (a, i) {
+					A.push({ type: 'Feature', properties: { n: a.n, p: '4 חד׳ · ' + shortPrice(a.r4, 'sale'), u: a.url || '', rank: i }, geometry: { type: 'Point', coordinates: [a.lng, a.lat] } });
+				});
+			}
+		}
+		try { S.map.getSource('nf-ctx-p').setData({ type: 'FeatureCollection', features: P }); S.map.getSource('nf-ctx-a').setData({ type: 'FeatureCollection', features: A }); } catch (e) { /* the map is not ready */ }
 	}
 	function fitTo(list) {
 		if (!S.map) { return; }
@@ -1628,6 +1698,10 @@
 			if (a === 'iso') { clearIso(); return; }
 			if (a === 'bounds') { S.bounds = null; } else { S.group = null; }
 			S.shown = 30; renderList(); markActive(); return;
+		}
+		if ((a = t.getAttribute('data-few'))) {
+			if (a === 'new') { S.tab = 'new'; S.group = null; S.bounds = null; S.shown = 30; LAST.fit = !S.origin && !S.zone && !S.iso; closeCard(); drop(); renderAll(); ev('few', { go: 'new' }); }
+			return;
 		}
 		if ((a = t.getAttribute('data-empty'))) { // widen: the area scopes, the drawn zone, the travel time and every filter go
 			S.bounds = null; S.group = null; S.f = fBlank(); S.fp = { sale: { min: 0, max: 0 }, rent: { min: 0, max: 0 } };

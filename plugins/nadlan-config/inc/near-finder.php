@@ -43,7 +43,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! defined( 'NADLAN_NF_CACHE' ) ) {
-	define( 'NADLAN_NF_CACHE', 'nadlan_nf_v3' ); // bump on a rerun after a rollback (a rolled-back run leaves its transient); v3: floor, elevator, parking, balcony
+	define( 'NADLAN_NF_CACHE', 'nadlan_nf_v4' ); // bump on a rerun after a rollback (a rolled-back run leaves its transient); v3: floor, elevator, parking, balcony; v4 (HAD-793): areas
 }
 
 if ( ! function_exists( 'nadlan_nf_extras' ) ) {
@@ -318,6 +318,44 @@ if ( ! function_exists( 'nadlan_nf_brokers' ) ) {
 	function nadlan_nf_brokers() { return array_values( array_filter( array_map( 'intval', (array) apply_filters( 'nadlan_nf_brokers', array( 7833 ) ) ) ) ); }
 }
 
+if ( ! function_exists( 'nadlan_nf_areas' ) ) {
+	/**
+	 * v4 (HAD-793, 19.11.2026): the median deal price of a 4-room home per city, for the map's few-listings state. The numbers are the
+	 * site's own published file assets/instruments/data/value.json (Tax Authority closed deals, the public summary files of the
+	 * government real-estate site, median by rooms and quarter), the same the value estimator and the city price pages show.
+	 * A city is placed at its centre (catalog-plus city table; four names spelled differently there are mapped here).
+	 */
+	function nadlan_nf_areas() {
+		$f = dirname( __DIR__ ) . '/assets/instruments/data/value.json';
+		$j = is_readable( $f ) ? json_decode( (string) file_get_contents( $f ), true ) : null;
+		if ( ! is_array( $j ) || empty( $j['cities'] ) || ! is_array( $j['cities'] ) ) {
+			return array( array(), '' );
+		}
+		$xy = function_exists( 'nadlan_cp_city_coords' ) ? nadlan_cp_city_coords() : array();
+		$xy += array( 'קריית אונו' => array( 32.0631, 34.8557 ), 'מודיעין מכבים רעות' => array( 31.8969, 35.0104 ), 'רמת השרון' => array( 32.1461, 34.8394 ) );
+		$big = array( 'תל אביב יפו', 'ירושלים', 'חיפה', 'באר שבע', 'ראשון לציון', 'פתח תקווה', 'אשדוד', 'נתניה', 'חולון', 'בני ברק', 'רמת גן', 'בת ים',
+			'רחובות', 'אשקלון', 'הרצליה', 'כפר סבא', 'מודיעין מכבים רעות', 'רעננה', 'אילת', 'הוד השרון', 'גבעתיים', 'קריית אונו', 'רמת השרון', 'יבנה' );
+		$out = array();
+		foreach ( $j['cities'] as $name => $c ) {
+			if ( ! is_array( $c ) || empty( $c['r4'] ) || ! isset( $xy[ $name ] ) ) {
+				continue;
+			}
+			$rank = array_search( $name, $big, true );
+			$out[] = array(
+				'n'   => (string) $name,
+				'lat' => (float) $xy[ $name ][0],
+				'lng' => (float) $xy[ $name ][1],
+				'r4'  => (int) $c['r4'],
+				'q'   => (string) ( isset( $c['q4'] ) ? $c['q4'] : ( isset( $c['q'] ) ? $c['q'] : '' ) ),
+				'url' => ! empty( $c['page'] ) ? (string) $c['page'] : '',
+				'big' => false === $rank ? 0 : 100 - (int) $rank,
+			);
+		}
+		$src = 'עסקאות סגורות לפי רשות המסים, חציון לפי עיר ורבעון' . ( ! empty( $j['file'] ) ? ', קובץ ' . (string) $j['file'] : '' );
+		return array( $out, $src );
+	}
+}
+
 if ( ! function_exists( 'nadlan_nf_data' ) ) {
 	/** The finder's payload. $broker > 0: a broker's own page (her listings only, no projects, no ads). */
 	function nadlan_nf_data( $broker = 0 ) {
@@ -333,6 +371,9 @@ if ( ! function_exists( 'nadlan_nf_data' ) ) {
 			'projects' => $broker ? array() : nadlan_nf_projects( $hidden ),
 			'updated'  => gmdate( 'c' ),
 		);
+		if ( ! $broker ) {
+			list( $out['areas'], $out['areas_src'] ) = nadlan_nf_areas();
+		}
 		set_transient( $key, $out, 10 * MINUTE_IN_SECONDS );
 		return $out;
 	}

@@ -845,6 +845,7 @@ if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en
     <div class="mmbtns">
       <button id="mmSky">מבט־על ↗</button>
       <button id="mmEast">לאיינשטיין ←</button>
+      <button id="mmSea">אל הים</button>
       <button id="mmEnd">לשלושת הפרויקטים</button>
     </div>
   </div>
@@ -996,7 +997,7 @@ const I18N = {
     padL: 'פנייה שמאלה', padF: 'התקדמות קדימה', padR: 'פנייה ימינה', padB: 'חזרה אחורה',
     viewUp: 'תצפית על ↗', viewDown: 'ירידה מהתצפית ↓', viewUpAria: 'תצפית על', viewDownAria: 'ירידה מהתצפית',
     how: 'איך זזים?', howAria: 'איך זזים? הצגת ההסבר',
-    mmAria: 'מפת הרובע — הקישו למעבר לנקודה', mmSky: 'מבט־על ↗', mmEast: 'לאיינשטיין ←', mmEnd: 'לשלושת הפרויקטים',
+    mmAria: 'מפת הרובע — הקישו למעבר לנקודה', mmSky: 'מבט־על ↗', mmEast: 'לאיינשטיין ←', mmSea: 'אל הים', mmEnd: 'לשלושת הפרויקטים',
     waFab: 'וואטסאפ ישיר',
     yearNow: 'היום<small>2026</small>', yearQ: 'הרובע<small>2035</small>',
     helpMob: 'גררו כדי להביט סביב · חיצים למטה = תנועה · הקישו על בניין לפרטים · הקשה כפולה על הקרקע או על בניין מקרבת לשם',
@@ -1062,7 +1063,7 @@ const I18N = {
     padL: 'Turn left', padF: 'Move forward', padR: 'Turn right', padB: 'Move back',
     viewUp: 'Overview ↗', viewDown: 'Back down ↓', viewUpAria: 'Overview', viewDownAria: 'Descend from overview',
     how: 'How to move?', howAria: 'How to move? Show the help',
-    mmAria: 'Quarter map — tap to travel there', mmSky: 'Overview ↗', mmEast: 'To Einstein →', mmEnd: 'The three projects',
+    mmAria: 'Quarter map — tap to travel there', mmSky: 'Overview ↗', mmEast: 'To Einstein →', mmSea: 'To the sea', mmEnd: 'The three projects',
     waFab: 'WhatsApp direct',
     yearNow: 'Today<small>2026</small>', yearQ: 'The quarter<small>2035</small>',
     helpMob: 'Drag to look around · arrows below to move · tap a building for details · double-tap the ground or a building to go there',
@@ -1146,7 +1147,7 @@ const I18N_TXT = [
   ['#waTxtFin', 'finWa'], ['#finTour', 'finTour'], ['#finale .fine', 'finFine'],
   ['#rmPrev', 'rmPrev'], ['#rmNext', 'rmNext'], ['#rmFull', 'rmFull'],
   ['#exView .t', 'viewUp'], ['#exHow .t', 'how'],
-  ['#mmSky', 'mmSky'], ['#mmEast', 'mmEast'], ['#mmEnd', 'mmEnd'],
+  ['#mmSky', 'mmSky'], ['#mmEast', 'mmEast'], ['#mmSea', 'mmSea'], ['#mmEnd', 'mmEnd'],
   ['#onb h2', 'onbH2'], ['#onbLine', 'onbLine'], ['#onbFly', 'onbFly'], ['#onbWalk', 'onbWalk'], ['#onbDemo', 'onbDemo'], ['#onb .sub2', 'onbSub2'],
   ['#demoChip', 'demoChip'], ['#veil .cap', 'veilCapLoad'], ['#fatal p', 'fatalP'],
   /* V6 guide menu */
@@ -2361,8 +2362,53 @@ async function boot() {
     [new THREE.BoxGeometry(0.05, 0.45, 0.05), 0.17, 0.22, -0.17], [new THREE.BoxGeometry(0.05, 0.45, 0.05), -0.17, 0.22, -0.17]]);
   const G_UMB = new THREE.ConeGeometry(1.65, 0.52, 8); G_UMB.translate(0, 2.32, 0);
   const G_UMBPOLE = new THREE.CylinderGeometry(0.035, 0.045, 2.15, 5); G_UMBPOLE.translate(0, 1.07, 0);
-  const G_PERSON = mergeGeo([[new THREE.CapsuleGeometry(0.165, 0.52, 3, 8), 0, 0.82, 0],
-    [new THREE.SphereGeometry(0.115, 8, 6), 0, 1.33, 0]]);
+  /* HAD-793 (19.11.2026, gap 21 of the long film): people with a body instead of a capsule. Shoes, legs, hips, torso, arms, hands,
+     neck, head and hair; aPart picks the colour (0 top = the instance colour, 1 trousers, 2 skin, 3 hair, 4 shoes), aLimb marks
+     the legs (+-1) and arms (+-2) that swing on the walkers (personShader). Still one instanced draw per pool. */
+  const tagG = (g, part, limb = 0) => { const n = g.attributes.position.count;
+    g.setAttribute('aPart', new THREE.BufferAttribute(new Float32Array(n).fill(part), 1));
+    g.setAttribute('aLimb', new THREE.BufferAttribute(new Float32Array(n).fill(limb), 1)); return g; };
+  const G_PERSON = mergeGeo([
+    [tagG(new THREE.BoxGeometry(0.1, 0.07, 0.25), 4, 1), 0.09, 0.035, 0.03], [tagG(new THREE.BoxGeometry(0.1, 0.07, 0.25), 4, -1), -0.09, 0.035, 0.03],
+    [tagG(new THREE.CylinderGeometry(0.068, 0.056, 0.82, 7), 1, 1), 0.09, 0.48, 0], [tagG(new THREE.CylinderGeometry(0.068, 0.056, 0.82, 7), 1, -1), -0.09, 0.48, 0],
+    [tagG(new THREE.BoxGeometry(0.32, 0.16, 0.19), 1, 0), 0, 0.92, 0],
+    [tagG(new THREE.CapsuleGeometry(0.155, 0.3, 3, 8).scale(1, 1, 0.66), 0, 0), 0, 1.2, 0],
+    [tagG(new THREE.CapsuleGeometry(0.042, 0.46, 2, 6), 0, 2), 0.215, 1.17, 0], [tagG(new THREE.CapsuleGeometry(0.042, 0.46, 2, 6), 0, -2), -0.215, 1.17, 0],
+    [tagG(new THREE.SphereGeometry(0.046, 6, 4), 2, 2), 0.215, 0.885, 0], [tagG(new THREE.SphereGeometry(0.046, 6, 4), 2, -2), -0.215, 0.885, 0],
+    [tagG(new THREE.CylinderGeometry(0.048, 0.052, 0.09, 6), 2, 0), 0, 1.47, 0],
+    [tagG(new THREE.SphereGeometry(0.1, 10, 8).scale(0.94, 1.12, 1), 2, 0), 0, 1.6, 0.006],
+    [tagG(new THREE.SphereGeometry(0.106, 10, 6, 0, Math.PI * 2, 0, Math.PI * 0.55).scale(0.95, 1.08, 1.04), 3, 0), 0, 1.625, -0.012]]);
+  const personShader = (mat, walk) => {
+    mat.onBeforeCompile = (sh) => {
+      sh.uniforms.uTime = TIME;
+      sh.vertexShader = sh.vertexShader
+        .replace('#include <common>', `#include <common>
+attribute float aPart; attribute float aLimb; uniform float uTime;
+varying float vPart; varying vec3 vSkin; varying vec3 vPant; varying vec3 vHair;
+float nlh(float n) { return fract(sin(n) * 43758.5453); }`)
+        .replace('#include <begin_vertex>', `#include <begin_vertex>
+float nlI = float(gl_InstanceID);
+float h1 = nlh(nlI * 12.9898 + 1.3), h2 = nlh(nlI * 78.233 + 4.1), h3 = nlh(nlI * 39.425 + 7.7);
+vPart = aPart;
+vSkin = h1 < 0.22 ? vec3(0.83, 0.60, 0.47) : h1 < 0.44 ? vec3(0.70, 0.47, 0.33) : h1 < 0.64 ? vec3(0.55, 0.36, 0.24) : h1 < 0.82 ? vec3(0.36, 0.22, 0.14) : vec3(0.20, 0.12, 0.08);
+vPant = h2 < 0.25 ? vec3(0.05, 0.07, 0.12) : h2 < 0.5 ? vec3(0.13, 0.20, 0.33) : h2 < 0.7 ? vec3(0.42, 0.37, 0.27) : h2 < 0.85 ? vec3(0.03, 0.03, 0.035) : vec3(0.30, 0.31, 0.33);
+vHair = h3 < 0.4 ? vec3(0.02, 0.015, 0.01) : h3 < 0.7 ? vec3(0.09, 0.05, 0.025) : h3 < 0.85 ? vec3(0.30, 0.20, 0.10) : vec3(0.55, 0.53, 0.50);` + (walk ? `
+if (abs(aLimb) > 0.5) {
+  float side = aLimb > 0.0 ? 1.0 : -1.0; bool arm = abs(aLimb) > 1.5;
+  float piv = arm ? 1.42 : 0.9;
+  float ang = sin(uTime * 7.2 + h1 * 6.2832) * (arm ? -0.42 : 0.5) * side;
+  float dy = transformed.y - piv, dz = transformed.z;
+  transformed.y = piv + dy * cos(ang) - dz * sin(ang);
+  transformed.z = dy * sin(ang) + dz * cos(ang);
+}` : ''));
+      sh.fragmentShader = sh.fragmentShader
+        .replace('#include <common>', `#include <common>
+varying float vPart; varying vec3 vSkin; varying vec3 vPant; varying vec3 vHair;`)
+        .replace('#include <color_fragment>', `#include <color_fragment>
+if (vPart > 0.5) { diffuseColor.rgb = diffuse * (vPart < 1.5 ? vPant : vPart < 2.5 ? vSkin : vPart < 3.5 ? vHair : vec3(0.04)); }`);
+    };
+    mat.customProgramCacheKey = () => 'nl-person-' + (walk ? 'w' : 's');
+  };
   const G_BENCH = mergeGeo([[new THREE.BoxGeometry(1.85, 0.07, 0.52), 0, 0.46, 0],
     [new THREE.BoxGeometry(1.85, 0.4, 0.06), 0, 0.68, -0.24],
     [new THREE.BoxGeometry(0.08, 0.44, 0.46), 0.78, 0.22, 0], [new THREE.BoxGeometry(0.08, 0.44, 0.46), -0.78, 0.22, 0]]);
@@ -2389,6 +2435,8 @@ async function boot() {
   const M_UMB = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85, side: THREE.DoubleSide });
   const M_POLE = new THREE.MeshStandardMaterial({ color: 0x6a625a, roughness: 0.8 });
   const M_PERSON = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.88 });
+  const M_WALK = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.88 }); /* HAD-793: the walkers swing legs and arms */
+  personShader(M_PERSON, false); personShader(M_WALK, true);
   const M_BENCH = new THREE.MeshStandardMaterial({ color: 0x8a6d4d, roughness: 0.9 });
   const M_PLANTER = new THREE.MeshStandardMaterial({ color: 0xb5aa98, roughness: 0.95 });
   const M_BUSH = new THREE.MeshStandardMaterial({ color: 0x46662f, roughness: 1 });
@@ -2403,6 +2451,7 @@ async function boot() {
     transparent: true, opacity: 0.32, envMapIntensity: 1.4 });
   const M_CROSS = new THREE.MeshBasicMaterial({ color: 0xd8d2c2, transparent: true, opacity: 0.5, depthWrite: false, fog: true });
   sunMat(M_PERSON, 0xffffff, 0x6a6478);   /* people dim to silhouettes at dusk */
+  sunMat(M_WALK, 0xffffff, 0x6a6478);
   sunMat(M_CAR, 0xffffff, 0x9a95a8);
   sunMat(M_UMB, 0xffffff, 0xc9b8a8);
   sunMat(M_AWNING, 0xffffff, 0xb8a898);
@@ -2412,7 +2461,8 @@ async function boot() {
   sunMat(M_SHOP, 0xcbbfa8, 0x574a44);
   const CHAIR_COLS = [0x37404a, 0x9a7c50, 0x5a4438, 0x2e4c3e];
   const UMB_COLS = [0xefe6d0, 0xd8c9a8, 0xc45f4a, 0xf2ede2, 0x4e6e64];
-  const PPL_COLS = [0x40566b, 0x6b5a49, 0x77808a, 0x8a4f42, 0x4f6b55, 0x8c8578, 0x32405c, 0xa08a68, 0x704a5e];
+  const PPL_COLS = [0x40566b, 0x6b5a49, 0x77808a, 0x8a4f42, 0x4f6b55, 0x8c8578, 0x32405c, 0xa08a68, 0x704a5e,
+    0xf2f2ee, 0xe8e2d6, 0x9fb8cf, 0x2f6f86, 0xc9c4b8, 0x5b7f5a, 0x1d2430]; /* HAD-793: white and light shirts, as on a Tel Aviv street */
   const CAR_COLS = [0xf2f2f0, 0xd8d8d6, 0xb8bcc2, 0x3c414b, 0x2e3a52, 0x6b2f2f, 0xe8e4da];
   const AWN_COLS = [0xb2593c, 0xd8cfb4, 0x3e6e64, 0x2e4c66, 0xa8433a];
   const SIGN_BGS = ['#22303e', '#5a3a2e', '#2e4a40', '#3a2e4a', '#623b28', '#26424f'];
@@ -2429,6 +2479,7 @@ async function boot() {
     mk('umb', G_UMB, M_UMB, cap.umb || 1, true);
     mk('upole', G_UMBPOLE, M_POLE, cap.umb || 1);
     mk('person', G_PERSON, M_PERSON, cap.person || 1, true);
+    mk('walkp', G_PERSON, M_WALK, cap.person || 1, true); /* HAD-793: walkers in their own pool, the leg swing is theirs only */
     mk('bench', G_BENCH, M_BENCH, cap.bench || 1);
     mk('planter', G_PLANTER, M_PLANTER, cap.planter || 1);
     mk('bush', G_BUSH, M_BUSH, cap.planter || 1);
@@ -2453,8 +2504,8 @@ async function boot() {
         put('person', x, 0, z, ry === null ? rng() * 6.28 : ry, s || (0.92 + rng() * 0.16), s || (0.92 + rng() * 0.2), s || (0.92 + rng() * 0.16), pick(PPL_COLS)); },
       kid(x, z) { put('person', x, 0, z, rng() * 6.28, 0.62, 0.58, 0.62, pick(PPL_COLS)); },
       walker(ax, az, bx, bz, sp = 0.05) {
-        const idx = put('person', ax, 0, az, 0, 1, 1, 1, pick(PPL_COLS));
-        if (idx >= 0) pool.walkers.push({ im: pool.meshes.person, idx, ax, az, bx, bz, sp: sp * (0.8 + rng() * 0.5), ph: rng() * 6.28, s: 0.92 + rng() * 0.16 }); },
+        const idx = put('walkp', ax, 0, az, 0, 1, 1, 1, pick(PPL_COLS));
+        if (idx >= 0) pool.walkers.push({ im: pool.meshes.walkp, idx, ax, az, bx, bz, sp: sp * (0.8 + rng() * 0.5), ph: rng() * 6.28, s: 0.92 + rng() * 0.16 }); },
       bench(x, z, ry) { put('bench', x, 0, z, ry); },
       planter(x, z) { put('planter', x, 0, z, rng()); put('bush', x, 0, z, rng()); },
       bike(x, z, ry) { put('bike', x, 0, z, ry, 1, 1, 1); },
@@ -2532,7 +2583,7 @@ async function boot() {
   /* ---------------- west-quarter street life (2035 · idle-built, never blocks boot) ---------------- */
   buildShadows(world, CITYQ); /* existing-city crisp day shadows — both years */
   const buildWestLife = () => { const t0 = performance.now();
-    const L = buildLife(futLife, { table: 40, chair: 120, umb: 40, person: 84, bench: 30, planter: 44,
+    const L = buildLife(futLife, { table: 40, chair: 120, umb: 40, person: 150, bench: 30, planter: 44,
       car: 18, bike: 8, awn: 14, shop: 11, bus: 1, cross: 56, seed: 19 });
     /* beach-cafe pavilions along the promenade (east side) — each: shop + sign + awning + cafe cluster */
     const SHOPS = [
@@ -2575,6 +2626,14 @@ async function boot() {
       L.put('upole', bx, -0.2, bz, 0);
       if (i % 2) L.person(bx + 1.4, bz + 0.8); }
     L.kid(-146, -44); L.kid(-141, -58);
+    /* HAD-793: the beach where the walk now ends (the 'sea' node, x -174): more umbrellas and bathers, people at the waterline */
+    for (let i = 0; i < 12; i++) { const bx = -164 + (i % 4) * 7 + (i * 5) % 3, bz = -30 + i * 7.5;
+      L.put('umb', bx, -0.2, bz, i * 0.9, 1, 1, 1, [0xefe6d0, 0x2f6f86, 0xd8c9a8, 0xf2ede2][i % 4]); L.put('upole', bx, -0.2, bz, 0);
+      L.person(bx + 1.3, bz + 0.6); if (i % 3 === 0) L.person(bx - 1.1, bz - 0.4); }
+    for (const [px, pz] of [[-176, -12], [-178, 18], [-175, 41], [-177, 66], [-171, -36], [-150, 30], [-138, 4]]) L.person(px, pz);
+    L.kid(-172, 6); L.kid(-170, 24); L.kid(-158, 52);
+    L.walker(-172, -140, -172, 140, 0.022); L.walker(-168, 120, -168, -120, 0.03); L.walker(-160, -90, -160, 110, 0.026);
+    L.walker(-112, -60, -112, 160, 0.04); L.walker(-96, 130, -96, -150, 0.046);
     /* bus stop + parked cars along the coast road */
     L.bus(-95.2, 58, -Math.PI / 2);
     for (const z of [-228, -213, -198, -171, -157, 128, 143, 172, 187, 216]) L.car(-103.3, z, 0);
@@ -3039,7 +3098,7 @@ async function boot() {
     document.body.classList.add('rm');
     const nameEl = $('#rmName'), prev = $('#rmPrev'), next = $('#rmNext');
     const go = (i) => { station = Math.max(0, Math.min(stations.length - 1, i));
-      if (typeof narrPlay === 'function') { narrCh = station; narrPlay(station); } /* V6: narration in reduced-motion station mode too */
+      try { narrCh = station; narrPlay(station); } catch (e) { /* HAD-793: the first call runs during boot, before the narration's state exists (it threw and stopped the whole tour for reduced-motion visitors); later calls play */ }
       targetU = dispU = stations[station].u; nameEl.textContent = stName(stations[station]);
       prev.disabled = station === 0; next.disabled = station === stations.length - 1; applyUI(dispU); };
     prev.onclick = () => go(station - 1); next.onclick = () => go(station + 1);
@@ -3069,6 +3128,9 @@ async function boot() {
     'prom-c':  { x: -104, z: 0,    y: EYE, name: 'טיילת החוף', en: 'The beach promenade' },
     'prom-s':  { x: -104, z: -150, y: EYE, name: 'הטיילת מול דימרי ימה', en: 'Promenade by Dimri Yama' },
     'beach':   { x: -152, z: -60,  y: 2.2, name: 'קו המים', en: 'The waterline' },
+    /* HAD-793: the walk reaches the sea: along the linear park west, over the promenade, onto the sand, to the water */
+    'park-w':  { x: -22,  z: 2,    y: EYE, name: 'הפארק הלינארי — בדרך לים', en: 'The Linear Park — to the sea' },
+    'sea':     { x: -174, z: 2,    y: 1.9, name: 'הים התיכון — קו המים', en: 'The Mediterranean — the waterline', faceSea: true },
     'dimri':   { x: -4,   z: -118, y: EYE, name: 'רחבת דימרי ימה', en: 'Dimri Yama plaza', project: 'dimri' },
     'run-s':   { x: 74,   z: -190, y: EYE, name: 'פארק המסלול — דרום', en: 'Runway Park — south' },
     'run-c':   { x: 74,   z: -8,   y: EYE, name: 'פארק המסלול', en: 'Runway Park' },
@@ -3112,6 +3174,8 @@ async function boot() {
     ['run-s', 'zohi'], ['rainbow', 'zohi'], ['zohi', 'shibi'], ['run-s', 'shibi'],
     ['prom-n', 'first'], ['first', 'migdal'], ['run-n', 'migdal'],
     ['ein-gate', 'gindi-c'],
+    /* HAD-793: the way to the sea */
+    ['run-c', 'park-w'], ['park-w', 'prom-c'], ['prom-c', 'sea'], ['beach', 'sea'],
   ];
   const GRAPH = {};
   for (const id in NODES) { GRAPH[id] = []; NODES[id].id = id; }
@@ -3508,6 +3572,7 @@ async function boot() {
     return best;
   }
   mmC.addEventListener('click', ev => { const n = mmPick(ev); if (n && MODE.m === 'explore') glideTo(n); });
+  $('#mmSea').addEventListener('click', walkToSea);
   $('#mmSky').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(ex.node.zone === 'east' ? NODES['ein-sky'] : NODES.sky); });
   $('#mmEast').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(NODES['ein-gate']); });
   $('#mmEnd').addEventListener('click', () => exitExplore(true));
@@ -3545,6 +3610,9 @@ async function boot() {
   }
   function onArrive() {
     visited.add(ex.node.id);
+    if (ex.node.faceSea) ex.tYaw = ex.yaw + shortAngle(-1.15 - ex.yaw); /* HAD-793: at the water, look out to sea (west), the beach to the right */
+    if (ex.route && ex.route.length) { const nx = ex.route.shift(); setTimeout(() => { if (MODE.m === 'explore' && ex.route) glideTo(nx); }, 380); }
+    else ex.route = null;
     layoutArrows();
     arrowGroup.visible = !ex.node.sky;
     showExCard(ex.node);
@@ -3558,7 +3626,23 @@ async function boot() {
       if (a < bestA) { bestA = a; best = nb; } }
     return best;
   }
+  /* HAD-793: "to the sea", a walk along the graph (breadth-first, ground nodes only), one glide per hop */
+  function routeTo(goal) {
+    const prev = { [ex.node.id]: null }, q = [ex.node.id];
+    while (q.length) { const id = q.shift(); if (id === goal) break;
+      for (const nb of GRAPH[id]) { if (nb in prev || NODES[nb].sky || NODES[nb].zone === 'east') continue; prev[nb] = id; q.push(nb); } }
+    if (!(goal in prev)) return null;
+    const path = []; for (let id = goal; id && id !== ex.node.id; id = prev[id]) path.unshift(NODES[id]);
+    return path;
+  }
+  function walkToSea() {
+    if (MODE.m !== 'explore') return;
+    if (ex.node.id === 'sea') { onArrive(); return; }
+    const path = routeTo('sea'); if (!path || !path.length) { glideTo(NODES.sea); return; }
+    ex.route = path; glideTo(ex.route.shift());
+  }
   function move(back) {
+    ex.route = null;
     if (MODE.m !== 'explore' || ex.gliding) return;
     const nb = neighborToward(back);
     if (nb) glideTo(nb);
@@ -4255,7 +4339,7 @@ const NARR_FIX_BASE = 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/as
         wk.im.setMatrixAt(wk.idx, composeTRS(
           wk.ax + (wk.bx - wk.ax) * t, 0, wk.az + (wk.bz - wk.az) * t, yaw, wk.s, wk.s * bob, wk.s));
       }
-      pool.meshes.person.instanceMatrix.needsUpdate = true;
+      pool.meshes.walkp.instanceMatrix.needsUpdate = true;
     }
 
     if (MODE.m === 'explore') {
@@ -4393,7 +4477,8 @@ const NARR_FIX_BASE = 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/as
     'einstein-tower': 'ein-hagag', 'einstein-19': 'ein-19', 'ashdar-einstein': 'ein-ashdar', sky: 'sky',
     /* V3.1 — the six named catalog projects, by their live-page slugs */
     'utopia-sde-dov': 'utopia', 'first-sde-dov': 'first', 'zohi-sde-dov': 'zohi',
-    'shikun-binui-sde-dov': 'shibi', 'migdalei-hayam-sde-dov': 'migdal', 'gindi-vogue-sde-dov': 'gindi-c' };
+    'shikun-binui-sde-dov': 'shibi', 'migdalei-hayam-sde-dov': 'migdal', 'gindi-vogue-sde-dov': 'gindi-c',
+    sea: 'sea' /* HAD-793: ?focus=sea lands at the water */ };
   if (MODE_PARAM === 'explore' || FOCUS_NODE[FOCUS]) {
     const target = NODES[FOCUS_NODE[FOCUS] || 'run-c'];
     setTimeout(() => enterExplore(target), 60); /* not rAF — must fire even in a hidden tab */

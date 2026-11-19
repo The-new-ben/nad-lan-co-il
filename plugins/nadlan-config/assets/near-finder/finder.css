@@ -452,3 +452,20 @@ html body .nlnf .nlnf__app.is-sheet .nlnf__tools,html body .nlnf .nlnf__app.is-s
 html body .nlnf .nlnf-saved__open{display:block;margin:0;padding:0;border:0;background:transparent;color:var(--nf-ink);font:inherit;font-size:14px;line-height:1.4;text-align:start;cursor:pointer;box-shadow:none}
 html body .nlnf .nlnf-saved__open:hover{color:var(--nf-sea-deep);text-decoration:underline;text-underline-offset:3px}
 html body .nlnf .nlnf__saved h3:focus{outline:0 !important}
+/* v4 (HAD-793, 19.11.2026): the few-listings state. Context dots in plan-housing yellow (new projects, the same hue as the projects tab),
+   the city median labels drawn by the map itself (ink on a white halo), and the "what else is here" block under the list. */
+.nlnf-lg--ctx{width:10px;height:10px;flex-basis:10px;border-radius:50%;background:var(--nf-housing);border:1px solid var(--nf-ink)}
+.nlnf-lg--med{width:16px;height:10px;flex-basis:16px;border-radius:2px;background:var(--nf-surface);border:1px solid var(--nf-ink)}
+.nlnf__few{margin:14px 0 4px;padding:14px;border:1px solid var(--nf-line);border-radius:6px;background:var(--nf-ground)}
+html body .nlnf .nlnf-few__h{margin:0 0 10px !important;font:600 16px/1.4 var(--nf-sans) !important;color:var(--nf-ink) !important}
+.nlnf-few__l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.nlnf-few__l li{margin:0;padding:0}
+html body .nlnf .nlnf-few__go{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;margin:0;padding:6px 12px;
+  border:1px solid var(--nf-line);border-radius:2px;background:var(--nf-surface);color:var(--nf-ink);font:500 15px/1.35 var(--nf-sans);text-align:start;text-decoration:none;cursor:pointer}
+html body .nlnf .nlnf-few__go:hover{border-color:var(--nf-sea);color:var(--nf-sea-deep)}
+html body .nlnf .nlnf-few__go:focus-visible{outline:2px solid var(--nf-sea);outline-offset:2px}
+html body .nlnf .nlnf-few__go small{font:400 12px/1.3 var(--nf-sans);color:var(--nf-mute);text-align:end}
+html body .nlnf .nlnf-few__n{font:500 16px/1 var(--nf-mono);color:var(--nf-sea)}
+html body .nlnf .nlnf-few__go.is-pri{justify-content:center;background:var(--nf-sea);border-color:var(--nf-sea);color:var(--nf-on-sea);font-weight:600}
+html body .nlnf .nlnf-few__go.is-pri:hover{background:var(--nf-sea-deep);color:var(--nf-on-sea)}
+html body .nlnf .nlnf-few__src{margin:10px 0 0 !important;font:400 12px/1.5 var(--nf-sans) !important;color:var(--nf-mute) !important}

@@ -186,3 +186,175 @@ add_action( 'wp_footer', function () {
 </script>
 	<?php
 }, 21 );
+
+/* 1.72.7xx (HAD-793, gap 24 of the long film): an article in English, French, Russian or Arabic printed its author's name in Hebrew
+   ("Written by בן בטש", the meta author, the share labels and the Person schema). The name now follows the page's language: the
+   user meta nadlan_name_latin when set, else the author's own URL slug spelling (ben-betesh = "Ben Betesh"). Hebrew pages unchanged. */
+if ( ! function_exists( 'nadlan_pglang_author_latin' ) ) {
+	function nadlan_pglang_author_latin( $user_id ) {
+		$user_id = (int) $user_id;
+		if ( $user_id < 1 ) {
+			return '';
+		}
+		$own = trim( (string) get_user_meta( $user_id, 'nadlan_name_latin', true ) );
+		if ( '' !== $own ) {
+			return $own;
+		}
+		$map  = array( 'ben-betesh' => 'Ben Betesh' );
+		$slug = (string) get_the_author_meta( 'user_nicename', $user_id );
+		return isset( $map[ $slug ] ) ? $map[ $slug ] : '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_pglang_foreign' ) ) {
+	/** The page's language when it is one of the four foreign languages, else ''. */
+	function nadlan_pglang_foreign() {
+		$l = function_exists( 'nadlan_pglang_lang' ) ? nadlan_pglang_lang() : '';
+		return in_array( $l, array( 'en', 'fr', 'ru', 'ar' ), true ) ? $l : '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_pglang_author_pair' ) ) {
+	/** array( hebrew display name, latin name ) of the queried post's author, or null. */
+	function nadlan_pglang_author_pair() {
+		if ( '' === nadlan_pglang_foreign() || ! is_singular() ) {
+			return null;
+		}
+		$uid   = (int) get_post_field( 'post_author', get_queried_object_id() );
+		$latin = nadlan_pglang_author_latin( $uid );
+		$he    = (string) get_the_author_meta( 'display_name', $uid );
+		return ( '' !== $latin && '' !== $he && $he !== $latin ) ? array( $he, $latin ) : null;
+	}
+}
+
+add_filter( 'render_block_core/post-author-name', function ( $html ) {
+	$p = nadlan_pglang_author_pair();
+	return $p ? str_replace( esc_html( $p[0] ), esc_html( $p[1] ), (string) $html ) : $html;
+}, 20 );
+
+add_filter( 'wpseo_meta_author', function ( $name ) {
+	$p = nadlan_pglang_author_pair();
+	return ( $p && (string) $name === $p[0] ) ? $p[1] : $name;
+}, 20 );
+
+/* the share card labels ("נכתב על יד", "זמן קריאה מוערך") in the page's language */
+add_filter( 'wpseo_enhanced_slack_data', function ( $data ) {
+	$lang = nadlan_pglang_foreign();
+	if ( '' === $lang || ! is_array( $data ) ) {
+		return $data;
+	}
+	$p  = nadlan_pglang_author_pair();
+	$lb = array(
+		'en' => array( 'Written by', 'Est. reading time', '%d minutes' ),
+		'fr' => array( 'Écrit par', 'Temps de lecture estimé', '%d minutes' ),
+		'ru' => array( 'Автор', 'Время чтения', '%d мин.' ),
+		'ar' => array( 'كتبه', 'مدة القراءة التقديرية', '%d دقيقة' ),
+	);
+	$out = array();
+	foreach ( $data as $k => $v ) {
+		if ( false !== strpos( (string) $k, 'נכתב' ) ) {
+			$out[ $lb[ $lang ][0] ] = ( $p && (string) $v === $p[0] ) ? $p[1] : $v;
+		} elseif ( false !== strpos( (string) $k, 'זמן קריאה' ) && preg_match( '/\d+/', (string) $v, $m ) ) {
+			$out[ $lb[ $lang ][1] ] = sprintf( $lb[ $lang ][2], (int) $m[0] );
+		} else {
+			$out[ $k ] = $v;
+		}
+	}
+	return $out;
+}, 20 );
+
+add_filter( 'wpseo_schema_person', function ( $data ) {
+	$p = nadlan_pglang_author_pair();
+	if ( ! $p || ! is_array( $data ) || ! isset( $data['name'] ) || $data['name'] !== $p[0] ) {
+		return $data;
+	}
+	$data['name'] = $p[1];
+	if ( isset( $data['image']['caption'] ) && $data['image']['caption'] === $p[0] ) {
+		$data['image']['caption'] = $p[1];
+	}
+	if ( 'Ben Betesh' === $p[1] && 'en' === nadlan_pglang_foreign() ) {
+		$data['description'] = 'Ben Betesh is a lawyer working in real estate, family and commercial law, with an office at 18 Raoul Wallenberg St., Tel Aviv.';
+	}
+	return $data;
+}, 20 );
+
+add_filter( 'wpseo_schema_article', function ( $data ) {
+	$p = nadlan_pglang_author_pair();
+	if ( $p && is_array( $data ) && isset( $data['author']['name'] ) && $data['author']['name'] === $p[0] ) {
+		$data['author']['name'] = $p[1];
+	}
+	return $data;
+}, 20 );
+
+/* the article's own title and headings on an English, French or Russian post were set in the Hebrew serif (1.72.7xx: !important, the theme's
+   heading rule outranked the first version), so Latin and Cyrillic
+   fell back to a Times-like face; they now use IBM Plex Sans (already loaded on these pages). On a wide screen the empty margin
+   beside the opening carries the article's contents (it scrolls with the page: nothing floats). */
+add_action( 'wp_head', function () {
+	$lang = nadlan_pglang_foreign();
+	if ( ! in_array( $lang, array( 'en', 'fr', 'ru' ), true ) || ! is_singular( 'post' ) ) {
+		return;
+	}
+	echo '<style id="nlpglang-latin">html[lang="' . esc_attr( $lang ) . '"] body.single-post h1.wp-block-post-title,html[lang="' . esc_attr( $lang ) . '"] body.single-post .wp-block-post-content>h2,html[lang="' . esc_attr( $lang ) . '"] body.single-post .wp-block-post-content>div>h2,html[lang="' . esc_attr( $lang ) . '"] body.single-post .wp-block-post-content>h3,html[lang="' . esc_attr( $lang ) . '"] body.single-post .wp-block-post-content>div>h3{font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif!important;font-weight:600!important;letter-spacing:-.01em}'
+		. '.nlpg-toc{display:none}@media (min-width:1440px){body.single-post .wp-block-post-content{position:relative}.nlpg-toc{display:block;position:absolute;top:0;left:0;width:260px;margin:0;padding:14px 0 0;border-top:2px solid #12202A;font:400 14px/1.45 "IBM Plex Sans",system-ui,sans-serif;color:#3E4C58}'
+		. '.nlpg-toc b{display:block;margin:0 0 8px;font:500 12px/1.3 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#2F6F86}.nlpg-toc ol{margin:0;padding:0;list-style:none;counter-reset:t}.nlpg-toc li{counter-increment:t;margin:0;padding:6px 0;border-bottom:1px solid #D3DCE2}'
+		. '.nlpg-toc li::before{content:counter(t,decimal-leading-zero) "  ";font:500 12px "IBM Plex Mono",monospace;color:#5E6A75}.nlpg-toc a{color:#12202A;text-decoration:none}.nlpg-toc a:hover{color:#2F6F86;text-decoration:underline}.nlpg-toc a:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}}</style>' . "\n";
+}, 30 );
+
+add_action( 'wp_footer', function () {
+	$lang = nadlan_pglang_foreign();
+	if ( ! in_array( $lang, array( 'en', 'fr', 'ru' ), true ) || ! is_singular( 'post' ) ) {
+		return;
+	}
+	$t = array( 'en' => 'On this page', 'fr' => 'Sur cette page', 'ru' => 'На этой странице' );
+	?>
+<script>
+(function () {
+	'use strict';
+	var box = document.querySelector('body.single-post .wp-block-post-content');
+	if (!box || box.querySelector('.nlpg-toc')) { return; }
+	var root = box;  /* an article may sit inside one wrapper (div.nadlan-en-article) */
+	while (root.children.length === 1 && root.firstElementChild.tagName === 'DIV') { root = root.firstElementChild; }
+	var hs = [].slice.call(root.querySelectorAll(':scope > h2')).filter(function (h) { return h.textContent.trim().length > 2; });
+	if (hs.length < 4) { return; }
+	var used = {};
+	var items = hs.slice(0, 24).map(function (h, i) {
+		if (!h.id) {
+			var base = h.textContent.trim().toLowerCase().replace(/[^a-z0-9Ѐ-ӿÀ-ſ]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || ('s' + (i + 1));
+			var id = base, n = 2;
+			while (used[id] || document.getElementById(id)) { id = base + '-' + n++; }
+			h.id = id;
+		}
+		used[h.id] = 1;
+		var li = document.createElement('li'), a = document.createElement('a');
+		a.href = '#' + h.id; a.textContent = h.textContent.trim();
+		li.appendChild(a);
+		return li;
+	});
+	var nav = document.createElement('nav'), b = document.createElement('b'), ol = document.createElement('ol');
+	nav.className = 'nlpg-toc'; nav.setAttribute('aria-label', <?php echo wp_json_encode( $t[ $lang ] ); ?>);
+	b.textContent = <?php echo wp_json_encode( $t[ $lang ] ); ?>;
+	items.forEach(function (li) { ol.appendChild(li); });
+	nav.appendChild(b); nav.appendChild(ol);
+	box.insertBefore(nav, box.firstChild);
+	/* place it in the empty margin beside the text column, measured (the content box spans the whole screen) */
+	function place() {
+		var r = box.getBoundingClientRect(), right = 0, top = null;
+		[].slice.call(root.children, root === box ? 1 : 0, 16).forEach(function (c) {
+			var q = c.getBoundingClientRect();
+			if (q.width > 0) { right = Math.max(right, q.right); if (top === null) { top = q.top; } }
+		});
+		var space = r.right - right;
+		if (window.innerWidth < 1440 || space < 300) { nav.style.display = 'none'; return; }
+		nav.style.display = '';
+		nav.style.left = Math.round(right - r.left + 40) + 'px';
+		nav.style.top = Math.round((top === null ? r.top : top) - r.top) + 'px';
+		nav.style.width = Math.round(Math.min(280, space - 80)) + 'px';
+	}
+	place();
+	window.addEventListener('resize', place, { passive: true });
+	window.addEventListener('load', place);
+})();
+</script>
+	<?php
+}, 22 );
