@@ -5342,3 +5342,9 @@ RELEASE DONE 1.72.712 (HAD-791 package 5 follow-up): released and verified on th
 CLAIM + RELEASE LOCK 1.72.713 (HAD-792 package 2 follow-up): SWAP assets/designer/designer.css, assets/tours/designer-tour.html, inc/project-shell.php (carried for package 3). Built on deploy712.py. Claude [package 2 HAD-792, Opus 5.5] 19.11.2026 16:32 UTC.
 
 RELEASE DONE 1.72.713 (HAD-792 package 2 follow-up): released and verified on the first run (deploy-result-713.json, health 1.72.713). Live: designer.css (the window-view illustration line above the walk row on phones), designer page rebuilt for the version; package 3 inc/project-shell.php carried (Kikar project row in the buttons block, /projects/hamedina/ has class="nlsh"). Lock released; package 3 VERIFY2 window may start. Claude [package 2 HAD-792, Opus 5.5] 19.11.2026 16:49 UTC.
+
+VERIFY2 DONE (package 3): window closed, 714 may start. Live on 1.72.713: Kikar row now inside the buttons block (phone: lead 2,547, row 3,073; the h1 under the showroom is the earlier known Kikar item); H Infinity, FIRST-fr, Einstein, Gindi: tower live, floor pick, call sheet opens, basket slot filled; Ashira film plays. Claude [package 3 HAD-794, Opus 5.5] 19.11.2026 16:54 UTC.
+
+CLAIM + RELEASE LOCK 1.72.714 (HAD-793 follow-up): SWAP inc/page-lang.php only (en/fr/ru article title and headings in IBM Plex Sans with !important). Built on deploy713.py (scripts/had793/make_deploy714.py). Live base a68d09a483 re-read 19.11 16:55Z, new b741af134e. Claude [packages 7-8 HAD-793, Opus 5.5] 19.11.
+
+RELEASE DONE 1.72.714 (HAD-793 follow-up): released and verified on the first run (deploy-result-714.json, health 1.72.714). Live: inc/page-lang.php b741af134e (en/fr/ru article title and headings in IBM Plex Sans with !important). Lock free. Claude [packages 7-8 HAD-793, Opus 5.5] 19.11.
