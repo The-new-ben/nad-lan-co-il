@@ -1,0 +1,167 @@
+{
+  "when": "2026-11-19T13:33:26.358Z",
+  "base": "https://nad-lan.co.il",
+  "checks": [
+    {
+      "name": "phone he: the designer opens on the project plan",
+      "ok": true
+    },
+    {
+      "name": "the walls rise out of the plan (mid-way, then standing)",
+      "ok": true,
+      "detail": {
+        "early": 0.1,
+        "after": 1
+      }
+    },
+    {
+      "name": "the rise can be watched again from its button",
+      "ok": true
+    },
+    {
+      "name": "walk starts in the living room looking at the room, not a wall (>= 3 m free ahead)",
+      "ok": true,
+      "detail": {
+        "ahead": 384,
+        "w": {
+          "x": 366,
+          "y": 570,
+          "yaw": 3.6651914291880923,
+          "path": 0,
+          "turning": false,
+          "touring": false
+        },
+        "rooms": 10
+      }
+    },
+    {
+      "name": "walk offers a tour and a button per room",
+      "ok": true,
+      "detail": 10
+    },
+    {
+      "name": "every room is reached through the doors",
+      "ok": true,
+      "detail": "10/10"
+    },
+    {
+      "name": "after every walk the view looks into the room (worst free view >= 120 cm)",
+      "ok": true,
+      "detail": 192
+    },
+    {
+      "name": "the tour runs by itself",
+      "ok": true
+    },
+    {
+      "name": "a note is pinned on the plan, saved, and stands in 3D",
+      "ok": true,
+      "detail": {
+        "n": 1,
+        "pins": 1,
+        "tags": 1,
+        "room": "living"
+      }
+    },
+    {
+      "name": "a wall colour is set for the room",
+      "ok": true
+    },
+    {
+      "name": "\"add to my basket\" fires the event and saves the order object for package 4",
+      "ok": true,
+      "detail": {
+        "ev": 1,
+        "schema": "nadlan-design-order",
+        "proj": "ashira",
+        "notes": 1,
+        "fin": [
+          "wall:w-sage"
+        ],
+        "svc": [
+          "call"
+        ],
+        "items": 10,
+        "unit": "E-4A",
+        "noPII": true
+      }
+    },
+    {
+      "name": "the note survives a reload (kept on this device, no call needed)",
+      "ok": true
+    },
+    {
+      "name": "desktop: one draw call for all walls, scene stays light",
+      "ok": true,
+      "detail": {
+        "calls": 39,
+        "triangles": 11073,
+        "geometries": 123,
+        "textures": 26
+      }
+    },
+    {
+      "name": "no errors on the page (desktop)",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "ru: page, tools and room names are in ru (no Hebrew left)",
+      "ok": true,
+      "detail": {
+        "dir": "ltr",
+        "lang": "ru",
+        "ttl": "Дизайн квартиры",
+        "nav": "Мебель|Отделка|Электрика|Заметка строителю|Заказ|Видеозвонок",
+        "root": "ru",
+        "label": "Балкон"
+      }
+    },
+    {
+      "name": "ar: page, tools and room names are in ar (no Hebrew left)",
+      "ok": true,
+      "detail": {
+        "dir": "rtl",
+        "lang": "ar",
+        "ttl": "تصميم الشقة",
+        "nav": "الأثاث|التشطيبات|الكهرباء|ملاحظة للمقاول|الطلب|مكالمة فيديو",
+        "root": "ar",
+        "label": "شرفة"
+      }
+    },
+    {
+      "name": "fr: page, tools and room names are in fr (no Hebrew left)",
+      "ok": true,
+      "detail": {
+        "dir": "ltr",
+        "lang": "fr",
+        "ttl": "Aménager l'appartement",
+        "nav": "Meubles|Finitions|Électricité|Note au constructeur|Commande|Appel vidéo",
+        "root": "fr",
+        "label": "Balcon"
+      }
+    },
+    {
+      "name": "en: page, tools and room names are in en (no Hebrew left)",
+      "ok": true,
+      "detail": {
+        "dir": "ltr",
+        "lang": "en",
+        "ttl": "Design the apartment",
+        "nav": "Furniture|Finishes|Electric|Note to builder|Order|Video call",
+        "root": "en",
+        "label": "Balcony"
+      }
+    },
+    {
+      "name": "?call=1 opens the call sheet on arrival (a project with no published plans: example apartment, never a dead page)",
+      "ok": true
+    },
+    {
+      "name": "an unknown project still opens the designer and the call sheet",
+      "ok": true
+    }
+  ],
+  "passed": 20,
+  "failed": 0
+}
