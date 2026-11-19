@@ -153,7 +153,14 @@ if ( ! function_exists( 'nadlan_hp_header_lang' ) ) {
 			$k = count( $panels[0][1] ) - 1;
 			if ( $k < 2 ) { $panels[0][1][] = array( array( ' ', $plain ) ); } else { $panels[0][1][ $k ][] = array( ' ', $plain ); }
 		}
-		foreach ( $panels as $pn ) { $menus .= nadlan_hp_panel( $pn[0], $pn[1] ); }
+		foreach ( $panels as $pn ) {
+			$menus .= nadlan_hp_panel( $pn[0], $pn[1] );
+			/* HAD-790 (20.11): rentals management after the panel that holds the rentals, only in English, the one language home whose
+			   rentals page opens in its own language (/my-rentals/?lang=en); fr and ar fall back to Hebrew, ru to English */
+			if ( 'en' === $lang && false !== strpos( wp_json_encode( $pn[1] ), 'listing_type=rent' ) && false === strpos( $menus, 'nlhp-nav__keep' ) ) {
+				$menus .= '<a class="nlhp-nav__item nlhp-nav__plain nlhp-nav__keep" href="' . esc_url( home_url( '/my-rentals/?lang=en' ) ) . '">Rental management</a>';
+			}
+		}
 		$langs = function_exists( 'nadlan_lang_switcher' ) ? nadlan_lang_switcher() : '';
 		$globe = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
 		$cur   = isset( $names[ $lang ] ) ? $names[ $lang ] : strtoupper( $lang );
@@ -230,11 +237,14 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 			$sale_rooms ? array( array( 'לפי חדרים', $sale_rooms ) ) : null,
 			array( array( 'מפרסמים דירה?', array( array( 'פרסום מודעה חינם', $u( '/post-listing/' ) ), array( 'פרסום לבעלי מקצוע ויזמים', $u( '/advertise/' ) ), array( 'פרסום מודעה ←', $u( '/post-listing/' ), '', 1 ) ) ) ),
 		) ) ) );
+		/* HAD-790 (20.11, Ben: rentals management in the home menu "in a fitting place"): the landlords' column opens the rentals panel,
+		   and a top-level item right after the panel leads to /my-rentals/ on every width (desktop bar and phone sheet) */
 		$menus .= nadlan_hp_panel( 'דירות להשכרה', array_values( array_filter( array(
+			array( array( 'לבעלי דירות', array( array( 'ניהול השכרה חינם', $u( '/my-rentals/' ) ), array( 'פרסום דירה להשכרה', $u( '/post-listing/' ) ) ) ) ),
 			array( array( 'דירות להשכרה', $rent_places ) ),
 			$rent_rooms ? array( array( 'לפי חדרים', $rent_rooms ) ) : null,
-			array( array( 'לבעלי דירות', array( array( 'ניהול השכרה חינם', $u( '/my-rentals/' ) ), array( 'פרסום דירה להשכרה', $u( '/post-listing/' ) ) ) ) ),
 		) ) ) );
+		$menus .= '<a class="nlhp-nav__item nlhp-nav__plain nlhp-nav__keep" href="' . esc_url( $u( '/my-rentals/' ) ) . '">ניהול השכרה</a>';
 		$menus .= nadlan_hp_panel( 'מחירי דירות', array(
 			array( array( 'מחירי דירות לפי עיר', array( array( 'מחירון הדירות · כל הערים', $u( '/apartment-prices/' ) ), array( 'מחירי דירות בתל אביב', $u( '/tel-aviv-apartment-prices/' ) ), array( 'מחירי דירות בירושלים', $u( '/jerusalem-apartment-prices/' ) ), array( 'מחירי דירות בהרצליה', $u( '/herzliya-apartment-prices/' ) ), array( 'מחירי דירות ברמת גן', $u( '/ramat-gan-apartment-prices/' ) ), array( 'מחירי דירות בנתניה', $u( '/netanya-apartment-prices/' ) ) ) ) ),
 			array( array( 'מחשבונים', array( array( 'מחשבון משכנתא', $u( '/mortgage-calculator/' ) ), array( 'מחשבון מס רכישה', $u( '/purchase-tax-calculator/' ) ), array( 'עלות עסקה מלאה', $u( '/apartment-purchase-cost-calculator/' ) ), array( 'כמה שווה הדירה שלי', $u( '/property-value-estimator/' ) ) ) ) ),
@@ -1042,7 +1052,8 @@ body:has(#nlhp-top.nlhp-top--lang) .nlhv2-langbar,body:has(#nlhp-top.nlhp-top--l
 .nlhp-mega__promo b{font:600 18px/1.3 "Noto Serif Hebrew",Georgia,serif}
 .nlhp-sheet__head,.nlhp-sheet__langs,.nlhp-sheet__post{display:none}
 .nlhp-n{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
-@media (max-width:1360px){.nlhp-nav__plain{display:none}.nlhp-nav__item{padding:0 8px;font-size:14.5px}.nlhp-mega__in{grid-template-columns:repeat(3,minmax(0,1fr)) 300px}}
+@media (max-width:1440px){.nlhp-nav__plain{display:none}.nlhp-nav__plain.nlhp-nav__keep{display:flex}}@media (min-width:1061px) and (max-width:1279px){#nlhp-top:not(.nlhp-top--lang) .nlhp-post{display:none}}
+@media (max-width:1360px){.nlhp-nav__item{padding:0 8px;font-size:14.5px}.nlhp-mega__in{grid-template-columns:repeat(3,minmax(0,1fr)) 300px}}
 @media (max-width:1180px){.nlhp-top__in{gap:14px}.nlhp-nav__item{padding:0 6px;font-size:14px}.nlhp-lang>summary{padding:0 8px}}
 @media (max-width:1060px){.nlhp-top__in{height:60px}.nlhp-ico{display:inline-flex}.nlhp-post,.nlhp-lang{display:none}.nlhp-nav{display:none;position:fixed;inset:0;z-index:80;flex-direction:column;background:#fff;overflow-y:auto;overscroll-behavior:contain}.nlhp-top.is-open .nlhp-nav{display:flex}.nlhp-sheet__head{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px;border-bottom:1px solid #e3e1da;font:700 17px/1 Assistant,Arial,sans-serif;color:#14212b;flex:none;position:sticky;top:0;z-index:2;background:#fff}.nlhp-sheet__close{width:44px;height:44px;border:0;background:none;font:400 30px/1 Arial,sans-serif;color:#14212b;cursor:pointer}.nlhp-sheet__langs{display:block;padding:12px 16px;border-bottom:1px solid #e3e1da;flex:none}.nlhp-sheet__langs .nlhv2-langs{display:flex!important;flex-wrap:nowrap!important;gap:6px!important;overflow-x:auto;padding:0!important;background:none!important;border:0!important}.nlhp-sheet__langs a{flex:none;height:34px!important;padding:0 12px!important;border-radius:999px!important;display:inline-flex!important;align-items:center;border:1px solid #e3e1da!important;font:600 13.5px/1 Assistant,Arial,sans-serif!important;color:#3b4753!important;background:#fff!important}.nlhp-sheet__langs a.on{background:#14212b!important;color:#fff!important;border-color:#14212b!important}.nlhp-nav .nlhp-dd{border-bottom:1px solid #e3e1da}.nlhp-nav .nlhp-nav__item{height:auto;min-height:54px;padding:0 16px;justify-content:space-between;font-size:16.5px;font-weight:700;border:0}.nlhp-nav .nlhp-nav__plain{display:flex;border-bottom:1px solid #e3e1da}.nlhp-nav .nlhp-mega{position:static;box-shadow:none;border:0}.nlhp-nav .nlhp-mega__in{grid-template-columns:1fr 1fr;gap:0 14px;padding:0 16px 14px}.nlhp-nav .nlhp-mega__col{display:contents}.nlhp-nav .nlhp-mega__h{display:none}.nlhp-nav .nlhp-mega__col a{font-size:15px;padding:10px 0}.nlhp-nav .nlhp-mega__col a span{display:none}.nlhp-nav .nlhp-mega__promo{display:none}.nlhp-sheet__post{display:flex;align-items:center;justify-content:center;flex:none;height:48px;margin:16px;border-radius:999px;background:#2f6f86;color:#fff!important;font:700 16px/1 Assistant,Arial,sans-serif}body.nlhp-lock{overflow:hidden}}
 @media (max-width:760px){.nlhp-top__in{height:56px;padding:0 12px 0 8px}.nlhp-logo__mark{width:32px;height:32px;border-radius:9px}.nlhp-logo__word{font-size:21px}}

@@ -1,0 +1,34 @@
+[GREEN] https://nad-lan.co.il/
+    http 200 · 334,547b · 1013ms · sha 5b21e361599b · CHANGED
+    title(50): נדלן - מידע נדל״ן בישראל: עסקאות, מחירים ופרויקטים
+    h1x1 canonical x1 hreflang 16 favicon 4 jsonld 2 scripts 50 styles 32
+    DIFF vs 20261119T213732Z:
+      · bytes 334,555 -> 334,547
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+    http 200 · 484,792b · 871ms · sha 4c647f99d7a4 · CHANGED
+    title(67): מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 64 styles 44
+    DIFF vs 20261119T213732Z:
+      · bytes 484,782 -> 484,792
+[YELLOW] https://nad-lan.co.il/en/
+    http 200 · 289,276b · 910ms · sha b9f3b4354c25 · CHANGED
+    title(59): NadLan - apartments, new projects and real prices in Israel
+    h1x1 canonical x1 hreflang 21 favicon 4 jsonld 1 scripts 49 styles 31
+    FLAGS: YELLOW dashes x3
+    DIFF vs 20261119T213732Z:
+      · bytes 289,309 -> 289,276
+[GREEN] https://nad-lan.co.il/projects/rainbow-tel-aviv/
+    http 200 · 481,860b · 845ms · sha 3b5b846e73e3 · CHANGED
+    title(66): ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 68 styles 44
+    DIFF vs 20261119T230843Z:
+      · bytes 481,880 -> 481,860
+[RED] https://nad-lan.co.il/projects/h-infinity/
+    http 404 · 181,001b · 730ms · sha ce39433eae1c · CHANGED
+    title(20): העמוד לא נמצא - נדלן
+    h1x1 canonical x0 hreflang 10 favicon 4 jsonld 1 scripts 34 styles 22
+    FLAGS: RED http 404 | ORANGE canonical x0
+    DIFF vs 20261119T165020Z:
+      · bytes 180,433 -> 181,001
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

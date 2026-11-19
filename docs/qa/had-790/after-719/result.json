@@ -1,0 +1,98 @@
+[
+ {
+  "device": "phone390",
+  "page": "/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "phone390",
+  "page": "/projects/hamedina/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "phone390",
+  "page": "/en/",
+  "item": "Rental management",
+  "landed": "https://nad-lan.co.il/my-rentals/?lang=en",
+  "h1": "Every apartment you rent out: on the map, inside the building, fully in control",
+  "ok": true
+ },
+ {
+  "device": "desk1080",
+  "page": "/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1080",
+  "page": "/projects/hamedina/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1080",
+  "page": "/en/",
+  "item": "Rental management",
+  "landed": "https://nad-lan.co.il/my-rentals/?lang=en",
+  "h1": "Every apartment you rent out: on the map, inside the building, fully in control",
+  "ok": true
+ },
+ {
+  "device": "desk1280",
+  "page": "/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1280",
+  "page": "/projects/hamedina/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1280",
+  "page": "/en/",
+  "item": "Rental management",
+  "landed": "https://nad-lan.co.il/my-rentals/?lang=en",
+  "h1": "Every apartment you rent out: on the map, inside the building, fully in control",
+  "ok": true
+ },
+ {
+  "device": "desk1440",
+  "page": "/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1440",
+  "page": "/projects/hamedina/",
+  "item": "ניהול השכרה",
+  "landed": "https://nad-lan.co.il/my-rentals/",
+  "h1": "כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה",
+  "ok": true
+ },
+ {
+  "device": "desk1440",
+  "page": "/en/",
+  "item": "Rental management",
+  "landed": "https://nad-lan.co.il/my-rentals/?lang=en",
+  "h1": "Every apartment you rent out: on the map, inside the building, fully in control",
+  "ok": true
+ }
+]
