@@ -1,0 +1,40 @@
+diff --git a/plugins/nadlan-config/assets/rentals/rental-manager.js b/plugins/nadlan-config/assets/rentals/rental-manager.js
+index f1e8a9fd..b64cd1af 100644
+--- a/plugins/nadlan-config/assets/rentals/rental-manager.js
++++ b/plugins/nadlan-config/assets/rentals/rental-manager.js
+@@ -348,7 +348,7 @@
+ 
+ 	function claimUnit(floor, pos, dir) {
+ 		var u = { id: "f" + floor + "-" + (pos + 1), floor: floor, pos: pos, dir: dir,
+-			label: (LANG === "en" ? "Apartment, floor " : "דירה בקומה ") + floor, tenant_name: "", tenant_phone: "", rent: 0,
++			label: ({ en: "Apartment, floor ", fr: "Appartement, étage ", ru: "Квартира, этаж ", ar: "شقة، الطابق " }[LANG] || "דירה בקומה ") + floor, tenant_name: "", tenant_phone: "", rent: 0,
+ 			start: "", end: "", option_until: "", linkage: "none", base_index: 0, linked_pct: 100, floor_clause: true,
+ 			securities: {}, docs: {}, ledger: {}, maintenance: [], note: "" };
+ 		CUR.units.push(u);
+@@ -416,7 +416,7 @@
+ 			var since = daysSince(String(mnt.at).slice(0, 10));
+ 			var over = since !== null && since > lim && "done" !== mnt.status;
+ 			h += '<li class="' + ("done" === mnt.status ? "is-done" : "") + '"><span>' + esc(mnt.text) +
+-				' <span class="nlrm-note">' + esc(String(mnt.at).slice(0, 10)) + " · " + esc("urgent" === mnt.urgency ? t("urgent") : t("standard")) + " · " + esc(t("fix_by")) + ": " + lim + (LANG === "en" ? "d" : " ימים") + "</span>" +
++				' <span class="nlrm-note">' + esc(String(mnt.at).slice(0, 10)) + " · " + esc("urgent" === mnt.urgency ? t("urgent") : t("standard")) + " · " + esc(t("fix_by")) + ": " + lim + (T.days_sfx != null ? T.days_sfx : (LANG === "en" ? "d" : " ימים")) + "</span>" +
+ 				(over ? ' <span class="nlrm-chip nlrm-chip--warn">' + esc(t("overdue_fix")) + "</span>" : "") + "</span>" +
+ 				(can ? '<button type="button" class="nlrm-btn nlrm-btn--ghost" style="margin:0;padding:4px 10px;font-size:11px" data-mnt="' + idx + '">' + ("done" === mnt.status ? esc(t("reopen")) : esc(t("mark_done"))) + "</button>" : "") + "</li>";
+ 		});
+@@ -448,7 +448,7 @@
+ 		if (exp) {
+ 			exp.addEventListener("click", function (ev) {
+ 				ev.preventDefault();
+-				var rtl = LANG !== "en";
++				var rtl = LANG === "he" || LANG === "ar";
+ 				var rows = function (obj, labels) {
+ 					return Object.keys(labels).map(function (k) {
+ 						return "<tr><td>" + esc(labels[k]) + "</td><td>" + esc(obj[k] == null || obj[k] === "" ? "-" : String(obj[k])) + "</td></tr>";
+@@ -457,7 +457,7 @@
+ 				var d = '<!doctype html><html dir="' + (rtl ? "rtl" : "ltr") + '"><head><meta charset="utf-8"><title>' + esc(t("export_doc")) + "</title>" +
+ 					"<style>body{font-family:Arial,Heebo,sans-serif;max-width:760px;margin:24px auto;color:#1B1A17;font-size:13px;line-height:1.6}h1{font-size:20px;border-bottom:2px solid #1B1A17;padding-bottom:8px}h2{font-size:15px;margin:18px 0 6px}table{width:100%;border-collapse:collapse}td{border:1px solid #ddd;padding:6px 9px;vertical-align:top}td:first-child{font-weight:700;width:38%;background:#faf7f1}ul{margin:4px 0;padding-inline-start:18px}.note{color:#777;font-size:11px;margin-top:18px;border-top:1px solid #ddd;padding-top:8px}</style></head><body>";
+ 				d += "<h1>" + esc(t("export_doc")) + " - " + esc(u.label) + "</h1>";
+-				d += "<p>" + esc(CUR.address + ", " + CUR.city) + " · " + esc(t("export_gen")) + ": " + new Date().toLocaleString(rtl ? "he-IL" : "en-GB") + "</p>";
++				d += "<p>" + esc(CUR.address + ", " + CUR.city) + " · " + esc(t("export_gen")) + ": " + new Date().toLocaleString({ he: "he-IL", en: "en-GB", fr: "fr-FR", ru: "ru-RU", ar: "ar-EG" }[LANG] || "he-IL") + "</p>";
+ 				d += "<h2>" + esc(t("sel_title")) + "</h2><table>" + rows({
+ 					a: u.tenant_name, b: u.tenant_phone, c: nis(u.rent), d: u.start, e: u.end, f: u.option_until,
+ 					g: ("madad" === u.linkage ? t("link_madad") + " (" + (u.linked_pct || 100) + "%, " + t("cpi_base") + " " + (u.base_index || "-") + ")" : t("link_none"))
