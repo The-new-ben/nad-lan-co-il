@@ -16,9 +16,12 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+require_once __DIR__ . '/cart.php'; // 1.72.710 (HAD-796): one basket for every project and language, the order, the RFP, the reservation
+
 if ( ! function_exists( 'nadlan_bk_on' ) ) {
 	function nadlan_bk_on() {
 		if ( '0' === (string) get_option( 'nadlan_basket', '1' ) || is_admin() ) { return false; }
+		if ( function_exists( 'nadlan_cart_on' ) && nadlan_cart_on() ) { return false; } // 1.72.710 (HAD-796): the cart (assets/cart) is the one basket now
 		$ps = function_exists( 'nadlan_ps_current' ) ? nadlan_ps_current() : null;
 		return $ps && ( 'he' === ( $ps['lang'] ?? 'he' ) || ( 'en' === ( $ps['lang'] ?? '' ) && 'hamedina' === (string) ( $ps['dir'] ?? '' ) ) ); // Hebrew; 1.72.658 (HAD-712): and the English Kikar page
 	}
