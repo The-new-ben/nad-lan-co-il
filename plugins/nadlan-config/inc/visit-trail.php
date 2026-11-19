@@ -28,11 +28,27 @@
  *    recorded unless the page is opened with ?nlvt=1.
  * Loaded from the module list of nadlan-config.php ('visit-trail', after 'campaign-brief'). No long dashes, no tech words
  * on any visitor surface (this module has none).
+ *
+ * v1.1.0 (19.11.2026, Linear HAD-791, package 5 of the long-film gaps; Ben: "מוצר גמור"):
+ *  - window.nlTrack(name, data): ONE small event call for every tool (designer, basket, offer, video call, mortgage, language),
+ *    stored as the new event type 'act' (an allow list of fields, see nadlan_vt_schema). Contract for the sibling modules:
+ *    docs/research/2026-11-19-buyer-events/CONTRACT.md. Also picked up with no change in their files: the nadlanGA() calls of
+ *    the existing modules (basket_, cockpit_, offer_, room_, tour_, journey_, showroom_ ...), the designer's
+ *    nadlan:design-order event, a number typed into a mortgage calculator (never the number) and, on the showroom engine
+ *    pages (Rainbow, Ashira, DUO, H Infinity), a read-only look at window.NadLanEngine.state (engine.js stays frozen).
+ *  - The script now loads on every front page: 'full' on a project page (as before, and now also on the engine's showroom
+ *    pages, which recorded nothing until today), 'lite' elsewhere (only the explicit events above; no page-open record, no
+ *    taps, no time on page).
+ *  - Every event carries the PROJECT it belongs to (column proj, the Hebrew base project: a language page counts for its
+ *    project), so the developer report (inc/dev-report.php, required at the end of this file) adds the tools on other pages
+ *    (/tour/designer/, the basket) to the project's funnel.
+ *  - The visitor's own opt-out: window.nlTrack.off() or any link to #nl-trail-off sets localStorage nl_vt_off=1; nothing runs
+ *    after that (as with Global Privacy Control / Do Not Track).
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( defined( 'NADLAN_VT_VERSION' ) ) { return; }
-define( 'NADLAN_VT_VERSION', '1.0.0' );
-define( 'NADLAN_VT_DB', '1' );
+define( 'NADLAN_VT_VERSION', '1.1.0' );
+define( 'NADLAN_VT_DB', '2' );
 
 if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 	function nadlan_vt_tables() {
@@ -78,13 +94,26 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			lang VARCHAR(5) NOT NULL DEFAULT '',
 			ev VARCHAR(12) NOT NULL,
 			d VARCHAR(400) NOT NULL DEFAULT '',
+			proj BIGINT UNSIGNED NOT NULL DEFAULT 0,
 			PRIMARY KEY  (id),
 			KEY vid_at (vid,at),
 			KEY at (at),
-			KEY page_at (page,at)
+			KEY page_at (page,at),
+			KEY proj_at (proj,at)
 		) $c;" );
 		$ok = nadlan_vt_tables_exist( true );
-		if ( $ok ) { update_option( 'nadlan_vt_db', NADLAN_VT_DB, true ); }
+		if ( $ok ) {
+			// v2 (1.1.0): the rows of v1 were all recorded on a project page: their project is that page's base project
+			$was = (string) get_option( 'nadlan_vt_db', '' );
+			if ( '1' === $was ) {
+				$pages = $wpdb->get_col( "SELECT DISTINCT page FROM {$t['e']} WHERE proj = 0 AND page > 0 LIMIT 2000" ); // phpcs:ignore
+				foreach ( (array) $pages as $pg ) {
+					$pj = nadlan_vt_canon_project( (int) $pg );
+					if ( $pj > 0 ) { $wpdb->query( $wpdb->prepare( "UPDATE {$t['e']} SET proj = %d WHERE proj = 0 AND page = %d", $pj, (int) $pg ) ); } // phpcs:ignore
+				}
+			}
+			update_option( 'nadlan_vt_db', NADLAN_VT_DB, true );
+		}
 		return $ok;
 	}
 
@@ -101,6 +130,45 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 	function nadlan_vt_ready() {
 		if ( NADLAN_VT_DB === (string) get_option( 'nadlan_vt_db', '' ) ) { return true; }
 		return nadlan_vt_install( true );
+	}
+
+	/** a project page's base project: a language page (<slug>-en|fr|ru|ar) counts for its Hebrew project; 0 when not a published project */
+	function nadlan_vt_canon_project( $id ) {
+		static $memo = array();
+		$id = (int) $id;
+		if ( $id <= 0 ) { return 0; }
+		if ( isset( $memo[ $id ] ) ) { return $memo[ $id ]; }
+		$p = get_post( $id );
+		if ( ! $p || 'nadlan_project' !== $p->post_type || 'publish' !== $p->post_status ) { return $memo[ $id ] = 0; }
+		if ( preg_match( '/^(.+)-(en|fr|ru|ar)$/', (string) $p->post_name, $m ) ) {
+			$b = get_page_by_path( $m[1], OBJECT, 'nadlan_project' );
+			if ( $b && 'publish' === $b->post_status ) { return $memo[ $id ] = (int) $b->ID; }
+		}
+		return $memo[ $id ] = $id;
+	}
+
+	/** a project named by an event: a WordPress id or a slug ("rainbow-tel-aviv"; a short key "ashira" matches one project
+	 *  whose slug starts with it); 0 for "mine", "example" or anything unknown */
+	function nadlan_vt_project_ref( $ref ) {
+		static $memo = array();
+		if ( is_int( $ref ) || ( is_string( $ref ) && ctype_digit( $ref ) ) ) { return nadlan_vt_canon_project( (int) $ref ); }
+		$s = sanitize_title( (string) $ref );
+		if ( '' === $s || in_array( $s, array( 'mine', 'example', 'demo' ), true ) ) { return 0; }
+		if ( isset( $memo[ $s ] ) ) { return $memo[ $s ]; }
+		$tk = 'nadlan_vt_pref_' . md5( $s );
+		$hit = get_transient( $tk );
+		if ( false !== $hit ) { return $memo[ $s ] = (int) $hit; }
+		$id = 0;
+		$p  = get_page_by_path( $s, OBJECT, 'nadlan_project' );
+		if ( $p ) {
+			$id = nadlan_vt_canon_project( (int) $p->ID );
+		} else {
+			global $wpdb;
+			$ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'nadlan_project' AND post_status = 'publish' AND post_name LIKE %s AND post_name NOT REGEXP '-(en|fr|ru|ar)$' LIMIT 3", $wpdb->esc_like( $s ) . '-%' ) ); // phpcs:ignore
+			if ( 1 === count( (array) $ids ) ) { $id = nadlan_vt_canon_project( (int) $ids[0] ); }
+		}
+		set_transient( $tk, $id, 6 * HOUR_IN_SECONDS );
+		return $memo[ $s ] = $id;
 	}
 
 	/* ---------------------------------------------------------------- what may be stored: an allow list per event */
@@ -122,8 +190,14 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			'click'    => array( 'k' => 'key', 'l' => 40, 'w' => 'key', 'id' => 32, 'f' => 'f' ),
 			'form'     => array( 'k' => 'key', 'id' => 32 ),
 			'leave'    => array( 'vis' => 'ms', 'sc' => 'pct' ),
+			// 1.1.0: one event of a tool, named by window.nlTrack(name, data) or mirrored from nadlanGA (n = the name)
+			'act'      => array( 'n' => 'name', 'a' => 24, 'p' => 60, 'f' => 'f', 'u' => 24, 'tw' => 16, 'b' => 'b', 'dir' => 24,
+				'rooms' => 'num', 'k' => 24, 'v' => 'num', 'src' => 12, 'to' => 'lang' ),
 		);
 	}
+
+	/** the event types a page that is not a project page may send (the 'lite' tracker) */
+	function nadlan_vt_lite_types() { return array( 'act' ); }
 
 	function nadlan_vt_text( $s, $n ) {
 		if ( ! is_scalar( $s ) ) { return ''; }
@@ -162,6 +236,16 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			} elseif ( 'key' === $rule ) {
 				$v = substr( sanitize_key( (string) $v ), 0, 16 );
 				if ( '' === $v ) { continue; }
+			} elseif ( 'name' === $rule ) {
+				$v = strtolower( (string) $v );
+				if ( ! preg_match( '/^[a-z][a-z0-9_.-]{1,39}$/', $v ) ) { continue; }
+			} elseif ( 'num' === $rule ) {
+				if ( ! is_numeric( $v ) ) { continue; }
+				$v = (int) round( (float) $v );
+				if ( $v < 0 || $v > 100000 ) { continue; }
+			} elseif ( 'lang' === $rule ) {
+				$v = strtolower( substr( (string) $v, 0, 2 ) );
+				if ( ! in_array( $v, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ) { continue; }
 			} else {
 				$v = nadlan_vt_text( $v, (int) $rule );
 				if ( '' === $v ) { continue; }
@@ -169,6 +253,7 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			$o[ $k ] = $v;
 		}
 		if ( 'click' === $type && empty( $o['k'] ) ) { return null; }
+		if ( 'act' === $type && empty( $o['n'] ) ) { return null; }
 		return array( $type, $o );
 	}
 
@@ -182,7 +267,8 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 		if ( ! preg_match( '/^[A-Za-z0-9_-]{16,32}$/', $vid ) ) { return $bad( 'vid' ); }
 		if ( ! preg_match( '/^[A-Za-z0-9_-]{8,24}$/', $pv ) ) { return $bad( 'pv' ); }
 		$page = (int) ( $p['page'] ?? 0 );
-		if ( $page <= 0 ) { return $bad( 'page' ); }
+		$mode = 'lite' === ( $p['mode'] ?? '' ) ? 'lite' : 'full';
+		if ( $page < 0 || ( $page <= 0 && 'full' === $mode ) ) { return $bad( 'page' ); }
 		$evs = isset( $p['ev'] ) && is_array( $p['ev'] ) ? array_values( $p['ev'] ) : null;
 		$lim = nadlan_vt_limits();
 		if ( null === $evs || count( $evs ) > (int) $lim['batch'] ) { return $bad( 'ev' ); }
@@ -195,6 +281,8 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			'pv'   => $pv,
 			'seq'  => max( 0, min( 100000, (int) ( $p['seq'] ?? 0 ) ) ),
 			'page' => $page,
+			'mode' => $mode,
+			'proj' => max( 0, (int) ( $p['proj'] ?? 0 ) ),
 			'lang' => in_array( $lang, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $lang : '',
 			'dev'  => in_array( $dev, array( 'm', 't', 'd' ), true ) ? $dev : '',
 			'ref'  => preg_match( '/^[a-z0-9.-]{3,100}$/', $ref ) ? $ref : '',
@@ -273,7 +361,21 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 		$b   = nadlan_vt_clean_batch( $p, $now );
 		if ( is_wp_error( $b ) ) { return $b; }
 		if ( ! $b['ev'] ) { return $none; }
-		if ( 'nadlan_project' !== get_post_type( $b['page'] ) ) { return new WP_Error( 'nlvt_bad', 'Bad request.', array( 'status' => 400, 'why' => 'page' ) ); }
+		// the page's project: a project page records everything; any other page (or a route with no post, page 0) only the
+		// explicit tool events ('lite'), each counted for the project it names (or the batch's project, or none)
+		$pp = $b['page'] > 0 && 'nadlan_project' === get_post_type( $b['page'] ) ? nadlan_vt_canon_project( $b['page'] ) : 0;
+		if ( 'full' === $b['mode'] && $pp <= 0 ) { return new WP_Error( 'nlvt_bad', 'Bad request.', array( 'status' => 400, 'why' => 'page' ) ); }
+		if ( $pp <= 0 ) {
+			if ( $b['page'] > 0 && 'publish' !== get_post_status( $b['page'] ) ) { return new WP_Error( 'nlvt_bad', 'Bad request.', array( 'status' => 400, 'why' => 'page' ) ); }
+			$lite = nadlan_vt_lite_types();
+			$b['ev'] = array_values( array_filter( $b['ev'], function ( $e ) use ( $lite ) { return in_array( $e['t'], $lite, true ); } ) );
+			if ( ! $b['ev'] ) { return $none; }
+		}
+		$bp = $pp > 0 ? $pp : ( $b['proj'] > 0 ? nadlan_vt_canon_project( $b['proj'] ) : 0 );
+		foreach ( $b['ev'] as $i => $e ) {
+			$ep = isset( $e['d']['p'] ) ? nadlan_vt_project_ref( $e['d']['p'] ) : 0;
+			$b['ev'][ $i ]['proj'] = $ep > 0 ? $ep : $bp;
+		}
 		if ( ! nadlan_vt_limit( 'c|' . nadlan_vt_client() . '|' . gmdate( 'YmdHi', $now ), (int) $lim['client_min'], 2 * MINUTE_IN_SECONDS ) ) {
 			return new WP_Error( 'nlvt_rate', 'Too many requests.', array( 'status' => 429 ) );
 		}
@@ -299,6 +401,7 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 		$first = $now;
 		$last  = 0;
 		$open  = 0;
+		$entry = 'full' === ( $b['mode'] ?? 'full' ) ? (int) $b['page'] : 0;
 		$vals  = array();
 		$args  = array();
 		foreach ( $evs as $e ) {
@@ -307,17 +410,18 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			if ( 'open' === $e['t'] ) { $open++; }
 			$d = $e['d'] ? wp_json_encode( $e['d'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) : '';
 			if ( ! is_string( $d ) || ( function_exists( 'mb_strlen' ) ? mb_strlen( $d, 'UTF-8' ) : strlen( $d ) ) > 400 ) { $d = ''; }
-			$vals[] = '(%s,%s,%s,%d,%s,%s,%s)';
-			array_push( $args, $b['vid'], $b['pv'], gmdate( 'Y-m-d H:i:s', $e['ts'] ), $b['page'], $b['lang'], $e['t'], $d );
+			$vals[] = '(%s,%s,%s,%d,%s,%s,%s,%d)';
+			array_push( $args, $b['vid'], $b['pv'], gmdate( 'Y-m-d H:i:s', $e['ts'] ), $b['page'], $b['lang'], $e['t'], $d, (int) ( $e['proj'] ?? 0 ) );
+			if ( ! $entry && ! empty( $e['proj'] ) ) { $entry = (int) $e['proj']; }
 		}
 		$wpdb->query( $wpdb->prepare(
 			"INSERT INTO {$t['v']} (vid, first_at, last_at, country, lang, dev, ref, entry, pages, events, lead_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%d,%d,%d,0)
 			ON DUPLICATE KEY UPDATE first_at = LEAST(first_at, VALUES(first_at)), last_at = GREATEST(last_at, VALUES(last_at)),
 			country = IF(country = '', VALUES(country), country), lang = IF(lang = '', VALUES(lang), lang), dev = IF(dev = '', VALUES(dev), dev),
 			ref = IF(ref = '', VALUES(ref), ref), entry = IF(entry = 0, VALUES(entry), entry), pages = pages + VALUES(pages), events = events + VALUES(events)",
-			$b['vid'], gmdate( 'Y-m-d H:i:s', $first ), gmdate( 'Y-m-d H:i:s', $last ), (string) $country, $b['lang'], $b['dev'], $b['ref'], $b['page'], $open, count( $evs )
+			$b['vid'], gmdate( 'Y-m-d H:i:s', $first ), gmdate( 'Y-m-d H:i:s', $last ), (string) $country, $b['lang'], $b['dev'], $b['ref'], $entry, $open, count( $evs )
 		) );
-		$wpdb->query( $wpdb->prepare( "INSERT INTO {$t['e']} (vid, pv, at, page, lang, ev, d) VALUES " . implode( ',', $vals ), $args ) ); // phpcs:ignore -- placeholders only
+		$wpdb->query( $wpdb->prepare( "INSERT INTO {$t['e']} (vid, pv, at, page, lang, ev, d, proj) VALUES " . implode( ',', $vals ), $args ) ); // phpcs:ignore -- placeholders only
 		return count( $evs );
 	}
 
@@ -368,6 +472,63 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 	}
 
 	function nadlan_vt_langs() { return array( 'he' => 'עברית', 'en' => 'אנגלית', 'fr' => 'צרפתית', 'ru' => 'רוסית', 'ar' => 'ערבית' ); }
+
+	/** 1.1.0: one tool event (type 'act') as plain words, in Hebrew or English: "בחר קומה 23" / "Chose floor 23" */
+	function nadlan_vt_act_text( $d, $lang = 'he' ) {
+		$d  = is_array( $d ) ? $d : array();
+		$en = 'en' === $lang;
+		$n  = (string) ( $d['n'] ?? '' );
+		$g  = function ( $k ) use ( $d ) { return isset( $d[ $k ] ) ? (string) $d[ $k ] : ''; };
+		$fl = '' !== $g( 'f' ) ? ( $en ? ' floor ' : ' קומה ' ) . $g( 'f' ) : '';
+		$un = '' !== $g( 'u' ) ? ( $en ? ', unit ' : ', דירה ' ) . $g( 'u' ) : '';
+		$dw = '' !== $g( 'dir' ) ? $g( 'dir' ) : ( '' !== $g( 'b' ) ? ( $en ? nadlan_vt_dir_word_en( (int) $g( 'b' ) ) : nadlan_vt_dir_word( (int) $g( 'b' ) ) ) : '' );
+		$langs = $en ? array( 'he' => 'Hebrew', 'en' => 'English', 'fr' => 'French', 'ru' => 'Russian', 'ar' => 'Arabic' ) : nadlan_vt_langs();
+		$acts = array( // designer_action a=...
+			'finish' => array( 'בחר גימור', 'picked a finish' ), 'partition-add' => array( 'הוסיף קיר', 'added a wall' ),
+			'partition-remove' => array( 'הסיר קיר', 'removed a wall' ), 'point-add' => array( 'הוסיף נקודת חשמל או מים', 'added a power or water point' ),
+			'point-move' => array( 'הזיז נקודה', 'moved a point' ), 'item-add' => array( 'הוסיף רהיט', 'added furniture' ),
+			'note' => array( 'השאיר הערה על התוכנית', 'left a note on the plan' ), 'walk' => array( 'הלך בתוך הדירה', 'walked through the apartment' ),
+			'plan-load' => array( 'העלה תוכנית משלו', 'loaded his own plan' ), 'scan' => array( 'צילם את הדירה לתוכנית', 'scanned the apartment' ),
+		);
+		$i = $en ? 1 : 0;
+		$map = array(
+			'floor_select'     => array( 'בחר' . ( $fl ?: ' קומה' ), 'Chose' . ( $fl ?: ' a floor' ) ),
+			'direction_select' => array( 'בחר כיוון' . ( $dw ? ': ' . $dw : '' ) . $fl . $un, 'Chose a side' . ( $dw ? ': ' . $dw : '' ) . $fl . $un ),
+			'unit_open'        => array( 'פתח דירה' . $fl . $un, 'Opened an apartment' . $fl . $un ),
+			'view_open'        => array( 'פתח את הנוף' . ( $fl ? ' מ' . trim( $fl ) : '' ) . ( $dw ? ', ' . $dw : '' ), 'Opened the view' . ( $fl ? ' from' . $fl : '' ) . ( $dw ? ', ' . $dw : '' ) ),
+			'view_turn'        => array( 'סובב את הנוף' . ( $dw ? ' אל ה' . $dw : '' ), 'Turned the view' . ( $dw ? ' to ' . $dw : '' ) ),
+			'designer_open'    => array( 'פתח את מעצב הדירה' . $un, 'Opened the apartment designer' . $un ),
+			'designer_action'  => array( 'במעצב: ' . ( $acts[ $g( 'a' ) ][0] ?? 'פעולה' ), 'Designer: ' . ( $acts[ $g( 'a' ) ][1] ?? 'a step' ) ),
+			'design_order'     => array( 'הוסיף את העיצוב לסל' . $un, 'Added the design to the basket' . $un ),
+			'mortgage_check'   => array( 'בדק החזר חודשי', 'Checked the monthly payment' ),
+			'basket_add'       => array( 'הוסיף לסל' . $un, 'Added to the basket' . $un ),
+			'basket_remove'    => array( 'הוציא מהסל' . $un, 'Removed from the basket' . $un ),
+			'basket_open'      => array( 'פתח את הסל', 'Opened the basket' ),
+			'call_open'        => array( 'פתח שיחת וידאו', 'Opened the video call' ),
+			'call_book'        => array( 'קבע שיחה', 'Booked a call' ),
+			'call_join'        => array( 'נכנס לשיחה חיה', 'Joined a live call' ),
+			'rfp_open'         => array( 'פתח בקשה להצעה', 'Opened the offer request' ),
+			'rfp_send'         => array( 'שלח בקשה להצעה', 'Sent an offer request' ),
+			'reserve_start'    => array( 'פתח את שריון הדירה' . $un, 'Opened the reservation step' . $un ),
+			'reserve_request'  => array( 'ביקש לשריין את הדירה' . $un, 'Asked to reserve the apartment' . $un ),
+			'lang_switch'      => array( 'עבר לשפה ' . ( $langs[ $g( 'to' ) ] ?? '' ), 'Switched to ' . ( $langs[ $g( 'to' ) ] ?? 'another language' ) ),
+			'favorite'         => array( 'שמר דירה' . $un, 'Saved an apartment' . $un ),
+			'share'            => array( 'שיתף' . $un, 'Shared' . $un ),
+			'plan_open'        => array( 'פתח את תוכנית הדירה' . $un, 'Opened the floor plan' . $un ),
+			'tour_open'        => array( 'נכנס לסיור בדירה' . $un, 'Entered the apartment tour' . $un ),
+			'area_open'        => array( 'פתח את הסביבה', 'Opened the area' ),
+			'contact_open'     => array( 'פתח את טופס הפנייה', 'Opened the contact form' ),
+			'compare_open'     => array( 'השווה דירות', 'Compared apartments' ),
+		);
+		if ( isset( $map[ $n ] ) ) { return trim( $map[ $n ][ $i ] ); }
+		// a mirrored nadlanGA name: shown as it is, readable
+		return ( $en ? 'Action: ' : 'פעולה: ' ) . str_replace( '_', ' ', $n ) . ( '' !== $g( 'k' ) ? ' (' . $g( 'k' ) . ')' : '' );
+	}
+
+	function nadlan_vt_dir_word_en( $b ) {
+		$w = array( 'north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west' );
+		return $w[ (int) round( ( ( (int) $b % 360 + 360 ) % 360 ) / 45 ) % 8 ];
+	}
 
 	/** one event as one plain line: "בחר כיוון בקומה 23: מערב (268°), דירה 23-w" */
 	function nadlan_vt_line( $ev, $d, $page = 0, $lang = '' ) {
@@ -420,6 +581,8 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 			case 'form':
 				$fk = array( 'lead' => 'שלח טופס פנייה', 'book' => 'שלח טופס פגישה' );
 				return ( isset( $fk[ $g( 'k' ) ] ) ? $fk[ $g( 'k' ) ] : 'שלח טופס' ) . ( '' !== $g( 'id' ) ? ' (' . $g( 'id' ) . ')' : '' );
+			case 'act':
+				return nadlan_vt_act_text( $d, 'he' );
 			case 'leave':
 				$s = (int) round( (int) $g( 'vis' ) / 1000 );
 				return 'יצא מהעמוד אחרי ' . floor( $s / 60 ) . ':' . str_pad( (string) ( $s % 60 ), 2, '0', STR_PAD_LEFT ) . ' דקות בעמוד' . ( '' !== $g( 'sc' ) ? ', גלל עד ' . $g( 'sc' ) . '% מהעמוד' : '' );
@@ -539,7 +702,7 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 				$lead = '<a href="' . esc_url( get_edit_post_link( (int) $r->lead_id, 'url' ) ) . '"><b>' . esc_html( $nm ?: get_the_title( (int) $r->lead_id ) ) . '</b></a>';
 			}
 			$picks = array();
-			foreach ( $lines as $ln ) { if ( in_array( $ln['ev'], array( 'facing', 'tour', 'example', 'ftour', 'fcta', 'click', 'form' ), true ) ) { $picks[] = $ln['text']; } }
+			foreach ( $lines as $ln ) { if ( in_array( $ln['ev'], array( 'facing', 'tour', 'example', 'ftour', 'fcta', 'click', 'form', 'act' ), true ) ) { $picks[] = $ln['text']; } }
 			$picks = array_slice( array_values( array_unique( $picks ) ), 0, 3 );
 			$h .= '<tr><td>' . esc_html( wp_date( 'd/m H:i', $l ) ) . '<br><small>' . esc_html( $mins . ' דק׳, ' . (int) $r->pages . ' עמודים' ) . '</small></td>';
 			$h .= '<td>' . esc_html( nadlan_vt_title( $r->entry ) ?: '-' ) . '<br><small>' . esc_html( trim( ( $langs[ $r->lang ] ?? '' ) . ' · ' . ( $devs[ $r->dev ] ?? '' ), ' ·' ) ) . '</small></td>';
@@ -649,16 +812,53 @@ add_action( 'init', function () {
 } );
 add_action( 'nadlan_vt_prune', 'nadlan_vt_prune' );
 
-/* the script, on project stage pages only (inc/project-stage.php decides what a stage page is) */
+/* the script. 1.0.0 loaded it on project stage pages only; 1.1.0 loads it on every front page: 'full' on a project page (a stage
+   page, the engine's showroom page, any published project and its language pages), 'lite' everywhere else (the tools' events) */
+function nadlan_vt_page_cfg() {
+	$lang = function_exists( 'nadlan_ps_current' ) && ( $ps = nadlan_ps_current() ) && ! empty( $ps['lang'] ) ? (string) $ps['lang'] : '';
+	if ( '' === $lang ) {
+		$hl   = strtolower( substr( (string) get_bloginfo( 'language' ), 0, 2 ) );
+		$lang = in_array( $hl, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $hl : 'he';
+	}
+	$qid = (int) get_queried_object_id();
+	if ( is_singular( 'nadlan_project' ) && $qid > 0 ) {
+		$slug = (string) get_post_field( 'post_name', $qid );
+		if ( preg_match( '/-(en|fr|ru|ar)$/', $slug, $m ) ) { $lang = $m[1]; }
+		$proj = nadlan_vt_canon_project( $qid );
+		if ( $proj > 0 ) { return array( 'mode' => 'full', 'page' => $qid, 'proj' => $proj, 'lang' => $lang ); }
+	}
+	return array( 'mode' => 'lite', 'page' => is_singular() && $qid > 0 ? $qid : 0, 'proj' => 0, 'lang' => $lang );
+}
+
+/** for a page printed outside the theme (the designer at /tour/designer/ prints its own HTML): the same two tags, ready to echo
+ *  in its <head>. $a: proj (a project id or slug the page belongs to), lang. Logged-in team members get only the no-op stub. */
+function nadlan_vt_tags( $a = array() ) {
+	if ( ! nadlan_vt_on() ) { return '<script>window.nlTrack=window.nlTrack||function(){};</script>'; }
+	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) && ! isset( $_GET['nlvt'] ) ) { return '<script>window.nlTrack=window.nlTrack||function(){};</script>'; } // phpcs:ignore
+	$proj = isset( $a['proj'] ) ? nadlan_vt_project_ref( $a['proj'] ) : 0;
+	$lang = isset( $a['lang'] ) && in_array( $a['lang'], array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $a['lang'] : 'he';
+	$cfg  = array( 'endpoint' => esc_url_raw( rest_url( 'nadlan/v1/trail' ) ), 'mode' => 'lite', 'page' => 0, 'proj' => $proj, 'lang' => $lang );
+	$ver  = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : NADLAN_VT_VERSION;
+	return '<script>window.NL_TRAIL_CFG=' . wp_json_encode( $cfg, JSON_UNESCAPED_SLASHES ) . ';window.nlTrack=window.nlTrack||function(){(window.nlTrackQ=window.nlTrackQ||[]).push([arguments[0],arguments[1],Date.now()])};</script>'
+		. '<script defer src="' . esc_url( add_query_arg( 'ver', $ver, plugins_url( 'assets/visit-trail/trail.js', dirname( __FILE__ ) ) ) ) . '"></script>';
+}
+
 add_action( 'wp_enqueue_scripts', function () {
-	if ( is_admin() || ! nadlan_vt_on() || ! function_exists( 'nadlan_ps_current' ) ) { return; }
-	$ps = nadlan_ps_current();
-	if ( ! $ps || empty( $ps['id'] ) ) { return; }
-	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) && ! isset( $_GET['nlvt'] ) ) { return; } // phpcs:ignore -- the team's own visits stay out
+	if ( is_admin() || ! nadlan_vt_on() || is_feed() || is_404() ) { return; }
+	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) && ! isset( $_GET['nlvt'] ) ) { // phpcs:ignore -- the team's own visits stay out
+		wp_register_script( 'nadlan-visit-trail-stub', false, array(), NADLAN_VT_VERSION, array( 'in_footer' => false ) );
+		wp_enqueue_script( 'nadlan-visit-trail-stub' );
+		wp_add_inline_script( 'nadlan-visit-trail-stub', 'window.nlTrack=window.nlTrack||function(){};' ); // the tools may call it; nothing is recorded
+		return;
+	}
 	$ver = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : NADLAN_VT_VERSION;
+	$pc  = nadlan_vt_page_cfg();
+	$cfg = array_merge( array( 'endpoint' => esc_url_raw( rest_url( 'nadlan/v1/trail' ) ) ), $pc );
+	// the queue: a tool that calls window.nlTrack before trail.js ran is kept (trail.js empties window.nlTrackQ)
+	wp_register_script( 'nadlan-visit-trail-stub', false, array(), NADLAN_VT_VERSION, array( 'in_footer' => false ) );
+	wp_enqueue_script( 'nadlan-visit-trail-stub' );
+	wp_add_inline_script( 'nadlan-visit-trail-stub', 'window.NL_TRAIL_CFG=' . wp_json_encode( $cfg, JSON_UNESCAPED_SLASHES ) . ';window.nlTrack=window.nlTrack||function(){(window.nlTrackQ=window.nlTrackQ||[]).push([arguments[0],arguments[1],Date.now()])};' );
 	wp_enqueue_script( 'nadlan-visit-trail', plugins_url( 'assets/visit-trail/trail.js', dirname( __FILE__ ) ), array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-	$cfg = array( 'endpoint' => esc_url_raw( rest_url( 'nadlan/v1/trail' ) ), 'page' => (int) $ps['id'], 'lang' => (string) ( $ps['lang'] ?? 'he' ) );
-	wp_add_inline_script( 'nadlan-visit-trail', 'window.NL_TRAIL_CFG=' . wp_json_encode( $cfg, JSON_UNESCAPED_SLASHES ) . ';', 'before' );
 }, 30 );
 
 /* the admin screen, under Lead Inbox (inc/lead-inbox.php) */
@@ -727,3 +927,6 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['visit_trail'] = array( 'version' => NADLAN_VT_VERSION, 'on' => nadlan_vt_on(), 'db' => (string) get_option( 'nadlan_vt_db', '' ) );
 	return $out;
 } );
+
+/* 1.1.0: the developer report (a funnel per project, a signed link, CSV) */
+if ( is_readable( __DIR__ . '/dev-report.php' ) ) { require_once __DIR__ . '/dev-report.php'; }

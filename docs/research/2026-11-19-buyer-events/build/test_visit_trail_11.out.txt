@@ -1,0 +1,128 @@
+1. the batch check
+  ok   a good frame passes
+  ok   a bad vid is refused (400 nlvt_bad)
+  ok   a bad pv is refused (400 nlvt_bad)
+  ok   a bad page is refused (400 nlvt_bad)
+  ok   a bad v is refused (400 nlvt_bad)
+  ok   61 events in one batch are refused
+  ok   a body or an event list that is not an array is refused
+  ok   unknown types, broken events and a click without a kind are dropped (8 of 12 kept)  [8]
+  ok   floor keeps f, tw, src only (no height, no name, no phone)  [{"f":23,"tw":"A","src":"user"}]
+  ok   facing: "23" is 23, -90 is 270, the label cut at 40  [270]
+  ok   floor 999 is dropped, 725.6 is 6  [{"b":6}]
+  ok   a bearing that is not a number is dropped
+  ok   click: the kind is a key, the label loses its tags  [{"k":"wascript","l":"ייעוץ חינם","w":"bar"}]
+  ok   leave: time capped at one day, scroll at 100%
+  ok   form: kind and id only, the phone and the name never stored  [{"k":"lead","id":"f"}]
+  ok   tour: open as 1, a nested value dropped
+  ok   no phone and no name anywhere in the cleaned batch
+  ok   the event clock: 30 s ago, a future time is now, at most two hours back, no time is now  [[1762499970,1762500000,1762492800,1762500000]]
+  ok   an unknown language, device and a referrer that is not a bare host are emptied
+2. the REST answers
+  ok   an empty body: 400 nlvt_bad (the release check)
+  ok   over 16 KB: 413
+  ok   Sec-GPC: 1: 204 and not one query
+  ok   DNT: 1: 204 and not one query
+  ok   another site's Origin: 403
+  ok   Origin null: 403
+  ok   a robot: 204 and nothing stored
+  ok   the owner switch off: 204 and nothing stored
+  ok   a page that is not a project: 400
+  ok   a good batch from the site (www or not): 204
+  ok   stored in the two tables
+  ok   the country from the CF header (fr -> FR)
+  ok   the IP is in no query and in no stored counter
+  ok   the event rows: vid, pv, time, page, lang, kind, the cleaned JSON, and (1.1.0) the project
+  ok   the day counter counts the events
+  ok   30 batches a minute from one visitor, the 31st: 429
+  ok   200,000 events in a day for the site: 429
+  ok   a visit at 2,999 events stores one more and stops at 3,000
+  ok   a full visit stores nothing more
+3. the lead link
+  ok   the X-NL-Visit header
+  ok   a bad header is ignored; the form field nl_visit
+  ok   a REST lead request: the header kept by rest_pre_dispatch
+  ok   a new lead gets _nl_visit
+  ok   the visit row gets the lead (a stub when the trail is still on its way; the first lead stays)
+  ok   an update, or another post type: nothing
+  ok   a lead sent with Global Privacy Control on: no link
+  ok   a database failure inside the link never reaches the lead's own code
+4. the timeline in plain Hebrew
+  ok   directions: 268 west, 359 north, 45 north-east, -180 south
+  ok   open: נכנס לעמוד ריינבו תל אביב
+  ok   floor: בחר קומה 23
+  ok   floor: בחר קומה 7 (אוטומטית)
+  ok   facing: בחר כיוון בקומה 23: מערב (268°), דירה 23-w
+  ok   facing: בחר כיוון בקומה 12 במגדל B: לכיוון הים, B-12-3
+  ok   view: סובב את הנוף מהקומה אל המזרח (90°)
+  ok   ftour: נכנס לסיור 360° במתקן "בריכה"
+  ok   fcta: לחץ על וואטסאפ מכרטיס הקומה 23, מבט למערב (268°)
+  ok   faction: נכנס לדירה ב־360° מקומה 23
+  ok   tour: פתח סיור בתוך הדירה (living)
+  ok   example: פתח דירה לדוגמה B4 בקומה 18, מבט לצפון
+  ok   click: לחץ על וואטסאפ "ייעוץ חינם" בפס הוואטסאפ
+  ok   click: לחץ על חיוג בראש העמוד
+  ok   click: בחר יום לפגישה
+  ok   click: לחץ על "סיור וירטואלי בכיכר" בראש העמוד
+  ok   click: לחץ "לקומה במגדל" בטבלת העסקאות (קומה 30)
+  ok   form: שלח טופס פנייה (nl-lead)
+  ok   leave: יצא מהעמוד אחרי 12:34 דקות בעמוד, גלל עד 82% מהעמוד
+  ok   an English page names its language
+  ok   two leave records of one page view: only the last is shown  [["נכנס לעמוד ריינבו תל אביב","בחר קומה 3","יצא מהעמוד אחרי 0:09 דקות בעמוד"]]
+  ok   times in the site's clock (Israel, wp_date)
+5. the new-lead email, the admin screen, the clean-up
+  ok   the alert flag is set and cleared around the alert
+  ok   the rich lead email gets the timeline, above its footer
+  ok   and a link to the whole trail
+  ok   once only (a second mail in the same alert is untouched)
+  ok   another email is untouched
+  ok   the screen: the title, the lead's name next to the visit, the project
+  ok   a stored text is escaped on the screen
+  ok   the filter "only visits that became leads" reaches the query
+  ok   each visit can be deleted (nonce)
+  ok   delete: both tables and the lead's link
+  ok   the daily clean-up deletes what is older than 12 months (365 days)  [365]
+  ok   hooked: the lead (priority 5, before the routing and the alerts), the clean-up
+  ok   the healthcheck lines visit_trail 1.1.0 and dev_report 1.0.1
+  ok   the release bridge self-test: tables, 4 of 5 sample events kept, the phone dropped, the screen, the lead hook  [{"version":"1.1.0","db":1,"tables":1,"clean":4,"no_phone":1,"line":"בחר כיוון בקומה 23: מערב (268°), דירה 23-w","admin_bytes":1571,"admin_title":1,"route":false,"lead_hook":true,"on":true}]
+  ok   the self-test line  [בחר כיוון בקומה 23: מערב (268°), דירה 23-w]
+6. the file
+  ok   no long dash
+  ok   REMOTE_ADDR is read once, hashed for the minute counter only
+  ok   dbDelta: two spaces after PRIMARY KEY
+7. 1.1.0: tool events (act), pages that are not project pages (lite), the project of an event
+  ok   act: a bad or missing name is dropped (4 of 6 kept)  [4]
+  ok   act keeps its allow list only (no name, no phone)  [{"n":"basket_add","p":"ashira","f":4,"u":"E-4A","v":2}]
+  ok   act: the language is one of the five  [[{"n":"lang_switch","to":"fr"},{"n":"lang_switch"}]]
+  ok   act: numbers out of range are dropped  [{"n":"rfp_send"}]
+  ok   a language page counts for its Hebrew project; a plain page is no project
+  ok   an event names its project by id or slug; "mine" and "example" are none
+  ok   a short key ("ashira") matches the one project whose slug starts with it
+  ok   lite on a route with no post (page 0): 204
+  ok   lite: only the act event is stored, counted for the project it names (7001)
+  ok   full mode on a page that is not a project: 400
+  ok   lite on the mortgage page: stored with no project (0)
+  ok   full on the English page: the page stays 7002, the project is 7001
+  ok   the timeline lines of the tools, Hebrew and English
+8. 1.1.0: the developer report
+  ok   a signed link is valid
+  ok   a wrong signature, a changed expiry or another project: refused
+  ok   an expired link: refused
+  ok   a language page is not a report target (its visits are in the Hebrew project)
+  ok   revoking raises the counter: the old link stops, a new one works
+  ok   an automatic floor of the page is not a choice
+  ok   the funnel steps of events (opening the call sheet is not a booked call)
+  ok   the funnel counts distinct visits from the rows, nothing more  [{"visit":3,"floor":2,"view":0,"design":1,"pay":1,"basket":1,"call":1,"rfp":0,"reserve":0,"contact":0,"lead":1}]
+  ok   floors 23 and 18; west twice (a bearing of 268 and the engine's "west")  [[{"23":1,"18":1},{"מערב":2}]]
+  ok   two journeys (the visit that only opened the page is not one); no visit id in the report  [2]
+  ok   a journey says country, language and device, no name  [צרפת · צרפתית · טלפון]
+  ok   the page: eleven funnel rows, right to left, the project title, the board's faces
+  ok   no long dash, no broker word, no phone
+  ok   English page
+  ok   CSV: BOM for Excel, the payment row 1 visit 33%
+  ok   the CSV guard prefixes a quote to =, +, -, @
+  ok   1.0.1: without the lawyer's OK the developer page has the totals and no journeys
+  ok   1.0.1: the switch is off by default
+  ok   no long dash in dev-report.php
+
+118 of 118 passed
