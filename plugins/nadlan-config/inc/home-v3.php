@@ -36,9 +36,13 @@ if ( ! function_exists( 'nadlan_hp_header_on' ) ) {
 		if ( null !== $on ) { return $on; }
 		if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() || is_embed() || is_robots() || get_query_var( 'sitemap' ) ) { return $on = false; }
 		if ( ! function_exists( 'nadlan_skin_a_on' ) || ! nadlan_skin_a_on() ) { return $on = false; }
-		if ( function_exists( 'nadlan_is_language_home' ) && nadlan_is_language_home() ) { return $on = false; }
-		if ( function_exists( 'nadlan_current_lang' ) && 'he' !== nadlan_current_lang() ) { return $on = false; }
+		/* HAD-790 (the film 19.11, gaps 27 and 38: the four language homes kept the older two-bar header): the language homes get
+		   this header too, filled from their own menu (nadlan_hp_header_lang). Other language pages are unchanged. */
+		$lh = function_exists( 'nadlan_is_language_home' ) && nadlan_is_language_home();
+		if ( $lh && 'off' === get_option( 'nadlan_home_v3_header_langs', 'on' ) ) { return $on = false; }
+		if ( ! $lh && function_exists( 'nadlan_current_lang' ) && 'he' !== nadlan_current_lang() ) { return $on = false; }
 		if ( isset( $_GET['hp'] ) && 'off' === sanitize_key( wp_unslash( $_GET['hp'] ) ) ) { return $on = false; }
+		if ( $lh ) { return $on = true; }
 		if ( is_front_page() ) { return $on = nadlan_hp_on(); }
 		return $on = ( 'off' !== get_option( 'nadlan_home_v3_header', 'on' ) );
 	}
@@ -100,8 +104,80 @@ if ( ! function_exists( 'nadlan_hp_panel' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hp_header_lang' ) ) {
+	/** HAD-790: the header of a language home (/en/ /fr/ /ru/ /ar/), the same design as the Hebrew one. Its menus are the page's own
+	 *  menu (nadlan_hv2_band_browse(): the same links and words the page printed before, which the language pass then translates
+	 *  as before), regrouped as this header's panels. No link is added or removed. */
+	function nadlan_hp_header_lang( $lang ) {
+		$S = array(
+			'en' => array( 'Menu', 'Close the menu', 'Open the menu', 'Post a listing', 'Search', 'NadLan, real estate portal', 'Real estate categories' ),
+			'fr' => array( 'Menu', 'Fermer le menu', 'Ouvrir le menu', 'Publier une annonce', 'Rechercher', 'NadLan, portail immobilier', 'Catégories immobilières' ),
+			'ru' => array( 'Меню', 'Закрыть меню', 'Открыть меню', 'Разместить объявление', 'Поиск', 'NadLan, портал недвижимости', 'Разделы недвижимости' ),
+			'ar' => array( 'القائمة', 'إغلاق القائمة', 'فتح القائمة', 'نشر إعلان', 'بحث', 'NadLan، بوابة العقارات', 'أقسام العقارات' ),
+		);
+		$s     = isset( $S[ $lang ] ) ? $S[ $lang ] : $S['en'];
+		$dir   = ( function_exists( 'nadlan_lang_is_rtl' ) && nadlan_lang_is_rtl( $lang ) ) ? 'rtl' : 'ltr';
+		$urls  = function_exists( 'nadlan_home_urls' ) ? nadlan_home_urls() : array();
+		$home  = isset( $urls[ $lang ] ) ? $urls[ $lang ] : home_url( '/' . $lang . '/' );
+		$names = function_exists( 'nadlan_lang_names' ) ? nadlan_lang_names() : array();
+		$nav   = '';
+		if ( function_exists( 'nadlan_hv2_band_browse' ) ) { ob_start(); nadlan_hv2_band_browse(); $nav = (string) ob_get_clean(); }
+		/* the labels as the page printed them; a long dash between two parts becomes the middle dot the Hebrew menu uses (no long dashes) */
+		$txt   = function ( $h ) { return trim( str_replace( array( ' — ', ' – ' ), ' · ', preg_replace( '/\s+/u', ' ', html_entity_decode( wp_strip_all_tags( $h ), ENT_QUOTES, 'UTF-8' ) ) ) ); };
+		$menus = ''; $panels = array();
+		if ( preg_match_all( '#<details><summary>(.*?)</summary><div class="nlhv2-mega">(.*?)</div></details>#s', $nav, $groups, PREG_SET_ORDER ) ) {
+			foreach ( $groups as $g ) {
+				$links = array();
+				if ( preg_match_all( '#<a href="([^"]*)"(?: class="([^"]*)")?>(.*?)</a>#s', $g[2], $ls, PREG_SET_ORDER ) ) {
+					foreach ( $ls as $l ) {
+						$label = $txt( $l[3] );
+						if ( '' === $label ) { continue; }
+						$links[] = array( $label, html_entity_decode( $l[1], ENT_QUOTES, 'UTF-8' ), '', ( false !== strpos( $l[3], '<b>' ) || ( isset( $l[2] ) && false !== strpos( $l[2], 'cta' ) ) ) ? 1 : '' );
+					}
+				}
+				if ( ! $links ) { continue; }
+				$cols = array();
+				foreach ( array_chunk( $links, (int) max( 4, ceil( count( $links ) / 3 ) ) ) as $i => $chunk ) {
+					$cols[] = array( array( 0 === $i ? $txt( $g[1] ) : ' ', $chunk ) );
+				}
+				$panels[] = array( $txt( $g[1] ), array_slice( $cols, 0, 3 ) );
+			}
+		}
+		/* the page's two plain links (the areas in demand, abroad): French and Russian labels are long, so on a desktop they live in the
+		   first panel, a group of their own, instead of the bar (HAD-790 19.11: at 1440 they ran into the language button) */
+		$plain = array();
+		if ( preg_match_all( '#<a class="nlhv2-plain" href="([^"]*)">(.*?)</a>#s', $nav, $pl, PREG_SET_ORDER ) ) {
+			foreach ( $pl as $l ) { $plain[] = array( $txt( $l[2] ), html_entity_decode( $l[1], ENT_QUOTES, 'UTF-8' ) ); }
+		}
+		if ( $plain && $panels ) {
+			$k = count( $panels[0][1] ) - 1;
+			if ( $k < 2 ) { $panels[0][1][] = array( array( ' ', $plain ) ); } else { $panels[0][1][ $k ][] = array( ' ', $plain ); }
+		}
+		foreach ( $panels as $pn ) { $menus .= nadlan_hp_panel( $pn[0], $pn[1] ); }
+		$langs = function_exists( 'nadlan_lang_switcher' ) ? nadlan_lang_switcher() : '';
+		$globe = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
+		$cur   = isset( $names[ $lang ] ) ? $names[ $lang ] : strtoupper( $lang );
+		return '<header class="nlhp-top nlhp-top--lang wp-block-template-part" id="nlhp-top" role="banner" dir="' . $dir . '" lang="' . esc_attr( $lang ) . '">'
+			. '<div class="nlhp-top__in">'
+			. '<a class="nlhp-logo" href="' . esc_url( $home ) . '" aria-label="' . esc_attr( $s[5] ) . '"><span class="nlhp-logo__mark" aria-hidden="true"><i><b style="height:9px"></b><b style="height:17px"></b><b style="height:12px"></b></i></span><span class="nlhp-logo__word">NadLan</span></a>'
+			. '<nav class="nlhp-nav" id="nlhp-nav" aria-label="' . esc_attr( $s[6] ) . '">'
+			. '<div class="nlhp-sheet__head"><span>' . esc_html( $s[0] ) . '</span><button type="button" class="nlhp-sheet__close" data-nlhp-close aria-label="' . esc_attr( $s[1] ) . '">×</button></div>'
+			. ( $langs ? '<div class="nlhp-sheet__langs">' . $langs . '</div>' : '' )
+			. $menus
+			. '<a class="nlhp-sheet__post" href="' . esc_url( home_url( '/post-listing/' ) ) . '">' . esc_html( $s[3] ) . '</a>'
+			. '</nav><div class="nlhp-top__end">'
+			. ( $langs ? '<details class="nlhp-dd nlhp-lang"><summary>' . $globe . esc_html( $cur ) . ' <span class="nlhp-caret" aria-hidden="true"></span></summary><div class="nlhp-lang__menu">' . $langs . '</div></details>' : '' )
+			. '<a class="nlhp-post" href="' . esc_url( home_url( '/post-listing/' ) ) . '">' . esc_html( $s[3] ) . '</a>'
+			. '<a class="nlhp-ico nlhp-ico--search" href="#nlsa-q" aria-label="' . esc_attr( $s[4] ) . '"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></a>'
+			. '<button type="button" class="nlhp-ico nlhp-ico--menu" aria-controls="nlhp-nav" aria-expanded="false" aria-label="' . esc_attr( $s[2] ) . '"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>'
+			. '</div></div></header>';
+	}
+}
+
 if ( ! function_exists( 'nadlan_hp_header' ) ) {
 	function nadlan_hp_header() {
+		$hl = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+		if ( 'he' !== $hl && function_exists( 'nadlan_hp_header_lang' ) ) { return nadlan_hp_header_lang( $hl ); }
 		$c     = nadlan_hp_counts();
 		$fmt   = function ( $n ) { return number_format( (int) $n ); };
 		$u     = function ( $p ) { return home_url( $p ); };
@@ -915,6 +991,11 @@ html:has(#nlhp-top),html:has(#nlhp-top) body,body:has(#nlhp-top) .wp-site-blocks
 body:has(#nlhp-top) .nlhv2-renewal,body:has(#nlhp-top) .nlhv2-rentals{content-visibility:auto;contain-intrinsic-size:auto 560px}
 .nlhp-top{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid #e3e1da;font-family:Assistant,"Segoe UI",Arial,sans-serif;direction:rtl}
 body.admin-bar .nlhp-top{top:32px}
+.nlhp-top[dir="ltr"]{direction:ltr}
+.nlhp-top[dir="ltr"] .nlhp-lang__menu{left:auto;right:0}
+@media(min-width:1061px){.nlhp-top--lang .nlhp-top__in{gap:12px;max-width:1600px}.nlhp-top--lang .nlhp-nav__item{padding:0 7px;font-size:14px}.nlhp-top--lang .nlhp-lang>summary{padding:0 8px}}
+@media(min-width:1061px) and (max-width:1365px){.nlhp-top--lang .nlhp-post{display:none}.nlhp-top--lang .nlhp-nav__item{padding:0 5px;font-size:13.5px}}
+body:has(#nlhp-top.nlhp-top--lang) .nlhv2-langbar,body:has(#nlhp-top.nlhp-top--lang) .nlhv2-browse{display:none!important}
 @media (max-width:782px){body.admin-bar .nlhp-top{top:46px}}
 .nlhp-top *,.nlhp-top *::before,.nlhp-top *::after,.nlhp-hero *,.nlhp-cats *{box-sizing:border-box}
 .nlhp-top a{text-decoration:none!important}
@@ -936,6 +1017,7 @@ body.admin-bar .nlhp-top{top:32px}
 .nlhp-lang{position:relative}
 .nlhp-lang>summary{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 12px;border-radius:999px;font:600 14px/1 Assistant,"Segoe UI",Arial,sans-serif;color:#3b4753}
 .nlhp-lang__menu{position:absolute;top:calc(100% + 8px);left:0;min-width:170px;padding:6px;background:#fff;border:1px solid #e3e1da;border-radius:14px;box-shadow:0 14px 34px rgba(20,33,43,.12);z-index:70}
+.nlhp-lang__menu::before{content:"";position:absolute;inset-inline:-8px;top:-16px;height:16px}
 .nlhp-lang__menu .nlhv2-langs{display:grid!important;gap:2px!important;padding:0!important;background:none!important;border:0!important}
 .nlhp-lang__menu a{display:block!important;padding:9px 12px!important;border-radius:10px!important;font:600 14.5px/1.2 Assistant,Arial,sans-serif!important;color:#14212b!important;background:none!important;border:0!important;text-align:start}
 .nlhp-lang__menu a.on{background:#eee9dd!important}
@@ -1144,14 +1226,14 @@ var fine=window.matchMedia("(hover: hover) and (pointer: fine)");var wide=window
 function closeAll(ex){dds.forEach(function(d){if(d!==ex)d.open=false;});}
 dds.forEach(function(d){d.addEventListener("toggle",function(){if(d.open&&wide.matches)closeAll(d);});
 var t=null;d.addEventListener("mouseenter",function(){if(!fine.matches||!wide.matches)return;clearTimeout(t);t=setTimeout(function(){closeAll(d);d.open=true;},90);});
-d.addEventListener("mouseleave",function(){if(!fine.matches||!wide.matches)return;clearTimeout(t);t=setTimeout(function(){d.open=false;},180);});
+d.addEventListener("mouseleave",function(){if(!fine.matches||!wide.matches)return;clearTimeout(t);t=setTimeout(function(){d.open=false;},d.classList.contains("nlhp-lang")?450:220);});
 var sm=d.querySelector("summary");if(sm)sm.addEventListener("click",function(e){if(!fine.matches||!wide.matches||e.detail===0)return;e.preventDefault();clearTimeout(t);closeAll(d);d.open=true;});});
 document.addEventListener("click",function(e){if(!top.contains(e.target))closeAll(null);});
 var btn=top.querySelector(".nlhp-ico--menu");function sheet(o){top.classList.toggle("is-open",o);document.body.classList.toggle("nlhp-lock",o);if(btn)btn.setAttribute("aria-expanded",o?"true":"false");if(!o)closeAll(null);}
 if(btn)btn.addEventListener("click",function(){sheet(!top.classList.contains("is-open"));});
 var cl=top.querySelector("[data-nlhp-close]");if(cl)cl.addEventListener("click",function(){sheet(false);if(btn)btn.focus();});
 document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var o=dds.filter(function(d){return d.open;})[0];if(top.classList.contains("is-open")){sheet(false);if(btn)btn.focus();}else if(o){o.open=false;var s=o.querySelector("summary");if(s)s.focus();}});
-var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",function(e){var i=document.querySelector("#nlhp-hero input[name=q]");if(!i)return;e.preventDefault();i.scrollIntoView({block:"center"});setTimeout(function(){i.focus();},250);});
+var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",function(e){var i=document.querySelector("#nlhp-hero input[name=q]")||document.querySelector("form.nlhv2-search input:not([type=hidden])");if(!i)return;e.preventDefault();i.scrollIntoView({block:"center"});setTimeout(function(){i.focus();},250);});
 [].slice.call(document.querySelectorAll("#nlhp-hero .nlhp-search__tab")).forEach(function(b,i,all){b.addEventListener("click",function(){all.forEach(function(x){x.setAttribute("aria-selected",x===b?"true":"false");});});});
 })();
 (function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches)return;[].slice.call(document.querySelectorAll(".nlhp-film video")).forEach(function(v){v.removeAttribute("autoplay");try{v.pause();}catch(e){}v.controls=true;});})();

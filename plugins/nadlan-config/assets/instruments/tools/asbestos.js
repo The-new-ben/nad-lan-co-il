@@ -240,8 +240,9 @@
         if (err || !window.maplibregl) { mapEl.innerHTML = '<p class="nls__wait">' + esc(M.fail) + '</p>'; return; }
         var gl = window.maplibregl;
         map = new gl.Map({ container: mapEl, style: STYLE, bounds: bounds(''), fitBoundsOptions: { padding: phone ? 30 : 60 }, pitch: phone ? 38 : 50, bearing: -16, maxPitch: 65,
-          cooperativeGestures: true, attributionControl: { compact: true } });
+          cooperativeGestures: !NLI.fine, attributionControl: { compact: true } });  // HAD-790: on a mouse, NLI.wheelIntent
         map.addControl(new gl.NavigationControl({ showCompass: true }), EN ? 'top-right' : 'top-left');
+        if (NLI.wheelIntent) NLI.wheelIntent(map, mapEl, EN);
         map.on('load', function () {
           mapEl.querySelector('.nls__wait') && mapEl.querySelector('.nls__wait').remove();
           map.addSource('asb', { type: 'geojson', data: fc('') });

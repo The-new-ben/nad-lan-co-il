@@ -1,0 +1,38 @@
+[health] 1.72.711 ok
+[lint] inc/home-v3.php (1.72.711): ok
+[lint] inc/deals-map.php (1.72.711): ok
+[lint] assets/deals/deals.js: node --check ok
+[lint] assets/instruments/core.js: node --check ok
+[lint] assets/instruments/tools/hazards.js: node --check ok
+[lint] assets/instruments/tools/asbestos.js: node --check ok
+[lint] assets/instruments/tools/garden.js: node --check ok
+[lint] assets/instruments/tools/soilmap.js: node --check ok
+[lint] assets/nudge/price-alert.js: node --check ok
+[lint] assets/project-stage/world/cockpit.js: node --check ok
+[lint] assets/project-stage/world/showroom-i18n.js: node --check ok
+[lint] assets/project-stage/world/showroom.js: node --check ok
+[lint] inc/project-shell.php (1.72.711): ok
+[sweep start] active bridge 1977 x-tmp-ps711-ops-1795100814: deactivate 200, delete 200
+[bridge] up, id 1978 | live header version 1.72.711
+[rollback] restoring .bak711 files
+   nadlan-config.php e62fa695d3d431959eb85c8cc85a9442
+   inc/home-v3.php fb7f0d2df831d071f91a06574bbb37e5
+   inc/deals-map.php b11655054a5743f787370e61eaf57c45
+   assets/deals/deals.js ccb3359fa203b4712c13b72473c34b77
+   assets/deals/deals.css 65509dbff4ac4daf9cc71a9420e39f55
+   assets/instruments/core.js 32a51572908d65fe1217113639624a18
+   assets/instruments/core.css 4a37af90809b67fb75985104174c1f80
+   assets/instruments/tools/hazards.js fe63c397f0700d320bdd6d914af29219
+   assets/instruments/tools/asbestos.js b6cf81ff9688873a4fba837d74a711ea
+   assets/instruments/tools/garden.js e5ac22495c56a058c11b806d40cdc174
+   assets/instruments/tools/soilmap.js 650655eb8f53b412b0adbfdd2d12071d
+   assets/nudge/price-alert.js 81d6404dcf80ef9e51ccb2c60750fe38
+   assets/project-stage/world/cockpit.js f97f4cf5473547504a310d4d346c4928
+   assets/project-stage/world/showroom-i18n.js 75ebc0ed6673c8d6791d70d9a01ee373
+   assets/project-stage/world/showroom.js 50ad6ce79c3df756f147d79b5a6a04ff
+   inc/project-shell.php e18494e9fb0be1ecd3b43d8404d859dd
+   new files removed: 0
+[health] still 1.72.710 after 75s
+[record] deploy-result-711.json: rolled back (--rollback)
+[bridge] delete http 200; route now http 404 (want 404)
+[sweep end] no active temporary bridge left (http 200)

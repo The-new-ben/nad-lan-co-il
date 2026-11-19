@@ -25,6 +25,8 @@
 	/* ?nudge=fresh: the owner's REAL-timing test: this browser starts as a new visitor (quiet days, cap, session and holdout cleared),
 	   and the window then waits for the real behaviour, like for anyone else */
 	var FRESH = /[?&]nudge=fresh(?:&|#|$)/.test(location.search);
+	/* HAD-790 (the film 19.11): the live meter is a debugging line; it shows only when asked for by name (&meter=1), never by default */
+	var METER = FRESH && /[?&]meter=1(?:&|#|$)/.test(location.search);
 	if (FRESH) {
 		['nlpa_done', 'nlpa_q', 'nlpa_n', 'nlpa_b'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} });
 		['nlpa_s', 'nlpa_h', 'nlpa_pv'].forEach(function (k) { try { sessionStorage.removeItem(k); } catch (e) {} });
@@ -129,6 +131,9 @@
 		void root.offsetWidth;
 		root.classList.add('is-in');
 		document.body.classList.add('nlnu-on');
+		/* HAD-790 (the film 19.11: the scrim darkened the page and the window was not there): if the card has not come in after its
+		   0.42 s entrance, it is put in place at once, so a dark page never stands without the window on it */
+		setTimeout(function () { try { if (state === 'in' && card && +getComputedStyle(card).opacity < 0.5) { card.style.transition = 'none'; card.style.opacity = '1'; card.style.transform = 'none'; } } catch (e) {} }, 900);
 		setH();
 		if (desk) { try { card.focus({ preventScroll: true }); } catch (e) {} }
 		ev('pa_shown', { pa_trigger: PV ? 'preview' : tr, pa_down: C.down, pa_active: act, pa_seconds: vis, pa_signals: sigs(), pa_pages: pages });
@@ -144,6 +149,7 @@
 			if (how === 'done') { LS.s('nlpa_done', String(Date.now() + 365 * DAY)); }
 			else { LS.s('nlpa_q', String(Date.now() + (how === 'ignored' ? C.qi : C.q) * DAY)); }
 		}
+		card.style.transition = ''; card.style.opacity = ''; // HAD-790: the forced entrance, if it was used, is undone before the exit
 		root.classList.remove('is-in');
 		setTimeout(function () {
 			root.hidden = true; card.style.transform = '';
@@ -300,7 +306,7 @@
 	/* ?nudge=fresh: a small live meter (only for that link) so the owner sees the model work: seconds, active time, signals, the moment */
 	var NAMES = { read: 'קרא', price: 'ראה מחיר', explore: 'השתמש בכלי', pause: 'עצר לקרוא', ret: 'עמוד נוסף' }, meter = null;
 	function meterDraw(why) {
-		if (!FRESH) { return; }
+		if (!METER) { return; }
 		if (!meter) {
 			meter = document.createElement('div');
 			meter.setAttribute('aria-hidden', 'true');

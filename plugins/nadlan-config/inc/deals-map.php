@@ -209,7 +209,7 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 			<a class="nldm-btn" target="_blank" rel="noopener" href="<?php echo esc_url( $waq( 'היי, אשמח שיועץ משכנתאות יבדוק את המספרים של מבצע קבלן' ) ); ?>">יועץ משכנתאות יבדוק, חינם</a>
 		</div>
 		<p class="nldm-calc-how">איך מחשבים: לוח רגיל הוא 20% בחתימה והיתרה בתשלומים חודשיים עד האכלוס, כשמחצית מכל תשלום צמודה למדד (כמו בחוק המכר). כל תשלום מהוון להיום לפי הריבית שבחרתם. ההפרש בין שני הלוחות, ועוד שכר הדירה מהיזם, פחות התוספת למחיר, הוא ההנחה המשוערת. המחשבון לא יודע על עמלות, ביטוחים, תנאי הבנק, מס רכישה או סעיפים מיוחדים בחוזה.</p>
-		<p class="nldm-legal">המידע בעמוד מבוסס על פרסומים פומביים של היזמים ושל כלי התקשורת, כפי שנמצאו בתאריך שמופיע ליד כל מבצע. מבצעים משתנים ומסתיימים בלי הודעה, ולכן ייתכנו פערים וטעויות. החישובים משוערים בלבד, ואינם ייעוץ פיננסי, משפטי, מיסויי או ייעוץ השקעות, ואינם הצעה או המלצה לרכוש. לפני כל החלטה בקשו מהיזם את התנאים בכתב, בדקו את החוזה עם עורך דין, והתייעצו עם יועץ משכנתאות ושמאי. נדל״ן אינו מתווך ואינו צד לעסקה.</p>
+		<p class="nldm-legal">המידע בעמוד מבוסס על פרסומים פומביים של היזמים ושל כלי התקשורת, כפי שנמצאו בתאריך שמופיע ליד כל מבצע. מבצעים משתנים ומסתיימים בלי הודעה, ולכן ייתכנו פערים וטעויות. החישובים משוערים בלבד, ואינם ייעוץ פיננסי, משפטי, מיסויי או ייעוץ השקעות, ואינם הצעה או המלצה לרכוש. לפני כל החלטה בקשו מהיזם את התנאים בכתב, בדקו את החוזה עם עורך דין, והתייעצו עם יועץ משכנתאות ושמאי. נדל״ן אינו צד לעסקה ואינו מייצג אף צד.</p>
 	</section>
 
 	<section class="nldm-list" aria-label="כל המבצעים">
@@ -250,7 +250,7 @@ if ( ! function_exists( 'nadlan_dm_render' ) ) {
 		</div>
 	</section>
 
-	<p class="nldm-legal">המידע בעמוד מבוסס על פרסומים פומביים של היזמים ושל כלי התקשורת, כפי שנמצאו בתאריך שמופיע ליד כל מבצע. מבצעים משתנים ומסתיימים בלי הודעה, ולכן ייתכנו פערים וטעויות. החישובים משוערים בלבד, ואינם ייעוץ פיננסי, משפטי, מיסויי או ייעוץ השקעות, ואינם הצעה או המלצה לרכוש. לפני כל החלטה בקשו מהיזם את התנאים בכתב, בדקו את החוזה עם עורך דין, והתייעצו עם יועץ משכנתאות ושמאי. נדל״ן אינו מתווך ואינו צד לעסקה.</p>
+	<p class="nldm-legal">המידע בעמוד מבוסס על פרסומים פומביים של היזמים ושל כלי התקשורת, כפי שנמצאו בתאריך שמופיע ליד כל מבצע. מבצעים משתנים ומסתיימים בלי הודעה, ולכן ייתכנו פערים וטעויות. החישובים משוערים בלבד, ואינם ייעוץ פיננסי, משפטי, מיסויי או ייעוץ השקעות, ואינם הצעה או המלצה לרכוש. לפני כל החלטה בקשו מהיזם את התנאים בכתב, בדקו את החוזה עם עורך דין, והתייעצו עם יועץ משכנתאות ושמאי. נדל״ן אינו צד לעסקה ואינו מייצג אף צד.</p>
 
 	<section class="nldm-archive" aria-label="ארכיון מבצעים שהסתיימו">
 		<h2>ארכיון: מבצעים שהסתיימו</h2>
@@ -351,7 +351,7 @@ if ( ! function_exists( 'nadlan_dm_render_en' ) ) {
 		$kinds = array( 'all' => 'All', 'pay' => 'Payment plans (20/80, 10/90)', 'rent' => 'Rent until handover', 'price' => 'Price cuts', 'gift' => 'Gifts and waivers' );
 		$waq = function ( $t ) use ( $wa ) { return 'https://wa.me/' . $wa . '?text=' . rawurlencode( $t ); };
 		$fxl = $fx ? 'Dollar figures are approximate, at the Bank of Israel rate of ' . number_format( $fx[0], 3 ) . ' (' . $fx[1] . '); the shekel price is the price.' : '';
-		$legal = 'This page is based on public announcements by developers and the press, as found on the date shown next to each deal. Deals change and end without notice, so gaps and mistakes are possible. All calculations are estimates and are not financial, legal, tax or investment advice, nor an offer or recommendation to buy. Before any decision, get the terms in writing from the developer, have a lawyer check the contract, and consult a mortgage advisor and an appraiser. NadLan is not a broker and is not a party to any transaction.';
+		$legal = 'This page is based on public announcements by developers and the press, as found on the date shown next to each deal. Deals change and end without notice, so gaps and mistakes are possible. All calculations are estimates and are not financial, legal, tax or investment advice, nor an offer or recommendation to buy. Before any decision, get the terms in writing from the developer, have a lawyer check the contract, and consult a mortgage advisor and an appraiser. NadLan is not a party to any transaction and does not represent any party.';
 		ob_start(); ?>
 <section id="nldm" class="nldm" dir="ltr" lang="en" aria-label="Israel developer deals map">
 	<p class="nldm-lead">Every live Israeli developer deal on one map: 20/80 and 10/90 payment plans, 0% equity, developer loans, rent paid until handover, price cuts and waivers. For each deal: the terms as published and when, the cash you need at signing, an estimate of what it is worth in shekels with an approximate dollar figure, and whether we confirmed it is still on.</p>

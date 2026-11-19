@@ -225,3 +225,12 @@
 
 /* the guide (guide.js) lights the deals she talks about for six seconds */
 .nldm-tag.is-lit{box-shadow:0 0 0 3px #C8102E,0 10px 22px rgba(200,16,46,.35)!important;z-index:4}
+
+/* HAD-790: a tag near a side edge slides inside the map; its pointer stays on the place */
+.nldm-mk .nldm-tag{translate:var(--nx,0px) 0}
+.nldm-mk .nldm-tag:after{left:calc(50% - var(--nx,0px))}
+/* HAD-790: the wheel hint (a mouse wheel that passes over the map scrolls the page) */
+.nldm-whint{position:absolute;inset:auto 50% 50% auto;translate:50% 50%;z-index:5;max-width:min(360px,80%);padding:10px 16px;border-radius:999px;background:rgba(15,29,38,.86);color:#fff;font:500 14px/1.4 "IBM Plex Sans Hebrew",sans-serif;text-align:center;pointer-events:none;opacity:0;transition:opacity .2s}
+.nldm-whint.is-on{opacity:1}
+/* HAD-790 (S03: the tags were small at a large map): a little larger, still one line each */
+@media (min-width:768px){.nldm-tag .t1{font-size:13.5px}.nldm-tag .t2{font-size:12.5px}}

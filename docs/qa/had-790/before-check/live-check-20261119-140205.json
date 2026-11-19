@@ -1,0 +1,58 @@
+{
+ "lang_home_en": {
+  "pass": false,
+  "note": "null"
+ },
+ "lang_home_fr": {
+  "pass": false,
+  "note": "null"
+ },
+ "lang_home_ru": {
+  "pass": false,
+  "note": "null"
+ },
+ "lang_home_ar": {
+  "pass": false,
+  "note": "null"
+ },
+ "deals_wheel_passes": {
+  "pass": false,
+  "note": "scrollY 772 -> 772"
+ },
+ "deals_wheel_zooms_on_rest": {
+  "pass": true,
+  "note": "page stayed at 772 -> 772 while the pointer rested and wheeled"
+ },
+ "deals_tags_inside": {
+  "pass": true,
+  "note": "visible tags 4, cut at the edge 0"
+ },
+ "hazards_wheel_zooms_on_rest": {
+  "pass": false,
+  "note": "page 1417 -> 1017, Ctrl message shown False"
+ },
+ "wide/purchase-tax-calculator/": {
+  "pass": false,
+  "note": "tool 920 px of 1920, page width 1920"
+ },
+ "wide/apartment-prices/": {
+  "pass": false,
+  "note": "tool 920 px of 1920, page width 1920"
+ },
+ "wide/buying-apartment/": {
+  "pass": false,
+  "note": "tool 920 px of 1920, page width 1920"
+ },
+ "price_window_visible": {
+  "pass": true,
+  "note": "card opacity 1"
+ },
+ "price_fresh_no_meter": {
+  "pass": false,
+  "note": "debug line shown: True"
+ },
+ "kikar_string_live": {
+  "pass": false,
+  "note": "no script on the page"
+ }
+}

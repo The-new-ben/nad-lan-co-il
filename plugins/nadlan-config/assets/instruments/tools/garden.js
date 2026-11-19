@@ -87,8 +87,9 @@
       loadML(function (err) {
         if (err || !window.maplibregl) { mapEl.innerHTML = '<p class="nls__wait">המפה לא נטענה. הטבלאות בעמוד מציגות את כל הנתונים.</p>'; return; }
         var gl = window.maplibregl;
-        map = new gl.Map({ container: mapEl, style: STYLE, bounds: bounds(''), fitBoundsOptions: { padding: phone ? 26 : 50 }, pitch: phone ? 40 : 52, bearing: -20, maxPitch: 65, cooperativeGestures: true, attributionControl: { compact: true } });
+        map = new gl.Map({ container: mapEl, style: STYLE, bounds: bounds(''), fitBoundsOptions: { padding: phone ? 26 : 50 }, pitch: phone ? 40 : 52, bearing: -20, maxPitch: 65, cooperativeGestures: !NLI.fine, attributionControl: { compact: true } });
         map.addControl(new gl.NavigationControl({ showCompass: true }), 'top-left');
+        if (NLI.wheelIntent) NLI.wheelIntent(map, mapEl, false); // HAD-790
         map.on('load', function () {
           var w = mapEl.querySelector('.nls__wait'); if (w) w.remove();
           map.addSource('gdn', { type: 'geojson', data: fc('') });

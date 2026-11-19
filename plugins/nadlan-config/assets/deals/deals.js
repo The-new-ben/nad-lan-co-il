@@ -225,17 +225,56 @@
 				var pa = (a.id === S.sel ? -2 : 0) + (a.hot ? -1 : 0) + pr[status(a)], pb = (b.id === S.sel ? -2 : 0) + (b.hot ? -1 : 0) + pr[status(b)];
 				return pa - pb;
 			});
-			var kept = [];
+			var kept = [], cw = map.getContainer().clientWidth, ch = map.getContainer().clientHeight;
 			list.forEach(function (d) {
 				var el = tagOf(d.id), p = map.project([d.lng, d.lat]);
-				var w = 128, h = 44, box = [p.x - w / 2, p.y - h - 8, p.x + w / 2, p.y];
-				var hit = kept.some(function (k) { return !(box[2] < k[0] || box[0] > k[2] || box[3] < k[1] || box[1] > k[3]); });
+				/* HAD-790: a tag is measured (not a fixed 128 px) and kept inside the map: near a side edge it slides in, its pointer
+				   stays on the place; at the top edge, where it cannot fit, it folds to a dot like an overlapping tag */
+				if (!el.classList.contains('is-tuck') && el.offsetWidth > 40) { el._nw = el.offsetWidth; el._nh = el.offsetHeight; } // a folded tag measures as a dot
+				var w = el._nw || 150, h = el._nh || 44, dx = 0, room = Math.max(0, w / 2 - 16);
+				if (p.x >= 0 && p.x <= cw) {
+					if (p.x - w / 2 < 6) { dx = Math.min(room, 6 - (p.x - w / 2)); } else if (p.x + w / 2 > cw - 6) { dx = -Math.min(room, p.x + w / 2 - (cw - 6)); }
+				}
+				el.style.setProperty('--nx', Math.round(dx) + 'px');
+				var box = [p.x - w / 2 + dx, p.y - h - 8, p.x + w / 2 + dx, p.y];
+				var edge = (box[1] < 4 && p.y > 0) || (p.y > ch - 2 && box[1] < ch) || ((p.x < 0 || p.x > cw) && box[2] > 0 && box[0] < cw);
+				var hit = edge || kept.some(function (k) { return !(box[2] < k[0] || box[0] > k[2] || box[3] < k[1] || box[1] > k[3]); });
 				el.classList.toggle('is-tuck', hit);
+				/* a whole tag stands over the folded dots and the project points (S04: the second Gindi tag was under them) */
+				var mk = markers[d.id] && markers[d.id].getElement(); if (mk) { mk.style.zIndex = hit ? '1' : (d.id === S.sel ? '4' : d.hot ? '3' : '2'); }
 				if (!hit) { kept.push(box); }
 			});
 		});
 	}
+	/* HAD-790 (the film 19.11, S03/S04): the base map named Lebanon, Jordan, Damascus and Amman beside our deals. Our map shows Israel's
+	   names only: country and region names are off, and every other place name is kept only inside this outline (the coast, the Gaza
+	   border, the Jordan valley, the Golan, the Lebanon border). The style's own filters are kept and joined to it. */
+	var IL = { type: 'Polygon', coordinates: [[[34.30, 31.22], [34.27, 31.21], [34.90, 29.48], [34.98, 29.54], [35.33, 30.90], [35.41, 31.10],
+		[35.52, 31.75], [35.56, 32.40], [35.57, 32.72], [35.65, 32.68], [35.80, 32.75], [35.76, 33.10], [35.78, 33.28], [35.62, 33.30], [35.10, 33.10],
+		[34.95, 32.80], [34.56, 31.59], [34.30, 31.22]]] };
+	function expr(f) { // a legacy style filter (["==", "class", "city"]) as an expression, so it can be joined to "within"
+		if (!Array.isArray(f) || !f.length) { return true; }
+		var op = f[0], k = f[1], g = function (n) { return n === '$type' ? ['geometry-type'] : ['get', n]; };
+		if (op === 'all' || op === 'any') { return [op].concat(f.slice(1).map(expr)); }
+		if (op === 'none') { return ['!', ['any'].concat(f.slice(1).map(expr))]; }
+		if (typeof k !== 'string') { return f; } // already an expression
+		if (op === 'has') { return ['has', k]; }
+		if (op === '!has') { return ['!', ['has', k]]; }
+		if (op === 'in' || op === '!in') { return ['match', g(k), f.slice(2), op === 'in', op !== 'in']; }
+		if (['==', '!=', '<', '>', '<=', '>='].indexOf(op) >= 0) { return [op, g(k), f[2]]; }
+		return f;
+	}
+	function homeNames() {
+		try {
+			map.getStyle().layers.forEach(function (l) {
+				if (l.type !== 'symbol' || l['source-layer'] !== 'place') { return; }
+				if (/country|state|continent/i.test(l.id)) { map.setLayoutProperty(l.id, 'visibility', 'none'); return; }
+				map.setFilter(l.id, l.filter ? ['all', expr(l.filter), ['within', IL]] : ['within', IL]);
+			});
+		} catch (e) { /* the base map keeps its names */ }
+	}
 	function addLayers() {
+		homeNames();
 		try {
 			var src = Object.keys(map.getStyle().sources).filter(function (k) { return map.getStyle().sources[k].type === 'vector'; })[0];
 			if (src) {
@@ -264,6 +303,29 @@
 			map.on('mouseleave', 'nldm-pts', function () { map.getCanvas().style.cursor = ''; });
 		}).catch(function () {});
 	}
+	/* HAD-790 (Ben, 21.10: a map never holds the page's scroll): on a mouse, a wheel that passes over the map keeps scrolling the page;
+	   a pointer that rests on the map half a second, or a click on it, zooms with the wheel (no Ctrl). Phones keep two fingers. */
+	function wheelIntent(m, el) {
+		if (!window.matchMedia || !matchMedia('(hover: hover) and (pointer: fine)').matches || window.innerWidth < 768) { return; }
+		var inAt = 0, page = 0, on = false, hint = null, ht = 0;
+		function arm(v) { on = v; try { if (v) { m.scrollZoom.enable(); } else { m.scrollZoom.disable(); } } catch (e) { /* the map is gone */ } }
+		arm(false);
+		addEventListener('scroll', function () { page = Date.now(); }, { passive: true });
+		el.addEventListener('mouseenter', function () { inAt = Date.now(); });
+		el.addEventListener('mouseleave', function () { inAt = 0; arm(false); });
+		el.addEventListener('mousedown', function () { arm(true); });
+		el.addEventListener('wheel', function () {
+			if (on) { return; }
+			var n = Date.now();
+			if (inAt && n - inAt > 500 && n - page > 400) { arm(true); return; }
+			if (!hint) {
+				hint = document.createElement('div'); hint.className = 'nldm-whint'; hint.setAttribute('aria-hidden', 'true');
+				hint.textContent = EN ? 'Rest the pointer on the map, or click it, to zoom with the wheel' : 'השאירו את העכבר על המפה, או לחצו עליה, כדי להתקרב בגלגלת';
+				el.appendChild(hint);
+			}
+			hint.classList.add('is-on'); clearTimeout(ht); ht = setTimeout(function () { hint.classList.remove('is-on'); }, 1400);
+		}, { capture: true, passive: true });
+	}
 	function initMap() {
 		var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = D.mlCss; document.head.appendChild(css);
 		var js = document.createElement('script'); js.src = D.mlJs; js.async = true;
@@ -273,7 +335,7 @@
 			   map of the site loads; without it they come out reversed. Registered once, never twice ("already registered"). */
 			try { if (D.rtl && maplibregl.getRTLTextPluginStatus && maplibregl.getRTLTextPluginStatus() === 'unavailable') { var rp = maplibregl.setRTLTextPlugin(D.rtl, false); if (rp && rp.catch) { rp.catch(function () {}); } } } catch (e) { /* the labels stay as the map draws them */ }
 			map = new maplibregl.Map({ container: box, style: D.style, center: [34.82, 32.07], zoom: 10.4, pitch: 52, bearing: -14,
-				attributionControl: { compact: true }, cooperativeGestures: window.innerWidth < 768, maxPitch: 70 });
+				attributionControl: { compact: true }, cooperativeGestures: window.innerWidth < 768, maxPitch: 70, minZoom: 6.8 }); // HAD-790: never the whole region
 			/* the tags do not wait for the map tiles: a tile server that fails (seen once, a CORS error) must not hide the deals */
 			deals.forEach(function (d) {
 				markers[d.id] = new maplibregl.Marker({ element: tagEl(d), anchor: 'bottom' }).setLngLat([d.lng, d.lat]).addTo(map);
@@ -287,6 +349,7 @@
 				setTimeout(function () { var h = byId[D.hotId]; if (h && markers[h.id] && !RM) { var r = tagOf(h.id).getBoundingClientRect(); if (r.top > 0 && r.top < window.innerHeight) { burst(r.left + r.width / 2, r.top, h.color, true); } } }, 1500);
 			});
 			map.on('move', declutter);
+			wheelIntent(map, box);
 		};
 		document.head.appendChild(js);
 	}

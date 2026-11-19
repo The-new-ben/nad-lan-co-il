@@ -224,7 +224,33 @@
       }).catch(function () { root.innerHTML = '<p class="nli__note">' + esc(TX.noData[langOf(root)]) + '</p>'; });
     });
   }
+  /* HAD-790 (Ben 21.10: a map never holds the page's scroll; the film 19.11: on the hazards map the wheel only scrolled the page): one
+     wheel rule for every tool map. On a mouse (fine pointer, 768 px and wider) the map is built WITHOUT the "Ctrl + wheel" lock; a wheel
+     that passes over the map keeps scrolling the page, a pointer that rests on the map half a second, or a click on it, zooms with the
+     wheel, and leaving the map gives the wheel back to the page. Phones keep two fingers (cooperative gestures). */
+  var FINE = !!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth >= 768);
+  function wheelIntent(m, el, en) {
+    if (!FINE || !m || !el) return;
+    var inAt = 0, page = 0, on = false, hint = null, ht = 0;
+    function arm(v) { on = v; try { if (v) m.scrollZoom.enable(); else m.scrollZoom.disable(); } catch (e) { /* the map is gone */ } }
+    arm(false);
+    addEventListener('scroll', function () { page = Date.now(); }, { passive: true });
+    el.addEventListener('mouseenter', function () { inAt = Date.now(); });
+    el.addEventListener('mouseleave', function () { inAt = 0; arm(false); });
+    el.addEventListener('mousedown', function () { arm(true); });
+    el.addEventListener('wheel', function () {
+      if (on) return;
+      var n = Date.now();
+      if (inAt && n - inAt > 500 && n - page > 400) { arm(true); return; }
+      if (!hint) {
+        hint = document.createElement('div'); hint.className = 'nls__whint'; hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = en ? 'Rest the pointer on the map, or click it, to zoom with the wheel' : 'השאירו את העכבר על המפה, או לחצו עליה, כדי להתקרב בגלגלת';
+        el.appendChild(hint);
+      }
+      hint.classList.add('is-on'); clearTimeout(ht); ht = setTimeout(function () { hint.classList.remove('is-on'); }, 1400);
+    }, { capture: true, passive: true });
+  }
   window.NadLanInstruments = { register: function (id, spec) { REG[id] = spec; if (document.readyState !== 'loading') boot(); }, mount: mount, boot: boot, fmt: fmt, esc: esc,
-    lang: LANG, langOf: langOf, pick: pick, TX: TX };
+    lang: LANG, langOf: langOf, pick: pick, TX: TX, fine: FINE, wheelIntent: wheelIntent };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

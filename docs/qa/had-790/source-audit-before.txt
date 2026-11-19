@@ -1,0 +1,33 @@
+[YELLOW] https://nad-lan.co.il/fr/
+    title(60): Appartements neufs et projets immobiliers en Israël | NadLan
+    h1x1 canonical x1 hreflang 11 favicon 4 jsonld 1 scripts 46 styles 30
+    FLAGS: YELLOW dashes x3
+[YELLOW] https://nad-lan.co.il/en/
+    title(59): NadLan - apartments, new projects and real prices in Israel
+    h1x1 canonical x1 hreflang 11 favicon 4 jsonld 1 scripts 46 styles 30
+    FLAGS: YELLOW dashes x3
+[YELLOW] https://nad-lan.co.il/ru/
+    title(58): Новостройки и квартиры в Израиле — цены и проекты | NadLan
+    h1x1 canonical x1 hreflang 11 favicon 4 jsonld 1 scripts 46 styles 30
+    FLAGS: YELLOW dashes x6
+[YELLOW] https://nad-lan.co.il/ar/
+    title(57): شقق ومشاريع جديدة في إسرائيل — الأسعار والمشاريع | NadLan
+    h1x1 canonical x1 hreflang 11 favicon 4 jsonld 1 scripts 46 styles 30
+    FLAGS: YELLOW dashes x4
+[GREEN] https://nad-lan.co.il/developer-deals/
+    title(47): מבצעי קבלנים 2026: מפת כל המבצעים בישראל - נדלן
+    h1x1 canonical x1 hreflang 13 favicon 4 jsonld 2 scripts 50 styles 28
+[GREEN] https://nad-lan.co.il/environmental-hazards/
+    title(57): מפת אנטנות סלולריות וקרינה לפי כתובת: כל המפגעים ליד הבית
+    h1x1 canonical x1 hreflang 13 favicon 4 jsonld 2 scripts 48 styles 29
+[GREEN] https://nad-lan.co.il/purchase-tax-calculator/
+    title(47): מחשבון מס רכישה 2026: מדרגות, הקלות ומתי משלמים
+    h1x1 canonical x1 hreflang 12 favicon 4 jsonld 3 scripts 49 styles 34
+[GREEN] https://nad-lan.co.il/buying-apartment/
+    title(65): קניית דירה בישראל 2026: המדריך המלא, 18 שלבים ו־15 כלים | nad-lan
+    h1x1 canonical x1 hreflang 10 favicon 4 jsonld 3 scripts 53 styles 30
+[RED] https://nad-lan.co.il/projects/hamedina/
+    title(21): 429 Too Many Requests
+    h1x1 canonical x0 hreflang 0 favicon 0 jsonld 0 scripts 0 styles 0
+    FLAGS: RED http 429 | ORANGE canonical x0
+      · title: 'מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס' -> '429 Too Many Requests'

@@ -1,0 +1,74 @@
+{
+ "menu_slow_he": {
+  "pass": true,
+  "note": "opened True, open after a slow 45 px move True"
+ },
+ "menu_closes_on_leave": {
+  "pass": true,
+  "note": ""
+ },
+ "lang_home_en": {
+  "pass": true,
+  "note": "{\"lang\": true, \"dir\": \"ltr\", \"panels\": 6, \"links\": 55, \"oldbar\": 0, \"hebrew\": [], \"dashes\": 0}"
+ },
+ "lang_home_fr": {
+  "pass": true,
+  "note": "{\"lang\": true, \"dir\": \"ltr\", \"panels\": 6, \"links\": 55, \"oldbar\": 0, \"hebrew\": [], \"dashes\": 0}"
+ },
+ "lang_home_ru": {
+  "pass": true,
+  "note": "{\"lang\": true, \"dir\": \"ltr\", \"panels\": 6, \"links\": 55, \"oldbar\": 0, \"hebrew\": [], \"dashes\": 0}"
+ },
+ "lang_home_ar": {
+  "pass": true,
+  "note": "{\"lang\": true, \"dir\": \"rtl\", \"panels\": 6, \"links\": 55, \"oldbar\": 0, \"hebrew\": [], \"dashes\": 0}"
+ },
+ "deals_wheel_passes": {
+  "pass": true,
+  "note": "scrollY 772 -> 1072"
+ },
+ "deals_wheel_zooms_on_rest": {
+  "pass": true,
+  "note": "page stayed at 942 -> 942 while the pointer rested and wheeled"
+ },
+ "deals_tags_inside": {
+  "pass": true,
+  "note": "visible tags 5, cut at the edge 0"
+ },
+ "hazards_wheel_zooms_on_rest": {
+  "pass": true,
+  "note": "page 1417 -> 1417, Ctrl message shown False"
+ },
+ "wide/purchase-tax-calculator/": {
+  "pass": true,
+  "note": "tool 1320 px of 1920, page width 1920"
+ },
+ "wide/apartment-prices/": {
+  "pass": true,
+  "note": "tool 1320 px of 1920, page width 1920"
+ },
+ "wide/buying-apartment/": {
+  "pass": true,
+  "note": "tool 1320 px of 1920, page width 1920"
+ },
+ "price_window_visible": {
+  "pass": true,
+  "note": "card opacity 1"
+ },
+ "price_fresh_no_meter": {
+  "pass": true,
+  "note": "debug line shown: False"
+ },
+ "kikar_floor29_he": {
+  "pass": true,
+  "note": "הדמיה להמחשה · בתמונה הנוף מקומה 30, הקומה הקרובה שצוירה"
+ },
+ "kikar_floor29_en": {
+  "pass": true,
+  "note": "Illustrative visualisation · pictured: the view from floor 30, the nearest rendered floor"
+ },
+ "phone_fr_menu": {
+  "pass": true,
+  "note": "sheet open True, page width 390"
+ }
+}

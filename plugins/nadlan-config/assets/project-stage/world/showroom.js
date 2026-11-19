@@ -95,7 +95,14 @@ function place() {
 function paintPic() {
   const img = el.querySelector('.nlsr-pic');
   if (!S.tower) { img.src = A('aerial-tall-800.webp'); img.alt = t('sr_alt_aerial'); }
-  else { img.src = frameUrl(S.tower, S.frame); img.alt = t('sr_alt_tower', { tower: S.tower, dir: dirFrom(turn().frames[S.frame].b) }); }
+  else {
+    /* HAD-790 (the film 19.11, S02: choosing south turned the tower picture black while those frames loaded): the frame on screen
+       stays until the next one has arrived; the newest choice wins, and a frame that fails to load leaves the last one in place */
+    const u = frameUrl(S.tower, S.frame), pi = preload(S.tower, S.frame), tok = (paintPic.tok = (paintPic.tok || 0) + 1);
+    if ((pi.complete && pi.naturalWidth) || !img.getAttribute('src')) img.src = u;
+    else pi.addEventListener('load', () => { if (paintPic.tok === tok) img.src = u; }, { once: true });
+    img.alt = t('sr_alt_tower', { tower: S.tower, dir: dirFrom(turn().frames[S.frame].b) });
+  }
   place(); paintBand(); paintMap();
 }
 function paintHandles() {
@@ -169,6 +176,9 @@ function mapLabels(from, b) {
   const taken = [...mb.querySelectorAll('.nlsr-ml')].map((e) => { const r = e.getBoundingClientRect(); return { l: r.left - o.left, r: r.right - o.left, t: r.top - o.top, b: r.bottom - o.top }; });
   const hit = (a) => taken.some((q) => a.l < q.r + 3 && a.r > q.l - 3 && a.t < q.b + 2 && a.b > q.t - 2);
   const rows = detailRows(f).map((r) => ({ ...r, beam: b != null && angDiff(brg(f, r.X, r.Y), b) <= 26 }));
+  /* HAD-790: the beam's axis on screen (y grows down) and its normal; side() says which side of the axis a point is on */
+  const bx = b == null ? 0 : Math.sin(b * Math.PI / 180), by = b == null ? 0 : -Math.cos(b * Math.PI / 180), nx = -by, ny = bx;
+  const fx = px(f[0]), fy = py(f[1]), side = (x, y) => (((x - fx) * nx + (y - fy) * ny) >= 0 ? 1 : -1);
   const inside = rows.filter((r) => r.X > m.x0 + W * 0.02 && r.X < m.x1 - W * 0.02 && r.Y > m.y0 + H * 0.05 && r.Y < m.y1 - H * 0.05)
     .sort((a, c) => (c.beam - a.beam) || ((c.q.mark || 0) - (a.q.mark || 0)) || (a.d - c.d));
   const cap = cw < 520 ? 4 : 7; let n = 0;
@@ -177,7 +187,11 @@ function mapLabels(from, b) {
     const x = px(r.X), y = py(r.Y);
     const s = document.createElement('span'); s.className = 'nlsr-pl' + (r.beam ? ' is-beam' : ''); s.textContent = r.name; s.style.visibility = 'hidden'; lay.appendChild(s);
     const w = s.offsetWidth, hh = s.offsetHeight; if (!w || w > cw - 6) { s.remove(); continue; }
-    const l = Math.min(Math.max(x - w / 2, 3), cw - w - 3); let tp = y - hh - 5; if (tp < 2) tp = y + 5;
+    let l = Math.min(Math.max(x - w / 2, 3), cw - w - 3), tp = y - hh - 5; if (tp < 2) tp = y + 5;
+    if (r.beam && b != null && from) { // HAD-790: beside the beam, on the side the place lies, never across it
+      const s = side(x, y), cx = x + nx * s * (w / 2 + 8), cy = y + ny * s * (hh / 2 + 6);
+      l = Math.min(Math.max(cx - w / 2, 3), cw - w - 3); tp = Math.min(Math.max(cy - hh / 2, 2), ch - hh - 2);
+    }
     const a = { l, r: l + w, t: tp, b: tp + hh };
     if (hit(a) || a.b > ch - 2) { s.remove(); continue; }
     taken.push(a); n++;
@@ -196,8 +210,10 @@ function mapLabels(from, b) {
     const x = px(f[0] + dx * k), y = py(f[1] + dy * k);
     const s = document.createElement('span'); s.className = 'nlsr-pe'; s.textContent = r.name + ' ' + ARW[Math.round(br / 45) % 8]; s.style.visibility = 'hidden'; lay.appendChild(s);
     const w = s.offsetWidth, hh = s.offsetHeight; if (!w || w > cw - 6) { s.remove(); continue; }
-    const l = Math.min(Math.max(x - w / 2, 3), cw - w - 3), tp = Math.min(Math.max(y - hh / 2, 2), ch - hh - 2);
-    const a = { l, r: l + w, t: tp, b: tp + hh }; if (hit(a)) { s.remove(); continue; }
+    // HAD-790: off the beam's exit, toward the map's middle first, else on the other side
+    const sd0 = side(cw / 2, ch / 2) || 1, at = (sd) => { const ex = x + nx * sd * (w / 2 + 12), ey = y + ny * sd * (hh / 2 + 10), l = Math.min(Math.max(ex - w / 2, 3), cw - w - 3), tp = Math.min(Math.max(ey - hh / 2, 2), ch - hh - 2); return { l, r: l + w, t: tp, b: tp + hh }; };
+    let a = at(sd0); if (hit(a)) a = at(-sd0); if (hit(a)) { s.remove(); continue; }
+    const l = a.l, tp = a.t;
     taken.push(a); s.style.left = (l / cw * 100).toFixed(2) + '%'; s.style.top = (tp / ch * 100).toFixed(2) + '%'; s.style.visibility = '';
   }
 }

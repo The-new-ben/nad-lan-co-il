@@ -129,7 +129,7 @@ function scrView(c) {
   if (!v) return subTop(t('ck_tile_view')) + `<p class="nlck-pad">${esc(t('ck_view_none'))}</p>`;
   const fl = floorsOf(c), sd = sidesOf(c);
   return `${subTop(label(c))}<div class="nlck-pan" data-pan><div class="nlck-vdh"><img src="${esc(A(v.big))}" alt="${esc(t('ck_alt_view', { floor: v.floor, dir: dirWord(v.bearing) }))}"${vdAttr(v)}></div></div>
-    <span class="nlck-cap" style="top:112px;bottom:auto">${t('ck_cap_view', { floor: v.floor, dir: esc(dirWord(v.bearing)) })}</span>${vdToggle()}
+    <span class="nlck-cap" style="top:112px;bottom:auto">${t('ck_cap_view', { floor: v.floor + (!sub.view && +v.floor !== +c.floor ? t('jy_nearest') : ''), dir: esc(dirWord(v.bearing)) })}</span>${vdToggle()}
     <div class="nlck-under"><div class="nlck-hint">${esc(t('ck_view_drag'))}</div><p class="nlck-vdnote" data-vdn${vdOn ? '' : ' hidden'}>${esc(t('vd_note'))}</p>
       <button type="button" class="nlck-3d" data-act="3d">${esc(t('vd_3d'))}</button><p class="nlck-vdnote">${esc(t('vd_3d_note'))}</p>
       ${fl.length > 1 ? `<div class="nlck-row-t">${esc(t('ck_row_floors'))}</div><div class="nlck-strip">${fl.map((x) => `<button type="button" data-v="${esc(x.img)}" data-vk="floor" aria-pressed="${x === v}"><img src="${esc(A(x.img))}" alt=""><b>${t('floor_n', { floor: bdi(x.floor) })}</b></button>`).join('')}</div>` : ''}

@@ -258,6 +258,7 @@
         map = new gl.Map({ container: mapEl, style: STYLE, bounds: b0, fitBoundsOptions: { padding: phone ? 24 : 60 }, pitch: phone ? 40 : 52, bearing: -28, maxPitch: 70,
           attributionControl: { compact: true }, cooperativeGestures: phone,
           locale: { 'CooperativeGesturesHandler.MobileHelpText': T.gMobile, 'CooperativeGesturesHandler.WindowsHelpText': T.gWin, 'CooperativeGesturesHandler.MacHelpText': T.gMac } });
+        if (NLI.wheelIntent) NLI.wheelIntent(map, mapEl, EN); // HAD-790: a passing wheel scrolls the page, a resting pointer zooms
         map.addControl(new gl.NavigationControl({ visualizePitch: true }), EN ? 'top-right' : 'top-left');  // the controls sit at the reading start's far side: left in Hebrew, right in English
         map.on('load', function () {
           var feats = d.plots.map(function (p) { var r = p.ref ? recs[p.ref] : null;

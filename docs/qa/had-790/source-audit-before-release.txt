@@ -1,0 +1,8 @@
+[GREEN] https://nad-lan.co.il/
+[YELLOW] https://nad-lan.co.il/fr/
+    FLAGS: YELLOW dashes x3
+[YELLOW] https://nad-lan.co.il/en/
+    FLAGS: YELLOW dashes x3
+[GREEN] https://nad-lan.co.il/developer-deals/
+[GREEN] https://nad-lan.co.il/purchase-tax-calculator/
+[GREEN] https://nad-lan.co.il/projects/hamedina/

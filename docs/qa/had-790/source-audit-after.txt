@@ -1,0 +1,33 @@
+[GREEN] https://nad-lan.co.il/
+      · bytes 333,563 -> 333,977
+[YELLOW] https://nad-lan.co.il/fr/
+    FLAGS: YELLOW dashes x3
+      · scripts_count: 48 -> 49
+      · styles_count: 30 -> 31
+      · bytes 269,296 -> 290,534
+[YELLOW] https://nad-lan.co.il/en/
+    FLAGS: YELLOW dashes x3
+      · scripts_count: 48 -> 49
+      · styles_count: 30 -> 31
+      · bytes 267,755 -> 288,785
+[YELLOW] https://nad-lan.co.il/ru/
+    FLAGS: YELLOW dashes x6
+      · scripts_count: 46 -> 49
+      · styles_count: 30 -> 31
+      · bytes 275,325 -> 298,664
+[YELLOW] https://nad-lan.co.il/ar/
+    FLAGS: YELLOW dashes x4
+      · scripts_count: 46 -> 49
+      · styles_count: 30 -> 31
+      · bytes 271,728 -> 294,532
+[GREEN] https://nad-lan.co.il/developer-deals/
+      · bytes 381,122 -> 381,559
+[GREEN] https://nad-lan.co.il/purchase-tax-calculator/
+      · bytes 333,047 -> 333,449
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+      · bytes 483,771 -> 484,217
+[YELLOW] https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/
+    FLAGS: YELLOW desc 168ch
+      · bytes 400,073 -> 380,309
+[GREEN] https://nad-lan.co.il/projects/rainbow-tel-aviv/
+      · bytes 480,877 -> 481,305

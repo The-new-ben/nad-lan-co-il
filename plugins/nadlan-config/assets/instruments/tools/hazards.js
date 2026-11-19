@@ -16,6 +16,7 @@
   if (!window.NadLanInstruments) return;
   var NLI = window.NadLanInstruments, F = NLI.fmt, esc = NLI.esc, EN = NLI.lang === 'en';
   function L(he, en) { return EN ? en : he; }
+  var FINE = !!NLI.fine; // HAD-790: on a mouse the map has no Ctrl lock; NLI.wheelIntent decides scroll or zoom
   var ML = 'https://unpkg.com/maplibre-gl@4.7.1/dist/', RTL = 'https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.min.js';
   var STYLE = 'https://tiles.openfreemap.org/styles/positron';
   var LAY = [
@@ -174,8 +175,9 @@
       loadML(function (err) {
         if (err || !window.maplibregl) { mapEl.innerHTML = '<p class="nls__wait">' + esc(L('המפה לא נטענה. הדוח למטה מחושב בכל זאת.', 'The map did not load. The report below is still calculated.')) + '</p>'; return; }
         var gl = window.maplibregl, k = Math.cos(S.pt[1] * Math.PI / 180), dx = S.r * 1.25 / (111320 * k), dy = S.r * 1.25 / 110574;
-        map = new gl.Map({ container: mapEl, style: STYLE, bounds: [[S.pt[0] - dx, S.pt[1] - dy], [S.pt[0] + dx, S.pt[1] + dy]], pitch: phone ? 45 : 55, bearing: -18, maxPitch: 70, cooperativeGestures: true, attributionControl: { compact: true } });
+        map = new gl.Map({ container: mapEl, style: STYLE, bounds: [[S.pt[0] - dx, S.pt[1] - dy], [S.pt[0] + dx, S.pt[1] + dy]], pitch: phone ? 45 : 55, bearing: -18, maxPitch: 70, cooperativeGestures: !FINE, attributionControl: { compact: true } });
         map.addControl(new gl.NavigationControl({ showCompass: true }), EN ? 'top-right' : 'top-left');
+        if (FINE && NLI.wheelIntent) NLI.wheelIntent(map, mapEl, EN);
         map.on('load', function () {
           var w = mapEl.querySelector('.nls__wait'); if (w) w.remove();
           if (map.getSource('openmaptiles')) map.addLayer({ id: 'hz-3d', type: 'fill-extrusion', source: 'openmaptiles', 'source-layer': 'building', minzoom: 13,
