@@ -16,7 +16,13 @@ print("[tour]", o.stdout.strip())
 A = "/wp-content/plugins/nadlan-config/assets/designer/"
 T = "t%dd" % NEWV
 ROWS = ("    ('/tour/designer/?project=ashira&" + T + "=1', ['walknav.js?v=', 'NL_TRAIL_CFG'], ['Fatal error'], []),\n"
-        "    ('" + A + "designer.css?" + T + "=1', ['.space:has(.walkbar:not([hidden])) .note'], [], []),\n")
-kl_release.build_release(PREV, NEWV, ["assets/tours/designer-tour.html", "assets/designer/designer.css"], [], {}, {}, ROWS,
+        "    ('" + A + "designer.css?" + T + "=1', ['.space:has(.walkbar:not([hidden])) .note'], [], []),\n"
+        "    ('/projects/hamedina/?" + T + "=1', ['class=\"nlsh\"'], ['Fatal error'], []),\n")
+# Carried for package 3 (its request 19.11; live text was 8e1e19d9 from 711, repo fix 7384d405): inc/project-shell.php places the
+# project row (call, designer, basket) inside the buttons block on pages with no hero-pick anchor (the five Kikar world pages).
+SHELL = "inc/project-shell.php"
+import hashlib  # noqa: E402
+assert hashlib.md5(open(os.path.join(REPO, "plugins", "nadlan-config", SHELL), "rb").read()).hexdigest() == "7384d40519896d9b254a8526418af8bb"
+kl_release.build_release(PREV, NEWV, ["assets/tours/designer-tour.html", "assets/designer/designer.css", SHELL], [], {}, {}, ROWS,
                          "the window-view illustration line stays visible above the walk row on phones",
-                         "HAD-792 package 2 follow-up: illustration line on phones")
+                         "HAD-792 package 2 follow-up: illustration line on phones (+ package 3 project row inside the buttons block)")
