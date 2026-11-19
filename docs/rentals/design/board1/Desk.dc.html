@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>הדירה במחשב</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+body{margin:0}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+<div dir="rtl" style="width: 1280px; height: 800px; overflow: hidden; background: #eef2f6; color: #14212b; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; font-size: 16px; line-height: 1.4; display: flex; flex-direction: column">
+
+<header style="height: 64px; flex-shrink: 0; box-sizing: border-box; padding: 0 24px; background: #ffffff; border-bottom: 1px solid #c9d3dd; display: flex; align-items: center; gap: 16px">
+<span style="font-size: 16px; font-weight: 700; color: #1f4b5c">נדלן · ניהול השכרות</span>
+<span aria-hidden="true" style="width: 1px; height: 24px; background: #c9d3dd"></span>
+<h1 style="margin: 0; font-size: 18px; font-weight: 700">רחוב הדוגמה 1, דירה 7</h1>
+<span style="font-size: 12px; font-weight: 600; line-height: 18px; padding: 0 8px; border: 1px solid #3b4753; border-radius: 999px; color: #3b4753">דירה לדוגמה</span>
+<span style="font-size: 14px; color: #3b4753">השוכרים: משפחת לוי (דוגמה) · חוזה עד <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace">31.8.2027</span></span>
+<nav aria-label="ניווט ראשי" style="margin-inline-start: auto; display: flex; gap: 4px; height: 64px">
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">היום</a>
+<a href="#" aria-current="page" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #1f4b5c; font-size: 15px; font-weight: 700; box-shadow: inset 0 -3px 0 #2f6f86">הדירה</a>
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">כספים</a>
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">מסמכים</a>
+</nav>
+</header>
+
+<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 24px; display: flex; gap: 20px">
+
+<aside aria-live="polite" style="width: 420px; flex-shrink: 0; box-sizing: border-box; padding: 14px 20px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px">
+<h2 style="margin: 0; font-size: 24px; font-weight: 700; line-height: 32px">{{cur.label}}</h2>
+<span style="{{cur.pill}}">{{cur.state}}</span>
+</div>
+<div style="font-size: 15px; line-height: 22px; color: #3b4753">{{cur.room}}</div>
+
+<sc-if value="{{cur.hasEvent}}" hint-placeholder-val="{{true}}">
+<div style="margin-top: 11px">
+<div style="font-size: 13px; font-weight: 700; line-height: 18px; color: #3b4753">{{cur.eventTitle}}</div>
+<div style="font-size: 16px; line-height: 24px"><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px">{{cur.eventDate}}</span> · {{cur.event}}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{cur.isSystem}}" hint-placeholder-val="{{true}}">
+<div style="margin-top: 11px; padding: 12px 14px; border-radius: 12px; background: #eef2f6">
+<div style="font-size: 13px; font-weight: 700; line-height: 18px; color: #3b4753">מי מתקן לפי החוק</div>
+<div style="font-size: 16px; line-height: 24px">ליקוי שאינו קל ערך: המשכיר מתקן על חשבונו.</div>
+<div style="font-size: 16px; line-height: 24px">ליקוי משימוש בלתי סביר בדירה: על השוכר, אלא אם סיכמתם אחרת.</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 18px; color: #3b4753">חוק השכירות והשאילה, סעיף <span dir="ltr">25</span>ח</div>
+</div>
+</sc-if>
+
+<sc-if value="{{cur.isAppliance}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 11px; padding: 12px 14px; border-radius: 12px; background: #eef2f6">
+<div style="font-size: 13px; font-weight: 700; line-height: 18px; color: #3b4753">מי מתקן</div>
+<div style="font-size: 16px; line-height: 24px">מכשיר שהשארתם בדירה: לפי מה שכתוב בחוזה שלכם. הסעיף נפתח מכאן.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{cur.hasDeadline}}" hint-placeholder-val="{{true}}">
+<div style="margin-top: 11px">
+<div aria-hidden="true" style="height: 8px; border-radius: 4px; background: #e1e7ed; overflow: hidden"><div style="width: 13.3%; height: 8px; background: #a11616"></div></div>
+<div style="margin-top: 8px; font-size: 16px; font-weight: 600">יום <span dir="ltr">4</span> מתוך <span dir="ltr">30</span> · לתקן עד <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px">16.12.2026</span></div>
+<button type="button" style="margin-top: 8px; height: 44px; padding: 0 14px; border: 1.5px solid #14212b; border-radius: 999px; background: #ffffff; color: #14212b; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap">דחוף, אי אפשר לגור בדירה באופן סביר: <span dir="ltr">3</span> ימים</button>
+</div>
+</sc-if>
+
+<div style="margin-top: 14px; font-size: 16px; line-height: 24px"><span style="font-weight: 700; color: #2f6f86">הצעד הבא:</span> {{cur.next}}</div>
+<button type="button" style="margin-top: 12px; flex-shrink: 0; height: 52px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{cur.primary}}</button>
+<button type="button" style="margin-top: 10px; flex-shrink: 0; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">{{cur.secondary}}</button>
+<div style="margin-top: auto; padding-top: 10px; border-top: 1px solid #e1e7ed">
+<div style="font-size: 13px; font-weight: 700; line-height: 18px; color: #3b4753">בתיק של החלק</div>
+<div style="display: flex; align-items: center; height: 38px; font-size: 15px"><span>תמונה של שלט הדגם</span><a href="#" style="margin-inline-start: auto; color: #2f6f86; font-weight: 700">לצלם</a></div>
+<div style="display: flex; align-items: center; height: 38px; font-size: 15px; border-top: 1px solid #e1e7ed"><span>חשבונית ותעודת אחריות</span><a href="#" style="margin-inline-start: auto; color: #2f6f86; font-weight: 700">לצרף</a></div>
+<div style="display: flex; align-items: center; height: 38px; font-size: 15px; border-top: 1px solid #e1e7ed"><span>הוראות שימוש לשוכר</span><a href="#" style="margin-inline-start: auto; color: #2f6f86; font-weight: 700">לשלוח</a></div>
+</div>
+</aside>
+
+<main style="flex-grow: 1; min-width: 0; box-sizing: border-box; padding: 16px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px; display: flex; flex-direction: column; align-items: center">
+<div style="align-self: stretch; display: flex; gap: 8px; height: 44px">
+<button type="button" aria-pressed="{{cAll.on}}" onClick="{{cAll.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; {{cAll.st}}">הכול</button>
+<button type="button" aria-pressed="{{cW.on}}" onClick="{{cW.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; {{cW.st}}"><span aria-hidden="true" style="width: 14px; height: 4px; border-radius: 2px; background: #1565c0; box-shadow: 0 0 0 1px #ffffff"></span>מים</button>
+<button type="button" aria-pressed="{{cE.on}}" onClick="{{cE.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; {{cE.st}}"><span aria-hidden="true" style="width: 14px; height: 4px; border-radius: 2px; background: #6a3fc8; box-shadow: 0 0 0 1px #ffffff"></span>חשמל</button>
+<button type="button" aria-pressed="{{cG.on}}" onClick="{{cG.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; {{cG.st}}"><span aria-hidden="true" style="width: 14px; height: 4px; border-radius: 2px; background: #f5b800; box-shadow: 0 0 0 1px #14212b"></span>גז</button>
+<button type="button" aria-pressed="{{cAc.on}}" onClick="{{cAc.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; {{cAc.st}}">מיזוג</button>
+</div>
+<div style="margin-top: 20px; width: 506px; height: 506px; position: relative">
+<div dir="ltr" style="position: absolute; left: 0; top: 0; width: 342px; height: 342px; transform-origin: 0 0; transform: scale(1.48)">
+<dc-import name="Plan" sel="{{sel}}" layer="{{layer}}" pick="{{pickPart}}" hint-size="342px,342px"></dc-import>
+</div>
+</div>
+<p style="margin: auto 0 0 0; font-size: 14px; line-height: 20px; color: #3b4753">כחול: מים קרים · אדום מקווקו: מים חמים · צהוב: גז · סגול: חשמל</p>
+</main>
+
+<section style="width: 228px; flex-shrink: 0; box-sizing: border-box; padding: 16px 16px 8px 16px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px; display: flex; flex-direction: column">
+<h2 style="margin: 0 0 6px 0; font-size: 15px; font-weight: 700">כל החלקים בדירה</h2>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="11">
+<button type="button" onClick="{{r.pick}}" style="width: 100%; height: 48px; padding: 0 8px; border: 0; border-radius: 10px; font: inherit; cursor: pointer; display: flex; align-items: center; gap: 10px; text-align: start; {{r.st}}">
+<span aria-hidden="true" style="{{r.dot}}"></span>
+<span style="font-size: 15px; font-weight: 600">{{r.label}}</span>
+<span style="margin-inline-start: auto; font-size: 12px; font-weight: 600">{{r.state}}</span>
+</button>
+</sc-for>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var sel = st.sel !== undefined ? st.sel : 'boiler';
+var layer = st.layer !== undefined ? st.layer : 'w';
+var LN = { w: 'מים', e: 'חשמל', g: 'גז', ac: 'מיזוג' };
+var SL = { ok: 'תקין', soon: 'לטיפול בקרוב', fault: 'תקלה פתוחה' };
+var P = {
+acLiving: ['מזגן סלון', 'סלון', ['e', 'ac'], 'soon', 'system'],
+shutter: ['תריס סלון', 'סלון', ['e'], 'ok', 'system'],
+cooktop: ['כיריים ותנור', 'מטבח', ['g', 'e'], 'ok', 'appliance'],
+fridge: ['מקרר', 'מטבח', ['e'], 'ok', 'appliance'],
+sink: ['כיור וברז ראשי', 'מטבח', ['w'], 'ok', 'system'],
+panel: ['לוח חשמל', 'מסדרון', ['e'], 'ok', 'system'],
+acBed: ['מזגן חדר שינה', 'חדר שינה', ['e', 'ac'], 'ok', 'system'],
+mamad: ['דלת וחלון הממ"ד', 'ממ"ד', [], 'ok', 'system'],
+bath: ['מקלחת ואסלה', 'אמבטיה', ['w'], 'ok', 'system'],
+boiler: ['דוד שמש', 'מרפסת שירות', ['w', 'e'], 'fault', 'system'],
+washer: ['מכונת כביסה', 'מרפסת שירות', ['w', 'e'], 'ok', 'appliance']
+};
+var ORDER = ['boiler', 'acLiving', 'sink', 'bath', 'washer', 'panel', 'cooktop', 'fridge', 'shutter', 'acBed', 'mamad'];
+function pick(id) { var p = P[id]; self.setState({ sel: id, layer: p[2].length ? p[2][0] : 'all' }); }
+function pill(s) {
+var base = 'font-size:13px; font-weight:700; line-height:22px; padding:0 10px; border-radius:999px; white-space:nowrap; ';
+if (s === 'fault') { return base + 'background:#a11616; color:#ffffff'; }
+if (s === 'soon') { return base + 'background:#ffffff; color:#14212b; border:1.5px solid #14212b'; }
+return base + 'background:#eef2f6; color:#3b4753';
+}
+function dot(s) {
+var base = 'flex-shrink:0; width:14px; height:14px; border-radius:7px; box-sizing:border-box; ';
+if (s === 'fault') { return base + 'background:#a11616'; }
+if (s === 'soon') { return base + 'background:#ffffff; border:3px solid #14212b'; }
+return base + 'background:#ffffff; border:1.5px solid #5b6b7a';
+}
+var p = P[sel] || P.boiler;
+var cur = { label: p[0], room: p[1] + (p[2].length ? ' · ' + p[2].map(function (k) { return LN[k]; }).join(', ') : ''), state: SL[p[3]], pill: pill(p[3]), isSystem: p[4] === 'system', isAppliance: p[4] === 'appliance', hasEvent: false, hasDeadline: false, eventTitle: '', eventDate: '', event: '', next: '', primary: '', secondary: '' };
+if (sel === 'boiler') {
+cur.hasEvent = true; cur.eventTitle = 'מה קרה'; cur.eventDate = '16.11.2026'; cur.event = 'השוכר דיווח: אין מים חמים.'; cur.hasDeadline = true;
+cur.next = 'לשלוח בעל מקצוע.'; cur.primary = 'לשלוח בעל מקצוע'; cur.secondary = 'תוקן, לצרף חשבונית';
+} else if (sel === 'acLiving') {
+cur.hasEvent = true; cur.eventTitle = 'תזכורת שקבעתם'; cur.eventDate = '1.12.2026'; cur.event = 'ניקוי מסננים.';
+cur.next = 'להזמין ניקוי, או לדחות.'; cur.primary = 'להזמין ניקוי מסננים'; cur.secondary = 'לדחות בחודש';
+} else {
+cur.next = 'אין מה לעשות כרגע. אם משהו התקלקל, מתחילים בצילום.'; cur.primary = 'לדווח על תקלה: לצלם'; cur.secondary = 'לצלם את שלט הדגם';
+}
+var rows = ORDER.map(function (id) {
+var q = P[id], on = id === sel;
+return { label: q[0], state: q[3] === 'ok' ? '' : SL[q[3]], dot: dot(q[3]), st: on ? 'background:#1f4b5c; color:#ffffff' : 'background:#ffffff; color:#14212b', pick: function () { pick(id); } };
+});
+function chip(k) {
+var on = layer === k;
+return { on: on ? 'true' : 'false', st: on ? 'background-color:#1f4b5c; color:#ffffff; border:1.5px solid #1f4b5c' : 'background-color:#ffffff; color:#14212b; border:1.5px solid #5b6b7a', pick: function () { self.setState({ layer: k }); } };
+}
+return { sel: sel, layer: layer, cur: cur, rows: rows, pickPart: pick, cAll: chip('all'), cW: chip('w'), cE: chip('e'), cG: chip('g'), cAc: chip('ac') };
+}
+}
+</script>
+</body>
+</html>
