@@ -1,6 +1,16 @@
 # Owner live alerts and live screen: plan (HAD-791 follow-up, Ben's voice note 20.11.2026)
 
-Status: PLAN ONLY. Nothing is built or released until the coordinator has read this.
+Status: PLAN ACCEPTED by the coordinator 20.11.2026 with three changes (below). Build only after the coordinator has seen the
+Claude Design board and shown it to Ben. Board: https://claude.ai/artifact/7fdnJgxn8scFBeM63vyD9e
+
+Coordinator's changes (they override the sections below):
+1. Until phone push or the Telegram bot is on, MAIL is the fallback for every visit that reaches an instant event: one mail per
+   visit on its first instant event (not only money steps), under the burst rule. Once push or Telegram works, mail goes back to
+   money steps only.
+2. The first alert of a visit names the page by its human name and where the visitor came from, in Hebrew, readable in the
+   phone's notification line without opening anything ("רנבו תל אביב · הגיע מגוגל").
+3. The board shows the lock-screen notification, the live screen with visits in different states, and the one-time setup steps
+   (Allow, Add to Home Screen, the Telegram bot) as pictures. Rentals names accepted; the privacy sentence stays non-blocking.
 
 ## 1. What the owner gets today (read from the code, 20.11.2026)
 - Instant mail with a lead card for every form lead, concierge question and price-window sign-up (owner-mail.php, HAD-687).
