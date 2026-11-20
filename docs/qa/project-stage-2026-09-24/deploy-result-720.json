@@ -1,0 +1,33 @@
+{
+  "released": "1.72.720",
+  "from": "1.72.719",
+  "live_before": {
+    "assets/rentals/i18n/he.json": "8e3ea1b306821658186a2f96a4086d8b",
+    "assets/rentals/i18n/en.json": "d4b3b91f30e9ceda69ed9141d41ef694",
+    "assets/rentals/i18n/lease.json": "0ac2e44c1a6a8c85954b32dd2d19f888",
+    "assets/rentals/help/he.html": "55bac93e47a45001d2b037e1edc85b5b",
+    "assets/rentals/help/en.html": "510b0e18e71628769d0df02e40091523",
+    "assets/rentals/guide/he.html": "2a50a852ea1da807cc3f062c5b78d6ea",
+    "assets/rentals/guide/en.html": "d99905e85725f450070559e3fc26b1cc",
+    "assets/instruments/tools/rentfair.js": "ee5ac23d0416f905d9d99dc89f34db76",
+    "nadlan-config.php": "b969e15f6e5161f61b5a36937f026f10",
+    "inc/rentals-manager.php": "d474b7278e25814b4de6f584de33bd84"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 02:01:39",
+  "files": {
+    "assets/rentals/i18n/he.json": "fc8477e0ee6b72ba760aaaee5919130f",
+    "assets/rentals/i18n/en.json": "77f6dc2081a7455c0883c70b5293d923",
+    "assets/rentals/i18n/lease.json": "4f300a4635b8e452d01450b3bd2529e1",
+    "assets/rentals/help/he.html": "c0064e2d76a6f0c0517f1882d2b69961",
+    "assets/rentals/help/en.html": "c2f7f9c1371dd824ff99867817032c3c",
+    "assets/rentals/guide/he.html": "7a9b044be08e6d08cb6cbe0a9ec2ed92",
+    "assets/rentals/guide/en.html": "8b1ca99b7e03c3af51dad56896674720",
+    "assets/instruments/tools/rentfair.js": "27d5a7429615a506cb09da7725c5324b",
+    "nadlan-config.php": "11ca80a2fcda565bc4c542fd2b174e69",
+    "inc/rentals-manager.php": "13a0b73dbe14fbf3f4a1e2bb07975796"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.720, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

@@ -132,7 +132,7 @@ if ( ! function_exists( 'nadlan_rm_law' ) ) {
 			'security_return_days' => 60,
 			'tax_year'             => 2026,
 			'tax_ceiling'          => 5654,
-			'tax_deadline'         => '2027-01-30',
+			'tax_deadline'         => '', /* no fixed date: the two Tax Authority pages disagree; JS prints no date */
 			'renter_lessor_cap'    => 90000,
 		);
 	}
@@ -220,12 +220,12 @@ if ( ! function_exists( 'nadlan_rm_strings' ) ) {
 				'cpi_res' => 'Adjusted rent', 'cpi_note' => 'Enter index values from the CBS. The formula: rent x (current / base). Calculation aid only - the lease wording governs.',
 				'tax_title' => 'Rent tax estimate ({year})', 'tax_total' => 'Total monthly residential rent (ALL your apartments, including ones not managed here)',
 				'tax_exempt' => 'Exempt', 'tax_taxable' => 'Taxable (ordinary route)', 'tax_ten' => '10% route (annual)', 'tax_paid_rent' => 'Rent you pay for your own home (annual, if you rent)',
-				'tax_deadline' => '10% route payment deadline for {year}: {date}', 'tax_note' => 'Estimates only, based on the {year} ceiling of ILS {ceiling}/month. Verify with the Tax Authority or an accountant before acting.',
+				'tax_deadline' => '10% route: reported and paid after the end of the tax year. Check the exact last day on the Tax Authority site.', 'tax_note' => 'Estimates only, using an exemption ceiling of ILS {ceiling}/month (the Tax Authority guide gives this amount for 2025). Check the current ceiling on the Tax Authority site. Verify with the Tax Authority or an accountant before acting.',
 				'notice_l' => 'If the landlord has an option to extend: notice no later than {d} days before the end. Without an option: a reasonable time before the end, whether you want to extend and on what terms', 'notice_t' => 'If the tenant has an option to extend: notice no later than {d} days before the end',
 				'act_late' => '{label}, {city}: rent is overdue', 'act_due' => '{label}: this month not marked yet', 'act_end' => '{label}: lease ends in {d} days',
 				'act_ended' => '{label}: lease ENDED - renew or close', 'act_opt' => '{label}: option window closes in {d} days',
 				'act_repair' => '{label}: urgent repair - statutory limit {d} days', 'act_repair_std' => '{label}: open repair nearing 30 days since it was logged (by law: 30 days from the tenant demand, for a defect that is not minor)',
-				'act_docs' => '{label}: document file incomplete', 'act_tax' => '10% route: report and pay by {date}', 'act_sec' => '{label}: deposit above the legal cap (if the cap applies to this lease)',
+				'act_docs' => '{label}: document file incomplete', 'act_tax' => '10% route: after the year ends, report and pay. Check the last day on the Tax Authority site', 'act_sec' => '{label}: deposit above the legal cap (if the cap applies to this lease)',
 				'export_btn' => 'Export evidence file', 'export_doc' => 'Rental evidence file', 'export_gen' => 'Generated', 'export_note' => 'Auto-generated summary of the data recorded in the NadLan rentals manager. Not a legal document.',
 			);
 		}
@@ -252,13 +252,13 @@ if ( ! function_exists( 'nadlan_rm_strings' ) ) {
 			'cpi_res' => 'שכר הדירה המעודכן', 'cpi_note' => 'מזינים ערכי מדד מהלמ"ס. הנוסחה: שכ"ד x (נוכחי / בסיס). עזר חישוב בלבד - נוסח החוזה קובע.',
 			'tax_title' => 'אומדן מס על שכר דירה ({year})', 'tax_total' => 'סך שכר הדירה החודשי למגורים (כל הדירות שלכם, כולל כאלה שלא מנוהלות כאן)',
 			'tax_exempt' => 'פטור', 'tax_taxable' => 'חייב (מסלול רגיל)', 'tax_ten' => 'מסלול 10% (שנתי)', 'tax_paid_rent' => 'שכר דירה שאתם משלמים על ביתכם (שנתי, אם אתם שוכרים)',
-			'tax_deadline' => 'מועד תשלום מסלול 10% עבור {year}: {date}', 'tax_note' => 'אומדנים בלבד, לפי תקרת {year} של {ceiling} ₪ לחודש. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',
+			'tax_deadline' => 'מסלול 10%: מדווחים ומשלמים אחרי סוף שנת המס. את היום האחרון המדויק בודקים באתר רשות המסים.', 'tax_note' => 'אומדנים בלבד, לפי תקרת פטור של {ceiling} ₪ לחודש (לפי מדריך רשות המסים, זו התקרה לשנת 2025). את התקרה העדכנית בודקים באתר רשות המסים. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',
 			'notice_l' => 'אם יש למשכיר אופציה להאריך: הודעה לא יאוחר מ-{d} ימים לפני הסיום. בלי אופציה: הודעה זמן סביר לפני הסיום, אם רוצים להאריך ובאילו תנאים', 'notice_t' => 'אם יש לשוכר אופציה להאריך: הודעה לא יאוחר מ-{d} ימים לפני הסיום',
 			'act_late' => '{label}, {city}: שכר הדירה בפיגור', 'act_due' => '{label}: החודש טרם סומן',
 			'act_end' => '{label}: החוזה מסתיים בעוד {d} ימים', 'act_ended' => '{label}: החוזה הסתיים - חידוש או סגירה',
 			'act_opt' => '{label}: חלון האופציה נסגר בעוד {d} ימים',
 			'act_repair' => '{label}: תיקון דחוף - המועד החוקי {d} ימים', 'act_repair_std' => '{label}: תקלה פתוחה קרובה ל-30 יום מהרישום (בחוק: 30 יום מדרישת השוכר, לליקוי שאינו קל ערך)',
-			'act_docs' => '{label}: תיק המסמכים חסר', 'act_tax' => 'מסלול 10%: דיווח ותשלום עד {date}', 'act_sec' => '{label}: פיקדון מעל התקרה בחוק (אם התקרה חלה על החוזה)',
+			'act_docs' => '{label}: תיק המסמכים חסר', 'act_tax' => 'מסלול 10%: אחרי סוף השנה מדווחים ומשלמים. את היום האחרון בודקים באתר רשות המסים', 'act_sec' => '{label}: פיקדון מעל התקרה בחוק (אם התקרה חלה על החוזה)',
 			'export_btn' => 'ייצוא תיק ראיות', 'export_doc' => 'תיק ראיות שכירות', 'export_gen' => 'הופק בתאריך', 'export_note' => 'סיכום אוטומטי של הנתונים שתועדו במערכת ניהול ההשכרות של נדלן. אינו מסמך משפטי.',
 		);
 	}
@@ -620,14 +620,14 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 	$faq = $en ? array(
 		array( 'כמה זה עולה?', 'Rental management is free for landlords. No fees, no payment processing - rent keeps flowing directly to you.' ),
 		array( 'Who sees my data?', 'Only you. Properties are private, never listed in search, and access is protected by your account.' ),
-		array( 'What about CPI linkage and tax?', 'Mark a CPI-linked lease and get an adjustment calculator; the system also reminds you of the annual reporting date (January 30 on the 10 percent route). Binding numbers are always verified with the Israel Tax Authority.' ),
+		array( 'What about CPI linkage and tax?', 'Mark a CPI-linked lease and get an adjustment calculator; the system also reminds you, after the end of the tax year, to report and pay on the 10 percent route; the exact last day is checked on the Tax Authority site. Binding numbers are always verified with the Israel Tax Authority.' ),
 	) : null;
 	if ( $faq ) { $faq[0][0] = 'How much does it cost?'; }
 	echo wp_json_encode( $faq ? array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map( function ( $qa ) { return array( '@type' => 'Question', 'name' => $qa[0], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $qa[1] ) ); }, $faq ) ) : array(
 		'@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array(
 			array( '@type' => 'Question', 'name' => 'כמה זה עולה?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'ניהול ההשכרות חינמי לבעלי דירות. אין עמלות ואין סליקה - שכר הדירה ממשיך לעבור ישירות אליכם.' ) ),
 			array( '@type' => 'Question', 'name' => 'מי רואה את הנתונים שלי?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'רק אתם. הנכסים פרטיים, לא מופיעים בחיפוש, והגישה מוגנת בחשבון שלכם.' ) ),
-			array( '@type' => 'Question', 'name' => 'מה עם הצמדה למדד ומס?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'מסמנים חוזה צמוד מדד ומקבלים תזכורת עדכון; המערכת מזכירה גם את מועד הדיווח השנתי (30 בינואר במסלול 10 אחוזים). המספרים המחייבים נבדקים תמיד מול רשות המסים.' ) ),
+			array( '@type' => 'Question', 'name' => 'מה עם הצמדה למדד ומס?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'מסמנים חוזה צמוד מדד ומקבלים תזכורת עדכון; המערכת מזכירה גם, אחרי סוף שנת המס, לדווח ולשלם במסלול 10 אחוזים; את היום האחרון המדויק בודקים באתר רשות המסים. המספרים המחייבים נבדקים תמיד מול רשות המסים.' ) ),
 		) ), JSON_UNESCAPED_UNICODE ); ?></script>
 	<?php else : ?>
 	<header style="margin-bottom:6px">

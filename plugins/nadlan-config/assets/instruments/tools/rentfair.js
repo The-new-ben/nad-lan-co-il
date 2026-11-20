@@ -189,7 +189,7 @@
       if (v.role === 'landlord') {
         tx = tax(d.tax, v.rent + (v.other || 0), v.age === 'o60', v.paid || 0);
         lines.push({ label: 'מסלול פטור, ' + d.tax.year, value: tx.exempt.full ? 'פטור מלא' : tx.exempt.none ? 'אין פטור (מעל ' + F.ils(d.tax.double) + ')' : F.ils(tx.exempt.taxable) + ' בחודש חייבים, עד ' + F.ils(tx.exempt.year) + ' בשנה' });
-        lines.push({ label: 'מסלול 10%' + (tx.ten.off ? ', אחרי קיזוז ' + F.ils(tx.ten.off) : ''), value: F.ils(tx.ten.year) + ' בשנה, עד ' + d.tax.tenDue });
+        lines.push({ label: 'מסלול 10%' + (tx.ten.off ? ', אחרי קיזוז ' + F.ils(tx.ten.off) : ''), value: F.ils(tx.ten.year) + ' בשנה. מדווחים ומשלמים אחרי סוף שנת המס, ואת היום האחרון בודקים באתר רשות המסים' });
         lines.push({ label: 'מסלול רגיל, ' + F.num(100 * tx.reg.rate) + '% לפני הוצאות ופחת', value: 'עד ' + F.ils(tx.reg.year) + ' בשנה' });
       }
       var scen0 = [];

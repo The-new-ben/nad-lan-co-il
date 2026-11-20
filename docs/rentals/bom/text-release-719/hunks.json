@@ -1,0 +1,414 @@
+{
+ "plugins/nadlan-config/assets/rentals/i18n/he.json": [
+  [
+   "\"att_sec\": \"{where}: הביטחונות מעל התקרה בחוק\",",
+   "\"att_sec\": \"{where}: הביטחונות מעל התקרה בחוק (אם התקרה חלה על החוזה)\","
+  ],
+  [
+   "\"att_tax\": \"מסלול 10%: דיווח ותשלום עד {date}\",",
+   "\"att_tax\": \"מסלול 10%: אחרי סוף שנת המס מדווחים ומשלמים. את היום האחרון בודקים באתר רשות המסים\","
+  ],
+  [
+   "\"tax_note\": \"אומדן בלבד. תקרת הפטור לחודש: {ceiling} (2025, וזהה לפי רואי חשבון גם ב-2026). לפני דיווח בודקים מול רשות המסים או רואה חשבון.\",",
+   "\"tax_note\": \"אומדן בלבד. תקרת הפטור לחודש: {ceiling} (לפי מדריך רשות המסים, זו התקרה לשנת 2025). את התקרה העדכנית בודקים באתר רשות המסים. לפני דיווח בודקים מול רשות המסים או רואה חשבון.\","
+  ],
+  [
+   "\"repairs_sub\": \"כל התקלות לפי שלב. כל תקלה עם המועד שהחוק נותן לתיקון.\",",
+   "\"repairs_sub\": \"כל התקלות לפי שלב. כל תקלה עם המועד האחרון שהחוק מאפשר לתיקון, נספר מהיום שדווחה.\","
+  ],
+  [
+   "\"repairs_law\": \"לפי חוק השכירות והשאילה (סעיף 25ח(ב)): תקלה שמונעת מגורים סבירים מתקנים תוך 3 ימים, ותקלה אחרת תוך 30 יום.\",",
+   "\"repairs_law\": \"לפי חוק השכירות והשאילה (סעיף 25ח(ב)): מהיום שהמשכיר קיבל דרישה מהשוכר, פגם שאינו מאפשר מגורים סבירים מתקנים בתוך זמן סביר ולא יאוחר מ-3 ימים, וליקוי אחר שאינו קל ערך בתוך זמן סביר ולא יאוחר מ-30 יום.\","
+  ],
+  [
+   "\"law_30\": \"תקלה רגילה: עד 30 יום לתיקון (סעיף 25ח(ב)).\",",
+   "\"law_30\": \"ליקוי אחר שאינו קל ערך: עד 30 יום לתיקון מדרישת השוכר (סעיף 25ח(ב)).\","
+  ],
+  [
+   "\"p_repair_law\": \"לפי החוק: תקלה שמונעת מגורים סבירים מתקנים תוך 3 ימים, ותקלה אחרת תוך 30 יום.\",",
+   "\"p_repair_law\": \"לפי החוק, מהיום שבעל הדירה קיבל דרישה: תקלה שמונעת מגורים סבירים מתקנים תוך 3 ימים לכל היותר, וליקוי אחר שאינו קל ערך תוך 30 יום לכל היותר.\","
+  ],
+  [
+   "\"p_repair_lead\": \"כתבו מה קרה וצרפו תמונה. בעל הדירה מקבל את הדיווח עם המועד שהחוק נותן לתיקון.\",",
+   "\"p_repair_lead\": \"כתבו מה קרה וצרפו תמונה. בעל הדירה מקבל את הדיווח עם המועדים שהחוק קובע לתיקון, נספרים מהדיווח שלכם.\","
+  ],
+  [
+   "\"sec_over\": \"סך הביטחונות עובר את התקרה בחוק (סעיף 25י(ב)). כדאי לבדוק עם עורך דין.\",",
+   "\"sec_over\": \"סכום הביטחונות שהזנתם עובר את התקרה בחוק לערובות שכרוכות בהוצאה כספית לשוכר (סעיף 25י(ב)), אם התקרה חלה על החוזה. החוק מזכיר בשמו ערבות בנקאית, ערבות מנותן ערבות מורשה ומזומן. הוא אינו מזכיר צ'ק ביטחון או שטר חוב, ולכן כדאי לבדוק עם עורך דין.\","
+  ],
+  [
+   "\"sec_cap_note\": \"התקרה: הנמוך מבין 3 חודשי שכירות לבין שליש משכר הדירה לכל התקופה (סעיף 25י(ב)).\",",
+   "\"sec_cap_note\": \"התקרה: הנמוך מבין 3 חודשי שכירות לבין שליש משכר הדירה לכל התקופה (סעיף 25י(ב)). היא חלה על ערובות שכרוכות בהוצאה כספית לשוכר (ערבות בנקאית, ערבות של חברת ביטוח או גוף אשראי מורשה, מזומן). היא לא חלה, בין השאר, על שכר דירה מעל 20,000 ₪ לחודש (הסכום מתעדכן ב-1 בינואר) ועל חוזה עד 3 חודשים בלי אופציה להאריך (סעיף 25טו).\","
+  ],
+  [
+   "\"cap_line\": \"התקרה בחוק לחוזה הזה: {cap}\",",
+   "\"cap_line\": \"התקרה בחוק, אם היא חלה על החוזה הזה: {cap}\","
+  ],
+  [
+   "\"cap_over\": \"הביטחונות עוברים את התקרה בחוק ({cap})\",",
+   "\"cap_over\": \"הביטחונות שהזנתם עוברים את התקרה בחוק ({cap}), אם היא חלה על החוזה\","
+  ],
+  [
+   "\"dep_receive_lead\": \"התקרה בחוק לחוזה הזה: {cap}. כרגע מוחזק {held}.\",",
+   "\"dep_receive_lead\": \"התקרה בחוק, אם היא חלה על החוזה הזה: {cap}. כרגע מוחזק {held}.\","
+  ],
+  [
+   "\"dep_over_cap\": \"לפי חוק השכירות ההוגנת כל הביטחונות יחד הם עד {cap}.\",",
+   "\"dep_over_cap\": \"אם התקרה שבחוק השכירות ההוגנת חלה על החוזה הזה, כל הערובות יחד הן עד {cap}.\","
+  ],
+  [
+   "\"lease_ended\": \"החוזה הסתיים. הספירה ל-60 יום להחזרת הביטחונות התחילה.\",",
+   "\"lease_ended\": \"החוזה הסתיים. הערובות מוחזרות בתוך 60 יום מהשבת הדירה, או עד שנפרעו חובות השוכר, לפי המאוחר.\","
+  ],
+  [
+   "\"deadlines_law\": \"לפי חוק השכירות והשאילה: הודעה של בעל הדירה 90 יום לפני הסוף, של השוכר 60 יום (סעיף 25יב). את הביטחונות מחזירים תוך 60 יום (סעיף 25י(ה)).\",",
+   "\"deadlines_law\": \"לפי חוק השכירות והשאילה: אם למשכיר יש אופציה להאריך, הוא מודיע לשוכר אם הוא מקיים אותה לא יאוחר מ-90 יום לפני הסוף. אם לשוכר יש אופציה, הוא מודיע למשכיר לא יאוחר מ-60 יום לפני הסוף (סעיף 25יב). בלי אופציה, המשכיר מודיע זמן סביר לפני הסוף אם ברצונו להאריך ובאילו תנאים. את הערובות מחזירים בתוך 60 יום מהחזרת הדירה או עד שנפרעו חובות השוכר, לפי המאוחר (סעיף 25י(ה)).\","
+  ],
+  [
+   "\"dl_landlord_notice\": \"המועד האחרון להודעה של בעל הדירה\",",
+   "\"dl_landlord_notice\": \"המועד האחרון להודעה של בעל הדירה, אם יש לו אופציה להאריך\","
+  ],
+  [
+   "\"dl_tenant_notice\": \"המועד האחרון להודעה של השוכר\",",
+   "\"dl_tenant_notice\": \"המועד האחרון להודעה של השוכר, אם יש לו אופציה להאריך\","
+  ],
+  [
+   "\"att_deposit_due\": \"{where}: להחזיר פיקדון של {amount} עד {when}\",",
+   "\"att_deposit_due\": \"{where}: להחזיר פיקדון של {amount} עד {when}, או עד שחובות השוכר נפרעו אם זה מאוחר יותר\","
+  ],
+  [
+   "\"att_deposit_over\": \"{where}: עבר המועד בחוק להחזרת הפיקדון ({amount})\",",
+   "\"att_deposit_over\": \"{where}: עברו 60 יום מהשבת הדירה. את הפיקדון ({amount}) מחזירים עד המאוחר מבין היום הזה ליום שבו נפרעו חובות השוכר\","
+  ],
+  [
+   "\"end_lead\": \"שכר הדירה נעצר ביום שהדירה חוזרת. החודש האחרון מחושב לפי ימים, והספירה של 60 יום להחזרת הפיקדון מתחילה.\",",
+   "\"end_lead\": \"שכר הדירה נעצר ביום שהדירה חוזרת. החודש האחרון מחושב לפי ימים, והספירה להחזרת הפיקדון מתחילה: 60 יום מהשבת הדירה, או עד שנפרעו חובות השוכר אם זה מאוחר יותר.\","
+  ],
+  [
+   "\"deposit_law\": \"לפי חוק השכירות ההוגנת: כל הביטחונות יחד עד הנמוך מבין 3 חודשי שכירות לשליש מכל התקופה, ומחזירים תוך 60 יום מהחזרת הדירה. אפשר לקזז רק חוב שכירות, נזק או חשבונות.\",",
+   "\"deposit_law\": \"לפי חוק השכירות ההוגנת: ערובות שכרוכות בהוצאה כספית לשוכר מוגבלות יחד לנמוך מבין 3 חודשי שכירות לשליש מכל התקופה. התקרה לא חלה על כל חוזה (למשל לא על שכר דירה מעל 20,000 ₪ לחודש, והסכום מתעדכן ב-1 בינואר). את הערובה מחזירים בתוך 60 יום מהחזרת הדירה או עד שנפרעו חובות השוכר, לפי המאוחר. המשכיר רשאי לממש ערובה רק במקרים שהחוק מפרט: שכר דירה שלא שולם, ליקוי שהשוכר אחראי לתקנו, תשלומים שוטפים שלא שולמו או אי פינוי הדירה, ורק אחרי הודעה מראש בזמן סביר.\","
+  ],
+  [
+   "\"screen_tips_body\": \"1. בקשו מהמתעניין להעלות תלושי שכר ודף חשבון דרך קישור הבקשה.\\n2. כל אדם זכאי לדוח נתוני אשראי חינם פעם בשנה מבנק ישראל, ויכול לשתף אותו מרצונו.\\n3. בדיקת חשבון מוגבל באתר בנק ישראל היא ציבורית וחינמית.\\n4. לבדיקת סיכון אמיתית: ערבות שכירות מחברה מורשית.\\nאסור למשוך דוח אשראי על אדם אחר (חוק נתוני אשראי), ואסור לבקש רישום פלילי.\",",
+   "\"screen_tips_body\": \"1. בקשו מהמתעניין להעלות תלושי שכר ודף חשבון דרך קישור הבקשה.\\n2. לכל אדם יש זכות לקבל מבנק ישראל דוח ריכוז נתונים על עצמו, ללא תשלום, פעם בשנה (סעיף 38(ד) לחוק נתוני אשראי).\\n3. לפי החוק, לשכת אשראי מוסרת דוח אשראי על אדם לנותן אשראי, לצורך עסקת אשראי עם אותו אדם ובהסכמתו המפורשת (סעיפים 26 ו-27 לחוק נתוני אשראי). מי שאינו נותן אשראי יכול לקבל דוח כזה רק אם השר קבע זאת (סעיף 32). בספק, פנו לעורך דין לפני שאתם מבקשים דוח אשראי על מתעניין.\\n4. בנק ישראל מפרסם באתר שלו את רשימת החשבונות המוגבלים ואת מועד סיום ההגבלה. אפשר לעיין בה שם.\\n5. ערבות מבנק או מנותן ערבות מורשה אחר היא אחת הערובות שהחוק מזכיר (סעיף 25י). ערובות שכרוכות בהוצאה כספית לשוכר מוגבלות יחד לתקרה שבחוק.\\n6. אין לדרוש מידע פלילי על אדם, במישרין או בעקיפין, שלא בהתאם לחוק, גם בשאלון או בהצהרה. הסכמת האדם בלבד אינה הופכת את מי שדרש לזכאי לקבלו (סעיף 3(ב) לחוק המידע הפלילי ותקנת השבים).\\nבספק, פנו לעורך דין.\","
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/i18n/en.json": [
+  [
+   "\"att_sec\": \"{where}: securities exceed the legal cap\",",
+   "\"att_sec\": \"{where}: securities exceed the legal cap (if the cap applies to this lease)\","
+  ],
+  [
+   "\"att_tax\": \"10% route: report and pay by {date}\",",
+   "\"att_tax\": \"10% route: report and pay after the end of the tax year. Check the last day on the Tax Authority site\","
+  ],
+  [
+   "\"tax_note\": \"An estimate only. The monthly exemption ceiling: {ceiling} (2025; accountants quote the same for 2026). Check with the Israel Tax Authority or an accountant before reporting.\",",
+   "\"tax_note\": \"An estimate only. The monthly exemption ceiling: {ceiling} (the Tax Authority guide gives this amount for 2025). Check the current ceiling on the Tax Authority site. Check with the Israel Tax Authority or an accountant before reporting.\","
+  ],
+  [
+   "\"repairs_sub\": \"Every repair by stage, each with the deadline the law gives.\",",
+   "\"repairs_sub\": \"Every repair by stage, each with the latest date the law allows, counted from the day it was reported.\","
+  ],
+  [
+   "\"repairs_law\": \"Under Israel's Rental and Borrowing Law (⁧סעיף 25ח(ב)⁩): a defect that prevents reasonable living is fixed within 3 days, any other within 30 days.\",",
+   "\"repairs_law\": \"Under Israel's Rental and Borrowing Law (⁧סעיף 25ח(ב)⁩): from the day the landlord receives the tenant's demand, a defect that prevents reasonable living is fixed within a reasonable time and no later than 3 days, and any other defect that is not minor within a reasonable time and no later than 30 days.\","
+  ],
+  [
+   "\"law_30\": \"A standard defect: up to 30 days to fix (⁧סעיף 25ח(ב)⁩).\",",
+   "\"law_30\": \"Any other defect that is not minor: up to 30 days to fix, from the tenant's demand (⁧סעיף 25ח(ב)⁩).\","
+  ],
+  [
+   "\"p_repair_law\": \"By law: a defect that prevents reasonable living is fixed within 3 days, any other within 30 days.\",",
+   "\"p_repair_law\": \"By law, from the day the landlord receives your demand: a defect that prevents reasonable living is fixed within 3 days at most, and any other defect that is not minor within 30 days at most.\","
+  ],
+  [
+   "\"p_repair_lead\": \"Write what happened and add a photo. Your landlord gets it with the deadline the law gives for the repair.\",",
+   "\"p_repair_lead\": \"Write what happened and add a photo. Your landlord gets it with the dates the law sets for a repair, counted from your report.\","
+  ],
+  [
+   "\"sec_over\": \"Total securities exceed the legal cap (⁧סעיף 25י(ב)⁩). Worth checking with a lawyer.\",",
+   "\"sec_over\": \"The securities amount you entered is above the cap in the law for securities that cost the tenant money (⁧סעיף 25י(ב)⁩), if the cap applies to this lease. The law names a bank guarantee, a guarantee from another licensed guarantor and cash. It does not name a security cheque or a promissory note, so check with a lawyer.\","
+  ],
+  [
+   "\"sec_cap_note\": \"The cap: the lower of 3 months' rent or one third of the rent for the whole term (⁧סעיף 25י(ב)⁩).\",",
+   "\"sec_cap_note\": \"The cap: the lower of 3 months' rent or one third of the rent for the whole term (⁧סעיף 25י(ב)⁩). It applies to securities that cost the tenant money (a bank guarantee, a guarantee from an insurer or licensed credit provider, cash). It does not apply, among others, to rent above ILS 20,000 a month (the amount is updated each 1 January) or to a lease of up to 3 months with no option to extend (⁧סעיף 25טו⁩).\","
+  ],
+  [
+   "\"cap_line\": \"The legal cap for this lease: {cap}\",",
+   "\"cap_line\": \"The cap in the law, if it applies to this lease: {cap}\","
+  ],
+  [
+   "\"cap_over\": \"Securities exceed the legal cap ({cap})\",",
+   "\"cap_over\": \"The securities you entered exceed the cap in the law ({cap}), if it applies to this lease\","
+  ],
+  [
+   "\"dep_receive_lead\": \"The legal cap for this lease: {cap}. Held now: {held}.\",",
+   "\"dep_receive_lead\": \"The cap in the law, if it applies to this lease: {cap}. Held now: {held}.\","
+  ],
+  [
+   "\"dep_over_cap\": \"Under the Fair Rental Law all securities together are capped at {cap}.\",",
+   "\"dep_over_cap\": \"If the Fair Rental Law cap applies to this lease, securities together are capped at {cap}.\","
+  ],
+  [
+   "\"lease_ended\": \"The lease has ended. The 60-day count to return the securities has started.\",",
+   "\"lease_ended\": \"The lease has ended. The securities are returned within 60 days of the apartment's return, or by the day the tenant's debts are paid, whichever is later.\","
+  ],
+  [
+   "\"deadlines_law\": \"Under the Rental and Borrowing Law: the landlord gives notice 90 days before the end, the tenant 60 days (⁧סעיף 25יב⁩). Securities are returned within 60 days (⁧סעיף 25י(ה)⁩).\",",
+   "\"deadlines_law\": \"Under the Rental and Borrowing Law: if the landlord has an option to extend, he tells the tenant whether he is using it no later than 90 days before the end. If the tenant has an option, he tells the landlord no later than 60 days before the end (⁧סעיף 25יב⁩). Without an option, the landlord tells the tenant a reasonable time before the end whether he wants to extend and on what terms. Securities are returned within 60 days of the apartment being returned, or by the day the tenant's debts are paid, whichever is later (⁧סעיף 25י(ה)⁩).\","
+  ],
+  [
+   "\"dl_landlord_notice\": \"Last day for the landlord's notice\",",
+   "\"dl_landlord_notice\": \"Last day for the landlord's notice, if the landlord has an option to extend\","
+  ],
+  [
+   "\"dl_tenant_notice\": \"Last day for the tenant's notice\",",
+   "\"dl_tenant_notice\": \"Last day for the tenant's notice, if the tenant has an option to extend\","
+  ],
+  [
+   "\"att_deposit_due\": \"{where}: return a deposit of {amount} by {when}\",",
+   "\"att_deposit_due\": \"{where}: return a deposit of {amount} by {when}, or by the day the tenant's debts are paid if that is later\","
+  ],
+  [
+   "\"att_deposit_over\": \"{where}: the legal deadline to return the deposit has passed ({amount})\",",
+   "\"att_deposit_over\": \"{where}: 60 days have passed since the apartment was returned. The deposit ({amount}) is returned by the later of that day and the day the tenant's debts were paid\","
+  ],
+  [
+   "\"end_lead\": \"Rent stops on the day the apartment is returned. The last month is counted by days, and the 60-day count to return the deposit starts.\",",
+   "\"end_lead\": \"Rent stops on the day the apartment is returned. The last month is counted by days, and the count to return the deposit starts: 60 days from the return, or until the tenant's debts are paid if that is later.\","
+  ],
+  [
+   "\"deposit_law\": \"Fair Rental Law: all securities together are at most the lower of 3 months' rent or a third of the whole term, returned within 60 days of the apartment being returned. Only unpaid rent, damage or bills may be deducted.\",",
+   "\"deposit_law\": \"Fair Rental Law: securities that cost the tenant money are capped together at the lower of 3 months' rent or a third of the whole term. The cap does not apply to every lease (for example, not to rent above ILS 20,000 a month; the amount is updated each 1 January). The security is returned within 60 days of the apartment's return, or by the day the tenant's debts are paid, whichever is later. The landlord may realise a security only in the cases the law lists: unpaid rent, defects the tenant must fix, unpaid current payments or failure to vacate, and only after reasonable advance notice.\","
+  ],
+  [
+   "\"screen_tips_body\": \"1. Ask the applicant to upload payslips and a bank statement through the application link.\\n2. Everyone may get a free credit-data report from the Bank of Israel once a year, and can share it by choice.\\n3. Checking a restricted bank account on the Bank of Israel site is public and free.\\n4. For real risk assessment: a rent guarantee from a licensed company.\\nPulling a credit report on someone else is not allowed (Credit Data Law), and so is asking for a criminal record.\",",
+   "\"screen_tips_body\": \"1. Ask the applicant to upload payslips and a bank statement through the application link.\\n2. Every person has the right to get a data summary report about themselves from the Bank of Israel, free of charge, once a year (Credit Data Law, section 38(d)).\\n3. Under the law, a credit bureau passes a credit report on a person to a credit provider, for a credit deal with that person and with their explicit consent (Credit Data Law, sections 26 and 27). Someone who is not a credit provider may receive such a report only if the Minister has so determined (section 32). When in doubt, ask a lawyer before you ask for a credit report on an applicant.\\n4. The Bank of Israel publishes on its website the list of restricted accounts and the date each restriction ends. You can look it up there.\\n5. A guarantee from a bank or another licensed guarantor is one of the securities the law mentions (section 25י). Securities that cost the tenant money are capped together at the limit in the law.\\n6. Do not demand criminal information about a person, directly or indirectly, other than as that law allows, including by questionnaire or declaration. The person's consent alone does not make the one who demanded it entitled to receive it (Criminal Information and Rehabilitation Law, section 3(b)).\\nWhen in doubt, ask a lawyer.\","
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/i18n/lease.json": [
+  [
+   "ולא פחות מ-60 יום לפני תום התקופה. המשכיר יודיע לשוכר 90 יום לפחות לפני תום התקופה אם אינו מתכוון להאריך, כמתחייב בחוק.",
+   "ולא פחות מ-60 יום לפני תום התקופה (סעיף 25יב(ג) לחוק). המשכיר יודיע לשוכר זמן סביר לפני תום התקופה אם ברצונו להאריך את השכירות ובאילו תנאים (סעיף 25יב(א) לחוק)."
+  ],
+  [
+   "and no less than 60 days before the term ends. The Landlord gives the Tenant at least 90 days' notice before the term ends if he does not intend to extend, as the law requires.",
+   "and no less than 60 days before the term ends (section 25יב(ג) of the law). The Landlord tells the Tenant, a reasonable time before the term ends, whether he wants to extend the lease and on what terms (section 25יב(א) of the law)."
+  ],
+  [
+   "הביטחונות יוחזרו לשוכר תוך 60 יום מיום החזרת הדירה, בניכוי סכומים שמומשו כדין (סעיף 25י(ה) לחוק).",
+   "הביטחונות יוחזרו לשוכר, בניכוי סכומים שמומשו כדין, בתוך 60 יום מיום החזרת הדירה או עד המועד שבו נפרעו חובות השוכר כאמור בסעיף 25י(ג) לחוק, לפי המאוחר (סעיף 25י(ה) לחוק)."
+  ],
+  [
+   "Securities are returned to the Tenant within 60 days of the Apartment's return, less amounts lawfully realised (section 25י(ה) of the law).",
+   "Securities are returned to the Tenant, less amounts lawfully realised, within 60 days of the Apartment's return or by the date the Tenant's debts under section 25י(ג) of the law are paid, whichever is later (section 25י(ה) of the law)."
+  ],
+  [
+   "אין בהסכם כדי לגרוע מהוראות הפרק על שכירות דירה למגורים בחוק, אלא לטובת השוכר (סעיף 25טו לחוק).",
+   "אין בהסכם כדי לגרוע מהוראות הפרק על שכירות דירה למגורים בחוק שאי אפשר להתנות עליהן אלא לטובת השוכר (סעיף 25יד(2) לחוק)."
+  ],
+  [
+   "Nothing here derogates from the law's chapter on residential leases, except in the Tenant's favour (section 25טו of the law).",
+   "Nothing here derogates from those provisions of the law's chapter on residential leases that may not be varied except in the Tenant's favour (section 25יד(2) of the law)."
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/help/he.html": [
+  [
+   "בזמן המילוי מופיעה שורה עם התקרה בחוק לחוזה הזה. אם צ'ק הביטחון והפיקדון יחד עוברים אותה, השורה הופכת לאזהרה, והחוזה יופיע גם ברשימת המשימות.</p>",
+   "בזמן המילוי מופיעה שורה עם התקרה בחוק לחוזה הזה, אם היא חלה עליו. אם הסכום של צ'ק הביטחון והפיקדון שהזנתם עובר אותה, השורה הופכת לאזהרה, והחוזה יופיע גם ברשימת המשימות. זו אזהרה בלבד: החוק מזכיר בשמו ערבות בנקאית, ערבות מנותן ערבות מורשה ומזומן, ואינו מזכיר צ'ק ביטחון או שטר חוב, ולכן כדאי לבדוק עם עורך דין.</p>"
+  ],
+  [
+   "כל הביטחונות יחד הם עד הנמוך מבין שני סכומים: שלושה חודשי שכירות, או שליש משכר הדירה לכל תקופת החוזה. בחוזה לשנה בשכר 6,000 ₪ התקרה היא 18,000 ₪. פיקדון במזומן מעל התקרה המערכת לא תאפשר לרשום.</p>",
+   "כל הערובות שכרוכות בהוצאה כספית לשוכר (ערבות בנקאית, ערבות של חברת ביטוח או גוף אשראי מורשה, מזומן) הן יחד עד הנמוך מבין שני סכומים: שלושה חודשי שכירות, או שליש משכר הדירה לכל תקופת החוזה. בחוזה לשנה בשכר 6,000 ₪ התקרה היא 18,000 ₪. פיקדון במזומן מעל התקרה המערכת לא תאפשר לרשום. התקרה לא חלה על כל חוזה: בין השאר היא לא חלה על שכר דירה מעל 20,000 ₪ לחודש (הסכום מתעדכן ב-1 בינואר) ועל חוזה עד 3 חודשים בלי אופציה להאריך (סעיף 25טו).</p>"
+  ],
+  [
+   "לפי חוק השכירות והשאילה (סעיף 25ח(ב)), תקלה שמונעת מגורים סבירים מתקנים תוך 3 ימים, ותקלה אחרת תוך 30 יום. לכל תקלה במערכת יש מועד לתיקון לפי הכלל הזה, מיום הפתיחה.</p>",
+   "לפי חוק השכירות והשאילה (סעיף 25ח(ב)), מהיום שהמשכיר קיבל דרישה מהשוכר, תקלה שמונעת מגורים סבירים מתקנים תוך 3 ימים לכל היותר, וליקוי אחר שאינו קל ערך תוך 30 יום לכל היותר. במערכת, המועד של כל תקלה נספר מהיום שהיא דווחה או נפתחה, כעזר בלבד.</p>"
+  ],
+  [
+   "<li>המועד האחרון להודעה של בעל הדירה: 90 יום לפני סוף החוזה.</li>",
+   "<li>המועד האחרון להודעה של בעל הדירה, אם יש לו אופציה להאריך: 90 יום לפני סוף החוזה.</li>"
+  ],
+  [
+   "<li>המועד האחרון להודעה של השוכר: 60 יום לפני הסוף.</li>",
+   "<li>המועד האחרון להודעה של השוכר, אם יש לו אופציה להאריך: 60 יום לפני הסוף.</li>"
+  ],
+  [
+   "<li>החזרת הביטחונות: 60 יום אחרי הסוף.</li>",
+   "<li>החזרת הביטחונות: המערכת סופרת 60 יום מסוף החוזה. החוק קובע 60 יום מהחזרת הדירה או עד שנפרעו חובות השוכר, לפי המאוחר.</li>"
+  ],
+  [
+   "לפי חוק השכירות והשאילה: הודעה של בעל הדירה 90 יום לפני הסוף, ושל השוכר 60 יום (סעיף 25יב). את הביטחונות מחזירים תוך 60 יום מהחזרת הדירה (סעיף 25י(ה)).</p>",
+   "לפי חוק השכירות והשאילה: אם למשכיר יש אופציה להאריך, הוא מודיע לשוכר אם הוא מקיים אותה לא יאוחר מ-90 יום לפני הסוף. אם לשוכר יש אופציה, הוא מודיע למשכיר לא יאוחר מ-60 יום לפני הסוף (סעיף 25יב). בלי אופציה, המשכיר מודיע זמן סביר לפני הסוף אם ברצונו להאריך ובאילו תנאים. את הערובות מחזירים בתוך 60 יום מהחזרת הדירה או עד שנפרעו חובות השוכר, לפי המאוחר (סעיף 25י(ה)).</p>"
+  ],
+  [
+   "ומאותו יום מתחילה הספירה של 60 יום להחזרת הפיקדון.</p>",
+   "ומאותו יום מתחילה הספירה להחזרת הפיקדון: 60 יום מהשבת הדירה, או עד שנפרעו חובות השוכר אם זה מאוחר יותר.</p>"
+  ],
+  [
+   "סכום שעובר את התקרה בחוק, יחד עם צ'ק הביטחון, לא יירשם.</li>",
+   "פיקדון שעובר את התקרה בחוק לא יירשם. התקרה לא חלה על כל חוזה, ולכן בחוזה חריג בדקו עם עורך דין.</li>"
+  ],
+  [
+   "ואם המועד עבר מופיע \"עבר המועד בחוק להחזרת הפיקדון\".</p>",
+   "ואם עברו 60 יום מהשבת הדירה, מופיעה הודעה על כך, עם תזכורת שאת הפיקדון מחזירים עד המאוחר מבין היום הזה ליום שבו נפרעו חובות השוכר.</p>"
+  ],
+  [
+   "מהפיקדון מותר לקזז רק חוב שכירות, נזק או חשבונות. את השאר מחזירים תוך 60 יום מהחזרת הדירה.</p>",
+   "המשכיר רשאי לממש ערובה רק במקרים שהחוק מפרט: שכר דירה שלא שולם, ליקוי שהשוכר אחראי לתקנו, תשלומים שוטפים שהשוכר חב בהם ולא שולמו (למשל ארנונה, חשבונות, ועד בית), או אי פינוי הדירה בתום השכירות, ורק אחרי הודעה מראש בזמן סביר ושהות לתקן. את הערובה או את יתרתה מחזירים בתוך 60 יום מהחזרת הדירה או עד שנפרעו חובות השוכר, לפי המאוחר.</p>"
+  ],
+  [
+   "בדצמבר ובינואר מופיעה ברשימת המשימות תזכורת: במסלול 10%, דיווח ותשלום עד 30 בינואר.</li>",
+   "בדצמבר ובינואר מופיעה ברשימת המשימות תזכורת: את מסלול 10% מדווחים ומשלמים אחרי סוף שנת המס. את היום האחרון המדויק בודקים באתר רשות המסים.</li>"
+  ],
+  [
+   "לפי החוק, כל הביטחונות יחד עד הנמוך מבין שלושה חודשי שכירות לבין שליש משכר הדירה לכל התקופה. בטופס החוזה מופיעה התקרה המדויקת לחוזה שלכם, ותקבלו אזהרה אם עברתם אותה.</p>",
+   "לפי החוק, ערובות שכרוכות בהוצאה כספית לשוכר (ערבות בנקאית, ערבות של חברת ביטוח או גוף אשראי מורשה, מזומן) הן יחד עד הנמוך מבין שלושה חודשי שכירות לבין שליש משכר הדירה לכל התקופה. התקרה לא חלה על כל חוזה, למשל לא על שכר דירה מעל 20,000 ₪ לחודש. בטופס החוזה מופיעה התקרה לחוזה שלכם, אם היא חלה עליו, ותקבלו אזהרה אם עברתם אותה.</p>"
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/help/en.html": [
+  [
+   "While you type, a line shows the legal cap for this lease. If the security cheque and the cash deposit together go over it, the line turns into a warning, and the lease also appears on your to-do list.</p>",
+   "While you type, a line shows the cap in the law for this lease, if it applies. If the security cheque and the cash deposit you entered together go over it, the line turns into a warning, and the lease also appears on your to-do list. It is a warning only: the law names a bank guarantee, a guarantee from another licensed guarantor and cash, and does not name a security cheque or a promissory note, so check with a lawyer.</p>"
+  ],
+  [
+   "all securities together are capped at the lower of two amounts: three months' rent, or one third of the rent for the whole term of the lease. For a one-year lease at ₪6,000 a month, the cap is ₪18,000. The system will not record a cash deposit above the cap.</p>",
+   "all securities that cost the tenant money (a bank guarantee, a guarantee from an insurer or licensed credit provider, cash) are together capped at the lower of two amounts: three months' rent, or one third of the rent for the whole term of the lease. For a one-year lease at ₪6,000 a month, the cap is ₪18,000. The system will not record a cash deposit above the cap. The cap does not apply to every lease: among others, it does not apply to rent above ILS 20,000 a month (the amount is updated each 1 January) or to a lease of up to 3 months with no option to extend (s.25טו).</p>"
+  ],
+  [
+   "under the Rental and Borrowing Law, a defect that prevents reasonable living must be fixed within 3 days, and any other defect within 30 days. Every repair in the system gets a deadline by this rule, counted from the day it was opened.</p>",
+   "under the Rental and Borrowing Law, from the day the landlord receives the tenant's demand, a defect that prevents reasonable living must be fixed within 3 days at most, and any other defect that is not minor within 30 days at most. In the system, the date of every repair is counted from the day it was reported or opened, as an aid only.</p>"
+  ],
+  [
+   "<li>The last day for the landlord's notice: 90 days before the lease ends.</li>",
+   "<li>The last day for the landlord's notice, if the landlord has an option to extend: 90 days before the lease ends.</li>"
+  ],
+  [
+   "<li>The last day for the tenant's notice: 60 days before the end.</li>",
+   "<li>The last day for the tenant's notice, if the tenant has an option to extend: 60 days before the end.</li>"
+  ],
+  [
+   "<li>Return of the securities: 60 days after the end.</li>",
+   "<li>Return of the securities: the system counts 60 days from the lease end. The law says 60 days from the apartment's return or until the tenant's debts are paid, whichever is later.</li>"
+  ],
+  [
+   "Under the Rental and Borrowing Law, the landlord gives notice 90 days before the end and the tenant 60 days. Securities are returned within 60 days of the apartment being returned.</p>",
+   "Under the Rental and Borrowing Law, if the landlord has an option to extend, he tells the tenant whether he is using it no later than 90 days before the end. If the tenant has an option, he tells the landlord no later than 60 days before the end (s.25יב). Without an option, the landlord tells the tenant a reasonable time before the end whether he wants to extend and on what terms. Securities are returned within 60 days of the apartment being returned, or by the day the tenant's debts are paid, whichever is later (s.25י(ה)).</p>"
+  ],
+  [
+   "the 60-day count to return the deposit starts.</p>",
+   "the count to return the deposit starts: 60 days from the apartment's return, or until the tenant's debts are paid if that is later.</p>"
+  ],
+  [
+   "An amount that, with the security cheque, goes over the legal cap is not recorded.</li>",
+   "A deposit that goes over the cap in the law is not recorded. The cap does not apply to every lease, so for an unusual lease check with a lawyer.</li>"
+  ],
+  [
+   "and once the date has passed it reads \"the legal deadline to return the deposit has passed\".</p>",
+   "and once 60 days have passed since the apartment was returned, it says so, with a reminder that the deposit is returned by the later of that day and the day the tenant's debts were paid.</p>"
+  ],
+  [
+   "Only unpaid rent, damage or bills may be deducted from the deposit. The rest goes back within 60 days of the apartment being returned.</p>",
+   "The landlord may realise a security only in the cases the law lists: unpaid rent, defects the tenant must fix, current payments the tenant owes and has not paid (for example property tax, utility bills, the building committee), or failure to vacate when the lease ends, and only after reasonable advance notice and a chance to put it right. The security, or what is left of it, is returned within 60 days of the apartment being returned, or by the day the tenant's debts are paid, whichever is later.</p>"
+  ],
+  [
+   "your to-do list reminds you that on the 10% route the report and payment are due by 30 January.</li>",
+   "your to-do list reminds you that the 10% route is reported and paid after the end of the tax year. Check the exact last day on the Tax Authority site.</li>"
+  ],
+  [
+   "By law, all securities together are capped at the lower of three months' rent or one third of the rent for the whole term. The lease form shows the exact cap for your lease, and warns you if you go over it.</p>",
+   "By law, securities that cost the tenant money (a bank guarantee, a guarantee from an insurer or licensed credit provider, cash) are together capped at the lower of three months' rent or one third of the rent for the whole term. The cap does not apply to every lease, for example not to rent above ILS 20,000 a month. The lease form shows the cap for your lease, if it applies, and warns you if you go over it.</p>"
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/guide/he.html": [
+  [
+   "ותזכורת למועד התשלום במסלול 10%.</span>",
+   "ותזכורת לדווח ולשלם במסלול 10% אחרי סוף שנת המס.</span>"
+  ],
+  [
+   "לשנת 2025 התקרה היא 5,654 ש\"ח לחודש. זה אומדן בלבד",
+   "לפי מדריך רשות המסים, התקרה לשנת 2025 היא 5,654 ש\"ח לחודש; את התקרה העדכנית בודקים באתר רשות המסים. זה אומדן בלבד"
+  ]
+ ],
+ "plugins/nadlan-config/assets/rentals/guide/en.html": [
+  [
+   "and a reminder of the 10% route payment date.</span>",
+   "and a reminder to report and pay on the 10% route after the end of the tax year.</span>"
+  ],
+  [
+   "for 2025 it is 5,654 NIS a month. It is an estimate only",
+   "the Tax Authority's guide gives 5,654 NIS a month for 2025; check the current ceiling on the Tax Authority site. It is an estimate only"
+  ]
+ ],
+ "plugins/nadlan-config/inc/rentals-manager.php": [
+  [
+   "'tax_deadline'         => '2027-01-30',",
+   "'tax_deadline'         => '', /* no fixed date: the two Tax Authority pages disagree; JS prints no date */"
+  ],
+  [
+   "'tax_deadline' => '10% route payment deadline for {year}: {date}', 'tax_note' => 'Estimates only, based on the {year} ceiling of ILS {ceiling}/month. Verify with the Tax Authority or an accountant before acting.',",
+   "'tax_deadline' => '10% route: reported and paid after the end of the tax year. Check the exact last day on the Tax Authority site.', 'tax_note' => 'Estimates only, using an exemption ceiling of ILS {ceiling}/month (the Tax Authority guide gives this amount for 2025). Check the current ceiling on the Tax Authority site. Verify with the Tax Authority or an accountant before acting.',"
+  ],
+  [
+   "'tax_deadline' => 'מועד תשלום מסלול 10% עבור {year}: {date}', 'tax_note' => 'אומדנים בלבד, לפי תקרת {year} של {ceiling} ₪ לחודש. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',",
+   "'tax_deadline' => 'מסלול 10%: מדווחים ומשלמים אחרי סוף שנת המס. את היום האחרון המדויק בודקים באתר רשות המסים.', 'tax_note' => 'אומדנים בלבד, לפי תקרת פטור של {ceiling} ₪ לחודש (לפי מדריך רשות המסים, זו התקרה לשנת 2025). את התקרה העדכנית בודקים באתר רשות המסים. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',"
+  ],
+  [
+   "'act_tax' => '10% route: report and pay by {date}',",
+   "'act_tax' => '10% route: after the year ends, report and pay. Check the last day on the Tax Authority site',"
+  ],
+  [
+   "'act_tax' => 'מסלול 10%: דיווח ותשלום עד {date}',",
+   "'act_tax' => 'מסלול 10%: אחרי סוף השנה מדווחים ומשלמים. את היום האחרון בודקים באתר רשות המסים',"
+  ],
+  [
+   "the system also reminds you of the annual reporting date (January 30 on the 10 percent route). Binding numbers are always verified with the Israel Tax Authority.",
+   "the system also reminds you, after the end of the tax year, to report and pay on the 10 percent route; the exact last day is checked on the Tax Authority site. Binding numbers are always verified with the Israel Tax Authority."
+  ],
+  [
+   "המערכת מזכירה גם את מועד הדיווח השנתי (30 בינואר במסלול 10 אחוזים). המספרים המחייבים נבדקים תמיד מול רשות המסים.",
+   "המערכת מזכירה גם, אחרי סוף שנת המס, לדווח ולשלם במסלול 10 אחוזים; את היום האחרון המדויק בודקים באתר רשות המסים. המספרים המחייבים נבדקים תמיד מול רשות המסים."
+  ]
+ ],
+ "plugins/nadlan-config/inc/rentals-earn.php": [
+  [
+   "'tax_deadline' => 'Échéance du régime 10 % pour {year} : {date}', 'tax_note' => 'Estimations, selon le plafond {year} de {ceiling} ₪ par mois. Vérifiez auprès de l’Autorité fiscale ou d’un comptable avant d’agir.',",
+   "'tax_deadline' => 'Régime 10 % : déclaration et paiement après la fin de l’année fiscale. Vérifiez la dernière date exacte sur le site de l’Autorité fiscale.', 'tax_note' => 'Estimations, avec un plafond d’exonération de {ceiling} ₪ par mois (selon le guide de l’Autorité fiscale, c’est le plafond de 2025). Vérifiez le plafond en vigueur sur le site de l’Autorité fiscale. Vérifiez auprès de l’Autorité fiscale ou d’un comptable avant d’agir.',"
+  ],
+  [
+   "'act_tax' => 'Régime 10 % : déclarer et payer avant le {date}',",
+   "'act_tax' => 'Régime 10 % : après la fin de l’année, déclarer et payer. Vérifiez la dernière date sur le site de l’Autorité fiscale',"
+  ],
+  [
+   "'tax_deadline' => 'Срок оплаты режима 10% за {year}: {date}', 'tax_note' => 'Только оценки, по порогу {year} года {ceiling} ₪ в месяц. Перед действиями проверьте в Налоговом управлении или у бухгалтера.',",
+   "'tax_deadline' => 'Режим 10%: отчитаться и заплатить нужно после окончания налогового года. Последний день проверьте на сайте Налогового управления.', 'tax_note' => 'Только оценки, с порогом освобождения {ceiling} ₪ в месяц (по руководству Налогового управления, это порог 2025 года). Актуальный порог проверьте на сайте Налогового управления. Перед действиями проверьте в Налоговом управлении или у бухгалтера.',"
+  ],
+  [
+   "'act_tax' => 'Режим 10%: подать и оплатить до {date}',",
+   "'act_tax' => 'Режим 10%: после окончания года подать отчёт и оплатить. Последний день проверьте на сайте Налогового управления',"
+  ],
+  [
+   "'tax_deadline' => 'موعد دفع مسار 10% عن {year}: {date}', 'tax_note' => 'تقديرات فقط، حسب سقف {year} البالغ {ceiling} ₪ شهريًا. تحقّقوا لدى سلطة الضرائب أو محاسب قبل أي إجراء.',",
+   "'tax_deadline' => 'مسار 10%: يُصرَّح عنه ويُدفع بعد انتهاء السنة الضريبية. تحقّقوا من اليوم الأخير على موقع سلطة الضرائب.', 'tax_note' => 'تقديرات فقط، بسقف إعفاء قدره {ceiling} ₪ شهريًا (حسب دليل سلطة الضرائب هذا هو سقف 2025). تحقّقوا من السقف الحالي على موقع سلطة الضرائب. تحقّقوا لدى سلطة الضرائب أو محاسب قبل أي إجراء.',"
+  ],
+  [
+   "'act_tax' => 'مسار 10%: التصريح والدفع حتى {date}',",
+   "'act_tax' => 'مسار 10%: بعد انتهاء السنة، التصريح والدفع. تحقّقوا من اليوم الأخير على موقع سلطة الضرائب',"
+  ],
+  [
+   "המערכת מזכירה גם את מועד הדיווח השנתי (30 בינואר במסלול 10 אחוזים). המספרים המחייבים נבדקים תמיד מול רשות המסים.",
+   "המערכת מזכירה גם, אחרי סוף שנת המס, לדווח ולשלם במסלול 10 אחוזים; את היום האחרון המדויק בודקים באתר רשות המסים. המספרים המחייבים נבדקים תמיד מול רשות המסים."
+  ],
+  [
+   "the system also reminds you of the annual reporting date (January 30 on the 10 percent route). Binding numbers are always checked with the Israel Tax Authority.",
+   "the system also reminds you, after the end of the tax year, to report and pay on the 10 percent route; the exact last day is checked on the Tax Authority site. Binding numbers are always checked with the Israel Tax Authority."
+  ]
+ ],
+ "plugins/nadlan-config/assets/instruments/tools/rentfair.js": [
+  [
+   "value: F.ils(tx.ten.year) + ' בשנה, עד ' + d.tax.tenDue });",
+   "value: F.ils(tx.ten.year) + ' בשנה. מדווחים ומשלמים אחרי סוף שנת המס, ואת היום האחרון בודקים באתר רשות המסים' });"
+  ]
+ ]
+}
