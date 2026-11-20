@@ -1,0 +1,139 @@
+{
+ "what": "cold load of xray.html at a 390 x 844 viewport, DPR 2, touch emulation: DESKTOP Chrome with a real GPU (ANGLE/D3D11) emulating a phone viewport. NOT a real phone; a phone's CPU/GPU, radio and thermal limits are not measured.",
+ "page": "docs/design-lab/rentals-xray/xray.html?mode=xray",
+ "server": "python http.server on 127.0.0.1 (no compression, no CDN for our own files); three.js from jsDelivr (compressed in transit)",
+ "median_of_3_cold_loads": {
+  "requests": 13,
+  "transferredBytes": 474129,
+  "threeJsBytes": 214713,
+  "firstRenderMs": 1326.7,
+  "firstPresentedMs": 1341.7,
+  "envReadyMs": 2138.7,
+  "gl": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "orbit3s": {
+   "frameGapMs": {
+    "n": 90,
+    "mean": 33.37,
+    "median": 33.4,
+    "p95": 33.5,
+    "max": 33.5
+   },
+   "renderCallMs": {
+    "n": 91,
+    "mean": 10.2,
+    "median": 3.1,
+    "p95": 5.2,
+    "max": 643.7
+   },
+   "stats": {
+    "calls": 306,
+    "triangles": 98909,
+    "geometries": 313,
+    "textures": 3
+   }
+  }
+ },
+ "all_runs": [
+  {
+   "requests": 13,
+   "transferredBytes": 474129,
+   "threeJsBytes": 214713,
+   "firstRenderMs": 1326.7,
+   "firstPresentedMs": 1341.7,
+   "envReadyMs": 2138.7
+  },
+  {
+   "requests": 13,
+   "transferredBytes": 474156,
+   "threeJsBytes": 214740,
+   "firstRenderMs": 1414.8,
+   "firstPresentedMs": 1436.4,
+   "envReadyMs": 2239.5
+  },
+  {
+   "requests": 13,
+   "transferredBytes": 474156,
+   "threeJsBytes": 214740,
+   "firstRenderMs": 1286.4,
+   "firstPresentedMs": 1303,
+   "envReadyMs": 2069
+  }
+ ],
+ "request_list_run1": [
+  {
+   "url": "/docs/design-lab/rentals-xray/xray.html?mode=xray",
+   "bytes": 1013
+  },
+  {
+   "url": "/docs/design-lab/rentals-xray/xray.js",
+   "bytes": 39610
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+   "bytes": 207632
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/core.js",
+   "bytes": 41910
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/catalog.js",
+   "bytes": 9219
+  },
+  {
+   "url": "/docs/design-lab/rentals-xray/space.lab.js",
+   "bytes": 45009
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+   "bytes": 5995
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/walknav.js",
+   "bytes": 10773
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/strings.js",
+   "bytes": 86965
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/stringsx.js",
+   "bytes": 15369
+  },
+  {
+   "url": "/plugins/nadlan-config/assets/designer/plans/example-4r.json",
+   "bytes": 9028
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+   "bytes": 1086
+  },
+  {
+   "url": "/favicon.ico",
+   "bytes": 520
+  }
+ ],
+ "orbit_spin_3s_run1": {
+  "frameGapMs": {
+   "n": 90,
+   "mean": 33.37,
+   "median": 33.4,
+   "p95": 33.5,
+   "max": 33.5
+  },
+  "renderCallMs": {
+   "n": 91,
+   "mean": 10.2,
+   "median": 3.1,
+   "p95": 5.2,
+   "max": 643.7
+  },
+  "stats": {
+   "calls": 306,
+   "triangles": 98909,
+   "geometries": 313,
+   "textures": 3
+  }
+ },
+ "note_orbit": "renderCallMs is the CPU time inside renderer.render per drawn frame (command submission); frameGapMs is the time between animation frames. Neither is a phone measurement."
+}

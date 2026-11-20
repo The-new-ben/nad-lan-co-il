@@ -1,0 +1,375 @@
+{
+ "overview": [
+  {
+   "id": "acLiving",
+   "x": 112.8,
+   "y": 227.1,
+   "onStage": true
+  },
+  {
+   "id": "shutter",
+   "x": 94.1,
+   "y": 276.3,
+   "onStage": true
+  },
+  {
+   "id": "cooktop",
+   "x": 346.3,
+   "y": 367.1,
+   "onStage": true
+  },
+  {
+   "id": "fridge",
+   "x": 262.4,
+   "y": 303.6,
+   "onStage": true
+  },
+  {
+   "id": "sink",
+   "x": 354,
+   "y": 325.3,
+   "onStage": true
+  },
+  {
+   "id": "panel",
+   "x": 357.6,
+   "y": 229.7,
+   "onStage": true
+  },
+  {
+   "id": "acBed",
+   "x": 126.7,
+   "y": 139.6,
+   "onStage": true
+  },
+  {
+   "id": "mamad",
+   "x": 286.2,
+   "y": 92.8,
+   "onStage": true
+  },
+  {
+   "id": "bath",
+   "x": 343,
+   "y": 179.1,
+   "onStage": true
+  },
+  {
+   "id": "boiler",
+   "x": 358.2,
+   "y": 206.4,
+   "onStage": true
+  },
+  {
+   "id": "washer",
+   "x": 317.2,
+   "y": 198.7,
+   "onStage": true
+  }
+ ],
+ "focus-boiler": [
+  {
+   "id": "acLiving",
+   "x": -13573.9,
+   "y": -11441.9,
+   "onStage": false
+  },
+  {
+   "id": "shutter",
+   "x": -33315.3,
+   "y": -12563.4,
+   "onStage": false
+  },
+  {
+   "id": "cooktop",
+   "x": 559.3,
+   "y": 94.8,
+   "onStage": false
+  },
+  {
+   "id": "fridge",
+   "x": 717.9,
+   "y": 259.8,
+   "onStage": false
+  },
+  {
+   "id": "sink",
+   "x": 471.2,
+   "y": 105.8,
+   "onStage": false
+  },
+  {
+   "id": "panel",
+   "x": 258.7,
+   "y": 115,
+   "onStage": true
+  },
+  {
+   "id": "acBed",
+   "x": -291.3,
+   "y": -1601.3,
+   "onStage": false
+  },
+  {
+   "id": "mamad",
+   "x": -872.2,
+   "y": 976.7,
+   "onStage": false
+  },
+  {
+   "id": "bath",
+   "x": 17.2,
+   "y": 315.1,
+   "onStage": true
+  },
+  {
+   "id": "boiler",
+   "x": 150.7,
+   "y": 177.6,
+   "onStage": true
+  },
+  {
+   "id": "washer",
+   "x": 148.7,
+   "y": 346.4,
+   "onStage": true
+  }
+ ],
+ "focus-acLiving": [
+  {
+   "id": "acLiving",
+   "x": 302.3,
+   "y": 177.6,
+   "onStage": true
+  },
+  {
+   "id": "shutter",
+   "x": 128.4,
+   "y": 53.3,
+   "onStage": true
+  },
+  {
+   "id": "cooktop",
+   "x": -1570.9,
+   "y": 987.8,
+   "onStage": false
+  },
+  {
+   "id": "fridge",
+   "x": -363,
+   "y": 512.9,
+   "onStage": false
+  },
+  {
+   "id": "sink",
+   "x": -2083.3,
+   "y": 1653.1,
+   "onStage": false
+  },
+  {
+   "id": "panel",
+   "x": 3802.6,
+   "y": -5662.6,
+   "onStage": false
+  },
+  {
+   "id": "acBed",
+   "x": 695.9,
+   "y": 283.4,
+   "onStage": false
+  },
+  {
+   "id": "mamad",
+   "x": -11196.7,
+   "y": -11631.3,
+   "onStage": false
+  },
+  {
+   "id": "bath",
+   "x": -533.1,
+   "y": -10274.7,
+   "onStage": false
+  },
+  {
+   "id": "boiler",
+   "x": 1464.4,
+   "y": -4282.8,
+   "onStage": false
+  },
+  {
+   "id": "washer",
+   "x": 144.9,
+   "y": 3648.9,
+   "onStage": false
+  }
+ ],
+ "focus-sink": [
+  {
+   "id": "acLiving",
+   "x": -104.2,
+   "y": -2525.1,
+   "onStage": false
+  },
+  {
+   "id": "shutter",
+   "x": -1878.9,
+   "y": -2370.2,
+   "onStage": false
+  },
+  {
+   "id": "cooktop",
+   "x": 207.8,
+   "y": 155.4,
+   "onStage": true
+  },
+  {
+   "id": "fridge",
+   "x": 180,
+   "y": 402.6,
+   "onStage": true
+  },
+  {
+   "id": "sink",
+   "x": 87.7,
+   "y": 177.6,
+   "onStage": true
+  },
+  {
+   "id": "panel",
+   "x": -301.7,
+   "y": 231.7,
+   "onStage": false
+  },
+  {
+   "id": "acBed",
+   "x": 779.2,
+   "y": -1099.1,
+   "onStage": false
+  },
+  {
+   "id": "mamad",
+   "x": -9707.5,
+   "y": 5146.8,
+   "onStage": false
+  },
+  {
+   "id": "bath",
+   "x": -705.3,
+   "y": 533.1,
+   "onStage": false
+  },
+  {
+   "id": "boiler",
+   "x": -457.2,
+   "y": 322,
+   "onStage": false
+  },
+  {
+   "id": "washer",
+   "x": -576.6,
+   "y": 578.6,
+   "onStage": false
+  }
+ ],
+ "focus-cooktop": [
+  {
+   "id": "acLiving",
+   "x": 250.8,
+   "y": -1668.5,
+   "onStage": false
+  },
+  {
+   "id": "shutter",
+   "x": -712.2,
+   "y": -1419.4,
+   "onStage": false
+  },
+  {
+   "id": "cooktop",
+   "x": 149.7,
+   "y": 177.6,
+   "onStage": true
+  },
+  {
+   "id": "fridge",
+   "x": 66.9,
+   "y": 483,
+   "onStage": false
+  },
+  {
+   "id": "sink",
+   "x": 13.3,
+   "y": 203.8,
+   "onStage": true
+  },
+  {
+   "id": "panel",
+   "x": -462.5,
+   "y": 277.2,
+   "onStage": false
+  },
+  {
+   "id": "acBed",
+   "x": 800.1,
+   "y": -924.3,
+   "onStage": false
+  },
+  {
+   "id": "mamad",
+   "x": 46454.4,
+   "y": -22680.8,
+   "onStage": false
+  },
+  {
+   "id": "bath",
+   "x": -967.8,
+   "y": 638,
+   "onStage": false
+  },
+  {
+   "id": "boiler",
+   "x": -648.2,
+   "y": 382.6,
+   "onStage": false
+  },
+  {
+   "id": "washer",
+   "x": -839.9,
+   "y": 701.2,
+   "onStage": false
+  }
+ ],
+ "plan": "plugins/nadlan-config/assets/designer/plans/example-4r.json",
+ "rooms": {
+  "acLiving": "סלון ופינת אוכל",
+  "shutter": "סלון ופינת אוכל",
+  "cooktop": "מטבח",
+  "fridge": "מטבח",
+  "sink": "מטבח",
+  "panel": "כניסה",
+  "acBed": "שינה הורים",
+  "mamad": "ממ״ד",
+  "bath": "רחצה",
+  "boiler": "שירות",
+  "washer": "שירות"
+ },
+ "focusDistancesFromPartM": {
+  "boiler": 5.24,
+  "acLiving": 6.15,
+  "sink": 6.15,
+  "cooktop": 6.04
+ },
+ "overviewFill": {
+  "widthPct": 92.6,
+  "heightPct": 83.8,
+  "marginLeftPct": 3.7,
+  "marginRightPct": 3.8,
+  "marginTopPct": 9.4,
+  "marginBottomPct": 6.8
+ },
+ "stage": {
+  "cssWidth": 390,
+  "cssHeight": 444,
+  "note": "x, y in CSS px from the stage's top-left; onStage says whether the anchor falls inside the stage; the PNGs are the same stage at device scale factor 2 (780 x 888)"
+ }
+}
