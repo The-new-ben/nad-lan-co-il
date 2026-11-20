@@ -1,0 +1,43 @@
+{
+  "released": "1.72.729",
+  "from": "1.72.728",
+  "live_before": {
+    "assets/rentals/rental-manager.js": "582246c85396c8af35bb6bddf0023fb5",
+    "nadlan-config.php": "da4c1e60a97225ca037c8123dd8c6292",
+    "inc/rentals-manager.php": "d1b2f4ab34ac19be15d92e7c7bfeeb4a"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 18:27:34",
+  "files": {
+    "inc/rentals/portfolio.php": "54c755871e0d722f7757f0b57d2e160a",
+    "assets/rentals/portfolio/pf.js": "27bba23449f0b6f758a6c99540d61eff",
+    "assets/rentals/portfolio/pf.css": "172207cb9a5c7b95263f2f92d606e125",
+    "assets/rentals/portfolio/img/c1-192.webp": "162a3e3a233f7a51c3c57086443a90e2",
+    "assets/rentals/portfolio/img/c1-720.webp": "dd379e4a2ac3dc0ea9dde3bc4de0efb8",
+    "assets/rentals/portfolio/img/e1-192.webp": "d0015f6bbc3f7b9babaf75113ca5193c",
+    "assets/rentals/portfolio/img/e1-720.webp": "69b39460d8164d50e635adb7ab4455f8",
+    "assets/rentals/portfolio/img/g1-192.webp": "5002e3165e6d0fad2eb01b8855e97f27",
+    "assets/rentals/portfolio/img/g1-720.webp": "79f5286b3aced8796d35a89888f65e16",
+    "assets/rentals/portfolio/img/k1-192.webp": "e183cace6030fac82dbe6bf3d047820a",
+    "assets/rentals/portfolio/img/k1-720.webp": "e4d3624b44225570aaa78f4549e64a63",
+    "assets/rentals/portfolio/img/n1-192.webp": "8620a3103f84243b4fb3b659dcdc5132",
+    "assets/rentals/portfolio/img/n1-720.webp": "51968b668d98c386d1bd7e0be1d9ae02",
+    "assets/rentals/portfolio/img/p-ac-192.webp": "7539c2901a48f4bbbbba4842d275ce73",
+    "assets/rentals/portfolio/img/p-boiler-192.webp": "6fbc5efd7ace283c31c5d9870e367377",
+    "assets/rentals/portfolio/img/p-fridge-192.webp": "7c458643168efaf128e71b9e58ddd02f",
+    "assets/rentals/portfolio/img/p-oven-192.webp": "75fadd073cfb979e27f1fa9f41fbba29",
+    "assets/rentals/portfolio/img/p-panel-192.webp": "e71b06f914fdfc41f83fa4f5baefc4ff",
+    "assets/rentals/portfolio/img/p-washer-192.webp": "facc6a045944918b017cf44f2442f3e7",
+    "assets/rentals/portfolio/img/p-water_meter-192.webp": "49e26f8471e91558db6c5f09417f39f0",
+    "assets/rentals/portfolio/img/t1-192.webp": "1a24aaa4b007bac1de76c583d91f3cad",
+    "assets/rentals/portfolio/img/t1-720.webp": "b96146b70a71014d8caf3f9c24cbfe5a",
+    "assets/rentals/portfolio/img/t2-192.webp": "4fd3803ffeb3afd16312f165909b0d98",
+    "assets/rentals/portfolio/img/t2-720.webp": "d30bea2eaf16d741e4c5a8c42207e640",
+    "assets/rentals/rental-manager.js": "ba86d82fd05be496eef024dce01ca626",
+    "nadlan-config.php": "850b02cbb138c9dac61013e5792881d0",
+    "inc/rentals-manager.php": "369b84f383f96b3501416149233fdb20"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.729, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

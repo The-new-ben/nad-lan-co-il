@@ -1,0 +1,265 @@
+{
+ "checks": [
+  {
+   "check": "he 1440x900 a visitor (not signed in) gets the stage of version 1.72.731: 8 pictures in the tray at once",
+   "ok": true,
+   "info": "{'admin': False, 'cards': 8, 'pics': 8, 'order': True, 'h1s': 1, 'h1Top': 65, 'subBottom': 167, 'stTop': 189, 'stH': 700, 'stL': 176, 'stR': 176, 'H': 900, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], '"
+  },
+  {
+   "check": "he 1440x900 the page order: one h1, the answer paragraph, then the stage; the first screen holds all three (h1 at 65, paragraph ends 167, stage from 189, screen 900); no sideways overflow",
+   "ok": true,
+   "info": "(True, 1, 0)"
+  },
+  {
+   "check": "he 1440x900 the look holds against the theme: h1 in Assistant 800, the main button white on ink, the stage's chips white, its title white",
+   "ok": true,
+   "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
+  },
+  {
+   "check": "he 1440x900 the globe is drawn about 4.4 s after the page starts; its marks count all 8 properties",
+   "ok": true,
+   "info": "{'proj': 'globe', 'n': 8, 'gl': '3.14.0', 'stH': 700}"
+  },
+  {
+   "check": "he 1440x900 the wheel over the map scrolls the page (0 -> 300) and does not zoom the map",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he 1440x900 'see it' flies to the Eilat building: the map is tilted (62 degrees, zoom 17.5), the building's floors are drawn in 3D, the example floor is lit, the mark pulses",
+   "ok": true,
+   "info": "{'say': 'שחמון 5 · דירה 5 | אילת · המזגן לא מקרר · נפתחה אתמול | לטפל עכשיו', 'zoom': 17.5, 'pitch': 62, 'pin': 'nlpf-pin is-care is-sel is-up', 'own': 1, 'floors': 2}"
+  },
+  {
+   "check": "he 1440x900 the apartment's card: the building's picture, rent, a tenant marked (דוגמה), 5 parts as pictures with the air conditioner asking for care, the example tag and note; no inner scroll",
+   "ok": true,
+   "info": "{'tenant': ['4,900 ₪', 'רון מזרחי (דוגמה)', 'אוקטובר 2027'], 'parts': 5, 'partPics': 5, 'care': ['מזגן'], 'pic': 720, 'ex': 'דוגמה', 'note': 'הדמיה · דירות ונתונים לדוגמה', 'scrolls': False, 'top': 70, 'links': [], 'nums': [], 'mails': []}"
+  },
+  {
+   "check": "he 1440x900 no chat, call or mail link and no phone-shaped number or address anywhere in the stage",
+   "ok": true,
+   "info": "([], [], [])"
+  },
+  {
+   "check": "he 1440x900 the Kikar tower comes forward: the tower render, 2 lit floors, 2 example apartments to press, marked as an example, no developer name; it turns under a drag (A-00.webp -> A-12.webp)",
+   "ok": true,
+   "info": "{'img': 756, 'tags': ['דוגמה ב קומה 30', 'דוגמה א קומה 20'], 'bands': 2, 'frame': 'A-00.webp', 'dev': False, 'ex': 'דוגמה', 'scrolls': False}"
+  },
+  {
+   "check": "he 1440x900 a press on the other apartment in the tower opens its card",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he 1440x900 the filter works (needs care: 1 card; all: 8)",
+   "ok": true,
+   "info": "1"
+  },
+  {
+   "check": "he 1440x900 nothing opened a tab or left the page; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "he 390x664 a visitor (not signed in) gets the stage of version 1.72.731: 8 pictures in the tray at once",
+   "ok": true,
+   "info": "{'admin': False, 'cards': 8, 'pics': 8, 'order': True, 'h1s': 1, 'h1Top': 53, 'subBottom': 209, 'stTop': 227, 'stH': 529, 'stL': 0, 'stR': 0, 'H': 664, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], 'chip"
+  },
+  {
+   "check": "he 390x664 the page order: one h1, the answer paragraph, then the stage; the first screen holds all three (h1 at 53, paragraph ends 209, stage from 227, screen 664); no sideways overflow",
+   "ok": true,
+   "info": "(True, 1, 0)"
+  },
+  {
+   "check": "he 390x664 the look holds against the theme: h1 in Assistant 800, the main button white on ink, the stage's chips white, its title white",
+   "ok": true,
+   "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
+  },
+  {
+   "check": "he 390x664 phone: the stage runs edge to edge (0, 0) and is 529 px tall",
+   "ok": true,
+   "info": "529"
+  },
+  {
+   "check": "he 390x664 the globe is drawn about 4.1 s after the page starts; its marks count all 8 properties",
+   "ok": true,
+   "info": "{'proj': 'globe', 'n': 8, 'gl': '3.14.0', 'stH': 529}"
+  },
+  {
+   "check": "he 390x664 phone, the stage at the top of the screen: the filter, the sentence button and the tray (ends at 531) are above the site's floating buttons (2 floating, the first at 536)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x664 'see it' flies to the Eilat building: the map is tilted (62 degrees, zoom 17.5), the building's floors are drawn in 3D, the example floor is lit, the mark pulses",
+   "ok": true,
+   "info": "{'say': 'שחמון 5 · דירה 5 | אילת · המזגן לא מקרר · נפתחה אתמול | לטפל עכשיו', 'zoom': 17.5, 'pitch': 62, 'pin': 'nlpf-pin is-care is-sel is-up', 'own': 1, 'floors': 2}"
+  },
+  {
+   "check": "he 390x664 the apartment's card: the building's picture, rent, a tenant marked (דוגמה), 5 parts as pictures with the air conditioner asking for care, the example tag and note; no inner scroll",
+   "ok": true,
+   "info": "{'tenant': ['4,900 ₪', 'רון מזרחי (דוגמה)', 'אוקטובר 2027'], 'parts': 5, 'partPics': 5, 'care': ['מזגן'], 'pic': 720, 'ex': 'דוגמה', 'note': 'הדמיה · דירות ונתונים לדוגמה', 'scrolls': False, 'top': 2, 'links': [], 'nums': [], 'mails': []}"
+  },
+  {
+   "check": "he 390x664 no chat, call or mail link and no phone-shaped number or address anywhere in the stage",
+   "ok": true,
+   "info": "([], [], [])"
+  },
+  {
+   "check": "he 390x664 phone: the card opened with the stage at the top (top 2) and every one of its 4 buttons is on screen, under no floating button of the site",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x664 the Kikar tower comes forward: the tower render, 2 lit floors, 2 example apartments to press, marked as an example, no developer name; it turns under a drag (A-00.webp -> A-12.webp)",
+   "ok": true,
+   "info": "{'img': 756, 'tags': ['דוגמה ב קומה 30', 'דוגמה א קומה 20'], 'bands': 2, 'frame': 'A-00.webp', 'dev': False, 'ex': 'דוגמה', 'scrolls': False}"
+  },
+  {
+   "check": "he 390x664 a press on the other apartment in the tower opens its card",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he 390x664 the filter works (needs care: 1 card; all: 8)",
+   "ok": true,
+   "info": "1"
+  },
+  {
+   "check": "he 390x664 nothing opened a tab or left the page; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 1440x900 a visitor (not signed in) gets the stage of version 1.72.731: 8 pictures in the tray at once",
+   "ok": true,
+   "info": "{'admin': False, 'cards': 8, 'pics': 8, 'order': True, 'h1s': 1, 'h1Top': 65, 'subBottom': 237, 'stTop': 259, 'stH': 700, 'stL': 176, 'stR': 176, 'H': 900, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], '"
+  },
+  {
+   "check": "en 1440x900 the page order: one h1, the answer paragraph, then the stage; the first screen holds all three (h1 at 65, paragraph ends 237, stage from 259, screen 900); no sideways overflow",
+   "ok": true,
+   "info": "(True, 1, 0)"
+  },
+  {
+   "check": "en 1440x900 the look holds against the theme: h1 in Assistant 800, the main button white on ink, the stage's chips white, its title white",
+   "ok": true,
+   "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
+  },
+  {
+   "check": "en 1440x900 the globe is drawn about 3.1 s after the page starts; its marks count all 8 properties",
+   "ok": true,
+   "info": "{'proj': 'globe', 'n': 8, 'gl': '3.14.0', 'stH': 700}"
+  },
+  {
+   "check": "en 1440x900 the wheel over the map scrolls the page (0 -> 300) and does not zoom the map",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en 1440x900 'see it' flies to the Eilat building: the map is tilted (62 degrees, zoom 17.5), the building's floors are drawn in 3D, the example floor is lit, the mark pulses",
+   "ok": true,
+   "info": "{'say': '5 Shahamon · apartment 5 | Eilat · The air conditioner is not cooling · opened yesterday | Handle it now', 'zoom': 17.5, 'pitch': 62, 'pin': 'nlpf-pin is-care is-sel is-up', 'own': 1, 'floors': 2}"
+  },
+  {
+   "check": "en 1440x900 the apartment's card: the building's picture, rent, a tenant marked (example), 5 parts as pictures with the air conditioner asking for care, the example tag and note; no inner scroll",
+   "ok": true,
+   "info": "{'tenant': ['4,900 ₪', 'Ron Mizrahi (example)', 'October 2027'], 'parts': 5, 'partPics': 5, 'care': ['Air conditioner'], 'pic': 720, 'ex': 'Example', 'note': 'Illustration · example homes and figures', 'scrolls': False, 'top': 70, 'links': [], 'nums': [], 'mai"
+  },
+  {
+   "check": "en 1440x900 no chat, call or mail link and no phone-shaped number or address anywhere in the stage",
+   "ok": true,
+   "info": "([], [], [])"
+  },
+  {
+   "check": "en 1440x900 the Kikar tower comes forward: the tower render, 2 lit floors, 2 example apartments to press, marked as an example, no developer name; it turns under a drag (A-00.webp -> A-12.webp)",
+   "ok": true,
+   "info": "{'img': 756, 'tags': ['Example B Floor 30', 'Example A Floor 20'], 'bands': 2, 'frame': 'A-00.webp', 'dev': False, 'ex': 'Example', 'scrolls': False}"
+  },
+  {
+   "check": "en 1440x900 a press on the other apartment in the tower opens its card",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en 1440x900 the filter works (needs care: 1 card; all: 8)",
+   "ok": true,
+   "info": "1"
+  },
+  {
+   "check": "en 1440x900 nothing opened a tab or left the page; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 390x664 a visitor (not signed in) gets the stage of version 1.72.731: 8 pictures in the tray at once",
+   "ok": true,
+   "info": "{'admin': False, 'cards': 8, 'pics': 8, 'order': True, 'h1s': 1, 'h1Top': 53, 'subBottom': 237, 'stTop': 255, 'stH': 529, 'stL': 0, 'stR': 0, 'H': 664, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], 'chip"
+  },
+  {
+   "check": "en 390x664 the page order: one h1, the answer paragraph, then the stage; the first screen holds all three (h1 at 53, paragraph ends 237, stage from 255, screen 664); no sideways overflow",
+   "ok": true,
+   "info": "(True, 1, 0)"
+  },
+  {
+   "check": "en 390x664 the look holds against the theme: h1 in Assistant 800, the main button white on ink, the stage's chips white, its title white",
+   "ok": true,
+   "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
+  },
+  {
+   "check": "en 390x664 phone: the stage runs edge to edge (0, 0) and is 529 px tall",
+   "ok": true,
+   "info": "529"
+  },
+  {
+   "check": "en 390x664 the globe is drawn about 2.8 s after the page starts; its marks count all 8 properties",
+   "ok": true,
+   "info": "{'proj': 'globe', 'n': 8, 'gl': '3.14.0', 'stH': 529}"
+  },
+  {
+   "check": "en 390x664 phone, the stage at the top of the screen: the filter, the sentence button and the tray (ends at 531) are above the site's floating buttons (2 floating, the first at 536)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x664 'see it' flies to the Eilat building: the map is tilted (62 degrees, zoom 17.5), the building's floors are drawn in 3D, the example floor is lit, the mark pulses",
+   "ok": true,
+   "info": "{'say': '5 Shahamon · apartment 5 | Eilat · The air conditioner is not cooling · opened yesterday | Handle it now', 'zoom': 17.5, 'pitch': 62, 'pin': 'nlpf-pin is-care is-sel is-up', 'own': 1, 'floors': 2}"
+  },
+  {
+   "check": "en 390x664 the apartment's card: the building's picture, rent, a tenant marked (example), 5 parts as pictures with the air conditioner asking for care, the example tag and note; no inner scroll",
+   "ok": true,
+   "info": "{'tenant': ['4,900 ₪', 'Ron Mizrahi (example)', 'October 2027'], 'parts': 5, 'partPics': 5, 'care': ['Air conditioner'], 'pic': 720, 'ex': 'Example', 'note': 'Illustration · example homes and figures', 'scrolls': False, 'top': 2, 'links': [], 'nums': [], 'mail"
+  },
+  {
+   "check": "en 390x664 no chat, call or mail link and no phone-shaped number or address anywhere in the stage",
+   "ok": true,
+   "info": "([], [], [])"
+  },
+  {
+   "check": "en 390x664 phone: the card opened with the stage at the top (top 2) and every one of its 4 buttons is on screen, under no floating button of the site",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x664 the Kikar tower comes forward: the tower render, 2 lit floors, 2 example apartments to press, marked as an example, no developer name; it turns under a drag (A-00.webp -> A-12.webp)",
+   "ok": true,
+   "info": "{'img': 756, 'tags': ['Example B Floor 30', 'Example A Floor 20'], 'bands': 2, 'frame': 'A-00.webp', 'dev': False, 'ex': 'Example', 'scrolls': False}"
+  },
+  {
+   "check": "en 390x664 a press on the other apartment in the tower opens its card",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en 390x664 the filter works (needs care: 1 card; all: 8)",
+   "ok": true,
+   "info": "1"
+  },
+  {
+   "check": "en 390x664 nothing opened a tab or left the page; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  }
+ ],
+ "errors": []
+}

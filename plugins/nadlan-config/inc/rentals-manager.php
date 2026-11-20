@@ -607,6 +607,14 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		<p class="nlrm-kicker"><?php echo $en ? 'Rental management · free for landlords' : 'ניהול השכרות · חינם לבעלי דירות'; ?></p>
 		<h1><?php echo $en ? 'Every apartment you rent out: on the map, inside the building, fully in control' : 'כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה'; ?></h1>
 		<p class="sub"><?php echo $en ? 'Add a property, mark your apartments on a 3D model of the building, and manage everything per apartment: tenant, rent tracking, lease and tax reminders, documents and maintenance. No spreadsheets, no fees.' : 'מוסיפים נכס, מסמנים את הדירות שלכם על מודל תלת-ממדי של הבניין, ומנהלים הכל מדירה אחת: שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי אקסל ובלי עמלות.'; ?></p>
+	</header>
+	<?php
+	/* the opening (HAD-795, 20.11.2026): the example landlord's portfolio on a 3D map, right under the answer paragraph.
+	   The file is included here so that a rollback which removes it simply prints nothing. */
+	if ( ! function_exists( 'nadlan_rm_portfolio_stage' ) && is_readable( __DIR__ . '/rentals/portfolio.php' ) ) { include_once __DIR__ . '/rentals/portfolio.php'; }
+	if ( function_exists( 'nadlan_rm_portfolio_stage' ) ) { nadlan_rm_portfolio_stage( $en ? 'en' : 'he', is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); }
+	?>
+	<header class="nlrm-hero nlrm-hero--after">
 		<div class="nlrm-ctas">
 			<a class="nlrm-cta nlrm-cta--go" href="<?php echo esc_url( is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); ?>"><?php echo $en ? 'Start managing, free' : 'מתחילים לנהל, חינם'; ?></a>
 		</div>

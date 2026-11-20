@@ -283,8 +283,13 @@
 			});
 		}
 		if (window.mapboxgl) { start(); return; }
-		var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"; document.head.appendChild(l);
-		var s = document.createElement("script"); s.src = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"; s.onload = start; document.head.appendChild(s);
+		var own = function () {
+			var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"; document.head.appendChild(l);
+			var s = document.createElement("script"); s.src = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"; s.onload = start; document.head.appendChild(s);
+		};
+		/* the opening stage above (portfolio/pf.js) may already be loading the same library: wait for it, never load it twice */
+		if (window.__nlMbx && window.__nlMbx.then) { window.__nlMbx.then(function () { if (window.mapboxgl) { start(); } else { own(); } }, own); return; }
+		own();
 	}
 
 	/* ---------- the 3D building ---------- */

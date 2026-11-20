@@ -1,0 +1,19 @@
+{
+  "released": "1.72.730",
+  "from": "1.72.729",
+  "live_before": {
+    "assets/rentals/portfolio/pf.js": "27bba23449f0b6f758a6c99540d61eff",
+    "assets/rentals/portfolio/pf.css": "172207cb9a5c7b95263f2f92d606e125",
+    "nadlan-config.php": "850b02cbb138c9dac61013e5792881d0"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 18:58:30",
+  "files": {
+    "assets/rentals/portfolio/pf.js": "725b26419c4f2e0e25e7a7c6d8e61e32",
+    "assets/rentals/portfolio/pf.css": "221e4674b365b6b3f0b03366bbf1d25f",
+    "nadlan-config.php": "3fb4356bedcf04324ad7b0d984fba95b"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.730, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
