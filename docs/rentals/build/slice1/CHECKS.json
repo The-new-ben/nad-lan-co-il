@@ -1,0 +1,115 @@
+{
+ "note": "What a release check can look for after the slice-1 release (HAD-795). Static files are served from /wp-content/plugins/nadlan-config/assets/rentals/; md5 of each served file must equal MANIFEST.json staged_md5.",
+ "static_files": [
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/rm-today.js",
+   "must_contain": [
+    "N.mountToday = function",
+    "index_confirmed"
+   ],
+   "md5": "see MANIFEST"
+  },
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/rm-plan2d.js",
+   "must_contain": [
+    "N.plan2d.draw = function"
+   ]
+  },
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/rm-today.css",
+   "must_contain": [
+    ".nt2-card"
+   ]
+  },
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/i18n/he.json",
+   "must_contain": [
+    "\"t2_idx_save\": \"לאשר את שכר הדירה החדש\"",
+    "\"t2_soon_h\": \"בימים הקרובים\"",
+    "\"t2_ps_soon\": \"מחכה לטיפול\"",
+    "\"ev_index_confirmed\""
+   ],
+   "must_not_contain": [
+    "בקרוב"
+   ],
+   "scope_note": "must_not_contain applies to the t2_* values only (the base file may use the word elsewhere)",
+   "json_valid": true
+  },
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/i18n/en.json",
+   "must_contain": [
+    "\"t2_idx_save\": \"Confirm the new rent\"",
+    "\"t2_soon_h\": \"In the next days\"",
+    "\"t2_ps_soon\": \"Waiting for service\"",
+    "\"ev_index_confirmed\""
+   ],
+   "json_valid": true
+  },
+  {
+   "url": "/wp-content/plugins/nadlan-config/assets/rentals/rm-boot.js",
+   "must_contain": [
+    "N.mountToday"
+   ]
+  }
+ ],
+ "t2_key_count": {
+  "he": 128,
+  "en": 128,
+  "also": "ev_index_confirmed counts inside the 128"
+ },
+ "admin_page_after_release": {
+  "url": "/my-rentals/",
+  "as": "a logged-in administrator (nadlan_rentals_v2 = 'admin' shows v2 to administrators)",
+  "must_contain": [
+   "rm-plan2d.js?ver=",
+   "rm-today.js?ver=",
+   "rm-today.css?ver=",
+   "fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew",
+   "<script type=\"application/json\" id=\"nlrm-cfg\">",
+   "\"today2\":true"
+  ],
+  "script_order": "rm-views.js, rm-drawers.js, rm-lease.js, rm-import.js, rm-portal.js, rm-plan2d.js, rm-today.js, rm-boot.js (boot last)",
+  "must_not_change": [
+   "id=\"nlrm-root\" data-mode=\"app\"",
+   "one h1 only (class nlrm-h1)"
+  ]
+ },
+ "pilot_landlord_page_after_release": {
+  "must_contain": [
+   "rm-today.js?ver=",
+   "\"today2\":false"
+  ],
+  "note": "pilot landlords get the scripts but keep the present today view until option nadlan_rentals_today2_pilot = '1'"
+ },
+ "public_visitor_page": {
+  "url": "/my-rentals/",
+  "note": "unchanged for a visitor: v2 is for administrators and pilots only (nadlan_rentals_v2 = 'admin'); no today2 key is needed"
+ },
+ "rest": {
+  "routes_listed_in": "/wp-json/nadlan/v1",
+  "must_contain": [
+   "/nadlan/v1/rm/today/repair",
+   "/nadlan/v1/rm/today/index-confirm"
+  ],
+  "unauthenticated_post_must_be": "401 or 403, never 200"
+ },
+ "health": "GET /wp-json/nadlan/v1/health must still answer with the version the release sets",
+ "server_files": [
+  {
+   "rel": "inc/rentals/today.php",
+   "php_l": true
+  },
+  {
+   "rel": "inc/rentals/page.php",
+   "php_l": true
+  },
+  {
+   "rel": "inc/rentals-manager.php",
+   "php_l": true,
+   "must_contain": [
+    "'rest', 'today', 'portal'"
+   ]
+  }
+ ],
+ "not_measured": "not measured on a real phone"
+}

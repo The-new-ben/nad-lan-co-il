@@ -1,0 +1,848 @@
+{
+ "checks": [
+  {
+   "check": "he phone what is waiting is on screen with 0 presses",
+   "ok": true,
+   "info": "תקלה אחת פתוחה: דוד שמש."
+  },
+  {
+   "check": "he phone urgent card: deadline bar, two actions, no dash characters",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone direction/lang follow the language",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone legal sentences exactly as given, source named (building system)",
+   "ok": true,
+   "info": "ליקוי שאינו קל ערך: המשכיר מתקן על חשבונו. ליקוי משימוש בלתי סביר בדירה: על השוכר, אלא אם סיכמתם אחרת.\nחוק השכירות והשאילה, סעיף 25ח"
+  },
+  {
+   "check": "he phone urgent every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone urgent card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 77%-83%', 'ticket 77%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "he phone urgent no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone repair with a photo: ours 1, camera 2, total 3",
+   "ok": true,
+   "info": "ours 1 camera 2"
+  },
+  {
+   "check": "he phone repair saved with no form: one request, ticket + photo, no sheet opened",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone the new repair shows in 'done recently'",
+   "ok": true,
+   "info": "נעשה לאחרונה\nתקלה חדשה, עם תמונה\n10.11\nתקלה נפתחה: הדוד לא מחמם מים\n9.11\nשכר דירה לספטמבר התקבל\n11.9\nשכר דירה לאוגוסט הת"
+  },
+  {
+   "check": "he phone drawing sheet: 4 parts, each a <button> of at least 44 px",
+   "ok": true,
+   "info": "[['BUTTON', 49, 49], ['BUTTON', 44, 44], ['BUTTON', 44, 44]]"
+  },
+  {
+   "check": "he phone no room name sits under a tile or a state tag in the drawing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone no plan: a row of the parts' icons and the 'add a plan' link, no made-up floor",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone no-plan every visible button >= 44 px (16 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone no-plan card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 77%-83%', 'ticket 77%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "he phone no-plan no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone due-soon card: rent + index rows",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone due-soon card title is the renamed one; no 'coming soon' wording anywhere on the screen",
+   "ok": true,
+   "info": "בימים הקרובים"
+  },
+  {
+   "check": "he phone soon every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone soon card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['rent 69%-75%', 'index 77%-82%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "he phone soon no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone index sheet shows today's rent, base index, latest index, new rent",
+   "ok": true,
+   "info": "['שכר הדירה היום 8,042 ₪', 'מדד הבסיס בחוזה 100.0', 'המדד האחרון 103.8', 'שכר הדירה מ-1.12.2026 8,096 ₪']"
+  },
+  {
+   "check": "he phone index sheet buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "he phone index confirmed in 2 presses, as a journal event (no ledger line)",
+   "ok": true,
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0dzusab'}"
+  },
+  {
+   "check": "he phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
+   "ok": true,
+   "info": "אושר: שכר הדירה מ-דצמבר 2026 הוא 8,096 ₪. נרשם ביומן הדירה."
+  },
+  {
+   "check": "he phone the card says it too, the index row is gone, and it shows in 'done recently'",
+   "ok": true,
+   "info": "אושר: שכר הדירה מ-דצמבר 2026 הוא 8,096 ₪. נרשם ביומן הדירה.  בימים הקרובים 1.12 שכר דירה לדצמבר 8,042 ₪ · בעוד 5 ימים הת"
+  },
+  {
+   "check": "he phone the lease and the books are untouched (linkage stays, no new ledger row)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone rent received in 1 press: the expected amount, today's date, no form",
+   "ok": true,
+   "info": "presses 1, 640000 2026-11-20"
+  },
+  {
+   "check": "he phone the rent row is gone and it shows in 'done recently'",
+   "ok": true,
+   "info": "נעשה לאחרונה\nשכר דירה לנובמבר התקבל\n20.11\nתקלה נסגרה: טפטוף בברז המטבח\n20.11\nתקלה נפתחה: טפטוף בברז "
+  },
+  {
+   "check": "he phone tenancy axis: twelve month buttons, each 44 px or more",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone next-due sheet is on screen with 0 presses and has the 'received' button",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone axis every visible button >= 44 px (22 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone axis card actions + camera row between 35% and 98% of the height (2)",
+   "ok": true,
+   "info": "['rent 78%-84%', 'remind 85%-91%']"
+  },
+  {
+   "check": "he phone axis no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone axis: one press marks the month paid on the ruler",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone quiet state: year total and on-time streak computed ({'state': 'quiet', 'year': 86526, 'streak': 15})",
+   "ok": true,
+   "info": "86,526 ₪ נכנסו מהדירה ב-2026. 15 חודשים ברצף, כולם בזמן. מצב הדירה שכר דירה שולם"
+  },
+  {
+   "check": "he phone quiet every visible button >= 44 px (10 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he phone quiet card actions + camera row between 35% and 98% of the height (3)",
+   "ok": true,
+   "info": "['plate 77%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "he phone quiet no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk what is waiting is on screen with 0 presses",
+   "ok": true,
+   "info": "תקלה אחת פתוחה: דוד שמש."
+  },
+  {
+   "check": "he desk urgent card: deadline bar, two actions, no dash characters",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk direction/lang follow the language",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk legal sentences exactly as given, source named (building system)",
+   "ok": true,
+   "info": "ליקוי שאינו קל ערך: המשכיר מתקן על חשבונו. ליקוי משימוש בלתי סביר בדירה: על השוכר, אלא אם סיכמתם אחרת.\nחוק השכירות והשאילה, סעיף 25ח"
+  },
+  {
+   "check": "he desk urgent every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk urgent card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 78%-84%', 'ticket 78%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "he desk urgent no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk repair with a photo: ours 1, camera 2, total 3",
+   "ok": true,
+   "info": "ours 1 camera 2"
+  },
+  {
+   "check": "he desk repair saved with no form: one request, ticket + photo, no sheet opened",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk the new repair shows in 'done recently'",
+   "ok": true,
+   "info": "נעשה לאחרונה\nתקלה חדשה, עם תמונה\n10.11\nתקלה נפתחה: הדוד לא מחמם מים\n9.11\nשכר דירה לספטמבר התקבל\n11.9\nשכר דירה לאוגוסט הת"
+  },
+  {
+   "check": "he desk drawing sheet: 4 parts, each a <button> of at least 44 px",
+   "ok": true,
+   "info": "[['BUTTON', 49, 49], ['BUTTON', 44, 44], ['BUTTON', 44, 44]]"
+  },
+  {
+   "check": "he desk no room name sits under a tile or a state tag in the drawing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk no plan: a row of the parts' icons and the 'add a plan' link, no made-up floor",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk no-plan every visible button >= 44 px (16 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk no-plan card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 78%-84%', 'ticket 78%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "he desk no-plan no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk due-soon card: rent + index rows",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk due-soon card title is the renamed one; no 'coming soon' wording anywhere on the screen",
+   "ok": true,
+   "info": "בימים הקרובים"
+  },
+  {
+   "check": "he desk soon every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk soon card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['rent 71%-77%', 'index 78%-83%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "he desk soon no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk index sheet shows today's rent, base index, latest index, new rent",
+   "ok": true,
+   "info": "['שכר הדירה היום 8,042 ₪', 'מדד הבסיס בחוזה 100.0', 'המדד האחרון 103.8', 'שכר הדירה מ-1.12.2026 8,096 ₪']"
+  },
+  {
+   "check": "he desk index sheet buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "he desk index confirmed in 2 presses, as a journal event (no ledger line)",
+   "ok": true,
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0e57b9v'}"
+  },
+  {
+   "check": "he desk the sheet says what is true: confirmed, month, amount, recorded in the journal",
+   "ok": true,
+   "info": "אושר: שכר הדירה מ-דצמבר 2026 הוא 8,096 ₪. נרשם ביומן הדירה."
+  },
+  {
+   "check": "he desk the card says it too, the index row is gone, and it shows in 'done recently'",
+   "ok": true,
+   "info": "אושר: שכר הדירה מ-דצמבר 2026 הוא 8,096 ₪. נרשם ביומן הדירה.  בימים הקרובים 1.12 שכר דירה לדצמבר 8,042 ₪ · בעוד 5 ימים הת"
+  },
+  {
+   "check": "he desk the lease and the books are untouched (linkage stays, no new ledger row)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk rent received in 1 press: the expected amount, today's date, no form",
+   "ok": true,
+   "info": "presses 1, 640000 2026-11-20"
+  },
+  {
+   "check": "he desk the rent row is gone and it shows in 'done recently'",
+   "ok": true,
+   "info": "נעשה לאחרונה\nשכר דירה לנובמבר התקבל\n20.11\nתקלה נסגרה: טפטוף בברז המטבח\n20.11\nתקלה נפתחה: טפטוף בברז "
+  },
+  {
+   "check": "he desk tenancy axis: twelve month buttons, each 44 px or more",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk next-due sheet is on screen with 0 presses and has the 'received' button",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk axis every visible button >= 44 px (22 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk axis card actions + camera row between 35% and 98% of the height (2)",
+   "ok": true,
+   "info": "['rent 79%-85%', 'remind 86%-91%']"
+  },
+  {
+   "check": "he desk axis no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk axis: one press marks the month paid on the ruler",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk quiet state: year total and on-time streak computed ({'state': 'quiet', 'year': 86526, 'streak': 15})",
+   "ok": true,
+   "info": "86,526 ₪ נכנסו מהדירה ב-2026. 15 חודשים ברצף, כולם בזמן. מצב הדירה שכר דירה שולם"
+  },
+  {
+   "check": "he desk quiet every visible button >= 44 px (10 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he desk quiet card actions + camera row between 35% and 98% of the height (3)",
+   "ok": true,
+   "info": "['plate 79%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "he desk quiet no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone what is waiting is on screen with 0 presses",
+   "ok": true,
+   "info": "One open fault: Water heater."
+  },
+  {
+   "check": "en phone urgent card: deadline bar, two actions, no dash characters",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone direction/lang follow the language",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone legal sentences present (building system)",
+   "ok": true,
+   "info": "A defect that is not minor: the landlord repairs at his own cost. A defect from unreasonable use of the apartment: the tenant pays, unless you agreed otherwise.\nRental and Borrowing Law (חוק השכירות והשאילה), section 25H"
+  },
+  {
+   "check": "en phone urgent every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone urgent card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 77%-83%', 'ticket 77%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "en phone urgent no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone repair with a photo: ours 1, camera 2, total 3",
+   "ok": true,
+   "info": "ours 1 camera 2"
+  },
+  {
+   "check": "en phone repair saved with no form: one request, ticket + photo, no sheet opened",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone the new repair shows in 'done recently'",
+   "ok": true,
+   "info": "Done recently\nNew fault, with a photo\n10.11\nFault opened: Water heater does not heat\n9.11\nRent for September received\n11"
+  },
+  {
+   "check": "en phone drawing sheet: 4 parts, each a <button> of at least 44 px",
+   "ok": true,
+   "info": "[['BUTTON', 49, 49], ['BUTTON', 44, 44], ['BUTTON', 44, 44]]"
+  },
+  {
+   "check": "en phone no room name sits under a tile or a state tag in the drawing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone no plan: a row of the parts' icons and the 'add a plan' link, no made-up floor",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone no-plan every visible button >= 44 px (16 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone no-plan card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 77%-83%', 'ticket 77%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "en phone no-plan no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone due-soon card: rent + index rows",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone due-soon card title is the renamed one; no 'coming soon' wording anywhere on the screen",
+   "ok": true,
+   "info": "In the next days"
+  },
+  {
+   "check": "en phone soon every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone soon card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['rent 67%-73%', 'index 75%-81%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "en phone soon no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone index sheet shows today's rent, base index, latest index, new rent",
+   "ok": true,
+   "info": "['Rent today ₪8,042', 'Base index in the lease 100.0', 'Latest index 103.8', 'Rent from 1 Dec 2026 ₪8,096']"
+  },
+  {
+   "check": "en phone index sheet buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "en phone index confirmed in 2 presses, as a journal event (no ledger line)",
+   "ok": true,
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0x90db3'}"
+  },
+  {
+   "check": "en phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
+   "ok": true,
+   "info": "Confirmed: the rent from December 2026 is ₪8,096. Recorded in the apartment's journal."
+  },
+  {
+   "check": "en phone the card says it too, the index row is gone, and it shows in 'done recently'",
+   "ok": true,
+   "info": "Confirmed: the rent from December 2026 is ₪8,096. Recorded in the apartment's journal.  In the next days 1.12 Rent for D"
+  },
+  {
+   "check": "en phone the lease and the books are untouched (linkage stays, no new ledger row)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone rent received in 1 press: the expected amount, today's date, no form",
+   "ok": true,
+   "info": "presses 1, 640000 2026-11-20"
+  },
+  {
+   "check": "en phone the rent row is gone and it shows in 'done recently'",
+   "ok": true,
+   "info": "Done recently\nRent for November received\n20.11\nFault closed: Kitchen tap drips\n20.11\nFault opened: K"
+  },
+  {
+   "check": "en phone tenancy axis: twelve month buttons, each 44 px or more",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone next-due sheet is on screen with 0 presses and has the 'received' button",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone axis every visible button >= 44 px (22 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone axis card actions + camera row between 35% and 98% of the height (2)",
+   "ok": true,
+   "info": "['rent 78%-84%', 'remind 85%-91%']"
+  },
+  {
+   "check": "en phone axis no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone axis: one press marks the month paid on the ruler",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone quiet state: year total and on-time streak computed ({'state': 'quiet', 'year': 86526, 'streak': 15})",
+   "ok": true,
+   "info": "₪86,526 came in from the apartment in 2026. 15 months in a row, all on time. Sta"
+  },
+  {
+   "check": "en phone quiet every visible button >= 44 px (10 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en phone quiet card actions + camera row between 35% and 98% of the height (3)",
+   "ok": true,
+   "info": "['plate 78%-83%', 'cam-repair 85%-91%', 'cam-doc 85%-91%']"
+  },
+  {
+   "check": "en phone quiet no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk what is waiting is on screen with 0 presses",
+   "ok": true,
+   "info": "One open fault: Water heater."
+  },
+  {
+   "check": "en desk urgent card: deadline bar, two actions, no dash characters",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk direction/lang follow the language",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk legal sentences present (building system)",
+   "ok": true,
+   "info": "A defect that is not minor: the landlord repairs at his own cost. A defect from unreasonable use of the apartment: the tenant pays, unless you agreed otherwise.\nRental and Borrowing Law (חוק השכירות והשאילה), section 25H"
+  },
+  {
+   "check": "en desk urgent every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk urgent card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 78%-84%', 'ticket 78%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "en desk urgent no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk repair with a photo: ours 1, camera 2, total 3",
+   "ok": true,
+   "info": "ours 1 camera 2"
+  },
+  {
+   "check": "en desk repair saved with no form: one request, ticket + photo, no sheet opened",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk the new repair shows in 'done recently'",
+   "ok": true,
+   "info": "Done recently\nNew fault, with a photo\n10.11\nFault opened: Water heater does not heat\n9.11\nRent for September received\n11"
+  },
+  {
+   "check": "en desk drawing sheet: 4 parts, each a <button> of at least 44 px",
+   "ok": true,
+   "info": "[['BUTTON', 49, 49], ['BUTTON', 44, 44], ['BUTTON', 44, 44]]"
+  },
+  {
+   "check": "en desk no room name sits under a tile or a state tag in the drawing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk no plan: a row of the parts' icons and the 'add a plan' link, no made-up floor",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk no-plan every visible button >= 44 px (16 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk no-plan card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['ticket 78%-84%', 'ticket 78%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "en desk no-plan no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk due-soon card: rent + index rows",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk due-soon card title is the renamed one; no 'coming soon' wording anywhere on the screen",
+   "ok": true,
+   "info": "In the next days"
+  },
+  {
+   "check": "en desk soon every visible button >= 44 px (11 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk soon card actions + camera row between 35% and 98% of the height (4)",
+   "ok": true,
+   "info": "['rent 71%-77%', 'index 78%-83%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "en desk soon no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk index sheet shows today's rent, base index, latest index, new rent",
+   "ok": true,
+   "info": "['Rent today ₪8,042', 'Base index in the lease 100.0', 'Latest index 103.8', 'Rent from 1 Dec 2026 ₪8,096']"
+  },
+  {
+   "check": "en desk index sheet buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "en desk index confirmed in 2 presses, as a journal event (no ledger line)",
+   "ok": true,
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0hve52e'}"
+  },
+  {
+   "check": "en desk the sheet says what is true: confirmed, month, amount, recorded in the journal",
+   "ok": true,
+   "info": "Confirmed: the rent from December 2026 is ₪8,096. Recorded in the apartment's journal."
+  },
+  {
+   "check": "en desk the card says it too, the index row is gone, and it shows in 'done recently'",
+   "ok": true,
+   "info": "Confirmed: the rent from December 2026 is ₪8,096. Recorded in the apartment's journal.  In the next days 1.12 Rent for D"
+  },
+  {
+   "check": "en desk the lease and the books are untouched (linkage stays, no new ledger row)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk rent received in 1 press: the expected amount, today's date, no form",
+   "ok": true,
+   "info": "presses 1, 640000 2026-11-20"
+  },
+  {
+   "check": "en desk the rent row is gone and it shows in 'done recently'",
+   "ok": true,
+   "info": "Done recently\nRent for November received\n20.11\nFault closed: Kitchen tap drips\n20.11\nFault opened: K"
+  },
+  {
+   "check": "en desk tenancy axis: twelve month buttons, each 44 px or more",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk next-due sheet is on screen with 0 presses and has the 'received' button",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk axis every visible button >= 44 px (22 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk axis card actions + camera row between 35% and 98% of the height (2)",
+   "ok": true,
+   "info": "['rent 79%-85%', 'remind 86%-91%']"
+  },
+  {
+   "check": "en desk axis no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk axis: one press marks the month paid on the ruler",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk quiet state: year total and on-time streak computed ({'state': 'quiet', 'year': 86526, 'streak': 15})",
+   "ok": true,
+   "info": "₪86,526 came in from the apartment in 2026. 15 months in a row, all on time. Sta"
+  },
+  {
+   "check": "en desk quiet every visible button >= 44 px (10 buttons)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en desk quiet card actions + camera row between 35% and 98% of the height (3)",
+   "ok": true,
+   "info": "['plate 79%-84%', 'cam-repair 86%-92%', 'cam-doc 86%-92%']"
+  },
+  {
+   "check": "en desk quiet no horizontal scroll",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "no console or page errors in any run",
+   "ok": true,
+   "info": "[]"
+  }
+ ],
+ "presses": {
+  "he phone waiting": 0,
+  "he phone repair+photo": {
+   "ours": 1,
+   "camera": 2,
+   "total": 3
+  },
+  "he phone index": 2,
+  "he phone rent": 1,
+  "he desk waiting": 0,
+  "he desk repair+photo": {
+   "ours": 1,
+   "camera": 2,
+   "total": 3
+  },
+  "he desk index": 2,
+  "he desk rent": 1,
+  "en phone waiting": 0,
+  "en phone repair+photo": {
+   "ours": 1,
+   "camera": 2,
+   "total": 3
+  },
+  "en phone index": 2,
+  "en phone rent": 1,
+  "en desk waiting": 0,
+  "en desk repair+photo": {
+   "ours": 1,
+   "camera": 2,
+   "total": 3
+  },
+  "en desk index": 2,
+  "en desk rent": 1
+ },
+ "errors": [],
+ "summary": {
+  "passed": 161,
+  "total": 161
+ }
+}

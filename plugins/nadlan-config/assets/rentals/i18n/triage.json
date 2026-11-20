@@ -1,0 +1,26 @@
+{
+  "note": "One rule table for the server (portal.php nlrm_triage) and the app (rm-drawers.js N.triage). Urgent = a defect that prevents reasonable living: the landlord repairs within 3 days; otherwise 30 (Fair Rental Law s.25ח(ב)). First matching category wins, so the specific ones come first. Lower-case matching.",
+  "categories": [
+    ["boiler", ["מים חמים", "דוד", "בוילר", "hot water", "boiler", "water heater", "heater", "горячей воды", "бойлер", "ماء ساخن", "سخان"]],
+    ["roof", ["מהתקרה", "חדירת מים", "רטיבות מהתקרה", "גג", "from the ceiling", "ceiling leak", "roof", "с потолка", "крыша", "من السقف", "سطح"]],
+    ["plumbing", ["נזילה", "דליפה", "דליפת", "טפטוף", "סתימה", "ביוב", "ברז", "אסלה", "צינור", "הצפה", "מוצף", "מים", "leak", "drip", "clog", "pipe", "toilet", "faucet", "tap", "sewage", "flood", "water", "протечка", "течет", "кран", "туалет", "засор", "вода", "воды", "تسرب", "حنفية", "مرحاض", "ماء"]],
+    ["electric", ["חשמל", "קצר", "שקע", "מפסק", "פחת", "נורה", "מאוורר", "ניצוצות", "electric", "socket", "outlet", "breaker", "short", "power", "fan", "spark", "розетк", "электр", "свет", "كهرباء", "مقبس"]],
+    ["ac", ["מזגן", "מיזוג", "a/c", "air condition", "air-condition", "кондиционер", "مكيف"]],
+    ["appliance", ["מקרר", "תנור", "כיריים", "מכונת כביסה", "מדיח", "fridge", "oven", "stove", "washer", "dishwasher", "холодильник", "плита", "стиральн", "ثلاجة", "فرن", "غسالة"]],
+    ["mold", ["עובש", "רטיבות", "טחב", "mold", "mould", "damp", "плесень", "сырость", "عفن", "رطوبة"]],
+    ["locks", ["מנעול", "ננעל", "נועלת", "דלת", "מפתח", "lock", "door", "key", "замок", "дверь", "ключ", "قفل", "باب", "مفتاح"]],
+    ["pests", ["מקקים", "נמלים", "עכברים", "מזיקים", "roach", "ants", "mice", "pest", "тараканы", "мыши", "صراصير", "فئران"]],
+    ["paint", ["צבע", "קיר", "סדק", "paint", "wall", "crack", "краска", "стена", "трещина", "طلاء", "جدار", "شق"]]
+  ],
+  "urgent": [
+    "אין מים", "אין חשמל", "אין גז", "הצפה", "מוצף", "שריפה", "עשן", "ריח גז", "ריח שריפה", "ניצוצות", "חוט חשוף", "פריצה", "ביוב עולה", "לא מחמם",
+    "מים מהתקרה", "נזילה מהתקרה", "דליפה מהתקרה", "דליפת מים", "מים יורדים", "צינור התפוצץ", "פיצוץ צינור",
+    "לא נסגרת", "לא ננעלת", "לא נועלת", "מנעול שבור", "ננעלתי בחוץ", "מעלית תקועה",
+    "no water", "no hot water", "no power", "no electricity", "no gas", "flood", "fire", "smoke", "gas smell", "smell of gas", "sparks", "exposed wire",
+    "break-in", "does not heat", "not heating", "burst pipe", "pipe burst", "leak from the ceiling", "leaking from the ceiling", "ceiling leak", "water leaking",
+    "door does not lock", "door doesn't lock", "door won't lock", "can't lock", "cannot lock", "broken lock", "lock is broken", "locked out", "elevator stuck", "lift stuck",
+    "нет воды", "нет горячей воды", "нет света", "нет электричества", "запах газа", "пожар", "дым", "затопил", "прорвало", "течет с потолка", "не закрывается", "не запирается",
+    "لا يوجد ماء", "لا ماء", "لا كهرباء", "رائحة غاز", "حريق", "دخان", "فيضان", "تسرب من السقف", "الباب لا يقفل"
+  ],
+  "pro_he": { "plumbing": "אינסטלטור", "electric": "חשמלאי", "boiler": "טכנאי דודים", "ac": "טכנאי מזגנים", "appliance": "טכנאי מכשירי חשמל", "roof": "איטום", "mold": "איטום", "locks": "מנעולן", "pests": "מדביר", "paint": "צבעי", "general": "הנדימן" }
+}

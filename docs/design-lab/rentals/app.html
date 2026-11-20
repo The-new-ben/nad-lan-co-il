@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ניהול השכרות · מעבדה מקומית</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&family=Assistant:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../../plugins/nadlan-config/assets/rentals/rm.css">
+<link rel="stylesheet" href="../../../plugins/nadlan-config/assets/rentals/rm-today.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>body{margin:0;background:#f7f6f2;padding:0 16px}</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-core.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-demo.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-views.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-drawers.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-lease.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-import.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-plan2d.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-today.js"></script>
+<script src="today-lab.js"></script>
+<script type="module" src="../../../plugins/nadlan-config/assets/rentals/rm-3d.js"></script>
+<script>
+(function () {
+	var q = new URLSearchParams(location.search), lang = q.get("lang") || "he", base = "../../../plugins/nadlan-config/assets/rentals/i18n/", s1 = "../../../docs/rentals/build/slice1/";
+	var files = ["he", "en", "lease", "triage"].map(function (l) { return fetch(base + l + ".json").then(function (r) { return r.json(); }); });
+	/* slice 1: the new strings are merged here, never written into he.json / en.json */
+	files.push(fetch(s1 + "strings-he.json").then(function (r) { return r.json(); }), fetch(s1 + "strings-en.json").then(function (r) { return r.json(); }));
+	Promise.all(files).then(function (j) {
+		Object.assign(j[0].ui, j[4]); Object.assign(j[1].ui, j[5]);
+		var strings = { he: j[0].ui, en: j[1].ui }, msg = { he: j[0].msg, en: j[1].msg };
+		NLRM.LEASE = j[2];
+		NLRM.TRIAGE = j[3];
+		NLRM.setStrings(lang, strings[lang]);
+		TodayLab.install(q, lang);
+		var ad = NLRM.DemoAdapter(lang);
+		TodayLab.attach(ad);
+		if (q.get("empty")) { var b0 = ad.boot; ad.boot = function () { return b0().then(function (d) { ["properties", "units", "contacts", "leases", "ledger", "tickets", "docs", "events"].forEach(function (k) { d[k] = []; }); d.demo = false; return d; }); }; }
+		var root = document.getElementById("app");
+		NLRM.mountToday(root, { urls: { designer: "/tour/designer/" }, today2: q.get("slice") === "1" });
+		NLRM.mount(root, { lang: lang, strings: strings, msg: msg, adapter: ad, inPlaceLang: true, assets: "../../../plugins/nadlan-config/assets/rentals/", me: { display: lang === "he" ? "דני כהן" : "Dan Cohen", phone: "972500000999", pay: { bit: "972500000999", bank: lang === "he" ? "בנק לאומי, סניף 800, חשבון 12345678, דני כהן (דוגמה)" : "Bank Leumi, branch 800, account 12345678, Dan Cohen (sample)" } }, urls: { pros: "https://nad-lan.co.il/professionals/", wizard: "https://nad-lan.co.il/post-listing/" } });
+	});
+})();
+</script>
+</body>
+</html>

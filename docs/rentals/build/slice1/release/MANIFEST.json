@@ -1,0 +1,103 @@
+{
+ "slice": "rentals-slice-1 (HAD-795)",
+ "root": "plugins/nadlan-config/",
+ "note": "base = the main-checkout file as it was when staged; page.php and rm-boot.js did not exist in the main checkout before this session (copied from worktree bold-cray-ad2cea), so the release script must compare base_md5 with the LIVE file first",
+ "files": [
+  {
+   "rel": "inc/rentals/page.php",
+   "kind": "changed",
+   "base_md5": "54e77e553cd194a67b4c9cdfb6032802",
+   "staged_md5": "67bed86bbc40b28b154183396a36fc7f",
+   "how": "hunk",
+   "eol": "LF",
+   "pairs": [
+    [
+     "\t\tforeach ( array( 'views', 'drawers', 'lease', 'import', 'portal', 'boot' ) as $f ) {",
+     "\t\tforeach ( array( 'views', 'drawers', 'lease', 'import', 'portal', 'plan2d', 'today', 'boot' ) as $f ) {"
+    ],
+    [
+     "\t\twp_enqueue_style( 'nlrm', NLRM_URL_ASSETS . 'rm.css', array(), $v );",
+     "\t\twp_enqueue_style( 'nlrm', NLRM_URL_ASSETS . 'rm.css', array(), $v );\n\t\twp_enqueue_style( 'nlrm-plex', 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap', array(), null );\n\t\twp_enqueue_style( 'nlrm-today', NLRM_URL_ASSETS . 'rm-today.css', array( 'nlrm' ), $v );"
+    ],
+    [
+     "\t\t\t'assets' => NLRM_URL_ASSETS, 'ver' => defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '',",
+     "\t\t\t'assets' => NLRM_URL_ASSETS, 'ver' => defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '',\n\t\t\t/* the new landing screen: on by default for administrators only (option nadlan_rentals_today2, default '1'); pilot landlords keep the old today view until it has been pressed live (option nadlan_rentals_today2_pilot, default '0'); also #/today-classic, ?today=classic */\n\t\t\t'today2' => current_user_can( 'manage_options' ) ? '0' !== (string) get_option( 'nadlan_rentals_today2', '1' ) : '1' === (string) get_option( 'nadlan_rentals_today2_pilot', '0' ),"
+    ]
+   ]
+  },
+  {
+   "rel": "inc/rentals-manager.php",
+   "kind": "changed",
+   "base_md5": "13a0b73dbe14fbf3f4a1e2bb07975796",
+   "staged_md5": "3bfc9699040f9ce8bae7205f7ca4a57b",
+   "how": "hunk",
+   "eol": "LF",
+   "pairs": [
+    [
+     "foreach ( array( 'store', 'money', 'billing', 'rest', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {",
+     "foreach ( array( 'store', 'money', 'billing', 'rest', 'today', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {"
+    ]
+   ]
+  },
+  {
+   "rel": "assets/rentals/rm-boot.js",
+   "kind": "changed",
+   "base_md5": "08580861b20a19955e69aab04f471f82",
+   "staged_md5": "efe33cf20b3d38a7f5027f4c4360fcf9",
+   "how": "hunk",
+   "eol": "LF",
+   "pairs": [
+    [
+     "\t\tbase.adapter = adapter;",
+     "\t\tbase.adapter = adapter;\n\t\tif (N.mountToday) { N.mountToday(root, { rest: cfg.rest, nonce: cfg.nonce, urls: cfg.urls, today2: cfg.today2 }); }"
+    ]
+   ]
+  },
+  {
+   "rel": "assets/rentals/i18n/he.json",
+   "kind": "changed",
+   "base_md5": "fc8477e0ee6b72ba760aaaee5919130f",
+   "staged_md5": "88fc636e27704544ea5f1d2639cc98bb",
+   "how": "whole file",
+   "eol": "LF",
+   "added_keys": 128
+  },
+  {
+   "rel": "assets/rentals/i18n/en.json",
+   "kind": "changed",
+   "base_md5": "77f6dc2081a7455c0883c70b5293d923",
+   "staged_md5": "86df3e92af6dd4518ee4d31711a73e76",
+   "how": "whole file",
+   "eol": "LF",
+   "added_keys": 128
+  },
+  {
+   "rel": "assets/rentals/rm-plan2d.js",
+   "kind": "new",
+   "base_md5": null,
+   "staged_md5": "2847101338075672bcf954d7c7779b89",
+   "how": "whole file"
+  },
+  {
+   "rel": "assets/rentals/rm-today.js",
+   "kind": "new",
+   "base_md5": null,
+   "staged_md5": "da0b3446f3eaa688020ffb38f9a8588f",
+   "how": "whole file"
+  },
+  {
+   "rel": "assets/rentals/rm-today.css",
+   "kind": "new",
+   "base_md5": null,
+   "staged_md5": "141876a8fdc72518fd1e239433f5a952",
+   "how": "whole file"
+  },
+  {
+   "rel": "inc/rentals/today.php",
+   "kind": "new",
+   "base_md5": null,
+   "staged_md5": "94711a4229ce1eca7da199709396885a",
+   "how": "whole file"
+  }
+ ]
+}

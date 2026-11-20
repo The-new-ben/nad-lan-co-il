@@ -56,7 +56,7 @@ if ( ! function_exists( 'nadlan_rm_v2' ) ) {
 		return false;
 	}
 }
-foreach ( array( 'store', 'money', 'billing', 'rest', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {
+foreach ( array( 'store', 'money', 'billing', 'rest', 'today', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {
 	@include_once __DIR__ . '/rentals/' . $nlrm_part . '.php'; // phpcs:ignore
 }
 

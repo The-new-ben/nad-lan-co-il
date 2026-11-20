@@ -1,0 +1,82 @@
+/* NadLan rent earnings (HAD-795). The statistician's ledger: cool ground, ink, one ink-blue action colour, a cyan range band,
+   IBM Plex (Hebrew, Latin, Cyrillic, Arabic) with Plex Mono figures. No cream, no terracotta or gold, no gradient.
+   The site theme forces colours on buttons and headings with !important, so the colours that carry contrast say !important too. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap");
+.nlre{--ink:#0E1B24;--ink2:#2B3B46;--mute:#41535F;--line:#C9D2D6;--hair:#DDE3E6;--ground:#F3F5F4;--blue:#1F4FD1;--blue2:#163A9E;--band:#8FD3E8;--stage:#E3EAEE;
+	font-family:"IBM Plex Sans","IBM Plex Sans Hebrew","IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--ink);display:grid;gap:14px;line-height:1.55;font-size:15px;text-align:start}
+.nlre[lang=he]{font-family:"IBM Plex Sans Hebrew","IBM Plex Sans",system-ui,sans-serif}
+.nlre[lang=ar]{font-family:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif}
+.nlre *{box-sizing:border-box}
+.nlre-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;position:relative;min-width:0}
+.nlre .nlre-k{margin:0 0 6px;font:600 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--mute)!important;text-transform:uppercase}
+.nlre .nlre-h{margin:0 0 14px;font-family:inherit!important;font-weight:700;font-size:clamp(1.35rem,4.6vw,1.9rem);line-height:1.2;color:var(--ink)!important;letter-spacing:0}
+.nlre h3{margin:0 0 10px;font-family:inherit!important;font-size:1.08rem;font-weight:700;color:var(--ink)!important}
+.nlre-pick{display:grid;gap:10px}
+.nlre-f{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:12.5px;line-height:1.3;color:var(--mute);min-width:0}
+.nlre select,.nlre input:not([type=checkbox]){min-height:46px;width:100%;border:1px solid var(--line)!important;border-radius:6px;padding:0 12px;font-weight:600;font-size:16px;font-family:inherit;color:var(--ink)!important;background:#fff!important;box-shadow:none}
+.nlre input.nlre-rent,.nlre input.nlre-price,.nlre input.nlre-empty,.nlre input.nlre-fee{font-family:"IBM Plex Mono",monospace;text-align:start}
+.nlre select:focus,.nlre input:focus{outline:2px solid var(--blue);outline-offset:1px}
+.nlre-rooms{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.nlre-rooms legend{font-weight:600;font-size:12.5px;font-family:inherit;color:var(--mute);padding:0;margin-bottom:4px}
+.nlre .nlre-rooms button{min-height:46px;border-radius:6px;border:1px solid var(--line)!important;background:#fff!important;color:var(--ink)!important;font:600 14px "IBM Plex Mono",monospace;cursor:pointer;padding:0;box-shadow:none}
+.nlre .nlre-rooms button[aria-pressed=true]{border:2px solid var(--blue)!important;background:#EAF0FF!important}
+.nlre-res{border-top:2px solid var(--ink);margin-top:14px;padding-top:12px;min-height:120px}
+.nlre-big{margin:0;font:600 clamp(1.7rem,7vw,2.5rem)/1.15 "IBM Plex Mono",monospace;color:var(--ink);display:flex;flex-wrap:wrap;gap:0 .35em;align-items:baseline}
+.nlre[dir=rtl] .nlre-big{justify-content:flex-end}
+.nlre-big i{font:500 .5em "IBM Plex Sans","IBM Plex Sans Hebrew",sans-serif;color:var(--mute);font-style:normal}
+.nlre-per{margin:2px 0 10px;color:var(--mute);font-size:13px}
+.nlre-band{position:relative;height:12px;background:var(--stage);border-radius:3px;margin:0 0 10px}
+.nlre-band i{position:absolute;inset-inline-start:var(--a);width:var(--b);top:0;bottom:0;background:var(--band);border-radius:3px}
+.nlre-band b{position:absolute;inset-inline-start:var(--m);width:2px;top:-4px;bottom:-4px;background:var(--ink)}
+.nlre-what{margin:0 0 4px;font-size:14px;color:var(--ink2)}
+.nlre-ago{margin:0 0 8px;font:500 12.5px "IBM Plex Mono",monospace;color:var(--mute)}
+.nlre-note,.nlre-none{margin:6px 0 0;font-size:13px;color:var(--ink2)}
+.nlre-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.nlre-f--wide{grid-column:1/-1}
+.nlre-sum{margin:14px 0 0;padding:10px 0 0;border-top:1px solid var(--hair);display:grid;gap:6px}
+.nlre-sum div{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.nlre-sum dt{margin:0;color:var(--ink2)}
+.nlre-sum dd{margin:0;font:600 15px "IBM Plex Mono",monospace;white-space:nowrap}
+.nlre-sum div.is-key{border-top:2px solid var(--ink);padding-top:6px}
+.nlre-sum div.is-key dt,.nlre-sum div.is-key dd{font-weight:700;color:var(--ink)}
+.nlre-tax{margin:4px 0 0;font-size:12.5px;color:var(--mute)}
+.nlre-src{margin:12px 0 0;font-size:12px;color:var(--mute)}
+.nlre-who{display:grid;gap:10px}
+.nlre .nlre-btn{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:52px;border-radius:6px;padding:10px 14px;text-decoration:none!important;cursor:pointer;list-style:none;text-align:start}
+.nlre .nlre-btn b{font-size:15px;font-weight:700}
+.nlre .nlre-btn span{font-size:12.5px;font-weight:400;opacity:.92}
+.nlre .nlre-btn--go{background:var(--blue)!important;color:#fff!important;border:0!important}
+.nlre .nlre-btn--go *{color:#fff!important}
+.nlre .nlre-btn--go:hover{background:var(--blue2)!important}
+.nlre .nlre-btn--line{background:#fff!important;color:var(--ink)!important;border:2px solid var(--ink)!important}
+.nlre .nlre-btn--line *{color:var(--ink)!important}
+.nlre-mgr summary::-webkit-details-marker{display:none}
+.nlre-mgr[open] summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.nlre-form{border:2px solid var(--ink);border-top:0;border-radius:0 0 6px 6px;padding:12px;display:grid;gap:10px}
+.nlre-form .nlre-send{align-items:center;min-height:48px}
+.nlre-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.nlre-ok{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--ink2)}
+.nlre-ok input{margin-top:3px;width:18px;height:18px;flex:0 0 18px}
+.nlre-ok a{color:var(--blue)!important}
+.nlre-msg{margin:0;font-size:13.5px;color:var(--ink)}
+.nlre .nlre-basket{min-height:46px;background:transparent!important;border:0!important;color:var(--blue)!important;font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;box-shadow:none}
+.nlre .nlre-basket.is-on{color:var(--ink)!important;text-decoration:none}
+@media(min-width:900px){
+	.nlre:not(.nlre--sheet){grid-template-columns:minmax(0,5fr) minmax(0,4fr);align-items:start}
+	.nlre:not(.nlre--sheet) .nlre-top{grid-row:span 2}
+	.nlre:not(.nlre--sheet) .nlre-pick{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:end}
+}
+/* the sheet over a project page */
+.nlre-veil{position:fixed;inset:0;z-index:100000;background:rgba(14,27,36,.55);display:flex;align-items:flex-end;justify-content:center}
+.nlre-dialog{width:100%;max-width:560px;max-height:92vh;overflow:auto;background:var(--ground,#F3F5F4);border-radius:14px 14px 0 0;padding:12px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(min-width:700px){.nlre-veil{align-items:center}.nlre-dialog{border-radius:14px;max-height:88vh}}
+.nlre-dialog .nlre{--ground:#F3F5F4}
+.nlre .nlre-x{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line)!important;background:#fff!important;color:var(--ink)!important;font:400 24px/1 sans-serif;cursor:pointer;padding:0}
+.nlre--sheet .nlre-k{padding-inline-end:48px}
+/* the inline opener on project pages (not floating: it sits under the stage) */
+.nlre-open{display:block;max-width:1120px;margin:14px auto;padding:0 16px}
+.nlre-open a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;border:1px solid #C9D2D6;border-radius:10px;background:#fff;padding:10px 16px;text-decoration:none!important;color:#0E1B24!important;font-family:"IBM Plex Sans Hebrew","IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif}
+.nlre-open a b{display:block;font-size:15.5px;color:#0E1B24!important}
+.nlre-open a small{display:block;font-size:12.5px;color:#41535F}
+.nlre-open a i{flex:0 0 auto;font-style:normal;background:#1F4FD1;color:#fff!important;border-radius:6px;padding:8px 12px;font-weight:700;font-size:14px;font-family:"IBM Plex Mono",monospace}
+.nlre-open .nlre-pickline{display:block;font:600 12px "IBM Plex Mono",monospace;color:#41535F}
