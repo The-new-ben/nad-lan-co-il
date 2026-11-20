@@ -282,6 +282,14 @@ if ( ! function_exists( 'nadlan_rm_prop_ok' ) ) {
 if ( ! function_exists( 'nadlan_rm_payload' ) ) {
 	function nadlan_rm_payload( $id, $lang = 'he' ) {
 		$units = json_decode( (string) get_post_meta( $id, 'rm_units', true ), true );
+		/* 20.11.2026: a sample tenant carries no phone (a number shaped like a real one may be someone's); the mark reads in the page language */
+		if ( is_array( $units ) && '1' === (string) get_post_meta( $id, 'is_demo', true ) ) {
+			foreach ( $units as $nk => $nu ) {
+				if ( ! is_array( $nu ) ) { continue; }
+				$units[ $nk ]['tenant_phone'] = '';
+				if ( 'he' !== $lang && ! empty( $nu['tenant_name'] ) ) { $units[ $nk ]['tenant_name'] = str_replace( '(דוגמה)', '(example)', (string) $nu['tenant_name'] ); }
+			}
+		}
 		$city  = (string) get_post_meta( $id, 'city', true );
 		$p = get_post( $id );
 		return array(
@@ -327,7 +335,11 @@ add_action( 'rest_api_init', function () {
 				$p = array_map( function ( $id ) use ( $lang ) { $x = nadlan_rm_payload( $id, $lang ); $x['can_manage'] = false; return $x; }, $ids );
 				set_transient( 'nlrm_demo_payload_' . $lang, $p, 10 * MINUTE_IN_SECONDS );
 			}
-			foreach ( $p as &$x ) { $x['can_manage'] = false; }
+			foreach ( $p as &$x ) {
+				$x['can_manage'] = false;
+				if ( isset( $x['units'] ) && is_array( $x['units'] ) ) { foreach ( $x['units'] as $nk => $nu ) { if ( is_array( $nu ) ) { $x['units'][ $nk ]['tenant_phone'] = ''; } } } // an answer cached before 20.11.2026
+			}
+			unset( $x );
 			return array( 'props' => $p );
 		},
 	) );
@@ -409,15 +421,15 @@ add_action( 'rest_api_init', function () {
 			$led_late = $led_ok; unset( $led_late[ $mm( 0 ) ], $led_late[ $mm( -1 ) ] );
 			$ids = array();
 			$ids[] = $mk( 'דוגמה: ארלוזורוב 78, תל אביב', 'ארלוזורוב 78', 'תל אביב-יפו', 5, 3, array(
-				array( 'id' => 'f3-1', 'floor' => 3, 'pos' => 0, 'dir' => 'west', 'label' => 'דירה 7', 'tenant_name' => 'משפחת לוי (דוגמה)', 'tenant_phone' => '9725' . '00000001', 'rent' => 7800, 'start' => ( $y - 1 ) . '-08-01', 'end' => $y . '-07-31', 'option_until' => ( $y + 1 ) . '-07-31', 'linkage' => 'madad', 'base_index' => 108.6, 'linked_pct' => 100, 'floor_clause' => true, 'securities' => array( 'check' => true, 'shtar' => true, 'arev' => true, 'bank' => false, 'deposit_amount' => 0 ),
+				array( 'id' => 'f3-1', 'floor' => 3, 'pos' => 0, 'dir' => 'west', 'label' => 'דירה 7', 'tenant_name' => 'משפחת לוי (דוגמה)', 'tenant_phone' => '', 'rent' => 7800, 'start' => ( $y - 1 ) . '-08-01', 'end' => $y . '-07-31', 'option_until' => ( $y + 1 ) . '-07-31', 'linkage' => 'madad', 'base_index' => 108.6, 'linked_pct' => 100, 'floor_clause' => true, 'securities' => array( 'check' => true, 'shtar' => true, 'arev' => true, 'bank' => false, 'deposit_amount' => 0 ),
 						'docs' => array( 'contract' => true, 'nesach' => true, 'protocol' => true, 'securities' => true, 'insurance' => true ),
 						'ledger' => $led_ok, 'maintenance' => array( array( 'text' => 'תוקן דוד שמש (דוגמה)', 'at' => $y . '-03-02', 'status' => 'done' ) ), 'note' => 'נתוני דוגמה' ),
-				array( 'id' => 'f5-2', 'floor' => 5, 'pos' => 1, 'dir' => 'south', 'label' => 'דירה 14', 'tenant_name' => 'ד. כהן (דוגמה)', 'tenant_phone' => '9725' . '00000002', 'rent' => 6400, 'start' => $y . '-01-15', 'end' => ( $y + 1 ) . '-01-14', 'option_until' => '', 'linkage' => 'none', 'securities' => array( 'check' => true, 'shtar' => false, 'arev' => false, 'bank' => true, 'deposit_amount' => 18000 ),
+				array( 'id' => 'f5-2', 'floor' => 5, 'pos' => 1, 'dir' => 'south', 'label' => 'דירה 14', 'tenant_name' => 'ד. כהן (דוגמה)', 'tenant_phone' => '', 'rent' => 6400, 'start' => $y . '-01-15', 'end' => ( $y + 1 ) . '-01-14', 'option_until' => '', 'linkage' => 'none', 'securities' => array( 'check' => true, 'shtar' => false, 'arev' => false, 'bank' => true, 'deposit_amount' => 18000 ),
 						'docs' => array( 'contract' => true, 'nesach' => true, 'protocol' => false, 'securities' => true, 'insurance' => false ),
 						'ledger' => $led_due, 'maintenance' => array( array( 'text' => 'טפטוף בברז המטבח (דוגמה)', 'at' => gmdate( 'Y-m-d', time() - 20 * DAY_IN_SECONDS ), 'status' => 'open', 'urgency' => 'standard' ) ), 'note' => 'נתוני דוגמה' ),
 			) );
 			$ids[] = $mk( 'דוגמה: ז\'בוטינסקי 12, רמת גן', 'ז\'בוטינסקי 12', 'רמת גן', 8, 4, array(
-				array( 'id' => 'f2-3', 'floor' => 2, 'pos' => 2, 'dir' => 'east', 'label' => 'דירה 7', 'tenant_name' => 'ר. מזרחי (דוגמה)', 'tenant_phone' => '9725' . '00000003', 'rent' => 5900, 'start' => ( $y - 2 ) . '-10-01', 'end' => $y . '-09-30', 'option_until' => '', 'linkage' => 'madad', 'base_index' => 104.2, 'linked_pct' => 50, 'floor_clause' => true, 'securities' => array( 'check' => true, 'shtar' => true, 'arev' => false, 'bank' => true, 'deposit_amount' => 21000 ),
+				array( 'id' => 'f2-3', 'floor' => 2, 'pos' => 2, 'dir' => 'east', 'label' => 'דירה 7', 'tenant_name' => 'ר. מזרחי (דוגמה)', 'tenant_phone' => '', 'rent' => 5900, 'start' => ( $y - 2 ) . '-10-01', 'end' => $y . '-09-30', 'option_until' => '', 'linkage' => 'madad', 'base_index' => 104.2, 'linked_pct' => 50, 'floor_clause' => true, 'securities' => array( 'check' => true, 'shtar' => true, 'arev' => false, 'bank' => true, 'deposit_amount' => 21000 ),
 						'docs' => array( 'contract' => true, 'nesach' => true, 'protocol' => true, 'securities' => true, 'insurance' => true ),
 						'ledger' => $led_late, 'maintenance' => array(), 'note' => 'נתוני דוגמה' ),
 				array( 'id' => 'f6-1', 'floor' => 6, 'pos' => 0, 'dir' => 'north', 'label' => 'דירה 21', 'tenant_name' => '', 'tenant_phone' => '', 'rent' => 0, 'start' => '', 'end' => '', 'option_until' => '', 'linkage' => 'none',
@@ -430,6 +442,22 @@ add_action( 'rest_api_init', function () {
 } );
 
 add_action( 'save_post_nadlan_rentalprop', function () { foreach ( array( 'he', 'en' ) as $l ) { delete_transient( 'nlrm_demo_payload_' . $l ); } } );
+
+/* 20.11.2026: sample tenants carry no phone. One-time clean of the STORED sample portfolio (the seed no longer writes one). */
+add_action( 'init', function () {
+	if ( '1' === get_option( 'nlrm_demo_nophone_v1' ) ) { return; }
+	update_option( 'nlrm_demo_nophone_v1', '1', false );
+	$demo_ids = get_posts( array( 'post_type' => 'nadlan_rentalprop', 'post_status' => 'any', 'posts_per_page' => 20,
+		'fields' => 'ids', 'meta_query' => array( array( 'key' => 'is_demo', 'value' => '1' ) ) ) );
+	foreach ( $demo_ids as $did ) {
+		$du = json_decode( (string) get_post_meta( $did, 'rm_units', true ), true );
+		if ( ! is_array( $du ) ) { continue; }
+		$changed = false;
+		foreach ( $du as $nk => $nu ) { if ( is_array( $nu ) && ! empty( $nu['tenant_phone'] ) ) { $du[ $nk ]['tenant_phone'] = ''; $changed = true; } }
+		if ( $changed ) { update_post_meta( $did, 'rm_units', wp_slash( wp_json_encode( $du, JSON_UNESCAPED_UNICODE ) ) ); }
+	}
+	foreach ( array( 'he', 'en' ) as $l ) { delete_transient( 'nlrm_demo_payload_' . $l ); }
+}, 20 );
 
 /* ---------- /my-rentals/ route ---------- */
 add_action( 'init', function () {

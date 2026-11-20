@@ -199,7 +199,11 @@
 		if (d.indexOf("972") === 0 && d.length >= 11) { d = "0" + d.slice(3); return d.slice(0, 3) + "-" + d.slice(3, 6) + "-" + d.slice(6); }
 		return d ? "+" + d : "";
 	};
-	N.wa = function (phone, text) { return "https://wa.me/" + N.phone(phone) + (text ? "?text=" + encodeURIComponent(text) : ""); };
+	/* the sample portfolio (20.11.2026): its people carry no phone, and nothing in it may open a chat or a call;
+	   a message to a sample person shows its wording only */
+	N.isDemo = function () { return !!(N.store && N.store.d && N.store.d.demo); };
+	N.canMsg = function (c) { return !!c && (!!c.phone || N.isDemo()); };
+	N.wa = function (phone, text) { if (N.isDemo()) { return "#"; } return "https://wa.me/" + N.phone(phone) + (text ? "?text=" + encodeURIComponent(text) : ""); };
 	/* message texts in the RECIPIENT's language (a tenant may be en while the landlord works in he) */
 	N.msg = function (kind, lang, v) {
 		var S = (N.MSG && (N.MSG[lang] || N.MSG.he)) || {};

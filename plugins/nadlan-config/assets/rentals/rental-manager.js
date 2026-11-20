@@ -430,7 +430,12 @@
 
 		/* connected actions - the one-platform promise */
 		h += '<div class="nlrm-actions">';
-		if (u.tenant_phone) {
+		/* a sample tenant carries no phone (20.11.2026): the reminder shows its wording only and opens no chat */
+		var isDemo = MODE === "demo" || !!CUR.is_demo;
+		if (isDemo && u.tenant_name) {
+			var demoTxt = tpl("wa_text", { name: u.tenant_name || "", month: ym(0).slice(5) + "/" + ym(0).slice(0, 4) });
+			h += '<a href="#" id="nlu-wademo" role="button" aria-expanded="false">' + esc(t("wa_btn")) + "</a>";
+		} else if (!isDemo && u.tenant_phone) {
 			var waTxt = tpl("wa_text", { name: u.tenant_name || "", month: ym(0).slice(5) + "/" + ym(0).slice(0, 4) });
 			h += '<a target="_blank" rel="noopener" href="https://wa.me/' + esc(u.tenant_phone.replace(/^0/, "972")) + "?text=" + encodeURIComponent(waTxt) + '">' + esc(t("wa_btn")) + "</a>";
 		}
@@ -439,10 +444,23 @@
 		h += '<a href="' + esc(root.dataset.studio) + '">' + esc(t("studio_btn")) + "</a>";
 		h += '<a href="#" id="nlu-export">' + esc(t("export_btn")) + "</a>";
 		h += "</div>";
+		if (isDemo && u.tenant_name) {
+			h += '<div class="nlrm-note" id="nlu-wamsg" hidden style="margin:8px 0 0;padding:10px 12px;border:1px solid #c9d3dd;border-radius:10px;background:#fff"><span id="nlu-watxt" style="display:block;color:#14212b">' + esc(demoTxt) + '</span>' +
+				'<button type="button" class="nlrm-btn nlrm-btn--ghost" id="nlu-wacopy" style="margin:8px 0 4px">' + (LANG === "en" ? "Copy the wording" : "העתקת הנוסח") + "</button><br>" +
+				(LANG === "en" ? "Sample data: nothing is sent and no chat opens. In your own account the button opens WhatsApp to your tenant." : "נתוני דוגמה: שום דבר לא נשלח ולא נפתח צ'אט. בחשבון שלכם הכפתור פותח וואטסאפ לדייר שלכם.") + "</div>";
+		}
 		if (can) { h += '<button type="button" class="nlrm-btn" id="nlu-save">' + esc(t("save")) + '</button> <span class="nlrm-note" id="nlu-msg" aria-live="polite"></span>'; }
 		box.innerHTML = h;
 		box.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
+		var wad = document.getElementById("nlu-wademo"), wam = document.getElementById("nlu-wamsg");
+		if (wad && wam) {
+			wad.addEventListener("click", function (ev) { ev.preventDefault(); wam.hidden = !wam.hidden; wad.setAttribute("aria-expanded", wam.hidden ? "false" : "true"); });
+			document.getElementById("nlu-wacopy").addEventListener("click", function () {
+				var tx = document.getElementById("nlu-watxt").textContent, bt = this, done = function () { bt.textContent = LANG === "en" ? "Copied" : "הועתק"; };
+				if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(tx).then(done, function () {}); }
+			});
+		}
 		/* evidence export: a printable, self-contained summary of the lease file */
 		var exp = document.getElementById("nlu-export");
 		if (exp) {

@@ -1,0 +1,200 @@
+{
+ "checks": [
+  {
+   "check": "he 390x844: the sample has 10 people, none carries a phone or an e-mail",
+   "ok": true,
+   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
+  },
+  {
+   "check": "he 390x844: the whole sample data holds no phone-shaped number and no e-mail address",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "he 390x844: every sample person's name wears the mark (דוגמה)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x844: the people list shows 4 names, each with the mark",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x844: none of the 10 screens holds a wa.me, tel: or mailto: link or a phone-shaped number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "he 390x844: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "he 390x844: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x844: no new tab or window was opened in the whole run",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800: the sample has 10 people, none carries a phone or an e-mail",
+   "ok": true,
+   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
+  },
+  {
+   "check": "he 1280x800: the whole sample data holds no phone-shaped number and no e-mail address",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "he 1280x800: every sample person's name wears the mark (דוגמה)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800: the people list shows 4 names, each with the mark",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800: none of the 10 screens holds a wa.me, tel: or mailto: link or a phone-shaped number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "he 1280x800: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "he 1280x800: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800: no new tab or window was opened in the whole run",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he: the tenancy screen of a sample tenant with rent unpaid still offers the reminder (home 21)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he: the reminder shows its wording above the day screen, the send control is a button, the wording holds no phone-shaped number",
+   "ok": true,
+   "info": "('שלום רון, תזכורת ידידותית לשכר הדירה של נובמבר 2026 (דירה 7): 11,982 ₪', 'BUTTON', True, [], [])"
+  },
+  {
+   "check": "he: the day and tenancy screens opened no tab",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844: the sample has 10 people, none carries a phone or an e-mail",
+   "ok": true,
+   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
+  },
+  {
+   "check": "en 390x844: the whole sample data holds no phone-shaped number and no e-mail address",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 390x844: every sample person's name wears the mark (example)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844: the people list shows 4 names, each with the mark",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844: none of the 10 screens holds a wa.me, tel: or mailto: link or a phone-shaped number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "en 390x844: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "en 390x844: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844: no new tab or window was opened in the whole run",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800: the sample has 10 people, none carries a phone or an e-mail",
+   "ok": true,
+   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
+  },
+  {
+   "check": "en 1280x800: the whole sample data holds no phone-shaped number and no e-mail address",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 1280x800: every sample person's name wears the mark (example)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800: the people list shows 4 names, each with the mark",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800: none of the 10 screens holds a wa.me, tel: or mailto: link or a phone-shaped number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "en 1280x800: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "ok": true,
+   "info": "{}"
+  },
+  {
+   "check": "en 1280x800: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800: no new tab or window was opened in the whole run",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en: the tenancy screen of a sample tenant with rent unpaid still offers the reminder (home 21)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en: the reminder shows its wording above the day screen, the send control is a button, the wording holds no phone-shaped number",
+   "ok": true,
+   "info": "('שלום Ron, תזכורת ידידותית לשכר הדירה של November 2026 (Apt 7): ₪11,982', 'BUTTON', True, [], [])"
+  },
+  {
+   "check": "en: the day and tenancy screens opened no tab",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "no page errors in any run",
+   "ok": true,
+   "info": "[]"
+  }
+ ],
+ "errors": []
+}

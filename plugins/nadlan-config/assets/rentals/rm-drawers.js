@@ -56,7 +56,7 @@
 		var tickets = (N.ix.ticketsByUnit[u.id] || []), open = tickets.filter(function (x) { return x.status !== "done" && x.status !== "cancelled"; }).length;
 		var docs = (N.ix.docsBy["unit:" + u.id] || []).concat(l ? (N.ix.docsBy["lease:" + l.id] || []) : []);
 		var sub = [p.address + ", " + p.city, t("floor_n", { n: u.floor }), u.rooms ? t("rooms_n", { n: u.rooms }) : "", u.sqm ? t("sqm_n", { n: u.sqm }) : "", u.dir ? t("dir_" + u.dir) : ""].filter(Boolean).map(esc).join(" · ") + " " + N.chip(st);
-		var acts = l ? (ten && ten.phone ? btn("wa-remind", t("act_remind"), "wa", "wa", ' data-lease="' + l.id + '"') : "") + btn("pay", t("act_paid"), "secondary", "check", ' data-lease="' + l.id + '"') + btn("new-ticket", t("new_ticket"), "secondary", "wrench", ' data-unit="' + u.id + '"') + btn("portal-link", t("act_portal"), "quiet", "link", ' data-lease="' + l.id + '"')
+		var acts = l ? (N.canMsg(ten) ? btn("wa-remind", t("act_remind"), "wa", "wa", ' data-lease="' + l.id + '"') : "") + btn("pay", t("act_paid"), "secondary", "check", ' data-lease="' + l.id + '"') + btn("new-ticket", t("new_ticket"), "secondary", "wrench", ' data-unit="' + u.id + '"') + btn("portal-link", t("act_portal"), "quiet", "link", ' data-lease="' + l.id + '"')
 			: btn("apply-link", t("act_apply_link"), "wa", "wa", ' data-unit="' + u.id + '"') + btn("new-lease", t("new_lease"), "secondary", "plus", ' data-unit="' + u.id + '"') + btn("publish", t("act_publish"), "quiet", "", ' data-unit="' + u.id + '"');
 		var tabs = [
 			{ id: "overview", label: t("tab_overview"), render: function () { return l ? unitOverview(u, l, tens) : vacantOverview(u); } },
@@ -219,7 +219,7 @@
 		if (!c) { return null; }
 		var l = c.kind === "tenant" ? N.leaseOfContact(c.id) : D().leases.find(function (x) { return ((x.parties || {}).guarantors || []).indexOf(c.id) >= 0; });
 		var u = l ? N.ix.unit[l.unit_id] : ((c.meta || {}).unit_id ? N.ix.unit[c.meta.unit_id] : null);
-		var acts = (c.phone ? '<a class="nlrm-btn nlrm-btn--wa nlrm-btn--sm" href="' + esc(N.wa(c.phone)) + '" target="_blank" rel="noopener" data-act="wa-contact" data-id="' + c.id + '">' + I("wa", 18) + esc(t("whatsapp")) + '</a><a class="nlrm-btn nlrm-btn--secondary nlrm-btn--sm" href="tel:+' + esc(c.phone) + '">' + I("phone", 18) + esc(t("call")) + "</a>" : "") + (c.email ? '<a class="nlrm-btn nlrm-btn--secondary nlrm-btn--sm" href="mailto:' + esc(c.email) + '">' + I("mail", 18) + esc(t("email")) + "</a>" : "");
+		var acts = (N.isDemo() ? '<button type="button" class="nlrm-btn nlrm-btn--wa nlrm-btn--sm" data-act="wa-contact" data-id="' + c.id + '">' + I("wa", 18) + esc(t("whatsapp")) + "</button>" : c.phone ? '<a class="nlrm-btn nlrm-btn--wa nlrm-btn--sm" href="' + esc(N.wa(c.phone)) + '" target="_blank" rel="noopener" data-act="wa-contact" data-id="' + c.id + '">' + I("wa", 18) + esc(t("whatsapp")) + '</a><a class="nlrm-btn nlrm-btn--secondary nlrm-btn--sm" href="tel:+' + esc(c.phone) + '">' + I("phone", 18) + esc(t("call")) + "</a>" : "") + (c.email && !N.isDemo() ? '<a class="nlrm-btn nlrm-btn--secondary nlrm-btn--sm" href="mailto:' + esc(c.email) + '">' + I("mail", 18) + esc(t("email")) + "</a>" : "");
 		var tabs = [
 			{ id: "overview", label: t("tab_overview"), render: function () {
 				var h = '<div class="nlrm-card">' + factsDl([[t("f_kind"), esc(t("kind_" + c.kind))], [t("f_phone"), c.phone ? '<span class="nlrm-num">' + esc(N.phoneShow(c.phone)) + "</span>" : ""], [t("f_email"), esc(c.email || "")], [t("f_lang"), esc((N.STR[c.lang] || {}).lang_name || c.lang)], [t("f_unit"), u ? '<button type="button" class="nlrm-link" data-open="unit:' + u.id + '">' + esc(N.where(u)) + "</button>" : ""], [t("balance"), l && c.kind === "tenant" ? N.money(Math.max(0, N.balance(l))) : ""]]) + "</div>";
@@ -244,7 +244,7 @@
 		if (!x) { return null; }
 		var u = N.ix.unit[x.unit_id], v = x.vendor_id ? N.ix.contact[x.vendor_id] : null, dd = N.daysTo(x.due_by), tri = (x.meta || {}).triage || null;
 		var l = u ? N.ix.leaseByUnit[u.id] : null, ten = l ? N.tenantsOf(l)[0] : null;
-		var acts = btn("vendor-link", t("send_vendor"), "wa", "wa", ' data-ticket="' + x.id + '"') + (ten && ten.phone ? btn("wa-ticket", t("update_tenant"), "secondary", "wa", ' data-ticket="' + x.id + '"') : "") + (u ? btn("open", t("tab_home"), "quiet", "", ' data-open="unit:' + u.id + '"') : "");
+		var acts = btn("vendor-link", t("send_vendor"), "wa", "wa", ' data-ticket="' + x.id + '"') + (N.canMsg(ten) ? btn("wa-ticket", t("update_tenant"), "secondary", "wa", ' data-ticket="' + x.id + '"') : "") + (u ? btn("open", t("tab_home"), "quiet", "", ' data-open="unit:' + u.id + '"') : "");
 		var body = function () {
 			var h = '<div class="nlrm-seg" role="group" aria-label="' + esc(t("f_status")) + '">' + ["new", "scheduled", "progress", "waiting", "done"].map(function (s) { return '<button type="button" data-act="tstatus" data-id="' + x.id + '" data-status="' + s + '" aria-pressed="' + (x.status === s) + '">' + esc(t("ts_" + s)) + "</button>"; }).join("") + "</div>";
 			h += '<div class="nlrm-card">' + factsDl([[t("f_unit"), u ? '<button type="button" class="nlrm-link" data-open="unit:' + u.id + '">' + esc(N.where(u)) + "</button>" : ""], [t("f_opened"), N.date((x.opened_at || "").slice(0, 10))], [t("f_due"), x.due_by ? N.date(x.due_by) + " · " + esc(dd < 0 ? t("overdue_by", { n: -dd }) : N.when(dd)) : ""], [t("f_urgency"), esc(x.urgency === "urgent" ? t("urgent") : t("standard"))], [t("f_category"), esc(t("tc_" + x.category))], [t("f_reporter"), esc(t("rep_" + x.reporter))], [t("f_vendor"), v ? '<button type="button" class="nlrm-link" data-open="contact:' + v.id + '">' + esc(v.name) + "</button>" : ""], [t("f_cost"), x.cost ? N.money(x.cost) : ""]]) + (x.body ? '<p style="white-space:pre-wrap;margin:12px 0 0">' + esc(x.body) + "</p>" : "") + '<p class="nlrm-note">' + esc(x.urgency === "urgent" ? t("law_3") : t("law_30")) + "</p></div>";
@@ -259,14 +259,14 @@
 
 	/* ---------- WhatsApp: compose in the recipient's language, send from the landlord's phone ---------- */
 	N.sendWA = function (contact, kind, vars, scope) {
-		if (!contact || !contact.phone) { N.ui.toast(t("no_phone"), "bad"); return; }
+		if (!N.canMsg(contact)) { N.ui.toast(t("no_phone"), "bad"); return; }
 		var lang = contact.lang || "he", me = N.state.cfg.me || {};
 		var text = N.msg(kind, lang, Object.assign({ name: (contact.name || "").split(" ")[0], landlord: me.display || "" }, vars || {}));
 		N.ui.open({ kind: "sheet", title: t("wa_preview", { name: contact.name }), sub: esc(t("wa_in_lang", { lang: (N.STR[lang] || {}).lang_name || lang })),
-			body: '<form class="nlrm-form"><label class="nlrm-f is-wide"><span>' + esc(t("wa_text")) + '</span><textarea name="txt" rows="8" dir="' + (lang === "he" || lang === "ar" ? "rtl" : "ltr") + '">' + esc(text) + '</textarea></label><div class="nlrm-fbtns"><a class="nlrm-btn nlrm-btn--wa" data-send target="_blank" rel="noopener" href="#">' + I("wa", 18) + esc(t("wa_send")) + '</a><button type="button" class="nlrm-btn nlrm-btn--secondary" data-copy>' + esc(t("copy")) + "</button></div>" + (D().demo ? '<p class="nlrm-note">' + esc(t("wa_demo")) + "</p>" : "") + "</form>",
+			body: '<form class="nlrm-form"><label class="nlrm-f is-wide"><span>' + esc(t("wa_text")) + '</span><textarea name="txt" rows="8" dir="' + (lang === "he" || lang === "ar" ? "rtl" : "ltr") + '">' + esc(text) + '</textarea></label><div class="nlrm-fbtns">' + (D().demo ? '<button type="button" class="nlrm-btn nlrm-btn--secondary" data-send>' + esc(t("new_note")) + "</button>" : '<a class="nlrm-btn nlrm-btn--wa" data-send target="_blank" rel="noopener" href="#">' + I("wa", 18) + esc(t("wa_send")) + "</a>") + '<button type="button" class="nlrm-btn nlrm-btn--secondary" data-copy>' + esc(t("copy")) + "</button></div>" + (D().demo ? '<p class="nlrm-note">' + esc(t("wa_demo")) + "</p>" : "") + "</form>",
 			wire: function (b) {
 				var ta = b.querySelector("textarea"), a = b.querySelector("[data-send]");
-				var upd = function () { a.href = N.wa(contact.phone, ta.value); };
+				var upd = function () { if (!D().demo) { a.href = N.wa(contact.phone, ta.value); } };
 				ta.addEventListener("input", upd); upd();
 				a.addEventListener("click", function (e) {
 					if (D().demo) { e.preventDefault(); }
@@ -279,9 +279,9 @@
 	/* a personal link: create it, then hand it over by WhatsApp (or copy) */
 	N.shareLink = function (purpose, scope, scopeId, contact, msgKind, vars) {
 		N.store.link({ purpose: purpose, scope: scope, scope_id: scopeId, contact_id: contact ? contact.id : 0 }).then(function (lk) {
-			if (contact && contact.phone) { N.sendWA(contact, msgKind, Object.assign({ link: lk.url, until: N.dateText(lk.expires_at) }, vars || {}), [scope, scopeId]); }
+			if (N.canMsg(contact)) { N.sendWA(contact, msgKind, Object.assign({ link: lk.url, until: N.dateText(lk.expires_at) }, vars || {}), [scope, scopeId]); }
 			else {
-				N.ui.open({ kind: "sheet", title: t("link_ready"), body: '<p class="nlrm-lead">' + esc(t("link_ready_lead", { until: N.dateText(lk.expires_at) })) + '</p><p class="nlrm-msg" dir="ltr">' + esc(lk.url) + '</p><div class="nlrm-fbtns"><button type="button" class="nlrm-btn nlrm-btn--primary" data-copy>' + esc(t("copy")) + '</button><a class="nlrm-btn nlrm-btn--wa" target="_blank" rel="noopener" href="' + esc(N.wa("", N.msg(msgKind, N.lang, Object.assign({ name: "", link: lk.url, until: N.dateText(lk.expires_at) }, vars || {})))) + '">' + I("wa", 18) + esc(t("wa_share")) + "</a></div>", wire: function (b) { b.querySelector("[data-copy]").addEventListener("click", function () { N.copy(lk.url); }); } });
+				N.ui.open({ kind: "sheet", title: t("link_ready"), body: '<p class="nlrm-lead">' + esc(t("link_ready_lead", { until: N.dateText(lk.expires_at) })) + '</p><p class="nlrm-msg" dir="ltr">' + esc(lk.url) + '</p><div class="nlrm-fbtns"><button type="button" class="nlrm-btn nlrm-btn--primary" data-copy>' + esc(t("copy")) + '</button>' + (N.isDemo() ? "" : '<a class="nlrm-btn nlrm-btn--wa" target="_blank" rel="noopener" href="' + esc(N.wa("", N.msg(msgKind, N.lang, Object.assign({ name: "", link: lk.url, until: N.dateText(lk.expires_at) }, vars || {})))) + '">' + I("wa", 18) + esc(t("wa_share")) + "</a>") + "</div>", wire: function (b) { b.querySelector("[data-copy]").addEventListener("click", function () { N.copy(lk.url); }); } });
 			}
 		}).catch(function (e) { N.ui.toast(e.message || t("err_generic"), "bad"); });
 	};
@@ -719,7 +719,7 @@
 			case "vendor-link": var tv = D().tickets.find(function (x) { return x.id === +d.ticket; }); var vv = tv.vendor_id ? N.ix.contact[tv.vendor_id] : null; if (!vv) { N.ui.toast(t("choose_vendor_first"), "bad"); return; } N.shareLink("vendor", "ticket", tv.id, vv, "vendor_dispatch", { title: tv.title, where: N.where(N.ix.unit[tv.unit_id] || {}) }); return;
 			case "quick-link":
 				if (!me.phone && !D().demo) { N.ui.toast(t("quick_need_phone"), "bad"); N.go("settings"); return; }
-				N.shareLink("owner", "", 0, { id: 0, name: me.display || t("me"), phone: me.phone || "972500000999", lang: N.lang }, "owner_quick", {}); return;
+				N.shareLink("owner", "", 0, { id: 0, name: me.display || t("me"), phone: me.phone || "", lang: N.lang }, "owner_quick", {}); return;
 			case "publish": location.href = ((N.state.cfg.urls || {}).wizard || "/post-listing/") + "?from=rentals&unit=" + (u ? u.id : ""); return;
 			case "tstatus": var tt = D().tickets.find(function (x) { return x.id === +d.id; }); N.store.save("ticket", { id: tt.id, status: d.status }).then(function () { N.ui.toast(t("saved")); if (d.status === "done" && tt.cost) { N.ui.confirm(t("cost_to_expense", { amount: N.moneyText(tt.cost) })).then(function (y) { if (y) { N.store.save("ledger", { property_id: tt.property_id, unit_id: tt.unit_id, kind: "expense", category: "repair", amount: tt.cost * 100, paid_date: N.todayIso(), status: "paid", note: tt.title }); } }); } }); return;
 			case "ticket-vendor": var tq = D().tickets.find(function (x) { return x.id === +d.id; }); var vend = D().contacts.filter(function (c) { return c.kind === "vendor"; });

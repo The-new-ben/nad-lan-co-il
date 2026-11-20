@@ -412,7 +412,7 @@
 			h += '<div class="nt2-next-l">' + D(p.due) + " · " + esc(paid ? t("t2_paid_full") : N.when(days)) + "</div><div class=\"nt2-next-l\">" + M((paid ? p.amount : p.remaining) / 100) + (cur.st === "part" ? " · " + esc(t("t2_m_part")) : "") + "</div>";
 		} else { h += '<div class="nt2-next-l">' + esc(t("t2_no_charge")) + "</div>"; }
 		if (isNext && !paid) { h += '<div class="nt2-next-l"><b class="nt2-step">' + esc(t("t2_step")) + "</b> " + esc(t("t2_step_rent")) + '</div><button type="button" class="nt2-btn nt2-btn--go nt2-btn--pill" data-act="rent" data-ym="' + sel + '">' + esc(t("t2_received")) + "</button>"; }
-		if (!paid && ten && ten.phone) { h += '<button type="button" class="nt2-btn nt2-btn--line nt2-btn--pill" data-act="remind">' + esc(t("t2_remind")) + "</button>"; }
+		if (!paid && N.canMsg(ten)) { h += '<button type="button" class="nt2-btn nt2-btn--line nt2-btn--pill" data-act="remind">' + esc(t("t2_remind")) + "</button>"; }
 		return h + "</section>";
 	}
 

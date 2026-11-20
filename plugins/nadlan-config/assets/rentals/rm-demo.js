@@ -2,7 +2,8 @@
    NADLAN RENTALS v2 - the sample portfolio (HAD-383, 1.10.2026)
    Every date is computed from TODAY, so the sample never goes stale (v1's
    seed froze in July and showed an expired lease by October). Nothing here
-   is a real person; phone numbers are in the 050-000-xxxx sample range.
+   is a real person. A sample person carries NO phone and NO e-mail (20.11.2026: a
+   number shaped like a real one may be someone's), and every name wears the mark X.
    The demo adapter keeps edits in memory only: try anything, nothing is sent.
 ============================================================================ */
 (function () {
@@ -11,6 +12,7 @@
 
 	N.demoData = function (lang) {
 		var en = lang !== "he";
+		var X = en ? " (example)" : " (דוגמה)";
 		var T = N.todayIso(), id = 0, now = T + " 09:00:00";
 		var first = function (iso) { return iso.slice(0, 8) + "01"; };
 		var props = [
@@ -35,16 +37,16 @@
 		];
 		var C = function (o) { return Object.assign({ email: "", idno: "", notes: "", tags: "", meta: {}, stage: "", created_at: now, updated_at: now }, o); };
 		var contacts = [
-			C({ id: 101, kind: "tenant", name: en ? "The Levi family" : "משפחת לוי", phone: "972500000101", email: "levi.sample@example.com", lang: "he" }),
-			C({ id: 102, kind: "tenant", name: en ? "Dana Cohen" : "דנה כהן", phone: "972500000102", lang: "he" }),
-			C({ id: 103, kind: "tenant", name: en ? "Ron Mizrahi" : "רון מזרחי", phone: "972500000103", lang: "he" }),
-			C({ id: 104, kind: "tenant", name: "Daniel Brooks", phone: "972500000104", email: "daniel.sample@example.com", lang: "en", notes: en ? "Relocated from London, prefers English." : "עבר מלונדון, מעדיף אנגלית." }),
-			C({ id: 105, kind: "guarantor", name: en ? "Avi Levi" : "אבי לוי", phone: "972500000105", lang: "he" }),
-			C({ id: 106, kind: "prospect", stage: "applied", name: en ? "Noa S." : "נועה ש.", phone: "972500000106", lang: "he", meta: { unit_id: 22, household: en ? "Couple, one child" : "זוג ותינוק", move_in: N.addDays(T, 20) } }),
-			C({ id: 107, kind: "prospect", stage: "viewing", name: "Michael R.", phone: "972500000107", lang: "en", meta: { unit_id: 22, viewing_at: N.addDays(T, 2) + " 18:30" } }),
-			C({ id: 108, kind: "prospect", stage: "new", name: en ? "Yael B." : "יעל ב.", phone: "972500000108", lang: "he", meta: { unit_id: 22 } }),
-			C({ id: 109, kind: "vendor", name: en ? "Yossi Plumbing" : "יוסי אינסטלציה", phone: "972500000109", lang: "he", tags: "plumbing" }),
-			C({ id: 110, kind: "vendor", name: en ? "Or Electric" : "אור חשמל", phone: "972500000110", lang: "he", tags: "electric" })
+			C({ id: 101, kind: "tenant", name: (en ? "The Levi family" : "משפחת לוי") + X, lang: "he" }),
+			C({ id: 102, kind: "tenant", name: (en ? "Dana Cohen" : "דנה כהן") + X, lang: "he" }),
+			C({ id: 103, kind: "tenant", name: (en ? "Ron Mizrahi" : "רון מזרחי") + X, lang: "he" }),
+			C({ id: 104, kind: "tenant", name: "Daniel Brooks" + X, lang: "en", notes: en ? "Relocated from London, prefers English." : "עבר מלונדון, מעדיף אנגלית." }),
+			C({ id: 105, kind: "guarantor", name: (en ? "Avi Levi" : "אבי לוי") + X, lang: "he" }),
+			C({ id: 106, kind: "prospect", stage: "applied", name: (en ? "Noa S." : "נועה ש.") + X, lang: "he", meta: { unit_id: 22, household: en ? "Couple, one child" : "זוג ותינוק", move_in: N.addDays(T, 20) } }),
+			C({ id: 107, kind: "prospect", stage: "viewing", name: "Michael R." + X, lang: "en", meta: { unit_id: 22, viewing_at: N.addDays(T, 2) + " 18:30" } }),
+			C({ id: 108, kind: "prospect", stage: "new", name: (en ? "Yael B." : "יעל ב.") + X, lang: "he", meta: { unit_id: 22 } }),
+			C({ id: 109, kind: "vendor", name: (en ? "Yossi Plumbing" : "יוסי אינסטלציה") + X, lang: "he", tags: "plumbing" }),
+			C({ id: 110, kind: "vendor", name: (en ? "Or Electric" : "אור חשמל") + X, lang: "he", tags: "electric" })
 		];
 		var L = function (o) { return Object.assign({ status: "active", option_until: null, pay_day: 1, linkage: { mode: "none" }, securities: {}, parties: {}, terms: {}, signing: {}, created_at: now, updated_at: now }, o); };
 		var s1 = first(N.addMonths(T, -14)), s2 = N.addMonths(T, -8), s3 = first(N.addMonths(T, -20)), s5 = first(N.addMonths(T, -5));
@@ -53,7 +55,7 @@
 			L({ id: 201, unit_id: 11, start_date: s1, end_date: N.addDays(N.addMonths(s1, 24), -1), option_until: N.addDays(N.addMonths(s1, 24), -61), rent: 7800, pay_day: 1,
 				linkage: { mode: "cpi", base_date: s1, every: 12, pct: 100, floor: true }, securities: { cheque: 23400, note: 46800, guarantors: true, deposit: 0 },
 				parties: { tenants: [101], guarantors: [105] }, terms: { method: "cheque", option_years: 1, pets: false, shared_docs: [301, 302] },
-				signing: { parties: [{ name: en ? "The Levi family" : "משפחת לוי", role: "tenant", at: s1 + " 10:12:00", text_sha256: "sample" }] } }),
+				signing: { parties: [{ name: (en ? "The Levi family" : "משפחת לוי") + X, role: "tenant", at: s1 + " 10:12:00", text_sha256: "sample" }] } }),
 			L({ id: 202, unit_id: 12, start_date: N.addDays(N.addMonths(T, -10), 0), end_date: N.addDays(T, 75), rent: 6400, pay_day: payDay2,
 				securities: { cheque: 19200, deposit: 0 }, parties: { tenants: [102] }, terms: { method: "transfer", option_years: 0, shared_docs: [] } }),
 			L({ id: 203, unit_id: 21, start_date: s3, end_date: N.addDays(N.addMonths(s3, 24), -1), rent: 5900, pay_day: 10,
@@ -123,7 +125,7 @@
 			ev({ scope: "lease", scope_id: 203, type: "msg_out", channel: "whatsapp", body: en ? "Friendly reminder about the rent." : "תזכורת ידידותית לשכר הדירה.", at: N.addDays(T, -12) + " 10:00:00" }),
 			ev({ scope: "lease", scope_id: 204, type: "msg_in", channel: "portal", body: "Paid via Bit this morning, thanks!", at: N.addDays(T, -1) + " 09:30:00", actor: "link:9" }),
 			ev({ scope: "contact", scope_id: 106, type: "note", body: en ? "Called, very serious. Works at a hospital." : "דיברנו בטלפון, רצינית מאוד. עובדת בבית חולים.", at: N.addDays(T, -2) + " 17:20:00" }),
-			ev({ scope: "lease", scope_id: 201, type: "sign", channel: "portal", body: en ? "The Levi family" : "משפחת לוי", at: s1 + " 10:12:00", actor: "link:3" })
+			ev({ scope: "lease", scope_id: 201, type: "sign", channel: "portal", body: (en ? "The Levi family" : "משפחת לוי") + X, at: s1 + " 10:12:00", actor: "link:3" })
 		];
 		return { properties: props, units: units, contacts: contacts, leases: leases, ledger: ledger, tickets: tickets, tasks: [], docs: docs, events: events, plan: { id: "pro", limits: { units: 50 } }, role: "owner", key_ok: true, demo: true };
 	};

@@ -33,7 +33,7 @@
 	} else {
 		base.adapter = N.DemoAdapter(cfg.lang || "he");
 		base.inPlaceLang = true;
-		base.me = { display: cfg.lang === "en" ? "Dan Cohen" : "דני כהן", phone: "972500000999", pay: { bit: "972500000999" } };
+		base.me = { display: cfg.lang === "en" ? "Dan Cohen (example)" : "דני כהן (דוגמה)", phone: "", pay: {} };
 		N.mount(root, base);
 	}
 })();

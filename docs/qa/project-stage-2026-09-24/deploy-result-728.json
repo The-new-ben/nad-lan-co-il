@@ -1,0 +1,31 @@
+{
+  "released": "1.72.728",
+  "from": "1.72.727",
+  "live_before": {
+    "assets/rentals/rm-demo.js": "737470ae66aa54ffcc262b2d5d4bde33",
+    "assets/rentals/rm-core.js": "4c4462abe571528bb100105d4eb6bd18",
+    "assets/rentals/rm-drawers.js": "9d716bb261c5d9f735cdac0565ec6287",
+    "assets/rentals/rm-views.js": "483ca1beaa173d940d7fae7b2b3b0939",
+    "assets/rentals/rm-today.js": "2b4e61666c29fc24a7684d69a9fca4c1",
+    "assets/rentals/rm-boot.js": "efe33cf20b3d38a7f5027f4c4360fcf9",
+    "assets/rentals/rental-manager.js": "4c005b1b2bc856eede3254f12150258a",
+    "nadlan-config.php": "56114f4a5653f986897cb30e4ccc71c8",
+    "inc/rentals-manager.php": "3bfc9699040f9ce8bae7205f7ca4a57b"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 17:04:09",
+  "files": {
+    "assets/rentals/rm-demo.js": "9a03d3d2b69b88140fe2085043321985",
+    "assets/rentals/rm-core.js": "ebe13dc8e13f5a43de7b9bbbdc79d25b",
+    "assets/rentals/rm-drawers.js": "776e59870766e09e8698b82db45bedc2",
+    "assets/rentals/rm-views.js": "49da4753256b48d2102790ecb18353e4",
+    "assets/rentals/rm-today.js": "8b345a57cbbd447650acc3ca3ac26e3f",
+    "assets/rentals/rm-boot.js": "44f19933e29896e606801228bcafb923",
+    "assets/rentals/rental-manager.js": "582246c85396c8af35bb6bddf0023fb5",
+    "nadlan-config.php": "da4c1e60a97225ca037c8123dd8c6292",
+    "inc/rentals-manager.php": "d1b2f4ab34ac19be15d92e7c7bfeeb4a"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.728, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

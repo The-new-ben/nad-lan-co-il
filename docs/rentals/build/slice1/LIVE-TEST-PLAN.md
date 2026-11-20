@@ -70,3 +70,20 @@ Seen and not fixed:
 1. With an unpaid charge OLDER than the twelve months the ruler shows (here September 2025), the bottom sheet of the tenancy screen points at that month and says "עדיין אין חיוב לחודש הזה" although the charge exists; the ruler itself is right. It needs the ruler to show, or at least name, a debt from before its window.
 2. Not measured on a real phone.
 
+
+## Third sitting (20.11.2026, live 1.72.728): sample people carry no phone
+Coordinator's order of 20.11 (a defect fix, not the board 5 build). Found by the film capture round: sample people carried phones shaped like real mobile numbers (050-000-0xxx), and the app turns every stored phone into a wa.me / tel: link, in the PUBLIC demo of version 1 and in the sample portfolio of version 2. Nobody pressed the WhatsApp button on the old build.
+
+What changed: sample people carry no phone and no e-mail (data, server answer, stored sample, seed); human names stay and each wears "(דוגמה)" / "(example)"; in a sample a WhatsApp press shows the wording with a copy button and opens nothing; real accounts keep the real links.
+
+| Check on the live site | Result |
+|---|---|
+| `/wp-json/nadlan/v1/rental-demo` he and en | 4 homes, `tenant_phone` empty on all, no phone-shaped number, names marked |
+| Public demo as a visitor (built-in browser, not signed in), he | home "דירה 7": phone box empty, no wa.me / tel: / mailto: link inside the rentals block, the reminder press shows "היי משפחת לוי (דוגמה), תזכורת ידידותית..." with "העתקת הנוסח" and the note that nothing is sent |
+| Public demo as a visitor, en | the three tenants: phone empty, wording shown, "Copy the wording", no link |
+| `lab_sample_people_v1.py` on the live site (headless, visitor, he+en, 1280 and 390 wide) | 12/12 |
+| Sample portfolio as administrator (owner's Chrome) | 10 people, none with phone or e-mail, each name marked; 10 screens and 23 cards with every tab: no chat, call or mail link from the app |
+| A real press on a sample tenant's WhatsApp button (people list) | the sheet "הודעה לדנה כהן (דוגמה)": text box, "רישום ביומן", "העתקה", the note; both controls are buttons; the press wrote one line in the in-memory sample journal; no tab opened |
+| The administrator's own account tables | 0 rows in all nine before the release and after the sitting (fresh load from the server) |
+
+Left as it is, said plainly: on the English page of the public demo the names and addresses are still Hebrew (only the mark is English); the site-wide WhatsApp bar and the site's info mail address are on the page as on every page; the old numbers remain in repo archives no visitor is served (design previews, source snapshots). Not measured on a real phone.

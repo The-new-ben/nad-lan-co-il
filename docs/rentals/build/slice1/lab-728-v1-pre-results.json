@@ -1,0 +1,66 @@
+{
+ "mode": "pre-release (script from the working copy, phone blanked in the answer)",
+ "checks": [
+  {
+   "check": "he 1280x900: the demo answer holds no tenant phone and no phone-shaped number",
+   "ok": true,
+   "info": "(1, [])"
+  },
+  {
+   "check": "he 1280x900: 4 sample homes opened, 3 with a tenant; no chat, call or mail link and no number anywhere in the rentals block",
+   "ok": true,
+   "info": "['משפחת לוי (דוגמה)', 'ד. כהן (דוגמה)', 'ר. מזרחי (דוגמה)']"
+  },
+  {
+   "check": "he 1280x900: each tenant's reminder shows its wording with a copy button and opens nothing",
+   "ok": true,
+   "info": "היי משפחת לוי (דוגמה), תזכורת ידידותית לשכר הדירה של 11/2026"
+  },
+  {
+   "check": "he 390x844: the demo answer holds no tenant phone and no phone-shaped number",
+   "ok": true,
+   "info": "(1, [])"
+  },
+  {
+   "check": "he 390x844: 4 sample homes opened, 3 with a tenant; no chat, call or mail link and no number anywhere in the rentals block",
+   "ok": true,
+   "info": "['משפחת לוי (דוגמה)', 'ד. כהן (דוגמה)', 'ר. מזרחי (דוגמה)']"
+  },
+  {
+   "check": "he 390x844: each tenant's reminder shows its wording with a copy button and opens nothing",
+   "ok": true,
+   "info": "היי משפחת לוי (דוגמה), תזכורת ידידותית לשכר הדירה של 11/2026"
+  },
+  {
+   "check": "en 1280x900: the demo answer holds no tenant phone and no phone-shaped number",
+   "ok": true,
+   "info": "(1, [])"
+  },
+  {
+   "check": "en 1280x900: 4 sample homes opened, 3 with a tenant; no chat, call or mail link and no number anywhere in the rentals block",
+   "ok": true,
+   "info": "['משפחת לוי (דוגמה)', 'ד. כהן (דוגמה)', 'ר. מזרחי (דוגמה)']"
+  },
+  {
+   "check": "en 1280x900: each tenant's reminder shows its wording with a copy button and opens nothing",
+   "ok": true,
+   "info": "Hi משפחת לוי (דוגמה), a friendly reminder about the rent for"
+  },
+  {
+   "check": "en 390x844: the demo answer holds no tenant phone and no phone-shaped number",
+   "ok": true,
+   "info": "(1, [])"
+  },
+  {
+   "check": "en 390x844: 4 sample homes opened, 3 with a tenant; no chat, call or mail link and no number anywhere in the rentals block",
+   "ok": true,
+   "info": "['משפחת לוי (דוגמה)', 'ד. כהן (דוגמה)', 'ר. מזרחי (דוגמה)']"
+  },
+  {
+   "check": "en 390x844: each tenant's reminder shows its wording with a copy button and opens nothing",
+   "ok": true,
+   "info": "Hi משפחת לוי (דוגמה), a friendly reminder about the rent for"
+  }
+ ],
+ "errors": []
+}
