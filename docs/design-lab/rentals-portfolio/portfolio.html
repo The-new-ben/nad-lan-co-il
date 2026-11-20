@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rentals: the example portfolio on a 3D map (design lab, HAD-795)</title>
+<!-- DESIGN LAB ONLY, not site code. The map key is passed in the address (?t=...) and is never written to a file. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+<div id="pf" class="pf">
+	<div id="pf-map" class="pf-map" aria-label="המפה של הנכסים"></div>
+	<header class="pf-top">
+		<div class="pf-h"><h1>הנכסים שלי</h1><span class="pf-ex">תיק לדוגמה</span></div>
+		<div class="pf-chips" role="group" aria-label="סינון"></div>
+	</header>
+	<div class="pf-say" aria-live="polite"></div>
+	<section class="pf-tray" aria-label="הנכסים"><div class="pf-cards"></div></section>
+</div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>

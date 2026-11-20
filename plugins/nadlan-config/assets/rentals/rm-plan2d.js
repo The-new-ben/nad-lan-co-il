@@ -138,13 +138,26 @@
 	};
 	/* no plan: the parts' icons in one row, their states, and a link to add a plan (never a made-up floor) */
 	function fallback(parts, data, o) {
-		var h = '<div class="np2 np2--row"><ul class="np2-list" dir="' + (N.rtl ? "rtl" : "ltr") + '">';
-		parts.slice(0, 12).forEach(function (p) {
+		var max = +o.max || 0, shown = parts, more = 0, first = !parts.length ? (data.addKinds || []) : [];
+		if (max && parts.length > max - 1) {
+			shown = parts.slice().sort(function (a, b) { return (a.state === "fault" ? 0 : 1) - (b.state === "fault" ? 0 : 1); }).slice(0, max - 1);
+			more = parts.length - shown.length;
+		}
+		var h = '<div class="np2 np2--row">';
+		if (first.length) { h += '<p class="np2-hint">' + esc(tt("t2_first_part")) + "</p>"; }
+		else if (!parts.length) { h += '<p class="np2-none">' + esc(tt("t2_no_parts")) + "</p>"; }
+		h += '<ul class="np2-list" dir="' + (N.rtl ? "rtl" : "ltr") + '">';
+		shown.forEach(function (p) {
 			var st = p.state || "ok";
 			h += '<li>' + partBtn(p, Object.assign({}, o, { layer: "all" }), "position:relative") + '<span class="np2-cap np2-cap--' + st + '">' + esc(p.label) + "</span></li>";
 		});
+		/* nothing recorded yet: the common parts, one press adds one */
+		first.slice(0, max || first.length).forEach(function (k) {
+			h += '<li class="np2-new"><button type="button" class="np2-part np2-part--new" data-act="add-kind" data-kind="' + esc(k) + '" aria-label="' + esc(tt("t2_add_aria", { name: tt("ak_" + k) })) + '" style="position:relative">' + icon(k) + '<span aria-hidden="true" class="np2-bd np2-bd--add">+</span></button><span class="np2-cap">' + esc(tt("t2_k_" + k)) + "</span></li>";
+		});
+		if (more) { h += '<li><button type="button" class="np2-part np2-part--more" data-act="drawing" aria-label="' + esc(tt("t2_more_parts", { n: more })) + '" style="position:relative">+' + more + '</button><span class="np2-cap">' + esc(tt("t2_more_cap")) + "</span></li>"; }
+		else if (parts.length && data.addKinds) { h += '<li><button type="button" class="np2-part np2-part--new" data-act="add-part" aria-label="' + esc(tt("t2_add_title")) + '" style="position:relative"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button><span class="np2-cap">' + esc(tt("t2_add_cap")) + "</span></li>"; }
 		h += "</ul>";
-		if (!parts.length) { h += '<p class="np2-none">' + esc(tt("t2_no_parts")) + "</p>"; }
 		h += '<a class="np2-add" href="' + esc(data.addPlanUrl || "/tour/designer/") + '">' + esc(tt("t2_add_plan")) + "</a></div>";
 		return h;
 	}

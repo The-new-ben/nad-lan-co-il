@@ -29,7 +29,7 @@ html.nt2-on .nlrm-page > *:not(.nt2):not(script) { visibility: hidden; }
 .nt2-tb { flex: none; height: 228px; margin: 4px 12px 0; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 4px; display: flex; }
 .nt2-tb-l { position: relative; width: 226px; flex: none; overflow: hidden; border-inline-end: 1.5px solid var(--ink); }
 .nt2-tb-draw { position: absolute; left: 7px; top: 6px; pointer-events: none; }
-.nt2-tb-draw.is-row { position: absolute; inset: 0; left: 0; top: 0; pointer-events: auto; overflow: auto; }
+.nt2-tb-draw.is-row { position: absolute; inset: 0; left: 0; top: 0; pointer-events: auto; overflow: hidden; }
 .nt2-tb-open { position: absolute; inset: 0; border: 0; background: transparent; padding: 0; }
 .nt2-tb-r { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .nt2-tb-d { padding: 6px 10px; border-bottom: 1.5px solid var(--ink); }
@@ -132,10 +132,10 @@ button.np2-part { cursor: pointer; }
 .np2-tag--fault { background: #a11616; color: #fff; border: 0; }
 .np2-tag--lit { background: #1f4b5c; color: #fff; border: 0; }
 .np2--row { padding: 10px; display: flex; flex-direction: column; gap: 8px; min-height: 100%; background: #fff; }
-.np2-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.np2-list li { display: flex; flex-direction: column; align-items: center; width: 60px; gap: 2px; }
+.np2-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.np2-list li { display: flex; flex-direction: column; align-items: center; width: 64px; gap: 2px; }
 .np2--row .np2-part { position: relative; }
-.np2-cap { font-size: 11px; line-height: 13px; text-align: center; color: var(--ink2); }
+.np2-cap { max-width: 64px; font-size: 11px; line-height: 13px; text-align: center; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .np2-cap--fault { color: #a11616; font-weight: 700; }
 .np2-none { margin: 0; font-size: 13px; color: var(--ink2); }
 .np2-add { margin-top: auto; min-height: 44px; display: inline-flex; align-items: center; align-self: flex-start; font-size: 15px; font-weight: 700; color: var(--actp); text-decoration: underline; }
@@ -202,3 +202,36 @@ button.np2-part { cursor: pointer; }
 	.np2-part.is-lit { transform: none; }
 }
 @media (max-height: 700px) { .nt2-tb { height: 200px; } .nt2-tb-l { width: 200px; } }
+
+/* 1.72.724: the site's theme gives every list item a top and bottom margin; inside this layer a list item has none */
+.nt2 ul > li, .nt2 ol > li { margin: 0; }
+.nt2-sum li.is-past .nt2-sum-btn span { color: var(--bad); font-weight: 600; }
+/* 1.72.723: the first part in one press, the row without an inner scroll, the index line of the tenancy screen */
+.np2--row .np2-add { position: relative; z-index: 2; }
+.np2-hint { margin: 0; font-size: 13px; line-height: 16px; color: var(--ink2); }
+.np2-part--new { border: 1.5px dashed #5b6b7a; color: #3b4753; }
+.np2-part--more { font: 600 14px/1 'IBM Plex Mono', monospace; direction: ltr; }
+.np2-bd--add { background: #2f6f86; color: #fff; font-size: 14px; font-weight: 700; line-height: 18px; }
+.nt2-kinds { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.nt2-kind { justify-content: flex-start; min-width: 0; }
+.nt2-kind span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nt2-sum li.nt2-sum-idx { min-height: 44px; align-items: center; }
+.nt2-sum-btn { width: 100%; min-height: 44px; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; text-align: start; }
+.nt2-sum-btn b { flex: none; height: 32px; padding: 0 12px; display: inline-flex; align-items: center; border: 1.5px solid var(--ink); border-radius: 4px; font-weight: 600; color: var(--actp); background: var(--sheet); }
+.nt2-sum-btn:active b { background: #e6eef2; }
+.nt2-wait { padding: 8px 10px; border: 1px dashed var(--hair); border-radius: 4px; color: var(--ink2); }
+@media (max-height: 700px) {
+	.nt2-tb .np2-new:nth-child(n+4) { display: none; }
+	.nt2-tb .np2--row { padding: 8px; }
+	.nt2-tb .np2-list li { width: 56px; } .nt2-tb .np2-cap { max-width: 56px; }
+}
+/* a short screen (a phone browser with its bars, about 660 px): the tenancy screen keeps every row whole */
+@media (max-height: 760px) {
+	.nt2-s-rent .nt2-ax-lg { display: none; }
+	.nt2-s-rent .nt2-sum { margin-top: 4px; }
+	.nt2-s-rent .nt2-sum li { min-height: 32px; }
+	.nt2-s-rent .nt2-sum li.nt2-sum-idx { min-height: 44px; }
+	.nt2-s-rent .nt2-next { min-height: 0; flex-flow: row wrap; align-content: flex-start; column-gap: 8px; padding-bottom: 10px; }
+	.nt2-s-rent .nt2-next > * { flex: 0 0 100%; }
+	.nt2-s-rent .nt2-next > .nt2-btn { flex: 1 1 0; width: auto; min-width: 0; height: 48px; padding: 0 10px; font-size: 15px; }
+}

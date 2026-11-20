@@ -18,6 +18,8 @@
 	var host = null, body = null, sheetEl = null, cfg = {}, inputs = {}, started = false;
 	var SYS_CATS = ["boiler", "ac", "electric", "plumbing"];
 	var SYSTEMS = ["boiler", "ac", "panel", "water_meter", "gas", "shutter"];
+	/* the parts offered first to a home that has none recorded (one press adds one) */
+	var FIRST_KINDS = ["boiler", "ac", "panel", "fridge", "oven", "washer"];
 	var KIND_CAT = { boiler: "boiler", ac: "ac", panel: "electric", water_meter: "plumbing", oven: "appliance", fridge: "appliance", washer: "appliance", dishwasher: "appliance", heater: "appliance" };
 
 	function t(k, v) { return N.t(k, v); }
@@ -97,6 +99,20 @@
 		}
 		return null;
 	}
+	/* for the tenancy screen: the latest update date already reached that the landlord has not confirmed (however long ago),
+	   and only when there is none, the next one ahead */
+	function indexDue(l) {
+		var k = l && l.linkage;
+		if (!k || k.mode !== "cpi" || !l.start_date) { return null; }
+		var every = Math.max(1, +k.every || 12), conf = {}, T0 = N.todayIso(), past = null;
+		confirms(l).forEach(function (e) { if ((e.meta || {}).start_month) { conf[e.meta.start_month] = 1; } });
+		for (var n = 1; n < 80; n++) {
+			var d = N.addMonths(l.start_date, every * n);
+			if ((l.end_date && d > l.end_date) || d > T0) { break; }
+			past = conf[d.slice(0, 7)] ? null : { date: d, ym: d.slice(0, 7), n: n, past: true };
+		}
+		return past || nextIndex(l);
+	}
 	function openTickets(u) {
 		return (N.ix.ticketsByUnit[u.id] || []).filter(function (x) { return x.status !== "done" && x.status !== "cancelled"; }).sort(function (a, b) {
 			if ((a.urgency === "urgent") !== (b.urgency === "urgent")) { return a.urgency === "urgent" ? -1 : 1; }
@@ -141,7 +157,7 @@
 	}
 	function planData(u, ps) {
 		var pl = planOf(u);
-		if (!pl) { return { rooms: [], parts: ps, addPlanUrl: ((cfg.urls || {}).designer) || "/tour/designer/" }; }
+		if (!pl) { return { rooms: [], parts: ps, addKinds: FIRST_KINDS, addPlanUrl: ((cfg.urls || {}).designer) || "/tour/designer/" }; }
 		ps = ps.map(function (p) { if (p.x != null && p.y != null) { var q = pl.tr(p.x, p.y); return Object.assign({}, p, { x: Math.round(q[0]), y: Math.round(q[1]) }); } return p; });
 		return { rooms: pl.rooms, parts: ps };
 	}
@@ -377,9 +393,15 @@
 		h += '<div class="nt2-ax-lg"><span><i class="lg-paid"></i>' + esc(t("t2_m_paid")) + '</span><span><i class="lg-part"></i>' + esc(t("t2_m_part")) + '</span><span><i class="lg-late"></i>' + esc(t("t2_m_late")) + '</span><span><i class="lg-now"></i>' + esc(t("t2_m_now")) + "</span>" + (ni ? '<span><i class="lg-idx"></i>' + esc(t("t2_idx_row")) + "</span>" : "") + "</div></div>";
 		/* three honest numbers from the books */
 		var mo = N.moneyOf(l), yr = 0; (N.ix.ledgerByLease[l.id] || []).forEach(function (r) { if (r.kind === "payment" && r.category === "rent" && (r.status === "paid" || r.status === "deposited")) { yr += N.mx.incomeOf(r); } });
-		h += '<ul class="nt2-sum"><li><span>' + esc(t("t2_sum_rent")) + "</span><b>" + M(l.rent) + "</b></li><li><span>" + esc(t("t2_sum_got")) + "</span><b>" + M(Math.round(yr / 100)) + "</b></li><li><span>" + esc(t("t2_sum_open")) + "</span><b>" + M(Math.max(0, Math.round(mo.balance / 100))) + "</b></li></ul>";
+		h += '<ul class="nt2-sum"><li><span>' + esc(t("t2_sum_rent")) + "</span><b>" + M(l.rent) + "</b></li><li><span>" + esc(t("t2_sum_got")) + "</span><b>" + M(Math.round(yr / 100)) + "</b></li><li><span>" + esc(t("t2_sum_open")) + "</span><b>" + M(Math.max(0, Math.round(mo.balance / 100))) + "</b></li>" + indexRow(l, indexDue(l)) + "</ul>";
 		h += sheetNext(l, A, sel);
 		return h + nav("rent", m);
+	}
+	/* an index-linked lease always shows its index line here: the next update with one button, or that none is left */
+	function indexRow(l, ni) {
+		if (!l || !l.linkage || l.linkage.mode !== "cpi") { return ""; }
+		if (!ni) { return '<li class="nt2-sum-idx"><span>' + esc(t("t2_idx_row")) + "</span><b>" + esc(t("t2_idx_none")) + "</b></li>"; }
+		return '<li class="nt2-sum-idx' + (ni.past ? " is-past" : "") + '"><button type="button" class="nt2-sum-btn" data-act="index" data-due="1"><span>' + (ni.past ? esc(t("t2_idx_past", { date: N.dateText(ni.date) })) : esc(t("t2_idx_line")) + " · " + D(ni.date)) + "</span><b>" + esc(t("t2_idx_calc")) + "</b></button></li>";
 	}
 	function sheetNext(l, A, sel) {
 		var cur = A.months.find(function (x) { return x.ym === sel; }), p = cur && cur.p, isNext = A.nd && A.nd.ym === sel, paid = cur && cur.st === "paid", ten = N.tenantsOf(l)[0];
@@ -432,6 +454,23 @@
 		N.plan2d.draw(box, planData(u, ps), { scale: 1, lit: focus || m.lit, layer: "all", interactive: true, onPick: show });
 		if (focus || m.lit) { show(focus || m.lit); }
 	}
+	/* a part of the home in one press: the kind is the whole form, the details can be filled later in the apartment's page */
+	function addPart(u, kind) {
+		if (!u || S.busy || !N.plan2d.KIND_LAYERS[kind]) { return; }
+		S.busy = true;
+		var m = Object.assign({}, u.meta || {}), list = (m.assets || []).slice(), name = t("ak_" + kind);
+		list.push({ id: "a" + Date.now().toString(36), kind: kind, label: name });
+		m.assets = list;
+		N.store.save("unit", { id: u.id, property_id: u.property_id, meta: m }).then(function () {
+			S.busy = false; closeSheet(true); N.ui.toast(t("t2_part_added", { name: name })); render();
+		}).catch(function (e) { S.busy = false; N.ui.toast((e && e.message) || t("err_generic"), "bad"); });
+	}
+	function addPartSheet() {
+		var h = '<p class="nt2-p">' + esc(t("t2_add_hint")) + '</p><div class="nt2-kinds">' + Object.keys(N.plan2d.KIND_LAYERS).map(function (k) {
+			return '<button type="button" class="nt2-btn nt2-btn--line nt2-kind" data-act="add-kind" data-kind="' + k + '">' + N.plan2d.icon(k, 22) + "<span>" + esc(t("ak_" + k)) + "</span></button>";
+		}).join("") + "</div>";
+		openSheet(esc(t("t2_add_title")), h);
+	}
 	function unitsSheet() {
 		var us = units(), h = '<ul class="nt2-ul">' + us.map(function (u) {
 			var p = N.ix.prop[u.property_id] || {};
@@ -441,10 +480,10 @@
 	}
 
 	/* ---------- the index update that saves ---------- */
-	function indexSheet(u) {
-		var l = N.ix.leaseByUnit[u.id], ni = nextIndex(l);
+	function indexSheet(u, fromRow) {
+		var l = N.ix.leaseByUnit[u.id], ni = fromRow ? indexDue(l) : nextIndex(l);
 		if (!l || !ni) { return; }
-		var ref = uid(), T0 = N.todayIso(), k = l.linkage, base = k.base_date || l.start_date, to = ni.date <= T0 ? ni.date : T0;
+		var ref = uid(), T0 = N.todayIso(), k = l.linkage, base = k.base_date || l.start_date, to = ni.date <= T0 ? ni.date : T0, due = ni.date <= N.addDays(T0, 7);
 		var last = rentRows(l).filter(function (r) { return r.amount > 0 && /^rent:/.test(autoOf(r)) && (r.due_date || "") <= T0; }).sort(function (a, b) { return a.due_date < b.due_date ? -1 : 1; }).pop();
 		var today = last ? last.amount / 100 : +l.rent;
 		var rows = function (extra) {
@@ -455,14 +494,16 @@
 		N.store.cpi(+l.rent, base, to).then(function (r) {
 			if (S.sheet !== "index" || !sheetEl) { return; }
 			var bi = +r.from_index_value, ai = +r.to_index_value;
+			/* the sample portfolio has a ratio only: shown on a base of 100, and the sheet says these are sample numbers */
+			if (!(bi > 0 && ai > 0) && r.demo && +r.factor > 0) { bi = 100; ai = Math.round(100 * r.factor * 10) / 10; }
 			if (!(bi > 0 && ai > 0)) { return noIndex(rows("")); }
 			var pct = Math.max(0, Math.min(100, k.pct == null ? 100 : +k.pct)) / 100, nw = +l.rent * (1 + pct * (ai / bi - 1));
 			if (k.floor == null || k.floor) { nw = Math.max(+l.rent, nw); }
 			nw = Math.round(nw);
-			var h = rows('<div><dt>' + esc(t("t2_idx_base")) + "</dt><dd>" + mono(bi.toFixed(1)) + '</dd></div><div><dt>' + esc(t("t2_idx_latest")) + "</dt><dd>" + mono(ai.toFixed(1)) + '</dd></div><div class="is-new"><dt>' + esc(t("t2_idx_new", { date: N.dateText(ni.ym + "-01") })) + "</dt><dd>" + M(nw) + "</dd></div>");
-			h += '<p class="nt2-p">' + esc(t("t2_idx_formula")) + (pct < 1 ? " " + esc(t("t2_idx_pct", { pct: N.num(Math.round(pct * 100)) })) : "") + ((k.floor == null || k.floor) ? " " + esc(t("t2_idx_floor")) : "") + '</p><p class="nt2-p nt2-small">' + esc(t(r.demo ? "t2_idx_demo" : "t2_idx_source")) + '</p><p class="nt2-err" role="alert" hidden></p><button type="button" class="nt2-btn nt2-btn--go nt2-btn--pill" data-act="idx-save">' + esc(t("t2_idx_save")) + "</button>";
+			var h = rows('<div><dt>' + esc(t("t2_idx_base")) + "</dt><dd>" + mono(bi.toFixed(1)) + '</dd></div><div><dt>' + esc(t("t2_idx_latest")) + "</dt><dd>" + mono(ai.toFixed(1)) + '</dd></div><div class="is-new"><dt>' + esc(t(due ? "t2_idx_new" : "t2_idx_asof", { date: N.dateText(ni.ym + "-01") })) + "</dt><dd>" + M(nw) + "</dd></div>");
+			h += '<p class="nt2-p">' + esc(t("t2_idx_formula")) + (pct < 1 ? " " + esc(t("t2_idx_pct", { pct: N.num(Math.round(pct * 100)) })) : "") + ((k.floor == null || k.floor) ? " " + esc(t("t2_idx_floor")) : "") + '</p><p class="nt2-p nt2-small">' + esc(t(r.demo ? "t2_idx_demo" : "t2_idx_source")) + '</p><p class="nt2-err" role="alert" hidden></p>' + (due ? '<button type="button" class="nt2-btn nt2-btn--go nt2-btn--pill" data-act="idx-save">' + esc(t("t2_idx_save")) + "</button>" : '<p class="nt2-p nt2-wait" role="note">' + esc(t("t2_idx_wait", { date: N.dateText(ni.date) })) + '</p><button type="button" class="nt2-btn nt2-btn--line nt2-btn--pill" data-close>' + esc(t("close")) + "</button>");
 			setSheetBody(h);
-			S.idx = { lease: l, unit: u, base: bi, applied: ai, amount: nw, ym: ni.ym, ref: ref };
+			S.idx = due ? { lease: l, unit: u, base: bi, applied: ai, amount: nw, ym: ni.ym, ref: ref } : null;
 		}).catch(function () { if (S.sheet === "index" && sheetEl) { noIndex(rows("")); } });
 		void el;
 	}
@@ -553,7 +594,23 @@
 			}
 		};
 	}
-	function api() { var ad = N.store.adapter; return (ad && ad.today2) || restApi(cfg); }
+	/* the sample portfolio never talks to the server: its repair and its index confirmation live in the sample's own memory
+	   (before 1.72.725 these two went to the real routes with the sample's ids) */
+	function demoApi(ad) {
+		return {
+			repair: function (p) {
+				var u = N.ix.unit[p.unit_id];
+				return ad.save("ticket", { property_id: u.property_id, unit_id: u.id, title: p.title, body: "", category: "general", urgency: "standard", status: "new", reporter: "owner", vendor_id: 0, cost: 0, due_by: N.addDays(N.todayIso(), 30), meta: { via: "today-camera", asset: p.asset || "" } }).then(function (tk) {
+					return ad.upload(p.file, "ticket", tk.id, "photo").then(function (doc) { return { ticket: tk, doc: doc }; });
+				});
+			},
+			indexConfirm: function (p) {
+				var l = N.ix.leaseByUnit[(S.idx && S.idx.unit || {}).id] || (N.store.d.leases || []).find(function (x) { return +x.id === +p.lease_id; });
+				return ad.event({ scope: "lease", scope_id: l.id, type: "index_confirmed", channel: "", body: "", meta: { lease_id: l.id, start_month: p.start_month, base_index: p.base_index, applied_index: p.applied_index, old_amount: Math.round(l.rent * 100), new_amount: Math.round(p.new_amount * 100), client_ref: p.client_ref } }).then(function (ev) { return { lease_id: l.id, event: ev }; });
+			}
+		};
+	}
+	function api() { var ad = N.store.adapter; return (ad && ad.today2) || (ad && ad.demo ? demoApi(ad) : restApi(cfg)); }
 
 	/* ---------- the layer: mount, route, render ---------- */
 	function route() {
@@ -579,7 +636,7 @@
 		body.className = "nt2-app nt2-s-" + r + " nt2-m-" + m.state;
 		if (r === "today") {
 			var box = body.querySelector("#nt2-plan");
-			N.plan2d.draw(box, planData(u, m.parts), { scale: m.parts.length && planOf(u) ? 0.62 : 1, lit: m.lit, layer: m.layer, interactive: !planOf(u), onPick: function (id) { drawingSheet(u, id); } });
+			N.plan2d.draw(box, planData(u, m.parts), { scale: m.parts.length && planOf(u) ? 0.62 : 1, lit: m.lit, layer: m.layer, interactive: !planOf(u), max: 6, onPick: function (id) { drawingSheet(u, id); } });
 			box.classList.toggle("is-row", !planOf(u));
 		}
 		if (fk) { var again = Array.prototype.find.call(body.querySelectorAll("[data-act]"), function (x) { return (x.getAttribute("data-act") || "") + "|" + (x.getAttribute("data-ym") || "") === fk; }); if (again && !sheetEl) { again.focus({ preventScroll: true }); } }
@@ -596,8 +653,10 @@
 			case "ticket": closeSheet(true); N.open("ticket", +b.getAttribute("data-id")); break;
 			case "drawing": if (u) { drawingSheet(u, null); } break;
 			case "units": unitsSheet(); break;
+			case "add-kind": addPart(u, b.getAttribute("data-kind")); break;
+			case "add-part": addPartSheet(); break;
 			case "unit": closeSheet(true); S.unitId = +b.getAttribute("data-id"); S.sel = null; render(); break;
-			case "index": if (u) { indexSheet(u); } break;
+			case "index": if (u) { indexSheet(u, b.hasAttribute("data-due")); } break;
 			case "idx-save": saveIndex(b); break;
 			case "idx-manual": closeSheet(true); N.state.mtab = "cpi"; N.go("money"); break;
 			case "rent": markReceived(b.getAttribute("data-ym")); break;

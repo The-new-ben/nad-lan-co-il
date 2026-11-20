@@ -13,6 +13,7 @@
 	L.install = function (q, lang) {
 		window.__sliceOn = q.get("slice") === "1";
 		if (q.get("slice") !== "1") { return; } /* the existing labs see the sample exactly as before */
+		(function () { var st = document.createElement("style"); st.textContent = "li { margin: 8px 0; }"; document.head.appendChild(st); })(); /* what the live theme does to every list item (found pressing 1.72.723 live) */
 		var scene = q.get("scene") || "", orig = N.demoData;
 		N.demoData = function (lg) {
 			var d = orig(lg), en = lg !== "he", T = N.todayIso();
@@ -34,22 +35,7 @@
 			return d;
 		};
 	};
-	L.attach = function (ad) {
-		if (!window.__sliceOn) { return; }
-		var cpi = ad.cpi;
-		ad.cpi = function (a, f, t) { return cpi(a, f, t).then(function (r) { r.from_index_value = 100; r.to_index_value = Math.round(100 * r.factor * 10) / 10; return r; }); };
-		ad.today2 = {
-			repair: function (p) {
-				var u = N.ix.unit[p.unit_id], T = N.todayIso();
-				return ad.save("ticket", { property_id: u.property_id, unit_id: u.id, title: p.title, body: "", category: "general", urgency: "standard", status: "new", reporter: "owner", vendor_id: 0, cost: 0, due_by: N.addDays(T, 30), meta: { via: "today-camera", asset: p.asset || "" } }).then(function (tk) {
-					return ad.upload(p.file, "ticket", tk.id, "photo").then(function (doc) { return { ticket: tk, doc: doc }; });
-				});
-			},
-			indexConfirm: function (p) {
-				/* the server job writes an event in the apartment's journal (kind index_confirmed), never a ledger line */
-				var l = N.store.byId("lease", p.lease_id), old = Math.round(l.rent * 100);
-				return ad.event({ scope: "lease", scope_id: l.id, type: "index_confirmed", channel: "", body: "", meta: { lease_id: l.id, start_month: p.start_month, base_index: p.base_index, applied_index: p.applied_index, old_amount: old, new_amount: Math.round(p.new_amount * 100), client_ref: p.client_ref } }).then(function (ev) { return { lease_id: l.id, event: ev }; });
-			}
-		};
-	};
+	/* since 1.72.725 the product itself serves the sample portfolio (rm-today.js demoApi and the sample index numbers);
+	   the lab adds nothing here, so it presses exactly what a visitor of the sample presses */
+	L.attach = function () {};
 })();

@@ -71,7 +71,7 @@
    "info": ""
   },
   {
-   "check": "he phone no-plan every visible button >= 44 px (16 buttons)",
+   "check": "he phone no-plan every visible button >= 44 px (17 buttons)",
    "ok": true,
    "info": "[]"
   },
@@ -123,7 +123,7 @@
   {
    "check": "he phone index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0dzusab'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0wgmr8v'}"
   },
   {
    "check": "he phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -271,7 +271,7 @@
    "info": ""
   },
   {
-   "check": "he desk no-plan every visible button >= 44 px (16 buttons)",
+   "check": "he desk no-plan every visible button >= 44 px (17 buttons)",
    "ok": true,
    "info": "[]"
   },
@@ -323,7 +323,7 @@
   {
    "check": "he desk index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0e57b9v'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0w002ou'}"
   },
   {
    "check": "he desk the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -471,7 +471,7 @@
    "info": ""
   },
   {
-   "check": "en phone no-plan every visible button >= 44 px (16 buttons)",
+   "check": "en phone no-plan every visible button >= 44 px (17 buttons)",
    "ok": true,
    "info": "[]"
   },
@@ -523,7 +523,7 @@
   {
    "check": "en phone index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0x90db3'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0d6p1ru'}"
   },
   {
    "check": "en phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -671,7 +671,7 @@
    "info": ""
   },
   {
-   "check": "en desk no-plan every visible button >= 44 px (16 buttons)",
+   "check": "en desk no-plan every visible button >= 44 px (17 buttons)",
    "ok": true,
    "info": "[]"
   },
@@ -723,7 +723,7 @@
   {
    "check": "en desk index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0hve52e'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0a8i7ek'}"
   },
   {
    "check": "en desk the sheet says what is true: confirmed, month, amount, recorded in the journal",

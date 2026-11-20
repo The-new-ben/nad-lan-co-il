@@ -106,7 +106,7 @@ with sync_playwright() as p:
 
             # ---- repair with a photo: ours 1 + camera 2 = 3, one request, shown in "done recently"
             n0 = pg.evaluate("NLRM.store.d.tickets.length"); d0 = pg.evaluate("NLRM.store.d.docs.length")
-            pg.evaluate("(() => { const a = NLRM.store.adapter.today2, r = a.repair; window.__repairCalls = 0; a.repair = function (p) { window.__repairCalls++; return r(p); }; })()")
+            pg.evaluate("(() => { const a = NLRM.store.adapter, r = a.save; window.__repairCalls = 0; a.save = function (e) { if (e === 'ticket') { window.__repairCalls++; } return r.apply(a, arguments); }; })()")  # the product's own sample path (1.72.725): one ticket write
             pr = Presses(pg)
             pr.camera("#nt2 [data-act='cam-repair']")
             pg.wait_for_function("NLRM.store.d.tickets.length === %d" % (n0 + 1), timeout=6000)

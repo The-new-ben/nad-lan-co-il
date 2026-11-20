@@ -1,0 +1,666 @@
+{
+ "checks": [
+  {
+   "check": "he phone no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he phone no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he phone 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['לוח חשמל', 'דוד מים', 'מזגן', 'מקרר', 'תנור', 'עוד']}"
+  },
+  {
+   "check": "he phone 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "he phone nothing recorded: 6 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'מזגן', 'לוח חשמל', 'מקרר', 'תנור', 'כביסה']}"
+  },
+  {
+   "check": "he phone no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'דוד מים'}"
+  },
+  {
+   "check": "he phone after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'להוסיף']}"
+  },
+  {
+   "check": "he phone the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 175, 52, False], ['ac', 175, 52, False], ['panel', 175, 52, False]]"
+  },
+  {
+   "check": "he phone a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he phone index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he phone update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he phone update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+  },
+  {
+   "check": "he phone that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "he phone no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה'}"
+  },
+  {
+   "check": "he phone an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד של 1.9.2026 לא אושר\\nלחשב'}"
+  },
+  {
+   "check": "he phone it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה']"
+  },
+  {
+   "check": "he phone a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he short no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he short 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['לוח חשמל', 'דוד מים', 'מזגן', 'מקרר', 'תנור', 'עוד']}"
+  },
+  {
+   "check": "he short 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "he short nothing recorded: 3 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 3, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'מזגן', 'לוח חשמל']}"
+  },
+  {
+   "check": "he short no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'דוד מים'}"
+  },
+  {
+   "check": "he short after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'להוסיף']}"
+  },
+  {
+   "check": "he short the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 175, 52, False], ['ac', 175, 52, False], ['panel', 175, 52, False]]"
+  },
+  {
+   "check": "he short a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he short index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he short update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he short update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+  },
+  {
+   "check": "he short that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "he short no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה'}"
+  },
+  {
+   "check": "he short an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'עדכון המדד של 1.9.2026 לא אושר\\nלחשב'}"
+  },
+  {
+   "check": "he short it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה']"
+  },
+  {
+   "check": "he short a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he desk no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד שמש', 'מזגן בסלון', 'לוח חשמל', 'מונה מים', 'להוסיף']}"
+  },
+  {
+   "check": "he desk 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['לוח חשמל', 'דוד מים', 'מזגן', 'מקרר', 'תנור', 'עוד']}"
+  },
+  {
+   "check": "he desk 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "he desk nothing recorded: 6 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'מזגן', 'לוח חשמל', 'מקרר', 'תנור', 'כביסה']}"
+  },
+  {
+   "check": "he desk no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'דוד מים'}"
+  },
+  {
+   "check": "he desk after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['דוד מים', 'להוסיף']}"
+  },
+  {
+   "check": "he desk the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 220, 52, False], ['ac', 220, 52, False], ['panel', 220, 52, False]]"
+  },
+  {
+   "check": "he desk a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he desk index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "he desk update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'עדכון המדד הבא · 1.12.2026\\nלחשב'}"
+  },
+  {
+   "check": "he desk update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+  },
+  {
+   "check": "he desk that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "he desk no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה'}"
+  },
+  {
+   "check": "he desk an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'עדכון המדד של 1.9.2026 לא אושר\\nלחשב'}"
+  },
+  {
+   "check": "he desk it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'עדכון מדד\\nאין עוד עדכון עד סוף החוזה']"
+  },
+  {
+   "check": "he desk a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en phone no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en phone 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Electric panel', 'Water heater', 'A/C', 'Fridge', 'Oven', 'More']}"
+  },
+  {
+   "check": "en phone 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "en phone nothing recorded: 6 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Boiler', 'A/C', 'Panel', 'Fridge', 'Oven', 'Washer']}"
+  },
+  {
+   "check": "en phone no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'Water heater'}"
+  },
+  {
+   "check": "en phone after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Add']}"
+  },
+  {
+   "check": "en phone the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 175, 52, False], ['ac', 175, 52, False], ['panel', 175, 52, False]]"
+  },
+  {
+   "check": "en phone a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en phone index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en phone update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en phone update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+  },
+  {
+   "check": "en phone that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "en phone no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'Index update\\nnone left in this lease'}"
+  },
+  {
+   "check": "en phone an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'The index update of 1 Sept 2026 is not confirmed\\nCalculate'}"
+  },
+  {
+   "check": "en phone it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'Index update\\nnone left in this lease']"
+  },
+  {
+   "check": "en phone a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en short no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en short 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Electric panel', 'Water heater', 'A/C', 'Fridge', 'Oven', 'More']}"
+  },
+  {
+   "check": "en short 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "en short nothing recorded: 3 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 3, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Boiler', 'A/C', 'Panel']}"
+  },
+  {
+   "check": "en short no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'Water heater'}"
+  },
+  {
+   "check": "en short after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Add']}"
+  },
+  {
+   "check": "en short the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 175, 52, False], ['ac', 175, 52, False], ['panel', 175, 52, False]]"
+  },
+  {
+   "check": "en short a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en short index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en short update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en short update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+  },
+  {
+   "check": "en short that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "en short no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'Index update\\nnone left in this lease'}"
+  },
+  {
+   "check": "en short an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [358, 44], 'hscroll': False, 'text': 'The index update of 1 Sept 2026 is not confirmed\\nCalculate'}"
+  },
+  {
+   "check": "en short it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'Index update\\nnone left in this lease']"
+  },
+  {
+   "check": "en short a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk no-plan row: no inner scroll (overflow hidden), 5 tiles all inside the block and pressable, each 44 px",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en desk no-plan row: the 'add a plan' link is whole, 44 px high and receives the press",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 5, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Living room A/C', 'Electric panel', 'Water meter', 'Add']}"
+  },
+  {
+   "check": "en desk 8 parts: six places (5 parts + 'more'), nothing cut, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Electric panel', 'Water heater', 'A/C', 'Fridge', 'Oven', 'More']}"
+  },
+  {
+   "check": "en desk 'more' opens the list with all 8 parts and the add tile",
+   "ok": true,
+   "info": "8"
+  },
+  {
+   "check": "en desk nothing recorded: 6 'add' tiles with one sentence, all inside, link whole, no scroll",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 6, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Boiler', 'A/C', 'Panel', 'Fridge', 'Oven', 'Washer']}"
+  },
+  {
+   "check": "en desk no raw string keys on screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk first part added in 1 press: saved with its kind and name, no form opened",
+   "ok": true,
+   "info": "{'id': 'amwacbj40', 'kind': 'boiler', 'label': 'Water heater'}"
+  },
+  {
+   "check": "en desk after it: the part and an 'add' tile, link still whole",
+   "ok": true,
+   "info": "{'scroll': False, 'overflow': 'hidden', 'tiles': 2, 'tilesIn': True, 'tilesHit': True, 'small': 0, 'linkIn': True, 'linkHit': True, 'linkH': 44, 'caps': ['Water heater', 'Add']}"
+  },
+  {
+   "check": "en desk the add sheet: 11 kinds, each button 44 px or more, no name cut",
+   "ok": true,
+   "info": "[['boiler', 220, 52, False], ['ac', 220, 52, False], ['panel', 220, 52, False]]"
+  },
+  {
+   "check": "en desk a later part in 2 presses, the sheet closes by itself",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk tenancy screen: the index line is there, whole (4 rows, none cut), its button 44 px high",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en desk index confirmed from the tenancy screen in 2 presses, a journal event, the books untouched",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk with an open repair the landing card is the repair (no index button on it)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk open repair: the index confirmation is reached and saved in 3 presses from the landing screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "en desk update not due: the index line is there and whole",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'Next index update · 1 Dec 2026\\nCalculate'}"
+  },
+  {
+   "check": "en desk update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
+   "ok": true,
+   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+  },
+  {
+   "check": "en desk that sheet's buttons >= 44 px",
+   "ok": true,
+   "info": "0"
+  },
+  {
+   "check": "en desk no update left before the lease ends: the line says so and has no button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': None, 'hscroll': False, 'text': 'Index update\\nnone left in this lease'}"
+  },
+  {
+   "check": "en desk an update date that passed unconfirmed: the line says so and keeps its button",
+   "ok": true,
+   "info": "{'n': 4, 'clipped': 0, 'btn': [448, 44], 'hscroll': False, 'text': 'The index update of 1 Sept 2026 is not confirmed\\nCalculate'}"
+  },
+  {
+   "check": "en desk it is confirmed for its own month (2026-09) in 2 presses, and the line then says none is left",
+   "ok": true,
+   "info": "['2026-09', 'Index update\\nnone left in this lease']"
+  },
+  {
+   "check": "en desk a lease without index linkage (mode 'none') has no index line",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "no console errors in any run",
+   "ok": true,
+   "info": "[]"
+  }
+ ],
+ "presses": {
+  "he phone first part": 1,
+  "he phone later part": 2,
+  "he phone index from tenancy": 2,
+  "he phone index, repair open": 3,
+  "he short first part": 1,
+  "he short later part": 2,
+  "he short index from tenancy": 2,
+  "he short index, repair open": 3,
+  "he desk first part": 1,
+  "he desk later part": 2,
+  "he desk index from tenancy": 2,
+  "he desk index, repair open": 3,
+  "en phone first part": 1,
+  "en phone later part": 2,
+  "en phone index from tenancy": 2,
+  "en phone index, repair open": 3,
+  "en short first part": 1,
+  "en short later part": 2,
+  "en short index from tenancy": 2,
+  "en short index, repair open": 3,
+  "en desk first part": 1,
+  "en desk later part": 2,
+  "en desk index from tenancy": 2,
+  "en desk index, repair open": 3
+ },
+ "errors": []
+}

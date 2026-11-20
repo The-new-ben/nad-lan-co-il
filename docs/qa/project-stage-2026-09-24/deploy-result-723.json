@@ -1,0 +1,25 @@
+{
+  "released": "1.72.723",
+  "from": "1.72.722",
+  "live_before": {
+    "assets/rentals/rm-today.js": "da0b3446f3eaa688020ffb38f9a8588f",
+    "assets/rentals/rm-plan2d.js": "2847101338075672bcf954d7c7779b89",
+    "assets/rentals/rm-today.css": "141876a8fdc72518fd1e239433f5a952",
+    "assets/rentals/i18n/he.json": "88fc636e27704544ea5f1d2639cc98bb",
+    "assets/rentals/i18n/en.json": "86df3e92af6dd4518ee4d31711a73e76",
+    "nadlan-config.php": "ff3d9faff01f744bf2f4e0bde9c161d6"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-20 10:41:44",
+  "files": {
+    "assets/rentals/rm-today.js": "3d3db8faafe936d4e8d1de947bcb784e",
+    "assets/rentals/rm-plan2d.js": "637bae25071674e679272f88645e9262",
+    "assets/rentals/rm-today.css": "174337d9c6cee0f0944bfc0d306f7976",
+    "assets/rentals/i18n/he.json": "e1d486da0d77c939961141c76f8017dc",
+    "assets/rentals/i18n/en.json": "be87719ef317d40527ec5e965a424db1",
+    "nadlan-config.php": "268f89358d5357203e3ced57edc27028"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.723, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

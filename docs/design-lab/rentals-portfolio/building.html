@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rentals: the building in 3D with the landlord's apartments (design lab, HAD-795)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<link rel="stylesheet" href="portfolio.css">
+<style>
+	body { background: #dfe8ef; }
+	.bd-stage { position: absolute; inset: 96px 0 150px 0; }
+	.bd-top { position: absolute; inset: 0 0 auto 0; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+	.bd-back { flex: none; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; box-shadow: 0 2px 10px rgba(13,33,41,.2); display: flex; align-items: center; justify-content: center; }
+	.bd-top h1 { margin: 0; font-size: 22px; line-height: 26px; font-weight: 800; }
+	.bd-top small { display: block; font-size: 13px; font-weight: 600; color: #3b4753; }
+	.bd-top .pf-ex { margin-inline-start: auto; border-color: #14212b; color: #14212b; }
+	.pf-say { inset: auto 12px 14px 12px; }
+	.bd-two { position: absolute; inset: auto 12px 88px 12px; display: flex; gap: 8px; }
+	.bd-apt { flex: 1; min-width: 0; height: 52px; padding: 0 12px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 14px; background: #fff; box-shadow: 0 4px 14px rgba(13,33,41,.18); font-size: 15px; font-weight: 800; }
+	.bd-apt i { flex: none; width: 12px; height: 12px; border-radius: 6px; } .bd-apt.is-on { box-shadow: 0 0 0 3px #2f6f86, 0 4px 14px rgba(13,33,41,.18); }
+	.bd-apt small { font-size: 12px; font-weight: 600; color: #3b4753; margin-inline-start: auto; }
+</style>
+</head>
+<body>
+<div class="pf">
+	<div class="bd-stage" id="bd"></div>
+	<header class="bd-top"><button type="button" class="bd-back" aria-label="חזרה למפה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#14212b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6"/></svg></button><div><h1>כיכר המדינה</h1><small>תל אביב · 2 דירות שלי בבניין</small></div><span class="pf-ex">הדמיה</span></header>
+	<div class="bd-two"><button type="button" class="bd-apt is-on" data-u="k2"><i style="background:#f2a900"></i>דירה 87<small>קומה 12</small></button><button type="button" class="bd-apt" data-u="k1"><i style="background:#12996b"></i>דירה 142<small>קומה 18</small></button></div>
+	<div class="pf-say"><div class="pf-say-t"><b>דירה 87 · קומה 12</b><span>שכר דירה בעוד 3 ימים · 17,800 ₪</span></div><button type="button" class="pf-go">להיכנס לדירה</button></div>
+</div>
+<script type="module">
+import "./rm-3d.lab.js";
+const q = new URLSearchParams(location.search);
+const go = () => {
+	const N = window.NLRM3D;
+	const h = N.mountBuilding(document.getElementById("bd"), { floors: +(q.get("floors") || 20), unitsPerFloor: 4, orientation: 200, lang: "he", rtl: true, meta: { elevator: true, solar: false, shelter: true, parking: true, year_built: 2026 },
+		units: [{ id: "k2", label: "דירה 87", floor: 12, pos: 1, dir: "west", status: "due" }, { id: "k1", label: "דירה 142", floor: 18, pos: 2, dir: "south", status: "ok" }], labels: { floor: "קומה {n}", ground: "קומת כניסה", roof: "גג" } });
+	window.__h = h;
+	setTimeout(() => { try { if (q.get("focus") !== "none") { h.focusUnit && h.focusUnit(q.get("focus") || "k2"); } } catch (e) {} document.documentElement.setAttribute("data-ready", "1"); }, 1800);
+};
+if (window.NLRM3D) { go(); } else { window.addEventListener("nlrm3d:ready", go, { once: true }); }
+</script>
+</body>
+</html>
