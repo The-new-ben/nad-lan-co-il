@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>שרטוט הדירה</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+body{margin:0}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+<div style="position: relative; width: 342px; height: 342px; direction: ltr; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; color: #14212b; background-color: #ffffff; background-image: linear-gradient(#e9eef3 1px, rgba(255,255,255,0) 1px), linear-gradient(90deg, #e9eef3 1px, rgba(255,255,255,0) 1px); background-size: 12px 12px">
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 190px; height: 160px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 188px; top: 0; width: 154px; height: 160px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: 158px; width: 342px; height: 44px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: 200px; width: 112px; height: 142px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 108px; top: 198px; width: 96px; height: 144px; box-sizing: border-box; border: 5px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 200px; top: 200px; width: 72px; height: 142px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 270px; top: 200px; width: 72px; height: 142px; box-sizing: border-box; border: 2px solid #14212b"></div>
+<div aria-hidden="true" style="position: absolute; left: 339px; top: 166px; width: 4px; height: 28px; background: #ffffff"></div>
+
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="12">
+<div aria-hidden="true" style="{{l.st}}"></div>
+</sc-for>
+
+<div style="position: absolute; left: 112px; top: 98px; width: 70px; text-align: center; font-size: 13px; font-weight: 500; color: #3b4753">סלון</div>
+<div style="position: absolute; left: 212px; top: 66px; width: 50px; text-align: center; font-size: 13px; font-weight: 500; color: #3b4753">מטבח</div>
+<div style="position: absolute; left: 36px; top: 314px; width: 72px; text-align: center; font-size: 12px; font-weight: 500; color: #3b4753">חדר שינה</div>
+<div style="position: absolute; left: 116px; top: 310px; width: 80px; text-align: center; font-size: 12px; font-weight: 600; color: #14212b">ממ"ד</div>
+<div style="position: absolute; left: 202px; top: 314px; width: 68px; text-align: center; font-size: 12px; font-weight: 500; color: #3b4753">אמבטיה</div>
+<div style="position: absolute; left: 272px; top: 324px; width: 68px; text-align: center; font-size: 11px; font-weight: 500; color: #3b4753">מרפסת שירות</div>
+
+<button type="button" aria-label="{{acLiving.aria}}" onClick="{{acLiving.pick}}" style="position: absolute; left: 8px; top: 8px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{acLiving.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="8" rx="2"></rect><path d="M6 11h12M8 17v2M12 17v2M16 17v2"></path></svg>
+<sc-if value="{{showSoon}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; right: -7px; top: -7px; width: 18px; height: 18px; box-sizing: border-box; border-radius: 9px; background: #ffffff; border: 2px solid #14212b; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#14212b" stroke-width="1.6" stroke-linecap="round"><path d="M5 2.2V5l1.8 1.2"></path></svg></span></sc-if>
+</button>
+
+<button type="button" aria-label="{{shutter.aria}}" onClick="{{shutter.pick}}" style="position: absolute; left: 78px; top: 8px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{shutter.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M4 8h16M4 12h16M4 16h16"></path></svg>
+</button>
+
+<button type="button" aria-label="{{cooktop.aria}}" onClick="{{cooktop.pick}}" style="position: absolute; left: 196px; top: 8px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{cooktop.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.2"></circle><circle cx="15.5" cy="10" r="2.2"></circle><path d="M7 16h10"></path></svg>
+</button>
+
+<button type="button" aria-label="{{fridge.aria}}" onClick="{{fridge.pick}}" style="position: absolute; left: 288px; top: 8px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{fridge.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2"></rect><path d="M6 9.5h12M9 6v1.5M9 12.5v3"></path></svg>
+</button>
+
+<button type="button" aria-label="{{sink.aria}}" onClick="{{sink.pick}}" style="position: absolute; left: 242px; top: 104px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{sink.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h14M8 20v-9a4 4 0 0 1 8 0v1M16 12h3M12 4v3"></path></svg>
+</button>
+
+<button type="button" aria-label="{{panel.aria}}" onClick="{{panel.pick}}" style="position: absolute; left: 228px; top: 158px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{panel.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8v4M12 8v4M16 8v4M8 16h8"></path></svg>
+</button>
+
+<button type="button" aria-label="{{acBed.aria}}" onClick="{{acBed.pick}}" style="position: absolute; left: 8px; top: 208px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{acBed.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="8" rx="2"></rect><path d="M6 11h12M8 17v2M12 17v2M16 17v2"></path></svg>
+</button>
+
+<button type="button" aria-label="{{mamad.aria}}" onClick="{{mamad.pick}}" style="position: absolute; left: 134px; top: 208px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{mamad.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="1.5"></rect><circle cx="12" cy="12" r="3"></circle><path d="M12 9v6M9 12h6"></path></svg>
+</button>
+
+<button type="button" aria-label="{{bath.aria}}" onClick="{{bath.pick}}" style="position: absolute; left: 214px; top: 208px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{bath.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V8a4 4 0 0 1 8 0M11 11h6M12 14v1M14 15v1.5M16 14v1"></path></svg>
+</button>
+
+<button type="button" aria-label="{{boiler.aria}}" onClick="{{boiler.pick}}" style="position: absolute; left: 284px; top: 204px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{boiler.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="6" rx="3"></rect><path d="M6 12.5h12l2.5 8h-17zM12 12.5v8M8 9.5v3M16 9.5v3"></path></svg>
+<sc-if value="{{showFault}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; right: -7px; top: -7px; width: 18px; height: 18px; border-radius: 9px; background: #a11616; color: #ffffff; font-size: 13px; font-weight: 700; line-height: 18px; text-align: center">!</span></sc-if>
+</button>
+
+<button type="button" aria-label="{{washer.aria}}" onClick="{{washer.pick}}" style="position: absolute; left: 284px; top: 276px; width: 44px; height: 44px; border-radius: 12px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .12s ease-out, opacity .16s linear, background-color .16s linear; {{washer.dyn}}">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><circle cx="12" cy="13" r="4"></circle><path d="M7 6.5h2"></path></svg>
+</button>
+
+<sc-for list="{{tags}}" as="t" hint-placeholder-count="2">
+<div aria-hidden="true" style="{{t.st}}">{{t.text}}</div>
+</sc-for>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"sel":{"editor":"enum","options":["none","boiler","acLiving","sink","panel","mamad"],"default":"none"},"layer":{"editor":"enum","options":["all","w","e","g","ac"],"default":"all"},"pick":{"editor":null},"mood":{"editor":"enum","options":["urgent","soon","quiet"],"default":"urgent"},"$preview":{"width":342,"height":342}}'>
+class Component extends DCLogic {
+renderVals() {
+var sel = this.props.sel || 'none';
+var layer = this.props.layer || 'all';
+var cb = this.props.pick;
+var mood = this.props.mood || 'urgent';
+var PARTS = [
+['acLiving', 'מזגן סלון', 30, 30, ['e', 'ac'], 'soon'],
+['shutter', 'תריס סלון', 100, 30, ['e'], 'ok'],
+['cooktop', 'כיריים ותנור', 218, 30, ['g', 'e'], 'ok'],
+['fridge', 'מקרר', 310, 30, ['e'], 'ok'],
+['sink', 'כיור וברז ראשי', 264, 126, ['w'], 'ok'],
+['panel', 'לוח חשמל', 250, 180, ['e'], 'ok'],
+['acBed', 'מזגן חדר שינה', 30, 230, ['e', 'ac'], 'ok'],
+['mamad', 'דלת וחלון הממ"ד', 156, 230, [], 'ok'],
+['bath', 'מקלחת ואסלה', 236, 230, ['w'], 'ok'],
+['boiler', 'דוד שמש', 306, 226, ['w', 'e'], 'fault'],
+['washer', 'מכונת כביסה', 306, 298, ['w', 'e'], 'ok']
+];
+var LABEL = { ok: 'תקין', soon: 'לטיפול בקרוב', fault: 'תקלה פתוחה' };
+PARTS[0][5] = mood === 'quiet' ? 'ok' : 'soon'; PARTS[9][5] = mood === 'urgent' ? 'fault' : 'ok';
+var out = { showFault: mood === 'urgent', showSoon: mood !== 'quiet' };
+var tags = [];
+PARTS.forEach(function (p) {
+var id = p[0], isSel = sel === id, inLayer = layer === 'all' || p[4].indexOf(layer) >= 0 || isSel;
+var border = p[5] === 'fault' ? '2.5px solid #a11616' : (p[5] === 'soon' ? '2px solid #14212b' : '1.5px solid #5b6b7a');
+var dyn = 'opacity:' + (inLayer ? 1 : 0.3) + '; background-color:' + (isSel ? '#2f6f86' : '#ffffff') + '; color:' + (isSel ? '#ffffff' : '#14212b') +
+'; border:' + (isSel ? '2px solid #1f4b5c' : border) + '; transform:scale(' + (isSel ? 1.12 : 1) + '); box-shadow:' + (isSel ? '0 0 0 5px rgba(47,111,134,.22)' : 'none') + '; z-index:' + (isSel ? 3 : 2);
+out[id] = { dyn: dyn, aria: p[1] + ', ' + LABEL[p[5]], pick: function () { if (cb) { cb(id); } } };
+if (p[5] !== 'ok' || isSel) {
+var left = Math.max(0, Math.min(258, p[2] - 42));
+var bg = isSel ? '#1f4b5c' : (p[5] === 'fault' ? '#a11616' : '#ffffff');
+var fg = (isSel || p[5] === 'fault') ? '#ffffff' : '#14212b';
+tags.push({ text: p[1], st: 'position:absolute; left:' + left + 'px; top:' + (p[3] + 25) + 'px; width:84px; height:17px; line-height:17px; text-align:center; font-size:11px; font-weight:600; border-radius:9px; direction:rtl; white-space:nowrap; overflow:hidden; z-index:4; background:' + bg + '; color:' + fg + '; border:' + ((isSel || p[5] === 'fault') ? '0' : '1px solid #14212b') + '; box-sizing:border-box; opacity:' + (inLayer ? 1 : 0.3) });
+}
+});
+var SEG = [
+['w', '#1565c0', 255, 126, 3, 66, 0], ['w', '#1565c0', 228, 191, 89, 3, 0], ['w', '#1565c0', 227, 192, 3, 38, 0], ['w', '#1565c0', 313, 192, 3, 106, 0],
+['w', '#c62828', 297, 226, 0, 44, 1], ['w', '#c62828', 244, 270, 56, 0, 1], ['w', '#c62828', 243, 230, 0, 40, 1], ['w', '#c62828', 275, 126, 0, 144, 1],
+['g', '#f5b800', 268, 0, 4, 44, 0], ['g', '#f5b800', 236, 42, 36, 4, 0],
+['e', '#6a3fc8', 30, 170, 292, 2, 0], ['e', '#6a3fc8', 29, 30, 2, 200, 0], ['e', '#6a3fc8', 99, 30, 2, 141, 0], ['e', '#6a3fc8', 205, 30, 2, 141, 0], ['e', '#6a3fc8', 321, 30, 2, 268, 0]
+];
+var lines = SEG.map(function (s) {
+var on = layer === 'all' ? 0.55 : (s[0] === layer ? 1 : 0.06);
+var box = s[6] ? ('width:' + s[4] + 'px; height:' + s[5] + 'px; ' + (s[4] === 0 ? 'border-left:3px dashed ' + s[1] : 'border-top:3px dashed ' + s[1])) : ('width:' + s[4] + 'px; height:' + s[5] + 'px; background:' + s[1]);
+return { st: 'position:absolute; left:' + s[2] + 'px; top:' + s[3] + 'px; ' + box + '; opacity:' + on + '; transition:opacity .16s linear; z-index:1' };
+});
+out.lines = lines;
+out.tags = tags;
+return out;
+}
+}
+</script>
+</body>
+</html>

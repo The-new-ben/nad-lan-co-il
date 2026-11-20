@@ -7,7 +7,7 @@ One board at a time, each shown to Ben before the next (coordinator order 20.11.
 | 1 | The home as an object: 1a the services drawing (fast mode), 1b the 3D model with the services through the walls | https://claude.ai/artifact/C1bAvy1rZEfkMab6FirUmk | 1a sent to Ben 20.11.2026; 1b added the same day on the coordinator's review; waiting for Ben's reaction |
 | 2 | The tenancy timeline, handover to exit | https://claude.ai/artifact/UnXWjYcZPJnARhMLhafL1C | sent to Ben 20.11.2026 (the coordinator said not to wait for his reaction to board 1) |
 | 3 | The five jobs over three taps + the index update that saves | https://claude.ai/artifact/UnXWjYcZPJnARhMLhafL1C#page-b3 (a second page of the board 2 canvas) | sent to Ben 20.11.2026 |
-| 4 | The landlord's first screen | | after board 3 |
+| 4 | The landlord's first screen, "היום", in three states | https://claude.ai/artifact/UnXWjYcZPJnARhMLhafL1C#page-b4 (third page of the same canvas) | sent to Ben 20.11.2026 |
 
 ## Board 1
 - Sources: board1/*.dc.html + canvas.json (the published files). Renders: board1/board1-phones.png (home, part open, thumb zone), board1/Desk.png, board1/p1..p4 (a pressed run).
@@ -35,3 +35,10 @@ One board at a time, each shown to Ben before the next (coordinator order 20.11.
 - Counts, before (v2 measured in the local lab, compare/BEFORE.md) -> after (pressed on the board's own screen at 390 x 844 in headless Edge; not a built product, not a real phone): repair with a photo 8 -> 3; send a professional 5 -> 2; close a repair with its invoice 6 -> 3; add a document 5 -> 3; the year's income 4 -> 1; index update: computes only -> saved in 2. In the three camera flows two of the three presses are the phone's own camera (shutter, use photo); the camera on the board is a drawing.
 - Structural changes: camera first and save without a form; the open repair's actions sit on the first screen's card; the last professional used is preselected and choose + send is one step; close + attach is one action with the file kind known from the context; the document kind is asked after saving; the yearly total heads the money tab; the index sheet has a save button.
 - Sending to a professional opens the landlord's own WhatsApp; nothing is sent automatically. The professional, the index numbers and the amounts are examples.
+
+## Board 4 (20.11.2026)
+- The landing screen as a drawing sheet: the home drawing on top with a title block beside it (the date and one sentence that says what is waiting), the part that needs attention lit and the rest dimmed; under it the lease ruler with the needle on today and the index month hatched; then everything anchored from the bottom: recent activity, the main card with its actions in the thumb zone, the fixed camera row, the five-tab navigation with icons. Square corners and ink lines instead of white rounded cards.
+- Three states: something urgent (20.11, the open boiler fault), something due soon (28.11, rent in three days and a reminder the landlord set), a quiet day (8.12: money, repairs and documents all in order, plus one suggestion for a spare moment: photograph a missing model plate, BOM leaf 06.01.02).
+- Frames (board4/src): Today, TodaySoon, TodayQuiet, TodayThumb, TodayDesk, Plan (the board 1a drawing with a mood prop). Renders: board4/board4-phones.png, TodayDesk.png, TodayThumb.png.
+- Measured at 390 x 844 in headless Edge (not a real phone): what is waiting = 0 presses; the urgent card's buttons at 79% of the height (35% on board 3's first frame, which this screen replaces); the camera row at 88%; due-soon buttons at 71% and 78%; every button 48 px or more.
+- Board 3's counts are unchanged: the same buttons, lower on the screen.

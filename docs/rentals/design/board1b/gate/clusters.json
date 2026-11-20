@@ -1,0 +1,163 @@
+[
+ {
+  "room": "laundry",
+  "roomHe": "שירות",
+  "parts": [
+   "boiler",
+   "washer"
+  ],
+  "count": 2,
+  "state": "fault",
+  "box": [
+   620,
+   680,
+   820,
+   900
+  ],
+  "x": 234.5,
+  "y": 307.5,
+  "plan": [
+   720,
+   790
+  ],
+  "pill": "ref: <Node>",
+  "pillRect": [
+   262.5,
+   298.5
+  ]
+ },
+ {
+  "room": "kitchen",
+  "roomHe": "מטבח",
+  "parts": [
+   "cooktop",
+   "fridge",
+   "sink"
+  ],
+  "count": 3,
+  "state": "ok",
+  "box": [
+   0,
+   520,
+   360,
+   900
+  ],
+  "x": 111.1,
+  "y": 326.6,
+  "plan": [
+   180,
+   710
+  ]
+ },
+ {
+  "room": "living",
+  "roomHe": "סלון ופינת אוכל",
+  "parts": [
+   "acLiving",
+   "shutter"
+  ],
+  "count": 2,
+  "state": "soon",
+  "box": [
+   0,
+   0,
+   620,
+   520
+  ],
+  "x": 111,
+  "y": 231.2,
+  "plan": [
+   310,
+   260
+  ],
+  "pill": "ref: <Node>",
+  "pillRect": [
+   139,
+   222.2
+  ]
+ },
+ {
+  "room": "hall",
+  "roomHe": "כניסה",
+  "parts": [
+   "panel"
+  ],
+  "count": 1,
+  "state": "ok",
+  "box": [
+   360,
+   520,
+   620,
+   900
+  ],
+  "x": 179,
+  "y": 306.5,
+  "plan": [
+   490,
+   710
+  ]
+ },
+ {
+  "room": "master",
+  "roomHe": "שינה הורים",
+  "parts": [
+   "acBed"
+  ],
+  "count": 1,
+  "state": "ok",
+  "box": [
+   620,
+   0,
+   1000,
+   380
+  ],
+  "x": 211,
+  "y": 188.7,
+  "plan": [
+   810,
+   190
+  ]
+ },
+ {
+  "room": "mamad",
+  "roomHe": "ממ״ד",
+  "parts": [
+   "mamad"
+  ],
+  "count": 1,
+  "state": "ok",
+  "box": [
+   1000,
+   500,
+   1320,
+   900
+  ],
+  "x": 321.3,
+  "y": 262.2,
+  "plan": [
+   1160,
+   700
+  ]
+ },
+ {
+  "room": "bath",
+  "roomHe": "רחצה",
+  "parts": [
+   "bath"
+  ],
+  "count": 1,
+  "state": "ok",
+  "box": [
+   820,
+   500,
+   1000,
+   900
+  ],
+  "x": 268.3,
+  "y": 267.7,
+  "plan": [
+   926,
+   653
+  ]
+ }
+]
