@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>חמש הפעולות בשלוש לחיצות</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+body{margin:0}
+@keyframes nlin{0%{transform:translateY(14px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+<div dir="rtl" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #eef2f6; color: #14212b; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; font-size: 16px; line-height: 1.4">
+
+<header style="position: absolute; top: 0; left: 0; right: 0; height: 64px; box-sizing: border-box; padding: 9px 16px 0 16px">
+<div style="display: flex; align-items: center; gap: 8px">
+<h1 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 24px">רחוב הדוגמה 1, דירה 7</h1>
+<span style="font-size: 12px; font-weight: 600; line-height: 18px; padding: 0 8px; border: 1px solid #3b4753; border-radius: 999px; color: #3b4753; white-space: nowrap">דירה לדוגמה</span>
+</div>
+<p style="margin: 2px 0 0 0; font-size: 13px; line-height: 20px; color: #3b4753">היום, <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace">20.11.2026</span></p>
+</header>
+
+<div style="position: absolute; top: 68px; left: 12px; right: 12px; height: 36px; display: flex; align-items: center; gap: 8px">
+<span aria-live="polite" style="height: 32px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; transition: background-color .2s linear; {{ctr.st}}">{{ctr.text}} <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 18px">{{ctr.n}}</span></span>
+<span style="font-size: 11px; line-height: 14px; color: #3b4753">המונה שייך ללוח, לא למוצר</span>
+</div>
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
+<div>
+<p style="position: absolute; top: 112px; left: 16px; right: 16px; margin: 0; font-size: 18px; font-weight: 600; line-height: 26px">{{headline}}</p>
+
+<div style="position: absolute; top: 204px; left: 12px; width: 366px; height: 152px; box-sizing: border-box; padding: 12px 14px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="{{fault.dot}}">{{fault.mark}}</span><span style="font-size: 17px; font-weight: 700">דוד שמש</span><span style="font-size: 14px; color: #3b4753">{{fault.state}}</span></div>
+<div style="margin-top: 2px; font-size: 14px; line-height: 20px; color: #3b4753">{{fault.sub}}</div>
+<div style="margin-top: 12px; display: flex; gap: 8px; opacity: {{fault.btnOp}}; pointer-events: {{fault.btnPe}}">
+<button type="button" onClick="{{goPro}}" style="flex: 1; height: 48px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer">לשלוח בעל מקצוע</button>
+<button type="button" onClick="{{goInvoice}}" style="flex: 1; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">תוקן, חשבונית</button>
+</div>
+</div>
+
+<div style="position: absolute; top: 368px; left: 12px; width: 366px; height: 124px; box-sizing: border-box; padding: 12px 14px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
+<div style="font-size: 17px; font-weight: 700">עדכון מדד ב-<span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px">1.1.2027</span></div>
+<div style="margin-top: 2px; font-size: 14px; line-height: 20px; color: #3b4753">{{cpi.sub}}</div>
+<button type="button" onClick="{{goCpi}}" style="margin-top: 10px; width: 100%; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; opacity: {{cpi.btnOp}}; pointer-events: {{cpi.btnPe}}">לחשב לפי המדד</button>
+</div>
+
+<div style="position: absolute; top: 504px; left: 16px; right: 16px; height: 180px; overflow: hidden">
+<div style="font-size: 13px; font-weight: 700; color: #3b4753">נשמר לאחרונה</div>
+<sc-for list="{{recent}}" as="r" hint-placeholder-count="1">
+<div style="margin-top: 6px; height: 44px; box-sizing: border-box; padding: 0 12px; display: flex; align-items: center; gap: 10px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 10px; animation: nlin .28s ease-out 1">
+<span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 9px; background: #14212b; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.3 5 8.8l4.5-5.2"></path></svg></span>
+<span style="font-size: 15px; font-weight: 600">{{r.t}}</span><span style="margin-inline-start: auto; font-size: 13px; color: #3b4753">{{r.s}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="position: absolute; left: 12px; right: 12px; bottom: 76px; height: 52px; display: flex; gap: 8px">
+<button type="button" onClick="{{goRepair}}" style="flex: 1; height: 52px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>לצלם תקלה</button>
+<button type="button" onClick="{{goDoc}}" style="flex: 1; height: 52px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v4h4"></path></svg>לצלם מסמך</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isCam}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; top: 108px; left: 0; right: 0; bottom: 64px; background: #3b4753; display: flex; flex-direction: column; align-items: center">
+<div style="margin-top: 14px; padding: 2px 12px; border-radius: 999px; background: #14212b; color: #ffffff; font-size: 13px; font-weight: 600">המצלמה של הטלפון · {{camLabel}}</div>
+<div aria-hidden="true" style="margin-top: 16px; width: 310px; height: 400px; box-sizing: border-box; border: 2px dashed #c9d3dd; border-radius: 10px"></div>
+<sc-if value="{{isShoot}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-label="לצלם" onClick="{{shoot}}" style="margin-top: 22px; width: 68px; height: 68px; border-radius: 34px; border: 4px solid #ffffff; background: #eef2f6; cursor: pointer; padding: 0"></button>
+</sc-if>
+<sc-if value="{{isUse}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 26px; width: 366px; display: flex; gap: 8px">
+<button type="button" onClick="{{retake}}" style="flex: 1; height: 52px; border: 1.5px solid #ffffff; border-radius: 999px; background: #3b4753; color: #ffffff; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">לצלם שוב</button>
+<button type="button" onClick="{{usePhoto}}" style="flex: 1; height: 52px; border: 0; border-radius: 999px; background: #ffffff; color: #14212b; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">להשתמש בתמונה</button>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isMoney}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; top: 116px; left: 12px; width: 366px; box-sizing: border-box; padding: 16px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
+<div style="font-size: 14px; font-weight: 700; color: #3b4753">הכנסה משכר דירה ב-<span dir="ltr">2026</span>, עד היום</div>
+<div dir="ltr" style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 600; line-height: 48px; text-align: right">23,400 ₪</div>
+<div style="font-size: 14px; line-height: 20px; color: #3b4753">3 תשלומים של <span dir="ltr">7,800 ₪</span> · ספטמבר, אוקטובר, נובמבר</div>
+<button type="button" style="margin-top: 14px; width: 100%; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">להוריד קובץ לרואה החשבון</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isSheet}}" hint-placeholder-val="{{false}}">
+<section aria-live="polite" style="position: absolute; left: 0; right: 0; bottom: 64px; height: 340px; box-sizing: border-box; padding: 10px 16px 14px 16px; background: #ffffff; border-radius: 20px 20px 0 0; box-shadow: 0 -6px 24px rgba(20,33,43,.2); display: flex; flex-direction: column; animation: nlin .24s ease-out 1">
+<div aria-hidden="true" style="width: 36px; height: 4px; border-radius: 2px; background: #c9d3dd; margin: 0 auto 8px auto; flex-shrink: 0"></div>
+<div style="display: flex; align-items: center; height: 44px"><h2 style="margin: 0; font-size: 19px; font-weight: 700">{{sh.title}}</h2>
+<button type="button" aria-label="לסגור" onClick="{{home}}" style="margin-inline-start: auto; width: 44px; height: 44px; border: 0; border-radius: 22px; background: #eef2f6; color: #14212b; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l10 10M14 4 4 14"></path></svg></button></div>
+<sc-for list="{{sh.rows}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; align-items: baseline; justify-content: space-between; height: 30px; font-size: 15px; border-bottom: 1px solid #e1e7ed"><span>{{r.k}}</span><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{r.v}}</span></div>
+</sc-for>
+<p style="margin: 8px 0 0 0; font-size: 14px; line-height: 20px; color: #14212b">{{sh.text}}</p>
+<p style="margin: 4px 0 0 0; font-size: 12px; line-height: 16px; color: #3b4753">{{sh.note}}</p>
+<button type="button" onClick="{{sh.act}}" style="margin-top: auto; flex-shrink: 0; height: 52px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{sh.primary}}</button>
+</section>
+</sc-if>
+
+<nav aria-label="ניווט ראשי" style="position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: #ffffff; border-top: 1px solid #c9d3dd; display: flex">
+<button type="button" onClick="{{home}}" style="flex: 1; border: 0; background: #ffffff; font: inherit; font-size: 13px; cursor: pointer; {{nav.today}}">היום</button>
+<button type="button" style="flex: 1; border: 0; background: #ffffff; font: inherit; font-size: 13px; font-weight: 600; color: #3b4753; cursor: pointer">הדירה</button>
+<button type="button" style="flex: 1; border: 0; background: #ffffff; font: inherit; font-size: 13px; font-weight: 600; color: #3b4753; cursor: pointer">השכירות</button>
+<button type="button" onClick="{{goMoney}}" style="flex: 1; border: 0; background: #ffffff; font: inherit; font-size: 13px; cursor: pointer; {{nav.money}}">כספים</button>
+<button type="button" style="flex: 1; border: 0; background: #ffffff; font: inherit; font-size: 13px; font-weight: 600; color: #3b4753; cursor: pointer">מסמכים</button>
+</nav>
+
+<sc-if value="{{zones}}" hint-placeholder-val="{{false}}">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<div style="position: absolute; left: 0; right: 0; top: 0; height: 295px; background: repeating-linear-gradient(135deg, rgba(20,33,43,.16) 0, rgba(20,33,43,.16) 2px, rgba(20,33,43,0) 2px, rgba(20,33,43,0) 9px)"></div>
+<div style="position: absolute; left: 4px; right: 4px; top: 295px; height: 532px; box-sizing: border-box; border: 2.5px dashed #1f4b5c; border-radius: 10px"></div>
+<div style="position: absolute; left: 8px; top: 268px; padding: 2px 10px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 700; line-height: 18px; white-space: nowrap">מכאן ומטה אזור האגודל: <span dir="ltr">35%</span> עד <span dir="ltr">98%</span></div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"zones":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var s = this.state || {};
+var scr = s.scr || 'home', kind = s.kind || '', n = s.n || 0, done = s.done || '';
+var closed = !!s.closed, sent = !!s.sent, cpiSaved = !!s.cpiSaved, recent = s.recent || [];
+function set(o) { self.setState(o); }
+function start(o) { o.n = 1; o.done = ''; set(o); }
+function finish(o, label) { o.n = n + 1; o.done = label; o.scr = 'home'; set(o); }
+var LBL = { repair: 'תקלה חדשה', invoice: 'חשבונית התיקון', doc: 'מסמך לתיק הדירה' };
+var sh = { title: '', rows: [], text: '', note: '', primary: '', act: function () {} };
+if (scr === 'pro') {
+sh = { title: 'לשלוח בעל מקצוע', rows: [{ k: 'למי', v: 'דני, אינסטלטור (דוגמה)' }, { k: 'למה הוא', v: 'האחרון שטיפל במים בדירה' }],
+ text: 'שלום דני, יש תקלה בדוד השמש ברחוב הדוגמה 1, דירה 7: אין מים חמים. מתי אפשר להגיע? התמונה והפרטים בקישור.',
+ note: 'ההודעה נפתחת בוואטסאפ שלכם, ונרשמת בתקלה.', primary: 'לשלוח בוואטסאפ',
+ act: function () { finish({ sent: true }, 'נשלח לבעל המקצוע'); } };
+}
+if (scr === 'cpi') {
+sh = { title: 'עדכון שכר הדירה לפי המדד', rows: [{ k: 'שכר הדירה היום', v: '7,800 ₪' }, { k: 'מדד הבסיס בחוזה', v: '100.0' }, { k: 'המדד האחרון', v: '101.9' }, { k: 'שכר הדירה מ-1.1.2027', v: '7,948 ₪' }],
+ text: 'החישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס.', note: 'מספרי המדד כאן הם דוגמה.', primary: 'לשמור את שכר הדירה החדש',
+ act: function () { finish({ cpiSaved: true }, 'שכר הדירה החדש נשמר'); } };
+}
+var ctrDone = !!done && scr === 'home';
+return {
+isHome: scr === 'home' || scr === 'pro' || scr === 'cpi', isCam: scr === 'cam', isShoot: scr === 'cam' && !s.shot, isUse: scr === 'cam' && !!s.shot, isMoney: scr === 'money', isSheet: scr === 'pro' || scr === 'cpi',
+camLabel: LBL[kind] || '', sh: sh, zones: !!this.props.zones,
+headline: closed ? 'אין תקלות פתוחות. הדבר הבא: שכר דירה ב-1.12.' : 'תקלה אחת פתוחה: דוד השמש. לתקן עד 16.12.2026.',
+ctr: { text: ctrDone ? (done + ' ב-') : (scr === 'money' ? 'סך השנה מוצג אחרי' : 'לחיצות בפעולה'), n: n, st: (ctrDone || scr === 'money') ? 'background-color:#14212b; color:#ffffff' : 'background-color:#ffffff; color:#14212b; box-shadow:inset 0 0 0 1.5px #14212b' },
+fault: { dot: 'width:20px; height:20px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; color:#ffffff; font-size:13px; font-weight:700; background:' + (closed ? '#14212b' : '#a11616'), mark: closed ? '' : '!',
+ state: closed ? 'נסגרה היום' : 'תקלה פתוחה', sub: closed ? 'החשבונית נשמרה בתיק הדירה.' : (sent ? 'נשלח לדני היום · לתקן עד 16.12.2026' : 'אין מים חמים · יום 4 מתוך 30 · לתקן עד 16.12.2026'), btnOp: closed ? 0.35 : 1, btnPe: closed ? 'none' : 'auto' },
+cpi: { sub: cpiSaved ? 'נשמר: 7,948 ₪ מ-1.1.2027.' : 'שכר הדירה צמוד למדד, לפי החוזה.', btnOp: cpiSaved ? 0.35 : 1, btnPe: cpiSaved ? 'none' : 'auto' },
+recent: recent,
+nav: { today: scr !== 'money' ? 'font-weight:700; color:#1f4b5c; box-shadow:inset 0 3px 0 #2f6f86' : 'font-weight:600; color:#3b4753', money: scr === 'money' ? 'font-weight:700; color:#1f4b5c; box-shadow:inset 0 3px 0 #2f6f86' : 'font-weight:600; color:#3b4753' },
+home: function () { set({ scr: 'home', n: 0, done: '', shot: false }); },
+goRepair: function () { start({ scr: 'cam', kind: 'repair', shot: false }); },
+goDoc: function () { start({ scr: 'cam', kind: 'doc', shot: false }); },
+goInvoice: function () { start({ scr: 'cam', kind: 'invoice', shot: false }); },
+goPro: function () { start({ scr: 'pro' }); },
+goCpi: function () { start({ scr: 'cpi' }); },
+goMoney: function () { set({ scr: 'money', n: 1, done: '' }); },
+shoot: function () { set({ shot: true, n: n + 1 }); },
+retake: function () { set({ shot: false }); },
+usePhoto: function () {
+var item = kind === 'repair' ? { t: 'תקלה חדשה, עם תמונה', s: 'דירה 7 · היום' } : (kind === 'invoice' ? { t: 'חשבונית: דוד שמש', s: 'התקלה נסגרה' } : { t: 'מסמך חדש', s: 'בתיק הדירה' });
+var o = { recent: [item].concat(recent).slice(0, 3), shot: false };
+if (kind === 'invoice') { o.closed = true; }
+finish(o, kind === 'repair' ? 'התקלה נשמרה' : (kind === 'invoice' ? 'התקלה נסגרה' : 'המסמך נשמר'));
+}
+};
+}
+}
+</script>
+</body>
+</html>

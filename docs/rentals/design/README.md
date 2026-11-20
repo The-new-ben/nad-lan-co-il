@@ -6,7 +6,7 @@ One board at a time, each shown to Ben before the next (coordinator order 20.11.
 |---|---|---|---|
 | 1 | The home as an object: 1a the services drawing (fast mode), 1b the 3D model with the services through the walls | https://claude.ai/artifact/C1bAvy1rZEfkMab6FirUmk | 1a sent to Ben 20.11.2026; 1b added the same day on the coordinator's review; waiting for Ben's reaction |
 | 2 | The tenancy timeline, handover to exit | https://claude.ai/artifact/UnXWjYcZPJnARhMLhafL1C | sent to Ben 20.11.2026 (the coordinator said not to wait for his reaction to board 1) |
-| 3 | The five jobs over three taps + the index update that saves | | after board 2 |
+| 3 | The five jobs over three taps + the index update that saves | https://claude.ai/artifact/UnXWjYcZPJnARhMLhafL1C#page-b3 (a second page of the board 2 canvas) | sent to Ben 20.11.2026 |
 | 4 | The landlord's first screen | | after board 3 |
 
 ## Board 1
@@ -29,3 +29,9 @@ One board at a time, each shown to Ben before the next (coordinator order 20.11.
 - Pressed at 390 x 844 in headless Edge (not a real phone): what is due next = 0 presses; mark the rent received = 1 press (v2 today: 2); primary action centre at 81% of the height, previous / next at 60%; 0 targets under 44 px.
 - Legal sentences: only the statute's own words, read 20.11.2026: s.25ז(ג) use instructions by handover, s.25ח(ב) 30 days from the tenant's demand, s.25יב option notices 90 / 60 days and a reasonable time without an option, s.25י(ה) security back within 60 days or when the debts are paid, whichever is later. No tax date (the Tax Authority's two pages disagree). Index linkage shown "by the contract".
 - Navigation gains a fifth tab, "השכירות"; board 1's frames still show four and take it at build.
+
+## Board 3 (20.11.2026)
+- Frames (board3/src): Flows (a phone that plays all six flows with a live press counter), FlowsThumb, Counts (before and after with the structural change per job), FlowsDesk. Renders: board3/board3-phones.png, Counts.png, FlowsDesk.png, f1..f5 (the pressed run).
+- Counts, before (v2 measured in the local lab, compare/BEFORE.md) -> after (pressed on the board's own screen at 390 x 844 in headless Edge; not a built product, not a real phone): repair with a photo 8 -> 3; send a professional 5 -> 2; close a repair with its invoice 6 -> 3; add a document 5 -> 3; the year's income 4 -> 1; index update: computes only -> saved in 2. In the three camera flows two of the three presses are the phone's own camera (shutter, use photo); the camera on the board is a drawing.
+- Structural changes: camera first and save without a form; the open repair's actions sit on the first screen's card; the last professional used is preselected and choose + send is one step; close + attach is one action with the file kind known from the context; the document kind is asked after saving; the yearly total heads the money tab; the index sheet has a save button.
+- Sending to a professional opens the landlord's own WhatsApp; nothing is sent automatically. The professional, the index numbers and the amounts are examples.
