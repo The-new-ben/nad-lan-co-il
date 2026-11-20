@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ציר הזמן במחשב</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div dir="rtl" style="width: 1280px; height: 1060px; overflow: hidden; background: #eef2f6; color: #14212b; font-family: 'IBM Plex Sans Hebrew', Arial, sans-serif; font-size: 16px; line-height: 1.4; display: flex; flex-direction: column">
+<header style="height: 64px; flex-shrink: 0; box-sizing: border-box; padding: 0 24px; background: #ffffff; border-bottom: 1px solid #c9d3dd; display: flex; align-items: center; gap: 16px">
+<span style="font-size: 16px; font-weight: 700; color: #1f4b5c">נדלן · ניהול השכרות</span>
+<nav aria-label="ניווט ראשי" style="margin-inline-start: auto; display: flex; gap: 4px; height: 64px">
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">היום</a>
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">הדירה</a>
+<a href="#" aria-current="page" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #1f4b5c; font-size: 15px; font-weight: 700; box-shadow: inset 0 -3px 0 #2f6f86">השכירות</a>
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">כספים</a>
+<a href="#" style="display: flex; align-items: center; padding: 0 14px; text-decoration: none; color: #3b4753; font-size: 15px; font-weight: 600">מסמכים</a>
+</nav>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 20px; padding: 0 24px">
+<aside style="width: 420px; flex-shrink: 0; align-self: flex-start; margin-top: 24px; box-sizing: border-box; padding: 20px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px; display: flex; flex-direction: column">
+<div style="font-size: 13px; font-weight: 700; color: #2f6f86">הדבר הבא בשכירות</div>
+<h2 style="margin: 0; font-size: 24px; font-weight: 700; line-height: 32px">שכר דירה לדצמבר</h2>
+<div style="margin-top: 6px; font-size: 16px; line-height: 24px"><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600">1.12.2026</span> · בעוד 11 יום</div>
+<div style="font-size: 16px; line-height: 24px"><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace">7,800 ₪</span> בהעברה בנקאית.</div>
+<div style="margin-top: 16px; font-size: 16px; line-height: 24px"><span style="font-weight: 700; color: #2f6f86">הצעד הבא:</span> כשהכסף נכנס, מסמנים שהתקבל.</div>
+<button type="button" style="margin-top: 12px; height: 52px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer">התקבל</button>
+<button type="button" style="margin-top: 10px; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">לשלוח תזכורת לשוכר</button>
+<div style="margin-top: 20px; padding-top: 12px; border-top: 1px solid #c9d3dd; font-size: 13px; font-weight: 700; color: #3b4753">פתוח עכשיו</div>
+<div style="font-size: 16px; line-height: 24px">תקלה בדוד השמש. לתקן עד <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px">16.12.2026</span></div>
+<a href="#" style="margin-top: 4px; font-size: 15px; font-weight: 700; color: #2f6f86">לטיפול בדוד השמש</a>
+</aside>
+<main style="width: 390px; flex-shrink: 0">
+<dc-import name="Main" full="{{yes}}" hint-size="390px,980px"></dc-import>
+</main>
+<section style="flex-grow: 1; min-width: 0; align-self: flex-start; margin-top: 24px; box-sizing: border-box; padding: 20px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
+<h2 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 700">איך קוראים את הציר</h2>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; font-size: 15px"><span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 11px; background: #14212b"></span>נעשה</div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; font-size: 15px"><span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 11px; background: #a11616"></span>פתוח ודורש טיפול</div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; font-size: 15px"><span aria-hidden="true" style="width: 22px; height: 22px; box-sizing: border-box; border-radius: 11px; background: #ffffff; border: 3px solid #2f6f86"></span>הדבר הבא</div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; font-size: 15px"><span aria-hidden="true" style="width: 22px; height: 22px; box-sizing: border-box; border-radius: 11px; background: #ffffff; border: 2px solid #14212b"></span>בהמשך</div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; font-size: 15px"><span aria-hidden="true" style="width: 22px; height: 14px; background-image: repeating-linear-gradient(135deg, #2f6f86 0, #2f6f86 2px, rgba(47,111,134,0) 2px, rgba(47,111,134,0) 5px)"></span>החודש שבין שתי הודעות האופציה</div>
+<p style="margin: 12px 0 0 0; font-size: 14px; line-height: 21px; color: #3b4753">הזמן רץ משמאל לימין בסרגל החוזה, ומלמעלה למטה בציר. לוחצים על שורה כדי לראות מה עושים בה.</p>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1060}}'>
+class Component extends DCLogic {
+renderVals() {
+return { yes: true };
+}
+}
+</script>
+</body>
+</html>
