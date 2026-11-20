@@ -7,6 +7,7 @@ crawler (412x915, a mobile Googlebot user agent) and like a desktop (1440x900) a
   C3  the answer paragraph (.nl-lead) starts above the stage (#nlps); on the phone within 1.2 screens, on desktop
       within the first screen
   C4  the stage starts within 1.5 screens on the phone (it follows the paragraph at once, never pushed to the end)
+  The stage is the showroom (#nlsr) where a page has one (Kikar HaMedina), else #nlps; the title must not sit below it either.
 Pages without a stage only need the paragraph within the first 1.2 screens.
 
   python tools/content_first_check.py [url ...]      (default: the project pages with a stage, and two without)
@@ -33,11 +34,15 @@ GOOGLEBOT_PHONE = ("Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) Ap
 PROBE = """(() => { const R = s => { const e = document.querySelector(s); if (!e) return null; const r = e.getBoundingClientRect();
   return r.height ? Math.round(r.top + scrollY) : null; };
   const X = s => { const e = document.querySelector(s); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.right]; };
-  const a = X('.nl-lead'), b = X('#nlps');
+  // HAD-790 (20.11.2026): on the Kikar pages the stage is the showroom (#nlsr) and #nlps is hidden; it had mounted above the
+  // title and the paragraph (h1 at 2,521px on a phone) and this check did not see it, because it only measured #nlps
+  // (the English page keeps its 3D stage #nlps beside the text on a desktop: the stage is whichever of the two shows first)
+  const ST = ['#nlsr', '#nlps'].filter(s => R(s) !== null).sort((x, y) => R(x) - R(y))[0] || '#nlps';
+  const a = X('.nl-lead'), b = X(ST);
   // stacked: the paragraph and the stage share columns (a phone); side by side (a desktop's first fold) they do not
   const stacked = !!(a && b && Math.min(a[1], b[1]) - Math.max(a[0], b[0]) > 40);
   const h1 = document.querySelector('h1'); const h1hidden = !!(h1 && (h1.getBoundingClientRect().height <= 2 || /screen-reader-text|sr-only/.test(h1.className)));
-  return { h1: R('h1'), h1hidden, lead: R('.nl-lead'), stage: R('#nlps'), stacked, vh: innerHeight }; })()"""
+  return { h1: R('h1'), h1hidden, lead: R('.nl-lead'), stage: R(ST), stageSel: ST, stacked, vh: innerHeight }; })()"""
 
 
 def main(urls):
@@ -64,12 +69,14 @@ def main(urls):
                         why.append(f"paragraph at {r['lead']}px, past {lead_max} screens")
                     if r["stage"] is not None and r["stacked"] and r["lead"] > r["stage"]:
                         why.append(f"paragraph ({r['lead']}px) below the stage ({r['stage']}px)")
+                if r["stage"] is not None and r["stacked"] and r["h1"] is not None and r["h1"] > r["stage"]:
+                    why.append(f"title ({r['h1']}px) below the stage ({r['stage']}px)")
                 if r["stage"] is not None and r["stage"] > stage_max * vh:
                     why.append(f"stage at {r['stage']}px, past {stage_max} screens")
                 if r.get("h1hidden"):
                     print(f"[WARN] {name:7s} {url}  the H1 is hidden (screen readers only); the checklist's C1 wants it visible (Linear: fleet H1)")
                 ok = not why
-                print(f"[{'OK ' if ok else 'BAD'}] {name:7s} {url}  h1 {r['h1']} lead {r['lead']} stage {r['stage']}" + ("" if ok else "  <- " + "; ".join(why)))
+                print(f"[{'OK ' if ok else 'BAD'}] {name:7s} {url}  h1 {r['h1']} lead {r['lead']} stage {r['stage']} ({r.get('stageSel')})" + ("" if ok else "  <- " + "; ".join(why)))
                 if not ok:
                     bad.append((name, url, why))
             ctx.close()

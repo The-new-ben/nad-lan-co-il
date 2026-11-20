@@ -1,0 +1,226 @@
+[
+ {
+  "device": "phone390",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 2446,
+   "lead": 2547,
+   "cta": 2951,
+   "showroom": 190,
+   "showroomReal": true,
+   "map": 1036,
+   "cls": 0.7774,
+   "shifts": [
+    {
+     "t": 2090,
+     "v": 0.0002,
+     "n": "nla11y"
+    },
+    {
+     "t": 2602,
+     "v": 0.7773,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1868,
+   "vh": 844
+  },
+  "settled": {
+   "h1": 2446,
+   "lead": 2547,
+   "cta": 2951,
+   "showroom": 190,
+   "showroomReal": true,
+   "map": 1036,
+   "cls": 0.7774,
+   "shifts": [
+    {
+     "t": 2090,
+     "v": 0.0002,
+     "n": "nla11y"
+    },
+    {
+     "t": 2602,
+     "v": 0.7773,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1868,
+   "vh": 844
+  }
+ },
+ {
+  "device": "phone390",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 2519,
+   "lead": 2654,
+   "cta": 3030,
+   "showroom": 207,
+   "showroomReal": true,
+   "map": 1110,
+   "cls": 0.7571,
+   "shifts": [
+    {
+     "t": 2396,
+     "v": 0.7571,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1692,
+   "vh": 844
+  },
+  "settled": {
+   "h1": 2519,
+   "lead": 2654,
+   "cta": 3030,
+   "showroom": 207,
+   "showroomReal": true,
+   "map": 1110,
+   "cls": 0.7571,
+   "shifts": [
+    {
+     "t": 2396,
+     "v": 0.7571,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1692,
+   "vh": 844
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 2078,
+   "lead": 2190,
+   "cta": 2406,
+   "showroom": 204,
+   "showroomReal": true,
+   "map": 1039,
+   "cls": 0.5941,
+   "shifts": [
+    {
+     "t": 1846,
+     "v": 0,
+     "n": ""
+    },
+    {
+     "t": 1992,
+     "v": 0.0447,
+     "n": "nl-lead|nlds nlps-ctawrap||nlhp-dd|nlhp-dd"
+    },
+    {
+     "t": 2493,
+     "v": 0.5494,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1668,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 2078,
+   "lead": 2190,
+   "cta": 2406,
+   "showroom": 204,
+   "showroomReal": true,
+   "map": 1039,
+   "cls": 0.5941,
+   "shifts": [
+    {
+     "t": 1846,
+     "v": 0,
+     "n": ""
+    },
+    {
+     "t": 1992,
+     "v": 0.0447,
+     "n": "nl-lead|nlds nlps-ctawrap||nlhp-dd|nlhp-dd"
+    },
+    {
+     "t": 2493,
+     "v": 0.5494,
+     "n": "nlps-page nlps-page--world"
+    }
+   ],
+   "fcp": 1668,
+   "vh": 900
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 2083,
+   "lead": 2238,
+   "cta": 2627,
+   "showroom": 209,
+   "showroomReal": true,
+   "map": 1044,
+   "cls": 1.4339,
+   "shifts": [
+    {
+     "t": 1956,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 2440,
+     "v": 0.77,
+     "n": "nlps-page nlps-page--world"
+    },
+    {
+     "t": 2467,
+     "v": 0.6526,
+     "n": "nlsr|nlsr-map|nlsr-row"
+    },
+    {
+     "t": 2591,
+     "v": 0.01,
+     "n": "nlsr-map|nlsr-row|nlsr-mapline"
+    }
+   ],
+   "fcp": 1700,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 2083,
+   "lead": 2238,
+   "cta": 2627,
+   "showroom": 209,
+   "showroomReal": true,
+   "map": 1044,
+   "cls": 1.4339,
+   "shifts": [
+    {
+     "t": 1956,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 2440,
+     "v": 0.77,
+     "n": "nlps-page nlps-page--world"
+    },
+    {
+     "t": 2467,
+     "v": 0.6526,
+     "n": "nlsr|nlsr-map|nlsr-row"
+    },
+    {
+     "t": 2591,
+     "v": 0.01,
+     "n": "nlsr-map|nlsr-row|nlsr-mapline"
+    }
+   ],
+   "fcp": 1700,
+   "vh": 900
+  }
+ }
+]

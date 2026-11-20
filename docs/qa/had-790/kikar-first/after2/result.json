@@ -1,0 +1,162 @@
+[
+ {
+  "device": "phone390",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 8,
+   "lead": null,
+   "cta": null,
+   "showroom": null,
+   "showroomReal": false,
+   "map": null,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 376,
+   "vh": 2121
+  },
+  "settled": {
+   "h1": 8,
+   "lead": null,
+   "cta": null,
+   "showroom": null,
+   "showroomReal": false,
+   "map": null,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 376,
+   "vh": 2121
+  }
+ },
+ {
+  "device": "phone390",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 207,
+   "lead": 342,
+   "cta": 718,
+   "showroom": 968,
+   "showroomReal": true,
+   "map": 1865,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1952,
+   "vh": 844
+  },
+  "settled": {
+   "h1": 207,
+   "lead": 342,
+   "cta": 718,
+   "showroom": 968,
+   "showroomReal": true,
+   "map": 1865,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1952,
+   "vh": 844
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 204,
+   "lead": 316,
+   "cta": 533,
+   "showroom": 685,
+   "showroomReal": true,
+   "map": 1516,
+   "cls": 0.1752,
+   "shifts": [
+    {
+     "t": 1917,
+     "v": 0,
+     "n": ""
+    },
+    {
+     "t": 2095,
+     "v": 0.1752,
+     "n": "nlsr|nlds nlps-ctawrap|||"
+    }
+   ],
+   "fcp": 1752,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 204,
+   "lead": 316,
+   "cta": 533,
+   "showroom": 685,
+   "showroomReal": true,
+   "map": 1516,
+   "cls": 0.1752,
+   "shifts": [
+    {
+     "t": 1917,
+     "v": 0,
+     "n": ""
+    },
+    {
+     "t": 2095,
+     "v": 0.1752,
+     "n": "nlsr|nlds nlps-ctawrap|||"
+    }
+   ],
+   "fcp": 1752,
+   "vh": 900
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 209,
+   "lead": 364,
+   "cta": 754,
+   "showroom": 1116,
+   "showroomReal": true,
+   "map": 1947,
+   "cls": 0.0014,
+   "shifts": [
+    {
+     "t": 2029,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 5914,
+     "v": 0.0001,
+     "n": "t|t"
+    }
+   ],
+   "fcp": 1688,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 209,
+   "lead": 364,
+   "cta": 754,
+   "showroom": 1116,
+   "showroomReal": true,
+   "map": 1947,
+   "cls": 0.0014,
+   "shifts": [
+    {
+     "t": 2029,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 5914,
+     "v": 0.0001,
+     "n": "t|t"
+    }
+   ],
+   "fcp": 1688,
+   "vh": 900
+  }
+ }
+]

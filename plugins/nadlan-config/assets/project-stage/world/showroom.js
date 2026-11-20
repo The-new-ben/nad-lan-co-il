@@ -427,8 +427,20 @@ function callRow() {
 
 export function mountShowroom(at) {
   if (!at || document.querySelector('.nlsr')) return { open };
-  const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = WORLD + 'showroom.css' + (C.ver ? '?ver=' + C.ver : ''); document.head.appendChild(css);
-  el = document.createElement('section'); el.className = 'nlsr'; el.id = 'nlsr'; el.dir = dir(); el.lang = lang(); el.setAttribute('aria-label', t('sr_aria_section'));
+  let css = document.querySelector('link[data-nlsr-css]');
+  if (!css) { css = document.createElement('link'); css.rel = 'stylesheet'; css.href = WORLD + 'showroom.css' + (C.ver ? '?ver=' + C.ver : ''); css.dataset.nlsrCss = '1'; document.head.appendChild(css); }
+  // HAD-790 (20.11.2026): the page prints the showroom's place right after its buttons (#nlsr.nlsr-ph, inc/project-stage.php), so the
+  // title and the first paragraph stay first; the showroom fills that place once its styles are in, instead of pushing a new section
+  // in above the title. Without the place (?kikar=journey and older pages) it is built and put before the stage as before.
+  const ph = document.getElementById('nlsr');
+  const place = ph && ph.classList.contains('nlsr-ph') ? ph : null;
+  if (place && !css.sheet && !css.dataset.nlsrWait) { // once: on its load (or after 4 s) the showroom fills the place
+    css.dataset.nlsrWait = '1';
+    let done = false; const go = () => { if (done) return; done = true; mountShowroom(at); };
+    css.addEventListener('load', go, { once: true }); css.addEventListener('error', go, { once: true }); setTimeout(go, 4000);
+    return { open };
+  }
+  el = place || document.createElement('section'); el.className = 'nlsr'; el.id = 'nlsr'; el.dir = dir(); el.lang = lang(); el.setAttribute('aria-label', t('sr_aria_section')); el.removeAttribute('aria-hidden');
   el.innerHTML = `<div class="nlsr-head"><div class="nlsr-t">${esc(t('sr_title_all'))}</div><div class="nlsr-s"></div></div>
     <ol class="nlsr-steps" aria-label="${esc(t('sr_aria_steps'))}"></ol>
     <div class="nlsr-stage" tabindex="0" aria-label="${esc(t('sr_aria_stage'))}">
@@ -443,7 +455,7 @@ export function mountShowroom(at) {
       <svg class="nlsr-mapov" aria-hidden="true"></svg><span class="nlsr-ml nlsr-ml--sea">${esc(t('sr_map_sea'))}</span><span class="nlsr-ml nlsr-ml--n">${esc(t('sr_map_north'))}</span></div>
     <div class="nlsr-mapline" aria-live="polite"></div>
     <div class="nlsr-row">${callRow()}</div>`;
-  at.parentNode.insertBefore(el, at);
+  if (!place) at.parentNode.insertBefore(el, at);
   // 1.72.646: the page's own "virtual tour" links pointed at the earlier stage's heading, which the showroom replaces
   document.querySelectorAll('a[href="#nlps-t"]').forEach((x) => x.setAttribute('href', '#nlsr'));
   box = el.querySelector('.nlsr-stage');
@@ -460,5 +472,7 @@ function restore() { // a shared link (#dira=B24-262) opens on that apartment
   const m = /^#dira=([ABC])(\d+)-(\d+)/.exec(location.hash || ''); if (!m || !T.towers[m[1]]) return;
   openTower(m[1], true); const f = +m[2]; S.side = sideFacing(f, +m[3]); S.floor = Math.min(Math.max(f, 1), turn().floors); S.touched = true;
   S.sideChosen = true; S.frame = nearestFrame(m[1], sideBearing(m[1], S.floor, S.side)); paint();
+  // HAD-790 (20.11): the showroom now follows the title and the paragraph, so a shared apartment link brings it into view
+  requestAnimationFrame(() => { try { el.scrollIntoView({ block: 'start' }); } catch (e) { /* none */ } });
 }
 function open() { if (!el) return; toAll(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }

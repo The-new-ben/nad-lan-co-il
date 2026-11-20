@@ -1,0 +1,67 @@
+[
+ {
+  "device": "desk1440",
+  "lang": "he",
+  "ok": true,
+  "steps": {
+   "order": [
+    true,
+    {
+     "h1": 204,
+     "lead": 316,
+     "cta": 533,
+     "sr": 685,
+     "real": true,
+     "map": 1516
+    }
+   ],
+   "tower": [
+    true,
+    null
+   ],
+   "floor": [
+    true,
+    [
+     "facing",
+     21,
+     "B"
+    ]
+   ],
+   "home": [
+    true,
+    [
+     [
+      "cockpit",
+      "home"
+     ]
+    ]
+   ],
+   "360": [
+    true,
+    [
+     [
+      "cockpit",
+      "inside"
+     ]
+    ]
+   ],
+   "basket": [
+    true,
+    "הסל שלי"
+   ],
+   "call": [
+    true,
+    "/projects/hamedina/?kf=1795133076&room=new"
+   ],
+   "dira": [
+    true,
+    {
+     "top": 161,
+     "inView": true,
+     "towerOpen": true,
+     "card": " מגדל B · קומה 24 · מערב −+ להיכנס לדירה צפוןמזרחדרוםמערבליבהצשרטוט להמחשה, לא תוכנית רשמי"
+    }
+   ]
+  }
+ }
+]

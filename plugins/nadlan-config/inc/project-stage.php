@@ -1015,7 +1015,8 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		// one grid (design system version 14): the text column, the stage and the rail share the first fold; the source
 		// order stays title, lead, buttons, stage, rail, facts, view and map
 		$lead = substr( $html, $a, $lead_end - $a );
-		$page = '<div class="nlps-page' . ( ! empty( $ps['world'] ) ? ' nlps-page--world' : '' ) . '" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . ( $parts['prices'] ?? '' ) . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['tour'] . $parts['deals'] . ( function_exists( 'nadlan_ps_world_film' ) ? nadlan_ps_world_film( $ps ) : '' ) . '</div>'; // v104.28: the film, after the deals, outside the post content
+		$srp  = ( function_exists( 'nadlan_ps_kikar_next' ) && nadlan_ps_kikar_next( $ps ) && function_exists( 'nadlan_ps_sr_place' ) ) ? nadlan_ps_sr_place( $ps ) : ''; // HAD-790 (20.11): the showroom's place after the buttons
+		$page = '<div class="nlps-page' . ( ! empty( $ps['world'] ) ? ' nlps-page--world' : '' ) . ( '' !== $srp ? ' nlps-page--sr' : '' ) . '" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . $srp . ( $parts['prices'] ?? '' ) . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['tour'] . $parts['deals'] . ( function_exists( 'nadlan_ps_world_film' ) ? nadlan_ps_world_film( $ps ) : '' ) . '</div>'; // v104.28: the film, after the deals, outside the post content
 		$html = substr( $html, 0, $a ) . $page . substr( $html, $lead_end );
 		// one FAQPage schema, from the page's own visible questions and answers (the recipe, row 25): the first
 		// "שאלות נפוצות" section that really holds question and answer pairs
@@ -1121,6 +1122,37 @@ if ( ! function_exists( 'nadlan_ps_kikar_next' ) ) {
 	 *  "תשלים... תן לי לראות בדף החי את הכל"). The other languages are unchanged. */
 	function nadlan_ps_kikar_next( $ps ) {
 		return 'hamedina' === (string) ( $ps['dir'] ?? '' ) && in_array( (string) ( $ps['lang'] ?? 'he' ), array( 'he', 'en' ), true ); // HAD-699 (1.72.639): every visitor; 1.72.658 (HAD-712): the English page too
+	}
+}
+if ( ! function_exists( 'nadlan_ps_sr_place' ) ) {
+	/** HAD-790 (20.11.2026, Ben: "the first paragraph must always be there, it carries the search phrase"): the showroom's place,
+	 *  printed with the page right after the buttons, so the order on every width is title, paragraph, buttons, showroom (iron law 4).
+	 *  showroom.js fills this same section (it had built its own and pushed it in above the title, a 650-800 px jump after the first
+	 *  paint). The place keeps the showroom's height: the stage's own height rule (showroom.css) plus a lower bound for its heading,
+	 *  steps, small map and buttons, measured live on 20.11 at 360-1920 px; its picture is the showroom's first picture. The rules
+	 *  that hide the old stage and widen the text on a Hebrew desktop key on #nlsr, so they hold from the first paint as well. */
+	function nadlan_ps_sr_place( $ps ) {
+		$en   = 'en' === (string) ( $ps['lang'] ?? 'he' );
+		$lang = $en ? 'en' : 'he';
+		$pic  = plugins_url( 'assets/project-stage/' . $ps['dir'] . '/aerial-tall-800.webp', dirname( __FILE__ ) ) . '?ver=' . rawurlencode( nadlan_ps_ver() );
+		$top  = $en ? 150 : 118; // the heading and the steps above the stage on a phone
+		$rest = $en ? 250 : 222; // heading, steps, small map line and buttons around the stage on a phone (the small map adds 0.339 of the width)
+		$css  = ':root body .nlps-page.nlps-page--world.nlps-page--sr{grid-template-areas:"hero stage" "lead stage" "cta stage" "sr sr" "srmap srmap" "prices prices" "below below" "facts facts" "deals deals" "rail rail" "film film"}'
+			. '@media(max-width:1099px){:root body .nlps-page.nlps-page--world.nlps-page--sr{grid-template-areas:"hero" "lead" "cta" "sr" "srmap" "stage" "film" "prices" "below" "facts" "deals" "rail"}}'
+			. ':root body .nlps-page.nlps-page--sr>.nlws-film{grid-area:film}' // the film had no area (it filled the first empty row)
+			. ':root body .nlps-page--sr>#nlsr{grid-area:sr;width:100%;max-width:1400px;justify-self:center;margin-inline:0;min-width:0;box-sizing:border-box}'
+			. ':root body .nlps-page--sr>#nlpjx-map{grid-area:srmap;width:100%;max-width:1100px;justify-self:center;margin-inline:0;min-width:0}'
+			. '#nlsr.nlsr-ph{display:block;position:relative;margin-bottom:18px;min-height:calc(' . $rest . 'px + clamp(330px,calc(100svh - 372px),540px) + (100vw - 40px) * .339)}'
+			. '#nlsr.nlsr-ph .nlsr-ph__stage{position:relative;margin-top:' . $top . 'px;height:clamp(330px,calc(100svh - 372px),540px);overflow:hidden;background:#0d2129;border-radius:18px 18px 0 0}'
+			. '#nlsr.nlsr-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}'
+			. '@media(min-width:900px){#nlsr.nlsr-ph{display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,520px);column-gap:22px;min-height:calc(clamp(520px,calc(100vh - 220px),720px) + 40px)}'
+			. '#nlsr.nlsr-ph .nlsr-ph__stage{grid-column:2;margin-top:0;height:clamp(520px,calc(100vh - 220px),720px);border-radius:22px}}'
+			. 'body:has(#nlsr[lang="he"]):not(.nlsr-3d) .nlps-stagebox{display:none!important}'
+			. '@media(max-width:899px){body:not(.nlsr-3d):has(#nlsr) .nlps-page--sr>.nlps-stagebox{display:none!important}}'
+			. '@media(min-width:900px){body:has(#nlsr[lang="he"]):not(.nlsr-3d) .nlps-page--world>.nlps-herowrap,body:has(#nlsr[lang="he"]):not(.nlsr-3d) .nlps-page--world>.nl-lead,body:has(#nlsr[lang="he"]):not(.nlsr-3d) .nlps-page--world>.nlps-ctawrap{grid-column:1/-1!important}body:has(#nlsr[lang="he"]):not(.nlsr-3d) .nlps-page--world>.nl-lead{max-width:82ch!important}}';
+		return '<style id="nlsr-place-css">' . $css . '</style>'
+			. '<section class="nlsr-ph" id="nlsr" dir="' . ( $en ? 'ltr' : 'rtl' ) . '" lang="' . $lang . '" aria-hidden="true">'
+			. '<div class="nlsr-ph__stage"><img src="' . esc_url( $pic ) . '" alt="" width="800" height="1067" decoding="async"></div></section>';
 	}
 }
 if ( ! function_exists( 'nadlan_ps_world_media' ) ) {

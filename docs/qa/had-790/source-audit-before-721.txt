@@ -1,0 +1,33 @@
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+    http 200 · 485,072b · 885ms · sha 12a1a986e1fc · CHANGED
+    title(67): מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 64 styles 44
+    DIFF vs 20261119T233602Z:
+      · bytes 485,098 -> 485,072
+[GREEN] https://nad-lan.co.il/projects/hamedina-en/
+    http 200 · 391,412b · 772ms · sha 739876eb5389 · CHANGED
+    title(59): Kikar Hamedina Towers Tel Aviv: Prices, Deals, Map &amp; 3D
+    h1x1 canonical x1 hreflang 10 favicon 4 jsonld 5 scripts 62 styles 43
+    DIFF vs 20261119T211602Z:
+      · bytes 391,396 -> 391,412
+[GREEN] https://nad-lan.co.il/projects/hamedina-fr/
+    http 200 · 396,973b · 744ms · sha 9e11e885b8d4 · CHANGED
+    title(58): Tours Kikar Hamedina à Tel Aviv : appartements, prix et 3D
+    h1x1 canonical x1 hreflang 10 favicon 4 jsonld 5 scripts 60 styles 43
+    DIFF vs 20261119T211602Z:
+      · bytes 397,001 -> 396,973
+[GREEN] https://nad-lan.co.il/projects/rainbow-tel-aviv/
+    http 200 · 482,171b · 732ms · sha 4daa299d004e · CHANGED
+    title(66): ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 68 styles 44
+    DIFF vs 20261120T000155Z:
+      · bytes 482,173 -> 482,171
+[YELLOW] https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/
+    http 200 · 381,190b · 750ms · sha 49248f649a86 · CHANGED
+    title(61): H Infinity מתחם סומייל תל אביב | קבוצת חג&#039;ג&#039; | נדלן
+    h1x1 canonical x1 hreflang 12 favicon 4 jsonld 4 scripts 66 styles 43
+    FLAGS: YELLOW desc 168ch
+    DIFF vs 20261120T000155Z:
+      · bytes 381,191 -> 381,190
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

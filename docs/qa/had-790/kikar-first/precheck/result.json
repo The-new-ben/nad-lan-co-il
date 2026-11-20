@@ -1,0 +1,152 @@
+[
+ {
+  "device": "phone390",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 190,
+   "lead": 291,
+   "cta": 695,
+   "showroom": 891,
+   "showroomReal": true,
+   "map": 5472,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1508,
+   "vh": 844
+  },
+  "settled": {
+   "h1": 190,
+   "lead": 291,
+   "cta": 695,
+   "showroom": 891,
+   "showroomReal": true,
+   "map": 1731,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1508,
+   "vh": 844
+  }
+ },
+ {
+  "device": "phone390",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 207,
+   "lead": 342,
+   "cta": 718,
+   "showroom": 968,
+   "showroomReal": true,
+   "map": 1865,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1204,
+   "vh": 844
+  },
+  "settled": {
+   "h1": 207,
+   "lead": 342,
+   "cta": 718,
+   "showroom": 968,
+   "showroomReal": true,
+   "map": 1865,
+   "cls": 0,
+   "shifts": [],
+   "fcp": 1204,
+   "vh": 844
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "he",
+  "page": "/projects/hamedina/",
+  "early": {
+   "h1": 204,
+   "lead": 316,
+   "cta": 533,
+   "showroom": 685,
+   "showroomReal": true,
+   "map": 1516,
+   "cls": 0.1765,
+   "shifts": [
+    {
+     "t": 1654,
+     "v": 0.1765,
+     "n": "nlsr|nlds nlps-ctawrap|||"
+    }
+   ],
+   "fcp": 1276,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 204,
+   "lead": 316,
+   "cta": 533,
+   "showroom": 685,
+   "showroomReal": true,
+   "map": 1516,
+   "cls": 0.1765,
+   "shifts": [
+    {
+     "t": 1654,
+     "v": 0.1765,
+     "n": "nlsr|nlds nlps-ctawrap|||"
+    }
+   ],
+   "fcp": 1276,
+   "vh": 900
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "en",
+  "page": "/projects/hamedina-en/",
+  "early": {
+   "h1": 209,
+   "lead": 364,
+   "cta": 754,
+   "showroom": 1116,
+   "showroomReal": true,
+   "map": 1947,
+   "cls": 0.0014,
+   "shifts": [
+    {
+     "t": 1629,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 4219,
+     "v": 0.0001,
+     "n": "t|t"
+    }
+   ],
+   "fcp": 1292,
+   "vh": 900
+  },
+  "settled": {
+   "h1": 209,
+   "lead": 364,
+   "cta": 754,
+   "showroom": 1116,
+   "showroomReal": true,
+   "map": 1947,
+   "cls": 0.0014,
+   "shifts": [
+    {
+     "t": 1629,
+     "v": 0.0013,
+     "n": "nlpc-primary-nav||nlpc-header-cta|nlptop-l|B"
+    },
+    {
+     "t": 4219,
+     "v": 0.0001,
+     "n": "t|t"
+    }
+   ],
+   "fcp": 1292,
+   "vh": 900
+  }
+ }
+]

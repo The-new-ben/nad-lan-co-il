@@ -1,0 +1,262 @@
+[
+ {
+  "device": "phone390",
+  "lang": "he",
+  "ok": true,
+  "steps": {
+   "order": [
+    true,
+    {
+     "h1": 190,
+     "lead": 291,
+     "cta": 695,
+     "sr": 891,
+     "real": true,
+     "map": 1731
+    }
+   ],
+   "tower": [
+    true,
+    null
+   ],
+   "floor": [
+    true,
+    [
+     "facing",
+     21,
+     "B"
+    ]
+   ],
+   "home": [
+    true,
+    [
+     [
+      "cockpit",
+      "home"
+     ]
+    ]
+   ],
+   "360": [
+    true,
+    [
+     [
+      "cockpit",
+      "inside"
+     ]
+    ]
+   ],
+   "basket": [
+    true,
+    "הסל שלי"
+   ],
+   "call": [
+    true,
+    "/projects/hamedina/?kf=1795136575&room=new"
+   ],
+   "dira": [
+    true,
+    {
+     "top": 161,
+     "inView": true,
+     "towerOpen": true,
+     "card": " מגדל B · קומה 24 · מערב −+ להיכנס לדירה פונה מערבה · הים והעירשרטוט להמחשה, לא תוכנית רשמ"
+    }
+   ]
+  }
+ },
+ {
+  "device": "phone390",
+  "lang": "en",
+  "ok": true,
+  "steps": {
+   "order": [
+    true,
+    {
+     "h1": 207,
+     "lead": 342,
+     "cta": 718,
+     "sr": 968,
+     "real": true,
+     "map": 1865
+    }
+   ],
+   "tower": [
+    true,
+    null
+   ],
+   "floor": [
+    true,
+    [
+     "facing",
+     21,
+     "B"
+    ]
+   ],
+   "home": [
+    true,
+    [
+     [
+      "cockpit",
+      "home"
+     ]
+    ]
+   ],
+   "360": [
+    true,
+    [
+     [
+      "cockpit",
+      "inside"
+     ]
+    ]
+   ],
+   "basket": [
+    true,
+    "My basket"
+   ],
+   "call": [
+    true,
+    "/projects/hamedina-en/?kf=1795136601&room=new"
+   ],
+   "dira": [
+    true,
+    {
+     "top": 161,
+     "inView": true,
+     "towerOpen": true,
+     "card": " Tower B · Floor 24 · west −+ Step inside Faces west · the sea and the cityIllustrative dr"
+    }
+   ]
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "he",
+  "ok": true,
+  "steps": {
+   "order": [
+    true,
+    {
+     "h1": 204,
+     "lead": 316,
+     "cta": 533,
+     "sr": 685,
+     "real": true,
+     "map": 1516
+    }
+   ],
+   "tower": [
+    true,
+    null
+   ],
+   "floor": [
+    true,
+    [
+     "facing",
+     21,
+     "B"
+    ]
+   ],
+   "home": [
+    true,
+    [
+     [
+      "cockpit",
+      "home"
+     ]
+    ]
+   ],
+   "360": [
+    true,
+    [
+     [
+      "cockpit",
+      "inside"
+     ]
+    ]
+   ],
+   "basket": [
+    true,
+    "הסל שלי"
+   ],
+   "call": [
+    true,
+    "/projects/hamedina/?kf=1795136626&room=new"
+   ],
+   "dira": [
+    true,
+    {
+     "top": 161,
+     "inView": true,
+     "towerOpen": true,
+     "card": " מגדל B · קומה 24 · מערב −+ להיכנס לדירה צפוןמזרחדרוםמערבליבהצשרטוט להמחשה, לא תוכנית רשמי"
+    }
+   ]
+  }
+ },
+ {
+  "device": "desk1440",
+  "lang": "en",
+  "ok": true,
+  "steps": {
+   "order": [
+    true,
+    {
+     "h1": 209,
+     "lead": 364,
+     "cta": 754,
+     "sr": 1116,
+     "real": true,
+     "map": 1947
+    }
+   ],
+   "tower": [
+    true,
+    null
+   ],
+   "floor": [
+    true,
+    [
+     "facing",
+     21,
+     "B"
+    ]
+   ],
+   "home": [
+    true,
+    [
+     [
+      "cockpit",
+      "home"
+     ]
+    ]
+   ],
+   "360": [
+    true,
+    [
+     [
+      "cockpit",
+      "inside"
+     ]
+    ]
+   ],
+   "basket": [
+    true,
+    "My basket"
+   ],
+   "call": [
+    true,
+    "/projects/hamedina-en/?kf=1795136651&room=new"
+   ],
+   "dira": [
+    true,
+    {
+     "top": 185,
+     "inView": true,
+     "towerOpen": true,
+     "card": " Tower B · Floor 24 · west −+ Step inside NorthEastSouthWestcoreNIllustrative drawing, not"
+    }
+   ]
+  }
+ }
+]

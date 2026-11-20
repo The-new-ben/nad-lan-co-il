@@ -1,0 +1,5 @@
+[OK ] phone   https://nad-lan.co.il/projects/hamedina-en/  h1 207 lead 342 stage 940 (#nlsr)
+[OK ] phone   https://nad-lan.co.il/projects/hamedina/  h1 190 lead 291 stage 863 (#nlsr)
+[OK ] desktop https://nad-lan.co.il/projects/hamedina-en/  h1 209 lead 364 stage 209 (#nlps)
+[OK ] desktop https://nad-lan.co.il/projects/hamedina/  h1 204 lead 316 stage 685 (#nlsr)
+{"failed": 0}
