@@ -25,18 +25,17 @@ body{margin:0}
 <p style="margin: 2px 0 0 0; font-size: 13px; line-height: 20px; color: #3b4753">השוכרים: משפחת לוי (דוגמה) · שכר דירה <span dir="ltr" style="font-family: 'IBM Plex Mono', monospace">7,800 ₪</span> לחודש</p>
 </header>
 
-<div style="position: absolute; top: 70px; left: 12px; width: 366px; height: 80px; box-sizing: border-box; padding: 8px 12px 0 12px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
+<div style="position: absolute; top: 68px; left: 12px; width: 366px; height: 134px; box-sizing: border-box; padding: 6px 12px 0 12px; background: #ffffff; border: 1px solid #c9d3dd; border-radius: 14px">
 <div style="display: flex; align-items: baseline; justify-content: space-between; font-size: 13px; line-height: 18px; color: #3b4753"><span style="font-weight: 700; color: #14212b">החוזה</span><span dir="ltr"><span style="font-family: 'IBM Plex Mono', monospace">1.9.2026</span> → <span style="font-family: 'IBM Plex Mono', monospace">31.8.2027</span></span></div>
-<div dir="ltr" aria-hidden="true" style="position: relative; margin-top: 6px; width: 342px; height: 42px">
-<div style="position: absolute; left: 0; top: 8px; width: 342px; height: 14px; box-sizing: border-box; border: 1.5px solid #14212b; border-radius: 3px; background-image: repeating-linear-gradient(90deg, rgba(20,33,43,0) 0, rgba(20,33,43,0) 27.5px, #14212b 27.5px, #14212b 28.5px)"></div>
-<div style="position: absolute; left: 0; top: 8px; width: {{paidW}}px; height: 14px; border-radius: 3px 0 0 3px; background: #14212b; transition: width .3s cubic-bezier(.2,.8,.2,1)"></div>
-<div style="position: absolute; left: 257px; top: 8px; width: 29px; height: 14px; background-image: repeating-linear-gradient(135deg, #2f6f86 0, #2f6f86 2px, rgba(47,111,134,0) 2px, rgba(47,111,134,0) 5px)"></div>
-<div style="position: absolute; left: 74px; top: 0; width: 3px; height: 30px; border-radius: 2px; background: #2f6f86"></div>
-<div style="position: absolute; left: 0; top: 26px; width: 342px; display: flex; font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 14px; color: #3b4753"><span style="width: 28.5px; text-align: center">9</span><span style="width: 28.5px; text-align: center">10</span><span style="width: 28.5px; text-align: center">11</span><span style="width: 28.5px; text-align: center; font-weight: 600; color: #2f6f86">12</span><span style="width: 28.5px; text-align: center">1</span><span style="width: 28.5px; text-align: center">2</span><span style="width: 28.5px; text-align: center">3</span><span style="width: 28.5px; text-align: center">4</span><span style="width: 28.5px; text-align: center">5</span><span style="width: 28.5px; text-align: center">6</span><span style="width: 28.5px; text-align: center">7</span><span style="width: 28.5px; text-align: center">8</span></div>
+<div dir="ltr" style="margin-top: 4px; width: 342px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; border: 1.5px solid #14212b; border-radius: 3px; overflow: hidden">
+<sc-for list="{{months}}" as="m" hint-placeholder-count="12">
+<button type="button" aria-label="{{m.aria}}" onClick="{{m.pick}}" style="position: relative; height: 44px; padding: 0; border: 0; border-inline-end: 1px solid #14212b; border-bottom: 1px solid #14212b; font: inherit; cursor: pointer; transition: background-color .3s linear; {{m.st}}"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600">{{m.n}}</span><span aria-hidden="true" style="{{m.mark}}"></span></button>
+</sc-for>
 </div>
+<div style="margin-top: 3px; display: flex; gap: 10px; font-size: 11px; line-height: 14px; color: #3b4753"><span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; background: #14212b; vertical-align: -1px"></span> שולם</span><span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; background: linear-gradient(0deg, #14212b 0, #14212b 50%, #ffffff 50%); box-shadow: inset 0 0 0 1px #14212b; vertical-align: -1px"></span> שולם חלק</span><span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; background: #14212b; box-shadow: inset -4px 4px 0 0 #a11616; vertical-align: -1px"></span> באיחור</span><span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; box-shadow: inset 0 0 0 2px #2f6f86; vertical-align: -1px"></span> היום</span></div>
 </div>
 
-<div style="position: absolute; top: 156px; left: 0; right: 0; height: {{listH}}px; overflow-y: {{listOv}}; box-sizing: border-box; padding: 0 12px">
+<div style="position: absolute; top: 208px; left: 0; right: 0; height: {{listH}}px; overflow-y: {{listOv}}; box-sizing: border-box; padding: 0 12px">
 <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
 <div>
 <sc-if value="{{r.isNow}}" hint-placeholder-val="{{false}}">
@@ -55,7 +54,7 @@ body{margin:0}
 <sc-if value="{{r.alert}}" hint-placeholder-val="{{false}}"><span style="color: #ffffff; font-size: 14px; font-weight: 700; line-height: 22px">!</span></sc-if>
 </span>
 <span style="display: flex; align-items: baseline; gap: 8px; padding-top: {{r.pt}}px"><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; color: #3b4753; white-space: nowrap">{{r.date}}</span><span style="font-size: 16px; font-weight: 600; line-height: 22px">{{r.title}}</span></span>
-<span style="display: block; font-size: 13px; line-height: 18px; color: #3b4753">{{r.sub}}</span>
+<span style="display: block; font-size: 13px; line-height: 18px; color: #3b4753"><span style="font-weight: 700; color: #1f4b5c">{{r.todo}}</span>{{r.sub}}</span>
 </button>
 </sc-if>
 </div>
@@ -63,7 +62,7 @@ body{margin:0}
 </div>
 
 <sc-if value="{{showSheet}}" hint-placeholder-val="{{true}}">
-<section aria-live="polite" style="position: absolute; left: 0; right: 0; bottom: 64px; height: 320px; box-sizing: border-box; padding: 10px 16px 14px 16px; background: #ffffff; border-radius: 20px 20px 0 0; box-shadow: 0 -6px 24px rgba(20,33,43,.14); display: flex; flex-direction: column">
+<section aria-live="polite" style="position: absolute; left: 0; right: 0; bottom: 64px; min-height: 252px; box-sizing: border-box; padding: 10px 16px 14px 16px; background: #ffffff; border-radius: 20px 20px 0 0; box-shadow: 0 -6px 24px rgba(20,33,43,.14); display: flex; flex-direction: column">
 <div aria-hidden="true" style="width: 36px; height: 4px; border-radius: 2px; background: #c9d3dd; margin: 0 auto 8px auto; flex-shrink: 0"></div>
 <div style="display: flex; align-items: center; gap: 8px; height: 44px">
 <div style="min-width: 0">
@@ -81,7 +80,7 @@ body{margin:0}
 <div style="font-size: 12px; line-height: 16px; color: #3b4753">{{cur.lawSrc}}</div>
 </div>
 </sc-if>
-<div style="margin-top: auto; padding-top: 6px; font-size: 15px; line-height: 21px"><span style="font-weight: 700; color: #2f6f86">הצעד הבא:</span> {{cur.next}}</div>
+<div style="margin-top: 8px; font-size: 15px; line-height: 21px"><span style="font-weight: 700; color: #2f6f86">הצעד הבא:</span> {{cur.next}}</div>
 <button type="button" onClick="{{cur.act}}" style="margin-top: 8px; flex-shrink: 0; height: 52px; border: 0; border-radius: 999px; background: #2f6f86; color: #ffffff; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{cur.primary}}</button>
 <button type="button" style="margin-top: 8px; flex-shrink: 0; height: 48px; border: 1.5px solid #1f4b5c; border-radius: 999px; background: #ffffff; color: #1f4b5c; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">{{cur.secondary}}</button>
 </section>
@@ -104,8 +103,8 @@ body{margin:0}
 <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
 <div style="position: absolute; left: 0; right: 0; top: 0; height: 295px; background: repeating-linear-gradient(135deg, rgba(20,33,43,.16) 0, rgba(20,33,43,.16) 2px, rgba(20,33,43,0) 2px, rgba(20,33,43,0) 9px)"></div>
 <div style="position: absolute; left: 4px; right: 4px; top: 295px; height: 532px; box-sizing: border-box; border: 2.5px dashed #1f4b5c; border-radius: 10px"></div>
-<div style="position: absolute; left: 8px; top: 262px; padding: 2px 10px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 700; line-height: 18px; white-space: nowrap">מכאן ומטה אזור האגודל: <span dir="ltr">35%</span> עד <span dir="ltr">98%</span></div>
-<div style="position: absolute; left: 8px; top: 540px; padding: 2px 8px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 600; line-height: 18px">הקודם / הבא · <span dir="ltr">60%</span></div>
+<div style="position: absolute; left: 8px; top: 300px; padding: 2px 10px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 700; line-height: 18px; white-space: nowrap">מכאן ומטה אזור האגודל: <span dir="ltr">35%</span> עד <span dir="ltr">98%</span></div>
+<div style="position: absolute; left: 150px; top: 536px; padding: 2px 8px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 600; line-height: 18px">הקודם / הבא · <span dir="ltr">65%</span></div>
 <div style="position: absolute; left: 8px; top: 668px; padding: 2px 8px; border-radius: 8px; background: #1f4b5c; color: #ffffff; font-size: 12px; font-weight: 600; line-height: 18px">הפעולה הראשית · <span dir="ltr">81%</span></div>
 </div>
 </sc-if>
@@ -148,6 +147,7 @@ var N = [
  when: '60 יום אחרי היציאה', line: 'אם נשארו חובות, המועד הוא היום שבו הם נפרעו, אם זה מאוחר יותר.', law: 'המשכיר משיב את הערובה או את יתרתה בתוך 60 ימים מהשבת הדירה, או עד שנפרעו חובות השוכר, לפי המאוחר.', lawSrc: 'חוק השכירות והשאילה, סעיף 25י', next: 'להחזיר, ולתעד את ההחזרה.', primary: 'להחזיר את הערובה ולתעד', secondary: 'יש חוב פתוח' }
 ];
 if (paid) { N[5].state = 'done'; N[5].sub = '7,800 ₪ · התקבל היום'; N[5].when = 'התקבל היום, 20.11.2026'; N[5].next = 'נרשם. קבלה נשמרה בתיק.'; N[5].primary = 'לפתוח את הקבלה'; N[5].secondary = 'ביטול הסימון'; }
+var TODO = {"f1": "לשלוח בעל מקצוע", "r12": "לסמן שהתקבל", "f2": "לשלוח בעל מקצוע", "r1": "לחשב לפי המדד", "t1": "להעביר לרואה החשבון", "o1": "להודיע לשוכר", "o2": "לתעד את ההודעה", "e1": "לבדוק ולקבל מפתחות", "s1": "להחזיר את הערובה"};
 var ids = N.filter(function (n) { return n.id !== 'now'; }).map(function (n) { return n.id; });
 var sel = st.sel || (paid ? 'f2' : 'r12');
 function go(id) { self.setState({ sel: id, open: (st.open || id === 'h1' || id === 'h2' || id === 'r0') }); }
@@ -161,14 +161,14 @@ return base + 'background:#ffffff; border:2px solid #14212b;' + ring;
 }
 var rows = [];
 if (!open) {
-rows.push({ isRow: true, isNow: false, h: 44, pt: 11, date: '1.9.2026', title: 'מה כבר נעשה: 3 דברים', sub: '', done: true, alert: false, pressed: 'false',
+rows.push({ isRow: true, isNow: false, h: 44, pt: 11, date: '1.9.2026', title: 'מה כבר נעשה: 3 דברים', sub: '', todo: '', done: true, alert: false, pressed: 'false',
  st: 'background-color:rgba(255,255,255,0)', node: nodeStyle({ state: 'done', past: true }, false), pick: function () { self.setState({ open: true, sel: 'h1' }); } });
 }
 N.forEach(function (n) {
 if (n.id === 'now') { rows.push({ isNow: true, isRow: false }); return; }
 if (n.past && !open) { return; }
 var isSel = n.id === sel && !full;
-rows.push({ isRow: true, isNow: false, h: 60, pt: 8, date: n.date, title: n.title, sub: n.sub, done: n.state === 'done', alert: n.state === 'alert', pressed: isSel ? 'true' : 'false',
+rows.push({ isRow: true, isNow: false, h: 60, pt: 8, date: n.date, title: n.title, sub: n.sub, todo: (n.state !== 'done' && TODO[n.id]) ? (TODO[n.id] + ' · ') : '', done: n.state === 'done', alert: n.state === 'alert', pressed: isSel ? 'true' : 'false',
  st: isSel ? 'background-color:#ffffff; box-shadow:inset 0 0 0 1.5px #2f6f86' : 'background-color:rgba(255,255,255,0)', node: nodeStyle(n, isSel), pick: function () { go(n.id); } });
 });
 var c = N.filter(function (n) { return n.id === sel; })[0] || N[5];
@@ -176,11 +176,18 @@ var kick = c.state === 'done' ? 'נעשה' : (c.state === 'alert' ? 'פתוח ע
 var cur = { kicker: kick, title: c.title, date: c.date, when: c.when, line: c.line, hasLaw: !!c.law, law: c.law || '', lawSrc: c.lawSrc || '', next: c.next, primary: c.primary, secondary: c.secondary,
  act: (c.rent && !paid) ? function () { self.setState({ paid: true, sel: 'r12' }); } : function () {} };
 function step(d) { var i = ids.indexOf(sel) + d; if (i < 0 || i >= ids.length) { return; } go(ids[i]); }
-var nRows = rows.length, listH = 304;
+var nRows = rows.length, listH = 306;
+var JUMP = { 9: 'h1', 10: 'r0', 11: 'f1', 12: 'r12', 1: 'r1', 2: 't1', 3: 'o1', 4: 'o1', 5: 'o1', 6: 'o1', 7: 'o2', 8: 'e1' };
+var months = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8].map(function (mn, i) {
+var isPaid = i < 3 || (i === 3 && paid), isNowM = i === 2;
+return { n: mn, aria: 'חודש ' + mn + (isPaid ? ', שולם' : ''), st: (isPaid ? 'background-color:#14212b; color:#ffffff;' : 'background-color:#ffffff; color:#14212b;') + (isNowM ? ' box-shadow:inset 0 0 0 3px #2f6f86;' : ''),
+ mark: (mn === 6) ? 'position:absolute; left:0; right:0; bottom:0; height:8px; background-image:repeating-linear-gradient(135deg, #2f6f86 0, #2f6f86 2px, rgba(47,111,134,0) 2px, rgba(47,111,134,0) 5px)' : 'display:none',
+ pick: function () { go(JUMP[mn]); } };
+});
 var fullH = rows.reduce(function (a, r) { return a + (r.isNow ? 28 : r.h); }, 0);
 return {
-rows: rows, cur: cur, paidW: paid ? 114 : 85.5, zones: !!this.props.zones, showSheet: !full,
-rootH: full ? 156 + fullH + 16 : 844, listH: full ? fullH : listH, listOv: full ? 'visible' : 'auto',
+rows: rows, cur: cur, months: months, zones: !!this.props.zones, showSheet: !full,
+rootH: full ? 208 + fullH + 16 : 844, listH: full ? fullH : listH, listOv: full ? 'visible' : 'auto',
 prev: function () { step(-1); }, next: function () { step(1); }
 };
 }

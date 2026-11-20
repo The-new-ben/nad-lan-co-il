@@ -1,0 +1,414 @@
+{
+ "what": "cold load of xray.html?mode=xray&markers=1 at a 390 x 844 viewport, DPR 2, touch emulation: DESKTOP Chrome with a real GPU (ANGLE/D3D11, AMD Radeon integrated) emulating a phone viewport. NOT a real phone: a phone's CPU/GPU, radio and thermal limits are not measured.",
+ "note": "bench150FramesOrbit renders 150 frames with a 1-pixel read-back so the GPU has really finished (cpuSubmitMs = time to issue the draw calls, withGpuSyncMs = issue + GPU). spin3s is the engine's own helper (frame gap is capped at 30 fps in this headless Chrome). Own files are served uncompressed by python http.server and the plugin's three.js addons come from jsDelivr.",
+ "ao_on": {
+  "median_of_3_cold_loads": {
+   "requests": 31,
+   "transferredBytes": 579411,
+   "bytesByKind": {
+    "own files (local server, uncompressed)": 283852,
+    "web fonts (Google Fonts)": 62394,
+    "three.js (jsDelivr, compressed)": 233165
+   },
+   "firstRenderMs": 2012.3,
+   "firstPresentedMs": 2033.3,
+   "envReadyMs": 3479.5,
+   "gl": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "all_runs": [
+   {
+    "requests": 31,
+    "transferredBytes": 579411,
+    "firstRenderMs": 2012.3,
+    "firstPresentedMs": 2033.3,
+    "envReadyMs": 3479.5
+   },
+   {
+    "requests": 31,
+    "transferredBytes": 579635,
+    "firstRenderMs": 1858.6,
+    "firstPresentedMs": 1874,
+    "envReadyMs": 3220.6
+   },
+   {
+    "requests": 31,
+    "transferredBytes": 579139,
+    "firstRenderMs": 2073.2,
+    "firstPresentedMs": 2141.6,
+    "envReadyMs": 3606.5
+   }
+  ],
+  "request_list_run1": [
+   {
+    "url": "/docs/design-lab/rentals-xray/xray.html?mode=xray&markers=1",
+    "bytes": 2213,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap",
+    "bytes": 1326,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/xray.js",
+    "bytes": 57996,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "bytes": 207623,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/core.js",
+    "bytes": 41910,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/catalog.js",
+    "bytes": 9219,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/space.lab.js",
+    "bytes": 45009,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/services.js",
+    "bytes": 4850,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+    "bytes": 5995,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/walknav.js",
+    "bytes": 10773,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/strings.js",
+    "bytes": 86965,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/stringsx.js",
+    "bytes": 15369,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js",
+    "bytes": 1168,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/RenderPass.js",
+    "bytes": 649,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/GTAOPass.js",
+    "bytes": 2990,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/OutputPass.js",
+    "bytes": 825,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/CopyShader.js",
+    "bytes": 755,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
+    "bytes": 668,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
+    "bytes": 677,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+    "bytes": 707,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/OutputShader.js",
+    "bytes": 619,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
+    "bytes": 3672,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
+    "bytes": 2093,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/math/SimplexNoise.js",
+    "bytes": 3386,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "/favicon.ico",
+    "bytes": 520,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEV93k06jDu19Q.woff2",
+    "bytes": 5679,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEUZ3004jDs.woff2",
+    "bytes": 19737,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+    "bytes": 14931,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/plans/example-4r.json",
+    "bytes": 9028,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+    "bytes": 1338,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEV93k04jDs.woff2",
+    "bytes": 20721,
+    "kind": "web fonts (Google Fonts)"
+   }
+  ],
+  "bench150FramesOrbit": {
+   "frames": 150,
+   "cpuSubmitMs": {
+    "mean": 6.71,
+    "median": 6.3,
+    "p95": 10.5,
+    "max": 13.4
+   },
+   "withGpuSyncMs": {
+    "mean": 21.15,
+    "median": 19.8,
+    "p95": 32.6,
+    "max": 38.9
+   },
+   "ao": true
+  },
+  "spin3s_run1": {
+   "frameGapMs": {
+    "n": 91,
+    "mean": 33.37,
+    "median": 33.4,
+    "p95": 33.5,
+    "max": 33.6
+   },
+   "renderCallMs": {
+    "n": 92,
+    "mean": 7.18,
+    "median": 6.7,
+    "p95": 10.6,
+    "max": 11.7
+   }
+  },
+  "scene_stats": {
+   "calls": 1,
+   "triangles": 1,
+   "geometries": 403,
+   "textures": 23
+  }
+ },
+ "ao_off": {
+  "median_of_3_cold_loads": {
+   "requests": 19,
+   "transferredBytes": 560945,
+   "bytesByKind": {
+    "own files (local server, uncompressed)": 283852,
+    "web fonts (Google Fonts)": 62394,
+    "three.js (jsDelivr, compressed)": 214699
+   },
+   "firstRenderMs": 1721.9,
+   "firstPresentedMs": 1745.9,
+   "envReadyMs": 2868.5,
+   "gl": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "all_runs": [
+   {
+    "requests": 19,
+    "transferredBytes": 560927,
+    "firstRenderMs": 2001.9,
+    "firstPresentedMs": 2020.9,
+    "envReadyMs": 3068.8
+   },
+   {
+    "requests": 19,
+    "transferredBytes": 560945,
+    "firstRenderMs": 1721.9,
+    "firstPresentedMs": 1745.9,
+    "envReadyMs": 2868.5
+   },
+   {
+    "requests": 19,
+    "transferredBytes": 560927,
+    "firstRenderMs": 1634.8,
+    "firstPresentedMs": 1654.3,
+    "envReadyMs": 2678.9
+   }
+  ],
+  "request_list_run1": [
+   {
+    "url": "/docs/design-lab/rentals-xray/xray.html?mode=xray&markers=1&ao=0",
+    "bytes": 2213,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap",
+    "bytes": 1326,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/xray.js",
+    "bytes": 57996,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "bytes": 207623,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/core.js",
+    "bytes": 41910,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/catalog.js",
+    "bytes": 9219,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/space.lab.js",
+    "bytes": 45009,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/docs/design-lab/rentals-xray/services.js",
+    "bytes": 4850,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+    "bytes": 5995,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/walknav.js",
+    "bytes": 10773,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/strings.js",
+    "bytes": 86965,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/stringsx.js",
+    "bytes": 15369,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEV93k06jDu19Q.woff2",
+    "bytes": 5679,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEUZ3004jDs.woff2",
+    "bytes": 19737,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2",
+    "bytes": 14931,
+    "kind": "web fonts (Google Fonts)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/plans/example-4r.json",
+    "bytes": 9028,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/favicon.ico",
+    "bytes": 520,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+    "bytes": 1063,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEV93k04jDs.woff2",
+    "bytes": 20721,
+    "kind": "web fonts (Google Fonts)"
+   }
+  ],
+  "bench150FramesOrbit": {
+   "frames": 150,
+   "cpuSubmitMs": {
+    "mean": 3.64,
+    "median": 3.5,
+    "p95": 5.8,
+    "max": 7.9
+   },
+   "withGpuSyncMs": {
+    "mean": 11.3,
+    "median": 7.8,
+    "p95": 25.1,
+    "max": 29.8
+   },
+   "ao": false
+  },
+  "spin3s_run1": {
+   "frameGapMs": {
+    "n": 91,
+    "mean": 33.37,
+    "median": 33.4,
+    "p95": 33.5,
+    "max": 33.6
+   },
+   "renderCallMs": {
+    "n": 92,
+    "mean": 4.09,
+    "median": 4.1,
+    "p95": 5.5,
+    "max": 6.2
+   }
+  },
+  "scene_stats": {
+   "calls": 416,
+   "triangles": 114307,
+   "geometries": 403,
+   "textures": 15
+  }
+ },
+ "ao_cost_ms_per_frame": {
+  "p95_withGpuSync": 7.5,
+  "median_withGpuSync": 12.0
+ }
+}

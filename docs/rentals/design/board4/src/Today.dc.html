@@ -27,7 +27,7 @@ body{margin:0}
 <div dir="ltr" aria-hidden="true" style="position: absolute; left: 7px; top: 6px; width: 342px; height: 342px; transform-origin: 0 0; transform: scale(.62); pointer-events: none">
 <dc-import name="Plan" sel="none" layer="{{planLayer}}" mood="{{mood}}" hint-size="342px,342px"></dc-import>
 </div>
-<a href="#" aria-label="לפתוח את הדירה" style="position: absolute; inset: 0"></a>
+<a href="#" aria-label="לפתוח את הדירה על החלק המואר" style="position: absolute; inset: 0"></a>
 </div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
 <div style="padding: 6px 10px; border-bottom: 1.5px solid #14212b"><div style="font-size: 11px; font-weight: 700; color: #3b4753">היום</div><div dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; text-align: right">{{date}}</div></div>
@@ -72,7 +72,8 @@ body{margin:0}
 </sc-if>
 <sc-if value="{{isQuiet}}" hint-placeholder-val="{{false}}">
 <div>
-<h2 style="margin: 0 0 2px 0; font-size: 13px; font-weight: 700; color: #3b4753">מצב הדירה</h2>
+<div style="display: flex; align-items: baseline; gap: 10px; padding-bottom: 8px; border-bottom: 1.5px solid #14212b"><span dir="ltr" style="font-family: 'IBM Plex Mono', monospace; font-size: 30px; font-weight: 600; line-height: 36px">31,200 ₪</span><span style="font-size: 14px; line-height: 19px">נכנסו מהדירה ב-<span dir="ltr">2026</span>. <span dir="ltr">4</span> חודשים ברצף, כולם בזמן.</span></div>
+<h2 style="margin: 8px 0 2px 0; font-size: 13px; font-weight: 700; color: #3b4753">מצב הדירה</h2>
 <div style="display: flex; align-items: baseline; height: 30px; border-bottom: 1px solid #c9d3dd; font-size: 15px"><span style="font-weight: 700; width: 92px">שכר דירה</span><span>שולם עד דצמבר</span></div>
 <div style="display: flex; align-items: baseline; height: 30px; border-bottom: 1px solid #c9d3dd; font-size: 15px"><span style="font-weight: 700; width: 92px">תקלות</span><span>אין פתוחות</span></div>
 <div style="display: flex; align-items: baseline; height: 30px; border-bottom: 1px solid #c9d3dd; font-size: 15px"><span style="font-weight: 700; width: 92px">תיק הדירה</span><span>חוזה, פרוטוקול מסירה, הוראות שימוש</span></div>
