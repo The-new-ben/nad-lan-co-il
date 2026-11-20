@@ -8,7 +8,7 @@ Coordinator's changes (they override the sections below):
    visit on its first instant event (not only money steps), under the burst rule. Once push or Telegram works, mail goes back to
    money steps only.
 2. The first alert of a visit names the page by its human name and where the visitor came from, in Hebrew, readable in the
-   phone's notification line without opening anything ("רנבו תל אביב · הגיע מגוגל").
+   phone's notification line without opening anything ("ריינבו תל אביב · הגיע מגוגל").
 3. The board shows the lock-screen notification, the live screen with visits in different states, and the one-time setup steps
    (Allow, Add to Home Screen, the Telegram bot) as pictures. Rentals names accepted; the privacy sentence stays non-blocking.
 
@@ -34,7 +34,7 @@ direction, scroll depth, opening other tools.
 
 One visit = ONE alert that updates. The visit id already exists. The first instant step sends one message; every later step in the
 same visit EDITS that message (Telegram editMessageText) or replaces it (web push with the same tag), as a growing line:
-"רנבו · טלפון · עברית · מגוגל: קומה 13 → נוף מערב → דירה 4 חד׳ → סל". Mail cannot be edited, so mail goes out once per visit, and
+"ריינבו · טלפון · עברית · מגוגל: קומה 13 → נוף מערב → דירה 4 חד׳ → סל". Mail cannot be edited, so mail goes out once per visit, and
 only for a money step (basket, call, RFP, reservation, details).
 Excluded: robots (the existing check plus no event without a real press), signed-in staff (already), and his own phone through a
 "זה הטלפון שלי" switch on the live screen that marks the device (localStorage), so his own visits never alert.
