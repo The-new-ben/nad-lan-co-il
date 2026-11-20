@@ -2,162 +2,294 @@
  {
   "room": "laundry",
   "roomHe": "שירות",
+  "kind": "circle-fault",
+  "aria": "שירות: דוד שמש, מכונת כביסה (תקלה פתוחה)",
+  "x": 270.8,
+  "y": 249.5,
+  "w": 44,
+  "h": 44,
+  "count": 2,
+  "state": "fault",
   "parts": [
    "boiler",
    "washer"
   ],
-  "count": 2,
-  "state": "fault",
-  "box": [
-   620,
-   680,
-   820,
-   900
+  "partNames": [
+   "דוד שמש",
+   "מכונת כביסה"
   ],
-  "x": 234.5,
-  "y": 307.5,
   "plan": [
-   720,
-   790
+   665,
+   729
   ],
-  "pill": "ref: <Node>",
-  "pillRect": [
-   262.5,
-   298.5
+  "leader": false,
+  "roomCentre": [
+   288.5,
+   245.4
+  ],
+  "roomOnScreenPx": [
+   64,
+   58
+  ],
+  "tag": {
+   "x": 313,
+   "y": 380.1,
+   "w": 109,
+   "h": 24,
+   "text": "דוד שמש · תקלה",
+   "onBackground": true
+  },
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "kitchen",
   "roomHe": "מטבח",
+  "kind": "pill-count",
+  "aria": "מטבח: כיריים ותנור, מקרר, כיור וברז ראשי",
+  "x": 163.4,
+  "y": 410.6,
+  "w": 78,
+  "h": 44,
+  "count": 3,
+  "state": "ok",
   "parts": [
    "cooktop",
    "fridge",
    "sink"
   ],
-  "count": 3,
-  "state": "ok",
-  "box": [
-   0,
-   520,
-   360,
-   900
+  "partNames": [
+   "כיריים ותנור",
+   "מקרר",
+   "כיור וברז ראשי"
   ],
-  "x": 111.1,
-  "y": 326.6,
-  "plan": [
-   180,
-   710
+  "plan": null,
+  "leader": true,
+  "roomCentre": [
+   216.8,
+   339.2
+  ],
+  "roomOnScreenPx": [
+   116,
+   109
+  ],
+  "tag": null,
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "living",
   "roomHe": "סלון ופינת אוכל",
+  "kind": "circle-clock",
+  "aria": "סלון ופינת אוכל: מזגן סלון, תריס סלון (לטיפול בקרוב)",
+  "x": 140.7,
+  "y": 269.1,
+  "w": 44,
+  "h": 44,
+  "count": 2,
+  "state": "soon",
   "parts": [
    "acLiving",
    "shutter"
   ],
-  "count": 2,
-  "state": "soon",
-  "box": [
-   0,
-   0,
-   620,
-   520
+  "partNames": [
+   "מזגן סלון",
+   "תריס סלון"
   ],
-  "x": 111,
-  "y": 231.2,
   "plan": [
    310,
    260
   ],
-  "pill": "ref: <Node>",
-  "pillRect": [
-   139,
-   222.2
+  "leader": false,
+  "roomCentre": [
+   140.7,
+   269.1
+  ],
+  "roomOnScreenPx": [
+   170,
+   167
+  ],
+  "tag": {
+   "x": 140.7,
+   "y": 304.6,
+   "w": 58,
+   "h": 19,
+   "text": "מזגן סלון",
+   "onBackground": false
+  },
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "hall",
   "roomHe": "כניסה",
+  "kind": "circle-icon",
+  "aria": "כניסה: לוח חשמל",
+  "x": 243.5,
+  "y": 304.1,
+  "w": 44,
+  "h": 44,
+  "count": 1,
+  "state": "ok",
   "parts": [
    "panel"
   ],
-  "count": 1,
-  "state": "ok",
-  "box": [
-   360,
-   520,
-   620,
-   900
+  "partNames": [
+   "לוח חשמל"
   ],
-  "x": 179,
-  "y": 306.5,
   "plan": [
-   490,
-   710
+   378,
+   739
+  ],
+  "leader": false,
+  "roomCentre": [
+   249.3,
+   280.1
+  ],
+  "roomOnScreenPx": [
+   103,
+   86
+  ],
+  "tag": null,
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "master",
   "roomHe": "שינה הורים",
+  "kind": "circle-icon",
+  "aria": "שינה הורים: מזגן חדר שינה",
+  "x": 180.1,
+  "y": 172.5,
+  "w": 44,
+  "h": 44,
+  "count": 1,
+  "state": "ok",
   "parts": [
    "acBed"
   ],
-  "count": 1,
-  "state": "ok",
-  "box": [
-   620,
-   0,
-   1000,
-   380
+  "partNames": [
+   "מזגן חדר שינה"
   ],
-  "x": 211,
-  "y": 188.7,
   "plan": [
    810,
    190
+  ],
+  "leader": false,
+  "roomCentre": [
+   180.1,
+   172.5
+  ],
+  "roomOnScreenPx": [
+   112,
+   101
+  ],
+  "tag": null,
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "mamad",
   "roomHe": "ממ״ד",
+  "kind": "circle-icon",
+  "aria": "ממ״ד: דלת וחלון הממ\"ד",
+  "x": 344.5,
+  "y": 71.1,
+  "w": 44,
+  "h": 44,
+  "count": 1,
+  "state": "ok",
   "parts": [
    "mamad"
   ],
-  "count": 1,
-  "state": "ok",
-  "box": [
-   1000,
-   500,
-   1320,
-   900
+  "partNames": [
+   "דלת וחלון הממ\"ד"
   ],
-  "x": 321.3,
-  "y": 262.2,
-  "plan": [
-   1160,
-   700
+  "plan": null,
+  "leader": true,
+  "roomCentre": [
+   313.3,
+   158.9
+  ],
+  "roomOnScreenPx": [
+   108,
+   92
+  ],
+  "tag": null,
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  },
  {
   "room": "bath",
   "roomHe": "רחצה",
+  "kind": "circle-icon",
+  "aria": "רחצה: מקלחת ואסלה",
+  "x": 359.4,
+  "y": 238.5,
+  "w": 44,
+  "h": 44,
+  "count": 1,
+  "state": "ok",
   "parts": [
    "bath"
   ],
-  "count": 1,
-  "state": "ok",
-  "box": [
-   820,
-   500,
-   1000,
-   900
+  "partNames": [
+   "מקלחת ואסלה"
   ],
-  "x": 268.3,
-  "y": 267.7,
-  "plan": [
-   926,
-   653
+  "plan": null,
+  "leader": true,
+  "roomCentre": [
+   289.3,
+   202.6
+  ],
+  "roomOnScreenPx": [
+   96,
+   70
+  ],
+  "tag": null,
+  "markerShareOfHome": 0.14,
+  "markersAreaOverHomePx2": 8873,
+  "homeFloorAreaPx2": 63280,
+  "movedOffTheHome": [
+   "kitchen",
+   "mamad",
+   "bath"
   ]
  }
 ]

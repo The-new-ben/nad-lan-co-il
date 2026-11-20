@@ -4,44 +4,44 @@
  "ao_on": {
   "median_of_3_cold_loads": {
    "requests": 31,
-   "transferredBytes": 579411,
+   "transferredBytes": 584782,
    "bytesByKind": {
-    "own files (local server, uncompressed)": 283852,
+    "own files (local server, uncompressed)": 288739,
     "web fonts (Google Fonts)": 62394,
-    "three.js (jsDelivr, compressed)": 233165
+    "three.js (jsDelivr, compressed)": 233649
    },
-   "firstRenderMs": 2012.3,
-   "firstPresentedMs": 2033.3,
-   "envReadyMs": 3479.5,
+   "firstRenderMs": 1689.9,
+   "firstPresentedMs": 1701.3,
+   "envReadyMs": 2975.2,
    "gl": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)"
   },
   "all_runs": [
    {
     "requests": 31,
-    "transferredBytes": 579411,
-    "firstRenderMs": 2012.3,
-    "firstPresentedMs": 2033.3,
-    "envReadyMs": 3479.5
+    "transferredBytes": 585849,
+    "firstRenderMs": 1805.7,
+    "firstPresentedMs": 1826.8,
+    "envReadyMs": 3145.4
    },
    {
     "requests": 31,
-    "transferredBytes": 579635,
-    "firstRenderMs": 1858.6,
-    "firstPresentedMs": 1874,
-    "envReadyMs": 3220.6
+    "transferredBytes": 585822,
+    "firstRenderMs": 1688.6,
+    "firstPresentedMs": 1701.9,
+    "envReadyMs": 2974.4
    },
    {
     "requests": 31,
-    "transferredBytes": 579139,
-    "firstRenderMs": 2073.2,
-    "firstPresentedMs": 2141.6,
-    "envReadyMs": 3606.5
+    "transferredBytes": 584782,
+    "firstRenderMs": 1689.9,
+    "firstPresentedMs": 1701.3,
+    "envReadyMs": 2975.2
    }
   ],
   "request_list_run1": [
    {
     "url": "/docs/design-lab/rentals-xray/xray.html?mode=xray&markers=1",
-    "bytes": 2213,
+    "bytes": 2972,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -51,12 +51,12 @@
    },
    {
     "url": "/docs/design-lab/rentals-xray/xray.js",
-    "bytes": 57996,
+    "bytes": 60469,
     "kind": "own files (local server, uncompressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
-    "bytes": 207623,
+    "bytes": 207650,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
@@ -76,7 +76,7 @@
    },
    {
     "url": "/docs/design-lab/rentals-xray/services.js",
-    "bytes": 4850,
+    "bytes": 6505,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -120,49 +120,49 @@
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
+    "url": "/favicon.ico",
+    "bytes": 520,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/Pass.js",
+    "bytes": 988,
+    "kind": "three.js (jsDelivr, compressed)"
+   },
+   {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/CopyShader.js",
-    "bytes": 755,
+    "bytes": 688,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/ShaderPass.js",
-    "bytes": 668,
+    "bytes": 949,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/MaskPass.js",
-    "bytes": 677,
-    "kind": "three.js (jsDelivr, compressed)"
-   },
-   {
-    "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/Pass.js",
-    "bytes": 707,
+    "bytes": 951,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/OutputShader.js",
-    "bytes": 619,
+    "bytes": 894,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/GTAOShader.js",
-    "bytes": 3672,
+    "bytes": 3946,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/shaders/PoissonDenoiseShader.js",
-    "bytes": 2093,
+    "bytes": 2367,
     "kind": "three.js (jsDelivr, compressed)"
    },
    {
     "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/math/SimplexNoise.js",
-    "bytes": 3386,
+    "bytes": 3318,
     "kind": "three.js (jsDelivr, compressed)"
-   },
-   {
-    "url": "/favicon.ico",
-    "bytes": 520,
-    "kind": "own files (local server, uncompressed)"
    },
    {
     "url": "https://fonts.gstatic.com/s/ibmplexsanshebrew/v12/BCa5qYENg9Kw1mpLpO0bGM5lfHAAZHhDXEV93k06jDu19Q.woff2",
@@ -198,16 +198,16 @@
   "bench150FramesOrbit": {
    "frames": 150,
    "cpuSubmitMs": {
-    "mean": 6.71,
-    "median": 6.3,
-    "p95": 10.5,
-    "max": 13.4
+    "mean": 6.91,
+    "median": 6.5,
+    "p95": 11.3,
+    "max": 12.4
    },
    "withGpuSyncMs": {
-    "mean": 21.15,
-    "median": 19.8,
-    "p95": 32.6,
-    "max": 38.9
+    "mean": 20.52,
+    "median": 19.3,
+    "p95": 34.1,
+    "max": 44.9
    },
    "ao": true
   },
@@ -221,60 +221,60 @@
    },
    "renderCallMs": {
     "n": 92,
-    "mean": 7.18,
-    "median": 6.7,
-    "p95": 10.6,
-    "max": 11.7
+    "mean": 7.19,
+    "median": 6.8,
+    "p95": 10.2,
+    "max": 13.2
    }
   },
   "scene_stats": {
    "calls": 1,
    "triangles": 1,
-   "geometries": 403,
-   "textures": 23
+   "geometries": 389,
+   "textures": 12
   }
  },
  "ao_off": {
   "median_of_3_cold_loads": {
    "requests": 19,
-   "transferredBytes": 560945,
+   "transferredBytes": 565813,
    "bytesByKind": {
-    "own files (local server, uncompressed)": 283852,
+    "own files (local server, uncompressed)": 288739,
     "web fonts (Google Fonts)": 62394,
-    "three.js (jsDelivr, compressed)": 214699
+    "three.js (jsDelivr, compressed)": 214680
    },
-   "firstRenderMs": 1721.9,
-   "firstPresentedMs": 1745.9,
-   "envReadyMs": 2868.5,
+   "firstRenderMs": 1433.5,
+   "firstPresentedMs": 1457.6,
+   "envReadyMs": 2437.1,
    "gl": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)"
   },
   "all_runs": [
    {
     "requests": 19,
-    "transferredBytes": 560927,
-    "firstRenderMs": 2001.9,
-    "firstPresentedMs": 2020.9,
-    "envReadyMs": 3068.8
+    "transferredBytes": 565814,
+    "firstRenderMs": 1452.8,
+    "firstPresentedMs": 1479.6,
+    "envReadyMs": 2452.7
    },
    {
     "requests": 19,
-    "transferredBytes": 560945,
-    "firstRenderMs": 1721.9,
-    "firstPresentedMs": 1745.9,
-    "envReadyMs": 2868.5
+    "transferredBytes": 565813,
+    "firstRenderMs": 1408,
+    "firstPresentedMs": 1433.5,
+    "envReadyMs": 2389.2
    },
    {
     "requests": 19,
-    "transferredBytes": 560927,
-    "firstRenderMs": 1634.8,
-    "firstPresentedMs": 1654.3,
-    "envReadyMs": 2678.9
+    "transferredBytes": 565813,
+    "firstRenderMs": 1433.5,
+    "firstPresentedMs": 1457.6,
+    "envReadyMs": 2437.1
    }
   ],
   "request_list_run1": [
    {
     "url": "/docs/design-lab/rentals-xray/xray.html?mode=xray&markers=1&ao=0",
-    "bytes": 2213,
+    "bytes": 2972,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -284,7 +284,7 @@
    },
    {
     "url": "/docs/design-lab/rentals-xray/xray.js",
-    "bytes": 57996,
+    "bytes": 60469,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -309,7 +309,12 @@
    },
    {
     "url": "/docs/design-lab/rentals-xray/services.js",
-    "bytes": 4850,
+    "bytes": 6505,
+    "kind": "own files (local server, uncompressed)"
+   },
+   {
+    "url": "/plugins/nadlan-config/assets/designer/strings.js",
+    "bytes": 86965,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -320,11 +325,6 @@
    {
     "url": "/plugins/nadlan-config/assets/designer/walknav.js",
     "bytes": 10773,
-    "kind": "own files (local server, uncompressed)"
-   },
-   {
-    "url": "/plugins/nadlan-config/assets/designer/strings.js",
-    "bytes": 86965,
     "kind": "own files (local server, uncompressed)"
    },
    {
@@ -371,16 +371,16 @@
   "bench150FramesOrbit": {
    "frames": 150,
    "cpuSubmitMs": {
-    "mean": 3.64,
-    "median": 3.5,
-    "p95": 5.8,
-    "max": 7.9
+    "mean": 3.32,
+    "median": 3.1,
+    "p95": 5.3,
+    "max": 8.4
    },
    "withGpuSyncMs": {
-    "mean": 11.3,
-    "median": 7.8,
-    "p95": 25.1,
-    "max": 29.8
+    "mean": 8.96,
+    "median": 6.3,
+    "p95": 16.2,
+    "max": 24.6
    },
    "ao": false
   },
@@ -390,25 +390,25 @@
     "mean": 33.37,
     "median": 33.4,
     "p95": 33.5,
-    "max": 33.6
+    "max": 33.5
    },
    "renderCallMs": {
     "n": 92,
-    "mean": 4.09,
-    "median": 4.1,
-    "p95": 5.5,
-    "max": 6.2
+    "mean": 3.75,
+    "median": 3.55,
+    "p95": 5.1,
+    "max": 7.3
    }
   },
   "scene_stats": {
-   "calls": 416,
-   "triangles": 114307,
-   "geometries": 403,
-   "textures": 15
+   "calls": 402,
+   "triangles": 114249,
+   "geometries": 389,
+   "textures": 4
   }
  },
  "ao_cost_ms_per_frame": {
-  "p95_withGpuSync": 7.5,
-  "median_withGpuSync": 12.0
+  "p95_withGpuSync": 17.9,
+  "median_withGpuSync": 13.0
  }
 }

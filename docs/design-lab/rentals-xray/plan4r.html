@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>plan-4r flat services drawing (design lab, never deployed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html,body{margin:0;background:#fff}
+#plan{position:relative;width:342px;height:342px;overflow:hidden;direction:ltr;font-family:'IBM Plex Sans Hebrew',Arial,sans-serif;color:#14212b;background-color:#fff;background-image:linear-gradient(#e9eef3 1px,rgba(255,255,255,0) 1px),linear-gradient(90deg,#e9eef3 1px,rgba(255,255,255,0) 1px);background-size:12px 12px}
+#plan svg{position:absolute;left:0;top:0}
+.tile{position:absolute;width:44px;height:44px;box-sizing:border-box;border-radius:12px;background:#fff;color:#14212b;display:flex;align-items:center;justify-content:center;border:1.5px solid #5b6b7a}
+.tile.soon{border:2px solid #14212b}
+.tile .badge{position:absolute;right:-7px;top:-7px;width:18px;height:18px;box-sizing:border-box;border-radius:9px;background:#fff;border:2px solid #14212b;display:flex;align-items:center;justify-content:center}
+.mk{position:absolute;width:44px;height:44px;border-radius:50%;box-sizing:border-box;background:#fff;border:1.5px solid #14212b;display:flex;align-items:center;justify-content:center;font:500 17px 'IBM Plex Mono',monospace}
+.mk.fault{background:#a11616;border-color:#a11616;color:#fff}
+.mk .bang{font:700 26px/1 'IBM Plex Sans Hebrew',Arial,sans-serif}
+.pill{position:absolute;height:17px;line-height:16px;padding:0 8px;border-radius:9px;box-sizing:border-box;font:600 11px/16px 'IBM Plex Sans Hebrew',Arial,sans-serif;white-space:nowrap;direction:rtl}
+.pill.fault{background:#a11616;color:#fff}
+.pill.soon{background:#fff;color:#14212b;border:1px solid #14212b}
+.rn{position:absolute;text-align:center;font:500 12px/14px 'IBM Plex Sans Hebrew',Arial,sans-serif;color:#3b4753;white-space:nowrap;direction:rtl;transform:translate(-50%,-50%)}
+</style>
+</head>
+<body>
+<div id="plan"></div>
+<script type="module">
+import { RUNS, PART_META, ROOM_SHORT } from './services.js';
+const D = '../../../plugins/nadlan-config/assets/designer/', PLAN = 'plans/example-4r.json';
+const apt = await (await fetch(D + PLAN)).json();
+try { await Promise.race([Promise.all([document.fonts.load('500 12px "IBM Plex Sans Hebrew"', 'שלום'), document.fonts.load('500 17px "IBM Plex Mono"', '0123')]), new Promise((r) => setTimeout(r, 4000))]); } catch (e) {}
+const COLX = { c: '#1565c0', h: '#c62828', g: '#f5b800', e: '#6a3fc8' };
+const ICON = {
+  ac: '<rect x="3" y="6" width="18" height="8" rx="2"></rect><path d="M6 11h12M8 17v2M12 17v2M16 17v2"></path>',
+  shutter: '<rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M4 8h16M4 12h16M4 16h16"></path>',
+  cooktop: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2.2"></circle><circle cx="15.5" cy="10" r="2.2"></circle><path d="M7 16h10"></path>',
+  fridge: '<rect x="6" y="2.5" width="12" height="19" rx="2"></rect><path d="M6 9.5h12M9 6v1.5M9 12.5v3"></path>',
+  sink: '<path d="M5 20h14M8 20v-9a4 4 0 0 1 8 0v1M16 12h3M12 4v3"></path>',
+  panel: '<rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8v4M12 8v4M16 8v4M8 16h8"></path>',
+  mamad: '<rect x="5" y="2.5" width="14" height="19" rx="1.5"></rect><circle cx="12" cy="12" r="3"></circle><path d="M12 9v6M9 12h6"></path>',
+  bath: '<path d="M6 21V8a4 4 0 0 1 8 0M11 11h6M12 14v1M14 15v1.5M16 14v1"></path>',
+  boiler: '<rect x="5" y="3.5" width="14" height="6" rx="3"></rect><path d="M6 12.5h12l2.5 8h-17zM12 12.5v8M8 9.5v3M16 9.5v3"></path>',
+  washer: '<rect x="4" y="3" width="16" height="18" rx="2"></rect><circle cx="12" cy="13" r="4"></circle><path d="M7 6.5h2"></path>',
+};
+const ICONOF = { acLiving: 'ac', acBed: 'ac', shutter: 'shutter', cooktop: 'cooktop', fridge: 'fridge', sink: 'sink', panel: 'panel', mamad: 'mamad', bath: 'bath', boiler: 'boiler', washer: 'washer' };
+const svgIcon = (k) => '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + ICON[k] + '</svg>';
+const clockBadge = '<span class="badge"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#14212b" stroke-width="1.6" stroke-linecap="round"><path d="M5 2.2V5l1.8 1.2"></path></svg></span>';
+
+// ---- fit the plan (with the balcony rail and the gas inlet) into 342 x 342 ----
+const N = apt.nodes, S = 0.238, X0 = 15, Y0 = 36, PX = (x) => X0 + x * S, PY = (y) => Y0 + (y + 220) * S;
+const el = document.getElementById('plan');
+const NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg'); svg.setAttribute('width', 342); svg.setAttribute('height', 342); el.appendChild(svg);
+const line = (x1, y1, x2, y2, st) => { const l = document.createElementNS(NS, 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); for (const k in st) l.setAttribute(k, st[k]); svg.appendChild(l); };
+const out = { frame: [342, 342], scale_px_per_cm: S, offset_px: [X0, Y0], source: 'plugins/nadlan-config/assets/designer/' + PLAN, walls: [], openings: [], runs: [], parts: [], clusters: [], rooms: [] };
+
+// walls, split at the openings (doors are gaps, windows are two thin lines)
+const openings = apt.openings || [];
+for (const w of apt.walls) {
+  if (w.kind === 'divider') continue;
+  const a = N[w.a], b = N[w.b], L = Math.hypot(b[0] - a[0], b[1] - a[1]), d = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const ops = openings.filter((o) => o.wall === w.id).sort((p, q) => p.at - q.at);
+  const segs = []; let cur = 0; for (const o of ops) { segs.push([cur, o.at]); cur = o.at + o.w; } segs.push([cur, L]);
+  const sw = w.kind === 'mamad' ? 5 : w.kind === 'rail' ? 1.4 : 2, col = w.kind === 'rail' ? '#5b6b7a' : '#14212b', dash = w.kind === 'rail' ? '4 3' : null;
+  for (const [s0, s1] of segs) { if (s1 - s0 < 1) continue; const p0 = [a[0] + d[0] * s0, a[1] + d[1] * s0], p1 = [a[0] + d[0] * s1, a[1] + d[1] * s1];
+    line(PX(p0[0]), PY(p0[1]), PX(p1[0]), PY(p1[1]), { stroke: col, 'stroke-width': sw, 'stroke-linecap': 'square', ...(dash ? { 'stroke-dasharray': dash } : {}) });
+    out.walls.push({ id: w.id, kind: w.kind, x1: +PX(p0[0]).toFixed(1), y1: +PY(p0[1]).toFixed(1), x2: +PX(p1[0]).toFixed(1), y2: +PY(p1[1]).toFixed(1), width: sw }); }
+  for (const o of ops) { const p0 = [a[0] + d[0] * o.at, a[1] + d[1] * o.at], p1 = [a[0] + d[0] * (o.at + o.w), a[1] + d[1] * (o.at + o.w)], n = [-d[1], d[0]], t = (w.t || 20) * S / 2;
+    if (o.type !== 'door') for (const sgn of [-1, 1]) line(PX(p0[0]) + n[0] * t * sgn, PY(p0[1]) + n[1] * t * sgn, PX(p1[0]) + n[0] * t * sgn, PY(p1[1]) + n[1] * t * sgn, { stroke: '#14212b', 'stroke-width': 1 });
+    out.openings.push({ id: o.id, wall: w.id, type: o.type, x1: +PX(p0[0]).toFixed(1), y1: +PY(p0[1]).toFixed(1), x2: +PX(p1[0]).toFixed(1), y2: +PY(p1[1]).toFixed(1) }); }
+}
+// service runs: the same polylines as in 3D, seen from above (height dropped), orthogonal, 3 px; hot water dashed over the cold line
+const order = ['c', 'g', 'e', 'h'], wallsFlat = apt.walls.filter((w) => w.kind !== 'divider' && w.kind !== 'rail').map((w) => ({ a: N[w.a], b: N[w.b] })), CEN = [660, 330], SH = 4.5;
+const onWall = (p, q) => wallsFlat.find((w) => { const hor = Math.abs(p[1] - q[1]) < 0.5 && Math.abs(w.a[1] - w.b[1]) < 0.5 && Math.abs(p[1] - w.a[1]) < 16, ver = Math.abs(p[0] - q[0]) < 0.5 && Math.abs(w.a[0] - w.b[0]) < 0.5 && Math.abs(p[0] - w.a[0]) < 16; return hor || ver; });
+for (const sys of order) for (const r of RUNS.filter((q) => q.sys === sys)) {
+  const P = r.pts.map((p) => [p[0], p[1]]), sh = P.map(() => [0, 0]);
+  for (let k = 1; k < P.length; k++) { const a = P[k - 1], b = P[k]; if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 0.5) continue; const w = onWall(a, b); if (!w) continue; const hor = Math.abs(a[1] - b[1]) < 0.5; const dir = hor ? [0, Math.sign(CEN[1] - a[1]) || 1] : [Math.sign(CEN[0] - a[0]) || 1, 0]; for (const idx of [k - 1, k]) { sh[idx][0] = dir[0] * SH; sh[idx][1] = dir[1] * SH; } }
+  const pts = []; P.forEach((p, k) => { const q = [PX(p[0]) + sh[k][0], PY(p[1]) + sh[k][1]]; if (!pts.length || Math.hypot(q[0] - pts[pts.length - 1][0], q[1] - pts[pts.length - 1][1]) > 0.3) pts.push(q); });
+  if (pts.length < 2) continue; const pl = document.createElementNS(NS, 'polyline'); pl.setAttribute('points', pts.map((q) => q.join(',')).join(' ')); pl.setAttribute('fill', 'none'); pl.setAttribute('stroke', COLX[sys]); pl.setAttribute('stroke-width', 3); pl.setAttribute('stroke-linejoin', 'round'); pl.setAttribute('opacity', sys === 'e' ? 0.75 : 0.9); if (sys === 'h') pl.setAttribute('stroke-dasharray', '6 4'); svg.appendChild(pl);
+  out.runs.push({ id: r.id, sys, color: COLX[sys], dashed: sys === 'h', width: 3, pts: pts.map((q) => [+q[0].toFixed(1), +q[1].toFixed(1)]) });
+}
+// rooms
+const faces = apt.rooms.map((r) => { const f = r; return f; });
+const rb = {}; { // room boxes from the walls' outline: the room's own bounding polygon is in the engine; here the plan's rectangles by room id
+  const BOX = { living: [0, 0, 620, 520], kitchen: [0, 520, 360, 900], hall: [360, 520, 620, 900], master: [620, 0, 1000, 380], bed2: [1000, 0, 1320, 380], corridor: [620, 380, 1320, 500], wc: [620, 500, 820, 680], laundry: [620, 680, 820, 900], bath: [820, 500, 1000, 900], mamad: [1000, 500, 1320, 900], balcony: [0, -220, 620, 0] }; Object.assign(rb, BOX); }
+const roomOfPart = (id) => { const p = PART_META[id].roomPt; return Object.keys(rb).find((k) => k !== 'balcony' && p[0] >= rb[k][0] && p[0] <= rb[k][2] && p[1] >= rb[k][1] && p[1] <= rb[k][3]); };
+const CLUSTER_ROOMS = ['laundry', 'bath']; // the crowded service and bath rooms use the room-cluster marker
+const items = []; // tiles and clusters, with a screen position, to be pushed apart
+const byRoom = {}; for (const id in PART_META) (byRoom[roomOfPart(id)] = byRoom[roomOfPart(id)] || []).push(id);
+for (const room in byRoom) {
+  const ids = byRoom[room], b = rb[room];
+  if (CLUSTER_ROOMS.includes(room)) { const state = ids.some((i) => PART_META[i].state === 'fault') ? 'fault' : 'ok'; items.push({ kind: 'cluster', room, ids, state, x: PX((b[0] + b[2]) / 2), y: PY((b[1] + b[3]) / 2), box: b }); }
+  else for (const id of ids) items.push({ kind: 'tile', room, ids: [id], state: PART_META[id].state, x: PX(PART_META[id].anchor[0]), y: PY(PART_META[id].anchor[1]), box: b });
+}
+for (let it = 0; it < 600; it++) {
+  for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) { const a = items[i], b = items[j], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 0.01;
+    if (d < 50) { const k = (50 - d) / 2, ux = dx / d, uy = dy / d; a.x -= ux * k; a.y -= uy * k; b.x += ux * k; b.y += uy * k; } }
+  for (const a of items) { const b = a.box, x0 = PX(b[0]) + 9, x1 = PX(b[2]) - 9, y0 = PY(b[1]) + 16, y1 = PY(b[3]) - 25; a.x = Math.max(Math.min(x0, x1), Math.min(Math.max(x0, x1), a.x)); a.y = Math.max(Math.min(y0, y1), Math.min(Math.max(y0, y1), a.y)); if (x0 > x1) a.x = (x0 + x1) / 2; if (y0 > y1) a.y = (y0 + y1) / 2; a.x = Math.max(24, Math.min(318, a.x)); a.y = Math.max(24, Math.min(318, a.y)); }
+}
+const place = (html, cls, a, extra = '') => { const d = document.createElement('div'); d.className = cls; d.style.left = a.x - 22 + 'px'; d.style.top = a.y - 22 + 'px'; d.innerHTML = html; el.appendChild(d); return d; };
+const pills = [];
+for (const a of items) {
+  if (a.kind === 'cluster') {
+    place(a.state === 'fault' ? '<span class="bang">!</span>' : '<span>' + a.ids.length + '</span>', 'mk ' + a.state, a);
+    out.clusters.push({ room: a.room, x: +a.x.toFixed(1), y: +a.y.toFixed(1), count: a.ids.length, state: a.state, parts: a.ids });
+    if (a.state === 'fault') pills.push({ a, text: 'דוד שמש · תקלה', cls: 'fault' });
+  } else {
+    const id = a.ids[0], st = PART_META[id].state; place(svgIcon(ICONOF[id]) + (st === 'soon' ? clockBadge : ''), 'tile ' + (st === 'soon' ? 'soon' : ''), a);
+    out.parts.push({ id, room: a.room, x: +a.x.toFixed(1), y: +a.y.toFixed(1), state: st });
+    if (st === 'soon') pills.push({ a, text: PART_META[id].he, cls: 'soon' });
+  }
+}
+for (const p of pills) { const d = document.createElement('div'); d.className = 'pill ' + p.cls; d.textContent = p.text; el.appendChild(d); const w = d.offsetWidth; let x = p.a.x - w / 2, y = p.a.y + 25; if (y + 17 > 340) y = p.a.y - 42; x = Math.max(3, Math.min(339 - w, x)); d.style.left = x + 'px'; d.style.top = y + 'px'; }
+// room names, written in the free spot of each room (farthest from tiles and markers)
+const used = items.map((a) => [a.x, a.y, 34]).concat(pills.map((p) => { const d = el.querySelector('.pill'); return [p.a.x, p.a.y + 33, 40]; }));
+for (const room in rb) { const b = rb[room], name = ROOM_SHORT[room]; if (!name) continue; let best = null;
+  for (let gx = 0; gx <= 8; gx++) for (let gy = 0; gy <= 8; gy++) { const x = PX(b[0]) + 22 + ((PX(b[2]) - PX(b[0]) - 44) * gx) / 8, y = PY(b[1]) + 10 + ((PY(b[3]) - PY(b[1]) - 14) * gy) / 8; const md = Math.min(...used.map((u) => Math.hypot(u[0] - x, u[1] - y) - u[2])); const sc = Math.min(md, 30) - 0.02 * Math.hypot(x - (PX(b[0]) + PX(b[2])) / 2, y - (PY(b[1]) + PY(b[3])) / 2); if (!best || sc > best.sc) best = { sc, x, y }; }
+  const d = document.createElement('div'); d.className = 'rn'; d.textContent = name; d.style.left = best.x + 'px'; d.style.top = best.y + 'px'; if (room === 'mamad') d.style.fontWeight = 600; el.appendChild(d); out.rooms.push({ room, name, x: +best.x.toFixed(1), y: +best.y.toFixed(1) }); }
+window.__plan = out; window.__ready = true;
+</script>
+</body>
+</html>

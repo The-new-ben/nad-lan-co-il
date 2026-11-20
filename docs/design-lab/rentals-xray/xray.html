@@ -6,9 +6,30 @@
 <meta name="robots" content="noindex">
 <title>rentals x-ray lab (design lab, never deployed)</title>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 html,body{margin:0;padding:0;background:#eef2f6}
 #stage{position:relative;width:390px;height:444px;overflow:hidden;background:#eef2f6;direction:ltr}
+#markers{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;display:none}
+.mk{position:absolute;width:44px;height:44px;border-radius:50%;box-sizing:border-box;background:#fff;border:1.5px solid #14212b;color:#14212b;display:flex;align-items:center;justify-content:center;font:500 17px 'IBM Plex Mono',monospace;box-shadow:0 0 0 3px rgba(255,255,255,.75)}
+.mk.soon{border-width:2px}
+.mk.fault{background:#a11616;border:2px solid #a11616;color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.75)}
+.mk .bang{font:700 26px/1 'IBM Plex Sans Hebrew',Arial,sans-serif}
+.pill{position:absolute;height:18px;line-height:17px;padding:0 9px;border-radius:9px;box-sizing:border-box;font:600 11px/17px 'IBM Plex Sans Hebrew',Arial,sans-serif;white-space:nowrap;direction:rtl}
+.pill.fault{background:#a11616;color:#fff}
+.pill.soon{background:#fff;color:#14212b;border:1px solid #14212b}
+#markers svg{pointer-events:none}
+/* markers: icon circle, narrow count pill, clock circle, fault circle, tags */
+.mkc,.mkp{position:absolute;box-sizing:border-box;background:#fff;border:1.5px solid #14212b;color:#14212b;display:flex;align-items:center;justify-content:center;direction:rtl;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
+.mkc{width:44px;height:44px;border-radius:50%}
+.mkc.soon{border-width:2.5px}
+.mkc.fault{background:#a11616;border-color:#a11616;color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.85)}
+.mkc .bang{font:700 26px/1 'IBM Plex Sans Hebrew',Arial,sans-serif}
+.mkp{height:44px;border-radius:22px;padding:0 12px;white-space:nowrap;font:600 13px/1 'IBM Plex Sans Hebrew',Arial,sans-serif}
+.tag{position:absolute;box-sizing:border-box;border-radius:12px;white-space:nowrap;direction:rtl;padding:0 9px;font:600 11.5px/1 'IBM Plex Sans Hebrew',Arial,sans-serif;display:flex;align-items:center}
+.tag.soon{height:19px;font-size:11px;padding:0 7px;background:#fff;color:#14212b;border:1px solid #14212b}
+.tag.fault{height:24px;background:#a11616;color:#fff;font-size:12px;padding:0 11px}
 #stage canvas{display:block;width:100%;height:100%;touch-action:none}
 </style>
 </head>
