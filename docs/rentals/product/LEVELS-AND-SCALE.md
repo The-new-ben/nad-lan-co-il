@@ -3,6 +3,18 @@
 Written 20.11.2026 after Ben's voice note of that morning: "I want people to use it. Usage first and then upgrade to premium, levels" and "it can become a much more serious product, maintenance of buildings, companies with thousands of assets; be ready for that. Right now I do not want to change it."
 This is a PROPOSAL for the coordinator and Ben. Nothing here is built, no price is set, and version 2 stays closed to the public until the coordinator's word.
 
+## The first wall: about 400 leases (before anything else)
+On opening, the app loads ALL of an owner's rows into the browser, and every table is cut at 5,000 rows with no paging (`LIMIT 5000`, inc/rentals/store.php). The money table gets one rent line a month per lease, so it passes 5,000 rows at about 400 leases in their first year (fewer when leases are older). From that point the books on the screen are silently incomplete: no error, just missing months. This comes long before 5,000 properties, and it is the one limit a manager of a few hundred apartments would actually hit.
+What fixing it takes (a list, no build until Ben's word; he asked not to change the model now):
+1. The money table is read per lease and per period, by page, and never as one load.
+2. The totals the screens show (received this year, open debt, late leases) are computed on the server and sent as numbers.
+3. The other long lists (apartments, tenants, repairs, journal) load by page and by search.
+4. The monthly rent lines are made by a scheduled job on the server, not when someone opens the app.
+5. Until 1 to 4 exist: a visible stop. An account that nears the limit is told so in plain words, and the largest plan is not sold above what the app can truly hold.
+None of this blocks opening the free level to private landlords.
+
+The plans stay switched off and no price is shown anywhere: the prices and the free limit are Ben's decision.
+
 ## 0. What already exists in the code (found 20.11.2026, inc/rentals/billing.php, written 3.10.2026 under HAD-383)
 Three plans are already built and switched off: free (3 apartments, 200 MB of documents), pro (50 apartments) and business (2,000 apartments). The landlord would pay through the site's own shop (WooCommerce with Morning: card, Bit, Google Pay, Apple Pay, with a tax invoice); the rent itself never passes through the site. Above the free limit nothing is deleted, the landlord only cannot add. The switch `nlrm_billing` is 'off' (no offer, no limit), the shop products are drafts, and the prices were never approved. So the levels below are a proposal on how to USE what exists, not a new build.
 

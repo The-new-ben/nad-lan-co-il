@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rentals board 5: the example apartments in the Kikar HaMedina tower model (design lab, HAD-795)</title>
+<!-- DESIGN LAB ONLY. Loads the existing tower turntable and interior renders of HAD-712 read-only (coordinator's yes, 20.11.2026):
+     "דוגמה" on the frame and on each apartment, no developer name or logo, no real unit numbers, example figures only. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
+<style>
+	body { background: #0d2129; }
+	.kk-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+	.kk-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,33,41,.62) 0, rgba(13,33,41,0) 20%, rgba(13,33,41,0) 62%, rgba(13,33,41,.78) 100%); }
+	.bd-top { position: absolute; inset: 0 0 auto 0; padding: 12px 14px; display: flex; align-items: center; gap: 10px; color: #fff; }
+	.bd-back { flex: none; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; display: flex; align-items: center; justify-content: center; }
+	.bd-top h1 { margin: 0; font-size: 22px; line-height: 26px; font-weight: 800; }
+	.bd-top small { display: block; font-size: 13px; font-weight: 600; color: #d7e3ea; }
+	.bd-top .pf-ex { margin-inline-start: auto; }
+	/* a floor of the tower that holds one of the example apartments */
+	.kk-floor { position: absolute; height: 11px; border-radius: 3px; }
+	.kk-floor.is-due { background: rgba(242,169,0,.92); box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 0 22px 6px rgba(242,169,0,.75); }
+	.kk-floor.is-ok { background: rgba(18,153,107,.92); box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 0 22px 6px rgba(18,153,107,.7); }
+	.kk-tag { position: absolute; height: 44px; padding: 0 12px 0 14px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 22px; background: #fff; font-size: 15px; font-weight: 800; box-shadow: 0 6px 18px rgba(13,33,41,.45); white-space: nowrap; }
+	.kk-tag i { width: 12px; height: 12px; border-radius: 6px; flex: none; }
+	.kk-tag small { font-size: 12px; font-weight: 600; color: #3b4753; }
+	.kk-tag.is-on { box-shadow: 0 0 0 3px #7fd3e6, 0 6px 18px rgba(13,33,41,.45); }
+	.kk-line { position: absolute; height: 2px; background: #fff; opacity: .9; }
+	.pf-say { inset: auto 12px 14px 12px; }
+	.kk-note { position: absolute; inset: auto 12px 88px auto; padding: 4px 10px; border-radius: 10px; background: rgba(255,255,255,.92); font-size: 12px; font-weight: 600; color: #3b4753; }
+	/* inside: the interior render, with the parts of the home as small marks */
+	.kk-pano { position: absolute; inset: 0; background-size: auto 100%; background-position: 46% 50%; background-repeat: repeat-x; }
+	.kk-part { position: absolute; width: 56px; height: 56px; border-radius: 50%; border: 3px solid #fff; background-size: cover; background-position: center; box-shadow: 0 4px 14px rgba(13,33,41,.5); }
+	.kk-part.is-care { border-color: #d5311f; }
+	.kk-part b { position: absolute; inset: auto -3px -3px auto; width: 20px; height: 20px; border-radius: 10px; border: 2px solid #fff; background: #12996b; color: #fff; font-size: 13px; line-height: 16px; text-align: center; }
+	.kk-part.is-care b { background: #d5311f; }
+	.kk-tabs { position: absolute; inset: auto 12px 88px 12px; display: flex; gap: 8px; }
+	.kk-tabs button { flex: 1; height: 48px; border: 0; border-radius: 14px; background: rgba(255,255,255,.95); font-size: 15px; font-weight: 800; box-shadow: 0 4px 14px rgba(13,33,41,.3); }
+	.kk-tabs button.is-on { background: #14212b; color: #fff; }
+</style>
+</head>
+<body>
+<div class="pf" id="v-building" hidden>
+	<img class="kk-img" src="../../../plugins/nadlan-config/assets/project-stage/hamedina/turn/A-00.webp" alt="">
+	<div class="kk-shade"></div>
+	<header class="bd-top"><button type="button" class="bd-back" aria-label="חזרה למפה"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#14212b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6"/></svg></button><div><h1>כיכר המדינה</h1><small>תל אביב · 2 דירות לדוגמה במגדל</small></div><span class="pf-ex">דוגמה</span></header>
+	<div class="kk-floor is-ok" style="left:153px;width:106px;top:216px"></div>
+	<div class="kk-line" style="left:76px;width:77px;top:221px"></div>
+	<button type="button" class="kk-tag" style="left:14px;top:160px"><i style="background:#12996b"></i>דירה לדוגמה ב<small>קומה 30</small></button>
+	<div class="kk-floor is-due" style="left:153px;width:106px;top:400px"></div>
+	<div class="kk-line" style="left:259px;width:40px;top:405px"></div>
+	<button type="button" class="kk-tag is-on" style="left:214px;top:420px"><i style="background:#f2a900"></i>דירה לדוגמה א<small>קומה 20</small></button>
+	<span class="kk-note">הדמיה · דירות ונתונים לדוגמה</span>
+	<div class="pf-say"><div class="pf-say-t"><b>דירה לדוגמה א · קומה 20</b><span>שכר דירה בעוד 3 ימים · סכום לדוגמה</span></div><button type="button" class="pf-go">להיכנס לדירה</button></div>
+</div>
+<div class="pf" id="v-inside" hidden>
+	<div class="kk-pano" style="background-image:url(../../../plugins/nadlan-config/assets/project-stage/hamedina/apt/A20-0.webp)"></div>
+	<div class="kk-shade"></div>
+	<header class="bd-top"><button type="button" class="bd-back" aria-label="חזרה לבניין"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#14212b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6"/></svg></button><div><h1>דירה לדוגמה א</h1><small>כיכר המדינה · קומה 20</small></div><span class="pf-ex">דוגמה</span></header>
+	<button type="button" class="kk-part is-care" style="left:38px;top:300px;background-image:url(img/p-ac.jpg)" aria-label="מזגן, צריך טיפול"><b>!</b></button>
+	<button type="button" class="kk-part" style="left:292px;top:330px;background-image:url(img/p-fridge.jpg)" aria-label="מקרר, תקין"><b>✓</b></button>
+	<button type="button" class="kk-part" style="left:176px;top:560px;background-image:url(img/p-panel.jpg)" aria-label="לוח חשמל, תקין"><b>✓</b></button>
+	<span class="kk-note" style="bottom:148px">הדמיה · דירה ונתונים לדוגמה</span>
+	<div class="kk-tabs"><button type="button" class="is-on">הדירה</button><button type="button">המערכות</button><button type="button">היום</button></div>
+	<div class="pf-say"><div class="pf-say-t"><b>המזגן לא מקרר</b><span>יום 2 מתוך 30 · לחצו על המזגן</span></div><button type="button" class="pf-go">לטפל עכשיו</button></div>
+</div>
+<script>
+	var v = new URLSearchParams(location.search).get("v") || "building";
+	document.getElementById("v-" + v).hidden = false;
+	var im = document.querySelector("#v-" + v + " img"), done = function () { document.documentElement.setAttribute("data-ready", "1"); };
+	if (im && !im.complete) { im.onload = done; } else { setTimeout(done, 1200); }
+</script>
+</body>
+</html>

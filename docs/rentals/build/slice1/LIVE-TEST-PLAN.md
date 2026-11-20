@@ -45,3 +45,28 @@ Defects and gaps seen:
 2. With no parts recorded the title block says "עוד לא הוספתם מכשירים ומערכות לדירה" and offers "להוסיף תוכנית"; correct, but there is no one-press way to add the first part from there.
 3. Desktop: the inner scrollbar on the system-icons row (seen earlier in the sample portfolio).
 Not measured on a real phone. The English strings were not pressed in this sitting.
+
+## Second sitting (20.11.2026, live 1.72.725): the index button and the one-press part with REAL data
+Coordinator's yes of 20.11 with one hard stop (any row in the account before creating = stop; Ben's data is never erased). One sitting, the owner's Chrome, signed in as administrator; the machine's screen is 538 px tall, so the layer was pressed at a 60% page zoom.
+
+| Table | Before | With the test rows | After the erase (fresh load from the server) |
+|---|---|---|---|
+| properties | 0 | 1 (id 2, "דירת בדיקה, למחיקה") | 0 |
+| units | 0 | 1 (id 2) | 0 |
+| contacts | 0 | 1 (id 2, "שוכר בדיקה") | 0 |
+| leases | 0 | 1 (id 2, 1.9.2025 to 31.8.2027, 7,800, index-linked every 12 months) | 0 |
+| ledger | 0 | 15 (the rent charges the engine made, Sep 2025 to Nov 2026; no payment) | 0 |
+| tickets, docs, tasks, personal links | 0 | 0 | 0 |
+| events (as the app loads them) | 0 | 1 (index_confirmed, id 13, lease 2) | 0 |
+
+Safeguards as run: all counts 0 right before creating (and not the sample); before erasing the page was reloaded from the server and every row checked to be the test's own (one property, unit, contact and lease by id and name, all 15 ledger rows on lease 2, the one event on lease 2); the erase ran inside the same check; a fresh load after it shows 0 everywhere and the welcome screen. No document or photo was created in this sitting.
+
+What was pressed, with real numbers:
+- The tenancy screen showed the line "עדכון המדד של 1.9.2026 לא אושר" with its button. Press 1 opened the sheet: rent today 7,921, base index 103.5, latest index 105.1, rent from 1.9.2026 7,921, "מספרי המדד מהלשכה המרכזית לסטטיסטיקה". Press 2 ("לאשר את שכר הדירה החדש") made ONE call to /rm/today/index-confirm and wrote the journal event (base 103.5, applied 105.1, old 780000, new 792058, start month 2026-09); the ledger stayed at 15 rows; the sheet said "אושר: שכר הדירה מ-ספטמבר 2026 הוא 7,921 ₪. נרשם ביומן הדירה."; the line then read "אין עוד עדכון עד סוף החוזה".
+- With real data the sheet and the engine AGREE: the engine's own charges from September 2026 are 7,920.59 and the sheet's new rent is 7,920.58. The 8,042 beside 8,034 seen in the sample portfolio is a mismatch of the sample's numbers only.
+- A home with nothing recorded: one press on the "דוד מים" tile saved it (one call to /rm/save), no form; the row then showed the part and the add tile.
+
+Seen and not fixed:
+1. With an unpaid charge OLDER than the twelve months the ruler shows (here September 2025), the bottom sheet of the tenancy screen points at that month and says "עדיין אין חיוב לחודש הזה" although the charge exists; the ruler itself is right. It needs the ruler to show, or at least name, a debt from before its window.
+2. Not measured on a real phone.
+

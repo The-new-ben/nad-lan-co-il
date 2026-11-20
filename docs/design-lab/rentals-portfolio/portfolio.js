@@ -6,8 +6,8 @@
 	"use strict";
 	var q = new URLSearchParams(location.search), STILL = q.get("still") === "1";
 	var P = [
-		{ id: "k1", name: "כיכר המדינה · דירה 142", city: "תל אביב", region: "il", ll: [34.78985, 32.08672], rent: "21,500 ₪", st: "ok", line: "שכר הדירה נכנס ב-1.11", build: "kikar" },
-		{ id: "k2", name: "כיכר המדינה · דירה 87", city: "תל אביב", region: "il", ll: [34.79035, 32.08655], rent: "17,800 ₪", st: "due", line: "שכר דירה בעוד 3 ימים", build: "kikar" },
+		{ id: "k1", name: "כיכר המדינה · דירה לדוגמה ב", city: "תל אביב", region: "il", ll: [34.78985, 32.08672], rent: "21,500 ₪", st: "ok", line: "שכר הדירה נכנס ב-1.11", build: "kikar" },
+		{ id: "k2", name: "כיכר המדינה · דירה לדוגמה א", city: "תל אביב", region: "il", ll: [34.79035, 32.08655], rent: "17,800 ₪", st: "due", line: "שכר דירה בעוד 3 ימים", build: "kikar" },
 		{ id: "t1", name: "ארלוזורוב 78 · דירה 7", city: "תל אביב", region: "il", ll: [34.78370, 32.08760], rent: "7,800 ₪", st: "ok", line: "הכול בסדר" },
 		{ id: "t2", name: "פלורנטין 12 · דירה 3", city: "תל אביב", region: "il", ll: [34.77020, 32.05630], rent: "6,400 ₪", st: "ok", line: "הכול בסדר" },
 		{ id: "e1", name: "שחמון 5 · דירה 5", city: "אילת", region: "il", ll: [34.93700, 29.55000], rent: "4,900 ₪", st: "care", line: "המזגן לא מקרר · יום 2 מתוך 30" },
