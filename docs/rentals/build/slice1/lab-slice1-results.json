@@ -123,7 +123,7 @@
   {
    "check": "he phone index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0wgmr8v'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0cy9qvx'}"
   },
   {
    "check": "he phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -323,7 +323,7 @@
   {
    "check": "he desk index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0w002ou'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0py2pjw'}"
   },
   {
    "check": "he desk the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -523,7 +523,7 @@
   {
    "check": "en phone index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0d6p1ru'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s063souf'}"
   },
   {
    "check": "en phone the sheet says what is true: confirmed, month, amount, recorded in the journal",
@@ -723,7 +723,7 @@
   {
    "check": "en desk index confirmed in 2 presses, as a journal event (no ledger line)",
    "ok": true,
-   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0a8i7ek'}"
+   "info": "presses 2, {'lease_id': 201, 'start_month': '2026-12', 'base_index': 100, 'applied_index': 103.8, 'old_amount': 780000, 'new_amount': 809600, 'client_ref': 'cmwx7d5s0a1uzym'}"
   },
   {
    "check": "en desk the sheet says what is true: confirmed, month, amount, recorded in the journal",

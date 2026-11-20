@@ -612,6 +612,37 @@
 	}
 	function api() { var ad = N.store.adapter; return (ad && ad.today2) || (ad && ad.demo ? demoApi(ad) : restApi(cfg)); }
 
+	/* ---------- the layer's place on the screen (1.72.726) ----------
+	   The site's own floating things (the WhatsApp bar, the basket, the accessibility button, the admin bar) are drawn ABOVE this
+	   layer. The layer measures the ones that stand over its column and keeps a free strip for them, top and bottom, so nothing of
+	   the screen sits under them at any width; and when what is left is short, the screen scrolls like a page (.is-short). */
+	var keepT = 0, keepB = 0, probed = false, fitT = 0;
+	/* what covers the layer's column is found by asking the browser, point by point, what is drawn on top (so it does not matter
+	   how the covering thing is positioned: the admin bar is fixed on a desktop and absolute on a phone) */
+	function probe() {
+		var H = window.innerHeight, W = window.innerWidth, cw = Math.min(480, W), c0 = (W - cw) / 2, kt = 0, kb = 0, x, y;
+		var mine = function (px, py) { var t = document.elementFromPoint(px, py); return !t || host.contains(t); };
+		for (x = c0 + 4; x < c0 + cw; x += 12) {
+			for (y = 2; y < 122; y += 4) { if (!mine(x, y)) { kt = Math.max(kt, y + 4); } }
+			for (y = H - 2; y > H - 202 && y > H / 2; y -= 4) { if (!mine(x, y)) { kb = Math.max(kb, H - y + 12); } }
+		}
+		keepT = Math.min(kt, 120); keepB = Math.min(kb, 210); probed = true;
+	}
+	function fit(rescan) {
+		if (!host || host.hidden) { return; }
+		if (rescan || !probed) { probe(); }
+		var H = window.innerHeight, kt = keepT, kb = keepB, eff = H - kt - kb;
+		host.style.setProperty("--nt2-kt", kt + "px"); host.style.setProperty("--nt2-kb", kb + "px");
+		host.setAttribute("data-keep", kt + "," + kb);
+		host.classList.toggle("is-h700", eff <= 700); host.classList.toggle("is-h760", eff <= 760);
+		/* short = under 600 px left, or a part of this screen does not fit what is left (measured, so no button can end under another).
+		   A part that hides its overflow must fit exactly; a part that shows it may run over by the card's own bottom padding (12 px). */
+		host.classList.remove("is-short");
+		var over = body.scrollHeight > body.clientHeight + 1 || Array.prototype.some.call(body.children, function (c) { return c.scrollHeight > c.clientHeight + (window.getComputedStyle(c).overflowY === "hidden" ? 1 : 12); });
+		host.classList.toggle("is-short", eff < 600 || over);
+	}
+	function fitSoon() { window.clearTimeout(fitT); fitT = window.setTimeout(function () { fit(true); }, 120); }
+
 	/* ---------- the layer: mount, route, render ---------- */
 	function route() {
 		var h = (location.hash || "").replace(/^#\/?/, "");
@@ -629,6 +660,7 @@
 		if (!r || !u) { host.hidden = true; de.classList.remove("nt2-on"); return; }
 		var d = N.store.d;
 		if (!d.properties.length && !d.demo) { host.hidden = true; de.classList.remove("nt2-on"); return; } /* a new landlord keeps the onboarding of the app */
+		var wasHidden = host.hidden;
 		host.hidden = false; de.classList.add("nt2-on");
 		host.setAttribute("dir", N.rtl ? "rtl" : "ltr"); host.setAttribute("lang", N.lang);
 		var m = model(u), f = document.activeElement, fk = f && f.closest && f.closest("#nt2-body") ? (f.getAttribute("data-act") || "") + "|" + (f.getAttribute("data-ym") || "") : "";
@@ -640,6 +672,7 @@
 			box.classList.toggle("is-row", !planOf(u));
 		}
 		if (fk) { var again = Array.prototype.find.call(body.querySelectorAll("[data-act]"), function (x) { return (x.getAttribute("data-act") || "") + "|" + (x.getAttribute("data-ym") || "") === fk; }); if (again && !sheetEl) { again.focus({ preventScroll: true }); } }
+		fit(wasHidden); /* after the content is in: the strips, and whether this screen must scroll */
 	}
 	function onClick(e) {
 		var b = e.target.closest("[data-act]");
@@ -690,6 +723,8 @@
 		document.addEventListener("keydown", function (e) { if (e.key === "Escape" && sheetEl) { closeSheet(); } });
 		N.store.on(function () { render(); });
 		window.addEventListener("hashchange", function () { closeSheet(true); render(); });
+		window.addEventListener("resize", fitSoon);
+		[400, 1500, 3500, 7000, 12000].forEach(function (ms) { window.setTimeout(function () { fit(true); }, ms); }); /* the site's buttons arrive late */
 		render();
 	};
 	T2.model = function () { var u = units().find(function (x) { return +x.id === +S.unitId; }); return u ? model(u) : null; };

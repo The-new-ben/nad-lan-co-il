@@ -1,0 +1,470 @@
+{
+ "checks": [
+  {
+   "check": "390x450 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x450 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x450 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x450 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x450 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x450 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x450 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x450 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x450 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x450 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x450 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x450 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x450 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x550 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x550 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x550 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x550 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x550 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x550 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x550 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x550 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x550 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x550 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x550 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x550 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x550 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x600 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x600 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x600 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x600 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x600 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x600 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x600 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x600 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x600 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x600 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x600 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x600 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x600 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x660 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x660 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "390x660 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short False"
+  },
+  {
+   "check": "390x660 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x660 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x660 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x660 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x660 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x660 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x660 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "390x660 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "390x660 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "390x660 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "844x390 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "844x390 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "844x390 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "844x390 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "844x390 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "844x390 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,86 short True"
+  },
+  {
+   "check": "844x390 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 34,86)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "844x390 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,86 short True"
+  },
+  {
+   "check": "844x390 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 34,86)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "844x390 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,86 short True"
+  },
+  {
+   "check": "844x390 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 34,86)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "844x390 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "844x390 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "625x451 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "625x451 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "625x451 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "625x451 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "625x451 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "625x451 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "625x451 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "625x451 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "625x451 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "625x451 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 46,142 short True"
+  },
+  {
+   "check": "625x451 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 46,142)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "625x451 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "625x451 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "1280x451 no site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "1280x451 no site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "1280x451 no site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 0,0 short True"
+  },
+  {
+   "check": "1280x451 no site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "1280x451 no site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "1280x451 with the site buttons, today 21: all 10 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,0 short True"
+  },
+  {
+   "check": "1280x451 with the site buttons, today 21: nothing of the screen lies under a floating button (strip top,bottom = 34,0)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "1280x451 with the site buttons, today 31: all 16 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,0 short True"
+  },
+  {
+   "check": "1280x451 with the site buttons, today 31: nothing of the screen lies under a floating button (strip top,bottom = 34,0)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "1280x451 with the site buttons, rent 11: all 23 buttons can be reached and receive the press",
+   "ok": true,
+   "info": "keep 34,0 short True"
+  },
+  {
+   "check": "1280x451 with the site buttons, rent 11: nothing of the screen lies under a floating button (strip top,bottom = 34,0)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "1280x451 with the site buttons: the index line opens its sheet, the confirm button is in view and receives the press, the sheet is under no floating button",
+   "ok": true,
+   "info": "{'gets': True, 'inView': True, 'under': []}"
+  },
+  {
+   "check": "1280x451 with the site buttons: the confirmation is saved from that screen",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "check": "390x844 with no site buttons: no strip, not the scrolling mode (as before)",
+   "ok": true,
+   "info": "['0,0', False, False, 'hidden']"
+  },
+  {
+   "check": "no page errors in any run",
+   "ok": true,
+   "info": "[]"
+  }
+ ],
+ "errors": []
+}

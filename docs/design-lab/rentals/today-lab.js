@@ -13,6 +13,14 @@
 	L.install = function (q, lang) {
 		window.__sliceOn = q.get("slice") === "1";
 		if (q.get("slice") !== "1") { return; } /* the existing labs see the sample exactly as before */
+		if (q.get("floats") === "1") { (function () { /* stand-ins for the site's WhatsApp bar, accessibility button, basket chip and admin bar, with their live layer order (above 99000) */
+			var st = document.createElement("style"); st.textContent = ".lab-f{position:fixed;background:#128c5e;color:#fff;font:700 12px Arial;display:flex;align-items:center;justify-content:center;border-radius:12px}"
+				+ "#lab-wa{z-index:99980;left:12px;bottom:78px;width:280px;height:50px}#lab-a11y{z-index:99998;right:14px;bottom:14px;width:52px;height:52px;border-radius:26px;background:#1f4b5c}"
+				+ "#lab-cart{z-index:99990;right:12px;bottom:84px;width:129px;height:44px;background:#fff;color:#14212b;border:1px solid #14212b}#lab-bar{z-index:99999;left:0;top:0;width:100%;height:46px;border-radius:0;background:#1d2327;position:absolute}" /* WordPress makes the admin bar absolute under 600 px */
+				+ "@media (min-width:700px){#lab-wa{left:20px;bottom:20px;width:304px;height:54px}#lab-a11y{right:20px;bottom:20px}#lab-bar{height:32px;position:fixed}}";
+			document.head.appendChild(st);
+			[["lab-wa", "WhatsApp bar"], ["lab-a11y", "A"], ["lab-cart", "basket"], ["lab-bar", "admin bar"]].forEach(function (x) { if (x[0] === "lab-bar" && q.get("bar") !== "1") { return; } var e = document.createElement("div"); e.id = x[0]; e.className = "lab-f"; e.textContent = x[1]; document.body.appendChild(e); });
+		})(); }
 		(function () { var st = document.createElement("style"); st.textContent = "li { margin: 8px 0; }"; document.head.appendChild(st); })(); /* what the live theme does to every list item (found pressing 1.72.723 live) */
 		var scene = q.get("scene") || "", orig = N.demoData;
 		N.demoData = function (lg) {

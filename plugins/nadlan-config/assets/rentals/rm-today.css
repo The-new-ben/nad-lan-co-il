@@ -235,3 +235,25 @@ button.np2-part { cursor: pointer; }
 	.nt2-s-rent .nt2-next > * { flex: 0 0 100%; }
 	.nt2-s-rent .nt2-next > .nt2-btn { flex: 1 1 0; width: auto; min-width: 0; height: 48px; padding: 0 10px; font-size: 15px; }
 }
+
+/* 1.72.726: a free strip for the site's own floating buttons, and a short screen that scrolls like a page */
+.nt2 { padding-top: var(--nt2-kt, 0px); padding-bottom: var(--nt2-kb, 0px); }
+.nt2-sw { top: var(--nt2-kt, 0px); bottom: var(--nt2-kb, 0px); }
+.nt2.is-short .nt2-app { overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.nt2.is-short .nt2-app > * { flex: none; }
+.nt2.is-short .nt2-recent, .nt2.is-short .nt2-sum { flex: none; min-height: 0; overflow: visible; }
+.nt2.is-short .nt2-next { min-height: 0; }
+.nt2.is-short .nt2-nav { position: sticky; bottom: 0; z-index: 3; }
+.nt2.is-short .nt2-sheet { max-height: 100%; }
+/* the same rules as the two height queries above, by the height that is left after the strips */
+.nt2.is-h700 .nt2-tb { height: 200px; } .nt2.is-h700 .nt2-tb-l { width: 200px; }
+.nt2.is-h700 .nt2-tb .np2-new:nth-child(n+4) { display: none; }
+.nt2.is-h700 .nt2-tb .np2--row { padding: 8px; }
+.nt2.is-h700 .nt2-tb .np2-list li { width: 56px; } .nt2.is-h700 .nt2-tb .np2-cap { max-width: 56px; }
+.nt2.is-h760 .nt2-s-rent .nt2-ax-lg { display: none; }
+.nt2.is-h760 .nt2-s-rent .nt2-sum { margin-top: 4px; }
+.nt2.is-h760 .nt2-s-rent .nt2-sum li { min-height: 32px; }
+.nt2.is-h760 .nt2-s-rent .nt2-sum li.nt2-sum-idx { min-height: 44px; }
+.nt2.is-h760 .nt2-s-rent .nt2-next { min-height: 0; flex-flow: row wrap; align-content: flex-start; column-gap: 8px; padding-bottom: 10px; }
+.nt2.is-h760 .nt2-s-rent .nt2-next > * { flex: 0 0 100%; }
+.nt2.is-h760 .nt2-s-rent .nt2-next > .nt2-btn { flex: 1 1 0; width: auto; min-width: 0; height: 48px; padding: 0 10px; font-size: 15px; }
