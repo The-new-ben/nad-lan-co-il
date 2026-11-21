@@ -1,0 +1,24 @@
+[GREEN] https://nad-lan.co.il/sde-dov/
+    http 200 · 461,476b · 955ms · sha 316b25a7c6d7 · CHANGED
+    title(55): שדה דב: פרויקטים ודירות למכירה ברובע החדש | המדריך המלא
+    h1x1 canonical x1 hreflang 16 favicon 4 jsonld 2 scripts 55 styles 34
+    DIFF vs 20261121T105923Z:
+      · scripts_count: 51 -> 55
+      · scripts+ forum.js, place.js
+      · bytes 444,321 -> 461,476
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+    http 200 · 504,656b · 940ms · sha ee3309ceb44e · CHANGED
+    title(67): מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 68 styles 45
+    DIFF vs 20261121T105923Z:
+      · scripts_count: 64 -> 68
+      · scripts+ forum.js, place.js
+      · bytes 487,463 -> 504,656
+[GREEN] https://nad-lan.co.il/forum/
+    http 200 · 229,097b · 846ms · sha ef6e510fc5b8 · CHANGED
+    title(40): פורום נדל"ן: שאלות ותשובות עם בעלי מקצוע
+    h1x1 canonical x1 hreflang 0 favicon 4 jsonld 0 scripts 49 styles 21
+    DIFF vs 20261121T113823Z:
+      · bytes 229,092 -> 229,097
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

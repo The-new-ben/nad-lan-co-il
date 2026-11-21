@@ -5457,3 +5457,8 @@ ORDER AGREED 21.11.2026 (forum + rentals sessions): 1.72.732 forum (in flight) -
 RELEASE DONE 1.72.732 (HAD-787 board 25): released and verified on the first run (deploy-result-732.json, health 1.72.732). The estimator row and the forum form's arrival from it.
 
 CLAIM + RELEASE LOCK 1.72.733 (HAD-787 board 24, Ben's yes on the heading through the coordinator): NEW inc/pro-forum-place.php, assets/proforum/place.js, place.css; SWAP inc/pro-forum.php, inc/pro-forum-render.php. Claude [pro forum HAD-787, Fable 5.2] 21.11.2026 11:38 UTC.
+
+RELEASE DONE 1.72.733 (HAD-787 board 24): released and verified on the first run (deploy-result-733.json, health 1.72.733). The questions block at the end of /sde-dov/ and /projects/hamedina/. Rentals (HAD-795) may claim 734.
+
+
+CLAIM + RELEASE LOCK 1.72.734 (HAD-795 package 6, the rentals product and its one journey; owner order through the coordinator, decision A): NEW assets/rentals/rm-tour.js + 4 still-globe pictures; SWAP inc/rentals/portfolio.php, inc/rentals/page.php, assets/rentals/portfolio/pf.js + pf.css, assets/rentals/rm-demo.js, rm-boot.js, rm-views.js, rm-drawers.js, rm-today.css, i18n/he.json + en.json; HUNK inc/rentals-manager.php (7 hunks: the address ?sample=1 opens the example portfolio in the real screens; a new value "new" of the option nadlan_rentals_v2, NOT set by this release; the landing prints the lockup and one sentence above the stage and its paragraph below it). The switch of new sign-ups to version 2 is NOT in this release. Built on deploy733.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 14:10 IL.

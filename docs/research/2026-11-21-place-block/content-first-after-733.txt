@@ -1,0 +1,7 @@
+[OK ] phone   https://nad-lan.co.il/projects/hamedina/  h1 190 lead 291 stage 863 (#nlsr)
+[OK ] phone   https://nad-lan.co.il/projects/rainbow-tel-aviv/  h1 190 lead 291 stage 751 (#nlps)
+[OK ] phone   https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/  h1 154 lead 255 stage 743 (#nlps)
+[OK ] desktop https://nad-lan.co.il/projects/hamedina/  h1 204 lead 316 stage 685 (#nlsr)
+[OK ] desktop https://nad-lan.co.il/projects/rainbow-tel-aviv/  h1 204 lead 316 stage 204 (#nlps)
+[OK ] desktop https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/  h1 198 lead 310 stage 198 (#nlps)
+{"failed": 0}

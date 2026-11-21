@@ -1,0 +1,140 @@
+{
+ "at": "2026-11-21 14:00:44",
+ "ledger": [
+  {
+   "step": "sde-dov phone: the block is on the page, once, with Ben's heading",
+   "ok": true,
+   "detail": "שאלות של קונים על שדה דב"
+  },
+  {
+   "step": "sde-dov phone: it sits after the article and before the footer",
+   "ok": true,
+   "detail": "{'top': 63243, 'page': 64821, 'lastInHost': True, 'afterLastArticleH2': True, 'beforeFooter': True}"
+  },
+  {
+   "step": "sde-dov phone: width, heading face, press targets, no sideways scroll, one h1",
+   "ok": true,
+   "detail": "{'w': 358, 'h2font': 'Rubik 21px', 'btnH': 44, 'inpH': 44, 'pageW': 390, 'h1s': 1}"
+  },
+  {
+   "step": "sde-dov phone: no discussion yet, so it says so and invents nothing",
+   "ok": true,
+   "detail": "עוד אין שאלות. שאלו ראשונים."
+  },
+  {
+   "step": "sde-dov phone: 'לשאול' opens the forum's sheet with the question and the place line",
+   "ok": true,
+   "detail": "ות והתחדשות עירונית השקעות נדל\"ן בחו\"ל כללי הכותרת, במשפט אחד פרטים (לא חובה) עיר (לא חובה) השאלה תופיע גם בדף של שדה דב לא לקשר אתר פרסום ההודעה הודעה ראשונה עולה אחרי בדיקה קצרה. מהשנייה והלאה, מיד."
+  },
+  {
+   "step": "sde-dov phone: nothing was sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "sde-dov desktop: the block is on the page, once, with Ben's heading",
+   "ok": true,
+   "detail": "שאלות של קונים על שדה דב"
+  },
+  {
+   "step": "sde-dov desktop: it sits after the article and before the footer",
+   "ok": true,
+   "detail": "{'top': 39049, 'page': 40007, 'lastInHost': True, 'afterLastArticleH2': True, 'beforeFooter': True}"
+  },
+  {
+   "step": "sde-dov desktop: width, heading face, press targets, no sideways scroll, one h1",
+   "ok": true,
+   "detail": "{'w': 760, 'h2font': 'Rubik 24px', 'btnH': 44, 'inpH': 44, 'pageW': 1280, 'h1s': 1}"
+  },
+  {
+   "step": "sde-dov desktop: no discussion yet, so it says so and invents nothing",
+   "ok": true,
+   "detail": "עוד אין שאלות. שאלו ראשונים."
+  },
+  {
+   "step": "sde-dov desktop: 'לשאול' opens the forum's sheet with the question and the place line",
+   "ok": true,
+   "detail": "ות והתחדשות עירונית השקעות נדל\"ן בחו\"ל כללי הכותרת, במשפט אחד פרטים (לא חובה) עיר (לא חובה) השאלה תופיע גם בדף של שדה דב לא לקשר אתר פרסום ההודעה הודעה ראשונה עולה אחרי בדיקה קצרה. מהשנייה והלאה, מיד."
+  },
+  {
+   "step": "sde-dov desktop: nothing was sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "hamedina phone: the block is on the page, once, with Ben's heading",
+   "ok": true,
+   "detail": "שאלות של קונים על כיכר המדינה"
+  },
+  {
+   "step": "hamedina phone: it sits after the article and before the footer",
+   "ok": true,
+   "detail": "{'top': 52095, 'page': 53745, 'lastInHost': True, 'afterLastArticleH2': True, 'beforeFooter': True}"
+  },
+  {
+   "step": "hamedina phone: width, heading face, press targets, no sideways scroll, one h1",
+   "ok": true,
+   "detail": "{'w': 366, 'h2font': 'Rubik 21px', 'btnH': 44, 'inpH': 44, 'pageW': 390, 'h1s': 1}"
+  },
+  {
+   "step": "hamedina phone: no discussion yet, so it says so and invents nothing",
+   "ok": true,
+   "detail": "עוד אין שאלות. שאלו ראשונים."
+  },
+  {
+   "step": "hamedina phone: 'לשאול' opens the forum's sheet with the question and the place line",
+   "ok": true,
+   "detail": "תחדשות עירונית השקעות נדל\"ן בחו\"ל כללי הכותרת, במשפט אחד פרטים (לא חובה) עיר (לא חובה) השאלה תופיע גם בדף של כיכר המדינה לא לקשר אתר פרסום ההודעה הודעה ראשונה עולה אחרי בדיקה קצרה. מהשנייה והלאה, מיד."
+  },
+  {
+   "step": "hamedina phone: nothing was sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "hamedina desktop: the block is on the page, once, with Ben's heading",
+   "ok": true,
+   "detail": "שאלות של קונים על כיכר המדינה"
+  },
+  {
+   "step": "hamedina desktop: it sits after the article and before the footer",
+   "ok": true,
+   "detail": "{'top': 35346, 'page': 36376, 'lastInHost': True, 'afterLastArticleH2': True, 'beforeFooter': True}"
+  },
+  {
+   "step": "hamedina desktop: width, heading face, press targets, no sideways scroll, one h1",
+   "ok": true,
+   "detail": "{'w': 760, 'h2font': 'Rubik 24px', 'btnH': 44, 'inpH': 44, 'pageW': 1280, 'h1s': 1}"
+  },
+  {
+   "step": "hamedina desktop: no discussion yet, so it says so and invents nothing",
+   "ok": true,
+   "detail": "עוד אין שאלות. שאלו ראשונים."
+  },
+  {
+   "step": "hamedina desktop: 'לשאול' opens the forum's sheet with the question and the place line",
+   "ok": true,
+   "detail": "תחדשות עירונית השקעות נדל\"ן בחו\"ל כללי הכותרת, במשפט אחד פרטים (לא חובה) עיר (לא חובה) השאלה תופיע גם בדף של כיכר המדינה לא לקשר אתר פרסום ההודעה הודעה ראשונה עולה אחרי בדיקה קצרה. מהשנייה והלאה, מיד."
+  },
+  {
+   "step": "hamedina desktop: nothing was sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "list filtered by sde-dov: the chip, the canonical stays /forum/, the title has no place name",
+   "ok": true,
+   "detail": "{'chip': 'שדה דב\\n✕', 'canon': 'https://nad-lan.co.il/forum/', 'title': 'פורום נדל\"ן: שאלות ותשובות עם בעלי מקצוע', 'robots': 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}"
+  },
+  {
+   "step": "list filtered by hamedina: the chip, the canonical stays /forum/, the title has no place name",
+   "ok": true,
+   "detail": "{'chip': 'כיכר המדינה\\n✕', 'canon': 'https://nad-lan.co.il/forum/', 'title': 'פורום נדל\"ן: שאלות ותשובות עם בעלי מקצוע', 'robots': 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}"
+  },
+  {
+   "step": "control: another project page has no block",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}
