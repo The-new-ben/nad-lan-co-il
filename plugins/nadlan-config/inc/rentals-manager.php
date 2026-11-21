@@ -46,6 +46,15 @@ if ( ! function_exists( 'nadlan_rm_v2' ) ) {
 		if ( ! function_exists( 'nlrm_render_page' ) ) { return false; }
 		$mode = (string) get_option( 'nadlan_rentals_v2', 'admin' );
 		if ( '1' === $mode ) { return true; }
+		if ( 'new' === $mode ) {
+			/* 1.72.734: new sign-ups get version 2; a landlord who already keeps properties in version 1 keeps what he has;
+			   a visitor sees the public page with the 3D opening */
+			if ( current_user_can( 'manage_options' ) ) { return true; }
+			if ( isset( $_GET['l'] ) && ! is_user_logged_in() && did_action( 'template_redirect' ) ) { return true; } // phpcs:ignore
+			if ( ! is_user_logged_in() ) { return false; }
+			if ( in_array( get_current_user_id(), array_map( 'intval', (array) get_option( 'nadlan_rentals_v2_pilot', array() ) ), true ) ) { return true; }
+			return ! ( function_exists( 'nadlan_rm_my_props' ) && nadlan_rm_my_props() );
+		}
 		if ( 'admin' === $mode ) {
 			if ( current_user_can( 'manage_options' ) ) { return true; }
 			/* a personal link (?l=1#t=...): the link page itself; the token decides what it may see */
@@ -472,6 +481,11 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_my_rentals'; return $
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_my_rentals' ) ) { return; }
 	if ( ! nadlan_rm_on() ) { wp_safe_redirect( home_url( '/' ) ); exit; }
+	/* the tour of the example portfolio (HAD-795, 1.72.734): the app's real screens on the sample data, for anyone; nothing is saved */
+	if ( isset( $_GET['sample'] ) && function_exists( 'nlrm_render_page' ) && function_exists( 'nlrm_lang' ) ) { // phpcs:ignore
+		nlrm_render_page( 'sample', nlrm_lang() );
+		exit;
+	}
 	if ( nadlan_rm_v2() ) {
 		nlrm_maybe_install();
 		nlrm_render_page( is_user_logged_in() ? 'app' : 'landing', nlrm_lang() );
@@ -603,18 +617,23 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 	h1:empty{display:none}
 	</style>
 	<?php if ( $landing ) : ?>
+	<?php if ( ! function_exists( 'nadlan_rm_portfolio_stage' ) && is_readable( __DIR__ . '/rentals/portfolio.php' ) ) { include_once __DIR__ . '/rentals/portfolio.php'; } ?>
 	<header class="nlrm-hero">
+		<?php if ( function_exists( 'nadlan_rm_lockup' ) ) { echo nadlan_rm_lockup( $en ? 'en' : 'he' ); } // phpcs:ignore ?>
 		<p class="nlrm-kicker"><?php echo $en ? 'Rental management · free for landlords' : 'ניהול השכרות · חינם לבעלי דירות'; ?></p>
 		<h1><?php echo $en ? 'Every apartment you rent out: on the map, inside the building, fully in control' : 'כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה'; ?></h1>
+		<?php if ( function_exists( 'nadlan_rm_one_line' ) ) { echo '<p class="nlrm-one">' . esc_html( nadlan_rm_one_line( $en ? 'en' : 'he' ) ) . '</p>'; } ob_start(); ?>
 		<p class="sub"><?php echo $en ? 'Add a property, mark your apartments on a 3D model of the building, and manage everything per apartment: tenant, rent tracking, lease and tax reminders, documents and maintenance. No spreadsheets, no fees.' : 'מוסיפים נכס, מסמנים את הדירות שלכם על מודל תלת-ממדי של הבניין, ומנהלים הכל מדירה אחת: שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי אקסל ובלי עמלות.'; ?></p>
+		<?php $nlrm_sub = (string) ob_get_clean(); if ( ! function_exists( 'nadlan_rm_one_line' ) ) { echo $nlrm_sub; $nlrm_sub = ''; } // phpcs:ignore ?>
 	</header>
 	<?php
 	/* the opening (HAD-795, 20.11.2026): the example landlord's portfolio on a 3D map, right under the answer paragraph.
 	   The file is included here so that a rollback which removes it simply prints nothing. */
 	if ( ! function_exists( 'nadlan_rm_portfolio_stage' ) && is_readable( __DIR__ . '/rentals/portfolio.php' ) ) { include_once __DIR__ . '/rentals/portfolio.php'; }
-	if ( function_exists( 'nadlan_rm_portfolio_stage' ) ) { nadlan_rm_portfolio_stage( $en ? 'en' : 'he', is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); }
+	if ( function_exists( 'nadlan_rm_portfolio_stage' ) ) { nadlan_rm_portfolio_stage( $en ? 'en' : 'he', is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ), home_url( '/my-rentals/?sample=1' . ( $en ? '&lang=en' : '' ) ) ); }
 	?>
 	<header class="nlrm-hero nlrm-hero--after">
+		<?php echo $nlrm_sub; // the page's own paragraph, word for word, under the stage. phpcs:ignore ?>
 		<div class="nlrm-ctas">
 			<a class="nlrm-cta nlrm-cta--go" href="<?php echo esc_url( is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); ?>"><?php echo $en ? 'Start managing, free' : 'מתחילים לנהל, חינם'; ?></a>
 		</div>

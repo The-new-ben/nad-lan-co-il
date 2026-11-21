@@ -19,7 +19,7 @@
 		return;
 	}
 	var me = cfg.me || {};
-	var base = { lang: cfg.lang, strings: strings, msg: msg, mapbox: cfg.mapbox, urls: cfg.urls, langUrls: cfg.langUrls, me: me, assets: cfg.assets, ver: cfg.ver };
+	var base = { lang: cfg.lang, strings: strings, msg: msg, mapbox: cfg.mapbox, urls: cfg.urls, langUrls: cfg.langUrls, me: me, assets: cfg.assets, ver: cfg.ver, brand: cfg.brand || "", leaseMaker: !!cfg.leaseMaker };
 	if (cfg.mode === "app") {
 		var adapter = N.RestAdapter(cfg.rest, cfg.nonce);
 		base.adapter = adapter;
@@ -28,10 +28,25 @@
 		base.saveMe = function (m) {
 			return fetch(cfg.rest + "/rm/me", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-WP-Nonce": cfg.nonce }, body: JSON.stringify({ display: m.display, phone: m.phone, pay: m.pay, notify: m.notify !== false, lang: N.lang === "he" ? "he" : "en" }) }).then(function (r) { if (!r.ok) { throw new Error(N.t("err_generic")); } return r.json(); });
 		};
+		/* buyer events (names agreed with HAD-791): a landlord's first visit with nothing in his account, and his first property */
+		var track = function (n) { try { if (window.nlTrack) { window.nlTrack(n, {}); } } catch (e) { /* the tracker never breaks the app */ } };
+		var save0 = adapter.save;
+		adapter.save = function (entity, data) {
+			var first = entity === "property" && !(data && data.id) && N.store && N.store.d && !(N.store.d.properties || []).length;
+			return save0.apply(adapter, arguments).then(function (r) { if (first) { track("rent_property_add"); } return r; });
+		};
+		var seen = 0, wait = window.setInterval(function () {
+			if (N.store && N.store.d && N.store.d.properties) {
+				window.clearInterval(wait);
+				try { if (!N.store.d.demo && !N.store.d.properties.length && !window.localStorage.getItem("nlrm-signup")) { window.localStorage.setItem("nlrm-signup", "1"); track("rent_signup"); } } catch (e) { /* private mode */ }
+			} else if (++seen > 100) { window.clearInterval(wait); }
+		}, 200);
 		adapter.erase = function () { return fetch(cfg.rest + "/rm/erase", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-WP-Nonce": cfg.nonce }, body: JSON.stringify({ confirm: "ERASE" }) }); };
 		N.mount(root, base);
 	} else {
 		base.adapter = N.DemoAdapter(cfg.lang || "he");
+		/* the sample shows the same day screen a landlord gets (the tour of /my-rentals/, 1.72.734) */
+		if (N.mountToday && cfg.today2) { N.mountToday(root, { urls: cfg.urls, today2: true }); }
 		base.inPlaceLang = true;
 		base.me = { display: cfg.lang === "en" ? "Dan Cohen (example)" : "דני כהן (דוגמה)", phone: "", pay: {} };
 		N.mount(root, base);

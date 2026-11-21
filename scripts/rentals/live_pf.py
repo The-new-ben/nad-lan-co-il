@@ -46,12 +46,12 @@ with sync_playwright() as p:
             pg.wait_for_selector("#nlpf .nlpf-chip", timeout=20000)
             pg.wait_for_timeout(1200)
             s = pg.evaluate("""() => { const r = document.getElementById('nlpf'), q = x => [...r.querySelectorAll(x)], g = x => document.querySelector(x), cs = e => getComputedStyle(e);
-              const h1 = g('.nlrm-hero h1').getBoundingClientRect(), sub = g('.nlrm-hero .sub').getBoundingClientRect(), st = r.getBoundingClientRect();
+              const h1 = g('.nlrm-hero h1').getBoundingClientRect(), sub = (g('.nlrm-hero .nlrm-one') || g('.nlrm-hero .sub')).getBoundingClientRect(), st = r.getBoundingClientRect();
               return { admin: !!g('#wpadminbar'), cards: q('.nlpf-card').length, pics: q('.nlpf-card img').filter(i => i.complete && i.naturalWidth > 0).length, order: h1.top < sub.top && sub.bottom <= st.top + 1, h1s: document.querySelectorAll('h1').length,
                 h1Top: Math.round(h1.top), subBottom: Math.round(sub.bottom), stTop: Math.round(st.top), stH: Math.round(st.height), stL: Math.round(st.left), stR: Math.round(innerWidth - st.right), H: innerHeight, overflowX: document.scrollingElement.scrollWidth - innerWidth,
                 h1Font: cs(g('.nlrm-hero h1')).fontFamily.slice(0, 9), h1W: cs(g('.nlrm-hero h1')).fontWeight, cta: [cs(g('.nlrm-hero--after .nlrm-cta--go')).color, cs(g('.nlrm-hero--after .nlrm-cta--go')).backgroundColor],
                 chipBg: cs(r.querySelector('.nlpf-chip:not(.is-on)')).backgroundColor, titleCol: cs(r.querySelector('.nlpf-title')).color, ver: (g('script[src*="portfolio/pf.js"]') || {}).src.split('v=')[1] }; }""")
-            check("%s a visitor (not signed in) gets the stage of version %s: 8 pictures in the tray at once" % (tag, s["ver"]), not s["admin"] and s["cards"] == 8 and s["pics"] == 8, s)
+            check("%s a visitor (not signed in) gets the stage of version %s: 9 pictures in the tray at once" % (tag, s["ver"]), not s["admin"] and s["cards"] == 9 and s["pics"] == 9, s)
             check("%s the page order: one h1, the answer paragraph, then the stage; the first screen holds all three (h1 at %d, paragraph ends %d, stage from %d, screen %d); no sideways overflow" % (tag, s["h1Top"], s["subBottom"], s["stTop"], s["H"]),
                   s["order"] and s["h1s"] == 1 and s["subBottom"] < s["H"] and s["stTop"] < s["H"] - 120 and s["overflowX"] <= 0, (s["order"], s["h1s"], s["overflowX"]))
             check("%s the look holds against the theme: h1 in Assistant 800, the main button white on ink, the stage's chips white, its title white" % tag,
@@ -65,7 +65,7 @@ with sync_playwright() as p:
             ms = pg.evaluate("Date.now()") - t0
             settle(pg, 25000)
             s = pg.evaluate("""() => { const r = document.getElementById('nlpf'), m = window.__nlpfMap; return { proj: m.getProjection().name, n: [...r.querySelectorAll('.nlpf-grp b')].reduce((a, e) => a + (+e.textContent), 0) + r.querySelectorAll('.nlpf-pin').length, gl: mapboxgl.version, stH: Math.round(r.getBoundingClientRect().height) }; }""")
-            check("%s the globe is drawn about %.1f s after the page starts; its marks count all 8 properties" % (tag, ms / 1000.0), s["proj"] == "globe" and s["n"] == 8, s)
+            check("%s the globe is drawn about %.1f s after the page starts; its marks count all 9 apartments" % (tag, ms / 1000.0), s["proj"] == "globe" and s["n"] == 9, s)
             pg.screenshot(path=str(OUT / ("%s-%d-1-first-screen.png" % (lang, w))))
             # the wheel / the page scroll is not captured
             if not phone:
@@ -82,10 +82,10 @@ with sync_playwright() as p:
                 check("%s phone, the stage at the top of the screen: the filter, the sentence button and the tray (ends at %s) are above the site's floating buttons (%s floating, the first at %s)" % (tag, tray["trayBottom"], tray["floats"], tray["floatsTop"]),
                       not [x for x in c if not x["ok"]] and (tray["floatsTop"] is None or tray["trayBottom"] <= tray["floatsTop"] + 1), [x for x in c if not x["ok"]][:2])
             # the property that needs care
-            pg.evaluate("document.querySelector('#nlpf .nlpf-say [data-pick]').click()")
+            pg.evaluate("document.querySelector(\"#nlpf .nlpf-card[data-id='u31']\").click()")
             pg.wait_for_timeout(3800); settle(pg, 20000)
             s = pg.evaluate("""() => { const r = document.getElementById('nlpf'), m = window.__nlpfMap, pin = r.querySelector('.nlpf-pin.is-sel'); return { say: r.querySelector('.nlpf-say').innerText.replace(/\\n/g, ' | '), zoom: +m.getZoom().toFixed(1), pitch: Math.round(m.getPitch()), pin: pin ? pin.className : '', own: m.queryRenderedFeatures({ layers: ['nlpf-own'] }).length, floors: m.queryRenderedFeatures({ layers: ['nlpf-floors'] }).length }; }""")
-            check("%s 'see it' flies to the Eilat building: the map is tilted (%s degrees, zoom %s), the building's floors are drawn in 3D, the example floor is lit, the mark pulses" % (tag, s["pitch"], s["zoom"]), s["zoom"] > 15.5 and s["pitch"] > 50 and s["own"] >= 1 and s["floors"] >= 1 and "is-care" in s["pin"], s)
+            check("%s a press on the Eilat card flies to its building: the map is tilted (%s degrees, zoom %s), the building's floors are drawn in 3D, the example floor is lit" % (tag, s["pitch"], s["zoom"]), s["zoom"] > 15.5 and s["pitch"] > 50 and s["own"] >= 1 and s["floors"] >= 1 and "is-sel" in s["pin"], s)
             pg.wait_for_timeout(1500)
             pg.screenshot(path=str(OUT / ("%s-%d-3-building-3d.png" % (lang, w))))
             pg.click("#nlpf .nlpf-say [data-open]")
@@ -95,8 +95,8 @@ with sync_playwright() as p:
               return { tenant: [...pn.querySelectorAll('.nlpf-fact b')].map(e => e.textContent), parts: pn.querySelectorAll('.nlpf-part').length, partPics: [...pn.querySelectorAll('.nlpf-part img')].filter(i => i.complete && i.naturalWidth > 0).length, care: [...pn.querySelectorAll('.nlpf-part.is-care em')].map(e => e.textContent),
                 pic: pn.querySelector('.nlpf-pic').naturalWidth, ex: pn.querySelector('.nlpf-ex').textContent, note: pn.querySelector('.nlpf-note').textContent, scrolls: pn.scrollHeight > pn.clientHeight + 1, top: Math.round(r.getBoundingClientRect().top),
                 links: [...r.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(x => /wa\\.me|^tel:|^mailto:/i.test(x)), nums: txt.match(/(?:\\+?972|0)5\\d[\\s-]?\\d{3}[\\s-]?\\d{4}/g) || [], mails: txt.match(/[\\w.]+@[\\w.]+/g) || [] }; }""")
-            check("%s the apartment's card: the building's picture, rent, a tenant marked %s, 5 parts as pictures with the air conditioner asking for care, the example tag and note; no inner scroll" % (tag, MARK[lang]),
-                  s["pic"] > 0 and s["parts"] == 5 and s["partPics"] == 5 and len(s["care"]) == 1 and MARK[lang] in s["tenant"][1] and len(s["ex"]) > 3 and len(s["note"]) > 6 and not s["scrolls"], s)
+            check("%s the apartment's card: the building's picture, rent, a tenant marked %s, 5 parts as pictures, the example tag and note; no inner scroll" % (tag, MARK[lang]),
+                  s["pic"] > 0 and s["parts"] == 5 and s["partPics"] == 5 and len(s["care"]) == 0 and MARK[lang] in s["tenant"][1] and len(s["ex"]) > 3 and len(s["note"]) > 6 and not s["scrolls"], s)
             check("%s no chat, call or mail link and no phone-shaped number or address anywhere in the stage" % tag, not s["links"] and not s["nums"] and not s["mails"], (s["links"], s["nums"], s["mails"]))
             if phone:
                 bt = pg.evaluate(TOPMOST, "#nlpf .nlpf-panel button, #nlpf .nlpf-panel a")
@@ -104,7 +104,7 @@ with sync_playwright() as p:
             pg.screenshot(path=str(OUT / ("%s-%d-4-apartment-card.png" % (lang, w))))
             pg.click("#nlpf [data-back]"); pg.wait_for_timeout(500)
             # the Kikar tower
-            pg.evaluate("document.querySelector(\"#nlpf .nlpf-card[data-id='k2']\").click()")
+            pg.evaluate("document.querySelector(\"#nlpf .nlpf-card[data-id='u21']\").click()")
             pg.wait_for_timeout(3800); settle(pg, 20000)
             pg.screenshot(path=str(OUT / ("%s-%d-5-kikar-3d.png" % (lang, w))))
             pg.click("#nlpf .nlpf-say [data-open]")
@@ -124,7 +124,7 @@ with sync_playwright() as p:
             pg.click("#nlpf .nlpf-chip--care"); pg.wait_for_timeout(300)
             n1 = pg.evaluate("document.querySelectorAll('#nlpf .nlpf-card').length")
             pg.click("#nlpf .nlpf-chip--all"); pg.wait_for_timeout(300)
-            check("%s the filter works (needs care: 1 card; all: 8)" % tag, n1 == 1 and pg.evaluate("document.querySelectorAll('#nlpf .nlpf-card').length") == 8, n1)
+            check("%s the filter works (urgent: 1 card; all: 9)" % tag, n1 == 1 and pg.evaluate("document.querySelectorAll('#nlpf .nlpf-card').length") == 9, n1)
             check("%s nothing opened a tab or left the page; no page errors" % tag, not popups and "/my-rentals/" in pg.url and not errs, (popups[:2], errs[:3]))
             ctx.close()
     b.close()

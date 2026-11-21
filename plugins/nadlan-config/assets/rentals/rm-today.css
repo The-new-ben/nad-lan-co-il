@@ -243,7 +243,7 @@ button.np2-part { cursor: pointer; }
 .nt2.is-short .nt2-app > * { flex: none; }
 .nt2.is-short .nt2-recent, .nt2.is-short .nt2-sum { flex: none; min-height: 0; overflow: visible; }
 .nt2.is-short .nt2-next { min-height: 0; }
-.nt2.is-short .nt2-nav { position: sticky; bottom: 0; z-index: 3; }
+.nt2.is-short .nt2-nav { position: sticky; bottom: 0; z-index: 3; margin-top: auto; }
 .nt2.is-short .nt2-sheet { max-height: 100%; }
 /* the same rules as the two height queries above, by the height that is left after the strips */
 .nt2.is-h700 .nt2-tb { height: 200px; } .nt2.is-h700 .nt2-tb-l { width: 200px; }

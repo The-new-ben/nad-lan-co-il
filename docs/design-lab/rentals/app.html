@@ -43,7 +43,7 @@
 		if (q.get("empty")) { var b0 = ad.boot; ad.boot = function () { return b0().then(function (d) { ["properties", "units", "contacts", "leases", "ledger", "tickets", "docs", "events"].forEach(function (k) { d[k] = []; }); d.demo = false; return d; }); }; }
 		var root = document.getElementById("app");
 		NLRM.mountToday(root, { urls: { designer: "/tour/designer/" }, today2: q.get("slice") === "1" });
-		NLRM.mount(root, { lang: lang, strings: strings, msg: msg, adapter: ad, inPlaceLang: true, assets: "../../../plugins/nadlan-config/assets/rentals/", me: { display: lang === "he" ? "דני כהן (דוגמה)" : "Dan Cohen (example)", phone: "", pay: {} }, urls: { pros: "https://nad-lan.co.il/professionals/", wizard: "https://nad-lan.co.il/post-listing/" } });
+		NLRM.mount(root, { lang: lang, strings: strings, msg: msg, adapter: ad, inPlaceLang: true, leaseMaker: true, assets: "../../../plugins/nadlan-config/assets/rentals/", me: { display: lang === "he" ? "דני כהן (דוגמה)" : "Dan Cohen (example)", phone: "", pay: {} }, urls: { pros: "https://nad-lan.co.il/professionals/", wizard: "https://nad-lan.co.il/post-listing/" } });
 	});
 })();
 </script>

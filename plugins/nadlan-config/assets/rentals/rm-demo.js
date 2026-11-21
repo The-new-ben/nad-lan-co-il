@@ -17,8 +17,12 @@
 		var first = function (iso) { return iso.slice(0, 8) + "01"; };
 		var props = [
 			{ id: 1, title: "", address: en ? "78 Arlozorov St" : "ארלוזורוב 78", city: en ? "Tel Aviv-Yafo" : "תל אביב-יפו", lat: 32.0866, lng: 34.7807, floors: 5, units_per_floor: 3, meta: { year_built: 1972, elevator: true, shelter: "mamad", parking: false, solar: true, orientation: 0 } },
-			{ id: 2, title: "", address: en ? "12 Jabotinsky Rd" : "ז'בוטינסקי 12", city: en ? "Ramat Gan" : "רמת גן", lat: 32.0839, lng: 34.8031, floors: 8, units_per_floor: 4, meta: { year_built: 2009, elevator: true, shelter: "mamad", parking: true, solar: true, orientation: 15 } },
-			{ id: 3, title: "", address: en ? "30 HaNevi'im St" : "הנביאים 30", city: en ? "Haifa" : "חיפה", lat: 32.8136, lng: 34.9958, floors: 4, units_per_floor: 2, meta: { year_built: 1958, elevator: false, shelter: "shared", parking: false, solar: true, orientation: -20 } }
+			{ id: 2, title: "", address: en ? "Kikar HaMedina" : "כיכר המדינה", city: en ? "Tel Aviv-Yafo" : "תל אביב-יפו", lat: 32.08665, lng: 34.79010, floors: 40, units_per_floor: 4, meta: { elevator: true, shelter: "mamad", parking: true, orientation: 15 } },
+			{ id: 3, title: "", address: en ? "5 Shahamon" : "שחמון 5", city: en ? "Eilat" : "אילת", lat: 29.5500, lng: 34.9370, floors: 3, units_per_floor: 2, meta: { year_built: 2004, elevator: false, shelter: "mamad", parking: true, solar: true, orientation: -20 } },
+			{ id: 4, title: "", address: en ? "12 Florentin St" : "פלורנטין 12", city: en ? "Tel Aviv-Yafo" : "תל אביב-יפו", lat: 32.0563, lng: 34.7702, floors: 3, units_per_floor: 2, meta: { year_built: 1936, elevator: false, shelter: "shared", parking: false, orientation: 0 } },
+			{ id: 5, title: "", address: en ? "Limassol, by the sea" : "לימסול, מול הים", city: en ? "Cyprus" : "קפריסין", lat: 34.6850, lng: 33.0450, floors: 6, units_per_floor: 2, meta: { orientation: 0 } },
+			{ id: 6, title: "", address: en ? "Athens, Kolonaki" : "אתונה, קולונאקי", city: en ? "Greece" : "יוון", lat: 37.9790, lng: 23.7430, floors: 6, units_per_floor: 2, meta: { orientation: 0 } },
+			{ id: 7, title: "", address: en ? "Manhattan, 38th Street" : "מנהטן, רחוב 38", city: en ? "New York" : "ניו יורק", lat: 40.7510, lng: -73.9840, floors: 12, units_per_floor: 4, meta: { orientation: 0 } }
 		];
 		var assets = function (extra) {
 			return [
@@ -31,9 +35,13 @@
 		var units = [
 			{ id: 11, property_id: 1, label: en ? "Apt 7" : "דירה 7", floor: 3, pos: 0, dir: "west", rooms: 3, sqm: 72, meta: { assets: assets(), furnished: false, parking: false, storage: true } },
 			{ id: 12, property_id: 1, label: en ? "Apt 14" : "דירה 14", floor: 5, pos: 1, dir: "south", rooms: 4, sqm: 95, meta: { assets: assets([{ id: "a5", kind: "dishwasher", label: en ? "Dishwasher" : "מדיח כלים", brand: "Bosch", model: "SMS4", installed: "2023-02", warranty_until: "2026-12-31", last_service: "" }]), furnished: true } },
-			{ id: 21, property_id: 2, label: en ? "Apt 7" : "דירה 7", floor: 2, pos: 2, dir: "east", rooms: 3.5, sqm: 80, meta: { assets: assets(), parking: true } },
-			{ id: 22, property_id: 2, label: en ? "Apt 21" : "דירה 21", floor: 6, pos: 0, dir: "north", rooms: 4, sqm: 100, meta: { assets: assets(), asking_rent: 7200, available_from: N.addDays(T, 14), parking: true, storage: true } },
-			{ id: 31, property_id: 3, label: en ? "Apt 3" : "דירה 3", floor: 2, pos: 1, dir: "west", rooms: 2.5, sqm: 60, meta: { assets: assets(), furnished: true } }
+			{ id: 21, property_id: 2, label: en ? "Example apartment A" : "דירה לדוגמה א", floor: 20, pos: 2, dir: "east", rooms: 4, sqm: 121, meta: { assets: assets(), parking: true } },
+			{ id: 22, property_id: 2, label: en ? "Example apartment B" : "דירה לדוגמה ב", floor: 30, pos: 0, dir: "north", rooms: 5, sqm: 148, meta: { assets: assets(), asking_rent: 21500, available_from: N.addDays(T, 14), parking: true, storage: true } },
+			{ id: 31, property_id: 3, label: en ? "Apt 5" : "דירה 5", floor: 2, pos: 1, dir: "west", rooms: 3, sqm: 80, meta: { assets: assets(), furnished: true } },
+			{ id: 41, property_id: 4, label: en ? "Apt 3" : "דירה 3", floor: 2, pos: 0, dir: "south", rooms: 2.5, sqm: 58, meta: { assets: assets() } },
+			{ id: 51, property_id: 5, label: en ? "Seafront apartment" : "דירה מול הים", floor: 4, pos: 0, dir: "south", rooms: 3, sqm: 95, meta: { assets: assets() } },
+			{ id: 61, property_id: 6, label: en ? "Kolonaki apartment" : "דירה בקולונאקי", floor: 5, pos: 0, dir: "east", rooms: 2, sqm: 64, meta: { assets: assets() } },
+			{ id: 71, property_id: 7, label: en ? "38th Street apartment" : "דירה ברחוב 38", floor: 8, pos: 0, dir: "north", rooms: 2, sqm: 70, meta: { assets: assets() } }
 		];
 		var C = function (o) { return Object.assign({ email: "", idno: "", notes: "", tags: "", meta: {}, stage: "", created_at: now, updated_at: now }, o); };
 		var contacts = [
@@ -46,10 +54,15 @@
 			C({ id: 107, kind: "prospect", stage: "viewing", name: "Michael R." + X, lang: "en", meta: { unit_id: 22, viewing_at: N.addDays(T, 2) + " 18:30" } }),
 			C({ id: 108, kind: "prospect", stage: "new", name: (en ? "Yael B." : "יעל ב.") + X, lang: "he", meta: { unit_id: 22 } }),
 			C({ id: 109, kind: "vendor", name: (en ? "Yossi Plumbing" : "יוסי אינסטלציה") + X, lang: "he", tags: "plumbing" }),
-			C({ id: 110, kind: "vendor", name: (en ? "Or Electric" : "אור חשמל") + X, lang: "he", tags: "electric" })
+			C({ id: 110, kind: "vendor", name: (en ? "Or Electric" : "אור חשמל") + X, lang: "he", tags: "electric" }),
+			C({ id: 111, kind: "tenant", name: (en ? "Noa Barak" : "נועה ברק") + X, lang: "he" }),
+			C({ id: 112, kind: "tenant", name: "Andreas P." + X, lang: "en" }),
+			C({ id: 113, kind: "tenant", name: "Eleni K." + X, lang: "en" }),
+			C({ id: 114, kind: "tenant", name: "Sarah Klein" + X, lang: "en" })
 		];
 		var L = function (o) { return Object.assign({ status: "active", option_until: null, pay_day: 1, linkage: { mode: "none" }, securities: {}, parties: {}, terms: {}, signing: {}, created_at: now, updated_at: now }, o); };
 		var s1 = first(N.addMonths(T, -14)), s2 = N.addMonths(T, -8), s3 = first(N.addMonths(T, -20)), s5 = first(N.addMonths(T, -5));
+		var s4 = first(N.addMonths(T, -4)), s7 = first(N.addMonths(T, -7)), s9 = first(N.addMonths(T, -9)), s11 = first(N.addMonths(T, -11));
 		var payDay2 = Math.max(1, Math.min(28, N.parse(N.addDays(T, -3)).getDate()));
 		var leases = [
 			L({ id: 201, unit_id: 11, start_date: s1, end_date: N.addDays(N.addMonths(s1, 24), -1), option_until: N.addDays(N.addMonths(s1, 24), -61), rent: 7800, pay_day: 1,
@@ -58,23 +71,42 @@
 				signing: { parties: [{ name: (en ? "The Levi family" : "משפחת לוי") + X, role: "tenant", at: s1 + " 10:12:00", text_sha256: "sample" }] } }),
 			L({ id: 202, unit_id: 12, start_date: N.addDays(N.addMonths(T, -10), 0), end_date: N.addDays(T, 75), rent: 6400, pay_day: payDay2,
 				securities: { cheque: 19200, deposit: 0 }, parties: { tenants: [102] }, terms: { method: "transfer", option_years: 0, shared_docs: [] } }),
-			L({ id: 203, unit_id: 21, start_date: s3, end_date: N.addDays(N.addMonths(s3, 24), -1), rent: 5900, pay_day: 10,
-				linkage: { mode: "cpi", base_date: s3, every: 12, pct: 50, floor: true }, securities: { deposit: 21000, bank: true },
+			L({ id: 203, unit_id: 21, start_date: s3, end_date: N.addDays(N.addMonths(s3, 24), -1), rent: 17800, pay_day: 10,
+				linkage: { mode: "cpi", base_date: s3, every: 12, pct: 50, floor: true }, securities: { deposit: 53400, bank: true },
 				parties: { tenants: [103] }, terms: { method: "transfer", shared_docs: [] } }),
-			L({ id: 204, unit_id: 31, start_date: s5, end_date: N.addDays(N.addMonths(s5, 12), -1), rent: 4300, pay_day: 5,
-				securities: { cheque: 12900, deposit: 0 }, parties: { tenants: [104] }, terms: { method: "bit", shared_docs: [303] } })
+			L({ id: 204, unit_id: 31, start_date: s5, end_date: N.addDays(N.addMonths(s5, 12), -1), rent: 4900, pay_day: 5,
+				securities: { cheque: 14700, deposit: 0 }, parties: { tenants: [104] }, terms: { method: "bit", shared_docs: [303] } }),
+			L({ id: 205, unit_id: 41, start_date: s7, end_date: N.addDays(N.addMonths(s7, 12), -1), rent: 5900, pay_day: 1,
+				securities: { cheque: 17700, deposit: 0 }, parties: { tenants: [111] }, terms: { method: "transfer", shared_docs: [] } }),
+			L({ id: 206, unit_id: 51, start_date: s9, end_date: N.addDays(N.addMonths(s9, 24), -1), rent: 5800, pay_day: 1,
+				securities: { deposit: 11600 }, parties: { tenants: [112] }, terms: { method: "transfer", shared_docs: [] } }),
+			L({ id: 207, unit_id: 61, start_date: s4, end_date: N.addDays(N.addMonths(s4, 12), -1), rent: 4700, pay_day: 1,
+				securities: { deposit: 9400 }, parties: { tenants: [113] }, terms: { method: "transfer", shared_docs: [] } }),
+			L({ id: 208, unit_id: 71, start_date: s11, end_date: N.addDays(N.addMonths(s11, 12), -1), rent: 15900, pay_day: 1,
+				securities: { deposit: 31800 }, parties: { tenants: [114] }, terms: { method: "transfer", shared_docs: [] } })
 		];
 		var ledger = [], add = function (o) { ledger.push(Object.assign({ id: ++id, property_id: 0, unit_id: 0, lease_id: 0, kind: "charge", category: "rent", amount: 0, due_date: null, paid_date: null, method: "", ref: "", status: "open", applies_to: 0, note: "", doc_id: 0, created_at: now, updated_at: now }, o)); return ledger[ledger.length - 1]; };
 		id = 1000;
 		var curM = N.ym(0);
+		/* the rent after the first linked year, by the SAME sample index the adapter's cpi() below gives the index-update
+		   sheet (factor 1.0025 a month from the base date to the update date, the index shown on a base of 100 with one
+		   decimal), so "rent today" and "rent from <date>" agree */
+		var linked = function (l) {
+			var k = l.linkage, upd = N.addMonths(k.base_date || l.start_date, Math.max(1, +k.every || 12));
+			var months = Math.max(0, (N.parse(upd) - N.parse(k.base_date || l.start_date)) / (30.44 * 86400000));
+			var ai = Math.round(100 * Math.pow(1.0025, months) * 10) / 10, pct = Math.max(0, Math.min(100, k.pct == null ? 100 : +k.pct)) / 100;
+			var nw = l.rent * (1 + pct * (ai / 100 - 1));
+			if (k.floor == null || k.floor) { nw = Math.max(l.rent, nw); }
+			return { amount: Math.round(nw), from: upd.slice(0, 7), pct: Math.round((ai - 100) * pct * 10) / 10 };
+		};
 		leases.forEach(function (l) {
 			var u = units.find(function (x) { return x.id === l.unit_id; });
-			var m = l.start_date.slice(0, 7), endM = N.ym(0), k = 0;
+			var m = l.start_date.slice(0, 7), endM = N.ym(0), k = 0, lk = l.linkage.mode === "cpi" ? linked(l) : null;
 			while (m <= endM && k++ < 40) {
 				var due = m + "-" + String(l.pay_day).padStart(2, "0");
 				var amt = l.rent;
-				if (l.linkage.mode === "cpi" && m >= N.addMonths(l.start_date, 12).slice(0, 7)) { amt = Math.round(l.rent * (1 + (l.linkage.pct / 100) * 0.031)); }
-				var ch = add({ property_id: u.property_id, unit_id: u.id, lease_id: l.id, kind: "charge", amount: amt * 100, due_date: due, auto_key: "rent:" + l.id + ":" + m, note: amt !== l.rent ? (en ? "CPI linkage +3.1%" : "הצמדה למדד +3.1%") : "" });
+				if (lk && m >= lk.from) { amt = lk.amount; }
+				var ch = add({ property_id: u.property_id, unit_id: u.id, lease_id: l.id, kind: "charge", amount: amt * 100, due_date: due, auto_key: "rent:" + l.id + ":" + m, note: amt !== l.rent ? (en ? "CPI linkage +" + lk.pct + "%" : "הצמדה למדד +" + lk.pct + "%") : "" });
 				var paid = true;
 				if (l.id === 202 && m === curM) { paid = false; }
 				if (l.id === 203 && m >= N.ym(-1)) { paid = false; }
@@ -91,7 +123,7 @@
 			if (l.terms.method === "cheque") {
 				for (var j = 1; j <= 3; j++) {
 					var fm = N.ym(j), fdue = fm + "-" + String(l.pay_day).padStart(2, "0");
-					add({ property_id: u.property_id, unit_id: u.id, lease_id: l.id, kind: "payment", amount: Math.round(l.rent * 1.031) * 100, due_date: fdue, method: "cheque", ref: String(400140 + j), status: "pending" });
+					add({ property_id: u.property_id, unit_id: u.id, lease_id: l.id, kind: "payment", amount: (lk && fm >= lk.from ? lk.amount : l.rent) * 100, due_date: fdue, method: "cheque", ref: String(400140 + j), status: "pending" });
 				}
 			}
 		});
@@ -99,7 +131,7 @@
 		var tom = ledger.find(function (r) { return r.lease_id === 201 && r.kind === "payment" && r.status === "pending"; });
 		if (tom) { tom.due_date = N.addDays(T, 1); }
 		for (var e = 0; e < 3; e++) {
-			add({ property_id: 2, unit_id: 22, kind: "expense", category: "arnona", amount: 52000, paid_date: N.addDays(first(N.addMonths(T, -e)), 4), status: "paid", note: en ? "Municipal tax while vacant" : "ארנונה בזמן שהדירה פנויה" });
+			add({ property_id: 2, unit_id: 22, kind: "expense", category: "arnona", amount: 145000, paid_date: N.addDays(first(N.addMonths(T, -e)), 4), status: "paid", note: en ? "Municipal tax while vacant" : "ארנונה בזמן שהדירה פנויה" });
 		}
 		add({ property_id: 1, unit_id: 11, kind: "expense", category: "repair", amount: 180000, paid_date: N.addMonths(T, -2), status: "paid", note: en ? "Bedroom painting" : "צביעת חדר שינה" });
 		add({ property_id: 1, kind: "expense", category: "insurance", amount: 110000, paid_date: N.addMonths(T, -4), status: "paid", note: en ? "Building insurance, yearly" : "ביטוח מבנה, שנתי" });
@@ -109,7 +141,7 @@
 			{ id: 501, property_id: 2, unit_id: 21, title: en ? "Water heater does not heat" : "הדוד לא מחמם מים", body: en ? "No hot water since yesterday evening." : "אין מים חמים מאתמול בערב.", category: "boiler", urgency: "urgent", status: "new", reporter: "tenant", vendor_id: 0, cost: 0, due_by: N.addDays(T, 2), opened_at: N.addDays(T, -1) + " 08:10:00", closed_at: null, meta: { triage: { category: "boiler", urgency: "urgent", pro: en ? "Water-heater technician" : "טכנאי דודים", by: "rules" }, asset: "a1" }, updated_at: now },
 			{ id: 502, property_id: 1, unit_id: 12, title: en ? "Kitchen tap drips" : "טפטוף בברז המטבח", body: "", category: "plumbing", urgency: "standard", status: "scheduled", reporter: "tenant", vendor_id: 109, cost: 0, due_by: N.addDays(T, 5), opened_at: N.addDays(T, -25) + " 19:40:00", closed_at: null, meta: { visit_at: N.addDays(T, 1) + " 16:00" }, updated_at: now },
 			{ id: 503, property_id: 1, unit_id: 11, title: en ? "Bedroom painting" : "צביעת חדר שינה", body: "", category: "paint", urgency: "standard", status: "done", reporter: "owner", vendor_id: 0, cost: 1800, due_by: N.addMonths(T, -2), opened_at: N.addMonths(T, -3) + " 10:00:00", closed_at: N.addMonths(T, -2) + " 17:00:00", meta: {}, updated_at: now },
-			{ id: 504, property_id: 3, unit_id: 31, title: "Bathroom fan not working", body: "The fan makes noise and stopped.", category: "electric", urgency: "standard", status: "progress", reporter: "tenant", vendor_id: 110, cost: 0, due_by: N.addDays(T, 24), opened_at: N.addDays(T, -6) + " 12:00:00", closed_at: null, meta: {}, updated_at: now }
+			{ id: 504, property_id: 3, unit_id: 31, title: en ? "Bathroom fan not working" : "המאוורר בחדר הרחצה לא עובד", body: en ? "The fan makes noise and stopped." : "המאוורר מרעיש והפסיק לעבוד.", category: "electric", urgency: "standard", status: "progress", reporter: "tenant", vendor_id: 110, cost: 0, due_by: N.addDays(T, 24), opened_at: N.addDays(T, -6) + " 12:00:00", closed_at: null, meta: {}, updated_at: now }
 		];
 		var docs = [
 			{ id: 301, scope: "lease", scope_id: 201, kind: "lease", name: en ? "Signed lease.pdf" : "חוזה שכירות חתום.pdf", mime: "application/pdf", size: 412000, created_by: "u:1", created_at: s1 + " 10:15:00" },

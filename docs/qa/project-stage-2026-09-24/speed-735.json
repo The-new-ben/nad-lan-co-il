@@ -1,0 +1,17 @@
+{
+  "before": {},
+  "after": {
+    "/projects/shikun-binui-sde-dov/": [
+      200,
+      1.3
+    ],
+    "/projects/": [
+      200,
+      1.37
+    ],
+    "/projects/page/2/": [
+      200,
+      4.07
+    ]
+  }
+}

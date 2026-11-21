@@ -5462,3 +5462,15 @@ RELEASE DONE 1.72.733 (HAD-787 board 24): released and verified on the first run
 
 
 CLAIM + RELEASE LOCK 1.72.734 (HAD-795 package 6, the rentals product and its one journey; owner order through the coordinator, decision A): NEW assets/rentals/rm-tour.js + 4 still-globe pictures; SWAP inc/rentals/portfolio.php, inc/rentals/page.php, assets/rentals/portfolio/pf.js + pf.css, assets/rentals/rm-demo.js, rm-boot.js, rm-views.js, rm-drawers.js, rm-today.css, i18n/he.json + en.json; HUNK inc/rentals-manager.php (7 hunks: the address ?sample=1 opens the example portfolio in the real screens; a new value "new" of the option nadlan_rentals_v2, NOT set by this release; the landing prints the lockup and one sentence above the stage and its paragraph below it). The switch of new sign-ups to version 2 is NOT in this release. Built on deploy733.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 14:10 IL.
+
+
+RELEASE DONE 1.72.734 (HAD-795 package 6, the rentals product and its journey): released and verified on the first run (deploy-result-734.json, health 1.72.734). Live as a visitor: the opening 52/52 (scripts/rentals/live_pf.py); /my-rentals/?sample=1 answers with the tour bar, canonical to /my-rentals/, robots index. FOUND LIVE, going into 1.72.735 now: while the day screen is open the tour bar is hidden (rm-today.css hides the other children of .nlrm-page; the lab page did not wrap the bar that way). The option nadlan_rentals_v2 is untouched (admin). Lock released. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 14:45 IL.
+
+CLAIM + RELEASE LOCK 1.72.735 (HAD-795 package 6, the tour bar): SWAP assets/rentals/rm-tour.js only (one style rule). Built on deploy734.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 14:45 IL.
+
+RELEASE DONE 1.72.735 (HAD-795 package 6, the tour bar): released and verified on the first run (deploy-result-735.json, health 1.72.735). Live as a visitor: scripts/rentals/lab_tour.py on the live address 30/30; pressed by hand at phone width through all ten stops. FOUND LIVE: on the long pages (documents, tax estimate, properties) the stop's part sat below the first screen. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 15:40 IL.
+
+CLAIM + RELEASE LOCK 1.72.736 (HAD-795 package 6, the tour seats the page): SWAP assets/rentals/rm-tour.js only (one scroll on a press). Built on deploy735.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 15:40 IL.
+
+RELEASE DONE 1.72.736 (HAD-795 package 6, the tour seats the page): released and verified on the first run (deploy-result-736.json, health 1.72.736). Live as a visitor: scripts/rentals/lab_tour.py on the live address 30/30 (he + en, 1280 and 390, with the floating buttons); the whole journey recorded on a phone (D:\Media
+ad-lanentals-journey-2026-11-21). The lock is free. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 16:35 IL.

@@ -78,7 +78,7 @@
   {
    "check": "he phone update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,034 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
   },
   {
    "check": "he phone that sheet's buttons >= 44 px",
@@ -183,7 +183,7 @@
   {
    "check": "he short update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,034 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
   },
   {
    "check": "he short that sheet's buttons >= 44 px",
@@ -288,7 +288,7 @@
   {
    "check": "he desk update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,042 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
+   "info": "עדכון שכר הדירה לפי המדד\nשכר הדירה היום\n8,034 ₪\nמדד הבסיס בחוזה\n100.0\nהמדד האחרון\n103.6\nלפי המדד הידוע היום\n8,081 ₪\n\nהחישוב: שכר הדירה כפול המדד האחרון, חלקי מדד הבסיס. השכר לא יורד מהשכר המקורי.\n\nמספ"
   },
   {
    "check": "he desk that sheet's buttons >= 44 px",
@@ -393,7 +393,7 @@
   {
    "check": "en phone update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+   "info": "Rent update by the index\nRent today\n₪8,034\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
   },
   {
    "check": "en phone that sheet's buttons >= 44 px",
@@ -498,7 +498,7 @@
   {
    "check": "en short update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+   "info": "Rent update by the index\nRent today\n₪8,034\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
   },
   {
    "check": "en short that sheet's buttons >= 44 px",
@@ -603,7 +603,7 @@
   {
    "check": "en desk update not due: the sheet shows the sum by today's index, says when confirming opens, and has NO save button",
    "ok": true,
-   "info": "Rent update by the index\nRent today\n₪8,042\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
+   "info": "Rent update by the index\nRent today\n₪8,034\nBase index in the lease\n100.0\nLatest index\n103.6\nBy the index known today\n₪8,081\n\nThe calculation: the rent times the latest index, divided by the base index"
   },
   {
    "check": "en desk that sheet's buttons >= 44 px",

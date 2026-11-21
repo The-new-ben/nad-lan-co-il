@@ -1,9 +1,9 @@
 {
  "checks": [
   {
-   "check": "he 390x844: the sample has 10 people, none carries a phone or an e-mail",
+   "check": "he 390x844: the sample has 14 people, none carries a phone or an e-mail",
    "ok": true,
-   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
+   "info": "{'n': 14, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
   },
   {
    "check": "he 390x844: the whole sample data holds no phone-shaped number and no e-mail address",
@@ -16,7 +16,7 @@
    "info": "[]"
   },
   {
-   "check": "he 390x844: the people list shows 4 names, each with the mark",
+   "check": "he 390x844: the people list shows 8 names, each with the mark",
    "ok": true,
    "info": "[]"
   },
@@ -26,12 +26,12 @@
    "info": "{}"
   },
   {
-   "check": "he 390x844: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "check": "he 390x844: none of the 35 cards (people, homes, repairs, leases, every tab) holds such a link or number",
    "ok": true,
    "info": "{}"
   },
   {
-   "check": "he 390x844: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "check": "he 390x844: a WhatsApp press on each of the 14 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
    "ok": true,
    "info": "[]"
   },
@@ -41,9 +41,9 @@
    "info": "[]"
   },
   {
-   "check": "he 1280x800: the sample has 10 people, none carries a phone or an e-mail",
+   "check": "he 1280x800: the sample has 14 people, none carries a phone or an e-mail",
    "ok": true,
-   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
+   "info": "{'n': 14, 'withPhone': [], 'withMail': [], 'names': ['משפחת לוי (דוגמה)', 'דנה כהן (דוגמה)', 'רון מזרחי (דוגמה)', 'Daniel Brooks (דוגמה)', 'אבי לוי (דוגמה)', 'נועה ש. (דוגמה)', 'Michael R. (דוגמה)', 'יעל ב. (דוגמה)', 'יוסי אינסטלציה (דוגמה)', 'אור חשמל (דוגמה)"
   },
   {
    "check": "he 1280x800: the whole sample data holds no phone-shaped number and no e-mail address",
@@ -56,7 +56,7 @@
    "info": "[]"
   },
   {
-   "check": "he 1280x800: the people list shows 4 names, each with the mark",
+   "check": "he 1280x800: the people list shows 8 names, each with the mark",
    "ok": true,
    "info": "[]"
   },
@@ -66,12 +66,12 @@
    "info": "{}"
   },
   {
-   "check": "he 1280x800: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "check": "he 1280x800: none of the 35 cards (people, homes, repairs, leases, every tab) holds such a link or number",
    "ok": true,
    "info": "{}"
   },
   {
-   "check": "he 1280x800: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "check": "he 1280x800: a WhatsApp press on each of the 14 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
    "ok": true,
    "info": "[]"
   },
@@ -88,7 +88,7 @@
   {
    "check": "he: the reminder shows its wording above the day screen, the send control is a button, the wording holds no phone-shaped number",
    "ok": true,
-   "info": "('שלום רון, תזכורת ידידותית לשכר הדירה של נובמבר 2026 (דירה 7): 11,982 ₪', 'BUTTON', True, [], [])"
+   "info": "('שלום רון, תזכורת ידידותית לשכר הדירה של נובמבר 2026 (דירה לדוגמה א): 3', 'BUTTON', True, [], [])"
   },
   {
    "check": "he: the day and tenancy screens opened no tab",
@@ -96,9 +96,9 @@
    "info": "[]"
   },
   {
-   "check": "en 390x844: the sample has 10 people, none carries a phone or an e-mail",
+   "check": "en 390x844: the sample has 14 people, none carries a phone or an e-mail",
    "ok": true,
-   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
+   "info": "{'n': 14, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
   },
   {
    "check": "en 390x844: the whole sample data holds no phone-shaped number and no e-mail address",
@@ -111,7 +111,7 @@
    "info": "[]"
   },
   {
-   "check": "en 390x844: the people list shows 4 names, each with the mark",
+   "check": "en 390x844: the people list shows 8 names, each with the mark",
    "ok": true,
    "info": "[]"
   },
@@ -121,12 +121,12 @@
    "info": "{}"
   },
   {
-   "check": "en 390x844: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "check": "en 390x844: none of the 35 cards (people, homes, repairs, leases, every tab) holds such a link or number",
    "ok": true,
    "info": "{}"
   },
   {
-   "check": "en 390x844: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "check": "en 390x844: a WhatsApp press on each of the 14 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
    "ok": true,
    "info": "[]"
   },
@@ -136,9 +136,9 @@
    "info": "[]"
   },
   {
-   "check": "en 1280x800: the sample has 10 people, none carries a phone or an e-mail",
+   "check": "en 1280x800: the sample has 14 people, none carries a phone or an e-mail",
    "ok": true,
-   "info": "{'n': 10, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
+   "info": "{'n': 14, 'withPhone': [], 'withMail': [], 'names': ['The Levi family (example)', 'Dana Cohen (example)', 'Ron Mizrahi (example)', 'Daniel Brooks (example)', 'Avi Levi (example)', 'Noa S. (example)', 'Michael R. (example)', 'Yael B. (example)', 'Yossi Plumbing"
   },
   {
    "check": "en 1280x800: the whole sample data holds no phone-shaped number and no e-mail address",
@@ -151,7 +151,7 @@
    "info": "[]"
   },
   {
-   "check": "en 1280x800: the people list shows 4 names, each with the mark",
+   "check": "en 1280x800: the people list shows 8 names, each with the mark",
    "ok": true,
    "info": "[]"
   },
@@ -161,12 +161,12 @@
    "info": "{}"
   },
   {
-   "check": "en 1280x800: none of the 23 cards (people, homes, repairs, leases, every tab) holds such a link or number",
+   "check": "en 1280x800: none of the 35 cards (people, homes, repairs, leases, every tab) holds such a link or number",
    "ok": true,
    "info": "{}"
   },
   {
-   "check": "en 1280x800: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
+   "check": "en 1280x800: a WhatsApp press on each of the 14 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing",
    "ok": true,
    "info": "[]"
   },
@@ -183,7 +183,7 @@
   {
    "check": "en: the reminder shows its wording above the day screen, the send control is a button, the wording holds no phone-shaped number",
    "ok": true,
-   "info": "('שלום Ron, תזכורת ידידותית לשכר הדירה של November 2026 (Apt 7): ₪11,982', 'BUTTON', True, [], [])"
+   "info": "('שלום Ron, תזכורת ידידותית לשכר הדירה של November 2026 (Example apartme', 'BUTTON', True, [], [])"
   },
   {
    "check": "en: the day and tenancy screens opened no tab",

@@ -45,7 +45,7 @@ with sync_playwright() as p:
             d = pg.evaluate("""() => { const d = NLRM.store.d, raw = JSON.stringify(d);
               return { n: d.contacts.length, withPhone: d.contacts.filter(c => c.phone).map(c => c.id), withMail: d.contacts.filter(c => c.email).map(c => c.id),
                 names: d.contacts.map(c => c.name), nums: raw.match(/9725\\d{8}|05\\d{8}/g) || [], mails: raw.match(/[\\w.]+@[\\w.]+/g) || [], demo: !!d.demo, isDemo: NLRM.isDemo() }; }""")
-            check("%s: the sample has %d people, none carries a phone or an e-mail" % (tag, d["n"]), d["n"] == 10 and not d["withPhone"] and not d["withMail"] and d["demo"] and d["isDemo"], d)
+            check("%s: the sample has %d people, none carries a phone or an e-mail" % (tag, d["n"]), d["n"] == 14 and not d["withPhone"] and not d["withMail"] and d["demo"] and d["isDemo"], d)
             check("%s: the whole sample data holds no phone-shaped number and no e-mail address" % tag, not d["nums"] and not d["mails"], (d["nums"][:3], d["mails"][:3]))
             check("%s: every sample person's name wears the mark %s" % (tag, MARK[lang]), all(MARK[lang] in n for n in d["names"]), [n for n in d["names"] if MARK[lang] not in n])
             # the people list
@@ -105,7 +105,7 @@ with sync_playwright() as p:
                 if s2["more"] != 1 or pg.url.split("#")[0] != url0.split("#")[0]:
                     badp.append(("press", i, s2)); continue
                 okp.append(i)
-            check("%s: a WhatsApp press on each of the 10 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing" % tag, len(okp) == 10 and not badp, badp[:2])
+            check("%s: a WhatsApp press on each of the 14 sample people shows the wording with a copy button; the send control is a button, writes one journal line, opens nothing" % tag, len(okp) == 14 and not badp, badp[:2])
             check("%s: no new tab or window was opened in the whole run" % tag, not popups, popups[:3])
             results["errors"] += errs; ctx.close()
         # the reminder of the tenancy screen (slice 1): still there for a sample tenant, shows the wording

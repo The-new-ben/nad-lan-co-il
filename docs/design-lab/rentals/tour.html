@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAB: the tour of the example portfolio (the page inc/rentals/page.php prints in sample mode)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&family=Assistant:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../../plugins/nadlan-config/assets/rentals/rm.css">
+<link rel="stylesheet" href="../../../plugins/nadlan-config/assets/rentals/rm-today.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>body{margin:0;background:#f7f6f2;padding:0 16px}</style>
+</head>
+<body>
+<script>if(new URLSearchParams(location.search).get("floats")==="1"){document.write('<a class="lab-f" id="lab-wa" style="position:fixed;z-index:99980;left:12px;bottom:78px;width:280px;height:50px;border-radius:25px;background:#0f7a5a"></a><a class="lab-f" id="lab-cart" style="position:fixed;z-index:99990;right:12px;bottom:84px;width:129px;height:44px;border-radius:22px;background:#fff;border:1px solid #14212b"></a><a class="lab-f" id="lab-a11y" style="position:fixed;z-index:99998;right:14px;bottom:14px;width:52px;height:52px;border-radius:12px;background:#1f4b5c"></a>');}</script>
+<div style="height:70px;background:#fff;margin:0 -16px;border-bottom:1px solid #dfe6ec"></div>
+<main class="nlrm-page">
+<div class="nlrm-tour" id="nlrm-tour" data-unit="21" data-lang="he" data-back="#back" data-go="#signup">
+	<a class="nlrm-tour-brand" href="#back"><span class="nlrm-lk" dir="rtl"><svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true" focusable="false"><rect x="9" y="4" width="22" height="5" rx="2.5"/><rect x="9" y="11" width="22" height="5" rx="2.5"/><rect class="nlrm-lk-lit" x="5" y="18" width="30" height="5" rx="2.5"/><rect x="9" y="25" width="22" height="5" rx="2.5"/><rect x="9" y="32" width="22" height="5" rx="2.5"/></svg><b>השכרות</b><i>נדל״ן</i></span></a>
+	<span class="nlrm-tour-ex">תיק לדוגמה</span>
+	<a class="nlrm-tour-go" href="#signup">להתחיל עם הדירה שלי</a>
+</div>
+<script>(function(){var q=new URLSearchParams(location.search),b=document.getElementById("nlrm-tour");if(q.get("u")){b.dataset.unit=q.get("u");}if(q.get("lang")==="en"){b.dataset.lang="en";b.querySelector(".nlrm-tour-ex").textContent="Example portfolio";b.querySelector(".nlrm-tour-go").textContent="Start my own";b.querySelector(".nlrm-lk").dir="ltr";b.querySelector(".nlrm-lk b").textContent="NadLan";b.querySelector(".nlrm-lk i").textContent="Rentals";}})();</script>
+<h1 class="nlrm-h1">תיק לדוגמה: כל מסך הוא המסך האמיתי</h1>
+<div id="app"></div>
+</main><!-- the live page wraps the bar and the app in .nlrm-page; the day screen hides that element's other children -->
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-core.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-demo.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-views.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-drawers.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-lease.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-import.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-plan2d.js"></script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-today.js"></script>
+<script src="today-lab.js"></script>
+<script type="module" src="../../../plugins/nadlan-config/assets/rentals/rm-3d.js"></script>
+<script>
+(function () {
+	var q = new URLSearchParams(location.search), lang = q.get("lang") || "he", base = "../../../plugins/nadlan-config/assets/rentals/i18n/", s1 = "../../../docs/rentals/build/slice1/";
+	var files = ["he", "en", "lease", "triage"].map(function (l) { return fetch(base + l + ".json").then(function (r) { return r.json(); }); });
+	/* slice 1: the new strings are merged here, never written into he.json / en.json */
+	files.push(fetch(s1 + "strings-he.json").then(function (r) { return r.json(); }), fetch(s1 + "strings-en.json").then(function (r) { return r.json(); }));
+	Promise.all(files).then(function (j) {
+		Object.assign(j[0].ui, j[4]); Object.assign(j[1].ui, j[5]);
+		var strings = { he: j[0].ui, en: j[1].ui }, msg = { he: j[0].msg, en: j[1].msg };
+		NLRM.LEASE = j[2];
+		NLRM.TRIAGE = j[3];
+		NLRM.setStrings(lang, strings[lang]);
+		TodayLab.install(q, lang);
+		var ad = NLRM.DemoAdapter(lang);
+		TodayLab.attach(ad);
+		if (q.get("empty")) { var b0 = ad.boot; ad.boot = function () { return b0().then(function (d) { ["properties", "units", "contacts", "leases", "ledger", "tickets", "docs", "events"].forEach(function (k) { d[k] = []; }); d.demo = false; return d; }); }; }
+		var root = document.getElementById("app");
+		NLRM.mountToday(root, { urls: { designer: "/tour/designer/" }, today2: true });
+		NLRM.mount(root, { lang: lang, strings: strings, msg: msg, adapter: ad, inPlaceLang: true, brand: lang === "he" ? "השכרות נדל״ן" : "NadLan Rentals", leaseMaker: false, assets: "../../../plugins/nadlan-config/assets/rentals/", me: { display: lang === "he" ? "דני כהן (דוגמה)" : "Dan Cohen (example)", phone: "", pay: {} }, urls: { pros: "https://nad-lan.co.il/professionals/", wizard: "https://nad-lan.co.il/post-listing/" } });
+	});
+})();
+</script>
+<script src="../../../plugins/nadlan-config/assets/rentals/rm-tour.js"></script>
+</body>
+</html>

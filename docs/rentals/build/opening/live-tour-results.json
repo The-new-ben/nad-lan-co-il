@@ -1,0 +1,155 @@
+{
+ "checks": [
+  {
+   "check": "he 1280x800 the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 64, screen starts 66), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 64, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 66, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 330, 'vh': 800, 'maker': 0, 'title': 'הדירה: מה מחכ"
+  },
+  {
+   "check": "he 1280x800 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['הדירה: מה מחכה היום', 'השוכר=card', 'שכר דירה ותשלו=rent', 'עדכון מדד=index', 'החוזה והביטחונ=card', 'תיקונים=card', 'מסמכים=#/docs', 'אומדן מס על שכ=tax', 'כל הנכסים: המפ=#/properties', 'להתחיל עם הדיר=#/properties']"
+  },
+  {
+   "check": "he 1280x800 the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F')"
+  },
+  {
+   "check": "he 1280x800 the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "השכרות נדל״ן"
+  },
+  {
+   "check": "he 1280x800 nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "he 390x664 the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 106, screen starts 106), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 106, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 106, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 604, 'vh': 664, 'maker': 0, 'title': 'הדירה: מה מ"
+  },
+  {
+   "check": "he 390x664 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['הדירה: מה מחכה היום', 'השוכר=card', 'שכר דירה ותשלו=rent', 'עדכון מדד=index', 'החוזה והביטחונ=card', 'תיקונים=card', 'מסמכים=#/docs', 'אומדן מס על שכ=tax', 'כל הנכסים: המפ=#/properties', 'להתחיל עם הדיר=#/properties']"
+  },
+  {
+   "check": "he 390x664 the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F')"
+  },
+  {
+   "check": "he 390x664 the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "השכרות נדל״ן"
+  },
+  {
+   "check": "he 390x664 nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "he 390x664 with the site's floating buttons the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 106, screen starts 106), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 106, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 106, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 604, 'vh': 664, 'maker': 0, 'title': 'הדירה: מה מ"
+  },
+  {
+   "check": "he 390x664 with the site's floating buttons 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['הדירה: מה מחכה היום', 'השוכר=card', 'שכר דירה ותשלו=rent', 'עדכון מדד=index', 'החוזה והביטחונ=card', 'תיקונים=card', 'מסמכים=#/docs', 'אומדן מס על שכ=tax', 'כל הנכסים: המפ=#/properties', 'להתחיל עם הדיר=#/properties']"
+  },
+  {
+   "check": "he 390x664 with the site's floating buttons the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F')"
+  },
+  {
+   "check": "he 390x664 with the site's floating buttons the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "השכרות נדל״ן"
+  },
+  {
+   "check": "he 390x664 with the site's floating buttons nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 1280x800 the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 64, screen starts 66), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 64, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 66, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 330, 'vh': 800, 'maker': 0, 'title': 'The apartment"
+  },
+  {
+   "check": "en 1280x800 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['The apartment: what is waiting today', 'The tenant=card', 'Rent and payme=rent', 'The index upda=index', 'The lease and =card', 'Repairs=card', 'Documents=#/docs', 'The rent tax e=tax', 'All properties=#/properties', 'Start with my =#/properties']"
+  },
+  {
+   "check": "en 1280x800 the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F%3Flang%3Den')"
+  },
+  {
+   "check": "en 1280x800 the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "NadLan Rentals"
+  },
+  {
+   "check": "en 1280x800 nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 390x664 the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 106, screen starts 106), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 106, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 106, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 604, 'vh': 664, 'maker': 0, 'title': 'The apartme"
+  },
+  {
+   "check": "en 390x664 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['The apartment: what is waiting today', 'The tenant=card', 'Rent and payme=rent', 'The index upda=index', 'The lease and =card', 'Repairs=card', 'Documents=#/docs', 'The rent tax e=tax', 'All properties=#/properties', 'Start with my =#/properties']"
+  },
+  {
+   "check": "en 390x664 the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F%3Flang%3Den')"
+  },
+  {
+   "check": "en 390x664 the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "NadLan Rentals"
+  },
+  {
+   "check": "en 390x664 nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  },
+  {
+   "check": "en 390x664 with the site's floating buttons the tour opens on the apartment's day screen (stop 1 of 10): the real screen is on, starts under the bar (bar ends 106, screen starts 106), the bar's buttons are free",
+   "ok": true,
+   "info": "{'at': 0, 'hash': '#/today/21', 'barBottom': 106, 'barTop': 0, 'free': True, 'nt2': True, 'nt2Top': 106, 'layer': False, 'layerTop': None, 'layerText': '', 'idx': False, 'tax': False, 'taxTop': None, 'mainTop': 604, 'vh': 664, 'maker': 0, 'title': 'The apartme"
+  },
+  {
+   "check": "en 390x664 with the site's floating buttons 'next' walks all 10 stops, each on the app's own screen, the bar free at every stop, no lease-maker button anywhere, no contact link",
+   "ok": true,
+   "info": "['The apartment: what is waiting today', 'The tenant=card', 'Rent and payme=rent', 'The index upda=index', 'The lease and =card', 'Repairs=card', 'Documents=#/docs', 'The rent tax e=tax', 'All properties=#/properties', 'Start with my =#/properties']"
+  },
+  {
+   "check": "en 390x664 with the site's floating buttons the last stop offers 'sign up and start' and there is no dead end (back works)",
+   "ok": true,
+   "info": "(True, 'https://nad-lan.co.il/login/?redirect=https%3A%2F%2Fnad-lan.co.il%2Fmy-rentals%2F%3Flang%3Den')"
+  },
+  {
+   "check": "en 390x664 with the site's floating buttons the product's name stands in the app's top bar",
+   "ok": true,
+   "info": "NadLan Rentals"
+  },
+  {
+   "check": "en 390x664 with the site's floating buttons nothing opened a tab; no page errors",
+   "ok": true,
+   "info": "([], [])"
+  }
+ ],
+ "errors": []
+}

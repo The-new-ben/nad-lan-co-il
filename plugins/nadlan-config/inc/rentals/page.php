@@ -71,9 +71,21 @@ if ( ! function_exists( 'nlrm_render_page' ) ) {
 		$en_url = home_url( '/my-rentals/?lang=en' );
 		$self = $en ? $en_url : $he_url;
 		header( 'Referrer-Policy: same-origin' );
+		/* the product's name and lockup live in one place: inc/rentals/portfolio.php (HAD-795) */
+		if ( ! function_exists( 'nadlan_rm_brand_name' ) && is_readable( __DIR__ . '/portfolio.php' ) ) { include_once __DIR__ . '/portfolio.php'; }
+		$brand = function_exists( 'nadlan_rm_brand_name' ) ? nadlan_rm_brand_name( $en ? 'en' : 'he' ) : ( $en ? 'NadLan Rentals' : 'השכרות נדל״ן' );
 		if ( 'app' === $mode ) {
 			nocache_headers();
 			header( 'X-Robots-Tag: noindex, nofollow' ); /* unchanged from v1: a private, logged-in view */
+			$title = ( $en ? 'My properties' : 'הנכסים שלי' ) . ' | ' . $brand;
+			add_filter( 'pre_get_document_title', function () use ( $title ) { return $title; }, 99 );
+		} elseif ( 'sample' === $mode ) {
+			/* the example portfolio running in the real screens (the tour of /my-rentals/): a state of that page, so it points to it as
+			   its canonical address; nothing is saved and nothing is sent */
+			$title = ( $en ? 'The example portfolio' : 'תיק לדוגמה' ) . ' | ' . $brand;
+			add_filter( 'pre_get_document_title', function () use ( $title ) { return $title; }, 99 );
+			add_action( 'wp_head', function () use ( $self ) { echo '<link rel="canonical" href="' . esc_url( $self ) . '">' . "
+"; }, 4 );
 		} else {
 			$title = $en ? 'Manage Your Own Rental in Israel, Free: Leases, Rent and Repairs in One Place | NadLan' : 'ניהול השכרות בעצמכם, בחינם: חוזים, שכר דירה ותקלות במקום אחד | נדלן';
 			$desc = $en
@@ -89,6 +101,9 @@ if ( ! function_exists( 'nlrm_render_page' ) ) {
 			}, 4 );
 		}
 		nlrm_assets( 'app' !== $mode );
+		if ( 'sample' === $mode ) {
+			wp_enqueue_script( 'nlrm-tour', NLRM_URL_ASSETS . 'rm-tour.js', array( 'nlrm-boot' ), defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '2', true );
+		}
 		$o = 'app' === $mode ? nlrm_owner() : 0;
 		$he = nlrm_json( 'he' ); $enj = nlrm_json( 'en' );
 		$cfg = array(
@@ -101,7 +116,10 @@ if ( ! function_exists( 'nlrm_render_page' ) ) {
 			'triage' => nlrm_json( 'triage' ),
 			'assets' => NLRM_URL_ASSETS, 'ver' => defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '',
 			/* the new landing screen: on by default for administrators only (option nadlan_rentals_today2, default '1'); pilot landlords keep the old today view until it has been pressed live (option nadlan_rentals_today2_pilot, default '0'); also #/today-classic, ?today=classic */
-			'today2' => current_user_can( 'manage_options' ) ? '0' !== (string) get_option( 'nadlan_rentals_today2', '1' ) : '1' === (string) get_option( 'nadlan_rentals_today2_pilot', '0' ),
+			'today2' => 'sample' === $mode ? true : ( current_user_can( 'manage_options' ) ? '0' !== (string) get_option( 'nadlan_rentals_today2', '1' ) : '1' === (string) get_option( 'nadlan_rentals_today2_pilot', '0' ) ),
+			'brand' => $brand,
+			/* the lease text the product can produce is closed to the public until its wording is checked (HAD-795, open-without-a-lawyer list) */
+			'leaseMaker' => current_user_can( 'manage_options' ),
 		);
 		/* one H1: the block theme's compat header prints the site name as an h1 (directory.php demotes it) */
 		if ( function_exists( 'nadlan_dir_header_single_h1' ) ) { nadlan_dir_header_single_h1(); } else { get_header(); }
@@ -112,8 +130,18 @@ if ( ! function_exists( 'nlrm_render_page' ) ) {
 <script type="application/json" id="nlrm-i18n"><?php echo wp_json_encode( array( 'he' => $he, 'en' => $enj ), JSON_UNESCAPED_UNICODE ); ?></script>
 <script type="application/json" id="nlrm-lease"><?php echo wp_json_encode( nlrm_json( 'lease' ), JSON_UNESCAPED_UNICODE ); ?></script>
 <?php if ( 'app' === $mode ) : ?>
+	<?php if ( function_exists( 'nadlan_rm_lockup' ) ) { echo '<p class="nlrm-brandline">' . nadlan_rm_lockup( $en ? 'en' : 'he' ) . '</p>'; } // phpcs:ignore ?>
 	<h1 class="nlrm-h1"><?php echo esc_html( $en ? 'My rental properties' : 'הנכסים המושכרים שלי' ); ?></h1>
 	<div id="nlrm-root" data-mode="app"></div>
+<?php elseif ( 'sample' === $mode ) : ?>
+	<div class="nlrm-tour" id="nlrm-tour" data-unit="<?php echo isset( $_GET['u'] ) ? (int) $_GET['u'] : 21; // phpcs:ignore ?>" data-lang="<?php echo esc_attr( $en ? 'en' : 'he' ); ?>" data-back="<?php echo esc_url( $self ); ?>" data-go="<?php echo esc_url( is_user_logged_in() ? $self : wp_login_url( $self ) ); ?>">
+		<a class="nlrm-tour-brand" href="<?php echo esc_url( $self ); ?>"><?php echo function_exists( 'nadlan_rm_lockup' ) ? nadlan_rm_lockup( $en ? 'en' : 'he' ) : esc_html( $brand ); // phpcs:ignore ?></a>
+		<span class="nlrm-tour-ex"><?php echo esc_html( $en ? 'Example portfolio' : 'תיק לדוגמה' ); ?></span>
+		<a class="nlrm-tour-go" href="<?php echo esc_url( is_user_logged_in() ? $self : wp_login_url( $self ) ); ?>"><?php echo esc_html( $en ? 'Start my own' : 'להתחיל עם הדירה שלי' ); ?></a>
+	</div>
+	<h1 class="nlrm-h1"><?php echo esc_html( $en ? 'The example portfolio: every screen is the real one' : 'תיק לדוגמה: כל מסך הוא המסך האמיתי' ); ?></h1>
+	<p class="nlrm-hero-lead"><?php echo esc_html( $en ? 'Sample data. Press anything; nothing is saved and nothing is sent.' : 'נתוני דוגמה. לחצו על הכול; שום דבר לא נשמר ושום דבר לא נשלח.' ); ?></p>
+	<div id="nlrm-root" data-mode="demo"></div>
 <?php else : ?>
 	<header class="nlrm-hero" id="nlrm-hero">
 		<p class="nlrm-kicker"><?php echo esc_html( $en ? 'For landlords who manage their own rentals' : 'לבעלי דירות שמנהלים את ההשכרה בעצמם' ); ?></p>

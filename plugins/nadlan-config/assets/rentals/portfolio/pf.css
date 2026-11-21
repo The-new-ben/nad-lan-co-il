@@ -16,6 +16,10 @@
 #nlpf .nlpf-globe { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(120% 90% at 50% 40%, #173b49 0, #0d2129 62%); transition: opacity .9s ease; }
 #nlpf .nlpf-globe i { width: min(62%, 380px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 36% 30%, #3f8fae 0, #1c5a78 46%, #123f55 100%); box-shadow: 0 0 0 1px rgba(127,211,230,.35), 0 0 60px 12px rgba(79,143,179,.35), inset -24px -30px 60px rgba(13,33,41,.55); }
 #nlpf.is-map .nlpf-globe { opacity: 0; }
+/* the still globe with its marks: the first paint, replaced by the live map when it is ready */
+#nlpf .nlpf-poster { position: absolute; inset: 0; margin: 0; display: block; background: radial-gradient(120% 90% at 50% 40%, #173b49 0, #0d2129 62%); transition: opacity .9s ease, visibility 0s linear .9s; }
+#nlpf .nlpf-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#nlpf.is-map .nlpf-poster { opacity: 0; visibility: hidden; }
 #nlpf .nlpf-map { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
 #nlpf.is-map .nlpf-map { opacity: 1; }
 #nlpf .mapboxgl-ctrl-bottom-left, #nlpf .mapboxgl-ctrl-bottom-right { bottom: 204px; opacity: .8; }
@@ -49,6 +53,9 @@
 #nlpf .nlpf-bd--care { background-color: var(--care); color: #fff; }
 #nlpf .nlpf-bd--due { background-color: var(--due); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%2314212b' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M5 2v3l2 1.3'/%3E%3C/svg%3E"); }
 #nlpf .nlpf-bd--ok { background-color: var(--ok); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5.3l2 2 4-4.4'/%3E%3C/svg%3E"); }
+/* the name under the mark: the building in a city, the place from far away */
+#nlpf .nlpf-nm { position: absolute; top: calc(100% + 5px); left: 50%; transform: translateX(-50%); max-width: 150px; padding: 2px 8px; border-radius: 9px; background: rgba(255,255,255,.95); color: var(--ink); font-style: normal; font-size: 12.5px; line-height: 17px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 2px 8px rgba(13,33,41,.35); pointer-events: none; }
+#nlpf .nlpf-pin.is-up .nlpf-nm { top: auto; bottom: calc(100% + 6px); }
 /* needs care: two rings leave the mark; in order: one calm halo, no movement */
 #nlpf .nlpf-ring { position: absolute; inset: -2px; border-radius: 50%; pointer-events: none; opacity: 0; }
 #nlpf .is-care > .nlpf-ring { border: 3px solid var(--care); animation: nlpf-pulse 1.9s cubic-bezier(.2,.6,.3,1) infinite; }
@@ -133,7 +140,7 @@
 #nlpf .nlpf-s-line { margin-top: 4px; display: flex; align-items: center; gap: 7px; font-size: 15px; line-height: 20px; font-weight: 700; }
 #nlpf .nlpf-s-line i { flex: none; width: 10px; height: 10px; border-radius: 5px; background: var(--ok); }
 #nlpf .nlpf-s-line.is-care { color: var(--care); } #nlpf .nlpf-s-line.is-care i { background: var(--care); } #nlpf .nlpf-s-line.is-due i { background: var(--due); }
-#nlpf .nlpf-facts { margin-top: 8px; display: grid; grid-template-columns: auto 1fr auto; gap: 8px 14px; padding: 8px 0; border-top: 1px solid #dfe6ec; border-bottom: 1px solid #dfe6ec; }
+#nlpf .nlpf-facts { margin-top: 8px; display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; padding: 8px 0; border-top: 1px solid #dfe6ec; border-bottom: 1px solid #dfe6ec; }
 #nlpf .nlpf-fact { min-width: 0; display: flex; flex-direction: column; }
 #nlpf .nlpf-fact small { font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink2); white-space: nowrap; }
 #nlpf .nlpf-fact b { font-size: 15px; line-height: 20px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -169,33 +176,56 @@
 	#nlpf .nlpf-sheet { padding: 12px 14px 12px; } #nlpf .nlpf-facts { margin-top: 6px; padding: 6px 0; } #nlpf .nlpf-s-l { margin-top: 6px; }
 	#nlpf .nlpf-part { max-width: 52px; } #nlpf .nlpf-s-cta { margin-top: 10px; }
 	#nlpf a.nlpf-btn, #nlpf button.nlpf-btn { height: 46px !important; }
-	#nlpf .nlpf-tray { height: 128px; } #nlpf .nlpf-say { bottom: 134px; min-height: 60px; }
+	#nlpf .nlpf-tray { height: 128px; }
+	/* the sentence sits under the filter, so the first screen shows it above the site's floating buttons */
+	#nlpf .nlpf-say { inset: 106px 12px auto 12px; min-height: 58px; padding: 8px 12px; }
+	#nlpf .mapboxgl-ctrl-bottom-left, #nlpf .mapboxgl-ctrl-bottom-right { bottom: 132px; }
 }
 @media (max-width: 430px) { #nlpf .nlpf-title { white-space: nowrap; } #nlpf button.nlpf-world { width: 44px !important; padding: 0 !important; justify-content: center; font-size: 0 !important; gap: 0; } #nlpf button.nlpf-world i { width: 20px; height: 20px; } #nlpf .nlpf-chips { gap: 6px; } #nlpf button.nlpf-chip { padding: 0 10px !important; font-size: 14px !important; gap: 5px; } #nlpf .nlpf-part { max-width: 60px; } }
 #nlpf.is-low .nlpf-hint { display: none; }
-@media (max-width: 380px) { #nlpf a.nlpf-btn, #nlpf button.nlpf-btn { font-size: 15px !important; padding: 0 12px !important; } #nlpf .nlpf-title { font-size: 23px; } }
+@media (max-width: 380px) { .nlrm .nlrm-hero h1 { font-size: 1.34rem; } .nlrm .nlrm-hero .nlrm-one { font-size: 16px; } .nlrm .nlrm-lk { margin-bottom: 4px; } #nlpf a.nlpf-btn, #nlpf button.nlpf-btn { font-size: 15px !important; padding: 0 12px !important; } #nlpf .nlpf-title { font-size: 23px; } }
 /* a short phone: the card gives up its small heading and a little size, never a fact */
 #nlpf.is-tight .nlpf-s-l { display: none; } #nlpf.is-tight .nlpf-part { max-width: 46px; } #nlpf.is-tight .nlpf-vis { min-height: 96px; }
-#nlpf.is-tight .nlpf-tray { height: 116px; } #nlpf.is-tight .nlpf-say { bottom: 122px; }
+#nlpf.is-tight .nlpf-tray { height: 116px; }
 @media (prefers-reduced-motion: reduce) {
 	#nlpf .is-care > .nlpf-ring { animation: none; opacity: .9; transform: scale(1.35); } #nlpf .is-care > .nlpf-ring--2 { display: none; }
 	#nlpf .nlpf-panel, #nlpf .nlpf-turn, #nlpf .nlpf-vis > img.nlpf-pic, #nlpf .nlpf-fl.is-on, #nlpf .nlpf-part.is-care img { animation: none; }
 	#nlpf .nlpf-turn, #nlpf .nlpf-vis--turn button.nlpf-tag { transition: none; }
-	#nlpf .nlpf-globe, #nlpf .nlpf-map { transition: none; }
+	#nlpf .nlpf-globe, #nlpf .nlpf-map, #nlpf .nlpf-poster { transition: none; }
 }
 
 /* the page's hero and steps around the stage, redrawn in the same language (no text removed) */
 .nlrm .nlrm-hero { padding: 18px 0 2px; }
 .nlrm .nlrm-hero .nlrm-kicker { color: #2f6f86; font-family: 'Assistant', Heebo, sans-serif; letter-spacing: .04em; margin-bottom: 6px; }
 .nlrm .nlrm-hero h1 { font-family: 'Assistant', Heebo, sans-serif !important; font-weight: 800 !important; letter-spacing: -.3px; line-height: 1.2; margin-bottom: 8px; }
-.nlrm .nlrm-hero .sub { font-family: 'Assistant', Heebo, sans-serif; color: #3b4753; font-size: 16px; line-height: 1.5; margin-bottom: 4px; }
+.nlrm .nlrm-hero .sub { font-family: 'Assistant', Heebo, sans-serif; color: #3b4753; font-size: 16px; line-height: 1.5; }
 .nlrm .nlrm-hero--after { padding: 0 0 6px; }
 .nlrm .nlrm-hero--after .nlrm-cta--go { background: #14212b !important; color: #fff !important; border-radius: 28px; padding: 16px 30px; font-family: 'Assistant', Heebo, sans-serif; font-weight: 800; font-size: 17px; box-shadow: 0 14px 30px -14px rgba(20,33,43,.6); }
 .nlrm .nlrm-hero--after .nlrm-badges { color: #3b4753; font-family: 'Assistant', Heebo, sans-serif; font-size: 13px; }
 .nlrm .nlrm-hero--after > p > a { color: #2f6f86 !important; }
-.nlrm .nlrm-steps .nlrm-step { background: #fff; border: 1px solid #dfe6ec; border-radius: 18px; }
-.nlrm .nlrm-steps .nlrm-step i { background: #2f6f86; color: #fff; }
-.nlrm .nlrm-steps .nlrm-step b { font-family: 'Assistant', Heebo, sans-serif; font-weight: 800; color: #14212b; }
+/* the product's lockup and the one plain sentence */
+.nlrm .nlrm-lk { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 8px; font-family: 'Assistant', Heebo, sans-serif; line-height: 1; color: #14212b; }
+.nlrm .nlrm-lk svg { flex: none; fill: #14212b; } .nlrm .nlrm-lk svg .nlrm-lk-lit { fill: #2f6f86; }
+.nlrm .nlrm-lk b { font-weight: 800; font-size: 26px; letter-spacing: -.3px; } .nlrm .nlrm-lk i { font-style: normal; font-weight: 600; font-size: 26px; color: #2f6f86; }
+.nlrm .nlrm-hero .nlrm-one { font: 600 19px/1.45 'Assistant', Heebo, sans-serif; color: #14212b; max-width: 720px; margin: 0 auto 4px; }
+.nlrm .nlrm-hero--after .sub { margin: 2px auto 16px; }
+/* each step carries a picture of the same family as the stage's; the number is a small tag on it */
+.nlrm .nlrm-steps .nlrm-step { position: relative; background: #fff; border: 1px solid #dfe6ec; border-radius: 18px; padding: 0 0 16px; overflow: hidden; }
+.nlrm .nlrm-steps .nlrm-step::before { content: ""; display: block; height: 170px; margin: 0 0 12px; background: #dfe6ec center / cover no-repeat; }
+.nlrm .nlrm-steps .nlrm-step:nth-child(1)::before { background-image: url(img/t1-720.webp); }
+.nlrm .nlrm-steps .nlrm-step:nth-child(2)::before { background-image: url(img/k1-720.webp); }
+.nlrm .nlrm-steps .nlrm-step:nth-child(3)::before { background-image: url(img/c1-720.webp); }
+.nlrm .nlrm-steps .nlrm-step::after { content: "הדמיה"; position: absolute; top: 142px; inset-inline-end: 8px; padding: 2px 8px; border-radius: 9px; background: rgba(255,255,255,.92); font: 600 11px/16px 'Assistant', Heebo, sans-serif; color: #3b4753; }
+.nlrm[lang="en"] .nlrm-steps .nlrm-step::after { content: "Illustration"; }
+.nlrm .nlrm-steps .nlrm-step i { position: absolute; top: 10px; inset-inline-start: 10px; width: 34px; height: 34px; margin: 0; background: #14212b; color: #fff; font: 600 17px/34px 'IBM Plex Mono', monospace; }
+.nlrm .nlrm-steps .nlrm-step b { font-family: 'Assistant', Heebo, sans-serif; font-weight: 800; font-size: 18px; color: #14212b; margin: 0 16px 4px; }
+.nlrm .nlrm-steps .nlrm-step p { font: 400 15px/1.5 'Assistant', Heebo, sans-serif; color: #3b4753; margin: 0 16px; }
 @media (max-width: 700px) {
-	.nlrm .nlrm-hero { padding-top: 6px; } .nlrm .nlrm-hero h1 { font-size: 1.5rem; } .nlrm .nlrm-hero .sub { font-size: 15px; }
+	.nlrm { padding-top: 12px !important; } .nlrm .nlrm-hero { padding-top: 2px; } .nlrm .nlrm-hero h1 { font-size: 1.5rem; margin-bottom: 6px; } .nlrm .nlrm-hero--after .sub { font-size: 15px; }
+	.nlrm .nlrm-lk b, .nlrm .nlrm-lk i { font-size: 22px; } .nlrm .nlrm-lk svg { width: 28px; height: 28px; } .nlrm .nlrm-hero .nlrm-one { font-size: 17px; }
+	.nlrm .nlrm-hero .nlrm-kicker { margin-bottom: 4px; }
+	.nlrm .nlrm-steps .nlrm-step { display: grid; grid-template-columns: 116px 1fr; align-content: start; padding: 0; }
+	.nlrm .nlrm-steps .nlrm-step::before { grid-row: 1 / 3; height: 100%; min-height: 118px; margin: 0; }
+	.nlrm .nlrm-steps .nlrm-step::after { top: auto; bottom: 8px; inset-inline-end: auto; inset-inline-start: 8px; }
+	.nlrm .nlrm-steps .nlrm-step b { margin: 12px 14px 2px; align-self: end; } .nlrm .nlrm-steps .nlrm-step p { margin: 0 14px 12px; font-size: 14px; }
 }

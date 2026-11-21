@@ -19,6 +19,31 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/* The product's name lives HERE and nowhere else (owner, 20.11.2026: a named product inside NadLan; working name, he may change it). */
+if ( ! function_exists( 'nadlan_rm_brand' ) ) {
+	function nadlan_rm_brand( $lang = 'he' ) {
+		return 'he' === $lang ? array( 'השכרות', 'נדל״ן' ) : array( 'NadLan', 'Rentals' );
+	}
+}
+if ( ! function_exists( 'nadlan_rm_brand_name' ) ) {
+	function nadlan_rm_brand_name( $lang = 'he' ) { return implode( ' ', nadlan_rm_brand( $lang ) ); }
+}
+if ( ! function_exists( 'nadlan_rm_lockup' ) ) {
+	/* the mark is the product's own lit floor: five floors, one lit */
+	function nadlan_rm_lockup( $lang = 'he', $class = '' ) {
+		$b = nadlan_rm_brand( $lang );
+		return '<span class="nlrm-lk' . ( $class ? ' ' . esc_attr( $class ) : '' ) . '" dir="' . ( 'he' === $lang ? 'rtl' : 'ltr' ) . '">'
+			. '<svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true" focusable="false"><rect x="9" y="4" width="22" height="5" rx="2.5"/><rect x="9" y="11" width="22" height="5" rx="2.5"/><rect class="nlrm-lk-lit" x="5" y="18" width="30" height="5" rx="2.5"/><rect x="9" y="25" width="22" height="5" rx="2.5"/><rect x="9" y="32" width="22" height="5" rx="2.5"/></svg>'
+			. '<b>' . esc_html( $b[0] ) . '</b><i>' . esc_html( $b[1] ) . '</i></span>';
+	}
+}
+if ( ! function_exists( 'nadlan_rm_one_line' ) ) {
+	/* what it is, in plain words, before anything is touched */
+	function nadlan_rm_one_line( $lang = 'he' ) {
+		return 'he' === $lang ? 'ניהול דירות מושכרות במקום אחד: שוכרים, שכר דירה, חוזים ותיקונים.' : 'Managing the apartments you rent out in one place: tenants, rent, leases and repairs.';
+	}
+}
+
 if ( ! function_exists( 'nadlan_rm_pf_data' ) ) {
 	function nadlan_rm_pf_data( $lang = 'he' ) {
 		$en = ( 'he' !== $lang );
@@ -34,56 +59,55 @@ if ( ! function_exists( 'nadlan_rm_pf_data' ) ) {
 		};
 		$care_parts = $ok_parts();
 		$care_parts[1][2] = 'care';
+		/* The SAME portfolio as the app's own sample (assets/rentals/rm-demo.js): nine apartments in seven buildings; 'unit' is the
+		   sample's unit id, so "enter the apartment" opens that apartment's real screens. A lab check keeps the two in step. */
+		$T = function ( $he, $en_s ) use ( $en ) { return $en ? $en_s : $he; };
+		$A = function ( $unit, $b, $pic, $region, $ll, $floors, $floor, $rooms, $sqm, $bname, $short, $city, $rent, $st, $line, $tenant, $care = '' ) use ( $x, $ok_parts ) {
+			$parts = $ok_parts();
+			if ( $care ) { foreach ( $parts as $k => $pt ) { if ( $pt[0] === $care ) { $parts[ $k ][2] = 'care'; } } }
+			return array( 'id' => 'u' . $unit, 'unit' => $unit, 'b' => $b, 'pic' => $pic, 'region' => $region, 'll' => $ll, 'floors' => $floors, 'floor' => $floor, 'rooms' => $rooms, 'sqm' => $sqm,
+				'bname' => $bname, 'short' => $short, 'name' => $bname . ' · ' . $short, 'city' => $city, 'rent' => $rent, 'st' => $st, 'line' => $line, 'tenant' => $tenant ? $tenant . $x : '', 'parts' => $parts );
+		};
+		$tlv = $T( 'תל אביב', 'Tel Aviv' );
 		$props = array(
-			array( 'id' => 'k1', 'b' => 'kikar', 'pic' => 'k1', 'region' => 'il', 'll' => array( 34.78985, 32.08672 ), 'floors' => 40, 'floor' => 30, 'rooms' => 5, 'sqm' => 148,
-				'name' => $en ? 'Kikar HaMedina · example apartment B' : 'כיכר המדינה · דירה לדוגמה ב', 'short' => $en ? 'Example apartment B' : 'דירה לדוגמה ב', 'tag' => $en ? 'Example B' : 'דוגמה ב', 'bname' => $en ? 'Kikar HaMedina' : 'כיכר המדינה',
-				'city' => $en ? 'Tel Aviv' : 'תל אביב', 'rent' => '21,500 ₪', 'st' => 'ok', 'line' => $en ? 'This month\'s rent is in' : 'שכר הדירה של החודש התקבל',
-				'tenant' => ( $en ? 'The Alon family' : 'משפחת אלון' ) . $x, 'lease' => $till( 'יוני', 'June' ), 'parts' => $ok_parts() ),
-			array( 'id' => 'k2', 'b' => 'kikar', 'pic' => 'k1', 'region' => 'il', 'll' => array( 34.79035, 32.08655 ), 'floors' => 40, 'floor' => 20, 'rooms' => 4, 'sqm' => 121,
-				'name' => $en ? 'Kikar HaMedina · example apartment A' : 'כיכר המדינה · דירה לדוגמה א', 'short' => $en ? 'Example apartment A' : 'דירה לדוגמה א', 'tag' => $en ? 'Example A' : 'דוגמה א', 'bname' => $en ? 'Kikar HaMedina' : 'כיכר המדינה',
-				'city' => $en ? 'Tel Aviv' : 'תל אביב', 'rent' => '17,800 ₪', 'st' => 'due', 'line' => $en ? 'Rent is due in 3 days' : 'שכר דירה בעוד 3 ימים',
-				'tenant' => ( $en ? 'Noa Barak' : 'נועה ברק' ) . $x, 'lease' => $till( 'מרץ', 'March' ), 'parts' => $ok_parts() ),
-			array( 'id' => 't1', 'b' => 't1', 'pic' => 't1', 'region' => 'il', 'll' => array( 34.78370, 32.08760 ), 'floors' => 4, 'floor' => 3, 'rooms' => 3, 'sqm' => 72,
-				'name' => $en ? '78 Arlozorov · apartment 7' : 'ארלוזורוב 78 · דירה 7', 'short' => $en ? 'Apartment 7' : 'דירה 7', 'bname' => $en ? '78 Arlozorov' : 'ארלוזורוב 78',
-				'city' => $en ? 'Tel Aviv' : 'תל אביב', 'rent' => '7,800 ₪', 'st' => 'ok', 'line' => $en ? 'All in order' : 'הכול בסדר',
-				'tenant' => ( $en ? 'The Levi family' : 'משפחת לוי' ) . $x, 'lease' => $till( 'אוגוסט', 'August' ), 'parts' => $ok_parts() ),
-			array( 'id' => 't2', 'b' => 't2', 'pic' => 't2', 'region' => 'il', 'll' => array( 34.77020, 32.05630 ), 'floors' => 3, 'floor' => 2, 'rooms' => 2.5, 'sqm' => 58,
-				'name' => $en ? '12 Florentin · apartment 3' : 'פלורנטין 12 · דירה 3', 'short' => $en ? 'Apartment 3' : 'דירה 3', 'bname' => $en ? '12 Florentin' : 'פלורנטין 12',
-				'city' => $en ? 'Tel Aviv' : 'תל אביב', 'rent' => '6,400 ₪', 'st' => 'ok', 'line' => $en ? 'All in order' : 'הכול בסדר',
-				'tenant' => ( $en ? 'Dana Cohen' : 'דנה כהן' ) . $x, 'lease' => $till( 'ינואר', 'January' ), 'parts' => $ok_parts() ),
-			array( 'id' => 'e1', 'b' => 'e1', 'pic' => 'e1', 'region' => 'il', 'll' => array( 34.93700, 29.55000 ), 'floors' => 3, 'floor' => 2, 'rooms' => 3, 'sqm' => 80,
-				'name' => $en ? '5 Shahamon · apartment 5' : 'שחמון 5 · דירה 5', 'short' => $en ? 'Apartment 5' : 'דירה 5', 'bname' => $en ? '5 Shahamon' : 'שחמון 5',
-				'city' => $en ? 'Eilat' : 'אילת', 'rent' => '4,900 ₪', 'st' => 'care', 'line' => $en ? 'The air conditioner is not cooling · opened yesterday' : 'המזגן לא מקרר · נפתחה אתמול',
-				'tenant' => ( $en ? 'Ron Mizrahi' : 'רון מזרחי' ) . $x, 'lease' => $till( 'אוקטובר', 'October' ), 'parts' => $care_parts ),
-			array( 'id' => 'c1', 'b' => 'c1', 'pic' => 'c1', 'region' => 'med', 'll' => array( 33.04500, 34.68500 ), 'floors' => 6, 'floor' => 4, 'rooms' => 3, 'sqm' => 95,
-				'name' => $en ? 'Limassol, by the sea' : 'לימסול, מול הים', 'short' => $en ? 'Seafront apartment' : 'דירה מול הים', 'bname' => $en ? 'Limassol, by the sea' : 'לימסול, מול הים',
-				'city' => $en ? 'Cyprus' : 'קפריסין', 'rent' => '1,450 €', 'st' => 'ok', 'line' => $en ? 'All in order' : 'הכול בסדר',
-				'tenant' => 'Andreas P.' . $x, 'lease' => $till( 'מאי', 'May' ), 'parts' => $ok_parts() ),
-			array( 'id' => 'g1', 'b' => 'g1', 'pic' => 'g1', 'region' => 'med', 'll' => array( 23.74300, 37.97900 ), 'floors' => 6, 'floor' => 5, 'rooms' => 2, 'sqm' => 64,
-				'name' => $en ? 'Athens, Kolonaki' : 'אתונה, קולונאקי', 'short' => $en ? 'Kolonaki apartment' : 'דירה בקולונאקי', 'bname' => $en ? 'Athens, Kolonaki' : 'אתונה, קולונאקי',
-				'city' => $en ? 'Greece' : 'יוון', 'rent' => '1,200 €', 'st' => 'ok', 'line' => $en ? 'All in order' : 'הכול בסדר',
-				'tenant' => 'Eleni K.' . $x, 'lease' => $till( 'ספטמבר', 'September' ), 'parts' => $ok_parts() ),
-			array( 'id' => 'n1', 'b' => 'n1', 'pic' => 'n1', 'region' => 'ny', 'll' => array( -73.98400, 40.75100 ), 'floors' => 12, 'floor' => 8, 'rooms' => 2, 'sqm' => 70,
-				'name' => $en ? 'Manhattan, 38th Street' : 'מנהטן, רחוב 38', 'short' => $en ? '38th Street apartment' : 'דירה ברחוב 38', 'bname' => $en ? 'Manhattan, 38th Street' : 'מנהטן, רחוב 38',
-				'city' => $en ? 'New York' : 'ניו יורק', 'rent' => '4,300 $', 'st' => 'ok', 'line' => $en ? 'All in order' : 'הכול בסדר',
-				'tenant' => 'Daniel Brooks' . $x, 'lease' => $till( 'דצמבר', 'December' ), 'parts' => $ok_parts() ),
+			$A( 21, 'kikar', 'k1', 'il', array( 34.79035, 32.08655 ), 40, 20, 4, 121, $T( 'כיכר המדינה', 'Kikar HaMedina' ), $T( 'דירה לדוגמה א', 'Example apartment A' ), $tlv, '17,800 ₪', 'care',
+				$T( 'חוב של חודשיים · הדוד לא מחמם מים', 'Two months unpaid · the water heater does not heat' ), $T( 'רון מזרחי', 'Ron Mizrahi' ), 'boiler' ),
+			$A( 22, 'kikar', 'k1', 'il', array( 34.78985, 32.08672 ), 40, 30, 5, 148, $T( 'כיכר המדינה', 'Kikar HaMedina' ), $T( 'דירה לדוגמה ב', 'Example apartment B' ), $tlv, '21,500 ₪', 'due',
+				$T( 'פנויה · שלושה מתעניינים', 'Vacant · three applicants' ), '' ),
+			$A( 12, 't1', 't1', 'il', array( 34.78370, 32.08760 ), 5, 5, 4, 95, $T( 'ארלוזורוב 78', '78 Arlozorov' ), $T( 'דירה 14', 'Apartment 14' ), $tlv, '6,400 ₪', 'due',
+				$T( 'שכר הדירה של החודש עוד לא התקבל', 'This month\'s rent has not come in yet' ), $T( 'דנה כהן', 'Dana Cohen' ) ),
+			$A( 31, 'e1', 'e1', 'il', array( 34.93700, 29.55000 ), 3, 2, 3, 80, $T( 'שחמון 5', '5 Shahamon' ), $T( 'דירה 5', 'Apartment 5' ), $T( 'אילת', 'Eilat' ), '4,900 ₪', 'due',
+				$T( 'השוכר דיווח ששילם, מחכה לאישור שלכם', 'The tenant reported a payment; it waits for your confirmation' ), 'Daniel Brooks' ),
+			$A( 11, 't1', 't1', 'il', array( 34.78370, 32.08760 ), 5, 3, 3, 72, $T( 'ארלוזורוב 78', '78 Arlozorov' ), $T( 'דירה 7', 'Apartment 7' ), $tlv, '7,800 ₪', 'ok',
+				$T( 'שכר הדירה של החודש התקבל', 'This month\'s rent is in' ), $T( 'משפחת לוי', 'The Levi family' ) ),
+			$A( 41, 't2', 't2', 'il', array( 34.77020, 32.05630 ), 3, 2, 2.5, 58, $T( 'פלורנטין 12', '12 Florentin' ), $T( 'דירה 3', 'Apartment 3' ), $tlv, '5,900 ₪', 'ok',
+				$T( 'הכול בסדר', 'All in order' ), $T( 'נועה ברק', 'Noa Barak' ) ),
+			$A( 51, 'c1', 'c1', 'med', array( 33.04500, 34.68500 ), 6, 4, 3, 95, $T( 'לימסול, מול הים', 'Limassol, by the sea' ), $T( 'דירה מול הים', 'Seafront apartment' ), $T( 'קפריסין', 'Cyprus' ), '5,800 ₪', 'ok',
+				$T( 'הכול בסדר', 'All in order' ), 'Andreas P.' ),
+			$A( 61, 'g1', 'g1', 'med', array( 23.74300, 37.97900 ), 6, 5, 2, 64, $T( 'אתונה, קולונאקי', 'Athens, Kolonaki' ), $T( 'דירה בקולונאקי', 'Kolonaki apartment' ), $T( 'יוון', 'Greece' ), '4,700 ₪', 'ok',
+				$T( 'הכול בסדר', 'All in order' ), 'Eleni K.' ),
+			$A( 71, 'n1', 'n1', 'ny', array( -73.98400, 40.75100 ), 12, 8, 2, 70, $T( 'מנהטן, רחוב 38', 'Manhattan, 38th Street' ), $T( 'דירה ברחוב 38', '38th Street apartment' ), $T( 'ניו יורק', 'New York' ), '15,900 ₪', 'ok',
+				$T( 'הכול בסדר', 'All in order' ), 'Sarah Klein' ),
 		);
+		/* the two tower apartments carry a short tag beside their lit floors */
+		$props[0]['tag'] = $T( 'דוגמה א', 'Example A' );
+		$props[1]['tag'] = $T( 'דוגמה ב', 'Example B' );
 		$w = $en ? array(
-			'title' => 'My properties', 'ex' => 'Example portfolio', 'ex1' => 'Example', 'all' => 'All', 'care' => 'Needs care', 'due' => 'Due this week', 'ok' => 'In order',
-			'c_care' => 'Care', 'c_due' => 'Due', 'c_ok' => 'In order', 'filter' => 'Filter my properties', 'map' => 'The map of the properties', 'props' => 'The properties',
-			'one_care' => 'One property needs care', 'see' => 'See it', 'n_props' => '{n} properties', 'hint' => 'Press a property to fly to it.', 'enter' => 'Enter the building', 'fix' => 'Handle it now',
+			'title' => 'My properties', 'ex' => 'Example portfolio', 'ex1' => 'Example', 'all' => 'All', 'care' => 'Urgent', 'due' => 'This week', 'ok' => 'In order', 'vacant' => 'No tenant yet', 'ask' => 'Asking rent',
+			'c_care' => 'Urgent', 'c_due' => 'This week', 'c_ok' => 'In order', 'filter' => 'Filter my properties', 'map' => 'The map of the properties', 'props' => 'The properties',
+			'one_care' => 'One apartment needs care now', 'see' => 'See it', 'n_props' => '{n} apartments', 'hint' => 'Press an apartment to fly to it.', 'fix' => 'Handle it now',
 			'world' => 'The whole world', 'back_map' => 'Back to the map', 'floor' => 'Floor', 'of' => 'of', 'rooms' => 'rooms', 'sqm' => 'sq m', 'rent' => 'Rent a month', 'tenant' => 'Tenant', 'lease' => 'Lease until',
 			'home' => 'The parts of the home', 'p_ok' => 'in order', 'p_care' => 'needs care', 'turn' => 'Drag to turn the tower', 'note' => 'Illustration · example homes and figures',
-			'apts' => '{n} example apartments in the tower', 'apt1' => 'One example apartment in the building', 'cta' => 'Start managing, free', 'demo' => 'Full demo',
+			'apts' => '{n} example apartments in the building', 'apt1' => 'One example apartment in the building', 'cta' => 'Start my own', 'enter' => 'Open the apartment', 'enter_b' => 'Enter the building', 'demo' => 'Full demo',
 			'places' => array( 'il' => 'Israel', 'med' => 'Cyprus and Greece', 'ny' => 'New York', 'near' => 'Israel and around' ),
 			'gesture' => 'Use two fingers to move the map', 'ctrl' => 'Use ctrl + scroll to zoom the map', 'cmd' => 'Use ⌘ + scroll to zoom the map',
 		) : array(
-			'title' => 'הנכסים שלי', 'ex' => 'תיק לדוגמה', 'ex1' => 'דוגמה', 'all' => 'הכול', 'care' => 'צריך טיפול', 'due' => 'לתשלום השבוע', 'ok' => 'תקין',
-			'c_care' => 'טיפול', 'c_due' => 'לתשלום', 'c_ok' => 'תקין', 'filter' => 'סינון הנכסים שלי', 'map' => 'המפה של הנכסים', 'props' => 'הנכסים',
-			'one_care' => 'נכס אחד צריך טיפול', 'see' => 'לראות', 'n_props' => '{n} נכסים', 'hint' => 'לחצו על נכס כדי לטוס אליו.', 'enter' => 'להיכנס לבניין', 'fix' => 'לטפל עכשיו',
+			'title' => 'הנכסים שלי', 'ex' => 'תיק לדוגמה', 'ex1' => 'דוגמה', 'all' => 'הכול', 'care' => 'דחוף', 'due' => 'לטיפול השבוע', 'ok' => 'תקין', 'vacant' => 'אין שוכר עדיין', 'ask' => 'שכר מבוקש',
+			'c_care' => 'דחוף', 'c_due' => 'השבוע', 'c_ok' => 'תקין', 'filter' => 'סינון הנכסים שלי', 'map' => 'המפה של הנכסים', 'props' => 'הנכסים',
+			'one_care' => 'דירה אחת צריכה טיפול עכשיו', 'see' => 'לראות', 'n_props' => '{n} דירות', 'hint' => 'לחצו על דירה כדי לטוס אליה.', 'fix' => 'לטפל עכשיו',
 			'world' => 'כל העולם', 'back_map' => 'חזרה למפה', 'floor' => 'קומה', 'of' => 'מתוך', 'rooms' => 'חדרים', 'sqm' => 'מ״ר', 'rent' => 'שכר דירה לחודש', 'tenant' => 'שוכר', 'lease' => 'החוזה עד',
 			'home' => 'המערכות של הדירה', 'p_ok' => 'תקין', 'p_care' => 'צריך טיפול', 'turn' => 'גררו כדי לסובב את המגדל', 'note' => 'הדמיה · דירות ונתונים לדוגמה',
-			'apts' => '{n} דירות לדוגמה במגדל', 'apt1' => 'דירה אחת לדוגמה בבניין', 'cta' => 'להתחיל לנהל, חינם', 'demo' => 'ההדגמה המלאה',
+			'apts' => '{n} דירות לדוגמה בבניין', 'apt1' => 'דירה אחת לדוגמה בבניין', 'cta' => 'להתחיל עם הדירה שלי', 'enter' => 'להיכנס לדירה', 'enter_b' => 'להיכנס לבניין', 'demo' => 'ההדגמה המלאה',
 			'places' => array( 'il' => 'ישראל', 'med' => 'קפריסין ויוון', 'ny' => 'ניו יורק', 'near' => 'ישראל והסביבה' ),
 			'gesture' => 'השתמשו בשתי אצבעות כדי להזיז את המפה', 'ctrl' => 'החזיקו ctrl וגללו כדי להתקרב במפה', 'cmd' => 'החזיקו ⌘ וגללו כדי להתקרב במפה',
 		);
@@ -92,7 +116,7 @@ if ( ! function_exists( 'nadlan_rm_pf_data' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_rm_portfolio_stage' ) ) {
-	function nadlan_rm_portfolio_stage( $lang = 'he', $go = '' ) {
+	function nadlan_rm_portfolio_stage( $lang = 'he', $go = '', $sample = '' ) {
 		$en   = ( 'he' !== $lang );
 		$d    = nadlan_rm_pf_data( $lang );
 		$w    = $d['w'];
@@ -107,8 +131,8 @@ if ( ! function_exists( 'nadlan_rm_portfolio_stage' ) ) {
 <link rel="stylesheet" href="<?php echo esc_url( $base . 'pf.css?v=' . rawurlencode( $ver ) ); ?>">
 <section id="nlpf" class="nlmyrent-stage" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $en ? 'en' : 'he' ); ?>" aria-label="<?php echo esc_attr( $w['title'] . ' · ' . $w['ex'] ); ?>"
 	data-lang="<?php echo esc_attr( $en ? 'en' : 'he' ); ?>" data-token="<?php echo esc_attr( $tok ); ?>" data-base="<?php echo esc_url( $base ); ?>" data-turn="<?php echo esc_url( $turn ); ?>"
-	data-go="<?php echo esc_url( $go ); ?>" data-pf="<?php echo esc_attr( wp_json_encode( $d, JSON_UNESCAPED_UNICODE ) ); ?>">
-	<div class="nlpf-globe" aria-hidden="true"><i></i></div>
+	data-go="<?php echo esc_url( $go ); ?>" data-sample="<?php echo esc_url( $sample ); ?>" data-pf="<?php echo esc_attr( wp_json_encode( $d, JSON_UNESCAPED_UNICODE ) ); ?>">
+	<picture class="nlpf-poster" aria-hidden="true"><source media="(max-width: 700px)" srcset="<?php echo esc_url( $base . 'img/poster-' . ( $en ? 'en' : 'he' ) . '-phone.webp?v=' . rawurlencode( $ver ) ); ?>"><img src="<?php echo esc_url( $base . 'img/poster-' . ( $en ? 'en' : 'he' ) . '-desk.webp?v=' . rawurlencode( $ver ) ); ?>" alt="" decoding="async" fetchpriority="high"></picture>
 	<div class="nlpf-map" id="nlpf-map" aria-label="<?php echo esc_attr( $w['map'] ); ?>"></div>
 	<div class="nlpf-marks"></div>
 	<div class="nlpf-top">

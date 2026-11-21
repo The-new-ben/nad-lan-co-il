@@ -19,7 +19,7 @@
 	try { D = JSON.parse(root.dataset.pf || "{}"); } catch (e0) { D = {}; }
 	var P = D.props || [], W = D.w || {};
 	if (!P.length) { return; }
-	var LANG = root.dataset.lang || "he", BASE = root.dataset.base || "", TURN = root.dataset.turn || "", GO = root.dataset.go || "#", TOKEN = root.dataset.token || "";
+	var LANG = root.dataset.lang || "he", BASE = root.dataset.base || "", TURN = root.dataset.turn || "", GO = root.dataset.go || "#", TOKEN = root.dataset.token || "", SAMPLE = root.dataset.sample || "";
 	var QL = root.dataset.lab ? new URLSearchParams(location.search) : null;
 	var RTL = LANG === "he", GL = "https://api.mapbox.com/mapbox-gl-js/v" + ((QL && QL.get("gl")) || "3.14.0") + "/";
 	var RM = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -53,7 +53,7 @@
 		}).join("");
 		var sel = S.sel && byId(S.sel), care1 = P.filter(function (p) { return p.st === "care"; })[0], h;
 		if (sel) {
-			h = '<div class="nlpf-say-t"><b>' + esc(sel.name) + "</b><span>" + esc(sel.city + " · " + sel.line) + '</span></div><button type="button" class="nlpf-go" data-open="' + sel.id + '">' + esc(sel.st === "care" ? t("fix") : t("enter")) + "</button>";
+			h = '<div class="nlpf-say-t"><b>' + esc(sel.name) + "</b><span>" + esc(sel.city + " · " + sel.line) + '</span></div><button type="button" class="nlpf-go" data-open="' + sel.id + '">' + esc(sel.st === "care" ? t("fix") : t("enter_b")) + "</button>";
 		} else if (care1 && (S.filter === "all" || S.filter === "care")) {
 			h = '<div class="nlpf-say-t"><b>' + esc(t("one_care")) + "</b><span>" + esc(care1.city + " · " + care1.line) + '</span></div><button type="button" class="nlpf-go" data-pick="' + care1.id + '">' + esc(t("see")) + "</button>";
 		} else {
@@ -93,7 +93,7 @@
 				el.className = "nlpf-pin is-" + st + (S.sel === p.id ? " is-sel" : "");
 				el.setAttribute("aria-label", p.name + ", " + p.city + ", " + t(st));
 				el.setAttribute("data-id", p.id);
-				el.innerHTML = '<span class="nlpf-ring" aria-hidden="true"></span><span class="nlpf-ring nlpf-ring--2" aria-hidden="true"></span>' + thumb(p) + badge(st);
+				el.innerHTML = '<span class="nlpf-ring" aria-hidden="true"></span><span class="nlpf-ring nlpf-ring--2" aria-hidden="true"></span>' + thumb(p) + badge(st) + '<em class="nlpf-nm">' + esc(map.getZoom() > 9 ? p.bname : p.city) + "</em>";
 			} else {
 				var uniq = function (k) { return g.m.map(function (x) { return x[k]; }).filter(function (c, i, a) { return a.indexOf(c) === i; }); };
 				var cities = uniq("city"), regs = uniq("region"), same = uniq("b").length === 1;
@@ -137,7 +137,7 @@
 		if (Math.abs(root.offsetHeight - h) > 2) { root.style.height = h + "px"; if (map) { map.resize(); map.setPadding(pad()); } if (S.open) { layoutTurn(); } }
 	}
 	function pad() {
-		var w = wide(), p = w ? { top: 104, bottom: 196, left: 40, right: 40 } : { top: 118, bottom: 200, left: 20, right: 20 };
+		var w = wide(), p = w ? { top: 104, bottom: 196, left: 40, right: 40 } : { top: 176, bottom: 140, left: 20, right: 20 };
 		if (w && S.open) { p.bottom = 40; if (RTL) { p.right = 440; } else { p.left = 440; } }
 		return p;
 	}
@@ -167,11 +167,11 @@
 		return '<div class="nlpf-sheet"><div class="nlpf-s-h"><b>' + esc(p.short) + '</b><span class="nlpf-st is-' + p.st + '">' + esc(t(p.st)) + "</span></div>" +
 			'<div class="nlpf-s-sub">' + esc(t("floor") + " " + p.floor + " " + t("of") + " " + p.floors + " · " + p.rooms + " " + t("rooms") + " · " + p.sqm + " " + t("sqm")) + "</div>" +
 			'<div class="nlpf-s-line is-' + p.st + '"><i aria-hidden="true"></i>' + esc(p.line) + "</div>" +
-			'<div class="nlpf-facts"><div class="nlpf-fact"><small>' + esc(t("rent")) + '</small><b class="nlpf-mono">' + esc(p.rent) + '</b></div><div class="nlpf-fact"><small>' + esc(t("tenant")) + "</small><b>" + esc(p.tenant) + '</b></div><div class="nlpf-fact"><small>' + esc(t("lease")) + "</small><b>" + esc(p.lease) + "</b></div></div>" +
+			'<div class="nlpf-facts"><div class="nlpf-fact"><small>' + esc(p.tenant ? t("rent") : t("ask")) + '</small><b class="nlpf-mono">' + esc(p.rent) + '</b></div><div class="nlpf-fact"><small>' + esc(t("tenant")) + "</small><b>" + esc(p.tenant || t("vacant")) + "</b></div></div>" +
 			'<div class="nlpf-s-l">' + esc(t("home")) + '</div><div class="nlpf-parts">' + (p.parts || []).map(function (a) {
 				return '<span class="nlpf-part is-' + a[2] + '" role="img" aria-label="' + esc(a[1] + ", " + (a[2] === "care" ? t("p_care") : t("p_ok"))) + '"><img src="' + esc(BASE + "img/p-" + a[0] + "-192.webp") + '" alt="" width="64" height="64" loading="lazy" decoding="async"><i aria-hidden="true">' + (a[2] === "care" ? "!" : "") + "</i><em>" + esc(a[1]) + "</em></span>";
 			}).join("") + "</div>" +
-			'<div class="nlpf-s-cta"><a class="nlpf-btn nlpf-btn--go" href="' + esc(GO) + '" data-cta="1">' + esc(t("cta")) + '</a><button type="button" class="nlpf-btn nlpf-btn--line" data-demo="1">' + esc(t("demo")) + "</button></div></div>";
+			'<div class="nlpf-s-cta">' + (SAMPLE ? '<a class="nlpf-btn nlpf-btn--go" href="' + esc(SAMPLE + (SAMPLE.indexOf("?") < 0 ? "?" : "&") + "u=" + p.unit + "#/today/" + p.unit) + '" data-enter="' + p.unit + '">' + esc(t("enter")) + "</a>" : "") + '<a class="nlpf-btn ' + (SAMPLE ? "nlpf-btn--line" : "nlpf-btn--go") + '" href="' + esc(GO) + '" data-cta="1">' + esc(t("cta")) + "</a></div></div>";
 	}
 	function panelHtml(id) {
 		var p = byId(id), sibs = P.filter(function (x) { return x.b === p.b; }), kikar = p.b === "kikar", h = "";
@@ -184,7 +184,7 @@
 				'<span class="nlpf-hint">' + esc(t("turn")) + '</span><span class="nlpf-note">' + esc(t("note")) + "</span></div>";
 		} else {
 			h += '<div class="nlpf-vis"><img class="nlpf-pic" src="' + esc(BASE + "img/" + p.pic + "-720.webp") + '" alt="" decoding="async">' +
-				'<button type="button" class="nlpf-tag is-on is-' + p.st + '" data-apt="' + p.id + '" style="top:' + Math.round(72 - (p.floor / p.floors) * 40) + '%;left:10px" aria-pressed="true"><i aria-hidden="true"></i>' + esc(p.short) + "<small>" + esc(t("floor") + " " + p.floor) + "</small></button>" +
+				sibs.map(function (x) { return '<button type="button" class="nlpf-tag is-' + x.st + (x.id === id ? " is-on" : "") + '" data-apt="' + x.id + '" style="top:' + Math.round(74 - (x.floor / x.floors) * 46) + '%;left:10px" aria-pressed="' + (x.id === id) + '"><i aria-hidden="true"></i>' + esc(x.short) + "<small>" + esc(t("floor") + " " + x.floor) + "</small></button>"; }).join("") +
 				'<span class="nlpf-note">' + esc(t("note")) + "</span></div>";
 		}
 		return h + sheetHtml(p);
@@ -283,7 +283,7 @@
 		if ((el = x.closest("[data-f]"))) { S.filter = el.getAttribute("data-f"); if (S.sel && !shown(byId(S.sel))) { S.sel = null; } draw(); return; }
 		if ((el = x.closest("[data-back]"))) { closePanel(); return; }
 		if ((el = x.closest("[data-apt]"))) { if (el.getAttribute("data-apt") !== S.open) { openPanel(el.getAttribute("data-apt")); } return; }
-		if ((el = x.closest("[data-demo]"))) { var d = document.querySelector(".nlrm-demo") || document.getElementById("nlrm-mount"); closePanel(); if (d) { d.scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "start" }); } return; }
+		if ((el = x.closest("[data-enter]"))) { track("rent_example_open", { property: S.open || "", how: "enter" }); return; }
 		if ((el = x.closest("[data-open]"))) { openPanel(el.getAttribute("data-open")); return; }
 		if ((el = x.closest("[data-pick]"))) { pick(el.getAttribute("data-pick"), "say"); return; }
 		if ((el = x.closest("[data-world]"))) { S.sel = null; if (S.open) { closePanel(); } fly(worldView(), 2600); draw(); return; }
@@ -331,8 +331,8 @@
 			}
 			glow.features.push({ type: "Feature", properties: { col: COL[worst] }, geometry: { type: "Polygon", coordinates: [ring(c, rad * 2.6, 48)] } });
 		});
-		var hub = byId("k1").ll;
-		["e1", "c1", "g1", "n1", "t2"].forEach(function (id) { var q = byId(id); if (q) { arcs.features.push({ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: arc(hub, q.ll, 72) } }); } });
+		var hub = byId("u21").ll;
+		["u31", "u51", "u61", "u71", "u41"].forEach(function (id) { var q = byId(id); if (q) { arcs.features.push({ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: arc(hub, q.ll, 72) } }); } });
 		try {
 			map.addSource("nlpf-arcs", { type: "geojson", data: arcs }); map.addSource("nlpf-glow", { type: "geojson", data: glow }); map.addSource("nlpf-floors", { type: "geojson", data: floors });
 			map.addLayer({ id: "nlpf-arcs", type: "line", slot: "top", source: "nlpf-arcs", maxzoom: 7, layout: { "line-cap": "round" }, paint: { "line-color": "#7fd3e6", "line-width": 1.8, "line-opacity": ["interpolate", ["linear"], ["zoom"], 0, 0.9, 4.5, 0.8, 6.5, 0], "line-dasharray": [1.2, 2.2], "line-emissive-strength": 1 } });

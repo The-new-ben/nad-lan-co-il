@@ -69,7 +69,7 @@
 		var badge = { today: urgent, repairs: openRep, leasing: applicants };
 		var k = N.kpis();
 		var h = '<header class="nlrm-top">' +
-			'<div class="nlrm-brand"><b>' + esc(t("app_title")) + "</b>" + (k.props ? "<small>" + esc(t("app_sub", { props: k.props, units: k.units })) + "</small>" : "") + "</div>" +
+			'<div class="nlrm-brand"><b>' + esc(S.cfg.brand || t("app_title")) + "</b>" + (k.props ? "<small>" + esc(t("app_sub", { props: k.props, units: k.units })) + "</small>" : "") + "</div>" +
 			'<div class="nlrm-search"><input type="search" id="nlrm-q" placeholder="' + esc(t("search_ph")) + '" aria-label="' + esc(t("search_ph")) + '" autocomplete="off">' + I("search", 18) + "</div>" +
 			'<div class="nlrm-lang" role="group" aria-label="' + esc(t("language")) + '">' + Object.keys(N.STR).filter(function (l) { return ["he", "en", "fr", "ru", "ar"].indexOf(l) >= 0; }).map(function (l) {
 				return '<button type="button" data-lang="' + l + '" aria-current="' + (l === N.lang ? "true" : "false") + '" lang="' + l + '">' + esc(N.STR[l].lang_name || l) + "</button>";

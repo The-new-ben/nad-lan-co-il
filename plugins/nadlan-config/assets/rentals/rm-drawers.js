@@ -82,7 +82,9 @@
 			[t("f_option"), l.option_until ? N.date(l.option_until) : ""], [t("f_notice"), notice ? N.date(notice) : ""],
 			[t("f_linkage"), l.linkage && l.linkage.mode === "cpi" ? esc(t("linked_cpi", { pct: l.linkage.pct || 100 })) : esc(t("not_linked"))]
 		]) + "</div>";
-		var sec = l.securities || {}, cap = N.secCap(l), tot = (sec.cheque || 0) + (sec.deposit || 0);
+		/* compared with the cap: only what the statute names as costing the tenant money (a cash deposit here); a security cheque and a
+		   note are shown on their own lines with no judgment (open-without-a-lawyer list, item 7) */
+		var sec = l.securities || {}, cap = N.secCap(l), tot = (sec.deposit || 0);
 		h += '<div class="nlrm-card"><h3>' + esc(t("securities")) + "</h3>" + factsDl([
 			[t("sec_cheque"), sec.cheque ? N.money(sec.cheque) : ""], [t("sec_note"), sec.note ? N.money(sec.note) : ""], [t("sec_deposit"), sec.deposit ? N.money(sec.deposit) : ""],
 			[t("sec_guarantors"), sec.guarantors ? esc(t("yes")) : ""], [t("sec_bank"), sec.bank ? esc(t("yes")) : ""], [t("sec_cap"), N.money(cap)]
@@ -116,9 +118,12 @@
 			[t("f_rent"), N.money(l.rent)], [t("f_payday"), esc(t("payday_n", { n: l.pay_day }))], [t("f_method"), esc(t("m_" + ((l.terms || {}).method || "transfer")))],
 			[t("f_linkage"), l.linkage && l.linkage.mode === "cpi" ? esc(t("linkage_full", { pct: l.linkage.pct || 100, every: l.linkage.every || 12, base: N.dateText(l.linkage.base_date) })) + (l.linkage.floor ? " · " + esc(t("with_floor")) : "") : esc(t("not_linked"))]
 		]) + '<div class="nlrm-tools" style="margin-top:12px">' + btn("edit-lease", t("edit"), "secondary", "", ' data-lease="' + l.id + '"') + (l.linkage && l.linkage.mode === "cpi" ? btn("cpi-lease", t("cpi_check_now"), "secondary", "", ' data-lease="' + l.id + '"') : "") + btn("renew-lease", t("renew_lease"), "secondary", "", ' data-lease="' + l.id + '"') + btn("end-lease", t("end_lease"), "quiet", "", ' data-lease="' + l.id + '"') + "</div></div>";
-		h += '<div class="nlrm-card"><h3>' + I("sign", 20) + esc(t("signing")) + " " + (sig.length ? N.chip("ok", t("signed_n", { n: sig.length })) : N.chip("due", t("not_signed"))) + "</h3>" +
+		/* the lease text the product can produce, and signing it through a link, are open only where the page says so (administrators,
+		   until the wording is checked); a signature that already exists is still listed */
+		var maker = !!(N.state.cfg && N.state.cfg.leaseMaker);
+		if (maker || sig.length) { h += '<div class="nlrm-card"><h3>' + I("sign", 20) + esc(t("signing")) + " " + (sig.length ? N.chip("ok", t("signed_n", { n: sig.length })) : N.chip("due", t("not_signed"))) + "</h3>" +
 			(sig.length ? '<ul class="nlrm-list">' + sig.map(function (s) { return '<li class="nlrm-item"><div class="nlrm-item-main"><b>' + esc(s.name) + "</b><small>" + esc(N.dateText(String(s.at).slice(0, 10)) + " " + String(s.at).slice(11, 16)) + (s.text_sha256 && s.text_sha256 !== "sample" ? " · SHA-256 " + esc(s.text_sha256.slice(0, 12)) + "…" : "") + "</small></div></li>"; }).join("") + "</ul>" : '<p class="nlrm-lead">' + esc(t("sign_lead")) + "</p>") +
-			'<div class="nlrm-tools">' + btn("lease-doc", t("lease_doc"), "secondary", "doc", ' data-lease="' + l.id + '"') + btn("sign-link", t("send_sign"), "wa", "wa", ' data-lease="' + l.id + '"') + "</div></div>";
+			(maker ? '<div class="nlrm-tools">' + btn("lease-doc", t("lease_doc"), "secondary", "doc", ' data-lease="' + l.id + '"') + btn("sign-link", t("send_sign"), "wa", "wa", ' data-lease="' + l.id + '"') + "</div>" : "") + "</div>"; }
 		h += '<div class="nlrm-card"><h3>' + esc(t("deadlines")) + '</h3><ul class="nlrm-list">' + deadlines(l).map(function (d) { return '<li class="nlrm-item"><span class="nlrm-dot s' + d.s + '"></span><div class="nlrm-item-main"><b>' + esc(d.text) + "</b><small>" + N.date(d.date) + " · " + esc(N.when(N.daysTo(d.date))) + "</small></div></li>"; }).join("") + '</ul><p class="nlrm-note">' + esc(t("deadlines_law")) + "</p></div>";
 		return h;
 	}
@@ -372,7 +377,7 @@
 		], wire: function (form) {
 			var cap = form.querySelector("#nlrm-capline");
 			var upd = function () {
-				var v = N.ui.values(form), c = N.secCap({ rent: +v.rent || 0, start_date: v.start_date, end_date: v.end_date }), tot = (+v.sec_cheque || 0) + (+v.sec_deposit || 0);
+				var v = N.ui.values(form), c = N.secCap({ rent: +v.rent || 0, start_date: v.start_date, end_date: v.end_date }), tot = (+v.sec_deposit || 0);
 				cap.className = "nlrm-hint" + (tot > c && c > 0 ? " is-warn" : "");
 				cap.textContent = c ? t(tot > c ? "cap_over" : "cap_line", { cap: N.moneyText(c) }) : t("cap_need_rent");
 				form.querySelectorAll('[name="t_name"],[name="t_phone"],[name="t_lang"]').forEach(function (el) { el.closest("label").style.display = +v.tenant ? "none" : ""; });
