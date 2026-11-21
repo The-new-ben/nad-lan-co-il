@@ -63,6 +63,8 @@ if ( ! function_exists( 'nadlan_dev_page_css' ) ) {
 			. '.nldev-cta{text-align:center;padding:8px 0 40px}'
 			. '.nldev-cta a{display:inline-block;background:#B85410;color:#fff;font:800 17px/1 Heebo,sans-serif;border-radius:10px;padding:15px 32px;text-decoration:none}'
 			. '.nldev-cta a:hover{background:#9C4409;color:#fff}'
+			. '.nldev-cta a.nldev-cta2{background:#fff;color:#B85410;border:2px solid #B85410;margin-inline-start:10px}' // HAD-790 (21.11): the film, next to the contact
+			. '.nldev-cta a.nldev-cta2:hover{background:#F3EEE3;color:#9C4409}'
 			. '.nldev-cta p{font:400 13.5px Heebo,sans-serif;color:#6B6353;margin:12px 0 0}'
 			. '@media(max-width:700px){.nldev h1{font-size:1.55rem}}';
 	}
@@ -107,6 +109,15 @@ if ( ! function_exists( 'nadlan_dev_page_render' ) ) {
 	</div>
 
 	<div class="nldev-tours">
+		<?php /* HAD-790 (21.11, before the developers' meeting): the two flagship project pages lead the showcases */ ?>
+		<a class="nldev-tour" href="<?php echo esc_url( home_url( '/projects/rainbow-tel-aviv/' ) ); ?>">
+			<b>ריינבו תל אביב</b>
+			<span>מגדל בתלת ממד: בוחרים קומה וכיוון, רואים את הנוף מהחלון ואת המפה</span>
+		</a>
+		<a class="nldev-tour" href="<?php echo esc_url( home_url( '/projects/hamedina/' ) ); ?>">
+			<b>מגדלי כיכר המדינה</b>
+			<span>שלושה מגדלים בתלת ממד: בוחרים מגדל וקומה ונכנסים לדירה</span>
+		</a>
 		<a class="nldev-tour" href="<?php echo $somail; ?>">
 			<b>מתחם סומייל</b>
 			<span>סיור תלת ממדי במתחם, כולל הסביבה והרחובות</span>
@@ -122,12 +133,13 @@ if ( ! function_exists( 'nadlan_dev_page_render' ) ) {
 	</div>
 
 	<div class="nldev-honest">
-		<p>האתר נמצא בהקמה. כל המידע המוצג כרגע נאסף ממקורות גלויים ברשת ומקושר למקורותיו, ונתונים שאינם רשמיים מסומנים כהמחשה או כאומדן.</p>
+		<p>המידע המוצג נאסף ממקורות גלויים ברשת ומקושר למקורותיו, ונתונים שאינם רשמיים מסומנים כהמחשה או כאומדן.</p>
 		<p>אנחנו לא אתר רשמי של אף יזם ואיננו פועלים מטעמו. חברה שמבקשת לתקן פרט או להסיר פרויקט מהמערכת, נעשה זאת מיד וללא כל תנאי.</p>
 	</div>
 
 	<div class="nldev-cta">
 		<a href="mailto:info@nad-lan.co.il?subject=פנייה%20מעמוד%20היזמים">דברו איתנו</a>
+		<a class="nldev-cta2" href="<?php echo esc_url( home_url( '/marketing/#film' ) ); ?>">לסרט ולמסלולי השיווק</a>
 		<p>info@nad-lan.co.il</p>
 	</div>
 </div>

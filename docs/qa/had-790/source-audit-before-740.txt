@@ -1,0 +1,23 @@
+[GREEN] https://nad-lan.co.il/developers/
+    http 200 · 192,831b · 827ms · sha 1d9ff8f731da · CHANGED
+    title(27): ליזמים ולחברות בנייה - נדלן
+    h1x1 canonical x1 hreflang 10 favicon 4 jsonld 1 scripts 47 styles 29
+    DIFF vs 20261107T113856Z:
+      · scripts_count: 44 -> 47
+      · scripts+ trail.js
+      · bytes 191,002 -> 192,831
+[GREEN] https://nad-lan.co.il/projects/rainbow-tel-aviv/
+    http 200 · 482,187b · 910ms · sha ea10f8ee93ab · CHANGED
+    title(66): ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 68 styles 44
+    DIFF vs 20261121T130951Z:
+      · bytes 482,164 -> 482,187
+[YELLOW] https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/
+    http 200 · 381,176b · 882ms · sha 1d72dcbda036 · CHANGED
+    title(61): H Infinity מתחם סומייל תל אביב | קבוצת חג&#039;ג&#039; | נדלן
+    h1x1 canonical x1 hreflang 12 favicon 4 jsonld 4 scripts 66 styles 43
+    FLAGS: YELLOW desc 168ch
+    DIFF vs 20261121T130951Z:
+      · bytes 381,190 -> 381,176
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

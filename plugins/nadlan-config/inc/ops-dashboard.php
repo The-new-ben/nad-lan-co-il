@@ -13,10 +13,14 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+// HAD-790 (21.11, Antigravity's audit): the top-level "NadLan Ops" link opened another screen. A post type shown under this menu
+// (placements.php, show_in_menu 'nadlan-ops') became its first item, and WordPress points the top-level link at the first item.
+// The dashboard now registers first (priority 9) and is its own first item, so the link opens the dashboard.
 add_action( 'admin_menu', function () {
 	add_menu_page( 'NadLan Ops', 'NadLan Ops', 'manage_options', 'nadlan-ops',
 		'nadlan_ops_render', 'dashicons-chart-bar', 24 );
-} );
+	add_submenu_page( 'nadlan-ops', 'NadLan Ops', 'NadLan Ops', 'manage_options', 'nadlan-ops', 'nadlan_ops_render', 0 );
+}, 9 );
 
 if ( ! function_exists( 'nadlan_ops_count' ) ) {
 	function nadlan_ops_count( $post_type, $meta_key = '', $meta_value = '' ) {
