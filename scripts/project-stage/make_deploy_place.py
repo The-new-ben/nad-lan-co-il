@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""PREPARED, NOT RUN (HAD-787, board 24): the questions block at the end of /sde-dov/ and /projects/hamedina/.
+"""RUN ON 21.11.2026 as 1.72.733 after Ben's yes on the heading (through the coordinator). Was: PREPARED, NOT RUN (HAD-787, board 24): the questions block at the end of /sde-dov/ and /projects/hamedina/.
 Waits for Ben's word on the heading ("שאלות של קונים על <מקום>"), passed by the coordinator session. Until then: do not run.
 
   python scripts/project-stage/make_deploy_place.py <PREV> <NEW>      e.g. 731 732 (PREV = the live version, check health first)
@@ -30,7 +30,7 @@ ROWS = ("    ('/sde-dov/%s', ['data-nlfpl=\"sde-dov\"', %r, 'assets/proforum/pla
         "    ('/forum/%s', ['nlf-dir', 'nlfc-roomband'], %r + ['nlfpl-fchip'], []),\n"
         "    ('/projects/rainbow-tel-aviv/%s', ['nlsh'], %r + ['data-nlfpl'], []),\n"
         "    ('%splace.js%s', ['nlfExtra'], ['Fatal error'], []),\n"
-        "    ('%splace.css%s', ['.nlfpl'], ['Fatal error'], []),\n"
+        "    ('%splace.css%s', ['.nlfpl', '.nlfpl-box'], ['Fatal error'], []),\n"
         "    ('/wp-json/nadlan/v1/forum/ping%s', ['\"loaded\":true', '\"public\":true'], [], []),\n") % (
             T, H["sde-dov"], E, T, H["hamedina"], E, NEWV, E, T, E, T, E, A, T, A, T, T)
 NEW = ["inc/pro-forum-place.php", "assets/proforum/place.js", "assets/proforum/place.css"]

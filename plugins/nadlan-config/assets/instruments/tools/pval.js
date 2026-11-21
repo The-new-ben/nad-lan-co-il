@@ -342,7 +342,75 @@
         var rows = c.hoods.filter(function (h) { return h[k]; }).sort(function (a, b) { return b[k][0] - a[k][0]; });
         out.table = { title: 'חציון ' + n + ' חדרים בשכונות ' + v.city, head: ['שכונה', 'חציון', 'רבעון'], num: [1], rows: rows.map(function (h) { return [h.n, F.ils(h[k][0]), h[k][1]]; }) };
       }
+      // 1.72.732: what the row below may carry to the forum's form, on the visitor's tick (never an address: the tool has no street)
+      window.NLPV.last = { city: v.city, hood: v.hood ? String(v.hood) : '', rooms: +v.rooms || 0, sqm: +v.sqm || 0, value: Math.round(r.value), level: b.level };
       return out;
     }
   });
+})();
+
+/* 1.72.732 (HAD-787, Claude Design board 25; Ben 21.11.2026: "a gentle link, exactly in the right place"): ONE quiet row inside the
+   result, right after the note that ends "הערכה ראשונית, לא חוות דעת שמאית", to the forum's form "כמה הדירה שלכם שווה". Hebrew pages
+   only, only when the result stands on an official median, and only after the visitor changed a value (the opening values are an
+   example). The details travel in sessionStorage (never in the address) and only while the tick stays on. */
+(function () {
+  if (!/^he/i.test(document.documentElement.lang || 'he')) return;
+  var KEY = 'nlfh_from_est', touched = false, told = false, carry = true;
+  function track(n, d) { try { if (window.nlTrack) window.nlTrack(n, d || {}); } catch (e) { /* the tracker is optional */ } }
+  function css() {
+    if (document.getElementById('nlpvf-css')) return;
+    var s = document.createElement('style'); s.id = 'nlpvf-css';
+    s.textContent = '.nlpvf{margin:14px 0 4px;border:1.5px solid #2F6F86;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;background:#FFFFFF;text-align:start}'
+      + '.nlpvf .nlpvf-h{font-family:inherit!important;font-weight:800!important;font-size:17px;line-height:1.3;color:#101820!important}'
+      + '.nlpvf .nlpvf-t{font-size:14.5px;line-height:1.5;color:#3A4650}'
+      + '.nlpvf a.nlpvf-a{display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:10px;border:2px solid #2F6F86!important;background:#FFFFFF!important;color:#2F6F86!important;font-weight:700;font-size:15.5px;text-decoration:none!important;box-shadow:none!important}'
+      + '.nlpvf a.nlpvf-a:hover,.nlpvf a.nlpvf-a:focus-visible{background:#2F6F86!important;color:#FFFFFF!important}'
+      + '.nlpvf .nlpvf-c{display:flex;gap:9px;align-items:flex-start;font-size:13px!important;font-weight:400!important;line-height:1.45;color:#3A4650!important;cursor:pointer;min-height:44px;margin:0}.nlpvf .nlpvf-c{flex-wrap:nowrap!important}.nlpvf .nlpvf-c span{font-weight:400!important;flex:1 1 0;min-width:0}'
+      + '.nlpvf .nlpvf-c input{width:20px;height:20px;margin:1px 0 0;flex-shrink:0;accent-color:#2F6F86}'
+      + '@media (min-width:700px){.nlpvf a.nlpvf-a{align-self:flex-start}}@media print{.nlpvf{display:none}}';
+    document.head.appendChild(s);
+  }
+  function build() {
+    var w = document.createElement('div'); w.className = 'nlpvf'; w.setAttribute('role', 'group'); w.setAttribute('aria-label', 'שאלה לפורום על הדירה');
+    var h = document.createElement('b'); h.className = 'nlpvf-h'; h.textContent = 'הדירה שלכם לא בדיוק כמו החציון?';
+    var t = document.createElement('span'); t.className = 'nlpvf-t'; t.textContent = 'קומה, נוף, שיפוץ ורחוב משנים את המחיר. אפשר לשאול את חברי הפורום מה דעתם.';
+    var a = document.createElement('a'); a.className = 'nlpvf-a'; a.href = location.origin + '/forum/#ask-home'; a.textContent = 'שאלו בפורום על הדירה שלכם';
+    var l = document.createElement('label'); l.className = 'nlpvf-c';
+    var c = document.createElement('input'); c.type = 'checkbox'; c.checked = carry;
+    var ls = document.createElement('span'); ls.textContent = 'להעביר לשאלה את מה שמילאתי: עיר, שכונה, חדרים, שטח וההערכה. אפשר לשנות ולמחוק לפני הפרסום.';
+    l.appendChild(c); l.appendChild(ls);
+    c.addEventListener('change', function () { carry = c.checked; });
+    a.addEventListener('click', function () {
+      var L = window.NLPV && window.NLPV.last;
+      try {
+        if (carry && L) sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), city: L.city, nbhd: L.hood, rooms: L.rooms, sqm: L.sqm, est: L.value, level: L.level }));
+        else sessionStorage.removeItem(KEY);
+      } catch (e) { /* private mode: the form opens empty */ }
+      track('est_forum_press', { carry: carry && L ? 1 : 0 });
+    });
+    w.appendChild(h); w.appendChild(t); w.appendChild(a); w.appendChild(l);
+    return w;
+  }
+  function place(root) {
+    var ans = root.querySelector('.nli__answer'), out = ans && ans.parentNode, L = window.NLPV && window.NLPV.last;
+    if (!out) return;
+    var note = null, have = null;
+    Array.prototype.forEach.call(out.children, function (e) { if (e.classList.contains('nli__note')) note = e; if (e.classList.contains('nlpvf')) have = e; });
+    var ok = touched && note && L && (L.level === 'hood' || L.level === 'city');
+    if (!ok) { if (have) have.remove(); return; }
+    if (have) return;
+    css(); note.parentNode.insertBefore(build(), note.nextSibling);
+    if (!told) { told = true; track('est_forum_row', {}); }
+  }
+  function watch(root) {
+    var touch = function (e) {
+      var f = e.target && e.target.closest ? e.target.closest('.nli__form') : null;
+      if (!f || (e.type === 'click' && !e.target.closest('button'))) return;
+      touched = true; setTimeout(function () { place(root); }, 260);
+    };
+    root.addEventListener('input', touch, true); root.addEventListener('change', touch, true); root.addEventListener('click', touch, true);
+    new MutationObserver(function () { place(root); }).observe(root, { childList: true, subtree: true });
+  }
+  function start() { Array.prototype.forEach.call(document.querySelectorAll('[data-nli="pval"]'), watch); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

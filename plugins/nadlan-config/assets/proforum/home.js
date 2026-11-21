@@ -219,6 +219,7 @@
 			if (cityName.length < 2) { say(msg, 'כתבו את שם העיר.', true); form.elements.city_other.focus(); return; }
 			if (!form.elements.rooms.value) { say(msg, 'בחרו כמה חדרים.', true); form.elements.rooms.focus(); return; }
 			if (/\d\s*[א-ת]?['׳"]?\s*$/.test(street)) { say(msg, 'בלי מספר בית, רק שם הרחוב.', true); form.elements.street.focus(); return; }
+			if (!st.member) { keepDraft(); store('nlfh_open', '1'); } // a guest passes the one-step entry first; what he filled waits for him
 			busy(btn, true); say(msg, 'שולחים...');
 			write('home', {
 				city: cityName, nbhd: nb.value || 0, street: street, rooms: form.elements.rooms.value, sqm: digits(form.elements.sqm.value),
@@ -226,9 +227,64 @@
 				state: chip('state'), intent: chip('intent'), body: form.elements.body.value
 			}, form).then(function (j) {
 				say(msg, j.message);
+				store(FROM, null);
 				window.location.assign(j.url);
 			}).catch(function (er) { if (er.code !== 'cancel') { say(msg, er.message, true); } }).then(function () { busy(btn, false); });
 		});
+
+		/* ---- arrival from the value estimator (board 25, assets/instruments/tools/pval.js): /forum/#ask-home opens this sheet for
+		   everyone, filled with what the visitor chose to carry (sessionStorage, one hour, never the address). Nothing is published
+		   before "להציג לפורום"; the chip's ✕ takes the carried details out. ---- */
+		var FROM = 'nlfh_from_est';
+		var track = function (n, d) { try { if (window.nlTrack) { window.nlTrack(n, d || {}); } } catch (x) {} };
+		var carried = function () { try { var j = JSON.parse(load(FROM) || 'null'); return j && j.t && Date.now() - j.t < 3600000 ? j : null; } catch (x) { return null; } };
+		var keepDraft = function () {
+			var j = carried() || { t: Date.now() };
+			j.t = Date.now(); j.draft = 1;
+			j.city = city.value === 'other' ? form.elements.city_other.value.trim() : city.value;
+			j.nbhd = nb.value || ''; j.rooms = form.elements.rooms.value; j.sqm = digits(form.elements.sqm.value);
+			j.street = form.elements.street.value.trim(); j.floor = form.elements.floor.value.trim(); j.floors = digits(form.elements.floors.value);
+			j.asking = digits(form.elements.asking.value); j.body = form.elements.body.value;
+			store(FROM, JSON.stringify(j));
+		};
+		var estLine = function (j) { return j.est > 0 ? 'המחשבון נתן לי ' + money(j.est) + ' לפי חציון ' + ('hood' === j.level ? 'השכונה' : 'העיר') + '. מה דעתכם, זה קרוב למחיר האמיתי?' : ''; };
+		var fill = function (j) {
+			var has = function (sel, v) { return Array.prototype.some.call(sel.options, function (o) { return o.value === v; }); };
+			if (j.city) {
+				if (has(city, j.city)) { city.value = j.city; } else { city.value = 'other'; form.elements.city_other.value = j.city; }
+				city.dispatchEvent(new Event('change'));
+				if (j.nbhd) { var n = 0, iv = setInterval(function () { if (has(nb, String(j.nbhd))) { nb.value = String(j.nbhd); clearInterval(iv); } else if (++n > 30) { clearInterval(iv); } }, 200); }
+			}
+			Array.prototype.forEach.call(form.elements.rooms.options, function (o) { if (o.value && Number(o.value) === Number(j.rooms)) { form.elements.rooms.value = o.value; } });
+			if (+j.sqm > 0) { form.elements.sqm.value = String(Math.round(+j.sqm)); }
+			if (j.draft) {
+				form.elements.street.value = j.street || ''; form.elements.floor.value = j.floor || ''; form.elements.floors.value = j.floors || '';
+				form.elements.asking.value = money(j.asking); form.elements.body.value = j.body || '';
+			} else if (!form.elements.body.value) { form.elements.body.value = estLine(j); }
+			var old = $('[data-nlfh-from]', form); if (old) { old.remove(); }
+			if (!(j.est > 0)) { return; }
+			var box = el('div', 'nlfh-from'); box.setAttribute('data-nlfh-from', '');
+			var tx = el('span'); tx.appendChild(el('b', '', 'הועבר מהמחשבון: ')); tx.appendChild(document.createTextNode('הערכה ראשונית ' + money(j.est) + ' לפי חציון ' + ('hood' === j.level ? 'השכונה' : 'העיר')));
+			var x = el('button', 'nlfh-from-x', '✕'); x.type = 'button'; x.setAttribute('aria-label', 'להסיר את מה שהועבר מהמחשבון');
+			x.addEventListener('click', function () {
+				if (form.elements.body.value === estLine(j)) { form.elements.body.value = ''; }
+				city.value = ''; form.elements.city_other.value = ''; city.dispatchEvent(new Event('change'));
+				form.elements.rooms.value = ''; form.elements.sqm.value = '';
+				store(FROM, null); box.remove(); track('est_forum_remove', {});
+			});
+			box.appendChild(tx); box.appendChild(x);
+			form.insertBefore(box, form.firstChild);
+		};
+		var arrive = function () {
+			var j = carried();
+			dlg._ret = document.activeElement;
+			if (dlg.showModal) { if (!dlg.open) { dlg.showModal(); } } else { dlg.setAttribute('open', ''); }
+			if (j) { fill(j); }
+			track('est_forum_arrive', { filled: j ? 1 : 0 });
+		};
+		if ('#ask-home' === location.hash) { arrive(); }
+		else if (carried() && carried().draft) { ready.then(function () { if (st.member) { setTimeout(function () { var j = carried(); if (j && dlg.open) { fill(j); } }, 400); } }); }
+		window.addEventListener('hashchange', function () { if ('#ask-home' === location.hash) { arrive(); } });
 	}
 
 	/* ---------------- the estimate in an answer (part ג) ---------------- */

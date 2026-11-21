@@ -5447,3 +5447,13 @@ DONE (content only) 20.11.2026: pages 4757, 4756, 4759 corrected (body + Yoast m
 DONE (content only) 20.11.2026: page 4755 /sde-dov/hotels/ corrected on Ben's yes (title + H1 + Yoast title 3,000 -> 3,700 rooms, body 3,700 / 200,000 m2 / centre 1,700 / north 1,320, three dependent sentences reworded, meta description). New WordPress revision. Claude [coordinator, Opus 5.5].
 
 PREPARED, NOT CLAIMED (HAD-787, 21.11.2026): the questions block for /sde-dov/ and /projects/hamedina/ waits for Ben's word on the heading, passed by the coordinator. Ready lock line: 'CLAIM + RELEASE LOCK 1.72.<N> (HAD-787 board 24): NEW inc/pro-forum-place.php, assets/proforum/place.js, place.css; SWAP inc/pro-forum.php, inc/pro-forum-render.php'. Maker: scripts/project-stage/make_deploy_place.py <PREV> <NEW>. Baselines: docs/research/2026-11-21-place-block/. Any session that swaps inc/pro-forum.php or inc/pro-forum-render.php before then: tell the forum session.
+
+CLAIM + RELEASE LOCK 1.72.732 (HAD-787 board 25, on the coordinator's word: one link from /property-value-estimator/ to the forum's apartment form): SWAP assets/instruments/tools/pval.js, assets/proforum/home.js, assets/proforum/home.css only. Claude [pro forum HAD-787, Fable 5.2] 21.11.2026 11:15 UTC.
+
+WARNING 21.11.2026 11:22 UTC (forum session): 1.72.732 above is IN FLIGHT (files written, checks running; health says 1.72.732). At 13:20 local another session wrote its own scripts/project-stage/make_deploy732.py (HAD-795 package 6) over the maker of this release. DO NOT run that maker or deploy732.py: the number is taken. HAD-795: move it to make_deploy733.py with PREV = 732 and claim after the RELEASE DONE 1.72.732 line. The maker of 732 as it ran is kept as make_deploy732_estimator_link.py.
+
+ORDER AGREED 21.11.2026 (forum + rentals sessions): 1.72.732 forum (in flight) -> 1.72.733 forum (the questions block on /sde-dov/ and /projects/hamedina/, Ben's yes through the coordinator) -> 1.72.734 rentals (HAD-795). Each claims only after the DONE line before it. make_deploy732.py is again the maker of 732 as it ran.
+
+RELEASE DONE 1.72.732 (HAD-787 board 25): released and verified on the first run (deploy-result-732.json, health 1.72.732). The estimator row and the forum form's arrival from it.
+
+CLAIM + RELEASE LOCK 1.72.733 (HAD-787 board 24, Ben's yes on the heading through the coordinator): NEW inc/pro-forum-place.php, assets/proforum/place.js, place.css; SWAP inc/pro-forum.php, inc/pro-forum-render.php. Claude [pro forum HAD-787, Fable 5.2] 21.11.2026 11:38 UTC.

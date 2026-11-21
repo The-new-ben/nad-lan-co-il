@@ -1,0 +1,14 @@
+[GREEN] https://nad-lan.co.il/property-value-estimator/
+    http 200 · 321,468b · 1360ms · sha ecb51aa67143 · CHANGED
+    title(60): הערכת שווי דירה בחינם: מחשבון שווי נכס לפי עסקאות אמת | נדלן
+    h1x1 canonical x1 hreflang 14 favicon 4 jsonld 2 scripts 50 styles 32
+    DIFF vs 20261121T105923Z:
+      · bytes 321,460 -> 321,468
+[GREEN] https://nad-lan.co.il/forum/
+    http 200 · 229,110b · 1268ms · sha c915a343fa4a · CHANGED
+    title(40): פורום נדל"ן: שאלות ותשובות עם בעלי מקצוע
+    h1x1 canonical x1 hreflang 0 favicon 4 jsonld 0 scripts 49 styles 21
+    DIFF vs 20261121T105923Z:
+      · bytes 229,087 -> 229,110
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

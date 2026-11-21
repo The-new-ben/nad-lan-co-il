@@ -85,3 +85,9 @@
 .nlf .nlfh-form .nlf-grid2 .nlf-field label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:359px){.nlf .nlfh-form .nlf-grid2{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.nlf .nlfh-btn,.nlf .nlfh-vbtn{transition:none}}
+
+/* 1.72.732 board 25: what came from the value estimator, with its own remove button */
+.nlf .nlfh-from{display:flex;gap:8px;align-items:center;background:#E6F0F4;color:#1F4B5C;border-radius:10px;padding:6px 6px 6px 11px;font-size:13.5px;line-height:1.45;margin:0 0 10px}
+.nlf .nlfh-from > span{flex:1 1 auto;min-width:0}
+.nlf .nlfh-from .nlfh-from-x{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:0 !important;background:transparent !important;color:#1F4B5C !important;font-size:17px;font-weight:700;cursor:pointer}
+.nlf .nlfh-from .nlfh-from-x:hover,.nlf .nlfh-from .nlfh-from-x:focus-visible{background:#D3E4EB !important}

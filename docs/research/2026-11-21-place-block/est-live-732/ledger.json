@@ -1,0 +1,146 @@
+{
+ "local_files": false,
+ "at": "2026-11-21 13:38:22",
+ "ledger": [
+  {
+   "step": "phone: no row on the opening example",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "phone: the row shows after a value was changed",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "step": "phone: it sits right after the note, below the number, not floating",
+   "ok": true,
+   "detail": "{'afterNote': True, 'noteEnd': ' הערכה ראשונית, לא חוות דעת שמאית.', 'belowNumber': True, 'fixed': 'static', 'linkH': 46, 'link': 'שאלו בפורום על הדירה שלכם', 'href': 'https://nad-lan.co.il/forum/#ask-home', 'w': 292, 'pageW': 390, 'vw': 390}"
+  },
+  {
+   "step": "phone: link text and target, 44px or more, no sideways scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "phone: the forum form opens filled (city, rooms, size, question, chip)",
+   "ok": true,
+   "detail": "{'open': True, 'city': 'תל אביב יפו', 'other': '', 'nbhd': '', 'rooms': '3', 'sqm': '100', 'body': 'המחשבון נתן לי ₪4,225,800 לפי חציון העיר. מה דעתכם, זה קרוב למחיר האמיתי?', 'chip': 'הועבר מהמחשבון: הערכה ראשונית ₪4,225,800 לפי חציון העיר\\n✕', 'store': True}"
+  },
+  {
+   "step": "phone: the carried estimate equals the number shown in the tool",
+   "ok": true,
+   "detail": "₪4,225,800"
+  },
+  {
+   "step": "phone: the chip's X removes the carried details",
+   "ok": true,
+   "detail": "{'city': '', 'rooms': '', 'sqm': '', 'body': '', 'chip': False, 'store': False, 'open': True}"
+  },
+  {
+   "step": "phone: nothing was sent to the forum without the last press",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "phone: the tick stays off after the result is redrawn",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "phone: the event 'row shown' fires once per page",
+   "ok": true,
+   "detail": "['est_forum_row:{}']"
+  },
+  {
+   "step": "phone: no row when the result is not a median (price per metre)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "phone: the event 'link pressed' fires, with carry 0 when the tick is off",
+   "ok": true,
+   "detail": "['est_forum_row:{}', 'est_forum_press:{\"carry\":0}']"
+  },
+  {
+   "step": "phone: with the tick off the form opens empty",
+   "ok": true,
+   "detail": "{'open': True, 'city': '', 'body': '', 'chip': False}"
+  },
+  {
+   "step": "phone: still nothing sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "desktop: no row on the opening example",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "desktop: the row shows after a value was changed",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "step": "desktop: it sits right after the note, below the number, not floating",
+   "ok": true,
+   "detail": "{'afterNote': True, 'noteEnd': ' הערכה ראשונית, לא חוות דעת שמאית.', 'belowNumber': True, 'fixed': 'static', 'linkH': 46, 'link': 'שאלו בפורום על הדירה שלכם', 'href': 'https://nad-lan.co.il/forum/#ask-home', 'w': 678, 'pageW': 1280, 'vw': 1280}"
+  },
+  {
+   "step": "desktop: link text and target, 44px or more, no sideways scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "desktop: the forum form opens filled (city, rooms, size, question, chip)",
+   "ok": true,
+   "detail": "{'open': True, 'city': 'תל אביב יפו', 'other': '', 'nbhd': '', 'rooms': '3', 'sqm': '100', 'body': 'המחשבון נתן לי ₪4,225,800 לפי חציון העיר. מה דעתכם, זה קרוב למחיר האמיתי?', 'chip': 'הועבר מהמחשבון: הערכה ראשונית ₪4,225,800 לפי חציון העיר\\n✕', 'store': True}"
+  },
+  {
+   "step": "desktop: the carried estimate equals the number shown in the tool",
+   "ok": true,
+   "detail": "₪4,225,800"
+  },
+  {
+   "step": "desktop: the chip's X removes the carried details",
+   "ok": true,
+   "detail": "{'city': '', 'rooms': '', 'sqm': '', 'body': '', 'chip': False, 'store': False, 'open': True}"
+  },
+  {
+   "step": "desktop: nothing was sent to the forum without the last press",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "step": "desktop: the tick stays off after the result is redrawn",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "desktop: the event 'row shown' fires once per page",
+   "ok": true,
+   "detail": "['est_forum_row:{}']"
+  },
+  {
+   "step": "desktop: no row when the result is not a median (price per metre)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "desktop: the event 'link pressed' fires, with carry 0 when the tick is off",
+   "ok": true,
+   "detail": "['est_forum_row:{}', 'est_forum_press:{\"carry\":0}']"
+  },
+  {
+   "step": "desktop: with the tick off the form opens empty",
+   "ok": true,
+   "detail": "{'open': True, 'city': '', 'body': '', 'chip': False}"
+  },
+  {
+   "step": "desktop: still nothing sent to the forum",
+   "ok": true,
+   "detail": "[]"
+  }
+ ]
+}

@@ -35,10 +35,23 @@ define( 'NLFP2_DB', '1' );
  *    forum's own pure part.
  * ======================================================================================================= */
 
-/** the registered places: key => label, page path, default heading, ask placeholder. Exactly these two (board 24). */
+/**
+ * The registered places: key => label, page path, default heading, ask placeholder.
+ * TO ADD A PLACE: one line in the list below, key => array( the name as it reads after "על", the page's path ). The key is latin,
+ * lower case, at most 20 characters, and is never changed afterwards (discussions are tagged with it). Nothing else is needed:
+ * the heading ("שאלות של קונים על <name>", Ben's wording of 21.11.2026), the ask line, the filter /forum/?place=<key> and the link
+ * back all follow. A page that is not published or not found simply shows nothing.
+ */
+function nlfp2_places() {
+	return array(
+		'sde-dov'  => array( 'שדה דב', '/sde-dov/' ),
+		'hamedina' => array( 'כיכר המדינה', '/projects/hamedina/' ),
+	);
+}
+
 function nlfp2_registry() {
 	$out = array();
-	foreach ( array( 'sde-dov' => array( 'שדה דב', '/sde-dov/' ), 'hamedina' => array( 'כיכר המדינה', '/projects/hamedina/' ) ) as $k => $x ) {
+	foreach ( nlfp2_places() as $k => $x ) {
 		$out[ $k ] = array( 'label' => $x[0], 'path' => $x[1], 'heading' => nlfp2_default_heading( $x[0] ), 'ask' => 'מה תרצו לשאול על ' . $x[0] . '?' );
 	}
 	return $out;
@@ -332,7 +345,7 @@ function nlfp2_embed_html( $key ) {
 	$rows = nlfp2_ready() ? nlfp2_recent( $key, 3 ) : array();
 	$week = $rows ? nlfp2_week_text( nlfp2_week_count( $key ) ) : '';
 	$uid  = 'nlfpl-' . $key;
-	$h  = '<section class="nlf nlf-win nlfpl" dir="rtl" aria-labelledby="' . esc_attr( $uid ) . '-h" data-pro="0" data-pro-name="" data-cat="general" data-nlfpl="' . esc_attr( $key ) . '">';
+	$h  = '<section class="nlf nlf-win nlfpl" dir="rtl" aria-labelledby="' . esc_attr( $uid ) . '-h" data-pro="0" data-pro-name="" data-cat="general" data-nlfpl="' . esc_attr( $key ) . '"><div class="nlfpl-box">';
 	$h .= '<div class="nlfpl-top"><span class="nlfpl-kick">מהפורום של נדל"ן</span>'
 		. ( '' !== $week ? '<span class="nlfpl-live"><i aria-hidden="true"></i>' . esc_html( $week ) . '</span>' : '' ) . '</div>';
 	$h .= '<h2 class="nlfpl-h" id="' . esc_attr( $uid ) . '-h">' . esc_html( $p['heading'] ) . '</h2>';
@@ -347,7 +360,7 @@ function nlfp2_embed_html( $key ) {
 	} else {
 		$h .= '<p class="nlfpl-none">' . esc_html( nlfp2_none_text() ) . '</p>';
 	}
-	return $h . '</section>';
+	return $h . '</div></section>';
 }
 
 /* after the article: late (90), once, only in the main loop of the registered page itself, only with the gate open */

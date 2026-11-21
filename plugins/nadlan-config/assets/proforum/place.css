@@ -4,7 +4,9 @@
    44px or more. The theme forces !important on buttons and headings, so the few rules that meet them say !important too. */
 
 /* part א: the block at the end of the place page */
-.nlf.nlf-win.nlfpl{border:0;border-radius:22px;background:#FFFFFF;box-shadow:0 0 0 2px #101820;padding:16px;gap:12px;margin:32px auto 8px;max-width:760px;width:100%;overflow:visible;clear:both}
+/* the section takes whatever width the page gives its blocks (the Kikar page forces min(1400px, 100% - 40px) with !important); the card itself is the box inside it, 760px, centred like the article column */
+.nlf.nlf-win.nlfpl{display:block;border:0 !important;border-radius:0 !important;background:none !important;box-shadow:none !important;padding:0 !important;margin-top:32px;margin-bottom:8px;width:100%;overflow:visible;clear:both}
+.nlf .nlfpl-box{max-width:760px;margin:0 auto;box-sizing:border-box;border-radius:22px;background:#FFFFFF;box-shadow:0 0 0 2px #101820;padding:16px;display:flex;flex-direction:column;gap:12px}
 .nlf .nlfpl-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .nlf .nlfpl-kick{font-size:12.5px;font-weight:700;color:#B0144F}
 .nlf .nlfpl-live{margin-inline-start:auto;display:flex;align-items:center;gap:5px;font-size:12.5px;color:#3A4650}
@@ -43,3 +45,8 @@
 .nlf .nlfpl-fchip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:#101820;color:#FFFFFF !important;font-weight:700;font-size:15px;text-decoration:none !important}
 .nlf .nlfpl-fchip:hover{background:#3A4650}
 .nlf .nlfpl-on{border-color:#D5DBDF}
+
+/* 21.11.2026, seen on the real pages before the release: the theme's own h2 rule (serif face, size, margins, !important) won over the
+   block's heading, and on the Kikar page (a full-width article) the block ran 1240px wide. Both are pinned here. */
+.nlf.nlfpl .nlfpl-box h2.nlfpl-h{margin:0 !important;padding:0 !important;border:0 !important;font-family:var(--hf) !important;font-weight:800 !important;font-size:21px !important;line-height:1.25 !important;color:#101820 !important;letter-spacing:0 !important;text-transform:none !important}
+@media (min-width:700px){.nlf.nlfpl .nlfpl-box h2.nlfpl-h{font-size:24px !important}}
