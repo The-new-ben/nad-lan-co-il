@@ -1,0 +1,217 @@
+{
+ "at": "2026-11-21 23:02:18",
+ "ledger": [
+  {
+   "step": "discussion 6: the team's reply to Alona is on the page",
+   "ok": true,
+   "detail": "{'text': 'צנ צוות נדל\"ן חדש בזירה עכשיו היי אלונה, ברוכה הבאה. לא צריך לשלוח אנשים לגוגל. מתחת לתיבת התשובה, ליד השם שלך, יש קישור \"אני בעל מקצוע\". לוחצים, ממלאים שם, מקצוע, עיר וטלפון, ואחרי אישור קצר שלנו הכרטיס שלך מופיע ליד כל', 'by': 'צוות נדל\"ן'}"
+  },
+  {
+   "step": "discussion 21: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'כמה דירות מתוכננות בשדה דב, ובאיזה חלק של הרובע? | פורום נדל'}"
+  },
+  {
+   "step": "discussion 22: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'מה יהיה בפארק החוף של שדה דב, וכמה הוא קרוב לבתים? | פורום נ'}"
+  },
+  {
+   "step": "discussion 23: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'כ-3,700 חדרי מלון בשדה דב: יתרון או חיסרון למי שקונה דירה? |'}"
+  },
+  {
+   "step": "discussion 24: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'מתי צפויה מסירת הדירות במגדלי כיכר המדינה? | פורום נדל\"ן'}"
+  },
+  {
+   "step": "discussion 25: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'מה טווח המחירים במגדלי כיכר המדינה, לפי מקורות גלויים? | פור'}"
+  },
+  {
+   "step": "discussion 26: title is the question, signed by the team, indexable, own canonical, one answer",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 1, 'count': 'תשובה אחת', 'title': 'שלושה מגדלים ו-453 דירות בכיכר המדינה: מה חשוב לבדוק לפני שב'}"
+  },
+  {
+   "step": "discussion 27: title is the question, signed by the team, indexable, own canonical",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 0, 'count': 'עוד אין תשובות', 'title': 'לפני שחותמים עם קבלן: מה בודקים בעצמכם, ומה משאירים לעורך הד'}"
+  },
+  {
+   "step": "discussion 28: title is the question, signed by the team, indexable, own canonical",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 0, 'count': 'עוד אין תשובות', 'title': 'הצמדה למדד תשומות הבנייה: כמה מהמחיר באמת צמוד? | פורום נדל\"'}"
+  },
+  {
+   "step": "discussion 29: title is the question, signed by the team, indexable, own canonical",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 0, 'count': 'עוד אין תשובות', 'title': 'מפרט בדירה מקבלן: מה חייב להיות כתוב בו? | פורום נדל\"ן'}"
+  },
+  {
+   "step": "discussion 30: title is the question, signed by the team, indexable, own canonical",
+   "ok": true,
+   "detail": "{'type': 'DiscussionForumPosting', 'comments': 0, 'count': 'עוד אין תשובות', 'title': 'אותה דירה בשתי קומות שונות: איך משווים? | פורום נדל\"ן'}"
+  },
+  {
+   "step": "sde-dov page: the three rows now show one answer each",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'rows': ['1 | תשובה אחת · לפני דקה', '1 | תשובה אחת · לפני דקה', '1 | תשובה אחת · לפני דקה']}"
+  },
+  {
+   "step": "hamedina page: the three rows now show one answer each",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'rows': ['1 | תשובה אחת · לפני דקה', '1 | תשובה אחת · לפני דקה', '1 | תשובה אחת · לפני דקה']}"
+  },
+  {
+   "step": "the forum list shows the four new threads",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "structured": {
+  "21": {
+   "title": "כמה דירות מתוכננות בשדה דב, ובאיזה חלק של הרובע? | פורום נדל\"ן",
+   "h1": "כמה דירות מתוכננות בשדה דב, ובאיזה חלק של הרובע?",
+   "replies": 1,
+   "body": 1993,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T13:13:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/21/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "22": {
+   "title": "מה יהיה בפארק החוף של שדה דב, וכמה הוא קרוב לבתים? | פורום נדל\"ן",
+   "h1": "מה יהיה בפארק החוף של שדה דב, וכמה הוא קרוב לבתים?",
+   "replies": 1,
+   "body": 2081,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T13:10:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/22/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "23": {
+   "title": "כ-3,700 חדרי מלון בשדה דב: יתרון או חיסרון למי שקונה דירה? | פורום נדל\"ן",
+   "h1": "כ-3,700 חדרי מלון בשדה דב: יתרון או חיסרון למי שקונה דירה?",
+   "replies": 1,
+   "body": 1946,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T13:07:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/23/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "24": {
+   "title": "מתי צפויה מסירת הדירות במגדלי כיכר המדינה? | פורום נדל\"ן",
+   "h1": "מתי צפויה מסירת הדירות במגדלי כיכר המדינה?",
+   "replies": 1,
+   "body": 2077,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T13:04:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/24/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "25": {
+   "title": "מה טווח המחירים במגדלי כיכר המדינה, לפי מקורות גלויים? | פורום נדל\"ן",
+   "h1": "מה טווח המחירים במגדלי כיכר המדינה, לפי מקורות גלויים?",
+   "replies": 1,
+   "body": 2162,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T13:01:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/25/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "26": {
+   "title": "שלושה מגדלים ו-453 דירות בכיכר המדינה: מה חשוב לבדוק לפני שבוחרים מגדל וקומה? | פורום נדל\"ן",
+   "h1": "שלושה מגדלים ו-453 דירות בכיכר המדינה: מה חשוב לבדוק לפני שבוחרים מגדל וקומה?",
+   "replies": 1,
+   "body": 2113,
+   "type": "DiscussionForumPosting",
+   "comments": 1,
+   "answers": null,
+   "date": "2026-11-21T12:58:23+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/26/",
+   "team": true,
+   "count": "תשובה אחת"
+  },
+  "27": {
+   "title": "לפני שחותמים עם קבלן: מה בודקים בעצמכם, ומה משאירים לעורך הדין? | פורום נדל\"ן",
+   "h1": "לפני שחותמים עם קבלן: מה בודקים בעצמכם, ומה משאירים לעורך הדין?",
+   "replies": 0,
+   "body": 1859,
+   "type": "DiscussionForumPosting",
+   "comments": 0,
+   "answers": null,
+   "date": "2026-11-21T21:00:45+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/27/",
+   "team": true,
+   "count": "עוד אין תשובות"
+  },
+  "28": {
+   "title": "הצמדה למדד תשומות הבנייה: כמה מהמחיר באמת צמוד? | פורום נדל\"ן",
+   "h1": "הצמדה למדד תשומות הבנייה: כמה מהמחיר באמת צמוד?",
+   "replies": 0,
+   "body": 1876,
+   "type": "DiscussionForumPosting",
+   "comments": 0,
+   "answers": null,
+   "date": "2026-11-21T20:58:45+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/28/",
+   "team": true,
+   "count": "עוד אין תשובות"
+  },
+  "29": {
+   "title": "מפרט בדירה מקבלן: מה חייב להיות כתוב בו? | פורום נדל\"ן",
+   "h1": "מפרט בדירה מקבלן: מה חייב להיות כתוב בו?",
+   "replies": 0,
+   "body": 1799,
+   "type": "DiscussionForumPosting",
+   "comments": 0,
+   "answers": null,
+   "date": "2026-11-21T20:56:45+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/29/",
+   "team": true,
+   "count": "עוד אין תשובות"
+  },
+  "30": {
+   "title": "אותה דירה בשתי קומות שונות: איך משווים? | פורום נדל\"ן",
+   "h1": "אותה דירה בשתי קומות שונות: איך משווים?",
+   "replies": 0,
+   "body": 1813,
+   "type": "DiscussionForumPosting",
+   "comments": 0,
+   "answers": null,
+   "date": "2026-11-21T20:54:45+00:00",
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+   "canon": "https://nad-lan.co.il/forum/30/",
+   "team": true,
+   "count": "עוד אין תשובות"
+  }
+ }
+}
