@@ -5474,3 +5474,7 @@ CLAIM + RELEASE LOCK 1.72.736 (HAD-795 package 6, the tour seats the page): SWAP
 
 RELEASE DONE 1.72.736 (HAD-795 package 6, the tour seats the page): released and verified on the first run (deploy-result-736.json, health 1.72.736). Live as a visitor: scripts/rentals/lab_tour.py on the live address 30/30 (he + en, 1280 and 390, with the floating buttons); the whole journey recorded on a phone (D:\Media
 ad-lanentals-journey-2026-11-21). The lock is free. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 16:35 IL.
+
+CLAIM (content only, no file swap, no version bump) 21.11.2026 13:13 UTC: forum session posts six team opening questions with place tags (scripts/project-stage/forum_seed_place.py, a temporary bridge snippet for about a minute). Ben's yes through the coordinator.
+
+DONE (content only) 21.11.2026: six team opening questions live as forum topics 21-26 with place tags (sde-dov 21-23, hamedina 24-26); every figure re-read on its live page first (27 of 27); both place pages show three rows on the plain address, checked as a visitor 16 of 16. The bridge snippet is gone.

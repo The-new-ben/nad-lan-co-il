@@ -1,0 +1,85 @@
+{
+ "at": "2026-11-21 15:14:41",
+ "ledger": [
+  {
+   "step": "sde-dov phone: three rows, in order, on the plain address",
+   "ok": true,
+   "detail": "['כמה דירות מתוכננות בשדה דב, ובאיזה חלק ש', 'מה יהיה בפארק החוף של שדה דב, וכמה הוא ק', 'כ-3,700 חדרי מלון בשדה דב: יתרון או חיסר']"
+  },
+  {
+   "step": "sde-dov phone: each row says it waits for a first answer, 44px or more, links to its discussion",
+   "ok": true,
+   "detail": "[('מחכה לתשובה ראשונה', 84), ('מחכה לתשובה ראשונה', 84), ('מחכה לתשובה ראשונה', 83)]"
+  },
+  {
+   "step": "sde-dov phone: the week line and the link to all questions",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'all': 'לכל השאלות על שדה דב', 'w': 358}"
+  },
+  {
+   "step": "sde-dov desktop: three rows, in order, on the plain address",
+   "ok": true,
+   "detail": "['כמה דירות מתוכננות בשדה דב, ובאיזה חלק ש', 'מה יהיה בפארק החוף של שדה דב, וכמה הוא ק', 'כ-3,700 חדרי מלון בשדה דב: יתרון או חיסר']"
+  },
+  {
+   "step": "sde-dov desktop: each row says it waits for a first answer, 44px or more, links to its discussion",
+   "ok": true,
+   "detail": "[('מחכה לתשובה ראשונה', 63), ('מחכה לתשובה ראשונה', 63), ('מחכה לתשובה ראשונה', 62)]"
+  },
+  {
+   "step": "sde-dov desktop: the week line and the link to all questions",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'all': 'לכל השאלות על שדה דב', 'w': 760}"
+  },
+  {
+   "step": "hamedina phone: three rows, in order, on the plain address",
+   "ok": true,
+   "detail": "['מתי צפויה מסירת הדירות במגדלי כיכר המדינ', 'מה טווח המחירים במגדלי כיכר המדינה, לפי ', 'שלושה מגדלים ו-453 דירות בכיכר המדינה: מ']"
+  },
+  {
+   "step": "hamedina phone: each row says it waits for a first answer, 44px or more, links to its discussion",
+   "ok": true,
+   "detail": "[('מחכה לתשובה ראשונה', 63), ('מחכה לתשובה ראשונה', 84), ('מחכה לתשובה ראשונה', 83)]"
+  },
+  {
+   "step": "hamedina phone: the week line and the link to all questions",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'all': 'לכל השאלות על כיכר המדינה', 'w': 366}"
+  },
+  {
+   "step": "hamedina desktop: three rows, in order, on the plain address",
+   "ok": true,
+   "detail": "['מתי צפויה מסירת הדירות במגדלי כיכר המדינ', 'מה טווח המחירים במגדלי כיכר המדינה, לפי ', 'שלושה מגדלים ו-453 דירות בכיכר המדינה: מ']"
+  },
+  {
+   "step": "hamedina desktop: each row says it waits for a first answer, 44px or more, links to its discussion",
+   "ok": true,
+   "detail": "[('מחכה לתשובה ראשונה', 63), ('מחכה לתשובה ראשונה', 63), ('מחכה לתשובה ראשונה', 62)]"
+  },
+  {
+   "step": "hamedina desktop: the week line and the link to all questions",
+   "ok": true,
+   "detail": "{'live': '3 דיונים פעילים השבוע', 'all': 'לכל השאלות על כיכר המדינה', 'w': 760}"
+  },
+  {
+   "step": "the forum's own list shows the six",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the list filtered by sde-dov shows its three and not the other place's",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "the list filtered by hamedina shows its three and not the other place's",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "a discussion page: signed by the team, the place chip, the link back to the place page",
+   "ok": true,
+   "detail": "{'h1': 'כמה דירות מתוכננות בשדה דב, ובאיזה חלק של הרובע?', 'by': 'צוות נדל\"ן\\nחדש בזירה\\nתל אביב · 21.11.2026 15:13', 'chip': 'שדה דב', 'back': 'כל המידע על שדה דב: מחירים, פרויקטים ומפה -> https://nad-lan.co.il/sde-dov/'}"
+  }
+ ]
+}
