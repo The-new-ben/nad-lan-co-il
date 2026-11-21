@@ -170,6 +170,20 @@
       "w": 390,
       "h": 2060,
       "title": "23 · דירה שמדברים עליה: מציגים דירה, והקהל ואנשי המקצוע מעריכים"
+    },
+    "PlaceEmbed.dc.html": {
+      "x": 2820,
+      "y": 7140,
+      "w": 390,
+      "h": 800,
+      "title": "24 · הפורום בתוך דף של מקום או פרויקט (שדה דב, כיכר המדינה)"
+    },
+    "EstimatorLink.dc.html": {
+      "x": 0,
+      "y": 9700,
+      "w": 1240,
+      "h": 720,
+      "title": "25 · מהערכת השווי לפורום: קישור אחד אחרי התוצאה (טלפון ומחשב)"
     }
   },
   "order": [
@@ -195,7 +209,9 @@
     "Reputation.dc.html",
     "Media.dc.html",
     "VideoChat.dc.html",
-    "HomeTalk.dc.html"
+    "HomeTalk.dc.html",
+    "PlaceEmbed.dc.html",
+    "EstimatorLink.dc.html"
   ],
   "notes": {
     "head": {

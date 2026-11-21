@@ -1,0 +1,24 @@
+[GREEN] https://nad-lan.co.il/sde-dov/
+    http 200 · 444,321b · 1522ms · sha e923c584aedc · CHANGED
+    title(55): שדה דב: פרויקטים ודירות למכירה ברובע החדש | המדריך המלא
+    h1x1 canonical x1 hreflang 16 favicon 4 jsonld 2 scripts 51 styles 34
+    DIFF vs 20261026T111037Z:
+      · scripts_count: 47 -> 51
+      · scripts+ trail.js
+      · bytes 442,179 -> 444,321
+[GREEN] https://nad-lan.co.il/projects/hamedina/
+    http 200 · 487,463b · 1401ms · sha 470d289ca4c5 · CHANGED
+    title(67): מגדלי כיכר המדינה: פרויקט כיכר המדינה, מחירים, תוכניות דירות, אכלוס
+    h1x1 canonical x1 hreflang 20 favicon 4 jsonld 5 scripts 64 styles 45
+    DIFF vs 20261121T105727Z:
+      · bytes 487,462 -> 487,463
+[GREEN] https://nad-lan.co.il/forum/
+    http 200 · 229,087b · 1291ms · sha b4e9ddce4858 · CHANGED
+    title(40): פורום נדל"ן: שאלות ותשובות עם בעלי מקצוע
+    h1x1 canonical x1 hreflang 0 favicon 4 jsonld 0 scripts 49 styles 21
+[GREEN] https://nad-lan.co.il/property-value-estimator/
+    http 200 · 321,460b · 1348ms · sha f0cc1ee35aa3 · CHANGED
+    title(60): הערכת שווי דירה בחינם: מחשבון שווי נכס לפי עסקאות אמת | נדלן
+    h1x1 canonical x1 hreflang 14 favicon 4 jsonld 2 scripts 50 styles 32
+
+registry updated: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots\registry.json | snapshots dir: C:\Users\777\nad-lan\nad-lan-co-il\docs\source-snapshots

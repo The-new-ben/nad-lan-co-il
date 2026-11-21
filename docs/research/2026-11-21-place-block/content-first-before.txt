@@ -1,0 +1,5 @@
+[BAD] phone   https://nad-lan.co.il/sde-dov/  h1 100 lead None stage None (#nlps)  <- no answer paragraph (.nl-lead)
+[OK ] phone   https://nad-lan.co.il/projects/hamedina/  h1 190 lead 291 stage 863 (#nlsr)
+[BAD] desktop https://nad-lan.co.il/sde-dov/  h1 144 lead None stage None (#nlps)  <- no answer paragraph (.nl-lead)
+[OK ] desktop https://nad-lan.co.il/projects/hamedina/  h1 204 lead 316 stage 685 (#nlsr)
+{"failed": 2}
