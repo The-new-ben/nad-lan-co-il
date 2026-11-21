@@ -37,7 +37,18 @@
 	N.plan2d.KIND_LAYERS = KIND_LAYERS;
 	N.plan2d.KIND_ICON = KIND_ICON;
 
+	/* every home part is a picture, the same family as the apartment card in the opening of /my-rentals/ (HAD-795, 21.11.2026):
+	   one studio picture per kind, assets/rentals/portfolio/img/p-<kind>-192.webp. The drawn glyph is only the stand-in for a kind
+	   that has no picture. */
+	var SELF = (document.currentScript && document.currentScript.src) || "";
+	var PIC = { boiler: 1, ac: 1, panel: 1, water_meter: 1, gas: 1, fridge: 1, oven: 1, washer: 1, dishwasher: 1, heater: 1, shutter: 1 };
+	function picUrl(kind) {
+		var c = (N.state && N.state.cfg) || {}, base = c.assets || SELF.replace(/[^\/]*(\?.*)?$/, ""), v = c.ver || "";
+		return base + "portfolio/img/p-" + kind + "-192.webp" + (v ? "?v=" + encodeURIComponent(v) : "");
+	}
+	N.plan2d.pic = picUrl;
 	function icon(kind, size) {
+		if (PIC[kind]) { return '<img class="np2-pic" src="' + esc(picUrl(kind)) + '" alt="" width="' + (size || 24) + '" height="' + (size || 24) + '" decoding="async">'; }
 		return '<svg aria-hidden="true" width="' + (size || 24) + '" height="' + (size || 24) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + (IC[KIND_ICON[kind] || "panel"]) + "</svg>";
 	}
 	N.plan2d.icon = icon;
@@ -47,7 +58,7 @@
 	function badge(state) {
 		if (state === "fault") { return '<span aria-hidden="true" class="np2-bd np2-bd--fault">!</span>'; }
 		if (state === "soon") { return '<span aria-hidden="true" class="np2-bd np2-bd--soon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#14212b" stroke-width="1.6" stroke-linecap="round"><path d="M5 2.2V5l1.8 1.2"/></svg></span>'; }
-		return "";
+		return '<span aria-hidden="true" class="np2-bd np2-bd--ok"></span>';
 	}
 	function partBtn(p, o, style) {
 		var lit = o.lit === p.id, st = p.state || "ok";

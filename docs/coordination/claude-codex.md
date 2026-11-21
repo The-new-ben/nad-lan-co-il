@@ -5473,8 +5473,23 @@ RELEASE DONE 1.72.735 (HAD-795 package 6, the tour bar): released and verified o
 CLAIM + RELEASE LOCK 1.72.736 (HAD-795 package 6, the tour seats the page): SWAP assets/rentals/rm-tour.js only (one scroll on a press). Built on deploy735.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 15:40 IL.
 
 RELEASE DONE 1.72.736 (HAD-795 package 6, the tour seats the page): released and verified on the first run (deploy-result-736.json, health 1.72.736). Live as a visitor: scripts/rentals/lab_tour.py on the live address 30/30 (he + en, 1280 and 390, with the floating buttons); the whole journey recorded on a phone (D:\Media
-ad-lanentals-journey-2026-11-21). The lock is free. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 16:35 IL.
+ad-lan
+entals-journey-2026-11-21). The lock is free. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 16:35 IL.
 
 CLAIM (content only, no file swap, no version bump) 21.11.2026 13:13 UTC: forum session posts six team opening questions with place tags (scripts/project-stage/forum_seed_place.py, a temporary bridge snippet for about a minute). Ben's yes through the coordinator.
 
 DONE (content only) 21.11.2026: six team opening questions live as forum topics 21-26 with place tags (sde-dov 21-23, hamedina 24-26); every figure re-read on its live page first (27 of 27); both place pages show three rows on the plain address, checked as a visitor 16 of 16. The bridge snippet is gone.
+
+CLAIM + RELEASE LOCK 1.72.737 (HAD-795 package 6, home parts as pictures): NEW 4 pictures assets/rentals/portfolio/img/p-{gas,dishwasher,heater,shutter}-192.webp; SWAP assets/rentals/rm-plan2d.js, rm-drawers.js, rm-today.css, inc/rentals/page.php (font link). Built on deploy736.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 18:10 IL.
+
+RELEASE DONE 1.72.737 (HAD-795 package 6, home parts as pictures): released and verified on the first run (deploy-result-737.json, health 1.72.737). Live as a visitor: lab_tour.py on the live address 30/30; live_parts.py 16/20, the four misses = the theme forces its serif on the day screen's headings (fix = 738). NOTE FOR RUNNERS: for about half an hour (two dry runs and the start of the real run, about 18:00 to 18:30 IL) the REST list of code snippets answered http 500, so the bridge sweep could not list left-over bridges and printed "no active temporary bridge left (http 500)"; the run's own bridge was still created and deleted by id (route 404 after). It passed by itself: the end sweep of 737 and the dry run of 738 got http 200. Seen before any write of this release. If a sweep line shows http 500 again, the list was not read. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 19:05 IL.
+
+CLAIM + RELEASE LOCK 1.72.738 (HAD-795 package 6, day screen headings): SWAP assets/rentals/rm-today.css only (four rules). Built on deploy737.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 19:05 IL.
+
+RELEASE DONE 1.72.738 (HAD-795 package 6, day screen headings): released and verified (deploy-result-738.json, health 1.72.738), but the rule did NOT take on the live page: the skin's "body.nl-skin-a h1..h4" is heavier. Fix = 739. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 19:50 IL.
+
+CLAIM + RELEASE LOCK 1.72.739 (HAD-795 package 6, day screen headings, second try): SWAP assets/rentals/rm-today.css only. Built on deploy738.py. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 19:50 IL.
+
+ROLLED BACK 1.72.739 (first run): the files went up and the live checks passed (live_parts.py 20/20), then the runner restored .bak739 because the row inherited from 738 still asked rm-today.css for the 738 rule text that 739 had replaced. Health back at 1.72.738. Second run of 739 keeps the 738 rules and adds the heavier ones after them; same lock, same file. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 20:55 IL.
+
+RELEASE DONE 1.72.739 (HAD-795 package 6, day screen headings, second run): released and verified (deploy-result-739.json, health 1.72.739). Live as a visitor: scripts/rentals/live_parts.py 20/20 (every home part a loaded picture with its state mark, eleven kinds in the add sheet, headings in the product's face); lab_tour.py on the live address 30/30 and live_pf.py 52/52 on the first run's files. LESSON FOR MAKERS: a row inherited from the previous release still runs; before the real run, test every inherited row that names your file against the local file (a 25-minute rollback otherwise). The lock is free. Claude [package 6 HAD-795, Fable 5.2] 21.11.2026 21:25 IL.

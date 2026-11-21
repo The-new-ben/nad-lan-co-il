@@ -1,0 +1,102 @@
+[
+ {
+  "check": "he phone day screen: 4 part tiles, each a loaded picture, none drawn, each with a state mark (one fault, the rest fine)",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he phone day screen in the opening's family: face Assistant, round sheet 18px, no sideways scroll",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he phone add an appliance: 11 kinds, each with a loaded picture, none drawn",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 11, 'sheetOk': 11, 'kinds': 11, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he phone the apartment sheet: its parts are loaded pictures",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 4, 'sheetOk': 4, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he phone no script error",
+  "ok": true,
+  "info": "[]"
+ },
+ {
+  "check": "he desk day screen: 4 part tiles, each a loaded picture, none drawn, each with a state mark (one fault, the rest fine)",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he desk day screen in the opening's family: face Assistant, round sheet 18px, no sideways scroll",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he desk add an appliance: 11 kinds, each with a loaded picture, none drawn",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 11, 'sheetOk': 11, 'kinds': 11, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he desk the apartment sheet: its parts are loaded pictures",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 4, 'sheetOk': 4, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "he desk no script error",
+  "ok": true,
+  "info": "[]"
+ },
+ {
+  "check": "en phone day screen: 4 part tiles, each a loaded picture, none drawn, each with a state mark (one fault, the rest fine)",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en phone day screen in the opening's family: face Assistant, round sheet 18px, no sideways scroll",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en phone add an appliance: 11 kinds, each with a loaded picture, none drawn",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 11, 'sheetOk': 11, 'kinds': 11, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en phone the apartment sheet: its parts are loaded pictures",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [46, 46, 46, 46], 'sheetPics': 4, 'sheetOk': 4, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en phone no script error",
+  "ok": true,
+  "info": "[]"
+ },
+ {
+  "check": "en desk day screen: 4 part tiles, each a loaded picture, none drawn, each with a state mark (one fault, the rest fine)",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en desk day screen in the opening's family: face Assistant, round sheet 18px, no sideways scroll",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 0, 'sheetOk': 0, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en desk add an appliance: 11 kinds, each with a loaded picture, none drawn",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 11, 'sheetOk': 11, 'kinds': 11, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en desk the apartment sheet: its parts are loaded pictures",
+  "ok": true,
+  "info": "{'tiles': 4, 'tilePics': 4, 'tileSvg': 0, 'marks': ['np2-bd np2-bd--fault', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok', 'np2-bd np2-bd--ok'], 'sizes': [52, 52, 52, 52], 'sheetPics': 4, 'sheetOk': 4, 'kinds': 0, 'kindSvg': 0, 'font': 'Assistant', 'radius': '18px', 'ov': 0}"
+ },
+ {
+  "check": "en desk no script error",
+  "ok": true,
+  "info": "[]"
+ }
+]

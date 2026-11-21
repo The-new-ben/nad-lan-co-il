@@ -50,7 +50,7 @@ if ( ! function_exists( 'nlrm_assets' ) ) {
 	function nlrm_assets( $with_demo ) {
 		$v = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '2';
 		wp_enqueue_style( 'nlrm', NLRM_URL_ASSETS . 'rm.css', array(), $v );
-		wp_enqueue_style( 'nlrm-plex', 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap', array(), null );
+		wp_enqueue_style( 'nlrm-plex', 'https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap', array(), null );
 		wp_enqueue_style( 'nlrm-today', NLRM_URL_ASSETS . 'rm-today.css', array( 'nlrm' ), $v );
 		wp_enqueue_script( 'nlrm-core', NLRM_URL_ASSETS . 'rm-core.js', array(), $v, true );
 		wp_enqueue_script( 'nlrm-demo', NLRM_URL_ASSETS . 'rm-demo.js', array( 'nlrm-core' ), $v, true ); /* also in the app: "look at a sample file first" */

@@ -1,7 +1,7 @@
 {
  "checks": [
   {
-   "check": "he 1440x900 a visitor (not signed in) gets the stage of version 1.72.734: 9 pictures in the tray at once",
+   "check": "he 1440x900 a visitor (not signed in) gets the stage of version 1.72.739: 9 pictures in the tray at once",
    "ok": true,
    "info": "{'admin': False, 'cards': 9, 'pics': 9, 'order': True, 'h1s': 1, 'h1Top': 108, 'subBottom': 190, 'stTop': 212, 'stH': 700, 'stL': 176, 'stR': 176, 'H': 900, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], "
   },
@@ -16,7 +16,7 @@
    "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
   },
   {
-   "check": "he 1440x900 the globe is drawn about 9.3 s after the page starts; its marks count all 9 apartments",
+   "check": "he 1440x900 the globe is drawn about 5.6 s after the page starts; its marks count all 9 apartments",
    "ok": true,
    "info": "{'proj': 'globe', 'n': 9, 'gl': '3.14.0', 'stH': 700}"
   },
@@ -61,7 +61,7 @@
    "info": "([], [])"
   },
   {
-   "check": "he 390x664 a visitor (not signed in) gets the stage of version 1.72.734: 9 pictures in the tray at once",
+   "check": "he 390x664 a visitor (not signed in) gets the stage of version 1.72.739: 9 pictures in the tray at once",
    "ok": true,
    "info": "{'admin': False, 'cards': 9, 'pics': 9, 'order': True, 'h1s': 1, 'h1Top': 72, 'subBottom': 185, 'stTop': 203, 'stH': 529, 'stL': 0, 'stR': 0, 'H': 664, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], 'chip"
   },
@@ -81,7 +81,7 @@
    "info": "529"
   },
   {
-   "check": "he 390x664 the globe is drawn about 3.3 s after the page starts; its marks count all 9 apartments",
+   "check": "he 390x664 the globe is drawn about 4.9 s after the page starts; its marks count all 9 apartments",
    "ok": true,
    "info": "{'proj': 'globe', 'n': 9, 'gl': '3.14.0', 'stH': 529}"
   },
@@ -131,7 +131,7 @@
    "info": "([], [])"
   },
   {
-   "check": "en 1440x900 a visitor (not signed in) gets the stage of version 1.72.734: 9 pictures in the tray at once",
+   "check": "en 1440x900 a visitor (not signed in) gets the stage of version 1.72.739: 9 pictures in the tray at once",
    "ok": true,
    "info": "{'admin': False, 'cards': 9, 'pics': 9, 'order': True, 'h1s': 1, 'h1Top': 108, 'subBottom': 236, 'stTop': 258, 'stH': 700, 'stL': 176, 'stR': 176, 'H': 900, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], "
   },
@@ -146,7 +146,7 @@
    "info": "('Assistant', '800', ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'])"
   },
   {
-   "check": "en 1440x900 the globe is drawn about 3.1 s after the page starts; its marks count all 9 apartments",
+   "check": "en 1440x900 the globe is drawn about 2.8 s after the page starts; its marks count all 9 apartments",
    "ok": true,
    "info": "{'proj': 'globe', 'n': 9, 'gl': '3.14.0', 'stH': 700}"
   },
@@ -191,7 +191,7 @@
    "info": "([], [])"
   },
   {
-   "check": "en 390x664 a visitor (not signed in) gets the stage of version 1.72.734: 9 pictures in the tray at once",
+   "check": "en 390x664 a visitor (not signed in) gets the stage of version 1.72.739: 9 pictures in the tray at once",
    "ok": true,
    "info": "{'admin': False, 'cards': 9, 'pics': 9, 'order': True, 'h1s': 1, 'h1Top': 72, 'subBottom': 214, 'stTop': 232, 'stH': 529, 'stL': 0, 'stR': 0, 'H': 664, 'overflowX': 0, 'h1Font': 'Assistant', 'h1W': '800', 'cta': ['rgb(255, 255, 255)', 'rgb(20, 33, 43)'], 'chip"
   },
@@ -211,7 +211,7 @@
    "info": "529"
   },
   {
-   "check": "en 390x664 the globe is drawn about 3.1 s after the page starts; its marks count all 9 apartments",
+   "check": "en 390x664 the globe is drawn about 2.7 s after the page starts; its marks count all 9 apartments",
    "ok": true,
    "info": "{'proj': 'globe', 'n': 9, 'gl': '3.14.0', 'stH': 529}"
   },

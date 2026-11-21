@@ -1,0 +1,27 @@
+{
+  "released": "1.72.737",
+  "from": "1.72.736",
+  "live_before": {
+    "assets/rentals/rm-plan2d.js": "637bae25071674e679272f88645e9262",
+    "assets/rentals/rm-drawers.js": "1a9be4631721b3f5cc35d0e9f117fa13",
+    "assets/rentals/rm-today.css": "40709bb6a4f3849c2192a83d390fcf08",
+    "inc/rentals/page.php": "a800f22e29e17118d84c73cb4639674e",
+    "nadlan-config.php": "e9246daa2ff1c8add7a48c7a9aae3a20"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-21 16:18:10",
+  "files": {
+    "assets/rentals/portfolio/img/p-gas-192.webp": "3b68040d75ad87bb22b1bcf273ab37ff",
+    "assets/rentals/portfolio/img/p-dishwasher-192.webp": "4f304eafadf192fe88297bd702f8a451",
+    "assets/rentals/portfolio/img/p-heater-192.webp": "244a0323c3a355f271768527e76b637e",
+    "assets/rentals/portfolio/img/p-shutter-192.webp": "88665115d4f3145b09b5aae3150a51e6",
+    "assets/rentals/rm-plan2d.js": "b02bf73b37b55145b7de8fd1e52f278e",
+    "assets/rentals/rm-drawers.js": "062959e9dbeb801bf7d62f60c31dea6f",
+    "assets/rentals/rm-today.css": "98653686defae96a619e1ee851f83c02",
+    "inc/rentals/page.php": "b3b6575042dd78da9f1969c944a0a471",
+    "nadlan-config.php": "161fc7412ecbc6b8f14157feac55d8b9"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.737, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

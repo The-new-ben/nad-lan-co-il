@@ -1,0 +1,17 @@
+{
+  "released": "1.72.739",
+  "from": "1.72.738",
+  "live_before": {
+    "assets/rentals/rm-today.css": "458cb783f3053d7722b5b36e9d5c9db8",
+    "nadlan-config.php": "945cb3167bcfe417371fda590b853429"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-21 17:50:16",
+  "files": {
+    "assets/rentals/rm-today.css": "1e294e6a1cb8a49dd229a93870ef9897",
+    "nadlan-config.php": "46d6702541dd4873640df9cf8ecb000a"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.739, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

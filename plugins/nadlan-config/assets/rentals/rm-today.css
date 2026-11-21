@@ -257,3 +257,77 @@ button.np2-part { cursor: pointer; }
 .nt2.is-h760 .nt2-s-rent .nt2-next { min-height: 0; flex-flow: row wrap; align-content: flex-start; column-gap: 8px; padding-bottom: 10px; }
 .nt2.is-h760 .nt2-s-rent .nt2-next > * { flex: 0 0 100%; }
 .nt2.is-h760 .nt2-s-rent .nt2-next > .nt2-btn { flex: 1 1 0; width: auto; min-width: 0; height: 48px; padding: 0 10px; font-size: 15px; }
+
+/* ---------- one product with the opening of /my-rentals/ (HAD-795, 21.11.2026) ----------
+   The day screen and its sheets read as the same product as the opening: every home part is a studio picture of the real object with the
+   opening's state marks (green tick, amber clock, red "!"), the opening's face (Assistant; IBM Plex Mono stays for dates and money), its
+   round white sheets with a soft edge instead of ink frames, and its ink pill buttons.
+   Palette: ink #14212b, deep #0d2129, sea #2f6f86, care #d5311f, due #f2a900, ok #12996b, ground #eef2f6, edge #dfe6ec, picture ground #dbe4ea.
+   Faces: Assistant (text and headings), IBM Plex Mono (dates and numbers).
+   Why it is not the default: pictures of the objects of a home and the sea-and-ink palette of the opening's map; no cream, brown,
+   gradient, emoji, or drawn glyphs for the parts. */
+.nt2 { --bad: #d5311f; --hair: #dfe6ec; --deep: #0d2129; --ok: #12996b; --due: #f2a900; font-family: 'Assistant', 'Heebo', 'IBM Plex Sans Hebrew', Arial, sans-serif; }
+.nt2-head h1, .nt2-card h2, .nt2 h3, .np2-sheet { font-family: 'Assistant', 'Heebo', 'IBM Plex Sans Hebrew', Arial, sans-serif; }
+.nt2-head h1 { font-weight: 800; font-size: 19px; }
+.nt2-card h2, .nt2-say, .nt2-soon-t b { font-weight: 800; }
+.nt2-iconbtn { border: 1px solid var(--hair); border-radius: 22px; }
+.nt2-tb { border: 0; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--hair), 0 6px 18px rgba(13,33,41,.07); }
+.nt2-tb-l { border-inline-end: 1px solid var(--hair); }
+.nt2-tb-d { border-bottom: 1px solid var(--hair); }
+.nt2-tb-f { border-top: 1px solid var(--hair); }
+.nt2-ruler { border: 0; border-radius: 18px; box-shadow: 0 0 0 1px var(--hair); }
+.nt2-rl-box { border: 0; border-radius: 7px; background-color: #dfe6ec; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0) calc(8.3333% - 2px), #fff calc(8.3333% - 2px), #fff 8.3333%); }
+.nt2-rl-paid { border-radius: 7px 0 0 7px; background: var(--deep); }
+.nt2-tick { width: 16px; height: 16px; border-radius: 8px; background: var(--ok); }
+.nt2-card { border: 0; border-radius: 18px; box-shadow: 0 0 0 1px var(--hair), 0 6px 18px rgba(13,33,41,.07); }
+.nt2-card.is-fault { box-shadow: 0 0 0 2px var(--bad), 0 6px 18px rgba(213,49,31,.12); }
+.nt2-card { padding-bottom: 12px; } .nt2-btns { margin-top: 8px; } /* the round edge of the card stays whole above the camera row */
+.nt2-earn { border-bottom: 1px solid var(--hair); }
+.nt2-btn { border: 1.5px solid #c9d3dd; border-radius: 999px; font-weight: 700; }
+.nt2-btn--go { border-color: var(--deep); background: var(--deep); color: #fff; }
+.nt2-btn--ink { border: 2px solid var(--deep); background: #fff; color: var(--deep); }
+.nt2-btn--go:active { border-color: var(--ink); background: var(--ink); }
+.nt2-btn--wide { border-radius: 14px; }
+.nt2-sum-btn b { border: 1.5px solid #c9d3dd; border-radius: 999px; font-weight: 700; }
+.nt2-wait { border-radius: 12px; }
+/* the home parts as pictures */
+.np2-pic { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.np2-part { border: 2px solid var(--hair, #dfe6ec); border-radius: 12px; background: #dbe4ea; }
+.np2-part--soon { border: 2px solid #f2a900; }
+.np2-part--fault { border: 2.5px solid #d5311f; }
+.np2-part.is-lit { background: #dbe4ea; color: inherit; border: 2.5px solid #2f6f86; box-shadow: 0 0 0 4px rgba(47,111,134,.25); }
+.np2-part--fault.is-lit { border-color: #d5311f; box-shadow: 0 0 0 4px rgba(213,49,31,.18); }
+.np2--row .np2-part.is-lit { transform: none; }
+.np2-part--new { border: 1.5px dashed #5b6b7a; background: #fff; }
+.np2-part--new .np2-pic { opacity: .62; }
+.np2-part--more { background: #fff; }
+.np2-bd { right: auto; inset-inline-end: -6px; top: -6px; width: 18px; height: 18px; border-radius: 9px; border: 2px solid #fff; box-sizing: border-box; }
+.np2-bd--ok { background: #12996b center / 9px 9px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5.3l2 2 4-4.4'/%3E%3C/svg%3E"); }
+.np2-bd--fault { background: #d5311f; font-size: 12px; font-weight: 800; line-height: 14px; }
+.np2-bd--soon { background: #f2a900; border: 2px solid #fff; }
+.np2-bd--add { background: #2f6f86; font-size: 13px; line-height: 14px; }
+.np2--row .np2-part { width: 52px; height: 52px; }
+.np2--row .np2-new .np2-part { width: 44px; height: 44px; } /* nothing recorded yet: six tiles and one sentence must fit the block */
+.np2-cap { font-weight: 600; }
+.np2-cap--fault { color: #d5311f; font-weight: 800; }
+.np2-tag--fault { background: #d5311f; }
+.nt2.is-h700 .nt2-tb .np2--row .np2-part { width: 46px; height: 46px; }
+@media (max-height: 700px) { .nt2-tb .np2--row .np2-part { width: 46px; height: 46px; } }
+.nt2.is-h700 .nt2-tb .np2--row .np2-new .np2-part { width: 44px; height: 44px; }
+@media (max-height: 700px) { .nt2-tb .np2--row .np2-new .np2-part { width: 44px; height: 44px; } }
+.nt2-kind { height: 60px; border-radius: 14px; padding: 0 8px; gap: 10px; }
+.nt2-kind .np2-pic { width: 44px; height: 44px; flex: none; }
+.nlrm-item > .np2-pic { width: 44px; height: 44px; flex: none; border: 2px solid #dfe6ec; }
+/* the site's theme forces its serif and a light weight on every heading (found on the live page, 1.72.737; the lab page now carries
+   the same stand-in) */
+.nt2 h1, .nt2 h2, .nt2 h3 { font-family: 'Assistant', 'Heebo', 'IBM Plex Sans Hebrew', Arial, sans-serif !important; letter-spacing: 0 !important; }
+.nt2 .nt2-head h1, .nt2 .nt2-card h2:not(.nt2-card-k), .nt2 .nt2-sheet h2 { font-weight: 800 !important; }
+.nt2 .nt2-card h2.nt2-card-k { font-weight: 400 !important; }
+.nt2 h3 { font-weight: 700 !important; }
+/* 1.72.739: the rule that does it is the site skin's "body.nl-skin-a h1, h2, h3, h4" (face, weight 600 and colour, all forced); the class
+   is doubled here so these rules outweigh it wherever the file loads */
+.nt2.nt2 h1, .nt2.nt2 h2, .nt2.nt2 h3, .nt2.nt2 h4 { font-family: 'Assistant', 'Heebo', 'IBM Plex Sans Hebrew', Arial, sans-serif !important; letter-spacing: 0 !important; color: var(--ink) !important; }
+.nt2.nt2 .nt2-head h1, .nt2.nt2 .nt2-card h2:not(.nt2-card-k), .nt2.nt2 .nt2-sheet h2 { font-weight: 800 !important; }
+.nt2.nt2 .nt2-card h2.nt2-card-k { font-weight: 400 !important; color: var(--ink2) !important; }
+.nt2.nt2 h3 { font-weight: 700 !important; }
+.nt2.nt2 .nt2-recent h3 { color: var(--ink2) !important; }
