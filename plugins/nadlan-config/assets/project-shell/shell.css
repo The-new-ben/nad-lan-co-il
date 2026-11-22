@@ -1,7 +1,7 @@
-/* ProjectShell row and sheets (HAD-794). Board: https://claude.ai/artifact/VdA956RZtEthDSgziFSJTW
+/* ProjectShell row and sheets (HAD-794; 1.72.746 film loop cycle 2: the row wraps on phones too, as board Cycle1 shows, so no button is cut at the edge). Board: https://claude.ai/artifact/VdA956RZtEthDSgziFSJTW
    Sea-chart palette: abyss #10262F, sea #2F6F86, foam #E8F1F3, live #0F7A63. The theme forces !important on buttons and
    h2, so the row's own rules carry a longer selector and !important where the theme reaches. */
-:root body .nlsh{display:flex!important;flex-wrap:nowrap;gap:8px;align-items:center;margin:14px 0 6px!important;padding:2px 0 6px!important;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;font-family:Heebo,system-ui,sans-serif;max-width:100%}
+:root body .nlsh{display:flex!important;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 6px!important;padding:2px 0 6px!important;overflow:visible;scrollbar-width:none;-webkit-overflow-scrolling:touch;font-family:Heebo,system-ui,sans-serif;max-width:100%}
 :root body .nlsh::-webkit-scrollbar{display:none}
 :root body .nlsh .nlsh-b{flex:0 0 auto;display:inline-flex!important;align-items:center;gap:8px;min-height:48px!important;height:48px;padding:0 16px!important;margin:0!important;border-radius:24px!important;border:1.5px solid transparent!important;background:#e8f1f3!important;color:#10262f!important;font:700 15px/1.2 Heebo,system-ui,sans-serif!important;text-decoration:none!important;white-space:nowrap;cursor:pointer;box-shadow:none!important;letter-spacing:0!important;text-transform:none!important}
 :root body .nlsh .nlsh-b:hover{border-color:#2f6f86!important}

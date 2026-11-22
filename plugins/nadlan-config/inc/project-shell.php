@@ -46,11 +46,11 @@ if ( ! function_exists( 'nadlan_sh_page' ) ) {
 if ( ! function_exists( 'nadlan_sh_words' ) ) {
 	function nadlan_sh_words( $lang ) {
 		$w = array(
-			'he' => array( 'call' => 'שיחת וידאו עכשיו', 'design' => 'לעצב את הדירה', 'film' => 'סרטון הפרויקט', 'tour' => 'סיור 360 בדירה', 'row' => 'כלים לפרויקט', 'now_k' => 'שיחה ישירה מהעמוד', 'now_h' => 'שיחת וידאו על %s', 'now_p' => 'רואים יחד את המגדל, הקומה ותוכנית הדירה. אפשר להזמין בן או בת זוג, מעצבת או מהנדס בקישור.', 'now_go' => 'להתחיל שיחה עכשיו', 'book' => 'לקבוע מועד', 'close' => 'סגירה', 'note' => 'אין הקלטה. הנציג מצטרף לחדר ברגע שהוא פנוי.', 'film_lang' => 'באנגלית, עם כתוביות' ),
-			'en' => array( 'call' => 'Video call now', 'design' => 'Design the apartment', 'film' => 'Project film', 'tour' => '360 inside the apartment', 'row' => 'Project tools', 'now_k' => 'Straight from this page', 'now_h' => 'Video call about %s', 'now_p' => 'See the tower, the floor and the apartment plan together. Invite a partner, a designer or an engineer by link.', 'now_go' => 'Start the call now', 'book' => 'Book a time', 'close' => 'Close', 'note' => 'Nothing is recorded. A representative joins the room as soon as one is free.', 'film_lang' => 'In English' ),
-			'fr' => array( 'call' => 'Appel vidéo maintenant', 'design' => 'Aménager l’appartement', 'film' => 'Film du projet', 'tour' => '360 dans l’appartement', 'row' => 'Outils du projet', 'now_k' => 'Directement depuis cette page', 'now_h' => 'Appel vidéo sur %s', 'now_p' => 'Voyez ensemble la tour, l’étage et le plan. Invitez un proche, une décoratrice ou un ingénieur par lien.', 'now_go' => 'Lancer l’appel', 'book' => 'Prendre rendez-vous', 'close' => 'Fermer', 'note' => 'Aucun enregistrement. Un représentant rejoint la salle dès qu’il est libre.', 'film_lang' => 'En anglais' ),
-			'ru' => array( 'call' => 'Видеозвонок сейчас', 'design' => 'Обустроить квартиру', 'film' => 'Фильм о проекте', 'tour' => '360 внутри квартиры', 'row' => 'Инструменты проекта', 'now_k' => 'Прямо с этой страницы', 'now_h' => 'Видеозвонок о проекте %s', 'now_p' => 'Смотрите вместе башню, этаж и планировку. Пригласите партнёра, дизайнера или инженера по ссылке.', 'now_go' => 'Начать звонок', 'book' => 'Назначить время', 'close' => 'Закрыть', 'note' => 'Без записи. Представитель присоединится, как только освободится.', 'film_lang' => 'На английском' ),
-			'ar' => array( 'call' => 'مكالمة فيديو الآن', 'design' => 'تصميم الشقة', 'film' => 'فيلم المشروع', 'tour' => '360 داخل الشقة', 'row' => 'أدوات المشروع', 'now_k' => 'مباشرة من هذه الصفحة', 'now_h' => 'مكالمة فيديو حول %s', 'now_p' => 'شاهدوا معاً البرج والطابق ومخطط الشقة. ادعوا شريكاً أو مصممة أو مهندساً برابط.', 'now_go' => 'ابدأوا المكالمة الآن', 'book' => 'تحديد موعد', 'close' => 'إغلاق', 'note' => 'لا يوجد تسجيل. ينضم ممثل إلى الغرفة فور تفرّغه.', 'film_lang' => 'بالإنجليزية' ),
+			'he' => array( 'rent' => 'השכרה אחרי המסירה', 'ask' => 'שאלות של קונים', 'call' => 'שיחת וידאו עכשיו', 'design' => 'לעצב את הדירה', 'film' => 'סרטון הפרויקט', 'tour' => 'סיור 360 בדירה', 'row' => 'כלים לפרויקט', 'now_k' => 'שיחה ישירה מהעמוד', 'now_h' => 'שיחת וידאו על %s', 'now_p' => 'רואים יחד את המגדל, הקומה ותוכנית הדירה. אפשר להזמין בן או בת זוג, מעצבת או מהנדס בקישור.', 'now_go' => 'להתחיל שיחה עכשיו', 'book' => 'לקבוע מועד', 'close' => 'סגירה', 'note' => 'אין הקלטה. הנציג מצטרף לחדר ברגע שהוא פנוי.', 'film_lang' => 'באנגלית, עם כתוביות' ),
+			'en' => array( 'rent' => 'Rent it out after handover', 'ask' => 'Buyers’ questions', 'call' => 'Video call now', 'design' => 'Design the apartment', 'film' => 'Project film', 'tour' => '360 inside the apartment', 'row' => 'Project tools', 'now_k' => 'Straight from this page', 'now_h' => 'Video call about %s', 'now_p' => 'See the tower, the floor and the apartment plan together. Invite a partner, a designer or an engineer by link.', 'now_go' => 'Start the call now', 'book' => 'Book a time', 'close' => 'Close', 'note' => 'Nothing is recorded. A representative joins the room as soon as one is free.', 'film_lang' => 'In English' ),
+			'fr' => array( 'ask' => 'Questions d’acheteurs', 'call' => 'Appel vidéo maintenant', 'design' => 'Aménager l’appartement', 'film' => 'Film du projet', 'tour' => '360 dans l’appartement', 'row' => 'Outils du projet', 'now_k' => 'Directement depuis cette page', 'now_h' => 'Appel vidéo sur %s', 'now_p' => 'Voyez ensemble la tour, l’étage et le plan. Invitez un proche, une décoratrice ou un ingénieur par lien.', 'now_go' => 'Lancer l’appel', 'book' => 'Prendre rendez-vous', 'close' => 'Fermer', 'note' => 'Aucun enregistrement. Un représentant rejoint la salle dès qu’il est libre.', 'film_lang' => 'En anglais' ),
+			'ru' => array( 'ask' => 'Вопросы покупателей', 'call' => 'Видеозвонок сейчас', 'design' => 'Обустроить квартиру', 'film' => 'Фильм о проекте', 'tour' => '360 внутри квартиры', 'row' => 'Инструменты проекта', 'now_k' => 'Прямо с этой страницы', 'now_h' => 'Видеозвонок о проекте %s', 'now_p' => 'Смотрите вместе башню, этаж и планировку. Пригласите партнёра, дизайнера или инженера по ссылке.', 'now_go' => 'Начать звонок', 'book' => 'Назначить время', 'close' => 'Закрыть', 'note' => 'Без записи. Представитель присоединится, как только освободится.', 'film_lang' => 'На английском' ),
+			'ar' => array( 'ask' => 'أسئلة المشترين', 'call' => 'مكالمة فيديو الآن', 'design' => 'تصميم الشقة', 'film' => 'فيلم المشروع', 'tour' => '360 داخل الشقة', 'row' => 'أدوات المشروع', 'now_k' => 'مباشرة من هذه الصفحة', 'now_h' => 'مكالمة فيديو حول %s', 'now_p' => 'شاهدوا معاً البرج والطابق ومخطط الشقة. ادعوا شريكاً أو مصممة أو مهندساً برابط.', 'now_go' => 'ابدأوا المكالمة الآن', 'book' => 'تحديد موعد', 'close' => 'إغلاق', 'note' => 'لا يوجد تسجيل. ينضم ممثل إلى الغرفة فور تفرّغه.', 'film_lang' => 'بالإنجليزية' ),
 		);
 		return $w[ $lang ] ?? $w['he'];
 	}
@@ -204,6 +204,17 @@ if ( ! function_exists( 'nadlan_sh_row' ) ) {
 		$o  = '<nav class="nlsh" dir="' . $dir . '" lang="' . esc_attr( $pg['lang'] ) . '" aria-label="' . esc_attr( $w['row'] ) . '" data-project="' . esc_attr( $pg['base'] ) . '">';
 		$o .= '<a class="nlsh-b nlsh-b--live" href="' . esc_url( $call ) . '" data-nlsh="call" aria-haspopup="dialog"><i class="nlsh-dot" aria-hidden="true"></i><span>' . esc_html( $w['call'] ) . '</span></a>';
 		$o .= '<a class="nlsh-b" href="' . esc_url( $design ) . '" data-nlsh="design"><span>' . esc_html( $w['design'] ) . '</span></a>';
+		// the film's chain (22.11.2026 loop, cycle 1): from the project to the buyers' questions about it in the forum, where the forum
+		// has the project as a place (inc/pro-forum-place.php, nlfp2_places())
+		$fk = 'he' === $pg['lang'] ? nadlan_sh_forum_key( $pg['base'] ) : ''; // the forum speaks Hebrew: the link stays on the Hebrew page
+		if ( '' !== $fk ) {
+			$o .= '<a class="nlsh-b" href="' . esc_url( add_query_arg( 'place', $fk, home_url( '/forum/' ) ) ) . '" data-nlsh="ask"><span>' . esc_html( $w['ask'] ) . '</span></a>';
+		}
+		// cycle 3 (22.11.2026 loop): from the project to renting the apartment out after handover, the owner's own rentals tool
+		// (/my-rentals/, Hebrew and English only, like the rentals product). The site never rents out and is never a broker.
+		if ( ! empty( $w['rent'] ) ) {
+			$o .= '<a class="nlsh-b" href="' . esc_url( home_url( 'en' === $pg['lang'] ? '/my-rentals/?lang=en' : '/my-rentals/' ) ) . '" data-nlsh="rent"><span>' . esc_html( $w['rent'] ) . '</span></a>';
+		}
 		if ( $film ) {
 			$o .= '<button type="button" class="nlsh-b" data-nlsh="film" data-src="' . esc_url( $film['src'] ) . '" data-poster="' . esc_url( $film['poster'] ) . '"><i class="nlsh-play" aria-hidden="true"></i><span>' . esc_html( $w['film'] ) . '</span>' . ( $film['lang'] !== $pg['lang'] ? ' <small>' . esc_html( $w['film_lang'] ) . '</small>' : '' ) . '</button>';
 		}
@@ -220,6 +231,17 @@ if ( ! function_exists( 'nadlan_sh_row' ) ) {
 			. ( $sched ? '<a class="nlsh-book" href="#nlsch" data-nlsh="book">' . esc_html( $w['book'] ) . '</a>' : '' )
 			. '<p class="nlsh-n">' . esc_html( $w['note'] ) . '</p></dialog>';
 		return $o;
+	}
+}
+
+if ( ! function_exists( 'nadlan_sh_forum_key' ) ) {
+	/** The forum place key of a project page (inc/pro-forum-place.php), or '' when the forum does not list it as a place. */
+	function nadlan_sh_forum_key( $base ) {
+		$map = array( 'rainbow-tel-aviv' => 'rainbow', 'duo-tel-aviv' => 'duo', 'ashira-sde-dov' => 'ashira', 'dimri-yama-sde-dov' => 'dimri-yama',
+			'h-infinity-somail-tel-aviv' => 'h-infinity', 'first-sde-dov' => 'first-sde-dov', 'gindi-vogue-sde-dov' => 'gindi-vogue',
+			'einstein-tower' => 'einstein', 'hamedina' => 'hamedina' );
+		$k = $map[ $base ] ?? '';
+		return ( '' !== $k && function_exists( 'nlfp2_key_ok' ) && nlfp2_key_ok( $k ) ) ? $k : '';
 	}
 }
 

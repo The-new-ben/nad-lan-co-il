@@ -46,6 +46,14 @@ function nlfp2_places() {
 	return array(
 		'sde-dov'  => array( 'שדה דב', '/sde-dov/' ),
 		'hamedina' => array( 'כיכר המדינה', '/projects/hamedina/' ),
+		'rainbow' => array( 'ריינבו תל אביב', '/projects/rainbow-tel-aviv/' ),
+		'duo' => array( 'מגדלי DUO', '/projects/duo-tel-aviv/' ),
+		'ashira' => array( 'אשירה', '/projects/ashira-sde-dov/' ),
+		'dimri-yama' => array( 'דמרי ימה', '/projects/dimri-yama-sde-dov/' ),
+		'h-infinity' => array( 'H Infinity', '/projects/h-infinity-somail-tel-aviv/' ),
+		'first-sde-dov' => array( 'FIRST שדה דב', '/projects/first-sde-dov/' ),
+		'gindi-vogue' => array( 'גינדי ווג', '/projects/gindi-vogue-sde-dov/' ),
+		'einstein' => array( 'EINSTEIN TOWER', '/projects/einstein-tower/' ),
 	);
 }
 

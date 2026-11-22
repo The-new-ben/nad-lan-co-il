@@ -1,0 +1,6 @@
+{"outDir":"docs/research/2026-11-22-film-made-real/c2","width":390,"height":844,"mobile":true,"steps":[
+{"go":"https://nad-lan.co.il/projects/rainbow-tel-aviv/?c2=1"},{"wait":3500},
+{"eval":"(()=>{const n=document.querySelector('nav.nlsh');if(!n)return 'no row';n.scrollIntoView({block:'center'});const W=innerWidth;return [...n.querySelectorAll('.nlsh-b')].filter(b=>!b.hidden).map(b=>{const r=b.getBoundingClientRect();return b.dataset.nlsh+':'+Math.round(r.left)+'-'+Math.round(r.right)+(r.left<0||r.right>W?' CUT':' ok')}).join(' | ')+' top='+Math.round(n.getBoundingClientRect().top+scrollY)})()"},
+{"wait":800},{"shot":"rainbow-row-phone.png"},
+{"tap":"nav.nlsh a[data-nlsh=ask]"},{"wait":3000},{"eval":"location.pathname+location.search"}
+]}

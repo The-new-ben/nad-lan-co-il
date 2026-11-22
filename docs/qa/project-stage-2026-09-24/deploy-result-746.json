@@ -1,0 +1,17 @@
+{
+  "released": "1.72.746",
+  "from": "1.72.745",
+  "live_before": {
+    "assets/project-shell/shell.css": "18249d58ece5aceb3c475489a215c5fc",
+    "nadlan-config.php": "15379085c6cde56882ef29a20e607f0f"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-22 23:11:50",
+  "files": {
+    "assets/project-shell/shell.css": "d3f6c97f6113fd2b5b86294dda794c0d",
+    "nadlan-config.php": "dd96c80d22c492b9d84e31f766142e40"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.746, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

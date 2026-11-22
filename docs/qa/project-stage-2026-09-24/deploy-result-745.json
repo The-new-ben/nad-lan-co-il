@@ -1,0 +1,19 @@
+{
+  "released": "1.72.745",
+  "from": "1.72.744",
+  "live_before": {
+    "inc/project-shell.php": "7384d40519896d9b254a8526418af8bb",
+    "nadlan-config.php": "3fcf288515b93da7c84833e6c3a736d3",
+    "inc/pro-forum-place.php": "e98f26a24729b0dffc904b7b33223425"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-22 22:24:49",
+  "files": {
+    "inc/project-shell.php": "7d12bdfe7257a2538c9345e9bf391905",
+    "nadlan-config.php": "15379085c6cde56882ef29a20e607f0f",
+    "inc/pro-forum-place.php": "4003dd9d6afaa772d11205530d84a130"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.745, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

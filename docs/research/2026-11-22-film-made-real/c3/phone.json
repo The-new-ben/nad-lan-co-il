@@ -1,0 +1,6 @@
+{"outDir":"docs/research/2026-11-22-film-made-real/c3","width":390,"height":844,"mobile":true,"steps":[
+{"go":"https://nad-lan.co.il/projects/einstein-tower/?c3=1"},{"wait":3500},
+{"eval":"(()=>{const n=document.querySelector('nav.nlsh');if(!n)return 'no row';n.scrollIntoView({block:'center'});const W=innerWidth;return [...n.querySelectorAll('.nlsh-b')].filter(b=>!b.hidden).map(b=>{const r=b.getBoundingClientRect();return b.dataset.nlsh+(r.left<0||r.right>W?' CUT':' ok')}).join(' | ')})()"},
+{"wait":800},{"shot":"einstein-row-phone.png"},
+{"tap":"nav.nlsh a[data-nlsh=rent]"},{"wait":4000},{"eval":"location.pathname+location.search+' | '+document.title"},{"shot":"rentals-from-row-phone.png"}
+]}
