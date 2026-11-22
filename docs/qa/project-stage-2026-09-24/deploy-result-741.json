@@ -1,0 +1,20 @@
+{
+  "released": "1.72.741",
+  "from": "1.72.740",
+  "live_before": {
+    "inc/visit-trail.php": "f5dea6304cf6a6877f38021192410e0f",
+    "assets/visit-trail/trail.js": "1f605e12b2c883482a0c28b79572f00b",
+    "nadlan-config.php": "05e2a89a9179575a8cc3d8e4412afde3"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-22 13:09:04",
+  "files": {
+    "inc/visit-trail.php": "ffd86a8501d5d3aca263b044e65d79ad",
+    "assets/visit-trail/trail.js": "6594a680df46328297f4ca123205389e",
+    "inc/owner-live.php": "330cea2575a194ea00300c78845640de",
+    "nadlan-config.php": "c9ea35352a93414e6c441c66b95152dc"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.741, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}

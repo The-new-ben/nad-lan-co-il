@@ -47,7 +47,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( defined( 'NADLAN_VT_VERSION' ) ) { return; }
-define( 'NADLAN_VT_VERSION', '1.1.0' );
+define( 'NADLAN_VT_VERSION', '1.1.1' );
 define( 'NADLAN_VT_DB', '2' );
 
 if ( ! function_exists( 'nadlan_vt_tables' ) ) {
@@ -365,9 +365,12 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 		// explicit tool events ('lite'), each counted for the project it names (or the batch's project, or none)
 		$pp = $b['page'] > 0 && 'nadlan_project' === get_post_type( $b['page'] ) ? nadlan_vt_canon_project( $b['page'] ) : 0;
 		if ( 'full' === $b['mode'] && $pp <= 0 ) { return new WP_Error( 'nlvt_bad', 'Bad request.', array( 'status' => 400, 'why' => 'page' ) ); }
+		// 1.1.1 (owner live alerts): /developers/ and /marketing/ send one 'open' in lite mode, kept here so the owner hears of the visit
+		$watch = function_exists( 'nadlan_ol_watch_path' ) && is_string( $p['path'] ?? null ) ? nadlan_ol_watch_path( $p['path'] ) : '';
 		if ( $pp <= 0 ) {
 			if ( $b['page'] > 0 && 'publish' !== get_post_status( $b['page'] ) ) { return new WP_Error( 'nlvt_bad', 'Bad request.', array( 'status' => 400, 'why' => 'page' ) ); }
 			$lite = nadlan_vt_lite_types();
+			if ( '' !== $watch ) { $lite[] = 'open'; }
 			$b['ev'] = array_values( array_filter( $b['ev'], function ( $e ) use ( $lite ) { return in_array( $e['t'], $lite, true ); } ) );
 			if ( ! $b['ev'] ) { return $none; }
 		}
@@ -385,6 +388,7 @@ if ( ! function_exists( 'nadlan_vt_tables' ) ) {
 		if ( ! nadlan_vt_ready() ) { return new WP_Error( 'nlvt_store', 'Could not save.', array( 'status' => 500 ) ); }
 		$n = nadlan_vt_store( $b, nadlan_vt_country(), $now );
 		set_transient( $dk, $day + $n, DAY_IN_SECONDS + HOUR_IN_SECONDS );
+		if ( $n > 0 ) { do_action( 'nadlan_vt_stored', $b, $watch ); } // owner-live.php: alerts, sent after the response
 		return $none;
 	}
 
@@ -827,7 +831,9 @@ function nadlan_vt_page_cfg() {
 		$proj = nadlan_vt_canon_project( $qid );
 		if ( $proj > 0 ) { return array( 'mode' => 'full', 'page' => $qid, 'proj' => $proj, 'lang' => $lang ); }
 	}
-	return array( 'mode' => 'lite', 'page' => is_singular() && $qid > 0 ? $qid : 0, 'proj' => 0, 'lang' => $lang );
+	$cfg = array( 'mode' => 'lite', 'page' => is_singular() && $qid > 0 ? $qid : 0, 'proj' => 0, 'lang' => $lang );
+	if ( function_exists( 'nadlan_ol_watch_path' ) && '' !== nadlan_ol_watch_path( (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ) ) ) { $cfg['watch'] = 1; } // phpcs:ignore -- compared only
+	return $cfg;
 }
 
 /** for a page printed outside the theme (the designer at /tour/designer/ prints its own HTML): the same two tags, ready to echo
@@ -930,3 +936,4 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 
 /* 1.1.0: the developer report (a funnel per project, a signed link, CSV) */
 if ( is_readable( __DIR__ . '/dev-report.php' ) ) { require_once __DIR__ . '/dev-report.php'; }
+if ( is_readable( __DIR__ . '/owner-live.php' ) ) { require_once __DIR__ . '/owner-live.php'; }

@@ -1,4 +1,4 @@
-/*! NadLan visit trail 1.1.0 (HAD-678, Ben 7.11.2026; 1.1.0 HAD-791, 19.11.2026). First-party record of what a visitor picks.
+/*! NadLan visit trail 1.1.1 (HAD-678, Ben 7.11.2026; 1.1.0 HAD-791, 19.11.2026; 1.1.1 owner live alerts 22.11.2026). First-party record of what a visitor picks.
  *
  * 1.1.0: window.nlTrack(name, data) for every tool (contract: docs/research/2026-11-19-buyer-events/CONTRACT.md), the
  * 'nl:track' window event, the designer's 'nadlan:design-order', a mirror of the site's own nadlanGA() events (read from
@@ -33,7 +33,7 @@
   if (root && root.document) { root.NL_TRAIL = api; api.boot(root); }
 })(typeof window !== 'undefined' ? window : this, function () {
   'use strict';
-  var VERSION = '1.1.0';
+  var VERSION = '1.1.1';
   var OFF_KEY = 'nl_vt_off';     // the visitor's own "do not record me"
   var GA_PREFIX = /^(basket|cockpit|offer|room|tour|journey|showroom|designer|design|call|rfp|mortgage|together|price_alert|nudge)_/;
   var GA_SKIP = { tour_direction: 1, showroom_turn: 1, stage_floor: 1, stage_facing: 1, stage_step: 1, whatsapp_click: 1, deal_floor_click: 1, floor_action: 1, floor_slice: 1 };
@@ -483,7 +483,7 @@
       on(w, 'pagehide', function () { if (visFrom) { visMs += now() - visFrom; visFrom = 0; } leave(); flush(); });
       if (!lite) on(w, 'scroll', onScroll, { passive: true });
       wrapFetch(w, vid);
-      if (!lite) push('open', {});
+      if (!lite || cfg.watch) push('open', {}); // 1.1.1: the developers and marketing pages tell the owner of a visit
       // the calls a tool made before this file ran (the queue printed with the page)
       var q = w.nlTrackQ;
       if (q && q.length) { for (var i = 0; i < q.length && i < 100; i++) { try { track(q[i][0], q[i][1]); } catch (e) { /* one bad call */ } } }
