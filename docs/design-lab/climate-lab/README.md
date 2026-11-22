@@ -1,7 +1,7 @@
 # Climate lab: sun, wind and rain inside one apartment (HAD-803)
 
 LIVE SINCE 22.11.2026 (Ben: "מאשר להעלות הכל") at https://nad-lan.co.il/tour/climate/ : a static folder under <site root>/tour/climate/,
-`noindex`, linked from nowhere on the site, no plugin file and no version bump. Uploaded with scripts/had801/tour_ship.py, 50 files
+linked from nowhere on the site and not in the sitemap (the noindex line was removed on 22.11.2026: indexing is Ben's decision only; indexing is never requested), no plugin file and no version bump. Uploaded with scripts/had801/tour_ship.py, 50 files
 md5-verified. Rollback = rename or remove tour/climate/ on the server. The host rate-limits .glb and .json (429 after a burst), so
 the page loads byte-identical .js twins (E-4A.json.js, models.json.js, *.glb.js). Nothing in the live designer, project pages, maps, the beam or
 `assets/showroom-engine/engine.js` was touched. The lab runs on its own copy of the designer in `./designer/`.
