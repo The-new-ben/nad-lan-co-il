@@ -1,0 +1,168 @@
+{
+ "url": "https://nad-lan.co.il/tour/sde-dov/?walk=1",
+ "profile": "390px, 4x CPU, 9/1.5 Mbit/s, 150 ms",
+ "median": {
+  "fcp": 1404.0,
+  "dcl_s": 0.58,
+  "ready_s": 1.18,
+  "html_kb": 3,
+  "html_ms": 206,
+  "bytes_kb": 427,
+  "requests": 10
+ },
+ "runs": [
+  {
+   "fcp": null,
+   "html_kb": 3,
+   "html_ms": 206,
+   "bytes_kb": 427,
+   "requests": 10,
+   "big": [
+    [
+     319,
+     "assets/view.webp",
+     1055
+    ],
+    [
+     32,
+     "assets/depth.bin.js",
+     784
+    ],
+    [
+     22,
+     "fonts/barlow.woff2",
+     488
+    ],
+    [
+     12,
+     "fonts/heebo.woff2",
+     441
+    ],
+    [
+     10,
+     "assets/cell.json.js",
+     706
+    ],
+    [
+     9,
+     "assets/entry.js",
+     487
+    ],
+    [
+     7,
+     "sde-dov/style.css",
+     456
+    ],
+    [
+     6,
+     "assets/worker.js",
+     737
+    ]
+   ],
+   "dcl_s": 0.58,
+   "ready_s": 1.18
+  },
+  {
+   "fcp": 1980,
+   "html_kb": 3,
+   "html_ms": 1271,
+   "bytes_kb": 427,
+   "requests": 10,
+   "big": [
+    [
+     319,
+     "assets/view.webp",
+     2489
+    ],
+    [
+     32,
+     "assets/depth.bin.js",
+     2214
+    ],
+    [
+     22,
+     "fonts/barlow.woff2",
+     1551
+    ],
+    [
+     12,
+     "fonts/heebo.woff2",
+     1534
+    ],
+    [
+     10,
+     "assets/cell.json.js",
+     2176
+    ],
+    [
+     9,
+     "assets/entry.js",
+     1551
+    ],
+    [
+     7,
+     "sde-dov/style.css",
+     1520
+    ],
+    [
+     6,
+     "assets/worker.js",
+     2162
+    ]
+   ],
+   "dcl_s": 1.99,
+   "ready_s": 2.57
+  },
+  {
+   "fcp": 828,
+   "html_kb": 3,
+   "html_ms": 199,
+   "bytes_kb": 423,
+   "requests": 9,
+   "big": [
+    [
+     319,
+     "assets/view.webp",
+     1040
+    ],
+    [
+     32,
+     "assets/depth.bin.js",
+     773
+    ],
+    [
+     22,
+     "fonts/barlow.woff2",
+     479
+    ],
+    [
+     12,
+     "fonts/heebo.woff2",
+     433
+    ],
+    [
+     10,
+     "assets/cell.json.js",
+     726
+    ],
+    [
+     9,
+     "assets/entry.js",
+     478
+    ],
+    [
+     7,
+     "sde-dov/style.css",
+     450
+    ],
+    [
+     6,
+     "assets/worker.js",
+     711
+    ]
+   ],
+   "dcl_s": 0.55,
+   "ready_s": 1.08
+  }
+ ]
+}
