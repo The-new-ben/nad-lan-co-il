@@ -1,0 +1,1056 @@
+{
+ "schema": "nadlan-apartment",
+ "v": 1,
+ "id": "ashira-e-5f",
+ "geometry_revision": "ashira-E-5F:2026-11-11:a",
+ "source": {
+  "kind": "sales-plan",
+  "label_he": "לפי תוכנית המכר שפורסמה",
+  "note": "Our own redraw of the published building E sales plan E-5F (Ashira, Sde Dov). Room sizes follow the printed dimensions; the drawing is not to scale, so other walls are traced and may differ by a few centimetres. The signed sales plan is binding.",
+  "date": "2026-11-11"
+ },
+ "unit": {
+  "project": "ashira",
+  "unit_id": null,
+  "tower": "E",
+  "floor": 16,
+  "type": "E-5F",
+  "rooms": 5
+ },
+ "units": "cm",
+ "frame": {
+  "origin": "plan-top-left",
+  "x": "right",
+  "y": "down",
+  "rot": "deg-cw"
+ },
+ "north_deg": 349,
+ "levels": [
+  {
+   "id": "L0",
+   "height": 270,
+   "slab": 25
+  }
+ ],
+ "nodes": {
+  "n1": [
+   251.1,
+   2301.3
+  ],
+  "n2": [
+   251.1,
+   737.2
+  ],
+  "n3": [
+   271.6,
+   661.2
+  ],
+  "n4": [
+   319.7,
+   608
+  ],
+  "n5": [
+   400,
+   577.6
+  ],
+  "n6": [
+   940.2,
+   577.6
+  ],
+  "n7": [
+   940.2,
+   802.6
+  ],
+  "n8": [
+   857,
+   802.6
+  ],
+  "n9": [
+   857,
+   1340.6
+  ],
+  "n10": [
+   786.9,
+   1340.6
+  ],
+  "n11": [
+   962.1,
+   1340.6
+  ],
+  "n12": [
+   962.1,
+   1877.2
+  ],
+  "n13": [
+   1086.2,
+   1877.2
+  ],
+  "n14": [
+   1086.2,
+   2433.5
+  ],
+  "n15": [
+   378.1,
+   2433.5
+  ],
+  "n16": [
+   319.7,
+   2416.8
+  ],
+  "n17": [
+   275.9,
+   2378.8
+  ],
+  "n18": [
+   251.1,
+   1162.8
+  ],
+  "n19": [
+   636.6,
+   1162.8
+  ],
+  "n20": [
+   636.6,
+   1441
+  ],
+  "n21": [
+   251.1,
+   1441
+  ],
+  "n22": [
+   662.8,
+   1441
+  ],
+  "n23": [
+   786.9,
+   1441
+  ],
+  "n24": [
+   786.9,
+   2118.9
+  ],
+  "n25": [
+   786.9,
+   1565.6
+  ],
+  "n26": [
+   962.1,
+   1565.6
+  ],
+  "n27": [
+   786.9,
+   1877.2
+  ],
+  "n28": [
+   786.9,
+   2070.2
+  ],
+  "n29": [
+   1086.2,
+   2070.2
+  ],
+  "n30": [
+   662.8,
+   2118.9
+  ],
+  "n31": [
+   251.1,
+   1722.2
+  ],
+  "n32": [
+   662.8,
+   1722.2
+  ],
+  "n33": [
+   251.1,
+   2011
+  ],
+  "n34": [
+   662.8,
+   2011
+  ],
+  "n35": [
+   604.4,
+   2118.9
+  ],
+  "n36": [
+   604.4,
+   2433.5
+  ],
+  "n37": [
+   893.5,
+   577.6
+  ],
+  "n38": [
+   893.5,
+   0
+  ],
+  "n39": [
+   239.4,
+   0
+  ],
+  "n40": [
+   115.3,
+   22.8
+  ],
+  "n41": [
+   35,
+   98.8
+  ],
+  "n42": [
+   2.9,
+   235.6
+  ],
+  "n43": [
+   0,
+   2242
+  ],
+  "n44": [
+   27.7,
+   2340.8
+  ],
+  "n45": [
+   100.7,
+   2409.2
+  ],
+  "n46": [
+   202.9,
+   2439.6
+  ],
+  "n47": [
+   2.2,
+   737.2
+  ]
+ },
+ "walls": [
+  {
+   "id": "f1",
+   "a": "n1",
+   "b": "n33",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f2",
+   "a": "n33",
+   "b": "n31",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f3",
+   "a": "n31",
+   "b": "n21",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f4",
+   "a": "n21",
+   "b": "n18",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f5",
+   "a": "n18",
+   "b": "n2",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f6",
+   "a": "n2",
+   "b": "n3",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f7",
+   "a": "n3",
+   "b": "n4",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f8",
+   "a": "n4",
+   "b": "n5",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f9",
+   "a": "n5",
+   "b": "n37",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f10",
+   "a": "n37",
+   "b": "n6",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "s1",
+   "a": "n6",
+   "b": "n7",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s2",
+   "a": "n7",
+   "b": "n8",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s3",
+   "a": "n8",
+   "b": "n9",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "p1",
+   "a": "n10",
+   "b": "n9",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "s4",
+   "a": "n9",
+   "b": "n11",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s5",
+   "a": "n11",
+   "b": "n26",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s6",
+   "a": "n26",
+   "b": "n12",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s7",
+   "a": "n12",
+   "b": "n13",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s8",
+   "a": "n13",
+   "b": "n29",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s9",
+   "a": "n29",
+   "b": "n14",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "f11",
+   "a": "n14",
+   "b": "n36",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f12",
+   "a": "n36",
+   "b": "n15",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f13",
+   "a": "n15",
+   "b": "n16",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f14",
+   "a": "n16",
+   "b": "n17",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f15",
+   "a": "n17",
+   "b": "n1",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "v1",
+   "a": "n18",
+   "b": "n19",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "v2",
+   "a": "n19",
+   "b": "n20",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "p2",
+   "a": "n21",
+   "b": "n20",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p3",
+   "a": "n20",
+   "b": "n22",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "v3",
+   "a": "n22",
+   "b": "n23",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "p4",
+   "a": "n10",
+   "b": "n23",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p5",
+   "a": "n23",
+   "b": "n25",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p6",
+   "a": "n25",
+   "b": "n27",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p7",
+   "a": "n27",
+   "b": "n28",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p8",
+   "a": "n28",
+   "b": "n24",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p9",
+   "a": "n25",
+   "b": "n26",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p10",
+   "a": "n27",
+   "b": "n12",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p11",
+   "a": "n28",
+   "b": "n29",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p12",
+   "a": "n22",
+   "b": "n32",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p13",
+   "a": "n32",
+   "b": "n34",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p14",
+   "a": "n34",
+   "b": "n30",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p15",
+   "a": "n31",
+   "b": "n32",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p16",
+   "a": "n33",
+   "b": "n34",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p17",
+   "a": "n35",
+   "b": "n30",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p18",
+   "a": "n30",
+   "b": "n24",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p19",
+   "a": "n35",
+   "b": "n36",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "r1",
+   "a": "n37",
+   "b": "n38",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r2",
+   "a": "n38",
+   "b": "n39",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r3",
+   "a": "n39",
+   "b": "n40",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r4",
+   "a": "n40",
+   "b": "n41",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r5",
+   "a": "n41",
+   "b": "n42",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r6",
+   "a": "n42",
+   "b": "n47",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r7",
+   "a": "n47",
+   "b": "n43",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r8",
+   "a": "n43",
+   "b": "n44",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r9",
+   "a": "n44",
+   "b": "n45",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r10",
+   "a": "n45",
+   "b": "n46",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r11",
+   "a": "n46",
+   "b": "n15",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "v4",
+   "a": "n47",
+   "b": "n2",
+   "t": 0,
+   "kind": "divider"
+  }
+ ],
+ "openings": [
+  {
+   "id": "o-entry",
+   "wall": "s1",
+   "type": "door",
+   "at": 94,
+   "w": 100,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-slider-north",
+   "wall": "f9",
+   "type": "slider",
+   "at": 48,
+   "w": 400,
+   "sill": 0,
+   "head": 230
+  },
+  {
+   "id": "o-slider-west",
+   "wall": "f5",
+   "type": "slider",
+   "at": 63,
+   "w": 300,
+   "sill": 0,
+   "head": 230
+  },
+  {
+   "id": "o-win-kitchen",
+   "wall": "f4",
+   "type": "window",
+   "at": 66,
+   "w": 150,
+   "sill": 105,
+   "head": 215
+  },
+  {
+   "id": "o-win-bed1",
+   "wall": "f3",
+   "type": "window",
+   "at": 61,
+   "w": 160,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-win-bed2",
+   "wall": "f2",
+   "type": "window",
+   "at": 64,
+   "w": 160,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-win-bed3",
+   "wall": "f1",
+   "type": "window",
+   "at": 71,
+   "w": 160,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-win-master",
+   "wall": "f11",
+   "type": "window",
+   "at": 119,
+   "w": 200,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-door-bed1",
+   "wall": "p12",
+   "type": "door",
+   "at": 87,
+   "w": 90,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-door-bed2",
+   "wall": "p13",
+   "type": "door",
+   "at": 64,
+   "w": 90,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-door-bed3",
+   "wall": "p14",
+   "type": "door",
+   "at": 8,
+   "w": 90,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-door-master",
+   "wall": "p18",
+   "type": "door",
+   "at": 16,
+   "w": 90,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-door-wc",
+   "wall": "p5",
+   "type": "door",
+   "at": 22,
+   "w": 80,
+   "sill": 0,
+   "head": 210,
+   "swing": -1
+  },
+  {
+   "id": "o-door-bath",
+   "wall": "p6",
+   "type": "door",
+   "at": 165,
+   "w": 80,
+   "sill": 0,
+   "head": 210,
+   "swing": -1
+  },
+  {
+   "id": "o-door-bath2",
+   "wall": "p7",
+   "type": "door",
+   "at": 66,
+   "w": 80,
+   "sill": 0,
+   "head": 210,
+   "swing": -1
+  }
+ ],
+ "rooms": [
+  {
+   "id": "living",
+   "type": "living",
+   "name_he": "חדר דיור ופינת אוכל",
+   "at": [
+    531,
+    874
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "kitchen",
+   "type": "kitchen",
+   "name_he": "מטבח",
+   "at": [
+    444,
+    1300
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "balcony",
+   "type": "balcony",
+   "name_he": "מרפסת",
+   "at": [
+    137,
+    418
+   ],
+   "floor": "deck"
+  },
+  {
+   "id": "balcony-w",
+   "type": "balcony",
+   "name_he": "מרפסת",
+   "at": [
+    123,
+    1482
+   ],
+   "floor": "deck"
+  },
+  {
+   "id": "bed1",
+   "type": "bedroom",
+   "name_he": "חדר שינה",
+   "at": [
+    458,
+    1581
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "bed2",
+   "type": "bedroom",
+   "name_he": "חדר שינה",
+   "at": [
+    458,
+    1862
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "bed3",
+   "type": "bedroom",
+   "name_he": "חדר שינה",
+   "at": [
+    429,
+    2227
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "master",
+   "type": "bedroom",
+   "name_he": "חדר שינה הורים",
+   "at": [
+    896,
+    2242
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "hall",
+   "type": "hall",
+   "name_he": "מסדרון",
+   "at": [
+    724,
+    1786
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "wc",
+   "type": "wet",
+   "name_he": "שירותי אורחים",
+   "at": [
+    875,
+    1452
+   ],
+   "floor": "porcelain-60"
+  },
+  {
+   "id": "bath",
+   "type": "wet",
+   "name_he": "חדר רחצה",
+   "at": [
+    875,
+    1725
+   ],
+   "floor": "porcelain-60"
+  },
+  {
+   "id": "bath2",
+   "type": "wet",
+   "name_he": "חדר רחצה",
+   "at": [
+    940,
+    1968
+   ],
+   "floor": "porcelain-60"
+  }
+ ],
+ "rules": [
+  {
+   "code": "room.min_width",
+   "applies": [
+    "bedroom"
+   ],
+   "value": 260,
+   "source": "spike value, to be verified against the Planning and Building Regulations before any public use"
+  },
+  {
+   "code": "room.min_area",
+   "applies": [
+    "bedroom"
+   ],
+   "value": 8,
+   "source": "spike value, to be verified against the Planning and Building Regulations before any public use"
+  }
+ ],
+ "starter": [
+  {
+   "id": "s1",
+   "sku": "gen.sofa3",
+   "x": 400,
+   "y": 752,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s2",
+   "sku": "gen.rug",
+   "x": 561,
+   "y": 752,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s3",
+   "sku": "gen.plant",
+   "x": 823,
+   "y": 631,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s4",
+   "sku": "gen.dining6",
+   "x": 444,
+   "y": 1026,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s5",
+   "sku": "gen.chair",
+   "x": 385,
+   "y": 968,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s6",
+   "sku": "gen.chair",
+   "x": 502,
+   "y": 968,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s7",
+   "sku": "gen.chair",
+   "x": 385,
+   "y": 1084,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s8",
+   "sku": "gen.chair",
+   "x": 502,
+   "y": 1084,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s9",
+   "sku": "gen.kitchen",
+   "x": 444,
+   "y": 1401,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s10",
+   "sku": "gen.island",
+   "x": 444,
+   "y": 1231,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s11",
+   "sku": "gen.bed160",
+   "x": 371,
+   "y": 1581,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s12",
+   "sku": "gen.bed160",
+   "x": 371,
+   "y": 1867,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s13",
+   "sku": "gen.bed160",
+   "x": 385,
+   "y": 2212,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s14",
+   "sku": "gen.bedset",
+   "x": 911,
+   "y": 2303,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s15",
+   "sku": "gen.wardrobe2",
+   "x": 1013,
+   "y": 2151,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s16",
+   "sku": "gen.plant",
+   "x": 677,
+   "y": 114,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s17",
+   "sku": "gen.plant",
+   "x": 93,
+   "y": 1482,
+   "rot": 0,
+   "status": "decor"
+  }
+ ]
+}

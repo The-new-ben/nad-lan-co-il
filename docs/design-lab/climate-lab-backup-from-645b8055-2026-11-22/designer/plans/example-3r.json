@@ -1,0 +1,578 @@
+{
+ "schema": "nadlan-apartment",
+ "v": 1,
+ "id": "example-3r",
+ "geometry_revision": "example-3r:2026-11-11:a",
+ "source": {
+  "kind": "example",
+  "label_he": "דירה לדוגמה",
+  "note": "An invented 3-room layout of a typical Israeli new build, for the designer when a project has no plan. Not a plan of any project and not a sales plan.",
+  "date": "2026-11-11"
+ },
+ "unit": {
+  "project": null,
+  "unit_id": null,
+  "tower": null,
+  "floor": null,
+  "type": "3R",
+  "rooms": 3
+ },
+ "units": "cm",
+ "frame": {
+  "origin": "plan-top-left",
+  "x": "right",
+  "y": "down",
+  "rot": "deg-cw"
+ },
+ "north_deg": 0,
+ "levels": [
+  {
+   "id": "L0",
+   "height": 270,
+   "slab": 25
+  }
+ ],
+ "nodes": {
+  "n1": [
+   0,
+   180
+  ],
+  "n2": [
+   560,
+   180
+  ],
+  "n3": [
+   1000,
+   180
+  ],
+  "n4": [
+   1000,
+   560
+  ],
+  "n5": [
+   1000,
+   980
+  ],
+  "n6": [
+   700,
+   980
+  ],
+  "n7": [
+   700,
+   560
+  ],
+  "n8": [
+   0,
+   980
+  ],
+  "n9": [
+   560,
+   560
+  ],
+  "n10": [
+   560,
+   660
+  ],
+  "n11": [
+   350,
+   660
+  ],
+  "n12": [
+   0,
+   660
+  ],
+  "n13": [
+   350,
+   980
+  ],
+  "n14": [
+   700,
+   700
+  ],
+  "n15": [
+   560,
+   700
+  ],
+  "n16": [
+   560,
+   980
+  ],
+  "n17": [
+   0,
+   0
+  ],
+  "n18": [
+   560,
+   0
+  ]
+ },
+ "walls": [
+  {
+   "id": "f1",
+   "a": "n1",
+   "b": "n2",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f2",
+   "a": "n2",
+   "b": "n3",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f3",
+   "a": "n3",
+   "b": "n4",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "m1",
+   "a": "n4",
+   "b": "n5",
+   "t": 30,
+   "kind": "mamad"
+  },
+  {
+   "id": "m2",
+   "a": "n5",
+   "b": "n6",
+   "t": 30,
+   "kind": "mamad"
+  },
+  {
+   "id": "m3",
+   "a": "n6",
+   "b": "n14",
+   "t": 30,
+   "kind": "mamad"
+  },
+  {
+   "id": "m4",
+   "a": "n14",
+   "b": "n7",
+   "t": 30,
+   "kind": "mamad"
+  },
+  {
+   "id": "m5",
+   "a": "n7",
+   "b": "n4",
+   "t": 30,
+   "kind": "mamad"
+  },
+  {
+   "id": "s1",
+   "a": "n6",
+   "b": "n16",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s2",
+   "a": "n16",
+   "b": "n13",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "s3",
+   "a": "n13",
+   "b": "n8",
+   "t": 25,
+   "kind": "structural"
+  },
+  {
+   "id": "f4",
+   "a": "n8",
+   "b": "n12",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "f5",
+   "a": "n12",
+   "b": "n1",
+   "t": 25,
+   "kind": "facade"
+  },
+  {
+   "id": "p1",
+   "a": "n2",
+   "b": "n9",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p2",
+   "a": "n9",
+   "b": "n7",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "v1",
+   "a": "n9",
+   "b": "n10",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "v2",
+   "a": "n10",
+   "b": "n11",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "v3",
+   "a": "n11",
+   "b": "n12",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "v4",
+   "a": "n11",
+   "b": "n13",
+   "t": 0,
+   "kind": "divider"
+  },
+  {
+   "id": "p3",
+   "a": "n14",
+   "b": "n15",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "p4",
+   "a": "n15",
+   "b": "n16",
+   "t": 10,
+   "kind": "partition"
+  },
+  {
+   "id": "r1",
+   "a": "n1",
+   "b": "n17",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r2",
+   "a": "n17",
+   "b": "n18",
+   "t": 8,
+   "kind": "rail"
+  },
+  {
+   "id": "r3",
+   "a": "n18",
+   "b": "n2",
+   "t": 8,
+   "kind": "rail"
+  }
+ ],
+ "openings": [
+  {
+   "id": "o-slider",
+   "wall": "f1",
+   "type": "slider",
+   "at": 100,
+   "w": 360,
+   "sill": 0,
+   "head": 230
+  },
+  {
+   "id": "o-win-master",
+   "wall": "f2",
+   "type": "window",
+   "at": 120,
+   "w": 200,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-win-living",
+   "wall": "f5",
+   "type": "window",
+   "at": 160,
+   "w": 160,
+   "sill": 95,
+   "head": 215
+  },
+  {
+   "id": "o-win-kitchen",
+   "wall": "f4",
+   "type": "window",
+   "at": 100,
+   "w": 120,
+   "sill": 105,
+   "head": 215
+  },
+  {
+   "id": "o-win-mamad",
+   "wall": "m1",
+   "type": "window",
+   "at": 160,
+   "w": 100,
+   "sill": 100,
+   "head": 200
+  },
+  {
+   "id": "o-entry",
+   "wall": "s2",
+   "type": "door",
+   "at": 80,
+   "w": 100,
+   "sill": 0,
+   "head": 210,
+   "swing": 1
+  },
+  {
+   "id": "o-door-master",
+   "wall": "p2",
+   "type": "door",
+   "at": 25,
+   "w": 90,
+   "sill": 0,
+   "head": 210,
+   "swing": -1
+  },
+  {
+   "id": "o-door-mamad",
+   "wall": "m4",
+   "type": "door",
+   "at": 20,
+   "w": 80,
+   "sill": 0,
+   "head": 205,
+   "swing": 1
+  },
+  {
+   "id": "o-door-bath",
+   "wall": "p3",
+   "type": "door",
+   "at": 30,
+   "w": 80,
+   "sill": 0,
+   "head": 210,
+   "swing": -1
+  }
+ ],
+ "rooms": [
+  {
+   "id": "living",
+   "type": "living",
+   "name_he": "סלון ופינת אוכל",
+   "at": [
+    280,
+    420
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "kitchen",
+   "type": "kitchen",
+   "name_he": "מטבח",
+   "at": [
+    170,
+    820
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "hall",
+   "type": "hall",
+   "name_he": "כניסה",
+   "at": [
+    455,
+    820
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "master",
+   "type": "bedroom",
+   "name_he": "שינה הורים",
+   "at": [
+    780,
+    370
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "mamad",
+   "type": "mamad",
+   "name_he": "ממ״ד",
+   "at": [
+    850,
+    770
+   ],
+   "floor": "porcelain-80"
+  },
+  {
+   "id": "bath",
+   "type": "wet",
+   "name_he": "רחצה",
+   "at": [
+    630,
+    840
+   ],
+   "floor": "porcelain-60"
+  },
+  {
+   "id": "balcony",
+   "type": "balcony",
+   "name_he": "מרפסת",
+   "at": [
+    280,
+    90
+   ],
+   "floor": "deck"
+  }
+ ],
+ "rules": [
+  {
+   "code": "room.min_width",
+   "applies": [
+    "bedroom"
+   ],
+   "value": 260,
+   "source": "spike value, to be verified against the Planning and Building Regulations before any public use"
+  },
+  {
+   "code": "room.min_area",
+   "applies": [
+    "bedroom"
+   ],
+   "value": 8,
+   "source": "spike value, to be verified against the Planning and Building Regulations before any public use"
+  }
+ ],
+ "starter": [
+  {
+   "id": "s1",
+   "sku": "gen.tv",
+   "x": 35,
+   "y": 380,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s2",
+   "sku": "gen.rug",
+   "x": 170,
+   "y": 380,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s3",
+   "sku": "gen.sofa3",
+   "x": 320,
+   "y": 380,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s4",
+   "sku": "gen.dining6",
+   "x": 480,
+   "y": 420,
+   "rot": 90,
+   "status": "decor"
+  },
+  {
+   "id": "s5",
+   "sku": "gen.chair",
+   "x": 406,
+   "y": 380,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s6",
+   "sku": "gen.chair",
+   "x": 406,
+   "y": 460,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s7",
+   "sku": "gen.chair",
+   "x": 480,
+   "y": 301,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s8",
+   "sku": "gen.chair",
+   "x": 480,
+   "y": 539,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s9",
+   "sku": "gen.kitchen",
+   "x": 181,
+   "y": 937,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s10",
+   "sku": "gen.island",
+   "x": 180,
+   "y": 780,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s11",
+   "sku": "gen.bedset",
+   "x": 780,
+   "y": 295,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s12",
+   "sku": "gen.wardrobe2",
+   "x": 850,
+   "y": 513,
+   "rot": 180,
+   "status": "decor"
+  },
+  {
+   "id": "s13",
+   "sku": "gen.bed160",
+   "x": 880,
+   "y": 870,
+   "rot": 270,
+   "status": "decor"
+  },
+  {
+   "id": "s14",
+   "sku": "gen.wardrobe2",
+   "x": 900,
+   "y": 608,
+   "rot": 0,
+   "status": "decor"
+  },
+  {
+   "id": "s15",
+   "sku": "gen.plant",
+   "x": 520,
+   "y": 40,
+   "rot": 0,
+   "status": "decor"
+  }
+ ]
+}

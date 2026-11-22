@@ -1,0 +1,491 @@
+/* NadLan apartment designer: the call dock (HAD-706). Linked inside the designer's shadow root by call.js.
+   Same identity as the designer: drafting white, plan ink, blueprint blue = what you hold (the pen, the main action),
+   dimension red = stop messages and leaving only, green = live and good. IBM Plex Sans Hebrew + IBM Plex Mono. No gradients,
+   no rounded shadow cards: square tiles with ink rules, like the title block of a working drawing. */
+.ndc{--sheet:#F2F5F7;--ink:#0F2233;--ink2:#46596A;--blue:#1F5FA8;--blue2:#D6E5F6;--dim:#B5302A;--ok:#1C7A4E;--line:#B9C6CF;--card:#fff;
+  position:absolute;top:0;inset-inline:0;z-index:7;background:var(--card);color:var(--ink);border-bottom:2px solid var(--ink);
+  font:14px/1.3 "IBM Plex Sans Hebrew",Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+.ndc *{box-sizing:border-box;margin:0;padding:0}
+.ndc [hidden]{display:none!important}
+.ndc button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ndc :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.ndc .mono{font-family:"IBM Plex Mono",monospace;direction:ltr;unicode-bidi:isolate}
+
+/* the top row: the tiles in a strip, the pen and the "not recorded" line beside them */
+.ndc-top{display:flex;align-items:stretch;gap:8px;padding:6px 8px;min-height:64px}
+.ndc-tiles{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;flex:none;max-width:62%}
+.ndc-tiles::-webkit-scrollbar{display:none}
+.ndc-tile{position:relative;flex:none;width:52px;height:52px;background:var(--ink);color:#fff;border:2px solid var(--ink);overflow:hidden}
+.ndc-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:var(--ink)}
+.ndc-tile.ndc-has-v video{display:block}
+.ndc-tile.ndc-mirror video{transform:scaleX(-1)}
+.ndc-ini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.ndc-has-v .ndc-ini{display:none}
+.ndc-name{position:absolute;inset-inline:0;bottom:0;background:rgba(15,34,51,.82);font-size:10px;line-height:14px;padding:0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndc-tile.ndc-speaking{border-color:var(--ok);box-shadow:inset 0 0 0 2px var(--ok)}
+.ndc-tile.ndc-pen-on{outline:3px solid var(--blue);outline-offset:-1px}
+.ndc-mark{position:absolute;top:1px;inset-inline-start:1px;display:flex;gap:1px}
+.ndc-mark span{display:flex;width:16px;height:16px;align-items:center;justify-content:center;background:var(--card);color:var(--ink)}
+.ndc-mark span svg{width:12px;height:12px}
+.ndc-mark .ndc-m-pen{background:var(--blue);color:#fff}
+.ndc-mark .ndc-m-mute{color:var(--dim)}
+.ndc-q{position:absolute;top:2px;inset-inline-end:2px;display:flex;align-items:flex-end;gap:1px;height:10px}
+.ndc-q s{display:block;width:3px;background:rgba(255,255,255,.35)}
+.ndc-q s:nth-child(1){height:4px}.ndc-q s:nth-child(2){height:7px}.ndc-q s:nth-child(3){height:10px}
+.ndc-q-excellent s{background:#fff}
+.ndc-q-good s:nth-child(-n+2){background:#fff}
+.ndc-q-poor s:nth-child(1){background:var(--dim)}
+.ndc-q-lost s{background:var(--dim);opacity:.6}
+.ndc-tile.ndc-big{position:fixed;inset:72px 8px auto;width:auto;height:min(60vh,420px);z-index:12}
+.ndc-tile.ndc-big video{object-fit:contain}
+
+.ndc-status{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.ndc-pen{font-size:13px;font-weight:600;color:var(--blue);line-height:1.2}
+.ndc-follow{font-size:12px;color:var(--ink)}
+.ndc-norec{font-size:11.5px;color:var(--ink2)}
+.ndc-conn{font-size:12px;font-weight:600;color:var(--dim)}
+.ndc-conn:empty{display:none}
+
+/* the controls: every target at least 44 px */
+.ndc-ctl{display:flex;gap:4px;padding:0 6px 6px;align-items:center}
+.ndc-b{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 8px;border:2px solid var(--ink);background:var(--card);font-weight:600;font-size:13px;white-space:nowrap}
+.ndc-ctl .ndc-b{flex:none}
+.ndc-ctl .ndc-pb{flex:1;min-width:0;overflow:hidden}
+.ndc-ctl .ndc-pb span{overflow:hidden;text-overflow:ellipsis}
+.ndc-b.ndc-off{background:var(--ink);color:#fff}
+.ndc-b.ndc-go{background:var(--blue);border-color:var(--blue);color:#fff}
+.ndc-b.ndc-stop{background:var(--dim);border-color:var(--dim);color:#fff}
+.ndc-b[aria-pressed=true].ndc-wide{background:var(--blue2);border-color:var(--blue)}
+.ndc-b.ndc-flash{outline:3px solid var(--dim);outline-offset:1px}
+.ndc-b svg{flex:none}
+
+/* someone asks for the pen */
+.ndc-ask{display:flex;align-items:center;gap:6px;padding:6px 8px;background:var(--blue2);border-top:1px solid var(--blue)}
+.ndc-ask span{flex:1;min-width:0;font-weight:600;font-size:13px}
+
+/* the panel: hand, people, messages, the invite link (opens only on a tap, closes the same way) */
+.ndc-panel{position:absolute;top:100%;inset-inline:0;max-height:min(58vh,520px);overflow:auto;background:var(--card);border-bottom:2px solid var(--ink);padding:10px 12px 14px;z-index:11}
+.ndc-panel h3{font-size:12.5px;font-weight:600;color:var(--ink2);margin:12px 0 6px}
+.ndc-row{display:flex;gap:6px;align-items:center}
+.ndc-wide{flex:1}
+.ndc-ppl,.ndc-msgs{list-style:none}
+.ndc-ppl li{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid var(--line)}
+.ndc-ppl small{color:var(--ink2);font-size:11.5px}
+.ndc-sm{font-size:12.5px}
+.ndc-hold{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:var(--blue);color:#fff}
+.ndc-msgs{max-height:150px;overflow:auto;border:1px solid var(--line);padding:6px 8px;min-height:44px;background:var(--sheet)}
+.ndc-msgs li{padding:2px 0;font-size:13.5px;overflow-wrap:anywhere}
+.ndc-form{display:flex;gap:6px;margin-top:6px}
+.ndc-form input,.ndc-link{flex:1;min-width:0;min-height:44px;border:2px solid var(--ink);padding:0 10px;font:inherit;background:#fff;color:var(--ink)}
+.ndc-link{font-size:12px}
+.ndc-fine{font-size:12px;color:var(--ink2);margin-top:10px}
+
+.ndc-toast{position:absolute;top:calc(100% + 6px);inset-inline:10px;background:var(--ink);color:#fff;padding:8px 12px;font-weight:600;font-size:13.5px;border:2px solid #fff;z-index:10}
+.ndc-audio{position:absolute;top:calc(100% + 54px);inset-inline-start:10px;z-index:10}
+
+/* the pointers the others see, on the plan and on the 3D */
+.ndc-ptrs{position:absolute;inset:0;pointer-events:none;z-index:8;overflow:hidden}
+.ndc-ptr{position:absolute;top:0;left:0;will-change:transform}
+.ndc-ptr i{position:absolute;left:-7px;top:-7px;width:14px;height:14px;background:var(--blue,#1F5FA8);border:3px solid #fff;outline:1.5px solid #0F2233}
+.ndc-ptr span{position:absolute;left:10px;top:6px;background:#0F2233;color:#fff;font:600 11px/16px "IBM Plex Sans Hebrew",Arial,sans-serif;padding:0 4px;white-space:nowrap}
+.ndc-ptr.ndc-r-rep i{background:#0F2233}
+.ndc-ptr.ndc-r-designer i{background:#1C7A4E}
+.ndc-ptr.ndc-r-family i{background:#46596A}
+.ndc-ptr.ndc-r-buyer i{background:#1F5FA8}
+
+/* wide screens: a column at the side, the designer keeps the rest */
+.ndc.ndc-side{top:0;bottom:0;inset-inline:auto 0;width:300px;border-bottom:0;border-inline-start:2px solid var(--ink);display:flex;flex-direction:column}
+.ndc-side .ndc-top{flex-direction:column;padding:10px}
+.ndc-side .ndc-tiles{max-width:none;display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+.ndc-side .ndc-tile{width:auto;height:auto;aspect-ratio:4/3}
+.ndc-side .ndc-name{font-size:12px;line-height:18px}
+.ndc-side .ndc-ini{font-size:30px}
+.ndc-side .ndc-ctl{flex-wrap:wrap;padding:0 10px 10px}
+.ndc-side .ndc-ctl .ndc-pb{flex:1 1 100%;order:-1}
+.ndc-side .ndc-panel{position:static;max-height:none;flex:1;border-bottom:0;border-top:2px solid var(--ink)}
+.ndc-side .ndc-toast{top:auto;bottom:12px}
+.ndc-side .ndc-tile.ndc-big{inset:12px 312px auto 12px;height:70vh}
+@media (prefers-reduced-motion:reduce){.ndc *{transition:none!important;animation:none!important}}
+
+/* HAD-706 round 2: the open call (invite button, WhatsApp) and the sheet that starts or joins a call */
+.ndc-ctl .ndc-inv{font-size:13px}
+.ndc-sub{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:0 0 10px}
+.ndc-panel .ndc-wa{display:flex;width:100%;margin-top:8px;text-decoration:none;font-weight:700}
+.ndc-pen.ndc-flash{outline:3px solid var(--dim);outline-offset:2px}
+.ndc.ndc-sheet{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(15,34,51,.55);border:0}
+.ndc-card{position:relative;width:min(100%,420px);max-height:100%;overflow:auto;background:var(--card);border:2px solid var(--ink);padding:18px 16px 16px}
+.ndc-card h2{font-size:19px;line-height:1.25;font-weight:700;margin:0 0 6px;padding-inline-end:48px;color:var(--ink)}
+.ndc-card .ndc-x{position:absolute;top:6px;inset-inline-end:6px;border:0}
+.ndc-card form{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.ndc-lbl{font-size:13px;font-weight:600;color:var(--ink)}
+.ndc-card input{min-height:48px;border:2px solid var(--ink);padding:0 12px;font:inherit;font-size:16px;background:#fff;color:var(--ink);width:100%}
+.ndc-card input:focus{outline:3px solid var(--blue);outline-offset:1px}
+.ndc-b.ndc-big{min-height:52px;font-size:15.5px;font-weight:700;width:100%}
+.ndc-b:disabled{opacity:.55;cursor:default}
+.ndc-card .ndc-fine{margin-top:10px}
+.ndc-msg{font-size:13.5px;font-weight:600;color:var(--blue);margin-top:6px;min-height:1px}
+.ndc-msg:empty{display:none}
+.ndc-msg.ndc-bad{color:var(--dim)}
+.ndc .ndc-no{width:100%;margin-top:10px;border:2px solid var(--ink)}.ndc .ndc-row .ndc-b{border:2px solid var(--ink)}
+
+/* ==================================================================================================================
+   The open call, as designed (call-design.md, boards 01-12). Ink behind video and model, paper for the bar and the sheets,
+   blueprint blue for action and live state, red only for leaving, one technical-pen colour per person. Sharp corners,
+   2 px rules; the only round things are the face discs and the speaking ring. IBM Plex Sans Hebrew + IBM Plex Mono.
+   ================================================================================================================== */
+.ndo,.ndo-sheetwrap,.ndo-end{--ink:#0F2233;--ink-2:#16304A;--ink-3:#22405C;--graph:#46596A;--mute:#7A8B98;--sheet:#F2F5F7;--paper:#FFFFFF;--rule:#C9D4DC;--blue:#1F5FA8;--blue-2:#D6E5F6;--red:#B5302A;--live:#5B9BE6;--ok:#1C7A4E;
+  font:14px/1.35 "IBM Plex Sans Hebrew",Arial,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
+:where(.ndo,.ndo-sheetwrap,.ndo-end) *{box-sizing:border-box;margin:0;padding:0}
+.ndo [hidden],.ndo-sheetwrap [hidden],.ndo-end [hidden]{display:none!important}
+:where(.ndo,.ndo-sheetwrap,.ndo-end) button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;border-radius:0}
+.ndo :focus-visible,.ndo-sheetwrap :focus-visible,.ndo-end :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.ndo-mono{font-family:"IBM Plex Mono",monospace;direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.ndo{position:absolute;inset:0;z-index:7;pointer-events:none}
+.ndo>*{pointer-events:auto}
+
+/* the call header: ink, 56 */
+.ndo-head{position:absolute;top:0;inset-inline:0;height:56px;z-index:30;display:flex;align-items:center;gap:8px;padding-inline:4px 10px;background:var(--ink);color:#fff;border-bottom:1px solid var(--ink-3)}
+.ndo-hb{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#fff}
+.ndo[dir=rtl] .ndo-hb svg{transform:none}.ndo[dir=ltr] .ndo-hb svg{transform:scaleX(-1)}
+.ndo-ttl{flex:1;min-width:0}
+.ndo-ttl h2{font-size:15px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.ndo-ttl p{font-size:12px;font-weight:400;color:#B9C6CF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ndo-live{flex:none;display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border:1.5px solid var(--ink-3);font-size:13px;font-weight:500}
+.ndo-sq{width:9px;height:9px;background:var(--live);flex:none}
+.ndo-cnt{display:flex;align-items:center;gap:4px;padding-inline-start:8px;border-inline-start:1.5px solid var(--ink-3);height:100%}
+.ndo-cnt b{font-weight:500}
+.ndo:not(.ndo-wide) .ndo-seg-head{display:none!important}
+
+/* the stage layer: over the model, from the header to the bar */
+.ndo-stage{position:absolute;top:56px;inset-inline:0;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:15;pointer-events:none}
+.ndo-stage>*{pointer-events:auto}
+.ndo-barhid .ndo-stage{bottom:env(safe-area-inset-bottom,0px)}
+.ndo-frame{position:absolute;inset:0;border:3px solid var(--pen,#1F5FA8);pointer-events:none!important;z-index:1}
+
+/* face discs ("detail circles") */
+.ndo-faces{position:absolute;top:12px;inset-inline-start:12px;inset-inline-end:92px;display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 4px 2px;z-index:15;pointer-events:none}
+.ndo-faces::-webkit-scrollbar{display:none}
+.ndo-face{--d:52px;position:relative;flex:none;width:var(--d);display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:auto;cursor:pointer;touch-action:manipulation}
+.ndo-disc{position:relative;width:var(--d);height:var(--d);border-radius:50%;overflow:hidden;background:#fff;color:var(--pen);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--pen);transition:box-shadow .3s}
+.ndo-dash .ndo-disc{outline:2px dashed var(--pen);outline-offset:4px;box-shadow:0 0 0 2px var(--ink)}
+.ndo-disc video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:var(--ink-2)}
+.ndo-hasv .ndo-disc video{display:block}
+.ndo-mirror .ndo-disc video{transform:scaleX(-1)}
+.ndo-ini{font-size:calc(var(--d) * .42);font-weight:700;line-height:1;color:var(--pen)}
+.ndo-hasv .ndo-ini{display:none}
+.ndo-speaking .ndo-disc{box-shadow:0 0 0 3px var(--ink),0 0 0 6px var(--pen),0 0 0 8px color-mix(in srgb,var(--pen) 55%,transparent);transition:box-shadow .12s}
+.ndo-re .ndo-disc{filter:grayscale(.75)}
+.ndo-stamp{display:flex;align-items:stretch;height:17px;max-width:76px;background:var(--ink);color:#fff;border:1.5px solid var(--ink-3);border-inline-start:4px solid var(--pen);font-size:10.5px;font-weight:600;line-height:14px;padding:0 4px;white-space:nowrap;overflow:hidden}
+.ndo-stamp b{font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.ndo-bmute,.ndo-bq{position:absolute;display:none;width:20px;height:20px;align-items:center;justify-content:center;background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.ndo-bmute{top:calc(var(--d) - 18px);inset-inline-start:-4px}
+.ndo-muted .ndo-bmute{display:flex}
+.ndo-bq{top:-4px;inset-inline-start:-4px;background:var(--ink);color:#fff;border-color:#fff}
+.ndo-poor .ndo-bq{display:flex}
+.ndo-thost,.ndo-tview{position:absolute;top:-6px;inset-inline-end:-8px;display:none;font-style:normal;font-size:9.5px;font-weight:600;line-height:13px;padding:0 3px;background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.ndo-host .ndo-thost{display:block}
+.ndo-tview{top:auto;bottom:22px;inset-inline-end:-10px;background:var(--blue);color:#fff;border-color:#fff;white-space:nowrap}
+.ndo-viewed .ndo-tview{display:block}
+.ndo-led .ndo-disc{box-shadow:0 0 0 2px var(--ink),0 0 0 5px var(--pen)}
+.ndo-mepill{display:none}
+.ndo-face.ndo-big{position:fixed;z-index:60;--d:min(78vw,340px);top:72px;inset-inline-start:50%;transform:translateX(50%)}
+.ndo[dir=ltr] .ndo-face.ndo-big{transform:translateX(-50%)}
+.ndo-face.ndo-big .ndo-disc{border-radius:0}
+
+/* my own picture in the tour: 40 px, to any corner, folds into "אני" after 10 s */
+.ndo-selfbox{position:absolute;z-index:16;pointer-events:none}
+.ndo-selfbox>*{pointer-events:auto}
+.ndo-selfbox[data-corner=top-end]{top:12px;inset-inline-end:12px}
+.ndo-selfbox[data-corner=top-start]{top:96px;inset-inline-start:12px}
+.ndo-selfbox[data-corner=bottom-start]{bottom:72px;inset-inline-start:12px}
+.ndo-selfbox[data-corner=bottom-end]{bottom:72px;inset-inline-end:12px}
+.ndo-selfbox .ndo-face{--d:40px;width:48px;min-height:44px}
+.ndo-selfbox .ndo-face.ndo-collapsed .ndo-disc,.ndo-selfbox .ndo-face.ndo-collapsed .ndo-stamp,.ndo-selfbox .ndo-face.ndo-collapsed i{display:none}
+.ndo-selfbox .ndo-face.ndo-collapsed .ndo-mepill{display:flex;align-items:center;justify-content:center;min-width:48px;height:44px;padding:0 10px;background:var(--ink);color:#fff;border:2px solid var(--pen);font-size:12px;font-weight:600}
+.ndo-face.ndo-hide{display:none!important}
+
+/* the layout switch: three stacked segments on the stage edge */
+.ndo-seg{display:flex;border:2px solid var(--ink);background:var(--paper)}
+.ndo-seg button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 10px;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.ndo-seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.ndo-seg-stage{position:absolute;top:120px;inset-inline-end:12px;flex-direction:column;z-index:21}
+.ndo-seg-stage button{justify-content:flex-start;min-width:84px}
+.ndo-seg-stage button+button{border-top:1.5px solid var(--rule)}
+
+/* the pill (arrange): stacked minis and who speaks */
+.ndo-pill{position:absolute;top:8px;inset-inline-start:12px;max-width:calc(100% - 120px);height:44px;display:flex;align-items:center;gap:8px;padding:0 12px 0 6px;background:var(--paper);border:2px solid var(--ink);font-size:13px;font-weight:600;z-index:22;white-space:nowrap;overflow:hidden}
+.ndo-pill [data-ndc=pilltext]{overflow:hidden;text-overflow:ellipsis}
+.ndo-minis{display:flex;flex:none}
+.ndo-minis i{width:26px;height:26px;border-radius:50%;margin-inline-start:-8px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--pen);border:2px solid var(--pen);box-shadow:0 0 0 1.5px var(--ink);font-style:normal;font-size:12px;font-weight:700}
+.ndo-minis i:first-child{margin-inline-start:0}
+.ndo[data-lay=b]:not(.ndo-wide) .ndo-faces{display:none}
+.ndo[data-lay=b].ndo-peek:not(.ndo-wide) .ndo-faces{display:flex;top:60px;background:rgba(15,34,51,.86);padding:8px 10px 6px;inset-inline-end:12px}
+
+/* the swap button on the inset, the talk layout's model strip */
+.ndo-swap{position:absolute;bottom:calc(124px + 128px - 46px);inset-inline-end:calc(8px + 150px - 46px);width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--paper);border:2px solid var(--ink);z-index:22}
+.ndo-talkm{position:absolute;top:var(--facesh,380px);inset-inline:0;bottom:0;pointer-events:none!important;z-index:20}
+.ndo-talkm>span{position:absolute;top:8px;inset-inline-end:10px;font-size:11px;font-weight:500;color:#B9C6CF;background:rgba(15,34,51,.7);padding:1px 6px}
+.ndo-talkm .ndo-btn{position:absolute;bottom:10px;inset-inline-start:10px;pointer-events:auto;background:#fff}
+
+/* follow: the tab at the bottom of the stage, the "back to" chip */
+.ndo-tab{position:absolute;bottom:124px;left:50%;transform:translateX(-50%);min-height:44px;padding:0 16px;background:var(--pen,#1F5FA8);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;z-index:21;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+.ndo-chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px 0 4px;background:var(--pen,#1F5FA8);color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+.ndo-chip-o{position:absolute;bottom:124px;left:50%;transform:translateX(-50%);height:44px;padding:0 14px 0 6px;background:#fff;color:var(--ink);border:2px solid var(--pen,#1F5FA8);z-index:21}
+.ndo-mini-face{flex:none;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--pen,#1F5FA8);border:2px solid #fff;box-shadow:0 0 0 1.5px var(--pen,#1F5FA8);font-style:normal;font-size:12px;font-weight:700}
+.ndo-chip-o .ndo-mini-face{background:var(--pen);color:#fff}
+
+/* "undo mine": a small toast button, bottom start */
+.ndo-undo{position:absolute;bottom:124px;inset-inline-start:12px;display:flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;background:var(--paper);border:2px solid var(--ink);font-size:13px;font-weight:600;z-index:22}
+
+/* banners */
+.ndo-banners{position:absolute;top:0;inset-inline:0;z-index:36;pointer-events:none}
+.ndo-banners>*{pointer-events:auto}
+.ndo-ban{display:flex;align-items:center;gap:10px;width:100%;min-height:46px;padding:6px 12px;font-size:13.5px;font-weight:600}
+.ndo-ban b{flex:1;min-width:0;font-weight:600}
+.ndo-ban-re{background:var(--ink);color:#fff;border-bottom:2px solid var(--blue)}
+.ndo-ban-re .ndo-btn{min-height:44px;background:#fff;color:var(--ink)}
+.ndo-spin{width:14px;height:14px;border:2px solid var(--live);border-inline-end-color:transparent;border-radius:50%;animation:ndo-spin 1s linear infinite;flex:none}
+@keyframes ndo-spin{to{transform:rotate(360deg)}}
+.ndo-ban-audio{justify-content:center;min-height:60px;background:var(--blue);color:#fff;font-size:15px}
+.ndo-ban-weak{background:var(--paper);color:var(--ink);border-bottom:2px solid var(--ink)}
+.ndo-linkb{min-height:44px;color:var(--blue)!important;text-decoration:underline;font-weight:600;white-space:nowrap}
+
+/* toasts */
+.ndo-toasts{position:absolute;bottom:180px;inset-inline:12px;display:flex;justify-content:center;z-index:37;pointer-events:none}
+.ndo-toast{pointer-events:auto;display:flex;align-items:center;gap:8px;max-width:100%;padding:10px 12px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);font-size:14px;font-weight:600;line-height:1.35}
+.ndo-toast svg{flex:none}
+.ndo-toast.ndo-dark{background:var(--ink);color:#fff;border-color:#fff}
+.ndo-toast .ndo-link{flex:none;min-height:44px;padding:0 4px;color:var(--blue);text-decoration:underline;font-weight:600}
+.ndo-toast.ndo-dark .ndo-link{color:#9CC3F0}
+
+/* the control bar: paper, 2 px ink rule, 76 + home area; RTL from the right edge */
+.ndo-bar{position:absolute;bottom:0;inset-inline:0;height:calc(76px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:var(--paper);border-top:2px solid var(--ink);z-index:35;transition:transform .2s}
+.ndo-barhid .ndo-bar{transform:translateY(110%)}
+.ndo-bar-in{height:76px;display:flex;align-items:center;padding:0 6px}
+.ndo-b{position:relative;flex:1 1 0;min-width:50px;height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--ink)}
+.ndo-b:active{background:rgba(15,34,51,.12)}
+.ndo-ic{display:flex;height:24px}
+.ndo-lb{font-size:10.5px;font-weight:500;line-height:1;white-space:nowrap}
+.ndo-b[data-state=off]{background:var(--ink);color:#fff}
+.ndo-b[data-state=on]{background:var(--blue);color:#fff}
+.ndo-b[data-state=blocked]{background:repeating-linear-gradient(135deg,#fff 0 5px,#E3E9EE 5px 7px);color:var(--graph)}
+.ndo-lv{position:absolute;top:12px;inset-inline-end:calc(50% - 20px);width:3px;height:14px;background:var(--rule);display:flex;align-items:flex-end}
+.ndo-lv i{display:block;width:100%;height:0;background:var(--ok)}
+.ndo-b[data-state=off] .ndo-lv,.ndo-b[data-state=blocked] .ndo-lv{display:none}
+.ndo-count{position:absolute;top:2px;inset-inline-end:6px;min-width:16px;height:16px;padding:0 3px;background:var(--blue);color:#fff;font-size:10px;font-weight:600;line-height:16px;text-align:center}
+.ndo-rule{flex:none;width:2px;height:44px;background:var(--rule);margin:0 8px}
+.ndo-gap{display:none}
+.ndo-leave{flex:none;width:56px;height:56px;background:var(--red);color:#fff}
+.ndo-leave:active{background:#962620}
+
+/* the overlay: held pieces, lasers, cones */
+.ndo-ov{position:absolute;inset:0;z-index:14;pointer-events:none!important;overflow:hidden}
+.ndo-ovs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ndo-hold{position:absolute;top:0;left:0;border:4px solid var(--pen);background:color-mix(in srgb,var(--pen) 14%,transparent);box-shadow:0 0 0 6px color-mix(in srgb,var(--pen) 22%,transparent);will-change:transform}
+.ndo-hold.ndo-h3{border:0;background:none;box-shadow:none}
+.ndo-hface{position:absolute;top:50%;left:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--pen);color:#fff;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--ink);font-style:normal;font-size:13px;font-weight:700}
+.ndo-hold .ndo-chip{position:absolute;bottom:calc(100% + 6px);inset-inline-start:-4px}
+.ndo-shake{animation:ndo-shake .08s linear 3}
+@keyframes ndo-shake{25%{margin-left:4px}75%{margin-left:-4px}}
+.ndo-lchip{position:absolute;top:0;left:0}
+
+/* sheets: paper, 2 px ink top rule, padding 18/16, title 20/700, above the bar */
+.ndo-scrim{position:absolute;top:56px;inset-inline:0;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:rgba(15,34,51,.45);z-index:45}
+.ndo-sheet{position:absolute;inset-inline:0;bottom:calc(76px + env(safe-area-inset-bottom,0px));max-height:calc(100% - 56px - 76px - 12px);overflow:auto;background:var(--paper);border-top:2px solid var(--ink);padding:18px 16px 16px;z-index:50}
+.ndo-shh{display:flex;align-items:flex-start;gap:8px}
+.ndo-shh h3,.ndo-shh h2{flex:1;min-width:0;font-size:20px;font-weight:700;line-height:1.25;color:var(--ink)}
+.ndo-x{flex:none;width:44px;height:44px;margin:-10px -8px 0 -8px;display:flex;align-items:center;justify-content:center}
+.ndo-shsub{font-size:14px;line-height:1.5;color:var(--graph);margin-top:6px}
+.ndo-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 16px;border:2px solid var(--ink)!important;background:var(--paper);color:var(--ink);font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap}
+.ndo-btn.ndo-sec{min-height:44px;font-size:14px;padding:0 12px}
+.ndo-btn.ndo-pri{background:var(--blue);border-color:var(--blue)!important;color:#fff}
+.ndo-btn.ndo-dark{background:var(--ink);color:#fff}
+.ndo-btn.ndo-danger{background:var(--red);border-color:var(--red)!important;color:#fff}
+.ndo-btn.ndo-plain{border-color:transparent!important;background:none}
+.ndo-btn:disabled{opacity:.55;cursor:default}
+.ndo-wide{display:flex;width:100%;margin-top:12px}
+.ndo-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ndo-row{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:6px 0;border-bottom:1.5px solid var(--rule);text-align:start}
+.ndo-ric{flex:none;width:28px;display:flex;justify-content:center;color:var(--ink)}
+.ndo-rt{flex:1;min-width:0;display:flex;flex-direction:column}
+.ndo-rt b{font-size:15px;font-weight:600}
+.ndo-rt small{font-size:12.5px;color:var(--graph)}
+.ndo-row .ndo-count{position:static}
+.ndo-sw{flex:none;position:relative;width:48px;height:28px;border:2px solid var(--ink);background:#fff}
+.ndo-sw i{position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;background:var(--ink)}
+.ndo-sw[data-on=true],.ndo-swin:checked+.ndo-sw{background:var(--blue);border-color:var(--blue)}
+.ndo-sw[data-on=true] i,.ndo-swin:checked+.ndo-sw i{inset-inline-start:auto;inset-inline-end:3px;background:#fff}
+.ndo-linkrow{display:flex;margin-top:10px;border:2px solid var(--ink)}
+.ndo-link{flex:1;min-width:0;height:48px;border:0;padding:0 10px;font-size:13px;color:var(--ink);background:#fff}
+.ndo-linkrow .ndo-btn{flex:none;min-height:48px;border:0!important;border-inline-start:2px solid var(--ink)!important}
+.ndo-btn.ndo-done{background:var(--ink);color:#fff}
+.ndo-full{margin-top:12px;padding:12px;border:2px solid var(--ink);font-weight:600}
+.ndo-plist{margin-top:8px}
+.ndo-prow{display:flex;align-items:center;gap:10px;min-height:60px;border-bottom:1.5px solid var(--rule);padding:6px 0}
+.ndo-pdisc{flex:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--pen);box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--pen);font-weight:700;font-size:17px}
+.ndo-pt{flex:1;min-width:0;display:flex;flex-direction:column}
+.ndo-pt b{font-size:14.5px;font-weight:700}
+.ndo-pt small{font-size:12px;color:var(--graph)}
+.ndo-htag{font-style:normal;font-size:10px;font-weight:600;padding:0 4px;border:1.5px solid var(--ink);margin-inline-start:4px}
+.ndo-pmic{flex:none;color:var(--graph);display:flex}
+.ndo-msgs{list-style:none;max-height:240px;overflow:auto;margin-top:8px}
+.ndo-msgs li{padding:8px 0;border-bottom:1.5px solid var(--rule);font-size:14px}
+.ndo-msgs li b{font-weight:700}.ndo-msgs li span{font-size:11.5px;color:var(--mute);margin-inline-start:6px}
+.ndo-msgs li p{margin-top:2px;overflow-wrap:anywhere}
+.ndo-form{display:flex;gap:8px;margin-top:10px}
+.ndo-form input,.ndo-field{flex:1;min-width:0;height:52px;border:2px solid var(--ink);padding:0 12px;font:inherit;font-size:17px;background:#fff;color:var(--ink);border-radius:0}
+.ndo-form input:focus,.ndo-field:focus{outline:3px solid var(--blue);outline-offset:0}
+.ndo-sendb{flex:none;width:52px;padding:0}
+.ndo[dir=ltr] .ndo-sendb svg{transform:scaleX(-1)}
+.ndo-fhead{display:flex;align-items:center;gap:12px}
+.ndo-fhead>span:nth-child(2){flex:1;display:flex;flex-direction:column}
+.ndo-fhead b{font-size:17px;font-weight:700}.ndo-fhead small{font-size:13px;color:var(--graph)}
+.ndo-fdisc{flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--pen);box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--pen);font-size:22px;font-weight:700}
+.ndo-keep{flex-direction:column;gap:2px}
+.ndo-keep small{font-size:12px;font-weight:400;color:var(--graph)}
+.ndo-perm{margin-top:14px}
+.ndo-perm>div{border:2px solid var(--ink);padding:10px}
+.ndo-perm b{font-size:14px}.ndo-perm p{font-size:13px;line-height:1.5;margin-top:4px}
+/* the "everyone to me" card, centred over the scrim */
+.ndo-sheet.ndo-card{top:50%;bottom:auto;inset-inline:16px;transform:translateY(-50%);border:2px solid var(--ink);max-height:none}
+.ndo-sumhead{display:flex;align-items:center;gap:14px}
+.ndo-sumhead>span:last-child{flex:1;display:flex;flex-direction:column;gap:4px}
+.ndo-sumhead b{font-size:17px;font-weight:700;line-height:1.3}.ndo-sumhead small{font-size:13px;color:var(--graph)}
+.ndo-ring{position:relative;flex:none;width:64px;height:64px;display:flex;align-items:center;justify-content:center}
+.ndo-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ndo-ring circle{fill:none;stroke:var(--blue-2);stroke-width:5}
+.ndo-ring .ndo-ringv{stroke:var(--blue);stroke-dasharray:170;stroke-dashoffset:calc(170px * (1 - var(--left,1)));transition:stroke-dashoffset 1s linear}
+.ndo-ring b{font-size:22px;font-weight:600;color:var(--blue)}
+
+/* the button that brings the call back after "back to the designer" */
+.ndo-mini{position:absolute;bottom:70px;inset-inline-start:10px;display:flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;background:var(--ink);color:#fff;border:2px solid #fff;font-size:13px;font-weight:600;z-index:30}
+.ndo-min .ndo-head,.ndo-min .ndo-stage,.ndo-min .ndo-bar,.ndo-min .ndo-ov,.ndo-min .ndo-side{display:none}
+
+/* ---------- the arrange and talk layouts move the designer's own parts (same shadow root) ---------- */
+.nd.ndc-in{grid-template-rows:0 minmax(0,var(--split,42%)) 14px minmax(0,1fr) auto!important;grid-template-columns:minmax(0,1fr)!important}
+.nd.ndc-in>header{grid-row:1;display:none}
+.nd.ndc-in>.space{grid-row:2}.nd.ndc-in>.bar{grid-row:3}.nd.ndc-in>.plan{grid-row:4}.nd.ndc-in>nav{grid-row:5}
+.nd.ndc-in .chips{top:auto;bottom:8px;inset-inline-start:auto;inset-inline-end:8px}
+.nd.ndc-in .note{display:none}
+.nd.ndc-in>.space{background:#16304A}
+.nd.ndc-lay-a{grid-template-rows:0 minmax(0,1fr) 0 0 auto!important}
+.nd.ndc-lay-a>.bar,.nd.ndc-lay-a>.plan{display:none}
+.nd.ndc-lay-b{grid-template-rows:0 0 0 minmax(0,1fr) auto!important}
+.nd.ndc-lay-b>.bar{display:none}
+.nd.ndc-lay-b>.space{position:absolute;width:150px;height:128px;bottom:124px;inset-inline-end:8px;z-index:6;border:2px solid var(--ink)}
+.nd.ndc-lay-b>.space .chips{display:none}
+.nd.ndc-lay-b>.plan{padding-top:56px}
+.nd.ndc-lay-b.ndc-swapped{grid-template-rows:0 minmax(0,1fr) 0 0 auto!important}
+.nd.ndc-lay-b.ndc-swapped>.space{position:relative;width:auto;height:auto;bottom:auto;inset-inline-end:auto;z-index:auto;border:0}
+.nd.ndc-lay-b.ndc-swapped>.space .chips{display:flex}
+.nd.ndc-lay-b.ndc-swapped>.plan{position:absolute;width:150px;height:128px;bottom:124px;inset-inline-end:8px;z-index:6;border:2px solid var(--ink);padding-top:0}
+.nd.ndc-lay-b.ndc-swapped>.plan .ptools{display:none}
+.nd.ndc-lay-c{grid-template-rows:0 minmax(0,1fr) 0 0 0!important}
+.nd.ndc-lay-c>.bar,.nd.ndc-lay-c>.plan,.nd.ndc-lay-c>nav{display:none}
+.nd.ndc-lay-c .chips,.nd.ndc-lay-c .selbar{display:none!important}
+
+/* talk (phone): faces fill the top, tiles of video; voice only = 96 px discs */
+.ndo[data-lay=c]:not(.ndo-wide) .ndo-faces{top:0;inset-inline:0;height:var(--facesh,380px);display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:2px;padding:0;background:var(--ink-3);overflow:hidden}
+.ndo[data-lay=c]:not(.ndo-wide)[data-n="2"] .ndo-faces,.ndo[data-lay=c]:not(.ndo-wide)[data-n="1"] .ndo-faces{grid-template-columns:1fr}
+.ndo[data-lay=c] .ndo-faces .ndo-face{--d:96px;width:auto;height:100%;justify-content:center;background:var(--ink-2)}
+.ndo[data-lay=c] .ndo-faces .ndo-face.ndo-hasv .ndo-disc{position:absolute;inset:0;width:auto;height:auto;border-radius:0;box-shadow:none}
+.ndo[data-lay=c] .ndo-faces .ndo-face.ndo-hasv.ndo-speaking{box-shadow:inset 0 0 0 3px var(--pen)}
+.ndo[data-lay=c] .ndo-faces .ndo-stamp{position:absolute;bottom:8px;inset-inline-end:8px;height:22px;line-height:18px;font-size:11px}
+.ndo[data-lay=c] .ndo-faces .ndo-bmute{top:8px;inset-inline-start:8px}
+.ndo[data-lay=c] .ndo-faces .ndo-thost{top:8px;inset-inline-end:8px}
+
+/* ---------- desktop 1440 x 900: header with the switch, a face strip, the side panel, a bar under the centre ---------- */
+.ndo-wide .ndo-seg-head{display:flex;flex:0 0 auto;width:max-content;margin-inline-start:auto;margin-inline-end:8px}
+.ndo-wide .ndo-seg-head button{min-height:44px}
+.ndo-wide .ndo-seg-head{border-color:#fff}.ndo-wide .ndo-seg-head button+button{border-inline-start:1.5px solid var(--rule)}
+.ndo-wide .ndo-seg-stage{display:none}
+.ndo-wide .ndo-ttl{flex:0 1 auto;display:flex;align-items:baseline;gap:14px}
+.ndo-wide .ndo-ttl h2{font-size:17px;font-weight:700}
+.ndo-wide .ndo-ttl p{font-size:13px}
+.ndo-wide .ndo-stage{bottom:80px;inset-inline-end:340px}
+.ndo-wide .ndo-faces{top:0;inset-inline:0;height:var(--strip,120px);justify-content:center;align-items:center;gap:28px;padding:10px 16px;background:var(--ink);border-bottom:1px solid var(--ink-3)}
+.ndo-wide .ndo-face{--d:72px;width:var(--d)}
+.ndo-wide .ndo-stamp{max-width:none}
+.ndo-wide .ndo-stamp{max-width:120px;height:22px;line-height:18px;font-size:11px}
+.ndo-wide .ndo-me{position:absolute;top:10px;inset-inline-end:16px;--d:96px;width:150px}
+.ndo-wide .ndo-me .ndo-bmute{top:76px}
+.ndo-wide .ndo-me .ndo-thost{top:4px;inset-inline-end:4px}
+.ndo-wide .ndo-me .ndo-disc{width:150px;height:96px;border-radius:0;box-shadow:0 0 0 2px #fff}
+.ndo-wide[data-lay=c] .ndo-face{--d:min(200px,calc(var(--strip) - 60px));width:calc(var(--d) + 40px)}
+.ndo-wide .ndo-pill,.ndo-wide .ndo-swap,.ndo-wide .ndo-talkm{display:none!important}
+.ndo-wide .ndo-tab,.ndo-wide .ndo-chip-o,.ndo-wide .ndo-undo{bottom:76px}
+.ndo[data-lay=c]:not(.ndo-wide) .ndo-seg-stage{display:none}
+.ndo-wide .ndo-toasts{bottom:96px}
+.ndo-wide .ndo-bar{inset-inline-end:340px;height:80px;padding:0;transform:none}
+.ndo-wide .ndo-bar-in{height:78px;justify-content:center;gap:6px}
+.ndo-wide .ndo-b{flex:none;width:88px;height:64px}
+.ndo-wide .ndo-lb{font-size:12px}
+.ndo-wide .ndo-gap{display:block;flex:none;width:2px;height:44px;background:var(--rule);margin:0 10px}
+.ndo-wide .ndo-leave{width:auto;height:52px;flex-direction:row-reverse;gap:10px;padding:0 22px}
+.ndo-wide .ndo-leave .ndo-lb{font-size:15px;font-weight:600}
+.ndo-wide .ndo-rule{margin:0 14px}
+.ndo-side{position:absolute;top:56px;bottom:0;inset-inline-end:0;width:340px;background:var(--paper);border-inline-start:2px solid var(--ink);display:flex;flex-direction:column;z-index:31}
+.ndo-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid var(--ink)}
+.ndo-tabs button{min-height:56px;font-size:16px;font-weight:700;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.ndo-tabs button[aria-selected=true]{background:var(--paper);color:var(--ink)}
+.ndo-tabs .ndo-count{position:static}
+.ndo-sidebody{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 16px 16px;overflow:auto}
+.ndo-sidebody h4{font-size:13px;font-weight:600;color:var(--graph);margin-top:16px}
+.ndo-sidebody .ndo-msgs{flex:1;max-height:none}
+.ndo-sidebody .ndo-form{margin-top:auto;padding-top:10px}
+.ndo-wide .ndo-scrim{bottom:80px;inset-inline-end:340px}
+.ndo-wide .ndo-sheet{bottom:88px;inset-inline:auto;inset-inline-end:356px;width:420px;border:2px solid var(--ink);max-height:calc(100% - 160px)}
+.ndo-wide .ndo-sheet.ndo-card{top:50%;bottom:auto;inset-inline-end:calc(50% + 170px - 210px)}
+.nd.ndc-wide>header{display:none}
+.nd.ndc-wide{grid-template-rows:0 minmax(0,1fr) auto!important}
+.nd.ndc-wide>.space,.nd.ndc-wide>.bar,.nd.ndc-wide>.plan{grid-row:2}.nd.ndc-wide>nav{grid-row:3}
+.nd.ndc-wide .note{display:none}
+.nd.ndc-wide>.space{background:#16304A}
+
+/* ---------- the start and join sheet ---------- */
+.ndo-sheetwrap{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,34,51,.55)}
+.ndo-entry{position:relative;width:100%;max-width:520px;max-height:100%;overflow:auto;background:var(--paper);border-top:2px solid var(--ink);padding:18px 16px 16px}
+.ndo-prev{display:flex;align-items:center;gap:14px;margin-top:14px}
+.ndo-pv{position:relative;flex:none;width:96px;height:96px;background:var(--ink-2);color:#7A8B98;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ndo-pv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:none}
+.ndo-pv.ndo-on video{display:block}
+.ndo-pv small{position:absolute;bottom:0;inset-inline:0;background:rgba(15,34,51,.8);color:#fff;font-size:10px;text-align:center;line-height:16px}
+.ndo-pm{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.ndo-pm b{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.ndo-pm small{font-size:12.5px;color:var(--graph);line-height:1.45}
+.ndo-meter{display:flex;align-items:flex-end;gap:3px;height:20px;direction:ltr}
+.ndo-meter i{flex:none;width:8px;height:4px;background:var(--rule)}
+.ndo-meter i:nth-child(n+4){height:8px}.ndo-meter i:nth-child(n+8){height:13px}.ndo-meter i:nth-child(n+11){height:18px}
+.ndo-meter i.ndo-lit{background:var(--ok)}
+.ndo-entry form{display:flex;flex-direction:column;margin-top:14px}
+.ndo-lbl{font-size:13.5px;font-weight:600;margin-bottom:6px}
+.ndo-field{flex:none;width:100%}
+.ndo-swrow{display:flex;align-items:center;gap:12px;min-height:56px;border-bottom:1.5px solid var(--rule);cursor:pointer}
+.ndo-swrow:first-of-type{margin-top:10px;border-top:1.5px solid var(--rule)}
+.ndo-swin{position:absolute;opacity:0;width:1px;height:1px}
+.ndo-swin:focus-visible+.ndo-sw{outline:3px solid var(--blue);outline-offset:2px}
+.ndo-big{min-height:52px;font-size:16px;font-weight:700}
+.ndo-fine{font-size:12px;line-height:1.5;color:var(--graph);margin-top:10px}
+.ndo-msg{font-size:13.5px;font-weight:600;color:var(--blue);margin-top:6px}
+.ndo-msg:empty{display:none}
+.ndo-msg.ndo-bad{color:var(--red)}
+@media (min-width:700px){.ndo-sheetwrap{align-items:center}.ndo-entry{border:2px solid var(--ink);max-width:460px}}
+
+/* ---------- the end of the call ---------- */
+.ndo-end{position:absolute;inset:0;z-index:60;background:var(--paper);overflow:auto}
+.ndo-endin{max-width:560px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:20px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.ndo-meta{font:500 12px/1.4 "IBM Plex Mono","IBM Plex Sans Hebrew",monospace;color:var(--mute)}
+.ndo-end h2{font-size:24px;font-weight:700;line-height:1.25;margin-top:6px}
+.ndo-ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.ndo-ba figure{position:relative;aspect-ratio:1/1;border:2px solid var(--ink);background:var(--sheet);overflow:hidden}
+.ndo-ba svg{width:100%;height:100%;display:block;pointer-events:none}
+.ndo-ba figcaption{position:absolute;bottom:4px;inset-inline-start:6px;font-size:12px;font-weight:600;background:#fff;padding:0 4px}
+.ndo-chg{list-style:none;margin-top:14px;border:2px solid var(--ink);padding:4px 12px}
+.ndo-chg li{position:relative;display:flex;flex-direction:column;padding:8px 0 8px;padding-inline-start:18px;border-bottom:1.5px solid var(--rule)}
+.ndo-chg li:last-child{border-bottom:0}
+.ndo-chg li::before{content:"";position:absolute;inset-inline-start:0;top:14px;width:9px;height:9px;border-radius:50%;background:var(--pen)}
+.ndo-chg li b{font-size:14px;font-weight:600}.ndo-chg li small{font-size:12px;color:var(--graph)}
+.ndo-chg li.ndo-none::before{display:none}
+.ndo-endbtns{margin-top:auto;padding-top:16px}
+@media (prefers-reduced-motion:reduce){.ndo *,.ndo-end *{transition:none!important;animation:none!important}}

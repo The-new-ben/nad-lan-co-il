@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>מעבדת שמש, רוח וגשם</title>
+<!-- HAD-803 climate lab. LOCAL ONLY: serve the repo root (python -m http.server 47961 --bind 127.0.0.1) and open
+     /docs/design-lab/climate-lab/  Nothing here is linked from the site or released. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+/* Palette from a synoptic weather chart laid on an architect's sheet: sheet #F2F5F7, ink #0F2233, cobalt #1F5FA8 for controls,
+   sun #FFC400 (the weather-map sun symbol, outlined in ink), air in #0B7285, air out #66C2D0, rain #3B4CC0.
+   Faces: IBM Plex Sans Hebrew, IBM Plex Mono for every number. Square corners, 2 px rules, no shadows, no gradients. */
+:root{--sheet:#F2F5F7;--ink:#0F2233;--ink2:#41566A;--rule:#C9D4DD;--cob:#1F5FA8;--sun:#FFC400;--sunl:#FFF0A6;--ain:#0B7285;--aout:#66C2D0;--rain:#3B4CC0;--red:#B5302A}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--sheet);color:var(--ink);font:15px/1.45 "IBM Plex Sans Hebrew",system-ui,sans-serif}
+.num,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-feature-settings:"tnum"}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:2px solid var(--ink);background:#fff}
+header h1{margin:0;font-size:19px;font-weight:700;letter-spacing:-.2px}
+header .apt{color:var(--ink2);font-size:14px}
+header .lab{margin-inline-start:auto;border:2px solid var(--red);color:var(--red);font-weight:600;font-size:12.5px;padding:2px 8px}
+main{display:grid;grid-template-columns:1fr 410px;height:calc(100vh - 52px)}
+#stage{position:relative;min-height:0;background:#DCE8F1;overflow:hidden}
+#space{position:absolute;inset:0}
+#space canvas{display:block;width:100%!important;height:100%!important}
+aside{border-inline-end:0;border-inline-start:2px solid var(--ink);background:var(--sheet);overflow:auto;padding:14px 16px 24px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink)}
+.tabs button{all:unset;cursor:pointer;text-align:center;padding:10px 0;font-weight:600;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px}
+.tabs button+button{border-inline-start:2px solid var(--ink)}
+.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
+.tabs svg{width:22px;height:22px}
+h2{font-size:15px;margin:18px 0 6px;font-weight:700}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{all:unset;cursor:pointer;border:2px solid var(--ink);padding:5px 9px;font-size:13.5px;font-weight:500;background:#fff}
+.chip[aria-pressed=true]{background:var(--cob);border-color:var(--cob);color:#fff}
+.btn{all:unset;cursor:pointer;border:2px solid var(--cob);color:var(--cob);background:#fff;padding:6px 12px;font-weight:600;font-size:14px}
+.btn.solid{background:var(--cob);color:#fff}
+input[type=range]{width:100%;accent-color:var(--cob);margin:6px 0 0}
+.scale{position:relative;height:30px;font-size:11.5px;color:var(--ink2)}
+.scale span{position:absolute;top:0;transform:translateX(50%);white-space:nowrap;text-align:center;line-height:1.15}
+.scale span::before{content:"";display:block;width:2px;height:7px;background:var(--ink);margin:0 auto 2px}
+.big{font-size:22px;font-weight:600}
+.note{border-inline-start:4px solid var(--ain);background:#fff;padding:8px 10px;font-size:13.5px;margin:10px 0}
+.note.rain{border-color:var(--rain)} .note.sun{border-color:var(--sun)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
+th,td{text-align:start;padding:5px 4px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink2);font-size:12.5px}
+td.num{white-space:nowrap}
+.bar{height:8px;background:#DDE5EC;margin-top:3px}.bar i{display:block;height:100%;background:var(--sun);outline:1px solid var(--ink)}
+.list{margin:4px 0;padding:0;list-style:none;font-size:14px}
+.list li{padding:5px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;align-items:baseline}
+.sw{display:inline-block;width:14px;height:14px;border:2px solid var(--ink);flex:none;transform:translateY(2px)}
+#plan{width:100%;height:auto;background:#fff;border:2px solid var(--ink);display:block;margin-top:6px;touch-action:manipulation}
+#plan .room{stroke:var(--ink);stroke-width:2;cursor:pointer}
+#plan text{font:600 11px "IBM Plex Sans Hebrew";fill:var(--ink);pointer-events:none}
+.src{font-size:12px;color:var(--ink2);margin-top:20px;border-top:2px solid var(--ink);padding-top:8px}
+.src a{color:var(--cob)} .src li{margin:3px 0}
+/* over the stage */
+#ring{position:absolute;top:12px;inset-inline-end:12px;width:132px;height:132px;pointer-events:none}
+#hud{position:absolute;inset-inline:12px;bottom:12px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;pointer-events:none}
+#hud .pill{background:#fff;border:2px solid var(--ink);padding:6px 10px;font-size:14.5px;pointer-events:auto}
+#hud .pill b{font-weight:600}
+#hud .warn{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+#views{position:absolute;top:12px;inset-inline-start:12px;display:flex;gap:0;border:2px solid var(--ink);background:#fff}
+#views button{all:unset;cursor:pointer;padding:7px 11px;font-weight:600;font-size:14px}
+#views button+button{border-inline-start:2px solid var(--ink)}
+#views button[aria-pressed=true]{background:var(--ink);color:#fff}
+#illus{position:absolute;top:58px;inset-inline-start:12px;font-size:12px;background:rgba(242,245,247,.9);padding:2px 6px;max-width:60%}
+[hidden]{display:none!important}
+@media (max-width:899px){
+  main{display:block;height:auto}
+  #stage{height:56vh;min-height:330px}
+  aside{border-inline-start:0;border-top:2px solid var(--ink)}
+  #ring{width:96px;height:96px}
+  header h1{font-size:16px} header .apt{display:none}
+  #hud .pill{font-size:13px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>שמש, רוח וגשם בתוך הדירה</h1>
+  <span class="apt">אשירה, שדה דב · דגם E-4A, לפי תוכנית המכר שפורסמה</span>
+  <span class="lab">מעבדה פנימית, לא באתר</span>
+</header>
+<main>
+  <section id="stage">
+    <div id="space"></div>
+    <div id="views"><button data-v="walk" aria-pressed="true">עמידה בדירה</button><button data-v="doll" aria-pressed="false">מבט מלמעלה</button></div>
+    <div id="illus">הנוף, הים והעיר בחלון: המחשה. צל של בניינים שכנים: לא במודל.</div>
+    <svg id="ring" viewBox="-70 -70 140 140" aria-hidden="true"></svg>
+    <div id="hud"></div>
+  </section>
+  <aside>
+    <div class="tabs" role="group" aria-label="מה רואים">
+      <button data-m="sun" aria-pressed="true"><svg viewBox="-12 -12 24 24"><circle r="5.5" fill="#FFC400" stroke="#0F2233" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><path d="M0-11v3M0 8v3M-11 0h3M8 0h3M-7.8-7.8l2 2M5.8 5.8l2 2M-7.8 7.8l2-2M5.8-5.8l2-2"/></g></svg>שמש</button>
+      <button data-m="wind" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12a3 3 0 1 0-3-3M2 13h17a3 3 0 1 1-3 3M2 18h8"/></svg>רוח</button>
+      <button data-m="rain" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 14a5 5 0 1 1 3-9 6 6 0 0 1 11 4 4 4 0 0 1-2 5z"/><path d="M8 17l-2 4M13 17l-2 4M18 17l-2 4" stroke="#3B4CC0"/></svg>גשם</button>
+    </div>
+
+    <div id="p-sun">
+      <h2>יום בשנה</h2>
+      <div class="row"><span class="big num" id="dateL"></span></div>
+      <input id="doy" type="range" min="1" max="365" step="1" aria-label="יום בשנה">
+      <div class="scale" id="marks"></div>
+      <div class="chips" id="markChips"></div>
+      <h2>שעה (שעון ישראל)</h2>
+      <div class="row"><span class="big num" id="timeL"></span><button class="btn solid" id="play">להריץ יום שלם</button></div>
+      <input id="min" type="range" min="300" max="1260" step="5" aria-label="שעה">
+      <div class="note sun" id="sunL"></div>
+      <h2>השמש בחדרים, ביום שנבחר</h2>
+      <svg id="plan" viewBox="0 0 100 100"></svg>
+      <table><thead><tr><th>חדר</th><th>שעות שמש ישירה</th><th>עכשיו</th></tr></thead><tbody id="rooms"></tbody></table>
+      <h2>שעות שמש ישירה לפי עונה</h2>
+      <table><thead id="seasonH"></thead><tbody id="season"></tbody></table>
+      <p style="font-size:12.5px;color:var(--ink2)">נספר זמן שבו השמש נוגעת ישירות ברצפת החדר (לפחות 3% ממנה), דרך החלונות, כשהתקרה ומרפסת הקומה שמעל מצלות. בלי עננים ובלי בניינים שכנים.</p>
+    </div>
+
+    <div id="p-wind" hidden>
+      <div class="note"><b>המחשה של כיוון הרוח השכיח, לא חישוב הנדסי.</b> הקווים מראים מאיפה הרוח מגיעה, דרך אילו פתחים היא נכנסת לדירה ויוצאת, לפי נתוני השירות המטאורולוגי.</div>
+      <h2>מתי</h2>
+      <div class="chips" id="windChips"></div>
+      <div class="note" id="windL"></div>
+      <h2>הפתחים</h2>
+      <ul class="list" id="ventL"></ul>
+      <svg id="planW" viewBox="0 0 100 100" style="width:100%;background:#fff;border:2px solid var(--ink);margin-top:6px"></svg>
+    </div>
+
+    <div id="p-rain" hidden>
+      <div class="note rain"><b>המחשה של כיוון הגשם בסערת חורף, לא חישוב הנדסי.</b> בסערה הרוח מסובבת: מדרום-מערב כשהשפל מתקרב, ואחר כך ממערב ומצפון-מערב.</div>
+      <h2>שלב הסערה</h2>
+      <input id="storm" type="range" min="0" max="1" step="0.01" aria-label="שלב הסערה">
+      <div class="scale"><span style="right:0;transform:none">מתקרבת<br>דרום-מערב</span><span style="right:50%">החזית<br>מערב</span><span style="left:0;right:auto;transform:none">אחריה<br>צפון-מערב</span></div>
+      <div class="note rain" id="rainL"></div>
+      <h2>חלונות שהגשם מגיע אליהם</h2>
+      <ul class="list" id="rainList"></ul>
+      <h2>לאורך כל הסערה</h2>
+      <ul class="list" id="rainAll"></ul>
+    </div>
+
+    <div class="src"><b>מקורות</b><ul id="srcL" style="padding-inline-start:16px;margin:4px 0"></ul>
+      <div>תוכנית הדירה: שרטוט שלנו של תוכנית המכר שפורסמה (אשירה, בניין E, דגם E-4A), כולל חץ הצפון שבה. התוכנית החתומה מחייבת. מיקום: שדה דב, 32.10° צפון, 34.79° מזרח.</div>
+    </div>
+  </aside>
+</main>
+<script type="module">
+import * as catalog from './designer/catalog.js';
+import { createStore, emptyDesign } from './designer/core.js';
+import { mountClimate, compassHe, MARKS, WIND, SOURCES, planDir, ilToUtc } from './climate.js';
+const q = new URLSearchParams(location.search), FILM = q.has('film');
+const apt = await (await fetch('./designer/plans/ashira/E-4A.json')).json();
+const d0 = emptyDesign(apt); d0.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku]).map((i) => ({ ...i }));
+const store = createStore(apt, d0);
+const { mountSpace } = await import('./designer/space.js');
+const space = mountSpace(document.getElementById('space'), store, catalog, { select() {}, camera() {}, walk() {}, rise: false });
+fetch('./designer/models/models.json').then((r) => r.json()).then((l) => space.useModels('./designer/models/', l)).catch(() => {});
+const C = mountClimate(space, store, { manual: FILM, onFrame: () => { ring(); } });
+const $ = (id) => document.getElementById(id), esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const MONTHS = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+const Y = 2026, doyOf = (m, d) => Math.round((Date.UTC(Y, m - 1, d) - Date.UTC(Y, 0, 1)) / 864e5) + 1;
+const mdOf = (doy) => { const t = new Date(Date.UTC(Y, 0, doy)); return [t.getUTCMonth() + 1, t.getUTCDate()]; };
+const hhmm = (m) => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(Math.round(m % 60)).padStart(2, '0');
+const hrs = (min) => (min ? (min / 60).toFixed(1).replace('.0', '') : '0');
+const plan = C.plan, roomName = (r) => r.name_he + (plan.rooms.filter((x) => x.name_he === r.name_he).length > 1 ? ' ' + (plan.rooms.filter((x) => x.name_he === r.name_he).indexOf(r) + 1) : '');
+const openName = (e) => (e.type === 'slider' ? 'דלת ההזזה למרפסת' : 'חלון ' + (e.room ? roomName(plan.rooms.find((r) => r.face === e.room)).replace(/^חדר /, 'חדר ה').replace('חדר הדיור ופינת אוכל', 'הסלון') : '')) + ' (פונה ל' + compassHe(e.bearing) + ')';
+
+// ---- views ----
+function view(v) { for (const b of document.querySelectorAll('#views button')) b.setAttribute('aria-pressed', b.dataset.v === v); space.setMode(v); if (v === 'walk') space.goRoom && space.goRoom('living'); C.setMode(C.st.mode); }
+document.getElementById('views').onclick = (ev) => { const b = ev.target.closest('button'); if (b) view(b.dataset.v); };
+
+// ---- tabs ----
+function mode(m) {
+  for (const b of document.querySelectorAll('.tabs button')) b.setAttribute('aria-pressed', b.dataset.m === m);
+  $('p-sun').hidden = m !== 'sun'; $('p-wind').hidden = m !== 'wind'; $('p-rain').hidden = m !== 'rain';
+  C.setMode(m); paint();
+}
+document.querySelector('.tabs').onclick = (ev) => { const b = ev.target.closest('button'); if (b) mode(b.dataset.m); };
+
+// ---- sun ----
+$('marks').innerHTML = MARKS.map((k) => `<span style="right:${((doyOf(k.m, k.d) - 1) / 364) * 100}%">${k.d}.${k.m}</span>`).join('');
+$('markChips').innerHTML = MARKS.map((k) => `<button class="chip" data-doy="${doyOf(k.m, k.d)}">${esc(k.he)}</button>`).join('');
+$('markChips').onclick = (ev) => { const b = ev.target.closest('button'); if (b) { $('doy').value = b.dataset.doy; onDate(); } };
+$('doy').value = doyOf(12, 21); $('min').value = 9 * 60;
+function onDate() { const [m, d] = mdOf(+$('doy').value); C.setDate(Y, m, d); paint(); }
+$('doy').oninput = onDate; $('min').oninput = () => { C.setMinute(+$('min').value); paint(); };
+let playing = null;
+$('play').onclick = () => {
+  if (playing) { cancelAnimationFrame(playing.raf); playing = null; $('play').textContent = 'להריץ יום שלם'; return; }
+  const day = C.day(Y, C.st.m, C.st.d);
+  let a = 1260, b = 300; for (const r of plan.rooms) if (day[r.id].minutes) { a = Math.min(a, day[r.id].first); b = Math.max(b, day[r.id].last + 10); }
+  playing = { t0: performance.now(), from: Math.max(300, a - 40), to: Math.min(1260, b + 40) };
+  const step = (now) => { if (!playing) return; const f = Math.min(1, (now - playing.t0) / 20000); const mn = playing.from + (playing.to - playing.from) * f; $('min').value = mn; C.setMinute(mn); paint(true); if (f < 1) playing.raf = requestAnimationFrame(step); else { playing = null; $('play').textContent = 'להריץ יום שלם'; } };
+  $('play').textContent = 'עצירה'; playing.raf = requestAnimationFrame(step);
+};
+
+// ---- plan drawing (sheet orientation, north arrow from the sales plan) ----
+let bb; { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; for (const f of plan.faces) for (const p of f.poly) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); } bb = { x0: x0 - 160, y0: y0 - 160, w: x1 - x0 + 320, h: y1 - y0 + 320 }; }
+function drawPlan(svg, fillOf, winOf) {
+  svg.setAttribute('viewBox', `${bb.x0} ${bb.y0} ${bb.w} ${bb.h}`);
+  const v = space.getView(), sun = C.sun(), sd = planDir(sun.az, plan.north);
+  let s = '';
+  for (const f of plan.faces) { const r = plan.rooms.find((x) => x.face === f); s += `<polygon class="room" data-room="${f.id}" points="${f.poly.map((p) => p.join(',')).join(' ')}" fill="${fillOf(f, r)}" stroke-width="3"/>`; }
+  for (const e of plan.env) { const c = winOf(e); if (c) s += `<line x1="${e.a[0] + e.n[0] * 14}" y1="${e.a[1] + e.n[1] * 14}" x2="${e.b[0] + e.n[0] * 14}" y2="${e.b[1] + e.n[1] * 14}" stroke="${c}" stroke-width="22"/>`; }
+  for (const r of plan.rooms) { if (r.net < 4) continue; let cx = 0, cy = 0; for (const p of r.pts) { cx += p[0]; cy += p[1]; } cx /= r.pts.length || 1; cy /= r.pts.length || 1; s += `<text x="${cx}" y="${cy}" text-anchor="middle" font-size="52">${esc(roomName(r).replace('חדר דיור ופינת אוכל', 'סלון'))}</text>`; }
+  // you are here, and where you look
+  if (space.mode === 'walk') { const w = space.lab.walk, a = w.yaw, L = 230; s += `<path d="M${w.x},${w.y} L${w.x + Math.cos(a - 0.45) * L},${w.y + Math.sin(a - 0.45) * L} L${w.x + Math.cos(a + 0.45) * L},${w.y + Math.sin(a + 0.45) * L}Z" fill="#1F5FA8" opacity=".22"/><circle cx="${w.x}" cy="${w.y}" r="26" fill="#1F5FA8" stroke="#fff" stroke-width="7"/>`; }
+  // north arrow
+  const nd = planDir(0, plan.north), nx = bb.x0 + bb.w - 110, ny = bb.y0 + 130;
+  s += `<g><line x1="${nx - nd[0] * 70}" y1="${ny - nd[1] * 70}" x2="${nx + nd[0] * 70}" y2="${ny + nd[1] * 70}" stroke="#0F2233" stroke-width="10" marker-end="url(#ah)"/><text x="${nx + nd[0] * 110}" y="${ny + nd[1] * 110 + 18}" text-anchor="middle" font-size="56">צ</text></g>`;
+  return `<defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="#0F2233"/></marker></defs>` + s;
+}
+const sunFill = (min) => { if (!min) return '#E6ECF1'; const f = Math.min(1, min / 360); const a = [255, 240, 166], b = [255, 196, 0]; return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`; };
+
+// ---- painting ----
+let lastHeavy = 0;
+function paint(light) {
+  const st = C.st, sun = C.sun();
+  $('dateL').textContent = st.d + ' ב' + MONTHS[st.m - 1]; $('timeL').textContent = hhmm(st.minute);
+  if (st.mode === 'sun') {
+    const day = C.day(Y, st.m, st.d), now = C.now();
+    $('sunL').innerHTML = sun.alt > 0 ? `השמש בגובה <b class="num">${Math.round(sun.alt)}°</b> מעל האופק, ב<b>${compassHe(sun.az)}</b> (<span class="num">${Math.round(sun.az)}°</span>).` : 'השמש מתחת לאופק.';
+    $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(day[r.id].minutes) : '#F7F9FA'), (e) => '#0F2233');
+    $('rooms').innerHTML = plan.rooms.filter((r) => r.net >= 2).map((r) => { const o = day[r.id], n = now[r.id]; return `<tr><td>${esc(roomName(r))}</td><td class="num">${hrs(o.minutes)} ש׳${o.minutes ? `<div style="color:var(--ink2);font-size:12px">${hhmm(o.first)} עד ${hhmm(o.last + 10)}</div>` : ''}<div class="bar"><i style="width:${Math.min(100, (o.minutes / 600) * 100)}%"></i></div></td><td class="num">${n.share > 0.005 ? Math.round(n.share * 100) + '% מהרצפה' + (n.deep ? `<div style="font-size:12px;color:var(--ink2)">עד ${(n.deep / 100).toFixed(1)} מ׳ מהחלון</div>` : '') : '-'}</td></tr>`; }).join('');
+    if (!light || performance.now() - lastHeavy > 1500) { lastHeavy = performance.now(); season(); }
+  }
+  if (st.mode === 'wind') {
+    const w = WIND[st.wind], v = C.vent();
+    $('windChips').innerHTML = Object.entries(WIND).map(([k, x]) => `<button class="chip" data-w="${k}" aria-pressed="${k === st.wind}">${esc(x.he)}</button>`).join('');
+    $('windL').innerHTML = `הרוח מגיעה מ<b>${compassHe(w.from[0])}</b> עד <b>${compassHe(w.from[1])}</b> (<span class="num">${w.from[0]}°-${w.from[1]}°</span>)${w.kn ? ', ' + esc(w.kn) : ''}. ${esc(w.note)}.`;
+    const li = (e, c, t) => `<li><span class="sw" style="background:${c}"></span><span>${esc(t)}: ${esc(openName(e))}</span></li>`;
+    $('ventL').innerHTML = v.inlets.map((e) => li(e, 'var(--ain)', 'נכנסת')).join('') + v.outlets.map((e) => li(e, 'var(--aout)', 'יוצאת')).join('') +
+      `<li><b>${v.cross ? 'אוורור צולב: יש. הרוח נכנסת מצד אחד של הדירה ויוצאת מהצד השני.' : 'אוורור צולב: אין בכיוון הזה. הרוח נכנסת ויוצאת מאותו צד.'}</b></li>`;
+    $('planW').innerHTML = drawPlan($('planW'), (f, r) => (r ? '#F2F5F7' : '#E3EAF0'), (e) => (v.inlets.includes(e) ? '#0B7285' : v.outlets.includes(e) ? '#66C2D0' : '#0F2233'));
+  }
+  if (st.mode === 'rain') {
+    const from = C.stormFrom(), rw = C.rainWindows();
+    $('rainL').innerHTML = `הרוח בסערה מגיעה עכשיו מ<b>${compassHe(from)}</b> (<span class="num">${Math.round(from)}°</span>).`;
+    $('rainList').innerHTML = rw.length ? rw.map((e) => `<li><span class="sw" style="background:var(--rain)"></span>${esc(openName(e))}</li>`).join('') : '<li>אף חלון לא פונה לכיוון הזה.</li>';
+    const all = new Map(); for (let t = 0; t <= 1.0001; t += 0.05) { const keep = C.st.storm; C.st.storm = t; for (const e of C.rainWindows()) all.set(e, (all.get(e) || 0) + 1); C.st.storm = keep; }
+    const dry = plan.env.filter((e) => !all.has(e));
+    $('rainAll').innerHTML = [...all.keys()].map((e) => `<li><span class="sw" style="background:var(--rain)"></span>${esc(openName(e))}</li>`).join('') + dry.map((e) => `<li><span class="sw" style="background:#fff"></span>מוגן: ${esc(openName(e))}</li>`).join('');
+  }
+  hud();
+}
+function season() {
+  $('seasonH').innerHTML = '<tr><th>חדר</th>' + MARKS.map((k) => `<th class="num">${k.d}.${k.m}</th>`).join('') + '</tr>';
+  const days = MARKS.map((k) => C.day(Y, k.m, k.d));
+  $('season').innerHTML = plan.rooms.filter((r) => r.net >= 2 && r.wins.length).map((r) => `<tr><td>${esc(roomName(r))}</td>${days.map((d) => `<td class="num">${hrs(d[r.id].minutes)}</td>`).join('')}</tr>`).join('');
+}
+document.getElementById('windChips').onclick = (ev) => { const b = ev.target.closest('button'); if (b) { C.setWind(b.dataset.w); paint(); } };
+$('storm').value = C.st.storm; $('storm').oninput = () => { C.setStorm(+$('storm').value); paint(); };
+for (const svg of [$('plan'), $('planW')]) svg.onclick = (ev) => { const p = ev.target.closest('[data-room]'); if (p) { if (space.mode !== 'walk') view('walk'); space.goRoom(p.dataset.room); } };
+$('srcL').innerHTML = SOURCES.map((s) => `<li>${esc(s.he)}. <a href="${s.url}" target="_blank" rel="noopener">מקור</a></li>`).join('');
+
+function hud() {
+  const st = C.st, sun = C.sun(); let h = '';
+  if (st.mode === 'sun') h = `<span class="pill"><b class="num">${st.d}.${st.m} · ${hhmm(st.minute)}</b> · ${sun.alt > 0 ? `השמש <span class="num">${Math.round(sun.alt)}°</span> ב${compassHe(sun.az)}` : 'לילה'}</span>`;
+  if (st.mode === 'wind') h = `<span class="pill warn">המחשה של כיוון הרוח השכיח, לא חישוב הנדסי</span><span class="pill">${esc(WIND[st.wind].he)} · רוח מ${compassHe(WIND[st.wind].from[0])} עד ${compassHe(WIND[st.wind].from[1])}</span>`;
+  if (st.mode === 'rain') h = `<span class="pill warn">המחשה של כיוון הגשם בסערה, לא חישוב הנדסי</span><span class="pill">רוח מ${compassHe(C.stormFrom())} · ${C.rainWindows().length} חלונות בגשם</span>`;
+  $('hud').innerHTML = h;
+}
+// the compass ring: turns with the view, so the sun, the wind and the rain sit where they really are around you
+function ring() {
+  const hd = C.heading(), st = C.st, sun = C.sun(), pos = (a, r) => { const t = ((a - hd) * Math.PI) / 180; return [Math.sin(t) * r, -Math.cos(t) * r]; };
+  let s = `<circle r="62" fill="rgba(255,255,255,.92)" stroke="#0F2233" stroke-width="3"/>`;
+  for (let a = 0; a < 360; a += 30) { const [x1, y1] = pos(a, 62), [x2, y2] = pos(a, a % 90 ? 56 : 50); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#0F2233" stroke-width="${a % 90 ? 1.5 : 3}"/>`; }
+  for (const [a, t] of [[0, 'צ'], [90, 'מז'], [180, 'ד'], [270, 'מע']]) { const [x, y] = pos(a, 40); s += `<text x="${x}" y="${y + 5}" text-anchor="middle" font-family="IBM Plex Sans Hebrew" font-weight="700" font-size="${a ? 12 : 15}" fill="${a ? '#0F2233' : '#B5302A'}">${t}</text>`; }
+  s += `<path d="M0,-22 L9,6 L0,1 L-9,6Z" fill="#1F5FA8"/>`; // you, looking up the ring
+  if (st.mode === 'sun' && sun.alt > 0) { const [x, y] = pos(sun.az, 62); s += `<circle cx="${x}" cy="${y}" r="10" fill="#FFC400" stroke="#0F2233" stroke-width="2.5"/>`; }
+  const arrow = (from, col) => { const [x1, y1] = pos(from, 66), [x2, y2] = pos(from, 26); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="6"/><circle cx="${x2}" cy="${y2}" r="6" fill="${col}"/>`; };
+  if (st.mode === 'wind') { const w = WIND[st.wind]; s += arrow(w.from[0], '#0B7285') + arrow(w.from[1], '#0B7285'); }
+  if (st.mode === 'rain') s += arrow(C.stormFrom(), '#3B4CC0');
+  $('ring').innerHTML = s;
+  if (space.mode === 'walk' && !FILM && performance.now() - (ring.t || 0) > 300) { ring.t = performance.now(); if (C.st.mode === 'sun') $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(C.day(Y, C.st.m, C.st.d)[r.id].minutes) : '#F7F9FA'), () => '#0F2233'); }
+}
+view('walk'); onDate(); C.setMinute(9 * 60); paint();
+window.__lab = { space, C, store, mode, view, paint, setDoy: (doy) => { $('doy').value = doy; onDate(); }, setMin: (m) => { $('min').value = m; C.setMinute(m); paint(true); }, ready: true };
+</script>
+</body>
+</html>

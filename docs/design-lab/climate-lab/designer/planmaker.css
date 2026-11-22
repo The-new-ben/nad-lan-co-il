@@ -1,0 +1,110 @@
+/* "My plan" (planmaker.js). Loaded only when the tool opens, after designer.css, inside the same shadow root.
+   The same working drawing: drafting white, ink, blueprint blue for what you draw and hold, dimension red for measurements
+   only. Square corners, 2px ink rules, numbered like the title block of a drawing. No cards with soft shadows. */
+.nd.pm{display:flex;flex-direction:column;overflow:clip}
+/* focusing a field (the phone keyboard) must never scroll the frame itself */
+.pm>header,.pm-steps,.pm-body,.pm-work,.pm-stage{overflow:clip}
+.pm header p{white-space:normal;overflow:visible;font-size:12.5px;line-height:1.35;margin-top:1px}
+.pm>header{padding:6px 10px;gap:8px}
+.pm header h2{font-size:16px;overflow-wrap:anywhere}
+.pm button{min-height:44px;padding:0 12px;border:2px solid var(--ink);background:var(--card);font-weight:600;font-size:14px;line-height:1.15}
+.pm button:disabled{opacity:.38;cursor:default}
+.pm button[aria-pressed=true]{background:var(--ink);color:#fff}
+.pm .hb{padding:0;flex:none}
+.pm-hbtn{flex:none;font-size:13px!important;padding:0 10px!important;white-space:nowrap}
+.pm-go{width:100%;min-height:50px!important;background:var(--blue)!important;border-color:var(--blue)!important;color:#fff;font-size:15px!important;font-weight:700!important}
+/* the numbered steps, like the sheet list of a drawing set */
+.pm-steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);list-style:none;background:var(--card);border-bottom:2px solid var(--ink)}
+.pm-steps li{display:flex;min-width:0}
+.pm-steps button{flex:1;min-width:0;display:flex;align-items:center;gap:6px;border:0;border-inline-start:1px solid var(--line);padding:2px 6px;font-size:12.5px;text-align:start}
+.pm-steps li:first-child button{border-inline-start:0}
+.pm-steps button b{flex:none;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border:1.5px solid currentColor;font-size:12px}
+.pm-steps button span{min-width:0;overflow-wrap:anywhere}
+.pm-steps button[aria-current=step]{background:var(--ink);color:#fff}
+.pm-body{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+/* the opening screen */
+.pm-start{flex:1;min-height:0;overflow:auto;background-color:var(--sheet);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.pm-sheet-in{max-width:640px;margin:0 auto;padding:18px 16px 28px}
+.pm-h{font-size:23px;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.pm-lead{font-size:15px;color:var(--ink2);margin:8px 0 16px}
+.pm-opt{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:14px 0 16px;border-top:2px solid var(--ink)}
+.pm-opt h4{font-size:17px;font-weight:700;line-height:1.25}
+.pm-opt p{font-size:13.5px;color:var(--ink2);margin-top:2px}
+.pm-n{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);font-size:14px;background:var(--card)}
+.pm-opt .pm-row{margin-top:10px}
+.pm-opt .pm-go{width:auto;flex:1 1 auto}
+.pm-resume{border-top-color:var(--blue)}.pm-resume .pm-n{border-color:var(--blue);color:var(--blue)}
+.pm-privacy{margin-top:6px;padding:10px 12px;border:2px solid var(--ink);border-inline-start-width:6px;background:var(--card);font-size:13.5px;font-weight:600}
+.pm-help{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;color:var(--blue);font-weight:600;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+.pm-wait{margin:auto;padding:30px;font-weight:600}
+/* the work: the drawing surface and the panel of tools */
+.pm-work{flex:1;min-height:0;display:flex;flex-direction:column}
+.pm-stage{position:relative;overflow:hidden;flex:1 1 0;min-height:200px;background:var(--sheet)}
+.pm-stage canvas[data-pm=cv]{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none}
+.pm-loupe{position:absolute;left:0;top:0;width:132px;height:132px;border-radius:50%;border:3px solid var(--ink);outline:2px solid #fff;pointer-events:none;z-index:4;background:var(--sheet)}
+.pm-panel{display:flex;flex-direction:column;gap:7px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:2px solid var(--ink);flex:0 1 auto;min-height:0;overflow:auto}
+.pm-row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.pm-row>button{flex:1 1 auto}
+.pm-seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);border:2px solid var(--ink)}
+.pm-seg button{border:0;border-inline-start:1px solid var(--line);padding:2px 4px;font-size:13px;min-width:0;overflow-wrap:anywhere}
+.pm-seg button:first-child{border-inline-start:0}
+.pm-kinds button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;font-weight:600;min-height:48px}
+.pm-otypes button{font-size:12.5px}
+.pm-sw{display:block;width:26px;height:6px;background:var(--ink)}
+.pm-sw.partition{height:4px;background:var(--blue)}
+.pm-sw.rail{height:3px;background:#7F93A3}
+.pm-sw.divider{height:0;background:none;border-top:2.5px dashed var(--blue)}
+.pm-kinds button[aria-pressed=true] .pm-sw{background:#fff}.pm-kinds button[aria-pressed=true] .pm-sw.divider{background:none;border-color:#fff}
+.pm-ur button{flex:1}
+.pm-field{display:flex;flex-direction:column;gap:2px;flex:1 1 90px;min-width:0;font-size:12px;color:var(--ink2)}
+.pm-field input{width:100%;min-height:44px;border:2px solid var(--ink);padding:0 10px;font:600 16px "IBM Plex Mono",monospace;color:var(--ink);background:#fff;direction:ltr;text-align:center;border-radius:0}
+.pm-field input:focus{outline:3px solid var(--blue);outline-offset:0}
+.pm-scale{align-items:stretch}
+.pm-door{flex:1.5 1 150px;display:flex;flex-direction:column;justify-content:space-between;gap:4px}
+.pm-door small{font-size:12px;color:var(--ink2);line-height:1.3}
+.pm-range{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink2);min-height:32px}
+.pm-range input{flex:1;accent-color:var(--blue);height:28px}
+.pm-sel b{align-self:center;font-size:14px}
+.pm-sum{font-size:16px}
+.pm-probs{list-style:none;display:flex;flex-direction:column;gap:4px}
+.pm-probs li{font-size:13px;padding:6px 10px;border-inline-start:4px solid var(--ink);background:var(--sheet)}
+.pm-fine{font-size:12px;color:var(--ink2)}
+.pm-msg{font-size:14px;font-weight:600}
+.pm .pm-reset{border:0;min-height:44px;color:var(--ink2);font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;align-self:center;background:none}
+.pm-edit{position:absolute;z-index:6;width:224px;display:flex;gap:6px;align-items:flex-end;background:var(--card);border:2px solid var(--blue);padding:6px}
+.pm-edit label{flex:1;display:flex;flex-direction:column;gap:2px;font-size:11.5px;color:var(--ink2)}
+.pm-edit input{width:100%;min-height:44px;border:2px solid var(--ink);font:600 16px "IBM Plex Mono",monospace;text-align:center;direction:ltr;border-radius:0}
+.pm-edit button{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff}
+.pm-names{position:absolute;inset-inline:0;bottom:0;max-height:62%;overflow:auto;background:var(--card);border-top:2px solid var(--ink);padding:6px 10px 12px;z-index:5}
+.pm-names-h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.pm-names-h h3{flex:1;font-size:14px;font-weight:700}
+.pm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.pm-grid button{text-align:start;font-size:14px}
+.pm-grid button[aria-pressed=true]{background:var(--blue2);color:var(--ink);border-color:var(--blue)}
+.pm-grid .pm-out{border-style:dashed}
+.pm-pages{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
+/* counting tiles: a link under a cm field, and a small panel */
+.pm-fieldw{flex:1 1 90px;min-width:0;display:flex;flex-direction:column}
+.pm-fieldw .pm-field{flex:none}
+.pm .pm-tl{border:0;background:none;min-height:44px;padding:0 2px;color:var(--blue);font-size:12.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:start;align-self:flex-start}
+.pm-edit{flex-wrap:wrap}.pm-edit .pm-tl{flex-basis:100%}
+.pm-tiles{position:absolute;inset-inline:0;bottom:0;z-index:8;max-height:92%;overflow:auto;background:var(--card);border-top:2px solid var(--ink);padding:8px 12px calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.pm-tl-l{font-size:13px;font-weight:600}
+.pm-sizes button{font-family:"IBM Plex Mono",monospace;font-size:14px}
+.pm-count{display:flex;align-items:center;gap:12px}
+.pm-count button{width:64px;font-size:24px!important;line-height:1}
+.pm-count b{min-width:80px;text-align:center;font-size:26px}
+.pm-tres{font:700 22px "IBM Plex Mono",monospace;color:var(--dim);min-height:30px}
+.pm-cal{align-items:flex-end}.pm-cal>button{flex:0 1 auto}
+.pm-calmsg{align-items:center}.pm-calmsg p{flex:1 1 160px}
+@media (max-width:899px){.pm-panel.pm-under{display:none}}
+@media (min-width:900px){
+  .pm-work{flex-direction:row}
+  .pm-panel{order:-1;flex:0 0 380px;border-top:0;border-inline-end:2px solid var(--ink);padding:12px 14px;gap:10px}
+  .pm-stage{min-height:0}
+  .pm-steps button{font-size:13.5px;padding:2px 12px}
+  .pm-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pm-names{inset-inline:auto 12px;bottom:12px;width:440px;border:2px solid var(--ink)}
+  .pm-tiles{inset-inline:auto 16px;bottom:16px;width:440px;border:2px solid var(--ink)}
+  .pm-h{font-size:28px}
+}
