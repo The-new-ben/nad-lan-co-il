@@ -1,0 +1,34 @@
+{
+ "desktop": {
+  "status": 200,
+  "robots": "noindex",
+  "title": "שדה דב 2036 | הליכה ברובע העתידי של תל אביב",
+  "ready_s": 3.1,
+  "disclaimer": true,
+  "soil": false,
+  "hash_after_walk": "#p=lot-merkaz-2255-building-3&x=-8.2&z=19.7&yaw=0.76&pitch=0.14&year=2036&hour=16&eye=1.65&fov=66&date=2036-06-21",
+  "errors": [],
+  "http_4xx_5xx": [],
+  "places_status": 200,
+  "places_articles": 3032,
+  "places_robots": null,
+  "places_h1": "מקומות ומקורות",
+  "named_2208": ""
+ },
+ "phone": {
+  "status": 200,
+  "robots": "noindex",
+  "title": "שדה דב 2036 | הליכה ברובע העתידי של תל אביב",
+  "ready_s": 0.2,
+  "disclaimer": true,
+  "soil": false,
+  "hash_after_walk": "#p=lot-merkaz-2255-building-3&x=-7.87&z=19.35&yaw=0.76&pitch=0.14&year=2036&hour=16&eye=1.65&fov=66&date=2036-06-21",
+  "errors": [],
+  "http_4xx_5xx": [],
+  "places_status": 200,
+  "places_articles": 3032,
+  "places_robots": null,
+  "places_h1": "מקומות ומקורות",
+  "named_2208": ""
+ }
+}

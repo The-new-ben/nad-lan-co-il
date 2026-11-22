@@ -34,7 +34,10 @@ function nadlan_sdedov_tour_slugs() {
 
 /* Flagships that have a named node inside the tour - deep link straight to them. */
 function nadlan_sdedov_tour_focus( $slug ) {
-	$map = array( 'rainbow-tel-aviv' => 'rainbow', 'ashira-sde-dov' => 'ashira', 'dimri-yama-sde-dov' => 'dimri' );
+	/* 1.72.744: the new tour (Sde Dov 2036) opens on a place by its id: each project's own plot */
+	$map = array( 'ashira-sde-dov' => 'lot-eshkol-101', 'utopia-sde-dov' => 'lot-eshkol-103', 'dimri-yama-sde-dov' => 'lot-eshkol-107',
+		'shikun-binui-sde-dov' => 'lot-eshkol-109', 'zohi-sde-dov' => 'lot-eshkol-110', 'rainbow-tel-aviv' => 'lot-eshkol-111',
+		'gindi-vogue-sde-dov' => 'lot-merkaz-2206', 'first-sde-dov' => 'lot-merkaz-2270', 'migdalei-hayam-sde-dov' => 'lot-tzafon-150' );
 	return isset( $map[ $slug ] ) ? $map[ $slug ] : '';
 }
 
@@ -82,7 +85,15 @@ function nadlan_sdedov_tour_css_raw() {
 		. 'body.nl-skin-a .nlsdt .nlsdt-sub{color:#4A4640!important}'
 		. 'body.nl-skin-a .nlsdt .nlsdt-chips li{color:#4A4640!important;border-color:#D6CDB9!important}'
 		. 'body.nl-skin-a .nlsdt .nlsdt-cta2{color:#2F6F86!important}'
-		. 'body.nl-skin-a .nlsdt .nlsdt-note{color:#6D665C!important}';
+		. 'body.nl-skin-a .nlsdt .nlsdt-note{color:#6D665C!important}'
+		// 1.72.744 (HAD-801): the walk entry moves by itself (a slow drift on its picture), a still for reduced motion; the skin's
+		// forced heading and link colours must not reach the entry's own colours
+		. '.nlq .nlq-cover{overflow:hidden}.nlqw-host{margin:18px 0 26px}'
+		. '@media(prefers-reduced-motion:no-preference){@keyframes nlqwDrift{from{transform:scale(1.03) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-2.5%,-1.5%,0)}}'
+		. '.nlq .nlq-cover img,.nlqw-drift{animation:nlqwDrift 18s ease-in-out infinite alternate;will-change:transform}}'
+		. '.nlhp-svcard__media picture{display:block;width:100%;height:100%}.nlhp-svcard__media{overflow:hidden}'
+		. 'body .nlq.nlq .nlq-sign h2,body .nlq.nlq .nlq-sign h2 *{color:#fff!important}body .nlq.nlq .nlq-sign p{color:#e3eff3!important}'
+		. 'body .nlq.nlq a.nlq-enter{color:#123750!important;background:#fff!important}body .nlq.nlq .nlq-stops a{color:#17617c!important}';
 }
 
 /* One overlay engine per page: click a .nlsdt-open control and the tour opens
@@ -124,7 +135,7 @@ function nadlan_sdedov_card_tour_btn( $post ) {
 	$slug  = get_post_field( 'post_name', $post );
 	if ( ! in_array( $slug, nadlan_sdedov_tour_slugs(), true ) ) { return ''; }
 	$focus = nadlan_sdedov_tour_focus( $slug );
-	$url   = nadlan_sdedov_tour_url() . ( $focus ? '?focus=' . rawurlencode( $focus ) . '&mode=explore' : '' );
+	$url   = nadlan_sdedov_tour_url() . ( $focus ? '#p=' . rawurlencode( $focus ) : '' );
 	return '<a class="nlsdt-cardtour nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">סיור ברובע שדה דב ←</a>';
 }
 
@@ -136,18 +147,18 @@ function nadlan_sdedov_card_tour_btn( $post ) {
  */
 function nadlan_sdedov_tour_band( $variant = 'home', $focus = '' ) {
 	$url  = nadlan_sdedov_tour_url();
-	$link = $focus ? $url . '?focus=' . rawurlencode( $focus ) . '&mode=explore' : $url;
+	$link = $focus ? $url . '#p=' . rawurlencode( $focus ) : $url;
 	$cls  = ( 'pair' === $variant ) ? 'nlsdt nlsdt--pair' : 'nlsdt';
 	$html = '<section class="' . esc_attr( $cls ) . '" aria-label="סיור תלת ממדי ברובע שדה דב">'
 		. '<img class="nlsdt-img" src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">'
 		. '<div class="nlsdt-in">'
-		. '<p class="nlsdt-kick">חדש · סיור תלת ממדי חי</p>'
+		. '<p class="nlsdt-kick">חדש · שדה דב 2036, הליכה ברובע</p>'
 		. '<p class="nlsdt-title">נכנסים לעתיד של רובע שדה דב</p>'
 		. '<p class="nlsdt-sub">' . ( 'project' === $variant
-			? 'הפרויקט הזה הוא חלק מרובע שלם שקם על קו החוף. מסתובבים ברחובות של 2035, עוברים בין המגדלים, ורואים איך הכול מתחבר.'
-			: 'מסתובבים ברחובות הרובע של 2035, עוברים בין המגדלים, יורדים לטיילת, ובוחרים דירה מתוך הבניין. הדמיה חיה בדפדפן, בלי להוריד כלום.' )
+			? 'הפרויקט הזה הוא חלק מרובע שלם שקם על קו החוף. הולכים ברחובות הרובע לפי התכנית, מגיעים אל המגרש של הפרויקט ורואים מי בונה מסביב.'
+			: 'הולכים ברחובות הרובע לפי התכנית, מצומת אבן גבירול ואיינשטיין ועד הים, ורואים מי בונה בכל מגרש. הדמיה חיה בדפדפן, בלי להוריד כלום.' )
 		. '</p>'
-		. '<ul class="nlsdt-chips"><li>מכונת זמן 2026 ⇄ 2035</li><li>סיור חופשי עם חצים</li><li>כל בניין לחיץ</li></ul>'
+		. '<ul class="nlsdt-chips"><li>מאבן גבירול עד הים</li><li>שמות הפרויקטים והיזמים</li><li>כל מקום עם מקור ותאריך</li></ul>'
 		. '<a class="nlsdt-cta nlsdt-open" href="' . esc_url( $link ) . '" data-url="' . esc_url( $link ) . '" target="_blank" rel="noopener">כניסה לסיור</a>'
 		. ( ( 'project' === $variant && $focus ) ? '<a class="nlsdt-cta2 nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">או מתחילים מתצפית על כל הרובע ←</a>' : '' )
 		. '<p class="nlsdt-note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</p>'
@@ -163,3 +174,24 @@ function nadlan_sdedov_tour_page_append( $content ) {
 	return $content;
 }
 add_filter( 'the_content', 'nadlan_sdedov_tour_page_append', 21 );
+
+/* 1.72.744 (HAD-801): Sde Dov 2036, the walk through the future quarter (Codex's build at <site root>/tour/sde-dov/).
+ * Its WordPress entry ([nadlan_walk], assets/quarter-walk, copied as packaged) shows a still from the tour, the sign, three stops
+ * and the list of places and sources; nothing of the 3D engine loads until a press, and then inside a dialog on this page.
+ * On /sde-dov/ it stands right after the opening paragraph and its buttons; the picture, the area map and the rest stay. */
+if ( ! function_exists( 'nadlan_walk_render' ) && file_exists( dirname( __DIR__ ) . '/assets/quarter-walk/nadlan-quarter-walk.php' ) ) {
+	require_once dirname( __DIR__ ) . '/assets/quarter-walk/nadlan-quarter-walk.php';
+}
+function nadlan_sdedov_walk_entry( $content ) {
+	if ( ! function_exists( 'nadlan_walk_render' ) || ! is_page( 'sde-dov' ) || ! in_the_loop() || ! is_main_query() || false !== strpos( $content, 'data-nlq' ) ) {
+		return $content;
+	}
+	$i = strpos( $content, 'class="nls1-cta"' );
+	$j = ( false === $i ) ? false : strpos( $content, '</div>', $i );
+	if ( false === $j ) {
+		return $content;
+	}
+	$j += 6;
+	return substr( $content, 0, $j ) . '<div class="nlqw-host" id="walk">' . nadlan_walk_render( array() ) . '</div>' . substr( $content, $j );
+}
+add_filter( 'the_content', 'nadlan_sdedov_walk_entry', 22 );

@@ -1,0 +1,694 @@
+{
+  "path": "/tour/sde-dov/",
+  "home": {
+    "caption": {
+      "he": "מצומת אבן גבירול ואיינשטיין עד הים",
+      "en": "From Ibn Gabirol and Einstein to the sea",
+      "fr": "Du carrefour Ibn Gabirol et Einstein à la mer",
+      "ru": "От перекрёстка Ибн-Гвироль и Эйнштейна до моря",
+      "ar": "من تقاطع ابن غبيرول وأينشتاين إلى البحر"
+    },
+    "alt": {
+      "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+      "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+      "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+      "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+      "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+    },
+    "cover": "junction-signs"
+  },
+  "places": {
+    "lot-eshkol-101": {
+      "short": {
+        "he": "אשירה",
+        "en": "Ashira",
+        "fr": "Ashira",
+        "ru": "Ашира",
+        "ar": "أشيرا"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-101",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-eshkol-103": {
+      "short": {
+        "he": "UTOPIA",
+        "en": "UTOPIA",
+        "fr": "UTOPIA",
+        "ru": "UTOPIA",
+        "ar": "UTOPIA"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-103",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-eshkol-107": {
+      "short": {
+        "he": "דמרי ימה",
+        "en": "Dimri Yama",
+        "fr": "Dimri Yama",
+        "ru": "Димри Яма",
+        "ar": "ديمري ياما"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-107",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-eshkol-109": {
+      "short": {
+        "he": "שיכון ובינוי, להשכרה",
+        "en": "Shikun & Binui, for rent",
+        "fr": "Shikun & Binui, à louer",
+        "ru": "Шикун у-Бинуй, в аренду",
+        "ar": "شيكون وبينوي، للإيجار"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-109",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-eshkol-110": {
+      "short": {
+        "he": "זוהי",
+        "en": "Zohi",
+        "fr": "Zohi",
+        "ru": "Зохи",
+        "ar": "زوهي"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-110",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-eshkol-111": {
+      "short": {
+        "he": "ריינבו",
+        "en": "Rainbow",
+        "fr": "Rainbow",
+        "ru": "Рейнбоу",
+        "ar": "رينبو"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-eshkol-111",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "lot-merkaz-2206": {
+      "short": {
+        "he": "GINDI VOGUE · מגרש 2206",
+        "en": "GINDI VOGUE · Plot 2206",
+        "fr": "GINDI VOGUE · Parcelle 2206",
+        "ru": "GINDI VOGUE · Участок 2206",
+        "ar": "GINDI VOGUE · قسيمة 2206"
+      },
+      "caption": {
+        "he": "מבט מהמגרש אל הרחוב",
+        "en": "Looking from the plot to the street",
+        "fr": "Vue sur la rue depuis la parcelle",
+        "ru": "Вид с участка на улицу",
+        "ar": "من القطعة باتجاه الشارع"
+      },
+      "cover": "street-lot-merkaz-2206",
+      "alt": {
+        "he": "הרחוב כפי שהוא נראה בסיור, במבט מהמגרש החוצה",
+        "en": "Looking from the plot towards the surrounding street in the walk",
+        "fr": "La rue vue depuis la parcelle dans la visite",
+        "ru": "Вид на улицу со стороны участка в прогулке",
+        "ar": "منظر الشارع من جهة القطعة في الجولة"
+      }
+    },
+    "lot-merkaz-2255": {
+      "short": {
+        "he": "GINDI VOGUE · מגרש 2255",
+        "en": "GINDI VOGUE · Plot 2255",
+        "fr": "GINDI VOGUE · Parcelle 2255",
+        "ru": "GINDI VOGUE · Участок 2255",
+        "ar": "GINDI VOGUE · قسيمة 2255"
+      },
+      "caption": {
+        "he": "מבט מהמגרש אל הרחוב",
+        "en": "Looking from the plot to the street",
+        "fr": "Vue sur la rue depuis la parcelle",
+        "ru": "Вид с участка на улицу",
+        "ar": "من القطعة باتجاه الشارع"
+      },
+      "cover": "street-lot-merkaz-2255",
+      "alt": {
+        "he": "הרחוב כפי שהוא נראה בסיור, במבט מהמגרש החוצה",
+        "en": "Looking from the plot towards the surrounding street in the walk",
+        "fr": "La rue vue depuis la parcelle dans la visite",
+        "ru": "Вид на улицу со стороны участка в прогулке",
+        "ar": "منظر الشارع من جهة القطعة في الجولة"
+      }
+    },
+    "lot-merkaz-2270": {
+      "short": {
+        "he": "FIRST",
+        "en": "FIRST",
+        "fr": "FIRST",
+        "ru": "FIRST",
+        "ar": "FIRST"
+      },
+      "caption": {
+        "he": "מבט מהמגרש אל הרחוב",
+        "en": "Looking from the plot to the street",
+        "fr": "Vue sur la rue depuis la parcelle",
+        "ru": "Вид с участка на улицу",
+        "ar": "من القطعة باتجاه الشارع"
+      },
+      "cover": "street-lot-merkaz-2270",
+      "alt": {
+        "he": "הרחוב כפי שהוא נראה בסיור, במבט מהמגרש החוצה",
+        "en": "Looking from the plot towards the surrounding street in the walk",
+        "fr": "La rue vue depuis la parcelle dans la visite",
+        "ru": "Вид на улицу со стороны участка в прогулке",
+        "ar": "منظر الشارع من جهة القطعة في الجولة"
+      }
+    },
+    "lot-tzafon-150": {
+      "short": {
+        "he": "מגדלי הים התיכון, דיור מוגן",
+        "en": "Mediterranean Towers, Senior Living",
+        "fr": "Tours de la Méditerranée, résidence seniors",
+        "ru": "Мигдалей ха-Ям ха-Тихон, резиденция для пожилых",
+        "ar": "أبراج البحر المتوسط، سكن محمي لكبار السن"
+      },
+      "caption": {
+        "he": "גבול המגרש מסומן באדום. הקו המנוקד ממשיך מאחורי הבניינים.",
+        "en": "The red line follows the plot boundary. Dots continue behind buildings.",
+        "fr": "Le trait rouge délimite la parcelle. Les pointillés continuent derrière les bâtiments.",
+        "ru": "Красная линия отмечает границу участка. За зданиями она показана пунктиром.",
+        "ar": "يحدّد الخط الأحمر حدود القطعة، ويستمر منقّطًا خلف المباني."
+      },
+      "cover": "registered-lot-tzafon-150",
+      "alt": {
+        "he": "גבול המגרש מסומן במבט אלכסוני על הרחובות",
+        "en": "Surveyed plot outline in an oblique view of the streets",
+        "fr": "Limite parcellaire sur une vue oblique des rues",
+        "ru": "Граница участка на наклонном виде улиц",
+        "ar": "حدود القطعة في منظر مائل للشوارع"
+      }
+    },
+    "station-1": {
+      "short": {
+        "he": "תחנת איינשטיין",
+        "en": "Einstein Station",
+        "fr": "Station Einstein",
+        "ru": "Станция Эйнштейн",
+        "ar": "محطة أينشتاين"
+      },
+      "caption": {
+        "he": "תחנת איינשטיין",
+        "en": "Einstein Station",
+        "fr": "Station Einstein",
+        "ru": "Станция Эйнштейн",
+        "ar": "محطة أينشتاين"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-8": {
+      "short": {
+        "he": "תחנת פרופס",
+        "en": "Propes Station",
+        "fr": "Station Propes",
+        "ru": "Станция Пропес",
+        "ar": "محطة بروبس"
+      },
+      "caption": {
+        "he": "תחנת פרופס",
+        "en": "Propes Station",
+        "fr": "Station Propes",
+        "ru": "Станция Пропес",
+        "ar": "محطة بروبس"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-9": {
+      "short": {
+        "he": "תחנת נופי ים",
+        "en": "Nofei Yam Station",
+        "fr": "Station Nofei Yam",
+        "ru": "Станция Нофей-Ям",
+        "ar": "محطة نوفي يام"
+      },
+      "caption": {
+        "he": "תחנת נופי ים",
+        "en": "Nofei Yam Station",
+        "fr": "Station Nofei Yam",
+        "ru": "Станция Нофей-Ям",
+        "ar": "محطة نوفي يام"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-10": {
+      "short": {
+        "he": "תחנת נמיר",
+        "en": "Namir Station",
+        "fr": "Station Namir",
+        "ru": "Станция Намир",
+        "ar": "محطة نامير"
+      },
+      "caption": {
+        "he": "תחנת נמיר",
+        "en": "Namir Station",
+        "fr": "Station Namir",
+        "ru": "Станция Намир",
+        "ar": "محطة نامير"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-15": {
+      "short": {
+        "he": "תחנת זהרה לביטוב",
+        "en": "Zohara Levitov Station",
+        "fr": "Station Zohara Levitov",
+        "ru": "Станция Зохара Левитов",
+        "ar": "محطة زوهارا ليفيتوف"
+      },
+      "caption": {
+        "he": "תחנת זהרה לביטוב",
+        "en": "Zohara Levitov Station",
+        "fr": "Station Zohara Levitov",
+        "ru": "Станция Зохара Левитов",
+        "ar": "محطة زوهارا ليفيتوف"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-20": {
+      "short": {
+        "he": "תחנת לוי אשכול",
+        "en": "Levi Eshkol Station",
+        "fr": "Station Levi Eshkol",
+        "ru": "Станция Леви Эшколь",
+        "ar": "محطة ليفي إشكول"
+      },
+      "caption": {
+        "he": "תחנת לוי אשכול",
+        "en": "Levi Eshkol Station",
+        "fr": "Station Levi Eshkol",
+        "ru": "Станция Леви Эшколь",
+        "ar": "محطة ليفي إشكول"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "station-21": {
+      "short": {
+        "he": "תחנת רידינג",
+        "en": "Reading Station",
+        "fr": "Station Reading",
+        "ru": "Станция Ридинг",
+        "ar": "محطة ريدينغ"
+      },
+      "caption": {
+        "he": "תחנת רידינג",
+        "en": "Reading Station",
+        "fr": "Station Reading",
+        "ru": "Станция Ридинг",
+        "ar": "محطة ريدينغ"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-einstein": {
+      "short": {
+        "he": "צומת אבן גבירול ואיינשטיין",
+        "en": "Ibn Gabirol and Einstein Intersection",
+        "fr": "Carrefour Ibn Gabirol et Einstein",
+        "ru": "Перекрёсток Ибн Гвироль и Эйнштейн",
+        "ar": "تقاطع ابن جبيرول وأينشتاين"
+      },
+      "caption": {
+        "he": "צומת אבן גבירול ואיינשטיין",
+        "en": "Ibn Gabirol and Einstein Intersection",
+        "fr": "Carrefour Ibn Gabirol et Einstein",
+        "ru": "Перекрёсток Ибн Гвироль и Эйнштейн",
+        "ar": "تقاطع ابن جبيرول وأينشتاين"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-colonnade": {
+      "short": {
+        "he": "הסטיו באבן גבירול",
+        "en": "Ibn Gabirol Colonnade",
+        "fr": "La colonnade d'Ibn Gabirol",
+        "ru": "Колоннада на Ибн-Гвироль",
+        "ar": "الرواق المعمد في ابن جبيرول"
+      },
+      "caption": {
+        "he": "הסטיו באבן גבירול",
+        "en": "Ibn Gabirol Colonnade",
+        "fr": "La colonnade d'Ibn Gabirol",
+        "ru": "Колоннада на Ибн-Гвироль",
+        "ar": "الرواق المعمد في ابن جبيرول"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-school-garden": {
+      "short": {
+        "he": "גינת בית הספר באשכול",
+        "en": "Eshkol School Garden",
+        "fr": "Le jardin de l'école d'Eshkol",
+        "ru": "Школьный сад в Эшколе",
+        "ar": "حديقة المدرسة في إشكول"
+      },
+      "caption": {
+        "he": "גינת בית הספר באשכול",
+        "en": "Eshkol School Garden",
+        "fr": "Le jardin de l'école d'Eshkol",
+        "ru": "Школьный сад в Эшколе",
+        "ar": "حديقة المدرسة في إشكول"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-linear-park": {
+      "short": {
+        "he": "הפארק הלינארי",
+        "en": "Linear Park",
+        "fr": "Le parc linéaire",
+        "ru": "Линейный парк",
+        "ar": "المتنزه الخطي"
+      },
+      "caption": {
+        "he": "הפארק הלינארי",
+        "en": "Linear Park",
+        "fr": "Le parc linéaire",
+        "ru": "Линейный парк",
+        "ar": "المتنزه الخطي"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-runway": {
+      "short": {
+        "he": "טיילת המסלול",
+        "en": "Runway Promenade",
+        "fr": "La promenade de la piste",
+        "ru": "Променад взлетной полосы",
+        "ar": "ممشى المدرج"
+      },
+      "caption": {
+        "he": "טיילת המסלול",
+        "en": "Runway Promenade",
+        "fr": "La promenade de la piste",
+        "ru": "Променад взлетной полосы",
+        "ar": "ممشى المدرج"
+      },
+      "cover": "junction-signs",
+      "alt": {
+        "he": "הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין בסיור",
+        "en": "Tram and pavement at Ibn Gabirol and Einstein in the walk",
+        "fr": "Tramway et trottoir au carrefour Ibn Gabirol et Einstein dans la visite",
+        "ru": "Трамвай и тротуар на перекрёстке Ибн-Гвироль и Эйнштейна в прогулке",
+        "ar": "القطار الخفيف والرصيف عند تقاطع ابن غبيرول وأينشتاين في الجولة"
+      }
+    },
+    "walk-dunes": {
+      "short": {
+        "he": "ארכיפלג הדיונות",
+        "en": "Dune Archipelago",
+        "fr": "L'archipel des dunes",
+        "ru": "Архипелаг дюн",
+        "ar": "أرخبيل الكثبان"
+      },
+      "caption": {
+        "he": "ארכיפלג הדיונות",
+        "en": "Dune Archipelago",
+        "fr": "L'archipel des dunes",
+        "ru": "Архипелаг дюн",
+        "ar": "أرخبيل الكثبان"
+      },
+      "cover": "lookout",
+      "alt": {
+        "he": "מבט מעל הצמחייה אל הים בסיור",
+        "en": "View across the vegetation towards the sea in the walk",
+        "fr": "Vue sur la mer au-delà de la végétation dans la visite",
+        "ru": "Вид через зелень на море в прогулке",
+        "ar": "منظر البحر خلف النباتات في الجولة"
+      }
+    },
+    "walk-meadow": {
+      "short": {
+        "he": "האחו וטיילת החוף",
+        "en": "Meadow and Coastal Promenade",
+        "fr": "La prairie et la promenade côtière",
+        "ru": "Луг и прибрежный променад",
+        "ar": "المرج وممشى الشاطئ"
+      },
+      "caption": {
+        "he": "האחו וטיילת החוף",
+        "en": "Meadow and Coastal Promenade",
+        "fr": "La prairie et la promenade côtière",
+        "ru": "Луг и прибрежный променад",
+        "ar": "المرج وممشى الشاطئ"
+      },
+      "cover": "lookout",
+      "alt": {
+        "he": "מבט מעל הצמחייה אל הים בסיור",
+        "en": "View across the vegetation towards the sea in the walk",
+        "fr": "Vue sur la mer au-delà de la végétation dans la visite",
+        "ru": "Вид через зелень на море в прогулке",
+        "ar": "منظر البحر خلف النباتات في الجولة"
+      }
+    },
+    "walk-panorama": {
+      "short": {
+        "he": "הרמה הפנורמית",
+        "en": "Panoramic Plateau",
+        "fr": "Le plateau panoramique",
+        "ru": "Панорамное плато",
+        "ar": "الهضبة البانورامية"
+      },
+      "caption": {
+        "he": "הרמה הפנורמית",
+        "en": "Panoramic Plateau",
+        "fr": "Le plateau panoramique",
+        "ru": "Панорамное плато",
+        "ar": "الهضبة البانورامية"
+      },
+      "cover": "lookout",
+      "alt": {
+        "he": "מבט מעל הצמחייה אל הים בסיור",
+        "en": "View across the vegetation towards the sea in the walk",
+        "fr": "Vue sur la mer au-delà de la végétation dans la visite",
+        "ru": "Вид через зелень на море в прогулке",
+        "ar": "منظر البحر خلف النباتات في الجولة"
+      }
+    }
+  },
+  "links": [
+    "station-1",
+    "walk-school-garden",
+    "walk-panorama"
+  ],
+  "copy": {
+    "he": {
+      "disclosure": "הדמיה להמחשה, על פי התכנית",
+      "title": "שדה דב 2036",
+      "enter": "ללכת ברובע",
+      "startAt": "להגיע אל {place}",
+      "resume": "להמשיך בהליכה",
+      "close": "חזרה לעמוד",
+      "loading": "פותחים את הרחוב…",
+      "failure": "אפשר לפתוח את הסיור בעמוד משלו.",
+      "standalone": "פתיחה בעמוד מלא",
+      "choose": "בחירת נקודת התחלה",
+      "records": "מקומות ומקורות"
+    },
+    "en": {
+      "disclosure": "Illustrative preview based on published plans",
+      "title": "Sde Dov 2036",
+      "enter": "Walk the district",
+      "startAt": "Start at {place}",
+      "resume": "Resume your walk",
+      "close": "Back to article",
+      "loading": "Opening the street…",
+      "failure": "You can open the walk in its own page.",
+      "standalone": "Open full page",
+      "choose": "Choose a starting point",
+      "records": "Places and sources"
+    },
+    "fr": {
+      "disclosure": "Aperçu illustratif d’après les plans publiés",
+      "title": "Sde Dov 2036",
+      "enter": "Parcourir le quartier",
+      "startAt": "Rejoindre {place}",
+      "resume": "Reprendre la visite",
+      "close": "Retour à la page",
+      "loading": "Ouverture de la rue…",
+      "failure": "Ouvrez la visite dans sa propre page.",
+      "standalone": "Ouvrir en pleine page",
+      "choose": "Choisir un point de départ",
+      "records": "Lieux et sources"
+    },
+    "ru": {
+      "disclosure": "Иллюстрация по опубликованным планам",
+      "title": "Сде-Дов 2036",
+      "enter": "Пройти по району",
+      "startAt": "К месту «{place}»",
+      "resume": "Продолжить прогулку",
+      "close": "Назад на страницу",
+      "loading": "Открываем улицу…",
+      "failure": "Можно открыть прогулку на отдельной странице.",
+      "standalone": "Открыть на отдельной странице",
+      "choose": "Выбрать точку старта",
+      "records": "Места и источники"
+    },
+    "ar": {
+      "disclosure": "عرض توضيحي وفق المخططات المنشورة",
+      "title": "سديه دوف 2036",
+      "enter": "تجوّل في الحي",
+      "startAt": "ابدأ من {place}",
+      "resume": "تابع جولتك",
+      "close": "العودة إلى الصفحة",
+      "loading": "جارٍ فتح الشارع…",
+      "failure": "يمكنك فتح الجولة في صفحة منفصلة.",
+      "standalone": "افتح في صفحة كاملة",
+      "choose": "اختر نقطة البداية",
+      "records": "الأماكن والمصادر"
+    }
+  }
+}

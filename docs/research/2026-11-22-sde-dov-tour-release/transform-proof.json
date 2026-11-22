@@ -1,0 +1,893 @@
+{
+ "before": {
+  "places": 3032,
+  "kinds": {
+   "project": 10,
+   "lot": 99,
+   "school": 2,
+   "park": 70,
+   "street": 130,
+   "station": 7,
+   "surrounding": 96,
+   "permit": 33,
+   "place": 113,
+   "viewpoint": 1,
+   "tree": 491,
+   "survey": 1,
+   "existing": 1820,
+   "building": 155,
+   "entrance": 4
+  },
+  "layers": 11,
+  "route": 8,
+  "sources": 86,
+  "rails": 29,
+  "links": 15,
+  "languages": [
+   "ar",
+   "en",
+   "fr",
+   "he",
+   "ru"
+  ],
+  "catalogText": {
+   "he": 51,
+   "en": 580,
+   "fr": 580,
+   "ru": 580,
+   "ar": 580
+  },
+  "years": [
+   2023,
+   2036,
+   7
+  ],
+  "facts": 4296
+ },
+ "after": {
+  "places": 3032,
+  "kinds": {
+   "project": 10,
+   "lot": 99,
+   "school": 2,
+   "park": 70,
+   "street": 130,
+   "station": 7,
+   "surrounding": 96,
+   "permit": 33,
+   "place": 113,
+   "viewpoint": 1,
+   "tree": 491,
+   "survey": 1,
+   "existing": 1820,
+   "building": 155,
+   "entrance": 4
+  },
+  "layers": 11,
+  "route": 8,
+  "sources": 86,
+  "rails": 29,
+  "links": 15,
+  "languages": [
+   "ar",
+   "en",
+   "fr",
+   "he",
+   "ru"
+  ],
+  "catalogText": {
+   "he": 51,
+   "en": 644,
+   "fr": 644,
+   "ru": 644,
+   "ar": 644
+  },
+  "facts": 4296,
+  "years": [
+   2023,
+   2036,
+   7
+  ]
+ },
+ "renames": [
+  {
+   "id": "lot-eshkol-106",
+   "kind": "lot",
+   "old": "מגרש 106 · מגורים ומסחר",
+   "new": "מגרש 106 · מגורים ומסחר · ריט ש.ב. נדל״ן נכסים",
+   "source": "rmi-20210327,catalog"
+  },
+  {
+   "id": "lot-eshkol-301",
+   "kind": "lot",
+   "old": "מגרש 301 · מסחר, תעסוקה ותיירות",
+   "new": "מגרש 301 · מסחר, תעסוקה ותיירות · הדס קפיטל מקרקעי ישראל",
+   "source": "rmi-20240304"
+  },
+  {
+   "id": "lot-eshkol-302",
+   "kind": "lot",
+   "old": "מגרש 302 · מסחר, תעסוקה ותיירות",
+   "new": "מגרש 302 · מסחר, תעסוקה ותיירות · רמי שבירו, רייסדור ות. סורנטו",
+   "source": "rmi-20240304"
+  },
+  {
+   "id": "lot-eshkol-303",
+   "kind": "lot",
+   "old": "מגרש 303 · מסחר ותעסוקה",
+   "new": "מגרש 303 · מסחר ותעסוקה · מבנה נדל״ן",
+   "source": "rmi-20240304"
+  },
+  {
+   "id": "lot-eshkol-305",
+   "kind": "lot",
+   "old": "מגרש 305 · מסחר ותעסוקה",
+   "new": "מגרש 305 · מסחר ותעסוקה · רבד",
+   "source": "rmi-20240304"
+  },
+  {
+   "id": "lot-merkaz-2102",
+   "kind": "lot",
+   "old": "מגרש 2102 · מגורים ומסחר",
+   "new": "מגרש 2102 · מגורים ומסחר · פרשקובסקי מניבים",
+   "source": "rmi-20240284"
+  },
+  {
+   "id": "lot-merkaz-2103",
+   "kind": "lot",
+   "old": "מגרש 2103 · מגורים ומסחר",
+   "new": "מגרש 2103 · מגורים ומסחר · האחים ישראל",
+   "source": "rmi-20240277"
+  },
+  {
+   "id": "lot-merkaz-2104",
+   "kind": "lot",
+   "old": "מגרש 2104 · דיור מיוחד",
+   "new": "מגרש 2104 · דיור מיוחד · פאלאס רעננה, דיור מוגן",
+   "source": "rmi-20240270"
+  },
+  {
+   "id": "lot-merkaz-2203",
+   "kind": "lot",
+   "old": "מגרש 2203 · מגורים ותעסוקה",
+   "new": "מגרש 2203 · מגורים ותעסוקה · פרשקובסקי מניבים",
+   "source": "rmi-20240276"
+  },
+  {
+   "id": "lot-merkaz-2207",
+   "kind": "lot",
+   "old": "מגרש 2207 · מגורים ותעסוקה",
+   "new": "מגרש 2207 · מגורים ותעסוקה · פרשקובסקי מניבים",
+   "source": "rmi-20240276,lot2207"
+  },
+  {
+   "id": "lot-merkaz-2208",
+   "kind": "lot",
+   "old": "מגרש 2208 · מגורים ותעסוקה",
+   "new": "מגרש 2208 · מגורים ותעסוקה · אלקטרה מגורים ונהור",
+   "source": "rmi-20240277"
+  },
+  {
+   "id": "lot-merkaz-2226",
+   "kind": "lot",
+   "old": "מגרש 2226 · מגורים ותעסוקה",
+   "new": "מגרש 2226 · מגורים ותעסוקה · א.א.י. אבו מגורים ותומר קוקו",
+   "source": "rmi-20240277"
+  },
+  {
+   "id": "lot-merkaz-2227",
+   "kind": "lot",
+   "old": "מגרש 2227 · מגורים ותעסוקה",
+   "new": "מגרש 2227 · מגורים ותעסוקה · לוזון רונסון",
+   "source": "rmi-20240277"
+  },
+  {
+   "id": "lot-tzafon-3102",
+   "kind": "lot",
+   "old": "מגרש 3102 · מגורים ומסחר",
+   "new": "מגרש 3102 · מגורים ומסחר · תשלוז השקעות והחזקות",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3106",
+   "kind": "lot",
+   "old": "מגרש 3106 · מגורים ומסחר",
+   "new": "מגרש 3106 · מגורים ומסחר · לוזון רונסון ושמעון אמיר",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3109",
+   "kind": "lot",
+   "old": "מגרש 3109 · מגורים ומסחר",
+   "new": "מגרש 3109 · מגורים ומסחר · יוסי אברהמי",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3201",
+   "kind": "lot",
+   "old": "מגרש 3201 · מגורים ותעסוקה",
+   "new": "מגרש 3201 · מגורים ותעסוקה · יורו ישראל",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3202",
+   "kind": "lot",
+   "old": "מגרש 3202 · מגורים ותעסוקה",
+   "new": "מגרש 3202 · מגורים ותעסוקה · א.מ. ישראל מגורים",
+   "source": "rmi-20240273"
+  },
+  {
+   "id": "lot-tzafon-3203",
+   "kind": "lot",
+   "old": "מגרש 3203 · מגורים ותעסוקה",
+   "new": "מגרש 3203 · מגורים ותעסוקה · שיכון ובינוי",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3205",
+   "kind": "lot",
+   "old": "מגרש 3205 · מגורים ותעסוקה",
+   "new": "מגרש 3205 · מגורים ותעסוקה · אביב מגורים בשדה דב",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3207",
+   "kind": "lot",
+   "old": "מגרש 3207 · מגורים ותעסוקה",
+   "new": "מגרש 3207 · מגורים ותעסוקה · כלנית נכסים ופיתוח",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-tzafon-3208",
+   "kind": "lot",
+   "old": "מגרש 3208 · מגורים ותעסוקה",
+   "new": "מגרש 3208 · מגורים ותעסוקה · יוניון ליב",
+   "source": "rmi-20240282"
+  },
+  {
+   "id": "lot-tzafon-3209",
+   "kind": "lot",
+   "old": "מגרש 3209 · מגורים ותעסוקה",
+   "new": "מגרש 3209 · מגורים ותעסוקה · א.מ. ישראל מגורים",
+   "source": "rmi-20240273"
+  },
+  {
+   "id": "lot-tzafon-3210",
+   "kind": "lot",
+   "old": "מגרש 3210 · מגורים ותעסוקה",
+   "new": "מגרש 3210 · מגורים ותעסוקה · י.ח. דמרי",
+   "source": "rmi-20240267"
+  },
+  {
+   "id": "lot-eshkol-101-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 101, בניין 1",
+   "new": "אשירה · המגדל במגרש 101, בניין 1",
+   "source": "lot101"
+  },
+  {
+   "id": "lot-eshkol-101-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 101, בניין 2",
+   "new": "אשירה · המבנה במגרש 101, בניין 2",
+   "source": "lot101"
+  },
+  {
+   "id": "lot-eshkol-101-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 101, בניין 3",
+   "new": "אשירה · המבנה במגרש 101, בניין 3",
+   "source": "lot101"
+  },
+  {
+   "id": "lot-eshkol-101-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 101, בניין 4",
+   "new": "אשירה · המבנה במגרש 101, בניין 4",
+   "source": "lot101"
+  },
+  {
+   "id": "lot-eshkol-103-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 103, בניין 1",
+   "new": "UTOPIA · המגדל במגרש 103, בניין 1",
+   "source": "dev103"
+  },
+  {
+   "id": "lot-eshkol-103-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 103, בניין 2",
+   "new": "UTOPIA · המבנה במגרש 103, בניין 2",
+   "source": "dev103"
+  },
+  {
+   "id": "lot-eshkol-103-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 103, בניין 3",
+   "new": "UTOPIA · המבנה במגרש 103, בניין 3",
+   "source": "dev103"
+  },
+  {
+   "id": "lot-eshkol-103-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 103, בניין 4",
+   "new": "UTOPIA · המבנה במגרש 103, בניין 4",
+   "source": "dev103"
+  },
+  {
+   "id": "lot-eshkol-106-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 106",
+   "new": "ריט ש.ב. נדל״ן נכסים · המבנה במגרש 106",
+   "source": "eshkol,scenario"
+  },
+  {
+   "id": "lot-eshkol-107-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 107, בניין 1",
+   "new": "דמרי ימה · המגדל במגרש 107, בניין 1",
+   "source": "dev107,lot107"
+  },
+  {
+   "id": "lot-eshkol-107-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 107, בניין 2",
+   "new": "דמרי ימה · המבנה במגרש 107, בניין 2",
+   "source": "dev107,lot107"
+  },
+  {
+   "id": "lot-eshkol-107-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 107, בניין 3",
+   "new": "דמרי ימה · המבנה במגרש 107, בניין 3",
+   "source": "dev107,lot107"
+  },
+  {
+   "id": "lot-eshkol-107-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 107, בניין 4",
+   "new": "דמרי ימה · המבנה במגרש 107, בניין 4",
+   "source": "dev107,lot107"
+  },
+  {
+   "id": "lot-eshkol-109-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 109, בניין 1",
+   "new": "שיכון ובינוי, להשכרה · המגדל במגרש 109, בניין 1",
+   "source": "lot109"
+  },
+  {
+   "id": "lot-eshkol-109-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 109, בניין 2",
+   "new": "שיכון ובינוי, להשכרה · המבנה במגרש 109, בניין 2",
+   "source": "lot109"
+  },
+  {
+   "id": "lot-eshkol-109-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 109, בניין 3",
+   "new": "שיכון ובינוי, להשכרה · המבנה במגרש 109, בניין 3",
+   "source": "lot109"
+  },
+  {
+   "id": "lot-eshkol-110-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 110, בניין 1",
+   "new": "זוהי · המבנה במגרש 110, בניין 1",
+   "source": "dev110"
+  },
+  {
+   "id": "lot-eshkol-110-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 110, בניין 2",
+   "new": "זוהי · המבנה במגרש 110, בניין 2",
+   "source": "dev110"
+  },
+  {
+   "id": "lot-eshkol-110-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 110, בניין 3",
+   "new": "זוהי · המבנה במגרש 110, בניין 3",
+   "source": "dev110"
+  },
+  {
+   "id": "lot-eshkol-110-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 110, בניין 4",
+   "new": "זוהי · המבנה במגרש 110, בניין 4",
+   "source": "dev110"
+  },
+  {
+   "id": "lot-eshkol-111-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 111, בניין 1",
+   "new": "ריינבו · המגדל במגרש 111, בניין 1",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 2",
+   "new": "ריינבו · המבנה במגרש 111, בניין 2",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 3",
+   "new": "ריינבו · המבנה במגרש 111, בניין 3",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 4",
+   "new": "ריינבו · המבנה במגרש 111, בניין 4",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-5",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 5",
+   "new": "ריינבו · המבנה במגרש 111, בניין 5",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-6",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 6",
+   "new": "ריינבו · המבנה במגרש 111, בניין 6",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-111-building-7",
+   "kind": "building",
+   "old": "המבנה במגרש 111, בניין 7",
+   "new": "ריינבו · המבנה במגרש 111, בניין 7",
+   "source": "dev111"
+  },
+  {
+   "id": "lot-eshkol-301-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 301",
+   "new": "הדס קפיטל מקרקעי ישראל · המבנה במגרש 301",
+   "source": "eshkol,scenario"
+  },
+  {
+   "id": "lot-eshkol-302-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 302",
+   "new": "רמי שבירו, רייסדור ות. סורנטו · המבנה במגרש 302",
+   "source": "eshkol,scenario"
+  },
+  {
+   "id": "lot-eshkol-303-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 303",
+   "new": "מבנה נדל״ן · המבנה במגרש 303",
+   "source": "eshkol,scenario"
+  },
+  {
+   "id": "lot-eshkol-305-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 305",
+   "new": "רבד · המבנה במגרש 305",
+   "source": "eshkol,scenario"
+  },
+  {
+   "id": "lot-merkaz-2102-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2102",
+   "new": "פרשקובסקי מניבים · המגדל במגרש 2102",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2103-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2103, בניין 1",
+   "new": "האחים ישראל · המגדל במגרש 2103, בניין 1",
+   "source": "p2103,scenario"
+  },
+  {
+   "id": "lot-merkaz-2103-building-2",
+   "kind": "building",
+   "old": "המגדל במגרש 2103, בניין 2",
+   "new": "האחים ישראל · המגדל במגרש 2103, בניין 2",
+   "source": "p2103,scenario"
+  },
+  {
+   "id": "lot-merkaz-2103-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2103, בניין 3",
+   "new": "האחים ישראל · המבנה במגרש 2103, בניין 3",
+   "source": "p2103,scenario"
+  },
+  {
+   "id": "lot-merkaz-2103-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 2103, בניין 4",
+   "new": "האחים ישראל · המבנה במגרש 2103, בניין 4",
+   "source": "p2103,scenario"
+  },
+  {
+   "id": "lot-merkaz-2203-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 2203",
+   "new": "פרשקובסקי מניבים · המבנה במגרש 2203",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2206-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2206, בניין 1",
+   "new": "GINDI VOGUE · המגדל במגרש 2206, בניין 1",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2206-building-2",
+   "kind": "building",
+   "old": "המגדל במגרש 2206, בניין 2",
+   "new": "GINDI VOGUE · המגדל במגרש 2206, בניין 2",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2206-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2206, בניין 3",
+   "new": "GINDI VOGUE · המבנה במגרש 2206, בניין 3",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2206-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 2206, בניין 4",
+   "new": "GINDI VOGUE · המבנה במגרש 2206, בניין 4",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2206-building-5",
+   "kind": "building",
+   "old": "המבנה במגרש 2206, בניין 5",
+   "new": "GINDI VOGUE · המבנה במגרש 2206, בניין 5",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2207-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2207, בניין 1",
+   "new": "פרשקובסקי מניבים · המגדל במגרש 2207, בניין 1",
+   "source": "lot2207"
+  },
+  {
+   "id": "lot-merkaz-2207-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 2207, בניין 2",
+   "new": "פרשקובסקי מניבים · המבנה במגרש 2207, בניין 2",
+   "source": "lot2207"
+  },
+  {
+   "id": "lot-merkaz-2207-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2207, בניין 3",
+   "new": "פרשקובסקי מניבים · המבנה במגרש 2207, בניין 3",
+   "source": "lot2207"
+  },
+  {
+   "id": "lot-merkaz-2208-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2208, בניין 1",
+   "new": "אלקטרה מגורים ונהור · המגדל במגרש 2208, בניין 1",
+   "source": "p2208,scenario"
+  },
+  {
+   "id": "lot-merkaz-2208-building-2",
+   "kind": "building",
+   "old": "המגדל במגרש 2208, בניין 2",
+   "new": "אלקטרה מגורים ונהור · המגדל במגרש 2208, בניין 2",
+   "source": "p2208,scenario"
+  },
+  {
+   "id": "lot-merkaz-2208-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2208, בניין 3",
+   "new": "אלקטרה מגורים ונהור · המבנה במגרש 2208, בניין 3",
+   "source": "p2208,scenario"
+  },
+  {
+   "id": "lot-merkaz-2208-building-4",
+   "kind": "building",
+   "old": "מבנה התעסוקה במגרש 2208, בניין 4",
+   "new": "אלקטרה מגורים ונהור · מבנה התעסוקה במגרש 2208, בניין 4",
+   "source": "p2208,scenario"
+  },
+  {
+   "id": "lot-merkaz-2226-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2226",
+   "new": "א.א.י. אבו מגורים ותומר קוקו · המגדל במגרש 2226",
+   "source": "p2103,scenario"
+  },
+  {
+   "id": "lot-merkaz-2227-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2227",
+   "new": "לוזון רונסון · המגדל במגרש 2227",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2255-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2255, בניין 1",
+   "new": "GINDI VOGUE · המגדל במגרש 2255, בניין 1",
+   "source": "dev2255"
+  },
+  {
+   "id": "lot-merkaz-2255-building-2",
+   "kind": "building",
+   "old": "המגדל במגרש 2255, בניין 2",
+   "new": "GINDI VOGUE · המגדל במגרש 2255, בניין 2",
+   "source": "dev2255"
+  },
+  {
+   "id": "lot-merkaz-2255-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2255, בניין 9",
+   "new": "GINDI VOGUE · המבנה במגרש 2255, בניין 9",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2255-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 2255, בניין 8",
+   "new": "GINDI VOGUE · המבנה במגרש 2255, בניין 8",
+   "source": "design26,scenario"
+  },
+  {
+   "id": "lot-merkaz-2270-building-1",
+   "kind": "building",
+   "old": "המגדל במגרש 2270, בניין 1",
+   "new": "FIRST · המגדל במגרש 2270, בניין 1",
+   "source": "dev2270"
+  },
+  {
+   "id": "lot-merkaz-2270-building-2",
+   "kind": "building",
+   "old": "המבנה במגרש 2270, בניין 2",
+   "new": "FIRST · המבנה במגרש 2270, בניין 2",
+   "source": "dev2270"
+  },
+  {
+   "id": "lot-merkaz-2270-building-3",
+   "kind": "building",
+   "old": "המבנה במגרש 2270, בניין 3",
+   "new": "FIRST · המבנה במגרש 2270, בניין 3",
+   "source": "dev2270"
+  },
+  {
+   "id": "lot-merkaz-2270-building-4",
+   "kind": "building",
+   "old": "המבנה במגרש 2270, בניין 4",
+   "new": "FIRST · המבנה במגרש 2270, בניין 4",
+   "source": "dev2270"
+  },
+  {
+   "id": "lot-tzafon-150-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 150",
+   "new": "מגדלי הים התיכון, דיור מוגן · המבנה במגרש 150",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3102-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3102",
+   "new": "תשלוז השקעות והחזקות · המבנה במגרש 3102",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3106-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3106",
+   "new": "לוזון רונסון ושמעון אמיר · המבנה במגרש 3106",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3109-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3109",
+   "new": "יוסי אברהמי · המבנה במגרש 3109",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3201-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3201",
+   "new": "יורו ישראל · המבנה במגרש 3201",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3202-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3202",
+   "new": "א.מ. ישראל מגורים · המבנה במגרש 3202",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3203-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3203",
+   "new": "שיכון ובינוי · המבנה במגרש 3203",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3205-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3205",
+   "new": "אביב מגורים בשדה דב · המבנה במגרש 3205",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3207-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3207",
+   "new": "כלנית נכסים ופיתוח · המבנה במגרש 3207",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3208-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3208",
+   "new": "יוניון ליב · המבנה במגרש 3208",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3209-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3209",
+   "new": "א.מ. ישראל מגורים · המבנה במגרש 3209",
+   "source": "tzafon,scenario"
+  },
+  {
+   "id": "lot-tzafon-3210-building-1",
+   "kind": "building",
+   "old": "המבנה במגרש 3210",
+   "new": "י.ח. דמרי · המבנה במגרש 3210",
+   "source": "tzafon,scenario"
+  }
+ ],
+ "new_translation_keys": {
+  "en": 64,
+  "fr": 64,
+  "ru": 64,
+  "ar": 64
+ },
+ "pages": {
+  "ar-directory.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 5155299,
+   "bytes_after": 5157259
+  },
+  "ar-frame.html": {
+   "names_replaced": 0,
+   "noindex_kept": 1,
+   "bytes_before": 7285,
+   "bytes_after": 7323
+  },
+  "ar-places.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 5154891,
+   "bytes_after": 5156851
+  },
+  "ar.html": {
+   "names_replaced": 100,
+   "noindex_kept": 1,
+   "bytes_before": 5418622,
+   "bytes_after": 5420620
+  },
+  "en-directory.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 4587412,
+   "bytes_after": 4588880
+  },
+  "en-frame.html": {
+   "names_replaced": 0,
+   "noindex_kept": 1,
+   "bytes_before": 6661,
+   "bytes_after": 6699
+  },
+  "en-places.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 4587011,
+   "bytes_after": 4588479
+  },
+  "en.html": {
+   "names_replaced": 100,
+   "noindex_kept": 1,
+   "bytes_before": 4847910,
+   "bytes_after": 4849416
+  },
+  "fr-directory.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 4868245,
+   "bytes_after": 4869733
+  },
+  "fr-frame.html": {
+   "names_replaced": 0,
+   "noindex_kept": 1,
+   "bytes_before": 6865,
+   "bytes_after": 6903
+  },
+  "fr-places.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 4867846,
+   "bytes_after": 4869334
+  },
+  "fr.html": {
+   "names_replaced": 100,
+   "noindex_kept": 1,
+   "bytes_before": 5130679,
+   "bytes_after": 5132205
+  },
+  "he-directory.html": {
+   "names_replaced": 135,
+   "noindex_kept": 0,
+   "bytes_before": 4870848,
+   "bytes_after": 4874067
+  },
+  "he-frame.html": {
+   "names_replaced": 0,
+   "noindex_kept": 1,
+   "bytes_before": 6984,
+   "bytes_after": 7022
+  },
+  "he-places.html": {
+   "names_replaced": 135,
+   "noindex_kept": 0,
+   "bytes_before": 4870539,
+   "bytes_after": 4873758
+  },
+  "he.html": {
+   "names_replaced": 135,
+   "noindex_kept": 1,
+   "bytes_before": 5133290,
+   "bytes_after": 5136547
+  },
+  "ru-directory.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 5879570,
+   "bytes_after": 5881596
+  },
+  "ru-frame.html": {
+   "names_replaced": 0,
+   "noindex_kept": 1,
+   "bytes_before": 7415,
+   "bytes_after": 7453
+  },
+  "ru-places.html": {
+   "names_replaced": 100,
+   "noindex_kept": 0,
+   "bytes_before": 5879144,
+   "bytes_after": 5881170
+  },
+  "ru.html": {
+   "names_replaced": 100,
+   "noindex_kept": 1,
+   "bytes_before": 6147883,
+   "bytes_after": 6149947
+  }
+ },
+ "dropped_unreferenced_transfer": 294,
+ "dropped_bytes": null,
+ "package": {
+  "files": 2135,
+  "bytes": 575872793
+ }
+}

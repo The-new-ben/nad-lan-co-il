@@ -788,10 +788,13 @@ if ( ! function_exists( 'nadlan_hp_band_services' ) ) {
 		$tour  = function_exists( 'nadlan_sdedov_tour_url' ) ? nadlan_sdedov_tour_url() : home_url( '/tour/sde-dov/' );
 		/* ServicesBand v56: the tour is one wide card under the owners' two services, pictured by a frame of the tour itself
 		   (its dusk mode), labelled as an illustration; the text says what the tour has (no apartment picking, no unsourced year) */
-		$pic = '<img src="' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-960.jpg' ) ) . '" srcset="' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-640.jpg' ) ) . ' 640w, ' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-960.jpg' ) ) . ' 960w" sizes="(max-width:760px) 100vw, 55vw" width="960" height="600" alt="" loading="lazy" decoding="async" fetchpriority="low">';
-		$cards .= '<div class="nlhp-svcard nlhp-svcard--tour"><span class="nlhp-svcard__body"><small>סיור וירטואלי</small><h3>רובע שדה דב, לפי התכנית</h3>'
-			. '<p>טיסת דמדומים מעל הרובע וסיור חופשי ברחובותיו, מהים ועד המגדלים של דמרי ימה, ריינבו ואשירה. מכל מגדל עוברים לעמוד הפרויקט.</p>'
-			. '<span class="nlhp-svcard__ctas"><a class="nlhp-btn nlhp-btn--line" href="' . esc_url( $tour ) . '">כניסה לסיור</a></span>'
+		/* 1.72.744 (HAD-801): the picture is a frame of the new tour (Sde Dov 2036) at the Ibn Gabirol and Einstein junction, lazy */
+		$cv  = trailingslashit( $tour ) . 'media/wordpress/covers/junction-signs';
+		$pic = '<picture><source type="image/avif" srcset="' . esc_url( $cv . '-375.avif' ) . ' 375w, ' . esc_url( $cv . '-750.avif' ) . ' 750w, ' . esc_url( $cv . '-960.avif' ) . ' 960w, ' . esc_url( $cv . '-1440.avif' ) . ' 1440w" sizes="(max-width:760px) 100vw, 55vw">'
+			. '<img class="nlqw-drift" src="' . esc_url( $cv . '-wide.webp' ) . '" width="1440" height="800" alt="הרכבת הקלה והמדרכה בצומת אבן גבירול ואיינשטיין, בסיור ברובע שדה דב" loading="lazy" decoding="async" fetchpriority="low"></picture>';
+		$cards .= '<div class="nlhp-svcard nlhp-svcard--tour"><span class="nlhp-svcard__body"><small>סיור וירטואלי</small><h3>שדה דב 2036: הולכים ברובע, לפי התכנית</h3>'
+			. '<p>מצומת אבן גבירול ואיינשטיין ועד הים: הרחובות, הפארקים והמגרשים של הרובע, עם שמות הפרויקטים והיזמים שזכו במכרזים. יותר מ־3,000 מקומות, לכל אחד מקור ותאריך.</p>'
+			. '<span class="nlhp-svcard__ctas"><a class="nlhp-btn nlhp-btn--line" href="' . esc_url( $tour ) . '">כניסה לסיור</a><a class="nlhp-btn nlhp-btn--line" href="' . esc_url( home_url( '/sde-dov/#walk' ) ) . '">רובע שדה דב</a></span>'
 			. '<span class="nlhp-svcard__note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</span></span>'
 			. '<span class="nlhp-svcard__media">' . $pic . '<i class="nlhp-svcard__tag">הדמיה להמחשה</i></span></div>';
 		return '<section class="nlhp-band nlhp-services" aria-labelledby="nlhp-svc-h">' . nadlan_hp_head( 'שירותים באתר', 'לבעלי דירות, לדיירים ולקונים', 'nlhp-svc-h' ) . '<div class="nlhp-svc">' . $cards . '</div></section>';

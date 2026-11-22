@@ -1,0 +1,52 @@
+/* Navy #123750, survey red #a23f45, sea #17617c, paper #f3f7f8. Heebo and Barlow Condensed reflect Tel Aviv street signs and drawn plans. */
+@font-face{font-family:'Nadlan Walk Heebo';src:url('./fonts/heebo.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Nadlan Walk Barlow';src:url('./fonts/walk-year-digits.woff2') format('woff2');font-weight:600;font-display:swap;unicode-range:U+0030-0039}
+.nlq .nlq-name{white-space:nowrap}
+.nlq .nlq-sign h2 bdi{display:inline-block;font-family:'Nadlan Walk Barlow',Arial,sans-serif;font-weight:600;letter-spacing:0}
+.nlq,.nlq-dialog{--nlq-ink:#123750;--nlq-paper:#f3f7f8;color:var(--nlq-ink);font-family:'Nadlan Walk Heebo',Arial,sans-serif;line-height:1.45;background:var(--nlq-paper);box-sizing:border-box}
+.nlq *,.nlq-dialog *{box-sizing:border-box}
+.nlq{display:grid;grid-template-columns:minmax(205px,30%) minmax(0,1fr);grid-template-rows:minmax(300px,auto) auto;max-width:1250px;margin:0 auto;isolation:isolate;overflow:hidden}
+.nlq .nlq-cover{grid-area:1/2/2/3;position:relative;margin:0;background:#b1c2c7;min-width:0}
+.nlq-cover picture,.nlq-cover img{display:block;width:100%;height:100%}
+.nlq-cover img{position:absolute;inset:0;object-fit:cover}
+.nlq .nlq-cover figcaption{position:absolute;inset-inline-start:12px;bottom:10px;color:#123750;background:#fff;padding:3px 8px;max-width:calc(100% - 24px);font:600 .75rem/1.45 'Nadlan Walk Heebo',Arial,sans-serif;margin:0}
+.nlq .nlq-sign{grid-area:1/1/2/2;background:#123750;color:white;display:flex;align-items:flex-start;flex-direction:column;justify-content:center;gap:12px;padding:clamp(20px,3vw,46px);border-block-start:5px solid #a23f45}
+.nlq .nlq-sign h2{color:inherit;font:750 clamp(36px,4.6vw,72px)/1.01 'Nadlan Walk Heebo',Arial,sans-serif;letter-spacing:-.045em;margin:0;text-wrap:balance}
+.nlq .nlq-sign p{text-wrap:balance;color:#e3eff3;font-size:clamp(15px,1.3vw,20px);line-height:1.45;margin:0}
+.nlq a,.nlq-dialog a,.nlq-dialog button{font-family:inherit;text-decoration:none;letter-spacing:normal;cursor:pointer}
+.nlq .nlq-enter{display:inline-flex;align-items:center;gap:14px;background:white;color:#123750;padding:11px 16px;font-weight:750;margin-top:8px;min-height:46px}
+.nlq-enter::after{content:'←' / '';font:700 1.25rem/1 Arial}
+.nlq[dir=ltr] .nlq-enter::after{content:'→' / ''}
+.nlq .nlq-stops{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:0 12px;padding:0 clamp(12px,2vw,30px);align-items:center;border-bottom:1px solid #a2b5be}
+.nlq .nlq-stops a{color:#17617c;padding:10px 5px;min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:.23em;font-weight:600}
+.nlq a:focus-visible,.nlq-dialog :focus-visible{outline:3px solid #123750;outline-offset:-4px;box-shadow:0 0 0 2px #fff}
+.nlq .nlq-enter:hover,.nlq .nlq-enter:active{text-decoration:underline;text-underline-offset:.2em}
+@media(forced-colors:active){.nlq .nlq-enter{outline:1px solid ButtonText}.nlq a:focus-visible,.nlq-dialog :focus-visible{outline:3px solid Highlight;outline-offset:-3px}}
+dialog.nlq-dialog{position:fixed;inset:0;margin:0;border:0;padding:0;max-width:none;max-height:none;width:100%;height:100%;height:100dvh;overscroll-behavior:contain}
+.nlq-dialog[open]{display:flex;flex-direction:column;z-index:2147483646}
+.nlq-dialog::backdrop{background:#123750}
+.nlq-dialog .nlq-bar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:env(safe-area-inset-top) max(10px,env(safe-area-inset-right)) 0 max(10px,env(safe-area-inset-left));background:#123750;color:white}
+.nlq-dialog .nlq-bar button,.nlq-dialog .nlq-bar a{background:none;border:0;color:white;min-height:44px;padding:9px 10px;font-size:14px;font-weight:650}
+.nlq-dialog .nlq-status{z-index:1;background:#f3f7f8;color:#123750;padding:8px 16px;margin:0 auto;width:fit-content;max-width:90%;position:absolute;inset-inline:0;top:45%;text-align:center;pointer-events:none}
+.nlq-dialog iframe{width:100%;min-height:0;flex:1;border:0;background:white}
+@media(max-width:640px){
+ .nlq{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+ .nlq .nlq-cover{grid-area:1/1/2/2;height:clamp(220px,57vw,346px)}
+ .nlq .nlq-cover img{object-position:50% 47%}
+ .nlq .nlq-cover figcaption{inset-inline:auto;left:12px}
+ .nlq .nlq-sign{grid-area:2/1/3/2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;align-items:center;padding:14px 15px;border-block-start-width:3px}
+ .nlq .nlq-sign h2{font-size:clamp(27px,7.4vw,42px)}
+ .nlq .nlq-sign p{font-size:14px}
+ .nlq .nlq-enter{grid-column:2;grid-row:1/3;margin:0;padding:10px;gap:6px}
+ .nlq .nlq-stops{grid-row:3;gap:0 8px}
+ .nlq .nlq-stops a{font-size:14px}
+}
+@media(max-width:340px){.nlq .nlq-sign{display:flex;align-items:flex-start}.nlq .nlq-enter{margin-top:4px}}
+
+.nlq-context .nlq-sign h2{font-size:clamp(27px,3.7vw,52px);overflow-wrap:anywhere;letter-spacing:-.02em}
+.nlq-dialog .nlq-bar{background:#f4f8fa;color:#123750;border-block-end:2px solid #387c94}
+.nlq-dialog .nlq-bar button,.nlq-dialog .nlq-bar a{color:inherit}
+@media(min-width:960px) and (min-height:600px){
+ dialog.nlq-dialog{margin:auto;width:calc(100% - clamp(40px,6vw,112px));height:calc(100% - 64px);height:calc(100dvh - clamp(40px,8dvh,80px));border:1px solid #849eab}
+ .nlq-dialog::backdrop{background:rgba(17,46,64,.62)}
+}
