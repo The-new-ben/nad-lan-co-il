@@ -213,7 +213,7 @@ export function mountClimate(space, store, opts = {}) {
   // the sea to the west of Sde Dov, in place of the generic city on that side (an illustration, like the rest of the view)
   {
     const low = -26, coast = planDir(20, plan.north), toSea = planDir(290, plan.north);
-    const sea = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: 0x2F6E9E, roughness: 0.22, metalness: 0.1, envMapIntensity: 0.9 }));
+    const sea = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshPhysicalMaterial({ color: 0x1B4A66, roughness: 0.12, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 1.2 }));
     sea.rotation.x = -Math.PI / 2; sea.rotation.z = -Math.atan2(coast[1], coast[0]);
     sea.position.set(mid.x + toSea[0] * (55 + 200) , low + 0.06, mid.z + toSea[1] * (55 + 200)); L.outside.add(sea);
     for (const g of L.outside.children) if (g.type === 'Group') for (const b of g.children) { const v = [b.position.x - mid.x, b.position.z - mid.z]; if (v[0] * toSea[0] + v[1] * toSea[1] > 40) b.visible = false; }
@@ -327,8 +327,26 @@ export function mountClimate(space, store, opts = {}) {
     }
   }
 
+  // ---- the sky: three's physical atmosphere (Preetham), the same sun position as the light; it also lights and reflects into
+  //      the room (an environment map rebuilt from it a few times a second at most), so a sunset turns the floor and the sea warm ----
+  let sky = null, envSky = null, envScene = null, pmrem = null, envTex = null, envAt = 0, envTimer = 0;
+  const skyReady = import('three/addons/objects/Sky.js').then(({ Sky }) => {
+    const tune = (k) => { const u = k.material.uniforms; u.turbidity.value = 3.2; u.rayleigh.value = 1.4; u.mieCoefficient.value = 0.004; u.mieDirectionalG.value = 0.86; };
+    sky = new Sky(); sky.scale.setScalar(340); sky.position.copy(mid); tune(sky); L.outside.add(sky);
+    const dome = L.outside.children.find((o) => o.geometry && o.geometry.type === 'SphereGeometry'); if (dome) dome.visible = false;
+    envSky = new Sky(); envSky.scale.setScalar(900); tune(envSky); envScene = new THREE.Scene(); envScene.add(envSky);
+    pmrem = new THREE.PMREMGenerator(L.renderer);
+    applySun();
+  }).catch(() => { /* without it the plain sky dome stays */ });
+  function rebuildEnv() {
+    if (!pmrem) return;
+    const now = performance.now();
+    if (now - envAt < 280) { clearTimeout(envTimer); envTimer = setTimeout(rebuildEnv, 300); return; }
+    envAt = now; const old = envTex; envTex = pmrem.fromScene(envScene, 0, 0.1, 1000).texture; scene.environment = envTex; if (old) old.dispose(); L.touch(true);
+  }
+
   // ---- the sun ----
-  const warm = new THREE.Color(0xFFC890), white = new THREE.Color(0xFFF8EE);
+  const warm = new THREE.Color(0xFFB868), white = new THREE.Color(0xFFE4B8); // the sun's light stays golden inside, as in the board
   // the sun itself in the sky, where it really is (inside the sky dome of radius 180 m, so it is drawn on top of it)
   const disc = new THREE.Mesh(new THREE.SphereGeometry(3.2, 24, 12), new THREE.MeshBasicMaterial({ color: 0xFFE08A, fog: false, depthWrite: false, toneMapped: false }));
   const halo = new THREE.Mesh(new THREE.SphereGeometry(7, 24, 12), new THREE.MeshBasicMaterial({ color: 0xFFD27A, transparent: true, opacity: 0.28, fog: false, depthWrite: false, toneMapped: false }));
@@ -338,12 +356,14 @@ export function mountClimate(space, store, opts = {}) {
     const d = planDir(s.az, plan.north), ca = Math.cos(Math.max(s.alt, 0.5) * rad);
     L.sun.position.set(mid.x + d[0] * ca * 30, Math.sin(Math.max(s.alt, 0.5) * rad) * 30, mid.z + d[1] * ca * 30); L.sun.target.position.copy(mid); L.sun.target.updateMatrixWorld();
     const day = Math.min(1, Math.max(0, (s.alt + 2) / 14));
-    L.sun.intensity = s.alt > 0 ? 4.5 * Math.min(1, s.alt / 10 + 0.15) : 0; // strong sun, low fill: the patch of sun on the floor must read
+    L.sun.intensity = s.alt > 0 ? 8 * Math.min(1, s.alt / 10 + 0.15) : 0; // strong sun, low fill: the patch of sun on the floor must read
     L.sun.color.copy(warm).lerp(white, Math.min(1, Math.max(0, s.alt / 25)));
     { const dd = planDir(s.az, plan.north), c = Math.cos(s.alt * rad), R0 = 150; disc.position.set(mid.x + dd[0] * c * R0, Math.sin(s.alt * rad) * R0 + 1.6, mid.z + dd[1] * c * R0); halo.position.copy(disc.position);
       disc.visible = halo.visible = s.alt > -0.8 && st.mode === 'sun'; disc.material.color.copy(warm).lerp(new THREE.Color(0xFFF6D8), Math.min(1, Math.max(0, s.alt / 20))); }
-    L.hemi.intensity = 0.16 + day * 0.36;
-    scene.environmentIntensity = 0.07 + 0.15 * day;
+    L.hemi.intensity = 0.3 + day * 0.28;
+    scene.environmentIntensity = sky ? 0.16 + 0.34 * day : 0.07 + 0.15 * day;
+    if (sky) { const v = new THREE.Vector3(d[0] * Math.cos(s.alt * rad), Math.sin(s.alt * rad), d[1] * Math.cos(s.alt * rad));
+      sky.material.uniforms.sunPosition.value.copy(v); envSky.material.uniforms.sunPosition.value.copy(v); L.renderer.toneMappingExposure = 1.0; rebuildEnv(); }
     const dome = L.outside.children.find((o) => o.geometry && o.geometry.type === 'SphereGeometry');
     if (dome) { const k = 0.18 + 0.82 * day; dome.material.color.setRGB(k * (0.85 + 0.15 * day), k * (0.9 + 0.1 * day), k); }
     L.touch(true);
@@ -368,7 +388,7 @@ export function mountClimate(space, store, opts = {}) {
   raf = requestAnimationFrame(loop);
   const dayCache = new Map();
   const api = {
-    plan, st, SOURCES, WIND, STORM, MARKS,
+    plan, st, SOURCES, WIND, STORM, MARKS, skyReady,
     setDate(y, m, d) { st.y = y; st.m = m; st.d = d; if (st.mode === 'sun') applySun(); },
     setMinute(min) { st.minute = min; if (st.mode === 'sun') applySun(); },
     setMode, setWind(k) { st.wind = k; if (st.mode === 'wind') buildWind(); }, setStorm(v) { st.storm = v; if (st.mode === 'rain') paintPanes(); },

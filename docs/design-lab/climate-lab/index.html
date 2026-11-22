@@ -7,110 +7,122 @@
 <!-- HAD-803 climate lab. Ben approved the upload on 22.11.2026: live as a static folder at /tour/climate/ (noindex, linked from
      nowhere on the site). Locally: serve the repo root (python -m http.server 47961 --bind 127.0.0.1), open /docs/design-lab/climate-lab/ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
 <style>
-/* Palette from a synoptic weather chart laid on an architect's sheet: sheet #F2F5F7, ink #0F2233, cobalt #1F5FA8 for controls,
-   sun #FFC400 (the weather-map sun symbol, outlined in ink), air in #0B7285, air out #66C2D0, rain #3B4CC0.
-   Faces: IBM Plex Sans Hebrew, IBM Plex Mono for every number. Square corners, 2 px rules, no shadows, no gradients. */
-:root{--sheet:#F2F5F7;--ink:#0F2233;--ink2:#41566A;--rule:#C9D4DD;--cob:#1F5FA8;--sun:#FFC400;--sunl:#FFF0A6;--ain:#0B7285;--aout:#66C2D0;--rain:#3B4CC0;--red:#B5302A}
+/* Design: the Claude Design board "מעבדת שמש, רוח וגשם" (claude.ai/artifact/1EpEJT1UsEsryUFH27buzh), in the NadLan design system:
+   ground sa-paper #f7f6f2, surface #fff, hairline sa-line #e3e1da, ink #14212b / #3b4753, the one action colour sa-sea #2f6f86,
+   sa-deep #1f4b5c behind the stage; Assistant for all text, tabular figures. Data colours from a synoptic weather chart: sun #FFC400
+   outlined in ink, air in #0B7285, air out #66C2D0, rain #3B4CC0. Pills for every button and chip, 16px cards, no gradients. */
+:root{--sheet:#f7f6f2;--surf:#fff;--ink:#14212b;--ink2:#3b4753;--rule:#e3e1da;--cob:#2f6f86;--cobh:#255c70;--deep:#1f4b5c;--sun:#FFC400;--ain:#0B7285;--aout:#66C2D0;--rain:#3B4CC0;--red:#B5302A}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--sheet);color:var(--ink);font:15px/1.45 "IBM Plex Sans Hebrew",system-ui,sans-serif}
-.num,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-feature-settings:"tnum"}
-header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:2px solid var(--ink);background:#fff}
-header h1{margin:0;font-size:19px;font-weight:700;letter-spacing:-.2px}
-header .apt{color:var(--ink2);font-size:14px}
-header .lab{margin-inline-start:auto;border:2px solid var(--red);color:var(--red);font-weight:600;font-size:12.5px;padding:2px 8px}
-main{display:grid;grid-template-columns:1fr 410px;height:calc(100vh - 52px)}
-#stage{position:relative;min-height:0;background:#DCE8F1;overflow:hidden}
+html,body{margin:0;background:var(--sheet);color:var(--ink);font:16px/1.45 Assistant,"Segoe UI",Arial,sans-serif}
+.num,.mono{font-variant-numeric:tabular-nums lining-nums}
+header{display:flex;align-items:center;gap:18px;padding:10px 24px;min-height:72px;border-bottom:1px solid var(--rule);background:var(--surf);flex-wrap:wrap}
+header .ttl{display:flex;flex-direction:column;gap:1px}
+header h1{margin:0;font-size:24px;line-height:28px;font-weight:800;letter-spacing:-.005em}
+header .apt{color:var(--ink2);font-size:15px}
+header .lab{border:1px solid var(--rule);color:var(--ink2);font-weight:600;font-size:13px;padding:3px 10px;border-radius:999px}
+main{display:grid;grid-template-columns:1fr 420px;height:calc(100vh - 72px)}
+#stage{position:relative;min-height:0;background:var(--deep);overflow:hidden}
 #space{position:absolute;inset:0}
 #space canvas{display:block;width:100%!important;height:100%!important}
-aside{border-inline-end:0;border-inline-start:2px solid var(--ink);background:var(--sheet);overflow:auto;padding:14px 16px 24px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink)}
-.tabs button{all:unset;cursor:pointer;text-align:center;padding:10px 0;font-weight:600;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px}
-.tabs button+button{border-inline-start:2px solid var(--ink)}
-.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
-.tabs svg{width:22px;height:22px}
-h2{font-size:15px;margin:18px 0 6px;font-weight:700}
+aside{border-inline-start:1px solid var(--rule);background:var(--surf);overflow:auto;padding:20px 22px 28px}
+.tabs{display:flex;gap:8px;margin-inline-start:auto}
+.tabs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;padding:5px 16px 5px 6px;border-radius:999px;font-size:16px;font-weight:700;background:var(--surf);color:var(--ink);border:1px solid var(--rule)}
+.tabs button[aria-pressed=true]{background:var(--cob);border-color:var(--cob);color:#fff}
+.tabs button:focus-visible,.chip:focus-visible,.btn:focus-visible,.card:focus-visible{outline:2px solid var(--cob);outline-offset:2px}
+.tabs img{width:30px;height:30px;border-radius:999px;object-fit:cover;background:#cfe3ea;display:block}
+h2{font-size:17px;margin:20px 0 8px;font-weight:800}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{all:unset;cursor:pointer;border:2px solid var(--ink);padding:5px 9px;font-size:13.5px;font-weight:500;background:#fff}
+.chip{all:unset;cursor:pointer;border:1px solid var(--rule);padding:5px 12px;font-size:14px;font-weight:600;background:var(--surf);border-radius:999px}
 .chip[aria-pressed=true]{background:var(--cob);border-color:var(--cob);color:#fff}
-.btn{all:unset;cursor:pointer;border:2px solid var(--cob);color:var(--cob);background:#fff;padding:6px 12px;font-weight:600;font-size:14px}
-.btn.solid{background:var(--cob);color:#fff}
+.btn{all:unset;cursor:pointer;border:1px solid var(--cob);color:var(--cob);background:var(--surf);padding:7px 16px;font-weight:700;font-size:15px;border-radius:999px}
+.btn.solid{background:var(--cob);color:#fff}.btn.solid:hover{background:var(--cobh)}
 input[type=range]{width:100%;accent-color:var(--cob);margin:6px 0 0}
-.scale{position:relative;height:30px;font-size:11.5px;color:var(--ink2)}
+.scale{position:relative;height:30px;font-size:12px;color:var(--ink2)}
 .scale span{position:absolute;top:0;transform:translateX(50%);white-space:nowrap;text-align:center;line-height:1.15}
-.scale span::before{content:"";display:block;width:2px;height:7px;background:var(--ink);margin:0 auto 2px}
-.big{font-size:22px;font-weight:600}
-.note{border-inline-start:4px solid var(--ain);background:#fff;padding:8px 10px;font-size:13.5px;margin:10px 0}
-.note.rain{border-color:var(--rain)} .note.sun{border-color:var(--sun)}
-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
-th,td{text-align:start;padding:5px 4px;border-bottom:1px solid var(--rule);vertical-align:top}
-th{font-weight:600;color:var(--ink2);font-size:12.5px}
+.scale span::before{content:"";display:block;width:1px;height:7px;background:var(--ink2);margin:0 auto 2px}
+.big{font-size:22px;font-weight:700}
+.note{border:1px solid var(--rule);background:var(--surf);border-radius:16px;padding:10px 12px;font-size:15px;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px}
+th,td{text-align:start;padding:6px 4px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink2);font-size:13px}
 td.num{white-space:nowrap}
-.bar{height:8px;background:#DDE5EC;margin-top:3px}.bar i{display:block;height:100%;background:var(--sun);outline:1px solid var(--ink)}
-.list{margin:4px 0;padding:0;list-style:none;font-size:14px}
-.list li{padding:5px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;align-items:baseline}
-.sw{display:inline-block;width:14px;height:14px;border:2px solid var(--ink);flex:none;transform:translateY(2px)}
-#plan{width:100%;height:auto;background:#fff;border:2px solid var(--ink);display:block;margin-top:6px;touch-action:manipulation}
-#plan .room{stroke:var(--ink);stroke-width:2;cursor:pointer}
-#plan text,#planW text{font-weight:600;font-family:"IBM Plex Sans Hebrew";fill:var(--ink);pointer-events:none}
-.src{font-size:12px;color:var(--ink2);margin-top:20px;border-top:2px solid var(--ink);padding-top:8px}
+.bar{height:6px;background:#eee9dd;margin-top:4px;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:var(--sun)}
+.list{margin:4px 0;padding:0;list-style:none;font-size:15px}
+.list li{padding:6px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;align-items:baseline}
+.sw{display:inline-block;width:14px;height:14px;border-radius:999px;border:2px solid var(--ink);flex:none;transform:translateY(2px)}
+#plan,#planW{width:100%;height:auto;background:var(--surf);border:1px solid var(--rule);border-radius:16px;display:block;margin-top:6px;touch-action:manipulation}
+#plan .room,#planW .room{stroke:var(--ink);stroke-width:2;cursor:pointer}
+#plan text,#planW text{font-weight:700;font-family:Assistant,sans-serif;fill:var(--ink);pointer-events:none}
+.src{font-size:13px;color:var(--ink2);margin-top:22px;border-top:1px solid var(--rule);padding-top:10px}
 .src a{color:var(--cob)} .src li{margin:3px 0}
+/* the short answers: a picture of the apartment behind each answer, taken from the 3D scene itself */
+#ans h2{margin-top:0;font-size:19px}
+#cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+.card{all:unset;cursor:pointer;display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+.card:hover{border-color:var(--cob)}
+.card[aria-pressed=true]{border-color:var(--cob);box-shadow:0 0 0 2px var(--cob) inset}
+.card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#cfe3ea}
+.card b{display:block;font-size:15px;padding:9px 11px 0;line-height:1.25}
+.card span{display:block;font-size:14px;padding:3px 11px 11px;color:var(--ink2);line-height:1.35}
+.card span em{font-style:normal;color:var(--ink);font-weight:700}
+.ctl{margin-top:18px;padding-top:4px;border-top:1px solid var(--rule)}
 /* over the stage */
-#ring{position:absolute;top:12px;inset-inline-end:12px;width:132px;height:132px;pointer-events:none}
-#hud{position:absolute;inset-inline:12px;bottom:12px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;pointer-events:none}
-#hud .pill{background:#fff;border:2px solid var(--ink);padding:6px 10px;font-size:14.5px;pointer-events:auto}
-#hud .pill b{font-weight:600}
-#hud .warn{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
-#views{position:absolute;top:12px;inset-inline-start:12px;display:flex;gap:0;border:2px solid var(--ink);background:#fff}
-#views button{all:unset;cursor:pointer;padding:7px 11px;font-weight:600;font-size:14px}
-#views button+button{border-inline-start:2px solid var(--ink)}
-#views button[aria-pressed=true]{background:var(--ink);color:#fff}
-#illus{position:absolute;top:58px;inset-inline-start:12px;font-size:12px;background:rgba(242,245,247,.9);padding:2px 6px;max-width:60%}
-/* the short answers: one picture of the apartment behind each answer, taken from the 3D scene itself */
-#ans h2{margin-top:0}
-#cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.card{all:unset;cursor:pointer;display:block;background:#fff;border:2px solid var(--ink)}
-.card[aria-pressed=true]{outline:4px solid var(--cob);outline-offset:-2px}
-.card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#DCE8F1;border-bottom:2px solid var(--ink)}
-.card b{display:block;font-size:13.5px;padding:6px 8px 0;line-height:1.25}
-.card span{display:block;font-size:13px;padding:2px 8px 8px;color:var(--ink2);line-height:1.35}
-.card span em{font-style:normal;color:var(--ink);font-weight:600}
-@media (max-width:899px){#cards{grid-template-columns:1fr 1fr}}
+#ring{position:absolute;top:16px;inset-inline-end:16px;width:116px;height:116px;pointer-events:none}
+#hud{position:absolute;inset-inline:16px;top:16px;display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;pointer-events:none;padding-inline-end:130px}
+#hud .pill{background:var(--surf);padding:7px 14px;font-size:15px;border-radius:999px;pointer-events:auto}
+#hud .pill b{font-weight:700}
+#hud .warn{background:var(--ink);color:#fff;font-weight:700}
+#views{position:absolute;bottom:16px;inset-inline-end:16px;display:flex;gap:6px}
+#views button{all:unset;cursor:pointer;padding:7px 14px;font-weight:700;font-size:14px;background:var(--surf);border-radius:999px;border:1px solid var(--rule)}
+#views button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+#illus{position:absolute;bottom:16px;inset-inline-start:16px;font-size:12.5px;background:rgba(20,33,43,.72);color:#fff;padding:3px 9px;border-radius:6px;max-width:60%}
+#ribbon{position:absolute;inset-inline-start:16px;bottom:58px;width:min(520px,calc(100% - 32px));background:rgba(255,255,255,.94);border-radius:16px;padding:8px 14px 2px;pointer-events:none}
+#ribbon .top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+#ribbon .top b{font-size:16px}
+#ribbon .top span{font-size:14px;color:var(--ink2)}
+#ribbon svg{display:block;width:100%;height:58px;direction:ltr}
 [hidden]{display:none!important}
 @media (max-width:899px){
   main{display:block;height:auto}
-  #stage{height:56vh;min-height:330px}
-  aside{border-inline-start:0;border-top:2px solid var(--ink)}
-  #ring{width:96px;height:96px}
-  header h1{font-size:16px} header .apt{display:none}
-  #hud .pill{font-size:13px}
+  #stage{height:58vh;min-height:360px}
+  aside{border-inline-start:0;border-top:1px solid var(--rule);padding:16px}
+  #ring{width:72px;height:72px;top:12px;inset-inline-end:12px}
+  #hud{inset-inline:12px;top:12px;padding-inline-end:84px}
+  #hud .pill{font-size:13px;padding:5px 10px}
+  header{padding:10px 16px;gap:10px}
+  header h1{font-size:20px;line-height:24px} header .apt{font-size:14px}
+  .tabs{width:100%;margin:0}.tabs button{flex:1;justify-content:center;padding:6px 8px}
+  #ribbon{inset-inline-start:12px;width:calc(100% - 24px);bottom:52px;padding:6px 10px 2px}#ribbon svg{height:46px}#ribbon .top b{font-size:15px}#ribbon .top span{font-size:13px}
+  #views{bottom:12px;inset-inline-end:12px}#illus{bottom:14px;inset-inline-start:12px}
+  #cards{gap:10px}
 }
 </style>
 </head>
 <body>
 <header>
-  <h1>שמש, רוח וגשם בתוך הדירה</h1>
-  <span class="apt">אשירה, שדה דב · דגם E-4A, לפי תוכנית המכר שפורסמה</span>
+  <div class="ttl"><h1>שמש, רוח וגשם בתוך הדירה</h1><span class="apt">אשירה, שדה דב · דגם E-4A · 4 חדרים, לפי תוכנית המכר שפורסמה</span></div>
+  <div class="tabs" role="group" aria-label="מה רואים">
+    <button data-m="sun" aria-pressed="true"><img alt="">שמש</button>
+    <button data-m="wind" aria-pressed="false"><img alt="">רוח</button>
+    <button data-m="rain" aria-pressed="false"><img alt="">גשם</button>
+  </div>
   <span class="lab">מעבדה פנימית</span>
 </header>
 <main>
   <section id="stage">
     <div id="space"></div>
     <div id="views"><button data-v="walk" aria-pressed="true">עמידה בדירה</button><button data-v="doll" aria-pressed="false">מבט מלמעלה</button></div>
-    <div id="illus">הנוף, הים והעיר בחלון: המחשה. צל של בניינים שכנים: לא במודל.</div>
+    <div id="illus">הדמיה להמחשה: הים והעיר בחלון. בניינים שכנים אינם במודל.</div>
+    <div id="ribbon" aria-live="polite"></div>
     <svg id="ring" viewBox="-70 -70 140 140" aria-hidden="true"></svg>
     <div id="hud"></div>
   </section>
   <aside>
     <section id="ans"><h2>תשובות קצרות על הדירה הזו</h2><div id="cards"></div></section>
-    <div class="tabs" role="group" aria-label="מה רואים">
-      <button data-m="sun" aria-pressed="true"><svg viewBox="-12 -12 24 24"><circle r="5.5" fill="#FFC400" stroke="#0F2233" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><path d="M0-11v3M0 8v3M-11 0h3M8 0h3M-7.8-7.8l2 2M5.8 5.8l2 2M-7.8 7.8l2-2M5.8-5.8l2-2"/></g></svg>שמש</button>
-      <button data-m="wind" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12a3 3 0 1 0-3-3M2 13h17a3 3 0 1 1-3 3M2 18h8"/></svg>רוח</button>
-      <button data-m="rain" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 14a5 5 0 1 1 3-9 6 6 0 0 1 11 4 4 4 0 0 1-2 5z"/><path d="M8 17l-2 4M13 17l-2 4M18 17l-2 4" stroke="#3B4CC0"/></svg>גשם</button>
-    </div>
 
     <div id="p-sun">
       <h2>יום בשנה</h2>
@@ -164,7 +176,7 @@ import { mountClimate, compassHe, MARKS, WIND, SOURCES, planDir, ilToUtc, solar,
 import { roomSpot, bestYaw } from './designer/walknav.js';
 const q = new URLSearchParams(location.search), FILM = q.has('film');
 const apt = await (await fetch('./designer/plans/ashira/E-4A.json.js')).json();
-const d0 = emptyDesign(apt); d0.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku]).map((i) => ({ ...i }));
+const d0 = emptyDesign(apt); d0.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku] && i.sku !== 'gen.plant') /* the drawn plant is a blob: left out of the lab */.map((i) => ({ ...i }));
 const store = createStore(apt, d0);
 const { mountSpace } = await import('./designer/space.js');
 const space = mountSpace(document.getElementById('space'), store, catalog, { select() {}, camera() {}, walk() {}, rise: false });
@@ -219,11 +231,11 @@ function drawPlan(svg, fillOf, winOf) {
   for (const e of plan.env) { const c = winOf(e); if (c) s += `<line x1="${e.a[0] + e.n[0] * 14}" y1="${e.a[1] + e.n[1] * 14}" x2="${e.b[0] + e.n[0] * 14}" y2="${e.b[1] + e.n[1] * 14}" stroke="${c}" stroke-width="22"/>`; }
   for (const r of plan.rooms) { if (r.net < 4) continue; let cx = 0, cy = 0; for (const p of r.pts) { cx += p[0]; cy += p[1]; } cx /= r.pts.length || 1; cy /= r.pts.length || 1; s += `<text x="${cx}" y="${cy}" text-anchor="middle" font-size="52">${esc(roomName(r).replace('חדר דיור ופינת אוכל', 'סלון'))}</text>`; }
   // you are here, and where you look
-  if (space.mode === 'walk') { const w = space.lab.walk, a = w.yaw, L = 230; s += `<path d="M${w.x},${w.y} L${w.x + Math.cos(a - 0.45) * L},${w.y + Math.sin(a - 0.45) * L} L${w.x + Math.cos(a + 0.45) * L},${w.y + Math.sin(a + 0.45) * L}Z" fill="#1F5FA8" opacity=".22"/><circle cx="${w.x}" cy="${w.y}" r="26" fill="#1F5FA8" stroke="#fff" stroke-width="7"/>`; }
+  if (space.mode === 'walk') { const w = space.lab.walk, a = w.yaw, L = 230; s += `<path d="M${w.x},${w.y} L${w.x + Math.cos(a - 0.45) * L},${w.y + Math.sin(a - 0.45) * L} L${w.x + Math.cos(a + 0.45) * L},${w.y + Math.sin(a + 0.45) * L}Z" fill="#2f6f86" opacity=".22"/><circle cx="${w.x}" cy="${w.y}" r="26" fill="#2f6f86" stroke="#fff" stroke-width="7"/>`; }
   // north arrow
   const nd = planDir(0, plan.north), nx = bb.x0 + bb.w - 110, ny = bb.y0 + 130;
-  s += `<g><line x1="${nx - nd[0] * 70}" y1="${ny - nd[1] * 70}" x2="${nx + nd[0] * 70}" y2="${ny + nd[1] * 70}" stroke="#0F2233" stroke-width="10" marker-end="url(#ah)"/><text x="${nx + nd[0] * 110}" y="${ny + nd[1] * 110 + 18}" text-anchor="middle" font-size="56">צ</text></g>`;
-  return `<defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="#0F2233"/></marker></defs>` + s;
+  s += `<g><line x1="${nx - nd[0] * 70}" y1="${ny - nd[1] * 70}" x2="${nx + nd[0] * 70}" y2="${ny + nd[1] * 70}" stroke="#14212b" stroke-width="10" marker-end="url(#ah)"/><text x="${nx + nd[0] * 110}" y="${ny + nd[1] * 110 + 18}" text-anchor="middle" font-size="56">צ</text></g>`;
+  return `<defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="#14212b"/></marker></defs>` + s;
 }
 const sunFill = (min) => { if (!min) return '#E6ECF1'; const f = Math.min(1, min / 360); const a = [255, 240, 166], b = [255, 196, 0]; return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`; };
 
@@ -235,7 +247,7 @@ function paint(light) {
   if (st.mode === 'sun') {
     const day = C.day(Y, st.m, st.d), now = C.now();
     $('sunL').innerHTML = sun.alt > 0 ? `השמש בגובה <b class="num">${Math.round(sun.alt)}°</b> מעל האופק, ב<b>${compassHe(sun.az)}</b> (<span class="num">${Math.round(sun.az)}°</span>).` : 'השמש מתחת לאופק.';
-    $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(day[r.id].minutes) : '#F7F9FA'), (e) => '#0F2233');
+    $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(day[r.id].minutes) : '#F7F9FA'), (e) => '#14212b');
     $('rooms').innerHTML = plan.rooms.filter((r) => r.net >= 2).map((r) => { const o = day[r.id], n = now[r.id]; return `<tr><td>${esc(roomName(r))}</td><td class="num">${hrs(o.minutes)} ש׳${o.minutes ? `<div style="color:var(--ink2);font-size:12px">${hhmm(o.first)} עד ${hhmm(o.last + 10)}</div>` : ''}<div class="bar"><i style="width:${Math.min(100, (o.minutes / 600) * 100)}%"></i></div></td><td class="num">${n.share > 0.005 ? Math.round(n.share * 100) + '% מהרצפה' + (n.deep ? `<div style="font-size:12px;color:var(--ink2)">עד ${(n.deep / 100).toFixed(1)} מ׳ מהחלון</div>` : '') : '-'}</td></tr>`; }).join('');
     if (!light || performance.now() - lastHeavy > 1500) { lastHeavy = performance.now(); season(); }
   }
@@ -246,7 +258,7 @@ function paint(light) {
     const li = (e, c, t) => `<li><span class="sw" style="background:${c}"></span><span>${esc(t)}: ${esc(openName(e))}</span></li>`;
     $('ventL').innerHTML = v.inlets.map((e) => li(e, 'var(--ain)', 'נכנסת')).join('') + v.outlets.map((e) => li(e, 'var(--aout)', 'יוצאת')).join('') +
       `<li><b>${v.cross ? 'אוורור צולב: יש. הרוח נכנסת מצד אחד של הדירה ויוצאת מהצד השני.' : 'אוורור צולב: אין בכיוון הזה. הרוח נכנסת ויוצאת מאותו צד.'}</b></li>`;
-    $('planW').innerHTML = drawPlan($('planW'), (f, r) => (r ? '#F2F5F7' : '#E3EAF0'), (e) => (v.inlets.includes(e) ? '#0B7285' : v.outlets.includes(e) ? '#66C2D0' : '#0F2233'));
+    $('planW').innerHTML = drawPlan($('planW'), (f, r) => (r ? '#F2F5F7' : '#E3EAF0'), (e) => (v.inlets.includes(e) ? '#0B7285' : v.outlets.includes(e) ? '#66C2D0' : '#14212b'));
   }
   if (st.mode === 'rain') {
     const from = C.stormFrom(), rw = C.rainWindows();
@@ -273,21 +285,43 @@ function hud() {
   if (st.mode === 'sun') h = `<span class="pill"><b class="num">${st.d}.${st.m} · ${hhmm(st.minute)}</b> · ${sun.alt > 0 ? `השמש <span class="num">${Math.round(sun.alt)}°</span> ב${compassHe(sun.az)}` : 'לילה'}</span>`;
   if (st.mode === 'wind') h = `<span class="pill warn">המחשה של כיוון הרוח השכיח, לא חישוב הנדסי</span><span class="pill">${esc(WIND[st.wind].he)} · רוח מ${compassHe(WIND[st.wind].from[0])} עד ${compassHe(WIND[st.wind].from[1])}</span>`;
   if (st.mode === 'rain') h = `<span class="pill warn">המחשה של כיוון הגשם בסערה, לא חישוב הנדסי</span><span class="pill">רוח מ${compassHe(C.stormFrom())} · ${C.rainWindows().length} חלונות בגשם</span>`;
-  $('hud').innerHTML = h;
+  $('hud').innerHTML = h; try { ribbon(); } catch (e) { /* before the answers exist */ }
 }
 // the compass ring: turns with the view, so the sun, the wind and the rain sit where they really are around you
 function ring() {
   const hd = C.heading(), st = C.st, sun = C.sun(), pos = (a, r) => { const t = ((a - hd) * Math.PI) / 180; return [Math.sin(t) * r, -Math.cos(t) * r]; };
-  let s = `<circle r="62" fill="rgba(255,255,255,.92)" stroke="#0F2233" stroke-width="3"/>`;
-  for (let a = 0; a < 360; a += 30) { const [x1, y1] = pos(a, 62), [x2, y2] = pos(a, a % 90 ? 56 : 50); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#0F2233" stroke-width="${a % 90 ? 1.5 : 3}"/>`; }
-  for (const [a, t] of [[0, 'צ'], [90, 'מז'], [180, 'ד'], [270, 'מע']]) { const [x, y] = pos(a, 40); s += `<text x="${x}" y="${y + 5}" text-anchor="middle" font-family="IBM Plex Sans Hebrew" font-weight="700" font-size="${a ? 12 : 15}" fill="${a ? '#0F2233' : '#B5302A'}">${t}</text>`; }
-  s += `<path d="M0,-22 L9,6 L0,1 L-9,6Z" fill="#1F5FA8"/>`; // you, looking up the ring
-  if (st.mode === 'sun' && sun.alt > 0) { const [x, y] = pos(sun.az, 62); s += `<circle cx="${x}" cy="${y}" r="10" fill="#FFC400" stroke="#0F2233" stroke-width="2.5"/>`; }
+  let s = `<circle r="62" fill="rgba(255,255,255,.92)" stroke="#14212b" stroke-width="3"/>`;
+  for (let a = 0; a < 360; a += 30) { const [x1, y1] = pos(a, 62), [x2, y2] = pos(a, a % 90 ? 56 : 50); s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#14212b" stroke-width="${a % 90 ? 1.5 : 3}"/>`; }
+  for (const [a, t] of [[0, 'צ'], [90, 'מז'], [180, 'ד'], [270, 'מע']]) { const [x, y] = pos(a, 40); s += `<text x="${x}" y="${y + 5}" text-anchor="middle" font-family="IBM Plex Sans Hebrew" font-weight="700" font-size="${a ? 12 : 15}" fill="${a ? '#14212b' : '#B5302A'}">${t}</text>`; }
+  s += `<path d="M0,-22 L9,6 L0,1 L-9,6Z" fill="#2f6f86"/>`; // you, looking up the ring
+  if (st.mode === 'sun' && sun.alt > 0) { const [x, y] = pos(sun.az, 62); s += `<circle cx="${x}" cy="${y}" r="10" fill="#FFC400" stroke="#14212b" stroke-width="2.5"/>`; }
   const arrow = (from, col) => { const [x1, y1] = pos(from, 66), [x2, y2] = pos(from, 26); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="6"/><circle cx="${x2}" cy="${y2}" r="6" fill="${col}"/>`; };
   if (st.mode === 'wind') { const w = WIND[st.wind]; s += arrow(w.from[0], '#0B7285') + arrow(w.from[1], '#0B7285'); }
   if (st.mode === 'rain') s += arrow(C.stormFrom(), '#3B4CC0');
   $('ring').innerHTML = s;
-  if (space.mode === 'walk' && !FILM && performance.now() - (ring.t || 0) > 300) { ring.t = performance.now(); if (C.st.mode === 'sun') $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(C.day(Y, C.st.m, C.st.d)[r.id].minutes) : '#F7F9FA'), () => '#0F2233'); }
+  if (space.mode === 'walk' && !FILM && performance.now() - (ring.t || 0) > 300) { ring.t = performance.now(); if (C.st.mode === 'sun') $('plan').innerHTML = drawPlan($('plan'), (f, r) => (r ? sunFill(C.day(Y, C.st.m, C.st.d)[r.id].minutes) : '#F7F9FA'), () => '#14212b'); }
+}
+
+
+// ---- the day ribbon on the stage (board: the sun's real altitude through the chosen day, the hours it is inside the room you stand in) ----
+const rsCache = new Map();
+function riseSet(m, d) { const k = m + '-' + d; if (rsCache.has(k)) return rsCache.get(k); let rise = null, set = null, top = 0, noon = 720;
+  for (let t = 240; t <= 1290; t += 2) { const a = solar(ilToUtc(Y, m, d, t)).alt; if (rise == null && a > -0.83) rise = t; if (rise != null && set == null && t > 720 && a < -0.83) set = t; if (a > top) { top = a; noon = t; } }
+  const v = { rise, set, top, noon }; rsCache.set(k, v); return v; }
+function ribbon() {
+  const el = $('ribbon'); if (C.st.mode !== 'sun') { el.hidden = true; return; } el.hidden = false;
+  const st = C.st, r = riseSet(st.m, st.d), W = 940, x = (t) => 920 - ((t - r.rise) / (r.set - r.rise)) * 900, y = (a) => 74 - (Math.max(0, a) / Math.max(1, r.top)) * 62;
+  const w = space.lab.walk, here = (space.mode === 'walk' && store.roomAt) ? store.roomAt(w.x, w.y) : null;
+  const room = plan.rooms.find((q) => q.id === here && q.wins.length) || living, dd = C.day(Y, st.m, st.d)[room.id];
+  let line = '', seg = '';
+  for (let t = r.rise; t <= r.set; t += 10) { const a = solar(ilToUtc(Y, st.m, st.d, t)).alt, pt = x(t).toFixed(1) + ',' + y(a).toFixed(1); line += (line ? ' L' : 'M') + pt; if (dd.minutes && t >= dd.first && t <= dd.last + 10) seg += (seg ? ' L' : 'M') + pt; }
+  const now = Math.min(Math.max(st.minute, r.rise), r.set), sa = C.sun().alt;
+  el.innerHTML = `<div class="top"><b>${st.d} ב${MONTHS[st.m - 1]}</b><span>${dd.minutes ? `השמש ב${esc(short(room))} <span class="num">${hhmm(dd.first)}</span> עד <span class="num">${hhmm(dd.last + 10)}</span>` : `אין שמש ישירה ב${esc(short(room))} ביום הזה`}</span></div>` +
+    `<svg viewBox="0 0 ${W} 96" role="img" aria-label="מסלול השמש ביום שנבחר"><line x1="10" y1="76" x2="930" y2="76" stroke="#e3e1da" stroke-width="2"/>` +
+    `<path d="${line}" stroke="#e3e1da" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + (seg ? `<path d="${seg}" stroke="#FFC400" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` : '') +
+    (sa > -0.83 ? `<circle cx="${x(now).toFixed(1)}" cy="${y(sa).toFixed(1)}" r="14" fill="#FFC400" stroke="#14212b" stroke-width="4"/>` : '') +
+    `<text x="928" y="94" font-size="27" text-anchor="end" fill="#3b4753">זריחה ${hhmm(r.rise)}</text><text x="12" y="94" font-size="27" fill="#3b4753">${hhmm(r.set)} שקיעה</text>` +
+    `<text x="${x(r.noon).toFixed(1)}" y="${(y(r.top) - 2).toFixed(1)}" font-size="25" text-anchor="middle" fill="#3b4753">${hhmm(r.noon)} · ${Math.round(r.top)}°</text></svg>`;
 }
 
 // ---- the short answers: each one is a question a buyer asks, a one-line answer, and the picture of the apartment behind it ----
@@ -313,14 +347,14 @@ const SS = sunsetYear(plan, Y), ssSeen = SS.filter((x) => x.rooms.length);
 const ssBest = ssSeen.find((x) => x.m === 6 && x.rooms.includes(living)) || ssSeen.find((x) => x.rooms.includes(living)) || ssSeen[0];
 const facing = (() => { const m = new Map(); for (const e of plan.env) m.set(compassHe(e.bearing), (m.get(compassHe(e.bearing)) || 0) + e.width); return [...m].sort((a, b) => b[1] - a[1]).map((x) => x[0]); })();
 const dW = C.day(Y, 12, 21)[living.id], dS = C.day(Y, 6, 21)[living.id];
-let deepW = 0, deepT = 12 * 60; if (dW.minutes) for (let t = dW.first; t <= dW.last; t += 20) { const n = sunNow(plan, solar(ilToUtc(Y, 12, 21, t)))[living.id]; if (n.deep > deepW) { deepW = n.deep; deepT = t; } }
+let deepW = 0, deepT = 12 * 60, shareW = 0; if (dW.minutes) for (let t = dW.first; t <= dW.last; t += 20) { const n = sunNow(plan, solar(ilToUtc(Y, 12, 21, t)))[living.id]; if (n.deep > deepW) deepW = n.deep; if (n.share > shareW) { shareW = n.share; deepT = t; } } // the picture: when the patch is largest
 const kWins = kitchen ? plan.env.filter((e) => e.room === kitchen.face) : [];
 const kSay = (k) => { const d = kWins.map((e) => windAt(plan, k, e)); return d.includes('in') ? 'הרוח נכנסת דרך חלון המטבח, וריחות הבישול נדחפים פנימה לבית' : d.includes('out') ? 'האוויר יוצא דרך חלון המטבח, וריחות הבישול יוצאים החוצה' : 'הרוח עוברת לאורך חלון המטבח בלי לדחוף פנימה או החוצה'; };
 const CARDS = [
   { id: 'sunset', q: 'רואים שקיעה מהבית?', a: () => { if (!ssSeen.length) return 'לא. אף חלון לא פונה לשמש השוקעת.'; const by = new Map(); for (const r of plan.rooms) { const ms = SS.filter((x) => x.rooms.includes(r)).map((x) => x.m); if (!ms.length) continue; const k = runs(ms); by.set(k, [...(by.get(k) || []), short(r)]); } return 'כן. ' + [...by].map(([k, rs]) => `<em>${k}</em> מ${rs.join(', ')}`).join('; ') + '. בניינים שכנים לא במודל.'; },
     go() { mode('sun'); const x = ssBest || SS[5]; setDay(x.m, 15, x.set - 14); stand((ssBest ? ssBest.rooms.includes(living) ? living : ssBest.rooms[0] : living).id, x.az); } },
   { id: 'living', q: 'כמה שמש נכנסת לסלון?', a: () => `ביום הקצר <em>${hrs(dW.minutes)} שעות</em>${dW.minutes ? ` (${hhmm(dW.first)} עד ${hhmm(dW.last + 10)}), עד <em>${(deepW / 100).toFixed(1)} מ׳</em> פנימה` : ''}. ביום הארוך ${hrs(dS.minutes)} שעות${dS.minutes ? `, מ-${hhmm(dS.first)}` : ''}.`,
-    go() { mode('sun'); setDay(12, 21, deepT); stand(living.id, solar(ilToUtc(Y, 12, 21, deepT)).az); } },
+    go() { mode('sun'); setDay(12, 21, deepT); const az = solar(ilToUtc(Y, 12, 21, deepT)).az, wn = living.wins.slice().sort((a, b) => Math.abs(((a.bearing - az + 540) % 360) - 180) - Math.abs(((b.bearing - az + 540) % 360) - 180))[0]; stand(living.id, wn ? wn.bearing : az); } },
   { id: 'draft', q: 'יש משב רוח שעובר בבית?', a: () => { const c = Object.keys(WIND).filter((k) => { const d = plan.env.map((e) => windAt(plan, k, e)); return d.includes('in') && d.includes('out'); }); return c.length ? `כן: ${c.map((k) => WIND[k].he).join('; ')}.` : 'לא ממש. החלונות פונים לצד אחד של הרוח השכיחה, אז היא נכנסת ויוצאת מאותו צד.'; },
     go() { mode('wind'); C.setWind('summer-noon'); paint(); stand(living.id, WIND['summer-noon'].from[0]); } },
   { id: 'cook', q: 'ריחות בישול: פנימה או החוצה?', a: () => kitchen ? `בצהרי הקיץ ${kSay('summer-noon')}. בלילה ובבוקר ${kSay('summer-night').replace(/^הרוח/, 'הרוח').replace(/^האוויר/, 'האוויר')}.` : 'אין מטבח עם חלון בתוכנית.',
@@ -340,7 +374,8 @@ function snap() {
   const c = document.createElement('canvas'); c.width = 480; c.height = 300; const k = Math.max(480 / src.width, 300 / src.height), w = 480 / k, h = 300 / k;
   c.getContext('2d').drawImage(src, (src.width - w) / 2, (src.height - h) / 2, w, h, 0, 0, 480, 300); return c.toDataURL('image/jpeg', 0.8);
 }
-async function pictures() { for (const c of CARDS) { c.go(); paint(); await frame(); await frame(); document.querySelector(`.card[data-c="${c.id}"] img`).src = snap(); } pick(q.get('card') || 'sunset'); }
+async function pictures() { await C.skyReady; await frame(); for (const c of CARDS) { c.go(); paint(); await frame(); await frame(); document.querySelector(`.card[data-c="${c.id}"] img`).src = snap(); } for (const [m, c] of [['sun', 'living'], ['wind', 'draft'], ['rain', 'rain']]) { const im = document.querySelector(`.tabs button[data-m="${m}"] img`), src = document.querySelector(`.card[data-c="${c}"] img`); if (im && src) im.src = src.src; }
+  pick(q.get('card') || 'sunset'); }
 view('walk'); onDate(); C.setMinute(9 * 60); paint(); await pictures();
 async function film() { // ~42 s: a summer day to sunset, a winter afternoon, the sea breeze, the land breeze, a winter storm
   const look = (bearing) => { const d = planDir(bearing, plan.north), w = space.lab.walk; space.setView({ mode: 'walk', x: w.x, y: w.y, yaw: Math.atan2(d[1], d[0]), pitch: -0.12 }); };
