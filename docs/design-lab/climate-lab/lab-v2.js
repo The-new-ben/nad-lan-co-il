@@ -95,3 +95,17 @@ function tick() {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+
+// ---- phone (23.11, Ben: the room keeps at least 55% of a 390x844 screen): one compact dock, as the board's Phone artboard
+//      (claude.ai/artifact/Fm4ZT4NSa5FEYC4BjY62G6): time, date, answers and play in one row; the timeline; then the modes and
+//      the quick dates in one scrolling row. The labels on the stage sit just above the dock, whatever its height.
+{
+  const mq = matchMedia('(max-width:899px)'), row1 = dock.querySelector('.row1'), quick = dock.querySelector('.quick'), tlcol = dock.querySelector('.tlcol'), sheet = tabs.querySelector('.sheetbtn');
+  const lay = () => {
+    if (mq.matches) { row1.insertBefore(sheet, row1.querySelector('#play')); tabs.append(quick); dock.classList.add('compact'); }
+    else { tabs.append(sheet); tlcol.insertBefore(quick, tlcol.firstChild); dock.classList.remove('compact'); }
+  };
+  mq.addEventListener('change', lay); lay();
+  const fit = () => stage.style.setProperty('--dockh', dock.offsetHeight + 'px');
+  new ResizeObserver(fit).observe(dock); fit();
+}

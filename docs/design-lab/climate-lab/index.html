@@ -3,14 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>מעבדת שמש, רוח וגשם</title>
+<title>כיווני שמש ורוח בדירה · אשירה, שדה דב</title>
+<meta name="description" content="כיווני שמש ורוח בדירה E-4A באשירה, שדה דב: שעות שמש ישירה בכל חדר לפי עונה, השקיעה מהחלון, משב הרוח, ריחות בישול וגשם בסערה, לפי תוכנית המכר שפורסמה.">
+<meta property="og:title" content="כיווני שמש ורוח בדירה · אשירה, שדה דב">
+<meta property="og:description" content="עומדים בתוך הדירה ורואים איך השמש נכנסת לאורך היום והשנה, מאיפה מגיעה הרוח ולאן מגיע הגשם.">
 <!-- HAD-803 climate lab. Ben approved the upload on 22.11.2026: live as a static folder at /tour/climate/ (noindex, linked from
      nowhere on the site). Locally: serve the repo root (python -m http.server 47961 --bind 127.0.0.1), open /docs/design-lab/climate-lab/ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
 <style>
-/* Design: the Claude Design board "מעבדת שמש, רוח וגשם" (claude.ai/artifact/1EpEJT1UsEsryUFH27buzh), in the NadLan design system:
+/* Design: the Claude Design boards (claude.ai/artifact/1EpEJT1UsEsryUFH27buzh, Fm4ZT4NSa5FEYC4BjY62G6), in the NadLan design system:
    ground sa-paper #f7f6f2, surface #fff, hairline sa-line #e3e1da, ink #14212b / #3b4753, the one action colour sa-sea #2f6f86,
    sa-deep #1f4b5c behind the stage; Assistant for all text, tabular figures. Data colours from a synoptic weather chart: sun #FFC400
    outlined in ink, air in #0B7285, air out #66C2D0, rain #3B4CC0. Pills for every button and chip, 16px cards, no gradients. */
@@ -109,14 +112,13 @@ td.num{white-space:nowrap}
 </head>
 <body>
 <header>
-  <div class="ttl"><h1>שמש, רוח וגשם בתוך הדירה</h1><span class="apt">אשירה, שדה דב · דגם E-4A · 4 חדרים, לפי תוכנית המכר שפורסמה</span></div>
+  <div class="ttl"><h1>כיווני שמש ורוח בדירה</h1><span class="apt">אשירה, שדה דב · דגם E-4A · 4 חדרים, לפי תוכנית המכר שפורסמה</span></div>
   <div class="tabs" role="group" aria-label="מה רואים">
     <button data-m="sun" aria-pressed="true"><img alt="">שמש</button>
     <button data-m="wind" aria-pressed="false"><img alt="">רוח</button>
     <button data-m="rain" aria-pressed="false"><img alt="">גשם</button>
   </div>
   <a class="back" href="https://nad-lan.co.il/projects/ashira-sde-dov/">לעמוד הפרויקט</a>
-  <span class="lab">מעבדה פנימית</span>
 </header>
 <main>
   <section id="stage">

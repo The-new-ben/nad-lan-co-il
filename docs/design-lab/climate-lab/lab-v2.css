@@ -127,5 +127,30 @@ body.v2.m-sun [data-only~=sun],body.v2.m-wind [data-only~=wind],body.v2.m-rain [
   body.v2 aside::before{content:"";display:block;margin:0 auto 6px;width:40px;height:4px;border-radius:999px;background:rgba(255,255,255,.3)}
 }
 @media (min-width:900px){ body.v2 #dock .tabs .sheetbtn{display:none} body.v2 #dock .row1{display:contents} }
+/* phone, compact dock (23.11): about 175px instead of about 330px */
+@media (max-width:899px){
+  body.v2 #dock.compact{gap:8px;padding:10px 12px}
+  body.v2 #dock.compact .row1{gap:8px}
+  body.v2 #dock.compact .clock{flex:1;min-width:0;flex-direction:row;align-items:baseline;gap:8px}
+  body.v2 #dock.compact #timeL{font-size:26px;line-height:30px}
+  body.v2 #dock.compact .sub{font-size:12.5px;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  body.v2 #dock.compact #play{width:44px;height:44px}
+  body.v2 #dock.compact .row1 .sheetbtn{all:unset;box-sizing:border-box;cursor:pointer;height:40px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gl2);color:var(--tx);font-size:13px;flex:none;white-space:nowrap}
+  body.v2 #dock.compact .row1 .sheetbtn svg{display:none}
+  body.v2 #dock.compact .tlcol{gap:2px}
+  body.v2 #dock.compact .bar48,body.v2 #dock.compact #min{height:28px}
+  body.v2 #dock.compact .tabs{padding:0 12px;margin:0 -12px;border-top:0;gap:6px;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  body.v2 #dock.compact .tabs::-webkit-scrollbar{display:none}
+  body.v2 #dock.compact .tabs .mb{flex:none}
+  body.v2 #dock.compact .tabs .mb button{width:44px;height:44px}
+  body.v2 #dock.compact .tabs .chip,body.v2 #dock.compact .tabs .phase{width:auto}
+  body.v2 #dock.compact .tabs .quick{flex:none;overflow:visible;padding-inline-start:6px;border-inline-start:1px solid rgba(255,255,255,.18)}
+  body.v2 #dock.compact .chip,body.v2 #dock.compact .phase{height:40px;padding:0 12px;font-size:13.5px}
+  body.v2 #dock.compact .phases > span{display:none}
+  body.v2 #dock.compact .tabs .quick > *,body.v2 #dock.compact .tabs .quick .chips{flex:none;flex-wrap:nowrap}
+  body.v2 #dock.compact .tabs .chip,body.v2 #dock.compact .tabs .phase{flex:none;white-space:nowrap}
+  body.v2 #hud{bottom:calc(var(--dockh,180px) + 46px)}
+  body.v2 #illus{bottom:calc(var(--dockh,180px) + 20px)}
+}
 body.v2 #dock .slot-storm{display:none!important}
 @media (prefers-reduced-motion: reduce){ body.v2 *{transition:none!important} }
