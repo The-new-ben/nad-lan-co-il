@@ -1,0 +1,194 @@
+{
+ "vp": "360x740",
+ "live": false,
+ "at": "2026-11-24 01:24:22",
+ "steps": [
+  {
+   "step": "cue on the tower before any tap",
+   "ok": true,
+   "hint": "בחרו דירה על המגדל"
+  },
+  {
+   "step": "a flat is on the picture",
+   "ok": true,
+   "pt": {
+    "x": 140.24407407407404,
+    "y": 269.73877314814814
+   }
+  },
+  {
+   "step": "skip button has its own place (not on the label, the call or the mark)",
+   "ok": true,
+   "hit": [],
+   "box": [
+    14,
+    282,
+    56,
+    34
+   ]
+  },
+  {
+   "step": "flat open after the pull-out",
+   "ok": true,
+   "mode": "flat",
+   "view": "street",
+   "sel": "20-2",
+   "pull": 10654,
+   "beam": 270,
+   "tab": "cut"
+  },
+  {
+   "step": "tower whole on screen",
+   "ok": true,
+   "stage": {
+    "l": 6,
+    "t": 60,
+    "r": 354,
+    "b": 261,
+    "w": 348,
+    "h": 201
+   }
+  },
+  {
+   "step": "facts band on the first screen, above the bars",
+   "ok": true,
+   "band": {
+    "l": 6,
+    "t": 261,
+    "r": 354,
+    "b": 336,
+    "w": 348,
+    "h": 75
+   },
+   "barTop": 542
+  },
+  {
+   "step": ">= 200 px of his map above the bars",
+   "ok": true,
+   "map_visible": 204,
+   "map": {
+    "l": 6,
+    "t": 338,
+    "r": 354,
+    "b": 542,
+    "w": 348,
+    "h": 204
+   }
+  },
+  {
+   "step": "band holds rooms, m2, floor, direction, stage + plan + request",
+   "ok": true,
+   "text": "תוכנית הדירה | 5 חדרים · 134 מ״ר | קומה 20 · פונה מערב, לים | שלב: קונספט · דירה לדוגמה | הדירה | מעניינת אותי"
+  },
+  {
+   "step": "no showroom control under the site's bars (after the tap)",
+   "ok": true,
+   "under": [],
+   "bars": [
+    [
+     "nl-sticky",
+     680,
+     12,
+     336
+    ],
+    [
+     "nla11y",
+     674,
+     294,
+     52
+    ],
+    [
+     "nlcta",
+     542,
+     12,
+     259
+    ]
+   ]
+  },
+  {
+   "step": "cue on the map after the tap",
+   "ok": true,
+   "shown_at": 22670,
+   "now": 33743,
+   "map": true
+  },
+  {
+   "step": "pull-out about 1.2 s (slowed run excluded)",
+   "ok": true,
+   "pull_ms": 10654
+  },
+  {
+   "step": "compact map: no nameless plan dot, no overlapping price pill",
+   "ok": true,
+   "pills": 3,
+   "overlap": 0,
+   "nameless_plan_dots": 0,
+   "named_plans": 1
+  },
+  {
+   "step": "no inner scrollbars, no layer left over the tower",
+   "ok": true
+  },
+  {
+   "step": "blacklist words and totals absent",
+   "ok": true,
+   "found": []
+  },
+  {
+   "step": "band plan button brings the plan into the eye, clear of the bars",
+   "ok": false,
+   "under": [
+    "עסקאות שנסגרו באזור, 5 חדרים ( @nlcta"
+   ]
+  },
+  {
+   "step": "cue on the view",
+   "ok": true,
+   "cue": "לחצו על מקום בנוף"
+  },
+  {
+   "step": "view tags on the picture",
+   "ok": true,
+   "tags": 8
+  },
+  {
+   "step": "strip 'what is that way' clear of the bars",
+   "ok": true,
+   "under": [
+    "תחנת נמיר · 810 מ׳ @nlcta",
+    "תחנת בורודצקי · 1.2 ק״מ @nlcta",
+    "אלומות · 870 מ׳ @nlcta",
+    "אליאנס · 1000 מ׳ @nlcta",
+    "ניצנים · 1.3 ק״מ @nlcta",
+    "לקבלת תוכנית הדירה @nl-sticky",
+    "לקבלת תוכנית הדירה @nla11y",
+    "לקבלת מחירון כשייפתח @nl-sticky"
+   ]
+  },
+  {
+   "step": "the beam turned to the flat",
+   "ok": true,
+   "beam": 90
+  },
+  {
+   "step": "panel call button clear of the bars before the press",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "call: nobody on duty -> honest choice, the sheet rests above the bars",
+   "ok": true,
+   "sheet": [
+    214,
+    391
+   ],
+   "barTop": 542
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

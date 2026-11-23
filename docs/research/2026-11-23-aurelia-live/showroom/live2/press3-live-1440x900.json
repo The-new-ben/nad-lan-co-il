@@ -1,0 +1,135 @@
+{
+ "vp": "1440x900",
+ "live": true,
+ "at": "2026-11-24 01:47:11",
+ "steps": [
+  {
+   "step": "cue on the tower before any tap",
+   "ok": true,
+   "hint": "בחרו דירה על המגדל"
+  },
+  {
+   "step": "a flat is on the picture",
+   "ok": true,
+   "pt": {
+    "x": 894.40625,
+    "y": 318.125
+   }
+  },
+  {
+   "step": "skip button has its own place (not on the label, the call or the mark)",
+   "ok": true,
+   "hit": [],
+   "box": [
+    126,
+    274,
+    56,
+    34
+   ]
+  },
+  {
+   "step": "flat open after the pull-out",
+   "ok": true,
+   "mode": "flat",
+   "view": "street",
+   "sel": "20-2",
+   "pull": 10434,
+   "beam": 270,
+   "tab": "cut"
+  },
+  {
+   "step": "no showroom control under the site's bars (after the tap)",
+   "ok": true,
+   "under": [],
+   "bars": [
+    [
+     "nl-sticky",
+     834,
+     16,
+     230
+    ],
+    [
+     "nla11y",
+     828,
+     1368,
+     52
+    ],
+    [
+     "nlcta",
+     754,
+     20,
+     298
+    ]
+   ]
+  },
+  {
+   "step": "cue on the map after the tap",
+   "ok": true,
+   "shown_at": 20879,
+   "now": 27912,
+   "map": true
+  },
+  {
+   "step": "pull-out about 1.2 s (slowed run excluded)",
+   "ok": true,
+   "pull_ms": 10434
+  },
+  {
+   "step": "compact map: no nameless plan dot, no overlapping price pill",
+   "ok": true,
+   "pills": 4,
+   "overlap": 0,
+   "nameless_plan_dots": 0,
+   "named_plans": 2
+  },
+  {
+   "step": "no inner scrollbars, no layer left over the tower",
+   "ok": true
+  },
+  {
+   "step": "blacklist words and totals absent",
+   "ok": true,
+   "found": []
+  },
+  {
+   "step": "cue on the view",
+   "ok": true,
+   "cue": "לחצו על מקום בנוף"
+  },
+  {
+   "step": "view tags on the picture",
+   "ok": true,
+   "tags": 8
+  },
+  {
+   "step": "strip 'what is that way' clear of the bars",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "the beam turned to the flat",
+   "ok": true,
+   "beam": 90
+  },
+  {
+   "step": "panel call button clear of the bars before the press",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "call: nobody on duty -> honest choice, the sheet rests above the bars",
+   "ok": true,
+   "sheet": [
+    253,
+    428
+   ],
+   "barTop": 754
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

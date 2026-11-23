@@ -1,0 +1,339 @@
+/* Aurelia Sports showroom, round 2 (HAD-810): the tower stage with the flat panel BESIDE it (desktop) or UNDER it (phone),
+   the pull-out into the panel, the places in the beam, the call that opens now. Nothing covers the tower.
+   Identity (kept from round 1, from the pool hall and the pitch markings, not a default look): deep sea navy #0b1b27, pool aqua
+   #36d1e0, lane teal #2f6f86, chalk #f7f6f2; the map beam keeps the fleet's terracotta #C2563A (it is the map's, not ours).
+   Faces: Karantina (Hebrew display, scoreboard-like), Barlow Condensed (numbers), Assistant (text). No cream, no brass, no purple.
+   The theme forces its own colours on buttons, h2, p and a: everything is scoped twice and text sits in divs and spans. */
+#building.nlas-on > .nl-theater { display: none; }
+#building.nlas-on.nlas-free > .nl-theater { display: block; margin-top: 14px; }
+.nlas.nlas { --navy: #0b1b27; --navy2: #112a3a; --navy3: #173246; --aqua: #36d1e0; --teal: #2f6f86; --off: #f7f6f2; --mut: #9fb6c3; --line: rgba(247, 246, 242, .14);
+  direction: rtl; font-family: Assistant, Heebo, system-ui, sans-serif; color: var(--off); background: var(--navy); border-radius: 18px; overflow: hidden;
+  max-width: 1240px; margin: 0 auto; position: relative; }
+.nlas.nlas * { box-sizing: border-box; }
+.nlas .nlas-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; grid-template-rows: 470px auto; }
+.nlas .nlas-grid > .nlas-stage { grid-column: 1; grid-row: 1; }
+.nlas .nlas-grid > .nlas-mapslot { grid-column: 1; grid-row: 2; }
+.nlas .nlas-grid > .nlas-panel { grid-column: 2; grid-row: 1 / span 2; }
+/* his map under the tower (the page's own #nlpjx-map, moved here); compact = the map alone, the beam and the places on it */
+.nlas .nlas-mapslot { position: relative; background: #f4f1ea; border-top: 2px solid #C2563A; display: flex; flex-direction: column; }
+.nlas .nlas-mapslot.compact #nlpjx-map { flex: 1; display: flex; flex-direction: column; }
+.nlas .nlas-mapslot[hidden] { display: none; }
+.nlas .nlas-mapslot #nlpjx-map { margin: 0 !important; border-radius: 0 !important; border: 0 !important; box-shadow: none !important; max-width: none !important; }
+.nlas .nlas-mapslot.compact #nlpjx-map { padding: 0 !important; background: transparent !important; position: relative; }
+/* compact is still HIS map (Ben: "the map tells you what is where"): the named places with their icons, the price pills, the
+   future plans, the group chips with their counts and the walking range stay; only the heading, the layer row, the list and
+   the captions wait for "המפה המלאה" */
+.nlas .nlas-mapslot.compact #nlpjx-map > :not(#nlpjx-unimap):not(script):not(style):not(.nlam-bar):not(.nlam-range) { display: none !important; }
+.nlas .nlas-mapslot.compact #nlpjx-unimap { flex: 1; height: auto !important; min-height: 300px; border-radius: 0 !important; border: 0 !important; }
+.nlas .nlas-mapslot.compact #nlpjx-map > .nlam-bar { position: absolute; top: 8px; right: 8px; left: 8px; z-index: 4; margin: 0 !important; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 0 0 2px; pointer-events: none; }
+.nlas .nlas-mapslot.compact #nlpjx-map > .nlam-bar::-webkit-scrollbar { display: none; }
+.nlas.nlas .nlas-mapslot.compact .nlam-bar button { flex: none; min-height: 38px; padding: 0 12px 0 5px; font-size: 13px; pointer-events: auto; box-shadow: 0 2px 8px rgba(11, 27, 39, .18); }
+.nlas.nlas .nlas-mapslot.compact .nlam-bar button i { width: 28px; height: 28px; }
+.nlas .nlas-mapslot.compact #nlpjx-map > .nlam-range { position: absolute; top: 54px; right: 8px; z-index: 4; margin: 0 !important; padding: 3px 4px 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, .94); box-shadow: 0 2px 8px rgba(11, 27, 39, .18); flex-wrap: nowrap; }
+.nlas.nlas .nlas-mapslot.compact .nlam-range div { background: transparent; padding: 0; }
+.nlas.nlas .nlas-mapslot.compact .nlam-range button { min-height: 34px; min-width: 0; padding: 0 10px; }
+.nlas .nlas-mapslot.compact .mapboxgl-ctrl-top-right { top: auto; bottom: 24px; }
+.nlas .nlas-mapslot.compact .nlas-mapbig { top: auto; bottom: 30px; }
+.nlas.nlas .nlas-mapbig { position: absolute; top: 56px; left: 8px; z-index: 5; min-height: 36px; padding: 4px 14px !important; border-radius: 999px !important; border: 0 !important;
+  background: #0b1b27 !important; color: #f7f6f2 !important; font: 700 13px/1 Assistant, sans-serif !important; cursor: pointer; box-shadow: 0 2px 10px rgba(0, 0, 0, .3); }
+.nlas .nlas-stage { position: relative; height: 470px; overflow: hidden; background: var(--navy); touch-action: pan-y; transition: height .32s ease; }
+.nlas .nlas-stage img.nlas-pic, .nlas .nlas-stage canvas { position: absolute; max-width: none; margin: 0; border-radius: 0; }
+.nlas .nlas-stage canvas { pointer-events: none; }
+.nlas .nlas-hit { position: absolute; inset: 0; cursor: default; }
+.nlas .nlas-hit.hov { cursor: pointer; }
+.nlas .nlas-head { position: absolute; top: 0; right: 0; left: 0; padding: 16px 18px 46px; background: linear-gradient(180deg, rgba(11, 27, 39, .8), rgba(11, 27, 39, 0)); pointer-events: none; }
+.nlas .nlas-k, .nlas .pn-k { font: 700 13px/1.3 "Barlow Condensed", Assistant, sans-serif; letter-spacing: .14em; color: var(--aqua); text-transform: uppercase; }
+.nlas.nlas .nlas-h2 { margin: 2px 0 0; font: 700 clamp(30px, 3.6vw, 42px)/1 Karantina, Assistant, sans-serif !important; color: var(--off) !important; }
+.nlas .nlas-sim, .nlas .pn-sim { position: absolute; font-size: 11.5px; background: rgba(11, 27, 39, .74); color: var(--off); padding: 3px 8px; border-radius: 6px; pointer-events: none; z-index: 3; }
+.nlas .nlas-sim { bottom: 62px; left: 12px; }
+.nlas .nlas-th { display: inline-block; flex: none; width: 34px; height: 34px; border-radius: 10px; background-size: 320% auto; background-repeat: no-repeat; box-shadow: 0 0 0 1.5px rgba(247, 246, 242, .55); }
+/* the hint and the mark on the chosen flat */
+.nlas .nlas-hint { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; border-radius: 999px;
+  background: rgba(11, 27, 39, .86); border: 1px solid rgba(54, 209, 224, .6); font: 600 15px/1.2 Assistant, sans-serif; pointer-events: none; transition: opacity .4s; white-space: nowrap; animation: nlasGlow 2s infinite; }
+.nlas .nlas-hint.off { opacity: 0; animation: none; }
+.nlas .nlas-mark { position: absolute; transform: translate(-50%, -100%); pointer-events: none; display: flex; flex-direction: column; align-items: center; z-index: 2; }
+.nlas .nlas-mark b { order: -1; font: 700 13px/1 Assistant, sans-serif; background: var(--aqua); color: var(--navy); padding: 5px 9px; border-radius: 999px; white-space: nowrap; }
+.nlas .nlas-mark i { width: 2px; height: 14px; background: var(--aqua); }
+.nlas .nlas-mark[hidden] { display: none; }
+@keyframes nlasPulse { 0% { box-shadow: 0 0 0 0 rgba(54, 209, 224, .65); } 70% { box-shadow: 0 0 0 12px rgba(54, 209, 224, 0); } 100% { box-shadow: 0 0 0 0 rgba(54, 209, 224, 0); } }
+@keyframes nlasGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(54, 209, 224, .45); } 50% { box-shadow: 0 0 0 8px rgba(54, 209, 224, 0); } }
+.nlas .nlas-tip { position: absolute; pointer-events: none; background: rgba(11, 27, 39, .94); border: 1px solid var(--aqua); color: var(--off); padding: 6px 10px; border-radius: 10px; font-size: 13.5px; white-space: nowrap; z-index: 4; }
+.nlas .nlas-tip small { display: block; color: var(--aqua); font-size: 12px; margin-top: 2px; }
+.nlas .nlas-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--mut); font-size: 14px; }
+.nlas .nlas-loading.done { display: none; }
+/* the views, free look, facilities */
+.nlas .nlas-views { position: absolute; bottom: 12px; right: 12px; left: 12px; display: flex; gap: 6px; flex-wrap: wrap; z-index: 3; }
+.nlas.nlas .nlas-views button { min-height: 38px; padding: 6px 14px !important; border-radius: 999px !important; border: 1px solid rgba(247, 246, 242, .34) !important;
+  background: rgba(11, 27, 39, .7) !important; color: var(--off) !important; font: 600 14px/1 Assistant, sans-serif !important; backdrop-filter: blur(6px); cursor: pointer; box-shadow: none !important; }
+.nlas.nlas .nlas-views button[aria-pressed="true"] { background: var(--aqua) !important; color: var(--navy) !important; border-color: var(--aqua) !important; }
+.nlas.nlas .nlas-views .nlas-free { margin-inline-start: auto; }
+.nlas .nlas-facs { position: absolute; top: 92px; right: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
+.nlas.nlas .nlas-facs button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 14px 5px 6px !important; border-radius: 999px !important; border: 1px solid rgba(54, 209, 224, .55) !important;
+  background: rgba(11, 27, 39, .78) !important; color: var(--off) !important; font: 600 14px/1 Assistant, sans-serif !important; cursor: pointer; animation: nlasGlow 2.4s infinite; box-shadow: none; }
+.nlas.nlas .nlas-facs button:nth-child(2) { animation-delay: 1.2s; }
+/* the call, everywhere the same */
+.nlas.nlas .nlas-call { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 6px 16px 6px 8px !important; border-radius: 999px !important; border: 0 !important;
+  background: #1fb37a !important; color: #04170f !important; cursor: pointer; text-align: start; font-family: Assistant, sans-serif !important; animation: nlasCall 2.2s infinite; box-shadow: none; }
+.nlas.nlas .nlas-call span { display: flex; flex-direction: column; }
+.nlas.nlas .nlas-call b { font: 700 15.5px/1.1 Assistant, sans-serif; color: #04170f; }
+.nlas.nlas .nlas-call small { font: 600 12px/1.2 Assistant, sans-serif; color: #0d3b27; }
+.nlas.nlas .nlas-call .nlas-th { width: 38px; height: 38px; border-radius: 50%; background-size: cover; box-shadow: 0 0 0 2px #fff; }
+@keyframes nlasCall { 0% { box-shadow: 0 0 0 0 rgba(31, 179, 122, .6); } 70% { box-shadow: 0 0 0 14px rgba(31, 179, 122, 0); } 100% { box-shadow: 0 0 0 0 rgba(31, 179, 122, 0); } }
+.nlas.nlas .nlas-call.fab { position: absolute; top: 16px; left: 14px; z-index: 4; }
+
+/* ---------------------------------------------------------------- the panel */
+.nlas .nlas-panel { position: relative; background: var(--navy2); border-inline-start: 1px solid var(--line); min-height: 680px; padding: 16px 18px 14px; display: flex; flex-direction: column; }
+.nlas .nlas-panel > div { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+.nlas .pn-steps { list-style: none; margin: 8px 0 14px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.nlas .pn-steps li { display: flex; align-items: center; gap: 12px; background: var(--navy3); border-radius: 14px; padding: 8px; }
+.nlas .pn-steps .nlas-th { width: 78px; height: 56px; border-radius: 10px; background-size: cover; box-shadow: none; }
+.nlas .pn-steps .nlas-th.plan { background: #eef0ef; padding: 3px; }
+.nlas .pn-steps .nlas-th.plan svg { width: 100%; height: 100%; display: block; }
+.nlas .pn-steps span { font-size: 13.5px; color: var(--mut); line-height: 1.35; }
+.nlas .pn-steps b { display: block; font-size: 15.5px; color: var(--off); }
+.nlas .pn-steps li:first-child { box-shadow: 0 0 0 1.5px var(--aqua); animation: nlasGlow 2s infinite; }
+.nlas .pn-facs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0 14px; }
+.nlas.nlas .pn-facs button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 0 0 8px !important; border-radius: 12px !important; overflow: hidden; border: 1px solid var(--line) !important;
+  background: var(--navy3) !important; color: var(--off) !important; cursor: pointer; text-align: start; font-family: Assistant, sans-serif !important; box-shadow: none; }
+.nlas.nlas .pn-facs .nlas-th { width: 100%; height: 76px; border-radius: 0; background-size: cover; box-shadow: none; margin-bottom: 4px; }
+.nlas.nlas .pn-facs b { font-size: 14.5px; padding: 0 10px; color: var(--off); }
+.nlas.nlas .pn-facs small { font: 600 13px/1 "Barlow Condensed", sans-serif; color: var(--aqua); padding: 0 10px; }
+.nlas .pn-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.nlas .pn-cta .nlas-call { grid-column: 1 / -1; justify-content: center; }
+.nlas.nlas .pn-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 6px 12px !important; border-radius: 12px !important; border: 1px solid rgba(247, 246, 242, .3) !important;
+  background: transparent !important; color: var(--off) !important; font: 700 14.5px/1.15 Assistant, sans-serif !important; cursor: pointer; text-decoration: none !important; text-align: center; box-shadow: none; }
+.nlas.nlas .pn-btn.pri { background: var(--aqua) !important; color: var(--navy) !important; border-color: var(--aqua) !important; }
+.nlas.nlas .pn-btn.ghost { border-style: dashed !important; }
+.nlas .pn-decl { font-size: 11.5px; color: var(--mut); margin-top: 8px; line-height: 1.45; }
+.nlas .pn-top { display: flex; align-items: center; gap: 10px; }
+.nlas .pn-ttl { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.nlas .pn-ttl b { font: 700 32px/1 Karantina, Assistant, sans-serif; color: var(--off); }
+.nlas .nlas-tag { font-style: normal; font-size: 11.5px; color: var(--off); border: 1px solid rgba(247, 246, 242, .55); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+.nlas .pn-fl { display: flex; gap: 4px; }
+.nlas.nlas .pn-fl button { width: 40px; height: 36px; min-height: 0; padding: 0 !important; border-radius: 10px !important; border: 1px solid var(--line) !important; background: var(--navy3) !important; color: var(--off) !important; font-size: 14px !important; cursor: pointer; }
+.nlas .pn-sides { display: flex; gap: 5px; margin: 6px 0 6px; flex-wrap: wrap; }
+.nlas.nlas .pn-sides button { min-height: 30px; padding: 3px 10px !important; border-radius: 999px !important; border: 1px solid var(--line) !important; background: transparent !important; color: var(--mut) !important; font: 600 12.5px/1 Assistant, sans-serif !important; cursor: pointer; }
+.nlas.nlas .pn-sides button[aria-pressed="true"] { background: var(--off) !important; color: var(--navy) !important; border-color: var(--off) !important; }
+.nlas .pn-tabs { display: flex; gap: 4px; background: var(--navy); border-radius: 12px; padding: 3px; }
+.nlas.nlas .pn-tabs button { flex: 1; min-height: 34px; padding: 4px 8px !important; border-radius: 9px !important; border: 0 !important; background: transparent !important; color: var(--mut) !important; font: 700 14px/1 Assistant, sans-serif !important; cursor: pointer; box-shadow: none; }
+.nlas.nlas .pn-tabs button[aria-selected="true"] { background: var(--aqua) !important; color: var(--navy) !important; }
+.nlas .pn-tabs .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); margin-inline-end: 6px; animation: nlasPulse 1.8s infinite; vertical-align: 1px; }
+.nlas .pn-tabs button[aria-selected="true"] .dot { display: none; }
+.nlas .pn-media { position: relative; margin-top: 8px; height: 270px; border-radius: 14px; overflow: hidden; background: #f1f0ec; flex: none; }
+.nlas .pn-media[data-tab="view"] { background: var(--navy); }
+.nlas .pn-media .pn-sim { top: 6px; right: 6px; }
+.nlas .pn-plan { position: absolute; inset: 30px 6px 40px 72px; display: grid; place-items: center; }
+.nlas .nlas-plan { width: 100%; height: 100%; display: block; }
+.nlas .nlas-plan text { font-family: Assistant, sans-serif; font-weight: 700; fill: #f7f6f2; text-anchor: middle; }
+.nlas .nlas-plan text.m2 { font-family: "Barlow Condensed", sans-serif; font-weight: 600; fill: #9fe7ef; }
+.nlas .nlas-plan text.bal { fill: #2b3c46; font-weight: 600; }
+.nlas .nlas-plan .sofa { transform-box: view-box; }
+.nlas .pn-keyw { position: absolute; left: 8px; bottom: 8px; width: 60px; text-align: center; }
+.nlas .pn-key { width: 60px; height: 94px; display: block; background: var(--navy); border-radius: 8px; }
+.nlas .pn-key text { font: 700 2.6px Assistant, sans-serif; fill: #9fb6c3; text-anchor: middle; }
+.nlas .pn-key text.sea { fill: #36d1e0; text-anchor: start; }
+.nlas .pn-keyw span { display: block; font-size: 10.5px; color: #2b3c46; font-weight: 700; margin-top: 2px; line-height: 1.1; }
+.nlas.nlas .pn-drag { position: absolute; right: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 6px; border-radius: 999px; background: var(--navy) !important; color: var(--off) !important;
+  font: 700 12.5px/1.1 Assistant, sans-serif; text-decoration: none !important; z-index: 3; }
+.nlas .pn-drag .hand { width: 22px; height: 22px; border-radius: 50%; background: var(--aqua); position: relative; }
+.nlas .pn-drag .hand::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--navy); }
+.nlas .pn-drag.go { animation: nlasPulse 1.6s 3; }
+.nlas .pn-view, .nlas .pn-view img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; margin: 0; max-width: none; border-radius: 0; }
+.nlas .pn-tags { position: absolute; inset: 0; }
+.nlas.nlas .pn-tag { position: absolute; transform: translate(0, -100%); display: inline-flex; align-items: center; gap: 5px; min-height: 26px; padding: 3px 9px 3px 7px !important; border-radius: 999px !important;
+  border: 0 !important; background: rgba(11, 27, 39, .86) !important; color: var(--off) !important; font: 600 11.5px/1.1 Assistant, sans-serif !important; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
+.nlas.nlas .pn-tag.flip { transform: translate(-100%, -100%); }
+.nlas.nlas .pn-tag::after { content: ""; position: absolute; bottom: -6px; right: 10px; width: 2px; height: 6px; background: rgba(11, 27, 39, .86); }
+.nlas.nlas .pn-tag.flip::after { right: auto; left: 10px; }
+.nlas.nlas .pn-tag i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.nlas.nlas .pn-tag.on { background: var(--aqua) !important; color: var(--navy) !important; }
+.nlas .pn-tag[hidden] { display: none; }
+.nlas .pn-tagcard { position: absolute; left: 6px; right: 6px; bottom: 6px; background: rgba(11, 27, 39, .96); border: 1px solid var(--aqua); border-radius: 12px; padding: 6px 10px; font-size: 12.5px; line-height: 1.35; color: var(--mut); z-index: 4; }
+.nlas .pn-tagcard[hidden] { display: none; }
+.nlas .pn-tagcard b { display: block; color: var(--off); font-size: 14.5px; padding-inline-end: 28px; }
+.nlas .pn-tagcard span { display: block; }
+.nlas .pn-tagcard .row { display: flex; gap: 6px; margin-top: 5px; align-items: center; }
+.nlas .pn-tagcard .row:not(:has(a, [data-a=onmap])) { margin: 0; }
+.nlas.nlas .pn-tagcard .row .x { position: absolute; top: 2px; left: 4px; }
+.nlas.nlas .pn-tagcard .row button, .nlas.nlas .pn-tagcard .row a { min-height: 32px; padding: 4px 10px !important; border-radius: 999px !important; border: 1px solid var(--aqua) !important; background: transparent !important; color: var(--aqua) !important; font: 700 12.5px/1 Assistant, sans-serif !important; cursor: pointer; text-decoration: none !important; display: inline-flex; align-items: center; }
+.nlas.nlas .pn-tagcard .row .x, .nlas.nlas .pn-callsheet .x { margin-inline-start: auto; border: 0 !important; color: var(--mut) !important; font-size: 18px !important; min-width: 32px; justify-content: center; background: transparent !important; cursor: pointer; }
+.nlas .pn-facts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 10px; background: var(--line); border-radius: 12px; overflow: hidden; }
+.nlas .pn-facts div { background: var(--navy3); padding: 7px 4px; text-align: center; }
+.nlas .pn-facts b { display: block; font: 700 22px/1 "Barlow Condensed", Assistant, sans-serif; color: var(--off); }
+.nlas .pn-facts span { font-size: 11.5px; color: var(--mut); }
+.nlas .pn-facts .st b { font: 700 17px/1.3 Assistant, sans-serif; color: var(--aqua); }
+.nlas .pn-price { margin-top: 9px; font-size: 13px; color: var(--mut); line-height: 1.4; }
+.nlas .pn-price .lab { display: block; }
+.nlas .pn-price .val { display: block; color: var(--off); }
+.nlas .pn-price .val b { font: 700 19px/1 "Barlow Condensed", sans-serif; color: var(--aqua); }
+.nlas.nlas .pn-price a { color: var(--aqua) !important; margin-inline-start: 6px; font-weight: 700; font-size: 12.5px; }
+.nlas .pn-price small { display: block; font-size: 11px; color: var(--mut); }
+.nlas .pn-flat .pn-cta { margin-top: 10px; }
+.nlas .pn-flat .pn-decl { margin-top: 6px; }
+.nlas .pn-flat.hold .pn-media > * { opacity: 0; }
+.nlas .pn-flat.hold .pn-media { background: var(--navy3); box-shadow: inset 0 0 0 1.5px rgba(54, 209, 224, .5); }
+.nlas .pn-media { transition: background .4s; }
+.nlas .pn-media > * { transition: opacity .35s; }
+.nlas.nlas .pn-back { min-height: 34px; padding: 4px 12px !important; border-radius: 999px !important; border: 1px solid var(--line) !important; background: transparent !important; color: var(--off) !important; font: 600 13px/1 Assistant, sans-serif !important; cursor: pointer; }
+.nlas .pn-media.fac img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; margin: 0; max-width: none; border-radius: 0; }
+.nlas .pn-sz { font: 700 28px/1 "Barlow Condensed", sans-serif; color: var(--aqua); margin-top: 12px; }
+.nlas .pn-p { font-size: 14.5px; line-height: 1.55; color: #d6e2e9; margin-top: 6px; }
+.nlas .pn-src { font-size: 12px; color: var(--mut); margin-top: 6px; }
+.nlas .pn-callsheet { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 6; background: #0f2a22; border: 1.5px solid #1fb37a; border-radius: 16px; padding: 12px 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .45); }
+.nlas .pn-callsheet b { display: block; font-size: 16px; color: var(--off); }
+.nlas .pn-callsheet > span { display: block; font-size: 13.5px; color: #cfe3da; line-height: 1.5; margin-top: 4px; }
+.nlas .pn-callsheet .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.nlas.nlas .pn-callsheet .pn-btn.pri { background: #1fb37a !important; border-color: #1fb37a !important; color: #04170f !important; }
+.nlas.nlas .pn-callsheet .x { position: absolute; top: 6px; left: 6px; }
+
+/* ---------------------------------------------------------------- the places in the beam (bridge.js showNear's place) */
+.nlas .nlas-near { border-top: 1px solid var(--line); padding: 12px 18px 14px; background: var(--navy); }
+.nlas .nlas-near[hidden] { display: none; }
+.nlas .nr-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.nlas .nr-h b { font-size: 16px; }
+.nlas .nr-h span { font-size: 12.5px; color: var(--mut); }
+.nlas .nr-h .beam { width: 22px; height: 22px; background: conic-gradient(from -22deg at 50% 100%, rgba(194, 86, 58, .75) 0 44deg, transparent 44deg); border-radius: 0 0 50% 50%; }
+.nlas.nlas .nr-go { margin-inline-start: auto; min-height: 36px; padding: 4px 14px !important; border-radius: 999px !important; border: 1px solid #C2563A !important; background: rgba(194, 86, 58, .14) !important; color: #ffb59e !important; font: 700 13.5px/1 Assistant, sans-serif !important; cursor: pointer; animation: nlasGlow 2s infinite; }
+.nlas .nr-list { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 4px; scrollbar-width: thin; }
+.nlas.nlas .nr-list button { flex: none; display: grid; grid-template-columns: auto 1fr; column-gap: 7px; align-items: center; text-align: start; min-height: 48px; padding: 6px 12px 6px 10px !important; border-radius: 12px !important;
+  border: 1px solid var(--line) !important; background: var(--navy2) !important; color: var(--off) !important; cursor: pointer; font-family: Assistant, sans-serif !important; box-shadow: none; }
+.nlas.nlas .nr-list button i { grid-row: 1 / 3; width: 10px; height: 10px; border-radius: 50%; }
+.nlas.nlas .nr-list button b { font-size: 13.5px; color: var(--off); }
+.nlas.nlas .nr-list button span { font-size: 12px; color: var(--mut); }
+.nlas .nr-none { font-size: 13px; color: var(--mut); }
+.nlas .nr-src { font-size: 11px; color: var(--mut); }
+
+/* the pull-out layer: only the flying flat, never a veil over the page */
+.nlas-po { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; direction: rtl; font-family: Assistant, Heebo, sans-serif; }
+.nlas-po .po-skip { position: fixed; pointer-events: auto; min-height: 34px; padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(247, 246, 242, .4); background: rgba(11, 27, 39, .75); color: #f7f6f2; font-size: 13px; cursor: pointer; }
+.nlas-po .po-ring { position: absolute; border-radius: 10px; border: 2px solid #96f0f8; box-shadow: 0 0 24px rgba(54, 209, 224, .9); }
+.nlas-po .po-boxw { position: absolute; inset: 0; perspective: 1100px; opacity: 0; }
+.nlas-po .po-box { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.nlas-po .po-f { position: absolute; left: 0; top: 0; backface-visibility: hidden; }
+.nlas-po .po-front, .nlas-po .po-back { background: linear-gradient(100deg, rgba(150, 240, 248, .8), rgba(47, 111, 134, .6) 38%, rgba(255, 236, 200, .5) 70%, rgba(54, 209, 224, .7)); border: 2px solid #f7f6f2; box-shadow: 0 0 30px rgba(54, 209, 224, .7); }
+.nlas-po .po-front::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(247, 246, 242, .5) calc(25% - 1px) 25%); }
+.nlas-po .po-side { background: linear-gradient(180deg, rgba(54, 209, 224, .6), rgba(11, 27, 39, .75)); border: 2px solid #f7f6f2; }
+.nlas-po .po-top { background: rgba(247, 246, 242, .92); border: 1.5px solid #fff; }
+.nlas-po .po-bot { background: #eef0ef; border: 1.5px solid rgba(54, 209, 224, .9); box-shadow: 0 0 50px rgba(54, 209, 224, .4); }
+.nlas-po .po-bot svg { width: 100%; height: 100%; display: block; }
+.nlas-po .po-cap { position: absolute; text-align: center; font: 700 30px/1 Karantina, Assistant, sans-serif; color: #f7f6f2; text-shadow: 0 2px 14px rgba(0, 0, 0, .6); white-space: nowrap; opacity: 0; }
+.nlas-po .po-cap small { display: block; font: 600 13.5px/1.4 Assistant, sans-serif; color: #d6e2e9; }
+
+/* the area map: the flat's place in it (the beam itself is the fleet's) */
+.nlas-mapfocus { display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+.nlas-mapfocus b { font: 700 12.5px/1 Assistant, sans-serif; background: #0b1b27; color: #f7f6f2; border: 1.5px solid #36d1e0; padding: 5px 9px; border-radius: 999px; white-space: nowrap; }
+.nlas-mapfocus i { order: 2; width: 18px; height: 18px; border-radius: 50%; background: #36d1e0; border: 3px solid #fff; margin-top: 3px; animation: nlasPulse 1.6s infinite; }
+
+/* Aurelia only: the booking band becomes the call that opens now (Ben: never the date picker) */
+#nlsch.nlas-call-on { background: #0b1b27 !important; border-color: #0b1b27 !important; color: #f7f6f2; }
+#nlsch.nlas-call-on > :not(.nlas-cb):not(style) { display: none !important; }
+#nlsch .nlas-cb { font-family: Assistant, Heebo, sans-serif; }
+#nlsch .nlas-cb .nlas-k { font: 700 13px/1.3 "Barlow Condensed", Assistant, sans-serif; letter-spacing: .14em; color: #36d1e0; }
+#nlsch .nlas-cbh { font: 700 clamp(30px, 4vw, 40px)/1.05 Karantina, Assistant, sans-serif; color: #f7f6f2; margin: 4px 0 8px; }
+#nlsch .nlas-cbp { font-size: 15px; line-height: 1.6; color: #d6e2e9; max-width: 40em; margin-bottom: 14px; }
+#nlsch .nlas-cb .nlas-call { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 6px 18px 6px 8px !important; border-radius: 999px !important; border: 0 !important; background: #1fb37a !important; color: #04170f !important; cursor: pointer; animation: nlasCall 2.2s infinite; }
+#nlsch .nlas-cb .nlas-call span { display: flex; flex-direction: column; text-align: start; }
+#nlsch .nlas-cb .nlas-call b { font: 700 16px/1.1 Assistant, sans-serif; color: #04170f; }
+#nlsch .nlas-cb .nlas-call small { font: 600 12px/1.2 Assistant, sans-serif; color: #0d3b27; }
+#nlsch .nlas-cb .nlas-th { display: inline-block; width: 38px; height: 38px; border-radius: 50%; background-size: cover; box-shadow: 0 0 0 2px #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nlas *, .nlas-mapfocus i, #nlsch .nlas-cb .nlas-call { animation: none !important; transition: none !important; }
+}
+/* ---------------------------------------------------------------- phones: the panel directly under the tower */
+@media (max-width: 900px) {
+  .nlas.nlas { border-radius: 0; margin: 0 -16px; }
+  .nlas .nlas-grid { display: block; }
+  .nlas .nlas-stage { height: min(70svh, 600px); transition: none; }
+  .nlas.has-flat .nlas-stage { height: 40svh; min-height: 280px; }
+  .nlas.has-flat .nlas-head { display: none; }
+  .nlas .nlas-head { padding: 12px 14px 36px; }
+  .nlas .nlas-facs { display: none; }
+  .nlas .nlas-sim { bottom: auto; top: 86px; left: 12px; }
+  .nlas.has-flat .nlas-sim { display: block; top: 10px; }
+  .nlas.nlas .nlas-call.fab { top: auto; bottom: 60px; left: 12px; }
+  .nlas.nlas .nlas-call.fab small { display: none; }
+  .nlas.has-flat .nlas-call.fab { bottom: auto; top: 10px; left: auto; right: 10px; min-height: 44px; }
+  .nlas.has-flat .nlas-call.fab .nlas-th { width: 30px; height: 30px; }
+  .nlas.has-flat .nlas-stage { height: var(--nlas-stageh, 36svh); min-height: 190px; } /* showroom.js fitPhone: lower on a short phone */
+  .nlas.nlas .nlas-views button { padding: 6px 11px !important; font-size: 13px !important; }
+  .nlas .nlas-panel { height: auto; border: 0; border-top: 1px solid var(--line); padding: 14px 14px 16px; }
+  .nlas .pn-media { height: 56vw; max-height: 300px; }
+  .nlas .pn-ttl b { font-size: 30px; }
+  .nlas .pn-facts b { font-size: 20px; }
+  .nlas .nlas-hint { font-size: 14px; top: 56%; }
+  .nlas .nlas-near { padding: 12px 14px 14px; }
+  .nlas .nlas-mapslot.compact #nlpjx-unimap { flex: none; height: var(--nlas-maph, 260px) !important; min-height: 0; }
+  .nlas.nlas .nlas-mapslot.compact .nlam-range > span { display: none; }
+  .nlas .nlas-mapslot.compact .mapboxgl-ctrl-top-right { display: none; } /* phones zoom with two fingers; the full map keeps the buttons */
+  /* the walking range as a narrow column at the left edge, the full-map button at the bottom right: the beam stays clear */
+  .nlas .nlas-mapslot.compact #nlpjx-map > .nlam-range { right: auto; left: 8px; top: 54px; padding: 3px; border-radius: 14px; }
+  .nlas.nlas .nlas-mapslot.compact .nlam-range div { flex-direction: column; }
+  .nlas.nlas .nlas-mapslot.compact .nlam-range button { min-height: 32px; padding: 0 8px; font-size: 12.5px; }
+  .nlas .nlas-mapslot.compact .nlas-mapbig { left: auto; right: 40px; bottom: 8px; }
+  .nlas.nlas { margin-bottom: var(--nlas-barh, 160px); } /* the site's WhatsApp bar and lead row (measured) never sit over the showroom's last row */
+}
+/* the places in the beam sit right under the map: desktop across both columns under the grid's second row, phones in order */
+.nlas .nlas-grid > .nlas-near { grid-column: 1 / span 2; grid-row: 3; }
+/* step 1b: the furnished cut-away (the pull-out lands on it; the tab "הדירה מרוהטת") */
+.nlas .pn-media[data-tab="cut"] { background: #0b1b27; }
+.nlas .pn-cut { position: absolute; inset: 0; }
+.nlas .pn-cut img, .nlas-po .po-cut { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; margin: 0; max-width: none; border-radius: 0; }
+.nlas .pn-media[data-tab="cut"] .pn-sim { top: 6px; right: 6px; }
+.nlas-po .po-bot { overflow: hidden; }
+.nlas-po .po-bot:has(.po-cut) { background: #0b1b27; }
+
+/* ---------------------------------------------------------------- round 2c (HAD-810, coordinator's review of 1.72.758) */
+/* the requests in two rows right under the facts: on a desktop they end high in the panel, clear of the site's floating bars */
+.nlas .pn-flat .pn-cta .nlas-call { grid-column: auto; min-height: 46px; padding: 4px 12px 4px 6px !important; gap: 8px; }
+.nlas.nlas .pn-flat .pn-cta .nlas-call small { display: none; }
+.nlas.nlas .pn-flat .pn-cta .nlas-call b { font-size: 14.5px; }
+.nlas.nlas .pn-flat .pn-cta .nlas-call .nlas-th { width: 32px; height: 32px; }
+.nlas .pn-flat .pn-price { margin-top: 10px; }
+.nlas .pn-cta, .nlas .nlas-near, .nlas .pn-callsheet, .nlas .nlas-band { scroll-margin-bottom: var(--nlas-barh, 160px); }
+/* phones: the band with the facts between the tower and his map (the first screen after the tap) */
+.nlas .nlas-band { display: none; }
+.nlas .nlas-band > * { transition: opacity .3s; }
+.nlas .nlas-band.hold > * { opacity: 0; }
+.nlas .nlas-band.hold { box-shadow: inset 0 0 0 1.5px rgba(54, 209, 224, .5); }
+@media (max-width: 900px) {
+  .nlas.has-flat .nlas-band:not([hidden]) { display: flex; align-items: center; gap: 9px; min-height: 74px; padding: 8px 10px; background: var(--navy2); border-top: 1px solid var(--line); }
+  .nlas.nlas .nlas-band .bd-pic { flex: none; position: relative; width: 84px; height: 58px; padding: 0 !important; border: 1px solid rgba(54, 209, 224, .7) !important; border-radius: 10px !important; overflow: hidden; background: #0b1b27 !important; cursor: pointer; box-shadow: none; animation: nlasGlow 2.2s 3; }
+  .nlas .nlas-band .bd-pic img, .nlas .nlas-band .bd-pic svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; margin: 0; max-width: none; border-radius: 0; background: #eef0ef; }
+  .nlas .nlas-band .bd-pic span { position: absolute; left: 0; right: 0; bottom: 0; font: 700 10.5px/1.45 Assistant, sans-serif; color: var(--off); background: rgba(11, 27, 39, .8); text-align: center; }
+  .nlas .nlas-band .bd-facts { flex: 1; min-width: 0; font-size: 13px; line-height: 1.32; color: var(--mut); white-space: nowrap; overflow: hidden; }
+  .nlas .nlas-band .bd-l1 { color: var(--off); font-size: 14px; }
+  .nlas .nlas-band .bd-l1 b, .nlas .nlas-band .bd-l2 b { font: 700 17.5px/1 "Barlow Condensed", Assistant, sans-serif; color: var(--off); }
+  .nlas .nlas-band .bd-l2 { color: var(--off); }
+  .nlas .nlas-band .st { color: var(--aqua); font-weight: 700; }
+  .nlas .nlas-band em { font-style: normal; font-size: 11px; color: var(--off); border: 1px solid rgba(247, 246, 242, .45); border-radius: 5px; padding: 0 4px; }
+  .nlas.nlas .nlas-band .bd-ask { flex: none; min-height: 50px; padding: 4px 10px !important; border-radius: 12px !important; border: 0 !important; background: var(--aqua) !important; color: var(--navy) !important;
+    font: 700 13px/1.15 Assistant, sans-serif !important; cursor: pointer; box-shadow: none; text-align: center; }
+  .nlas.has-flat .pn-flat .pn-facts { display: none; } /* the band above carries them, on the first screen */
+}
+/* the pull-out: the socket on the facade, the facade slice that leaves it, the skip in the landing spot */
+.nlas-po .po-hole { position: absolute; border-radius: 3px; background: rgba(5, 14, 22, .82); box-shadow: inset 0 0 6px rgba(54, 209, 224, .9), 0 0 0 1px rgba(150, 240, 248, .7); opacity: 0; }
+.nlas-po .po-ph { position: absolute; inset: 0; z-index: 1; background-repeat: no-repeat; }
+.nlas-po .po-top { background: rgba(150, 240, 248, .28); border: 1.5px solid rgba(201, 246, 251, .9); }
+.nlas-po .po-skip { z-index: 2; box-shadow: 0 2px 10px rgba(0, 0, 0, .35); }
+/* the compact map: a marker with no name steps back; an overlapping price pill waits (assets/aurelia-viewer/showroom.js tidy) */
+#nlpjx-unimap .mapboxgl-marker.nlas-hide { visibility: hidden !important; pointer-events: none !important; }
+/* the small labels that tell people what to do; each fades after its first use */
+.nlas-cue, .nlas .pn-cue { font: 700 12.5px/1.2 Assistant, Heebo, sans-serif; color: #f7f6f2; background: rgba(11, 27, 39, .9); border: 1px solid #36d1e0; border-radius: 999px; padding: 5px 10px;
+  white-space: nowrap; pointer-events: none; animation: nlasGlow 2s infinite; transition: opacity .5s; direction: rtl; }
+.nlas-cue.off, .nlas .pn-cue.off { opacity: 0; animation: none; }
+.nlas .pn-cue { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 3; }
+.nlas .pn-media[data-tab="view"] .pn-tagcard:not([hidden]) ~ .pn-cue { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .nlas-cue { animation: none !important; } }
+/* desktop: the flat's panel ends above the site's floating bars at the settled view (1440x900: the bars start ~754 px) */
+@media (min-width: 901px) {
+  .nlas .pn-flat .pn-media { height: 232px; }
+  .nlas.nlas .pn-flat .pn-tabs button { min-height: 32px; }
+  .nlas .pn-flat .pn-sides { margin: 4px 0; }
+  .nlas .pn-flat .pn-facts { margin-top: 8px; }
+  .nlas .pn-flat .pn-facts div { padding: 5px 4px; }
+  .nlas .pn-flat .pn-cta { margin-top: 8px; gap: 6px; }
+  .nlas.nlas .pn-flat .pn-btn, .nlas.nlas .pn-flat .pn-cta .nlas-call { min-height: 42px; }
+  .nlas .pn-flat .pn-price { margin-top: 7px; line-height: 1.3; }
+  .nlas .pn-flat .pn-decl { margin-top: 4px; font-size: 11px; line-height: 1.35; }
+}
