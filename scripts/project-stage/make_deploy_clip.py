@@ -28,20 +28,16 @@ JS = ("(function(){var f=document.querySelector('.nlqw-host .nlq-cover');if(!f||
       "f.insertBefore(v,f.querySelector('figcaption'));var p=v.play();if(p&&p.catch)p.catch(function(){});},{rootMargin:'150px'});io.observe(f);})();")
 H = []
 H.append(("\treturn substr( $content, 0, $j ) . '<div class=\"nlqw-host\" id=\"walk\">' . nadlan_walk_render( array() ) . '</div>' . substr( $content, $j );",
-          "\tnadlan_sdedov_walk_clip();\n"
-          "\treturn substr( $content, 0, $j ) . '<div class=\"nlqw-host\" id=\"walk\">' . nadlan_walk_render( array() ) . '</div>' . substr( $content, $j );"))
+          "\treturn substr( $content, 0, $j ) . '<div class=\"nlqw-host\" id=\"walk\">' . nadlan_walk_render( array() ) . '</div>' . nadlan_sdedov_walk_clip() . substr( $content, $j );"))
 H.append(("add_filter( 'the_content', 'nadlan_sdedov_walk_entry', 22 );",
           "add_filter( 'the_content', 'nadlan_sdedov_walk_entry', 22 );\n\n"
           "/* HAD-801 loop cycle 4: the entry starts walking by itself. A 7 s silent loop recorded from the live tour (AST-12109/12110) is\n"
           " * created only when the entry comes into view; reduced motion and Save-Data keep the still. Only on /sde-dov/ (called from the\n"
           " * entry filter), never on the home page. */\n"
           "function nadlan_sdedov_walk_clip() {\n"
-          "\tstatic $done = false;\n"
-          "\tif ( $done ) {\n\t\treturn;\n\t}\n"
-          "\t$done = true;\n"
           "\t$base = trailingslashit( nadlan_sdedov_tour_url() ) . 'media/wordpress/clips/sde-dov-2036-entry-walk-';\n"
-          "\twp_add_inline_script( 'nlsdt', str_replace( array( '__PHONE__', '__DESK__' ), array( esc_url( $base . 'phone.mp4' ), esc_url( $base . 'desktop.mp4' ) ), "
-          + "'" + JS.replace("\\", "\\\\").replace("'", "\\'") + "'" + " ) );\n"
+          "\treturn '<script id=\"nlqw-clip-js\">' . str_replace( array( '__PHONE__', '__DESK__' ), array( esc_url( $base . 'phone.mp4' ), esc_url( $base . 'desktop.mp4' ) ), "
+          + "'" + JS.replace("\\", "\\\\").replace("'", "\\'") + "'" + " ) . '</script>';\n"
           "}"))
 for a, b in H:
     assert LIVE.count(a) == 1, ("anchor x%d" % LIVE.count(a), a[:70])

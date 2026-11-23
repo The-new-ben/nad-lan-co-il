@@ -192,6 +192,14 @@ function nadlan_sdedov_walk_entry( $content ) {
 		return $content;
 	}
 	$j += 6;
-	return substr( $content, 0, $j ) . '<div class="nlqw-host" id="walk">' . nadlan_walk_render( array() ) . '</div>' . substr( $content, $j );
+	return substr( $content, 0, $j ) . '<div class="nlqw-host" id="walk">' . nadlan_walk_render( array() ) . '</div>' . nadlan_sdedov_walk_clip() . substr( $content, $j );
 }
 add_filter( 'the_content', 'nadlan_sdedov_walk_entry', 22 );
+
+/* HAD-801 loop cycle 4: the entry starts walking by itself. A 7 s silent loop recorded from the live tour (AST-12109/12110) is
+ * created only when the entry comes into view; reduced motion and Save-Data keep the still. Only on /sde-dov/ (called from the
+ * entry filter), never on the home page. */
+function nadlan_sdedov_walk_clip() {
+	$base = trailingslashit( nadlan_sdedov_tour_url() ) . 'media/wordpress/clips/sde-dov-2036-entry-walk-';
+	return '<script id="nlqw-clip-js">' . str_replace( array( '__PHONE__', '__DESK__' ), array( esc_url( $base . 'phone.mp4' ), esc_url( $base . 'desktop.mp4' ) ), '(function(){var f=document.querySelector(\'.nlqw-host .nlq-cover\');if(!f||!(\'IntersectionObserver\' in window))return;try{if(matchMedia(\'(prefers-reduced-motion: reduce)\').matches)return;}catch(e){}var c=navigator.connection;if(c&&(c.saveData||/2g/.test(c.effectiveType||\'\')))return;var st=document.createElement(\'style\');st.textContent=\'.nlq .nlq-cover .nlqw-clip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s;z-index:1}.nlq .nlq-cover .nlqw-clip.on{opacity:1}.nlq .nlq-cover figcaption{z-index:2}\';document.head.appendChild(st);var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();var v=document.createElement(\'video\');v.muted=true;v.defaultMuted=true;v.loop=true;v.playsInline=true;v.setAttribute(\'muted\',\'\');v.setAttribute(\'playsinline\',\'\');v.setAttribute(\'aria-hidden\',\'true\');v.className=\'nlqw-clip\';v.preload=\'auto\';v.src=(window.innerWidth<641?\'__PHONE__\':\'__DESK__\');v.addEventListener(\'playing\',function(){v.classList.add(\'on\')});f.insertBefore(v,f.querySelector(\'figcaption\'));var p=v.play();if(p&&p.catch)p.catch(function(){});},{rootMargin:\'150px\'});io.observe(f);})();' ) . '</script>';
+}
