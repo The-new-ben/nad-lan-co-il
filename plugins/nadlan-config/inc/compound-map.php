@@ -289,7 +289,7 @@ add_action( 'loop_start', function ( $query ) {
 	// held and printed first thing in <body> (wp_body_open), exactly where the browser places it today.
 	// TEMPORARY STAGED ROLLOUT (coordinator, Ben's word 23.11.2026): only the compounds in this list get the fix; the list and the
 	// old echo below are removed at stage 3 so every compound takes the wp_body_open path.
-	if ( in_array( rawurldecode( (string) $term->slug ), array( 'sde-dov' ), true ) ) {
+	if ( in_array( rawurldecode( (string) $term->slug ), array( 'sde-dov', 'נווה-אביבים' ), true ) ) {
 		$GLOBALS['nadlan_cmpmap_body_html'] = $html;
 		return;
 	}

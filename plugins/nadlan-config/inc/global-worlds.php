@@ -1141,7 +1141,7 @@ add_filter( 'the_content', function ( $content ) {
 	// <!DOCTYPE>, so nadlan_gw_css() echoed here lands at byte 0 of the page. Inside the buffer it opens the returned content.
 	// TEMPORARY STAGED ROLLOUT (coordinator, Ben's word 23.11.2026): only the pages in this list take the buffered path; the list
 	// and the old order are removed at the last stage.
-	$gw_css_in_buf = in_array( (string) get_post_field( 'post_name', $id ), array( 'lic-skyline-condos-new-york' ), true );
+	$gw_css_in_buf = in_array( (string) get_post_field( 'post_name', $id ), array( 'lic-skyline-condos-new-york', 'garden-residence-jvc-dubai', 'lion-apartments-paphos', 'sky-gardens-jvc-dubai', 'damac-riverside-views-dubai', 'stratford-park-gate-london' ), true );
 	if ( ! $gw_css_in_buf ) { nadlan_gw_css(); }
 	ob_start();
 	if ( $gw_css_in_buf ) { nadlan_gw_css(); }

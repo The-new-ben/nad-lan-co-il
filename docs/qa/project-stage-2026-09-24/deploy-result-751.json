@@ -1,0 +1,19 @@
+{
+  "released": "1.72.751",
+  "from": "1.72.750",
+  "live_before": {
+    "inc/compound-map.php": "5c4392766ac5946dda558989fb401d15",
+    "inc/global-worlds.php": "af5b63e0bbb6182a42a90c2d8dae565f",
+    "nadlan-config.php": "e0e37132a006f4f80ed429957bf209de"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-23 14:25:08",
+  "files": {
+    "inc/compound-map.php": "13b0deb3392620b3d5133a9e1d9541a0",
+    "inc/global-worlds.php": "39afd87b5ce2e5c9fae1b53b31984863",
+    "nadlan-config.php": "25514faf651d59dacf698c0b82c88db5"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.751, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
