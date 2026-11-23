@@ -193,6 +193,7 @@
       '</div>' +
       '<div class="nlas-band" hidden></div>' +
       '<div class="nlas-mapslot compact"><button type="button" class="nlas-mapbig" data-a="mapbig" aria-expanded="false">המפה המלאה</button></div>' +
+      '<div class="nlas-viewbig" hidden></div>' +
       '<div class="nlas-near" hidden></div>' +
       '<div class="nlas-panel" aria-live="polite"></div>' +
       '</div>';
@@ -351,12 +352,29 @@
       m.innerHTML = '<div class="pn-view"><img alt="המבט מקומה ' + f.f + ' לכיוון ' + esc(DIRS[f.b]) + '" src="' + esc(viewImg(f)) + '"><div class="pn-tags"></div></div>' +
         '<div class="pn-sim">' + (AIVIEW[k] ? 'הדמיה להמחשה, על בסיס המפה' : 'מבט לפי המפה, הדמיה להמחשה') + ' · גובה העיניים כ-' + eye(f) + ' מ׳</div>' +
         '<div class="pn-tagcard" hidden></div>' + (CUE.view ? '' : '<div class="pn-cue">לחצו על מקום בנוף</div>');
+      viewBig(f);
       tags().then(function () { drawTags(f); }).catch(function () {});
     }
+    if (tab !== 'view') viewBig(null);
+  }
+  /* desktop: the view from the floor opens large under the tower and the panel (the tower and his map stay where they are) */
+  function viewBig(f) {
+    var vb = $s('viewbig'); if (!vb) return;
+    if (!f || PHONE()) { vb.hidden = true; vb.innerHTML = ''; return; }
+    var was = !vb.hidden; vb.hidden = false;
+    vb.innerHTML = '<div class="vb-h"><b>הנוף מקומה ' + f.f + ', לכיוון ' + esc(DIRS[f.b]) + '</b><span>' + (AIVIEW[viewKey(f)] ? 'הדמיה להמחשה, על בסיס המפה' : 'מבט לפי המפה, הדמיה להמחשה') + ' · גובה העיניים כ-' + eye(f) + ' מ׳</span>' +
+      '<button type="button" class="vb-x" data-a="vbclose" aria-label="סגירת הנוף הגדול">×</button></div>' +
+      '<div class="pn-view vb-pic"><img alt="המבט מקומה ' + f.f + ' לכיוון ' + esc(DIRS[f.b]) + '" src="' + esc(A('img/view-' + viewKey(f) + '-1600.webp')) + '"><div class="pn-tags"></div>' +
+      '<div class="pn-tagcard" hidden></div>' + (CUE.view ? '' : '<div class="pn-cue">לחצו על מקום בנוף</div>') + '</div>';
+    if (!was) setTimeout(function () { var r = vb.getBoundingClientRect(); if (r.bottom > innerHeight) reveal(vb); }, 60);
   }
   /* the view's tags: placed in the frame with the camera of the first frame (scripts/aurelia/aurelia_viewtags.py) */
   function drawTags(f) {
-    var box = $p('.pn-tags'); if (!box || !T) return;
+    if (!T) return;
+    Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tags'), function (box) { drawTagsIn(box, f); });
+    placeTags();
+  }
+  function drawTagsIn(box, f) {
     var v = T.views[viewKey(f)]; box.innerHTML = '';
     if (!v) return;
     v.tags.forEach(function (t) {
@@ -365,10 +383,12 @@
       b.innerHTML = '<i style="background:' + (KCOL[p.k] || '#9fb6c3') + '"></i><span>' + esc(label(p)) + (p.d ? ' · ' + dist(p.d) : '') + '</span>';
       box.appendChild(b);
     });
-    placeTags();
   }
   function placeTags() {
-    var box = S.el && $p('.pn-tags'); if (!box) return;
+    if (!S.el) return;
+    Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tags'), placeIn);
+  }
+  function placeIn(box) {
     var W = box.clientWidth, H = box.clientHeight, s = Math.min(W / 16, H / 9), iw = 16 * s, ih = 9 * s, ox = (W - iw) / 2, oy = (H - ih) / 2; // the whole frame (contain): every tag stays
     Array.prototype.forEach.call(box.children, function (b) {
       var x = ox + Number(b.dataset.x) * iw, y = oy + Number(b.dataset.y) * ih;
@@ -380,12 +400,12 @@
   function label(p) { return p.k === 'rail' && !/תחנ/.test(p.n) ? 'תחנת ' + p.n : p.n; }
   function dist(m) { return m < 1000 ? Math.round(m / 10) * 10 + ' מ׳' : fmt(m / 1000, 1) + ' ק״מ'; }
   function tagCard(i) {
-    var p = T.places[i], c = $p('.pn-tagcard'); if (!c) return;
-    c.hidden = false;
-    c.innerHTML = '<b>' + esc(label(p)) + '</b><span>' + esc(KIND[p.k] || '') + (p.status ? ' · ' + esc(p.status) : '') +
+    var p = T.places[i], cs = S.el.querySelectorAll('.pn-tagcard'); if (!cs.length) return;
+    var html = '<b>' + esc(label(p)) + '</b><span>' + esc(KIND[p.k] || '') + (p.status ? ' · ' + esc(p.status) : '') +
       (p.d ? ' · ' + dist(p.d) + ' מהמגדל' + (p.walk ? ' · כ-' + p.walk + ' דק׳ הליכה' : '') : ' · מכל קומה בצד המערבי') + '</span>' +
       '<div class="row">' + (p.lat && p.d ? '<button type="button" data-a="onmap" data-place="' + i + '">לראות במפה</button>' : '') + (p.url ? '<a href="' + esc(p.url) + '">לעמוד הפרויקט</a>' : '') +
       '<button type="button" class="x" data-a="tagx" aria-label="סגירה">×</button></div>';
+    Array.prototype.forEach.call(cs, function (c) { c.hidden = false; c.innerHTML = html; });
     Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tag'), function (b) { b.classList.toggle('on', b.dataset.place === String(i)); });
     if (p.lat && p.d) mapFocus(p, false);
     cueOff('view');
@@ -557,9 +577,10 @@
   }
   function cueOff(k) {
     if (CUE[k]) return; CUE[k] = 1;
-    var e = k === 'map' ? (cueMk && cueMk.getElement()) : S.el && S.el.querySelector('.pn-cue');
+    if (k === 'view') { Array.prototype.forEach.call(S.el.querySelectorAll('.pn-cue'), function (e) { e.classList.add('off'); setTimeout(function () { if (e.parentNode) e.remove(); }, 600); }); return; }
+    var e = cueMk && cueMk.getElement();
     if (!e) return; e.classList.add('off');
-    setTimeout(function () { if (k === 'map' && cueMk) cueMk.remove(); else if (e.parentNode) e.remove(); }, 600);
+    setTimeout(function () { if (cueMk) cueMk.remove(); }, 600);
   }
   /* the pull-out (Ben loved "the flat sliding out of the tower and opening into its plan"), about 1.2 s: the flat's own slice of the
      facade leaves the tower at its floor (a dark socket stays where it was), travels into the panel (phones: into the band under the
@@ -796,7 +817,7 @@
   }
   function reveal(el) { // bring a showroom part into the eye, resting above the site's floating bars
     if (!el) return;
-    var r = el.getBoundingClientRect(), room = barTop() - 64, y = r.top + scrollY - 64 - Math.max(0, (room - r.height) / 2);
+    var top = PHONE() ? 64 : 124, r = el.getBoundingClientRect(), room = barTop() - top, y = r.top + scrollY - top - Math.max(0, (room - r.height) / 2); // under the site's header (and its section tabs on a desktop)
     try { scrollTo({ top: Math.max(0, y), behavior: RM.matches ? 'instant' : 'smooth' }); } catch (e) { scrollTo(0, y); }
   }
   function near(f) { // what lies inside the beam: the same places as the map, sorted by distance (bridge.js showNear)
@@ -837,7 +858,8 @@
     if (a === 'plan-wa') { track('aurelia_plan_request', { floor: f.f, unit: f.u }); return; }
     if (a === 'designer') { track('aurelia_designer', f ? { floor: f.f, unit: f.u } : {}); return; }
     if (a === 'intro') { e.preventDefault(); if (S.view !== 'street') setView('street'); if (S.sel) { openFlat(S.sel, false); } else intro(); return; }
-    if (a === 'tagx') { var c = $p('.pn-tagcard'); if (c) c.hidden = true; Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tag.on'), function (x) { x.classList.remove('on'); }); return; }
+    if (a === 'vbclose') { viewBig(null); return; }
+    if (a === 'tagx') { Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tagcard'), function (c) { c.hidden = true; }); Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tag.on'), function (x) { x.classList.remove('on'); }); return; }
     if (a === 'onmap' || a === 'nearplace') { var p = T && T.places[Number(t.dataset.place)]; if (p) { mapFocus(p, true); track('aurelia_place_map', { place: p.n }); } return; }
     if (a === 'mapbig') { var sl = S.el.querySelector('.nlas-mapslot'), big = sl.classList.toggle('compact') === false; t.setAttribute('aria-expanded', String(big)); t.textContent = big ? 'מפה קטנה' : 'המפה המלאה'; setTimeout(function () { if (!big) fitPhone(); mapResize(); if (S.sel) showBeam(S.sel.b); if (window.NLPJX_MAP) tidy(window.NLPJX_MAP); }, 40); track('aurelia_map_big', { big: big }); return; }
     if (a === 'tomap') { var m = document.getElementById('nlpjx-unimap') || document.getElementById('nlpjx-map'); if (m) m.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); return; }

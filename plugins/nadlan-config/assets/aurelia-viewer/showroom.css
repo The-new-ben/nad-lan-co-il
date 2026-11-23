@@ -337,3 +337,18 @@
   .nlas .pn-flat .pn-price { margin-top: 7px; line-height: 1.3; }
   .nlas .pn-flat .pn-decl { margin-top: 4px; font-size: 11px; line-height: 1.35; }
 }
+
+/* step 1b (b): the view from the floor, large, under the tower and the panel (desktop only; phones keep it in the panel) */
+.nlas .nlas-viewbig { display: none; }
+@media (min-width: 901px) {
+  .nlas .nlas-grid > .nlas-viewbig:not([hidden]) { display: block; grid-column: 1 / span 2; grid-row: 3; border-top: 2px solid var(--aqua); background: var(--navy); padding: 12px 18px 16px; }
+  .nlas .nlas-grid > .nlas-viewbig:not([hidden]) ~ .nlas-near { grid-row: 4; }
+  .nlas .vb-h { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .nlas .vb-h b { font: 700 30px/1 Karantina, Assistant, sans-serif; color: var(--off); }
+  .nlas .vb-h span { font-size: 13px; color: var(--mut); }
+  .nlas.nlas .vb-x { margin-inline-start: auto; min-width: 40px; min-height: 36px; border-radius: 999px !important; border: 1px solid var(--line) !important; background: transparent !important; color: var(--off) !important; font-size: 20px !important; cursor: pointer; }
+  .nlas .vb-pic { position: relative !important; inset: auto !important; width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; max-height: 640px; border-radius: 14px; overflow: hidden; }
+  .nlas .vb-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .nlas.nlas .vb-pic .pn-tag { min-height: 32px; font-size: 14px !important; padding: 4px 12px 4px 9px !important; }
+  .nlas .vb-pic .pn-tagcard { left: auto; right: 12px; bottom: 12px; width: min(420px, 60%); font-size: 14px; }
+}
