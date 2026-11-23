@@ -625,6 +625,7 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		<?php if ( function_exists( 'nadlan_rm_one_line' ) ) { echo '<p class="nlrm-one">' . esc_html( nadlan_rm_one_line( $en ? 'en' : 'he' ) ) . '</p>'; } ob_start(); ?>
 		<p class="sub"><?php echo $en ? 'Add a property, mark your apartments on a 3D model of the building, and manage everything per apartment: tenant, rent tracking, lease and tax reminders, documents and maintenance. No spreadsheets, no fees.' : 'מוסיפים נכס, מסמנים את הדירות שלכם על מודל תלת-ממדי של הבניין, ומנהלים הכל מדירה אחת: שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי אקסל ובלי עמלות.'; ?></p>
 		<?php $nlrm_sub = (string) ob_get_clean(); if ( ! function_exists( 'nadlan_rm_one_line' ) ) { echo $nlrm_sub; $nlrm_sub = ''; } // phpcs:ignore ?>
+		<?php if ( function_exists( 'nadlan_rm_film_row' ) ) { nadlan_rm_film_row( $en ? 'en' : 'he' ); } /* the tutorial film, HAD-795 23.11.2026: loads only when pressed */ ?>
 	</header>
 	<?php
 	/* the opening (HAD-795, 20.11.2026): the example landlord's portfolio on a 3D map, right under the answer paragraph.

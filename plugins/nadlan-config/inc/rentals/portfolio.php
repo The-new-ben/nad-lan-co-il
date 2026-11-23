@@ -44,6 +44,52 @@ if ( ! function_exists( 'nadlan_rm_one_line' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_rm_film_row' ) ) {
+	/* The tutorial film (HAD-795, Ben 23.11.2026: "תעלה לאתר"; board https://claude.ai/artifact/SFpzAnjrdTW4qsYm3MmDr3#artboard-Placement).
+	   One quiet row under the answer line: a poster and a play mark. Nothing loads until it is pressed (no video request, no
+	   autoplay); pressed, the player opens in place under the row with its own controls, and "close" puts the row back.
+	   The files live in the Media Library (ids 9295 he, 9296 en, 9297 poster), not in the plugin; captions are burned in. */
+	function nadlan_rm_film_row( $lang = 'he' ) {
+		$en  = ( 'he' !== $lang );
+		$up  = content_url( '/uploads/2026/11/' );
+		$ver = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1';
+		$src = $up . ( $en ? 'rentals-tutorial-en-phone.mp4' : 'rentals-tutorial-he-phone.mp4' );
+		$pos = $up . 'rentals-tutorial-poster.webp';
+		$t   = $en
+			? array( 'k' => 'Video guide', 'b' => 'How it works, in two minutes', 's' => 'Add an apartment, the tenant reports no hot water, you handle it', 'n' => 'Hebrew narration, English captions', 'a' => 'Play the video guide, 2 minutes 2 seconds', 'x' => 'Close the video' )
+			: array( 'k' => 'סרטון הדרכה', 'b' => 'איך זה עובד, בשתי דקות', 's' => 'מוסיפים דירה, השוכר מדווח שאין מים חמים, מטפלים', 'n' => '', 'a' => 'לנגן את סרטון ההדרכה, 2 דקות ו-2 שניות', 'x' => 'לסגור את הסרטון' );
+		?>
+<style>
+#nlrm-film{--ink:#14212b;--sea:#2f6f86;--cy:#7fd3e6;max-width:560px;margin:14px auto 6px;text-align:start;font-family:'Assistant',Heebo,system-ui,sans-serif}
+#nlrm-film button.nlrm-film-go{display:flex !important;align-items:center;gap:12px;width:100% !important;min-height:76px !important;margin:0 !important;padding:8px 14px 8px 8px !important;border:1px solid #d7e2e7 !important;border-radius:18px !important;background:#fff !important;color:var(--ink) !important;box-shadow:0 1px 2px rgba(13,33,41,.06) !important;cursor:pointer;text-align:start !important;font:inherit !important;text-transform:none !important;letter-spacing:0 !important;-webkit-appearance:none;appearance:none}
+#nlrm-film[dir=rtl] button.nlrm-film-go{padding:8px 8px 8px 14px !important}
+#nlrm-film button.nlrm-film-go[hidden],#nlrm-film .nlrm-film-n[hidden]{display:none !important}
+#nlrm-film button.nlrm-film-go:hover{border-color:var(--sea) !important}
+#nlrm-film button.nlrm-film-go:focus-visible,#nlrm-film button.nlrm-film-x:focus-visible{outline:3px solid var(--cy) !important;outline-offset:2px}
+#nlrm-film .nlrm-film-th{position:relative;flex:none;width:112px;height:63px;border-radius:12px;overflow:hidden;background:#0d2129}
+#nlrm-film .nlrm-film-th img{display:block;width:112px;height:63px;object-fit:cover}
+#nlrm-film .nlrm-film-th i{position:absolute;inset:0;margin:auto;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+#nlrm-film .nlrm-film-th i:after{content:"";position:absolute;top:10px;left:13px;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--ink)}
+#nlrm-film .nlrm-film-t{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}
+#nlrm-film .nlrm-film-t small{font-weight:700;font-size:12.5px;line-height:1.3;color:var(--sea);letter-spacing:.02em}
+#nlrm-film .nlrm-film-t b{font-weight:800;font-size:16.5px;line-height:1.3;color:var(--ink)}
+#nlrm-film .nlrm-film-t span{font-weight:400;font-size:14px;line-height:1.35;color:#44545e}
+#nlrm-film .nlrm-film-d{flex:none;font:600 13px/1 'IBM Plex Mono',ui-monospace,monospace;color:var(--ink);background:#eef4f6;border-radius:999px;padding:6px 9px}
+#nlrm-film .nlrm-film-p{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#0d2129;aspect-ratio:16/9}
+#nlrm-film .nlrm-film-p video{display:block;width:100%;height:100%;background:#0d2129}
+#nlrm-film button.nlrm-film-x{position:absolute;top:8px;inset-inline-end:8px;z-index:2;width:44px !important;height:44px !important;min-width:0 !important;min-height:0 !important;margin:0 !important;padding:0 !important;border:0 !important;border-radius:50% !important;background:rgba(13,33,41,.72) !important;color:#fff !important;font-weight:700 !important;font-size:22px !important;line-height:44px !important;font-family:inherit !important;cursor:pointer}
+#nlrm-film .nlrm-film-n{margin:6px 4px 0;font-weight:400;font-size:13px;line-height:1.4;color:#5b6a73}
+@media (max-width:420px){#nlrm-film .nlrm-film-th,#nlrm-film .nlrm-film-th img{width:96px;height:54px}#nlrm-film .nlrm-film-t span{font-size:13.5px}}
+</style>
+<div id="nlrm-film" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo $en ? 'en' : 'he'; ?>" data-src="<?php echo esc_url( $src ); ?>" data-poster="<?php echo esc_url( $pos ); ?>" data-lang="<?php echo $en ? 'en' : 'he'; ?>" data-close="<?php echo esc_attr( $t['x'] ); ?>">
+	<button type="button" class="nlrm-film-go" aria-label="<?php echo esc_attr( $t['a'] ); ?>"><span class="nlrm-film-th"><img src="<?php echo esc_url( $pos ); ?>" width="112" height="63" alt="" decoding="async"><i aria-hidden="true"></i></span><span class="nlrm-film-t"><small><?php echo esc_html( $t['k'] ); ?></small><b><?php echo esc_html( $t['b'] ); ?></b><span><?php echo esc_html( $t['s'] ); ?></span></span><em class="nlrm-film-d" dir="ltr">2:02</em></button>
+	<?php if ( $t['n'] ) : ?><p class="nlrm-film-n"><?php echo esc_html( $t['n'] ); ?></p><?php endif; ?>
+</div>
+<script defer src="<?php echo esc_url( plugins_url( 'assets/rentals/rm-film.js', dirname( __DIR__ ) ) . '?v=' . rawurlencode( $ver ) ); ?>"></script>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'nadlan_rm_pf_data' ) ) {
 	function nadlan_rm_pf_data( $lang = 'he' ) {
 		$en = ( 'he' !== $lang );

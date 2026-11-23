@@ -1,0 +1,104 @@
+{
+ "checks": [
+  {
+   "check": "he 390x844 the film row is there under the H1 and above the stage, white, free to press, at least 44 px tall, no sideways scroll",
+   "ok": true,
+   "info": "{'has': True, 'top': 199, 'hgt': 94, 'wid': 358, 'free': True, 'h1': 72, 'stage': 313, 'bg': 'rgb(255, 255, 255)', 'label': 'לנגן את סרטון ההדרכה, 2 דקות ו-2 שניות', 'text': 'סרטון הדרכה איך זה עובד, בשתי דקות מוסיפים דירה, השוכר מדווח שאין מים חמים, מטפלים 2:02', 'vid': 0, 'ox': 0}"
+  },
+  {
+   "check": "he 390x844 nothing of the film is requested before the press (no video element, no mp4 request)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 390x844 pressed: the player opens in place and plays WITH sound (time moves, not muted, controls on)",
+   "ok": true,
+   "info": "{'t': 5.073688, 'paused': False, 'muted': False, 'vol': 1, 'ctl': True, 'src': 'https://nad-lan.co.il/wp-content/uploads/2026/11/rentals-tutorial-he-phone.mp4', 'w': 358, 'h': 201, 'err': 0, 'rowHidden': True}"
+  },
+  {
+   "check": "he 390x844 close puts the row back and removes the player",
+   "ok": true,
+   "info": "{'vid': 0, 'row': True}"
+  },
+  {
+   "check": "he 390x844 no page errors and no console errors",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800 the film row is there under the H1 and above the stage, white, free to press, at least 44 px tall, no sideways scroll",
+   "ok": true,
+   "info": "{'has': True, 'top': 204, 'hgt': 81, 'wid': 560, 'free': True, 'h1': 108, 'stage': 309, 'bg': 'rgb(255, 255, 255)', 'label': 'לנגן את סרטון ההדרכה, 2 דקות ו-2 שניות', 'text': 'סרטון הדרכה איך זה עובד, בשתי דקות מוסיפים דירה, השוכר מדווח שאין מים חמים, מטפלים 2:02', 'vid': 0, 'ox': 0}"
+  },
+  {
+   "check": "he 1280x800 nothing of the film is requested before the press (no video element, no mp4 request)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "he 1280x800 pressed: the player opens in place and plays WITH sound (time moves, not muted, controls on)",
+   "ok": true,
+   "info": "{'t': 5.660743, 'paused': False, 'muted': False, 'vol': 1, 'ctl': True, 'src': 'https://nad-lan.co.il/wp-content/uploads/2026/11/rentals-tutorial-he-phone.mp4', 'w': 560, 'h': 315, 'err': 0, 'rowHidden': True}"
+  },
+  {
+   "check": "he 1280x800 close puts the row back and removes the player",
+   "ok": true,
+   "info": "{'vid': 0, 'row': True}"
+  },
+  {
+   "check": "he 1280x800 no page errors and no console errors",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844 the film row is there under the H1 and above the stage, white, free to press, at least 44 px tall, no sideways scroll",
+   "ok": true,
+   "info": "{'has': True, 'top': 228, 'hgt': 134, 'wid': 358, 'free': True, 'h1': 72, 'stage': 406, 'bg': 'rgb(255, 255, 255)', 'label': 'Play the video guide, 2 minutes 2 seconds', 'text': 'Video guide How it works, in two minutes Add an apartment, the tenant reports no hot water, you handle it 2:02', 'vid': 0"
+  },
+  {
+   "check": "en 390x844 nothing of the film is requested before the press (no video element, no mp4 request)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 390x844 pressed: the player opens in place and plays WITH sound (time moves, not muted, controls on)",
+   "ok": true,
+   "info": "{'t': 5.848752, 'paused': False, 'muted': False, 'vol': 1, 'ctl': True, 'src': 'https://nad-lan.co.il/wp-content/uploads/2026/11/rentals-tutorial-en-phone.mp4', 'w': 358, 'h': 201, 'err': 0, 'rowHidden': True}"
+  },
+  {
+   "check": "en 390x844 close puts the row back and removes the player",
+   "ok": true,
+   "info": "{'vid': 0, 'row': True}"
+  },
+  {
+   "check": "en 390x844 no page errors and no console errors",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800 the film row is there under the H1 and above the stage, white, free to press, at least 44 px tall, no sideways scroll",
+   "ok": true,
+   "info": "{'has': True, 'top': 250, 'hgt': 95, 'wid': 560, 'free': True, 'h1': 108, 'stage': 393, 'bg': 'rgb(255, 255, 255)', 'label': 'Play the video guide, 2 minutes 2 seconds', 'text': 'Video guide How it works, in two minutes Add an apartment, the tenant reports no hot water, you handle it 2:02', 'vid': 0"
+  },
+  {
+   "check": "en 1280x800 nothing of the film is requested before the press (no video element, no mp4 request)",
+   "ok": true,
+   "info": "[]"
+  },
+  {
+   "check": "en 1280x800 pressed: the player opens in place and plays WITH sound (time moves, not muted, controls on)",
+   "ok": true,
+   "info": "{'t': 5.868047, 'paused': False, 'muted': False, 'vol': 1, 'ctl': True, 'src': 'https://nad-lan.co.il/wp-content/uploads/2026/11/rentals-tutorial-en-phone.mp4', 'w': 560, 'h': 315, 'err': 0, 'rowHidden': True}"
+  },
+  {
+   "check": "en 1280x800 close puts the row back and removes the player",
+   "ok": true,
+   "info": "{'vid': 0, 'row': True}"
+  },
+  {
+   "check": "en 1280x800 no page errors and no console errors",
+   "ok": true,
+   "info": "[]"
+  }
+ ]
+}
