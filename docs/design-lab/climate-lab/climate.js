@@ -223,7 +223,13 @@ export function mountClimate(space, store, opts = {}) {
   const panes = new THREE.Group(); scene.add(panes);
   const paneMat = { in: new THREE.MeshBasicMaterial({ color: 0x0B7285, transparent: true, opacity: 0.34, side: THREE.DoubleSide, depthWrite: false }),
     out: new THREE.MeshBasicMaterial({ color: 0x66C2D0, transparent: true, opacity: 0.30, side: THREE.DoubleSide, depthWrite: false }),
-    rain: new THREE.MeshBasicMaterial({ color: 0x3B4CC0, transparent: true, opacity: 0.38, side: THREE.DoubleSide, depthWrite: false }) };
+    rain: new THREE.MeshBasicMaterial({ color: 0xC8D3DC, transparent: true, opacity: 0.85, side: THREE.DoubleSide, depthWrite: false, map: (() => { // drops and runs on the glass
+      const c = document.createElement('canvas'); c.width = 256; c.height = 512; const x = c.getContext('2d'); let s = 7; const r = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+      for (let i = 0; i < 70; i++) { const px = r() * 256, py = r() * 512, len = 20 + r() * 120; const g = x.createLinearGradient(0, py, 0, py + len); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(255,255,255,.75)');
+        x.strokeStyle = g; x.lineWidth = 1 + r() * 1.6; x.beginPath(); x.moveTo(px, py); x.bezierCurveTo(px + (r() - 0.5) * 6, py + len / 3, px + (r() - 0.5) * 6, py + len * 0.66, px + (r() - 0.5) * 4, py + len); x.stroke();
+        x.fillStyle = 'rgba(255,255,255,.8)'; x.beginPath(); x.arc(px + (r() - 0.5) * 4, py + len, 1.6 + r() * 1.4, 0, 7); x.fill(); }
+      for (let i = 0; i < 260; i++) { x.fillStyle = 'rgba(255,255,255,' + (0.25 + r() * 0.4) + ')'; x.beginPath(); x.arc(r() * 256, r() * 512, 0.6 + r() * 1.3, 0, 7); x.fill(); }
+      const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; return t; })() }) };
   for (const e of plan.env) {
     const g = new THREE.PlaneGeometry(e.width * M, (e.head - e.sill) * M), mesh = new THREE.Mesh(g, paneMat.in);
     const off = (e.w.t || 25) / 2 + 2; mesh.position.set((e.c[0] + e.n[0] * off) * M, ((e.sill + e.head) / 2) * M, (e.c[1] + e.n[1] * off) * M);
@@ -236,7 +242,9 @@ export function mountClimate(space, store, opts = {}) {
     const mm = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: op, depthWrite: false });
     const im = new THREE.InstancedMesh(g, mm, n); im.frustumCulled = false; im.visible = false; scene.add(im); return im;
   };
-  const windIm = rod(900, 0.012, 0.42, 0x0B7285, 0.9), rainIm = rod(1600, 0.008, 0.3, 0x3B4CC0, 0.85);
+  // round 2 (board v2): wind as many thin white trails that fade as they go (each particle draws a head and a thinning tail),
+  // rain as fine blue-grey streaks slanted by the wind
+  const TAIL = 4, windIm = rod(520 * TAIL, 0.0042, 0.34, 0xF4F7FA, 0.8), rainIm = rod(2200, 0.0035, 0.34, 0x9FB2C3, 0.7);
   const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(), tmpP = new THREE.Vector3(), X = new THREE.Vector3(1, 0, 0), tmpD = new THREE.Vector3();
   const rnd = (() => { let s = 803; return () => ((s = (s * 16807) % 2147483647) / 2147483647); })();
 
@@ -275,7 +283,7 @@ export function mountClimate(space, store, opts = {}) {
     }
     vent = { inlets, outlets, cross: pairs.length > 0, pairs, vT, mean };
     windParts = [];
-    const n = windIm.count;
+    const n = windIm.count / TAIL;
     for (let i = 0; i < n; i++) {
       const p = paths[i % paths.length]; if (!p) break;
       windParts.push({ p, u: rnd(), sp: (p.kind === 'outside' ? 0.07 : 0.11) * (0.75 + rnd() * 0.5), j: [(rnd() - 0.5) * 70, (rnd() - 0.5) * 50] });
@@ -291,11 +299,14 @@ export function mountClimate(space, store, opts = {}) {
     let i = 0;
     for (const q of windParts) {
       q.u += (q.sp * dt * 1000) / q.p.cum[q.p.cum.length - 1] * (q.p.kind === 'outside' ? 6 : 1.6); if (q.u > 1) q.u -= 1;
-      const [pos, dir] = at(q.p, q.u), l = Math.hypot(dir[0], dir[1], dir[2]) || 1, perp = [-dir[1] / l, dir[0] / l];
-      const fade = Math.min(1, q.u * 8, (1 - q.u) * 8);
-      tmpP.set((pos[0] + perp[0] * q.j[0]) * M, (pos[2] + q.j[1]) * M, (pos[1] + perp[1] * q.j[0]) * M);
-      tmpD.set(dir[0], dir[2], dir[1]).normalize(); tmpQ.setFromUnitVectors(X, tmpD); tmpS.set(Math.max(0.05, fade), 1, 1);
-      tmpM.compose(tmpP, tmpQ, tmpS); windIm.setMatrixAt(i++, tmpM);
+      const fade = Math.min(1, q.u * 6, (1 - q.u) * 3);
+      for (let k = 0; k < TAIL; k++) { // the head, then a tail that gets shorter and thinner behind it
+        const uu = q.u - k * (30 / q.p.cum[q.p.cum.length - 1]); if (uu < 0) { tmpM.makeScale(0, 0, 0); windIm.setMatrixAt(i++, tmpM); continue; }
+        const [pos, dir] = at(q.p, uu), l = Math.hypot(dir[0], dir[1], dir[2]) || 1, perp = [-dir[1] / l, dir[0] / l], w = (1 - k / TAIL) * fade;
+        tmpP.set((pos[0] + perp[0] * q.j[0]) * M, (pos[2] + q.j[1]) * M, (pos[1] + perp[1] * q.j[0]) * M);
+        tmpD.set(dir[0], dir[2], dir[1]).normalize(); tmpQ.setFromUnitVectors(X, tmpD); tmpS.set(Math.max(0.02, w), Math.max(0.15, w), Math.max(0.15, w));
+        tmpM.compose(tmpP, tmpQ, tmpS); windIm.setMatrixAt(i++, tmpM);
+      }
     }
     for (; i < windIm.count; i++) { tmpM.makeScale(0, 0, 0); windIm.setMatrixAt(i, tmpM); }
     windIm.instanceMatrix.needsUpdate = true;
@@ -315,6 +326,7 @@ export function mountClimate(space, store, opts = {}) {
       tmpP.set(px * M, q.y * M, pz * M); tmpS.setScalar(hide ? 0 : 1); tmpM.compose(tmpP, tmpQ, tmpS); rainIm.setMatrixAt(i++, tmpM);
     }
     rainIm.instanceMatrix.needsUpdate = true;
+    if (paneMat.rain.map) paneMat.rain.map.offset.y += dt * 0.12; // the runs slide down the glass
   }
   const rainWindows = () => { const vT = planDir((stormFrom() + 180) % 360, plan.north); return plan.env.filter((e) => e.n[0] * -vT[0] + e.n[1] * -vT[1] > 0.17); };
   function paintPanes() {

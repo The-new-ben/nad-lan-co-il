@@ -23,6 +23,9 @@ header .ttl{display:flex;flex-direction:column;gap:1px}
 header h1{margin:0;font-size:24px;line-height:28px;font-weight:800;letter-spacing:-.005em}
 header .apt{color:var(--ink2);font-size:15px}
 header .lab{border:1px solid var(--rule);color:var(--ink2);font-weight:600;font-size:13px;padding:3px 10px;border-radius:999px}
+header .back{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--cob);color:var(--cob);font-weight:700;font-size:15px;text-decoration:none}
+header .back:hover{background:var(--cob);color:#fff}
+header .back:focus-visible{outline:2px solid var(--cob);outline-offset:3px}
 main{display:grid;grid-template-columns:1fr 420px;height:calc(100vh - 72px)}
 #stage{position:relative;min-height:0;background:var(--deep);overflow:hidden}
 #space{position:absolute;inset:0}
@@ -101,6 +104,8 @@ td.num{white-space:nowrap}
   #cards{gap:10px}
 }
 </style>
+<link rel="stylesheet" href="./lab-v2.css"><!-- HAD-803 round 2 (local): the board v2 chrome; ?v2=0 keeps the previous chrome -->
+<script>if (new URLSearchParams(location.search).get('v2') === '0') document.querySelector('link[href="./lab-v2.css"]').remove();</script>
 </head>
 <body>
 <header>
@@ -110,6 +115,7 @@ td.num{white-space:nowrap}
     <button data-m="wind" aria-pressed="false"><img alt="">רוח</button>
     <button data-m="rain" aria-pressed="false"><img alt="">גשם</button>
   </div>
+  <a class="back" href="https://nad-lan.co.il/projects/ashira-sde-dov/">לעמוד הפרויקט</a>
   <span class="lab">מעבדה פנימית</span>
 </header>
 <main>
@@ -169,20 +175,24 @@ td.num{white-space:nowrap}
     </div>
   </aside>
 </main>
+<script type="module">if (new URLSearchParams(location.search).get('v2') !== '0') await import('./lab-v2.js');</script>
 <script type="module">
 import * as catalog from './designer/catalog.js';
 import { createStore, emptyDesign } from './designer/core.js';
 import { mountClimate, compassHe, MARKS, WIND, SOURCES, planDir, ilToUtc, solar, sunNow, sunsetYear, balconyRain, windAt } from './climate.js';
+import { mountRealRoom, REPLACES } from './real-room.js'; // HAD-803 real-materials v1 (local): ?real=0 shows the previous look
+const REAL = new URLSearchParams(location.search).get('real') !== '0';
 import { roomSpot, bestYaw } from './designer/walknav.js';
 const q = new URLSearchParams(location.search), FILM = q.has('film');
 const apt = await (await fetch('./designer/plans/ashira/E-4A.json.js')).json();
-const d0 = emptyDesign(apt); d0.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku] && i.sku !== 'gen.plant') /* the drawn plant is a blob: left out of the lab */.map((i) => ({ ...i }));
+const d0 = emptyDesign(apt); d0.items = (apt.starter || catalog.STARTER).filter((i) => catalog.ITEMS[i.sku] && i.sku !== 'gen.plant') /* the drawn plant is a blob: left out of the lab */.filter((i) => !REAL || !REPLACES.includes(i.id)).map((i) => ({ ...i }));
 const store = createStore(apt, d0);
 const { mountSpace } = await import('./designer/space.js');
 const space = mountSpace(document.getElementById('space'), store, catalog, { select() {}, camera() {}, walk() {}, rise: false });
 // the host rate-limits .glb and .json (429 after a burst): each model has a byte-identical twin named .glb.js, which it serves freely
 fetch('./designer/models/models.json.js').then((r) => r.json()).then((l) => space.useModels('./designer/models/', l.map((x) => ({ ...x, file: x.file + '.js' })))).catch(() => {});
 const C = mountClimate(space, store, { manual: FILM, onFrame: () => { ring(); } });
+const realRoom = REAL ? mountRealRoom(space, C, './models/e4a-furnished-v2.glb.js').catch((e) => { console.warn('real room not loaded', e); return null; }) : null;
 const $ = (id) => document.getElementById(id), esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const MONTHS = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
 const Y = 2026, doyOf = (m, d) => Math.round((Date.UTC(Y, m - 1, d) - Date.UTC(Y, 0, 1)) / 864e5) + 1;
@@ -376,7 +386,7 @@ function snap() {
 }
 async function pictures() { await C.skyReady; await frame(); for (const c of CARDS) { c.go(); paint(); await frame(); await frame(); document.querySelector(`.card[data-c="${c.id}"] img`).src = snap(); } for (const [m, c] of [['sun', 'living'], ['wind', 'draft'], ['rain', 'rain']]) { const im = document.querySelector(`.tabs button[data-m="${m}"] img`), src = document.querySelector(`.card[data-c="${c}"] img`); if (im && src) im.src = src.src; }
   pick(q.get('card') || 'sunset'); }
-view('walk'); onDate(); C.setMinute(9 * 60); paint(); await pictures();
+view('walk'); onDate(); C.setMinute(9 * 60); paint(); window.__real = await realRoom; await pictures();
 async function film() { // ~42 s: a summer day to sunset, a winter afternoon, the sea breeze, the land breeze, a winter storm
   const look = (bearing) => { const d = planDir(bearing, plan.north), w = space.lab.walk; space.setView({ mode: 'walk', x: w.x, y: w.y, yaw: Math.atan2(d[1], d[0]), pitch: -0.12 }); };
   const run = (ms, f) => new Promise((res) => { const t0 = performance.now(); const k = (now) => { const u = Math.min(1, (now - t0) / ms); f(u); if (u < 1) requestAnimationFrame(k); else res(); }; requestAnimationFrame(k); });
