@@ -328,7 +328,7 @@ function ribbon() {
   let line = '', seg = '';
   for (let t = r.rise; t <= r.set; t += 10) { const a = solar(ilToUtc(Y, st.m, st.d, t)).alt, pt = x(t).toFixed(1) + ',' + y(a).toFixed(1); line += (line ? ' L' : 'M') + pt; if (dd.minutes && t >= dd.first && t <= dd.last + 10) seg += (seg ? ' L' : 'M') + pt; }
   const now = Math.min(Math.max(st.minute, r.rise), r.set), sa = C.sun().alt;
-  el.innerHTML = `<div class="top"><b>${st.d} ב${MONTHS[st.m - 1]}</b><span>${dd.minutes ? `השמש ב${esc(short(room))} <span class="num">${hhmm(dd.first)}</span> עד <span class="num">${hhmm(dd.last + 10)}</span>` : `אין שמש ישירה ב${esc(short(room))} ביום הזה`}</span></div>` +
+  el.innerHTML = `<div class="top"><b>${st.d} ב${MONTHS[st.m - 1]}</b><span>${dd.minutes ? `השמש ${esc(inRoom(room))} <span class="num">${hhmm(dd.first)}</span> עד <span class="num">${hhmm(dd.last + 10)}</span>` : `אין שמש ישירה ${esc(inRoom(room))} ביום הזה`}</span></div>` +
     `<svg viewBox="0 0 ${W} 96" role="img" aria-label="מסלול השמש ביום שנבחר"><line x1="10" y1="76" x2="930" y2="76" stroke="#e3e1da" stroke-width="2"/>` +
     `<path d="${line}" stroke="#e3e1da" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + (seg ? `<path d="${seg}" stroke="#FFC400" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` : '') +
     (sa > -0.83 ? `<circle cx="${x(now).toFixed(1)}" cy="${y(sa).toFixed(1)}" r="14" fill="#FFC400" stroke="#14212b" stroke-width="4"/>` : '') +
@@ -348,6 +348,7 @@ const setDay = (m, d, min) => { $('doy').value = doyOf(m, d); C.setDate(Y, m, d)
 const living = plan.rooms.find((r) => r.type === 'living') || plan.rooms.slice().sort((a, b) => b.net - a.net)[0];
 const kitchen = plan.rooms.find((r) => r.type === 'kitchen' || /מטבח/.test(r.name_he));
 const short = (r) => roomName(r).replace('חדר דיור ופינת אוכל', 'הסלון').replace(/^חדר שינה הורים$/, 'חדר ההורים').replace(/^מטבח$/, 'המטבח');
+const inRoom = (r) => 'ב' + short(r).replace(/^ה(?=סלון|מטבח)/, ''); // 'בסלון', 'במטבח', 'בחדר ההורים' (never 'בהסלון')
 const runs = (ms) => { // months 1..12 → "מאפריל עד אוגוסט" (runs may wrap the new year)
   if (ms.length === 12) return 'כל השנה'; if (!ms.length) return '';
   const set = new Set(ms), out = []; let start = ms.find((m) => !set.has(((m + 10) % 12) + 1));

@@ -152,5 +152,12 @@ body.v2.m-sun [data-only~=sun],body.v2.m-wind [data-only~=wind],body.v2.m-rain [
   body.v2 #hud{bottom:calc(var(--dockh,180px) + 46px)}
   body.v2 #illus{bottom:calc(var(--dockh,180px) + 20px)}
 }
+/* phone (23.11 evening): the date line under the hour gets the dock's full width, so "15 ביוני · השמש בסלון 13:20 עד 19:50" reads whole on 360 and 390 */
+@media (max-width:899px){
+  body.v2 #dock.compact .row1{flex-wrap:wrap;row-gap:2px}
+  body.v2 #dock.compact .clock{display:contents}
+  body.v2 #dock.compact #timeL{flex:1;min-width:0}
+  body.v2 #dock.compact .sub{order:9;flex:1 0 100%;white-space:normal;overflow:visible;text-overflow:clip;line-height:16px}
+}
 body.v2 #dock .slot-storm{display:none!important}
 @media (prefers-reduced-motion: reduce){ body.v2 *{transition:none!important} }
