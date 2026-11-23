@@ -78,11 +78,24 @@
 		T.lines.forEach(function (l) { l.paths.forEach(function (p) { f.push({ type: 'Feature', properties: { id: l.id, kind: l.kind, st: l.status, c: l.color }, geometry: { type: 'LineString', coordinates: p } }); }); });
 		return { type: 'FeatureCollection', features: f };
 	}
+	var RANK = { open: 0, build: 1, plan: 2 };
 	function fcStations() {
+		/* an interchange (the same name within 250 m on two lines, e.g. אבן גבירול - ארלוזורוב on the Purple and Green lines) carries ONE
+		   label on its most advanced line; the other dots stay, silent, so names never pile up */
+		var silent = {};
+		stations.forEach(function (a) {
+			stations.forEach(function (b) {
+				if (a === b || silent[a.id] || silent[b.id]) { return; }
+				if (norm(a.he) === norm(b.he) && m(a.p, b.p) < 250) {
+					silent[(RANK[b.status] > RANK[a.status] || (RANK[b.status] === RANK[a.status] && b.id > a.id)) ? b.id : a.id] = 1;
+				}
+			});
+		});
 		return { type: 'FeatureCollection', features: stations.map(function (s) {
 			var l = lines[s.line] || {};
 			var sub = s.kind === 'rail' ? (s.status === 'build' ? W.build : '') : (s.status === 'open' ? '' : W[s.status]);
-			return { type: 'Feature', properties: { id: s.id, kind: s.kind, st: s.status, c: l.color || '#4b5a66', t: sname(s), t2: sub ? sname(s) + '\n' + sub : sname(s), r: s.kind === 'rail' ? 1 : 0 }, geometry: { type: 'Point', coordinates: s.p } };
+			var t = silent[s.id] ? '' : sname(s);
+			return { type: 'Feature', properties: { id: s.id, kind: s.kind, st: s.status, c: l.color || '#4b5a66', t: t, t2: t && sub ? t + '\n' + sub : t, r: s.kind === 'rail' ? 1 : 0 }, geometry: { type: 'Point', coordinates: s.p } };
 		}) };
 	}
 	function fcProjects() {
@@ -104,11 +117,16 @@
 		map.addLayer({ id: 'ts-dot', type: 'circle', source: 'ts', paint: {
 			'circle-radius': ['interpolate', ['linear'], ['zoom'], 8, ['case', ['==', ['get', 'r'], 1], 3, 1.6], 12, ['case', ['==', ['get', 'st'], 'plan'], 3.2, 4.4], 15, 7],
 			'circle-color': '#ffffff', 'circle-stroke-color': ['get', 'c'], 'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 8, 1.2, 12, 2.4, 15, 3.4] } });
-		map.addLayer({ id: 'tp-lab', type: 'symbol', source: 'tp', minzoom: 13.4, layout: { 'text-field': ['get', 't'], 'text-font': FONTR, 'text-size': 11.5, 'text-offset': [0, 0.9], 'text-anchor': 'top', 'text-max-width': 14, 'text-optional': true },
+		map.addLayer({ id: 'tp-lab', type: 'symbol', source: 'tp', minzoom: 13.4, layout: { 'text-field': ['get', 't'], 'text-font': FONTR, 'text-size': 11.5, 'text-variable-anchor': ['top', 'bottom'], 'text-radial-offset': 0.8, 'text-padding': 6, 'text-max-width': 14, 'text-optional': true },
 			paint: { 'text-color': '#14212b', 'text-halo-color': '#ffffff', 'text-halo-width': 1.6 } });
 		map.addLayer({ id: 'ts-lab', type: 'symbol', source: 'ts', layout: {
-			'text-field': ['step', ['zoom'], ['get', 't'], 12.5, ['get', 't2']], 'text-font': FONT, 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10.5, 14, 13],
-			'text-offset': [0, 0.85], 'text-anchor': 'top', 'text-max-width': 10, 'symbol-sort-key': ['case', ['==', ['get', 'st'], 'open'], 0, ['==', ['get', 'st'], 'build'], 1, 2] },
+			/* collisions (Ben's taste: one clear label, never a pile): MapLibre places by symbol-sort-key (running first, then under construction,
+			   then planned), tries four anchors, and hides a label that would touch another; planned stations and the state line come with zoom */
+			'text-field': ['step', ['zoom'], ['case', ['==', ['get', 'st'], 'plan'], '', ['get', 't']], 12.4, ['get', 't'], 13.8, ['get', 't2']], 'text-font': FONT,
+			'text-size': ['interpolate', ['linear'], ['zoom'], 10, 10.5, 14, 13],
+			'text-variable-anchor': ['top', 'bottom', 'right', 'left'], 'text-radial-offset': 0.75, 'text-justify': 'auto', 'text-padding': 7,
+			'text-allow-overlap': false, 'text-ignore-placement': false, 'text-optional': true, 'text-max-width': 9,
+			'symbol-sort-key': ['case', ['==', ['get', 'st'], 'open'], 0, ['==', ['get', 'st'], 'build'], 1, 2] },
 			paint: { 'text-color': '#14212b', 'text-halo-color': '#ffffff', 'text-halo-width': 1.8 }, minzoom: 10.6 });
 		map.addLayer({ id: 'tr-lab', type: 'symbol', source: 'tr', filter: ['==', ['geometry-type'], 'Point'], layout: { 'text-field': ['get', 't'], 'text-font': FONT, 'text-size': 11, 'text-allow-overlap': true }, paint: { 'text-color': '#255c70', 'text-halo-color': '#fff', 'text-halo-width': 1.6 } });
 		['ts-dot', 'ts-lab'].forEach(function (id) {
@@ -147,7 +165,27 @@
 		var tt = el('div'); tt.appendChild(k); tt.appendChild(el('h2', 'nltr-card-h', title)); if (sub) { tt.appendChild(el('p', 'nltr-card-sub', sub)); }
 		top.appendChild(tt); top.appendChild(x); card.appendChild(top);
 	}
-	function showCard() { card.hidden = false; root.classList.add('has-card'); }
+	function showCard() {
+		card.hidden = false; root.classList.add('has-card'); card.scrollTop = 0;
+		if (window.innerWidth >= 900) { return; }
+		/* the sheet sits at the bottom of the map; scroll the page so the map's bottom edge rests above the floating WhatsApp bar */
+		if (document.activeElement && document.activeElement.blur && document.activeElement.id === 'nltr-q') { document.activeElement.blur(); }
+		setTimeout(function () {
+			var r = card.parentNode.getBoundingClientRect(), dy = r.bottom - (window.innerHeight - barGap());
+			if (Math.abs(dy) > 8) { window.scrollTo(0, window.scrollY + dy); }
+		}, 60);
+	}
+	function barGap() {
+		/* the height the site's own floating bars take at the bottom of the screen (measured, so a change in the bar needs no release) */
+		var h = 0, els = document.querySelectorAll('body *');
+		for (var i = 0; i < els.length; i++) {
+			var e = els[i]; if (root.contains(e)) { continue; }
+			var cs = getComputedStyle(e); if (cs.position !== 'fixed' || cs.display === 'none' || cs.visibility === 'hidden') { continue; }
+			var b = e.getBoundingClientRect(); if (b.width < 120 || b.height < 30 || b.height > 160 || b.top < window.innerHeight * 0.55 || b.bottom > window.innerHeight + 2) { continue; }
+			h = Math.max(h, window.innerHeight - b.top);
+		}
+		return Math.min(200, h + 10);
+	}
 	function closeCard() { card.hidden = true; root.classList.remove('has-card'); setRing(null); try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* fine */ } }
 	function openStation(s) {
 		if (!s) { return; }

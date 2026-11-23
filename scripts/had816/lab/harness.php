@@ -23,7 +23,7 @@ function get_header() {
   echo '<!doctype html><html ' . $la . '><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>lab</title>';
   echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Noto+Serif+Hebrew:wght@600;700&display=swap">';
   foreach ($GLOBALS['H']['wp_head'] ?? array() as $f) { $f(); }
-  echo $GLOBALS['S'] . '<style>body{margin:0}.labbar{position:sticky;bottom:0;height:56px;background:#0f7a63;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Assistant}</style></head><body><header style="height:56px;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 16px;font:800 20px Assistant;color:#1f4b5c">נדל״ן</header>';
+  echo $GLOBALS['S'] . '<style>body{margin:0}.labbar{position:fixed;left:16px;right:90px;bottom:16px;height:56px;border-radius:30px;background:#0f7a63;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Assistant}</style></head><body><header style="height:56px;border-bottom:1px solid #e3e1da;display:flex;align-items:center;padding:0 16px;font:800 20px Assistant;color:#1f4b5c">נדל״ן</header>';
 }
 function get_footer() { echo '<div class="labbar">ייעוץ חינם (סרגל האתר)</div><script>' . $GLOBALS['IJS'] . '</script><script src="' . $GLOBALS['JS'] . '"></script></body></html>'; }
 require __DIR__ . '/../../../plugins/nadlan-config/inc/transit.php';

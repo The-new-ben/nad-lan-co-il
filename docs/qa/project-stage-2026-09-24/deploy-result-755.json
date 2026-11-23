@@ -1,0 +1,19 @@
+{
+  "released": "1.72.755",
+  "from": "1.72.754",
+  "live_before": {
+    "nadlan-config.php": "626ed913f0c68883477d8f4d6ba1269f"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-11-23 21:30:47",
+  "files": {
+    "inc/transit.php": "fd6e1c4707b901edf2a32bed235d5594",
+    "assets/transit/transit.js": "649216e9470b3802a116d008eaa98b67",
+    "assets/transit/transit.css": "c6b9d4e316f25c96857ff11b14c88955",
+    "assets/transit/transit-data.json": "0df2738bb1e2bbd5b29dd06aa69dae5c",
+    "nadlan-config.php": "bb809f9627abb7f4d0dbfd376251739d"
+  },
+  "post_after": {},
+  "checks": "verify_pages + served_exact (5 files at ?ver=1.72.755, byte for byte) + verify_order + verify_home_order + verify_kh + verify_nlb + verify_mkt + verify_ac + verify_vt + verify_adv (OFF stays off) + verify_phub + verify_buy: OK"
+}
