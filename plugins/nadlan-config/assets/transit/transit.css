@@ -1,0 +1,97 @@
+/* nadlan-config - the transit map (HAD-816). Site identity (Skin A ink and sea, Assistant + Noto Serif Hebrew) on a cool
+   concrete-grey map ground; the data colours are the lines' own. Selectors carry the main class twice where the theme
+   forces !important on headings, buttons and table cells (memory: css cascade hazard). */
+main.nltr-main{--ink:#14212b;--ink2:#3b4753;--line:#e3e1da;--sea:#2f6f86;--seah:#255c70;--ground:#eceeef;background:#ffffff;font-family:Assistant,"Segoe UI",Arial,sans-serif;color:var(--ink2)}
+main.nltr-main[dir=ltr]{direction:ltr;text-align:left}
+main.nltr-main .nltr-lead,main.nltr-main .nltr-sec,main.nltr-main .nltr{max-width:1320px;margin:0 auto;padding-inline:clamp(16px,3vw,32px);box-sizing:border-box}
+main.nltr-main .nltr-lead{padding-top:14px}
+main.nltr-main .nltr-crumbs{font-size:13px;margin:0 0 6px;color:#5b6670}
+main.nltr-main .nltr-crumbs a{color:var(--sea) !important;text-decoration:none}
+main.nltr-main .nltr-crumbs .nlbc-sep{margin:0 6px;color:#9aa3aa}
+main.nltr-main.nltr-main h1.nltr-h1{font-family:"Noto Serif Hebrew","David Libre",Georgia,serif !important;font-weight:700 !important;color:var(--ink) !important;font-size:clamp(21px,3.2vw,34px) !important;line-height:1.24 !important;margin:0 0 8px !important;letter-spacing:-.005em !important;text-transform:none !important;text-wrap:balance;text-align:start !important}
+main.nltr-main[dir=ltr] h1.nltr-h1{font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-weight:800 !important}
+main.nltr-main .nltr-answer{font-size:clamp(14.5px,1.5vw,16.5px);line-height:1.55;max-width:900px;margin:0 0 10px;color:var(--ink2)}
+/* bar: search + chips */
+main.nltr-main .nltr-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:0 0 10px}
+main.nltr-main .nltr-search{position:relative;flex:1 1 320px;display:flex;gap:6px;margin:0}
+main.nltr-main .nltr-search input{flex:1;min-width:0;height:44px;border:1px solid #c9ccd0 !important;border-radius:999px !important;padding:0 16px !important;font:15px Assistant,"Segoe UI",Arial,sans-serif !important;color:var(--ink) !important;background:#fff !important;box-shadow:none !important;margin:0 !important}
+main.nltr-main .nltr-search input:focus{outline:2px solid var(--sea);outline-offset:1px}
+main.nltr-main.nltr-main .nltr-search button[type=submit]{height:44px !important;padding:0 18px !important;border-radius:999px !important;background:var(--sea) !important;color:#fff !important;border:0 !important;font:700 14.5px Assistant,"Segoe UI",Arial,sans-serif !important;opacity:1 !important;cursor:pointer}
+main.nltr-main .nltr-res{position:absolute;top:48px;inset-inline:0;z-index:30;list-style:none;margin:0 !important;padding:6px !important;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(20,33,43,.14);max-height:320px;overflow:auto}
+main.nltr-main .nltr-res[hidden]{display:none !important}
+main.nltr-main .nltr-res li{margin:0 !important;padding:0 !important;list-style:none}
+main.nltr-main.nltr-main .nltr-res button{display:block;width:100%;text-align:start;min-height:40px;padding:8px 12px !important;border:0 !important;border-radius:10px !important;background:transparent !important;color:var(--ink) !important;font:600 14px Assistant,"Segoe UI",Arial,sans-serif !important;opacity:1 !important;height:auto !important;cursor:pointer}
+main.nltr-main.nltr-main .nltr-res button:hover,main.nltr-main.nltr-main .nltr-res button:focus{background:#f1f3f4 !important}
+main.nltr-main.nltr-main .nltr-res button.is-addr{color:var(--sea) !important}
+main.nltr-main .nltr-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:0 1 auto;max-width:100%;padding-bottom:2px}
+main.nltr-main .nltr-chips::-webkit-scrollbar{display:none}
+main.nltr-main.nltr-main .nltr-chip{flex:none;display:inline-flex;align-items:center;gap:7px;height:38px !important;padding:0 13px !important;border-radius:999px !important;border:1px solid #c9ccd0 !important;background:#fff !important;color:var(--ink) !important;font:600 13.5px Assistant,"Segoe UI",Arial,sans-serif !important;opacity:1 !important;cursor:pointer;white-space:nowrap}
+main.nltr-main.nltr-main .nltr-chip[aria-pressed=true]{background:var(--ink) !important;border-color:var(--ink) !important;color:#fff !important}
+main.nltr-main .nltr-sw{display:inline-block;width:16px;height:4px;border-radius:2px;background:#4b5a66;flex:none;vertical-align:middle}
+main.nltr-main .nltr-sw--red{background:#d7262c}main.nltr-main .nltr-sw--purple{background:#7b3fa0}main.nltr-main .nltr-sw--green{background:#2e9e4a}
+main.nltr-main .nltr-sw--m1,main.nltr-main .nltr-sw--m2,main.nltr-main .nltr-sw--m3{height:0;background:none;border-top:3px dashed #1f6fc5}
+main.nltr-main .nltr-sw--m2{border-top-color:#00897b}main.nltr-main .nltr-sw--m3{border-top-color:#c2185b}
+main.nltr-main .nltr-sw--rail{background:#4b5a66}
+main.nltr-main .nltr-sw--proj{width:9px;height:9px;border-radius:50%;background:#14212b;border:2px solid #fff;box-shadow:0 0 0 1px #c9ccd0}
+main.nltr-main .nltr-chip[aria-pressed=true] .nltr-sw--proj{box-shadow:none}
+/* stage */
+main.nltr-main .nltr-stage{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ground)}
+main.nltr-main .nltr-map{height:min(72svh,720px);min-height:400px;background:var(--ground);position:relative}
+main.nltr-main .nltr-wait{margin:0;padding:24px;font-size:14px;color:var(--ink2)}
+main.nltr-main .maplibregl-map{font:12px Assistant,"Segoe UI",Arial,sans-serif}
+main.nltr-main .nltr-whint{position:absolute;inset-inline:0;top:42%;margin:auto;width:max-content;max-width:86%;padding:10px 16px;border-radius:12px;background:rgba(20,33,43,.82);color:#fff;font:600 14px Assistant,sans-serif;opacity:0;transition:opacity .2s;pointer-events:none;z-index:5}
+main.nltr-main .nltr-whint.is-on{opacity:1}
+/* the card: a side panel on wide screens, a sheet at the bottom of the map on phones (never over the page's WhatsApp bar) */
+main.nltr-main .nltr-card{position:absolute;z-index:8;background:#fff;box-sizing:border-box;padding:14px 16px 16px;overflow:auto;overscroll-behavior:contain;color:var(--ink2)}
+main.nltr-main .nltr-card[hidden]{display:none !important}
+@media (min-width:900px){main.nltr-main .nltr-card{top:12px;bottom:12px;inset-inline-start:12px;width:370px;border-radius:14px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(20,33,43,.14)}}
+@media (max-width:899px){main.nltr-main .nltr-card{inset-inline:0;bottom:0;max-height:58%;border-radius:16px 16px 0 0;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(20,33,43,.14)}}
+main.nltr-main .nltr-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+main.nltr-main .nltr-kick{display:flex;align-items:center;gap:7px;font:700 12.5px Assistant,sans-serif;color:var(--ink2)}
+main.nltr-main.nltr-main h2.nltr-card-h{margin:4px 0 2px !important;font:800 22px/1.18 Assistant,"Segoe UI",Arial,sans-serif !important;color:var(--ink) !important;letter-spacing:0 !important;text-transform:none !important}
+main.nltr-main .nltr-card-sub{margin:0;font-size:13px;color:var(--ink2)}
+main.nltr-main.nltr-main .nltr-x{flex:none;width:44px !important;height:44px !important;padding:0 !important;border-radius:999px !important;border:1px solid var(--line) !important;background:#fff !important;color:var(--ink) !important;font:500 22px/1 Assistant,sans-serif !important;opacity:1 !important;cursor:pointer}
+main.nltr-main.nltr-main h3.nltr-card-h3{margin:14px 0 8px !important;font:700 15px Assistant,"Segoe UI",Arial,sans-serif !important;color:var(--ink) !important;letter-spacing:0 !important}
+main.nltr-main .nltr-mini{display:flex;flex-wrap:wrap;gap:6px}
+main.nltr-main.nltr-main .nltr-mchip{display:inline-flex;align-items:center;gap:6px;min-height:34px;height:auto !important;padding:4px 10px !important;border-radius:999px !important;background:#f1f3f4 !important;border:0 !important;color:var(--ink) !important;font:600 12.5px Assistant,sans-serif !important;opacity:1 !important;cursor:pointer;text-align:start}
+main.nltr-main .nltr-list{list-style:none;margin:0 !important;padding:0 !important;display:flex;flex-direction:column;gap:6px}
+main.nltr-main .nltr-list li{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:0 !important;list-style:none}
+main.nltr-main .nltr-list a{color:var(--ink) !important;font-weight:600;text-decoration:none;font-size:14px;line-height:1.35}
+main.nltr-main .nltr-list a:hover{color:var(--sea) !important;text-decoration:underline}
+main.nltr-main.nltr-main .nltr-link{display:inline-flex;align-items:center;gap:7px;padding:0 !important;height:auto !important;min-height:32px;border:0 !important;background:none !important;color:var(--ink) !important;font:600 13.5px Assistant,sans-serif !important;opacity:1 !important;cursor:pointer;text-align:start}
+main.nltr-main .nltr-min{flex:none;font:700 13px Assistant,sans-serif;color:#1f4b5c;white-space:nowrap}
+main.nltr-main .nltr-go{display:inline-flex;align-items:center;height:40px;padding:0 16px;margin-top:10px;border-radius:999px;background:var(--sea);color:#fff !important;font:700 14px Assistant,sans-serif;text-decoration:none}
+main.nltr-main .nltr-go:hover{background:var(--seah)}
+main.nltr-main .nltr-note{font-size:13px;color:var(--ink2);margin:8px 0 0}
+main.nltr-main .nltr-fine{font-size:11.5px;color:#5b6670;margin:12px 0 0;line-height:1.45}
+main.nltr-main .nltr-src{font-size:12.5px;color:#5b6670;margin:8px 0 0}
+main.nltr-main .nltr-src a{color:var(--sea) !important}
+main.nltr-main .nltr-sr{position:absolute !important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* text sections */
+main.nltr-main .nltr-sec{padding-top:28px}
+main.nltr-main .nltr-sec:last-child{padding-bottom:48px}
+main.nltr-main.nltr-main .nltr-sec h2{font-family:"Noto Serif Hebrew","David Libre",Georgia,serif !important;font-weight:600 !important;font-size:clamp(19px,2.2vw,24px) !important;color:var(--ink) !important;margin:0 0 12px !important;letter-spacing:0 !important;line-height:1.3 !important;text-transform:none !important}
+main.nltr-main[dir=ltr] .nltr-sec h2{font-family:Assistant,"Segoe UI",Arial,sans-serif !important;font-weight:800 !important}
+main.nltr-main.nltr-main .nltr-sec h3{font:700 16px Assistant,"Segoe UI",Arial,sans-serif !important;color:var(--ink) !important;margin:16px 0 4px !important;letter-spacing:0 !important}
+main.nltr-main .nltr-sec p{font-size:15.5px;line-height:1.6;max-width:900px;margin:0 0 8px}
+main.nltr-main .nltr-sec a{color:var(--sea)}
+main.nltr-main .nltr-tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;max-width:100%}
+main.nltr-main.nltr-main table.nltr-t{width:100%;border-collapse:collapse;margin:0 !important;font-size:14.5px;background:#fff}
+main.nltr-main.nltr-main table.nltr-t caption{caption-side:bottom;text-align:start;font-size:12.5px;color:#5b6670;padding:8px 12px}
+main.nltr-main.nltr-main table.nltr-t th,main.nltr-main.nltr-main table.nltr-t td{padding:9px 12px !important;border:0 !important;border-bottom:1px solid #eeede8 !important;text-align:start !important;vertical-align:middle;color:var(--ink2) !important;background:none !important;font-weight:400}
+main.nltr-main.nltr-main table.nltr-t thead th{font-weight:700 !important;color:var(--ink) !important;background:#f6f7f7 !important;font-size:13px}
+main.nltr-main.nltr-main table.nltr-t tbody th{font-weight:600 !important;color:var(--ink) !important}
+main.nltr-main.nltr-main table.nltr-t tbody th .nltr-sw{margin-inline-end:8px}
+main.nltr-main .nltr-t a{color:var(--ink) !important;text-decoration:none}
+main.nltr-main .nltr-t a:hover{color:var(--sea) !important;text-decoration:underline}
+main.nltr-main .nltr-det{border:1px solid var(--line);border-radius:12px;margin:0 0 8px;background:#fff}
+main.nltr-main .nltr-det summary{cursor:pointer;padding:12px 14px;font:700 15px Assistant,sans-serif;color:var(--ink);display:flex;align-items:center;gap:10px}
+main.nltr-main .nltr-det p{padding:0 14px 12px;font-size:14.5px}
+main.nltr-main .nltr-sources ul{margin:0 0 10px;padding-inline-start:20px;font-size:14.5px;line-height:1.6}
+@media (max-width:767px){
+	main.nltr-main .nltr-map{height:62svh;min-height:380px}
+	main.nltr-main .nltr-stage{border-radius:12px;margin-inline:-4px}
+	main.nltr-main .nltr-search{flex-basis:100%}
+	main.nltr-main .nltr-bar{gap:8px;margin-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){main.nltr-main *{transition:none !important}}
