@@ -283,8 +283,24 @@ add_action( 'loop_start', function ( $query ) {
 	$term = get_queried_object();
 	if ( ! $term || empty( $term->slug ) ) { return; }
 	$printed = true;
-	echo nadlan_cmpmap_render( array( 'compound' => $term->slug ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	$html = nadlan_cmpmap_render( array( 'compound' => $term->slug ) );
+	// HAD-817 (23.11.2026): on this block theme WordPress renders the whole template, query loop included, BEFORE it prints
+	// <!DOCTYPE>, so an echo here lands at byte 0 of the page (quirks mode; canonical and robots read from the body). The block is
+	// held and printed first thing in <body> (wp_body_open), exactly where the browser places it today.
+	// TEMPORARY STAGED ROLLOUT (coordinator, Ben's word 23.11.2026): only the compounds in this list get the fix; the list and the
+	// old echo below are removed at stage 3 so every compound takes the wp_body_open path.
+	if ( in_array( rawurldecode( (string) $term->slug ), array( 'sde-dov' ), true ) ) {
+		$GLOBALS['nadlan_cmpmap_body_html'] = $html;
+		return;
+	}
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }, 1 );
+
+add_action( 'wp_body_open', function () {
+	if ( empty( $GLOBALS['nadlan_cmpmap_body_html'] ) ) { return; }
+	echo $GLOBALS['nadlan_cmpmap_body_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	$GLOBALS['nadlan_cmpmap_body_html'] = '';
+}, 0 );
 
 if ( ! function_exists( 'nadlan_cmpmap_largest_pins_count' ) ) {
 	function nadlan_cmpmap_largest_pins_count() {
