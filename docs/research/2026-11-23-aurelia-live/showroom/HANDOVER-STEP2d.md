@@ -42,6 +42,11 @@ another hand at the same minute; my duplicate was removed).
 - Phones: the Mapbox logo sits behind the walking-range column (older than 761).
 - The deals line says "5 חדרים" for the 6-room flat (the data bucket is r5); not changed.
 - The view tags in the small panel view still crowd on phones.
+- Floors with sample flats in flats.json: 6 to 46 (41 floors, none missing); floor 47 and floors 1-5 carry no sample flat, so
+  they cannot be chosen as a flat (nothing invented). Whether 47 should be choosable is a data question for the coordinator.
 - (d) tower from the sea + aligned tap layer, (e) floors to 47 check (press3 found every tested floor choosable; a full
   47-floor sweep was not run), (f) board PNG export to board-png/: NOT started.
 - Not checked: a real phone, iOS Safari, the call room itself (answered "not now").
+
+## RELEASE DONE 1.72.761
+deploy761.py ended RELEASE 1.72.761 LIVE, no bridge left, exit=0, 0 failed rows; RELEASE DONE line written, lock released. 1.72.762 is NOT claimed.
