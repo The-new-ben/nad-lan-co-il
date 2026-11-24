@@ -1,7 +1,7 @@
 {
  "vp": "360x740",
  "live": true,
- "at": "2026-11-24 05:15:36",
+ "at": "2026-11-24 06:46:12",
  "steps": [
   {
    "step": "cue on the tower before any tap",
@@ -33,7 +33,7 @@
    "mode": "flat",
    "view": "street",
    "sel": "20-2",
-   "pull": 10070,
+   "pull": 10094,
    "beam": 270,
    "tab": "cut"
   },
@@ -108,14 +108,14 @@
   {
    "step": "cue on the map after the tap",
    "ok": true,
-   "shown_at": 19188,
-   "now": 26692,
+   "shown_at": 21115,
+   "now": 28822,
    "map": true
   },
   {
    "step": "pull-out about 1.2 s (slowed run excluded)",
    "ok": true,
-   "pull_ms": 10070
+   "pull_ms": 10094
   },
   {
    "step": "compact map: no nameless plan dot, no overlapping price pill",
@@ -167,7 +167,7 @@
    "ok": true,
    "plan": [
     53,
-    251
+    258
    ],
    "barTop": 542,
    "cut_below": []

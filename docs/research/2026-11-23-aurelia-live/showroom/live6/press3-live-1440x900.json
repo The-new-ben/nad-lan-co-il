@@ -1,7 +1,7 @@
 {
  "vp": "1440x900",
  "live": true,
- "at": "2026-11-24 05:19:32",
+ "at": "2026-11-24 06:50:19",
  "steps": [
   {
    "step": "cue on the tower before any tap",
@@ -33,7 +33,7 @@
    "mode": "flat",
    "view": "street",
    "sel": "20-2",
-   "pull": 10544,
+   "pull": 10167,
    "beam": 270,
    "tab": "cut"
   },
@@ -65,19 +65,19 @@
   {
    "step": "cue on the map after the tap",
    "ok": true,
-   "shown_at": 21201,
-   "now": 28480,
+   "shown_at": 19647,
+   "now": 27687,
    "map": true
   },
   {
    "step": "pull-out about 1.2 s (slowed run excluded)",
    "ok": true,
-   "pull_ms": 10544
+   "pull_ms": 10167
   },
   {
    "step": "compact map: no nameless plan dot, no overlapping price pill",
    "ok": true,
-   "pills": 6,
+   "pills": 5,
    "overlap": 0,
    "nameless_plan_dots": 0,
    "named_plans": 2
@@ -85,7 +85,7 @@
   {
    "step": "compact map: no price pill on a marker, none under the bars",
    "ok": true,
-   "pills": 6,
+   "pills": 5,
    "marks": 1,
    "pill_on_marker": [],
    "pills_under_bars": 0,
@@ -131,8 +131,8 @@
    "step": "call: nobody on duty -> honest choice, the sheet rests above the bars",
    "ok": true,
    "sheet": [
-    352,
-    527
+    45,
+    220
    ],
    "barTop": 754
   },

@@ -622,7 +622,7 @@ CHECKS = [
     ('/projects/rainbow-tel-aviv/?t764=1', ['<h1', 'id="nlpjx-unimap"'], ['Fatal error', 'Warning</b>', 'Notice</b>', 'name="robots" content="noindex'] + ['nlas-cfg', 'aurelia-viewer', 'nlas-places'], []),
     ('/projects/h-infinity-somail-tel-aviv/?t764=1', ['<h1'], ['Fatal error', 'Warning</b>', 'Notice</b>', 'name="robots" content="noindex'] + ['nlas-cfg', 'aurelia-viewer', 'nlas-places'], []),
     ('/projects/ashira-sde-dov/?t764=1', ['<h1', 'id="nlpjx-unimap"'], ['Fatal error', 'Warning</b>', 'Notice</b>', 'name="robots" content="noindex'] + ['nlas-cfg', 'aurelia-viewer', 'nlas-places'], []),
-    ('/wp-content/plugins/nadlan-config/assets/aurelia-viewer/showroom.js?t764=1', ['window.NLAS = {', 'function bandFlat(', 'function mapTidy(', 'function viewBig(', 'function fitDesk(', 'function planBig(', 'function planRooms(', 'var CUTLAB', 'function clearRest(', 'it never drops more than 40 px', 'function fitRest(', 'small ? 3 : 99', 'function rangeFit(', 'גררו לצדדים לכל הדירה', '5 חדרים ומעלה', '--nlas-mapcov', 'queryRenderedFeatures', 'בחרו דירה על המגדל', 'האלומה מראה לאן הדירה פונה', 'לחצו על מקום בנוף'], ['רכיב', 'אובייקט'], []),
+    ('/wp-content/plugins/nadlan-config/assets/aurelia-viewer/showroom.js?t764=1', ['window.NLAS = {', 'function bandFlat(', 'function mapTidy(', 'function viewBig(', 'function fitDesk(', 'function planBig(', 'function planRooms(', 'var CUTLAB', 'function clearRest(', 'it never drops more than 40 px', 'function fitRest(', 'small ? 3 : 99', 'if (w <= 60) break;', 'function rangeFit(', 'גררו לצדדים לכל הדירה', '5 חדרים ומעלה', '--nlas-mapcov', 'queryRenderedFeatures', 'בחרו דירה על המגדל', 'האלומה מראה לאן הדירה פונה', 'לחצו על מקום בנוף'], ['רכיב', 'אובייקט'], []),
     ('/wp-content/plugins/nadlan-config/assets/aurelia-viewer/showroom.css?t764=1', ['.nlas .nlas-grid { display: grid;', '.nlas .nlas-band', '.nlas-cue', '.nlas-viewbig', '1.72.761 (HAD-810', 'var(--nlas-pmh, 232px)', '.nlas .pn-room', 'nlas-planbig', '1.72.762 (HAD-810', '1.72.763 (HAD-810', '.nlas .nlas-mark.below', '--nlas-rgh', 'max(56px, calc(var(--nlas-pmh, 232px) - 56px))'], [], []),
     ('/wp-content/plugins/nadlan-config/assets/aurelia-viewer/flats.json?t764=1', ['"building":{"floors":47,"flats":320', '"id":"47-1"', '"id":"6-1"'], ['"id":"48-'], []),
     ('/projects/aurelia/?t764=1', ['<h1 id="nl-project-page-title" class="nlpt-h1">Aurelia Sports', 'assets/aurelia-viewer/showroom.js?ver=1.72.764', 'assets/aurelia-viewer/showroom.css?ver=1.72.764', 'id="nlpjx-unimap"', 'data-lat="32.11"'], ['Fatal error', 'Warning</b>', 'Notice</b>', 'name="robots" content="noindex'] + ['assets/nudge/price-alert.js'], []),
@@ -2663,7 +2663,7 @@ def rollback(created_any, posts_state=None):
 import signal  # noqa: E402
 
 WANT_LIVE = "1.72.763"  # the checks name ?ver=1.72.764: this runner is for the release right after 1.72.462
-PIN = {'assets/aurelia-viewer/showroom.js': 'b80d9c37c5dd9ed8f2b30048508a3258', 'assets/aurelia-viewer/showroom.css': 'df220e16b82f7cb5fd29df8e8f7e7075'}
+PIN = {'assets/aurelia-viewer/showroom.js': 'eb986e1f77f4e313c5b548cabfc2e613', 'assets/aurelia-viewer/showroom.css': '2c699c53b71977eab062de22ea00e329'}
 NEWFILES = set()  # 1.72.764
 FILES = ['assets/aurelia-viewer/showroom.js', 'assets/aurelia-viewer/showroom.css']
 

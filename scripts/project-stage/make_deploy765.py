@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kl_release  # noqa: E402
 PREV, NEW = 764, 765
 rp = json.load(open(os.path.join(kl_release.QA, "deploy-result-%d.json" % PREV), encoding="utf-8"))
-assert str(rp.get("state", "")).startswith("released"), rp.get("state")
+assert str(rp.get("state", "")).startswith(("released", "rolled back")), rp.get("state")  # 765: 764 rolled back on a check-row text (no 1.72.764 header in the CSS); 765 carries its changes
 A = "/wp-content/plugins/nadlan-config/assets/aurelia-viewer/"
 BAD = "['Fatal error', 'Warning</b>', 'Notice</b>', 'name=\"robots\" content=\"noindex']"
 NOT = "['nlas-cfg', 'aurelia-viewer', 'nlas-places']"
@@ -27,4 +27,7 @@ d = open(dp, encoding="utf-8").read()
 d, n = re.subn(r'print\("\[plan\] nadlan-config\.php: [^"]*"\)', 'print("[plan] nadlan-config.php: the version only; the module list stays (\'aurelia-viewer\' appended in 1.72.758)")', d)
 assert n >= 1, n
 open(dp, "w", encoding="utf-8", newline="\n").write(d)
+d2 = open(dp, encoding="utf-8").read()
+assert d2.count('WANT_LIVE = "1.72.764"') == 1
+open(dp, "w", encoding="utf-8", newline=chr(10)).write(d2.replace('WANT_LIVE = "1.72.764"', 'WANT_LIVE = "1.72.763"  # 764 rolled back: live stays 1.72.763'))
 print("deploy765.py ready (showroom.js + showroom.css)")

@@ -1,10 +1,10 @@
 OK  cue on the tower before any tap {"hint": "בחרו דירה על המגדל"}
 OK  a flat is on the picture {"pt": {"x": 813.9905555555556, "y": 318.37152777777777}}
 OK  skip button has its own place (not on the label, the call or the mark) {"hit": [], "box": [62, 236, 56, 34]}
-OK  flat open after the pull-out {"mode": "flat", "view": "street", "sel": "20-2", "pull": 10278, "beam": 270, "tab": "cut"}
+OK  flat open after the pull-out {"mode": "flat", "view": "street", "sel": "20-2", "pull": 10238, "beam": 270, "tab": "cut"}
 OK  no showroom control under the site's bars (after the tap) {"under": [], "bars": [["nl-sticky", 654, 16, 230], ["nla11y", 648, 1208, 52], ["nlcta", 574, 20, 298]]}
-OK  cue on the map after the tap {"shown_at": 20029, "now": 26672, "map": true}
-OK  pull-out about 1.2 s (slowed run excluded) {"pull_ms": 10278}
+OK  cue on the map after the tap {"shown_at": 20008, "now": 27155, "map": true}
+OK  pull-out about 1.2 s (slowed run excluded) {"pull_ms": 10238}
 OK  compact map: no nameless plan dot, no overlapping price pill {"pills": 5, "overlap": 0, "nameless_plan_dots": 0, "named_plans": 1}
 OK  compact map: no price pill on a marker, none under the bars {"pills": 5, "marks": 1, "pill_on_marker": [], "pills_under_bars": 0, "offset": 3}
 OK  no inner scrollbars, no layer left over the tower {}

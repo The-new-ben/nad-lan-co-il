@@ -1,7 +1,7 @@
 {
  "vp": "1366x768",
  "live": true,
- "at": "2026-11-24 05:18:36",
+ "at": "2026-11-24 06:49:19",
  "steps": [
   {
    "step": "cue on the tower before any tap",
@@ -33,7 +33,7 @@
    "mode": "flat",
    "view": "street",
    "sel": "20-2",
-   "pull": 10319,
+   "pull": 10378,
    "beam": 270,
    "tab": "cut"
   },
@@ -65,31 +65,31 @@
   {
    "step": "cue on the map after the tap",
    "ok": true,
-   "shown_at": 20240,
-   "now": 27327,
+   "shown_at": 24019,
+   "now": 31035,
    "map": true
   },
   {
    "step": "pull-out about 1.2 s (slowed run excluded)",
    "ok": true,
-   "pull_ms": 10319
+   "pull_ms": 10378
   },
   {
    "step": "compact map: no nameless plan dot, no overlapping price pill",
    "ok": true,
-   "pills": 5,
+   "pills": 6,
    "overlap": 0,
    "nameless_plan_dots": 0,
-   "named_plans": 1
+   "named_plans": 2
   },
   {
    "step": "compact map: no price pill on a marker, none under the bars",
    "ok": true,
-   "pills": 5,
+   "pills": 6,
    "marks": 1,
    "pill_on_marker": [],
    "pills_under_bars": 0,
-   "offset": 3
+   "offset": 4
   },
   {
    "step": "no inner scrollbars, no layer left over the tower",

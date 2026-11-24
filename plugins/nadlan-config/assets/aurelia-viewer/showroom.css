@@ -477,3 +477,8 @@
   .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-bigbtn { margin: 8px 16px 0; }
 }
 @media (max-width: 900px) and (max-height: 760px) { .nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-sim, .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-bigbtn { margin-top: 4px; } }
+/* ---------------------------------------------------------------- 1.72.764 (HAD-810: short desktops, view tags, plan gutter, the 360 penthouse fit; re-released after a check-row text rollback) */
+/* 765 (prepared, not released): the site's own WhatsApp bar states white text (showroom-engine/showroom.css .nl-sticky__wa); on this
+   page the skin's link colour wins the cascade (teal on green, about 1.2:1). Only the colour the bar itself states is restored here;
+   its place, size, wording and background stay the bar's own. */
+body.nl-skin-a .entry-content #nl-sticky .nl-sticky__wa, body.nl-skin-a #nl-sticky .nl-sticky__wa, #nl-sticky a.nl-sticky__wa { color: #fff; }

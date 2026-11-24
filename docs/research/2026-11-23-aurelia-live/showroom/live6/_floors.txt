@@ -1,0 +1,8 @@
+OK  data: the building is 47 floors / 320 flats, residential floors 6..47 each with a sample flat {"building": {"floors": 47, "flats": 320, "res": [6, 47], "note": "גודל הבניין: 47 קומות ו-320 דירות. הדירות בקובץ הן דירות לדוגמה מהמודל, לא ספירת הדירות בבניין."}, "floors": [6, 47, 42]}
+OK  tower picture: every floor with a balcony on the picture opens its own floor {"chosen": 41, "wrong": [], "not_on_picture": [47]}
+OK  stepper: every floor 6..47 opens, one press each {"missing": [], "last": 47, "stuck": null}
+OK  stepper: up is off on 47, down is off on 6, the range is 6..47 {"up47": true, "down6": true, "range": "קומות 6 עד 47"}
+OK  47th floor flat: a sample flat, 6 rooms, the deals line groups 5 rooms and up {"has": ["דירה לדוגמה", "קומה 47", "5 חדרים ומעלה"]}
+OK  no visible 265 / 46 floors as the building's size {"found": []}
+OK  console errors {"errors": []}
+BAD: 0 of 7

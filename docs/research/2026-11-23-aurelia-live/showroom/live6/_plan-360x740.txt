@@ -1,18 +1,18 @@
-OK  20-2: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795490503363}}, "sy": 3590, "log": null}
-OK  20-2 (5 rooms): plan large {"pic": [22, 53, 317, 198]}
+OK  20-2: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795495964036}}, "sy": 3590, "log": null}
+OK  20-2 (5 rooms): plan large {"pic": [16, 53, 327, 205]}
 OK  20-2: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "מרפסת לים"], "overlap": 0}
 OK  20-2: the rooms listed under the picture {"legend": ["סלון, אוכל ומטבח 51 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 14 מ״ר", "חדר שינה 13 מ״ר", "חדר שינה 13 מ״ר", "רחצה 10 מ״ר", "כניסה 9 מ״ר"]}
-OK  20-7: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 0], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795490515095}}, "sy": 3592, "log": null}
+OK  20-7: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 0], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795495975863}}, "sy": 3592, "log": null}
 OK  20-7 (3 rooms): plan large {"pic": [58, 53, 244, 152]}
 OK  20-7: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "מרפסת"], "overlap": 0}
 OK  20-7: the rooms listed under the picture {"legend": ["סלון, אוכל ומטבח 20 מ״ר", "חדר הורים 13 מ״ר", "ממ״ד 11 מ״ר", "רחצה 8 מ״ר", "כניסה 7 מ״ר"]}
-BAD 46-1: at rest no showroom button sits half under the site's bars {"half": ["שיחת וידאו עכשיו @544-590 bar 542"], "rest": {"score": [1, 3, 1], "last": {"half": 1, "top": 57, "dy": 0, "bars": 3, "at": 1795490525727}}, "sy": 3521, "log": [[10492, 3582, "1/0/0", "680:12-348 674:294-346 542:12-271"], [10507, 3582, "1/0/0", "680:12-348 674:294-346 542:12-271"], [11435,
-OK  46-1 (6 rooms): plan large {"pic": [-103, 89, 457, 171]}
+OK  46-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795495986553}}, "sy": 3557, "log": null}
+OK  46-1 (6 rooms): plan large {"pic": [-83, 53, 437, 164]}
 OK  46-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "מרפסת לים"], "overlap": 0}
 OK  46-1: the rooms listed under the picture {"legend": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר"]}
-BAD 47-1: at rest no showroom button sits half under the site's bars {"half": ["שיחת וידאו עכשיו @544-590 bar 542"], "rest": {"score": [1, 3, 1], "last": {"half": 1, "top": 57, "dy": 0, "bars": 3, "at": 1795490536536}}, "sy": 3521, "log": [[21135, 3536, "2/3/0", "680:12-348 674:294-346 542:12-271"], [21144, 3528, "2/3/0", "680:12-348 674:294-346 542:12-271"], [22058,
-OK  47-1 (6 rooms): plan large {"pic": [-103, 89, 457, 171]}
+OK  47-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795495997476}}, "sy": 3557, "log": null}
+OK  47-1 (6 rooms): plan large {"pic": [-83, 53, 437, 164]}
 OK  47-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "מרפסת לים"], "overlap": 0}
 OK  47-1: the rooms listed under the picture {"legend": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר"]}
 OK  console errors {"errors": []}
-BAD: 2 of 17
+BAD: 0 of 17
