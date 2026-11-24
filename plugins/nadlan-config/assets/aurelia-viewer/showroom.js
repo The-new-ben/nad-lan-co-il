@@ -228,7 +228,8 @@
       if (c && c.fac) facility(c.k.indexOf('POOL') >= 0 ? 'pool' : 'pitch');
     });
     el.addEventListener('click', onClick);
-    addEventListener('resize', function () { layout(); redraw(); placeTags(); if (S.mode === 'flat') fitPhone(); });
+    addEventListener('resize', function () { layout(); redraw(); placeTags(); setBarVar(); if (S.mode === 'flat') { fitPhone(); fitDesk(); } });
+    setTimeout(setBarVar, 1500);
     var go = function () { data().then(function () { setView('street'); }); };
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (en) { if (en.some(function (x) { return x.isIntersecting; })) { io.disconnect(); go(); } }, { rootMargin: '600px 0px' });
@@ -325,8 +326,30 @@
     var st = $s('stage'), bd = $s('band'), room = bt - st.getBoundingClientRect().top - (bd ? bd.offsetHeight : 74) - 206;
     S.el.style.setProperty('--nlas-stageh', Math.round(Math.max(190, Math.min(innerHeight * .36, room))) + 'px'); layout(); redraw();
     var h = Math.round(Math.max(200, Math.min(340, bt - u.getBoundingClientRect().top)));
-    S.el.style.setProperty('--nlas-maph', h + 'px'); mapResize();
+    // 761: the compact map runs on under the site's bars to the bottom of the screen, so nothing of the strip below it peeks half
+    // under the WhatsApp bar at rest; the map's own buttons and its centre stay in the part above the bars (padding, CSS)
+    var cv = Math.round(Math.max(0, Math.min(260, innerHeight - (u.getBoundingClientRect().top + h))));
+    S.el.style.setProperty('--nlas-mapcov', cv + 'px');
+    S.el.style.setProperty('--nlas-maph', (h + cv) + 'px'); mapResize();
+    if (window.NLPJX_MAP) { try { window.NLPJX_MAP.setPadding({ top: 0, left: 0, right: 0, bottom: cv }); } catch (e) { /* none */ } }
   }
+  /* desktops shorter than ~860 px: the flat's panel (its requests, the deals line, the note) still ends above the site's bars at the
+     settled view (the showroom top under the header + section tabs, 124 px): the picture in the panel gets lower, never the text */
+  function fitDesk() {
+    if (PHONE() || !S.el) return;
+    var pn = $s('panel'), fl = pn && pn.querySelector('.pn-flat'), last = fl && fl.lastElementChild; if (!last) return;
+    var pr = pn.getBoundingClientRect(), bt = innerHeight;
+    bars().forEach(function (r) { if (r.width >= 120 && r.left < pr.right && r.right > pr.left) bt = Math.min(bt, r.top); });
+    var cur = parseFloat(S.el.style.getPropertyValue('--nlas-pmh')) || 232;
+    var need = (last.getBoundingClientRect().bottom - S.el.getBoundingClientRect().top + 124) - (bt - 8);
+    var mh = Math.round(Math.max(110, Math.min(232, cur - need)));
+    if (mh !== cur) S.el.style.setProperty('--nlas-pmh', mh + 'px');
+    // still too tall (about 720 px high): the row of the floor's other flats steps back (the arrows and the tower still change the
+    // flat) and the facts get tighter; never the requests, the deals line or the note
+    if (cur - need < 110 && !S.el.classList.contains('nlas-tight')) { S.el.classList.add('nlas-tight'); fitDesk(); }
+    else if (cur - need > 200 && S.el.classList.contains('nlas-tight')) { S.el.classList.remove('nlas-tight'); }
+  }
+  function mapCov() { return S.el && PHONE() && compact() ? parseFloat(S.el.style.getPropertyValue('--nlas-mapcov')) || 0 : 0; }
   function waLink(f, what) {
     var t = what === 'plan' ? 'שלום, אשמח לקבל את תוכנית הדירה באורליה ספורט: קומה ' + f.f + ', דירה ' + f.u + ' (' + f.r + ' חדרים, פונה ' + DIRS[f.b] + '). nad-lan.co.il'
       : 'שלום, אשמח לפרטים על אורליה ספורט. nad-lan.co.il';
@@ -419,6 +442,7 @@
       var hv = hood && hood[k] ? hood[k][0] : 0;
       m.innerHTML = (hv ? '<b>' + fmt(hv / 1e6, 2) + '</b> מיליון ש״ח בצפון החדש · ' : '') + '<b>' + fmt(c[k] / 1e6, 2) + '</b> בכל תל אביב' +
         '<a href="' + esc(c.page || '/tel-aviv-apartment-prices/') + '">לכל העסקאות</a><small>רשות המסים, ' + esc(c.q) + '. לדירות באורליה אין מחיר.</small>';
+      fitDesk();
     }).catch(function () { var m = $p('[data-med]'); if (m) m.textContent = 'העסקאות לא נטענו.'; });
   }
   var VAL = null;
@@ -545,7 +569,7 @@
     var g = fromStage && S.img && S.ids ? gidOfFlat(f) : 0;
     var unhold = function () { var h = $p('.pn-flat'); if (h) h.classList.remove('hold'); var b = $s('band'); if (b) b.classList.remove('hold'); };
     var go = function () {
-      layout(); redraw(); setBarVar();
+      layout(); redraw(); setBarVar(); fitDesk();
       if (!first || RM.matches) { unhold(); cueMap(); return; }
       pullOut(f, g).then(function () { unhold(); cueMap(); });
     };
@@ -715,7 +739,7 @@
       // as bridge.js: the flat's way up, the building low in the frame; a compact map (under the tower) looks less far ahead
       // compact (under the tower): the zoom takes in the real places that way (the fifth nearest place inside the beam sets the
       // depth, 350 m to 1.2 km), so the map shows the surroundings with their names, not only the lot; the building sits low
-      var hgt = map.getContainer().clientHeight, r = norm(bearing) * Math.PI / 180, ahead = 450, zm = 14.3;
+      var cov = mapCov(), hgt = map.getContainer().clientHeight - cov, r = norm(bearing) * Math.PI / 180, ahead = 450, zm = 14.3;
       if (hgt < 420) {
         var ds = (T && T.places ? T.places : []).filter(function (p) { return p.d && angOff(p.b, bearing) <= 40; }).map(function (p) { return p.d; }).sort(function (a, b) { return a - b; });
         var D = Math.min(1200, Math.max(350, ds.length ? ds[Math.min(4, ds.length - 1)] : 700));
@@ -723,7 +747,7 @@
         zm = Math.max(13.3, Math.min(15.2, Math.log(78271.517 * Math.cos(ll[1] * Math.PI / 180) / mpp) / Math.LN2));
         ahead = 0.3 * hgt * mpp;
       }
-      map.easeTo({ center: [ll[0] + ahead * Math.sin(r) / (111320 * Math.cos(ll[1] * Math.PI / 180)), ll[1] + ahead * Math.cos(r) / 111320], zoom: zm, bearing: norm(bearing), pitch: 0, duration: 900 });
+      map.easeTo({ center: [ll[0] + ahead * Math.sin(r) / (111320 * Math.cos(ll[1] * Math.PI / 180)), ll[1] + ahead * Math.cos(r) / 111320], zoom: zm, bearing: norm(bearing), pitch: 0, padding: { top: 0, left: 0, right: 0, bottom: cov }, duration: 900 });
       window.__nlas.beam = norm(bearing);
     }).catch(function () { /* the map stays as it is */ });
   }
@@ -745,7 +769,7 @@
       focusMk.getElement().querySelector('b').textContent = label(p) + (p.d ? ' · ' + dist(p.d) : '');
       focusMk.setLngLat([p.lng, p.lat]).addTo(map);
     });
-    if (scroll) { var m = document.getElementById('nlpjx-unimap'); if (m && (m.getBoundingClientRect().top < 0 || m.getBoundingClientRect().bottom > innerHeight)) m.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); }
+    if (scroll) { var m = document.getElementById('nlpjx-unimap'); if (m && (m.getBoundingClientRect().top < 0 || m.getBoundingClientRect().bottom - mapCov() > barTop())) reveal(m); }
   }
   /* the compact map stays HIS map, readable: every marker carries its name or is not drawn at that zoom (Ben: the map tells you
      what is where). From outside areamap.js and the map section (neither file is touched): the page's future-plan dots (no
@@ -758,6 +782,7 @@
       if (!map || tidyOn) return; tidyOn = true;
       var run = function () { try { tidy(map); } catch (e) { /* the map stays as it is */ } };
       map.on('moveend', run); map.on('idle', run);
+      var tw = 0; addEventListener('scroll', function () { clearTimeout(tw); tw = setTimeout(run, 180); }, { passive: true }); // the bars are fixed: a pill under them steps aside after the page rests
       if (map.loaded()) plansLayer(map); else map.once('load', function () { plansLayer(map); });
       run();
     });
@@ -793,7 +818,7 @@
     } catch (e) { /* the page's own dots stay */ }
   }
   function tidy(map) {
-    var c = map.getContainer(), cr = c.getBoundingClientRect(), on = compact(), pills = [], hm = null;
+    var c = map.getContainer(), cr = c.getBoundingClientRect(), on = compact(), pills = [], hm = null, marks = [];
     try { if (map.getLayer('nlas-plans') && map.getLayoutProperty('nlas-plans', 'visibility') !== (on ? 'visible' : 'none')) map.setLayoutProperty('nlas-plans', 'visibility', on ? 'visible' : 'none'); } catch (e) { /* none */ }
     Array.prototype.forEach.call(c.querySelectorAll('.mapboxgl-marker'), function (m) {
       if (/nlas-(cone|cue|mapfocus)/.test(m.className)) return;
@@ -802,17 +827,30 @@
       if (k === 'plan') m.classList.toggle('nlas-hide', on && !!map.getLayer('nlas-plans'));
       else if (k === 'home') hm = m.getBoundingClientRect();
       else if (k === 'pill') pills.push(m);
+      else if (on && !m.classList.contains('nlas-hide') && getComputedStyle(m).visibility !== 'hidden') { var mr = m.getBoundingClientRect(); if (mr.width > 2 && mr.height > 2) marks.push(mr); }
     });
     var sec = document.getElementById('nlpjx-map'), kept = hm ? [hm] : [];
     if (on && sec) Array.prototype.forEach.call(sec.querySelectorAll('.nlam-bar button, .nlam-range, .nlas-mapbig'), function (e) { var r = e.getBoundingClientRect(); if (r.width) kept.push(r); });
+    if (on) bars().forEach(function (r) { kept.push(r); });
+    kept = kept.concat(marks);
     var cx = hm ? hm.left + hm.width / 2 : cr.left + cr.width / 2, cy = hm ? hm.top + hm.height / 2 : cr.top + cr.height / 2;
-    pills.map(function (m) { return { m: m, r: m.getBoundingClientRect() }; })
+    // the places and the stations are areamap's symbol layer (nlam-pin), the named plans ours (nlas-plans): asked from the map itself
+    var SYM = ['nlam-pin', 'nlam-home', 'nlas-plans'].filter(function (l) { return !!map.getLayer(l); });
+    var sym = function (r) { if (!SYM.length) return false; try { return map.queryRenderedFeatures([[r.left - cr.left - 2, r.top - cr.top - 2], [r.right - cr.left + 2, r.bottom - cr.top + 2]], { layers: SYM }).length > 0; } catch (e) { return false; } };
+    var hits = function (r) { return kept.some(function (k) { return r.left < k.right + 3 && r.right > k.left - 3 && r.top < k.bottom + 3 && r.bottom > k.top - 3; }) || (on && sym(r)); };
+    var OFF = [[0, 0]]; [12, 22, 32].forEach(function (d) { OFF.push([0, -d], [0, d], [-d, 0], [d, 0], [-d, -d], [d, -d]); });
+    pills.map(function (m) { var r = m.getBoundingClientRect(), dx = Number(m.dataset.nlasDx) || 0, dy = Number(m.dataset.nlasDy) || 0; return { m: m, r: { left: r.left - dx, right: r.right - dx, top: r.top - dy, bottom: r.bottom - dy } }; })
       .sort(function (a, b) { return Math.hypot(a.r.left - cx, a.r.top - cy) - Math.hypot(b.r.left - cx, b.r.top - cy); })
       .forEach(function (x) {
-        var r = x.r, out = r.right < cr.left || r.left > cr.right || r.bottom < cr.top || r.top > cr.bottom;
-        var hit = !out && kept.some(function (k) { return r.left < k.right + 3 && r.right > k.left - 3 && r.top < k.bottom + 3 && r.bottom > k.top - 3; });
-        x.m.classList.toggle('nlas-hide', on && hit);
-        if (!hit && !out) kept.push(r);
+        var r = x.r, out = r.right < cr.left || r.left > cr.right || r.bottom < cr.top || r.top > cr.bottom, at = null;
+        if (on && !out) for (var i = 0; i < OFF.length && !at; i++) {
+          var q = { left: r.left + OFF[i][0], right: r.right + OFF[i][0], top: r.top + OFF[i][1], bottom: r.bottom + OFF[i][1] };
+          if (q.left >= cr.left && q.right <= cr.right && q.top >= cr.top && !hits(q)) at = { o: OFF[i], q: q };
+        }
+        var dx = on && at ? at.o[0] : 0, dy = on && at ? at.o[1] : 0;
+        x.m.dataset.nlasDx = dx; x.m.dataset.nlasDy = dy; x.m.style.translate = dx || dy ? dx + 'px ' + dy + 'px' : '';
+        x.m.classList.toggle('nlas-hide', on && !out && !at);
+        if (at) kept.push(at.q); else if (!on && !out) kept.push(r);
       });
   }
   function reveal(el) { // bring a showroom part into the eye, resting above the site's floating bars
@@ -861,7 +899,7 @@
     if (a === 'vbclose') { viewBig(null); return; }
     if (a === 'tagx') { Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tagcard'), function (c) { c.hidden = true; }); Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tag.on'), function (x) { x.classList.remove('on'); }); return; }
     if (a === 'onmap' || a === 'nearplace') { var p = T && T.places[Number(t.dataset.place)]; if (p) { mapFocus(p, true); track('aurelia_place_map', { place: p.n }); } return; }
-    if (a === 'mapbig') { var sl = S.el.querySelector('.nlas-mapslot'), big = sl.classList.toggle('compact') === false; t.setAttribute('aria-expanded', String(big)); t.textContent = big ? 'מפה קטנה' : 'המפה המלאה'; setTimeout(function () { if (!big) fitPhone(); mapResize(); if (S.sel) showBeam(S.sel.b); if (window.NLPJX_MAP) tidy(window.NLPJX_MAP); }, 40); track('aurelia_map_big', { big: big }); return; }
+    if (a === 'mapbig') { var sl = S.el.querySelector('.nlas-mapslot'), big = sl.classList.toggle('compact') === false; t.setAttribute('aria-expanded', String(big)); t.textContent = big ? 'מפה קטנה' : 'המפה המלאה'; setTimeout(function () { if (!big) fitPhone(); else { S.el.style.setProperty('--nlas-mapcov', '0px'); try { window.NLPJX_MAP.setPadding({ top: 0, left: 0, right: 0, bottom: 0 }); } catch (x) { /* none */ } } mapResize(); if (S.sel) showBeam(S.sel.b); if (window.NLPJX_MAP) tidy(window.NLPJX_MAP); }, 40); track('aurelia_map_big', { big: big }); return; }
     if (a === 'tomap') { var m = document.getElementById('nlpjx-unimap') || document.getElementById('nlpjx-map'); if (m) m.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); return; }
     if (t.dataset.place && t.classList.contains('pn-tag')) { tagCard(Number(t.dataset.place)); return; }
   }

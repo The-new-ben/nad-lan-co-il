@@ -352,3 +352,26 @@
   .nlas.nlas .vb-pic .pn-tag { min-height: 32px; font-size: 14px !important; padding: 4px 12px 4px 9px !important; }
   .nlas .vb-pic .pn-tagcard { left: auto; right: 12px; bottom: 12px; width: min(420px, 60%); font-size: 14px; }
 }
+
+/* ---------------------------------------------------------------- 1.72.761 (HAD-810, coordinator's review of the live 760 frames) */
+/* every block of the showroom can come to rest fully clear of the site's header and of its floating bars (measured: --nlas-barh);
+   plain scroll margins (no scroll snapping): they act only when the page brings a block into the eye */
+.nlas .nlas-stage, .nlas .nlas-band, .nlas .nlas-mapslot, .nlas .nlas-viewbig, .nlas .nlas-near, .nlas .nlas-panel .pn-flat > *, .nlas .nlas-panel .pn-fac > * {
+  scroll-margin-top: 124px; scroll-margin-bottom: var(--nlas-barh, 160px); }
+.nlas.nlas { margin-bottom: var(--nlas-barh, 160px); }
+@media (max-width: 900px) {
+  .nlas .nlas-stage, .nlas .nlas-band, .nlas .nlas-mapslot, .nlas .nlas-viewbig, .nlas .nlas-near, .nlas .nlas-panel .pn-flat > *, .nlas .nlas-panel .pn-fac > * { scroll-margin-top: 64px; }
+  /* the compact map runs on under the bars (showroom.js fitPhone: --nlas-mapcov); its own buttons stay in the part above them */
+  .nlas .nlas-mapslot.compact .nlas-mapbig { bottom: calc(8px + var(--nlas-mapcov, 0px)); }
+  .nlas .nlas-mapslot.compact .mapboxgl-ctrl-bottom-left, .nlas .nlas-mapslot.compact .mapboxgl-ctrl-bottom-right { bottom: var(--nlas-mapcov, 0px); }
+}
+@media (min-width: 901px) { .nlas .pn-flat .pn-media { height: var(--nlas-pmh, 232px); } } /* showroom.js fitDesk: lower on a short desktop */
+@media (min-width: 901px) {
+  .nlas.nlas-tight .pn-flat .pn-sides { display: none; }
+  .nlas.nlas-tight .pn-flat .pn-facts { margin-top: 6px; }
+  .nlas.nlas-tight .pn-flat .pn-facts div { padding: 3px 4px; }
+  .nlas.nlas-tight .pn-flat .pn-cta { margin-top: 6px; gap: 4px; }
+  .nlas.nlas-tight .pn-flat .pn-price { margin-top: 5px; }
+}
+/* desktop: the walking range sits at the map's top-left, away from the site's accessibility button at the bottom-right corner */
+@media (min-width: 901px) { .nlas .nlas-mapslot.compact #nlpjx-map > .nlam-range { right: auto; left: 8px; } }

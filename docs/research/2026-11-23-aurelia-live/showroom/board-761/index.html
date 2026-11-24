@@ -1,0 +1,170 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+<title>Aurelia Showroom Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=Barlow+Condensed:wght@600;700&family=Assistant:wght@400;600;700&display=swap">
+<style>
+/* Layout: a pool-hall scoreboard wall: dark lanes of frames, aqua lane marks, numbers in condensed stadium type. Single dark look on purpose. */
+:root { --navy: #0b1b27; --lane: #112a3a; --aqua: #36d1e0; --teal: #2f6f86; --off: #f7f6f2; --mut: #9fb6c3; --cone: #C2563A; --line: rgba(247,246,242,.14);
+  --disp: Karantina, "Assistant", sans-serif; --num: "Barlow Condensed", "Assistant", sans-serif; --txt: Assistant, Heebo, system-ui, sans-serif; color-scheme: dark; }
+body { background: var(--navy); color: var(--off); font: 16px/1.55 var(--txt); }
+.w { max-width: 1320px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 60px; direction: rtl; }
+h1 { font: 700 clamp(44px, 7vw, 84px)/.95 var(--disp); margin: 6px 0 10px; text-wrap: balance; }
+h2 { font: 700 clamp(30px, 4vw, 44px)/1 var(--disp); margin: 0 0 6px; text-wrap: balance; }
+.k { font: 700 13px/1.2 var(--num); letter-spacing: .16em; color: var(--aqua); text-transform: uppercase; }
+.lead { max-width: 62ch; color: #d6e2e9; font-size: 17px; }
+section { margin-top: 44px; padding-top: 22px; border-top: 2px dashed rgba(54,209,224,.35); }
+.row { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+.fr { flex: 0 0 auto; width: 214px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 6px; }
+.fr img { width: 100%; border-radius: 14px; border: 1px solid var(--line); display: block; background: var(--lane); }
+.fr b { font: 700 15px/1.2 var(--num); color: var(--aqua); letter-spacing: .04em; }
+.fr span { font-size: 13.5px; color: var(--mut); line-height: 1.4; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { background: var(--lane); border: 1px solid var(--line); border-radius: 16px; padding: 16px; min-width: 0; }
+.card h3 { margin: 0 0 6px; font: 700 26px/1.05 var(--disp); }
+.card p, .card li { color: #d6e2e9; font-size: 15px; margin: 6px 0; }
+.card img { width: 100%; border-radius: 12px; display: block; margin-top: 8px; }
+.pick { border-color: var(--aqua); box-shadow: inset 0 0 0 1px var(--aqua); }
+.tag { display: inline-block; font: 700 13px/1 var(--num); letter-spacing: .08em; padding: 5px 9px; border-radius: 999px; border: 1px solid var(--aqua); color: var(--aqua); }
+.tag.no { border-color: var(--mut); color: var(--mut); }
+.cmp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.cmp figure { margin: 0; min-width: 0; }
+.cmp img { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+.cmp figcaption { font-size: 13.5px; color: var(--mut); margin-top: 6px; }
+.tblw { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 640px; }
+th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 13px/1.2 var(--num); letter-spacing: .1em; color: var(--mut); text-transform: uppercase; }
+td.y { color: var(--aqua); font-weight: 700; white-space: nowrap; }
+.links a { color: var(--aqua); }
+video { width: 100%; max-width: 330px; border-radius: 16px; border: 1px solid var(--line); display: block; }
+.vid { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 760px) { .cmp { grid-template-columns: 1fr; } .vid { grid-template-columns: 1fr; } .fr { width: 172px; } }
+</style>
+<div class="w">
+  <div class="k">AURELIA SPORTS · HAD-810 · BOARD 24.11.2026</div>
+  <h1>אולם התצוגה של אורליה</h1>
+  <p class="lead">כל מסגרת כאן צולמה מהקוד האמיתי, על העמוד החי עם הקוד החדש מוזרק (טלפון 390 על 844, ושולחן 1440). נוגעים במרפסת, האלומה על המפה פונה מיד לכיוון החלון, הדירה נשלפת מהמגדל ונפתחת לתוכנית, ונוחתים בקוקפיט במסך אחד, בלי גלילה ובלי כרטיסים.</p>
+
+  <section>
+    <div class="k">ROUND 2C · BEFORE RELEASE · 24.11.2026</div>
+    <h2>הסבב שאחרי 1.72.758: עובדות מיד, המפה שלו נקייה, הפסים של האתר לא מכסים</h2>
+    <p class="lead">צולם מהקוד החדש על העמוד החי (טלפון 360 על 740 ו-390 על 844, שולחן 1440 על 900). אותה פלטה: כחול ים עמוק, טורקיז של הבריכה, אלומה בצבע הטרקוטה של המפה; Karantina לכותרות ו-Assistant לטקסט. לא מראה ברירת מחדל: הצבעים והאותיות לקוחים מהבריכה ומלוח התוצאות של המגרש.</p>
+    <div class="row">
+      <div class="fr"><img src="img/c1-360-flat.jpg" alt="טלפון קטן אחרי נגיעה"><b>01 · טלפון 360</b><span>נגיעה: המגדל, פס העובדות (חדרים, מ״ר, קומה, כיוון, שלב) עם התוכנית והבקשה, ו-200 פיקסלים של המפה מעל פס הוואטסאפ.</span></div>
+      <div class="fr"><img src="img/c2-390-pull1.jpg" alt="הדירה יוצאת"><b>02 · יוצאת מהמרפסת</b><span>פרוסת החזית עצמה יוצאת מהקומה, ונשאר שקע כהה במגדל.</span></div>
+      <div class="fr"><img src="img/c3-390-pull2.jpg" alt="בדרך"><b>03 · בדרך לפס</b><span>הופכת לנפח זכוכית ומסתובבת. "דילוג" יושב במקום הנחיתה, לא על התווית ולא על השיחה.</span></div>
+      <div class="fr"><img src="img/c4-390-pull3.jpg" alt="נפתחת"><b>04 · נפתחת לדירה המרוהטת</b><span>נוחתת בתמונה של הפס. כ-1.2 שניות, בלי חסימת גלילה.</span></div>
+      <div class="fr"><img src="img/c5-390-flat.jpg" alt="טלפון 390"><b>05 · טלפון 390</b><span>"האלומה מראה לאן הדירה פונה" מעל האלומה, ונעלמת בנגיעה הראשונה במפה.</span></div>
+      <div class="fr"><img src="img/c6-360-map.jpg" alt="המפה הקטנה"><b>06 · המפה הקטנה</b><span>כל סימון עם שם או שלא מצויר; תגי המחיר לא עולים זה על זה.</span></div>
+    </div>
+    <div class="cmp" style="margin-top:14px">
+      <figure><img src="img/c7-d-pull.jpg" alt="שולחן, שליפה"><figcaption>שולחן: הדירה עפה מהמגדל אל המקום שלה בפאנל ונפתחת. "דילוג" בפינת מקום הנחיתה.</figcaption></figure>
+      <figure><img src="img/c8-d-flat.jpg" alt="שולחן, דירה"><figcaption>הבקשות עלו מתחת לעובדות: שום כפתור וטקסט של הפאנל לא מתחת לפס הוואטסאפ של האתר.</figcaption></figure>
+      <figure><img src="img/c9-d-view.jpg" alt="שולחן, נוף"><figcaption>"לחצו על מקום בנוף" על הנוף, נעלם אחרי הנגיעה הראשונה בתגית.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="k">PHONE · FRAME BY FRAME</div>
+    <h2>מהמגדל אל הקוקפיט, בטלפון</h2>
+    <div class="vid">
+      <video src="img/pullout-phone.mp4" controls muted playsinline loop poster="img/p4-volume.jpg"></video>
+      <div class="row">
+        <div class="fr"><img src="img/p1-stage.jpg" alt="המגדל בעמוד"><b>01 · המגדל</b><span>ארבע נקודות מבט. המתקנים פועמים מבחוץ. כל הקומות לחיצות, דירה לכל כיוון.</span></div>
+        <div class="fr"><img src="img/p2-beam.jpg" alt="נגיעה במרפסת"><b>02 · נגיעה</b><span>המרפסת נדלקת, האלומה על המפה פונה מיד לכיוון החלון. קומה למעלה ולמטה באגודל.</span></div>
+        <div class="fr"><img src="img/p3-push.jpg" alt="המצלמה נכנסת"><b>03 · המצלמה נכנסת</b><span>אותה תמונה, זום אל הדירה, המגדל מתעמעם.</span></div>
+        <div class="fr"><img src="img/p4-volume.jpg" alt="הדירה יוצאת"><b>04 · הדירה יוצאת</b><span>נפח זכוכית מואר עוזב את החזית.</span></div>
+        <div class="fr"><img src="img/p5-turn.jpg" alt="מסתובבת"><b>05 · מסתובבת</b><span>מסתובב, הגג נעלם.</span></div>
+        <div class="fr"><img src="img/p6-plan.jpg" alt="נפתחת לתוכנית"><b>06 · נפתחת</b><span>התוכנית במידות של הדירה, המרפסת לכיוון שממנו באה.</span></div>
+        <div class="fr"><img src="img/p7-cockpit.jpg" alt="הקוקפיט"><b>07 · הקוקפיט</b><span>הנוף מהקומה, המפה עם האלומה, 9 מסכי החלטה, שיחת וידאו, סל, פרטים. מסך אחד.</span></div>
+        <div class="fr"><img src="img/p8-planscr.jpg" alt="התוכנית"><b>08 · התוכנית</b><span>תוכנית לדוגמה, ומשם ישר למעצב הדירה.</span></div>
+        <div class="fr"><img src="img/p9-view.jpg" alt="הנוף"><b>09 · הנוף מכל קומה</b><span>על מפת העיר האמיתית, מגובה העיניים של הקומה. חמש קומות למעלה ולמטה, וכל כיוון.</span></div>
+        <div class="fr"><img src="img/p10-sun.jpg" alt="שמש"><b>10 · שמש ורוח</b><span>שעות שמש על החזית ביוני, במרץ ובדצמבר. משם לכלי שמש ורוח.</span></div>
+        <div class="fr"><img src="img/p11-prices.jpg" alt="מחירים"><b>11 · מחירים באזור</b><span>עסקאות שנסגרו, חציון לפי חדרים, מקור ורבעון. לאורליה אין מחיר.</span></div>
+        <div class="fr"><img src="img/p12-facs.jpg" alt="המתקנים"><b>12 · המתקנים</b><span>בריכה, מגרש, אולם, מסלול. מידות לפי התקן, כל אחד עולם משלו.</span></div>
+      </div>
+    </div>
+    <p class="lead">משך השליפה: כ-2.3 שניות, נגיעה מדלגת, ובמצב "הפחתת תנועה" מעבר קצר בלבד. רק טרנספורמציות ושקיפות, בלי ספרייה ובלי קובץ כבד: הקוד כולו כ-45 ק"ב.</p>
+  </section>
+
+  <section>
+    <div class="k">THREE PHONE SOLUTIONS · PRESSED</div>
+    <h2>שלוש דרכים להחזיק הכל בעין אחת</h2>
+    <div class="grid">
+      <div class="card pick"><span class="tag">נבחר · נבנה ונלחץ</span><h3>א+ב: אלומה בנגיעה, שליפה לקוקפיט</h3>
+        <p>הנגיעה הראשונה לא מוציאה את הקונה מהמגדל: המרפסת נדלקת, המפה עם האלומה נצמדת לבמה, והכפתור "פתיחת הדירה" יושב באזור האגודל. הנגיעה השנייה שולפת אל קוקפיט במסך מלא: הנוף והמפה למעלה, 9 מסכי החלטה באמצע, הסרגל למטה.</p>
+        <p>למה: העין נשארת על הדירה שנבחרה (האלומה צמודה לבמה, לא עשר קומות למטה), שתי נגיעות בלבד עד הקוקפיט, וכל מסך החלטה במרחק נגיעה אחת וחוזר לדירה. נבדק: הקוקפיט נכנס במסך 390 על 844 בלי גלילה ובלי פס גלילה פנימי.</p></div>
+      <div class="card"><span class="tag no">נשקל</span><h3>ג: גיליון שעולה מעל המגדל</h3>
+        <p>כמו הגיליון של כיכר המדינה (70 פיקסלים מציצים, 43% פתוח). טוב לרשימות, אבל בטלפון הוא מסתיר את המגדל ואת האלומה בדיוק כשהקונה רוצה לראות לאן הדירה פונה, ומחזיר את התחושה של כרטיס בתוך כרטיס. לא נבנה לאורליה.</p></div>
+      <div class="card"><span class="tag no">נשקל</span><h3>ד: מסכי החלטה בהחלקה</h3>
+        <p>מסכים מלאים אחד ליד השני בהחלקה ימינה ושמאלה. יפה בהדגמה, אבל קונה לא יודע כמה מסכים יש ומה בהם, וההחלקה מתנגשת בגלילת העמוד. האריחים של הקוקפיט מראים את כל תשעת המסכים בבת אחת, וכל מסך נפתח בנגיעה וחוזר בחץ או בכפתור "חזרה" של הטלפון.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="k">DESKTOP</div>
+    <h2>בשולחן: המגדל, ואז הקוקפיט ליד הנוף</h2>
+    <div class="cmp" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+      <figure><img src="img/d-stage.jpg" alt="המגדל במחשב"><figcaption>ריחוף על מרפסת מאיר אותה ומראה קומה, דירה וחדרים. לחיצה שולפת.</figcaption></figure>
+      <figure><img src="img/d-cockpit.jpg" alt="הקוקפיט במחשב"><figcaption>קומה 30, דירה 5, פונה מזרחה: הנוף על מפת העיר מגובה כ-105 מ׳, המפה עם האלומה מוצמדת לנוף, האריחים והסרגל לידם.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="k">SIDE BY SIDE · HAUZD · KIKAR · AURELIA</div>
+    <h2>אותם רגעים, זה ליד זה</h2>
+    <div class="cmp">
+      <figure><img src="img/h-unit.jpg" alt="Hauzd דירה נבחרת"><figcaption>Hauzd: דירה נבחרת על הבניין. 88 עד 270 מ"ב עד שזה עולה.</figcaption></figure>
+      <figure><img src="img/k-phone.jpg" alt="קוקפיט כיכר"><figcaption>כיכר המדינה: הקוקפיט הקיים שלנו. נוף מרונדר, 9 אריחים, שיחה.</figcaption></figure>
+      <figure><img src="img/p7-cockpit.jpg" alt="קוקפיט אורליה"><figcaption>אורליה: אותו מבנה, ועוד המפה עם האלומה בתוך הנוף, שמש, מחירים מעסקאות, משפחה בווידאו.</figcaption></figure>
+      <figure><img src="img/h-plan.jpg" alt="Hauzd תוכנית"><figcaption>Hauzd: תוכנית במודל.</figcaption></figure>
+      <figure><img src="img/h-int.jpg" alt="Hauzd פנים"><figcaption>Hauzd: פנים מרוהט, הליכה חופשית. כאן הם מובילים היום.</figcaption></figure>
+      <figure><img src="img/p6-plan.jpg" alt="אורליה שליפה"><figcaption>אורליה: הדירה נשלפת ונפתחת לתוכנית. ההליכה בפנים (ג'יני) היא השלב הבא.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="k">WHERE HAUZD LEADS → OURS, HIGHER</div>
+    <h2>השורות שבהן הם מובילים</h2>
+    <div class="tblw"><table>
+      <thead><tr><th>מה</th><th>היום אצלנו</th><th>איך עוברים אותם</th></tr></thead>
+      <tbody>
+        <tr><td>הליכה מרוהטת בתוך הדירה</td><td class="y">שלב 2</td><td>הליכות ג'יני מוקלטות מתמונת פתיחה של הדירה של אורליה, עם נקודות בחירה (סלון, מרפסת לים, מטבח, חדר), תפורות לסיבוב אחד, ומשם למעצב שבו הקונה מזיז קירות. אצלם הפנים קבוע.</td></tr>
+        <tr><td>מראה החוץ</td><td class="y">חי בשלב 1</td><td>תמונות פוטוריאליות מאותה מצלמה של בלנדר, עם שכבת בחירה מדויקת לכל מרפסת, בכמה מאות ק"ב ולא 88 מ"ב.</td></tr>
+        <tr><td>סטטוס דירות על החזית</td><td class="y">חי, נתוני דוגמה</td><td>סטטוס לכל דירה מסומן "נתוני דוגמה" עד שיזם אמיתי מזין; אותו מבנה נתונים יקבל הזנה חיה.</td></tr>
+        <tr><td>שריון ומקדמה</td><td class="y">קיים באתר</td><td>הסל שלי ומסלול השריון עם עורך דין קודם (חוק המכר), מקדמה מדומה בלבד עד יזם. אצלם הכסף לפני עורך הדין.</td></tr>
+        <tr><td>פאנל ניהול</td><td class="y">חלקי</td><td>היזם מעדכן בוורדפרס בעברית; התראות לבעלים כבר קיימות.</td></tr>
+        <tr><td>נוף מכל דירה</td><td class="y">חי בשלב 1</td><td>אצלם תמונת רחפן אחת לגובה; אצלנו מצלמה בגובה העיניים של כל קומה ובכל כיוון, על מפת העיר.</td></tr>
+        <tr><td>שמש</td><td class="y">חי בשלב 1</td><td>להם אין בכלל. אצלנו שעות שמש על החזית לכל דירה, ומשם לכלי שמש ורוח.</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section>
+    <div class="k">WHERE THE OTHER PACKAGES PLUG IN</div>
+    <h2>החיבורים בקוקפיט לשאר החבילות</h2>
+    <div class="grid">
+      <div class="card"><h3>2 · בפנים ובמתקנים</h3><p>אריח "להיכנס לדירה" נכנס לראש הקוקפיט, וכל מתקן במסך המתקנים מקבל "להיכנס" עם ההליכה התפורה.</p></div>
+      <div class="card"><h3>4 · שיחה שפורצת</h3><p>כבר חי בבנייה הזו: הכפתור הראשי והאריח "וידאו עם המשפחה" פותחים מיד את שיחת הווידאו האמיתית של מעצב הדירות, הבעלים מקבל מייל עם קישור הצטרפות, והמשפחה נכנסת בקישור. בורר התאריכים הוחלף באורליה בפס "שיחת וידאו עכשיו".</p></div>
+      <div class="card"><h3>5 · מפרט, הצעה, רהיטים</h3><p>אריח "לעצב את הדירה" מוביל למעצב עם הדירה; המפרט והרהיטים יתחברו לשם ולסל.</p></div>
+      <div class="card"><h3>6 · הסביבה</h3><p>אריח "הסביבה" קופץ לחלק הסביבה בעמוד; כשהעמוד המפורט יהיה מוכן, האריח יפתח אותו בתוך הקוקפיט.</p></div>
+      <div class="card"><h3>7 · רשת וקמפיין</h3><p>"השארת פרטים" ממלא בטופס את הדירה שנבחרה; ההצטרפות לקהילת הפרויקט תשב באותו סרגל.</p></div>
+      <div class="card"><h3>8 · סרט</h3><p>השליפה מוקלטת כבר עכשיו מהעמוד (הסרטון למעלה) ומוכנה לעריכה.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="k">HONEST GAPS</div>
+    <h2>מה עוד לא</h2>
+    <div class="card"><ul>
+      <li>לא נבדק עדיין על טלפון אמיתי: רק דפדפן אמיתי בגודל 390 על 844.</li>
+      <li>הנוף מכל קומה בנוי על מפת העיר של Mapbox: הבניינים מוצגים כנפחים פשוטים בשעת דמדומים, לא תמונה. התמונה הפוטוריאלית לכל גובה וכיוון תבוא מתמונות הפתיחה של ג'יני.</li>
+      <li>התוכנית היא תוכנית לדוגמה מהמידות והכיוון של הדירה, לא תוכנית אדריכל. חדרים וזמינות: נתוני דוגמה.</li>
+      <li>במבט מהים המגדל נראה כקופסה, ובשאר המבטים בגלים: חוסר עקביות בתמונות שעוד צריך לתקן.</li>
+      <li>שיחת הווידאו: אם אף אחד מאיתנו לא מצטרף, ההצעה להשאיר פרטים מופיעה בפס בעמוד, לא בתוך השיחה עצמה (השיחה של המעצב משותפת לכל האתר ולא שונתה).</li>
+      <li>הליכות ג'יני ואולפן השידור: עוד לא.</li>
+    </ul></div>
+  </section>
+</div>
+
+</body></html>

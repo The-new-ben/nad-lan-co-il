@@ -9,7 +9,7 @@ import json, os, sys, time
 from playwright.sync_api import sync_playwright
 HERE = os.path.dirname(os.path.abspath(__file__))
 W, H = [int(x) for x in sys.argv[1].split("x")]; phone = W < 900; LIVE = os.environ.get("LIVE") == "1"
-OUT = os.path.join(HERE, sys.argv[2] if len(sys.argv) > 2 else "local7"); os.makedirs(OUT, exist_ok=True)
+OUT = os.path.join(HERE, sys.argv[2] if len(sys.argv) > 2 else "local9"); os.makedirs(OUT, exist_ok=True)
 URL = "https://nad-lan.co.il/projects/aurelia/?nlv=%d" % int(time.time())
 ASSET = "/wp-content/plugins/nadlan-config/assets/aurelia-viewer/"
 LOCAL = "C:/Users/777/nad-lan/nad-lan-co-il/plugins/nadlan-config/assets/aurelia-viewer/"
@@ -79,6 +79,22 @@ with sync_playwright() as p:
       const dots=vis.filter(m=>m.dataset.nlas==='plan').length;let named=0;try{named=window.NLPJX_MAP.queryRenderedFeatures({layers:['nlas-plans']}).length}catch(e){}
       return {pills:pills.length,overlap:ov,nameless_plan_dots:dots,named_plans:named}}""")
     step("compact map: no nameless plan dot, no overlapping price pill", mp and mp["overlap"] == 0 and mp["nameless_plan_dots"] == 0, **(mp or {}))
+    # 761: a price pill and a marker (transit, places, the building) never cover each other; no pill rests under the bars
+    pm2 = pg.evaluate("""()=>{const c=document.getElementById('nlpjx-unimap');if(!c)return null;const vis=[...c.querySelectorAll('.mapboxgl-marker')].filter(m=>getComputedStyle(m).visibility!=='hidden'&&!/nlas-(cone|cue|mapfocus)/.test(m.className));
+      const P=vis.filter(m=>m.dataset.nlas==='pill'),M=vis.filter(m=>m.dataset.nlas!=='pill'&&m.dataset.nlas!=='plan');const ov=[];
+      const X=(a,b)=>Math.min(a.right,b.right)-Math.max(a.left,b.left)>1&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1;
+      const cr=c.getBoundingClientRect(),map=window.NLPJX_MAP,SY=['nlam-pin','nlam-home','nlas-plans'].filter(l=>map&&map.getLayer(l));
+      P.forEach(p=>{const a=p.getBoundingClientRect();if(a.right<cr.left||a.left>cr.right)return;M.forEach(m=>{const b=m.getBoundingClientRect();if(b.width>2&&X(a,b))ov.push(p.textContent.trim().slice(0,10)+' x '+(m.className||'').slice(0,40))});
+        try{const f=map.queryRenderedFeatures([[a.left-cr.left,a.top-cr.top],[a.right-cr.left,a.bottom-cr.top]],{layers:SY});if(f.length)ov.push(p.textContent.trim().slice(0,10)+' x '+f[0].layer.id+':'+String((f[0].properties||{}).name||(f[0].properties||{}).n||'').slice(0,20))}catch(e){}});
+      const bt=Math.min(innerHeight,...[...document.querySelectorAll('#nlcta, #nl-sticky')].map(e=>e.getBoundingClientRect()).filter(r=>r.width>=120&&r.top>innerHeight*.5).map(r=>r.top));
+      const BR=[...document.querySelectorAll('#nlcta, #nl-sticky, #nla11y')].map(e=>e.getBoundingClientRect()).filter(r=>r.width>0&&r.top<innerHeight);
+      const under=P.filter(p=>{const a=p.getBoundingClientRect();return a.right>0&&a.left<innerWidth&&BR.some(r=>X(a,r))}).length;
+      return {pills:P.length,marks:M.length,pill_on_marker:ov,pills_under_bars:under,offset:P.filter(p=>p.style.translate).length}}""")
+    step("compact map: no price pill on a marker, none under the bars", pm2 and not pm2["pill_on_marker"] and pm2["pills_under_bars"] == 0, **(pm2 or {}))
+    if phone:
+        sr = pg.evaluate("""()=>{const bt=Math.min(innerHeight,...[...document.querySelectorAll('body *')].filter(e=>{if(e.closest('#nlas'))return false;const c=getComputedStyle(e);if(c.position!=='fixed'||c.display==='none')return false;const b=e.getBoundingClientRect();return b.width>=120&&b.height>=30&&b.height<=200&&b.top>innerHeight*.5&&b.top<innerHeight}).map(e=>e.getBoundingClientRect().top));
+          return [document.querySelector('#nlas .nr-h'),document.querySelector('#nlas .nr-list button')].map(e=>{if(!e)return null;const b=e.getBoundingClientRect();return {t:Math.round(b.top),b:Math.round(b.bottom),ok:b.bottom<=bt||b.top>=innerHeight}}).concat([{barTop:bt}])}""")
+        step("strip heading + first row at the flat rest: fully above the bars or wholly below the screen", all(x and x["ok"] for x in sr[:2]), rest=sr)
     fit = pg.evaluate("""()=>{const pn=document.querySelector('#nlas .nlas-panel');const sc=[...pn.querySelectorAll('*')].filter(e=>e.scrollHeight>e.clientHeight+2&&['auto','scroll'].includes(getComputedStyle(e).overflowY)).length;return {sc,overlay:!!document.querySelector('.nlas-po'),text:document.getElementById('nlas').innerText}}""")
     step("no inner scrollbars, no layer left over the tower", fit["sc"] == 0 and not fit["overlay"])
     bl = [w for w in BL if w in fit["text"]]; step("blacklist words and totals absent", not bl, found=bl)
@@ -97,14 +113,29 @@ with sync_playwright() as p:
     g3 = pg.evaluate(GEOM); shot(pg, "07-near"); step("strip 'what is that way' clear of the bars", not [u for u in g3["under"] if "מה יש" in u or "nr" in u], under=g3["under"])
     to(pg, "document.getElementById('nlpjx-unimap').getBoundingClientRect().top+scrollY-%d" % (70 if phone else 140)); pg.wait_for_timeout(5000)
     beam = pg.evaluate("NLAS.state().beam"); step("the beam turned to the flat", beam == 90, beam=beam); shot(pg, "08-map-beam")
-    cb = pg.locator("#nlas .nlas-panel .pn-cta [data-a=call]").first; cb.scroll_into_view_if_needed(); pg.wait_for_timeout(500)
+    cb = pg.locator("#nlas .nlas-panel .pn-cta [data-a=call]").first; pg.evaluate("document.querySelector('#nlas .nlas-panel .pn-cta').scrollIntoView({block:'end',behavior:'instant'})"); pg.wait_for_timeout(500)  # 761: as a visitor's scroll, with the block's scroll margins
     g4 = pg.evaluate(GEOM); bb = cb.bounding_box()
     step("panel call button clear of the bars before the press", not [u for u in g4["under"] if "וידאו" in u], under=g4["under"])
     (pg.touchscreen.tap if phone else pg.mouse.click)(bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2)
-    pg.wait_for_function("!!document.querySelector('#nlas .pn-callsheet')", timeout=8000); pg.wait_for_timeout(1500)
+    try: pg.wait_for_function("!!document.querySelector('#nlas .pn-callsheet')", timeout=8000)
+    except Exception:
+        shot(pg, "09-fail"); print("CALL FAIL at", bb, pg.evaluate("([x,y])=>{const e=document.elementFromPoint(x,y);return e?(e.id+' '+e.className+' '+(e.innerText||'').slice(0,40)):null}", [bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2]), flush=True); raise
+    pg.wait_for_timeout(1500)
     g5 = pg.evaluate(GEOM); sh = pg.evaluate("(()=>{const b=document.querySelector('#nlas .pn-callsheet').getBoundingClientRect();return [Math.round(b.top),Math.round(b.bottom)]})()")
     step("call: nobody on duty -> honest choice, the sheet rests above the bars", sh[1] <= g5["barTop"] + 1 and sh[0] >= 0, sheet=sh, barTop=g5["barTop"])
     shot(pg, "09-call")
+    sh_x = pg.locator("#nlas [data-a=sheetx]")
+    if sh_x.count(): sh_x.first.click(); pg.wait_for_timeout(400)
+    # 761: every block of the showroom can come to rest fully clear of the header and the bars (scrolled into view from below and above)
+    rest = pg.evaluate("""async()=>{const sel=['.nlas-stage','.nlas-band','.nlas-mapslot','.nlas-near','.nlas-panel .pn-top','.nlas-panel .pn-tabs','.nlas-panel .pn-media','.nlas-panel .pn-cta','.nlas-panel .pn-price'];
+      const bt=()=>Math.min(innerHeight,...[...document.querySelectorAll('body *')].filter(e=>{if(e.closest('#nlas'))return false;const c=getComputedStyle(e);if(c.position!=='fixed'||c.display==='none')return false;const b=e.getBoundingClientRect();return b.width>=120&&b.height>=30&&b.height<=200&&b.top>innerHeight*.5&&b.top<innerHeight}).map(e=>e.getBoundingClientRect().top));
+      const btx=b=>Math.min(innerHeight,...[...document.querySelectorAll('body *')].filter(e=>{if(e.closest('#nlas'))return false;const c=getComputedStyle(e);if(c.position!=='fixed'||c.display==='none')return false;const r=e.getBoundingClientRect();return r.width>=40&&r.height>=30&&r.height<=200&&r.top>innerHeight*.5&&r.top<innerHeight&&r.left<b.right&&r.right>b.left}).map(e=>e.getBoundingClientRect().top));
+      const hd=innerWidth<=900?56:60;const out=[];const w=t=>new Promise(r=>setTimeout(r,t));
+      for(const q of sel){const e=document.querySelector('#nlas '+q);if(!e||!e.getBoundingClientRect().height){out.push({q,skip:'absent'});continue}
+        for(const blk of ['end','start']){window.scrollTo({top:blk==='end'?0:document.body.scrollHeight,behavior:'instant'});await w(120);e.scrollIntoView({block:blk,behavior:'instant'});await w(350);
+          const b=e.getBoundingClientRect(),B=btx(b);const fits=b.height<=B-hd;out.push({q,blk,t:Math.round(b.top),b:Math.round(b.bottom),barTop:Math.round(B),ok:!fits||(b.top>=hd-1&&b.bottom<=B+1),fits})}}
+      return out}""")
+    step("every showroom block can rest fully clear of the header and the bars", all(x.get("ok", True) for x in rest), rest=[x for x in rest if not x.get("ok", True)] or len(rest))
     step("console errors", not log["errors"], errors=log["errors"][:6])
     br.close()
 json.dump(log, open(os.path.join(OUT, "press3-%s%s.json" % ("live-" if LIVE else "", sys.argv[1])), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
