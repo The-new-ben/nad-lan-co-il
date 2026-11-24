@@ -1,0 +1,252 @@
+{
+ "vp": "390x844",
+ "live": false,
+ "steps": [
+  {
+   "step": "20-2: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 57,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795487413011
+    }
+   },
+   "sy": 3607,
+   "log": null
+  },
+  {
+   "step": "20-2 (5 rooms): plan large",
+   "ok": true,
+   "pic": [
+    6,
+    62,
+    378,
+    237
+   ]
+  },
+  {
+   "step": "20-2: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-2: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון, אוכל ומטבח 51 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 14 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "רחצה 10 מ״ר",
+    "כניסה 9 מ״ר"
+   ]
+  },
+  {
+   "step": "20-7: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 57,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795487424593
+    }
+   },
+   "sy": 3609,
+   "log": null
+  },
+  {
+   "step": "20-7 (3 rooms): plan large",
+   "ok": true,
+   "pic": [
+    6,
+    62,
+    378,
+    237
+   ]
+  },
+  {
+   "step": "20-7: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "מרפסת"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-7: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון, אוכל ומטבח 20 מ״ר",
+    "חדר הורים 13 מ״ר",
+    "ממ״ד 11 מ״ר",
+    "רחצה 8 מ״ר",
+    "כניסה 7 מ״ר"
+   ]
+  },
+  {
+   "step": "46-1: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     1
+    ],
+    "last": {
+     "half": 0,
+     "top": 57,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795487435575
+    }
+   },
+   "sy": 3619,
+   "log": null
+  },
+  {
+   "step": "46-1 (6 rooms): plan large",
+   "ok": true,
+   "pic": [
+    -281,
+    52,
+    665,
+    249
+   ]
+  },
+  {
+   "step": "46-1: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "46-1: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון ופינת אוכל 182 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 25 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "מטבח 31 מ״ר",
+    "רחצה 18 מ״ר",
+    "כניסה 16 מ״ר"
+   ]
+  },
+  {
+   "step": "47-1: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     1
+    ],
+    "last": {
+     "half": 0,
+     "top": 57,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795487446607
+    }
+   },
+   "sy": 3619,
+   "log": null
+  },
+  {
+   "step": "47-1 (6 rooms): plan large",
+   "ok": true,
+   "pic": [
+    -281,
+    52,
+    665,
+    249
+   ]
+  },
+  {
+   "step": "47-1: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "47-1: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון ופינת אוכל 182 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 25 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "מטבח 31 מ״ר",
+    "רחצה 18 מ״ר",
+    "כניסה 16 מ״ר"
+   ]
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

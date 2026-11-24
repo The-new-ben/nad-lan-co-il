@@ -419,3 +419,51 @@
 }
 /* ---------------------------------------------------------------- 1.72.762 (HAD-810: the floor stepper stops at the residential range) */
 .nlas.nlas .pn-fl button:disabled { opacity: .32; cursor: default; }
+/* ---------------------------------------------------------------- 1.72.763 (HAD-810, coordinator's review of the live 762 frames) */
+/* the furnished plan at its small size: the note, the floor's key and the "large" button in a row of their own above the picture,
+   the designer link in a row under it; nothing of ours lies on our own text or picture */
+.nlas:not(.nlas-planbig) .pn-flat .pn-media[data-tab="cut"] { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; grid-template-rows: auto var(--nlas-cuth, 190px) auto;
+  column-gap: 8px; row-gap: 6px; height: auto; max-height: none; padding: 6px; background: var(--navy3); }
+.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-sim { position: static; grid-row: 1; grid-column: 1; align-self: center; justify-self: start; background: none; padding: 0 2px; line-height: 1.3; }
+.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-keyw { position: static; grid-row: 1; grid-column: 2; width: auto; display: flex; align-items: center; gap: 4px; }
+.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-keyw .pn-key { width: 22px; height: 34px; }
+.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-keyw span { margin: 0; color: var(--mut, #9fb6c3); font-size: 10.5px; max-width: 44px; }
+.nlas.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-bigbtn { position: static; grid-row: 1; grid-column: 3; align-self: center; }
+.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-cut { position: relative; inset: auto; grid-row: 2; grid-column: 1 / -1; min-height: 0; background: #f1f0ec; border-radius: 10px; overflow: hidden; }
+.nlas.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-drag { position: static; grid-row: 3; grid-column: 1 / -1; justify-self: start; transform: none; }
+@media (min-width: 901px) { .nlas { --nlas-cuth: calc(var(--nlas-pmh, 232px) - 34px); } }
+@media (max-width: 900px) { .nlas { --nlas-cuth: min(46vw, 230px); } }
+/* the penthouse plan (a wide picture) on phones, opened large: the picture at a readable height, moved sideways by the finger in
+   its own strip (the browser's own scroll), a small cue under it; numbers and the list stay */
+.nlas .pn-widecue { display: none; }
+@media (max-width: 900px) {
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut.wide { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut.wide .pn-cutbox { width: calc(min(68vw, 300px) * var(--ar, 2.67)); max-width: none; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-widecue { display: block; order: 0; align-self: center; margin: 6px 0 0; font: 700 12.5px/1.2 Assistant, sans-serif; color: var(--aqua); }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-widecue::before, .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-widecue::after { content: "\2194"; margin: 0 6px; }
+}
+.nlas .nlas-mark.below { transform: translate(-50%, 0); flex-direction: column-reverse; }
+@media (max-width: 900px) {
+  .nlas.nlas .nlas-mapslot.compact .nlam-range button { min-height: var(--nlas-rgh, 32px); height: var(--nlas-rgh, 32px); line-height: 1; }
+  .nlas.nlas .nlas-mapslot.compact .nlam-range div { gap: 2px; }
+}
+/* phones, the plan opened large: the picture first, right under the site's header; the illustration note and "smaller" in a row of
+   their own under it, then the rooms' list (nothing of ours on the picture; the site's bars measured by showroom.js, never moved) */
+@media (max-width: 900px) {
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut { grid-column: 1 / -1; margin-top: 0; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-widecue { grid-column: 1 / -1; justify-self: center; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-sim { position: static; grid-column: 1; justify-self: start; margin: 6px 10px 0; background: none; padding: 0; }
+  .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-bigbtn { position: static; grid-column: 2; margin: 6px 10px 0; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-legend, .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-drag { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) and (max-height: 760px) { /* short phones: the same rows, a little tighter, so the requests rest above the bars */
+  .nlas.nlas-planbig { --nlas-planw0: 94; }
+  .nlas.nlas-planbig .pn-legend { margin-top: 4px; row-gap: 1px; }
+  .nlas.nlas.nlas-planbig .pn-legend li { line-height: 1.25 !important; font-size: 13px !important; }
+  .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-drag { margin: 6px 10px 6px; }
+}
+@media (max-width: 900px) {
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut:not(.wide) .pn-cutbox { width: calc(var(--nlas-planw, var(--nlas-planw0, 100)) * 1%); margin-inline: auto; }
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut.wide .pn-cutbox { width: calc(min(68vw, 300px) * var(--ar, 2.67) * var(--nlas-planw, var(--nlas-planw0, 100)) / 100); }
+}

@@ -149,7 +149,10 @@
     if (S.hover && S.hover !== sg) draw(S.hover, [54, 209, 224], .75);
     if (sg) draw(sg, [150, 240, 248], 1);
     var m = $s('mark');
-    if (sg && S.lay) { var b = vd.on[sg]; m.hidden = false; m.style.left = (S.lay.dx + (b[1] + b[3]) / 2 * S.lay.s) + 'px'; m.style.top = (S.lay.dy + b[2] * S.lay.s) + 'px'; m.querySelector('b').textContent = 'דירה ' + S.sel.u + ' · קומה ' + S.sel.f; }
+    if (sg && S.lay) { var b = vd.on[sg]; m.hidden = false; m.classList.remove('below'); m.style.left = (S.lay.dx + (b[1] + b[3]) / 2 * S.lay.s) + 'px'; m.style.top = (S.lay.dy + b[2] * S.lay.s) + 'px'; m.querySelector('b').textContent = 'דירה ' + S.sel.u + ' · קומה ' + S.sel.f;
+      // 763: the flat's label and the video-call pill never lie on each other: the label then hangs under the balcony
+      var fab = S.el.querySelector('.nlas-call.fab'), lr = m.querySelector('b').getBoundingClientRect(), fr = fab && fab.offsetParent ? fab.getBoundingClientRect() : null;
+      if (fr && lr.left < fr.right + 6 && lr.right > fr.left - 6 && lr.top < fr.bottom + 6 && lr.bottom > fr.top - 6) { m.classList.add('below'); m.style.top = (S.lay.dy + b[4] * S.lay.s) + 'px'; } }
     else m.hidden = true;
   }
   function setView(v) {
@@ -332,6 +335,17 @@
     S.el.style.setProperty('--nlas-mapcov', cv + 'px');
     S.el.style.setProperty('--nlas-maph', (h + cv) + 'px'); mapResize();
     if (window.NLPJX_MAP) { try { window.NLPJX_MAP.setPadding({ top: 0, left: 0, right: 0, bottom: cv }); } catch (e) { /* none */ } }
+    requestAnimationFrame(rangeFit);
+  }
+  /* 763: on phones the walking-time column (ours) ends above the map's logo (Mapbox's attribution stays where it is and visible):
+     its buttons get lower, 32 px down to 24 px, as the visible map needs */
+  function rangeFit() {
+    var u = document.getElementById('nlpjx-unimap'), rg = S.el && S.el.querySelector('.nlas-mapslot.compact #nlpjx-map > .nlam-range'), lg = u && u.querySelector('.mapboxgl-ctrl-logo');
+    if (!rg || !lg || !PHONE()) { if (S.el) S.el.style.removeProperty('--nlas-rgh'); return; }
+    var n = rg.querySelectorAll('button').length || 4, top = rg.getBoundingClientRect().top, lt = lg.getBoundingClientRect().top;
+    if (!lg.getBoundingClientRect().height) return;
+    var bh = Math.floor((lt - 6 - top - 6 - (n - 1) * 2) / n);
+    S.el.style.setProperty('--nlas-rgh', Math.max(24, Math.min(32, bh)) + 'px');
   }
   /* desktops shorter than ~860 px: the flat's panel (its requests, the deals line, the note) still ends above the site's bars at the
      settled view (the showroom top under the header + section tabs, 124 px): the picture in the panel gets lower, never the text */
@@ -361,7 +375,9 @@
     Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tabs [data-tab]'), function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === tab)); });
     if (tab === 'cut' && cutImg(f)) {
       var cl = cutLabels(f);
-      m.innerHTML = '<div class="pn-cut" style="--ar:' + (cl ? cl.ar : 1.6) + '"><div class="pn-cutbox"><img alt="הדירה מרוהטת, מבט מלמעלה: ' + f.r + ' חדרים" src="' + esc(cutImg(f)) + '">' + (cl ? cl.on : '') + '</div></div>' + keyplan(f) +
+      var wide = cl && cl.ar > 2; // 763: a wide plan (the penthouse) keeps a readable height on phones and moves sideways
+      m.innerHTML = '<div class="pn-cut' + (wide ? ' wide' : '') + '" style="--ar:' + (cl ? cl.ar : 1.6) + '"><div class="pn-cutbox"><img alt="הדירה מרוהטת, מבט מלמעלה: ' + f.r + ' חדרים" src="' + esc(cutImg(f)) + '">' + (cl ? cl.on : '') + '</div></div>' +
+        (wide ? '<div class="pn-widecue" aria-hidden="true">גררו לצדדים לכל הדירה</div>' : '') + keyplan(f) +
         '<div class="pn-sim">הדמיה להמחשה · ריהוט וחלוקה לדוגמה</div>' +
         (cl ? '<button type="button" class="pn-bigbtn" data-a="planbig" aria-expanded="' + S.el.classList.contains('nlas-planbig') + '"><i></i><span>' + (S.el.classList.contains('nlas-planbig') ? 'הקטנת התוכנית' : 'התוכנית בגדול, עם המידות') + '</span></button>' + cl.leg : '') +
         '<a class="pn-drag" href="' + esc(designerUrl(f)) + '" data-a="designer"><i class="hand"></i><span>גוררים את הספה, ומעצבים את הדירה</span></a>';
@@ -488,10 +504,10 @@
   function planBig(on) {
     if (!S.el) return;
     var was = S.el.classList.contains('nlas-planbig'); on = !!on;
-    S.el.classList.toggle('nlas-planbig', on);
+    S.el.classList.toggle('nlas-planbig', on); S.el.style.removeProperty('--nlas-planw');
     var b = $p('[data-a="planbig"]'); if (b) { b.setAttribute('aria-expanded', String(on)); b.querySelector('span').textContent = on ? 'הקטנת התוכנית' : 'התוכנית בגדול, עם המידות'; }
     if (was !== on) { layout(); redraw(); setTimeout(function () { layout(); redraw(); placeTags(); mapResize(); if (S.sel) showBeam(S.sel.b); }, 380); track('aurelia_plan_big', { on: on }); }
-    if (on) setTimeout(function () { var m = $p('.pn-media'), r = m && m.getBoundingClientRect(); if (r && (r.top < (PHONE() ? 60 : 120) || r.bottom > barTop() - 8)) reveal(m); else settle(m); }, PHONE() ? 60 : 400);
+    if (on) setTimeout(function () { var m = $p('.pn-media'), r = m && m.getBoundingClientRect(); if (r && (r.top < (PHONE() ? 60 : 120) || r.bottom > barTop() - 8)) reveal(m, $p('.pn-cutbox')); else settle($p('.pn-cutbox') || m, 6); }, PHONE() ? 60 : 400);
     else settle(null);
   }
   function planSvg(f, cls) {
@@ -900,11 +916,11 @@
         if (at) kept.push(at.q); else if (!on && !out) kept.push(r);
       });
   }
-  function reveal(el) { // bring a showroom part into the eye, resting above the site's floating bars
+  function reveal(el, pic) { // bring a showroom part into the eye, resting above the site's floating bars
     if (!el) return;
     var top = PHONE() ? 64 : 124, r = el.getBoundingClientRect(), room = barTop() - top, y = r.top + scrollY - top - Math.max(0, (room - r.height) / 2); // under the site's header (and its section tabs on a desktop)
     try { scrollTo({ top: Math.max(0, y), behavior: RM.matches ? 'instant' : 'smooth' }); } catch (e) { scrollTo(0, y); }
-    settle(el);
+    if (pic) settle(pic, 6); else settle(el); // 763: the plan opened large keeps its picture right under the site's header
   }
   /* 762: every resting state the showroom brings the page to leaves its own buttons fully clear of the site's floating bars (WhatsApp,
      the lead row, the accessibility button; measured, never moved). After the showroom's scroll rests, the page is nudged by the
@@ -914,13 +930,24 @@
   var stl = 0, lastSc = 0, lastIn = 0;
   addEventListener('scroll', function () { lastSc = Date.now(); }, { passive: true });
   ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (t) { addEventListener(t, function () { lastIn = Date.now(); }, { passive: true }); }); // only noted: the visitor's own move ends the settling
-  function settle(anchor) {
+  function settle(anchor, maxCut) {
     clearTimeout(stl); var t0 = Date.now();
     // again for a few seconds: pictures that finish loading and the browser's scroll anchoring move the buttons, and the site's bars
     // fade in late; the passes stop as soon as the visitor touches, scrolls or types
-    var again = function (n) { stl = setTimeout(function () { if (lastIn > t0) return; clearRest(anchor); if (n) again(n - 1); }, 900); };
-    var wait = function () { stl = setTimeout(function () { if (lastIn > t0) return; if (Date.now() - lastSc < 160 && Date.now() - t0 < 2400) wait(); else { clearRest(anchor); again(4); } }, 180); };
+    var again = function (n) { stl = setTimeout(function () { if (lastIn > t0) return; fitRest(anchor, maxCut); if (n) again(n - 1); }, 900); };
+    var wait = function () { stl = setTimeout(function () { if (lastIn > t0) return; if (Date.now() - lastSc < 160 && Date.now() - t0 < 2400) wait(); else { fitRest(anchor, maxCut); again(4); } }, 180); };
     wait();
+  }
+  /* 763: the plan opened large on a phone: when no scroll leaves every button clear (a row a few px across a bar), our own picture
+     gets a little narrower (3 % a step, down to 70 %) until it does; the site's bars are never touched */
+  function fitRest(anchor, maxCut) {
+    var r = clearRest(anchor, maxCut);
+    for (var i = 0; i < 10 && r && r.half > 0 && S.el.classList.contains('nlas-planbig') && PHONE(); i++) {
+      var w = parseFloat(S.el.style.getPropertyValue('--nlas-planw')) || (innerHeight <= 760 ? 94 : 100);
+      if (w <= 70) break;
+      S.el.style.setProperty('--nlas-planw', (w - 3)); r = clearRest(anchor, maxCut);
+    }
+    return r;
   }
   function siteTop() { // the site's header (and the section tabs) fixed or stuck at the top of the screen
     var t = 0, els = document.querySelectorAll('body *');
@@ -953,7 +980,8 @@
     });
     return [half, hdr, hid];
   }
-  function clearRest(anchor) {
+  function clearRest(anchor, maxCut) {
+    if (maxCut == null) maxCut = 110;
     if (!S.el) return null;
     var B = bars(), T = siteTop(), C = ctlRects(), H = innerHeight, A = anchor && anchor.getBoundingClientRect ? anchor.getBoundingClientRect() : null;
     var max = document.documentElement.scrollHeight - H, s0 = restScore(C, B, T, 0);
@@ -970,7 +998,7 @@
       // the part the showroom brought up stays in the eye: it never drops more than 40 px, and at most its first 110 px (a caption,
       // the close button) slide under the site's header on a short phone
       var cut = 0;
-      if (A && A.top >= T - 24) { if (A.top - dy < T - 110) return; cut = Math.max(0, T - (A.top - dy)); }
+      if (A && A.top >= T - 24) { if (A.top - dy < T - maxCut) return; cut = Math.max(0, T - (A.top - dy)); }
       if (A && A.top <= H * .55 && A.top - dy > Math.max(A.top, T) + 40) return;
       var sc = restScore(C, B, T, dy);
       var k = [sc[0], Math.round(cut / 20), sc[1], sc[2], dy < 0 ? -2 * dy : dy]; // the page moving up is preferred: the site shows its bars on a scroll back
