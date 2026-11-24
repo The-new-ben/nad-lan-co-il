@@ -431,7 +431,7 @@
 .nlas.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-bigbtn { position: static; grid-row: 1; grid-column: 3; align-self: center; }
 .nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-cut { position: relative; inset: auto; grid-row: 2; grid-column: 1 / -1; min-height: 0; background: #f1f0ec; border-radius: 10px; overflow: hidden; }
 .nlas.nlas:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-drag { position: static; grid-row: 3; grid-column: 1 / -1; justify-self: start; transform: none; }
-@media (min-width: 901px) { .nlas { --nlas-cuth: calc(var(--nlas-pmh, 232px) - 34px); } }
+@media (min-width: 901px) { .nlas { --nlas-cuth: max(90px, calc(var(--nlas-pmh, 232px) - 92px)); } } /* the rows above and under the picture come out of the same height: the panel keeps its height */
 @media (max-width: 900px) { .nlas { --nlas-cuth: min(46vw, 230px); } }
 /* the penthouse plan (a wide picture) on phones, opened large: the picture at a readable height, moved sideways by the finger in
    its own strip (the browser's own scroll), a small cue under it; numbers and the list stay */
@@ -466,4 +466,9 @@
 @media (max-width: 900px) {
   .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut:not(.wide) .pn-cutbox { width: calc(var(--nlas-planw, var(--nlas-planw0, 100)) * 1%); margin-inline: auto; }
   .nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut.wide .pn-cutbox { width: calc(min(68vw, 300px) * var(--ar, 2.67) * var(--nlas-planw, var(--nlas-planw0, 100)) / 100); }
+}
+@media (min-width: 901px) { /* a short desktop (about 720 px high, .nlas-tight): the small plan keeps the note and "large" only; the floor key is in "התוכנית" and the designer link in the large plan */
+  .nlas.nlas-tight:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-keyw, .nlas.nlas.nlas-tight:not(.nlas-planbig) .pn-media[data-tab="cut"] > .pn-drag { display: none; }
+  .nlas.nlas-tight { --nlas-cuth: max(56px, calc(var(--nlas-pmh, 232px) - 56px)); }
+  .nlas.nlas-tight:not(.nlas-planbig) .pn-flat .pn-media[data-tab="cut"] { row-gap: 2px; padding: 4px 6px; }
 }

@@ -1,0 +1,18 @@
+OK  20-2: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 0], "last": {"half": 0, "top": 69, "dy": 0, "bars": 3, "at": 1795488210978}}, "sy": 1576, "log": null}
+OK  20-2 (5 rooms): plan large {"pic": [118, 331, 682, 427]}
+OK  20-2: a label for every room + the balcony, all on the picture, none on another {"labels": ["סלון, אוכל ומטבח 51 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 14 מ״ר", "חדר שינה 13 מ״ר", "חדר שינה 13 מ״ר", "רחצה 10 מ״ר", "כניסה 9 מ״ר", "מרפסת לים"], "overlap": 0}
+OK  20-2: the tower stays on screen beside the plan {"stage": [819, 151, 521, 470], "pic": [118, 331, 682, 427]}
+OK  20-7: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 1, 0], "last": {"half": 0, "top": 69, "dy": 0, "bars": 3, "at": 1795488217704}}, "sy": 1751, "log": null}
+OK  20-7 (3 rooms): plan large {"pic": [118, 118, 682, 427]}
+OK  20-7: a label for every room + the balcony, all on the picture, none on another {"labels": ["סלון, אוכל ומטבח 20 מ״ר", "חדר הורים 13 מ״ר", "ממ״ד 11 מ״ר", "רחצה 8 מ״ר", "כניסה 7 מ״ר", "מרפסת"], "overlap": 0}
+OK  20-7: the tower stays on screen beside the plan {"stage": [819, -24, 521, 470], "pic": [118, 118, 682, 427]}
+OK  46-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 1, 0], "last": {"half": 0, "top": 69, "dy": 0, "bars": 3, "at": 1795488228580}}, "sy": 1751, "log": null}
+OK  46-1 (6 rooms): plan large {"pic": [118, 118, 682, 256]}
+OK  46-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר", "מרפסת לים"], "overlap": 0}
+OK  46-1: the tower stays on screen beside the plan {"stage": [819, -24, 521, 470], "pic": [118, 118, 682, 256]}
+OK  47-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 1, 0], "last": {"half": 0, "top": 69, "dy": 0, "bars": 3, "at": 1795488239241}}, "sy": 1751, "log": null}
+OK  47-1 (6 rooms): plan large {"pic": [118, 118, 682, 256]}
+OK  47-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר", "מרפסת לים"], "overlap": 0}
+OK  47-1: the tower stays on screen beside the plan {"stage": [819, -24, 521, 470], "pic": [118, 118, 682, 256]}
+OK  console errors {"errors": []}
+BAD: 0 of 17

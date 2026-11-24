@@ -1,0 +1,18 @@
+OK  20-2: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795488103278}}, "sy": 3588, "log": null}
+OK  20-2 (5 rooms): plan large {"pic": [16, 55, 327, 205]}
+OK  20-2: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "מרפסת לים"], "overlap": 0}
+OK  20-2: the rooms listed under the picture {"legend": ["סלון, אוכל ומטבח 51 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 14 מ״ר", "חדר שינה 13 מ״ר", "חדר שינה 13 מ״ר", "רחצה 10 מ״ר", "כניסה 9 מ״ר"]}
+OK  20-7: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 0], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795488115124}}, "sy": 3592, "log": null}
+OK  20-7 (3 rooms): plan large {"pic": [48, 53, 264, 165]}
+OK  20-7: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "מרפסת"], "overlap": 0}
+OK  20-7: the rooms listed under the picture {"legend": ["סלון, אוכל ומטבח 20 מ״ר", "חדר הורים 13 מ״ר", "ממ״ד 11 מ״ר", "רחצה 8 מ״ר", "כניסה 7 מ״ר"]}
+OK  46-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795488125987}}, "sy": 3557, "log": null}
+OK  46-1 (6 rooms): plan large {"pic": [-103, 53, 457, 171]}
+OK  46-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "מרפסת לים"], "overlap": 0}
+OK  46-1: the rooms listed under the picture {"legend": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר"]}
+OK  47-1: at rest no showroom button sits half under the site's bars {"half": [], "rest": {"score": [0, 0, 1], "last": {"half": 0, "top": 57, "dy": 0, "bars": 3, "at": 1795488136643}}, "sy": 3557, "log": null}
+OK  47-1 (6 rooms): plan large {"pic": [-103, 53, 457, 171]}
+OK  47-1: a label for every room + the balcony, all on the picture, none on another {"labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "מרפסת לים"], "overlap": 0}
+OK  47-1: the rooms listed under the picture {"legend": ["סלון ופינת אוכל 182 מ״ר", "חדר הורים 24 מ״ר", "ממ״ד 25 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "חדר שינה 24 מ״ר", "מטבח 31 מ״ר", "רחצה 18 מ״ר", "כניסה 16 מ״ר"]}
+OK  console errors {"errors": []}
+BAD: 0 of 17
