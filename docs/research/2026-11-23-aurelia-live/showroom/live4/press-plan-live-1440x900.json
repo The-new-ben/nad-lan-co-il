@@ -1,0 +1,262 @@
+{
+ "vp": "1440x900",
+ "live": true,
+ "steps": [
+  {
+   "step": "20-2: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 69,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795485601505
+    }
+   },
+   "sy": 1798,
+   "log": null
+  },
+  {
+   "step": "20-2 (5 rooms): plan large",
+   "ok": true,
+   "pic": [
+    118,
+    331,
+    682,
+    427
+   ]
+  },
+  {
+   "step": "20-2: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "סלון, אוכל ומטבח 51 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 14 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "רחצה 10 מ״ר",
+    "כניסה 9 מ״ר",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-2: the tower stays on screen beside the plan",
+   "ok": true,
+   "stage": [
+    819,
+    151,
+    521,
+    470
+   ],
+   "pic": [
+    118,
+    331,
+    682,
+    427
+   ]
+  },
+  {
+   "step": "20-7: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 69,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795485607786
+    }
+   },
+   "sy": 1946,
+   "log": null
+  },
+  {
+   "step": "20-7 (3 rooms): plan large",
+   "ok": true,
+   "pic": [
+    118,
+    -77,
+    682,
+    427
+   ]
+  },
+  {
+   "step": "20-7: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "סלון, אוכל ומטבח 20 מ״ר",
+    "חדר הורים 13 מ״ר",
+    "ממ״ד 11 מ״ר",
+    "רחצה 8 מ״ר",
+    "כניסה 7 מ״ר",
+    "מרפסת"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-7: the tower stays on screen beside the plan",
+   "ok": true,
+   "stage": [
+    819,
+    -219,
+    521,
+    470
+   ],
+   "pic": [
+    118,
+    -77,
+    682,
+    427
+   ]
+  },
+  {
+   "step": "46-1: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 69,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795485618428
+    }
+   },
+   "sy": 1946,
+   "log": null
+  },
+  {
+   "step": "46-1 (6 rooms): plan large",
+   "ok": true,
+   "pic": [
+    118,
+    -77,
+    682,
+    256
+   ]
+  },
+  {
+   "step": "46-1: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "סלון ופינת אוכל 182 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 25 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "מטבח 31 מ״ר",
+    "רחצה 18 מ״ר",
+    "כניסה 16 מ״ר",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "46-1: the tower stays on screen beside the plan",
+   "ok": true,
+   "stage": [
+    819,
+    -219,
+    521,
+    470
+   ],
+   "pic": [
+    118,
+    -77,
+    682,
+    256
+   ]
+  },
+  {
+   "step": "47-1: at rest no showroom button sits half under the site's bars",
+   "ok": true,
+   "half": [],
+   "rest": {
+    "score": [
+     0,
+     0,
+     0
+    ],
+    "last": {
+     "half": 0,
+     "top": 69,
+     "dy": 0,
+     "bars": 3,
+     "at": 1795485629027
+    }
+   },
+   "sy": 1946,
+   "log": null
+  },
+  {
+   "step": "47-1 (6 rooms): plan large",
+   "ok": true,
+   "pic": [
+    118,
+    -77,
+    682,
+    256
+   ]
+  },
+  {
+   "step": "47-1: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "סלון ופינת אוכל 182 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 25 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "מטבח 31 מ״ר",
+    "רחצה 18 מ״ר",
+    "כניסה 16 מ״ר",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "47-1: the tower stays on screen beside the plan",
+   "ok": true,
+   "stage": [
+    819,
+    -219,
+    521,
+    470
+   ],
+   "pic": [
+    118,
+    -77,
+    682,
+    256
+   ]
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

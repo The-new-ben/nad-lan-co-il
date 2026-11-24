@@ -27,9 +27,9 @@ with sync_playwright() as p:
     else:
         pg.evaluate("NLAS.tab('cut')"); pg.wait_for_timeout(500)
         if not pg.evaluate("document.getElementById('nlas').classList.contains('nlas-planbig')"): pg.locator("#nlas .pn-bigbtn").click()
-    for i in range(14):
-        pg.wait_for_timeout(700)
-        print(i, pg.evaluate("[Math.round(scrollY), JSON.stringify(NLAS.rest().score), [...document.querySelectorAll('#nlcta, #nlcta *, #nl-sticky, #nla11y')].filter(e=>getComputedStyle(e).position==='fixed').map(e=>e.id+e.className.toString().slice(0,20)+':'+Math.round(e.getBoundingClientRect().top)).join(' ')]"))
+    for i in range(20):
+        pg.wait_for_timeout(300)
+        print(i, pg.evaluate("[Math.round(scrollY), Math.round(document.querySelector('#nlas .pn-media').getBoundingClientRect().top), JSON.stringify(NLAS.rest().score), [...document.querySelectorAll('#nlcta, #nlcta *, #nl-sticky, #nla11y')].filter(e=>getComputedStyle(e).position==='fixed').map(e=>e.id+e.className.toString().slice(0,20)+':'+Math.round(e.getBoundingClientRect().top)).join(' ')]"))
     print(json.dumps(pg.evaluate("window.__nlas.restLog"), ensure_ascii=False, indent=0))
     pg.screenshot(path="local11/dbg762-%s.png" % sys.argv[1])
     br.close()

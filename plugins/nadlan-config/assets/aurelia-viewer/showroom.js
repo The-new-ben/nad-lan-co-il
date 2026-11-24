@@ -967,11 +967,15 @@
     var best = null;
     cand.forEach(function (dy) {
       dy = Math.round(dy); if (!dy || Math.abs(dy) > H * .6 || scrollY + dy < 0 || scrollY + dy > max) return;
-      if (A && A.top >= T - 24 && A.top - dy < T - 24) return; // the part the showroom brought up stays in the eye, under the header
-      if (A && A.top <= H * .55 && A.top - dy > H * .55) return;
+      // the part the showroom brought up stays in the eye: it never drops more than 40 px, and at most its first 110 px (a caption,
+      // the close button) slide under the site's header on a short phone
+      var cut = 0;
+      if (A && A.top >= T - 24) { if (A.top - dy < T - 110) return; cut = Math.max(0, T - (A.top - dy)); }
+      if (A && A.top <= H * .55 && A.top - dy > Math.max(A.top, T) + 40) return;
       var sc = restScore(C, B, T, dy);
-      var k = [sc[0], sc[1], sc[2], dy < 0 ? -2 * dy : dy]; // the page moving up is preferred: the site shows its bars on a scroll back
-      if (!best || k[0] < best.k[0] || (k[0] === best.k[0] && (k[1] < best.k[1] || (k[1] === best.k[1] && (k[2] < best.k[2] || (k[2] === best.k[2] && k[3] < best.k[3])))))) best = { dy: dy, k: k };
+      var k = [sc[0], Math.round(cut / 20), sc[1], sc[2], dy < 0 ? -2 * dy : dy]; // the page moving up is preferred: the site shows its bars on a scroll back
+      var lt = !best; for (var q = 0; !lt && q < k.length; q++) { if (k[q] !== best.k[q]) { lt = k[q] < best.k[q]; break; } }
+      if (lt) best = { dy: dy, k: k };
     });
     if (best && best.k[0] < s0[0]) {
       try { scrollTo({ top: scrollY + best.dy, behavior: 'instant' }); } catch (e) { scrollTo(0, scrollY + best.dy); }

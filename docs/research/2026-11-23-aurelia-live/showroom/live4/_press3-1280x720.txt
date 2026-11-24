@@ -1,0 +1,20 @@
+OK  cue on the tower before any tap {"hint": "בחרו דירה על המגדל"}
+OK  a flat is on the picture {"pt": {"x": 813.9905555555556, "y": 318.37152777777777}}
+OK  skip button has its own place (not on the label, the call or the mark) {"hit": [], "box": [62, 236, 56, 34]}
+OK  flat open after the pull-out {"mode": "flat", "view": "street", "sel": "20-2", "pull": 10234, "beam": 270, "tab": "cut"}
+OK  no showroom control under the site's bars (after the tap) {"under": [], "bars": [["nl-sticky", 654, 16, 230], ["nla11y", 648, 1208, 52], ["nlcta", 574, 20, 298]]}
+OK  cue on the map after the tap {"shown_at": 19882, "now": 27040, "map": true}
+OK  pull-out about 1.2 s (slowed run excluded) {"pull_ms": 10234}
+OK  compact map: no nameless plan dot, no overlapping price pill {"pills": 5, "overlap": 0, "nameless_plan_dots": 0, "named_plans": 2}
+OK  compact map: no price pill on a marker, none under the bars {"pills": 5, "marks": 1, "pill_on_marker": [], "pills_under_bars": 0, "offset": 4}
+OK  no inner scrollbars, no layer left over the tower {}
+OK  blacklist words and totals absent {"found": []}
+OK  cue on the view {"cue": "לחצו על מקום בנוף"}
+OK  view tags on the picture {"tags": 16}
+OK  strip 'what is that way' clear of the bars {"under": []}
+OK  the beam turned to the flat {"beam": 90}
+OK  panel call button clear of the bars before the press {"under": ["מהטיילת @nla11y", "עסקאות שנסגרו באזור, 5 חדרים ו @nlcta"]}
+OK  call: nobody on duty -> honest choice, the sheet rests above the bars {"sheet": [262, 437], "barTop": 574}
+OK  every showroom block can rest fully clear of the header and the bars {"rest": 17}
+OK  console errors {"errors": []}
+BAD: 0 of 19

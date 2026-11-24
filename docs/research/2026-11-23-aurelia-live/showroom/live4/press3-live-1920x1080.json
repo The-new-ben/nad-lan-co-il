@@ -1,0 +1,149 @@
+{
+ "vp": "1920x1080",
+ "live": true,
+ "at": "2026-11-24 03:56:21",
+ "steps": [
+  {
+   "step": "cue on the tower before any tap",
+   "ok": true,
+   "hint": "בחרו דירה על המגדל"
+  },
+  {
+   "step": "a flat is on the picture",
+   "ok": true,
+   "pt": {
+    "x": 1134.40625,
+    "y": 318.6875
+   }
+  },
+  {
+   "step": "skip button has its own place (not on the label, the call or the mark)",
+   "ok": true,
+   "hit": [],
+   "box": [
+    366,
+    274,
+    56,
+    34
+   ]
+  },
+  {
+   "step": "flat open after the pull-out",
+   "ok": true,
+   "mode": "flat",
+   "view": "street",
+   "sel": "20-2",
+   "pull": 10597,
+   "beam": 270,
+   "tab": "cut"
+  },
+  {
+   "step": "no showroom control under the site's bars (after the tap)",
+   "ok": true,
+   "under": [],
+   "bars": [
+    [
+     "nl-sticky",
+     1014,
+     16,
+     230
+    ],
+    [
+     "nla11y",
+     1008,
+     1848,
+     52
+    ],
+    [
+     "nlcta",
+     934,
+     20,
+     298
+    ]
+   ]
+  },
+  {
+   "step": "cue on the map after the tap",
+   "ok": true,
+   "shown_at": 21579,
+   "now": 29391,
+   "map": true
+  },
+  {
+   "step": "pull-out about 1.2 s (slowed run excluded)",
+   "ok": true,
+   "pull_ms": 10597
+  },
+  {
+   "step": "compact map: no nameless plan dot, no overlapping price pill",
+   "ok": true,
+   "pills": 6,
+   "overlap": 0,
+   "nameless_plan_dots": 0,
+   "named_plans": 2
+  },
+  {
+   "step": "compact map: no price pill on a marker, none under the bars",
+   "ok": true,
+   "pills": 6,
+   "marks": 1,
+   "pill_on_marker": [],
+   "pills_under_bars": 0,
+   "offset": 4
+  },
+  {
+   "step": "no inner scrollbars, no layer left over the tower",
+   "ok": true
+  },
+  {
+   "step": "blacklist words and totals absent",
+   "ok": true,
+   "found": []
+  },
+  {
+   "step": "cue on the view",
+   "ok": true,
+   "cue": "לחצו על מקום בנוף"
+  },
+  {
+   "step": "view tags on the picture",
+   "ok": true,
+   "tags": 16
+  },
+  {
+   "step": "strip 'what is that way' clear of the bars",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "the beam turned to the flat",
+   "ok": true,
+   "beam": 90
+  },
+  {
+   "step": "panel call button clear of the bars before the press",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "call: nobody on duty -> honest choice, the sheet rests above the bars",
+   "ok": true,
+   "sheet": [
+    441,
+    616
+   ],
+   "barTop": 934
+  },
+  {
+   "step": "every showroom block can rest fully clear of the header and the bars",
+   "ok": true,
+   "rest": 17
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

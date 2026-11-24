@@ -99,9 +99,9 @@ with sync_playwright() as p:
     step("no inner scrollbars, no layer left over the tower", fit["sc"] == 0 and not fit["overlay"])
     bl = [w for w in BL if w in fit["text"]]; step("blacklist words and totals absent", not bl, found=bl)
     if phone:
-        pg.locator("#nlas .bd-pic").tap(); pg.wait_for_timeout(1400); g2 = pg.evaluate(GEOM); shot(pg, "04b-band-plan")
-        pm = pg.evaluate("(()=>{const b=document.querySelector('#nlas .pn-media').getBoundingClientRect();return [Math.round(b.top),Math.round(b.bottom)]})()")
-        step("band plan button brings the plan into the eye, clear of the bars", pm[0] >= 56 and pm[1] <= g2["barTop"], plan=pm, barTop=g2["barTop"], cut_below=g2["under"])
+        pg.locator("#nlas .bd-pic").tap(); pg.wait_for_timeout(4800); g2 = pg.evaluate(GEOM)  # 762: measured at rest (the showroom settles clear of the bars); shot(pg, "04b-band-plan")
+        pm = pg.evaluate("(()=>{const b=(document.querySelector('#nlas .pn-cutbox')||document.querySelector('#nlas .pn-media')).getBoundingClientRect();return [Math.round(b.top),Math.round(b.bottom)]})()")  # 762: the picture itself (on a short phone its caption row may rest under the header)
+        step("band plan button brings the plan into the eye, clear of the bars (picture top at most 20 px under the header)", pm[0] >= 36 and pm[1] <= g2["barTop"], plan=pm, barTop=g2["barTop"], cut_below=g2["under"])
     pg.evaluate("NLAS.open('20-5', false)"); pg.wait_for_timeout(2000); pg.evaluate("NLAS.tab('view')"); pg.wait_for_timeout(2500)
     pg.evaluate("(()=>{const e=document.querySelector('#nlas .pn-media');const r=e.getBoundingClientRect();window.scrollTo({top:r.top+scrollY-(innerHeight-r.height)/2+(%d),behavior:'instant'})})()" % (-80 if phone else 0)); pg.wait_for_timeout(600)
     vc = pg.evaluate("(document.querySelector('#nlas .pn-cue')||{}).innerText||''"); step("cue on the view", "לחצו על מקום בנוף" in vc, cue=vc)
