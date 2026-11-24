@@ -30,7 +30,7 @@ with sync_playwright() as p:
     pg.wait_for_selector("#nlas", state="attached", timeout=90000); pg.wait_for_timeout(2500)
     pg.evaluate("window.scrollTo({top:document.getElementById('nlas').getBoundingClientRect().top+scrollY-%d,behavior:'instant'})" % (60 if phone else 124))
     pg.wait_for_function("window.NLAS && window.__nlas && window.__nlas.interactive", timeout=90000); pg.wait_for_timeout(1500)
-    for fid, rooms in (("20-2", 5), ("20-7", 3), ("46-1", 6)):
+    for fid, rooms in (("20-2", 5), ("20-7", 3), ("46-1", 6), ("47-1", 6)):
         ok = pg.evaluate("NLAS.open('%s', false)" % fid); pg.wait_for_timeout(2500)
         if not ok: step("flat %s exists" % fid, False); continue
         if phone:
@@ -46,7 +46,14 @@ with sync_playwright() as p:
           const st=document.querySelector('#nlas .nlas-stage').getBoundingClientRect();
           return {big:document.getElementById('nlas').classList.contains('nlas-planbig'),pic:[Math.round(b.left),Math.round(b.top),Math.round(b.width),Math.round(b.height)],labels:L,overlap:ov,
             legend:[...document.querySelectorAll('#nlas .pn-legend li')].filter(e=>e.offsetParent).map(e=>e.innerText),stage:[Math.round(st.left),Math.round(st.top),Math.round(st.width),Math.round(st.height)]}}""")
+        pg.wait_for_timeout(5200)
+        rest = pg.evaluate("NLAS.rest()")
+        g2 = pg.evaluate("""()=>{const out=[];const B=[...document.querySelectorAll('body *')].filter(e=>!document.getElementById('nlas').contains(e)&&getComputedStyle(e).position==='fixed').map(e=>e.getBoundingClientRect()).filter(r=>r.width>=40&&r.height>=30&&r.height<=200&&r.top>innerHeight*.5&&r.top<innerHeight);
+          for(const e of document.querySelectorAll('#nlas button, #nlas a[href], #nlas [role=tab]')){if(e.closest('.mapboxgl-marker,.mapboxgl-popup,.mapboxgl-ctrl'))continue;const r=e.getBoundingClientRect();if(r.width<8||r.height<8||r.bottom<=0||r.top>=innerHeight)continue;
+            for(const b of B){const ox=Math.min(r.right,b.right)-Math.max(r.left,b.left),oy=Math.min(r.bottom,b.bottom)-Math.max(r.top,b.top);if(ox>1&&oy>1&&!(r.left>=b.left-1&&r.right<=b.right+1&&r.top>=b.top-1&&r.bottom<=b.bottom+1))out.push((e.innerText||e.getAttribute('aria-label')||e.className).trim().slice(0,30)+' @'+Math.round(r.top)+'-'+Math.round(r.bottom)+' bar '+Math.round(b.top))}}
+          return out}""")
         pg.screenshot(path=os.path.join(OUT, "%s%s-plan-%s.png" % ("live-" if LIVE else "", sys.argv[1], fid)))
+        step("%s: at rest no showroom button sits half under the site's bars" % fid, not g2, half=g2, rest=rest, sy=pg.evaluate("Math.round(scrollY)"), log=None if not g2 else pg.evaluate("window.__nlas.restLog"))
         step("%s (%d rooms): plan large" % (fid, rooms), g and g["big"], pic=g and g["pic"])
         step("%s: a label for every room + the balcony, all on the picture, none on another" % fid, g and len(g["labels"]) == rooms + 2 + (1 if rooms >= 6 else 0) + 1 and all(x["in"] for x in g["labels"]) and g["overlap"] == 0, labels=g and [x["t"] for x in g["labels"]], overlap=g and g["overlap"])
         if phone: step("%s: the rooms listed under the picture" % fid, g and len(g["legend"]) >= rooms, legend=g and g["legend"])

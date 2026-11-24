@@ -417,3 +417,5 @@
   .nlas.nlas-planbig .pn-legend li::before { content: counter(rm); display: inline-block; margin-inline-end: 6px; vertical-align: 1px; font: 700 12px/18px "Barlow Condensed", Assistant, sans-serif; width: 18px; height: 18px; border-radius: 50%; background: var(--aqua); color: var(--navy); text-align: center; }
   .nlas.nlas-planbig .pn-legend li b { color: var(--off); }
 }
+/* ---------------------------------------------------------------- 1.72.762 (HAD-810: the floor stepper stops at the residential range) */
+.nlas.nlas .pn-fl button:disabled { opacity: .32; cursor: default; }

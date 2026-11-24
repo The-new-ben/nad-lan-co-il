@@ -267,11 +267,11 @@
   }
   function panelFlat(f, hold) {
     S.mode = 'flat'; S.el.classList.add('has-flat');
-    var units = F.flats.filter(function (x) { return x.f === f.f; });
+    var units = F.flats.filter(function (x) { return x.f === f.f; }), FL = floors(), lo = FL[0], hi = FL[FL.length - 1];
     $s('panel').innerHTML =
       '<div class="pn-flat' + (hold ? ' hold' : '') + '">' +
         '<div class="pn-top"><div class="pn-ttl"><b>' + title(f) + '</b><em class="nlas-tag">דירה לדוגמה</em></div>' +
-          '<div class="pn-fl"><button type="button" data-fl="1" aria-label="אותה דירה, קומה אחת למעלה">▲</button><button type="button" data-fl="-1" aria-label="אותה דירה, קומה אחת למטה">▼</button></div></div>' +
+          '<div class="pn-fl" role="group" aria-label="קומות ' + lo + ' עד ' + hi + '"><button type="button" data-fl="1" aria-label="אותה דירה, קומה אחת למעלה"' + (f.f >= hi ? ' disabled' : '') + '>▲</button><button type="button" data-fl="-1" aria-label="אותה דירה, קומה אחת למטה"' + (f.f <= lo ? ' disabled' : '') + '>▼</button></div></div>' +
         '<div class="pn-sides" role="group" aria-label="דירה אחרת בקומה">' + units.map(function (x) { return '<button type="button" data-unit="' + x.id + '" aria-pressed="' + (x.id === f.id) + '">' + SIDE[x.b] + ' ' + x.u + '</button>'; }).join('') + '</div>' +
         '<div class="pn-tabs" role="tablist">' + (cutImg(f) ? '<button type="button" role="tab" data-tab="cut" aria-selected="true">הדירה מרוהטת</button>' : '') + '<button type="button" role="tab" data-tab="plan" aria-selected="' + !cutImg(f) + '">התוכנית</button><button type="button" role="tab" data-tab="view" aria-selected="false"><i class="dot"></i>הנוף מהקומה</button></div>' +
         '<div class="pn-media" data-tab="' + (cutImg(f) ? 'cut' : 'plan') + '"></div>' +
@@ -283,7 +283,7 @@
           callBtn('', 'panel') +
           '<button type="button" class="pn-btn ghost" data-a="lead">השארת פרטים</button>' +
         '</div>' +
-        '<div class="pn-price"><span class="lab">עסקאות שנסגרו באזור, ' + (f.r >= 5 ? '5 חדרים' : f.r + ' חדרים') + ' (חציון)</span><span class="val" data-med>…</span></div>' +
+        '<div class="pn-price"><span class="lab">עסקאות שנסגרו באזור, ' + (f.r >= 5 ? '5 חדרים ומעלה' : f.r + ' חדרים') + ' (חציון)</span><span class="val" data-med>…</span></div>' +
         '<div class="pn-decl">חדרים, שטח וחלוקה: נתוני דוגמה. פרויקט קונספטואלי, אינו בבנייה ואינו משווק.</div>' +
       '</div>';
     media(cutImg(f) ? 'cut' : 'plan');
@@ -491,7 +491,8 @@
     S.el.classList.toggle('nlas-planbig', on);
     var b = $p('[data-a="planbig"]'); if (b) { b.setAttribute('aria-expanded', String(on)); b.querySelector('span').textContent = on ? 'הקטנת התוכנית' : 'התוכנית בגדול, עם המידות'; }
     if (was !== on) { layout(); redraw(); setTimeout(function () { layout(); redraw(); placeTags(); mapResize(); if (S.sel) showBeam(S.sel.b); }, 380); track('aurelia_plan_big', { on: on }); }
-    if (on) setTimeout(function () { var m = $p('.pn-media'), r = m && m.getBoundingClientRect(); if (r && (r.top < (PHONE() ? 60 : 120) || r.bottom > barTop() - 8)) reveal(m); }, PHONE() ? 60 : 400);
+    if (on) setTimeout(function () { var m = $p('.pn-media'), r = m && m.getBoundingClientRect(); if (r && (r.top < (PHONE() ? 60 : 120) || r.bottom > barTop() - 8)) reveal(m); else settle(m); }, PHONE() ? 60 : 400);
+    else settle(null);
   }
   function planSvg(f, cls) {
     var w = f.w, d = f.d, bal = 2.1, n = f.r, rooms = [];
@@ -576,7 +577,9 @@
   /* the floor plan: the typical floor (or the top floor) with this flat lit; north up, the sea on the left */
   var KEY = { typ: { 1: [2, 40, 10.4, 54], 2: [2, 54, 10.4, 70], 3: [2, 70, 10.4, 84], 4: [19.6, 40, 28, 54], 5: [19.6, 54, 28, 70], 6: [19.6, 70, 28, 84], 7: [10.4, 40, 19.6, 46.5] }, top: { 1: [2, 40, 10.4, 84], 2: [19.6, 40, 28, 84] } };
   function keyplan(f) {
-    var K = f.f >= 46 ? KEY.top : KEY.typ, o = '<svg class="pn-key" viewBox="-1 37 32 50" role="img" aria-label="תוכנית הקומה: הדירה מסומנת">';
+    var K = f.f >= 46 ? KEY.top : KEY.typ, o;
+    if (f.k && F) { K = {}; F.flats.forEach(function (x) { if (x.f === f.f && x.k) K[x.u] = x.k; }); }
+    o = '<svg class="pn-key" viewBox="-1 37 32 50" role="img" aria-label="תוכנית הקומה: הדירה מסומנת">';
     o += '<rect x="2" y="40" width="26" height="44" fill="#132f40" stroke="#9fb6c3" stroke-width=".4"/>';
     Object.keys(K).forEach(function (u) { var b = K[u], on = Number(u) === f.u; o += '<rect x="' + b[0] + '" y="' + (124 - b[3]) + '" width="' + (b[2] - b[0]) + '" height="' + (b[3] - b[1]) + '" fill="' + (on ? '#36d1e0' : '#1d4255') + '" stroke="#0b1b27" stroke-width=".5"/>'; });
     o += '<rect x="11.5" y="62" width="7" height="12" fill="#0b1b27"/><text x="15" y="69" font-size="2.6">ליבה</text><text x="-.2" y="63" font-size="2.8" class="sea">ים</text><path d="M24 86.5l1.6-3 1.6 3z" fill="#f7f6f2"/></svg>';
@@ -614,8 +617,8 @@
     var unhold = function () { var h = $p('.pn-flat'); if (h) h.classList.remove('hold'); var b = $s('band'); if (b) b.classList.remove('hold'); };
     var go = function () {
       layout(); redraw(); setBarVar(); fitDesk();
-      if (!first || RM.matches) { unhold(); cueMap(); return; }
-      pullOut(f, g).then(function () { unhold(); cueMap(); });
+      if (!first || RM.matches) { unhold(); cueMap(); settle(S.el); return; }
+      pullOut(f, g).then(function () { unhold(); cueMap(); settle(S.el); });
     };
     if (PHONE()) { // the stage gets compact (the tower stays, the flat centred), and the page brings both into the eye
       requestAnimationFrame(function () { // the stage is already compact (no height transition on phones): settle the page at once
@@ -901,6 +904,80 @@
     if (!el) return;
     var top = PHONE() ? 64 : 124, r = el.getBoundingClientRect(), room = barTop() - top, y = r.top + scrollY - top - Math.max(0, (room - r.height) / 2); // under the site's header (and its section tabs on a desktop)
     try { scrollTo({ top: Math.max(0, y), behavior: RM.matches ? 'instant' : 'smooth' }); } catch (e) { scrollTo(0, y); }
+    settle(el);
+  }
+  /* 762: every resting state the showroom brings the page to leaves its own buttons fully clear of the site's floating bars (WhatsApp,
+     the lead row, the accessibility button; measured, never moved). After the showroom's scroll rests, the page is nudged by the
+     smallest step that takes every button that sits half under a bar either wholly above it or wholly out of the screen; the part the
+     showroom brought into view (its anchor) stays under the site's header. Runs only after the showroom's own scrolls, never after the
+     visitor's (no scroll capture). */
+  var stl = 0, lastSc = 0, lastIn = 0;
+  addEventListener('scroll', function () { lastSc = Date.now(); }, { passive: true });
+  ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (t) { addEventListener(t, function () { lastIn = Date.now(); }, { passive: true }); }); // only noted: the visitor's own move ends the settling
+  function settle(anchor) {
+    clearTimeout(stl); var t0 = Date.now();
+    // again for a few seconds: pictures that finish loading and the browser's scroll anchoring move the buttons, and the site's bars
+    // fade in late; the passes stop as soon as the visitor touches, scrolls or types
+    var again = function (n) { stl = setTimeout(function () { if (lastIn > t0) return; clearRest(anchor); if (n) again(n - 1); }, 900); };
+    var wait = function () { stl = setTimeout(function () { if (lastIn > t0) return; if (Date.now() - lastSc < 160 && Date.now() - t0 < 2400) wait(); else { clearRest(anchor); again(4); } }, 180); };
+    wait();
+  }
+  function siteTop() { // the site's header (and the section tabs) fixed or stuck at the top of the screen
+    var t = 0, els = document.querySelectorAll('body *');
+    for (var i = 0; i < els.length; i++) {
+      var e = els[i]; if (S.el && S.el.contains(e)) continue;
+      var cs = getComputedStyle(e); if ((cs.position !== 'fixed' && cs.position !== 'sticky') || cs.display === 'none' || cs.visibility === 'hidden') continue;
+      var r = e.getBoundingClientRect(); if (r.top <= 2 && r.bottom > t && r.bottom < innerHeight * .3 && r.width > innerWidth * .5) t = r.bottom;
+    }
+    return t;
+  }
+  function ctlRects() {
+    var out = [];
+    Array.prototype.forEach.call(S.el.querySelectorAll('button, a[href], [role="tab"]'), function (e) {
+      if (e.closest('.mapboxgl-marker, .mapboxgl-popup, .mapboxgl-ctrl')) return;
+      var r = e.getBoundingClientRect(); if (r.width < 8 || r.height < 8 || r.bottom < -innerHeight || r.top > 2 * innerHeight) return;
+      var cs = getComputedStyle(e); if (cs.visibility === 'hidden' || Number(cs.opacity) < .1) return;
+      out.push({ l: r.left, r: r.right, t: r.top, b: r.bottom, e: e });
+    });
+    return out;
+  }
+  function restScore(C, B, T, dy) { // [buttons half under a bar, half under the header, wholly hidden behind a bar]
+    var half = 0, hdr = 0, hid = 0, H = innerHeight;
+    C.forEach(function (c) {
+      var t = c.t - dy, b = c.b - dy; if (b <= 0 || t >= H) return;
+      if (t < T - 1 && b > T + 1) hdr++;
+      B.forEach(function (r) {
+        var ox = Math.min(c.r, r.right) - Math.max(c.l, r.left), oy = Math.min(b, r.bottom) - Math.max(t, r.top); if (ox <= 1 || oy <= 1) return;
+        if (c.l >= r.left - 1 && c.r <= r.right + 1 && t >= r.top - 1 && b <= r.bottom + 1) hid++; else half++;
+      });
+    });
+    return [half, hdr, hid];
+  }
+  function clearRest(anchor) {
+    if (!S.el) return null;
+    var B = bars(), T = siteTop(), C = ctlRects(), H = innerHeight, A = anchor && anchor.getBoundingClientRect ? anchor.getBoundingClientRect() : null;
+    var max = document.documentElement.scrollHeight - H, s0 = restScore(C, B, T, 0);
+    window.__nlas.rest = { half: s0[0], top: Math.round(T), dy: 0, bars: B.length, at: Date.now() };
+    (window.__nlas.restLog = window.__nlas.restLog || []).push([Date.now() % 100000, Math.round(scrollY), s0.join('/'), B.map(function (r) { return Math.round(r.top) + ':' + Math.round(r.left) + '-' + Math.round(r.right); }).join(' ')]);
+    if (window.__nlas.restLog.length > 24) window.__nlas.restLog.shift();
+    if (!B.length || !s0[0]) return window.__nlas.rest;
+    var lines = [T, H, 0]; B.forEach(function (r) { lines.push(r.top, r.bottom); });
+    var cand = [];
+    C.forEach(function (c) { lines.forEach(function (L) { cand.push(c.b - L + 6, c.t - L - 6); }); });
+    var best = null;
+    cand.forEach(function (dy) {
+      dy = Math.round(dy); if (!dy || Math.abs(dy) > H * .6 || scrollY + dy < 0 || scrollY + dy > max) return;
+      if (A && A.top >= T - 24 && A.top - dy < T - 24) return; // the part the showroom brought up stays in the eye, under the header
+      if (A && A.top <= H * .55 && A.top - dy > H * .55) return;
+      var sc = restScore(C, B, T, dy);
+      var k = [sc[0], sc[1], sc[2], dy < 0 ? -2 * dy : dy]; // the page moving up is preferred: the site shows its bars on a scroll back
+      if (!best || k[0] < best.k[0] || (k[0] === best.k[0] && (k[1] < best.k[1] || (k[1] === best.k[1] && (k[2] < best.k[2] || (k[2] === best.k[2] && k[3] < best.k[3])))))) best = { dy: dy, k: k };
+    });
+    if (best && best.k[0] < s0[0]) {
+      try { scrollTo({ top: scrollY + best.dy, behavior: 'instant' }); } catch (e) { scrollTo(0, scrollY + best.dy); }
+      window.__nlas.rest = { half: best.k[0], top: Math.round(T), dy: best.dy };
+    }
+    return window.__nlas.rest;
   }
   function near(f) { // what lies inside the beam: the same places as the map, sorted by distance (bridge.js showNear)
     var el = $s('near');
@@ -981,6 +1058,7 @@
   window.NLAS = {
     open: function (id, fromStage) { return data().then(function () { var f = byId[id]; if (f) openFlat(f, fromStage !== false); return !!f; }); },
     tab: function (k) { media(k); }, facility: facility, intro: intro, call: call,
+    rest: function () { return { score: S.el ? restScore(ctlRects(), bars(), siteTop(), 0) : null, last: window.__nlas.rest || null }; },
     tag: function (i) { return tags().then(function () { tagCard(i); }); },
     state: function () { return { mode: S.mode, view: S.view, sel: S.sel ? S.sel.id : null, pull: window.__nlas.lastPull, beam: window.__nlas.beam, tab: S.el && $p('.pn-media') ? $p('.pn-media').dataset.tab : null }; },
     screenOf: function (id) {
