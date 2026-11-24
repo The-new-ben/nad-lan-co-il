@@ -360,8 +360,10 @@
     var f = S.sel; m.dataset.tab = tab;
     Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tabs [data-tab]'), function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === tab)); });
     if (tab === 'cut' && cutImg(f)) {
-      m.innerHTML = '<div class="pn-cut"><img alt="הדירה מרוהטת, מבט מלמעלה: ' + f.r + ' חדרים" src="' + esc(cutImg(f)) + '"></div>' + keyplan(f) +
+      var cl = cutLabels(f);
+      m.innerHTML = '<div class="pn-cut" style="--ar:' + (cl ? cl.ar : 1.6) + '"><div class="pn-cutbox"><img alt="הדירה מרוהטת, מבט מלמעלה: ' + f.r + ' חדרים" src="' + esc(cutImg(f)) + '">' + (cl ? cl.on : '') + '</div></div>' + keyplan(f) +
         '<div class="pn-sim">הדמיה להמחשה · ריהוט וחלוקה לדוגמה</div>' +
+        (cl ? '<button type="button" class="pn-bigbtn" data-a="planbig" aria-expanded="' + S.el.classList.contains('nlas-planbig') + '"><i></i><span>' + (S.el.classList.contains('nlas-planbig') ? 'הקטנת התוכנית' : 'התוכנית בגדול, עם המידות') + '</span></button>' + cl.leg : '') +
         '<a class="pn-drag" href="' + esc(designerUrl(f)) + '" data-a="designer"><i class="hand"></i><span>גוררים את הספה, ומעצבים את הדירה</span></a>';
       dragDemo(m);
     } else if (tab === 'plan' || tab === 'cut') {
@@ -379,6 +381,7 @@
       tags().then(function () { drawTags(f); }).catch(function () {});
     }
     if (tab !== 'view') viewBig(null);
+    if (tab !== 'cut' && S.el.classList.contains('nlas-planbig')) planBig(false);
   }
   /* desktop: the view from the floor opens large under the tower and the panel (the tower and his map stay where they are) */
   function viewBig(f) {
@@ -449,6 +452,47 @@
   function loadVal() { return VAL || (VAL = fetch((C.instruments || '') + 'data/value.json?ver=' + encodeURIComponent(V)).then(function (r) { return r.json(); })); }
 
   /* the plan: a furnished sample layout from the flat's real size and side (the window side on top) */
+  /* step 2c: the rooms of the sample plan (the same split planSvg draws): name, kind, m² (sample data) */
+  function planRooms(f) {
+    var w = f.w, d = f.d, bal = 2.1, n = f.r, rooms = [];
+    var front = +(d * .56).toFixed(2), back = +(d - front).toFixed(2);
+    var mw = n >= 4 ? Math.min(5.2, w * .34) : n === 3 ? Math.min(3.8, w * .4) : 0;
+    rooms.push({ w: w - mw, h: front, n: n >= 6 ? 'סלון ופינת אוכל' : 'סלון, אוכל ומטבח', t: 'liv' });
+    if (mw) rooms.push({ w: mw, h: front, n: 'חדר הורים', t: 'master' });
+    var list = [{ n: 'ממ״ד', w: 3.4, t: 'mmd' }], beds = Math.max(0, n - (mw ? 3 : 2));
+    for (var i = 0; i < beds; i++) list.push({ n: 'חדר שינה', w: 3.3, t: 'bed' });
+    if (n >= 6) list.push({ n: 'מטבח', w: 4.2, t: 'kit' });
+    list.push({ n: 'רחצה', w: 2.4, t: 'bath' }); list.push({ n: 'כניסה', w: 2.2, t: 'entry' });
+    var sum = list.reduce(function (a, r) { return a + r.w; }, 0);
+    list.forEach(function (r) { rooms.push({ w: r.w * w / sum, h: back, n: r.n, t: r.t }); });
+    rooms.forEach(function (r) { r.a = Math.round(r.w * r.h); });
+    return rooms;
+  }
+  /* where each room sits on the furnished pictures (percent of the picture, rooms in planRooms order; the balcony last).
+     Measured by eye on img/cut-r3|r5|r6-1280.webp: the pictures were drawn from the same plans (D:/Media/Aurelia/v4/cut/plan-*.png) */
+  var CUTLAB = {
+    3: { ar: 1280 / 801, at: [[58, 56], [24, 56], [64, 83], [40, 83], [23, 83]], bal: [62, 16] },
+    5: { ar: 1280 / 801, at: [[60, 50], [20, 50], [84, 79], [63, 79], [42, 79], [25, 79], [11, 79]], bal: [52, 13] },
+    6: { ar: 1280 / 480, at: [[52, 50], [10, 47], [90, 80], [76, 80], [61, 80], [46, 80], [30, 80], [16, 80], [6, 80]], bal: [50, 23] }
+  };
+  function cutLabels(f) {
+    var L = CUTLAB[f.r]; if (!L) return '';
+    var R = planRooms(f);
+    var o = R.map(function (r, i) { var a = L.at[i]; return a ? '<span class="pn-room" style="left:' + a[0] + '%;top:' + a[1] + '%"><i>' + (i + 1) + '</i><b>' + esc(r.n) + '</b><em>' + r.a + ' מ״ר</em></span>' : ''; }).join('');
+    o += '<span class="pn-room bal" style="left:' + L.bal[0] + '%;top:' + L.bal[1] + '%"><b>' + (f.sea ? 'מרפסת לים' : 'מרפסת') + '</b></span>';
+    var leg = '<ol class="pn-legend">' + R.map(function (r) { return '<li><b>' + esc(r.n) + '</b> ' + r.a + ' מ״ר</li>'; }).join('') + '</ol>';
+    return { on: o, leg: leg, ar: L.ar };
+  }
+  /* the furnished plan opens large: desktop = the panel column widens beside the tower (the tower and his map stay); phones = the
+     picture across the width with numbered rooms and their list under it */
+  function planBig(on) {
+    if (!S.el) return;
+    var was = S.el.classList.contains('nlas-planbig'); on = !!on;
+    S.el.classList.toggle('nlas-planbig', on);
+    var b = $p('[data-a="planbig"]'); if (b) { b.setAttribute('aria-expanded', String(on)); b.querySelector('span').textContent = on ? 'הקטנת התוכנית' : 'התוכנית בגדול, עם המידות'; }
+    if (was !== on) { layout(); redraw(); setTimeout(function () { layout(); redraw(); placeTags(); mapResize(); if (S.sel) showBeam(S.sel.b); }, 380); track('aurelia_plan_big', { on: on }); }
+    if (on) setTimeout(function () { var m = $p('.pn-media'), r = m && m.getBoundingClientRect(); if (r && (r.top < (PHONE() ? 60 : 120) || r.bottom > barTop() - 8)) reveal(m); }, PHONE() ? 60 : 400);
+  }
   function planSvg(f, cls) {
     var w = f.w, d = f.d, bal = 2.1, n = f.r, rooms = [];
     var front = +(d * .56).toFixed(2), back = +(d - front).toFixed(2);
@@ -875,7 +919,8 @@
 
   /* ---------------------------------------------------------------- clicks */
   function onClick(e) {
-    var t = e.target.closest('[data-a],[data-fac],[data-view],[data-fl],[data-unit],[data-tab],[data-place],.nlas-free'); if (!t || !S.el.contains(t)) return;
+    var t = e.target.closest('[data-a],[data-fac],[data-view],[data-fl],[data-unit],[data-tab],[data-place],.nlas-free,.pn-cutbox'); if (!t || !S.el.contains(t)) return;
+    if (t.classList.contains('pn-cutbox')) { if (!S.el.classList.contains('nlas-planbig')) planBig(true); return; }
     var a = t.dataset.a, f = S.sel;
     if (t.classList.contains('nlas-free')) { var bld = document.getElementById('building'), on = !bld.classList.contains('nlas-free'); bld.classList.toggle('nlas-free', on); t.setAttribute('aria-pressed', String(on)); return; }
     if (t.dataset.view) { setView(t.dataset.view); track('aurelia_view', { view: t.dataset.view }); return; }
@@ -892,10 +937,11 @@
     if (a === 'callback') { e.preventDefault(); track('aurelia_call_back', {}); toForm('אשמח שתחזרו אליי לשיחת וידאו על אורליה ספורט' + (f ? ', דירה ' + f.u + ' בקומה ' + f.f : '') + '. שעה נוחה: '); return; }
     if (a === 'lead') { e.preventDefault(); track('aurelia_lead_click', f ? { floor: f.f, unit: f.u } : {}); toForm(f ? 'אשמח לפרטים על דירה ' + f.u + ' בקומה ' + f.f + ' באורליה ספורט (' + f.r + ' חדרים, פונה ' + DIRS[f.b] + ').' : 'אשמח לפרטים על אורליה ספורט.'); return; }
     if (a === 'pricelist') { e.preventDefault(); track('aurelia_pricelist', f ? { floor: f.f, unit: f.u } : {}); toForm('אשמח לקבל את המחירון של אורליה ספורט כשייפתח' + (f ? ', ובמיוחד לדירה ' + f.u + ' בקומה ' + f.f : '') + '.'); return; }
-    if (a === 'toplan') { e.preventDefault(); if ($p('.pn-media')) { media(cutImg(f) ? 'cut' : 'plan'); reveal($p('.pn-media')); } track('aurelia_band_plan', f ? { floor: f.f, unit: f.u } : {}); return; }
+    if (a === 'toplan') { e.preventDefault(); if ($p('.pn-media')) { media(cutImg(f) ? 'cut' : 'plan'); if (cutImg(f) && CUTLAB[f.r]) planBig(true); else reveal($p('.pn-media')); } track('aurelia_band_plan', f ? { floor: f.f, unit: f.u } : {}); return; }
     if (a === 'plan-wa') { track('aurelia_plan_request', { floor: f.f, unit: f.u }); return; }
     if (a === 'designer') { track('aurelia_designer', f ? { floor: f.f, unit: f.u } : {}); return; }
     if (a === 'intro') { e.preventDefault(); if (S.view !== 'street') setView('street'); if (S.sel) { openFlat(S.sel, false); } else intro(); return; }
+    if (a === 'planbig') { planBig(!S.el.classList.contains('nlas-planbig')); return; }
     if (a === 'vbclose') { viewBig(null); return; }
     if (a === 'tagx') { Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tagcard'), function (c) { c.hidden = true; }); Array.prototype.forEach.call(S.el.querySelectorAll('.pn-tag.on'), function (x) { x.classList.remove('on'); }); return; }
     if (a === 'onmap' || a === 'nearplace') { var p = T && T.places[Number(t.dataset.place)]; if (p) { mapFocus(p, true); track('aurelia_place_map', { place: p.n }); } return; }

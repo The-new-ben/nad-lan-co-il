@@ -375,3 +375,45 @@
 }
 /* desktop: the walking range sits at the map's top-left, away from the site's accessibility button at the bottom-right corner */
 @media (min-width: 901px) { .nlas .nlas-mapslot.compact #nlpjx-map > .nlam-range { right: auto; left: 8px; } }
+/* ---------------------------------------------------------------- step 2c (HAD-810): the furnished plan with room names and sizes, large */
+.nlas .pn-cut { container-type: size; }
+.nlas .pn-cutbox { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(100cqw, calc(100cqh * var(--ar, 1.6))); aspect-ratio: var(--ar, 1.6); cursor: zoom-in; }
+.nlas .pn-cutbox img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; margin: 0; max-width: none; border-radius: 0; }
+.nlas .pn-room { position: absolute; transform: translate(-50%, -50%); display: none; align-items: center; gap: 6px; white-space: nowrap; pointer-events: none;
+  background: rgba(11, 27, 39, .84); color: var(--off); border: 1px solid rgba(54, 209, 224, .55); border-radius: 999px; padding: 3px 10px 3px 4px; font: 600 12.5px/1.2 Assistant, sans-serif; box-shadow: 0 2px 8px rgba(0, 0, 0, .3); }
+.nlas .pn-room i { font: 700 12px/20px "Barlow Condensed", Assistant, sans-serif; font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: var(--aqua); color: var(--navy); text-align: center; }
+.nlas .pn-room b { font-weight: 700; }
+.nlas .pn-room em { font-style: normal; color: var(--aqua); font: 700 13px/1 "Barlow Condensed", Assistant, sans-serif; }
+.nlas .pn-room.bal { padding: 3px 10px; background: rgba(11, 27, 39, .6); }
+.nlas.nlas .pn-bigbtn { position: absolute; left: 6px; top: 6px; z-index: 3; display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 3px 11px !important; border-radius: 999px !important;
+  border: 1px solid var(--aqua) !important; background: rgba(11, 27, 39, .86) !important; color: var(--off) !important; font: 700 12.5px/1 Assistant, sans-serif !important; cursor: pointer; animation: nlasGlow 2.2s 3; }
+.nlas .pn-bigbtn i { width: 11px; height: 11px; border: 2px solid var(--aqua); border-radius: 2px; }
+.nlas .pn-legend { display: none; }
+.nlas .pn-media[data-tab="cut"] .pn-keyw + .pn-sim { z-index: 3; }
+.nlas.nlas-planbig .pn-media[data-tab="cut"] { height: auto; max-height: none; display: flex; flex-direction: column; }
+.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut { margin-top: 44px; } /* the note and the button sit above the picture */
+.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-cut { position: relative; inset: auto; width: 100%; container-type: normal; flex: none; }
+.nlas.nlas-planbig .pn-cutbox { cursor: default; position: relative; left: auto; top: auto; transform: none; width: 100%; }
+.nlas.nlas-planbig .pn-room { display: inline-flex; }
+.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-keyw { display: none; }
+.nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] .pn-drag { position: static; align-self: flex-start; margin: 8px 10px 10px; transform: none; }
+/* desktop: the panel column widens beside the tower; names and sizes on the rooms */
+@media (min-width: 901px) {
+  .nlas.nlas-planbig .nlas-grid { grid-template-columns: minmax(0, 1fr) min(780px, 58%); }
+  .nlas.nlas-planbig .pn-flat .pn-media[data-tab="cut"] { height: auto; max-height: none; }
+  .nlas.nlas-planbig .pn-room i { display: none; }
+  .nlas.nlas-planbig .pn-room:not(.bal) { flex-direction: column; gap: 1px; border-radius: 10px; padding: 3px 8px 4px; text-align: center; }
+  .nlas .nlas-grid { transition: grid-template-columns .35s ease; }
+}
+/* phones: the picture across the width, numbered rooms, their list under it */
+@media (max-width: 900px) {
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] { margin-inline: -14px; border-radius: 0; }
+  .nlas.nlas-planbig .pn-room { padding: 0; border: 0; background: none; box-shadow: none; }
+  .nlas.nlas-planbig .pn-room i { box-shadow: 0 0 0 2px rgba(11, 27, 39, .8); }
+  .nlas.nlas-planbig .pn-room:not(.bal) b, .nlas.nlas-planbig .pn-room em { display: none; }
+  .nlas.nlas-planbig .pn-room.bal { padding: 2px 8px; background: rgba(11, 27, 39, .6); font-size: 11.5px; }
+  .nlas.nlas-planbig .pn-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; margin: 8px 14px 0; padding: 0; list-style: none; counter-reset: rm; font-size: 13.5px; color: var(--off); }
+  .nlas.nlas.nlas-planbig .pn-legend li { counter-increment: rm; display: block; line-height: 1.35 !important; margin: 0 !important; padding: 0 !important; list-style: none; font-size: 13.5px !important; }
+  .nlas.nlas-planbig .pn-legend li::before { content: counter(rm); display: inline-block; margin-inline-end: 6px; vertical-align: 1px; font: 700 12px/18px "Barlow Condensed", Assistant, sans-serif; width: 18px; height: 18px; border-radius: 50%; background: var(--aqua); color: var(--navy); text-align: center; }
+  .nlas.nlas-planbig .pn-legend li b { color: var(--off); }
+}
