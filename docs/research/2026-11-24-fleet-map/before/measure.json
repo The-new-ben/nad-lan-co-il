@@ -1,0 +1,1302 @@
+{
+ "ashira-360x740": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 336
+  },
+  "lead": {
+   "y": 291,
+   "b": 571,
+   "h": 280,
+   "l": 12,
+   "w": 336
+  },
+  "nlsh": {
+   "y": 705,
+   "b": 929,
+   "h": 224,
+   "l": 12,
+   "w": 336
+  },
+  "stagebox": {
+   "y": 947,
+   "b": 2518,
+   "h": 1571,
+   "l": 12,
+   "w": 336
+  },
+  "nlps": {
+   "y": 947,
+   "b": 1465,
+   "h": 518,
+   "l": 12,
+   "w": 336
+  },
+  "below": {
+   "y": 4315,
+   "b": 6017,
+   "h": 1702,
+   "l": 12,
+   "w": 336
+  },
+  "view": {
+   "y": 4315,
+   "b": 4579,
+   "h": 264,
+   "l": 12,
+   "w": 336
+  },
+  "map": {
+   "y": 4595,
+   "b": 6017,
+   "h": 1422,
+   "l": 12,
+   "w": 336
+  },
+  "unimap": {
+   "y": 4933,
+   "b": 5373,
+   "h": 440,
+   "l": 33,
+   "w": 294
+  },
+  "gap": 2077,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 2530,
+    "h": 1763,
+    "t": "כמה עולה דירה באשירה שדה דב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 4315,
+    "h": 264,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 674,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 533,
+    "h": 50
+   }
+  ],
+  "docH": 26171,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@705",
+   "nlpg@2530",
+   "DIV.nlps-stagebox@947",
+   "nlps-view@4315",
+   "nlpjx-map@4595",
+   "nlps-tour@6490",
+   "nlpjx-price@21097"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "ashira-390x844": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 366
+  },
+  "lead": {
+   "y": 291,
+   "b": 543,
+   "h": 252,
+   "l": 12,
+   "w": 366
+  },
+  "nlsh": {
+   "y": 677,
+   "b": 901,
+   "h": 224,
+   "l": 12,
+   "w": 366
+  },
+  "stagebox": {
+   "y": 919,
+   "b": 2597,
+   "h": 1678,
+   "l": 12,
+   "w": 366
+  },
+  "nlps": {
+   "y": 919,
+   "b": 1510,
+   "h": 591,
+   "l": 12,
+   "w": 366
+  },
+  "below": {
+   "y": 4367,
+   "b": 6086,
+   "h": 1719,
+   "l": 12,
+   "w": 366
+  },
+  "view": {
+   "y": 4367,
+   "b": 4648,
+   "h": 281,
+   "l": 12,
+   "w": 366
+  },
+  "map": {
+   "y": 4664,
+   "b": 6086,
+   "h": 1422,
+   "l": 12,
+   "w": 366
+  },
+  "unimap": {
+   "y": 5002,
+   "b": 5442,
+   "h": 440,
+   "l": 33,
+   "w": 324
+  },
+  "gap": 2068,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 2609,
+    "h": 1737,
+    "t": "כמה עולה דירה באשירה שדה דב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 4367,
+    "h": 281,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 778,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 716,
+    "h": 50
+   }
+  ],
+  "docH": 25314,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@677",
+   "nlpg@2609",
+   "DIV.nlps-stagebox@919",
+   "nlps-view@4367",
+   "nlpjx-map@4664",
+   "nlps-tour@6543",
+   "nlpjx-price@20253"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "ashira-1280x720": {
+  "h1": {
+   "y": 199,
+   "b": 266,
+   "h": 66,
+   "l": 880,
+   "w": 380
+  },
+  "lead": {
+   "y": 312,
+   "b": 571,
+   "h": 260,
+   "l": 880,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 723,
+   "b": 947,
+   "h": 224,
+   "l": 880,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 199,
+   "b": 1033,
+   "h": 833,
+   "l": 302,
+   "w": 556
+  },
+  "nlps": {
+   "y": 199,
+   "b": 719,
+   "h": 520,
+   "l": 302,
+   "w": 556
+  },
+  "below": {
+   "y": 2948,
+   "b": 4256,
+   "h": 1308,
+   "l": 20,
+   "w": 1240
+  },
+  "view": {
+   "y": 2948,
+   "b": 3375,
+   "h": 427,
+   "l": 648,
+   "w": 612
+  },
+  "map": {
+   "y": 2948,
+   "b": 4256,
+   "h": 1308,
+   "l": 20,
+   "w": 612
+  },
+  "unimap": {
+   "y": 3252,
+   "b": 3692,
+   "h": 440,
+   "l": 41,
+   "w": 570
+  },
+  "gap": 1916,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1047,
+    "h": 1878,
+    "t": "כמה עולה דירה באשירה שדה דב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 648,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 646,
+    "h": 54
+   }
+  ],
+  "docH": 16646,
+  "order": [
+   "nl-project-page-title@199",
+   "DIV.nl-lead@312",
+   "NAV.nlsh@723",
+   "nlpg@1047",
+   "DIV.nlps-stagebox@199",
+   "nlps-view@2948",
+   "nlpjx-map@2948",
+   "nlps-tour@4515",
+   "nlpjx-price@13333"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "ashira-1440x900": {
+  "h1": {
+   "y": 204,
+   "b": 270,
+   "h": 66,
+   "l": 1040,
+   "w": 380
+  },
+  "lead": {
+   "y": 316,
+   "b": 576,
+   "h": 260,
+   "l": 1040,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 728,
+   "b": 952,
+   "h": 224,
+   "l": 1040,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 204,
+   "b": 1119,
+   "h": 915,
+   "l": 302,
+   "w": 716
+  },
+  "nlps": {
+   "y": 204,
+   "b": 864,
+   "h": 660,
+   "l": 302,
+   "w": 716
+  },
+  "below": {
+   "y": 2909,
+   "b": 4221,
+   "h": 1312,
+   "l": 20,
+   "w": 1400
+  },
+  "view": {
+   "y": 2909,
+   "b": 3381,
+   "h": 472,
+   "l": 728,
+   "w": 692
+  },
+  "map": {
+   "y": 2909,
+   "b": 4221,
+   "h": 1312,
+   "l": 20,
+   "w": 692
+  },
+  "unimap": {
+   "y": 3217,
+   "b": 3657,
+   "h": 440,
+   "l": 41,
+   "w": 650
+  },
+  "gap": 1790,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1133,
+    "h": 1752,
+    "t": "כמה עולה דירה באשירה שדה דב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 828,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 826,
+    "h": 54
+   }
+  ],
+  "docH": 16692,
+  "order": [
+   "nl-project-page-title@204",
+   "DIV.nl-lead@316",
+   "NAV.nlsh@728",
+   "nlpg@1133",
+   "DIV.nlps-stagebox@204",
+   "nlps-view@2909",
+   "nlpjx-map@2909",
+   "nlps-tour@4475",
+   "nlpjx-price@13352"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "duo-360x740": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 336
+  },
+  "lead": {
+   "y": 315,
+   "b": 483,
+   "h": 168,
+   "l": 12,
+   "w": 336
+  },
+  "nlsh": {
+   "y": 671,
+   "b": 839,
+   "h": 168,
+   "l": 12,
+   "w": 336
+  },
+  "stagebox": {
+   "y": 857,
+   "b": 1745,
+   "h": 888,
+   "l": 12,
+   "w": 336
+  },
+  "nlps": {
+   "y": 857,
+   "b": 1375,
+   "h": 518,
+   "l": 12,
+   "w": 336
+  },
+  "below": {
+   "y": 3656,
+   "b": 5358,
+   "h": 1702,
+   "l": 12,
+   "w": 336
+  },
+  "view": {
+   "y": 3656,
+   "b": 3920,
+   "h": 264,
+   "l": 12,
+   "w": 336
+  },
+  "map": {
+   "y": 3936,
+   "b": 5358,
+   "h": 1422,
+   "l": 12,
+   "w": 336
+  },
+  "unimap": {
+   "y": 4274,
+   "b": 4714,
+   "h": 440,
+   "l": 33,
+   "w": 294
+  },
+  "gap": 2192,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1757,
+    "h": 1877,
+    "t": "כמה עולה דירה ב-DUO תל אביב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 3656,
+    "h": 264,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 674,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 667,
+    "h": 50
+   }
+  ],
+  "docH": 30794,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@315",
+   "NAV.nlsh@671",
+   "nlpg@1757",
+   "DIV.nlps-stagebox@857",
+   "nlps-view@3656",
+   "nlpjx-map@3936",
+   "nlps-tour@5815",
+   "nlpjx-price@26398"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "duo-390x844": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 366
+  },
+  "lead": {
+   "y": 315,
+   "b": 483,
+   "h": 168,
+   "l": 12,
+   "w": 366
+  },
+  "nlsh": {
+   "y": 617,
+   "b": 785,
+   "h": 168,
+   "l": 12,
+   "w": 366
+  },
+  "stagebox": {
+   "y": 803,
+   "b": 1764,
+   "h": 961,
+   "l": 12,
+   "w": 366
+  },
+  "nlps": {
+   "y": 803,
+   "b": 1394,
+   "h": 591,
+   "l": 12,
+   "w": 366
+  },
+  "below": {
+   "y": 3602,
+   "b": 5321,
+   "h": 1719,
+   "l": 12,
+   "w": 366
+  },
+  "view": {
+   "y": 3602,
+   "b": 3883,
+   "h": 281,
+   "l": 12,
+   "w": 366
+  },
+  "map": {
+   "y": 3899,
+   "b": 5321,
+   "h": 1422,
+   "l": 12,
+   "w": 366
+  },
+  "unimap": {
+   "y": 4237,
+   "b": 4677,
+   "h": 440,
+   "l": 33,
+   "w": 324
+  },
+  "gap": 2135,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1776,
+    "h": 1804,
+    "t": "כמה עולה דירה ב-DUO תל אביב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 3602,
+    "h": 281,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 778,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 716,
+    "h": 50
+   }
+  ],
+  "docH": 29574,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@315",
+   "NAV.nlsh@617",
+   "nlpg@1776",
+   "DIV.nlps-stagebox@803",
+   "nlps-view@3602",
+   "nlpjx-map@3899",
+   "nlps-tour@5760",
+   "nlpjx-price@25192"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "duo-1280x720": {
+  "h1": {
+   "y": 199,
+   "b": 266,
+   "h": 66,
+   "l": 880,
+   "w": 380
+  },
+  "lead": {
+   "y": 336,
+   "b": 509,
+   "h": 173,
+   "l": 880,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 723,
+   "b": 891,
+   "h": 168,
+   "l": 880,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 199,
+   "b": 981,
+   "h": 781,
+   "l": 302,
+   "w": 556
+  },
+  "nlps": {
+   "y": 199,
+   "b": 719,
+   "h": 520,
+   "l": 302,
+   "w": 556
+  },
+  "below": {
+   "y": 2659,
+   "b": 3967,
+   "h": 1308,
+   "l": 20,
+   "w": 1240
+  },
+  "view": {
+   "y": 2659,
+   "b": 3086,
+   "h": 427,
+   "l": 648,
+   "w": 612
+  },
+  "map": {
+   "y": 2659,
+   "b": 3967,
+   "h": 1308,
+   "l": 20,
+   "w": 612
+  },
+  "unimap": {
+   "y": 2963,
+   "b": 3403,
+   "h": 440,
+   "l": 41,
+   "w": 570
+  },
+  "gap": 1679,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 995,
+    "h": 1641,
+    "t": "כמה עולה דירה ב-DUO תל אביב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 648,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 646,
+    "h": 54
+   }
+  ],
+  "docH": 19728,
+  "order": [
+   "nl-project-page-title@199",
+   "DIV.nl-lead@336",
+   "NAV.nlsh@723",
+   "nlpg@995",
+   "DIV.nlps-stagebox@199",
+   "nlps-view@2659",
+   "nlpjx-map@2659",
+   "nlps-tour@4226",
+   "nlpjx-price@17002"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "duo-1440x900": {
+  "h1": {
+   "y": 204,
+   "b": 270,
+   "h": 66,
+   "l": 1040,
+   "w": 380
+  },
+  "lead": {
+   "y": 340,
+   "b": 514,
+   "h": 173,
+   "l": 1040,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 728,
+   "b": 896,
+   "h": 168,
+   "l": 1040,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 204,
+   "b": 1119,
+   "h": 915,
+   "l": 302,
+   "w": 716
+  },
+  "nlps": {
+   "y": 204,
+   "b": 864,
+   "h": 660,
+   "l": 302,
+   "w": 716
+  },
+  "below": {
+   "y": 2728,
+   "b": 4040,
+   "h": 1312,
+   "l": 20,
+   "w": 1400
+  },
+  "view": {
+   "y": 2728,
+   "b": 3200,
+   "h": 472,
+   "l": 728,
+   "w": 692
+  },
+  "map": {
+   "y": 2728,
+   "b": 4040,
+   "h": 1312,
+   "l": 20,
+   "w": 692
+  },
+  "unimap": {
+   "y": 3036,
+   "b": 3476,
+   "h": 440,
+   "l": 41,
+   "w": 650
+  },
+  "gap": 1609,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1133,
+    "h": 1571,
+    "t": "כמה עולה דירה ב-DUO תל אביב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 828,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 826,
+    "h": 54
+   }
+  ],
+  "docH": 19857,
+  "order": [
+   "nl-project-page-title@204",
+   "DIV.nl-lead@340",
+   "NAV.nlsh@728",
+   "nlpg@1133",
+   "DIV.nlps-stagebox@204",
+   "nlps-view@2728",
+   "nlpjx-map@2728",
+   "nlps-tour@4277",
+   "nlpjx-price@17104"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-360x740": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 336
+  },
+  "lead": {
+   "y": 291,
+   "b": 571,
+   "h": 280,
+   "l": 12,
+   "w": 336
+  },
+  "nlsh": {
+   "y": 759,
+   "b": 927,
+   "h": 168,
+   "l": 12,
+   "w": 336
+  },
+  "stagebox": {
+   "y": 945,
+   "b": 1833,
+   "h": 888,
+   "l": 12,
+   "w": 336
+  },
+  "nlps": {
+   "y": 945,
+   "b": 1463,
+   "h": 518,
+   "l": 12,
+   "w": 336
+  },
+  "below": {
+   "y": 3759,
+   "b": 5460,
+   "h": 1702,
+   "l": 12,
+   "w": 336
+  },
+  "view": {
+   "y": 3759,
+   "b": 4023,
+   "h": 264,
+   "l": 12,
+   "w": 336
+  },
+  "map": {
+   "y": 4039,
+   "b": 5460,
+   "h": 1422,
+   "l": 12,
+   "w": 336
+  },
+  "unimap": {
+   "y": 4377,
+   "b": 4817,
+   "h": 440,
+   "l": 33,
+   "w": 294
+  },
+  "gap": 2206,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1845,
+    "h": 1892,
+    "t": "כמה עולה דירה בריינבו תל אביב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 3759,
+    "h": 264,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 674,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 533,
+    "h": 50
+   }
+  ],
+  "docH": 37013,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@759",
+   "nlpg@1845",
+   "DIV.nlps-stagebox@945",
+   "nlps-view@3759",
+   "nlpjx-map@4039",
+   "nlps-tour@5880",
+   "nlps-deals@6473",
+   "nlpjx-price@31788"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-390x844": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 366
+  },
+  "lead": {
+   "y": 291,
+   "b": 543,
+   "h": 252,
+   "l": 12,
+   "w": 366
+  },
+  "nlsh": {
+   "y": 677,
+   "b": 845,
+   "h": 168,
+   "l": 12,
+   "w": 366
+  },
+  "stagebox": {
+   "y": 863,
+   "b": 1824,
+   "h": 961,
+   "l": 12,
+   "w": 366
+  },
+  "nlps": {
+   "y": 863,
+   "b": 1454,
+   "h": 591,
+   "l": 12,
+   "w": 366
+  },
+  "below": {
+   "y": 3704,
+   "b": 5423,
+   "h": 1719,
+   "l": 12,
+   "w": 366
+  },
+  "view": {
+   "y": 3704,
+   "b": 3986,
+   "h": 281,
+   "l": 12,
+   "w": 366
+  },
+  "map": {
+   "y": 4002,
+   "b": 5423,
+   "h": 1422,
+   "l": 12,
+   "w": 366
+  },
+  "unimap": {
+   "y": 4339,
+   "b": 4779,
+   "h": 440,
+   "l": 33,
+   "w": 324
+  },
+  "gap": 2178,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1836,
+    "h": 1847,
+    "t": "כמה עולה דירה בריינבו תל אביב"
+   },
+   {
+    "tag": "div",
+    "id": "",
+    "cls": "nlds nlps-viewwrap",
+    "y": 3704,
+    "h": 281,
+    "t": "בחרו קומה ודירה לדוגמה"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 778,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 716,
+    "h": 50
+   }
+  ],
+  "docH": 35514,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@677",
+   "nlpg@1836",
+   "DIV.nlps-stagebox@863",
+   "nlps-view@3704",
+   "nlpjx-map@4002",
+   "nlps-tour@5843",
+   "nlps-deals@6427",
+   "nlpjx-price@30384"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-1280x720": {
+  "h1": {
+   "y": 199,
+   "b": 266,
+   "h": 66,
+   "l": 880,
+   "w": 380
+  },
+  "lead": {
+   "y": 312,
+   "b": 571,
+   "h": 260,
+   "l": 880,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 785,
+   "b": 953,
+   "h": 168,
+   "l": 880,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 199,
+   "b": 1014,
+   "h": 815,
+   "l": 302,
+   "w": 556
+  },
+  "nlps": {
+   "y": 199,
+   "b": 719,
+   "h": 520,
+   "l": 302,
+   "w": 556
+  },
+  "below": {
+   "y": 3377,
+   "b": 4685,
+   "h": 1308,
+   "l": 20,
+   "w": 1240
+  },
+  "view": {
+   "y": 3377,
+   "b": 3803,
+   "h": 427,
+   "l": 648,
+   "w": 612
+  },
+  "map": {
+   "y": 3377,
+   "b": 4685,
+   "h": 1308,
+   "l": 20,
+   "w": 612
+  },
+  "unimap": {
+   "y": 3681,
+   "b": 4121,
+   "h": 440,
+   "l": 41,
+   "w": 570
+  },
+  "gap": 2363,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1028,
+    "h": 2325,
+    "t": "כמה עולה דירה בריינבו תל אביב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 648,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 646,
+    "h": 54
+   }
+  ],
+  "docH": 23480,
+  "order": [
+   "nl-project-page-title@199",
+   "DIV.nl-lead@312",
+   "NAV.nlsh@785",
+   "nlpg@1028",
+   "DIV.nlps-stagebox@199",
+   "nlps-view@3377",
+   "nlpjx-map@3377",
+   "nlps-tour@4938",
+   "nlps-deals@5378",
+   "nlpjx-price@20097"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-1440x900": {
+  "h1": {
+   "y": 204,
+   "b": 270,
+   "h": 66,
+   "l": 1040,
+   "w": 380
+  },
+  "lead": {
+   "y": 316,
+   "b": 576,
+   "h": 260,
+   "l": 1040,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 790,
+   "b": 958,
+   "h": 168,
+   "l": 1040,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 204,
+   "b": 1100,
+   "h": 896,
+   "l": 302,
+   "w": 716
+  },
+  "nlps": {
+   "y": 204,
+   "b": 864,
+   "h": 660,
+   "l": 302,
+   "w": 716
+  },
+  "below": {
+   "y": 3311,
+   "b": 4623,
+   "h": 1312,
+   "l": 20,
+   "w": 1400
+  },
+  "view": {
+   "y": 3311,
+   "b": 3783,
+   "h": 472,
+   "l": 728,
+   "w": 692
+  },
+  "map": {
+   "y": 3311,
+   "b": 4623,
+   "h": 1312,
+   "l": 20,
+   "w": 692
+  },
+  "unimap": {
+   "y": 3619,
+   "b": 4059,
+   "h": 440,
+   "l": 41,
+   "w": 650
+  },
+  "gap": 2211,
+  "between": [
+   {
+    "tag": "section",
+    "id": "nlpg",
+    "cls": "nlds nlpg",
+    "y": 1114,
+    "h": 2173,
+    "t": "כמה עולה דירה בריינבו תל אביב"
+   }
+  ],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 828,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 826,
+    "h": 54
+   }
+  ],
+  "docH": 23488,
+  "order": [
+   "nl-project-page-title@204",
+   "DIV.nl-lead@316",
+   "NAV.nlsh@790",
+   "nlpg@1114",
+   "DIV.nlps-stagebox@204",
+   "nlps-view@3311",
+   "nlpjx-map@3311",
+   "nlps-tour@4860",
+   "nlps-deals@5351",
+   "nlpjx-price@20077"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}

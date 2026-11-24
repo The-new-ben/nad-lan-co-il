@@ -1,0 +1,8 @@
+ashira 360x740 stage end 2518 map top 4595 gap 2077 between [('nlpg', 1763), ('nlds nlps-viewwrap', 264)] errs 2
+ashira 390x844 stage end 2597 map top 4664 gap 2068 between [('nlpg', 1737), ('nlds nlps-viewwrap', 281)] errs 2
+ashira 1280x720 stage end 1033 map top 2948 gap 1916 between [('nlpg', 1878)] errs 2
+ashira 1440x900 stage end 1119 map top 2909 gap 1790 between [('nlpg', 1752)] errs 2
+duo 360x740 stage end 1745 map top 3936 gap 2192 between [('nlpg', 1877), ('nlds nlps-viewwrap', 264)] errs 2
+duo 390x844 stage end 1764 map top 3899 gap 2135 between [('nlpg', 1804), ('nlds nlps-viewwrap', 281)] errs 2
+duo 1280x720 stage end 981 map top 2659 gap 1679 between [('nlpg', 1641)] errs 2
+duo 1440x900 stage end 1119 map top 2728 gap 1609 between [('nlpg', 1571)] errs 2

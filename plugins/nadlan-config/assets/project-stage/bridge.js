@@ -113,6 +113,40 @@ function pickCss() {
   document.head.appendChild(st);
 }
 
+/* HAD-823 (Ben 24.11.2026: "באשירה, ריינבו ו-DUO, תיקח, תשים את המפה, תבדוק שהיא עובדת עם האלומה"): on these three pages
+   only (an allow-list of post ids, so no other page changes), HIS area map (#nlpjx-map, the same node, its own scripts, the same
+   beam drawn by showBeam below) is placed right under the tower: the view and the map come straight after the stage, and the
+   price block ("כמה עולה דירה ב...") follows them. Only the grid's placement changes (the page's raw order, title, H1, lead,
+   article, cards and wording stay as they are). Under 1100 px (one column) the map comes first in the view-and-map pair. */
+const NLPS_MAPUP = [4464, 4744, 4893]; // Rainbow, Ashira, DUO (Hebrew pages)
+let MAPUP_ON = false;
+function mapUp() {
+  if (document.getElementById('nlps-mapup') || !document.body) return;
+  const id = NLPS_MAPUP.find((n) => document.body.classList.contains('postid-' + n));
+  if (!id) return;
+  const P = ':root body.postid-' + id + ' .nlps-page';
+  const st = document.createElement('style');
+  st.id = 'nlps-mapup';
+  st.textContent = ''
+    + P + '{grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "below below below" "prices prices prices" "facts facts facts" "tour tour tour" "deals deals deals"}'
+    + '@media(max-width:1279px){' + P + '{grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "prices prices" "facts facts" "tour tour" "deals deals" "rail rail"}}'
+    + '@media(max-width:1099px){' + P + '{grid-template-areas:"hero" "lead" "cta" "stage" "below" "prices" "facts" "tour" "deals" "rail"}'
+    + P + '>.nlps-below>#nlpjx-map{order:-1}}'
+    + P + '>.nlps-below>.nlps-howtom{grid-column:1/-1}';
+  document.head.appendChild(st);
+  MAPUP_ON = true;
+  // under 1280 px a page's explainer films (.nlps-howtom, Ashira) sit inside the stage box, between the tower and the map: they
+  // follow the view and the map instead (the same node moved, put back on a wider screen); nothing else in the box moves
+  const films = document.querySelector('.nlps-stagebox>.nlps-howtom'), box = films && films.parentNode;
+  const below = document.querySelector('.nlps-page>.nlps-below');
+  if (!films || !below) return;
+  const mq = matchMedia('(max-width:1279px)');
+  const place = () => { if (mq.matches) { if (films.parentNode !== below) below.appendChild(films); } else if (films.parentNode !== box) box.appendChild(films); };
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+}
+mapUp();
+
 if (root) boot();
 
 async function boot() {

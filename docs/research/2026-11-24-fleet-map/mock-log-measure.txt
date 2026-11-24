@@ -1,0 +1,4 @@
+rainbow 360x740 stage end 1833 map top 1855 gap 22 between [] errs 2
+rainbow 390x844 stage end 1824 map top 1846 gap 22 between [] errs 2
+rainbow 1280x720 stage end 1014 map top 1038 gap 24 between [] errs 2
+rainbow 1440x900 stage end 1100 map top 1124 gap 24 between [] errs 2

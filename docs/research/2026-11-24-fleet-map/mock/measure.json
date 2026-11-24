@@ -1,0 +1,386 @@
+{
+ "rainbow-360x740": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 336
+  },
+  "lead": {
+   "y": 291,
+   "b": 571,
+   "h": 280,
+   "l": 12,
+   "w": 336
+  },
+  "nlsh": {
+   "y": 759,
+   "b": 927,
+   "h": 168,
+   "l": 12,
+   "w": 336
+  },
+  "stagebox": {
+   "y": 945,
+   "b": 1833,
+   "h": 888,
+   "l": 12,
+   "w": 336
+  },
+  "nlps": {
+   "y": 945,
+   "b": 1463,
+   "h": 518,
+   "l": 12,
+   "w": 336
+  },
+  "below": {
+   "y": 1855,
+   "b": 3557,
+   "h": 1702,
+   "l": 12,
+   "w": 336
+  },
+  "view": {
+   "y": 3292,
+   "b": 3557,
+   "h": 264,
+   "l": 12,
+   "w": 336
+  },
+  "map": {
+   "y": 1855,
+   "b": 3276,
+   "h": 1422,
+   "l": 12,
+   "w": 336
+  },
+  "unimap": {
+   "y": 2192,
+   "b": 2632,
+   "h": 440,
+   "l": 33,
+   "w": 294
+  },
+  "gap": 22,
+  "between": [],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 674,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 533,
+    "h": 50
+   }
+  ],
+  "docH": 37013,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@759",
+   "nlpg@3569",
+   "DIV.nlps-stagebox@945",
+   "nlps-view@3292",
+   "nlpjx-map@1855",
+   "nlps-tour@5880",
+   "nlps-deals@6473",
+   "nlpjx-price@31788"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-390x844": {
+  "h1": {
+   "y": 190,
+   "b": 247,
+   "h": 57,
+   "l": 12,
+   "w": 366
+  },
+  "lead": {
+   "y": 291,
+   "b": 543,
+   "h": 252,
+   "l": 12,
+   "w": 366
+  },
+  "nlsh": {
+   "y": 677,
+   "b": 845,
+   "h": 168,
+   "l": 12,
+   "w": 366
+  },
+  "stagebox": {
+   "y": 863,
+   "b": 1824,
+   "h": 961,
+   "l": 12,
+   "w": 366
+  },
+  "nlps": {
+   "y": 863,
+   "b": 1454,
+   "h": 591,
+   "l": 12,
+   "w": 366
+  },
+  "below": {
+   "y": 1846,
+   "b": 3564,
+   "h": 1719,
+   "l": 12,
+   "w": 366
+  },
+  "view": {
+   "y": 3283,
+   "b": 3564,
+   "h": 281,
+   "l": 12,
+   "w": 366
+  },
+  "map": {
+   "y": 1846,
+   "b": 3267,
+   "h": 1422,
+   "l": 12,
+   "w": 366
+  },
+  "unimap": {
+   "y": 2183,
+   "b": 2623,
+   "h": 440,
+   "l": 33,
+   "w": 324
+  },
+  "gap": 22,
+  "between": [],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 778,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 716,
+    "h": 50
+   }
+  ],
+  "docH": 35514,
+  "order": [
+   "nl-project-page-title@190",
+   "DIV.nl-lead@291",
+   "NAV.nlsh@677",
+   "nlpg@3576",
+   "DIV.nlps-stagebox@863",
+   "nlps-view@3283",
+   "nlpjx-map@1846",
+   "nlps-tour@5843",
+   "nlps-deals@6427",
+   "nlpjx-price@30384"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-1280x720": {
+  "h1": {
+   "y": 199,
+   "b": 266,
+   "h": 66,
+   "l": 880,
+   "w": 380
+  },
+  "lead": {
+   "y": 312,
+   "b": 571,
+   "h": 260,
+   "l": 880,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 785,
+   "b": 953,
+   "h": 168,
+   "l": 880,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 199,
+   "b": 1014,
+   "h": 815,
+   "l": 302,
+   "w": 556
+  },
+  "nlps": {
+   "y": 199,
+   "b": 719,
+   "h": 520,
+   "l": 302,
+   "w": 556
+  },
+  "below": {
+   "y": 1038,
+   "b": 2346,
+   "h": 1308,
+   "l": 20,
+   "w": 1240
+  },
+  "view": {
+   "y": 1038,
+   "b": 1465,
+   "h": 427,
+   "l": 648,
+   "w": 612
+  },
+  "map": {
+   "y": 1038,
+   "b": 2346,
+   "h": 1308,
+   "l": 20,
+   "w": 612
+  },
+  "unimap": {
+   "y": 1342,
+   "b": 1782,
+   "h": 440,
+   "l": 41,
+   "w": 570
+  },
+  "gap": 24,
+  "between": [],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 648,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 646,
+    "h": 54
+   }
+  ],
+  "docH": 23480,
+  "order": [
+   "nl-project-page-title@199",
+   "DIV.nl-lead@312",
+   "NAV.nlsh@785",
+   "nlpg@2360",
+   "DIV.nlps-stagebox@199",
+   "nlps-view@1038",
+   "nlpjx-map@1038",
+   "nlps-tour@4938",
+   "nlps-deals@5378",
+   "nlpjx-price@20097"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "rainbow-1440x900": {
+  "h1": {
+   "y": 204,
+   "b": 270,
+   "h": 66,
+   "l": 1040,
+   "w": 380
+  },
+  "lead": {
+   "y": 316,
+   "b": 576,
+   "h": 260,
+   "l": 1040,
+   "w": 380
+  },
+  "nlsh": {
+   "y": 790,
+   "b": 958,
+   "h": 168,
+   "l": 1040,
+   "w": 380
+  },
+  "stagebox": {
+   "y": 204,
+   "b": 1100,
+   "h": 896,
+   "l": 302,
+   "w": 716
+  },
+  "nlps": {
+   "y": 204,
+   "b": 864,
+   "h": 660,
+   "l": 302,
+   "w": 716
+  },
+  "below": {
+   "y": 1124,
+   "b": 2436,
+   "h": 1312,
+   "l": 20,
+   "w": 1400
+  },
+  "view": {
+   "y": 1124,
+   "b": 1596,
+   "h": 472,
+   "l": 728,
+   "w": 692
+  },
+  "map": {
+   "y": 1124,
+   "b": 2436,
+   "h": 1312,
+   "l": 20,
+   "w": 692
+  },
+  "unimap": {
+   "y": 1432,
+   "b": 1872,
+   "h": 440,
+   "l": 41,
+   "w": 650
+  },
+  "gap": 24,
+  "between": [],
+  "bars": [
+   {
+    "id": "nla11y",
+    "t": 828,
+    "h": 52
+   },
+   {
+    "id": "nlcta",
+    "t": 826,
+    "h": 54
+   }
+  ],
+  "docH": 23488,
+  "order": [
+   "nl-project-page-title@204",
+   "DIV.nl-lead@316",
+   "NAV.nlsh@790",
+   "nlpg@2450",
+   "DIV.nlps-stagebox@204",
+   "nlps-view@1124",
+   "nlpjx-map@1124",
+   "nlps-tour@4860",
+   "nlps-deals@5351",
+   "nlpjx-price@20077"
+  ],
+  "errors": [
+   "console:Failed to load resource: net::ERR_FAILED",
+   "console:Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}

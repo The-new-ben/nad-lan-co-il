@@ -1,0 +1,4 @@
+rainbow 360x740 stage end 1833 map top 4039 gap 2206 between [('nlpg', 1892), ('nlds nlps-viewwrap', 264)] errs 2
+rainbow 390x844 stage end 1824 map top 4002 gap 2178 between [('nlpg', 1847), ('nlds nlps-viewwrap', 281)] errs 2
+rainbow 1280x720 stage end 1014 map top 3377 gap 2363 between [('nlpg', 2325)] errs 2
+rainbow 1440x900 stage end 1100 map top 3311 gap 2211 between [('nlpg', 2173)] errs 2
