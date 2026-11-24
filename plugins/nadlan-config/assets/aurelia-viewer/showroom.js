@@ -830,7 +830,7 @@
       else if (on && !m.classList.contains('nlas-hide') && getComputedStyle(m).visibility !== 'hidden') { var mr = m.getBoundingClientRect(); if (mr.width > 2 && mr.height > 2) marks.push(mr); }
     });
     var sec = document.getElementById('nlpjx-map'), kept = hm ? [hm] : [];
-    if (on && sec) Array.prototype.forEach.call(sec.querySelectorAll('.nlam-bar button, .nlam-range, .nlas-mapbig'), function (e) { var r = e.getBoundingClientRect(); if (r.width) kept.push(r); });
+    if (on && sec) Array.prototype.forEach.call(sec.querySelectorAll('.nlam-bar button, .nlam-range, .nlas-mapbig, .mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib, .mapboxgl-ctrl-group'), function (e) { var r = e.getBoundingClientRect(); if (r.width) kept.push(r); });
     if (on) bars().forEach(function (r) { kept.push(r); });
     kept = kept.concat(marks);
     var cx = hm ? hm.left + hm.width / 2 : cr.left + cr.width / 2, cy = hm ? hm.top + hm.height / 2 : cr.top + cr.height / 2;
