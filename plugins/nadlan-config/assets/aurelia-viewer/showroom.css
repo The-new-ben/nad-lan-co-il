@@ -472,3 +472,7 @@
   .nlas.nlas-tight { --nlas-cuth: max(56px, calc(var(--nlas-pmh, 232px) - 56px)); }
   .nlas.nlas-tight:not(.nlas-planbig) .pn-flat .pn-media[data-tab="cut"] { row-gap: 2px; padding: 4px 6px; }
 }
+@media (max-width: 900px) { /* 764: the note and "smaller" keep the page's gutter on the full-width plan */
+  .nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-sim { margin: 8px 16px 0; }
+  .nlas.nlas.nlas-planbig .pn-media[data-tab="cut"] > .pn-bigbtn { margin: 8px 16px 0; }
+}

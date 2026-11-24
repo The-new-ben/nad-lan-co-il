@@ -438,6 +438,13 @@
       b.classList.toggle('flip', x > W * .62);
       b.hidden = x < 4 || x > W - 4 || y < 4 || y > H - 4;
     });
+    // 764: tags never lie on each other; on a small view at most three (the first in the list win), the rest wait for the large view
+    var kept = [], small = !box.closest('.nlas-viewbig'), max = small ? 3 : 99;
+    Array.prototype.forEach.call(box.children, function (b) {
+      if (b.hidden) return;
+      var r = b.getBoundingClientRect(), hit = kept.length >= max || kept.some(function (k) { return r.left < k.right + 4 && r.right > k.left - 4 && r.top < k.bottom + 4 && r.bottom > k.top - 4; });
+      if (hit) b.hidden = true; else kept.push(r);
+    });
   }
   function label(p) { return p.k === 'rail' && !/תחנ/.test(p.n) ? 'תחנת ' + p.n : p.n; }
   function dist(m) { return m < 1000 ? Math.round(m / 10) * 10 + ' מ׳' : fmt(m / 1000, 1) + ' ק״מ'; }
