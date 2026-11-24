@@ -1,0 +1,126 @@
+{
+ "vp": "390x844",
+ "live": false,
+ "steps": [
+  {
+   "step": "20-2 (5 rooms): plan large",
+   "ok": true,
+   "pic": [
+    6,
+    185,
+    378,
+    237
+   ]
+  },
+  {
+   "step": "20-2: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-2: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון, אוכל ומטבח 51 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 14 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "חדר שינה 13 מ״ר",
+    "רחצה 10 מ״ר",
+    "כניסה 9 מ״ר"
+   ]
+  },
+  {
+   "step": "20-7 (3 rooms): plan large",
+   "ok": true,
+   "pic": [
+    6,
+    197,
+    378,
+    237
+   ]
+  },
+  {
+   "step": "20-7: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "מרפסת"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "20-7: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון, אוכל ומטבח 20 מ״ר",
+    "חדר הורים 13 מ״ר",
+    "ממ״ד 11 מ״ר",
+    "רחצה 8 מ״ר",
+    "כניסה 7 מ״ר"
+   ]
+  },
+  {
+   "step": "46-1 (6 rooms): plan large",
+   "ok": true,
+   "pic": [
+    6,
+    221,
+    378,
+    142
+   ]
+  },
+  {
+   "step": "46-1: a label for every room + the balcony, all on the picture, none on another",
+   "ok": true,
+   "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "מרפסת לים"
+   ],
+   "overlap": 0
+  },
+  {
+   "step": "46-1: the rooms listed under the picture",
+   "ok": true,
+   "legend": [
+    "סלון ופינת אוכל 182 מ״ר",
+    "חדר הורים 24 מ״ר",
+    "ממ״ד 25 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "חדר שינה 24 מ״ר",
+    "מטבח 31 מ״ר",
+    "רחצה 18 מ״ר",
+    "כניסה 16 מ״ר"
+   ]
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}

@@ -1,0 +1,224 @@
+{
+ "vp": "390x844",
+ "live": true,
+ "at": "2026-11-24 02:31:22",
+ "steps": [
+  {
+   "step": "cue on the tower before any tap",
+   "ok": true,
+   "hint": "בחרו דירה על המגדל"
+  },
+  {
+   "step": "a flat is on the picture",
+   "ok": true,
+   "pt": {
+    "x": 149.26055555555558,
+    "y": 298.83923611111106
+   }
+  },
+  {
+   "step": "skip button has its own place (not on the label, the call or the mark)",
+   "ok": true,
+   "hit": [],
+   "box": [
+    14,
+    384,
+    56,
+    34
+   ]
+  },
+  {
+   "step": "flat open after the pull-out",
+   "ok": true,
+   "mode": "flat",
+   "view": "street",
+   "sel": "20-2",
+   "pull": 10085,
+   "beam": 270,
+   "tab": "cut"
+  },
+  {
+   "step": "tower whole on screen",
+   "ok": true,
+   "stage": {
+    "l": 6,
+    "t": 60,
+    "r": 384,
+    "b": 364,
+    "w": 378,
+    "h": 304
+   }
+  },
+  {
+   "step": "facts band on the first screen, above the bars",
+   "ok": true,
+   "band": {
+    "l": 6,
+    "t": 364,
+    "r": 384,
+    "b": 439,
+    "w": 378,
+    "h": 75
+   },
+   "barTop": 646
+  },
+  {
+   "step": ">= 200 px of his map above the bars",
+   "ok": true,
+   "map_visible": 205,
+   "map": {
+    "l": 6,
+    "t": 441,
+    "r": 384,
+    "b": 844,
+    "w": 378,
+    "h": 403
+   }
+  },
+  {
+   "step": "band holds rooms, m2, floor, direction, stage + plan + request",
+   "ok": true,
+   "text": "תוכנית הדירה | 5 חדרים · 134 מ״ר | קומה 20 · פונה מערב, לים | שלב: קונספט · דירה לדוגמה | הדירה | מעניינת אותי"
+  },
+  {
+   "step": "no showroom control under the site's bars (after the tap)",
+   "ok": true,
+   "under": [],
+   "bars": [
+    [
+     "nl-sticky",
+     784,
+     12,
+     366
+    ],
+    [
+     "nla11y",
+     778,
+     324,
+     52
+    ],
+    [
+     "nlcta",
+     646,
+     12,
+     280
+    ]
+   ]
+  },
+  {
+   "step": "cue on the map after the tap",
+   "ok": true,
+   "shown_at": 19602,
+   "now": 27806,
+   "map": true
+  },
+  {
+   "step": "pull-out about 1.2 s (slowed run excluded)",
+   "ok": true,
+   "pull_ms": 10085
+  },
+  {
+   "step": "compact map: no nameless plan dot, no overlapping price pill",
+   "ok": true,
+   "pills": 2,
+   "overlap": 0,
+   "nameless_plan_dots": 0,
+   "named_plans": 3
+  },
+  {
+   "step": "compact map: no price pill on a marker, none under the bars",
+   "ok": true,
+   "pills": 2,
+   "marks": 1,
+   "pill_on_marker": [],
+   "pills_under_bars": 0,
+   "offset": 1
+  },
+  {
+   "step": "strip heading + first row at the flat rest: fully above the bars or wholly below the screen",
+   "ok": true,
+   "rest": [
+    {
+     "t": 857,
+     "b": 885,
+     "ok": true
+    },
+    {
+     "t": 895,
+     "b": 943,
+     "ok": true
+    },
+    {
+     "barTop": 646
+    }
+   ]
+  },
+  {
+   "step": "no inner scrollbars, no layer left over the tower",
+   "ok": true
+  },
+  {
+   "step": "blacklist words and totals absent",
+   "ok": true,
+   "found": []
+  },
+  {
+   "step": "band plan button brings the plan into the eye, clear of the bars",
+   "ok": true,
+   "plan": [
+    245,
+    464
+   ],
+   "barTop": 646,
+   "cut_below": []
+  },
+  {
+   "step": "cue on the view",
+   "ok": true,
+   "cue": "לחצו על מקום בנוף"
+  },
+  {
+   "step": "view tags on the picture",
+   "ok": true,
+   "tags": 8
+  },
+  {
+   "step": "strip 'what is that way' clear of the bars",
+   "ok": true,
+   "under": [
+    "לקבלת תוכנית הדירה @nlcta",
+    "לקבלת מחירון כשייפתח @nlcta"
+   ]
+  },
+  {
+   "step": "the beam turned to the flat",
+   "ok": true,
+   "beam": 90
+  },
+  {
+   "step": "panel call button clear of the bars before the press",
+   "ok": true,
+   "under": []
+  },
+  {
+   "step": "call: nobody on duty -> honest choice, the sheet rests above the bars",
+   "ok": true,
+   "sheet": [
+    267,
+    443
+   ],
+   "barTop": 646
+  },
+  {
+   "step": "every showroom block can rest fully clear of the header and the bars",
+   "ok": true,
+   "rest": 18
+  },
+  {
+   "step": "console errors",
+   "ok": true,
+   "errors": []
+  }
+ ],
+ "errors": []
+}
