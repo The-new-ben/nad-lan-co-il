@@ -63,7 +63,7 @@ Test kit: `press3.py WxH [OUT]` (LIVE=1 for the live page; otherwise the live pa
   description, unchanged. content_first_check on Aurelia: 0 failed (phone + desktop).
 - Linear HAD-810 comment posted, Notion row "אורליה ספורט" (next step + evidence) updated, LOOP.md line, D:\00 מוכן להצגה\ number 30
   replaced with the 24.11 live frames + recording, read-me line updated.
-- OPEN when this agent stopped: deploy760.py was still in its ~1,740 check rows (about 300 done at 01:55 IL, background run, log
+- CLOSED: deploy760.py finished (1748 rows OK, 0 failed, exit 0, no bridge) and RELEASE DONE 1.72.760 was written; the note below is history. Earlier: deploy760.py was still in its ~1,740 check rows (about 300 done at 01:55 IL, background run, log
   `scripts/project-stage/_deploy760.log`, last line `exit=N` when it ends). Whoever picks up: when the log ends with
   "RELEASE 1.72.760 LIVE" + "no active temporary bridge left" + exit=0, append the RELEASE DONE 1.72.760 line to
   docs/coordination/claude-codex.md (lock released). If it died mid-way: `python scripts/project-stage/deploy760.py --finish`
