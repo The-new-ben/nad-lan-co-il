@@ -53,11 +53,13 @@ if ( ! function_exists( 'nadlan_rm_film_row' ) ) {
 		$en  = ( 'he' !== $lang );
 		$up  = content_url( '/uploads/2026/11/' );
 		$ver = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1';
-		$src = $up . ( $en ? 'rentals-tutorial-en-phone.mp4' : 'rentals-tutorial-he-phone.mp4' );
+		/* v3 24.11.2026: the same files now carry the English voice (Ben: "כרגע רק אנגלית עם תרגום בעברית"); "?v=3" so a browser that
+		   kept the Hebrew-voice copy (the site sends max-age 10 years for uploads) fetches the new one */
+		$src = $up . ( $en ? 'rentals-tutorial-en-phone.mp4' : 'rentals-tutorial-he-phone.mp4' ) . '?v=3';
 		$pos = $up . 'rentals-tutorial-poster.webp';
 		$t   = $en
-			? array( 'k' => 'Video guide', 'b' => 'How it works, in two minutes', 's' => 'Add an apartment, the tenant reports no hot water, you handle it', 'n' => 'Hebrew narration, English captions', 'a' => 'Play the video guide, 2 minutes 2 seconds', 'x' => 'Close the video' )
-			: array( 'k' => 'סרטון הדרכה', 'b' => 'איך זה עובד, בשתי דקות', 's' => 'מוסיפים דירה, השוכר מדווח שאין מים חמים, מטפלים', 'n' => '', 'a' => 'לנגן את סרטון ההדרכה, 2 דקות ו-2 שניות', 'x' => 'לסגור את הסרטון' );
+			? array( 'k' => 'Video guide', 'b' => 'How it works, in two minutes', 's' => 'Add an apartment, the tenant reports no hot water, you handle it', 'n' => '','a' => 'Play the video guide, 2 minutes 2 seconds', 'x' => 'Close the video' )
+			: array( 'k' => 'סרטון הדרכה', 'b' => 'איך זה עובד, בשתי דקות', 's' => 'מוסיפים דירה, השוכר מדווח שאין מים חמים, מטפלים', 'n' => 'קריינות באנגלית, כתוביות בעברית','a' => 'לנגן את סרטון ההדרכה, 2 דקות ו-2 שניות', 'x' => 'לסגור את הסרטון' );
 		?>
 <style>
 #nlrm-film{--ink:#14212b;--sea:#2f6f86;--cy:#7fd3e6;max-width:560px;margin:14px auto 6px;text-align:start;font-family:'Assistant',Heebo,system-ui,sans-serif}
