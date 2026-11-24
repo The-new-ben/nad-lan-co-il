@@ -24,10 +24,27 @@ Read HANDOVER-STEP2e.md first (1.72.762 in full: clearRest/settle, floors 6..47,
   6. Phones: the walking-time column (ours) gets lower buttons (32 -> 24 px, `rangeFit`, `--nlas-rgh`) so it ends above the
      Mapbox logo; the logo and attribution are untouched.
 
-## The site's green "וואטסאפ" button text (owner's question; no change made)
-See the bottom of this file (checked on the live page with the computed colours).
+## Answers the coordinator asked for
+- Floor 47: opens ONLY by the arrows (and the link #dira=47-1). It is not tappable on the tower, deliberately (reason in item 5 above).
+- The faded "וואטסאפ" text on the site's green bottom button is REAL, not a capture artefact: on the live page (390x844, wacolor.py)
+  the computed colour of #nl-sticky's "וואטסאפ" link is rgb(47,111,134) (teal) on background rgb(31,138,76) (green), about 1.2:1
+  contrast; "מעניין אותי" next to it is white on rgb(194,86,58). It is the site's bar and Ben's wording: nothing was changed.
 
 ## NOT done
 - (g) phone view tags crowding, (d) tower from the sea + aligned tap layer, (f) board update + PNG export: see the bottom.
 - 267 sample flats vs the declared 320 (the model's floor layouts not redrawn: a design decision).
 - No board frame for 762/763's fixes. Not checked: a real phone, iOS Safari, the call room itself.
+
+## 1.72.763 RELEASED (showroom.js + showroom.css): 1768 rows OK, 0 failed, RELEASE DONE written
+Live press (live5/): press3 360/390/1440/1920 0 BAD; 1280x720 2 BAD (the small plan's own rows pushed the short-desktop panel's
+deals line under the WhatsApp pill and the call sheet below the screen); press_plan 360/390/1440 0 BAD; floors 390 0 BAD.
+Recording live5/live-phone-flow-763.mp4. Source audit after byte-only; content_first_check 0 failed.
+
+## 1.72.764 (showroom.js + showroom.css), coordinator's review of the live 763 frames
+1+2. Short desktops (.nlas-tight, about 720-770 px high): the small plan keeps its note and "large" button only (the floor key is
+   in "התוכנית", the designer link in the large plan) and the picture row gives the height back (--nlas-cuth); the panel ends
+   above the bars again (1280x720: last line 572, bar 574) and the call sheet opens inside the screen (262-437).
+3. One rule for every view tag box (phones and desktop): tags never lie on each other (4 px apart); on a small view at most three
+   (the first in the list win), the rest wait for the large view (`placeIn`). This also answers (g) on phones.
+4. The full-width plan's note and "smaller" keep a 16 px gutter.
+Local press (local14/): press3 1280x720, 1366x768, 390x844, 360x740 0 BAD. Live: see live6/ and the lock file.

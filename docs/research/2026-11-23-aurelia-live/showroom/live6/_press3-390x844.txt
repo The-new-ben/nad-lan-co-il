@@ -1,0 +1,26 @@
+OK  cue on the tower before any tap {"hint": "בחרו דירה על המגדל"}
+OK  a flat is on the picture {"pt": {"x": 149.26055555555558, "y": 298.83923611111106}}
+OK  skip button has its own place (not on the label, the call or the mark) {"hit": [], "box": [14, 384, 56, 34]}
+OK  flat open after the pull-out {"mode": "flat", "view": "street", "sel": "20-2", "pull": 10074, "beam": 270, "tab": "cut"}
+OK  tower whole on screen {"stage": {"l": 6, "t": 60, "r": 384, "b": 364, "w": 378, "h": 304}}
+OK  facts band on the first screen, above the bars {"band": {"l": 6, "t": 364, "r": 384, "b": 439, "w": 378, "h": 75}, "barTop": 646}
+OK  >= 200 px of his map above the bars {"map_visible": 205, "map": {"l": 6, "t": 441, "r": 384, "b": 844, "w": 378, "h": 403}}
+OK  band holds rooms, m2, floor, direction, stage + plan + request {"text": "תוכנית הדירה | 5 חדרים · 134 מ״ר | קומה 20 · פונה מערב, לים | שלב: קונספט · דירה לדוגמה | הדירה | מעניינת אותי"}
+OK  no showroom control under the site's bars (after the tap) {"under": [], "bars": [["nl-sticky", 784, 12, 366], ["nla11y", 778, 324, 52], ["nlcta", 646, 12, 280]]}
+OK  cue on the map after the tap {"shown_at": 19212, "now": 27536, "map": true}
+OK  pull-out about 1.2 s (slowed run excluded) {"pull_ms": 10074}
+OK  compact map: no nameless plan dot, no overlapping price pill {"pills": 2, "overlap": 0, "nameless_plan_dots": 0, "named_plans": 3}
+OK  compact map: no price pill on a marker, none under the bars {"pills": 2, "marks": 1, "pill_on_marker": [], "pills_under_bars": 0, "offset": 1}
+OK  strip heading + first row at the flat rest: fully above the bars or wholly below the screen {"rest": [{"t": 857, "b": 885, "ok": true}, {"t": 895, "b": 943, "ok": true}, {"barTop": 646}]}
+OK  no inner scrollbars, no layer left over the tower {}
+OK  blacklist words and totals absent {"found": []}
+OK  band plan button brings the plan into the eye, clear of the bars (picture top at most 20 px under the header) {"plan": [62, 299], "barTop": 646, "cut_below": ["עסקאות שנסגרו באזור, 5 חדרים ו @nlcta"]}
+OK  cue on the view {"cue": "לחצו על מקום בנוף"}
+OK  view tags on the picture {"tags": 2}
+OK  strip 'what is that way' clear of the bars {"under": ["לקבלת תוכנית הדירה @nlcta", "לקבלת מחירון כשייפתח @nlcta"]}
+OK  the beam turned to the flat {"beam": 90}
+OK  panel call button clear of the bars before the press {"under": []}
+OK  call: nobody on duty -> honest choice, the sheet rests above the bars {"sheet": [267, 443], "barTop": 646}
+OK  every showroom block can rest fully clear of the header and the bars {"rest": 18}
+OK  console errors {"errors": []}
+BAD: 0 of 25

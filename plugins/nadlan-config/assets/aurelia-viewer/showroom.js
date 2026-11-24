@@ -946,12 +946,12 @@
     wait();
   }
   /* 763: the plan opened large on a phone: when no scroll leaves every button clear (a row a few px across a bar), our own picture
-     gets a little narrower (3 % a step, down to 70 %) until it does; the site's bars are never touched */
+     gets a little narrower (3 % a step, down to 60 %) until it does; the site's bars are never touched */
   function fitRest(anchor, maxCut) {
     var r = clearRest(anchor, maxCut);
-    for (var i = 0; i < 10 && r && r.half > 0 && S.el.classList.contains('nlas-planbig') && PHONE(); i++) {
+    for (var i = 0; i < 14 && r && r.half > 0 && S.el.classList.contains('nlas-planbig') && PHONE(); i++) {
       var w = parseFloat(S.el.style.getPropertyValue('--nlas-planw')) || (innerHeight <= 760 ? 94 : 100);
-      if (w <= 70) break;
+      if (w <= 60) break;
       S.el.style.setProperty('--nlas-planw', (w - 3)); r = clearRest(anchor, maxCut);
     }
     return r;
